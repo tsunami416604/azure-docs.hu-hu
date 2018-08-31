@@ -1,122 +1,122 @@
 ---
-title: Kommunikáció - a Microsoft fenyegetés modellezési eszköz - biztonsági Azure |} Microsoft Docs
-description: a fenyegetések modellezése eszköz felfedett fenyegetések megoldást
+title: Kommunikációs biztonság – Microsoft Fenyegetésmodellezési eszköz – Azure |} A Microsoft Docs
+description: megoldások a fenyegetések között szerepelnek a Threat Modeling Tool
 services: security
 documentationcenter: na
-author: RodSan
-manager: RodSan
-editor: RodSan
+author: jegeib
+manager: jegeib
+editor: jegeib
 ms.assetid: na
 ms.service: security
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/17/2017
-ms.author: rodsan
-ms.openlocfilehash: c361f74147862585074f3c4475209ba6eb0c1e0c
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.date: 02/07/2017
+ms.author: jegeib
+ms.openlocfilehash: 7e8afc02c738a2bba445b1d84b7cb899dfbb93a0
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37029798"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43301554"
 ---
-# <a name="security-frame-communication-security--mitigations"></a>Biztonsági keret: Kommunikációs biztonsági |} Megoldást 
-| A termék vagy szolgáltatás | Cikk |
+# <a name="security-frame-communication-security--mitigations"></a>Biztonsági keret: Kommunikációs biztonság |} Megoldások 
+| Termék vagy szolgáltatás | Cikk |
 | --------------- | ------- |
-| **Azure Event Hub** | <ul><li>[Az Event Hubs használatával SSL/TLS biztonságos kommunikáció](#comm-ssltls)</li></ul> |
-| **Dynamics CRM** | <ul><li>[Ellenőrizze a jogosultsággal, és ellenőrizze, hogy az egyéni szolgáltatásokat vagy az ASP.NET-lapok tiszteletben CRM biztonsági](#priv-aspnet)</li></ul> |
-| **Azure Data Factory** | <ul><li>[A kapcsolódáshoz adatkezelési átjárót a helyszíni SQL Server az Azure Data Factory](#sqlserver-factory)</li></ul> |
-| **Identity Serverben** | <ul><li>[Győződjön meg arról, hogy az Identity Serverben irányuló összes forgalom HTTPS-kapcsolaton keresztül](#identity-https)</li></ul> |
-| **Webalkalmazás** | <ul><li>[Ellenőrizze az X.509 SSL, a TLS és DTLS létesített kapcsolatok hitelesítéséhez használt tanúsítványok](#x509-ssltls)</li><li>[Az egyéni tartomány SSL tanúsítvány konfigurálása az Azure App Service-ben](#ssl-appservice)</li><li>[Az összes forgalom kényszerítheti az Azure App Service HTTPS-kapcsolaton keresztül](#appservice-https)</li><li>[HTTP szigorú a Transport Security (HSTS) engedélyezése](#http-hsts)</li></ul> |
-| **Adatbázis** | <ul><li>[Ellenőrizze az SQL server-kapcsolat titkosítási és a tanúsítvány érvényesítése](#sqlserver-validation)</li><li>[Kényszerített titkosított kommunikációt az SQL-kiszolgálón](#encrypted-sqlserver)</li></ul> |
-| **Azure Storage** | <ul><li>[Győződjön meg arról, hogy Azure Storage kommunikáció HTTPS-KAPCSOLATON keresztül](#comm-storage)</li><li>[MD5 kivonatoló érvényesítése után blob letöltése, ha HTTPS nem engedélyezhető.](#md5-https)</li><li>[Az SMB 3.0 kompatibilis ügyfél használatával biztosíthatja a Azure fájlmegosztásokat adatok az átvitel közbeni titkosítás](#smb-shares)</li></ul> |
+| **Azure Event Hub** | <ul><li>[Biztonságos kommunikáció SSL/TLS eseményközpontba](#comm-ssltls)</li></ul> |
+| **Dynamics CRM** | <ul><li>[Ellenőrizze a jogosultsággal, és ellenőrizze, hogy az egyéni szolgáltatásokat vagy az ASP.NET-lapok tiszteletben CRM a biztonság](#priv-aspnet)</li></ul> |
+| **Azure Data Factory** | <ul><li>[Az adatkezelési átjáró használata az Azure Data Factory a helyszíni SQL Server a kapcsolódáshoz](#sqlserver-factory)</li></ul> |
+| **Identitáskezelési kiszolgáló** | <ul><li>[Gondoskodjon arról, hogy minden forgalmat az identitás-kiszolgálót HTTPS-kapcsolaton keresztül](#identity-https)</li></ul> |
+| **Webalkalmazás** | <ul><li>[Ellenőrizze az X.509 SSL, a TLS és DTLS kapcsolat hitelesítéséhez használt tanúsítványok](#x509-ssltls)</li><li>[Egyéni tartomány SSL-tanúsítvány konfigurálása az Azure App Service-ben](#ssl-appservice)</li><li>[Az összes forgalom kényszerített az Azure App Service-HTTPS-kapcsolaton keresztül](#appservice-https)</li><li>[HTTP szigorú Transport Security (HSTS) engedélyezése](#http-hsts)</li></ul> |
+| **Adatbázis** | <ul><li>[Győződjön meg, hogy az SQL server-kapcsolat titkosítási és a tanúsítvány érvényesítése](#sqlserver-validation)</li><li>[Az SQL server titkosított kommunikáció kényszerítése](#encrypted-sqlserver)</li></ul> |
+| **Azure Storage** | <ul><li>[Gondoskodjon arról, hogy az Azure Storage-kommunikáció HTTPS-kapcsolaton keresztül](#comm-storage)</li><li>[Blob letöltése, ha nem lehet engedélyezni a HTTPS után MD5-kivonat ellenőrzése](#md5-https)</li><li>[Győződjön meg, hogy az átvitel közbeni adatok titkosítását az Azure-fájlmegosztások az SMB 3.0 kompatibilis ügyfél használatával](#smb-shares)</li></ul> |
 | **Mobileszköz ügyfél** | <ul><li>[Tanúsítvány rögzítését megvalósítása](#cert-pinning)</li></ul> |
-| **WCF** | <ul><li>[Engedélyezze a HTTPS - az átviteli csatornát](#https-transport)</li><li>[WCF: Set Message biztonsági EncryptAndSign és védelmi szint](#message-protection)</li><li>[WCF: Legkevésbé jogosultsági szintű fiók használata a WCF-szolgáltatás futtatásához](#least-account-wcf)</li></ul> |
-| **Webes API** | <ul><li>[Az összes forgalom kényszerítése a webes API-k való HTTPS-kapcsolaton keresztül](#webapi-https)</li></ul> |
-| **Azure Redis Cache** | <ul><li>[Győződjön meg arról, hogy Azure Redis Cache kommunikáció SSL-en keresztül](#redis-ssl)</li></ul> |
-| **Az IoT-mező átjáró** | <ul><li>[Biztonságos eszköz és a mező átjáró közötti kommunikáció](#device-field)</li></ul> |
-| **Az IoT átjáró** | <ul><li>[Az átjáró a kommunikációt az SSL/TLS biztonságos eszköz](#device-cloud)</li></ul> |
+| **WCF** | <ul><li>[HTTPS engedélyezése – biztonságos átvitel csatorna](#https-transport)</li><li>[A WCF: Set Message biztonsági EncryptAndSign és védelmi szint](#message-protection)</li><li>[A WCF: Egy alacsonyabb szintű fiók használata a WCF-szolgáltatás futtatásához](#least-account-wcf)</li></ul> |
+| **Webes API** | <ul><li>[Összes forgalom kényszerített webes API-k HTTPS-kapcsolaton keresztül](#webapi-https)</li></ul> |
+| **Azure Redis Cache** | <ul><li>[Gondoskodjon arról, hogy az Azure Redis Cache kommunikáció SSL-en keresztül](#redis-ssl)</li></ul> |
+| **IoT helyszíni átjáró** | <ul><li>[Eszköz biztonságossá tételéhez és a helyszíni átjárók közötti kommunikációhoz](#device-field)</li></ul> |
+| **IoT átjáró** | <ul><li>[Biztonságos eszköz és átjáró közötti kommunikációhoz SSL/TLS segítségével](#device-cloud)</li></ul> |
 
-## <a id="comm-ssltls"></a>Az Event Hubs használatával SSL/TLS biztonságos kommunikáció
+## <a id="comm-ssltls"></a>Biztonságos kommunikáció SSL/TLS eseményközpontba
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Azure-eseményközpont | 
 | **SDL fázis**               | Felépítés |  
-| **Alkalmazandó technológiák** | Általános |
+| **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
-| **Hivatkozások**              | [Event Hubs hitelesítés és a biztonsági modell – áttekintés](https://azure.microsoft.com/documentation/articles/event-hubs-authentication-and-security-model-overview/) |
-| **Lépések** | Biztonságos SSL/TLS használatával az Event Hubs AMQP- vagy HTTP-kapcsolatok |
+| **Hivatkozások**              | [Event Hubs hitelesítési és biztonsági modell áttekintése](https://azure.microsoft.com/documentation/articles/event-hubs-authentication-and-security-model-overview/) |
+| **Lépések** | Biztonságos SSL/TLS segítségével Event Hubs AMQP vagy HTTP-kapcsolatok |
 
-## <a id="priv-aspnet"></a>Ellenőrizze a jogosultsággal, és ellenőrizze, hogy az egyéni szolgáltatásokat vagy az ASP.NET-lapok tiszteletben CRM biztonsági
+## <a id="priv-aspnet"></a>Ellenőrizze a jogosultsággal, és ellenőrizze, hogy az egyéni szolgáltatásokat vagy az ASP.NET-lapok tiszteletben CRM a biztonság
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Dynamics CRM | 
 | **SDL fázis**               | Felépítés |  
-| **Alkalmazandó technológiák** | Általános |
+| **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
-| **Lépések** | Ellenőrizze a jogosultsággal, és ellenőrizze, hogy az egyéni szolgáltatásokat vagy az ASP.NET-lapok tiszteletben CRM biztonsági |
+| **Lépések** | Ellenőrizze a jogosultsággal, és ellenőrizze, hogy az egyéni szolgáltatásokat vagy az ASP.NET-lapok tiszteletben CRM a biztonság |
 
-## <a id="sqlserver-factory"></a>A kapcsolódáshoz adatkezelési átjárót a helyszíni SQL Server az Azure Data Factory
+## <a id="sqlserver-factory"></a>Az adatkezelési átjáró használata az Azure Data Factory a helyszíni SQL Server a kapcsolódáshoz
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Azure Data Factory | 
 | **SDL fázis**               | Környezet |  
-| **Alkalmazandó technológiák** | Általános |
-| **Attribútumok**              | Kapcsolódószolgáltatás-típusok - Azure és a helyi |
-| **Hivatkozások**              |[ Adatok áthelyezése másik helyszíni és az Azure Data Factory](https://azure.microsoft.com/documentation/articles/data-factory-move-data-between-onprem-and-cloud/#create-gateway), [az adatkezelési átjáró](https://azure.microsoft.com/documentation/articles/data-factory-data-management-gateway/) |
-| **Lépések** | <p>Az adatok felügyeleti átjáró (DMG) eszköze corpnet vagy egy tűzfal mögött található védett adatforrásokhoz való kapcsolódáshoz szükséges.</p><ol><li>A számítógép zárolása elkülöníti a DMG eszközt, és megakadályozza, hogy káros vagy az adatok forrásgépen megfigyelő hibás programok. (E.g. telepíteni kell a legújabb frissítéseket, minimális engedélyezése szükséges portok ellenőrzött fiókok átadásához, a naplózás engedélyezve van, lemez engedélyezhető a titkosítás stb.)</li><li>Adatok átjárókulcs kell forgatni rendszeres időközönként, vagy amikor megújítja a DMG szolgáltatásfiók jelszavát</li><li>Adatok továbbítására hivatkozás szolgáltatáson keresztül titkosítva kell lennie</li></ol> |
+| **Megfelelő technológiák** | Általános |
+| **Attribútumok**              | Típusú társított szolgáltatás – Azure és helyszíni |
+| **Hivatkozások**              |[ Adatok áthelyezése a helyszíni és az Azure Data Factory](https://azure.microsoft.com/documentation/articles/data-factory-move-data-between-onprem-and-cloud/#create-gateway), [adatkezelési átjáró](https://azure.microsoft.com/documentation/articles/data-factory-data-management-gateway/) |
+| **Lépések** | <p>A Data Management Gateway (DMG) eszköz már csatlakozhat adatforrásokhoz, amelyeket a vállalati hálózat vagy tűzfal mögé.</p><ol><li>A gép sémákra elkülöníti a DMG-eszközt, és megakadályozza, hogy a hibás programok sérülhetnek vagy megfigyelő adatok forrásoldali virtuális gépen. (E.g. telepíteni kell a legújabb frissítéseket, minimális engedélyezése szükséges portok, ellenőrzött fiókok kiépítése, naplózás engedélyezve van, lemeztitkosítás engedélyezve stb.)</li><li>Data Gateway kulcsot kell forgatni gyakori időközönként, vagy minden alkalommal, amikor megújítja a DMG szolgáltatásfiók jelszavát</li><li>Hivatkozás szolgáltatáson keresztül adatok továbbítását titkosítva kell lennie</li></ol> |
 
-## <a id="identity-https"></a>Győződjön meg arról, hogy az Identity Serverben irányuló összes forgalom HTTPS-kapcsolaton keresztül
+## <a id="identity-https"></a>Gondoskodjon arról, hogy minden forgalmat az identitás-kiszolgálót HTTPS-kapcsolaton keresztül
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
-| **Összetevő**               | Identity Serverben | 
+| **Összetevő**               | Identitáskezelési kiszolgáló | 
 | **SDL fázis**               | Környezet |  
-| **Alkalmazandó technológiák** | Általános |
+| **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
-| **Hivatkozások**              | [IdentityServer3 - kulcsokat, aláírás és titkosítás](https://identityserver.github.io/Documentation/docsv2/configuration/crypto.html), [IdentityServer3 - telepítés](https://identityserver.github.io/Documentation/docsv2/advanced/deployment.html) |
-| **Lépések** | Alapértelmezés szerint a IdentityServer igényli a HTTPS-KAPCSOLATON keresztül elérni az összes bejövő kapcsolat. Feltétlenül kötelező, hogy IdentityServer kommunikáció csak biztonságos átvitelnél keresztül hajtja végre. Nincsenek bizonyos telepítési helyzetekben, például az SSL-feladatkiszervezést, ahol ezt a követelményt mérsékelhető. További információ a hivatkozások a az Identity Serverben telepítési oldal jelenik meg. |
+| **Hivatkozások**              | [IdentityServer3 - kulcsokat, aláírás és titkosítás](https://identityserver.github.io/Documentation/docsv2/configuration/crypto.html), [IdentityServer3 – üzembe helyezés](https://identityserver.github.io/Documentation/docsv2/advanced/deployment.html) |
+| **Lépések** | Alapértelmezés szerint a IdentityServer megköveteli a HTTPS-kapcsolaton keresztül lesz az összes bejövő kapcsolat. Feltétlenül kötelező, hogy csak a biztonságos átvitel IdentityServer folytatott kommunikáció végezték. Vannak bizonyos központi telepítési forgatókönyv például SSL-kiürítés, ahol ezt a követelményt csökkenthető. További információ a hivatkozások az identitás-kiszolgálót üzembe helyezési oldalon talál. |
 
-## <a id="x509-ssltls"></a>Ellenőrizze az X.509 SSL, a TLS és DTLS létesített kapcsolatok hitelesítéséhez használt tanúsítványok
+## <a id="x509-ssltls"></a>Ellenőrizze az X.509 SSL, a TLS és DTLS kapcsolat hitelesítéséhez használt tanúsítványok
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
 | **SDL fázis**               | Felépítés |  
-| **Alkalmazandó technológiák** | Általános |
+| **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
-| **Lépések** | <p>SSL, a TLS és DTLS használó alkalmazások teljesen ellenőrizni kell az entitások csatlakoznak X.509-tanúsítványokat. Ez magában foglalja a tanúsítványok ellenőrzése:</p><ul><li>Tartománynév</li><li>Érvényességi dátumok (kezdő és a lejárati dátum)</li><li>Visszavonási állapotát</li><li>Használat (például kiszolgálóhitelesítéshez kiszolgálók, ügyfelek ügyfél-hitelesítés)</li><li>Megbízhatósági láncában. Egy legfelső szintű hitelesítésszolgáltató (CA), a platform megbízható vagy explicit módon a rendszergazda által konfigurált tanúsítványok programhoz</li><li>A tanúsítvány nyilvános kulcsa kulcshossza > 2048 bit</li><li>Kivonatoló algoritmus kell lennie az SHA256 vagy újabb verzió |
+| **Lépések** | <p>Az SSL, a TLS és DTLS használó alkalmazások teljes ellenőriznie kell az X.509-tanúsítványokat, az entitásokat, amelyekhez csatlakoznak. Ez tartalmazza a tanúsítványok ellenőrzése:</p><ul><li>Tartománynév</li><li>Érvényességi dátum (kezdő és a lejárati dátumok)</li><li>Visszavonás állapota</li><li>Használat (például kiszolgálóhitelesítéshez kiszolgálók, ügyfelek ügyfél-hitelesítés)</li><li>Megbízhatósági láncában. A legfelső szintű hitelesítésszolgáltatót (CA) a platform által megbízhatónak tartott, vagy explicit módon a rendszergazda által konfigurált tanúsítványok programhoz</li><li>Tanúsítvány nyilvános kulcsát a kulcs hosszúsága lehet > 2048 bit</li><li>Kivonatoló algoritmus kell lennie az SHA256 vagy újabb verzió |
 
-## <a id="ssl-appservice"></a>Az egyéni tartomány SSL tanúsítvány konfigurálása az Azure App Service-ben
+## <a id="ssl-appservice"></a>Egyéni tartomány SSL-tanúsítvány konfigurálása az Azure App Service-ben
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
 | **SDL fázis**               | Felépítés |  
-| **Alkalmazandó technológiák** | Általános |
+| **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | EnvironmentType – Azure |
-| **Hivatkozások**              | [HTTPS engedélyezése az alkalmazásoknak az Azure App Service-ben](../app-service/app-service-web-tutorial-custom-ssl.md) |
-| **Lépések** | Alapértelmezés szerint Azure már lehetővé teszi, hogy HTTPS a helyettesítő tanúsítványt minden alkalmazást a *. azurewebsites.net tartományban. Azonban minden helyettesítő karakteres tartományok, például nincs olyan biztonságos, mint az egyéni tartománynév használatával saját tanúsítvánnyal [olvassa el a](https://casecurity.org/2014/02/26/pros-and-cons-of-single-domain-multi-domain-and-wildcard-certificates/). Javasoljuk, hogy az egyéni tartomány, a telepített alkalmazások lesznek elérhetők, keresztül SSL engedélyezése|
+| **Hivatkozások**              | [HTTPS engedélyezése az Azure App Service-alkalmazás](../app-service/app-service-web-tutorial-custom-ssl.md) |
+| **Lépések** | Alapértelmezés szerint az Azure már lehetővé teszi, hogy HTTPS és a egy helyettesítő tanúsítványt minden alkalmazás a *. azurewebsites.net tartomány. Azonban minden helyettesítő karakteres tartományok, mint már nem ugyanolyan biztonságosak, mint az egyéni tartomány használatával saját tanúsítvánnyal [vizsgálatával](https://casecurity.org/2014/02/26/pros-and-cons-of-single-domain-multi-domain-and-wildcard-certificates/). Javasoljuk, hogy az üzembe helyezett alkalmazás érhető el – egyéni tartomány SSL engedélyezése|
 
-## <a id="appservice-https"></a>Az összes forgalom kényszerítheti az Azure App Service HTTPS-kapcsolaton keresztül
+## <a id="appservice-https"></a>Az összes forgalom kényszerített az Azure App Service-HTTPS-kapcsolaton keresztül
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
 | **SDL fázis**               | Felépítés |  
-| **Alkalmazandó technológiák** | Általános |
+| **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | EnvironmentType – Azure |
 | **Hivatkozások**              | [Az Azure App Service HTTPS kényszerítése](../app-service/app-service-web-tutorial-custom-ssl.md#enforce-https) |
-| **Lépések** | <p>Bár az Azure már lehetővé teszi, hogy HTTPS az Azure app Service szolgáltatások helyettesítő tanúsítványt a tartomány *. azurewebsites.net, akkor kényszeríti ki a HTTPS PROTOKOLLT. Látogatók is hozzáférhetnek a HTTP-n, az alkalmazás biztonsági veszélyeztethetik keresztül alkalmazást, és ezért HTTPS rendelkezik explicit módon kikényszerítendő. ASP.NET MVC alkalmazások használhatják a [RequireHttps szűrő](http://msdn.microsoft.com/library/system.web.mvc.requirehttpsattribute.aspx) , amely előírja, hogy egy nem biztonságos HTTP-kérelem újra küldésének HTTPS-KAPCSOLATON keresztül.</p><p>Azt is megteheti az URL-újraíró modult, amely tartalmazza az Azure App Service segítségével HTTPS kényszerítéséhez. URL-újraíró modult lehetővé teszi a fejlesztők olyan szabályok, bejövő kérelmek alkalmazott előtt be kell adni a kérelmek az alkalmazáshoz. URL-újraíró szabályok vannak meghatározva, a web.config fájlban tárolja az alkalmazás gyökérkönyvtárában</p>|
+| **Lépések** | <p>Bár az Azure már lehetővé teszi, hogy HTTPS az Azure app services helyettesítő tanúsítványt a tartomány *. azurewebsites.NET webhelyet, nem tesszük kötelezővé a HTTPS. Látogatók továbbra is hozzáférhetnek a HTTP-n keresztül veszélyeztethetik a az alkalmazás biztonsági alkalmazás, és ezért a HTTPS explicit módon léptethetők rendelkezik. ASP.NET MVC-alkalmazások használhatják a [RequireHttps szűrő](http://msdn.microsoft.com/library/system.web.mvc.requirehttpsattribute.aspx) , amely előírja, hogy újra küldésének HTTPS-kapcsolaton keresztül nem titkosított HTTP-kérelem.</p><p>Másik lehetőségként az URL-újraíró modult, amely tartalmazza az Azure App Service segítségével HTTPS kényszerítése. URL-újraíró modult lehetővé teszi a fejlesztők előtt be kell adni a kérelmeket az alkalmazás bejövő kérelmek alkalmazott szabályok meghatározásához. Az URL Rewrite-szabályok határozzák meg a web.config fájlban tárolja az alkalmazás</p>|
 
 ### <a name="example"></a>Példa
-Az alábbi példa tartalmaz URL-újraíró egy egyszerű szabályt, amely arra kényszeríti a HTTPS PROTOKOLLT használó minden bejövő forgalom
+Az alábbi példa tartalmazza az URL-újraíró egy egyszerű szabályt, amely arra kényszeríti a teljes bejövő forgalom HTTPS használatára
 ```XML
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
@@ -135,73 +135,73 @@ Az alábbi példa tartalmaz URL-újraíró egy egyszerű szabályt, amely arra k
   </system.webServer>
 </configuration>
 ```
-Ez a szabály működik vissza egy HTTP-állapotkód 301 (Állandó átirányítás), amikor a felhasználó kéri egy lap HTTP-n keresztül. A 301 átirányítja a kérést a kért látogató azonos URL-címre, de a kérelem HTTP részét lecseréli HTTPS. Például HTTP://contoso.com átirányítják HTTPS://contoso.com. 
+Ez a szabály működik visszaadó HTTP-állapotkód 301 (Állandó átirányítás), amikor a felhasználó igényel-e egy oldal, HTTP-n keresztül. A 301 átirányítja a kérést a kért a látogató ugyanazon URL-címre, de a HTTP-alapú részéhez, a kérelem cseréli a HTTPS. Ha például HTTP://contoso.com átirányítják HTTPS://contoso.com. 
 
-## <a id="http-hsts"></a>HTTP szigorú a Transport Security (HSTS) engedélyezése
+## <a id="http-hsts"></a>HTTP szigorú Transport Security (HSTS) engedélyezése
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
 | **SDL fázis**               | Felépítés |  
-| **Alkalmazandó technológiák** | Általános |
+| **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
-| **Hivatkozások**              | [OWASP HTTP szigorú a Transport Security Cheat lap](https://www.owasp.org/index.php/HTTP_Strict_Transport_Security_Cheat_Sheet) |
-| **Lépések** | <p>HTTP szigorú átviteli biztonsági (HSTS) olyan biztonsági opt-in fejlesztések, amelyek egy adott webalkalmazás révén egy különleges válaszfejléc van megadva. Miután egy támogatott böngésző megkapja ezt a fejlécet, hogy a böngésző megakadályozza, hogy a megadott tartományhoz HTTP Protokollon keresztül küldött összes kommunikációt, és ehelyett küldi a kommunikáció minden esetben HTTPS PROTOKOLLON keresztül. Megakadályozza a HTTPS kattintson Rákérdezés a böngészők keresztül is.</p><p>HSTS végrehajtásához a következő válaszfejléc ki konfigurálni egy webhely globálisan, a kódban, vagy a konfigurációban. Strict-átviteli-biztonsági: maximális-életkora = 300; includeSubDomains HSTS megoldást a következő fenyegetések:</p><ul><li>Felhasználói könyvjelzők, vagy manuálisan típusok http://example.com és a-átjárójának támadók hatálya alá tartozik: HSTS automatikusan átirányítja a cél tartomány HTTPS a HTTP-kérelmek</li><li>Célja, hogy csak HTTPS webes alkalmazás HTTP hivatkozásokat tartalmaz, vagy HTTP-kapcsolaton keresztül tartalmat szolgáltat: HSTS automatikusan átirányítja a cél tartomány HTTPS a HTTP-kérelmek</li><li>Egy-átjárójának támadó megpróbálja intercept érvénytelen tanúsítványt használó áldozata felhasználó érkező forgalmat, és a felhasználó elfogadja a hibás tanúsítvány reméli: HSTS nem engedélyezi a felhasználó az érvénytelen tanúsítványt üzenet felülbírálására</li></ul>|
+| **Hivatkozások**              | [OWASP HTTP szigorú Transport Security – Adatlap](https://www.owasp.org/index.php/HTTP_Strict_Transport_Security_Cheat_Sheet) |
+| **Lépések** | <p>HTTP szigorú Transport Security (HSTS) egy választható biztonsági fejlesztések révén egy különleges válaszfejléc webalkalmazás által meghatározott. Miután egy támogatott böngésző megkapja ezt a fejlécet, hogy a böngésző megakadályozza a minden kommunikáció HTTP-n keresztül a megadott tartományba küldött, és inkább küld minden kommunikáció HTTPS-kapcsolaton keresztül. Megakadályozza a HTTPS kattintson keresztül a böngészőkben utasításokat is.</p><p>HSTS megvalósításához, a következő válaszfejléc kell konfigurálni egy webhely globálisan, vagy a kód vagy a konfigurációs van. Szigorú-átviteli – biztonság: a max-age = 300; includeSubDomains HSTS megoldást a következő szemben:</p><ul><li>Felhasználói könyvjelzőket, vagy manuálisan típusok http://example.com , és a egy man-in-the-middle támadó használatára: HSTS automatikusan átirányítja a célként megadott tartomány HTTPS a HTTP-kérelmekre</li><li>Webalkalmazást, amely a célja, hogy csak HTTPS lehet véletlenül HTTP hivatkozásokat tartalmaz, vagy a HTTP-kapcsolaton keresztül tartalmat szolgál ki: HSTS automatikusan átirányítja a célként megadott tartomány HTTPS a HTTP-kérelmekre</li><li>Egy man-in-the-middle támadó próbál intercept érvénytelen tanúsítványt használó victim felhasználó érkező forgalmat, és a felhasználó elfogadja a hibás tanúsítvány reméli: HSTS nem engedélyezi a felhasználó felülbírálhatja a tanúsítvány érvénytelen üzenet</li></ul>|
 
-## <a id="sqlserver-validation"></a>Ellenőrizze az SQL server-kapcsolat titkosítási és a tanúsítvány érvényesítése
+## <a id="sqlserver-validation"></a>Győződjön meg, hogy az SQL server-kapcsolat titkosítási és a tanúsítvány érvényesítése
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Adatbázis | 
 | **SDL fázis**               | Felépítés |  
-| **Alkalmazandó technológiák** | SQL Azure  |
+| **Megfelelő technológiák** | SQL Azure  |
 | **Attribútumok**              | SQL-verzió - 12-es verzió |
-| **Hivatkozások**              | [Gyakorlati tanácsok írása a biztonságos kapcsolati karakterláncok SQL-adatbázis](http://social.technet.microsoft.com/wiki/contents/articles/2951.windows-azure-sql-database-connection-security.aspx#best) |
-| **Lépések** | <p>SQL-adatbázis és az ügyfél alkalmazás közötti minden kommunikáció titkosítása mindig Secure Sockets Layer (SSL) használatával. SQL-adatbázis nem támogatja a titkosított kapcsolatokat. Az alkalmazás kódja vagy eszközök tanúsítványok érvényesítésére, explicit módon titkosított kapcsolatot kér, és nem bízik meg a kiszolgálói tanúsítványokat. Az alkalmazás kódja vagy az eszközök nem kérő titkosított kapcsolatot, ha azok még megérkeznek a titkosított kapcsolatokat</p><p>Azonban előfordulhat, hogy érvényesíteni a kiszolgálói tanúsítványokat, és így lesz téve a "man a középső" támadások. Az ADO.NET alkalmazáskód tanúsítványok érvényesítésére, állítsa be `Encrypt=True` és `TrustServerCertificate=False` az adatbázis-kapcsolati karakterláncot. SQL Server Management Studio segítségével tanúsítványok ellenőrzéséhez nyissa meg a kiszolgáló párbeszédpanel csatlakozás. Kattintson a kapcsolat titkosítása a kapcsolat tulajdonságai lapon</p>|
+| **Hivatkozások**              | [Ajánlott eljárásokat az írásos biztonságos kapcsolati karakterláncok SQL Database-hez](http://social.technet.microsoft.com/wiki/contents/articles/2951.windows-azure-sql-database-connection-security.aspx#best) |
+| **Lépések** | <p>Az SQL Database és az ügyfélalkalmazások közötti minden kommunikáció mindig Secure Sockets Layer (SSL) segítségével titkosítja. Az SQL Database nem támogatja a nem titkosított kapcsolatokat. Tanúsítványok alkalmazáskódban vagy eszközök ellenőrzéséhez, explicit módon titkosított kapcsolatot kérjen, és nem megbízható kiszolgálói tanúsítványok. Ha az alkalmazás kódja vagy eszközök egy titkosított kapcsolatot kér, továbbra is kapja titkosított kapcsolatokat</p><p>Azonban nem lehet érvényesíteni a kiszolgálói tanúsítványok, és ezért lesz téve a "közbeékelődéses" támadások. Az ADO.NET alkalmazáskóddal tanúsítványok érvényesítésére, állítsa be `Encrypt=True` és `TrustServerCertificate=False` az adatbázis-kapcsolati karakterláncot. Tanúsítványokat bocsát ki az SQL Server Management Studio ellenőrzéséhez nyissa meg a Csatlakozás kiszolgálóhoz párbeszédpanel. Kapcsolat titkosítása a kapcsolat tulajdonságai lapon kattintson a</p>|
 
-## <a id="encrypted-sqlserver"></a>Kényszerített titkosított kommunikációt az SQL-kiszolgálón
+## <a id="encrypted-sqlserver"></a>Az SQL server titkosított kommunikáció kényszerítése
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Adatbázis | 
 | **SDL fázis**               | Felépítés |  
-| **Alkalmazandó technológiák** | A helyi üzemeltetésű |
-| **Attribútumok**              | SQL verzió - MsSQL2016, SQL - MsSQL2012, SQL verzió - verzió MsSQL2014 |
-| **Hivatkozások**              | [Engedélyezze a titkosított kapcsolatokat az adatbázismotorhoz való csatlakozáshoz](https://msdn.microsoft.com/library/ms191192)  |
-| **Lépések** | SSL engedélyezése titkosítás növeli a hálózatokon, SQL Server-példány és az alkalmazások között továbbított adatok biztonsága érdekében. |
+| **Megfelelő technológiák** | Rendszert |
+| **Attribútumok**              | Az SQL verziója – MsSQL2016, SQL - MsSQL2012, SQL-verzió - verzió MsSQL2014 |
+| **Hivatkozások**              | [Az adatbázismotor titkosított kapcsolat engedélyezése](https://msdn.microsoft.com/library/ms191192)  |
+| **Lépések** | SSL engedélyezése titkosítás növeli az SQL Server példányai és az alkalmazások közötti hálózatokon keresztül továbbított adatok biztonsága érdekében. |
 
-## <a id="comm-storage"></a>Győződjön meg arról, hogy Azure Storage kommunikáció HTTPS-KAPCSOLATON keresztül
+## <a id="comm-storage"></a>Gondoskodjon arról, hogy az Azure Storage-kommunikáció HTTPS-kapcsolaton keresztül
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Azure Storage | 
 | **SDL fázis**               | Környezet |  
-| **Alkalmazandó technológiák** | Általános |
+| **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
-| **Hivatkozások**              | [Az Azure Storage átviteli szintű titkosítást – HTTPS-kapcsolaton keresztül](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_encryption-in-transit) |
-| **Lépések** | Az Azure Storage adatok az átvitel közbeni védelme érdekében mindig a HTTPS protokollt használják, amikor tárolási objektumokat a REST API-k hívása vagy eléréséhez. Emellett megosztott hozzáférési aláírásokkal, amely használható a delegálása az Azure Storage-objektumokhoz való hozzáférést, tartalmaznak, adja meg, hogy csak a HTTPS protokollt használja, megosztott hozzáférési aláírásokkal, győződjön meg arról, hogy küldje el a SAS-tokenje hivatkozások használ használatakor a megfelelő protokollt.|
+| **Hivatkozások**              | [Az Azure Storage átviteli szintű titkosítást – HTTPS-en keresztül](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_encryption-in-transit) |
+| **Lépések** | Ahhoz, hogy az Azure Storage adatok átvitel biztonságát, mindig a HTTPS protokollt használja, ha a REST API-k hívása, vagy fér hozzá az objektumok tárolására. Adja meg, hogy csak a HTTPS protokollt használja, közös hozzáférésű Jogosultságkódokat, biztosítva, hogy bárki küldi ki az SAS-tokeneket hivatkozásokat használja használata esetén lehetőség felvételére is a közös hozzáférésű Jogosultságkódokat, amely használható delegálása az Azure Storage-objektumokhoz való hozzáférést, a megfelelő protokoll.|
 
-## <a id="md5-https"></a>MD5 kivonatoló érvényesítése után blob letöltése, ha HTTPS nem engedélyezhető.
+## <a id="md5-https"></a>Blob letöltése, ha nem lehet engedélyezni a HTTPS után MD5-kivonat ellenőrzése
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Azure Storage | 
 | **SDL fázis**               | Felépítés |  
-| **Alkalmazandó technológiák** | Általános |
+| **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | StorageType - Blob |
-| **Hivatkozások**              | [A Windows Azure-blobot MD5 áttekintése](https://blogs.msdn.microsoft.com/windowsazurestorage/2011/02/17/windows-azure-blob-md5-overview/) |
-| **Lépések** | <p>Windows Azure Blob szolgáltatás biztosítja az adatok sértetlenségét, mind az alkalmazás és a szállítási réteg mechanizmusokat biztosít. Ha bármilyen okból kell használni a HTTP helyett HTTPS és a blokkblobokhoz dolgozik, használhatja MD5 ellenőrzése érdekében ellenőrizni az átvitel során a blobok</p><p>Ez segít hálózati transport layer hibák elleni védelem, de nem feltétlenül közvetítő támadások. Ha a HTTPS-t, amely átvitelszintű biztonság, akkor használja, MD5 ellenőrzése redundáns és szükségtelen is használhatja.</p>|
+| **Hivatkozások**              | [Windows Azure-Blobba MD5 – áttekintés](https://blogs.msdn.microsoft.com/windowsazurestorage/2011/02/17/windows-azure-blob-md5-overview/) |
+| **Lépések** | <p>Windows Azure Blob szolgáltatás biztosítja az adatok sértetlenségét mind az alkalmazás és az átviteli réteg mechanizmusokat biztosít. Ha bármilyen okból kell használni a HTTP helyett HTTPS és a blokkblobok dolgozik, használhatja MD5-ellenőrzést a folyamatban lévő átvitelben érintett blobok sértetlenségének ellenőrzése érdekében</p><p>Ez akkor hasznos, hálózati transport layer hibák elleni védelem, de nem feltétlenül köztes támadások. Ha a HTTPS, amely lehetővé teszi a biztonság, akkor az MD5-ellenőrzést használata redundáns és szükségtelen is használhatja.</p>|
 
-## <a id="smb-shares"></a>Az SMB 3.0 kompatibilis ügyfél használatával biztosíthatja a Azure fájlmegosztásokat adatok az átvitel közbeni titkosítás
+## <a id="smb-shares"></a>Győződjön meg, hogy az átvitel közbeni adatok titkosítását az Azure-fájlmegosztások az SMB 3.0 kompatibilis ügyfél használatával
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Mobileszköz ügyfél | 
 | **SDL fázis**               | Felépítés |  
-| **Alkalmazandó technológiák** | Általános |
+| **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | StorageType - fájl |
-| **Hivatkozások**              | [Az Azure File Storage](https://azure.microsoft.com/blog/azure-file-storage-now-generally-available/#comment-2529238931), [az Azure File Storage SMB támogatása a Windows-ügyfelek](https://azure.microsoft.com/documentation/articles/storage-dotnet-how-to-use-files/#_mount-the-file-share) |
-| **Lépések** | Az Azure File Storage támogatja a HTTPS PROTOKOLLT, ha a REST API használatával, de több általánosan használt SMB-fájlmegosztás a virtuális Géphez van csatolva. SMB 2.1 nem támogatja a titkosítást, tehát kapcsolatokat csak az Azure-ban ugyanabban a régióban belül engedélyezett. Azonban az SMB 3.0 támogatja a titkosítást, és használható a Windows Server 2012 R2, Windows 8, Windows 8.1 és Windows 10, lehetővé téve a kereszt-régió eléréséhez, és akkor is igaz, az asztalon hozzáférést. |
+| **Hivatkozások**              | [Az Azure File Storage](https://azure.microsoft.com/blog/azure-file-storage-now-generally-available/#comment-2529238931), [az Azure File Storage SMB-támogatás Windows ügyfelek](https://azure.microsoft.com/documentation/articles/storage-dotnet-how-to-use-files/#_mount-the-file-share) |
+| **Lépések** | Az Azure File Storage támogatja a HTTPS, a REST API használata esetén, de több gyakran használt SMB-fájlmegosztás a virtuális Géphez van csatlakoztatva. SMB 2.1 nem támogatja a titkosítást, így a kapcsolatokat csak engedélyezett ugyanabban a régióban az Azure-ban. Azonban az SMB 3.0-s támogatja a titkosítást, és használható a Windows Server 2012 R2, Windows 8, Windows 8.1 és Windows 10-es, amely lehetővé teszi a régiók közötti eléréséhez, és akkor is hozzáférést, az asztalon. |
 
 ## <a id="cert-pinning"></a>Tanúsítvány rögzítését megvalósítása
 
@@ -209,10 +209,10 @@ Ez a szabály működik vissza egy HTTP-állapotkód 301 (Állandó átirányít
 | ----------------------- | ------------ |
 | **Összetevő**               | Azure Storage | 
 | **SDL fázis**               | Felépítés |  
-| **Alkalmazandó technológiák** | Általános, Windows Phone |
+| **Megfelelő technológiák** | Általános, Windows Phone |
 | **Attribútumok**              | –  |
-| **Hivatkozások**              | [A tanúsítvány és nyilvános kulcs rögzítése](https://www.owasp.org/index.php/Certificate_and_Public_Key_Pinning#.Net) |
-| **Lépések** | <p>Tanúsítvány rögzítését defends-átjárójának (MITM) támadások ellen. Rögzítési a rendszer a gazdagép társítva a várt X509 tanúsítvány vagy nyilvános kulcs. Miután a tanúsítvány nyilvános kulcs ismert vagy állomás látható, a tanúsítvány nyilvános kulcs társított, vagy "rögzített" a gazdagép. </p><p>Ebből kifolyólag során az ellenfél megkísérli SSL MITM támadás tegye, SSL-kézfogás során a támadó kiszolgálóról a kulcsot a rögzített tanúsítvány kulcsa eltérő lesz és a kérelmet a rendszer elveti, megelőzve MITM tanúsítvány rögzítését érhető el a ServicePointManager a végrehajtási `ServerCertificateValidationCallback` delegálni.</p>|
+| **Hivatkozások**              | [Tanúsítvány és nyilvános kulcs rögzítése](https://www.owasp.org/index.php/Certificate_and_Public_Key_Pinning#.Net) |
+| **Lépések** | <p>Tanúsítvány rögzítését lelt Man-In-The-Middle (MITM) támadások ellen. Rögzítés a rendszer egy gazdagép társítása a várt X509 tanúsítvánnyal vagy nyilvános kulccsal. Miután a tanúsítvány vagy a nyilvános kulcsok ismert vagy egy gazdagép látható, a tanúsítvány vagy a nyilvános kulcs kapcsolódó vagy a gazdagép "rögzített". </p><p>Amikor egy támadó megpróbál tegye SSL MITM támadásokkal szemben, SSL-kézfogás során a támadó kiszolgálóról a kulcsot a rögzített tanúsítvány kulcsa, eltérő lesz és a kérést a rendszer elveti, megelőzve MITM tanúsítvány rögzítését érhető el végrehajtási ServicePointManager a `ServerCertificateValidationCallback` delegálására.</p>|
 
 ### <a name="example"></a>Példa
 ```csharp
@@ -280,30 +280,30 @@ namespace CertificatePinningExample
 }
 ```
 
-## <a id="https-transport"></a>Engedélyezze a HTTPS - az átviteli csatornát
+## <a id="https-transport"></a>HTTPS engedélyezése – biztonságos átvitel csatorna
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | WCF | 
 | **SDL fázis**               | Felépítés |  
-| **Alkalmazandó technológiák** | NET-keretrendszer 3 |
+| **Megfelelő technológiák** | 3. NET-keretrendszer |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [erősítse meg Királyság](https://vulncat.fortify.com/en/detail?id=desc.semantic.dotnet.wcf_misconfiguration_transport_security_enabled) |
-| **Lépések** | Az alkalmazás konfigurációjának meg kell győződnie arról, hogy HTTPS PROTOKOLLT használja a bizalmas adatokat az elérésére.<ul><li>**Magyarázat:** Ha egy alkalmazás kezeli a bizalmas adatokat, és üzenet szintű titkosítást használ, akkor azt csak akkor engedélyezhető egy átviteli titkosított csatornán keresztül kommunikálnak.</li><li>**JAVASLATOK:** győződjön meg arról, hogy a HTTP-átvitel le van tiltva, és engedélyezze a HTTPS átviteli protokoll helyett. Helyettesítse be például a `<httpTransport/>` rendelkező `<httpsTransport/>` címke. Ne használja a hálózati konfigurációt (tűzfal) garantálja, hogy az alkalmazás csak elérhető egy biztonságos csatornán keresztül. Az alkalmazás világnézeti szempontból nem függ a hálózat és a biztonságot.</li></ul><p>A gyakorlati szempontjából a hálózat védelme felelős személyek mindig követi nyomon az alkalmazás biztonsági követelményeinek, azok fejleszteni.</p>|
+| **Lépések** | Az alkalmazás konfigurációjában kell győződjön meg arról, hogy bizalmas adatokat az elérésére használja a HTTPS.<ul><li>**Magyarázat:** egy alkalmazás kezeli a bizalmas adatokat, és üzenet szintű titkosítást használ, akkor azt csak akkor engedélyezhető egy átviteli titkosított csatornán keresztül kommunikálnak.</li><li>**JAVASLATOK:** győződjön meg arról, hogy a HTTP-n le van tiltva, és engedélyezze a HTTPS átviteli helyette. Helyettesítse be például a `<httpTransport/>` az `<httpsTransport/>` címke. Ne támaszkodjon kizárólag egy hálózati konfigurációt (tűzfal) garantálja, hogy az alkalmazás csak biztonságos csatornán keresztül elérhetők. Egy világnézeti szempontjából az alkalmazás nem szabad függenie a hálózat és a biztonságot.</li></ul><p>A gyakorlati szempontjából a hálózat biztonságának beállítása felelős személyek nem mindig követik nyomon az alkalmazás biztonsági követelményeinek megfelelően Modellezhet.</p>|
 
-## <a id="message-protection"></a>WCF: Set Message biztonsági EncryptAndSign és védelmi szint
+## <a id="message-protection"></a>A WCF: Set Message biztonsági EncryptAndSign és védelmi szint
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | WCF | 
 | **SDL fázis**               | Felépítés |  
-| **Alkalmazandó technológiák** | .NET-keretrendszer 3 |
+| **Megfelelő technológiák** | .NET-keretrendszer 3 |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [MSDN](https://msdn.microsoft.com/library/ff650862.aspx) |
-| **Lépések** | <ul><li>**Magyarázat:** Ha a védelmi szintje "none" az üzenet védelmi letiltja. Titkosítás és integritásának megfelelő szintű beállítás érhető el.</li><li>**JAVASLATOK:**<ul><li>Ha `Mode=None` -üzenet védelem letiltása</li><li>Ha `Mode=Sign` -jeleket azonban nem titkosítja az üzenetet; kell használni, amikor az adatok integritásának fontos</li><li>Ha `Mode=EncryptAndSign` -jelek és titkosítja az üzenetet</li></ul></li></ul><p>Fontolja meg a titkosítási kikapcsolása, és csak az üzenetet aláíró, ha csupán be kell semmiképp bizalmas adatok integritásának ellenőrzését. Ez akkor lehet hasznos, a műveletek vagy szolgáltatási szerződések, amely az eredeti küldő érvényesítenie kell, de nem bizalmas adatai átkerülnek a. Ha a védelmi szint csökkentését, ügyeljen arra, hogy az üzenet nem tartalmaz személyazonosításra alkalmas adatok (PII).</p>|
+| **Lépések** | <ul><li>**Magyarázat:** , amikor a védelem szintje "none", letiltja az üzenet védelmet. Titkosítás és a kódintegritási beállítás megfelelő szinten érhető el.</li><li>**JAVASLATOK:**<ul><li>Amikor `Mode=None` -üzenetet a védelem letiltása</li><li>Amikor `Mode=Sign` -jelentkezik azonban nem titkosítja az üzenetet; kell használni, amikor a fontos adatok integritásának megőrzése</li><li>Amikor `Mode=EncryptAndSign` -tünetek és titkosítja az üzenetet</li></ul></li></ul><p>Fontolja meg a titkosítási kikapcsolásával, és csak aláírási az üzenetet, amikor csak szüksége van semmiképp sem bizalmas adatok integritásának ellenőrzését. Ez akkor lehet hasznos műveletek vagy szolgáltatási szerződések érvényesítenie kell az eredeti küldő, de nem bizalmas adatok átvitele. Ha a védelmi szint csökkentését, ügyeljen arra, hogy az üzenet nem tartalmaz személyazonosításra alkalmas adatokat (PII).</p>|
 
 ### <a name="example"></a>Példa
-A következő példákban látható konfigurálása a szolgáltatás és a művelet csak alá az üzenetet. Szolgáltatási szerződés példa `ProtectionLevel.Sign`: az alábbiakban található a szolgáltatási szerződés szinten ProtectionLevel.Sign használatának példája: 
+A szolgáltatás és a művelet csak alá az üzenetet konfigurálása a következő példákban látható. Szolgáltatási szerződés példa `ProtectionLevel.Sign`: A következő egy példa a szolgáltatási szerződés szintjén ProtectionLevel.Sign használatával: 
 ```
 [ServiceContract(Protection Level=ProtectionLevel.Sign] 
 public interface IService 
@@ -313,37 +313,37 @@ public interface IService
 ```
 
 ### <a name="example"></a>Példa
-Művelet szerződés példa `ProtectionLevel.Sign` (a tanúsítványhasználat pontos szabályzása): az alábbiakban egy példa annak `ProtectionLevel.Sign` OperationContract szinten:
+Művelet szerződés példa `ProtectionLevel.Sign` (a szabályozható): az alábbiakban egy példát a `ProtectionLevel.Sign` OperationContract szinten:
 
 ```
 [OperationContract(ProtectionLevel=ProtectionLevel.Sign] 
 string GetData(int value);
 ``` 
 
-## <a id="least-account-wcf"></a>WCF: Legkevésbé jogosultsági szintű fiók használata a WCF-szolgáltatás futtatásához
+## <a id="least-account-wcf"></a>A WCF: Egy alacsonyabb szintű fiók használata a WCF-szolgáltatás futtatásához
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | WCF | 
 | **SDL fázis**               | Felépítés |  
-| **Alkalmazandó technológiák** | .NET-keretrendszer 3 |
+| **Megfelelő technológiák** | .NET-keretrendszer 3 |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [MSDN](https://msdn.microsoft.com/library/ff648826.aspx ) |
-| **Lépések** | <ul><li>**Magyarázat:** admin vagy magas jogosultsági fiókkal WCF-szolgáltatások nem futnak. szolgáltatások biztonsági sérülés esetén nagy jelentőségű eredményez.</li><li>**JAVASLATOK:** gazdagéphez a WCF-szolgáltatást, mert az alkalmazás támadási felület csökkentése, és csökkentheti a fellépő potenciális károknak, ha vannak megtámadott legkevésbé jogosultsági szintű fiók használata. Ha a fiók infrastruktúra erőforrások, például a MSMQ, az eseménynaplóban, teljesítményszámlálók és a fájlrendszerben további hozzáférési jogosultságra van szüksége, megfelelő engedélyeket biztosítani kell ezeket az erőforrásokat, hogy a WCF-szolgáltatás sikeresen futtathatók.</li></ul><p>Ha a szolgáltatás egy adott erőforráshoz nevében az eredeti hívó hozzáférésre van szüksége, segítségével megszemélyesítés és a delegálás flow egy alsóbb rétegbeli engedélyezési, ellenőrizze a hívó identitását. A fejlesztési forgatókönyvek használja a helyi hálózati szolgáltatás fiók, amely speciális beépített fiók, amely korlátozott jogosultsággal rendelkezik. Egy éles telepítési forgatókönyvhöz hozzon létre egy egyéni legkevésbé jogosultsági szintű tartományi szolgáltatásfiókot.</p>|
+| **Lépések** | <ul><li>**Magyarázat:** rendszergazdai vagy a magas jogosultságú fiók a WCF-szolgáltatások nem futnak. szolgáltatások biztonsági sérülés esetén nagy hatású eredményez.</li><li>**JAVASLATOK:** gazdagépre a WCF-szolgáltatást, mivel az alkalmazás támadási felület csökkentése, és csökkentheti a potenciális károknak, ha vannak megtámadott alacsonyabb szintű fiók használatára. Ha a szolgáltatás fiók van szüksége további hozzáférési jogok infrastruktúra-erőforrások, például az MSMQ, az Eseménynapló, teljesítményszámlálók és a fájlrendszerhez, megfelelő engedélyeket kell megadni az ezekhez az erőforrásokhoz, hogy a WCF szolgáltatás sikeresen futtatható.</li></ul><p>Ha a szolgáltatás nevében az eredeti hívó erőforrásoknál hozzáférésre van szüksége, használja megszemélyesítés és a delegálási áramlanak a hívójának identitását az alsóbb rétegbeli engedélyezési ellenőrzésére. Egy alkalmazásfejlesztési forgatókönyvet használja a helyi hálózati szolgáltatásfiók – amelyet a speciális beépített fiók, amely korlátozott jogosultsággal rendelkezik. Éles forgatókönyvekben hozzon létre egy egyéni tartomány alacsonyabb szintű szolgáltatásfiókot.</p>|
 
-## <a id="webapi-https"></a>Az összes forgalom kényszerítése a webes API-k való HTTPS-kapcsolaton keresztül
+## <a id="webapi-https"></a>Összes forgalom kényszerített webes API-k HTTPS-kapcsolaton keresztül
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Webes API | 
 | **SDL fázis**               | Felépítés |  
-| **Alkalmazandó technológiák** | MVC5, MVC6 |
+| **Megfelelő technológiák** | MVC5, MVC6 |
 | **Attribútumok**              | –  |
-| **Hivatkozások**              | [A webes API-vezérlőben SSL kényszerítése](http://www.asp.net/web-api/overview/security/working-with-ssl-in-web-api) |
-| **Lépések** | Ha egy alkalmazás egy HTTPS- és a HTTP-kötést, az ügyfelek továbbra is használhatja HTTP a webhelyhez való hozzáféréshez. Ennek megelőzése érdekében egy művelet szűrő használatával győződjön meg arról, hogy védett API-k kérelmek mindig HTTPS-KAPCSOLATON keresztül.|
+| **Hivatkozások**              | [A webes API-vezérlő SSL kényszerítése](http://www.asp.net/web-api/overview/security/working-with-ssl-in-web-api) |
+| **Lépések** | Ha egy alkalmazás egy HTTPS- és a egy HTTP-kötést, az ügyfelek továbbra is használhatja a HTTP hozzáférhetnek a webhelyhez. Ennek megelőzése érdekében egy művelet szűrő használatával győződjön meg arról, hogy védett API-kérések mindig HTTPS-kapcsolaton keresztül.|
 
 ### <a name="example"></a>Példa 
-A következő kód bemutatja egy webes API hitelesítési szűrő, amely ellenőrzi az SSL-hez: 
+A következő kód bemutatja egy webes API-t hitelesítési szűrő, amely ellenőrzi az SSL-hez: 
 ```csharp
 public class RequireHttpsAttribute : AuthorizationFilterAttribute
 {
@@ -363,7 +363,7 @@ public class RequireHttpsAttribute : AuthorizationFilterAttribute
     }
 }
 ```
-Ez a szűrő hozzáadása a webes API-műveleteket, SSL megkövetelése: 
+Adja hozzá ezt a szűrőt minden olyan webes API-műveletek, amely az SSL használatának megkövetelése: 
 ```csharp
 public class ValuesController : ApiController
 {
@@ -372,37 +372,37 @@ public class ValuesController : ApiController
 }
 ```
  
-## <a id="redis-ssl"></a>Győződjön meg arról, hogy Azure Redis Cache kommunikáció SSL-en keresztül
+## <a id="redis-ssl"></a>Gondoskodjon arról, hogy az Azure Redis Cache kommunikáció SSL-en keresztül
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Azure Redis Cache | 
 | **SDL fázis**               | Felépítés |  
-| **Alkalmazandó technológiák** | Általános |
+| **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
-| **Hivatkozások**              | [Azure Redis SSL-támogatás](https://azure.microsoft.com/documentation/articles/cache-faq/#when-should-i-enable-the-non-ssl-port-for-connecting-to-redis) |
-| **Lépések** | Redis kiszolgáló nem támogatja az SSL arculata azonban Azure Redis Cache nem. Ha az Azure Redis Cache csatlakozik, és az ügyfél támogatja az SSL, például a StackExchange.Redis, akkor SSL kell használnia. Nem SSL port az új Azure Redis Cache példány alapértelmezés szerint le van tiltva. Győződjön meg arról, hogy a biztonságos alapértelmezett értéke, nem módosulnak kivéve, ha egy függőséget az SSL redis-ügyfelek támogatása. |
+| **Hivatkozások**              | [Az Azure redis Cache SSL-támogatás](https://azure.microsoft.com/documentation/articles/cache-faq/#when-should-i-enable-the-non-ssl-port-for-connecting-to-redis) |
+| **Lépések** | Redis Cache kiszolgáló nem támogatja az SSL beépített, de az Azure Redis Cache nem. Ha az Azure Redis Cache csatlakozik, és az ügyfél támogatja az SSL-t, például a StackExchange.Redis, akkor SSL kell használnia. Alapértelmezés szerint nem SSL port le van tiltva az új Azure Redis Cache-példányokban. Győződjön meg arról, hogy biztonságos alapértelmezett beállítást, nem módosulnak, ha nincs függőség az SSL-támogatás a redis-ügyfelek számára. |
 
-Vegye figyelembe, hogy a Redis célja, hogy megbízható ügyfelek megbízható környezetek belül érhető el. Ez azt jelenti, hogy általában nem érdemes teszi közzé a Redis-példány közvetlenül az internethez vagy, általában a nem megbízható ügyfelek ahol közvetlenül hozzáférhetnek a Redis TCP-port vagy a UNIX szoftvercsatorna-alapú környezethez. 
+Vegye figyelembe, hogy a Redis célja, hogy a belső megbízható környezetek megbízható ügyfelek számára érhető el. Ez azt jelenti, hogy általában nem érdemes közvetlenül az internethez vagy, általában nem megbízható ügyfeleket ahol közvetlenül hozzáférhet a Redis TCP-port vagy a UNIX-szoftvercsatorna-környezetben a Redis-példány elérhetővé. 
 
-## <a id="device-field"></a>Biztonságos eszköz és a mező átjáró közötti kommunikáció
+## <a id="device-field"></a>Eszköz biztonságossá tételéhez és a helyszíni átjárók közötti kommunikációhoz
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
-| **Összetevő**               | Az IoT-mező átjáró | 
+| **Összetevő**               | IoT helyszíni átjáró | 
 | **SDL fázis**               | Felépítés |  
-| **Alkalmazandó technológiák** | Általános |
+| **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
-| **Lépések** | IP-alapú eszközök esetén a kommunikációs protokollt általában sikerült kell beágyazva egy SSL/TLS-csatorna az adatok védelmére átvitel. Egyéb protokollok, amelyek nem támogatják az SSL/TLS vizsgálja meg, hogy a protokoll, amely biztonsági transport vagy üzenet rétegben biztonságos verziója van. |
+| **Lépések** | IP-alapú eszközök esetén a az adatok védelmére átvitel csatorna SSL/TLS általában a kommunikációs protokoll sikerült beágyazva. Egyéb protokollok, amelyek nem támogatják az SSL/TLS vizsgálja meg, ha biztonságos verziói, a protokoll, amely a szállítási vagy üzenet rétegben biztonságot nyújtanak. |
 
-## <a id="device-cloud"></a>Az átjáró a kommunikációt az SSL/TLS biztonságos eszköz
+## <a id="device-cloud"></a>Biztonságos eszköz és átjáró közötti kommunikációhoz SSL/TLS segítségével
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
-| **Összetevő**               | Az IoT átjáró | 
+| **Összetevő**               | IoT átjáró | 
 | **SDL fázis**               | Felépítés |  
-| **Alkalmazandó technológiák** | Általános |
+| **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
-| **Hivatkozások**              | [Válassza ki a kommunikációs protokollja](https://azure.microsoft.com/documentation/articles/iot-hub-devguide/#messaging) |
-| **Lépések** | Használja az SSL/TLS biztonságos HTTP/AMQP vagy MQTT protokollokat. |
+| **Hivatkozások**              | [A kommunikációs protokoll kiválasztása](https://azure.microsoft.com/documentation/articles/iot-hub-devguide/#messaging) |
+| **Lépések** | HTTP/AMQP és MQTT protokoll használatával SSL/TLS biztonságos. |

@@ -17,12 +17,12 @@ ms.workload: na
 ms.date: 02/02/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 05c88c8938580666ce99f7cae46dc69cda3c3776
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: a57d5f8d857a8cfcdc81e86650466aec740f41e3
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39344698"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43286809"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>A kódot tesztelés az Azure Functions stratégiák
 
@@ -34,9 +34,9 @@ Ez a témakör bemutatja a különböző módszereket teszteléséhez szüksége
 + Időzítő által aktivált függvény
 + Alkalmazás- vagy keretrendszer tesztelése
 
-A tesztelési módszer használata egy HTTP által aktivált függvény, amely bemeneti keresztül vagy a lekérdezési sztring paramétereként, vagy a kérelem törzsében. Ez a függvény hoz létre az első szakaszban.
+A tesztelési módszer használata egy HTTP által aktivált függvény, amely bemeneti keresztül vagy a lekérdezési sztring paramétereként, vagy a kérelem törzsében. Ez a függvény az első szakaszban az Azure portal használatával hoz létre.
 
-## <a name="create-a-function-for-testing"></a>Tesztelési függvény létrehozása
+## <a name="create-a-simple-function-for-testing-using-the-azure-portal"></a>Hozzon létre egy egyszerű függvény tesztelése az Azure portal használatával
 A legtöbb ebben az oktatóanyagban akkor használható, ha létrehoz egy függvényt HttpTrigger JavaScript-függvény sablon kis mértékben módosított verzióját használjuk. Ha egy függvény létrehozása segítségre van szüksége, tekintse át ezt [oktatóanyag](functions-create-first-azure-function.md). Válassza ki a **HttpTrigger - JavaScript** sablon létrehozásakor a teszt függvényt a [Azure Portal].
 
 Az alapértelmezett függvénysablon alapvetően ad vissza a nevét, a kérelem szövegtörzséből vagy a lekérdezési karakterlánc paramétereként, a "hello world" függvény `name=<your name>`.  Frissítjük a kódot is lehetővé teszi, hogy a név és a egy címet, a kérelem törzsében szereplő JSON-tartalmak. A függvény ezután a ezeket újra az ügyfelet, ha elérhető az ad.   

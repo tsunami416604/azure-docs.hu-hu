@@ -1,76 +1,76 @@
 ---
-title: Hibaelhárítás az Azure SQL Data Warehouse |} Microsoft Docs
-description: Hibaelhárítás az Azure SQL Data Warehouse.
+title: Hibaelhárítás az Azure SQL Data warehouse-bA |} A Microsoft Docs
+description: Hibaelhárítás az Azure SQL Data warehouse-bA.
 services: sql-data-warehouse
 author: kevinvngo
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 27445eb754a5e985485db101c9d0fe1ba8aa2451
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: befb4cc075841d45cae769b5ddf924434e65eff3
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31525247"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43307247"
 ---
-# <a name="troubleshooting-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse hibaelhárítása
-Ez a témakör általános hibaelhárítási kérdést.
+# <a name="troubleshooting-azure-sql-data-warehouse"></a>Hibaelhárítás az Azure SQL Data warehouse-bA
+Ez a témakör a gyakori hibaelhárítási kérdések listája.
 
 ## <a name="connecting"></a>Csatlakozás
 | Probléma | Megoldás: |
 |:--- |:--- |
-| "NT AUTHORITY\NÉVTELEN bejelentkezés" felhasználó bejelentkezése sikertelen volt. (A Microsoft SQL Server, hiba: 18456) |Ez akkor fordul elő, amikor egy AAD-felhasználó megpróbál csatlakozni a master adatbázisban, de nem rendelkezik a felhasználó a főadatbázisban.  Ez a probléma elhárításához, vagy adja meg az SQL Data Warehouse kapcsolat időpontban csatlakozni, vagy vegye fel a felhasználót a fő adatbázist kíván.  Lásd: [biztonsági áttekintése] [ Security overview] cikkben olvashat. |
-| A kiszolgáló egyszerű "sajátfelhasználónév" nincs hozzáférhetnek a "fő" adatbázis aktuális biztonsági környezetében. Nem lehet megnyitni a felhasználói alapértelmezett adatbázist. A bejelentkezés nem sikerült. "Sajátfelhasználónév" felhasználó bejelentkezése sikertelen volt. (A Microsoft SQL Server, hiba: 916) |Ez akkor fordul elő, amikor egy AAD-felhasználó megpróbál csatlakozni a master adatbázisban, de nem rendelkezik a felhasználó a főadatbázisban.  Ez a probléma elhárításához, vagy adja meg az SQL Data Warehouse kapcsolat időpontban csatlakozni, vagy vegye fel a felhasználót a fő adatbázist kíván.  Lásd: [biztonsági áttekintése] [ Security overview] cikkben olvashat. |
-| CTAIP hiba |Ez a hiba akkor fordulhat elő, a bejelentkezés az SQL-kiszolgáló adatbázisában, de nem az SQL Data Warehouse-adatbázis létrehozása.  Ha ezt a hibát észlel, vessen egy pillantást a [biztonsági áttekintése] [ Security overview] cikk.  Ez a cikk ismerteti a fő egy felhasználónevet és egy felhasználó létrehozása, és a felhasználó az SQL Data Warehouse-adatbázis létrehozása. |
-| Tiltsa le tűzfal |Az Azure SQL-adatbázisok kiszolgáló és az adatbázis szintjén tűzfallal védett biztosításához csak ismert IP-címek van egy adatbázis eléréséhez. A tűzfalak biztonságosabbak alapértelmezett, ami azt jelenti, hogy explicit módon engedélyeznie kell, és az IP-cím vagy a címtartományt, mielőtt az csatlakozna.  A tűzfalbeállításokat, a hozzáférés, kövesse a lépéseket a [kiszolgáló tűzfal elérésének konfigurálása az ügyfél IP-címhez] [ Configure server firewall access for your client IP] a a [utasításokat kiépítés][Provisioning instructions]. |
-| Az eszköz vagy az illesztőprogram nem lehet kapcsolódni |Az SQL Data Warehouse használatát javasolja [SSMS][SSMS], [az SSDT a Visual Studio][SSDT for Visual Studio], vagy [sqlcmd] [ sqlcmd] az adatok lekérdezésére. Illesztőprogramok és a csatlakozás az SQL Data Warehouse további részletekért lásd: [az Azure SQL Data Warehouse illesztőprogramok] [ Drivers for Azure SQL Data Warehouse] és [csatlakozás az Azure SQL Data Warehouse] [ Connect to Azure SQL Data Warehouse] cikkeket. |
+| "NT AUTHORITY\NÉVTELEN bejelentkezés" felhasználó bejelentkezése sikertelen volt. (A Microsoft SQL Server, a hiba: 18456) |Ez a hiba akkor fordul elő, amikor egy AAD-felhasználót úgy próbál csatlakozni a master adatbázisban, de nem rendelkezik egy felhasználót a főadatbázisban.  A probléma, vagy adja meg az SQL Data Warehouse kívánt kapcsolat időpontban csatlakozni, vagy adja hozzá a felhasználót a master adatbázishoz.  Lásd: [biztonsági áttekintése] [ Security overview] további részleteivel. |
+| Az egyszerű "MyUserName" kiszolgálója nem érhetik el a "master" adatbázis aktuális biztonsági környezetében. Nem lehet megnyitni a felhasználói alapértelmezett adatbázist. A bejelentkezés nem sikerült. "MyUserName" felhasználó bejelentkezése sikertelen volt. (A Microsoft SQL Server, a hiba: 916) |Ez a hiba akkor fordul elő, amikor egy AAD-felhasználót úgy próbál csatlakozni a master adatbázisban, de nem rendelkezik egy felhasználót a főadatbázisban.  A probléma, vagy adja meg az SQL Data Warehouse kívánt kapcsolat időpontban csatlakozni, vagy adja hozzá a felhasználót a master adatbázishoz.  Lásd: [biztonsági áttekintése] [ Security overview] további részleteivel. |
+| CTAIP hiba |Ez a hiba akkor fordulhat elő, egy bejelentkezés létrehozása után az SQL server főadatbázisában, de nem az SQL Data Warehouse-adatbázisban.  Ha ezt a hibát tapasztal, vessen egy pillantást a [biztonsági áttekintése] [ Security overview] cikk.  Ez a cikk bemutatja, hogyan hozhat létre a bejelentkezést és felhasználót a master, majd egy felhasználó létrehozása az SQL Data Warehouse-adatbázis. |
+| Tűzfal által blokkolva |Az Azure SQL Database által védett kiszolgáló és az adatbázis adatbázisszintű tűzfalakra, győződjön meg arról, hogy csak ismert IP-címek rendelkezik hozzáféréssel egy adatbázishoz. A tűzfalak biztonságosak alapértelmezett, ami azt jelenti, hogy explicit módon engedélyeznie kell, és IP-címet vagy címtartományt, mielőtt az csatlakozna.  A tűzfal hozzáférés konfigurálásához kövesse [kiszolgálói tűzfal-hozzáférés konfigurálása az ügyfél IP-] [ Configure server firewall access for your client IP] a a [utasításokat kiépítés] [Provisioning instructions]. |
+| Eszköz vagy az illesztőprogram nem tud csatlakozni |Az SQL Data Warehouse használatát javasolja [SSMS][SSMS], [SSDT a Visual Studio][SSDT for Visual Studio], vagy [sqlcmd] [ sqlcmd] az adatok lekérdezéséhez. Az illesztőprogramok és csatlakozás az SQL Data Warehouse további részletekért lásd: [illesztőprogramok az Azure SQL Data Warehouse] [ Drivers for Azure SQL Data Warehouse] és [csatlakozhat az Azure SQL Data Warehouse] [ Connect to Azure SQL Data Warehouse] cikkeket. |
 
 ## <a name="tools"></a>Eszközök
 | Probléma | Megoldás: |
 |:--- |:--- |
-| A Visual Studio object Explorerben hiányzik az AAD-felhasználókat |Ez az egy ismert probléma.  Megoldás a felhasználók megtekintése [sys.database_principals][sys.database_principals].  Lásd: [hitelesítés az Azure SQL Data Warehouse] [ Authentication to Azure SQL Data Warehouse] tudhat meg többet az Azure Active Directoryval az SQL Data Warehouse szolgáltatással. |
-|Manuális parancsfájlok, a parancsfájl-kezelési varázsló segítségével, vagy a SSMS kapcsolatra lassú, lefagyott vagy előállító hibák| Győződjön meg arról, hogy létrejöttek-e a felhasználók a főadatbázisban. A parancsprogram-beállítások ellenőrizze azt is, hogy a "Microsoft Azure SQL Data Warehouse Edition" be van állítva a motor edition és a motor típus: "Microsoft Azure SQL adatbázis".|
+| A Visual Studio object explorer hiányzik az AAD-felhasználók |Ez egy ismert probléma.  Áthidaló megoldásként a felhasználók megtekintéséhez [sys.database_principals][sys.database_principals].  Lásd: [hitelesítés az Azure SQL Data Warehouse] [ Authentication to Azure SQL Data Warehouse] tudhat meg többet az Azure Active Directory használatával az SQL Data Warehouse szolgáltatással. |
+|Parancsfájl-kezelési, a parancsfájl-kezelési varázslóval vagy való csatlakozás SSMS manuális lassú, lefagyott vagy előállító hibák| Győződjön meg arról, hogy létrejöttek-e a felhasználók a master adatbázisban. A parancsprogram-beállítások győződjön meg arról is, hogy a motor edition "Microsoft Azure SQL Data Warehouse Edition" van beállítva, és motor-típus: "Microsoft Azure SQL Database".|
 
 ## <a name="performance"></a>Teljesítmény
 | Probléma | Megoldás: |
 |:--- |:--- |
-| Lekérdezés teljesítmény hibaelhárítása |Ha egy adott lekérdezés elhárításához próbálja, kezdje [figyelése a lekérdezések tanulási][Learning how to monitor your queries]. |
-| Gyenge a lekérdezések teljesítményét és tervek gyakran hiányzó statisztika eredménye |A teljesítmény gyenge leggyakoribb oka a statisztikákat a táblák hiánya.  Lásd: [fenntartása a tábla statisztikai adatainak] [ Statistics] statisztikák létrehozása, és hogy azok miért fontos a teljesítménye. |
-| Alacsony feldolgozási / lekérdezések várólistára |Understanding [munkaterhelés felügyeleti] [ Workload management] fontos annak megértése, hogyan együtt memóriafoglalást elosztása érdekében. |
-| Megvalósításához ajánlott eljárások |A legjobb hely a start további lehetőségek lekérdezés teljesítményének javítására van [gyakorlati tanácsok az SQL Data Warehouse] [ SQL Data Warehouse best practices] cikk. |
-| A méretezés teljesítményének javításával |Egyes esetekben a megoldást a teljesítmény fokozása-hoz egyszerűen adhat hozzá további számítási a lekérdezések teljesítményét [az SQL Data Warehouse skálázás][Scaling your SQL Data Warehouse]. |
-| Gyenge lekérdezési teljesítményt, gyenge index minőségi miatt |Néhány eset lekérdezések miatt lelassíthatja [gyenge oszlopcentrikus index minőségi][Poor columnstore index quality].  Ebben a cikkben találhat további információt és [szegmens minőségének javítására indexek újraépítése][Rebuild indexes to improve segment quality]. |
+| Lekérdezési teljesítmény hibaelhárítása |Ha egy adott lekérdezés hibaelhárítása kívánt, kezdje [megtudhatja, hogyan figyelheti a lekérdezések][Learning how to monitor your queries]. |
+| Gyenge lekérdezési teljesítmény és a tervek gyakran egy hiányzó statisztika eredménye |Gyenge teljesítményt leggyakoribb oka a statisztikákat a táblák hiánya.  Lásd: [Táblastatisztika karbantartása] [ Statistics] statisztikák létrehozása és azok miért a teljesítmény kritikus fontosságú. |
+| Alacsony egyidejűségi / lekérdezések várólistára helyezve |Tudnivalók a [számítási feladatok kezeléséhez] [ Workload management] fontos annak érdekében, hogy tisztában van az egyidejűség lefoglalt memória elosztása érdekében. |
+| Ajánlott eljárások megvalósítása |A legjobb hely a megismerkedik a lekérdezési teljesítmény javítására van [SQL Data Warehouse – gyakorlati tanácsok] [ SQL Data Warehouse best practices] cikk. |
+| A méretezés teljesítményének növelése |Néha a teljesítmény javítása a megoldás egyszerűen hozzáadásához a nagyobb számítási teljesítmény, a lekérdezések által [az SQL Data Warehouse méretezése][Scaling your SQL Data Warehouse]. |
+| Gyenge lekérdezések teljesítményét eredményeként gyenge index minőségét |Néhány eset lekérdezések lassulnak le, mert [oszlopcentrikus indexek gyenge minőségének][Poor columnstore index quality].  Ebben a cikkben további információt és hogyan [szegmens minőségének javítására indexek újraépítése][Rebuild indexes to improve segment quality]. |
 
-## <a name="system-management"></a>Rendszer-felügyeleti
+## <a name="system-management"></a>Rendszerfelügyelet
 | Probléma | Megoldás: |
 |:--- |:--- |
-| 40847. üzenet: Nem sikerült végrehajtani a műveletet, mert a kiszolgáló túllépné az engedélyezett adatbázis tranzakciós egység beállított kvótát 45000. |Vagy csökkentse a [DWU] [ DWU] a létrehozni kívánt adatbázis vagy [a kvóta növelését][request a quota increase]. |
-| Lemezterület-kihasználás kivizsgálása |Lásd: [méretek tábla] [ Table sizes] tudni, hogy a lemezterület-kihasználás, a rendszer. |
-| Súgó a táblák kezelése |Tekintse meg a [tábla áttekintése] [ Overview] cikk való kezeléséhez a táblák segítségét.  Ez a cikk hivatkozásokat is tartalmaz részletes témakörökre például [adattípusok tábla][Data types], [terjesztése egy tábla][Distribute], [tábla indexelő][Index], [tábla particionáló][Partition], [fenntartása a tábla statisztikai adatainak] [ Statistics] és [az ideiglenes táblák][Temporary]. |
-|Átlátható titkosítási (TDE) folyamatjelző sáv nem frissíti az Azure portálon|Megtekintheti a TDE keresztül állapotának [powershell](/powershell/module/azurerm.sql/get-azurermsqldatabasetransparentdataencryption).|
+| Msg 40847: Nem sikerült végrehajtani a műveletet, mert a kiszolgáló túllépné az engedélyezett adatbázis-tranzakciós egységek, 45000 vonatkozó kvótát. |Vagy csökkentse a [DWU] [ DWU] a létrehozni kívánt adatbázis vagy [a kvóta növelésére][request a quota increase]. |
+| Lemezterület-kihasználás kivizsgálása |Lásd: [méretek tábla] [ Table sizes] megérteni a lemezterület-kihasználás, a rendszer. |
+| Táblák kezelésében is segíteni |Tekintse meg a [táblák áttekintésével] [ Overview] cikkben segítséget a táblák kezelése.  Ez a cikk hivatkozásokat is tartalmaz, például további információt tartalmazó témakörökre [tábla adattípusaival][Data types], [terjesztése egy tábla][Distribute], [Tábla indexelése][Index], [tábla particionálása][Partition], [Táblastatisztika karbantartása] [ Statistics] és [ideiglenes táblák][Temporary]. |
+|Az Azure Portalon nem frissíti a transzparens titkosítást (TDE) folyamatjelző sáv|A TDE-n keresztül állapotát megtekintheti [powershell](/powershell/module/azurerm.sql/get-azurermsqldatabasetransparentdataencryption).|
 
 ## <a name="polybase"></a>PolyBase
 | Probléma | Megoldás: |
 |:--- |:--- |
-| Betöltési nagy sorok miatt meghiúsul |Nagy sor támogatása jelenleg nem érhető el a Polybase.  Ez azt jelenti, hogy ha a tábla tartalmaz, VARCHAR(MAX), NVARCHAR(MAX) vagy VARBINARY(MAX), külső táblák nem használhatók az adatok betöltésére.  Nagy sorok betöltése jelenleg csak az Azure Data Factory (a BCP-vel), Azure Stream Analytics, SSIS, BCP vagy a .NET SQLBulkCopy osztály támogatott. Nagy sorok PolyBase támogatása egy későbbi kiadásban lesz hozzáadva. |
-| MAXIMÁLIS adattípus-táblázat BCP betöltése sikertelen |Nincs olyan ismert probléma, amely megköveteli, hogy az VARCHAR(MAX), NVARCHAR(MAX) vagy VARBINARY(MAX) kerüljenek-e bizonyos esetekben a táblázat végére.  Próbálja meg a maximális oszlopok a tábla végéhez. |
+| Betöltés nagy sorokat tartalmazó miatt meghiúsul |Nagy méretű sor támogatása jelenleg a Polybase nem érhető el.  Ez azt jelenti, hogy ha a tábla tartalmaz, VARCHAR(MAX), NVARCHAR(MAX) vagy VARBINARY(MAX), külső táblák nem használhatók az adatok betöltéséhez.  Nagy sorokat tartalmazó betöltése jelenleg csak a támogatott – az Azure Data Factory (a BCP használatával), az Azure Stream Analytics, SSIS, BCP vagy a kapcsolatot az SQLBulkCopy .NET-osztályt. PolyBase támogatása nagy sorokat a rendszer felveszi egy későbbi kiadásban. |
+| MAXIMÁLIS adattípusú tábla BCP betöltése sikertelen |Van egy ismert probléma, amely megköveteli, hogy az VARCHAR(MAX), NVARCHAR(MAX) vagy VARBINARY(MAX) kerüljenek-e a tábla egyes forgatókönyvekben végén.  Próbálja ki a maximális oszlopok áthelyezése a táblázat végére. |
 
-## <a name="differences-from-sql-database"></a>Eltérések a SQL-adatbázis
+## <a name="differences-from-sql-database"></a>Különbségek az SQL Database-ből
 | Probléma | Megoldás: |
 |:--- |:--- |
-| Nem támogatott SQL-adatbázis szolgáltatások |Lásd: [táblában funkciók nem támogatott][Unsupported table features]. |
-| Nem támogatott SQL-adatbázis adattípusok |Lásd: [nem támogatott típusú adatokat][Unsupported data types]. |
-| Törlés és frissítési korlátozások |Lásd: [frissítési megkerülő megoldások][UPDATE workarounds], [törlése lehetséges megoldások] [ DELETE workarounds] és [használatával CTAS kerülő UPDATE és DELETE szintaxis nem támogatott][Using CTAS to work around unsupported UPDATE and DELETE syntax]. |
-| MERGE utasítás nem támogatott. |Lásd: [egyesítési lehetséges megoldások][MERGE workarounds]. |
-| Tárolt eljárás korlátozásai |Lásd: [tárolt eljárás korlátozások] [ Stored procedure limitations] tárolt eljárásokra vonatkozó korlátozások némelyike megértése. |
-| Felhasználó által megadott függvények nem támogatják a SELECT utasítás |Ez az a felhasználó által megadott függvények aktuális korlátozása.  Lásd: [CREATE FUNCTION] [ CREATE FUNCTION] a szintaxis támogatott. |
+| Nem támogatott az SQL Database-funkciók |Lásd: [nem támogatott funkciók tábla][Unsupported table features]. |
+| Nem támogatott az SQL Database-adattípusok |Lásd: [támogatott adattípusok][Unsupported data types]. |
+| Törlés és a frissítési korlátozások |Lásd: [frissítési megkerülő megoldások][UPDATE workarounds], [törlése lehetséges megoldások] [ DELETE workarounds] és [megkerüléséhez a CTAS használata nem támogatott frissítési és TÖRLÉS szintaxis][Using CTAS to work around unsupported UPDATE and DELETE syntax]. |
+| A MERGE utasítás nem támogatott. |Lásd: [egyesítési megoldások][MERGE workarounds]. |
+| Tárolt eljárás korlátozások |Lásd: [tárolt eljárás korlátozások] [ Stored procedure limitations] tárolt eljárásokra vonatkozó korlátozások némelyike megértéséhez. |
+| Felhasználói függvények nem támogatják a SELECT utasításokban |Ez az aktuális korlátozása az UDF-EK.  Lásd: [CREATE FUNCTION] [ CREATE FUNCTION] támogatunk szintaxisának. |
 
 ## <a name="next-steps"></a>További lépések
-A megoldás a probléma további segítséget itt találhat az alábbiakban néhány más erőforrások, próbálja meg.
+További segítségre van szüksége a megoldás a problémára Íme néhány más erőforrások, próbálja meg.
 
 * [Blogok]
 * [Funkciókérések]

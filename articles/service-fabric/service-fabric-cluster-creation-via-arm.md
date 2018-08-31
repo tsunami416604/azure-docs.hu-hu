@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/16/2018
 ms.author: aljo
-ms.openlocfilehash: 29d04781d166abdd1fc1fc506077e6257f6551a6
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: aab985270cf17b94d6353536c96a3825b5e3b73f
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42059615"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43287342"
 ---
 # <a name="create-a-service-fabric-cluster-using-azure-resource-manager"></a>Az Azure Resource Manager egy Service Fabric-fürt létrehozása 
 > [!div class="op_single_selector"]
@@ -259,7 +259,7 @@ az sf cluster create --resource-group $resourceGroupName --location $resourceGro
 
 ### <a name="use-a-pointer-to-a-secret-uploaded-into-a-key-vault"></a>Titkos kulcs mutató feltölti a key vault használata
 
-Egy meglévő key vault használata esetén a key vaultban kell [engedélyezve van a központi telepítés](../key-vault/key-vault-manage-with-cli2.md#bkmk_KVperCLI)), hogy a számítási erőforrás-szolgáltató tanúsítványok lekérése, és telepítse a fürtcsomópontok számára.
+Egy meglévő key vault használata esetén a key vaultban kell [engedélyezve van a központi telepítés](../key-vault/key-vault-manage-with-cli2.md#bkmk_KVperCLI) , hogy a számítási erőforrás-szolgáltató tanúsítványok lekérése, és telepítse a fürtcsomópontok számára.
 
 A fürt PowerShell-lel üzembe helyezéséhez:
 

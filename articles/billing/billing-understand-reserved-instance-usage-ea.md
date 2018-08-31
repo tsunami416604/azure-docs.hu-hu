@@ -1,5 +1,5 @@
 ---
-title: Vállalati használati Azure foglalás adatai |} A Microsoft Docs
+title: Az Azure-foglalások vállalati használati adatai |} A Microsoft Docs
 description: Ismerje meg, hogyan olvashatja be a használat megértéséhez, hogyan kell alkalmazni az Azure a nagyvállalati beléptetés-foglalás.
 services: billing
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2018
 ms.author: manshuk
-ms.openlocfilehash: 5ce0103315f297996ed3f3bd88b5e53558e22e14
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 334271139b791ab60f2bc89ae695ba9bf06b7d12
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39628232"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43301020"
 ---
 # <a name="understand-azure-reservation-usage-for-your-enterprise-enrollment"></a>A nagyvállalati beléptetés Azure foglalás használati adatai
 
@@ -81,7 +81,7 @@ A foglalást az Azure-használat is megjelenik-e, a vállalati portál használa
 
 ## <a name="next-steps"></a>További lépések
 
-Azure foglalások kapcsolatos további információkért tekintse meg a következő cikkeket:
+Azure-foglalások kapcsolatos további információkért tekintse meg a következő cikkeket:
 
 - [Mik az Azure-foglalásokat?](billing-save-compute-costs-reservations.md)
 - [Fizessen elő az Azure fenntartott VM-példányok a virtuális gépekkel](../virtual-machines/windows/prepay-reserved-vm-instances.md)

@@ -1,192 +1,191 @@
 ---
-title: Az SQL Data Warehouse-adatok áttelepítése |} Microsoft Docs
-description: Tippek az adatok áttelepítése az Azure SQL Data Warehouse adattárházzal történő, megoldások.
+title: Migrálja adatait az SQL Data Warehouse |} A Microsoft Docs
+description: Tippek az adatok migrálását az Azure SQL Data Warehouse használható megoldások fejlesztéséhez.
 services: sql-data-warehouse
 author: jrowlandjones
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: implement
 ms.date: 04/17/2018
 ms.author: jrj
 ms.reviewer: igorstan
-ms.openlocfilehash: ca467ae5fbe784399e4e046c47c920ff7dec638e
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: fc7bf4eaeb073b0337be68632e5057bfce96e06a
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31796003"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43307774"
 ---
-# <a name="migrate-your-data"></a>Adatok áttelepítése
-Adatok az SQL Data Warehouse egy különböző eszközeivel mozgathatók különböző forrásokból származó.  ADF másolás, SSIS és bcp összes használható e cél eléréséhez. Azonban adatok növeli a összegként gondolja bontásához, az áttelepítési folyamat azokat a lépéseket. Ez számára biztosítja azt a lehetőséget, hogy az egyes lépések a teljesítmény- és a zökkenőmentes adatok áttelepítéshez hibatűrőnek optimalizálása.
+# <a name="migrate-your-data"></a>Az adatok áttelepítése
+Adatok különböző forrásokból származó áthelyezhetők a különböző eszközök, az SQL Data Warehouse szolgáltatásba.  ADF-példány, az SSIS és a bcp az összes használható e cél eléréséhez. Azonban adatokat nő a mennyisége, gondolja bontásához, az áttelepítési folyamat lépésekre. Ez végrehajtható optimalizálható a teljesítmény és rugalmasság zökkenőmentes áttelepítés biztosítása érdekében az egyes lépések lehetőséget.
 
-A cikk először ADF másolása, SSIS és bcp egyszerű áttelepítési forgatókönyveit ismerteti. Ezután megjelenését kissé mélyebben hogyan az áttelepítés is lehet optimalizálni.
+Ez a cikk először az ADF-példány, az SSIS és a bcp-egyszerű áttelepítési forgatókönyvek ismerteti. Majd keresse meg egy kicsit részletesebben be, hogyan lehet optimalizálni a migrálás.
 
 ## <a name="azure-data-factory-adf-copy"></a>Az Azure Data Factory (ADF) másolása
-[ADF másolási] [ ADF Copy] része [Azure Data Factory][Azure Data Factory]. ADF másolat segítségével exportálhatja az adatokat a helyi tároló távoli egybesimított fájlokba, az Azure blob Storage tárolóban, vagy közvetlenül az SQL Data Warehouse levő egybesimított fájlokba.
+[Az ADF másolási] [ ADF Copy] része [Azure Data Factory][Azure Data Factory]. ADF-példány segítségével exportálhatja az adatokat a helyi tárban, vagy közvetlenül az SQL Data Warehouse-bA az Azure blob storage-ban tárolt távoli egybesimított fájlokba levő egybesimított fájlokba.
 
-Ha az adatok indul egybesimított fájlokba, akkor először átvitele az Azure storage-blobba egy terheléselosztási kezdeményezése előtt azt az SQL Data Warehouse. Miután az adatok elküldése az Azure blob storage is használatát választja [ADF másolási] [ ADF Copy] újra történő az SQL Data Warehouse.
+Ha indítja el az adatokat egybesimított fájlokba, majd, először vigye át az Azure storage-blobból, mielőtt elindítaná a terhelés, az SQL Data Warehouse-bA. Miután az adatok továbbítása Azure blob storage-ba is használni kívánja [ADF másolási] [ ADF Copy] újra, hogy az adatok leküldése az SQL Data Warehouse-bA.
 
-A PolyBase is biztosít egy nagy teljesítményű beállítása az adatok betöltése. Azonban, hogy: a két eszköz helyett egy. Ha a legjobb teljesítmény érdekében szükséges, akkor a polybase szolgáltatást akkor használja. Ha azt szeretné, hogy egy eszköz-élmény (és az adatok nem jelentős) ADF a válasz.
+PolyBase az adatok betöltése a nagy teljesítményű lehetőséget is kínál. Azonban, amely: a két eszköz használata helyett. Ha a lehető legjobb teljesítményt kell, majd a polybase szolgáltatást akkor használja. Ha azt szeretné, hogy egy egyszerű eszközt élmény (és az adatok nem nagy) ADF a válasz.
 
 
 > 
 > 
 
-A következő cikk néhány nagy keresztül központi [ADF minták][ADF samples].
+Látogasson el a következő cikk néhány nagyszerű [ADF minták] [ADF minták].
 
 ## <a name="integration-services"></a>Integrációs szolgáltatások
-Integration Services (SSIS) egy hatékony és rugalmas bontsa ki az átalakítási és betöltési (ETL) eszközt, amely támogatja a bonyolult munkafolyamatok, adatok átalakítása és több adatok betöltését lehetőség. SSIS segítségével egyszerűen adatátvitelt az Azure-bA vagy egy szélesebb körű áttelepítés részeként.
+Integration Services (SSIS) egy olyan hatékony és rugalmas kinyerése, átalakítás és betöltés (ETL) eszköz, amely támogatja a bonyolult munkafolyamatok, átalakítását és adatok betöltését számos. Az SSIS használata egyszerűen adatok átviteléhez az Azure-bA vagy egy szélesebb körű áttelepítés részeként.
 
 > [!NOTE]
-> SSIS UTF-8 exportálhatja a byte rendelés be van jelölve, a fájl nélkül. Konfigurálhatja ezt előbb segítségével a származtatott oszlop összetevő a karakteres adatokat az adatfolyam használata az UTF-8 65001 kódlapra. Az oszlopok konvertálás után az adatok írása a egybesimított fájl céladapter, győződjön meg arról, hogy 65001-es is van kiválasztva a kódlapot, a fájl.
+> SSIS exportálhatja az UTF-8 a bájtsorrendjelző a fájl nélkül. Konfigurálhatja a karakter adatok az adatfolyam az UTF-8 65001 kódlap használata a ez előbb használja az származtatott oszlop összetevőt. Az oszlopok konvertálását, miután az adatokat írni az egybesimított fájl céladapter, biztosítva, hogy 65001-es is van kiválasztva a kódlapot, a fájl.
 > 
 > 
 
-SSIS csatlakozik az SQL Data Warehouse, ahogy azt egy SQL Server-példányt kíván csatlakozni. Azonban a kapcsolatokat. használja az ADO.NET Csatlakozáskezelő kell. Meg kell is igénybe vehet ügyeljen arra, hogy konfigurálja a "használata tömeges beszúrás eredményről" beállítás maximális átviteli sebesség. Tekintse meg a [ADO.NET céladapter] [ ADO.NET destination adapter] cikk további információt a tulajdonság
+SSIS csatlakozik az SQL Data Warehouse, ahogy azt kíván csatlakozni, egy SQL Server-telepítés. Azonban a kapcsolatokat kell használnia az ADO.NET kapcsolati manager. Meg kell is ügyeljen arra, hogy konfigurálja a "használat tömeges beszúrás Ha elérhető" beállítás átviteli sebesség maximalizálása érdekében. Tekintse meg a [ADO.NET-céladapter] [ ADO.NET destination adapter] cikk további információt Ez a tulajdonság
 
 > [!NOTE]
-> Csatlakozás az Azure SQL Data Warehouse szolgáltatáshoz OLEDB nem támogatott.
+> Csatlakozás az Azure SQL Data Warehouse OLEDB használatával nem támogatott.
 > 
 > 
 
-Ezenkívül mindig fennáll annak lehetősége, hogy egy csomag sávszélesség-szabályozás vagy hálózati problémák miatt lehetséges, hogy nem. Tervezési csomagok, így azok folytathatók helyén hiba nélkül megismétlése működik, amelyek a meghibásodás előtt végzi el.
+Ezenkívül mindig fennáll a lehetősége, hogy a csomag szabályozás vagy hálózati problémák miatt meghiúsulhat. Tervezési csomagokat, így azok tudja folytatni a hibánál, nélkül megismétlése működik, amely a hiba előtt befejeződött.
 
-További információkat a [SSIS-dokumentáció][SSIS documentation].
+További részletekért tekintse meg a [SSIS dokumentációjának][SSIS documentation].
 
 ## <a name="bcp"></a>bcp
-BCP parancssori segédprogram, amely a strukturálatlan fájl adatok importálásának és exportálásának szolgál. Néhány átalakítási adatok exportálásakor akkor kerül sor. Végrehajtásához egyszerű átalakítások lekérdezéssel jelölje ki, majd átalakíthatja az adatokat. Exportálása után a egybesimított fájlokba majd betölthető közvetlenül a cél az SQL Data Warehouse-adatbázis.
+BCP parancssori segédprogram az egybesimított fájl adatok importálása és exportálása tervezett. Bizonyos átalakítási adatok exportálásakor akkor kerül sor. Végrehajtásához egyszerű átalakítások egy lekérdezés segítségével válassza ki, és átalakíthatja az adatokat. Exportálása után az egybesimított fájlok majd betölthetők közvetlenül a cél az SQL Data Warehouse-adatbázist.
 
 > [!NOTE]
-> Általában célszerű a forrásrendszer nézetben adatok exportálása során használt átalakítások foglalják magukban. Ez biztosítja, hogy megőrzi a programot, és a folyamat nem ismételhető.
+> Ez a legtöbbször célszerű, hogy magába foglalja az adatok exportálásakor egy nézetben a forrásrendszerben használni átalakítások. Ez biztosítja, hogy a logikai maradnak, és a folyamat nem ismételhető.
 > 
 > 
 
 Bcp előnyei a következők:
 
-* Egyszerű. BCP parancsok is egyszerű felépítéséhez és végrehajtása
-* Újra elindítható betöltési folyamatot. Egyszer exportált lehet a terhelés tetszőleges számú alkalommal végre
+* Egyszerű. BCP parancsai hozhatnak létre és futtathatnak egyszerű
+* Újból másik betöltési folyamat. Egyszer exportált lehet a terhelés végre tetszőleges számú alkalommal
 
-A bcp korlátozásai a következők:
+BCP korlátozások a következők:
 
-* BCP egyszerű fájlok táblázatos működik. Nem működik az XML- vagy JSON például fájlok
-* Adatok átalakítása képességek az Exportálás szakasza csak korlátozott, és könnyen jellegű
-* BCP nem volt módosítani kell robusztus, amikor az adatok betöltése az interneten keresztül. Minden hálózati instabilitás okozhat a betöltési hiba történt.
-* a séma megtalálhatók-e a céladatbázis, a betöltés előtt támaszkodik BCP
+* egybesimított fájlok táblázatos BCP működik. A fájlok, például xml vagy JSON nem működik
+* Adat-átalakítási képességek csak az export előkészítés korlátozódik, és egyszerűen jellegű
+* BCP nem lett az interneten keresztül az adatok betöltése során robusztus kell igazítani. Minden olyan hálózati instabil egy betöltési hiba okozhatja.
+* BCP támaszkodik a betöltés előtt a céladatbázis megtalálható-e a séma
 
-További információkért lásd: [adatok betöltése az SQL Data warehouse-bA bcp segítségével][Use bcp to load data into SQL Data Warehouse].
+További információkért lásd: [adatok betöltése az SQL Data Warehouse-bA bcp segítségével][Use bcp to load data into SQL Data Warehouse].
 
-## <a name="optimizing-data-migration"></a>Adatok áttelepítése optimalizálása
-Egy SQLDW adatok áttelepítési folyamat hatékonyan sorolhatók három különálló lépésből áll:
+## <a name="optimizing-data-migration"></a>Adatok migrálása optimalizálása
+Egy SQLDW adatmigrálás folyamata hatékonyan bonthatók három különálló lépésből áll:
 
-1. A forrásadatok exportálása
-2. Adatok továbbítása az Azure-bA
+1. Az adatforrás-adatok exportálása
+2. Adatok átvitele az Azure-bA
 3. A céladatbázis SQLDW betöltése
 
-Minden lépés is lehet optimalizálni külön-külön, egy robusztus, újra elindítható és rugalmas áttelepítési folyamat, amely a lehető legnagyobbra növeli a teljesítményt lépésről lépésre létrehozásához.
+Minden egyes lépés külön-külön optimalizálható, amely maximalizálja a teljesítményt minden lépésnél robusztus, újbóli másik és rugalmas migrálási folyamat létrehozásához.
 
-## <a name="optimizing-data-load"></a>Optimalizálás adatok betöltése
-A következő fordított sorrendben egy pillanatra; keresése a leggyorsabban adatok betöltése a polybase van. PolyBase-betöltési folyamat optimalizálása helyezi Előfeltételek az előző lépéseket, hogy ajánlott ennek megértéséhez társaságuk. Ezek a következők:
+## <a name="optimizing-data-load"></a>Optimalizálás az adatok betöltése
+Ezek között fordított sorrendben. egy pillanatra; Hibaoldal az adatok betöltésének leggyorsabb módja a polybase van. Betöltés a PolyBase a folyamat optimalizálása helyez Előfeltételek az előző lépések ennek megértéséhez a legjobb előzetes költségek. Ezek a következők:
 
-1. Fájlok kódolása
-2. Az adatfájlok formátuma
-3. Adatforrás adatfájljainak helyét
+1. Adatfájlok kódolás
+2. Adatfájlok formátuma
+3. Adatfájlok helye
 
 ### <a name="encoding"></a>Encoding
-PolyBase az adatfájlok UTF-8 vagy UTF-16FE igényel. 
+PolyBase az adatok fájlokat vagy UTF-8 a UTF-16FE van szükség. 
 
 
 
-### <a name="format-of-data-files"></a>Az adatfájlok formátuma
-A PolyBase csak egy rögzített méretű sor lezárójele \n vagy új sor. Az adatfájlok meg kell felelnie az szabványnak. Nincs karakterlánc- vagy lezárói korlátozásait.
+### <a name="format-of-data-files"></a>Adatfájlok formátuma
+A PolyBase előírásoknak, egy rögzített sor lezárójele \n vagy új sor. Ez a szabvány meg kell felelnie az adatfájlokat. Nincsenek karakterlánc- vagy lezáró jelének egyeznie korlátozásait.
 
-Minden egyes oszlophoz meghatározását a fájlban a PolyBase külső tábla részeként lesz. Győződjön meg arról, hogy minden exportált oszlopokra szükség, és hogy a típusok megfelelnek-e a szükséges szabványokat.
+Minden oszlop meghatározásához a fájlban a PolyBase a külső tábla részeként kap. Győződjön meg arról, hogy minden exportált oszlopokra szükség, és hogy a típusok megfelelnek-e a szükséges szabványoknak.
 
-Tekintse meg ismét a [áttelepítéséhez a] cikk a támogatott adattípusokat részletek.
+Tekintse meg ismét a [séma áttelepítése] támogatott adattípusok részletes ismertető cikket.
 
-### <a name="location-of-data-files"></a>Adatforrás adatfájljainak helyét
-Az SQL Data Warehouse PolyBase használ az adatok betöltése az Azure Blob Storage kizárólag. Ezért az adatok kell először átadott a blob-tárolóba.
+### <a name="location-of-data-files"></a>Adatfájlok helye
+Az SQL Data Warehouse a polybase kizárólag betölteni az adatokat az Azure Blob Storage-ból. Ennek következtében az adatok kell először átadott blob storage-bA.
 
-## <a name="optimizing-data-transfer"></a>Optimalizálás adatátvitel
-Adatok áttelepítése a leglassabb részeit egyik Azure az adatok átvitelét. Nem csak lehet hálózati sávszélesség problémát, de a hálózat megbízhatóságát is komolyan gátolja folyamatban van. Adatok áttelepítése az Azure-bA alapértelmezés szerint az interneten keresztül, az átviteli fellépett hibák esélyét ésszerűen valószínűleg. Ezek a hibák azonban megkövetelhetik küldendő adatok újbóli egészben vagy részben.
+## <a name="optimizing-data-transfer"></a>Az adatátvitel optimalizálása
+Adatok áttelepítése a leglassabb részeit egyike az Azure-bA az adatok átvitelét. Nem csupán probléma lehet a sávszélesség, de is hálózati megbízhatóság komolyan gátolja folyamatban van. Adatok áttelepítése az Azure-ban alapértelmezés szerint a az interneten keresztül, így viszonylag várhatóan magas átviteli fellépett hibák esélyét. Ezek a hibák azonban adatok küldésének egészben vagy részben újra lehet szükség.
 
-Szerencsére a sebesség és a folyamat rugalmasságot javításához több lehetőség közül választhat:
+Szerencsére a sebességet és rugalmasságát, ez a folyamat javítása érdekében több lehetősége van:
 
 ### <a name="expressrouteexpressroute"></a>[ExpressRoute][ExpressRoute]
-Érdemes lehet érdemes [ExpressRoute] [ ExpressRoute] átvitelét felgyorsítása érdekében. [ExpressRoute] [ ExpressRoute] nyújt egy titkos kapcsolat az Azure-ba így a kapcsolat nem halad át a nyilvános internethez. Ez egy kötelező lépés semmiképpen sem. Azonban azt fogja javítják a teljesítményt kérdez le adatokat az Azure-bA egy helyszíni vagy a közös elhelyezés létesítmény.
+Érdemes fontolóra [ExpressRoute] [ ExpressRoute] az átvitel felgyorsítása érdekében. [Az ExpressRoute] [ ExpressRoute] nyújt egy létrehozott privát kapcsolat az Azure-ba így a kapcsolat nem a nyilvános interneten keresztül halad. Ez a lépése semmiképpen sem kötelező. Azonban azt fogja javítják a átviteli adatok leküldése az Azure egy helyszíni vagy közös elhelyezési létesítményben.
 
 A használatának előnyeit [ExpressRoute] [ ExpressRoute] vannak:
 
-1. Nagyobb megbízhatóságot
+1. Nagyobb megbízhatóság
 2. Gyorsabb hálózati sebesség
 3. Kisebb hálózati késés
 4. magasabb szintű hálózati biztonság
 
-[ExpressRoute] [ ExpressRoute] forgatókönyvek; számos hasznos nem csak az áttelepítés.
+[Az ExpressRoute] [ ExpressRoute] előnyös számos forgatókönyv esetében; a nem csak az áttelepítés.
 
-Felkeltettük az érdeklődését? És árképzési adjon további információért látogasson el a [ExpressRoute dokumentációja][ExpressRoute documentation].
+Felkeltettük az érdeklődését? Díjszabásért és további információért látogasson el a [az ExpressRoute dokumentációja][ExpressRoute documentation].
 
-### <a name="azure-import-and-export-service"></a>Az Azure Import és Export szolgáltatásról
-Az Azure importálás és exportálása szolgáltatás rendkívül készült nagy (GB ++) történő tömeges (TB ++) adatok továbbítása az Azure data átviteli folyamat. Írás a a lemezek és a szállítási őket egy Azure adatközpontba magában foglalja. A lemez tartalma majd betölti Azure Storage blobs szolgáltatásában az Ön nevében.
+### <a name="azure-import-and-export-service"></a>Az Azure importálási és exportálási szolgáltatás
+Az Azure Import szolgáltatás exportálása az és adatok átvitel tervezett nagy méretű (GB -os ++) hatalmas (TB ++) adatok továbbítása az Azure-bA. Az adatok írása a lemezek és a szállítási őket egy Azure-adatközpontban való magában foglalja. A lemez tartalma lesz majd tölthetők be Azure Storage-Blobokból az Ön nevében.
 
-Az importálás exportálási folyamat áttekintése a következőképpen történik:
+Az importálási exportálási folyamat áttekintése a következőképpen történik:
 
-1. Egy Azure Blob Storage tárolót a adatok fogadására konfigurálása
-2. Az adatok exportálása helyi tárterülethez
-3. 3,5 hüvelykes SATA II/III merevlemez-meghajtók [Azure Import/Export eszköz] segítségével az adatok másolása
-4. Az Azure importálás és exportálása, az adatbázisnapló-fájlok az [Azure Import/Export eszköz] által visszaadott biztosító szolgáltatás segítségével importálási feladat létrehozása
-5. Küldje el a lemezt a kijelölt Azure-adatközpont
-6. Az adatátvitel történik az Azure Blob Storage tárolóban
-7. Az adatok betöltése a PolyBase használatával SQLDW
+1. Egy Azure Blob Storage tárolóba, az adatok fogadására konfigurálása
+2. Helyi tárhely az adatok exportálása
+3. 3,5 hüvelykes II. és III SATA merevlemez-meghajtók használata az [Azure Import/Export eszköz] az adatok másolása
+4. Az Azure importálás és exportálás szolgáltatást, amely az [Azure Import/Export eszköz] által előállított Adatbázisnapló-fájlok importálási feladat létrehozása
+5. A kijelölt Azure-adatközpontban szállítsa
+6. Az adatok átkerülnek az Azure Blob Storage-tárolóba
+7. Az adatok betöltése a PolyBase SQLDW az
 
-### <a name="azcopyazcopy-utility"></a>[AZCopy][AZCopy] segédprogram
-A [AZCopy][AZCopy] segédprogram egy remek eszköz az első Azure Storage Blobs átvihetők az adatokat. A kis (MB ++) túl nagy (GB ++) adatátvitelek számára tervezték. [AZCopy] jó rugalmas átviteli Azure, ezért történő adatátvitel során az adatok átvitel lépés kiváló választás arra is használható. Egyszer átvitt betöltheti az adatokat az SQL Data Warehouse PolyBase használatával. AZCopy is beépítheti a SSIS-csomagok használata egy "Hajtható végre folyamat" feladatot.
+### <a name="azcopyazcopy-utility"></a>[Az AZCopy][AZCopy] segédprogram
+A [AZCopy][AZCopy] segédprogram egy remek eszköz az Azure Storage-Blobok már átvitt adatok beolvasása. A nagyon nagy (GB -os ++) adatforgalom kis (MB -os ++) tervezték. [AzCopy] is úgy lett kialakítva, adja meg a helyes rugalmas átviteli sebesség Azure, így történő adatátvitel során egy remek választás az adatok átvitel lépés. Egyszer átvitt betöltheti az adatokat, a PolyBase az SQL Data Warehouse-bA. Az AZCopy is beépítse az SSIS-csomagok használatával egy "Végrehajtása folyamat" feladatot.
 
-AZCopy használatához először töltse le és telepíti. Van egy [éles verziójával] [ production version] és egy [előzetes verzióval] [ preview version] érhető el.
+Az AZCopy használata, először töltse le és telepítse azt. Van egy [változatát] [ production version] és a egy [előzetes verzió] [ preview version] érhető el.
 
-A fájlrendszerből-fájl feltöltése szüksége lesz az alábbihoz hasonló parancsot:
+Töltsön fel egy fájlt a fájlrendszer szüksége lesz az alábbihoz hasonló parancsot:
 
 ```
 AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.core.windows.net/mycontainer /DestKey:key /Pattern:abc.txt
 ```
 
-Egy magas szintű folyamat összegzése lehet:
+Lehet magas szintű folyamata összegzése:
 
-1. Egy Azure blob tároló a adatok fogadására konfigurálása
-2. Az adatok exportálása helyi tárterülethez
-3. AZCopy az adatokat az Azure Blob Storage tárolóban
-4. Az adatok betöltése az SQL Data Warehouse PolyBase használatával
+1. Fogadni az adatokat egy Azure storage blob-tároló konfigurálása
+2. Helyi tárhely az adatok exportálása
+3. Az AZCopy az adatok az Azure Blob Storage-tárolóba
+4. Az adatok betöltése az SQL Data Warehouse a PolyBase használatával
 
-Teljes rendelkezésre álló dokumentáció: [AZCopy][AZCopy].
+Teljes dokumentáció elérhető: [AZCopy][AZCopy].
 
-## <a name="optimizing-data-export"></a>Optimalizálás adatok exportálása
-Győződjön meg arról, hogy az Exportálás megfelel-e a követelményeknek, a PolyBase által leírva mellett akkor is kérhet az a folyamat további javítása érdekében az adatok optimalizálása érdekében.
+## <a name="optimizing-data-export"></a>Adatok optimalizálása exportálása
+Arról, hogy az Exportálás megfelel a követelményeknek, a PolyBase által biztosítása mellett azt is kérhet az Exportálás további a folyamatot az adatok optimalizálása érdekében.
 
 
 
 ### <a name="data-compression"></a>Adattömörítés
-A PolyBase gzip tömörített adatok olvashatók. Ha az adatokat, hogy a gzip fájl tömörítése majd fog minimálisra csökkenthető a hálózaton keresztül leküldött alatt álló adatok mennyisége.
+A PolyBase olvashatja a gzip formátumban tömörített adatokként. Ha tömörítése a gzip-fájlokat az adatok tudja majd minimalizálhatja a hálózaton keresztüli adatküldés adatok mennyisége.
 
 ### <a name="multiple-files"></a>Több fájl
-Több fájlokba nagy táblák összeállításának nem csak exportálási sebesség növelése érdekében, az átviteli re-startability, és egyszer az adatokat az Azure blob storage általános kezelhetőségével emellett segít. A PolyBase sok töltött jellemzői egyike, hogy emellett egy mappában található összes fájl olvasása és kezelje azt egy olyan táblát. Éppen ezért érdemes elkülöníteni a fájlok minden táblához saját mappába.
+Szétválasztja a nagyméretű táblák több fájlt, nem csak az exportálási sebességének növelése, is átviteli re-startability és az általános kezelhetőséggel egyszer az adatok az Azure blob storage segítségével. A PolyBase számos nagyszerű funkcióját egyik, amellyel fog egy mappában található összes fájl olvasása és egy táblázatként kezeli. Éppen ezért célszerű elkülöníteni a fájlok minden táblához a saját mappájába.
 
-PolyBase az úgynevezett "rekurzív mappa átjárás" is támogatja. Ez a funkció használatával tovább javíthatja a szervezet az exportált adatok az adatok felügyelet továbbfejlesztése érdekében.
+A PolyBase támogatja a "rekurzív Mappa bejárása" néven ismert szolgáltatás is. Ez a funkció használatával tovább javíthatja a szervezet az exportált adatok az adatkezelés javítása érdekében.
 
-A polybase-zel adatok betöltése kapcsolatos további információkért lásd: [használja a PolyBase az adatok betöltése az SQL Data Warehouse][Use PolyBase to load data into SQL Data Warehouse].
+A polybase lehetővé teszi az adatok betöltése kapcsolatos további információkért lásd: [bA a PolyBase használatával az adatok betöltése az SQL Data Warehouse][Use PolyBase to load data into SQL Data Warehouse].
 
 ## <a name="next-steps"></a>További lépések
-Áttelepítési kapcsolatban bővebben lásd: [megoldás Migrálása az SQL Data Warehouse][Migrate your solution to SQL Data Warehouse].
-További fejlesztési tippek, lásd: [fejlesztői áttekintés][development overview].
+Az áttelepítéssel kapcsolatos további információkért lásd: [megoldás áttelepítése az SQL Data Warehouse][Migrate your solution to SQL Data Warehouse].
+További fejlesztési tippek: [fejlesztői áttekintés][development overview].
 
 <!--Image references-->
 
 <!--Article references-->
-[AZCopy]: ../storage/common/storage-use-azcopy.md
-[ADF Copy]: ../data-factory/v1/data-factory-data-movement-activities.md 
-[ADF samples]: ../data-factory/v1/data-factory-samples.md
-[ADF Copy examples]: ../data-factory/v1/data-factory-copy-activity-tutorial-using-visual-studio.md
+[AzCopy]: ../storage/common/storage-use-azcopy.md
+[ADF Copy]: ../data-factory/copy-activity-overview.md 
+[ADF Copy examples]: ../data-factory/quickstart-create-data-factory-dot-net.md
 [development overview]: sql-data-warehouse-overview-develop.md
-[áttelepítéséhez a]: sql-data-warehouse-migrate-schema.md
+[séma áttelepítése]: sql-data-warehouse-migrate-schema.md
 [Migrate your solution to SQL Data Warehouse]: sql-data-warehouse-overview-migrate.md
 [SQL Data Warehouse development overview]: sql-data-warehouse-overview-develop.md
 [Use bcp to load data into SQL Data Warehouse]: /sql/tools/bcp-utility

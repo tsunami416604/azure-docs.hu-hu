@@ -3,23 +3,23 @@ title: Adjon meg ellenőrzés – a Microsoft Fenyegetésmodellezési eszköz �
 description: megoldások a fenyegetések között szerepelnek a Threat Modeling Tool
 services: security
 documentationcenter: na
-author: RodSan
-manager: RodSan
-editor: RodSan
+author: jegeib
+manager: jegeib
+editor: jegeib
 ms.assetid: na
 ms.service: security
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/17/2017
-ms.author: rodsan
-ms.openlocfilehash: 9ee61ae931f08d2087835eaa9cb1c0b0fde23fde
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.date: 02/07/2017
+ms.author: jegeib
+ms.openlocfilehash: f49692a97053482f6522fed7bec91db6cac4e15e
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42060157"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43306324"
 ---
 # <a name="security-frame-input-validation--mitigations"></a>Biztonsági keret: Bemeneti ellenőrzés |} Megoldások 
 | Termék vagy szolgáltatás | Cikk |

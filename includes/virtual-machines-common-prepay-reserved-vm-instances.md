@@ -4,12 +4,12 @@ ms.author: yashar
 ms.service: virtual-machines-windows
 ms.topic: include
 ms.date: 08-07-2018
-ms.openlocfilehash: 764470bbf47c18a2ec66dc91d433f8dd14b99a8f
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 6be00937a6645fbdd266ac0b1aa1ce95ecc6c3d9
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43040354"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43301871"
 ---
 # <a name="prepay-for-virtual-machines-with-azure-reserved-vm-instances"></a>Fizessen elő az Azure fenntartott VM-példányok a virtuális gépekkel
 
@@ -34,7 +34,7 @@ Fenntartott VM-példányok néhány kivétellel a legtöbb Virtuálisgép-méret
 - Letiltott magos virtuális gépek foglalási kedvezmények nem kap.
 - Következő Virtuálisgép-sorozatok nem kap a Foglalás kedvezmények: A-sorozatú, az Av2 sorozat vagy G-sorozat.
 - Virtuális gépek előzetes verzióban érhető el: bármely Virtuálisgép-sorozat vagy méretet előzetes verzióban érhető el, nem érhetők el a foglalásvásárlást.
-- Felhők: foglalások nem érhetők el az Azure US Government, Germany és China régióban vásárolható.
+- Felhők: Foglalások nem érhetők el az Azure US Government, Germany és China régióban vásárolható.
 - A kvóta nem elegendő: egy foglalást, ami egy előfizetéshez rendelkeznie kell az új fenntartott példány esetében az előfizetés vCPU-kvóta. Például ha a célként megadott előfizetés kvótája 10 vcpu-k számára a D-sorozat, majd, nem vásárolhat egy foglalást, 11 Standard_D1-példányok. A kvóta ellenőrzése lefoglalási a már üzembe helyezte az előfizetésben található virtuális gépeket tartalmaz. Például ha az előfizetés 10 vcpu-k kvótával rendelkezik a D-sorozat esetében, és üzembe helyezett két standard_D1 példánnyal rendelkezik, majd vásárolhat egy foglalást, ebben az előfizetésben 10 standard_D1-példányokhoz. 
 - Kapacitás korlátozások: ritka esetekben az Azure Virtuálisgép-méretek, egy régióban alacsony kapacitás miatt részhalmazát új lefoglalását, a vásárlás korlátozza.
 
@@ -70,7 +70,7 @@ Rendszer automatikusan alkalmazza a foglalási kedvezményt a futó virtuális g
 
 Ismerje meg, hogyan kezelheti a foglalást, lásd: [kezelése az Azure-foglalások](../articles/billing/billing-manage-reserved-vm-instance.md).
 
-Azure foglalások kapcsolatos további információkért tekintse meg a következő cikkeket:
+Azure-foglalások kapcsolatos további információkért tekintse meg a következő cikkeket:
 
 - [Mik az Azure-foglalásokat?](../articles/billing/billing-save-compute-costs-reservations.md)
 - [Az Azure-ban foglalások kezelése](../articles/billing/billing-manage-reserved-vm-instance.md)

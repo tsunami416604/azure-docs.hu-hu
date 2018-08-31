@@ -1,5 +1,5 @@
 ---
-title: Segítség a megnyitása és a saját alkalmazások portál használata az Azure Active Directoryban |} A Microsoft Docs
+title: Segítség a elérése és a MyApps portálról az Azure Active Directoryban |} A Microsoft Docs
 description: Segítség a bejelentkezéshez, és végrehajtson hétköznapi feladatokat a hozzáférési panelen.
 services: active-directory
 author: eross-msft
@@ -12,18 +12,18 @@ ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: lizross
 ms.reviewer: japere
-ms.openlocfilehash: a6ac780625f6a109797cbdab78dc555e21e18bee
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 5503681b051066f6601be97bda246128763e7bc7
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39343610"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43306410"
 ---
-# <a name="troubleshoot-issues-with-accessing-and-using-the-my-apps-portal"></a>Megnyitása és használata a saját alkalmazások portál hibáinak elhárítása
+# <a name="troubleshoot-issues-with-accessing-and-using-the-myapps-portal"></a>Hozzáférés és a MyApps portálról hibáinak elhárítása
 
-Ha tapasztal a bejelentkezésnél vagy a saját alkalmazások portál használatával kapcsolatos problémák, próbálja meg az alábbi tippek előtt, segítségért forduljon a segélyszolgálathoz vagy a rendszergazdához.
+Ha olyan jelentkezik be, vagy a MyApps portálról problémákat tapasztal, próbálja meg ezek a hibaelhárítási tippek, mielőtt, segítségért forduljon a segélyszolgálathoz vagy a rendszergazdához.
 
-## <a name="i-am-having-trouble-signing-into-the-my-apps-portal"></a>Gondjaim vannak jelentkezik be a saját alkalmazások portál
+## <a name="i-am-having-trouble-signing-into-the-myapps-portal"></a>Gondjaim vannak jelentkezik be a MyApps portálról
 
 Próbálja ki a következő általános tippeket:
 
@@ -45,7 +45,7 @@ A jelszó alaphelyzetbe állítása, vagy a fiók zárolásának feloldása nél
 
 ## <a name="i-am-having-trouble-installing-the-my-apps-secure-sign-in-extension"></a>Gondjaim vannak a saját alkalmazások biztonságos bejelentkezési bővítmény telepítése
 
-A saját alkalmazások portál megköveteli egy böngészőben, amely támogatja a JavaScript és CSS engedélyezve van. Jelszavas egyszeri bejelentkezéses alkalmazások használatakor, valamint a hozzájuk tartozó bővítményt kell telepíteni. Ezzel a bővítménnyel automatikusan letöltődik egy alkalmazás, amely konfigurálva van a jelszóalapú egyszeri bejelentkezéses alkalmazások indításakor.
+A MyApps portálról kell egy böngészőben, amely támogatja a JavaScript és CSS engedélyezve van. Jelszavas egyszeri bejelentkezéses alkalmazások használatakor, valamint a hozzájuk tartozó bővítményt kell telepíteni. Ezzel a bővítménnyel automatikusan letöltődik egy alkalmazás, amely konfigurálva van a jelszóalapú egyszeri bejelentkezéses alkalmazások indításakor.
 
 Ellenőrizze, hogy győződjön meg arról, hogy teljesíti-e vannak a következő webböngészőkre vonatkozó követelmények:
 
@@ -63,8 +63,8 @@ Emellett letöltheti a bővítmény közvetlenül a következő helyekről:
 Ha a bővítmény telepítve van, és továbbra is problémákat tapasztal, amikor, megpróbálkozhat a következőkkel:
 
 - Ellenőrizze a böngésző kiterjesztés beállításait, győződjön meg arról, hogy a bővítmény engedélyezve van.
-- Indítsa újra a böngészőt, és jelentkezzen be a saját alkalmazások portál.
-- Törölje a böngésző cookie-kat, és jelentkezzen be a saját alkalmazások portál.
+- Indítsa újra a böngészőt, és jelentkezzen be a MyApps portálról.
+- Törölje a böngésző cookie-kat, és jelentkezzen be a MyApps portálról.
 - Hozzáférés egy diagnosztikai eszköz, és lépésenkénti útmutatót a bővítmény konfigurálása az Internet Explorer, lásd: [a hozzáférési Panel bővítmény hibaelhárítása az Internet Explorer](https://docs.microsoft.com/azure/active-directory/active-directory-saas-ie-troubleshooting).
 
 ## <a name="use-the-my-apps-secure-sign-in-extension"></a>Használja a saját alkalmazások biztonságos bejelentkezési bővítménye
@@ -85,7 +85,7 @@ Ha a bővítmény telepítve van, és továbbra is problémákat tapasztal, amik
 * Indítsa el a bővítményt az alkalmazásokat, tegye a következőket:
    1. Miután telepítette a bővítményt, bejelentkezni kiválasztásával **jelentkezzen be a kezdéshez**.
    2. A bővítmény ikonra a menü megnyitásához.
-   3. Keressen rá egy alkalmazást, amely a saját alkalmazások portál érhető el.
+   3. Keressen rá egy alkalmazást, amely a MyApps portálról érhető el.
    4. A keresési eredmények listájában válassza ki az alkalmazást.  
        Már használta az utolsó három alkalmazások megjelennek a **a legutóbb használt** helyi listát.
 

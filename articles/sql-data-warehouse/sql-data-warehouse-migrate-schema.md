@@ -1,44 +1,44 @@
 ---
-title: A séma áttelepítése az SQL Data Warehouse |} Microsoft Docs
-description: Tippek a séma áttelepítése az Azure SQL Data Warehouse adattárházzal történő, megoldások.
+title: Séma áttelepítése az SQL Data Warehouse |} A Microsoft Docs
+description: A séma migrálása az Azure SQL Data Warehouse-megoldások fejlesztése a tippek.
 services: sql-data-warehouse
 author: jrowlandjones
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: implement
 ms.date: 04/17/2018
 ms.author: jrj
 ms.reviewer: igorstan
-ms.openlocfilehash: fb1085450a16acb0f9a06a9dea9d91fc5ca23363
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 51ad7eed0bf37194b1e5ff2c605b39246e9a1191
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31525165"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43301182"
 ---
-# <a name="migrate-your-schemas-to-sql-data-warehouse"></a>Az SQL Data Warehouse a sémák áttelepítése
-Az SQL-sémák áttelepítéséhez az SQL Data Warehouse-útmutatót. 
+# <a name="migrate-your-schemas-to-sql-data-warehouse"></a>A sémák áttelepítése az SQL Data Warehouse
+Útmutató az SQL Data Warehouse-ba való migrálás az SQL-sémák. 
 
-## <a name="plan-your-schema-migration"></a>A séma áttelepítés tervezése
+## <a name="plan-your-schema-migration"></a>A séma migrálási terv
 
-Áttelepítés tervezése közben, lásd: a [tábla áttekintése] [ table overview] megismerkedhet a táblázat kialakítási szempontok például statisztikáiról, terjesztési, particionálás, és az indexelés.  Azt is soroljuk [táblában funkciók nem támogatott] [ unsupported table features] és azok megoldását ismerteti.
+Szeretne áttelepítést végezni, amikor a [táblák áttekintésével] [ table overview] megismerkedhet a táblázat kialakítási szempontok például statisztika, terjesztési, particionálás, és az indexelés.  Azt is megjeleníti, néhány [nem támogatott funkciók tábla] [ unsupported table features] és azok megoldását ismerteti.
 
-## <a name="use-user-defined-schemas-to-consolidate-databases"></a>Felhasználói sémákkal segítségével adatbázisok összesítése
+## <a name="use-user-defined-schemas-to-consolidate-databases"></a>Felhasználó által definiált sémák használatával egyesítheti az adatbázisok
 
-A meglévő alkalmazások és szolgáltatások valószínűleg tartalmazza az egynél több adatbázisból. Egy SQL Server data warehouse tartalmazhat például egy átmeneti adatbázis, adatraktár-adatbázis és néhány adat adatközpont-adatbázis. Ebben a topológiában minden adatbázisnak külön biztonsági házirendek külön feladatként fut.
+A meglévő számítási feladatok valószínűleg több adatbázissal rendelkezik. Például egy SQL Server data warehouse tartalmazhat egy átmeneti adatbázis, adatraktár-adatbázis és néhány adat adatközpont-adatbázis. Ebben a topológiában minden egyes adatbázis fut egy külön számítási feladat külön biztonsági házirendeknek.
 
-Az SQL Data Warehouse ellentétben a teljes adatraktározás számítási feladatáról egy adatbázison belül futtatja. Adatbázis közötti illesztések nem engedélyezettek. Ezért az SQL Data Warehouse egy adatbázis tárolja az adatraktár által használt összes táblának vár.
+Ezzel szemben az SQL Data Warehouse fut, a teljes adatraktározás számítási feladatáról egy adatbázison belül. Adatbázis közötti illesztések nem engedélyezettek. Ezért az SQL Data Warehouse az egyetlen adatbázis tárolja az adatraktár által használt összes táblának vár.
 
-Azt javasoljuk, felhasználó által definiált sémák vonják össze a meglévő alkalmazások és szolgáltatások egy adatbázisba. Tekintse meg a [felhasználói sémák](sql-data-warehouse-develop-user-defined-schemas.md)
+Azt javasoljuk, hogy felhasználó által definiált sémák használatával egyesíthetők a meglévő számítási feladat egy adatbázisba. Példák: [felhasználó által definiált sémák](sql-data-warehouse-develop-user-defined-schemas.md)
 
 ## <a name="use-compatible-data-types"></a>Kompatibilis adattípusok használata
-Ahhoz, hogy az SQL Data Warehouse szolgáltatással kompatibilis az adattípusok módosításával. Támogatott és nem támogatott adattípusú listájáért lásd: [adattípusok][data types]. Témakör lehetséges megoldások ad a nem támogatott típusú. A lekérdezés nem támogatott az SQL Data Warehouse típusú létező azonosítására is tartalmazza.
+Módosítsa az adattípusok kompatibilisek az SQL Data warehouse-bA. Támogatott és nem támogatott adattípusok listáját lásd: [adattípusok][data types]. Szakasza biztosító megoldások a nem támogatott típusokat. Azonosítsa a meglévő típus nem támogatott az SQL Data Warehouse egy lekérdezést is tartalmazza.
 
-## <a name="minimize-row-size"></a>Sor mérete minimalizálása érdekében
-A legjobb teljesítmény érdekében minimalizálása érdekében a táblák sor hossza. Mivel rövidebb sor hosszának előfordulhat, hogy jobb teljesítményt, használja a legkisebb adatok, amelyek működnek az adatok. 
+## <a name="minimize-row-size"></a>Minimalizálja a sor mérete
+A legjobb teljesítmény érdekében minimalizálja a táblák sor hossza. Mivel sor rövidebb hosszúságú vezet jobb teljesítményt, használja a legkisebb adattípusok, amelyek az adatok. 
 
-A táblázat sor szélessége a PolyBase van a 1 Megabájtos korlátot.  Adatok betöltése az SQL Data Warehouse PolyBase tervez, ha rendelkezik a legnagyobb sor vonalainak 1 MB-nál kevesebb a táblák frissítésével. 
+A tábla sor szélesség a PolyBase esetében 1 MB.  Adatok betöltése az SQL Data Warehouse a polybase-zel tervezi, ha frissíteni szeretné, hogy kevesebb mint 1 MB maximális szélessége a táblák. 
 
 <!--
 - For example, this table uses variable length data but the largest possible size of the row is still less than 1 MB. PolyBase will load data into this table.
@@ -47,23 +47,23 @@ A táblázat sor szélessége a PolyBase van a 1 Megabájtos korlátot.  Adatok 
 
 -->
 
-## <a name="specify-the-distribution-option"></a>Adja meg a terjesztési beállítást
-Az SQL Data Warehouse egy olyan elosztott adatbázis rendszer. Minden tábla elosztott vagy a számítási csomópontok replikálódnak. Nincs olyan tábla beállítás, amely lehetővé teszi, hogy miként ossza el az adatokat adja meg. Az alábbiak közül választhat ciklikus multiplexelés replikálva, vagy a kivonatoló elosztott. Minden egyes vannak előnyei és hátrányai. Ha nem adja meg a terjesztő beállítást, az SQL Data Warehouse ciklikus multiplexelés fogja használni az alapértelmezett.
+## <a name="specify-the-distribution-option"></a>A telepítési lehetőség kiválasztása
+Az SQL Data Warehouse egy elosztott adatbázis rendszer. Minden tábla elosztott vagy replikált számítási csomópontjai között. Nincs a table kapcsoló, amely lehetővé teszi a adja meg, hogyan terjesztheti az adatait. A választási lehetőségek: Ciklikus időszeleteléses replikálja, vagy kivonatoló elosztott. Minden egyes vannak előnyei és hátrányai. Ha nem adja meg a-terjesztési beállítást, az SQL Data Warehouse alapértelmezett használjon ciklikus időszeletelést.
 
-- Ciklikus multiplexelés az alapértelmezett beállítás. A legegyszerűbb használja, és a terhelések lassabbak, de illesztések adatok adatmozgás, ami megnöveli a lekérdezési teljesítmény szükséges.
-- A replikált tároló egy-egy példányát a tábla minden számítási csomóponton. Replikált táblák nincsenek performant, mert az összekapcsolásokhoz és az összesítések nem igényelnek adatátvitelt jelölik. Ezek – megnövelt tárhely szükséges, és ezért működhet a legjobban a kisebb táblákat.
-- Elosztott kivonat kivonatoló függvényt keresztül a csomópontok a sorok elosztása. A kivonattáblákkal elosztott SQL Data Warehouse lelke, mivel úgy vannak kialakítva, hogy a lekérdezési teljesítmény biztosítható a nagy táblák. Ez a beállítás megköveteli néhány jelölje ki a legjobb oszlopot, amelyen az adatok terjeszteni tervezi. Azonban ha nem a legjobb oszlop először, könnyen újra terjesztheti az adatokat egy másik oszlop alapján. 
+- Ciklikus időszeleteléses az alapértelmezett érték. A legegyszerűbben használható, és betölti az adatokat, de illesztések gyorsabban adatáthelyezés, ami lelassítja a lekérdezési teljesítmény lesz szükség.
+- A replikált tároló egy-egy példányát a tábla minden számítási csomóponton. Replikált táblák a nagy teljesítményű, mivel nincs szükségük az adatmozgatás összekapcsolásokhoz és az összesítések. Ezek extra tárterület szükséges, és emiatt leginkább kisebb méretű táblák esetében.
+- Kivonatterjesztés a kivonatolási függvény használatával az összes csomópont között osztja el a sorokat. Mivel a célja, hogy a lekérdezési teljesítményt nyújtanak nagy táblák elosztott kivonattáblák, nem az SQL Data Warehouse legfontosabb céljait segítik. Ez a beállítás szükséges néhány tervezi, hogy válassza ki a legjobb oszlopot, amelyen az adatok elosztására. Azonban ha nem a legjobb oszlop először, könnyen újra juttathatja el az adatokat egy másik oszlop alapján. 
 
-A legjobb telepítési lehetőség minden táblához, lásd: [táblák elosztott](sql-data-warehouse-tables-distribute.md).
+Válassza ki a legjobb-terjesztési beállítást minden egyes, lásd: [elosztott táblákról](sql-data-warehouse-tables-distribute.md).
 
 
 ## <a name="next-steps"></a>További lépések
-Miután sikeresen áttelepítette az adatbázissémát az SQL Data Warehouse, folytassa a következő cikkekben:
+Miután sikeresen migrálva az adatbázissémát az SQL Data Warehouse, folytassa a következő cikkekben:
 
-* [Adatok áttelepítése][Migrate your data]
-* [Telepítse át a kódot][Migrate your code]
+* [Az adatok áttelepítése][Migrate your data]
+* [Kódok migrálása][Migrate your code]
 
-Az SQL Data Warehouse gyakorlati tanácsokat kapcsolatban bővebben lásd: a [ajánlott eljárások] [ best practices] cikk.
+Az SQL Data Warehouse – gyakorlati tanácsok kapcsolatos további információkért tekintse meg a [ajánlott eljárások] [ best practices] cikk.
 
 <!--Image references-->
 

@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/17/2018
 ms.author: nberdy
-ms.openlocfilehash: 0b84d7b0e7bbd2021ea4d3e3e804c739be59b48a
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 4d55c152bdc938d943c90a3e51af37b45f6a8eb5
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39186879"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43301396"
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>Megismerheti, és az IoT hubról közvetlen metódusok meghívása
 Az IoT Hub lehetővé teszi, az eszközökön a felhőből közvetlen metódusok meghívása. Közvetlen metódusok képviseli egy kérés-válasz interakció egy HTTP-hívással, hasonló eszközzel, abban, hogy azok sikeres, vagy közvetlenül (felhasználó által megadott időtúllépési) után sikertelen. Ez a módszer hasznos olyan forgatókönyvekben, ahol azonnali lépéseket, attól függően változik, tud válaszolni volt-e az eszközön.
@@ -105,7 +105,7 @@ A háttéralkalmazás, amely választ kap:
     Mindkét `status` és `body` az eszköz által biztosított és az eszköz saját állapotkódot és/vagy leírás is használt.
 
 ### <a name="method-invocation-for-iot-edge-modules"></a>Metódus meghívása az IoT Edge-modulok
-A C#-ban támogatott azonosító modullal vyvolání közvetlen metódusok SDK előzetes verzió (elérhető [Itt](https://www.nuget.org/packages/Microsoft.Azure.Devices/1.16.0-preview-004)).
+C# SDK-ban támogatott azonosító modullal közvetlen metódusok meghívása (elérhető [Itt](https://www.nuget.org/packages/Microsoft.Azure.Devices/)).
 
 Erre a célra használja a `ServiceClient.InvokeDeviceMethodAsync()` metódust, és adja meg a `deviceId` és `moduleId` paraméterekként.
 

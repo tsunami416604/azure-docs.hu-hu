@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
-ms.openlocfilehash: 614930fb11e65404416e604c94351e2754b8e941
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 9f082c5f198ebd7123058bd250d3fef55494d553
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "40190224"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43287539"
 ---
 # <a name="aks-troubleshooting"></a>AKS-hibaelhárítás
 Amikor hoz létre, vagy a kezelő az AKS-fürtök, előfordulhat, hogy időnként problémák merülnek fel. Ez a cikk részletesen néhány gyakori hibák és hibaelhárítási lépéseket.
@@ -24,16 +24,16 @@ Amikor hoz létre, vagy a kezelő az AKS-fürtök, előfordulhat, hogy időnkén
 
 ### <a name="i-am-getting-a-quota-exceeded-error-during-create-or-upgrade-what-should-i-do"></a>A kvótatúllépési hiba kapok létrehozása vagy frissítése során. Mit tegyek? 
 
-Meg kell kérnie a magok [Itt](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request)
+Meg kell kérnie a magok [Itt](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request).
 
 ### <a name="what-is-the-max-pods-per-node-setting-for-aks"></a>Mi az a maximális podok csomópontonkénti az aks-ben?
 
 A csomópontonkénti maximális podok vannak állítva 30 alapértelmezés szerint ha telepít egy AKS-fürtöt az Azure Portalon.
 A csomópontonkénti maximális podok vannak állítva 110 alapértelmezés szerint ha telepít egy AKS-fürtöt az Azure CLI-ben. (Győződjön meg arról, az Azure CLI legújabb verziójának használ). Ez az alapértelmezett beállítás módosítható a – maximális-csomópontok-per-pod jelzőt a az aks create paranccsal.
 
-### <a name="i-am-getting--insufficientsubnetsize-error-while-deploying-an-aks-cluster-with-advanced-networking-what-should-i-do"></a>"InsufficientSubnetSize" hiba kapok speciális hálózatkezelés az AKS-fürt üzembe helyezése során. Mit tegyek?
+### <a name="i-am-getting-insufficientsubnetsize-error-while-deploying-an-aks-cluster-with-advanced-networking-what-should-i-do"></a>"InsufficientSubnetSize" hiba kapok speciális hálózatkezelés az AKS-fürt üzembe helyezése során. Mit tegyek?
 
-Az egyéni VNET lehetőséget választja, a hálózatkezelés során AKS hoz létre az Azure CNI IP-Címkezelő szolgál. AKS-fürt a csomópontok száma 1 és 100 közötti bárhol lehet. 2 alapján) felett az alhálózat mérete nagyobb, mint a csomópontok száma és a maximális pod / alhálózat csomópontméret szorzatát kell > száma a fürtben található csomópontok a * podok csomópontonkénti maximális száma
+Az egyéni VNET lehetőséget választja, a hálózatkezelés során AKS hoz létre az Azure CNI IP-Címkezelő szolgál. AKS-fürt a csomópontok száma 1 és 100 közötti bárhol lehet. 2 alapján) felett az alhálózat mérete nagyobb, mint a csomópontok száma és a maximális pod / alhálózat csomópontméret szorzatát kell > száma a fürtben található csomópontok a * podok csomópontonkénti maximális száma.
 
 ### <a name="my-pod-is-stuck-in-crashloopbackoff-mode-what-should-i-do"></a>A pod elakadt "CrashLoopBackOff" módban. Mit tegyek?
 

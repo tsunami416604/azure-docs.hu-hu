@@ -1,116 +1,109 @@
 ---
-title: Munkafolyamatok konfigurálásához ExpressRoute-kapcsolatcsoportot |} Microsoft Docs
-description: Ezen a lapon végigvezeti a munkafolyamatokat a ExpressRoute-kapcsolatcsoportot és társviszony konfigurálása
-documentationcenter: na
+title: Munkafolyamatok a konfigurálása az Azure ExpressRoute-kapcsolatcsoport |} A Microsoft Docs
+description: Ezen a lapon végigvezeti a munkafolyamatok a konfigurálása ExpressRoute-kapcsolatcsoport és a társviszony
 services: expressroute
 author: cherylmc
-manager: carmonm
-editor: ''
-ms.assetid: 55e0418c-e0bf-44a7-9aa1-720076df9297
 ms.service: expressroute
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 05/12/2017
+ms.topic: conceptual
+ms.date: 08/29/2018
 ms.author: cherylmc
-ms.openlocfilehash: cba1b2cfee379e7d2b079bcb3089981ef1044d66
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 765050c9c21c7ba752535fc391cc9bb7d8ac4083
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23850776"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43301038"
 ---
 # <a name="expressroute-workflows-for-circuit-provisioning-and-circuit-states"></a>Az ExpressRoute kapcsolatcsoport-kiépítési munkafolyamatai és a kapcsolatcsoportok állapotai
-Ezen a lapon végigvezeti a szolgáltatás üzembe helyezési és konfigurációs munkafolyamatok útválasztási magas szinten.
+Ezen a lapon végigvezeti a szolgáltatás kiépítése, és magas szintű konfigurációs munkafolyamatok útválasztást.
 
 ![](./media/expressroute-workflows/expressroute-circuit-workflow.png)
 
-Az alábbi ábra és a megfelelő lépéseket kell követnie ahhoz, hogy rendelkezik kiépített ExpressRoute-kapcsolatcsoportot feladatokat jeleníti végpontok közötti. 
+Az alábbi ábra és a megfelelő lépéseket kell követnie ahhoz, hogy rendelkezik ExpressRoute-kapcsolatcsoport kiosztott feladatokat jeleníti teljes körű. 
 
-1. PowerShell segítségével konfigurálhatja az ExpressRoute-kapcsolatcsoportot. Kövesse az utasításokat a [létrehozása ExpressRoute-Kapcsolatcsoportok](expressroute-howto-circuit-classic.md) cikkben olvashat.
-2. A szolgáltató közötti kapcsolatot sorrendje. Ez a folyamat függően változik. Kapcsolat rendezése kapcsolatos további részletekért forduljon a kapcsolat szolgáltatóját.
-3. Győződjön meg arról, hogy a kapcsolatcsoport van kiépítve sikeresen üzembe helyezési állapota a Powershellen keresztül ExpressRoute-kapcsolatcsoportot ellenőrzésével. 
-4. Útválasztási tartományok konfigurálása. Ha a kapcsolat szolgáltatójánál, 3. rétegbeli kezeli, a vállalat konfigurálja a kapcsolatcsoport útválasztást. Ha a kapcsolat szolgáltatójánál csak a 2. rétegbeli szolgáltatásokat biztosít, konfigurálnia kell egy leírt irányelveket útválasztási a [útválasztási követelmények](expressroute-routing.md) és [útválasztási konfigurációja](expressroute-howto-routing-classic.md) lapokat.
+1. ExpressRoute-kapcsolatcsoport konfigurálása a PowerShell használatával. Kövesse az utasításokat a [létrehozása az ExpressRoute-Kapcsolatcsoportok](expressroute-howto-circuit-classic.md) további részleteivel.
+2. A szolgáltató rendelés kapcsolat. Ez a folyamat függ. Kapcsolat order kapcsolatos további részletekért forduljon a kapcsolatszolgáltató.
+3. Győződjön meg arról, hogy a kapcsolatcsoport lett kiépítése sikeresen megtörtént az ExpressRoute-kapcsolatcsoport kiépítési állapota a PowerShell-lel ellenőrzésével. 
+4. Útválasztási tartományok konfigurálása. Ha a kapcsolatszolgáltató felügyeli a 3. rétegbeli az Ön számára, a vállalat konfigurálja a kapcsolatcsoport útválasztásának. Ha a kapcsolatszolgáltató csak a 2. rétegbeli szolgáltatásokat kínál, konfigurálnia kell útválasztás / ismertetett irányelvek a [útválasztási követelmények](expressroute-routing.md) és [útválasztási konfigurációja](expressroute-howto-routing-classic.md) oldalakat.
    
-   * Azure magánhálózati társviszony-létesítés engedélyezése – engedélyeznie kell a társviszony csatlakozni a virtuális gépek / felhőszolgáltatások telepített virtuális hálózatokon belül.
-   * Engedélyezze az Azure nyilvános társviszony - engedélyeznie kell az Azure nyilvános társviszony-létesítés Ha nyilvános IP-címek futó Azure-szolgáltatásokhoz. Ez a követelmény az Azure-erőforrások eléréséhez, ha úgy döntött, az Azure magánhálózati társviszony-létesítés útválasztás alapértelmezett engedélyezése.
-   * Engedélyezze a Microsoft társviszony - hozzáférés Office 365 és Dynamics 365 engedélyeznie kell ezt. 
+   * Engedélyezze az Azure-beli privát társviszony - engedélyezése a társviszony a virtuális gépekhez csatlakozhat / cloud services üzembe helyezett virtuális hálózatokon belül.
+
+   * Engedélyezze a Microsoft társviszony-létesítést – engedélyezze ezt a hozzáférést az Office 365 és Dynamics 365. Ezenkívül az összes Azure PaaS-szolgáltatások érhetők el a Microsoft társviszony-létesítésen keresztül.
      
      > [!IMPORTANT]
-     > Győződjön meg arról, hogy egy külön proxyt használ, / Edge böngésző számára csatlakoztatni a Microsoft a akkor használata az interneten. Az azonos él használ ExpressRoute és az internetről is aszimmetrikus útválasztási okozhat, és következtében a hálózati kapcsolat kimaradások.
+     > Gondoskodnia kell arról, hogy külön proxy használatát választja, / csatlakozni a Microsoft fut, a peremhálózati használata az internethez. Az azonos edge használatával az ExpressRoute- és az Internet az aszimmetrikus útválasztás okozhat, és a hálózat kapcsolódási kimaradások miatt.
      > 
      > 
      
      ![](./media/expressroute-workflows/routing-workflow.png)
-5. Virtuális hálózatok csatolása az ExpressRoute-Kapcsolatcsoportok - hozzákapcsolhatja virtuális hálózatok az ExpressRoute-kapcsolatcsoportot. Kövesse az utasításokat [Vnetek csatolásához](expressroute-howto-linkvnet-arm.md) a kapcsolatcsoport számára. A Vnetek, ExpressRoute-kapcsolatcsoport Azure ugyanahhoz az előfizetéshez lehet, vagy lehet egy másik előfizetésben.
+5. Virtuális hálózatok összekapcsolása az ExpressRoute-Kapcsolatcsoportok - kapcsolat virtuális hálózatokat az ExpressRoute-kapcsolatcsoportot. Kövesse az utasításokat [összekapcsolása virtuális hálózatok](expressroute-howto-linkvnet-arm.md) a kapcsolatcsoporthoz. Ezek a virtuális hálózatok csak az Azure-előfizetéshez, az ExpressRoute-kapcsolatcsoport a, vagy egy másik előfizetésben is lehet.
 
-## <a name="expressroute-circuit-provisioning-states"></a>Kiépítés állapotok ExpressRoute-kapcsolatcsoportot
-Minden egyes ExpressRoute-kapcsolatcsoportot két állapota van:
+## <a name="expressroute-circuit-provisioning-states"></a>ExpressRoute-kapcsolatcsoport kiépítési állapotok
+Egyes ExpressRoute-kapcsolatcsoport két állapota van:
 
-* Szolgáltatás szolgáltató üzembe helyezési állapota
+* Service provider kiépítési állapota
 * status
 
-Állapotát a Microsoft a kiépítési állapotát jeleníti meg. Ez a tulajdonság engedélyezve van beállítva, ha Expressroute-kapcsolatcsoportot létrehozni
+Állapot a Microsoft kiépítési állapotát jelöli. Ez a tulajdonság engedélyezve van beállítva, amikor Expressroute-kapcsolatcsoport létrehozása
 
-A kapcsolati szolgáltató üzembe helyezési állapota a kapcsolat szolgáltatójánál oldalon állapotát jeleníti meg. Ez lehet *NotProvisioned*, *kiépítési*, vagy *kiépítve*. Az ExpressRoute-kapcsolatcsoport is használni tudja kiépítve állapotban kell lennie.
+A kapcsolati szolgáltató kiépítési állapota a kapcsolatszolgáltató oldalán állapotát jelöli. Ez lehet *NotProvisioned*, *kiépítési*, vagy *kiépített*. Az ExpressRoute-kapcsolatcsoport kell tudni használni azt kiépített állapotban kell lennie.
 
-### <a name="possible-states-of-an-expressroute-circuit"></a>Az ExpressRoute-kapcsolatcsoportot lehetséges állapota
-Ez a szakasz ki a lehetséges állapotok az ExpressRoute-kapcsolatcsoportot.
+### <a name="possible-states-of-an-expressroute-circuit"></a>Lehetséges, az ExpressRoute-kapcsolatcsoport állapota
+Ez a szakasz ismerteti a lehetséges állapotok ExpressRoute-kapcsolatcsoport ki.
 
-**A létrehozás időpontjában**
+**Létrehozáskor**
 
-A következő állapotot okozta ExpressRoute-kapcsolatcsoportot megjelenik, amint az ExpressRoute-kapcsolatcsoportot létrehozni a PowerShell-parancsmag futtatása.
+Az ExpressRoute-kapcsolatcsoport a következő állapotban megjelenik, amint az ExpressRoute-kapcsolatcsoport létrehozása a PowerShell-parancsmag futtatásakor.
 
     ServiceProviderProvisioningState : NotProvisioned
     Status                           : Enabled
 
 
-**Amikor kapcsolat szolgáltatójánál éppen a kapcsolatcsoport kiépítése**
+**Ha a kapcsolatszolgáltató a a kapcsolatcsoport kiépítési folyamatban van**
 
-Az ExpressRoute-kapcsolatcsoport a következő állapotban megjelenik, amint a szolgáltatás kulcs átadása a kapcsolat szolgáltatóját, és azok elindította a telepítési folyamatot.
+Az ExpressRoute-kapcsolatcsoport a következő állapotban megjelenik, amint a kapcsolatszolgáltató átadhatja a kulcsot, és azok indította el a kiépítési folyamat.
 
     ServiceProviderProvisioningState : Provisioning
     Status                           : Enabled
 
 
-**Ha a kapcsolat szolgáltatóját az üzembe helyezési folyamat befejeződött**
+**Ha a kapcsolatszolgáltató a kiépítési folyamat befejeződött**
 
-A következő állapotot okozta ExpressRoute-kapcsolatcsoportot jelenik meg, amint a kapcsolat szolgáltatójánál a kiépítési folyamat befejeződött.
+Az ExpressRoute-kapcsolatcsoport a következő állapotban megjelenik, amint a kapcsolatszolgáltató a kiépítési folyamat befejeződött.
 
     ServiceProviderProvisioningState : Provisioned
     Status                           : Enabled
 
-Üzembe helyezve, és engedélyezve a kapcsolatcsoport egyetlen állapotát is használni tudja lehet. Ha egy 2. rétegbeli szolgáltatót használja, beállíthatja a kapcsolatcsoport útválasztást csak akkor, ha az ebben az állapotban van.
+Üzembe helyezett, és engedélyezve az állapotban az áramköri kell tudni használni azt lehet. Ha egy 2. rétegbeli szolgáltatót használ, konfigurálhatja a kapcsolatcsoport útválasztásának csak akkor, amikor az ebben az állapotban van.
 
-**Ha a kapcsolat szolgáltatójánál megszüntetés a kapcsolatcsoport van**
+**Amikor kapcsolatszolgáltató megszüntet a kapcsolatcsoportot**
 
-A szolgáltató az ExpressRoute-kapcsolatcsoport kiosztásának megszüntetése a kért a következő állapotának beállítása után a szolgáltató a megszüntetési folyamatot a kapcsolatcsoport látják.
+A kért a szolgáltatót az ExpressRoute-kapcsolatcsoport megszüntetése, ha megjelenik a kapcsolatcsoportot, állítsa be a következő állapotot, a szolgáltató a megszüntetési folyamat befejezése után.
 
     ServiceProviderProvisioningState : NotProvisioned
     Status                           : Enabled
 
 
-Ha szeretné, engedélyezheti, ha szükséges, vagy a PowerShell-parancsmagok a kapcsolatcsoport törléséhez.  
+Ha szeretné újra engedélyezni, ha szükséges, vagy törölje a kapcsolatcsoportot, PowerShell-parancsmagok futtatásához.  
 
 > [!IMPORTANT]
-> Ha törli a kapcsolatcsoport a ServiceProviderProvisioningState kiépítésekor vagy kiépítve a művelet sikertelen lesz a PowerShell-parancsmagot kell futtatnia. A kapcsolat szolgáltatójánál kiosztásának megszüntetése először az ExpressRoute-kapcsolatcsoport adjon működnek, és törölje a kapcsolatcsoport. A Microsoft továbbra is a kapcsolatcsoport számlázási, amíg nem futtat a kapcsolatcsoport törlése a PowerShell-parancsmagot.
+> Ha futtatja a PowerShell-parancsmag törli a kapcsolatcsoport a ServiceProviderProvisioningState kiépítésekor vagy a művelet sikertelen lesz kiépítve. Először megszünteti az ExpressRoute-kapcsolatcsoportot kapcsolatszolgáltatójával együttműködve, és ezután törölje a kapcsolatcsoportot. A Microsoft számlázási a kapcsolatcsoportot, amíg nem futtat a PowerShell-parancsmag használatával törölje a kapcsolatcsoportot, továbbra is.
 > 
 > 
 
-## <a name="routing-session-configuration-state"></a>Munkamenet-konfiguráció útválasztási állapota
-A BGP üzembe helyezési állapota értesíti Önt arról, ha a BGP-munkamenetet a Microsoft edge engedélyezve lett. Az állapot meg fogja tudni használni a társviszony-létesítést engedélyezni kell.
+## <a name="routing-session-configuration-state"></a>Útválasztási konfiguráció munkamenet-állapot
+A BGP-t üzembe helyezési állapota jelzi, ha a BGP-munkamenet engedélyezve van a Microsoft Edge-ben. Az állapot, hogy a társviszony-létesítés használni tudják engedélyezni kell.
 
-Fontos, különösen a Microsoft társviszony-létesítés BGP munkamenet-állapot ellenőrzéséhez. Mellett a BGP üzembe helyezési állapota, van egy másik állapothoz nevű *meghirdetett nyilvános előtag állapot*. A meghirdetett nyilvános előtag állapotban kell lennie a *konfigurált* állapot, mind a BGP-munkamenethez be kell, és a végpontok közötti működéséhez irányításához. 
+Fontos, különösen a Microsoft társviszony-létesítés BGP munkamenet-állapot ellenőrzéséhez. A BGP-t üzembe helyezési állapota, valamint van egy másik állapothoz nevű *meghirdetett nyilvános előtagok állapot*. A meghirdetett nyilvános előtagok állapotban kell lennie a *konfigurált* állapot, mind a BGP-munkamenetben, akár és az Útválasztás teljes körű működéséhez. 
 
-Ha a meghirdetett nyilvános előtag állapot beállítása a *szükséges érvényesítési* állapotba kerül, a BGP-munkamenet nincs engedélyezve, mint a hirdetett előtagok nem egyezik a AS számot sem az útválasztási nyilvántartó. 
+Ha a meghirdetett nyilvános előtag állapot értéke egy *ellenőrzés szükséges* állapot, a BGP-munkamenet nincs engedélyezve, ahogy a meghirdetett előtagok nem egyezik meg az AS-számot sem az útválasztási beállításjegyzékek. 
 
 > [!IMPORTANT]
-> Ha a meghirdetett nyilvános előtag állapota *manuális érvényesítési* állapotba kerül, meg kell nyitnia a támogatási jegy [Microsoft támogatási szolgálatához](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) , és adja meg a megbizonyosodhat róla, hogy Ön a tulajdonosa az IP-címek meghirdetett mentén társított autonóm rendszer számát.
+> Ha a meghirdetett nyilvános előtagok állapota *manuális érvényesítésre* állapotba, meg kell nyitnia egy támogatási jegyet a [a Microsoft támogatási](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) megbizonyosodhat róla, hogy Ön a tulajdonosa a meghirdetett IP-címeket, és a társított autonóm rendszer száma.
 > 
 > 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Az ExpressRoute-kapcsolat konfigurálása.
   
   * [ExpressRoute-kapcsolatcsoport létrehozása](expressroute-howto-circuit-arm.md)

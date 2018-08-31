@@ -1,6 +1,6 @@
 ---
 title: A Microsoft Azure-ban mérőszámok áttekintése
-description: Metrikák és a használatukat a Microsoft Azure-ban – áttekintés
+description: Metrikák és a Microsoft Azure használati áttekintése
 author: anirudhcavale
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,87 +8,87 @@ ms.topic: conceptual
 ms.date: 06/05/2018
 ms.author: ancav
 ms.component: metrics
-ms.openlocfilehash: 3501c8d35968ecf8e32c806dfb05ccfebc7f4386
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: d61ac48aa7c51bc4b215a7d56b1bbedfdc613f9f
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35264221"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43287556"
 ---
 # <a name="overview-of-metrics-in-microsoft-azure"></a>A Microsoft Azure-ban mérőszámok áttekintése
-Ez a cikk ismerteti, hogy milyen adatok gyűjtése le van a Microsoft Azure-ban az előnyöket, és használatuk indítása.  
+Ez a cikk ismerteti a metrikák Mik a Microsoft Azure-ban előnyeiket, és hogyan használja őket.  
 
 ## <a name="what-are-metrics"></a>Mik azok a metrikák?
-Azure figyelő címinfrastruktúra megjelenítési lehetőségeinek a teljesítmény- és a munkaterhelések Azure állapot telemetriai adatok felhasználását teszi lehetővé. A legfontosabb Azure telemetriai adatok típus (más néven teljesítményszámlálók) vagy az Azure erőforrások által kibocsátott metrikákat. Az Azure figyelő többféleképpen is konfigurálhatja, és felhasználhatják a figyeléshez és hibaelhárításhoz metrikákat.
+Az Azure Monitor lehetővé teszi, hogy értékes információkhoz juthat a teljesítmény és az Azure-ban a számítási feladatok állapotát a telemetriai adatok felhasználásához. Az Azure telemetriai adatokat a legfontosabb típus a legtöbb Azure-erőforrások által kibocsátott (más néven teljesítményszámlálók) metrikák. Az Azure Monitor konfigurálása és figyelése és hibaelhárítása a metrikák felhasználásához több módszert is biztosít.
 
 ## <a name="what-are-the-characteristics-of-metrics"></a>Mik azok a metrikák jellemzői?
-Metrikák a következő jellemzőkkel rendelkezik:
+Metrikák a következő jellemzőkkel rendelkeznek:
 
-* Összes metrikát rendelkezik **egy perces gyakoriságot** (kivéve, ha a egy metrika-definíció). Kapott a metrika értékét percenként az erőforrás felkínálva közel valós idejű információkat az állapot és az erőforrás állapotát.
-* Adatok gyűjtése le van **érhető el azonnal**. Nem kell részt vevő, vagy állítsa be a további diagnosztikához.
-* Van-e hozzáférési **93 a napok** minden mérőszám. Gyorsan megtalálhatja a legutóbbi és havi kapcsolatos trendeket szemlélteti a teljesítmény- vagy az erőforrás állapotát.
-* Néhány metrikák is attribútumokkal név-érték pár nevű **dimenziók**. Ezek lehetővé teszik a további szegmentálni, és vizsgálja meg a metrika részletesebb módon.
+* Az összes metrikákhoz **perces gyakoriságot** (kivéve, ha egy metrika-definícióban másképpen megadva). Kap egy metrikaérték percenként az erőforrás, így közel valós idejű képet az állapot és az erőforrás állapotát.
+* Metrikák **érhető el azonnal**. Nem kell részt, vagy további diagnosztikai beállítása.
+* Elérheti **93 a napok** egyes metrika. Gyorsan megtekintheti a legutóbbi és havi trendeket a teljesítmény vagy az erőforrás állapotát.
+* Bizonyos metrikák rendelkezhet nevű név-érték pár attribútumok **dimenziók**. Ezek lehetővé teszi további szegmens, és Fedezze fel a metrika kifejezőbb módon.
 
-## <a name="what-can-you-do-with-metrics"></a>Mire szolgál a metrikák?
-Metrikák lehetővé teszik a következő feladatokat:
+## <a name="what-can-you-do-with-metrics"></a>Tudja, mire a metrikák?
+Metrikák engedélyezése, hogy a következő feladatokat végezheti el:
 
 
-- Metrika konfigurálása **szabályt, amely értesítést küld vagy fogad automatikus művelet riasztás** amikor keverve használ a metrika a beállított küszöbértéket. Műveletek vezérli [művelet csoportok](monitoring-action-groups.md). Példa műveletek a következők lehetnek: e-mail, telefon és SMS-értesítések, hívja a webhook egy runbookot, és több indítása. **Automatikus skálázás** egy speciális automatizált művelet, amelynek segítségével méretezhető, erőforrás felfelé és lefelé terhelhető még költséges tartása alacsonyabb, amikor nem terhelés alatt van. Konfigurálhatja az automatikus skálázási beállítás szabály bejövő vagy kimenő méretezése a küszöbértéket meghaladó metrika alapján.
-- **Útvonal** összes mérni kívánt *Application Insights* vagy *Naplóelemzési* azonnali analytics, a Keresés és a egyéni riasztási metrikai adatok az erőforrások közül. Is adatfolyam formájában a metrikák egy *Eseményközpont*, így lehetővé teszi, és Azure Stream Analytics vagy egyéni alkalmazások, a közel valós idejű elemzési irányíthatja őket. Beállíthatja az Event Hubs streaming a diagnosztikai beállítások használatával.
-- **Archív** az erőforrás a megfelelés, a naplózás vagy kapcsolat nélküli jelentéskészítési célból a teljesítmény vagy a rendszerállapot előzményeit.  Az erőforrás diagnosztikai beállításainak konfigurálásakor irányítani tudja a metrikákat, az Azure Blob storage.
-- Használja a **Azure-portálon** felderítésére, eléréséhez, és minden metrikák megtekintéséhez jelöljön ki egy erőforrást, és a metrikák a diagram megrajzolásához. Az erőforrás (például egy virtuális gép, a webhely vagy a logikai alkalmazás) teljesítményének nyomon követéséhez a diagram az irányítópulton való rögzítéshez.  
-- **Hajtsa végre a speciális elemzés** vagy a teljesítmény vagy a használati trendeket a erőforrás jelentés.
-- **Lekérdezés** metrikákat a PowerShell-parancsmagok és a platformok közötti REST API használatával.
-- **Felhasználását** a metrikák az új Azure figyelő REST API-kon keresztül.
+- Metrika konfigurálása **szabályt, amely elküld egy értesítést vagy tart a művelet automatikus riasztás** mikor a metrika átlépi-e a beállított küszöbértéket. Műveletek szabályozott [Műveletcsoportok](monitoring-action-groups.md). Példa műveletek közé tartoznak, e-mail, telefon és SMS-értesítések, kezdve egy runbookot, és több webhook hívása. **Automatikus skálázási** egy speciális automatizált műveleteket, amely lehetővé teszi a méretezhető, Ön felfelé és lefelé a terhelés kezelése érdekében, még ha nincs terhelés alatt tarthatja a költségeket alacsonyabb erőforrás. Konfigurálhatja az automatikus skálázási beállítás szabály horizontálisan le- illetve meg a küszöbérték átlépését metrika alapján.
+- **Útvonal** az összes metrikát *Application Insights* vagy *Log Analytics* engedélyezéséhez az azonnali elemzések, search és egyéni riasztások a metrikák adatait az erőforrások közül. Metrikák is streamelheti egy *Eseményközpont*, lehetővé téve, és irányíthatja őket az Azure Stream Analytics vagy egyéni alkalmazásokról, közel valós idejű elemzés céljából. Beállíthat egy Eseményközpont streamelési a diagnosztikai beállítások használatával.
+- **Archív** az erőforrás megfelelőségét, naplózás, vagy offline jelentéskészítésre teljesítmény vagy egészségügyi előzményeit.  A metrikák irányíthatja az Azure Blob storage, az erőforrás diagnosztikai beállításainak konfigurálásakor.
+- Használja a **az Azure portal** felderítését, eléréséhez, és megtekintheti az összes metrikáit, válasszon ki egy erőforrást, és a metrikák egy diagramon jeleníti meg. Az erőforrás (például egy virtuális gép, a webhely vagy a logikai alkalmazás) a teljesítmény ehhez rögzítse a diagramot az irányítópulton követheti nyomon.  
+- **Bővített analitika** vagy a teljesítmény vagy a használati trendeket az erőforrás jelent.
+- **Lekérdezés** metrikák, a PowerShell-parancsmagok vagy többplatformos REST API használatával.
+- **Felhasználását** a metrikák az új Azure Monitor REST API-kon keresztül.
 
-  ![Az Azure a figyelő a metrikák útválasztását](./media/monitoring-overview-metrics/Metrics_Overview_v4.png)
+  ![Továbbítani tudja a metrikák az Azure monitorban](./media/monitoring-overview-metrics/Metrics_Overview_v4.png)
 
-## <a name="access-metrics-via-the-portal"></a>Hozzáférés metrikákat a portálon
-Az alábbiakban látható egy gyors útmutató arról, hogyan metrika diagram létrehozása az Azure-portál használatával.
+## <a name="access-metrics-via-the-portal"></a>A portálon keresztül hozzáférés-metrikák
+Következő egy gyors útmutató bemutatja, hogyan hozhat létre egy metrikadiagram az Azure portal használatával.
 
 ### <a name="to-view-metrics-after-creating-a-resource"></a>Erőforrás létrehozása után metrikák megtekintése
 1. Nyissa meg az Azure Portalt.
-2. Az Azure App Service-webhelyet hoz létre.
-3. Miután létrehozott egy webhelyen, lépjen a **áttekintése** a webhely paneljén.
-4. Új mérőszámok, megtekintheti a **figyelés** csempére. Módosíthatja a csempén, majd válassza ki a további metrikákat.
+2. Hozzon létre egy Azure App Service-webhelyen.
+3. Miután létrehozott egy webhely, nyissa meg a **áttekintése** a webhely paneljén.
+4. Megtekintheti, hogy új metrikákat, mint egy **figyelés** csempére. Módosíthatja a csempét, majd további metrikák kiválasztásához.
 
-   ![Az Azure-figyelő erőforrás metrikáit](./media/monitoring-overview-metrics/MetricsOverview1.png)
+   ![Az Azure Monitor erőforrás metrikáit](./media/monitoring-overview-metrics/MetricsOverview1.png)
 
-### <a name="to-access-all-metrics-in-a-single-place"></a>Egy helyen lévő összes metrikát eléréséhez
+### <a name="to-access-all-metrics-in-a-single-place"></a>Összes metrikát egyetlen helyen történő eléréséhez
 1. Nyissa meg az Azure Portalt.
-2. Keresse meg az új **figyelő** fülre, és majd, és válassza ki a **metrikák** alatta lehetőséget.
+2. Lépjen az új **figyelő** fülre, és majd, és válassza ki a **metrikák** alatta lehetőséget.
 3. Válassza ki az előfizetés, erőforráscsoport és az erőforrás nevét a legördülő listából.
-4. Az elérhető mérőszámok lista megtekintése. Ezután jelölje be a metrika kapcsolatban, és azt megrajzolásához.
-5. Akkor is rögzítheti az irányítópulton kattintson a jobb felső sarokban a PIN-kódot.
+4. Tekintse meg a rendelkezésre álló metrikák listáját. Ezután válassza ki a metrika iránt, és azt jeleníti meg.
+5. Kitűzheti, az irányítópulton kattintson a jobb felső sarokban a PIN-kódot.
 
-   ![Azure-figyelőben egyetlen helyen összes metrikát eléréséhez](./media/monitoring-overview-metrics/MetricsOverview2.png)
+   ![Az Azure monitorban egyetlen helyen történő összes mérőszámok elérése](./media/monitoring-overview-metrics/MetricsOverview2.png)
 
 > [!NOTE]
-> (Azure Resource Manager-alapú) virtuális gépek gazdaszintű metrikák érhető el, és a virtulálisgép-skálázási készletekben további diagnosztikai beállítások elvégzése nélkül. Új gazdagép-szintű metrikákat a Windows és Linux-példányok érhetők el. A metrikák fel nem keverendő össze a Vendég-operációsrendszer-szintű metrikák, hogy rendelkezik-e hozzáférést, ha bekapcsolja az Azure Diagnostics a virtuális gépek vagy virtuálisgép-méretezési készlet. Diagnosztika konfigurálásával kapcsolatos további tudnivalókért lásd: [Újdonságok a Microsoft Azure Diagnostics](../azure-diagnostics.md).
+> (Azure Resource Manager-alapú) virtuális gépek gazdagép-szintű metrikákat érhető el, és a virtuálisgép-méretezési csoportok további diagnosztikai beállítások nélkül. Windows és Linux-példányok új gazdagép-szintű metrikák érhetők el. Ezek a metrikák nem tévesztendő össze az operációsrendszer-vendégszintű metrikákat, hogy mikor kapcsolja be az Azure Diagnostics szolgáltatást a virtuális gépek vagy virtuálisgép-méretezési csoportok a hozzáférést a rendszer. Konfiguruje se Diagnostika kapcsolatos további információkért lásd: [Mi a Microsoft Azure Diagnostics](../azure-diagnostics.md).
 >
 >
 
-Az Azure figyelő is rendelkeznek, egy új mérőszámok diagramkészítési élmény ebben a nézetben. Ez lehetővé teszi a felhasználók számára egy diagram erőforrásairól metrikák átfedő. A felhasználók is megrajzolásához, szegmens, és szűrheti a felhasználói élmény diagramkészítési új mérőszám használatával többdimenziós metrikák. További [kattintson ide](https://aka.ms/azuremonitor/new-metrics-charts)
+Az Azure Monitor egy új metrikák elérhető előzetes verzióban érhető el diagram is tartalmaz. Ez lehetővé teszi a felhasználók számára, hogy egy diagramban különböző erőforrásokból származó metrikák átfedő. A felhasználók is jeleníti, szegmens, és mérőszámmal az új diagramkészítési élmény a többdimenziós metrikák szűrése. További [kattintson ide](https://aka.ms/azuremonitor/new-metrics-charts)
 
 ## <a name="access-metrics-via-the-rest-api"></a>A REST API-n keresztül hozzáférést metrikák
-Azure metrikák az Azure-figyelő API-k keresztül érhetők el. Két API-k, amelyek segítenek felderítése és metrikákat eléréséhez:
+Az Azure-metrikák az Azure Monitor API-kon keresztül érhetők el. Két API-k, amelyek segítségével felderítése, és a mérőszámok elérése:
 
-* Használja a [Azure figyelő metrika definíciók REST API](https://docs.microsoft.com/rest/api/monitor/metricdefinitions) metrikákat, és egyetlen dimenzióhoz sem, a szolgáltatás számára rendelkezésre álló listájának eléréséhez.
-* Használja a [Azure figyelő metrikák REST API](https://docs.microsoft.com/rest/api/monitor/metrics) szegmentálni, szűréséhez, és a tényleges metrikai adatok elérésére.
+* Használja a [Azure Monitor metrikadefiníciók REST API-val](https://docs.microsoft.com/rest/api/monitor/metricdefinitions) metrikák, és minden olyan dimenziót, szolgáltatásként elérhető listájának eléréséhez.
+* Használja a [Azure Monitor-metrikák REST API](https://docs.microsoft.com/rest/api/monitor/metrics) szegmentálására, szűrésére és eléréséhez a tényleges mérőszámadatokat.
 
 > [!NOTE]
-> Ez a cikk ismerteti a metrikák keresztül a [új API-t a metrikák](https://docs.microsoft.com/rest/api/monitor/) az Azure-erőforrások. Az API-verzió az új metrikai meghatározásainak és a metrikák API-k 2018-01-01. Az örökölt metrikai meghatározásainak és a metrikák elérhető verzió 2014-04-01 API-val.
+> Ez a cikk ismerteti a mérőszámok segítségével a [új API-metrikák](https://docs.microsoft.com/rest/api/monitor/) az Azure-erőforrásokhoz. Az új metrikadefinícióinak és mérőszámok API-k API-verzió a 2018-01-01. Az örökölt metrikadefinícióinak beolvasása és a metrikák elérhető lesz a 2014-04-01-es verziójú API-val.
 >
 >
 
-Az Azure figyelő REST API-kkal részletes útmutatást lásd: [Azure figyelő REST API-forgatókönyv](monitoring-rest-api-walkthrough.md).
+Részletes bemutató az Azure Monitor REST API-k használatával, lásd: [Azure Monitor REST API-t bemutató](monitoring-rest-api-walkthrough.md).
 
-## <a name="export-metrics"></a>Exportálás metrikák
-Nyissa meg a **diagnosztikai beállítások** részen a **figyelő** lapra, és a metrikák exportálási beállítások megtekintéséhez. Választható ki metrikák (és diagnosztikai naplók) a Blob storage irányíthatja át az Azure Event Hubs, illetve a Naplóelemzési az ebben a cikkben korábban említett használati esetek.
+## <a name="export-metrics"></a>Metrikák exportálása
+Megnyithatja a **diagnosztikai beállítások** panel a **figyelő** lapra, és az exportálási beállítások mérőszámok megtekintéséhez. Metrikák (és választhat a diagnosztikai naplók) legyen irányítva a Blob storage, az Azure Event Hubsba, vagy a Log Analytics az ebben a cikkben korábban említett használati esetek.
 
- ![Exportálási beállítások a Azure figyelő metrikák](./media/monitoring-overview-metrics/MetricsOverview3.png)
+ ![Exportálási beállítások metrikák az Azure monitorban](./media/monitoring-overview-metrics/MetricsOverview3.png)
 
-A Resource Manager-sablonok, konfigurálható [PowerShell](insights-powershell-samples.md), [Azure CLI](insights-cli-samples.md), vagy [REST API-k](https://msdn.microsoft.com/library/dn931943.aspx).
+A Resource Manager-sablonok használatával konfigurálhat [PowerShell](insights-powershell-samples.md), [Azure CLI-vel](insights-cli-samples.md), vagy [REST API-k](https://msdn.microsoft.com/library/dn931943.aspx).
 
 > [!NOTE]
 > A többdimenziós metrikák diagnosztikai beállításokon keresztül történő küldése jelenleg nem támogatott. A dimenziókkal rendelkező metrikák egybesimított, egydimenziós metrikákként vannak exportálva, összesített dimenzióértékekkel.
@@ -98,29 +98,29 @@ A Resource Manager-sablonok, konfigurálható [PowerShell](insights-powershell-s
 >
 
 ## <a name="take-action-on-metrics"></a>Művelet végrehajtása a metrikák
-Értesítéseket vagy automatikus műveletek végrehajtása a metrikaadatokat, konfigurálhatja a riasztási szabályok vagy az automatikus skálázási beállításokat.
+Értesítéseket fogadni, vagy automatizált műveletek végrehajtása a metrikaadatokat, konfigurálhatja úgy a riasztási szabályok vagy az automatikus méretezési beállítások.
 
-### <a name="configure-alert-rules"></a>A riasztási szabályok konfigurálása
-Riasztási szabályok metrikák a konfigurálható. Ezek a riasztási szabályok ellenőrizheti, ha egy metrika elért egy bizonyos küszöböt. Nincsenek Azure-figyelő által kínált két mérőszám riasztási képességek.
+### <a name="configure-alert-rules"></a>Riasztási szabályok konfigurálása
+Riasztási szabályok metrikákra vonatkozóan is beállíthatja. Ezek a riasztási szabályok ellenőrizheti, ha egy metrika egy bizonyos küszöbértéket elért. Nincsenek Azure Monitor által kínált két metrikaalapú riasztási képességek.
 
-Metrika riasztások: is majd e-mailben értesítse arról, vagy egy egyéni parancsfájlok futtatásához használható webhook érvényesítést. A webhook segítségével is konfigurálhatja a harmadik féltől származó terméket integrációja.
+Metrikákhoz kapcsolódó riasztások: azokat Önt e-mailen keresztül, vagy bármilyen egyéni szkript futtatásához használható webhook aktiválódik. A webhook használatával konfigurálja a külső termékintegrációk.
 
- ![Metrikák és az Azure-figyelő riasztási szabályok](./media/monitoring-overview-metrics/MetricsOverview4.png)
+ ![Metrikák és a riasztási szabályok az Azure monitorban](./media/monitoring-overview-metrics/MetricsOverview4.png)
 
-Újabb metrika riasztásokat is képes több metrikákat, és a küszöbértékek erőforrás figyelése és majd értesítést kérhet a keresztül egy [művelet csoport](/monitoring-action-groups.md). További információ [újabb riasztásokat Itt](https://aka.ms/azuremonitor/near-real-time-alerts).
+Újabb metrikariasztásokat is képes figyelni több mérőszámok és küszöbök, erőforrás, és értesítse Önt keresztül egy [műveletcsoport](monitoring-action-groups.md). Tudjon meg többet [itt újabb riasztások](https://aka.ms/azuremonitor/near-real-time-alerts).
 
 
-### <a name="autoscale-your-azure-resources"></a>Automatikus skálázási az Azure erőforrások
-Egyes Azure-erőforrások támogatja, a méretezés fel- vagy a munkaterhelések kezelésére több példány. Automatikus skálázás App Service (webalkalmazások), a virtuálisgép-méretezési csoportok és a klasszikus Azure-Felhőszolgáltatások vonatkozik. Konfigurálhatja az automatikus skálázási szabályok vertikális fel- vagy egy bizonyos metrika, amely hatással van a számítási feladatok ebbe a megadott küszöbértéket. További információkért lásd: [automatikus skálázás áttekintése](monitoring-overview-autoscale.md).
+### <a name="autoscale-your-azure-resources"></a>Automatikus skálázás az Azure erőforrások
+Egyes Azure-erőforrások támogatja a skálázást fel- vagy több példányban is megtalálhatja a számítási feladatok kezelésére. Az automatikus méretezés App Service (webalkalmazások), a virtuálisgép-méretezési csoportok és a klasszikus Azure-Felhőszolgáltatások vonatkozik. Vertikális fel- vagy, ha egy bizonyos metrikát, amely hatással van a számítási feladatok átlép egy küszöbértéket, Ön által megadott automatikus skálázási szabályokat konfigurálhat. További információkért lásd: [automatikus méretezés áttekintése](monitoring-overview-autoscale.md).
 
- ![Metrikák és az Azure a figyelő automatikus skálázás](./media/monitoring-overview-metrics/MetricsOverview5.png)
+ ![Metrikák és az Azure Monitor automatikus méretezés](./media/monitoring-overview-metrics/MetricsOverview5.png)
 
-## <a name="learn-about-supported-services-and-metrics"></a>Támogatott szolgáltatások és
-A támogatott szolgáltatások és azok metrikákat, részletes listáját megtekintheti [Azure figyelő metrikák--erőforrás típusonkénti támogatott metrikák](monitoring-supported-metrics.md).
+## <a name="learn-about-supported-services-and-metrics"></a>További információ a támogatott szolgáltatások és metrikák
+Megtekintheti a metrikákat, és a támogatott szolgáltatások részletes listáját [Azure Monitor-metrikák--erőforrás típus szerint a támogatott mérőszámok](monitoring-supported-metrics.md).
 
 ## <a name="next-steps"></a>További lépések
-Ez a cikk hivatkozásaiban hivatkozik. Ezenkívül további információk:  
+Tekintse meg az egész cikkben hivatkozásokat. Emellett további információ:  
 
-* [Az automatikus skálázás közös metrikák](insights-autoscale-common-metrics.md)
-* [A riasztási szabályok létrehozása](insights-alerts-portal.md)
-* [A Naplóelemzési az Azure storage naplóinak elemzése](../log-analytics/log-analytics-azure-storage.md)
+* [Gyakori metrikák az automatikus skálázás](insights-autoscale-common-metrics.md)
+* [Riasztási szabályok létrehozása](insights-alerts-portal.md)
+* [A Log Analytics használatával az Azure storage-naplók elemzése](../log-analytics/log-analytics-azure-storage.md)

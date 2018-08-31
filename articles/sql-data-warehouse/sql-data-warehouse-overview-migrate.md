@@ -1,55 +1,55 @@
 ---
-title: Megoldás migrálása az SQL Data Warehouse |} Microsoft Docs
-description: Áttelepítési útmutató az Azure SQL Data Warehouse platform, hogy a megoldás.
+title: Megoldás áttelepítése az SQL Data Warehouse |} A Microsoft Docs
+description: 'Áttelepítési útmutató a múlté: Azure SQL Data Warehouse platform számára.'
 services: sql-data-warehouse
 author: jrowlandjones
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: implement
 ms.date: 04/17/2018
 ms.author: jrj
 ms.reviewer: igorstan
-ms.openlocfilehash: 5a609fb2da1f9dba1247358f64b284fc3e3ef5bc
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: b3e01968c74060bd0dc366609275d63753ad62dd
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31523475"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43306706"
 ---
-# <a name="migrate-your-solution-to-azure-sql-data-warehouse"></a>Megoldás migrálása az Azure SQL Data Warehouse
-Tekintse meg a meglévő adatbázis megoldás áttelepítése az Azure SQL Data Warehouse szerepet játszanak. 
+# <a name="migrate-your-solution-to-azure-sql-data-warehouse"></a>Megoldás áttelepítése az Azure SQL Data warehouse-bA
+Tekintse meg az Azure SQL Data Warehouse-ba való migrálás egy meglévő adatbázis-megoldás vesz részt. 
 
-## <a name="profile-your-workload"></a>Profilhoz, a számítási feladatok
-Az áttelepítést, mielőtt kívánt legyen egyes SQL Data Warehouse a munkaterheléshez ideális megoldás. Az SQL Data Warehouse egy olyan elosztott rendszer készült elemzés végrehajtásához, nagy.  Az SQL Data Warehouse áttelepítése igényel az egyes módosításokat nem túl merevlemez annak megértése, de eltarthat egy ideig megvalósításához. Ha a vállalat által igényelt egy vállalati szintű data warehouse-ba, a következő előnyöket is megéri. Azonban az SQL Data Warehouse power nincs szüksége, esetén költséghatékonyabb SQL Server vagy az Azure SQL Database használatához.
+## <a name="profile-your-workload"></a>A számítási feladatok kiértékelése
+Mielőtt telepít át, szeretné végrehajtani bizonyos az SQL Data Warehouse a számítási feladathoz megoldást. Az SQL Data Warehouse egy olyan elosztott rendszer analytics végre, a nagy mennyiségű adat.  Az SQL Data Warehouse-ba való migrálás szükséges néhány tervezési módosításaival, amely nem túl keményen annak megértése, de végrehajtása hosszabb időt vehet igénybe. Ha a vállalat által igényelt egy nagyvállalati szintű data warehouse-ba, az előnyöket is, megéri-e. Azonban ha már nincs szüksége az SQL Data Warehouse hatékonyságát, SQL Server vagy az Azure SQL Database használata helyett.
 
 Fontolja meg az SQL Data Warehouse amikor Ön:
-- Rendelkezik egy vagy több terabájtos adatkészleteket
-- Szeretné futtatni az analytics a nagy mennyiségű adat
-- Képes számítási és tárolási méretek kell 
-- Szeretné költségeket takaríthat felfüggesztése számítási erőforrásokat, amikor már nincs szükség.
+- Egy vagy több Terabájtnyi adat rendelkezik
+- A nagy mennyiségű adat elemzések futtatására megtervezése
+- Méretezhető számítási és tárolási kell 
+- Szeretné költségeket takaríthat felfüggesztése számítási erőforrásokat, amikor már nincs szükség rájuk.
 
-Ne használjon az SQL Data Warehouse működési (OLTP) munkaterhelések esetén, amelyek rendelkeznek:
-- Nagy gyakoriságú olvasása és írása
-- Egypéldányos nagy számú kiválasztása
-- Egyetlen sor beszúrása jelentős mennyiségű
-- A soronkénti igényeinek feldolgozása
+Ne használja az SQL Data Warehouse működési (OLTP) számítási feladatokhoz, amelyek rendelkeznek:
+- Nagy gyakoriságú írások és olvasások
+- Egyszeres nagy számú kiválasztása
+- Nagy mennyiségű, egyetlen sor beszúrása
+- A soronkénti igények feldolgozása
 - Inkompatibilis formátumban (JSON, XML)
 
 
 ## <a name="plan-the-migration"></a>Az áttelepítés tervezése
 
-Miután eldöntötte, hogy egy meglévő megoldás áttelepítéséhez az SQL Data Warehouse, fontos tervezze meg az áttelepítés elkezdése előtt. 
+Miután eldöntötte, hogy egy meglévő megoldás áttelepítése SQL Data warehouse-ba, fontos az első lépések előtt az áttelepítés tervezése. 
 
-Egy tervezési célja az adatok, a táblasémákat és a kód kompatibilisek-e az SQL Data Warehouse. Bizonyos kompatibilitási különbségek vannak a jelenlegi rendszer és az SQL Data Warehouse közötti megoldása. Áttelepíti, valamint időt Azure vesz nagy mennyiségű adat. Gondosan meg kell tervezni gyorsítja olvashatja be adatait az Azure-bA. 
+Egy tervezési célja, hogy biztosítja az adatok, a táblasémákat, és a kód az SQL Data Warehouse kompatibilisek legyenek. Bizonyos kompatibilitási különbségek vannak a jelenlegi rendszer és az SQL Data Warehouse között megkerüléséhez. Ezen felül időt vesz az Azure-ba való migrálás nagy mennyiségű adat. Gondos tervezést felgyorsítja az Azure-ban adatok beolvasása. 
 
-Egy másik tervezési célja annak érdekében, hogy a megoldás kihasználja a célja, hogy az SQL Data Warehouse biztosításához a lekérdezési teljesítmény tervezési módosításokra. Az adatraktárak bővített tervezése vezet be a különböző kialakítási minták és így hagyományos módszerekkel nem mindig a legjobb. Bár bizonyos tervezési módosításokra áttelepítés után, a folyamat hamarabb módosítása menti a későbbi.
+Egy másik tervezési célja, hogy a megoldás kihasználja az SQL Data warehouse-bA az célja, hogy adja meg a lekérdezési teljesítmény biztosítása érdekében tervezési módosításokat. Méretezési csoport data warehouse-adattárházak kialakítása vezet be a különböző kialakítási minták és így hagyományos megközelítés nem mindig a lehető legjobb. Habár néhány tervezési módosításokat az áttelepítés után, a folyamat hamarabb változtatásokat menti későbbi.
 
-A sikeres áttelepítéshez szüksége a táblasémákat, a kódot és az adatok áttelepítéséhez. Az alábbi áttelepítési témakörök útmutatást lásd:
+Sikeres áttelepítés végrehajtásához szüksége a táblasémákat, a kód és az adatok áttelepítéséhez. Ezek a témakörök útmutatásért lásd:
 
--  [Telepítse át a sémák](sql-data-warehouse-migrate-schema.md)
--  [Telepítse át a kódot](sql-data-warehouse-migrate-code.md)
--  [Adatok áttelepítése](sql-data-warehouse-migrate-data.md). 
+-  [A séma migrálása](sql-data-warehouse-migrate-schema.md)
+-  [Kódok migrálása](sql-data-warehouse-migrate-code.md)
+-  [Az adatok áttelepítését](sql-data-warehouse-migrate-data.md). 
 
 <!--
 ## Perform the migration
@@ -63,7 +63,7 @@ A sikeres áttelepítéshez szüksége a táblasémákat, a kódot és az adatok
 -->
 
 ## <a name="next-steps"></a>További lépések
-A CAT (Ügyféltanácsadói csapatának) is rendelkezik néhány nagy az SQL Data Warehouse útmutatást, amelyek ezek teszik közzé a blogok keresztül.  Tekintse meg a cikk [adatok áttelepítése az Azure SQL Data Warehouse a gyakorlatban] [ Migrating data to Azure SQL Data Warehouse in practice] további útmutatást nyújt az áttelepítési.
+A CAT (Ügyféltanácsadói csapatának) is rendelkezik néhány nagyszerű az SQL Data Warehouse útmutatást, amely tesznek közzé, blogok keresztül.  Vessen egy pillantást a cikk [adatok áttelepítése az Azure SQL Data Warehouse a gyakorlatban] [ Migrating data to Azure SQL Data Warehouse in practice] további útmutatást az áttelepítés.
 
 <!--Image references-->
 

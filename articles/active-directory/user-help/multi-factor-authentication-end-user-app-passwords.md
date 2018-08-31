@@ -12,12 +12,12 @@ ms.component: user-help
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: 86cc98721681750617e374679c38ad29cf5a2362
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 836f426be950e33031ff74276218d1ba59f1f2f7
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42058735"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43300913"
 ---
 # <a name="manage-app-passwords-for-two-step-verification"></a>A kétlépéses ellenőrzéshez alkalmazásjelszók kezelése
 
@@ -38,11 +38,46 @@ Alkalmazásjelszavak használata esetén ne feledje:
 
 Az első kétlépéses ellenőrzés regisztrációja során felhőszolgáltatására, egy jelszót az alkalmazáshoz. Ha több mint egy jelszót, létrehozhat további jelszavak, a kétlépéses ellenőrzés használata alapján:
 
-- **A kétlépéses ellenőrzés használata a Microsoft Azure-fiókra.** Hozzon létre vagy töröljön az alkalmazás a jelszavak a [az Azure portal](https://portal.azure.com). További információ: a [alkalmazásjelszókat, és a kétlépéses ellenőrzés](https://support.microsoft.com/help/12409/microsoft-account-app-passwords-two-step-verification) cikk.
+- **A kétlépéses ellenőrzés használata a munkahelyi vagy iskolai fiókkal és a MyApps portálról.** Hozzon létre vagy töröljön az alkalmazás a jelszavak utasításait a [a MyApps portálról alkalmazásjelszók létrehozása és törlése](#create-and-delete-app-passwords-using-the-myapps-portal) című szakaszát. A MyApps portálról, és hogyan használható a kapcsolatos további információkért lásd: [Mi az a MyApps portálról az Azure Active Directoryban?](active-directory-saas-access-panel-introduction.md).
 
-- **A kétlépéses ellenőrzés használata a személyes Microsoft-fiókjával.** Hozzon létre vagy töröljön az alkalmazás a jelszavak a [biztonsággal kapcsolatos alapok](https://account.microsoft.com/account/) oldal a Microsoft-fiókjához. További információ: a [alkalmazásjelszókat, és a kétlépéses ellenőrzés](https://support.microsoft.com/help/12409/microsoft-account-app-passwords-two-step-verification) cikk.
+- **A kétlépéses ellenőrzés használata a munkahelyi vagy iskolai fiókot és az Office 365 portálra.** Hozzon létre vagy töröljön az alkalmazás a jelszavak utasításait a [Create és delete alkalmazásjelszók használatával az Office 365 portálon](#create-and-delete-app-passwords-using-the-office-365-portal) című szakaszát.
 
-- **A kétlépéses ellenőrzés használata a munkahelyi vagy iskolai fiókot és az Office 365-alkalmazásokat.** Hozzon létre vagy töröljön az alkalmazás a jelszavak utasításait a [Create és delete alkalmazásjelszók használatával az Office 365 portálon](#create-and-delete-app-passwords-using-the-office-365-portal) című szakaszát.
+- **A kétlépéses ellenőrzés használata a személyes Microsoft-fiókjával.** Hozzon létre vagy töröljön az alkalmazás a jelszavak a [biztonsággal kapcsolatos alapok](https://account.microsoft.com/account/) lapra a személyes Microsoft-fiókjához. További információ: a [alkalmazásjelszókat, és a kétlépéses ellenőrzés](https://support.microsoft.com/help/12409/microsoft-account-app-passwords-two-step-verification) cikk.
+
+## <a name="create-and-delete-app-passwords-using-the-myapps-portal"></a>Hozzon létre vagy töröljön a MyApps portálról alkalmazásjelszók
+Hozzon létre, és törli az alkalmazásjelszót a MyApps portálon keresztül.
+
+### <a name="to-create-an-app-password-using-the-myapps-portal"></a>A MyApps portálról alkalmazásjelszó létrehozása
+
+1. Jelentkezzen be a [ https://myapps.microsoft.com ](https://myapps.microsoft.com).
+
+2. Válassza ki a nevét a jobb felső sarokban, és válassza a **profil**.
+
+3. Válassza ki **további biztonsági ellenőrzés**.
+
+   ![Válassza ki a további biztonsági ellenőrzés – képernyőkép](./media/multi-factor-authentication-end-user-app-passwords/myapps1.png)
+
+4. Válassza ki **alkalmazásjelszók**.
+
+   ![Válassza ki az alkalmazásjelszavak – képernyőkép](./media/multi-factor-authentication-end-user-app-passwords/apppass2.png)
+
+5. Kattintson a **Create** (Létrehozás) gombra.
+
+6. Adjon meg egy nevet az alkalmazásjelszót, és válassza **tovább**.
+
+7. Az alkalmazás jelszó másolása a vágólapra, és illessze be az alkalmazásba.
+   
+    ![Alkalmazásjelszó létrehozása](./media/multi-factor-authentication-end-user-app-passwords/create2.png)
+
+### <a name="to-delete-an-app-password-using-the-myapps-portal"></a>A MyApps portálról alkalmazásjelszó törlése
+
+1. Nyissa meg a profil, és válassza **további biztonsági ellenőrzési**.
+
+2. Válassza ki **alkalmazásjelszók**, majd válassza ki **törlése** melletti törli az alkalmazásjelszót.
+
+   ![Alkalmazásjelszó törlése](./media/multi-factor-authentication-end-user-app-passwords/delete1.png)
+
+3. Válassza ki **Igen** annak ellenőrzéséhez, hogy törölje a jelszavát, és válassza ki a kívánt **Bezárás**.
 
 ## <a name="create-and-delete-app-passwords-using-the-office-365-portal"></a>Hozzon létre vagy töröljön az alkalmazásjelszókat, az Office 365-portál használatával
 
@@ -77,46 +112,6 @@ Ha a kétlépéses ellenőrzés használja a munkahelyi vagy iskolai fiókot és
     Az alkalmazásjelszó törlése sikeresen megtörtént.
 
 5. Kövesse a lépéseket az új jelszót hozzon létre egy alkalmazásjelszót létrehozásához.
-
-## <a name="manage-app-passwords-in-the-azure-portal"></a>Az Azure Portalon alkalmazásjelszók kezelése
-
-Az Azure-ral használatakor a kétlépéses ellenőrzést, alkalmazásjelszavakat az Azure Portalon keresztül szeretné.
-
-## <a name="manage-app-passwords-with-the-myapps-portal"></a>A MyApps portálról szolgáltatással használt alkalmazásjelszók kezelése
-
-Akkor is törölhetnek és hozhatnak létre alkalmazásjelszókat keresztül a saját alkalmazások portál.
-
-### <a name="to-create-an-app-password-using-the-my-apps-portal"></a>Hozhat létre egy alkalmazásjelszót a saját alkalmazások portál használatával
-
-1. Jelentkezzen be a [ https://myapps.microsoft.com ](https://myapps.microsoft.com).
-
-2. Válassza ki a nevét a jobb felső sarokban, és válassza a **profil**.
-
-3. Válassza ki **további biztonsági ellenőrzés**.
-
-   ![Válassza ki a további biztonsági ellenőrzés – képernyőkép](./media/multi-factor-authentication-end-user-app-passwords/myapps1.png)
-
-4. Válassza ki **alkalmazásjelszók**.
-
-   ![Válassza ki az alkalmazásjelszavak – képernyőkép](./media/multi-factor-authentication-end-user-app-passwords/apppass2.png)
-
-5. Kattintson a **Create** (Létrehozás) gombra.
-
-6. Adjon meg egy nevet az alkalmazásjelszót, és válassza **tovább**.
-
-7. Az alkalmazás jelszó másolása a vágólapra, és illessze be az alkalmazásba.
-   
-    ![Alkalmazásjelszó létrehozása](./media/multi-factor-authentication-end-user-app-passwords/create2.png)
-
-### <a name="to-delete-an-app-password-using-the-my-apps-portal"></a>Törli az alkalmazásjelszót a saját alkalmazások portál használatával
-
-1. Nyissa meg a profil, és válassza **további biztonsági ellenőrzési**.
-
-2. Válassza ki **alkalmazásjelszók**, majd válassza ki **törlése** melletti törli az alkalmazásjelszót.
-
-   ![Alkalmazásjelszó törlése](./media/multi-factor-authentication-end-user-app-passwords/delete1.png)
-
-3. Válassza ki **Igen** annak ellenőrzéséhez, hogy törölje a jelszavát, és válassza ki a kívánt **Bezárás**.
 
 ## <a name="if-your-app-passwords-arent-working-properly"></a>Ha az alkalmazásjelszavak nem működik megfelelően
 

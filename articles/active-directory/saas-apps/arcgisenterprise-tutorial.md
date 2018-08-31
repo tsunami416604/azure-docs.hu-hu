@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/23/2018
 ms.author: jeedes
-ms.openlocfilehash: ca5bf7ae49cf120c0566419ccadeff92433c6467
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: ea2b32b43fedacba7b8a60db29762c32fda65aa5
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42819897"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43306342"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-arcgis-enterprise"></a>Oktatóanyag: Azure Active Directory-integráció az ArcGIS Enterprise
 
@@ -120,7 +120,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<EXTERNAL_DNS_NAME>/portal/sharing/rest/oauth2/saml/signin`
 
     > [!NOTE]
-    > Ezek a értékei nem valódi. Frissítse a tényleges azonosítóját, válasz URL-cím és bejelentkezési URL-ezeket az értékeket. Kapcsolattartó [ArcGIS vállalati ügyfél-támogatási csapatának](mailto:nshampur@esri.com) beolvasni ezeket az értékeket. Az azonosító értéket kap **identitásszolgáltató beállítása** szakaszban, az oktatóanyag későbbi részében ismertetett.
+    > Ezek a értékei nem valódi. Frissítse a tényleges azonosítóját, válasz URL-cím és bejelentkezési URL-ezeket az értékeket. Kapcsolattartó [ArcGIS vállalati ügyfél-támogatási csapatának](mailto:support@esri.com) beolvasni ezeket az értékeket. Az azonosító értéket kap **identitásszolgáltató beállítása** szakaszban, az oktatóanyag későbbi részében ismertetett.
 
 5. Az a **SAML-aláíró tanúsítvány** területén kattintson a Másolás gombra, hogy **alkalmazás összevonási metaadatainak URL-címe** , és illessze be a Jegyzettömbbe.
 
@@ -195,7 +195,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 Ez a szakasz célja egy ArcGIS vállalati Britta Simon nevű felhasználó létrehozásához. ArcGIS vállalati támogatja a just-in-time-kiépítés, amely alapértelmezésben engedélyezve van. Nincs meg ebben a szakaszban a művelet elem. Új felhasználó próbál hozzáférni a vállalati ArcGIS, ha még nem létezik jön létre.
 
 > [!Note]
-> Ha manuálisan hozzon létre egy felhasználót van szüksége, forduljon a [ArcGIS vállalati támogatási csapatának](mailto:nshampur@esri.com).
+> Ha manuálisan hozzon létre egy felhasználót van szüksége, forduljon a [ArcGIS vállalati támogatási csapatának](mailto:support@esri.com).
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 

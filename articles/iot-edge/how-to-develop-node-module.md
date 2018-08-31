@@ -9,12 +9,12 @@ ms.author: xshi
 ms.date: 06/26/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 78e952b5b1eedc1757cfe636eb13e411044dce54
-ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
+ms.openlocfilehash: fbf8a0302ae8414f49a055ab260a52222425ab7c
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42060815"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43287194"
 ---
 # <a name="develop-and-debug-nodejs-modules-with-azure-iot-edge-for-visual-studio-code"></a>Fejlesztés és hibakeresés a Node.js modulok az Azure IoT Edge segítségével a Visual Studio Code
 
@@ -92,7 +92,7 @@ Minden modul mappában nincsenek különböző tároló esetében több Docker-f
 
 2. A VS Code parancskatalógus, írja be, és futtassa a parancsot **Azure IoT Edge: Build IoT Edge solution**.
 3. Válassza ki a `deployment.template.json` a megoldás a parancskatalógus a fájlt. 
-4. Az Azure IoT Hub-eszközök Explorerben kattintson a jobb gombbal egy IoT Edge-eszköz azonosítója, majd válassza ki **hozzon létre IoT Edge-eszköz üzembe helyezése**. 
+4. Az Azure IoT Hub-eszközök Explorerben kattintson a jobb gombbal egy IoT Edge-eszköz azonosítója, majd válassza ki **hozzon létre telepítést az adott eszköz**. 
 5. Nyissa meg a **config** mappában, hogy a megoldás, majd válassza ki a `deployment.json` fájlt. Kattintson a **Select Edge Deployment Manifest** (Edge üzembehelyezési jegyzék kiválasztása) elemre. 
 
 Láthatja majd a központi telepítés sikeres létrehozása a központi telepítés azonosítója a VS Code integrált terminál.

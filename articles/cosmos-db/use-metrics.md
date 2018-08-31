@@ -11,21 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/25/2017
 ms.author: govindk
-ms.openlocfilehash: 3c5629dc1ad87456583f5a713f16e696bc9b7b1e
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: e4bc8af7533b3d18f9e04f431d6c9f97e0982ae5
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37858663"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43286669"
 ---
 # <a name="monitoring-and-debugging-with-metrics-in-azure-cosmos-db"></a>Figyelés és az Azure Cosmos DB metrikákkal hibakeresés
 
 Az Azure Cosmos DB mérőszámait átviteli sebesség, a storage, a konzisztencia, a rendelkezésre állás és a késés. A [az Azure portal](https://portal.azure.com) összesített nézete metrikák; a részletes metrikákért, mind az ügyfél SDK-t és a [diagnosztikai naplók](./logging.md) érhetők el.
-
-Az új mérőszámok áttekintése, és ismerje meg a keresés forró partíciók az adatbázisban, a következő videó az Azure Friday:
-
-> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Azure-Cosmos-DB-Get-the-Most-Out-of-Provisioned-Throughput/player]
-> 
 
 Ez a cikk végigvezeti a gyakori használati esetek és hogyan az Azure Cosmos DB-metrikák elemzéséhez, és ezeket a problémákat hibakeresés használható. Metrikák legyenek gyűjtve 5 percenként, és hét napig megőrződnek.
 

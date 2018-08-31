@@ -9,12 +9,12 @@ ms.author: xshi
 ms.date: 07/20/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 9fc067c46828079f7369683b5edec682747cd5c7
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: 65495893d93fddd6d8e13ae80720e002ac7d8efa
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39391452"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43307488"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-c-modules-for-azure-iot-edge"></a>Fejlesztés és hibakeresés a C-modulok az Azure IoT Edge-hez a Visual Studio Code használatával
 
@@ -29,7 +29,7 @@ Ez a cikk feltételezi, hogy egy számítógép vagy futtató fejlesztői gépen
 Mivel ez a cikk a fő fejlesztőeszközt, Visual Studio Code-ot használ, a VS Code telepítése. Ezután adja hozzá a szükséges bővítmények:
 * [Visual Studio Code](https://code.visualstudio.com/) 
 * [Az Azure IoT Edge-bővítmény](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) 
-* [C/C++-bővítmény](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools) a Visual Studio Code.
+* [C/C++-bővítmény](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools) a Visual Studio Code-hoz.
 * [Docker-bővítmény](https://marketplace.visualstudio.com/items?itemName=PeterJausovec.vscode-docker)
 
 Hozzon létre egy modult, a modul rendszerképének és a egy tároló-beállításjegyzéket, amely tárolja a modul rendszerképének létrehozása Docker szüksége:
@@ -85,7 +85,7 @@ Minden modul mappában nincsenek különböző tároló esetében több Docker-f
 
     ![Adjon hozzá x .debug, a rendszerkép neve](./media/how-to-develop-c-module/image-debug.png)
 
-2. Cserélje le a Node.js-modul createOptions a **deployment.template.json** az alábbi tartalmat, és mentse a fájlt: 
+2. Cserélje le a C modul createOptions a **deployment.template.json** az alábbi tartalmat, és mentse a fájlt: 
     
     ```json
     "createOptions": "{\"HostConfig\": {\"Privileged\": true}}"
@@ -93,7 +93,7 @@ Minden modul mappában nincsenek különböző tároló esetében több Docker-f
 
 2. A VS Code parancskatalógus adja meg, és futtassa a parancsot **Edge: Build IoT Edge solution**.
 3. Válassza ki a `deployment.template.json` a megoldás a parancskatalógus a fájlt. 
-4. Az Azure IoT Hub Device Explorer kattintson a jobb gombbal egy IoT Edge-eszköz. Válassza ki **hozzon létre IoT Edge-eszköz üzembe helyezése**. 
+4. Az Azure IoT Hub Device Explorer kattintson a jobb gombbal egy IoT Edge-eszköz. Válassza ki **hozzon létre telepítést az adott eszköz**. 
 5. Nyissa meg a megoldást **config** mappát. Válassza ki a `deployment.json` fájlt. Válasszon **válassza ki a peremhálózati Manifest Nasazení**. 
 
 Látni fogja az üzembe helyezés a VS Code integrált terminálon egy üzembe helyezési Azonosítóval rendelkező létrehozása sikerült.
@@ -113,7 +113,7 @@ A VS Code tartja a hibakeresés konfigurációs információinak egy `launch.jso
 
 4. A VS Code hibakereső nézet láthatja a változókat a bal oldali panelen. 
 
-Az előző példa bemutatja, hogyan lehet hibákat keresni a C IoT Edge-modulok a tárolók. Ez a modul tároló createOptions elérhetővé tett port egészül ki. Miután befejezte a hibakeresés a Node.js modulok, javasoljuk, éles használatra kész IoT Edge-modulok számára elérhetővé tett portokon távolítsa el.
+Az előző példa bemutatja, hogyan lehet hibákat keresni a C IoT Edge-modulok a tárolók. Ez a modul tároló createOptions elérhetővé tett port egészül ki. Miután elvégezte a C modulok hibakeresés, javasoljuk, hogy eltávolítja ezeket a közzétett portokat éles használatra kész IoT Edge-modulok.
 
 ## <a name="next-steps"></a>További lépések
 

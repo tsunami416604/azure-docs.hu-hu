@@ -3,14 +3,14 @@ title: VMware-ből az Azure-bA architektúra az Azure Site Recovery |} A Microso
 description: Ez a cikk áttekintést az Azure-bA az Azure Site Recovery a helyszíni VMware virtuális gépek replikálásakor használt összetevőkről és architektúráról
 author: rayne-wiselman
 ms.service: site-recovery
-ms.date: 07/06/2018
+ms.date: 08/29/2018
 ms.author: raynew
-ms.openlocfilehash: 48adf61dc0f1796b820e1e14ca509d4618c6256b
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 4a97c44226d875a08f81a6306fc9ddd4ee29c409
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37920567"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43288141"
 ---
 # <a name="vmware-to-azure-replication-architecture"></a>VMware-ből az Azure-replikáció architektúrája
 
@@ -32,22 +32,7 @@ A következő táblázat és grafikus adja meg a VMware – Azure replikálás h
 
 ![Összetevők](./media/vmware-azure-architecture/arch-enhanced.png)
 
-## <a name="configuration-steps"></a>Konfigurációs lépések
 
-A széles körű beállítása a VMware Azure-beli vészhelyreállításához vagy az áttelepítés lépései a következők:
-
-1. **Állítsa be az Azure-összetevőket**. Azure-fiók megfelelő engedélyekkel, egy Azure storage-fiókot, az Azure virtuális hálózat és egy Recovery Services-tároló van szüksége. [További információk](tutorial-prepare-azure.md).
-2. **Állítsa be a helyszíni**. Ezek közé tartozik a fiók létrehozásával a VMware-kiszolgálón úgy, hogy a Site Recovery képes automatikusan felderíteni a virtuális gépek replikálása, állítson be egy fiókot, amely a mobilitási szolgáltatás összetevőt telepíteni a replikálni kívánt virtuális gépeken is használható, és annak ellenőrzésére, hogy a VMware-kiszolgálók és a virtuális gépek megfeleljenek az előfeltételeknek. Igény szerint is előkészítheti, ezeket az Azure virtuális géphez való kapcsolódásra a feladatátvételt követően. A Site Recovery virtuális Gépet replikálja az Azure storage-fiókba, és az adatok használatával, amikor feladatátvételt végez az Azure-bA az Azure virtuális gépeket hoz létre. [További információk](vmware-azure-tutorial-prepare-on-premises.md).
-3. **A replikáció beállítása**. Úgy dönt, hogy hová szeretné replikálni. Konfigurálja a forrás replikációs környezet létrehozásával egy egyetlen helyszíni VMware virtuális gép (a konfigurációs kiszolgáló), amely futtatja az összes a helyszíni Site Recovery-összetevők, amelyekre szüksége. A telepítés után regisztrálja a konfigurációs kiszolgáló gép a Recovery Services-tároló. Ezután válassza ki a cél-beállításokat. [További információk](vmware-azure-tutorial.md).
-4. **Replikációs házirend létrehozása**. Létrehoz egy replikációs házirendet, amely meghatározza, hogyan történjen a replikációs. 
-    - **Helyreállítási Időkorlát küszöbértéke**: A figyelési állapotok Ha replikációs megadott időn belül nem jelentkezik, egy riasztás (és opcionálisan egy e-mailt) jelenik meg. Például ha beállította a helyreállítási Időkorlát küszöbértéke – 30 percet, és a egy probléma megakadályozza, hogy a replikáció le a teljesítményfigyelésből 30 percig, az esemény jön létre. Ez a beállítás nincs hatással a replikáció. Replikáció folyamatos, és néhány perces időközönként létrehozott helyreállítási pontok
-    - **Adatmegőrzési**: helyreállítási pont megőrzési Megadja, mennyi ideig helyreállítási pontok az Azure-ban kell tárolni. Adjon meg egy 0 és a premium storage 24 óra közötti értéket, vagy akár 72 órát standard szintű tárolóra vonatkozó. Adhatók át a legutóbbi helyreállítási pontot, vagy egy tárolt pont Ha az érték nagyobb, mint nulla. A megőrzési időszak után a helyreállítási pontok üríti ki.
-    - **Összeomlás-konzisztens pillanatképekkel**: alapértelmezés szerint a Site Recovery összeomlás-konzisztens pillanatképeket készít, és helyreállítási pontok létrehozása velük néhány perces időközönként. Helyreállítási pont összeomlás-konzisztens, ha az adatok egymáshoz összetevők összes írási sorrend egységes, amilyenek korábban voltak azonnali, a helyreállítási pont létrehozása. Segít jobban megérteni, imagine egy áramkimaradás vagy egy hasonló esemény után a számítógép merevlemez-meghajtón lévő adatok állapotát. Összeomlás-konzisztens helyreállítási pont általában elegendő, ha az alkalmazás úgy lett kialakítva, egy összeomlási adatok inkonzisztenciákat nélkül helyreállíthatók.
-    - **Alkalmazáskonzisztens pillanatképek**: Ha ez az érték nem nulla, a virtuális gépen futó mobilitási szolgáltatás próbál-e előállítani a rendszer alkalmazáskonzisztens pillanatképeket és helyreállítási pontokat. Az első pillanatkép készül a kezdeti replikáció befejeződése után. Ezt követően pillanatképet készíteni a megadott gyakorisággal. Helyreállítási pont akkor alkalmazáskonzisztens, ha írási sorrend mellett egységes, futó alkalmazások összes üzemeltetési feladataik elvégzéséhez, és lemezre (alkalmazás leépítése) a puffer ürítése. Alkalmazáskonzisztens helyreállítási pontok használata akkor javasolt, például az SQL, Oracle és az Exchange adatbázis-alkalmazások esetében. Ha egy összeomlás-konzisztens pillanatkép elegendő, ezt az értéket 0-ra is állítható.  
-    - **Több virtuális gépre kiterjedő konzisztencia**: igény szerint létrehozhat egy replikációs csoportot. Ezután, amikor a replikáció engedélyezése virtuális gépek gyűjthet a csoportba. A replikációt a virtuális gépek replikálása egy csoportba, és feladatátvételkor összeomlás-konzisztens és alkalmazáskonzisztens helyreállítási pontok megosztottak. Ezt a beállítást használjon óvatosan, mivel ez befolyásolhatja a fájlrendszerek több gépen begyűjthető szükséges pillanatképként számítási feladatok teljesítményére. Csak akkor válassza ezt, ha a virtuális gépek ugyanazt a számítási feladatok és konzisztens kell futtatni, és a virtuális gépek hasonló churns rendelkeznek. Egy csoport legfeljebb 8 virtuális gépeket adhat hozzá. 
-5. **Virtuális gép replikálásának engedélyezése**. Végül engedélyezheti a helyszíni VMware virtuális gépek replikációját. Ha létrehozott egy fiókot a mobilitási szolgáltatás telepítése, és meg, hogy a Site Recovery kell tennie egy ügyfélleküldéses telepítést, majd a mobilitási szolgáltatás települ az egyes virtuális Gépeken, amelyekre a replikáció engedélyezése. [További információk](vmware-azure-tutorial.md#enable-replication). Ha létrehozott egy replikációs csoportot a virtuális gépre kiterjedő konzisztencia, a virtuális gépek ehhez a csoporthoz is hozzáadhat.
-6. **Feladatátvételi teszt**. Után minden be van állítva, érdemes egy feladatátvételi tesztet, ellenőrizze, hogy virtuális gépeket átadja a feladatokat az Azure elvárt módon. [További információk](tutorial-dr-drill-azure.md).
-7. **Feladatátvétel**. Ha még csak át a virtuális gépek az Azure - feladatátvételt teljes valósítható meg. Vészhelyreállítás beállítása, ha a teljes feladatátvétel szükség szerint futtathatja. Teljes vészhelyreállítás az Azure-ba, a feladatátvételt követően, sikertelen lehet a helyszíni hely, és elérhetővé válik. [További információk](vmware-azure-tutorial-failover-failback.md).
 
 ## <a name="replication-process"></a>Replikációs folyamat
 

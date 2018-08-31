@@ -11,12 +11,12 @@ ms.topic: article
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, tárolók
 manager: douge
-ms.openlocfilehash: 001d58aa22d4fc52acebfc88ba07d2467c1be08e
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 3f45d8059cd4af5dbab64fef798b61e439a5f2fc
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42055303"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43286874"
 ---
 # <a name="troubleshooting-guide"></a>Hibaelhárítási útmutató
 
@@ -106,6 +106,16 @@ Ez a hiba megjelenhet, ha azds.exe nincs telepítve vagy megfelelően konfigurá
     ```cmd
     az aks use-dev-spaces -n <cluster-name> -g <resource-group>
     ```
+
+## <a name="warning-dockerfile-could-not-be-generated-due-to-unsupported-language"></a>Figyelmeztetés: a docker-fájl nem hozható létre, miatt nem támogatott nyelvet"
+Az Azure fejlesztési tárolóhelyek C# és Node.js natív támogatást biztosít. Futtatásakor *azds előkészítő* egy ezeken a nyelveken írt kódot tartalmazó könyvtárban, Azure fejlesztési tárolóhelyek automatikusan létrehoz egy megfelelő docker-fájl az Ön számára.
+
+Továbbra is használhatja az Azure fejlesztési tárolóhelyek más nyelven írt kóddal, de hozza létre a docker-fájl futtatása előtt kell *mentése azds* először.
+
+### <a name="try"></a>Próbálja ki:
+Ha az alkalmazás, hogy az Azure fejlesztési tárolóhelyek nem támogatja natív módon nyelven íródott, adjon meg egy megfelelő docker-fájlban, állítson össze egy tárolórendszerképet a kódja fut. szüksége. Docker biztosít egy [ajánlott eljárások a docker-fájlok írása listája](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/) , valamint egy [Dockerfile referencia](https://docs.docker.com/engine/reference/builder/) , amellyel ehhez.
+
+Miután már működik a megfelelő docker-fájlban, folytathatja, futtató *mentése azds* az alkalmazás futtatásához az Azure fejlesztési szóközöket.
 
 ## <a name="error-upstream-connect-error-or-disconnectreset-before-headers"></a>Hiba történt "felső csatlakozási hiba vagy leválasztása/alaphelyzetbe állítása előtt fejlécek"
 Ez a hiba jelenhet meg a szolgáltatás elérésére tett kísérlet során. Például ha, nyissa meg a szolgáltatás URL-címét egy böngészőben. 

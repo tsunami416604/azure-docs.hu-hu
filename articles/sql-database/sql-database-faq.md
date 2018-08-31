@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: reference
 ms.topic: conceptual
-ms.date: 08/27/2018
+ms.date: 08/29/2018
 ms.author: carlrab
-ms.openlocfilehash: 7f784689e8437d92cf4fc4974983d3ae1455f11b
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: a7837ac6af82b5c67ea5779340aedc16cb78d156
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43091824"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43286332"
 ---
 # <a name="sql-database-faq"></a>SQL Database GYIK
 
@@ -22,8 +22,10 @@ ms.locfileid: "43091824"
 A jelenlegi verzió az SQL Database V12-es. Verzió V11 visszavontuk.
 
 ## <a name="what-is-the-sla-for-sql-database"></a>Mit jelent az SLA-t az SQL Database?
-Garantáljuk, hogy az idő legalább 99,99 %, a, hogy rendelkezik a Microsoft Azure SQL Database és az internetes átjárónkhoz között a szolgáltatási szintben függetlenül. További információkért lásd: [SLA](http://azure.microsoft.com/support/legal/sla/).
+Garantáljuk, hogy az idő legalább 99,99 %, a, hogy rendelkezik a Microsoft Azure SQL Database és az internetes átjárónkhoz között a szolgáltatási szintben függetlenül. 0,01 % javítások, frissítések és feladatátvétel van fenntartva. További információkért lásd: [SLA](http://azure.microsoft.com/support/legal/sla/). Azure SQL Database a rendelkezésre állási architektúrával kapcsolatos információk: [magas rendelkezésre állást és az Azure SQL Database](sql-database-high-availability.md). 
 
+## <a name="can-i-control-when-patching-downtime-occurs"></a>Szabályozhatom javítás leállás esetén
+Nem. A javítás hatását az általában nem noticable Ha Ön [újrapróbálkozási logikát alkalmazni](sql-database-develop-overview.md#resiliency) az alkalmazásban.
 ## <a name="what-is-the-new-vcore-based-purchasing-model-for-azure-sql-database"></a>Mi az az új vCore-alapú vásárlási modell az Azure SQL Database?
 
 Az új vásárlási modell mellett továbbra is használható a már meglévő DTU-alapú modell. A Virtuálismag-alapú modell úgy tervezték, hogy ügyfelei rugalmasan, átláthatóság, vezérlőelem, és a közvetlen módon lefordítani a helyszíni tevékenységprofil követelményeinek a felhőben. Azt is lehetővé teszi, hogy ügyfelek számára, hogy azok számítási és tárolási erőforrást, a munkaterhelés igényei alapján. Önálló adatbázis és rugalmas készlet beállításai a Virtuálismag-modell használatával jogosultak is fel, a 30 %-os megtakarítást a [SQL Serverhez készült Azure Hybrid Use Benefit](../virtual-machines/windows/hybrid-use-benefit-licensing.md). Lásd: [DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md) és [Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md) további információt. 

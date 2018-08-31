@@ -6,19 +6,19 @@ author: jovanpop-msft
 manager: craigg
 ms.service: sql-database
 ms.topic: conceptual
-ms.date: 08/15/2018
+ms.date: 08/29/2018
 ms.author: jovanpop
 ms.reviewer: carlrab, sashan
-ms.openlocfilehash: 329af89e52af6f3599e2d86e6ac6d28b8b63f333
-ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
+ms.openlocfilehash: f056bfa33e2a43af60357d6bf50a0b9cd8d7f254
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42061411"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43286297"
 ---
 # <a name="high-availability-and-azure-sql-database"></a>Magas rendelkezésre állású és az Azure SQL Database
 
-Az Azure SQL Database magas rendelkezésre állású adatbázis szolgáltatás, amely garantálja, hogy az adatbázis mentése és futó 99,99 %-os aggódniuk a karbantartás és leállás nélkül platformmegbízhatósági. Ez a egy teljes körűen felügyelt SQL Server adatbázismotor-folyamat, amely biztosítja, hogy az SQL Server-adatbázis mindig frissíteni vagy javítani anélkül, hogy ez hatással lenne a számítási feladatok Azure-felhőben lévő üzemeltetett. Az Azure SQL Database még akkor is, biztosítva, hogy az adatok mindig elérhető a kritikus fontosságú esetekben állíthatja helyre.
+Az Azure SQL Database magas rendelkezésre állású adatbázis szolgáltatás, amely garantálja, hogy az adatbázis mentése és futó 99,99 %-os aggódniuk a karbantartás és leállás nélkül platformmegbízhatósági. Ez a egy teljes körűen felügyelt SQL Server adatbázismotor-folyamat, amely biztosítja, hogy az SQL Server-adatbázis mindig frissíteni vagy javítani anélkül, hogy ez hatással lenne a számítási feladatok Azure-felhőben lévő üzemeltetett. Ha egy példány van-e javítani, vagy átadja a feladatokat, az állásidő az általában nem noticable Ha, [újrapróbálkozási logikát alkalmazni](sql-database-develop-overview.md#resiliency) az alkalmazásban. Ha a feladatátvétel elvégzéséhez szükséges idő 60 másodpercnél hosszabb, nyisson meg egy támogatási esetet. Az Azure SQL Database még akkor is, biztosítva, hogy az adatok mindig elérhető a kritikus fontosságú esetekben állíthatja helyre.
 
 Az Azure platform teljes körű kezeli az Azure SQL-adatbázisok és adatvesztés nélkül, és a magas százalékos adatok rendelkezésre állását garantálja. Az Azure automatikusan kezeli a javítás, biztonsági mentések, replikációs, hibaészlelés, lehetséges alapul szolgáló hardver, szoftvereket vagy hálózati hibák, üzembe helyezése hibajavításokat tartalmaz, feladatátvételi teszteket, adatbázis-frissítés és más karbantartási feladatokhoz. Az SQL Server-mérnökök végrehajtották a legismertebb eljárások annak biztosítása, hogy a karbantartási műveleteket végezhető el kisebb, mint az adatbázis élettartama során idő 0,01 %. Ez az architektúra célja annak biztosítása érdekében, hogy véglegesített adatokat soha nem elvész, és hogy karbantartási műveleteket anélkül, hogy ez hatással lenne a számítási feladatok. Nincsenek, a karbantartási időszakok vagy állásidőt eredményezhetett, miközben az adatbázis frissítve vagy fenntartott, állítsa le a számítási feladatok elvégzéséhez szükséges. Beépített magas rendelkezésre állás az Azure SQL Database garantálja, hogy az adatbázis soha nem lesznek a szoftver az architektúrában hibaérzékeny pont.
 

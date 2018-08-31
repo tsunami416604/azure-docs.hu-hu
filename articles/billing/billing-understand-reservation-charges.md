@@ -1,5 +1,5 @@
 ---
-title: Megismerheti az Azure a foglalási kedvezményt |} A Microsoft Docs
+title: Megismerheti a kedvezményes Azure-foglalások |} A Microsoft Docs
 description: Ismerje meg, hogyan a foglalási kedvezményt alkalmazott futtató SQL-adatbázisok.
 services: billing
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2018
 ms.author: yashar
-ms.openlocfilehash: 3a5339200309a50eace5b48dfbd9127b7eb1dae6
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 923337291d297832e03892b505f4efa8d3bb3f36
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39634688"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43300714"
 ---
 # <a name="understand-how-an-azure-reservation-discount-is-applied-to-sql-databases"></a>Megismerheti, hogyan kell alkalmazni az Azure a foglalási kedvezményt SQL-adatbázisok
 
@@ -40,11 +40,11 @@ Ezekben a példákban a többi feltételezik, hogy az SQL Database szolgáltatá
 - 3. forgatókönyv: Futtatja az egyik, 13:30 = 1997031213 16 magos, 1 du az SQL Database. Egy másik 16 mag SQL Database 1:30 2 pm futtassa. A foglalási kedvezményt is tartoznak.
 - 4. forgatókönyv: Futtatja egy 13:45-kor a 16 magos, 1 du az SQL Database. Egy másik 16 mag SQL Database 1:30 2 pm futtassa. A 15 perces átfedési használatalapú fizetéssel díjkötelesek. A compute használatát a hátralevő időben alkalmazza a foglalási kedvezményt.
 
-Ismertetése és használati jelentések számlázási megtekintheti az alkalmazást az Azure foglalások: [ismertetése Azure foglalás használatának](https://go.microsoft.com/fwlink/?linkid=862757).
+Ismertetése és használati jelentések számlázási megtekintheti az alkalmazást az Azure-foglalások: [ismertetése Azure foglalás használatának](https://go.microsoft.com/fwlink/?linkid=862757).
 
 ## <a name="next-steps"></a>További lépések
 
-Azure foglalások kapcsolatos további információkért tekintse meg a következő cikkeket:
+Azure-foglalások kapcsolatos további információkért tekintse meg a következő cikkeket:
 
 - [Mik az Azure-foglalásokat?](billing-save-compute-costs-reservations.md)
 - [Fizessen elő az Azure fenntartott VM-példányok a virtuális gépekkel](../virtual-machines/windows/prepay-reserved-vm-instances.md)

@@ -3,19 +3,19 @@ title: Az Azure SQL Data Warehouse kibocsátási megjegyzések 2018 április |} 
 description: Kibocsátási megjegyzések az Azure SQL Data warehouse-hoz.
 services: sql-data-warehouse
 author: twounder
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
 ms.date: 07/23/2018
 ms.author: twounder
 ms.reviewer: twounder
-ms.openlocfilehash: aabda90deb9634ef456f1006bccb69375f63fc97
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: f1a3b99d40435bf2b7e33f81a43372f304fbb856
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39323993"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43287003"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-april-2018"></a>Mi az új Azure SQL Data warehouse? 2018. április
 Az Azure SQL Data Warehouse fejlesztései folyamatosan kap. Ez a cikk ismerteti az új szolgáltatásokat és változásokat tartalmazza, amelyek a 2018 április.

@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: elioda
-ms.openlocfilehash: e94b023275f3992bea9595195688eebf42f0f229
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: b5e0a0caacab2413b640c58575673e555eeb76a4
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39186788"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43288278"
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>Megismerheti és ikereszközök használata az IoT hubban
 
@@ -254,7 +254,7 @@ Címkék, kívánt tulajdonságok, jelentett tulajdonságok jsou JSON-objektumok
     }
     ```
 
-* Az összes karakterlánc-értékeket is lehet, legfeljebb 4 KB-os hossza.
+* Az összes karakterlánc-értékek legfeljebb 512 bájt hosszúságú lehet.
 
 ## <a name="device-twin-size"></a>Device twin mérete
 Az IoT Hub kényszerít egy 8 KB-os korlátozás megfelelő a Összértékek az egyes `tags`, `properties/desired`, és `properties/reported`, kivéve a csak olvasható elemeket.
@@ -354,6 +354,7 @@ Próbálja ki a jelen cikkben ismertetett fogalmakat, tekintse meg az IoT Hub an
 
 * [Az eszközpárok használata][lnk-twin-tutorial]
 * [Eszköz-ikertulajdonságok használata][lnk-twin-properties]
+* [Eszközfelügyelet a VS Code az Azure IoT-eszközkészlet][lnk-twin-vscode]
 
 <!-- links and images -->
 
@@ -377,6 +378,7 @@ Próbálja ki a jelen cikkben ismertetett fogalmakat, tekintse meg az IoT Hub an
 [lnk-devguide-jobs]: iot-hub-devguide-jobs.md
 [lnk-twin-tutorial]: iot-hub-node-node-twin-getstarted.md
 [lnk-twin-properties]: tutorial-device-twins.md
+[lnk-twin-vscode]: iot-hub-device-management-iot-toolkit.md
 [lnk-twin-metadata]: iot-hub-devguide-device-twins.md#device-twin-metadata
 [lnk-concurrency]: iot-hub-devguide-device-twins.md#optimistic-concurrency
 [lnk-reconnection]: iot-hub-devguide-device-twins.md#device-reconnection-flow

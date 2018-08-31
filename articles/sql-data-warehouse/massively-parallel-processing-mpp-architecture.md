@@ -1,41 +1,41 @@
 ---
-title: Az SQL Data Warehouse - MPP architektúra |} Microsoft Docs
-description: Ismerje meg, hogyan egyesíti az Azure SQL Data Warehouse a nagymértékben párhuzamos feldolgozási (MPP) az Azure storage magas teljesítmény és méretezhetőség eléréséhez.
+title: Az Azure SQL Data Warehouse - MPP-architektúra |} A Microsoft Docs
+description: Ismerje meg, hogyan kombinálja az Azure SQL Data Warehouse a nagymértékben párhuzamos feldolgozási (MPP) és az Azure storage nagy teljesítménye és skálázhatósága eléréséhez.
 services: sql-data-warehouse
 author: ronortloff
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: design
 ms.date: 04/17/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: e8fef156f4b78c9f7241c9eb9623e061f5a31fe7
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 34b908ef79b0a2479c420675272f7d3f3bf0ff15
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31799277"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43286792"
 ---
-# <a name="azure-sql-data-warehouse---massively-parallel-processing-mpp-architecture"></a>Az SQL Data Warehouse - nagymértékben párhuzamos feldolgozási (MPP) architektúra
-Ismerje meg, hogyan egyesíti az Azure SQL Data Warehouse a nagymértékben párhuzamos feldolgozási (MPP) az Azure storage magas teljesítmény és méretezhetőség eléréséhez. 
+# <a name="azure-sql-data-warehouse---massively-parallel-processing-mpp-architecture"></a>Az Azure SQL Data Warehouse - nagymértékben párhuzamos feldolgozási (MPP) architektúra
+Ismerje meg, hogyan kombinálja az Azure SQL Data Warehouse a nagymértékben párhuzamos feldolgozási (MPP) és az Azure storage nagy teljesítménye és skálázhatósága eléréséhez. 
 
-## <a name="mpp-architecture-components"></a>Az MPP architektúra összetevők
-Az SQL Data Warehouse egy számítási adatok feldolgozása szét több csomópont architektúra kibővítési kihasználja. A skálázási egység szerint egy adatraktáregység számítási teljesítményt absztrakciós. Az SQL Data Warehouse elkülönítésére szolgál számítási, tárolási, mely lehetővé teszi, hogy méretezhető számítási függetlenül az adatok a rendszer a.
+## <a name="mpp-architecture-components"></a>Az MPP architektúra összetevői
+Az SQL Data Warehouse egy horizontális felskálázási architektúra szét a számítási feldolgozás az adatok több csomópont használja. A skálázási egység egy számítási teljesítményt, amely egy adattárházegység néven absztrakciós. Az SQL Data Warehouse elkülöníti a számítási tárolóból, mely lehetővé teszi, hogy skálázható számítási függetlenül az adatok a rendszerben.
 
 ![Az SQL Data Warehouse architektúrája](media/massively-parallel-processing-mpp-architecture/massively-parallel-processing-mpp-architecture.png)
 
-Az SQL Data Warehouse csomópont-alapú architektúrát használ. Alkalmazások csatlakozni, és T-SQL parancsokkal kiadni a vezérlő csomópont, amely a központi hely, az adatraktár. A vezérlő csomópont az MPP motor, amely optimalizálja a lekérdezések párhuzamos feldolgozásra, és majd átadja a műveleteket számítási csomópontok a munkájuk párhuzamosan futtatja. A számítási csomópontok összes felhasználói adatot az Azure Storage tárolja, és a párhuzamos lekérdezések futtatása. Az adatátviteli szolgáltatás (DMS) egy olyan rendszerszintű belső szolgáltatás, amely a párhuzamos lekérdezések futtatása és ad vissza pontos eredményeket, szükség szerint a csomópontok között mozgatja az adatokat. 
+Az SQL Data Warehouse egy csomópont-alapú architektúrát használ. Alkalmazások csatlakoztatása és a T-SQL-parancsokat kiadni a vezérlő csomópont, amely az adatraktár-bejegyzést a hibaérzékeny pont. Az MPP-motor, amely optimalizálja a lekérdezések párhuzamos feldolgozásra, majd átadja a műveleteket párhuzamosan munkájuk számítási csomópontok a vezérlő csomópont fut. A számítási csomópontok az összes felhasználói adatok tárolása az Azure Storage-ban, és a párhuzamos lekérdezéseket. Az adatátviteli szolgáltatás (DMS) egy rendszerszintű belső szolgáltatás, amely helyez át adatokat ad vissza pontos eredményeket és a lekérdezések párhuzamos futtatásához szükség szerint a csomópontok között. 
 
 Az SQL Data Warehouse a tárterület és a számítási műveletek elkülönítésével a következőkre képes:
 
-* Függetlenül a méret számítási teljesítményt tárolási igényei függetlenül.
+* Egymástól függetlenül a méret számítási teljesítményt attól függetlenül, a szükséges tárhelyet.
 * Növelheti vagy csökkentheti a számítási kapacitást az adatok áthelyezése nélkül.
-* A számítási kapacitás az adatok érintetlenül maradnak, miközben, csak kell fizetnie a tároláshoz.
+* A számítási kapacitás az adatok érintetlenül hagyásával, így csak fizetnie storage.
 * A működési időn belül folytatni tudja a számítási kapacitást.
 
 ### <a name="azure-storage"></a>Azure Storage tárterület
-Az SQL Data Warehouse az Azure storage használatával a felhasználói adatok biztonságát.  Mivel az adatok tárolásának és az Azure storage kezeli, az SQL Data Warehouse külön-külön a tárhelyhasználati díja. Maga az adat a szilánkos **terjesztéseket** a rendszer teljesítményének optimalizálása érdekében. Kiválaszthatja, hogy mely horizontális mintát juttassa el az adatokat, ha a tábla. Az SQL Data Warehouse támogatja ezeket a horizontális mintákat:
+Az SQL Data warehouse-bA az Azure storage segítségével a felhasználói adatok biztonsága.  Mivel az adatok tárolásának és kezeli az Azure storage, SQL Data Warehouse külön-külön tárhelyet díjat. Az adat, szilánkokra osztott **disztribúciók** a rendszer a teljesítmény optimalizálása érdekében. Kiválaszthatja, melyik horizontális skálázási minta használatával ossza el az adatokat, ha a tábla meghatározása. Az SQL Data Warehouse a horizontális skálázási mintát támogat:
 
 * Kivonat
 * Ciklikus időszeletelés
@@ -43,48 +43,48 @@ Az SQL Data Warehouse az Azure storage használatával a felhasználói adatok b
 
 ### <a name="control-node"></a>Vezérlő csomópont
 
-A vezérlő csomópont az adatraktár agy. Ez az az előtérbeli rendszer, amely az összes alkalmazással és kapcsolattal együttműködik. Az MPP motor a párhuzamos lekérdezések optimalizálása és a vezérlő csomópont fut. Amikor az SQL Data Warehouse-T-SQL-lekérdezést, a vezérlő csomópont alakítja minden terjesztési párhuzamosan futtathat lekérdezések.
+A vezérlő csomópont a data warehouse az agy. Ez az az előtérbeli rendszer, amely az összes alkalmazással és kapcsolattal együttműködik. Az MPP-motor a vezérlő csomópont optimalizálása és koordinálja a párhuzamos lekérdezéseket futtat. Amikor egy T-SQL-lekérdezést küld az SQL Data Warehouse, a vezérlő csomópont lekérdezésekké alakítja, lekérdezések, amelyek az egyes terjesztési párhuzamosan futtatható.
 
 ### <a name="compute-nodes"></a>Számítási csomópontok
 
-A számítási csomópontok adja meg a számítási teljesítménnyel rendelkezik. Képezze le az azokat a terjesztéseket számítási csomópontok feldolgozásra. További számítási erőforrásokat kell fizetnie, mert az SQL Data Warehouse újra leképezi a terjesztéseket, a rendelkezésre álló számítási csomópontokhoz. A számítási csomópontok tartomány 1 és 60, és határozza meg a szolgáltatási szint az adatraktár.
+A számítási csomópontok a számítási teljesítményt nyújtanak. Számítási csomópontok feldolgozási disztribúciók térképet. További számítási erőforrásokat kell fizetnie, mint az SQL Data Warehouse újra leképezi a disztribúciók elérhető számítási csomópontjain. Számítási csomópontok tartomány 1 és 60, és határozza meg a szolgáltatási szint a data warehouse-hoz.
 
-Minden számítási csomópont van a csomópont-Azonosítót, amely a rendszer láthatók. A számítási csomópont-azonosító keresi, sys.pdw_nodes kezdődő rendszernézetek node_id oszlopban tekintheti meg. Az alábbi rendszer nézet listájáért lásd: [MPP rendszernézetek](sql-data-warehouse-reference-tsql-statements.md).
+Minden számítási csomópont van egy csomópont-azonosító, amely a rendszer láthatók. A számítási csomópont-azonosító alapján keres a sys.pdw_nodes kezdődő rendszernézetek $node_id oszlopban megjelenik. Ezek rendszernézetek listáját lásd: [MPP rendszernézetek](sql-data-warehouse-reference-tsql-statements.md).
 
 ### <a name="data-movement-service"></a>Adatátviteli szolgáltatás
-Adatok adatátviteli szolgáltatás (DMS) az adatátvitelt jelölik a számítási csomópontok közötti koordinálja adatok átviteli technológiát. Egyes lekérdezések esetében meg kell annak érdekében, hogy a párhuzamos lekérdezések ad vissza pontos eredményeket adatátvitelt jelölik. Adatátvitel szükség, ha a DMS biztosítja a megfelelő adatok beolvasása a megfelelő helyre. 
+Az adatátviteli szolgáltatás (DMS) az, hogy koordinálja a számítási csomópontok közötti adatáthelyezés adatok átviteli technológiát. Néhány lekérdezés annak érdekében, hogy a párhuzamos lekérdezések pontos eredményeket adjon vissza adatáthelyezés van szükség. Amikor szükség az adatmozgatás, a DMS biztosítja, hogy a megfelelő adatokat lekérdezi a megfelelő helyre. 
 
 ## <a name="distributions"></a>Felosztások
 
-A terjesztés az tárolása és feldolgozása párhuzamos lekérdezések elosztott adatokon rendszert futtató alapvető egysége. Az SQL Data Warehouse-lekérdezés futtatása, ha a munkahelyi 60 kisebb lekérdezésekre párhuzamosan futó van osztva. A 60 kisebb lekérdezésekre mindegyikének fut, az adatok terjesztéseket egyik. Minden számítási csomópont egy vagy több 60 terjesztéseket kezeli. Maximális számítási erőforrással adatraktár rendelkezik egy terjesztési egyes számítási csomópontjain. Minimális számítási erőforrással adatraktár rendelkezik a megfelelő kiadásának egy számítási csomóponton.  
+A terjesztés az tárolása és feldolgozása a párhuzamos lekérdezések elosztott adatokon a Futtatás alapvető egysége. Amikor az SQL Data Warehouse egy lekérdezés fut, a munkahelyi 60 kisebb lekérdezések párhuzamos futtatását van felosztva. A 60 kisebb lekérdezésekre mindegyike futtat az adatok disztribúciók egyik. Minden számítási csomópont egy vagy több a 60 elosztás kezeli. Maximális számítási erőforrásokat az adattárház számítási csomópontok egy terjesztési rendelkezik. Minimális számítási erőforrásokat az adattárház rendelkezik minden disztribúcióján használhatók egy számítási csomóponton.  
 
 ## <a name="hash-distributed-tables"></a>Kivonatoló elosztott táblák
-Egy kivonattáblát elosztott biztosíthat a lehető legjobb lekérdezési teljesítmény az összekapcsolásokhoz és az összesítések nagy táblákon. 
+Egy kivonat alapján elosztott tábla nagy táblák a lehető legjobb lekérdezési teljesítmény összekapcsolásokhoz és az összesítések biztosít alkalmazhatók. 
 
-Részekre bonthatók az adatok egy ujjlenyomat-elosztott táblába az SQL Data Warehouse minden egyes sorára deterministically hozzárendelése egy terjesztési használja a kivonatoló függvényt. A tábla definíciójában egyik oszlop van kijelölve a terjesztési oszlopként. A kivonatoló függvényt a terjesztési oszlopban szereplő értékeket használja minden egyes sorára hozzárendelése egy terjesztési.
+Bonthatók az adatok egy kivonatot elosztott táblába az SQL Data Warehouse determinisztikus módon rendel minden sor egy terjesztési használja a kivonatoló függvényt. A tábla definíciójában az oszlopok egyikének elsődlegesként lett megjelölve az oszlopot. A kivonatolási függvény értékeket használja a terjesztési oszlopban minden sor hozzárendelése egy terjesztési.
 
-A következő ábra szemlélteti, hogy egy teljes (tábla nem osztott) lekérdezi tárolási módját kivonatoló elosztott táblázatként. 
+A következő ábra szemlélteti, hogyan (nem elosztott tábla) teljes memóriaállapota tárolva van, kivonatoló elosztott táblázatként. 
 
 ![Elosztott tábla](media/sql-data-warehouse-distributed-data/hash-distributed-table.png "elosztott tábla")  
 
 * Minden sor egy terjesztési tartozik.  
-* Determinisztikus kivonatoló algoritmus minden sor egy terjesztési rendeli hozzá.  
-* ) Eloszlása feladatonként (a tábla sorainak száma változó által a különböző méretű táblák látható módon.
+* Determinisztikus kivonatoló algoritmust rendeli minden sor egy terjesztési.  
+* Tábla sorok száma terjesztési száma eltérő, ahogy azt a különböző méretű táblák.
 
-Nincsenek a teljesítménnyel kapcsolatos szempontok terjesztési oszlop, például megkülönböztethetőség adatok döntés vagy a rendszer futó lekérdezések típusú kijelölés.
+Nincsenek a teljesítménnyel kapcsolatos megfontolások kiválasztását az elosztási oszlop, például megkülönböztethetőség Adateltérés és a rendszeren futó lekérdezések típusú.
 
-## <a name="round-robin-distributed-tables"></a>Ciklikus multiplexelés elosztott táblák
-Ciklikus multiplexelés tábla a legegyszerűbb tábla létrehozásához, és betölti a átmeneti tárolási tábla használatakor gyors teljesítményt nyújt.
+## <a name="round-robin-distributed-tables"></a>Elosztott táblák ciklikus időszeletelés
+Ciklikus időszeleteléses tábla a legegyszerűbb tábla létrehozásához és használat átmeneti táblaként terhelés esetén gyors teljesítményt biztosít.
 
-Ciklikus multiplexelés elosztott tábla adatok a tábla között, de minden további optimalizálás nélkül egyenlően osztja el. Egy terjesztési először véletlenszerűen kiválasztott majd sorok pufferek kerül és azokat a terjesztéseket egymás után. Gyors adatainak betöltése egy ciklikus multiplexelés táblába, de a lekérdezési teljesítmény gyakran lehet jobb elosztott kivonatoló táblákkal. Ciklikus multiplexelés táblákon illesztések szükséges adatok reshuffling, és ez további időt vesz igénybe.
+Ciklikus időszeleteléses elosztott tábla egyenletesen elosztja az adatokat a táblázat között, de minden további optimalizálás nélkül. Egy terjesztési először véletlenszerűen kiválasztott és majd a sorok pufferek hozzá vannak rendelve disztribúciók egymás után. Gyors táblába való betöltéséhez adatokat egy Ciklikus időszeleteléses, de a lekérdezési teljesítmény gyakran hatékonyabb munkavégzés az elosztott kivonattáblák is lehet. Azokon a táblákon, Ciklikus időszeleteléses illesztések szükséges adatok reshuffling, és ez további időt vesz igénybe.
 
 
 ## <a name="replicated-tables"></a>Replikált táblák
-A replikált tábla kis táblák a leggyorsabb lekérdezési teljesítményt biztosít.
+Egy replikált tábla biztosít a leggyorsabb lekérdezési teljesítmény, kis méretű táblák esetében.
 
-A replikált tábla gyorsítótárazza a tábla minden számítási csomóponton teljes másolata. Ennek következtében a tábla replikálása szükségtelenné join vagy összesítés előtt a számítási csomópontok közötti adattovábbításra. Replikált táblák leginkább kis táblákkal ki van használva. Extra tárhelyre szükség, és nincsenek további terhelés és sem merülnek fel, amikor nagy adatok írásakor táblák praktikus.  
+Egy replikált tábla gyorsítótárazza a tábla minden számítási csomóponton teljes másolata. Ebből következően replikál egy táblát eltávolítása előtt egy összesítés vagy a számítási csomópontok közötti adatátvitelhez szükség. Replikált táblák kisméretű táblák leghasznosabbnak vannak. Extra tárterület szükséges, és nincsenek számítunk fel, amikor írása adatokat, ami nagy táblák praktikus további terhelés.  
 
-Az alábbi ábrán látható, a replikált tábla. Az SQL Data Warehouse a replikált tábla gyorsítótárazza, az első terjesztési minden számítási csomóponton.  
+Az alábbi ábrán látható egy replikált tábla. Az SQL Data warehouse-hoz a replikált tábla tárolja a rendszer az első terjesztési minden számítási csomóponton.  
 
 ![Replikált tábla](media/sql-data-warehouse-distributed-data/replicated-table.png "replikált tábla") 
 

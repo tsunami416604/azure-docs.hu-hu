@@ -1,25 +1,25 @@
 ---
-title: Az SQL Data Warehouse (portál) átlátható adattitkosítás |} Microsoft Docs
-description: Az SQL Data Warehouse átlátható adattitkosítás (TDE)
+title: Transzparens adattitkosítás az SQL Data Warehouse (portál) |} A Microsoft Docs
+description: Az SQL Data Warehouse transzparens adattitkosítás (TDE)
 services: sql-data-warehouse
 author: kavithaj
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: implement
 ms.date: 04/17/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 9c4abb0416acc656a4cfae332377c398260191de
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: e641ddb5360c18b5977fb79de41334d4216c2b90
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31524227"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43306187"
 ---
-# <a name="get-started-with-transparent-data-encryption-tde-in-sql-data-warehouse"></a>Az átlátszó adatok titkosítás (TDE) az SQL Data Warehouse első lépései
+# <a name="get-started-with-transparent-data-encryption-tde-in-sql-data-warehouse"></a>A transzparens adattitkosítás (TDE) az SQL Data Warehouse első lépései
 > [!div class="op_single_selector"]
-> * [Biztonság – áttekintés](sql-data-warehouse-overview-manage-security.md)
+> * [Biztonsági áttekintés](sql-data-warehouse-overview-manage-security.md)
 > * [Hitelesítés](sql-data-warehouse-authentication.md)
 > * [Titkosítás (portál)](sql-data-warehouse-encryption-tde.md)
 > * [Encryption (T-SQL)](sql-data-warehouse-encryption-tde-tsql.md)
@@ -27,30 +27,30 @@ ms.locfileid: "31524227"
 > 
 
 ## <a name="required-permssions"></a>Szükséges engedélyek
-Ahhoz, hogy az átlátszó Data Encryption (TDE), a rendszergazda vagy a dbmanager szerepkör tagjának kell lennie.
+Ahhoz, hogy a transzparens adattitkosítás (TDE), a rendszergazda vagy a dbmanager szerepkör tagjának kell lennie.
 
 ## <a name="enabling-encryption"></a>Titkosítás engedélyezése
-Az SQL Data Warehouse TDE engedélyezéséhez kövesse az alábbi lépéseket:
+Engedélyezni szeretné a TDE az SQL Data Warehouse, kövesse az alábbi lépéseket:
 
-1. Nyissa meg az adatbázishoz a [Azure-portálon](https://portal.azure.com)
+1. Nyissa meg az adatbázishoz a [Azure Portalon](https://portal.azure.com)
 2. Az adatbázis paneljén kattintson a **beállítások** gomb
-3. Válassza ki a **átlátható adattitkosítás** beállítás ![][1]
+3. Válassza ki a **transzparens adattitkosítás** lehetőség ![][1]
 4. Válassza ki a **a** beállítás ![][2]
 5. Válassza ki **mentése**
    ![][3]  
 
-## <a name="disabling-encryption"></a>Titkosításának letiltása
-SQL Data Warehouse TDE letiltásához kövesse az alábbi lépéseket:
+## <a name="disabling-encryption"></a>Letiltja a titkosítást
+TDE SQL Data Warehouse letiltásához kövesse az alábbi lépéseket:
 
-1. Nyissa meg az adatbázishoz a [Azure-portálon](https://portal.azure.com)
+1. Nyissa meg az adatbázishoz a [Azure Portalon](https://portal.azure.com)
 2. Az adatbázis paneljén kattintson a **beállítások** gomb
-3. Válassza ki a **átlátható adattitkosítás** beállítás ![][1]
+3. Válassza ki a **transzparens adattitkosítás** lehetőség ![][1]
 4. Válassza ki a **ki** beállítás ![][4]
 5. Válassza ki **mentése**
    ![][5]  
 
-## <a name="encryption-dmvs"></a>Titkosítási dinamikus felügyeleti nézetek
-A következő dinamikus felügyeleti nézetek a titkosítási erősíthető meg:
+## <a name="encryption-dmvs"></a>Titkosítási DMV-kkel
+Titkosítási erősíthető meg a következő DMV-k használatával:
 
 * [sys.Databases]
 * [sys.dm_pdw_nodes_database_encryption_keys]

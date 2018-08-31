@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/08/2018
 ms.author: carlrab
-ms.openlocfilehash: 1d1cad4b614eb35be9235a721368db8048be050a
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: fcb7f2c1bb3e1653b9f8112abc0effaddc45fa54
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39634293"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43306469"
 ---
 # <a name="prepay-for-sql-database-compute-resources-with-azure-sql-database-reserved-capacity"></a>Fizessen elő az SQL-adatbázis számítási erőforrásokat, hogy az Azure SQL Database szolgáltatás számára fenntartott kapacitás
 
@@ -65,10 +65,11 @@ A virtuális mag foglalási kedvezményt automatikusan alkalmazni, amelyek megfe
 
 Megtudhatja, hogyan kezelheti az SQL Database szolgáltatás számára fenntartott kapacitás foglalás, lásd: [felügyelete az SQL Database szolgáltatás számára fenntartott kapacitás](../billing/billing-manage-reserved-vm-instance.md).
 
-Azure foglalás kapcsolatos további információkért tekintse meg a következő cikkeket:
+Azure-foglalások kapcsolatos további információkért tekintse meg a következő cikkeket:
 
 - [Mik az Azure-foglalásokat?](../billing/billing-save-compute-costs-reservations.md)
 - [Az Azure-fenntartások kezelése](../billing/billing-manage-reserved-vm-instance.md)
+- [Megismerheti a kedvezményes Azure-foglalások](../billing/billing-understand-reservation-charges.md)
 - [A használatalapú fizetéses előfizetést foglalás használati adatai](../billing/billing-understand-reserved-instance-usage.md)
 - [A nagyvállalati beléptetés foglalás használati adatai](../billing/billing-understand-reserved-instance-usage-ea.md)
 - [A Partner Center Felhőszolgáltató (CSP) program Azure foglalások](https://docs.microsoft.com/partner-center/azure-reservations)

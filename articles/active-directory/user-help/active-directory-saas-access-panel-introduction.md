@@ -1,6 +1,6 @@
 ---
-title: Mi az a hozzáférési panelen, az Azure Active Directoryban? | Microsoft Docs
-description: Ismerje meg, hogyan használható a hozzáférési panelen (webböngésző, Android-alkalmazás, iPhone és iPad-alkalmazás) SaaS-alkalmazások eléréséhez változata.
+title: Mi az a MyApps portálról az Azure Active Directoryban? | Microsoft Docs
+description: Ismerje meg, hogyan használható a MyApps portálról (webböngésző, Android-alkalmazás, iPhone és iPad-alkalmazás) SaaS-alkalmazások eléréséhez változata.
 services: active-directory
 author: eross-msft
 manager: mtillman
@@ -12,20 +12,20 @@ ms.topic: conceptual
 ms.date: 05/11/18
 ms.author: lizross
 ms.reviewer: asteen
-ms.openlocfilehash: f69830deb4d2c74b5fe1c85ad8c9452097dd2a1e
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: e382f53678806aa3442151703277c3a57bb30830
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42055534"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43302277"
 ---
-# <a name="what-is-the-access-panel"></a>Mi az a hozzáférési panelen?
+# <a name="what-is-the-myapps-portal"></a>Mi az a MyApps portálról?
 
-A hozzáférési panel egy olyan webes portál. Ha rendelkezik munkahelyi vagy iskolai fiókkal az Azure Active Directoryban (Azure AD), a hozzáférési panel segítségével megtekintheti, és indítsa el a felhőalapú alkalmazások, amelyek az Azure AD-rendszergazda engedélyezte a hozzáférést. Önkiszolgáló csoport- és alkalmazáskezelési lehetőségeket a hozzáférési panelen keresztül is használhatja.
+Ha rendelkezik munkahelyi vagy iskolai fiókkal az Azure Active Directoryban (Azure AD), a saját alkalmazások webes portál segítségével megtekintheti, és indítsa el a felhőalapú alkalmazások, amelyek az Azure AD-rendszergazda engedélyezte a hozzáférést. Önkiszolgáló csoport- és alkalmazáskezelési lehetőségeket a MyApps portálon keresztül is használhatja.
 
-A hozzáférési panelen elkülönül az Azure Portalon. Nem igényel, hogy rendelkezik Azure-előfizetéssel.
+A MyApps portálról elkülönül az Azure Portalon. Nem igényel, hogy rendelkezik Azure-előfizetéssel.
 
-![Hozzáférési panel][1] a hozzáférési panelen néhányat a profilbeállítások szerkesztése és tegye a következőket:
+![MyApps portálról][1] a MyApps portálról használatával néhányat a profilbeállítások szerkesztése és tegye a következőket:
 
 - Módosítsa a munkahelyi vagy iskolai fiókkal társított jelszót.
 
@@ -39,12 +39,9 @@ A hozzáférési panelen elkülönül az Azure Portalon. Nem igényel, hogy rend
 
 - Saját csoportok kezelése. Rendszergazdák létrehozhatnak és biztonsági csoportok kezelése és biztonsági csoporttagság kérése az Azure ad-ben. További információkért lásd: [az Azure AD-felhasználók önkiszolgáló csoportkezelési](../users-groups-roles/groups-self-service-management.md) és [kezelheti a csoportokat](../fundamentals/active-directory-manage-groups.md).
 
+## <a name="access-the-myapps-portal"></a>Hozzáférés a MyApps portálról
 
-
-
-## <a name="access-the-access-panel"></a>A hozzáférési panel
-
-A hozzáférési panelen hozzáférhet a `http://myapps.microsoft.com`.
+Hozzáférhet a MyApps portálról a `http://myapps.microsoft.com`.
 
 Ha a bejelentkezési lapon konfigurált egyéni márkajelzési, az URL-címet a szervezet tartományához hozzáfűzésével márkajelzési betöltheti (például `http://myapps.microsoft.com/<your domain>.com`).
 
@@ -54,7 +51,7 @@ Az URL-cím minden felhasználó számára jelentkezzen be az Azure ad-vel integ
 
 ## <a name="authentication"></a>Hitelesítés
 
-A hozzáférési panel eléréséhez, hitelesíteni kell egy munkahelyi vagy iskolai fiókon keresztül az Azure ad-ben. Az Azure AD közvetlenül hitelesíthető. Azt is megteheti Ha egy szervezet összevonási konfigurált Active Directory összevonási szolgáltatások (AD FS) vagy egyéb technológiák használatával, hogy hitelesíteni tudja a Windows Server Active Directory.
+A MyApps portál eléréséhez, hitelesíteni kell egy munkahelyi vagy iskolai fiókon keresztül az Azure ad-ben. Az Azure AD közvetlenül hitelesíthető. Azt is megteheti Ha egy szervezet összevonási konfigurált Active Directory összevonási szolgáltatások (AD FS) vagy egyéb technológiák használatával, hogy hitelesíteni tudja a Windows Server Active Directory.
 
 Ha már használja az Azure portal vagy egy Office 365-alkalmazást az Azure vagy Office 365-előfizetéssel rendelkezik, megtekintheti az elérhető alkalmazások listája, anélkül, hogy jelentkezzen be újra. Ha nem a hitelesítés kéri, jelentkezzen be a felhasználónevet és jelszót a fiókhoz tartozó Azure AD-ben. Ha munkahelyén konfigurálva van az összevonási, írja be a felhasználónevet is használhatók.
 
@@ -62,12 +59,12 @@ Ha a hitelesítés kezelheti az alkalmazásokat, amelyek a rendszergazda a köny
 
 ## <a name="web-browser-requirements"></a>Webböngészőkre vonatkozó követelmények
 
-Legalább a hozzáférési panel a böngészőben, amely támogatja a JavaScript szükséges, és CSS engedélyezve van. Bejelentkezhet a jelszóalapú egyszeri bejelentkezés (SSO) használatával, a hozzáférési panel bővítmény telepítve van a böngészőben kell rendelkeznie. Amikor kiválaszt egy alkalmazást, amely konfigurálva van a jelszóalapú egyszeri bejelentkezés automatikusan letöltődik a bővítményt.
+Legalább a MyApps portálról kell egy böngészőben, amely támogatja a JavaScript és CSS engedélyezve van. Aláírt alkalmazások jelszóalapú egyszeri bejelentkezés (SSO) keresztül, telepítve van a böngészőben MyApps portál kiterjesztéssel kell rendelkeznie. Amikor kiválaszt egy alkalmazást, amely konfigurálva van a jelszóalapú egyszeri bejelentkezés automatikusan letöltődik a bővítményt.
 
 A telepítő architektúra-specifikus. Ha a letöltési hivatkozásra kattint, a telepítő csak a jelenleg futó operációs rendszer architektúrájának megkapja. Ha egy alkalmazás központi telepítési rendszergazda, győződjön meg arról, egy 64 bites és 32 bites eszközről mindkét telepítők beolvasásához, látogasson el a letöltési hivatkozás.
 
 
-A hozzáférési panel bővítmény jelenleg áll rendelkezésre:
+A MyApps portálbővítmény szolgáltatás jelenleg érhető el:
 - **Edge**: a Windows 10 Évfordulós kiadása vagy újabb. 
 - **Chrome**: Windows 7-es vagy újabb, és a MacOS X rendszeren vagy újabb.
 - **Firefox 26.0 vagy újabb**: a Windows XP SP2 vagy újabb, és a Mac OS X 10.6 vagy újabb.
@@ -77,7 +74,7 @@ A hozzáférési panel bővítmény jelenleg áll rendelkezésre:
 A jelszóalapú egyszeri bejelentkezés, a kiterjesztést kell használnia. A bővítmény telepítése után bejelentkezhet hozzá további funkciók engedélyezéséhez kiválasztásával **jelentkezzen be a kezdéshez**. 
 
 - Az alkalmazás közvetlenül az alkalmazás használatával bejelentkezhet **bejelentkezési URL-**. Az alkalmazás URL-cím használata esetén a bővítményt a műveleteket észlel, és lehetővé teszi a jelentkezik be a bővítményt.
-- A hozzáférési panelen alkalmazások bármelyike használatával is elindíthatja a *Gyorskeresés* a bővítmény szolgáltatása. 
+- A MyApps portálról alkalmazások bármelyike használatával is elindíthatja a *Gyorskeresés* a bővítmény szolgáltatása. 
 - A bővítményt, utolsó három azokat az alkalmazásokat tartalmazza, amely akkor jelent **a legutóbb használt** szakaszban.
 - Használhatja a belső vállalati URL-címek, miközben keresztül távoli [alkalmazásproxy](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-get-started)
 
@@ -111,7 +108,7 @@ Távoli a bővítmény használata során, a belső vállalati URL-címek haszn�
 Az Azure Active Directory-csapat tesz közzé a saját alkalmazások mobilalkalmazást. Amikor telepíti az alkalmazást, bejelentkezhet a jelszóalapú egyszeri bejelentkezési alkalmazások iOS és Android rendszerű eszközökön.
 
 > [!NOTE]
-> Bejelentkezhet az Azure ad-vel (beleértve a Salesforce, a Google Apps, a Dropbox, Box, beleértve, Workday, Office 365-höz és több mint 70 mások is) az összevonási támogató alkalmazások bármilyen eszközön, gyakorlatilag bármely webböngészőben anélkül, hogy a beépülő modul vagy a mobile app. Egy mobileszközön, a másik használandó [hozzáférési panel élményt](https://myapps.microsoft.com/) nincs szükség a saját alkalmazások mobilalkalmazást is.
+> Bejelentkezhet az Azure ad-vel (beleértve a Salesforce, a Google Apps, a Dropbox, Box, beleértve, Workday, Office 365-höz és több mint 70 mások is) az összevonási támogató alkalmazások bármilyen eszközön, gyakorlatilag bármely webböngészőben anélkül, hogy a beépülő modul vagy a mobile app. Egy mobileszközön, a másik használandó [MyApps portálról élmény](https://myapps.microsoft.com/) nincs szükség a saját alkalmazások mobilalkalmazást is.
 >
 >
 
@@ -145,22 +142,22 @@ Az Intune Managed Browser mindig elérhető legyen a [Apple App Store](https://i
 
 ## <a name="tips-for-testing-the-user-experience"></a>Tippek a felhasználói élmény tesztelése
 
-Ha Ön Azure-rendszergazdai és jelentkezett be az Azure Portalra egy olyan fiókkal a címtárban, akkor automatikusan bejelentkezett a hozzáférési panelen, a jelenlegi fiókkal. Ez a nézet megjeleníti az Önhöz rendelt összes alkalmazás.
+Ha Ön Azure-rendszergazdai és jelentkezett be az Azure Portalra egy olyan fiókkal a könyvtárban, akkor automatikusan bejelentkezett a MyApps portálról, a jelenlegi fiókkal. Ez a nézet megjeleníti az Önhöz rendelt összes alkalmazás.
 
 Tesztelni, egy *különböző* felhasználói fiókot, tegye a következőket:
 
-1. Az Azure portal vagy a hozzáférési panelen, jobb felső részén válassza ki a **Kijelentkezés**. 
-2. Nyissa meg a [hozzáférési panel](http://myapps.microsoft.com).
+1. Az Azure portal vagy a MyApps portálról, jobb felső részén válassza ki a **Kijelentkezés**. 
+2. Nyissa meg a [MyApps portálról](http://myapps.microsoft.com).
 3. A bejelentkezési oldalon írja be a felhasználónevet és jelszót a fiókhoz a tesztelni kívánt címtárat.
 
 
 ## <a name="starting-applications"></a>Alkalmazások elindítása
 
-Ez a szakasz ismerteti a számos különböző típusú alkalmazásokat, amelyek szerepelhetnek a hozzáférési panelen.
+Ez a szakasz ismerteti a számos különböző típusú alkalmazásokat, amelyek szerepelhetnek a MyApps portálon.
 
 ### <a name="office-365-applications"></a>Office 365-alkalmazások
 
-Ha a szervezet az Office 365-alkalmazásokhoz, és rendelkezik hozzájuk licenccel, az Office 365-alkalmazásokat a hozzáférési panelen jelennek meg.
+Ha a szervezet az Office 365-alkalmazásokhoz, és rendelkezik licenccel, az Office 365-alkalmazások jelennek meg a MyApps portálról.
 
 Amikor kiválaszt egy Office 365-alkalmazást egy alkalmazás csempéjére, Ön átirányítódik az alkalmazásba, és automatikusan jelentkezzenek be.
 
@@ -174,7 +171,7 @@ Amikor kiválaszt egy csempét egy alkalmazást, Ön irányítja át, és automa
 
 A rendszergazda is hozzáadhat alkalmazásokat az Azure Portalon az Active Directory szakaszában az egyszeri bejelentkezés módban **jelszóalapú egyszeri bejelentkezés**. A címtárban lévő összes felhasználó láthatja a minden alkalmazás, amely ebben a módban vannak konfigurálva.
 
-Egy alkalmazás-csempét választja az első alkalommal kéri a jelszót SSO beépülő modul telepítéséhez az Internet Explorer vagy Chrome. A telepítés szükség lehet, hogy indítsa újra a webböngészőt. Térjen vissza a hozzáférési panelen, és válassza ki az alkalmazás csempe újra, ha a felhasználónév és jelszó az alkalmazás kéri. Ha megadta a felhasználónevét és jelszavát, a hitelesítő adatok biztonságosan tárolja és az Azure AD-fiókjához társított.
+Egy alkalmazás-csempét választja az első alkalommal kéri a jelszót SSO beépülő modul telepítéséhez az Internet Explorer vagy Chrome. A telepítés szükség lehet, hogy indítsa újra a webböngészőt. Térjen vissza a MyApps portálról, és válassza ki az alkalmazás csempe újra, ha a felhasználónév és jelszó az alkalmazás kéri. Ha megadta a felhasználónevét és jelszavát, a hitelesítő adatok biztonságosan tárolja és az Azure AD-fiókjához társított.
 
 A következő alkalommal a alkalmazás csempét választja, automatikusan jelentkezett be az alkalmazáshoz.  
 
@@ -194,7 +191,7 @@ A rendszergazda is hozzáadhat alkalmazásokat az Azure Portalon az Active Direc
 
 Egy alkalmazás-csempét választja az első alkalommal kéri a jelszót SSO beépülő modul telepítéséhez az Internet Explorer vagy Chrome. A telepítés szükség lehet, hogy indítsa újra a webböngészőt.  
 
-Ha a hozzáférési panelen lépjen vissza, és válassza ki az alkalmazás csempe újra, automatikusan bejelentkezett az alkalmazásba.
+Amikor térjen vissza a MyApps portálról, és válassza ki az alkalmazás csempe újra, automatikusan bejelentkezett az alkalmazásba.
 
 Egyes alkalmazások, az első bejelentkezéskor a jelszó módosítására lehet szükség. Ha a hitelesítő adatok megváltoztak a célalkalmazásban külső, az Azure AD-ben tárolt hitelesítő adatok is frissítenie kell. 
 
@@ -206,9 +203,9 @@ A hitelesítő adatok frissítéséhez tegye a következőket:
 
 ### <a name="application-with-existing-sso-solutions"></a>Alkalmazás a meglévő egyszeri bejelentkezés megoldásokkal
 
-Egyszeri bejelentkezés konfigurálása az alkalmazáshoz, az Azure Portalra meglévő egyszeri bejelentkezés nevű harmadik lehetőséget kínál. Ez a beállítás lehetővé teszi, hogy a rendszergazdát, hogy hozzon létre egy hivatkozást egy alkalmazásba, és helyezze el a hozzáférési panelen a kiválasztott felhasználók számára.
+Egyszeri bejelentkezés konfigurálása az alkalmazáshoz, az Azure Portalra meglévő egyszeri bejelentkezés nevű harmadik lehetőséget kínál. Ez a beállítás lehetővé teszi, hogy a rendszergazdát, hogy hozzon létre egy hivatkozást egy alkalmazásba, és helyezze el a MyApps portálról a kiválasztott felhasználók számára.
 
-Például ha egy alkalmazás a felhasználók hitelesítéséhez az AD FS 2.0 használatával van konfigurálva, a rendszergazda a meglévő egyszeri bejelentkezés beállítás segítségével hozhat létre, hogy a hozzáférési panelen. A hivatkozás használatakor a hitelesítés az AD FS 2.0-s vagy bármely meglévő SSO-megoldáson keresztül az alkalmazás maga biztosítja.
+Például ha egy alkalmazás a felhasználók hitelesítéséhez az AD FS 2.0 használatával van konfigurálva, a rendszergazda a meglévő egyszeri bejelentkezés beállítás segítségével hozhat létre ahhoz a MyApps portálon. A hivatkozás használatakor a hitelesítés az AD FS 2.0-s vagy bármely meglévő SSO-megoldáson keresztül az alkalmazás maga biztosítja.
 
 
 ## <a name="next-steps"></a>További lépések

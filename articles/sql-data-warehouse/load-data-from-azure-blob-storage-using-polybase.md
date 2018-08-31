@@ -1,25 +1,25 @@
 ---
-title: 'Oktatóanyag: Terhelés New York Taxicab adatokat az Azure SQL Data Warehouse |} Microsoft Docs'
-description: Az oktatóanyag használja az Azure portál és az SQL Server Management Studio New York Taxicab adatok betöltése az egy nyilvános Azure-ból az Azure SQL Data Warehouse-blob.
+title: 'Oktatóanyag: Load New York-i taxik adatait az Azure SQL Data Warehouse |} A Microsoft Docs'
+description: Oktatóanyag az Azure portal és az SQL Server Management Studio New York-i taxik adatainak betöltésére egy nyilvános Azure-blobból Azure SQL Data warehouse-bA.
 services: sql-data-warehouse
 author: ckarst
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: implement
 ms.date: 04/17/2018
 ms.author: cakarst
 ms.reviewer: igorstan
-ms.openlocfilehash: acc7d0a031821b8b6e9c110c92597b0307e216fb
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 06d889686c673adc3941ac7303ab52a6fff408a8
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32193233"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43288124"
 ---
-# <a name="tutorial-load-new-york-taxicab-data-to-azure-sql-data-warehouse"></a>Oktatóanyag: Terhelés New York Taxicab adatokat az Azure SQL Data Warehouse
+# <a name="tutorial-load-new-york-taxicab-data-to-azure-sql-data-warehouse"></a>Oktatóanyag: Load New York-i taxik adatait az Azure SQL Data Warehouse
 
-A PolyBase használatával New York Taxicab adatok betöltése az nyilvános oktatóanyag használ az Azure blob az Azure SQL Data Warehouse. Az oktatóanyag az [Azure Portalt](https://portal.azure.com) és az [SQL Server Management Studiót](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) használja a következőkhöz: 
+A PolyBase, New York-i taxik adatainak betöltésére nyilvános oktatóanyag használ Azure blobból Azure SQL Data Warehouse. Az oktatóanyag az [Azure Portalt](https://portal.azure.com) és az [SQL Server Management Studiót](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) használja a következőkhöz: 
 
 > [!div class="checklist"]
 > * Adattárház létrehozása az Azure Portalon
@@ -40,7 +40,7 @@ Az oktatóanyag megkezdése előtt töltse le és telepítse az [SQL Server Mana
 
 ## <a name="log-in-to-the-azure-portal"></a>Bejelentkezés az Azure Portalra
 
-Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 ## <a name="create-a-blank-sql-data-warehouse"></a>Üres SQL-adattárház létrehozása
 
@@ -78,9 +78,9 @@ Kövesse az alábbi lépéseket egy üres SQL-adattárház létrehozásához.
 
 5. Kattintson a **Kiválasztás** gombra.
 
-6. Kattintson a **teljesítményszintet** adhatja meg, hogy az adatraktár Gen1 vagy Gen2, és adatraktár-egységek számát. 
+6. Kattintson a **teljesítményszint** megadásához, hogy az adatraktár Gen1 és Gen2, és az adattárházegységek számának. 
 
-7. A jelen oktatóanyag esetében válassza ki a **Gen1** az SQL Data Warehouse. A csúszka alapértelmezés szerint van beállítva **DW1000c**.  Csúsztassa fel és le, hogy kipróbálja a működését a gyakorlatban. 
+7. A jelen oktatóanyag esetében válassza ki a **Gen1** az SQL Data Warehouse. A csúszka alapértelmezés szerint értéke **DW1000c**.  Csúsztassa fel és le, hogy kipróbálja a működését a gyakorlatban. 
 
     ![teljesítmény konfigurálása](media/load-data-from-azure-blob-storage-using-polybase/configure-performance.png)
 
@@ -103,7 +103,7 @@ Az SQL Data Warehouse szolgáltatás egy tűzfalat hoz létre a kiszolgáló szi
 > Az SQL Data Warehouse az 1433-as portot használja a kommunikációhoz. Ha vállalati hálózaton belülről próbál csatlakozni, elképzelhető, hogy a hálózati tűzfal nem engedélyezi a kimenő forgalmat az 1433-as porton keresztül. Ebben az esetben nem tud csatlakozni az Azure SQL Database-kiszolgálóhoz, ha az informatikai részleg nem nyitja meg az 1433-as portot.
 >
 
-1. Az üzembe helyezés befejezése után kattintson az **SQL-adatbázisok** elemre a bal oldali menüben, majd kattintson a **mySampleDatabase** adatbázisra az **SQL-adatbázisok** lapon. Áttekintő lapjára jut az adatbázis nyit meg, hogy bemutatja a kiszolgáló teljesen minősített nevét (például **mynewserver-20180430.database.windows.net**) és további konfigurációs lehetőségeket. 
+1. Az üzembe helyezés befejezése után kattintson az **SQL-adatbázisok** elemre a bal oldali menüben, majd kattintson a **mySampleDatabase** adatbázisra az **SQL-adatbázisok** lapon. Megnyílik az adatbázis áttekintő oldala, amelyen látható a teljes kiszolgálónév (például **mynewserver-20180430.database.windows.net**) és a további lehetőségeket biztosít. 
 
 2. Másolja le ezt a teljes kiszolgálónevet, mert a későbbi rövid útmutatók során szüksége lesz rá a kiszolgálóhoz és az adatbázisokhoz való csatlakozáshoz. Ezután kattintson a kiszolgáló nevére a kiszolgáló beállításainak megnyitásához.
 
@@ -132,9 +132,9 @@ Mostantól csatlakozhat az SQL-kiszolgálóhoz és annak adattárházaihoz errő
 
 Kérje le az SQL-kiszolgáló teljes kiszolgálónevét az Azure Portalon. Később ezt a teljes nevet fogja majd használni a kiszolgálóhoz való kapcsolódás során.
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
-2. Válassza ki **SQL-adatraktárak** a bal oldali menüből, majd kattintson az adatbázis a a **SQL-adatraktárak** lap. 
-3. Az Azure Portalon az adatbázishoz tartozó lap **Alapvető erőforrások** ablaktábláján keresse meg, majd másolja ki a **Kiszolgáló nevét**. Ebben a példában a teljesen minősített név nem mynewserver-20180430.database.windows.net. 
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+2. Válassza ki **SQL Data warehouse-adattárházak** elemet a bal oldali menüben, és kattintson az adatbázisra az a **SQL data warehouse-adattárházak** lap. 
+3. Az Azure Portalon az adatbázishoz tartozó lap **Alapvető erőforrások** ablaktábláján keresse meg, majd másolja ki a **Kiszolgáló nevét**. Ebben a példában a teljes tartománynévvel mynewserver-20180430.database.windows.net. 
 
     ![kapcsolatadatok](media/load-data-from-azure-blob-storage-using-polybase/find-server-name.png)  
 
@@ -149,7 +149,7 @@ Ebben a részben az [SQL Server Management Studio](/sql/ssms/download-sql-server
     | Beállítás      | Ajánlott érték | Leírás | 
     | ------------ | --------------- | ----------- | 
     | Kiszolgáló típusa | Adatbázismotor | Kötelezően megadandó érték |
-    | Kiszolgálónév | A teljes kiszolgálónév | A névnek kell lennie, például ehhez hasonló: **mynewserver-20180430.database.windows.net**. |
+    | Kiszolgálónév | A teljes kiszolgálónév | A névnek valami ilyesmit kell lennie: **mynewserver-20180430.database.windows.net**. |
     | Hitelesítés | SQL Server-hitelesítés | Az SQL-hitelesítés az egyetlen hitelesítési típus, amelyet ebben az oktatóanyagban konfiguráltunk. |
     | Bejelentkezés | A kiszolgálói rendszergazdai fiók | Ez az a fiók, amely a kiszolgáló létrehozásakor lett megadva. |
     | Jelszó | A kiszolgálói rendszergazdai fiók jelszava | Ezt a jelszót adta meg a kiszolgáló létrehozásakor. |
@@ -164,7 +164,7 @@ Ebben a részben az [SQL Server Management Studio](/sql/ssms/download-sql-server
 
 ## <a name="create-a-user-for-loading-data"></a>Felhasználó létrehozása az adatok betöltéséhez
 
-A kiszolgáló rendszergazdai fiókjának célja, hogy felügyeleti műveleteket végezzenek vele, és nem alkalmas a felhasználói adatok lekérdezésére. Az adatok betöltése memóriaigényes művelet. Memória maximális értékeket alapján mely létrehozása az SQL Data Warehouse, már üzembe helyezve, meghatározott [az adatraktár-egység](what-is-a-data-warehouse-unit-dwu-cdwu.md), és [erőforrásosztály](resource-classes-for-workload-management.md). 
+A kiszolgáló rendszergazdai fiókjának célja, hogy felügyeleti műveleteket végezzenek vele, és nem alkalmas a felhasználói adatok lekérdezésére. Az adatok betöltése memóriaigényes művelet. Memória maximális értékei szerint mely generálása az SQL Data Warehouse, már üzembe helyezett, meghatározott [adattárházegységek](what-is-a-data-warehouse-unit-dwu-cdwu.md), és [erőforrásosztály](resource-classes-for-workload-management.md). 
 
 Érdemes létrehozni egy adatok betöltésére kijelölt felhasználót és fiókot. Ezután adja hozzá a betöltést végző felhasználót egy olyan [erőforrásosztályhoz](resource-classes-for-workload-management.md), amely lehetővé teszi a megfelelő mértékű maximális memórialefoglalást.
 
@@ -215,7 +215,7 @@ Az adatok betöltésének első lépése a LoaderRC20-ként való bejelentkezés
 
 ## <a name="create-external-tables-for-the-sample-data"></a>Külső táblák létrehozása a mintaadatokhoz
 
-Készen áll megkezdeni az adatok az új adattárházba való betöltésének folyamatát. Az oktatóanyag bemutatja, hogyan lehet külső táblák segítségével New York Város taxi cab adatok betöltése az Azure storage-blob. Ha később szeretné megismerni az adatok Azure Blob Storage-be való áthelyezésének vagy a forrásból közvetlenül az SQL Data Warehouse-ba való betöltésének a módját, olvassa el a [betöltés áttekintését](sql-data-warehouse-overview-load.md).
+Készen áll megkezdeni az adatok az új adattárházba való betöltésének folyamatát. Az oktatóanyag bemutatja, hogyan használható a külső táblák betöltése a New York City i taxik adatait egy Azure storage-blobból. Ha később szeretné megismerni az adatok Azure Blob Storage-be való áthelyezésének vagy a forrásból közvetlenül az SQL Data Warehouse-ba való betöltésének a módját, olvassa el a [betöltés áttekintését](sql-data-warehouse-overview-load.md).
 
 Futtassa a következő SQL-szkripteket a betölteni kívánt adatokra vonatkozó információk megadásához. Ezen információk közé tartozik az adatok helye, az adatok tartalmának formátuma és az adatok tábladefiníciója. 
 
@@ -589,7 +589,7 @@ Kövesse az alábbi lépéseket a fölöslegessé vált erőforrások eltávolí
 
 3. Ha el szeretné távolítani az adattárházat, hogy a számítási és tárolási erőforrásokért se kelljen fizetnie, kattintson a **Törlés** parancsra.
 
-4. Kattintson a létrehozott SQL server **mynewserver-20180430.database.windows.net** az előző ábrán, majd **törlése**.  Ezzel kapcsolatban legyen körültekintő, mert a kiszolgáló törlésével a kiszolgálóhoz rendelt összes adatbázis is törölve lesz.
+4. A létrehozott SQL-kiszolgáló eltávolításához kattintson **mynewserver-20180430.database.windows.net** az előző képen, majd kattintson a **törlése**.  Ezzel kapcsolatban legyen körültekintő, mert a kiszolgáló törlésével a kiszolgálóhoz rendelt összes adatbázis is törölve lesz.
 
 5. Az erőforráscsoport törléséhez kattintson a **myResourceGroup** elemre, majd az **Erőforráscsoport törlése** parancsra.
 

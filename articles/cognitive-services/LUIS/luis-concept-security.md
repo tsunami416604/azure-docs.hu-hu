@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: diberry
-ms.openlocfilehash: fe0ee7d575e69c883ad7f980477e86fbd004778e
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: fddffbcabba753e9ef214f924d5ff2cee38427a5
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39397243"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43301693"
 ---
 # <a name="authoring-and-endpoint-user-access"></a>Létrehozási és -végpont felhasználói hozzáférés
 Authoring hozzáférés tulajdonosok és a közreműködők érhető el. Saját alkalmazások esetén végponti hozzáférés tulajdonosai és a közreműködők érhető el. Egy nyilvános alkalmazás végponti hozzáférés érhető el mindenki számára, amelyek a saját LUIS-fiókkal rendelkezik, és a nyilvános alkalmazás-azonosítóval rendelkezik. 
@@ -60,7 +60,7 @@ Konfigurálja az alkalmazást **nyilvános** a a **beállítások** az alkalmaz�
 A felhasználó, aki nem tulajdonosa vagy közreműködő, csak hozzáférhet a nyilvános app Ha adja meg az alkalmazás azonosítóját. A LUIS nincs nyilvános _piaci_ vagy egyéb módon, egy nyilvános alkalmazás kereséséhez.  
 
 ## <a name="microsoft-user-accounts"></a>A Microsoft felhasználói fiókok
-Szerzők és a közreműködők adhat hozzá kulcsok LUIS a közzétételi oldalon. A Microsoft felhasználói fiók, amely létrehozza a LUIS-kulcsot az Azure Portalon vagy az alkalmazás tulajdonosa, vagy egy alkalmazás közreműködő kell. 
+Szerzők és a közreműködők adhat hozzá kulcsok LUIS a közzétételi oldalon. A LUIS kulcsot az Azure Portalon hoz létre a Microsoft felhasználói fióknak kell lennie, vagy az alkalmazás tulajdonosa, vagy egy alkalmazás közreműködő. 
 
 Lásd: [Azure Active Directory-bérlő felhasználói](luis-how-to-collaborate.md#azure-active-directory-tenant-user) további információ az Active Directory felhasználói fiókokat. 
 

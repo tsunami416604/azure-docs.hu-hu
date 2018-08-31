@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2018
 ms.author: yashar
-ms.openlocfilehash: bce4e05cbc4ecc8a44f2929eecbeee4093d39652
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: de4a771672b45f930385c2c923b3935c65b6c045
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39628358"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43301646"
 ---
 # <a name="understand-how-the-azure-reservation-discount-is-applied-to-virtual-machines"></a>Megismerheti, hogyan kell alkalmazni az Azure a foglalási kedvezményt a virtuális gépek
 
@@ -47,7 +47,7 @@ Az alábbi táblázat ismerteti a kapcsolódó költségek a virtuális gépet e
 3. Óra 2 és 3 óra, a példány is futásának időtartama: 1 óra. Egy példány a Foglalás hatálya alá tartozik, és a másik díját az utólagos elszámolású díjszabás szerint számlázzuk.
 4. 4 órán keresztül 1 példány 0,5 óra fut, és 2 példány 1 órán keresztül futtat. 1 példány teljes mértékben a foglalást, és 2 példány 0,5 óra foglalkozik. A fennmaradó 0,5 óra használatalapú díjon díjkötelesek.
 
-Ismertetése és használati jelentések számlázási megtekintheti az alkalmazást az Azure foglalások: [foglalás használatának megértéséhez](https://go.microsoft.com/fwlink/?linkid=862757).
+Ismertetése és használati jelentések számlázási megtekintheti az alkalmazást az Azure-foglalások: [foglalás használatának megértéséhez](https://go.microsoft.com/fwlink/?linkid=862757).
 
 ## <a name="application-of-reservation-discount-to-windows-vms"></a>Windows virtuális gépek foglalási kedvezményt alkalmazását
 
@@ -55,7 +55,7 @@ Ha Windows Virtuálisgép-példányokat futtatja, a Foglalás alkalmazva az infr
 
 ## <a name="next-steps"></a>További lépések
 
-Foglalások kapcsolatos további információkért tekintse meg a következő cikkeket:
+Azure-foglalások kapcsolatos további információkért tekintse meg a következő cikkeket:
 
 - [Mik az Azure-foglalásokat?](billing-save-compute-costs-reservations.md)
 - [Fizessen elő az Azure fenntartott VM-példányok a virtuális gépekkel](../virtual-machines/windows/prepay-reserved-vm-instances.md)

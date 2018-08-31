@@ -1,6 +1,6 @@
 ---
-title: Számos alkalmazás egy az Azure key vault elérésére engedélyt |} Microsoft Docs
-description: Megtudhatja, hogyan számos alkalmazás kulcstároló elérésére engedélyt szeretne megadni
+title: Engedélyek biztosítása nagyobb számos alkalmazás egy Azure key vault eléréséhez |} A Microsoft Docs
+description: Ismerje meg, hogyan biztosítson engedélyt számú alkalmazás részére egy kulcstartó eléréséhez
 services: key-vault
 documentationcenter: ''
 author: amitbapat
@@ -14,24 +14,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2016
 ms.author: ambapat
-ms.openlocfilehash: ddeaf184138bd48d324799ddb45248b0a0ee8eeb
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 14e6e8bb723eb236f8fb315454b8697a3bd947ef
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43286427"
 ---
-# <a name="grant-permission-to-many-applications-to-access-a-key-vault"></a>Számos alkalmazás kulcstároló elérésére engedélyt
+# <a name="grant-permission-to-many-applications-to-access-a-key-vault"></a>Engedély megadása a számú alkalmazás részére egy kulcstartó eléréséhez
 
-## <a name="q-i-have-several-over-16-applications-that-need-to-access-a-key-vault-since-key-vault-only-allows-16-access-control-entries-how-can-i-achieve-that"></a>K: van több kulcstároló eléréséhez szükséges (több mint 16) alkalmazásokhoz. Hogyan gondoskodhatok erről, ha a Key Vault csak 16 hozzáférés-vezérlési bejegyzést engedélyez?
+## <a name="q-i-have-several-applications-that-need-to-access-a-key-vault-how-can-i-give-these-applications-up-to-1024-access-to-key-vault"></a>K: van több kulcstároló elérését igénylő alkalmazások, hogyan tudom ezeket az alkalmazásokat (legfeljebb 1024) hozzáférést biztosíthat a Key Vault?
 
-Key Vault hozzáférés-vezérlési házirend csak a 16 bejegyzések támogatja. Azonban létrehozhat egy Azure Active Directory biztonsági csoport. A társított szolgáltatás rendszerbiztonsági tagok hozzáadása ehhez a biztonsági csoporthoz, és majd a hozzáférési jogot a Key Vault biztonsági csoport.
+A Key Vault hozzáférés-vezérlési szabályzat legfeljebb 1024 bejegyzések támogatja. Ugyanakkor létrehozhat egy Azure Active Directory biztonsági csoportot is. A társított szolgáltatás rendszerbiztonsági tagok hozzáadása a biztonsági csoport, és ezután a Key Vault a biztonsági csoport hozzáférési jogot.
 
-Az alábbiakban az Előfeltételek:
-* [Azure Active Directory V2 PowerShell-modul telepítéséhez](https://www.powershellgallery.com/packages/AzureAD).
+Az Előfeltételek a következők:
+* [Az Azure Active Directory V2 PowerShell modul telepítése](https://www.powershellgallery.com/packages/AzureAD).
 * [Telepítse az Azure PowerShellt](/powershell/azure/overview).
-* A következő parancsokat, a csoportokat az Azure Active Directory-bérlő létrehozása/szerkesztése engedélyekre van szükség. Ha nem rendelkezik engedélyekkel, szükség lehet az Azure Active Directory-rendszergazdától.
+* Futtassa a következő parancsokat, csoportok az Azure Active Directory-bérlő létrehozása/szerkesztése engedélyre van szükségük. Ha nem rendelkezik engedélyekkel, szükség lehet az Azure Active Directory-rendszergazdától.
 
-Most futtassa a következő parancsokat a PowerShell.
+Most futtassa a következő parancsokat a PowerShellben.
 
 ```powershell
 # Connect to Azure AD 
@@ -52,8 +53,8 @@ Set-AzureRmKeyVaultAccessPolicy –VaultName ContosoVault –ObjectId $aadGroup.
 # Of course you can adjust the permissions as required 
 ```
 
-Ha szeretne egy másik engedélycsoportja a szükséges engedélyek az alkalmazások azon csoportját, az ilyen alkalmazások külön Azure Active Directory biztonsági csoport létrehozása.
+Ha különböző engedélykészletet az alkalmazások azon csoportját, biztosítania kell, hozzon létre egy külön Azure Active Directory biztonsági csoportot az ilyen alkalmazásokhoz.
 
 ## <a name="next-steps"></a>További lépések
 
-További tudnivalók a [a kulcstartót biztonságos](key-vault-secure-your-key-vault.md).
+Ismerje meg, hogyan [kulcstartó védelme](key-vault-secure-your-key-vault.md).

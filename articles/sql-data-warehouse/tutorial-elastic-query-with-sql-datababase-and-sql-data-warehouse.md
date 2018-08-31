@@ -1,67 +1,67 @@
 ---
-title: 'Oktatóanyag: Rugalmas lekérdezés az Azure SQL Data Warehouse szolgáltatással |} Microsoft Docs'
-description: Ez az oktatóanyag a Rugalmas lekérdezési szolgáltatás segítségével az Azure SQL Database a lekérdezés Azure SQL Data warehouse-bA.
+title: 'Oktatóanyag: Rugalmas lekérdezés az Azure SQL Data Warehouse |} A Microsoft Docs'
+description: Ebben az oktatóanyagban egy Azure SQL Database Elastic Query szolgáltatását használja Azure SQL Data Warehouse lekérdezéséhez.
 services: sql-data-warehouse
 author: hirokib
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: implement
 ms.date: 04/14/2018
 ms.author: elbutter
 ms.reviewer: igorstan
-ms.openlocfilehash: a31f035b5ec086a046028956c4a9c0de0d6a313d
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 355ae1c27d0af8f77c2c9bda61c3581562050fc4
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31526192"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43307092"
 ---
-# <a name="tutorial-use-elastic-query-to-access-data-in-azure-sql-data-warehouse-from-azure-sql-database"></a>Oktatóanyag: Használata rugalmas lekérdezés hozzáférni adataihoz az Azure SQL Data Warehouse az Azure SQL adatbázis
+# <a name="tutorial-use-elastic-query-to-access-data-in-azure-sql-data-warehouse-from-azure-sql-database"></a>Oktatóanyag: A rugalmas lekérdezés adatok elérését az Azure SQL Data Warehouse az Azure SQL Database-ből
 
-Ez az oktatóanyag a Rugalmas lekérdezési szolgáltatás segítségével az Azure SQL Database a lekérdezés Azure SQL Data warehouse-bA. 
+Ebben az oktatóanyagban egy Azure SQL Database Elastic Query szolgáltatását használja Azure SQL Data Warehouse lekérdezéséhez. 
 
 ## <a name="prerequisites-for-the-tutorial"></a>Az oktatóanyag előfeltételei
 
-Az oktatóanyag elkezdéséhez rendelkeznie kell a következő előfeltételek teljesülését:
+Az oktatóanyag elkezdéséhez az alábbi előfeltételekkel kell rendelkeznie:
 
 1. Telepített SQL Server Management Studio (SSMS).
-2. Hozza létre az Azure SQL-kiszolgáló egy adatbázisról és az adatraktárról belül ehhez a kiszolgálóhoz.
-3. Az Azure SQL-kiszolgáló eléréséhez tűzfalszabályok beállítása.
+2. Létrehozott egy Azure SQL server egy belül a kiszolgáló adatbázisába és adatraktárába.
+3. Az Azure SQL-kiszolgáló eléréséhez szükséges tűzfalszabályok beállítása.
 
-## <a name="set-up-connection-between-sql-data-warehouse-and-sql-database-instances"></a>Az SQL Data Warehouse és SQL Database-példányok közötti kapcsolat 
+## <a name="set-up-connection-between-sql-data-warehouse-and-sql-database-instances"></a>Az SQL Data Warehouse és az SQL Database-példányok közötti kapcsolat beállítása 
 
-1. SSMS vagy egy másik lekérdezés ügyfél, nyissa meg egy új adatbázis-lekérdezést **fő** a logikai kiszolgálón.
+1. SSMS vagy más lekérdezésügyfél használatával nyisson meg egy új lekérdezést a adatbázis **fő** a logikai kiszolgálón.
 
-2. A bejelentkezési és a felhasználói adatok adatraktár kapcsolatnak az SQL-adatbázis jelölő létrehozása.
+2. Hozzon létre bejelentkezést és felhasználót, hogy az SQL database data warehouse kapcsolatot jelöli.
 
    ```sql
    CREATE LOGIN SalesDBLogin WITH PASSWORD = 'aReallyStrongPassword!@#';
    ```
 
-3. Az új lekérdezés SSMS vagy egy másik lekérdezés ügyfél, nyissa meg a **SQL data warehouse példány** a logikai kiszolgálón.
+3. SSMS vagy más lekérdezésügyfél használatával nyisson meg egy új lekérdezést a **SQL data warehouse-példányhoz** a logikai kiszolgálón.
 
-4. Az adatraktár példánya a 2. lépésben létrehozott bejelentkezéskor a felhasználó létrehozása
+4. Felhasználó létrehozása az adattárházpéldányt a 2. lépésben létrehozott bejelentkezéssel
 
    ```sql
    CREATE USER SalesDBUser FOR LOGIN SalesDBLogin;
    ```
 
-5. A hozzáférési jogot a felhasználó szeretné az SQL-adatbázisban szeretné végrehajtani, 4. lépését. Ebben a példában engedély csak nyújtott válassza egy adott séma, hogyan azt korlátozhatják lekérdezések az SQL-adatbázis a megadott tartomány ábrázoló. 
+5. Engedélyek megadása a felhasználónak, amely az SQL Database szeretné végrehajtani kívánt 4. lépését. Ebben a példában csak folyamatban van az engedélyt válassza ki az egy adott séma, így bemutatja, hogyan hogy előfordulhat, hogy korlátozni a lekérdezések az SQL database-ből egy adott tartományhoz. 
 
    ```sql
    GRANT SELECT ON SCHEMA :: [dbo] TO SalesDBUser;
    ```
 
-6. Az új lekérdezés SSMS vagy egy másik lekérdezés ügyfél, nyissa meg a **SQL database-példányt** a logikai kiszolgálón.
+6. SSMS vagy más lekérdezésügyfél használatával nyisson meg egy új lekérdezést a **SQL database-példány** a logikai kiszolgálón.
 
-7. Hozzon létre egy főkulcsot, ha még nem rendelkezik egy. 
+7. Hozzon létre egy főkulcsot, ha Ön még nem rendelkezik egy. 
 
    ```sql
    CREATE MASTER KEY; 
    ```
 
-8. 2. lépésben létrehozott hitelesítő adatok használatával adatbázishoz kötődő hitelesítő adatok létrehozása.
+8. Hozzon létre egy adatbázishoz kötődő hitelesítő adatok a 2. lépésben létrehozott hitelesítő adatok használatával.
 
    ```sql
    CREATE DATABASE SCOPED CREDENTIAL SalesDBElasticCredential
@@ -69,7 +69,7 @@ Az oktatóanyag elkezdéséhez rendelkeznie kell a következő előfeltételek t
    SECRET = 'aReallyStrongPassword@#!';
    ```
 
-9. Hozzon létre egy külső adatforrásból mutat, az adatraktár példánya.
+9. Hozzon létre egy külső adatforrást, amely a data warehouse-példányhoz.
 
    ```sql
    CREATE EXTERNAL DATA SOURCE EnterpriseDwSrc WITH 
@@ -80,16 +80,16 @@ Az oktatóanyag elkezdéséhez rendelkeznie kell a következő előfeltételek t
    ) ;
    ```
 
-10. Mostantól létrehozhat külső táblákra hivatkozó a külső adatforráshoz. Azokat a táblákat használata lekérdezések kerülnek az adatraktár példánya feldolgozni és küldi vissza az adatbázispéldány fölött.
+10. Most már létrehozhatja a külső táblákra hivatkozó külső adatforrás. Az adatraktár példánya feldolgozni és küld vissza az adatbázispéldányt küldi a lekérdezéseket a táblázatok használatával.
 
 
-## <a name="elastic-query-from-sql-database-to-sql-data-warehouse"></a>Az SQL data warehouse rugalmas SQL-adatbázis lekérdezése
+## <a name="elastic-query-from-sql-database-to-sql-data-warehouse"></a>Az SQL data warehouse az SQL database rugalmas lekérdezése
 
-A következő néhány lépésben leírtak létre fogunk hozni egy táblát az az adatraktár példánya a több értékkel rendelkező. Fog majd bemutatjuk, hogyan állíthatja be a külső tábla lekérdezése az adatraktár példánya a az adatbázispéldány fölött.
+A következő néhány lépésben hozunk létre egy táblát a data warehouse-példányhoz több értékekkel. Ezután bemutatjuk, hogyan állítható be a külső tábla lekérdezése az adattárházpéldányt a database-példány.
 
-1. Az új lekérdezés SSMS vagy egy másik lekérdezés ügyfél, nyissa meg a **SQL Data Warehouse** a logikai kiszolgálón.
+1. SSMS vagy más lekérdezésügyfél használatával nyisson meg egy új lekérdezést a **SQL Data Warehouse** a logikai kiszolgálón.
 
-2. Küldje el a következő lekérdezés futtatásával hozzon létre egy **OrdersInformation** a az adatraktár példánya táblájában.
+2. Küldje el a következő lekérdezést, hozzon létre egy **OrdersInformation** táblájában az adattárház-példányt.
 
    ```sql
    CREATE TABLE [dbo].[OrderInformation]
@@ -104,9 +104,9 @@ A következő néhány lépésben leírtak létre fogunk hozni egy táblát az a
    INSERT INTO [dbo].[OrderInformation] ([OrderID], [CustomerID]) VALUES (564, 8)
    ```
 
-3. Az új lekérdezés SSMS vagy egy másik lekérdezés ügyfél, nyissa meg a **SQL-adatbázis** a logikai kiszolgálón.
+3. SSMS vagy más lekérdezésügyfél használatával nyisson meg egy új lekérdezést a **SQL-adatbázis** a logikai kiszolgálón.
 
-4. Küldje el a következő lekérdezés futtatásával hozzon létre egy külső tábla definíciójának mutat, a **OrdersInformation** az adatraktár példánya táblájában.
+4. Küldje el a következő lekérdezést, amely a külső tábla definíció létrehozása a **OrdersInformation** táblájában a data warehouse-példányhoz.
 
    ```sql
    CREATE EXTERNAL TABLE [dbo].[OrderInformation]
@@ -122,12 +122,12 @@ A következő néhány lépésben leírtak létre fogunk hozni egy táblát az a
    )
    ```
 
-5. Figyelje meg, hogy most már rendelkezik egy külső tábla definíciójában a **SQL database-példányt**.
+5. Figyelje meg, hogy most már rendelkezik egy külső tábla definíciójában a **SQL database-példány**.
 
-   ![Rugalmas lekérdezési külső tábla definíciójában](media/sql-data-warehouse-elastic-query-with-sql-database/elastic-query-external-table.png)
+   ![Rugalmas lekérdezés külső tábla definíciójának](media/sql-data-warehouse-elastic-query-with-sql-database/elastic-query-external-table.png)
 
 
-6. Küldje el a következő lekérdezést, amely lekérdezi az adatraktár példánya. A 2. lépésben beszúrt öt értékeket kell kapnia. 
+6. Küldje el a következő lekérdezést, amely lekérdezi a data warehouse-példányhoz. A 2. lépésben beszúrt öt értékeket kell kapnia. 
 
 ```sql
 SELECT * FROM [dbo].[OrderInformation];
@@ -135,9 +135,9 @@ SELECT * FROM [dbo].[OrderInformation];
 
 > [!NOTE]
 >
-> Figyelje meg, hogy annak ellenére, hogy néhány érték, ez a lekérdezés vissza jelentős időt vesz igénybe. Rugalmas lekérdezéssel adatraktárban, egy gondolja át az általános költségek adatátviteli és a lekérdezés feldolgozása a hálózaton keresztül. Rugalmas lekérdezés távoli végrehajtás használatára, ha a számítási teljesítményt, nem várakozási ideje, a prioritás.
+> Figyelje meg, hogy annak ellenére, hogy néhány értékek, ez a lekérdezés vissza hosszabb időt vesz igénybe. Rugalmas lekérdezés használatával a data warehouse-ba, amikor a hálózaton keresztül kell figyelembe venni a lekérdezés-feldolgozás és az adatátviteli költségek. Rugalmas lekérdezés távoli végrehajtás használatára, ha a számítási teljesítményt, nem a késés, a prioritás.
 
-Gratulálunk, állította be a rugalmas lekérdezés nagyon alapjait. 
+Gratulálunk, az meg van adva a rugalmas lekérdezés nagyon alapjait. 
 
 ## <a name="next-steps"></a>További lépések
-A javaslatok, lásd: [gyakorlati tanácsok az Azure SQL Data Warehouse szolgáltatással rugalmas lekérdezéssel](how-to-use-elastic-query-with-sql-data-warehouse.md).
+További javaslatok: [ajánlott eljárások az Azure SQL Data Warehouse rugalmas lekérdezés használatával](how-to-use-elastic-query-with-sql-data-warehouse.md).

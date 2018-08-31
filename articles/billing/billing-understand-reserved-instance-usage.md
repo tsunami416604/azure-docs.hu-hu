@@ -1,5 +1,5 @@
 ---
-title: Azure foglalás használati adatai használatalapú fizetéses előfizetésre |} A Microsoft Docs
+title: Az Azure-foglalások használati adatai használatalapú fizetéses előfizetésre |} A Microsoft Docs
 description: Ismerje meg, hogyan olvashatja be a használat megértéséhez, hogyan kell alkalmazni a foglalást az Azure használatalapú fizetéses előfizetésében.
 services: billing
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2018
 ms.author: manshuk
-ms.openlocfilehash: cf1d7c67fe6033bf41317e75a33349ae07ecf643
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 1226b2f73d556da2ff7d73f6f322e0bd1590f915
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39627883"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43307058"
 ---
 # <a name="understand-azure-reservation-usage-for-your-pay-as-you-go-subscription"></a>A használatalapú fizetéses előfizetést Azure foglalás használati adatai
 
@@ -93,12 +93,12 @@ Szűrés **további adatok** , és írja be a **Foglalásazonosító**. Az aláb
 
 ## <a name="next-steps"></a>További lépések
 
-Foglalások kapcsolatos további információkért tekintse meg a következő cikkeket:
+Azure-foglalások kapcsolatos további információkért tekintse meg a következő cikkeket:
 
 - [Mik az Azure-foglalásokat?](billing-save-compute-costs-reservations.md)
 - [Fizessen elő az Azure fenntartott VM-példányok a virtuális gépekkel](../virtual-machines/windows/prepay-reserved-vm-instances.md)
 - [Fizessen elő az SQL-adatbázis számítási erőforrásokat, hogy az Azure SQL Database szolgáltatás számára fenntartott kapacitás](../sql-database/sql-database-reserved-capacity.md)
-- [Az Azure-ban foglalások kezelése](billing-manage-reserved-vm-instance.md)
+- [Az Azure-fenntartások kezelése](billing-manage-reserved-vm-instance.md)
 - [Megismerheti, hogyan kell alkalmazni a foglalási kedvezményt](billing-understand-vm-reservation-charges.md)
 - [A nagyvállalati beléptetés foglalás használati adatai](billing-understand-reserved-instance-usage-ea.md)
 - [Windows szoftverek díjait nem tartalmazza a foglalások](billing-reserved-instance-windows-software-costs.md)

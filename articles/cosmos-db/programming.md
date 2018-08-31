@@ -10,24 +10,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: andrl
-ms.openlocfilehash: 6296eb423f24762ed32a21ef40852dc1a9dd8f36
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 8377b13014e2f97518bbc779ee809aaa10d6eb45
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42059622"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43287444"
 ---
 # <a name="azure-cosmos-db-server-side-programming-stored-procedures-database-triggers-and-udfs"></a>Az Azure Cosmos DB kiszolgálóoldali programozása: tárolt eljárások, adatbázis-eseményindítók és felhasználói függvények
 
 Ismerje meg, hogyan JavaScript nyelvintegrált, a tranzakciós végrehajtása az Azure Cosmos DB lehetővé teszi, hogy a fejlesztők írási **tárolt eljárások**, **eseményindítók**, és **felhasználó által definiált függvények (UDF-EK)**  a natív módon egy [ECMAScript 2015](http://www.ecma-international.org/ecma-262/6.0/) JavaScript. A JavaScript integrációja lehetővé teszi, hogy a program logika, amely tartalmazza a szükséges, és közvetlenül az adatbázis tárolási partíciók belül írását. 
 
-Azt javasoljuk, hogy Kezdésként a következő videót, amelyben Andrew Liu bevezetést nyújt az Azure Cosmos DB adatbázis kiszolgálóoldali programozási modellt. 
-
-> [!VIDEO https://www.youtube.com/embed/s0cXdHNlVI0]
->
-> 
-
-Ezt követően térjen vissza ehhez a cikkhez, ahol megtudhatja, az alábbi kérdésekre adott válaszokat:  
+Ebben a cikkben megtudhatja a válaszokat az alábbi kérdésekre:  
 
 * Hogyan írni egy tárolt eljárást, eseményindító vagy UDF JavaScript használatával?
 * Hogyan nem garantálja a Cosmos DB ACID?

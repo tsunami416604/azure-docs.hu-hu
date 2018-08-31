@@ -1,65 +1,65 @@
 ---
-title: Eszköz - Azure modellezési Microsoft fenyegetés |} Microsoft Docs
-description: a Microsoft fenyegetés modellezési eszközt, az eszközt, beleértve a fenyegetések modellezése folyamat első lépések vonatkozó információkat tartalmazó főoldala
+title: Microsoft Threat Modeling Tool – Azure |} A Microsoft Docs
+description: a Microsoft Threat Modeling Tool, az eszközt, beleértve a Threat Modeling folyamat – első lépések az adatokat tartalmazó főoldala
 services: security
 documentationcenter: na
-author: RodSan
-manager: RodSan
-editor: RodSan
+author: jegeib
+manager: jegeib
+editor: jegeib
 ms.assetid: na
 ms.service: security
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/17/2017
-ms.author: rodsan
-ms.openlocfilehash: 6e26b0af2a16a872c8e02b736e24019b47ed5780
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 02/16/2017
+ms.author: jegeib
+ms.openlocfilehash: 8b0700e76bbcc0913b376e607f706f540b1df2bb
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23867933"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43307075"
 ---
-# <a name="microsoft-threat-modeling-tool"></a>Microsoft fenyegetés modellezési eszköz
+# <a name="microsoft-threat-modeling-tool"></a>A Microsoft Fenyegetésmodellezési eszköz
 
-A fenyegetések modellezése eszköz a Microsoft biztonsági fejlesztési életciklus (SDL) alapeleme. Lehetővé teszi a szoftverek fejlesztők azonosítása és potenciális biztonsági problémákat korai, amelyek viszonylag egyszerű és költséghatékony megoldásához. Emiatt nagy mértékben csökkenti a fejlesztési költségek. Is azt használható az eszköz szakértőivel nem biztonsági szem előtt, könnyítve modellezni az összes létrehozására, illetve elemzése fenyegetés modellek világos útmutatást megadásával. 
+A Threat Modeling Tool a Microsoft biztonsági fejlesztési életciklus (SDL) alapeleme. Azonosíthatja és korai, csökkentheti a potenciális biztonsági problémákat, amelyek viszonylag egyszerű és költséghatékony oldja meg a szoftver tervezők lehetővé teszi. Ennek eredményeképpen jelentősen csökkenti a fejlődés a teljes költség. Ezenkívül alakítottuk ki az eszköz nem biztonsági szakértői szem előtt, könnyíti threat modellezési minden fejlesztő számára világos útmutatóval szolgál azáltal, hogy létrehozásával és enyhítési elemzése. 
 
-Az eszköz lehetővé teszi, hogy mindenki számára:
+Az eszköz lehetővé teszi a felhasználóknak:
 
-* Azok a rendszerek biztonsági kialakításának kommunikáljon
-* A potenciális biztonsági problémákat bevált módszer használatával azokat tervekhez elemzése
-* Javasoljuk, és azok mérséklési lehetőségeit biztonsági problémák kezelése
+* Kommunikál a rendszerek a biztonság kialakítása
+* Ezeket a potenciális biztonsági problémákat olyan kipróbált módszer használatával minták elemzése
+* Javasoljuk, és a biztonsági megoldások kezelése
 
-Az alábbiakban néhány tooling képességek és a tárolóhardverek, csak hogy néhányat említsünk:
+Az alábbiakban néhány eszközök képességei és innovációkról, csak hogy néhányat említsünk:
 
-* **Automatizálási:** útmutatást és a modell rajzolási visszajelzés
-* **Elemenként STRIDE:** interaktív fenyegetések és azok mérséklési elemzése
-* **Jelentéskészítés:** biztonsági tevékenységek és az ellenőrzési fázisban tesztelése
-* **Egyedi módszer:** lehetővé teszi a felhasználók jobban jelenítheti meg, és megismerheti a fenyegetések
-* **A fejlesztők és a szoftverfrissítési középre:** számos különböző módszer igazított eszközök vagy a támadók. A Microsoft szoftverek igazított. Azt minden szoftverfejlesztőkkel és fejlesztők jártas – például a szoftver architektúra képek rajzolási tevékenységek létrehozása
-* **Tervezési elemzés összpontosított:** a kifejezés "modellezni" vagy a követelményeknek, vagy a Tervező elemzési technika hivatkozhat. Egyes esetekben a kettő keverékéből összetett hivatkozik. A Microsoft SDL módja modellezni a célzott tervezési elemzési technika
+* **Automatizálás:** útmutatást és a egy modell rajzolási visszajelzés
+* **Egy elem STRIDE:** interaktív fenyegetések és megoldást elemzése
+* **Jelentéskészítés:** biztonsági tevékenységeket és az ellenőrzési fázisban tesztelése
+* **Egyedi módszertan:** lehetővé teszi a felhasználók jobban jelenítheti meg és fenyegetések ismertetése
+* **A fejlesztők és a szoftverfrissítési középre tervezve:** eszközökről vagy a támadók igazított számos különböző módszer. A szoftver középre azt. A tevékenység, amely az összes szoftver fejlesztői és tervezői számára ismerős – például a képek a szoftverfrissítési architektúrák rajzolási készítünk
+* **Tervezési elemzési összpontosítani:** "Threat modellezési" kifejezés vagy a követelményeknek, vagy olyan tervezési elemző módszer hivatkozhat. Egyes esetekben a két összetett kombinációja hivatkozik. A Microsoft SDL megközelítés a fenyegetések modellezése a fókuszban lévő tervezési analysis technika
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Az alábbi táblázat a kezdéshez a fenyegetések modellezése eszközzel fontos hivatkozásokat tartalmaz:
+Az alábbi táblázat tartalmazza az első lépések a Threat Modeling Tool fontos hivatkozások:
 
 | Lépés  | Leírás                                                                                   |
 | ----- | --------------------------------------------------------------------------------------------- |
-| **1** | [A fenyegetések modellezése eszköz letöltése](https://aka.ms/tmtpreview)                                |
-| **2** | [Az első lépések útmutató olvasása](./azure-security-threat-modeling-tool-getting-started.md)    |
-| **3** | [Ismerkedjen meg a szolgáltatások](./azure-security-threat-modeling-tool-feature-overview.md)   |
-| **4** | [További tudnivalók a generált fenyegetés kategóriák](./azure-security-threat-modeling-tool-threats.md)   |
-| **5** | [Generált fenyegetések megoldást keresése](./azure-security-threat-modeling-tool-mitigations.md) |
+| **1** | [Töltse le a Threat Modeling Tool](https://aka.ms/tmtpreview)                                |
+| **2** | [Olvassa el az első lépések útmutató](./azure-security-threat-modeling-tool-getting-started.md)    |
+| **3** | [Ismerkedjen meg a Funkciók](./azure-security-threat-modeling-tool-feature-overview.md)   |
+| **4** | [További információ a generált threat kategóriák](./azure-security-threat-modeling-tool-threats.md)   |
+| **5** | [Keresse meg a generált fenyegetések megoldások](./azure-security-threat-modeling-tool-mitigations.md) |
 
-## <a name="resources"></a>Erőforrások
+## <a name="resources"></a>További források
 
-Itt kapcsolódik néhány régebbi cikkek továbbra is a fenyegetések modellezése ma:
+Az alábbiakban néhány régebbi cikkek még mindig kapcsolódik threat modeling még ma:
 
-* [Fontos a modellezni foglalkozó](https://msdn.microsoft.com/magazine/dd347831.aspx)
-* [Megbízható számítástechnika által közzétett képzési](https://www.microsoft.com/download/details.aspx?id=16420)
+* [Veszélyforrások elleni modellezés fontos a cikk](https://msdn.microsoft.com/magazine/dd347831.aspx)
+* [Megbízható számítástechnika által közzétett képzés](https://www.microsoft.com/download/details.aspx?id=16420)
 
-Tekintse meg néhány fenyegetések modellezése eszköz szakértők megtette:
+Tekintse meg néhány Threat Modeling Tool szakértők végezte:
 
 * [Fenyegetések Manager](https://simoneonsecurity.com/threatsmanagersetup-v1-5-10/)
-* [Simone Curzi biztonsági Blog](https://simoneonsecurity.com/)
+* [Simone Curzi Security Blog](https://simoneonsecurity.com/)

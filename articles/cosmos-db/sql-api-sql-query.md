@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/10/2018
 ms.author: laviswa
-ms.openlocfilehash: 26928e36b09ef0dfe5576a8a8039ffac2dd3fb4a
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: a3a1f376c36004851d6e64f2fa037bebfc24665b
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42056893"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43287758"
 ---
 # <a name="query-azure-cosmos-db-data-with-sql-queries"></a>Azure Cosmos DB-adatok lekérdezése az SQL-lekérdezésekhez
 
@@ -27,17 +27,7 @@ A Microsoft Azure Cosmos DB támogatja a dokumentumok lekérdezését SQL (Struc
 
 * Az Azure Cosmos DB JavaScript programozási modellt használ a lekérdezési nyelv alapjaként. Az SQL API a JavaScript, kifejezés kiértékelése, valamint függvény meghívási feltörték. Ez a-kapcsolja be a leképezések relációs, hierarchikus navigációs természetes programozási modellt biztosít JSON-dokumentumok, önkiszolgáló összekapcsolásokat, térinformatikai lekérdezéseket és hívja meg a felhasználó által definiált függvények (UDF), teljes mértékben javascriptben írt, többek között. 
 
-Ez a cikk végigvezeti néhány példa SQL-lekérdezések egyszerű JSON-dokumentumok használatával. Azure Cosmos DB SQL nyelvi szintaxissal kapcsolatos további információkért lásd: [SQL-szintaxis referenciája](sql-api-sql-query-reference.md) cikk. Által figyelt Azure Cosmos DB a következő videókért a lekérdezési képességekkel is kezdheti, és bemutatja az online [Query Playground](http://www.documentdb.com/sql/demo).
-
-> [!VIDEO https://www.youtube.com/embed/1LqUQRpHfFI]
->
->
-
-Az alábbi videóban további speciális lekérdezési technikákat találja meg:
-
-> [!VIDEO https://www.youtube.com/embed/kASU9NOIR90]
->
->
+Ez a cikk végigvezeti néhány példa SQL-lekérdezések egyszerű JSON-dokumentumok használatával. Azure Cosmos DB SQL nyelvi szintaxissal kapcsolatos további információkért lásd: [SQL-szintaxis referenciája](sql-api-sql-query-reference.md) cikk. 
 
 ## <a id="GettingStarted"></a>Ismerkedés az SQL-parancsok
 Hozzunk létre két egyszerű JSON-dokumentumok és adatok lekérdezése. Két JSON-dokumentumok családok kapcsolatban fontolja meg, ezek a JSON-dokumentumok beszúrása egy gyűjteménybe, és ezt követően az adatok lekérdezéséhez. Itt van egy egyszerű JSON az Andersen és Wakefield családhoz, a szülők, gyermekek (és a kisállatok), a dokumentum-címet, és a regisztrációs adatok. A dokumentum a karakterláncokat, számok, logikai értékek, tömbök és beágyazott tulajdonságok rendelkezik. 

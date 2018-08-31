@@ -6,14 +6,14 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-registry
 ms.topic: article
-ms.date: 08/28/2018
+ms.date: 08/30/2018
 ms.author: marsma
-ms.openlocfilehash: 5c10c961519614d1560f27c41ba57237085261ba
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
-ms.translationtype: HT
+ms.openlocfilehash: eb3a1745677871211df05d18e28d32061f360bac
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43190408"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43301816"
 ---
 # <a name="azure-container-registry-skus"></a>Az Azure Container Registry Termékváltozatai
 
@@ -21,9 +21,9 @@ Az Azure Container Registry (ACR) több szolgáltatási szinten, SKU-k más név
 
 | SKU | Managed | Leírás |
 | --- | :-------: | ----------- |
-| **Basic** | Igen | Költségoptimalizált belépési pont az Azure Container Registryt tanulmányozó fejlesztőknek. Az Alapszintű beállításjegyzékek ugyanolyan szoftveres képességekkel rendelkeznek, mint a Standard és a Prémium szint (Azure Active Directory-hitelesítés integrálása, rendszerképtörlés és webhookok), de méretbeli és használatbeli korlátozásokkal. |
-| **Standard** | Igen | Szabványos regisztrációs adatbázisokkal a Basic, a megnövelt tárhelykorlátait és lemezkép átviteli megegyező funkciókat kínál. A Standard beállításjegyzékek a legtöbb éles forgatókönyvhöz megfelelők. |
-| **Prémium** | Igen | Prémium szintű beállításjegyzékek magasabb korlátok korlátozásokat, például a storage és a párhuzamos műveletek nagy mennyiségű forgatókönyveket lehetővé nyújtanak. Mellett magasabb átviteli kapacitást a lemezképet, prémium szintű szolgáltatásai, például a hozzáadja [georeplikációs] [ container-registry-geo-replication] egyetlen regisztrációs adatbázis kezeléséhez több régióban, az egyes hálózatközeli beállításjegyzék karbantartása a központi telepítés. |
+| **Basic** | Igen | Költségoptimalizált belépési pont az Azure Container Registryt tanulmányozó fejlesztőknek. Alapszintű beállításjegyzékek ugyanazokat a programozott képességeket, Standard és prémium (a Azure Active Directory hitelesítési integráció, a lemezkép törlése és a webhook) rendelkezik. Azonban a belefoglalt tárterület és a lemezkép átviteli sebesség különösen leginkább megfelelő alacsonyabb használati forgatókönyvek. |
+| **Standard** | Igen | Szabványos regisztrációs adatbázisokkal a Basic, a nagyobb foglalt tároló- és képfájlok átviteli sebesség megegyező funkciókat kínál. A Standard beállításjegyzékek a legtöbb éles forgatókönyvhöz megfelelők. |
+| **Prémium** | Igen | Prémium szintű beállításjegyzékek adja meg a belefoglalt tárterület és a párhuzamos műveletek nagy mennyiségű forgatókönyveket lehetővé legmagasabb összege. Mellett lemezkép nagyobb átviteli sebességet, prémium szintű szolgáltatásai, például a hozzáadja [georeplikációs] [ container-registry-geo-replication] egyetlen regisztrációs adatbázis kezeléséhez több régióban és [megbízhatóság (előzetes verzió)tartalom](container-registry-content-trust.md)lemezkép-címke aláíráshoz. |
 | Klasszikus<sup>1</sup> | Nem | Ez a Termékváltozat engedélyezve van az Azure-ban az Azure Container Registry szolgáltatás kezdeti verziójában. Klasszikus beállításjegyzékek élvezik egy tárfiókot, amelyet az Azure létrehozza az előfizetésében, ami lehetővé teszi az ACR-hez, például a nagyobb átviteli sebesség és georeplikáció útján magasabb szintű képességeket biztosít. |
 
 <sup>1</sup> a klasszikus SKU lesz **elavult** a **március 2019**. Új tároló-beállításjegyzékek alapszintű, Standard vagy prémium szintű használja.

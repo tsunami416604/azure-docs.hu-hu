@@ -1,25 +1,18 @@
 ---
 title: Az Azure ExpressRoute-Kapcsolatcsoportok és útválasztási tartományok |} A Microsoft Docs
 description: Ez az oldal ExpressRoute-Kapcsolatcsoportok és útválasztási tartományokat áttekintést nyújt.
-documentationcenter: na
 services: expressroute
 author: cherylmc
-manager: timlt
-editor: ''
-ms.assetid: 6f0c5d8e-cc60-4a04-8641-2c211bda93d9
 ms.service: expressroute
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 03/01/2018
-ms.author: ganesr,cherylmc
-ms.openlocfilehash: 563ee61b56af22ada662fcfff9f47ae58f3f32ba
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.topic: conceptual
+ms.date: 08/29/2018
+ms.author: cherylmc
+ms.openlocfilehash: c052cdf48786f7c70d09187d715d4f54843714a4
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38969095"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43307553"
 ---
 # <a name="expressroute-circuits-and-routing-domains"></a>Az ExpressRoute-Kapcsolatcsoportok és útválasztási tartományok
  Kell rendelni egy *ExpressRoute-kapcsolatcsoport* a helyszíni infrastruktúra csatlakozni a Microsoft egy kapcsolatszolgáltatón keresztül. A következő ábrán látható a WAN és a Microsoft közötti kapcsolat logikai megfelelője.
@@ -43,17 +36,24 @@ ExpressRoute-kapcsolatcsoport több útválasztási tartomány társítva van: a
 
 ![](./media/expressroute-circuit-peerings/expressroute-peerings.png)
 
-### <a name="azure-private-peering"></a>Azure-beli privát társviszony-létesítés
+### <a name="azure-private-peering"></a>Azure privát társviszony-létesítés
 Azure számítási szolgáltatások, azaz a virtuális gépek (IaaS), és a egy virtuális hálózaton belül üzembe helyezett cloud services (PaaS), a privát társviszony-létesítési tartományon keresztül csatlakozhat. A privát társviszony-létesítési tartomány egy megbízható kiterjesztése, a Microsoft Azure-bA az alaphálózat minősül. Beállíthatja a kétirányú kapcsolatokat a központi hálózat és az Azure virtuális hálózatok (Vnetek) között. A társviszony lehetővé teszi, hogy csatlakozhat a virtuális gépek és felhőszolgáltatások közvetlenül a saját magánhálózati IP-címek.  
 
 A privát társviszony-létesítési tartomány egynél több virtuális hálózat kapcsolódhat. Tekintse át a [gyakori kérdéseket tartalmazó oldal](expressroute-faqs.md) korlátok és korlátozások kapcsolatos információkat. Keresse fel a [Azure-előfizetés és a szolgáltatások korlátozásai, kvótái és megkötései](../azure-subscription-service-limits.md) naprakész információkat a korlátok lapját.  Tekintse meg a [útválasztás](expressroute-routing.md) lap útválasztási konfigurációja részletes információt.
 
-### <a name="azure-public-peering"></a>Az Azure nyilvános társviszony-létesítés
+### <a name="microsoft-peering"></a>Microsoft társviszony-létesítés
+
+[!INCLUDE [expressroute-office365-include](../../includes/expressroute-office365-include.md)]
+
+A Microsoft online szolgáltatásaihoz (az Office 365, Dynamics 365 és Azure PaaS-szolgáltatások) kapcsolatra van a Microsoft társviszony-létesítésen keresztül. Engedélyezzük a kétirányú kapcsolatokat a WAN és a Microsoft cloud services révén a Microsoft társviszony-létesítési útválasztási tartomány között. Csak keresztül, vagy a kapcsolatszolgáltató tulajdonában lévő nyilvános IP-címek és a Microsoft felhőszolgáltatásai csatlakoznia kell, és az összes meghatározott szabálynak meg kell felelnie. További információkért lásd: a [ExpressRoute-Előfeltételek](expressroute-prerequisites.md) lapot.
+
+Tekintse meg a [gyakori kérdéseket tartalmazó oldal](expressroute-faqs.md) vonatkozó további információ a támogatott szolgáltatások, a költségek és a konfiguráció részleteit. Tekintse meg a [ExpressRoute-helyek](expressroute-locations.md) oldal kapcsolatszolgáltatók ajánlat a Microsoft társviszony-létesítés támogatása a listán szereplő információkat.
+
+### <a name="azure-public-peering"></a>Azure nyilvános társviszony-létesítés (új kapcsolatcsoportot elavult)
 
 > [!IMPORTANT]
-> Az Azure PaaS szolgáltatások mindegyike a Microsoft társviszony-létesítési szolgáltatáson keresztül érhető el. Javasoljuk a Microsoft társviszony-létesítés létrehozását, és Azure PaaS szolgáltatásokhoz Microsoft társviszony-létesítésen keresztül történő kapcsolódást.  
+> Az Azure nyilvános társviszony-létesítés nem érhető el az új kapcsolatcsoportot.  
 >   
-
 
 Például az Azure Storage, SQL Database és Websites szolgáltatásokhoz a nyilvános IP-címek érhetők el. A nyilvános IP-címeket, beleértve a virtuális IP-címek a felhőalapú szolgáltatások keresztül a nyilvános társviszony-létesítési útválasztási tartomány-ban üzemeltetett szolgáltatások privát módon csatlakozhat. A nyilvános társviszony-létesítési tartományhoz csatlakozni a DMZ-t, és az összes Azure-szolgáltatások a saját nyilvános IP-címek kapcsolat WAN hálózatból nélkül az interneten keresztül. 
 
@@ -63,26 +63,17 @@ Egyéni útvonalszűrőket meghatározhatja csak a szükséges útvonalakat hasz
 
 A nyilvános társviszony-létesítési útválasztási tartomány keresztül támogatott szolgáltatások kapcsolatos további információkért lásd: a [– gyakori kérdések](expressroute-faqs.md).
 
-### <a name="microsoft-peering"></a>Microsoft társviszony-létesítés
-[!INCLUDE [expressroute-office365-include](../../includes/expressroute-office365-include.md)]
-
-A Microsoft online szolgáltatásaihoz (az Office 365, Dynamics 365 és Azure PaaS-szolgáltatások) kapcsolatra van a Microsoft társviszony-létesítésen keresztül. Engedélyezzük a kétirányú kapcsolatokat a WAN és a Microsoft cloud services révén a Microsoft társviszony-létesítési útválasztási tartomány között. Csak keresztül, vagy a kapcsolatszolgáltató tulajdonában lévő nyilvános IP-címek és a Microsoft felhőszolgáltatásai csatlakoznia kell, és az összes meghatározott szabálynak meg kell felelnie. További információkért lásd: a [ExpressRoute-Előfeltételek](expressroute-prerequisites.md) lapot.
-
-Tekintse meg a [gyakori kérdéseket tartalmazó oldal](expressroute-faqs.md) vonatkozó további információ a támogatott szolgáltatások, a költségek és a konfiguráció részleteit. Tekintse meg a [ExpressRoute-helyek](expressroute-locations.md) oldal kapcsolatszolgáltatók ajánlat a Microsoft társviszony-létesítés támogatása a listán szereplő információkat.
-
 ## <a name="routing-domain-comparison"></a>Útválasztási tartomány összehasonlítása
 Az alábbi táblázat összehasonlítja a három útválasztási tartományt:
 
-|  | **Magánhálózati társviszony-létesítés** | **Nyilvános társviszony-létesítés** (az új létrehozások elavult) | **Microsoft társviszony-létesítés** |
+|  | **Magánhálózati társviszony-létesítés** | **Microsoft társviszony-létesítés** |  **Nyilvános társviszony-létesítés** (Kapcsolatcsoportok elavult) |
 | --- | --- | --- | --- |
 | **Maximális száma. társviszony-létesítés támogatott # előtagok** |4000 alapértelmezésben 10 000-et az ExpressRoute Premium szolgáltatással |200 |200 |
 | **Támogatott IP-címtartományok** |Bármely érvényes IP-cím a WAN belül. |Nyilvános IP-címek, vagy a kapcsolatszolgáltató a tulajdonosa. |Nyilvános IP-címek, vagy a kapcsolatszolgáltató a tulajdonosa. |
 | **Követelmények száma szerint** |Privát és nyilvános AS-számokat. A nyilvános kell a saját AS-szám, ha használni kívánja. |Privát és nyilvános AS-számokat. Nyilvános IP-címek tulajdonjogát kell igazolnia. |Privát és nyilvános AS-számokat. Nyilvános IP-címek tulajdonjogát kell igazolnia. |
-| **Támogatott IP protokollok**| IPv4 | IPv4 | IPv4, IPv6 |
+| **Támogatott IP protokollok**| IPv4 |  IPv4, IPv6 | IPv4 |
 | **Útválasztási adapter IP-címek** |Az RFC1918 és nyilvános IP-címek |Nyilvános IP-címek útválasztási beállításjegyzékekben regisztrálva. |Nyilvános IP-címek útválasztási beállításjegyzékekben regisztrálva. |
 | **MD5-kivonat-támogatás** |Igen |Igen |Igen |
-
-
 
 Kiválaszthatja, hogy legalább egy, az útválasztási tartományok engedélyezéséhez az ExpressRoute-kapcsolatcsoport részeként. Ha szeretné az útválasztási tartományok az azonos VPN elhelyezése, ha azt szeretné, úgy, hogy egyetlen útválasztási tartomány rendelkezik. Helyezheti őket a különböző útválasztási tartományok, a diagram hasonló. Az ajánlott konfigurációs, hogy a privát társviszony-létesítés közvetlenül kapcsolódik az alapvető hálózatra, és a nyilvános és Microsoft társviszony-létesítési csatolások csatlakozik a DMZ-t.
 

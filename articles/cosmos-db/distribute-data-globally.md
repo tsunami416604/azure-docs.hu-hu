@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: sngun
-ms.openlocfilehash: dec981ad750a49646916dbef40a4cc632ab71da2
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 19e47e0dba1a89ea32f42ef0bafc26f8c59b4ad7
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37856640"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43288302"
 ---
 # <a name="how-to-distribute-data-globally-with-azure-cosmos-db"></a>Globális adatterjesztés az Azure Cosmos DB útmutató
 Az Azure széles körben használt – Ez egy globális lefedettséggel rendelkezik több mint 50 földrajzi régióban, és folyamatosan bővülnek. A globális jelenlét, a elkészítheti, telepítheti és globálisan elosztott alkalmazások egyszerű kezelés lehetővé teszi a fejlesztők számára kínál az Azure egyedi képességeit egyik célja. 
@@ -34,11 +34,6 @@ Ebben a cikkben biztosítunk egy Azure Cosmos DB globális terjesztésének kép
 
 ## <a id="EnableGlobalDistribution"></a>Kulcsrakész globális disztribúció engedélyezése
 Az Azure Cosmos DB az alábbi képességekkel ahhoz, hogy könnyen globálisan terjesztett alkalmazások írása. Ezek a képességek keresztül érhető el az Azure Cosmos DB erőforrás-szolgáltató alapú [REST API-k](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/) és az Azure Portalon.
-
-Az alábbi videóban a kulcsrakész globális terjesztés funkciót az Azure Cosmos DB működés megtekintéséhez.
-
-> [!VIDEO https://www.youtube.com/embed/1D06yjTVxt8]
->
 
 ### <a id="RegionalPresence"></a>Széles körben használt területi jelenlét 
 Az Azure folyamatosan nő a földrajzi jelenlét oldhatnak [új régiók](https://azure.microsoft.com/regions/) online. Az Azure Cosmos DB sorolja be a rendszer egy *eligazodást szolgáltatás* az Azure-ban, és alapértelmezés szerint minden új Azure régióban érhető el. Ez lehetővé teszi, hogy rendelje hozzá a Azure Cosmos DB-adatbázisfiók egy földrajzi régiót, amint az Azure megnyitja az új üzleti régiót.

@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: rafats
-ms.openlocfilehash: e53f1e62b9265d2eec2f49537cc05c865e1436f3
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 3170ee1b48aa332a8730ba835396761ca5ef44c7
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37902962"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43287325"
 ---
 # <a name="working-with-the-change-feed-support-in-azure-cosmos-db"></a>A módosítási hírcsatorna támogatása az Azure Cosmos DB használata
 
@@ -31,12 +31,6 @@ A **módosítási hírcsatorna támogatása** az Azure Cosmos DB lehetővé tesz
 
 > [!NOTE]
 > A módosítási hírcsatorna támogatása az összes adatmodellek és tárolók az Azure Cosmos DB biztosítunk. A módosítási hírcsatorna azonban az SQL-ügyfél használatával olvasható, és szerializálja elemek JSON formátumba. A JSON formázását, MongoDB ügyfelek tapasztalható miatt egyeznek a BSON, formázott dokumentumok és a JSON formátumú – csatorna módosítása.
-
-Az alábbi videó az Azure Cosmos DB Programigazgatója Andrew Liu bemutatja, hogyan az Azure Cosmos DB-módosítási hírcsatorna a működését.
-
-> [!VIDEO https://www.youtube.com/embed/mFnxoxeXlaU]
->
->
 
 ## <a name="how-does-change-feed-work"></a>Hogyan módosítási munkahelyi hírcsatorna?
 
@@ -510,7 +504,7 @@ Olvassa el a módosítási hírcsatorna a Java-kódtár érhető el a [Github-ad
 
 belső _etag formátum, és meg nem függ attól, hogy (nem elemezhető,), mert bármikor módosíthatja.
 _ts létrehozásának vagy módosításának időbélyeg. Időrendi összehasonlító _ts is használhat.
-_lsn van egy kötegazonosítót, csak a módosítási hírcsatorna hozzáadott, a azt a tranzakcióazonosító jelöli az áruházból... Előfordulhat, hogy hány dokumentum ugyanazon _lsn.
+_lsn egy kötegazonosítót, csak a módosítási hírcsatorna hozzáadott, a azt a tranzakcióazonosító jelöli az áruházból... Előfordulhat, hogy hány dokumentum ugyanazon _lsn.
 Egy dolog, vegye figyelembe, FeedResponse az ETag nem egyezik a _etag akkor jelenik meg a dokumentumot. _etag belső azonosító és egyidejűségi, a verziójának használatát a dokumentum ismerteti, az ETag pedig az alkalmazás-előkészítés a hírcsatornát.
 
 ### <a name="does-reading-change-feed-add-any-additional-cost-"></a>Nem, olvasási, módosítási hírcsatorna hozzá többletköltség nélkül?

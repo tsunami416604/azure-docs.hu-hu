@@ -1,35 +1,35 @@
 ---
-title: T-SQL hurkok használatával az Azure SQL Data Warehouse |} Microsoft Docs
-description: Tippek a T-SQL hurkok használatával, és a kurzorok az Azure SQL Data Warehouse adattárházzal történő, megoldások cseréje.
+title: Az Azure SQL Data Warehouse a T-SQL-hurkok használatával |} A Microsoft Docs
+description: Tippek a T-SQL-hurkok használatával, és cserélje le az Azure SQL Data Warehouse a kurzorok használható megoldások fejlesztéséhez.
 services: sql-data-warehouse
 author: ckarst
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: implement
 ms.date: 04/17/2018
 ms.author: cakarst
 ms.reviewer: igorstan
-ms.openlocfilehash: 8d51c8f18d7c00d21fcc057efcda73e2a6b46cc7
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: b7c21566916c9728900e69dc6480098fadae7622
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31598965"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43301208"
 ---
-# <a name="using-t-sql-loops-in-sql-data-warehouse"></a>Az SQL Data Warehouse T-SQL hurkok használatával
-Tippek a T-SQL hurkok használatával, és a kurzorok az Azure SQL Data Warehouse adattárházzal történő, megoldások cseréje.
+# <a name="using-t-sql-loops-in-sql-data-warehouse"></a>Az SQL Data Warehouse a T-SQL-hurkok használatával
+Tippek a T-SQL-hurkok használatával, és cserélje le az Azure SQL Data Warehouse a kurzorok használható megoldások fejlesztéséhez.
 
-## <a name="purpose-of-while-loops"></a>Hurkok közben célja
+## <a name="purpose-of-while-loops"></a>Hurkok közben célját
 
-Az SQL Data Warehouse támogatja a [közben](/sql/t-sql/language-elements/while-transact-sql) hurok ismételten a blokkok utasítás végrehajtása. Ez IGÉNYBE hurok továbbra is fennáll az, ha a megadott feltételek igaz, vagy amíg a kód kifejezetten megszakítja a hurok BREAK kulcsszó használatával. Kurzorok SQL kódban megadott helyett hurkokat hasznosak. Szerencsére a gyors előre, csak olvasható fajta vannak szinte minden kurzorok SQL kódban vannak megírva. Ezért [közben] hurkok egy nagyszerű alternatív kurzorok helyettesítésére.
+SQL Data Warehouse támogat a [közben](/sql/t-sql/language-elements/while-transact-sql) hurok ismételten a blokkok utasítás végrehajtása. Ez KICSIT ciklus addig a, ha a megadott feltétel igaz, vagy amíg a kód kifejezetten megszakítja a hurok BREAK kulcsszó használatával. Hurkok hasznosak a kurzorok meghatározott SQL-kód cseréje. Szerencsére az SQL-kódot írt, szinte az összes kurzorok a gyors előre, csak olvasható fajta vannak. Ezért [BÁR] ciklusok egy remek alternatívát kínál a kurzorok cseréje.
 
-## <a name="replacing-cursors-in-sql-data-warehouse"></a>Az SQL Data Warehouse kurzorok cseréje
-Azonban mielőtt belevágna a head először kérdezze meg magát a következő kérdés: "sikerült ezt a kurzort kell írni set-alapú műveletek használandó?." Sok esetben a válasz Igen és gyakran a legjobb módszer. A set-alapú művelet gyakran gyorsabb, mint az ismétlődő, soronként megközelítés hajt végre.
+## <a name="replacing-cursors-in-sql-data-warehouse"></a>Az SQL Data Warehouse a kurzorok cseréje
+Azonban mielőtt belevágna a fő először meg kell tegye fel magának a következő kérdést: "sikerült a kurzor kell írni, használja a set-alapú operations?." Sok esetben a válasz Igen és gyakran a legjobb módszer. A set-alapú művelet gyakran gyorsabb, mint egy iteratív, soronként megközelítéssel hajt végre.
 
-Gyors előre írásvédett kurzorok ismétlési szerkezet könnyen lehet cserélni. Egy egyszerű példa a következő: Ez a Kódpélda frissítése az adatbázisban minden tábla statisztikai adatait. Minden parancs által léptetés keresztül a hurok lévő táblák, sorrendben hajtja végre.
+Gyors előre csak olvasható kurzorok uvozuje konstruktor cyklu egyszerűen lehet cserélni. Az alábbiakban egy egyszerű példa látható. Ez a Kódpélda frissíti az adatbázis minden táblájához statisztikai adatait. Által léptetés keresztül a hurok található táblák, minden egyes parancsot végrehajtja a sorrendben.
 
-Először hozzon létre egy ideiglenes tábla egyéni utasítások azonosítására használt egyedi sor sorszámát tartalmazza:
+Először hozzon létre egy ideiglenes tábla az egyes utasításokat azonosítására használt egyedi sorral tartalmazza:
 
 ```
 CREATE TABLE #tbl
@@ -44,7 +44,7 @@ FROM    sys.tables
 ;
 ```
 
-Második inicializálni a hurok elvégzéséhez szükséges változók:
+Másodszor inicializálja a változókat a hurok végrehajtásához szükséges:
 
 ```
 DECLARE @nbr_statements INT = (SELECT COUNT(*) FROM #tbl)
@@ -52,7 +52,7 @@ DECLARE @nbr_statements INT = (SELECT COUNT(*) FROM #tbl)
 ;
 ```
 
-Most hurokba építhető utasítás végrehajtása, azokat egy egyszerre:
+Most már végighaladásra utasítások végrehajtása őket egy egyszerre:
 
 ```
 WHILE   @i <= @nbr_statements
@@ -63,12 +63,12 @@ BEGIN
 END
 ```
 
-Végül dobja el az ideiglenes tábla az első lépésben létrehozott
+Végül dobja el az első lépésben létrehozott ideiglenes táblán
 
 ```
 DROP TABLE #tbl;
 ```
 
 ## <a name="next-steps"></a>További lépések
-További fejlesztési tippek, lásd: [fejlesztői áttekintés](sql-data-warehouse-overview-develop.md).
+További fejlesztési tippek: [fejlesztői áttekintés](sql-data-warehouse-overview-develop.md).
 

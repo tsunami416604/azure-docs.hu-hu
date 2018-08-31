@@ -10,20 +10,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: ramkris
-ms.openlocfilehash: 57ad621006a79148aaa6e9435d6ede446539c648
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: e7ed0049e64a7740063f2fab7bdfddff38d45ed9
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39714753"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43287710"
 ---
 # <a name="accelerate-big-data-analytics-by-using-the-apache-spark-to-azure-cosmos-db-connector"></a>Gyorsítsa fel a big data-elemzés az Azure Cosmos DB-összekötő az Apache Spark használatával
  
 Az Apache Spark az Azure Cosmos DB-összekötő lehetővé teszi, hogy az Azure Cosmos DB egy bemeneti vagy kimeneti for Apache Spark-feladatok kell lennie. Csatlakozás [Spark](http://spark.apache.org/) való [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) gyorsítja megítélnie gyors ütemben data science kapcsolatos problémák megoldásához. Azure Cosmos DB segítségével gyorsan továbbra is fennáll, illetve adatokat kérdezhet le. Az összekötő hatékonyan az Azure Cosmos DB által kezelt natív indexeket használja. Az indexek engedélyezi a frissíthető oszlopok elemzési és szűrés a gyorsan változó, globálisan elosztott adatokon leküldéses legördülő predikátum végrehajtásakor. Az ilyen típusú adatok között lehet Internet of Things (IoT) adatok adatelemzési és analitikai feladatokhoz.
-
-További információ az összekötő ezt a videót:
-
-> [!VIDEO https://channel9.msdn.com/Events/Connect/2017/T135/player] 
 
 ## <a name="connector-components"></a>Összekötő-összetevők
 

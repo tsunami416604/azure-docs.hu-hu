@@ -1,31 +1,32 @@
 ---
-title: T-SQL-utasítások - Azure SQL Data Warehouse |} Microsoft Docs
-description: Hivatkozások a T-SQL-utasítások az Azure SQL Data Warehouse támogatott dokumentációját.
+title: T-SQL-utasítások – Azure SQL Data Warehouse |} A Microsoft Docs
+description: Az Azure SQL Data Warehouse támogatott T-SQL-utasítások dokumentációját mutató hivatkozásokat tartalmaz.
 services: sql-data-warehouse
-author: ckarst
-manager: craigg-msft
+author: twounder
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: implement
-ms.date: 04/17/2018
-ms.author: cakarst
+ms.date: 06/13/2018
+ms.author: twounder
 ms.reviewer: igorstan
-ms.openlocfilehash: ec708f30b59bbd6af878720c65f9a464224c57a5
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: fa497979349346016e1c176ace98407d98eebdca
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43307749"
 ---
 # <a name="t-sql-statements-supported-in-azure-sql-data-warehouse"></a>Az Azure SQL Data Warehouse támogatott T-SQL-utasítások
-Hivatkozások a T-SQL-utasítások az Azure SQL Data Warehouse támogatott dokumentációját.
+Az Azure SQL Data Warehouse támogatott T-SQL-utasítások dokumentációját mutató hivatkozásokat tartalmaz.
 
-## <a name="data-definition-language-ddl-statements"></a>Adatok Definition nyelvi (DDL) utasítás
+## <a name="data-definition-language-ddl-statements"></a>Adatok definíciós nyelv (DDL) utasítások
 * [ALTER DATABASE](https://msdn.microsoft.com/library/mt204042.aspx)
 * [AZ ALTER INDEX](https://msdn.microsoft.com/library/ms188388.aspx)
 * [AZ ALTER ELJÁRÁS](https://msdn.microsoft.com/library/ms189762.aspx)
 * [AZ ALTER SCHEMA](https://msdn.microsoft.com/library/ms173423.aspx)
 * [ALTER TABLE](https://msdn.microsoft.com/library/ms190273.aspx)
-* [HOZZON LÉTRE OSZLOPCENTRIKUS INDEXET](https://msdn.microsoft.com/library/gg492153.aspx)
+* [AZ OSZLOPCENTRIKUS INDEX LÉTREHOZÁSA](https://msdn.microsoft.com/library/gg492153.aspx)
 * [CREATE DATABASE](https://msdn.microsoft.com/library/mt204021.aspx)
 * [HOZZON LÉTRE AZ ADATBÁZISHOZ KÖTŐDŐ HITELESÍTŐ ADATOK](https://msdn.microsoft.com/library/mt270260.aspx)
 * [KÜLSŐ ADATFORRÁS LÉTREHOZÁSA](https://msdn.microsoft.com/library/dn935022.aspx)
@@ -33,31 +34,31 @@ Hivatkozások a T-SQL-utasítások az Azure SQL Data Warehouse támogatott dokum
 * [KÜLSŐ TÁBLA LÉTREHOZÁSA](https://msdn.microsoft.com/library/dn935021.aspx)
 * [FÜGGVÉNY LÉTREHOZÁSA](https://msdn.microsoft.com/library/mt203952.aspx)
 * [INDEX LÉTREHOZÁSA](https://msdn.microsoft.com/library/ms188783.aspx)
-* [ELJÁRÁS LÉTREHOZÁSA](https://msdn.microsoft.com/library/ms187926.aspx)
-* [SÉMA LÉTREHOZÁSA](https://msdn.microsoft.com/library/ms189462.aspx)
+* [HOZZON LÉTRE ELJÁRÁST](https://msdn.microsoft.com/library/ms187926.aspx)
+* [HOZZON LÉTRE SÉMÁT](https://msdn.microsoft.com/library/ms189462.aspx)
 * [CREATE STATISTICS](https://msdn.microsoft.com/library/ms188038.aspx)
 * [CREATE TABLE](https://msdn.microsoft.com/library/mt203953.aspx)
 * [CREATE TABLE AS SELECT](https://msdn.microsoft.com/library/mt204041.aspx)
 * [NÉZET LÉTREHOZÁSA](https://msdn.microsoft.com/library/ms187956.aspx)
-* [KÜLSŐ ADATFORRÁSBÓL ELDOBÁSI](https://msdn.microsoft.com/library/mt146367.aspx)
+* [DOBJA EL A KÜLSŐ ADATFORRÁS](https://msdn.microsoft.com/library/mt146367.aspx)
 * [DOBJA EL A KÜLSŐ FÁJLFORMÁTUM](https://msdn.microsoft.com/library/mt146379.aspx)
 * [DOBJA EL A KÜLSŐ TÁBLA](https://msdn.microsoft.com/library/mt130698.aspx)
 * [A DROP INDEX](https://msdn.microsoft.com/library/ms176118.aspx)
 * [A DROP ELJÁRÁST](https://msdn.microsoft.com/library/ms174969.aspx)
-* [KÖZVETLEN STATISZTIKÁK](https://msdn.microsoft.com/library/ms175075.aspx)
-* [KÖZVETLEN TÁBLA](https://msdn.microsoft.com/library/ms173790.aspx)
+* [A DROP STATISTICS](https://msdn.microsoft.com/library/ms175075.aspx)
+* [DROP TABLE](https://msdn.microsoft.com/library/ms173790.aspx)
 * [DROP SCHEMA](https://msdn.microsoft.com/library/ms186751.aspx)
 * [KÖZVETLEN MEGTEKINTÉSE](https://msdn.microsoft.com/library/ms173492.aspx)
 * [NEVEZZE ÁT](https://msdn.microsoft.com/library/mt631611.aspx)
 * [TRUNCATE TABLE](https://msdn.microsoft.com/library/ms177570.aspx)
 * [UPDATE STATISTICS](https://msdn.microsoft.com/library/ms187348.aspx)
 
-## <a name="data-manipulation-language-dml-statements"></a>Adatok adatkezelési nyelvi (DML) utasítás
+## <a name="data-manipulation-language-dml-statements"></a>Adatok adatkezelési nyelvű (DML) utasítások
 * [DELETE](https://msdn.microsoft.com/library/ms189835.aspx)
 * [INSERT](https://msdn.microsoft.com/library/ms174335.aspx)
 * [FRISSÍTÉS](https://msdn.microsoft.com/library/ms177523.aspx)
 
-## <a name="database-console-commands"></a>Adatbázis konzol parancsok
+## <a name="database-console-commands"></a>Adatbázis-konzol parancsok
 * [DBCC DROPCLEANBUFFERS](https://msdn.microsoft.com/library/ms187762.aspx)
 * [DBCC FREEPROCCACHE](https://msdn.microsoft.com/library/mt204018.aspx)
 * [DBCC SHRINKLOG](https://msdn.microsoft.com/library/mt204020.aspx)
@@ -66,48 +67,48 @@ Hivatkozások a T-SQL-utasítások az Azure SQL Data Warehouse támogatott dokum
 * [DBCC PDW_SHOWSPACEUSED](https://msdn.microsoft.com/library/mt204028.aspx)
 * [DBCC SHOW_STATISTICS](https://msdn.microsoft.com/library/mt204043.aspx)
 
-## <a name="query-statements"></a>Lekérdezési utasítás
+## <a name="query-statements"></a>Lekérdezés utasítások
 * [SELECT](https://msdn.microsoft.com/library/ms189499.aspx)
 * [A common_table_expression](https://msdn.microsoft.com/library/ms175972.aspx)
 * [INTERSECT és kivételével](https://msdn.microsoft.com/library/ms188055.aspx)
-* [MAGYARÁZÓ](https://msdn.microsoft.com/library/mt631615.aspx)
+* [MAGYARÁZATA](https://msdn.microsoft.com/library/mt631615.aspx)
 * [FROM](https://msdn.microsoft.com/library/ms177634.aspx)
 * [PIVOT és az UNPIVOT használatával](https://msdn.microsoft.com/library/ms177410.aspx)
 * [CSOPORTOSÍTÁSI SZEMPONT](https://msdn.microsoft.com/library/ms177673.aspx)
 * [HAVING](https://msdn.microsoft.com/library/ms180199.aspx)
 * [ORDER BY](https://msdn.microsoft.com/library/ms188385.aspx)
 * [OPTION](https://msdn.microsoft.com/library/ms190322.aspx)
-* [A UNION](https://msdn.microsoft.com/library/ms180026.aspx)
+* [UNION](https://msdn.microsoft.com/library/ms180026.aspx)
 * [WHERE](https://msdn.microsoft.com/library/ms188047.aspx)
 * [TOP](https://msdn.microsoft.com/library/ms189463.aspx)
 * [Aliasképző](https://msdn.microsoft.com/library/mt631614.aspx)
 * [Keresési feltétel](https://msdn.microsoft.com/library/ms173545.aspx)
-* [A segédlekérdezések](https://msdn.microsoft.com/library/mt631613.aspx)
+* [Segédlekérdezések](https://msdn.microsoft.com/library/mt631613.aspx)
 
 ## <a name="security-statements"></a>Biztonsági utasítások
 * Engedélyek: [GRANT](https://msdn.microsoft.com/library/ms187965.aspx), [MEGTAGADÁS](https://msdn.microsoft.com/library/ms188338.aspx), [visszavonása](https://msdn.microsoft.com/library/ms187728.aspx)
 * [AZ ALTER ENGEDÉLYEZÉSI](https://msdn.microsoft.com/library/ms187359.aspx)
 * [AZ ALTER TANÚSÍTVÁNY](https://msdn.microsoft.com/library/ms189511.aspx)
-* [MÓDOSÍTSA AZ ADATBÁZIS-TITKOSÍTÁSI KULCS](https://msdn.microsoft.com/library/bb630389.aspx)
+* [AZ ALTER DATABASE ENCRYPTION KEY](https://msdn.microsoft.com/library/bb630389.aspx)
 * [AZ ALTER LOGIN](https://msdn.microsoft.com/library/ms189828.aspx)
 * [AZ ALTER FŐKULCS](https://msdn.microsoft.com/library/ms186937.aspx)
-* [AZ ALTER SZEREPKÖR](https://msdn.microsoft.com/library/ms189775.aspx)
-* [MÓDOSÍTÓ FELHASZNÁLÓ](https://msdn.microsoft.com/library/ms176060.aspx)
+* [SZEREPKÖR MÓDOSÍTÁSA](https://msdn.microsoft.com/library/ms189775.aspx)
+* [ALTER USER](https://msdn.microsoft.com/library/ms176060.aspx)
 * [BIZTONSÁGI MENTÉSI TANÚSÍTVÁNY](https://msdn.microsoft.com/library/ms178578.aspx)
 * [ZÁRJA BE A FŐKULCS](https://msdn.microsoft.com/library/ms188387.aspx)
 * [TANÚSÍTVÁNY LÉTREHOZÁSA](https://msdn.microsoft.com/library/ms187798.aspx)
 * [ADATBÁZIS-TITKOSÍTÁSI KULCS LÉTREHOZÁSA](https://msdn.microsoft.com/library/bb677241.aspx)
 * [BEJELENTKEZÉS LÉTREHOZÁSA](https://msdn.microsoft.com/library/ms189751.aspx)
-* [A FŐKULCS LÉTREHOZÁSA](https://msdn.microsoft.com/library/ms174382.aspx)
+* [CREATE MASTER KEY](https://msdn.microsoft.com/library/ms174382.aspx)
 * [SZEREPKÖR LÉTREHOZÁSA](https://msdn.microsoft.com/library/ms187936.aspx)
 * [FELHASZNÁLÓ LÉTREHOZÁSA](https://msdn.microsoft.com/library/ms173463.aspx)
 * [DOBJA EL A TANÚSÍTVÁNY](https://msdn.microsoft.com/library/ms179906.aspx)
 * [DROP DATABASE ENCRYPTION KEY](https://msdn.microsoft.com/library/bb630256.aspx)
 * [KÖZVETLEN BEJELENTKEZÉS](https://msdn.microsoft.com/library/ms188012.aspx)
-* [DOBJA EL A FŐ OSZLOPKULCS](https://msdn.microsoft.com/library/ms180071.aspx)
+* [DOBJA EL A FŐKULCSOT](https://msdn.microsoft.com/library/ms180071.aspx)
 * [KÖZVETLEN SZEREPKÖR](https://msdn.microsoft.com/library/ms174988.aspx)
 * [KÖZVETLEN FELHASZNÁLÓ](https://msdn.microsoft.com/library/ms189438.aspx)
 * [NYISSA MEG A FŐKULCS](https://msdn.microsoft.com/library/ms174433.aspx)
 
 ## <a name="next-steps"></a>További lépések
-Hivatkozás kapcsolatos további információkért lásd: [T-SQL nyelvi elemei az Azure SQL Data Warehouse](sql-data-warehouse-reference-tsql-language-elements.md), és [az Azure SQL Data Warehouse rendszernézetek](sql-data-warehouse-reference-tsql-system-views.md).
+Hivatkozás kapcsolatos további információkért lásd: [az Azure SQL Data Warehouse a T-SQL nyelvi elemei](sql-data-warehouse-reference-tsql-language-elements.md), és [rendszernézetek az Azure SQL Data Warehouse](sql-data-warehouse-reference-tsql-system-views.md).

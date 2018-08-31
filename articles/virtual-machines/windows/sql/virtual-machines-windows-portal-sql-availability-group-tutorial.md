@@ -14,14 +14,14 @@ ms.custom: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 05/09/2017
+ms.date: 08/30/2018
 ms.author: mikeray
-ms.openlocfilehash: a3bba4e8fd83b160472a2dc6a9425192b4bbd301
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 1e2204dbe645aeff2587c2c3d55b5da89ac227d8
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38531579"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43288213"
 ---
 # <a name="configure-always-on-availability-group-in-azure-vm-manually"></a>Konfigurálása Always On rendelkezésre állási csoportot az Azure virtuális Gépen manuálisan
 
@@ -427,9 +427,9 @@ A terheléselosztó konfigurálásához szeretne egy háttérkészlet, a mintav�
 
 ### <a name="add-the-front-end-ip-address-for-the-wsfc"></a>A WSFC az előtérbeli IP-cím hozzáadása
 
-A WSFC-IP-cím is kell lennie a terheléselosztón. 
+A WSFC-IP-cím is kell lennie a terheléselosztón.
 
-1. A portálon adjon hozzá egy új előtérbeli IP-konfiguráció esetében a WSFC. A fürt alapvető erőforrásai a WSFC konfigurált IP-címet használja. Statikus IP-cím beállítva. 
+1. A portálon adjon hozzá egy új előtérbeli IP-konfiguráció esetében a WSFC. A fürt alapvető erőforrásai a WSFC konfigurált IP-címet használja. Statikus IP-cím beállítva.
 
 1. Kattintson a terheléselosztóhoz, majd **állapotadat-mintavételek**, és kattintson a **+ Hozzáadás**.
 
@@ -450,7 +450,7 @@ A WSFC-IP-cím is kell lennie a terheléselosztón.
 1. Állítsa be a terheléselosztási szabályok a következő.
    | Beállítás | Leírás | Példa
    | --- | --- |---
-   | **Name (Név)** | Szöveg | WSFCPointListener |
+   | **Name (Név)** | Szöveg | WSFCEndPointListener |
    | **Előtérbeli IP-cím** | Válasszon címet |A WSFC-IP-cím konfigurálásakor létrehozott címet használja. |
    | **Protocol (Protokoll)** | Válassza a TCP |TCP |
    | **Port** | A port használata a rendelkezésre állási csoport figyelője | 58888 |
@@ -498,38 +498,20 @@ A kapcsolat teszteléséhez:
 
 1. Használat **sqlcmd** segédprogram a kapcsolat teszteléséhez. Például hozza létre a következő parancsfájl egy **sqlcmd** kapcsolatot az elsődleges replika, a figyelő a Windows-hitelesítés használatával:
 
-    ```
-    sqlcmd -S <listenerName> -E
-    ```
+  ```cmd
+  sqlcmd -S <listenerName> -E
+  ```
 
-    Ha a figyelő nem az alapértelmezett portot használ portot (1433), adja meg a portot a kapcsolati karakterláncban. A következő sqlcmd parancsot például egy figyelő 1435 porton csatlakozik:
+  Ha a figyelő nem az alapértelmezett portot használ portot (1433), adja meg a portot a kapcsolati karakterláncban. A következő sqlcmd parancsot például egy figyelő 1435 porton csatlakozik:
 
-    ```
-    sqlcmd -S <listenerName>,1435 -E
-    ```
+  ```cmd
+  sqlcmd -S <listenerName>,1435 -E
+  ```
 
 Az SQLCMD-kapcsolatot automatikusan csatlakozik bármely SQL Server-példány az elsődleges replikát.
 
 > [!TIP]
 > Győződjön meg arról, hogy a megadott port nyitva a tűzfalon az SQL-kiszolgálók is. Mindkét kiszolgáló szükséges egy bejövő szabályt a TCP-portot, amelyet használhat. További információkért lásd: [hozzáadása vagy szerkesztése tűzfalszabály](http://technet.microsoft.com/library/cc753558.aspx).
->
->
-
-
-
-<!--**Notes**: *Notes provide just-in-time info: A Note is “by the way” info, an Important is info users need to complete a task, Tip is for shortcuts. Don’t overdo*.-->
-
-
-<!--**Procedures**: *This is the second “step." They often include substeps. Again, use a short title that tells users what they’ll do*. *("Configure a new web project.")*-->
-
-<!--**UI**: *Note the format for documenting the UI: bold for UI elements and arrow keys for sequence. (Ex. Click **File > New > Project**.)*-->
-
-<!--**Screenshot**: *Screenshots really help users. But don’t include too many since they’re difficult to maintain. Highlight areas you are referring to in red.*-->
-
-<!--**No. of steps**: *Make sure the number of steps within a procedure is 10 or fewer. Seven steps is ideal. Break up long procedure logically.*-->
-
-
-<!--**Next steps**: *Reiterate what users have done, and give them interesting and useful next steps so they want to go on.*-->
 
 ## <a name="next-steps"></a>További lépések
 

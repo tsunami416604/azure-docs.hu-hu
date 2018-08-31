@@ -1,25 +1,18 @@
 ---
 title: Az Azure ExpressRoute – gyakori kérdések |} A Microsoft Docs
 description: Az ExpressRoute – gyakori kérdések az információ a támogatott Azure-szolgáltatások, a költségek, adatok és kapcsolatok, SLA-t, szolgáltatók és a helyek, sávszélesség és további technikai részleteket tartalmazza.
-documentationcenter: na
 services: expressroute
 author: cherylmc
-manager: jeconnoc
-editor: ''
-ms.assetid: 09b17bc4-d0b3-4ab0-8c14-eed730e1446e
 ms.service: expressroute
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 05/14/2018
+ms.topic: conceptual
+ms.date: 08/29/2018
 ms.author: cherylmc
-ms.openlocfilehash: 2e332b361a1531eb5f6a8a1d3c46c2f258035258
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: 5f40b4c9fff57b105b7d96de69780fea83871032
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42818793"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43302296"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – Gyakori kérdések
 
@@ -53,7 +46,7 @@ Igen. Az ExpressRoute-Kapcsolatcsoportok legfeljebb kétszer a sávszélességre
 
 ### <a name="can-i-use-the-same-private-network-connection-with-virtual-network-and-other-azure-services-simultaneously"></a>Használhatom ugyanazt a magánhálózati kapcsolatot rendelkező virtuális hálózatot és más Azure-szolgáltatások egyszerre?
 
-Igen. Egy ExpressRoute-kapcsolatcsoportot, egyszer állítsa be, egy virtuális hálózaton belüli szolgáltatások és más Azure-szolgáltatások eléréséhez egyszerre teszi lehetővé. Csatlakozás virtuális hálózatokhoz a privát társviszony-létesítési útvonal keresztül, és más szolgáltatások keresztül a nyilvános társviszony-létesítési útvonalra.
+Igen. Egy ExpressRoute-kapcsolatcsoportot, egyszer állítsa be, egy virtuális hálózaton belüli szolgáltatások és más Azure-szolgáltatások eléréséhez egyszerre teszi lehetővé. Csatlakozás virtuális hálózatokhoz keresztül a magánhálózati társviszony-létesítési útvonal és más szolgáltatások keresztül a Microsoft társviszony-létesítési útvonalra.
 
 ### <a name="does-expressroute-offer-a-service-level-agreement-sla"></a>Kínál az ExpressRoute szolgáltatói szerződés (SLA)?
 
@@ -70,33 +63,18 @@ Az ExpressRoute támogatja [három útválasztási tartományt](expressroute-cir
 ### <a name="public-peering"></a>Nyilvános társviszony-létesítés
 
 >[!NOTE]
->Microsoft társviszony-létesítésre az előnyben részesített módja az Azure-ban üzemeltetett összes szolgáltatásokhoz való hozzáférést.
+>Nyilvános társviszony-létesítés le lett tiltva az új ExpressRoute-kapcsolatcsoportot. Azure-szolgáltatások érhetők el a Microsoft társviszony-létesítés.
 >
-
-* Power BI
-* Dynamics 365 for Finance and Operations (korábbi nevén Dynamics AX Online-hoz)
-* Az Azure-szolgáltatások többsége támogatottak. Tekintse meg közvetlenül a kívánt ellenőrizheti a támogatási szolgáltatással.<br>
-  A következő szolgáltatások nem támogatottak:
-    * Tartalomkézbesítési hálózat (CDN)
-    * Visual Studio Team Services terheléses tesztelés
-    * Multi-Factor Authentication
-    * Traffic Manager
 
 ### <a name="microsoft-peering"></a>Microsoft társviszony-létesítés
 
 * [Office 365](http://aka.ms/ExpressRouteOffice365)
-* Dynamics 365 Customer Engagement alkalmazásokat (korábbi nevén CRM Online-hoz)
-  * Dynamics 365 for Sales
-  * Dynamics 365 for Customer Service
-  * Dynamics 365 for Customer Service
-  * Dynamics 365 for Project Service
-* Használatával [útvonalszűrők](#route-filters-for-microsoft-peering), a Microsoft társviszony-létesítés azonos nyilvános-szolgáltatásokhoz való hozzáférést kap:
-  * Power BI
-  * Dynamics 365 for Finance and Operations
-  * Az Azure-szolgáltatások többsége támogatottak. Tekintse meg közvetlenül a kívánt ellenőrizheti a támogatási szolgáltatással.<br>
-  A következő szolgáltatások nem támogatottak:
+* Dynamics 365 
+* Power BI
+* Azure Active Directory
+* Visual Studio Team Services terheléses tesztelés
+* Az Azure-szolgáltatások többsége támogatottak. Tekintse meg közvetlenül a kívánt ellenőrizheti a támogatási szolgáltatással.<br>A következő szolgáltatásokat **nem támogatott**:
     * Tartalomkézbesítési hálózat (CDN)
-    * Visual Studio Team Services terheléses tesztelés
     * Multi-Factor Authentication
     * Traffic Manager
 
@@ -132,7 +110,7 @@ Ha egyik közötti kapcsolat nem sikerül nem megszakad a kapcsolat. Redundáns 
 
 ### <a name="how-do-i-ensure-high-availability-on-a-virtual-network-connected-to-expressroute"></a>Hogyan biztosítja a magas rendelkezésre állás az expressroute-hoz csatlakoztatott virtuális hálózaton?
 
-A virtuális hálózat magas rendelkezésre állás az ExpressRoute-Kapcsolatcsoportok társviszony-létesítési különböző helyeken (Szingapúr, szingapúr2) összekapcsolásával érheti el. Ha egy ExpressRoute-kapcsolatcsoport leáll, kapcsolat feladatátvételt hajt végre egy másik ExpressRoute-kapcsolatcsoporthoz. Alapértelmezés szerint a virtuális hálózatot elhagyó forgalomra legyen irányítva a egyenlő költség több útvonalas útválasztás (ECMP) alapú. Kapcsolat súly segítségével egy kapcsolatcsoport inkább egy másikba. Lásd: [ExpressRoute-útválasztás optimalizálása](expressroute-optimize-routing.md) kapcsolat súly további részleteiért.
+Magas rendelkezésre állást érhet el, a virtuális hálózathoz való csatlakozás ExpressRoute-Kapcsolatcsoportok társviszony-létesítési különböző helyeken (például, Szingapúr, szingapúr2). Ha egy ExpressRoute-kapcsolatcsoport leáll, kapcsolat feladatátvételt hajt végre egy másik ExpressRoute-kapcsolatcsoporthoz. Alapértelmezés szerint a virtuális hálózatot elhagyó forgalomra legyen irányítva a egyenlő költség több útvonalas útválasztás (ECMP) alapú. Kapcsolat súly segítségével egy kapcsolatcsoport inkább egy másikba. További információkért lásd: [ExpressRoute-útválasztás optimalizálása](expressroute-optimize-routing.md).
 
 ### <a name="onep2plink"></a>Ha nem vagyok, felhőalapú adatcsere közös elhelyezésű, és a szolgáltató a pontok közötti kapcsolatot biztosít, kell order két fizikai kapcsolattal a helyszíni hálózat és a Microsoft között?
 
@@ -152,7 +130,7 @@ Igen. Egynél több ExpressRoute-kapcsolatcsoportot is rendelkezik az előfizet�
 
 Igen. Az ExpressRoute-Kapcsolatcsoportok számos szolgáltatókkal rendelkezhet. Egyes ExpressRoute-kapcsolatcsoport társítva egy szolgáltatót. 
 
-### <a name="i-see-two-expressroute-peering-locations-in-the-same-metro-eg-singapore-and-singapore2-which-peering-location-should-i-choose-to-create-my-expressroute-circuit"></a>Két ExpressRoute-társviszonylétesítési helyszínek az azonos metro a pl. Szingapúr és szingapúr2 látható. Melyik társviszony-létesítési helyszínen válasszam saját ExpressRoute-kapcsolatcsoportot létrehozni?
+### <a name="i-see-two-expressroute-peering-locations-in-the-same-metro-for-example-singapore-and-singapore2-which-peering-location-should-i-choose-to-create-my-expressroute-circuit"></a>Két ExpressRoute-társviszonylétesítési helyszínek a az azonos metro például Szingapúr, szingapúr2 látható. Melyik társviszony-létesítési helyszínen válasszam saját ExpressRoute-kapcsolatcsoportot létrehozni?
 Ha a szolgáltató biztosít ExpressRoute mindkét helyen, a szolgáltatónál dolgozik, és válassza ki mindkét helyen állíthatja be az ExpressRoute. 
 
 ### <a name="can-i-have-multiple-expressroute-circuits-in-the-same-metro-can-i-link-them-to-the-same-virtual-network"></a>Használhatok több ExpressRoute-kapcsolatcsoporttal a az azonos metro? Is lehet hivatkozni őket az ugyanazon a virtuális hálózaton?
@@ -205,7 +183,7 @@ Igen. Ha nincs közzététel az alapértelmezett útvonalat (0.0.0.0/0) vagy Int
 
 Igen. Alapértelmezett felé haladó útvonalak meghirdetéséhez (0.0.0.0/0) letiltása az összes üzembe helyezett virtuális hálózaton belüli virtuális gépek internetkapcsolat, és a kimenő összes forgalom az ExpressRoute-kapcsolatcsoport keresztül irányítani.
 
-Alapértelmezett útvonalak meghirdetése akkor, ha azt kényszerít ki forgalmat a helyszíni eredetű nyilvános társviszony-létesítés (például az Azure storage és SQL DB) vissza keresztül felajánlott szolgáltatásokhoz. Akkor adja vissza a forgalmat az Azure-bA vagy az interneten keresztül a nyilvános társviszony-létesítési útvonal, az útválasztók konfigurálása. Ha engedélyezte a szolgáltatás egy szolgáltatás végpontját (előzetes verzió), a szolgáltatás a forgalom nem kényszeríti a helyszíni eredetű forgalomhoz. A forgalom az Azure gerinchálózatán belül marad. A Szolgáltatásvégpontok kapcsolatos további információkért lásd: [virtuális hálózati Szolgáltatásvégpontok](../virtual-network/virtual-network-service-endpoints-overview.md?toc=%2fazure%2fexpressroute%2ftoc.json)
+Alapértelmezett útvonalak meghirdetése akkor, ha azt vissza a helyi kényszerített forgalmát a Microsoft társviszony-létesítés (például az Azure storage és SQL DB) keresztül felajánlott szolgáltatásokhoz. Meg kell konfigurálnia az útválasztókat abból való visszatéréshez forgalmat az Azure-ba, a Microsoft társviszony-létesítési útvonal használatával vagy az interneten keresztül. Ha engedélyezte, hogy egy végpontot a szolgáltatáshoz, a szolgáltatás a forgalom nem kényszeríti a helyszíni eredetű forgalomhoz. A forgalom az Azure gerinchálózatán belül marad. A Szolgáltatásvégpontok kapcsolatos további információkért lásd: [virtuális hálózati Szolgáltatásvégpontok](../virtual-network/virtual-network-service-endpoints-overview.md?toc=%2fazure%2fexpressroute%2ftoc.json)
 
 ### <a name="can-virtual-networks-linked-to-the-same-expressroute-circuit-talk-to-each-other"></a>Az ugyanahhoz az ExpressRoute-kapcsolatcsoporthoz kapcsolt virtuális hálózatok közötti kommunikáció egymással?
 
@@ -223,17 +201,13 @@ Igen. Hozzon létre egy ExpressRoute-átjárót a virtuális hálózaton belül 
 
 A nyilvános IP-cím csak belső kezelésére szolgál, és nem jelent a virtuális hálózat egy biztonsági kockázatokat.
 
-### <a name="what-do-i-need-to-connect-to-azure-storage-over-expressroute"></a>Hogyan készüljek expressroute-on keresztül csatlakozni az Azure storage?
-
-ExpressRoute-kapcsolatcsoport létrehozása és útvonalakat a nyilvános társviszony-létesítéshez konfigurálnia kell.
-
 ### <a name="are-there-limits-on-the-number-of-routes-i-can-advertise"></a>E meghirdethet útvonalak száma korlátozva van?
 
-Igen. Legfeljebb 4000 útvonal címelőtagjainak magánhálózati társviszony-létesítés és 200 minden egyes nyilvános társviszony-létesítés, és a Microsoft társviszony-létesítés fogadunk. 10 000 útvonalak privát társviszony-létesítéshez az ExpressRoute prémium funkció engedélyezésével növelhető.
+Igen. Legfeljebb 4000 útvonal címelőtagjainak magánhálózati társviszony-létesítés és Microsoft társviszony-létesítéshez 200 fogadunk. 10 000 útvonalak privát társviszony-létesítéshez az ExpressRoute prémium funkció engedélyezésével növelhető.
 
 ### <a name="are-there-restrictions-on-ip-ranges-i-can-advertise-over-the-bgp-session"></a>Tudom a BGP-munkamenetben meghirdetni is IP-címtartományok korlátozások vannak?
 
-A nyilvános és Microsoft társviszony-létesítési BGP-munkamenet nem fogadunk el saját előtagok (RFC1918).
+A Microsoft társviszony-létesítési BGP-munkamenet nem fogadunk el saját előtagok (RFC1918).
 
 ### <a name="what-happens-if-i-exceed-the-bgp-limits"></a>Mi történik, ha túllépem a BGP-t korlátai?
 
@@ -242,18 +216,6 @@ BGP-munkamenetek a rendszer eldobja. Miután az előtag száma a határérték a
 ### <a name="what-is-the-expressroute-bgp-hold-time-can-it-be-adjusted"></a>Mi az az ExpressRoute BGP fenntartási idő? Ez módosítható?
 
 A fenntartási ideje 180. Életben tartási üzenetek érkeznek minden 60 másodpercben. Nem lehet módosítani a Microsoft oldalon ezek rögzített beállításai. Lehetséges, hogy különböző időzítők konfigurálását, és a BGP-munkamenet paraméterek ennek megfelelően egyezteti.
-
-### <a name="after-i-advertise-the-default-route-00000-to-my-virtual-networks-i-cant-activate-windows-running-on-my-azure-vms-how-to-i-fix-this"></a>E hirdesse meg az alapértelmezett útvonalat (0.0.0.0/0) a saját virtuális hálózatokhoz, miután az Azure virtuális gépeken futó Windows nem aktiválható. Hogyan való javíthatom ezt ki?
-
-A következő lépések segítségével az Azure felismerje az aktiválási kérelem:
-
-1. Létrehozza a nyilvános társviszony-létesítést az ExpressRoute-kapcsolatcsoportot.
-2. Hajtsa végre egy DNS-címkeresés, és keresse meg az IP-címe **kms.core.windows.net**
-3. A kulcskezelő szolgáltatás felismerje, hogy az aktiválási kérelem Azure-ban és a kérés honor származik. Hajtsa végre a következő három feladatok közül:
-
-   * A helyszíni hálózaton az IP-címet, a 2. lépésben vissza az Azure-bA a nyilvános társviszony-létesítés keresztül beszerzett felé tartó forgalmat útvonal.
-   * Rendelkezik a NSP szolgáltató haj – PIN-kódot a forgalmat az Azure a nyilvános társviszony-létesítés.
-   * Hozzon létre egy felhasználó által megadott útvonal, amely a következő ugrás internetkapcsolattal rendelkező IP-cím mutat, és alkalmazza azt a alhálózat(ok), ahol ezek a virtuális gépek vannak.
 
 ### <a name="can-i-change-the-bandwidth-of-an-expressroute-circuit"></a>Módosíthatja a ExpressRoute-kapcsolatcsoport sávszélességét?
 
@@ -280,7 +242,7 @@ Az ExpressRoute prémium szintű gyűjteménye, a következő funkciókat:
     **Példák:**
 
     *  Egy Nyugat-európai régióban létrehozott ExpressRoute-kapcsolatcsoport létrehozása a szilícium-völgy, virtuális hálózatok közötti kapcsolat. 
-    *  A nyilvános társviszony-létesítés, a más geopolitikai régiók előtagokat hirdet meg, hogy a kapcsolatcsoport a szilícium-völgy, például SQL Azure-Európa Nyugat-India csatlakozhat.
+    *  A Microsoft társviszony-létesítés más geopolitikai régiók előtagokat hirdet meg, hogy a kapcsolatcsoport a szilícium-völgy, például SQL Azure-Európa Nyugat-India csatlakozhat.
 
 
 ### <a name="limits"></a>Hány virtuális hálózatok is lehet hivatkozni az ExpressRoute-kapcsolatcsoport tudok ExpressRoute premium engedélyezésével?
@@ -309,11 +271,11 @@ Tekintse meg [díjszabás](https://azure.microsoft.com/pricing/details/expressro
 
 Igen. Az ExpressRoute prémium szintű díjak vonatkoznak, és az ExpressRoute kapcsolatcsoport a kapcsolatszolgáltató által igényelt díjakat felett.
 
-## <a name="expressroute-for-office-365-and-dynamics-365"></a>Az Office 365 és Dynamics 365 ExpressRoute
+## <a name="expressroute-for-office-365"></a>Az Office 365 ExpressRoute
 
 [!INCLUDE [expressroute-office365-include](../../includes/expressroute-office365-include.md)]
 
-### <a name="how-do-i-create-an-expressroute-circuit-to-connect-to-office-365-services-and-dynamics-365"></a>Hogyan hozhatok létre egy ExpressRoute-kapcsolatcsoporthoz szeretne csatlakozni az Office 365-szolgáltatások és a Dynamics 365?
+### <a name="how-do-i-create-an-expressroute-circuit-to-connect-to-office-365-services"></a>Hogyan hozhatok létre egy ExpressRoute-kapcsolatcsoporthoz szeretne csatlakozni az Office 365-szolgáltatásokhoz?
 
 1. Tekintse át a [ExpressRoute előfeltételeit ismertető lap](expressroute-prerequisites.md) , hogy megfeleljen a követelményeknek.
 2. Győződjön meg arról, hogy teljesülnek-e a kapcsolódási igényei, tekintse át a szolgáltatók és a helyek listáját a [ExpressRoute-partnerek és helyek](expressroute-locations.md) cikk.
@@ -321,13 +283,9 @@ Igen. Az ExpressRoute prémium szintű díjak vonatkoznak, és az ExpressRoute k
 4. A következő lépésekkel a kapcsolat beállításához a munkafolyamatokban [Kapcsolatcsoportok kiépítésével és állapotával kapcsolatos az ExpressRoute-munkafolyamatokat](expressroute-workflows.md).
 
 > [!IMPORTANT]
-> Győződjön meg arról, hogy az ExpressRoute prémium bővítmény engedélyezte az Office 365-szolgáltatások és a Dynamics 365-kapcsolat konfigurálása során.
+> Győződjön meg arról, hogy engedélyezte az ExpressRoute prémium bővítmény konfigurálása az Office 365-szolgáltatásokhoz való kapcsolódás során.
 > 
 > 
-
-### <a name="do-i-need-to-enable-azure-public-peering-to-connect-to-office-365-services-and-dynamics-365"></a>Van szükségem ahhoz, hogy az Azure nyilvános társviszony-létesítés csatlakozni az Office 365-szolgáltatások és a Dynamics 365?
-
-Nem, akkor csak engedélyeznie kell a Microsoft Peering. Az Azure AD-hitelesítési forgalom a Microsoft Peering keresztül zajlik. 
 
 ### <a name="can-my-existing-expressroute-circuits-support-connectivity-to-office-365-services-and-dynamics-365"></a>A meglévő ExpressRoute-Kapcsolatcsoportok támogathatja a csatlakozást az Office 365-szolgáltatások és a Dynamics 365?
 
@@ -337,9 +295,9 @@ Igen. A meglévő ExpressRoute-kapcsolatcsoport beállítható úgy, hogy támog
 
 Tekintse meg [Office 365 URL-címei és IP-címtartományok](http://aka.ms/o365endpoints) oldal expressroute-on keresztül támogatott szolgáltatások naprakész listáját.
 
-### <a name="how-much-does-expressroute-for-office-365-services-and-dynamics-365-cost"></a>Mennyibe kerül az ExpressRoute az Office 365-szolgáltatások és a Dynamics 365 költség?
+### <a name="how-much-does-expressroute-for-office-365-services-cost"></a>Mennyibe kerül az ExpressRoute az Office 365-szolgáltatások költség?
 
-Office 365-szolgáltatások és a Dynamics 365 szükséges a premium bővítményt engedélyezni kell. Tekintse meg a [díjszabási részleteit ismertető oldal](https://azure.microsoft.com/pricing/details/expressroute/) költségek.
+Office 365-szolgáltatások prémium bővítmény engedélyezésének megkövetelése. Tekintse meg a [díjszabási részleteit ismertető oldal](https://azure.microsoft.com/pricing/details/expressroute/) költségek.
 
 ### <a name="what-regions-is-expressroute-for-office-365-supported-in"></a>Mely régiókban támogatott ExpressRoute az Office 365-höz a?
 
@@ -356,10 +314,6 @@ Tekintse meg az ajánlás [magas rendelkezésre állás és feladatátvétel az 
 
 Igen. Az Office 365 GCC Szolgáltatásvégpontok az Azure US Government expressroute-on keresztül érhetők el. Azonban Ön először nyisson egy támogatási jegyet az előtagokat hirdet meg a Microsoftnak szeretne biztosít az Azure Portalon. Az Office 365 GCC-szolgáltatásokhoz való kapcsolódás után fog állni a támogatási jegy jön létre. 
 
-### <a name="can-dynamics-365-for-operations-formerly-known-as-dynamics-ax-online-be-accessed-over-an-expressroute-connection"></a>Dynamics 365 for Operations (korábbi nevén Dynamics AX Online-hoz) keresztül is elérhető az ExpressRoute-kapcsolatok?
-
-Igen. [Dynamics 365 for Operations](https://www.microsoft.com/dynamics365/operations) Azure-ban üzemel. Az Azure nyilvános társviszony-létesítést az ExpressRoute-kapcsolatcsoport a csatlakozáshoz a engedélyezheti.
-
 ## <a name="route-filters-for-microsoft-peering"></a>Microsoft társviszony-létesítés útvonalszűrőinek
 
 ### <a name="i-am-turning-on-microsoft-peering-for-the-first-time-what-routes-will-i-see"></a>E vagyok ne tudják bekapcsolni a Microsoft társviszony-létesítés először, milyen útvonalak látható?
@@ -374,7 +328,7 @@ Nem láthatja az összes olyan esetleges útvonalat. Hogy egy útvonalszűrőhö
 
 Nem, nem kell engedélyezési a Dynamics 365. Hozzon létre egy szabályt, és válassza ki a Dynamics 365 Közösség engedély nélkül.
 
-### <a name="i-enabled-microsoft-peering-prior-to-august-1st-2017-how-can-i-take-advantage-of-route-filters"></a>A Microsoft társviszony-létesítés 2017. augusztus 1-től., hogyan használhatom az útvonalszűrők engedélyezve
+### <a name="i-enabled-microsoft-peering-prior-to-august-1-2017-how-can-i-take-advantage-of-route-filters"></a>A Microsoft társviszony-létesítés 2017. augusztus 1., hogyan használhatom az útvonalszűrők engedélyezve
 
 A meglévő expressroute-kapcsolatcsoporttal továbbra is az előtagokat hirdet Office 365 és Dynamics 365. Ha azt szeretné, az Azure nyilvános előtagok hirdetmények hozzáadása az ugyanazon a Microsoft társviszony-létesítésen keresztül is létrehoz egy útvonalszűrőhöz, válassza ki a szükséges szolgáltatásokkal meghirdetett (például az Office 365-ra van szüksége, és a Dynamics 365), és csatolja a szűrőt a Microsoft társviszony-létesítés. Útmutatásért lásd: [útvonalszűrőket konfigurálása Microsoft társviszony-létesítés](how-to-routefilter-powershell.md).
 

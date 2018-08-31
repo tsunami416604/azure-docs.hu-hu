@@ -1,21 +1,21 @@
 ---
-title: Csatlakozás az Azure SQL Data Warehouse - SSMS |} Microsoft Docs
-description: SQL Server Management Studio (SSMS) használatával történő kapcsolódás és lekérdezés az Azure SQL Data Warehouse.
+title: Az Azure SQL Data Warehouse – ssms-t kapcsolódás |} A Microsoft Docs
+description: Az SQL Server Management Studio (SSMS) használatával csatlakozik, és az Azure SQL Data Warehouse lekérdezéséhez.
 services: sql-data-warehouse
 author: kavithaj
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: consume
 ms.date: 04/17/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: f4b960115da3d30d355768498ae95270acaef49b
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 6079c3064699da38fad20468517eb97d6ab107f8
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32182374"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43307200"
 ---
 # <a name="connect-to-sql-data-warehouse-with-sql-server-management-studio-ssms"></a>Csatlakozás az SQL Data Warehouse az SQL Server Management Studio (SSMS)
 > [!div class="op_single_selector"]
@@ -27,18 +27,18 @@ ms.locfileid: "32182374"
 > 
 > 
 
-SQL Server Management Studio (SSMS) használatával történő kapcsolódás és lekérdezés az Azure SQL Data Warehouse. 
+Az SQL Server Management Studio (SSMS) használatával csatlakozik, és az Azure SQL Data Warehouse lekérdezéséhez. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 Ehhez az oktatóanyaghoz a következőkre lesz szüksége:
 
 * Egy létező SQL Data Warehouse. A létrehozás menetét az [SQL Data Warehouse létrehozását][Create a SQL Data Warehouse] ismertető cikkben találja.
-* SQL Server Management Studio (SSMS) telepítve. [Telepítse az SSMS] [ Install SSMS] szabad, ha már nincs.
+* Az SQL Server Management Studio (SSMS) telepítve van. [Az SSMS telepítése] [ Install SSMS] ingyenesen, ha már nincs.
 * Az Azure SQL-kiszolgáló teljes neve. Ennek megkeresésével kapcsolatban olvassa el [az SQL Data Warehouse-hoz történő csatlakozást][Connect to SQL Data Warehouse] ismertető cikket.
 
 ## <a name="1-connect-to-your-sql-data-warehouse"></a>1. Csatlakozás az SQL Data Warehouse-hoz
 1. Nyissa meg az SSMS-t.
-2. Nyissa meg az Object Explorert. Ehhez az szükséges, válassza ki a **fájl** > **Object Explorerben csatlakozzon**.
+2. Nyissa meg az Object Explorerben. Ehhez válassza ki a **fájl** > **Object Explorer csatlakoztatása**.
    
     ![SQL Server Object Explorer][1]
 3. Töltse ki az összes mezőt a Connect to Server (Csatlakozás a kiszolgálóhoz) ablakban.

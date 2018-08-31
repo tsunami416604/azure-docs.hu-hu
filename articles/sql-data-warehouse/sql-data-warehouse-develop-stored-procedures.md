@@ -1,50 +1,50 @@
 ---
-title: Az Azure SQL Data Warehouse tárolt eljárások használatával |} Microsoft Docs
-description: Tippek a tárolt eljárások végrehajtása az Azure SQL Data Warehouse adattárházzal történő, megoldások.
+title: Tárolt eljárások használata az Azure SQL Data Warehouse |} A Microsoft Docs
+description: Tippek a tárolt eljárások végrehajtása az Azure SQL Data Warehouse-megoldások fejlesztése.
 services: sql-data-warehouse
 author: ckarst
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: implement
 ms.date: 04/17/2018
 ms.author: cakarst
 ms.reviewer: igorstan
-ms.openlocfilehash: 0ad8a599065a44469a3151813972b3d2561782c6
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 4cd8394104c72e8df53fa0c44e60037b4dc05976
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32774658"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43301613"
 ---
-# <a name="using-stored-procedures-in-sql-data-warehouse"></a>Az SQL Data Warehouse tárolt eljárások használatával
-Tippek a tárolt eljárások végrehajtása az Azure SQL Data Warehouse adattárházzal történő, megoldások.
+# <a name="using-stored-procedures-in-sql-data-warehouse"></a>Tárolt eljárások az SQL Data Warehouse használata
+Tippek a tárolt eljárások végrehajtása az Azure SQL Data Warehouse-megoldások fejlesztése.
 
 ## <a name="what-to-expect"></a>Mi várható?
 
-Az SQL Data Warehouse támogatja a T-SQL funkciókat használt számos SQL Server. Nincsenek ennél is fontosabb, kibővített szolgáltatások, amelyek segítségével maximalizálhatja a megoldás teljesítményére.
+Az SQL Data Warehouse az SQL Server támogatja a T-SQL-funkciók használt számos. Vannak még fontosabb, kibővített szolgáltatások, amelyek segítségével maximalizálhatja a teljesítményt, hogy a megoldás.
 
-Azonban fenntartásához a méretezés és teljesítmény az SQL Data Warehouse hiba történik is egyes szolgáltatások és funkciók, amelyek viselkedési különbségek és mások által nem támogatott.
+Azonban fenntartása a méretezés és teljesítmény az SQL Data Warehouse van olyan is egyes szolgáltatások és funkciók, amelyek a viselkedésbeli különbségeket, és mások által nem támogatott.
 
 
 ## <a name="introducing-stored-procedures"></a>Tárolt eljárások bemutatása
-Tárolt eljárások nagyszerű módját a és az SQL-kódot; tárolja az adatokat az adatraktárban közelében. Tárolt eljárások segítségével a fejlesztők által kezelhető egységekbe; a kódot és megoldásuk modularize a kód nagyobb újrahasznosításának megkönnyítése. Minden tárolt eljárás is fogadhat rugalmasabb még így ezek a paraméterek.
+Tárolt eljárások számára az SQL-kódot; beágyazása nagyszerű lehetőséget jelentenek tárolja az adatokat az adattárház közelében. Tárolt eljárások segítségével a fejlesztők megoldásaikat modularize által kezelhető egységekbe; a kód beágyazása kód nagyobb újrahasznosíthatóság megkönnyítése. Minden egyes tárolt eljárás elfogadhatja, így rugalmasabb még paramétereket is.
 
-Az SQL Data Warehouse egy egyszerűsített és zökkenőmentes tárolt eljárás végrehajtása biztosítja. A legfontosabb különbség az SQL Server képest, győződjön meg arról, hogy a tárolt eljárás nem előre lefordított kódot. Az adatraktárban a fordítási idő az képest nagy adatkötetek lekérdezéseinek futtatásához szükséges idő alacsony. Több fontos, hogy a tárolt eljárás kódot megfelelően nagy lekérdezések van optimalizálva. A cél, óra, perc, és a másodperc, ezredmásodperc nem menti. Éppen ezért jobban használható SQL logika tárolójaként tárolt eljárások gondol.     
+Az SQL Data Warehouse biztosít egy egyszerűsített és korszerű tárolt eljárás végrehajtására. A legnagyobb különbség az SQL Server képest akkor, hogy a tárolt eljárás nem előre lefordított programkódját. A data warehouse-adattárházak a fordítási idő az képest nagy méretű adatkötetek lekérdezések futtatásához szükséges idő alacsony. Több fontos annak érdekében, hogy a tárolt eljárás kód megfelelően nagy lekérdezések van optimalizálva. A célja, hogy mentse, óra, perc és másodperc, ezredmásodperc nem. Éppen ezért több hasznos úgy tárolt eljárásokat, mint az SQL logikai tárolói.     
 
-A tárolt eljárás végrehajtásakor a SQL Data Warehouse az SQL-utasítások elemezni, lefordítva, és optimalizált futási időben. A folyamat során minden utasításhoz konvertálni az elosztott lekérdezések. Az SQL-kódot, amely végrehajtja a rendszer az adatok alapján nem egyezik az elküldött lekérdezés.
+Az SQL Data Warehouse a tárolt eljárást végrehajtja, amikor az SQL-utasítások elemezni, a lefordított, és optimalizált futási időben. Ez a folyamat során minden egyes utasítás elosztott lekérdezések lesz konvertálva. Az SQL-kódot az adatokon végrehajtott eltér a lekérdezés elküldve.
 
 ## <a name="nesting-stored-procedures"></a>A beágyazási tárolt eljárások
-Tárolt eljárások hívás az más tárolt eljárások, vagy dinamikus SQL-utasítás végrehajtása, majd a belső tárolt eljárást, vagy a kód hívása, különállónak lehet egymásba ágyazni.
+Tárolt eljárások a más tárolt eljárások hívása, vagy a dinamikus SQL-utasítás végrehajtása, majd a a belső tárolt eljárást, vagy kód meghívási van szólt ágyazható be.
 
-Az SQL Data Warehouse legfeljebb nyolc beágyazási szinttel. Ez kis mértékben eltér az SQL-kiszolgálón. SQL Server szintje kivételblokkokra 32.
+SQL Data Warehouse támogat egy legfeljebb nyolc beágyazási szinttel. Ez némileg eltér az SQL Serverhez. A beágyazott szint az SQL Server 32.
 
-A legfelső szintű tárolt eljárás hívása megfelel az 1. szintű beágyazásához.
+1. szintű beágyazása a legfelső szintű tárolt eljáráshívási adatbázisnak felel meg.
 
 ```sql
 EXEC prc_nesting
 ```
-Ha a tárolt eljárás is küld egy másik EXEC hívja, a nest szint két növeli.
+Ha a tárolt eljárás is más EXEC hívja, a beágyazott szintet növeli a két.
 
 ```sql
 CREATE PROCEDURE prc_nesting
@@ -53,7 +53,7 @@ EXEC prc_nesting_2  -- This call is nest level 2
 GO
 EXEC prc_nesting
 ```
-Ha a második eljárás majd néhány dinamikus SQL végrehajtása során, a nest szint háromra növeli.
+Ha a második eljárás majd végrehajt néhány dinamikus SQL, a beágyazott szintet növeli a három.
 
 ```sql
 CREATE PROCEDURE prc_nesting_2
@@ -63,28 +63,28 @@ GO
 EXEC prc_nesting
 ```
 
-Vegye figyelembe, az SQL Data Warehouse jelenleg nem támogatja a [@@NESTLEVEL](/sql/t-sql/functions/nestlevel-transact-sql). Kell nyomon követnie a nest szintjét. Nem valószínű, hogy a nyolc nest szintű korláton, de ha így tesz, szeretné-e a kód belül ezt a határt beágyazási szinttel megfelelően átdolgozási.
+Vegye figyelembe, az SQL Data Warehouse jelenleg nem támogatja [@@NESTLEVEL](/sql/t-sql/functions/nestlevel-transact-sql). Nyomon követheti a beágyazott szintet kell. Valószínű, hogy a nyolc beágyazott szintű korlátot túllépi, de ha így tesz, kell dolgozni a kód megfelelően a beágyazási szinteket az időkorláton belül.
 
-## <a name="insertexecute"></a>INSERT... VÉGREHAJTÁS
-Az SQL Data Warehouse nem teszi lehetővé az eredményhalmaz egy INSERT utasítás a tárolt eljárás felhasználását. Van azonban egy másik módszert is használhat. Egy vonatkozó példáért lásd: a cikk a [az ideiglenes táblák](sql-data-warehouse-tables-temporary.md). 
+## <a name="insertexecute"></a>INSERT... HAJTSA VÉGRE
+Az SQL Data Warehouse felhasználásához az eredményhalmaz egy INSERT utasítás a tárolt eljárás nem teszi lehetővé. Van azonban egy másik módszert is használhat. Egy vonatkozó példáért tekintse meg a cikket a [ideiglenes táblák](sql-data-warehouse-tables-temporary.md). 
 
 ## <a name="limitations"></a>Korlátozások
-Nincsenek a Transact-SQL tárolt eljárások, amelyeket a rendszer nem az SQL Data Warehouse egyes funkcióit.
+Nincsenek a Transact-SQL tárolt eljárások, amelyek nem az SQL Data Warehouse egyes funkcióit.
 
 Ezek a következők:
 
 * az ideiglenes tárolt eljárások
 * a számozott tárolt eljárások
 * Bővített tárolt eljárások
-* A közös nyelvi futtató környezet tárolt eljárások
-* a titkosítási beállítás
+* CLR-beli tárolt eljárások
+* Titkosítási beállítás
 * replikációs beállítás
-* tábla értékű paraméter
-* csak olvasható paraméterek
+* tábla értékű paraméterek
+* csak olvasási paraméterei
 * alapértelmezett paraméterek
 * végrehajtási környezet
-* térjen vissza a utasítás
+* utasítás visszaadása
 
 ## <a name="next-steps"></a>További lépések
-További fejlesztési tippek, lásd: [fejlesztői áttekintés](sql-data-warehouse-overview-develop.md).
+További fejlesztési tippek: [fejlesztői áttekintés](sql-data-warehouse-overview-develop.md).
 

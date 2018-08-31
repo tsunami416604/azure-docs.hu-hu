@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 08/15/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 78e991fcac87d59ed7b84180192899ddbdf330f2
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 8a2e06d2e6cf3e470d4e0909e5559ac0411292fd
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43105639"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43307113"
 ---
 # <a name="functions-reference-for-workflow-definition-language-in-azure-logic-apps"></a>Az Azure Logic Apps munkafolyamat-definíciós nyelv-funkciók dokumentációja
 
@@ -80,7 +80,7 @@ Munka karakterláncokkal, használhatja a karakterlánc-függvények és még n�
 | [endsWith](../logic-apps/workflow-definition-language-functions-reference.md#endswith) | Ellenőrizze, hogy egy karakterlánc végződik-e a megadott karakterláncrészlet. | 
 | [guid](../logic-apps/workflow-definition-language-functions-reference.md#guid) | Hozzon létre egy globálisan egyedi azonosítóját (GUID) karakterlánc formájában. | 
 | [indexOf](../logic-apps/workflow-definition-language-functions-reference.md#indexof) | Kezdő pozíciójának egy karakterláncrészt adja vissza. | 
-| [lastIndexOf](../logic-apps/workflow-definition-language-functions-reference.md#lastindexof) | A karakterláncrész a szövegvégi pozíciót adja vissza. | 
+| [lastIndexOf](../logic-apps/workflow-definition-language-functions-reference.md#lastindexof) | Az utolsó előfordulás a kezdő pozíciójának a substring visszaadása. | 
 | [replace](../logic-apps/workflow-definition-language-functions-reference.md#replace) | Cserélje le a megadott karakterlánc részkarakterláncot, és a frissített karakterláncot ad vissza. | 
 | [felosztás](../logic-apps/workflow-definition-language-functions-reference.md#split) | Visszaadja egy tömb, amely elválasztja az egyes karakterek megadásakor a meghatározott elválasztó karakterrel és a egy karakterláncból karaktereket tartalmaz. | 
 | [startsWith](../logic-apps/workflow-definition-language-functions-reference.md#startswith) | Annak ellenőrzése, hogy e karakterlánc kezdődik-e egy adott karakterláncrészletet. | 
@@ -2123,7 +2123,7 @@ indexOf('<text>', '<searchText>')
 
 | Vrácená hodnota | Típus | Leírás | 
 | ------------ | ---- | ----------- | 
-| <*index-érték*>| Egész szám | A megadott karakterláncrészlet kezdő pozíció vagy index értéket. <p>Ha a karakterlánc nem található, -1 számának visszaadása. </br>Ha a karakterlánc üres, a 0 számának visszaadása. | 
+| <*index-érték*>| Egész szám | A megadott karakterláncrészlet kezdő pozíció vagy index értéket. <p>Ha a karakterlánc nem található, -1 számának visszaadása. | 
 |||| 
 
 *Példa* 
@@ -2387,7 +2387,7 @@ last([0, 1, 2, 3])
 
 ### <a name="lastindexof"></a>lastIndexOf
 
-Egy karakterláncrészletet befejező pozíció vagy index értéket adja vissza. Ez a funkció nem kis-és nagybetűket, és az indexek kezdje a számot 0.
+A kezdő pozíció vagy egy karakterláncrészletet utolsó előfordulásának értéket adja vissza. Ez a funkció nem kis-és nagybetűket, és az indexek kezdje a számot 0.
 
 ```
 lastIndexOf('<text>', '<searchText>')
@@ -2401,18 +2401,18 @@ lastIndexOf('<text>', '<searchText>')
 
 | Vrácená hodnota | Típus | Leírás | 
 | ------------ | ---- | ----------- | 
-| <*a befejező-index-érték*> | Egész szám | A megadott karakterláncrészlet befejező pozíció vagy az index értéke. <p>Ha a karakterlánc nem található, -1 számának visszaadása. </br>Ha a karakterlánc üres, a 0 számának visszaadása. | 
+| <*a befejező-index-érték*> | Egész szám | A megadott karakterláncrészlet utolsó előfordulásának kezdő pozíció vagy index értéket. <p>Ha a karakterlánc nem található, -1 számának visszaadása. | 
 |||| 
 
 *Példa* 
 
-Ebben a példában a "world" substring "hello world" karakterláncban megkeresi a záró értéket:
+Ebben a példában megkeresi a "world" substring "hello world" karakterláncban az utolsó előfordulás a kezdő indexet érték:
 
 ```
 lastIndexOf('hello world', 'world')
 ```
 
-És ezt az eredményt adja vissza: `10`
+És ezt az eredményt adja vissza: `6`
 
 <a name="length"></a>
 

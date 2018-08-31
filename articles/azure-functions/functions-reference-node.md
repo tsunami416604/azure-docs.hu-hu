@@ -16,12 +16,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 03/04/2018
 ms.author: glenga
-ms.openlocfilehash: 1a4b970b07514619b2d81a0483546ac64d07927f
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 6099a818651cf75a75159f43748720b3eb01e4de
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40005475"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43287821"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Az Azure Functions JavaScript-fejlesztői útmutató
 
@@ -30,27 +30,28 @@ Az Azure Functions JavaScript élmény megkönnyíti egy függvényt, mint amely
 Ez a cikk feltételezi, hogy Ön már elolvasta a [Azure Functions fejlesztői segédanyagai](functions-reference.md).
 
 ## <a name="exporting-a-function"></a>Egy függvény exportálása
-Minden JavaScript-függvények kell exportálnia az egyetlen `function` keresztül `module.exports` keresse meg a függvényt, majd futtassa az modul. Ez a függvény mindig tartalmaznia kell egy `context` objektum.
+Minden JavaScript-függvény kell exportálnia az egyetlen `function` keresztül `module.exports` keresse meg a függvényt, majd futtassa az modul. Ez a függvény mindig szükség van egy `context` az első paraméterként az objektumot.
 
 ```javascript
-// You must include a context, but other arguments are optional
-module.exports = function(context) {
-    // Additional inputs can be accessed by the arguments property
-    if(arguments.length === 4) {
-        context.log('This function has 4 inputs');
-    }
-};
-// or you can include additional inputs in your arguments
+// You must include a context, other arguments are optional
 module.exports = function(context, myTrigger, myInput, myOtherInput) {
     // function logic goes here :)
+    context.done();
+};
+// You can also use 'arguments' to dynamically handle inputs
+module.exports = function(context) {
+    context.log('Number of inputs: ' + arguments.length);
+    // Iterates through trigger and input binding data
+    for (i = 1; i < arguments.length; i++){
+        context.log(arguments[i]);
+    }
+    context.done();
 };
 ```
 
-Vazby prvku `direction === "in"` függvény argumentumaként, ami azt jelenti, hogy használhatja továbbítódnak [ `arguments` ](https://msdn.microsoft.com/library/87dw3w1k.aspx) dinamikusan kezelje az új bemenetek (például használatával `arguments.length` minden a bemeneteket ciklustevékenység). Ezt a funkciót azért hasznos, ha csak egy eseményindítót, és nincs további bemenetek eseményindító adatait anélkül hivatkozó kiszámítható módon érheti a `context` objektum.
+Eseményindító- és bemeneti kötések (vazby prvku `direction === "in"`) is lehet a függvénynek átadott paraméterek. A függvény ugyanabban a sorrendben vannak meghatározva, a rendszer átad *function.json*. Bemenet a JavaScript használatával dinamikusan kezelheti [ `arguments` ](https://msdn.microsoft.com/library/87dw3w1k.aspx) objektum. Például, ha rendelkezik `function(context, a, b)` , és módosítsa a következőre `function(context, a)`, továbbra is használhatja az értékét `b` lépésként tekintse át a függvény kódját a `arguments[2]`.
 
-Az argumentumok mindig továbbítódnak a függvényt, amelyben a bekövetkezésük sorrendjében *function.json*, még akkor is, ha nem adja meg azokat a az export utasítás. Például, ha rendelkezik `function(context, a, b)` , és módosítsa a következőre `function(context, a)`, továbbra is használhatja az értékét `b` lépésként tekintse át a függvény kódját a `arguments[2]`.
-
-Összes kötését iránya, függetlenül is továbbít a `context` (lásd a következő parancsfájl) objektum. 
+Összes kötését iránya, függetlenül is továbbít a `context` objektumba a `context.bindings` tulajdonság.
 
 ## <a name="context-object"></a>környezeti objektumra
 A futtatókörnyezet-használja egy `context` objektum át adat és a függvényt, és lehetővé teszi, hogy futtatókörnyezetével.
@@ -61,6 +62,7 @@ A `context` objektum mindig a függvény első paraméterként, és szerepelnie 
 // You must include a context, but other arguments are optional
 module.exports = function(context) {
     // function logic goes here :)
+    context.done();
 };
 ```
 
@@ -96,7 +98,7 @@ context.done([err],[propertyBag])
 
 Arról tájékoztatja a futtatókörnyezet, amely a kód befejeződött. Ha a függvényt használ a `async function` deklarace (érhető el a függvények verzió 8 + csomópontja használatával 2.x-es), nem szeretné használni `context.done()`. A `context.done` visszahívási implicit módon nevezzük.
 
-Ha a függvény nem egy aszinkron függvény **hívja meg `context.done` ** tájékoztatja a futtatókörnyezet, hogy helyesek-e a függvényt. A végrehajtás időtúllépést okoz, ha hiányzik.
+Ha a függvény nem egy aszinkron függvény **hívja meg `context.done`**  tájékoztatja a futtatókörnyezet, hogy helyesek-e a függvényt. A végrehajtás időtúllépést okoz, ha hiányzik.
 
 A `context.done` módszer lehetővé teszi, hogy vissza mindkét egy felhasználó által definiált hiba történt a futásidejű és tulajdonságai egy tulajdonságcsomagot, hogy felülírja a tulajdonságok a adnia a `context.bindings` objektum.
 

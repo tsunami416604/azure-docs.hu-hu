@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/27/2018
 ms.author: barclayn
-ms.openlocfilehash: 9466f4178047a4927684a1fcfd80f661ea4aa7a5
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 523746153aa39f50d5c54c97a4f74352de04c27f
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43127702"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43288038"
 ---
 # <a name="how-to-generate-and-transfer-hsm-protected-keys-for-azure-key-vault"></a>Generate and transfer HSM-védelemmel ellátott és hogyan lehet az Azure Key Vault-kulcsok
 
@@ -491,7 +491,7 @@ USB-meghajtóra vagy egyéb hordozható tárolóeszköz használatával másolja
 
 ## <a name="step-5-transfer-your-key-to-azure-key-vault"></a>5. lépés: A kulcs átvitele az Azure Key Vaultba
 
-Ez az utolsó lépés az internethez csatlakozó munkaállomáson használja a [Add-AzureKeyVaultKey](/powershell/module/azurerm.keyvault/add-azurermkeyvaultkey) parancsmag, amely az Azure Key Vault HSM-be a kapcsolat nélküli munkaállomásról másolt kulcsátviteli csomag feltöltéséhez:
+Ez az utolsó lépés az internethez csatlakozó munkaállomáson használja a [Add-AzureKeyVaultKey](/powershell/module/azurerm.keyvault/add-add-azurekeyvaultkey) parancsmag, amely az Azure Key Vault HSM-be a kapcsolat nélküli munkaállomásról másolt kulcsátviteli csomag feltöltéséhez:
 
    ```powershell
         Add-AzureKeyVaultKey -VaultName 'ContosoKeyVaultHSM' -Name 'ContosoFirstHSMkey' -KeyFilePath 'c:\KeyTransferPackage-ContosoFirstHSMkey.byok' -Destination 'HSM'

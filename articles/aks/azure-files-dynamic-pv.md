@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: iainfou
-ms.openlocfilehash: ea77244d4b2e078c5eda716e94a97291350228f5
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: dfc9171f54effe3da7a0f13695ab233d561357d4
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42054904"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43285685"
 ---
 # <a name="persistent-volumes-with-azure-files"></a>Az Azure-fájlok állandó kötetek
 
@@ -73,7 +73,7 @@ kubectl apply -f azure-file-sc.yaml
 
 AKS-fürtök használata a Kubernetes szerepköralapú hozzáférés-vezérlés (RBAC) korlát is elvégezhető műveletekre. *Szerepkörök* határozza meg az engedélyeket, és *kötések* azokat alkalmazni a kívánt felhasználókat. Ezeket a hozzárendeléseket is alkalmazható, egy adott névtérhez vagy az egész fürt között. További információkért lásd: [használatával RBAC-hitelesítés][kubernetes-rbac].
 
-Ahhoz, hogy a szükséges tárolási erőforrások létrehozása az Azure platformon, hozzon létre egy *clusterrole* és *clusterrolebinding*. Hozzon létre egy fájlt `azure-pvc-roles.yaml` másolja be a következő yaml-kódot:
+Ahhoz, hogy a szükséges tárolási erőforrások létrehozása az Azure platformon, hozzon létre egy *ClusterRole* és *ClusterRoleBinding*. Hozzon létre egy fájlt `azure-pvc-roles.yaml` másolja be a következő yaml-kódot:
 
 ```yaml
 ---

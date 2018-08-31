@@ -3,19 +3,19 @@ title: 'Rövid útmutató: Hozzon létre egy Azure SQL Data Warehouse – Azure 
 description: Gyorsan létrehozhat egy SQL Database logikai kiszolgálót, kiszolgálószintű tűzfalszabály és data warehouse-bA az Azure PowerShell használatával.
 services: sql-data-warehouse
 author: kevinvngo
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
 ms.date: 08/01/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 72ed9e921d96faea155c1da88dd32fcbd467d549
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: ecde7cb3662fc80e7968acfcac99bc8f28e8b15b
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39414000"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43287573"
 ---
 # <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-with-azure-powershell"></a>Rövid útmutató: Létrehozása és lekérdezése az Azure SQL data warehouse az Azure PowerShell használatával
 

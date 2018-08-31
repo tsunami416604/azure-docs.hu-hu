@@ -8,14 +8,14 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: dobett
-ms.openlocfilehash: a1296565384e60117d883a1f1407362482ba1a3e
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 7c08848698f07d64bbbff429682c18525659f7bf
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39125013"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43286517"
 ---
-# <a name="create-and-read-iot-hub-messages"></a>Hozzon létre, és az IoT Hub-üzenetek olvasása
+# <a name="create-and-read-iot-hub-messages"></a>IoT Hub-üzenetek létrehozása és olvasása
 
 Zökkenőmentes együttműködés támogatására protokollok között, az IoT Hub egy közös üzenetformátum minden eszköz által használt protokollra határozza meg. Az üzenet formátuma is szolgál [eszközről a felhőbe] [ lnk-d2c] és [felhőből az eszközre] [ lnk-c2d] üzeneteket. 
 
@@ -23,7 +23,7 @@ Zökkenőmentes együttműködés támogatására protokollok között, az IoT H
 
 Egy [az IoT Hub üzenet] [ lnk-messaging] áll:
 
-* Egy *Rendszertulajdonságok*. Az IoT Hub értelmezi, és beállítja a tulajdonságokat. Ez rendkívül előre meghatározott.
+* Egy előre meghatározott készletét *Rendszertulajdonságok* alábbi.
 * Egy *alkalmazástulajdonságok*. Egy szótárt az alkalmazás meghatározó karakterlánc-tulajdonságok és a hozzáférés, anélkül, hogy az üzenet törzse deszerializálni. Az IoT Hub soha nem módosítja ezeket a tulajdonságokat.
 * Egy nem átlátszó bináris törzse.
 
@@ -36,20 +36,20 @@ Kódolhat és dekódolhat különböző protokollok használatával küldött ü
 
 Az alábbi táblázat az IoT Hub-üzenetek a rendszer tulajdonságai készletét.
 
-| Tulajdonság | Leírás |
-| --- | --- |
-| MessageId |Egy felhasználó állítható kérés-válasz mintákat keressen az üzenet azonosítója. Formátum: A kis-és nagybetűket (legfeljebb 128 karakter hosszú) ASCII 7 bites alfanumerikus karakterekből álló karakterlánc + `{'-', ':',’.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}`. |
-| Sorozat száma |Minden egyes felhőből az eszközre irányuló üzenetek IoT Hub által hozzárendelt szám (soronként eszköz egyedi). |
-| Művelet |A megadott cél [felhőből az eszközre] [ lnk-c2d] üzeneteket. |
-| ExpiryTimeUtc |Dátum és idő, az üzenetek lejáratkor. |
-| EnqueuedTime |Dátum és idő a [felhőből az eszközre] [ lnk-c2d] által az IoT Hub-üzenet érkezett. |
-| CorrelationId |A válaszüzenetben általában az üzenetazonosító, a kérelem, a kérés-válasz mintákat tartalmazó karakterlánc típusú tulajdonság. |
-| Felhasználói azonosító |Adja meg a forrás, az üzenetek használt azonosító. Az IoT Hub által előállított üzeneteket, ha van-e állítva `{iot hub name}`. |
-| Nyomon követés |Egy visszajelzés üzenet generátort. Ez a tulajdonság használják a felhőből az eszközre irányuló üzenetek létrehozni az üzenet a használatalapú eredményeként visszajelzés üzeneteket az IoT Hub kérése az eszköz. A lehetséges értékek: **nincs** (alapértelmezett): Nincs visszajelzés üzenet jön létre, **pozitív**: visszajelzés üzenetet kap, ha az üzenet fejeződött be, **negatív**: kap egy visszajelzési üzenetek anélkül, hogy az eszköz végzi üzenet lejárt (vagy kézbesítések maximális száma elérte a) Ha vagy **teljes**: pozitív és negatív. További információkért lásd: [visszajelzés üzenet][lnk-feedback]. |
-| ConnectionDeviceId |Az eszköz a felhőbe irányuló üzeneteket az IoT Hub által beállított azonosító. Tartalmazza a **deviceId** az eszköz, amely elküldte az üzenetet. |
-| ConnectionDeviceGenerationId |Az eszköz a felhőbe irányuló üzeneteket az IoT Hub által beállított azonosító. Tartalmazza a **generationId** (megfelelően [identitás eszköztulajdonságok][lnk-device-properties]) az eszköz, amely elküldte az üzenetet. |
-| ConnectionAuthMethod |Az eszköz a felhőbe irányuló üzeneteket az IoT Hub által beállított hitelesítési módszert. Ez a tulajdonság az üzenet elküldésekor az eszköz hitelesítésére használt hitelesítési módszert kapcsolatos információt tartalmazza. További információkért lásd: [eszköz – felhő hamisításszűrés][lnk-antispoofing]. |
-| CreationTimeUtc | Létrehozásának dátuma és időpontja az üzenet az eszközön. Egy eszköz explicit módon be kell ezt az értéket. |
+| Tulajdonság | Leírás | Az felhasználó állítható be? |
+| --- | --- | --- |
+| MessageId |Egy felhasználó állítható kérés-válasz mintákat keressen az üzenet azonosítója. Formátum: A kis-és nagybetűket (legfeljebb 128 karakter hosszú) ASCII 7 bites alfanumerikus karakterekből álló karakterlánc + `{'-', ':',’.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}`. | Igen |
+| Sorozat száma |Minden egyes felhőből az eszközre irányuló üzenetek IoT Hub által hozzárendelt szám (soronként eszköz egyedi). | A nem C2D üzenetek; Ellenkező esetben igen. |
+| Művelet |A megadott cél [felhőből az eszközre] [ lnk-c2d] üzeneteket. | A nem C2D üzenetek; Ellenkező esetben igen. |
+| ExpiryTimeUtc |Dátum és idő, az üzenetek lejáratkor. | Igen |
+| EnqueuedTime |Dátum és idő a [felhőből az eszközre] [ lnk-c2d] által az IoT Hub-üzenet érkezett. | A nem C2D üzenetek; Ellenkező esetben igen. |
+| CorrelationId |A válaszüzenetben általában az üzenetazonosító, a kérelem, a kérés-válasz mintákat tartalmazó karakterlánc típusú tulajdonság. | Igen |
+| Felhasználói azonosító |Adja meg a forrás, az üzenetek használt azonosító. Az IoT Hub által előállított üzeneteket, ha van-e állítva `{iot hub name}`. | Nem |
+| Nyomon követés |Egy visszajelzés üzenet generátort. Ez a tulajdonság használják a felhőből az eszközre irányuló üzenetek létrehozni az üzenet a használatalapú eredményeként visszajelzés üzeneteket az IoT Hub kérése az eszköz. A lehetséges értékek: **nincs** (alapértelmezett): Nincs visszajelzés üzenet jön létre, **pozitív**: visszajelzés üzenetet kap, ha az üzenet fejeződött be, **negatív**: kap egy visszajelzési üzenetek anélkül, hogy az eszköz végzi üzenet lejárt (vagy kézbesítések maximális száma elérte a) Ha vagy **teljes**: pozitív és negatív. További információkért lásd: [visszajelzés üzenet][lnk-feedback]. | Igen |
+| ConnectionDeviceId |Az eszköz a felhőbe irányuló üzeneteket az IoT Hub által beállított azonosító. Tartalmazza a **deviceId** az eszköz, amely elküldte az üzenetet. | A nem D2C-messages; Ellenkező esetben igen. |
+| ConnectionDeviceGenerationId |Az eszköz a felhőbe irányuló üzeneteket az IoT Hub által beállított azonosító. Tartalmazza a **generationId** (megfelelően [identitás eszköztulajdonságok][lnk-device-properties]) az eszköz, amely elküldte az üzenetet. | A nem D2C-messages; Ellenkező esetben igen. |
+| ConnectionAuthMethod |Az eszköz a felhőbe irányuló üzeneteket az IoT Hub által beállított hitelesítési módszert. Ez a tulajdonság az üzenet elküldésekor az eszköz hitelesítésére használt hitelesítési módszert kapcsolatos információt tartalmazza. További információkért lásd: [eszköz – felhő hamisításszűrés][lnk-antispoofing]. | A nem D2C-messages; Ellenkező esetben igen. |
+| CreationTimeUtc | Létrehozásának dátuma és időpontja az üzenet az eszközön. Egy eszköz explicit módon be kell ezt az értéket. | Igen |
 
 ## <a name="message-size"></a>Üzenet mérete
 

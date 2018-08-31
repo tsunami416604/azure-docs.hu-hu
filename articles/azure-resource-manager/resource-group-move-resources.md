@@ -10,14 +10,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/22/2018
+ms.date: 08/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: 7ddab3717626df14f491662849d01cb85658791c
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: 160e2a277c82470df7d9ced2899699dae8d4ef01
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42617290"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43302128"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe
 
@@ -57,7 +57,7 @@ Néhány fontos lépést végre kell hajtani az erőforrások áthelyezése elő
   * [Azure-előfizetés tulajdonjogának átruházása másik fiókra](../billing/billing-subscription-transfer.md)
   * [Azure-előfizetés társítása vagy hozzáadása az Azure Active Directoryhoz](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
 
-2. A szolgáltatásnak lehetővé kell tennie az erőforrások áthelyezését. Ez a cikk az erőforrások áthelyezését engedélyező szolgáltatásokat, és mely szolgáltatások nem engedélyezi az erőforrások áthelyezése sorolja fel.
+2. A szolgáltatásnak lehetővé kell tennie az erőforrások áthelyezését. Ebben a cikkben, amelyek szakaszokban [erőforrások áthelyezését engedélyező szolgáltatásokat](#services-that-can-be-moved) , és amely [erőforrások áthelyezését engedélyező szolgáltatásokat nem](#services-that-cannot-be-moved).
 3. A cél előfizetést regisztrálni kell az áthelyezett erőforrás erőforrás-szolgáltatóján. Ha nem, akkor megjelenik egy hibaüzenet, arról, hogy a **az előfizetés nincs regisztrálva az erőforrástípushoz**. Ez a probléma erőforrások új előfizetésre történő áthelyezésekor fordulhat elő, ha az előfizetést még nem használták az adott erőforrástípushoz.
 
   A PowerShell a következő parancsok használatával a regisztrációs állapot lekérdezése:

@@ -3,23 +3,23 @@ title: Munkamenet Management – Microsoft Fenyegetésmodellezési eszköz – A
 description: megoldások a fenyegetések között szerepelnek a Threat Modeling Tool
 services: security
 documentationcenter: na
-author: RodSan
-manager: RodSan
-editor: RodSan
+author: jegeib
+manager: jegeib
+editor: jegeib
 ms.assetid: na
 ms.service: security
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/17/2017
-ms.author: rodsan
-ms.openlocfilehash: 31fe386cfbe5b6ccf842c05a2dd1d6fcd45bc9b7
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.date: 02/07/2017
+ms.author: jegeib
+ms.openlocfilehash: cd843f1826ad65098a7c0f6d30383113ccd28f6a
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42057259"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43306439"
 ---
 # <a name="security-frame-session-management--articles"></a>Biztonsági keret: Munkamenet-kezelés |} Cikkek 
 | Termék vagy szolgáltatás | Cikk |
@@ -82,7 +82,7 @@ Azt kell is megsemmisíteni a felhasználói munkamenet Session.Abandon() metód
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
-| **Összetevő**               | Az Azure Document DB-ről | 
+| **Összetevő**               | Azure Document DB | 
 | **SDL fázis**               | Felépítés |  
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |

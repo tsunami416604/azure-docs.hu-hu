@@ -1,73 +1,73 @@
 ---
-title: -Microsoft fenyegetés modellezési eszköz – bizalmas adatok Azure |} Microsoft Docs
-description: a fenyegetések modellezése eszköz felfedett fenyegetések megoldást
+title: Bizalmas adatokat – Microsoft Fenyegetésmodellezési eszköz – Azure |} A Microsoft Docs
+description: megoldások a fenyegetések között szerepelnek a Threat Modeling Tool
 services: security
 documentationcenter: na
-author: RodSan
-manager: RodSan
-editor: RodSan
+author: jegeib
+manager: jegeib
+editor: jegeib
 ms.assetid: na
 ms.service: security
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/17/2017
-ms.author: rodsan
-ms.openlocfilehash: bfc1e8dd6acf2cba5b4622785aa3714a7ff037c9
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.date: 02/07/2017
+ms.author: jegeib
+ms.openlocfilehash: bcd2b2199628a7f717a7ce1d8eba032f5778379b
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37031804"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43301461"
 ---
-# <a name="security-frame-sensitive-data--mitigations"></a>Biztonsági keret: Bizalmas adatok |} Megoldást 
-| A termék vagy szolgáltatás | Cikk |
+# <a name="security-frame-sensitive-data--mitigations"></a>Biztonsági keret: Bizalmas adatok |} Megoldások 
+| Termék vagy szolgáltatás | Cikk |
 | --------------- | ------- |
-| **Gép megbízhatósági kapcsolat határán** | <ul><li>[Győződjön meg arról, hogy bináris formában vannak, ha bizalmas információkat tartalmaznak](#binaries-info)</li><li>[Vegye figyelembe a titkosított fájlrendszer (EFS) használatával bizalmas felhasználói adatok védelme](#efs-user)</li><li>[Győződjön meg arról, hogy az alkalmazás a fájlrendszeren tárolt bizalmas adatok titkosítása](#filesystem)</li></ul> | 
-| **Webalkalmazás** | <ul><li>[Győződjön meg arról, hogy bizalmas tartalom nem tárolja a böngészőben](#cache-browser)</li><li>[Webes alkalmazás konfigurációs fájlja bizalmas adatokat tartalmazó szakasz titkosítása](#encrypt-data)</li><li>[Explicit módon letiltja az automatikus kiegészítés HTML attribútum bizalmas űrlapokban és a bemeneti adatok](#autocomplete-input)</li><li>[Győződjön meg arról, hogy a felhasználó képernyőn való megjelenítésének bizalmas adatok van maszkolva](#data-mask)</li></ul> | 
-| **Adatbázis** | <ul><li>[Dinamikus adatmaszkolási bizalmas adatok nem rendszerjogosultságú kitettség felhasználók megvalósítása](#dynamic-users)</li><li>[Győződjön meg arról, hogy a jelszavak sózott kivonatoló formátumban kell tárolni](#salted-hash)</li><li>[ Győződjön meg arról, hogy adatbázismezőknek bizalmas adatok titkosítva van](#db-encrypted)</li><li>[Győződjön meg arról, hogy adatbázis szintű titkosítást (TDE) engedélyezve van](#tde-enabled)</li><li>[Győződjön meg arról, hogy titkosítva legyenek-e az adatbázis biztonsági mentése](#backup)</li></ul> | 
-| **Webes API** | <ul><li>[Győződjön meg arról, hogy az webes API-ra vonatkozó bizalmas adatok nem tárolódik a böngésző tárolási](#api-browser)</li></ul> | 
-| Az Azure Document DB rendszerbe | <ul><li>[Az Azure Cosmos Adatbázisba tárolt bizalmas adatok titkosítása](#encrypt-docdb)</li></ul> | 
-| **Azure IaaS virtuális gép megbízhatósági kapcsolat határán** | <ul><li>[Virtuális gépek által használt lemezek titkosítására használt Azure Disk Encryption](#disk-vm)</li></ul> | 
-| **Service Fabric megbízhatósági kapcsolat határán** | <ul><li>[Service Fabric-alkalmazások titkos kulcsainak titkosítása](#fabric-apps)</li></ul> | 
-| **Dynamics CRM** | <ul><li>[Biztonsági modellezési üzleti egység/csoportok használható, és ha szükséges](#modeling-teams)</li><li>[Kritikus entitások funkciót megosztott minimalizálása érdekében](#entities)</li><li>[A kockázatok a Dynamics CRM megosztás szolgáltatást és jó biztonsági gyakorlat a felhasználók képzése](#good-practices)</li><li>[Közé tartozik a megjelenítő konfigurációs részletek a kivételek kezelése proscribing fejlesztési szabványok szabály](#exception-mgmt)</li></ul> | 
-| **Azure Storage** | <ul><li>[Használja az Azure Storage Service Encryption (SSE) for Data at Rest (Preview)](#sse-preview)</li><li>[Bizalmas adatok tárolásához Azure Storage ügyféloldali titkosítás használata](#client-storage)</li></ul> | 
-| **Mobileszköz ügyfél** | <ul><li>[Érzékeny vagy telefonok helyi tárhelyen, személyazonosításra alkalmas adatok titkosítása](#pii-phones)</li><li>[A végfelhasználók számára kiosztása előtt létrehozott bináris takarják](#binaries-end)</li></ul> | 
-| **WCF** | <ul><li>[ Tanúsítvány vagy a Windows clientCredentialType beállítása](#cert)</li><li>[WCF-biztonsági mód nem engedélyezett.](#security)</li></ul> | 
+| **Gép megbízhatósági kapcsolat határán** | <ul><li>[Győződjön meg arról, hogy a bináris fájlok bizalmas adatokat tartalmazó vannak rejtjelezett](#binaries-info)</li><li>[Fontolja meg a bizalmas felhasználói adatok védelme érdekében használja a titkosított fájlrendszer (EFS)](#efs-user)</li><li>[Győződjön meg arról, hogy az alkalmazás a fájlrendszeren tárolt bizalmas adatok titkosítva van](#filesystem)</li></ul> | 
+| **Webalkalmazás** | <ul><li>[Győződjön meg arról, hogy bizalmas tartalom nem tárolja a böngészőben](#cache-browser)</li><li>[Webes alkalmazás a konfigurációs fájlok bizalmas adatokat tartalmazó szakaszok titkosítása](#encrypt-data)</li><li>[Explicit módon letiltja az automatikus kiegészítés bizalmas űrlapokban és a bemenetek HTML-attribútum](#autocomplete-input)</li><li>[Győződjön meg arról, hogy a felhasználói képernyőn a bizalmas adatok maszkolva van](#data-mask)</li></ul> | 
+| **Adatbázis** | <ul><li>[Dinamikus adatmaszkolás korlátozhatja a bizalmas adatok nem rendszerjogosultságú kitettség felhasználók megvalósítása](#dynamic-users)</li><li>[Győződjön meg arról, hogy a jelszavak tárolása sózott ujjlenyomat formátuma](#salted-hash)</li><li>[ Győződjön meg arról, hogy az adatbázis-oszlopokban bizalmas adatok titkosítva van](#db-encrypted)</li><li>[Győződjön meg arról, hogy adatbázis-szintű titkosítást (TDE) engedélyezve van](#tde-enabled)</li><li>[Győződjön meg arról, hogy titkosított adatbázis biztonsági mentése](#backup)</li></ul> | 
+| **Webes API** | <ul><li>[Győződjön meg arról, hogy a bizalmas adatokat a webes API-t nem tárolja böngésző storage-ban](#api-browser)</li></ul> | 
+| Azure Document DB | <ul><li>[Az Azure Cosmos DB-ben tárolt bizalmas adatok titkosítása](#encrypt-docdb)</li></ul> | 
+| **Az Azure IaaS virtuális gép megbízhatósági kapcsolat határán** | <ul><li>[Az Azure Disk Encryption használatával virtuális gépek által használt lemezek titkosítása](#disk-vm)</li></ul> | 
+| **Service Fabric megbízhatósági kapcsolat határán** | <ul><li>[Titkosítani a titkos kulcsokat a Service Fabric-alkalmazások](#fabric-apps)</li></ul> | 
+| **Dynamics CRM** | <ul><li>[Biztonsági modellezési az üzleti egység/csapatok használható, és ahol szükséges](#modeling-teams)</li><li>[Megosztott szolgáltatás kritikus entitások minimalizálása](#entities)</li><li>[A Dynamics CRM-megosztási szolgáltatás és az ajánlott biztonsági eljárások a kockázatokat a felhasználók betanítása](#good-practices)</li><li>[Kivételek kezelése konfigurációs részleteket megjelenítő proscribing fejlesztési szabványok szabály belefoglalása](#exception-mgmt)</li></ul> | 
+| **Azure Storage** | <ul><li>[Az Azure Storage Service Encryption (SSE) használata for Data at Rest (előzetes verzió)](#sse-preview)</li><li>[Ügyféloldali titkosítás használata a bizalmas adatok tárolásához Azure Storage-ban](#client-storage)</li></ul> | 
+| **Mobileszköz ügyfél** | <ul><li>[Bizalmas vagy telefonok helyi tárba írt PII adatok titkosítása](#pii-phones)</li><li>[A végfelhasználók számára terjesztése előtt létrehozott bináris rejtse](#binaries-end)</li></ul> | 
+| **WCF** | <ul><li>[ ClientCredentialType tanúsítvány vagy a Windows beállítása](#cert)</li><li>[WCF-biztonsági mód nincs engedélyezve](#security)</li></ul> | 
 
-## <a id="binaries-info"></a>Győződjön meg arról, hogy bináris formában vannak, ha bizalmas információkat tartalmaznak
+## <a id="binaries-info"></a>Győződjön meg arról, hogy a bináris fájlok bizalmas adatokat tartalmazó vannak rejtjelezett
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Gép megbízhatósági kapcsolat határán | 
 | **SDL fázis**               | Környezet |  
-| **Alkalmazandó technológiák** | Általános |
+| **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
-| **Lépések** | Győződjön meg arról, hogy bináris rejtjelezett vannak, ha azok tartalmaznak olyan bizalmas adatokat, például kereskedelmi titkok, bizalmas üzleti logika, amely kell nem fordított irányú. Ez a szerelvények visszafejtés leállítása. Eszközök, például `CryptoObfuscator` erre a célra használható. |
+| **Lépések** | Győződjön meg arról, hogy bináris rejtjelezett vannak, ha bizalmas adatokat, például kereskedelmi titkok, bizalmas üzleti logikát kell nem tartalmaznak. Ez a visszafejtés sestavení leállítása. Eszközök, például a `CryptoObfuscator` erre a célra használhatók. |
 
-## <a id="efs-user"></a>Vegye figyelembe a titkosított fájlrendszer (EFS) használatával bizalmas felhasználói adatok védelme
+## <a id="efs-user"></a>Fontolja meg a bizalmas felhasználói adatok védelme érdekében használja a titkosított fájlrendszer (EFS)
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Gép megbízhatósági kapcsolat határán | 
 | **SDL fázis**               | Felépítés |  
-| **Alkalmazandó technológiák** | Általános |
+| **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
-| **Lépések** | Vegye figyelembe, hogy a titkosított fájlrendszer (EFS) használatával bizalmas felhasználói adatok védelme a fizikai hozzáféréssel rendelkező szemléltetik a számítógépre. |
+| **Lépések** | Vegye figyelembe, hogy a támadók fizikai hozzáféréssel rendelkező bizalmas felhasználói adatok védelméhez a számítógép a titkosított fájlrendszer (EFS) használja. |
 
-## <a id="filesystem"></a>Győződjön meg arról, hogy az alkalmazás a fájlrendszeren tárolt bizalmas adatok titkosítása
+## <a id="filesystem"></a>Győződjön meg arról, hogy az alkalmazás a fájlrendszeren tárolt bizalmas adatok titkosítva van
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Gép megbízhatósági kapcsolat határán | 
 | **SDL fázis**               | Környezet |  
-| **Alkalmazandó technológiák** | Általános |
+| **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
-| **Lépések** | Győződjön meg arról, hogy az alkalmazás a fájlrendszeren tárolt bizalmas adatok titkosítva van (például a DPAPI-t használ), ha az EFS nem kényszeríthető. |
+| **Lépések** | Győződjön meg arról, hogy az alkalmazás a fájlrendszeren tárolt bizalmas adatok titkosítva van-e (pl. DPAPI-t használ), ha az EFS nem kényszeríthető. |
 
 ## <a id="cache-browser"></a>Győződjön meg arról, hogy bizalmas tartalom nem tárolja a böngészőben
 
@@ -75,10 +75,10 @@ ms.locfileid: "37031804"
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
 | **SDL fázis**               | Felépítés |  
-| **Alkalmazandó technológiák** | Általános, Web Forms, MVC5, MVC6 |
+| **Megfelelő technológiák** | Általános, Web Forms-MVC5, MVC6 |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
-| **Lépések** | Böngészők célokra és adatok gyorsítótárazása előzmények tárolhatja. A gyorsítótárazott fájlok tárolják, mint az ideiglenes internetfájlok mappa Internet Explorer egy mappában. Ha az adott lapok újra hivatkozunk, a böngésző megjeleníti azokat a gyorsítótárból. Ha bizalmas információk (például a címet, a hitelkártya adatait, az társadalombiztosítási szám vagy a felhasználónév) a felhasználó számára, majd ezeket az információkat lehet webböngésző gyorsítótárában tárolt, és ezért lekérhető keresztül vizsgálata folyamatban van a gyorsítótárban, vagy egyszerűen nyomja le a böngésző "Újra" gombra. Állítsa be a cache-control válasz állomásfejléc-érték "no-tárolóba" minden lap. |
+| **Lépések** | Böngészők gyorsítótárazás és előzmények célokra adatokat tárolhat. Ezek a gyorsítótárazott fájlok tárolódnak, mint az ideiglenes internetfájlok mappa esetén az Internet Explorer egy mappában. Ezeket az oldalakat a újra hivatkozunk, amikor a böngésző megjeleníti őket a gyorsítótárból. Ha bizalmas információk is megjelennek a felhasználó (például a címe, hitelkártya adatait, társadalombiztosítási szám vagy felhasználónév), majd ezeket az információkat lehet tárolja a böngésző gyorsítótárát, és így lekérdezhető, vizsgálata folyamatban van a böngésző gyorsítótárát keresztül, vagy egyszerűen csak billentyű a böngészőben "Újra" gombra. Állítsa be a cache-control válasz fejléce érték "no-store" minden lap. |
 
 ### <a name="example"></a>Példa
 ```XML
@@ -122,27 +122,27 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
         }
 ``` 
 
-## <a id="encrypt-data"></a>Webes alkalmazás konfigurációs fájlja bizalmas adatokat tartalmazó szakasz titkosítása
+## <a id="encrypt-data"></a>Webes alkalmazás a konfigurációs fájlok bizalmas adatokat tartalmazó szakaszok titkosítása
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
 | **SDL fázis**               | Felépítés |  
-| **Alkalmazandó technológiák** | Általános |
+| **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
-| **Hivatkozások**              | [Útmutató: Az ASP.NET 2.0 használatával DPAPI konfigurációs szakasz titkosítása](https://msdn.microsoft.com/library/ff647398.aspx), [adja meg egy védett Konfigurációszolgáltatót](https://msdn.microsoft.com/library/68ze1hb2.aspx), [Azure Key Vault használatával alkalmazás titkos kulcsok védelme](https://azure.microsoft.com/documentation/articles/guidance-multitenant-identity-keyvault/) |
-| **Lépések** | Konfigurációs fájlok, például a Web.config fájlként appsettings.json gyakran használt bizalmas adatokat, beleértve a felhasználónevek, jelszavak, adatbázis-kapcsolati karakterláncok és titkosítási kulcsok tárolásához. Ha ezt az információt nem védi, az alkalmazás ki van téve a támadók vagy rosszindulatú felhasználók megszerezni a bizalmas adatokat, például a fiók felhasználói nevét és a jelszavak, a adatbázis nevét és a kiszolgálók nevei. Alapján a központi telepítési típus (azure vagy a helyszínen), titkosítsa a bizalmas DPAPI-t vagy szolgáltatásokat, mint az Azure Key Vault segítségével konfigurációs fájljainak szakaszait. |
+| **Hivatkozások**              | [Útmutató: Az ASP.NET 2.0 használatával DPAPI konfigurációs szakaszokat titkosítása](https://msdn.microsoft.com/library/ff647398.aspx), [adjon meg egy védett Konfigurációszolgáltató](https://msdn.microsoft.com/library/68ze1hb2.aspx), [Azure Key Vault használatával az alkalmazás titkainak védelmére](https://azure.microsoft.com/documentation/articles/guidance-multitenant-identity-keyvault/) |
+| **Lépések** | Konfigurációs fájlok, például a Web.config fájlként appsettings.json gyakran használják bizalmas adatokat, köztük a felhasználónevek, jelszavak, adatbázis-kapcsolati karakterláncok és titkosítási kulcsok tárolásához. Ha ezt az információt nem védi, az alkalmazás kitéve a támadók vagy rosszindulatú felhasználók például fiók felhasználóneveket és jelszavakat, adatbázisnevek és kiszolgálók nevei bizalmas információk beszerzése. A központi telepítési típus (az azure és helyszíni) alapján, a titkosítást a DPAPI-t vagy a szolgáltatások, például az Azure Key Vault használatával a konfigurációs fájlok bizalmas szakaszait. |
 
-## <a id="autocomplete-input"></a>Explicit módon letiltja az automatikus kiegészítés HTML attribútum bizalmas űrlapokban és a bemeneti adatok
+## <a id="autocomplete-input"></a>Explicit módon letiltja az automatikus kiegészítés bizalmas űrlapokban és a bemenetek HTML-attribútum
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
 | **SDL fázis**               | Felépítés |  
-| **Alkalmazandó technológiák** | Általános |
+| **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
-| **Hivatkozások**              | [MSDN: automatikus kiegészítés attribútum](http://msdn.microsoft.com/library/ms533486(VS.85).aspx), [automatikus kiegészítési funkciójának használatával HTML](http://msdn.microsoft.com/library/ms533032.aspx), [HTML-tisztítási biztonsági](http://technet.microsoft.com/security/bulletin/MS10-071), [Autocomplete., újra?](http://blog.mindedsecurity.com/2011/10/autocompleteagain.html) |
-| **Lépések** | Az automatikus kiegészítés attribútum Megadja, hogy kell-e az űrlap a be- és kikapcsolása autocomplete kapcsolatos rendelkeznek. Ha automatikus kiegészítési funkciója, a böngésző automatikusan befejezése előtt a felhasználó megadott értékek alapján értékeket. Például amikor egy új nevet és jelszót is meg kell adni egy űrlapon, és az űrlap elküldése, a böngésző megkérdezi, hogy ha a jelszó mentésére. Ezt követően amikor a képernyő jelenik meg, a név és jelszó automatikusan kitölti, vagy van befejezni, mert a név is meg kell adni. Helyi hozzáféréssel rendelkező támadó tudta megszerezni a tiszta szöveges jelszavak, a böngésző gyorsítótárából. Alapértelmezés szerint engedélyezve van az automatikus kiegészítés, és explicit módon le kell tiltani. |
+| **Hivatkozások**              | [MSDN: az automatikus kiegészítés attribútum](http://msdn.microsoft.com/library/ms533486(VS.85).aspx), [automatikus kiegészítési funkciójának használatával HTML](http://msdn.microsoft.com/library/ms533032.aspx), [HTML-tisztító biztonsági](http://technet.microsoft.com/security/bulletin/MS10-071), [automatikus kiegészítés., újra?](http://blog.mindedsecurity.com/2011/10/autocompleteagain.html) |
+| **Lépések** | Az automatikus kiegészítés attribútum megadja e űrlap automatikus kiegészítés kell rendelkeznie, és ki. Az automatikus kiegészítés esetén a böngésző automatikus elvégzéséhez, mielőtt a felhasználó megadott értékek alapján értékeket. Például ha egy új nevet és jelszót szerepel egy űrlapot, és az űrlap elküldésekor, a böngésző kéri Ha a jelszó mentéséhez. Ezt követően amikor a képernyő jelenik meg, a név és jelszó automatikusan kitölti, vagy végezhető el, ahogy a neve van megadva. Helyi hozzáféréssel rendelkező támadó a tiszta szöveges jelszó a böngésző gyorsítótárából szerezze be. Alapértelmezés szerint engedélyezve van az automatikus kiegészítés, és explicit módon le lesz tiltva. |
 
 ### <a name="example"></a>Példa
 ```csharp
@@ -152,85 +152,85 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 </form>
 ```
 
-## <a id="data-mask"></a>Győződjön meg arról, hogy a felhasználó képernyőn való megjelenítésének bizalmas adatok van maszkolva
+## <a id="data-mask"></a>Győződjön meg arról, hogy a felhasználói képernyőn a bizalmas adatok maszkolva van
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
 | **SDL fázis**               | Felépítés |  
-| **Alkalmazandó technológiák** | Általános |
+| **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
-| **Lépések** | Amikor a képernyőn megjelenő kell legyen maszkolva a bizalmas adatokat, például jelszavakat, hitelkártyaszámokat tartalmazó SSN stb. Ez az, hogy megakadályozza a jogosulatlan személyek fér hozzá az adatokhoz (például a képernyőre pillant-surfing jelszavak, technikai támogatási csoporthoz SSN felhasználóval megtekintése). Győződjön meg arról, hogy ezek az adatok elemek nem láthatók el a formázatlan szöveges megfelelően maszkolva. Azt kell őket (pl. bemenetként elfogadása közben végrehajtott fontos. Adjon meg típust = a "password") valamint vissza a program a következő képernyő (pl. megjelenítési csak az utolsó 4 számjegyét a hitelkártya száma). |
+| **Lépések** | Bizalmas adatok, például jelszavakat, hitelkártyaszámokat tartalmazó, SSN stb. kell lennie maszkolva, amikor a képernyőn megjelenő. Ez a megakadályozhatja, hogy jogosulatlan személyek (például a váll-surfing jelszavak, a felhasználók SSN sorszámok megtekintése a támogatási csoporthoz) adatokhoz fér hozzá. Győződjön meg arról, hogy ezek az adatok elemek szövegként nem láthatók, és megfelelően maszkolva. Azt kell őket (pl. bemenetként elfogadása közben elvégzi. bemeneti típus = "password") és megjelenítésének vissza a képernyő (például megjelenítendő csak az utolsó 4 számjegyét a hitelkártya száma). |
 
-## <a id="dynamic-users"></a>Dinamikus adatmaszkolási bizalmas adatok nem rendszerjogosultságú kitettség felhasználók megvalósítása
-
-| Beosztás                   | Részletek      |
-| ----------------------- | ------------ |
-| **Összetevő**               | Adatbázis | 
-| **SDL fázis**               | Felépítés |  
-| **Alkalmazandó technológiák** | Az SQL Azure, a helyi üzemeltetésű |
-| **Attribútumok**              | SQL - 12-es verzió, az SQL-verzió - verzió MsSQL2016 |
-| **Hivatkozások**              | [Dinamikus Adatmaszkolási](https://msdn.microsoft.com/library/mt130841) |
-| **Lépések** | Dinamikus adatmaszkolási célja a felhasználók, akik nem rendelkeznek hozzáféréssel a adatok megtekintését, akadályozza meg, hogy bizalmas adatok felfedésnek korlátozni. Dinamikus adatmaszkolási nem célja, hogy akadályozza meg adatbázis közvetlenül az adatbázishoz csatlakozással, és elérhetővé tenni a bizalmas adatok teljes körű lekérdezések futtatása. Dinamikus adatmaszkolási kiegészítő más SQL Server biztonsági funkciók (naplózás, a titkosítás és sorszintű biztonság...), és a szolgáltatás használatához azokat együtt továbbá a bizalmas adatok hatékonyabb védelme érdekében ajánlott a az adatbázis. Vegye figyelembe, hogy ez a funkció csak az SQL Server 2016 kezdve és az Azure SQL Database által támogatott. |
-
-## <a id="salted-hash"></a>Győződjön meg arról, hogy a jelszavak sózott kivonatoló formátumban kell tárolni
+## <a id="dynamic-users"></a>Dinamikus adatmaszkolás korlátozhatja a bizalmas adatok nem rendszerjogosultságú kitettség felhasználók megvalósítása
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Adatbázis | 
 | **SDL fázis**               | Felépítés |  
-| **Alkalmazandó technológiák** | Általános |
+| **Megfelelő technológiák** | Az SQL Azure, a rendszert |
+| **Attribútumok**              | SQL - 12-es, az SQL-verzió - verzió MsSQL2016 |
+| **Hivatkozások**              | [Dinamikus Adatmaszkolás](https://msdn.microsoft.com/library/mt130841) |
+| **Lépések** | A dinamikus adatmaszkolás célja, hogy korlátozza a bizalmas adatok, megakadályozza, hogy a felhasználók, akik nem hozzáféréssel kell rendelkeznie az adatok megtekintésekor, megjelenítését. Dinamikus adatmaszkolás nem célja, hogy az adatbázis-felhasználók közvetlenül csatlakozik az adatbázishoz, és tegye elérhetővé a bizalmas adatok következőben történő részletes ellentmondás-lekérdezések futtatásához. Dinamikus adatmaszkolás kiegészíti a többi SQL Server biztonsági funkciók (naplózás, titkosítás, sorszintű biztonság...), és a funkció használatához őket együtt emellett ahhoz, hogy az a bizalmas adatok védelme érdekében előírta erősen ajánlott a az adatbázis. Vegye figyelembe, hogy ez a funkció csak az SQL Server 2016 kezdve és az Azure SQL Database által támogatott. |
+
+## <a id="salted-hash"></a>Győződjön meg arról, hogy a jelszavak tárolása sózott ujjlenyomat formátuma
+
+| Beosztás                   | Részletek      |
+| ----------------------- | ------------ |
+| **Összetevő**               | Adatbázis | 
+| **SDL fázis**               | Felépítés |  
+| **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
-| **Hivatkozások**              | [Jelszó Hashing .NET titkosítási API-k használatával](http://docs.asp.net/en/latest/security/data-protection/consumer-apis/password-hashing.html) |
-| **Lépések** | Jelszavak egyéni felhasználói tároló adatbázisok nem kell tárolni. Jelszó-kivonatok helyette védőérték értékekkel kell tárolni. Ellenőrizze, hogy a felhasználó a védőérték mindig egyedi és b-crypt program segítségével, a titkosítási-s vagy PBKDF2 alkalmazása előtt tárolja a jelszót, a találgatásos kényszerített lehetősége 150 000 hurkok minimális munkahelyi tényező iterációs számaival együtt.| 
+| **Hivatkozások**              | [Jelszó Hashing .NET kriptográfiai API-k használatával](http://docs.asp.net/en/latest/security/data-protection/consumer-apis/password-hashing.html) |
+| **Lépések** | Egyéni felhasználói store adatbázisban nem kell tárolja a jelszavakat. Jelszókivonatokat inkább védőérték értékekkel kell tárolni. Ellenőrizze, hogy a felhasználó a védőérték mindig egyedi és b-crypt, s-crypt vagy PBKDF2 alkalmazza, a jelszót, és 150 000 bővítheti, így lehetősége találgatásos kényszerítése minimális munkahelyi tényező iteráció számával együtt való tárolás előtt.| 
 
-## <a id="db-encrypted"></a>Győződjön meg arról, hogy adatbázismezőknek bizalmas adatok titkosítva van
+## <a id="db-encrypted"></a>Győződjön meg arról, hogy az adatbázis-oszlopokban bizalmas adatok titkosítva van
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Adatbázis | 
 | **SDL fázis**               | Felépítés |  
-| **Alkalmazandó technológiák** | Általános |
+| **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | SQL-verzió - minden |
-| **Hivatkozások**              | [Az SQL server bizalmas adatok titkosítása](https://technet.microsoft.com/library/ff848751(v=sql.105).aspx), [hogyan: egy SQL Server adatok oszlop titkosítása](https://msdn.microsoft.com/library/ms179331), [tanúsítvány titkosítása](https://msdn.microsoft.com/library/ms188061) |
-| **Lépések** | Érzékeny adatok, például a hitelkártyaszámukat rendelkezik az adatbázisban titkosításra. Adatok titkosíthatók oszlopszintű titkosítással vagy egy alkalmazás függvény a titkosítási funkciókat használja. |
+| **Hivatkozások**              | [Az SQL server bizalmas adatok titkosítása](https://technet.microsoft.com/library/ff848751(v=sql.105).aspx), [hogyan: az SQL Server egy oszlopadatok titkosítása](https://msdn.microsoft.com/library/ms179331), [tanúsítvány titkosítása](https://msdn.microsoft.com/library/ms188061) |
+| **Lépések** | Bizalmas adatok, például hitelkártyaszámokon rendelkezik titkosítását az adatbázisban. Képes az oszlopszintű encryption használatával titkosított adatok, vagy egy alkalmazás-függvényt a titkosítási funkciók használatával. |
 
-## <a id="tde-enabled"></a>Győződjön meg arról, hogy adatbázis szintű titkosítást (TDE) engedélyezve van
+## <a id="tde-enabled"></a>Győződjön meg arról, hogy adatbázis-szintű titkosítást (TDE) engedélyezve van
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Adatbázis | 
 | **SDL fázis**               | Felépítés |  
-| **Alkalmazandó technológiák** | Általános |
+| **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
-| **Hivatkozások**              | [SQL Server átlátható adattitkosítás (TDE) ismertetése](https://technet.microsoft.com/library/bb934049(v=sql.105).aspx) |
-| **Lépések** | Segíti a bizalmas adatbázis adatainak titkosításához és a tanúsítvánnyal az adatok titkosításához használt kulcs védelme SQL server átlátszó Data Encryption (TDE) szolgáltatása. Ez megakadályozza, hogy ezek a kulcsok adatok használatával. TDE adatok védelmét "Inaktív", ami azt jelenti, az adat- és naplófájljai. Ez lehetővé teszi a sok törvényi, a szabályozókat és a különböző iparágak létrehozott iránymutatásokat ahhoz, hogy. |
+| **Hivatkozások**              | [Az SQL Server transzparens adattitkosításának (TDE) ismertetése](https://technet.microsoft.com/library/bb934049(v=sql.105).aspx) |
+| **Lépések** | Az SQL server transzparens adattitkosítási (TDE) funkciója segít a titkosított bizalmas adatok egy adatbázisban, és a tanúsítvánnyal az adatok titkosításához használt kulcsok védelmét. Ezzel megakadályozza a kulcsok nélkül az adatok használatával. TDE védi az adatokat "Inaktív", azaz az adathoz és naplófájlhoz. Ez lehetővé teszi a sok törvényekkel, előírásokkal és a különböző iparágak létrehozott iránymutatásokat ahhoz, hogy. |
 
-## <a id="backup"></a>Győződjön meg arról, hogy titkosítva legyenek-e az adatbázis biztonsági mentése
+## <a id="backup"></a>Győződjön meg arról, hogy titkosított adatbázis biztonsági mentése
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Adatbázis | 
 | **SDL fázis**               | Felépítés |  
-| **Alkalmazandó technológiák** | SQL Azure, OnPrem |
-| **Attribútumok**              | SQL - 12-es verzió, az SQL-verzió - verzió MsSQL2014 |
-| **Hivatkozások**              | [SQL-adatbázis a biztonsági mentés titkosítása](https://msdn.microsoft.com/library/dn449489) |
-| **Lépések** | SQL Server biztonsági másolat létrehozása közben az adatok titkosítása rendelkezzen. A titkosítási algoritmus és a titkosító (tanúsítvánnyal vagy aszimmetrikus kulcs) megadásával a biztonsági másolat létrehozásakor egy hozhat létre egy titkosított biztonságimásolat-fájl. |
+| **Megfelelő technológiák** | SQL Azure, OnPrem |
+| **Attribútumok**              | SQL - 12-es, az SQL-verzió - verzió MsSQL2014 |
+| **Hivatkozások**              | [Az SQL database biztonsági mentés titkosítása](https://msdn.microsoft.com/library/dn449489) |
+| **Lépések** | Az SQL Server képes az adatok titkosítása a biztonsági másolat létrehozása közben. A titkosítási algoritmus és a jelszótitkosító futtatásához (tanúsítvánnyal vagy aszimmetrikus kulccsal) megadásával biztonsági másolat létrehozásakor egy titkosított biztonsági mentési fájl hozhat létre. |
 
-## <a id="api-browser"></a>Győződjön meg arról, hogy az webes API-ra vonatkozó bizalmas adatok nem tárolódik a böngésző tárolási
+## <a id="api-browser"></a>Győződjön meg arról, hogy a bizalmas adatokat a webes API-t nem tárolja böngésző storage-ban
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Webes API | 
 | **SDL fázis**               | Felépítés |  
-| **Alkalmazandó technológiák** | MVC 5, 6 MVC |
-| **Attribútumok**              | Identity Provider - ADFS, identitásszolgáltató - az Azure AD |
+| **Megfelelő technológiák** | MVC 5, 6 MVC |
+| **Attribútumok**              | Identity Provider - ADFS, identitásszolgáltató – Azure ad-ben |
 | **Hivatkozások**              | –  |
-| **Lépések** | <p>Bizonyos implementációkban érzékeny összetevőihez webes API-hitelesítéshez szükséges böngésző helyi tároló vannak tárolva. Például az Azure AD hitelesítési összetevők például a adal.idtoken, adal.nonce.idtoken, adal.access.token.key, adal.token.keys, adal.state.login, adal.session.state, adal.expiration.key stb.</p><p>Ezen összetevők után érhetők el az összes jelentkezzen ki, vagy a böngésző le van zárva. Ha egy ellenfél hozzáférnek ezen összetevők, többé felhasználhatja őket a védett erőforrások (API-k) eléréséhez. Győződjön meg arról, hogy az összes érzékeny összetevőihez kapcsolódnak Web API nem tárolódik a böngésző tároló. Azokban az esetekben, ahol az ügyféloldali tárolási elkerülhetetlen (például egyetlen oldal alkalmazások (SPA) használó Implicit OpenIdConnect/OAuth adatfolyamok kell tárolni helyi hozzáférési jogkivonatok), használja tárolási lehetőségek a nincs megőrzését. például inkább SessionStorage LocalStorage.</p>| 
+| **Lépések** | <p>Egyes megvalósítások a webes API-hitelesítés-és nagybetűket összetevők böngésző helyi tároló vannak tárolva. Például az Azure AD hitelesítési összetevők például adal.idtoken, adal.nonce.idtoken, adal.access.token.key, adal.token.keys, adal.state.login, adal.session.state, adal.expiration.key stb.</p><p>Ezek az összetevők után sem érhetők el az összes jelentkezzen ki, vagy a böngésző be van zárva. Ha egy támadó lekérdezi ezeket az összetevőket a hozzáférést, hallgatója felhasználhatja őket a védett erőforrások (API-k) eléréséhez. Győződjön meg arról, hogy webes API-hoz kapcsolódó összes bizalmas összetevők nem a böngészőben a storage-ban tárolt. Azokban az esetekben, ahol a storage ügyféloldali elkerülhetetlen (például egyetlen lapon alkalmazások (SPA), az Implicit OpenIdConnect/OAuth folyamatok kell helyileg a hozzáférési jogkivonatok tárolására), használható tárolási lehetőségek a nincs megőrzését. például inkább SessionStorage LocalStorage.</p>| 
 
 ### <a name="example"></a>Példa
-A JavaScript alábbi részlet egy egyéni hitelesítési tár hitelesítési összetevők tárol a helyi tároló származik. Ilyen megvalósítások el kell kerülni. 
+Az alábbi JavaScript kódrészletet egy egyéni hitelesítési kódtár, amely a helyi tároló tárolja a hitelesítési összetevők származik. Az ilyen megvalósításokhoz el kell kerülni. 
 ```javascript
 ns.AuthHelper.Authenticate = function () {
 window.config = {
@@ -242,118 +242,118 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 };
 ```
 
-## <a id="encrypt-docdb"></a>A Cosmos DB tárolt bizalmas adatok titkosítása
+## <a id="encrypt-docdb"></a>Cosmos DB-ben tárolt bizalmas adatok titkosítása
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
-| **Összetevő**               | Az Azure Document DB rendszerbe | 
+| **Összetevő**               | Azure Document DB | 
 | **SDL fázis**               | Felépítés |  
-| **Alkalmazandó technológiák** | Általános |
+| **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
-| **Lépések** | Alkalmazás szinten bizalmas adatok titkosítására dokumentum DB tárolása előtt, vagy a bizalmas adatok tárolása egyéb tárolási megoldások, például az Azure Storage vagy az Azure SQL| 
+| **Lépések** | Alkalmazási szinten bizalmas adatok titkosítását a document DB való tárolás előtt, vagy bizalmas adatok tárolása egyéb tárolási megoldások, mint például az Azure Storage vagy az Azure SQL| 
 
-## <a id="disk-vm"></a>Virtuális gépek által használt lemezek titkosítására használt Azure Disk Encryption
+## <a id="disk-vm"></a>Az Azure Disk Encryption használatával virtuális gépek által használt lemezek titkosítása
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
-| **Összetevő**               | Azure IaaS virtuális gép megbízhatósági kapcsolat határán | 
+| **Összetevő**               | Az Azure IaaS virtuális gép megbízhatósági kapcsolat határán | 
 | **SDL fázis**               | Környezet |  
-| **Alkalmazandó technológiák** | Általános |
+| **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
-| **Hivatkozások**              | [A virtuális gépek által használt lemezek Azure Disk Encryption titkosítása](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_using-azure-disk-encryption-to-encrypt-disks-used-by-your-virtual-machines) |
-| **Lépések** | <p>Az Azure Disk Encryption az új szolgáltatása, amely jelenleg előzetes verzióban érhetők. Ez a funkció lehetővé teszi, hogy az operációs rendszer és az infrastruktúra-szolgáltatási virtuális gép által használt adatok lemezek titkosítását. A Windows a meghajtók titkosítása szabványos BitLocker titkosítás technológia használatával. Linux a lemez titkosítása a DM-Crypt technológia használatával. Ez integrálva van az Azure Key Vault lehetővé teszi a lemez titkosítási kulcsok kezeléséhez, és szabályozhatja. Az Azure Disk Encryption megoldás a következő három titkosítási forgatókönyvet támogatja:</p><ul><li>Engedélyezze a titkosítást a felhasználói által titkosított fájlok és az ügyfél által megadott titkosítási kulcs esetében, amelyek tárolódnak az Azure Key Vault létrehozott új IaaS virtuális gépeken.</li><li>Engedélyezheti a titkosítást az Azure piactérről létrehozott új IaaS virtuális gépeket.</li><li>Engedélyezze a titkosítást a meglévő infrastruktúra-szolgáltatási virtuális gépeken már fut az Azure-ban.</li></ul>| 
+| **Hivatkozások**              | [Az Azure Disk Encryption segítségével a virtuális gépek által használt lemezek titkosítása](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_using-azure-disk-encryption-to-encrypt-disks-used-by-your-virtual-machines) |
+| **Lépések** | <p>Az Azure Disk Encryption egy új szolgáltatás, amely jelenleg előzetes verzióban érhető el. Ez a funkció lehetővé teszi, hogy az operációsrendszer-lemez és adatlemezek az IaaS virtuális gép által használt titkosítását. A Windows a meghajtók titkosítottak, iparági szabványnak megfelelő BitLocker titkosítási technológia használatával. A Linux rendszerre a lemezek titkosítottak, a DM-Crypt technológia használatával. Ez az Azure Key Vault lehetővé teszi a vezérlőelemet és kezelheti a lemeztitkosítási kulcsok van integrálva. Az Azure Disk Encryption megoldás a következő három ügyfél titkosítási forgatókönyveket támogatja:</p><ul><li>Ügyfél-titkosítású VHD-fájlok és az ügyfél által biztosított titkosítási kulcs, amelyeket a rendszer az Azure Key Vaultban létrehozott új IaaS virtuális gépek titkosításának engedélyezése.</li><li>Az Azure Marketplace-ről létrehozott új IaaS virtuális gépek titkosításának engedélyezése.</li><li>Azure-ban már futó meglévő IaaS virtuális gépek titkosításának engedélyezése.</li></ul>| 
 
-## <a id="fabric-apps"></a>Service Fabric-alkalmazások titkos kulcsainak titkosítása
+## <a id="fabric-apps"></a>Titkosítani a titkos kulcsokat a Service Fabric-alkalmazások
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Service Fabric megbízhatósági kapcsolat határán | 
 | **SDL fázis**               | Felépítés |  
-| **Alkalmazandó technológiák** | Általános |
+| **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | Környezet – Azure |
-| **Hivatkozások**              | [A Service Fabric-alkalmazások titkos kulcsok kezelése](https://azure.microsoft.com/documentation/articles/service-fabric-application-secret-management/) |
-| **Lépések** | Titkos kulcsok lehet bármely bizalmas adatokat, például a tárolási kapcsolati karakterláncok, jelszavak és egyéb értékek, amelyek nem egyszerű szöveges kezelje. Az Azure Key Vault segítségével kezelheti a kulcsok és titkos a service fabric-alkalmazások. |
+| **Hivatkozások**              | [Service Fabric-alkalmazásokat a titkos kulcsok kezelése](https://azure.microsoft.com/documentation/articles/service-fabric-application-secret-management/) |
+| **Lépések** | Titkos kódok lehet a bizalmas adatokat, például a storage kapcsolati karakterláncok, jelszavak és egyéb értékek, amelyek nem szövegként kezelje. Az Azure Key Vault használatával kezelheti a kulcsokat és titkos kulcsokat a service fabric-alkalmazások. |
 
-## <a id="modeling-teams"></a>Biztonsági modellezési üzleti egység/csoportok használható, és ha szükséges
+## <a id="modeling-teams"></a>Biztonsági modellezési az üzleti egység/csapatok használható, és ahol szükséges
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Dynamics CRM | 
 | **SDL fázis**               | Felépítés |  
-| **Alkalmazandó technológiák** | Általános |
+| **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
-| **Lépések** | Biztonsági modellezési üzleti egység/csoportok használható, és ha szükséges |
+| **Lépések** | Biztonsági modellezési az üzleti egység/csapatok használható, és ahol szükséges |
 
-## <a id="entities"></a>Kritikus entitások funkciót megosztott minimalizálása érdekében
+## <a id="entities"></a>Megosztott szolgáltatás kritikus entitások minimalizálása
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Dynamics CRM | 
 | **SDL fázis**               | Környezet |  
-| **Alkalmazandó technológiák** | Általános |
+| **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
-| **Lépések** | Kritikus entitások funkciót megosztott minimalizálása érdekében |
+| **Lépések** | Megosztott szolgáltatás kritikus entitások minimalizálása |
 
-## <a id="good-practices"></a>A kockázatok a Dynamics CRM megosztás szolgáltatást és jó biztonsági gyakorlat a felhasználók képzése
+## <a id="good-practices"></a>A Dynamics CRM-megosztási szolgáltatás és az ajánlott biztonsági eljárások a kockázatokat a felhasználók betanítása
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Dynamics CRM | 
 | **SDL fázis**               | Környezet |  
-| **Alkalmazandó technológiák** | Általános |
+| **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
-| **Lépések** | A kockázatok a Dynamics CRM megosztás szolgáltatást és jó biztonsági gyakorlat a felhasználók képzése |
+| **Lépések** | A Dynamics CRM-megosztási szolgáltatás és az ajánlott biztonsági eljárások a kockázatokat a felhasználók betanítása |
 
-## <a id="exception-mgmt"></a>Közé tartozik a megjelenítő konfigurációs részletek a kivételek kezelése proscribing fejlesztési szabványok szabály
+## <a id="exception-mgmt"></a>Kivételek kezelése konfigurációs részleteket megjelenítő proscribing fejlesztési szabványok szabály belefoglalása
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Dynamics CRM | 
 | **SDL fázis**               | Környezet |  
-| **Alkalmazandó technológiák** | Általános |
+| **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
-| **Lépések** | Közé tartozik a megjelenítő konfigurációs részletek a kivételek kezelése fejlesztési kívül proscribing fejlesztési szabványok szabály. Ellenőrizze, hogy ez a kód értékelést vagy a rendszeres ellenőrzés részeként.|
+| **Lépések** | Például egy fejlesztési szabványok szabály proscribing config részletekkel kívül fejlesztési kivételek kezelése. A kódellenőrzéseknél, vagy a rendszeres ellenőrzés részeként tesztelni.|
 
-## <a id="sse-preview"></a>Használja az Azure Storage Service Encryption (SSE) for Data at Rest (Preview)
+## <a id="sse-preview"></a>Az Azure Storage Service Encryption (SSE) használata for Data at Rest (előzetes verzió)
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Azure Storage | 
 | **SDL fázis**               | Felépítés |  
-| **Alkalmazandó technológiák** | Általános |
+| **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | StorageType - Blob |
-| **Hivatkozások**              | [Az Azure Storage Service Encryption for Data at Rest (Preview)](https://azure.microsoft.com/documentation/articles/storage-service-encryption/) |
-| **Lépések** | <p>Az Azure Storage szolgáltatás titkosítási (SSE) inaktív adatok segítségével és az adatokat, hogy megfeleljen a szervezeti biztonsági és megfelelőségi kötelezettségvállalások megvédeni. Ezzel a funkcióval az Azure Storage automatikusan titkosítja az adatokat a tárolás előtt, és visszafejti őket a lekérés előtt. A titkosítási, visszafejtési és kulcskezelés az teljesen átlátható a felhasználók számára. SSE csak a blokkblobokat, lapblobokat és hozzáfűző blobok vonatkozik. A más típusú adatok, beleértve a táblák, üzenetsorok és fájlok, nem lesznek titkosítva.</p><p>Titkosítás és visszafejtés munkafolyamat:</p><ul><li>Az ügyfél engedélyezi a titkosítás használatát a storage-fiók</li><li>Ha az ügyfél új adatokat ír (PUT Blob, PUT blokk, PUT lap, stb.) a Blob storage; minden egyes van titkosítva, 256 bites AES titkosítással, a legerősebb blokk Rejtjelek közül</li><li>Ha a felhasználói adatokat (a Blob LEKÉRÉSE, stb.) hozzáférésre van szüksége, adatai automatikusan visszafejtett a felhasználó számára való visszaküldés előtt.</li><li>Védelem le van tiltva, ha új írási műveletek többé nem lesznek titkosítva, és a meglévő titkosított adatok titkosítva maradnak, amíg a felhasználó által írni. Titkosítás engedélyezve van, amíg a Blob storage írások lesz titkosítva. Az adatok állapotát nem változtatja meg a felhasználó váltása a tárfiók titkosítás engedélyezése vagy tiltása</li><li>Minden titkosítási kulcs tárolása, titkosított és a Microsoft által felügyelt</li></ul><p>Ne feledje, hogy jelenleg, Microsoft által felügyelt használt a titkosítási kulcsokat. Microsoft eredetileg állít elő, a kulcsok, és tárolja biztonságos kulcsok, valamint rendszeres elforgatási belső Microsoft házirend által definiált konfigurációjának kialakításához. A jövőben az ügyfelek megkapják képes kezelni a saját > titkosítási kulcsokat, és adja meg a Microsoft által felügyelt kulcsok áttelepítési elérési kulcsok ügyfél által felügyelt.</p>| 
+| **Hivatkozások**              | [Az Azure Storage Service Encryption for Data at Rest (előzetes verzió)](https://azure.microsoft.com/documentation/articles/storage-service-encryption/) |
+| **Lépések** | <p>Az Azure Storage Service Encryption (SSE) inaktív adatok segít a szervezeti biztonsági és megfelelőségi követelmények kielégítése érdekében az adatok biztonságos megőrzésében. Ezzel a funkcióval az Azure Storage automatikusan titkosítja az adatokat a tárolás előtt, és visszafejti őket a lekérés előtt. A titkosítási, visszafejtési és kulcskezelési rendszer teljes mértékben átlátható a felhasználók számára. Az SSE csak blokkblobok, lapblobok és hozzáfűző blobok vonatkozik. A más típusú adatok, beleértve a táblák, üzenetsorok és -fájlok nem lesznek titkosítva.</p><p>Titkosítás és visszafejtés munkafolyamat:</p><ul><li>Az ügyfél lehetővé teszi, hogy a tárfiók titkosításának</li><li>Ha az ügyfél új adatokat ír (PUT Blob, Blokkelraktározási, lapra HELYEZZE, stb.) a Blob storage; 256 bites AES titkosítást, a legerősebb blokktitkosító elérhető egyik minden írási titkosítása</li><li>A vásárlói adatokat (a Blob LEKÉRÉSE, stb.) hozzáférésre van szüksége, amikor adatokat a felhasználó való visszatérés előtt automatikusan visszafejtett</li><li>Titkosítás le van tiltva, ha új írási műveletek többé nem lesznek titkosítva, és a meglévő titkosított adatok titkosítva maradnak, amíg a felhasználó által átírása. Titkosítás engedélyezve van, a Blob storage írási lesznek titkosítva. Az adatok az állapota nem változik a felhasználóval, a storage-fiók titkosításának engedélyezése vagy letiltása váltása</li><li>Az összes titkosítási kulcs tárolása, titkosított és a Microsoft által felügyelt</li></ul><p>Vegye figyelembe, hogy jelenleg használt a titkosítási kulcsokat a Microsoft felügyeli. A Microsoft eredetileg a kulcsokat hoz létre, és kezelheti a kulcsokat, valamint rendszeres elforgatási biztonságos tárolására, belső Microsoft-szabályzatban meghatározottak szerint. A jövőben ügyfelekre képes kezelni a saját > titkosítási kulcs, és adja meg a migrálási útvonal a Microsoft által felügyelt kulcsokkal az ügyfél által felügyelt kulcsokat.</p>| 
 
-## <a id="client-storage"></a>Bizalmas adatok tárolásához Azure Storage ügyféloldali titkosítás használata
+## <a id="client-storage"></a>Ügyféloldali titkosítás használata a bizalmas adatok tárolásához Azure Storage-ban
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Azure Storage | 
 | **SDL fázis**               | Felépítés |  
-| **Alkalmazandó technológiák** | Általános |
+| **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
-| **Hivatkozások**              | [Ügyféloldali titkosítás és a Microsoft Azure tárolás az Azure Key Vault](https://azure.microsoft.com/documentation/articles/storage-client-side-encryption/), [oktatóanyag: titkosításához és visszafejtéséhez az Azure Key Vault használatával a Microsoft Azure Storage blobs](https://azure.microsoft.com/documentation/articles/storage-encrypt-decrypt-blobs-key-vault/), [adattárolás az Azure-Blobba Tárolás az Azure titkosítási kiterjesztésű](https://blogs.msdn.microsoft.com/partnercatalystteam/2015/06/17/storing-data-securely-in-azure-blob-storage-with-azure-encryption-extensions/) |
-| **Lépések** | <p>Az Azure Storage ügyféloldali kódtára a .NET Nuget-csomag támogatja a titkosított adatok ügyfélalkalmazásokon belüli feltöltése az Azure Storage, és az adatok visszafejtése során az ügyfél letöltése előtt. A kódtár emellett támogatja az Azure Key Vault rendszerrel való integrálást a tárfiókkulcs-kezelés biztosítása érdekében. Ügyféloldali titkosítása működése rövid leírása itt található:</p><ul><li>Az Azure Storage-ügyfél SDK állít elő, a tartalom titkosítási kulcs (CEK), amely a szimmetrikus kulcs egy egyszeri használata</li><li>Felhasználói adatok titkosítása a CEK</li><li>A CEK ezt követően (titkosított) (KEK-) kulcs titkosítási kulcs használatával. A KEK kulcsazonosítójával azonosíthatók és aszimmetrikus kulcspár vagy egy szimmetrikus kulcsot kell és is kezelhetők helyileg vagy az Azure Key Vault tárolja. A tárolási ügyfélen soha nem a KEK elérésére. Egyszerűen meghívja a Key Vault által biztosított kulcs alkalmazásburkoló algoritmus. Az ügyfelek használhat egyéni szolgáltatók alkalmazásburkoló/kicsomagolásával Ha szeretné, hogy azok kulcs</li><li>A titkosított adatok majd feltöltése az Azure Storage szolgáltatásba. Ellenőrizze a hivatkozásokra a references szakaszában, az alacsony szintű megvalósítás részletei.</li></ul>|
+| **Hivatkozások**              | [Ügyféloldali titkosítás és a Microsoft Azure Storage for Azure Key Vault](https://azure.microsoft.com/documentation/articles/storage-client-side-encryption/), [oktatóanyag: az Azure Key Vault használatával a Microsoft Azure Storage blobok titkosítása és visszafejtése](https://azure.microsoft.com/documentation/articles/storage-encrypt-decrypt-blobs-key-vault/), [adattárolás az Azure-Blobban található Storage-titkosítás az Azure-bővítmények](https://blogs.msdn.microsoft.com/partnercatalystteam/2015/06/17/storing-data-securely-in-azure-blob-storage-with-azure-encryption-extensions/) |
+| **Lépések** | <p>Az Azure Storage ügyféloldali kódtárat for .NET Nuget csomag támogatja a belüli titkosítását az ügyfélalkalmazások előtt feltöltése az Azure Storage, az adatok visszafejtése során az ügyfélre történő letöltéskor. A kódtár emellett támogatja az Azure Key Vault rendszerrel való integrálást a tárfiókkulcs-kezelés biztosítása érdekében. Itt látható egy rövid leírást ügyféloldali titkosítása működése:</p><ul><li>Az Azure Storage ügyféloldali SDK állít elő, a tartalom titkosítási kulcsot (CEK), amely egyszer használható egy szimmetrikus kulcs</li><li>Vásárlói adatok titkosítását a rendszer a CEK</li><li>A CEK ezt követően (titkosítva) a kulcstitkosítási kulcs-(KEK) használatával. A KEK kulcsazonosítójával azonosíthatók és aszimmetrikus kulcspárt alkotnak, vagy egy szimmetrikus kulcsot és is kezelhetők helyileg vagy az Azure Key Vaultban tárolt. A Storage-kliens maga soha nem rendelkezik hozzáféréssel a KEK. Csak a Key Vault által biztosított kulcs alkalmazásburkoló algoritmus hív meg. Ügyfeleink kiválaszthatják kulcs alkalmazásburkoló/kicsomagolási szükség esetén egyéni szolgáltató használata</li><li>A titkosított adatok majd fel van töltve az Azure Storage szolgáltatásba. Ellenőrizze a hivatkozások alacsony szintű megvalósítási részletei szakaszban található hivatkozásokat.</li></ul>|
 
-## <a id="pii-phones"></a>Érzékeny vagy telefonok helyi tárhelyen, személyazonosításra alkalmas adatok titkosítása
+## <a id="pii-phones"></a>Bizalmas vagy telefonok helyi tárba írt PII adatok titkosítása
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Mobileszköz ügyfél | 
 | **SDL fázis**               | Felépítés |  
-| **Alkalmazandó technológiák** | Általános, Xamarin  |
+| **Megfelelő technológiák** | Általános, Xamarin  |
 | **Attribútumok**              | –  |
-| **Hivatkozások**              | [Beállításainak és funkcióinak az eszközök a Microsoft Intune-házirendek kezelése](https://docs.microsoft.com/intune/deploy-use/manage-settings-and-features-on-your-devices-with-microsoft-intune-policies#create-a-configuration-policy), [kulcslánc Valet](https://components.xamarin.com/view/square.valet) |
-| **Lépések** | <p>Ha az alkalmazás írja az érzékeny adatok, például a felhasználó személyhez köthető adatokat (e-mail, telefonszám, utónevét, vezetéknevét, beállítások stb.) -mobileszköz a fájlrendszerben, majd azt titkosítani kell a helyi fájlrendszer írása előtt. Ha az alkalmazás vállalati alkalmazás, így megismerkedhet a Windows Intune-nal közzétételi alkalmazás lehetőségét.</p>|
+| **Hivatkozások**              | [Beállításainak és funkcióinak az eszközökön a Microsoft Intune-házirendek kezelése](https://docs.microsoft.com/intune/deploy-use/manage-settings-and-features-on-your-devices-with-microsoft-intune-policies#create-a-configuration-policy), [kulcslánc Pótkulcs](https://components.xamarin.com/view/square.valet) |
+| **Lépések** | <p>Ha az alkalmazás írja az érzékeny információkat, például a felhasználó személyazonosításra alkalmas adatok (e-mail, telefonszám, Utónév, Vezetéknév, beállítások stb.) – mobile a fájlrendszerben, majd azt titkosítani kell a helyi fájlrendszerben írása előtt. Ha az alkalmazás egy vállalati alkalmazást, majd Fedezze fel a Windows Intune-nal közzétételi alkalmazás lehetőségét.</p>|
 
 ### <a name="example"></a>Példa
-Intune a következő biztonsági házirendeknek bizalmas adatok védelmének konfigurálható: 
+Az Intune a következő biztonsági házirendeknek a bizalmas adatok védelme érdekében konfigurálható: 
 ```csharp
 Require encryption on mobile device    
 Require encryption on storage cards
@@ -361,7 +361,7 @@ Allow screen capture
 ```
 
 ### <a name="example"></a>Példa
-Ha az alkalmazás nem vállalati alkalmazás, majd a megadott platform keystore használatához keychains a titkosítási kulcsokat, amely kriptográfiai művelet használatával hajthatja végre a fájlrendszeren. Következő kódrészletet a xamarin segítségével kulcslánc hívóbetű mutatja be: 
+Ha az alkalmazás nem egy vállalati alkalmazást, majd a megadott platform keystore, keychains tárolni a titkosítási kulcs, mely kriptográfiai művelet használatával is elvégezhető a fájlrendszerben. Következő kódrészletet bemutatja, hogyan férhet hozzá a kulcshoz a xamarin segítségével kulcslánc: 
 ```csharp
         protected static string EncryptionKey
         {
@@ -391,27 +391,27 @@ Ha az alkalmazás nem vállalati alkalmazás, majd a megadott platform keystore 
         }
 ```
 
-## <a id="binaries-end"></a>A végfelhasználók számára kiosztása előtt létrehozott bináris takarják
+## <a id="binaries-end"></a>A végfelhasználók számára terjesztése előtt létrehozott bináris rejtse
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Mobileszköz ügyfél | 
 | **SDL fázis**               | Felépítés |  
-| **Alkalmazandó technológiák** | Általános |
+| **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
-| **Hivatkozások**              | [A .NET-hez titkosítási címmódosítás](http://www.ssware.com/cryptoobfuscator/obfuscator-net.htm) |
-| **Lépések** | Generált bináris fájlokat (szerelvények apk belül) kell rejtjelezett, visszafejtés szerelvények leállítására. Eszközök, például `CryptoObfuscator` erre a célra használható. |
+| **Hivatkozások**              | [Titkosítási rejtjelezésre utaló jeleket, a .NET-hez](http://www.ssware.com/cryptoobfuscator/obfuscator-net.htm) |
+| **Lépések** | Létrehozott bináris fájljait (apk belül szerelvények) kell lennie rejtjelezett leállítani a visszafejtés sestavení. Eszközök, például a `CryptoObfuscator` erre a célra használhatók. |
 
-## <a id="cert"></a>Tanúsítvány vagy a Windows clientCredentialType beállítása
+## <a id="cert"></a>ClientCredentialType tanúsítvány vagy a Windows beállítása
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | WCF | 
 | **SDL fázis**               | Felépítés |  
-| **Alkalmazandó technológiák** | .NET-keretrendszer 3 |
+| **Megfelelő technológiák** | .NET-keretrendszer 3 |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [Erősítse meg](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_weak_token) |
-| **Lépések** | Egy UsernameToken használata a titkosítatlan szöveges jelszót titkosítatlan csatornán keresztül mutatja meg a jelszót, hogy a támadók számára is figyelheti a SOAP-üzenetekkel. A UsernameToken használó szolgáltatók előfordulhat, hogy fogadja el a jelszavak nem titkosított szövegként küldi. Egyszerű szöveges jelszavak küldése titkosítatlan csatornán keresztül is elérhetővé teheti a támadók számára a SOAP-üzenetet is figyelheti a hitelesítő adatot. | 
+| **Lépések** | A jelszó is figyelheti a SOAP-üzenetet, akik egy UsernameToken használatával egy egyszerű szöveges jelszó titkosítatlan csatornán keresztül tesz elérhetővé. A UsernameToken használó szolgáltatók előfordulhat, hogy fogadja el a jelszót egyszerű szövegként küldi el. Egyszerű szöveges jelszavak küldése titkosítatlan csatornán keresztül, közzéteheti a használt hitelesítő adatok, akik a SOAP-üzenetet is figyelheti. | 
 
 ### <a name="example"></a>Példa
 A következő WCF szolgáltató konfigurációja a UsernameToken használja: 
@@ -419,21 +419,21 @@ A következő WCF szolgáltató konfigurációja a UsernameToken használja:
 <security mode="Message"> 
 <message clientCredentialType="UserName" />
 ``` 
-Tanúsítvány vagy a Windows clientCredentialType beállítása 
+Tanúsítvány vagy Windows clientCredentialType beállítva. 
 
-## <a id="security"></a>WCF-biztonsági mód nem engedélyezett.
+## <a id="security"></a>WCF-biztonsági mód nincs engedélyezve
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | WCF | 
 | **SDL fázis**               | Felépítés |  
-| **Alkalmazandó technológiák** | Általános, .NET-keretrendszer 3 |
+| **Megfelelő technológiák** | Általános, .NET-keretrendszer 3 |
 | **Attribútumok**              | Biztonsági mód - átvitel, biztonsági üzemmód - üzenet |
-| **Hivatkozások**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [Királyság erősítse](https://vulncat.hpefod.com/en/detail?id=desc.semantic.dotnet.wcf_misconfiguration_security_not_enabled), [WCF biztonsági alapok CoDe magazin](http://www.codemag.com/article/0611051) |
-| **Lépések** | Nincs transport vagy üzenet biztonság van definiálva. Alkalmazások, amelyek üzenetek nélkül transport vagy biztonsági nem garantálható, hogy a épsége vagy bizalmassága üzenetek üzenetet továbbítani. Ha egy WCF biztonsági kötése nincs értékre van állítva, átviteli és üzenet biztonsági le vannak tiltva. |
+| **Hivatkozások**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [erősítse meg Királyság](https://vulncat.hpefod.com/en/detail?id=desc.semantic.dotnet.wcf_misconfiguration_security_not_enabled), [WCF biztonsági alapok CoDe magazin](http://www.codemag.com/article/0611051) |
+| **Lépések** | Nincs átvitele vagy üzenet biztonsági intézkedések lettek megadva. Alkalmazások, amelyek üzenetek nélkül az átviteli vagy a biztonsági nem garantálja a kódintegritási vagy az üzenetek titkosságát üzenet továbbítását. Ha WCF biztonsági kötés None értékre van állítva, átviteli és üzenet biztonsági le vannak tiltva. |
 
 ### <a name="example"></a>Példa
-A következő konfiguráció a biztonsági mód beállítása None. 
+A következő konfiguráció a biztonsági mód beállítása None értékre. 
 ```
 <system.serviceModel> 
   <bindings> 
@@ -446,13 +446,13 @@ A következő konfiguráció a biztonsági mód beállítása None.
 ```
 
 ### <a name="example"></a>Példa
-Biztonsági mód között az összes szolgáltatási kötések nem öt lehetséges biztonsági mód: 
+Biztonsági mód között van az összes szolgáltatáskötések öt lehetséges biztonsági módja: 
 * Nincs. Biztonsági kikapcsolása. 
-* Átviteli. Használja a kölcsönös hitelesítés és az üzenet védelmi biztonsági átviteli. 
-* Üzenet. Kölcsönös hitelesítés és az üzenet védelmi üzenetbiztonság használ. 
-* Mindkettő. Lehetővé teszi az átvitel és (csak MSMQ támogatja ezt) üzenet szintű biztonsági beállításokat. 
-* TransportWithMessageCredential. Az üzenet és az üzenet védelmi átadott hitelesítő adatokat, és a szállítási réteg által biztosított kiszolgálói hitelesítési. 
-* TransportCredentialOnly. Ügyfél hitelesítő adatait, a szállítási réteg át lettek adva, és nem üzenet védelem akkor lép életbe. Használja az üzenet és a transport biztonsági sértetlenségét és bizalmasságát az üzenetek védelme érdekében. Az alábbi konfigurációs jelzi a szolgáltatás használata a transport security üzenet hitelesítő adatokkal.
+* Átviteli. Használja az átviteli biztonsági kölcsönös hitelesítést és az üzenet védelemre. 
+* az üzenet. Üzenet biztonsági kölcsönös hitelesítést és az üzenet védelmet használ. 
+* Mindkettő. Adja meg az átvitel és a (csak az MSMQ támogatja ezt) üzenet-szintű biztonsági beállításait teszi lehetővé. 
+* TransportWithMessageCredential. Az üzenet és az üzenet védelmi átadott hitelesítő adatokat, és a szállítási réteg által biztosított kiszolgálói hitelesítés. 
+* TransportCredentialOnly. Ügyfél-hitelesítő adatok lesznek átadva a szállítási réteg a, és nem jelenik a védelem akkor lép életbe. Szállítási és üzenet biztonsági védhetők az integritásra és üzenetek titkosságát. Az alábbi konfigurációval arról tájékoztatja, hogy a szolgáltatás használatára transport security üzenet hitelesítő adataival.
 ```
 <system.serviceModel>
   <bindings>

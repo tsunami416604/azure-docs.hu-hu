@@ -3,24 +3,24 @@ title: Kapacitási korlátok – Azure SQL Data Warehouse |} A Microsoft Docs
 description: Azure SQL Data Warehouse különböző összetevői számára engedélyezett maximális értékeket.
 services: sql-data-warehouse
 author: sachinpMSFT
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: implement
 ms.date: 07/26/2018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.openlocfilehash: df3220936673e508e0fa01a283270e1b4ca4753c
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 7c6445624b2c03497c881b0c34bac8256fa28a98
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39283435"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43302043"
 ---
 # <a name="sql-data-warehouse-capacity-limits"></a>Az SQL Data Warehouse kapacitáskorlátait
 Azure SQL Data Warehouse különböző összetevői számára engedélyezett maximális értékeket.
 
-## <a name="workload-management"></a>Terheléskezelés
+## <a name="workload-management"></a>Számítási feladatok kezelése
 | Kategória | Leírás | Maximum |
 |:--- |:--- |:--- |
 | [Az Adattárházegységek (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |Maximális DWU egy egyetlen SQL Data warehouse-hoz | Gen1: DW6000<br></br>Gen2: DW30000c |
@@ -33,13 +33,13 @@ Azure SQL Data Warehouse különböző összetevői számára engedélyezett max
 ## <a name="database-objects"></a>Adatbázis-objektumok
 | Kategória | Leírás | Maximum |
 |:--- |:--- |:--- |
-| Adatbázis |Max. mérete | Gen1: 240 TB tömöríti a lemezen. Ez a terület független terület a tempdb vagy a naplóhoz, és ezért ez a terület dedikált állandó táblák.  Fürtözött oszlopcentrikus tömörítés becsült 5 X.  Ez a fajta tömörítés lehetővé teszi, hogy az adatbázisnak, hogy megközelítőleg 1 PB, ha minden tábla fürtözött oszlopcentrikus (az alapértelmezett táblatípus). <br/><br/> Gen2: 240TB sortárindex és korlátlan tárolási oszlopcentrikus táblák |
-| Tábla |Max. mérete |A lemezen tömörített 60 TB |
+| Adatbázis |Maximális méret | Gen1: 240 TB tömöríti a lemezen. Ez a terület független terület a tempdb vagy a naplóhoz, és ezért ez a terület dedikált állandó táblák.  Fürtözött oszlopcentrikus tömörítés becsült 5 X.  Ez a fajta tömörítés lehetővé teszi, hogy az adatbázisnak, hogy megközelítőleg 1 PB, ha minden tábla fürtözött oszlopcentrikus (az alapértelmezett táblatípus). <br/><br/> Gen2: 240TB sortárindex és korlátlan tárolási oszlopcentrikus táblák |
+| Tábla |Maximális méret |A lemezen tömörített 60 TB |
 | Tábla |Táblák adatbázisonként |10,000 |
 | Tábla |Táblánként oszlopok |1024 oszlopot |
 | Tábla |Bájt / oszlop |Oszlop függ [adattípus](sql-data-warehouse-tables-data-types.md). A határ 8000-es karakteres adattípus, nvarchar a 4000-es vagy 2 GB maximális adattípusok. |
 | Tábla |Minden egyes sorára, meghatározott méret bájt |8060 bájt<br/><br/>Minden egyes sorára bájtok száma azonos módon számítható, mert az SQL Server a lap tömörítéssel. Például az SQL Server az SQL Data Warehouse támogatja a sor-túlcsordulás tároló, amely lehetővé teszi, hogy **változó hosszúságú oszloppal** kell leküldeni, soron kívüli. Változó hosszúságú sorok leküld soron kívüli, csak a 24 bájtos legfelső szintű tárolja a fő rekord. További információkért lásd: [sor-túlcsordulás adatok meghaladja a 8 KB-os](https://msdn.microsoft.com/library/ms186981.aspx). |
-| Tábla |Táblánként partíciók |15,000<br/><br/>A jobb teljesítmény érdekében javasoljuk, hogy számának minimalizálása a partíciók meg kell miközben továbbra is támogatja az üzleti követelményeinek. A partíciók számának növekedésével adatok definíciós nyelv (DDL) és az adatok adatkezelési nyelvű (DML) műveletekhez a terhelés növekszik, és kisebb teljesítményt okoz. |
+| Tábla |Táblánként partíciók |15 000<br/><br/>A jobb teljesítmény érdekében javasoljuk, hogy számának minimalizálása a partíciók meg kell miközben továbbra is támogatja az üzleti követelményeinek. A partíciók számának növekedésével adatok definíciós nyelv (DDL) és az adatok adatkezelési nyelvű (DML) műveletekhez a terhelés növekszik, és kisebb teljesítményt okoz. |
 | Tábla |Az karakter / értéket partíció a határhoz. |4000 |
 | Index |A nem fürtözött indexek táblánként. |50<br/><br/>Csak a táblák sortárindex vonatkozik. |
 | Index |Fürtözött indexek táblánként. |1<br><br/>Sortárindex és az oszlopcentrikus táblák vonatkozik. |

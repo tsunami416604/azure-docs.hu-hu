@@ -1,65 +1,63 @@
 ---
-title: Az Avro-adatok lekérdezése az Azure Data Lake Analytics használatával |} Microsoft Docs
-description: Üzenet törzsének tulajdonságok használatával telemetriát irányíthatja a Blob storage és az Avro formátum a Blob storage írt adatok lekérdezése.
-services: iot-hub
-documentationcenter: ''
-author: ksaye
-manager: obloch
+title: Az Avro-adatok lekérdezése az Azure Data Lake Analytics használatával |} A Microsoft Docs
+description: Üzenet törzsének tulajdonságok használatával eszköztelemetria irányíthatja a Blob storage és az Avro formátum a Blob storage írt adatok lekérdezéséhez.
+author: ash2017
 ms.service: iot-hub
-ms.topic: article
+services: iot-hub
+ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: Kevin.Saye
-ms.openlocfilehash: c56b567498047ee996018675134c252ec1de7e0c
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.author: asrastog
+ms.openlocfilehash: a17df39c55b5c02c83e3f0b74a91d7109ddb4d3d
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37081368"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43188944"
 ---
 # <a name="query-avro-data-by-using-azure-data-lake-analytics"></a>Az Avro-adatok lekérdezése az Azure Data Lake Analytics használatával
 
-A cikkből megtudhatja, hatékonyan továbbítani az Azure-szolgáltatásokhoz való Azure IoT Hub üzeneteit Avro adatok lekérdezése. Szerint azt a blogbejegyzés [Az Azure IoT Hub üzenet útválasztás: most útválasztással a üzenet szövege], az Útválasztás a Tulajdonságok vagy az üzenettörzs IoT-Központ támogatja. További információkért lásd: [üzenettörzs útválasztás][Routing on message bodies]. 
+Ez a cikk ismerteti, hogyan lehet hatékonyan juthatnak az Azure-szolgáltatások az Azure IoT Hubból üzenetek az Avro-adatok lekérdezése. Az ebben a blogbejegyzésben bejelentettük, [Az Azure IoT Hub üzenet-útválasztása: mostantól az üzenettörzs a Útválasztás], az IoT Hub által támogatott tulajdonságok vagy az üzenet törzse az Útválasztás. További információkért lásd: [az üzenet törzse az Útválasztás][Routing on message bodies]. 
 
-A kérdés már, amikor Azure IoT Hub üzenetirányítást végez az Azure Blob storage, az IoT-központ ír a tartalmat az Avro formátum, ami az üzenet törzse tulajdonság, és egy üzenet tulajdonság. Az IoT-Központ támogatja a Blob Storage az adatok írásakor csak Avro adatformátum, és ezt a formátumot nem lesznek felhasználva az egyéb végpontok. További információkért lásd: [Azure Storage tárolók használata esetén][When using Azure storage containers]. Bár az Avro formátum adatok és az üzenet megőrzése nagyszerű, továbbra is használhatja adatait kihívást. Összehasonlításképpen JSON vagy a fürt megosztott kötetei szolgáltatás formátuma sokkal egyszerűbb, mivel az adatok lekérdezése.
+A kihívás, hogy, amikor az Azure IoT Hub üzeneteket irányítja az Azure Blob storage, az IoT Hub ír a tartalmat az Avro formátum, ami egy üzenet törzsének tulajdonság és a egy üzenet egyik tulajdonságát is van. Az IoT Hub adatok írása a Blob storage támogatja az Avro-adatok formátumát csak a, és bármely más végpontok nem használják ezt a formátumot. További információkért lásd: [használata az Azure Storage-tárolók esetén][When using Azure storage containers]. Bár az Avro formátum kiválóan alkalmazható az adatok és az üzenet megőrzését, egy kérdés használatával adatokat lekérdezni. Ezzel szemben a JSON vagy CSV formátumban sokkal egyszerűbb, az adatok lekérdezése.
 
-Kezelje a nem relációs big data igényeinek és formázza az adathordozót, és ez a probléma megoldásához, használhatja a big data-minták számos átalakítása és skálázás adatokat. Ez a cikk célja azoknak az Azure Data Lake Analytics egy mintát, "kell fizetnie, lekérdezésenként". Bár a lekérdezés Hadoop vagy egyéb megoldások egyszerűen végrehajtható, Data Lake Analytics gyakran jobban van megfelel a "fizetési lekérdezésenként" megközelítést. 
+Nem relációs big-data igények és formátumok és a nehézség, használhatja a big-data minták számos átalakítása, mind az adatok méretezés. A lépéseknek az ismertetése, ez a cikk az Azure Data Lake Analytics egy mintát, "fizessen a lekérdezést,". A lekérdezés a Hadoop és más megoldásokkal könnyen végrehajthat, bár a Data Lake Analytics van gyakran fejlesztéseink a "fizessen a lekérdezés" módszer. 
 
-Nincs olyan "készülék" az avro-hoz a U-SQL. További információkért lásd: [U-SQL Avro – példa].
+Van egy "információkinyerő" az avro-hoz a U-SQL-ben. További információkért lásd: [U-SQL az Avro-példa].
 
-## <a name="query-and-export-avro-data-to-a-csv-file"></a>Lekérdezési és az Avro-adatok exportálása CSV-fájlba
-Ebben a szakaszban az Avro-adatok lekérdezése és exportálni onnan egy CSV-fájl az Azure Blob Storage tárolóban, bár könnyen más tárházak találhatók, sem a adatokat tároló nem elhelyezni az adatokat.
+## <a name="query-and-export-avro-data-to-a-csv-file"></a>Lekérdezés, és az Avro-adatok exportálása CSV-fájlba
+Ebben a szakaszban az Avro-adatok lekérdezése és exportálása az Azure Blob storage-, CSV-fájlba, bár könnyen más tárházakban vagy adattárakon tudta elhelyezni az adatokat.
 
-1. Azure IoT Hub útvonal az adatokat az Azure Blob storage endpoint által létrehozott üzeneteket az üzenet törzsében tulajdonsággal.
+1. Állítsa be az Azure IoT Hub olyan tulajdonság megadásával az üzenet törzsében üzenetek találhatók útvonal adatokat egy Azure Blob storage-végponthoz.
 
-    ![A "Custom végpontok" szakasz][img-query-avro-data-1a]
+    ![Az "Egyéni végpontok" szakasz][img-query-avro-data-1a]
 
     ![Az útvonalak parancs][img-query-avro-data-1b]
 
-2. Győződjön meg arról, hogy az eszköz rendelkezik-e a kódolás tartalomtípus és a Tulajdonságok vagy az üzenettörzs, amint a termék dokumentációjában a szükséges adatokat. Ezek az attribútumok megtekintéséhez eszköz Explorer, az itt látható módon, ellenőrizheti, hogy helyesen vannak beállítva.
+2. Győződjön meg arról, hogy az eszköz rendelkezik-e a kódolást, a tartalom típusa és a szükséges adatokat a Tulajdonságok vagy az üzenet szövegét, amint arra a termék dokumentációjában. Ezek az attribútumok megtekintése Device Explorer, az itt látható módon, ellenőrizheti, hogy helyesen vannak beállítva.
 
-    ![A központ eseményadatok ablaktábla][img-query-avro-data-2]
+    ![Az Event Hub adat panel][img-query-avro-data-2]
 
-3. Állítsa be az Azure Data Lake Store-példány és egy Data Lake Analytics-példányt. Azure IoT-központ nem lehet közvetlenül a Data Lake Store-példányra, de egy Data Lake Analytics-példányt az egyik szükséges.
+3. Állítsa be az Azure Data Lake Store-példány és a egy Data Lake Analytics-példányt. Az Azure IoT Hub nem irányíthatja a Data Lake Store, de egy Data Lake Analytics-példány kéri.
 
-    ![Data Lake Store és a Data Lake Analytics-példányok][img-query-avro-data-3]
+    ![Data Lake Store és Data Lake Analytics-példányok][img-query-avro-data-3]
 
-4. A Data Lake Analytics konfigurálása az Azure Blob Storage tárolóban tárolóként történő további, az azonos Azure IoT Hub továbbítja az adatokat a Blob-tároló.
+4. A Data Lake Analytics egy kiegészítő tárolóként, ugyanezen a Blobtárolón belül, amely az Azure IoT Hub irányítja az adatok Azure Blob storage konfigurálja.
 
-    ![A "Adatforrások" ablak][img-query-avro-data-4]
+    ![Az "Adatforrások" panelen][img-query-avro-data-4]
  
-5. A bemutatott [U-SQL Avro – példa], négy DLL-fájlok van szüksége. Ezek a fájlok feltöltése a Data Lake Store-példány a hely.
+5. Az [U-SQL az Avro-példa], négy DLL-fájlok van szüksége. Ezek a fájlok feltöltése a Data Lake Store-példány a hely.
 
     ![Négy feltöltött DLL-fájlok][img-query-avro-data-5] 
 
-6. A Visual Studio a U-SQL projekt létrehozása.
+6. A Visual Studióban hozzon létre egy U-SQL projekt.
  
     ![U-SQL projekt létrehozása][img-query-avro-data-6]
 
-7. Az újonnan létrehozott fájlba illessze be a következő parancsfájl tartalmát. Módosítsa a három kiemelt szakasz: Data Lake Analytics-fiókja, a kapcsolódó dll-fájl elérési útvonalat és a helyes elérési utat a storage-fiók.
+7. Illessze be az újonnan létrehozott fájlt a következő parancsfájl tartalmát. Módosítsa a kiemelt három szakaszra osztható: a Data Lake Analytics-fiók, a kapcsolódó DLL-fájlok elérési útja és a tárfiók a helyes elérési útra.
     
-    ![A módosítani kívánt három szakasz][img-query-avro-data-7a]
+    ![A három szakaszra osztható módosítani][img-query-avro-data-7a]
 
-    A tényleges U-SQL parancsfájl egyszerű kimeneti CSV-fájlba:
+    A tényleges U-SQL parancsfájl egyszerű CSV-fájlból a kimeneti:
     
     ```sql
         DROP ASSEMBLY IF EXISTS [Avro];
@@ -123,15 +121,15 @@ Ebben a szakaszban az Avro-adatok lekérdezése és exportálni onnan egy CSV-f�
         OUTPUT @cnt TO @output_file USING Outputters.Text(); 
     ```    
 
-    A Data Lake Analytics tartott öt percet futtassa az alábbi parancsfájlt, amely 10 elemzési egység korlátozódott, és 177 fájlok feldolgozása. Az eredmény a CSV-fájl megjelenített kimenetre láthat az alábbi ábrán látható:
+    A Data Lake Analytics szükséges, futtassa a következő szkriptet, amely legfeljebb 10 elemzési egységek volt, és 177 fájlok feldolgozása öt perc alatt. Az eredmény a CSV-fájl megjelenített kimenetre láthat az alábbi képen látható:
     
-    ![A CSV-fájl a kimeneti eredmények][img-query-avro-data-7b]
+    ![A CSV-fájlból a kimeneti eredmények][img-query-avro-data-7b]
 
-    ![A kimeneti alakítja át a CSV-fájl][img-query-avro-data-7c]
+    ![CSV-fájlba konvertálja kimenet][img-query-avro-data-7c]
 
-    A JSON elemzése, folytassa a 8.
+    A JSON elemzéséhez, folytassa a 8. lépés.
     
-8. A legtöbb IoT-üzenetek JSON formátumban vannak. Adja hozzá az alábbi sorokat, az üzenet, amely lehetővé teszi a WHERE záradék hozzáadása, és csak a szükséges adatokat a kimeneti JSON fájlba tudja értelmezni.
+8. A legtöbb IoT-üzenetekhez JSON formátumban vannak. A következő sorokat ad hozzá, az üzenet JSON-fájlba, amely lehetővé teszi a WHERE záradék hozzáadása, és csak a szükséges adatokat kimeneti elemezhetők.
 
     ```sql
        @jsonify = SELECT Microsoft.Analytics.Samples.Formats.Json.JsonFunctions.JsonTuple(Encoding.UTF8.GetString(Body)) AS message FROM @rs;
@@ -155,18 +153,18 @@ Ebben a szakaszban az Avro-adatok lekérdezése és exportálni onnan egy CSV-f�
         OUTPUT @cnt TO @output_file USING Outputters.Text();
     ```
 
-    A kimenet megjeleníti az egyes elemekhez tartozó oszlop a `SELECT` parancsot. 
+    A kimenet megjeleníti egy oszlopban lévő összes elem a `SELECT` parancsot. 
     
-    ![A kimeneti oszlop az egyes elemek megjelenítése][img-query-avro-data-8]
+    ![A kimeneti oszlop minden elem megjelenítése][img-query-avro-data-8]
 
 ## <a name="next-steps"></a>További lépések
-Ebben az oktatóanyagban megtudta, hogyan hatékonyan továbbítani az Azure-szolgáltatásokhoz való Azure IoT Hub üzeneteit Avro adatokat lekérdezni.
+Ebben az oktatóanyagban megtudhatta, hogyan hatékonyan juthatnak az Azure-szolgáltatások az Azure IoT Hubból üzenetek az Avro-adatok lekérdezésére.
 
-Teljes végpontok közötti megoldások, amelyek használják az IoT-központot, tekintse meg a [megoldásgyorsító Azure IoT távoli megfigyelési][lnk-iot-sa-land].
+Teljes körű teljes körű megoldások, IoT Hub használó példákért lásd [Azure IoT távoli figyelési megoldásgyorsító][lnk-iot-sa-land].
 
-Az IoT hubbal megoldások fejlesztésével kapcsolatos további tudnivalókért tekintse meg a [IoT Hub fejlesztői útmutató].
+Az IoT Hub megoldások fejlesztésével kapcsolatos további tudnivalókért tekintse meg a [Az IoT Hub fejlesztői útmutató].
 
-Az üzenetet az IoT hubon útválasztási kapcsolatos további információkért lásd: [üzeneteket küldjön és fogadjon IoT hubbal][lnk-devguide-messaging].
+Az IoT Hub üzenet-útválasztással kapcsolatos további információkért lásd: [küldhet és fogadhat üzeneteket az IoT Hub][lnk-devguide-messaging].
 
 <!-- Images -->
 [img-query-avro-data-1a]: ./media/iot-hub-query-avro-data/query-avro-data-1a.png
@@ -182,13 +180,13 @@ Az üzenetet az IoT hubon útválasztási kapcsolatos további információkért
 [img-query-avro-data-8]: ./media/iot-hub-query-avro-data/query-avro-data-8.png
 
 <!-- Links -->
-[Az Azure IoT Hub üzenet útválasztás: most útválasztással a üzenet szövege]: https://azure.microsoft.com/blog/iot-hub-message-routing-now-with-routing-on-message-body/
+[Az Azure IoT Hub üzenet-útválasztása: mostantól az üzenettörzs a Útválasztás]: https://azure.microsoft.com/blog/iot-hub-message-routing-now-with-routing-on-message-body/
 
 [Routing on message bodies]: iot-hub-devguide-query-language.md#routing-on-message-bodies
 [When using Azure storage containers]:iot-hub-devguide-endpoints.md#when-using-azure-storage-containers
 
-[U-SQL Avro – példa]:https://github.com/Azure/usql/tree/master/Examples/AvroExamples
+[U-SQL az Avro-példa]:https://github.com/Azure/usql/tree/master/Examples/AvroExamples
 
 [lnk-iot-sa-land]: ../iot-accelerators/index.yml
-[IoT Hub fejlesztői útmutató]: iot-hub-devguide.md
+[Az IoT Hub fejlesztői útmutató]: iot-hub-devguide.md
 [lnk-devguide-messaging]: iot-hub-devguide-messaging.md

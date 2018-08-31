@@ -1,6 +1,6 @@
 ---
-title: A Media Services frissítése után a működés közbeni tárelérési kulcsok |} Microsoft Docs
-description: Ez a cikk nyújtanak útmutatást a Media Services frissítése után a működés közbeni tárelérési kulcsok.
+title: A Media Services frissítése tárelérési kulcsok váltása után |} A Microsoft Docs
+description: Ez a cikk ad útmutatást a Media Services frissítése tárelérési kulcsok váltása után.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,50 +12,50 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/09/2017
+ms.date: 08/30/2018
 ms.author: milanga;cenkdin;juliako
-ms.openlocfilehash: ebaa679c43bd577d4f37feb7f3a025086490e25f
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: e8d8067fcf30b16dd3dbc7f6cf50129d837aa3a5
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33790292"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43306856"
 ---
-# <a name="update-media-services-after-rolling-storage-access-keys"></a>A Media Services frissítése után a működés közbeni tárelérési kulcsok
+# <a name="update-media-services-after-rolling-storage-access-keys"></a>A Media Services frissítése tárelérési kulcsok váltása után
 
-Amikor létrehoz egy új Azure Media Services (AMS)-fiókot, a rendszer is felkéri válassza ki az Azure Storage-fiók, amely a médiatartalom tárolására szolgál. Egynél több tárfiókokat adhat hozzá a Media Services-fiókhoz. Ez a témakör bemutatja, hogyan tárolási kulcsok megváltoztatása. Azt is bemutatja, hogyan vehet fel a storage-fiókok adathordozó-fiókra. 
+Amikor létrehoz egy új Azure Media Services (AMS)-fiókot, a rendszer is felkéri Azure Storage-fiókot, amely a médiatartalmak tárolására szolgál. A Media Services-fiók több mint egy storage-fiókok is hozzáadhat. Ez a cikk bemutatja, hogyan tárkulcsok rotálása. Azt is bemutatja, hogyan tárfiókok hozzáadása media-fiók. 
 
-A témakörben ismertetett műveletek elvégzéséhez kell használni [ARM API-k](https://docs.microsoft.com/rest/api/media/mediaservice) és [Powershell](https://docs.microsoft.com/powershell/resourcemanager/azurerm.media/v0.3.2/azurerm.media).  További információkért lásd: [kezelése az Azure-erőforrások az PowerShell és a Resource Manager](../../azure-resource-manager/powershell-azure-resource-manager.md).
+Az ebben a cikkben leírt műveletek végrehajtását, kellene használni [Azure Resource Manager API-k](https://docs.microsoft.com/rest/api/media/mediaservice) és [Powershell](https://docs.microsoft.com/powershell/module/azurerm.media).  További információkért lásd: [Azure PowerShell és a Resource Manager-erőforrások kezelése](../../azure-resource-manager/powershell-azure-resource-manager.md)
 
 ## <a name="overview"></a>Áttekintés
 
-Új tárfiók létrehozásakor az Azure létrehoz két 512 bites tárelérési kulcsot, amellyel hitelesíti a hozzáférést a tárfiókhoz használt. A biztonságos tárolási kapcsolatai több, javasoljuk, hogy rendszeresen generálja újra és elforgatása a tárelérési kulcsát. Két kulcs (elsődleges és másodlagos) ahhoz, hogy az egyik kulcs, amíg a többi hozzáférési kulcs újragenerálása a tárfiókhoz kapcsolatok megtartani vannak megadva. Ez az eljárás "működés közbeni hívóbetűk" néven is ismert.
+Egy új storage-fiók létrehozásakor a Azure létrehoz két 512 bites tárelérési kulcsot, amelyek segítségével hitelesíti a hozzáférést a tárfiókhoz. Tárolási kapcsolatai biztonságának megőrzése biztonságosabb, hogy rendszeresen generálja újra, és a tárelérési kulcs rotálása ajánlott. Két kulcsot (elsődleges és másodlagos) biztosított, és engedélyezze a storage-fiókba az egyik kulcs, míg más hozzáférési kulcs kapcsolatok fenntartását. Ez az eljárás "működés közbeni hozzáférési kulcsok" is nevezik.
 
-A Media Services attól függ, hogy a megadott kulcs. A keresők továbbításához vagy letöltéséhez az eszközök használt pontosabban, a megadott tárelérési kulcs függ. Az AMS-fiók létrehozásakor az felveszi egy függőséget az elsődleges tárelérési kulcs alapértelmezés szerint, de egy olyan felhasználó nevében a kulcsot, amely rendelkezik AMS frissíthető. Győződjön meg arról, hogy tudja, melyik kulcs használatához kövesse a jelen témakörben ismertetett Media Services segítségével.  
+A Media Services megadott tárkulcs függ. A keresők továbbításához vagy letöltéséhez az eszközök használt, a megadott tárelérési kulcs függenek. Az AMS-fiók létrehozásakor, függőséget vesz fel az elsődleges tárelérési kulcs alapértelmezés szerint, de felhasználóként a tárfiók-kulcsot, amely rendelkezik az AMS frissítheti. Győződjön meg arról, hogy a Media Services tudja, melyik kulcsot kell használni, kövesse a cikkben leírtak szerint.  
 
 >[!NOTE]
-> Ha több tárfiókot, akkor ez a művelet minden egyes storage-fiók. A sorrendet, amelyben tárolási kulcsok elforgatása nincs megoldva. A másodlagos kulcs első és az elsődleges kulcs, vagy fordítva fordítva is elforgatása.
+> Ha több tárfiók, ezeket az eljárásokat minden tárfióknak kell elvégeznie. A sorrendet, amelyben a tárkulcsok rotálása nem meghatározott. Másodlagos kulcs első és az elsődleges kulcs, vagy fordítva fordítva elfordításával.
 >
-> Egy éles fiókon ebben a témakörben leírt lépések végrehajtása, előtt ellenőrizze, hogy tesztelését egy üzemi előtti fiók-e.
+> A termelési fiók ebben a cikkben ismertetett lépések végrehajtása előtt ügyeljen arra, hogy tesztelje le azokat a üzem előtti-fiók.
 >
 
-## <a name="steps-to-rotate-storage-keys"></a>Lépéseket tárolási kulcsok megváltoztatása 
+## <a name="steps-to-rotate-storage-keys"></a>Tárkulcsok rotálása lépései 
  
- 1. A tárfiók elsődleges kulcsot a powershell-parancsmaggal módosíthatja vagy [Azure](https://portal.azure.com/) portálon.
- 2. Hívja meg Sync-AzureRmMediaServiceStorageKeys parancsmagot a megfelelő paraméterei media-fiók tárfiókkulcsainak átvételéhez kényszerítése
+ 1. A tárfiók elsődleges hívóbetűjét a powershell-parancsmaggal módosíthatja vagy [Azure](https://portal.azure.com/) portálon.
+ 2. Hívja meg Sync-AzureRmMediaServiceStorageKeys parancsmagot a megfelelő paraméterei media fiók tárfiókkulcsok csomópontmetrikák kényszerítése
  
-    A következő példa bemutatja, hogyan kulccsal storage-fiókok szinkronizálása.
+    Az alábbi példa bemutatja, hogyan tárfiókokhoz kulcsok szinkronizálása.
   
          Sync-AzureRmMediaServiceStorageKeys -ResourceGroupName $resourceGroupName -AccountName $mediaAccountName -StorageAccountId $storageAccountId
   
- 3. Várjon egy órát. Ellenőrizze, hogy az adatfolyam-továbbítási forgatókönyv dolgozik.
- 4. Módosítsa a tárfiók másodlagos kulcsot a powershell-parancsmagot vagy az Azure-portál használatával.
- 5. Hívja meg az új tárfiókkulcsok átvételéhez media fiókot megfelelő paraméterei a Sync-AzureRmMediaServiceStorageKeys powershell. 
- 6. Várjon egy órát. Ellenőrizze, hogy az adatfolyam-továbbítási forgatókönyv dolgozik.
+ 3. Várjon egy órát. Ellenőrizze, hogy a streamelési forgatókönyvek dolgozik.
+ 4. Módosítsa a tárfiók másodlagos kulcsát a powershell-parancsmag vagy az Azure Portalon keresztül.
+ 5. Hívja meg az új tárfiókkulcsok csomópontmetrikák media fiók kényszerítése megfelelő paraméterei Sync-AzureRmMediaServiceStorageKeys powershell. 
+ 6. Várjon egy órát. Ellenőrizze, hogy a streamelési forgatókönyvek dolgozik.
  
-### <a name="a-powershell-cmdlet-example"></a>Egy powershell parancsmag – példa 
+### <a name="a-powershell-cmdlet-example"></a>Egy powershell parancsmag-példával 
 
-A következő példa bemutatja, hogyan a storage-fiók és szinkronizálás a az AMS-fiók.
+Az alábbi példa bemutatja, hogyan a storage-fiók és szinkronizálás a az AMS-fiók.
 
     $regionName = "West US"
     $resourceGroupName = "SkyMedia-USWest-App"
@@ -66,9 +66,9 @@ A következő példa bemutatja, hogyan a storage-fiók és szinkronizálás a az
     Sync-AzureRmMediaServiceStorageKeys -ResourceGroupName $resourceGroupName -AccountName $mediaAccountName -StorageAccountId $storageAccountId
 
  
-## <a name="steps-to-add-storage-accounts-to-your-ams-account"></a>Lépések végrehajtásával adja hozzá az AMS-fiók storage-fiókok
+## <a name="steps-to-add-storage-accounts-to-your-ams-account"></a>Az AMS-fiók a storage-fiókok hozzáadásának lépéseit
 
-A következő témakör bemutatja, hogyan storage-fiókok hozzáadása az AMS-fiók: [több tárfiókot csatolása a Media Services-fiók](meda-services-managing-multiple-storage-accounts.md).
+A következő cikk bemutatja, hogyan tárfiókok hozzáadása az AMS-fiók: [több tárfiók csatolása a Media Services-fiók](meda-services-managing-multiple-storage-accounts.md).
 
 ## <a name="media-services-learning-paths"></a>Media Services képzési tervek
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
@@ -76,5 +76,5 @@ A következő témakör bemutatja, hogyan storage-fiókok hozzáadása az AMS-fi
 ## <a name="provide-feedback"></a>Visszajelzés küldése
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-### <a name="acknowledgments"></a>Nyugták
-Ez a dokumentum kialakításához része volt a következő személyek tudomásul szeretnénk: Cenk Dingiloglu, Milánó Gada Seva Titov.
+### <a name="acknowledgments"></a>Visszaigazolás
+Szeretnénk elfogadja az alábbi személyek, aki hozzájárult felé, hogy ez a dokumentum létrehozása: Cenk Dingiloglu, Milánó Gada, Seva Titov.
