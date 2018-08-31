@@ -8,12 +8,12 @@ ms.date: 6/20/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: f54001c26938ea508111542b930b189342303633
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: f8ac885444c0ba52802024be9a78dfc0737e2673
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39186862"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43247683"
 ---
 # <a name="create-a-linux-iot-edge-device-that-acts-as-a-transparent-gateway"></a>Hozzon létre egy Linux IoT Edge-eszköz, amely transzparens átjáróként
 
@@ -80,9 +80,9 @@ A következő lépések végigvezetik a folyamat a tanúsítványok létrehozás
    >[!NOTE]
    > **NE** egy nevet, amely megegyezik az átjáró DNS-állomásnevet használja. Ezzel az ügyfél elvégezzék a tanúsítását ezeket a tanúsítványokat a sikertelen művelettel.
 
-      ```cmd
-      ./certGen.sh create_edge_device_certificate "<gateway device name>"
-      ```
+   ```cmd
+   ./certGen.sh create_edge_device_certificate "<gateway device name>"
+   ```
 
    A parancsfájl végrehajtása kimeneteire a következő tanúsítványok és a kulcs:
    * `$WRKDIR/certs/new-edge-device.*`
@@ -101,18 +101,24 @@ A Hitelesítésszolgáltatói tanúsítvány tulajdonosa, a köztes tanúsítvá
    * Eszköz CA-tanúsítvány –  `$WRKDIR/certs/new-edge-device-full-chain.cert.pem`
    * Eszköz CA titkos kulcs- `$WRKDIR/private/new-edge-device.key.pem`
    * CA - tulajdonos `$WRKDIR/certs/azure-iot-test-only.root.ca.cert.pem`
+   
+2. Nyissa meg az IoT Edge konfigurációs fájlját. Ez egy védett fájl, ezért lehet, hogy megemelt jogosultsági szintre van szükség az eléréséhez.
+   
+   ```bash
+   sudo nano /etc/iotedge/config.yaml
+   ```
 
-2.  Állítsa be a `certificate` a biztonsági démon konfigurációs fájlban yaml az elérési úthoz, amelyre helyezte a tanúsítvány és kulcs fájlok tulajdonságait.
+3.  Állítsa be a `certificate` az Iot Edge-démon pluginconfig.JSON fájlban yaml az elérési út, amelyre helyezte a tanúsítvány és kulcs fájlok tulajdonságait.
 
-```yaml
-certificates:
-  device_ca_cert: "$CERTDIR/certs/new-edge-device-full-chain.cert.pem"
-  device_ca_pk: "$CERTDIR/private/new-edge-device.key.pem"
-  trusted_ca_certs: "$CERTDIR/certs/azure-iot-test-only.root.ca.cert.pem"
-```
+   ```yaml
+   certificates:
+     device_ca_cert: "$CERTDIR/certs/new-edge-device-full-chain.cert.pem"
+     device_ca_pk: "$CERTDIR/private/new-edge-device.key.pem"
+     trusted_ca_certs: "$CERTDIR/certs/azure-iot-test-only.root.ca.cert.pem"
+   ```
 
 ## <a name="deploy-edgehub-to-the-gateway"></a>Az átjáró üzembe helyezése EdgeHub
-Az Azure IoT Edge egyik legfontosabb képessége a modulok felhőből való üzembe helyezése az IoT Edge-eszközökön. Ez a szakasz rendelkezik, akkor látszólag üres üzembe helyezése; azonban az Edge Hub központi telepítések hozzáadni, akkor sem, ha nem található más modulok automatikus megállapítása. Edge Hub az a csak modul egy Edge-eszközön, hogy transzparens átjáró szerepét, így elegendő az üres telepítést hoz létre szüksége. 
+Az Azure IoT Edge egyik legfontosabb képessége a modulok felhőből való üzembe helyezése az IoT Edge-eszközökön. Ez a szakasz rendelkezik, akkor látszólag üres üzembe helyezése; azonban Edge hubot automatikusan hozzáadódik központi telepítések akkor sem, ha nem található más modulok. Edge Hub az a csak modul egy Edge-eszközön, hogy transzparens átjáró szerepét, így elegendő az üres telepítést hoz létre szüksége. 
 1. Az Azure Portalon keresse meg az IoT-központot.
 2. Lépjen a **IoT Edge** , és válassza ki az IoT Edge-eszközt, hogy az átjáró használni kívánt.
 3. Válassza a **Modulok beállítása** lehetőséget.

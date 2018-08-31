@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/31/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 808914dddcaefa4795264d3904e26ef6200f483e
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 12d3b358be8bb90b63e5e7310123f8ae7093994c
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43087310"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43190272"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>A hibrid Azure Active Directory join megvalósítás tervezése
 
@@ -126,7 +126,7 @@ Ha a környezet rendelkezik felügyelt tartományok, a hibrid Azure AD-csatlakoz
 
 - Továbbítása a hitelesítés (ESP) a zökkenőmentes egyszeri bejelentkezési (SSO) 
 
-- Jelszó szinkronizálás (nál) a zökkenőmentes egyszeri bejelentkezési (SSO) tartalmazza. 
+- A zökkenőmentes egyszeri bejelentkezés (SSO) (nál) Jelszókivonat-szinkronizálás 
 
 1.1.819.0 verzióval kezdve az Azure AD Connect biztosít a hibrid Azure AD-csatlakozás konfigurálása varázsló segítségével. A varázsló lehetővé teszi a jelentősen megkönnyíti a konfigurációs folyamat. További információkért lásd:
 

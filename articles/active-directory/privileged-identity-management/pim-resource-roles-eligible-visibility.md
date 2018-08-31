@@ -1,6 +1,6 @@
 ---
-title: Jogosult hozzárendelések és a Privileged Identity Management Azure-erőforrás láthatóságát |} A Microsoft Docs
-description: Ismerteti, hogyan lehet hozzárendelni a tagokat, jogosult az erőforrás-szerepkörökkel, a PIM használata esetén.
+title: Jogosult hozzárendelések és a PIM - Azure láthatósága |} A Microsoft Docs
+description: Ismerteti, hogyan lehet hozzárendelni a tagokat, jogosult az Azure-erőforrásszerepkörök az Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,14 +15,14 @@ ms.component: pim
 ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 336453c1ef6ef8d0295d00f31afc6a5e7e42e8b6
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 3551c3231a94f8a844d26a713cbf171ca7653815
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39621548"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43189214"
 ---
-# <a name="eligible-assignments-and-resource-visibility-with-privileged-identity-management"></a>Jogosult hozzárendelések és a Privileged Identity Management láthatósága
+# <a name="eligible-assignments-and-resource-visibility-in-pim"></a>Jogosult hozzárendelések és a PIM erőforrás láthatóságát
 
 Privileged Identity Management (PIM) az Azure-erőforrások szerepköreihez tartozó olyan szervezeteknek, amelyek kritikus fontosságú Azure-erőforrások fokozott biztonságot nyújt. Erőforrás-rendszergazdák használhatják a PIM jogosult az erőforrás-szerepkörökkel, tagok. További információ a különböző típusok és a hozzárendelés állapotai az alábbi szakaszok az Azure-erőforrások szerepköreihez tartozó. 
 
@@ -70,4 +70,4 @@ Tagság szereplő megtekintésekor **aktív szerepkörök**, használhatja az é
 
 ## <a name="next-steps"></a>További lépések
 
-[A Privileged Identity Manager szerepkörök hozzárendelése](pim-resource-roles-assign-roles.md)
+- [Rendelje hozzá a PIM az Azure-erőforrásszerepkörök](pim-resource-roles-assign-roles.md)

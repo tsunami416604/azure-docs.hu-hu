@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 08/24/2018
 ms.author: mibender
-ms.openlocfilehash: 2934c2323b056bfb5e556e7d688704ed20882bca
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 06365e4397075d18150095f7e77367f457e3308c
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43124450"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43190425"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Ismerkedés az Azure-operátorok
 
@@ -173,7 +173,7 @@ Az Azure PowerShell-modulok biztosító Azure kezelésére szolgáló parancsmag
 
 #### <a name="azure-command-line-interface"></a>Azure parancssori felületén
 
-Az Azure parancssori felület egy olyan eszköz, létrehozása, kezelése és Azure-erőforrások eltávolítása a parancssor segítségével. Az Azure CLI Windows, Linux és Mac OS X érhető el. További információkért és a technikai részletekért, lásd: [az Azure CLI telepítése](/cli/azure/install-azure-cli.md).
+Az Azure parancssori felület egy olyan eszköz, létrehozása, kezelése és Azure-erőforrások eltávolítása a parancssor segítségével. Az Azure CLI Windows, Linux és Mac OS X érhető el. További információkért és a technikai részletekért, lásd: [az Azure CLI telepítése](/cli/azure/install-azure-cli).
 
 #### <a name="rest-apis"></a>REST API-k
 
@@ -499,5 +499,5 @@ Segíthet az Azure virtuális hálózatok biztonságos hálózati biztonsági cs
 
 ## <a name="next-steps"></a>További lépések
 
-- [Egy Windows virtuális gép létrehozása](/virtual-machines/windows/quick-create-portal.md)
+- [Egy Windows virtuális gép létrehozása](../../virtual-machines/windows/quick-create-portal.md)
 - [Linux rendszerű virtuális gép létrehozása](../../virtual-machines/linux/quick-create-portal.md)

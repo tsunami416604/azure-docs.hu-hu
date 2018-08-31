@@ -1,6 +1,6 @@
 ---
-title: Linux virtuális gépek az Azure-felhő inicializálás támogatását áttekintése |} Microsoft Docs
-description: A Microsoft Azure felhőbe inicializálás funkcióiról
+title: A cloud-init támogatása az Azure-ban Linux rendszerű virtuális gépek áttekintése |} A Microsoft Docs
+description: A cloud-init képességeit a Microsoft Azure-ban – áttekintés
 services: virtual-machines-linux
 documentationcenter: ''
 author: rickstercdn
@@ -15,51 +15,53 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: fbb6fc15663570d9b9470fc7d4de3c8eb30de9d9
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 0f7660e8534a74eabe32611c4c01ae5587af7cee
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2018
-ms.locfileid: "29763145"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43188873"
 ---
-# <a name="cloud-init-support-for-virtual-machines-in-azure"></a>Virtuális gépek Azure cloud inicializálás támogatása
-Ez a cikk ismerteti, hogy létezik a támogatási [felhő inicializálás](https://cloudinit.readthedocs.io) konfigurálhat egy virtuális gép (VM) vagy a virtuális gép méretezési beállítja (VMSS) kiépítési idő az Azure-ban. Ezen felhő inicializálás parancsfájlok futtatása az első betöltés után az erőforrásokat az Azure-ban kiépített.  
+# <a name="cloud-init-support-for-virtual-machines-in-azure"></a>A cloud-init támogatása az Azure virtual machines
+Ez a cikk ismerteti, hogy létezik a támogatási [a cloud-init](https://cloudinit.readthedocs.io) konfigurálása a virtuális gép (VM) vagy virtuálisgép-méretezési csoportok (VMSS) kiépítés ideje az Azure-ban. Ezen a cloud-init parancsfájlok futtatása az első rendszerindításkor az Azure-ban kiépített erőforrások után.  
 
 ## <a name="cloud-init-overview"></a>A cloud-init áttekintése
-A [cloud-init](https://cloudinit.readthedocs.io) egy széles körben használt módszer a Linux rendszerű virtuális gépek első indításkor való testreszabásához. A cloud-init használatával csomagokat telepíthet és fájlokat írhat, vagy beállíthatja a felhasználókat és a biztonságot. Neve a rendszerindítási folyamat során a felhő inicializálás, mert nincsenek további lépéseket vagy a konfiguráció alkalmazásához szükséges ügynökök.  Helyes formátumban módjáról további információ a `#cloud-config` fájlok, tekintse meg a [felhő-inicializációs dokumentációs oldalát](http://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data).  `#cloud-config` fájlok Base64 kódolású szöveget fájlok.
+A [cloud-init](https://cloudinit.readthedocs.io) egy széles körben használt módszer a Linux rendszerű virtuális gépek első indításkor való testreszabásához. A cloud-init használatával csomagokat telepíthet és fájlokat írhat, vagy beállíthatja a felhasználókat és a biztonságot. A cloud-init nevezzük az első rendszerindítás során, mert nincsenek további lépéseket vagy szükséges ügynökök a alkalmazni a konfigurációt.  További információt a megfelelő formázása a `#cloud-config` fájlokat, tekintse meg a [a cloud-init dokumentációs oldalának](http://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data).  `#cloud-config` fájlok Base64 kódolású szöveges fájlok.
 
 A cloud-init különböző disztribúciókon is működik. Például nem kell az **apt-get install** vagy a **yum install** használatával telepítenie a csomagokat. Ehelyett megadhatja a telepítendő csomagok listáját. A cloud-init automatikusan a natív csomagkezelő eszközt használja a kiválasztott disztribúcióhoz.
 
- Folyamatosan dolgozunk a Linux distro hitelesített Partnereinkkel együtt kell biztosítani a felhő inicializálás engedélyezve képek érhető el az Azure piactéren. Ezeket a lemezképeket fogja elérhetővé teheti a felhő inicializálás és konfigurációk zökkenőmentesen működjön együtt a virtuális gépek és Virtuálisgép-méretezési készletek (VMSS). Az alábbi táblázat ismerteti az Azure platformon aktuális felhő inicializálás engedélyezve képek elérhetőségét:
+ Aktívan dolgozunk a támogatott Linux disztribúció partnereink ahhoz, hogy engedélyezve van a cloud-init lemezkép érhető el az Azure Marketplace-en. Ezeket a lemezképeket készítsen a cloud-init központi telepítések és konfigurációkat és a virtuális gépek és a virtuális gép méretezési csoportok (VMSS) zökkenőmentesen működjön. Az alábbi táblázat ismerteti az aktuális engedélyezve van a cloud-init lemezképek rendelkezésre állás az Azure platformon:
 
-| Közzétevő | Ajánlat | SKU | Verzió | felhő inicializálás kész
-|:--- |:--- |:--- |:--- |:--- |:--- |
+| Közzétevő | Ajánlat | SKU | Verzió | a cloud-init kész |
+|:--- |:--- |:--- |:--- |:--- |
+|Canonical |UbuntuServer |18.04-LTS |legújabb |igen | 
+|Canonical |UbuntuServer |17.10 |legújabb |igen | 
 |Canonical |UbuntuServer |16.04-LTS |legújabb |igen | 
 |Canonical |UbuntuServer |14.04.5-LTS |legújabb |igen |
 |CoreOS |CoreOS |Stable |legújabb |igen |
-|OpenLogic |CentOS |7-CI |legújabb |előzetes verzió |
-|RedHat |RHEL |7-RAW-CI |legújabb |előzetes verzió |
+|OpenLogic |CentOS |7-CI |legújabb |előzetes verzióban |
+|RedHat |RHEL |7-RAW-CI |legújabb |előzetes verzióban |
 
-Jelenleg Azure verem nem támogatja az RHEL 7.4 és felhő inicializálás használatával CentOS 7.4 kiépítését.
+Jelenleg az Azure Stack nem támogatja az RHEL 7.4 és a cloud-init használata CentOS 7.4 üzembe.
 
-## <a name="what-is-the-difference-between-cloud-init-and-the-linux-agent-wala"></a>Mi az a felhő inicializálás és a Linux ügynök (WALA) közötti különbség?
-WALA kiépítéséhez és virtuális gépek és az Azure-bővítmények kezelésére használt Azure platform-specifikus ügynök. Azt is javítja az felhő inicializálás használata helyett a Linux-ügynök annak érdekében, hogy a meglévő felhőalapú inicializálás ügyfelek az aktuális felhő inicializálás parancsfájlok használata virtuális gépek konfigurációs feladatának.  Ha már rendelkezik már meglévő befejtetések felhő inicializálás parancsfájljainak konfigurálása a Linux rendszerek, **nincs szükség további beállításokra** és lehetővé teszi. 
+## <a name="what-is-the-difference-between-cloud-init-and-the-linux-agent-wala"></a>Mi a különbség a cloud-init és a Linuxos ügynök (WALA)?
+WALA használt üzembe helyezhető és a virtuális gépek konfigurálása és kezelése az Azure-bővítményeket az Azure platform-specifikus ügynök. Továbbfejlesztjük a feladat konfigurálása a cloud-init használata helyett a Linux-ügynök annak érdekében, hogy a cloud-init meglévő ügyfelek az aktuális a cloud-init-parancsfájlok használata virtuális gépek.  Rendelkezik egy meglévő beruházásait a cloud-init-parancsprogramok a Linux rendszerek konfigurálása, ha nincsenek **nincs szükség további beállításokra** az engedélyezésükhöz. 
 
-Ha nem adja meg az Azure parancssori felület `--custom-data` kapcsolóval a kiépítés idő, WALA időt vesz igénybe, a minimális Virtuálisgép-létrehozásnál a virtuális gép kiépítéséhez, és az alapértelmezett értékekkel a telepítés befejezéséhez szükséges paraméter.  Ha a felhő inicializálás `--custom-data` kapcsolni, függetlenül az egyéni adatait (egyéni beállítások vagy teljes körű parancsfájl) szerepel a WALA alapértelmezett felülbírálja. 
+Ha nem adja meg az Azure CLI `--custom-data` kapcsoló, a kiépítés ideje, WALA vesz igénybe a minimális virtuális gép kiépítése a virtuális gép és az alapértelmezett értékekkel telepítésének befejezéséhez szükséges paramétereket.  Ha a cloud-init `--custom-data` váltson, akármilyen területen is szerepel az egyéni adatok (az egyes beállítások vagy teljes szkript) felülbírálja az WALA alapértelmezett értékeket. 
 
-A virtuális gépek WALA konfigurációk idő korlátozott belül a maximális Virtuálisgép-létrehozásnál idő működéséhez.  Felhő inicializálás konfiguráció alkalmazása a virtuális gépek nem rendelkeznek a megadott, és nem okoz a központi telepítés meghiúsulását által közbeni időtúllépés miatt meghiúsult. 
+Virtuális gépek WALA konfigurációk idő korlátozott a kiépítés ideje legnagyobb virtuális gépen működik.  A cloud-init konfigurációt virtuális gépeken alkalmazott korlátozásai nem rendelkeznek, és nem okoz közbeni időtúllépés miatt meghiúsult a sikertelen központi telepítés. 
 
-## <a name="deploying-a-cloud-init-enabled-virtual-machine"></a>Virtuális gép üzembe helyezése a felhő inicializálás engedélyezve van.
-A felhő inicializálás engedélyezett virtuális gépek telepítése használata éppolyan egyszerű meg a hivatkozó, a felhő inicializálás engedélyezett terjesztési üzembe helyezése során.  Linux terjesztési maintainers engedélyezése és a felhő inicializálás integrálja az alapszintű Azure-közzétett rendszerképek választania kell. Miután meggyőződött a telepíteni kívánt lemezkép felhő inicializálás engedélyezve, a lemezkép központi telepítését az Azure parancssori felület használatával. 
+## <a name="deploying-a-cloud-init-enabled-virtual-machine"></a>Virtuális gép üzembe helyezése a cloud-init engedélyezve van.
+Engedélyezve van a cloud-init virtuális gép üzembe helyezése rendkívül egyszerű, üzembe helyezés során a cloud-init-kompatibilis terjesztési hivatkozik.  Linux terjesztési maintainers kell engedélyezni, és a cloud-init integrálása az Azure alapszintű közzétett képek. Miután meggyőződött számára telepíteni kívánja a lemezképet a cloud-init engedélyezve, a rendszerkép üzembe helyezése az Azure CLI használatával. 
 
-A lemezkép központi telepítése az első lépés az, hogy hozzon létre egy erőforráscsoportot a a [az csoport létrehozása](/cli/azure/group#az_group_create) parancsot. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. 
+A lemezkép központi telepítése az első lépés az, hogy hozzon létre egy erőforráscsoportot a [az csoport létrehozása](/cli/azure/group#az_group_create) parancsot. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. 
 
 A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *eastus* helyen.
 
 ```azurecli-interactive 
 az group create --name myResourceGroup --location eastus
 ```
-A következő lépés az, hogy az aktuális rendszerhéjban nevű fájl létrehozása *felhő-init.txt* , majd illessze be a következő konfigurációt. Hozzon létre a fájl ebben a példában a felhő rendszerhéj nem a helyi számítógépen. Bármelyik szerkesztőt használhatja. Írja be a `sensible-editor cloud-init.txt` parancsot a fájl létrehozásához és az elérhető szerkesztők listájának megtekintéséhez. Válassza ki a használandó #1 a **nano** szerkesztő. Ügyeljen arra, hogy megfelelően másolja ki a teljes cloud-init-fájlt, különösen az első sort:
+A következő lépés az, hogy hozzon létre egy fájlt az aktuális felületen, *cloud-init.txt* , és illessze be a következő konfigurációt. Ebben a példában a Cloud shellben, nem a helyi gépén hozzon létre a fájlt. Bármelyik szerkesztőt használhatja. Írja be a `sensible-editor cloud-init.txt` parancsot a fájl létrehozásához és az elérhető szerkesztők listájának megtekintéséhez. Válassza ki a használandó #1 a **nano** szerkesztő. Ügyeljen arra, hogy megfelelően másolja ki a teljes cloud-init-fájlt, különösen az első sort:
 
 ```yaml
 #cloud-config
@@ -67,11 +69,11 @@ package_upgrade: true
 packages:
   - httpd
 ```
-Nyomja le az ENTER `ctrl-X` lépjen ki a fájlt, írja be a következőt `y` menteni a fájlt, és `enter` a kilépés után a fájlnév megerősítéséhez.
+Nyomja le az `ctrl-X` lépjen ki a fájlt, írja be a következőt `y` menteni a fájlt, és `enter` , erősítse meg a fájl nevét, a kilépés után.
 
-Az utolsó lépést, ha a virtuális gép és a [az virtuális gép létrehozása](/cli/azure/vm#az_vm_create) parancsot. 
+Az utolsó lépés az, hogy a virtuális gép létrehozása a [az virtuális gép létrehozása](/cli/azure/vm#az_vm_create) parancsot. 
 
-Az alábbi példakód létrehozza a virtuális gépek nevű *centos74* és SSH-kulcsok létrehozása, ha még nem léteznek a kulcs alapértelmezett helye. Ha konkrét kulcsokat szeretné használni, használja az `--ssh-key-value` beállítást.  Használja a `--custom-data` paramétert a cloud-init konfigurációs fájl megadásához. Adja meg a *cloud-init.txt* konfiguráció teljes elérési útját, ha az aktuális munkakönyvtáron kívülre mentette. Az alábbi példakód létrehozza a virtuális gépek nevű *centos74*:
+A következő példában létrehozunk egy nevű virtuális Gépet *centos74* és SSH-kulcsokat hoz létre, ha azok még nem léteznek a kulcsok alapértelmezett helyén. Ha konkrét kulcsokat szeretné használni, használja az `--ssh-key-value` beállítást.  Használja a `--custom-data` paramétert a cloud-init konfigurációs fájl megadásához. Adja meg a *cloud-init.txt* konfiguráció teljes elérési útját, ha az aktuális munkakönyvtáron kívülre mentette. A következő példában létrehozunk egy nevű virtuális Gépet *centos74*:
 
 ```azurecli-interactive 
 az vm create \
@@ -82,20 +84,20 @@ az vm create \
   --generate-ssh-keys 
 ```
 
-A virtuális gép létrehozásakor az Azure parancssori felület információit jeleníti meg a telepítésére jellemző. Jegyezze fel a `publicIpAddress` értékét. Ez a cím használható a virtuális gép eléréséhez.  A virtuális Gépet létrehozni, a csomagok telepítése és az alkalmazás elindításához némi időt vesz igénybe. Néhány háttérfeladat azután is tovább fut, hogy az Azure CLI visszairányítja Önt a parancssorhoz. SSH is be a virtuális Gépet, és a hibaelhárítási szakaszban leírt lépéseket a felhő inicializálás naplók megtekintéséhez. 
+A virtuális gép létrejött, az Azure CLI információkat jelenít meg az üzemelő példány adott. Jegyezze fel a `publicIpAddress` értékét. Ez a cím használható a virtuális gép eléréséhez.  A virtuális gép létrehozása, a csomagok telepítése és az alkalmazás elindítása némi időt vesz igénybe. Néhány háttérfeladat azután is tovább fut, hogy az Azure CLI visszairányítja Önt a parancssorhoz. A virtuális géppel is SSH és a hibaelhárítási szakaszban ismertetett lépéseket használhatja a cloud-init-naplók megtekintéséhez. 
 
-## <a name="troubleshooting-cloud-init"></a>Hibaelhárítási felhő inicializálás
-Amennyiben a virtuális gép van kiépítve, felhőalapú inicializálás a modulok keresztül fog futni, és meghatározott parancsfájl `--custom-data` ahhoz, hogy a virtuális gép konfigurálása.  Ha kell elhárítania esetleges hibák vagy mulasztбs miatt a konfigurációról, akkor keresse meg a modul neve (`disk_setup` vagy `runcmd` például) található a felhőben inicializálás napló - **/var/log/cloud-init.log**.
+## <a name="troubleshooting-cloud-init"></a>A cloud-init hibaelhárítása
+A virtuális gép van kiépítve, a cloud-init modult keresztül fog futni, és a parancsfájl meghatározott `--custom-data` annak érdekében, hogy a virtuális gép konfigurálása.  Ha hibáinak elhárítása az esetleges hibákat vagy berendezésével a konfigurációból van szüksége, keresse meg a modul neve kell (`disk_setup` vagy `runcmd` például) található a cloud-init napló - **/var/log/cloud-init.log**.
 
 > [!NOTE]
-> Nem minden modul hibája eredményezi egy végzetes felhő inicializálás általános hiba. Használata esetén például a `runcmd` modul, a parancsfájl futása sikertelen, ha felhő inicializálás még tartozik kiépítés sikeres volt, mert a runcmd modul végrehajtása.
+> Nem minden modul hibája eredményezi egy végzetes a cloud-init általános konfigurációs hiba. Például a `runcmd` modult, ha a parancsfájl futása sikertelen, a cloud-init továbbra is jelentést kiépítés sikeres volt, mert a runcmd modul végrehajtása.
 
-A felhő inicializálás naplózási további részletekért tekintse meg a [felhő inicializálás dokumentáció](http://cloudinit.readthedocs.io/en/latest/topics/logging.html) 
+A cloud-init naplózási további részletekért tekintse meg a [a cloud-init-dokumentáció](http://cloudinit.readthedocs.io/en/latest/topics/logging.html) 
 
 ## <a name="next-steps"></a>További lépések
-Konfigurációs módosítások inicializálás felhőben példákért lásd a következő dokumentumokat:
+A cloud-init konfigurációs módosítások példákat az alábbi dokumentumokban talál:
  
-- [Egy további Linux-felhasználó hozzáadása a virtuális gépek](cloudinit-add-user.md)
-- [Futtassa a Csomagkezelő első indításakor meglévő csomagok frissítése](cloudinit-update-vm.md)
-- [Módosítsa a virtuális gép helyi állomásnév](cloudinit-update-vm-hostname.md) 
-- [Alkalmazáscsomag telepítését, a konfigurációs fájlokat és a kulcsok beszúrása](tutorial-automate-vm-deployment.md)
+- [További Linux-felhasználó hozzáadása virtuális Géphez](cloudinit-add-user.md)
+- [Az első rendszerindításkor a meglévő csomagokat frissíteni Csomagkezelő futtatása](cloudinit-update-vm.md)
+- [Módosítsa a virtuális gép helyi gazdagépnév](cloudinit-update-vm-hostname.md) 
+- [Alkalmazáscsomag telepítése, a konfigurációs fájlokat és a kulcsok beszúrása](tutorial-automate-vm-deployment.md)

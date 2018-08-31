@@ -6,22 +6,26 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-registry
 ms.topic: article
-ms.date: 03/15/2018
+ms.date: 08/28/2018
 ms.author: marsma
-ms.openlocfilehash: 562bd8da54605986e95d8105782ce7ebb9b359ea
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 7a377c607639f5c044e689b11380e9778f9c72c8
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39432388"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43189021"
 ---
 # <a name="upgrade-a-classic-container-registry"></a>Klasszikus tároló-beállításjegyzék frissítése
 
-Többféle szolgáltatáscsomagban érhető el az Azure Container Registry (ACR) [termékváltozatok néven](container-registry-skus.md). ACR kezdeti verziójában érhető el egy egyetlen Termékváltozat klasszikus, amely nem rendelkezik a Basic, Standard és prémium szintű csomag beépített szolgáltatásai számos funkciót (összefoglaló néven *felügyelt* beállításjegyzékek). Ez a cikk részletesen a nem felügyelt klasszikus beállításjegyzékben áttelepítése a felügyelt termékváltozatok közül, így azok továbbfejlesztett szolgáltatáskészlet előnyeit is.
+Többféle szolgáltatáscsomagban érhető el az Azure Container Registry (ACR) [termékváltozatok néven](container-registry-skus.md). ACR kezdeti verziójában érhető el egy egyetlen Termékváltozat klasszikus, amely nem rendelkezik a Basic, Standard és prémium szintű csomag beépített szolgáltatásai számos funkciót (összefoglaló néven *felügyelt* beállításjegyzékek).
+
+A klasszikus Termékváltozat hamarosan elavulttá válik, és a március 2019 után nem lesz elérhető. Ez a cikk részletesen a nem felügyelt klasszikus beállításjegyzékben áttelepítése a felügyelt termékváltozatok közül, így azok továbbfejlesztett szolgáltatáskészlet előnyeit is.
 
 ## <a name="why-upgrade"></a>Miért érdemes frissíteni?
 
-Miatt a klasszikus nem felügyelt beállításjegyzékek korlátozott képességeit javasoljuk, hogy az összes klasszikus beállításjegyzékek frissített alapszintű, Standard vagy prémium szintű felügyelt beállításjegyzékek lehet. Ezek a magasabb szintű termékváltozatok a beállításjegyzék így integrálható az Azure funkcióit.
+A klasszikus beállításjegyzékben folyamatban van a Termékváltozat **elavult**, és nem lesz elérhető a **március 2019**. Az összes meglévő klasszikus beállításjegyzékek frissítése előtt március 2019 kell lennie.
+
+Tervezett elavulásának és klasszikus nem felügyelt beállításjegyzékek korlátozott képességeit az összes klasszikus beállításjegyzékek lehet frissíthető a Basic, Standard vagy prémium szintű felügyelt beállításjegyzékek. Ezek a magasabb szintű termékváltozatok a beállításjegyzék így integrálható az Azure funkcióit.
 
 Adja meg a felügyelt beállításjegyzékek:
 
@@ -30,7 +34,7 @@ Adja meg a felügyelt beállításjegyzékek:
 * [Georeplikáció](container-registry-geo-replication.md)
 * [Webhooks](container-registry-webhook.md)
 
-Klasszikus beállításjegyzék legfontosabb, a storage-fiókot, hogy az Azure automatikusan látja el az Azure-előfizetésben a beállításjegyzék létrehozásakor függ. Ezzel szemben a Basic, Standard és prémium szintű termékváltozatok kihasználhatja az Azure [speciális tárolási szolgáltatások](container-registry-storage.md) átlátható módon kezeli az Ön számára a lemezképek tárolását. Egy önálló tárfiókot a saját előfizetése nem jön létre.
+A klasszikus beállításjegyzékben attól függ, hogy a tárfiók, amely az Azure automatikusan látja el az Azure-előfizetésben a beállításjegyzék létrehozásakor. Ezzel szemben a Basic, Standard és prémium szintű termékváltozatok kihasználhatja az Azure [speciális tárolási szolgáltatások](container-registry-storage.md) átlátható módon kezeli az Ön számára a lemezképek tárolását. Egy önálló tárfiókot a saját előfizetése nem jön létre.
 
 Felügyelt beállításjegyzék tárterületét az alábbi előnyöket nyújtja:
 

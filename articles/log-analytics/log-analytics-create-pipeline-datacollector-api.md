@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 08/09/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 5f2674aeb83fbb7679d9d0c2574a93484a352e9d
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 180f1a39b92dd699fa114cb98a5842b0ab0dc89a
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "40162034"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43190538"
 ---
 # <a name="create-a-data-pipeline-with-the-data-collector-api"></a>Adatfolyamatok létrehozása a Data Collector API-val
 
@@ -42,7 +42,7 @@ Egy klasszikus ETL-típus logikai folyamat megtervezéséhez használjuk. Az arc
 
 Ez a cikk nem fedezik adatok létrehozása vagy [töltse fel az Azure Blob Storage-fiók](../storage/blobs/storage-upload-process-images.md). Ahelyett hogy felveszi a folyamatot, amint egy új fájlt töltenek fel a blob. Innen:
 
-1. Egy folyamat észleli, hogy az új adatok fel lett töltve.  A példában használja egy [Azure Logic Apps](../logic-apps/logic-apps-overview.md), amely rendelkezik elérhető új adatokat a blob feltöltése folyamatban észlelő eseményindító.
+1. Egy folyamat észleli, hogy az új adatok fel lett töltve.  A példában egy [Azure Logic Apps](../logic-apps/logic-apps-overview.md), amely rendelkezik elérhető új adatokat a blob feltöltése folyamatban észlelő eseményindító.
 
 2. A processzor olvassa be az új adatokat, és konvertálja JSON-t, a Log Analytics által megkívánt formátumban.  Ebben a példában használjuk egy [Azure-függvény](../azure-functions/functions-overview.md) feldolgozási kód végrehajtásának egyszerű, költséghatékony módja. A függvény által ugyanolyan logikai alkalmazást, hogy annak észlelésére használnak, megkezdődik a az új adatokat.
 

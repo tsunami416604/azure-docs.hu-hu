@@ -1,6 +1,6 @@
 ---
-title: Az Azure többtényezős hitelesítés kikényszerítéséhez az Azure-erőforrások a Privileged Identity Management használatával |} A Microsoft Docs
-description: Ez a dokumentum ismerteti a multi-factor authentication szolgáltatás engedélyezése a PIM erőforrás.
+title: Többtényezős hitelesítés megkövetelése az PIM-ben az Azure-erőforrások szerepköreihez tartozó |} A Microsoft Docs
+description: Útmutató a multi-factor authentication (MFA) kér az Azure AD Privileged Identity Management (PIM) az Azure-erőforrások szerepköreihez.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,14 +15,14 @@ ms.component: pim
 ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 42c93a107c7ed58d6f7412b61627dccaf9076bb7
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 171d79856cf67dae9573dd1076c2ae4617cf86d1
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39617870"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43190568"
 ---
-# <a name="enforce-azure-multi-factor-authentication-in-azure-resources-by-using-privileged-identity-management"></a>Az Azure többtényezős hitelesítés kikényszerítéséhez az Azure-erőforrások a Privileged Identity Management használatával
+# <a name="require-multi-factor-authentication-for-azure-resource-roles-in-pim"></a>A PIM az Azure-erőforrások szerepköreihez tartozó többtényezős hitelesítés megkövetelése
 
 Privileged Identity Management (PIM) az Azure-erőforrások szerepköreihez tartozó erőforrás-rendszergazdák és identitáskezelő adminisztrátorokat, kritikus fontosságú Azure-infrastruktúra időhöz kötött tagsággal és igény szerinti elérésének védelme érdekében lehetővé teszi. Emellett a PIM lehetővé választható kényszerítésének Azure multi-factor Authentication két különböző forgatókönyvekhez.
 
@@ -59,9 +59,7 @@ Az azonos szerepkör beállítás részletek képernyőn, a jelölőnégyzet bej
 
 ## <a name="next-steps"></a>További lépések
 
-[Aktiválásához jóváhagyás szükséges](pim-resource-roles-approval-workflow.md)
-
-[Az auditnapló használata](pim-resource-roles-use-the-audit-log.md)
-
+- [A PIM Azure szerepkör-beállítások konfigurálása](pim-resource-roles-configure-role-settings.md)
+- [Az Azure-erőforrások szerepköreihez tartozó biztonsági riasztások konfigurálása az PIM-ben](pim-resource-roles-configure-alerts.md)
 
 

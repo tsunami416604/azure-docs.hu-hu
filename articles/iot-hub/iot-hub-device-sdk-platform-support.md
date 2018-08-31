@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: yizhon
-ms.openlocfilehash: cf3c80424c4626b62317bda537f9491cafc8198c
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: 02d9a326f0209bacca17a9617374105fcbf5ed6a
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "40043877"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43189765"
 ---
 # <a name="azure-iot-sdks-platform-support"></a>Az Azure IoT SDK-k Eszközplatform-támogatás
 
@@ -24,7 +24,7 @@ A Microsoft támogatja az operációs rendszerek/platformok és keretrendszerek 
     - Adja meg a telepítővarázslót, vagy a csomagok, ha van ilyen
     - Teljes körűen támogatja a Githubon
 
-Emellett az C SDK be további platformok rendelkezik ültették át a partnerek listáját, és azok vannak karbantartása a platform absztrakciós réteg (PAL).  [Az Azure Certified for IoT Eszközkatalógus](https://catalog.azureiotsolutions.com/) is funkciók OS-platformokat, a különböző SDK-k listáját teszteltük ellen.  Az SDK-k emellett szintén rendszeresen hozhat létre, ezek a rendszerek, a korlátozott tesztelése, és támogatja:
+Emellett az C SDK be további platformok rendelkezik ültették át a partnerek listáját, és azok vannak karbantartása a platform absztrakciós réteg (PAL).  [Az Azure Certified for IoT Eszközkatalógus](https://catalog.azureiotsolutions.com/) is funkciók OS-platformokat, a különböző SDK-k listáját teszteltük ellen.  Az SDK-k is rendszeresen hozhat létre, ezek a rendszerek, a korlátozott tesztelése, és támogatja:
 - MBED2
 - Arduino
 - Windows CE 2013 (2018. október kivezetjük)
@@ -76,14 +76,15 @@ Emellett az C SDK be további platformok rendelkezik ültették át a partnerek 
 | Windows Server 2016 | X64  | Java 8       |
 
 ## <a name="partner-supported-platforms"></a>A partner támogatott platformok
+Ügyfelek kiterjesztheti az eszközplatform-támogatás által kifejezetten portolása az Azure IoT C SDK, az SDK platform absztrakciós réteg (PAL) létrehozása.  A Microsoft a partnerekkel együttműködve az kiterjesztett technikai támogatás működik.  Partnerek listája már rendelkezik az C SDK-val további platformok és karbantartása a kiadvány be.
 | Partner             | Eszközök                            | Hivatkozás                     | Támogatás |
 |---------------------|------------------------------------|--------------------------|---------|
+| Espressif           | ESP32 <br/> ESP8266                              | [ESP-Azure-hoz](https://github.com/espressif/esp-azure)                | [GitHubon](https://github.com/espressif/esp-azure)  
 | Qualcomm            | Qualcomm MDM9206 LTE IoT Modem     | [IoT SDK-hoz készült Qualcomm LTE](https://developer.qualcomm.com/software/lte-iot-sdk) | [Fórum](https://developer.qualcomm.com/forums/software/lte-iot-sdk)   |
-| St. Microelectronics | STM32L4 sorozat STM32F4 sorozat      | [X-ADATKOCKA-FELHŐ](https://www.st.com/content/st_com/en/products/embedded-software/mcus-embedded-software/stm32-embedded-software/stm32cube-expansion-packages/x-cube-cloud.html)             | [Támogatás](https://www.st.com/content/st_com/en/support/support-home.html) |
-|                     | STM32F7 sorozat                     | [AZURE-X-ADATKOCKA](https://www.st.com/content/st_com/en/products/embedded-software/mcus-embedded-software/stm32-embedded-software/stm32cube-expansion-packages/x-cube-azure.html)             |         |
-|                     | IoT-csomópont STM32L4 felderítési csomag | [P-NUCLEO-AZURE](https://www.st.com/content/st_com/en/products/evaluation-tools/solution-evaluation-tools/communication-and-connectivity-solution-eval-boards/p-nucleo-azure1.html)          |         |
-|                     |                                    | [AZURE-PI-CLD](https://www.st.com/content/st_com/en/products/embedded-software/mcus-embedded-software/stm32-embedded-software/stm32-ode-function-pack-sw/fp-cld-azure1.html)            |         |
-| Espressif           | ESP32                              | [ESP-Azure-hoz](https://github.com/espressif/esp-azure)                | [GitHubon](https://github.com/espressif/esp-azure)  |
+| St. Microelectronics | STM32L4 sorozat <br/> STM32F4 sorozat <br/>  STM32F7 sorozat <br/>  IoT-csomópont STM32L4 felderítési csomag    | [X-ADATKOCKA-FELHŐ](https://www.st.com/content/st_com/en/products/embedded-software/mcus-embedded-software/stm32-embedded-software/stm32cube-expansion-packages/x-cube-cloud.html) <br/> [AZURE-X-ADATKOCKA](https://www.st.com/content/st_com/en/products/embedded-software/mcus-embedded-software/stm32-embedded-software/stm32cube-expansion-packages/x-cube-azure.html) <br/> [P-NUCLEO-AZURE](https://www.st.com/content/st_com/en/products/evaluation-tools/solution-evaluation-tools/communication-and-connectivity-solution-eval-boards/p-nucleo-azure1.html) <br/> [AZURE-PI-CLD](https://www.st.com/content/st_com/en/products/embedded-software/mcus-embedded-software/stm32-embedded-software/stm32-ode-function-pack-sw/fp-cld-azure1.html)            | [Támogatás](https://www.st.com/content/st_com/en/support/support-home.html)
+| Texas Instruments   | CC3220SF Kezdőpanele <br/> CC3220S Kezdőpanele <br/> MSP432E4 Kezdőpanele      | [Az Azure IoT beépülő modulja SimpleLink](https://github.com/TexasInstruments/azure-iot-pal-simplelink) | [TI E2E fórum](https://e2e.ti.com) <br/> [CC3220 TI E2E fóruma](https://e2e.ti.com/support/wireless_connectivity/simplelink_wifi_cc31xx_cc32xx/) <br/> [MSP432E4 TI E2E fóruma](https://e2e.ti.com/support/microcontrollers/msp430/) |
+
+
 
 ## <a name="next-steps"></a>További lépések
 - [Eszköz- és szolgáltatásspecifikus SDK-k](iot-hub-devguide-sdks.md)

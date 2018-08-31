@@ -14,26 +14,26 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
-ms.openlocfilehash: ac2787f69651e950ffb6b786280ba7f11f4fa8e0
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
-ms.translationtype: HT
+ms.openlocfilehash: e3efb19010f36a6ef1fa0a191695a0e2c9f39d19
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43127960"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43190521"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>A Microsoft Azure Storage Explorer kibocsátási megjegyzései
 
-Ez a cikk az Azure Storage Explorer 1.2.0-s vagy annál újabb kiadás kibocsátási megjegyzései, valamint a korábbi verziók kibocsátási megjegyzései tartalmazza.
+Ez a cikk az Azure Storage Explorer 1.4.1 kiadás kibocsátási megjegyzései, valamint a korábbi verziók kibocsátási megjegyzései tartalmazza.
 
 [A Microsoft Azure Storage Explorer](./vs-azure-tools-storage-manage-with-storage-explorer.md) egy önálló alkalmazás, amelynek segítségével egyszerűen dolgozhat Azure Storage-adatokkal Windows, macOS és Linux rendszereken.
 
 ## <a name="version-141"></a>1.4.1 verzió
 08/28/2018.
 
-### <a name="download-azure-storage-explorer-130"></a>Az Azure Storage Explorer 1.3.0 letöltése
-- [Az Azure Storage Explorer 1.3.0 Windows](https://go.microsoft.com/fwlink/?LinkId=708343)
-- [Az Azure Storage Explorer 1.3.0 Mac](https://go.microsoft.com/fwlink/?LinkId=708342)
-- [Az Azure Storage Explorer 1.3.0 linuxhoz](https://go.microsoft.com/fwlink/?LinkId=722418)
+### <a name="download-azure-storage-explorer-141"></a>Az Azure Storage Explorer 1.4.1 letöltése
+- [Az Azure Storage Explorer 1.4.1 Windows](https://go.microsoft.com/fwlink/?LinkId=708343)
+- [Az Azure Storage Explorer 1.4.1 Mac](https://go.microsoft.com/fwlink/?LinkId=708342)
+- [Az Azure Storage Explorer 1.4.1 linuxhoz](https://go.microsoft.com/fwlink/?LinkId=722418)
 
 ### <a name="hotfixes"></a>Gyorsjavítások
 * Az alkalmazás első indításakor a Storage Explorer nem tudta létrehozni a bizalmas adatok titkosításához használt kulcs. Emiatt problémák gyors hozzáférés használata esetén és a kapcsolódó erőforrásokat. [#535](https://github.com/Microsoft/AzureStorageExplorer/issues/535)

@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 06/28/2018
+ms.date: 08/29/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ea96898e36080096c91285f3ff7621f84bf81edf
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: e0d92cc52b34e1e04f13e03ec2196d13961fb7de
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42060825"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43247936"
 ---
 # <a name="update-management-solution-in-azure"></a>Frissítéskezelési megoldás az Azure-ban
 
@@ -35,6 +35,8 @@ Az alábbi ábrán látható egy koncepcióvázlaton jelenítik működését é
 
 ![Frissítéskezelési folyamatdiagramja](media/automation-update-management/update-mgmt-updateworkflow.png)
 
+Az Update Management segítségével natív módon előkészítheti a gépeket ugyanabban a bérlőben több előfizetésben található. Egy másik bérlőben, be kell vezetnie a gépek kezeléséhez, azokat [nem Azure-gépek](automation-onboard-solutions-from-automation-account.md#onboard-a-non-azure-machine).
+
 Miután a számítógép frissítési megfelelőség szempontjából vizsgálatot végez, az ügynök továbbítja az adatokat tömeges az Azure Log Analyticshez való. A Windows-számítógépen a megfelelőségi vizsgálat 12 óránként történik alapértelmezés szerint.
 
 Az ütemezett vizsgálat mellett a frissítési megfelelőség szempontjából vizsgálatot kezdeményez frissítés telepítése előtt, ha az MMA újraindítása után 15 percen belül és frissítés telepítése után.
@@ -48,7 +50,7 @@ Jelentések, hogy mennyire naprakész a számítógép az alapján, hogy milyen 
 
 A szoftverfrissítések központi telepítéséhez vagy telepítéséhez létrehozhat egy ütemezett üzembe helyezést a frissítést igénylő számítógépeken. Besorolású frissítések *nem kötelező* nem része a Windows-számítógépek esetében az üzembe helyezés hatálya. Csak a szükséges frissítéseket az üzembe helyezés hatálya szerepelnek. 
 
-Az ütemezett telepítés határozza meg, mely célszámítógépek kapni az alkalmazható frissítéseket, vagy explicit módon adja meg a számítógépeket, vagy kiválasztásával egy [számítógépcsoport](../log-analytics/log-analytics-computer-groups.md) , amelyek naplókeresésekkel, a számítógépek adott halmazára alapul. Is megad egy ütemezés jóváhagyására és kijelölésére a frissítések telepítése során, amelyek adott időszakban. 
+Az ütemezett telepítés határozza meg, mely célszámítógépek kapni az alkalmazható frissítéseket, vagy explicit módon adja meg a számítógépeket, vagy kiválasztásával egy [számítógépcsoport](../log-analytics/log-analytics-computer-groups.md) , amelyek naplókeresésekkel, a számítógépek adott halmazára alapul. Is megad egy ütemezés jóváhagyására és kijelölésére a frissítések telepítése során, amelyek adott időszakban.
 
 A telepítést az Azure Automation runbookjai végzik. A runbookok nem tekinthetők, és a runbookok nem igényelnek semmilyen konfigurálást. Frissítéstelepítés létrehozásakor a központi telepítési ütemezés, amely a megadott időben az érintett számítógépekre irányuló frissítési mester runbookot elindítja hoz létre. A mester runbook egy gyermek runbookot indít az egyes ügynököket, hajtsa végre a szükséges frissítések telepítését.
 
@@ -220,7 +222,7 @@ Hozzon létre egy új frissítéstelepítést, jelölje be **frissítések közp
 |Kihagyandó frissítések|Adja meg a kihagyandó frissítések. Windows adja meg a KB, a "KB" előtag nélkül. A Linux rendszerre adja meg a csomag nevét, vagy használjon helyettesítő.  |
 |Ütemezési beállítások|Válassza ki az időpontot, elindításához, és válassza ki bármelyik egyszer, vagy az ismétlődés ismétlődés|
 | Karbantartási időszak |Frissítések beállított percek száma. Az érték lehet nem lehet kisebb, mint 30 perc és legfeljebb 6 óra |
-| Vezérlő újraindítása| Detemines újraindítások kezelésének módját.</br>Rendelkezésre álló lehetőségek közül választhat:</br>(Alapértelmezett) szükség esetén újraindítás</br>Mindig újraindítás</br>Soha ne újraindítás</br>Csak újraindítás - nem telepíti a frissítéseket|
+| Vezérlő újraindítása| Azt határozza meg, hogyan újraindítások kell kezelni. Az elérhető lehetőségek:</br>Újraindítás szükség esetén (alapértelmezett beállítás)</br>Mindig induljon újra</br>Soha ne induljon újra</br>Csak újraindítás – frissítések nem lesznek telepítve|
 
 ## <a name="update-classifications"></a>Frissítési besorolások
 
@@ -310,7 +312,7 @@ Update
 
 #### <a name="single-azure-vm-assessment-queries-linux"></a>Egyetlen Azure virtuális gépek értékelése lekérdezések (Linux)
 
-Az egyes Linux-disztribúciók van egy [bájtsorrend](https://en.wikipedia.org/wiki/Endianness) eltérés a VMUUID értékkel, amely az Azure Resource Manager és a Log Analytics tárolja származik. A következő lekérdezés vagy bájtsorrend egyeztetés ellenőrzi. A VMUUID értékeket cserélje le a GUID-megfelelően a eredményeket adja vissza csökkenő helyiértékű és növekvő bájtsorrendű formátumát. A Log Analytics a következő lekérdezés futtatásával használandó VMUUID találhatja meg: `Update | where Computer == "<machine name>"
+Az egyes Linux-disztribúciók egy [bájtsorrend](https://en.wikipedia.org/wiki/Endianness) eltérés a VMUUID értékkel, amely az Azure Resource Manager és a Log Analytics tárolja származik. A következő lekérdezés vagy bájtsorrend egyeztetés ellenőrzi. A VMUUID értékeket cserélje le a GUID-megfelelően a eredményeket adja vissza csökkenő helyiértékű és növekvő bájtsorrendű formátumát. A Log Analytics a következő lekérdezés futtatásával használandó VMUUID találhatja meg: `Update | where Computer == "<machine name>"
 | summarize by Computer, VMUUID`
 
 ##### <a name="missing-updates-summary"></a>Hiányzó frissítések összegzése
@@ -510,7 +512,7 @@ Frissítéskezelési frissítés Adatbővítés végez a felhőben, mert néhán
 
 Azonban az Update Management előfordulhat, hogy továbbra is jelenti, hogy a gép, hogy a megfelelő frissítés további adatait, mert nem megfelelő.
 
-Frissítési besorolás szerint frissítéseinek telepítéséhez nem működik a CentOS beépített. A SUSE kiválasztásával *csak* más frissítéseket, a besorolás vonhat néhány biztonsági frissítések is, ha a biztonsági frissítések telepítve kapcsolódnak a zypper használatával (Csomagkezelő), vagy annak függőségeit először szükség. Ez a zypper használatával korlátozása. Néhány esetben fiókdíjat futtassa újra a frissítés telepítése, győződjön meg arról, hogy a frissítés naplóban.
+Frissítési besorolás szerint frissítéseinek telepítéséhez nem működik a CentOS beépített. A SUSE kiválasztásával *csak* más frissítéseket, a besorolás vonhat néhány biztonsági frissítések is, ha a biztonsági frissítések telepítve kapcsolódnak a zypper használatával (Csomagkezelő), vagy annak függőségeit először szükség. Ez a zypper használatával korlátozása. Bizonyos esetekben, előfordulhat, hogy kell futtassa újra a frissítés telepítése, ellenőrizze, ellenőrizze a frissítési napló.
 
 ## <a name="troubleshoot"></a>Hibaelhárítás
 

@@ -1,6 +1,6 @@
 ---
-title: Szöveg egyesítési kognitív keresési szakértelem (Azure Search) |} Microsoft Docs
-description: Szöveg mezőinek gyűjteményét egyesítése egy konszolidált mezőt. Egy Azure Search dúsító csővezeték kognitív szakértelem használja.
+title: Szöveg egyesítési cognitive search szakértelem (Azure Search) |} A Microsoft Docs
+description: A mezők gyűjteménye szöveg egyesítése egy konszolidált mezőt. Cognitive szakértelem használja az Azure Search-felderítési bővítést folyamatban.
 services: search
 manager: pablocas
 author: luiscabrer
@@ -10,32 +10,32 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: ba779ebcbc791f9caa60948feeb38b88a23ef379
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: d90a9f8bd32924eef6533e602957aa1704cfdae9
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34640662"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43190473"
 ---
-#    <a name="text-merge-cognitive-skill"></a>Szöveg egyesítési kognitív szakértelem
+#    <a name="text-merge-cognitive-skill"></a>Szöveg egyesítési cognitive szakértelem
 
-A **szöveg egyesítése** szakértelem összesíti egy mező mezőinek gyűjteményét szöveg. 
+A **szöveg egyesítése** szakértelem összesíti a szöveget a mezők gyűjteménye egyetlen mezőbe. 
 
 ## <a name="odatatype"></a>@odata.type  
-Microsoft.Skills.Util.TextMerger
+Microsoft.Skills.Text.MergeSkill
 
-## <a name="skill-parameters"></a>Szakértelem paraméterek
+## <a name="skill-parameters"></a>Ismeretek paraméterek
 
 A paraméterei a kis-és nagybetűket.
 
 | Paraméter neve     | Leírás |
 |--------------------|-------------|
-| insertPreTag  | Minden való beszúrása előtt kell szerepelnie a karakterláncot. Az alapértelmezett érték `" "`. Hagyja ki ezt a helyet, adja meg az értéket `""`.  |
-| insertPostTag | Karakterlánc után minden beszúrási fogja tartalmazni. Az alapértelmezett érték `" "`. Hagyja ki ezt a helyet, adja meg az értéket `""`.  |
+| insertPreTag  | Szerepelnie, előtt minden behelyettesítendő karakterlánc. Az alapértelmezett érték `" "`. Hagyja ki a helyet, állítsa az értékét `""`.  |
+| insertPostTag | Karakterlánc minden Beszúrás után fogja tartalmazni. Az alapértelmezett érték `" "`. Hagyja ki a helyet, állítsa az értékét `""`.  |
 
 
-##  <a name="sample-input"></a>A minta bemenet
-Egy JSON-dokumentum használható bemeneti biztosítva szakértelem lehet:
+##  <a name="sample-input"></a>Minta beviteli
+JSON-dokumentumok biztosítása használható bemeneti szakértelem lehet:
 
 ```json
 {
@@ -54,7 +54,7 @@ Egy JSON-dokumentum használható bemeneti biztosítva szakértelem lehet:
 ```
 
 ##  <a name="sample-output"></a>Példa kimenet
-Ez a példa bemutatja a korábbi bemeneti, feltéve, hogy a kimenet a *insertPreTag* értéke `" "`, és *insertPostTag* értéke `""`. 
+Ez a példa bemutatja a korábbi bemenet, feltéve, hogy a kimenet a *insertPreTag* értékre van állítva `" "`, és *insertPostTag* értékre van állítva `""`. 
 
 ```json
 {
@@ -70,11 +70,11 @@ Ez a példa bemutatja a korábbi bemeneti, feltéve, hogy a kimenet a *insertPre
 }
 ```
 
-## <a name="extended-sample-skillset-definition"></a>Kiterjesztett minta skillset meghatározása
+## <a name="extended-sample-skillset-definition"></a>A kiterjesztett minta indexmezők definíciója
 
-Egy általános forgatókönyv szöveg egyesítési használatára vonatkozó a képek (egy OCR szakértelem, vagy a kép felirat szöveg) képviselő szöveges alakot egyesíteni a tartalom mezőbe egy dokumentum. 
+Egy általános forgatókönyv a szöveg egyesítési be egy dokumentumot content mezőjének a képek (-OCR szakértelem, vagy a kép felirata szöveg) értéket képviselő szöveges alak egyesíteni. 
 
-A következő példa skillset szöveg kinyerése a dokumentum a beágyazott képek a OCR szakértelem használja. Ezután létrehoz egy *merged_text* mind az eredeti, és az egyes lemezképek OCRed szöveget tartalmazó mezőt. 
+A következő példa indexmezők OCR szakértelem szövegeket nyerhet ki képekből a beágyazása a dokumentumba használ. Ezután létrehoz egy *merged_text* eredeti és az egyes rendszerképek OCRed szöveget tartalmazó mezőbe. 
 
 ```json
 {
@@ -101,7 +101,7 @@ A következő példa skillset szöveg kinyerése a dokumentum a beágyazott kép
         ]
     },
     {
-      "@odata.type": "#Microsoft.Skills.Util.TextMerger",
+      "@odata.type": "#Microsoft.Skills.Text.MergeSkill",
       "description": "Create merged_text, which includes all the textual representation of each image inserted at the right location in the content field.",
       "context": "/document",
       "insertPreTag": " ",
@@ -126,7 +126,7 @@ A következő példa skillset szöveg kinyerése a dokumentum a beágyazott kép
   ]
 }
 ```
-A fenti példa feltételezi, hogy van-e a normalizált képek mező. Ahhoz, hogy normalizált képek mező, állítsa be a *imageAction* konfigurációját az indexelő-definíciót a *generateNormalizedImages* alább látható módon:
+A fenti példa feltételezi, hogy létezik-e a normalized-lemezképek mező. Normalized-lemezképek mező kapni, állítsa be a *imageAction* az indexelő meghatározását, hogy a konfigurációs *generateNormalizedImages* alább látható módon:
 
 ```json
 {  
@@ -142,6 +142,6 @@ A fenti példa feltételezi, hogy van-e a normalizált képek mező. Ahhoz, hogy
 
 ## <a name="see-also"></a>Lásd még
 
-+ [Előre definiált képességek](cognitive-search-predefined-skills.md)
-+ [Egy skillset definiálása](cognitive-search-defining-skillset.md)
++ [Előre megadott képesség](cognitive-search-predefined-skills.md)
++ [Hogyan képességcsoport megadása](cognitive-search-defining-skillset.md)
 + [Az indexelő (REST) létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-indexer)

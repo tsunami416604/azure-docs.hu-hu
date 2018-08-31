@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/15/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: e97bab36a9a1a18cab1d45abfa451139323b2320
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 532df20a7639f42d8ba1c840a5fd19f0ad0e4042
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42060642"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43246333"
 ---
 # <a name="create-log-searches-in-azure-log-analytics-using-the-log-search-portal"></a>Az Azure Log Analytics Naplókeresési portál hozhatók létre naplóbeli keresések
 
@@ -38,9 +38,8 @@ Először nyissa meg a naplókeresési portált.
 
 1. Nyissa meg az Azure Portalt.
 2. Keresse meg a Log Analyticshez, és válassza ki a munkaterületet.
-3. Válassza ki **naplóbeli keresés**.
+3. Válassza a **Naplókat**.
 
-![Naplóbeli Keresés gomb](media/log-analytics-log-search-log-search-portal/log-search-button.png)
 
 ## <a name="create-a-simple-search"></a>Egyszerű keresés létrehozása
 A feldolgozható adatok lekérdezésének leggyorsabb módja az egyszerű lekérdezés, amely egy tábla összes rekordját visszaadja.  Ha Windows vagy Linux rendszerű ügyfelek vannak csatlakoztatva a munkaterülethez, akkor az adatok az Event (Esemény, Windows) vagy a Syslog (Linux) táblában találhatók.

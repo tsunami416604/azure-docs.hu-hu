@@ -1,6 +1,6 @@
 ---
-title: Terjessze ki, és tekintse át a szerepkörök az Azure-erőforrások Privileged Identity Management használatával |} A Microsoft Docs
-description: Ez a dokumentum ismerteti kiterjesztése, és újítsa meg az Azure-erőforrásszerepkörök PIM-erőforrások.
+title: A PIM az Azure-erőforrás szerepkörök meghosszabbítása vagy megújítása |} A Microsoft Docs
+description: Útmutató az Azure AD Privileged Identity Management (PIM) az Azure-erőforrás szerepkörök meghosszabbítása vagy megújítása.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,14 +15,14 @@ ms.component: pim
 ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 7eb30f895214ff7d5a1607fc7e477d3d876a6fc1
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 2c85c5bbbd4c152113108e0fdb717d23f85f9fde
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39617523"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43189650"
 ---
-# <a name="extend-and-review-roles-in-azure-resources-by-using-privileged-identity-management"></a>Terjessze ki, és tekintse át a szerepkörök az Azure-erőforrások Privileged Identity Management használatával
+# <a name="extend-or-renew-azure-resource-roles-in-pim"></a>A PIM az Azure-erőforrás szerepkörök meghosszabbítása vagy megújítása
 
 Privileged Identity Management (PIM) az Azure-erőforrások kezelése az Azure-erőforrások hozzáférés és a hozzárendelés életciklusának új vezérlőket mutatja be. A rendszergazdák a kezdő és záró dátum-idő tulajdonságokkal tagsági rendelhet hozzá. Amikor megközelíti a hozzárendelés vége, a PIM küld az érintett felhasználók vagy csoportok e-mail-értesítéseket. A rendszergazdák az erőforrás kell biztosítják, hogy megfelelő hozzáférési e-mail-értesítéseket is küld. Hozzárendelések meg lehet újítani, és látható, akár 30 napig lejárt állapotban maradnak, még akkor is, ha nincs kibővítve a hozzáférés.
 
@@ -131,8 +131,5 @@ Az összes megtekintése lejárt a szerepkör-hozzárendeléseket, a **tagok** k
 
 ## <a name="next-steps"></a>További lépések
 
-[Aktiválásához jóváhagyás szükséges](pim-resource-roles-approval-workflow.md)
-
-[A szerepkör aktiválása](pim-resource-roles-use-the-audit-log.md)
-
-
+- [Hagyja jóvá vagy utasítsa a PIM az Azure-erőforrások szerepköreihez tartozó kérelmek](pim-resource-roles-approval-workflow.md)
+- [A PIM Azure szerepkör-beállítások konfigurálása](pim-resource-roles-configure-role-settings.md)

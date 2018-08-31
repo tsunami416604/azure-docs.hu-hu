@@ -1,6 +1,6 @@
 ---
-title: Az Azure-erőforrások szerepkörök hozzárendelése a Privileged Identity Management használatával |} A Microsoft Docs
-description: Ismerteti, hogyan rendelhet szerepköröket a PIM.
+title: Azure-erőforrás szerepköröket a PIM |} A Microsoft Docs
+description: Ismerje meg, hogyan lehet Azure-erőforrás szerepkörök hozzárendelése az Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,14 +14,25 @@ ms.component: pim
 ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 52320fe160fc1df2997dd419b406fce24f43b786
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 7019a6f97a9590d3b652584015f3077f4ed075af
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39622976"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43188920"
 ---
-# <a name="assign-roles-for-azure-resources-by-using-privileged-identity-management"></a>Az Azure-erőforrások szerepkörök hozzárendelése a Privileged Identity Management használatával
+# <a name="assign-azure-resource-roles-in-pim"></a>Rendelje hozzá a PIM az Azure-erőforrásszerepkörök
+
+Az Azure AD PIM-ben a beépített Azure-erőforrások szerepköreihez, valamint a egyéni szerepköröket, beleértve többek között a (,) képes kezelni:
+
+- Tulajdonos
+- Felhasználói hozzáférés rendszergazdája
+- Közreműködő
+- Biztonsági rendszergazda
+- Biztonságkezelő és egyéb
+
+>[!NOTE]
+Felhasználók vagy a tulajdonos vagy a felhasználói hozzáférés rendszergazdája szerepkör, és előfizetés-kezelés engedélyezése az Azure AD globális rendszergazdák csoport tagjainak olyan erőforrás-rendszergazdák. Ezek a rendszergazdák előfordulhat, hogy szerepköröket, szerepkör-beállítások konfigurálása és a PIM használata az Azure-erőforrások hozzáférésének. A lista megtekintése [beépített szerepkörök az Azure-erőforrások](../../role-based-access-control/built-in-roles.md).
 
 ## <a name="assign-roles"></a>Szerepkörök hozzárendelése
 
@@ -76,3 +87,8 @@ Ha egy függőben lévő aktiválási szerepkör, értesítésszalagról jelenik
 Válassza ki a felhasználó/csoport részletes nézete a meglévő hozzárendelések módosítása esetén **beállításainak módosítása** a művelet sávon. Módosítsa a hozzárendelési típusát **igény szerinti** vagy **közvetlen**.
 
 ![A "Beállítások módosítása" gombra kattintva a "Felhasználói details" panel](media/azure-pim-resource-rbac/rbac-assign-role-manage.png)
+
+## <a name="next-steps"></a>További lépések
+
+- [A PIM Azure szerepkör-beállítások konfigurálása](pim-resource-roles-configure-role-settings.md)
+- [A PIM az Azure AD-címtárbeli szerepkörök hozzárendelése](pim-how-to-add-role-to-user.md)

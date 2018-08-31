@@ -1,6 +1,6 @@
 ---
-title: Hozzáférési felülvizsgálat végrehajtása a Privileged Identity Management az Azure-erőforrások |} A Microsoft Docs
-description: Ez a dokumentum ismerteti a PIM hozzáférési felülvizsgálat végrehajtása az Azure-erőforrásokhoz, erőforrás szerepkör megfelelően.
+title: A saját Azure-erőforrás-szerepkörök hozzáférési felülvizsgálat végrehajtása a PIM |} A Microsoft Docs
+description: Ismerje meg, hogyan hajtsa végre az Azure-erőforrások szerepköreihez hozzáférési felülvizsgálat Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,14 +15,14 @@ ms.component: pim
 ms.date: 03/30/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 336ad1d7eff8eee0f2370e206eb98f20b4efb45b
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: a96a1de7828797f1124280fca95a3358210b55b7
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39617224"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43189718"
 ---
-# <a name="perform-an-access-review-in-pim-according-to-resource-role"></a>Hozzáférési felülvizsgálat végrehajtása az PIM-ben, a szerepkör erőforrás szerint
+# <a name="perform-an-access-review-of-my-azure-resource-roles-in-pim"></a>A PIM a saját Azure-erőforrás-szerepkörök hozzáférési felülvizsgálat végrehajtása
 Privileged Identity Management (PIM) az Azure-erőforrások egyszerűbbé teszi a hogyan kezelhetik a vállalatok számára az emelt szintű hozzáférés az erőforrásokhoz az Azure-ban. 
 
 Ha egy rendszergazdai szerepkörrel vannak rendelve, a szervezet kiemelt szerepkörű rendszergazda fel, hogy rendszeresen győződjön meg arról, hogy továbbra is szerepkörre van szüksége, hogy a feladatnak. Előfordulhat, hogy kap egy e-mailt, amelyben a hivatkozást, vagy megnyithatja közvetlenül a [az Azure portal](https://portal.azure.com). Kövesse a cikkben egy önálló tekintse át a hozzárendelt szerepkörök végrehajtásához.
@@ -50,3 +50,7 @@ Kövesse az alábbi lépéseket, és a hozzáférési felülvizsgálat befejezé
 4. Válasszon **jóváhagyása** vagy **megtagadása**. Az a **adjon meg egy OK mező**, szüksége lehet a döntést okát tartalmazza.
 
    ![Képernyőkép a felülvizsgálati Részletek lap](media/azure-pim-resource-rbac/rbac-access-review-choice.png)
+
+## <a name="next-steps"></a>További lépések
+
+- [A PIM saját Azure AD-címtárbeli szerepkörök, hozzáférési felülvizsgálat végrehajtása](pim-how-to-perform-security-review.md)

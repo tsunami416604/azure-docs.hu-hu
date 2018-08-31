@@ -8,12 +8,12 @@ ms.date: 6/21/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 91821d66ac0be265e6b66fd9eb2378169e337430
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
-ms.translationtype: MT
+ms.openlocfilehash: 696a752f199e2f7018713cb87c3b098556c5b4f5
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42058754"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43247616"
 ---
 # <a name="azure-iot-edge-support"></a>Az Azure IoT Edge-támogatás
 Nincsenek többféle módon, hogy az Azure IoT Edge-termék támogatása.
@@ -53,12 +53,14 @@ Nyilvános előzetes verzió
 
 | Operációs rendszer | AMD64 | ARM32 |
 | ---------------- | ----- | ----- |
-| Ubuntu 18.04 | Igen | Nem |
-| Ubuntu 16.04 | Igen | Nem |
+| Ubuntu 18.04 | Igen | Igen |
+| Ubuntu 16.04 | Igen | Igen |
+| CentOS 7.5 | Igen | Igen |
+| RHEL 7.5 | Igen | Igen |
 | A szél folyó 8 | Igen | Nem |
 | Yocto | Igen | Nem |
-| Debian | Igen | Nem |
-| Mac | Igen | Nem |
+| Debian 8 | Igen | Igen |
+| Debian 9 | Igen | Igen |
 
 ## <a name="container-engines"></a>Tároló-motorok
 Az Azure IoT Edge kell egy tároló motor modulok, függetlenül attól, amelyen futó operációs rendszer elindításához. A Microsoft biztosít egy tároló motor moby-motor, ez a követelmény teljesítéséhez. A Moby nyílt forráskódú projekt alapul. A docker CE és a Docker EE más népszerű motorokkal. Ezeket is alapján a Moby megnyílik forráskódú projektje, és kompatibilis az Azure IoT Edge segítségével. A Microsoft biztosít a elérhető legjobb lehetőség támogatásával rendszerekben a tároló motorok; használatával a Microsoft azonban nem rendelkezik az LHS.Gold.Multi.B4 őket hibák javításait teszi. Ebből kifolyólag a Microsoft azt javasolja, az éles rendszereket moby-motor használatával.

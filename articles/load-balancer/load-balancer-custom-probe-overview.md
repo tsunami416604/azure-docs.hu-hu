@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/10/2018
+ms.date: 08/28/2018
 ms.author: kumud
-ms.openlocfilehash: 91c7d16296653aea2381793f2e52f2b33b831185
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: 5ceddb1bcd6ce89f7014e034b56c873f02cc2007
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "42056661"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43190733"
 ---
 # <a name="load-balancer-health-probes"></a>Load Balancer állapot-mintavételei
 
@@ -181,7 +181,12 @@ Minden mintavételek háttérkészlet szereplő összes példány sikertelen les
 
 ## <a name="probesource"></a>Mintavételi forrás IP-címe
 
-Az összes Load Balancer állapot-mintavételei származnak 168.63.129.16 IP-címről használja forrásként.  Tenné a saját IP-címek az Azure virtuális hálózathoz, ha ezen állapotfigyelő mintavételi forrás IP-címet garantáltan egyedinek kell lennie, globálisan a Microsoft számára van fenntartva.  Ez a cím minden régióban azonos, és nem változik. Azt nem tekinthető biztonsági kockázatot jelent, mivel csak a belső Azure platformon is forrás egy csomag az IP-címről. 
+Terheléselosztó egy elosztott-ellenőrzési szolgáltatás a belső állapotmodell használja. Minden gazdagépen, amelyen a virtuális gépek találhatók programozása állapotadat-mintavételek száma az ügyfél-konfiguráció generálásához. A health mintavételi forgalom közvetlenül az infrastruktúra összetevője, amely az állapotminta generál és az ügyfél virtuális gép között van. Az összes Load Balancer állapot-mintavételei származnak 168.63.129.16 IP-címről használja forrásként.  Tenné a saját IP-címek az Azure virtuális hálózathoz, ha ezen állapotfigyelő mintavételi forrás IP-címet garantáltan egyedinek kell lennie, globálisan a Microsoft számára van fenntartva.  Ez a cím minden régióban azonos, és nem változik. Azt nem tekinthető biztonsági kockázatot jelent, mivel csak a belső Azure platformon is forrás egy csomag az IP-címről. 
+
+Load Balancer állapot-mintavételei mellett a következő műveletek használata az IP-címet:
+
+- Lehetővé teszi, hogy a Virtuálisgép-ügynök való kommunikációhoz. a platformot, hogy jelezze a "Kész" állapotban van
+- Lehetővé teszi a kommunikációt a szűrt névfeloldást biztosítanak az ügyfelek számára az egyéni DNS-kiszolgálókat nem határoznak meg a DNS-kiszolgáló.  Ez a szűrés biztosítja, hogy ügyfeleink csak oldható meg a gazdagép az üzemelő példány neve.
 
 A terheléselosztó állapotmintát való megjelöléséhez a példány, meg **kell** bármely Azure-ban az IP-címének engedélyezéséhez [biztonsági csoportok](../virtual-network/security-overview.md) és a helyi tűzfal-házirendek.
 

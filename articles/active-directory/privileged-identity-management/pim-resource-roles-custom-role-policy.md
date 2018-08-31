@@ -1,6 +1,6 @@
 ---
-title: Egyéni szerepkörök célbeállítások Privileged Identity Management használata az Azure-erőforrások |} A Microsoft Docs
-description: Egyéni szerepkörök használata az Azure-erőforrások a PIM Használatát ismerteti.
+title: Egyéni szerepkörök használata az Azure-erőforrásokhoz a PIM |} A Microsoft Docs
+description: Ismerje meg, hogyan használható az egyéni szerepkörök az Azure-erőforrásokat az Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.component: pim
 ms.date: 03/30/2018
 ms.author: rolyon
-ms.openlocfilehash: 03091b50eb4fb368ae0277344317b261991c4bd1
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: b01e785ac85c71b2982561e8b5e118775750fc69
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39622687"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43189873"
 ---
-# <a name="use-custom-roles-to-target-privileged-identity-management-settings"></a>Egyéni szerepkörök célbeállítások Privileged Identity Management használata
+# <a name="use-custom-roles-for-azure-resources-in-pim"></a>Egyéni szerepkörök használata az Azure-erőforrásokhoz az PIM-ben
 
 Szüksége lehet a szerepkör egyes tagjai művelet során gondoskodik a nagyobb autonómia mások szigorúakat Privileged Identity Management (PIM) vonatkoznak. Példaként vegyünk egy forgatókönyvet, ahol a szervezet több szerződés hozzárendeli, amelyek segítik az Azure-előfizetésben futó alkalmazás fejlesztésének hires.
 
@@ -49,4 +49,5 @@ Végül [szerepkörök hozzárendelése](pim-resource-roles-assign-roles.md) tag
 
 ## <a name="next-steps"></a>További lépések
 
-[Tekintse át az előfizetés-tulajdonosokat és hozzáférés](pim-resource-roles-perform-access-review.md)
+- [A PIM Azure szerepkör-beállítások konfigurálása](pim-resource-roles-configure-role-settings.md)
+- [Egyéni szerepkörök az Azure-ban](../../role-based-access-control/custom-roles.md)

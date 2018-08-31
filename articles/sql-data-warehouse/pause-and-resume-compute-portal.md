@@ -1,24 +1,24 @@
 ---
-title: 'Gyors üzembe helyezés: Szüneteltetése és folytatása számítási az Azure SQL Data Warehouse - Azure-portál |} Microsoft Docs'
-description: Az Azure portálon szünet számítási használja az Azure SQL Data Warehouse költségek csökkentése érdekében. Amikor készen áll az adatraktárat, folytathatja a számítást.
+title: 'Gyors útmutató: Szünet és folytatás számítási az Azure SQL Data Warehouse – Azure portal |} A Microsoft Docs'
+description: Az Azure SQL Data Warehouse szüneteltetési compute az Azure portal használatával költségeit. Ha az adattárház használatra kész, folytathatja a számítást.
 services: sql-data-warehouse
 author: kevinvngo
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 162bc44bccc04d97ea4d631d0e95defa342e6616
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: a82d3cfcbc4481c970f5a31ad2de711fb1562657
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31518613"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43246587"
 ---
-# <a name="quickstart-pause-and-resume-compute-for-an-azure-sql-data-warehouse-in-the-azure-portal"></a>Gyors üzembe helyezés: Felfüggesztése és folytatása számítási az Azure SQL Data Warehouse az Azure-portálon
-Az Azure portálon szünet számítási használja az Azure SQL Data Warehouse költségek csökkentése érdekében. [Folytathatja a számítást](sql-data-warehouse-manage-compute-overview.md) Ha készen áll az adatraktárat.
+# <a name="quickstart-pause-and-resume-compute-for-an-azure-sql-data-warehouse-in-the-azure-portal"></a>Az Azure Portalon az Azure SQL Data Warehouse a számítás rövid útmutató: Szüneteltetése és folytatása
+Az Azure SQL Data Warehouse szüneteltetési compute az Azure portal használatával költségeit. [Folytathatja a számítást](sql-data-warehouse-manage-compute-overview.md) Ha készen áll az adattárház használata.
 
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
@@ -28,61 +28,61 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Használjon [létrehozása és a Connect - portál](create-data-warehouse-portal.md) nevű adatraktár létrehozásához **mySampleDataWarehouse**. 
+Használat [létrehozás és csatlakozás – portál](create-data-warehouse-portal.md) nevű adattárház létrehozásához **mySampleDataWarehouse**. 
 
-## <a name="pause-compute"></a>Felfüggesztés számítási
-Költségek csökkentése érdekében szüneteltetése, és folytassa a számítási erőforrások igény. Például nem fogja használni az adatbázis éjszaka és hétvégén, akkor is ilyen alkalmakkor szünetelteti, és folytatásához azt a nap folyamán. Ön nem számlázni számítási erőforrásokat, amíg az adatbázis fel van függesztve. Azonban Ön továbbra is tárolási számlázni. 
+## <a name="pause-compute"></a>Számítás szüneteltetése
+Költségek csökkentése érdekében is szüneteltetése és folytatása a számítási erőforrások igény szerinti. Például ha nem fogja használni az adatbázis az éjszaka és hétvégén, is szüneteltetheti, ilyen alkalmakkor, és folytathatja a nap folyamán. Nem kell fizetnie a számítási erőforrásokat, miközben az adatbázis fel van függesztve. Azonban továbbra is a tárolásért kell fizetnie. 
 
-Kövesse az alábbi lépéseket egy SQL data warehouse felfüggesztését.
+Kövesse az alábbi lépéseket egy SQL data warehouse felfüggesztése.
 
 1. Az Azure Portal bal oldali paneljén kattintson az **SQL-adatbázisok** elemre.
 2. Az **SQL-adatbázisok** lapon jelölje ki a **mySampleDataWarehouse** elemet. Ezzel megnyílik az adattárház. 
-3. Az a **mySampleDataWarehouse** lapon, a közlemény **állapot** van **Online**.
+3. Az a **mySampleDataWarehouse** lapon látható, **állapot** van **Online**.
 
-    ![Online számítási](media/pause-and-resume-compute-portal/compute-online.png)
+    ![Számítási online](media/pause-and-resume-compute-portal/compute-online.png)
 
-4. Az adatraktár szüneteltethető, kattintson a **szüneteltetése** gombra. 
+4. Felfüggessze az adatraktárat, kattintson a **szüneteltetése** gombra. 
 5. Megerősítő kérdés megkérdezi, folytatja-e. Kattintson a **Yes** (Igen) gombra.
-6. Várjon egy kis ideig, és figyelje meg, majd a **állapot** van **felfüggesztése**.
+6. Várjon néhány pillanatot, és figyelje meg, majd a **állapot** van **Pausing**.
 
     ![Felfüggesztés](media/pause-and-resume-compute-portal/pausing.png)
 
-7. Ha a szüneteltetési művelete befejeződött, az állapot értéke **felfüggesztve** , és a választógomb megjelenítését **Start**.
-8. A számítási erőforrásokat, az adatraktár mostantól offline módban. Ön nem számlázni számítási mindaddig, amíg a szolgáltatás folytatása.
+7. A pause művelet befejeződése után az állapot értéke **felfüggesztett** , és a választógomb **Start**.
+8. A data warehouse a számítási erőforrások immár offline állapotban van. Nem kell fizetnie a számítási mindaddig, amíg a szolgáltatás folytatásához.
 
     ![Kapcsolat nélküli számítási](media/pause-and-resume-compute-portal/compute-offline.png)
 
 
-## <a name="resume-compute"></a>Folytatás számítási
-Kövesse az alábbi lépéseket egy SQL data warehouse folytatni.
+## <a name="resume-compute"></a>Számítási folytatása
+Kövesse az alábbi lépéseket egy SQL data warehouse folytatásához.
 
 1. Az Azure Portal bal oldali paneljén kattintson az **SQL-adatbázisok** elemre.
 2. Az **SQL-adatbázisok** lapon jelölje ki a **mySampleDataWarehouse** elemet. Ezzel megnyílik az adattárház. 
-3. Az a **mySampleDataWarehouse** lapon, a közlemény **állapot** van **felfüggesztve**.
+3. Az a **mySampleDataWarehouse** lapon látható, **állapot** van **felfüggesztett**.
 
     ![Kapcsolat nélküli számítási](media/pause-and-resume-compute-portal/compute-offline.png)
 
-4. Az adatraktár folytatásához kattintson **Start**. 
-5. Megerősítő kérdés megkérdezi, elindítja-e. Kattintson a **Yes** (Igen) gombra.
+4. Az adatraktár újraindításához kattintson **Start**. 
+5. Megerősítő kérdés jelenik meg azzal a kérdéssel, ha el szeretné indítani. Kattintson a **Yes** (Igen) gombra.
 6. Figyelje meg a **állapot** van **folytatása**.
 
     ![Folytatás](media/pause-and-resume-compute-portal/resuming.png)
 
-7. Az adatraktár újra online állapotba kerül, ha az állapot értéke **Online** , és a választógomb megjelenítését **szünet**.
-8. A számítási erőforrásokat, az adatraktár most online állapotban, és használhatja a szolgáltatást. A számítási díjakat folytatódik.
+7. Az adatraktár újra online állapotba kerül, ha az állapot értéke **Online** , és a választógomb **szüneteltetése**.
+8. A data warehouse a számítási erőforrások már online állapotban, és használhatja a szolgáltatást. A számítási díjak folytatódik.
 
-    ![Online számítási](media/pause-and-resume-compute-portal/compute-online.png)
+    ![Számítási online](media/pause-and-resume-compute-portal/compute-online.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Adattárházegységek és az adatraktárban tárolt adatok van folyamatban szó. Ezek a számítási és tárolási erőforrások elkülönítve lesznek kiszámlázva. 
+Az adattárházegységek és az adatraktárban tárolt adatok díjkötelesek. Ezek a számítási és tárolási erőforrások elkülönítve lesznek kiszámlázva. 
 
-- Ha meg szeretné tartani az adatokat a tárhelyen, szüneteltesse a számítási.
+- Ha szeretné megőrizni az adatokat a tárolás, számítás szüneteltetésére.
 - Ha szeretné megelőzni a jövőbeli kiadásokat, az adattárházat törölheti is. 
 
 Kövesse az alábbi lépéseket a fölöslegessé vált erőforrások eltávolítására.
 
-1. Jelentkezzen be a [Azure-portálon](https://portal.azure.com), majd kattintson az az adatraktár.
+1. Jelentkezzen be a [az Azure portal](https://portal.azure.com), és kattintson az adattárházra.
 
     ![Az erőforrások eltávolítása](media/load-data-from-azure-blob-storage-using-polybase/clean-up-resources.png)
 
@@ -90,13 +90,13 @@ Kövesse az alábbi lépéseket a fölöslegessé vált erőforrások eltávolí
 
 2. Ha el szeretné távolítani az adattárházat, hogy a számítási és tárolási erőforrásokért se kelljen fizetnie, kattintson a **Törlés** parancsra.
 
-3. Kattintson a létrehozott SQL server **mynewserver-20171113.database.windows.net**, és kattintson a **törlése**.  A törléssel bánjon óvatosan, mivel a kiszolgálóval együtt a hozzá rendelt összes adatbázis is törölve lesz.
+3. A létrehozott SQL-kiszolgáló eltávolításához kattintson **mynewserver-20171113.database.windows.net**, és kattintson a **törlése**.  A törléssel bánjon óvatosan, mivel a kiszolgálóval együtt a hozzá rendelt összes adatbázis is törölve lesz.
 
 4. Az erőforráscsoport törléséhez kattintson a **myResourceGroup** elemre, majd az **Erőforráscsoport törlése** parancsra.
 
 
 ## <a name="next-steps"></a>További lépések
-Most szünetel, és az adatraktár számítási folytatódik. Ha bővebb információra van szüksége az Azure SQL Data Warehouse-zal kapcsolatban, folytassa az adatok betöltésével foglalkozó oktatóanyaggal.
+Most fel van függesztve, és az adatraktár számítási folytatódik. Ha bővebb információra van szüksége az Azure SQL Data Warehouse-zal kapcsolatban, folytassa az adatok betöltésével foglalkozó oktatóanyaggal.
 
 > [!div class="nextstepaction"]
 >[Adatok betöltése az SQL Data Warehouse-okba](load-data-from-azure-blob-storage-using-polybase.md)

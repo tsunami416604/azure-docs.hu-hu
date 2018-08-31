@@ -10,21 +10,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/03/2018
 ms.author: sngun
-ms.openlocfilehash: 053e72ce81f69b267c72ded572e8912a1a09d2e6
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: a8d9704c48801b98800abb71769ba0954e727848
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39579697"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43190456"
 ---
 # <a name="azure-cosmos-db-faq"></a>Az Azure Cosmos DB – gyakori kérdések
 ## <a name="azure-cosmos-db-fundamentals"></a>Az Azure Cosmos DB – alapok
-### <a name="what-is-azure-cosmos-db"></a>Mi az Azure Cosmos DB?
-Az Azure Cosmos DB egy globálisan replikált, többmodelles adatbázis-szolgáltatás, amely sémamentes adatok széleskörű lekérdezését, konfigurálható és megbízható teljesítményt nyújt, és gyors fejlesztést tesz lehetővé a. Ez a összes gazdafájlon keresztül, egy felügyelt platform, amely használatával a power és elérni a Microsoft Azure. 
-
-Azure Cosmos DB a webes, mobil-, játék-, a megoldást és IoT-alkalmazásokat, ha kiszámítható teljesítményt, magas rendelkezésre állású, rövid késést, és a egy séma nélküli adatmodell kapcsolatos követelményeket. Séma rugalmasságát, és gazdag indexelésnek kínál, és több dokumentumos tranzakciótámogatást JavaScript-integrációval ellátott tartalmazza. 
-
-További adatbázissal kapcsolatos kérdések, válaszok, és üzembe helyezése és ezzel a szolgáltatással kapcsolatos utasításokat lásd: a [Azure Cosmos DB-dokumentációs oldalát](https://docs.microsoft.com/azure/cosmos-db/).
 
 ### <a name="what-happened-to-the-documentdb-api"></a>Mi történt a DocumentDB API-hoz?
 
@@ -84,8 +78,8 @@ Ha a fiókjával van probléma, nyújtson be [támogatási kérelmet](https://ms
 
 További kérdések küldheti el a csapatának [ askcosmosdb@microsoft.com ](mailto:askcosmosdb@microsoft.com); Ez azonban nem a technikai támogatási címe. 
 
-<a id="try-cosmos-db"></a>
-## <a name="try-azure-cosmos-db-subscriptions"></a>Próbálja ki az Azure Cosmos DB-előfizetések
+
+## <a id="try-cosmos-db"></a>Próbálja ki az Azure Cosmos DB-előfizetések
 
 Most már élvezheti egy időben korlátozott Azure Cosmos DB nyújtotta előfizetés, díjfizetés és elköteleződés ingyenes nélkül. Próbálja ki az Azure Cosmos DB-előfizetéshez tartozó regisztráció, lépjen a [próbálja ki ingyenesen az Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/). Ebben az előfizetésben nem azonos az a [Azure ingyenes próbaverziója](https://azure.microsoft.com/free/), és használható mellett az Azure ingyenes próbaverziójára, vagy egy Azure-előfizetéssel. 
 
@@ -124,7 +118,7 @@ Tároló és az adatbázis átviteli szintű üzembe helyezésének egymástól 
 
 Jelenleg létrehozhat gyűjtemény partíciós kulcs adattovábbítási kapacitással rendelkező használatával a [CreatePartitionedCollection](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/CollectionManagement/Program.cs#L118) metódus a .net SDK-t vagy a használatával a [Azure CLI-vel](https://docs.microsoft.com/cli/azure/cosmosdb/collection?view=azure-cli-latest#az-cosmosdb-collection-create). A rögzített gyűjtemény létrehozása az Azure portal használatával jelenleg nem érhető támogatott.  
 
-## <a name="develop-against-the-sql-api"></a>Fejlesztés az SQL API-n
+## <a name="sql-api"></a>SQL API
 
 ### <a name="how-do-i-start-developing-against-the-sql-api"></a>Hogyan kezdhetem meg az SQL API fejlesztését?
 Először, jelentkezzen Azure-előfizetésre. Regisztrációt követően az Azure-előfizetéssel, hozzáadhat egy SQL API-tárolót az Azure-előfizetéshez. Az Azure Cosmos DB-fiók hozzáadására vonatkozó utasításokért lásd: [hozzon létre egy Azure Cosmos DB-adatbázisfiók](create-sql-api-dotnet.md#create-account). 
@@ -195,7 +189,7 @@ Ez a korlátozás a JavaScript. JavaScript kétszeres pontosságú lebegőpontos
 A descendants (például dokumentumok, a mellékletek) és a tároló szintű engedélyek ResourceTokens használatával történő létrehozásának engedélyezett. Ez azt jelenti, hogy hozzon létre egy engedéllyel, amikor az adatbázis próbálkozik, vagy a fiók szintjén jelenleg nem engedélyezett.
 
 
-## <a name="develop-against-the-api-for-mongodb"></a>Fejlesztés az API a mongodb-hez
+## <a name="mongodb-api"></a>MongoDB API
 ### <a name="what-is-the-azure-cosmos-db-api-for-mongodb"></a>Mi az az Azure Cosmos DB API a mongodb-hez?
 Az Azure Cosmos DB API a mongodb-hez, amely olyan kompatibilitási, amely lehetővé teszi az alkalmazások egyszerűen és könnyen kommunikálni az Azure Cosmos DB natív adatbázismotor meglévő, a Közösség által támogatott Apache MongoDB API-k és az illesztőprogramok. A fejlesztők mostantól a meglévő MongoDB eszköz láncok és képességek alkalmazások összeállítását, amelyek az Azure Cosmos DB előnyeit. A fejlesztők kihasználhatják az Azure Cosmos DB, az egyedi képességeivel, többek között az automatikus indexelést, a biztonsági mentési karbantartási, pénzügyi felelősséggel vállalt szolgáltatásiszint-szerződések (SLA), és így tovább.
 
@@ -215,7 +209,7 @@ MongoDB gyakori hibakódok mellett a MongoDB API-val rendelkezik a saját adott 
 | TooManyRequests     | 16500 | Felhasznált kérelemegységek teljes száma túllépte a gyűjteményhez kiosztott kérelemegység díjaival, és megfelelően szabályozva lett. | Az átviteli sebességet rendelve egy tárolót vagy tárolók egy készletét az Azure portal vagy az újrapróbálkozás újra megfontolni. |
 | ExceededMemoryLimit | 16501 | Több-bérlős szolgáltatás a művelet túllépte az ügyfél memória mekkora. | Csökkentse a szigorúbb lekérdezési feltételek használatával művelet hatókörének, vagy forduljon az ügyfélszolgálathoz a a [az Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). <br><br>Példa:  *&nbsp; &nbsp; &nbsp; &nbsp;db.getCollection('users').aggregate ([<br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{$match: {név: "Andy"}}, <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{$sort: {kor: -1} }<br>&nbsp;&nbsp;&nbsp;&nbsp;])*) |
 
-## <a name="develop-with-the-table-api"></a>Fejlesztés a Table API-val
+## <a id="table"></a>Tábla API
 
 ### <a name="how-can-i-use-the-table-api-offering"></a>Hogyan használhatom a Table API-ajánlat? 
 Az Azure Cosmos DB Table API érhető el a [az Azure portal][azure-portal]. Először, jelentkezzen Azure-előfizetésre. Miután bejelentkezett a, az egy Azure Cosmos DB Table API-fiók hozzáadása az Azure-előfizetéshez, és adja hozzá a táblák a fiókjához. 
@@ -446,7 +440,7 @@ Az Azure Table storage és az Azure Cosmos DB Table API az azonos SDK-kat haszn�
 ### <a name="why-do-i-get-throttled-when-i-try-to-create-lot-of-tables-one-after-another-in-the-table-api"></a>Miért do I leszabályozza jelenik meg létrehozása táblák rengeteg egymás után a Table API-ban?
 Az Azure Cosmos DB amely késés, átviteli sebesség, rendelkezésre állás és konzisztencia megvalósulásának biztosító SLA-alapú rendszer. Mivel a szolgáltatás egy üzembe helyezett rendszert, ezek a követelmények biztosításához erőforrások fenntartja magának. A táblák létrehozásának gyors aránya észlelt és szabályozott. Azt javasoljuk, hogy, tekintse meg a táblák létrehozásának sebessége alacsonyabb, kevesebb mint 5 percenként. Ne feledje, hogy a tábla API-t egy üzembe helyezett rendszer. A pillanatban, annak üzembe helyezésekor, elkezdi akkor kell fizetnie. 
 
-## <a name="develop-against-the-graph-api"></a>Fejlesztés a Graph API ellen
+## <a name="graph-api"></a>Graph API
 ### <a name="how-can-i-apply-the-functionality-of-graph-api-to-azure-cosmos-db"></a>Hogyan használhatom a Graph API funkcióit az Azure Cosmos DB?
 Használhatja egy bővítménykódtár a alkalmazni a Graph API funkcióit. A könyvtár neve a Microsoft Azure-diagramok, és elérhető a [NuGet](https://www.nuget.org/packages/Microsoft.Azure.Graphs). 
 
@@ -456,8 +450,8 @@ Igen, bővítését tervezzük más mechanizmusok lekérdezés a jövőben.
 ### <a name="how-can-i-use-the-new-graph-api-offering"></a>Hogyan használható az új Graph API-ajánlat? 
 Első lépésként hajtsa végre a [Graph API](../cosmos-db/create-graph-dotnet.md) rövid útmutatóban.
 
-<a id="cassandra"></a> 
-## <a name="develop-with-the-apache-cassandra-api-preview"></a>Fejlesztés az Apache Cassandra API (előzetes verzió)
+
+## <a id="cassandra"></a> Cassandra API
 
 ### <a name="what-is-the-protocol-version-supported-in-the-private-preview-is-there-a-plan-to-support-other-protocols"></a>Mi az a private preview verzióban támogatott protokoll verziója? Egyéb protokollok támogatása csomag van?
 Az Azure Cosmos DB Apache Cassandra API ma CQL 4-es verziója támogatja. Ha más protokollt támogatásával kapcsolatos visszajelzést szeretne küldeni, ossza meg velünk keresztül [uservoice-visszajelzések](https://feedback.azure.com/forums/263030-azure-cosmos-db) , vagy küldjön egy e-mailek [ askcosmosdbcassandra@microsoft.com ](mailto:askcosmosdbcassandra@microsoft.com). 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: v-daljep
 ms.reviewer: carlrab
-ms.openlocfilehash: 9ad36d37fef4c1ee05e31098b145b0264b6440ca
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 38b59c28096b23a22b216158d9e945a2881a4f41
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43126440"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43189258"
 ---
 # <a name="automatic-tuning-in-azure-sql-database"></a>Az Azure SQL Database automatikus finomhangolása
 
@@ -64,7 +64,7 @@ Automatikus hangolási works áttekintését és a jellemző használati forgat�
 
 Az Azure SQL Database automatikus finomhangolási beállítások a következők:
  1. **A CREATE INDEX** -indexek, amely növelheti a számítási feladatok teljesítményére, indexeli, és automatikusan ellenőrzi, hogy a lekérdezések teljesítménye javult azonosítja.
- 2. **DROP INDEX** – azonosítja a napi redundáns és ismétlődő indexeket és az indexek, amelyek hosszú ideje nem használtak (> 90 nap). Vegye figyelembe, hogy ez a beállítás nem kompatibilis alkalmazások használatával a partíció közötti váltás és index mutatókat.
+ 2. **DROP INDEX** -redundáns és ismétlődő indexeket naponta, azonosítja egyedi indexek és az indexek, amelyek hosszú ideje nem használtak (> 90 nap). Vegye figyelembe, hogy ez a beállítás nem kompatibilis alkalmazások használatával a partíció közötti váltás és index mutatókat.
  3. **FORCE LAST GOOD Plan csomag** -SQL-lekérdezések végrehajtási terv, amely alacsonyabb, mint az előző jó terv, és lekérdezi az utolsó ismert jó terv helyett a romlott terv használatával azonosítja.
 
 Az automatikus hangolás azonosítja **a CREATE INDEX**, **DROP INDEX**, és **KÉNYSZERÍTETT utolsó JÓ terv** optimalizálhatja az adatbázis teljesítményét, és megjeleníti őket a javaslatok [Az azure portal](sql-database-advisor-portal.md), és elérhetővé teszi azokat keresztül [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) és [REST API-val](https://docs.microsoft.com/rest/api/sql/serverautomatictuning).

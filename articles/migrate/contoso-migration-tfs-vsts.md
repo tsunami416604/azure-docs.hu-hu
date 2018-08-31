@@ -5,58 +5,60 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 07/12/2018
+ms.date: 08/29/2018
 ms.author: raynew
-ms.openlocfilehash: 6d1d90ff0f9a49d3db9f4dc8894c9837942658f0
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: f854c269eaf65335fb5654709fe98857d11865b2
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39214999"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43190135"
 ---
 # <a name="contoso-migration--refactor-a-team-foundation-server-deployment-to-visual-studio-team-services-vsts"></a>Contoso áttelepítési: Újrabontás a Team Foundation Server üzembe helyezés a Visual Studio Team Services (VSTS)
 
-Ez a cikk bemutatja, hogyan Contoso vannak újrabontás azok helyszíni Team Foundation Server (TFS) központi telepítésének áttelepítése révén azt a Visual Studio Team Services (VSTS) az Azure-ban. A Contoso fejlesztői csapat használta TFS együttműködést és verziókövetési az elmúlt öt év során. Most azok szeretne áthelyezni egy felhőalapú megoldás fejlesztési és tesztelési munka, valamint a verziókövetés. Helyezze át a fejlesztési és üzemeltetési modell, és új natív felhőalapú alkalmazásokat hozhat létre szerepet játszik a vsts-ben.
+Ez a cikk bemutatja, hogyan Contoso van újrabontás a helyszíni Team Foundation Server (TFS) telepítéshez telepítse át azt a Visual Studio Team Services (VSTS) az Azure-ban. A Contoso fejlesztői csapat használta TFS együttműködést és verziókövetési az elmúlt öt év során. A csapat most szeretne áthelyezni egy felhőalapú megoldás fejlesztési és tesztelési munka, valamint a verziókövetés. A csapat a fejlesztési és üzemeltetési modell át, és új natív felhőalapú alkalmazásokat hozhat létre szerepet játszik a vsts-ben.
 
-Ez a dokumentum a cikkeket, amelyek megmutatják, hogyan a fiktív Contoso áttelepíti a Microsoft Azure felhőbe helyszíni erőforrásait a tizenegyedik. A sorozat tartalmazza a háttér-információkat, és a egy áttelepítési infrastruktúra beállítását, és futtassa a különböző típusú migrálások bemutató forgatókönyvek. Forgatókönyvek egyre összetettebbé válnak, és idővel további cikkek adunk hozzá.
+Ez a dokumentum az egyik, a cikkeket, amelyek megmutatják, hogyan a fiktív Contoso áttelepíti a Microsoft Azure felhőbe helyszíni erőforrásait. A sorozat tartalmazza a háttér-információkat, és a egy áttelepítési infrastruktúra beállítását, és futtassa a különböző típusú migrálások bemutató forgatókönyvek. Forgatókönyvek egyre összetettebbé válnak. Idővel további cikkek adunk hozzá.
+
 
 **Cikk** | **Részletek** | **Állapot**
 --- | --- | ---
-[1. cikk: áttekintés](contoso-migration-overview.md) | Contoso-áttelepítési stratégia, a cikk sorozat és a mintaalkalmazások használjuk áttekintést nyújt. | Szabad
-[2. cikk: Egy Azure-infrastruktúra üzembe helyezése](contoso-migration-infrastructure.md) | Ismerteti, hogyan Contoso előkészíti a helyszíni és az Azure-infrastruktúra az áttelepítéshez. Az összes Contoso áttelepítési forgatókönyvek ugyanazon az infrastruktúrán használható. | Szabad
-[3. cikk: A helyszíni erőforrások értékelése](contoso-migration-assessment.md)  | Bemutatja, hogyan Contoso fut a VMware-en futó helyszíni kétrétegű SmartHotel alkalmazás értékelése. Mérje fel az alkalmazás virtuális gépek a [Azure Migrate](migrate-overview.md) szolgáltatás és az alkalmazás SQL Server-adatbázisnak a [Azure Database Migration Assistant](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017). | Szabad
-[4. cikk: Áthelyezési Azure virtuális gépek és a egy felügyelt SQL-példány](contoso-migration-rehost-vm-sql-managed-instance.md) | Bemutatja, hogyan Contoso áttelepíti az Azure-bA a SmartHotel alkalmazást. Az alkalmazás webes virtuális gépet át [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview), és az adatbázis használatával a [Azure Database Migration](https://docs.microsoft.com/azure/dms/dms-overview) szolgáltatás migrálása a felügyelt SQL-példányt. | Szabad
-[Cikk 5: Az Azure virtuális gépeken áthelyezési](contoso-migration-rehost-vm.md) | Bemutatja, hogyan Contoso azok SmartHotel áttelepítése Azure IaaS virtuális gépeket, a Site Recovery szolgáltatással.
-[A cikk 6: Újratárolás az Azure virtuális gépek és az SQL Server rendelkezésre állási csoportok](contoso-migration-rehost-vm-sql-ag.md) | Bemutatja, hogyan telepíti át a Contoso a SmartHotel alkalmazást. A Site Recovery számára, hogy az alkalmazás virtuális gépeit és a egy SQL Server rendelkezésre állási csoportot az alkalmazás-adatbázis áttelepítése a Database Migration service használnak. | Szabad
-[7. cikk: Egy Linux alkalmazás Újratárolása az Azure virtuális gépek](contoso-migration-rehost-linux-vm.md) | Bemutatja, hogyan Contoso áttelepíti a osTicket Linux alkalmazás az Azure IaaS virtuális gépek Azure Site Recovery használatával.
-[A cikk 8: Egy Linux alkalmazás Újratárolása az Azure virtuális gépek és az Azure MySQL-kiszolgáló](contoso-migration-rehost-linux-vm-mysql.md) | Bemutatja, hogyan telepíti át a Contoso osTicket Linux-alkalmazás. A Site Recovery a virtuális gépek migrálása, és a MySQL Workbench használata áttelepítése az Azure MySQL Server-példány. | Szabad
-[9. cikk: Újrabontás az alkalmazások az Azure Web App és az Azure SQL Database](contoso-migration-refactor-web-app-sql.md) | Bemutatja, hogyan Contoso a SmartHotel alkalmazást áttelepíti egy Azure container-alapú webalkalmazásba, és az alkalmazás-adatbázis áttelepítése az Azure SQL-kiszolgálóra. | Szabad
-[10. cikk: Újrabontás egy Linux-alkalmazást az Azure App Service és az Azure MySQL-kiszolgáló](contoso-migration-refactor-linux-app-service-mysql.md) | Bemutatja, hogyan Contoso áttelepíti az Azure App Service segítségével PHP 7.0 Docker-tárolót a osTicket Linux-alkalmazás. A központi telepítés kódbázis a Githubra áttelepítése. Az alkalmazás-adatbázis áttelepítése az Azure MySQL-hez. | Szabad
-11. cikk: Újrabontás a TFS üzembe helyezés a vsts-ben | A fejlesztői TFS alkalmazás migrálása a vsts-ben az Azure-ban | Ez a cikk
-[A cikk 12: Azure-tárolók és az Azure SQL Database az alkalmazás újratervezése](contoso-migration-rearchitect-container-sql.md) | Bemutatja, hogyan Contoso áttelepíti, és rearchitects SmartHotel alkalmazás az Azure-bA. Az alkalmazás webes réteg egy Windows-tárolót, és a egy Azure SQL Database-ben az alkalmazás-adatbázis újratervezése azokat. | Szabad
-[Cikk 13: Építse újra az alkalmazást az Azure-ban](contoso-migration-rebuild.md) | Bemutatja, hogyan építse újra a Contoso SmartHotel alkalmazás számos Azure-szolgáltatások és szolgáltatások, beleértve az App Services, Azure-beli Kubernetes, az Azure Functions, a Cognitive services és a Cosmos DB használatával. | Szabad
+[1. cikk: áttekintés](contoso-migration-overview.md) | A cikk sorozat, a Contoso-áttelepítési stratégia és az adatsorozathoz használt mintaalkalmazások áttekintése. | Elérhető
+[2. cikk: Azure-infrastruktúra üzembe helyezése](contoso-migration-infrastructure.md) | Contoso előkészíti a helyszíni infrastruktúra és az Azure-infrastruktúra az áttelepítéshez. A sorozat minden migrálásról szóló cikksorozat ugyanazon az infrastruktúrán használható. | Elérhető
+[3. cikk: Mérje fel helyszíni erőforrásait az Azure-ba való migráláshoz](contoso-migration-assessment.md)  | Contoso fut, annak a helyszíni SmartHotel app VMware-en futó értékelését. Contoso értékeli az alkalmazás virtuális gépek az Azure Migrate szolgáltatás és a Data Migration Assistant szolgáltatást használó alkalmazás SQL Server-adatbázis használatával. | Elérhető
+[4. cikk: Áthelyezési egy alkalmazást egy Azure virtuális Gépen, és SQL Database felügyelt példány](contoso-migration-rehost-vm-sql-managed-instance.md) | Contoso lift-and-shift az áttelepítés fut az Azure-bA a helyszíni SmartHotel alkalmazáshoz. Contoso áttelepíti az alkalmazás előtérbeli virtuális gép használatával [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview). Contoso az alkalmazás-adatbázis áttelepítése egy Azure SQL Database felügyelt példánya a a [Azure Database Migration Service](https://docs.microsoft.com/azure/dms/dms-overview). | Elérhető  
+[5. cikk: Áthelyezési egy alkalmazást az Azure-beli virtuális gépeken](contoso-migration-rehost-vm.md) | Contoso annak SmartHotel alkalmazás virtuális gépeit áttelepíti a Site Recovery szolgáltatással az Azure virtuális gépek. | Elérhető
+[A cikk 6: Újratárolás az Azure virtuális gépek és az SQL Server rendelkezésre állási csoportok](contoso-migration-rehost-vm-sql-ag.md) | Contoso áttelepíti a SmartHotel alkalmazást. Contoso Site Recovery használatával az alkalmazás virtuális gépek áttelepítéséhez. A Database Migration Service használatával az alkalmazás-adatbázis migrálása az AlwaysOn rendelkezésre állási csoport által védett SQL Server-fürtöt. | Elérhető
+[7. cikk: Áthelyezési egy Linux-alkalmazást az Azure-beli virtuális gépeken](contoso-migration-rehost-linux-vm.md) | Contoso az Azure virtuális gépek Azure Site Recovery használatával Linux osTicket alkalmazás lift-and-shift áttelepítés befejezése | Elérhető
+[A cikk 8: Áthelyezési egy Linux-alkalmazást az Azure virtuális gépeken és az Azure MySQL-kiszolgáló](contoso-migration-rehost-linux-vm-mysql.md) | Contoso áttelepíti a Linux-osTicket alkalmazás Azure-beli virtuális gépek Azure Site Recovery használatával, és az alkalmazás-adatbázis áttelepítése Azure MySQL Server-példány, a MySQL Workbench használatával. | Elérhető
+[9. cikk: Újrabontás egy alkalmazást az Azure Web Apps és az Azure SQL database](contoso-migration-refactor-web-app-sql.md) | A Contoso a SmartHotel alkalmazást áttelepíti az Azure Web Apps és az alkalmazás-adatbázis áttelepítése az Azure SQL Server-példány, a Database Migration Assistant | Elérhető
+[10. cikk: Újrabontás egy Linux-alkalmazás Azure Web Apps és az Azure MySQL](contoso-migration-refactor-linux-app-service-mysql.md) | Contoso áttelepíti a Linux-osTicket alkalmazás egy Azure-webalkalmazást az Azure Traffic Managerrel, a folyamatos készregyártás a GitHub integrált több Azure-régióban található. Contoso áttelepíti az alkalmazás-adatbázis egy Azure Database for MySQL-példányt. | Elérhető 
+11. cikk: Újrabontás a TFS-t a vsts-ben | Contoso áttelepíti a helyi Team Foundation Server központi Visual Studio Team Services az Azure-ban. | Ez a cikk.
+[A cikk 12: Azure-tárolók és az Azure SQL Database az alkalmazás újratervezése](contoso-migration-rearchitect-container-sql.md) | Contoso annak SmartHotel app áttelepíti az Azure-bA. Ezután azt rearchitects az alkalmazás webes réteg az Azure Service Fabric és az adatbázis az Azure SQL Database-ban futó Windows tárolójaként. | Elérhető
+[Cikk 13: Építse újra az alkalmazást az Azure-ban](contoso-migration-rebuild.md) | Contoso újraépíti a SmartHotel alkalmazás számos Azure-szolgáltatások és szolgáltatások, beleértve az Azure App Service, Azure Kubernetes Service (AKS), az Azure Functions, Azure Cognitive Services és az Azure Cosmos DB használatával. | Elérhető
+
 
 
 ## <a name="business-drivers"></a>A stratégiai
 
-Az informatikai vezetőségi szorosan együttműködik a jövőbeli célok azonosításához üzleti. Üzleti partnerek nem túlságosan érintett, a fejlesztői eszközöket és technológiákat, de az ezeken a pontokon rögzített:
+Az informatikai vezetőségi szorosan együttműködik üzleti partnerek jövőbeli célok azonosításához. Partnerek nem túlságosan érintett, a fejlesztői eszközöket és technológiákat, de az ezeken a pontokon rögzített:
 
 - **Szoftver**: az alapvető üzleti függetlenül minden cégek immár szoftvervállalat, beleértve a Contoso. Üzleti vezetői hogyan van érdekelné informatikai segíthet a vállalat vezethet új munkamódszereket felhasználók és ügyfelek számára, akik élményt.
-- **Hatékonyság**: Contoso cégnek szüksége van a folyamat hatékonyabbá, és távolítsa el a felesleges eljárások a fejlesztők és a felhasználók számára. Ez lehetővé teszi számukra, hogy az ügyfelek igényei hatékonyabban. Az üzleti igényeknek megfelelő IT a gyors, pazarolni arra időt és pénzt nélkül.
+- **Hatékonyság**: Contoso cégnek szüksége van a folyamat hatékonyabbá, és távolítsa el a felesleges eljárások a fejlesztők és a felhasználók számára. Ez lehetővé teszi, hogy az ügyfelek igényei hatékonyabban a vállalat. Az üzleti igényeknek megfelelő IT a gyors, pazarolni arra időt és pénzt nélkül.
 - **A gyorsaság**: Contoso IT kell reagálni az üzleti igények, és a Marketplace-en engedélyezése sikeres versenyképes gyorsabban reagálhatnak. Informatikai nem lehet a vállalat egy blokkoló.
 
 ## <a name="migration-goals"></a>Áttelepítési célok
 
 A Contoso felhőalapú csapat rendelkezik rögzített le a vsts-ben az áttelepítés célok:
 
-- Szükségük van egy olyan eszközt, az adatok migrálása a felhőbe. Néhány manuális folyamatokat, érdemes lehet szükség.
+- A csapat által igényelt, egy olyan eszközt, az adatok migrálása a felhőbe. Néhány manuális folyamatokat, érdemes lehet szükség.
 - Munkaelem-adatokat, és az elmúlt év előzmények kell áttelepíteni.
-- Nem szeretnének új felhasználónevek és jelszavak beállítása. Az összes jelenlegi rendszer-hozzárendelések fenn kell tartani.
-- Git a verziókövetéshez távolabbi Team Foundation verzió Control (TFVC) áthelyezése szeretnének.
-- Az átállás a Git "Tipp áttelepítés", amely csak a legújabb verziót a forráskód importálja lesz. Ha az összes munkahelyi fog le, mint a kódbázis műszakok, fog történni a leállások során. Ezek ismerje meg, hogy csak az aktuális "master" ága előzmények elérhető lesz az áthelyezés után.
-- Ezek aggódik a módosítást, és egy teljes lépés végrehajtása előtt tesztelésre. Szeretné TFS a vsts-ben az áthelyezés után is hozzáférjen.
-- Több gyűjteményei, és szeretné a kezdéshez válasszon egyet, amely segít jobban megérteni, a folyamat csak néhány projektek rendelkezik.
-- Ezek megismeréséhez, hogy TFS-gyűjteményt a VSTS-fiókok esetében egy-az-egyhez kapcsolat így több URL-cím rendelkeznek. Azonban ez megegyezik az aktuális modell elkülönítésének kódbázissal és projektek.
+- A csapata nem szeretne új felhasználónevek és jelszavak beállítása. Az összes jelenlegi rendszer-hozzárendelések fenn kell tartani.
+- A csapat szeretné távolabbi Team Foundation verzió Control (TFVC) helyezze át a Git a verziókövetéshez.
+- Az átállás a Git "Tipp áttelepítés", amely csak a legújabb verziót a forráskód importálja lesz. Ha az összes munkahelyi fog le, mint a kódbázis műszakok, fog történni a leállások során. A csapat tisztában van azzal, hogy csak az aktuális "master" ága előzmények elérhető lesz az áthelyezés után.
+- A csapat érintett változásról, és egy teljes lépés végrehajtása előtt tesztelésre. TFS a vsts-ben az áthelyezés után is hozzáférjen a csapat szeretné.
+- Contoso több gyűjteményt tartalmaz, és szeretné a kezdéshez válasszon egyet, amely segít jobban megérteni, a folyamat csak néhány projektek rendelkezik.
+- A csapat ismerje meg, hogy a TFS-gyűjteményt egy-az-egyhez kapcsolat a VSTS-fiókok esetében több URL-ekkel. Azonban ez megegyezik az aktuális modell elkülönítésének kódbázissal és projektek.
 
 
 ## <a name="proposed-architecture"></a>Javasolt architektúra
@@ -65,7 +67,7 @@ A Contoso felhőalapú csapat rendelkezik rögzített le a vsts-ben az áttelep�
 - TFS áttelepíthetők a vsts-ben.
 - Jelenleg a Contoso nevű egy TFS-gyűjtemény rendelkezik **ContosoDev**, amely nevű VSTS-fiók migrálása **contosodevmigration.visualstudio.com**.
 - A projektek, a munkaelemek, a hibák és a tavalyi évhez képest az ismétlések átkerülnek a vsts-ben.
-- Contoso használja az Azure Active Directory, amely akkor állítsa be, amikor azok [üzembe helyezve az Azure-infrastruktúra](contoso-migration-infrastructure.md) , az áttelepítés megtervezése elején. 
+- Contoso használja az Azure Active Directory, amely a Contoso beállítása az üzembe helyezés során a [Azure-infrastruktúra](contoso-migration-infrastructure.md) áttelepítés tervezéséhez elején. 
 
 
 ![Forgatókönyv-architektúra](./media/contoso-migration-tfs-vsts/architecture.png) 
@@ -75,29 +77,29 @@ A Contoso felhőalapú csapat rendelkezik rögzített le a vsts-ben az áttelep�
 
 Contoso befejezi az áttelepítési folyamat a következő:
 
-1. Nincs érintett elkészítése rengeteg. Első lépésként Contoso cégnek szüksége van, a TFS-implementáció frissítése egy támogatott szintre. TFS 2017 Update 3 jelenleg futnak, de használandó adatbázis-migrálás támogatott 2018-as verziója fut a legújabb frissítésekkel kell.
-2. A frissítés után azok fogja futtatni a TFS-áttelepítési eszköz, és ellenőrizze a gyűjtemény.
-3. Azok fog hozhat létre egy készletét adatelőkészítési fájlt, és a egy áttelepítési tesztfuttatás végrehajtani a tesztelés.
-4. Majd kiszámíthatja, egy másik áttelepítési, ezúttal a teljes migrálás, amely tartalmazza a munkaelemeket, hibák elhárítása, sprintekben, kód.
-5. Az áttelepítés után a akkor kell áthelyezni kódját TFVC a Git.
+1. Nincs érintett elkészítése rengeteg. Első lépésként Contoso cégnek szüksége van, a TFS-implementáció frissítése egy támogatott szintre. Contoso TFS 2017 Update 3 jelenleg fut, de használandó adatbázis-migrálás, kell támogatott 2018-as verziója fut a legújabb frissítésekkel.
+2. A frissítés után a Contoso futtatja a TFS-áttelepítési eszköz, és ellenőrizze a gyűjtemény.
+3. Contoso létrehozása előkészítés-fájlokat, és hajtsa végre a migrálás tesztfuttatás teszteléséhez.
+4. Contoso fog futni egy másik áttelepítési, ezúttal, amely tartalmazza a hibák, munkatételek, a teljes migrálás sprintekben, kód.
+5. Az áttelepítés után a Contoso át kódját a TFVC Git.
 
 ![Áttelepítési folyamat](./media/contoso-migration-tfs-vsts/migration-process.png) 
 
 
 ## <a name="scenario-steps"></a>A forgatókönyv lépései
 
-Itt látható az Azure hogyan hajtsa végre az áttelepítést:
+Itt látható, hogyan Contoso az áttelepítés elvégzéséhez:
 
 > [!div class="checklist"]
 > * **1. lépés: Hozzon létre egy Azure storage-fiók**: ezt a tárfiókot fogja használni az áttelepítési folyamat során.
-> * **2. lépés: Frissítés TFS**: TFS 2018-as frissítés 2 lesz frissítik azokat üzembe helyezésükben. 
-> * **3. lépés: Ellenőrizze a gyűjtemény**: migrálásra való felkészüléskor a TFS-gyűjtemény, fogja érvényesíteni.
-> * **4. lépés: Build adatelőkészítési fájlt**: fog létrehozni, akkor az áttelepítési fájlokat, a TFS-áttelepítési eszköz használata. 
+> * **2. lépés: Frissítés TFS**: Contoso TFS 2018-as frissítés 2-re frissíteni fogja az üzembe helyezés. 
+> * **3. lépés: Ellenőrizze a gyűjtemény**: Contoso ellenőrzi a migrálás előkészítése a TFS-gyűjtemény.
+> * **4. lépés: Build adatelőkészítési fájlt**: Contoso hoz létre az áttelepítési fájlokat, a TFS-áttelepítési eszköz használata. 
 
 
 ## <a name="step-1-create-a-storage-account"></a>1. lépés: Tárfiók létrehozása
 
-1. Az Azure Portalon, a Contoso tárfiókot hoz létre (**contosodevmigration**).
+1. Az Azure Portalon, a Contoso-rendszergazdák a storage-fiók létrehozása (**contosodevmigration**).
 2. A másodlagos régió használata a feladatátvételhez – USA középső RÉGIÓJA, helyezze a fiókot. Helyileg redundáns tárolással egy általános célú standard szintű fiók használata.
 
     ![Tárfiók](./media/contoso-migration-tfs-vsts/storage1.png) 
@@ -111,7 +113,7 @@ Itt látható az Azure hogyan hajtsa végre az áttelepítést:
 
 ## <a name="step-2-upgrade-tfs"></a>2. lépés: Frissítés TFS
 
-Contoso TFS 2018. 2. frissítés frissíti a TFS-kiszolgálónak. Mielőtt elkezdené:
+Contoso rendszergazdák TFS 2018. 2. frissítés frissítse a TFS-kiszolgálónak. Mielőtt elkezdené:
 
 - Letöltik [TFS 2018. 2. frissítés](https://visualstudio.microsoft.com/downloads/)
 - Ellenőrizze, hogy a [hardverkövetelmények](https://docs.microsoft.com/tfs/server/requirements), és olvasási keresztül a [kibocsátási megjegyzések](https://docs.microsoft.com/visualstudio/releasenotes/tfs2018-relnotes) és [frissítése buktatóinak elkerülése](https://docs.microsoft.com/tfs/server/upgrade/get-started#before-you-upgrade-to-tfs-2018).
@@ -134,7 +136,7 @@ Frissítés módja:
 
      ![TFS](./media/contoso-migration-tfs-vsts/upgrade4.png) 
 
-5. Contoso ellenőrzi a TFS-telepítési projektek, a munkaelemek és a kód vizsgálatával.
+5. A TFS-telepítési projektek, a munkaelemek és a kód vizsgálatával ellenőrizze azokat.
 
      ![TFS](./media/contoso-migration-tfs-vsts/upgrade5.png) 
 
@@ -147,9 +149,9 @@ Ismerje meg [TFS frissítése](https://docs.microsoft.com/tfs/server/upgrade/get
 
 ## <a name="step-3-validate-the-tfs-collection"></a>3. lépés: Ellenőrizze a TFS-gyűjtemény
 
-Contoso futtatja a TFS-áttelepítési eszköz az áttelepítés előtt érvényesítéséhez ContosoDev gyűjtemény adatbázison.
+Contoso-rendszergazdák a TFS-áttelepítési eszköz futtassa az áttelepítés előtt érvényesítéséhez ContosoDev gyűjtemény adatbázison.
 
-1. A Contoso letölti és unzips a [TFS áttelepítési eszköz](https://www.microsoft.com/download/details.aspx?id=54274). Fontos, hogy fut-e a TFS-frissítés letöltéséhez. A verzió a felügyeleti konzolon ellenőrizhető.
+1. Töltse le és csomagolja ki azokat a [TFS áttelepítési eszköz](https://www.microsoft.com/download/details.aspx?id=54274). Fontos, hogy fut-e a TFS-frissítés letöltéséhez. A verzió a felügyeleti konzolon ellenőrizhető.
 
     ![TFS](./media/contoso-migration-tfs-vsts/collection1.png)
 
@@ -166,11 +168,11 @@ Contoso futtatja a TFS-áttelepítési eszköz az áttelepítés előtt érvény
 
     ![TFS](./media/contoso-migration-tfs-vsts/collection3.png)
 
-4. Contoso bejegyzéshez, identitáshoz kapcsolódó keresi meg.
+4. Ez a bejegyzés, identitáshoz kapcsolódó található azokat.
 
     ![TFS](./media/contoso-migration-tfs-vsts/collection4.png)
 
-5. Contoso fut **TfsMigration ellenőrzése/help** a parancssorból, és azt látja, hogy a parancs **/tenantDomainName** úgy tűnik, hogy az identitás igazolásához szükséges.
+5. Azok futtatása **TfsMigration ellenőrzése/help** a parancssorból, és itt látható, hogy a parancs **/tenantDomainName** úgy tűnik, hogy az identitás igazolásához szükséges.
 
      ![TFS](./media/contoso-migration-tfs-vsts/collection5.png)
 
@@ -190,7 +192,7 @@ Contoso futtatja a TFS-áttelepítési eszköz az áttelepítés előtt érvény
 
 ## <a name="step-4-create-the-migration-files"></a>4. lépés: Az áttelepítési fájlok létrehozása
 
-Az érvényesítés befejeződött, a Contoso hozhat létre az áttelepítési fájlokat használhatja a TFS-áttelepítési eszköz.
+Az érvényesítés befejeződött, a Contoso is segítségével a rendszergazdák a TFS-áttelepítési eszköz hozhat létre az áttelepítési fájlokat.
 
 1. Az előkészítési lépés, futtassa az eszközt.
 
@@ -203,7 +205,7 @@ Az érvényesítés befejeződött, a Contoso hozhat létre az áttelepítési f
     - Előkészíti a kapcsolatot az Azure Active Directoryhoz való minden egyes identitás.
     - Contoso már üzembe helyezett Azure ad-ben és szinkronizálása az AD Connect használatával, így előkészítése keresse meg a megfelelő identitásokat és aktív megjelölni képesnek kell lennie.
 
-2. Az Azure AD bejelentkezési képernyő jelenik meg, és a Contoso megadja a hitelesítő adatokat egy globális rendszergazda
+2. Az Azure AD bejelentkezési képernyő jelenik meg, és ezek a globális rendszergazda hitelesítő adatok megadása
 
     ![Előkészítés](./media/contoso-migration-tfs-vsts/prep2.png)
 
@@ -211,11 +213,11 @@ Az érvényesítés befejeződött, a Contoso hozhat létre az áttelepítési f
 
     ![Előkészítés](./media/contoso-migration-tfs-vsts/prep3.png)
 
-4. Contoso ekkor láthatja, hogy a IdentityMapLog.csv, mind a import.json fájl jött létre egy új mappát.
+4. Most már láthatják, hogy a IdentityMapLog.csv, mind a import.json fájl jött létre egy új mappát.
 
     ![Előkészítés](./media/contoso-migration-tfs-vsts/prep4.png)
 
-5. A import.json fájl importálási beállításokat biztosít. Tartalmaz adatokat, például a kívánt fiók nevét és a storage-fiók adatait. A mezők a rendszer automatikusan kitölti. Egyes mezők a felhasználói bevitel szükséges. Contoso megnyitja a fájlt, és hozzáadja a VSTS-fiók nevét a létrehozandó: **contosodevmigration**. Ezzel a névvel, saját VSTS URL-címe lesz **contosodevmigration.visualstudio.com**.
+5. A import.json fájl importálási beállításokat biztosít. Tartalmaz adatokat, például a kívánt fiók nevét és a storage-fiók adatait. A mezők a rendszer automatikusan kitölti. Egyes mezők a felhasználói bevitel szükséges. Nyissa meg a fájlt, és hozzáadja a VSTS-fiók nevét a létrehozandó: **contosodevmigration**. Ezzel a névvel, saját VSTS URL-címe lesz **contosodevmigration.visualstudio.com**.
 
     ![Előkészítés](./media/contoso-migration-tfs-vsts/prep5.png)
 
@@ -234,75 +236,75 @@ Az érvényesítés befejeződött, a Contoso hozhat létre az áttelepítési f
 
 ## <a name="step-5-migrate-to-vsts"></a>5. lépés: A vsts-ben áttelepítése
 
-Az előkészítési helyen a Contoso most összpontosíthat a migrálás. Miután az áttelepítés, térnek fogja TFVC a Git használatával a verziókezeléshez.
+Az előkészítési helyen a Contoso-rendszergazdák mostantól összpontosíthat az áttelepítés. Miután az áttelepítés, térnek fogja TFVC a Git használatával a verziókezeléshez.
 
-Ahhoz, hogy, Contoso ütemezi a fejlesztői csapatot, a gyűjtemény offline áttelepítéshez az állásidő. Az áttelepítési folyamat lépései az alábbiak:
+Indítsa el, mielőtt a rendszergazdák ütemezése a fejlesztői csapatot, a gyűjtemény offline áttelepítéshez az állásidő. Az áttelepítési folyamat lépései az alábbiak:
 
-1. **A gyűjtemény leválasztása**: azonosító adatok gyűjtésére a TFS-kiszolgáló konfigurációs adatbázisában található, miközben a gyűjtése a csatlakoztatott és online állapotban. Ha egy gyűjteményt a TFS-kiszolgáló le van választva, a azonosító adatok másolatot tart, és csomagok azt a gyűjteményt a szállítási. Ezen adatok nélkül az importálás identitás részének nem hajtható végre. Javasoljuk, hogy a gyűjtemény felfüggeszti az leválasztani az importálás befejezéséig nem lehet importálni a módosításokat, amelyek az importálás során történt.
-2. **Biztonsági másolat készítése**: az áttelepítési folyamat a következő lépés az, hogy hozza létre a biztonsági mentést, amely importálható a vsts-ben. Adatrétegbeli alkalmazás összetevő csomagok (DACPAC), az SQL Server egy funkciója, amely lehetővé teszi egyetlen fájlba csomagolva, és telepíteni kell a többi példány az SQL database módosításait. Közvetlenül a vsts-ben is visszaállíthatók, és ezért szolgál a csomagolási módszer a gyűjtemény adatait a felhőbe. Contoso az SqlPackage.exe eszköz segítségével az adatrétegbeli ALKALMAZÁSCSOMAG létrehozásához. Ez az eszköz szerepel az SQL Server Data Tools.
+1. **A gyűjtemény leválasztása**: azonosító adatok gyűjtésére, található a TFS-kiszolgáló konfigurációs adatbázisban, amíg a gyűjtemény csatolt és online állapotban. Ha egy gyűjteményt a TFS-kiszolgáló le van választva, a azonosító adatok másolatot tart, és csomagok azt a gyűjteményt a szállítási. Ezen adatok nélkül az importálás identitás részének nem hajtható végre. Javasoljuk, hogy a gyűjtemény felfüggeszti az leválasztani az importálás befejezéséig nem lehet importálni a módosításokat, amelyek az importálás során történt.
+2. **Biztonsági másolat készítése**: az áttelepítési folyamat a következő lépés számukra, hogy hozza létre a biztonsági mentést, amely importálható a vsts-ben van. Adatrétegbeli alkalmazás összetevő csomagok (DACPAC), az SQL Server egy funkciója, amely lehetővé teszi egyetlen fájlba csomagolva, és telepíteni kell a többi példány az SQL database módosításait. Közvetlenül a vsts-ben is visszaállíthatók, és ezért szolgál a csomagolási módszer a gyűjtemény adatait a felhőbe. Contoso az SqlPackage.exe eszköz segítségével az adatrétegbeli ALKALMAZÁSCSOMAG létrehozásához. Ez az eszköz szerepel az SQL Server Data Tools.
 3. **Feltöltése a storage-**: után DACPAC jön létre, feltöltése az Azure Storage. Miután a feltöltés, kapnak egy közös hozzáférésű jogosultságkód (SAS), a TFS Migrálási eszköz a tároló hozzáférésének engedélyezéséhez.
-4. **Töltse ki az importálás**: Contoso majd is az importfájl, beleértve az adatrétegbeli ALKALMAZÁSCSOMAGOT beállítás hiányzó mezők kitöltéséhez. A következővel kell kezdődnie, adja meg, hogy szeretné-e ehhez a **tesztfuttatási hiba** importálása, ellenőrizze, hogy minden megfelelően működik a teljes áttelepítés előtt.
+4. **Töltse ki az importálás**: majd kitölthet az importfájl, beleértve az adatrétegbeli ALKALMAZÁSCSOMAGOT beállítás hiányzó mezők. A következővel kell kezdődnie, adja meg, hogy szeretné-e ehhez a **tesztfuttatási hiba** importálása, ellenőrizze, hogy minden megfelelően működik a teljes áttelepítés előtt.
 5. **Hajtsa végre a tesztfuttatás**: tesztfuttatás importálja a gyűjtemény áttelepítési tesztelése érdekében. Száraz futtatások életre korlátozott, és törlődnek a termelési áttelepítés futtatása előtt. Ezek Ön automatikusan után törli egy megadott ideig. A sikeres műveletet jelző e-mail érkezett az importálás befejezése után a tesztfuttatás törlésekor kapcsolatos megjegyzés tartalmazza. Jegyezze fel, és ennek megfelelően tervezze meg.
-6. **Az éles áttelepítésének befejezéséhez**: a tesztfuttatás migrálása kész, a Contoso elvégzi az elvégzendő végső áttelepítési a import.json frissítése, majd futtassa újra a importálása.
+6. **Az éles áttelepítésének befejezéséhez**: a tesztfuttatás migrálása kész, a Contoso rendszergazdák úgy teheti meg az elvégzendő végső áttelepítési a import.json frissítése, majd futtassa újra a importálása.
 
 
 
 ### <a name="detach-the-collection"></a>A gyűjtemény leválasztása
 
-Mielőtt hozzákezdene, Contoso vesz igénybe egy helyi SQL Server biztonsági másolat, és a TFS-kiszolgáló a VMware-pillanatkép leválasztása előtt.
+Mielőtt hozzákezdene, Contoso rendszergazdák igénybe vehet egy helyi SQL Server biztonsági másolat, és a TFS-kiszolgáló a VMware-pillanatkép leválasztása előtt.
 
 1.  A TFS-rendszergazdai konzolján, a leválasztani kívánt gyűjtemény kiválasztása (**ContosoDev**).
 
-    ![Áttelepítés](./media/contoso-migration-tfs-vsts/migrate1.png)
+    ![Migrate (Áttelepítés)](./media/contoso-migration-tfs-vsts/migrate1.png)
 
 2. A **általános**, kiválasztják **gyűjtemény leválasztása**
 
-    ![Áttelepítés](./media/contoso-migration-tfs-vsts/migrate2.png)
+    ![Migrate (Áttelepítés)](./media/contoso-migration-tfs-vsts/migrate2.png)
 
 3. A projekt leválasztása csapat gyűjtemény varázslóban > **karbantartási üzenet**, adja meg egy üzenetet, a felhasználók számára, akik próbálnak kapcsolódni a projektek a gyűjteményben.
 
-    ![Áttelepítés](./media/contoso-migration-tfs-vsts/migrate3.png)
+    ![Migrate (Áttelepítés)](./media/contoso-migration-tfs-vsts/migrate3.png)
 
 4. A **leválasztása folyamatban**, azok előrehaladásának figyeléséhez, és kattintson a **tovább** amikor a folyamat befejeződése után.
 
-    ![Áttelepítés](./media/contoso-migration-tfs-vsts/migrate4.png)
+    ![Migrate (Áttelepítés)](./media/contoso-migration-tfs-vsts/migrate4.png)
 
 5. A **készültség-ellenőrzés**, amikor ellenőrzi azok befejezéséhez kattintson a **leválasztási**.
 
-    ![Áttelepítés](./media/contoso-migration-tfs-vsts/migrate5.png)
+    ![Migrate (Áttelepítés)](./media/contoso-migration-tfs-vsts/migrate5.png)
 
 6. Kattintanak **Bezárás** befejeződik.
 
-    ![Áttelepítés](./media/contoso-migration-tfs-vsts/migrate6.png)
+    ![Migrate (Áttelepítés)](./media/contoso-migration-tfs-vsts/migrate6.png)
 
 6. A gyűjtemény már nem hivatkoznak a TFS-rendszergazdai konzol.
 
-    ![Áttelepítés](./media/contoso-migration-tfs-vsts/migrate7.png)
+    ![Migrate (Áttelepítés)](./media/contoso-migration-tfs-vsts/migrate7.png)
 
 
 ### <a name="generate-a-dacpac"></a>Hozzon létre egy adatrétegbeli ALKALMAZÁSCSOMAG
 
-Contoso (DACPAC) biztonsági másolatot készít a vsts-ben történő importáláshoz.
+Contoso-rendszergazdák a VSTS-ba való importálásuk hozzon létre egy biztonsági mentés (DACPAC).
 
 - Az SQL Server Data Tools SqlPackage.exe az adatrétegbeli ALKALMAZÁSCSOMAGOT létrehozására szolgál. Nincsenek telepítve az SQL Server Data Tools, található mappák nevei, mint 120 130 és 140 az SqlPackage.exe több verzióját. Fontos a megfelelő verzió használatához az adatrétegbeli ALKALMAZÁSCSOMAG előkészítése.
 - Importálja a TFS 2018 kell SqlPackage.exe használata a 140 mappából vagy újabb verziója.  Ez a fájl CONTOSOTFS, a mappában található: **C:\Program Files (x86) \Microsoft Visual Studio\2017\Enterprise\Common7\IDE\Extensions\Microsoft\SQLDB\DAC\140**.
 
 
-Contoso az adatrétegbeli ALKALMAZÁSCSOMAGOT a következőképpen hoz létre:
+Contoso-rendszergazdák a következő generálása az adatrétegbeli ALKALMAZÁSCSOMAG:
 
 1. Nyisson meg egy parancssort, és keresse meg az SQLPackage.exe helyet. Írja be a következő parancsot az adatrétegbeli ALKALMAZÁSCSOMAG:
 
     **SqlPackage.exe /sourceconnectionstring: "adatforrás SQLSERVERNAME\INSTANCENAME; = Initial Catalog = Tfs_ContosoDev; Integrated Security = True" /targetFile:C:\TFSMigrator\Tfs_ContosoDev.dacpac /action:extract /p:ExtractAllTableData = true /p: I gnoreUserLoginMappings = true /p:IgnorePermissions = true /p:Storage = memória** 
 
-    ![Tartalék](./media/contoso-migration-tfs-vsts/backup1.png)
+    ![Backup](./media/contoso-migration-tfs-vsts/backup1.png)
 
 2. A következő üzenet jelenik meg, a parancs futtatása után.
 
-    ![Tartalék](./media/contoso-migration-tfs-vsts/backup2.png)
+    ![Backup](./media/contoso-migration-tfs-vsts/backup2.png)
 
 3. Ezek a cégek ellenőrzik a DACPACfile tulajdonságai
 
-    ![Tartalék](./media/contoso-migration-tfs-vsts/backup3.png)
+    ![Backup](./media/contoso-migration-tfs-vsts/backup3.png)
 
 ### <a name="update-the-file-to-storage"></a>Frissítse a fájlt a tárolóba
 
@@ -310,27 +312,27 @@ Az ALKALMAZÁSCSOMAG létrehozása után Contoso feltölti az Azure Storage.
 
 1. Ezek [töltse le és telepítse](https://azure.microsoft.com/features/storage-explorer/) Azure Storage Explorerben.
 
-    ![Töltsön fel](./media/contoso-migration-tfs-vsts/backup5.png)
+    ![Feltöltés](./media/contoso-migration-tfs-vsts/backup5.png)
 
 4. Csatlakozzon az előfizetéséhez, és a keresse meg a storage-fiókot létrehozza őket az áttelepítés (**contosodevmigration**). Akkor hozzon létre egy új blobtárolót, **vstsmigration**.
 
-    ![Töltsön fel](./media/contoso-migration-tfs-vsts/backup6.png)
+    ![Feltöltés](./media/contoso-migration-tfs-vsts/backup6.png)
 
 5. Ezek a adatrétegbeli ALKALMAZÁSCSOMAG-fájl feltöltéshez blokkblobként adja meg.
 
-    ![Töltsön fel](./media/contoso-migration-tfs-vsts/backup7.png)
+    ![Feltöltés](./media/contoso-migration-tfs-vsts/backup7.png)
     
 7. A fájl feltöltése után a fájlnév kattintanak > **SAS létrehozása**. Bontsa ki a storage-fiókban a blob-tárolók, válassza ki a tárolót az importálás fájlok, és kattintson **közös hozzáférési jogosultságkód igénylése**.
 
-    ![Töltsön fel](./media/contoso-migration-tfs-vsts/backup8.png)
+    ![Feltöltés](./media/contoso-migration-tfs-vsts/backup8.png)
 
 8. Elfogadhatja az alapértelmezett beállításokat, majd a kattintson **létrehozás**. Ez lehetővé teszi hozzáférési 24 órán keresztül.
 
-    ![Töltsön fel](./media/contoso-migration-tfs-vsts/backup9.png)
+    ![Feltöltés](./media/contoso-migration-tfs-vsts/backup9.png)
 
 9. A megosztott hozzáférési Jogosultságkód URL-t, akkor másolja, hogy a TFS-áttelepítési eszköz használható.
 
-    ![Töltsön fel](./media/contoso-migration-tfs-vsts/backup10.png)
+    ![Feltöltés](./media/contoso-migration-tfs-vsts/backup10.png)
 
 > [!NOTE]
 > Az áttelepítés előtt ablakban vagy engedélyek lejár az előírt időn belül meg kell történnie.
@@ -338,7 +340,7 @@ Az ALKALMAZÁSCSOMAG létrehozása után Contoso feltölti az Azure Storage.
 
 ### <a name="fill-in-the-import-settings"></a>Adja meg a beállítások importálása
 
-Contoso korábban részlegesen tölti ki a specifikáció fájl (import.json). Most azokat hozzá kell adnia a többi beállítást.
+Contoso-rendszergazdák korábban részlegesen töltötte ki specifikáció importfájl (import.json). Most azokat hozzá kell adnia a többi beállítást.
 
 Nyissa meg a import.json fájlt, és töltse ki az alábbi mezőket: • helye: a fent létrehozott SAS-kulcs helyét.
 • Adatrétegbeli alkalmazáscsomagot: állítsa a nevet az adatrétegbeli ALKALMAZÁSCSOMAGOT feltöltött fájlra, a storage-fiókba. Például a ".dacpac" kiterjesztést.
@@ -350,7 +352,7 @@ Nyissa meg a import.json fájlt, és töltse ki az alábbi mezőket: • helye: 
 
 ### <a name="do-a-dry-run-migration"></a>Egy tesztfuttatás áttelepítés
 
-Contoso első tesztfuttatás áttelepítést, győződjön meg arról, hogy minden a várt módon működik.
+Contoso rendszergazdák első tesztfuttatás áttelepítést, győződjön meg arról, hogy minden a várt módon működik.
 
 1. Nyisson meg egy parancssort, és keresse meg a TfsMigration helyre (C:\TFSMigrator).
 2. Első lépésként, ellenőrizze a fájl. Szeretnék, hogy a fájl megfelelően van formázva, és az SAS-kulcs működik.
@@ -387,11 +389,11 @@ Contoso első tesztfuttatás áttelepítést, győződjön meg arról, hogy mind
 
     ![Tesztfuttatás](./media/contoso-migration-tfs-vsts/test6.png)
 
-11. Elteltével 15 perc a Contoso az URL-címre lép, és megkeresheti a következő információkat:
+11. Elteltével 15 perc azok tallózással keresse meg az URL-címet, és tekintse meg a következő információkat:
 
      ![Tesztfuttatás](./media/contoso-migration-tfs-vsts/test7.png)
 
-12. Miután az áttelepítés befejezése egy Contoso fejlesztési érdeklődők jelentkezik be a vsts-ben, ellenőrizze, hogy a tesztfuttatás megfelelően működött. A hitelesítés után vsts-ben a fiók megerősítéséhez néhány adatra van szüksége.
+12. Az áttelepítés befejezését követően a Contoso fejlesztési érdeklődők jelentkezik be VSTS ellenőrizze, hogy a tesztfuttatás megfelelően működött. A hitelesítés után vsts-ben a fiók megerősítéséhez néhány adatra van szüksége.
 
     ![Tesztfuttatás](./media/contoso-migration-tfs-vsts/test8.png)
 
@@ -399,61 +401,61 @@ Contoso első tesztfuttatás áttelepítést, győződjön meg arról, hogy mind
 
     ![Tesztfuttatás](./media/contoso-migration-tfs-vsts/test9.png)
 
-14. A fejlesztési vezető megnyitja a projektek egyikére, és megnyitja **munkaelemek** > **nekem kiosztott**. Ez azt mutatja, hogy munkahelyi elem adatok migrálása befejeződött, identitására együtt.
+14. A fejlesztési vezető megnyitja a projektek egyikére, és megnyitja **munkaelemek** > **nekem kiosztott**. Ez azt mutatja, hogy munkahelyi elem adatok migrálása befejeződött, identitás együtt.
 
     ![Tesztfuttatás](./media/contoso-migration-tfs-vsts/test10.png)
 
-15. Azt is ellenőrzi, egyéb projektet és a kódot, győződjön meg arról, hogy a Forráskód és a korábbi lett áttelepítve.
+15. Az érdeklődő is ellenőrzi, egyéb projektet és a kódot, győződjön meg arról, hogy a Forráskód és a korábbi lett áttelepítve.
 
     ![Tesztfuttatás](./media/contoso-migration-tfs-vsts/test11.png)
 
 
 ### <a name="run-the-production-migration"></a>Az éles migrálás futtatása
 
-A tesztfuttatás befejeződött, a Contoso folytassa az éles áttelepítés. Ezek a tesztfuttatás törlése, frissíteni az importálási beállításokat, majd futtassa újra a importálása.
+A tesztfuttatás befejeződött, a Contoso rendszergazdák folytassa az éles áttelepítés. Ezek a tesztfuttatás törlése, frissíteni az importálási beállításokat, majd futtassa újra a importálása.
 
 1. A VSTS portál, a tesztfuttatás fiók törlése.
 2. A import.json fájl segítségével frissítse a **ImportType** való **ProductionRun**.
 
-    ![Üzemi](./media/contoso-migration-tfs-vsts/full1.png)
+    ![Production](./media/contoso-migration-tfs-vsts/full1.png)
 
 3. Az áttelepítés indítása, akárcsak a tesztfuttatás a: **TfsMigrator importálás /importFile:C:\TFSMigrator\import.json**.
 4. Egy üzenetet jeleníti meg a migrálás jóváhagyásához, és figyelmezteti, hogy adatokat sikerült fenntartani egy átmeneti területre egy biztonságos helyen legfeljebb 7 napig.
 
-    ![Üzemi](./media/contoso-migration-tfs-vsts/full2.png)
+    ![Production](./media/contoso-migration-tfs-vsts/full2.png)
 
-5. Az Azure AD bejelentkezés a Contoso egy Contoso-rendszergazdai bejelentkezési adja meg.
+5. Az Azure AD bejelentkezési akkor adja meg az egy Contoso-rendszergazdai bejelentkezési.
 
-    ![Üzemi](./media/contoso-migration-tfs-vsts/full3.png)
+    ![Production](./media/contoso-migration-tfs-vsts/full3.png)
 
 6. Egy üzenet az importálás vonatkozó információkat tartalmazza.
 
-    ![Üzemi](./media/contoso-migration-tfs-vsts/full4.png)
+    ![Production](./media/contoso-migration-tfs-vsts/full4.png)
 
-7. Körülbelül 15 perc elteltével Contoso jut el az URL-címet, és megtekinti a következő információkat:
+7. Körülbelül 15 perc elteltével, keresse meg az URL-címet, és megtekinti a következő információkat:
 
-    ![Üzemi](./media/contoso-migration-tfs-vsts/full5.png)
+    ![Production](./media/contoso-migration-tfs-vsts/full5.png)
 
-8. Az áttelepítés végeztével egy Contoso fejlesztési érdeklődők jelentkezik be a VSTS, ellenőrizze, hogy az áttelepítés megfelelően működött. Bejelentkezés után he is látja, hogy áttelepítette-e a projekteket.
+8. Az áttelepítés végeztével egy Contoso fejlesztési érdeklődők jelentkezik be a VSTS, ellenőrizze, hogy az áttelepítés megfelelően működött. Bejelentkezés után az érdeklődő láthatja, hogy áttelepítette-e a projekteket.
 
-    ![Üzemi](./media/contoso-migration-tfs-vsts/full6.png)
+    ![Production](./media/contoso-migration-tfs-vsts/full6.png)
 
-8. A fejlesztési vezető megnyitja a projektek egyikére, és megnyitja **munkaelemek** > **nekem kiosztott**. Ez azt mutatja, hogy munkahelyi elem adatok migrálása befejeződött, identitására együtt.
+8. A fejlesztési vezető megnyitja a projektek egyikére, és megnyitja **munkaelemek** > **nekem kiosztott**. Ez azt mutatja, hogy munkahelyi elem adatok migrálása befejeződött, identitás együtt.
 
-    ![Üzemi](./media/contoso-migration-tfs-vsts/full7.png)
+    ![Production](./media/contoso-migration-tfs-vsts/full7.png)
 
-9. Phil ellenőrzi, hogy a más munkahelyi elem adatok megerősítését.
+9. Az érdeklődő ellenőrzi, hogy más munkahelyi elem adatok megerősítéséhez.
 
-    ![Üzemi](./media/contoso-migration-tfs-vsts/full8.png)
+    ![Production](./media/contoso-migration-tfs-vsts/full8.png)
 
-15. Azt is ellenőrzi, egyéb projektet és a kódot, győződjön meg arról, hogy a Forráskód és a korábbi lett áttelepítve.
+15. Az érdeklődő is ellenőrzi, egyéb projektet és a kódot, győződjön meg arról, hogy a Forráskód és a korábbi lett áttelepítve.
 
-    ![Üzemi](./media/contoso-migration-tfs-vsts/full9.png)
+    ![Production](./media/contoso-migration-tfs-vsts/full9.png)
 
 
 ### <a name="move-source-control-from-tfvc-to-git"></a>A GIT verziókövetési válthatnak TFVC
 
-Az áttelepítés befejeződött a Contoso biztosítani szeretné source code Management Git TFVC áthelyezéséhez. Importálási jelenleg a saját VSTS-fiók a forráskód Git-tárházak egyazon fiók szükséges.
+Az áttelepítés befejeződött a Contoso biztosítani szeretné source code Management Git TFVC áthelyezéséhez. Contoso rendszergazdák ugyanazt a fiókot a Git-adattárakat, a forráskód jelenleg a VSTS-fiókban lévő importálnia kell.
 
 1. A VSTS-portálon, akkor nyisson meg egy olyan a TFVC adattárakkal (**$/ PolicyConnect**), és tekintse át azt.
 
@@ -468,9 +470,9 @@ Az áttelepítés befejeződött a Contoso biztosítani szeretné source code Ma
     ![Git](./media/contoso-migration-tfs-vsts/git3.png)
 
     > [!NOTE]
-    > Hogyan TFVC és a Git tárolhatók verzió vezérlő eltérései miatt javasoljuk, hogy nem az, hogy az előzmények áttelepítéséhez. Ez a megközelítés, amely a Microsoft tartott, Windows és más termékekkel való migrálásakor központi verziókezeléshez a Git.
+    > Hogyan TFVC és a Git tárolhatók verzió vezérlő eltérései miatt azt javasoljuk, hogy a Contoso nem települnek át a korábbi. Ez a megközelítés, amely a Microsoft tartott, Windows és más termékekkel való migrálásakor központi verziókezeléshez a Git.
 
-4. Az importálás után a Contoso áttekinti a kódot.
+4. Az importálás után a rendszergazdák a kód áttekintése.
 
     ![Git](./media/contoso-migration-tfs-vsts/git4.png)
 

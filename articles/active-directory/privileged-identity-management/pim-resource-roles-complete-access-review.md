@@ -1,6 +1,6 @@
 ---
-title: Az Azure-erőforrások hozzáférési felülvizsgálat befejezése a Privileged Identity Management használatával |} A Microsoft Docs
-description: Ismerteti, hogyan lehet Azure-erőforrások hozzáférési felülvizsgálat befejezése.
+title: A PIM az Azure-erőforrások szerepköreihez tartozó hozzáférési felülvizsgálat befejezése |} A Microsoft Docs
+description: Ismerje meg, hogyan végezheti el az Azure AD Privileged Identity Management (PIM) az Azure-erőforrások szerepköreihez tartozó hozzáférési felülvizsgálat.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,14 +14,14 @@ ms.component: pim
 ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: f1fc23afb41753bfe358cb05376a5ee9a07e34fd
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: f998c509e9bea65980367690a5e9d03f579b8e98
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39620042"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43189127"
 ---
-# <a name="complete-an-access-review-for-azure-resources-by-using-privileged-identity-management"></a>Az Azure-erőforrások hozzáférési felülvizsgálat befejezése a Privileged Identity Management használatával
+# <a name="complete-an-access-review-for-azure-resource-roles-in-pim"></a>A PIM az Azure-erőforrások szerepköreihez tartozó hozzáférési felülvizsgálat befejezése
 A kiemelt szerepkörű rendszergazdák tekintheti át az emelt szintű hozzáférés után egy [el lett indítva a hozzáférési felülvizsgálat](pim-resource-roles-start-access-review.md). Privileged Identity Management (PIM) az Azure-erőforrások automatikus küld egy e-mailt, amely kéri a felhasználóktól, tekintse át a hozzáférésüket. Ha a felhasználó nem kap egy e-mailt, küldhet nekik az utasításokat [hozzáférési felülvizsgálat végrehajtása](pim-resource-roles-perform-access-review.md).
 
 A hozzáférési felülvizsgálati időszak után, vagy ha minden felhasználó már nem a helyi tekintse át, kövesse a cikkben az eredmények megtekintéséhez és kezeléséhez a felülvizsgálatot.
@@ -60,5 +60,7 @@ Az a **eredmények** lapon megtekintheti, letöltheti a felülvizsgálati eredm�
 Megtekintheti, és a felülvizsgálók hozzáadása a meglévő hozzáférési felülvizsgálatot. Az ellenőrzések elvégzéséhez Véleményező emlékeztesse.
 ![Felülvizsgálók hozzáadása](media/azure-pim-resource-rbac/rbac-access-review-reviewers.png)
 
+## <a name="next-steps"></a>További lépések
 
-
+- [A PIM az Azure-erőforrások szerepköreihez tartozó hozzáférési felülvizsgálat indítása](pim-resource-roles-start-access-review.md)
+- [A PIM a saját Azure-erőforrás-szerepkörök hozzáférési felülvizsgálat végrehajtása](pim-resource-roles-perform-access-review.md)

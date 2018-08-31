@@ -2,18 +2,18 @@
 title: A Windows IoT Core-eszköz csatlakoztatása az Azure IoT Central alkalmazáshoz |} A Microsoft Docs
 description: Eszköz a fejlesztők megtudhatja, hogyan az MXChip IoT DevKit eszköz csatlakoztatása az Azure IoT Central alkalmazáshoz.
 author: miriambrus
-ms.author: mriamb
+ms.author: miriamb
 ms.date: 04/09/2018
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 39eb6f137750f7f741c88dcdf9a55f34d24eaa59
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: 73a23ace23d2373e238c6887c4a41c6037d233de
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39205748"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43189004"
 ---
 # <a name="connect-a-windows-iot-core-device-to-your-azure-iot-central-application"></a>A Windows IoT Core-eszköz csatlakoztatása az Azure IoT Central alkalmazáshoz
 
@@ -44,7 +44,7 @@ Az Azure IoT Central-alkalmazás hozzáadása a valós eszközöknek a **Windows
 
 ### <a name="prepare-the-windows-iot-core-device"></a>A Windows IoT Core-eszköz előkészítése
 
-Állítsa be a Windows IoT Core-eszköz kövesse a részletes útmutató: [a Windows IoT Core-eszköz beállítása] (https://github.com/Microsoft/microsoft-iot-central-firmware/tree/master/WindowsIoT#setup-a-physical-device).
+Állítsa be a Windows IoT Core-eszköz kövesse a részletes útmutató: [a Windows IoT Core-eszköz beállítása] (https://github.com/Azure/iot-central-firmware/tree/master/WindowsIoT#setup-a-physical-device).
 
 ### <a name="add-a-real-device"></a>Valós eszköz hozzáadása
 
@@ -99,7 +99,7 @@ A létrehozott alkalmazáshoz a **minta Devkits** alkalmazást sablon tartalmaz 
 
 ### <a name="telemetry-measurements"></a>Telemetria mérések
 
-| Mezőnév     | Mértékegységek  | Minimum | Maximum | Tizedeshelyek |
+| Mező neve     | Egység  | Minimális | Maximum | Tizedeshelyek |
 | -------------- | ------ | ------- | ------- | -------------- |
 | páratartalom       | %      | 0       | 100     | 0              |
 | TEMP           | ° C     | tartsuk ott -40     | 120     | 0              |
@@ -109,14 +109,14 @@ A létrehozott alkalmazáshoz a **minta Devkits** alkalmazást sablon tartalmaz 
 
 Numerikus beállításai
 
-| Megjelenített név | Mezőnév | Mértékegységek | Tizedeshelyek | Minimum | Maximum | Kezdeti |
+| Megjelenített név | Mező neve | Egység | Tizedeshelyek | Minimális | Maximum | Kezdeti |
 | ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
 | Sebesség ventilátor    | fanSpeed   | RPM   | 0              | 0       | 1000    | 0       |
 
 
 ### <a name="properties"></a>Tulajdonságok
 
-| Típus            | Megjelenített név | Mezőnév | Adattípus |
+| Típus            | Megjelenített név | Mező neve | Adattípus |
 | --------------- | ------------ | ---------- | --------- |
 | Eszköztulajdonság | Die száma   | dieNumber  | szám    |
-| SMS            | Tartózkodási hely     | hely   | -       |
+| Szöveg            | Hely     | location   | –       |

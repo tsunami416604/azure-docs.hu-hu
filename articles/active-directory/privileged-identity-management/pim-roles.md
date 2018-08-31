@@ -1,6 +1,6 @@
 ---
-title: Szerepkörök az Azure AD Privileged Identity Management |} A Microsoft Docs
-description: Ismerje meg, milyen szerepkörök használhatók az Azure Privileged Identity Management bővítménnyel emelt jogosultsági szintű identitásait.
+title: Azure AD címtár szerepköreinek segítségével kezelheti a PIM |} A Microsoft Docs
+description: Az Azure AD Privileged Identity Management (PIM) kezelheti az Azure AD-címtárbeli szerepkörök ismerteti.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -13,14 +13,14 @@ ms.component: pim
 ms.date: 07/23/2018
 ms.author: rolyon
 ms.custom: pim ; H1Hack27Feb2017;oldportal;it-pro;
-ms.openlocfilehash: f8045d70ab4926cdc0e28a9a2290685c4f11205a
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: c8870e4da63dc52d5926bdfd5f7c9b3218e5f53a
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39618563"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43188986"
 ---
-# <a name="directory-roles-you-can-manage-using-azure-ad-pim"></a>Azure AD PIM használata kezelheti a címtárbeli szerepkört
+# <a name="azure-ad-directory-roles-you-can-manage-in-pim"></a>A PIM segítségével kezelheti az Azure AD címtárszerepkörök
 <!-- **PLACEHOLDER: Need description of how this works. Azure PIM uses roles from MSODS objects.**-->
 
 Hozzárendelheti a felhasználók a szervezet különböző rendszergazdai szerepkörökkel az Azure ad-ben. A szerepkör-hozzárendelések szabályozza, mely tevékenységek hozzáadásával vagy a felhasználók eltávolítása vagy módosítása a szolgáltatás beállításait, például a felhasználók átállíthatják a hajtsa végre az Azure Active Directory, az Office 365, és más Microsoft Online Services és a csatlakoztatott alkalmazások.  
@@ -86,5 +86,7 @@ Online Microsoft-szolgáltatásokhoz való hozzáférés szükségessé, a felha
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="next-steps"></a>További lépések
-[!INCLUDE [active-directory-privileged-identity-management-toc](../../../includes/active-directory-privileged-identity-management-toc.md)]
+
+- [A PIM használatának megkezdése](pim-getting-started.md)
+- [A PIM az Azure AD-címtárbeli szerepkörök hozzárendelése](pim-how-to-add-role-to-user.md)
 

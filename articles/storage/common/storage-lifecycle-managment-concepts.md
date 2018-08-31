@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/30/2018
 ms.author: yzheng
 ms.component: common
-ms.openlocfilehash: a3208152ddf198d00c0a158e466c9d024c17b4d6
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: af32ea826f8150284c242fb6d1013924945aee97
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39528443"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43247782"
 ---
 # <a name="managing-the-azure-blob-storage-lifecycle-preview"></a>Az Azure Blob Storage (előzetes verzió) életciklusának kezelése
 
@@ -37,7 +37,7 @@ Fontolja meg egy adatkészletet, amelyek gyakran életciklusának korai szakasz�
 Életciklus-kezelési funkció ingyenesen elérhető előzetes verzióban. A normál művelet költsége díjszabásának a [Blobok listázása](https://docs.microsoft.com/rest/api/storageservices/list-blobs) és [Blobszint beállítása](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier) API-hívások. Lásd: [Blokkbob-díjszabás](https://azure.microsoft.com/pricing/details/storage/blobs/) , a díjszabással kapcsolatos további tudnivalókért.
 
 ## <a name="register-for-preview"></a>Regisztráljon az előzetes verzió 
-Nyilvános előzetes verzióban érhető el a regisztrációhoz kell igényelnie a szolgáltatás az előfizetéshez regisztrálnia. A kérelem jóváhagyása (néhány napban), bármely meglévő és új GPv2- vagy Blob Storage-fiók a 2. nyugati RÉGIÓJA és USA nyugati középső Régiója után a szolgáltatás engedélyezve van. Az előzetes verzióban csak a blokkblobok használata támogatott. Csakúgy, mint a legtöbb előzetes verziók, ez a funkció nem használható éles számítási feladatokra addig általánosan elérhető
+Nyilvános előzetes verzióban érhető el a regisztrációhoz kell igényelnie a szolgáltatás az előfizetéshez regisztrálnia. A kérelem jóváhagyása (néhány napban), bármely meglévő és új GPv2- vagy Blob Storage-fiók a 2. nyugati RÉGIÓJA, USA Középnyugati Régiójában és Nyugat-Európa után a szolgáltatás engedélyezve van. Az előzetes verzióban csak a blokkblobok használata támogatott. Csakúgy, mint a legtöbb előzetes verziók, ez a funkció nem használható éles számítási feladatokra addig általánosan elérhető
 
 Kérést szeretne beküldeni, a következő parancsokat PowerShell vagy parancssori felület.
 

@@ -3,19 +3,19 @@ title: Az adatbetöltés ajánlott eljárásai – Azure SQL Data Warehouse | Mi
 description: Az adatok Azure SQL Data Warehouse-ba való betöltése – javaslatok és teljesítményoptimalizálás
 services: sql-data-warehouse
 author: ckarst
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: implement
 ms.date: 04/17/2018
 ms.author: cakarst
 ms.reviewer: igorstan
-ms.openlocfilehash: 5ccf0ce0cc94f0ae08213167ee54628a9d059859
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: a2cc5b02744c04752ba11cbba14fe95c487d737c
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34701518"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43248117"
 ---
 # <a name="best-practices-for-loading-data-into-azure-sql-data-warehouse"></a>Az adatok Azure SQL Data Warehouse-ba való betöltésének ajánlott eljárásai
 Az adatok Azure SQL Data Warehouse-ba való betöltése – javaslatok és teljesítményoptimalizálás 
@@ -58,11 +58,11 @@ Kapcsolódjon az adattárházhoz, majd hozzon létre egy felhasználót. A köve
 ```
 Ha a staticRC20 erőforrásosztályokhoz tartozó erőforrással szeretne betöltést futtatni, egyszerűen jelentkezzen be LoaderRC20 felhasználóként, és futtassa a betöltést.
 
-A betöltéseket inkább statikus, mint dinamikus erőforrásosztályokkal futtassa. A statikus erőforrás osztályokat biztosítja, hogy ugyanazokat az erőforrásokat, függetlenül attól, hogy a [az adatraktár-egység](what-is-a-data-warehouse-unit-dwu-cdwu.md). Ha dinamikus erőforrásosztályt használ, az erőforrások a szolgáltatásszinttől függően változhatnak. Dinamikus osztályok esetében egy alacsonyabb szolgáltatási szint azt jelenti, hogy feltehetően nagyobb erőforrásosztályt kell használnia a betöltést végző felhasználóhoz.
+A betöltéseket inkább statikus, mint dinamikus erőforrásosztályokkal futtassa. A statikus erőforrásosztályok használata garantálja az azonos erőforrásokat, függetlenül attól, hogy a [adattárházegységek](what-is-a-data-warehouse-unit-dwu-cdwu.md). Ha dinamikus erőforrásosztályt használ, az erőforrások a szolgáltatásszinttől függően változhatnak. Dinamikus osztályok esetében egy alacsonyabb szolgáltatási szint azt jelenti, hogy feltehetően nagyobb erőforrásosztályt kell használnia a betöltést végző felhasználóhoz.
 
 ## <a name="allowing-multiple-users-to-load"></a>Betöltés engedélyezése több felhasználó számára
 
-Gyakran van szükség több olyan felhasználóra, akik adatokat töltenek egy adattárházba. A betöltése a [CREATE TABLE AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) az adatbázis VEZÉRLÉSI engedélyekkel kell rendelkeznie.  A CONTROL engedély az összes séma vezérlését biztosítja. Előfordulhat, hogy nem szeretné, hogy minden betöltést végző felhasználó vezérelési jogot kapjon az összes sémához. Az engedélyek korlátozására használja a DENY CONTROL utasítást.
+Gyakran van szükség több olyan felhasználóra, akik adatokat töltenek egy adattárházba. A Betöltés a [CREATE TABLE AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) az adatbázis CONTROL engedélyekre van szükség.  A CONTROL engedély az összes séma vezérlését biztosítja. Előfordulhat, hogy nem szeretné, hogy minden betöltést végző felhasználó vezérelési jogot kapjon az összes sémához. Az engedélyek korlátozására használja a DENY CONTROL utasítást.
 
 Vegyünk például két adatbázissémát: schema_A az A részleghez, és schema_B a B részleghez. Legyen user_A és user_B két PolyBase-betöltést végző adatbázis-felhasználó az A, illetve a B részlegen. Mindkét felhasználó kapott adatbázisszintű CONTROL jogosultságokat. Az A és B séma létrehozói zárolják a sémáikat a DENY utasítás segítségével:
 

@@ -1,6 +1,6 @@
 ---
-title: Az Azure-erőforrások szerepkörök aktiválása a Privileged Identity Management használatával |} A Microsoft Docs
-description: Ismerteti, hogyan lehet a PIM-szerepkörök aktiválása.
+title: A PIM saját Azure-erőforrás szerepkörök aktiválása |} A Microsoft Docs
+description: Ismerje meg, hogyan lehet aktiválni az Azure-erőforrások szerepköreihez az Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,14 +14,14 @@ ms.component: pim
 ms.date: 08/21/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 2a5c192f231bdc75d04c78cd94838a3f341dc925
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 234c1d71f0ec17d15a4dd589e3db92fd9bf68df2
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43111058"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43189489"
 ---
-# <a name="activate-roles-for-azure-resources-by-using-privileged-identity-management"></a>Az Azure-erőforrások szerepkörök aktiválása a Privileged Identity Management használatával
+# <a name="activate-my-azure-resource-roles-in-pim"></a>A PIM saját Azure-erőforrás szerepkörök aktiválása
 Privileged Identity Management (PIM) az Azure-erőforrások szerepkörök aktiválása az új felhasználói élményt vezet be. Jogosult szerepkör tagjai egy jövőbeli dátumot és időpontot az aktiválási ütemezheti. Ezek is kiválaszthatja, hogy egy adott aktiválási időtartamát, a maximális (a rendszergazdák által konfigurált) belül. További információkért lásd: [aktiválása vagy inaktiválása az Azure AD Privileged Identity Management szerepkörök](pim-how-to-activate-role.md).
 
 ## <a name="activate-a-role"></a>A szerepkör aktiválása
@@ -64,3 +64,7 @@ A keresés lapon keresse meg az alárendelt erőforrás kezeléséhez szüksége
 Válassza ki **saját szerepkörök** a bal oldali ablaktáblán, és válassza ki a megfelelő szerepkört aktiválja. A hozzárendelés típusa **örökölt** , mert a szerepkör lett hozzárendelve, az előfizetés nem található az erőforráscsoport.
 
 ![Jogosult szerepkör-hozzárendelések a hozzárendelés-típus kiemelt listája](media/azure-pim-resource-rbac/my-roles-02.png)
+
+## <a name="next-steps"></a>További lépések
+
+- [A PIM az Azure AD-címtárbeli szerepkörök aktiválása](pim-how-to-activate-role.md)

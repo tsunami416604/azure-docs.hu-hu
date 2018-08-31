@@ -1,6 +1,6 @@
 ---
-title: Fedezze fel, és Azure-erőforrások kezelése a Privileged Identity Management használatával |} A Microsoft Docs
-description: Ismerteti, hogyan lehet Azure-erőforrások védelme a PIM használatával.
+title: Fedezze fel az Azure-erőforrások kezelése a PIM |} A Microsoft Docs
+description: Ismerje meg, hogyan deríthetők fel az Azure-erőforrások kezelése az Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.component: pim
 ms.date: 03/30/2018
 ms.author: rolyon
-ms.openlocfilehash: f4b6fafe40fe00492bac7bd6c28268321d4516db
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
-ms.translationtype: MT
+ms.openlocfilehash: b5d48b3f854afaa79574e0ec13cff91f60396ac6
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43104354"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43190658"
 ---
-# <a name="discover-and-manage-azure-resources-by-using-privileged-identity-management"></a>Fedezze fel, és Azure-erőforrások kezelése a Privileged Identity Management használatával
+# <a name="discover-azure-resources-to-manage-in-pim"></a>Fedezze fel a PIM kezelése Azure-erőforrások
 
 Ismerje meg, hogyan derítheti fel és kezelheti az Azure-erőforrásokat az Azure Active Directoryban (Azure AD) Privileged Identity Management (PIM) használatakor. Ez az információ akkor lehet hasznos, szervezetek, amelyek már használják a PIM védelme érdekében a rendszergazda erőforrásokat, és előfizetés-tulajdonosokat, akik a biztonságos éles erőforrásait.
 
@@ -64,5 +64,5 @@ A kijelölt erőforrások most már a PIM kezeli. Zárja be a felderítés képe
 
 ## <a name="next-steps"></a>További lépések
 
-- [Szerepkör-beállítások konfigurálása](pim-resource-roles-configure-role-settings.md)
-- [A PIM szerepkörök hozzárendelése](pim-resource-roles-assign-roles.md)
+- [A PIM Azure szerepkör-beállítások konfigurálása](pim-resource-roles-configure-role-settings.md)
+- [Rendelje hozzá a PIM az Azure-erőforrásszerepkörök](pim-resource-roles-assign-roles.md)

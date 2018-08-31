@@ -1,6 +1,6 @@
 ---
-title: Az Azure AD Privileged Identity Management adatvédelmi varázsló
-description: Az első alkalommal használja az Azure Active Directory Privileged Identity Management bővítmény megjelenik egy biztonsági varázsló. Ez a cikk ismerteti a lépéseket, a varázsló használatával.
+title: Adatvédelmi varázsló az PIM-ben – Azure |} A Microsoft Docs
+description: Az Azure AD Privileged Identity Management (PIM) első használatakor megjelenő adatvédelmi varázsló ismerteti.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -13,14 +13,14 @@ ms.component: pim
 ms.date: 02/27/2017
 ms.author: rolyon
 ms.custom: pim ; H1Hack27Feb2017
-ms.openlocfilehash: 19eb2b36b217dc67fabcc3c2c4721fb13b2224ec
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 178a4c5e978075f2a59b22a1cccf462138527964
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39617006"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43189079"
 ---
-# <a name="using-the-security-wizard-in-azure-ad-privileged-identity-management"></a>Az Azure AD Privileged Identity Management biztonsági varázslója használatával 
+# <a name="security-wizard-in-pim"></a>A PIM biztonsági varázsló
 Ha Ön az első, aki a szervezet az Azure Privileged Identity Management (PIM) futtatása, megjelenik egy varázsló segítségével. A varázsló segítségével megismerheti a biztonsági kockázatokat az emelt szintű identitások és a PIM használata a kockázatok csökkentése érdekében. Nem kell módosításokat a varázsló a meglévő szerepkör-hozzárendelés, ha később szeretne.
 
 ## <a name="what-to-expect"></a>Mi várható?
@@ -40,5 +40,7 @@ Miután elvégezte a módosításokat, a varázsló már nem jelennek meg. A kö
 * Ha szeretné a PIM kezelése hozzáférést biztosít a több felhasználó, további információk: [a PIM kezelése hozzáférés biztosítása](pim-how-to-give-access-to-pim.md).
 
 ## <a name="next-steps"></a>További lépések
-[!INCLUDE [active-directory-privileged-identity-management-toc](../../../includes/active-directory-privileged-identity-management-toc.md)]
 
+- [A PIM használatának megkezdése](pim-getting-started.md)
+- [A PIM az Azure AD-címtárbeli szerepkörök hozzárendelése](pim-how-to-add-role-to-user.md)
+- [Hozzáférés biztosítása más rendszergazdák számára, miközben a PIM kezelése](pim-how-to-give-access-to-pim.md)

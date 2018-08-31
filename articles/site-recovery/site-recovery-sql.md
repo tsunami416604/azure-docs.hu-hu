@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 07/22/2018
 ms.author: raynew
-ms.openlocfilehash: 23cf9430f82be860cb9acbfac42163f9243b2d0f
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: a734999f0fa473b5f1ee8ed55c4b73950566490d
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "42054076"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43188773"
 ---
 # <a name="protect-sql-server-using-sql-server-disaster-recovery-and-azure-site-recovery"></a>Az SQL Server-vészhelyreállítás és az Azure Site Recovery használatával az SQL Server védelme
 
@@ -83,7 +83,6 @@ Ez a táblázat összefoglalja a javaslatok az SQL Server BCDR-technológiákkal
 
 * Egy helyszíni SQL Server-telepítéséhez, támogatott SQL Server verziót futtat. Általában is szüksége lesz az Active Directory az SQL Serverhez.
 * A követelmények, a forgatókönyv számára telepíteni kívánja. További információ a támogatási követelmények [az Azure-bA](site-recovery-support-matrix-to-azure.md) és [helyszíni](site-recovery-support-matrix.md), és [üzembe helyezési Előfeltételek](site-recovery-prereq.md).
-* Állítsa be az Azure-ban, futtassa a [Azure Virtual Machine Readiness Assessment](http://www.microsoft.com/download/details.aspx?id=40898) eszköz az SQL Server virtuális gépeken, ellenőrizze, hogy azok az Azure és a Site Recovery kompatibilis.
 
 ## <a name="set-up-active-directory"></a>Active Directory beállítása
 

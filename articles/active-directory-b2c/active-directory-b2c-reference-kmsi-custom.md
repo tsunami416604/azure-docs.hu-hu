@@ -1,202 +1,184 @@
 ---
 title: Az Azure Active Directory B2C-ben bejelentkezve szeretnék maradni |} A Microsoft Docs
-description: A témakör bemutatja, hogyan lehet "a bejelentkezve maradás tarthatja" beállítása.
+description: Ismerje meg, hogyan állítható be tartsa Me aláírva a (KMSI) az Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/05/2016
+ms.date: 08/27/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 6bad6e1f2b204f76b075652a9d3f27367a8de49f
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 6d58a62ef70cb5bacb44a3a9832516a30fc91ffa
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37441317"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43248059"
 ---
-# <a name="azure-active-directory-b2c-enable-keep-me-signed-in-kmsi"></a>Az Azure Active Directory B2C: Engedélyezése "Bejelentkezve szeretnék maradni (KMSI)"  
+# <a name="enable-keep-me-signed-in-kmsi-in-azure-active-directory-b2c"></a>Engedélyezze a bejelentkezve maradás (KMSI) az Azure Active Directory B2C-vel
+
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Az Azure AD B2C most már lehetővé teszi a webes és natív alkalmazások funkcióinak "Bejelentkezve szeretnék maradni (KMSI)". Ez a funkció hozzáférést a felhasználók visszatérő alkalmazás nem kéri a felhasználót, a felhasználónevet és jelszót adja meg újból. Amikor a felhasználó kijelentkezik a hozzáférés vissza lett vonva. 
+Tartsa meg aláírt a (KMSI) funkció a webes és natív alkalmazások Azure Active Directory (Azure AD) B2C-ben is engedélyezheti. Ez a funkció a visszatérő felhasználókat az alkalmazás újbóli felhasználónevüket és jelszavukat anélkül hozzáférést. Ezt a hozzáférést a felhasználó kijelentkezésekor visszavonták. 
 
-Javasoljuk, hogy ezen beállítás található nyilvános számítógépeket a felhasználókkal szemben. 
+Felhasználók ne engedélyezze ezt a kapcsolót található nyilvános számítógépeket. 
 
-![kép](images/kmsi.PNG)
-
+![A bejelentkezve maradás engedélyezése](./media/active-directory-b2c-reference-kmsi-custom/kmsi.PNG)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD B2C-bérlő konfigurálva, hogy a helyi fiók regisztrálási-regisztrálási vagy bejelentkezési, leírtak szerint [bevezetés](active-directory-b2c-get-started-custom.md).
+Azure AD B2C-bérlő, amely engedélyezi a helyi fiók, előfizetési, és jelentkezzen be. Ha nem rendelkezik bérlővel, létrehozhat egyet a lépések használatával [oktatóanyag: Azure Active Directory B2C-bérlő létrehozása](tutorial-create-tenant.md).
 
-## <a name="how-to-enable-kmsi"></a>KMSI engedélyezése
+## <a name="add-a-content-definition-element"></a>Adjon hozzá egy tartalomdefiníció elemet 
 
-A következő módosításokat a bizalmi keretrendszer bővítmények szabályzatban.
+Alatt a **BuildingBlocks** eleme a bővítményfájl hozzáadása egy **ContentDefinitions** elemet. 
 
-## <a name="adding-a-content-definition-element"></a>Egy tartalomdefiníció elem felvétele 
+1. Alatt a **ContentDefinitions** elemben adjon hozzá egy **ContentDefinition** elem azonosítója, amelyet az `api.signuporsigninwithkmsi`.
+2. Alatt a **ContentDefinition** elemben adja hozzá a **LoadUri**, **RecoveryUri**, és **DataUri** elemeket. A `urn:com:microsoft:aad:b2c:elements:unifiedssp:1.1.0` értékét a **DataUri** elem egy gép érthető azonosítója, amely megjelenik a bejelentkezési oldalak KMSI jelölőnégyzetből. Ez az érték nem kell módosítani. 
 
-A `BuildingBlocks` csomópont a bővítmény fájl tartalmaznia kell egy `ContentDefinitions` elemet. 
+    ```XML
+    <BuildingBlocks>
+      <ContentDefinitions>
+        <ContentDefinition Id="api.signuporsigninwithkmsi">
+          <LoadUri>~/tenant/default/unified.cshtml</LoadUri>
+          <RecoveryUri>~/common/default_page_error.html</RecoveryUri>
+          <DataUri>urn:com:microsoft:aad:b2c:elements:unifiedssp:1.1.0</DataUri>
+          <Metadata>
+            <Item Key="DisplayName">Signin and Signup</Item>
+          </Metadata>
+        </ContentDefinition>
+      </ContentDefinitions>
+    </BuildingBlocks>                       
+    ```
 
-1. Az a `ContentDefinitions` területén adja meg egy új `ContentDefinition` azonosítójú `api.signuporsigninwithkmsi`.
-2. Az új `ContentDefinition` tartalmaznia kell egy `LoadUri`, `RecoveryUri` és `DataUri` módon.
-3. Datauri`urn:com:microsoft:aad:b2c:elements:unifiedssp:1.1.0` gép érthető azonosítója, amely megjelenik a bejelentkezési oldalak KMSI jelölőnégyzetből. Ellenőrizze, hogy nem módosíthatja ezt az értéket. 
+## <a name="add-a-sign-in-claims-provider-for-a-local-account"></a>Egy helyi fiók bejelentkezési jogcímeket szolgáltató hozzáadása  
 
-```XML
-  <BuildingBlocks>
-    <ContentDefinitions>
-      <ContentDefinition Id="api.signuporsigninwithkmsi">
-        <LoadUri>~/tenant/default/unified.cshtml</LoadUri>
-        <RecoveryUri>~/common/default_page_error.html</RecoveryUri>
-        <DataUri>urn:com:microsoft:aad:b2c:elements:unifiedssp:1.1.0</DataUri>
-        <Metadata>
-          <Item Key="DisplayName">Signin and Signup</Item>
-        </Metadata>
-      </ContentDefinition>
-    </ContentDefinitions>
-  </BuildingBlocks>                       
-```
+Helyi fiók bejelentkezési használatával Jogcímszolgáltatók, meghatározhatja a **ClaimsProvider** elem a bővítmény fájlban a szabályzat:
 
+1. Nyissa meg a *TrustFrameworkExtensions.xml* fájlt a munkakönyvtárban. 
+2. Keresse meg a **ClaimsProviders** elemet. Ha még nem létezik, adja hozzá a legfelső szintű elem alatt. A [alapszintű csomagja](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/archive/master.zip) magában foglalja a helyi fiókkal jelentkezzen be a jogcím-szolgáltatóktól. 
+3. Adjon hozzá egy **ClaimsProvider** elemet a **DisplayName** és **TechnicalProfile** az alábbi példában látható módon:
 
+    ```XML
+    <ClaimsProviders>
+      <ClaimsProvider>
+        <DisplayName>Local Account SignIn</DisplayName>
+        <TechnicalProfiles>
+          <TechnicalProfile Id="login-NonInteractive">
+            <Metadata>
+              <Item Key="client_id">ProxyIdentityExperienceFrameworkAppId</Item>
+              <Item Key="IdTokenAudience">IdentityExperienceFrameworkAppId</Item>
+            </Metadata>
+            <InputClaims>
+              <InputClaim ClaimTypeReferenceId="client_id" DefaultValue="ProxyIdentityExperienceFrameworkAppID" />
+              <InputClaim ClaimTypeReferenceId="resource_id" PartnerClaimType="resource" DefaultValue="IdentityExperienceFrameworkAppID" />
+            </InputClaims>
+          </TechnicalProfile>
+        </TechnicalProfiles>
+      </ClaimsProvider>
+    </ClaimsProviders>
+    ```
 
-## <a name="add-a--local-account-sign-in-claims-provider"></a>Helyi fiókkal jelentkezzen be a jogcímeket szolgáltató hozzáadása 
+### <a name="add-the-application-identifiers-to-your-custom-policy"></a>Az alkalmazás-azonosítók hozzáadása az egyéni házirend
 
-Megadhatja a helyi fiókba egy jogcímszolgáltatótól, mint a `<ClaimsProvider>` csomópont a szabályzat a bővítmény fájlban:
+Az alkalmazás azonosítók hozzáadása az *TrustFrameworkExtensions.xml* fájlt.
 
-1. A bővítményfájl (TrustFrameworkExtensions.xml) nyissa meg a munkakönyvtár. 
-2. Keresse meg a `<ClaimsProviders>` szakaszban. Ha nem létezik, adja hozzá a legfelső szintű csomópontja alatt.
-3. Az alapszintű csomag [bevezetés](active-directory-b2c-get-started-custom.md) helyi fiókba Jogcímszolgáltatók is tartalmaz. 
-4. Ha nem, akkor vegyen fel egy új `<ClaimsProvider>` csomópont az alábbiak szerint:
+1. Az a *TrustFrameworkExtensions.xml* fájlt és keresse meg a **TechnicalProfile** elem azonosítóját az `login-NonInteractive` és a **TechnicalProfile** elemmel azonosítója, amelyet `login-NonInteractive-PasswordChange` , és cserélje le az összes értéket `IdentityExperienceFrameworkAppId` az identitás-kezelőfelületi keretrendszer alkalmazás leírtak szerint az alkalmazás-azonosítóval rendelkező [bevezetés](active-directory-b2c-get-started-custom.md).
 
-```XML
-<ClaimsProviders>
-    <ClaimsProvider>
-      <DisplayName>Local Account SignIn</DisplayName>
-      <TechnicalProfiles>
-         <TechnicalProfile Id="login-NonInteractive">
-           <Metadata>
-            <Item Key="client_id">ProxyIdentityExperienceFrameworkAppId</Item>
-            <Item Key="IdTokenAudience">IdentityExperienceFrameworkAppId</Item>
-           </Metadata>
-            <InputClaim ClaimTypeReferenceId="client_id" DefaultValue="ProxyIdentityExperienceFrameworkAppID" />
-            <InputClaim ClaimTypeReferenceId="resource_id" PartnerClaimType="resource" DefaultValue="IdentityExperienceFrameworkAppID" />
-           </InputClaims>
-        </TechnicalProfile>
-      </TechnicalProfiles>
-    </ClaimsProvider>
- </ClaimsProviders>
-```
+    ```
+    <Item Key="client_id">8322dedc-cbf4-43bc-8bb6-141d16f0f489</Item>
+    ```
 
-### <a name="add-the-application-ids-to-your-custom-policy"></a>Az alkalmazás-azonosítók hozzáadása az egyéni házirend
+2. Cserélje le az összes értéket `ProxyIdentityExperienceFrameworkAppId` az identitás-kezelőfelületi keretrendszer Proxy alkalmazás leírtak szerint az alkalmazás azonosítóval rendelkező [bevezetés](active-directory-b2c-get-started-custom.md).
+3. Mentse a bővítmények fájlt.
 
-Vegye fel az alkalmazásazonosítót a bővítmények fájlba (`TrustFrameworkExtensions.xml`):
+## <a name="create-a-kmsi-enabled-user-journey"></a>Hozzon létre egy KMSI engedélyezett felhasználói interakciósorozat
 
-1. A bővítmények fájlt (TrustFrameworkExtensions.xml), keresse meg az elem `<TechnicalProfile Id="login-NonInteractive">` és `<TechnicalProfile Id="login-NonInteractive-PasswordChange">`
+Adja hozzá a felhasználói út a bejelentkezési jogcímszolgáltató egy helyi fiók. 
 
-2. Cserélje le az összes példányát `IdentityExperienceFrameworkAppId` az identitás-kezelőfelületi keretrendszer alkalmazás leírtak szerint az alkalmazás azonosítójával [bevezetés](active-directory-b2c-get-started-custom.md). Például:
+1. Nyissa meg a szabályzat alapszintű fájlt. Ha például *TrustFrameworkBase.xml*.
+2. Keresse meg a **UserJourneys** elemet, és másolja a teljes tartalmát a **UserJourney** elem azonosítóját használó `SignUpOrSignIn`.
+3. Nyissa meg a kiterjesztésű fájlt. Ha például *TrustFrameworkExtensions.xml* , és keresse meg a **UserJourneys** elemet. Ha az elem nem létezik, adjon hozzá egyet.
+4. Illessze be a teljes **UserJourney** gyermekeként kimásolt elem a **UserJourneys** elemet.
+5. Az új felhasználói interakciósorozat esetében az azonosító értékének módosítása. Például: `SignUpOrSignInWithKmsi`.
+6. Végül az első lépésben vezénylési értékének módosítása **ContentDefinitionReferenceId** való `api.signuporsigninwithkmsi`. Ezt az értéket a beállítás lehetővé teszi, hogy a felhasználói interakciósorozatban szereplő be a jelölőnégyzetet. 
+7. Mentés és a bővítmény-fájl feltöltése, és győződjön meg arról, hogy az összes ellenőrzés sikeres.
 
-   ```
-   <Item Key="client_id">8322dedc-cbf4-43bc-8bb6-141d16f0f489</Item>
-   ```
+    ```XML
+    <UserJourneys>
+      <UserJourney Id="SignUpOrSignInWithKmsi">
+        <OrchestrationSteps>
+          <OrchestrationStep Order="1" Type="CombinedSignInAndSignUp" ContentDefinitionReferenceId="api.signuporsigninwithkmsi">
+            <ClaimsProviderSelections>
+              <ClaimsProviderSelection ValidationClaimsExchangeId="LocalAccountSigninEmailExchange" />
+            </ClaimsProviderSelections>
+            <ClaimsExchanges>
+              <ClaimsExchange Id="LocalAccountSigninEmailExchange" TechnicalProfileReferenceId="SelfAsserted-LocalAccountSignin-Email" />
+            </ClaimsExchanges>
+          </OrchestrationStep>
+          <OrchestrationStep Order="2" Type="ClaimsExchange">
+            <Preconditions>
+              <Precondition Type="ClaimsExist" ExecuteActionsIf="true">
+                <Value>objectId</Value>
+                <Action>SkipThisOrchestrationStep</Action>
+              </Precondition>
+            </Preconditions>
+            <ClaimsExchanges>
+              <ClaimsExchange Id="SignUpWithLogonEmailExchange" TechnicalProfileReferenceId="LocalAccountSignUpWithLogonEmail" />
+            </ClaimsExchanges>
+          </OrchestrationStep>
+          <!-- This step reads any user attributes that we may not have received when in the token. -->
+          <OrchestrationStep Order="3" Type="ClaimsExchange">
+            <ClaimsExchanges>
+              <ClaimsExchange Id="AADUserReadWithObjectId" TechnicalProfileReferenceId="AAD-UserReadUsingObjectId" />
+            </ClaimsExchanges>
+          </OrchestrationStep>
+          <OrchestrationStep Order="4" Type="SendClaims" CpimIssuerTechnicalProfileReferenceId="JwtIssuer" />
+        </OrchestrationSteps>
+        <ClientDefinition ReferenceId="DefaultWeb" />
+      </UserJourney>
+    </UserJourneys>
+    ```
 
-3. Cserélje le az összes példányát `ProxyIdentityExperienceFrameworkAppId` az identitás-kezelőfelületi keretrendszer Proxy alkalmazás leírtak szerint az alkalmazás azonosítójával [bevezetés](active-directory-b2c-get-started-custom.md).
+## <a name="create-a-relying-party-file"></a>Hozzon létre egy függő entitás fájlt
 
-4. Mentse a bővítmények fájlt.
+Frissítse a függő entitásonkénti (RP) fájl, amely az Ön által létrehozott felhasználói interakciósorozat kezdeményezi.
 
-## <a name="create-a-kmsi-in-enabled-user-journey"></a>Hozzon létre egy KMSI engedélyezett felhasználói interakciósorozat
+1. Készítsen másolatot *SignUpOrSignIn.xml* a munkakönyvtárban fájlt, és nevezze át. Ha például *SignUpOrSignInWithKmsi.xml*.
+2. Nyissa meg az új fájlt, és frissítse a **PolicyId** az attribútum a **TrustFrameworkPolicy** egyedi értékkel. Ez az a házirend nevét. Például: `SignUpOrSignInWithKmsi`.
+3. Módosítsa a **referenceid megadása** az attribútum a **DefaultUserJourney** elem megfelelő az Ön által létrehozott új felhasználói interakciósorozat azonosítóját. Például: `SignUpOrSignInWithKmsi`.
 
-Most szüksége helyi fiókba jogcím-szolgáltató hozzáadása a felhasználói interakciósorozat. 
+    KMSI használatára van konfigurálva, a **UserJourneyBehaviors** elemet. A **KeepAliveInDays** attribútum meghatározza, hogy mennyi ideig a felhasználó bejelentkezve marad. A következő példában a KMSI munkamenet automatikusan lejárata után `7` nap, függetlenül attól, hogy milyen gyakran a felhasználói beavatkozás nélküli hitelesítést hajt végre. Beállítás a **KeepAliveInDays** értéket a következőre `0` KMSI funkciót kikapcsol. Alapértelmezés szerint ez az érték a `0`. Ha az értéke **SessionExpiryType** van `Rolling`, a KMSI munkamenet bővített `7` nappal minden alkalommal, amikor a felhasználó csendes hitelesítést hajt végre.  Ha `Rolling` van kijelölve, érdemes megtartani a napok számát minimális. 
 
-1. Nyissa meg a szabályzat (például TrustFrameworkBase.xml) alapszintű fájlt.
-2. Keresse meg a `<UserJourneys>` elem és a teljes másolási `<UserJourney>` tartalmazó csomópont `Id="SignUpOrSignIn"`.
-3. Nyissa meg a kiterjesztésű fájlt (például TrustFrameworkExtensions.xml), és keresse meg a `<UserJourneys>` elemet. Ha az elem nem létezik, adjon hozzá egyet.
-4. Illessze be a teljes `<UserJourney>` csomópont gyermekeként kimásolt a `<UserJourneys>` elemet.
-5. Nevezze át az új felhasználói interakciósorozat azonosítója (mint például nevezze át `SignUpOrSignInWithKmsi`).
-6. Végül a `OrchestrationStep 1` módosítsa a `ContentDefinitionReferenceId` való `api.signuporsigninwithkmsi` , meg kell definiálni a korábbi lépésekben. Ez lehetővé teszi a felhasználói interakciósorozatban szereplő be a jelölőnégyzetet. 
-7. Elkészült a kiterjesztésű fájl módosítása. Mentse, és töltse fel ezt a fájlt. Győződjön meg arról, hogy az összes ellenőrzés sikeres.
+    Az érték **SessionExpiryInSeconds** az egyszeri bejelentkezés munkamenet lejárati idejét jelzi. Ez belső használatára szolgál az Azure AD B2C-vel ellenőrizze, hogy KMSI a munkamenet lejárt-e vagy sem. Az érték **KeepAliveInDays** meghatározza, hogy az egyszeri bejelentkezési cookie-t a böngésző Expires és Max-Age értékét. Ellentétben **SessionExpiryInSeconds**, **KeepAliveInDays** szolgál, hogy a böngészőben a cookie-k törlése, ha be van zárva. A felhasználói beavatkozás nélkül jelentkezhetnek be, csak akkor, ha az egyszeri bejelentkezés munkamenet cookie-k létezik, amelyek vezérlik **KeepAliveInDays**, és nem járt le, amelyek vezérlik **SessionExpiryInSeconds**. Javasoljuk, hogy az értékét állítsa be **SessionExpiryInSeconds** egyenértékű idején lennie **KeepAliveInDays** (másodpercben), az alábbi példában látható módon.
 
-```XML
-<UserJourneys>
-    <UserJourney Id="SignUpOrSignInWithKmsi">
-      <OrchestrationSteps>
-        <OrchestrationStep Order="1" Type="CombinedSignInAndSignUp" ContentDefinitionReferenceId="api.signuporsigninwithkmsi">
-          <ClaimsProviderSelections>
-            <ClaimsProviderSelection ValidationClaimsExchangeId="LocalAccountSigninEmailExchange" />
-          </ClaimsProviderSelections>
-          <ClaimsExchanges>
-            <ClaimsExchange Id="LocalAccountSigninEmailExchange" TechnicalProfileReferenceId="SelfAsserted-LocalAccountSignin-Email" />
-          </ClaimsExchanges>
-        </OrchestrationStep>
-        <OrchestrationStep Order="2" Type="ClaimsExchange">
-          <Preconditions>
-            <Precondition Type="ClaimsExist" ExecuteActionsIf="true">
-              <Value>objectId</Value>
-              <Action>SkipThisOrchestrationStep</Action>
-            </Precondition>
-          </Preconditions>
-          <ClaimsExchanges>
-            <ClaimsExchange Id="SignUpWithLogonEmailExchange" TechnicalProfileReferenceId="LocalAccountSignUpWithLogonEmail" />
-          </ClaimsExchanges>
-        </OrchestrationStep>
-        <!-- This step reads any user attributes that we may not have received when in the token. -->
-        <OrchestrationStep Order="3" Type="ClaimsExchange">
-          <ClaimsExchanges>
-            <ClaimsExchange Id="AADUserReadWithObjectId" TechnicalProfileReferenceId="AAD-UserReadUsingObjectId" />
-          </ClaimsExchanges>
-        </OrchestrationStep>
-        <OrchestrationStep Order="4" Type="SendClaims" CpimIssuerTechnicalProfileReferenceId="JwtIssuer" />
-      </OrchestrationSteps>
-      <ClientDefinition ReferenceId="DefaultWeb" />
-    </UserJourney>
-  </UserJourneys>
-```
+    ```XML
+    <RelyingParty>
+      <DefaultUserJourney ReferenceId="SignUpOrSignInWithKmsi" />
+      <UserJourneyBehaviors>
+        <SingleSignOn Scope="Tenant" KeepAliveInDays="7" />
+        <SessionExpiryType>Absolute</SessionExpiryType>
+        <SessionExpiryInSeconds>604800</SessionExpiryInSeconds>
+      </UserJourneyBehaviors>
+      <TechnicalProfile Id="PolicyProfile">
+        <DisplayName>PolicyProfile</DisplayName>
+        <Protocol Name="OpenIdConnect" />
+        <OutputClaims>
+          <OutputClaim ClaimTypeReferenceId="displayName" />
+          <OutputClaim ClaimTypeReferenceId="givenName" />
+          <OutputClaim ClaimTypeReferenceId="surname" />
+          <OutputClaim ClaimTypeReferenceId="email" />
+          <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub"/>
+        </OutputClaims>
+        <SubjectNamingInfo ClaimType="sub" />
+      </TechnicalProfile>
+    </RelyingParty>
+    ```
 
-## <a name="create-a-relying-party-rp-file"></a>Hozzon létre egy függő entitásonkénti (RP) fájlt
-
-Ezután frissítse a függő entitásonkénti (RP) fájl, amely az Ön által létrehozott felhasználói interakciósorozat kezdeményezi:
-
-1. A munkakönyvtárban SignUpOrSignIn.xml másolatának elkészítéséhez. Nevezze (például SignUpOrSignInWithKmsi.xml).
-
-2. Nyissa meg az új fájlt, és frissítse a `PolicyId` az attribútum `<TrustFrameworkPolicy>` egyedi értékkel. Ez az a a szabályzat nevét (például SignUpOrSignInWithKmsi).
-
-3. Módosítsa a `ReferenceId` attribútum `<DefaultUserJourney>` megfelelően a `Id` az új felhasználói út (például SignUpOrSignInWithKmsi) létrehozott.
-
-4. KMSI van konfigurálva a `UserJourneyBehaviors`. 
-
-5. **`KeepAliveInDays`** azt szabályozza, hogy mennyi ideig a felhasználó bejelentkezve marad. A következő példában KMSI munkamenet automatikusan függetlenül attól, hogy milyen gyakran a felhasználói beavatkozás nélküli hitelesítést hajt végre 14 nap elteltével jár le.
-
-   Beállítás `KeepAliveInDays` 0 érték kikapcsolja a KMSI funkciót. Alapértelmezés szerint ez az érték a 0
-
-6. Ha **`SessionExpiryType`** van *működés közbeni*, majd a KMSI munkamenet bővített 14 nappal minden alkalommal, amikor a felhasználó csendes hitelesítést hajt végre.  Ha *működés közbeni* van kijelölve, javasoljuk, hogy ahhoz, hogy legalább hány napig. 
-
-       <RelyingParty>
-       <DefaultUserJourney ReferenceId="SignUpOrSignInWithKmsi" />
-       <UserJourneyBehaviors>
-         <SingleSignOn Scope="Tenant" KeepAliveInDays="14" />
-         <SessionExpiryType>Absolute</SessionExpiryType>
-         <SessionExpiryInSeconds>1200</SessionExpiryInSeconds>
-       </UserJourneyBehaviors>
-       <TechnicalProfile Id="PolicyProfile">
-         <DisplayName>PolicyProfile</DisplayName>
-         <Protocol Name="OpenIdConnect" />
-         <OutputClaims>
-           <OutputClaim ClaimTypeReferenceId="displayName" />
-           <OutputClaim ClaimTypeReferenceId="givenName" />
-           <OutputClaim ClaimTypeReferenceId="surname" />
-           <OutputClaim ClaimTypeReferenceId="email" />
-           <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub"/>
-         </OutputClaims>
-         <SubjectNamingInfo ClaimType="sub" />
-       </TechnicalProfile>
-       </RelyingParty>
-
-7. Mentse a módosításokat, majd feltölti a fájlt.
-
-8. Ha tesztelni szeretné az egyéni házirend feltöltött, az Azure Portalon, nyissa meg a szabályzat paneljén, és kattintson **Futtatás most**.
-
-
-## <a name="link-to-sample-policy"></a>Minta szabályzat csatolása
+4. Mentse a módosításokat, és majd feltöltjük a fájlt.
+5. Ha tesztelni szeretné az egyéni házirend feltöltött, az Azure Portalon, nyissa meg a szabályzat lapját, és válassza **Futtatás most**.
 
 A minta házirendet annak [Itt](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/keep%20me%20signed%20in).
 

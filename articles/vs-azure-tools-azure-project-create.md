@@ -12,15 +12,15 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 03/21/2017
 ms.author: ghogen
-ms.openlocfilehash: f41628c29f40443cc213892a0cc457eda110ebca
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 3e6ab2078c6b9233360d7cabdc49eddf557b9b57
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42060837"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43189240"
 ---
 # <a name="creating-an-azure-cloud-service-project-with-visual-studio"></a>Az Azure felhőszolgáltatás-projekt létrehozása Visual studióval
-Az Azure Tools for Visual Studio segítségével hozhat létre egy Azure-felhőszolgáltatásban projektsablon biztosít. A projekt létrehozása után a Visual Studio lehetővé teszi konfigurálása, a Hibakeresés és a felhőalapú szolgáltatás üzembe helyezése az Azure-bA.
+Az Azure Tools for Visual Studio biztosít, amelyek segítségével hozhat létre projektsablon egy [Azure-felhőszolgáltatásban](/azure/cloud-services/cloud-services-choose-me), azaz egy egyszerű általános célú Azure-szolgáltatás. A projekt létrehozása után a Visual Studio lehetővé teszi konfigurálása, a Hibakeresés és a felhőalapú szolgáltatás üzembe helyezése az Azure-bA.
 
 ## <a name="steps-to-create-an-azure-cloud-service-project-in-visual-studio"></a>A Visual Studióban egy Azure-felhőszolgáltatás-projekt létrehozásának lépései
 Ez a szakasz végigvezeti egy Azure-felhőszolgáltatás-projekt létrehozása a Visual Studióban, egy vagy több webes szerepkörökhöz.  

@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/18/2018
+ms.date: 08/28/2018
 ms.author: celested
 ms.custom: aaddev
-ms.reviewer: luleon
-ms.openlocfilehash: 90b8a9bd45d2c6a8551e3af84a5bfa915f4c3cea
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.reviewer: celested
+ms.openlocfilehash: c9db5169a978875cf639f6c534ce7920909c896e
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39592203"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43188240"
 ---
 # <a name="integrating-applications-with-azure-active-directory"></a>Alkalmazások integrálása az Azure Active Directoryval
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
@@ -95,12 +95,12 @@ A következő lépések bemutatják, hogyan a a jóváhagyási működik az alka
 
 5. Miután a felhasználó engedélyezi a jóváhagyás, az engedélyezési kódot az alkalmazás, amely váltják a hozzáférési jogkivonat beszerzése és a frissítési token vissza küld vissza. Ezzel a folyamattal kapcsolatos további információkért lásd: a [webes API szakasz hitelesítési forgatókönyvek az Azure ad-webalkalmazás](authentication-scenarios.md#web-application-to-web-api).
 
-6. A rendszergazdák is is beleegyezik az összes felhasználó nevében egy alkalmazás delegált engedélyeit a bérlőben. Rendszergazdai jóváhagyás megakadályozza, hogy a beleegyezés párbeszédpanelen jelenik meg a bérlő összes felhasználója számára, és elvégezhető a [az Azure portal](https://portal.azure.com) a rendszergazdai szerepkörrel rendelkező felhasználók által. Az a **beállítások** oldalon az alkalmazás **szükséges engedélyek** , majd kattintson a a **engedélyek megadása** gombra. 
+6. A rendszergazdák is is beleegyezik az összes felhasználó nevében egy alkalmazás delegált engedélyeit a bérlőben. Rendszergazdai jóváhagyás megakadályozza, hogy a beleegyezés párbeszédpanelen jelenik meg a bérlő összes felhasználója számára, és elvégezhető a [az Azure portal](https://portal.azure.com) a rendszergazdai szerepkörrel rendelkező felhasználók által. A a **beállítások** oldalon az alkalmazás **szükséges engedélyek** , majd kattintson a a **engedélyeket** gombra. 
 
   ![Engedélyek megadása az explicit rendszergazdai jóváhagyás](./media/quickstart-v1-integrate-apps-with-azure-ad/grantpermissions.png)
     
   > [!NOTE]
-  > Hozzájárulás megadása az explicit használatával a **engedélyek megadása** gomb ADAL.js használó egyoldalas alkalmazások (SPA) jelenleg szükség. Ellenkező esetben a kérelem sikertelen lesz, amikor a hozzáférési jogkivonatot kér. 
+  > Hozzájárulás megadása az explicit használatával a **engedélyeket** gomb ADAL.js használó egyoldalas alkalmazások (SPA) jelenleg szükség. Ellenkező esetben a kérelem sikertelen lesz, amikor a hozzáférési jogkivonatot kér. 
 
 ### <a name="configure-a-client-application-to-access-web-apis"></a>Webes API-k eléréséhez ügyfélalkalmazás konfigurálása
 Ahhoz, hogy egy webes/bizalmas ügyfélalkalmazás egy engedélyezési megadási folyamatában, amelyhez hitelesítés szükséges részt (és a hozzáférési jogkivonat beszerzése), az azt kell létesítenie a biztonságos hitelesítő adatok. Az Azure portál által támogatott alapértelmezett hitelesítési módszere, ügyfél-Azonosítót és a titkos kulcsot. Ebben a részben adja meg a titkos kulcsot az ügyfél-hitelesítő adatok a szükséges konfigurációs lépéseket ismertetjük.
@@ -112,7 +112,7 @@ Ezenkívül egy ügyfél hozzáfér a webes API-k egy erőforrás-alkalmazás (p
 - Delegált engedélyek: Az ügyfélalkalmazásnak szüksége van a webes API-k elérése a bejelentkezett felhasználó, de az elérés korlátozója a kijelölt engedéllyel. Engedély az ilyen típusú adható felhasználó által, kivéve, ha az engedély szükséges a rendszergazdai jóváhagyást. 
 
   > [!NOTE]
-  > Delegált engedély hozzáadása egy alkalmazáshoz nem automatikusan biztosít hozzájárulása a felhasználók számára a bérlőn belül. Felhasználók kell manuálisan még mindig vonatkozó beleegyezés a hozzáadott delegált engedélyeket futásidőben, kivéve, ha a rendszergazda kattint a **engedélyek megadása** gombra a **szükséges engedélyek** szakaszában a alkalmazások lap az Azure Portalon. 
+  > Delegált engedély hozzáadása egy alkalmazáshoz nem automatikusan biztosít hozzájárulása a felhasználók számára a bérlőn belül. Felhasználók manuálisan még mindig a futásidőben, a hozzáadott delegált engedélyek kell beleegyezik, kivéve, ha a rendszergazda engedélyezi a jóváhagyás minden felhasználó nevében.
 
 #### <a name="to-add-application-credentials-or-permissions-to-access-web-apis"></a>Alkalmazás hitelesítő adatait, vagy a webes API-k elérésére jogosult hozzáadása
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
@@ -121,13 +121,15 @@ Ezenkívül egy ügyfél hozzáfér a webes API-k egy erőforrás-alkalmazás (p
 
    ![Frissítse az alkalmazás regisztrálása](./media/quickstart-v1-integrate-apps-with-azure-ad/update-app-registration.png)
 
-4. Ekkor megnyílik az alkalmazás fő regisztrációs oldal, amely megnyílik a **beállítások** az alkalmazás lapját. A webalkalmazás hitelesítő adatokat a titkos kulcs hozzáadása:
+4. Ekkor megnyílik az alkalmazás fő regisztrációs oldal, amely megnyílik a **beállítások** az alkalmazás lapját. A webalkalmazás hitelesítő adat hozzáadása:
   - Kattintson a **kulcsok** szakaszában a **beállítások** lapot. 
-  - Adjon hozzá egy leírást a kulcshoz.
-  - Válasszon ki egy vagy két év időtartama.
-  - Kattintson a **Save** (Mentés) gombra. A jobb szélső oszlop pedig tartalmazza a kulcs értékét, a konfigurációs módosítások mentése után. **Ügyeljen arra, hogy a kulcs másolása** az Ügyfélkód használatra, mert nem érhető el egyszer elhagyja az oldalt.
-
-  ![Egy alkalmazás regisztrálása - kulcsok frissítése](./media/quickstart-v1-integrate-apps-with-azure-ad/update-app-registration-settings-keys.png)
+  - Tanúsítvány hozzáadása:
+    - Válassza ki **nyilvános kulcs feltöltése**.
+    - Válassza ki a feltölteni kívánt fájlt. A következő típusú egyikét kell lennie: .cer, .pem, .crt.
+  - A jelszó hozzáadása:
+    - Adjon hozzá egy leírást a kulcshoz.
+    - Válassza ki az időtartamot.
+    - Kattintson a **Save** (Mentés) gombra. A jobb szélső oszlop pedig tartalmazza a kulcs értékét, a konfigurációs módosítások mentése után. **Ügyeljen arra, hogy a kulcs másolása** az Ügyfélkód használatra, mert nem érhető el egyszer elhagyja az oldalt.
 
 5. Erőforrás API-k elérésére a ügyfélről eke hozzáadása
   - Kattintson a **szükséges engedélyek** szakaszában a **beállítások** lapot. 
@@ -141,11 +143,6 @@ Ezenkívül egy ügyfél hozzáfér a webes API-k egy erőforrás-alkalmazás (p
   ![Egy alkalmazás regisztrálása - engedélyek engedélyek frissítése](./media/quickstart-v1-integrate-apps-with-azure-ad/update-app-registration-settings-permissions-perms.png)
 
 6. Ha elkészült, kattintson a **válassza** gombot **hozzáférés engedélyezése** lapon, majd a **kész** gombot a **API-hozzáférés hozzáadása** lap. A rendszer visszairányítja az **szükséges engedélyek** oldal, ahol az új erőforrás hozzáadódik az API-k listája.
-
-  > [!NOTE]
-  > Kattintson a **kész** gomb is automatikusan beállítja az engedélyeket az alkalmazáshoz a címtárban konfigurált egyéb alkalmazások engedélyei alapján. Ezek az Alkalmazásengedélyek tekintheti meg az alkalmazás Hibaoldal **beállítások** lapot.
-  > 
-  > 
 
 ### <a name="configuring-a-resource-application-to-expose-web-apis"></a>Webes API-k elérhetővé egy erőforrás-alkalmazás konfigurálása
 

@@ -1,6 +1,6 @@
 ---
-title: Privileged Identity Management előfizetések – Azure |} A Microsoft Docs
-description: Az előfizetés és a licencelési követelmények kezelésére, és a bérlő Azure AD Privileged Identity Management használatával
+title: A PIM - használható az Azure előfizetési követelmények |} A Microsoft Docs
+description: Előfizetés és az Azure AD Privileged Identity Management (PIM) használata a licencelési követelményeket ismerteti.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -16,14 +16,14 @@ ms.component: pim
 ms.date: 06/01/2017
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: dbe4efa57a7c4c31b2bdca84665eef8179564a8f
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: 1554895dcba0c09a3a2e19c284a1cd6f0416cfe1
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42617069"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43190610"
 ---
-# <a name="azure-active-directory-privileged-identity-management-subscription-requirements"></a>Az Azure Active Directory Privileged Identity Management előfizetési követelmények
+# <a name="subscription-requirements-to-use-pim"></a>A PIM használata előfizetési követelmények
 
 Az Azure AD Privileged Identity Management érhető el az Azure AD Premium P2 kiadásában részeként. P2, és hogyan viszonyul prémium P1 szintű, az egyéb funkciókról további információ: [Azure Active Directory-kiadások](../active-directory-editions.md).
 
@@ -61,5 +61,5 @@ Ha egy Azure AD Premium P2 szintű előfizetésre, vagy az EMS E5 csomagra szól
 
 ## <a name="next-steps"></a>További lépések
 
-- [Az Azure AD Privileged Identity Management – első lépések](pim-getting-started.md)
-- [Szerepkörök az Azure AD Privileged Identity Management](pim-roles.md)
+- [A PIM használatának megkezdése](pim-getting-started.md)
+- [A PIM segítségével kezelheti az Azure AD címtárszerepkörök](pim-roles.md)

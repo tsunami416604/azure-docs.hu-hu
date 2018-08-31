@@ -1,10 +1,11 @@
 ---
-title: Riasztások beállítása a Azure Application insights szolgáltatással |} Microsoft Docs
-description: Értesítés válaszidejű, kivételek, és egyéb teljesítmény vagy a webalkalmazás használatának változásairól.
+title: Riasztásokat állíthat be az Azure Application Insights |} A Microsoft Docs
+description: Lassú válasz a következő alkalommal, kivételek, és más teljesítményére és használati módosításokat a webalkalmazásban értesítést kaphat.
 services: application-insights
 documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
+ms.reviewer: lagayhar
 ms.assetid: f8ebde72-f819-4ba5-afa2-31dbd49509a5
 ms.service: application-insights
 ms.workload: tbd
@@ -13,95 +14,95 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 87be1a48a6c3320187243e549a8fb8e5ecc9e006
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 1061f356d75037bae440a5289413b2b5d17af1c9
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35293603"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43246952"
 ---
-# <a name="set-alerts-in-application-insights"></a>Az Application Insightsban riasztások beállítása
-[Az Azure Application Insights] [ start] is figyelmeztet a webalkalmazás a teljesítmény vagy a használati metrikák változásairól. 
+# <a name="set-alerts-in-application-insights"></a>Riasztásokat állíthat be az Application insights szolgáltatásban
+[Az Azure Application Insights] [ start] riasztja Önt, a webalkalmazásban a teljesítmény vagy a használati metrikák változásai. 
 
-Az Application Insights figyeli az élő app egy [számos platformon] [ platforms] segítséget nyújtanak a teljesítménnyel kapcsolatos problémák diagnosztizálásához és használati módokba.
+Az Application Insights monitorozza az élő alkalmazás a egy [sokféle Platform] [ platforms] teljesítménybeli problémák diagnosztizálása és a használati mintákról.
 
-Riasztások három fő típusba sorolhatók:
+A riasztások három fő típusba sorolhatók:
 
-* **Metrika riasztások** jelzi, hogy ha egy metrika áthalad bizonyos időszakokra – például a válaszidőt, a kivételek száma, a CPU-használat vagy a lapmegtekintések egy küszöbértéket. 
-* [**Webalkalmazás-tesztek** ] [ availability] mondja el, ha a webhely nem érhető el az interneten, vagy válaszol lassan. [További][availability].
-* [**Proaktív diagnosztika** ](app-insights-proactive-diagnostics.md) értesítjük szokatlan teljesítmény minták automatikusan megtörténik.
+* **Metrikákhoz kapcsolódó riasztások** mondja el, ha egy metrika átlépi egy bizonyos időn – például a válaszidőt, a kivételek számát, a CPU-használat vagy a lapmegtekintések egy küszöbértéket. 
+* [**Webes teszteket** ] [ availability] mondja el, ha a hely nem érhető el az interneten, vagy válaszra képes lassan. [További][availability].
+* [**Proaktív diagnosztika** ](app-insights-proactive-diagnostics.md) konfigurálása automatikusan megtörténik a szokatlan teljesítmény minták kaphat értesítést.
 
-Azt a cikkben metrika riasztások összpontosítanak.
+Ebben a cikkben metrikákhoz kapcsolódó riasztások koncentrálunk.
 
-## <a name="set-a-metric-alert"></a>A metrika-riasztások beállítása
-Nyissa meg a riasztási szabályok panelt, és aztán a Hozzáadás gombra. 
+## <a name="set-a-metric-alert"></a>Metrikariasztás beállítása
+A riasztási szabályok panel megnyitásához, és használja a Hozzáadás gombra. 
 
-![A riasztási szabályok paneljén válassza riasztási hozzáadása. Állítsa be az alkalmazás mérni, adja meg a riasztás nevét, és válassza ki a metrika erőforrás.](./media/app-insights-alerts/01-set-metric.png)
+![A riasztási szabályok paneljén válassza a riasztás hozzáadása. Állítsa be az alkalmazás és mérhető, adja meg a riasztás nevét, és válassza a metrika az erőforrásnak.](./media/app-insights-alerts/01-set-metric.png)
 
-* Állítsa be az erőforrást, mielőtt a többi tulajdonság. **Válassza ki a "(összetevők)" erőforrást** Ha a teljesítmény vagy a használati metrikák állíthatók be riasztások.
-* A neve, amelyet átadhat a riasztás az erőforráscsoport (ne csak az alkalmazás) belül egyedinek kell lennie.
-* Ügyeljen arra, ügyeljen az egységeket, amelyekben azonosítóját, írja be a küszöbértéket.
-* Ha bejelöli a jelölőnégyzetet "... E-mail tulajdonosok", riasztások által küldött e-mailek mindenki, aki hozzáfér az erőforráscsoport. Bontsa ki a személyek készletét, vegye fel őket a [erőforráscsoportba vagy előfizetésbe](app-insights-resources-roles-access-control.md) (az erőforrás nem).
-* "További e-mailek" megadása esetén a rendszer küld figyelmeztetést személyek vagy csoportok (-e, be van jelölve a "e-mail-tulajdonosok..." mezőben). 
-* Állítsa be a [webhook cím](../monitoring-and-diagnostics/insights-webhooks-alerts.md) Ha meg van adva egy webes alkalmazás, amely válaszol a riasztásokat. Azt nevezzük, mind a riasztás aktiválásakor, és ha meg van oldva. (De vegye figyelembe, hogy jelenleg lekérdezési paraméterek nem továbbítja a rendszer webhook tulajdonságként.)
-* Bármikor letilthatja, vagy engedélyezze a figyelmeztetés: a gombok a panel tetején.
+* Állítsa be az erőforrást, mielőtt a többi tulajdonságot. **Válassza ki a "(összetevők)" erőforrást** Ha azt szeretné, a teljesítmény vagy a használati metrikákhoz riasztásokat állíthat be.
+* A neve, amely engedélyezi a riasztást, az erőforráscsoportot (nem csak az alkalmazás) belül egyedinek kell lennie.
+* Ügyeljen arra, hogy vegye figyelembe az egységeket, amelyben kéri, hogy adja meg a küszöbértéket.
+* Ha bejelöli a jelölőnégyzetet "E-mail küldése a tulajdonosoknak...", riasztások által küldött e-mailek mindenki számára, aki hozzáfér az ebben az erőforráscsoportban. Bontsa ki a csoport, akik, adja hozzá őket a [erőforráscsoportba vagy előfizetésbe](app-insights-resources-roles-access-control.md) (nem az erőforrás).
+* Ha megadja a "További e-mailek", riasztást kap az adott személyek vagy csoportok (függetlenül attól, be van jelölve az "e-mail-tulajdonosok..." mezőben). 
+* Állítsa be a [webhook cím](../monitoring-and-diagnostics/insights-webhooks-alerts.md) Ha meg van adva egy webalkalmazást, amely válaszol a riasztásokra. A riasztás aktiválásakor mind a megoldott nevezzük. (De vegye figyelembe, hogy jelenleg lekérdezési paraméterek nem továbbítódnak tulajdonságokként webhook.)
+* Letilthatja a riasztás engedélyezése vagy: a gombok a panel tetején.
 
-*A riasztási hozzáadása gomb nem látható.* 
+*A riasztás hozzáadása gomb nem látható.* 
 
-* Egy szervezeti fiók használatával? Riasztások állíthatja be, ha tulajdonosa vagy közreműködője az alkalmazás erőforráshoz való hozzáférést. Tekintse meg a hozzáférés-vezérlés panelen. [További tudnivalók a hozzáférés-vezérlés][roles].
+* Szervezeti fiók használatával? Beállíthat riasztásokat, ha rendelkezik tulajdonosi vagy közreműködői hozzáférést az alkalmazás-erőforrást. Vessen egy pillantást az Access Control panelen. [További tudnivalók a hozzáférés-vezérlés][roles].
 
 > [!NOTE]
-> A riasztások panelen láthatja, hogy már van egy riasztási beállítva: [proaktív diagnosztika](app-insights-proactive-failure-diagnostics.md). Az automatikus riasztás egy adott metrika, hibaarányú figyeli. Ha úgy dönt, hogy tiltsa le a proaktív riasztás, nem kell saját riasztás beállítása sikertelen. 
+> A riasztások panelen láthatja, hogy már van egy riasztási csoport: [proaktív diagnosztika](app-insights-proactive-failure-diagnostics.md). Az automatikus riasztás figyeli egy adott mérőszám, kérelmek hibaaránya. Kivéve, ha úgy dönt, hogy a proaktív riasztás letiltása, nem kell beállítani a saját riasztás kérelmek hibaaránya. 
 > 
 > 
 
 ## <a name="see-your-alerts"></a>A riasztások megtekintéséhez
-Ha egy riasztás módosításokat állam e-mailt kap aktív és inaktív között. 
+Közötti inaktív és az aktív kap egy e-mailt, ha egy riasztás módosítások állapotba. 
 
-A riasztási szabályok panelen látható minden egyes riasztás aktuális állapota.
+Minden riasztás aktuális állapota akkor jelenik meg a riasztási szabályok paneljén.
 
-Nincs a riasztásokat a legutóbbi tevékenységét legördülő:
+Nincs friss tevékenység a riasztások összegzését legördülő:
 
-![Riasztások legördülő](./media/app-insights-alerts/010-alert-drop.png)
+![Riasztások kombinált](./media/app-insights-alerts/010-alert-drop.png)
 
-Állapot változásainak az előzményeit a műveletnaplóban van:
+Állapot változásainak az előzményeit a tevékenységnaplóban van:
 
-![Áttekintés paneljén kattintson a beállítások naplókat](./media/app-insights-alerts/09-alerts.png)
+![Az Áttekintés panelen kattintson a beállítások, a vizsgálati naplók](./media/app-insights-alerts/09-alerts.png)
 
 ## <a name="how-alerts-work"></a>A riasztások működése
-* Riasztás három állapota van: "Soha nem aktivált", "Aktív" és "Feloldva." Aktivált azt jelenti, hogy a megadott feltétel volt igaz értéke esetén, ha a legutóbbi értékelésének.
-* Értesítés jön létre, amikor egy riasztás állapota. (Ha a riasztási feltétel már nem igaz, a riasztás létrehozásakor, nem kaphat értesítést mindaddig, amíg a feltétel hamis kerül.)
-* Minden értesítési e-mailt állít elő, ha be van jelölve az e-mailek mezőbe, vagy a megadott e-mail címet. Is megtalálhatja az értesítések legördülő listából.
-* Riasztás minden alkalommal, amikor egy metrika megérkeznek, de más módon nem értékeli.
-* A kiértékelés összesíti a metrika az előző adott időszakban, és összehasonlítja azt a küszöbértéket, az új állapot meghatározásához.
-* Az időtartamot, ameddig úgy dönt, amelyben a időköze metrikák összesítése. Nincs hatással, milyen gyakran legyen kiértékelve a riasztás: metrikák érkezési gyakoriságát függ.
-* Ha nincs adat érkezik egy adott metrika egy kis ideig, résnek rendelkezik különböző hatások riasztási kiértékelési és a diagramok metrika explorer. A metrika Intézőben adatot nem látható több mint a mintavételi időközben a diagram, ha a diagram jeleníti meg a 0 érték. De azonos metrika alapuló riasztást nem lehet reevaluated, és a riasztás állapota változatlan marad. 
+* Riasztás három állapota van: "Soha nem aktiválódik", "Aktiválva" és "Megoldódott". Legutóbbi értékelésének volt igaz, aktivált azt jelenti, hogy a megadott feltétel.
+* Értesítés jön létre, ha egy riasztás állapota. (Ha a riasztási feltétel, a riasztás létrehozásakor már volt igaz, nem kaphat értesítést mindaddig, amíg a feltétel hamis kerül.)
+* Minden értesítés e-mailt állít elő, ha be van jelölve az e-mailek mezőbe, vagy a megadott e-mail-címeket. Az értesítések legördülő listája is megjeleníthető.
+* Riasztás minden alkalommal, amikor egy metrika megérkezik, de más módon nem értékeli ki.
+* A kiértékelés a metrika összefoglalja az előző időszakban, és összehasonlítja azt a küszöbértéket, az új állapot meghatározásához.
+* Az időszak, Ön által választott Megadja azt az időtartamot, amelyen a metrikák vannak összesítve. Ez nincs hatással, milyen gyakran legyen kiértékelve a riasztást: attól függ, hogy a metrikák megérkezését gyakoriságát.
+* Ha nincs adat érkezik egy adott metrika egy kis ideig, a térköz rendelkezik riasztás értékelése és a metrika explorer a diagramok különböző hatásokkal. A metrika Explorerben a látható adatok nem hosszabb, mint a mintavételi időközben a diagramot, ha a diagram mutatja a 0 érték. De ugyanazt a metrika alapján riasztás nem újraértékeli, és a riasztási állapot változatlan marad. 
   
-    Végül érkező adatokat, amikor a diagram ugrik vissza egy nullától eltérő értékre. A riasztás kiértékeli a megadott időszakra vonatkozó rendelkezésre álló adatok alapján. Ha az új adatpont az időtartamon belül csak egy, az összesítés alapul, csak az, hogy az adatpontok.
-* Riasztást vibrálását gyakran közötti riasztási és kifogástalan állapotok, még akkor is, ha hosszú ideig állít be. Ez akkor fordulhat elő, ha a metrika értékét körül a küszöbérték felett áll. A küszöbérték nem kapott van: riasztás átmenet értéke megegyezik az átmenet kifogástalanra, történik.
+    Végül adatok érkeznek, amikor a diagram ugrik vissza egy nullától eltérő értékre. A riasztást kiértékeli a megadott időszakra vonatkozóan rendelkezésre álló adatok alapján. Ha az új adatok pont az egyetlen, az időtartamon belül, az összesítés alapul, csak az, hogy az adatpont.
+* Riasztás is elhalványul gyakori riasztási és kifogástalan állapota, között akkor is, ha hosszabb ideig állít be. Ez akkor fordulhat elő, ha a metrika értéke a küszöbérték körül mutat. Nem kapott szerepel a küszöbértéket: áttérés riasztás történik, ha megegyezik az átállás kifogástalanra.
 
-## <a name="what-are-good-alerts-to-set"></a>Mik azok a helyes riasztások beállítása
-Ez az alkalmazás függ. Kezdésként érdemes nem szeretné beállítani a túl sok metrikákat. Szánjon némi időt, megnézi a metrika diagramok követve betekintést nyerhet abba a viselkedését leíró általában az alkalmazás futtatása közben. Ez az eljárás segítséget a teljesítmény javítása érdekében. Jelzi, ha a metrikák nyissa meg a normál területen kívül, majd állítsa be riasztások. 
+## <a name="what-are-good-alerts-to-set"></a>Mik azok a megfelelő riasztások beállítása
+Ez az alkalmazás függ. Első lépésként érdemes nem túl sok metrikák be. Némi időt a mérőszám-diagramok megnézzük, miközben az alkalmazás fut, betekintést nyerhet a viselkedik általában. Ez az eljárás segítségével keresse meg a teljesítmény javítására. Ezután állíthat be riasztásokat mondja el, ha a metrikák nyissa meg a normál zónán kívüli. 
 
 Népszerű riasztások a következők:
 
-* [Böngésző metrikák][client], különösen a böngésző **lapon a betöltési idők**, webes alkalmazásokhoz megfelelőek. Ha az oldala sok parancsfájlok, kell keresnie az **böngésző kivételek**. A metrikák és a riasztások eléréséhez meg kell beállítania [weblap figyelési][client].
-* **Kiszolgáló válaszideje** webalkalmazások server oldalán. Riasztások beállítása, valamint nyomon követheti a Ez a metrika megjelenítéséhez, ha azt művelettől aránytalanul sok díjszabás: variation utalhat, hogy az alkalmazás fut-e elegendő erőforrással. 
-* **Kivételek** – megtekintheti őket, meg kell nyitnia egy [további telepítési](app-insights-asp-net-exceptions.md).
+* [Böngésző metrikák][client], különösen a böngésző **lapbetöltési idők lapon**, jó webes alkalmazásokhoz. Ha a lapon számos parancsfájlok, kell keresnie az **böngészőkivételek**. Ezek a metrikák és riasztások eléréséhez be kell [weblap figyelési][client].
+* **Kiszolgáló válaszideje** webes alkalmazás kiszolgálói oldalára. Riasztások beállítása, valamint ez a mérőszám, ha azt művelettől aránytalanul magas kérelemarányok megtekintéséhez kövesse figyelemmel: variation jelezheti, hogy az alkalmazás fut-e elegendő erőforrással. 
+* **Kiszolgálókivételek** – őket, hogy rendelkezik egy elvégzése [további telepítési](app-insights-asp-net-exceptions.md).
 
-Ne feledje, hogy [proaktív hiba sebesség diagnosztika](app-insights-proactive-failure-diagnostics.md) automatikusan figyelése, amellyel az alkalmazás válaszol-e a hibát kódok rendelkező kérelmek száma másodpercenként. 
+Ne feledje, hogy [proaktív hibadiagnosztika arány](app-insights-proactive-failure-diagnostics.md) automatikusan figyelni a sebesség, amellyel az alkalmazás válasza, hiba kód-kérelmekre. 
 
 ## <a name="automation"></a>Automation
-* [PowerShell használatával automatizálhatja a riasztások beállítása](app-insights-powershell-alerts.md)
-* [Webhook segítségével automatizálhatja a riasztásokra való reagálásról](../monitoring-and-diagnostics/insights-webhooks-alerts.md)
+* [Riasztások beállítása automatizálása a PowerShell használatával](app-insights-powershell-alerts.md)
+* [Webhookok használatával automatizálhatja a riasztásokra való reagálásról](../monitoring-and-diagnostics/insights-webhooks-alerts.md)
 
 ## <a name="video"></a>Videó
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
 
 ## <a name="see-also"></a>Lásd még
-* [A webteszt rendelkezésre állása](app-insights-monitor-web-app-availability.md)
-* [Riasztások beállítása automatizálásához](app-insights-powershell-alerts.md)
+* [Rendelkezésre állási webes tesztek](app-insights-monitor-web-app-availability.md)
+* [Riasztások beállítása automatizálása](app-insights-powershell-alerts.md)
 * [Proaktív diagnosztika](app-insights-proactive-diagnostics.md) 
 
 <!--Link references-->

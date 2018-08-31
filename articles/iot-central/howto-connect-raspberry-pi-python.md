@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: a3d6ad9f2f442481908bc02252fcc8ab1a74419e
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: aa2d8f50d8fb4ba356af20a290976b8b32601ebf
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39205588"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43188791"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-python"></a>Raspberry Pi csatlakoztatása az Azure IoT Central alkalmazáshoz (Python)
 
@@ -53,9 +53,9 @@ Az alábbi lépéseket ismertetik letöltése és konfigurálása a Python-minta
 * Beállítás Azure IoT Central-ben végrehajtott változtatások válaszol.
 
 > [!NOTE]
-> A Raspberry Pi Python-mintához kapcsolatos további információkért lásd: a [információs](https://github.com/Microsoft/microsoft-iot-central-firmware/blob/master/RaspberryPi/README.md) fájlt a Githubon.
+> A Raspberry Pi Python-mintához kapcsolatos további információkért lásd: a [információs](https://github.com/Azure/iot-central-firmware/blob/master/RaspberryPi/README.md) fájlt a Githubon.
 
-1. A webböngésző segítségével a Raspberry Pi desktopban lépjen a [Azure IoT Central belső vezérlőprogram-kiadások](https://github.com/Microsoft/microsoft-iot-central-firmware/releases) lapot.
+1. A webböngésző segítségével a Raspberry Pi desktopban lépjen a [Azure IoT Central belső vezérlőprogram-kiadások](https://github.com/Azure/iot-central-firmware/releases) lapot.
 
 1. Töltse le a zip-fájlt, amely tartalmazza a legújabb belső vezérlőprogramot, a kezdőmappa a Raspberry Pi-on. A fájlnév a következőhöz hasonló `RaspberryPi-IoTCentral-X.X.X.zip`.
 
@@ -89,7 +89,7 @@ A létrehozott alkalmazáshoz a **minta Devkits** alkalmazást sablon tartalmaz 
 
 ### <a name="telemetry-measurements"></a>Telemetria mérések
 
-| Mezőnév     | Mértékegységek  | Minimum | Maximum | Tizedeshelyek |
+| Mező neve     | Egység  | Minimális | Maximum | Tizedeshelyek |
 | -------------- | ------ | ------- | ------- | -------------- |
 | páratartalom       | %      | 0       | 100     | 0              |
 | TEMP           | ° C     | tartsuk ott -40     | 120     | 0              |
@@ -108,7 +108,7 @@ A létrehozott alkalmazáshoz a **minta Devkits** alkalmazást sablon tartalmaz 
 
 Numerikus beállításai
 
-| Megjelenített név | Mezőnév | Mértékegységek | Tizedeshelyek | Minimum | Maximum | Kezdeti |
+| Megjelenített név | Mező neve | Egység | Tizedeshelyek | Minimális | Maximum | Kezdeti |
 | ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
 | Feszültségérzékelő      | setVoltage | V | 0              | 0       | 240     | 0       |
 | Aktuális      | setCurrent | Teljesítménytényező  | 0              | 0       | 100     | 0       |
@@ -116,16 +116,16 @@ Numerikus beállításai
 
 A beállítások ki-/ bekapcsolása
 
-| Megjelenített név | Mezőnév | A szöveg | Ki a szöveg | Kezdeti |
+| Megjelenített név | Mező neve | A szöveg | Ki a szöveg | Kezdeti |
 | ------------ | ---------- | ------- | -------- | ------- |
-| INTEGRÁCIÓS MODUL           | activateIR | BE      | KI      | Ki     |
+| INTEGRÁCIÓS MODUL           | activateIR | ON      | KI      | Ki     |
 
 ### <a name="properties"></a>Tulajdonságok
 
-| Típus            | Megjelenített név | Mezőnév | Adattípus |
+| Típus            | Megjelenített név | Mező neve | Adattípus |
 | --------------- | ------------ | ---------- | --------- |
 | Eszköztulajdonság | Die száma   | dieNumber  | szám    |
-| SMS            | Tartózkodási hely     | hely   | -       |
+| Szöveg            | Hely     | location   | –       |
 
 ## <a name="next-steps"></a>További lépések
 

@@ -6,14 +6,14 @@ manager: timlt
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 08/24/2018
+ms.date: 08/29/2018
 ms.author: robinsh
-ms.openlocfilehash: f9903781a998db8192e3958ae386b7420f56fd31
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 7ecd35ba33d2860ba052aa27286c69985c2f7dd9
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43045626"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43190230"
 ---
 # <a name="create-an-iot-hub-using-the-new-azurermiothub-cmdlet"></a>A New-AzureRmIotHub parancsmaggal IoT hub létrehozása
 
@@ -42,7 +42,7 @@ Egy erőforráscsoport üzembe helyezéséhez egy IoT hubra van szüksége. Hasz
 
 Az IoT hub egy erőforráscsoport létrehozásához használja a [New-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/AzureRM.Resources/New-AzureRmResourceGroup) parancsot. Ez a példa létrehoz egy nevű erőforráscsoportot **MyIoTRG1** a a **USA keleti Régiójában** régió:
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroup -Name MyIoTRG1 -Location "East US"
 ```
 
@@ -50,7 +50,7 @@ New-AzureRmResourceGroup -Name MyIoTRG1 -Location "East US"
 
 Az előző lépésben létrehozott erőforráscsoportot az IoT hub létrehozásához használja a [New-AzureRmIotHub](https://docs.microsoft.com/powershell/module/AzureRM.IotHub/New-AzureRmIotHub) parancsot. Ez a példa létrehoz egy **S1** nevű hub **MyTestIoTHub** a a **USA keleti Régiójában** régió:
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmIotHub `
     -ResourceGroupName MyIoTRG1 `
     -Name MyTestIoTHub `
@@ -64,15 +64,15 @@ Az IoT hub nevére globálisan egyedinek kell lennie.
 
 Az előfizetés használatával listázhatja az összes IoT-központok a [Get-AzureRmIotHub](https://docs.microsoft.com/powershell/module/AzureRM.IotHub/Get-AzureRmIotHub) parancsot:
 
-```powershell
+```azurepowershell-interactive
 Get-AzureRmIotHub
 ```
 
-Ez a példa bemutatja a Standard IoT Hub S1, az előző lépésben létrehozott. 
+Ez a példa bemutatja a Standard IoT Hub S1, az előző lépésben létrehozott.
 
 Az IoT hub használatával törölheti az [Remove-AzureRmIotHub](https://docs.microsoft.com/powershell/module/azurerm.iothub/remove-azurermiothub) parancsot:
 
-```powershell
+```azurepowershell-interactive
 Remove-AzureRmIotHub `
     -ResourceGroupName MyIoTRG1 `
     -Name MyTestIoTHub
@@ -80,7 +80,7 @@ Remove-AzureRmIotHub `
 
 Azt is megteheti, eltávolíthatja az erőforráscsoport és az összes erőforrást tartalmaz használatával a [Remove-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/AzureRM.Resources/Remove-AzureRmResourceGroup) parancsot:
 
-```powershell
+```azurepowershell-interactive
 Remove-AzureRmResourceGroup -Name MyIoTRG1
 ```
 

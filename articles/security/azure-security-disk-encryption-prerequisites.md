@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/24/2018
+ms.date: 08/29/2018
 ms.author: mstewart
-ms.openlocfilehash: 4fb0cf61d88a9a3d44091e49f501ef7af0f213d4
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
-ms.translationtype: MT
+ms.openlocfilehash: d248a97235ead134f29e468aaafcd04211590e02
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42887080"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43247490"
 ---
 # <a name="azure-disk-encryption-prerequisites"></a>Az Azure Disk Encryption előfeltételei 
  Ez a cikk az Azure Disk Encryption titkosítási előfeltétel, biztosítani kell, mielőtt használhatná az Azure Disk Encryption igénylő elemeket ismerteti. Az Azure Disk Encryption integrálva van [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/) titkosítási kulcsok kezeléséhez. Használhat [Azure PowerShell-lel](/powershell/azure/overview), [Azure CLI-vel](/cli/azure/), vagy a [az Azure portal](https://portal.azure.com) konfigurálása az Azure Disk Encryption.
@@ -74,20 +74,18 @@ Parancsok, amelyek segítségével csatlakoztathatja az adatlemezeket és a szü
         - A PowerShellGet, Azure PowerShell telepítése és az AzureRM-modul betöltéséhez. 
     - [Telepítse és konfigurálja az Azure Powershell macOS és Linux rendszeren](/powershell/azure/install-azurermps-maclinux).
         -  A PowerShell Core, .NET Core, az Azure PowerShell telepítése és az AzureRM.Netcore modul betöltése.
-2. Telepítse a [Azure Active Directory PowerShell-modul](/powershell/azure/active-directory/install-adv2#installing-the-azure-ad-module). 
+
+2. Az AzureRM-modul telepített verzióinak ellenőrzése. Ha szükséges, [frissítése az Azure PowerShell-modul](/powershell/azure/install-azurerm-ps#update-the-azure-powershell-module).
+    -  Az AzureRM-modul verzióját kell lennie a 6.0.0 vagy újabb verziója.
+    - Az AzureRM modul legújabb verziója használata javasolt.
 
      ```powershell
-     Install-Module AzureAD
+     Get-Module AzureRM -ListAvailable | Select-Object -Property Name,Version,Path
      ```
 
-3. A modulok telepített verzióinak ellenőrzése.
-      ```powershell
-      Get-Module AzureRM -ListAvailable | Select-Object -Property Name,Version,Path
-      Get-Module AzureAD -ListAvailable | Select-Object -Property Name,Version,Path
-      ```
-4. Jelentkezzen be Azure-ban a [Connect-AzureRmAccount](/powershell/module/azurerm.profile/connect-azurermaccount) parancsmagot.
+3. Jelentkezzen be Azure-ban a [Connect-AzureRmAccount](/powershell/module/azurerm.profile/connect-azurermaccount) parancsmagot.
      
-     ```powershell
+     ```azurepowershell-interactive
      Connect-AzureRmAccount
      # For specific instances of Azure, use the -Environment parameter.
      Connect-AzureRmAccount –Environment (Get-AzureRmEnvironment –Name AzureUSGovernment)
@@ -99,13 +97,7 @@ Parancsok, amelyek segítségével csatlakoztathatja az adatlemezeket és a szü
      Set-AzureRmContext -SubscriptionId "xxxx-xxxx-xxxx-xxxx"
      ```
 
-5.  Az Azure AD Connect [Connect-AzureAD](/powershell/module/azuread/connect-azuread).
-     
-     ```powershell
-     Connect-AzureAD
-     ```
-
-6. Felülvizsgálat [Ismerkedés az Azure PowerShell-lel](/powershell/azure/get-started-azureps) és [AzureAD](/powershell/module/azuread), ha szükséges.
+4.  Ha szükséges, tekintse át a [Ismerkedés az Azure PowerShell-lel](/powershell/azure/get-started-azureps).
 
 ## <a name="bkmk_CLI"></a> Használható az Azure CLI telepítése (nem kötelező) a helyi gépen
 

@@ -1,6 +1,6 @@
 ---
-title: Az Azure-erőforrások biztonsági riasztások kezelése a Privileged Identity Management használatával |} A Microsoft Docs
-description: A PIM biztonsági riasztások ismerteti.
+title: Az Azure-erőforrások szerepköreihez tartozó biztonsági riasztások konfigurálása a PIM |} A Microsoft Docs
+description: Ismerje meg az Azure-erőforrások szerepköreihez tartozó biztonsági riasztások konfigurálása az Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,14 +14,14 @@ ms.component: pim
 ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 46b19866ec3f276c8337cf9501b779701377d0a5
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 33bd13421b0c1574475516da942abe4e8c71ed52
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39620416"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43188832"
 ---
-# <a name="manage-security-alerts-for-azure-resources-by-using-privileged-identity-management"></a>Az Azure-erőforrások biztonsági riasztások kezelése a Privileged Identity Management használatával
+# <a name="configure-security-alerts-for-azure-resource-roles-in-pim"></a>Az Azure-erőforrások szerepköreihez tartozó biztonsági riasztások konfigurálása az PIM-ben
 Privileged Identity Management (PIM) az Azure-erőforrások riasztásokat állít elő, ha bármi gyanúsat vagy nem biztonságos tevékenységre van a környezetben. Riasztást vált ki, amikor megjelenik a riasztások lapon. 
 
 ![Riasztások lap](media/azure-pim-resource-rbac/RBAC-alerts-home.png)
@@ -50,3 +50,8 @@ Lépjen a riasztások oldaláról **beállítások**.
 
 A különböző riasztások beállításai a környezetet és biztonsági célok testreszabásához.
 ![A beállítások testre szabása](media/azure-pim-resource-rbac/rbac-alert-settings.png)
+
+## <a name="next-steps"></a>További lépések
+
+- [A PIM az Azure-erőforrások szerepköreihez tartozó többtényezős hitelesítés megkövetelése](pim-resource-roles-require-mfa.md)
+- [Az Azure-erőforrások szerepköreihez tartozó biztonsági riasztások konfigurálása az PIM-ben](pim-resource-roles-configure-alerts.md)

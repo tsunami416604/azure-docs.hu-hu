@@ -1,6 +1,6 @@
 ---
-title: Előfizetés-kezelés engedélyezése az Azure-erőforrásokhoz – privileged Identity Management |} A Microsoft Docs
-description: Ismerje meg, hogy a globális rendszergazdák kezelhetik a bérlői előfizetések.
+title: A bérlő – Azure előfizetés-kezelés engedélyezése |} A Microsoft Docs
+description: Ismerje meg, hogyan engedélyezése a bérlő előfizetés-kezelés engedélyezése az Azure AD Privileged Identity Management (PIM) használatakor.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,12 +14,12 @@ ms.component: pim
 ms.date: 03/27/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: d7a9c0090d3bfaaf1161b6255c4c0b659c77d692
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 89bb6fd48c58b7672b7a2251a172cc169093d368
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39620280"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43189995"
 ---
 # <a name="enable-subscription-management-in-your-tenant"></a>A bérlő előfizetés-kezelés engedélyezése
 
@@ -79,14 +79,5 @@ Most, hogy a szervezet rendelkezik az a fontos előfizetések jogosult hozzáren
 
 ## <a name="next-steps"></a>További lépések
 
-[Erőforrások felfedezése](pim-resource-roles-discover-resources.md)
-
-[Szerepkör-beállítások konfigurálása](pim-resource-roles-configure-role-settings.md)
-
-
-
-
-
-
-
-
+- [Fedezze fel a PIM kezelése Azure-erőforrások](pim-resource-roles-discover-resources.md)
+- [A PIM Azure szerepkör-beállítások konfigurálása](pim-resource-roles-configure-role-settings.md)

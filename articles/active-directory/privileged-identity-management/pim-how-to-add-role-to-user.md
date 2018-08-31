@@ -1,6 +1,6 @@
 ---
-title: Címtárbeli szerepkörök hozzárendelése a felhasználókhoz az Azure AD PIM segítségével |} A Microsoft Docs
-description: Ismerje meg, hogyan címtárbeli szerepkörök hozzárendelése a felhasználókhoz az Azure Active Directory Privileged Identity Management és az Azure portal használatával.
+title: A PIM az Azure AD-címtárbeli szerepkörök hozzárendelése |} A Microsoft Docs
+description: Ismerje meg az Azure AD Privileged Identity Management (PIM) az Azure AD-címtárbeli szerepkörök hozzárendelése.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -12,18 +12,18 @@ ms.workload: identity
 ms.component: pim
 ms.date: 07/23/2018
 ms.author: rolyon
-ms.openlocfilehash: 1aede38cabba7f9811f2b9320bc1e9a9da857f08
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 33bfe28bf612c47c9f42345dabccc017337c3d45
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39621813"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43190156"
 ---
-# <a name="assign-directory-roles-to-users-using-azure-ad-pim"></a>Címtárbeli szerepkörök hozzárendelése a felhasználókhoz az Azure AD PIM használatával
+# <a name="assign-azure-ad-directory-roles-in-pim"></a>A PIM az Azure AD-címtárbeli szerepkörök hozzárendelése
 
 Az Azure Active Directory (Azure AD), a globális rendszergazdák kezdeményezhetik **állandó** directory szerepkör-hozzárendeléseket. A szerepkör-hozzárendelések hozható létre a [az Azure portal](../users-groups-roles/directory-assign-admin-roles.md) vagy [PowerShell-parancsok](/powershell/module/azuread#directory_roles).
 
-Az Azure AD Privileged Identity Management (PIM) szolgáltatást is lehetővé teszi a kiemelt szerepkörű rendszergazdák állandó directory szerepkör-hozzárendeléseket. Ezenkívül a kiemelt szerepkörű rendszergazdák felhasználókat tehet **jogosult** -címtárbeli szerepkörökhöz tartozó. A jogosult rendszergazda aktiválhatja a szerepkört, amikor szükségük van rá, majd rájuk vonatkozó engedélyek lejárnak, amint kész is van. A PIM használata kezelheti szerepkörökkel kapcsolatos további információkért lásd: [címtárbeli szerepkörök Azure AD PIM használata kezelheti](pim-roles.md).
+Az Azure AD Privileged Identity Management (PIM) szolgáltatást is lehetővé teszi a kiemelt szerepkörű rendszergazdák állandó directory szerepkör-hozzárendeléseket. Ezenkívül a kiemelt szerepkörű rendszergazdák felhasználókat tehet **jogosult** -címtárbeli szerepkörökhöz tartozó. A jogosult rendszergazda aktiválhatja a szerepkört, amikor szükségük van rá, majd rájuk vonatkozó engedélyek lejárnak, amint kész is van. A PIM használata kezelheti szerepkörökkel kapcsolatos további információkért lásd: [PIM segítségével kezelheti az Azure AD-címtárbeli szerepkörök](pim-roles.md).
 
 ## <a name="make-a-user-eligible-for-a-role"></a>Győződjön meg arról, a felhasználó jogosult szerepkör
 
@@ -31,15 +31,15 @@ Kövesse az alábbi lépéseket, hogy egy felhasználó jogosult az Azure AD-cí
 
 1. Jelentkezzen be a [az Azure portal](https://portal.azure.com/) egy felhasználóval, amely tagja a [kiemelt szerepkörű rendszergazda](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) szerepkör.
 
-    Hozzáférést biztosít egy másik felhasználó a PIM kezelése kapcsolatos információkért lásd: [hozzáférés biztosítása a PIM számára](pim-how-to-give-access-to-pim.md).
+    Egy másik rendszergazdai hozzáférést a PIM kezelése kapcsolatos információkért lásd: [hozzáférés biztosítása más rendszergazdák számára, miközben a PIM kezelése](pim-how-to-give-access-to-pim.md).
 
 1. Nyissa meg **az Azure AD Privileged Identity Management**.
 
-    Ha a PIM még még nem engedélyezte az Azure Portalon, lépjen a [Ismerkedés az Azure AD PIM](pim-getting-started.md).
+    Ha a PIM még nem indult el az Azure Portalon még, ugorjon [használatához a PIM](pim-getting-started.md).
 
 1. Kattintson a **az Azure AD-címtárbeli szerepkörök**.
 
-1. Kattintson a **szerepkör (előzetes verzió)** vagy **tagok**.
+1. Kattintson a **szerepkörök** vagy **tagok**.
 
     ![Azure AD-címtárbeli szerepkörök](./media/pim-how-to-add-role-to-user/pim-directory-roles.png)
 
@@ -55,11 +55,13 @@ Kövesse az alábbi lépéseket, hogy egy felhasználó jogosult az Azure AD-cí
 
 1. Felügyelt tagok kattintson a Hozzáadás **OK** a felhasználó hozzáadása a szerepkörhöz.
 
+1. A szerepkörök listájában kattintson a szerepkörrel, csak a tagok listájának megtekintéséhez.
+
      Ha a szerepkör van hozzárendelve, a kiválasztott felhasználó megjelenik a tagok listája, **jogosult** a szerepkörhöz.
 
     ![A szerepkör jogosult felhasználó](./media/pim-how-to-add-role-to-user/pim-directory-role-eligible.png)
 
-1. Most, hogy a felhasználó nem jogosult a szerepkörhöz, tudassa vele, hogy azokat, az aktiválást található utasítások szerint [aktiválása vagy a szerepkör inaktiválása](pim-how-to-activate-role.md).
+1. Most, hogy a felhasználó nem jogosult a szerepkörhöz, tudassa vele, hogy azokat, az aktiválást található utasítások szerint [PIM a saját Azure AD-címtárbeli szerepkörök aktiválása](pim-how-to-activate-role.md).
 
     Jogosult rendszergazdák rendszer megkéri, hogy regisztrálja az Azure multi-factor Authentication (MFA) az aktiválás során. Ha a felhasználó MFA-kiszolgáló nem tudja regisztrálni, vagy egy Microsoft-fiók használata (általában @outlook.com), végre kell hajtania az összes szerepkörökhöz állandó.
 
@@ -112,4 +114,6 @@ Kövesse az alábbi lépéseket egy adott felhasználó eltávolítása a címt�
     A szerepkör-hozzárendelés eltávolítása.
 
 ## <a name="next-steps"></a>További lépések
-[!INCLUDE [active-directory-privileged-identity-management-toc](../../../includes/active-directory-privileged-identity-management-toc.md)]
+
+- [A PIM az Azure AD directory szerepkör-beállítások konfigurálása](pim-how-to-change-default-settings.md)
+- [Rendelje hozzá a PIM az Azure-erőforrásszerepkörök](pim-resource-roles-assign-roles.md)

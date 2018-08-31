@@ -1,6 +1,6 @@
 ---
-title: Az Azure áttekintés OpenShift |} Microsoft Docs
-description: Az Azure-ban OpenShift áttekintése.
+title: OpenShift az Azure áttekintése |} A Microsoft Docs
+description: Az Azure-ban az OpenShift áttekintése.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: haroldw
@@ -15,56 +15,56 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: ''
 ms.author: haroldw
-ms.openlocfilehash: c8e740a66271c88b3abb036867d1760cc9e77607
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: e3ab060c1cea28f83c18dc89aeea7716ec86572a
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33944501"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43190343"
 ---
-# <a name="openshift-in-azure"></a>Az Azure-ban OpenShift
+# <a name="openshift-in-azure"></a>OpenShift az Azure-ban
 
-OpenShift egy nyitott és bővíthető tároló platform, amely a vállalat Docker és Kubernetes számos lehetőséget kínál.  
+OpenShift egy nyílt és bővíthető alkalmazás tárolóplatform, amely csökkenti a Docker és a Kubernetes az Enterprise.  
 
-OpenShift Kubernetes tároló vezénylési és felügyeleti tartalmazza. Fejlesztői és műveletek központú eszközök, amelyek lehetővé teszik hozzáadása:
+OpenShift Kubernetes tartalmaz, a tárolóvezénylés és a felügyeleti. Hozzáadja a fejlesztői és a műveletek központú eszközeivel azáltal, hogy:
 
-- Gyors alkalmazásfejlesztés.
-- Egyszerű telepítés és a méretezésről.
-- Hosszú távú a csoportok és alkalmazások életciklusának karbantartási.
+- Alkalmazások gyors fejlesztésére.
+- Könnyű üzembe helyezés és méretezés.
+- Hosszú távú életciklus karbantartási csoportokhoz és alkalmazásokhoz.
 
-Több verzió OpenShift érhetők el:
+OpenShift több verziója érhető el:
 
-- OpenShift Origin
+- OKD (korábbi nevén az OpenShift Origin)
 - OpenShift tárolóplatform
-- Online OpenShift
-- Dedikált OpenShift
+- OpenShift Online
+- OpenShift dedikált
 
-A négy verziók cikkben szereplő, csak két érhető el, hogy az ügyfelek központi telepítése az Azure-ban: OpenShift eredete és OpenShift tároló Platform.
+A négy verziók kezelt ebben a cikkben, csak az ügyfelek üzembe helyezése az Azure-ban kettő: OpenShift Origin és az OpenShift Tárolóplatform.
 
-## <a name="openshift-origin"></a>OpenShift Origin
+## <a name="okd-formerly-openshift-origin"></a>OKD (korábbi nevén az OpenShift Origin)
 
-Forrása: egy [nyílt forráskódú](https://www.openshift.org/) , amely támogatja a közösségi OpenShift a felsőbb rétegbeli projekt. Forrás CentOS vagy a Red Hat Enterprise Linux (RHEL) telepíthető.
+OKD van egy [nyílt forráskódú](https://www.okd.io/) felsőbb rétegbeli projektje, amely támogatja a közösségi OpenShift. OKD a CentOS vagy a Red Hat Enterprise Linux (RHEL) is telepíthető.
 
 ## <a name="openshift-container-platform"></a>OpenShift tárolóplatform
 
-Tároló Platform egy nagyvállalati használatra kész [kereskedelmi verzió](https://www.openshift.com) a Red Hat támogatja. Ebben a verzióban a felhasználók a szükséges jogosultságok OpenShift tároló platform beszerzési, telepítés és a teljes infrastruktúra kezelése felelős.
+Container Platform az olyan vállalati felhasználásra kész [kereskedelmi verzió](https://www.openshift.com) származó és a Red Hat által támogatott. Ebben a verzióban az ügyfelek vásárol a szükséges jogosultságok az OpenShift Tárolóplatform, és telepítési és felügyeleti az egész infrastruktúrát ábrázoló felelős.
 
-Mert az ügyfelek "tulajdonosa" a teljes platform, telepíthetik azt a helyszíni adatközpontját, illetve a nyilvános felhők (például az Azure, az AWS vagy a Google).
+"Saját" a teljes platform, mert azok a helyi adatközpontban vagy a nyilvános felhőben (például Azure, az AWS vagy a Google) telepíthetik azt.
 
-## <a name="openshift-online"></a>Online OpenShift
+## <a name="openshift-online"></a>OpenShift Online
 
-A Red Hat felügyelt online van *több-bérlős* tároló Platform használó OpenShift. Red Hat kezeli az összes, az alkalmazás mögötti infrastruktúra (például virtuális gépek, OpenShift fürt, a hálózat és tárolás). 
+Online van egy Red Hat által felügyelt *több-bérlős* az OpenShift Tárolóplatform használó. Red Hat kezeli az összes, az alapul szolgáló infrastruktúra (például virtuális gépek, az OpenShift fürt, hálózati és storage). 
 
-Ebben a verzióban az ügyfél telepíti a tárolókat, de nem szabályozza, a tárolók futtassa mely állomásokat keresztül. Mivel Online több-bérlős, az ugyanazon Virtuálisgép-gazdák más felhasználóktól tárolóként tárolók is található. Költség tároló működik.
+Ebben a verzióban az ügyfél helyez üzembe tárolókat, de nem szabályozza, mely állomások keresztül a tárolók futtatásához. Mivel Online több-bérlős, tárolók az ugyanazon Virtuálisgép-gazdagépek más felhasználóktól tárolókként is található. Költsége van tárolónként.
 
-## <a name="openshift-dedicated"></a>Dedikált OpenShift
+## <a name="openshift-dedicated"></a>OpenShift dedikált
 
-A Red Hat felügyelt dedikált van *single-bérlő* tároló Platform használó OpenShift. Red Hat kezeli az összes, az alkalmazás mögötti infrastruktúra (virtuális gépek, OpenShift fürt hálózati, tárolási, stb.). A fürt egy ügyfél és a nyilvános felhőben (például az AWS vagy a Google, az Azure-ral korai 2018 várható). A kiindulási fürt négy alkalmazás csomópontok 48,000 $ (előre fizetett) évente magában foglalja.
+Red Hat által felügyelt dedikált van *egybérlős* az OpenShift Tárolóplatform használó. Red Hat kezeli az összes, az alapul szolgáló infrastruktúra (virtuális gépek, az OpenShift fürt, hálózatkezelési, tárolási, stb.). A fürt egy ügyfél és egy nyilvános felhőben (például az AWS vagy a Google, a korai 2018-ban várható Azure-ral). A kiindulási fürt 48,000 $ / év (előre fizetett) az alkalmazás négy csomópontot tartalmaz.
 
 ## <a name="next-steps"></a>További lépések
 
-- [A OpenShift közös Előfeltételek konfigurálása az Azure-ban](./openshift-prerequisites.md)
-- [Az Azure-ban OpenShift származási telepítése](./openshift-origin.md)
-- [Az Azure-ban OpenShift tároló Platform telepítése](./openshift-container-platform.md)
-- [Telepítés utáni feladatok](./openshift-post-deployment.md)
-- [OpenShift telepítési hibáinak elhárítása](./openshift-troubleshooting.md)
+- [Az OpenShift közös Előfeltételek konfigurálása az Azure-ban](./openshift-prerequisites.md)
+- [Az Azure-ban az OpenShift Origin telepítése](./openshift-origin.md)
+- [Az OpenShift Container Platform az Azure-beli üzembe helyezése](./openshift-container-platform.md)
+- [Üzembe helyezés utáni feladatok](./openshift-post-deployment.md)
+- [OpenShift telepítés hibaelhárítása](./openshift-troubleshooting.md)

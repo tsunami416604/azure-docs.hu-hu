@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/13/2018
+ms.date: 08/24/2018
 ms.author: jeffgilb
 ms.reviewer: brbartle
-ms.openlocfilehash: e2411a91174fd0b52227b4cfe8783c8c74c4039e
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: 58c8568da0a818f87a5bb3d6966d2d4a6c977fd9
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "42057234"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43247823"
 ---
 # <a name="register-azure-stack-with-azure"></a>Regisztráljon az Azure Stack az Azure-ral
 
@@ -84,13 +84,12 @@ Lehet, hogy az Azure Stack üzemelő példányához *csatlakoztatott* vagy *lev�
 
  - **Csatlakoztatva**  
  A kapcsolat azt jelenti, hogy telepítette az Azure Stack, hogy képes csatlakozni az internethez, és az Azure-bA. Az Azure Active Directory (Azure AD) vagy az Active Directory összevonási szolgáltatások (AD FS) számára az ügyfélidentitás-tárolóval, vagy rendelkezik. Egy csatlakoztatott üzembe helyezéssel két számlázási modellek közül választhat: használatalapú mint-akkor-használható, vagy kapacitás-alapú.
-    - [A csatlakoztatott Azure Stack regisztrálása az Azure-ban a **használatalapú mint-akkor-használható** számlázási modell](#register-a-connected-azure-stack-with-azure-using-the-pay-as-you-use-billing-model)
-    - [A csatlakoztatott Azure Stack regisztrálása az Azure-ban a **kapacitás** számlázási modell](#register-a-connected-azure-stack-with-azure-using-the-capacity-billing-model)
+    - [A csatlakoztatott Azure Stack regisztrálása az Azure-ban a **használatalapú mint-akkor-használható** számlázási modell](#register-connected-with-pay-as-you-go-billing)
+    - [A csatlakoztatott Azure Stack regisztrálása az Azure-ban a **kapacitás** számlázási modell](#register-connected-with-capacity-billing)
 
  - **Leválasztva**  
  A leválasztott az Azure üzembe helyezési lehetőséget, üzembe helyezése és használata az Azure Stack az internethez való csatlakozás nélkül. Azonban egy kapcsolat nélküli telepítés pedig csak az AD FS ügyfélidentitás-tárolóval, és a kapacitás-alapú számlázási modell.
-    - [A leválasztott Azure Stack használatával regisztrálja a **kapacitás** számlázási modell ](#register-a-disconnected-Azure-Stack-using-the-capacity-billing-model
-)
+    - [A leválasztott Azure Stack használatával regisztrálja a **kapacitás** számlázási modell ](#register-disconnected-with-capacity-billing)
 
 ## <a name="register-connected-with-pay-as-you-go-billing"></a>Regisztráció a használatalapú számlázás csatlakoztatva
 
@@ -218,7 +217,7 @@ Ha regisztrál az Azure Stack kapcsolat nélküli környezetben (az internet-hoz
 
    ```Powershell
    $FilePathForRegistrationToken = $env:SystemDrive\RegistrationToken.txt
-   $RegistrationToken = Get-AzsRegistrationToken -PrivilegedEndpointCredential -EnableUsageReporting False $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint -BillingModel Capacity -AgreementNumber '<EA agreement number>' -TokenOutputFilePath $FilePathForRegistrationToken
+   $RegistrationToken = Get-AzsRegistrationToken -PrivilegedEndpointCredential -UsageReportingEnabled:$False $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint -BillingModel Capacity -AgreementNumber '<EA agreement number>' -TokenOutputFilePath $FilePathForRegistrationToken
    ```
    A Get-AzsRegistrationToken parancsmagról további információkért lásd: [Alkalmazásregisztráció-referencia](#registration-reference).
 
@@ -358,7 +357,7 @@ A leválasztott forgatókönyvek esetében már rendelkezik teljesen regisztrác
 
 ### <a name="disable-or-enable-usage-reporting"></a>Használati jelentések engedélyezése vagy letiltása
 
-Azure Stack-környezetekben, amelyek egy kapacitás-számlázási modell, kapcsolja ki a jelentéskészítés a használati a **EnableUsageReporting** paraméter használatával a **Set-AzsRegistration** vagy a  **Get-AzsRegistrationToken** parancsmagok. Az Azure Stack használati metrikai jelentések alapértelmezés szerint. Kapacitás használt vagy leválasztott környezetben támogató kezelők kell kikapcsolni a használati jelentések készítése.
+Azure Stack-környezetekben, amelyek egy kapacitás-számlázási modell, kapcsolja ki a jelentéskészítés a használati a **UsageReportingEnabled** paraméter használatával a **Set-AzsRegistration** vagy a  **Get-AzsRegistrationToken** parancsmagok. Az Azure Stack használati metrikai jelentések alapértelmezés szerint. Kapacitás használt vagy leválasztott környezetben támogató kezelők kell kikapcsolni a használati jelentések készítése.
 
 #### <a name="with-a-connected-azure-stack"></a>A csatlakoztatott Azure Stack segítségével
 
@@ -378,7 +377,7 @@ Azure Stack-környezetekben, amelyek egy kapacitás-számlázási modell, kapcso
 
    ```Powershell
    $FilePathForRegistrationToken = $env:SystemDrive\RegistrationToken.txt
-   $RegistrationToken = Get-AzsRegistrationToken -PrivilegedEndpointCredential -EnableUsageReporting False
+   $RegistrationToken = Get-AzsRegistrationToken -PrivilegedEndpointCredential -UsageReportingEnabled:$False
    $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint -BillingModel Capacity -AgreementNumber '<EA agreement number>' -TokenOutputFilePath $FilePathForRegistrationToken
    ```
 

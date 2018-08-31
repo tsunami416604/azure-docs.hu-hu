@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
-ms.openlocfilehash: 3ae2e883e3e27adc167b7e831ca53d3cd1572257
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 4618c8a0298afdac28e7511e9521cf1e26238734
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42057542"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43189038"
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Az Azure Active Directory megvalósíthatósági fogalom forgatókönyv: építőelemek
 
@@ -480,7 +480,7 @@ Hozzávetőleges teljes ideje: 15 perc
 | Jelentkezzen be https://portal.azure.com egy globális rendszergazdai (elérhetővé tétel GA) és a rendszerindítási a PIM panel. A globális rendszergazda, amely végrehajtja ezt a lépést a biztonsági rendszergazda van áttöltésekor.  Adjuk a színész GA1 | [Az Azure AD Privileged Identity Management biztonsági varázslója használatával](privileged-identity-management/pim-security-wizard.md) |
 | Azonosítsa a globális rendszergazda, és át azokat állandó jogosulttá. Ez lehet egy külön rendszergazdai ajánlattartalomnak az 1. lépésben használt. Adjuk a színész GA2 | [Az Azure AD Privileged Identity Management: Hogyan lehet egy felhasználói szerepkör hozzáadása vagy eltávolítása](privileged-identity-management/pim-how-to-add-role-to-user.md)<br/>[Mi az Azure AD Privileged Identity Management?: a szerepkör-aktiválási beállítások konfigurálása](privileged-identity-management/pim-configure.md#configure-the-role-activation-settings)  |
 | Most jelentkezzen be a GA2 https://portal.azure.com , és próbálja meg módosítani a "Felhasználói beállítások". Figyelje meg, hogy néhány lehetőség szürkén jelennek meg. | |
-| Egy új lapon, és ugyanabban a munkamenetben, mint 3. lépés, nyissa meg most https://portal.azure.com és a PIM panel hozzáadása az irányítópulthoz. | [Aktiválása vagy inaktiválása szerepkörök az Azure AD Privileged Identity Management: a Privileged Identity Management alkalmazás felvétele](privileged-identity-management/pim-how-to-activate-role.md#add-the-privileged-identity-management-application) |
+| Egy új lapon, és ugyanabban a munkamenetben, mint 3. lépés, nyissa meg most https://portal.azure.com és a PIM panel hozzáadása az irányítópulthoz. | [A PIM használatának megkezdése](privileged-identity-management/pim-getting-started.md) |
 | A globális rendszergazdai szerepkörrel aktiválási kérelmeinek megadása | [Aktiválása vagy inaktiválása szerepkörök az Azure AD Privileged Identity Management: a szerepkör aktiválása](privileged-identity-management/pim-how-to-activate-role.md#activate-a-role) |
 | Vegye figyelembe, hogy ha GA2 soha nem jelentkezett az MFA-hoz, az Azure MFA regisztrációs szükség lesz |  |
 | Lépjen vissza a 3. lépésben az eredeti fülre, és a böngésző Frissítés gombjára. Vegye figyelembe, hogy mostantól hozzáférhet a "Felhasználói beállítások" módosítása | |

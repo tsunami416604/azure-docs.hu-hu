@@ -1,21 +1,21 @@
 ---
-title: Támogatási jegy létrehozása az Azure SQL Data Warehouse |} Microsoft Docs
+title: Támogatási jegy létrehozása az Azure SQL Data Warehouse |} A Microsoft Docs
 description: Támogatási jegy létrehozása az SQL Data Warehouse-hoz.
 services: sql-data-warehouse
 author: kevinvngo
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 406281fb3d52cc327166693740cdbaec446e8667
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 12b12ff6a6dc616ec3bb592f54862535b1318e49
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31523047"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43247317"
 ---
 # <a name="how-to-create-a-support-ticket-for-sql-data-warehouse"></a>Támogatási jegy létrehozása az SQL Data Warehouse-hoz
 Ha bármilyen probléma merül fel az SQL Data Warehouse-szal kapcsolatban, hozzon létre egy támogatási jegyet, hogy mérnöki támogató csapatunk a segítségére lehessen.

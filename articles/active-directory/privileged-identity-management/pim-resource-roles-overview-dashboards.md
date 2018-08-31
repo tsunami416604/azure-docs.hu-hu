@@ -1,6 +1,6 @@
 ---
-title: 'Áttekintés: Privileged Identity Management hozzáférési felülvizsgálat végrehajtása az Azure-erőforrások |} A Microsoft Docs'
-description: Ez a dokumentum ismerteti, hogyan hajthat végre a hozzáférési felülvizsgálat a PIM az Azure-erőforrásokhoz.
+title: Egy erőforrás Irányítópult segítségével hajtsa végre a hozzáférési felülvizsgálatok – Azure |} A Microsoft Docs
+description: Ismerteti, hogyan lehet egy erőforrás Irányítópult segítségével a hozzáférési felülvizsgálat végrehajtása az Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,12 +15,12 @@ ms.component: pim
 ms.date: 03/30/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 40fe6a4b0bec2540afee635b16ee3482a182a2df
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 20172cf7413397aedc4b3c32d0f1419531a2588a
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39621488"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43188497"
 ---
 # <a name="use-a-resource-dashboard-to-perform-an-access-review"></a>Egy erőforrás Irányítópult segítségével a hozzáférési felülvizsgálat végrehajtása
 
@@ -40,4 +40,6 @@ Az aktiválások graph jobbra két diagram megjelenítéséhez a szerepkör-hozz
 
 Alább a diagramok és a felhasználóknak és csoportoknak az új szerepkör-hozzárendelések száma az elmúlt 30 napban, valamint a szerepkörök (csökkenő sorrendben) hozzárendelések száma szerint rendezett listáját láthatja.
 
+## <a name="next-steps"></a>További lépések
 
+- [A PIM az Azure-erőforrások szerepköreihez tartozó hozzáférési felülvizsgálat indítása](pim-resource-roles-start-access-review.md) 

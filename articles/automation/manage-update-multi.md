@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/20/2018
+ms.date: 08/29/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: e06db4e356de6a4572721d1652d6a2666e7cfefc
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: 231a9876c7a84953a7d9a88b761a1da9475d1f48
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42059496"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43248141"
 ---
 # <a name="manage-updates-for-multiple-machines"></a>Frissítések kezelése több gép esetén
 
@@ -154,10 +154,10 @@ Az a **új frissítéstelepítés** panelen adja meg a következő információk
 
    |Beállítás|Leírás|
    |---|---|
-   |Szükség esetén újraindítás| **(Alapértelmezett)**  Szükség esetén újraindítás-e a intitated, ha lehetővé teszi, hogy a karbantartási időszak.|
-   |Mindig újraindítás|Függetlenül attól, hogy az egyik szükséges újraindítást kezdeményez. |
-   |Soha ne újraindítás|Függetlenül attól, hogy a Ha a számítógép újraindítása szükséges, újraindítások is surpressed.|
-   |Csak újraindítás - nem telepíti a frissítéseket|Ezzel a beállítással figyelmen kívül hagyja a frissítés telepítése, és csak az újraindítást kezdeményez.|
+   |Szükség esetén újraindítás| **(Alapértelmezett)**  Szükség esetén újraindítás kezdeményezték, ha lehetővé teszi, hogy a karbantartási időszak.|
+   |Mindig induljon újra|Függetlenül attól, hogy az egyik szükséges újraindítást kezdeményez. |
+   |Soha ne induljon újra|Függetlenül attól, hogy ha a számítógép újraindítása szükséges, újraindítások le lesznek tiltva.|
+   |Csak újraindítás – frissítések nem lesznek telepítve|Ezzel a beállítással figyelmen kívül hagyja a frissítés telepítése, és csak az újraindítást kezdeményez.|
 
 Ha elkészült, az ütemezés konfigurálását, válassza ki a **létrehozás** gombra kattintva térjen vissza az állapot-irányítópultra. A **ütemezett** táblázat mutatja a központi telepítési ütemezés létrehozott.
 

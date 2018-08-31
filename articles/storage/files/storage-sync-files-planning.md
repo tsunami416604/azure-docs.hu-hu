@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: 1f75317882e803a40df065377ef75f8b6b753898
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: a7d62531492695be6ec148c3bf7b9786b2a428cf
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42918379"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43247395"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Az Azure File Sync üzembe helyezésének megtervezése
 Az Azure File Sync használatával fájlmegosztásainak a szervezet az Azure Files között, miközben gondoskodik a rugalmasságát, teljesítményét és kompatibilitását a helyszíni fájlkiszolgálók. Az Azure File Sync Windows Server az Azure-fájlmegosztás gyors gyorsítótáraivá alakítja át. Helyileg, az adatok eléréséhez a Windows Serveren elérhető bármely protokollt használhatja, beleértve az SMB, NFS és FTPS. Tetszőleges számú gyorsítótárak világszerte igény szerint is rendelkezhet.
@@ -69,6 +69,47 @@ Felhőbeli rétegezés választható szolgáltatás az Azure File Sync, amelyben
 
 ## <a name="azure-file-sync-system-requirements-and-interoperability"></a>Az Azure File Sync Rendszerkövetelmények és együttműködés 
 Ez a szakasz ismerteti az Azure File Sync ügynök Rendszerkövetelmények és a Windows Server szolgáltatásaival és a szerepkörök és a külső felek megoldásaival való együttműködés.
+
+### <a name="evaluation-tool"></a>Kiértékelési eszközével
+Az Azure File Sync üzembe helyezése előtt, ki kell értékelni a rendszer az Azure File Sync értékelési eszközzel kompatibilis-e. Ez az eszköz az AzureRM PowerShell-parancsmag, amely ellenőrzi, a fájlrendszert és adatkészlethez, például a nem támogatott karaktereket vagy nem támogatott operációsrendszer-verzió a potenciális problémákat. Vegye figyelembe, hogy ellenőrizze az legtöbb terjed ki, de nem az összes alábbi; szolgáltatás azt javasoljuk, hogy olvassa el ezt a szakaszt körültekintően ellenőrizze az üzemelő példány kerül zökkenőmentesen, a rest-en keresztül. 
+
+#### <a name="download-instructions"></a>Útmutató letöltése
+1. Győződjön meg arról, hogy a PackageManagement legújabb verzióját, és a PowerShellGet telepítése (Ez lehetővé teszi, hogy az előzetes verziójú modulok telepítése)
+    
+    ```PowerShell
+        Install-Module -Name PackageManagement -Repository PSGallery -Force
+        Install-Module -Name PowerShellGet -Repository PSGallery -Force
+    ```
+ 
+2. Indítsa újra a PowerShell
+3. A modulok telepítése
+    
+    ```PowerShell
+        Install-Module -Name AzureRM.StorageSync -AllowPrerelease
+    ```
+
+#### <a name="usage"></a>Használat  
+A kiértékelési eszközével hívhat meg több különböző módon is: a rendszer ellenőrzi, az adatkészlet-ellenőrzéseket vagy mindkettő hajthat végre. A rendszer és az adatkészletet ellenőrzések elvégzéséhez: 
+
+```PowerShell
+    Invoke-AzureRmStorageSyncCompatibilityCheck -Path <path>
+```
+
+Csak az adatkészlet teszteléséhez:
+```PowerShell
+    Invoke-AzureRmStorageSyncCompatibilityCheck -Path <path> -SkipSystemChecks
+```
+ 
+Csak a rendszerkövetelmények teszteléséhez:
+```PowerShell
+    Invoke-AzureRmStorageSyncCompatibilityCheck -ComputerName <computer name>
+```
+ 
+Az eredmények megjelenítése a fürt megosztott kötetei szolgáltatás:
+```PowerShell
+    $errors = Invoke-AzureRmStorageSyncCompatibilityCheck […]
+    $errors | Select-Object -Property Type, Path, Level, Description | Export-Csv -Path <csv path>
+```
 
 ### <a name="system-requirements"></a>Rendszerkövetelmények
 - A Windows Server 2012 R2 vagy Windows Server 2016 rendszert futtató kiszolgáló 
@@ -198,7 +239,7 @@ Az Azure File Sync csak az alábbi régiókban érhető el:
 | Kelet-Ausztrália | Új-Dél-Wales |
 | Délkelet-Ausztrália | Victoria |
 | Közép-Kanada | Toronto |
-| Kelet-Kanada | Quebec City |
+| Kelet-Kanada | Quebec város |
 | Közép-India | Pune |
 | USA középső régiója | Iowa |
 | Kelet-Ázsia | Hongkong KKT |

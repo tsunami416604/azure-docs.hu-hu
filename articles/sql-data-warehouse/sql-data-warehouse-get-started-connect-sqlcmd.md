@@ -3,19 +3,19 @@ title: Csatlakozás az Azure SQL Data Warehouse-hoz az sqlcmd használatával | 
 description: Az [sqlcmd][sqlcmd] parancssori segédprogramot az Azure SQL Data Warehouse lekérdezéséhez és az ahhoz való csatlakozáshoz használhatja.
 services: sql-data-warehouse
 author: kavithaj
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: consume
 ms.date: 04/17/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: a4399382445cef5732262520986281ea440f7d51
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 94f3955f9ce94fa52e89180fa649c4e412b80109
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31600702"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43247713"
 ---
 # <a name="connect-to-sql-data-warehouse-with-sqlcmd"></a>Csatlakozás az SQL Data Warehouse-hoz az sqlcmd használatával
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ ms.locfileid: "31600702"
 Az [sqlcmd][sqlcmd] parancssori segédprogramot az Azure SQL Data Warehouse lekérdezéséhez és az ahhoz való csatlakozáshoz használhatja.  
 
 ## <a name="1-connect"></a>1. Kapcsolódás
-Az [sqlcmd][sqlcmd] használatának megkezdéséhez nyissa meg a parancssort, és írja be az **sqlcmd** kifejezést, majd a saját SQL Data Warehouse-adatbázisának kapcsolati karakterláncát. A kapcsolati karakterláncban a következő paraméterekre van szükség:
+Az [sqlcmd][sqlcmd] használatának megkezdéséhez nyissa meg a parancssort, és írja be az **sqlcmd** kifejezést, majd a saját SQL Data Warehouse-adatbázisának kapcsolati sztringjét. A kapcsolati sztringben a következő paraméterekre van szükség:
 
 * **Server (-S):** A kiszolgáló neve `<`kiszolgálónév`>`.database.windows.net formátumban.
 * **Database (-d):** Az adatbázis neve.
@@ -41,7 +41,7 @@ Az SQL Server-hitelesítés használatához meg kell adnia a felhasználónév/j
 * **User (-U):** A kiszolgálói felhasználó neve `<`felhasználó`>` formátumban.
 * **Password (-P):** A felhasználóhoz tartozó jelszó.
 
-A kapcsolati karakterlánc például a következőképpen nézhet ki:
+A kapcsolati sztring például a következőképpen nézhet ki:
 
 ```sql
 C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@ssword -I
@@ -51,7 +51,7 @@ Az Azure Active Directory beépített hitelesítés használatához meg kell adn
 
 * **Azure Active Directory Authentication (-G):** az Azure Active Directory használata a hitelesítéshez
 
-A kapcsolati karakterlánc például a következőképpen nézhet ki:
+A kapcsolati sztring például a következőképpen nézhet ki:
 
 ```sql
 C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -G -I

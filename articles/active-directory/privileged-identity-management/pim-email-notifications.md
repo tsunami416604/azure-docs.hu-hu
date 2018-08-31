@@ -1,6 +1,6 @@
 ---
-title: E-mail-értesítések az Azure AD PIM-ben |} A Microsoft Docs
-description: Ismerteti az Azure AD Privileged Identity Management (PIM) e-mail-értesítések
+title: E-mail-értesítések a PIM – Azure |} A Microsoft Docs
+description: Az Azure AD Privileged Identity Management (PIM) e-mail-értesítések ismerteti.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,14 +15,14 @@ ms.date: 07/24/2018
 ms.author: rolyon
 ms.reviewer: hanki
 ms.custom: pim
-ms.openlocfilehash: 7943b4fb8c2027b50ce04c30d21f1b0a58f98ace
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 1a1635e0ba16bdc0fa6dc90aa0e1a417f43e04ac
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39621582"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43190176"
 ---
-# <a name="email-notifications-in-azure-ad-pim"></a>Az Azure AD PIM-ben az e-mail-értesítések
+# <a name="email-notifications-in-pim"></a>A PIM e-mail-értesítések
 
 Kulcs események előfordulásakor az Azure AD Privileged Identity Management (PIM) e-mail értesítések küldését a megfelelő rendszergazdai vagy a felhasználónak. Például a PIM küld e-mailt a következő események:
 
@@ -74,5 +74,5 @@ Korábban amikor egy felhasználó rendszerjogosultságú szerepkört volt rende
 
 ## <a name="next-steps"></a>További lépések
 
-- [Hogyan kezelheti a szerepkör-aktiválási beállításokat, az Azure AD PIM-ben](pim-how-to-change-default-settings.md)
-- [Az Azure AD PIM-ben jóváhagyások](azure-ad-pim-approval-workflow.md)
+- [A PIM az Azure AD directory szerepkör-beállítások konfigurálása](pim-how-to-change-default-settings.md)
+- [Hagyja jóvá vagy utasítsa a PIM az Azure AD-címtárbeli szerepkörökhöz tartozó kérelmek](azure-ad-pim-approval-workflow.md)

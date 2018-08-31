@@ -1,6 +1,6 @@
 ---
-title: Hozzáférés biztosítása a Privileged Identity Management – Azure |} A Microsoft Docs
-description: Ismerje meg, hogyan adja hozzá a szerepkörök a felhasználók számára az Azure Active Directory Privileged Identity Management-bővítménnyel, miközben a PIM képesek kezelni.
+title: Hozzáférés biztosítása más rendszergazdák számára a PIM - Azure kezelését |} A Microsoft Docs
+description: Megtudhatja, hogyan hozzáférést biztosítani más kezelése az Azure AD Privileged Identity Management (PIM) számára.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -13,14 +13,14 @@ ms.component: pim
 ms.date: 06/06/2017
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: ade3939057669e7f9979001db4376fe61c2f4ad9
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
-ms.translationtype: MT
+ms.openlocfilehash: d6b2d9f43ce9bb86f4557c92887689c83beb49fa
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39623068"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43189555"
 ---
-# <a name="giving-access-to-manage-azure-ad-privileged-identity-management"></a>Az Azure AD Privileged Identity Management kezeléséhez hozzáférés megadását
+# <a name="grant-access-to-other-administrators-to-manage-pim"></a>Hozzáférés biztosítása más rendszergazdák számára, miközben a PIM kezelése
 Az Azure AD Privileged Identity Management (PIM) egy szervezet számára automatikusan lehetővé teszi, hogy a globális rendszergazda szerepkör-hozzárendelések és a PIM számára hozzáférést kaphat. Senki más nem írási hozzáférést kap alapértelmezés szerint, beleértve a más globális rendszergazdákat. Egyéb globális rendszergazdák, biztonsági rendszergazdák és biztonsági olvasók rendelkezik a csak olvasási hozzáféréssel az Azure AD PIM-ben. Hozzáférés biztosítása a PIM számára, az első felhasználó rendelhet hozzá mások számára a **kiemelt szerepkörű rendszergazda** szerepkör.
 
 > [!NOTE]
@@ -54,4 +54,5 @@ Eltávolítása előtt valaki a kiemelt szerepkörű rendszergazda, ügyeljen ar
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="next-steps"></a>További lépések
-[!INCLUDE [active-directory-privileged-identity-management-toc](../../../includes/active-directory-privileged-identity-management-toc.md)]
+
+- [A bérlő előfizetés-kezelés engedélyezése](pim-resource-roles-enable-subscription-management.md)

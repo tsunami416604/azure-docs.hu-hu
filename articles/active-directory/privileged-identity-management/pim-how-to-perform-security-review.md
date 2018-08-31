@@ -1,6 +1,6 @@
 ---
-title: Hozzáférési felülvizsgálat végrehajtása |} A Microsoft Docs
-description: Útmutató az Azure Privileged Identity Management alkalmazásban felülvizsgálat végrehajtása.
+title: Saját Azure AD-címtárbeli szerepkörök, hozzáférési felülvizsgálat végrehajtása a PIM |} A Microsoft Docs
+description: Ismerje meg, hogyan hajthat végre az Azure AD-címtárbeli szerepkörök, hozzáférési felülvizsgálatok az Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -13,14 +13,14 @@ ms.component: pim
 ms.date: 06/21/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 2c1cdecb0ce47e72550f430d2b87b3e6cc4eb176
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: b4cffbd1ce240e4792fba84581dafb1933c71a62
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39623034"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43188551"
 ---
-# <a name="how-to-perform-an-access-review-in-azure-ad-privileged-identity-management"></a>Hozzáférési felülvizsgálat végrehajtása az Azure AD Privileged Identity Management
+# <a name="perform-an-access-review-of-my-azure-ad-directory-roles-in-pim"></a>A PIM saját Azure AD-címtárbeli szerepkörök, hozzáférési felülvizsgálat végrehajtása
 Az Azure Active Directory (AD) Privileged Identity Management egyszerűsíti, hogy hogyan kezelhetik a vállalatok számára az erőforrások az Azure AD és más Microsoft online szolgáltatásaihoz, például az Office 365 vagy a Microsoft Intune emelt szintű hozzáférés.  
 
 Ha egy rendszergazdai szerepkörrel vannak rendelve, a szervezet kiemelt szerepkörű rendszergazda megkérheti, hogy rendszeresen győződjön meg arról, hogy továbbra is szerepkörre van szüksége, hogy a feladatnak. Előfordulhat, hogy kap egy e-mailt, amelyben a hivatkozást, vagy megnyithatja közvetlenül a [az Azure portal](https://portal.azure.com). Kövesse a cikkben egy önálló tekintse át a hozzárendelt szerepkörök végrehajtásához.
@@ -47,4 +47,5 @@ Kövesse az alábbi lépéseket, és a hozzáférési felülvizsgálat befejezé
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="next-steps"></a>További lépések
-[!INCLUDE [active-directory-privileged-identity-management-toc](../../../includes/active-directory-privileged-identity-management-toc.md)]
+
+- [A PIM a saját Azure-erőforrás-szerepkörök hozzáférési felülvizsgálat végrehajtása](pim-resource-roles-perform-access-review.md)

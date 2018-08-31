@@ -1,6 +1,6 @@
 ---
-title: Biztonsági riasztások konfigurálása |} A Microsoft Docs
-description: 'Útmutató: biztonsági riasztások az Azure Privileged Identity Management bővítmény konfigurálása.'
+title: Az Azure AD-címtárbeli szerepkörökhöz tartozó biztonsági riasztások konfigurálása a PIM |} A Microsoft Docs
+description: Ismerje meg az Azure AD-címtárbeli szerepkörökhöz tartozó biztonsági riasztások konfigurálása az Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -13,14 +13,14 @@ ms.component: pim
 ms.date: 06/06/2017
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 8df9bc7c332a83e9761ea71dddfbfbfaa3ae5154
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: fc39b6ad2dd63d45995b76011f4ebbe0228b4c2d
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39622153"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43190391"
 ---
-# <a name="how-to-configure-security-alerts-in-azure-ad-privileged-identity-management"></a>Biztonsági riasztások konfigurálása az Azure AD Privileged Identity Management
+# <a name="configure-security-alerts-for-azure-ad-directory-roles-in-pim"></a>Az Azure AD-címtárbeli szerepkörökhöz tartozó biztonsági riasztások konfigurálása az PIM-ben
 ## <a name="security-alerts"></a>Biztonsági riasztások
 Azure Privileged Identity Management (PIM) riasztásokat állít elő, ha bármi gyanúsat vagy nem biztonságos tevékenységre van a környezetben. Riasztást vált ki, amikor megjelenik a PIM-irányítópulton. Válassza ki a riasztást a felhasználók vagy szerepkörök a riasztást kiváltó felsoroló jelentés megtekintéséhez.
 
@@ -65,4 +65,6 @@ Ezt a riasztást aktivál, ha egy felhasználó egy adott időtartamot a szerepk
 * **A napok számát**: 0 – 100, egy felhasználói szerepkör aktiválása nélkül is lépjen a napok számát adja meg.
 
 ## <a name="next-steps"></a>További lépések
-[!INCLUDE [active-directory-privileged-identity-management-toc](../../../includes/active-directory-privileged-identity-management-toc.md)]
+
+- [A PIM az Azure AD directory szerepkör-beállítások konfigurálása](pim-how-to-change-default-settings.md)
+- [A PIM az Azure AD-címtárbeli szerepkörökhöz tartozó többtényezős hitelesítés megkövetelése](pim-how-to-require-mfa.md)
