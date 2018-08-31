@@ -9,14 +9,14 @@ ms.service: sql-database
 ms.subservice: managed-instance
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 08/14/2018
+ms.date: 08/30/2018
 ms.author: bonova
-ms.openlocfilehash: 2c6cdcd5d8d50a54a87e3dabd2aa09eccc646738
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: 2e1fd7c87931f804433708b6ac30a5960e6006ae
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42061393"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43287663"
 ---
 # <a name="what-is-a-managed-instance-preview"></a>Mi a felügyelt példány (előzetes verzió)?
 
@@ -71,7 +71,7 @@ Felügyelt példány szolgáltatáscsomagban érhető el:
 - **Általános célú**: tipikus teljesítmény- és i/o-késési követelményekkel rendelkező alkalmazások tervezve.
 - **Üzletileg kritikus**: alacsony i/o-késésre vonatkozó követelmény és az alapul szolgáló karbantartási műveleteket a számítási feladatok minimális hatása az alkalmazások számára készült.
 
-Mindkét szolgáltatásszintek 99,99 %-os rendelkezésre állásának biztosítása, és egymástól függetlenül válassza ki a tároló mérete és a számítási kapacitást. 
+Mindkét szolgáltatásszintek 99,99 %-os rendelkezésre állásának biztosítása, és egymástól függetlenül válassza ki a tároló mérete és a számítási kapacitást. Az Azure SQL Database a magas rendelkezésre állású architektúrával további információkért lásd: [magas rendelkezésre állást és az Azure SQL Database](sql-database-high-availability.md).
 
 > [!IMPORTANT]
 > Az általános célú üzletileg kritikus fontosságú vagy fordítva szolgáltatásszint módosítása nem támogatott nyilvános előzetes verzióban érhető el. Ha az adatbázisokat egy példány különböző szolgáltatási rétegben, új példány létrehozása, időponthoz kötött visszaállítás ponttal rendelkező adatbázisok visszaállítása az eredeti példányban, és majd eldobni az eredeti példányban nincs többé szükség esetén. 
@@ -97,7 +97,7 @@ Az alábbi lista ismerteti azokat az általános célú szolgáltatásszint főb
 | Az adatbázisonkénti adatfájlt (sor) | Többszörös | 
 | Adatbázisonként (napló) fájlok száma | 1 | 
 | Automatikus biztonsági másolatok kezelése | Igen |
-| MAGAS RENDELKEZÉSRE ÁLLÁS | Távoli tároló alapján és [Azure Service Fabric](../service-fabric/service-fabric-overview.md) |
+| MAGAS RENDELKEZÉSRE ÁLLÁS | Az Azure Storage szolgáltatásban tárolt adatok és [Azure Service Fabric](../service-fabric/service-fabric-overview.md) |
 | Beépített példányt és az adatbázis figyelése és metrikák | Igen |
 | A szoftverfrissítések automatikus javítás | Igen |
 | Virtuális hálózat – Azure Resource Manager üzembe helyezése | Igen |
@@ -131,7 +131,7 @@ Az alábbi lista ismerteti azokat az üzletileg kritikus szolgáltatási rétegb
 | Az adatbázisonkénti adatfájlt (sor) | Többszörös | 
 | Adatbázisonként (napló) fájlok száma | 1 | 
 | Automatikus biztonsági másolatok kezelése | Igen |
-| MAGAS RENDELKEZÉSRE ÁLLÁS | Alapján [Always On rendelkezésre állási csoportok](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) és [az Azure Service Fabric](../service-fabric/service-fabric-overview.md) |
+| MAGAS RENDELKEZÉSRE ÁLLÁS | Helyi SSD és használható a tárolt adatok [Always On rendelkezésre állási csoportok](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) és [Azure Service Fabric](../service-fabric/service-fabric-overview.md) |
 | Beépített példányt és az adatbázis figyelése és metrikák | Igen |
 | A szoftverfrissítések automatikus javítás | Igen |
 | Virtuális hálózat – Azure Resource Manager üzembe helyezése | Igen |

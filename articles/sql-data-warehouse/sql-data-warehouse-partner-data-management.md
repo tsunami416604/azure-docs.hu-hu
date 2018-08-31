@@ -3,19 +3,19 @@ title: Az SQL Data Warehouse adatkezelési partnerek |} A Microsoft Docs
 description: Harmadik felek adatkezelési partnerek olyan megoldásokkal, amelyek támogatják az SQL Data Warehouse listája.
 services: sql-data-warehouse
 author: jrowlandjones
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: consume
 ms.date: 04/17/2018
 ms.author: jrj
 ms.reviewer: igorstan
-ms.openlocfilehash: c300a28356249b019cefce382d92f9cc44345f47
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 8b2451798ffe05372b434207bbfbc092aee00b66
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42745862"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43301128"
 ---
 # <a name="sql-data-warehouse-data-management-partners"></a>Az SQL Data Warehouse adatkezelési partnerek
 Az adattárház-megoldást létrehozni, számos különböző iparágvezető eszközök közül választhat. Ez a cikk az adatok felügyeleti eszközöket és megoldásokat támogató Azure SQL Data Warehouse a Microsoft partnervállalatokban emeli ki.

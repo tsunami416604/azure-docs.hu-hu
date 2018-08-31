@@ -3,19 +3,19 @@ title: Az SQL Data Warehouse üzletiintelligencia-partnerek |} A Microsoft Docs
 description: A külső üzleti intelligencia partnerek megoldásokat, amelyek támogatják az SQL Data Warehouse-listákat.
 services: sql-data-warehouse
 author: jrowlandjones
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: consume
 ms.date: 04/17/2018
 ms.author: jrj
 ms.reviewer: igorstan
-ms.openlocfilehash: 410d234e8a3aa098edd029eda09c421d2af2886e
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 36f0b1c0ac503efb13f69b489557af891e1286fa
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42055103"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43301489"
 ---
 # <a name="sql-data-warehouse-business-intelligence-partners"></a>Az SQL Data warehouse-bA üzleti intelligencia partnerek
 A teljes körű adattárház-megoldást létrehozni, számos különböző iparágvezető eszközök közül választhat.  Ez a cikk a Microsoft partnervállalatokban az üzleti intelligenciára épülő (BI) megoldások támogatása az Azure SQL Data Warehouse emeli ki.
