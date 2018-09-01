@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 06/08/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 3fcede7f813e97885d8fc3d7e0bc04776f2d0d12
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 5fbce0c20e66eec0e7d7023344051fcf302af677
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39582137"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43382612"
 ---
 # <a name="tutorial-deploy-apps-to-azure-and-azure-stack"></a>Oktatóanyag: alkalmazások telepítése az Azure és az Azure Stackben
 
@@ -108,7 +108,10 @@ Az alábbi lépések bemutatják, hogy mi szükséges hitelesítés konfigurál�
 
 ### <a name="create-a-service-principal"></a>Egyszerű szolgáltatás létrehozása
 
-Tekintse meg a [egyszerű szolgáltatás létrehozása](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications) utasítások a szolgáltatásnév létrehozásához, és válassza a **Web App és az API** az alkalmazás típusához.
+Tekintse meg a [egyszerű szolgáltatás létrehozása](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications) utasítások a szolgáltatásnév létrehozásához, és válassza a **Web App és az API** az alkalmazás típusához vagy [a PowerShell-parancsfájllal](https://github.com/Microsoft/vsts-rm-extensions/blob/master/TaskModules/powershell/Azure/SPNCreation.ps1#L5)leírtak [Itt](https://docs.microsoft.com/en-us/vsts/pipelines/library/connect-to-azure?view=vsts#create-an-azure-resource-manager-service-connection-with-an-existing-service-principal).
+
+ > [!Note]
+ > Ha a szkript egy Azure Stack az Azure Resource Manager-végpont létrehozása fog használni, át kell a `-azureStackManagementURL` és `-environmentName` paraméter, amely https://management.local.azurestack.external/ és *AzureStack*.
 
 ### <a name="create-an-access-key"></a>Hozzáférési kulcs létrehozása
 
@@ -261,7 +264,19 @@ Végpontok létrehozása a Visual Studio online-hoz (VSTO) build helyezzen üzem
 9. A **felhasználók és csoportok hozzáadása**, írjon be egy felhasználónevet, és válassza ki, hogy a felhasználó a felhasználók listájából.
 10. Válassza ki **módosítások mentése**.
 
-Most, hogy létezik a végpont adatait, a vsts-ben az Azure Stack kapcsolat készen áll a használatra. A fordító-ügynökhöz az Azure Stackben utasításokat lekérdezi a VSTS-ből, és ezután az ügynök közvetíti a kommunikációt az Azure Stack-végpontjának információit.
+## <a name="create-azure-stack-endpoint"></a>Az Azure Stack-végpont létrehozása
+
+Ellenőrizze [ez](https://docs.microsoft.com/en-us/vsts/pipelines/library/connect-to-azure?view=vsts#create-an-azure-resource-manager-service-connection-with-an-existing-service-principal) hozzon létre egy szolgáltatás-kapcsolatot egy meglévő szolgáltatás egyszerű, és használja a következő hozzárendelést dokumentáció:
+
+- Környezet: AzureStack
+- Környezet URL-címe: Hasonló dolgot `https://management.local.azurestack.external`
+- Előfizetés azonosítója: Felhasználói előfizetés-azonosító az Azure Stackben
+- Előfizetés neve: az Azure Stack felhasználói előfizetés neve
+- Egyszerű szolgáltatás ügyfél-azonosító: a résztvevő-Azonosítóval [ez](https://docs.microsoft.com/en-us/azure/azure-stack/user/azure-stack-solution-pipeline#create-a-service-principal) szakasz ebben a cikkben.
+- Egyszerű szolgáltatásnév kulcsát: A kulcsát, az ugyanebben a cikkben (vagy a jelszót, ha a szkriptet használta).
+- Bérlőazonosító: A bérlő Azonosítóját kapott [Itt](https://docs.microsoft.com/en-us/azure/azure-stack/user/azure-stack-solution-pipeline#get-the-tenant-id).
+
+Most, hogy a végpont a létrehozás, a vsts-ben az Azure Stack kapcsolat készen áll a használatra. A fordító-ügynökhöz az Azure Stackben utasításokat lekérdezi a VSTS-ből, és ezután az ügynök közvetíti a kommunikációt az Azure Stack-végpontjának információit.
 
 ![Az ügynök létrehozása](media\azure-stack-solution-hybrid-pipeline\016_save_changes.png)
 

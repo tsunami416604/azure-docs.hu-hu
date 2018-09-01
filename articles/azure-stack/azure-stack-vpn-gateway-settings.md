@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/14/2018
 ms.author: brenduns
-ms.openlocfilehash: e9e474fe4a32bb99673fba2a88f28a3161f23362
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 6380936766bb0f3848811be305783c274867b0fc
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42139499"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43381867"
 ---
 # <a name="vpn-gateway-configuration-settings-for-azure-stack"></a>VPN gateway konfigurációs beállításairól az Azure Stackhez
 
@@ -27,7 +27,7 @@ ms.locfileid: "42139499"
 
 VPN-átjáró olyan virtuális hálózati átjáró, amely a virtuális hálózat az Azure Stackben és a távoli VPN gateway titkosított adatforgalmat továbbít. A távoli VPN-átjáró az Azure-ban, egy a helyi adatközpontban vagy egy másik helyen található eszköz lehet.  Ha a két végpontok közötti hálózati kapcsolat, a két hálózat közötti biztonságos Site-to-Site (S2S) VPN-kapcsolatot is létrehozhat.
 
-VPN gateway-kapcsolat támaszkodik a konfiguráció több erőforrást, amelyek mindegyike tartalmazza a konfigurálható beállítások. Ez a cikk a szakaszok tárgyalják az erőforrások és a Resource Manager-alapú üzemi modellben létrehozott virtuális hálózat VPN-átjáró szoftverközponthoz kapcsolódó beállításokat. Leírások és topológia-diagramok megtalálhatja az összes kapcsolat-megoldás [információk a VPN Gateway az Azure Stack](azure-stack-vpn-gateway-about-vpn-gateways.md).
+VPN gateway-kapcsolat támaszkodik a konfiguráció több erőforrást, amelyek mindegyike tartalmazza a konfigurálható beállítások. Ez a cikk ismerteti az erőforrások és a Resource Manager-alapú üzemi modellben létrehozott virtuális hálózat VPN-átjáró szoftverközponthoz kapcsolódó beállításokat. Leírások és topológia-diagramok megtalálhatja az összes kapcsolat-megoldás [információk a VPN Gateway az Azure Stack](azure-stack-vpn-gateway-about-vpn-gateways.md).
 
 ## <a name="vpn-gateway-settings"></a>A VPN gateway beállításairól
 
@@ -100,7 +100,7 @@ A VPN-átjáró konfigurálása a virtuális hálózati átjáró létrehozásak
 >
 > Emellett az Azure Stack nem támogatja a házirend alapú Forgalomválasztóinak útvonal-alapú átjárók használata jelenleg, mert az egyéni IPSec/IKE-házirend konfigurációk nem támogatottak.
 
-* **Házirendalapú**: Csoportházirend-alapú VPN-eket titkosítják és irányítják a csomagokat a helyszíni hálózat és az Azure Stack VNet közötti címelőtag-kombinációkkal konfigurált IPsec-házirendek alapján IPsec-alagutakon keresztül. A házirend vagy forgalomválasztó, általában van megadva a VPN-eszköz konfigurálása egy hozzáférési listaként.
+* **Házirendalapú**: Csoportházirend-alapú VPN-eket titkosítják és irányítják a csomagokat a helyszíni hálózat és az Azure Stack VNet közötti címelőtag-kombinációkkal konfigurált IPsec-házirendek alapján IPsec-alagutakon keresztül. A házirend vagy forgalomválasztó, az általában a VPN-eszköz konfigurálása a hozzáférés-lista.
 
   >[!NOTE]
   >Házirendalapú támogatott az Azure-ban, de nem az Azure Stackben.
@@ -163,7 +163,7 @@ Néha szüksége a helyi hálózati átjáró beállításainak módosítására
 
 ## <a name="ipsecike-parameters"></a>IPsec/IKE-paraméterek
 
-Egy VPN-kapcsolatot az Azure Stack üzembe helyezésekor kell konfigurálni a kapcsolat mindkét végén.  Azure Stack és a egy hardvereszközhöz, például a kapcsolót vagy útválasztót, VPN-átjáróként működik, közötti VPN-kapcsolat konfigurálásakor a eszköz kérheti a további beállításokat.
+Egy VPN-kapcsolatot az Azure Stack üzembe helyezésekor kell konfigurálni a kapcsolat mindkét végén.  Ha konfigurál egy VPN-kapcsolatot az Azure Stack és a egy hardvereszközhöz, például egy kapcsoló vagy egy VPN-átjáróként működő útválasztó között, a eszköz kérheti a további beállításokat.
 
 Eltérően az Azure-ban, amely támogatja a több ajánlattal is egy kezdeményező és egy válaszadó, az Azure Stack is támogatja a csak egyszer veheti igénybe.
 
@@ -184,14 +184,12 @@ Eltérően az Azure-ban, amely támogatja a több ajánlattal is egy kezdeménye
 |IKE verziószám |IKEv2 |
 |Titkosító és kivonatoló algoritmus (titkosítás)     | GCMAES256|
 |Titkosító és kivonatoló algoritmus (hitelesítés) | GCMAES256|
-|SA élettartama (Idő)  | 27 000 másodperc<sup>lásd: 1. megjegyzést:</sup> |
-|SA élettartama (bájt) | 33,553,408<sup>lásd a 2. megjegyzést:</sup>     |
-|Sérülés utáni titkosságvédelem (PFS) |Nincs<sup>lásd a 3. megjegyzést:</sup> |
+|SA élettartama (Idő)  | 27 000 másodperc  |
+|SA élettartama (bájt) | 33,553,408     |
+|Sérülés utáni titkosságvédelem (PFS) |Nincs<sup>lásd: 1. megjegyzést:</sup> |
 |Kapcsolat megszakadásának észlelése | Támogatott|  
 
-* *1. Megjegyzés:* 1803 verziónál régebbi, az Azure Stack használ 14400 érték az SA-élettartam (idő).
-* *2. megjegyzést:* 1803 verziónál régebbi, az Azure Stack 819,200 értékét használja SA élettartama (bájt).
-* *3. megjegyzést:* 1807 verziónál régebbi, az Azure Stack használ PFS2048 értéke az a teljes előre sérülés utáni Titkosságvédelmi (PFS).
+* *1. Megjegyzés:* 1807 verziónál régebbi, az Azure Stack használ PFS2048 értéke az a teljes előre sérülés utáni Titkosságvédelmi (PFS).
 
 ## <a name="next-steps"></a>További lépések
 
