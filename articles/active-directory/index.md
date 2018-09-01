@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 08/16/2018
 ms.author: mtillman
-ms.openlocfilehash: a28db1d9c7f14e03e124537b60a3384a4baafe1c
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: cc79601e2ec283cca2f0ef97cd220c656fc3d311
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43126732"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43339849"
 ---
 # <a name="azure-active-directory-documentation"></a>Azure Active Directory-dokumentáció
 
@@ -85,7 +85,7 @@ Az Azure Active Directory (Azure AD) egy több-bérlős felhőalapú címtár- �
                         <a href="/azure/active-directory/authentication/concept-sspr-howitworks">Jelszavak</a><br/>
                         <a href="/azure/active-directory/authentication/concept-mfa-howitworks">Többtényezős hitelesítés</a><br/>
                         <a href="/azure/active-directory/active-directory-azureadjoin-passport">Windows Hello</a><br/>
-                        <a href="/azure/active-directory/active-directory-certificate-based-authentication-get-started">Tanúsítványalapú hitelesítés</a>
+                        <a href="/azure/active-directory/authentication/active-directory-certificate-based-authentication-get-started">Tanúsítványalapú hitelesítés</a>
                         </p>
                     </div>
                 </div>

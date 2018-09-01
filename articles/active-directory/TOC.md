@@ -123,10 +123,6 @@
 #### [Tanúsítványok használata](reports-monitoring/tutorial-access-api-with-certificates.md)
 
 ## [Jelszavak kezelése](authentication/concept-sspr-howitworks.md)
-### Felhasználói dokumentumok
-#### [Jelszó visszaállítása vagy módosítása](user-help/active-directory-passwords-update-your-own-password.md)
-#### [Regisztráció önkiszolgáló jelszó-visszaállításra](user-help/active-directory-passwords-reset-register.md)
-
 
 ## Alkalmazások kezelése
 ### [Áttekintés](manage-apps/what-is-application-management.md)
@@ -338,10 +334,6 @@
 ### [Hozzáférési felülvizsgálatok eredményeinek lekérése](active-directory-azure-ad-controls-retrieve-access-review.md)
 
 ## Identitások védelme
-### Tanúsítványalapú hitelesítés
-#### [Android](active-directory-certificate-based-authentication-android.md)
-#### [iOS](active-directory-certificate-based-authentication-ios.md)
-#### [Első lépések](active-directory-certificate-based-authentication-get-started.md)
 
 ### Azure AD Identity Protection
 #### [Áttekintés](identity-protection/overview.md)

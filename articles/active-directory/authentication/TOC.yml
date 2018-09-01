@@ -1,212 +1,219 @@
+items:
 - name: Hitelesítési dokumentáció
   href: index.yml
 - name: Áttekintés
   items:
-    - name: Mi a hitelesítés?
-      href: overview-authentication.md
+  - name: Mi a hitelesítés?
+    href: overview-authentication.md
 - name: Első lépések
   items:
-    - name: Új jelszó létrehozásának konfigurálása
-      href: quickstart-sspr.md
+  - name: Új jelszó létrehozásának konfigurálása
+    href: quickstart-sspr.md
 - name: Oktatóanyagok
   items:
-    - name: 1 MFA engedélyezése alkalmazásokhoz
-      href: tutorial-mfa-applications.md
-    - name: 2 SSPR-próba engedélyezése
-      href: tutorial-sspr-pilot.md
-    - name: Az SSPR helyszíni integrációjának engedélyezése
-      href: tutorial-enable-writeback.md
-    - name: Új jelszó létrehozásának engedélyezése Windows 10 rendszerben
-      href: tutorial-sspr-windows.md
-    - name: Az Azure Identity Protection integrálása
-      href: tutorial-risk-based-sspr-mfa.md
+  - name: 1 MFA engedélyezése alkalmazásokhoz
+    href: tutorial-mfa-applications.md
+  - name: 2 SSPR-próba engedélyezése
+    href: tutorial-sspr-pilot.md
+  - name: Az SSPR helyszíni integrációjának engedélyezése
+    href: tutorial-enable-writeback.md
+  - name: Új jelszó létrehozásának engedélyezése Windows 10 rendszerben
+    href: tutorial-sspr-windows.md
+  - name: Az Azure Identity Protection integrálása
+    href: tutorial-risk-based-sspr-mfa.md
 - name: Alapelvek
-  expanded: true
   items:
-    - name: Hitelesítési módszerek
-      href: concept-authentication-methods.md
-    - name: Konvergens regisztráció
-      href: concept-registration-mfa-sspr-converged.md
-    - name: Új jelszó önkiszolgáló kérése
-      items:
-        - name: Új jelszó kérésének módja
-          href: concept-sspr-howitworks.md
-        - name: Új jelszó létrehozásának lehetőségei
-          href: concept-sspr-customization.md
-        - name: Új jelszó kérésére vonatkozó szabályzatok
-          href: concept-sspr-policy.md
-        - name: Melyik licencre van szükségem?
-          href: concept-sspr-licensing.md
-        - name: Helyszíni integráció
-          href: concept-sspr-writeback.md
-    - name: Multi-Factor Authentication
-      items:
-        - name: Az MFA működése
-          href: concept-mfa-howitworks.md
-        - name: Melyik a megfelelő verzió?
-          href: concept-mfa-whichversion.md
-        - name: Licence biztosítása a felhasználók számára
-          href: concept-mfa-licensing.md
-        - name: Hitelesítési szolgáltató létrehozása
-          href: concept-mfa-authprovider.md
-        - name: Biztonsági útmutató
-          href: multi-factor-authentication-security-best-practices.md
-        - name: MFA az Office 365-höz
-          href: 'https://support.office.com/article/Plan-for-multi-factor-authentication-for-Office-365-Deployments-043807b2-21db-4d5c-b430-c8a6dee0e6ba'
-        - name: MFA – GYIK
-          href: multi-factor-authentication-faq.md
-    - name: Azure AD jelszóvédelem
-      items:
-        - name: Gyenge jelszavak megszüntetése a felhőben
-          href: concept-password-ban-bad.md
-        - name: Gyenge jelszavak megszüntetése a helyszínen
-          href: concept-password-ban-bad-on-premises.md
+  - name: Hitelesítési módszerek
+    href: concept-authentication-methods.md
+  - name: Konvergens regisztráció
+    href: concept-registration-mfa-sspr-converged.md
+  - name: Új jelszó önkiszolgáló kérése
+    items:
+    - name: Új jelszó kérésének módja
+      href: concept-sspr-howitworks.md
+    - name: Új jelszó létrehozásának lehetőségei
+      href: concept-sspr-customization.md
+    - name: Új jelszó kérésére vonatkozó szabályzatok
+      href: concept-sspr-policy.md
+    - name: Melyik licencre van szükségem?
+      href: concept-sspr-licensing.md
+    - name: Helyszíni integráció
+      href: concept-sspr-writeback.md
+  - name: Multi-Factor Authentication
+    items:
+    - name: Az MFA működése
+      href: concept-mfa-howitworks.md
+    - name: Melyik a megfelelő verzió?
+      href: concept-mfa-whichversion.md
+    - name: Licence biztosítása a felhasználók számára
+      href: concept-mfa-licensing.md
+    - name: Hitelesítési szolgáltató létrehozása
+      href: concept-mfa-authprovider.md
+    - name: Biztonsági útmutató
+      href: multi-factor-authentication-security-best-practices.md
+    - name: MFA az Office 365-höz
+      href: https://support.office.com/article/Plan-for-multi-factor-authentication-for-Office-365-Deployments-043807b2-21db-4d5c-b430-c8a6dee0e6ba
+    - name: MFA – GYIK
+      href: multi-factor-authentication-faq.md
+  - name: Azure AD jelszóvédelem
+    items:
+    - name: Gyenge jelszavak megszüntetése a felhőben
+      href: concept-password-ban-bad.md
+    - name: Gyenge jelszavak megszüntetése a helyszínen
+      href: concept-password-ban-bad-on-premises.md
+  expanded: true
 - name: Útmutatók
   items:
-    - name: Új jelszó létrehozása
+  - name: Új jelszó létrehozása
+    items:
+    - name: Jelszólétrehozás üzembe helyezése
+      href: howto-sspr-deployment.md
+    - name: A hitelesítési adatok előzetes regisztrációja
+      href: howto-sspr-authenticationdata.md
+    - name: Jelszóvisszaíró engedélyezése
+      href: howto-sspr-writeback.md
+  - name: Felhőalapú MFA
+    items:
+    - name: Felhőalapú MFA üzembe helyezése
+      href: howto-mfa-getstarted.md
+    - name: Felhasználónkénti MFA
+      href: howto-mfa-userstates.md
+    - name: Felhasználói és eszközbeállítások
+      href: howto-mfa-userdevicesettings.md
+    - name: Beállítások konfigurálása
+      href: howto-mfa-mfasettings.md
+    - name: Címtárösszevonás
       items:
-        - name: Jelszólétrehozás üzembe helyezése
-          href: howto-sspr-deployment.md
-        - name: A hitelesítési adatok előzetes regisztrációja
-          href: howto-sspr-authenticationdata.md
-        - name: Jelszóvisszaíró engedélyezése
-          href: howto-sspr-writeback.md
-    - name: Felhőalapú MFA
+      - name: Windows Server 2016 AD FS-adapter
+        href: https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-and-azure-mfa
+      - name: Összevonási szolgáltatások
+        href: multi-factor-authentication-get-started-adfs.md
+      - name: Az AD FS használata
+        href: howto-mfa-adfs.md
+    - name: RADIUS-integráció
       items:
-        - name: Felhőalapú MFA üzembe helyezése
-          href: howto-mfa-getstarted.md
-        - name: Felhasználónkénti MFA
-          href: howto-mfa-userstates.md
-        - name: Felhasználói és eszközbeállítások
-          href: howto-mfa-userdevicesettings.md
-        - name: Beállítások konfigurálása
-          href: howto-mfa-mfasettings.md
-        - name: Címtárösszevonás
-          items:
-            - name: Windows Server 2016 AD FS-adapter
-              href: 'https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-and-azure-mfa'
-            - name: Összevonási szolgáltatások
-              href: multi-factor-authentication-get-started-adfs.md
-            - name: Az AD FS használata
-              href: howto-mfa-adfs.md
-        - name: RADIUS-integráció
-          items:
-            - name: Meglévő hálózatiházirend-kiszolgálók használata
-              href: howto-mfa-nps-extension.md
-            - name: Speciális konfiguráció az NPS-bővítményhez
-              href: howto-mfa-nps-extension-advanced.md
-            - name: Távoli asztali átjáró
-              href: howto-mfa-nps-extension-rdg.md
-            - name: VPN
-              href: howto-mfa-nps-extension-vpn.md
-    - name: A tiltott jelszavak listái
+      - name: Meglévő hálózatiházirend-kiszolgálók használata
+        href: howto-mfa-nps-extension.md
+      - name: Speciális konfiguráció az NPS-bővítményhez
+        href: howto-mfa-nps-extension-advanced.md
+      - name: Távoli asztali átjáró
+        href: howto-mfa-nps-extension-rdg.md
+      - name: VPN
+        href: howto-mfa-nps-extension-vpn.md
+  - name: A tiltott jelszavak listái
+    items:
+    - name: A tiltott jelszavak listájának konfigurálása
+      href: howto-password-ban-bad.md
+    - name: Azure AD jelszóvédelem üzembe helyezése
+      href: howto-password-ban-bad-on-premises.md
+    - name: Azure AD jelszóvédelem konfigurálása
+      href: howto-password-ban-bad-on-premises-operations.md
+    - name: Azure AD jelszóvédelem monitorozása
+      href: howto-password-ban-bad-on-premises-troubleshoot.md
+  - name: Azure AD intelligens zárolás
+    href: howto-password-smart-lockout.md
+  - name: Vállalati Windows Hello
+    href: https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification
+  - name: Tanúsítványalapú hitelesítés
+    items:
+    - name: Bevezetés a tanúsítványalapú hitelesítésbe
+      href: active-directory-certificate-based-authentication-get-started.md
       items:
-        - name: A tiltott jelszavak listájának konfigurálása
-          href: howto-password-ban-bad.md
-        - name: Azure AD jelszóvédelem üzembe helyezése
-          href: howto-password-ban-bad-on-premises.md
-        - name: Azure AD jelszóvédelem konfigurálása
-          href: howto-password-ban-bad-on-premises-operations.md
-        - name: Azure AD jelszóvédelem monitorozása
-          href: howto-password-ban-bad-on-premises-troubleshoot.md
-    - name: Azure AD intelligens zárolás
-      href: howto-password-smart-lockout.md
-    - name: Vállalati Windows Hello
-      href: 'https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification'
-    - name: Tanúsítványalapú hitelesítés
+      - name: CBA Android-eszközökön
+        href: active-directory-certificate-based-authentication-android.md
+      - name: CBA iOS-eszközökön
+        href: active-directory-certificate-based-authentication-ios.md
+  - name: Fejlesztés
+    items:
+    - name: MFA beépítése egyéni alkalmazásokba
+      href: howto-mfa-sdk.md
+  - name: Jelentéskészítés
+    items:
+    - name: SSPR-jelentések
+      href: howto-sspr-reporting.md
+    - name: MFA-jelentések
+      href: howto-mfa-reporting.md
+    - name: Adatgyűjtés
+      href: howto-mfa-reporting-datacollection.md
+  - name: MFA-kiszolgáló
+    items:
+    - name: MFA helyszíni üzembe helyezése
+      href: howto-mfaserver-deploy.md
+    - name: A felhasználói portál telepítése
+      href: howto-mfaserver-deploy-userportal.md
+    - name: Mobile App Web Service
+      href: howto-mfaserver-deploy-mobileapp.md
+    - name: Magas rendelkezésre állás konfigurálása
+      href: howto-mfaserver-deploy-ha.md
+    - name: MFA-kiszolgáló frissítése
+      href: howto-mfaserver-deploy-upgrade.md
+    - name: Frissítés a PhoneFactor szolgáltatásról
+      href: howto-mfaserver-deploy-upgrade-pf.md
+    - name: Windows-hitelesítés
+      href: howto-mfaserver-windows.md
+    - name: IIS-webalkalmazások
+      href: howto-mfaserver-iis.md
+    - name: Címtár-integráció
       items:
-        - name: Bevezetés a tanúsítványalapú hitelesítésbe
-          href: ../active-directory-certificate-based-authentication-get-started.md
-          items:
-            - name: CBA Android-eszközökön
-              href: ../active-directory-certificate-based-authentication-android.md
-            - name: CBA iOS-eszközökön
-              href: ../active-directory-certificate-based-authentication-ios.md
-    - name: Fejlesztés
+      - name: LDAP-hitelesítés
+        href: howto-mfaserver-dir-ldap.md
+      - name: RADIUS-hitelesítés
+        href: howto-mfaserver-dir-radius.md
+      - name: Active Directory
+        href: howto-mfaserver-dir-ad.md
+    - name: Címtárösszevonás
       items:
-        - name: MFA beépítése egyéni alkalmazásokba
-          href: howto-mfa-sdk.md
-    - name: Jelentéskészítés
+      - name: Az AD FS 2.0 használata
+        href: howto-mfaserver-adfs-2.md
+      - name: A Windows Server 2012 R2 AD FS használata
+        href: howto-mfaserver-adfs-2012.md
+    - name: RADIUS-integráció
       items:
-        - name: SSPR-jelentések
-          href: howto-sspr-reporting.md
-        - name: MFA-jelentések
-          href: howto-mfa-reporting.md
-        - name: Adatgyűjtés
-          href: howto-mfa-reporting-datacollection.md
-    - name: MFA-kiszolgáló
-      items:
-        - name: MFA helyszíni üzembe helyezése
-          href: howto-mfaserver-deploy.md
-        - name: A felhasználói portál telepítése
-          href: howto-mfaserver-deploy-userportal.md
-        - name: Mobile App Web Service
-          href: howto-mfaserver-deploy-mobileapp.md
-        - name: Magas rendelkezésre állás konfigurálása
-          href: howto-mfaserver-deploy-ha.md
-        - name: MFA-kiszolgáló frissítése
-          href: howto-mfaserver-deploy-upgrade.md
-        - name: Frissítés a PhoneFactor szolgáltatásról
-          href: howto-mfaserver-deploy-upgrade-pf.md
-        - name: Windows-hitelesítés
-          href: howto-mfaserver-windows.md
-        - name: IIS-webalkalmazások
-          href: howto-mfaserver-iis.md
-        - name: Címtár-integráció
-          items:
-            - name: LDAP-hitelesítés
-              href: howto-mfaserver-dir-ldap.md
-            - name: RADIUS-hitelesítés
-              href: howto-mfaserver-dir-radius.md
-            - name: Active Directory
-              href: howto-mfaserver-dir-ad.md
-        - name: Címtárösszevonás
-          items:
-            - name: Az AD FS 2.0 használata
-              href: howto-mfaserver-adfs-2.md
-            - name: A Windows Server 2012 R2 AD FS használata
-              href: howto-mfaserver-adfs-2012.md
-        - name: RADIUS-integráció
-          items:
-            - name: Távoli asztali átjáró
-              href: howto-mfaserver-nps-rdg.md
-            - name: Speciális VPN-konfigurációk
-              href: howto-mfaserver-nps-vpn.md
-            - name: NPS-bővítmény hibái
-              href: howto-mfa-nps-extension-errors.md
-    - name: Hibaelhárítás
-      items:
-        - name: Konvergens regisztráció letiltása
-          href: howto-registration-mfa-sspr-converged-troubleshoot.md
-        - name: SSPR hibaelhárítása
-          href: active-directory-passwords-troubleshoot.md
-        - name: SSPR – GYIK
-          href: active-directory-passwords-faq.md
-        - name: MFA – GYIK
-          href: multi-factor-authentication-faq.md
-        - name: NPS-bővítmény
-          href: howto-mfa-nps-extension-errors.md
+      - name: Távoli asztali átjáró
+        href: howto-mfaserver-nps-rdg.md
+      - name: Speciális VPN-konfigurációk
+        href: howto-mfaserver-nps-vpn.md
+      - name: NPS-bővítmény hibái
+        href: howto-mfa-nps-extension-errors.md
+  - name: Hibaelhárítás
+    items:
+    - name: Konvergens regisztráció letiltása
+      href: howto-registration-mfa-sspr-converged-troubleshoot.md
+    - name: SSPR hibaelhárítása
+      href: active-directory-passwords-troubleshoot.md
+    - name: SSPR – GYIK
+      href: active-directory-passwords-faq.md
+    - name: MFA – GYIK
+      href: multi-factor-authentication-faq.md
+    - name: NPS-bővítmény
+      href: howto-mfa-nps-extension-errors.md
 - name: Referencia
   items:
-    - name: MFA – felhasználói útmutató
-      href: ./end-user/current/multi-factor-authentication-end-user.md
-    - name: Kódminták
-      href: 'https://azure.microsoft.com/resources/samples/?service=active-directory'
-    - name: Azure PowerShell-parancsmagok
-      href: /powershell/azure/overview
-    - name: Szolgáltatási korlátozások
-      href: ../users-groups-roles/directory-service-limits-restrictions.md
+  - name: MFA – felhasználói útmutató
+    href: ./end-user/current/multi-factor-authentication-end-user.md
+  - name: Kódminták
+    href: https://azure.microsoft.com/resources/samples/?service=active-directory
+  - name: Azure PowerShell-parancsmagok
+    href: /powershell/azure/overview
+  - name: Szolgáltatási korlátozások
+    href: ../users-groups-roles/directory-service-limits-restrictions.md
 - name: További források
   items:
-    - name: Azure visszajelzési fórum
-      href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
-    - name: MSDN-fórum
-      href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD'
-    - name: Díjszabás
-      href: 'https://azure.microsoft.com/pricing/details/active-directory/'
-    - name: Szolgáltatási hírek
-      href: ../fundamentals/whats-new.md
-    - name: Stack Overflow
-      href: 'http://stackoverflow.com/questions/tagged/azure-active-directory'
-    - name: Videók
-      href: 'https://azure.microsoft.com/documentation/videos/index/?services=active-directory'
+  - name: Azure visszajelzési fórum
+    href: https://feedback.azure.com/forums/169401-azure-active-directory
+  - name: MSDN-fórum
+    href: https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD
+  - name: Díjszabás
+    href: https://azure.microsoft.com/pricing/details/active-directory/
+  - name: Szolgáltatási hírek
+    href: ../fundamentals/whats-new.md
+  - name: Stack Overflow
+    href: http://stackoverflow.com/questions/tagged/azure-active-directory
+  - name: Videók
+    href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory
+ms.openlocfilehash: 39be14a49ecdf30d75cc49a37aa9fc7bc55304cc
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43338945"
