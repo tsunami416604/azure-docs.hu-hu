@@ -8,12 +8,12 @@ ms.date: 06/26/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: bf2d1af66cc3ecc35dafe3bcd43bf10399d71641
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 4b4f9bd1c7390d64a0db08b55bfb777498a10cb0
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39346715"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43382705"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-azure-functions-for-azure-iot-edge"></a>Fejlesztés és hibakeresés az Azure functions az Azure IoT Edge-hez a Visual Studio Code használatával
 
@@ -33,12 +33,11 @@ Ez a cikk a Visual Studio Code-ot használja a fő fejlesztési eszköz. A VS Co
 * [Docker-bővítmény](https://marketplace.visualstudio.com/items?itemName=PeterJausovec.vscode-docker)
 
 Hozzon létre egy modult, hozhat létre a projektmappában, Docker, a modul rendszerképének és a egy tároló-beállításjegyzéket, amely tárolja a modul rendszerképének létrehozása .NET szüksége:
+
 * [A .NET core SDK 2.1-es](https://www.microsoft.com/net/download)
 * [A docker Community Edition](https://docs.docker.com/install/) a fejlesztői gépen 
 * [Az Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) vagy [Docker Hub](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags)
-
-   > [!TIP]
-   > Egy helyi Docker-beállításjegyzék prototípus és a egy felhőbeli beállításjegyzék helyett tesztelési célokra használható. 
+   * Egy helyi Docker-beállításjegyzék prototípus és a egy felhőbeli beállításjegyzék helyett tesztelési célokra használható. 
 
 A modul egy eszközön teszteléséhez van szüksége active IoT hub legalább egy IoT Edge-eszköz. Az IoT Edge-eszközöket a számítógép használja, kövesse a rövid útmutatóban a [Windows](quickstart.md) vagy [Linux](quickstart-linux.md). 
 
@@ -56,7 +55,9 @@ Ezeket a lépéseket hozhat létre, amely rendelkezik egy C# függvény modul Io
 6. Adja meg a megoldás nevét. 
 7. Válasszon **Azure Functions – C#** a megoldás első modul sablonként.
 8. Adja meg a modul nevét. Válassza ki, amely a tárolóregisztrációs adatbázis egyedi nevét. 
-9. A modul adja meg a lemezképtárból. A VS Code autopopulates a modul neve a **localhost:5000**. Cserélje le a saját beállításjegyzék-információkat. Ha használja a helyi Docker-beállításjegyzék tesztelési, majd **localhost** nem okoz gondot. Ha használja az Azure Container Registry, használja a bejelentkezési kiszolgáló, a beállításjegyzék-beállításai közül. A bejelentkezési kiszolgáló néz  **\<beállításjegyzék neve\>. azurecr.io**.
+9. A modul adja meg a lemezképtárból. A VS Code autopopulates a modul neve a **localhost:5000**. Cserélje le a saját beállításjegyzék-információkat. Ha használja a helyi Docker-beállításjegyzék tesztelési, majd **localhost** nem okoz gondot. Ha használja az Azure Container Registry, használja a bejelentkezési kiszolgáló, a beállításjegyzék-beállításai közül. A bejelentkezési kiszolgáló néz  **\<beállításjegyzék neve\>. azurecr.io**. Csak a sztring localhost részét cserélje le, ne törölje a modul nevét.
+
+   ![Docker-rendszerkép adattárának megadása](./media/how-to-develop-csharp-function/repository.png)
 
 A VS Code vesz igénybe az adatokat a megadott, az Azure Functions-projektet hoz létre egy IoT Edge-megoldás és betölt egy új ablakban.
 
@@ -73,7 +74,7 @@ Nincsenek a megoldáson belül a négy elemek:
 
 ## <a name="develop-your-module"></a>A modul fejlesztése
 
-Az alapértelmezett a megoldás az Azure-függvény kódjának következő helyen található **modulok** > **\<a modulnév\>**   >   **EdgeHubTrigger-Csharp** > **run.csx**. A modul és a deployment.template.json fájl legyenek beállítva, hogy a megoldás felépítéséhez, küldje le azt a tárolóregisztrációs adatbázisba, és telepítheti az eszközöket, hogy a kód módosítása nélkül tesztelés megkezdése. A modul csak igénybe vehet a bemeneti forrásból (ami jelen esetben a tempSensor modul, amely szimulálja az adatokat), és átadhatja azt az IoT hubhoz való használatra készült. 
+Az alapértelmezett a megoldás az Azure-függvény kódjának következő helyen található **modulok** > [a modul neve] > **EdgeHubTrigger-Csharp** > **run.csx** . A modul és a deployment.template.json fájl legyenek beállítva, hogy a megoldás felépítéséhez, küldje le azt a tárolóregisztrációs adatbázisba, és telepítheti az eszközöket, hogy a kód módosítása nélkül tesztelés megkezdése. A modul csak igénybe vehet a bemeneti forrásból (ami jelen esetben a tempSensor modul, amely szimulálja az adatokat), és átadhatja azt az IoT hubhoz való használatra készült. 
 
 Ha már készen áll a saját kódját az Azure-függvény-sablon testre szabása, a [Azure IoT Hub SDK-k](../iot-hub/iot-hub-devguide-sdks.md) hozhat létre a modulok a kulcsot kell IoT-megoldások, például a biztonság, a kezelés és a megbízhatóság címmel. 
 
@@ -85,7 +86,7 @@ Ha már készen áll a saját kódját az Azure-függvény-sablon testre szabás
 2. A megoldás újbóli létrehozása. A VS Code parancskatalógus adja meg, és futtassa a parancsot **Azure IoT Edge: Build IoT Edge solution**.
 3. Az Azure IoT Hub-eszközök Explorerben kattintson a jobb gombbal egy IoT Edge-eszköz azonosítója, és válassza **üzembe helyezés az Edge-eszköz létrehozása**. Válassza ki a `deployment.json` fájlt a `config` mappát. Látni fogja az üzembe helyezés a VS Code integrált terminálon egy üzembe helyezési Azonosítóval rendelkező létrehozása sikerült.
 
-Ellenőrizze a tároló állapotát, a Docker a VS Code Explorerben vagy futtatja az `docker images` parancsot a terminálon.
+Ellenőrizze a tároló állapotát, a Docker a VS Code Explorerben vagy futtatja az `docker ps` parancsot a terminálon.
 
 ## <a name="start-debugging-c-functions-in-vs-code"></a>Hibakeresés a C#-függvények a VS Code-ban
 1. A VS Code tartja a hibakeresés konfigurációs információinak egy `launch.json` fájlt egy `.vscode` a munkaterület mappájában. Ez `launch.json` fájl jött létre, ha létrehozott egy új IoT Edge-megoldás. Új modul, amely támogatja a hibakeresés hozzáadásakor minden alkalommal frissíti. Keresse meg a hibakeresési nézet. Válassza ki a megfelelő hibakeresési konfigurációs fájlt. A hibakeresési beállítás neve legyen hasonló **ModuleName távoli hibakeresés (.NET Core)**.

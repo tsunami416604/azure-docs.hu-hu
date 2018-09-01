@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/27/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 70d3a19b715052fe658102929a1c29cf3db2d595
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: e09ad89f3225af9de40781fafc022c8326f80619
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37443727"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43338638"
 ---
 # <a name="azure-active-directory-b2c-sign-in-using-azure-ad-accounts-through-a-built-in-policy"></a>Az Azure Active Directory B2C: Jelentkezzen be a beépített szabályzat használatával az Azure AD-fiókok
 
@@ -37,13 +37,13 @@ Ahhoz, hogy jelentkezzen be egy meghatározott felhasználók számára az Azure
 1. Válassza az **Új alkalmazás regisztrálása** elemet.
 1. Adja meg az alkalmazás nevét (például `Azure AD B2C App`).
 1. Válassza a **Webalkalmazás/API** lehetőséget az alkalmazás típusaként.
-1. A **bejelentkezési URL-**, adja meg a következő URL-címet, ahol `yourtenant` váltotta fel az Azure AD B2C-bérlő neve (`fabrikamb2c.onmicrosoft.com`):
+1. A **bejelentkezési URL-**, adja meg a következő URL-címet, ahol `yourtenant` váltotta fel az Azure AD B2C-bérlő neve (`fabrikamb2c`):
 
     >[!NOTE]
     >"Yourtenant" értéke csak kisbetűket a a **bejelentkezési URL-**.
 
     ```Console
-    https://login.microsoftonline.com/te/yourtenant.onmicrosoft.com/oauth2/authresp
+    https://yourtenant.b2clogin.com/te/yourtenant.onmicrosoft.com/oauth2/authresp
     ```
 
 1. Mentse az Alkalmazásazonosítót, melyiket fogja használni a következő szakaszban, az ügyfél-azonosítót.

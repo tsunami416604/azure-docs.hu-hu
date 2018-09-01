@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 08/27/2018
 ms.author: rangv
-ms.openlocfilehash: 1839f3efee53caa070690fed569a61c1d2b3c965
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 360937d335eadb6d235eb52c0d7df42f896a0de0
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43127725"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43344731"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>Csatlakozás az Azure IoT Hub IoT DevKit AZ3166
 
@@ -135,17 +135,17 @@ Kövesse az alábbi lépéseket a fejlesztési környezet előkészítése a fej
 
 1. Nyissa meg **fájl > Beállítások > Beállítások** , és adja hozzá az alábbi sorokat, Arduino konfigurálása.
     * **Windows**:
-    ```json
+    ```javascript
     "arduino.path": "C:\\Program Files (x86)\\Arduino",
     "arduino.additionalUrls": "https://raw.githubusercontent.com/VSChina/azureiotdevkit_tools/master/package_azureboard_index.json"
     ```
     * **macOS**:
-    ```json
+    ```javascript
     "arduino.path": "/Applications",
     "arduino.additionalUrls": "https://raw.githubusercontent.com/VSChina/azureiotdevkit_tools/master/package_azureboard_index.json"
     ```
     * **Ubuntu**:
-    ```json
+    ```javascript
     "arduino.path": "/home/{username}/Downloads/arduino-1.8.5",
     "arduino.additionalUrls": "https://raw.githubusercontent.com/VSChina/azureiotdevkit_tools/master/package_azureboard_index.json"
     ```
@@ -183,6 +183,9 @@ Most már minden készen állunk előkészítése és a fejlesztési környezet 
 
 1. Keresse meg az IoT Workbench példáit tartalmazó oldalon, **Ismerkedés** kattintson **nyílt minta**. Ezután kiválasztja a mintakód letöltése az alapértelmezett elérési utat.
     ![Nyissa meg a minta](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/open-sample.png)
+
+1. Ha a VS Code telepítése Arduino bővítmény nincs, kattintson a **telepítése** az értesítési panelen.
+    ![Arduino-bővítményének telepítése](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/install-arduino-ext.png)
 
 1. Kattintson az új ablakban megnyitott projekt `F1` nyissa meg a parancskatalógus, írja be és válassza ki a **IoT Workbench: Felhő**, majd válassza **Azure kiépítése**. Kövesse a részletes útmutató az Azure IoT Hub provisioning és az eszköz létrehozásának befejezéséhez.
     ![Felhő üzembe helyezése](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/cloud-provision.png)

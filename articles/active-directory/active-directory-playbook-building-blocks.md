@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
-ms.openlocfilehash: 4618c8a0298afdac28e7511e9521cf1e26238734
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 41d495e38a8360609afe924bb49ccf2f6aea086e
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43189038"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43340039"
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Az Azure Active Directory megvalósíthatósági fogalom forgatókönyv: építőelemek
 
@@ -560,7 +560,7 @@ Hozzávetőleges időt: 20 perc alatt
 | Lépés | További források |
 | --- | --- |
 | Az ADFS "Tanúsítványalapú hitelesítés" engedélyezése | [Hitelesítési házirendek konfigurálása: Az elsődleges hitelesítés globálisan konfigurálása a Windows Server 2012 R2](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/operations/configure-authentication-policies#to-configure-primary-authentication-globally-in-windows-server-2012-r2) |
-| Választható lehetőség: Tanúsítványalapú hitelesítés az Azure AD ügyfelei számára engedélyezi az Exchange Active Sync szolgáltatással | [A tanúsítványalapú hitelesítés első lépései az Azure Active Directoryban](active-directory-certificate-based-authentication-get-started.md) |
+| Választható lehetőség: Tanúsítványalapú hitelesítés az Azure AD ügyfelei számára engedélyezi az Exchange Active Sync szolgáltatással | [A tanúsítványalapú hitelesítés első lépései az Azure Active Directoryban](./authentication/active-directory-certificate-based-authentication-get-started.md) |
 | Navigáljon a hozzáférési panelen és a hitelesítéshez a felhasználói tanúsítvány használatával | https://myapps.microsoft.com |
 
 ### <a name="considerations"></a>Megfontolandó szempontok

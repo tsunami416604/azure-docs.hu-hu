@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/22/2017
 ms.author: mikeray
-ms.openlocfilehash: 11aecd9b2bc1bc1521a0e27fc3cd06fe7426a26d
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: b4641c847db817df905f056847a26d003ac25fd1
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38307986"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43381795"
 ---
 # <a name="configure-one-or-more-always-on-availability-group-listeners---resource-manager"></a>Egy vagy több Always On rendelkezésre állási csoport figyelője – erőforrás-kezelő konfigurálása
 Ez a témakör bemutatja, hogyan lehet:
@@ -42,6 +42,8 @@ Kapcsolódó témakörök a következők:
 
 ## <a name="configure-the-windows-firewall"></a>A Windows tűzfal konfigurálása
 Az SQL Server-hozzáférés engedélyezése a Windows tűzfal konfigurálásához. A tűzfalszabályok engedélyezik a portokat használja a figyelő mintavétel, valamint az SQL Server-példány TCP-kapcsolatot. Részletes útmutatásért lásd: [Windows tűzfal konfigurálása az hozzáféréshez](http://msdn.microsoft.com/library/ms175043.aspx#Anchor_1). Hozzon létre egy bejövő szabályt az SQL Server-portot és a mintavételi portot.
+
+Ha Ön az Azure hálózati biztonsági csoporttal való hozzáférés korlátozása győződjön meg arról, hogy az engedélyezési szabályok közé tartoznak a háttér SQL Server virtuális gép IP-címek és a terheléselosztó nem fix IP-címek a rendelkezésre állási csoport figyelőjének és a fürt alapvető IP-címét, ha van ilyen.
 
 ## <a name="example-script-create-an-internal-load-balancer-with-powershell"></a>Példa parancsfájl: Belső terheléselosztó létrehozása a PowerShell használatával
 > [!NOTE]
@@ -195,6 +197,7 @@ Vegye figyelembe az alábbi irányelveket a rendelkezésre állási csoport figy
 
 * A belső terheléselosztót csak érheti el, a figyelő az adott virtuális hálózaton belül.
 
+* Ha Ön az Azure hálózati biztonsági csoporttal való hozzáférés korlátozása győződjön meg arról, hogy az engedélyezési szabályok közé tartoznak a háttér SQL Server virtuális gép IP-címek és a terheléselosztó nem fix IP-címek a rendelkezésre állási csoport figyelőjének és a fürt alapvető IP-címét, ha van ilyen.
 
 ## <a name="for-more-information"></a>További tudnivalók
 További információkért lásd: [konfigurálása Always On rendelkezésre állási csoport Azure-beli virtuális gépen manuálisan](virtual-machines-windows-portal-sql-availability-group-tutorial.md).

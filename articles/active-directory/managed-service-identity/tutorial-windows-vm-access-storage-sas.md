@@ -1,6 +1,6 @@
 ---
-title: Egy Windows virtuális gép felügyelt identitás használata egy SAS-hitelesítő adatok használatával Azure Storage eléréséhez
-description: Ez az oktatóanyag bemutatja, hogyan egy Windows virtuális gépek Felügyeltszolgáltatás-identitást használja el az Azure Storage helyett a tárfiók hozzáférési kulcsát egy SAS-hitelesítő adatok használatával.
+title: Egy Windows virtuális gép alapértelmezett felügyelt identitás használata egy SAS-hitelesítő adatok használatával Azure Storage eléréséhez
+description: Oktatóanyag, amely bemutatja, hogyan használja a rendszer által hozzárendelt Windows virtuális gép felügyelt identitás el az Azure Storage helyett a tárfiók hozzáférési kulcsát egy SAS-hitelesítő adatok használatával.
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: 7f6049e874f329c1e3a4f72417dd9a7eebc42628
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: 7120e7356816fd5308aa7189f90176143742e342
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42887063"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43340714"
 ---
-# <a name="tutorial-use-a-windows-vm-managed-service-identity-to-access-azure-storage-via-a-sas-credential"></a>Oktatóanyag: Azure Storage elérése SAS-hitelesítő adatot keresztül egy Windows virtuális gépek Felügyeltszolgáltatás-identitás segítségével
+# <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage-via-a-sas-credential"></a>Oktatóanyag: Azure Storage elérése SAS-hitelesítő adatot keresztül egy Windows virtuális gép alapértelmezett felügyelt identitás használata
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Az oktatóanyag bemutatja, hogyan használhatja a hozzárendelt identitás Windows virtuális gép (VM) a rendszer egy tároló közös hozzáférésű Jogosultságkód (SAS) hitelesítő adatok beszerzése. Kifejezetten [szolgáltatási SAS-hitelesítő adatok](/azure/storage/common/storage-dotnet-shared-access-signature-part-1?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#types-of-shared-access-signatures) lekérésére. 
+Az oktatóanyag bemutatja, hogyan használható egy rendszer által hozzárendelt identitással Windows virtuális gép (VM) egy tároló közös hozzáférésű Jogosultságkód (SAS) hitelesítő adatok beszerzése. Kifejezetten [szolgáltatási SAS-hitelesítő adatok](/azure/storage/common/storage-dotnet-shared-access-signature-part-1?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#types-of-shared-access-signatures) lekérésére. 
 
 A szolgáltatás SAS lehetővé teszi a korlátozott hozzáférést a storage-fiókban, korlátozott ideig objektumok és a egy adott szolgáltatás (ebben az esetben a blob szolgáltatás), anélkül, hogy a fiók hozzáférési kulcsára. A SAS-hitelesítő adatokat a szokásos módon használhatja a tárolási műveletek során, például a Storage SDK használata esetén. Ebben az oktatóanyagban bemutatjuk, hogyan feltöltése és letöltése a blobok Azure Storage PowerShell-lel. Az alábbiakat fogja elsajátítani:
 
@@ -44,12 +44,12 @@ A szolgáltatás SAS lehetővé teszi a korlátozott hozzáférést a storage-fi
 
 - [Windows virtuális gép létrehozása](/azure/virtual-machines/windows/quick-create-portal)
 
-- [Engedélyezze a rendszerhez rendelt identitáshoz a virtuális gépen](/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm#enable-system-assigned-identity-on-an-existing-vm)
+- [A virtuális gépen, rendszer által hozzárendelt identitás engedélyezése](/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm#enable-system-assigned-identity-on-an-existing-vm)
 
 
 ## <a name="create-a-storage-account"></a>Tárfiók létrehozása 
 
-Ha még nem rendelkezik tárfiókkal, most létrehoz egyet. Kihagyhatja ezt a lépést, és a virtuális gépek Felügyeltszolgáltatás-identitás hozzáférést biztosítani a SAS-hitelesítő adatot, egy meglévő tárfiókot is. 
+Ha még nem rendelkezik tárfiókkal, most létrehoz egyet. Is ezt a lépést kihagyhatja, és hozzáférést biztosítani a virtuális gép felügyelt identitás alapértelmezett meglévő tárfiók SAS-hitelesítő adatot. 
 
 1. Kattintson az Azure Portal bal felső sarkában található **+/Új szolgáltatás létrehozása** gombra.
 2. Kattintson a **Tárolás**, majd a **Tárfiók** elemre, amit követően megjelenik egy új „Tárfiók létrehozása” panel.
@@ -71,9 +71,9 @@ Később feltöltünk egy fájlt az új tárfiókba, majd letöltjük abból. Mi
 
     ![Storage-tároló létrehozása](../managed-service-identity/media/msi-tutorial-linux-vm-access-storage/create-blob-container.png)
 
-## <a name="grant-your-vms-managed-service-identity-access-to-use-a-storage-sas"></a>Hozzáférés engedélyezése virtuális gép felügyeltszolgáltatás-identitása számára a tároló SAS-adatainak használatához 
+## <a name="grant-your-vms-system-assigned-managed-identity-access-to-use-a-storage-sas"></a>A virtuális gép felügyelt identitás alapértelmezett hozzáférést egy SAS tárolók használatához 
 
-Az Azure Storage nem támogatja natív módon az Azure AD-hitelesítést.  Azonban a tároló SAS lekérése a Resource Manager-Felügyeltszolgáltatás-identitás segítségével, majd az SAS tároló eléréséhez.  Ebben a lépésben hozzáférést biztosít a virtuális gép felügyeltszolgáltatás-identitása számára a tárfiók SAS-adataihoz.   
+Az Azure Storage nem támogatja natív módon az Azure AD-hitelesítést.  Azonban a tároló SAS lekérése a Resource Manager egy felügyelt identitás használatával, majd az SAS tároló eléréséhez.  Ebben a lépésben a virtuális gép felügyelt identitás alapértelmezett hozzáférést adhat a tárfiók SAS.   
 
 1. Lépjen vissza az újonnan létrehozott tárfiókra.   
 2. Kattintson a **Hozzáférés-vezérlés (IAM)** hivatkozásra a bal oldali panelen.  
@@ -94,7 +94,7 @@ Ebben a részben az Azure Resource Manager PowerShell-parancsmagokat kell haszn�
 1. Az Azure Portalon lépjen a **Virtuális gépek** lapra, keresse meg a Windows rendszerű virtuális gépet, majd kattintson az **Áttekintés** lap tetején található **Csatlakozás** gombra.
 2. A **Felhasználónév** és a **Jelszó** mezőbe azt a felhasználónevet és jelszót írja be, amelyet a Windows VM létrehozásakor adott meg. 
 3. Most, hogy létrehozott egy **távoli asztali kapcsolatot** a virtuális géppel, nyissa meg a PowerShellt a távoli munkamenetben. 
-4. A Powershell Invoke-WebRequest parancsával küldjön kérést a helyi felügyeltszolgáltatás-identitási végpontra, hogy lekérjen egy hozzáférési jogkivonatot az Azure Resource Managerhez.
+4. Powershell az Invoke-WebRequest használja, indítson egy Azure-erőforrások végpontot a hozzáférési jogkivonat beszerzése az Azure Resource Manager a helyi felügyelt identitást.
 
     ```powershell
        $response = Invoke-WebRequest -Uri 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F' -Method GET -Headers @{Metadata="true"}
@@ -208,7 +208,7 @@ Name              : testblob
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban megtudhatta, hogyan hozhat létre a Felügyeltszolgáltatás-identitását egy SAS-hitelesítő adatok használatával Azure Storage eléréséhez.  További információ az Azure Storage SAS-hitelesítéséről:
+Ebben az oktatóanyagban megtudhatta, hogyan Windows virtuális gép alapértelmezett felügyelt identitás használata az Azure Storage-ban egy SAS-hitelesítő adatot eléréséhez.  További információ az Azure Storage SAS-hitelesítéséről:
 
 > [!div class="nextstepaction"]
 >[Közös hozzáférésű jogosultságkódok (SAS) használata](/azure/storage/common/storage-dotnet-shared-access-signature-part-1)

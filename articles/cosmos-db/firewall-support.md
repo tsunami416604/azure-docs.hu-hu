@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/30/2018
 ms.author: govindk
-ms.openlocfilehash: 7c9367cccf8d59d60dfa474f02567d59b9c8c8c2
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 6d1daededcf8f0efdc6a3a5649aa830110192fef
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42061360"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43381840"
 ---
 # <a name="azure-cosmos-db-firewall-support"></a>Az Azure Cosmos DB-tűzfaltámogatás
 Az Azure Cosmos DB-adatbázisfiók tárolt adatok védelméhez, az Azure Cosmos DB rendelkezett támogatási alapú titkos [engedélyezési modellt](https://msdn.microsoft.com/library/azure/dn783368.aspx) , amely már használja egy erős kivonat-alapú üzenet hitelesítési kód (HMAC). Most a titkos kód alapú engedélyezési modell mellett az Azure Cosmos DB IP-alapú hozzáférés-vezérlést a tűzfaltámogatás bejövő vezérelt házirend támogatja. Ez a modell a tűzfalszabályok a hagyományos adatbázisok rendszer hasonló, és a egy további, az Azure Cosmos DB-adatbázisfiók biztonsági szintet. Ebben a modellben az Azure Cosmos DB-adatbázis fiók elérésére csak egy jóváhagyott gépekre és/vagy felhőszolgáltatásokra történő most konfigurálhatja. Azure Cosmos DB-erőforrásokat ezen jóváhagyott készletek gépek és szolgáltatások való hozzáférés továbbra is szükséges a hívó érvényes engedélyezési jogkivonat nyújtjuk.
@@ -57,7 +57,12 @@ Az Azure Portalon való hozzáférés alapértelmezés szerint engedélyezve van
 ![Képernyőfelvétel az Azure portal hozzáférés engedélyezése:](./media/firewall-support/enable-azure-portal.png)
 
 ## <a name="connections-from-global-azure-datacenters-or-azure-paas-services"></a>A globális Azure-adatközpontok vagy az Azure PaaS-szolgáltatások kapcsolatok
-Az Azure PaaS-szolgáltatások, például az Azure Stream analytics, Azure Functions és az Azure App Service-ben az Azure Cosmos DB összefüggésben használatosak. Engedélyezze a hozzáférést az Azure Cosmos DB-adatbázisfiók ezeket a szolgáltatásokat, amelyek IP-címek nem érhetők el azonnal a adja hozzá 0.0.0.0 IP-címét az engedélyezett listára programozott módon az Azure Cosmos DB-adatbázisfiókhoz társított IP-címek. 
+
+"Az azure PaaS-szolgáltatások, például az Azure Stream analytics, Azure Functions stb. az Azure Cosmos DB összefüggésben használatosak. Ha engedélyezni szeretné más Azure PaaS-szolgáltatások alkalmazások az Azure Cosmos DB-erőforrások eléréséhez, a tűzfal beállítást engedélyezni kell. A tűzfal beállítás engedélyezése, az IP-cím-0.0.0.0 hozzáadása az engedélyezett IP-címek listáját. Az Ip-cím-0.0.0.0 azt jelzi, hogy az összes Azure-adatközpont IP-címtartományból kapcsolat engedélyezve van-e csatlakozni az Azure Cosmos DB-erőforrások."
+
+> [!IMPORTANT]
+> Ez a beállítás konfigurálja a tűzfalat arra, hogy engedélyezzen minden, az Azure felől érkező kapcsolatot, beleértve a más ügyfelek előfizetéseiből érkező kapcsolatokat is. Ezen beállítás kiválasztásakor győződjön meg arról, hogy a bejelentkezési és felhasználói engedélyei a hozzáféréseket az arra jogosult felhasználókra korlátozzák.
+> 
 
 A kapcsolatok az Azure globális adatközpontokon belül való hozzáférés alapértelmezés szerint engedélyezve van, amikor módosítja a tűzfal beállítás **kiválasztott hálózatok** az Azure Portalon. 
 

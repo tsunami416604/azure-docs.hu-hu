@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 08/29/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: cf96e153c07211fe176839e713935adcf6b9dbe1
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 31b137cca55b1dd249368ba5e287496582152c9f
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43306962"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43382660"
 ---
 # <a name="restoring-azure-sql-data-warehouse"></a>Az Azure SQL Data Warehouse visszaállítása 
 Ebben a cikkben megtudhatja, hogyan végezze el a következőket:
@@ -25,6 +25,10 @@ Ebben a cikkben megtudhatja, hogyan végezze el a következőket:
 - Törölt adatbázis visszaállítása
 - Georedundáns biztonsági másolatból
 - Az adattárház másolatának létrehozása egy felhasználói visszaállítási pont
+
+> [!NOTE]
+> 8/27,-tól eltérő-kiszolgálójának visszaállítását ismert regresszió miatt le van tiltva. Aktívan dolgozunk a javítás a legmagasabb prioritással. Elnézést kérünk az okozott kellemetlenségekért. Addig is kihasználhatja a [georedundáns biztonsági mentési](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-restore#restore-from-an-azure-geographical-region) visszaállítása kiszolgáló között.  
+>
 
 ## <a name="before-you-begin"></a>Előkészületek
 **A dtu-k kapacitásának ellenőrzése.** Minden egyes SQL Data Warehouse egy SQL Servert (például a myserver.database.windows.net) rendelkezik alapértelmezett DTU-kvótát üzemelteti.  SQL data warehouse a visszaállításhoz, ellenőrizze, hogy az az SQL Servernek elég fennmaradó DTU-kvótába a visszaállított adatbázis számára. Szükséges DTU kiszámításához, vagy kérjen további DTU kezelésével kapcsolatos információkért lásd: [DTU-kvóta módosítási kérése][Request a DTU quota change].

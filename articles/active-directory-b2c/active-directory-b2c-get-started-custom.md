@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/04/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: e25103d2fcbfc70be7f96f5c0e5fa6abe13fe393
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 36fad697758273246d567dfa1010f0e6bfc68939
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37446741"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43344562"
 ---
 # <a name="azure-active-directory-b2c-get-started-with-custom-policies"></a>Az Azure Active Directory B2C: Egyéni szabályzatok – első lépések
 
@@ -77,7 +77,7 @@ Az Azure AD B2C megköveteli, hogy a regisztráció és bejelentkezés a felhasz
 4. Válassza az **Új alkalmazás regisztrálása** elemet.
    * A **neve**, használjon `IdentityExperienceFramework`.
    * A **alkalmazástípus**, használjon **Web app és az API**.
-   * A **bejelentkezési URL-**, használjon `https://login.microsoftonline.com/yourtenant.onmicrosoft.com`, ahol `yourtenant` van az Azure AD B2C-bérlői tartomány neve.
+   * A **bejelentkezési URL-**, használjon `https://yourtenant.b2clogin.com/yourtenant.onmicrosoft.com`, ahol `yourtenant` van az Azure AD B2C-bérlői tartomány neve.
 5. Kattintson a **Létrehozás** gombra.
 6. Miután elkészült, válassza ki az újonnan létrehozott alkalmazást **IdentityExperienceFramework**.<br>
    * Válassza ki **tulajdonságok**.<br>
@@ -89,14 +89,14 @@ Az Azure AD B2C megköveteli, hogy a regisztráció és bejelentkezés a felhasz
 1. Válassza az **Új alkalmazás regisztrálása** elemet.
    * A **neve**, használjon `ProxyIdentityExperienceFramework`.
    * A **alkalmazástípus**, használjon **natív**.
-   * A **átirányítási URI-t**, használjon `https://login.microsoftonline.com/yourtenant.onmicrosoft.com`, ahol `yourtenant` van az Azure AD B2C-bérlőben.
+   * A **átirányítási URI-t**, használjon `https://yourtenant.b2clogin.com/yourtenant.onmicrosoft.com`, ahol `yourtenant` van az Azure AD B2C-bérlőben.
 1. Kattintson a **Létrehozás** gombra.
 1. Miután létrejött, válassza ki az alkalmazást **ProxyIdentityExperienceFramework**.<br>
    * Válassza ki **tulajdonságok**. <br>
    * Másolja az Alkalmazásazonosítót, és mentse későbbi használatra.
 1. Válassza ki **szükséges engedélyek**.
 1. Válassza a **Hozzáadás** lehetőséget.
-1. Válassza ki **API kiválasztása**.
+1. Kattintson az **API kiválasztása** gombra.
 1. Keresse meg a IdentityExperienceFramework nevét. Válassza ki **IdentityExperienceFramework** az eredményeket, majd kattintson a **kiválasztása**.
 1. Jelölje be a **hozzáférés IdentityExperienceFramework**, és kattintson a **kiválasztása**.
 1. Válassza a **Done** (Kész) lehetőséget.

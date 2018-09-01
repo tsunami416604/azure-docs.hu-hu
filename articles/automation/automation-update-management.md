@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 08/29/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: e0d92cc52b34e1e04f13e03ec2196d13961fb7de
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: 79c78da3ba3102f41a1bd623c6844f064699b30a
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43247936"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43382099"
 ---
 # <a name="update-management-solution-in-azure"></a>Frissítéskezelési megoldás az Azure-ban
 
@@ -119,7 +119,7 @@ Ha a System Center Operations Manager felügyeleti csoportban a Log Analytics-mu
 Hogyan megoldás felügyeleti csomagok frissítéseivel kapcsolatos további információkért lásd: [Operations Manager csatlakoztatása a Log Analytics](../log-analytics/log-analytics-om-agents.md).
 
 > [!NOTE]
-> Azon rendszerek esetében az Operations Manager ügynök az Update Management, teljes mértékben felügyeltek lehessen az ügynökét frissíteni kell a Microsoft Monitoring Agent. Az ügynök frissítésével kapcsolatban lásd: [Operations Manager-ügynök frissítése](/system-center/scom/deploy-upgrade-agents.md).
+> Azon rendszerek esetében az Operations Manager ügynök az Update Management, teljes mértékben felügyeltek lehessen az ügynökét frissíteni kell a Microsoft Monitoring Agent. Az ügynök frissítésével kapcsolatban lásd: [Operations Manager-ügynök frissítése](/system-center/scom/deploy-upgrade-agents).
 
 ### <a name="confirm-that-non-azure-machines-are-onboarded"></a>Győződjön meg róla, hogy nem Azure-beli gépek előkészítve
 

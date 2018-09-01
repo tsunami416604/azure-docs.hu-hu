@@ -13,18 +13,20 @@ ms.component: pim
 ms.date: 08/27/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 20a704a0d5b61134a61b5cbf02a1c71dbc7039e1
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 8af304d28be9b0884a50d60911d901818b514752
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43189337"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43338907"
 ---
 # <a name="configure-azure-ad-directory-role-settings-in-pim"></a>A PIM az Azure AD directory szerepkör-beállítások konfigurálása
 
 A kiemelt szerepkörű rendszergazda testre szabhatja az Azure AD Privileged Identity Management (PIM) a szervezetben, mint például a felhasználó, aki jogosult szerepkör-hozzárendelés az aktiválás élményét módosítása.
 
 ## <a name="open-role-settings"></a>Nyissa meg a szerepkör-beállítások
+
+Kövesse az alábbi lépéseket egy Azure AD-címtárbeli szerepkör beállításainak megnyitásához.
 
 1. Nyissa meg **az Azure AD Privileged Identity Management**.
 
@@ -44,19 +46,19 @@ A kiemelt szerepkörű rendszergazda testre szabhatja az Azure AD Privileged Ide
 
 ## <a name="activations"></a>Aktiválások
 
-A **aktiválások** a maximális időt, amely egy szerepkör marad aktív, lejárata előtt, órák alatt. Ez az érték 1 és 72 óra közötti lehet.
+Használja a **aktiválások** csúszka, hogy a szerepkör aktív marad-e után járjon le (óra), a maximális idő beállítása. Ez az érték 1 és 72 óra közötti lehet.
 
 ## <a name="notifications"></a>Értesítések
 
-A **értesítések** kapcsoló lehetővé teszi, kiválaszthatja, hogy a rendszer elküldi az e-rendszergazdák megerősíti, hogy a szerepkör aktiválta. Ez lehet hasznos, ha jogosulatlan vagy illegitimate aktiválások észlelése.
+Használja a **értesítések** kapcsolót, hogy adja meg, hogy a rendszer elküldi az e-rendszergazdák megerősíti, hogy a szerepkör aktiválta. Ez lehet hasznos, ha jogosulatlan vagy illegitimate aktiválások észlelése.
 
 ## <a name="incidentrequest-ticket"></a>Esemény/kérelmezési jegy
 
-A **esemény/kérelmezési jegy** kapcsoló lehetővé teszi, hogy a jogosult rendszergazdáknak közé tartozik egy a jegy számát, amikor azok a szerepkör aktiválása szükséges-e. Ez akkor hasznos, ha szerepkör-hozzáférési eseményeket hajt végre.
+Használja a **esemény/kérelmezési jegy** kapcsolót, hogy adja meg, hogy jogosult rendszergazdák közé tartozik egy a jegy számát, amikor azok a szerepkör aktiválása szükséges. Ez akkor hasznos, ha szerepkör-hozzáférési eseményeket hajt végre.
 
 ## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
 
-A **multi-factor Authentication** kapcsoló lehetővé teszi, hogy válassza ki a felhasználóktól az identitásukat MFA-val, mielőtt aktiválna szerepkörökhöz. Csak rendelkeznek, a munkamenet, nem minden alkalommal, amikor azok a szerepkör aktiválásához egyszer ellenőrzése. Nincsenek két tippek a tartsa szem előtt az MFA engedélyezésekor:
+Használja a **multi-factor Authentication** kapcsolót, hogy adja meg a felhasználóktól az identitásukat MFA-val, mielőtt aktiválna szerepkörökhöz. Csak rendelkeznek, a munkamenet, nem minden alkalommal, amikor azok a szerepkör aktiválásához egyszer ellenőrzése. Nincsenek két tippek a tartsa szem előtt az MFA engedélyezésekor:
 
 * Az e-mail címüket a Microsoft-fiókkal rendelkező felhasználók (általában @outlook.com, de nem mindig) nem sikerült regisztrálni az Azure MFA-hoz. Szerepkörök hozzárendelése a Microsoft-fiókkal rendelkező felhasználók szeretne, ha kell tenni őket a állandó rendszergazdák vagy ahhoz a szerepkörhöz tartozó többtényezős hitelesítés letiltása.
 * Nem lehet letiltani az MFA magas szintű jogosultsággal rendelkező szerepkörök az Azure ad és az Office 365-öt. Ez a biztonsági funkció, mert ezek a szerepkörök gondosan kell védeni:  
@@ -84,9 +86,9 @@ A PIM többtényezős hitelesítés használatával kapcsolatos további inform�
 
 ## <a name="require-approval"></a>Jóváhagyás szükséges
 
-A **jóváhagyás megkövetelése,** kapcsoló lehetővé teszi, hogy döntse el, hogy ez a szerepkör aktiválásához jóváhagyás szükséges.
+Ha szeretné a szerepkör aktiválásához jóváhagyás szükséges, kövesse az alábbi lépéseket.
 
-1. Ha beállította a kapcsoló **engedélyezve**, lehetőségeket jóváhagyók kiválasztása kibontja a panelen.
+1. Állítsa be a **jóváhagyás megkövetelése,** váltson **engedélyezve**. A panelen válassza ki a jóváhagyók beállításokkal bontja ki.
 
     ![Az Azure AD-címtárbeli szerepkörök - Settings - jóváhagyás szükséges](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-require-approval.png)
 
@@ -107,5 +109,6 @@ A **jóváhagyás megkövetelése,** kapcsoló lehetővé teszi, hogy döntse el
 
 ## <a name="next-steps"></a>További lépések
 
+- [A PIM az Azure AD-címtárbeli szerepkörök hozzárendelése](pim-how-to-add-role-to-user.md)
 - [A PIM az Azure AD-címtárbeli szerepkörökhöz tartozó többtényezős hitelesítés megkövetelése](pim-how-to-require-mfa.md)
 - [Az Azure AD-címtárbeli szerepkörökhöz tartozó biztonsági riasztások konfigurálása az PIM-ben](pim-how-to-configure-security-alerts.md)

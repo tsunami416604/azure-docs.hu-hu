@@ -1,6 +1,6 @@
 ---
-title: Hogyan hozhat létre, és törli a felhasználó hozzárendelt Felügyeltszolgáltatás-identitás az Azure Resource Managerrel
-description: Lépésről lépésre való létrehozása és törlése a felhasználó hozzárendelt Felügyeltszolgáltatás-identitás használatával az Azure-erőforrás.
+title: Hogyan hozhat létre, és a egy Azure Resource Manager használatával felügyelt felhasználó által hozzárendelt Identitások törlése
+description: Lépésről lépésre való létrehozása és törlése a felhasználó által hozzárendelt identitások az Azure Resource Manager által felügyelt.
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -14,31 +14,31 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/16/2018
 ms.author: daveba
-ms.openlocfilehash: 42d5b55e0bddf2d027810bfdf146de9bfee8a0fb
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: adfa7ebfd911bfcbc88e01030777e91c48841784
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39188131"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43338345"
 ---
-# <a name="create-list-and-delete-a-user-assigned-identity-using-azure-resource-manager"></a>Lista létrehozása, és a egy felhasználóhoz hozzárendelt identitás, az Azure Resource Manager törlése
+# <a name="create-list-and-delete-a-user-assigned-managed-identity-using-azure-resource-manager"></a>Lista létrehozása, és a egy Azure Resource Manager használatával felügyelt felhasználó által hozzárendelt Identitások törlése
 
 [!INCLUDE[preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)]
 
-Felügyeltszolgáltatás-identitás egy felügyelt identitás, az Azure Active Directory Azure-szolgáltatásokat biztosít. Ez az identitás használatával, amelyek támogatják az Azure AD-hitelesítés, anélkül, hogy hitelesítő adatok a kód a szolgáltatásokhoz való hitelesítéséhez. 
+Felügyelt identitások az Azure-erőforrások egy felügyelt identitás, az Azure Active Directory Azure-szolgáltatásokat biztosít. Ez az identitás használatával, amelyek támogatják az Azure AD-hitelesítés, anélkül, hogy hitelesítő adatok a kód a szolgáltatásokhoz való hitelesítéséhez. 
 
-Ez a cikk egy Azure Resource Manager használatával felügyelt identitás hozzárendelt felhasználó hoz létre.
+Ez a cikk egy Azure Resource Manager használatával felügyelt felhasználó által hozzárendelt identitás létrehozása.
 
-Nem alkalmas listázása és törlése egy a felhasználóhoz hozzárendelt identitás, az Azure Resource Manager-sablon használatával.  Hozhat létre, és a egy felhasználóhoz hozzárendelt identitás listája a következő cikkekben talál:
+Nem alkalmas listázása és a egy Azure Resource Manager-sablon használatával felügyelt felhasználó által hozzárendelt Identitások törlése.  Tekintse meg a következő cikkeket hozhat létre, és egy felhasználó által hozzárendelt lista felügyelt identitás:
 
-- [A lista felhasználóhoz hozzárendelt identitás](how-to-manage-ua-identity-cli.md#list-user-assigned-identities)
-- [A felhasználóhoz hozzárendelt identitás törlése](how-to-manage-ua-identity-cli.md#delete-a-user-assigned-identity)
+- [Felügyelt identitás felhasználó által hozzárendelt listából](how-to-manage-ua-identity-cli.md#list-user-assigned-managed-identities)
+- [Felhasználó által hozzárendelt felügyelt identitás törlése](how-to-manage-ua-identity-cli.md#delete-a-user-assigned-managed-identity)
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Ha még nem ismeri a Felügyeltszolgáltatás-identitást, tekintse meg a [áttekintés szakaszban](overview.md). **Ne feledje el áttekinteni a [különbség egy rendszer által hozzárendelt, és a felhasználóhoz hozzárendelt identitás](overview.md#how-does-it-work)**.
+- Ha még nem ismeri a felügyelt identitások Azure-erőforrások számára, tekintse meg a [áttekintés szakaszban](overview.md). **Ne feledje el áttekinteni a [különbség a rendszer által hozzárendelt, és a felhasználó által hozzárendelt felügyelt identitás](overview.md#how-does-it-work)**.
 - Ha még nincs Azure-fiókja, a folytatás előtt [regisztráljon egy ingyenes fiókra](https://azure.microsoft.com/free/).
 - Ebben a cikkben a műveletek végrehajtásához a fióknak rendelkeznie kell a következő szerepkör-hozzárendelés:
-    - [Felügyelt identitások Közreműködője](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) szerepkör létrehozása, olvasása (lista), frissítése és törlése a felhasználóhoz hozzárendelt identitás.
+    - [Felügyelt identitások Közreműködője](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) szerepkör létrehozása, olvasása (lista), frissítése és törlése a felhasználóhoz felügyelt identitásnak.
 
 ## <a name="template-creation-and-editing"></a>Sablon létrehozása és szerkesztése
 
@@ -49,9 +49,9 @@ Ahogy az az Azure portal és a parancsfájlok, az Azure Resource Manager-sablono
 - Egy helyi [JSON-szerkesztővel (például a VS Code)](../../azure-resource-manager/resource-manager-create-first-template.md), majd feltöltését és üzembe helyezése a PowerShell vagy parancssori felület használatával.
 - A Visual Studio használatával [Azure erőforráscsoport-projekt](../../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) hozzon létre és helyezhet üzembe sablont is. 
 
-## <a name="create-a-user-assigned-identity"></a>Felhasználóhoz rendelt identitás létrehozása 
+## <a name="create-a-user-assigned-managed-identity"></a>Felhasználó által hozzárendelt felügyelt identitás létrehozása 
 
-A felhasználóhoz hozzárendelt identitás létrehozásához használja az alábbi sablont. Cserélje le a `<USER ASSIGNED IDENTITY NAME>` értéket a saját értékeire:
+Egy felhasználó által hozzárendelt felügyelt identitás létrehozásához használja az alábbi sablont. Cserélje le a `<USER ASSIGNED IDENTITY NAME>` értéket a saját értékeire:
 
 [!INCLUDE[ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 
@@ -83,9 +83,9 @@ A felhasználóhoz hozzárendelt identitás létrehozásához használja az alá
   }
 }
 ```
-## <a name="related-content"></a>Kapcsolódó tartalom
+## <a name="next-steps"></a>További lépések
 
-Egy felhasználóhoz hozzárendelt identitás hozzárendelése egy Azure virtuális gép használatával egy Azure Resource Manager sablon lásd: információ [konfigurálása a virtuális gépek Felügyeltszolgáltatás-identitását egy sablon használatával](qs-configure-template-windows-vm.md).
+Információk egy felhasználó által hozzárendelt hozzárendelése felügyelt identitás használata egy Azure Resource Manager sablon lásd: Azure virtuális gépekhez [konfigurálása felügyelt Azure-erőforrások egy Azure-beli Virtuálisgép-sablonok használata az identitások](qs-configure-template-windows-vm.md).
 
 
  

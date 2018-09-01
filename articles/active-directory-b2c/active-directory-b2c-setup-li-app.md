@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 84b1ad2ecd2c027c7d8a105579059ceb957f41c6
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: e1949c32833bb1d5e6603a6f5e36e22dc58e8cec
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37928998"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43336928"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-linkedin-account-using-azure-active-directory-b2c"></a>Regisztráció és bejelentkezés a LinkedIn-fiókkal az Azure Active Directory B2C beállítása
 
@@ -28,7 +28,7 @@ A LinkedIn-fiók használata Identitásszolgáltatóként az Azure Active Direct
 3. Adja meg **cég neve**, **alkalmazásnév**, **alkalmazásleírás**, **alkalmazás emblémája**, **alkalmazás használata** , **Webhely URL-címe**, **üzleti E-mail**, és **munkahelyi telefon**.
 4. Fogadja el a **LinkedIn API használati** kattintson **küldés**.
 5. Másolja le az értékeket a **ügyfél-azonosító** és **titkos Ügyfélkód**. Ezeket a megtalálhatja **hitelesítési kulcsok**. Szüksége lesz mindkettő LinkedIn konfigurálása identitás-szolgáltatóként a bérlőben. **Titkos Ügyfélkód** egy fontos biztonsági hitelesítő adat.
-6. Adja meg `https://login.microsoftonline.com/te/{tenant}/oauth2/authresp` a **átirányítási URL-címek engedélyezett**. Cserélje le **{tenant}** a bérlő nevét (például contoso.onmicrosoft.com). Válassza ki **Hozzáadás**, és kattintson a **frissítés**.
+6. Adja meg `https://{tenant}.b2clogin.com/te/{tenant}.onmicrosoft.com/oauth2/authresp` a **átirányítási URL-címek engedélyezett**. Cserélje le **{tenant}** a bérlő nevét (például: contosob2c). Válassza ki **Hozzáadás**, és kattintson a **frissítés**.
 
 ## <a name="configure-a-linkedin-account-as-an-identity-provider"></a>A LinkedIn-fiók konfigurálása identitás-szolgáltatóként
 

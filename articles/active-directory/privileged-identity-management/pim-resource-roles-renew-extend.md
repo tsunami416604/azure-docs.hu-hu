@@ -1,6 +1,6 @@
 ---
-title: A PIM az Azure-erőforrás szerepkörök meghosszabbítása vagy megújítása |} A Microsoft Docs
-description: Útmutató az Azure AD Privileged Identity Management (PIM) az Azure-erőforrás szerepkörök meghosszabbítása vagy megújítása.
+title: Meghosszabbítása vagy megújítása az Azure-erőforrás szerepkör-hozzárendeléseket a PIM |} A Microsoft Docs
+description: Ismerje meg, hogyan bővítheti, vagy az Azure AD Privileged Identity Management (PIM) az Azure-erőforrás szerepkör-hozzárendelések megújításához.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,14 +15,14 @@ ms.component: pim
 ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 2c85c5bbbd4c152113108e0fdb717d23f85f9fde
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 3294bddea867e061d01e8dc72f4e47f3238b6c4d
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43189650"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43344085"
 ---
-# <a name="extend-or-renew-azure-resource-roles-in-pim"></a>A PIM az Azure-erőforrás szerepkörök meghosszabbítása vagy megújítása
+# <a name="extend-or-renew-azure-resource-role-assignments-in-pim"></a>Meghosszabbítása vagy megújítása az Azure-erőforrás szerepkör-hozzárendelések az PIM-ben
 
 Privileged Identity Management (PIM) az Azure-erőforrások kezelése az Azure-erőforrások hozzáférés és a hozzárendelés életciklusának új vezérlőket mutatja be. A rendszergazdák a kezdő és záró dátum-idő tulajdonságokkal tagsági rendelhet hozzá. Amikor megközelíti a hozzárendelés vége, a PIM küld az érintett felhasználók vagy csoportok e-mail-értesítéseket. A rendszergazdák az erőforrás kell biztosítják, hogy megfelelő hozzáférési e-mail-értesítéseket is küld. Hozzárendelések meg lehet újítani, és látható, akár 30 napig lejárt állapotban maradnak, még akkor is, ha nincs kibővítve a hozzáférés.
 

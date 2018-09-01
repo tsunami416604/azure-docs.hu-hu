@@ -11,14 +11,14 @@ ms.component: data-science-vm
 ms.workload: data-services
 ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2017
+ms.date: 08/30/2018
 ms.author: gokuma
-ms.openlocfilehash: f0fe2bde039cd209514d0cbc4842b20cd4b5fb99
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: b01ef3701ffb46da57c52e5fe73828ec4252b074
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42444042"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43344760"
 ---
 # <a name="provision-the-windows-data-science-virtual-machine-on-azure"></a>A Windows Data Science virtuális gép Azure-beli üzembe helyezése
 A Microsoft Data Science virtuális gépet (DSVM) egy Windows Azure virtuális gép (VM) rendszerkép. Előtelepített és konfigurált adatelemzési és machine learning használt számos eszközzel. A következő eszközök foglalja magában:
@@ -66,7 +66,7 @@ A Microsoft adatelemző virtuális gép létrehozásához Azure-előfizetéssel 
 ## <a name="create-your-microsoft-data-science-virtual-machine"></a>A Microsoft Data Science virtuális gép létrehozása
 Hozzon létre egy példányt, a Microsoft Data Science virtuális gép, kövesse az alábbi lépéseket:
 
-1. Keresse meg a virtuális gépet, az ajánlati a [az Azure portal](https://portal.azure.com/#create/microsoft-ads.windows-data-science-vmwindows2016).
+1. Keresse meg a virtuális gépet, az ajánlati a [az Azure portal](https://portal.azure.com/#create/microsoft-dsvm.dsvm-windowsserver-2016). A rendszer felkérheti az Azure-fiókkal bejelentkezni, ha már nincs bejelentkezve.
 1. Válassza ki a **létrehozás** gombra az alsó kell figyelembe venni a varázslót.
 
   ![Konfigurálja-data-adatelemzési – a virtuális gép](./media/provision-vm/configure-data-science-virtual-machine.png) 

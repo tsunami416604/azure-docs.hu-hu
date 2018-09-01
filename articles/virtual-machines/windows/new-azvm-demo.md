@@ -16,16 +16,16 @@ ms.workload: infrastructure
 ms.date: 12/12/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: ede8fab67c04eb7ce8d26280de2d1563b6cc8ad2
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: defc871caed429eeda1f8672323b48a9c0007c8e
+ms.sourcegitcommit: e45b2aa85063d33853560ec4bc867f230c1c18ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38678740"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43371737"
 ---
 # <a name="create-a-windows-virtual-machine-with-the-simplified-new-azurermvm-cmdlet-in-cloud-shell"></a>Az egyszerűsített New-AzureRMVM parancsmag a Cloud Shellben egy Windows virtuális gép létrehozása 
 
-A [New-AzureRMVM](/powershell/module/azurerm.resources/new-azurermvm) parancsmaggal hozzá van adva egy egyszerűsített készletét paramétereket a PowerShell használatával új virtuális gép létrehozásához. Ez a témakör bemutatja, hogyan használhatja a Powershellt az Azure Cloud Shellben, a New-AzureVM parancsmag előtelepített, hozzon létre egy új virtuális Gépet a legújabb verzióra. Egyszerűsített paraméterkészlet, amely automatikusan létrehozza az intelligens alapértelmezett beállítások használatával az összes szükséges erőforrást használjuk. 
+A [New-AzureRMVM](https://docs.microsoft.com/powershell/module/azurerm.compute/new-azurermvm?view=azurermps-6.8.1) parancsmaggal hozzá van adva egy egyszerűsített készletét paramétereket a PowerShell használatával új virtuális gép létrehozásához. Ez a témakör bemutatja, hogyan használhatja a Powershellt az Azure Cloud Shellben, a New-AzureVM parancsmag előtelepített, hozzon létre egy új virtuális Gépet a legújabb verzióra. Egyszerűsített paraméterkészlet, amely automatikusan létrehozza az intelligens alapértelmezett beállítások használatával az összes szükséges erőforrást használjuk. 
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
@@ -36,7 +36,7 @@ Ha a PowerShell helyi telepítése és használata mellett dönt, az oktatóanya
 
 ## <a name="create-the-vm"></a>Virtuális gép létrehozása
 
-Használhatja a [New-AzureRMVM](/powershell/module/azurerm.resources/new-azurermvm) parancsmaggal hozzon létre egy virtuális Gépet, amely tartalmazza az Azure Marketplace-ről a Windows Server 2016 Datacenter rendszerképet használó intelligens alapértelmezett beállítások. Használhatja a New-AzureRMVM csak a **-név** paramétert, és használja ezt az értéket az összes erőforrás neve. Ebben a példában a **-Name** paraméterhez a *myVM* beállítást használjuk. 
+Használhatja a [New-AzureRMVM](https://docs.microsoft.com/powershell/module/azurerm.compute/new-azurermvm?view=azurermps-6.8.1) parancsmaggal hozzon létre egy virtuális Gépet, amely tartalmazza az Azure Marketplace-ről a Windows Server 2016 Datacenter rendszerképet használó intelligens alapértelmezett beállítások. Használhatja a New-AzureRMVM csak a **-név** paramétert, és használja ezt az értéket az összes erőforrás neve. Ebben a példában a **-Name** paraméterhez a *myVM* beállítást használjuk. 
 
 Győződjön meg arról, hogy a Cloud Shellben a **PowerShell** van kiválasztva, és gépelje be a következőt:
 

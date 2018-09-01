@@ -13,12 +13,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: cephalin
-ms.openlocfilehash: 191d42f43e500c7f8041a02aeba2fbcb7dfd5379
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 629a76ab5610625e14780d7b5c57d3979c2224c9
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39226526"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43344170"
 ---
 # <a name="customize-authentication-and-authorization-in-azure-app-service"></a>Hitelesítés és engedélyezés az Azure App Service testreszabása
 
@@ -34,9 +34,9 @@ Gyorsan használatba, tekintse meg az alábbi oktatóanyagok egyikét:
 * [Az alkalmazás konfigurálása a Microsoft-fiókbejelentkezés használatára](app-service-mobile-how-to-configure-microsoft-authentication.md)
 * [Az alkalmazás konfigurálása a Twitter-bejelentkezés használatára](app-service-mobile-how-to-configure-twitter-authentication.md)
 
-## <a name="configure-multiple-sign-in-options"></a>Több bejelentkezési beállítások konfigurálása
+## <a name="use-multiple-sign-in-providers"></a>Több bejelentkezési szolgáltató használata
 
-A portál konfigurációja nem található több bejelentkezési lehetőségek a felhasználók számára (például Facebook és Twitter) kulcsrakész lehetőséget kínál. Azonban nem nehéz a Funkciók hozzáadása a webalkalmazáshoz. A lépéseket a következő eljárásokat:
+A portál konfigurációja nem található több bejelentkezési szolgáltatók (például Facebook és Twitter) a felhasználók számára, kulcsrakész lehetőséget biztosít. Azonban nem nehéz a Funkciók hozzáadása a webalkalmazáshoz. A lépéseket a következő eljárásokat:
 
 Az első a **hitelesítési / engedélyezési** lapon az Azure Portalon, az engedélyezni kívánt identitásszolgáltató konfigurálja.
 
@@ -58,6 +58,50 @@ Amikor a felhasználó a hivatkozásra kattint, a megfelelő bejelentkezési old
 
 ```HTML
 <a href="/.auth/login/<provider>?post_login_redirect_url=/Home/Index">Log in</a>
+```
+
+## <a name="sign-out-of-a-session"></a>Jelentkezzen ki a munkamenet
+
+Kezdeményezheti, hogy a felhasználók számára a kijelentkezési küldésével egy `GET` az alkalmazás kérelem `/.auth/logout` végpont. A `GET` kérelmet a következőket:
+
+- Hitelesítési cookie-k az aktuális munkamenet törlése.
+- Törli a jelenlegi felhasználói jogkivonatok a jogkivonat-tároló.
+- Az identitásszolgáltató a kijelentkezési kiszolgálóoldali végez az Azure Active Directory és a Google.
+
+Itt van egy weblap egyszerű Kijelentkezés hivatkozásra:
+
+```HTML
+<a href="/.auth/logout">Sign out</a>
+```
+
+Egy sikeres alapértelmezés szerint kijelentkezési átirányítja az ügyfelet az URL-cím `/.auth/logout/done`. Adja hozzá a post-sign-out átirányítási oldalon módosíthatja a `post_logout_redirect_uri` lekérdezési paraméter. Példa:
+
+```
+GET /.auth/logout?post_logout_redirect_uri=/index.html
+```
+
+Azt javasoljuk, hogy Ön [kódolása](https://wikipedia.org/wiki/Percent-encoding) értékét `post_logout_redirect_uri`.
+
+Teljes URL-címek használata esetén az URL-címet kell lennie az ugyanabban a tartományban lévő üzemeltetett vagy egy engedélyezett külső átirányítási URL-címet az alkalmazás konfigurálva. A következő példában átirányítása `https://myexternalurl.com` , amely nem ugyanabban a tartományban lévő üzemeltetett:
+
+```
+GET /.auth/logout?post_logout_redirect_uri=https%3A%2F%2Fmyexternalurl.com
+```
+
+A következő parancsot futtatnia kell a [Azure Cloud Shell](../cloud-shell/quickstart.md):
+
+```azurecli-interactive
+az webapp auth update --name <app_name> --resource-group <group_name> --allowed-external-redirect-urls "https://myexternalurl.com"
+```
+
+## <a name="preserve-url-fragments"></a>URL-cím töredékkel megőrizni
+
+Miután a felhasználók bejelentkeznek az alkalmazásba, általában szeretne átirányítja őket ugyanabban a szegmensben, ugyanazon az oldalon, mint például `/wiki/Main_Page#SectionZ`. Azonban mivel [URL-cím töredék](https://wikipedia.org/wiki/Fragment_identifier) (például `#SectionZ`) soha nem továbbítódnak a kiszolgálóra, ezek nem maradnak meg alapértelmezés szerint az OAuth-bejelentkezés befejezése, és átirányítja a alkalmazását követően. Felhasználók majd egy optimálisnál tapasztalatokat szerezhet, amikor szükségük van, keresse meg a kívánt jegyzetobjektum újra. Ez a korlátozás vonatkozik minden kiszolgálóoldali hitelesítési megoldás.
+
+App Service-hitelesítés URL-cím szilánkok között az OAuth-bejelentkezés tudja őrizni. Ehhez állítsa be az alkalmazás nevű beállítása `WEBSITE_AUTH_PRESERVE_URL_FRAGMENT` való `true`. Ezt megteheti a [az Azure portal](https://portal.azure.com), vagy egyszerűen futtassa a következő parancsot a [Azure Cloud Shell](../cloud-shell/quickstart.md):
+
+```azurecli-interactive
+az webapp config appsettings set --name <app_name> --resource-group <group_name> --settings WEBSITE_AUTH_PRESERVE_URL_FRAGMENT="true"
 ```
 
 ## <a name="access-user-claims"></a>Hozzáférési felhasználói jogcímek

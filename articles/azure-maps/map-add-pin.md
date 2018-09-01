@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: be3c9960961b5c4800faf476bd6a21f7395f057d
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 0dafb09e1704e8e446b034975f0c25a740050599
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42746378"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43382584"
 ---
 # <a name="add-pins-to-the-map"></a>PIN-kódok a térkép hozzáadása
 
@@ -27,7 +27,7 @@ Ez a cikk bemutatja, hogyan PIN-kód hozzáadása a térképen.
 
 A fenti kód az első kódblokkot egy térkép-objektumot hoz létre. Látható [térkép létrehozásához](./map-create.md) útmutatást.
 
-A második kódblokkot, a PIN-kód létrehozása és a térképhez hozzáadni. PIN-kódra van egy [funkció](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.atlas.data.feature?view=azure-iot-typescript-latest) , [pont](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.atlas.data.point?view=azure-iot-typescript-latest) a [PinProperties](https://docs.microsoft.com/javascript/api/azure-maps-control/models.pinproperties?view=azure-iot-typescript-latest) , a szolgáltatás tulajdonsága. Használat `new atlas.data.Feature(new atlas.data.Point())` PIN-kód létrehozását, és adja meg a tulajdonságait. A PIN-kód réteg PIN-kódok tömbjét. Használat [addPins](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addpins) függvény a térkép osztály egy PIN-kód réteget a térkép hozzáadása és a PIN-kód réteg tulajdonságainak definiálásához. Tekintse meg a PIN-kód réteg tulajdonságainak [PinLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/models.pinlayeroptions?view=azure-iot-typescript-latest). 
+A második kódblokkot, a PIN-kód létrehozása és a térképhez hozzáadni. PIN-kódra van egy [funkció](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature?view=azure-iot-typescript-latest) , [pont](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.point?view=azure-iot-typescript-latest) a [PinProperties](https://docs.microsoft.com/javascript/api/azure-maps-control/models.pinproperties?view=azure-iot-typescript-latest) , a szolgáltatás tulajdonsága. Használat `new atlas.data.Feature(new atlas.data.Point())` PIN-kód létrehozását, és adja meg a tulajdonságait. A PIN-kód réteg PIN-kódok tömbjét. Használat [addPins](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addpins) függvény a térkép osztály egy PIN-kód réteget a térkép hozzáadása és a PIN-kód réteg tulajdonságainak definiálásához. Tekintse meg a PIN-kód réteg tulajdonságainak [PinLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/models.pinlayeroptions?view=azure-iot-typescript-latest). 
 
 ## <a name="next-steps"></a>További lépések
 

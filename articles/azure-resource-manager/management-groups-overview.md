@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 7/31/2018
+ms.date: 08/31/2018
 ms.author: rithorn
-ms.openlocfilehash: edc57d146ccb034ac3fd627386000a1953b0e558
-ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
+ms.openlocfilehash: b95dba65a7ab89306844e48641aba584e3d6b175
+ms.sourcegitcommit: e45b2aa85063d33853560ec4bc867f230c1c18ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39480322"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43371516"
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Az erőforrások rendszerezéséhez az Azure felügyeleti csoportok
 
@@ -38,7 +38,7 @@ Egy másik forgatókönyv, ahol a felügyeleti csoportok használna, hogy több 
 
 ### <a name="important-facts-about-management-groups"></a>Fontos alapvető tudnivalók a felügyeleti csoportok
 
-- 10 000 felügyeleti csoport egyetlen címtárban nem használható.
+- 10 000 felügyeleti csoport egyetlen címtárban (az Azure Active Directory-bérlő) nem használható.
 - Egy felügyeleti csoport fa mélysége legfeljebb hat szintje is támogatja.
   - Ez a korlátozás nem tartalmazza a gyökérszintű vagy az előfizetés szintjén.
 - Minden egyes felügyeleti csoport és az előfizetés csak egy szülő támogatja.

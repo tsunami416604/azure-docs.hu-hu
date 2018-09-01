@@ -1,6 +1,6 @@
 ---
-title: Az egyéni stratégiai szolgáltatás előrejelzés végpont - kognitív Azure-szolgáltatások használata |} Microsoft Docs
-description: 'Útmutató: az API segítségével programozott módon ellenőrizze, az egyéni stratégiai szolgáltatás osztályozó képeket.'
+title: A Custom Vision Service prediction végpont – Azure Cognitive Services használata |} A Microsoft Docs
+description: Megtudhatja, hogyan használható az API programozott módon a lemezképek, amelyek a Custom Vision Service osztályozó-teszteléséhez.
 services: cognitive-services
 author: anrothMSFT
 manager: corncar
@@ -9,44 +9,44 @@ ms.component: custom-vision
 ms.topic: article
 ms.date: 05/03/2018
 ms.author: anroth
-ms.openlocfilehash: 54f9d9fec1f40c167341dec6a8699b6a558419da
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: d7f9b90db06811e16cd0cd6ad2b32a27912cfee5
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348154"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43341793"
 ---
-# <a name="use-the-prediction-endpoint-to-test-images-programmatically-with-a-custom-vision-service-classifier"></a>Az előrejelzés végpont segítségével ellenőrizze, programozott módon képekkel egyéni stratégiai szolgáltatás besorolás
+# <a name="use-the-prediction-endpoint-to-test-images-programmatically-with-a-custom-vision-service-classifier"></a>Az előrejelzési végpont használatával programozott módon a Custom Vision Service besorolás rendszerképek tesztelése
 
-Után modellje betanításához képek programozott módon tesztelheti, ha azokat az előrejelzés API elküldése. 
+Miután a modell betanításához tesztelheti lemezképek programozott módon az előrejelzési API-nak elküldésével. 
 
 > [!NOTE]
-> Ez a dokumentum bemutatja C# elküldeni a képet, hogy az előrejelzés API használatával. További információt és példákat az API-val, tekintse meg a [előrejelzés API-referencia](https://go.microsoft.com/fwlink/?linkid=865445).
+> Ez a dokumentum bemutatja a C# használatával való elküldéséhez a képet, az előrejelzési API-hoz. További információk és az API-t használó példákért tekintse meg a [előrejelzési API-referencia](https://go.microsoft.com/fwlink/?linkid=865445).
 
-## <a name="get-the-url-and-prediction-key"></a>Az URL-cím és előrejelzés kulcs beszerzése
+## <a name="get-the-url-and-prediction-key"></a>Az URL-cím és az előrejelzési kulcs lekérése
 
-Az a [egyéni stratégiai weblap](https://customvision.ai), válassza ki a projektet, és válassza ki a __teljesítmény__ fülre. Az előrejelzés API-val kapcsolatos információk megjelenítése, válassza ki a __előrejelzés URL-cím__. Másolja az alábbi használatra az alkalmazásban:
+Az a [Custom Vision weblap](https://customvision.ai), jelölje ki a projektet, és válassza ki a __teljesítmény__ fülre. Az előrejelzési API-val kapcsolatos információk megjelenítéséhez többek között a __előrejelzés-kulcs__válassza __előrejelzési URL-cím__. Projektek az Azure-erőforrás csatlakoztatva a __előrejelzés-kulcs__ is megtalálható a [az Azure Portal](https://portal.azure.com) társított Azure-erőforrásra vonatkozó lap __kulcsok__. Használja az alábbi adatokat másolja az alkalmazásban:
 
-* __URL-cím__ használatára vonatkozó egy __képfájl__.
-* __Előrejelzés-kulcs__ érték.
+* __URL-cím__ használatának egy __képfájl__.
+* __Előrejelzés-kulcs__ értéket.
 
 > [!TIP]
-> Ha többszöri, azt is szabályozhatja, melyiket használja az alapértelmezett beállítás. Válassza ki az ismétlés a __ismétlési__ területen, majd válassza ki __alapértelmezett__ az oldal tetején.
+> Ha több ismétlések, szabályozhatja, melyiket használja az alapértelmezett értékre. Válassza ki a ismétléseinek a __ismétléseinek__ területen, majd válassza ki __alapértelmezett__ az oldal tetején.
 
-![A Teljesítmény lapon megjelenő egy vörös téglalappal előrejelzés URL-CÍMÉT.](./media/use-prediction-api/prediction-url.png)
+![A Teljesítmény lapon megjelenő egy vörös téglalappal az előrejelzési URL-címet.](./media/use-prediction-api/prediction-url.png)
 
 ## <a name="create-the-application"></a>Az alkalmazás létrehozása
 
-1. Hozzon létre egy új C# konzolalkalmazást a Visual Studio.
+1. A Visual Studióban hozzon létre egy új C# konzolalkalmazást.
 
-2. A következő kódot használja szövegeként a __Program.cs__ fájlt.
+2. A következő kód használatával törzseként a __Program.cs__ fájlt.
 
     > [!IMPORTANT]
     > Módosítsa a következő információkat:
     >
-    > * Állítsa be a __névtér__ a projekt nevét.
-    > * Állítsa be a __előrejelzés-kulcs__ kezdődő sort a korábbi kapott érték `client.DefaultRequestHeaders.Add("Prediction-Key",`.
-    > * Állítsa be a __URL-cím__ kezdődő sort a korábbi kapott érték `string url =`.
+    > * Állítsa be a __névtér__ a projekt nevére.
+    > * Állítsa be a __előrejelzés-kulcs__ kezdődő sort, kapott érték `client.DefaultRequestHeaders.Add("Prediction-Key",`.
+    > * Állítsa be a __URL-cím__ kezdődő sort, kapott érték `string url =`.
 
     ```csharp
     using System;
@@ -105,7 +105,7 @@ Az a [egyéni stratégiai weblap](https://customvision.ai), válassza ki a proje
 
 ## <a name="use-the-application"></a>Az alkalmazás használatára
 
-Ha az alkalmazás fut, adja meg az elérési út képfájlra mutató. A kép elküldve az API-t a, és az eredmény akkor minősül JSON-dokumentumként. A válasz egy példát a következő JSON-ja
+Az alkalmazás futtatásakor adja meg az elérési út képfájlra mutató. A kép elküldésekor az API-hoz, és a rendszer visszairányítja az eredményeket JSON-dokumentumként. A következő JSON-ja egy példa a válasz
 
 ```json
 {

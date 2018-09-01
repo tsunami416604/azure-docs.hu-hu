@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/04/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 19b7f708d43907ac45450a64f988b2a517293511
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: f076a906ba38e6c8e8c9530baba1607553b41ea6
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37446707"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43338328"
 ---
 # <a name="azure-active-directory-b2c-add-google-as-an-oauth2-identity-provider-using-custom-policies"></a>Az Azure Active Directory B2C: Adja hozzá a Google + identitás-szolgáltatóként OAuth2 egyéni szabályzatok használatával
 
@@ -78,7 +78,7 @@ A Google +-t használja Identitásszolgáltatóként az Azure Active Directory (
 
     ![A Google + - alkalmazástípus kiválasztása](media/active-directory-b2c-custom-setup-goog-idp/goog-web-app.png)
 
-13.  Adjon meg egy **neve** adja meg az alkalmazás `https://login.microsoftonline.com` a a **JavaScript engedélyezett eredetek** mező, és `https://login.microsoftonline.com/te/{tenant}/oauth2/authresp` a a **jogosult átirányítási URI-k** a mező. Cserélje le **{tenant}** a bérlő nevét (például: contosob2c.onmicrosoft.com). A **{tenant}** értéke a kis-és nagybetűket. Kattintson a **Create** (Létrehozás) gombra.
+13.  Adjon meg egy **neve** adja meg az alkalmazás `https://{tenant}.b2clogin.com` a a **JavaScript engedélyezett eredetek** mező, és `https://{tenant}.b2clogin.com/te/{tenant}.onmicrosoft.com/oauth2/authresp` a a **jogosult átirányítási URI-k** a mező. Cserélje le **{tenant}** a bérlő nevét (például: contosob2c). A **{tenant}** értéke a kis-és nagybetűket. Kattintson a **Create** (Létrehozás) gombra.
 
     ![A Google + - adja meg a JavaScript engedélyezett származási helyek és az átirányítási URI-k](media/active-directory-b2c-custom-setup-goog-idp/goog-create-client-id.png)
 

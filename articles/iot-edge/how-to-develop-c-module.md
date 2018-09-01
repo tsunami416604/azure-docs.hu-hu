@@ -9,12 +9,12 @@ ms.author: xshi
 ms.date: 07/20/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 65495893d93fddd6d8e13ae80720e002ac7d8efa
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 5732f6986750dfee49084e2744052bb54e3a8139
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43307488"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43382567"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-c-modules-for-azure-iot-edge"></a>Fejlesztés és hibakeresés a C-modulok az Azure IoT Edge-hez a Visual Studio Code használatával
 
@@ -35,9 +35,7 @@ Mivel ez a cikk a fő fejlesztőeszközt, Visual Studio Code-ot használ, a VS C
 Hozzon létre egy modult, a modul rendszerképének és a egy tároló-beállításjegyzéket, amely tárolja a modul rendszerképének létrehozása Docker szüksége:
 * [A docker Community Edition](https://docs.docker.com/install/) a fejlesztői gépen. 
 * [Az Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) vagy [Docker Hub](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags)
-
-   > [!TIP]
-   > Egy helyi Docker-beállításjegyzék prototípus és a egy felhőbeli beállításjegyzék helyett tesztelési célokra használható. 
+   * Egy helyi Docker-beállításjegyzék prototípus és a egy felhőbeli beállításjegyzék helyett tesztelési célokra használható. 
 
 A modul egy eszközön teszteléséhez van szüksége active IoT hub legalább egy IoT Edge-eszköz. Az IoT Edge-eszközöket a számítógép használja, kövesse a rövid útmutatóban a [Windows](quickstart.md) vagy [Linux](quickstart-linux.md). 
 
@@ -46,16 +44,24 @@ A modul egy eszközön teszteléséhez van szüksége active IoT hub legalább e
 Hozzon létre egy IoT Edge-modul alapján az Azure IoT C SDK-ban a Visual Studio Code és az Azure IoT Edge-bővítmény ezeket a lépéseket. Először hozzon létre egy megoldást, és ezután az első modul létrehozása ebben a megoldásban. Egyes megoldások tartalmazhatnak egynél több modul. 
 
 1. Válassza ki a Visual Studio Code- **nézet** > **integrált terminálon**.
-3. Válassza ki **nézet** > **paletta parancs**. 
-4. A parancskatalógus, adja meg, és futtassa a parancsot **Azure IoT Edge: IoT Edge új megoldás**.
+
+2. Válassza ki **nézet** > **paletta parancs**. 
+
+3. A parancskatalógus, adja meg, és futtassa a parancsot **Azure IoT Edge: IoT Edge új megoldás**.
 
    ![Új IoT Edge-megoldás futtatása](./media/how-to-develop-csharp-module/new-solution.png)
 
-5. Keresse meg a mappát, ahol szeretné létrehozni az új megoldásba. Válasszon **mappa kiválasztása**. 
-6. Adja meg a megoldás nevét. 
-7. Válassza ki **C modul** a megoldás első modul sablonként.
-8. Adja meg a modul nevét. Válassza ki, amely a tárolóregisztrációs adatbázis egyedi nevét. 
-9. Adja meg a lemezképtárban a modul nevét. A VS Code autopopulates a modul neve a **localhost:5000**. Cserélje le a saját beállításjegyzék-információkat. Ha használja a helyi Docker-beállításjegyzék tesztelési, majd **localhost** nem okoz gondot. Ha használja az Azure Container Registry, használja a bejelentkezési kiszolgáló, a beállításjegyzék-beállításai közül. A bejelentkezési kiszolgáló néz  **\<beállításjegyzék neve\>. azurecr.io**.
+4. Keresse meg a mappát, ahol szeretné létrehozni az új megoldásba. Válasszon **mappa kiválasztása**. 
+
+5. Adja meg a megoldás nevét. 
+
+6. Válassza ki **C modul** a megoldás első modul sablonként.
+
+7. Adja meg a modul nevét. Válassza ki, amely a tárolóregisztrációs adatbázis egyedi nevét. 
+
+8. Adja meg a lemezképtárban a modul nevét. A VS Code autopopulates a modul neve a **localhost:5000**. Cserélje le a saját beállításjegyzék-információkat. Ha használja a helyi Docker-beállításjegyzék tesztelési, majd **localhost** nem okoz gondot. Ha használja az Azure Container Registry, használja a bejelentkezési kiszolgáló, a beállításjegyzék-beállításai közül. A bejelentkezési kiszolgáló néz  **\<beállításjegyzék neve\>. azurecr.io**. Csak a sztring localhost részét cserélje le, ne törölje a modul nevét. 
+
+   ![Docker-rendszerkép adattárának megadása](./media/how-to-develop-c-module/repository.png)
 
 A VS Code időt vesz igénybe, a megadott információt, létrehoz egy IoT Edge-megoldást, majd betölti azt egy új ablakban.
 
@@ -73,7 +79,7 @@ Nincsenek a megoldáson belül a négy elemek:
 
 ## <a name="develop-your-module"></a>A modul fejlesztése
 
-Az alapértelmezett C modul kód, amely a megoldás tartalmaz a következő helyen található **modulok** > **\<a modulnév\>** > **main.c** . A modul és a deployment.template.json fájl legyenek beállítva, hogy a megoldás felépítéséhez, küldje le azt a tárolóregisztrációs adatbázisba, és telepítheti az eszközöket, hogy a kód módosítása nélkül tesztelés megkezdése. A modul csak igénybe vehet a bemeneti forrásból (ami jelen esetben a tempSensor modul, amely szimulálja az adatokat), és átadhatja azt az IoT hubhoz való használatra készült. 
+Az alapértelmezett C modul kód, amely a megoldás tartalmaz a következő helyen található **modulok** > [a modul neve] > **main.c**. A modul és a deployment.template.json fájl legyenek beállítva, hogy a megoldás felépítéséhez, küldje le azt a tárolóregisztrációs adatbázisba, és telepítheti az eszközöket, hogy a kód módosítása nélkül tesztelés megkezdése. A modul csak igénybe vehet a bemeneti forrásból (ami jelen esetben a tempSensor modul, amely szimulálja az adatokat), és átadhatja azt az IoT hubhoz való használatra készült. 
 
 Ha már készen áll a saját kód C-sablon testre szabása, a [Azure IoT Hub SDK-k](../iot-hub/iot-hub-devguide-sdks.md) hozhat létre a modulok a kulcsot kell IoT-megoldások, például a biztonság, a kezelés és a megbízhatóság címmel. 
 

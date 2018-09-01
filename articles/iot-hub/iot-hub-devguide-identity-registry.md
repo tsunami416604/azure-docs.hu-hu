@@ -6,14 +6,14 @@ manager: timlt
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 01/29/2018
+ms.date: 08/29/2018
 ms.author: dobett
-ms.openlocfilehash: 4e23b70c8dc5fdacfd609fb4664a78293b9e2362
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: 78956c8e9d9248708ec326fc07d46f48e51e0f83
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43247645"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43341260"
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>Az IoT hub eszközidentitás-jegyzék ismertetése
 
@@ -85,12 +85,12 @@ Az eszközön lévő adatokat, amely egy adott IoT-megoldás tárolja, hogy a me
 
 ## <a name="device-heartbeat"></a>Eszköz szívverés
 
-Az IoT Hub eszközidentitás-jegyzék neve mezőt tartalmaz **connectionState**. Csak a **connectionState** mezőt a fejlesztés és hibakeresés során. IoT-megoldások nem kell lekérdezni a mező futásidőben. Például nem lekérdezni a **connectionState** mezőt, ellenőrizze, hogy ha egy eszköz csatlakoztatva van, a felhőből az eszközre üzenetet vagy SMS küldése előtt. Javasoljuk, hogy feliratkozik a [ **eszköz leválasztva** esemény](https://docs.microsoft.com/azure/iot-hub/iot-hub-event-grid#event-types) az Event Grid értesítéseket kaphat, és figyelheti az eszköz kapcsolati állapotát. Ezzel [oktatóanyag](https://docs.microsoft.com/azure/event-grid/publish-iot-hub-events-to-logic-apps) megtudhatja, hogyan integrálható az események az IoT Hub az IoT-megoldás.
+Az IoT Hub eszközidentitás-jegyzék neve mezőt tartalmaz **connectionState**. Csak a **connectionState** mezőt a fejlesztés és hibakeresés során. IoT-megoldások nem kell lekérdezni a mező futásidőben. Például nem lekérdezni a **connectionState** mezőt, ellenőrizze, hogy ha egy eszköz csatlakoztatva van, a felhőből az eszközre üzenetet vagy SMS küldése előtt. Javasoljuk, hogy feliratkozik a [ **eszköz leválasztva** esemény] [ lnk-devguide-evgrid-evtype] az Event Grid értesítéseket kaphat, és figyelheti az eszköz kapcsolati állapotát. Ezzel [oktatóanyag] [ lnk-howto-evgrid-connstate] megtudhatja, hogyan integrálható a csatlakoztatott eszköz és az eszköz leválasztott események az IoT Hub az IoT-megoldás.
 
 Ha az IoT-megoldás tudnia kell, ha egy eszköz csatlakozik, valósítható meg a *szívverés minta*.
 A szívverés a mintában az eszköz eszköz – felhő üzeneteket küld legalább egyszer minden rögzített időn (például óránként legalább egyszer). Ezért akkor is, ha egy eszköz nem rendelkezik küldendő adatok, továbbra is üzenetet küld az egy üres eszközről a felhőbe (általában a Ez a tulajdonság azt állapítja meg szívverés). Szolgáltatás oldalán a megoldás létrehoz egy térkép a minden egyes eszközhöz kapott utolsó szívverés. Ha a megoldás az eszközről a várt időn belül nem kap szívverésüzenet, azt feltételezi, hogy nincs-e az eszköz egy hibás.
 
-Egy összetettebb végrehajtása sikerült tartalmazzák kapcsolatos információt [műveletek figyelése] [ lnk-devguide-opmon] próbál csatlakozni, vagy a kommunikációhoz, de sikertelen eszközök azonosítása. Ellenőrizze, hogy a szívverést a minta megvalósításakor [IoT Hub kvótái és szabályozások][lnk-quotas].
+Egy összetettebb végrehajtása sikerült tartalmazzák kapcsolatos információt [Azure Monitor] [ lnk-AM] és [az Azure Resource Health] [ lnk-ARH] azonosításához eszközök, próbál csatlakozni vagy a kommunikációt, de sikertelen, ellenőrizze [figyelés a diagnosztikai] [ lnk-devguide-mon] útmutató. Ellenőrizze, hogy a szívverést a minta megvalósításakor [IoT Hub kvótái és szabályozások][lnk-quotas].
 
 > [!NOTE]
 > Ha egy IoT-megoldás használ a kapcsolat állapota kizárólag határozza meg, hogy a felhőből az eszközre irányuló üzenetek küldéséhez, és üzeneteket a rendszer nem közvetítést nagyszámú eszközön, fontolja meg az egyszerűbb *rövid lejárati idő* mintát. Ez a minta egy kapcsolat állapota eszközjegyzékében mintával a szívverés, ugyanakkor hatékonyabban karbantartása ugyanazt az eredményt éri el. Ha üzenetet a nyugtázás kér, az IoT Hub értesíti a felhasználót, mely eszközök tudnak üzeneteket fogadni, és amelyek nem állnak.
@@ -256,7 +256,7 @@ Böngészhet a beavatkozás nélküli, just-in-time kiépítését lehetővé te
 [lnk-rfc7232]: https://tools.ietf.org/html/rfc7232
 [lnk-bulk-identity]: iot-hub-bulk-identity-mgmt.md
 [lnk-export]: iot-hub-devguide-identity-registry.md#import-and-export-device-identities
-[lnk-devguide-opmon]: iot-hub-operations-monitoring.md
+[lnk-devguide-mon]: iot-hub-monitor-resource-health.md
 
 [lnk-devguide-security]: iot-hub-devguide-security.md
 [lnk-devguide-device-twins]: iot-hub-devguide-device-twins.md
@@ -265,3 +265,8 @@ Böngészhet a beavatkozás nélküli, just-in-time kiépítését lehetővé te
 
 [lnk-getstarted-tutorial]: quickstart-send-telemetry-dotnet.md
 [lnk-dps]: https://azure.microsoft.com/documentation/services/iot-dps
+
+[lnk-AM]: ../monitoring-and-diagnostics/index.yml
+[lnk-ARH]: ../service-health/resource-health-overview.md
+[lnk-devguide-evgrid-evtype]: iot-hub-event-grid.md#event-types
+[lnk-howto-evgrid-connstate]: iot-hub-how-to-order-connection-state-events.md

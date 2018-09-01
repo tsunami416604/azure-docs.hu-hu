@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/27/2018
+ms.date: 08/31/2018
 ms.author: jingwang
-ms.openlocfilehash: 735b152f55a9309e5d5dd85dac64a607de6417b0
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: d500bc9c910858341d7fdacb4d85bffc8be215e1
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42443969"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43338762"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen1-by-using-azure-data-factory"></a>Adatok másolása, vagy az Azure Data Lake Storage Gen1 Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -77,8 +77,8 @@ Egyszerű szolgáltatásnév hitelesítése alkalmazás entitás regisztrálása
 
 >[!IMPORTANT]
 > Győződjön meg arról, hogy engedélyeket a szolgáltatás egyszerű megfelelő az Azure Data Lake Store:
->- **Forrásként**, az adatkezelőben -> hozzáférés, adjon meg legalább **Olvasás + végrehajtás** listában, és másolja a fájlokat a mappát vagy almappát, vagy **olvasási** ; egyetlen fájl másolása, és válassza ki a Adja hozzá a **ezt a mappát, és minden emelhetők azoknak** a rekurzív adja hozzá, mint **egy hozzáférési és alapértelmezett engedély bejegyzés**. Nem követelmény, a fiók fájlszintű hozzáférés-vezérlés (IAM).
->- **Fogadóként**, az adatkezelőben -> hozzáférés, adjon meg legalább **írás + végrehajtás** gyermekelemek létrehozásához a mappában, és válassza hozzá jogosultsága **ezt a mappát, és minden emelhetők azoknak** a rekurzív, és adja hozzá mint **egy hozzáférési és alapértelmezett engedély bejegyzés**. Ha Azure integrációs modul használatával másolása (forrás- és fogadóadattárként is vannak a felhőben), a hozzáférés-vezérlés (IAM), adja meg legalább **olvasó** szerepkör annak érdekében, hogy a Data Lake Store régió észlelése, a Data Factory. Ha szeretné-e elkerülése érdekében explicit módon a IAM szerepkör [hozzon létre egy Azure integrációs modul](create-azure-integration-runtime.md#create-azure-ir) helyét, a Data Lake Store és a Data Lake Store a társítás-beli társított szolgáltatást a következő példa.
+>- **Forrásként**, az adatkezelőben -> hozzáférés, adjon meg legalább **Olvasás + végrehajtás** listában, és másolja a fájlokat a mappát vagy almappát, vagy **olvasási** ; egyetlen fájl másolása, és válassza ki a Adja hozzá a **ezt a mappát, és az összes gyermekre** a rekurzív adja hozzá, mint **egy hozzáférési és alapértelmezett engedély bejegyzés**. Nem követelmény, a fiók fájlszintű hozzáférés-vezérlés (IAM).
+>- **Fogadóként**, az adatkezelőben -> hozzáférés, adjon meg legalább **írás + végrehajtás** gyermekelemek létrehozásához a mappában, és válassza hozzá jogosultsága **ezt a mappát, és az összes gyermekre** a rekurzív és Adja hozzá **egy hozzáférési és alapértelmezett engedély bejegyzés**. Ha Azure integrációs modul használatával másolása (forrás- és fogadóadattárként is vannak a felhőben), a hozzáférés-vezérlés (IAM), adja meg legalább **olvasó** szerepkör annak érdekében, hogy a Data Lake Store régió észlelése, a Data Factory. Ha szeretné-e elkerülése érdekében explicit módon a IAM szerepkör [hozzon létre egy Azure integrációs modul](create-azure-integration-runtime.md#create-azure-ir) helyét, a Data Lake Store és a Data Lake Store a társítás-beli társított szolgáltatást a következő példa.
 
 A következő tulajdonságok támogatottak:
 
@@ -125,8 +125,8 @@ Felügyeltszolgáltatás-identitás (MSI) hitelesítés használata:
 
 >[!IMPORTANT]
 > Győződjön meg arról, hogy a data factory szolgáltatás identitás megfelelő engedéllyel az Azure Data Lake Store biztosít:
->- **Forrásként**, az adatkezelőben -> hozzáférés, adjon meg legalább **Olvasás + végrehajtás** listában, és másolja a fájlokat a mappát vagy almappát, vagy **olvasási** ; egyetlen fájl másolása, és válassza ki a Adja hozzá a **ezt a mappát, és minden emelhetők azoknak** a rekurzív adja hozzá, mint **egy hozzáférési és alapértelmezett engedély bejegyzés**. Nem követelmény, a fiók fájlszintű hozzáférés-vezérlés (IAM).
->- **Fogadóként**, az adatkezelőben -> hozzáférés, adjon meg legalább **írás + végrehajtás** gyermekelemek létrehozásához a mappában, és válassza hozzá jogosultsága **ezt a mappát, és minden emelhetők azoknak** a rekurzív, és adja hozzá mint **egy hozzáférési és alapértelmezett engedély bejegyzés**. Ha Azure integrációs modul használatával másolása (forrás- és fogadóadattárként is vannak a felhőben), a hozzáférés-vezérlés (IAM), adja meg legalább **olvasó** szerepkör annak érdekében, hogy a Data Lake Store régió észlelése, a Data Factory. Ha szeretné-e elkerülése érdekében explicit módon a IAM szerepkör [hozzon létre egy Azure integrációs modul](create-azure-integration-runtime.md#create-azure-ir) helyét, a Data Lake Store és a Data Lake Store a társítás-beli társított szolgáltatást a következő példa.
+>- **Forrásként**, az adatkezelőben -> hozzáférés, adjon meg legalább **Olvasás + végrehajtás** listában, és másolja a fájlokat a mappát vagy almappát, vagy **olvasási** ; egyetlen fájl másolása, és válassza ki a Adja hozzá a **ezt a mappát, és az összes gyermekre** a rekurzív adja hozzá, mint **egy hozzáférési és alapértelmezett engedély bejegyzés**. Nem követelmény, a fiók fájlszintű hozzáférés-vezérlés (IAM).
+>- **Fogadóként**, az adatkezelőben -> hozzáférés, adjon meg legalább **írás + végrehajtás** gyermekelemek létrehozásához a mappában, és válassza hozzá jogosultsága **ezt a mappát, és az összes gyermekre** a rekurzív és Adja hozzá **egy hozzáférési és alapértelmezett engedély bejegyzés**. Ha Azure integrációs modul használatával másolása (forrás- és fogadóadattárként is vannak a felhőben), a hozzáférés-vezérlés (IAM), adja meg legalább **olvasó** szerepkör annak érdekében, hogy a Data Lake Store régió észlelése, a Data Factory. Ha szeretné-e elkerülése érdekében explicit módon a IAM szerepkör [hozzon létre egy Azure integrációs modul](create-azure-integration-runtime.md#create-azure-ir) helyét, a Data Lake Store és a Data Lake Store a társítás-beli társított szolgáltatást a következő példa.
 
 Az Azure Data Factoryben nem kell meghatároznia semmilyen tulajdonságot a Data Lake Store általános információk mellett társított szolgáltatást.
 

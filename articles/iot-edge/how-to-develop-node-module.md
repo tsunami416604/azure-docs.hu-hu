@@ -9,12 +9,12 @@ ms.author: xshi
 ms.date: 06/26/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: fbf8a0302ae8414f49a055ab260a52222425ab7c
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 6976314929ac2e0e099e8c2f07da32970bc57509
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43287194"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43382507"
 ---
 # <a name="develop-and-debug-nodejs-modules-with-azure-iot-edge-for-visual-studio-code"></a>Fejlesztés és hibakeresés a Node.js modulok az Azure IoT Edge segítségével a Visual Studio Code
 
@@ -35,9 +35,7 @@ Hozzon létre egy modult, Node.js, amely tartalmazza az npm segítségével val�
 * [Node.js](https://nodejs.org)
 * [Docker](https://docs.docker.com/engine/installation/)
 * [Az Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) vagy [Docker Hub](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags)
-
-   >[!TIP]
-   >Használhat egy helyi Docker-beállításjegyzék készíthet prototípusokat és tesztelési célra, egy felhőbeli beállításjegyzék helyett. 
+   * Használhat egy helyi Docker-beállításjegyzék készíthet prototípusokat és tesztelési célra, egy felhőbeli beállításjegyzék helyett. 
 
 A modul egy eszközön teszteléséhez van szüksége active IoT hub legalább egy IoT Edge-eszköz. Ha azt szeretné, használhatja a számítógépet, IoT Edge-eszköz, megteheti a oktatóanyagok a lépéseit követve [Windows](quickstart.md) vagy [Linux](quickstart-linux.md). 
 
@@ -60,7 +58,9 @@ A következő lépések bemutatják, hogyan hozhat létre egy Node.js-alapú, Io
 6. Adja meg a megoldás nevét. 
 7. Válasszon **Node.js modult** a megoldás első modul sablonként.
 8. Adja meg a modul nevét. Válassza ki, amely a tárolóregisztrációs adatbázis egyedi nevét. 
-9. A modul adja meg a lemezképtárból. A VS Code autopopulates a modul neve, így csak kell cserélni **localhost:5000** a saját beállításjegyzék-információkat. Ha tesztelése helyi Docker-tárolójegyzék használja, localhost nem okoz gondot. Ha használja az Azure Container Registry, használja a bejelentkezési kiszolgáló, a beállításjegyzék-beállításai közül. A bejelentkezési kiszolgáló néz  **\<beállításjegyzék neve\>. azurecr.io**.
+9. A modul adja meg a lemezképtárból. A VS Code autopopulates a modul neve, így csak kell cserélni **localhost:5000** a saját beállításjegyzék-információkat. Ha tesztelése helyi Docker-tárolójegyzék használja, localhost nem okoz gondot. Ha használja az Azure Container Registry, használja a bejelentkezési kiszolgáló, a beállításjegyzék-beállításai közül. A bejelentkezési kiszolgáló néz  **\<beállításjegyzék neve\>. azurecr.io**. Csak a sztring localhost részét cserélje le, ne törölje a modul nevét.
+
+   ![Docker-rendszerkép adattárának megadása](./media/how-to-develop-node-module/repository.png)
 
 A VS Code vesz igénybe az adatokat a megadott, létrehoz egy IoT Edge-megoldást, majd betölti azt egy új ablakban.
 
@@ -76,7 +76,7 @@ A megoldáson belül, akkor három elemet:
 
 ## <a name="develop-your-module"></a>A modul fejlesztése
 
-Az alapértelmezett Node.js-kód, amely a megoldás a következő helyen található **modulok** > **\<a modulnév\>** > **app.js** . A modul és a deployment.template.json fájl legyenek beállítva, hogy a megoldás felépítéséhez, küldje le azt a tárolóregisztrációs adatbázisba, és telepítheti az eszközöket, hogy a kód módosítása nélkül tesztelés megkezdése. A modul csak igénybe vehet a bemeneti forrásból (ami jelen esetben a tempSensor modul, amely szimulálja az adatokat), és átadhatja azt az IoT hubhoz való használatra készült. 
+Az alapértelmezett Node.js-kód, amely a megoldás a következő helyen található **modulok** > [a modul neve] > **app.js**. A modul és a deployment.template.json fájl legyenek beállítva, hogy a megoldás felépítéséhez, küldje le azt a tárolóregisztrációs adatbázisba, és telepítheti az eszközöket, hogy a kód módosítása nélkül tesztelés megkezdése. A modul csak igénybe vehet a bemeneti forrásból (ami jelen esetben a tempSensor modul, amely szimulálja az adatokat), és átadhatja azt az IoT hubhoz való használatra készült. 
 
 Ha már készen áll a saját kód a Node.js-sablon testre szabása, a [Azure IoT Hub SDK-k](../iot-hub/iot-hub-devguide-sdks.md) hozhat létre a modulok a kulcsot kell IoT-megoldások, például a biztonság, a kezelés és a megbízhatóság címmel. 
 

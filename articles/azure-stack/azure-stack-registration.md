@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/24/2018
+ms.date: 08/30/2018
 ms.author: jeffgilb
 ms.reviewer: brbartle
-ms.openlocfilehash: 58c8568da0a818f87a5bb3d6966d2d4a6c977fd9
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: ebf10c7f0fb90d976062300854f69369dba946fa
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43247823"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43340166"
 ---
 # <a name="register-azure-stack-with-azure"></a>Regisztráljon az Azure Stack az Azure-ral
 
@@ -58,7 +58,7 @@ Mielőtt regisztrálná az Azure Stack az Azure-ral, a következőkkel kell rend
 
 ### <a name="powershell-language-mode"></a>PowerShell nyelvmód
 
-Sikerült regisztrálni az Azure Stack, a PowerShell nyelv módba kell állítani **FullLanguageMode**.  Annak ellenőrzéséhez, hogy a jelenlegi nyelvmód beállítása teljes nyisson meg egy rendszergazda jogú PowerShell-ablakot, és futtassa a következő PowerShell-cmdlts:
+Sikerült regisztrálni az Azure Stack, a PowerShell nyelv módba kell állítani **FullLanguageMode**.  Annak ellenőrzéséhez, hogy a jelenlegi nyelvmód beállítása teljes nyisson meg egy rendszergazda jogú PowerShell-ablakot, és futtassa a következő PowerShell-parancsmagokat:
 
 ```PowerShell  
 $ExecutionContext.SessionState.LanguageMode
@@ -100,7 +100,7 @@ Ezeket a lépéseket segítségével regisztrálja az Azure Stack az Azure-ral a
 
 Csatlakoztatott környezetek hozzáférhet az interneten és az Azure. Ilyen környezetben kell az Azure Stack erőforrás-szolgáltató regisztrálása az Azure-ral, és állítsa be a számlázási modellt.
 
-1. Az Azure-ral az Azure Stack erőforrás-szolgáltató regisztrálásához indítsa el a PowerShell ISE-t rendszergazdaként, és használja a következő PowerShell-cmdlts együtt a **EnvironmentName** (lásd a megfelelő Azure előfizetés-típus paraméter beállítása Paraméterek).
+1. Az Azure-ral az Azure Stack erőforrás-szolgáltató regisztrálásához indítsa el a PowerShell ISE-t rendszergazdaként, és a következő PowerShell-parancsmag használatával a **EnvironmentName** (lásd a megfelelő Azure előfizetés-típus paraméter beállítása Paraméterek).
 
 2. Adja hozzá az Azure-fiók, amely az Azure Stack regisztrálhat. A fiók hozzáadásához futtassa a **Add-AzureRmAccount** parancsmagot. Az Azure globális rendszergazdai fiók hitelesítő adatait kéri, és előfordulhat, hogy a fiók konfigurációja alapján 2 többtényezős hitelesítés használatára.
 
@@ -160,7 +160,7 @@ Ezeket a lépéseket segítségével regisztrálja az Azure Stack az Azure-ral a
 
 Csatlakoztatott környezetek hozzáférhet az interneten és az Azure. Ilyen környezetben kell az Azure Stack erőforrás-szolgáltató regisztrálása az Azure-ral, és állítsa be a számlázási modellt.
 
-1. Az Azure-ral az Azure Stack erőforrás-szolgáltató regisztrálásához indítsa el a PowerShell ISE-t rendszergazdaként, és használja a következő PowerShell-cmdlts együtt a **EnvironmentName** (lásd a megfelelő Azure előfizetés-típus paraméter beállítása Paraméterek).
+1. Az Azure-ral az Azure Stack erőforrás-szolgáltató regisztrálásához indítsa el a PowerShell ISE-t rendszergazdaként, és a következő PowerShell-parancsmag használatával a **EnvironmentName** (lásd a megfelelő Azure előfizetés-típus paraméter beállítása Paraméterek).
 
 2. Adja hozzá az Azure-fiók, amely az Azure Stack regisztrálhat. A fiók hozzáadásához futtassa a **Add-AzureRmAccount** parancsmagot. Az Azure globális rendszergazdai fiók hitelesítő adatait kéri, és előfordulhat, hogy a fiók konfigurációja alapján 2 többtényezős hitelesítés használatára.
 
@@ -213,7 +213,7 @@ Ha regisztrál az Azure Stack kapcsolat nélküli környezetben (az internet-hoz
    Import-Module .\RegisterWithAzure.psm1
    ```
 
-2. A regisztrációs jogkivonatot, futtassa a következő PowerShell-cmdlts:  
+2. A regisztrációs jogkivonatot, futtassa a következő PowerShell-parancsmagokat:  
 
    ```Powershell
    $FilePathForRegistrationToken = $env:SystemDrive\RegistrationToken.txt
@@ -250,7 +250,7 @@ A Get-tartalom parancsmag segítségével igény szerint, a regisztrációs jogk
 
 Ezt követően kell az aktiválási kulcs lekérése a Register-AzsEnvironment során az Azure-ban létrehozott regisztrációs erőforrás.
 
-Az aktiválási kulcs lekéréséhez futtassa a következő PowerShell-cmdlts:  
+Az aktiválási kulcs lekéréséhez futtassa a következő PowerShell-parancsmagokat:  
 
   ```Powershell
   $RegistrationResourceName = "AzureStack-<Cloud Id for the Environment to register>"
@@ -263,7 +263,7 @@ Az aktiválási kulcs lekéréséhez futtassa a következő PowerShell-cmdlts:
 
 ### <a name="create-an-activation-resource-in-azure-stack"></a>Hozzon létre egy aktiválási erőforrást az Azure Stackben
 
-Térjen vissza az Azure Stack-környezet a fájl vagy a szöveget a Get-AzsActivationKey alapján létrehozott aktiválási kulcs. Ezután létrehozhat egy aktiválási erőforrást az Azure Stack használatával a aktiválási kulcs. Hozzon létre egy aktiválási erőforrást, futtassa a következő PowerShell-cmdlts:  
+Térjen vissza az Azure Stack-környezet a fájl vagy a szöveget a Get-AzsActivationKey alapján létrehozott aktiválási kulcs. Ezután létrehozhat egy aktiválási erőforrást az Azure Stack használatával a aktiválási kulcs. Hozzon létre egy aktiválási erőforrást, futtassa a következő PowerShell-parancsmagokat:  
 
   ```Powershell
   $ActivationKey = "<activation key>"
@@ -329,13 +329,13 @@ Frissítés vagy újítania regisztrációját a következő körülmények köz
 
 Először az aktiválási erőforrás eltávolítása az Azure Stack, és a regisztrációs erőforrás az Azure-ban.  
 
-Az Azure Stack az aktiválási erőforrás eltávolításához futtassa a következő PowerShell-cmdlts az Azure Stack környezettel:  
+Az Azure Stack az aktiválási erőforrás eltávolításához futtassa a következő PowerShell-parancsmagok az Azure Stack környezettel:  
 
   ```Powershell
   Remove-AzsActivationResource -PrivilegedEndpointCredential $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint
   ```
 
-Ezután távolítsa el a regisztrációs erőforrást az Azure-ban, hogy ellenőrizze, hogy a csatlakoztatott Azure-beli számítógép, jelentkezzen be a megfelelő Azure PowerShell-környezetben, és futtassa a megfelelő PowerShell cmdlts, az alább ismertetett.
+Ezután távolítsa el a regisztrációs erőforrást az Azure-ban, hogy ellenőrizze, hogy a csatlakoztatott Azure-beli számítógép, jelentkezzen be a megfelelő Azure PowerShell-környezetben, és a megfelelő PowerShell-parancsmagok futtatásához az alább ismertetett.
 
 A regisztrációs jogkivonatot, használja az erőforrás létrehozásához is használhatja:  
 
@@ -386,6 +386,8 @@ Azure Stack-környezetekben, amelyek egy kapacitás-számlázási modell, kapcso
 
 2. A regisztrációs jogkivonatot az Azure-beli használatra mentse géphez csatlakoztatva. $FilePathForRegistrationToken átmásolhatja a fájlt vagy a szöveget.
 
+## <a name="move-a-registration-resource"></a>Regisztrációs erőforrás áthelyezése
+Regisztrációs erőforrás ugyanahhoz az előfizetéshez tartozó erőforráscsoportok közötti áthelyezése **van** minden környezet esetében támogatott. Azonban regisztrációs erőforrások áthelyezése előfizetések között csak a támogatott CSP-k amikor mindkét előfizetés oldja fel a ugyanezzel az azonosítóval Partner. Erőforrások áthelyezése új erőforráscsoport kapcsolatos további információkért lásd: [erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources).
 
 ## <a name="registration-reference"></a>Alkalmazásregisztráció-referencia
 

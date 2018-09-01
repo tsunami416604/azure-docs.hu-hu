@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/14/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 2a8a23245a17c9a80c70860588a8312dbbb5e926
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 68eab85c7f67ad3af18c6066c29e1250e1be3d23
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37446072"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43344406"
 ---
 # <a name="azure-active-directory-b2c-allow-users-to-sign-in-to-a-multi-tenant-azure-ad-identity-provider-using-custom-policies"></a>Az Azure Active Directory B2C: Engedélyezése a felhasználók számára, hogy jelentkezzen be egy több-bérlős Azure ad-ben identitásszolgáltatótól az egyéni szabályzatok használatával
 
@@ -54,7 +54,7 @@ Bejelentkezés engedélyezése a felhasználók számára a több-bérlős Azure
     >"Yourtenant" értéke csak kisbetűket a a **bejelentkezési URL-**.
 
     ```
-    https://login.microsoftonline.com/te/yourtenant.onmicrosoft.com/oauth2/authresp
+    https://yourtenant.b2clogin.com/te/yourtenant.onmicrosoft.com/oauth2/authresp
     ```
 
 1. Mentse az alkalmazás azonosítója.

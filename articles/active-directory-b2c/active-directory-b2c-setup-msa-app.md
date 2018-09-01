@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/05/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 16e4dbac4c8146b048d4d9b76544677a6111e2a5
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 338c2a197cb50091c3b272e0ce590341ffda1d7f
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37900829"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43341083"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-microsoft-account-using-azure-active-directory-b2c"></a>Regisztráció és bejelentkezés a Microsoft-fiókkal az Azure Active Directory B2C beállítása
 
@@ -28,7 +28,7 @@ Microsoft-fiókot használni Identitásszolgáltatóként az Azure Active Direct
 3. Adjon meg egy **neve** az alkalmazásra, majd a **létrehozás**.
 4. A regisztrációs oldalon másolja az értékét **alkalmazásazonosító**. Használhatja a Microsoft-fiók konfigurálása identitás-szolgáltatóként a bérlőben.
 5. Válassza ki **Hozzáadás platform**, majd válassza ki, és **webes**.
-6. Adja meg `https://login.microsoftonline.com/te/{tenant}/oauth2/authresp` a **átirányítási URL-ek**. Cserélje le **{tenant}** a bérlő nevét (például: contosob2c.onmicrosoft.com).
+6. Adja meg `https://{tenant}.b2clogin.com/te/{tenant}.onmicrosoft.com/oauth2/authresp` a **átirányítási URL-ek**. Cserélje le **{tenant}** a bérlő nevét (például: contosob2c).
 7. Válassza ki **új jelszót létrehozni** alatt **titkos Alkalmazáskulcsok**. Másolja a képernyőn megjelenő új jelszót. Szüksége lesz rá a Microsoft-fiók konfigurálása identitás-szolgáltatóként a bérlőben. Ez a jelszó, egy fontos biztonsági hitelesítő adat.
 
 ## <a name="configure-a-microsoft-account-as-an-identity-provider"></a>Identitás-szolgáltatóként a Microsoft-fiók konfigurálása

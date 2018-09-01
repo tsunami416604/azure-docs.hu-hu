@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/24/2018
 ms.author: cephalin
-ms.openlocfilehash: 78487061dd49c057e8f569fd2ccdaa6408443fd2
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: 40fdd22bdbb3fc0676688430069d58c0422a7ca2
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42885870"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43382116"
 ---
 # <a name="security-in-azure-app-service-and-azure-functions"></a>Biztonság az Azure App Service és az Azure Functions
 
@@ -29,7 +29,7 @@ Az App Service, Azure virtuális gépek, tárolási, hálózati kapcsolatok, web
 
 - Az alkalmazás-erőforrások vannak [biztonságos](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox) az Azure-erőforrások a más ügyfelek adataitól.
 - [Virtuálisgép-példányok és a futtatókörnyezet szoftver rendszeresen frissülnek](app-service-patch-os-runtime.md) cím újonnan felfedezett biztonsági rések. 
-- A titkos kulcsokat (például a kapcsolati karakterláncok) az alkalmazás és más Azure-erőforrások közötti kommunikáció (például [SQL Database](/services/sql-database/)) Azure-ban marad, és nem közötti hálózati határok. Titkos kódok mindig titkosítva vannak tárolt.
+- A titkos kulcsokat (például a kapcsolati karakterláncok) az alkalmazás és más Azure-erőforrások közötti kommunikáció (például [SQL Database](https://azure.microsoft.com/services/sql-database/)) Azure-ban marad, és nem közötti hálózati határok. Titkos kódok mindig titkosítva vannak tárolt.
 - Az App Service-kapcsolatot minden kommunikációhoz használt szolgáltatásokat, például [hibrid kapcsolat](app-service-hybrid-connections.md), titkosítva van. 
 - Kapcsolatok a távoli felügyeleti eszközökkel, mint például az Azure PowerShell-lel, az Azure CLI, Azure SDK, REST API-k, az összes titkosított.
 - kezelés gondoskodik az infrastruktúra és a platform, a kártevők elleni 24 órás threat elosztott szolgáltatásmegtagadásos (DDoS-), man-in-the-middle (MITM) és más fenyegetések ellen.
@@ -84,7 +84,7 @@ A minden egyes ezekben az esetekben App Service-ben is biztosítja, hogy biztons
 
 ### <a name="azure-resources"></a>Azure-erőforrások
 
-Ha az alkalmazás csatlakozik Azure-erőforrások, például [SQL Database](/services/sql-database/) és [Azure Storage](/azure/storage/), a kapcsolat Azure-ban marad, és nem közötti hálózati határok. Azonban a kapcsolatot az Azure-ban a megosztott hálózati áramlik, ezért mindig ellenőrizze, hogy a kapcsolat titkosítva van. 
+Ha az alkalmazás csatlakozik Azure-erőforrások, például [SQL Database](https://azure.microsoft.com/services/sql-database/) és [Azure Storage](/azure/storage/), a kapcsolat Azure-ban marad, és nem közötti hálózati határok. Azonban a kapcsolatot az Azure-ban a megosztott hálózati áramlik, ezért mindig ellenőrizze, hogy a kapcsolat titkosítva van. 
 
 Ha az alkalmazás üzemel egy [App Service Environment-környezet](environment/intro.md), akkor [támogatott Azure-szolgáltatások virtuális hálózati Szolgáltatásvégpontok használatával csatlakozhat](../virtual-network/virtual-network-service-endpoints-overview.md).
 
@@ -117,4 +117,4 @@ Az alábbiakat kivéve a **elkülönített** tarifacsomag, minden szinten az alk
 - Belső alkalmazás használatával egy belső terheléselosztó (ILB), amely lehetővé teszi a hozzáférés csak az Azure virtuális hálózaton belül szolgálnak. Az ILB a privát alhálózatra, így az alkalmazások teljes elkülönítés az internetről származó IP-címmel rendelkezik.
 - [Használja az ILB mögötti webalkalmazási tűzfal (WAF)](environment/integrate-with-application-gateway.md). A WAF a nyilvánosan elérhető alkalmazások, például DDoS elleni védelem, URI szűrési és SQL-injektálás megelőzési nagyvállalati szintű védelmet biztosít.
 
-További információkért lásd: [Introduction to Azure App Service Environment-környezetek](environment/intro.md).
+További információkért lásd: [Introduction to Azure App Service Environment-környezetek](environment/intro.md). 

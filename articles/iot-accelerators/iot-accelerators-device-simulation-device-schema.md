@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/29/2018
 ms.topic: conceptual
-ms.openlocfilehash: a27624d4c7a0bde4b33aefe8d05881b743ce397d
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: b325873819caff139727ec15d6aecd2d4be89c9e
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39285767"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43338155"
 ---
 # <a name="understand-the-device-model-schema"></a>Az eszközmodell sémájának megismerése
 
@@ -24,7 +24,7 @@ Ez a cikk ismerteti az eszközmodell sémájának, amely meghatározza az a funk
 A jelen cikkben kapcsolódó a következő cikkeket:
 
 * [Az eszközmodell viselkedésének megvalósítása](iot-accelerators-device-simulation-device-behavior.md) ismerteti a JavaScript-fájlok használatával szimulált eszköz viselkedésének megvalósítása.
-* [Új szimulált eszköz létrehozása](iot-accelerators-remote-monitoring-test.md) minden egy helyen helyezi, és bemutatja, hogyan helyezhet üzembe egy új szimulált eszköz típusa a megoldáshoz.
+* [Új szimulált eszköz létrehozása](iot-accelerators-device-simulation-create-simulated-device.md) minden egy helyen helyezi, és bemutatja, hogyan helyezhet üzembe egy új szimulált eszköz típusa a megoldáshoz.
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 

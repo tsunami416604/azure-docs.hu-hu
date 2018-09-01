@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/29/2018
 ms.topic: conceptual
-ms.openlocfilehash: b68550bce1f4e3fbe3845c21598720083c8e384c
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 43edbc653ddbd55aab5e722071de1f2cf4bcd1c4
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39285760"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43344516"
 ---
 # <a name="implement-the-device-model-behavior"></a>Az eszközmodell viselkedésének megvalósítása
 
@@ -41,6 +41,6 @@ Ez a cikk ismerteti a saját egyéni szimulált eszközmodell viselkedésének d
 > * Adja meg, hogyan szimulált eszköz válaszol egy metódust hívhat meg csatlakozik az IoT hubról
 > * A parancsfájlok hibakeresése
 
-Most, hogy megismerte a szimulált eszköz viselkedésének megadása, a javasolt következő lépésre megtudhatja, hogyan [egy szimulált eszköz létrehozása](iot-accelerators-remote-monitoring-test.md).
+Most, hogy megismerte a szimulált eszköz viselkedésének megadása, a javasolt következő lépésre megtudhatja, hogyan [egy szimulált eszköz létrehozása](iot-accelerators-device-simulation-create-simulated-device.md).
 
 Az Eszközszimuláció megoldás fejlesztői ismertetését lásd: a [fejlesztői referencia-útmutató](https://github.com/Azure/device-simulation-dotnet/wiki/Simulation-Service-Developer-Reference-Guide).

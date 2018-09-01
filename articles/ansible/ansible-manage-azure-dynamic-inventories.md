@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.date: 08/09/2018
 ms.topic: article
-ms.openlocfilehash: 2757dea5e73f226efc13b7788ce1ab0702aa2e61
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 9de620c5e6a1698b70f25f91a744829548ad5af6
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43104697"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43382331"
 ---
 # <a name="use-ansible-to-manage-your-azure-dynamic-inventories"></a>Az Ansible segítségével az Azure dinamikus leltárak kezelése
 Az Ansible segítségével Hardverleltár-információk lekérése a különböző forrásokból (például az Azure felhőalapú forrásokból is beleértve) egy *dinamikus készlet*. Ebben a cikkben fogja használni a [Azure Cloud Shell](./ansible-run-playbook-in-cloudshell.md) konfigurálása az Ansible az Azure dinamikus készlet két virtuális gépet hoz létre, ezeket a virtuális gépeket egyik címkét, és az Nginx telepítése a címkézett virtuális gépen.
@@ -136,20 +136,21 @@ A címkék célja, hogy gyorsan és egyszerűen dolgozhat a virtuális gépek al
 
 1. Az alábbi kód beszúrása az újonnan létrehozott `nginx.yml` fájlt:
 
-    ```yml
-    - name: Install and start Nginx on an Azure virtual machine
-    hosts: azure
-    become: yes
-    tasks:
-    - name: install nginx
-        apt: pkg=nginx state=installed
-        notify:
-        - start nginx
+```yml
+---
+- name: Install and start Nginx on an Azure virtual machine
+  hosts: azure
+  become: yes
+  tasks:
+  - name: install nginx
+    apt: pkg=nginx state=installed
+    notify:
+    - start nginx
 
-    handlers:
-    - name: start nginx
-        service: name=nginx state=started
-    ```
+  handlers:
+  - name: start nginx
+    service: name=nginx state=started
+```
 
 1. Futtassa a `nginx.yml` forgatókönyv:
 

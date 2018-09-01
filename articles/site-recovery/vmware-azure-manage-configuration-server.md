@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: df5b2ecce2a5c9d7c263ee0acc3a49b859b93f7f
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 8bc04ba7c97447cdcc6eb07798e5f5b21e285de7
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39346120"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43344709"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vms"></a>A konfigurációs kiszolgáló VMware virtuális gépek kezelése
 
@@ -24,7 +24,7 @@ Beállította egy helyszíni konfigurációs kiszolgálót használatakor [Azure
 A konfigurációs kiszolgáló módon érheti el:
     - Jelentkezzen be a virtuális gép, amelyre telepítve van, és indítsa el az Azure Site Recovery Konfigurációkezelő, az asztali parancsikonjára.
     - Azt is megteheti, érheti el a konfigurációs kiszolgáló **https://*ConfigurationServerName*/:44315 /**. Jelentkezzen be rendszergazdai hitelesítő adataival.
-   
+
 ### <a name="modify-vmware-server-settings"></a>VMware-kiszolgáló beállításainak módosítása
 
 1. Szeretne társítani a konfigurációs kiszolgáló, egy másik VMware-kiszolgáló után jelentkezzen be, válassza ki a **Hozzáadás vCenter-kiszolgáló vagy vSphere ESXi kiszolgáló**.
@@ -80,103 +80,113 @@ Ha szeretne újraregisztrálásához a konfigurációs kiszolgáló az ugyanahho
       Set-OBMachineSetting -ProxyServer http://myproxyserver.domain.com -ProxyPort PortNumber – ProxyUserName domain\username -ProxyPassword $pwd
    ```
 
-      >[!NOTE] 
+      >[!NOTE]
       >Annak érdekében, hogy **kérje le a legújabb tanúsítványokat** horizontális felskálázási folyamatkiszolgáló a konfigurációs kiszolgálóról végrehajtani a parancsot *"< telepítési Drive\Microsoft Azure webhely Recovery\agent\cdpcli.exe >"--registermt parancsot*
 
   8. Végezetül indítsa újra az obengine futtassa az alábbi parancsot.
   ```
           net stop obengine
           net start obengine
+  ```
+## <a name="upgrade-the-configuration-server"></a>A konfigurációs kiszolgáló frissítése
 
-## Upgrade the configuration server
+Kumulatív frissítés a konfigurációs kiszolgálót frissíteni fogja futtatni. Frissítések akár N-4 verziók esetében is alkalmazható. Példa:
 
-You run update rollups to update the configuration server. Updates can be applied for up to N-4 versions. For example:
+- Ha 9.7, 9.8, 9.9 vagy 9.10 futtatja, frissítheti, közvetlenül a 9.11.
+- Ha 9.6 vagy korábbi, és a 9.11 frissíteni, először frissítenie kell 9.7 verzióra. Mielőtt 9.11.
 
-- If you run 9.7, 9.8, 9.9, or 9.10, you can upgrade directly to 9.11.
-- If you run 9.6 or earlier and you want to upgrade to 9.11, you must first upgrade to version 9.7. before 9.11.
+Kumulatív frissítések a configuration server összes verziójára való frissítéshez mutató hivatkozások találhatók a [frissítések wikioldal](https://social.technet.microsoft.com/wiki/contents/articles/38544.azure-site-recovery-service-updates.aspx).
 
-Links to update rollups for upgrading to all versions of the configuration server are available in the [wiki updates page](https://social.technet.microsoft.com/wiki/contents/articles/38544.azure-site-recovery-service-updates.aspx).
+A kiszolgáló frissítése a következőképpen:
 
-Upgrade the server as follows:
-
-1. In the vault, go to **Manage** > **Site Recovery Infrastructure** > **Configuration Servers**.
-2. If an update is available, a link appears in the **Agent Version** > column.
+1. A tárolót, lépjen a **kezelés** > **Site Recovery-infrastruktúra** > **konfigurációs kiszolgálók**.
+2. Frissítés érhető el, ha egy hivatkozás megjelenik a **Ügynökverzió** > oszlop.
     ![Update](./media/vmware-azure-manage-configuration-server/update2.png)
-3. Download the update installer file to the configuration server.
+3. Töltse le a frissítést telepítő a konfigurációs kiszolgálón.
 
-    ![Update](./media/vmware-azure-manage-configuration-server/update1.png)
+    ![Frissítés](./media/vmware-azure-manage-configuration-server/update1.png)
 
-4. Double-click to run the installer.
-5. The installer detects the current version running on the machine. Click **Yes** to start the upgrade.
-6. When the upgrade completes the server configuration validates.
+4. A telepítő futtatásához kattintson duplán.
+5. A telepítő észleli a gépen futó verziója. Kattintson a **Igen** a frissítés elindításához.
+6. A frissítés befejezése után ellenőrzi a kiszolgáló konfigurációját.
 
-    ![Update](./media/vmware-azure-manage-configuration-server/update3.png)
-    
-7. Click **Finish** to close the installer.
+    ![Frissítés](./media/vmware-azure-manage-configuration-server/update3.png)
 
-## Delete or unregister a configuration server
+7. Kattintson a **Befejezés** gombra kattintva zárja be a telepítőt.
 
-1. [Disable protection](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure) for all VMs under the configuration server.
-2. [Disassociate](vmware-azure-set-up-replication.md#disassociate-or-delete-a-replication-policy) and [delete](vmware-azure-set-up-replication.md#disassociate-or-delete-a-replication-policy) all replication policies from the configuration server.
-3. [Delete](vmware-azure-manage-vcenter.md#delete-a-vcenter-server) all vCenter servers/vSphere hosts that are associated with the configuration server.
-4. In the vault, open **Site Recovery Infrastructure** > **Configuration Servers**.
-5. Select the configuration server that you want to remove. Then, on the **Details** page, select **Delete**.
+## <a name="delete-or-unregister-a-configuration-server"></a>Törölje vagy a konfigurációs kiszolgáló regisztrációjának törlése
 
-    ![Delete configuration server](./media/vmware-azure-manage-configuration-server/delete-configuration-server.png)
-   
+1. [Tiltsa le a védelmet](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure) a konfigurációs kiszolgáló területén az összes virtuális gép.
+2. [Szüntesse meg az](vmware-azure-set-up-replication.md#disassociate-or-delete-a-replication-policy) és [törlése](vmware-azure-set-up-replication.md#disassociate-or-delete-a-replication-policy) minden replikációs házirendek a konfigurációs kiszolgálóról.
+3. [Törlés](vmware-azure-manage-vcenter.md#delete-a-vcenter-server) minden vCenter kiszolgálók/vSphere-gazdagépek a konfigurációs kiszolgáló társítva.
+4. Nyissa meg a tároló **Site Recovery-infrastruktúra** > **konfigurációs kiszolgálók**.
+5. Válassza ki a konfigurációs kiszolgáló, amely a el kívánja távolítani. Ezután a a **részletek** lapon jelölje be **törlése**.
 
-### Delete with PowerShell
+    ![Konfigurációs kiszolgáló törlése](./media/vmware-azure-manage-configuration-server/delete-configuration-server.png)
 
-You can optionally delete the configuration server by using PowerShell.
 
-1. [Install](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-4.4.0) the Azure PowerShell module.
-2. Sign in to your Azure account by using this command:
-    
+### <a name="delete-with-powershell"></a>Törölje a PowerShell-lel
+
+Szükség esetén törölheti a konfigurációs kiszolgáló PowerShell-lel.
+
+1. [Telepítés](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-4.4.0) az Azure PowerShell modult.
+2. Jelentkezzen be az Azure-fiókjába a következő paranccsal:
+
     `Connect-AzureRmAccount`
-3. Select the vault subscription.
+3. Válassza ki a tároló előfizetését.
 
      `Get-AzureRmSubscription –SubscriptionName <your subscription name> | Select-AzureRmSubscription`
-3.  Set the vault context.
-    
+3.  Állítsa be a tárolási környezet.
+
     ```
-    $vault = get-AzureRmRecoveryServicesVault-név <name of your vault> Set-AzureRmSiteRecoveryVaultSettings - ARSVault $vault
+    $vault = Get-AzureRmRecoveryServicesVault -Name <name of your vault>
+    Set-AzureRmSiteRecoveryVaultSettings -ARSVault $vault
     ```
-4. Retrieve the configuration server.
+4. A konfigurációs kiszolgáló lekéréséhez.
 
     `$fabric = Get-AzureRmSiteRecoveryFabric -FriendlyName <name of your configuration server>`
-6. Delete the configuration server.
+6. A konfigurációs kiszolgáló törlése.
 
     `Remove-AzureRmSiteRecoveryFabric -Fabric $fabric [-Force] `
 
 > [!NOTE]
-> You can use the **-Force** option in Remove-AzureRmSiteRecoveryFabric for forced deletion of the configuration server.
- 
-## Generate configuration server Passphrase
+> Használhatja a **-Force** kényszerített törlése a konfigurációs kiszolgáló, a Remove-AzureRmSiteRecoveryFabric lehetőséget.
 
-1. Sign in to your configuration server, and then open a command prompt window as an administrator.
-2. To change the directory to the bin folder, execute the command **cd %ProgramData%\ASR\home\svsystems\bin**
-3. To generate the passphrase file, execute **genpassphrase.exe -v > MobSvc.passphrase**.
-4. Your passphrase will be stored in the file located at **%ProgramData%\ASR\home\svsystems\bin\MobSvc.passphrase**.
+## <a name="generate-configuration-server-passphrase"></a>Konfigurációs kiszolgáló hozzáférési kód létrehozása
 
-## Renew SSL certificates
+1. Jelentkezzen be a konfigurációs kiszolgáló, és nyissa meg egy parancssori ablakot rendszergazdaként.
+2. Módosítsa a könyvtárat a bin mappát, hajtsa végre a parancsot **cd %ProgramData%\ASR\home\svsystems\bin**
+3. A hozzáférési fájl kódjának létrehozásához hajtsa végre a **genpassphrase.exe - v > MobSvc.passphrase**.
+4. A megadott jelszó lesz tárolva helyen található fájl **%ProgramData%\ASR\home\svsystems\bin\MobSvc.passphrase**.
 
-The configuration server has an inbuilt web server, which orchestrates activities of the Mobility Service, process servers, and master target servers connected to it. The web server uses an SSL certificate to authenticate clients. The certificate expires after three years and can be renewed at any time.
+## <a name="renew-ssl-certificates"></a>SSL-tanúsítványok megújítása
 
-### Check expiry
+A konfigurációs kiszolgáló rendelkezik egy beépített web server, mely a mobilitási szolgáltatást, folyamatkiszolgálók és fő célkiszolgálók ahhoz kapcsolódó tevékenységeket koordinálja. A webkiszolgáló egy SSL-tanúsítványt használ az ügyfelek hitelesítéséhez. A tanúsítvány három év után lejár, és bármikor meg lehet újítani.
 
-For configuration server deployments before May 2016, certificate expiry was set to one year. If you have a certificate that is going to expire, the following occurs:
+### <a name="check-expiry"></a>Lejáratának ellenőrzése
 
-- When the expiry date is two months or less, the service starts sending notifications in the portal, and by email (if you subscribed to Site Recovery notifications).
-- A notification banner appears on the vault resource page. For more information, select the banner.
-- If you see an **Upgrade Now** button, it indicates that some components in your environment haven't been upgraded to 9.4.xxxx.x or higher versions. Upgrade the components before you renew the certificate. You can't renew on older versions.
+Konfigurációs kiszolgáló központi telepítése előtt a 2016. május esetén a tanúsítvány lejárati egy év lett beállítva. Ha rendelkezik egy tanúsítvánnyal, amelyet szeretne érvényessége lejár, az alábbiak történnek:
 
-### Renew the certificate
+- Ha a lejárati dátum két hónapig vagy kevesebb, mint a szolgáltatás elindul, értesítések küldése a portálon, és e-mailben (ha van, amelyre Ön feliratkozott a Site Recovery-értesítések).
+- Egy értesítési szalagcím jelenik meg az erőforrás-tároló oldalon. További információkért válassza ki a szalagcímet.
+- Ha megjelenik egy **frissítés most** gombra, az azt jelzi, hogy néhány összetevőt a környezetben még nem lett frissítve 9.4.xxxx.x vagy újabb verzió. Frissítse az összetevőket, a tanúsítvány megújításához. Régebbi verziójával nem újíthatók.
 
-1. In the vault, open **Site Recovery Infrastructure** > **Configuration Server**. Select the required configuration server.
-2. The expiry date appears under **Configuration Server health**.
-3. Select **Renew Certificates**. 
+### <a name="renew-the-certificate"></a>A tanúsítvány megújítása
 
+1. Nyissa meg a tároló **Site Recovery-infrastruktúra** > **konfigurációs kiszolgáló**. Válassza ki a szükséges konfigurációs kiszolgálót.
+2. Megjelenik a lejárati dátum **konfigurációs kiszolgáló állapota**.
+3. Válassza ki **tanúsítványok megújítása**.
 
-## Next steps
+## <a name="update-windows-licence"></a>Windows-engedély frissítése
 
-Review the tutorials for setting up disaster recovery of [VMware VMs](vmware-azure-tutorial.md) to Azure.
+Az OVF-sablonját a megadott engedély egy értékelési engedély 180 napig érvényes. A zavartalan használat aktiválnia kell a Windows határidődátumával engedéllyel rendelkező.
+
+## <a name="failback-requirements"></a>Feladat-visszavétel követelmények
+
+Védelem-újrabeállítást és a feladat-visszavétel során a helyszíni konfigurációs kiszolgálón fut, és a egy csatlakoztatott állapotban kell lennie. A sikeres feladat-visszavételhez a virtuális gép folyamatban van a feladatátvételben léteznie kell a konfigurációs kiszolgáló adatbázisát.
+
+Győződjön meg arról, hogy a konfigurációs kiszolgáló rendszeres ütemezett biztonsági mentéseket is. Ha katasztrófa történik, és a konfigurációs kiszolgáló, először állítsa vissza a konfigurációs kiszolgálót egy biztonsági másolatból, és győződjön meg arról, hogy a visszaállított kiszolgáló rendelkezik-e az azonos IP-cím, amellyel a tárolóba lett regisztrálva. Feladat-visszavétel nem működik, ha egy másik IP-címet használja a visszaállított konfigurációs kiszolgáló.
+
+## <a name="next-steps"></a>További lépések
+
+Tekintse át az oktatóanyagok, valamint beállításának [VMware virtuális gépek](vmware-azure-tutorial.md) az Azure-bA.

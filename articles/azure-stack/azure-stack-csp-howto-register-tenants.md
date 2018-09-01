@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 07/12/2018
 ms.author: brenduns
 ms.reviewer: alfredo
-ms.openlocfilehash: d5f775761def1c06063cd02b4141c5de2a752cce
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: d3fc3ef6c5fdcf5a87c691c73169ef2bec95805e
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39089910"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43382688"
 ---
 # <a name="add-tenant-for-usage-and-billing-to-azure-stack"></a>Adja hozzá a bérlői használat és számlázás az Azure Stackhez
 
@@ -91,5 +91,5 @@ Miután hozzáadta az új ügyfél az Azure Stackhez, vagy az end ügyfélbérl�
 ## <a name="next-steps"></a>További lépések
 
  - Tekintse át a hibaüzeneteket, ha a regisztrációs folyamat során el, lásd: [bérlő regisztrációs hibaüzenetek](azure-stack-csp-ref-infrastructure.md#usage-and-billing-error-codes).
- - Erőforrás-használati adatok lekérése az Azure Stack kapcsolatos további tudnivalókért lásd: [használat és számlázás az Azure Stackben](/azure-stack-billing-and-chargeback.md).
+ - Erőforrás-használati adatok lekérése az Azure Stack kapcsolatos további tudnivalókért lásd: [használat és számlázás az Azure Stackben](azure-stack-billing-and-chargeback.md).
  - Tekintse át, hogy egy végfelhasználói előfordulhat, hogy vegye fel, a CSP, az Azure stack-kezelőként bérlői, lásd: [engedélyezése az Azure Stack-előfizetés kezelése céljából Felhőszolgáltató](user\azure-stack-csp-enable-billing-usage-tracking.md).

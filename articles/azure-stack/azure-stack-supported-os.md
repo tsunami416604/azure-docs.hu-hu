@@ -1,6 +1,6 @@
 ---
-title: Támogatott vendég operációs rendszerek Azure verem |} Microsoft Docs
-description: A vendég operációs rendszerek használható Azure veremben.
+title: Támogatott vendég operációs rendszereket az Azure Stackhez |} A Microsoft Docs
+description: Ezek a vendég operációs rendszerek az Azure Stacken használható.
 services: azure-stack
 documentationcenter: ''
 author: Brenduns
@@ -15,61 +15,61 @@ ms.topic: article
 ms.date: 05/11/2018
 ms.author: Brenduns
 ms.reviewer: JeffGoldner
-ms.openlocfilehash: 8d9337053c8905886ed4429d64f8ef5b4e2c7d14
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: d6e9531edf8915e4b6c2636372b756002fca10fd
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37060447"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43382399"
 ---
-# <a name="guest-operating-systems-supported-on-azure-stack"></a>Azure-veremben támogatott vendég operációs rendszerek
+# <a name="guest-operating-systems-supported-on-azure-stack"></a>Vendég operációs rendszereket támogatják az Azure Stackben
 
-*A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
+*A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
 
 ## <a name="windows"></a>Windows
 
-Az Azure verem támogatja a Windows operációs rendszereiről a következő táblázatban:
+Az Azure Stack támogatja az alábbi táblázatban felsorolt Windows vendég operációs rendszerek:
 
-| Operációs rendszer | Leírás | Elérhető a piactéren |
+| Operációs rendszer | Leírás | A Marketplace-en elérhető |
 | --- | --- | --- | --- | --- | --- |
-| A Windows Server verzió 1709 | 64 bites | A tárolók Core |
-| Windows Server 2016 | 64 bites |  Datacenter, Datacenter Core tárolók adatközpont |
+| A Windows Server 1709-es verzió | 64 bites | A tárolók Core |
+| Windows Server 2016 | 64 bites |  Datacenter, Datacenter mag, Datacenter tárolókkal |
 | Windows Server 2012 R2 | 64 bites |  Adatközpont |
 | Windows Server 2012 | 64 bites |  Adatközpont |
 | Windows Server 2008 R2 SP1 | 64 bites |  Adatközpont |
-| Windows Server 2008 SP2 | 64 bites |  Saját rendszerkép kapcsolása |
-| Windows 10 *(lásd az 1. megjegyzés)* | 64 bites, Pro és Enterprise | Saját rendszerkép kapcsolása |
+| Windows Server 2008 SP2 | 64 bites |  Saját kép használata |
+| Windows 10-es *(lásd az 1. megjegyzést)* | 64 bites, Pro és Enterprise | Saját kép használata |
 
-***1. Megjegyzés:*** *telepítheti a Windows 10-es ügyfél operációs rendszereket Azure veremben, rendelkeznie kell [Windows felhasználói licencelési](https://www.microsoft.com/en-us/Licensing/product-licensing/windows10.aspx) vagy a vételi keresztül egy minősített több-Bérlős szolgáltató ([QMTH](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx)).*
+***1. Megjegyzés:*** *Windows 10-es ügyfél operációs rendszereken az Azure Stack üzembe helyezéséhez rendelkeznie kell [Windows felhasználói licencelés](https://www.microsoft.com/en-us/Licensing/product-licensing/windows10.aspx) , vagy vásároljon egy minősített több-Bérlős szolgáltató keresztül ([QMTH](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx)).*
 
-Piactéren elérhető rendszerkép fizetési,-akkor-használható vagy BYOL (EA/SPLA) licencelési érhetők el. Mindkét szolgáltatás egyetlen Azure veremben példányra használata nem támogatott. A telepítés során Azure verem esetében a vendégügynök megfelelő verzióját a lemezképpel.
+Marketplace-rendszerképek Használatalapú mint-akkor-használható vagy BYOL (nagyvállalati szerződés/SPLA) licencelési érhetők el. Az Azure Stack egypéldányos használata nem támogatott. Üzembe helyezés során az Azure Stack kódtárba a vendégügynök megfelelő verzióját a lemezképpel.
 
- Datacenter kiadások érhetők el a piactérre letöltése; az ügyfelek a saját kiszolgáló képek, többek között a többi kiadás is kapcsolja. A Windows ügyfél képek nem érhetők el, a piactéren.
+ Datacenter kiadások érhetők el le; a piactéren ügyfelek kihasználhatják a saját kiszolgáló-lemezképekhez, beleértve a többi kiadás voltát. Windows ügyfél képek nem érhetők el a piactéren.
 
 ## <a name="linux"></a>Linux
 
-Linux terjesztésekről tulajdonosaként elérhető a piactéren tartalmazza a szükséges Windows Azure Linux ügynök (WALA). Ha később saját rendszerkép Azure verem, kövesse az útmutatást a [Azure verem lemezképek hozzáadása Linux](azure-stack-linux.md).
+Linux-disztribúciók elérhetőként szerepel a Marketplace-en tartalmazza a szükséges Windows Azure Linux ügynök (WALA). Ha saját rendszerképet az Azure Stackhez, irányelvekhez [hozzáadása típusú Linux-rendszerképeket az Azure Stackhez](azure-stack-linux.md).
 
 > [!NOTE]
-> Egyéni lemezképek kell kialakítani, nyilvános WALA legújabb verziójával. Előfordulhat, hogy Azure verem 2.2.18 régebbi verziói nem működnek majd megfelelően.
+> Egyéni rendszerképek nyilvános WALA legújabb verziójával kell építeni. Előfordulhat, hogy 2.2.18-nél régebbi verziók nem működik megfelelően az Azure Stacken.
 >
-> [felhő inicializálás](https://cloud-init.io/) Azure veremben jelenleg nem támogatott.
+> [a cloud-init](https://cloud-init.io/) jelenleg nem támogatott az Azure Stacken.
 
 | Disztribúció | Leírás | Közzétevő | Piactér |
 | --- | --- | --- | --- | --- | --- |
-| CentOS-alapú 6.9. | 64 bites | Az engedélyezetlen Wave | Igen |
-| 7.4 centOS-alapú | 64 bites | Az engedélyezetlen Wave | Igen |
+| CentOS-alapú 6.9. | 64 bites | Rogue Wave | Igen |
+| CentOS-alapú 7.4 | 64 bites | Rogue Wave | Igen |
 | ClearLinux | 64 bites | ClearLinux.org | Igen |
 | Tároló Linux |  64 bites | CoreOS | Stable |
 | Debian 8 "Jessie" | 64 bites | credativ |  Igen |
 | Debian 9 "Stretch" | 64 bites | credativ | Igen |
-| Red Hat Enterprise Linux 7.x | 64 bites | Red Hat |Saját rendszerkép kapcsolása |
+| Red Hat Enterprise Linux 7.x | 64 bites | Red Hat |Saját kép használata |
 | SLES 11SP4 | 64 bites | SUSE | Igen |
 | SLES 12SP3 | 64 bites | SUSE | Igen |
-| Ubuntu 14.04-es lts verzió | 64 bites | Canonical | Igen |
-| Ubuntu 16.04-es lts verzió | 64 bites | Canonical | Igen |
-| Ubuntu 18.04-es lts verzió | 64 bites | Canonical | Igen |
+| Ubuntu 14.04-LTS | 64 bites | Canonical | Igen |
+| Ubuntu 16.04-LTS | 64 bites | Canonical | Igen |
+| Ubuntu 18.04-LTS | 64 bites | Canonical | Igen |
 
-Más Linux terjesztésekről lehet, hogy a jövőben támogatja.
+Más Linux-disztribúciók lehet, hogy a jövőben támogatja.
 
-Red Hat Enterprise Linux-támogatás információkért tekintse meg [Red Hat és Azure verem: gyakran ismételt kérdések](https://access.redhat.com/articles/3413531).
+Red Hat Enterprise Linux-támogatás információkért tekintse meg a [Red Hat és az Azure Stack: gyakran ismételt kérdések](https://access.redhat.com/articles/3413531).

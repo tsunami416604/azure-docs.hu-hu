@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/08/2018
 ms.author: brenduns
 ms.reviewer: alfredo
-ms.openlocfilehash: bb46881425398618df54288a9d2e6d65bb03dad4
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: ce226bb34c5ff8a7ea7dc44d8428da2bb09e25e5
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42054482"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43382382"
 ---
 # <a name="manage-tenant-registration-in-azure-stack"></a>Az Azure Stack bérlő regisztrációs kezelése
 
@@ -154,4 +154,4 @@ Bérlő leképezések a törlési művelet használatával távolíthatja el.
 
 ## <a name="next-steps"></a>További lépések
 
- - Erőforrás-használati adatok lekérése az Azure Stack kapcsolatos további tudnivalókért lásd: [használat és számlázás az Azure Stackben](/azure-stack-billing-and-chargeback.md).
+ - Erőforrás-használati adatok lekérése az Azure Stack kapcsolatos további tudnivalókért lásd: [használat és számlázás az Azure Stackben](azure-stack-billing-and-chargeback.md).

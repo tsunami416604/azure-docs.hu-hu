@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 228d2d3331b510a0f07dbd3ca278715466d747af
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: 619dda44b5ad74ba1dcb62cfb3318687aa6ec4d5
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38988891"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43340135"
 ---
 # <a name="how-to-use-the-azure-maps-map-control"></a>Az Azure Maps térkép vezérlőelem használata
 A térkép vezérlőelem ügyféloldali Javascript-kódtár térképeket és beágyazott Azure Maps-funkciók jelennek meg a webes vagy mobilalkalmazás segítségével. 
@@ -62,4 +62,4 @@ A térkép vezérlőelem ügyféloldali Javascript-kódtár használatával egy 
 Ez a cikk láthatta, hogyan hozhat létre egy egyszerű térképet az Azure Maps-kulcs. A maps hozzá további kódot példák a következő cikkekben talál: 
 
 * [Térkép létrehozása](map-create.md)
-* [A PIN-kód hozzáadása](map-add-pin.md)
+* [Térkép stílus kiválasztása](choose-map-style.md)

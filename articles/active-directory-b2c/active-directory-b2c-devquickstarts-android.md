@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/06/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 86ef621eccc7e6ba999318348f940a6a3931274e
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 716cf9e47cd71d003513066d390f9dccb5c83dcb
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37442406"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43344126"
 ---
 # <a name="azure-ad-b2c-sign-in-using-an-android-application"></a>Az Azure AD B2C: Bejelentkezés egy Android-alkalmazás használatával
 
@@ -74,7 +74,7 @@ Kommunikációs konfigurálhatja az Azure AD B2C-vel, vagy adja meg a felderít�
 Ha automatikus észleléséhez, az engedélyezési és jogkivonat-végpont URI-k, szüksége lesz az adatok beolvasása a felderítésből URI. A felderítést, és cserélje le a bérlő URI-t hozhat létre\_Azonosítóját és a szabályzat\_az alábbi URL-cím neve:
 
 ```java
-String mDiscoveryURI = "https://login.microsoftonline.com/<Tenant_ID>/v2.0/.well-known/openid-configuration?p=<Policy_Name>";
+String mDiscoveryURI = "https://<Tenant_name>.b2clogin.com/<Tenant_ID>/v2.0/.well-known/openid-configuration?p=<Policy_Name>";
 ```
 
 Ezután az engedélyezési és jogkivonat-végpont URI-k megszerzésére és AuthorizationServiceConfiguration objektum létrehozása a következő futtatásával:
@@ -101,9 +101,9 @@ AuthorizationServiceConfiguration.fetchFromIssuer(
 Felderítési juthat hozzá az engedélyezési és jogkivonat-végpont URI-k helyett azt is beállíthatja azokat explicit módon a bérlő lecserélésével\_Azonosítóját és a szabályzat\_neve az URL-címet az alábbi:
 
 ```java
-String mAuthEndpoint = "https://login.microsoftonline.com/<Tenant_ID>/oauth2/v2.0/authorize?p=<Policy_Name>";
+String mAuthEndpoint = "https://<Tenant_name>.b2clogin.com/<Tenant_ID>/oauth2/v2.0/authorize?p=<Policy_Name>";
 
-String mTokenEndpoint = "https://login.microsoftonline.com/<Tenant_ID>/oauth2/v2.0/token?p=<Policy_Name>";
+String mTokenEndpoint = "https://<Tenant_name>.b2clogin.com/<Tenant_ID>/oauth2/v2.0/token?p=<Policy_Name>";
 ```
 
 Futtassa a következő kódot a AuthorizationServiceConfiguration objektum létrehozásához:

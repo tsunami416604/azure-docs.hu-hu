@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 02/06/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: ee341fd3b54d748849da34cd11db30e5ea758fb1
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: b00eb1b2d25187dc50be53425ebae347edde33b4
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37445268"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43344811"
 ---
 # <a name="azure-ad-b2c-single-page-app-sign-in-by-using-oauth-20-implicit-flow"></a>Az Azure AD B2C: Egyoldalas alkalmazás jelentkezzen be az OAuth 2.0 implicit folyamat
 
@@ -46,7 +46,7 @@ A kéréshez, az ügyfél azt jelzi, hogy az a `scope` paraméter szerzi be a fe
 
 ### <a name="use-a-sign-in-policy"></a>Bejelentkezés szabályzattal
 ```
-GET https://login.microsoftonline.com/fabrikamb2c.onmicrosoft.com/oauth2/v2.0/authorize?
+GET https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/oauth2/v2.0/authorize?
 client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 &response_type=id_token+token
 &redirect_uri=https%3A%2F%2Faadb2cplayground.azurewebsites.net%2F
@@ -59,7 +59,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 
 ### <a name="use-a-sign-up-policy"></a>Előfizetési szabályzat
 ```
-GET https://login.microsoftonline.com/fabrikamb2c.onmicrosoft.com/oauth2/v2.0/authorize?
+GET https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/oauth2/v2.0/authorize?
 client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 &response_type=id_token+token
 &redirect_uri=https%3A%2F%2Faadb2cplayground.azurewebsites.net%2F
@@ -72,7 +72,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 
 ### <a name="use-an-edit-profile-policy"></a>Profil szerkesztése szabályzattal
 ```
-GET https://login.microsoftonline.com/fabrikamb2c.onmicrosoft.com/oauth2/v2.0/authorize?
+GET https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/oauth2/v2.0/authorize?
 client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 &response_type=id_token+token
 &redirect_uri=https%3A%2F%2Faadb2cplayground.azurewebsites.net%2F
@@ -144,11 +144,11 @@ Számos nyílt forráskódú kódtár szeretné használni a nyelvtől függően
 
 Az Azure AD B2C az OpenID Connect metaadatok végpontja van. Egy alkalmazás használhatja a végpont információ az Azure AD B2C-t a futásidőben beolvassa. Ezen információk közé tartozik a végpontokat, a jogkivonat tartalma és a jogkivonat-aláíró kulcsok. Nincs a az Azure AD B2C-bérlő minden egyes házirendjének metaadatok JSON-dokumentumok. Ha például a metaadat-dokumentum fabrikamb2c.onmicrosoft.com bérlőben b2c_1_sign_in házirend következő helyen található:
 
-`https://login.microsoftonline.com/fabrikamb2c.onmicrosoft.com/v2.0/.well-known/openid-configuration?p=b2c_1_sign_in`
+`https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/v2.0/.well-known/openid-configuration?p=b2c_1_sign_in`
 
 A konfigurációs dokumentum tulajdonságainak egyike a `jwks_uri`. Ugyanaz a szabályzat értéke a következő lesz:
 
-`https://login.microsoftonline.com/fabrikamb2c.onmicrosoft.com/discovery/v2.0/keys?p=b2c_1_sign_in`
+`https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/discovery/v2.0/keys?p=b2c_1_sign_in`
 
 Határozza meg, mely a házirend-azonosító jogkivonat aláírásához használt (és beolvassa a metaadatokat a helyét), a két lehetősége van. Először a szabályzat neve szerepel a `acr` a jogcím `id_token`. A jogcímeket egy azonosító jogkivonat elemzése kapcsolatos információkért lásd: a [Azure AD B2C-jogkivonatok referenciájából](active-directory-b2c-reference-tokens.md). A másik lehetőség egy kódolása a szabályzatot az értékét a `state` paramétert a kérés elküldésekor. Ezt követően dekódolni a `state` paraméter határozza meg, mely házirend lett megadva. Mindkét módszer esetén érvényes.
 
@@ -180,7 +180,7 @@ Egy tipikus webes alkalmazás folyamatban, ehhez a kérelem a `/token` végpont.
 
 ```
 
-https://login.microsoftonline.com/fabrikamb2c.onmicrosoft.com/oauth2/v2.0/authorize?
+https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/oauth2/v2.0/authorize?
 client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 &response_type=token
 &redirect_uri=https%3A%2F%2Faadb2cplayground.azurewebsites.net%2F
@@ -254,7 +254,7 @@ Ha szeretne bejelentkezni, a felhasználó ki az alkalmazásból, jelentkezzen k
 A felhasználót, hogy egyszerűen átirányíthatja a `end_session_endpoint` , hogy szerepel-e az azonos OpenID Connect metaadat-dokumentumban ismertetett [az azonosító jogkivonat érvényesítése](#validate-the-id-token). Példa:
 
 ```
-GET https://login.microsoftonline.com/fabrikamb2c.onmicrosoft.com/oauth2/v2.0/logout?
+GET https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/oauth2/v2.0/logout?
 p=b2c_1_sign_in
 &post_logout_redirect_uri=https%3A%2F%2Faadb2cplayground.azurewebsites.net%2F
 ```

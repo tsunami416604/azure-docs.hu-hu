@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/07/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 18f921fb718aeb7ae4add2836fbb6ffabd66668f
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 1a37a37dbed3b5ef9733f1105444529b4d255bcf
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37445058"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43336781"
 ---
 # <a name="azure-active-directory-b2c-a-helper-tool-used-to-demonstrate-the-page-user-interface-ui-customization-feature"></a>Az Azure Active Directory B2C: Segítő használt eszköz a lap felhasználói felületének (UI) testreszabási szolgáltatás bemutatása
 Ez a cikk remek kiegészítése a [fő felhasználói felület testreszabása a cikk](active-directory-b2c-reference-ui-customization.md) Azure Active Directory (Azure AD) B2C-ben. A következő lépések bemutatják, hogyan, amelyeket szeretne a lap felhasználói felületének testreszabási funkcióról a minta HTML és CSS tartalmat, lehetőséget biztosítunk.
@@ -52,7 +52,7 @@ Most kipróbálhatja a testreszabott házirendet. Használhatja a saját alkalma
 ## <a name="upload-the-sample-content-to-azure-blob-storage"></a>A minta tartalom feltöltése az Azure Blob Storage
 Ha szeretné üzemeltetni az oldal tartalmát az Azure Blob Storage használata a saját tárfiók létrehozása, és a B2C segédeszköze használatával a fájlok feltöltése.
 
-### <a name="create-a-storage-account"></a>Create a storage account
+### <a name="create-a-storage-account"></a>Tárfiók létrehozása
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 2. Kattintson a **+ új** > **adatok + tárolás** > **tárfiók**. Szüksége lesz egy Azure Blob Storage-fiók létrehozásához Azure-előfizetés. Regisztrálhat egy ingyenes próbaidőszakot a [Azure-webhelyen](https://azure.microsoft.com/pricing/free-trial/).
 3. Adjon meg egy **neve** a storage-fiók (például "contoso"), és válassza ki a megfelelő összetevőket **tarifacsomag**, **erőforráscsoport** és  **Előfizetés**. Győződjön meg arról, hogy rendelkezik-e a **kezdőpulton rögzít** lehetőség be van jelölve. Kattintson a **Create** (Létrehozás) gombra.
@@ -74,7 +74,7 @@ Letöltheti a [Azure Blob Storage segítő eszközre és .zip-fájlként fájlok
 git clone https://github.com/azureadquickstarts/b2c-azureblobstorage-client
 ```
 
-Ez a tárház tartalmaz egy `sample_templates\wingtip` címtár, például HTML, CSS és képeket tartalmazó. E sablonok való hivatkozáshoz a saját Azure Blob Storage-fiókot szüksége lesz a HTML-fájlok szerkesztéséhez. Nyissa meg `unified.html` és `selfasserted.html` , és cserélje le a példányai `https://localhost` saját tárolót, amelyet az előző lépésekben URL-címével. A HTML-fájlok abszolút elérési útját kell használnia, mivel ebben az esetben a HTML-kódot fog kiszolgálása az internetszolgáltatójuk által az Azure AD-ben az tartományba `https://login.microsoftonline.com`.
+Ez a tárház tartalmaz egy `sample_templates\wingtip` címtár, például HTML, CSS és képeket tartalmazó. E sablonok való hivatkozáshoz a saját Azure Blob Storage-fiókot szüksége lesz a HTML-fájlok szerkesztéséhez. Nyissa meg `unified.html` és `selfasserted.html` , és cserélje le a példányai `https://localhost` saját tárolót, amelyet az előző lépésekben URL-címével. A HTML-fájlok abszolút elérési útját kell használnia, mivel ebben az esetben a HTML-kódot fog kiszolgálása az internetszolgáltatójuk által az Azure AD-ben az tartományba `tenantname.b2clogin.com`.
 
 ### <a name="upload-the-sample-files"></a>A minta-fájlok feltöltése
 Ugyanabban az adattárban, csomagolja ki `B2CAzureStorageClient.zip` , és futtassa a `B2CAzureStorageClient.exe` fájlt. A program egyszerűen töltse fel a címtárban, a tárfiókhoz megadott összes fájlt, és engedélyezze ezeket a fájlokat a CORS-elérését. Ha a fenti lépéseket követte, a HTML és CSS-fájlok most mutatni a tárfiókhoz. Vegye figyelembe, hogy a tárfiók nevét, amely megelőzi a rész `blob.core.windows.net`; például `contoso`. Ellenőrizheti, hogy a tartalom megfelelően lett feltöltve úgy, hogy hozzáférési `https://{storage-account-name}.blob.core.windows.net/{container-name}/wingtip/unified.html` egy böngészőben. Is [ http://test-cors.org/ ](http://test-cors.org/) , győződjön meg arról, hogy a tartalom már CORS-támogatással. (Tekintse meg "XHR állapota: 200-as" az eredményben.)

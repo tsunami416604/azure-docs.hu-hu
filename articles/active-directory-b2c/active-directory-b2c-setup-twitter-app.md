@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/09/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: bf5ae39d83fd021775fbd18cf23d2e6b9078e748
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 6d8e9245e95c08aad69cd05f338b6260e554469b
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37927896"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43337790"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-twitter-account-using-azure-active-directory-b2c"></a>Regisztráljon, és jelentkezzen be a Twitter-fiók az Azure Active Directory B2C beállítása
 
@@ -26,7 +26,7 @@ Twitter-fiók használata Identitásszolgáltatóként az Azure Active Directory
 1. Jelentkezzen be a [Twitter-alkalmazások](https://apps.twitter.com/) a Twitter szolgáltatásbeli hitelesítő adatokkal.
 2. Válassza ki **új alkalmazás létrehozása**.
 3. Adja meg a **neve**, **leírás**, és **webhely**.
-4. Adja meg `https://login.microsoftonline.com/te/{tenant}/{policyId}/oauth1/authresp` a **visszahívási URL-címek**. Cserélje le **{tenant}** a bérlő nevét (például: contosob2c.onmicrosoft.com) és **{policyId}** a házirend-azonosítójú (például b2c_1_policy). Minden szabályzat, amely a Twitter-fiók használata egy visszahívási URL-címet hozzá kell adnia. Győződjön meg arról, hogy használja `b2clogin.com` helyett ` login.microsoftonline.com` Ha az alkalmazás használ.
+4. Adja meg `https://{tenant}.b2clogin.com/te/{tenant}.onmicrosoft.com/{policyId}/oauth1/authresp` a **visszahívási URL-címek**. Cserélje le **{tenant}** a bérlő nevét (például: contosob2c) és **{policyId}** a házirend-azonosítójú (például b2c_1_policy). Minden szabályzat, amely a Twitter-fiók használata egy visszahívási URL-címet hozzá kell adnia. 
 5. Fogadja el a **fejlesztői szerződés** válassza **Twitter-alkalmazás létrehozása**.
 7. Válassza ki a **kulcsok és hozzáférési tokenek** fülre.
 8. Másolja az értéket a **fogyasztói kulcs** és **fogyasztói titkos kulcs**. Twitter-fiók beállítása lehetőséget Identitásszolgáltatóként, a bérlőben mindkettő van szüksége.

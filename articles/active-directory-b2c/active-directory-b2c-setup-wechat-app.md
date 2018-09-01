@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/09/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: e88187c5035abc28ca9deecaf8517e8a21e38d1d
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 418f399213f2b1b60d4d4f464fd9fe89c6f35ba7
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37952334"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43338207"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-wechat-account-using-azure-active-directory-b2c"></a>Regisztráció és bejelentkezés a az Azure Active Directory B2C fiókkal WeChat beállítása
 
@@ -32,7 +32,7 @@ WeChat fiók használatára az identitásszolgáltatójaként az Azure Active Di
 1. Jelentkezzen be a [ https://open.weixin.qq.com/ ](https://open.weixin.qq.com/) WeChat hitelesítő adataival.
 2. Válassza ki**管理中心**(felügyeleti központ).
 3. Kövesse a lépéseket egy új alkalmazás regisztrálásához.
-4. Adja meg `https://login.microsoftonline.com/te/{tenant_name}/oauth2/authresp` a**授权回调域**(visszahívási URL-cím). Például ha a `tenant_name` van contoso.onmicrosoft.com, állítsa be az URL-címet kell `https://login.microsoftonline.com/te/contoso.onmicrosoft.com/oauth2/authresp`.
+4. Adja meg `https://{tenant_name}.b2clogin.com/te/{tenant_name}.onmicrosoft.com/oauth2/authresp` a**授权回调域**(visszahívási URL-cím). Például ha a `tenant_name` a contoso, állítsa be az URL-címet kell `https://contoso.b2clogin.com/te/contoso.onmicrosoft.com/oauth2/authresp`.
 5. Másolás a **Alkalmazásazonosító** és **ALKALMAZÁSKULCS**. Ezek az identitásszolgáltató hozzáadása a bérlőhöz kell.
 
 ## <a name="configure-wechat-as-an-identity-provider-in-your-tenant"></a>WeChat konfigurálása identitás-szolgáltatóként a bérlőben

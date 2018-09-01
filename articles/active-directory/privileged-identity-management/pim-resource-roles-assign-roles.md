@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: pim
-ms.date: 04/02/2018
+ms.date: 08/30/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 7019a6f97a9590d3b652584015f3077f4ed075af
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: b84addf4c45e39e68dd22f6369553d397794f6b0
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43188920"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43340512"
 ---
 # <a name="assign-azure-resource-roles-in-pim"></a>Rendelje hozzá a PIM az Azure-erőforrásszerepkörök
 
@@ -34,59 +34,95 @@ Az Azure AD PIM-ben a beépített Azure-erőforrások szerepköreihez, valamint 
 >[!NOTE]
 Felhasználók vagy a tulajdonos vagy a felhasználói hozzáférés rendszergazdája szerepkör, és előfizetés-kezelés engedélyezése az Azure AD globális rendszergazdák csoport tagjainak olyan erőforrás-rendszergazdák. Ezek a rendszergazdák előfordulhat, hogy szerepköröket, szerepkör-beállítások konfigurálása és a PIM használata az Azure-erőforrások hozzáférésének. A lista megtekintése [beépített szerepkörök az Azure-erőforrások](../../role-based-access-control/built-in-roles.md).
 
-## <a name="assign-roles"></a>Szerepkörök hozzárendelése
+## <a name="assign-a-role"></a>Szerepkör hozzárendelése
 
-Hozzárendelése egy felhasználóhoz vagy csoporthoz egy szerepkör megtekintése közben a **szerepkörök** ablaktáblán válassza ki a szerepkört, és válassza **felhasználó hozzáadása**. 
+Kövesse az alábbi lépéseket, hogy egy felhasználó jogosult az Azure-erőforrás szerepet.
 
-![A "Felhasználó hozzáadása" gombra kattintva a "Szerepkör" panelen](media/azure-pim-resource-rbac/rbac-assign-roles-1.png)
+1. Jelentkezzen be a [az Azure portal](https://portal.azure.com/) egy felhasználóval, amely tagja a [kiemelt szerepkörű rendszergazda](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) szerepkör.
 
-Lehetőség kiválasztásával **felhasználó hozzáadása** származó a **tagok** ablaktáblán.
+    Egy másik rendszergazdai hozzáférést a PIM kezelése kapcsolatos információkért lásd: [hozzáférés biztosítása más rendszergazdák számára, miközben a PIM kezelése](pim-how-to-give-access-to-pim.md).
 
-![A "Felhasználó hozzáadása" gombra kattintva a "Tag" panel](media/azure-pim-resource-rbac/rbac-assign-roles-2.png)
+1. Nyissa meg **az Azure AD Privileged Identity Management**.
 
+    Ha a PIM még nem indult el az Azure Portalon még, ugorjon [használatához a PIM](pim-getting-started.md).
 
-Ha a felhasználó adja hozzá, vagy a csoport a **tagok** panelen kell: 
+1. Kattintson a **Azure-erőforrások**.
 
-1. A munkakör kiválasztása a **Szerepkörválasztás** ablaktáblán egy felhasználó vagy csoport kiválasztása előtt.
+1. Használja a **Erőforrásszűrő** a felügyelt erőforrások szűréséhez.
 
-   !["Szerepkör kiválasztása" panelen](media/azure-pim-resource-rbac/rbac-assign-roles-select-role.png)
+    ![Azure-erőforrások kezelése listája](./media/pim-resource-roles-assign-roles/resources-list.png)
 
-2. Válassza ki egy felhasználót vagy csoportot a címtárból.
+1. Kattintson az erőforrás szeretne felügyelni, mint például egy előfizetést vagy felügyeleti csoportot.
 
-3. A legördülő menüből válassza ki a megfelelő hozzárendelés típusa: 
+1. Kattintson a kezelés, **szerepkörök** szerepkörök az Azure-erőforrások listájának megtekintéséhez.
 
-   - **Szerinti**: a felhasználó vagy csoport tagjai a megadott időszakra vagy határozatlan időre szerepkör jogosult, de nem állandó hozzáférést biztosít (Ha be van állítva, a szerepkör-beállítások). 
-   - **Közvetlen**: nincs szükség a felhasználó vagy csoport tagjai (más néven az állandó hozzáférés) szerepkör-hozzárendelés aktiválását. Ha hozzáférés nem lesz szükség a feladat befejezésekor rövid távú használatra közvetlen hozzárendelés használatát javasoljuk. Példák a készenléti műszakok és időérzékeny tevékenységeket.
+    ![Azure-erőforrások szerepkörök](./media/pim-resource-roles-assign-roles/resources-roles.png)
 
-4. Ha a hozzárendelés kell lennie állandó (just-in-time-hozzárendelés állandó jogosultság, vagy egy közvetlen hozzárendelés állandóan aktív), jelölje be az alábbi jelölőnégyzetet a **hozzárendelés-típus** mezőbe.
+1. Kattintson a **tag hozzáadása** az új hozzárendelés panel megnyitásához.
 
-   ![A "Hozzárendelés-típus" és a kapcsolódó jelölőnégyzeteket "Tagsági beállítások" panelen](media/azure-pim-resource-rbac/rbac-assign-roles-settings.png)
+1. Kattintson a **Szerepkörválasztás** válassza a szerepkör ablaktábla megnyitásához.
 
-   >[!NOTE]
-   >Előfordulhat, hogy a jelölőnégyzet unmodifiable, ha egy másik rendszergazda adta meg a hozzárendelés maximális időtartam minden hozzárendelés-típus a szerepkör-beállítások a.
+    ![Új hozzárendelés ablaktábla](./media/pim-resource-roles-assign-roles/resources-select-role.png)
 
-   Adjon meg egy adott hozzárendelés időtartama, törölje a jelet a jelölőnégyzetből, és a kezdési és/vagy a záró dátum és idő mezők módosításához.
+1. Válasszon egy szerepkört szeretne hozzárendelni, és kattintson a **kiválasztása**.
 
-   !["Tagsági beállítások" panelen szövegbeviteli kezdő dátum, kezdési idő, befejezési dátuma és befejezési időpontja](media/azure-pim-resource-rbac/rbac-assign-roles-duration.png)
+    Válassza a tag vagy a csoport ablaktábla megnyitása.
 
+1. Kattintson a tag vagy csoportot, amelyhez hozzá szeretné rendelni a szerepkört, és kattintson a **kiválasztása**.
 
-## <a name="manage-role-assignments"></a>Szerepkör-hozzárendelések kezelése
+    ![Válassza ki egy tagot vagy csoport ablaktábla](./media/pim-resource-roles-assign-roles/resources-select-member-or-group.png)
 
-Rendszergazdák kezelhetik a szerepkör-hozzárendelések kiválasztásával vagy **szerepkörök** vagy **tagok** a bal oldali ablaktáblán. Kiválasztásával **szerepkörök** lehetővé teszi a rendszergazdák a felügyeleti feladatok egy adott szerepkör hatóköre. Kiválasztásával **tagok** jeleníti meg az összes felhasználó- és szerepkör-hozzárendelések az erőforráshoz.
+    A tagsági beállítások panel nyílik meg.
 
-!["Szerepkör" panelen](media/azure-pim-resource-rbac/rbac-assign-roles-roles.png)
+1. Az a **hozzárendelés-típus** listáról válassza ki **jogosult** vagy **aktív**.
 
-!["Tag" panel](media/azure-pim-resource-rbac/rbac-assign-roles-members.png)
+    ![Tagsági beállítások panel](./media/pim-resource-roles-assign-roles/resources-membership-settings-type.png)
 
->[!NOTE]
-Ha egy függőben lévő aktiválási szerepkör, értesítésszalagról jelenik meg a panel tetején lévő tagság látja.
+    A PIM használata Azure-erőforrások két különböző típusok biztosítja:
 
+    - **Jogosult** hozzárendelések szükséges a szerepkör tagjai egy műveletet a szerepkör használatához. Műveletek tartalmazhat, egy üzleti indoklásának megadása, vagy jóváhagyási kérése a kijelölt jóváhagyókat többtényezős hitelesítés (MFA)-ellenőrzés elvégzése.
 
-## <a name="modify-existing-assignments"></a>Meglévő hozzárendelések módosítása
+    - **Aktív** hozzárendelések nem igénylik a tagot a szerepkör használatához bármely művelet elvégzésére. A tagok hozzárendelve aktívként mindig a szerepkörhöz rendelt jogosultság.
 
-Válassza ki a felhasználó/csoport részletes nézete a meglévő hozzárendelések módosítása esetén **beállításainak módosítása** a művelet sávon. Módosítsa a hozzárendelési típusát **igény szerinti** vagy **közvetlen**.
+1. Ha a hozzárendelés állandó kell lennie (állandó jogosultság vagy állandó jelleggel hozzárendelt), válassza ki a **véglegesen** jelölőnégyzetet.
 
-![A "Beállítások módosítása" gombra kattintva a "Felhasználói details" panel](media/azure-pim-resource-rbac/rbac-assign-role-manage.png)
+    Attól függően, a beállításokat a jelölőnégyzet nem jelenik meg, vagy lehet, hogy unmodifiable.
+
+1. Adjon meg egy adott hozzárendelés időtartama, törölje a jelet a jelölőnégyzetből, és a kezdési és/vagy a záró dátum és idő mezők módosításához.
+
+    ![Tagsági beállítások – dátum és idő](./media/pim-resource-roles-assign-roles/resources-membership-settings-date.png)
+
+1. Ha végzett, kattintson a **Kész** gombra.
+
+    ![-Új-hozzárendelés hozzáadása](./media/pim-resource-roles-assign-roles/resources-new-assignment-add.png)
+
+1. Az új szerepkör-hozzárendelés létrehozásához kattintson a **Hozzáadás**. Megjelenik egy értesítés állapotát.
+
+    ![Új hozzárendelés – értesítés](./media/pim-resource-roles-assign-roles/resources-new-assignment-notification.png)
+
+## <a name="update-or-remove-an-existing-role-assignment"></a>Frissítse vagy egy meglévő szerepkör-hozzárendelés eltávolítása
+
+Kövesse az alábbi lépéseket, frissítéséhez vagy egy meglévő szerepkör-hozzárendelés eltávolításához.
+
+1. Nyissa meg **az Azure AD Privileged Identity Management**.
+
+1. Kattintson a **Azure-erőforrások**.
+
+1. Kattintson az erőforrás szeretne felügyelni, mint például egy előfizetést vagy felügyeleti csoportot.
+
+1. Kattintson a kezelés, **szerepkörök** szerepkörök az Azure-erőforrások listájának megtekintéséhez.
+
+    ![Azure-erőforrások szerepköreihez – szerepkör kiválasztása](./media/pim-resource-roles-assign-roles/resources-update-select-role.png)
+
+1. Kattintson a frissíteni vagy eltávolítani kívánt szerepkört.
+
+1. A szerepkör-hozzárendelés keresése a **jogosult szerepkörök** vagy **aktív szerepkörök** lapokon.
+
+    ![Frissítés vagy a szerepkör-hozzárendelés eltávolítása](./media/pim-resource-roles-assign-roles/resources-update-remove.png)
+
+1. Kattintson a **frissítése** vagy **eltávolítása** frissítéséhez vagy a szerepkör-hozzárendelés eltávolításához.
+
+    Egy szerepkör-hozzárendelés kiterjesztésére vonatkozó további információkért lásd: [bővítése vagy újítanak meg az Azure-erőforrásszerepkörök a PIM](pim-resource-roles-renew-extend.md).
 
 ## <a name="next-steps"></a>További lépések
 

@@ -11,14 +11,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 08/31/2018
 ms.author: mbullwin
-ms.openlocfilehash: cf7c151121ddf8b2dc57d5db66a62f4d46e463de
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 313be519662570debdd7c78a43bbfe7c27e63296
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38970972"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43344630"
 ---
 # <a name="application-insights-overview-dashboard"></a>Application Insights áttekintő irányítópult
 
@@ -46,11 +46,11 @@ Alkalmazás irányítópult kihasználja a meglévő irányítópult technológi
 
 Az alapértelmezett irányítópulton válassza el _alkalmazás irányítópult_ a bal felső sarokban.
 
-![Irányítópult-nézet](.\media\app-insights-overview-dashboard\app-insights-overview-dashboard-05.png)
+![Irányítópult nézet](.\media\app-insights-overview-dashboard\app-insights-overview-dashboard-05.png)
 
 Ha most először az irányítópulthoz hozzáférő, indítja el az alapértelmezett nézet:
 
-![Irányítópult-nézet](.\media\app-insights-overview-dashboard\app-insights-overview-dashboard-06.png)
+![Irányítópult nézet](.\media\app-insights-overview-dashboard\0001-dashboard.png)
 
 Ha például azt megtarthatja az alapértelmezett nézet. Vagy is hozzáadhat, és a csapat igényeinek legjobban megfelelő, az az irányítópult törlése.
 

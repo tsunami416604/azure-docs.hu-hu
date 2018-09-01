@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/16/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 35210a8e93b8437ea4d8c3b5f002c81c549d3afe
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 061e2257200b6d660a421a86c540f43597112c5e
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37444828"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43337885"
 ---
 # <a name="azure-active-directory-b2c-token-session-and-single-sign-on-configuration"></a>Azure Active Directory B2C: Jogkivonat, munkamenet és egyszeri bejelentkezés konfigurálása
 
@@ -64,13 +64,13 @@ Használati esetek, hogy ezek a tulajdonságok használatával engedélyezheti n
     > 
     > 
 
-## <a name="token-compatibility-settings"></a>Jogkivonat-kompatibilitási beállítások
+## <a name="token-compatibility-settings"></a>Biztonságijogkivonat-kompatibilitási beállítások
 
 Formázási módosításokat végeztünk el fontos biztonsági jogkivonatokat az Azure AD B2C által kibocsátott jogcímeket. Ez azért volt szükség, a standard szintű protokoll támogatása javítása és a jobb együttműködés külső identitás-kódtárakat. Azonban ha el szeretné kerülni a meglévő alkalmazások, létrehoztunk lehetővé teszi ügyfeleink számára vehetnek részt igény szerint a következő tulajdonságokkal:
 
 * **Kibocsátói (iss) jogcím**: Ez azonosítja az Azure AD B2C-bérlő, amely kiállította a jogkivonatot.
-  * `https://login.microsoftonline.com/{B2C tenant GUID}/v2.0/`: Ez az az alapértelmezett érték.
-  * `https://login.microsoftonline.com/tfp/{B2C tenant GUID}/{Policy ID}/v2.0/`: Ez az érték a B2C-bérlő és a házirend jogkivonat a kérelemben használt azonosítókat tartalmazza. Ha az alkalmazás vagy könyvtár van szüksége az Azure AD B2C-vel meg kell felelnie az a [OpenID Connect-felderítési 1.0 specifikáció](http://openid.net/specs/openid-connect-discovery-1_0.html), használja ezt az értéket.
+  * `https://<domain>/{B2C tenant GUID}/v2.0/`: Ez az az alapértelmezett érték.
+  * `https://<domain>/tfp/{B2C tenant GUID}/{Policy ID}/v2.0/`: Ez az érték a B2C-bérlő és a házirend jogkivonat a kérelemben használt azonosítókat tartalmazza. Ha az alkalmazás vagy könyvtár van szüksége az Azure AD B2C-vel meg kell felelnie az a [OpenID Connect-felderítési 1.0 specifikáció](http://openid.net/specs/openid-connect-discovery-1_0.html), használja ezt az értéket.
 * **Tárgy (sub) jogcím**: Ez azonosítja az entitást, azaz a felhasználó, amelynek a token használjon esetleg imperatív állításokat információkat.
   * **ObjectID**: Ez az az alapértelmezett érték. A címtárban, a felhasználó Objektumazonosítóját feltölti a `sub` a jogkivonatban található jogcímek.
   * **Nem támogatott**: Ez csak a visszamenőleges kompatibilitás érdekében biztosított. emellett javasoljuk, hogy váltson át a **ObjectID** , amint tudunk.

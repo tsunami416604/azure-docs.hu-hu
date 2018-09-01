@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/23/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 334f696d79cf801facf7c5301b2240b69f7134f7
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 58a595c697b6e1a70089a6683493835e0d3a9780
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37444378"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43344318"
 ---
 # <a name="azure-active-directory-b2c-add-linkedin-as-an-identity-provider-by-using-custom-policies"></a>Az Azure Active Directory B2C: Egyéni szabályzatok használatával hozzáadása az identitás-szolgáltatóként LinkedIn
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
@@ -40,7 +40,7 @@ LinkedIn használatára az identitásszolgáltatójaként az Azure Active Direct
 
     c. Válasszon egy **alkalmazások által használható**.
 
-    d. Az a **webhely URL-címe** mezőbe illessze be **https://login.microsoftonline.com**.
+    d. Az a **webhely URL-címe** mezőbe illessze be **https://{tenant}.b2clogin.com**.  Ahol {*bérlői*} a bérlő neve (például contoso.b2clogin.com).
 
     e. Írja be a **üzleti E-mail** cím és **munkahelyi telefon** számát.
 
@@ -50,7 +50,7 @@ LinkedIn használatára az identitásszolgáltatójaként az Azure Active Direct
 
 3. Válassza ki **hitelesítési**, és jegyezze fel a **ügyfél-azonosító** és **titkos Ügyfélkód** értékeket.
 
-4. Az a **átirányítási URL-címek engedélyezett** mezőbe illessze be **https://login.microsoftonline.com/te/{tenant}.onmicrosoft.com/oauth2/authresp**. Cserélje le a(z)*bérlői*} a bérlő neve (például: contosob2c.onmicrosoft.com). Győződjön meg arról, hogy használja a HTTPS-sémát. 
+4. Az a **átirányítási URL-címek engedélyezett** mezőbe illessze be **https://{tenant}.b2clogin.com/te/{tenant}.onmicrosoft.com/oauth2/authresp**. Cserélje le a(z)*bérlői*} a bérlő neve (például: contosob2c.onmicrosoft.com). Győződjön meg arról, hogy használja a HTTPS-sémát. 
 
     ![LinkedIn-fiók – engedélyezett Set átirányítási URL-címek](media/active-directory-b2c-custom-setup-li-idp/adb2c-ief-setup-li-idp-new-app3.png)
 

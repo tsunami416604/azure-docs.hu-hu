@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: a7d62531492695be6ec148c3bf7b9786b2a428cf
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: d5b01566f672309837f738e185820a0f13eda1c1
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43247395"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43382254"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Az Azure File Sync üzembe helyezésének megtervezése
 Az Azure File Sync használatával fájlmegosztásainak a szervezet az Azure Files között, miközben gondoskodik a rugalmasságát, teljesítményét és kompatibilitását a helyszíni fájlkiszolgálók. Az Azure File Sync Windows Server az Azure-fájlmegosztás gyors gyorsítótáraivá alakítja át. Helyileg, az adatok eléréséhez a Windows Serveren elérhető bármely protokollt használhatja, beleértve az SMB, NFS és FTPS. Tetszőleges számú gyorsítótárak világszerte igény szerint is rendelkezhet.
@@ -112,7 +112,7 @@ Az eredmények megjelenítése a fürt megosztott kötetei szolgáltatás:
 ```
 
 ### <a name="system-requirements"></a>Rendszerkövetelmények
-- A Windows Server 2012 R2 vagy Windows Server 2016 rendszert futtató kiszolgáló 
+- A Windows Server 2012 R2 vagy Windows Server 2016 rendszert futtató kiszolgáló:
 
     | Verzió | Támogatott termékváltozatok | Támogatott központi telepítési beállítások |
     |---------|----------------|------------------------------|
@@ -121,15 +121,15 @@ Az eredmények megjelenítése a fürt megosztott kötetei szolgáltatás:
 
     A Windows Server későbbi verzióiban bekerül vannak. Windows korábbi verzióiban előfordulhat, hogy a felhasználói visszajelzések alapján adható hozzá.
 
-- A kiszolgáló, egy legalább 2GB memória
+    > [!Important]  
+    > Azt javasoljuk, hogy minden kiszolgáló, amelyet az Azure File Sync mindig naprakészek lehetnek az a legújabb frissítéseket a Windows Update gondoskodik. 
+
+- Egy kiszolgáló, egy legalább 2 GB memóriát.
 
     > [!Important]  
-    > Ha a kiszolgáló a dinamikus memória engedélyezve van a virtuális gépen fut, a virtuális gép legalább 2048MB memória található kell konfigurálni.
+    > Ha a kiszolgáló a dinamikus memória engedélyezve van a virtuális gépen fut, a virtuális gép memória egy minimális 2048 MiB kell konfigurálni.
     
-- Az NTFS fájlrendszerrel formázott helyileg csatlakoztatott köteten
-
-> [!Important]  
-> Azt javasoljuk, hogy minden kiszolgáló, amelyet az Azure File Sync mindig naprakészek lehetnek az a legújabb frissítéseket a Windows Update gondoskodik. 
+- Egy helyileg csatlakoztatott NTFS fájlrendszerrel formázott kötet.
 
 ### <a name="file-system-features"></a>Fájlrendszer-szolgáltatásokat
 | Szolgáltatás | Támogatás állapota | Megjegyzések |

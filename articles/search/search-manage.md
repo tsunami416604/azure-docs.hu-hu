@@ -1,6 +1,6 @@
 ---
-title: Az Azure-portálon az Azure Search szolgáltatás adminisztrációs
-description: Kezelheti az Azure Search, egy üzemeltetett felhőalapú keresőszolgáltatás, a Microsoft Azure-ban az Azure portál használatával.
+title: Az Azure Portalon az Azure Search szolgáltatás-felügyelet
+description: Azure Search, egy üzemeltetett felhőalapú keresési szolgáltatás a Microsoft Azure, az Azure portal használatával kezelheti.
 author: HeidiSteen
 manager: cgronlun
 tags: azure-portal
@@ -9,115 +9,115 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 11/09/2017
 ms.author: heidist
-ms.openlocfilehash: 896a12db1ac196b6de1e57dde9b5910e11dcc8c7
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 6e751715146d0dfa5c89ae8c2e8cb23d8337432f
+ms.sourcegitcommit: e45b2aa85063d33853560ec4bc867f230c1c18ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31797042"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43371227"
 ---
-# <a name="service-administration-for-azure-search-in-the-azure-portal"></a>Az Azure-portálon az Azure Search szolgáltatás adminisztrációs
+# <a name="service-administration-for-azure-search-in-the-azure-portal"></a>Az Azure Portalon az Azure Search szolgáltatás-felügyelet
 > [!div class="op_single_selector"]
-> * [Portal](search-manage.md)
+> * [Portál](search-manage.md)
 > * [PowerShell](search-manage-powershell.md)
 > * [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.search)
 > * [Python](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0)> 
 
-Az Azure Search egy teljes körűen felügyelt, felhőalapú keresőszolgáltatás gazdag keresésekhez egyéni alkalmazásokba való létrehozására használt. Ez a cikk ismerteti a *felügyeleti szolgáltatás* elvégezhető feladatokhoz a [Azure-portálon](https://portal.azure.com) már kiépített egy keresési szolgáltatáshoz. *Felügyeleti szolgáltatás* egyszerűsített úgy lett kialakítva, korlátozódik, a következő feladatokat:
+Az Azure Search egy olyan teljes körűen felügyelt, felhőalapú keresési szolgáltatás, amely fejlett keresési funkciókat beépítés egyéni alkalmazásokba. Ez a cikk ismerteti a *szolgáltatás felügyeletét tárgyaló* az elvégezhető feladatok a [az Azure portal](https://portal.azure.com) már kiépített egy keresési szolgáltatás. *Szolgáltatás felügyeletét tárgyaló* egyszerűsített kialakításból fakadóan korlátozódik, a következő feladatokat:
 
-* Kezelését és biztonságossá tételét a hozzáférést a *api-kulcsokat* olvasási vagy írási hozzáféréssel a szolgáltatás használatos.
-* Módosítsa a szolgáltatás kapacitás lefoglalása a partíciók és replikák módosításával.
-* Erőforrás-használat, a szolgáltatási réteg maximális határértékeinek viszonyítva figyelése.
+* Kezelése és biztonságos hozzáférés a *api-kulcsainak* olvasási vagy írási hozzáférés a szolgáltatáshoz használt.
+* Módosítsa a szolgáltatáskapacitás partíciókat és -replikákat a lefoglalt módosításával.
+* Megfigyelheti az erőforrások felhasználását, a szolgáltatási szintben maximálisan korlátait viszonyítva.
 
-Figyelje meg, hogy *frissítése* nem szerepel, mint a felügyeleti feladatot. -Erőforrásokat foglal le, ha a szolgáltatás ki van építve, mert egy másik réteghez kell egy új szolgáltatás. További információkért lásd: [Azure Search szolgáltatás létrehozása](search-create-service-portal.md).
+Figyelje meg, hogy *frissítése* egy felügyeleti feladat nem szerepel. Ha a szolgáltatás ki van építve az erőforrások kiosztásakor, mert egy új szolgáltatás áthelyezése másik tarifacsomagra igényel. További információkért lásd: [Azure Search szolgáltatás létrehozása](search-create-service-portal.md).
 
 > [!Tip]
-> Súgó a keresési forgalom vagy a lekérdezés teljesítményének elemzése keres? Lekérdezés kötet, amely feltételek személyek keres, és hogyan sikeres találatok nyereség betekintést szerepelnek, az ügyfelek irányítása az indexben egyes dokumentumokhoz. Útmutatásért lásd: [keresési forgalom Analytics az Azure Search](search-traffic-analytics.md), [használati és a lekérdezés metrikát](search-monitor-usage.md), és [teljesítmény- és optimalizálási](search-performance-optimization.md).
+> Súgó a keresési forgalom és a lekérdezések teljesítményének elemzése keres? Lekérdezés köteten, használati személyek keresése, és hogyan sikerült keresési eredmények elemezheti találhatók ügyfelek irányítása az indexben lévő egyes dokumentumokhoz. Útmutatásért lásd: [forgalmi elemzések keresése az Azure Search](search-traffic-analytics.md), [figyelheti a használatát, és a lekérdezés mérőszámokat](search-monitor-usage.md), és [teljesítmény és optimalizálás](search-performance-optimization.md).
 
 <a id="admin-rights"></a>
 
 ## <a name="administrator-rights"></a>Rendszergazdai jogosultságok
-Kiépítés, vagy a szolgáltatás leállítására végezhető el az Azure-előfizetéshez rendszergazdai vagy társadminisztrátori.
+Kiépítés, vagy maga a szolgáltatás leszerelése hajtható végre egy Azure-előfizetés rendszergazdájának vagy társrendszergazdájának.
 
-A szolgáltatáson belül bárki, aki hozzáféréssel rendelkezik a szolgáltatás URL-címet és egy adminisztrációs api-kulcsot a szolgáltatás olvasási és írási hozzáférése van. Olvasási és írási hozzáférés lehetővé teszi a hozzáadásához, törléséhez vagy kiszolgálói objektumok, például az api-kulcsokat, indexek, indexelők, adatforrások, ütemezéseihez és szerepkör-hozzárendelések keresztül megvalósított módon módosítására [RBAC által definiált szerepkörök](search-security-rbac.md).
+A szolgáltatáson belül a szolgáltatás URL-címe és a egy felügyeleti api-kulcs segítségével bárki a szolgáltatás olvasási és írási hozzáférése van. Olvasási és írási hozzáférés lehetővé teszi a hozzáadása, törlése és módosítása kiszolgálóobjektumok, beleértve az api-kulcsok, indexek, indexelők, adatforrásokat, ütemezések és szerepkör-hozzárendelések keresztül megvalósított módon [RBAC által definiált szerepkörök](search-security-rbac.md).
 
-Az Azure Search minden felhasználói beavatkozás esik e két beállítás közül: olvasási és írási hozzáférése a szolgáltatáshoz (rendszergazdai jogosultságok), vagy csak olvasási hozzáféréssel a szolgáltatáshoz (lekérdezés jogosultságok). További információkért lásd: [az api-kulcsok kezelése](search-security-api-keys.md).
+Minden felhasználói interakció az Azure Search szolgáltatással csökken az alábbi módok egyikében: olvasási és írási hozzáférése a szolgáltatáshoz (rendszergazdai jogosultságokkal), vagy csak olvasási hozzáférés a szolgáltatáshoz (lekérdezés jogok). További információkért lásd: [api-kulcsok kezelése](search-security-api-keys.md).
 
 <a id="sys-info"></a>
 
-## <a name="logging-and-system-information"></a>Naplózás és a rendszer
-Az Azure Search nem fed fel naplófájlokat egy adott szolgáltatás vagy a portál vagy programozott felületek használatával. Alapszintű rétegben és újabb verzióiban Microsoft figyeli az összes Azure Search szolgáltatás a szolgáltatásszint-szerződések (SLA) / 99,9 %-os rendelkezésre állás érdekében. Ha a szolgáltatás lassú vagy átviteli sebesség SLA-küszöbértékek alá csökken, a támogatási csoportokkal tekintse át a naplófájlok számára elérhető, és a probléma megoldásához.
+## <a name="logging-and-system-information"></a>Naplózás és a rendszer-információ
+Az Azure Search nem biztosít egy adott szolgáltatás vagy a portálon vagy a programozási felületen keresztül a rendszernapló fájljaiban. Az alapszintű csomag és a Microsoft a fenti figyeli az összes Azure Search szolgáltatás 99,9 %-os rendelkezésre állás érdekében egy szolgáltatásiszint-szerződések (SLA). A szolgáltatás lassú vagy átviteli sebesség SLA-küszöbértékek alá csökken, ha a támogatási csapatuk tekintse át a naplófájlok számára elérhető, és a probléma.
 
-A szolgáltatás általános információinak tekintetében Itt kaphat információt a következő módon:
+A szolgáltatással kapcsolatos általános információkért tekintetében a következőképpen szerezheti be információt:
 
-* A portálon, a szolgáltatás irányítópultján, értesítések, a tulajdonságok és az állapotüzenetek keresztül.
-* Használatával [PowerShell](search-manage-powershell.md) vagy a [felügyeleti REST API](https://docs.microsoft.com/rest/api/searchmanagement/) való [szolgáltatás tulajdonságait](https://docs.microsoft.com/rest/api/searchmanagement/services), vagy az index Erőforrás kihasználtsága állapotát.
-* Keresztül [keresési forgalom analytics](search-traffic-analytics.md), ahogy azt már korábban említettük.
+* A portálon, a szolgáltatás irányítópultján, értesítések, a tulajdonságok és a hibaállapot-üzenetek.
+* Használatával [PowerShell](search-manage-powershell.md) vagy a [felügyeleti REST API](https://docs.microsoft.com/rest/api/searchmanagement/) való [szolgáltatás tulajdonságainak lekérése](https://docs.microsoft.com/rest/api/searchmanagement/services), vagy az index erőforrás-használati állapotát.
+* Keresztül [forgalmi elemzések keresése](search-traffic-analytics.md), ahogy korábban említettük.
 
 <a id="sub-5"></a>
 
-## <a name="monitor-resource-usage"></a>A figyelő Erőforrás kihasználtsága
-Az irányítópult erőforrás figyelési korlátozódik a szolgáltatás irányítópultját és néhány metrikák szerezheti be a szolgáltatás lekérdezi a megjelenő információkat. A szolgáltatás irányítópultján, a használati területen segítségével gyorsan megállapítható, hogy partíció erőforrás szintek megfelelőek-e az alkalmazás.
+## <a name="monitor-resource-usage"></a>Erőforrás-használat monitorozása
+Az irányítópult erőforrások monitorozása korlátozódik a szolgáltatás irányítópultját és a szolgáltatás lekérdezésével szerezheti be néhány metrikák látható információk. A szolgáltatás irányítópultján, a használati szakaszban gyorsan meghatározhatja e partíció erőforrásszintek megfelelőek-e az alkalmazás.
 
-A Search szolgáltatás REST API használatával, kaphat a dokumentumok és indexek száma programozott módon: 
+A Search szolgáltatás REST API használatával, kérheti a száma a dokumentumokban és indexekben programozott módon: 
 
-* [Megtekintheti a statisztikákat Index](https://docs.microsoft.com/rest/api/searchservice/Get-Index-Statistics)
-* [A dokumentumok száma](https://docs.microsoft.com/rest/api/searchservice/count-documents)
+* [Index statisztikájának beolvasása](https://docs.microsoft.com/rest/api/searchservice/Get-Index-Statistics)
+* [Dokumentumok száma](https://docs.microsoft.com/rest/api/searchservice/count-documents)
 
-## <a name="disaster-recovery-and-service-outages"></a>Katasztrófa utáni helyreállítás és a szolgáltatás leállások esetén
+## <a name="disaster-recovery-and-service-outages"></a>Vész-helyreállítási és szolgáltatás leállások
 
-Bár az adatok azt is maradványérték, Azure Search nem biztosítanak az azonnali a szolgáltatás esetén kimaradás a fürt vagy data center szinten. A fürt meghibásodik, az adatközpontban, ha a műveleti csapata azonosítja, és állítsa vissza a szolgáltatás hogyan működik. Állásidő fog tapasztalni szolgáltatás visszaállítás során. Szolgáltatási jóváírások kiegyensúlyozása érdekében szolgáltatás elérhetetlensége / kérhet a [szolgáltatási szint szerződés (SLA)](https://azure.microsoft.com/support/legal/sla/search/v1_0/). 
+Bár azt is maradványérték az adatokat, az Azure Search nem biztosít azonnali feladatátvételt a szolgáltatás Ha kimaradás a fürt és a data center szinten van. Ha egy fürtöt az Adatközpont meghibásodik, az üzemeltetési csapat érzékeli, és állítsa vissza a szolgáltatás azt. Szolgáltatás visszaállítás során tapasztalható üzemszünet. Kérheti, hogy a szolgáltatási jóváírások / szolgáltatás elérhetetlensége kompenzálják a [szolgáltatói szerződés (SLA)](https://azure.microsoft.com/support/legal/sla/search/v1_0/). 
 
-Ha folyamatos szolgáltatás kívül a Microsoft végzetes hibák esetén szükséges, hogy sikerült [további szolgáltatás kiépítése](search-create-service-portal.md) egy másik régióban található, és indexek biztosításához georeplikáció stratégia vannak megvalósítása az összes szolgáltatásban teljesen redundáns.
+Ha szolgáltatás kívül a Microsoft érdekeltségébe végzetes hibák esetén szükséges, sikerült [további szolgáltatás kiépítése](search-create-service-portal.md) egy másik régióba, és annak biztosítása érdekében az indexek georeplikációs stratégia vannak megvalósítása Teljesen redundáns összes szolgáltatásban.
 
-Felhasználói [indexelők](search-indexer-overview.md) , és frissítse az indexek kezelni tud a vész-helyreállítási kihasználva ugyanarra az adatforrásra vonatkozó földrajzi indexelők keresztül. Különböző régiókban, amelyeken indexelőt, két szolgáltatást sikerült felületindexét-georedundancia eléréséhez ugyanazon az adatforráson. Ha az adatforrásokat, amelyek is georedundáns vannak indexelő, vegye figyelembe, hogy Azure keresési indexelő csak hajthat végre növekményes indexelő az elsődleges replikára változott. A feladatátadási esemény lehet arra, hogy az indexelő újra mutasson az új elsődleges replika. 
+Ügyfeleink, akik [indexelők](search-indexer-overview.md) , és az indexek frissítése a vész-helyreállítási ugyanazon az adatforráson kihasználva geo-specifikus indexelők révén képes kezelni. Két szolgáltatás különböző régiókban, az indexelők futtatása sikerült indexelésével megkönnyíti a geo-redundancia érdekében ugyanazt az adatforrást. Ha meg vannak, amelyek szintén georedundáns adatforrásokból származó indexelést, vegye figyelembe, hogy az Azure Search-indexelők csak hajthat végre növekményes indexelő az elsődleges replikára. A feladatátadási esemény mindenképpen újra az indexelő átirányítása az új elsődleges replika. 
 
-Ha indexelő nem használja, használja az alkalmazás kódjában leküldéses objektumok és adatok különböző keresési szolgáltatások párhuzamosan. További információkért lásd: [teljesítmény- és az Azure Search optimalizálási](search-performance-optimization.md).
+Ha nem használja az indexelők, használja az alkalmazáskódban leküldéses objektumokat és adatokat a különböző keresési szolgáltatások párhuzamosan. További információkért lásd: [teljesítmény és optimalizálás az Azure Search](search-performance-optimization.md).
 
 ## <a name="backup-and-restore"></a>Biztonsági mentés és visszaállítás
 
-Azure Search nincs olyan elsődleges adatok tárolási megoldást, mert a Microsoft nem vállal formális mechanizmusát önkiszolgáló biztonsági mentését és helyreállítását. Az alkalmazás kódjában létrehozására és az index feltöltése használható a tényleges visszaállítás beállítás, ha véletlenül törli az index. 
+Mivel nem egy elsődleges tárolási megoldás az Azure Search, egy hivatalos önkiszolgáló biztonsági mentési és visszaállítási mechanizmust nem biztosítunk. Az alkalmazás kódjában, létrehozására és a egy index feltöltése, a tényleges visszaállítás lehetőség, ha véletlenül törli az indexet. 
 
-Index újraépítésére, ehhez töltse be újra az elsődleges adattárolóból adatok lekérésével, hozza létre újból az indexet a szolgáltatás a és törli azt (feltéve, hogy létezik-e) el. Azt is megteheti, hogy is elérhetők a [ügyfél-támogatási]() helyreállítási indexben regionális kimaradás esetén.
+Az index újraépítése, lenne törli azt (feltéve, hogy létezik), hozza létre újból az indexet a szolgáltatás a és töltse be újra az elsődleges adattárral az adatok lekérésével. Azt is megteheti elérheti az ügyfélszolgálattal való mentését indexek regionális kimaradás esetén.
 
 
 <a id="scale"></a>
 
 ## <a name="scale-up-or-down"></a>Felfelé és lefelé skálázás
-Minden keresési szolgáltatás kezdődik-e legalább egy másodpéldány és egy partíciót. Ha az egy [réteghez, amelynek biztosít a dedikált erőforrások](search-limits-quotas-capacity.md), kattintson a **MÉRETEZÉSI** Erőforrás kihasználtsága úgy, hogy a szolgáltatás irányítópultján csempére.
+Minden keresési szolgáltatás legalább egy replika és a egy partíció kezdődik. Ha a regisztrált egy [dedikált erőforrásokkal kínál](search-limits-quotas-capacity.md), kattintson a **MÉRETEZÉSI** erőforrás-használat módosíthatja a szolgáltatás irányítópultjának csempéje.
 
-Amikor bármelyik erőforrás keresztül, a szolgáltatás őket automatikusan használja. Semmilyen további műveletet van szükség, de nincs egy kis idő, mielőtt az új erőforrást a hatását létrejött. 15 perc vagy több további erőforrások biztosításához is igénybe vehet.
+Kapacitás keresztül vagy az erőforrás hozzáadásakor a szolgáltatás ezeket automatikusan használja. Nincsenek további Önnek nem kell az Ön részéről, de van egy kis idő előtt, hogy az új erőforrás hatása van. 15 percet vagy többet a további erőforrások kiosztása is igénybe vehet.
 
  ![][10]
 
-### <a name="add-replicas"></a>Adja hozzá a replikák
-Lekérdezések / másodperc (QPS) megnövelni, vagy magas rendelkezésre állás elérése érdekében a replikák hozzáadásával történik. Minden egyes replikának rendelkezik index, egy másolatát, így egy további replika hozzáadása az eszköz egy további lekérdezés szolgáltatáskérések kezelése érhető el index. Legalább 3 replikák szükségesek a magas rendelkezésre állású (lásd: [kapacitástervezés](search-capacity-planning.md) részletekért).
+### <a name="add-replicas"></a>Replikák hozzáadásával
+Növelje a lekérdezések másodpercenkénti (lekérdezési QPS) vagy a magas rendelkezésre állás elérésének replikák hozzáadásával történik. Minden egyes replikának egy példányát az index rendelkezik, így a egy több replika hozzáadása a rendszer lefordítja arra az egyik több index kezelésére lekérdezési kérelmeket. Magas rendelkezésre állás érdekében szükség-e legalább 3 replika (lásd: [kapacitástervezés](search-capacity-planning.md) részletekért).
 
-A keresési szolgáltatást több replikák indexek nagyobb számú betöltheti lekérdezés érkező kérések elosztása. Mivel a lekérdezés kötet, lekérdezés átviteli lesz gyorsabb lehet, ha a kérelem kiszolgálására szolgáló érhető el index több példánya. Ha a lekérdezés késést tapasztal, számíthat pozitív hatása a teljesítményre Ha a további replikák online.
+Egy keresési szolgáltatás több replika kellene lekérdezési érkező kérések elosztása betöltheti keresztül nagy számú indexet. Adja meg a lekérdezés kötet szintű, lekérdezések átviteli sebességére fog gyorsabb lehet, ha az index a kérelem kiszolgálására elérhető több példányt. Ha a lekérdezés késést tapasztal, várható pozitív hatással lehet a teljesítményre követően a további replikák online állapotban.
 
-Lekérdezés átviteli következik be, replikák hozzáadásakor, bár ez nem pontosan duplán vagy háromszoros replikák a szolgáltatáshoz való hozzáadásakor. Az összes keresési alkalmazások is hatással vannak a lekérdezési teljesítményt érintő külső tényezőket vonatkoznak. Összetett lekérdezések és a hálózati késés is két tényező befolyásolja a lekérdezési válaszidőt változata.
+Bár a lekérdezések átviteli sebességére megnő, replikák hozzáadásakor, ez nem pontosan duplán vagy megháromszorozzuk a replikákat a szolgáltatáshoz való hozzáadása során. Alkalmazások keresése az összes külső tényezőkkel, amelyek is hatással vannak a lekérdezési teljesítmény vonatkozik. Összetett lekérdezéseket és a hálózati késés két tényező befolyásolja a lekérdezések válaszidejét változata létezik.
 
-### <a name="add-partitions"></a>Adja hozzá a partíciók
-A legtöbb szolgáltatásalkalmazás nincs további replikák helyett partíciók beépített szüksége. Azokban az esetekben, ahol szükség-e egy nagyobb dokumentumok száma, a partíciók adhat hozzá, ha szabványos szolgáltatáshoz regisztrált. Az alapszintű csomag két további partíció nem ad meg.
+### <a name="add-partitions"></a>Partíciók hozzáadásával
+A legtöbb szolgáltatásalkalmazások nincs beépített szüksége további replikák helyett partíciókat. Azokban az esetekben, ahol egy magasabb dokumentumszám szükség, a partíciókat is hozzáadhat, ha Standard szolgáltatáshoz regisztrált. Alapszintű csomag nem biztosít további partíciókkal.
 
-A Standard csomagot, a partíciók jelentek meg 12 Többszörösök (pontosabban, 1, 2, 3, 4, 6 vagy 12). Ez az összetevő a horizontális. Az index összes partíción 1 vagy 2, 3, 4, 6 vagy 12 partíciók (egy shard partíciónként) egyenlően osztható 12 szilánkok jön létre.
+A Standard szintű, partíciók kerülnek, a 12 többszörösei (pontosabban 1, 2, 3, 4, 6 vagy 12). Ez a horizontális skálázási-összetevője. Az index jön 12 szegmenseket, az összes partíción 1 vagy 2, 3, 4, 6 vagy 12 partícióra (partíciónként egyik adatszilánkba író) egyenlően oszlik.
 
-### <a name="remove-replicas"></a>Távolítsa el a replikák
-Kötetek a lekérdezési időszak után csökkentése érdekében replikák után keresési lekérdezésekkel rendelkezik normalizált (például követően szünnap értékesítési keresztül).
+### <a name="remove-replicas"></a>Replika eltávolítása
+Kötetek a lekérdezési időszakokat, miután csökkentheti replikák követően a keresési lekérdezésekkel van normalizálva, (például után szünnap értékesítési van).
 
-Ehhez a csúszkával replika vissza egy alacsonyabb értékre. Nincs szükség további lépésekre van. A replika számának csökkentésével elhagyja az adatközpontban lévő virtuális gépek. A lekérdezés- és adatfeldolgozást műveletei most a virtuális gépeken kevesebb mint előtt fog futni. A minimális korlát egy replikát.
+Ehhez a csúszkát replika vissza egy kisebb számot. Nincsenek nem kell további lépésekre. A replika száma lowering átadja az adatközpontban lévő virtuális gépek. A lekérdezési és adatfeldolgozási műveletek előtt-nál kevesebb virtuális gépek már futni fog. A minimális korlát egy replika.
 
-### <a name="remove-partitions"></a>Partíciók törlése
-Ellentétben eltávolítása replikákat, amely nincs meg a extra erőfeszítést igényel, lehetséges, hogy néhány munka a teendő, ha csökkenteni lehet, mint további tárhelyet használ. Például ha a megoldás három használ, egy vagy két partícióra downsizing hoz létre hiba esetén az új tárolóhelyre kisebb, mint a szükséges. Várt, a választott során a rendszer törli az indexeket, vagy szabadítson fel lemezterületet, vagy tartani a jelenlegi konfigurációt társított index dokumentumokon.
+### <a name="remove-partitions"></a>Partíciók eltávolítása
+Ellentétben eltávolítása replikákat, amely az Ön részéről nincs extra erőfeszítést igényel, lehetséges, hogy néhány dolgot a teendő, ha csökkenteni lehet, mint további tárhelyet használ. Például ha a megoldás három partíció használ, egy vagy két partícióra downsizing generál hiba esetén az új tárolóhelyre kevesebb, mint a szükséges. Ahogy, a választható lehetőségek: indexek vagy dokumentumok belül társított index szabadítson fel lemezterületet, vagy hagyja a jelenlegi konfiguráció törlése.
 
-Nincs jelzi, hogy melyik index szilánkok tárolt adott partíciókra észlelési módszer. Mindegyik partíció körülbelül 25 GB tárhely, nyújt, így a tárhely csökkentésére, amely rendelkezik partíciók száma elhelyezhetők méretűre kell. Ha vissza szeretné állítani egy partícióhoz, minden 12 szilánkok megfelelően kell.
+Nincs tájékoztatja, hogy melyik index szegmenseket tárolja az adott partíciók észlelési módszer. Mindegyik partíció a storage szolgáltatással, körülbelül 25 GB nyújt, így a csökkentése érdekében a tároló, amely rendelkezik a partíciók száma alapján is elhelyezkedhetnek méretre kell. Ha vissza szeretné állítani egy partícióhoz, minden 12 szegmensre kell megfelelően.
 
-A későbbi tervezést érdekében előfordulhat, hogy ellenőrizni kívánt tárolási (használatával [beolvasása Index statisztika](https://docs.microsoft.com/rest/api/searchservice/Get-Index-Statistics)) mennyi ténylegesen használt megjelenítéséhez. 
+Annak érdekében, a későbbi tervezést, előfordulhat, hogy ellenőrizni kívánt tárolási (használatával [Indexstatisztikáit első](https://docs.microsoft.com/rest/api/searchservice/Get-Index-Statistics)) mennyi ténylegesen használt megtekintéséhez. 
 
 <a id="advanced-deployment"></a>
 
-## <a name="best-practices-on-scale-and-deployment"></a>Gyakorlati tanácsok a méretezés és a központi telepítés
-A 30 perces videó ellenőrzi, hogy gyakorlati tanácsok a speciális telepítési forgatókönyvek, beleértve a földrajzilag elosztott munkaterhelések. Azt is láthatja, [teljesítmény- és az Azure Search optimalizálási](search-performance-optimization.md) fedik le az azonos pontok súgó-lapok.
+## <a name="best-practices-on-scale-and-deployment"></a>Ajánlott eljárások a méretezési és üzembe helyezés
+A 30 perces videót felülvizsgálatok gyakorlati tanácsok a speciális telepítési forgatókönyvek, beleértve a földrajzilag elosztott számítási feladatok. Emellett megtekintheti [teljesítmény és optimalizálás az Azure Search](search-performance-optimization.md) súgóoldalak, mind a azonos pontok számára.
 
 > [!VIDEO https://channel9.msdn.com/Events/Microsoft-Azure/AzureCon-2015/ACON319/player]
 > 
@@ -126,11 +126,11 @@ A 30 perces videó ellenőrzi, hogy gyakorlati tanácsok a speciális telepíté
 <a id="next-steps"></a>
 
 ## <a name="next-steps"></a>További lépések
-Miután megismerte a szolgáltatás felügyeleti fogalmakat, érdemes lehet [PowerShell](search-manage-powershell.md) feladatok automatizálására.
+Miután megismerkedett a szolgáltatások felügyeletével kapcsolatos fogalmakat, érdemes [PowerShell](search-manage-powershell.md) automatizálhatja a feladatokat.
 
-Javasoljuk továbbá tekintse át a [teljesítmény- és optimalizálási cikk](search-performance-optimization.md).
+Emellett ajánlott áttekinteni a [teljesítmény és optimalizálás a cikk](search-performance-optimization.md).
 
-Egy másik javasoljuk, hogy az előző szakaszban az áttelepítés előtt feljegyzett videót. Ebben a szakaszban említett eljárások mélyebb körét biztosít.
+Egy másik javaslat, hogy az előző szakaszban feljegyzett a videó megtekintése. Ebben a szakaszban ismertetett technikák mélyebb lefedettséget biztosít.
 
 <!--Image references-->
 [10]: ./media/search-manage/Azure-Search-Manage-3-ScaleUp.png

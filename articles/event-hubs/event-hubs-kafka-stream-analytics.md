@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2018
 ms.author: spelluru
-ms.openlocfilehash: e1903167911c07b968bae63714584f352bbca182
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: a066d2a55f6949eea316eaf0a2956500667a996f
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43307769"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43340271"
 ---
-# <a name="process-apache-kafka-for-event-hubs-events-using-stream-analytics"></a>Az Apache Kafka folyamat a Stream analytics használatával az Event Hubs-események 
+# <a name="process-apache-kafka-for-event-hubs-events-using-stream-analytics"></a>Apache Kafka for Event Hubs-események feldolgozása Stream Analytics használatával 
 Ez a cikk bemutatja, hogyan adatok streamelése az Event Hubs Kafka-kompatibilis, és az Azure Stream Analyticsszel dolgozza fel. Végigvezeti az alábbi lépéseket: 
 
 1. Hozzon létre egy Kafka engedélyezve van az Event Hubs-névtér.
@@ -83,6 +83,7 @@ A rövid útmutató elvégzéséhez győződjön meg arról, hogy teljesülnek a
     sasl.mechanism=PLAIN
     sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="{CONNECTION STRING for EVENT HUB NAMESPACE}";
     ```
+
 5. Navigáljon a `azure-event-hubs/samples/kafka/quickstart/producer/src/main/java/com/example/app`, és nyissa meg a **TestDataReporter.java** fájlt egy tetszőleges szerkesztőben. 
 6. Tegye megjegyzésbe a következő kódsort:
 

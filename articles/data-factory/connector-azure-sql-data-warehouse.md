@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/28/2018
 ms.author: jingwang
-ms.openlocfilehash: 3c447a37b1dfbdac2c6e2a4eaa61d0e0e08a2176
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: f444c75fb7a7bcd96a508fed337dfc32adccf665
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42442239"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43339015"
 ---
 #  <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Adatok másolása, vagy az Azure SQL Data Warehouse-ból az Azure Data Factory használatával 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you're using:"]
@@ -401,13 +401,14 @@ Az SQL Data Warehouse PolyBase támogatja az Azure Blob- és az Azure Data Lake 
 A követelmények nem teljesülnek, ha az Azure Data Factory ellenőrzi a beállításokat, és automatikusan visszavált az adatok áthelyezése a BULKINSERT mechanizmusa.
 
 1. A **forrás társított szolgáltatás** írja be az Azure Blob storage (**Azure BLOB Storage szolgáltatásról**/**AzureStorage**) fiók kulcsos hitelesítést vagy az Azure Data Lake Tárolási Gen1 (**AzureDataLakeStore**) az egyszerű szolgáltatásnév hitelesítésével.
-1. A **bemeneti adatkészlet** típus **AzureBlob** vagy **AzureDataLakeStoreFile**. A formátum típusa alapján `type` tulajdonságai **OrcFormat**, **ParquetFormat**, vagy **TextFormat**, az alábbi konfigurációkkal:
+2. A **bemeneti adatkészlet** típus **AzureBlob** vagy **AzureDataLakeStoreFile**. A formátum típusa alapján `type` tulajdonságai **OrcFormat**, **ParquetFormat**, vagy **TextFormat**, az alábbi konfigurációkkal:
 
-   1. `rowDelimiter` meg kell **\n**.
-   1. `nullValue` vagy értékre van állítva **üres karakterlánc** ("") vagy alapértelmezett, balra, és `treatEmptyAsNull` nem hamis értékre van állítva.
-   1. `encodingName` értéke **utf-8**, amelynek alapértelmezett értéke.
-   1. `escapeChar`, `quoteChar` és `skipLineCount` nincsenek megadva. A PolyBase támogatási kihagyása fejlécsort, amely konfigurálható `firstRowAsHeader` az ADF-ben.
-   1. `compression` lehet **tömörítés nélküli**, **GZip**, vagy **Deflate**.
+   1. `fileName` helyettesítő karaktert tartalmazó szűrő nem tartalmaz.
+   2. `rowDelimiter` meg kell **\n**.
+   3. `nullValue` vagy értékre van állítva **üres karakterlánc** ("") vagy alapértelmezett, balra, és `treatEmptyAsNull` nem hamis értékre van állítva.
+   4. `encodingName` értéke **utf-8**, amelynek alapértelmezett értéke.
+   5. `escapeChar`, `quoteChar` és `skipLineCount` nincsenek megadva. A PolyBase támogatási kihagyása fejlécsort, amely konfigurálható `firstRowAsHeader` az ADF-ben.
+   6. `compression` lehet **tömörítés nélküli**, **GZip**, vagy **Deflate**.
 
     ```json
     "typeProperties": {

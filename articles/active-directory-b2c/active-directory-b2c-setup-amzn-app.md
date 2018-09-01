@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 5fb6289f75f0c98cc218233d8adb900484ee4a17
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: c64b32656db2d3b821833450b4e866b9e33e44cd
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37916496"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43337345"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-an-amazon-account-using-azure-active-directory-b2c"></a>Regisztráció és bejelentkezés a az Azure Active Directory B2C fiókkal Amazon beállítása
 
@@ -28,7 +28,7 @@ Amazon fiók használatára az identitásszolgáltatójaként az Azure Active Di
 3. Válassza ki **új alkalmazás regisztrálása**.
 4. Adjon meg egy **neve**, **leírás**, és **adatvédelmi nyilatkozat URL-címe**, és kattintson a **mentése**.
 5. Az a **Webbeállításainak** területén, az értékek másolásához **ügyfél-azonosító**. Válassza ki **Show Secret** az ügyfél titkos kulcsát, és másolja azt. Mindkettő konfigurálásához Amazon-fiókkal a bérlőben Identitásszolgáltatóként van szüksége. **Titkos Ügyfélkód** egy fontos biztonsági hitelesítő adat.
-6. Az a **Webbeállításainak** szakaszban jelölje be **szerkesztése**, majd adja meg `https://login.microsoftonline.com` a **JavaScript engedélyezett eredetek** és `https://login.microsoftonline.com/te/{tenant}/oauth2/authresp` a **engedélyezett URL-címek vissza**. Cserélje le **{tenant}** a bérlő nevét (például contoso.onmicrosoft.com). 
+6. Az a **Webbeállításainak** szakaszban jelölje be **szerkesztése**, majd adja meg `https://{tenant}.b2clogin.com` a **JavaScript engedélyezett eredetek** és `https://{tenant}.b2clogin.com/te/{tenant}.onmicrosoft.com/oauth2/authresp` a **engedélyezett URL-címek vissza**. Cserélje le **{tenant}** a bérlő nevét (például: contosob2c). 
 7. Kattintson a **Save** (Mentés) gombra.
 
 ## <a name="configure-an-amazon-account-as-an-identity-provider"></a>Amazon-fiókkal konfigurálása identitás-szolgáltatóként

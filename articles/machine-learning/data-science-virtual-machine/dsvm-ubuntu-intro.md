@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.openlocfilehash: f45bb3b47209bd6b02cea49c23b0a59ad75fc2e2
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: d9008956d3a5542d71438ee13050a3951230e101
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42060644"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43338807"
 ---
 # <a name="provision-the-data-science-virtual-machine-for-linux-ubuntu"></a>Az adatelemző virtuális gép kiépítése Linux (Ubuntu)
 
@@ -81,13 +81,14 @@ Mielőtt létrehozna egy adatelemző virtuális gép Linux, Azure-előfizetésse
 ## <a name="create-your-data-science-virtual-machine-for-linux"></a>Az adatelemző virtuális gép létrehozása Linux rendszeren
 Az alábbiakban a Linux-példány, az adatelemző virtuális gép létrehozásához szükséges lépéseket:
 
-1. Keresse meg a virtuális gépet, az ajánlati a [az Azure portal](https://portal.azure.com/#create/microsoft-ads.linux-data-science-vm-ubuntulinuxdsvmubuntu).
+1. Keresse meg a virtuális gépet, az ajánlati a [az Azure portal](https://portal.azure.com/#create/microsoft-dsvm.linux-data-science-vm-ubuntulinuxdsvmubuntu). A rendszer felkérheti az Azure-fiókkal bejelentkezni, ha már nincs bejelentkezve. 
 1. Kattintson a **létrehozás** (a lap alján) viszi, megjelenik a varázsló.![ Konfigurálja-data-adatelemzési – a virtuális gép](./media/dsvm-ubuntu-intro/configure-data-science-virtual-machine.png)
 1. A következő szakaszok a bemenet minden (a jobb oldalán az előző ábrán felsorolt) a varázsló lépéseit, a Microsoft Data Science virtuális gép létrehozásához használt. Az alábbiakban a bemeneti adatok konfigurálása az egyes lépéseket:
    
    a. **Alapvető beállítások**:
    
    * **Név**: a data science kiszolgáló hoz létre nevet.
+   * **Virtuális merevlemez típusa**: válasszon **prémium szintű SSD** Ha inkább olyan tartós állapotú meghajtót (SSD). Ellenkező esetben válasszon **Standard HDD**. 
    * **Felhasználónév**: első fiók bejelentkezési azonosítója.
    * **Jelszó**: első fiók jelszavát (használhat nyilvános SSH-kulcs jelszava helyett).
    * **Előfizetés**: Ha több előfizetéssel rendelkezik, válassza ki az egyik, amelyen a gép létrehozása és a számlázás. Ez az előfizetés erőforrás létrehozásához szükséges jogosultsággal kell rendelkeznie.
@@ -96,23 +97,17 @@ Az alábbiakban a Linux-példány, az adatelemző virtuális gép létrehozásá
    
    b. **Méret**:
    
-   * Válassza ki a kiszolgáló típusát, amely megfelel a funkcionális és a költségek megkötések. Válassza ki **nézet összes** további lehetőségek a Virtuálisgép-méretek megtekintéséhez. Válasszon ki egy NC vagy GPU képzési ND szintű virtuális gép. A [elérhető termékek régiók szerint](https://azure.microsoft.com/global-infrastructure/services/) lap felsorolja a régiók gpu-k használatával.
+   * Válassza ki a kiszolgáló típusát, amely megfelel a funkcionális és a költségek megkötések. Válassza ki a hálózati Vezérlővel, vagy ND szintű virtuális gépek a GPU-alapú Virtuálisgép-példányok. A [elérhető termékek régiók szerint](https://azure.microsoft.com/global-infrastructure/services/) lap felsorolja a régiók gpu-k használatával.
    
    c. **Beállítások**:
    
-   * **Lemez típusa**: válasszon **prémium** Ha inkább olyan tartós állapotú meghajtót (SSD). Ellenkező esetben válasszon **Standard**. GPU-beli virtuális gépek egy Standard lemez szükséges.
-   * **Storage-fiók**: hozzon létre egy új Azure-tárfiókot az előfizetésében, vagy használjon egy meglévőt, ugyanazon a helyen, amely a választott a **alapjai** , a varázsló.
-   * **Más paramétereket**: A legtöbb esetben csak használja az alapértelmezett értékeket. Érdemes figyelembe venni, nem az alapértelmezett értékeket, a kurzort az egyes mezőkkel tájékoztató mutató hivatkozás.
+   * A legtöbb esetben csak az alapértelmezett értékeket is használhat. Érdemes figyelembe venni, nem az alapértelmezett értékeket, a kurzort az egyes mezőkkel tájékoztató mutató hivatkozás.
    
    d. **Összefoglalás**:
    
-   * Győződjön meg arról, hogy minden, a megadott adatok helyesek.
+   * Győződjön meg arról, hogy minden, a megadott adatok helyesek. Egy hivatkozást a használati feltételeket. A virtuális gép nem rendelkezik a kiválasztott kiszolgáló méretét a számítási túl további díjakat a **mérete** . lépés. A kiépítés indításához kattintson **létrehozás**. 
    
-   e. **Vásároljon**:
-   
-   * A kiépítés indításához kattintson **vásárlása**. Egy hivatkozást a tranzakció feltételeit. A virtuális gép nem rendelkezik a kiválasztott kiszolgáló méretét a számítási túl további díjakat a **mérete** . lépés.
-
-A kiépítés körülbelül 5 – 10 percet vesz igénybe. A kiépítési állapota jelenik meg az Azure Portalon.
+A kiépítés körülbelül 5 percet vesz igénybe. A kiépítési állapota jelenik meg az Azure Portalon.
 
 ## <a name="how-to-access-the-data-science-virtual-machine-for-linux"></a>Az adatelemző virtuális gép elérése Linux rendszeren
 
@@ -434,6 +429,6 @@ Itt látható, hogyan a tanulási és feltárásra továbbra is:
 
 * A [a az adatelemző virtuális gép Linux Data science](linux-dsvm-walkthrough.md) a bemutató ismerteti, hogyan hajthat végre számos gyakori adatelemzési feladatok és a Linux rendszerű adatelemző virtuális gép kiépítése itt. 
 * Próbálja ki az ebben a cikkben leírt eszközök vizsgálja meg az adatelemző virtuális gép a különféle beépített adatelemzési eszközzel. Is futtathat *dsvm-információ – info* a a rendszerhéj belül a virtuális gép alapszintű bevezetést és további információ a virtuális gépen telepített eszközök mutatókat tartalmaznak.  
-* Megtudhatja, hogyan teljes körű elemzési megoldásokat rendszeresen használatával hozhat létre a [csoportos adatelemzési folyamat](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/).
-* Látogasson el a [Cortana Analytics katalógusban](http://gallery.cortanaanalytics.com) machine learning és a data analytics minták, amely a Cortana Analytics Suite használata.
+* Megtudhatja, hogyan teljes körű elemzési megoldásokat rendszeresen használatával hozhat létre a [csoportos adatelemzési folyamat](http://aka.ms/tdsp).
+* Látogasson el a [Azure AI-katalógusban](https://gallery.azure.ai/) machine learning és a data analytics minták, amelyek használják az Azure AI-szolgáltatások.
 

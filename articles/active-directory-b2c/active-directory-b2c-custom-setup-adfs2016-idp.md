@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/04/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: a81baae553bbf9c58d42372e25e90cd7588f2952
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 4380d21eded3f97e3b3107e78c9544a09d1b0bb2
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37445075"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43338530"
 ---
 # <a name="azure-active-directory-b2c-add-adfs-as-a-saml-identity-provider-using-custom-policies"></a>Az Azure Active Directory B2C: AD FS hozzáadása egy SAML identitásszolgáltatótól az egyéni szabályzatok használatával
 
@@ -57,10 +57,10 @@ Tagság a **rendszergazdák**, vagy ezekkel egyenértékű a helyi számítógé
     ![Adja meg a megjelenítendő név és megjegyzések](media/active-directory-b2c-custom-setup-adfs2016-idp/aadb2c-ief-setup-adfs2016-idp-rp-4.png)
 6.  Választható. Ha egy nem kötelező token titkosítási tanúsítványt, majd a a **tanúsítvány konfigurálása** kattintson **Tallózás** keresse meg a tanúsítványfájlt, és kattintson a **tovább**.
     ![Tanúsítvány konfigurálása](media/active-directory-b2c-custom-setup-adfs2016-idp/aadb2c-ief-setup-adfs2016-idp-rp-5.png)
-7.  Az a **URL-cím konfigurálása** lapon válassza ki a **a SAML 2.0 WebSSO-protokoll támogatásának engedélyezése** jelölőnégyzetet. A **függő entitás SAML 2.0 SSO szolgáltatás URL-címe**, írja be a függő entitás megbízhatóságához a Security Assertion Markup Language (SAML) szolgáltatás végpont URL-címe, és kattintson **tovább**.  Az a **függő entitás SAML 2.0 SSO szolgáltatás URL-címe**, illessze be a `https://login.microsoftonline.com/te/{tenant}.onmicrosoft.com/{policy}`. {Tenant} helyére a bérlő neve (például: contosob2c.onmicrosoft.com), és cserélje le a {házirend} a bővítmények a házirend nevét (például B2C_1A_TrustFrameworkExtensions).
+7.  Az a **URL-cím konfigurálása** lapon válassza ki a **a SAML 2.0 WebSSO-protokoll támogatásának engedélyezése** jelölőnégyzetet. A **függő entitás SAML 2.0 SSO szolgáltatás URL-címe**, írja be a függő entitás megbízhatóságához a Security Assertion Markup Language (SAML) szolgáltatás végpont URL-címe, és kattintson **tovább**.  Az a **függő entitás SAML 2.0 SSO szolgáltatás URL-címe**, illessze be a `https://(tenant}.b2clogin.com/te/{tenant}.onmicrosoft.com/{policy}`. {Tenant} helyére a bérlő neve (például: contosob2c), és cserélje le a {házirend} a bővítmények a házirend nevét (például B2C_1A_TrustFrameworkExtensions).
     > [!IMPORTANT]
     >A szabályzat nevét, amely signup_or_signin szabályzatot örökli, ebben az esetben ez: `B2C_1A_TrustFrameworkExtensions`.
-    >Az URL-cím lehet például: https://login.microsoftonline.com/te/ **contosob2c**.onmicrosoft.com/**B2C_1A_TrustFrameworkBase**.
+    >Az URL-cím lehet például: https://**contosob2c**.b2clogin.com/te/**contosob2c**.onmicrosoft.com/**B2C_1A_TrustFrameworkBase**.
 
     ![Függő entitás SAML 2.0 egyszeri bejelentkezési szolgáltatás URL-címe](media/active-directory-b2c-custom-setup-adfs2016-idp/aadb2c-ief-setup-adfs2016-idp-rp-6.png)
 8. Az a **azonosítók konfigurálása** lapon adja meg az ugyanazon URL-címet az előző lépésben leírt, kattintson a **Hozzáadás** vegye fel a listára, és kattintson a **tovább**.

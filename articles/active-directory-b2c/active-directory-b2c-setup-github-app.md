@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/09/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 88fffd28319101c112f848eebc6e8ee27f7f863e
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 11f3f190c0f55e45c549a8bd1de35f78eb7b752d
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37952018"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43337429"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-github-account-using-azure-active-directory-b2c"></a>Regisztráljon, és jelentkezzen be a GitHub-fiók az Azure Active Directory B2C beállítása
 
@@ -30,7 +30,7 @@ Identitás-szolgáltatóként az Azure Active Directory (Azure AD) B2C egy Githu
 1. Jelentkezzen be a [GitHub fejlesztői](https://github.com/settings/developers) webhely a GitHub hitelesítő adataival.
 2. Válassza ki **OAuth alkalmazások** majd **regisztrálhat új alkalmazásokat**.
 3. Adjon meg egy **alkalmazásnév** és a **kezdőlap URL-címe**.
-4. Adja meg `https://login.microsoftonline.com/te/{tenant}/oauth2/authresp` a **engedélyezési visszahívási URL-Címének**. Cserélje le **{tenant}** együtt az Azure AD B2C-bérlő neve (például: contosob2c.onmicrosoft.com).
+4. Adja meg `https://{tenant}.b2clogin.com/te/{tenant}.onmicrosoft.com/oauth2/authresp` a **engedélyezési visszahívási URL-Címének**. Cserélje le **{tenant}** együtt az Azure AD B2C-bérlő neve (például: contosob2c).
 5. Kattintson a **alkalmazás regisztrálása**.
 6. Másolja le az értékeket a **ügyfél-azonosító** és **titkos Ügyfélkód**. Mindkettő az identitásszolgáltató hozzáadása a bérlőhöz van szüksége.
 

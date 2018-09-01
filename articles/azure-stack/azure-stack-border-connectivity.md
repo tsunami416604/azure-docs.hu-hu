@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/26/2018
+ms.date: 08/30/2018
 ms.author: jeffgilb
 ms.reviewer: wamota
-ms.openlocfilehash: 260c58ad9099a4532c8a6558cfcf5c13f0fc8d52
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 39edcb97f062693d11fd5c0ce332c206ebd4b54a
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39282008"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43343553"
 ---
 # <a name="border-connectivity"></a>Szegély kapcsolat 
 Hálózati integráció megtervezése egy fontos előfeltétel sikeres Azure Stackkel integrált rendszerek üzembe helyezés, a művelet és felügyeletéhez. Szegély kapcsolat tervezési kezdődik-e a border gateway protocol (BGP) dinamikus útválasztást használnak a kiválasztásával. A 16 bites BGP autonóm rendszer száma, (nyilvános vagy magán) hozzárendelése ehhez, vagy használja a statikus útválasztást, ahol az alapértelmezett statikus útvonal hozzá van rendelve a border eszközökhöz.
@@ -31,7 +31,7 @@ Hálózati integráció megtervezése egy fontos előfeltétel sikeres Azure Sta
 ## <a name="bgp-routing"></a>A BGP-Útválasztás
 Egy dinamikus útválasztási protokoll, mint a BGP használata garantálja, hogy a rendszer mindig ismeri a hálózati változásokat, és megkönnyíti a felügyeletet. 
 
-Az alábbi ábrán látható, a privát IP-cím hirdetési a TOR-kapcsoló a hely korlátozódik előtag-lista használatával. Az előtag listák megtagadja a magánhálózati IP-alhálózatok és a TOR és szegélye közötti kapcsolat az útvonal-térkép telepítené azt.
+Az alábbi ábrán látható, a privát IP-cím hirdetési a TOR-kapcsoló a hely korlátozódik előtag-lista használatával. Az előtagok listáját a magánhálózati IP-alhálózatok és a TOR és szegélye közötti kapcsolat az útvonal-térkép telepítené azt határozza meg.
 
 A szoftveres terheléselosztó (SLB) az Azure Stack megoldás belül futó a tor-alapú eszközökre is társul, így dinamikusan meghirdethet, hogy a VIP-címek.
 
@@ -44,13 +44,19 @@ Statikus útválasztás, a peremátjáró eszközök további konfigurálására
 
 A statikus útválasztás használatával hálózati környezetébe integrálhatja az Azure Stacket, szegélye és a tor-alapú eszközök közötti összes négy fizikai hivatkozás csatlakoztatva kell lennie, és magas rendelkezésre állás nem garantálható, hogyan statikus útválasztási működése miatt.
 
-A szegély eszköz statikus útvonalak, a külső hálózathoz vagy a nyilvános virtuális IP-címek és infrastruktúra-hálózat felé irányuló forgalom a tor-alapú eszközöket P2P mutató kell konfigurálni. A BMC-hálózathoz statikus útvonalak az üzemelő példány van szükség. Előfordulhat, hogy ügyfél dönt webhelyek hagyja a statikus útvonalakat a szegély egyes a BMC-hálózaton lévő erőforrások eléréséhez.  A statikus útvonalak hozzáadása *kapcsoló-infrastruktúra* és *felügyeleti kapcsoló* hálózatok nem kötelező.
+A szegély eszköz kell konfigurálni a tor-alapú eszközök P2P mutató, a felé irányuló statikus útvonalak a *külső* hálózati vagy a nyilvános virtuális IP-címek és a *infrastruktúra* hálózati. Ehhez szükség lesz a statikus útvonalakat a *BMC* és a *külső* hálózatok központi telepítésére vonatkozóan. Operátorok lehet váltani, hagyja a statikus útvonalakat a szegély, amelyek megtalálhatók a felügyeleti erőforrások eléréséhez a *BMC* hálózati. A statikus útvonalak hozzáadása *kapcsoló-infrastruktúra* és *felügyeleti kapcsoló* hálózatok nem kötelező.
 
 A tor-alapú eszközök az összes adatforgalmat küldő szegély eszközök alapértelmezett statikus útvonal konfigurált származnak. Az alapértelmezett szabályhoz forgalom kivételt jelent a privát területet, amely le van tiltva, egy hozzáférés-vezérlési lista, a TOR szegély kapcsolat a alkalmazni a.
 
 Statikus útválasztás csak azokra a kimenő kapcsolatok a TOR- és szegélytulajdonságok kapcsolók között. Dinamikus útválasztás a BGP használata az állványra szerelt belül, a fontos eszközzel a szoftveres Terheléselosztó és más összetevőket, és nem letiltása vagy eltávolítása.
 
 ![Statikus útválasztás](media/azure-stack-border-connectivity/static-routing.png)
+
+<sup>\*</sup> Üzembe helyezés után a BMC-hálózat nem kötelező.
+
+<sup>\*\*</sup> A kapcsoló-infrastruktúra-hálózat megadása nem kötelező, a teljes hálózati kapcsolók kezelése hálózatban részeként.
+
+<sup>\*\*\*</sup> A kapcsoló felügyeleti hálózat megadása kötelező, és a hálózati kapcsoló-infrastruktúra külön adhatók hozzá.
 
 ## <a name="transparent-proxy"></a>Transzparens proxy
 Ha az Adatközpont igényel minden forgalom a proxy használatát, konfigurálnia kell egy *transzparens proxy* kezelni, a hálózaton a zónák közötti forgalom szétválasztása házirend szerint az állványra szerelt érkező minden feldolgozásához.

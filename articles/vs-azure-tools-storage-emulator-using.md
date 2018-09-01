@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 8/17/2017
 ms.author: ghogen
-ms.openlocfilehash: e4a72729cfe69a810e0eec0a0ac6ddb87a468932
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 4b14fa44f484735f2a5efee4d631a6f48e6a8bf6
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42059165"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43382636"
 ---
 # <a name="configuring-and-using-the-storage-emulator-with-visual-studio"></a>A Storage Emulator használatával a Visual Studióval és konfigurálása
 [!INCLUDE [storage-try-azure-tools](../includes/storage-try-azure-tools.md)]
@@ -33,7 +33,7 @@ A storage emulatort, többek között a rendszerkövetelményeket és egyéni ko
 > 
 
 ## <a name="configuring-a-connection-string-for-the-storage-emulator"></a>A storage Emulator kapcsolati karakterlánc konfigurálása
-A storage emulator eléréséhez kódból szerepkörökben, érdemes konfigurálhat egy kapcsolati karakterláncot, amely a storage emulator mutat, és, amelyek később módosítható átirányítása egy Azure storage-fiókot. Kapcsolati karakterlánc egy konfigurációs beállítás, amely egy storage-fiókhoz való csatlakozáshoz futásidőben a szerepkör is. Kapcsolati karakterláncok létrehozásával kapcsolatos további információkért lásd: [az Azure-alkalmazás konfigurálása](https://msdn.microsoft.com/library/azure/2da5d6ce-f74d-45a9-bf6b-b3a60c5ef74e#BK_SettingsPage).
+A storage emulator eléréséhez kódból szerepkörökben, érdemes konfigurálhat egy kapcsolati karakterláncot, amely a storage emulator mutat, és, amelyek később módosítható átirányítása egy Azure storage-fiókot. Kapcsolati karakterlánc egy konfigurációs beállítás, amely egy storage-fiókhoz való csatlakozáshoz futásidőben a szerepkör is. Kapcsolati karakterláncok létrehozásával kapcsolatos további információkért lásd: [konfigurálása az Azure Storage kapcsolati karakterláncok](/azure/storage/common/storage-configure-connection-string).
 
 > [!NOTE]
 > Lépjen vissza egy hivatkozást a tárfiókra emulátor a kódból használatával a **DevelopmentStorageAccount** tulajdonság. Ez a megközelítés megfelelően működik, ha el szeretne érni a storage emulator a kódból, de ha azt tervezi, közzéteheti az alkalmazását az Azure-ba, szüksége lesz az Azure storage-fiókját, és módosítsa a kódot, hogy a kapcsolat használata a kapcsolati karakterlánc létrehozása karakterlánc közzététel előtt. Ha vált a storage emulator fiók és a egy Azure storage-fiók között gyakran, egy kapcsolati karakterláncot a folyamat leegyszerűsítése érdekében.

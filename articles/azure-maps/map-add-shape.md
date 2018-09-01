@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: b1fe17adc80fc7f93f1511d577b1dc363e36e2e3
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 5315e7d45ef3af838f26422655cf6971af6f903e
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42746001"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43382550"
 ---
 # <a name="add-a-shape-to-a-map"></a>Alakzat hozzáadása a térkép
 
@@ -29,7 +29,7 @@ Ez a cikk bemutatja, hogyan adhat hozzá egy sort, a kör és a egy sokszög a t
 
 A fenti kód az első kódblokkot egy térkép-objektumot hoz létre. Látható [térkép létrehozásához](./map-create.md) útmutatást.
 
-A második kódblokkot, az létrehoz egy sort. Egy sor egy [funkció](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.atlas.data.feature?view=azure-iot-typescript-latest) , LineString, az a funkció tulajdonsága mint LineStringProperties. Használat `new atlas.data.Feature(new atlas.data.LineString())` hozzon létre egy sort, és adja meg a tulajdonságait. 
+A második kódblokkot, az létrehoz egy sort. Egy sor egy [funkció](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature?view=azure-iot-typescript-latest) , LineString, az a funkció tulajdonsága mint LineStringProperties. Használat `new atlas.data.Feature(new atlas.data.LineString())` hozzon létre egy sort, és adja meg a tulajdonságait. 
 
 Egy vonalréteg vonalak egy tömb. A legutóbbi kódblokkot használ [addLineStrings](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addlinestrings) függvény a térkép osztály a vonalréteg hozzáadása a térképen, és a sor réteg tulajdonságainak definiálásához. Megtekintheti a tulajdonságait, egy sor réteg [LinestringLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/models.linestringlayeroptions?view=azure-iot-typescript-latest).
 
@@ -42,7 +42,7 @@ Egy vonalréteg vonalak egy tömb. A legutóbbi kódblokkot használ [addLineStr
 
 A fenti kód az első kódblokkot egy térkép-objektumot hoz létre. Látható [térkép létrehozásához](./map-create.md) útmutatást.
 
-A második kódblokkot, a kör jön létre. Kör van egy [funkció](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.atlas.data.feature?view=azure-iot-typescript-latest) , [pont](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.atlas.data.point?view=azure-iot-typescript-latest) a [CircleProperties](https://docs.microsoft.com/javascript/api/azure-maps-control/modelscircleproperties?view=azure-iot-typescript-latest) , a szolgáltatás tulajdonsága. Használat `new atlas.data.Feature(new atlas.data.Point())` kör létrehozása és a hozzá tartozó tulajdonságok meghatározása.
+A második kódblokkot, a kör jön létre. Kör van egy [funkció](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature?view=azure-iot-typescript-latest) , [pont](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.point?view=azure-iot-typescript-latest) a [CircleProperties](https://docs.microsoft.com/javascript/api/azure-maps-control/models.circleproperties?view=azure-iot-typescript-latest) , a szolgáltatás tulajdonsága. Használat `new atlas.data.Feature(new atlas.data.Point())` kör létrehozása és a hozzá tartozó tulajdonságok meghatározása.
 
 A kör réteg körök tömbjét. A legutóbbi kódblokkot használ [addCircle](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addcircles) függvény a térkép osztály vegyen fel a kör réteget a térkép és a kör réteg tulajdonságainak definiálásához. Lásd: a kör réteg tulajdonságainak [CircleLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/models.circlelayeroptions?view=azure-iot-typescript-latest).
 
@@ -54,7 +54,7 @@ A kör réteg körök tömbjét. A legutóbbi kódblokkot használ [addCircle](h
 
 A fenti kód az első kódblokkot egy térkép-objektumot hoz létre. Látható [térkép létrehozásához](./map-create.md) útmutatást.
 
-A második kódblokkot, a sokszög jön létre. A poligon egy [funkció](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.atlas.data.feature?view=azure-iot-typescript-latest) , [sokszög](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.atlas.data.polygon?view=azure-iot-typescript-latest) a [PolygonProperties](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.atlas.data.polygonproperties?view=azure-iot-typescript-latest) , a szolgáltatás tulajdonsága. Használat `new atlas.data.Feature(new atlas.data.Polygon())` sokszög létrehozni és meghatározni a tulajdonságait. Sokszög elérési útjában a sokszög konstruktor rendezett koordinátáit adja meg.
+A második kódblokkot, a sokszög jön létre. A poligon egy [funkció](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature?view=azure-iot-typescript-latest) , [sokszög](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.polygon?view=azure-iot-typescript-latest) a [PolygonProperties](https://docs.microsoft.com/javascript/api/azure-maps-control/models.polygonproperties?view=azure-iot-typescript-latest) , a szolgáltatás tulajdonsága. Használat `new atlas.data.Feature(new atlas.data.Polygon())` sokszög létrehozni és meghatározni a tulajdonságait. Sokszög elérési útjában a sokszög konstruktor rendezett koordinátáit adja meg.
 
 Egy sokszögréteg poligonok tömbjét. A legutóbbi kódblokkot használ [addPolygons](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addpolygons) függvény a térkép osztály a sokszögréteg hozzáadása a térképen, és adja meg a tulajdonságait. Megtekintheti a tulajdonságait, polygon réteg [PolygonLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/models.polygonlayeroptions?view=azure-iot-typescript-latest). 
 

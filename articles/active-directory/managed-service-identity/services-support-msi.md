@@ -1,6 +1,6 @@
 ---
-title: Azure-szolgáltatások, amelyek támogatják a Felügyeltszolgáltatás-identitás
-description: Felügyeltszolgáltatás-identitást, és az Azure AD-hitelesítést támogató szolgáltatások listája
+title: Azure-szolgáltatások, amelyek támogatják a felügyelt identitások az Azure-erőforrásokhoz
+description: Felügyelt identitások Azure-erőforrások és az Azure AD-hitelesítést támogató szolgáltatások listája
 services: active-directory
 author: daveba
 ms.author: daveba
@@ -9,22 +9,22 @@ ms.topic: conceptual
 ms.service: active-directory
 ms.component: msi
 manager: mtillman
-ms.openlocfilehash: d738abc225e2148460012d9fe200131882b1e698
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 4f7e672aa75d8344f0c4ae35ff2f573d1f48a0ea
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43306167"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43337147"
 ---
-# <a name="services-that-support-managed-service-identity"></a>A Felügyeltszolgáltatás-identitást támogató szolgáltatások 
+# <a name="services-that-support-managed-identities-for-azure-resources"></a>Az Azure-erőforrások felügyelt identitást támogató szolgáltatások
 
-Felügyeltszolgáltatás-identitás az Azure-szolgáltatásokat az Azure Active Directoryban automatikusan felügyelt identitást biztosít. Egy felügyelt identitás használata esetén elvégezheti a hitelesítést minden olyan szolgáltatás, amely támogatja az Azure AD-hitelesítés hitelesítő adatok nélkül a kódban. Jelenleg folyamatban a Felügyeltszolgáltatás-identitást és az Azure AD-hitelesítés integrálása az Azure-ban. Ellenőrizze gyakran frissítéseit.
+Felügyelt identitások az Azure-erőforrások Azure-szolgáltatásokat az Azure Active Directoryban automatikusan felügyelt identitást biztosít. Egy felügyelt identitás használata esetén elvégezheti a hitelesítést minden olyan szolgáltatás, amely támogatja az Azure AD-hitelesítés hitelesítő adatok nélkül a kódban. Jelenleg is zajlik integráló felügyelt identitások Azure-erőforrások és az Azure AD-hitelesítés, Azure-ban. Ellenőrizze gyakran frissítéseit.
 
-## <a name="azure-services-that-support-managed-service-identity"></a>Azure-szolgáltatások, amelyek támogatják a Felügyeltszolgáltatás-identitás
+## <a name="azure-services-that-support-managed-identities-for-azure-resources"></a>Azure-szolgáltatások, amelyek támogatják a felügyelt identitások az Azure-erőforrásokhoz
 
-Az alábbi Azure-szolgáltatásokat támogatja a Felügyeltszolgáltatás-identitást.
+Az alábbi Azure-szolgáltatások támogatják a felügyelt identitások az Azure-erőforrások:
 
-| Szolgáltatás | Rendszer által hozzárendelt állapota | A felhasználói állapot| Konfigurálás | Egy token beszerzése |
+| Szolgáltatás | Alapértelmezett állapot | felhasználó által hozzárendelt állapota| Konfigurálás | Egy token beszerzése |
 | ------- | ------ | ---- | --------- | ----------- |
 | Azure-alapú virtuális gépek | Előzetes verzió | Előzetes verzió | [Azure Portal](qs-configure-portal-windows-vm.md)<br>[PowerShell](qs-configure-powershell-windows-vm.md)<br>[Azure CLI](qs-configure-cli-windows-vm.md)<br>[Az Azure Resource Manager-sablonok](qs-configure-template-windows-vm.md)<br>[REST](qs-configure-rest-vm.md) | [REST](how-to-use-vm-token.md#get-a-token-using-http)<br>[.NET](how-to-use-vm-token.md#get-a-token-using-c)<br>[Bash/Curl](how-to-use-vm-token.md#get-a-token-using-curl)<br>[Go](how-to-use-vm-token.md#get-a-token-using-go)<br>[PowerShell](how-to-use-vm-token.md#get-a-token-using-azure-powershell) |
 | Virtual Machine Scale Sets | Előzetes verzió | Előzetes verzió | [Azure Portal](qs-configure-portal-windows-vmss.md)<br>[PowerShell](qs-configure-powershell-windows-vmss.md)<br>[Azure CLI](qs-configure-cli-windows-vmss.md)<br>[Az Azure Resource Manager-sablonok](qs-configure-template-windows-vmss.md)<br>[REST](qs-configure-rest-vmss.md) | [REST](how-to-use-vm-token.md#get-a-token-using-http)<br>[.NET](how-to-use-vm-token.md#get-a-token-using-c)<br>[Bash/Curl](how-to-use-vm-token.md#get-a-token-using-curl)<br>[Go](how-to-use-vm-token.md#get-a-token-using-go)<br>[PowerShell](how-to-use-vm-token.md#get-a-token-using-azure-powershell)
@@ -36,7 +36,7 @@ Az alábbi Azure-szolgáltatásokat támogatja a Felügyeltszolgáltatás-identi
 
 ## <a name="azure-services-that-support-azure-ad-authentication"></a>Azure-szolgáltatások, hogy a támogatás az Azure AD-hitelesítés
 
-A következő szolgáltatásokat az Azure AD-hitelesítés támogatásához, és a Felügyeltszolgáltatás-identitást használó ügyfél szolgáltatások teszteltük.
+A következő szolgáltatásokat az Azure AD-hitelesítés támogatásához, és az Azure-erőforrások felügyelt identitást használó ügyfél szolgáltatások teszteltük.
 
 | Szolgáltatás | Erőforrás-azonosító | status | Dátum | Hozzáférés hozzárendelése |
 | ------- | ----------- | ------ | ---- | ------------- |

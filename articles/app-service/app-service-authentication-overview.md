@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 08/24/2018
 ms.author: mahender,cephalin
-ms.openlocfilehash: 9b4e86e719998c5f19a70734480356bcb98b8d2f
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: 46f8602583329a0516edb9af59e53754ca349555
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42888100"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43336804"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service"></a>Hitelesítés és engedélyezés az Azure App Service-ben
 
@@ -135,7 +135,7 @@ Ezzel a beállítással nem kell hitelesítési kód írása az alkalmazásban. 
 
 A beállítás **engedélyezése névtelen kérelmek**. Ezt a beállítást kapcsolja be a hitelesítés és engedélyezés az App Service-ben, de az alkalmazás kódjának felhasználását engedélyezési döntésekhez késleltet. Hitelesített kéréseknél App Service-ben is továbbítja a hitelesítési adatokat a HTTP-fejléceket. 
 
-Ez a beállítás a névtelen kérelmek kezelése nagyobb rugalmasságot nyújt. Ha például lehetővé teszi, hogy [található több bejelentkezési lehetőségek](app-service-authentication-how-to.md#configure-multiple-sign-in-options) a felhasználók számára. Azonban rendelkezik kód írására. 
+Ez a beállítás a névtelen kérelmek kezelése nagyobb rugalmasságot nyújt. Ha például lehetővé teszi, hogy [található több bejelentkezési szolgáltatók](app-service-authentication-how-to.md#use-multiple-sign-in-providers) a felhasználók számára. Azonban a kódot kell írnia. 
 
 ## <a name="more-resources"></a>További erőforrások
 

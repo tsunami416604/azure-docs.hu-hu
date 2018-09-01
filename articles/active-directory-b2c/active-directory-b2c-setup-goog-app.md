@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: dd0bf50d73b70e37195e8e5e45336b68e4e883e7
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 477bd6047da639dcf21592a7ec0c1b80844e031e
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37915639"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43337734"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-google-account-using-azure-active-directory-b2c"></a>Regisztráció és bejelentkezés a Google-fiókkal az Azure Active Directory B2C beállítása
 
@@ -30,7 +30,7 @@ Identitás-szolgáltatóként az Azure Active Directory (Azure AD) B2C egy Googl
 4. Válassza ki **konfigurálása beleegyezést kérő oldalon**.
 5. Válasszon vagy adjon meg egy érvényes **E-mail-cím**, adjon meg egy **a felhasználóknak megjelenített Terméknév**, és kattintson a **mentése**.
 6. A **alkalmazástípus**válassza **webes alkalmazás**.
-7. Adjon meg egy **neve** adja meg az alkalmazás `https://login.microsoftonline.com` a **JavaScript engedélyezett eredetek**, és `https://login.microsoftonline.com/te/{tenant}/oauth2/authresp` a **jogosult átirányítási URI-k**. Cserélje le **{tenant}** a bérlő nevét (például: contosob2c.onmicrosoft.com).
+7. Adjon meg egy **neve** adja meg az alkalmazás `https://{tenant}.b2clogin.com` a **JavaScript engedélyezett eredetek**, és `https://{tenant}.b2clogin.com/te/{tenant}.onmicrosoft.com/oauth2/authresp` a **jogosult átirányítási URI-k**. Cserélje le **{tenant}** a bérlő nevét (például: contosob2c).
 8. Kattintson a **Create** (Létrehozás) gombra.
 9. Másolja le az értékeket a **ügyfél-azonosító** és **titkos Ügyfélkód**. Szüksége lesz mindkettő Google konfigurálása identitás-szolgáltatóként a bérlőben. **Titkos Ügyfélkód** egy fontos biztonsági hitelesítő adat.
 

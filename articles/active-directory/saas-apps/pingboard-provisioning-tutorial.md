@@ -16,16 +16,16 @@ ms.topic: article
 ms.date: 10/19/2017
 ms.author: asmalser
 ms.reviewer: asmalser
-ms.openlocfilehash: c5cc20b4f20e3a4f746ab15aa5f139c8e7201a2c
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 93c3b0cbc3ce063aaeb086d089631a8810293bbe
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39447166"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43382533"
 ---
 # <a name="tutorial-configure-pingboard-for-automatic-user-provisioning"></a>Oktatóanyag: Felhasználók automatikus átadása Pingboard konfigurálása
 
-Ez az oktatóanyag célja, a lépéseket kell elvégeznie ahhoz, hogy az automatikus üzembe helyezést és megszüntetést felhasználói fiókok Azure Active Directory (Azure AD) származó, Pingboard mutatni.
+Ez az oktatóanyag célja mutatni az automatikus üzembe helyezést és megszüntetést felhasználói fiókok Azure Active Directory (Azure AD) származó Pingboard való engedélyezéséhez kövesse a lépéseket.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -36,7 +36,7 @@ Az ebben az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy Ön m�
 *   Pingboard rendszergazdai engedélyekkel rendelkező felhasználói fiók 
 
 > [!NOTE] 
-> Azure AD létesítési integrációs támaszkodik a [Pingboard API](`https://your_domain.pingboard.com/scim/v2`), amely érhető el a fiókjához.
+> Azure AD létesítési integrációs támaszkodik a [Pingboard API](https://pingboard.docs.apiary.io/#), amely érhető el a fiókjához.
 
 ## <a name="assign-users-to-pingboard"></a>Felhasználók hozzárendelése Pingboard
 
@@ -52,7 +52,7 @@ Azt javasoljuk, hogy hozzárendelje egyetlen Pingboard az üzembe helyezési kon
 
 ## <a name="configure-user-provisioning-to-pingboard"></a>Felhasználói átadásának konfigurálása, Pingboard 
 
-Ez a szakasz végigvezeti az Azure AD-csatlakozás üzembe helyezési API Pingboard felhasználói fiók. Is konfigurálhatja az eszközkiépítési szolgáltatás létrehozása, frissítése és hozzárendelt felhasználói fiókok a felhasználó hozzárendelések alapján az Azure ad-ben Pingboard letiltása.
+Ez a szakasz végigvezeti az Azure AD-csatlakozás üzembe helyezési API Pingboard felhasználói fiók. Is konfigurálhatja az eszközkiépítési szolgáltatás létrehozása, frissítése és hozzárendelt felhasználói fiókok, az Azure AD felhasználói hozzárendelések alapuló Pingboard a letiltása.
 
 > [!TIP]
 > SAML-alapú egyszeri bejelentkezés az Pingboard engedélyezéséhez kövesse az utasításokat a [az Azure portal](https://portal.azure.com). Egyszeri bejelentkezés konfigurálható az Automatikus kiépítés függetlenül azonban ezen két funkció kiegészíti egymást.
@@ -69,7 +69,7 @@ Ez a szakasz végigvezeti az Azure AD-csatlakozás üzembe helyezési API Pingbo
 
     ![Pingboard kiépítése](./media/pingboard-provisioning-tutorial/pingboardazureprovisioning.png)
     
-1. Alatt a **rendszergazdai hitelesítő adataival** szakaszban, hajtsa végre az alábbi lépéseket:
+1. Alatt a **rendszergazdai hitelesítő adataival** területén kövesse az alábbi lépéseket:
 
     a. A **bérlői URL-cím**, adja meg `https://your_domain.pingboard.com/scim/v2`, és a "adott_tartomány" cserélje le tényleges tartományához.
 
@@ -81,7 +81,7 @@ Ez a szakasz végigvezeti az Azure AD-csatlakozás üzembe helyezési API Pingbo
 
     e. Másolja a tokent az **OAuth tulajdonosi jogkivonat**, írja be a **titkos jogkivonat**.
 
-1. Az Azure Portalon válassza ki a **kapcsolat tesztelése** annak biztosítása érdekében az Azure AD csatlakozhat Pingboard alkalmazását. Ha a kapcsolat hibája esetén, győződjön meg arról, hogy a Pingboard rendszergazdai engedélyekkel rendelkezzen, majd próbálkozzon a **kapcsolat tesztelése** lépés újra.
+1. Az Azure Portalon válassza ki a **kapcsolat tesztelése** tesztelése az Azure ad-ben is képes csatlakozni az Pingboard alkalmazás. Ha a kapcsolódás sikertelen, tesztelheti, hogy a Pingboard rendszergazdai engedélyekkel rendelkezzen, majd próbálja a **kapcsolat tesztelése** lépés újra.
 
 1. Adja meg az e-mail-címét egy személy vagy csoport, amely az üzembe helyezési hiba értesítéseket kapni szeretné **értesítő e-mailt**. Jelölje be a jelölőnégyzetet alá.
 
@@ -95,7 +95,7 @@ Ez a szakasz végigvezeti az Azure AD-csatlakozás üzembe helyezési API Pingbo
 
 1. Válassza ki **mentése** Pingboard rendelt felhasználók kezdeti szinkronizálás elindításához.
 
-A kezdeti szinkronizálás végrehajtásához, mint az ezt követő szinkronizálások, amely körülbelül 40 percenként történik, amíg a szolgáltatás fut hosszabb időt vesz igénybe. Használja a **szinkronizálás részleteivel** előrehaladásának figyeléséhez, és kövesse a hivatkozásokat tevékenységeket tartalmazó naplók kiépítés szakaszt. A naplók Pingboard alkalmazásban a kiépítési szolgáltatás által végrehajtott összes műveletet ismerteti.
+A kezdeti szinkronizálás, mint a következő szinkronizálás, amely körülbelül 40 percenként történik, amíg a szolgáltatás fut hosszabb időt vesz igénybe. Használja a **szinkronizálás részleteivel** előrehaladásának figyeléséhez, és kövesse a hivatkozásokat tevékenységeket tartalmazó naplók kiépítés szakaszt. A naplók Pingboard alkalmazásban a kiépítési szolgáltatás által végrehajtott összes műveletet ismerteti.
 
 Az Azure AD létesítési naplók olvasása további információkért lásd: [automatikus felhasználói fiók üzembe helyezésének jelentést](../active-directory-saas-provisioning-reporting.md).
 

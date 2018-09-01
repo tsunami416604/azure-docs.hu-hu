@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: 7bbcaa82b1072b8cbdea015195a8da03ceb3a25f
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 02dc4657f6c594242d12e3eca270a3549b77bf02
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39056759"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43337758"
 ---
 # <a name="deploy-a-configuration-server"></a>Konfigurációs kiszolgáló üzembe helyezése
 
@@ -81,7 +81,7 @@ Ha szeretne további hálózati Adaptereket adhat hozzá a konfigurációs kiszo
 
 1. A vSphere Client-leltárban kattintson a jobb gombbal a virtuális gépre, és válassza az **Edit Settings** (Beállítások szerkesztése) elemet.
 2. A **Hardware** (Hardver) területen válassza az **Add** > **Ethernet Adapter** (Hozzáadás > Ethernet-adapter) elemet. Ezután kattintson a **Tovább** gombra.
-3. Válassza ki a hálózati adapter típusát és a hálózatot. 
+3. Válassza ki a hálózati adapter típusát és a hálózatot.
 4. Csatlakoztassa a virtuális hálózati Adaptert, amikor a virtuális gép be van kapcsolva, jelölje be **bekapcsolási: Connect**. Válassza ki **tovább** > **Befejezés** > **OK**.
 
 ## <a name="register-the-configuration-server-with-azure-site-recovery-services"></a>A konfigurációs kiszolgáló regisztrálása az Azure Site Recovery szolgáltatásokkal
@@ -102,7 +102,7 @@ Ha szeretne további hálózati Adaptereket adhat hozzá a konfigurációs kiszo
 
     > [!NOTE]
     > Miután regisztrált, nincs nincs rugalmasan módosíthatja a recovery services-tároló.
-    
+
 3. A **harmadik féltől származó szoftverek telepítése**,
 
     |Forgatókönyv   |Végrehajtandó lépések  |
@@ -144,6 +144,10 @@ Ha szeretne további hálózati Adaptereket adhat hozzá a konfigurációs kiszo
 ## <a name="upgrade-the-configuration-server"></a>A konfigurációs kiszolgáló frissítése
 
 A konfigurációs kiszolgáló frissítése a legújabb verzióra, olvassa el a megadott lépéseket [Itt](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server)
+
+## <a name="manage-the-configuration-server"></a>A konfigurációs kiszolgáló kezelése
+
+Folyamatban lévő replikáció megszakítása a szükséges elkerülése érdekében győződjön meg arról, hogy a konfigurációs kiszolgáló IP-címe nem módosul a konfigurációs kiszolgáló regisztrálva van egy tárolóba után. További információ a konfigurációs kiszolgáló gyakori felügyeleti feladatok [Itt](vmware-azure-manage-configuration-server.md).
 
 ## <a name="troubleshoot-deployment-issues"></a>Üzembe helyezési problémák elhárítása
 

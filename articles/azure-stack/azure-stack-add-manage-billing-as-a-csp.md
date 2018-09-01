@@ -3,7 +3,7 @@ title: Használat és számlázás az Azure Stackhez, egy Felhőszolgáltató ke
 description: Regisztrálás az Azure Stack, egy Felhőbeli Felhőszolgáltató (CSP) és a számlázási ügyfelek hozzáadása példakóddal.
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: brenduns
 manager: femila
 editor: ''
 ms.service: azure-stack
@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2018
+ms.date: 08/30/2018
 ms.author: brenduns
 ms.reviewer: alfredo
-ms.openlocfilehash: 66bab9f4b5099099039aa0f60cd86ef23e73cd1f
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 9bb4a4ea81f2dc0fb11e2f7cae1b9d02b0edfdde
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39715685"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43341435"
 ---
 # <a name="manage-usage-and-billing-for-azure-stack-as-a-cloud-service-provider"></a>Használat és számlázás az Azure Stack felhő szolgáltató kezelése 
 
@@ -58,7 +58,7 @@ Cloud Service Provider (CSP) előfizetések a regisztráció során a CSP-viszon
 
 ## <a name="register-azure-stack"></a>Az Azure Stack regisztrálása
 
-Regisztráljon az Azure Stack használatával, lásd: [regisztrálása az Azure Stack az Azure-előfizetésében](azure-stack-registration.md).
+Használja az információk az előző szakaszban létrehozott CSPSS előfizetés regisztrálása az Azure Stack az Azure-ral. További információkért lásd: [regisztrálása az Azure Stack az Azure-előfizetésében](azure-stack-registration.md).
 
 ## <a name="add-end-customer"></a>Adja hozzá a végfelhasználó ügyfél
 

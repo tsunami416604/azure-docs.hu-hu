@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/22/2018
+ms.date: 08/30/2018
 ms.author: jeffgilb
 ms.reviewer: wamota
-ms.openlocfilehash: 48e2f85488adfb776da5f52c154028f8aafb167a
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: 9b1eb6878dcafba68c230255f3b3f43e005421ab
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42617021"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43340188"
 ---
 # <a name="network-connectivity"></a>Hálózati kapcsolat
 Ez a cikk segít eldönteni, hogy a legjobb integrálása az Azure Stack a meglévő hálózati környezetbe az Azure Stack hálózati infrastruktúra információkat nyújt. 
@@ -45,7 +45,7 @@ Az alábbi táblázat a logikai hálózatok és társított, meg kell tervezni a
 | Kapcsoló-infrastruktúra | Az Útválasztás megállapítása, dedikált IP-címek pont-pont típusú váltson a felügyeleti felületek és a kapcsoló visszacsatolási címeket. | /26 | 
 | Infrastruktúra | Azure Stack belső összetevőinek való kommunikációhoz használt. | /24 |
 | Privát | A tárolóhálózat és a privát virtuális IP-cím használható. | /24 | 
-| BMC | A bmc-k a fizikai gazdagépeken folytatott kommunikáció során használt. | /27 | 
+| BMC | A bmc-k a fizikai gazdagépeken folytatott kommunikáció során használt. | /26 | 
 | | | |
 
 ## <a name="network-infrastructure"></a>Hálózati infrastruktúra
