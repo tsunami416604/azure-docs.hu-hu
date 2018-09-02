@@ -1,6 +1,6 @@
 | Erőforrás | Alapértelmezett korlát | Megjegyzés |
 | --- | --- | --- |
-| Application Gateway |előfizetésenként 50 | Legfeljebb 100 |
+| Application Gateway |előfizetésenként 50 | Legfeljebb 1000 |
 | Előtérbeli IP-konfigurációk |2 |1 nyilvános és 1 magán |
 | Előtérbeli portok |20 | |
 | Háttércímkészletek |20 | |

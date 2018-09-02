@@ -5,15 +5,15 @@ services: billing
 author: rothja
 ms.service: billing
 ms.topic: include
-ms.date: 07/02/2018
+ms.date: 08/22/2018
 ms.author: jroth
 ms.custom: include file
-ms.openlocfilehash: f47654d056a26f5a58b1ccc2c200f774bee1f19f
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 08cd67e86666cdc9c9fc1b0f4ef98cf3ea7a156c
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37348201"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "43435594"
 ---
 | Erőforrás | Alapértelmezett korlát | Felső korlát |
 | --- | --- | --- |
@@ -31,6 +31,7 @@ ms.locfileid: "37348201"
 | Egyedi címkeszámítások előfizetésenként<sup>3</sup> | 10,000 | 10,000 |
 | [Felhőszolgáltatások](../articles/cloud-services/cloud-services-choose-me.md) előfizetésenként |Nem alkalmazható<sup>4</sup> |Nem alkalmazható<sup>4</sup> |
 | [Affinitáscsoportok](../articles/virtual-network/virtual-networks-migrate-to-regional-vnet.md) előfizetésenként |Nem alkalmazható<sup>4</sup> |Nem alkalmazható<sup>4</sup> |
+| [Előfizetés-szintű telepítések](../articles/azure-resource-manager/deploy-to-subscription.md) / hely | 800 | 800 |
 
 <sup>1</sup>Az alapértelmezett korlátok az ajánlat kategóriája (pl. ingyenes próba, használatalapú fizetés) és a sorozat (Dv2, F, G stb.) szerint változnak.
 

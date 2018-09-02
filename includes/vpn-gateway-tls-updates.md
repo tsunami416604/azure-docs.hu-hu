@@ -5,25 +5,26 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 06/05/2018
+ms.date: 07/30/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 9a17f34333503436d3da340670abdde154e45ef6
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
-ms.translationtype: HT
+ms.openlocfilehash: f2d7aba05fc01c5a4dcdb123f25242c4e4a72578
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38727530"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "43426428"
 ---
-2018. július 1-től az Azure VPN Gatewayből el lett távolítva a TLS 1.0 és 1.1 támogatása. Ettől kezdve az Azure VPN Gateway csak a TLS 1.2-es verzióját támogatja. A TLS támogatásának, valamint a TLS-t használó, Windows 7 és Windows 8 rendszerű, pont–hely típusú ügyfelek kapcsolatainak fenntartása érdekében javasoljuk, hogy telepítse az alábbi frissítéseket:
+>[!NOTE]
+>2018. július 1-től az Azure VPN Gatewayből el lett távolítva a TLS 1.0 és 1.1 támogatása. Ettől kezdve az Azure VPN Gateway csak a TLS 1.2-es verzióját támogatja. Támogatás fenntartásához, tekintse meg a [TLS1.2 támogatásának engedélyezéséhez frissítések](#tls1).
 
-•   [A Microsoft EAP-implementáció frissítése, amely lehetővé teszi a TLS használatát](https://support.microsoft.com/help/2977292/microsoft-security-advisory-update-for-microsoft-eap-implementation-th)
-
-•   [Frissítés, amely lehetővé teszi a TLS 1.1 és a TLS 1.2 alapértelmezett biztonságos protokollként történő használatát a WinHTTP-ben](https://support.microsoft.com/help/3140245/update-to-enable-tls-1-1-and-tls-1-2-as-a-default-secure-protocols-in)
-
-2018. július 1-től a következő örökölt algoritmusok szintén elavulttá válnak a TLS vonatkozásában:
+Ezenkívül a következő örökölt algoritmusok is elavulttá válik a TLS 2018. július 1.:
 
 * RC4 (Rivest Cipher 4)
 * DES (adattitkosítási algoritmus)
 * 3DES (háromszoros adattitkosítási algoritmus)
 * MD5 (Message Digest 5)
+
+### <a name="tls1"></a>Hogyan engedélyezhetem a Windows 7 és Windows 8.1 a TLS 1.2 támogatása?
+
+[!INCLUDE [tls 1.2](vpn-gateway-tls-include.md)]
