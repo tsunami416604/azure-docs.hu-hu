@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/23/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 786f0dfd0cf3cf2e9ab0d16e26811fabd6bfc17c
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 28679ef07c2625908f7b08f808ff49c48ddb625b
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37440951"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43339868"
 ---
 # <a name="azure-active-directory-b2c-add-twitter-as-an-oauth1-identity-provider-by-using-custom-policies"></a>Az Azure Active Directory B2C: Adjon hozzá Twitter OAuth1 Identitásszolgáltatóként egyéni szabályzatok használatával
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
@@ -36,9 +36,9 @@ Twitter használata Identitásszolgáltatóként az Azure Active Directory B2C (
  
     a. Írja be a **neve** és a egy **leírás** az új alkalmazás. 
 
-    b. Az a **webhely** mezőbe illessze be **https://login.microsoftonline.com**. 
+    b. Az a **webhely** mezőbe illessze be **https://{tenant}.b2clogin.com**. Ahol **{tenant}** a bérlő neve (például https://contosob2c.b2clogin.com).
 
-    c. 4. Az a **visszahívási URL-Címének**, adja meg `https://login.microsoftonline.com/te/{tenant}/{policyId}/oauth1/authresp`. Cserélje le **{tenant}** a bérlő nevét (például: contosob2c.onmicrosoft.com) és **{policyId}** a házirend-azonosítójú (például b2c_1_policy).  **A visszahívási URL-címet kell lennie az összes kisbetűt.** Minden szabályzat, amely a Twitter-bejelentkezés használatára egy visszahívási URL-címet hozzá kell adnia. Győződjön meg arról, hogy használja `b2clogin.com` helyett ` login.microsoftonline.com` Ha az alkalmazás használ.
+    c. 4. Az a **visszahívási URL-Címének**, adja meg `https://{tenant}.b2clogin.com/te/{tenant}.onmicrosoft.com/{policyId}/oauth1/authresp`. Cserélje le **{tenant}** a bérlő nevét (például: contosob2c) és **{policyId}** a házirend-azonosítójú (például b2c_1_policy).  **A visszahívási URL-címet kell lennie az összes kisbetűt.** Minden szabályzat, amely a Twitter-bejelentkezés használatára egy visszahívási URL-címet hozzá kell adnia. Győződjön meg arról, hogy használja `b2clogin.com` helyett ` login.microsoftonline.com` Ha az alkalmazás használ.
 
     d. A lap alján, olvassa el és fogadja el a feltételeket, és válassza ki **Twitter-alkalmazás létrehozása**.
 
