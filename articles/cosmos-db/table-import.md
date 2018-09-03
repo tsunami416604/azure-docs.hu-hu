@@ -10,16 +10,16 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 11/28/2017
 ms.author: sngun
-ms.openlocfilehash: e4e783d131c4ceee9315b3442ee504e662157d8c
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 905815259707116759e0b980690fac108ab81c7b
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37856807"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43186830"
 ---
-# <a name="import-data-for-use-with-the-azure-cosmos-db-table-api"></a>Adatok importálása az Azure Cosmos DB Table API-val való használatra
+# <a name="migrate-your-data-to-azure-cosmos-db-table-api-account"></a>Adatok migrálása az Azure Cosmos DB Table API-fiókba
 
-Ez az oktatóanyag útmutatást nyújt az adatok importálásához az Azure Cosmos DB [Table API](table-introduction.md)-val való használatra. Ha az Azure Table Storage-ban tárolja az adatokat, az adatmigrálási eszközzel vagy az AzCopy segítségével importálhatja azokat. Ha az Azure Cosmos DB Table API (előzetes verzió) szolgáltatásban létrehozott fiókban tárolja az adatokat, az adatmigrálási eszközt kell használnia az adatok migrálásához. Az adatok importálását követően kihasználhatja az Azure Cosmos DB nyújtotta olyan prémium képességeket, mint a teljes körű, globális terjesztés, dedikált teljesítmény, az esetek 99%-ában tíz ezredmásodperc alatti késések, garantált magas rendelkezésre állás és automatikus másodlagos indexelés.
+Ez az oktatóanyag útmutatást nyújt az adatok importálásához az Azure Cosmos DB [Table API](table-introduction.md)-val való használatra. Ha az Azure Table Storage-ban tárolja az adatokat, az adatmigrálási eszközzel vagy az AzCopy segítségével importálhatja azokat az Azure Cosmos DB Table API-ba. Ha az Azure Cosmos DB Table API (előzetes verzió) szolgáltatásban létrehozott fiókban tárolja az adatokat, az adatmigrálási eszközt kell használnia az adatok migrálásához. 
 
 Ez az oktatóanyag a következő feladatokat mutatja be:
 
@@ -39,11 +39,11 @@ Az Azure Cosmos DB parancssori adatmigrálási eszközének (dt.exe) segítség�
 Egy tábla adatainak migrálásához hajtsa végre az alábbi feladatokat:
 
 1. Töltse le a migrálási eszközt a [GitHubról](https://github.com/azure/azure-documentdb-datamigrationtool).
-2. Futtassa a `dt.exe` fájlt a forgatókönyvnek megfelelő parancssori argumentumokkal.
+2. Futtassa a `dt.exe` fájlt a forgatókönyvnek megfelelő parancssori argumentumokkal. A `dt.exe` a következő formátumban fogad el parancsokat:
 
-A dt.exe a következő formátumban fogad el parancsokat:
-
+   ```bash
     dt.exe [/<option>:<value>] /s:<source-name> [/s.<source-option>:<value>] /t:<target-name> [/t.<target-option>:<value>] 
+```
 
 A parancshoz használható kapcsolók:
 
@@ -105,7 +105,7 @@ Ez a parancssori példa bemutatja, hogyan importálhatók adatok a Table API el�
 dt /s:AzureTable /s.ConnectionString:DefaultEndpointsProtocol=https;AccountName=<Table API preview account name>;AccountKey=<Table API preview account key>;TableEndpoint=https://<Account Name>.documents.azure.com; /s.Table:<Table name> /t:TableAPIBulk /t.ConnectionString:DefaultEndpointsProtocol=https;AccountName=<Azure Cosmos DB account name>;AccountKey=<Azure Cosmos DB account key>;TableEndpoint=https://<Account name>.table.cosmosdb.azure.com:443 /t.TableName:<Table name> /t.Overwrite
 ```
 
-## <a name="azcopy-command"></a>AzCopy parancs
+## <a name="migrate-data-by-using-azcopy"></a>Adatok migrálása az AzCopy használatával
 
 Az AzCopy parancssori segédprogram használata a másik módja az adatok migrálásának az Azure Table Storage-ból az Azure Cosmos DB Table API-ba. Az AzCopy használatakor először exportálni kell az adatokat az [adatoknak a Table Storage-ból való exportálását](../storage/common/storage-use-azcopy.md#export-data-from-table-storage) ismertető cikkben leírt módon, majd importálni kell az adatokat az Azure Cosmos DB-be, az [Azure Cosmos DB Table API-val](../storage/common/storage-use-azcopy.md#import-data-into-table-storage) foglalkozó cikkben leírtak szerint.
 

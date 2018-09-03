@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 8489992303425cc00c15994b55ade958d77549e4
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 4ce4c9e2479c8d570766169ce5094dcc2b4bc511
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
-ms.locfileid: "29969134"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42812871"
 ---
 # <a name="find-and-diagnose-performance-issues-with-azure-application-insights"></a>Teljesítménybeli problémák észlelése és diagnosztizálása az Application Insights segítségével
 
@@ -53,27 +53,20 @@ Az Application Insights teljesítményadatokat gyűjt az alkalmazás különböz
 
     ![Teljesítménypanel](media/app-insights-tutorial-performance/performance-blade.png)
 
-3. Ez a gráf jelenleg az összes művelet eddigi átlagidejét mutatja.  Adja hozzá azokat a műveleteket, amelyekre kíváncsi. Ehhez rögzítse őket a gráfhoz.  Itt látszik, hogy van néhány csúcsérték, amelyeket érdemes megvizsgálni.  Tovább szűkítheti az eredmények körét, ha csökkenti a gráf időkeretét.
+3. Ez a grafikon jelenleg a kijelölt műveletek átlagos időtartamát mutatja. A teljesítményproblémákat a 95. percentilisre váltva találhatja meg. Adja hozzá azokat a műveleteket, amelyekre kíváncsi. Ehhez rögzítse őket a gráfhoz.  Itt látszik, hogy van néhány csúcsérték, amelyeket érdemes megvizsgálni.  Tovább szűkítheti az eredmények körét, ha csökkenti a gráf időkeretét.
 
     ![Műveletek rögzítése](media/app-insights-tutorial-performance/pin-operations.png)
 
-4.  Egy műveletre kattintva megtekintheti annak teljesítménypaneljét a jobb oldalon. Itt láthatja a különböző kérésekhez tartozó időtartamok eloszlását.  A felhasználók általában fél másodperces teljesítménybeli lassulást észlelnek, ezért szűkítse az időkeretet az 500 ezredmásodpercnél több időt igénylő kérésekre.  
+4.  A jobb oldali teljesítmény panelen a kiválasztott művelet különböző kéréseihez tartozó időtartamok eloszlását láthatja.  Szűkítse a keretet úgy, hogy a 95. percentilisnél kezdődjön. A „3 legnagyobb függőség” megállapításkártya egyszerűen megmutatja, hogy a külső függőségek valószínűleg hozzájárulnak a tranzakciók lassúságához.  Kattintson a minták számát tartalmazó gombra a minták listájának megtekintéséhez. A listáról kiválaszthatja bármelyik mintát, és megtekintheti a tranzakciók részleteit.
 
     ![Időtartamok eloszlása](media/app-insights-tutorial-performance/duration-distribution.png)
 
-5.  Ebben a példában azt láthatja, hogy jelentős mennyiségű kérés feldolgozásához egy másodpercnél több idő szükséges. Megtekintheti ennek a műveletnek a részleteit, ha a **Művelet részletei** elemre kattint.
+5.  Első ránézésre is megállapítható, hogy a Fabrikamaccount Azure-tábla a felelős a tranzakció teljes időtartamának legnagyobb részéért. Láthatja továbbá, hogy egy kivétel miatt meghiúsult. Ha a lista bármelyik elemére kattint, a jobb oldalon megjelennek az elem részletei. [További információ a tranzakciódiagnosztikai felületről](app-insights-transaction-diagnostics.md)
 
     ![Művelet részletei](media/app-insights-tutorial-performance/operation-details.png)
+    
 
-    > [!NOTE]
-    Engedélyezze az „Egyesített részletek: Végpontok közötti tranzakció diagnosztikája” [előnézeti felület](app-insights-previews.md) elemet, hogy az összes kapcsolódó kiszolgálóoldali telemetriát, például a kéréseket, a függőségeket, a kivételeket, a nyomokat, az eseményeket stb. egyetlen teljes képernyős nézetben tekinthesse meg. 
-
-    Ha az előnézet engedélyezve van, egy egységes felületen tekintheti meg a függőségi hívásokkal eltöltött idő mennyiségét, valamint az egyesített élményben előforduló hibákat és kivételeket. A több összetevőt érintő tranzakciók esetében a Gantt-diagram és a részletek panel segítenek, hogy gyorsan megtalálja a problémát okozó összetevőt, függőséget vagy kivételt. Az alsó szakaszt kibontva megtekintheti a kiválasztott összetevő-művelethez összegyűjtött nyomok vagy események időrendjét. [További információk az új felületről](app-insights-transaction-diagnostics.md)  
-
-    ![Tranzakció diagnosztikája](media/app-insights-tutorial-performance/e2e-transaction-preview.png)
-
-
-6.  Az eddig összegyűjtött információi megerősítik, hogy a teljesítmény lassú, de az alapvető okot nem fedik fel.  A **Profilkészítő** ebben segít azzal, hogy megmutatja a műveletnél futó kódot és a szükséges időtartamot mindegyik lépéshez. Előfordulhat, hogy bizonyos műveletek nem hagynak nyomot, mivel a profilkészítő időszakosan fut.  Idővel több műveletnek lehet nyoma.  Kattintson a **Profilkészítői adatok** elemre a profilkészítő a műveleten való futtatásának elindításához.
+6.  A **Profilkészítő** segít a kódszintű diagnosztikával való előrehaladásban azzal, hogy megmutatja a műveletnél futó kódot és az egyes lépésekhez szükséges időtartamot. Előfordulhat, hogy bizonyos műveletek nem hagynak nyomot, mivel a profilkészítő időszakosan fut.  Idővel több műveletnek lehet nyoma.  Kattintson a **Profilkészítői adatok** elemre a profilkészítő a műveleten való futtatásának elindításához.
 5.  A nyom megjeleníti az egyes műveletekhez tartozó eseményeket, így diagnosztizálhatja a művelet időtartamáért felelős kiváltó okot.  Kattintson az egyik leghosszabb időtartamot megjelenítő példára.
 6.  Kattintson a **Működő elérési út megjelenítése** elemre azon események elérési útjának kiemeléséhez, amelyek a leginkább növelték a művelet teljes időtartamát.  Ebben a példában azt láthatja, hogy a leglassabb hívás a *FabrikamFiberAzureStorage.GetStorageTableData* metódusból származik. A legtöbb időt igénybe vevő metódus a *CloudTable.CreateIfNotExist*. Ha ez a kódsor lefut minden alkalommal, amikor a függvény meghívása megtörténik, az felesleges hálózati hívásokat és processzorhasználatot eredményez. A kód kijavításának legjobb módja az, hogy ha ezt a sort egy olyan indítási metódusba helyezi, amely csak egyszer fut le. 
 

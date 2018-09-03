@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 7ff4c6ce5e42154b3ded9c05ef1437d30f9477f0
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: b206d93d7c72f5d8ff3dd3baa277cd0db33ba583
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "41918094"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42811913"
 ---
 # <a name="virtual-network-traffic-routing"></a>Virtuális hálózat forgalmának útválasztása
 
@@ -167,7 +167,7 @@ Ha felülbírálja a 0.0.0.0/0 címelőtagot, akkor az alhálózatról a virtuá
         - Képesnek kell lennie a hálózati címek fordítására és továbbítására, vagy az adatforgalom a célerőforrásra történő átadására proxykapcsolaton keresztül, majd az internetre való visszairányítására. 
     - **Virtuális hálózati kapcsolat**: Ha az átjáró egy ExpressRoute virtuális hálózati átjáró, akkor egy internetre csatlakoztatott, helyszíni eszköz képes a hálózati címek fordítására és továbbítására, vagy az adatforgalom a célerőforrásra történő átadására proxykapcsolaton keresztül, az ExpressRoute [privát társviszony-létesítése](../expressroute/expressroute-circuit-peerings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-private-peering) révén. 
 
-Ha a virtuális hálózat egy Azure VPN-átjáróhoz csatlakozik, ne társítson útválasztási táblázatot olyan [átjáró-alhálózathoz](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub), amely 0.0.0.0/0 célú útvonalat tartalmaz. Ellenkező esetben előfordulhat, hogy az átjárószolgáltatás nem működik megfelelően.
+Ha a virtuális hálózat egy Azure VPN-átjáróhoz csatlakozik, ne társítson útválasztási táblázatot olyan [átjáróalhálózathoz](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub), amely 0.0.0.0/0 célú útvonalat tartalmaz. Ellenkező esetben előfordulhat, hogy az átjárószolgáltatás nem működik megfelelően. Részletes információért lásd a *Miért vannak egyes portok nyitva a VPN-átjárómon?* kérdést a [VPN Gatewayről szóló gyakori kérdések](../vpn-gateway/vpn-gateway-vpn-faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#why-are-certain-ports-opened-on-my-vpn-gateway) között.
 
 A [DMZ az Azure és a helyszíni adatközpont között](/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=%2fazure%2fvirtual-network%2ftoc.json) és a [DMZ az Azure és az internet között](/azure/architecture/reference-architectures/dmz/secure-vnet-dmz?toc=%2fazure%2fvirtual-network%2ftoc.json) témakörökkel foglalkozó cikkekben talál további információt a megvalósításról, ha az Azure és az internet közötti kommunikációhoz virtuális hálózati átjárókat és virtuális berendezéseket szeretne használni.
 

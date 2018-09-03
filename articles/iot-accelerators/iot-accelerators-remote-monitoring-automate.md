@@ -9,12 +9,12 @@ services: iot-accelerators
 ms.date: 07/19/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: d94f8d38ef771bd5ab03f4d3cef25233c33e7546
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 6759568a678394f7cec4ac9f0bdd99d8ed1db9de
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39282617"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42886790"
 ---
 # <a name="tutorial-detect-issues-with-devices-connected-to-your-monitoring-solution"></a>Oktatóanyag: A monitorozási megoldáshoz csatlakoztatott eszközök problémáinak észlelése
 
@@ -117,6 +117,18 @@ Ha ideiglenesen ki kíván kapcsolni egy szabályt, tiltsa le a szabálylistába
 [![Szabály letiltása](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdisable-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdisable-expanded.png#lightbox)
 
 Egyszerre több szabályt is engedélyezhet vagy letilthat, ha kijelöli őket a listában.
+
+## <a name="delete-a-rule"></a>Szabály törlése
+
+Ha véglegesen szeretne törölni egy szabályt, azt a szabályok listájából teheti meg. Válassza ki a törölni kívánt szabályt, majd kattintson a **Törlés** elemre.
+
+[![Szabály törlése](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdelete-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdelete-expanded.png#lightbox)
+
+Miután megerősítette, hogy törölni szeretné a szabályt, a szabályhoz kötődő összes riasztást törölheti a **Karbantartás** oldalon.
+
+[![Szabály törlése](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdeletetidy-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdeletetidy-expanded.png#lightbox)
+
+Egyszerre csak egy szabály törölhető.
 
 [!INCLUDE [iot-accelerators-tutorial-cleanup](../../includes/iot-accelerators-tutorial-cleanup.md)]
 

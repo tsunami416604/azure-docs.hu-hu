@@ -7,16 +7,16 @@ ms.component: change-inventory-management
 keywords: változás, követés, automatizálás
 author: jennyhunter-msft
 ms.author: jehunte
-ms.date: 02/28/2018
+ms.date: 08/27/2018
 ms.topic: tutorial
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 4d62e8e4cb778e60b39e502f09ce0aafca9b5212
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: fd94fd234067f63eab424c7f757d4adf842e7b46
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37866817"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43120585"
 ---
 # <a name="troubleshoot-changes-in-your-environment"></a>A környezet változásainak hibaelhárítása
 
@@ -112,7 +112,8 @@ A **Munkaterület konfigurálása** ablakban adja hozzá a követni kívánt Win
 |Engedélyezve     | Meghatározza, hogy a beállítás aktiválva van-e        |
 |Elem neve     | A nyomon követendő fájl felhasználóbarát neve        |
 |Csoport     | A fájlok logikai csoportosítására szolgáló csoportnév        |
-|Elérési út megadása     | A fájl elérési útja, például: „c:\temp\myfile.txt”       |
+|Elérési út megadása     | A fájl elérési útja, például: „c:\temp\\\*.txt”<br>Környezeti változók is használhatók, például: „%winDir%\System32\\\*.*”         |
+|Rekurzió     | Meghatározza, hogy a rendszer rekurziót használjon-e a követni kívánt elem keresésekor.        |
 |Fájltartalom feltöltése minden beállításhoz| Be- vagy kikapcsolja a fájltartalom feltöltését a változáskövetés használata esetén. Elérhető lehetőségek: **Igaz** vagy **Hamis**.|
 
 ### <a name="add-a-linux-file"></a>Linux-fájl hozzáadása
@@ -133,7 +134,7 @@ A **Munkaterület konfigurálása** ablakban adja hozzá a követni kívánt Win
 |Hivatkozások     | Ez a beállítás határozza meg a szimbolikus hivatkozások kezelésének módját, amikor áthaladnak a címtárakon.<br> **Mellőzés** – Mellőzi a szimbolikus hivatkozásokat, és nem szerepelteti a hivatkozott fájlokat/címtárakat<br>**Követés** – Követi a szimbolikus hivatkozásokat a rekurzió során, és szerepelteti a hivatkozott fájlokat/címtárakat<br>**Kezelés** – Követi a szimbolikus hivatkozásokat, és lehetővé teszi a visszaadott tartalom kezelésének módosítását      |
 |Fájltartalom feltöltése minden beállításhoz| Be- vagy kikapcsolja a fájltartalom feltöltését a változáskövetés használata esetén. Elérhető lehetőségek: **Igaz** vagy **Hamis**.|
 
-   > [!NOTE]   
+   > [!NOTE]
    > A „Kezelés” használata nem ajánlott, mert a fájltartalom lekérése nem támogatott.
 
 ## <a name="enable-activity-log-connection"></a>Tevékenységnapló csatlakozásának engedélyezése

@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 115611c5d4eeffb0f0600dd0a792ee9f80247e36
-ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
+ms.openlocfilehash: 7c2e67605cd2489f2c8d9da5ac80386056464afa
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2018
-ms.locfileid: "27998049"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42815113"
 ---
 # <a name="find-and-diagnose-run-time-exceptions-with-azure-application-insights"></a>Futásidejű kivételek észlelése és diagnosztizálása az Azure Application Insights segítségével
 
@@ -62,20 +62,17 @@ Az Application Insights összegyűjti az alkalmazásában felmerült hibákat, �
 
     ![Sikertelen kérelmek ablak](media/app-insights-tutorial-runtime-exceptions/failed-requests-window.png)
 
-5. Kattintson a **Részletek megtekintése** elemre a művelet részleteinek megtekintéséhez.  Itt talál egy Gantt-diagramot is két olyan sikertelen függőséggel, amelyek befejezéséhez majdnem fél másodperc kellett összesen.  Többet megtudhat a teljesítménybeli problémák elemzéséről, ha elolvassa a [Teljesítménybeli problémák észlelése és diagnosztizálása az Application Insights segítségével](app-insights-tutorial-performance.md) című oktatóanyagot.
+5. A szűrt eredmények számát tartalmazó gombra kattintva megjeleníthetők a kapcsolódó minták. A „javasolt” minták az összes összetevőből rendelkeznek telemetriával, még akkor is, ha bármelyikben mintavételezés volt érvényben. Kattintson egy keresési eredményre a hiba részleteinek megtekintéséhez.
 
-    ![Sikertelen kérelmek részletei](media/app-insights-tutorial-runtime-exceptions/failed-requests-details.png)
+    ![Sikertelen kérelmek mintái](media/app-insights-tutorial-runtime-exceptions/failed-requests-search.png)
 
-6. A művelet részleteiben egy FormatException elem is látható, amely valószínűleg a hibát okozta.  Kattintson a kivételre vagy a **3 leggyakoribb kivételtípus** elemre a részletek megtekintéséhez.  Láthatja, hogy az ok egy érvénytelen irányítószám volt.
+6. A sikertelen kérés részleteit mutató oldal Gantt-diagramot jelenít meg, amely megmutatja, hogy két függőségi hiba történt ebben a tranzakcióban, amelyek együtt a teljes időtartam több mint 50%-át tették ki. Ez a felület az összes olyan telemetriát megjeleníti, amely ezen műveleti azonosítóhoz kötődő hozzárendelt alkalmazások alkotóelemeire vonatkozik. [További információ az új felületről](app-insights-transaction-diagnostics.md). Ha kiválasztja bármelyik elemet, a jobb oldalon megjelennek az elem részletei. 
+
+    ![Sikertelen kérelem részletei](media/app-insights-tutorial-runtime-exceptions/failed-request-details.png)
+
+7. A művelet részleteiben egy FormatException elem is látható, amely valószínűleg a hibát okozta.  Láthatja, hogy az ok egy érvénytelen irányítószám volt. A hibakeresési pillanatkép megnyitásával láthatja a kódszintű hibakeresési információkat a Visual Studióban.
 
     ![Kivétel részletei](media/app-insights-tutorial-runtime-exceptions/failed-requests-exception.png)
-
-> [!NOTE]
-Engedélyezze az „Egyesített részletek: Végpontok közötti tranzakció diagnosztikája” [előnézeti felület](app-insights-previews.md) elemet, hogy az összes kapcsolódó kiszolgálóoldali telemetriát, például a kéréseket, a függőségeket, a kivételeket, a nyomokat, az eseményeket stb. egyetlen teljes képernyős nézetben tekinthesse meg. 
-
-Ha az előnézet engedélyezve van, egy egységes felületen tekintheti meg a függőségi hívásokkal eltöltött idő mennyiségét, valamint az egyesített élményben előforduló hibákat és kivételeket. A több összetevőt érintő tranzakciók esetében a Gantt-diagram és a részletek panel segítenek, hogy gyorsan megtalálja a problémát okozó összetevőt, függőséget vagy kivételt. Az alsó szakaszt kibontva megtekintheti a kiválasztott összetevő-művelethez összegyűjtött nyomok vagy események időrendjét. [További információk az új felületről](app-insights-transaction-diagnostics.md)  
-
-![Tranzakció diagnosztikája](media/app-insights-tutorial-runtime-exceptions/e2e-transaction-preview.png)
 
 ## <a name="identify-failing-code"></a>Sikertelen kód azonosítása
 A Snapshot Debugger az alkalmazásában leggyakrabban előforduló kivételekről gyűjt pillanatfelvételeket, hogy segítsen éles környezetben diagnosztizálni azok alapvető okát.  A portálon a hibakeresési pillanatfelvételeket megtekintve láthatja a hívásvermet és megvizsgálhatja a változókat az egyes hívásveremkeretekre vonatkozóan. Ezután a pillanatfelvételt letöltve és Visual Studio 2017 alkalmazásban megnyitva hibakeresést végezhet a forráskódon.
@@ -104,15 +101,6 @@ Az Application Insights által gyűjtött minden adatot az Azure Log Analytics t
     ![Kód](media/app-insights-tutorial-runtime-exceptions/codelens.png)
 
 9. Kattintson a **Hatás elemzése** elemre az Application Insights Analytics megnyitásához.  Több lekérdezés is található itt, amelyek részleteket biztosítanak a sikertelen kérésekről, például az érintett felhasználókról, böngészőkről és régiókról.<br><br>![Elemzés](media/app-insights-tutorial-runtime-exceptions/analytics.png)<br>
-
-## <a name="add-work-item"></a>Munkaelem hozzáadása
-Ha az Application Insights alkalmazást egy követőrendszerhez csatlakoztatja, például a Visual Studio Team Serviceshez vagy a GitHubhoz, létrehozhat egy munkaelemet közvetlenül az Application Insightsból.
-
-1. Térjen vissza a **Kivétel tulajdonságai** panelhez az Application Insightsban.
-2. Kattintson az **Új munkaelem** elemre.
-3. A megnyíló **Új munkaelem** panelen automatikusan megjelennek a kivétel részletei.  Bármilyen egyéb információt hozzáadhat mentés előtt.
-
-    ![Új munkaelem](media/app-insights-tutorial-runtime-exceptions/new-work-item.png)
 
 ## <a name="next-steps"></a>További lépések
 Most már megtanulta, hogyan azonosíthatja a futásidejű kivételeket. Térjen át a következő oktatóanyagra, hogy megtanulja, hogyan azonosíthatja és diagnosztizálhatja a teljesítménybeli problémákat.

@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 07/20/2018
+ms.date: 08/27/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 7c78636a210ae90c5bfe1d0bfd35e4e05633f5cd
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 57d5f7039831c9fd617926f20f3ff001b22ef314
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39188199"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43097885"
 ---
 # <a name="tutorial-create-an-azure-resource-manager-template-for-deploying-an-encrypted-storage-account"></a>Oktatóanyag: Titkosított tárfiók üzembe helyezésére szolgáló Azure Resource Manager-sablon létrehozása
 
@@ -30,9 +30,7 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 
 > [!div class="checklist"]
 > * Gyorsindítási sablon megnyitása
-> * A sablon formátumának ismertetése
-> * Paraméterek használata a sablonban
-> * Változók használata a sablonban
+> * A sablon ismertetése
 > * A sablon szerkesztése
 > * A sablon üzembe helyezése
 
@@ -111,10 +109,10 @@ A sablonban meghatározott változó használata:
 
 ## <a name="edit-the-template"></a>A sablon szerkesztése
 
-A tárfiók titkosítással kapcsolatos konfigurációjának megkereséséhez az Azure Storage-fiók sablonreferenciáját fogja használni.
+Az oktatóanyag célja, hogy meghatározza a titkosított tárfiók létrehozásához szükséges sablont.  A mintasablon csak egy alapszintű, titkosítatlan tárfiókot hoz létre. A titkosítással kapcsolatos konfiguráció megkereséséhez az Azure Storage-fiók sablonreferenciáját fogja használni.
 
 1. Tallózással keresse meg az [Azure Templates](https://docs.microsoft.com/azure/templates/) (Azure-sablonok) elemet.
-2. A bal oldali tartalomjegyzékben válassza ki a **Reference** (Referencia) -> **Storage** -> **Storage Accounts** (Tárfiókok) elemet. Ezen az oldalon megtalálhatók a tárfiókadatok meghatározásával kapcsolatos információk.
+2. A bal oldali tartalomjegyzékben válassza ki a **Reference** (Referencia) -> **Storage** -> **Storage Accounts** (Tárfiókok) elemet. Vagy a **Filter by title** (Szűrés cím alapján) szövegmezőben adja meg a **storage** kifejezést.  Ezen az oldalon megtalálható a tárfiókadatok meghatározásához használható séma.
 3. Tekintse át a titkosítással kapcsolatos információkat.  
 4. A tárfiók erőforrás-definíciójának tulajdonságokat tartalmazó eleméhez adja hozzá a következő JSON-adatokat:
 
@@ -130,59 +128,17 @@ A tárfiók titkosítással kapcsolatos konfigurációjának megkereséséhez az
     ```
     Ebben a részben történik a Blob Storage szolgáltatás titkosítási funkciójának engedélyezése.
 
-Az erőforrások eleme végül a következőképpen fog kinézni:
+A Visual Studio Code-ban módosítsa úgy a sablont, hogy a végső erőforráselem a következőképpen nézzen ki:
 
 ![Resource Manager-sablon – Titkosított tárfiók – Erőforrások](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-encrypted-storage-resources.png)
 
 ## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
-A sablonok üzembe helyezésének számos módszere létezik.  Ebben az oktatóanyagban az Azure Portal Cloud Shelljét fogja használni. A Cloud Shell az Azure CLI és az Azure PowerShell használatát is támogatja. Az itt található utasítások a CLI használata esetén érvényesek.
+A Visual Studio Code üzembehelyezési eljárásról szóló rövid útmutatójában tekintse meg [A sablon üzembe helyezése](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#deploy-the-template) című szakaszt.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com)
-2. Válassza ki a jobb felső sarokban a **Cloud Shell** elemet az alábbi képen látható módon:
+Az alábbi képernyőképen látható az újonnan létrehozott tárfiókok listázására szolgáló parancssori felületi parancs, amely azt jelzi, hogy a Blob Storage-titkosítás engedélyezve lett.
 
-    ![Azure Portal – Cloud Shell](./media/resource-manager-tutorial-create-encrypted-storage-accounts/azure-portal-cloud-shell.png)
-
-3. Kattintson a lefelé mutató nyílra, majd válassza ki a **Bash** elemet, ha nem az szerepel ott. Ebben az oktatóanyagban az Azure CLI-t fogja használni.
-
-    ![Azure Portal – Cloud Shell – Parancssori felület](./media/resource-manager-tutorial-create-encrypted-storage-accounts/azure-portal-cloud-shell-choose-cli.png)
-4. Kattintson az **Újraindítás** lehetőségre a felület újraindításához.
-5. Kattintson a **Fájlok feltöltése/letöltése**, majd a **Feltöltés** elemre.
-
-    ![Azure Portal – Cloud Shell – Fájl feltöltése](./media/resource-manager-tutorial-create-encrypted-storage-accounts/azure-portal-cloud-shell-upload-file.png)
-6. Válassza ki az oktatóanyag korábbi részében mentett fájlt. Alapértelmezés szerint a fájl neve a következő: **azuredeploy.json**.
-7. A fájl sikeres feltöltésének ellenőrzéséhez futtassa az **ls** parancsot a Cloud Shellben. A **cat** paranccsal a sablon tartalmát is ellenőrizheti.
-
-    ![Azure Portal – Cloud Shell – Fájlok listázása](./media/resource-manager-tutorial-create-encrypted-storage-accounts/azure-portal-cloud-shell-list-file.png)
-8. Futtassa az alábbi parancsokat a Cloud Shellben:
-
-    ```cli
-    az group create --name <ResourceGroupName> --location <AzureLocation>
-
-    az group deployment create --name <DeploymentName> --resource-group <ResourceGroupName> --template-file azuredeploy.json
-    ```
-    Az alábbi képernyőképen egy üzembehelyezési minta látható:
-
-    ![Azure Portal – Cloud Shell – Sablon üzembe helyezése](./media/resource-manager-tutorial-create-encrypted-storage-accounts/azure-portal-cloud-shell-deploy-template.png)
-
-    A képernyőképen az alábbi értékek szerepelnek:
-
-    * **&lt;ResourceGroupName>**: myresourcegroup0719. A paraméter két helyen jelenik meg.  Győződjön meg arról, hogy ugyanazt az értéket használja mindkét helyen.
-    * **&lt;AzureLocation>**: eastus2
-    * **&lt;DeployName>**: mydeployment0719
-    * **&lt;TemplateFile>**: azuredeploy.json
-
-    A képernyőkép kimenetén a tárfiók neve a következő: *fhqbfslikdqdsstandardsa*. 
-
-9. Az alábbi PowerShell-parancs futtatásával megjelenítheti az újonnan létrehozott tárfiókot:
-
-    ```cli
-    az storage account show --resource-group <ResourceGroupName> --name <StorageAccountName>
-    ```
-
-    Az alábbi képernyőképen láthatóhoz hasonló kimenetet fog látni, ami azt jelzi, hogy a Blob Storage-titkosítás engedélyezve lett.
-
-    ![Azure Resource Manager – Titkosított tárfiók](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-encrypted-storage-account.png)
+![Azure Resource Manager – Titkosított tárfiók](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-encrypted-storage-account.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -195,7 +151,7 @@ Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett
 
 ## <a name="next-steps"></a>További lépések
 
-Ez az oktatóanyag azt ismertette, hogyan használhatja a sablonreferenciát egy létező sablon testreszabására. Ebben az oktatóanyagban olyan sablont használtunk, amely csak egyetlen Azure-erőforrást tartalmaz.  A következő oktatóanyagban egy több erőforrást tartalmazó sablont fog fejleszteni.  Egyes erőforrások függő erőforrásokkal rendelkeznek.
+Ez az oktatóanyag azt ismertette, hogyan használhatja a sablonreferenciát egy létező sablon testreszabására. Ebben az oktatóanyagban olyan sablont használtunk, amely csak egyetlen Azure-erőforrást tartalmaz.  A következő oktatóanyagban egy több erőforrást tartalmazó sablont fog fejleszteni. Egyes erőforrások függő erőforrásokkal rendelkeznek.
 
 > [!div class="nextstepaction"]
 > [Több erőforrás létrehozása](./resource-manager-tutorial-create-templates-with-dependent-resources.md)

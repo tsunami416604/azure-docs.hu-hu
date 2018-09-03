@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/30/2018
 ms.author: kgremban
-ms.openlocfilehash: aab674f16fcc3fd4869f24f72f66878a8751d892
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 43b317cd9d1c9384a58e9d525fdd15d18eb63968
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34301484"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43246636"
 ---
 # <a name="send-email-notifications-about-azure-iot-hub-events-using-logic-apps"></a>Azure IoT Hub-eseményekkel kapcsolatos e-mail-értesítések küldése a Logic Apps használatával
 
@@ -29,7 +29,7 @@ A cikk végigvezeti egy, az IoT Hubot és az Event Gridet használó mintakonfig
 
 * Az Azure Logic Apps által támogatott bármely e-mail-szolgáltató (például Office 365 Outlook, Outlook.com vagy Gmail) által üzemeltetett e-mail-fiók. Ez az e-mail-fiók küldi majd az eseményértesítéseket. A támogatott Logic Apps-összekötők teljes listáját az [összekötők áttekintésében](https://docs.microsoft.com/connectors/) találja.
 * Aktív Azure-fiók. Ha még nincs fiókja, [hozzon létre egy ingyenes fiókot](http://azure.microsoft.com/pricing/free-trial/).
-* Egy IoT-központ az Azure-ban. Ha még nem hozott létre központot, [az IoT Hub első lépéseit](../iot-hub/iot-hub-csharp-csharp-getstarted.md) ismertető cikkben talál útmutatást. 
+* Egy IoT Hub az Azure-ban. Ha még nem hozott létre központot, [az IoT Hub első lépéseit](../iot-hub/iot-hub-csharp-csharp-getstarted.md) ismertető cikkben talál útmutatást. 
 
 ## <a name="create-a-logic-app"></a>Logikai alkalmazás létrehozása
 
@@ -37,8 +37,7 @@ Először hozzon létre egy logikai alkalmazást, és adjon hozzá egy Event Gri
 
 ### <a name="create-a-logic-app-resource"></a>Logikai alkalmazás erőforrás létrehozása
 
-
-1. Az [Azure Portalon](https://portal.azure.com) válassza az **Új** > **Vállalati integráció** > **Logikai alkalmazás** lehetőséget.
+1. Az [Azure Portalon](https://portal.azure.com) válassza az **Új** > **Integráció** > **Logikai alkalmazás** lehetőséget.
 
    ![Logikai alkalmazás létrehozása](./media/publish-iot-hub-events-to-logic-apps/select-logic-app.png)
 
@@ -52,7 +51,7 @@ Először hozzon létre egy logikai alkalmazást, és adjon hozzá egy Event Gri
 
 4. A Logic App Designerben a **Sablonok** területen válassza az **Üres logikai alkalmazás** elemet, így az alapoktól építheti fel logikai alkalmazását.
 
-## <a name="select-a-trigger"></a>Trigger kiválasztása
+### <a name="select-a-trigger"></a>Trigger kiválasztása
 
 A trigger a logikai alkalmazást elindító konkrét esemény. Ebben az oktatóanyagban a munkafolyamatot aktiváló trigger HTTP-kapcsolaton keresztül fogad egy kérést.  
 
@@ -67,64 +66,60 @@ A trigger a logikai alkalmazást elindító konkrét esemény. Ebben az oktatóa
 
 4. Másolja az alábbi JSON-kódmintát a szövegmezőbe, majd kattintson a **Kész** gombra:
 
-   ```json
-   [{
-     "id": "56afc886-767b-d359-d59e-0da7877166b2",
-     "topic": "/SUBSCRIPTIONS/<Subscription ID>/RESOURCEGROUPS/<Resource group name>/PROVIDERS/MICROSOFT.DEVICES/IOTHUBS/<IoT hub name>",
-     "subject": "devices/LogicAppTestDevice",
-     "eventType": "Microsoft.Devices.DeviceCreated",
-     "eventTime": "2018-01-02T19:17:44.4383997Z",
-     "data": {
-       "twin": {
-         "deviceId": "LogicAppTestDevice",
-         "etag": "AAAAAAAAAAE=",
-         "status": "enabled",
-         "statusUpdateTime": "0001-01-01T00:00:00",
-         "connectionState": "Disconnected",
-         "lastActivityTime": "0001-01-01T00:00:00",
-         "cloudToDeviceMessageCount": 0,
-         "authenticationType": "sas",
-         "x509Thumbprint": {
-           "primaryThumbprint": null,
-           "secondaryThumbprint": null
-         },
-         "version": 2,
-         "properties": {
-           "desired": {
-             "$metadata": {
-               "$lastUpdated": "2018-01-02T19:17:44.4383997Z"
-             },
-             "$version": 1
-           },
-           "reported": {
-             "$metadata": {
-               "$lastUpdated": "2018-01-02T19:17:44.4383997Z"
-             },
-             "$version": 1
-           }
-         }
-       },
-       "hubName": "egtesthub1",
-       "deviceId": "LogicAppTestDevice",
-       "operationTimestamp": "2018-01-02T19:17:44.4383997Z",
-       "opType": "DeviceCreated"
-     },
-     "dataVersion": "",
-     "metadataVersion": "1"
-   }]
-   ```
-5. Egy előugró értesítés jelenhet meg a következő üzenettel: **Ne felejtsen el egy alkalmazás/JSON értékű Content-Type fejlécet beszúrni a kérésbe**. A javaslatot nyugodtan figyelmen kívül hagyhatja, és továbbléphet a következő szakaszra. 
+```json
+[{
+  "id": "56afc886-767b-d359-d59e-0da7877166b2",
+  "topic": "/SUBSCRIPTIONS/<subscription ID>/RESOURCEGROUPS/<resource group name>/PROVIDERS/MICROSOFT.DEVICES/IOTHUBS/<hub name>",
+  "subject": "devices/LogicAppTestDevice",
+  "eventType": "Microsoft.Devices.DeviceCreated",
+  "eventTime": "2018-01-02T19:17:44.4383997Z",
+  "data": {
+    "twin": {
+      "deviceId": "LogicAppTestDevice",
+      "etag": "AAAAAAAAAAE=",
+      "deviceEtag": "null",
+      "status": "enabled",
+      "statusUpdateTime": "0001-01-01T00:00:00",
+      "connectionState": "Disconnected",
+      "lastActivityTime": "0001-01-01T00:00:00",
+      "cloudToDeviceMessageCount": 0,
+      "authenticationType": "sas",
+      "x509Thumbprint": {
+        "primaryThumbprint": null,
+        "secondaryThumbprint": null
+      },
+      "version": 2,
+      "properties": {
+        "desired": {
+          "$metadata": {
+            "$lastUpdated": "2018-01-02T19:17:44.4383997Z"
+          },
+          "$version": 1
+        },
+        "reported": {
+          "$metadata": {
+            "$lastUpdated": "2018-01-02T19:17:44.4383997Z"
+          },
+          "$version": 1
+        }
+      }
+    },
+    "hubName": "egtesthub1",
+    "deviceId": "LogicAppTestDevice"
+  },
+  "dataVersion": "1",
+  "metadataVersion": "1"
+}]
+```
 
+5. Egy előugró értesítés jelenhet meg a következő üzenettel: **Ne felejtsen el egy alkalmazás/JSON értékű Content-Type fejlécet beszúrni a kérésbe**. A javaslatot nyugodtan figyelmen kívül hagyhatja, és továbbléphet a következő szakaszra. 
 
 ### <a name="create-an-action"></a>Művelet létrehozása
 
 A műveletek azok a lépések, azután mennek végbe, hogy a trigger elindítja a logikai alkalmazás munkafolyamatát. Ebben az oktatóanyagban a művelet egy e-mail-értesítés küldése az e-mail-szolgáltatóról. 
 
-1. Válassza az **Új lépés**, majd a **Művelet hozzáadása** lehetőséget. 
-
-   ![Új lépés, művelet hozzáadása](./media/publish-iot-hub-events-to-logic-apps/new-step.png)
-
-2. Keresse meg az **E-mail** elemet. 
+1. Válassza az **Új lépés** lehetőséget. Ez egy új ablakot nyit meg a **művelet kiválasztásához**.
+2. Keresse meg az **E-mail** elemet.
 3. Az e-mail-szolgáltató alapján keresse meg és válassza ki a megfelelő összekötőt. Ebben az oktatóanyagban az **Office 365 Outlookot használjuk**. Az egyéb e-mail-szolgáltatókra vonatkozó lépések is hasonlók. 
 
    ![E-mail-szolgáltató összekötőjének kiválasztása](./media/publish-iot-hub-events-to-logic-apps/o365-outlook.png)
@@ -152,7 +147,7 @@ Mielőtt kilép a Logic Apps Designerből, másolja ki az URL-címet, amelyen a 
 
 3. Mentse ezt az URL-címet, hogy a következő szakaszban hivatkozhasson majd rá. 
 
-## <a name="publish-an-event-from-iot-hub"></a>Esemény közzététele az IoT-központból
+## <a name="configure-subscription-for-iot-hub-events"></a>Az IoT Hub eseményeire való előfizetés beállítása
 
 Ebben a szakaszban konfiguráljuk az IoT-központot, hogy közzétegye a bekövetkező eseményeket. 
 
@@ -166,21 +161,22 @@ Ebben a szakaszban konfiguráljuk az IoT-központot, hogy közzétegye a beköve
    ![Új esemény-előfizetés létrehozása](./media/publish-iot-hub-events-to-logic-apps/event-subscription.png)
 
 4. Hozza létre az esemény-előfizetést a következő értékekkel: 
-   * **Név**: Adjon meg egy leíró nevet.
-   * **Előfizetés az összes eseménytípusra**: Törölje a jelölőnégyzet jelölését.
-   * **Eseménytípusok**: Válassza a **DeviceCreated** lehetőséget.
-   * **Előfizető típusa**: Válassza a **Webhook** lehetőséget.
-   * **Előfizető végpontja**: Illessze be a logikai alkalmazásból kimásolt URL-címet. 
+    * **Esemény típusa**: Törölje az Előfizetés az összes eseménytípusra jelölőnégyzet jelölését, majd válassza ki a menüből az **Eszköz által létrehozott** elemet.
+    * **Végpont részletei**: A Végpont típusánál válassza a **Webhook** elemet, kattintson a végpont kiválasztása elemre, majd illessze be a logikai alkalmazásból kimásolt URL-címet, és hagyja jóvá a kiválasztást.
 
-   Ha most mentené az esemény-előfizetést, akkor az IoT-központban létrehozott minden eszközről értesítést kapna. A jelen oktatóanyag esetében azonban az opcionális mezőkkel szűrjünk egyes eszközökre: 
+    ![végpont url-jének kiválasztása](./media/publish-iot-hub-events-to-logic-apps/endpoint-url.png)
 
-   * **Előtagszűrő**: A `devices/Building1_` megadásával az 1. épület eszközeseményeire szűrhet.
-   * **Utótagszűrő**: A `_Temperature` megadásával a hőmérséklettel kapcsolatos eseményekre szűrhet.
+    * **Esemény-előfizetés részletei**: Adjon meg egy leíró nevet, majd válassza ki az **Event Grid-séma** elemet
 
-   Amikor elkészült, az űrlapnak az alábbi példához hasonlóan kell kinéznie: 
+  Ha most mentené az esemény-előfizetést, akkor az IoT-központban létrehozott minden eszközről értesítést kapna. A jelen oktatóanyag esetében azonban az opcionális mezőkkel szűrjünk egyes eszközökre: 
 
-   ![Esemény-előfizetési űrlapminta](./media/publish-iot-hub-events-to-logic-apps/subscription-form.png)
+  * **Tárgy kezdete**: A `devices/Building1_` megadásával az 1. épület eszközeseményeire szűrhet.
+  * **Tárgy vége**: A `_Temperature` megadásával a hőmérséklettel kapcsolatos eseményekre szűrhet.
 
+  Amikor elkészült, az űrlapnak az alábbi példához hasonlóan kell kinéznie: 
+
+    ![Esemény-előfizetési űrlapminta](./media/publish-iot-hub-events-to-logic-apps/subscription-form.png)
+    
 5. Kattintson a **Létrehozás** gombra az esemény-előfizetés mentéséhez.
 
 ## <a name="create-a-new-device"></a>Új eszköz létrehozása
@@ -201,7 +197,7 @@ Miután hozzáadott néhány eszközt az IoT-központhoz, az e-mail-fiókjában 
 
 ## <a name="use-the-azure-cli"></a>Az Azure parancssori felületének használata
 
-Az Azure Portal helyett az Azure CLI használatával is végrehajthatja az IoT Hub lépéseit. További részletekért lásd az Azure CLI [esemény-előfizetések létrehozásáról](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription) és [IoT-eszközök létrehozásáról](https://docs.microsoft.com/cli/azure/iot/device) szóló lapjait.
+Az Azure Portal helyett az Azure CLI használatával is végrehajthatja az IoT Hub lépéseit. További részletekért lásd az Azure CLI [esemény-előfizetések létrehozásáról](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription) és [IoT-eszközök létrehozásáról](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity) szóló lapjait.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -225,8 +221,8 @@ Az esemény-előfizetést akkor is érdemes lehet törölnie, ha megtartja az Io
 
 ## <a name="next-steps"></a>További lépések
 
-További információ [az IoT Hub-eseményekre való válaszadást az Event Griddel kiváltott műveletek használatával](../iot-hub/iot-hub-event-grid.md).
-
-Ismerje meg részletesebben az [Event Grid](overview.md) által kínált lehetőségeket.
+* További információ [az IoT Hub-eseményekre való válaszadást az Event Griddel kiváltott műveletek használatával](../iot-hub/iot-hub-event-grid.md).
+* [Ismerje meg, hogyan rendezheti az eszközhöz csatlakoztatott és nem csatlakoztatott eseményeket](../iot-hub/iot-hub-how-to-order-connection-state-events.md)
+* Ismerje meg részletesebben az [Event Grid](overview.md) által kínált lehetőségeket.
 
 

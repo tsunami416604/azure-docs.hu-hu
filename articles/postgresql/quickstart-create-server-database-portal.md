@@ -10,12 +10,12 @@ ms.service: postgresql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 03/20/2018
-ms.openlocfilehash: b34fd81532e27960d0dd92f172790aee3cd82ca5
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 002ec2f99e488af76654c2391416e4b90e16e4c0
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34639418"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43050227"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql-server-in-the-azure-portal"></a>Rövid útmutató: Azure Database for PostgreSQL-kiszolgáló létrehozása az Azure Portalon
 
@@ -85,6 +85,10 @@ Az Azure Database for PostgreSQL kiszolgálószinten hoz létre egy tűzfalat. E
     AllowAllIps | 0.0.0.0 | 255.255.255.255
 
      ![Tűzfalszabályok beállítása](./media/quickstart-create-database-portal/5-firewall-2.png)
+     
+      > [!NOTE]
+      > Éles példányok esetében úgy állítsa be a tűzfalszabályokat, hogy bejövő kérelmeket csak ismert IP-címektől fogadjanak.  Az itt megadott beállítások csupán példák.
+      >
 
 4. A **Kapcsolatbiztonság** lap felső eszköztárában kattintson a **Mentés** gombra. A folytatás előtt várjon, amíg meg nem jelenik a kapcsolatbiztonsági frissítés sikeres befejezését jelző értesítés.
 

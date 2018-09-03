@@ -14,22 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/12/2018
 ms.author: daveba
-ms.openlocfilehash: e001907b9df77eff1455043a3fd7ce5533838fcc
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 0781bf3fe9806c2c8aaa911433c4d6eddcafe04c
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39056174"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42885493"
 ---
 # <a name="tutorial-use-a-windows-vm-managed-identity-to-access-azure-storage"></a>Oktatóanyag: Windows VM-beli felügyelt identitás használata az Azure Storage eléréséhez
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Az oktatóanyag bemutatja, hogyan engedélyezheti a felügyelt identitást egy Windows rendszerű virtuális gépen, majd hogyan használhatja az Azure Storage hozzáféréséhez.  Az alábbiak végrehajtásának módját ismerheti meg:
+Ez az oktatóanyag bemutatja, hogyan férhet hozzá az Azure Storage-hoz egy windowsos virtuális gép (VM) rendszer által hozzárendelt identitásával. Az alábbiak végrehajtásának módját ismerheti meg:
 
 > [!div class="checklist"]
-> * Egy Windows rendszerű virtuális gép létrehozása egy új erőforráscsoportban 
-> * Felügyelt identitás engedélyezése Windows rendszerű virtuális gépen (VM)
 > * Blobtároló létrehozása egy tárfiókban
 > * Hozzáférés engedélyezése Windows VM felügyelt identitása számára egy tárfiókhoz 
 > * Hozzáférés kérése, majd az Azure Storage meghívása a hozzáféréssel 
@@ -43,31 +41,11 @@ Az oktatóanyag bemutatja, hogyan engedélyezheti a felügyelt identitást egy W
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
-## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
+- [Bejelentkezés az Azure Portalra](https://portal.azure.com)
 
-Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
+- [Windows rendszerű virtuális gép létrehozása](/azure/virtual-machines/windows/quick-create-portal)
 
-## <a name="create-a-windows-virtual-machine-in-a-new-resource-group"></a>Egy Windows rendszerű virtuális gép létrehozása egy új erőforráscsoportban
-
-Ebben a szakaszban olyan Windows rendszerű virtuális gépet hoz létre, amelyhez később felügyelt identitást fog adni.
-
-1.  Kattintson az Azure Portal bal felső sarkában található **+/Új szolgáltatás létrehozása** gombra.
-2.  Válassza a **Számítás**, majd a **Windows Server 2016 Datacenter** elemet. 
-3.  Adja meg a virtuális gép adatait. Az itt létrehozott **felhasználónév** és **jelszó** alkotják a virtuális gépre való bejelentkezéshez használt hitelesítő adatokat.
-4.  Válassza ki a megfelelő **előfizetést** a virtuális géphez a legördülő menüben.
-5.  Ha a virtuális gépet egy új **erőforráscsoportban** szeretné létrehozni, válassza az **Új létrehozása** elemet. Amikor végzett, kattintson az **OK** gombra.
-6.  Válassza ki a virtuális gép méretét. További méretek megjelenítéséhez válassza **Az összes megtekintése** lehetőséget, vagy módosítsa a **Támogatott lemeztípus** szűrőt. A Beállítások panelen hagyja változatlanul az alapértelmezett beállításokat, és kattintson az **OK** gombra.
-
-    ![Helyettesítő képszöveg](media/msi-tutorial-windows-vm-access-arm/msi-windows-vm.png)
-
-## <a name="enable-managed-identity-on-your-vm"></a>Felügyelt identitás engedélyezése a virtuális gépen
-
-A virtuális gép felügyelt identitásával anélkül kérhet le hozzáférési jogkivonatokat az Azure AD-ből, hogy hitelesítő adatokat kellene a kódba illesztenie. A háttérben a felügyelt identitás Azure Portalon keresztül, virtuális gépen történő engedélyezésének két következménye van: regisztrálja a virtuális gépet az Azure AD-ben egy felügyelt identitás létrehozásához, és konfigurálja az identitást a virtuális gépen. 
-
-1. Lépjen az új virtuális gép erőforráscsoportjára, és válassza ki az előző lépésben létrehozott virtuális gépet.
-2. A **Beállítások** kategóriában kattintson a **Konfiguráció** elemre.
-3. A felügyelt identitás engedélyezéséhez kattintson az **Igen** gombra.
-4. Kattintson a **Mentés** gombra a konfiguráció alkalmazásához. 
+- [Rendszer által hozzárendelt identitás engedélyezése a virtuális gépen](/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm#enable-system-assigned-identity-on-an-existing-vm)
 
 ## <a name="create-a-storage-account"></a>Tárfiók létrehozása 
 

@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 07/20/2018
+ms.date: 08/27/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: bd559cb9f0140706a4b9735c642367e03616a14d
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 7509ed46ba07cd8250f82f8eb258d18e3f4a1ee6
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39188165"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43107105"
 ---
 # <a name="tutorial-create-azure-resource-manager-templates-with-dependent-resources"></a>Oktatóanyag: Függő erőforrásokkal ellátott Azure Resource Manager-sablonok létrehozása
 
@@ -56,12 +56,27 @@ Az Azure-beli gyorsindítási sablonok a Resource Manager-sablonok adattárakén
 
 ## <a name="explore-the-template"></a>A sablon vizsgálata
 
+Amikor ebben a szakaszban a sablont vizsgálja, próbálja megválaszolni a következő kérdéseket:
+
+- Hány Azure-erőforrás van meghatározva ebben a sablonban?
+- Az egyik erőforrás egy Azure-tárfiók.  A definíció hasonlít a legutóbbi oktatóanyagban használtra?
+- Hogyan tudja megkeresni a sablonban meghatározott erőforrásokhoz a sablonreferenciákat?
+- Hogyan tudja megkeresni az erőforrások függőségeit?
+
 1. A Visual Studio Code-ban csukja össze az elemeket mindaddig, amíg csak az első szintű és a **resources** (erőforrások) alatt lévő második szintű elemek lesznek láthatók:
 
     ![Visual Studio Code – Azure Resource Manager-sablonok](./media/resource-manager-tutorial-create-templates-with-dependent-resources/resource-manager-template-visual-studio-code.png)
 
     A sablon öt erőforrást határoz meg.
-2. Bontsa ki a negyedik elemet:
+2. Bontsa ki az első erőforrást. Ez egy tárfiók. A definíciónak az előző oktatóanyag elején használttal azonosnak kell lennie.
+
+    ![Visual Studio Code – Azure Resource Manager-sablonok, tárfiók-definíciók](./media/resource-manager-tutorial-create-templates-with-dependent-resources/resource-manager-template-storage-account-definition.png)
+
+3. Bontsa ki a második erőforrást. Az erőforrástípus **Microsoft.Network/publicIPAddresses**. A sablonreferencia megkereséséhez lépjen a [sablonreferenciához](https://docs.microsoft.com/azure/templates/), majd a **Filter by title (Szűrés cím alapján)** mezőben adja meg a **nyilvános IP-címet** vagy a **nyilvános IP-címeket**. Hasonlítsa össze az erőforrás-definíciót a sablonreferenciával.
+
+    ![Visual Studio Code – Azure Resource Manager-sablonok, nyilvános IP-cím definíciója](./media/resource-manager-tutorial-create-templates-with-dependent-resources/resource-manager-template-public-ip-address-definition.png)
+4. A sablonban meghatározott további erőforrások sablonreferenciáinak megkereséséhez ismételje meg az utolsó lépést.  Hasonlítsa össze az erőforrás-definíciókat a referenciákkal.
+5. Bontsa ki a negyedik erőforrást:
 
     ![Visual Studio Code – Azure Resource Manager-sablonok – dependsOn](./media/resource-manager-tutorial-create-templates-with-dependent-resources/resource-manager-template-visual-studio-code-dependson.png)
 
@@ -70,7 +85,7 @@ Az Azure-beli gyorsindítási sablonok a Resource Manager-sablonok adattárakén
     * publicIPAddress
     * virtualNetwork
 
-3. Bontsa ki az ötödik elemet. Ez az erőforrás egy virtuális gép. Ez az erőforrás a következő két másik erőforrástól függ:
+6. Bontsa ki az ötödik erőforrást. Ez az erőforrás egy virtuális gép. Ez az erőforrás a következő két másik erőforrástól függ:
 
     * storageAccount
     * networkInterface

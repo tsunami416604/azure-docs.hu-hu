@@ -1,19 +1,19 @@
 ---
 title: Jenkins-kiszolgáló létrehozása az Azure-on
 description: Jenkins-kiszolgáló telepítése egy Azure-beli linuxos virtuális gépen a Jenkins-megoldássablonból és egy Java-mintaalkalmazás létrehozása.
-ms.topic: quickstart
-ms.author: tarcher
+ms.service: jenkins
+keywords: jenkins, azure, devops, portál, virtuális gép, megoldássablon
 author: tomarcher
-manager: jpconnock
-ms.service: devops
-ms.custom: jenkins
-ms.date: 07/31/2018
-ms.openlocfilehash: af1082d9b7b350f1845d6c8e22108b9238a40f28
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+manager: jeconnoc
+ms.author: tarcher
+ms.topic: quickstart
+ms.date: 6/7/2017
+ms.openlocfilehash: 92a0583ad01c4dc9263988f6ef48c95c380c9289
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39390428"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43086574"
 ---
 # <a name="create-a-jenkins-server-on-an-azure-linux-vm-from-the-azure-portal"></a>Jenkins-kiszolgáló létrehozása Azure-beli linuxos virtuális gépen az Azure Portalról
 
@@ -75,7 +75,7 @@ A **Build** (Felépítés) lapon válassza az **Add build step** (Felépítési 
 
 ![Gradle-burkoló használata a létrehozáshoz](./media/install-jenkins-solution-template/jenkins-job-gradle-config.png) 
 
-Válassza az **Advanced...** (Speciális) lehetőséget, majd adja meg a `complete` értéket a **Root Build script** (Fő felépítési szkript) mezőben. Kattintson a **Mentés** gombra.
+Válassza az **Advanced** (Speciális) lehetőséget, majd adja meg a `complete` értéket a **Root Build script** (Fő felépítési szkript) mezőben. Kattintson a **Mentés** gombra.
 
 ![Speciális beállítások megadása a Gradle-burkoló létrehozása lépésben](./media/install-jenkins-solution-template/jenkins-job-gradle-advances.png) 
 

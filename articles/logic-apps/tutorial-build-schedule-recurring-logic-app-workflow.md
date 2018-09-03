@@ -1,28 +1,23 @@
 ---
-title: Ütemezőn alapuló automatizált munkafolyamatok létrehozása – Azure Logic Apps | Microsoft Docs
-description: Ez az oktatóanyag bemutatja, hogyan hozhat létre üzemezőn alapuló, ismétlődő, automatizált munkafolyamatokat az Azure Logic Apps segítségével
-author: ecfan
-manager: jeconnoc
-editor: ''
+title: Ütemezésalapú automatizált munkafolyamatok létrehozása – Azure Logic Apps | Microsoft Docs
+description: Oktatóanyag – Hogyan hozhat létre ütemezésalapú, ismétlődő, automatizált munkafolyamatokat az Azure Logic Apps segítségével
 services: logic-apps
-documentationcenter: ''
-ms.assetid: ''
 ms.service: logic-apps
-ms.workload: logic-apps
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, LADocs
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/12/2018
-ms.author: LADocs; estfan
-ms.openlocfilehash: 84779d3e56b089c34e6556368008d794e634d535
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 43f826414ae7f279c23f6e9e2e39d4d21267e158
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35300769"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43124018"
 ---
-# <a name="check-traffic-with-a-scheduler-based-logic-app"></a>Forgalom ellenőrzése ütemezőn alapuló logikai alkalmazás használatával
+# <a name="check-traffic-with-a-schedule-based-logic-app"></a>Forgalom ellenőrzése ütemezésalapú logikai alkalmazás használatával
 
 Az Azure Logic Apps segítségével automatizálhatja az ütemezés szerint futó munkafolyamatokat. Ez az oktatóanyag bemutatja, hogyan hozhat létre egy ütemező eseményindítóval rendelkező [logikai alkalmazást](../logic-apps/logic-apps-overview.md), amely hétköznap reggelenként fut, és ellenőrzi az utazási időt két pont között, a forgalommal együtt. Ha az idő meghaladja a megadott határértéket, a logikai alkalmazás e-mailt küld, amely az utazási időt és az úti cél eléréséhez szükséges többletidőt tartalmazza.
 

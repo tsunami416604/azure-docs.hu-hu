@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 07/13/2018
 ms.author: beverst;cephalin
 ms.custom: mvc
-ms.openlocfilehash: ce84498ab89891bd7b96cfcc6b0c7ac029c93cbd
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 9a623156ad2a27abf7fa5e865f8b7452e2c70b3c
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39423079"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43124518"
 ---
 # <a name="build-a-docker-python-and-postgresql-web-app-in-azure"></a>Docker Python- és PostgreSQL-webalkalmazás létrehozása az Azure-ban
 
@@ -169,7 +169,9 @@ Az Azure Database for PostgreSQL-kiszolgáló létrehozását követően az Azur
 
 ### <a name="create-a-firewall-rule-for-the-postgresql-server"></a>Tűzfalszabály létrehozása a PostgreSQL-kiszolgálóhoz
 
-A Cloud Shellben futtassa a következő Azure CLI-parancsot, hogy engedélyezze az adatbázishoz való hozzáférést minden IP-címről. Ha a kezdő IP-cím és a záró IP-cím is `0.0.0.0` értékre van állítva, a tűzfal csak más Azure-erőforrások számára van nyitva. 
+A Cloud Shellben futtassa a következő Azure CLI-parancsot, hogy engedélyezze az adatbázishoz való hozzáférést minden IP-címről. 
+> [!Note]
+> Nem javasoljuk, hogy minden portot nyitva hagyjon az adatbázisban, vagy hogy az adatbázis az internetről elérhető legyen.  Az éles környezetben használni kívánt új adatbázisok megfelelő védelme érdekében olvasson el más [cikkeket is az Azure biztonságáról](https://docs.microsoft.com/azure/security/).  
 
 ```azurecli-interactive
 az postgres server firewall-rule create --resource-group myResourceGroup --server-name <postgresql_name> --start-ip-address=0.0.0.0 --end-ip-address=0.0.0.0 --name AllowAzureIPs

@@ -1,6 +1,6 @@
 ---
-title: Az Azure ad-vel az első futás közben új Windows 10-es eszköz csatlakoztatása |} A Microsoft Docs
-description: Ez a témakör azt ismerteti, hogyan felhasználók is az Azure AD Join beállítása során az első futtatási élmény.
+title: Új Windows 10-es eszköz csatlakoztatása az Azure AD-hez első futtatáskor | Microsoft Docs
+description: Ez a cikk ismerteti, hogy a felhasználók hogyan állíthatják be az Azure AD-csatlakozást az első futtatás során.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -12,81 +12,85 @@ ms.component: devices
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 01/15/2018
+ms.topic: tutorial
+ms.date: 08/25/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 1376f011d056aac33333f6ac31ee2eaadaf3ef4a
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
-ms.translationtype: MT
+ms.openlocfilehash: eaf0b3e3b607145598660dbb64cadd5a277360cb
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39415000"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43046322"
 ---
-# <a name="join-a-new-windows-10-device-with-azure-ad-during-a-first-run"></a>Az Azure ad-vel az első futás közben új Windows 10-es eszköz csatlakoztatása
+# <a name="tutorial-join-a-new-windows-10-device-with-azure-ad-during-a-first-run"></a>Oktatóanyag: Új Windows 10-es eszköz csatlakoztatása az Azure AD-hez első futtatáskor
 
-Az Eszközfelügyelet az Azure Active Directory (Azure AD) biztosíthatja, hogy a felhasználók az erőforrásokhoz hozzáférő eszközei megfeleljenek a biztonsági és megfelelőségi szabványoknak. További információkért lásd: a [bemutatása az Eszközfelügyelet az Azure Active Directory](overview.md).
+Az Azure Active Directory (Azure AD) eszközfelügyeletével biztosítható, hogy a felhasználók csak olyan eszközökről férjenek hozzá a vállalat erőforrásaihoz, amelyek megfelelnek a biztonsági és megfelelőségi szabványoknak. További információ: [Az Azure Active Directory eszközkezelésének alapjai](overview.md).
 
-A Windows 10-ben egy új eszköz csatlakozhat az Azure AD az első futtatási élmény (FRX) alatt.  
-Ez lehetővé teszi, hogy az alkalmazottak vagy a diákok shrink-wrapped eszközök terjesztése.
+Windows 10 rendszeren az új eszközöket az első indítás (FRX) során csatlakoztatni lehet az Azure AD-hez.  
+Ez lehetővé teszi bontatlan eszközök átadását az alkalmazottaknak vagy a tanulóknak.
 
-Ha Windows 10 Professional vagy Windows 10 Enterprise telepítve az eszközön, a tapasztalatok alapértelmezés szerint a telepítési folyamat a vállalat által birtokolt eszközök.
+Ha egy eszközön a Windows 10 Professional vagy a Windows 10 Enterprise rendszer van telepítve, az FRX élmény alapértelmezés szerint a vállalati eszközök beállítási folyamatát indítja el.
 
-A Windows a *out-of-box élmény*, egy a helyszíni Active Directory (AD) tartományhoz való csatlakozás nem támogatott. Ha azt tervezi, a számítógép csatlakoztatása egy AD-tartományát, a telepítés során, választhat a hivatkozás **Windows beállítása helyi fiókkal**. Ezután csatlakozhat a beállításokat a tartomány a számítógépen.
+A Windows *kezdőélménye* nem támogatja a helyszíni Azure Active Directory- (AD-) tartományokhoz való csatlakozást. Ha azt tervezi, hogy a számítógépet csatlakoztatja egy AD-tartományhoz, a beállítás során válassza a **Windows helyi fiókkal való beállítására szolgáló** lehetőséget. Ezután a számítógép beállításai között csatlakozhat a tartományhoz.
  
+Ebben az oktatóanyagban megismerheti, hogyan csatlakoztathat egy eszközt az Azure AD-hez az FRX során:
+ > [!div class="checklist"]
+> * Előfeltételek
+> * Eszköz csatlakoztatása
+> * Ellenőrzés
 
+## <a name="prerequisites"></a>Előfeltételek
 
-## <a name="before-you-begin"></a>Előkészületek
+Egy Windows 10-es eszköz csatlakoztatásához úgy kell konfigurálni az eszközregisztrációs szolgáltatást, hogy engedélyezze az eszközök regisztrálását. Az eszközök csatlakoztatásának engedélyezése mellett az is feltétel, hogy az engedélyezett maximumnál kevesebb eszköz legyen regisztrálva az Azure AD-bérlőn. További információt az [eszközbeállítások konfigurálásáról szóló részben](device-management-azure-portal.md#configure-device-settings) talál.
 
-A Windows 10-es eszköz csatlakoztatása, hogy lehetővé tegye az eszközök regisztrálása az eszközregisztrációs szolgáltatás kell konfigurálni. Eszközök csatlakoztatása az Azure AD-bérlője számára, mellett rendelkeznie kell kevesebb, mint a beállított maximális regisztrált eszközök. További információkért lásd: [eszközbeállítások konfigurálása](device-management-azure-portal.md#configure-device-settings).
-
-Ezenkívül ha a bérlő összevonást használ, az identitásszolgáltató támogatnia kell WS-Fed és a WS-Trust felhasználónév/jelszó végpont. 1.3-as vagy 2005 verzióra is lehet. Ez a protokoll-támogatás mind az eszköz csatlakoztatása az Azure ad-ben, és jelentkezzen be egy jelszót az eszköz szükség.
+Ezenfelül ha a bérlő egy összevont bérlő, akkor az identitásszolgáltatónak támogatnia KELL a WS-Fed és a WS-Trust felhasználónév/jelszó végpontokat. Ez 1.3-as vagy 2005-ös verziójú lehet. A protokoll támogatása szükséges az eszköz Azure AD-hez való csatlakoztatásához és az eszközre jelszóval történő bejelentkezéshez is.
 
 ## <a name="joining-a-device"></a>Eszköz csatlakoztatása
 
-**A Windows 10-es eszköz csatlakoztatása az Azure ad-ben FRX során:**
+**Windows 10-es eszköz csatlakoztatása az Azure AD-hez az FRX során:**
 
 
-1. Kapcsolja be az új eszközt, és indítsa el a telepítési folyamatot, amikor megjelenik a **kész első** üzenet. Kövesse az utasításokat követve konfigurálja az eszközt.
+1. Amikor bekapcsolja az új eszközt, és elindul a beállítás folyamata, a **Felkészülés** üzenetnek kell megjelennie. Kövesse az utasításokat az eszköz beállításához.
 
-2. Indítsa el a területi és nyelvi testreszabás. Majd fogadja el a Microsoft szoftverlicenc-feltételeket.
+2. Először is adja meg a területi és nyelvi beállításokat. Azután fogadja el a Microsoft szoftverlicenc-szerződését.
  
-    ![Az Ön régiójában testreszabása](./media/azuread-joined-devices-frx/01.png)
+    ![Régió testreszabása](./media/azuread-joined-devices-frx/01.png)
 
-3. Válassza ki a hálózatot, az internethez való kapcsolódáshoz használandó.
+3. Válassza ki a hálózatot, amelyen keresztül csatlakozni fog az internethez.
 
-4. Kattintson a **szervezethez tartozik az eszköz**. 
+4. Válassza az **Ez az eszköz a szervezethez tartozik** lehetőséget. 
 
-    ![Kié a PC-s képernyő](./media/azuread-joined-devices-frx/02.png)
+    ![A számítógép tulajdonosát megjelenítő képernyő](./media/azuread-joined-devices-frx/02.png)
 
-5. Adja meg a hitelesítő adatait, amely a szervezete által Önhöz van megadva, és kattintson **jelentkezzen be a**.
+5. Adja meg a vállalat által megadott hitelesítő adatokat, majd kattintson a **Bejelentkezés** gombra.
 
-    ![Bejelentkezési képernyő](./media/azuread-joined-devices-frx/03.png)
+    ![Bejelentkezés képernyő](./media/azuread-joined-devices-frx/03.png)
 
-6. Ön eszköz egyező bérlő keresi meg az Azure ad-ben. Ha egy összevont tartományban vannak, a rendszer átirányítja a helyszíni Secure Token Service (STS) kiszolgálóval, például az Active Directory összevonási szolgáltatások (AD FS).
+6. Az eszköz megkeresi a megfelelő bérlőt az Azure AD-ben. Ha az eszköz egy összevont tartományhoz tartozik, akkor a rendszer átirányítja a helyszíni biztonsági jegykiadó szolgáltatás (STS) kiszolgálójához, például az Active Directory összevonási szolgáltatásokhoz (AD FS).
 
-7. Ha egy felhasználó egy nem összevont tartományban, közvetlenül az Azure AD-ban üzemeltetett lapon adja meg a hitelesítő adatait. 
+7. Ha egy nem összevont tartományhoz tartozik, akkor a hitelesítő adatokat közvetlenül az Azure AD-oldalon lehet megadni. 
 
-8. A multi-factor authentication kihívást megadását kéri. 
+8. A rendszer többtényezős hitelesítést kér. 
  
-9. Az Azure AD ellenőrzi, hogy szükség-e a mobileszköz-kezelés regisztrációs.
+9. Az Azure AD ellenőrzi, hogy szükséges-e regisztráció a mobileszköz-felügyeleti megoldásban.
 
-10. Windows regisztrálja az eszközt a szervezet címtárában, az Azure ad-ben, és regisztrálja azt a mobileszköz-kezelés, ha van ilyen.
+10. A Windows regisztrálja az eszközt a szervezet Azure AD-beli címtárában, és ha szükséges, regisztrálja a mobileszköz-felügyeletben.
 
 11. Ha Ön:
-    - A felügyelt felhasználó Windows megnyílik az automatikus bejelentkezési folyamat során az asztalon.
+    - Felügyelt felhasználó, a Windows az asztalra lép tovább az automatikus bejelentkezési folyamaton keresztül.
 
-    - Egy összevont felhasználó, a rendszer átirányítja a Windows bejelentkezési képernyőn megadhatja a hitelesítő adatait.
+    - Összevont felhasználó, a Windows átirányítja a bejelentkezési képernyőre, amely a hitelesítő adatainak megadását kéri.
 
 ## <a name="verification"></a>Ellenőrzés
 
-Annak ellenőrzéséhez, hogy egy eszköz csatlakozott az Azure AD, tekintse át a **hozzáférés munkahelyi vagy iskolai** párbeszédpanel a Windows-eszközön. A párbeszédpanel jeleznie kell, hogy csatlakozott az Azure AD-címtárhoz.
+Annak ellenőrzéséhez, hogy a Windows-eszköz csatlakozik-e az Azure AD-hez, használja a **Hozzáférés munkahelyi vagy iskolai rendszerhez** párbeszédpanelt. Ez jelzi, hogy az eszköz csatlakozik-e az Azure AD-címtárhoz.
 
 ![Hozzáférés munkahelyi vagy iskolai rendszerhez](./media/azuread-joined-devices-frx/13.png)
 
 
 ## <a name="next-steps"></a>További lépések
 
-- További információkért lásd: a [bemutatása az Eszközfelügyelet az Azure Active Directory](overview.md).
+- További információ: [Az Azure Active Directory eszközkezelésének alapjai](overview.md).
 
-- Az Azure AD portálon eszközök kezelésével kapcsolatos további információkért lásd: [az Eszközfelügyelet az Azure portal használatával](device-management-azure-portal.md).
+- További információk az eszközök Azure Portalon végzett felügyeletéről: [Eszközfelügyelet az Azure AD Portalon](device-management-azure-portal.md).

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ASP.NET
 ms.workload: tbd
 ms.date: 06/13/2018
 ms.author: wesmc
-ms.openlocfilehash: 4c34bd10768ab7acf4700b29386d3a71532490db
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: cf47b2d6bd17fa5a9f7cbe98ab7db2799f6e8287
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38674852"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42916300"
 ---
 # <a name="quickstart-create-a-chat-room-with-signalr-service"></a>Rövid útmutató: Csevegőszoba létrehozása a SignalR szolgáltatással
 
@@ -93,15 +93,20 @@ Ebben a szakaszban hozzáadja a [Secret Manager eszközt](https://docs.microsoft
 
         dotnet restore
 
-3. Adjon hozzá egy *Azure__SignalR__ConnectionString* nevű titkos kódot a Secret Managerhez. A titkos kód egy hierarchikus konfigurációs érték, és a kettőspont (:) használata esetleg nem minden platformon megengedett. Az ebben a titkos kódban használt dupla aláhúzásjel (__) használata minden platformon támogatott.  Ez a titkos kód tartalmazza a SignalR szolgáltatási erőforrás elérésére szolgáló kapcsolati sztringet. A SignalR alapértelmezés szerint az *Azure__SignalR__ConnectionString* konfigurációs kulcsot keresi a kapcsolat létrehozásához. Cserélje le az értéket az alábbi parancsban a SignalR szolgáltatási erőforráshoz tartozó kapcsolati sztringre.
+3. Adjon hozzá egy *Azure:SignalR:ConnectionString* nevű titkos kódot a Secret Managerhez. 
+
+    Ez a titkos kód tartalmazza a SignalR szolgáltatási erőforrás elérésére szolgáló kapcsolati sztringet. A SignalR alapértelmezés szerint az *Azure:SignalR:ConnectionString* konfigurációs kulcsot keresi a kapcsolat létrehozásához. Cserélje le az értéket az alábbi parancsban a SignalR szolgáltatási erőforráshoz tartozó kapcsolati sztringre.
 
     Ezt a parancsot abban a könyvtárban kell végrehajtani, ahol a *.csproj* fájl található.
 
     ```
-    dotnet user-secrets set Azure__SignalR__ConnectionString "Endpoint=<Your endpoint>;AccessKey=<Your access key>;"    
+    dotnet user-secrets set Azure:SignalR:ConnectionString "Endpoint=<Your endpoint>;AccessKey=<Your access key>;"    
     ```
 
     A Secret Managerre csak addig van szükség a webalkalmazás teszteléséhez, amíg azt helyben futtatja. Egy későbbi oktatóanyagban a webes csevegőalkalmazást üzembe fogja helyezni az Azure-ban. Amikor a webalkalmazást az Azure-ban üzemelteti, a kapcsolati sztring Secret Managerben való tárolása helyett egy alkalmazásbeállítást fog használni.
+
+    A titkos kulcs a konfigurációs API-val érhető el. A konfigurációs API-val a konfigurációk nevében használható a kettőspont (:) az összes támogatott platformon. Lásd [az egyes környezetek konfigurációs lehetőségeit](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/index?tabs=basicconfiguration&view=aspnetcore-2.0#configuration-by-environment) bemutató cikket. 
+
 
 4. Nyissa meg a *Startup.cs* fájlt, és frissítse a `ConfigureServices` metódust úgy, hogy a `services.AddSignalR().AddAzureSignalR()` metódus meghívásával használja az Azure SignalR szolgáltatást:
 
@@ -113,7 +118,7 @@ Ebben a szakaszban hozzáadja a [Secret Manager eszközt](https://docs.microsoft
     }
     ```
 
-    Azáltal, hogy nem ad meg paramétert az `AddAzureSignalR()` metódushoz, ez a kód az alapértelmezett *Azure__SignalR__ConnectionString* konfigurációs kulcsot használja a SignalR szolgáltatási erőforrás kapcsolati sztringjeként.
+    Azáltal, hogy nem ad meg paramétert az `AddAzureSignalR()` metódushoz, ez a kód az alapértelmezett *Azure:SignalR:ConnectionString* konfigurációs kulcsot használja a SignalR szolgáltatási erőforrás kapcsolati sztringjeként.
 
 5. Még a *Startup.cs* fájlban módosítsa a `Configure` metódust az `app.UseStaticFiles()` meghívása helyett az alábbi kódra, majd mentse a fájlt.
 

@@ -3,7 +3,7 @@ title: API manuális hozzáadása az Azure Portal használatával  | Microsoft D
 description: Ez az oktatóanyag bemutatja, hogyan lehet API-kat az API Management (APIM) használatával manuálisan felvenni.
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: mikebudzynski
 manager: cfowler
 editor: ''
 ms.service: api-management
@@ -11,16 +11,16 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 11/22/2017
+ms.date: 08/27/2018
 ms.author: apimpm
-ms.openlocfilehash: ef7cfa0f30eaaa426c312b21ce0a73aa4409d2ec
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 35b4777c7de4db1f8514b24e7b1e4d11775d0ca0
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38307448"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43247902"
 ---
-# <a name="add-an-api-manually"></a>API hozzáadása manuálisan 
+# <a name="add-an-api-manually"></a>API hozzáadása manuálisan
 
 A cikk bemutatja, hogy az Azure Portal használatával hogyan adhat hozzá egy API-t manuálisan az API Management- (APIM-) példányhoz. Az üres, manuálisan meghatározható API-t gyakran használják API-k szimulálására. További részletek az API-k szimulálásáról: [API-válaszok szimulálása](mock-api-responses.md).
 
@@ -54,17 +54,16 @@ Végezze el a következő rövid útmutatót: [Azure API Management-példány l�
     |**Termékek**|„*Korlátlan*” |Az API egy termékkel való társítással tehető közzé. Ha közzé szeretné tenni az API-t, hogy elérhető legyen a fejlesztők számára, adja hozzá egy termékhez. Ezt megteheti az API létrehozása során, vagy később is.<br/><br/>A termékek egy vagy több API társításai. Megadhatja az API-k számát, és a fejlesztői portálon elérhetővé teheti őket a fejlesztők számára. <br/>A fejlesztőknek elő kell fizetniük a termékre az API-k eléréséhez. Amikor előfizetnek, kapnak egy előfizetési kulcsot, amely a termék minden API-jához használható. Ha Ön hozta létre az APIM-példányt, akkor már eleve rendszergazdának számít, így alapértelmezés szerint minden termékre előfizetett.<br/><br/> Alapértelmezés szerint az API Management minden példányához az alábbi két mintatermék jár: **Starter** és **Unlimited**.| 
 5. Kattintson a **Létrehozás** gombra.
 
-Ezen a ponton nem lesz olyan művelet az APIM-ban, amely leképeződik a háttérrendszeri API-ra. Ha olyan műveletet hív meg, amely közzé lett téve a háttérrendszeren keresztül, de az APIM-on keresztül nem, a **404**-es hibaüzenetet kapja. 
+Ezen a ponton nem lesz olyan művelet az APIM-ban, amely leképeződik a háttérrendszeri API-ra. Ha olyan műveletet hív meg, amely közzé lett téve a háttérrendszeren keresztül, de az APIM-on keresztül nem, a **404**-es hibaüzenetet kapja.
 
 >[!NOTE] 
 > Alapértelmezés szerint az API hozzáadásakor az APIM nem tesz közzé semmilyen műveletet, amíg fel nem veszi az engedélyezési listára (akkor sem, ha az API kapcsolódik valamilyen háttérszolgáltatáshoz). A háttérszolgáltatás engedélyezési listára való felvételéhez hozzon létre egy APIM-műveletet, amely leképezi a háttérműveletet.
->
 
 ## <a name="add-and-test-an-operation"></a>Művelet hozzáadása és tesztelése
 
 Ez a szakasz bemutatja, hogyan hozhat létre egy „/get” műveletet, amelyet leképezhet a „http://httpbin.org/get” háttérműveletre.
 
-### <a name="add-the-operation"></a>A művelet hozzáadása
+### <a name="add-an-operation"></a>Művelet hozzáadása
 
 1. Válassza ki az előző lépésben létrehozott API-t.
 2. Kattintson a **+ Művelet hozzáadása** elemre.
@@ -72,7 +71,7 @@ Ez a szakasz bemutatja, hogyan hozhat létre egy „/get” műveletet, amelyet 
 4. A **Megjelenített név** mezőbe írja be a következőt: „*FetchData*”.
 5. Kattintson a **Mentés** gombra.
 
-### <a name="test-the-operation"></a>A művelet tesztelése
+### <a name="test-an-operation"></a>Műveletek tesztelése
 
 Tesztelje a műveletet az Azure Portalon. Másik megoldásként a **Fejlesztői portálon** is elvégezheti a tesztelést.
 

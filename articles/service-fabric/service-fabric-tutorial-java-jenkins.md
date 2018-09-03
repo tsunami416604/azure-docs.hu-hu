@@ -12,15 +12,15 @@ ms.devlang: java
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/26/2018
+ms.date: 08/27/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 925a1af53438e21282e65418edc9ea365ad6a653
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: b8c114ec3fe9b27d0318bf11a8b1fa8e3ce5f1c3
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39432439"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43124980"
 ---
 # <a name="tutorial-configure-a-jenkins-environment-to-enable-cicd-for-a-java-application-on-service-fabric"></a>Oktatóanyag: Jenkins-környezet konfigurálása a CI/CD engedélyezéséhez Service Fabric-fürtön lévő Java-alkalmazás számára
 
@@ -53,10 +53,10 @@ A Jenkinst egy Service Fabric-fürtben vagy azon kívül is beállíthatja. Az a
 
 1. Kérje le a Service Fabric Jenkins-tárolójának rendszerképét: ``docker pull rapatchi/jenkins:v10``. A rendszerképhez előre telepítve van a Service Fabric Jenkins beépülő modulja.
 
-1. Futtassa a tárolórendszerképet, és adja meg azt a helyet, ahová a helyi gépen csatlakoztatva vannak a tanúsítványai.
+1. Futtassa a tárolórendszerképet, és adja meg azt a helyet, ahol az Azure tanúsítványait tárolja a csatlakoztatott helyi gépen.
 
     ```bash
-    docker run -itd -p 8080:8080 -v /Users/suhuruli/Documents/Work/Samples/service-fabric-java-quickstart/AzureCluster:/tmp/myCerts rapatchi/jenkins:v10
+    docker run -itd -p 8080:8080 -v /service-fabric-java-quickstart/AzureCluster rapatchi/jenkins:v10
     ```
 
 1. Kérje le a tárolórendszerkép-példány azonosítóját. A ``docker ps –a`` paranccsal az összes Docker-tárolót listázhatja
@@ -86,7 +86,7 @@ A Jenkinst egy Service Fabric-fürtben vagy azon kívül is beállíthatja. Az a
 
 1. Először is, ha még nem rendelkezik adattárral, amellyel üzemeltethetné a szavazási projektet a GitHubon, hozzon létre egyet. Az oktatóanyag a továbbiakban **dev_test** néven hivatkozik erre az adattárra.
 
-1. Hozzon létre egy **új elemet** a Jenkins irányítópultján.
+1. Hozzon létre egy **új elemet** a Jenkins irányítópultján a ``http://<HOST-IP>:8080`` címen.
 
 1. Adjon nevet az elemnek (pl. **MyJob**). Válassza a **free-style project** (szabad projekt) lehetőséget, majd kattintson az **OK** gombra.
 
@@ -123,6 +123,8 @@ A Jenkinst egy Service Fabric-fürtben vagy azon kívül is beállíthatja. Az a
     > [!NOTE]
     > Ha a Service Fabricet használja a Jenkins-tároló rendszerképének üzembe helyezéséhez, a fürtnek meg kell egyeznie azzal, ahol a Jenkins-tárolóalkalmazás található.
     >
+
+1. Kattintson a **Save** (Mentés) gombra.
 
 ## <a name="update-your-existing-application"></a>Meglévő alkalmazás frissítése
 

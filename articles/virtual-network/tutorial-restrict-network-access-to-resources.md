@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
-ms.date: 03/14/2018
+ms.date: 08/23/2018
 ms.author: jdial
-ms.openlocfilehash: 2442c177b303600f936e80f6c765e2d4096b1dca
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: b951386fbeca883ae61a7f8040893e55467c8e5d
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37021719"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42810084"
 ---
 # <a name="tutorial-restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-portal"></a>Oktatóanyag: PaaS-erőforrásokhoz való hálózati hozzáférés korlátozása virtuális hálózati szolgáltatásvégpontokkal az Azure Portal használatával
 
@@ -39,9 +39,9 @@ Igény szerint az oktatóanyagot az [Azure CLI](tutorial-restrict-network-access
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
-## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba 
+## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
 
-Jelentkezzen be az Azure Portalra a http://portal.azure.com címen.
+Jelentkezzen be az Azure Portalra a https://portal.azure.com címen.
 
 ## <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
 
@@ -49,19 +49,18 @@ Jelentkezzen be az Azure Portalra a http://portal.azure.com címen.
 2. Válassza a **Hálózatkezelés**, majd a **Virtuális hálózat** elemet.
 3. Adja meg vagy válassza ki a következő adatokat, majd válassza a **Létrehozás** lehetőséget:
 
-    |Beállítás|Érték|
-    |----|----|
-    |Name (Név)| myVirtualNetwork |
-    |Címtér| 10.0.0.0/16|
-    |Előfizetés| Válassza ki előfizetését.|
-    |Erőforráscsoport | Válassza az **Új létrehozása** elemet, és adja meg a *myResourceGroup* nevet.|
-    |Hely| Válassza az **USA keleti régiója** lehetőséget. |
-    |Alhálózat neve| Nyilvános|
-    |Alhálózat címtartománya| 10.0.0.0/24|
-    |Szolgáltatásvégpontok| Letiltva|
+   |Beállítás|Érték|
+   |----|----|
+   |Name (Név)| myVirtualNetwork |
+   |Címtér| 10.0.0.0/16|
+   |Előfizetés| Válassza ki előfizetését.|
+   |Erőforráscsoport | Válassza az **Új létrehozása** elemet, és adja meg a *myResourceGroup* nevet.|
+   |Hely| Válassza az **USA keleti régiója** lehetőséget. |
+   |Alhálózat neve| Nyilvános|
+   |Alhálózat címtartománya| 10.0.0.0/24|
+   |Szolgáltatásvégpontok| Letiltva|
 
-    ![Írja be a virtuális hálózat alapvető adatait](./media/tutorial-restrict-network-access-to-resources/create-virtual-network.png)
-
+   ![Írja be a virtuális hálózat alapvető adatait](./media/tutorial-restrict-network-access-to-resources/create-virtual-network.png)
 
 ## <a name="enable-a-service-endpoint"></a>Szolgáltatásvégpont engedélyezése
 
@@ -101,7 +100,7 @@ Alapértelmezés szerint egy adott alhálózaton belül minden virtuális gép m
 4. Miután a hálózati biztonsági csoport létrejött, írja be a *myNsgPrivate* kifejezést a portál tetején található **Erőforrások, szolgáltatások és dokumentumok keresése** mezőbe. Amikor a **myNsgPrivate** megjelenik a keresési eredmények között, válassza ki.
 5. A **BEÁLLÍTÁSOK** területen válassza a **Kimenő biztonsági szabályok** elemet.
 6. Válassza a **+ Hozzáadás** lehetőséget.
-7. Hozzon létre egy szabályt, amely engedélyezi a kimenő kommunikációt az Azure Storage szolgáltatás felé. Adja meg vagy válassza ki a következő adatokat, majd kattintson az **OK** gombra:
+7. Hozzon létre egy szabályt, amely engedélyezi a kimenő kommunikációt az Azure Storage szolgáltatás felé. Adja meg vagy válassza ki a következő adatokat, majd válassza a **Hozzáadás**  lehetőséget:
 
     |Beállítás|Érték|
     |----|----|
@@ -114,8 +113,8 @@ Alapértelmezés szerint egy adott alhálózaton belül minden virtuális gép m
     |Műveletek|Engedélyezés|
     |Prioritás|100|
     |Name (Név)|Allow-Storage-All|
-    
-8. Hozzon létre egy szabályt, amely tiltja a kommunikációt az internet irányában. Ez a szabály felülírja az összes hálózati biztonsági csoportra érvényes alapértelmezett szabályt, amely engedélyezi a kimenő internetes kommunikációt. Végezze el ismét a 6. és a 7. lépést a következő értékek használatával:
+
+8. Hozzon létre még egy kimenő biztonsági szabályt, amely letiltja az internetes kommunikációt. Ez a szabály felülírja az összes hálózati biztonsági csoportra érvényes alapértelmezett szabályt, amely engedélyezi a kimenő internetes kommunikációt. Hajtsa végre ismét az 5–7. lépést az alábbi értékekkel:
 
     |Beállítás|Érték|
     |----|----|
@@ -131,14 +130,13 @@ Alapértelmezés szerint egy adott alhálózaton belül minden virtuális gép m
 
 9. A **BEÁLLÍTÁSOK** területen válassza a **Bejövő biztonsági szabályok** elemet.
 10. Válassza a **+ Hozzáadás** lehetőséget.
-11. Hozzon létre egy szabályt, amely engedélyezi az alhálózatra bejövő RDP-forgalmat bárhonnan. Ez a szabály felülbírálja azon alapértelmezett biztonsági szabályokat, amelyek elutasítanak minden bejövő forgalmat az internetről. A távoli asztali kapcsolatok engedélyezettek az alhálózathoz, hogy a kapcsolat egy későbbi lépésben tesztelhető legyen. Végezze el ismét a 6. és a 7. lépést a következő értékek használatával:
+11. Hozzon létre egy bejövő biztonsági szabályt, amely engedélyezi az alhálózatra bárhonnan bejövő RDP-forgalmat. Ez a szabály felülbírálja azon alapértelmezett biztonsági szabályokat, amelyek elutasítanak minden bejövő forgalmat az internetről. A távoli asztali kapcsolatok engedélyezettek az alhálózathoz, hogy a kapcsolat egy későbbi lépésben tesztelhető legyen. A **BEÁLLÍTÁSOK** területen válassza a **Bejövő biztonsági szabályok**, majd a **+Hozzáadás** elemet, adja meg a következő adatokat, és válassza a **Hozzáadás** lehetőséget:
 
     |Beállítás|Érték|
     |----|----|
     |Forrás| Bármelyik |
     |Forrásporttartományok| * |
-    |Cél | Válassza a **Service Tag** lehetőséget.|
-    |Cél szolgáltatáscímkéje| Válassza a **VirtualNetwork** lehetőséget.|
+    |Cél | Válassza a **VirtualNetwork** lehetőséget.|
     |Célporttartományok| 3389 |
     |Protokoll|Bármelyik|
     |Műveletek|Engedélyezés|
@@ -154,7 +152,7 @@ Alapértelmezés szerint egy adott alhálózaton belül minden virtuális gép m
 
 A szolgáltatásvégpontok használatára képes Azure-szolgáltatásokkal létrehozott erőforrásokhoz való hálózati hozzáférés korlátozásának lépései szolgáltatásonként eltérőek. Az egyes szolgáltatásokhoz szükséges lépéseket az adott szolgáltatások dokumentációja tartalmazza. Az oktatóanyag a továbbiakban egy Azure Storage-tárfiók hálózati hozzáférésének korlátozásához szükséges lépéseket ismerteti példaként.
 
-### <a name="create-a-storage-account"></a>Create a storage account
+### <a name="create-a-storage-account"></a>Tárfiók létrehozása
 
 1. Válassza az Azure Portal bal felső sarkában található **+ Erőforrás létrehozása** lehetőséget.
 2. Válassza a **Storage** elemet, majd a **Tárfiók – blob, fájl, tábla, üzenetsor** lehetőséget.
@@ -164,18 +162,19 @@ A szolgáltatásvégpontok használatára képes Azure-szolgáltatásokkal létr
     |----|----|
     |Name (Név)| Olyan nevet adjon meg, amely az összes Azure-helyen egyedi, 3–24 karakter hosszú, és csak számokat és kisbetűket tartalmaz.|
     |Fióktípus|StorageV2 (általános célú v2)|
+    |Hely| Válassza az **USA keleti régiója** lehetőséget. |
     |Replikáció| Helyileg redundáns tárolás (LRS)|
     |Előfizetés| Válassza ki előfizetését.|
     |Erőforráscsoport | Válassza a **Meglévő használata** lehetőséget, majd a *myResourceGroup* elemet.|
-    |Hely| Válassza az **USA keleti régiója** lehetőséget. |
 
 ### <a name="create-a-file-share-in-the-storage-account"></a>Fájlmegosztás létrehozása a tárfiókban
 
 1. Miután a tárfiók létrejött, írja be a tárfiók nevét a portál tetején található **Erőforrások, szolgáltatások és dokumentumok keresése** mezőbe. Amikor a tárfiók neve megjelenik a keresési eredmények között, válassza ki.
 2. Válassza a **Files** lehetőséget, ahogyan az a következő képen látható:
 
-    ![Tárfiók](./media/tutorial-restrict-network-access-to-resources/storage-account.png) 
-3. A **Fájlszolgáltatás** területen kattintson a **+ Fájlmegosztás** lehetőségre.
+   ![Tárfiók](./media/tutorial-restrict-network-access-to-resources/storage-account.png) 
+
+3. Válassza a **+ Fájlmegosztás** lehetőséget.
 4. Adja meg a *my-file-share* nevet a **Név** területen, majd kattintson az **OK** gombra.
 5. Zárja be a **Fájlszolgáltatás** ablakot.
 
@@ -184,8 +183,8 @@ A szolgáltatásvégpontok használatára képes Azure-szolgáltatásokkal létr
 Alapértelmezés szerint a tárfiókok bármilyen hálózatban található ügyféltől érkező hálózati kapcsolatot elfogadnak, beleértve az internetet is. Tiltsa le a hálózat az internetről és az összes virtuális hálózat összes alhálózatáról való elérését, a *myVirtualNetwork* virtuális hálózat *Magánjellegű* alhálózatát kivéve.
 
 1. A tárfiókhoz tartozó **BEÁLLÍTÁSOK** menüben válassza a **Tűzfalak és virtuális hálózatok** lehetőséget.
-2. A **Virtuális hálózatok** területen válassza a **Kiválasztott hálózatok** lehetőséget.
-3. Válassza a **Meglévő virtuális hálózat hozzáadása** elemet.
+2. Válassza a **Kiválasztott hálózatok** lehetőséget.
+3. Válassza a **+Meglévő virtuális hálózat hozzáadása** lehetőséget.
 4. A **Hálózatok hozzáadása** területen válassza ki a következő értékeket, majd kattintson a **Hozzáadás** gombra:
 
     |Beállítás|Érték|
@@ -194,7 +193,7 @@ Alapértelmezés szerint a tárfiókok bármilyen hálózatban található ügyf
     |Virtuális hálózatok|A **Virtuális hálózatok** területen válassza a **myVirtualNetwork** lehetőséget.|
     |Alhálózatok| Az **Alhálózatok** területen válassza a **Magánjellegű** lehetőséget.|
 
-    ![Tűzfalak és virtuális hálózatok](./media/tutorial-restrict-network-access-to-resources/storage-firewalls-and-virtual-networks.png) 
+    ![Tűzfalak és virtuális hálózatok](./media/tutorial-restrict-network-access-to-resources/storage-firewalls-and-virtual-networks.png)
 
 5. Kattintson a **Mentés** gombra.
 6. Zárja be a **Tűzfalak és virtuális hálózatok** ablakot.
@@ -214,25 +213,27 @@ Tárfiókhoz való hálózati hozzáférés teszteléséhez helyezzen üzembe eg
 2. Válassza a **Számítás**, majd a **Windows Server 2016 Datacenter** elemet.
 3. Adja meg vagy válassza ki a következő adatokat, majd kattintson az **OK** gombra:
 
-    |Beállítás|Érték|
-    |----|----|
-    |Name (Név)| myVmPublic|
-    |Felhasználónév|Adjon meg egy tetszőleges felhasználónevet.|
-    |Jelszó| Adjon meg egy tetszőleges jelszót. A jelszónak legalább 12 karakter hosszúságúnak kell lennie, [az összetettségre vonatkozó követelmények teljesülése mellett](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
-    |Előfizetés| Válassza ki előfizetését.|
-    |Erőforráscsoport| Válassza a **Meglévő használata** lehetőséget, majd a **myResourceGroup** elemet.|
-    |Hely| Válassza az **USA keleti régiója** lehetőséget.|
+   |Beállítás|Érték|
+   |----|----|
+   |Name (Név)| myVmPublic|
+   |Felhasználónév|Adjon meg egy tetszőleges felhasználónevet.|
+   |Jelszó| Adjon meg egy tetszőleges jelszót. A jelszónak legalább 12 karakter hosszúságúnak kell lennie, [az összetettségre vonatkozó követelmények teljesülése mellett](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
+   |Előfizetés| Válassza ki előfizetését.|
+   |Erőforráscsoport| Válassza a **Meglévő használata** lehetőséget, majd a **myResourceGroup** elemet.|
+   |Hely| Válassza az **USA keleti régiója** lehetőséget.|
 
-    ![Virtuális gép alapvető információinak megadása](./media/tutorial-restrict-network-access-to-resources/virtual-machine-basics.png)
+   ![Virtuális gép alapvető információinak megadása](./media/tutorial-restrict-network-access-to-resources/virtual-machine-basics.png)
 4. Válassza ki a virtuális gép méretét, majd kattintson a **Kiválasztás** gombra.
 5. A **Beállítások** területen válassza a **Hálózat**, majd a **myVirtualNetwork** lehetőséget. Ezután válassza az **Alhálózat**, majd a **Nyilvános** lehetőséget, ahogyan az a következő képen látható:
 
-    ![Virtuális hálózat kiválasztása](./media/tutorial-restrict-network-access-to-resources/virtual-machine-settings.png)
-6. Az **Összefoglalás** lapon válassza a **Létrehozás** lehetőséget a virtuális gép üzembe helyezésének megkezdéséhez. A virtuális gép üzembe helyezése néhány percig eltart, de közben folytathatja a következő lépéssel.
+   ![Virtuális hálózat kiválasztása](./media/tutorial-restrict-network-access-to-resources/virtual-machine-settings.png)
+
+6. A **Hálózati biztonsági csoport** területen válassza a **Speciális** lehetőséget. A portál automatikusan létrehoz egy hálózati biztonsági csoportot, amely engedélyezi a 3389-es portot. Egy későbbi lépésben meg kell nyitnia ezt a portot a virtuális géphez való csatlakozáshoz. A **Beállítások** lapon válassza az **OK** lehetőséget.
+7. Az **Összefoglalás** lapon válassza a **Létrehozás** lehetőséget a virtuális gép üzembe helyezésének megkezdéséhez. A virtuális gép üzembe helyezése néhány percig eltart, de közben folytathatja a következő lépéssel.
 
 ### <a name="create-the-second-virtual-machine"></a>A második virtuális gép létrehozása
 
-Végezze el ismét az 1–6. lépést, azonban a 3 lépésben adja a virtuális gépnek a *myVmPrivate* nevet, az 5. lépésben pedig válassza a **Magánjellegű** alhálózatot.
+Végezze el ismét az 1–7. lépést, azonban a 3 lépésben adja a virtuális gépnek a *myVmPrivate* nevet, az 5. lépésben pedig válassza a **Magánjellegű** alhálózatot.
 
 A virtuális gép üzembe helyezése néhány percet vesz igénybe. Ne folytassa a következő lépéssel, amíg a rendszer létre nem hozza ezt a virtuális gépet, és a beállításai meg nem nyílnak a portálon.
 
@@ -240,7 +241,7 @@ A virtuális gép üzembe helyezése néhány percet vesz igénybe. Ne folytassa
 
 1. Miután létrejött a *myVmPrivate* virtuális gép, az Azure megnyitja az ahhoz tartozó beállításokat. Csatlakozzon a virtuális géphez a **Csatlakozás** gombra kattintva, ahogyan az a következő képen látható:
 
-    ![Csatlakozás virtuális géphez](./media/tutorial-restrict-network-access-to-resources/connect-to-virtual-machine.png)
+   ![Csatlakozás virtuális géphez](./media/tutorial-restrict-network-access-to-resources/connect-to-virtual-machine.png)
 
 2. A **Csatlakozás** gomb kiválasztása után a rendszer létrehoz és letölt a számítógépre egy Remote Desktop Protocol (.rdp) fájlt.  
 3. Nyissa meg a letöltött rdp-fájlt. Ha a rendszer kéri, válassza a **Csatlakozás** lehetőséget. Írja be a virtuális gép létrehozásakor megadott felhasználónevet és jelszót. Előfordulhat, hogy a virtuális gép létrehozásakor megadott hitelesítő adatok megadásához a **További lehetőségek**, majd a **Másik fiók használata** lehetőségre kell kattintania. 
@@ -248,29 +249,29 @@ A virtuális gép üzembe helyezése néhány percet vesz igénybe. Ne folytassa
 5. A bejelentkezés során egy figyelmeztetés jelenhet meg a tanúsítvánnyal kapcsolatban. Ha figyelmeztetést kap, kattintson az **Igen** vagy a **Folytatás** gombra a csatlakozás folytatásához.
 6. A *myVmPrivate* virtuális gépen a PowerShell-lel képezze le az Azure-fájlmegosztást a Z meghajtóra. A következő parancsok futtatása előtt cserélje le a `<storage-account-key>` és a `<storage-account-name>` elemet azokra az értékekre, amelyeket a [tárfiók létrehozása](#create-a-storage-account) során megadott.
 
-    ```powershell
-    $acctKey = ConvertTo-SecureString -String "<storage-account-key>" -AsPlainText -Force
-    $credential = New-Object System.Management.Automation.PSCredential -ArgumentList "Azure\<storage-account-name>", $acctKey
-    New-PSDrive -Name Z -PSProvider FileSystem -Root "\\<storage-account-name>.file.core.windows.net\my-file-share" -Credential $credential
-    ```
-    
-    A PowerShell a következő példához hasonló kimenetet ad vissza:
+   ```powershell
+   $acctKey = ConvertTo-SecureString -String "<storage-account-key>" -AsPlainText -Force
+   $credential = New-Object System.Management.Automation.PSCredential -ArgumentList "Azure\<storage-account-name>", $acctKey
+   New-PSDrive -Name Z -PSProvider FileSystem -Root "\\<storage-account-name>.file.core.windows.net\my-file-share" -Credential $credential
+   ```
 
-    ```powershell
-    Name           Used (GB)     Free (GB) Provider      Root
-    ----           ---------     --------- --------      ----
-    Z                                      FileSystem    \\vnt.file.core.windows.net\my-f...
-    ```
+   A PowerShell a következő példához hasonló kimenetet ad vissza:
 
-    Az Azure-fájlmegosztás sikeresen le lett képezve a Z meghajtóra.
+   ```powershell
+   Name           Used (GB)     Free (GB) Provider      Root
+   ----           ---------     --------- --------      ----
+   Z                                      FileSystem    \\vnt.file.core.windows.net\my-f...
+   ```
+
+   Az Azure-fájlmegosztás sikeresen le lett képezve a Z meghajtóra.
 
 7. Egy parancssorból ellenőrizze, hogy a virtuális gépnek nincs-e kimenő csatlakozása az internethez:
 
-    ```
-    ping bing.com
-    ```
-    
-    Nem kap választ, mert a *Magánjellegű* alhálózathoz rendelt hálózati biztonsági csoport nem engedélyezi a kimenő hozzáférést az internethez.
+   ```
+   ping bing.com
+   ```
+
+   Nem kap választ, mert a *Magánjellegű* alhálózathoz rendelt hálózati biztonsági csoport nem engedélyezi a kimenő hozzáférést az internethez.
 
 8. Zárja be a *myVmPrivate* virtuális gépre irányuló távoli asztali munkamenetet.
 
@@ -280,7 +281,7 @@ A virtuális gép üzembe helyezése néhány percet vesz igénybe. Ne folytassa
 2. Amikor a **myVmPublic** megjelenik a keresési eredmények között, válassza ki.
 3. Végezze el a [Tárfiókhoz való hozzáférés ellenőrzése](#confirm-access-to-storage-account) rész 1–6. lépését a *myVmPublic* virtuális gép esetében.
 
-    A hozzáférést a rendszer megtagadja, és a `New-PSDrive : Access is denied` hibaüzenetet adja vissza. A hozzáférést a rendszer megtagadja, mert a *myVmPublic* virtuális gép a *Nyilvános* alhálózaton van üzembe helyezve. A *Nyilvános* alhálózat nem rendelkezik az Azure Storage-hoz engedélyezett szolgáltatásvégponttal. A tárfiók kizárólag a *Magánjellegű* alhálózatról engedélyezi a hozzáférést, a *Nyilvános* alhálózatról nem.
+   Kis idő elteltével a rendszer a következő hibaüzenetet adja vissza: `New-PSDrive : Access is denied`. A hozzáférést a rendszer megtagadja, mert a *myVmPublic* virtuális gép a *Nyilvános* alhálózaton van üzembe helyezve. A *Nyilvános* alhálózat nem rendelkezik az Azure Storage-hoz engedélyezett szolgáltatásvégponttal. A tárfiók kizárólag a *Magánjellegű* alhálózatról engedélyezi a hozzáférést, a *Nyilvános* alhálózatról nem.
 
 4. Zárja be a távoli asztali munkamenetet a *myVmPublic* virtuális géppel.
 
@@ -289,9 +290,9 @@ A virtuális gép üzembe helyezése néhány percet vesz igénybe. Ne folytassa
 7. Válassza a **Files** (Fájlok) lehetőséget.
 8. Ekkor a következő képen látható hiba jelenik meg:
 
-    ![A hozzáférés megtagadva hiba](./media/tutorial-restrict-network-access-to-resources/access-denied-error.png)
+   ![A hozzáférés megtagadva hiba](./media/tutorial-restrict-network-access-to-resources/access-denied-error.png)
 
-    A hozzáférést a rendszer megtagadja, mert a számítógép nem a *MyVirtualNetwork* virtuális hálózat *Magánjellegű* alhálózatában található.
+   A hozzáférést a rendszer megtagadja, mert a számítógép nem a *MyVirtualNetwork* virtuális hálózat *Magánjellegű* alhálózatában található.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

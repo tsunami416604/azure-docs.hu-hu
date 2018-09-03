@@ -14,21 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: f5d4a5e26ecf4bde286a5163bf5ec7da492e474d
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: a472a0f1fe052b0bc8130f5d81c91692c7723377
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39247913"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42885888"
 ---
 # <a name="tutorial-use-a-windows-vm-managed-service-identity-to-access-azure-data-lake-store"></a>Oktatóanyag: Az Azure Data Lake Storage elérése Windows VM-beli felügyeltszolgáltatás-identitással
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Az oktatóanyag bemutatja, hogyan használhat felügyeltszolgáltatás-identitást egy Windows rendszerű virtuális gépen (VM) egy Azure Data Lake Storage eléréséhez. A felügyeltszolgáltatás-identitások kezelését automatikusan az Azure végzi, és lehetővé teszi a hitelesítést az Azure AD-hitelesítést támogató szolgáltatásokban anélkül, hogy be kellene szúrnia a hitelesítő adatokat a kódba. Az alábbiak végrehajtásának módját ismerheti meg:
+Az oktatóanyag bemutatja, hogyan használhat rendszer által hozzárendelt identitást egy Windows rendszerű virtuális gépen (VM) egy Azure Data Lake Storage eléréséhez. A felügyeltszolgáltatás-identitások kezelését automatikusan az Azure végzi, és lehetővé teszi a hitelesítést az Azure AD-hitelesítést támogató szolgáltatásokban anélkül, hogy be kellene szúrnia a hitelesítő adatokat a kódba. Az alábbiak végrehajtásának módját ismerheti meg:
 
 > [!div class="checklist"]
-> * Felügyeltszolgáltatás-identitás engedélyezése Windows rendszerű virtuális gépen 
 > * Hozzáférés engedélyezése a virtuális gép számára egy Azure Data Lake Store-hoz
 > * Hozzáférési jogkivonat lekérése a VM identitásával, majd hozzáférés egy Azure Data Lake Store-hoz a jogkivonat segítségével
 
@@ -38,36 +37,11 @@ Az oktatóanyag bemutatja, hogyan használhat felügyeltszolgáltatás-identitá
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
-## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
+- [Bejelentkezés az Azure Portalra](https://portal.azure.com)
 
-Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
+- [Windows rendszerű virtuális gép létrehozása](/azure/virtual-machines/windows/quick-create-portal)
 
-## <a name="create-a-windows-virtual-machine-in-a-new-resource-group"></a>Egy Windows rendszerű virtuális gép létrehozása egy új erőforráscsoportban
-
-Ebben az oktatóanyagban egy új Windows VM-et fog létrehozni.  A meglévő virtuális gépeken is engedélyezheti a felügyeltszolgáltatás-identitást.
-
-1. Kattintson az Azure Portal bal felső sarkában található **Erőforrás létrehozása** gombra.
-2. Válassza a **Számítás**, majd a **Windows Server 2016 Datacenter** elemet. 
-3. Adja meg a virtuális gép adatait. Az itt létrehozott **felhasználónév** és **jelszó** alkotják a virtuális gépre való bejelentkezéshez használt hitelesítő adatokat.
-4. Válassza ki a megfelelő **előfizetést** a virtuális géphez a legördülő menüben.
-5. A virtuális gép létrehozásához használni kívánt új **erőforráscsoport** kiválasztásához válassza az **Új létrehozása** lehetőséget. Amikor végzett, kattintson az **OK** gombra.
-6. Válassza ki a virtuális gép méretét. További méretek megjelenítéséhez válassza **Az összes megtekintése** lehetőséget, vagy módosítsa a **Támogatott lemeztípus** szűrőt. A Beállítások lapon hagyja változatlanul az alapértelmezett beállításokat, és kattintson az **OK** gombra.
-
-   ![Helyettesítő képszöveg](media/msi-tutorial-windows-vm-access-arm/msi-windows-vm.png)
-
-## <a name="enable-managed-service-identity-on-your-vm"></a>Felügyeltszolgáltatás-identitás engedélyezése a virtuális gépen 
-
-A VM-beli felügyeltszolgáltatás-identitással anélkül kérhet le hozzáférési jogkivonatokat az Azure AD-ből, hogy hitelesítő adatokat kellene a kódba illesztenie. A felügyeltszolgáltatás-identitás engedélyezése arra utasítja az Azure-t, hogy hozzon létre egy felügyelt identitást a virtuális géphez. A háttérben a felügyeltszolgáltatás-identitás engedélyezésének két következménye van: regisztrálja a virtuális gépet az Azure Active Directoryban a felügyelt identitása létrehozásához, és konfigurálja az identitást a virtuális gépen.
-
-1. Válassza ki azt a **virtuális gépet**, amelyen engedélyezni szeretné a felügyeltszolgáltatás-identitást.  
-2. A bal oldali navigációs sávban kattintson a **Konfigurálás** elemre. 
-3. Megjelenik a **felügyeltszolgáltatás-identitás**. A felügyeltszolgáltatás-identitás regisztrálásához és engedélyezéséhez kattintson az **Igen**, a letiltásához a Nem gombra. 
-4. Mindenképp kattintson a **Mentés** gombra a konfiguráció mentéséhez.  
-   ![Helyettesítő képszöveg](media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
-
-5. Ha ellenőrizni szeretné, hogy milyen bővítmények találhatók meg ezen a virtuális gépen, kattintson a **Bővítmények** lehetőségre. Ha a felügyeltszolgáltatás-identitás engedélyezett, akkor a **ManagedIdentityExtensionforWindows** megjelenik a listában.
-
-   ![Helyettesítő képszöveg](media/msi-tutorial-windows-vm-access-arm/msi-windows-extension.png)
+- [Rendszer által hozzárendelt identitás engedélyezése a virtuális gépen](/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm#enable-system-assigned-identity-on-an-existing-vm)
 
 ## <a name="grant-your-vm-access-to-azure-data-lake-store"></a>Hozzáférés engedélyezése a virtuális gép számára egy Azure Data Lake Store-hoz
 

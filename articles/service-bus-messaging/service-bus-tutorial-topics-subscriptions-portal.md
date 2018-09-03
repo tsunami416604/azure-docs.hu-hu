@@ -9,12 +9,12 @@ ms.date: 05/22/2018
 ms.topic: tutorial
 ms.service: service-bus-messaging
 ms.custom: mvc
-ms.openlocfilehash: f504f3bf513a20d8590d9907106b1fd12f907877
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 654cb09621837c360deccecb7778c5d467592dd1
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34651479"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43124214"
 ---
 # <a name="tutorial-update-inventory-using-azure-portal-and-topicssubscriptions"></a>Oktatóanyag: Leltár frissítése az Azure Portal és témakörök/előfizetések használatával
 
@@ -45,9 +45,9 @@ Az oktatóanyag elvégzéséhez győződjön meg arról, hogy telepítette a kö
 
 Minden egyes [témakörre való előfizetés](service-bus-messaging-overview.md#topics) másolatot kaphat az összes üzenetről. A témakörök teljes protokoll és szemantika szempontjából is teljesen kompatibilisek a Service Bus-üzenetsorokkal. A Service Bus-témakörök számos különféle kiválasztási szabályt támogatnak szűrőfeltételekkel, illetve az üzenet tulajdonságait beállító vagy módosító választható műveletekkel. Minden szabályegyezéskor létrejön egy üzenet. A szabályokról, szűrőkről és műveletekről ezen a [hivatkozáson](topic-filters.md) talál további információt.
 
-## <a name="log-on-to-the-azure-portal"></a>Bejelentkezés az Azure Portalra
+## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Először nyissa meg az [Azure Portalt][Azure portal], és jelentkezzen be Azure-előfizetésével. Az első lépés egy **Üzenetkezelés** típusú Service Bus-névtér létrehozása.
+Először nyissa meg az [Azure Portalt][Azure portal], és Azure-előfizetésének használatával jelentkezzen be. Az első lépés egy **Üzenetkezelés** típusú Service Bus-névtér létrehozása.
 
 ## <a name="create-a-service-bus-namespace"></a>Service Bus-névtér létrehozása
 

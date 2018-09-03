@@ -12,15 +12,15 @@ ms.devlang: NA
 ms.topic: quickstart
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/12/2018
+ms.date: 08/28/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to quickly deploy Data Box Disk so as to import data into Azure.
-ms.openlocfilehash: 20dc414c5cdd309434ba53acf2d7f6716d3edfe5
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 596c4b15ea6ef76d4471bca6994377bf4d5ddc01
+ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39009926"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43143423"
 ---
 # <a name="quickstart-deploy-azure-data-box-disk-using-the-azure-portal-preview"></a>Rövid útmutató: Az Azure Data Box Disk üzembe helyezése az Azure Portal használatával (előzetes verzió)
 
@@ -54,7 +54,6 @@ Ez a lépés nagyjából 5 percet vesz igénybe.
 
 A rendelés létrehozását követően megtörténik a meghajtók szállításra való előkészítése. 
 
-
 ## <a name="unpack"></a>Kicsomagolás
 
 Ez a lépés nagyjából 5 percet vesz igénybe.
@@ -64,7 +63,6 @@ A Data Box Disk-meghajtót egy UPS Express dobozban küldjük el Önnek. Nyissa 
 - 1–5 buborékfóliába csomagolt USB-meghajtó.
 - Meghajtónként egy csatlakozókábel. 
 - Fuvarlevélcímke a csomag visszaküldéséhez.
- 
 
 ## <a name="connect-and-unlock"></a>Csatlakoztatás és a zárolás feloldása
 
@@ -75,10 +73,8 @@ Ez a lépés nagyjából 5 percet vesz igénybe.
 
     1. Az Azure Portalon lépjen az **Általános > Eszköz adatai** menüpontra, és kérje le a hozzáférési kulcsot.
     2. Töltse le és csomagolja ki a Data Box Disk zárolását feloldó eszközt az adatok a meghajtókra való másolásához használt számítógépen. 
-    3. Futtassa a *DataBoxDiskUnlock.exe* fájlt, és adja meg a hozzáférési kulcsot. Ismételje meg a lépést minden alkalommal, amikor új meghajtót kell behelyezni.
+    3. Futtassa a *DataBoxDiskUnlock.exe* fájlt, és adja meg a hozzáférési kulcsot. Új lemezek behelyezésekor futtassa újra a zárolást feloldó eszközt, és adja meg a hozzáférési kulcsot. **Ne használja a BitLocker párbeszédpanelt vagy a BitLocker kulcsot a lemez zárolásának feloldására.** 
     4. A meghajtóhoz rendelt betűjelet az eszköz mutatja. Jegyezze fel az egyes meghajtók betűjelét. Ezt majd a következő lépésekben fogjuk felhasználni.
-
-
 
 ## <a name="copy-data-and-verify"></a>Adatok másolása és ellenőrzése
 
@@ -92,7 +88,7 @@ A művelet végrehajtásának időtartama az adatok mennyiségétől függ.
     > - Minden tároló és blob nevének követnie kell az [Azure elnevezési konvencióit](data-box-disk-limits.md#azure-block-blob-and-page-blob-naming-conventions). Ha a szabályok nem teljesülnek, az adatok az Azure-ba való feltöltése meghiúsul.
     > - Győződjön meg róla, hogy a fájlok mérete blokkblobok esetén nem haladja meg a ~4,7 TiB, lapblobok esetén a ~8 TiB méretet.
 
-2. (Nem kötelező) Javasoljuk, hogy a másolás után az *AzureImportExport* mappában elérhető `AzureExpressDiskService.ps1` futtatásával hozzon létre ellenőrzőösszegeket az ellenőrzéshez. Az adatok mennyiségétől függően ez a lépés némi időt vehet igénybe. 
+2. (Nem kötelező) Javasoljuk, hogy a másolás után az *AzureImportExport* mappában elérhető `AzureExpressDiskService.cmd` futtatásával hozzon létre ellenőrzőösszegeket az ellenőrzéshez. Az adatok mennyiségétől függően ez a lépés némi időt vehet igénybe. 
 3. Válassza le a meghajtót. 
 
 
@@ -116,7 +112,6 @@ A művelet végrehajtásának időtartama az adatok mennyiségétől függ.
     1. Ellenőrizze a hibákat a hibanaplókban, és tegye meg a szükséges intézkedéseket.
     2. Ellenőrizze, hogy az adatok jelen vannak-e a tárfiók(ok)ban, mielőtt törölné azokat a forrásról.
 
-
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ez a lépés 2–3 percet vehet igénybe.
@@ -131,7 +126,7 @@ Az erőforrások eltávolításához visszavonhatja a Data Box-rendelést, és t
 
     A rendelés törléséhez lépjen az **Áttekintés** oldalra, és kattintson a **Törlés** parancsra a parancssávon.
 
-## <a name="next-step"></a>Következő lépés
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban egy Azure Data Box Disk-meghajtót helyezett üzembe az adatok az Azure-ba való importálásához. Folytassa a következő cikkel, ha többet szeretne megtudni az Azure Data Box Disk kezeléséről: 
 

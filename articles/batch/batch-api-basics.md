@@ -12,15 +12,15 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-compute
-ms.date: 04/06/2018
+ms.date: 08/22/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d404e3a300a953ccc1cfb691cbde6f6d7ee54b26
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: f1c933c9dcb3e3e2c2cb267073386d4b9c4e2022
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39216308"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42746018"
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Nagy léptékű párhuzamos számítási megoldások fejlesztése a Batch segítségével
 
@@ -288,7 +288,7 @@ Ha egy indítási tevékenység meghiúsul egy számítási csomóponton, akkor 
 Amikor meglévő készlethez ad indítási tevékenységet, vagy ilyen készlethez tartozó tevékenységet frissít, újra kell indítania a számítási csomópontokat, hogy a rendszer az összes csomópontra alkalmazza az indítási tevékenységet.
 
 >[!NOTE]
-> Az indítási tevékenységek összesített mérete nem lehet nagyobb, mint 32768 karaktert, beleértve az erőforrásfájlokat és a környezeti változókat. Két módszer egyikét használhatja annak ellenőrzésére, hogy az indítási tevékenység megfelel-e ennek a követelménynek:
+> A Batch korlátozza az indítási tevékenységek méretét, amibe az erőforrásfájlok és a környezeti változók is beletartoznak. Ha csökkentenie kell egy indítási tevékenység méretét, a következő két megoldás közül választhat:
 >
 > 1. Az alkalmazáscsomagok segítségével alkalmazások vagy adatok terjeszthetők a Batch-készlet összes csomópontján. Az alkalmazáscsomagokkal kapcsolatban további információkat a [Batch-alkalmazáscsomagokkal számítási csomópontokra végzett alkalmazástelepítést](batch-application-packages.md) ismertető cikkben talál.
 > 2. Manuálisan is létrehozhatja az alkalmazások fájljait tartalmazó tömörített archívumot. Töltse fel a tömörített archívumot az Azure Storage-ba blobként. Adja meg a kezdő tevékenységhez erőforrásfájlként a ZIP-archívumot. A kezdő tevékenység parancssorának futtatása előtt csomagolja ki a parancssorból az archívumot. 

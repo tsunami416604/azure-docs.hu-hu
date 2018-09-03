@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 11/29/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: d2e4a014a0f7bb7f94885528abc930d2b243318b
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 1ac55b728a29ff1bb8129087da5992ffe5f23df9
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30911318"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42820318"
 ---
 # <a name="azure-and-linux"></a>Az Azure és a Linux
 A Microsoft Azure integrált nyilvános felhőszolgáltatások (például elemzési, virtuálisgép-, adatbázis-, mobil-, hálózati, tárolási és webes szolgáltatások) egyre bővülő gyűjteménye&mdash;ideális a megoldások üzemeltetéséhez.  A Microsoft Azure egy skálázható számítási platformot kínál, amely lehetővé teszi, hogy csak a valóban használt funkciókért fizessen, és csak akkor, amikor használja azokat, mindezt helyszíni hardverberuházások nélkül.  Az Azure készen áll a megoldások vertikális és horizontális skálázásakor, bármilyen méretre is lenne szüksége az ügyfelek igényeinek kiszolgálásához.
@@ -28,7 +28,7 @@ A Microsoft Azure integrált nyilvános felhőszolgáltatások (például elemz�
 Ha már ismeri az Amazon AWS különböző funkcióit, tekintse meg az Azure-t és az AWS-t összehasonlító [definícióleképezési dokumentumot](https://azure.microsoft.com/campaigns/azure-vs-aws/mapping/).
 
 ## <a name="regions"></a>Régiók
-A Microsoft Azure-erőforrások világszerte több földrajzi régió között oszlanak meg.  Egy „régió” több adatközpontot jelöl ugyanazon a földrajzi területen. Az Azure jelenleg (2017. november) 36 általánosan elérhető régióval rendelkezik világszerte, és további 6 már be van jelentve. A meglévő és az újonnan bejelentett régiók naprakész listája a következő oldalon található:
+A Microsoft Azure-erőforrások világszerte több földrajzi régió között oszlanak meg.  Egy „régió” több adatközpontot jelöl ugyanazon a földrajzi területen. Az Azure jelenleg (2018. augusztus) 42 általánosan elérhető régióval rendelkezik világszerte, és további 12 már be van jelentve – ez több globális régió, mint bármely más felhőszolgáltatónál. A meglévő és az újonnan bejelentett régiók naprakész listája a következő oldalon található:
 
 * [Azure-régiók](https://azure.microsoft.com/regions/)
 
@@ -53,13 +53,13 @@ A használt virtuális gép [mérete](sizes.md) a futtatni kívánt számítási
 
 Az Azure [óradíjas rendszerben](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) számláz, a virtuális gép mérete és az operációs rendszer alapján. Nem egész órák esetében az Azure csak a használt perceket számlázza. A tárhely árazása és felszámítása külön történik.
 
-## <a name="automation"></a>Automatizálás
+## <a name="automation"></a>Automation
 A megfelelő DevOps-kultúra megteremtéséhez minden infrastruktúrának kódoltnak kell lennie.  Ha minden infrastruktúra kódolt formában létezik, egyszerűen létrehozható újra (Phoenix Servers).  Az Azure az összes fontosabb automatizáló eszközt használja, köztük az Ansible, a Chef, a SaltStack és a Puppet eszközöket.  Az Azure továbbá saját automatizáló eszközökkel is rendelkezik:
 
 * [Azure-sablonok](create-ssh-secured-vm-from-template.md)
 * [Azure VMAccess](using-vmaccess-extension.md)
 
-Az Azure bevezeti a [cloud-init](http://cloud-init.io/) támogatását a legtöbb Linux-disztribúcióban, amely támogatja azt.  A Canonical Ubuntu-alapú virtuális gépei jelenleg az üzembe helyezéskor alapértelmezés szerint engedélyezik a cloud-init eszközt.  A Red Hat's RHEL, a CentOS és a Fedora támogatják a cloud-init eszközt, a RedHat által karbantartott Azure-rendszerképeken azonban jelenleg nincs telepítve.  A cloud-init RedHat termékcsaládba tartozó operációs rendszeren való használatához létre kell hoznia egy egyéni rendszerképet, amelyre telepítve van a cloud-init.
+Az Azure bevezeti a [cloud-init](http://cloud-init.io/) támogatását a legtöbb Linux-disztribúcióban, amely támogatja azt.  A Canonical Ubuntu-alapú virtuális gépei jelenleg az üzembe helyezéskor alapértelmezés szerint engedélyezik a cloud-init eszközt.  A Red Hat RHEL, a CentOS és a Fedora támogatja a cloud-init eszközt, a Red Hat által karbantartott Azure-rendszerképeken azonban jelenleg nincs telepítve.  A cloud-init Red Hat termékcsaládba tartozó operációs rendszeren való használatához létre kell hoznia egy egyéni rendszerképet, amelyre telepítve van a cloud-init.
 
 * [A cloud-init használata Azure-beli Linux rendszerű virtuális gépeken](using-cloud-init.md)
 
@@ -73,7 +73,7 @@ A Microsoft szorosan együttműködik a partnereivel, hogy az elérhető rendsze
 
 * Linux az Azure-on – [Támogatott disztribúciók](endorsed-distros.md)
 * SUSE – [Azure Marketplace – SUSE Linux Enterprise Server](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?search=%27SUSE%27)
-* Redhat – [Azure Marketplace – RedHat Enterprise Linux 7.2](https://azure.microsoft.com/marketplace/partners/redhat/redhatenterpriselinux72/)
+* Red Hat – [Azure Marketplace – Red Hat Enterprise Linux 7.2](https://azure.microsoft.com/marketplace/partners/redhat/redhatenterpriselinux72/)
 * Canonical – [Azure Marketplace – Ubuntu Server 16.04 LTS](https://azure.microsoft.com/marketplace/partners/canonical/ubuntuserver1604lts/)
 * Debian – [Azure Marketplace – Debian 8 „Jessie”](https://azure.microsoft.com/marketplace/partners/credativ/debian8/)
 * FreeBSD – [Azure Marketplace – FreeBSD 10.3](https://azure.microsoft.com/marketplace/partners/microsoft/freebsd103/)
@@ -110,7 +110,7 @@ A Linux rendszerű virtuális gépek Azure webportálon való létrehozásával 
 A virtuális gép most már az Azure-ban fut, és Ön készen áll a bejelentkezésre.  Az SSH-n keresztüli jelszavas bejelentkezés nem biztonságos, és sok időt vesz igénybe.  Az SSH-kulcsok használata a legbiztonságosabb és a leggyorsabb mód a bejelentkezésre.  Amikor a Linux rendszerű virtuális gépet a portálon vagy a parancssori felületen hozza létre, kétféle hitelesítés közül választhat.  Ha kiválaszt egy jelszót az SSH számára, az Azure úgy konfigurálja a virtuális gépet, hogy engedélyezze a jelszavas bejelentkezést.  Ha az SSH nyilvános kulcs használatát választja, az Azure úgy konfigurálja a virtuális gépet, hogy csak az SSH-kulcsokkal való bejelentkezést engedélyezze, és letiltja a jelszavas bejelentkezést. Ha azzal szeretné védeni a Linux rendszerű virtuális gépet, hogy csak SSH-kulcsokkal engedélyezi a bejelentkezést, a virtuális gép portálon vagy parancssori felületen való létrehozásakor használja az SSH nyilvános kulcs lehetőséget.
 
 ## <a name="related-azure-components"></a>Kapcsolódó Azure-összetevők
-## <a name="storage"></a>Tárolás
+## <a name="storage"></a>Storage
 * [A Microsoft Azure Storage bemutatása](../../storage/common/storage-introduction.md)
 * [Lemez hozzáadása Linux rendszerű virtuális géphez az azure-cli használatával](add-disk.md)
 * [Adatlemez csatlakoztatása Linux rendszerű virtuális géphez az Azure Portalon](attach-disk-portal.md)
@@ -121,7 +121,7 @@ A virtuális gép most már az Azure-ban fut, és Ön készen áll a bejelentkez
 * [Portok nyitása egy Linux rendszerű virtuális géphez az Azure Portalon](nsg-quickstart.md)
 * [Teljes tartománynév létrehozása az Azure Portalon](portal-create-fqdn.md)
 
-## <a name="containers"></a>Tárolók
+## <a name="containers"></a>Containers
 * [Virtuális gépek és tárolók az Azure-ban](containers.md)
 * [Az Azure Container Service bemutatása](../../container-service/container-service-intro.md)
 * [Az Azure Container Service-fürt üzembe helyezése](../../container-service/dcos-swarm/container-service-deployment.md)

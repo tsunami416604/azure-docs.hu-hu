@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 06/07/2018
+ms.date: 08/29/2018
 ms.topic: quickstart
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 4a5e613169bf3173b7585b49803fc7ac7f5186ce
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: ec56f9fdf21459857c8115222da921b6681a3ac5
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35297971"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43247236"
 ---
 # <a name="activate-azure-subscriptions-and-accounts-with-azure-cost-management"></a>Azure-előfizetések és -fiókok aktiválása az Azure Cost Managementtel
 
@@ -103,7 +103,7 @@ Az Azure Nagyvállalati Szerződés API-kulcsának létrehozása előtt engedél
 
 Előfordulhat, hogy a részlegek rendszergazdáinak, a fióktulajdonosoknak és a nagyvállalati rendszergazdáknak is engedélyt kell adnia a _díjak megtekintéséhez_ a számlázási API segítségével.
 
-A Cost Management szolgáltatást csak egy Azure-szolgáltatásadminisztrátor engedélyezheti. A társadminisztrátori jogosultság ehhez nem elegendő. Az adminisztrátori jogosultságra vonatkozó követelmény azonban megkerülhető. Kérheti, hogy az Azure Active Directory adminisztrátora adjon Önnek jogosultságot a **CloudynAzureCollector** engedélyezéséhez egy PowerShell-szkripttel. Az alábbi szkript jogosultságot ad a **CloudynAzureCollector** Azure Active Directory-szolgáltatásnév regisztrálásához.
+A Cost Management szolgáltatást csak egy Azure-szolgáltatásadminisztrátor engedélyezheti. A társadminisztrátori jogosultság ehhez nem elegendő. Az adminisztrátori jogosultságra vonatkozó követelmény azonban megkerülhető. Kérheti, hogy az Azure Active Directory adminisztrátora adjon Önnek jogosultságot a **CloudynAzureCollector** engedélyezéséhez egy PowerShell-szkripttel. Az alábbi szkript jogosultságot ad a **CloudynAzureCollector** Azure Active Directory-szolgáltatásnév regisztrálásához. Amennyiben sikeresen futtatja, a művelet befejeztével a böngészőben megjelenik a következő URL: http://localhost:8080/CloudynJava.
 
 ```
 #THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

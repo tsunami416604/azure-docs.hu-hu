@@ -13,14 +13,14 @@ ms.topic: overview
 ms.custom: mvc
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 07/17/2018
+ms.date: 08/28/2018
 ms.author: alkohli
-ms.openlocfilehash: 5288e9900c75eae7601b84f7366edf9ac739d5da
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 931b3fd4730ed9ca3a901b423d6c804dfa7e5305
+ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39125803"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43143542"
 ---
 # <a name="what-is-azure-data-box-disk-preview"></a>Mi az az Azure Data Box Disk-lemez? (Előzetes verzió)
 
@@ -60,10 +60,10 @@ A.  Ahhoz, hogy Azure Data Box Disk-lemezeket kaphasson, előbb regisztráljon a
 A. 5 darab egyenként 8 TB-os lemez (7 TB-os felhasználható kapacitással) esetén a felhasználható kapacitás legfeljebb 35 TB. Így egyszerre legfeljebb 35 TB-nyi adat vihető át.  Több adat átviteléhez több lemez megrendelése szükséges.
 
 ### <a name="q-how-can-i-check-if-data-box-disks-are-available-in-my-region"></a>K. Honnan tudhatom meg, hogy a Data Box Disk-lemezek elérhetők-e a régiómban? 
-A.  Az előzetes verzió fázisában a Data Box Disk-lemezek az USA-ban és az Európai Unió országaiban érhetők el.  
+A.  A Data Box Disk az előzetes időszakban elérhető az USA-ban, Kanadában és az Európai Unió minden országában.  
 
 ### <a name="q-which-regions-can-i-store-data-in-with-data-box-disks"></a>K. Mely régiókban tárolhatok adatokat a Data Box Disk-lemezekkel?
-A. Az előzetes verzióban Data Box Disk-lemezek tárolása az USA összes régiójában, illetve Nyugat- és Észak-Európában támogatottak. Csak a nyilvános Azure-felhőrégiók támogatottak. Az Azure Government és más független felhők nem támogatottak.
+A. A Data Box Disk előzetes verziója támogatott az USA minden régiójában, Kanadában és Nyugat-, valamint Észak-Európában. Csak a nyilvános Azure-felhőrégiók támogatottak. Az Azure Government és más független felhők nem támogatottak.
 
 ### <a name="q-whom-should-i-contact-if-i-encounter-any-issues--with-data-box-disks"></a>K. Kihez fordulhatok, ha probléma merülne fel a Data Box Disk-lemezekkel kapcsolatban?
 A. Ha bármilyen probléma merülne fel a Data Box Disk-lemezekkel kapcsolatban, kérjük, forduljon a [Data Box Disk támogatásához](mailto:expresspodsupport@microsoft.com).

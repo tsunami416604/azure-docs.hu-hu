@@ -1,6 +1,6 @@
 ---
-title: ASP.NET Framework webalkalmazás létrehozása az Azure-ban | Microsoft Docs
-description: Az alapértelmezett ASP.NET-webalkalmazás üzembe helyezésével megtudhatja, hogy miként futtathat webalkalmazásokat az Azure App Service-ben.
+title: C# ASP.NET-keretrendszer webalkalmazás létrehozása az Azure-ban | Microsoft Docs
+description: Az alapértelmezett C# ASP.NET-webalkalmazás üzembe helyezésével megtudhatja, hogy miként futtathat webalkalmazásokat az Azure App Service-ben.
 services: app-service\web
 documentationcenter: ''
 author: cephalin
@@ -12,22 +12,21 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 11/30/2017
+ms.date: 08/29/2018
 ms.author: cephalin
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 125377b91514b1615cfbb488f7ddfe59fbc016f5
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: f6f443dfe637e68b0e1e13f7c3b9e718ae48a85d
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43191319"
 ---
 # <a name="create-an-aspnet-framework-web-app-in-azure"></a>ASP.NET Framework webalkalmazás létrehozása az Azure-ban
 
 Az [Azure Web Apps](app-service-web-overview.md) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás.  Ez a gyorsútmutató az ASP.NET-webalkalmazás Azure Web Apps szolgáltatásban történő üzembe helyezésén vezeti végig. Az oktatóanyag végére egy olyan erőforráscsoport lesz elérhető, amely egy App Service-csomagból és egy üzembe helyezett webalkalmazással rendelkező Azure webalkalmazásból áll.
 
-Tekintse meg a videót, amelyben működés közben láthatja ezt a gyorsútmutatót, majd kövesse végig a lépéseket az első .NET-alkalmazása közzétételéhez az Azure-on.
-
-> [!VIDEO https://channel9.msdn.com/Shows/Azure-for-NET-Developers/Create-a-NET-app-in-Azure-Quickstart/player]
+![](./media/app-service-web-get-started-dotnet-framework/published-azure-web-app.png)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -35,11 +34,7 @@ Tekintse meg a videót, amelyben működés közben láthatja ezt a gyorsútmuta
 
 Az oktatóanyag elvégzéséhez:
 
-* Telepítse a <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2017</a> szoftvert a következő számítási feladatokkal:
-    - **ASP.NET és webfejlesztés**
-    - **Azure-fejlesztés**
-
-    ![ASP.NET és webfejlesztés és Azure-fejlesztés (Web és felhőszolgáltatások alatt)](media/app-service-web-tutorial-dotnet-sqldatabase/workloads.png)
+<a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2017</a> telepítése **ASP.NET és webfejlesztési** számítási feladattal.
 
 Ha már telepítette a Visual Studiót, adja hozzá a számítási feladatokat a Visual Studióban a **Tools** (Eszközök)  >  **Get Tools and Features** (Eszközök és funkciók beszerzése) elemre kattintva.
 
@@ -144,6 +139,7 @@ Keresse meg a `<div class="jumbotron">` HTML-címkét felül, és cserélje le a
 Az Azure-beli ismételt üzembe helyezéshez kattintson a jobb gombbal a **myFirstAzureWebApp** projektre a **Solution Explorer** (Megoldáskezelő) lapon, és válassza a **Publish** (Közzététel) elemet.
 
 A közzétételi oldalon válassza a **Publish** (Közzététel) elemet.
+![A Visual Studio összefoglaló közzétételi oldala](./media/app-service-web-get-started-dotnet-framework/publish-summary-page.png)
 
 Miután a közzététel befejeződött, a Visual Studio tallózza a webalkalmazás URL-címét.
 
@@ -162,6 +158,12 @@ Megtekintheti a webalkalmazás Áttekintés oldalát. Itt elvégezhet olyan alap
 ![Az App Service panel az Azure Portalon](./media/app-service-web-get-started-dotnet-framework/web-app-blade.png)
 
 A bal oldali menü az alkalmazás konfigurálásához biztosít különböző oldalakat. 
+
+## <a name="video"></a>Videó
+
+Tekintse meg a videót, amelyben működés közben láthatja ezt a gyorsútmutatót, majd kövesse végig a lépéseket az első .NET-alkalmazása közzétételéhez az Azure-on.
+
+> [!VIDEO https://channel9.msdn.com/Shows/Azure-for-NET-Developers/Create-a-NET-app-in-Azure-Quickstart/player]
 
 [!INCLUDE [Clean-up section](../../includes/clean-up-section-portal.md)]
 

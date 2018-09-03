@@ -14,23 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/09/2018
 ms.author: daveba
-ms.openlocfilehash: d4daccfdcb2bc11831e960aa20533e32801db946
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 5117444b6312d96f87f9e1edf8ce26d0360417ef
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39049337"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42885751"
 ---
 # <a name="tutorial-use-a-linux-vms-managed-identity-to-access-azure-storage"></a>Oktatóanyag: Linux rendszerű virtuális gép felügyelt identitásának használata az Azure Storage eléréséhez 
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-
-Ez az oktatóanyag bemutatja, hogyan hozhat létre és használhat Linux VM-beli felügyelt identitást az Azure Storage eléréséhez. Az alábbiak végrehajtásának módját ismerheti meg:
+Ez az oktatóanyag bemutatja, hogyan férhet hozzá az Azure Storage-hoz egy linuxos virtuális gép (VM) rendszer által hozzárendelt identitásával. Az alábbiak végrehajtásának módját ismerheti meg:
 
 > [!div class="checklist"]
-> * Linux rendszerű virtuális gép létrehozása új erőforráscsoportban
-> * Felügyelt identitás engedélyezése Linux rendszerű virtuális gépen (VM)
+> * Tárfiók létrehozása
 > * Blobtároló létrehozása egy tárfiókban
 > * Hozzáférés engedélyezése a Linux rendszerű virtuális gép felügyelt identitása számára egy Azure Storage-tárolóhoz
 > * Hozzáférési jogkivonat lekérése, majd azzal az Azure Storage meghívása
@@ -40,41 +38,20 @@ Ez az oktatóanyag bemutatja, hogyan hozhat létre és használhat Linux VM-beli
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ha még nincs Azure-fiókja, a folytatás előtt [regisztráljon egy ingyenes fiókra](https://azure.microsoft.com).
+[!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
-[!INCLUDE [msi-tut-prereqs](~/includes/active-directory-msi-tut-prereqs.md)]
+[!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
+
+- [Bejelentkezés az Azure Portalra](https://portal.azure.com)
+
+- [Linux rendszerű virtuális gép létrehozása](/azure/virtual-machines/linux/quick-create-portal)
+
+- [Rendszer által hozzárendelt identitás engedélyezése a virtuális gépen](/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm#enable-system-assigned-identity-on-an-existing-vm)
 
 A jelen oktatóanyagban a parancssori példaszkriptek futtatása kétféleképpen végezhető el:
 
 - Az [Azure Cloud Shell](~/articles/cloud-shell/overview.md) használatával az Azure Portalon vagy a minden egyes kódblokk jobb felső sarkában megtalálható **Kipróbálom** gombbal.
 - Ha inkább a helyi parancssori konzolt kívánja használni, [telepítse a CLI 2.0 legújabb verzióját](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.23 vagy újabb).
-
-## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
-
-Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
-
-## <a name="create-a-linux-virtual-machine-in-a-new-resource-group"></a>Linux rendszerű virtuális gép létrehozása új erőforráscsoportban
-
-Ebben a szakaszban olyan Linux rendszerű virtuális gépet hoz létre, amelyhez később felügyelt identitást fog adni.
-
-1. Az Azure Portal bal felső sarkában válassza az **Új** gombot.
-2. Válassza a **Számítás**, majd az **Ubuntu Server 16.04 LTS** elemet.
-3. Adja meg a virtuális gép adatait. A **Hitelesítés típusa** résznél válassza az **SSH nyilvános kulcs** vagy a **Jelszó** lehetőséget. A létrehozott hitelesítő adatokkal jelentkezhet be a virtuális gépre.
-
-   ![A virtuális gép létrehozásának „Alapvető beállítások” panelje](media/msi-tutorial-linux-vm-access-arm/msi-linux-vm.png)
-
-4. Válasszon ki egy előfizetést az **Előfizetés** listából a virtuális géphez.
-5. Ha a virtuális gépet egy új erőforráscsoportban szeretné létrehozni, válassza az **Erőforráscsoport** > **Új létrehozása** lehetőséget. Ha elkészült, kattintson az **OK** gombra.
-6. Válassza ki a virtuális gép méretét. További méretek megjelenítéséhez válassza **Az összes megtekintése** lehetőséget, vagy módosítsa a **Támogatott lemeztípus** szűrőt. A beállítások paneljén tartsa meg az alapértelmezett beállításokat, majd kattintson az **OK** gombra.
-
-## <a name="enable-managed-identity-on-your-vm"></a>Felügyelt identitás engedélyezése a virtuális gépen
-
-A virtuális gép felügyelt identitásával anélkül kérhet le hozzáférési jogkivonatokat az Azure AD-ből, hogy hitelesítő adatokat kellene a kódba illesztenie. A háttérben a felügyelt identitás Azure Portalon keresztül, virtuális gépen történő engedélyezésének két következménye van: regisztrálja a virtuális gépet az Azure AD-ben egy felügyelt identitás létrehozásához, és konfigurálja az identitást a virtuális gépen.
-
-1. Lépjen az új virtuális gép erőforráscsoportjára, és válassza ki az előző lépésben létrehozott virtuális gépet.
-2. A **Beállítások** kategóriában kattintson a **Konfiguráció** elemre.
-3. A felügyelt identitás engedélyezéséhez kattintson az **Igen** gombra.
-4. Kattintson a **Mentés** gombra a konfiguráció alkalmazásához. 
 
 ## <a name="create-a-storage-account"></a>Tárfiók létrehozása 
 

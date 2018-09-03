@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 06/21/2018
+ms.date: 08/27/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 07768dbc8beb7a851d442e9e0c3e7538bf12b766
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: ae2d312feb0fcefab85bcbbd2db7ac46c328213f
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36937937"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43104982"
 ---
 # <a name="what-is-azure-analysis-services"></a>Mi az Azure Analysis Services?
 
@@ -81,13 +81,13 @@ Az Azure Analysis Services a világ összes régiójában támogatott. A támoga
 |Dél-Brazília     |    B1, B2, S0, S1, S2, S4, D1     |     1    |
 |Közép-Kanada    |     B1, B2, S0, S1, S2, S4, D1    |     1    |
 |USA keleti régiója     |     B1, B2, S0, S1, S2, S4, D1    |    1     |
-|USA 2. keleti régiója     |     B1, B2, S0, S1, S2, S4, S8\*, S9\*, D1     |    7     |
+|USA 2. keleti régiója     |     B1, B2, S0, S1, S2, S4, D1  <br>S8, S9   |    7<br>1    |
 |USA északi középső régiója     |     B1, B2, S0, S1, S2, S4, D1     |    1     |
 |USA középső régiója     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 |USA déli középső régiója     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 |USA nyugati középső régiója   |     B1, B2, S0, S1, S2, S4, D1    |    3     |
-|USA nyugati régiója     |    B1, B2, S0, S1, S2, S4, S8\*, S9\*, D1     |    7     |
-|USA 2. nyugati régiója    |    B1, B2, S0, S1, S2, S4, S8\*, S9\*, D1     |    3     |
+|USA nyugati régiója     |    B1, B2, S0, S1, S2, S4, D1  <br>S8, S9   |    7<br>2  |
+|USA 2. nyugati régiója    |    B1, B2, S0, S1, S2, S4, D1   <br>S8, S9  |    3<br>1     |
 
 ### <a name="europe"></a>Európa
 
@@ -95,7 +95,7 @@ Az Azure Analysis Services a világ összes régiójában támogatott. A támoga
 |---------|---------|:---------:|
 |Észak-Európa     |    B1, B2, S0, S1, S2, S4, D1      |    7     |
 |Az Egyesült Királyság déli régiója   |    B1, B2, S0, S1, S2, S4, D1      |     1    |
-|Nyugat-Európa     |    B1, B2, S0, S1, S2, S4, S8\*, S9\*, D1      |    7     |
+|Nyugat-Európa     |    B1, B2, S0, S1, S2, S4, D1   <br>S8, S9    |    7<br>1     |
 
 ### <a name="asia-pacific"></a>Ázsia és a Csendes-óceáni térség 
 
@@ -103,10 +103,8 @@ Az Azure Analysis Services a világ összes régiójában támogatott. A támoga
 |---------|---------|:---------:|
 |Délkelet-Ausztrália     | B1, B2, S0, S1, S2, S4, D1       |    1     |
 |Kelet-Japán  |   B1, B2, S0, S1, S2, S4, D1       |    1     |
-|Délkelet-Ázsia     |     B1, B2, S0, S1, S2, S4, S8\*, S9\*, D1     |   1      |
+|Délkelet-Ázsia     |     B1, B2, S0, S1, S2, S4, S8, S9, D1     |   1      |
 |Nyugat-India     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
-
-\* A Standard szint S8 és S9 csomagjai egy lekérdezésreplikát támogatnak.
 
 ## <a name="scale-to-your-needs"></a>Igényei szerint méretezhető
 

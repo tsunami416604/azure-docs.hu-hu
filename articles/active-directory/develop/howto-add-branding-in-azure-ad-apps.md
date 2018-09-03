@@ -1,6 +1,6 @@
 ---
-title: Védjegyzési útmutató alkalmazások |} A Microsoft Docs
-description: A fejlesztőknek készített erőforrásairól az Azure Active Directory egy átfogó útmutatást
+title: Védjegyzési útmutató az alkalmazásokhoz | Microsoft Docs
+description: Átfogó útmutató az Azure Active Directory fejlesztőknek készített erőforrásairól
 services: active-directory
 documentationcenter: dev-center-name
 author: CelesteDG
@@ -17,95 +17,95 @@ ms.date: 04/27/2017
 ms.author: celested
 ms.reviewer: arielgo
 ms.custom: aaddev, signin_art
-ms.openlocfilehash: 78a0b9bf7f49cc41c8d78287bcbe54c5c88f0809
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
-ms.translationtype: MT
+ms.openlocfilehash: 92990a71a0b138f08c515450ecd71692fa57f297
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "39597905"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43185420"
 ---
-# <a name="branding-guidelines-for-applications"></a>Alkalmazások arculati útmutatóját
+# <a name="branding-guidelines-for-applications"></a>Védjegyzési útmutató az alkalmazásokhoz
 
-Ez a cikk ismerteti az alkalmazások fejlesztése az Azure Active Directory (Azure AD) használandó arculati útmutatóját. Ezen irányelvek segítségével az ügyfelek közvetlen kívánja használni a felhasználó munkahelyi vagy iskolai fiókja, az Azure AD-ben felügyelt vagy a személyes fiókra a regisztráció és bejelentkezés az alkalmazáshoz.
+Ez a cikk az Azure Active Directory (Azure AD) alkalmazások fejlesztésekor alkalmazandó védjegyzési irányelveket tárgyalja. Ezek az irányelvek segítenek az ügyfeleknek eligazodni, ha az Azure AD-ban kezelt munkahelyi vagy iskolai fiókjukkal, illetve személyes fiókjukkal szeretnének regisztrálni vagy bejelentkezni az Ön által fejlesztett alkalmazásba.
 
-## <a name="personal-accounts-vs-work-or-school-accounts-from-microsoft"></a>Személyes fiókok vagy munkahelyi vagy iskolai fiókokat a Microsoft
+## <a name="personal-accounts-vs-work-or-school-accounts-from-microsoft"></a>Személyes fiókok és munkahelyi vagy iskolai Microsoft-fiókok összehasonlítása
 
-Kétféle felhasználói fiókokat a Microsoft felügyeli:
+A Microsoft kétféle felhasználói fiókot kezel:
 
-* **Személyes fiókok** (korábbi nevén Windows Live ID). Ezek a fiókok közti kapcsolatot képviselik *egyes* a Microsoft fogyasztói eszközök és szolgáltatások eléréséhez használt felhasználók és a Microsoft és a rendszer. Ezek a fiókok személyes használatra készültek.
-* **Munkahelyi vagy iskolai fiókkal.** Ezek a fiókok a Microsoft által felügyelt, az Azure Active Directory használó szervezetek nevében. Ezek a fiókok segítségével a Microsoft Office 365-höz és más üzleti szolgáltatásaiban jelentkezzen be.
+* **Személyes fiókok** (korábban Windows Live ID). Ezek az *egyes* felhasználók és a Microsoft közötti kapcsolatot képviselik, és a Microsoft fogyasztói eszközökhöz és szolgáltatásokhoz való hozzáférését biztosítják. Ezek a fiókok személyes használatra vannak szánva.
+* **Munkahelyi vagy iskolai fiókok.** A fiókokat a Microsoft felügyeli az Azure Active Directory-t használó vállalatok nevében. A fiókok az Office 365-be és a Microsoft egyéb üzleti szolgáltatásaiba való bejelentkezésre szolgálnak.
 
-A Microsoft munkahelyi vagy iskolai fiókok általában rendeli hozzá a végfelhasználók számára (az alkalmazottak, a tanulók, a Szövetségi alkalmazottak.) a szervezetek (munkahelyi, iskolai, kormányzati szerv). Ezek a fiókok egyedalakzatokkal közvetlenül a felhőben (az Azure AD platform), vagy az Azure ad-hez a helyszíni címtárból, például a Windows Server Active Directoryval szinkronizált. A Microsoft a *gondviselője* , a munkahelyi vagy iskolai fiókok, de a fiók tulajdonosai és a szervezet által vezérelt.
+A Microsoft munkahelyi vagy iskolai fiókokat a szervezetek (vállalatok, iskolák, kormányhivatalok) jellemzően a végfelhasználókhoz (alkalmazottak, diákok, köztisztviselők) rendelik. Ezeket a fiókokat közvetlenül a felhőben (az Azure AD platformon) vagy Azure AD-val szinkronizálva kezelik egy helyszíni címtárból, például a Windows Server Active Directoryból. A Microsoft a munkahelyi vagy iskolai fiókok *felügyelője*, de azok a szervezetek tulajdonában állnak, és a szervezetek felügyelik őket.
 
-## <a name="referring-to-azure-ad-accounts-in-your-application"></a>Az alkalmazás Azure AD-fiókokat hivatkozó
+## <a name="referring-to-azure-ad-accounts-in-your-application"></a>Azure AD-fiókok hivatkozása az alkalmazásban
 
-A Microsoft nem teszik elérhetővé a végfelhasználók számára, hogy az Azure vagy az Active Directory márkanevek és sem kell azt.
+A Microsoft nem jeleníti meg a végfelhasználóknak az Azure vagy az Active Directory márkaneveket, és Ön se tegye.
 
-* Miután a felhasználó be van jelentkezve, használja a szervezet és a lehető legnagyobb mértékben embléma. Ez jobb, mint például a "a szervezet." általános feltételek használata
-* Jelenleg nincs bejelentkezve felhasználó, tekintse meg, mint a fiókjaikat "munkahelyi vagy iskolai fiókokhoz" és a Microsoft-embléma használata –, átadására, hogy a Microsoft felügyeli ezeket a fiókokat. Ne használja a feltételek, például a "vállalati fiók", "üzleti fiók" vagy "vállalati fiók" felhasználói zavart okozhat.
+* Bejelentkezett felhasználó esetén, ha csak teheti, használja a szervezet nevét és emblémáját. Ez jobb megoldás, mint az általános, „az Ön szervezete” jellegű kifejezések.
+* Ha a felhasználó nincs bejelentkezve, hivatkozzon a fiókra „Munkahelyi vagy iskolai fiók” néven, és használja a Microsoft emblémáját annak jelzésére, hogy a fiókokat a Microsoft kezeli. Ne használja a „vállalati fiók”, „üzleti fiók”, „céges fiók” vagy az ehhez hasonló kifejezéseket, mert ezek összezavarhatják a felhasználót.
 
-## <a name="user-account-pictogram"></a>Felhasználói fiók piktogramot
+## <a name="user-account-pictogram"></a>A felhasználói fiók piktogramja
 
-Ezeket az irányelveket korábbi verziójában javasoljuk a "kék jelvény" piktogramot. Fejlesztői és a felhasználói visszajelzések alapján azonban most javasoljuk, hogy a Microsoft-embléma használatát helyette. A Microsoft-embléma segít a felhasználóknak megérteni, hogy a fiókot használják az Office 365 vagy más Microsoft üzleti szolgáltatásokat, jelentkezzen be az alkalmazás felhasználhatja.
+Az irányelvek korábbi verziójában a „kék jelvény” piktogram használatát javasoltuk. A felhasználói és fejlesztői visszajelzések alapján ehelyett jelenleg a Microsoft embléma használatát javasoljuk. A Microsoft embléma elősegíti, hogy a felhasználók könnyebben felismerjék, hogy az Office 365-höz vagy más Microsoft üzleti szolgáltatásokhoz használt fiókjukat is használhatják, ha be szeretnének lépni az alkalmazásba.
 
-## <a name="signing-up-and-signing-in-with-azure-ad"></a>Regisztráció és bejelentkezés az Azure ad-ben
+## <a name="signing-up-and-signing-in-with-azure-ad"></a>Regisztrálás és bejelentkezés az Azure AD szolgáltatással
 
-Az alkalmazás lehetséges, hogy jelen külön útvonalak regisztráció és bejelentkezés, és a következő szakaszok vizuális útmutató mindkét forgatókönyvet támogatja.
+Az alkalmazása eltérően működhet regisztráció és bejelentkezés esetén. A következő szakaszokban vizuális útmutatást talál mindkét esethez.
 
-**Ha az alkalmazás támogatja a végfelhasználói regisztrálási (például ingyenes próbaverzióval vagy freemium modellre)**: megjelenítheti egy **bejelentkezési** gombot, amely lehetővé teszi, hogy a felhasználók férhetnek hozzá az alkalmazás a munkahelyi fiókjával vagy a személyes fiókjával. Azure ad-ben az alkalmazás első használatakor jelennek meg a beleegyezést kérő üzenetet.
+**Ha az alkalmazás támogatja a végfelhasználói regisztrációt (például „free to trial” vagy „freemium” modellek)**: Megjeleníthet egy **Bejelentkezés** gombot, amelyen keresztül a felhasználók a munkahelyi vagy személyes fiókjukkal elérhetik az alkalmazást. Az Azure AD az alkalmazásba való első bejelentkezéskor a jóváhagyásukat fogja kérni.
 
-**Ha az adott alkalmazáshoz szükséges engedélyeket, amelyek csak a rendszergazdák engedélyezhetik, hogy, vagy ha az adott alkalmazáshoz szükséges a szervezeti licencelési**: külön rendszergazdai beszerzése a felhasználói bejelentkezés. A **"lekérése az alkalmazás" gombra** átirányítja a rendszergazdák jelentkezzen be, majd kérje meg őket a szervezet, amely a hozzáadott előnye, hogy az alkalmazás végfelhasználói beleegyezést kérő újrainduljanak felhasználók nevében hozzájárulását.
+**Ha az alkalmazás kizárólag rendszergazdák által hozzáférhető engedélyeket, vagy szervezeti licencet igényel**: Különítse el a rendszergazdai beszerzést a felhasználói bejelentkezéstől. Az **„Alkalmazás beszerzése” gomb** átirányítja a rendszergazdákat a bejelentkezéshez, majd a hozzájárulásukat kéri a szervezet felhasználói nevében, aminek az a további előnye, hogy megszünteti a végfelhasználóktól az alkalmazáshoz érkező hozzájárulási kérelmeket.
 
-## <a name="visual-guidance-for-app-acquisition"></a>Vizuális útmutató alkalmazás beszerzése
+## <a name="visual-guidance-for-app-acquisition"></a>Vizuális útmutató az alkalmazásbeszerzéshez
 
-Az "az alkalmazás letöltése" hivatkozásra kell átirányítja a felhasználót az Azure AD-hozzáférés (Engedélyezés) lapot, hogy az alkalmazás hozzáférhessen a céges adatokhoz, amelyeket a Microsoft által üzemeltetett engedélyezése a szervezet rendszergazdája. Megtudhatja, hogyan kérjen hozzáférést tárgyalja a [alkalmazások az Azure Active Directoryval való integrálását](quickstart-v1-integrate-apps-with-azure-ad.md) cikk.
+Az „Alkalmazás beszerzése” hivatkozás átirányítja a felhasználót az Azure AD hozzáférési megadása (engedélyezés) oldalra, hogy a szervezet rendszergazdája engedélyezhesse, hogy az alkalmazás hozzáférhessen a szervezet Microsoft által szolgáltatott adataihoz. További részletek a hozzáférés kéréséről az [Alkalmazások integrálása az Azure Active Directoryval](quickstart-v1-integrate-apps-with-azure-ad.md) cikkben találhatók.
 
-Miután a rendszergazdák hozzájárulás az alkalmazáshoz, kiválaszthatnak adja hozzá a felhasználói az Office 365 alkalmazás indítója élmény (elérhető-e a gofri, vagy olyan [ https://portal.office.com/myapps ](https://portal.office.com/myapps)). Ha szeretné hirdesse meg ezt a funkciót, használhatja a kifejezések, mint az "A szervezet az alkalmazás hozzáadása" és a egy gomb megjelenítése, például az alábbi példában:
+Miután a rendszergazda engedélyezi az alkalmazást, eldöntheti, hogy hozzáadja-e a felhasználó Office 365 alkalmazásindító élményéhez (elérhető a gofri alkalmazásindítóból és innen: [https://portal.office.com/myapps](https://portal.office.com/myapps)). Ha hirdetni szeretné ezt a képességet, használja az „Adja a szervezetéhez ezt az alkalmazást” vagy egy hasonló kifejezést, és jelenítsen meg egy, a példához hasonló gombot:
 
 ![Alkalmazástípusok és forgatókönyvek](./media/howto-add-branding-in-azure-ad-apps/add-to-my-org.png)
 
-Azt javasoljuk azonban, hogy magyarázó szöveg helyett gombokat írni. Példa:
+Gombok használata helyett inkább magyarázó szövegek írását ajánljuk. Például:
 
-> *Ha már használja az Office 365 vagy a Microsoft más üzleti szolgáltatásra, akkor is hozzáférést < your_app_name > a szervezet adatai. Ez lehetővé teszi a felhasználók < your_app_name > meglévő munkahelyi fiókjával.*
+> *Ha már használja az Office 365-öt vagy a Microsoft más üzleti szolgáltatását, engedélyezheti a(z) <alkalmazás_neve> alkalmazásnak, hogy hozzáférjen a szervezet adataihoz. Így a felhasználók elérhetik a(z) <alkalmazás_neve> alkalmazást a már létező munkahelyi fiókjukkal.*
 
-Letöltése a hivatalos Microsoft-embléma használható az alkalmazásban, kattintson a jobb gombbal a megfelelőt, használatához, és mentse a számítógépre.
+A hivatalos Microsoft embléma letöltéséhez az alkalmazáshoz kattintson a jobb gombbal a választott emblémára, majd mentse a gépére.
 
-| Adategység                                | PNG formátum | SVG-formátum |
+| Objektum                                | PNG formátum | SVG formátum |
 | ------------------------------------ | ---------- | ---------- |
-| Microsoft logó  | ![Microsoft-embléma PNG](./media/howto-add-branding-in-azure-ad-apps/MS-SymbolLockup_MSSymbol_19.png) | ![SVG-Microsoft-embléma](./media/howto-add-branding-in-azure-ad-apps/MS-SymbolLockup_MSSymbol_19.svg) |
+| Microsoft embléma  | ![Microsoft embléma PNG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_mssymbol_19.png) | ![Microsoft embléma SVG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_mssymbol_19.svg) |
 
-## <a name="visual-guidance-for-sign-in"></a>Jelentkezzen be a vizuális útmutató
+## <a name="visual-guidance-for-sign-in"></a>Vizuális útmutató a bejelentkezéshez
 
-Az alkalmazás megjelenjen egy bejelentkezés gombot, amely átirányítja a felhasználókat a bejelentkezési végpont, amely megfelel a protokoll használatával integrálása az Azure ad-ben. Az alábbi szakasz részletesen mi gomb hasonlóan kell kinéznie.
+Az alkalmazás jelenítsen meg egy bejelentkezés gombot, amely átirányítja a felhasználókat a bejelentkezési végpontra, amely megfelel az Azure AD integráláshoz használt protokollnak. A következő szakasz részletesen bemutatja, hogyan nézzen ki a gomb.
 
-### <a name="pictogram-and-sign-in-with-microsoft"></a>Piktogramot és az "A Microsoft bejelentkezés"
+### <a name="pictogram-and-sign-in-with-microsoft"></a>Piktogram és „Bejelentkezés Microsofttal”
 
-A Microsoft-embléma közötti társítás, és a "Sign in with Microsoft" feltételeket képviselő egyedi más identitásszolgáltatókkal többek között az Azure AD az alkalmazás is támogatja. Ha nincs elég hely a "Sign in with Microsoft", rendben, lerövidítheti a "Sign-in." A gombok világos vagy sötét színsémát is használhat.
+A Microsoft embléma és a „Bejelentkezés Microsofttal” kifejezés együttese egyedileg jelöli az Azure AD-t az alkalmazás által támogatott egyéb identitásszolgáltatók között. Ha nincs elég hely a „Bejelentkezés Microsofttal” megjelenítéséhez, használhatja a rövidebb „Bejelentkezés” szöveget. A gombokhoz világos vagy sötét téma használható.
 
-Az alábbi ábrán látható, a Microsoft által ajánlott redlines az alkalmazását az eszközök használata esetén. A redlines vonatkozik a "Sign in with Microsoft" vagy a "Bejelentkezés" rövidebb változatban.
+Az alábbi diagramok mutatják a Microsoft által ajánlott korlátozásokat az objektumok alkalmazással való használata esetén. A „Bejelentkezés Microsofttal” vagy a rövidebb „Bejelentkezés” verzióra vonatkozó korlátozások.
 
-![Jelentkezzen be Microsoft redlines](./media/howto-add-branding-in-azure-ad-apps/Sign-in-with-Microsoft-redlines.png)
+![„Bejelentkezés Microsofttal” korlátozások](./media/howto-add-branding-in-azure-ad-apps/sign-in-with-microsoft-redlines.png)
 
-A hivatalos az alkalmazásban használt képek letöltéséhez kattintson a jobb gombbal szeretné használni, és mentse a számítógépre egy.
+Ha hivatalos képeket szeretne letölteni az alkalmazáshoz, kattintson a jobb gombbal a választott képre, majd mentse a számítógépére.
 
-| Adategység                                | PNG formátum | SVG-formátum |
+| Objektum                                | PNG formátum | SVG formátum |
 | ------------------------------------ | ---------- | ---------- |
-| Bejelentkezés Microsofttal (sötét téma)  | ![Jelentkezzen be a gomb sötét téma PNG](./media/howto-add-branding-in-azure-ad-apps/MS-SymbolLockup_SignIn_dark.png) | ![Jelentkezzen be Microsoft gomb sötét téma SVG](./media/howto-add-branding-in-azure-ad-apps/MS-SymbolLockup_SignIn_dark.svg) |
-| Bejelentkezés Microsofttal (világos téma) | ![Jelentkezzen be a gomb világos téma PNG](./media/howto-add-branding-in-azure-ad-apps/MS-SymbolLockup_SignIn_light.png) | ![Jelentkezzen be Microsoft gomb világos téma SVG](./media/howto-add-branding-in-azure-ad-apps/MS-SymbolLockup_SignIn_light.svg) |
-| Jelentkezzen be (sötét téma)                 | ![Bejelentkezés röviden gomb sötét téma PNG](./media/howto-add-branding-in-azure-ad-apps/MS-SymbolLockup_SignIn_dark_short.png) | ![Röviden gomb sötét téma SVG aláírása](./media/howto-add-branding-in-azure-ad-apps/MS-SymbolLockup_SignIn_dark_short.svg) |
-| Jelentkezzen be (világos téma)                | ![Bejelentkezés röviden gomb világos téma PNG](./media/howto-add-branding-in-azure-ad-apps/MS-SymbolLockup_SignIn_light_short.png) | ![Röviden gomb világos téma SVG aláírása](./media/howto-add-branding-in-azure-ad-apps/MS-SymbolLockup_SignIn_light_short.svg) |
+| Bejelentkezés Microsofttal (sötét téma)  | ![Bejelentkezés gomb (sötét téma, PNG)](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_dark.png) | ![Bejelentkezés Microsofttal gomb (sötét téma, SVG)](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_dark.svg) |
+| Bejelentkezés Microsofttal (világos téma) | ![Bejelentkezés gomb (világos téma, PNG)](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light.png) | ![Bejelentkezés Microsofttal gomb (világos téma, SVG)](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light.svg) |
+| Bejelentkezés (sötét téma)                 | ![Rövid Bejelentkezés gomb (sötét téma, PNG)](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_dark_short.png) | ![Rövid Bejelentkezés gomb (sötét téma, SVG)](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_dark_short.svg) |
+| Bejelentkezés (világos téma)                | ![Rövid Bejelentkezés gomb (világos téma, PNG)](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light_short.png) | ![Rövid Bejelentkezés gomb (világos téma, SVG)](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light_short.svg) |
 
 
-## <a name="branding-dos-and-donts"></a>Márkajelzési feljegyzés és nem ajánlott műveletek
+## <a name="branding-dos-and-donts"></a>Ajánlott és kerülendő műveletek a védjegyzéssel kapcsolatban
 
-**Tegye** használata "munkahelyi vagy iskolai fiók" az a "Sign in with Microsoft" gombra, adja meg a végfelhasználókkal ismeri fel, hogy használhatja-e, hogy további magyarázatot. **Nem** használata más feltételek, például a "vállalati fiók", "üzleti fiók" vagy "vállalati fiók."
+**HASZNÁLJA** a „Munkahelyi vagy iskolai fiók” és „Bejelentkezés Microsofttal” gombok kombinációját, hogy több információt szolgáltasson a végfelhasználóknak arról, hogy használhatják-e a fiókjukat a bejelentkezéshez. **NE HASZNÁLJA** a „vállalati fiók”, „üzleti fiók”, „céges fiók” vagy más ezekhez hasonló kifejezéseket.
 
-**Nem** "Office 365-azonosító" vagy "Azure-azonosító". Az Office 365 is az a név egy fogyasztó kínál a Microsofttól, amely az Azure AD nem használ a hitelesítéshez.
+**NE HASZNÁLJA** az „Office 365 ID” vagy „Azure ID” kifejezéseket. Az Office 365 egy Microsoft felhasználói ajánlat neve is, amely nem használja az Azure AD-t a hitelesítéshez.
 
-**Nem** alter, a Microsoft-embléma.
+**NE** változtassa meg a Microsoft emblémát.
 
-**Nem** elérhetővé tenni a végfelhasználók számára, hogy az Azure-ban vagy az Active Directory márkái. Rendben azonban ezek a kifejezések használata a fejlesztők, informatikai szakemberek és rendszergazdák.
+**NE** jelenítse meg a végfelhasználóknak az Azure vagy az Active Directory márkaneveket. Fejlesztők, informatikai szakemberek és rendszergazdák esetében azonban megengedett a használatuk.
 
-## <a name="navigation-dos-and-donts"></a>Navigációs feljegyzés és nem ajánlott műveletek
+## <a name="navigation-dos-and-donts"></a>Ajánlott és kerülendő műveletek a navigációval kapcsolatban
 
-**Tegye** teszik lehetővé a felhasználók jelentkezzen ki, és váltson át egy másik felhasználói fiókból. Bár a legtöbb ember twitteren a Microsoft/Facebook vagy a Google egyetlen személyes fiókkal rendelkezik, személyek rendelt gyakran több szervezet. Több bejelentkezett felhasználó támogatása hamarosan elérhető lesz.
+**ADJON** módot arra, hogy a felhasználók kijelentkezhessenek, és másik felhasználói fiókra válthassanak. Bár a legtöbb felhasználó egyetlen személyes Microsoft-/Facebook-/Google-/Twitter-fiókkal rendelkezik, gyakran egynél több szervezettel is kapcsolatban áll. A többszörösen bejelentkezett felhasználók támogatása hamarosan elérhetővé válik.

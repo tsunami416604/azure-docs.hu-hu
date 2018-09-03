@@ -1,19 +1,19 @@
 ---
 title: Webalkalmazások üzembe helyezése az Azure-ban a Jenkins használatával
 description: A Jenkins és a Docker használatával beállíthatja Java-webalkalmazásai folyamatos integrációját a GitHubról az Azure App Service-be.
-ms.topic: tutorial
-ms.author: tarcher
+ms.service: jenkins
+keywords: jenkins, azure, devops, app service, folyamatos integráció, ci, folyamatos üzembe helyezés, cd
 author: tomarcher
-manager: jpconnock
-ms.service: devops
-ms.custom: jenkins
+manager: jeconnoc
+ms.author: tarcher
+ms.topic: tutorial
 ms.date: 07/31/2018
-ms.openlocfilehash: e880d84c3ae0fd23c11bb9b30733544bd5f28872
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: b1af82060d316a18cd6427f70695ca4fa982064d
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39389942"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43106797"
 ---
 # <a name="set-up-continuous-integration-and-deployment-to-azure-app-service-with-jenkins"></a>Az Azure App Service-be történő folyamatos integráció és üzembe helyezés beállítása a Jenkinsszel
 
@@ -102,7 +102,7 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 ## <a name="configure-the-azure-app-service-jenkins-plug-in"></a>Az Azure App Service Jenkins beépülő modul konfigurálása
 
 1. A Jenkins-webkonzolon válassza ki a létrehozott **MyJavaApp** feladatot, majd válassza a **Configure** (Konfigurálás) lehetőséget a lap bal oldalán.
-2. Görgessen le a **Post-build Actions** (Buildelés utáni műveletek) területig, és válasza az **Add post-build action** (Buildelés utáni művelet hozzáadása), majd a **Publish an Azure Web App** (Azure Web App közzététele) lehetőséget.
+2. Görgessen le a **Post-build Actions** (Buildelés utáni műveletek) területig, és válassza az **Add post-build action** (Buildelés utáni művelet hozzáadása), majd a **Publish an Azure Web App** (Azure-webalkalmazás közzététele) lehetőséget.
 3. Az **Azure Profile Configuration** (Azure-profil konfigurálása) területen kattintson az **Add** (Hozzáadás) elemre az **Azure Credentials** (Azure-beli hitelesítő adatok) elem mellett, majd válassza a **Jenkins**lehetőséget.
 4. Az **Add Credentials** (Hitelesítő adatok hozzáadása) párbeszédpanelen válassza a **Microsoft Azure Service Principal** (Microsoft Azure-szolgáltatásnév) lehetőséget a **Kind** (Altípus) legördülő menüben.
 5. Hozzon létre egy Active Directory-szolgáltatásnevet az Azure CLI vagy a [Cloud Shell](/azure/cloud-shell/overview) használatával.

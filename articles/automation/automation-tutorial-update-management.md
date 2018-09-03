@@ -6,15 +6,15 @@ author: zjalexander
 ms.service: automation
 ms.component: update-management
 ms.topic: tutorial
-ms.date: 02/28/2018
+ms.date: 08/29/2018
 ms.author: zachal
 ms.custom: mvc
-ms.openlocfilehash: 4d5222889d5e840bd03bf77a56584dac48bb740c
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: 8458aaee9f8d328d959fb47fb3e32af176d545b1
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "41919150"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43247368"
 ---
 # <a name="manage-windows-updates-by-using-azure-automation"></a>Windows-frissítések kezelése az Azure Automationnel
 
@@ -82,9 +82,19 @@ A frissítés bármely más részére kattintva megnyílik a kiválasztott friss
 
 ## <a name="configure-alerts"></a>Riasztások konfigurálása
 
-Ebben a lépésben egy riasztást állíthat be, amely értesíti, ha a frissítések sikeresen telepítve lettek. A létrehozandó riasztás egy Log Analytics-lekérdezésen alapul. Bármilyen egyéni lekérdezés alapján létrehozhat további riasztásokat, amelyekkel számos különféle forgatókönyv lefedhető. Az Azure Portalon lépjen a **Figyelés** felületre, és válassza a **Riasztás létrehozása** lehetőséget. 
+Ebben a lépésben egy riasztást állíthat be, amely értesíti, ha a frissítések sikeresen telepítve lettek egy Log Analytics lekérdezésen keresztül, vagy a sikertelen telepítések követésével az Update Management mesterrunbookjának segítségével.
 
-A **Szabály létrehozása** területen, amely az **1. Riasztási feltétel megadása** alatt található, kattintson a **Cél kiválasztása** gombra. A **Szűrés erőforrástípus alapján** mezőben válassza a **Log Analytics** elemet. Válassza ki a Log Analytics-munkaterületet, és kattintson a **Kész** gombra.
+### <a name="alert-conditions"></a>A riasztás feltételei
+
+Különböző riasztástípusok esetén különböző riasztási feltételeket kell meghatározni.
+
+#### <a name="log-analytics-query-alert"></a>Log Analytics-lekérdezés riasztása
+
+Létrehozhat egy Log Analytics-lekérdezésen alapuló riasztást a sikeres telepítések esetére. Sikertelen telepítések esetén használhatja a [Runbook-riasztás](#runbook-alert) lépéseit, hogy tudomást szerezzen a vezénylők frissítésének sikertelen telepítéséről. Bármilyen egyéni lekérdezés alapján létrehozhat további riasztásokat, amelyekkel számos különféle forgatókönyv lefedhető.
+
+Az Azure Portalon lépjen a **Figyelés** felületre, és válassza a **Riasztás létrehozása** lehetőséget.
+
+Az **1. Riasztási feltétel megadása** szakaszban kattintson a **Cél kiválasztása** gombra. A **Szűrés erőforrástípus alapján** mezőben válassza a **Log Analytics** elemet. Válassza ki a Log Analytics-munkaterületet, és kattintson a **Kész** gombra.
 
 ![Riasztás létrehozása](./media/automation-tutorial-update-management/create-alert.png)
 
@@ -104,7 +114,21 @@ A **Riasztási logika** területen a **Küszöbérték** legyen **1**. Ha elkés
 
 ![Jellogika konfigurálása](./media/automation-tutorial-update-management/signal-logic.png)
 
-A **2. Riasztás részleteinek megadása** résznél adja meg a riasztás nevét és leírását. Állítsa a **Súlyosság** beállítást **Tájékoztató (Sev 2)** értékre, mivel a riasztás sikeres futtatásokra vonatkozik.
+#### <a name="runbook-alert"></a>Runbook-riasztás
+
+A sikertelen telepítésekkor értesülnie kell a mesterpéldány futtatási hibájáról. Az Azure Portalon lépjen a **Figyelés** felületre, és válassza a **Riasztás létrehozása** lehetőséget.
+
+Az **1. Riasztási feltétel megadása** szakaszban kattintson a **Cél kiválasztása** gombra. A **Szűrés erőforrástípus alapján** mezőben válassza az **Automation-fiókok** elemet. Válassza ki az Automation-fiókját, majd kattintson a **Kész** gombra.
+
+A **Runbook neve** mezőben kattintson a **\+** jelre, majd egyéni névnek írja be a következőt: **Patch-MicrosoftOMSComputers**. **Állapotnak** válassza a **Sikertelen** lehetőséget, vagy kattintson a **\+** jelre, hogy **Sikertelenként** jelölhesse meg a telepítést.
+
+![Runbookok jellogikájának konfigurálása](./media/automation-tutorial-update-management/signal-logic-runbook.png)
+
+A **Riasztási logika** területen a **Küszöbérték** legyen **1**. Ha elkészült, válassza a **Kész** lehetőséget.
+
+### <a name="alert-details"></a>Riasztás részletei
+
+A **2. Riasztás részleteinek megadása** résznél adja meg a riasztás nevét és leírását. Állítsa a **Súlyosság** beállítást sikeres futtatás esetén **Tájékoztató (Sev 2)** értékre, sikertelen futtatás esetén pedig **Tájékoztató (Sev 1)** értékre.
 
 ![Jellogika konfigurálása](./media/automation-tutorial-update-management/define-alert-details.png)
 
@@ -134,7 +158,7 @@ Az **Új frissítéstelepítés** képernyőn adja meg a következő informáci�
 
 * **Operációs rendszer**: Válassza ki azt az operációs rendszert, amelyre a frissítéstelepítés vonatkozni fog.
 
-* **Frissítendő gépek**: Válasszon ki egy Mentett keresést vagy Importált csoportot, vagy válassza a legördülő listában a Gép lehetőséget, és válasszon ki egyes gépeket. Ha a **Gépek** lehetőséget választotta, a gép állapota az **ÜGYNÖK KÉSZÜLTSÉGÉNEK FRISSÍTÉSE** oszlopban látható. A számítógépcsoportok a Log Analyticsben lévő létrehozásának különböző módszereivel kapcsolatos további információkért tekintse meg a [Log Analytics számítógépcsoportjait](../log-analytics/log-analytics-computer-groups.md) ismertető részt.
+* **Frissítendő gépek**: Válasszon ki egy Mentett keresést vagy Importált csoportot, vagy válassza a legördülő listában a Gép lehetőséget, és válasszon ki egyes gépeket. Ha a **Gépek** lehetőséget választotta, a gép állapota az **ÜGYNÖK KÉSZÜLTSÉGÉNEK FRISSÍTÉSE** oszlopban látható. A számítógépcsoportok Log Analyticsben lévő létrehozásának különböző módszereivel kapcsolatos további információkért tekintse meg a [Log Analytics számítógépcsoportjait](../log-analytics/log-analytics-computer-groups.md) ismertető részt
 
 * **Frissítési besorolás**: Válassza ki azokat a szoftvertípusokat, amelyeket a frissítéstelepítés belefoglal a telepítésbe. Ebben az oktatóanyagban hagyjon minden típust kiválasztva.
 

@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 02/26/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: afa9aa4ef4d3d8d8a6816d194b69271fdf0d928a
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 4614eedd08eabf5c1c2eec6f26e542e20b0875bf
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37109674"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43040503"
 ---
 # <a name="tutorial-deploy-a-java-application-to-a-service-fabric-cluster-in-azure"></a>Oktatóanyag: Java-alkalmazás üzembe helyezése egy Service Fabric-fürtön az Azure-ban
 
@@ -173,7 +173,7 @@ A következő lépésekkel hozhatja létre azokat az erőforrásokat, amelyekre 
 
     Az Event Hubs számára készült SAS URL-cím a következő módon épül fel: https://<namespacename>.servicebus.windows.net/<eventhubsname>?sr=<sastoken>. Például: https://testeventhubnamespace.servicebus.windows.net/testeventhub?sr=https%3A%2F%testeventhub.servicebus.windows.net%testeventhub&sig=7AlFYnbvEm%2Bat8ALi54JqHU4i6imoFxkjKHS0zI8z8I%3D&se=1517354876&skn=sender
 
-12. Nyissa meg az *sfdeploy.parameters.json* fájlt, és cserélje le a következő tartalmakat az előző lépésekből származó értékekre.
+12. Nyissa meg az *sfdeploy.parameters.json* fájlt, és cserélje le a következő tartalmakat az előző lépésekből származó értékekre. [SAS-URL-STORAGE-ACCOUNT] – a 8. lépésben feljegyezve. [SAS-URL-EVENT-HUBS] – a 11. lépésben feljegyezve.
 
     ```json
     "applicationDiagnosticsStorageAccountName": {
@@ -187,7 +187,12 @@ A következő lépésekkel hozhatja létre azokat az erőforrásokat, amelyekre 
     }
     ```
 
-13. Futtassa a következő parancsot a Service Fabric-fürt létrehozásához.
+13. Megnyitja az **sfdeploy.parameters.json**-t. Módosítsa az alábbi paramétereket, majd mentse a fájlt.
+    - **clusterName**. Csak kisbetűket és számokat használjon.
+    - **adminUserName** (ürestől eltérő értékre)
+    - **adminPassword** (ürestől eltérő értékre)
+
+14. Futtassa a következő parancsot a Service Fabric-fürt létrehozásához.
 
     ```bash
     az sf cluster create --location 'westus' --resource-group 'testlinux' --template-file sfdeploy.json --parameter-file sfdeploy.parameters.json --secret-identifier <certificate_url_from_step4>
@@ -206,13 +211,13 @@ A következő lépésekkel hozhatja létre azokat az erőforrásokat, amelyekre 
 2. Ahhoz, hogy üzembe helyezhesse az alkalmazást a fürtön, az SFCTL segítségével kapcsolatot kell létesítenie a fürttel. Az SFCTL csak a PEM-fájl, valamint a nyilvános és a privát kulcs birtokában tud kapcsolódni a fürthöz. Ezért a következő parancsot kell futtatnia, hogy egy nyilvános és privát kulccsal is rendelkező PEM-fájlt állítson elő. 
 
     ```bash
-    openssl pkcs12 -in testservicefabric.westus.cloudapp.azure.com.pfx -out sfctlconnection.pem -nodes -passin pass:<password>
+    openssl pkcs12 -in <clustername>.<region>.cloudapp.azure.com.pfx -out sfctlconnection.pem -nodes -passin pass:<password>
     ```
 
 3. Futtassa a következő parancsot a fürthöz való csatlakozáshoz.
 
     ```bash
-    sfctl cluster select --endpoint https://testlinuxcluster.westus.cloudapp.azure.com:19080 --pem sfctlconnection.pem --no-verify
+    sfctl cluster select --endpoint https://<clustername>.<region>.cloudapp.azure.com:19080 --pem sfctlconnection.pem --no-verify
     ```
 
 4. Az alkalmazás üzembe helyezéséhez keresse meg a *Voting/Scripts* mappát, és futtassa az **install.sh** szkriptet.

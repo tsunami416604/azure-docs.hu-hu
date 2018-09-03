@@ -5,16 +5,16 @@ services: iot-edge
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 06/26/2018
+ms.date: 08/22/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 1bd6f048682b93e3dfa1e19f6b3c50bff2ed232e
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: 7e02caf9706a5127d3729256fcc238f467eb2991
+ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "41919926"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43143500"
 ---
 # <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>Oktatóanyag: Adatok tárolása a peremhálózaton SQL Server-adatbázisokkal
 
@@ -73,7 +73,7 @@ Ahhoz, hogy adatokat küldhessen egy adatbázisba, egy olyan modulra van szüks�
 A következő lépések azt mutatják be, hogyan hozhat létre IoT Edge-függvényt a Visual Studio Code és az Azure IoT Edge bővítmény használatával.
 
 1. Nyissa meg a Visual Studio Code-ot.
-2. A VS Code integrált termináljának megnyitásához válassza a **View** (Nézet)  > **Integrated Terminal** (Integrált terminál) elemet.
+2. A VS Code integrált termináljának megnyitásához válassza a **View** (Nézet)  > **Terminal** (Terminál) elemet.
 3. A **View (Nézet)** > **Command Palette (Parancskatalógus)** elem kiválasztásával nyissa meg a VS Code parancskatalógusát.
 4. A parancskatalógusban írja be és futtassa az **Azure: Sign in** (Azure: bejelentkezés) parancsot, és az utasításokat követve jelentkezzen be Azure-fiókjába. Ha már be van jelentkezve, ezt a lépést kihagyhatja.
 3. A parancskatalógusban írja be és futtassa az **Azure IoT Edge: New IoT Edge solution** (Azure IoT Edge: új IoT Edge-megoldás) parancsot. A parancskatalógusban adja meg az alábbi információkat a megoldás létrehozásához: 
@@ -253,15 +253,15 @@ Az IoT Hub felületén keresztül modulokat állíthat be egy eszközön, de az 
 2. Az utasításokat követve jelentkezzen be Azure-fiókjába. 
 3. A parancskatalógusban válassza ki saját Azure-előfizetését, majd IoT Hubját. 
 4. A VS Code Explorerben bontsa ki az **Azure IoT Hub Devices** (Azure IoT Hub-eszközök) szakaszt. 
-5. Kattintson a jobb gombbal az üzembe helyezés céleszközére, majd válassza a **Create deployment for IoT Edge device** (Üzemelő példány létrehozása IoT Edge-eszközhöz) lehetőséget. 
+5. Kattintson a jobb gombbal az üzembe helyezés céleszközére, majd válassza a **Create deployment for a single device** (Üzemelő példány létrehozása egyetlen eszközhöz) lehetőséget. 
 6. A fájlkezelőben keresse meg a megoldás **config** mappáját, és jelölje ki a **deployment.json** fájlt. Kattintson a **Select Edge Deployment Manifest** (Edge üzembehelyezési jegyzék kiválasztása) elemre. 
 
 Ha a telepítés sikeres, a VS Code egy üzenetben erősíti meg azt a kimenetben. Azt is ellenőrizheti, hogy üzemel-e az összes modul az eszközön. 
 
 Futtassa az alábbi parancsot az IoT Edge-eszközön a modulok állapotának megtekintéséhez. Ennek futtatása eltarthat néhány percig.
 
-   ```bash
-   sudo iotedge list
+   ```PowerShell
+   iotedge list
    ```
 
 ## <a name="create-the-sql-database"></a>Az SQL-adatbázis létrehozása

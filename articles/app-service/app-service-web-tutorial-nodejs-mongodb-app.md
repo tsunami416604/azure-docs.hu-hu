@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/04/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 7a3e91e8f928f6e7e2df7a26f52bd44b3b3a81b2
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 70b7af1701c13e6a5d7644f04e4502f76ef7743a
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39618954"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43187845"
 ---
 # <a name="tutorial-build-a-nodejs-and-mongodb-web-app-in-azure"></a>Oktatóanyag: Node.js- és MongoDB-webalkalmazás fejlesztése az Azure-ban
 
@@ -117,6 +117,9 @@ A MEAN.js-mintaalkalmazás a felhasználói adatokat az adatbázisban tárolja. 
 Válassza az **Admin > Manage Articles** (Felügyelet > Cikkek kezelése) elemet néhány cikk hozzáadásához.
 
 A Node.js leállításához nyomja le a `Ctrl+C` billentyűkombinációt a terminálon. 
+
+> [!NOTE]
+> A [Node.js rövid útmutató](app-service-web-get-started-nodejs.md) említi, hogy a gyökéralkalmazás-könyvtárban szükség van egy web.config fájlra. Ebben az oktatóanyagban azonban ezt a web.config fájlt automatikusan létrehozza az App Service, ha a ZIP fájl üzembe helyezése helyett a [helyi Git üzembe helyezést](app-service-deploy-local-git.md) használja. 
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 

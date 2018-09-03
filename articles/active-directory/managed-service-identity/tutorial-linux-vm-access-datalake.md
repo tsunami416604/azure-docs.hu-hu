@@ -14,23 +14,22 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: 6854b0a6c72b44bcd3f778e0c46cb109b34ce826
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: 4a9d147d1605f4efa638ff258df2667b6b95230e
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39258830"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42885158"
 ---
 # <a name="tutorial-use-managed-service-identity-for-a-linux-vm-to-access-azure-data-lake-store"></a>Oktatóanyag: A Managed Service Identity használata Linux rendszerű virtuális géphez az Azure Data Lake Store eléréséhez
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Ez az oktatóanyag bemutatja, hogyan használhatja a Managed Service Identityt egy Linux rendszerű virtuális géphez (VM) az Azure Data Lake Store eléréséhez. Az Azure automatikusan felügyeli a felügyeltszolgáltatás-identitáson keresztül létrehozott identitásokat. A felügyeltszolgáltatás-identitással hitelesítést végezhet az Azure Active Directory- (Azure AD-) hitelesítést támogató szolgáltatásokban anélkül, hogy be kellene szúrnia a hitelesítő adatokat a kódba. 
+Ez az oktatóanyag bemutatja, hogyan férhet hozzá az Azure Data Lake Storage-hoz egy linuxos virtuális gép (VM) rendszer által hozzárendelt identitásával. Az Azure automatikusan felügyeli a felügyeltszolgáltatás-identitáson keresztül létrehozott identitásokat. A felügyeltszolgáltatás-identitással hitelesítést végezhet az Azure Active Directory- (Azure AD-) hitelesítést támogató szolgáltatásokban anélkül, hogy be kellene szúrnia a hitelesítő adatokat a kódba. 
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Felügyeltszolgáltatás-identitás engedélyezése Linux rendszerű virtuális gépen. 
 > * Hozzáférés engedélyezése a virtuális gép számára egy Azure Data Lake Store-hoz.
 > * Hozzáférési jogkivonat lekérése a VM identitásával, majd hozzáférés az Azure Data Lake Store-hoz a jogkivonat segítségével.
 
@@ -40,33 +39,11 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
-## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
+- [Bejelentkezés az Azure Portalra](https://portal.azure.com)
 
-Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+- [Linux rendszerű virtuális gép létrehozása](/azure/virtual-machines/linux/quick-create-portal)
 
-## <a name="create-a-linux-virtual-machine-in-a-new-resource-group"></a>Linux rendszerű virtuális gép létrehozása új erőforráscsoportban
-
-Ebben az oktatóanyagban egy új linuxos virtuális gépet hozunk létre. A meglévő virtuális gépeken is engedélyezheti az MSI-t.
-
-1. Az Azure Portal bal felső sarkában válassza az **Új** gombot.
-2. Válassza a **Számítás**, majd az **Ubuntu Server 16.04 LTS** elemet.
-3. Adja meg a virtuális gép adatait. A **Hitelesítés típusa** résznél válassza az **SSH nyilvános kulcs** vagy a **Jelszó** lehetőséget. A létrehozott hitelesítő adatokkal jelentkezhet be a virtuális gépre.
-
-   ![A virtuális gép létrehozásának „Alapvető beállítások” panelje](media/msi-tutorial-linux-vm-access-arm/msi-linux-vm.png)
-
-4. Válasszon ki egy előfizetést az **Előfizetés** listából a virtuális géphez.
-5. Ha a virtuális gépet egy új erőforráscsoportban szeretné létrehozni, válassza az **Erőforráscsoport** > **Új létrehozása** lehetőséget. Ha elkészült, kattintson az **OK** gombra.
-6. Válassza ki a virtuális gép méretét. További méretek megjelenítéséhez válassza **Az összes megtekintése** lehetőséget, vagy módosítsa a **Támogatott lemeztípus** szűrőt. A beállítások paneljén tartsa meg az alapértelmezett beállításokat, majd kattintson az **OK** gombra.
-
-## <a name="enable-managed-service-identity-on-your-vm"></a>Felügyeltszolgáltatás-identitás engedélyezése a virtuális gépen
-
-A VM-beli felügyeltszolgáltatás-identitással anélkül kérhet le hozzáférési jogkivonatokat az Azure AD-ből, hogy hitelesítő adatokat kellene a kódba illesztenie. A felügyeltszolgáltatás-identitás VM-en való engedélyezése két dolgot tesz: regisztrálja a VM-et az Azure Active Directoryban a felügyelt identitása létrehozásához, és konfigurálja az identitást a VM-en.
-
-1. A **Virtuális gép** területen válassza ki azt a virtuális gépet, amelyen engedélyezni szeretné a felügyeltszolgáltatás-identitást.
-2. A bal oldali panelen válassza ki a **Konfiguráció** elemet.
-3. Megjelenik a **felügyeltszolgáltatás-identitás**. A felügyeltszolgáltatás-identitás regisztrálásához és engedélyezéséhez kattintson az **Igen** gombra. Ha le szeretné tiltani, válassza a **Nem** lehetőséget.
-   ![„Regisztrálás az Azure Active Directoryval” kiválasztása](media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
-4. Kattintson a **Mentés** gombra.
+- [Rendszer által hozzárendelt identitás engedélyezése a virtuális gépen](/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm#enable-system-assigned-identity-on-an-existing-vm)
 
 ## <a name="grant-your-vm-access-to-azure-data-lake-store"></a>Hozzáférés engedélyezése a virtuális gép számára egy Azure Data Lake Store-hoz
 

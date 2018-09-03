@@ -12,15 +12,15 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/10/2018
+ms.date: 08/28/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 7f382e3b6e70aadf8c6a090a3d5c049f6b5c0337
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 6fcc7823a7e2f2f1e280622a1fa05d4417a71546
+ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39010361"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43143482"
 ---
 # <a name="tutorial-unpack-connect-and-unlock-azure-data-box-disk"></a>Oktatóanyag: Azure Data Box Disk kicsomagolása, csatlakoztatása és a zárolás feloldása
 
@@ -41,7 +41,9 @@ Mielőtt hozzákezd, győződjön meg az alábbiakról:
 3. Rendelkezik egy gazdaszámítógéppel, amelyre telepítheti a Data Box Disk zárolásának feloldására szolgáló eszközt. A gazdaszámítógépen:
     - egy [támogatott operációs rendszernek](data-box-disk-system-requirements.md) kell futnia;
     - a [Windows PowerShell 4-es verziójának telepítve kell lennie](https://www.microsoft.com/download/details.aspx?id=40855);
-    - a [.NET-keretrendszer 4.5-ös verziójának telepítve kell lennie](https://www.microsoft.com/download/details.aspx?id=30653).
+    - a [.NET Framework 4.5.1-es verziójának telepítve kell lennie](https://www.microsoft.com/download/details.aspx?id=30653);
+    - a [BitLockernek](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-how-to-deploy-on-windows-server) engedélyezve kell lennie;
+    - a [Windows Management Framework 4-es verziójának telepítve kell lennie](https://www.microsoft.com/en-us/download/details.aspx?id=40855). 
 
 ## <a name="unpack-your-disks"></a>A meghajtók kicsomagolása
 

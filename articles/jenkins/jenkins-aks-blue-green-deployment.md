@@ -1,120 +1,113 @@
 ---
-title: Az Azure Kubernetes Service (AKS) üzembe helyezése a Jenkins és a kék és zöld üzembe helyezés minta használatával
-description: Ismerje meg, hogyan helyezhet üzembe az Azure Kubernetes Service (AKS) használatával a Jenkins és a kék és zöld üzembe helyezés minta.
-services: app-service\web
-documentationcenter: ''
+title: Üzembe helyezés az Azure Kubernetes Service-be (AKS) a Jenkins és a kék/zöld üzembehelyezési minta használatával
+description: Útmutató az Azure Kubernetes Service-be (AKS) való üzembe helyezéshez a Jenkins és a kék/zöld üzembehelyezési minta használatával.
+ms.service: jenkins
+keywords: jenkins, azure, devops, kubernetes, k8s, aks, kék zöld üzembehelyezés, folyamatos kézbesítés, cd
 author: tomarcher
-manager: jpconnock
-editor: ''
-ms.assetid: ''
-ms.service: multiple
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: web
-ms.date: 07/23/2018
+manager: jeconnoc
 ms.author: tarcher
-ms.custom: jenkins
-ms.openlocfilehash: 384681ae0ba212b485022ac81743528f96075ec8
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
-ms.translationtype: MT
+ms.topic: tutorial
+ms.date: 07/23/2018
+ms.openlocfilehash: d3d3ed8aaac16bc0a8cf817f4972ed3b771ed8d0
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39716458"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43093554"
 ---
-# <a name="deploy-to-azure-kubernetes-service-aks-by-using-jenkins-and-the-bluegreen-deployment-pattern"></a>Az Azure Kubernetes Service (AKS) üzembe helyezése a Jenkins és a kék és zöld üzembe helyezés minta használatával
+# <a name="deploy-to-azure-kubernetes-service-aks-by-using-jenkins-and-the-bluegreen-deployment-pattern"></a>Üzembe helyezés az Azure Kubernetes Service-be (AKS) a Jenkins és a kék/zöld üzembehelyezési minta használatával
 
-Az Azure Kubernetes Service (AKS) felügyeli az üzemeltetett Kubernetes környezetet, lehetővé téve a gyors és egyszerű üzembe helyezését és kezelhet tárolóalapú alkalmazásokat. Tárolóvezénylés szakismeretek nem szükséges. Az AKS használata esetén nem a folyamatos üzemeltetési és karbantartási, kiépítés, frissítése és igény szerinti méretezés erőforrások járó terheket. Az alkalmazások kapcsolat nélküli üzemmódra nincs szükségünk. Aks-sel kapcsolatos további információkért lásd: a [AKS dokumentációját](/azure/aks/).
+Az Azure Kubernetes Service (AKS) felügyeli az üzemeltetett Kubernetes-környezetet, lehetővé téve a tárolóalapú alkalmazások gyors és egyszerű üzembe helyezését és felügyeletét. Nincs szükség tárolóvezénylési szakértelemre. Az AKS ezenkívül a folyamatban lévő üzemeltetés és karbantartás terhét is megszünteti az erőforrások igény szerinti kiépítésével, frissítésével és skálázásával. Ehhez nem szükséges offline állapotba helyezni az alkalmazásait. További információ az AKS-ről: [az AKS dokumentációja](/azure/aks/).
 
-Kék és zöld üzembe helyezés egy folyamatos Készregyártás az Azure-fejlesztési és üzemeltetési minta, amely gondoskodik a meglévő (kék) verziója élő, míg egy újat (zöld) üzembe helyezése támaszkodik. Általában ezt a mintát alkalmaz a terheléselosztási közvetlen egyre növekvő mennyiségű forgalmat a zöld üzembe helyezés. Incidens figyelési deríti fel, ha a forgalom visszairányítható a kék központi telepítését, amelyek továbbra is fut a. A folyamatos teljesítés kapcsolatos további információkért lásd: [Mi a folyamatos teljesítés](/azure/devops/what-is-continuous-delivery).
+A kék/zöld üzembe helyezés egy Azure DevOps folyamatos kézbesítési minta, amelynek lényege, hogy működésben tart egy meglévő (kék) verziót, miközben üzembe helyez egy új (zöld) verziót. Ez a minta általában terheléselosztást alkalmaz, hogy a megnövekedett forgalmat a zöld üzemelő példányra irányítsa. Ha a monitorozás során valamilyen incidens történik, a forgalom átirányítható a kék üzemelő példányra, amely még fut. A folyamatos kézbesítéssel kapcsolatos további információkat a [folyamatos kézbesítést](/azure/devops/what-is-continuous-delivery) ismertető cikk tartalmaz.
 
-Ebben az oktatóanyagban elsajátíthatja, hogyan hajthat végre a következő feladatokat:
+Ebben az oktatóanyagban a következőket sajátíthatja el:
 
 > [!div class="checklist"]
-> * További információ a kék és zöld üzembe helyezés minta
+> * A kék/zöld üzembehelyezési minta megismerése
 > * Felügyelt Kubernetes-fürt létrehozása
-> * Konfigurálja a Kubernetes-fürt minta parancsfájl futtatása
-> * Kubernetes-fürtök manuális konfigurálása
-> * Hozzon létre, és a egy Jenkins-feladat futtatása
+> * Mintaszkript futtatása Kubernetes-fürt konfigurálásához
+> * Kubernetes-fürt manuális konfigurálása
+> * Jenkins-feladat létrehozása és futtatása
 
 ## <a name="prerequisites"></a>Előfeltételek
-- [GitHub-fiók](https://github.com) : a minta tárház klónozásához egy GitHub-fiókra van szükség.
-- [Az Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest) : a Kubernetes-fürt létrehozása az Azure CLI 2.0-t használja.
-- [Chocolatey](https://chocolatey.org): telepíti a kubectl Csomagkezelő.
-- [a kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/): olyan parancssori felületet használhat parancsok futtatása a Kubernetes-fürtök ellen.
-- [jq](https://stedolan.github.io/jq/download/): egy könnyen használható, a parancssori JSON feldolgozó.
+- [GitHub-fiók](https://github.com): A mintaadattár klónozásához szüksége lesz egy GitHub-fiókra.
+- [Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest): A Kubernetes-fürt létrehozásához az Azure CLI 2.0-t használja.
+- [Chocolatey](https://chocolatey.org): A kubectl telepítéséhez használt csomagkezelő.
+- [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/): Egy parancssori felület, amelyen a Kubernetes-fürtök parancsait futtatja.
+- [jq](https://stedolan.github.io/jq/download/): Egy egyszerű, parancssori JSON-feldolgozó.
 
-## <a name="clone-the-sample-app-from-github"></a>Klónozza a mintaalkalmazást a Githubról
+## <a name="clone-the-sample-app-from-github"></a>Klónozza a mintaalkalmazást a GitHubról.
 
-A Microsoft-adattárat a Githubon, az annak egy mintaalkalmazást, amely bemutatja, hogyan helyezhet üzembe az aks-ben a Jenkins és a kék és zöld minta használatával. Ebben a szakaszban létrehoz egy elágazást, adattár, a github, és az alkalmazás klónozása a helyi rendszerről.
+A GitHub Microsoft-adattárában lévő mintaalkalmazás bemutatja, hogyan helyezhető üzembe az AKS a Jenkins és a kék/zöld minta használatával. Ebben a szakaszban az adattár új elágaztatását fogja létrehozni a GitHubon, és klónozza az alkalmazást a helyi rendszerre.
 
-1. A GitHub-adattárat a tallózással keresse meg a [teendőlista-alkalmazás – java-az-Azure-beli](https://github.com/microsoft/todo-app-java-on-azure.git) mintaalkalmazást.
+1. A GitHub-adattárban keresse meg a [todo-app-java-on-azure](https://github.com/microsoft/todo-app-java-on-azure.git) mintaalkalmazást.
 
-    ![Képernyőkép a Microsoft GitHub-adattárat a mintaalkalmazás](./media/jenkins-aks-blue-green-deployment/github-sample-msft.png)
+    ![Képernyőkép a Microsoft GitHub adattárban található mintaalkalmazásról](./media/jenkins-aks-blue-green-deployment/github-sample-msft.png)
 
-1. A tárház elágaztatását kiválasztásával **elágazás** , az oldal jobb felső és kövesse az utasításokat, hogy elágaztassa a példatárt a GitHub-fiókjában.
+1. Az oldal jobb felső felén található **Fork** (Elágaztatás) paranccsal ágaztassa el az adattárat, és az utasításokat követve ágaztassa el a GitHub-fiókjához tartozó adattárat.
 
-    ![Képernyőfelvétel: a GitHub beállítás elágazásba](./media/jenkins-aks-blue-green-deployment/github-sample-msft-fork.png)
+    ![Képernyőkép az elágaztatáshoz szükséges GitHub lehetőségről](./media/jenkins-aks-blue-green-deployment/github-sample-msft-fork.png)
 
-1. Miután elágaztassa a példatárt, láthatja, hogy a fiók nevét, a fiók neve megváltozik, és a egy Megjegyzés: azt jelzi, ahol a tárház elágaztatott volt (Microsoft).
+1. Miután elágaztatta az adattárat, látni fogja, hogy a fiók neve megváltozik az Ön fióknevére, és egy üzenet jelzi, hogy az adattárat honnan ágaztatták el (Microsoft).
 
-    ![Képernyőkép a GitHub-fiók neve, és jegyezze fel](./media/jenkins-aks-blue-green-deployment/github-sample-msft-forked.png)
+    ![Képernyőkép a GitHub-fióknevéről és az üzenetről](./media/jenkins-aks-blue-green-deployment/github-sample-msft-forked.png)
 
-1. Válassza ki **Klónozás vagy letöltés**.
+1. Válassza a **Clone or download** (Klónozás vagy letöltés) lehetőséget.
 
-    ![Képernyőfelvétel: a GitHub beállítással Klónozás vagy letöltés adattár](./media/jenkins-aks-blue-green-deployment/github-sample-clone.png)
+    ![Képernyőkép az adattár klónozását vagy letöltését végző GitHub lehetőségről](./media/jenkins-aks-blue-green-deployment/github-sample-clone.png)
 
-1. Az a **Klónozás a HTTPS** ablakban válassza ki a **másolási** ikonra.
+1. A **Clone with HTTPS** (Másolás HTTPS-sel) ablakban válassza a **másolás** ikont.
 
-    ![Képernyőfelvétel: a GitHub lehetőséget a clone URL-cím másolása a vágólapra](./media/jenkins-aks-blue-green-deployment/github-sample-copy.png)
+    ![Képernyőkép a klónozott URL-cím vágólapra történő másolását végző GitHub lehetőségről](./media/jenkins-aks-blue-green-deployment/github-sample-copy.png)
 
-1. Nyisson meg egy terminált vagy a Git Bash-ablakot.
+1. Nyisson meg egy terminált vagy Git Bash ablakot.
 
-1. Módosítsa a könyvtárakat a kívánt helyre, ahol a tárház (Klónozás) helyi másolatot tárolni szeretné.
+1. A könyvtárat módosítsa arra a helyre, ahol az adattár helyi másolatát (klónját) tárolni szeretné.
 
-1. Használatával a `git clone` parancshoz, klónozza a korábban kimásolt URL-CÍMÉT.
+1. A `git clone` paranccsal klónozza az előzőleg lemásolt URL-címet.
 
-    ![Képernyőfelvétel: a Git Bash git clone parancs](./media/jenkins-aks-blue-green-deployment/git-clone-command.png)
+    ![Képernyőkép a Git Bash git klónozás parancsról](./media/jenkins-aks-blue-green-deployment/git-clone-command.png)
 
-1. Nyomja le az Enter billentyűt a Klónozás megkezdéséhez.
+1. A klónozási folyamat elindításához nyomja le az Enter billentyűt.
 
-    ![Képernyőfelvétel: a Git Bash git clone parancs eredménye](./media/jenkins-aks-blue-green-deployment/git-clone-results.png)
+    ![Képernyőkép a Git Bash git klónozás parancs eredményeiről](./media/jenkins-aks-blue-green-deployment/git-clone-results.png)
 
-1. Módosítsa a könyvtárakat az újonnan létrehozott könyvtárba, amely tartalmazza az alkalmazás forrás klónja.
+1. A könyvtárat módosítsa arra az újonnan létrehozott könyvtárra, amely az alkalmazásforrás klónját tartalmazza.
 
-## <a name="create-and-configure-a-managed-kubernetes-cluster"></a>Létrehozhat és konfigurálhat egy felügyelt Kubernetes-fürt
+## <a name="create-and-configure-a-managed-kubernetes-cluster"></a>Hozzon létre és konfiguráljon egy felügyelt Kubernetes-fürtöt
 
-Ebben a szakaszban a következő lépéseket fogja végrehajtani:
+Ebben a szakaszban az alábbi lépéseket fogja végrehajtani:
 
-- Az Azure CLI 2.0 használatával hozzon létre egy felügyelt Kubernetes-fürtöt.
-- Ismerje meg, hogyan állítható be egy fürthöz, a telepítési parancsfájl használatával vagy manuálisan.
-- Hozzon létre egy példányt az Azure Container Registry szolgáltatásba.
+- Az Azure CLI 2.0 használata egy felügyelt Kubernetes-fürt létrehozásához.
+- Tudnivalók egy fürt beállításáról a beállítási szkripttel vagy manuálisan.
+- Az Azure Container Registry szolgáltatás egy példányának létrehozása.
 
 > [!NOTE]   
-> Az AKS jelenleg előzetes verzióban érhető el. Információ az Azure-előfizetéséhez az előzetes verzió engedélyezése: [a rövid útmutató: Azure Kubernetes Service (AKS)-fürt üzembe helyezése](/azure/aks/kubernetes-walkthrough#enabling-aks-preview-for-your-azure-subscription).
+> Az AKS jelenleg előzetes verzióként érhető el. További információt az Azure-előfizetéshez tartozó előzetes verzió engedélyezéséről a [Rövid útmutató: Azure Kubernetes Service- (AKS-) fürt üzembe helyezése](/azure/aks/kubernetes-walkthrough#enabling-aks-preview-for-your-azure-subscription) című cikkben talál.
 
-### <a name="use-the-azure-cli-20-to-create-a-managed-kubernetes-cluster"></a>Felügyelt Kubernetes-fürt létrehozása az Azure CLI 2.0 használatával
-Annak érdekében, hogy az egy felügyelt Kubernetes-fürt létrehozása a [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest), győződjön meg arról, hogy használja az Azure CLI 2.0.25-ös vagy újabb.
+### <a name="use-the-azure-cli-20-to-create-a-managed-kubernetes-cluster"></a>Az Azure CLI 2.0-val hozzon létre egy felügyelt Kubernetes-fürtöt
+Egy felügyelt Kubernetes-fürt létrehozásához az [Azure CLI 2.0-val](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) győződjön meg róla, hogy az Azure CLI 2.0.25-ös vagy újabb verzióját használja.
 
-1. Jelentkezzen be az Azure-fiókjával. Miután megadta a következő parancsot, kap, amely leírja, hogyan végezheti el a bejelentkezési utasításokat. 
+1. Jelentkezzen be Azure-fiókjába. A következő parancs beírása után megkapja az utasításokat, amelyek elmagyarázzák a bejelentkezés további lépéseit. 
     
     ```bash
     az login
     ```
 
-1. Ha futtatja a `az login` parancsot az előző lépésben az összes Azure-előfizetések listája jelenik meg (együtt az előfizetés azonosítókat). Ebben a lépésben beállíthatja az alapértelmezett Azure-előfizetést. Cserélje le a &lt;your-subscription-id > helyőrzőt a kívánt Azure-előfizetés azonosítóját. 
+1. Amikor lefuttatja az `az login` parancsot az előző lépésnél, megjelenik egy lista az összes Azure-előfizetéséről (az előfizetési azonosítókkal együtt). Ebben a lépésben beállítja az alapértelmezett Azure-előfizetést. A &lt;your-subscription-id> (Azure-előfizetés azonosítója) érték helyére írja be a kívánt Azure-előfizetés azonosítóját. 
 
     ```bash
     az account set -s <your-subscription-id>
     ```
 
-1. Hozzon létre egy erőforráscsoportot. Cserélje le a &lt;az erőforrás-csoport-neve > helyőrzőt nevét az új erőforráscsoportot, és cserélje le a &lt;a hely > helyőrzőt helyére. A parancs `az account list-locations` jeleníti meg minden Azure-helyen. Az AKS előzetes verzióban nem minden hely érhető el. Ha megad egy helyet, amely nem érvényes jelenleg, a hibaüzenet felsorolja az elérhető helyek.
+1. Hozzon létre egy erőforráscsoportot. A &lt;your-resource-group-name> (erőforráscsoport neve) érték helyére írja be az új erőforráscsoport nevét, a &lt;your-location> (hely) érték helyére pedig a helyét. Az `az account list-locations` parancs megjeleníti az összes Azure-helyet. Az AKS előzetes verziója során nem érhető el minden hely. Ha olyan helyet ad meg, amely jelenleg nem érhető el, a hibaüzenetben megjelennek az elérhető helyek.
 
     ```bash
     az group create -n <your-resource-group-name> -l <your-location>
     ```
 
-1. A Kubernetes-fürt létrehozása. Cserélje le a &lt;az erőforrás-csoport-neve > az előző lépésben létrehozott az erőforráscsoport nevét, és cserélje le a &lt;az kubernetes-fürt-neve-> az új fürt nevére. (A folyamat eltarthat néhány percig.)
+1. Hozza létre a Kubernetes-fürtöt. A &lt;your-resource-group-name> (erőforráscsoport neve) érték helyére írja be az előző lépésben létrehozott erőforráscsoport nevét, a &lt;your-kubernetes-cluster-name> (Kubernetes-fürt neve) érték helyére pedig az új fürt nevét. (A folyamat több percig is eltarthat.)
 
     ```bash
     az aks create -g <your-resource-group-name> -n <your-kubernetes-cluster-name> --generate-ssh-keys --node-count 2
@@ -122,17 +115,17 @@ Annak érdekében, hogy az egy felügyelt Kubernetes-fürt létrehozása a [Azur
 
 ### <a name="set-up-the-kubernetes-cluster"></a>A Kubernetes-fürt beállítása
 
-Beállíthat egy kék vagy zöld üzembe helyezés az aks-ben manuálisan, vagy a telepítés pedig a minta megadott szkriptet klónozható közé tartoznak korábban. Ebben a szakaszban bemutatjuk, hogyan mindkét.
+Egy kék/zöld üzembe helyezést beállíthat az AKS-ben manuálisan vagy a korábban klónozott mintában található beállítási szkripttel. Ebből a szakaszból mindkét módszert megismerheti.
 
-#### <a name="set-up-the-kubernetes-cluster-via-the-sample-setup-script"></a>A telepítő a példaszkript keresztül a Kubernetes-fürt beállítása
-1. Szerkessze a **deploy/aks/setup/setup.sh** fájlt, és cserélje le a helyőrzőket a környezetének megfelelő értékekkel: 
+#### <a name="set-up-the-kubernetes-cluster-via-the-sample-setup-script"></a>A Kubernetes-fürt beállítása a minta beállítási szkripttel
+1. A **deploy/aks/setup/setup.sh** fájlt szerkesztve cserélje le a következő helyőrzőket a saját környezete megfelelő értékeivel: 
 
-    - **&lt;az erőforrás-csoport-neve >**
-    - **&lt;az kubernetes-fürt-neve->**
-    - **&lt;a hely >**
-    - **&lt;a-dns-neve-utótag >**
+    - **&lt;your-resource-group-name>** (erőforráscsoport neve)
+    - **&lt;your-kubernetes-cluster-name>** (Kubernetes-fürt neve)
+    - **&lt;your-location>** (hely)
+    - **&lt;your-dns-name-suffix>** (DNS-név utótagja)
 
-    ![Képernyőkép setup.sh parancsfájlt a bash, több helyőrzőkkel kiemelésével](./media/jenkins-aks-blue-green-deployment/edit-setup-script.png)
+    ![Képernyőkép a setup.sh szkriptről a Bashben, helyőrzők kiemelve](./media/jenkins-aks-blue-green-deployment/edit-setup-script.png)
 
 1. Futtassa a beállítási szkriptet.
 
@@ -140,16 +133,16 @@ Beállíthat egy kék vagy zöld üzembe helyezés az aks-ben manuálisan, vagy 
     sh setup.sh
     ```
 
-#### <a name="set-up-a-kubernetes-cluster-manually"></a>Manuálisan állítsa be a Kubernetes-fürt 
-1. Töltse le a Kubernetes konfigurációs profil mappájába.
+#### <a name="set-up-a-kubernetes-cluster-manually"></a>Kubernetes-fürt beállítása manuálisan 
+1. Töltse le a Kubernetes konfigurációt a profilmappájába.
 
     ```bash
     az aks get-credentials -g <your-resource-group-name> -n <your-kubernetes-cluster-name> --admin
     ```
 
-1. Lépjen be a **üzembe helyezése/aks/telepítés** könyvtár. 
+1. A könyvtárat módosítsa a **deploy/aks/setup** könyvtárra. 
 
-1. Futtassa a következő **kubectl** parancsok a szolgáltatások a nyilvános végponthoz, és a két teszt végpontok beállítása.
+1. A nyilvános végpont és a két teszt végpont beállításához futtassa a következő **kubectl** parancsokat.
 
     ```bash
     kubectl apply -f  service-green.yml
@@ -157,25 +150,25 @@ Beállíthat egy kék vagy zöld üzembe helyezés az aks-ben manuálisan, vagy 
     kubectl apply -f  test-endpoint-green.yml
     ```
 
-1. Frissítés a nyilvános DNS-nevét és a teszt végpontok. Amikor egy Kubernetes-fürtöt hoz létre, akkor is létrehozhat egy [további erőforráscsoport](https://github.com/Azure/AKS/issues/3), az elnevezési minta **MC_&lt;az erőforrás-csoport-neve >_ &lt; az kubernetes-fürt-neve->_&lt;a hely >**.
+1. Frissítse a DNS-nevet a nyilvános és a teszt végpontoknál. Egy Kubernetes-fürt létrehozásakor egy [további erőforráscsoport](https://github.com/Azure/AKS/issues/3) is létrehoz, amelynek elnevezési mintája **MC_&lt;your-resource-group-name>_&lt;your-kubernetes-cluster-name>_&lt;your-location>** (MC_<erőforráscsoport-neve><kubernetes-fürt-neve><hely>).
 
-    Keresse meg a nyilvános IP-címek az erőforráscsoportban.
+    Keresse meg a nyilvános IP-címeket az erőforráscsoportban.
 
-    ![Képernyőkép az erőforráscsoportban lévő nyilvános IP-címek](./media/jenkins-aks-blue-green-deployment/publicip.png)
+    ![Képernyőkép a nyilvános IP-címekről az erőforráscsoportban](./media/jenkins-aks-blue-green-deployment/publicip.png)
 
-    Minden egyes szolgáltatások esetében keresse meg a külső IP-cím a következő parancs futtatásával:
+    Minden szolgáltatáshoz keresse meg a külső IP-címet a következő parancs lefuttatásával:
     
     ```bash
     kubectl get service todoapp-service
     ```
     
-    Frissítse a megfelelő IP-cím DNS-nevét a következő paranccsal:
+    Az alábbi paranccsal frissítse a DNS-nevet a kapcsolódó IP-címnél:
 
     ```bash
     az network public-ip update --dns-name aks-todoapp --ids /subscriptions/<your-subscription-id>/resourceGroups/MC_<resourcegroup>_<aks>_<location>/providers/Microsoft.Network/publicIPAddresses/kubernetes-<ip-address>
     ```
 
-    Ismételje meg a hívás a `todoapp-test-blue` és `todoapp-test-green`:
+    Ismételje meg a `todoapp-test-blue` és a `todoapp-test-green` meghívását:
 
     ```bash
     az network public-ip update --dns-name todoapp-blue --ids /subscriptions/<your-subscription-id>/resourceGroups/MC_<resourcegroup>_<aks>_<location>/providers/Microsoft.Network/publicIPAddresses/kubernetes-<ip-address>
@@ -183,17 +176,17 @@ Beállíthat egy kék vagy zöld üzembe helyezés az aks-ben manuálisan, vagy 
     az network public-ip update --dns-name todoapp-green --ids /subscriptions/<your-subscription-id>/resourceGroups/MC_<resourcegroup>_<aks>_<location>/providers/Microsoft.Network/publicIPAddresses/kubernetes-<ip-address>
     ```
 
-    A DNS-nevének egyedinek kell lennie az előfizetésben. Az egyediség biztosítása érdekében használhatja `<your-dns-name-suffix>`.
+    A DNS-névnek egyedinek kell lennie az előfizetésben. Az egyediség garantálásához használhatja a `<your-dns-name-suffix>` helyőrzőt.
 
-### <a name="create-an-instance-of-container-registry"></a>A Container Registry-példány létrehozása
+### <a name="create-an-instance-of-container-registry"></a>Container Registry-példány létrehozása
 
-1. Futtassa a `az acr create` parancsot a Tárolóregisztrációs adatbázis-példány létrehozása. A következő szakaszban, majd használhatja `login server` , a Docker-beállításjegyzék URL-cím.
+1. Egy Container Registry-példány létrehozásához futtassa az `az acr create` parancsot. A következő szakaszban használhatja a `login server` beállítást a Docker regisztrációs adatbázis URL-címeként.
 
     ```bash
     az acr create -n <your-registry-name> -g <your-resource-group-name>
     ```
 
-1. Futtassa a `az acr credential` parancsot a Tárolóregisztrációs adatbázis hitelesítő adatok megjelenítéséhez. Megjegyzés: a Docker registry felhasználónevet és jelszót, a következő szakaszban és igény szerint.
+1. Futtassa az `az acr credential` parancsot a Container Registry hitelesítő adatainak megjelenítéséhez. Jegyezze meg a Docker regisztrációs adatbázishoz tartozó felhasználónevét és jelszavát, mert a következő szakaszban szükség lesz rájuk.
 
     ```bash
     az acr credential show -n <your-registry-name>
@@ -201,44 +194,44 @@ Beállíthat egy kék vagy zöld üzembe helyezés az aks-ben manuálisan, vagy 
 
 ## <a name="prepare-the-jenkins-server"></a>A Jenkins-kiszolgáló előkészítése
 
-Ebben a szakaszban bemutatjuk, hogyan készítse elő a Jenkins-kiszolgáló egy build, amely nem okoz gondot az tesztelés futtatásához. Azonban, használjon egy [Azure Virtuálisgép-ügynök](https://plugins.jenkins.io/azure-vm-agents) vagy [Azure tároló-ügynök](https://plugins.jenkins.io/azure-container-agents) az Azure-ban való futtatásához a buildek ügynök üzembe helyezése. További információkért tekintse meg a Jenkins-cikk a [kialakításához a fő biztonsági vonatkozásai](https://wiki.jenkins.io/display/JENKINS/Security+implication+of+building+on+master).
+Ebben a szakaszban előkészíthet egy Jenkins-kiszolgálót egy összeállítás futtatására, amely alkalmas a tesztelésre. Azonban az összeállítások futtatására alkalmas ügynök indításához az Azure-ban használjon egy [Azure virtuálisgép-ügynököt](https://plugins.jenkins.io/azure-vm-agents) vagy egy [Azure-tárolóügynököt](https://plugins.jenkins.io/azure-container-agents). További információkért lásd a Jenkins-cikket a [főkiszolgálón végzett összeállítás biztonsági vonatkozásairól](https://wiki.jenkins.io/display/JENKINS/Security+implication+of+building+on+master).
 
-1. Üzembe helyezése egy [az Azure-ban a Jenkins-főkiszolgáló](https://aka.ms/jenkins-on-azure).
+1. Helyezzen üzembe egy [Jenkins-főkiszolgálót az Azure-on](https://aka.ms/jenkins-on-azure).
 
-1. Csatlakozás a kiszolgálóhoz, SSH-n keresztül, és a build tools telepítése a kiszolgálón, amelyen futtatja a build.
+1. Kapcsolódjon a kiszolgálóhoz SSH-n keresztül, és telepítse az összeállítási eszközöket arra a kiszolgálóra, ahol az összeállítást futtatja.
    
    ```bash
    sudo apt-get install git maven 
    ```
    
-1. [Telepítheti a Dockert](https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-ce). Ellenőrizze, hogy a felhasználó `jenkins` futtatásához engedéllyel rendelkezik a `docker` parancsokat.
+1. [Telepítse a Dockert](https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-ce). Győződjön meg arról, hogy a `jenkins` felhasználó rendelkezik engedéllyel a `docker` parancsok futtatására.
 
-1. [A kubectl telepítése](https://kubernetes.io/docs/tasks/tools/install-kubectl/).
+1. [Telepítse a kubectl-t](https://kubernetes.io/docs/tasks/tools/install-kubectl/).
 
-1. [Töltse le a jq](https://stedolan.github.io/jq/download/).
+1. [Töltse le a jq-t](https://stedolan.github.io/jq/download/).
 
-1. A következő paranccsal telepítse a jq:
+1. Telepítse a jq-t a következő paranccsal:
 
    ```bash
    sudo apt-get install jq
    ```
    
-1. A beépülő modulok telepítése a jenkins kifejezést a Jenkins irányítópulton a következő lépések végrehajtásával:
+1. Telepítse a Jenkinsen a beépülő modulokat a Jenkins-irányítópulton végrehajtott következő lépésekkel:
 
-    1. Válassza ki **Jenkins kezelése > beépülő modulok kezelése > elérhető**.
-    1. Keresse meg, és telepítse az Azure Container Service beépülő modul.
+    1. Válassza a **Manage Jenkins (Jenkins kezelése)> Manage Plugins (Beépülő modulok kezelése) > Available (Elérhető)** lehetőséget.
+    1. Keresse meg és telepítse az Azure Container Service beépülő modult.
 
-1. Adja hozzá a hitelesítő adatokat az Azure-erőforrások kezeléséhez. Ha még nem rendelkezik a beépülő modul, telepítse a **Azure Credential** beépülő modult.
+1. Az Azure-beli erőforrások kezeléséhez adja meg a hitelesítő adatokat. Ha még nincs telepítve a beépülő modul, telepítse az **Azure-beli hitelesítő adatok** beépülő modulját.
 
-1. Az Azure egyszerű szolgáltatás hitelesítő adatainak hozzáadása a típusaként **a Microsoft Azure egyszerű szolgáltatás**.
+1. Adja meg az Azure szolgáltatásnévhez tartozó hitelesítő adatot **Microsoft Azure Service Principal** (Microsoft Azure szolgáltatásnév) típusként.
 
-1. Adja hozzá a docker Azure-beli beállításjegyzék felhasználónevét és jelszavát (szerint az "A Tárolóregisztrációs adatbázis-példány létrehozása" szakaszban beszerzett) típusaként **felhasználónév, jelszó**.
+1. Adja meg az Azure Docker regisztrációs adatbázishoz tartozó felhasználónevét és jelszavát (amelyet ebben a szakaszban a „Container Registry-példány létrehozása” részben szerzett be) **Username with password** (Felhasználónév jelszóval) típusként.
 
 ## <a name="edit-the-jenkinsfile"></a>A Jenkinsfile szerkesztése
 
-1. A saját tárházban nyissa meg `/deploy/aks/`, és nyissa meg a `Jenkinsfile`.
+1. A saját adattárában lépjen a `/deploy/aks/` helyre, és nyissa meg a következőt: `Jenkinsfile`.
 
-2. A fájl a következő frissítése:
+2. A következőképpen módosítsa a fájlt:
 
     ```groovy
     def servicePrincipalId = '<your-service-principal>'
@@ -252,43 +245,43 @@ Ebben a szakaszban bemutatjuk, hogyan készítse elő a Jenkins-kiszolgáló egy
     def dockerRegistry = '<your-acr-name>.azurecr.io'
     ```
     
-    Frissítse a Container Registry hitelesítőadat-Azonosítóval:
+    Módosítsa a Container Registry hitelesítési azonosítóját:
     
     ```groovy
     def dockerCredentialId = '<your-acr-credential-id>'
     ```
 
 ## <a name="create-the-job"></a>A feladat létrehozása
-1. Új feladat hozzáadása a típus **folyamat**.
+1. Adjon hozzá egy új, **Pipeline** (Folyamat) típusú feladatot.
 
-1. Válassza ki **folyamat** > **definíció** > **SCM parancsfájlt folyamat**.
+1. Válassza a **Pipeline (Folyamat)** > **Definition (Definíció)** > **Pipeline script from SCM (Folyamatszkript SCM-ből)** lehetőséget.
 
-1. Az SCM adattár URL-CÍMÉT adja meg a &lt;az elágaztatott tárház >.
+1. Adja meg az SCM-adattár URL-címét a saját &lt;your-forked-repo> értékével.
 
-1. Adja meg a parancsfájl elérési útján, `deploy/aks/Jenkinsfile`.
+1. A szkript elérési útját a következőképpen adja meg: `deploy/aks/Jenkinsfile`.
 
 ## <a name="run-the-job"></a>A feladat futtatása
 
-1. Győződjön meg arról, hogy futtatni lehessen a projekt sikeres a helyi környezetben. Íme, miként: [projekt futtatása helyi gépen](https://github.com/Microsoft/todo-app-java-on-azure/blob/master/README.md#run-it).
+1. Ellenőrizze, hogy a projekt sikeresen fut-e a helyi környezetben. Ezzel kapcsolatos tudnivalókat [a projekt helyi gépen való futtatását](https://github.com/Microsoft/todo-app-java-on-azure/blob/master/README.md#run-it) ismertető cikkben olvashat.
 
-1. A Jenkins-feladat futtatása. A feladat első futtatásakor a Jenkins a kék környezetre, amely az alapértelmezett inaktív környezetben a teendőkezelő alkalmazást helyezünk üzembe. 
+1. Futtassa a Jenkins-feladatot. Amikor első alkalommal futtatja a feladatot, a Jenkins üzembe helyezi a todo alkalmazást a kék környezetben, amely alapértelmezés szerint az inaktív környezet. 
 
-1. Annak ellenőrzéséhez, hogy a feladat futott-e, nyissa meg az URL-címek:
-    - Nyilvános végpontja: `http://aks-todoapp<your-dns-name-suffix>.<your-location>.cloudapp.azure.com`
-    - Kék végpont- `http://aks-todoapp-blue<your-dns-name-suffix>.<your-location>.cloudapp.azure.com`
-    - Zöld végpont- `http://aks-todoapp-green<your-dns-name-suffix>.<your-location>.cloudapp.azure.com`
+1. Annak ellenőrzéséhez, hogy a feladat futtatása sikeres volt-e, nyissa meg a következő URL-címeket:
+    - Nyilvános végpont: `http://aks-todoapp<your-dns-name-suffix>.<your-location>.cloudapp.azure.com`
+    - Kék végpont: `http://aks-todoapp-blue<your-dns-name-suffix>.<your-location>.cloudapp.azure.com`
+    - Zöld végpont: `http://aks-todoapp-green<your-dns-name-suffix>.<your-location>.cloudapp.azure.com`
 
-A nyilvános és a kék teszt végpontok rendelkezik ugyanazt a frissítést, a zöld-végpontot a tomcat alapértelmezett lemezkép szerepelnek. 
+A nyilvános és a kék teszt végpontok ugyanazzal a frissítéssel rendelkeznek, míg a zöld végpont az alapértelmezett tomcat rendszerképet mutatja. 
 
-Ha a build csak egyszer futtatta, zöld és kék üzemelő példányok között léptet. Más szóval ha a jelenlegi környezet kék, a feladat helyez üzembe és a zöld környezet vizsgálatok. Ezt követően tesztek jók, ha a feladat frissíti az alkalmazás nyilvános végpontot irányíthatja a forgalmat a zöld környezetet.
+Ha többször futtatja le a buildet, váltakozva használja a kék és zöld üzemelő példányt. Vagyis ha az aktuális környezet a kék, a feladat a zöld környezetben lesz üzembe helyezve és tesztelve. Ezután ha a tesztek jól sikerültek, a feladat frissíti az alkalmazás nyilvános végpontját, hogy a forgalmat a zöld környezetbe irányítsa.
 
 ## <a name="additional-information"></a>További információ
 
-Az üzemszünet nélküli üzembe helyezés kapcsolatban bővebben lásd: Ez [gyorsindítási sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/301-jenkins-aks-zero-downtime-deployment). 
+Az állásidő nélküli üzembe helyezésről további információkat ebben a [rövid útmutató sablonban](https://github.com/Azure/azure-quickstart-templates/tree/master/301-jenkins-aks-zero-downtime-deployment) találhat. 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs szüksége az ebben az oktatóanyagban létrehozott erőforrásokat, törölheti őket.
+Ha már nincs szüksége az ezen oktatóanyagban létrehozott erőforrásokra, törölheti őket.
 
 ```bash
 az group delete -y --no-wait -n <your-resource-group-name>
@@ -300,7 +293,7 @@ Ha a Jenkins beépülő modulok használata során bármilyen hibát tapasztal, 
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban megtanulta, hogyan helyezhet üzembe az aks-ben a Jenkins és a kék és zöld üzembe helyezés minta használatával. Az Azure a Jenkins-szolgáltató kapcsolatos további információkért lásd: a Jenkins Azure webhelyen.
+Ez az oktatóanyag bemutatta, hogyan végezhet üzembe helyezést az AKS-re a Jenkins és a kék/zöld üzembehelyezési minta használatával. További információt az Azure Jenkins szolgáltatóról a Jenkins az Azure-on című cikkben talál.
 
 > [!div class="nextstepaction"]
-> [Jenkins az Azure-ban](/azure/jenkins/)
+> [A Jenkins az Azure-on](/azure/jenkins/)

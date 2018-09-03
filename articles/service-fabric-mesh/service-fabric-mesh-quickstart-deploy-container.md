@@ -5,16 +5,16 @@ services: service-fabric-mesh
 keywords: Ne adjon hozzá kulcsszavakat és ne szerkessze azokat a keresőoptimalizálást végző szakemberrel való egyeztetés nélkül.
 author: rwike77
 ms.author: ryanwi
-ms.date: 07/12/2018
+ms.date: 08/24/2018
 ms.topic: quickstart
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: a740672ea948bd86efce92c534e0f95f65563438
-ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
+ms.openlocfilehash: f5b834f92b2a126f68780a7647fda4d8b35dfe43
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42022746"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42886444"
 ---
 # <a name="quickstart-deploy-hello-world-to-service-fabric-mesh"></a>Rövid útmutató: A Hello World üzembe helyezése a Service Fabric Meshben
 
@@ -45,11 +45,18 @@ az group create --name myResourceGroup --location eastus
 ```
 
 ## <a name="deploy-the-application"></a>Az alkalmazás központi telepítése
-Hozza létre az alkalmazást az erőforráscsoportban az `az mesh deployment create` paranccsal:
+Hozza létre az alkalmazást az erőforráscsoportban az `az mesh deployment create` paranccsal.  Ha Bash-konzolt használ, futtassa a következőt:
 
 ```azurecli-interactive
 az mesh deployment create --resource-group myResourceGroup --template-uri https://sfmeshsamples.blob.core.windows.net/templates/helloworld/mesh_rp.linux.json --parameters "{\"location\": {\"value\": \"eastus\"}}" 
 ```
+
+Ha PowerShell-konzolt használ, futtassa a következőt:
+
+```azurecli-interactive
+az mesh deployment create --resource-group myResourceGroup --template-uri https://sfmeshsamples.blob.core.windows.net/templates/helloworld/mesh_rp.linux.json --parameters "{'location': {'value': 'eastus'}}"
+```
+
 Az előző parancs Linux-alkalmazást helyez üzembe a [mesh_rp.linux.json sablonnal](https://sfmeshsamples.blob.core.windows.net/templates/helloworld/mesh_rp.linux.json). Ha Windows-alkalmazást szeretne üzembe helyezni, használja a [mesh_rp.windows.json sablont](https://sfmeshsamples.blob.core.windows.net/templates/helloworld/mesh_rp.windows.json). A Windows-tárolórendszerképek nagyobbak, mint a Linux-tárolórendszerképek, ezért több ideig tarthat az üzembe helyezésük.
 
 A parancs néhány percen belül visszaadja a következőt:
