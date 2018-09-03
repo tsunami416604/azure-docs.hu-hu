@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/18/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: a628e28e9e6bd603fb2a3789c3281bc2181c91fe
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: 2283f55be1a17ec95c73878d42d3acf4d0503e07
+ms.sourcegitcommit: e45b2aa85063d33853560ec4bc867f230c1c18ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "42054281"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43371372"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Az Azure AD Connect: Fiókok és engedélyek
 
@@ -42,7 +42,7 @@ E három fiókok Azure AD Connect futtatásához használt mellett is szüksége
 - **Az AD DS vállalati rendszergazdai fiók**: használja az Azure AD Connect telepítése
 - **Az Azure AD globális rendszergazdai fiókját**: az Azure AD-összekötő fiók létrehozása és konfigurálása az Azure ad-ben.
 
-- **SQL-rendszergazdai fiók (nem kötelező)**: SQL Server teljes verziójának használatakor az ADSync-adatbázis létrehozásához használt.  Az SQL-kiszolgáló helyi vagy távoli, az Azure AD Connect telepítés lehet.  Ez a fiók lehet ugyanazt a fiókot, a vállalati rendszergazda engedélyezte.  Most kiépítése az adatbázis is lehet az SQL-rendszergazda által sávon kívül végrehajtott és csak utána települ az Azure AD Connect rendszergazdája az adatbázis-tulajdonosi jogosultságok.  Kapcsolatos információkért lásd a [SQL meghatalmazott rendszergazdai engedélyek használatával telepítse az Azure AD Connect]()
+- **SQL-rendszergazdai fiók (nem kötelező)**: SQL Server teljes verziójának használatakor az ADSync-adatbázis létrehozásához használt.  Az SQL-kiszolgáló helyi vagy távoli, az Azure AD Connect telepítés lehet.  Ez a fiók lehet ugyanazt a fiókot, a vállalati rendszergazda engedélyezte.  Most kiépítése az adatbázis is lehet az SQL-rendszergazda által sávon kívül végrehajtott és csak utána települ az Azure AD Connect rendszergazdája az adatbázis-tulajdonosi jogosultságok.  Kapcsolatos információkért lásd a [SQL meghatalmazott rendszergazdai engedélyek használatával telepítse az Azure AD Connect](active-directory-aadconnect-sql-delegation.md)
 
 ## <a name="installing-azure-ad-connect"></a>Azure AD Connect telepítése
 Az Azure AD Connect telepítővarázsló két különböző elérési kínálja:

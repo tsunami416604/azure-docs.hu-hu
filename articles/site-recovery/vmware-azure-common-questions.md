@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.date: 07/19/2018
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: e8d30ae6cde7c787f1aa950506e0eb74bac0c12d
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: fe20cae4c316462e3af3f0a5e7e6052f6ba5719d
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39238808"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43344423"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>Gyakori kérdések – VMware-ből az Azure-bA
 
@@ -45,7 +45,7 @@ Ha Ön olyan előfizetés rendszergazdája, akkor a replikációs szükséges en
 
 
 
-## <a name="on-premises"></a>Helyszíni követelmények 
+## <a name="on-premises"></a>Helyszíni követelmények
 
 ### <a name="what-do-i-need-on-premises"></a>Mire van szükségem helyszíni?
 A helyszíni Site Recovery-összetevőit egyetlen VMware virtuális gépeken telepített kell. Legalább egy ESXi-gazdagépen VMware-infrastruktúrára is szüksége, és azt javasoljuk, hogy a vCenter-kiszolgáló. Ezenkívül egy vagy több VMware virtuális gépek replikálásához szüksége. [További](vmware-azure-architecture.md) VMware-ből az Azure-architektúra kapcsolatban.
@@ -72,7 +72,7 @@ Igen, az ExpressRoute segítségével virtuális gépek replikálása az Azure-b
 
 ### <a name="why-cant-i-replicate-over-vpn"></a>Miért nem tudja replikálni VPN-kapcsolaton keresztül?
 
-Az Azure-bA replikálja, amikor replikációs forgalom eléri a nyilvános végpontokat az Azure Storage-fiók, így csak replikálhatja az expressroute-tal (nyilvános társviszony-létesítés) a nyilvános interneten keresztül, és VPN nem működik. 
+Az Azure-bA replikálja, amikor replikációs forgalom eléri a nyilvános végpontokat az Azure Storage-fiók, így csak replikálhatja az expressroute-tal (nyilvános társviszony-létesítés) a nyilvános interneten keresztül, és VPN nem működik.
 
 
 
@@ -90,7 +90,7 @@ A kiterjesztett vagy láncolt replikáció nem támogatott. Ennek a funkciónak 
 Ez a funkció nem támogatott. Ennek a funkciónak a kérelem a [Visszajelzési fórum](http://feedback.azure.com/forums/256299-site-recovery/suggestions/6227386-support-for-offline-replication-data-transfer-from).
 
 ### <a name="can-i-exclude-disks"></a>Kizárhatok egyes lemezek?
-Igen, kizárhat lemezeket a replikációból. 
+Igen, kizárhat lemezeket a replikációból.
 
 ### <a name="can-i-replicate-vms-with-dynamic-disks"></a>Virtuális gépek replikálhatok dinamikus lemezeken?
 A dinamikus lemezek lehet replikálni. Az operációsrendszer-lemez alaplemeznek kell lennie.
@@ -105,7 +105,7 @@ A VMware – Azure replikálás módosíthatja a lemez méretét. Ha azt szeretn
 ## <a name="configuration-server"></a>Konfigurációs kiszolgáló
 
 ### <a name="what-does-the-configuration-server-do"></a>Hogyan működik a konfigurációs kiszolgálót?
-A konfigurációs kiszolgáló futtatja a helyszíni Site Recovery-összetevők, beleértve: 
+A konfigurációs kiszolgáló futtatja a helyszíni Site Recovery-összetevők, beleértve:
 - A konfigurációs kiszolgáló koordinálja a helyszíni és Azure közötti kommunikációt, és felügyeli az adatreplikációt.
 - A folyamatkiszolgáló replikációs átjáróként üzemel. Ez fogadja a replikált adatokat; gyorsítótárazás, tömörítés és titkosítással optimalizálja őket majd küld, hogy az Azure storage-., a folyamatkiszolgáló Ezenfelül telepíti a mobilitási szolgáltatás a virtuális gépeket replikálhat, és elvégzi a helyszíni VMware virtuális gépek automatikus felderítését.
 - A fő célkiszolgálón, amely az Azure-ból a feladat-visszavétel során kezeli a replikációs adatokat.
@@ -118,13 +118,13 @@ A konfigurációs kiszolgálón egy egyetlen magas rendelkezésre állású hely
 Tekintse át a [Előfeltételek](vmware-azure-deploy-configuration-server.md#prerequisites).
 
 ### <a name="can-i-manually-set-up-the-configuration-server-instead-of-using-a-template"></a>Kézzel állítható be a konfigurációs kiszolgálót, egy sablon használata helyett?
-Azt javasoljuk, hogy használja-e a legújabb verzióra az OVF-sablon [a konfigurációs kiszolgáló virtuális gép létrehozása](vmware-azure-deploy-configuration-server.md). Ha valamilyen okból nem lehet, például nem rendelkezik a VMware-kiszolgálóhoz való hozzáférést, akkor [töltse le az egyesített telepítő fájlját](physical-azure-set-up-source.md) a portálról, és futtassa azt a virtuális gép. 
+Azt javasoljuk, hogy használja-e a legújabb verzióra az OVF-sablon [a konfigurációs kiszolgáló virtuális gép létrehozása](vmware-azure-deploy-configuration-server.md). Ha valamilyen okból nem lehet, például nem rendelkezik a VMware-kiszolgálóhoz való hozzáférést, akkor [töltse le az egyesített telepítő fájlját](physical-azure-set-up-source.md) a portálról, és futtassa azt a virtuális gép.
 
 ### <a name="can-a-configuration-server-replicate-to-more-than-one-region"></a>Konfigurációs kiszolgáló replikálhatja egynél több régióban?
 Nem. Ehhez állítsa be a konfigurációs kiszolgáló az egyes régiókban kell.
 
 ### <a name="can-i-host-a-configuration-server-in-azure"></a>Üzemeltethet a konfigurációs kiszolgáló az Azure-ban?
-Bár lehetséges a konfigurációs kiszolgálón futó Azure virtuális gép kell a helyszíni VMware-infrastruktúra és a virtuális gépek kommunikálnak. A terhelés valószínűleg nem működőképes.
+Bár lehetséges a konfigurációs kiszolgálón futó Azure virtuális gép kell a helyszíni VMware-infrastruktúra és a virtuális gépek kommunikálnak. Ez adja hozzá a késésük, és hatással van a folyamatban lévő replikáció.
 
 
 ### <a name="where-can-i-get-the-latest-version-of-the-configuration-server-template"></a>Hol kaphatok a konfigurációs kiszolgálói sablon legújabb verzióját?
@@ -132,6 +132,9 @@ Töltse le a legújabb verziót a [Microsoft Download Center](https://aka.ms/asr
 
 ### <a name="how-do-i-update-the-configuration-server"></a>Hogyan frissíthetem a konfigurációs kiszolgálót?
 Kumulatív frissítés telepítése. A legújabb frissítés információkat a a [frissítések wikioldal](https://social.technet.microsoft.com/wiki/contents/articles/38544.azure-site-recovery-service-updates.aspx).
+
+### <a name="should-i-backup-the-deployed-configuration-server"></a>Kell-e biztonsági a központilag telepített konfigurációs kiszolgálót?
+Azt javasoljuk, hogy a konfigurációs kiszolgáló rendszeres ütemezett biztonsági másolatok készítése. A sikeres feladat-visszavételhez a virtuális gép folyamatban van a feladatátvételben szerepelniük kell a konfigurációs kiszolgáló adatbázisát, és a konfigurációs kiszolgálón fut, és a egy csatlakoztatott állapotban kell lennie. További információ a konfigurációs kiszolgáló gyakori felügyeleti feladatok [Itt](vmware-azure-manage-configuration-server.md).
 
 ## <a name="mobility-service"></a>Mobilitási szolgáltatás
 
@@ -191,7 +194,7 @@ Igen, ha az Azure-bA feladatátvétel, visszaadhatja a másik helyet, ha az ered
 
 ### <a name="why-do-i-need-a-vpn-or-expressroute-to-fail-back"></a>Miért kell egy VPN- vagy ExpressRoute visszavételhez?
 
-Ha nem sikerül az Azure-ból, Azure származó adatokat másolja vissza a helyszíni virtuális gép, és privát hozzáférésre szükség. 
+Ha nem sikerül az Azure-ból, Azure származó adatokat másolja vissza a helyszíni virtuális gép, és privát hozzáférésre szükség.
 
 
 
