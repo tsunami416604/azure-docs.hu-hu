@@ -88,7 +88,7 @@ items:
     - name: Telemetria vizualizációja a Power BI használatával
       href: iot-accelerators-integrate-data-powerbi.md
     - name: Telemetria vizualizációja a Time Series Insights használatával
-      href: iot-accelerators-time-series-insights.md
+      href: iot-accelerators-remote-monitoring-time-series-insights.md
     - name: Telemetria elemzése a Data Lake használatával
       href: iot-accelerators-integrate-data-lake.md
     - name: A szerepköralapú hozzáférés-vezérlés konfigurálása
@@ -166,6 +166,8 @@ items:
       href: iot-accelerators-device-simulation-choose-hub.md
     - name: Egyéni eszközmodell használata
       href: iot-accelerators-device-simulation-custom-model.md
+    - name: Telemetria vizualizációja a Time Series Insights használatával
+      href: iot-accelerators-device-simulation-time-series-insights.md
     - name: Szimulált eszköz létrehozása
       href: iot-accelerators-device-simulation-create-simulated-device.md
     - name: Szimulált eszköz üzembe helyezése
@@ -250,9 +252,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-iot-suite
   - name: Az IoT-megoldásgyorsítók képzési terve
     href: https://azure.microsoft.com/documentation/learning-paths/iot-suite/
-ms.openlocfilehash: 1770dbe5a88b4a8ac4dc036fb837c066291efb99
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: db9024fd8dc263d7d11fe522d934a629289ef922
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43339483"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43381637"
