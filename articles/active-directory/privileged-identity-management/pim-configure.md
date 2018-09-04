@@ -1,6 +1,6 @@
 ---
-title: Az Azure AD Privileged Identity Management konfigurálása | Microsoft Docs
-description: A témakör ismerteti, mi az Azure AD Privileged Identity Management, és hogyan használható a felhőbeli biztonság növelésére.
+title: Mi az az Azure AD Privileged Identity Management? | Microsoft Docs
+description: Áttekintést nyújt az Azure Active Directory Privileged Identity Managementről (PIM).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -13,12 +13,12 @@ ms.topic: overview
 ms.date: 03/07/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 8ac1dad9413d9e2710722127c2e837223a5b6f7f
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: ff4e5322ac9ccc0bbfd0706ca9f4863670bbf1b5
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39618852"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43186211"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>Mi az az Azure AD Privileged Identity Management?
 
@@ -51,6 +51,35 @@ Az Azure AD környezetben az Azure AD Privileged Identity Management segítség�
 ## <a name="just-in-time-administrator-access"></a>Igény szerinti rendszergazdai hozzáférés
 
 Hagyományosan a felhasználókat a rendszergazdai szerepkörökhöz az Azure Portalon, más online Microsoft Online Services-portálokon vagy a Windows PowerShellben az Azure AD-parancsmagok használatával lehetett hozzárendelni. Ezekkel a módszerekkel a felhasználó **állandó rendszergazdává** vált, aki mindig aktív a hozzárendelt szerepkörben. Az Azure AD Privileged Identity Management bevezeti a **jogosult rendszergazda** fogalmát. Jogosult rendszergazdák azok a felhasználók lehetnek, akiknek időnként szükségük van emelt szintű hozzáférésre, de nem folyamatosan, napi szinten. A szerepkör inaktív, amíg a felhasználónak nincs szüksége a hozzáférésre, majd szükség esetén a felhasználó egy aktiválási folyamat teljesítésével válhat aktív rendszergazdává egy előre meghatározott időtartamra. Egyre több vállalat használja ezt a megközelítést a kiemelt szerepkörök állandó rendszergazdai hozzáférésének csökkentése vagy megszüntetése céljából.
+
+
+## <a name="terminology"></a>Terminológia
+
+*Jogosult szerepkörű felhasználó* – A jogosult szerepkörű felhasználók olyan felhasználók a szervezeten belül, akik jogosultként lettek az Azure AD szerepkörhöz rendelve (a szerepkört aktiválni kell).
+
+*Meghatalmazott jóváhagyó* – A meghatalmazott jóváhagyó egy vagy több személy vagy csoport az Azure AD-n belül, akik a szerepkör-engedélyezési kérelmek jóváhagyásáért felelnek.
+
+## <a name="scenarios"></a>Forgatókönyvek
+
+A Privileged Identity Management a következő forgatókönyveket támogatja:
+
+**Kiemelt szerepkörű rendszergazdaként a következőkre jogosult:**
+
+- Jóváhagyás engedélyezése speciális szerepkörökhöz
+- Kérelmek jóváhagyására jogosult felhasználók és/vagy csoportok meghatározása
+- Speciális szerepkörökhöz tartozó kérelmek és jóváhagyások előzményeinek megtekintése
+
+**Kijelölt jóváhagyóként a következőkre jogosult:**
+
+- Függőben lévő jóváhagyások (kérelmek) megtekintése
+- Szerepkör-kiterjesztésre irányuló kérelmek jóváhagyása vagy visszautasítása (egyszerre egy és/vagy több)
+- Indoklás fűzése a jóváhagyáshoz/elutasításhoz 
+
+**Jogosult szerepkörű felhasználóként a következőkre jogosult:**
+
+- Jóváhagyást igénylő szerepkör aktiválásának kérelme
+- Az aktiválási kérelem állapotának megtekintése
+- Az aktiválás jóváhagyása után feladatok végrehajtása az Azure AD-ben
 
 ## <a name="enable-privileged-identity-management-for-your-directory"></a>A Privileged Identity Management engedélyezése a saját címtárhoz
 
@@ -157,4 +186,6 @@ Ha a vállalat nem újítja meg a Prémium szintű Azure AD P2-előfizetést, va
 
 ## <a name="next-steps"></a>További lépések
 
-[!INCLUDE [active-directory-privileged-identity-management-toc](../../../includes/active-directory-privileged-identity-management-toc.md)]
+- [Előfizetési követelmények a PIM használatához](subscription-requirements.md)
+- [A PIM-ben kezelhető Azure AD-címtárszerepkörök](pim-roles.md)
+- [Emelt szintű hozzáférés biztosítása Azure AD hibrid- és felhőkörnyezetekhez](../users-groups-roles/directory-admin-roles-secure.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)

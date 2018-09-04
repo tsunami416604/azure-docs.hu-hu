@@ -3,18 +3,18 @@ title: Keresés az Azure Maps használatával | Microsoft Docs
 description: Közeli hasznos hely keresése az Azure Maps használatával
 author: dsk-2015
 ms.author: dkshir
-ms.date: 05/07/2018
+ms.date: 08/23/2018
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: ffc4b7625a6c43f8e2801313c61f14c785a3ec5f
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: e30d84c70f786a5bea25073c70a29b63c9a00ae9
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38988874"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42917662"
 ---
 # <a name="search-nearby-points-of-interest-using-azure-maps"></a>Közeli hasznos helyek keresése az Azure Maps használatával
 
@@ -81,8 +81,9 @@ A térképkezelési API egy kényelmes ügyféloldali kódtár, amely segítség
         <meta name="viewport" content="width=device-width, user-scalable=no" />
         <title>Map Search</title>
 
-        <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/css/atlas.min.css?api-version=1.0" type="text/css" />
-        <script src="https://atlas.microsoft.com/sdk/js/atlas.min.js?api-version=1.0"></script>
+        <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/css/atlas.min.css?api-version=1" type="text/css" /> 
+        <script src="https://atlas.microsoft.com/sdk/js/atlas.min.js?api-version=1"></script> 
+        <script src="https://atlas.microsoft.com/sdk/js/atlas-service.min.js?api-version=1"></script> 
 
         <style>
             html,
@@ -131,10 +132,12 @@ A térképkezelési API egy kényelmes ügyféloldali kódtár, amely segítség
 
 ## <a name="add-search-capabilities"></a>Keresési képességek hozzáadása
 
-Ez a szakasz bemutatja, hogyan használható a Maps Search API egy hasznos hely megkereséséhez a térképen. Ez az API egy fejlesztőknek szánt RESTful API, amely lehetővé teszi a címek, hasznos helyek és egyéb földrajzi adatok keresését. A Search szolgáltatás szélességi és hosszúsági koordinátákat rendel egy adott címhez. 
+Ez a szakasz bemutatja, hogyan használható a Maps Search API egy hasznos hely megkereséséhez a térképen. Ez az API egy fejlesztőknek szánt RESTful API, amely lehetővé teszi a címek, hasznos helyek és egyéb földrajzi adatok keresését. A Search szolgáltatás szélességi és hosszúsági koordinátákat rendel egy adott címhez. Az alább ismertetett **Szolgáltatásmodul** segítségével helyekre kereshet a Maps Search API használatával.
 
-1. Adjon hozzá egy új réteget a térképhez, hogy megjelenítse a keresési eredményeket. Adja hozzá a következő JavaScript-kódot a *script* blokkhoz a térképet inicializáló kód után. 
+### <a name="service-module"></a>Szolgáltatásmodul
 
+1. Adjon hozzá egy új réteget a térképhez, hogy megjelenítse a keresési eredményeket. Adja hozzá a következő JavaScript-kódot a „script” blokkhoz a térképet inicializáló kód után. 
+    
     ```JavaScript
     // Initialize the pin layer for search results to the map
     var searchLayerName = "search-results";
@@ -145,69 +148,50 @@ Ez a szakasz bemutatja, hogyan használható a Maps Search API egy hasznos hely 
     });
     ```
 
-2. Hozzon létre egy [XMLHttpRequest](https://xhr.spec.whatwg.org/) kérést, és adjon hozzá egy eseménykezelőt a Maps keresőszolgáltatása által küldött JSON-válasz elemzéséhez. Ez a kódrészlet felépíti azt az eseménykezelőt, amely összegyűjti az egyes visszaadott helyek címét, nevét, valamint a szélességi és hosszúsági koordinátáit a `searchPins` változóban. Végül hozzáadja ezt a helypont-gyűjteményt a `map` vezérlőhöz gombostűk formájában. 
+2. Az ügyfélszolgáltatás példányosításához adja hozzá a következő JavaScript-kódot a szkriptblokkhoz a térképet inicializáló kód után.
 
     ```JavaScript
-    // Perform a request to the search service and create a pin on the map for each result
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
-        var searchPins = [];
-
-        if (this.readyState === 4 && this.status === 200) {
-            var response = JSON.parse(this.responseText);
-
-            var poiResults = response.results.filter((result) => { return result.type === "POI" }) || [];
-
-            searchPins = poiResults.map((poiResult) => {
-                var poiPosition = [poiResult.position.lon, poiResult.position.lat];
-                return new atlas.data.Feature(new atlas.data.Point(poiPosition), {
-                    name: poiResult.poi.name,
-                    address: poiResult.address.freeformAddress,
-                    position: poiResult.position.lat + ", " + poiResult.position.lon
-                });
-            });
-
-            map.addPins(searchPins, {
-                name: searchLayerName
-            });
-
-            var lons = searchPins.map((pin) => { return pin.geometry.coordinates[0] });
-            var lats = searchPins.map((pin) => { return pin.geometry.coordinates[1] });
-
-            var swLon = Math.min.apply(null, lons);
-            var swLat = Math.min.apply(null, lats);
-            var neLon = Math.max.apply(null, lons);
-            var neLat = Math.max.apply(null, lats);
-
-            map.setCameraBounds({
-                bounds: [swLon, swLat, neLon, neLat],
-                padding: 50
-            });
-        }
-    };
+    var client = new atlas.service.Client(subscriptionKey);
     ```
 
-3. Adja hozzá a *script* blokkhoz a következő kódot, amely felépíti a lekérdezést, és elküldi az XMLHttpRequest kérést a Maps Search szolgáltatásnak:
+3. A lekérdezés felépítéséhez adja hozzá a következő szkriptblokkot. A kódrészlet a Search Service alapszintű Fuzzy Search Service (Intelligens keresés) keresési API-ját használja. A Fuzzy Search Service a legtöredékesebb bemeneti adatokat is kezeli, például a címek vagy hasznos helyet (POI-t) jelölő tokenek bármely kombinációját. Rákeres a közeli benzinkutakra egy megadott sugarú körön belül. A választ ezután GeoJSON formátumba szegmentálja, és pontelemekké alakítja, amelyeket azután gombostűkként felvesz a térképre. A szkript utolsó része kamerahatárokat ad a térképhez a Map [setCameraBounds](https://docs.microsoft.com/javascript/api/azure-maps-control/models.cameraboundsoptions?view=azure-iot-typescript-latest) tulajdonságával.
 
     ```JavaScript
-    var url = "https://atlas.microsoft.com/search/fuzzy/json?";
-    url += "api-version=1.0";
-    url += "&query=gasoline%20station";
-    url += "&subscription-key=" + MapsAccountKey;
-    url += "&lat=47.6292";
-    url += "&lon=-122.2337";
-    url += "&radius=100000";
-
-    xhttp.open("GET", url, true);
-    xhttp.send();
-    ``` 
-    Ez a kódrészlet a Search Service alapszintű kereső API-ját, az **intelligens keresést** használja. Ez a legtöredékesebb bemeneti adatokat is kezeli, például a címek vagy hasznos hely (POI) tokenek bármely kombinációját. Rákeres a közeli **benzinkutakra** egy megadott sugarú körön belül, a szélességi és hosszúsági koordináták szerint. A fiók a példafájlban korábban megadott elsődleges kulcsát használja a Maps meghívásához. Eredményként a megtalált helyekhez tartozó szélességi/hosszúsági koordinátapárokat adja vissza. 
-    
+    client.search.getSearchFuzzy("gasoline station", {
+     lat: 47.6292,
+     lon: -122.2337,
+     radius: 100000
+    }).then(response => {
+       // Parse the response into GeoJSON 
+       var geojsonResponse = new atlas.service.geojson.GeoJsonSearchResponse(response); 
+ 
+       // Create the point features that will be added to the map as pins 
+       var searchPins = geojsonResponse.getGeoJsonResults().features.map(poiResult => { 
+           var poiPosition = [poiResult.properties.position.lon, poiResult.properties.position.lat]; 
+           return new atlas.data.Feature(new atlas.data.Point(poiPosition), { 
+                name: poiResult.properties.poi.name, 
+                address: poiResult.properties.address.freeformAddress, 
+                position: poiPosition[1] + ", " + poiPosition[0] 
+           }); 
+       }); 
+ 
+       // Add pins to the map for each POI 
+       map.addPins(searchPins, { 
+           name: searchLayerName 
+       }); 
+ 
+       // Set the camera bounds 
+       map.setCameraBounds({ 
+           bounds: geojsonResponse.getGeoJsonResults().bbox, 
+           padding: 50 
+       ); 
+    }); 
+    ```
 4. Mentse a **MapSearch.html** fájlt, és frissítse a böngészőt. Most azt kell látnia, hogy Seattle van a térkép középpontjában, és a benzinkutak helyét kék gombostűk jelölik. 
 
    ![A keresési eredményeket tartalmazó térkép megtekintése](./media/tutorial-search-location/pins-map.png)
 
-5. Megtekintheti a térkép által renderelt nyers adatokat, ha beírja a böngészőbe a fájlban felépített XMLHTTPRequest kérést. Cserélje le a \<your account key\> értéket az Ön által használt elsődleges kulcsra. 
+5. A térkép által renderelt nyers adatok megtekintéséhez írja be a böngészőbe a következő HTTPRequest kérést. Cserélje le a \<your account key\> értéket az Ön által használt elsődleges kulcsra. 
 
    ```http
    https://atlas.microsoft.com/search/fuzzy/json?api-version=1.0&query=gasoline%20station&subscription-key=<your account key>&lat=47.6292&lon=-122.2337&radius=100000
@@ -237,7 +221,7 @@ A létrehozott térkép ezen a ponton még csak a szélességi/hosszúsági adat
         popupContentElement.appendChild(popupAddressElement);
 
         var popupPositionElement = document.createElement("div");
-        popupPositionElement.innerText = e.features[0].properties.name;
+        popupPositionElement.innerText = e.features[0].properties.position;
         popupContentElement.appendChild(popupPositionElement);
 
         popup.setPopupOptions({

@@ -14,22 +14,24 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: ca920a93d754254390a5c5c5a066be3144b47fc7
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: b6b2985bf72d9ecb2041d51852b5a4230e11d8be
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41919404"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42886053"
 ---
 # <a name="tutorial-use-a-windows-vm-managed-service-identity-to-access-azure-sql"></a>Oktatóanyag: Az Azure SQL elérése Windows VM-beli felügyeltszolgáltatás-identitással
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Az oktatóanyag azt mutatja be, hogyan használhat felügyeltszolgáltatás-identitást egy Windows rendszerű virtuális gépen (VM) egy Azure SQL Server eléréséhez. A felügyeltszolgáltatás-identitások kezelését automatikusan az Azure végzi, és lehetővé teszi a hitelesítést az Azure AD-hitelesítést támogató szolgáltatásokban anélkül, hogy be kellene szúrnia a hitelesítő adatokat a kódba. Az alábbiak végrehajtásának módját ismerheti meg:
+Az oktatóanyag bemutatja, hogyan használhat rendszer által hozzárendelt identitást egy Windows rendszerű virtuális gépen (VM) egy Azure SQL-kiszolgáló eléréséhez. A felügyeltszolgáltatás-identitások kezelését automatikusan az Azure végzi, és lehetővé teszi a hitelesítést az Azure AD-hitelesítést támogató szolgáltatásokban anélkül, hogy be kellene szúrnia a hitelesítő adatokat a kódba. Az alábbiak végrehajtásának módját ismerheti meg:
 
 > [!div class="checklist"]
-> * Felügyeltszolgáltatás-identitás engedélyezése Windows rendszerű virtuális gépen 
 > * Azure SQL Server-hozzáférés engedélyezése a VM számára
+> * Csoport létrehozása az Azure AD-ban, és a VM-beli felügyeltszolgáltatás-identitás felvétele a csoportba
+> * Azure AD-hitelesítés engedélyezése az SQL-kiszolgáló számára
+> * Az Azure AD-csoportot képviselő tartalmazott felhasználó létrehozása az adatbázisban
 > * Hozzáférési jogkivonat lekérése a VM identitásával, majd egy Azure SQL Server-kiszolgáló lekérdezése a jogkivonattal
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -38,32 +40,11 @@ Az oktatóanyag azt mutatja be, hogyan használhat felügyeltszolgáltatás-iden
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
-## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
+- [Bejelentkezés az Azure Portalra](https://portal.azure.com)
 
-Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
+- [Windows rendszerű virtuális gép létrehozása](/azure/virtual-machines/windows/quick-create-portal)
 
-## <a name="create-a-windows-virtual-machine-in-a-new-resource-group"></a>Egy Windows rendszerű virtuális gép létrehozása egy új erőforráscsoportban
-
-Ebben az oktatóanyagban egy új Windows VM-et fog létrehozni.  A meglévő virtuális gépeken is engedélyezheti a felügyeltszolgáltatás-identitást.
-
-1.  Kattintson az Azure Portal bal felső sarkában található **Erőforrás létrehozása** gombra.
-2.  Válassza a **Számítás**, majd a **Windows Server 2016 Datacenter** elemet. 
-3.  Adja meg a virtuális gép adatait. Az itt létrehozott **felhasználónév** és **jelszó** alkotják a virtuális gépre való bejelentkezéshez használt hitelesítő adatokat.
-4.  Válassza ki a megfelelő **előfizetést** a virtuális géphez a legördülő menüben.
-5.  A virtuális gép létrehozásához használni kívánt új **erőforráscsoport** kiválasztásához válassza az **Új létrehozása** lehetőséget. Amikor végzett, kattintson az **OK** gombra.
-6.  Válassza ki a virtuális gép méretét. További méretek megjelenítéséhez válassza **Az összes megtekintése** lehetőséget, vagy módosítsa a **Támogatott lemeztípus** szűrőt. A Beállítások lapon hagyja változatlanul az alapértelmezett beállításokat, és kattintson az **OK** gombra.
-
-    ![Helyettesítő képszöveg](media/msi-tutorial-windows-vm-access-arm/msi-windows-vm.png)
-
-## <a name="enable-managed-service-identity-on-your-vm"></a>Felügyeltszolgáltatás-identitás engedélyezése a virtuális gépen 
-
-A VM-beli felügyeltszolgáltatás-identitással anélkül kérhet le hozzáférési jogkivonatokat az Azure AD-ből, hogy hitelesítő adatokat kellene a kódba illesztenie. A felügyeltszolgáltatás-identitás engedélyezése arra utasítja az Azure-t, hogy hozzon létre egy felügyelt identitást a virtuális géphez. A háttérben a felügyeltszolgáltatás-identitás engedélyezésének két következménye van: regisztrálja a virtuális gépet az Azure Active Directoryban a felügyelt identitása létrehozásához, és konfigurálja az identitást a virtuális gépen.
-
-1.  Válassza ki azt a **virtuális gépet**, amelyen engedélyezni szeretné a felügyeltszolgáltatás-identitást.  
-2.  A bal oldali navigációs sávban kattintson a **Konfigurálás** elemre. 
-3.  Megjelenik a **felügyeltszolgáltatás-identitás**. A felügyeltszolgáltatás-identitás regisztrálásához és engedélyezéséhez kattintson az **Igen**, a letiltásához a Nem gombra. 
-4.  Mindenképp kattintson a **Mentés** gombra a konfiguráció mentéséhez.  
-    ![Helyettesítő képszöveg](media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
+- [Rendszer által hozzárendelt identitás engedélyezése a virtuális gépen](/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm#enable-system-assigned-identity-on-an-existing-vm)
 
 ## <a name="grant-your-vm-access-to-a-database-in-an-azure-sql-server"></a>Hozzáférés engedélyezése a virtuális gép számára egy Azure SQL Server-adatbázishoz
 
@@ -78,7 +59,7 @@ Három lépés kell hozzá, hogy a VM hozzá tudjon férni egy adatbázishoz:
 > Általában egy olyan tartalmazott felhasználót érdemes létrehozni, aki közvetlenül a VM felügyeltszolgáltatás-identitásához van leképezve.  Az Azure SQL jelenleg nem engedélyez olyan Azure AD-szolgáltatásneveket, amelyek egy tartalmazott felhasználóra leképezni kívánt, VM-beli felügyeltszolgáltatás-identitást képviselnek.  Támogatott áthidaló megoldásként a VM-beli felügyeltszolgáltatás-identitást egy Azure AD-csoport tagjává kell tenni, majd létre kell hozni a csoportot képviselő tartalmazott felhasználót az adatbázisban.
 
 
-### <a name="create-a-group-in-azure-ad-and-make-the-vm-managed-service-identity-a-member-of-the-group"></a>Csoport létrehozása az Azure AD-ban, és a VM-beli felügyeltszolgáltatás-identitás felvétele a csoportba
+## <a name="create-a-group-in-azure-ad-and-make-the-vm-managed-service-identity-a-member-of-the-group"></a>Csoport létrehozása az Azure AD-ban, és a VM-beli felügyeltszolgáltatás-identitás felvétele a csoportba
 
 Meglévő Azure AD-csoportot is használhat, de újat is létrehozhat az Azure AD PowerShell-lel.  
 
@@ -132,7 +113,7 @@ ObjectId                             AppId                                Displa
 b83305de-f496-49ca-9427-e77512f6cc64 0b67a6d6-6090-4ab4-b423-d6edda8e5d9f DevTestWinVM
 ```
 
-### <a name="enable-azure-ad-authentication-for-the-sql-server"></a>Azure AD-hitelesítés engedélyezése az SQL-kiszolgáló számára
+## <a name="enable-azure-ad-authentication-for-the-sql-server"></a>Azure AD-hitelesítés engedélyezése az SQL-kiszolgáló számára
 
 Most, hogy létrehozta a csoportot, és a VM-beli felügyeltszolgáltatás-identitást a tagjává tette, az alábbi lépésekkel [konfigurálhatja az SQL-kiszolgáló Azure AD-hitelesítését](/azure/sql-database/sql-database-aad-authentication-configure#provision-an-azure-active-directory-administrator-for-your-azure-sql-server):
 
@@ -143,7 +124,7 @@ Most, hogy létrehozta a csoportot, és a VM-beli felügyeltszolgáltatás-ident
 5.  Válassza ki azt az Azure AD felhasználói fiókot, amelyet a kiszolgáló rendszergazdájává szeretne tenni, és kattintson a **Kiválasztás** lehetőségre.
 6.  Kattintson a **Mentés** gombra a parancssávon.
 
-### <a name="create-a-contained-user-in-the-database-that-represents-the-azure-ad-group"></a>Az Azure AD-csoportot képviselő tartalmazott felhasználó létrehozása az adatbázisban
+## <a name="create-a-contained-user-in-the-database-that-represents-the-azure-ad-group"></a>Az Azure AD-csoportot képviselő tartalmazott felhasználó létrehozása az adatbázisban
 
 A következő lépéshez a [Microsoft SQL Server Management Studióra](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) lesz szüksége. Mielőtt hozzálátna, hasznos lehet áttekinteni az Azure AD-integráció hátterével foglalkozó következő cikkeket:
 

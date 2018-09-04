@@ -196,20 +196,22 @@ items:
         href: vmware-azure-deploy-configuration-server.md
       - name: Célkörnyezet beállítása VMware virtuális gépekhez
         href: vmware-azure-set-up-target.md
-      - name: Replikációs beállítások konfigurálása
+      - name: VMware virtuális gépek replikációs beállításainak konfigurálása
         href: vmware-azure-set-up-replication.md
-      - name: VMware virtuális gépek replikációjának engedélyezése
+      - name: Replikáció engedélyezése a VMware virtuális gépek számára
         href: vmware-azure-enable-replication.md
-      - name: Lemezek kizárása a replikációból
+      - name: Lemezek kizárása a VMware virtuális gépek replikációjából
         href: vmware-azure-exclude-disk.md
-      - name: Több-bérlős rendszer CSP-vel VMware-alapú virtuális gépekhez
+      - name: Replikáció beállítása VMware virtuális gépekhez több-bérlős rendszerrel és CSP-vel
         href: vmware-azure-multi-tenant-csp-disaster-recovery.md
-      - name: Forráskörnyezet beállítása fizikai kiszolgálókhoz
-        href: physical-azure-set-up-source.md
-      - name: Célkörnyezet beállítása fizikai kiszolgálókhoz
-        href: physical-azure-set-up-target.md
-      - name: Fizikai kiszolgálók vészhelyreállítása az Azure-ba
+      - name: Fizikai kiszolgálók Azure-ba történő vészhelyreállításának beállítása
         href: physical-azure-disaster-recovery.md
+      - name: Forráskörnyezet beállítása fizikai kiszolgálók replikációjához
+        href: physical-azure-set-up-source.md
+      - name: Célkörnyezet beállítása fizikai kiszolgálók replikációjához
+        href: physical-azure-set-up-target.md
+      - name: Vészhelyreállítás beállítása Azure Stack virtuális gépekhez
+        href: azure-stack-site-recovery.md
     - name: A mobilitási szolgáltatás telepítése
       items:
       - name: Mobilitási szolgáltatások áttekintése
@@ -390,9 +392,9 @@ items:
     href: https://azure.microsoft.com/pricing/calculator/
   - name: Szolgáltatási hírek
     href: https://azure.microsoft.com/updates/?product=site-recovery
-ms.openlocfilehash: 63d404406e3b33d4022974246a227cad1e6535a6
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 01f369aede31d44ff404c1ff5e7d2d1e9bb92950
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43285106"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43343973"

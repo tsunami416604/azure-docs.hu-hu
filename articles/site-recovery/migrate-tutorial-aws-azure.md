@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 07/06/2018
+ms.date: 08/24/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: ee38fe542ca6e2e4e1f8e09b54717d4390b453d0
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 48714d71edcf54726eb362c7f56950a1350fd52b
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37922657"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42885325"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>Amazon Web Services-beli (AWS) virtuális gépek áttelepítése az Azure-ba
 
@@ -33,10 +33,12 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="prerequisites"></a>Előfeltételek
 - Ellenőrizze, hogy a migrálni kívánt virtuális gépek támogatott operációsrendszer-verziót futtatnak-e. Támogatott verziók többek között: 
-    - Windows Server 2016
-    - Red Hat Enterprise Linux 6.7 (csak HVM virtualizált példányok), és csak Citrix PV- vagy AWS PV-illesztőkkel rendelkezhet. A Red Hat PV-illesztőket futtató példányok **nem** támogatottak.
-
-- A mobilitási szolgáltatásnak az összes replikálni kívánt virtuális gépen telepítve kell lennie. 
+  - Windows Server 2016 
+  - Windows Server 2012 R2
+  - Windows Server 2012 
+  - A Windows Server 2008 R2 SP1 vagy újabb 64 bites verziója
+  - Red Hat Enterprise Linux 6.7 (csak HVM virtualizált példányok), Citrix PV- vagy AWS PV-illesztővel. A RedHat PV-illesztőket futtató példányok *nem* támogatottak.
+ - A mobilitási szolgáltatásnak az összes replikálni kívánt virtuális gépen telepítve kell lennie. 
 
     > [!IMPORTANT]
     > A Site Recovery automatikusan telepíti ezt a szolgáltatást, ha engedélyezi a virtuális gép replikálását. Az automatikus telepítéshez elő kell készíteni egy fiókot az EC2-példányokon, amelynek használatával a Site Recovery eléri a virtuális gépet. Tartományi vagy helyi fiókot egyaránt használhat. 
