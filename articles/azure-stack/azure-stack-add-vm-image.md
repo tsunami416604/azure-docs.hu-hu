@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: get-started-article
-ms.date: 06/27/2018
+ms.date: 08/30/2018
 ms.author: mabrigg
 ms.reviewer: kivenkat
-ms.openlocfilehash: 5c2088ab39e32c049ce867698e84efba759c9a87
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 7f16f53af7d1c2f46c5c61974601833fafc8f828
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37447336"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43698774"
 ---
 # <a name="make-a-virtual-machine-image-available-in-azure-stack"></a>Egy virtuális gép rendszerképének elérhetővé az Azure Stackben
 
@@ -37,7 +37,7 @@ Lemezképek által blobtárolók URI azonosítójához használandó képesnek k
 
 1. [Windows Virtuálisgép-Rendszerkép feltöltése az Azure-bA a Resource Manager üzembe helyezések](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/) vagy egy Linux-rendszerképek, kövesse a leírt utasításokat [üzembe helyezése Linux rendszerű virtuális gépek az Azure Stacken](azure-stack-linux.md). Mielőtt feltölti a lemezképet, fontos a következő tényezőket kell figyelembe venni:
 
-   - Az Azure Stack a rögzített lemezes VHD formátumot támogatja. A rögzített formátum szerkezet a logikai lemezt lineárisan fájlon belül, így a lemez eltolás X van tárolva X. A blob végén egy kis lábléc írja le a VHD tulajdonságait. Győződjön meg arról, ha a lemezt rögzített, használja a [Get-VHD](https://docs.microsoft.com/powershell/module/hyper-v/get-vhd?view=win10-ps) PowerShell-parancsot.  
+   - Az Azure Stack csak támogatja. generációs VM egy (1) a rögzített méretű lemezt VHD-t a formázása. A rögzített formátum szerkezet a logikai lemezt lineárisan fájlon belül, így a lemez eltolás X van tárolva X. A blob végén egy kis lábléc írja le a VHD tulajdonságait. Győződjön meg arról, ha a lemezt rögzített, használja a [Get-VHD](https://docs.microsoft.com/powershell/module/hyper-v/get-vhd?view=win10-ps) PowerShell-parancsot.  
 
     > [!IMPORTANT]
     >  Az Azure Stack nem támogatja a dinamikus lemez VHD-k. Egy virtuális Géphez van csatlakoztatva dinamikus lemez átméretezése sikertelen állapotban hagyja a virtuális Gépet. A probléma megoldásához törölje a virtuális Gépet a virtuális gép lemezét, a VHD-blob storage-fiókban lévő törlése nélkül. A, a konvertálás a virtuális Merevlemezt a dinamikus lemezről egy rögzített méretű lemezt, és hozza létre újból a virtuális gép.
@@ -48,7 +48,7 @@ Lemezképek által blobtárolók URI azonosítójához használandó képesnek k
 
    * Jegyezze fel a blob Storage URI, amikor feltölti a lemezképet. A blob storage URI azonosító formátuma a következő: *&lt;storageAccount&gt;/&lt;blobContainer&gt;/&lt;targetVHDName&gt;*.vhd.
 
-   * Ahhoz, hogy a blob névtelenül elérhető-e, nyissa meg a storage-fiók blob tárolót, a Virtuálisgép-lemezkép VHD feltöltése. Válassza ki **Blob**, majd válassza ki **hozzáférési szabályzat**. Igény szerint is inkább a tároló közös hozzáférésű jogosultságkód létrehozása, és adja meg a blob URI részeként.
+   * Ahhoz, hogy a blob névtelenül elérhető-e, nyissa meg a storage-fiók blob tárolót, a Virtuálisgép-lemezkép VHD feltöltése. Válassza ki **Blob**, majd válassza ki **hozzáférési szabályzat**. Igény szerint is inkább a tároló közös hozzáférésű jogosultságkód létrehozása, és adja meg a blob URI részeként. Ez a lépés biztosítja, hogy a blob hozzáadhatja ezt képként használandó érhető el. Ha a blob nem érhető el névtelenül, a Virtuálisgép-lemezkép létrejön a hibás állapotban.
 
    ![Ugrás a storage-fiók BLOB](./media/azure-stack-add-vm-image/image1.png)
 

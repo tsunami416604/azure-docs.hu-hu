@@ -103,6 +103,7 @@
 #### [Tevékenységnaplók irányítása egy Azure Event Hub-központba](reports-monitoring/quickstart-azure-monitor-stream-logs-to-event-hub.md)
 #### [Tevékenységnaplók archiválása egy Azure Storage-fiókba](reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account.md)
 #### [Tevékenységnaplók integrálása a Splunkkal az Azure Monitor használatával](reports-monitoring/tutorial-integrate-activity-logs-with-splunk.md)
+#### [Tevékenységnaplók integrálása a SumoLogickal az Azure Monitor használatával](reports-monitoring/howto-integrate-activity-logs-with-sumologic.md)
 
 ### Referencia
 #### [Megőrzés](reports-monitoring/reference-reports-data-retention.md)
@@ -332,6 +333,8 @@
 ### [Felhasználói hozzáférések kezelése felülvizsgálatokkal](active-directory-azure-ad-controls-manage-user-access-with-access-reviews.md)
 ### [Programok és vezérlők kezelése](active-directory-azure-ad-controls-manage-programs-controls.md)
 ### [Hozzáférési felülvizsgálatok eredményeinek lekérése](active-directory-azure-ad-controls-retrieve-access-review.md)
+
+## [Használati feltételek](active-directory-tou.md)
 
 ## Identitások védelme
 

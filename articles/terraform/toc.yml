@@ -1,5 +1,5 @@
 items:
-- name: Terraform az Azure-on – Dokumentáció
+- name: Terraform az Azure-ban – dokumentáció
   href: index.yml
 - name: Áttekintés
   items:
@@ -16,23 +16,33 @@ items:
   expanded: true
 - name: Oktatóanyagok
   items:
-  - name: Kubernetes-fürt létrehozása az AKS és a Terraform használatával
-    href: terraform-create-k8s-cluster-with-tf-and-aks.md
-  - name: Terraform- és Azure-szolgáltatók üzembe helyezési pontjai
-    href: terraform-slot-walkthru.md
-  - name: Engedélyezett MSI-vel rendelkező Terraform virtuális gép létrehozása
-    href: terraform-vm-msi.md
-  - name: Virtuálisgép-fürt létrehozása Terraform-modulokkal
-    href: terraform-create-vm-cluster-module.md
-  - name: Virtuálisgép-fürt létrehozása Terraformmal és HCL-lel
-    href: terraform-create-vm-cluster-with-infrastructure.md
-  - name: VM-méretezési készlet kiépítése infrastruktúrával
-    href: terraform-create-vm-scaleset-network-disks-hcl.md
-  - name: VM-méretezési készlet kiépítése Packer egyéni rendszerképpel
-    href: terraform-create-vm-scaleset-network-disks-using-packer-hcl.md
+  - name: App Service
+    items:
+    - name: Terraform- és Azure-szolgáltatók üzembe helyezési pontjai
+      href: terraform-slot-walkthru.md
+  - name: Containers
+    items:
+    - name: Kubernetes-fürt létrehozása az AKS és a Terraform használatával
+      href: terraform-create-k8s-cluster-with-tf-and-aks.md
+  - name: Infrastruktúra
+    items:
+    - name: Engedélyezett MSI-vel rendelkező Terraform virtuális gép létrehozása
+      href: terraform-vm-msi.md
+    - name: Virtuálisgép-fürt létrehozása Terraform-modulokkal
+      href: terraform-create-vm-cluster-module.md
+    - name: Virtuálisgép-fürt létrehozása Terraformmal és HCL-lel
+      href: terraform-create-vm-cluster-with-infrastructure.md
+    - name: VM-méretezési készlet kiépítése infrastruktúrával
+      href: terraform-create-vm-scaleset-network-disks-hcl.md
+    - name: VM-méretezési készlet kiépítése Packer egyéni rendszerképpel
+      href: terraform-create-vm-scaleset-network-disks-using-packer-hcl.md
+  - name: Eszközök
+    items:
+    - name: A Visual Studio Code Terraform bővítményének telepítése
+      href: terraform-vscode-extension.md
 - name: Alapelvek
   items:
-  - name: Cloud Shell-integráció
+  - name: Azure Cloud Shell-integráció
     href: terraform-cloud-shell.md
 - name: Példák
   items:
@@ -44,17 +54,15 @@ items:
     href: https://registry.terraform.io/modules/Azure
   - name: Terraform-referencia
     href: http://aka.ms/terraform
-  - name: Azure Terraform VS Code-bővítmény
-    href: terraform-vscode-extension.md
 - name: További források
   items:
   - name: Azure és Terraform
     href: https://azure.microsoft.com/solutions/devops/terraform/
   - name: Azure-ütemterv
     href: https://azure.microsoft.com/roadmap/
-ms.openlocfilehash: 349348f2230005831c1ad68eb7f48dfaa8f4b78c
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: e6c4637618d794f96db8ed9ca8eb063a62f704a1
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "41927677"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43663536"

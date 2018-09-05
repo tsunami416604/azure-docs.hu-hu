@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: jovanpop
 ms.reviewer: carlrab, sashan
-ms.openlocfilehash: f056bfa33e2a43af60357d6bf50a0b9cd8d7f254
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 7a60d800ce76f8ff9a903cc068fa7bc87cd33f3f
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43286297"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43700635"
 ---
 # <a name="high-availability-and-azure-sql-database"></a>Magas rendelkezésre állású és az Azure SQL Database
 
@@ -41,7 +41,7 @@ A standard szintű rendelkezésre állás modellben az alábbi két réteg:
 - Egy állapot nélküli számítási rétegben, amely a sqlserver.exe folyamat fut, és csak átmeneti és a gyorsítótárazott adatokat (például – tervgyorsítótárból, pufferkészletben, oszlop store készlet) tartalmazza. Ez az állapot nélküli SQL Server-csomóponton, inicializálja a folyamatot, a csomópont állapotát vezérli és hajt végre feladatátvételt egy másik helyre, szükség esetén az Azure Service Fabric szolgáltatást.
 - Állapot-nyilvántartó adatrétege-adatbázisfájlokat (.mdf/.ldf), amely az Azure Premium Storage szolgáltatásban tárolódnak. Az Azure Storage garantálja, hogy az bármilyen adatbázis-fájlban lévő bármelyik rekordra adatvesztés nélkül lesz. Az Azure Storage rendelkezik beépített rendelkezésre állása/adatredundancia, amely biztosítja, hogy a naplófájl minden rekord vagy adatfájlban lap megőrzi még akkor is, ha az SQL Server-folyamat leáll.
 
-Alapul szolgáló infrastruktúra egy része sikertelen lesz, amikor az adatbázis-kezelő vagy az operációs rendszer frissítve van, vagy az Sql Server-folyamat kritikus probléma észlelése esetén az Azure Service Fabric az állapot nélküli SQL Server-folyamat áthelyezi egy másik az állapot nélküli számítási csomóponton. Nincs meg az új számítási szolgáltatás feladatátvétel esetén futtassa a feladatátvételi idő minimalizálása érdekében váró tartalék csomópontok. Nincs hatással az Azure Storage-rétegből az adatokat, és adatokat vagy naplófájlokat csatolt újrainicializált SQL Server folyamatán. Várt feladatátvételi idő másodpercben mérhető. Ez a folyamat garantálja a 99,99 %-os rendelkezésre állást, de előfordulhat, hogy rendelkezik néhány teljesítményére nagy terhelést, amely miatt a váltás ideje fut-e a, és azt a tényt az új SQL Server-csomópont hideg gyorsítótáras kezdődik.
+Alapul szolgáló infrastruktúra egy része sikertelen lesz, amikor az adatbázis-kezelő vagy az operációs rendszer frissítve van, vagy az Sql Server-folyamat kritikus probléma észlelése esetén az Azure Service Fabric az állapot nélküli SQL Server-folyamat áthelyezi egy másik az állapot nélküli számítási csomóponton. Nincs meg az új számítási szolgáltatás feladatátvétel esetén futtassa a feladatátvételi idő minimalizálása érdekében váró tartalék csomópontok. Nincs hatással az Azure Storage-rétegből az adatokat, és adatokat vagy naplófájlokat csatolt újrainicializált SQL Server folyamatán. Ez a folyamat garantálja a 99,99 %-os rendelkezésre állást, de előfordulhat, hogy rendelkezik néhány teljesítményére nagy terhelést, amely miatt a váltás ideje fut-e a, és azt a tényt az új SQL Server-csomópont hideg gyorsítótáras kezdődik.
 
 ## <a name="premiumbusiness-critical-availability"></a>Prémium és üzletileg kritikus fontosságú rendelkezésre állása
 
@@ -51,7 +51,7 @@ A prémium szintű modellben az Azure SQL database egyesíti a számítási és 
 
 ![Database engine fürtben](media/sql-database-managed-instance/business-critical-service-tier.png)
 
-Az SQL Server adatbázismotor folyamat és a mögöttes mdf/ldf-fájlok kerülnek ugyanazon a csomóponton a helyileg csatlakoztatott SSD-tárolás biztosítja a számítási feladathoz alacsony késést biztosít. Magas rendelkezésre állású standard használatával lett megvalósítva [Always On rendelkezésre állási csoportok](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server). Minden adatbázis, a fürt egy elsődleges adatbázis, amely elérhető ügyfél számítási feladata, és a egy három másodlagos folyamat adatok másolatát tartalmazó adatbázis-csomópont. Az elsődleges csomópont folyamatosan leküldi a módosítások a másodlagos csomópontot annak érdekében, hogy az adatok elérhető legyen a másodlagos replikákon. Ha bármilyen okból leáll az elsődleges csomópont. Feladatátvétel az SQL Server adatbázismotor kezeli – egy másodlagos másodpéldány az elsődleges csomópont válik, és annak biztosítására, elég a fürtben található csomópontok jön létre egy új másodlagos replikára. A számítási feladatok a rendszer automatikusan átirányítja az új elsődleges csomópontra. Feladatátvételi idő ezredmásodpercben, és az új elsődleges példány azonnal készen áll a folytatásra kérelmek.
+Az SQL Server adatbázismotor folyamat és a mögöttes mdf/ldf-fájlok kerülnek ugyanazon a csomóponton a helyileg csatlakoztatott SSD-tárolás biztosítja a számítási feladathoz alacsony késést biztosít. Magas rendelkezésre állású standard használatával lett megvalósítva [Always On rendelkezésre állási csoportok](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server). Minden adatbázis, a fürt egy elsődleges adatbázis, amely elérhető ügyfél számítási feladata, és a egy három másodlagos folyamat adatok másolatát tartalmazó adatbázis-csomópont. Az elsődleges csomópont folyamatosan leküldi a módosítások a másodlagos csomópontot annak érdekében, hogy az adatok elérhető legyen a másodlagos replikákon. Ha bármilyen okból leáll az elsődleges csomópont. Feladatátvétel az SQL Server adatbázismotor kezeli – egy másodlagos másodpéldány az elsődleges csomópont válik, és annak biztosítására, elég a fürtben található csomópontok jön létre egy új másodlagos replikára. A számítási feladatok a rendszer automatikusan átirányítja az új elsődleges csomópontra.
 
 Emellett a kritikus fontosságú üzleti fürt biztosít beépített csak olvasható csomópont használt csak olvasási lekérdezések futtatása (például a jelentések), amely az elsődleges számítási feladat teljesítményét nem befolyásolja. 
 

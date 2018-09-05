@@ -1,14 +1,14 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 97bdd968297b301218891ce9ff1c98e5e894d5e9
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 3fe9c3628dd914197c5b479197add5a6bd127e78
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43108475"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43663502"
 documentType: LandingData
-title: Chef szoftver az Azure-ban – Dokumentáció
+title: Chef szoftver az Azure-ban – dokumentáció
 metadata:
-  title: Chef szoftver az Azure-ban – Dokumentáció – Oktatóanyagok, minták, referenciák és forrásanyagok
+  title: Chef szoftver az Azure-ban – dokumentáció – oktatóanyagok, minták, referenciák és forrásanyagok
   description: A Chef szoftver egy Linux és Windows rendszerhez készült DevOps automatizálási platformot biztosít, amely lehetővé teszi a fizikai és a virtuális kiszolgálók konfigurációjának kezelését. A rövid útmutatók és oktatóanyagok segítségével megismerheti, hogyan használhatók a Chef szoftvertermékek az infrastruktúra kódként való használatára vonatkozó receptek automatizálására, illetve a virtuális gépek kezelésére és üzembe helyezésére az Azure-ban.
   ms.service: chef
   keywords: chef, azure, devops, oktatóanyagok, minták, referencia

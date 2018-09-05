@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 06/08/2018
+ms.date: 09/04/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 5fbce0c20e66eec0e7d7023344051fcf302af677
-ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
+ms.openlocfilehash: 391cc4ca4b34149aeda54a60bfe6f6949e5a379b
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2018
-ms.locfileid: "43382612"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43697747"
 ---
 # <a name="tutorial-deploy-apps-to-azure-and-azure-stack"></a>Oktatóanyag: alkalmazások telepítése az Azure és az Azure Stackben
 
@@ -108,10 +108,11 @@ Az alábbi lépések bemutatják, hogy mi szükséges hitelesítés konfigurál�
 
 ### <a name="create-a-service-principal"></a>Egyszerű szolgáltatás létrehozása
 
-Tekintse meg a [egyszerű szolgáltatás létrehozása](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications) utasítások a szolgáltatásnév létrehozásához, és válassza a **Web App és az API** az alkalmazás típusához vagy [a PowerShell-parancsfájllal](https://github.com/Microsoft/vsts-rm-extensions/blob/master/TaskModules/powershell/Azure/SPNCreation.ps1#L5)leírtak [Itt](https://docs.microsoft.com/en-us/vsts/pipelines/library/connect-to-azure?view=vsts#create-an-azure-resource-manager-service-connection-with-an-existing-service-principal).
+Tekintse meg a [egyszerű szolgáltatás létrehozása](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications) utasításokat az egyszerű szolgáltatás létrehozásához. Válasszon **Web App és az API** az alkalmazás típusához vagy [a PowerShell-szkripttel](https://github.com/Microsoft/vsts-rm-extensions/blob/master/TaskModules/powershell/Azure/SPNCreation.ps1#L5) a cikkben leírtak szerint [hozzon létre egy meglévő szolgáltatás Azure Resource Manager-szolgáltatás kapcsolatot egyszerű ](https://docs.microsoft.com/vsts/pipelines/library/connect-to-azure?view=vsts#create-an-azure-resource-manager-service-connection-with-an-existing-service-principal).
 
- > [!Note]
- > Ha a szkript egy Azure Stack az Azure Resource Manager-végpont létrehozása fog használni, át kell a `-azureStackManagementURL` és `-environmentName` paraméter, amely https://management.local.azurestack.external/ és *AzureStack*.
+ > [!Note]  
+ > Ha a parancsfájl használatával hozzon létre egy Azure Stack az Azure Resource Manager-végpontot, teljesítenie kell a a **- azureStackManagementURL** paraméter és **- environmentName** paraméter. Példa:  
+> `-azureStackManagementURL https://management.local.azurestack.external -environmentName AzureStack`
 
 ### <a name="create-an-access-key"></a>Hozzáférési kulcs létrehozása
 
@@ -264,17 +265,17 @@ Végpontok létrehozása a Visual Studio online-hoz (VSTO) build helyezzen üzem
 9. A **felhasználók és csoportok hozzáadása**, írjon be egy felhasználónevet, és válassza ki, hogy a felhasználó a felhasználók listájából.
 10. Válassza ki **módosítások mentése**.
 
-## <a name="create-azure-stack-endpoint"></a>Az Azure Stack-végpont létrehozása
+## <a name="create-an-azure-stack-endpoint"></a>Az Azure Stack-végpont létrehozása
 
-Ellenőrizze [ez](https://docs.microsoft.com/en-us/vsts/pipelines/library/connect-to-azure?view=vsts#create-an-azure-resource-manager-service-connection-with-an-existing-service-principal) hozzon létre egy szolgáltatás-kapcsolatot egy meglévő szolgáltatás egyszerű, és használja a következő hozzárendelést dokumentáció:
+Az utasítások a [kapcsolatot hozhat létre egy Azure Resource Manager szolgáltatás egy meglévő szolgáltatás egyszerű ](https://docs.microsoft.com/vsts/pipelines/library/connect-to-azure?view=vsts#create-an-azure-resource-manager-service-connection-with-an-existing-service-principal) hozzon létre egy szolgáltatás-kapcsolatot egy meglévő szolgáltatás egyszerű, és használja a következő társítás a cikk:
 
 - Környezet: AzureStack
 - Környezet URL-címe: Hasonló dolgot `https://management.local.azurestack.external`
 - Előfizetés azonosítója: Felhasználói előfizetés-azonosító az Azure Stackben
 - Előfizetés neve: az Azure Stack felhasználói előfizetés neve
-- Egyszerű szolgáltatás ügyfél-azonosító: a résztvevő-Azonosítóval [ez](https://docs.microsoft.com/en-us/azure/azure-stack/user/azure-stack-solution-pipeline#create-a-service-principal) szakasz ebben a cikkben.
+- Egyszerű szolgáltatás ügyfél-azonosító: a résztvevő-Azonosítóval [ez](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-pipeline#create-a-service-principal) szakasz ebben a cikkben.
 - Egyszerű szolgáltatásnév kulcsát: A kulcsát, az ugyanebben a cikkben (vagy a jelszót, ha a szkriptet használta).
-- Bérlőazonosító: A bérlő Azonosítóját kapott [Itt](https://docs.microsoft.com/en-us/azure/azure-stack/user/azure-stack-solution-pipeline#get-the-tenant-id).
+- Bérlőazonosító: A bérlő Azonosítóját kérheti le az utasítás a következő [a Bérlőazonosító beszerzése](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-pipeline#get-the-tenant-id).
 
 Most, hogy a végpont a létrehozás, a vsts-ben az Azure Stack kapcsolat készen áll a használatra. A fordító-ügynökhöz az Azure Stackben utasításokat lekérdezi a VSTS-ből, és ezután az ügynök közvetíti a kommunikációt az Azure Stack-végpontjának információit.
 
@@ -316,7 +317,7 @@ CI/CD hibrid alkalmazás kódja és az infrastruktúra kódjának alkalmazhatja.
 ### <a name="create-the-build-definition"></a>A build definíció létrehozása
 
 1. Jelentkezzen be a VSTS-fiókkal, amely a builddefiníció hozhat létre.
-2. Keresse meg a **hozhat létre webes Applicaiton** a projekt lapját.
+2. Keresse meg a **webes alkalmazás készítése** a projekt lapját.
 
 3. A **argumentumok**, adjon hozzá **- r win10-x64** kódot. Ez egy önálló telepítés a .NET használatával aktiválásához szükséges alapvető.
 
@@ -454,7 +455,7 @@ Ez a szakasz bemutatja, hogyan figyelheti és nyomon követheti a központi tele
 
     Kiválaszthatja, hogy egy személy ikonra a **művelet** oszlop ki a központi telepítés jóváhagyása (vagy elutasítása), és azokat a megadott üzenet központi telepítés előtti vagy utáni jóváhagyásra.
 
-2. Az üzembe helyezés befejezését követően a teljes log fájl a jobb oldali ablaktáblán jelenik meg. Kiválaszthatja az esetleges **lépés** a bal oldali panelen, egy egyetlen, például a "Feladat inicializálása" lépés a naplófájlban talál. Egyéni naplók megtekinthetik megkönnyíti a követése és hibakeresése az általános üzembe helyezési részeit. Emellett **mentése** egy lépést, a naplófájl vagy **az összes napló letöltése zip-fájlként**.
+2. Az üzembe helyezés befejezését követően a teljes log fájl a jobb oldali ablaktáblán jelenik meg. Kiválaszthatja az esetleges **lépés** a naplófájl az egyetlen lépésben, például a "Feladat inicializálása" megtekintéséhez a bal oldali panelen. Egyéni naplók megtekinthetik megkönnyíti a követése és hibakeresése az általános üzembe helyezési részeit. Emellett **mentése** egy lépést, a naplófájl vagy **az összes napló letöltése zip-fájlként**.
 
     ![Kiadási naplók](media\azure-stack-solution-hybrid-pipeline\203.png)
 
