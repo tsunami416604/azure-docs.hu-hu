@@ -3,7 +3,7 @@ title: Az Azure Service Bus-üzenettémák és előfizetések használata a node
 description: Megtudhatja, hogyan használhatja a Service Bus-üzenettémák és előfizetések az Azure Node.js-alkalmazásból.
 services: service-bus-messaging
 documentationcenter: nodejs
-author: sethmanheim
+author: spelluru
 manager: timlt
 editor: ''
 ms.assetid: b9f5db85-7b6c-4cc7-bd2c-bd3087c99875
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/10/2017
-ms.author: sethm
-ms.openlocfilehash: d3a7ebd135f705a6a3ea91feb4e037a9ed6d0c79
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
-ms.translationtype: MT
+ms.author: spelluru
+ms.openlocfilehash: fbb43d07296ca573f0c4cb9f1e10e005633ade06
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38704996"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43700096"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-nodejs"></a>Hogyan használható a Service Bus-üzenettémák és előfizetések a node.js használatával
 
@@ -330,7 +330,7 @@ Most, hogy megismerte a Service Bus-üzenettémakörök alapjait, kövesse az al
 
 * Lásd: [üzenetsorok, témakörök és előfizetések][Queues, topics, and subscriptions].
 * Az [SqlFilter][SqlFilter] API-referenciája.
-* Látogasson el a [Azure SDK a Node] [ Azure SDK for Node] tárházban a Githubon.
+* Látogasson el a [Azure SDK a Node][Azure SDK for Node] tárházban a Githubon.
 
 [Azure SDK for Node]: https://github.com/Azure/azure-sdk-for-node
 [Azure portal]: https://portal.azure.com
