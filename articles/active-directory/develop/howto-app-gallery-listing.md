@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/14/2018
+ms.date: 08/31/2018
 ms.author: celested
 ms.reviewer: elisol, bryanla
 ms.custom: aaddev
-ms.openlocfilehash: 8c9d1ee51acdfff188e0d6483f723fbb08e17bd5
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: e5db7b9bed674011c2922f026c301172f347f53f
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39601954"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43666308"
 ---
 # <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>Az alkalmazás szerepeltetése az Azure Active Directory alkalmazáskatalógusában
 
@@ -45,11 +45,23 @@ Az Azure Active Directory (Azure AD) egy olyan felhőalapú identitásszolgálta
 
 *  Ügyfeleink, akik SCIM használhatja ugyanahhoz az alkalmazáshoz tartozó kiépítés.
 
-##  <a name="prerequisites-implement-federation-protocol"></a>Előfeltételek: Megvalósítása federation protokollal
+## <a name="prerequisites"></a>Előfeltételek
+
+- Az összevont alkalmazások (Open ID és az SAML/WS-Fed) az alkalmazás támogatnia kell az Azure AD katalógusából származó címtárban való megjelenésről a SaaS-modell. A vállalati katalógus alkalmazások támogatnia kell a több ügyfél-konfiguráció, és nem bármely adott ügyfél.
+
+- Az Open ID Connect, az alkalmazás legyen, több-bérlős és [Azure ad-ben hozzájárulási keretrendszer](quickstart-v1-integrate-apps-with-azure-ad.md#overview-of-the-consent-framework) megfelelően valósuljon meg az alkalmazáshoz. A felhasználó a bejelentkezési kérelem küldhet egy közös végpontot, hogy minden ügyfél biztosíthat hozzájárulás az alkalmazáshoz. Szabályozhatja a felhasználói hozzáférést a bérlő Azonosítóját és a felhasználó egyszerű Felhasználónevét a jogkivonat érkezett alapján.
+
+- Az SAML 2.0 vagy WS-Fed az alkalmazás rendelkeznie kell a funkció a SAML/WS-Fed egyszeri bejelentkezési integrálni SP vagy Identitásszolgáltató módban. Ellenőrizze, hogy ez megfelelően működik-e a kérés elküldése előtt.
+
+- Jelszó egyszeri bejelentkezéshez győződjön meg arról, hogy az alkalmazás támogatja-e a űrlap-hitelesítést, így a jelszótárolást egyszeri bejelentkezés munkahelyi megszerezni a várt módon teheti meg.
+
+- A felhasználók automatikus átadása kéréseket alkalmazás szerepelnie kell a katalógusban az egyszeri bejelentkezési szolgáltatás engedélyezve van a fent leírt összevonási protokollt használja. Egyszeri Bejelentkezéssel és Felhasználókiépítés együtt a portálon, ha az még nem szereplő igényelhet.
+
+##  <a name="implementing-sso-using-federation-protocol"></a>Az egyszeri bejelentkezés összevonási protokollt használó implementálása
 
 Az Azure AD-alkalmazásgyűjtemény alkalmazás listázásához először megvalósítása Azure AD által támogatott következő összevonási protokoll, és fogadja el az Azure AD application Gallery feltételek és kikötések. Olvassa el a feltételeket és kikötéseket, az Azure AD alkalmazáskatalógusában a [Itt](https://azure.microsoft.com/en-us/support/legal/active-directory-app-gallery-terms/).
 
-*   **OpenID Connect**: a több-bérlős alkalmazás létrehozása az Azure ad-ben, és végrehajtja a [Azure ad-ben hozzájárulási keretrendszer](quickstart-v1-integrate-apps-with-azure-ad.md#overview-of-the-consent-framework) az alkalmazáshoz. A bejelentkezési kérés küldése egy közös végpontot, hogy minden ügyfél biztosíthat hozzájárulás az alkalmazáshoz. Szabályozhatja a felhasználói hozzáférést a bérlő Azonosítóját és a felhasználó egyszerű Felhasználónevét a jogkivonat érkezett alapján. Az alkalmazás integrálása az Azure ad-ben, kövesse a [fejlesztők utasításokat](authentication-scenarios.md).
+*   **OpenID Connect**: az alkalmazás integrálása az Azure ad-ben, az Open ID Connect protokoll használatával, kövesse a [fejlesztők utasításokat](authentication-scenarios.md).
 
     ![A támadás idővonalának, a katalógusban a OpenID Connect alkalmazás listázása](./media/howto-app-gallery-listing/openid.png)
 
@@ -57,21 +69,23 @@ Az Azure AD-alkalmazásgyűjtemény alkalmazás listázásához először megval
 
     * Ha rendelkezik hozzáféréssel kapcsolatos problémákat, lépjen kapcsolatba a [Azure AD SSO integrációs csapat](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). 
 
-*   **SAML 2.0** vagy **WS-Fed**: az alkalmazásnak kell teszi, hogy a SAML/WS-Fed egyszeri bejelentkezési integrálni SP vagy Identitásszolgáltató módban van. Ha az alkalmazás támogatja az SAML 2.0, integrálva közvetlenül az Azure AD-bérlő használatával a [utasításokat egy egyéni alkalmazás hozzáadása](../active-directory-saas-custom-apps.md).
+*   **SAML 2.0** vagy **WS-Fed**: Ha az alkalmazás támogatja az SAML 2.0, integrálva közvetlenül az Azure AD-bérlő használatával a [utasításokat egy egyéni alkalmazás hozzáadása](../active-directory-saas-custom-apps.md).
 
     ![A támadás idővonalának, a katalógusban a SAML 2.0 vagy WS-Fed alkalmazás listázása](./media/howto-app-gallery-listing/saml.png)
 
     * Ha a katalógusban található az alkalmazás listához hozzáadni kívánt **SAML 2.0** vagy **WS-Fed**válassza **SAMl 2.0 vagy WS-Fed** a fentiek szerint.
 
-    * Ha rendelkezik hozzáféréssel kapcsolatos problémákat, lépjen kapcsolatba a [Azure AD SSO integrációs csapat](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). 
-
-*   **Jelszavas egyszeri Bejelentkezést**: hozzon létre egy webalkalmazást, amely rendelkezik egy HTML-bejelentkezési lap konfigurálása [jelszóalapú egyszeri bejelentkezés](../manage-apps/what-is-single-sign-on.md). Jelszavas egyszeri Bejelentkezést, jelszó vaulting, engedélyezi a kezelheti a felhasználói hozzáférés és a jelszavakat a webes alkalmazások, amelyek nem támogatják az identitás-összevonást is hivatkoznak. Emellett akkor is, amelyben több felhasználónak kell megosztani egyetlen fiókban, mint például a szervezet közösségi alkalmazás fiókok forgatókönyvek esetén hasznos.
-
-    ![A támadás idővonalának, a katalógusban a jelszó SSO-alkalmazás listázása](./media/howto-app-gallery-listing/passwordsso.png)
-
-    * Ha szeretne hozzáadni a listához az alkalmazás használatával, jelszó SSO, válassza ki a katalógus **jelszó SSO** a fentiek szerint.
-
     * Ha rendelkezik hozzáféréssel kapcsolatos problémákat, lépjen kapcsolatba a [Azure AD SSO integrációs csapat](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
+
+## <a name="implementing-sso-using-password-sso"></a>Az egyszeri bejelentkezés jelszó SSO használatával implementálása
+
+Hozzon létre egy webalkalmazást, amely rendelkezik egy HTML-bejelentkezési lap konfigurálása [jelszóalapú egyszeri bejelentkezés](../manage-apps/what-is-single-sign-on.md). Jelszavas egyszeri Bejelentkezést, jelszó vaulting, engedélyezi a kezelheti a felhasználói hozzáférés és a jelszavakat a webes alkalmazások, amelyek nem támogatják az identitás-összevonást is hivatkoznak. Emellett akkor is, amelyben több felhasználónak kell megosztani egyetlen fiókban, mint például a szervezet közösségi alkalmazás fiókok forgatókönyvek esetén hasznos.
+
+![A támadás idővonalának, a katalógusban a jelszó SSO-alkalmazás listázása](./media/howto-app-gallery-listing/passwordsso.png)
+
+* Ha szeretne hozzáadni a listához az alkalmazás használatával, jelszó SSO, válassza ki a katalógus **jelszó SSO** a fentiek szerint.
+
+* Ha rendelkezik hozzáféréssel kapcsolatos problémákat, lépjen kapcsolatba a [Azure AD SSO integrációs csapat](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
 
 ##  <a name="updateremove-existing-listing"></a>Meglévő listaelem frissítése és törlése
 
@@ -80,7 +94,7 @@ Frissítse vagy távolítsa el a meglévő alkalmazások az Azure AD-alkalmazás
 * Válassza ki a megfelelő beállítást az alábbi kép
 
     ![Idősor listázása a katalógusban a saml-kérelem](./media/howto-app-gallery-listing/updateorremove.png)
-    
+
     * Ha egy meglévő alkalmazás frissítésére, jelölje be **frissítse a meglévő alkalmazás listaelem**.
 
     * Ha el kívánja távolítani a meglévő alkalmazások az Azure AD katalógusából, válassza ki a **távolítsa el a meglévő alkalmazás listázása**

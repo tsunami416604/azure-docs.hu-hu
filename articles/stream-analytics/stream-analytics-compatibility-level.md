@@ -1,6 +1,6 @@
 ---
-title: Az Azure Stream Analytics-feladatok kompatibilitási szintjének ismertetése
-description: 'Útmutató: az Azure Stream Analytics-feladat és a fontosabb változását kompatibilitási szintjének beállítása a legfrissebb kompatibilitási szinten'
+title: Kompatibilitási szintje az Azure Stream Analytics-feladatok ismertetése
+description: Ismerje meg, hogyan állíthatja be az Azure Stream Analytics-feladat és a fontosabb változását foglalja össze a kompatibilitási szintje a legújabb kompatibilitási szinten
 services: stream-analytics
 author: jasonwhowell
 ms.author: jasonh
@@ -8,65 +8,65 @@ manager: kfile
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/03/2018
-ms.openlocfilehash: 32e73918b2dd98822d42d74002b705ff730145d9
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 136b21f026d208c09b50dfa8601de692e518774e
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30902974"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43699110"
 ---
-# <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Azure Stream Analytics-feladatok kompatibilitási szintje
+# <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Az Azure Stream Analytics-feladatok kompatibilitási szintje
  
-Kompatibilitási szintje a kiadási-specifikus viselkedéseket egy Azure Stream Analytics szolgáltatás hivatkozik. Az Azure Stream Analytics felügyelt szolgáltatást, a rendszeres szolgáltatás-frissítéseket, és a teljesítménnyel kapcsolatos fejlesztések. Általában frissítések automatikusan elérhetővé válnak a végfelhasználók számára. Egyes új funkcióit azonban fontosabb változását bevezeti, ilyen,-módosítás egy meglévő feladat, a folyamat, amely túlzottan ezeket a feladatokat stb származó adatok módosításakor. A kompatibilitási szintet jelent a Stream Analytics-ben bevezetett főbb változást szolgál. Jelentős változások történtek mindig az új kompatibilitási szintet. 
+Kompatibilitási szint egy Azure Stream Analytics szolgáltatás kiadás-specifikus viselkedéseit hivatkozik. Az Azure Stream Analytics egy felügyelt szolgáltatás, amelynek rendszeres szolgáltatásfrissítések, és a teljesítménnyel kapcsolatos fejlesztések. Általában frissítések automatikusan elérhetővé a végfelhasználók számára. Olyan új funkciókat azonban vezeti be a fontosabb változását foglalja össze az ilyen,-módosítási található egy meglévő feladat, módosítsa ezeket a feladatokat stb származó adatokat használ, a folyamatokban. A kompatibilitási szint jelent meg a Stream Analytics főbb változást megjelenítésére szolgál. Nagyobb módosítások mindig egy új kompatibilitási szintű jelennek meg. 
 
-Kompatibilitási szint gondoskodik arról, hogy futnak-e meglévő feladatok meghibásodás nélkül. Amikor létrehoz egy új Stream Analytics-feladat, célszerű a legújabb kompatibilitási szintet, amely elérhető az Ön használatával létrehozott is. 
+Kompatibilitási szint gondoskodik arról, hogy a meglévő feladatok futtatása minden hiba nélkül. Amikor létrehoz egy új Stream Analytics-feladat, célszerű a legújabb kompatibilitási szintje, amely az Ön számára elérhető használatával létrehozott. 
  
-## <a name="set-a-compatibility-level"></a>A kompatibilitási szint beállítása 
+## <a name="set-a-compatibility-level"></a>Kompatibilitási szint beállítása 
 
-Kompatibilitási szintje a stream analytics-feladat működését vezérli. Beállíthatja azt a kompatibilitási szint Stream Analytics-feladat vagy a portál használatával a [feladat REST API-hívás létrehozása](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-job). Az Azure Stream Analytics jelenleg két kompatibilitási szint által "1.0" és "1.1". Alapértelmezés szerint a kompatibilitási szintje "1.0" során az Azure Stream Analytics általánosan rendelkezésre álló operációs rendszerben megjelent. Az alapértelmezett érték frissítéséhez nyissa meg a meglévő Stream Analytics-feladat > Válassza ki a **kompatibilitási szint** beállítást **konfigurálása** szakaszt, és módosítsa az értéket. 
+Kompatibilitási szint szabályozza a stream analytics-feladat működését. A Stream Analytics-feladat kompatibilitási szintje is megadhatja a portálon vagy az a [feladat REST API-hívás létrehozásához](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-job). Az Azure Stream Analytics jelenleg támogatja a két kompatibilitási szintek-"1.0" és "1.1". Alapértelmezés szerint a kompatibilitási szintje "1.0", az Azure Stream Analytics általános rendelkezésre állás időszakában megjelent. Az alapértelmezett érték frissítéséhez keresse meg a meglévő Stream Analytics-feladat > Válassza ki a **kompatibilitási szint** beállítást **konfigurálása** szakaszt, és módosítsa az értéket. 
 
-Győződjön meg arról, hogy a kompatibilitási szint frissítése előtt állítsa le a feladatot. A kompatibilitási szintje nem lehet frissíteni, ha a feladat futó állapotban van. 
+Győződjön meg arról, hogy a kompatibilitási szint frissítése előtt állítsa le a feladatot. A kompatibilitási szint nem frissíthető, ha a feladat nem futó állapotban. 
 
 ![A portál kompatibilitási szint](media\stream-analytics-compatibility-level/image1.png)
 
  
-Ha frissíti a kompatibilitási szintet, a T-SQL nyelvű fordító érvényesíti a feladat a használatával, amely megfelel a kiválasztott kompatibilitási szintet. 
+Amikor frissíti a kompatibilitási szintet, a T-SQL nyelvű fordítón belülre érvényesíti a feladat a szintaxissal, amely megfelel a kiválasztott kompatibilitási szintet. 
 
-## <a name="major-changes-in-the-latest-compatibility-level-11"></a>A legfrissebb kompatibilitási szintet (1.1) lényegesen módosul
+## <a name="major-changes-in-the-latest-compatibility-level-11"></a>Fontosabb változását foglalja össze a legújabb kompatibilitási szinten (1.1-es)
 
-A következő jelentős változások történtek az 1.1-es kompatibilitási szintje:
+1.1-kompatibilitási szinten a következő jelentős változások történtek:
 
 * **Service Bus XML-formátuma**  
 
-  * **korábbi verziók:** Azure Stream Analytics használt DataContractSerializer, ezért az üzenet tartalma tartalmazza XML-címkék. Példa:
+  * **korábbi verziók:** Azure Stream Analytics használt DataContractSerializer, ezért az üzenet tartalmának XML-címkéket tartalmazza. Példa:
     
-   @\u0006string\b3http://schemas.microsoft.com/2003/10/Serialization/\u0001 {"SensorId": "1", "hőmérséklet": 64\}\u0001 
+   @\u0006string\b3http://schemas.microsoft.com/2003/10/Serialization/\u0001{ "SensorId": "1", "hőmérséklet": 64\}\u0001 
 
-  * **aktuális verzió:** az üzenet tartalma tartalmaz közvetlenül semmilyen további címkékkel adatfolyam. Példa:
+  * **jelenlegi verzió:** az üzenet tartalmának tartalmaz közvetlenül semmilyen további címkékkel a stream. Példa:
   
    {"SensorId": "1", "hőmérséklet": 64} 
  
-* **A mezőneveknek tárolásakor Kisbetű/nagybetű megkülönböztetése**  
+* **A mezőnevek megőrzése Kisbetű/nagybetű megkülönböztetése**  
 
-  * **korábbi verziók:** mezőnevek módosult kisbetű, amikor az Azure Stream Analytics-végrehajtó dolgozza fel. 
+  * **korábbi verziók:** mezőnevek alacsonyabb olyan esetekben, amikor az Azure Stream Analytics-motor általi feldolgozásának módosult. 
 
-  * **aktuális verzió:** Kisbetű/nagybetű megkülönböztetése a mezőnevek maradnak, ha azokat az Azure Stream Analytics-végrehajtó dolgozza fel. 
+  * **jelenlegi verzió:** Kisbetű/nagybetű megkülönböztetése mezők nevét a rendszer megőrzi, az Azure Stream Analytics-motor feldolgozásakor. 
 
   > [!NOTE] 
-  > Persisting Kisbetű/nagybetű megkülönböztetése még nem érhető el a biztonsági környezet használatával által üzemeltetett adatfolyam elemzési feladatok. Ennek eredményeképpen minden vannak kisbetűssé konvertált Ha a feladat peremhálózati üzemelteti. 
+  > Persisting Kisbetű/nagybetű megkülönböztetése még nem érhető el az Edge-környezetben üzemeltetett Stream elemzési feladatok. Ennek eredményeképpen minden mezőnevek vannak kisbetűssé konvertált, ha a feladat az Edge-ben üzemel. 
 
 * **FloatNaNDeserializationDisabled**  
 
-  * **korábbi verziók:** CREATE TABLE parancs nem volt szűrése események NaN (nem szám. Például végtelen, - végtelen) egy LEBEGŐPONTOS oszlop írja be, mert ezeket a számokat az dokumentált tartományon kívül van.
+  * **korábbi verziók:** CREATE TABLE parancs nem fejeződött az NaN (nem szám az események szűrése. Például végtelenig, - Infinity) egy LEBEGŐPONTOS oszlop írja be, mert ezek a számok a dokumentált tartományon vannak.
 
-  * **aktuális verzió:** CREATE TABLE lehetővé teszi, hogy adjon meg egy erős sémát. A Stream Analytics-motor ellenőrzi, hogy megfelel-e az adatok ebben a sémában. Ebben a modellben a parancs szűrhetők az események NaN értékeket. 
+  * **jelenlegi verzió:** CREATE TABLE lehetővé teszi, hogy adjon meg egy erős sémát. A Stream Analytics-motor ellenőrzi, hogy az adatok megfelel-e a séma. Ebben a modellben a parancs szűrheti NaN értéket tartalmazó eseményeket. 
 
-* **Tiltsa le az automatikus upcast datetime karakterláncok a JSON-ban.**  
+* **Tiltsa le az automatikus upcast dátum/idő karakterlánc JSON-fájlban.**  
 
-  * **korábbi verziók:** a JSON-elemző automatikusan upcast karakterlánc dátum/idő/zóna információk dátum/idő értékek írja be, és átalakítása UTC lenne. Ennek következtében az időzónaadatok elvesztését.
+  * **korábbi verziók:** a JSON-elemző, akkor automatikusan upcast karakterlánc dátum és idő dátum/időzóna információkat értékeket írja be, és átalakítása (UTC). Ennek következtében elvesztése az időzóna adatait.
 
-  * **aktuális verzió:** van több automatikusan upcast, dátum/idő/zóna információkkal dátum és idő típusra karakterláncértékek tömbjeként ábrázolva. Ennek eredményeképpen az időzónaadatok maradnak. 
+  * **jelenlegi verzió:** van több automatikusan upcast, a karakterlánc-értékeket dátum/idő típus dátum/időzóna információkat. Ennek eredményeképpen az időzónaadatok tartani. 
 
 ## <a name="next-steps"></a>További lépések
-* [Azure Stream Analytics a hibaelhárítási útmutatója](stream-analytics-troubleshooting-guide.md)
-* [Stream Analytics állapotfigyelő erőforráspanelen](stream-analytics-resource-health.md)
+* [Az Azure Stream Analytics – hibaelhárítási útmutató](stream-analytics-troubleshooting-guide.md)
+* [Stream Analytics erőforrás-állapot panel](stream-analytics-resource-health.md)

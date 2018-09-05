@@ -13,12 +13,12 @@ ms.component: pim
 ms.date: 08/27/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 7c990fc0d385af9527bf55339b2fa617e589ec0e
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 59dab4651366c3ad6579e0da660baee0c653d1a3
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43190586"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43666002"
 ---
 # <a name="activate-my-azure-ad-directory-roles-in-pim"></a>A PIM az Azure AD-címtárbeli szerepkörök aktiválása
 
@@ -26,11 +26,11 @@ Az Azure Active Directory (Azure AD) Privileged Identity Management (PIM) egysze
 
 Ha Ön történtek egy rendszergazdai szerepkör jogosult, ez azt jelenti, is aktiválhatja a szerepkört, amikor szüksége van privilegizált műveletek elvégzéséhez. Például alkalmanként kezelheti az Office 365-funkciókat, ha a szervezet a kiemelt szerepkörű rendszergazdák nem teheti elérhetővé, állandó globális rendszergazda, mivel az adott szerepkör milyen hatással van más szolgáltatások túl. Ehelyett, győződjön meg arról, hogy jogosult az Azure AD-szerepkörök, például az Exchange Online rendszergazdai. Kérheti, hogy a szerepkör aktiválása, ha a jogosultságok szükségesek, és ezután lesz rendszergazdai felügyelete egy előre meghatározott időtartamra.
 
-Ez a cikk a rendszergazdák számára, miközben a PIM-ben betöltött szerepkörük aktiválnia kell.
+Ez a cikk a rendszergazdák számára, miközben a PIM az Azure AD directory szerepkörük aktiválnia kell.
 
 ## <a name="activate-a-role"></a>A szerepkör aktiválása
 
-Amikor szüksége van egy szerepkör, aktiválás segítségével kérheti a **saját szerepkörök** navigációs lehetőség az PIM-ben.
+Amikor szüksége van egy Azure AD directory szerepkör, aktiválás segítségével kérheti a **saját szerepkörök** navigációs lehetőség az PIM-ben.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 

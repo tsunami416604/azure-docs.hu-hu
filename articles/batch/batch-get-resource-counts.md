@@ -6,18 +6,18 @@ author: dlepow
 manager: jeconnoc
 ms.service: batch
 ms.topic: article
-ms.date: 06/29/2018
+ms.date: 08/23/2018
 ms.author: danlep
-ms.openlocfilehash: f4bad3d7058e82a246afce9502d275c7d485cb88
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 0ef3cc373b3b87bbd1dde5682fbc076e6b77d6a0
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39009174"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43698383"
 ---
 # <a name="monitor-batch-solutions-by-counting-tasks-and-nodes-by-state"></a>Feladatok és az állapot szerint a csomópontok számolását Batch-megoldások monitorozása
 
-Figyelése és kezelése az Azure Batch-megoldások nagyméretű, pontos száma állapotait erőforrásainak kell. Az Azure Batch beolvasni ezeket a Batch hatékony műveleteket biztosít *feladatok* és *számítási csomópontok*. Időrabló API-hívások helyett ezeket a műveleteket használatával feladatok vagy a csomópontok nagy gyűjteményeknek kapcsolatos részletes információkat ad vissza.
+Figyelése és kezelése az Azure Batch-megoldások nagyméretű, pontos száma állapotait erőforrásainak kell. Az Azure Batch beolvasni ezeket a Batch hatékony műveleteket biztosít *feladatok* és *számítási csomópontok*. Használja ezeket a műveleteket, amely a feladatok vagy a csomópontok nagy gyűjteményekkel kapcsolatos részletes információkat adnak a potenciálisan időigényes listázó lekérdezések helyett.
 
 * [Feladat száma beolvasása] [ rest_get_task_counts] lekérdezi egy összesített száma a feladat aktív, a futó és a befejezett feladatok és a feladatok sikeres vagy sikertelen. 
 
@@ -49,19 +49,15 @@ Console.WriteLine("Task count in preparing or running state: {0}", taskCounts.Ru
 Console.WriteLine("Task count in completed state: {0}", taskCounts.Completed);
 Console.WriteLine("Succeeded task count: {0}", taskCounts.Succeeded);
 Console.WriteLine("Failed task count: {0}", taskCounts.Failed);
-Console.WriteLine("ValidationStatus: {0}", taskCounts.ValidationStatus);
 ```
 
 REST esetében hasonló mintát és más támogatott nyelv segítségével feladat számát egy feladat lekérése. 
- 
 
-### <a name="consistency-checking-for-task-counts"></a>Konzisztencia-ellenőrzés a feladat száma
+### <a name="counts-for-large-numbers-of-tasks"></a>Feladatok nagy számú darabszáma
 
-A Batch biztosítja, hogy a további ellenőrzés a feladat állapota hibás ellen a rendszer több összetevőből konzisztencia-ellenőrzést végez. A nem túl valószínű esetben, hogy a konzisztencia-ellenőrzés hibákat talál, a Batch javítja a konzisztencia-ellenőrzés eredményei alapján a feladatok száma beolvasása művelet eredményét.
+A feladat száma beolvasása művelettel adja vissza feladatállapotok számát a rendszer egy időben. Ha a feladatnál feladatok nagy számú, az első feladat száma által visszaadott számok késhet a tényleges feladatállapotok által akár néhány másodpercig. A Batch biztosítja a végleges konzisztencia között Counts lekérése tevékenység eredményeit és a tényleges feladatállapotok (amely lekérdezheti, ha a lista feladatok API-n keresztül). Azonban ha a feladatnál feladatok nagyon nagy számú (> 200 000), azt javasoljuk, hogy a lista feladatok API-t használja és a egy [szűrt lekérdezési](batch-efficient-list-queries.md) helyette, amely további naprakész információkat biztosít. 
 
-A `validationStatus` a válaszban a tulajdonság azt jelzi, hogy Batch végrehajtani a konzisztencia-ellenőrzést. Ha a Batch nem jelentkezett állapotban tartani a rendszer a tényleges állapotok beleszámít a `validationStatus` tulajdonsága `unvalidated`. Teljesítménybeli megfontolások miatt az a Batch nem hajtja végre a konzisztencia-ellenőrzést, ha a feladat magában foglalja a több mint 200 000 feladatokat, ezért a `validationStatus` tulajdonsága `unvalidated` ebben az esetben. (A feladatok száma nem áll nem feltétlenül megfelelő ebben az esetben is korlátozott adatvesztés nem valószínű, mivel.) 
-
-A feladat állapota megváltozik, amikor az aggregációs folyamat dolgozza fel a módosítás néhány másodpercen belül. A feladat száma beolvasása művelet adott időtartamon belül a frissített feladat számát jeleníti meg. Azonban ha az aggregációs folyamat egy feladat állapotmódosításra tévesztések, majd ezt a módosítást nincs regisztrálva a következő érvényesítési pass-ig. Ebben az időszakban feladat számát a kihagyott esemény miatt némileg pontatlan lehet, de azok a következő érvényesítési fázist a szabálymezők.
+Batch szolgáltatás API-verziók előtt 2018-08-01.7.0 is visszaad egy `validationStatus` tulajdonság lekérése tevékenység számolja a válaszban. Ez a tulajdonság azt jelzi, hogy Batch véve az államok jelenteni a lista feladatok API-konzisztenciát száma az állapot. Érték `validated` csak jelzi, hogy a Batch konzisztencia-ellenőrzésének legalább egyszer a feladathoz. Értékét a `validationStatus` tulajdonság nem látható, hogy a számlálás által visszaadott első számolja meg a feladat jelenleg naprakészek.
 
 ## <a name="node-state-counts"></a>Csomópont állapota száma
 

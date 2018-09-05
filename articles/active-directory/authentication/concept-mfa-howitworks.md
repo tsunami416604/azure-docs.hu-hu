@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 25af61ce51828691d08210f4089afa0cf56b9846
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: 46c99011a22f855f6faf53e03169b2d1e4c6ce85
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39257851"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43669007"
 ---
 # <a name="how-it-works-azure-multi-factor-authentication"></a>Hogyan működik: az Azure multi-factor Authentication
 
@@ -39,11 +39,14 @@ A multi-factor Authentication szolgáltatás része a következő ajánlatokra:
 * **A multi-factor Authentication for Office 365** – Azure multi-factor Authentication funkcióinak egy részét, az előfizetés részeként érhetők el. Az Office 365-höz MFA kapcsolatos további információkért tekintse meg a cikket [a multi-factor authentication for Office 365 központi telepítések tervezése](https://support.office.com/article/plan-for-multi-factor-authentication-for-office-365-deployments-043807b2-21db-4d5c-b430-c8a6dee0e6ba).
 * **Az Azure Active Directory globális rendszergazdái** – Azure multi-factor Authentication funkcióinak egy részét, globális rendszergazdai fiókok védelme való érhetők el.
 
+> [!NOTE]
+> Új ügyfeleket már nem vásárolhat Azure multi-factor Authentication kínál hatékony 1-től, 2018 szeptember önálló. A multi-factor authentication továbbra is egy elérhető funkciónak az Azure AD Premium-licencet.
+
 ### <a name="auth-provider-or-mfa-license"></a>Hitelesítési szolgáltató vagy az MFA-licenc
 
-Ha rendelkezik Azure AD prémium vagy egy licenc-csomagot, amely tartalmazza az Azure AD Premium, már rendelkezik Azure MFA. A szervezet nem kell semmi mást a kétlépéses ellenőrzés képesség kiterjesztését minden felhasználó számára. Csak kell egy licencet hozzárendelni egy felhasználóhoz, és ezután többtényezős hitelesítés bekapcsolása.
+Ha rendelkezik Azure AD prémium vagy egy másik, amely tartalmazza az Azure AD Premium licenc-csomagot, már rendelkezik Azure MFA. A szervezet nem kell semmi mást a kétlépéses ellenőrzés képesség kiterjesztését minden felhasználó számára. Csak kell egy licencet hozzárendelni egy felhasználóhoz, és ezután többtényezős hitelesítés bekapcsolása.
 
-Ha nem rendelkezik licencekkel, amelyek tartalmazzák az Azure MFA, vagy nem rendelkezik elegendő licenccel ahhoz, hogy biztosítsák az összes felhasználót, létrehozhat egy [MFA hitelesítési szolgáltatót](concept-mfa-authprovider.md) MFA teljes funkcionalitásának kiterjesztése a felhasználók számára szükség van rájuk. 
+Ha nem rendelkezik licencekkel, amelyek tartalmazzák az Azure MFA, vagy nem rendelkezik elegendő licenccel ahhoz, hogy biztosítsák az összes felhasználót, létrehozhat egy [MFA hitelesítési szolgáltatót](concept-mfa-authprovider.md) MFA teljes funkcionalitásának kiterjesztése a felhasználók számára szükség van rájuk.
 
 > [!IMPORTANT]
 > Ha minden felhasználó számára nem elegendő licenccel rendelkezik, létrehozhat egy felhasználónkénti multi-factor Auth szolgáltatót, hogy biztosítsák a szervezet többi tagja. Ne hozzon létre egy hitelesítésenkénti multi-factor Auth szolgáltatót. Ha így tesz, akkor sikerült végül ellenőrzési kérések licenccel már rendelkező felhasználóktól.

@@ -10,12 +10,12 @@ ms.custom: DBs & servers
 ms.topic: conceptual
 ms.date: 08/01/2018
 ms.author: carlrab
-ms.openlocfilehash: a6d6a7639d3db0cc7d194ca9fae126ad9a2cc3ba
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 0b1eda89d2baaa54b17d8a7c73a2e9c987f0f8eb
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39413654"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43665985"
 ---
 # <a name="choose-a-cloud-sql-server-option-azure-sql-paas-database-or-sql-server-on-azure-vms-iaas"></a>Felhőalapú SQL Server-verzió választása: Azure SQL Database (PaaS) adatbázis vagy az Azure virtuális gépeken futó SQL Server (IaaS)
 
@@ -28,9 +28,9 @@ Az Azure-ban, az SQL Server számítási feladatok egy szolgáltatott infrastruk
       > [!NOTE]
       > Egyetlen vagy készletezett adatbázisokat tartalmazó Azure SQL Database az SQL Server adatbázis-specifikus szolgáltatások többsége kínál.
 
-      A következő ábrán ezek a központi telepítési beállítások:
+      Az alábbi ábra ezt a három üzembehelyezési modellt mutatja be:
 
-      ![üzembe helyezés – beállítások](./media/sql-database-technical-overview/deployment-options.png) 
+      ![deployment-options](./media/sql-database-technical-overview/deployment-options.png) 
   - Telepíthet egy [Azure SQL Database felügyelt példányain (előzetes verzió)](sql-database-managed-instance.md). 
 
       > [!NOTE]
@@ -133,7 +133,7 @@ A **SQL Database**, a Microsoft biztosít garantált 99,99 %. További informác
 Az **Azure virtuális gépeken futó SQL Server** esetében a Microsoft 99,95%-os SLA-elérhetőséget garantál, amely kizárólag a virtuális gépre vonatkozik. Ez az SLA nem érvényes a virtuális gépen futó folyamatokra (például az SQL Serverre), ezenfelül legalább két, rendelkezésre állási csoportba rendezett virtuálisgép-példány futtatása is szükséges hozzá. A legfrissebb információkért lásd: [SLA a következőhöz: Virtuális gépek](https://azure.microsoft.com/support/legal/sla/virtual-machines/). Az adatbázis magas rendelkezésre ÁLLÁS virtuális gépeken belül, konfigurálnia kell a támogatott magas rendelkezésre állású egyikét az SQL Server, mint például [Always On rendelkezésre állási csoportok](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server). A támogatott magas rendelkezésre állási lehetőségek valamelyikének használata nem biztosít további SLA-t, de lehetővé teszi az adatbázis 99,99% fölötti rendelkezésre állásának elérését.
 
 ### <a name="market"></a>Az Azure-bA áthelyezéséhez szükséges idő
-**Az SQL Database logikai kiszolgálók, rugalmas készletek és önálló adatbázisokat** fejlesztői hatékonyságot és gyors-piacra noew megoldások különösen fontos a megfelelő megoldás az felhőbeli környezethez tervezett alkalmazások esetén. A DBA-hoz hasonló programozási funkciói révén tökéletes választás a felhőben dolgozó tervezők és fejlesztők számára, mivel csökkenti az alkalmazás mögötti operációs rendszer és adatbázis felügyeletére fordítandó időt. 
+**Az SQL Database logikai kiszolgálók, rugalmas készletek és önálló adatbázisokat** fejlesztői hatékonyságot és gyors-piacra új megoldások különösen fontos a megfelelő megoldás az felhőbeli környezethez tervezett alkalmazások esetén. A DBA-hoz hasonló programozási funkciói révén tökéletes választás a felhőben dolgozó tervezők és fejlesztők számára, mivel csökkenti az alkalmazás mögötti operációs rendszer és adatbázis felügyeletére fordítandó időt. 
 
 **SQL Database felügyelt példányain** jelentősen leegyszerűsíti a meglévő alkalmazások az Azure SQL Database, lehetővé téve a migrált adatbázis-alkalmazások az Azure-ban gyorsan piacra használata az áttelepítés.
 

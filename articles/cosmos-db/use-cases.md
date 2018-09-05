@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/7/2017
 ms.author: sngun
-ms.openlocfilehash: 2af77cacced7a6905c4ed7393569949b2eac1906
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 2548213cf5d7d5a0fa1b0f5d7cd49f677ffe3ca4
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37859666"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43700814"
 ---
 # <a name="common-azure-cosmos-db-use-cases"></a>Azure Cosmos DB gyakori alkalmazási helyzetek
 Ez a cikk számos gyakori alkalmazási helyzetek áttekintést nyújt az Azure Cosmos DB.  Ebben a cikkben szereplő ajánlások szolgálhat a kiindulási pontként, a Cosmos DB az alkalmazás fejlesztését.   
@@ -29,7 +29,7 @@ Ez a cikk elolvasása után is elérheti az alábbi kérdések megválaszolásá
 ## <a name="introduction"></a>Bevezetés
 [Az Azure Cosmos DB](../cosmos-db/introduction.md) a Microsoft globálisan elosztott adatbázis-szolgáltatása. A szolgáltatás célja, hogy az ügyfelek számára, hogy rugalmasan (és egymástól függetlenül) átviteli sebesség és tárterület tetszőleges számú földrajzi régió között. Az Azure Cosmos DB, az első globálisan elosztott adatbázis-szolgáltatás a piacon elérhető még ma, hogy kínál átfogó [szolgáltatói szerződések](https://azure.microsoft.com/support/legal/sla/cosmos-db/) mely magában foglalja az átviteli sebesség, a késés, a rendelkezésre állás és a konzisztencia. 
 
-Az Azure Cosmos DB egy globális elosztott, többmodelles adatbázis, amely az alkalmazások és az alkalmazási helyzetek széles van használatban. A jó választás [kiszolgáló nélküli](http://azure.com/serverless) alkalmazás, amely sorrendben az ezredmásodperc válaszidőt kell, és gyors és globálisan kell. Több adatmodellt is támogat, (kulcs-érték, dokumentum, diagram vagy oszlopos) és több API-t, az adatok eléréséhez, többek között [MongoDB API-val](mongodb-introduction.md), [SQL API](documentdb-introduction.md), [Graph API (Gremlin)](graph-introduction.md), és [Tables API](table-introduction.md) natív módon, és a egy bővíthető módon. 
+Az Azure Cosmos DB egy globális elosztott, többmodelles adatbázis, amely az alkalmazások és az alkalmazási helyzetek széles van használatban. A jó választás [kiszolgáló nélküli](http://azure.com/serverless) alkalmazás, amely sorrendben az ezredmásodperc válaszidőt kell, és gyors és globálisan kell. Több adatmodellt is támogat, (kulcs-érték, dokumentum, diagram vagy oszlopos) és több API-t, az adatok eléréséhez, többek között [MongoDB API-val](mongodb-introduction.md), [SQL API](documentdb-introduction.md), [Gremlin API](graph-introduction.md), és [ Táblák API](table-introduction.md) natív módon, és a egy bővíthető módon. 
 
 Az alábbiakban néhány attribútum az Azure Cosmos DB, győződjön meg arról, hogy kiválóan alkalmas nagy teljesítményű alkalmazások globális léptéke.
 

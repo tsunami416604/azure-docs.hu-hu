@@ -14,12 +14,12 @@ ms.component: pim
 ms.date: 08/30/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 9ad4965ccd86f88a61b5f6fb8f540d76e472ea69
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: a4aecd276df8e5453f0c35d6290bbe8a8d156ffa
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43345295"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43669363"
 ---
 # <a name="configure-azure-resource-role-settings-in-pim"></a>A PIM Azure szerepkör-beállítások konfigurálása
 
@@ -89,6 +89,8 @@ Annak érdekében, hogy az erőforrás-kezelője a hozzárendelés foglaltak aki
 Megkövetelheti az MFA futtatása, mielőtt aktiválna a szerepkör jogosult tagjai. Ez a folyamat biztosítja, hogy a felhasználó az aktiválás, akinek mondják ésszerű bizonyossággal kér. Kiemelt fontosságú erőforrások helyzetekben kényszerítése ezt a beállítást védi, ha a felhasználói fiók esetleg sérült a biztonsága.
 
 Az MFA futtatása előtt aktiválási jogosult tag van szüksége, ellenőrizze a **multi-factor Authentication megkövetelése aktiváláskor** mezőbe.
+
+További információkért lásd: [multi-factor authentication (MFA) és a PIM](pim-how-to-require-mfa.md).
 
 ## <a name="activation-maximum-duration"></a>Aktiválás maximális időtartama
 

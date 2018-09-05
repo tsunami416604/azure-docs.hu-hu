@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 ms.component: common
-ms.openlocfilehash: 889cedf555c8a9a86cc8a2101f27cafcb48376df
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 0066ec20c68d70fac9a6529f8f5b85855d6c5349
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39523155"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43666824"
 ---
 # <a name="creating-an-export-job-for-the-azure-importexport-service"></a>Az Azure Import/Export szolgáltatás exportálási feladat létrehozása
 A Microsoft Azure Import/Export szolgáltatás REST API használatával exportálási feladat létrehozása az alábbi lépésekből áll:
@@ -48,7 +48,7 @@ A Microsoft Azure Import/Export szolgáltatás REST API használatával exportá
  Exportálandó blobok megadásával kapcsolatos további információkért lásd: a [Put feladat](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) műveletet.
 
 ## <a name="obtaining-your-shipping-location"></a>A szállítási címhez tartozó hely beszerzése
-Exportálási feladat létrehozása előtt be kell szereznie egy szállítási hely nevét és címét meghívásával a [beolvasása hely](https://portal.azure.com) vagy [lista helyek](/rest/api/storageimportexport/listlocations) műveletet. `List Locations` helyek és a levelezési címét listáját adja vissza. Válasszon egy helyet a visszaadott listában, és arra a címre rögzített meghajtók kiszállítása. Is használhatja a `Get Location` művelet egy konkrét hely a szállítási cím közvetlenül beszerzése.
+Exportálási feladat létrehozása előtt be kell szereznie egy szállítási hely nevét és címét meghívásával a [beolvasása hely](https://portal.azure.com) vagy [lista helyek](https://docs.microsoft.com/rest/api/storageimportexport/locations/list) műveletet. `List Locations` helyek és a levelezési címét listáját adja vissza. Válasszon egy helyet a visszaadott listában, és arra a címre rögzített meghajtók kiszállítása. Is használhatja a `Get Location` művelet egy konkrét hely a szállítási cím közvetlenül beszerzése.
 
 A szállítási címhez tartozó hely beszerzése az alábbi lépésekkel:
 

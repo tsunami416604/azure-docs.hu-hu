@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: abnarain
-ms.openlocfilehash: e708ae741c6835395e8eb35f6835c2d8c7002780
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: af7d4253b4e631295f8c04c96601e932595af9c1
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43044730"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43697764"
 ---
 # <a name="how-to-create-and-configure-self-hosted-integration-runtime"></a>Hogyan hozhat létre, és a helyi integrációs modul konfigurálása
 Az Integration Runtime (IR) a különböző hálózati környezetekben adatintegrációs képességeket biztosít az Azure Data Factory által használt számítási infrastruktúra áll. Integrációs modul kapcsolatos részletekért lásd: [Integration Runtime áttekintése](concepts-integration-runtime.md).
@@ -219,7 +219,7 @@ A **vállalati tűzfal** szint kell konfigurálnia a következő tartományok é
 
 Tartománynevek | Portok | Leírás
 ------------ | ----- | ------------
-*.servicebus.windows.net | 443, 80 | Adatátviteli szolgáltatás háttérrendszer való kommunikációhoz használatos
+*.servicebus.windows.net | 443 | Adatátviteli szolgáltatás háttérrendszer való kommunikációhoz használatos
 *.core.windows.net | 443 | Használja a szakaszos másolás az Azure Blob használatával (Ha be van állítva)
 *.frontend.clouddatahub.net | 443 | Adatátviteli szolgáltatás háttérrendszer való kommunikációhoz használatos
 download.microsoft.com | 443 | A frissítések letöltéséhez használt

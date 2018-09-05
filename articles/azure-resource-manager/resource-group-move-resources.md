@@ -10,14 +10,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/30/2018
+ms.date: 09/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: 160e2a277c82470df7d9ced2899699dae8d4ef01
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 429a10988fdc19863cfd6809a8d73757d33349c9
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43302128"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43702310"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe
 
@@ -122,10 +122,9 @@ A szolgáltatások, amelyek lehetővé teszik egy új erőforráscsoportot és a
 * Azure Maps
 * Azure Relay
 * Az Azure Stack - regisztrációk
-* Azure Migrate
 * Batch
 * BizTalk Services
-* Robotszolgáltatás
+* Bot Service
 * Tartalomkézbesítési hálózat (CDN)
 * Cloud Services – lásd: [klasszikus üzembe helyezési korlátozásoknak](#classic-deployment-limitations)
 * Cognitive Services
@@ -141,7 +140,7 @@ A szolgáltatások, amelyek lehetővé teszik egy új erőforráscsoportot és a
 * Event Grid
 * Event Hubs
 * Tekintse meg a HDInsight-fürtök – [HDInsight korlátozások](#hdinsight-limitations)
-* IOT-központ
+* Iot Central
 * IoT Hubok
 * Key Vault
 * Terheléselosztók – lásd: [Load Balancer-korlátozások](#lb-limitations)
@@ -188,6 +187,7 @@ A szolgáltatások, amelyek jelenleg nem engedélyezi az erőforrások áthelyez
 * Azure Database for PostgreSQL
 * Az Azure adatbázis-Migrálás
 * Azure Databricks
+* Azure Migrate
 * Batch AI
 * Tanúsítványok – App Service-tanúsítványok is áthelyezhetők, de a feltöltött tanúsítványok [korlátozások](#app-service-limitations).
 * Tárolópéldányok
@@ -237,8 +237,6 @@ Virtuális hálózat áthelyezésekor is át kell helyeznie a tőle függő erő
 Egy virtuális Társhálózat áthelyezni, előbb le kell tiltania a virtuális hálózatok közötti társviszony. Ha le van tiltva, áthelyezheti a virtuális hálózat. Az áthelyezés után a virtuális hálózatok közötti társviszony újraengedélyezni.
 
 Virtuális hálózat nem helyezhetők át másik előfizetésbe való, ha a virtuális hálózati erőforrás-navigációs hivatkozásaival egy alhálózatot tartalmaz. Például ha egy Redis Cache-erőforrást egy alhálózatában van üzembe helyezve, az alhálózatra, erőforrás-navigációs hivatkozást.
-
-Virtuális hálózat nem helyezhetők át másik előfizetésbe való, ha a virtuális hálózat egy egyéni DNS-kiszolgálót tartalmaz. Szeretné áthelyezni a virtuális hálózat, állítsa be alapértelmezett (Azure által biztosított) DNS-kiszolgálóra. Az áthelyezés után konfigurálja újra az egyéni DNS-kiszolgáló.
 
 ## <a name="app-service-limitations"></a>Az App Service korlátai
 

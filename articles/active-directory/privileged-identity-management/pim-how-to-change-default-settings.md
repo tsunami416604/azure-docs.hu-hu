@@ -13,12 +13,12 @@ ms.component: pim
 ms.date: 08/27/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 8af304d28be9b0884a50d60911d901818b514752
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 2d7226f18eb922eaba3c8184656560c33202ef56
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43338907"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43665434"
 ---
 # <a name="configure-azure-ad-directory-role-settings-in-pim"></a>A PIM az Azure AD directory szerepkör-beállítások konfigurálása
 
@@ -82,7 +82,7 @@ Használja a **multi-factor Authentication** kapcsolót, hogy adja meg a felhasz
   * Skype Vállalati verzió-rendszergazda  
   * Felhasználóifiók-adminisztrátor  
 
-A PIM többtényezős hitelesítés használatával kapcsolatos további információkért lásd: [többtényezős hitelesítés megkövetelése az PIM-ben az Azure AD-címtárbeli szerepkörökhöz tartozó](pim-how-to-require-mfa.md).
+További információkért lásd: [multi-factor authentication (MFA) és a PIM](pim-how-to-require-mfa.md).
 
 ## <a name="require-approval"></a>Jóváhagyás szükséges
 
@@ -110,5 +110,4 @@ Ha szeretné a szerepkör aktiválásához jóváhagyás szükséges, kövesse a
 ## <a name="next-steps"></a>További lépések
 
 - [A PIM az Azure AD-címtárbeli szerepkörök hozzárendelése](pim-how-to-add-role-to-user.md)
-- [A PIM az Azure AD-címtárbeli szerepkörökhöz tartozó többtényezős hitelesítés megkövetelése](pim-how-to-require-mfa.md)
 - [Az Azure AD-címtárbeli szerepkörökhöz tartozó biztonsági riasztások konfigurálása az PIM-ben](pim-how-to-configure-security-alerts.md)

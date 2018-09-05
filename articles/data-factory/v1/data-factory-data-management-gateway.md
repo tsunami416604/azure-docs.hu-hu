@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 7ca0e8eb2d496bdcd8eff7dbee2af2e549f123dd
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 988c264ef6052b4b41de493944ac8d39a197a083
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39626855"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43698757"
 ---
 # <a name="data-management-gateway"></a>Adatkezelési átjáró
 > [!NOTE]
@@ -142,7 +142,7 @@ Vállalati tűzfalon szinten kell konfigurálnia a következő tartományok és 
 
 | Tartománynevek | Portok | Leírás |
 | --- | --- | --- |
-| *.servicebus.windows.net |443, 80 |Adatátviteli szolgáltatás háttérrendszer való kommunikációhoz használatos |
+| *.servicebus.windows.net |443 |Adatátviteli szolgáltatás háttérrendszer való kommunikációhoz használatos |
 | *.core.windows.net |443 |Használja a szakaszos másolás az Azure Blob használatával (Ha be van állítva)|
 | *.frontend.clouddatahub.net |443 |Adatátviteli szolgáltatás háttérrendszer való kommunikációhoz használatos |
 | *.servicebus.windows.net |9350-9354, 5671 |Nem kötelező a service bus relay a másolás varázsló által használt TCP-n keresztül |

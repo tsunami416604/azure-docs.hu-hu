@@ -1,6 +1,6 @@
 ---
-title: Az Azure Service Bus üzenet átvitelek zárolások és elszámolási |} Microsoft Docs
-description: A Service Bus message átvitelek és elszámolási műveletek áttekintése
+title: Az Azure Service Bus-üzenet adatátvitel, zárolások és elszámolás |} A Microsoft Docs
+description: A Service Bus-üzenet adatátvitel és elszámolás műveletek áttekintése
 services: service-bus-messaging
 documentationcenter: ''
 author: clemensv
@@ -12,37 +12,37 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/25/2018
-ms.author: sethm
-ms.openlocfilehash: 4789da3c84d52b2615bf4250a36093a74154e1d4
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.author: spelluru
+ms.openlocfilehash: d4f387d484fe895d8b6c5196c3a5527947ee3925
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
-ms.locfileid: "28199032"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43702061"
 ---
-# <a name="message-transfers-locks-and-settlement"></a>Üzenet-átvitel, zárolások és elszámolási
+# <a name="message-transfers-locks-and-settlement"></a>Üzenetek átvitele, zárolása és elszámolása
 
-Egy üzenet broker, például a Service Bus központi képességét, hogy fogadja az üzeneteket az üzenetsor vagy témakör és tartsa éri el újabb. *Küldési* a kifejezés, és az átvitel az üzenet broker az üzenet gyakran használják. *Fogadási* a lekérése során ügyfél üzenet átvitelét általánosan használt fogalom.
+Például a Service Bus egy közvetítő központi képességét, hogy fogadja az üzeneteket az üzenetsor vagy témakör, és tartsa elérhető a későbbi beolvasásához. *Küldés* a kifejezés, és a egy üzenet átvitelét be a közvetítő gyakran használják. *Kap* a kifejezés a lekérése során ügyfél üzenet átvitelét gyakran használják.
 
-Amikor egy ügyfél üzenetet küld, akkor általában szeretné megnézni, hogy az üzenet már megfelelően át és fogadja el az átvitelszervező, vagy valamilyen hiba lépett fel. A pozitív vagy negatív tudomásul vétele rendezi az ügyfél és a broker ismertetése az üzenet az átvitel állapotával kapcsolatos információkat, és így nevezzük *elszámolási*.
+Amikor egy ügyfél egy üzenetet küld, általában szeretné tudni, hogy az üzenet megtörtént megfelelően át és fogadja el a közvetítő vagy valamilyen hiba lépett fel. Pozitív vagy negatív elfogadnia rendezi az ügyfél és a közvetítő ismertetése a üzenet átviteli állapotát, és így nevezzük *elszámolás*.
 
-Hasonlóképpen, amikor a broker üzenet egy ügyfelet, az ügyfél és a kíván létesíteni megismerhesse, hogy az üzenet feldolgozása sikeresen megtörtént, és ezért távolítható el, vagy e üzenetkézbesítést vagy feldolgozása sikertelen volt, és így a üzenet esetleg újra kell kézbesíteni.
+Hasonlóképpen, a közvetítő adatforgalom egy üzenetet egy ügyfélre, amikor a broker és az ügyfél szeretne hozhat létre e az üzenet feldolgozása sikeresen megtörtént, és ezért távolítható el, vagy hogy az üzenetek kézbesítését vagy a feldolgozás sikertelen volt, és így a üzenetet kézbesíteni újra lehet.
 
-## <a name="settling-send-operations"></a>Műveletek rendezése
+## <a name="settling-send-operations"></a>Műveletek stabilizálódási
 
-A Service Bus API támogatott ügyfelek használva küldése műveletek a Service Bus mindig explicit módon kiegyenlített, ami azt jelenti, hogy az API-művelet megvárja-e egy elfogadási eredmény a Service Bus kimarad, majd befejezi a küldési művelet.
+A Service Bus API támogatott ügyfelek bármelyikével küldése a Service Bus műveletek mindig explicit módon kiegyenlített, ami azt jelenti, hogy az API-művelet megvárja, amíg egy kimarad, a Service Bus elfogadásának eredményét, és befejezi a küldési művelet.
 
-A Service Bus által visszautasítja az üzenetet, ha az elutasítás tartalmaz, hibát jelző, a "nyomon követési-id" saját szöveget. Az elutasítás arról, hogy a művelet követően újra megkísérelhető a sikeres a bármely elvárása az adatokat is tartalmaz. Az ügyfél ezt az információt kivétel be van kapcsolva, és a hívónak a küldési művelet következik be. Ha az üzenet elfogadását, a művelet csendes befejeződik.
+Az üzenet Service Bus által elutasítása esetén az elutasítás tartalmaz egy hibát jelző és a egy "követési-azonosító" belül, a szöveg. Az elutasítás e a művelet végrehajtásával lehet újrapróbálkozni a siker bármely elvárás kapcsolatos információkat is tartalmaz. Az ügyfél ezt az információt kivétel be van kapcsolva, és a hívónak a küldési művelet kiváltása. Ha az üzenet már helyesen megadta, a művelet csendes befejeződik.
 
-Az AMQP protokoll, amely a .NET-szabvány ügyfél és a Java-ügyfél kizárólagos protokoll használata esetén és [a .NET-keretrendszer ügyfél lehetősége, amely](service-bus-amqp-dotnet.md), üzenet átvitelek és rendezések futószalagos és teljesen aszinkron, ezért ajánlott, hogy használja-e az aszinkron programozási modell API Variant adattípusban.
+Az AMQP protokollt, amelyhez kizárólagos protokoll, a .NET Standard ügyféloldali és a Java ügyfél használatakor és [a .NET-keretrendszer ügyfél lehetőség, amely](service-bus-amqp-dotnet.md), üzenet adatátvitel és rendezések vagyok, és teljesen aszinkron, és az aszinkron programozási modell API variantní hodnoty használata ajánlott.
 
-Egy küldő helyezhetik több üzenet a keresztülhaladnak a hálózaton gyors egymásutánban Várjon, amíg minden üzenetet vonatkozik, ahogyan az a volna ellenkező esetben a SBMP protokollt vagy a HTTP 1.1 nélkül. Aszinkron küldés műveletek el, mivel a megfelelő üzenetek elfogadja és tárolja, particionált entitások, vagy amikor művelet küldeni a különféle entitásokat átfedi egymást. A befejezésekhez is az eredeti küldési sorrendje nem fordulhatnak elő.
+Küldő helyezhet több üzenet átkerül gyors egymás után nem kell megvárnia az egyes üzenetekhez arra vonatkozik, ahogy lenne az eset a SBMP protokoll vagy a HTTP 1.1. Ezek a műveletek aszinkron küldés hajtható végre, mert a megfelelő üzenetek fogadja és tárolja, particionált entitások, vagy amikor művelet küldeni a különböző entitások között átfedés van. A befejezések is az eredeti küldésének sorrendje nem fordulhatnak elő.
 
-A kezelési műveletek eredményeit stratégiája az alkalmazás azonnali és jelentős hatása lehet. Ebben a szakaszban szereplő példák C# nyelven íródtak, és Java határidő év vonatkoznak.
+A kezelési műveletek eredményeit stratégiát az alkalmazás teljesítmény azonnali és jelentős hatással lehet. Ebben a szakaszban szereplő példák C# nyelven íródtak, és év Java Futures a alkalmazni.
 
-Ha az alkalmazás létrehozza az üzenetek felszakadásáig, egyszerű hurkot az itt bemutatott és await létrehozása után nem voltak az egyes küldési művelet a következő, a szinkron üzenet küldése előtt, vagy egyaránt a aszinkron API alakzatok, csak 10 üzenetküldésre befejeződése után 10 egymást követő teljes adatváltások rendezésre.
+Ha az alkalmazást hoz létre az üzenetek adatlöketekkel, bemutatott egyszerű hurkot, és await befejezése után a rendszer az egyes küldeni a művelet a következő, a szinkron üzenet elküldése előtt, vagy a jelenlegi funkcionalitása a aszinkron API alakzatokat, csak 10 üzenetet küld befejezése után 10 egymást követő teljes adatváltások rendezésre.
 
-Az egy feltételezett 70 ezredmásodperces TCP körbejárási késés távolság egy helyszíni hely a Service Bus-és jogosultságot ad a Service Bus csak 10 ms fogadja el, és minden üzenetet tárolására a következő hurok foglal legalább 8 másodperc, nem számítva a tartalom átvitelének az idejét vagy a potenciális útvonal torlódás hatások:
+Az egy feltételezett 70 ezredmásodperces TCP körbejárási késés távolság egy helyszíni hely a Service Bus és a csak 10 ms-Service Bus számára, amely fogadja el, és minden üzenetet tárolására a következő ciklus foglal legalább 8 másodperc, nem számítva a tartalom átvitelének az idejét vagy potenciális útvonal torlódás hatásai:
 
 ```csharp
 for (int i = 0; i < 100; i++)
@@ -52,9 +52,9 @@ for (int i = 0; i < 100; i++)
 }
 ```
 
-Ha az alkalmazást elindítja a 10 aszinkron műveletek közvetlen egymás után, és a megfelelő befejezési külön várja, az oda-vissza idő 10 küldési műveletek átfedésben van. A 10 üzenetek átkerülnek a közvetlen egymás után, esetleg még megosztása TCP keretek, és a teljes átviteli időtartama nagymértékben függ a hálózattal kapcsolatos szükséges időt a továbbított üzenet eléréséhez a broker.
+Ha az alkalmazást elindítja a 10 aszinkron műveletek azonnali egymás után, és megfelelő megszakíthat külön-külön várja, ideje a 10 küldési műveletek átfedésben van. A 10 üzenetet átkerülnek a közvetlen egymás után, potenciálisan akár megosztása TCP keretek, és az összesített átviteli időtartam nagymértékben függ a hálózattal kapcsolatos szükséges időt első továbbítja az üzeneteket a közvetítőn.
 
-Így az azonos feltételezéseket, mint a korábbi hurok, a teljes átfedett végrehajtási ideje a következő hurok maradhatnak, egy másodperc alatt is:
+Így az azonos feltételezéseket mint a korábbi hurok, a következő ciklus átfedett teljes végrehajtási idő még aktívak maradhatnak, és a egy másodperc:
 
 ```csharp
 var tasks = new List<Task>();
@@ -65,9 +65,9 @@ for (int i = 0; i < 100; i++)
 await Task.WhenAll(tasks.ToArray());
 ```
 
-Fontos megjegyezni, hogy minden aszinkron programozási modellek használja-e valamilyen memóriaalapú, rejtett várólista, amely tárolja a függőben lévő műveletek. Ha [sendasync metódusok párhuzamosan](/dotnet/api/microsoft.azure.servicebus.queueclient.sendasync#Microsoft_Azure_ServiceBus_QueueClient_SendAsync_Microsoft_Azure_ServiceBus_Message_) (C#) vagy **küldése** return (Java) a küldési feladat, hogy a munkahelyi várólistában sorba, de a protokoll hitelesítési mód csak megkezdése után a feladatütemezés következik futtatásához. A leküldéses üzenetek és a megbízhatóság esetén veszélye felszakadásáig általában kódját ügyelni kell, hogy túl sok üzenetek kerülnek "útban" egyszerre, mert minden küldött üzenetek akár memória igénybe vehet, amíg azokat ténylegesen az átvitel közbeni helyezik üzembe le.
+Fontos megjegyezni, hogy minden aszinkron programozási modellek használata valamilyen memória-alapú, rejtett várólistát, amely tartalmazza a függőben lévő műveletek. Amikor [SendAsync](/dotnet/api/microsoft.azure.servicebus.queueclient.sendasync#Microsoft_Azure_ServiceBus_QueueClient_SendAsync_Microsoft_Azure_ServiceBus_Message_) (C#) vagy **küldése** (Java) lépjen vissza, a küldési feladat az adott várólistát várólistára, de csak a protokoll hitelesítési módok megkezdése után a feladat következik futtatásához. Leküldéses üzenetek, és ahol megbízhatóság fontos adatlöketekkel általában kódot, a gondot kell fordítani, hogy túl sok üzenet kerüljenek "útban" egyszerre, mert az összes elküldött üzenetek is igénybe vehet memória addig, amíg azok ténylegesen megtörtént helyezett poslat.
 
-Szemaforok, ahogyan az a következő kódrészletet a C#,-e szinkronizálási objektumok, amelyek lehetővé teszik, ilyen alkalmazásszintű sávszélesség-szabályozás szükség esetén. A szemafor használatával kell útban egyszerre legfeljebb 10 üzenetek. A 10 elérhető szemafor zárolásokat egyik lesz végrehajtva, a küldés előtt, és megjelent, a Küldés befejeződik. A hurok megvárja, amíg legalább egy előzetes küld 11 továbbítása befejeződött, és ezután elérhetővé teszi a zárolási:
+Szemaforok használatát, ahogyan az a következő kódrészletet a C#, olyan szinkronizálási objektumok, amelyek lehetővé teszik, ilyen alkalmazásszintű szabályozás szükség esetén. Ez egy szemafor használata lehetővé teszi a útban lehet egyszerre legfeljebb 10 üzeneteket. A 10 elérhető szemafor zárolása egyike használatban van a küldés előtt, és akkor szabadul fel, mint a Küldés befejeződik. A hurok megvárja, amíg legalább egy előzetes küld 11 átengedési befejeződött, és majd elérhetővé teszi a zárolás:
 
 ```csharp
 var semaphore = new SemaphoreSlim(10);
@@ -82,7 +82,7 @@ for (int i = 0; i < 100; i++)
 await Task.WhenAll(tasks.ToArray());
 ```
 
-Alkalmazások kell **soha nem** egy aszinkron küldés művelet "érvényesítést és elfelejti" módon indítása nélkül a művelet eredményének beolvasása. Ezzel betölteni a belső és láthatatlan feladat várólistára legfeljebb elfogyott a memória, és hogy az alkalmazás küldési hibáinak észleléséhez:
+Alkalmazások kell **soha nem** kezdeményezzen egy aszinkron küldési művelet "indul el, és felejtse el" módon anélkül, hogy a művelet eredményének beolvasása. Ezzel a elfogyott a memória akár belső, láthatatlan feladat-várólista betöltése, és megakadályozhatja, hogy az alkalmazás a küldési hibáinak észleléséhez:
 
 ```csharp
 for (int i = 0; i < 100; i++)
@@ -92,39 +92,39 @@ for (int i = 0; i < 100; i++)
 }
 ```
 
-Egy alacsony szintű AMQP-ügyféllel a Service Bus "előre kiegyenlített" átvitel is fogad. A egy előre kiegyenlített átvitele egy tűz-és-elfelejti művelet, amelynek az eredménye, mindkét módszer esetén jelentése nem vissza az ügyfél és az üzenet elküldésekor rendezni számít. Az ügyfél visszajelzés hiánya is azt jelenti, hogy végrehajthatóként adatot nem érhető el diagnosztika, azaz, hogy ez a mód nem felel meg az Azure támogatási keresztül segítségét.
+Az alacsony szintű AMQP-ügyfél a Service Bus "előre kiegyenlített" átvitel is fogad. Egy előre kiegyenlített átadása egy fire és elfelejt művelet, amelynek az eredménye, mindkét módszer esetén nem készül jelentés vissza az ügyfél és az üzenet akkor tekinthető küldött rendezni. Visszajelzés az ügyfélnek hiánya is jelenti, hogy nem szerepel megjeleníthető hasznos adat elérhető diagnosztikai, ami azt jelenti, hogy ebben a módban nem tesz eleget keresztül az Azure-támogatás segítségét.
 
-## <a name="settling-receive-operations"></a>Rendezése fogadási műveletek
+## <a name="settling-receive-operations"></a>Stabilizálódási fogadási műveletek
 
-A fogadási műveletek, a Service Bus API ügyfelek kétféle explicit módon engedélyezi: *fogadása és törlése* és *betekintés-Lock*.
+A fogadási műveletek, a Service Bus API-ügyfelek kétféle explicit módon engedélyezi: *fogadása és törlése* és *betekintési zárolással való*.
 
-A [fogadása és törlése](/dotnet/api/microsoft.servicebus.messaging.receivemode) mód közli az összes üzenetet küld a fogadó ügyfél kiegyenlített, mikor érdemes broker küldött. Ez azt jelenti, hogy az üzenet, amint az átvitelszervező állította a hálózaton, felhasznált számít. Ha az üzenetátvitel sikertelen, az üzenet elveszik.
+A [fogadása és törlése](/dotnet/api/microsoft.servicebus.messaging.receivemode) mód arra utasítja a közvetítő kell figyelembe venni az összes üzenetet küld a fogadó ügyfél kiegyenlített, mikor küldött. Ez azt jelenti, hogy az üzenet számít felhasznált, amint a közvetítő állapotúra állította, poslat. Ha az üzenet átvitel sikertelen, az üzenet elveszik.
 
-Az ebben a módban a feje, hogy a fogadó nem kell további műveletek végrehajtása az üzenetet, és nem is lassítsa várakozással rendezésére eredményeit. Ha az egyes üzeneteket lévő adatok alacsony érték és/vagy is csak nagyon rövid időn végrehajthatók, ebben a módban ésszerű választás.
+A feje az ebben a módban, hogy a fogadó nem kell további műveleteket az üzenetet, és nem is lassította várakozással az elszámolás eredményét. Ha az egyes üzenetek szereplő adatokat alacsony értéket és/vagy a rendszer csak nagyon rövid ideig jelentéssel bíró, ez a mód az ésszerű választás.
 
-A [betekintés-Lock](/dotnet/api/microsoft.servicebus.messaging.receivemode) mód közli az átvitelszervező, hogy a fogadó ügyfél fogadott üzenetek explicit módon rendezni szeretné. Az üzenet feldolgozásához, miközben szolgáltatási kizárólagos zárolást alatt tartani, hogy a versengő, más fogadó nem látható a fogadó számára elérhetők. A Zárolás időtartama kezdetben definiálása a várólista vagy az előfizetési szinten, és az ügyfél, a zárolás tulajdonos keresztül bővíthető a [RenewLock](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.renewlockasync#Microsoft_Azure_ServiceBus_Core_MessageReceiver_RenewLockAsync_System_String_) műveletet.
+A [betekintési zárolással való](/dotnet/api/microsoft.servicebus.messaging.receivemode) mód arra utasítja a közvetítő, hogy a fogadó ügyfelet szeretné-e explicit módon rendezi a fogadott üzenetek. Az üzenet vált elérhetővé a feldolgozásához, miközben kizárólagos zárolást a szolgáltatás alatt tartani, hogy más, egymással versengő fogadók nem jelenik meg a fogadóhoz. A Zárolás időtartama kezdetben van definiálva a várólista vagy az előfizetés szintjén és az ügyfél, a zárolás tulajdonos keresztül bővíthető a [RenewLock](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.renewlockasync#Microsoft_Azure_ServiceBus_Core_MessageReceiver_RenewLockAsync_System_String_) műveletet.
 
-Egy üzenet le van tiltva, ha más ügyfelek ugyanabból az üzenetsorból vagy előfizetés fogadása hoz zárolások és nem aktív zárolást a következő rendelkezésre álló üzeneteket beolvasni. Amikor az üzenetet a rendszer explicit módon zárolás vagy a zárolás lejár, az üzenet biztonsági mentése ugrik, kevés vagy a lekérdezési ahhoz, hogy redelivery elején.
+Egy üzenet a zárolt ugyanabból az üzenetsorból vagy előfizetés fogadása más ügyfelek végrehajtása a zárolásokat, és nem aktív zárolás a következő elérhető üzeneteket beolvasni. Ha explicit módon felszabadul lévő üzenet zárolását, vagy ha a zárolás lejárta, a hibaüzenetet kap, miszerint készítsen biztonsági másolatot, vagy a lekérés sorrendjét redelivery elejéhez.
 
-Ha az üzenet ismételten fogadók által kiadott vagy azok lehetővé teszik, hogy a zárolás, a meghatározott számú alkalommal eltelnie ([maxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.maxdeliverycount#Microsoft_ServiceBus_Messaging_QueueDescription_MaxDeliveryCount)), az üzenet automatikusan eltávolítja az üzenetsorból vagy az előfizetés és a társított csoportosítson kézbesítetlen levelek várólistájára.
+Ha az üzenet ismételten jelent a hozzáadásuk vagy a teljen el a meghatározott számú alkalommal a zárolást a használatukkal ([maxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.maxdeliverycount#Microsoft_ServiceBus_Messaging_QueueDescription_MaxDeliveryCount)), az üzenet automatikusan eltávolítva az üzenetsorból vagy előfizetési és helyez el a társított kézbesítetlen levelek várólistájára vonatkozik.
 
-A fogadó ügyfél pozitív visszajelzés fogadott üzenet rendezésére kezdeményez, ha meghívja [Complete](/dotnet/api/microsoft.servicebus.messaging.queueclient.complete#Microsoft_ServiceBus_Messaging_QueueClient_Complete_System_Guid_) API szintjén. Ez jelzi a broker, hogy az üzenet feldolgozása sikeresen megtörtént, és az üzenet törlődik az üzenetsorból vagy előfizetés. A broker válaszokat a fogadó elszámolási célt, amely jelzi, hogy elvégezhető-e az elszámolási válasz.
+A fogadó ügyfél kezdeményezi ügyintézésére pozitív visszajelzés érkezett üzenetet, ha meghívja [Complete](/dotnet/api/microsoft.servicebus.messaging.queueclient.complete#Microsoft_ServiceBus_Messaging_QueueClient_Complete_System_Guid_) az API szintjén. Ez azt jelzi, hogy a közvetítőn, hogy az üzenet feldolgozása sikeresen megtörtént, és az üzenet törlődik az üzenetsorból vagy előfizetést. A közvetítő egy választ, amely azt jelzi, hogy elvégezhető az elszámolás válaszol a fogadó elszámolás szándékot.
 
-A fogadó ügyfél nem tudja feldolgozni egy üzenetet, de az üzenet újból kézbesítve azt szeretné, akkor explicit módon kérje meg az üzenet, amely és meghívásával azonnal zárolása feloldva [Abandon](/dotnet/api/microsoft.servicebus.messaging.queueclient.abandon) vagy semmi sem lehet hasznos, és lehetővé teszik a eltelnie zárolást.
+Ha a fogadó ügyfél nem tudja feldolgozni egy üzenetet, de az üzenet újbóli kézbesítése szeretne, explicit módon kérhet az üzenetre, amely a, és feloldotta azonnal meghívásával [Abandon](/dotnet/api/microsoft.servicebus.messaging.queueclient.abandon) vagy azt nem csinál semmit teljen el a zárolást, és.
 
-Ha fogadó ügyfél nem tudja feldolgozni egy üzenetet, és ismeri az üzenet redelivering, majd próbálja megismételni a műveletet nem nyújt azt is el az üzenetet, amely áthelyezi a kézbesítetlen levelek várólistájára kerülő meghívásával [kézbesítetlen levelek](/dotnet/api/microsoft.servicebus.messaging.queueclient.deadletter), mely is lehetővé teszi, hogy egy egyéni tulajdonság, többek között a OK, amely lehet beolvasni. a kézbesítetlen levelek várólistájára az üzenet beállítása.
+Ha egy fogadó ügyfél nem tudja feldolgozni egy üzenetet, és tudja, hogy az üzenet redelivering és megismételni a műveletet nem segít, azt az üzenetet, amely áthelyezése a kézbesíthetetlen levelek várólistába meghívásával elutasíthatja [kézbesítetlen](/dotnet/api/microsoft.servicebus.messaging.queueclient.deadletter), amely is lehetővé teszi, hogy egy egyéni tulajdonság, többek között az üzenetet a kézbesíthetetlen levelek üzenetsorból beolvasható Okkód beállítása.
 
-Rendezés egy különleges esetben halasztás, amely egy külön cikk tárgyalja.
+Egy különleges esetben elszámolás késleltetési, amelyet külön cikk foglalkozik.
 
-A **Complete** vagy **kézbesítetlen levelek** műveleteket, valamint a **RenewLock** műveletek hálózati problémák miatt sikertelenek lehetnek, ha a tárolt zárolása lejárt, vagy más kiszolgálóoldali feltételek, amelyek meggátolják a rendezése. Az utóbbi esetek egyikében elküldi a negatív visszajelzés a szolgáltatás adott felületek az API-ügyfelekben kivételként. A hiba oka a hibás hálózati kapcsolat létrehozásakor, a zárolás megszakad a Service Bus nem támogatja a meglévő AMQP hivatkozások helyreállítása egy másik kapcsolat óta.
+A **Complete** vagy **kézbesítetlen** műveletek, valamint a **RenewLock** műveletek hálózati hibák miatt sikertelen lehet, ha a tárolt zárolás lejárt, vagy más Szolgáltatásoldali feltételek, amelyek meggátolják a rendezése. Az utóbbi esetek egyikében küld a negatív visszajelzés a szolgáltatás a Surface-eszközök az API-ügyfelekben kivételként. Ha azért nem működő hálózati kapcsolat, a zárolás, mivel a Service Bus nem támogatja a meglévő AMQP-kapcsolatok helyreállítása egy másik kapcsolat eseményértesítése eldobva.
 
-Ha **Complete** sikertelen lesz, amely általában nagyon végén üzenetek kezelésének és egyes esetekben feldolgozási munka perc után a fogadó alkalmazás eldöntheti, hogy megőrzi a feladat állapotát, és figyelmen kívül hagyja az azonos még egyszer biztosítását, vagy jelenik meg a munkahelyi eredmény tosses e, és újrapróbálkozik, mint az üzenet újból kézbesítve.
+Ha **Complete** meghibásodik, ez akkor fordul elő általában nagyon végén üzenetkezelés és bizonyos esetekben a feldolgozási munka, perc elteltével eldöntheti, hogy a fogadó alkalmazásnak e megőrzi az állapotát, és figyelmen kívül hagyja az azonos üzenet másodszor vízjelezhetők, vagy ki a munkahelyi eredmény tosses e, és újrapróbálkozik, az üzenet újbóli kézbesítése.
 
-A tipikus mechanizmus alapján azonosítja a duplikált üzenetek kézbesítések van, úgy, az üzenet-azonosítóját és a feladó egyedi értékre, valószínűleg összhangban a származó folyamatának azonosítót kell megadni. A Feladatütemező valószínűleg értékre kell állítania az üzenetazonosító kíván hozzárendelni a megadott munkavégző alkalmazott a feladat azonosítóját, és a dolgozó volna Ha figyelmen kívül a második előfordulása esetén a feladat-hozzárendelés, hogy a feladat már megtörtént.
+A tipikus mechanizmus kézbesítések duplikált üzenetek azonosítására szolgáló van ehhez az üzenetazonosító, amely és a feladó egy egyedi értékére, valószínűleg az eredeti folyamat az adott azonosítót összhangban kell beállítani. Feladatütemezőt valószínűleg értékre kell állítania az üzenetazonosító próbál hozzárendelése a megadott feldolgozó alkalmazott a feladat azonosítóját, és a feldolgozó lenne ha figyelmen kívül a második előfordulása a feladat-hozzárendelés, hogy a feladat már megtörtént.
 
 ## <a name="next-steps"></a>További lépések
 
-Tudhat meg többet a Service Bus üzenetkezelés, a következő témakörökben:
+További információ a Service Bus-üzenetkezelés, tekintse meg a következő témaköröket:
 
 * [A Service Bus alapjai](service-bus-fundamentals-hybrid-solutions.md)
 * [Service Bus-üzenetsorok, -témakörök és -előfizetések](service-bus-queues-topics-subscriptions.md)

@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: sngun
-ms.openlocfilehash: dfca26f36287cfd856beb98edeb2b2362f36bc4b
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: b54a302c022a8af84c1964c13ffadc52b45c4ca4
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37858806"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43696819"
 ---
 # <a name="azure-cosmos-db-serverless-database-computing-using-azure-functions"></a>Az Azure Cosmos DB: Kiszolgáló nélküli adatbázis-használat az Azure Functions használatával
 
@@ -31,7 +31,7 @@ Az Azure Cosmos DB és az Azure Functions lehetővé teszi az adatbázisok és a
 * Egy függvény kötést létrehozni egy Azure Cosmos DB tároló használatával egy **kimeneti kötésének**. Kimeneti kötések adatokat írni egy tárolót, egy függvény befejezéséről.
 
 > [!NOTE]
-> Az Azure Cosmos DB-eseményindító, illetve a bemeneti és a kimeneti kötések jelenleg csak az SQL API- és a Graph API-fiókokkal képesek együttműködni.
+> Jelenleg az Azure Cosmos DB eseményindító, bemeneti és kimeneti kötések használata csak az SQL API és a Gremlin API fiókok.
 
 A következő ábra szemlélteti ezen három Integrációk: 
 
@@ -82,7 +82,7 @@ Az alábbi képeken az kód ebben a forgatókönyvben az Azure Portalon.
 
 ### <a name="gaming-use-case---azure-cosmos-db-trigger-and-output-binding"></a>Használati eset – Azure Cosmos DB-eseményindító játék és a kimeneti kötése
 
-A játék-, amikor létrejön egy új felhasználót is kereshet más, előfordulhat, hogy ismeri a felhasználók a [Azure Cosmos DB Graph API](graph-introduction.md). Az eredményeket egy [Azure Cosmos DB SQL Database-adatbázishoz] egyszerű lekérdezés majd írhat.
+A játék-, amikor létrejön egy új felhasználót is kereshet más, előfordulhat, hogy ismeri a felhasználók a [Azure Cosmos DB Gremlin API](graph-introduction.md). Az eredményeket egy [Azure Cosmos DB SQL Database-adatbázishoz] egyszerű lekérdezés majd írhat.
 
 **Megvalósítás:** egy Azure Cosmos DB-eseményindítóval és a egy kimeneti kötés
 

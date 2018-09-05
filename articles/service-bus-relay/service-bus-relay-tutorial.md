@@ -1,9 +1,9 @@
 ---
-title: Azure Service Bus WCF továbbító útmutató |} Microsoft Docs
-description: Összeállíthat egy WCF továbbító használó ügyfél- és alkalmazást.
+title: Az Azure Service Bus WCF Relay-oktatóanyaga |} A Microsoft Docs
+description: WCF Relay használatával ügyfél és a szolgáltatás-alkalmazás létrehozása.
 services: service-bus-relay
 documentationcenter: na
-author: sethmanheim
+author: spelluru
 manager: timlt
 editor: ''
 ms.assetid: 53dfd236-97f1-4778-b376-be91aa14b842
@@ -13,19 +13,19 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2017
-ms.author: sethm
-ms.openlocfilehash: 82e26571c88460436e6ca5ee70323cd680c82bdc
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.author: spelluru
+ms.openlocfilehash: 0833a7ec71a0aea66f8ebfdfff81d88925019309
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34642308"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43701865"
 ---
-# <a name="azure-wcf-relay-tutorial"></a>Azure WCF továbbító útmutató
+# <a name="azure-wcf-relay-tutorial"></a>Az Azure WCF Relay-oktatóanyag
 
-Ez az oktatóanyag ismerteti, hogyan hozhat létre egy egyszerű WCF továbbító ügyfélalkalmazást, és Azure Relay szolgáltatást. Egy alkalmazó hasonló oktatóanyagért [Service Bus üzenetkezelés](../service-bus-messaging/service-bus-messaging-overview.md), lásd: [Ismerkedés a Service Bus-üzenetsorok](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md).
+Ez az oktatóanyag leírja, hogyan hozhat létre egy egyszerű WCF-továbbító ügyfél és a szolgáltatás az Azure Relay használatával. Egy alkalmazó hasonló oktatóanyagért [Service Bus-üzenetkezelés](../service-bus-messaging/service-bus-messaging-overview.md), lásd: [Ismerkedés a Service Bus-üzenetsorok](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md).
 
-Az oktatóanyag feldolgozása révén lehetővé teszi egy WCF továbbító ügyfél és -szogáltatásalkalmazás létrehozásához szükséges lépéseket megértéséhez. Az eredeti WCF megfelelők esetében, mint például a "szolgáltatás" olyan konstrukció, amely egy vagy több végpontot, azt mutatja, amelyek egy vagy több szolgáltatási műveletet tesz elérhetővé. A szolgáltatások végpontja megad egy címet, ahol a szolgáltatás megtalálható, egy kötést, amely tartalmazza az információkat, amelyeket az ügyfélnek kommunikálnia kell a szolgáltatás felé, valamint egy szerződést, amely meghatározza a szolgáltatás által az ügyfeleknek nyújtott funkciókat. A WCF és WCF továbbító közötti fő különbség a, hogy a végpont a számítógépre helyi ahelyett, hogy a felhőben van közzétéve.
+Az oktatóanyag feldolgozása révén szogáltatásalkalmazás egy WCF-továbbító ügyfél és a szolgáltatás-alkalmazás létrehozásához szükséges lépéseket. Eredeti WCF megfelelőik, például a "szolgáltatás" egy szerkezet, amely egy vagy több végpontot tesz közzé, amelyek mindegyike tesz közzé egy vagy több szolgáltatási műveletet. A szolgáltatások végpontja megad egy címet, ahol a szolgáltatás megtalálható, egy kötést, amely tartalmazza az információkat, amelyeket az ügyfélnek kommunikálnia kell a szolgáltatás felé, valamint egy szerződést, amely meghatározza a szolgáltatás által az ügyfeleknek nyújtott funkciókat. A WCF és WCF-továbbító közötti fő különbség a, hogy a végpont helyileg, a számítógép helyett a felhőben van közzétéve.
 
 Miután a végére ért az oktatóanyag témaköreinek, rendelkezni fog egy futó szolgáltatással, valamint egy, a szolgáltatás műveleteinek meghívására képes ügyféllel. Az első témakör egy fiók beállítását ismerteti. A következő lépések leírják, hogyan határozhat meg egy szerződést használó szolgáltatást, hogyan valósíthatja meg a szolgáltatást, valamint hogyan konfigurálhatja a szolgáltatást a kódban. Azt is leírják, hogyan működtethető és futtatható a szolgáltatás. A létrejött szolgáltatás próbaüzemben működik, és az ügyfél és a szolgáltatás ugyanazon a számítógépen fut. A szolgáltatást kód vagy egy konfigurációs fájl segítségével is konfigurálhatja.
 
@@ -35,21 +35,21 @@ Az utolsó három lépés azt írja le, hogy hogyan hozhat létre egy ügyfélal
 
 Az oktatóanyag teljesítéséhez az alábbiakra lesz szüksége:
 
-* [Microsoft Visual Studio 2015 vagy újabb](http://visualstudio.com). Ez az oktatóanyag a Visual Studio 2017 használja.
+* [Microsoft Visual Studio 2015 vagy újabb](http://visualstudio.com). Ez az oktatóanyag a Visual Studio 2017-et használja.
 * Aktív Azure-fiók. Ha még nincs fiókja, néhány perc alatt létrehozhat egy ingyenes fiókot. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/free/).
 
 ## <a name="create-a-service-namespace"></a>Szolgáltatásnévtér létrehozása
 
-Az első lépés egy névtér létrehozása, valamint a egy [közös hozzáférésű Jogosultságkód (SAS)](../service-bus-messaging/service-bus-sas.md) kulcs. A névtér egy biztosít a továbbítási szolgáltatás keresztül közzétett minden alkalmazáshoz. A SAS-kulcsot a rendszer automatikusan előállítja a szolgáltatásnévtér létrehozásakor. A szolgáltatásnévtér és SAS-kulcs együttes használata a hitelesítő adatokat az Azure-alkalmazáshoz való hozzáférés hitelesítéséhez biztosít. Relay-névtér létrehozásához kövesse az [itt leírt utasításokat](relay-create-namespace-portal.md).
+Az első lépés, hogy hozzon létre egy névteret, valamint beszerzése egy [közös hozzáférésű Jogosultságkód (SAS)](../service-bus-messaging/service-bus-sas.md) kulcsot. A névtér egy alkalmazáshatárt biztosít a továbbítási szolgáltatás keresztül közzétett minden alkalmazáshoz. A SAS-kulcsot a rendszer automatikusan előállítja a szolgáltatásnévtér létrehozásakor. Szolgáltatásnévtér és SAS-kulcs együttes használata hitelesítő adatokat hitelesíti a hozzáférést egy alkalmazáshoz, hogy az Azure biztosít. Relay-névtér létrehozásához kövesse az [itt leírt utasításokat](relay-create-namespace-portal.md).
 
 ## <a name="define-a-wcf-service-contract"></a>A WCF szolgáltatási szerződés megadása
 
 A szolgáltatási szerződés Megadja, milyen műveleteket (webszolgáltatás-terminológia a metódusokhoz és függvényeket) a szolgáltatás támogatja. A szerződések a C++, a C# vagy a Visual Basic felület meghatározásával jönnek létre. A felület minden metódusa egy konkrét szolgáltatási műveletnek felel meg. A [ServiceContractAttriibute](https://msdn.microsoft.com/library/system.servicemodel.servicecontractattribute.aspx) attribútumot minden felületre, az [OperationContractAttribaute](https://msdn.microsoft.com/library/system.servicemodel.operationcontractattribute.aspx) attribútumot pedig minden műveletre alkalmazni kell. Ha egy felület egy metódusa rendelkezik a [ServiceContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.servicecontractattribute.aspx) attribútummal, de nem rendelkezik az [OperationContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.operationcontractattribute.aspx) attribútummal, nem lesz közzétéve. A feladatok kódja megtalálható az eljárást követő példában. A szerződések és szolgáltatások részletesebb leírása a WCF-dokumentáció [Designing and Implementing Services](https://msdn.microsoft.com/library/ms729746.aspx) (Szolgáltatások tervezése és megvalósítása) témakörében található.
 
-### <a name="create-a-relay-contract-with-an-interface"></a>Továbbító szerződés létrehozása felülettel
+### <a name="create-a-relay-contract-with-an-interface"></a>A relay-szerződés létrehozása felülettel
 
 1. Nyissa meg a Visual Studiót rendszergazdaként. Ehhez a **Start** menüben kattintson a jobb gombbal a programra, majd válassza a **Futtatás rendszergazdaként** parancsot.
-2. Hozzon létre új egy új konzolalkalmazás-projektet. Kattintson a **File** (Fájl) menüre, és válassza a **New** (Új), majd a **Project** (Projekt) elemet. A **New Project** (Új projekt) párbeszédpanelen kattintson a **Visual C#** elemre (ha a **Visual C#** nem jelenik meg, keresse meg az **Other Languages** (Más nyelvek) területen). Kattintson a **Konzolalkalmazás (.NET-keretrendszer)** sablont, és adjon neki nevet **EchoService**. A projekt létrehozásához kattintson az **OK** gombra.
+2. Hozzon létre új egy új konzolalkalmazás-projektet. Kattintson a **File** (Fájl) menüre, és válassza a **New** (Új), majd a **Project** (Projekt) elemet. A **New Project** (Új projekt) párbeszédpanelen kattintson a **Visual C#** elemre (ha a **Visual C#** nem jelenik meg, keresse meg az **Other Languages** (Más nyelvek) területen). Kattintson a **Console App (.NET Framework)** sablont, és adja neki **EchoService**. A projekt létrehozásához kattintson az **OK** gombra.
 
     ![][2]
 
@@ -68,10 +68,10 @@ A szolgáltatási szerződés Megadja, milyen műveleteket (webszolgáltatás-te
 6. Módosítsa a névtér alapértelmezett **EchoService** nevét a következőre: **Microsoft.ServiceBus.Samples**.
 
    > [!IMPORTANT]
-   > Ebben az oktatóanyagban a C# névteret használja **Microsoft.ServiceBus.Samples**, amely a szerződés-alapú névtere felügyelt típus, amely a konfigurációs fájl használatban van a [a WCF-ügyfél konfigurálása](#configure-the-wcf-client) a lépést. A minta létrehozásakor bármilyen névteret megadhat, az oktatóanyag azonban nem fog működni, ha ezután nem módosítja a szerződés és a szolgáltatás névtereit is ennek megfelelően az alkalmazáskonfigurációs fájlban. Az App.config fájlban megadott névtérnek egyeznie kell a C# fájlokban megadott névtérrel.
+   > Ebben az oktatóanyagban a C# névteret **Microsoft.ServiceBus.Samples**, amelyek a névtér, a szerződés-alapú felügyelt írja be a konfigurációs fájlt használ a [a WCF-ügyfél konfigurálása](#configure-the-wcf-client) lépés. A minta létrehozásakor bármilyen névteret megadhat, az oktatóanyag azonban nem fog működni, ha ezután nem módosítja a szerződés és a szolgáltatás névtereit is ennek megfelelően az alkalmazáskonfigurációs fájlban. Az App.config fájlban megadott névtérnek egyeznie kell a C# fájlokban megadott névtérrel.
    >
    >
-7. Közvetlenül után a `Microsoft.ServiceBus.Samples` névtér-deklaráció, de a névtéren belül, adja meg egy új nevű felületet `IEchoContract` , és alkalmazza a `ServiceContractAttribute` attribútumot a felületre a névtér értékű `http://samples.microsoft.com/ServiceModel/Relay/`. A névtér értéke különbözik a kód tartományában használt névtértől. A névtér értéke ehelyett egyedi azonosítóként van használatban ehhez a szerződéshez. A névtér explicit meghatározásával megelőzhető az alapértelmezett névtér hozzáadása a szerződésnévhez. Illessze be a következő kódot a névtér-deklaráció után:
+7. Közvetlenül után a `Microsoft.ServiceBus.Samples` névtér-deklaráció, de a névtéren belül, adja meg egy új nevű felületet `IEchoContract` és a alkalmazni a `ServiceContractAttribute` attribútumot a felületre a névtér értéke `http://samples.microsoft.com/ServiceModel/Relay/`. A névtér értéke különbözik a kód tartományában használt névtértől. A névtér értéke ehelyett egyedi azonosítóként van használatban ehhez a szerződéshez. A névtér explicit meghatározásával megelőzhető az alapértelmezett névtér hozzáadása a szerződésnévhez. Illessze be a következő kódot a névtér-deklaráció után:
 
     ```csharp
     [ServiceContract(Name = "IEchoContract", Namespace = "http://samples.microsoft.com/ServiceModel/Relay/")]
@@ -81,10 +81,10 @@ A szolgáltatási szerződés Megadja, milyen műveleteket (webszolgáltatás-te
     ```
 
    > [!NOTE]
-   > A szolgáltatási szerződés névtere általában tartalmaz egy elnevezési sémát, amely tartalmazza a verzióinformációkat. Ha a verzióinformációk szerepelnek a szolgáltatási szerződés névterében, a szolgáltatások képesek elkülöníteni a nagyobb módosításokat egy új szolgáltatási szerződés új névtérrel való meghatározása, valamint egy új végponton való megjelenítése révén. Ezen a módon kikapcsolja az ügyfelek továbbra is használhatja a régi szolgáltatási szerződést anélkül, hogy frissíteni kell. A verzióinformációk dátumot vagy buildszámot tartalmazhatnak. További információ: [Service Versioning](http://go.microsoft.com/fwlink/?LinkID=180498) (Szolgáltatás verziószámozása). A jelen oktatóanyag esetén a szolgáltatási szerződés elnevezési sémája nem tartalmazza a verzióinformációkat.
+   > A szolgáltatási szerződés névtere általában tartalmaz egy elnevezési sémát, amely tartalmazza a verzióinformációkat. Ha a verzióinformációk szerepelnek a szolgáltatási szerződés névterében, a szolgáltatások képesek elkülöníteni a nagyobb módosításokat egy új szolgáltatási szerződés új névtérrel való meghatározása, valamint egy új végponton való megjelenítése révén. Ily módon az ügyfelek továbbra is használhatja a régi szolgáltatási szerződést anélkül, hogy frissíteniük kellene. A verzióinformációk dátumot vagy buildszámot tartalmazhatnak. További információ: [Service Versioning](http://go.microsoft.com/fwlink/?LinkID=180498) (Szolgáltatás verziószámozása). A jelen oktatóanyag esetén a szolgáltatási szerződés elnevezési sémája nem tartalmazza a verzióinformációkat.
    >
    >
-8. Belül a `IEchoContract` csatoló, deklaráljon egy metódust az egyetlen művelettel a `IEchoContract` szerződés által a felületen, és alkalmazza a `OperationContractAttribute` attribútumot az alábbiak szerint a WCF továbbító szerződés részeként közzétenni kívánt metódusra:
+8. Belül a `IEchoContract` csatoló, deklaráljon egy metódust az egyetlen műveletben a `IEchoContract` szerződés által a felületen közzétett és a alkalmazni a `OperationContractAttribute` attribútumot a következőképpen a WCF-továbbító szerződés részeként közzétenni kívánt metódus:
 
     ```csharp
     [OperationContract]
@@ -101,7 +101,7 @@ A szolgáltatási szerződés Megadja, milyen műveleteket (webszolgáltatás-te
 
 ### <a name="example"></a>Példa
 
-A következő kód bemutatja egy WCF továbbító szerződést meghatározó alapszintű felületet.
+A következő kód bemutatja egy WCF-továbbító szerződést meghatározó alapszintű felületet.
 
 ```csharp
 using System;
@@ -131,7 +131,7 @@ Most, hogy létrejött a felület, megvalósíthatja azt.
 
 ## <a name="implement-the-wcf-contract"></a>A WCF szerződés megvalósítása
 
-Egy Azure relay létrehozásához szükséges, hogy először létre kell hoznia a szerződést, amelyet egy felület használatával. A felület létrehozásáról az előző lépésben találhat további információkat. A következő lépés a felület megvalósítása. Ebbe beletartozik egy `EchoService` nevű osztály létrehozása, amely megvalósítja a felhasználó által megadott `IEchoContract` felületet. A felület megvalósítása után egy App.config konfigurációs fájl segítségével konfigurálhatja azt. A konfigurációs fájl tartalmazza a szükséges információkat az alkalmazás, például a szolgáltatás nevét, a neve, a szerződés és a továbbítási szolgáltatás folytatott kommunikációhoz használt protokoll típusát. A feladatokhoz használt kód megtalálható az eljárást követő példában. A szolgáltatási szerződések megvalósításáról a WCF-dokumentáció [Implementing Service Contracts](https://msdn.microsoft.com/library/ms733764.aspx) (Szolgáltatási szerződések megvalósítása) szakaszában található átfogó ismertetés.
+Az Azure relay létrehozásához először létrehozni a szerződést, amelyet egy felület használatával. A felület létrehozásáról az előző lépésben találhat további információkat. A következő lépés a felület megvalósítása. Ebbe beletartozik egy `EchoService` nevű osztály létrehozása, amely megvalósítja a felhasználó által megadott `IEchoContract` felületet. A felület megvalósítása után egy App.config konfigurációs fájl segítségével konfigurálhatja azt. A konfigurációs fájl tartalmazza a szükséges információkat az alkalmazás, például a szolgáltatás nevét, a neve, a szerződés és a relay szolgáltatással folytatott kommunikációhoz használt protokoll típusát. A feladatokhoz használt kód megtalálható az eljárást követő példában. A szolgáltatási szerződések megvalósításáról a WCF-dokumentáció [Implementing Service Contracts](https://msdn.microsoft.com/library/ms733764.aspx) (Szolgáltatási szerződések megvalósítása) szakaszában található átfogó ismertetés.
 
 1. Hozzon létre egy új, `EchoService` nevű osztályt közvetlenül az `IEchoContract` felület meghatározása után. Az `EchoService` osztály megvalósítja az `IEchoContract` felületet.
 
@@ -163,10 +163,10 @@ Egy Azure relay létrehozásához szükséges, hogy először létre kell hoznia
 
 ### <a name="define-the-configuration-for-the-service-host"></a>A szolgáltatásgazda konfigurációjának meghatározása
 
-1. A konfigurációs fájl nagyon hasonlít a WCF konfigurációs fájlra. Ez magában foglalja a szolgáltatás nevét, végpontját (Ez azt jelenti, hogy azt a helyet, amely Azure továbbítási elérhetővé teszi az ügyfelek és a gazdáknak az egymással való kommunikációhoz) és kötését (a kommunikációhoz használt protokoll típusát). A fő különbség az, hogy ez a konfigurált szolgáltatásvégpont egy [NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding) kötésre hivatkozik, amely nem része a .NET-keretrendszernek. [NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding) a szolgáltatás által meghatározott kötés egyik.
+1. A konfigurációs fájl nagyon hasonlít a WCF konfigurációs fájlra. Tartalmazza a szolgáltatás nevét, végpontját (azaz a helyet, amely az Azure Relay közzétesz az ügyfeleknek és a gazdagép kommunikálni egymással) és kötését (a kommunikációhoz használt protokoll típusát). A fő különbség az, hogy ez a konfigurált szolgáltatásvégpont egy [NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding) kötésre hivatkozik, amely nem része a .NET-keretrendszernek. [NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding) a szolgáltatás által meghatározott kötés egyik.
 2. A **Solution Explorerben** (Megoldáskezelőben) kattintson duplán az App.config fájlra a Visual Studio-szerkesztőben való megnyitásához.
 3. Az `<appSettings>` elemben cserélje le a helyőrzőket a szolgáltatási névtér nevére, valamint a korábbi lépésben másolt SAS-kulcsra.
-4. A `<system.serviceModel>` címkéken belül adjon hozzá egy `<services>` elemet. Több relay alkalmazásban definiálhat egy egyetlen konfigurációs fájlban. Ez az oktatóanyag viszont csak egyet határoz meg.
+4. A `<system.serviceModel>` címkéken belül adjon hozzá egy `<services>` elemet. Több relay alkalmazásban megadhatja egy egyetlen konfigurációs fájlban. Ez az oktatóanyag viszont csak egyet határoz meg.
 
     ```xml
     <?xmlversion="1.0"encoding="utf-8"?>
@@ -190,7 +190,7 @@ Egy Azure relay létrehozásához szükséges, hogy először létre kell hoznia
     <endpoint contract="Microsoft.ServiceBus.Samples.IEchoContract" binding="netTcpRelayBinding"/>
     ```
 
-    A végpont meghatározza, hogy az ügyfél hol keresi majd a gazdaalkalmazást. Később az oktatóprogram ebben a lépésben URI, amely teljesen közzéteszi a gazdagépet keresztül Azure Relay létrehozásához. A kötés deklarálja, hogy használjuk TCP protokollt a relay szolgáltatással való kommunikációra.
+    A végpont meghatározza, hogy az ügyfél hol keresi majd a gazdaalkalmazást. Később az oktatóanyagban ebben a lépésben hozzon létre egy URI-t, amely teljesen közzéteszi az Azure Relay a gazdagéppel. A kötés deklarálja, hogy használjuk a TCP protokoll a relay szolgáltatással való kommunikációra.
 7. A **Build** (Létrehozás) menüben kattintson a **Build Solution** (Megoldás létrehozása) elemre a munkája pontosságának ellenőrzéséhez.
 
 ### <a name="example"></a>Példa
@@ -231,11 +231,11 @@ A következő kód a szolgáltatásgazdához társított App.config fájl alapsz
 </configuration>
 ```
 
-## <a name="host-and-run-a-basic-web-service-to-register-with-the-relay-service"></a>Üzemeltetése és futtatása egy alapszintű webszolgáltatás a továbbítási szolgáltatás regisztrálása
+## <a name="host-and-run-a-basic-web-service-to-register-with-the-relay-service"></a>Egy alapszintű webszolgáltatás szeretne regisztrálni a továbbítási szolgáltatás futtatására
 
-Ez a lépés ismerteti, hogyan lehet egy Azure-továbbítási szolgáltatás futtatásához.
+Ebben a lépésben azt ismerteti, hogyan futtathat egy Azure Relay szolgáltatás.
 
-### <a name="create-the-relay-credentials"></a>A továbbító hitelesítő adatok létrehozása
+### <a name="create-the-relay-credentials"></a>A relay-hitelesítő adatok létrehozása
 
 1. A `Main()` metódusban hozzon létre két változót, amelyben a konzolablakból beolvasott névtér és SAS-kulcs tárolható.
 
@@ -246,7 +246,7 @@ Ez a lépés ismerteti, hogyan lehet egy Azure-továbbítási szolgáltatás fut
     string sasKey = Console.ReadLine();
     ```
 
-    A SAS-kulcs később a projekt eléréséhez használandó. A névteret a rendszer paraméterként átadja a `CreateServiceUri` számára szolgáltatás URI létrehozásához.
+    Az SAS-kulcs később a projekt eléréséhez használandó. A névteret a rendszer paraméterként átadja a `CreateServiceUri` számára szolgáltatás URI létrehozásához.
 2. Egy [TransportClientEndpointBehavior](/dotnet/api/microsoft.servicebus.transportclientendpointbehavior) objektum segítségével deklarálhatja, hogy SAS-kulcsot fog használni hitelesítési típusként. Vegye fel a következő kódot közvetlenül az előző lépésben felvett kód után.
 
     ```csharp
@@ -256,7 +256,7 @@ Ez a lépés ismerteti, hogyan lehet egy Azure-továbbítási szolgáltatás fut
 
 ### <a name="create-a-base-address-for-the-service"></a>A szolgáltatás alapszintű cím létrehozása
 
-Az előző lépésben felvett kód után hozzon létre egy `Uri` a szolgáltatás alapszintű címéhez példánya. Ez az URI megadja a Service Bus-sémát, a névteret és a szolgáltatási felület útvonalát.
+Az előző lépésben felvett kód után hozzon létre egy `Uri` példányt a szolgáltatás alapszintű címéhez. Ez az URI megadja a Service Bus-sémát, a névteret és a szolgáltatási felület útvonalát.
 
 ```csharp
 Uri address = ServiceBusEnvironment.CreateServiceUri("sb", serviceNamespace, "EchoService");
@@ -266,7 +266,7 @@ Az „sb” a Service Bus-séma rövidítése, és azt jelzi, hogy a TCP protoko
 
 Az oktatóanyaghoz az URI `sb://putServiceNamespaceHere.windows.net/EchoService`.
 
-### <a name="create-and-configure-the-service-host"></a>Hozza létre és konfigurálja a szolgáltatásgazda
+### <a name="create-and-configure-the-service-host"></a>Hozzon létre, és a szolgáltatásgazda konfigurálása
 
 1. A csatlakozási mód beállítása legyen `AutoDetect`.
 
@@ -274,7 +274,7 @@ Az oktatóanyaghoz az URI `sb://putServiceNamespaceHere.windows.net/EchoService`
     ServiceBusEnvironment.SystemConnectivity.Mode = ConnectivityMode.AutoDetect;
     ```
 
-    A csatlakozási mód írja le a protokollt, a szolgáltatás használatával kommunikálnak a továbbítási szolgáltatás; HTTP vagy TCP. Az alapértelmezett beállítás használata `AutoDetect`, a szolgáltatás megpróbál csatlakozni Azure továbbítási TCP, amennyiben az rendelkezésre áll, és a HTTP-alapú Ha TCP nem érhető el. Vegye figyelembe, hogy ez nem azonos a szolgáltatás által az ügyfél-kommunikációhoz megadott protokollal. Azt a protokollt az alkalmazott kötés határozza meg. A szolgáltatás használhatja például a [BasicHttpRelayBinding](https://msdn.microsoft.com/library/microsoft.servicebus.basichttprelaybinding.aspx) kötést, amely megadja, hogy a végpont kommunikál az ügyfelek HTTP Protokollon keresztül. Megadhatja, hogy ugyanazt a szolgáltatást **ConnectivityMode.AutoDetect** , hogy a szolgáltatás TCP protokollon keresztül kommunikál Azure továbbító.
+    A csatlakozási mód írja le a protokoll, a szolgáltatás a relay szolgáltatással való kommunikációra használja HTTP vagy TCP. Az alapértelmezett beállítás használata `AutoDetect`, a szolgáltatás megpróbál csatlakozni az Azure Relay TCP, ha elérhető, valamint a HTTP Ha TCP nem érhető el. Vegye figyelembe, hogy ez nem azonos a szolgáltatás által az ügyfél-kommunikációhoz megadott protokollal. Azt a protokollt az alkalmazott kötés határozza meg. A szolgáltatás használhatja például a [BasicHttpRelayBinding](https://msdn.microsoft.com/library/microsoft.servicebus.basichttprelaybinding.aspx) kötést, amely megadja, hogy a végpont kommunikál az ügyfelek HTTP-n keresztül. Megadhatja, hogy ugyanazt a szolgáltatást **ConnectivityMode.AutoDetect** úgy, hogy a szolgáltatás TCP protokollon keresztül kommunikál az Azure Relay.
 2. Hozza létre a szolgáltatás gazdáját a szakaszban korábban létrehozott URI segítségével.
 
     ```csharp
@@ -294,7 +294,7 @@ Az oktatóanyaghoz az URI `sb://putServiceNamespaceHere.windows.net/EchoService`
     IEndpointBehavior serviceRegistrySettings = new ServiceRegistrySettings(DiscoveryType.Public);
     ```
 
-    Ez a lépés a továbbítási szolgáltatás, amely az alkalmazás nyilvánosan az ATOM-hírcsatornát a projekthez megvizsgálásával tájékoztatja. Ha a **DiscoveryType** beállítása **private**, attól még egy ügyfél elérheti a szolgáltatást. A szolgáltatás azonban nem jelent a továbbítási névtér kereséséhez. Az ügyfélnek ehhez már ismernie kell a végpont elérési útját.
+    Ebben a lépésben a továbbítási szolgáltatás, amely az alkalmazás nyilvánosan is található az ATOM-hírcsatorna a projekt megvizsgálásával tájékoztatja. Ha a **DiscoveryType** beállítása **private**, attól még egy ügyfél elérheti a szolgáltatást. Azonban a szolgáltatás nem jelenik meg, amikor keresi a Relay-névtér. Az ügyfélnek ehhez már ismernie kell a végpont elérési útját.
 5. Alkalmazza a szolgáltatás hitelesítő adatait az App.config fájlban meghatározott szolgáltatásvégpontokra:
 
     ```csharp
@@ -330,7 +330,7 @@ Az oktatóanyaghoz az URI `sb://putServiceNamespaceHere.windows.net/EchoService`
 
 ### <a name="example"></a>Példa
 
-A befejezett szolgáltatáskód hibáit a következőképpen kell megjelennie. A kód tartalmazza a szolgáltatási szerződés és a korábbi lépések megvalósítását az oktatóanyag, és működteti a szolgáltatást egy konzolalkalmazást.
+A befejezett szolgáltatást kóddal kell a következőképpen jelenik meg. A kód a szolgáltatási szerződés és az előző lépésekből megvalósítása tartalmaz az oktatóanyagban, és a szolgáltatást egy konzolalkalmazást.
 
 ```csharp
 using System;
@@ -408,12 +408,12 @@ namespace Microsoft.ServiceBus.Samples
 
 ## <a name="create-a-wcf-client-for-the-service-contract"></a>WCF-ügyfél létrehozása a szolgáltatási szerződéshez
 
-A következő lépés, hogy hozzon létre egy ügyfélalkalmazást és a későbbi lépésekben megvalósítandó szolgáltatási szerződés meghatározása. Vegye figyelembe, hogy sok lépés hasonlítanak szolgáltatás létrehozása lépéseire: a Szerződés meghatározása, szerkesztését az App.config fájlt, hitelesítő adatokkal való csatlakozáshoz a továbbítási szolgáltatás, és így tovább. A feladatokhoz használt kód megtalálható az eljárást követő példában.
+A következő lépés, hogy egy olyan ügyfélalkalmazás létrehozását, és a későbbi lépésekben megvalósítandó szolgáltatási szerződés meghatározása. Vegye figyelembe, hogy sok lépés lépéseire szolgáltatás létrehozása: Szerződés meghatározása, szerkesztési az App.config fájlt, a továbbítási szolgáltatáshoz való csatlakozáshoz hitelesítő adataival, és így tovább. A feladatokhoz használt kód megtalálható az eljárást követő példában.
 
 1. Hozzon létre egy új projektet az ügyfél jelenlegi Visual Studio megoldásában az alábbiakat követve:
 
    1. A Solution Explorerben (Megoldáskezelőben) a szolgáltatást tartalmazó megoldásban kattintson a jobb gombbal az aktuális megoldásra (ne a projektre), és kattintson az **Add** (Hozzáadás) lehetőségre. Ezután kattintson a **New Project** (Új projekt) gombra.
-   2. Az a **új projekt hozzáadása** párbeszédpanel, kattintson a **Visual C#** (Ha **Visual C#** jelenik meg, keresse meg a **más nyelvek**) elemre, jelölje be a **Konzolalkalmazás (.NET-keretrendszer)** sablont, és adjon neki nevet **EchoClient**.
+   2. Az a **új projekt hozzáadása** párbeszédpanelen kattintson a **Visual C#** (Ha **Visual C#** jelenik meg, keresse meg a **más nyelvek**) területen válassza a **Console App (.NET Framework)** sablont, és adja neki **EchoClient**.
    3. Kattintson az **OK** gombra.
       <br />
 2. A Solution Explorerben (Megoldáskezelőben) kattintson duplán az **EchoClient** projekt Program.cs fájljára a szerkesztőben való megnyitásához, ha még nincs megnyitva.
@@ -498,7 +498,7 @@ Ebben a lépésben létrehozza az App.config fájlt egy alapszintű ügyfélalka
                     binding="netTcpRelayBinding"/>
     ```
 
-    Ez a lépés a végpont, a szolgáltatás, valamint azt, hogy az ügyfélalkalmazás TCP kommunikálni az Azure-továbbítási meghatározott szerződést a nevét adja meg. A következő lépés a végpont neve használatával ezt a végpont-konfigurációt összekapcsolja a szolgáltatás URI-jával.
+    Ebben a lépésben a végpontot, a szolgáltatás, valamint azt, hogy az ügyfélalkalmazás TCP kommunikálni az Azure Relay meghatározott szerződést nevét adja meg. A következő lépés a végpont neve használatával ezt a végpont-konfigurációt összekapcsolja a szolgáltatás URI-jával.
 5. Kattintson a **fájl**, majd kattintson a **összes mentése**.
 
 ## <a name="example"></a>Példa
@@ -525,7 +525,7 @@ A következő kód az Echo ügyfél App.config fájlját mutatja.
 ```
 
 ## <a name="implement-the-wcf-client"></a>A WCF-ügyfél megvalósítása
-Ebben a lépésben megvalósít egy alapszintű ügyfélalkalmazást, amely hozzáfér az ebben az oktatóanyagban korábban létrehozott szolgáltatáshoz. A szolgáltatás hasonló, az ügyfél hajtja végre számos Azure-továbbítási eléréséhez ugyanazokat a műveleteket:
+Ebben a lépésben megvalósít egy alapszintű ügyfélalkalmazást, amely hozzáfér az ebben az oktatóanyagban korábban létrehozott szolgáltatáshoz. A szolgáltatás hasonlóan, az ügyfél hajtja végre ugyanazokat a műveleteket el az Azure Relay számos:
 
 1. Beállítja a csatlakozási módot.
 2. Létrehozza a gazdaszolgáltatás helyét megadó URI-t.
@@ -535,7 +535,7 @@ Ebben a lépésben megvalósít egy alapszintű ügyfélalkalmazást, amely hozz
 6. Végrehajtja az alkalmazásspecifikus feladatokat.
 7. Bezárja a kapcsolatot.
 
-Azonban a fő különbségek egyike, hogy az ügyfélalkalmazás egy csatorna való kapcsolódáshoz használ a továbbítási szolgáltatás, mivel a szolgáltatás használja a következőt hívja **ServiceHost**. A feladatokhoz használt kód megtalálható az eljárást követő példában.
+Azonban a főbb különbségek egyike, hogy az ügyfélalkalmazás egy csatorna a továbbítási szolgáltatáshoz való csatlakozáshoz a szolgáltatás pedig hívása **ServiceHost**. A feladatokhoz használt kód megtalálható az eljárást követő példában.
 
 ### <a name="implement-a-client-application"></a>Ügyfélalkalmazás megvalósítása
 1. A csatlakozási mód beállítása legyen **AutoDetect**. Adja hozzá a következő kódot az **EchoClient** alkalmazás `Main()` metódusában.
@@ -551,7 +551,7 @@ Azonban a fő különbségek egyike, hogy az ügyfélalkalmazás egy csatorna va
     Console.Write("Your SAS Key: ");
     string sasKey = Console.ReadLine();
     ```
-3. Az URI, amely meghatározza a helyét a gazdagépen a továbbítási projekt létrehozásához.
+3. Hozzon létre a Relay-projektben a gazdagép helyét meghatározó URI-t.
 
     ```csharp
     Uri serviceUri = ServiceBusEnvironment.CreateServiceUri("sb", serviceNamespace, "EchoService");
@@ -609,7 +609,7 @@ Azonban a fő különbségek egyike, hogy az ügyfélalkalmazás egy csatorna va
 
 ## <a name="example"></a>Példa
 
-A befejezett kód kell a következőképpen jelenik meg, hozzon létre egy ügyfélalkalmazást, hogyan hívhatja meg a szolgáltatás működésére, és zárhatja be az ügyfelet a művelet hívása után megjelenítő befejeződött.
+A befejezett kód kell a következőképpen jelenik meg, hogyan hozhat létre egy ügyfélalkalmazást, hogyan hívhat meg a szolgáltatás a műveletek és az ügyfél bezárása után a művelet meghívásának befejeződött.
 
 ```csharp
 using System;
@@ -715,13 +715,13 @@ namespace Microsoft.ServiceBus.Samples
 
 ## <a name="next-steps"></a>További lépések
 
-Ez az oktatóanyag bemutatta, hogyan hozhat létre egy Azure-továbbítási-ügyfélalkalmazást és szolgáltatást a Service Bus WCF továbbítási képességeivel. Egy alkalmazó hasonló oktatóanyagért [Service Bus üzenetkezelés](../service-bus-messaging/service-bus-messaging-overview.md), lásd: [Ismerkedés a Service Bus-üzenetsorok](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md).
+Ez az oktatóanyag bemutatta, hogyan hozhat létre egy Azure Relay-ügyfelet, és szolgáltatást a Service Bus WCF Relay képességeit. Egy alkalmazó hasonló oktatóanyagért [Service Bus-üzenetkezelés](../service-bus-messaging/service-bus-messaging-overview.md), lásd: [Ismerkedés a Service Bus-üzenetsorok](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md).
 
-Azure Relayjel kapcsolatos további tudnivalókért tekintse meg a következő témaköröket.
+Az Azure Relay kapcsolatos további információkért tekintse meg a következő témaköröket.
 
 * [Az Azure Service Bus-architektúra áttekintése](../service-bus-messaging/service-bus-fundamentals-hybrid-solutions.md#relays)
 * [Az Azure Relay áttekintése](relay-what-is-it.md)
-* [A WCF továbbító szolgáltatás a .NET használatával](relay-wcf-dotnet-get-started.md)
+* [A WCF relay szolgáltatás használata .NET-tel](relay-wcf-dotnet-get-started.md)
 
 [2]: ./media/service-bus-relay-tutorial/create-console-app.png
 [3]: ./media/service-bus-relay-tutorial/install-nuget.png

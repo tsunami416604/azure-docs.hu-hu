@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 07/31/2018
 ms.author: bikang
-ms.openlocfilehash: 68799fe2755d8c0e811ae217f2cf6ceb84c7d869
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 1e77dfdec902b64f2524c790bda6742eaa1105fc
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39494226"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43669174"
 ---
 # <a name="sfctl-chaos"></a>sfctl-káosz
 Indítása, leállítása és a chaos jelentés tesztelheti a szolgáltatást.
@@ -47,9 +47,9 @@ A következő szegmenst a Chaos események beolvasása, megadhatja a continuatio
 |Argumentum|Leírás|
 | --- | --- |
 | ---folytatási kód | A folytatási token paraméter eredmények következő készletét beszerzésére használatos. Az eredményeket a rendszer nem férnek el egyetlen válasz egy folytatási tokent egy nem üres értékkel szerepel az API-válasz. Ha ez az érték átadott, a következő API-hívás az API-t az eredmények tovább készletet ad vissza. Ha nincsenek további eredmények, a folytatási token neobsahuje értéket. Ez a paraméter értéke nem lehet URL-kódolású. |
-| --end-time-utc | A Windows fájl jelölő az időtartomány, amelynek a Chaos jelentést generáló van befejezésének időpontja. Tekintse meg [DateTime.ToFileTimeUtc metódus](https\://msdn.microsoft.com/library/system.datetime.tofiletimeutc(v=vs.110).aspx) részleteiről. |
+| --end-time-utc | A Windows fájl jelölő az időtartomány, amelynek a Chaos jelentést generáló van befejezésének időpontja. Tekintse meg [DateTime.ToFileTimeUtc metódus](https://docs.microsoft.com/dotnet/api/system.datetime.tofiletimeutc?redirectedfrom=MSDN&view=netframework-4.7.2#System_DateTime_ToFileTimeUtc) részleteiről. |
 | --max-results | A lapozható lekérdezés részeként visszaadandó eredmények maximális száma. Ez a paraméter határozza meg, visszaadott eredmények számának felső határnál. Az eredmények vissza is lehet kisebb, mint a megadott maximális eredményeket, ha azok nem férnek el megfelelően az üzenetek maximális mérete korlátozások az üzenetben a konfigurációban meghatározott. Ha ez a paraméter értéke nulla, vagy nincs megadva, a lapozható lekérdezés annyi eredmények, amelyek illeszkednek az visszaadott üzenet a lehető tartalmazza. |
-| --start-time-utc | A Windows fájl az időtartományt, amelyhez a Chaos jelentést, hogy jöjjön létre, kezdési idejét jelölő időpontja. Tekintse meg [DateTime.ToFileTimeUtc metódus](https\://msdn.microsoft.com/library/system.datetime.tofiletimeutc(v=vs.110).aspx) részleteiről. |
+| --start-time-utc | A Windows fájl az időtartományt, amelyhez a Chaos jelentést, hogy jöjjön létre, kezdési idejét jelölő időpontja. Tekintse meg [DateTime.ToFileTimeUtc metódus](https://docs.microsoft.com/dotnet/api/system.datetime.tofiletimeutc?redirectedfrom=MSDN&view=netframework-4.7.2#System_DateTime_ToFileTimeUtc) részleteiről. |
 | --időkorlát -t | Kiszolgálói időtúllépés másodpercben.  Alapértelmezett\: 60. |
 
 ### <a name="global-arguments"></a>Globális argumentumok

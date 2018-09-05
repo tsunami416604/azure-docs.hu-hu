@@ -5,17 +5,17 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 09/01/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: c2d0f14bca2b9ab062c61407479ab45a0104ff0a
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 0408b26e687dd31c408dbccc68f56e8198016c8f
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39716263"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43664788"
 ---
 # <a name="deploy-cloud-based-azure-multi-factor-authentication"></a>Felhőalapú Azure multi-factor Authentication szolgáltatás üzembe helyezése
 
@@ -23,8 +23,8 @@ Ismerkedés az Azure multi-factor Authentication (az Azure MFA) egy olyan egysze
 
 Mielőtt elkezdené, győződjön meg arról, az alábbi előfeltételek:
 
-* Egy globális rendszergazdai fiókkal az Azure AD-bérlőben. Ha a lépés befejezése segítségre van szüksége, tekintse meg a cikket [első lépései az Azure ad-vel](../get-started-azure-ad.md)
-* Helyes a felhasználókhoz rendelt licenceket. Ha további információt a témakör kell [Azure multi-factor Authentication beszerzése](concept-mfa-licensing.md)
+* Egy globális rendszergazdai fiókkal az Azure AD-bérlőben. Ha a lépés befejezése segítségre van szüksége, tekintse meg a cikket [első lépései az Azure ad-vel](../get-started-azure-ad.md).
+* Helyes a felhasználókhoz rendelt licenceket. Ha további információt a témakör kell [beszerzése az Azure multi-factor Authentication](concept-mfa-licensing.md).
 
 ## <a name="choose-how-to-enable"></a>Válassza ki a engedélyezése
 
@@ -32,7 +32,7 @@ Mielőtt elkezdené, győződjön meg arról, az alábbi előfeltételek:
 
 Engedélyezve van az Azure AD Identity Protection - ezt a módszert használja az Azure AD Identity Protection kockázati szabályzat minden felhőalapú alkalmazásra bejelentkezési kockázat alapján a kétlépéses ellenőrzés megkövetelése. Ez a metódus szükséges, Azure Active Directory P2 licencelési. Ez a módszer további információ található [Azure Active Directory Identity Protection](../identity-protection/overview.md#risky-sign-ins).
 
-Engedélyezve van, úgy módosítja a felhasználói állapot – Ez az a kétlépéses ellenőrzést igénylő hagyományos módszere. Mind a felhőbeli Azure MFA és az Azure MFA-kiszolgáló működik. Ezzel a módszerrel megköveteli a felhasználóktól a kétlépéses ellenőrzés végrehajtására **minden alkalommal, amikor** jelentkezzen be, és felülírja a feltételes hozzáférési szabályzatokat. Ez a módszer további információ található [igénylése a kétlépéses ellenőrzés egy felhasználó](howto-mfa-userstates.md)
+Engedélyezve van, úgy módosítja a felhasználói állapot – Ez az a kétlépéses ellenőrzést igénylő hagyományos módszere. Mind a felhőbeli Azure MFA és az Azure MFA-kiszolgáló működik. Ezzel a módszerrel megköveteli a felhasználóktól a kétlépéses ellenőrzés végrehajtására **minden alkalommal, amikor** jelentkezzen be, és felülírja a feltételes hozzáférési szabályzatokat. Ez a módszer további információ található [igénylése a kétlépéses ellenőrzés egy felhasználó](howto-mfa-userstates.md).
 
 > [!Note]
 > További információ a licencekkel és a díjszabás találhatók a [Azure ad-ben](https://azure.microsoft.com/pricing/details/active-directory/

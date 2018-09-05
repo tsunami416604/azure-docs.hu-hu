@@ -1,6 +1,6 @@
 ---
-title: A MySQL replikálja az adatokat az Azure-adatbázisba.
-description: Ez a cikk ismerteti az adatok a replikáció az Azure Database MySQL.
+title: Replikálják az adatokat MySQL-hez készült Azure Database-be.
+description: Ez a cikk ismerteti az adatok a replikáció az Azure Database MySQL-hez.
 services: mysql
 author: ajlam
 ms.author: andrela
@@ -8,38 +8,39 @@ manager: kfile
 editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
-ms.date: 06/20/2018
-ms.openlocfilehash: 72f8211ecc0534b15402911de8fc0ec3d541a835
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.date: 08/31/2018
+ms.openlocfilehash: 6135e4a0182f3af7db54eab974e4c307402185ab
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36294904"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43666076"
 ---
-# <a name="replicate-data-into-azure-database-for-mysql"></a>A MySQL replikálja az adatokat az Azure-adatbázisba
+# <a name="replicate-data-into-azure-database-for-mysql"></a>Replikálják az adatokat MySQL-hez készült Azure Database-be
 
-Adatok a replikáció szinkronizálja az adatokat a helyszíni futtató virtuális gépek vagy adatbázis-szolgáltatásokat az Azure-adatbázisba MySQL szolgáltatáshoz más szolgáltatók által üzemeltetett MySQL kiszolgálóról teszi lehetővé. Adatok a replikáció a bináris napló (binlog) pozíció-alapú fájlreplikációs natív módon MySQL alapul. Binlog replikációval kapcsolatos további tudnivalókért tekintse meg a [MySQL binlog szolgáltatása-áttekintés](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html). 
+Adatok a replikáció lehetővé teszi egy MySQL-kiszolgálót a helyszínen futó virtuális gépeket vagy adatbázis-szolgáltatások az Azure Database for MySQL-szolgáltatás az egyéb felhőszolgáltatók által üzemeltetett adatai szinkronizálva. Adatok a replikáció a bináris napló (binlog) pozíció-alapú fájlreplikációs natív, a MySQL-hez alapul. Binlog replikációval kapcsolatos további tudnivalókért tekintse meg a [MySQL binlog replikálációs szolgáltatása-áttekintés](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html). 
 
 ## <a name="when-to-use-data-in-replication"></a>Mikor érdemes használni az adatok a replikáció
-Adatok a replikáció használatával megfontolandó főbb forgatókönyvek a következők:
+A fő forgatókönyvet kell figyelembe venni, a replikációs adatokat a rendszer:
 
-- **Hibrid adatszinkronizálás:** adatok a replikáció, a helyszíni kiszolgálók és az Azure-adatbázis között a MySQL szinkronizált adatok biztosítható. Hibrid alkalmazások létrehozása a szinkronizálás. Ez a módszer akkor tetszetős, ha olyan helyi adatbázis-kiszolgálóval rendelkezik, de szeretné, hogy az adatok áthelyezése egy régiót közelebb a végfelhasználók számára.
-- **Több Felhőbeli szinkronizálásnak:** összetett megoldások, használja adatok a replikáció adatszinkronizálás MySQL az Azure-adatbázis és a különböző szolgáltatók, többek között a virtuális gépek és azokat a tárolt adatbázis szolgáltatások.
+- **Hibrid adatok szinkronizálása:** adatok a replikáció, az adatok között a helyszíni kiszolgálók és az Azure Database for MySQL-hez szinkronizálva megtarthatja. Hibrid alkalmazások létrehozása a szinkronizálás hasznos. Ez a módszer akkor tetszetős, ha már rendelkezik egy meglévő helyi adatbázis-kiszolgáló, de szeretne áthelyezni az adatokat egy régió közelebb a végfelhasználók számára.
+- **Több felhőalapú szinkronizálás:** összetett felhőalapú megoldások, a használati adatok a replikáció adatszinkronizálás az Azure Database for MySQL és a különböző felhőszolgáltatók, beleértve a virtuális gépeket és ezeket a felhőben lévő üzemeltetett adatbázis-szolgáltatások.
 
-## <a name="limitations-and-considerations"></a>Korlátozások és megfontolások
+## <a name="limitations-and-considerations"></a>Korlátozások és szempontok
 
 ### <a name="data-not-replicated"></a>Nem replikált adatok
-A [ *mysql rendszeradatbázis* ](https://dev.mysql.com/doc/refman/5.7/en/system-database.html) az elsődleges kiszolgálón a rendszer nem replikálja. Fiókok és engedélyek az elsődleges kiszolgálón módosításai nem replikálódnak. Ha ezt a fiókot hozzá kell férniük a replikakiszolgáló az elsődleges kiszolgálón hozzon létre egy fiókot, majd manuálisan hozza létre ugyanazt a fiókot a replika kiszolgáló oldalán. Ha szeretné megtudni, milyen táblák találhatók a rendszerben adatbázisában, lásd: a [MySQL manuális](https://dev.mysql.com/doc/refman/5.7/en/system-database.html).
+A [ *mysql rendszeradatbázis* ](https://dev.mysql.com/doc/refman/5.7/en/system-database.html) a fölérendelt kiszolgálón nincs replikálva. Fiókok és engedélyek a fölérendelt kiszolgáló a módosítások nem lesznek replikálva. Ha a fölérendelt kiszolgálón hozzon létre egy fiókot, és ezt a fiókot hozzá kell férniük a replikakiszolgáló, manuálisan hozzon létre ugyanazt a fiókot a replika kiszolgálói oldalon. Milyen táblák tárolják a rendszeradatbázis megismeréséhez tekintse meg a [MySQL manuális](https://dev.mysql.com/doc/refman/5.7/en/system-database.html).
 
 ### <a name="requirements"></a>Követelmények
-- Az elsődleges kiszolgáló verziója legalább kell MySQL 5.6 verzióját. 
-- Az elsődleges és replika server-verziók azonosnak kell lennie. Például a MySQL 5.6 verzióját kell lennie, vagy a verzió 5.7 MySQL kell lennie.
-- Minden tábla elsődleges kulccsal kell rendelkeznie.
-- Elsődleges kiszolgálónak használnia kell a MySQL InnoDB motor.
-- Felhasználói bináris naplózás konfigurálása, és hozzon létre új felhasználók az elsődleges kiszolgálón engedélyekkel kell rendelkeznie.
+- A fő verziója kell, hogy a MySQL 5.6-os verziója. 
+- A master és a replika server-verziók azonosnak kell lennie. Például a MySQL 5.6-os verziója is kell lennie, vagy a MySQL 5.7-es verzióra kell lennie.
+- Minden táblának elsődleges kulccsal kell rendelkeznie.
+- Fő kiszolgálóhoz a MySQL InnoDB motor kell használnia.
+- Felhasználó bináris naplózás konfigurálása és az új felhasználók létrehozására a fölérendelt kiszolgáló a szükséges engedélyekkel kell rendelkeznie.
 
 ### <a name="other"></a>Egyéb
-- Globális tranzakció azonosítók (GTID) használata nem támogatott.
+- Replikációs adatokat a rendszer csak támogatott az általános célú és memóriahasználatra optimalizált tarifacsomagok
+- Globális tranzakciók azonosítók (GTID) használata nem támogatott.
 
 ## <a name="next-steps"></a>További lépések
-- Megtudhatja, hogyan [adatok a replikáció beállítása](howto-data-in-replication.md)
+- Ismerje meg, hogyan [adatok a replikáció beállítása](howto-data-in-replication.md)

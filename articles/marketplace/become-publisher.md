@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 4d37aba665fd9b6de89f683ce2785a14b1b6f60b
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: c6f074b84b099f6ea5023967fdae7e44d5e9d545
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39412015"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43666384"
 ---
 # <a name="become-a-cloud-marketplace-publisher"></a>Felhőbeli piactér kiadói válik
 
@@ -48,7 +48,7 @@ A regisztrálás után jegyezze fel a Microsoft Partner Network-Azonosítóját 
 ---  
 
 ## <a name="2-create-a-microsoft-account"></a>2. Microsoft-fiók létrehozása  
-| 15 perc alatt |}  
+| 15 perc |}  
 A Microsoft-fiók, pl. *@outlook.com vagy @live.com*, használható számos Microsoft-eszközök és szolgáltatások eléréséhez. Kötelező megadni, Azure Marketplace-en transact ajánlatok, és annak használatára azt javasoljuk, hogy minden felhő gyártó. További információ az előnyei és felhasználási területei egy Microsoft-fiók [megnyitják az oldalt](https://account.microsoft.com/account/). A Cloud Partner portálra eléréséhez használandó személyes Microsoft-fiókkal, a közzétételi platform létrehozásához és a piactér-beli kezeléséhez használt kínál. 
 
 [! [Fontos a] megjegyezni, hogy a munkahelyi e-mail-címmel társított Microsoft-fiók nem teszi lehetővé, hogy a portál eléréséhez.
@@ -74,7 +74,8 @@ Meg kell adnia az alábbi információkat:
 
 ---  
 ## <a name="4-sign-into-cloud-partner-portal"></a>4. Jelentkezzen be a Cloud Partner portálra
-| 1-3 napig |} Marketplace-en csapat áttekinti, és a piactér-beli regisztrációs részleteit a 3. lépésben megadott ellenőrzése. Amint jóváhagyják, a fiók hitelesítő adatait és útmutatás a bejelentkezés üdvözlő e-mailt fog kapni a [Cloud Partner Portalon](https://cloudpartner.azure.com).
+| 1-3 napig |} <br>
+Marketplace-en csapat áttekinti, és a piactér-beli regisztrációs részleteit a 3. lépésben megadott ellenőrzése. Amint jóváhagyják, a fiók hitelesítő adatait és útmutatás a bejelentkezés üdvözlő e-mailt fog kapni a [Cloud Partner Portalon](https://cloudpartner.azure.com).
 
 Használhatja a [Cloud Partner Portalon](https://cloudpartner.azure.com) szeretne létrehozni, közzététele és kezelése a marketplace-ajánlat. Miután a jóváhagyó üdvözlő e-mailt kap, akkor azonnal be tud jelentkezni a [Cloud Partner Portalon](https://cloudpartner.azure.com) eléréséhez további műszaki információt Marketplace-en való közzététel és az ajánlat létrehozása Microsoft-fiókkal. 
 *   További információ a Cloud Partner portálra, használatával [látogasson el az első lépések a cikk további részében](https://cloudpartner.azure.com/#documentation/getting-started-with-the-cloud-partner-portal). A Cloud Partner portálra el az alábbi adatokat kell bejelentkeznie.

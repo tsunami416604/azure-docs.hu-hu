@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/28/2018
+ms.date: 09/04/2018
 ms.author: kumud
-ms.openlocfilehash: 5ceddb1bcd6ce89f7014e034b56c873f02cc2007
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: ecc33fc6078dac4affe3942f1be7e039ae9e9e70
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43190733"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43695425"
 ---
 # <a name="load-balancer-health-probes"></a>Load Balancer állapot-mintavételei
 
@@ -36,7 +36,7 @@ Az állapot-mintavételei elérhető típusú és állapot-mintavételek viselke
 > [!IMPORTANT]
 > Load Balancer állapot-mintavételei származnak 168.63.129.16 IP-címről, és nem le kell tiltani a mintavételek a példány megjelöléséhez.  Felülvizsgálat [IP-forráscím mintavételi](#probesource) részleteiről.
 
-## <a name="types"></a>Állapot-mintavételi típusok
+## <a name="types"></a>Mintavétel típusok
 
 Állapot-mintavételei figyelheti, bármely portra háttér-példány, beleértve a portot, amelyen elérhető a tényleges service. Az egészségügyi mintavételi protokoll állapotadat-mintavételek három különböző típusú konfigurálhatók:
 

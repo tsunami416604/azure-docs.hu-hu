@@ -6,16 +6,16 @@ ms.service: automation
 ms.component: change-inventory-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 08/27/2018
+ms.date: 08/31/2018
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8066612db20d1569920835a67d84b27d1b852e6e
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 0707726ec86b0a0c69d1ec752ebd6761327f3f0f
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43128126"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43669483"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Változások követése saját környezetében a Change Tracking megoldás
 
@@ -27,8 +27,7 @@ Telepített szoftverek, Windows-szolgáltatások, Windows-beállításjegyzék �
 
 A Windows-ügynök hivatalosan támogatott a Windows operációs rendszer következő verziói:
 
-* A Windows Server 2008 Service Pack 1 (SP1) vagy újabb
-* Windows 7 SP1 és újabb verziók.
+* A Windows Server 2008 R2 vagy újabb
 
 ## <a name="supported-linux-operating-systems"></a>Támogatott Linux operációs rendszerek
 
@@ -47,8 +46,8 @@ A következő Linux-disztribúciók hivatalosan támogatott. A Linux-ügynök az
 Változások követése a kezdéshez, engedélyeznie kell a Change Tracking and Inventory megoldás az Automation-fiókhoz tartozó.
 
 1. Az Azure Portalon lépjen az Automation-fiók
-1. Válassza ki **Change Tracking** alatt **konfigurációs**.
-1. Válasszon egy meglévő Log analytics-munkaterületet, vagy **új munkaterület létrehozása** kattintson **engedélyezése**.
+2. Válassza ki **Change Tracking** alatt **konfigurációs**.
+3. Válasszon egy meglévő Log analytics-munkaterületet, vagy **új munkaterület létrehozása** kattintson **engedélyezése**.
 
 Ez lehetővé teszi, hogy a megoldás az automation-fiók. A megoldás engedélyezése akár 15 percet is igénybe vehet. A kék szalagcím értesíti, amikor a megoldás engedélyezve lett. Lépjen vissza a **Change Tracking** lapon kezelheti a megoldást.
 
@@ -94,7 +93,7 @@ A következő lépéseket követve konfigurálja a fájlok nyomon követése a W
 |Engedélyezve     | Azt határozza meg, ha a beállítás vonatkozik.        |
 |Elem neve     | A követendő fájl felhasználóbarát neve.        |
 |Csoport     | Fájlok logikai csoportosítására szolgáló csoportnév.        |
-|Elérési út megadása     | Például ellenőrizze a fájl elérési útja: "c:\temp\\\*.txt"<br>Például a környezeti változókat is használható "%winDir%\System32\\\*. *"       |
+|Elérési út megadása     | A fájl elérési útja, például: „c:\temp\\\*.txt”<br>Környezeti változók is használhatók, például: „%winDir%\System32\\\*.*”       |
 |Rekurzió     | Meghatározza, hogy a rendszer rekurziót használjon-e a követni kívánt elem keresésekor.        |
 |Fájltartalom feltöltése minden beállításhoz| Be- vagy kikapcsolja a fájltartalom feltöltését a változáskövetés használata esetén. Elérhető lehetőségek: **Igaz** vagy **Hamis**.|
 

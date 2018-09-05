@@ -3,18 +3,18 @@ title: Képezze le az Azure Maps funkciói stílus |} A Microsoft Docs
 description: További tudnivalók az Azure Maps stílus kapcsolatos funkciók.
 author: walsehgal
 ms.author: v-musehg
-ms.date: 08/29/2018
+ms.date: 08/31/2018
 ms.topic: how-to-guides
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: e4a54394dc2bb6784f1b1dcbd0ef71ac1f7bbabd
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: b95e3c325160d1c0b775320e25fdd40514b02b9f
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43345108"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43666871"
 ---
 # <a name="choose-a-map-style-in-azure-maps"></a>Azure Maps-térkép stílus kiválasztása
 Az Azure Maps rendelkezik négy külön térképeken stílusok közül választhat. Térkép stílusok kapcsolatos további információkért lásd: [térkép stílusok támogatott az Azure Maps](./supported-map-styles.md). Ez a cikk bemutatja, hogyan stílus a térkép betöltéskor, egy új stílusának beállítása, ha a stílus Dátumválasztó vezérlőelem a stílus kapcsolatos funkciók használatára.

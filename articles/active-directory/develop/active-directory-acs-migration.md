@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 11/14/2017
 ms.author: celested
 ms.reviewer: hirsin, dastrock
-ms.openlocfilehash: 803dd69aed91f6e33c354d01d3f5419597d98de9
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 41c7de3039634f262efedc1bb3de1b39dda4593a
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39115884"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43698060"
 ---
 # <a name="migrate-from-the-azure-access-control-service"></a>A hozzáférés-vezérlés az Azure-szolgáltatás áttelepítése
 
@@ -106,7 +106,7 @@ A SharePoint 2013-hoz, 2016-ban, és a SharePoint Online ügyfelek hosszú haszn
 
 | Szolgáltatás | Útmutatás |
 | ------- | -------- |
-| Az Azure AD-ből származó felhasználók hitelesítése | Korábban az Azure AD nem támogatja az SAML 1.1-es jogkivonatok SharePoint-hitelesítéshez szükséges, és az ACS lett megadva egy, hogy a SharePoint compatibile az Azure AD-jogkivonat közvetítői szerepet betöltő formázza. Mostantól [SharePoint közvetlenül csatlakozhat az Azure AD-bA a kiállítási szabályzatok](https://docs.microsoft.com/Office365/Enterprise/using-azure-ad-for-sharepoint-server-authentication). |
+| Az Azure AD-ből származó felhasználók hitelesítése | Korábban az Azure AD nem támogatja az SAML 1.1-es jogkivonatok SharePoint-hitelesítéshez szükséges, és az ACS lett megadva egy, hogy a SharePoint compatibile az Azure AD-jogkivonat közvetítői szerepet betöltő formázza. Mostantól [SharePoint közvetlenül csatlakozhat az Azure AD-bA az Azure AD-Alkalmazásgyűjtemény SharePoint helyszíni alkalmazás](https://docs.microsoft.com/azure/active-directory/saas-apps/sharepoint-on-premises-tutorial). |
 | [Alkalmazás-hitelesítés és a kiszolgálók közötti hitelesítés a helyszíni SharePoint](https://technet.microsoft.com/library/jj219571(v=office.16).aspx) | Nincs hatással az ACS kivezetési; nem szükséges módosításokat. | 
 | [A SharePoint-bővítmények (üzemeltetett szolgáltató és üzemeltetett SharePoint) alacsony megbízhatósági engedélyezése](https://docs.microsoft.com/sharepoint/dev/sp-add-ins/three-authorization-systems-for-sharepoint-add-ins) | Nincs hatással az ACS kivezetési; nem szükséges módosításokat. |
 | [SharePoint cloud hybrid search](https://blogs.msdn.microsoft.com/spses/2015/09/15/cloud-hybrid-search-service-application/) | Nincs hatással az ACS kivezetési; nem szükséges módosításokat. |

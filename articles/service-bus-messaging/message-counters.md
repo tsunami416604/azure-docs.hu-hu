@@ -1,6 +1,6 @@
 ---
-title: Az Azure Service Bus-üzenetek száma |} Microsoft Docs
-description: Azure Service Bus üzenetek számának beolvasása.
+title: Az Azure Service Bus-üzenetek száma |} A Microsoft Docs
+description: Azure Service Bus-üzenetek számának beolvasása.
 services: service-bus-messaging
 documentationcenter: ''
 author: clemensv
@@ -12,39 +12,39 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
-ms.author: sethm
-ms.openlocfilehash: e6524fe056ee2a1d81c9cccf257008b2369352b1
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.author: spelluru
+ms.openlocfilehash: f20893de235ac02fc5a94b54518af2405e4549ff
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
-ms.locfileid: "28197731"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43696958"
 ---
 # <a name="message-counters"></a>Üzenetszámlálók
 
-A várólisták és előfizetések használata Azure Resource Manager és a Service Bus által tárolt üzenetek száma le [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) a .NET-keretrendszer SDK API-k.
+Kérheti, hogy az üzenetsorok és -előfizetések az Azure Resource Manager és a Service Bus által tárolt üzenetek száma [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) a .NET-keretrendszer SDK API-k.
 
-A PowerShell használatával ezt úgy szerezheti be a számláló az alábbiak szerint:
+A PowerShell-lel szerezheti be a számláló a következő:
 
 ```powershell
 (Get-AzureRmServiceBusQueue -ResourceGroup mygrp -NamespaceName myns -QueueName myqueue).CountDetails
 ```
 
-## <a name="message-count-details"></a>Szám – részletek
+## <a name="message-count-details"></a>Üzenetek száma részleteit
 
-Az aktív üzenetek száma tudatában akkor hasznos, meghatározásakor, hogy a várólista elkészít egy várakozó fájlok számát, mint mi jelenleg telepített feldolgozni több erőforrást igényel. A következő teljesítményszámláló adatait érhetők el a [MessageCountDetails](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails) osztály:
+Az aktív üzenetek száma ismerete hasznos meghatározásához, hogy egy üzenetsorba elkészít egy várakozó fájlok feldolgozására több erőforrásban mi jelenleg telepített igénylő. A következő teljesítményszámláló-adatok érhetők el a [MessageCountDetails](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails) osztály:
 
--   [ActiveMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.activemessagecount#Microsoft_ServiceBus_Messaging_MessageCountDetails_ActiveMessageCount): a várólista vagy az előfizetés az aktív állapotának és kézbesítési készen áll a üzenetek.
--   [DeadLetterMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.deadlettermessagecount#Microsoft_ServiceBus_Messaging_MessageCountDetails_DeadLetterMessageCount): a kézbesítetlen levelek várólistában lévő üzenetek.
--   [ScheduledMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.scheduledmessagecount#Microsoft_ServiceBus_Messaging_MessageCountDetails_ScheduledMessageCount): az ütemezett állapotban üzeneteket.
--   [TransferDeadLetterMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.transferdeadlettermessagecount#Microsoft_ServiceBus_Messaging_MessageCountDetails_TransferDeadLetterMessageCount): nem sikerült átviteli be egy másik üzenetsor vagy témakör és az átvitel kézbesítetlen levelek várólistájára helyezett üzenetek.
--   [TransferMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.transfermessagecount#Microsoft_ServiceBus_Messaging_MessageCountDetails_TransferMessageCount): átviteli be egy másik üzenetsor vagy témakör függőben levő üzenetek.
+-   [ActiveMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.activemessagecount#Microsoft_ServiceBus_Messaging_MessageCountDetails_ActiveMessageCount): üzenetek az üzenetsorban vagy előfizetésben lévő az aktív állapotú, és szállításra kész.
+-   [DeadLetterMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.deadlettermessagecount#Microsoft_ServiceBus_Messaging_MessageCountDetails_DeadLetterMessageCount): a kézbesítetlen üzenetek.
+-   [ScheduledMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.scheduledmessagecount#Microsoft_ServiceBus_Messaging_MessageCountDetails_ScheduledMessageCount): üzenetek az ütemezett állapotban.
+-   [TransferDeadLetterMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.transferdeadlettermessagecount#Microsoft_ServiceBus_Messaging_MessageCountDetails_TransferDeadLetterMessageCount): nem sikerült az átviteli be egy másik üzenetsor vagy témakör és az átvitel kézbesítetlen levelek várólistájára helyezett üzenetek.
+-   [TransferMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.transfermessagecount#Microsoft_ServiceBus_Messaging_MessageCountDetails_TransferMessageCount): egy másik üzenetsorra vagy témakörbe történő átvitel függőben lévő üzenetek.
 
-Ha egy alkalmazás kíván méretezni a várólista hossza erőforrásokhoz, akkor kell ehhez a nagyon mért nő. A üzenetszámlálók megszerzését belül az üzenet broker drága művelet, és futtatnia kell a gyakran közvetlenül és kedvezőtlen hatással van az entitás teljesítményét.
+Ha egy alkalmazás szeretné méretezni az erőforrásokat, az üzenetsor hossza alapján, azt kell ehhez a nagyon mért ütemben. A üzenetszámlálók megszerzését belül a közvetítő drága művelet, és futtassa a jelentést, gyakran közvetlenül és kedvezőtlen hatással van az a entitás teljesítményre.
 
 ## <a name="next-steps"></a>További lépések
 
-Tudhat meg többet a Service Bus üzenetkezelés, a következő témakörökben:
+További információ a Service Bus-üzenetkezelés, tekintse meg a következő témaköröket:
 
 * [A Service Bus alapjai](service-bus-fundamentals-hybrid-solutions.md)
 * [Service Bus-üzenetsorok, -témakörök és -előfizetések](service-bus-queues-topics-subscriptions.md)

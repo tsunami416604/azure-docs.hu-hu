@@ -5,17 +5,17 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 09/01/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 8ecb2008b85bb6a7ac35b5f95deaf0fb321ce155
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: e5915157c1ff2c1f58779e5c3b1d784241464b32
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42061389"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43669046"
 ---
 # <a name="how-to-get-azure-multi-factor-authentication"></a>Az Azure multi-factor Authentication beszerzése
 
@@ -32,7 +32,10 @@ A következő táblázat ismerteti a multi-factor authentication szolgáltatás 
 | --- | --- |
 | Multi-Factor Authentication az Office 365-höz |Ez a verzió kizárólag az Office 365-alkalmazásokkal működik, és az Office 365 portáljáról felügyelhető. A rendszergazdák is [védheti az Office 365-erőforrásokat az kétlépéses ellenőrzés](https://support.office.com/article/Set-up-multi-factor-authentication-for-Office-365-users-8f0454b2-f51a-4d9c-bcde-2c48e41621c6). Ez a verzió az Office 365-előfizetés részét képezi. |
 | Többtényezős hitelesítés az Azure AD-rendszergazdák | Az Azure AD-bérlőt az Azure AD globális rendszergazdai szerepkörrel rendelkező engedélyezheti a kétlépéses ellenőrzés további költségek nélkül.|
-| Azure Multi-Factor Authentication | A "teljes" verziója más néven, az Azure multi-factor Authentication a képességek richest készletét kínálja. Elérhető további konfigurációs lehetőségeket biztosít a [az Azure portal](https://portal.azure.com), speciális jelentéskészítés és a helyszíni széles körű támogatása és a felhőbeli alkalmazásokhoz. Azure multi-factor Authentication szolgáltatás része a [Azure Active Directory Premium csomagok](https://www.microsoft.com/cloud-platform/azure-active-directory-features), és is üzembe helyezhetők a felhőben vagy a helyszínen. |
+| Azure Multi-Factor Authentication | A "teljes" verziója más néven, az Azure multi-factor Authentication a képességek richest készletét kínálja. Elérhető további konfigurációs lehetőségeket biztosít a [az Azure portal](https://portal.azure.com), speciális jelentéskészítés és a helyszíni széles körű támogatása és a felhőbeli alkalmazásokhoz. Az Azure multi-factor Authentication csak a [Azure Active Directory Premium](https://www.microsoft.com/cloud-platform/azure-active-directory-features), és is üzembe helyezhetők a felhőben vagy a helyszínen. |
+
+> [!NOTE]
+> Új ügyfeleket már nem vásárolhat Azure multi-factor Authentication kínál hatékony 1-től, 2018 szeptember önálló. A multi-factor authentication továbbra is egy elérhető funkciónak az Azure AD Premium-licencet.
 
 ## <a name="feature-comparison-of-versions"></a>Verzió szolgáltatásainak összehasonlítása
 
@@ -77,9 +80,12 @@ Ha ezt a beállítást használja, létre kell hoznia az Azure multi-factor Auth
 
 ### <a name="option-2---mfa-consumption-based-model"></a>2. módszer: MFA fogyasztásalapú díjcsomagban
 
+> [!NOTE]
+> Hatékony 2018. szeptember 1-től. új auth-szolgáltatók többé nem hozható létre. Meglévő hitelesítésszolgáltatók előfordulhat, hogy továbbra is használja, és frissítve. A multi-factor authentication továbbra is egy elérhető funkciónak az Azure AD Premium-licencet.
+
 Hozzon létre Azure multi-factor Authentication-szolgáltatót egy Azure-előfizetésen belül. Az Azure MFA-szolgáltatók a következők: Azure-erőforrások, amelyek a nagyvállalati szerződéssel, Azure-ra vonatkozó pénzügyi kötelezettségvállalás vagy hitelkártyára, mint minden más Azure-erőforrás terhelve. Ezek a szolgáltatók csak a teljes körű Azure-előfizetések, nem korlátozott Azure-előfizetések rendelkezik egy 0 USD költségkeret hozható létre. Korlátozott előfizetések licenceket, például a beállítások 1 aktiválása során jönnek létre.
 
-Azure multi-factor Authentication-szolgáltatót használ, ha van elérhető az Azure-előfizetés díjszabása vonatkozik, amely két használati modellekről: 
+Azure multi-factor Authentication-szolgáltatót használ, ha van elérhető az Azure-előfizetés díjszabása vonatkozik, amely két használati modellekről:
 
 1. **Engedélyezett felhasználónként** – vállalatok számára szeretné engedélyezni a kétlépéses ellenőrzés egy rögzített számú alkalmazottak, akik rendszeresen hitelesítésre van szükség. Felhasználóalapú számlázás az Azure AD-bérlőhöz, és az Azure MFA-kiszolgáló az MFA engedélyezett felhasználók számát alapul. Felhasználók engedélyezve vannak-e a multi-factor Authentication két Azure AD-ben és az Azure MFA-kiszolgáló és a tartomány-szinkronizáló (Azure AD Connect) engedélyezve van, akkor azt száma, hogy a felhasználók nagyobb készlete. Ha tartományi szinkronizálás nincs engedélyezve, akkor azt a count összege az összes olyan felhasználó, az Azure AD MFA engedélyezett, és Azure MFA-kiszolgáló. A számlázás napokra és a kereskedelmi rendszer jelentett naponta.
 
@@ -93,7 +99,7 @@ Azure multi-factor Authentication-szolgáltatót használ, ha van elérhető az 
   > [!NOTE]
   > A számlázás 3. példa: még ma, az az Azure MFA szolgáltatás kapott 3,105 kétlépéses ellenőrzési kérelmeket. Az Azure-előfizetés elszámolási 310.5 hitelesítési csomagokat.
 
-Fontos megjegyezni, hogy az Azure MFA-licenccel is rendelkezik, de továbbra is díjat kell fizetnie a használat alapú konfigurálást. Ha beállította a hitelesítés az Azure MFA-szolgáltató, számlázzuk ki minden kétlépéses ellenőrzési kérelmet, még akkor is ezeket a műveleteket a licenccel rendelkező felhasználók. Ha egy tartományhoz, amely az Azure AD-bérlő nem kapcsolódik a beállítva a felhasználónkénti Azure MFA-szolgáltató, használatáért engedélyezett felhasználónként akkor is, ha a felhasználók rendelkeznek licenccel az Azure ad-ben.
+Fontos megjegyezni, hogy Ön is rendelkezik licencekkel, de továbbra is díjat kell fizetnie a használat alapú konfigurálást. Ha beállította a hitelesítés az Azure MFA-szolgáltató, számlázzuk ki minden kétlépéses ellenőrzési kérelmet, még akkor is ezeket a műveleteket a licenccel rendelkező felhasználók. Ha egy tartományhoz, amely az Azure AD-bérlő nem kapcsolódik a beállítva a felhasználónkénti Azure MFA-szolgáltató, használatáért engedélyezett felhasználónként akkor is, ha a felhasználók rendelkeznek licenccel az Azure ad-ben.
 
 ## <a name="next-steps"></a>További lépések
 

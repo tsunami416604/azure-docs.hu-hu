@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2018
 ms.author: jeedes
-ms.openlocfilehash: c8613697481f642066bf1d5d5db7be3af81a6529
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 4094de1a1c17e844d96ac789bb4bc1655fdc1546
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43307739"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43669243"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-figma"></a>Oktatóanyag: Azure Active Directory-integráció az Figma
 
@@ -38,10 +38,10 @@ Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsol
 Figma az Azure AD-integráció konfigurálásához a következőkre van szükség:
 
 - Azure AD-előfizetés
-- Egy Figma egyszeri bejelentkezés engedélyezve van az előfizetés
+- Egy Figma [egyszeri bejelentkezés engedélyezve van az előfizetés](https://www.figma.com/pricing/)
 
 > [!NOTE]
-> Ebben az oktatóanyagban a lépéseket teszteléséhez nem ajánlott éles környezetben használja.
+> Ebben az oktatóanyagban a lépéseket teszteléséhez nem ajánlott éles környezetben használja. Új ügyfeleket és az aktív előfizetők Figma Professional csapat kapcsolatba léphet a Figma [frissítik előfizetésüket](https://www.figma.com/pricing/) Figma szervezet szintre.
 
 Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
 
@@ -81,15 +81,14 @@ Az Azure AD integrálása a Figma konfigurálásához hozzá kell Figma a katal�
 
 Ebben a szakaszban, konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés Figma a teszt "Britta Simon" nevű felhasználó.
 
-Egyszeri bejelentkezés működjön, az Azure ad-ben tudnia kell, a partner felhasználó Figma mi egy felhasználó számára az Azure ad-ben. Más szóval egy Azure AD-felhasználót és a kapcsolódó felhasználó Figma hivatkozás kapcsolata kell létrehozni.
+Az egyszeri bejelentkezés működéséhez az Azure AD Figma társítani kell.  Az Azure AD egyszeri bejelentkezés az Figma tesztelése és konfigurálása, hajtsa végre az alábbi lépéseket:
 
-Az Azure AD egyszeri bejelentkezés az Figma tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
-
-1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-3. **[Hozzon létre egy Figma tesztfelhasználót](#create-a-figma-test-user)**  – egy megfelelője a Britta Simon Figma, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
-4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. [**Forduljon az ügyfélszolgálathoz Figma** ](mailto:support@figma.com?subject=SAML+Config) kezdeményezéséhez SAML-konfigurációt a szervezet számára, és a egy ORG_SAML_CONFIG_ID beolvasása.
+2. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
+3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+4. **[Hozzon létre egy Figma tesztfelhasználót](#create-a-figma-test-user)**  – egy megfelelője a Britta Simon Figma, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
+5. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
@@ -120,7 +119,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-címe: `https://www.figma.com/saml/<ORG_SAML_CONFIG_ID>/start`
 
     > [!NOTE]
-    > Ezek a értékei nem valódi. Frissítse a tényleges azonosítóját, válasz URL-cím és bejelentkezési URL-ezeket az értékeket. Kapcsolattartó [Figma ügyfél-támogatási csapatának]( mailto:services-404040@figma.com) beolvasni ezeket az értékeket.
+    > Ezek a értékei nem valódi. Frissítse a tényleges azonosítóját, válasz URL-cím és bejelentkezési URL-ezeket az értékeket. Kapcsolattartó [Figma támogatási csapatának](mailto:support@figma.com?subject=SAML+Config) beolvasni ezeket az értékeket.
 
 5. Az a **SAML-aláíró tanúsítvány** területén kattintson a Másolás gombra, hogy **alkalmazás összevonási metaadatainak URL-címe** , és illessze be a Jegyzettömbbe.
 
@@ -130,7 +129,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     ![Egyszeri bejelentkezés Mentés gomb konfigurálása](./media/figma-tutorial/tutorial_general_400.png)
 
-7. Az egyszeri bejelentkezés konfigurálása **Figma** oldalon kell küldenie a **alkalmazás összevonási metaadatainak URL-címe** való [Figma támogatási csapatának]( mailto:services-404040@figma.com). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
+7. Egyszeri bejelentkezés konfigurálása Figma oldalán, töltse ki ezt a kérdőívet: [ https://goo.gl/forms/XkRB1z5ed4eVUzXn2 ](https://goo.gl/forms/XkRB1z5ed4eVUzXn2). Akkor fogadja el a **alkalmazás összevonási metaadatainak URL-címe** az 5. lépés.
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
@@ -167,9 +166,6 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 ### <a name="create-a-figma-test-user"></a>Figma tesztfelhasználó létrehozása
 
 Ez a szakasz célja Figma Britta Simon nevű felhasználó létrehozásához. Figma támogatja a just-in-time-kiépítés, amely alapértelmezésben engedélyezve van. Nincs meg ebben a szakaszban a művelet elem. Új felhasználó jön létre az Figma elérésére, ha még nem létezik tett kísérlet során.
-
-> [!Note]
-> Ha manuálisan hozzon létre egy felhasználót van szüksége, forduljon a [Figma támogatási csapatának]( mailto:services-404040@figma.com).
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: asgang
-ms.openlocfilehash: 931cc628dccc77a026791b27a7a8159b37c585d4
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: eb6f7d9b34e00ce1efd8c871439c2504e5f550d5
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37919563"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43669442"
 ---
 # <a name="replicate-a-multitier-dynamics-ax-application-by-using-azure-site-recovery"></a>Egy többrétegű Dynamics AX-alkalmazás replikálása az Azure Site Recovery használatával
 
@@ -99,7 +99,7 @@ A virtuális gép kiválaszthatja a replikált elemek, a hálózati beállítás
 
 * Ha statikus IP-címet használ, adja meg az IP-Címmel lépése a virtuális gépet a **cél IP-címet** szövegmezőben.
 
-    ![Hálózati beállítások ](./media/site-recovery-dynamics-ax/vmpropertiesaos1.png).
+    ![Hálózati beállítások ](./media/site-recovery-dynamics-ax/vmpropertiesaos1.png)
 
 
 ### <a name="5-create-a-recovery-plan"></a>5. Helyreállítási terv létrehozása
@@ -168,7 +168,7 @@ További információ a feladatátvételi teszt végrehajtásához: [tesztelheti
 
 A feladatátvétel végrehajtása további információkért lásd: [feladatátvétel a Site Recoveryben](site-recovery-failover.md).
 
-### <a name="perform-a-failback"></a>Hajtsa végre a feladat-visszavételhez
+### <a name="perform-a-failback"></a>Feladat-visszavétel végrehajtása
 
 További szempontokért adott SQL Server feladat-visszavétel során: [alkalmazásait az SQL Server és az Azure Site Recovery replikálja](site-recovery-sql.md).
 

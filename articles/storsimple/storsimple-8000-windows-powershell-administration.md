@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 01/09/2018
 ms.author: alkohli@microsoft.com
-ms.openlocfilehash: 291de21d3d98bf9eb65adc7d506f3549171ee0a0
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 9408531a9e24af93359b562ed022b3d8253851e8
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38696820"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43665684"
 ---
 # <a name="use-windows-powershell-for-storsimple-to-administer-your-device"></a>Eszköz felügyelete a storsimple-höz készült Windows PowerShell használatával
 
@@ -37,7 +37,7 @@ Ez a cikk elolvasása után fogja tudni:
 
 > [!NOTE]
 > * Windows PowerShell StorSimple-parancsmagok lehetővé teszik kezelése a StorSimple-eszköz soros konzoljához vagy távolról Windows PowerShell távoli eljáráshívás segítségével. További információ az egyes használható ezen a felületen egyes parancsmagok Ugrás [parancsmag-referencia a storsimple-höz készült Windows PowerShell](https://technet.microsoft.com/library/dn688168.aspx).
-> * Az Azure PowerShell StorSimple-parancsmagok olyan parancsmagok, amelyek lehetővé teszik, hogy automatizálja a StorSimple szolgáltatásiszint- és áttelepítési feladatok a parancssorból egy másik gyűjteményt. Storsimple-höz készült Azure PowerShell-parancsmagokkal kapcsolatos további információkért látogasson el a [parancsmag-referencia az Azure StorSimple](https://docs.microsoft.com/powershell/servicemanagement/azure.storsimple/v3.1.0/azure.storsimple).
+> * Az Azure PowerShell StorSimple-parancsmagok olyan parancsmagok, amelyek lehetővé teszik, hogy automatizálja a StorSimple szolgáltatásiszint- és áttelepítési feladatok a parancssorból egy másik gyűjteményt. Storsimple-höz készült Azure PowerShell-parancsmagokkal kapcsolatos további információkért látogasson el a [parancsmag-referencia az Azure StorSimple](https://docs.microsoft.com/powershell/module/servicemanagement/azure/?view=azuresmps-4.0.0&viewFallbackFrom=azuresmps-3.7.0#azure).
 
 
 A Windows PowerShell storsimple, az alábbi módszerek egyikének használatával érheti el:

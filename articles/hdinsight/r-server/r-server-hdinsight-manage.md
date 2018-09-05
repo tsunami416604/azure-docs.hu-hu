@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 9d95f6edcb6f4e24e4a19fd6537ed1a5be9564ee
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 38a8366a586b032c3b11cbef8ee5f01ad2b822a5
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43046825"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43702401"
 ---
 # <a name="manage-ml-services-cluster-on-azure-hdinsight"></a>Machine Learning-szolgáltatások az Azure HDInsight-fürt kezelése
 
@@ -68,7 +68,7 @@ Az alábbi képernyőfelvételen a kimenetek.
 
 ![3. párhuzamos felhasználó](./media/r-server-hdinsight-manage/concurrent-users-2.png)
 
-Amikor a rendszer az „aktuális Kerberos-jelszót” kéri, nyomja meg az **Enter** billentyűt a figyelmen kívül hagyásához. A `useradd` parancs `-m` kapcsolója jelzi, hogy a rendszer létrehoz egy kezdőmappát a felhasználó számára, amely szükséges az RStudio Community verziójához.
+Amikor a rendszer "aktuális Kerberos-jelszót:", csak nyomja meg az **Enter** figyelmen kívül hagyja azt. A `useradd` parancs `-m` kapcsolója jelzi, hogy a rendszer létrehoz egy kezdőmappát a felhasználó számára, amely szükséges az RStudio Community verziójához.
 
 ### <a name="step-3-use-rstudio-community-version-with-the-user-created"></a>3. lépés: Az RStudio Community verziójának használata a létrehozott felhasználóval
 

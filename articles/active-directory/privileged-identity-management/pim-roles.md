@@ -13,12 +13,12 @@ ms.component: pim
 ms.date: 07/23/2018
 ms.author: rolyon
 ms.custom: pim ; H1Hack27Feb2017;oldportal;it-pro;
-ms.openlocfilehash: c8870e4da63dc52d5926bdfd5f7c9b3218e5f53a
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: fc45cde1a5f0f287274302541ac0115569e2239d
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43188986"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43666336"
 ---
 # <a name="azure-ad-directory-roles-you-can-manage-in-pim"></a>A PIM segítségével kezelheti az Azure AD címtárszerepkörök
 <!-- **PLACEHOLDER: Need description of how this works. Azure PIM uses roles from MSODS objects.**-->
@@ -76,13 +76,36 @@ Az Azure portal eléréséhez kell, hogy a felhasználó lehet egy szolgáltatá
 Online Microsoft-szolgáltatásokhoz való hozzáférés szükségessé, a felhasználó is hozzá lehet rendelni egy licenc nyissa meg a szolgáltatási portált vagy felügyeleti feladatok végrehajtása előtt.
 
 ## <a name="assign-a-license-to-a-user-in-azure-ad"></a>Rendeljen egy licencet a felhasználó Azure AD-ben
+
 1. Jelentkezzen be a [az Azure portal](http://portal.azure.com) egy globális rendszergazdai fiókkal vagy egy társ-rendszergazda fiókkal.
-3. Válassza ki az Azure ad-ben, és dolgozhat, és a könyvtárban társított licenccel rendelkezik.
-4. Válassza ki **licencek** a bal oldalon. A rendelkezésre álló licencek listája jelenik meg.
-5. Válassza ki a licenccsomag, amely tartalmazza a licencek terjeszteni szeretné.
-6. Válassza ki **hozzárendelhet felhasználókat**.
-7. Válassza ki a felhasználót, amelyet szeretne hozzárendelni a licencet.
-8. Kattintson a **hozzárendelése** gombra.  A felhasználó most már bejelentkezhet az Azure-bA.
+
+1. Válassza ki a használni kívánt Azure AD-címtár, és licenceket társítva van.
+
+1. A bal oldali navigációs sávján kattintson **Azure Active Directory**.
+
+1. Kattintson a **licencek**. A rendelkezésre álló licencek listája jelenik meg.
+
+    ![Az Azure Active Directory-licencek](./media/pim-roles/licenses-overview.png)
+
+1. Kattintson a **termék**.
+
+1. Kattintson a licenccsomag, amely tartalmazza a licencek terjeszteni szeretné.
+
+    ![Licencek termékek](./media/pim-roles/licenses-products.png)
+
+1. Kattintson a **hozzárendelése** a licenc hozzárendelése panel megnyitásához.
+
+    ![Licenccel rendelkező felhasználók](./media/pim-roles/licenses-licensed-users.png)
+
+1. Válassza ki a felhasználót vagy csoportot, amelyet szeretne hozzárendelni a licencet.
+
+    ![Licenc hozzárendelése](./media/pim-roles/licenses-assign-license.png)
+
+1. Kattintson a **hozzárendelési beállítások** a hozzárendelési beállítások konfigurálása.
+
+    ![Hozzárendelési beállítások](./media/pim-roles/licenses-assignment-options.png)
+
+1. Kattintson a **hozzárendelése** hozzárendelni a licencet. A felhasználó már rendelkezik a licenc.
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="next-steps"></a>További lépések

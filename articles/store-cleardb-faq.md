@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 10/27/2016
 ms.author: sumuth
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: f078cad95d39c18a8391bc32100d08accc53c37c
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: f145e879dab4484d647cf8ea21582958df0f0cd4
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39215203"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43665722"
 ---
 # <a name="faq-for-cleardb-mysql-databases-with-azure-app-service"></a>ClearDB MySQL-adatbázisok használata az Azure App Service szolgáltatásban – gyakori kérdések
 Ez a GYIK használatával, és az Azure Web Appshez az adatbázisok a ClearDB MySQL vásárlásával kapcsolatos gyakori kérdésekre ad választ.
@@ -41,7 +41,7 @@ A ClearDB egy MySQL-üzemeltetési szolgáltatás, és a MySQL-infrastruktúráv
 ## <a name="do-i-need-a-credit-card-for-the-web-app--mysql-template-in-the-azure-marketplace"></a>A webalkalmazás és MySQL az Azure Marketplace-sablon esetében van szükségem hitelkártyával?
 Ez az előfizetés típusától függ. Íme néhány gyakran használt előfizetés típusa:
 
-* [Használatalapú fizetés](/offers/ms-azr-0003p/): hitelkártya, valamint való megvásárlása után kell fizetni a megadott bankkártyára fizetős MySQL-adatbázis szükséges.
+* [Használatalapú fizetés](https://azure.microsoft.com/offers/ms-azr-0003p/): hitelkártya, valamint való megvásárlása után kell fizetni a megadott bankkártyára fizetős MySQL-adatbázis szükséges.
 * [Az ingyenes próbaidőszak](https://azure.microsoft.com/pricing/free-trial/): krediteket tartalmaz, használja a Microsoft Azure-szolgáltatások, de nem teszi lehetővé a külső erőforrások beszerzési. Vásárolja meg a harmadik féltől származó szolgáltatásokkal vagy egy fizetős MySQL-adatbázist kell hitelkártyát használnia engedélyezve van az előfizetésben. A Web Apps létrehozhat egy ingyenes a ClearDB MySQL-adatbázishoz.
 * [MSDN-nel](https://azure.microsoft.com/pricing/member-offers/msdn-benefits/) és **MSDN Dev-Test használatalapú**: hasonlóan az ingyenes próbaverzióban, MSDN-előfizetés szükséges hozzá, arra, hogy fizetős megoldás MySQL a ClearDB hitelkártya.
 * [Nagyvállalati Szerződés (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/): nagyvállalati szerződéssel rendelkező ügyfelek számlázása a nagyvállalati szerződés terhére negyedévente összes az Azure Marketplace-en (külső) vásárlások külön, összevont számlán. A bármelyik piactéren történő vásárlások pénzügyi kötelezettségvállalást kívül számítjuk fel. Vegye figyelembe, hogy jelenleg Azure Store nem érhető el az ügyfelek számára a regisztrált Azerbajdzsán, Horvátország, Norvégia és Puerto Ricóban. 
@@ -109,5 +109,5 @@ Harmadik féltől származó szolgáltatásokkal az Azure Marketplace-en való h
 Kapcsolattartó [vállalati ügyfél-támogatási](http://aka.ms/AzureEntSupport) tartományállapot számlázás mellett az EA-regisztrációhoz. Az EA Portalon ügyfélszolgálathoz fog ad választ kérdésére, vagy a probléma megoldása érdekében.
 
 ## <a name="more-information"></a>További információ
-[Az Azure piactér – gyakori kérdések](/marketplace/faq/)
+[Az Azure piactér – gyakori kérdések](https://azure.microsoft.com/marketplace/faq/)
 

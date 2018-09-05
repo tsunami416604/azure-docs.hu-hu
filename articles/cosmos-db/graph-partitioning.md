@@ -1,5 +1,5 @@
 ---
-title: Graph API-particionálás |} A Microsoft Docs
+title: Gremlin API particionálás |} A Microsoft Docs
 description: Ismerje meg, hogyan használhatja egy particionált Graph Azure Cosmos DB-ben.
 services: cosmos-db
 author: luisbosquez
@@ -10,16 +10,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/28/2018
 ms.author: lbosq
-ms.openlocfilehash: 202c575a917cfb24436d86881e5368b61f216d42
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 7290687c62b0a500aef80bd8786df4cc1ece8ed4
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37861761"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43698978"
 ---
 # <a name="using-a-partitioned-graph-in-azure-cosmos-db"></a>Az Azure Cosmos DB egy particionált graph használatával
 
-Az Azure Cosmos DB Graph API-legfontosabb funkcióit egyik képes kezelni a nagyméretű gráfok horizontális skálázhatóság révén. Ez a folyamat a gazdafájlon keresztül, a [képességek az Azure Cosmos DB particionálási](partition-data.md#how-does-partitioning-work), amely győződjön meg arról, használja a tárolók, amelyek egymástól függetlenül méretezhetők a tárolás és átviteli sebesség tekintetében. Az Azure Cosmos DB támogatja a következő típusú tárolókat minden API-k között:
+Az Azure Cosmos DB Gremlin API-legfontosabb funkcióit egyik képes kezelni a nagyméretű gráfok horizontális skálázhatóság révén. Ez a folyamat a gazdafájlon keresztül, a [képességek az Azure Cosmos DB particionálási](partition-data.md#how-does-partitioning-work), amely győződjön meg arról, használja a tárolók, amelyek egymástól függetlenül méretezhetők a tárolás és átviteli sebesség tekintetében. Az Azure Cosmos DB támogatja a következő típusú tárolókat minden API-k között:
 
 - **Rögzített tárolót**: ezek a tárolók tárolhatja egy graph legfeljebb 10 GB-nál, legfeljebb 10 000 kérelemegység / másodperc számára lefoglalt adatbázis. Rögzített tároló létrehozásához meg kell határozni egy partíció kulcstulajdonság az adatok nem.
 
@@ -31,7 +31,7 @@ Ebben a dokumentumban a gráf típusú adatbázisokat particionáltak hogyan ada
 
 Részletek, amelyek egy particionált gráftárolót létrehozásakor konfigurálná a következők:
 - **Particionálás beállításához szükséges lesz** , ha a tároló várhatóan több mint 10 GB méretű, illetve ha több mint 10 000 kérelemegység / másodperc (RU/s) lefoglalása lesz szükség.
-- **Csúcsok és élek egyaránt JSON-dokumentumok formájában tárolja** a a háttéralkalmazás egy Azure Cosmos DB Graph API-tárolóhoz.
+- **Csúcsok és élek egyaránt JSON-dokumentumok formájában tárolja** a a háttéralkalmazás egy Azure Cosmos DB Gremlin API-tárolóhoz.
 - **Csúcspontok szükséges partíciókulcsot**. Ez a kulcs határozza meg, melyik partícióba a csúcspont egy kivonatoló algoritmus használatával tárolhatja. A partíciós kulcs neve szóközt és speciális karakterek nélküli egyszavas karakterláncok, és amikor hoz létre egy új tárolót, a következő formátumban van definiálva `/partitioning-key-name` a portálon.
 - **Élek tárolja a rendszer a forráscsúcspont**. Más szóval minden csúcspont számára a partíciós kulcs határozza meg azokat a rendszer hol tárolja a kimenő szélei együtt. Ez azért történt, elkerülheti a partícióra kiterjedő lekérdezések használata esetén a `out()` számossága a graph-lekérdezéseket.
 - **Graph-lekérdezések meg kell adni egy partíciókulcsot**. Teljes mértékben kihasználhatja a vízszintes particionálás az Azure Cosmos DB, a partíciókulcs meg kell határozni egy egyetlen csúcspont kiválasztásakor, ha lehetséges. Egy vagy több csúcspontok kiválasztásakor egy particionált gráfon lekérdezések a következők:
@@ -69,8 +69,8 @@ Az alábbiakban útmutatást, amelyet a leghatékonyabb teljesítményének és 
 - **Szerezhetők be adatok egy partíciót, ha lehetséges határain belül-lekérdezések optimalizálása**. Az optimális particionálási stratégia szeretné igazítani a lekérdezési minták. Szerezze be az adatokat egyetlen partícióról lekérdezéseket a lehető legjobb teljesítményt nyújtanak.
 
 ## <a name="next-steps"></a>További lépések
-Ez a cikk áttekintése fogalmakat és ajánlott eljárások a particionálás egy Azure Cosmos DB Graph API az lett megadva. 
+Ebben a cikkben áttekintést fogalmak és ajánlott eljárások a particionálás az Azure Cosmos DB Gremlin API lett megadva. 
 
 * Ismerje meg [particionálási és horizontális az Azure Cosmos DB](partition-data.md).
-* További információ a [Gremlin-támogatás a Graph API](gremlin-support.md).
-* Ismerje meg [Graph API bemutatása](graph-introduction.md).
+* További információ a [Gremlin-támogatás a Gremlin API](gremlin-support.md).
+* Ismerje meg [Gremlin API bemutatása](graph-introduction.md).

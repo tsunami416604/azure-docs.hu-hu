@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/04/2016
 ms.author: cephalin
-ms.openlocfilehash: 4959e4e3a0692837a7775eaf813a8fcff925312d
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: 6729c87dcc9a85e2e3ccb6b4822213d38e2ba6f7
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42918016"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43666114"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Az Azure App Service helyi gyorsítótár – áttekintés
 
@@ -44,13 +44,15 @@ Az Azure App Service helyi gyorsítótára szolgáltatást a tartalom webes szer
 * Azok a tervezett frissítések vagy nem tervezett leállás és bármely más üzemzavarokhoz vezethet az Azure Storage, amelyek a tartalommegosztás, kiszolgáló-kiszolgáló védett.
 * Tároló megosztás módosításai miatt kevesebb alkalmazás-újraindítások rendelkeznek.
 
-## <a name="how-local-cache-changes-the-behavior-of-app-service"></a>Hogyan a helyi gyorsítótár módosítja az App Service működését
-* A helyi gyorsítótár nem /site és /siteextensions mappákat a webes alkalmazás egy példányát. A helyi Virtuálisgép-példány a webes alkalmazás indításakor a rendszer létrehozza. Az egyes webes alkalmazások a helyi gyorsítótár mérete alapértelmezés szerint 300 MB-ra korlátozott, de legfeljebb 2 GB lehet növelni.
-* A helyi gyorsítótár nem írható-olvasható. Azonban bármilyen módosítás elvész a webalkalmazást helyez át a virtuális gépek, illetve újraindításakor beolvasása. Ne használja a helyi gyorsítótár-alkalmazások, amelyek kritikus fontosságú adatok tárolása a tartalomtárhoz konvertál.
-* Webalkalmazások továbbra is írhat a naplófájlok és a diagnosztikai adatok, mint jelenleg. Fájlok és adatok, azonban rendszer helyben tárolja a virtuális gépen. Majd a Másolás keresztül rendszeres időközönként a megosztott tartalomtároló. A megosztott tartalomtároló a Másolás célja egy hányad--készít biztonsági másolatot elveszhetnek miatt a VM-példány hirtelen összeomlás írási.
-* A helyi gyorsítótárat használó webalkalmazásokhoz LogFiles és az adatok mappa gyökérmappa-szerkezetében lévő változás történik. Nincsenek most almappák "egyedi azonosító" + időbélyeg elnevezési mintát a storage LogFiles és az adatok mappákat. Egyes, több a almappával felel meg egy Virtuálisgép-példányhoz, amelyen a webalkalmazás fut, vagy futott.  
-* Módosítások közzététele a webalkalmazás közzétételi mechanizmusok használatával teszi közzé a tartós megosztott tartalomtárhoz konvertál. A helyi gyorsítótárat a webalkalmazás frissítéséhez, akkor újra kell indítani. Ahhoz, hogy az életciklus zökkenőmentes, olvassa el a cikk későbbi részében.
-* A helyi gyorsítótár D:\Home mutat. D:\Local továbbra is úgy, hogy a Virtuálisgép-specifikus ideiglenes tároló mutasson.
+## <a name="how-the-local-cache-changes-the-behavior-of-app-service"></a>Hogyan az a helyi gyorsítótár módosítja az App Service működését
+* _D:\home_ mutat, a helyi gyorsítótár, amely a Virtuálisgép-példányon jön létre, az alkalmazás indulásakor. _D:\Local_ továbbra is a Virtuálisgép-specifikus ideiglenes tároló mutat.
+* A helyi gyorsítótár egyszeri másolatát tartalmazza a _/Helykonfiguráció_ és _/siteextensions_ mappákat a megosztott tartalom tároló, _D:\home\site_ és _D:\home\ siteextensions_, illetve. A Másolás a helyi gyorsítótárba az alkalmazás indulásakor. Az egyes alkalmazások a két mappa mérete alapértelmezés szerint 300 MB-ra korlátozott, de legfeljebb 2 GB lehet növelni.
+* A helyi gyorsítótár nem írható-olvasható. Azonban bármilyen módosítás elvész az alkalmazást áthelyezi a virtuális gépek, illetve újraindításakor beolvasása. Ne használja a helyi gyorsítótár alkalmazásokat, amelyek kritikus fontosságú adatok tárolása a tartalomtárhoz konvertál.
+* _D:\home\LogFiles_ és _D:\home\Data_ tartalmazza a naplófájlok és az alkalmazásadatokat. A két almappát a rendszer helyben tárolja a Virtuálisgép-példányon, és másolja a megosztott tartalomtároló rendszeres időközönként. Alkalmazások ezeket a mappákat írásával megőrizheti a naplófájlokat és az adatok. Azonban a Másolás a megosztott tartalomtároló, legjobb, így lehetséges, hogy a naplófájlok és az adatok egy VM-példány egy hirtelen összeomlása miatt megszakadt.
+* [A naplóstreamelés](web-sites-enable-diagnostic-log.md#streamlogs) hatással van a legjobb másolatot. Sikerült a adatfolyamként továbbított naplók perces késleltetés akár figyelje meg.
+* A megosztott tartalom tárolóban változás történik a mappastruktúra a _LogFiles_ és _adatok_ mappákat a helyi gyorsítótárat használó alkalmazások esetében. Nincsenek most almappák neki, hogy az "egyedi azonosító" + időbélyeg elnevezési mintát. Egyes, több a almappával felel meg egy Virtuálisgép-példánnyal, ahol az alkalmazás fut, vagy futott.
+* Más, a mappa _D:\home_ a helyi gyorsítótárban maradjon, és nem másolódnak át a megosztott tartalomtároló.
+* Alkalmazás üzembe helyezése bármely támogatott módszerrel közvetlenül a tartós megosztott tartalomtároló tesz közzé. Frissítése az _D:\home\site_ és _D:\home\siteextensions_ mappák a helyi gyorsítótárban, az alkalmazásnak újra kell indítani. Ahhoz, hogy az életciklus zökkenőmentes, olvassa el a cikk későbbi részében.
 * Az SCM helyet tartalom alapértelmezett nézete továbbra is, hogy a megosztott tartalom tárolóján.
 
 ## <a name="enable-local-cache-in-app-service"></a>Az App Service-ben a helyi gyorsítótár engedélyezése

@@ -1,6 +1,6 @@
 ---
-title: A média az Azure portál használatával elemezheti |} Microsoft Docs
-description: Ez a témakör ismerteti, hogyan kell feldolgozni a media Médiaelemzés media processzorral (felügyeleti csomagok) az Azure portál használatával.
+title: Az Azure portal használatával médiatartalmak elemzése |} A Microsoft Docs
+description: Ez a témakör ismerteti a médiafeladat a médiaelemzés médiafeldolgozói (MPs) az Azure portal használatával.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/07/2017
 ms.author: juliako
-ms.openlocfilehash: 60da24b5b0bb7d83414539f07936c61a196e0b62
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: d8c3bb07c88dc96b7ca779ca0f4dfe09052ab290
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788850"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43666170"
 ---
 # <a name="analyze-your-media-using-the-azure-portal"></a>Médiatartalmak elemzése az Azure Portal használatával
 > [!NOTE]
@@ -28,116 +28,116 @@ ms.locfileid: "33788850"
 > 
 
 ## <a name="overview"></a>Áttekintés
-Az Azure Media Services Analytics beszéd- és vizuális összetevők (a vállalati méretű, megfelelőség, biztonsági és globális reach), amelyek megkönnyítik a szervezetek és vállalatok számára, hogy készítsenek gyakorlatban használható elemzések gyűjteménye. További részletes Azure Media Services Analytics áttekintése: [ez](media-services-analytics-overview.md) témakör. 
+Az Azure Médiaelemzés-szolgáltatások gyűjteménye, beszéd- és vizuális összetevők (a nagyvállalati szintű, megfelelőséget, biztonságot és globális elérésű), amelyek megkönnyítik a szervezetek és vállalatok számára, hogy használható elemzéseket készítsenek videófájljaikból. További részletes, az Azure Media Services Analytics áttekintése: [ez](media-services-analytics-overview.md) témakör. 
 
-Ez a témakör ismerteti, hogyan kell feldolgozni a media Médiaelemzés media processzorral (felügyeleti csomagok) az Azure portál használatával. Media Analytics felügyeleti csomagok MP4- vagy JSON-fájlok előállításához. Ha egy media processzor MP4-fájlokat, fokozatosan letölteni a fájlt. Ha egy media processzor egy JSON-fájl, akkor töltse le a fájlt az Azure blob storage. 
+Ez a témakör ismerteti a médiafeladat a médiaelemzés médiafeldolgozói (MPs) az Azure portal használatával. Media Analytics felügyeleti csomagok termék MP4-fájlokat vagy a JSON-fájlokat. Ha egy médiaprocesszorral MP4-fájlokat, fokozatosan letölteni a fájlt. Ha egy médiaprocesszorral egy JSON-fájlt, töltse le a fájl az Azure blob storage-ból. 
 
-## <a name="choose-an-asset-that-you-want-to-analyze"></a>Válassza ki az elemezni kívánt eszköz
+## <a name="choose-an-asset-that-you-want-to-analyze"></a>Válassza ki az elemezni kívánt adategység
 1. Az [Azure-portálon](https://portal.azure.com/) válassza ki Azure Media Services-fiókját.
 2. A **Settings** (Beállítások) ablakban válassza az **Assets** (Objektumok) lehetőséget.  
-   .
+   
     ![Videók elemzése](./media/media-services-portal-analyze/media-services-portal-analyze001.png)
-3. Válassza ki az objektumot, amelyeket szeretne elemzéséhez, és nyomja le az **elemzés** gombra.
+3. Válassza ki a szeretné elemzése, és nyomja le az **elemzés** gombra.
    
     ![Videók elemzése](./media/media-services-portal-analyze/media-services-portal-analyze002.png)
-4. Az a **folyamat media eszköz Media Analytics** ablakban válassza ki a processzor. 
+4. Az a **médiaobjektum feldolgozása a Media Analytics szolgáltatással** ablakban válassza ki a processzor. 
    
-    A többi a cikk azt ismerteti, miért és hogyan lehet minden processzor. 
-5. Nyomja le az **létrehozása** számára a feladat elindítása.
+    A cikk azt ismerteti, miért és hogyan használhatja az egyes processzor. 
+5. Nyomja meg **létrehozás** , a feladat elindítása.
 
 ## <a name="azure-media-indexer"></a>Azure Media Indexer
-A **Azure Media Indexer** media processzor teszi lehetővé tegye médiafájlok és a tartalom kereshető, valamint a készítése lezárt feliratok követi nyomon. Ez a szakasz tájékoztatást nyújt a néhány a felügyeleti csomag a megadott beállításokat.
+A **Azure Media Indexer** médiafeldolgozót lehetővé teszi, hogy az adathordozó-fájlok és tartalmak kereshetővé, valamint a készítése a lezárt feliratozási nyomon követi. Ez a szakasz néhány, amely a felügyeleti csomag a megadott beállítások részleteit.
 
 ![Videók elemzése](./media/media-services-portal-analyze/media-services-portal-analyze003.png)
 
 ### <a name="language"></a>Nyelv
-A természetes nyelvű, hogy felismerje a multimédia fájlban. Például angol és spanyol. 
+A multimédiás fájlban ismeri fel a természetes nyelv. Például angol vagy spanyol. 
 
-### <a name="captions"></a>Akadálymentes feliratok
-Kiválaszthatja a fejléc formátuma nem hoz létre a tartalomról. Az indexelő feladat feliratfájlokat fájlok hozhat létre a következő formátumban:  
+### <a name="captions"></a>akadálymentes feliratok
+Kiválaszthatja egy a tartalomból generált felirat formátuma. Egy indexelési feladat feliratfájlok hozhat létre a következő formátumban:  
 
 * **SAMI**
 * **TTML**
 * **WebVTT**
 
-Lezárt felirat (CC) az alábbi formátumokban fájlok használhatók hang- és fájlok elérhetővé a fogyatékkal élők nyújtanak segítséget.
+Ezek a formátumok a fájlok használhatók elérhetővé a hang- és videofájlok, a hallás fogyatékkal személyek (CC) felirat lezárva.
 
-### <a name="aib-file"></a>AIB fájl
-Válassza ezt a lehetőséget, ha azt szeretné, hozza létre a hang Index Blob fájlt az egyéni SQL Server IFilter való használatra. További információkért lásd: [ez](https://azure.microsoft.com/blog/using-aib-files-with-azure-media-indexer-and-sql-server/) blog.
+### <a name="aib-file"></a>AIB-fájl
+Válassza ezt a lehetőséget, ha szeretné létrehozni a hang Index Blob fájlt, és az egyéni SQL Server ifilterrel való használatra. További információkért lásd: [ez](https://azure.microsoft.com/blog/using-aib-files-with-azure-media-indexer-and-sql-server/) blog.
 
-### <a name="keywords"></a>Kulcsszavak
-Válassza ezt a lehetőséget, ha azt szeretné, a kulcsszavak XML-fájl létrehozásához. Ez a fájl tartalmazza a beszédfelismerés tartalom kinyert gyakorisággal és oszlopeltolási információ kulcsszavak.
+### <a name="keywords"></a>a kulcsszavak
+Válassza ezt a lehetőséget, ha szeretne egy kulcsszavak XML-fájl létrehozásához. Ez a fájl tartalmazza, gyakorisági és eltérési információkkal együtt a beszédtartalomból kinyert kulcsszavakat.
 
 ### <a name="job-name"></a>Feladat neve
-Egy rövid nevet, amely lehetővé teszi, hogy a feladat azonosításához. [Ez](media-services-portal-check-job-progress.md) a cikk ismerteti, hogyan figyelheti a feladat előrehaladását. 
+Egy rövid nevet, amely lehetővé teszi, hogy a művelet azonosítására. [Ez](media-services-portal-check-job-progress.md) a cikk ismerteti, hogyan figyelheti a feladat előrehaladását. 
 
 ### <a name="output-file"></a>Kimeneti fájl
-Egy rövid nevet, amely lehetővé teszi a kimeneti tartalmat. 
+Egy rövid nevet, amely lehetővé teszi a kimeneti tartalom megbízható azonosításához. 
 
 ## <a name="azure-media-hyperlapse"></a>Azure Media Hyperlapse
-Az Azure Media Hyperlapse egy felügyeleti csomag által létrehozott zökkenőmentes idő letelt videók első, aki vagy művelet – kamera tartalomról.  További információ [ebben](media-services-hyperlapse-content.md) a témakörben érhető el. Ez a szakasz tájékoztatást nyújt a néhány a felügyeleti csomag a megadott beállításokat.
+Az Azure Media Hyperlapse egy felügyeleti csomag, amely zökkenőmentes idő lejárt videók létrehozza az első, aki vagy művelet – kamera tartalmak.  További információ [ebben](media-services-hyperlapse-content.md) a témakörben érhető el. Ez a szakasz néhány, amely a felügyeleti csomag a megadott beállítások részleteit.
 
 ![Videók elemzése](./media/media-services-portal-analyze/media-services-portal-analyze004.png)
 
 ### <a name="speed"></a>Gyorsaság
-Adja meg a sebesség, amellyel a bemeneti videó felgyorsítása érdekében. Az eredménye egy stabil és az idő letelt verzióinak a bemeneti videó.
+Adja meg a sebesség, amellyel a bemeneti videó felgyorsítása érdekében. A bemeneti videó egy stabil és idő lejárt megjelenítés kimenete.
 
 ### <a name="job-name"></a>Feladat neve
-Egy rövid nevet, amely lehetővé teszi, hogy a feladat azonosításához. [Ez](media-services-portal-check-job-progress.md) a cikk ismerteti, hogyan figyelheti a feladat előrehaladását. 
+Egy rövid nevet, amely lehetővé teszi, hogy a művelet azonosítására. [Ez](media-services-portal-check-job-progress.md) a cikk ismerteti, hogyan figyelheti a feladat előrehaladását. 
 
 ### <a name="output-file"></a>Kimeneti fájl
-Egy rövid nevet, amely lehetővé teszi a kimeneti tartalmat. 
+Egy rövid nevet, amely lehetővé teszi a kimeneti tartalom megbízható azonosításához. 
 
 ## <a name="azure-media-face-detector"></a>Azure Media Face Detector
-A **Azure Media Arcfelismerési érzékelő** media processzor (MP) lehetővé teszi a száma, nyomon követésére típusú áthelyezések, és akkor is fel tudja mérni a célközönség részvételét és reakciót arcfelismerést kifejezések keresztül. Ez a szolgáltatás két funkciókat tartalmazza: 
+A **Azure Media Face detector használatával** médiafeldolgozót. (pont) lehetővé teszi a száma, nyomon követheti a áthelyezések száma – és még mérőműszer célközönség való részvétel és reagálás arckifejezések keresztül. Ez a szolgáltatás két funkciókat tartalmazza: 
 
-* **arcfelismerési észlelése**
+* **Arcfelismerés**
   
-    Arcfelismerési észlelési talál, és nyomon követi a videó emberi lapjaira. Több lapokat észlelhető, és ezt követően nyomon követheti az adott vissza egy JSON-fájlban ideje és helye metaadatokkal körül, mozgás. Nyomon követése, során a program megpróbálja adjon egységes azonosító ugyanazon felületére, amíg a személy van Navigálás a képernyőn, még akkor is, ha kényszerítő vagy röviden hagyja a keret.
+    Arcfelismerés megkeresi és nyomon követi a videó emberi arcokat. Több arcok észlelése, és ezt követően a visszaadott JSON-fájlban időt és tartózkodási helyet metaadatokkal mozgás körül, követni. Során nyomon követése, megkísérli a konzisztens ID adhat az azonos face, bár a személy van Navigálás a képernyőn, még akkor is, ha azok kényszerítő, vagy röviden hagyja a keret.
   
   > [!NOTE]
-  > A szolgáltatások nem végez arcfelismerést. Személy elhagyja a keret vagy a válik fedhetik túl hosszú kap egy új Azonosítót amikor azok tér vissza.
+  > A szolgáltatások arcfelismerés nem hajt végre. Olyan személy, akinek elhagyja a keretet, vagy a válik fedhetik túl sokáig kap egy új azonosító Ha vissza.
   > 
   > 
-* **Érzelemfelismerés**
+* **Érzelemfelismerő**
   
-    Érzelemfelismerés Arcfelismerési észlelési adathordozó-processzor elemzés több érzelmi attribútum vissza a lapok észlel, például Boldogsága, sadness, félelem, utasítás és egyéb választható összetevőként. 
+    Érzelemfelismerő adja vissza elemzési több érzelmi attribútumok az arcok észlelése esetén például boldogság, szomorúság, félelem, düh, és egyéb arcok észlelése médiafeldolgozó választható összetevője. 
 
 ![Videók elemzése](./media/media-services-portal-analyze/media-services-portal-analyze005.png)
 
-### <a name="detection-mode"></a>Észlelési mód
+### <a name="detection-mode"></a>Észlelés üzemmód
 A következő módok egyikét használhatja a processzor:
 
-* arcfelismerési észlelése
-* egy oldallal érzelemfelismerés
-* összesített érzelemfelismerés
+* arcfelismerés
+* arconkénti érzelemfelismerő
+* összesített érzelemfelismerő
 
 ### <a name="job-name"></a>Feladat neve
-Egy rövid nevet, amely lehetővé teszi, hogy a feladat azonosításához. [Ez](media-services-portal-check-job-progress.md) a cikk ismerteti, hogyan figyelheti a feladat előrehaladását. 
+Egy rövid nevet, amely lehetővé teszi, hogy a művelet azonosítására. [Ez](media-services-portal-check-job-progress.md) a cikk ismerteti, hogyan figyelheti a feladat előrehaladását. 
 
 ### <a name="output-file"></a>Kimeneti fájl
-Egy rövid nevet, amely lehetővé teszi a kimeneti tartalmat. 
+Egy rövid nevet, amely lehetővé teszi a kimeneti tartalom megbízható azonosításához. 
 
 ## <a name="azure-media-motion-detector"></a>Azure Media Motion Detector
-A **Azure Media mozgásérzékelő** media processzor (MP) lehetővé teszi a szakaszok egy egyébként hosszú és Eseménytelen video házirendsablonokkal hatékonyan azonosításához. Mozgásérzékelés statikus kamerák felvételei szakaszok a videó hol mozgásérzékelési jelentkezik azonosításához használhatja. Az időbélyegzőket és a határoló régió, ahol az esemény történt a metaadatokat tartalmazó JSON-fájlt hoz létre.
+A **Azure Media Motion detector használatával** médiafeldolgozót. (pont) lehetővé teszi, hogy hatékonyan az egyes szakaszokhoz egy egyébként hosszú és Eseménytelen videó házirendsablonokkal. Mozgásérzékelés a statikus kamerák felvételei, azonosíthatja a videó szakaszok hol történik a mozgásban lévő adatoknak egyaránt használható. Az időbélyegeket és a határoló régió, ahol az esemény történt egy metaadatokat tartalmazó JSON-fájlt állít elő.
 
-Cél biztonsági videó hírcsatornák, ez a technológia el tudja mozgásérzékelési kategorizálása kapcsolódó eseményeket és vakriasztások például árnyékok és megvilágítási módosításokat. Ez lehetővé teszi, hogy a biztonsági riasztások generálása kamera hírcsatornák közben igényt érdeklő pillanat kinyerése rendkívül hosszú felügyeleti videók végtelen irreleváns események, éppen címünkre nélkül.
+Biztonsági videóközvetítési céloz, ezt a technológiát is képes mozgásban lévő adatoknak egyaránt kategorizálásához kapcsolódó eseményeket, és a téves, például az árnyékok és megvilágítási módosításokat. Ez lehetővé teszi, hogy a biztonsági riasztások létrehozása a kamera hírcsatornák nélkül végtelen irreleváns eseményekkel rendelkező során képes arra, hogy a lényeges pillanat kinyerése rendkívül hosszú felügyeleti videók címünkre folyamatban van.
 
 ![Videók elemzése](./media/media-services-portal-analyze/media-services-portal-analyze006.png)
 
 ## <a name="azure-media-video-thumbnails"></a>Azure Media Video Thumbnails
-A processzor segítségével létre videók kijelölésével automatikusan érdekes kódtöredékek a forrás-videót. Ez akkor hasznos, ha lehetővé szeretné tenni, mi történik, a hosszú videó gyors áttekintést. Részletes útmutatást és példákat, lásd: [használata Azure Media Videoindexképek használatával egy videó összegzésének létrehozása](media-services-video-summarization.md)
+A processzor, a hosszú videókról összefoglalókat készíthet automatikusan válassza ki a forrás videó érdekes kódrészletek is segítenek. Ez akkor hasznos, ha lehetővé szeretné tenni mire számítson hosszú videó gyors áttekintést. Részletes információkért és példákért lásd: [használata az Azure Media Videóindexképek használatával egy videó összegzésének létrehozása](media-services-video-summarization.md)
 
 ![Videók elemzése](./media/media-services-portal-analyze/media-services-portal-analyze008.png)
 
 ### <a name="job-name"></a>Feladat neve
-Egy rövid nevet, amely lehetővé teszi, hogy a feladat azonosításához. [Ez](media-services-portal-check-job-progress.md) a cikk ismerteti, hogyan figyelheti a feladat előrehaladását. 
+Egy rövid nevet, amely lehetővé teszi, hogy a művelet azonosítására. [Ez](media-services-portal-check-job-progress.md) a cikk ismerteti, hogyan figyelheti a feladat előrehaladását. 
 
 ### <a name="output-file"></a>Kimeneti fájl
-Egy rövid nevet, amely lehetővé teszi a kimeneti tartalmat. 
+Egy rövid nevet, amely lehetővé teszi a kimeneti tartalom megbízható azonosításához. 
 
-## <a name="azure-media-content-moderator"></a>Az Azure Media tartalom moderátor
-A processzor segítségével azonosíthatók a potenciális felnőtt és ellopható tartalom videók. A processzor pillanatfelvételek és kulcsképek automatikusan a videó észleli. A kulcsképek pontszámaihoz lehetséges felnőtt vagy ellopható tartalom, és alapértelmezett küszöbértékek alapján értékelést javasol. Részletes útmutatást és példákat, lásd: [használata Azure Media tartalom moderátor mérsékelt videók](media-services-content-moderation.md)
+## <a name="azure-media-content-moderator"></a>Az Azure Media a Content Moderator
+A processzor segítségével észlelheti a potenciális felnőtt és szexuális tartalom videókat. A processzor automatikusan észleli helyességének és kulcsképek a videóban. A kulcskép pontszámmodell lehetséges felnőtt vagy pikáns tartalom, és értékelések alapértelmezett küszöbértékek alapján javasol. Részletes információkért és példákért lásd: [használata az Azure Media a Content Moderator közepes videók](media-services-content-moderation.md)
 
 ![Mérsékelt videók](./media/media-services-portal-analyze/media-services-portal-analyze-content-moderator.PNG)
 
@@ -145,10 +145,10 @@ A processzor segítségével azonosíthatók a potenciális felnőtt és ellopha
 Használja a "2.0-s".
 
 ### <a name="mode"></a>Mód
-A 2.0-s verzió figyelmen kívül hagyja a `Mode` beállítást.
+A 2.0-s verzió figyelmen kívül hagyja a `Mode` beállítás.
 
 ## <a name="next-steps"></a>További lépések
-Nézet Media Services tanulási útvonalai.
+Nézet Media Services képzési terveket.
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 

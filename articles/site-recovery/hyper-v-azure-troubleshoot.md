@@ -9,30 +9,30 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: rayne
-ms.openlocfilehash: 95941b3f9333273c11208c56a63c62d5d37a9386
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: d5282e5954aa50ce67d6341b194177a89bdbe6cc
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39213554"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43666401"
 ---
 # <a name="troubleshoot-hyper-v-to-azure-replication-and-failover"></a>Hyper-V hibaelhárítása az Azure-replikáció és feladatátvétel
 
-Ez a cikk ismerteti a gyakori problémák, amelyek akkor fordulhatnak elő, amikor replikálja a helyszíni Hyper-V virtuális gépek az Azure-bA használatával [Azure Site Recovery](site-recovery-overview.md).
+Ez a cikk ismerteti a gyakori kérdéseket, előfordulhat, hogy között replikálja a helyszíni Hyper-V virtuális gépek Azure-ba, amikor használatával [Azure Site Recovery](site-recovery-overview.md).
 
 ## <a name="enable-protection-issues"></a>Védelmi hibák engedélyezése
 
-Ha problémái vannak a Hyper-V virtuális gépek védelmének engedélyezésekor, ellenőrizze a következőket:
+Ha a Hyper-V virtuális gépek védelmének engedélyezésekor problémákat tapasztal, ellenőrizze az alábbi javaslatokat:
 
 1. Ellenőrizze, hogy a Hyper-V-gazdagépek és virtuális gépek megfelelnek az összes [követelmények és előfeltételek](hyper-v-azure-support-matrix.md).
 2. Ha a System Center Virtual Machine Manager (VMM) felhőkben található Hyper-V-kiszolgálókon, győződjön meg arról, hogy sikeresen előkészítette a [VMM-kiszolgáló](hyper-v-prepare-on-premises-tutorial.md#prepare-vmm-optional).
 3. Ellenőrizze, hogy a Hyper-V Virtuálisgép-kezelő szolgáltatás fut-e a Hyper-V-gazdagépek.
-4. Ellenőrizze a problémákra, amelyek a virtuális gép a Hyper-V-VMMS\Admin bejelentkezési jelennek meg. Ez a napló található **alkalmazások és szolgáltatásnaplók** > **Microsoft** > **Windows**.
+4. Ellenőrizze a problémákra, amelyek a Hyper-V-VMMS\Admin jelentkezzen be a virtuális gép jelennek meg. Ez a napló található **alkalmazások és szolgáltatásnaplók** > **Microsoft** > **Windows**.
 5. A Vendég virtuális Gépen ellenőrizze, hogy a WMI engedélyezve van, és elérhető-e.
   - [Ismerje meg](https://blogs.technet.microsoft.com/askperf/2007/06/22/basic-wmi-testing/) Alapszintű ellenőrzés WMI.
   - [Hibaelhárítás](https://aka.ms/WMiTshooting) WMI.
   - [Hibaelhárítás ](https://technet.microsoft.com/library/ff406382.aspx#H22) WMI-parancsfájlok és a szolgáltatásokkal kapcsolatos problémák.
-5. A Vendég virtuális Gépen győződjön meg arról, hogy fut-e a legújabb integrációs szolgáltatásokat.
+6. A Vendég virtuális Gépen győződjön meg arról, hogy fut-e a legújabb integrációs szolgáltatásokat.
     - [Ellenőrizze](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services) , hogy rendelkezik-e a legújabb verzióra.
     - [Tartsa](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#keep-integration-services-up-to-date) integrációs szolgáltatások naprakész.
     
@@ -54,8 +54,8 @@ Kezdeti és folyamatos replikálási hibáinak elhárítása a következőképpe
     - Ha a környezetben a VMM-mel replikál, ellenőrizze, hogy ezek a szolgáltatások futnak-e:
         - A Hyper-V gazdagépen ellenőrizze, hogy a Virtuálisgép-kezelő szolgáltatás, a Microsoft Azure Recovery Services Agent és a WMI szolgáltató szolgáltatás fut-e.
         - A VMM-kiszolgálón győződjön meg arról, hogy a System Center Virtual Machine Manager szolgáltatás fut-e.
-4. Ellenőrizze a Hyper-V kiszolgáló és az Azure közötti kapcsolatot. Ehhez nyissa meg a Feladatkezelőt a Hyper-V-gazdagépen. Az a **teljesítmény** lapra, majd **nyissa meg az erőforrás-figyelő**. Az a **hálózati** lap > **hálózati tevékenységgel Processess**, ellenőrizze, hogy cbengine.exe aktívan küld nagy adatmennyiségek (MB).
-5. Ellenőrizze, hogy ha a Hyper-V-gazdagépek csatlakozhat az Azure storage blob URL-címe. Ehhez válassza ki, és ellenőrizze **cbengine.exe**. Nézet **TCP-kapcsolatok** , ellenőrizze a kapcsolatot a gazdagép és az Azure storage-blobba.
+4. Ellenőrizze a Hyper-V kiszolgáló és az Azure közötti kapcsolatot. Ellenőrizze a kapcsolatot, nyissa meg a Feladatkezelőt a Hyper-V-gazdagépen. Az a **teljesítmény** lapra, majd **nyissa meg az erőforrás-figyelő**. Az a **hálózati** lap > **hálózati tevékenységgel rendelkező folyamat**, ellenőrizze, hogy cbengine.exe aktívan küld nagy adatmennyiségek (MB).
+5. Ellenőrizze, hogy ha a Hyper-V-gazdagépek csatlakozhat az Azure storage blob URL-címe. Ellenőrizze, hogy a gazdagépek is csatlakozni, válassza ki és ellenőrizze, hogy **cbengine.exe**. Nézet **TCP-kapcsolatok** , ellenőrizze a kapcsolatot a gazdagép és az Azure storage-blobba.
 6. Az alább ismertetett, ellenőrizze a teljesítménnyel kapcsolatos problémák.
     
 ### <a name="performance-issues"></a>Teljesítménnyel kapcsolatos problémák
@@ -92,7 +92,7 @@ Az alkalmazáskonzisztens pillanatkép a virtuális Gépen található alkalmaz�
 
 1. Ellenőrizze, hogy a legújabb integrációs szolgáltatások telepítve és fut-e.  Ellenőrizze, hogy ha egy frissítés érhető el a következő parancs futtatásával egy rendszergazda jogú PowerShell-parancssorba a Hyper-V-gazdagépen: **get-vm |} válassza a neve, állam, IntegrationServicesState**.
 2. Ellenőrizze, hogy VSS-szolgáltatás fut, és megfelelő állapotú:
-    - Ehhez jelentkezzen be a Vendég virtuális Gépen. Ezután nyisson meg egy rendszergazdai parancssort, és ellenőrizze, hogy kifogástalan állapotban-e a VSS-író a következő parancsokat.
+    - A szolgáltatások ellenőrzéséhez jelentkezzen be a Vendég virtuális Gépen. Ezután nyisson meg egy rendszergazdai parancssort, és ellenőrizze, hogy kifogástalan állapotban-e a VSS-író a következő parancsokat.
         - **Vssadmin list writers**
         - **Vssadmin list shadows**
         - **Vssadmin list-szolgáltatók**
@@ -108,10 +108,10 @@ Az alkalmazáskonzisztens pillanatkép a virtuális Gépen található alkalmaz�
     ![Dinamikus lemez](media/hyper-v-azure-troubleshoot/dynamic-disk.png)
     
 4. Ellenőrizze, hogy nem rendelkezik a virtuális Géphez csatolt iSCSI-lemez. Ez a funkció nem támogatott.
-5. Ellenőrizze, hogy a Backup szolgáltatás engedélyezve van. Ennek az ellenőrzéséhez **Hyper-V beállítások** > **integrációs szolgáltatások**.
+5. Ellenőrizze, hogy a Backup szolgáltatás engedélyezve van. Ellenőrizze, hogy van-e engedélyezve a **Hyper-V beállítások** > **integrációs szolgáltatások**.
 6. Ellenőrizze, hogy nem lesznek ütközések VSS-pillanatképeket alkalmazásokkal. Ha több alkalmazás próbálja veszik a VSS-pillanatképet az azonos idő ütközés fordulhat elő. Például ha egy biztonsági mentési alkalmazás VSS-pillanatképet tart a Site Recovery által a replikációs szabályzat ütemezése pillanatképének elkészítéséhez.   
 7. Ellenőrizze, hogy ha a virtuális gép egy nagy forgalom sebessége tapasztalja:
-    - Napi adatváltozási sebesség mérhetik a Vendég virtuális gépek, Hyper-v rendszerű gazdagépen a teljesítményszámlálók segítségével. Ehhez engedélyezze a következő számlálót. Ezt az értéket 5-15 perc, a virtuális gép lemezeinek mintát Aggregrate beolvasni a virtuális gép forgalommal.
+    - Napi adatváltozási sebesség mérhetik a Vendég virtuális gépek, Hyper-v rendszerű gazdagépen a teljesítményszámlálók segítségével. Az adatmódosítási arány mértékeket, engedélyezze a következő számlálót. Ezt az értéket 5-15 perc, a virtuális gép lemezeinek mintát Aggregrate beolvasni a virtuális gép forgalommal.
         - Kategória: "a Hyper-V virtuális tárolóeszköz"
         - A számláló: "írási bájt / mp"</br>
         - Ezen adatok lemorzsolódási rátához növeli vagy továbbra is magas szinten, attól függően, hogyan foglalt a virtuális gép vagy az alkalmazások vannak.
@@ -138,7 +138,7 @@ Az alkalmazáskonzisztens pillanatkép a virtuális Gépen található alkalmaz�
 **Hibakód:** | **üzenet** | **Részletek**
 --- | --- | ---
 **0x800700EA** | "A Hyper-V VSS pillanatkép beállítása a virtuális gép létrehozása nem sikerült: több adat áll rendelkezésre. (0x800700EA). VSS-pillanatkép beállított-létrehozás sikertelen lehet, ha biztonsági mentési művelet folyamatban van.<br/><br/> Nem sikerült a virtuális gép replikációs művelet: több adat érhető el. " | Ellenőrizze, hogy a virtuális gép rendelkezik-e engedélyezve van a dinamikus lemezek. Ez a funkció nem támogatott.
-**0x80070032** | "A Hyper-V Kötet árnyékmásolata másolási kérelmező nem sikerült csatlakozni a virtuális gép <. / VMname > mert a verziója nem egyezik meg a Hyper-V által várt verzió | Ellenőrizze, hogy ha a legújabb Windows-frissítések telepítése.<br/><br/> [Frissítés](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services.md#keep-integration-services-up-to-date) a legújabb integrációs szolgáltatásokat.
+**0x80070032** | "A Hyper-V Kötet árnyékmásolata másolási kérelmező nem sikerült csatlakozni a virtuális gép <. / VMname > mert a verziója nem egyezik meg a Hyper-V által várt verzió | Ellenőrizze, hogy ha a legújabb Windows-frissítések telepítése.<br/><br/> [Frissítés](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#keep-integration-services-up-to-date) a legújabb integrációs szolgáltatásokat.
 
 
 
@@ -146,7 +146,7 @@ Az alkalmazáskonzisztens pillanatkép a virtuális Gépen található alkalmaz�
 
 Az összes Hyper-V replikáció eseményt naplózza a Hyper-V-VMMS\Admin naplóban található **alkalmazások és szolgáltatásnaplók** > **Microsoft** > **Windows**. Emellett engedélyezheti egy elemzési naplóját a Hyper-V virtuális gépek felügyeleti szolgáltatás a következő:
 
-1. Győződjön meg arról, az elemzési és hibakeresési naplók tekinthetik meg az eseménynaplóban. Ehhez az Eseménynapló **nézet** > **elemzési és hibakeresési naplók megjelenítése.**. Megjelenik az elemzési naplóját **Hyper-V-VMMS**.
+1. Győződjön meg arról, az elemzési és hibakeresési naplók tekinthetik meg az eseménynaplóban. Ahhoz, hogy a naplók az eseménynaplóban elérhető, kattintson a **nézet** > **elemzési és hibakeresési naplók megjelenítése.**. Megjelenik az elemzési naplóját **Hyper-V-VMMS**.
 2. Az a **műveletek** ablaktáblán kattintson a **napló engedélyezése**. 
 
     ![Napló engedélyezése](media/hyper-v-azure-troubleshoot/enable-log.png)

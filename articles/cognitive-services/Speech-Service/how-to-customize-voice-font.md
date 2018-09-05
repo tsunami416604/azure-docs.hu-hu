@@ -7,12 +7,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: nolach
-ms.openlocfilehash: 84493ae83515c0458bf5b9e9cf44603300a8b4f7
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 1f9facf94b8068b98aa49c49ece7070a83db0686
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39284887"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43665085"
 ---
 # <a name="creating-custom-voice-fonts"></a>Egyéni hangtípust létrehozása
 
@@ -22,7 +22,6 @@ A hangtípusú létrehozásához, győződjön meg arról, a studio felvételt, 
 
 Az egy kisebb mennyiségű adatot egy megvalósíthatósági megkezdheti. De minél több adatot ad meg, annál természetes és professional a hangját hangzik.
 
-Hangalapú testreszabási amerikai angol (en-US) és kontinens kínai (zh-CN) érhető el.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -45,6 +44,9 @@ Az Azure-fiók és a egy előfizetést a beszédfelismerési szolgáltatás is s
      ![Előfizetés hozzáadása](media/custom-voice/add-subscription.png)
 
 Készen áll a go!
+
+> [!IMPORTANT]
+> A privát előzetes szakaszban előfizetések szerepel az engedélyezési listán az egyéni beszédfelismerési szolgáltatás kell lennie. Kövesse az oldalon beolvasni az előfizetés szerepel az engedélyezési listán.
 
 ## <a name="prepare-recordings-and-transcripts"></a>És előkészítése
 
@@ -69,8 +71,6 @@ Hangfájlok a következőképpen kell készíteni. Más formátum nem támogatot
 | Archívum formátuma| Irányítószám      |
 | Archívum maximális mérete|200 MB|
 
-Hangfájlok készletét helyezzen alkönyvtárak nélkül egyetlen mappát, és egyetlen ZIP-archívumot, állítsa be a teljes csomag.
-
 > [!NOTE]
 > Mintavételi sebessége alacsonyabb, mint 16000 Hz Wave fájlokat a rendszer elutasítja. Azokban az esetekben, ahol egy zip-fájl tartalmazza a regisztrálást megelőző szakaszban tanácsos különböző mintavételi aránnyal csak ezek egyenlő vagy nagyobb, mint 16000 Hz lesz importálva.
 > A portálon jelenleg importálja a TÖMÖRÍTETT archívum akár 200 MB. Azonban több archívumot lesz feltöltve. Adatkészletek engedélyezett maximális számát az 10 ZIP-előfizetés felhasználóinak és 50 a standard szintű előfizetés felhasználóinak ingyenes fájlok.
@@ -90,7 +90,7 @@ Példa:
 Az egyéni beszédfelismerési rendszer átiratok Normalizálja a szöveg konvertálása kisbetűket, és eltávolítja a felesleges beolvasások absztrakt. Fontos, hogy az átiratok-e a megfelelő hangfelvételeket pontosságú 100 %-os.
 
 > [!TIP]
-> Amikor létrehozását a szöveg-hang transzformációs beszédhangot, figyelembe véve a fonetikus lefedettség és a hatékonyság válassza utterances (vagy parancsfájlokat).
+> Amikor létrehozását a szöveg-hang transzformációs beszédhangot, figyelembe véve a fonetikus lefedettség és a hatékonyság válassza utterances (vagy parancsfájlokat). Az eredmények problémákat okoz a következőket szeretne? [Az egyéni beszédfelismerési csapattól](mailto:tts@microsoft.com) található ki kellene USA kapcsolatos további részletekért.
 
 ## <a name="upload-your-datasets"></a>Az adathalmazok feltöltése
 
@@ -102,8 +102,6 @@ A hangfájl archív és szövegekben előkészítése, miután feltölti őket k
 1. Jelentkezzen be az Portalra.
 
 2. Válasszon **adatok** meg egyéni beszédfelismerési alatt. 
-
-    ![Projektek](media/custom-voice/my-projects.png)
 
     A saját Beszédadatait tábla jelenik meg. Emellett akkor üres, ha még nem feltölteni hangalapú adatkészletekkel.
 
@@ -224,13 +222,20 @@ A sikeres üzembe helyezés állapota, az üzembe helyezett hangtípusú végpon
 A végpont tesztelését online érhető el az egyéni beszédfelismerési portálon keresztül. A végpont teszteléséhez válassza **tesztelés végpontok** az egyéni beszédfelismerési legördülő menüből. A végpont tesztelése oldalon jelenik meg. Válasszon egy üzembe helyezett egyéni beszédfelismerési, és írja be a szöveget, (az egyszerű szöveges vagy SSML formátumban) a szövegmezőbe.
 
 > [!NOTE] 
-> SSML, használatakor a `<voice>` címke a neve, mint az egyéni beszédfelismerési létrehozásakor adott meg kell adnia.
+> SSML, használatakor a `<voice>` címke a neve, mint az egyéni beszédfelismerési létrehozásakor adott meg kell adnia. Ha küld egyszerű szöveges formátumban, az egyéni beszédfelismerési mindig használja.
 
 Kattintson a **lejátszása** felvesszük Önnel a szöveget az egyéni hangtípusú beszélt.
 
 ![Végpont tesztelése](media/custom-voice/endpoint-testing.png)
 
 Az egyéni végpont funkcionálisan megegyezik a standard szintű, szöveg-hang transzformációs kérelmek használt végponthoz. Lásd: [REST API-val](rest-apis.md) további információt.
+
+## <a name="language-support"></a>Nyelvi támogatás
+
+Hangalapú testreszabási amerikai angol (en-US), a kontinens kínai (zh-CN) és az olasz (it-IT) érhető el.
+
+> [!NOTE]
+> Olasz hangalapú képzés, mint 2000 utterances adatkészlet kezdődik. Angol nyelvű kínai kétnyelvű modelleket is, mint 2000 utterances adatkészlet használata támogatott.
 
 ## <a name="next-steps"></a>További lépések
 

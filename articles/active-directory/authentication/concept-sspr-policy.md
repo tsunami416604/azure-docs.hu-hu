@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 8396db3a45c2b6f2c88a9fd6bbf0b8e5a7df4efb
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 404be287d2e6ac693e0942c84f630f4e067127f3
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39162048"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43666752"
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Jelszóházirendek és -korlátozások az Azure Active Directoryban
 
@@ -23,7 +23,7 @@ Ez a cikk ismerteti a jelszóházirendek és -összetettségi követelményeknek
 
 ## <a name="administrator-reset-policy-differences"></a>Rendszergazda, alaphelyzetbe állítása házirend különbségek
 
-**Microsoft erős alapértelmezett szigorú *két-kapu* jelszó-visszaállítási házirendjének minden olyan Azure-rendszergazdai szerepkörhöz** ez polciy eltérhet a felhasználók számára megadott, és nem módosítható. Mindig tesztelje felhasználói jelszó-átállítási funkcióra nélkül bármely Azure-rendszergazdai szerepkörök rendelve.
+**Microsoft erős alapértelmezett szigorú *két-kapu* jelszó-visszaállítási házirendjének minden olyan Azure-rendszergazdai szerepkörhöz** ezt a szabályzatot a felhasználók számára megadott, és nem módosítható a eltérő lehet. Mindig tesztelje felhasználói jelszó-átállítási funkcióra nélkül bármely Azure-rendszergazdai szerepkörök rendelve.
 
 Az a két-kezdő szabályzat **rendszergazdák nem rendelkezik a biztonsági kérdések használata**.
 
@@ -76,7 +76,7 @@ Egy egy-kezdő szabályzat megköveteli a hitelesítési adatok, például egy e
 
 ## <a name="userprincipalname-policies-that-apply-to-all-user-accounts"></a>UserPrincipalName házirendek vonatkoznak az összes felhasználói fiók
 
-Minden felhasználói fiók, amelyet az Azure AD-bejelentkezés rendelkeznie kell a fiókhoz társított egyedi felhasználói egyszerű felhasználónév (UPN) attribútum értékét. A következő táblázat ismerteti a szabályzatok, amelyek mind a helyszíni Active Directory felhasználói fiókoknak, szinkronizált a felhőbe, és csak felhőalapú felhasználói fiókokhoz vonatkoznak:
+Minden felhasználói fiók, amelyet az Azure AD-bejelentkezés rendelkeznie kell a fiókhoz társított egyedi felhasználói egyszerű felhasználónév (UPN) attribútum értékét. Az alábbi táblázat ismerteti a házirendekben, amelyek mind a helyszíni Active Directory felhasználói fiókoknak, szinkronizált a felhőbe, és csak felhőalapú felhasználói fiókokhoz érvényesek:
 
 | Tulajdonság | UserPrincipalName követelmények |
 | --- | --- |

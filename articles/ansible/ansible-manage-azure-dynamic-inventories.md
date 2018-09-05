@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.date: 08/09/2018
 ms.topic: article
-ms.openlocfilehash: 9de620c5e6a1698b70f25f91a744829548ad5af6
-ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
+ms.openlocfilehash: 1b8c1ba80b4c69f36e8304cbe978452a359ac911
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2018
-ms.locfileid: "43382331"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43698077"
 ---
 # <a name="use-ansible-to-manage-your-azure-dynamic-inventories"></a>Az Ansible segítségével az Azure dinamikus leltárak kezelése
 Az Ansible segítségével Hardverleltár-információk lekérése a különböző forrásokból (például az Azure felhőalapú forrásokból is beleértve) egy *dinamikus készlet*. Ebben a cikkben fogja használni a [Azure Cloud Shell](./ansible-run-playbook-in-cloudshell.md) konfigurálása az Ansible az Azure dinamikus készlet két virtuális gépet hoz létre, ezeket a virtuális gépeket egyik címkét, és az Nginx telepítése a címkézett virtuális gépen.
@@ -136,27 +136,27 @@ A címkék célja, hogy gyorsan és egyszerűen dolgozhat a virtuális gépek al
 
 1. Az alábbi kód beszúrása az újonnan létrehozott `nginx.yml` fájlt:
 
-```yml
----
-- name: Install and start Nginx on an Azure virtual machine
-  hosts: azure
-  become: yes
-  tasks:
-  - name: install nginx
-    apt: pkg=nginx state=installed
-    notify:
-    - start nginx
+    ```yml
+    ---
+    - name: Install and start Nginx on an Azure virtual machine
+    hosts: azure
+    become: yes
+    tasks:
+    - name: install nginx
+      apt: pkg=nginx state=installed
+      notify:
+      - start nginx
 
-  handlers:
-  - name: start nginx
-    service: name=nginx state=started
-```
+    handlers:
+    - name: start nginx
+      service: name=nginx state=started
+    ```
 
 1. Futtassa a `nginx.yml` forgatókönyv:
 
-  ```azurecli-interactive
-  ansible-playbook -i azure_rm.py nginx.yml
-  ```
+    ```azurecli-interactive
+    ansible-playbook -i azure_rm.py nginx.yml
+    ```
 
 1. A forgatókönyv futtatása után a következő kimenethez hasonló eredményeket jelenik meg:
 

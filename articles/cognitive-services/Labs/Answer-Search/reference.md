@@ -9,12 +9,12 @@ ms.technology: project-answer-search
 ms.topic: article
 ms.date: 04/13/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: a12761c2d913cd7ffaa2cbc2cd42576c6bc96434
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 28a73918b50d7b13248fe5b6a17f2c95287a1ba4
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37866984"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43666288"
 ---
 # <a name="project-answer-search-v7-reference"></a>Projekt válaszkeresés v7-referencia
 
@@ -110,9 +110,9 @@ Határozza meg a következő hiba történt.
 |<a name="error-code" />Kód|A hiba kódja, amely azonosítja a hiba kategóriáját. Lehetséges kódok listáját lásd: [hibakódok](#error-codes).|Sztring|  
 |<a name="error-message" />üzenet|A hiba leírása.|Sztring|  
 |<a name="error-moredetails" />moreDetails|Egy leírást, amely a hibával kapcsolatos további információkat biztosít.|Sztring|  
-|<a name="error-parameter" />a paraméter|A lekérdezési paraméter, amely a hibát okozó a kérésben.|Sztring|  
+|<a name="error-parameter" />A paraméter|A lekérdezési paraméter, amely a hibát okozó a kérésben.|Sztring|  
 |<a name="error-subcode" />Alkód|A hiba kódja, amely azonosítja a hibát. Például ha `code` InvalidRequest, akkor `subCode` ParameterInvalid vagy ParameterInvalidValue is lehet. |Sztring|  
-|<a name="error-value" />érték|A lekérdezési paraméter értéke, amely nem érvényes.|Sztring|  
+|<a name="error-value" />Érték|A lekérdezési paraméter értéke, amely nem érvényes.|Sztring|  
   
 
 ### <a name="errorresponse"></a>Byl vrácen Prvek  
@@ -121,7 +121,7 @@ A legfelső szintű objektum, amely a válasz tartalmazza, ha a kérés nem telj
 |Name (Név)|Érték|Típus|  
 |----------|-----------|----------|  
 |í_rja be|Mutató típusa.|Sztring|  
-|<a name="errors" />hibák|Miért nem sikerült a kérelem miatt hibák listája.|[Hiba](#error)]|  
+|<a name="errors" />Hibák|Miért nem sikerült a kérelem miatt hibák listája.|[Hiba történt](#error)|  
 
   
   

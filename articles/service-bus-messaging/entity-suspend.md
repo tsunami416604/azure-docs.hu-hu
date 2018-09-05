@@ -1,6 +1,6 @@
 ---
-title: Az Azure Service Bus üzenetküldési entitások felfüggesztése |} Microsoft Docs
-description: Felfüggesztheti, és aktiválja újra a Azure Service Bus message entitásokat.
+title: Az Azure Service Bus üzenetküldési entitások felfüggesztése |} A Microsoft Docs
+description: Felfüggesztése és újraaktiválása Azure Service Bus-üzenet entitások.
 services: service-bus-messaging
 documentationcenter: ''
 author: clemensv
@@ -12,40 +12,40 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
-ms.author: sethm
-ms.openlocfilehash: 1984b113f695107f8d4d80e5bbf25c7dc39d13f6
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.author: spelluru
+ms.openlocfilehash: 3e3c0fdf4133fa1f44a67f4f7e0df1995c0a23f0
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
-ms.locfileid: "28197026"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43701976"
 ---
 # <a name="suspend-and-reactivate-messaging-entities-disable"></a>Felfüggesztése és újraaktiválása üzenetküldési entitások (letiltva)
 
-Üzenetsorok, témakörök és előfizetések ideiglenesen is felfüggesztve. Felfüggesztés az entitás, amelyben az összes üzenet tároló karbantartása letiltott állapotba helyezi. Azonban üzeneteket nem lehet hozzáadott vagy eltávolított, és a megfelelő protokollt műveletek yield hibák.
+Üzenetsorok, témakörök és előfizetések átmenetileg felfüggeszti is. Felfüggesztés tárolási tartani minden üzenetet letiltott állapotba helyezi az entitás. Azonban üzeneteket nem lehet hozzáadott vagy eltávolított, és a megfelelő protokoll műveletek eddig is számtalan előnyét hibákat.
 
-Egy entitás felfüggesztése sürgős felügyeleti okok miatt általában történik. A forgatókönyv egy kellene telepíteni a hibás fogadó, amely a várólista ki üzenetek feldolgozási, sikertelen, és még helytelenül befejezi az üzenetek és eltávolítja azokat. Ha ezt a viselkedést észlelnek, a várólista letiltható az amíg javított kód van telepítve, és a hibás kódot okozta adatvesztés megakadályozása további kap.
+Egy entitás felfüggesztése sürgős felügyeleti okok miatt általában történik. A forgatókönyv egy kellene üzembe helyezett egy hibás fogadót, amely üzeneteket az üzenetsor ki nem sikerül a feldolgozást, és még nem megfelelően befejezi az üzenetek és eltávolítja azokat a. Ha ezt a viselkedést észlelnek, az üzenetsor letiltható az kap, amíg nem javított kód üzembe helyezése és további megelőzhető az adatvesztés a hibás kód okozza.
 
-A felfüggesztés vagy újraaktiválása végezheti el a felhasználó vagy a rendszer. A rendszer csak felfüggeszti entitások súlyos felügyeleti lehetnek például elérte a költségkeret előfizetés-e. Rendszer-letiltva entitások nem lehet újraaktiválni a felhasználó által, de a felfüggesztés okát javított visszaállítását végzi.
+A felfüggesztés vagy Újraaktiválási is elvégezhető, a felhasználó által vagy a rendszer. A rendszer felfüggeszti az entitások, például az előfizetés a költségkeret lenyomásával súlyos felügyeleti okok csak. Rendszer – letiltva entitások nem lehet újraaktiválni a felhasználó által, de visszaállnak, ha a felfüggesztés okának elhárítása.
 
-A portálon a **tulajdonságok** a megfelelő entitás szakasz lehetővé teszi, hogy az állapotváltás; az alábbi képernyőfelvételen látható a váltógomb várólista:
+A portálon a **tulajdonságok** az adott entitás szakasz lehetővé teszi, hogy az állapotának módosítása; az alábbi képernyőfelvételen látható a váltógomb várólista:
 
 ![][1]
 
-A portál csak lehetővé teszi a várólisták teljesen letiltja. Is letilthatja a küldési és fogadási műveletek külön használatával a Service Bus [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) API-k, a .NET-keretrendszer SDK, vagy egy Azure Resource Manager-sablon Azure CLI vagy az Azure PowerShell használatával.
+A portál csak lehetővé teszi a teljes körűen le az üzenetsorok. Is tiltsa le a küldési és fogadási műveletek külön-külön használatával a Service Bus [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) API-k, a .NET-keretrendszer SDK vagy az Azure Resource Manager-sablon Azure CLI-vel vagy az Azure Powershellen keresztül.
 
 ## <a name="suspension-states"></a>Felfüggesztés állapotok
 
-A várólista beállítható állapot a következő:
+A várólista beállítható állapotok a következők:
 
--   **Aktív**: A várólista nincs aktív.
+-   **Aktív**: A várólista aktív.
 -   **Letiltott**: A várólista fel van függesztve.
--   **SendDisabled**: A várólista részben felfüggesztett rendelkező receive megengedett.
--   **ReceiveDisabled**: A várólista részben felfüggesztve, a küldés alatt álló engedélyezett.
+-   **SendDisabled**: A várólista részben fel függesztve, a receive megengedett.
+-   **ReceiveDisabled**: A várólista részlegesen felfüggesztve, küldjön megengedett.
 
-Az előfizetések és a témaköröket, csak **aktív** és **letiltott** állítható be.
+Az előfizetésekre és -témaköröket, csak **aktív** és **letiltott** akkor állítható be.
 
-A [EntityStatus](/dotnet/api/microsoft.servicebus.messaging.entitystatus) számbavételi is meghatároz egy átmeneti állapotokat, amelyeket a rendszer csak állítani. A várólista letiltása a PowerShell-parancsot az alábbi példában látható. Az újbóli aktiválást parancs egyenértékű, az beállítása `Status` való **aktív**.
+A [EntityStatus](/dotnet/api/microsoft.servicebus.messaging.entitystatus) enumerálás is határozza meg, amely csak állítható be a rendszer átmeneti állapotok. Tiltsa le egy várólistába a PowerShell-parancsot az alábbi példában látható. A Újraaktiválási parancs a következő egyenértékű beállítás `Status` való **aktív**.
 
 ```powershell
 $q = Get-AzureRmServiceBusQueue -ResourceGroup mygrp -NamespaceName myns -QueueName myqueue
@@ -57,7 +57,7 @@ Set-AzureRmServiceBusQueue -ResourceGroup mygrp -NamespaceName myns -QueueName m
 
 ## <a name="next-steps"></a>További lépések
 
-Tudhat meg többet a Service Bus üzenetkezelés, a következő témakörökben:
+További információ a Service Bus-üzenetkezelés, tekintse meg a következő témaköröket:
 
 * [A Service Bus alapjai](service-bus-fundamentals-hybrid-solutions.md)
 * [Service Bus-üzenetsorok, -témakörök és -előfizetések](service-bus-queues-topics-subscriptions.md)

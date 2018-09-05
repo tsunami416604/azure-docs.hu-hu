@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: jasonh
-ms.openlocfilehash: b8a177ad2bbd463d2dcb94a01ff2a29a95d86693
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 567bac8a12a841eed2df1467b94a2a91c86ff7b4
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43105283"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43666151"
 ---
 # <a name="tutorial-create-on-demand-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>Oktatóanyag: Igény szerinti Hadoop-fürtök létrehozása az Azure Data Factoryt használó HDInsight
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -37,9 +37,9 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure PowerShell. Útmutatásért lásd: [telepítse és konfigurálja az Azure Powershellt](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.7.0).
+- Azure PowerShell. Útmutatásért lásd: [telepítse és konfigurálja az Azure Powershellt](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.7.0).
 
-* Egy Azure Active Directory-szolgáltatásnevet. Miután létrehozta az egyszerű szolgáltatás, ügyeljen arra, hogy lekérni a **Alkalmazásazonosító** és **hitelesítési kulcs** a hivatkozott cikk utasításai. Az oktatóanyag későbbi részében szüksége ezekre az értékekre. Ellenőrizzük, hogy az egyszerű szolgáltatás tagja a *közreműködői* szerepkört az előfizetés vagy az erőforráscsoport, amelyben a fürt létrejött. A szükséges értékek beolvasása és a megfelelő szerepköröket rendeljen útmutatásért lásd: [hozzon létre egy Azure Active Directory egyszerű szolgáltatás](../azure-resource-manager/resource-group-create-service-principal-portal.md).
+- Egy Azure Active Directory-szolgáltatásnevet. Miután létrehozta az egyszerű szolgáltatás, ügyeljen arra, hogy lekérni a **Alkalmazásazonosító** és **hitelesítési kulcs** a hivatkozott cikk utasításai. Az oktatóanyag későbbi részében szüksége ezekre az értékekre. Ellenőrizzük, hogy az egyszerű szolgáltatás tagja a *közreműködői* szerepkört az előfizetés vagy az erőforráscsoport, amelyben a fürt létrejött. A szükséges értékek beolvasása és a megfelelő szerepköröket rendeljen útmutatásért lásd: [hozzon létre egy Azure Active Directory egyszerű szolgáltatás](../azure-resource-manager/resource-group-create-service-principal-portal.md).
 
 ## <a name="create-an-azure-storage-account"></a>Azure-tárfiók létrehozása
 
@@ -148,18 +148,18 @@ Write-host "`nScript completed" -ForegroundColor Green
 
 Az Azure Data Factoryben adat-előállító egy vagy több adatfolyamatok is rendelkezik. Egy adatfolyamat rendelkezik egy vagy több tevékenység. A tevékenységek két típusa van:
 
-* [Adattovábbítási tevékenységek](../data-factory/copy-activity-overview.md) -adattovábbítási tevékenységek használatával helyezze át az adatokat egy forrásadattárból egy céladattárba.
-* [Adat-átalakítási tevékenységeket](../data-factory/transform-data.md). Adatátalakítási tevékenységek használatával adatok átalakíthatók/feldolgozhatók. HDInsight Hive-tevékenység az egyik a Data Factory által támogatott Adatátalakítási tevékenységeket. Ebben az oktatóanyagban használja a Hive átalakítási tevékenységet.
+- [Adattovábbítási tevékenységek](../data-factory/copy-activity-overview.md) -adattovábbítási tevékenységek használatával helyezze át az adatokat egy forrásadattárból egy céladattárba.
+- [Adat-átalakítási tevékenységeket](../data-factory/transform-data.md). Adatátalakítási tevékenységek használatával adatok átalakíthatók/feldolgozhatók. HDInsight Hive-tevékenység az egyik a Data Factory által támogatott Adatátalakítási tevékenységeket. Ebben az oktatóanyagban használja a Hive átalakítási tevékenységet.
 
 Ez a cikk a Hive-tevékenység, amely egy igény szerinti HDInsight Hadoop-fürt létrehozása fog konfigurálni. Ha a tevékenység futtatása az adatok feldolgozásához, ez történik:
 
 1. Egy HDInsight Hadoop-fürt automatikusan jön létre, just-in-time dolgozza fel a szeletet. 
 
 1. A bemeneti adatokat dolgozza fel a fürtön futó HiveQL-parancsfájlt. Ebben az oktatóanyagban a hive-tevékenység társított HiveQL-parancsfájlt a következő műveleteket hajtja végre:
-
-    * Használja a meglévő táblázat (*hivesampletable*) egy másik tábla létrehozása **HiveSampleOut**.
-    * Tölti fel a **HiveSampleOut** az eredeti csak adott oszlopokkal rendelkező tábla *hivesampletable*.
-
+    
+    - Használja a meglévő táblázat (*hivesampletable*) egy másik tábla létrehozása **HiveSampleOut**.
+    - Tölti fel a **HiveSampleOut** az eredeti csak adott oszlopokkal rendelkező tábla *hivesampletable*.
+    
 1. A HDInsight Hadoop-fürt törlődik a feldolgozás befejezése és a beállított időn (timeToLive-beállítást) üresjáratban a fürt után. A következő adatszelet feldolgozásra a timeToLive üresjárati idő érhető el, ha ugyanazon a fürtön segítségével dolgozza fel a szeletet.  
 
 ## <a name="create-a-data-factory"></a>Data factory létrehozása
@@ -265,16 +265,16 @@ Ebben a szakaszban két társított szolgáltatást belül az adat-előállító
     ![Adja meg a HDInsight-fürt részletes adatai a folyamat](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-hive-activity-select-hdinsight-linked-service.png "adja meg a HDInsight fürt részletes adatai, a folyamat")
 
 1. Válassza ki a **parancsfájl** lapra, és kövesse az alábbi lépéseket:
-
-    a. A **parancsprogram társított szolgáltatás**válassza **HDIStorageLinkedService**. Ezt az értéket egy korábban létrehozott storage-beli társított szolgáltatás.
-
-    b. A **fájl elérési útja**válassza **Browse Storage** , és keresse meg a helyet, ahol a minta Hive-parancsfájl áll rendelkezésre. Ha korábban a PowerShell-szkriptet futtatta, ezen a helyen kell lennie a `adfgetstarted/hivescripts/hivescript.hql`.
-
-    ![Adja meg a folyamat Hive-szkript adatait](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-provide-script-path.png "biztosítanak Hive-szkript adatait a folyamat")
-
-    c. Alatt **speciális** > **paraméterek**válassza **automatikus kitöltés parancsprogram**. Ez a beállítás keres a Hive-parancsfájl a paramétereket, futásidőben értékekre van szükség. A parancsfájlt használja (**hivescript.hql**) rendelkezik egy **kimeneti** paraméter. Az érték a következő formátumban adja meg `wasb://<Container>@<StorageAccount>.blob.core.windows.net/outputfolder/` , hogy az Azure Storage egy létező mappára mutasson. Az elérési út megkülönbözteti a kis- és nagybetűket. Ez az, hogy az a szkript kimenetének tárolására szolgáló elérési utat.
-
-    ![Adja meg a Hive-parancsfájl paraméterek](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-provide-script-parameters.png "paramétereket adja meg a Hive-parancsfájl")
+    
+    1. A **parancsprogram társított szolgáltatás**válassza **HDIStorageLinkedService**. Ezt az értéket egy korábban létrehozott storage-beli társított szolgáltatás.
+    
+    1. A **fájl elérési útja**válassza **Browse Storage** , és keresse meg a helyet, ahol a minta Hive-parancsfájl áll rendelkezésre. Ha korábban a PowerShell-szkriptet futtatta, ezen a helyen kell lennie a `adfgetstarted/hivescripts/hivescript.hql`.
+    
+        ![Adja meg a folyamat Hive-szkript adatait](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-provide-script-path.png "biztosítanak Hive-szkript adatait a folyamat")
+    
+    1. Alatt **speciális** > **paraméterek**válassza **automatikus kitöltés parancsprogram**. Ez a beállítás keres a Hive-parancsfájl a paramétereket, futásidőben értékekre van szükség. A parancsfájlt használja (**hivescript.hql**) rendelkezik egy **kimeneti** paraméter. Az érték a következő formátumban adja meg `wasb://<Container>@<StorageAccount>.blob.core.windows.net/outputfolder/` , hogy az Azure Storage egy létező mappára mutasson. Az elérési út megkülönbözteti a kis- és nagybetűket. Ez az, hogy az a szkript kimenetének tárolására szolgáló elérési utat.
+    
+        ![Adja meg a Hive-parancsfájl paraméterek](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-provide-script-parameters.png "paramétereket adja meg a Hive-parancsfájl")
 
 1. Válassza ki **ellenőrzése** a folyamat érvényesítéséhez. Az érvényesítési ablak bezárásához kattintson a **>>** (jobbra mutató nyíl) gombra.
 

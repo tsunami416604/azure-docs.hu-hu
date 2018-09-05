@@ -1,6 +1,6 @@
 ---
-title: Az Anomáliadetektálási kereső API használata a Javascript - Microsoft kognitív szolgáltatások |} Microsoft Docs
-description: Get információkat és a kód minták segítségével gyorsan Anomáliadetektálási kereső kognitív szolgáltatások a JavaScript használatának megkezdése.
+title: Az Anomáliadetektálási kereső API használata – Javascript és a Microsoft Cognitive Services |} A Microsoft Docs
+description: Get information és kód minták segítségével gyorsan az a Cognitive Services Javascript-használatának Anomáliaészlelő.
 services: cognitive-services
 author: chliang
 manager: bix
@@ -9,38 +9,40 @@ ms.technology: anomaly-detection
 ms.topic: article
 ms.date: 05/01/2018
 ms.author: chliang
-ms.openlocfilehash: 105da0219efd7bf7c9a105a018dda7ea5b084cfd
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 048647f1657a5674bcb508b20b7c57a8a6ed5ed9
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348178"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43665022"
 ---
-# <a name="use-the-anomaly-finder-api-with-javascript"></a>Az Anomáliadetektálási kereső API használata a Javascript
+# <a name="use-the-anomaly-finder-api-with-javascript"></a>Javascript a Anomáliaészlelő API használata
 
-Ez a cikk bemutatja, és mintakódok segítségével gyorsan használatának megkezdésében a Anomáliadetektálási észlelési API a Javascript a feladatnak az első alkalommal adatsorok anomáliadetektálási észlelésének eredménye.
+Ez a cikk bemutatja, és kódminták segítségével gyorsan első lépései az Anomáliadetektáló API a Javascript a feladatnak a rendellenességek észlelése eredménye idősorozat-adatok lekérésére.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 [!INCLUDE [GetSubscriptionKey](../includes/get-subscription-key.md)]
 
-## <a name="getting-anomaly-points-with-anomaly-detection-api-using-javascript"></a>Az anomáliadetektálási pontok első Anomáliadetektálási észlelési API a Javascript használatával
+## <a name="getting-anomaly-points-with-anomaly-detection-api-using-javascript"></a>Az Anomáliadetektálás API a Javascript használatával anomáliadetektálási pontok beolvasása
 
 [!INCLUDE [DataContract](../includes/datacontract.md)]
 
-### <a name="example-of-time-series-data"></a>Adatsorozat időadatok – példa
+### <a name="example-of-time-series-data"></a>Idősorozat-adatok – példa
 
-A példa az adatsorozat pontjainak idő a következőképpen történik: [!INCLUDE [Request](../includes/request.md)]
+A példában az adatsorozat adatpontjainak idő a következőképpen történik:
 
-### <a name="analyze-data-and-get-anomaly-points-javascript-example"></a>Adatok elemzése és anomáliadetektálási pontot kap Javascript – példa
+[!INCLUDE [Request](../includes/request.md)]
 
-A példa lépésein a következők:
+### <a name="analyze-data-and-get-anomaly-points-javascript-example"></a>Adatok elemzése és anomáliadetektálási pontot kap a Javascript-példa
+
+A példa lépései a következők.
 
 1. Hozzon létre egy új HTML-fájlt.
-2. Cserélje le a HTML-fájl a következő kóddal.
-3. Cserélje le a `[YOUR_SUBSCRIPTION_KEY]` értéke az érvényes előfizetés-kulccsal.
-4. Cserélje le a adatpontok requestTextArea lévő adatokat.
-5. A HTML-fájl megnyitása egy webböngészőben, és kattintson a `Anomaly Detection` gombra.
+2. Cserélje le a következő kódot a HTML-fájl.
+3. Cserélje le a `[YOUR_SUBSCRIPTION_KEY]` értéke az érvényes előfizetési kulccsal végzett.
+4. Cserélje le az adatpontok requestTextArea adatait.
+5. Egy webböngészőben nyissa meg a HTML-fájlt, és kattintson a `Anomaly Detection` gombra.
 
 ```Javascript
 <!DOCTYPE html>
@@ -304,7 +306,7 @@ A példa lépésein a következők:
 
 ### <a name="example-response"></a>Példaválasz
 
-A sikeres válasz JSON-ban adja vissza. Mintaválasz a következőképpen történik.
+A sikeres válasz JSON-fájlban. Mintaválasz a következőképpen történik.
 [!INCLUDE [Response](../includes/response.md)]
 
 ## <a name="next-steps"></a>További lépések

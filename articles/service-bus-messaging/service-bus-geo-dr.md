@@ -1,131 +1,131 @@
 ---
-title: Az Azure Service Bus földrajzi-vész-helyreállítási |} Microsoft Docs
-description: Feladatátvételi földrajzi régió használatáról, és hajtsa végre a vész-helyreállítási Azure Service Bus
+title: Az Azure Service Bus Geo-disaster recovery |} A Microsoft Docs
+description: Feladatátvétel földrajzi régiót használnak, és hajtsa végre a vészhelyreállítás az Azure Service Busban
 services: service-bus-messaging
-author: sethmanheim
+author: spelluru
 manager: timlt
 ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 06/14/2018
-ms.author: sethm
-ms.openlocfilehash: b43c5bd6ff6b386e1a2ee0b5e3ae8ec8fa61fb4b
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.author: spelluru
+ms.openlocfilehash: 42960222efb1ade1b48a1d0db56ae3fb0349d174
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36301519"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43695391"
 ---
-# <a name="azure-service-bus-geo-disaster-recovery"></a>Az Azure Service Bus földrajzi-vész-helyreállítási
+# <a name="azure-service-bus-geo-disaster-recovery"></a>Az Azure Service Bus Geo-disaster recovery
 
-Ha a teljes Azure-régiók vagy adatközpontok (Ha nincs [rendelkezésre állási zónák](../availability-zones/az-overview.md) használt) leállás következik be, nagyon fontos az adatok feldolgozásához továbbra is működik egy másik régióban vagy datacenter. Ilyen *földrajzi-vész-helyreállítási* és *georeplikáció* bármely vállalati fontos funkciókat. Az Azure Service Bus földrajzi-vész-helyreállítási és a georeplikáció, a névterek szintjén is támogatja. 
+Ha a teljes Azure-régióban, vagy az adatközpontok (Ha nincs [rendelkezésre állási zónák](../availability-zones/az-overview.md) használt) leállás következik be, kritikus fontosságú adatok feldolgozásához, eltérő régióban vagy datacenter továbbra is. Emiatt a *Geo-disaster recovery* és *georeplikációs* bármely vállalat számára fontos funkciók. Az Azure Service Bus geo-vészhelyreállítás és georeplikáció útján, a névterek szintjén is támogatja. 
 
-A földrajzi-vész-helyreállítási funkció érhető el globálisan a Service Bus Premium Termékváltozat. 
+A Geo-disaster recovery funkció érhető el globálisan a Service Bus prémium szintű Termékváltozat. 
 
-## <a name="outages-and-disasters"></a>Kimaradások és vészhelyzetek
+## <a name="outages-and-disasters"></a>Leállások és katasztrófák kezelése
 
-Fontos megjegyzés: a megkülönböztetése "kimaradások" és "katasztrófák." Egy *szolgáltatáskimaradás* az Azure Service Bus elérhetetlenség, és hatással lehet a szolgáltatás, például egy üzenetküldési tárolóban, vagy akár a teljes adatközpont néhány összetevője. Azonban a probléma megszüntetése után a Service Bus ismét elérhetővé válik. Nem tervezett kimaradás általában nem okoznak üzenetek vagy egyéb adatok elvesztését. Egy példa ilyen kimaradás lehet áramkimaradás az adatközpontban. Néhány kimaradások veszteségként csak rövid kapcsolat átmeneti vagy hálózati problémák miatt. 
+Fontos megjegyzés: a "leállások" és "katasztrófák." megkülönböztetése Egy *szolgáltatáskimaradás* az átmeneti elérhetetlensége, valamint az Azure Service Bus, és hatással lehetnek egyes összetevői a szolgáltatás, például egy üzenetküldési tárolóban, vagy akár az egész adatközpontot. Azonban Miután a problémát, a Service Bus ismét elérhetővé válik. Egy kimaradás általában nem okoz az üzenetek vagy egyéb adatok elvesztését. Egy példa az ilyen kimaradás lehet áramszünet esetén az adatközpontban. Néhány leállások veszteségként csak rövid kapcsolat átmeneti vagy hálózati problémák miatt. 
 
-A *katasztrófa* egy Service Bus fürt, az Azure-régió, vagy datacenter állandó, vagy hosszabb távú megszűnését típusúként van definiálva. A régió vagy datacenter előfordulhat, hogy előfordulhat, hogy nem ismét elérhetővé válik, vagy lehet a óráig vagy napig. Ilyen katasztrófák példák tűz, elárasztás vagy földrengés. Egy olyan vészhelyzet esetén váló állandó egyes üzenetek, eseményeket és egyéb adatok elvesztését okozhatja. Azonban a legtöbb esetben kell adatvesztés nélküli, és üzenetek helyreállíthatók legyenek, amikor az Adatközpont készítsen biztonsági másolatot.
+A *vészhelyreállítási* számít, ha egy Service Bus fürt, az Azure-régió vagy datacenter állandó, illetve a hosszabb távú elvesztését. A régió vagy az Adatközpont előfordulhat, hogy előfordulhat, hogy nem ismét elérhetővé válik, vagy előfordulhat, hogy nem működik az óra vagy nap. Az ilyen katasztrófák példák fire, -elárasztás vagy földrengés. Olyan állandó válik az egyes üzenetek, események vagy egyéb adatok elvesztését okozhatja. Azonban a legtöbb esetben kell adatvesztés nélküli, és üzeneteket helyreállíthatók legyenek, amint az Adatközpont biztonsági mentése.
 
-A földrajzi-vész-helyreállítási funkció az Azure Service Bus egy vész-helyreállítási megoldást. A fogalmakat és a jelen cikkben ismertetett munkafolyamat alkalmazza a vészhelyreállítási forgatókönyveket, és nem átmeneti, illetve ideiglenes kimaradások esetén. A Microsoft Azure-ban vész-helyreállítási részletes tárgyalását lásd: [Ez a cikk](/azure/architecture/resiliency/disaster-recovery-azure-applications).   
+A Geo-disaster recovery funkció az Azure Service Bus egy vész-helyreállítási megoldást. A fogalmakat és az ebben a cikkben leírt munkafolyamatot alkalmazni a vészhelyreállítási forgatókönyveket, és nem átmeneti vagy ideiglenes valamilyen okból kimaradás lép. A Microsoft Azure-ban vész-helyreállítási részletes tárgyalását lásd: [Ez a cikk](/azure/architecture/resiliency/disaster-recovery-azure-applications).   
 
-## <a name="basic-concepts-and-terms"></a>Alapvető fogalmakat és szakkifejezéseket tartalmazza
+## <a name="basic-concepts-and-terms"></a>Alapfogalommal és kifejezéssel
 
-A vész-helyreállítási szolgáltatás valósítja meg a metaadatok vész-helyreállítási, és az elsődleges és másodlagos vész-helyreállítási névterek támaszkodik. Vegye figyelembe, hogy a földrajzi-vész-helyreállítási funkció érhető el a [Premium Termékváltozat](service-bus-premium-messaging.md) csak. Nem kell a beállítások kapcsolati karakterlánc módosításait, a kapcsolat alias keresztül.
+A vész-helyreállítási szolgáltatás metaadatainak vész-helyreállítási valósítja meg, és az elsődleges és másodlagos vész-helyreállítási névterek támaszkodik. Vegye figyelembe, hogy a Geo-disaster recovery funkció érhető el a [prémium szintű Termékváltozat](service-bus-premium-messaging.md) csak. Nem kell, végezze el a kapcsolati karakterlánc módosításokat, a kapcsolat alias-n keresztül.
 
 Ez a cikk a következő kifejezéseket használjuk:
 
--  *Alias*: az Ön által beállított vészhelyreállítási konfiguráció nevét. Az alias nyújt egy teljesen minősített tartománynév (FQDN) egyetlen stabil kapcsolati karakterláncot. Alkalmazások ez alias a kapcsolati karakterlánc használatával csatlakozni a névtérhez. 
+-  *Alias*: az Ön által beállított vészhelyreállítási konfiguráció nevét. Az alias egyetlen stabil teljes tartománynévként (FQDN) kapcsolati karakterláncban biztosít. Alkalmazások ez alias a kapcsolati karakterlánc használatával csatlakozni a névtérhez. 
 
--  *Elsődleges és másodlagos névtér*: az alias vannak rendelve az áttelepítendő névterek. Az elsődleges névtér "aktív", és fogadja az üzeneteket (Ez lehet egy meglévő vagy új névtér). A másodlagos névtér "passzív", és nem fogadhat üzeneteket. A metaadatok között is a Szinkronizáló, így is képes zökkenőmentesen fogadja az üzeneteket alkalmazás kódja vagy kapcsolati karakterlánc módosítás nélkül. Győződjön meg arról, hogy csak az aktív névtér fogadja az üzeneteket, az aliast kell használnia. 
+-  *Elsődleges és másodlagos névtér*: A névterek, amelyek megfelelnek a címre. Az elsődleges névtér "aktív", és fogadja az üzeneteket (Ez lehet egy meglévő vagy új névtér). A másodlagos névtérre "passzív", és nem fogadhat üzeneteket. A metaadatok között is szinkronizálva, így mindkettő is zökkenőmentesen fogadja az üzeneteket alkalmazás kódja vagy kapcsolati karakterlánc módosítása nélkül. Győződjön meg arról, hogy csak az aktív névteret fogadja az üzeneteket, az aliast kell használnia. 
 
--  *Metaadatok*: például várólisták, témakörök és előfizetések; és tulajdonságaikat a szolgáltatás a névtér társított entitásokat. Vegye figyelembe, hogy csak az entitásokat és a beállítások automatikusan replikálása. Üzenetek a rendszer nem replikálja. 
+-  *Metaadatok*: például az üzenetsorok, témakörök és előfizetések; és azok tulajdonságait a szolgáltatás a névtérhez társított entitásokat. Vegye figyelembe, hogy csak az entitások és a beállításaik automatikusan replikálja. Üzenetek nem lesznek replikálva. 
 
--  *Feladatátvételi*: a másodlagos névtér aktiválása folyamatán.
+-  *Feladatátvétel*: A folyamatát a másodlagos névtér.
 
 ## <a name="setup-and-failover-flow"></a>A telepítő és a feladatátvételi folyamat
 
-Az alábbi szakasz a feladatátvételi folyamat áttekintése, és elmagyarázza, hogyan állíthat be a kezdeti feladatátvevő. 
+A következő szakaszban áttekintjük a feladatátvételi folyamat, és azt ismerteti, hogyan állítható be a kezdeti feladatátvétel. 
 
 ![1][]
 
 ### <a name="setup"></a>Beállítás
 
-Meg elsőként hozzon létre vagy egy meglévő elsődleges névtér, és egy új másodlagos névtér, majd a két párosítsa. A párosítást lehetővé teszi az aliast való csatlakozásra használja. Használja az alias, mert nincs kapcsolati karakterláncok módosítása. Csak új névtér a feladatátvételi párosítás lehet hozzáadni. Végül adja hozzá néhány figyelő észleli, ha a feladatátvétel során szükséges. A legtöbb esetben a szolgáltatás része egy nagy ökoszisztéma, így automatikus feladatátvétel ritkán lehetséges, mivel nagyon gyakran feladatátvételek szinkronban vannak a fennmaradó alrendszer vagy infrastruktúra kell végrehajtani.
+Először létrehoz vagy egy meglévő elsődleges névtér és a egy új másodlagos névteret, majd párosítsa a két. A párosítás kínál, amellyel csatlakozni alias. Alias használata, mert nem rendelkezik a kapcsolati karakterláncok módosítása. Csak új névteret a párosítás feladatátvételi lehet hozzáadni. Végül, hozzá kell adnia bizonyos figyelőket észleli, ha szükség-e a feladatátvételt. A legtöbb esetben a szolgáltatás kiterjedt ökoszisztémáját egy részét képezi, így az automatikus feladatátvételt is ritkán lehetségesek, például nagyon gyakran feladatátvételt kell végrehajtani szinkronban vannak a többi alrendszer vagy infrastruktúra.
 
 ### <a name="example"></a>Példa
 
-Ebben a forgatókönyvben egy példa fontolja meg az üzenetek vagy események bocsát ki pénztári pont (POS) megoldást. A Service Bus ezeket az eseményeket néhány- vagy a megoldást, amely ezután továbbítja a további feldolgozás céljából egy másik rendszerhez csatlakoztatott adatok újraformázást továbbítja. Ezen a ponton az összes ilyen rendszerek lehet, hogy futhat azonos Azure-régióban. A döntést, mikor és milyen része, hogy áthelyezze a feladatokat a infrastruktúrában adatáramlásra függ. 
+Ebben a forgatókönyvben egy példa fontolja meg egy értékesítés pont (POS) megoldás, amely az üzenetek vagy a eseményeket bocsát ki. A Service Bus események néhány leképezési vagy a megoldást, amely ezután továbbítja a megfeleltetett adatokat további feldolgozás céljából egy másik rendszerre újraformázást továbbítja. Ezen a ponton az összes ezekben a rendszerekben előfordulhat, hogy futhat ugyanazon Azure-régióban. A döntést, mikor és milyen része a feladatátvételt az infrastruktúra adatáramlásra függ. 
 
-Feladatátvételi rendszerek figyelése, vagy egyedi figyelési megoldások automatizálható. Azonban az ilyen automation vesz igénybe, további tervezési és a munkájához, ez a cikk hatókörén kívül esik.
+Automatizálhatja a feladatátvétel rendszerek figyelése, vagy a személyre szabott figyelési megoldásokkal. Azonban az ilyen automation vesz igénybe, további tervezési és a munka, amely a jelen cikk hatókörébe esik.
 
 ### <a name="failover-flow"></a>Feladatátvétel folyamatábrája
 
 Kezdeményezze a feladatátvételt, ha két lépésre szükség:
 
-1. Egy másik tervezett kimaradás esetén kell újra átadható szeretné. Ezért egy másik passzív névtér beállítását, és frissítse a jelenlegi párosítását. 
+1. Egy másik kimaradás során, érdemes tudni átadja a feladatokat újra. Ezért egy másik passzív névtér beállítása, és frissítse a párosítást. 
 
-2. A korábbi elsődleges névtérből származó üzenetek lekérésére, amennyiben az rendelkezésre áll újra. Ezt követően használja a névtér rendszeres üzenetküldési kívül a földrajzi-helyreállítási beállításai, vagy törölje a régi elsődleges névteret.
+2. Kérje le a korábbi elsődleges névtérből üzeneteket, ha megint elérhetővé válik. Ezt követően, hogy a névtér használhat rendszeres üzenetkezelési kívül a geo-helyreállítási beállításai, vagy törölje a régi elsődleges névteret.
 
 > [!NOTE]
-> Csak a sikertelen előre szemantikáját támogatottak. Ebben a forgatókönyvben a feladatátvétel, és ezután újra párosítani egy új névtér. Sikertelen vissza nem támogatott. például az SQL-fürt. 
+> Csak a sikertelen előre szemantika támogatottak. Ebben a forgatókönyvben átadja a feladatokat, és ezután újból párosítsa egy új névteret. Visszavétel nem támogatott. Ha például az SQL-fürt. 
 
 ![2][]
 
 ## <a name="management"></a>Kezelés
 
-Ha hibát; például a nem megfelelő régiók párosítása, a kezdeti beállítás során, a két névtér párosítás bármikor meghibásodásához vezethet. Ha szeretné használni a párosított névterek rendszeres névterek, törölje az aliast.
+Ha állított be; például, a nem megfelelő régiók párosítva a kezdeti beállítás során, a két névtér párosítási bármikor megszakítható. Ha azt szeretné, a párosított névterek adatokként rendszeres névterek, az alias törlése.
 
-## <a name="use-existing-namespace-as-alias"></a>Használja a meglévő névtér aliasként
+## <a name="use-existing-namespace-as-alias"></a>Használja a meglévő névtér vagy alias
 
-Ha egy olyan forgatókönyvet, amelyben létrehozói és felhasználói kapcsolatainak nem módosítható, felhasználhatja a névtér neve alias neveként. Tekintse meg a [mintát a Githubon code Itt](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoDR/SBGeoDR2/SBGeoDR_existing_namespace_name).
+Ha rendelkezik egy olyan forgatókönyvet, amelyben a kapcsolatok előállítók és fogyasztók nem módosítható, aliasneve, felhasználhatja a névtér nevét. Tekintse meg a [mintakód a Githubon Itt](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoDR/SBGeoDR2/SBGeoDR_existing_namespace_name).
 
 ## <a name="samples"></a>Példák
 
-A [minták a Githubon](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoDR/SBGeoDR2/) bemutatják, hogyan állíthat be, és kezdeményezze a feladatátvételt. Ezeket a mintákat azt mutatják be a következő fogalmak:
+A [példák a Githubon](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoDR/SBGeoDR2/) bemutatják, hogyan állíthatja be, és a feladatátvétel. Ezek a minták a következő fogalmakat mutatják be:
 
-- .NET minta és az Azure Active Directoryban a Service busszal, Azure Resource Manager segítségével beállításához és földrajzi-katasztrófa utáni helyreállítás engedélyezéséhez szükséges beállítások tekintetében.
+- Egy .NET-minta és Azure Resource Manager használata a Service Bus, és engedélyezze a Geo-disaster recovery az Azure Active Directory szükséges beállításokat.
 - A mintakód végrehajtásához szükséges lépéseket.
-- Hogyan használható egy már létező névteret aliasként.
-- Másik lehetőségként a földrajzi vészhelyreállítás PowerShell vagy a parancssori felületen keresztül engedélyezésének lépései.
-- [Küldési és fogadási](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoDR/TestGeoDR/ConsoleApp1) névtérből a jelenlegi elsődleges vagy másodlagos az aliast használni.
+- Hogyan használható egy meglévő névtér-alias.
+- Másik lehetőségként a Geo-disaster recovery PowerShell vagy parancssori felület engedélyezésének lépései.
+- [Küldési és fogadási](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoDR/TestGeoDR/ConsoleApp1) az aliast használni aktuális elsődleges vagy másodlagos névtér.
 
 ## <a name="considerations"></a>Megfontolandó szempontok
 
-Ezzel a kiadással szem előtt tartani a következő érdemes figyelembe venni:
+Vegye figyelembe az alábbi szempontokat figyelembe kell venni ebben a kiadásban:
 
-1. A feladatátvételi tervezés során is figyelembe kell venni a idő tényező. Például ha több mint 15-20 percig kapcsolat megszakad, előfordulhat, hogy mellett dönt kezdeményezze a feladatátvételt. 
+1. A feladatátvételi tervezés során is figyelembe kell venni az idő tényező. Például ha elveszíti a kapcsolatot a 15-20 percnél hosszabb ideig, dönthet, hogy kezdeményezze a feladatátvételt. 
  
-2. Azt a tényt, hogy nincs adat replikálódik azt jelenti, hogy a jelenleg aktív munkamenetek nem replikálva vannak. Továbbá, kettős észlelés és ütemezett üzenetek esetleg nem működnek. Új munkamenetek, új ütemezett üzenetek és új ismétlődések fog működni. 
+2. Az a tény, hogy az adatok nem replikálódik, az azt jelenti, hogy jelenleg aktív munkamenetek nem lesznek replikálva. Ezenkívül duplikáltelem-észlelési és ütemezett üzenetek előfordulhat, hogy nem működik. Az új munkamenetek, új ütemezett üzenetek és új ismétlődések fog működni. 
 
-3. Egy összetett elosztott infrastruktúra feladatátvételét kell [kipróbálni](/azure/architecture/resiliency/disaster-recovery-azure-applications#disaster-simulation) legalább egyszer. 
+3. Egy összetett elosztott infrastruktúra feladatátadás kell [kipróbálni](/azure/architecture/resiliency/disaster-recovery-azure-applications#disaster-simulation) legalább egyszer. 
 
-4. Entitások szinkronizálása eltarthat egy ideig, körülbelül 50-100 entitások / perc. Előfizetések és szabályok is entitásokat is számítanak. 
+4. Entitások szinkronizálása körülbelül 50-100 entitást percenkénti némi időt is igénybe vehet. Az előfizetések és -szabályok is entitásokat is számítanak. 
 
-## <a name="availability-zones-preview"></a>Rendelkezésre állási zónák (előzetes verzió)
+## <a name="availability-zones-preview"></a>A rendelkezésre állási zónák (előzetes verzió)
 
-A Service Bus Premium Termékváltozat is támogatja a [rendelkezésre állási zónák](../availability-zones/az-overview.md), egy Azure-régió, elszigetelt tartalék helyeinek biztosítása. 
+A Service Bus prémium szintű Termékváltozat is támogatja a [rendelkezésre állási zónák](../availability-zones/az-overview.md), egy Azure-régión belüli, meghibásodásoktól elszigetelt helyek megadása. 
 
 > [!NOTE]
-> A rendelkezésre állási zónák preview csak a támogatott-e a **USA középső RÉGIÓJA**, **USA keleti régiója 2**, és **Franciaország központi** régiók.
+> A rendelkezésre állási zónák előzetes verziója csak a támogatott a **USA középső RÉGIÓJA**, **USA keleti RÉGIÓJA 2**, és **közép-Franciaország** régióban.
 
-Engedélyezheti rendelkezésre állási zónák csak, új névterekre gyakorolt az Azure portál használatával. A Service Bus nem támogatja a meglévő névterek áttelepítésének. Miután engedélyezte a névtéren a zóna redundancia nem tiltható le.
+Engedélyezheti a rendelkezésre állási zónák a csak az új névterek az Azure portal használatával. A Service Bus nem támogatja a meglévő névterek áttelepítésének. Miután engedélyezte a a névtérben nem tiltható le a zone redudancy.
 
 ![3][]
 
 ## <a name="next-steps"></a>További lépések
 
-- Tekintse meg a földrajzi-vész-helyreállítási [itt REST API-referenciában](/rest/api/servicebus/disasterrecoveryconfigs).
-- Futtassa a földrajzi-vész-helyreállítási [mintát a Githubon](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoDR/SBGeoDR2/SBGeoDR2).
-- Tekintse meg a földrajzi-vész-helyreállítási [mintát, amely üzeneteket küld egy aliast](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoDR/TestGeoDR/ConsoleApp1).
+- Tekintse meg a Geo-disaster recovery [REST API-referenciában találhat](/rest/api/servicebus/disasterrecoveryconfigs).
+- Futtassa a Geo-disaster recovery [mintát a Githubon](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoDR/SBGeoDR2/SBGeoDR2).
+- Tekintse meg a Geo-disaster recovery [minta, amely üzeneteket küld egy aliast](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoDR/TestGeoDR/ConsoleApp1).
 
-Tudhat meg többet a Service Bus üzenetkezelés, tekintse meg a következő cikkeket:
+További információ a Service Bus-üzenetkezelés, tekintse meg a következő cikkeket:
 
 * [A Service Bus alapjai](service-bus-fundamentals-hybrid-solutions.md)
 * [Service Bus-üzenetsorok, -témakörök és -előfizetések](service-bus-queues-topics-subscriptions.md)
 * [Bevezetés a Service Bus által kezelt üzenetsorok használatába](service-bus-dotnet-get-started-with-queues.md)
 * [A Service Bus-üzenettémakörök és -előfizetések használata](service-bus-dotnet-how-to-use-topics-subscriptions.md)
-* [REST API-n](/rest/api/servicebus/) 
+* [REST API-val](/rest/api/servicebus/) 
 
 [1]: ./media/service-bus-geo-dr/geo1.png
 [2]: ./media/service-bus-geo-dr/geo2.png

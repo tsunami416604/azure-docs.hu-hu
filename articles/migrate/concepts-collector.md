@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/25/2018
 ms.author: ruturajd
 services: azure-migrate
-ms.openlocfilehash: 551276f88f5c27cd860a400a5769c95f4d94cbbb
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 74caf0ab052e1f6558dc20d15d84c01177b3f9cb
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43122887"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43665580"
 ---
 # <a name="collector-appliance"></a>Gyűjtőberendezés
 
@@ -212,17 +212,27 @@ Javasoljuk továbbá az alábbi lépéseket a berendezés biztonságossá tétel
 
 Az OVA ismét letöltése nélkül frissítheti a gyűjtő a legújabb verzióra.
 
-1. Töltse le a legújabb [verziófrissítő csomagjának](https://aka.ms/migrate/col/upgrade_9_13) (1.0.9.13 verzió).
+1. Töltse le a legújabb [verziófrissítő csomagjának](https://aka.ms/migrate/col/upgrade_9_14) (1.0.9.14 verzió).
 2. Győződjön meg arról, hogy a letöltött gyorsjavítás biztonságos, nyissa meg a rendszergazdai parancsablakot, és futtassa a következő parancsot a ZIP-fájl kivonatának. A létrehozott kivonatnak egyeznie kell az említett verzió elleni kivonat:
 
     ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
 
-    (gyakorlati példa: C:\>CertUtil - HashFile C:\AzureMigrate\CollectorUpdate_release_1.0.9.7.zip SHA256)
+    (gyakorlati példa: C:\>CertUtil - HashFile C:\AzureMigrate\CollectorUpdate_release_1.0.9.14.zip SHA256)
 3. Másolja a zip-fájlt az Azure Migrate gyűjtő virtuális gép (gyűjtőberendezés).
 4. Kattintson a jobb gombbal a zip-fájlt, és válassza ki az összes kibontása.
 5. Kattintson a jobb gombbal a Setup.ps1, és válassza a Futtatás a PowerShell-lel, és kövesse a képernyőn a frissítés telepítéséhez.
 
 ### <a name="list-of-updates"></a>Frissítések listája
+
+#### <a name="upgrade-to-version-10914"></a>1.0.9.14 verzióra frissítése
+
+Ujjlenyomat-frissítéshez értékek [1.0.9.14 csomag](https://aka.ms/migrate/col/upgrade_9_14)
+
+**Algoritmus** | **Kivonat értéke**
+--- | ---
+MD5 | c5bf029e9fac682c6b85078a61c5c79c
+SHA1 | af66656951105e42680dfcc3ec3abd3f4da8fdec
+SHA256 | 58b685b2707f273aa76f2e1d45f97b0543a8c4d017cd27f0bdb220e6984cc90e
 
 #### <a name="upgrade-to-version-10913"></a>1.0.9.13 verzióra frissítése
 

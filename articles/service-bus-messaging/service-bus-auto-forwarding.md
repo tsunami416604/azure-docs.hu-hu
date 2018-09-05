@@ -1,9 +1,9 @@
 ---
-title: Automatikus-továbbítási Azure Service Bus üzenetküldési entitásokról |} Microsoft Docs
-description: Hogyan tanúsítványlánc egy Service Bus-üzenetsorba vagy egy másik üzenetsor vagy témakör-előfizetéssel.
+title: Automatikus továbbítással Azure Service Bus-üzenetküldési entitások |} A Microsoft Docs
+description: Hogyan összekapcsolja a Service Bus-üzenetsor vagy egy másik üzenetsor vagy témakör-előfizetés.
 services: service-bus-messaging
 documentationcenter: na
-author: sethmanheim
+author: spelluru
 manager: timlt
 editor: ''
 ms.assetid: f7060778-3421-402c-97c7-735dbf6a61e8
@@ -13,21 +13,21 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/22/2018
-ms.author: sethm
-ms.openlocfilehash: be23d919b0c96d6c9b96ee328d1b18ad978a9dcc
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.author: spelluru
+ms.openlocfilehash: 563fa6f38bb5baffb9a4ae86f944b7597d325d30
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
-ms.locfileid: "29558092"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43698995"
 ---
-# <a name="chaining-service-bus-entities-with-auto-forwarding"></a>Automatikus-továbbítást a Service Bus-entitások láncolás
+# <a name="chaining-service-bus-entities-with-auto-forwarding"></a>Láncolás – a Service Bus-entitások automatikus továbbítással
 
-A Service Bus *automatikus-továbbítási* funkciója lehetővé teszi a tanúsítványlánc egy várólista vagy az előfizetés egy másik várólistához vagy témakör, amely ugyanazt a névteret része. Ha automatikus-továbbítás engedélyezve van, a Service Bus automatikusan kerülnek, az első sor vagy (forrás) előfizetés-kezelési üzenetek eltávolítja, és beírja a második üzenetsor vagy témakör (cél). Ne feledje, hogy továbbra is közvetlenül a cél entitáshoz elküldeni egy üzenetet. Ezenkívül nincs lehetőség a tanúsítványlánc egy al, például a kézbesítetlen levelek várólistájára, egy másik várólistához vagy témakör.
+A Service Bus *automatikus továbbítással* funkció lehetővé teszi az üzenetsor vagy egy másik üzenetsor vagy témakör, amely az azonos névtérhez tartozik előfizetés hozzákapcsolva. Ha az automatikus-továbbítás engedélyezve van, a Service Bus automatikusan törli azon üzeneteket, amelyek az első üzenetsorba vagy előfizetésbe (forrás) kerülnek, és áthelyezi őket a második üzenetsorba vagy témakörbe (cél). Fontos megjegyezni, hogy továbbra is lehetséges, egy üzenet küldéséhez a célentitás közvetlenül. Ezenkívül nincs lehetőség összekapcsolja alüzenetsor, például egy, a kézbesítetlen levelek várólistájára, egy másik üzenetsorba vagy témakörbe.
 
-## <a name="using-auto-forwarding"></a>Automatikus-továbbítás használatával
+## <a name="using-auto-forwarding"></a>Használja az automatikus továbbítással
 
-Automatikus-továbbítási beállításával engedélyezheti a [QueueDescription.ForwardTo] [ QueueDescription.ForwardTo] vagy [SubscriptionDescription.ForwardTo] [ SubscriptionDescription.ForwardTo] a tulajdonságok a [QueueDescription] [ QueueDescription] vagy [SubscriptionDescription] [ SubscriptionDescription] objektumokat a forrás és a a Példa:
+Automatikus továbbítással beállításával engedélyezheti a [QueueDescription.ForwardTo] [ QueueDescription.ForwardTo] vagy [SubscriptionDescription.ForwardTo] [ SubscriptionDescription.ForwardTo] a tulajdonságok a [QueueDescription] [ QueueDescription] vagy [SubscriptionDescription] [ SubscriptionDescription] objektumokat a forrás, mint a a Példa:
 
 ```csharp
 SubscriptionDescription srcSubscription = new SubscriptionDescription (srcTopic, srcSubscriptionName);
@@ -35,39 +35,39 @@ srcSubscription.ForwardTo = destTopic;
 namespaceManager.CreateSubscription(srcSubscription));
 ```
 
-A cél entitás léteznie kell a forrásentitás létrehozásakor. Ha a célként megadott entitás nem létezik, a Service Bus létrehozása a forrásentitás kérdésnél kivételt adja vissza.
+A célentitás léteznie kell a forrásentitás létrehozásakor. Ha a célentitás nem létezik, a Service Bus kivételt adott vissza, ha a rendszer kéri a forrásentitás létrehozásához adja vissza.
 
-Automatikus-továbbítás segítségével horizontális felskálázás témakör megjelenítéséhez. A Service Bus korlátok a [adott témában előfizetések száma](service-bus-quotas.md) 2000 számára. Hozzon létre a második szintű témakörök további előfizetések lehetővé teszi. Akkor is, ha Ön nem köti a Service Bus korlátozás előfizetések számát, a második szintű témakörök hozzáadása javíthatja a teljes átviteli képessége – a témakör.
+Automatikus továbbítással segítségével horizontális felskálázás egy egyéni témakört. A Service Bus-korlátok a [száma egy adott témakör előfizetések](service-bus-quotas.md) a 2000. További előfizetéseket úgy tud megfelelni, hogy második szintű témakörök létrehozására. Akkor is, ha Ön nem köti a Service Bus-korlátozás előfizetések száma, hozzáadás, a második szintű témakörök javíthatja a témakör általános teljesítményét.
 
-![Automatikus-továbbítási forgatókönyv][0]
+![A forgatókönyv automatikus továbbítással][0]
 
-Automatikus-továbbítás segítségével is használata leválasztja a fogadók üzenetküldők. Vegye figyelembe például az ERP rendszer, amely három modulok alkotja: rendelés feldolgozása, a készletkezelést és a felhasználói kapcsolatok kezelése. Az egyes modulok hoz létre, amelyek megfelelő témakörbe várólistán lévő üzenetek. Alice, Bob és, amelyek az ügyfelek kapcsolódnak üzenetek érdekelt értékesítési képviselő. Az üzenetek fogadásához Alice és Bob minden hozzon létre egy személyes várólista és előfizetés egyes a ERP témakörök, amelyek a várólistájuk összes üzenetek automatikus továbbítása.
+Automatikus továbbítással különítse el a fogadók üzenetküldők is használhatja. Vegyük példaként az ERP-rendszer, amely három modult áll: feldolgozási készlet kezelése és Ügyfélkapcsolat-kezelés érdekében. Az egyes modulok hoz létre, amelyek a megfelelő témakörben várólistán lévő üzenetek. Alice, Bob és az értékesítési munkatársak, amely kapcsolódik az ügyfelek üzenetek szeretne. Ezeket az üzeneteket fogadni, Alice és Bob egyes létre személyes üzenetsor és a egy előfizetést az egyes az ERP-témakörök, amelyek automatikusan továbbítja az összes üzenetet az üzenetsorba.
 
-![Automatikus-továbbítási forgatókönyv][1]
+![A forgatókönyv automatikus továbbítással][1]
 
-Alice szabadsága, saját személyes várólista ahelyett, hogy a ERP témakör állapotba, ha kitölti-e. Ebben a forgatókönyvben értékesítési képviselőink nem érkezett üzeneteket, mert a ERP témakör sem minden eddiginél elérni kvótát.
+Ha Alice megfelelően a szabadság, saját személyes várólista ahelyett, hogy az ERP-témakörben, tölti. Ebben a forgatókönyvben egy értékesítési képviselő nem kapta meg az üzeneteket, mert az ERP-témakörök egyike minden eddiginél elérni kvótát.
 
-## <a name="auto-forwarding-considerations"></a>Automatikus-továbbítási kapcsolatos szempontok
+## <a name="auto-forwarding-considerations"></a>Automatikus továbbítással szempontok
 
-Ha a cél entitás túl sok üzenetek összesít és meghaladja a kvótát, vagy a cél entitás le van tiltva, a forrásentitás hozzáadja-e az üzenetek a [kézbesítetlen levelek várólistájára](service-bus-dead-letter-queues.md) nincs hely a célként megadott (vagy az entitás újraengedélyezése). Az üzenetek továbbra is a kézbesítetlen levelek várólistájára live, explicit módon kell fogadni, és dolgozza fel őket a a kézbesítetlen levelek várólistájára.
+A célentitás gyűlnek túl sok üzenet van, és túllépi a kvótát, vagy a célentitás le van tiltva, ha a forrásentitás hozzáadja az üzeneteket a [kézbesítetlen levelek várólistájára](service-bus-dead-letter-queues.md) a cél (vagy az entitás a rendelkezésre álló helyet újra engedélyezve van). Ezeket az üzeneteket továbbra is a kézbesítetlen levelek várólistájára vonatkozik, az élő kell explicit módon fogadni és feldolgozni azokat a kézbesítetlen levelek várólistájára vonatkozik.
 
-Láncolás együtt az beszerzése egy összetett témakör számos előfizetések témakörök, esetén ajánlott, hogy rendelkezik-e az első szintű témakör előfizetések és a második szintű témakörök sok előfizetések mérsékelt száma. Például egy első szintű témakör 20 előfizetésekkel, azok a második szintű témakör 200 előfizetések kapcsolt lehetővé teszi nagyobb átviteli sebesség eléréséhez, mint 200 előfizetések első szintű témakör egyes kapcsolt a második szintű témakör 20 előfizetések.
+Láncolás együtt egy összetett üzenettémához sok előfizetés beszerzése az egyes témaköröket, ajánlott, hogy az első szintű a témakör az előfizetések és a második szintű témakörök sok előfizetés közepes számú. Például egy első szintű üzenettémához 20 előfizetés, azok egy 200 előfizetések, a második szintű üzenettémához kapcsolt lehetővé teszi, hogy nagyobb teljesítményt nyújt, mint 200 előfizetések első szintű témakör egyes kapcsolt egy második szintű üzenettémához 20 előfizetés.
 
-A Service Bus egy művelet egyes a továbbított üzenet váltók stb. Például egy üzenetet küld egy témakör 20 előfizetésekkel, azok úgy konfigurálva, hogy egy másik üzenetsor vagy témakör, továbbító automatikus üzenetek terheli 21 műveletek Ha minden első szintű előfizetések fogják megkapni az üzenet másolatának elhelyezését.
+A Service Bus keresztül számláz az adott műveletnek az egyes továbbított üzenetekhez. Például egy üzenetet küld egy témakörhöz úgy konfigurálva, hogy egy másik üzenetsorba vagy témakörbe, automatikus továbbítása üzeneteket azok 20 előfizetés elszámolási 21 műveletként Ha minden első szintű előfizetés az üzenet másolatot kap.
 
-Hozzon létre olyan előfizetést, amelyet egy másik üzenetsor vagy témakör legyen láncolva, valamint az előfizetés létrehozója rendelkeznie kell **kezelése** engedélyekkel a forrás- és a cél entitás. A forrás témakör üzenetküldésre csak szükséges **küldése** engedélyekkel a forrás témakör.
+Egy előfizetés, amely egy másik üzenetsor vagy témakör láncolva létrehozásához rendelkeznie kell az előfizetés létrehozója **kezelés** engedélyeit a forrás- és a célentitás. Üzenetek küldése az a forrás a témakör csak szükséges **küldése** engedélyeit a forrás-témakört.
 
 ## <a name="next-steps"></a>További lépések
 
-Automatikus-továbbítási kapcsolatos részletes információkért lásd a következő témaköröket:
+Automatikus továbbítással kapcsolatos részletes információkért lásd a következő témaköröket:
 
-* [ForwardTo][QueueDescription.ForwardTo]
+* [A ForwardTo][QueueDescription.ForwardTo]
 * [QueueDescription][QueueDescription]
 * [SubscriptionDescription][SubscriptionDescription]
 
 A Service Bus teljesítménnyel kapcsolatos fejlesztések kapcsolatos további információkért lásd: 
 
-* [Ajánlott eljárások használatával a Service Bus üzenetkezelés teljesítménnyel kapcsolatos fejlesztések](service-bus-performance-improvements.md)
+* [Ajánlott eljárások a teljesítmény Service Bus-üzenetkezelés használatával](service-bus-performance-improvements.md)
 * [Particionált üzenetküldési entitások][Partitioned messaging entities].
 
 [QueueDescription.ForwardTo]: /dotnet/api/microsoft.servicebus.messaging.queuedescription.forwardto#Microsoft_ServiceBus_Messaging_QueueDescription_ForwardTo

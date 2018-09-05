@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: 16d023a2f3abf0feb1f1c0478edb3de7a157d5a4
-ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
+ms.openlocfilehash: 1f3a24cebe5061f7e3ca3897692b068531780431
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42058397"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43668121"
 ---
 # <a name="how-to-use-perfinsights"></a>A PerfInsights használata
 
@@ -245,11 +245,11 @@ A PerfInsights eszköz futtatásához kövesse az alábbi lépéseket:
     >
     >Ha az időtartam kapcsoló **/d** nincs megadva, a PerfInsights figyelmezteti, hogy Reprodukálja a problémát vmslow, az Azure filesba – és a speciális forgatókönyvek futtatása során. 
 
-A nyomkövetések vagy a műveletek végezhető el, amikor új fájlt a PerfInsights ugyanabban a mappában jelenik meg. A fájl neve **CollectedData\_éééé-hh-nn\_hh-mm-mm-fff.zip.** Ez a fájl küldhet a támogatási szakembere elemzés céljából, vagy nyissa meg a jelentést a zip-fájlt, tekintse át az eredményeket és meglátásokat bemutató javaslatok belül.
+A nyomkövetések vagy a műveletek végezhető el, amikor új fájlt a PerfInsights ugyanabban a mappában jelenik meg. A fájl neve **PerformanceDiagnostics\_éééé-hh-nn\_hh-mm-mm-fff.zip.** Ez a fájl küldhet a támogatási szakembere elemzés céljából, vagy nyissa meg a jelentést a zip-fájlt, tekintse át az eredményeket és meglátásokat bemutató javaslatok belül.
 
 ## <a name="review-the-diagnostics-report"></a>Tekintse át a diagnosztikai jelentést
 
-Belül a **CollectedData\_éééé-hh-nn\_hh-mm-mm-fff.zip** fájlt, egy HTML-jelentést, amely leírja a PerfInsights eredményeit, találja. Tekintse át a jelentést, bontsa ki a **CollectedData\_éééé-hh-nn\_hh-mm-mm-fff.zip** fájlt, és nyissa meg a **PerfInsights diagram jelentés.HTML** fájlt.
+Belül a **PerformanceDiagnostics\_éééé-hh-nn\_hh-mm-mm-fff.zip** fájlt, egy HTML-jelentést, amely leírja a PerfInsights eredményeit, találja. Tekintse át a jelentést, bontsa ki a **PerformanceDiagnostics\_éééé-hh-nn\_hh-mm-mm-fff.zip** fájlt, és nyissa meg a **PerfInsights diagram jelentés.HTML** fájlt.
 
 Válassza ki a **megállapításokat** fülre.
 
@@ -314,4 +314,4 @@ A következő képernyőképen látható üzenetet hasonlóan mi kaphat:
 
 Kövesse az utasításokat a fájl átvitele munkaterület eléréséhez az üzenetben. A fokozott biztonság érdekében a jelszót az első használatkor módosítania kell.
 
-Miután bejelentkezett, egy párbeszédpanel a feltöltendő megtalálja a **CollectedData\_éééé-hh-nn\_hh-mm-mm-fff.zip** PerfInsights által gyűjtött fájl.
+Miután bejelentkezett, egy párbeszédpanel a feltöltendő megtalálja a **PerformanceDiagnostics\_éééé-hh-nn\_hh-mm-mm-fff.zip** PerfInsights által gyűjtött fájl.

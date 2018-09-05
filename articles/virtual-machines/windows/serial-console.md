@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/07/2018
 ms.author: harijay
-ms.openlocfilehash: ddd30729aa2bcb616efab814dc4046d2817c64fa
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 725f52e55795025671036095f209fd92636a4d9c
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43128677"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43701499"
 ---
 # <a name="virtual-machine-serial-console-preview"></a>Virtuális gépek soros konzolja (előzetes verzió) 
 
@@ -39,7 +39,7 @@ A soros konzol dokumentáció Linux rendszerű virtuális gépekhez [ide](../lin
 * A virtuális gépnek rendelkeznie kell [rendszerindítási diagnosztika](boot-diagnostics.md) engedélyezve 
 
     ![](../media/virtual-machines-serial-console/virtual-machine-serial-console-diagnostics-settings.png)
-    
+
 * A soros konzol használatával a fióknak rendelkeznie kell [közreműködői szerepkört](../../role-based-access-control/built-in-roles.md) virtuális gép és a [rendszerindítási diagnosztika](boot-diagnostics.md) storage-fiókot. 
 * A virtuális gép, amelyekhez le a soros konzol acessing is jelszóalapú fiókkal kell rendelkeznie. Létrehozhat egyet a [jelszó alaphelyzetbe állítása](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password) a Virtuálisgép-hozzáférési bővítmény - funkciójának lásd az alábbi képernyőképet.
 
@@ -77,7 +77,7 @@ Ha a szükséges SAC engedélyezhető offline is,
 
 Ha a [SAC] (https://technet.microsoft.com/library/cc787940(v=ws.10).aspx) nincs engedélyezve a soros konzol nem jelenik meg a SAC használatával. Bizonyos esetekben egy virtuális gép állapotára vonatkozó megmutatja, vagy üres lenne.  
 
-### <a name="enabling-boot-menu-to-show-in-the-serial-console"></a>A soros konzolon megjelenítendő rendszerindító menü engedélyezése 
+## <a name="enabling-boot-menu-to-show-in-the-serial-console"></a>A soros konzolon megjelenítendő rendszerindító menü engedélyezése 
 
 Ha a Windows rendszertöltő engedélyeznie kell a Windows rendszertöltő adhat hozzá az alábbi további beállítások megjelenítéséhez a soros konzol kéri.
 
@@ -149,6 +149,15 @@ Ha egy felhasználó csatlakozik a soros konzol és a egy másik felhasználó s
 >[!CAUTION] 
 Ez azt jelenti, hogy a felhasználó, aki megszakad nem kijelentkeztetésével! Képes érvényesíteni a kijelentkezési (SIGHUP vagy hasonló mechanizmus) keresztül kapcsolat bontása esetén továbbra is szerepel az ütemterv részét képezi. A Windows van egy automatikus időtúllépési engedélyezve van a SAC, azonban a Linuxhoz készült terminál timeout beállítás konfigurálása. 
 
+## <a name="common-scenarios-for-accessing-serial-console"></a>Általános forgatókönyvek a soros konzol eléréséhez 
+Forgatókönyv          | A soros konzol műveletek                
+:------------------|:-----------------------------------------
+Helytelen tűzfal-szabályok | Soros konzolon, és javítsa a Windows tűzfalszabályok eléréséhez. 
+Fájlrendszer sérülése és ellenőrzése | Soros konzol eléréséhez, és a fájlrendszer helyreállítani. 
+RDP-konfigurációs problémák | Soros konzol eléréséhez, és módosíthatja a beállításait. Nyissa meg a [RDP-dokumentáció](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-allow-access) a kezdéshez.
+Rendszer hálózati zárolása| Hozzáférés soros konzolon kezelheti a rendszer a portálon keresztül. Egyes hálózati parancsok láthatók a [soros konzolon CMD és a PowerShell dokumentációs](./serial-console-cmd-ps-commands.md). 
+A rendszertöltő használata | Hozzáférés a BCD soros konzolon keresztül. Lépjen a [engedélyezése rendszerindító menü megjelenítése a soros konzol](#enabling-boot-menu-to-show-in-the-serial-console) a kezdéshez. 
+
 ## <a name="using-serial-console-for-nmi-calls-in-windows-vms"></a>Soros konzol használata NMI meghívja a Windows-beli virtuális gépeken
 Egy nem maszkolható (NMI) úgy tervezték, hogy hozzon létre egy olyan jelet, hogy a szoftverek virtuális gépi nem figyelmen kívül hagyja. Hagyományosan NMIs figyelje a hardverekkel kapcsolatos problémák szerepelnek, amelyek adott válaszidők szükséges rendszereken voltak használva.  Ma, programozók és a rendszer a rendszergazdák gyakran használnak NMI mechanizmusként javításához vagy hibaelhárítása a rendszerek, amelyek leáll.
 
@@ -158,6 +167,14 @@ A soros konzol segítségével egy NMI küldeni egy Azure virtuális gépen a bi
 
 Windows egy összeomlási memóriakép létrehozása egy NMI kap való konfigurálásával kapcsolatos információkért lásd: [egy teljes összeomlási memóriakép-fájl vagy a kernel összeomlási memóriakép létrehozása egy NMI egy Windows-alapú rendszeren való használatával](https://support.microsoft.com/en-us/help/927069/how-to-generate-a-complete-crash-dump-file-or-a-kernel-crash-dump-file)
 
+## <a name="accessibility"></a>Kisegítő lehetőségek
+Kisegítő lehetőségek egy kulcsfontosságú fókuszának az Azure-soros konzolon. Ebből a célból hogy gondoskodott róla, hogy a soros konzolon érhető el a vizualizációt és Várjuk visszajelzését látási, valamint azokat, akik nem tudják az egérrel rendelkezők.
+
+### <a name="keyboard-navigation"></a>Billentyűzetnavigációt
+Használja a `tab` billentyűt a billentyűzeten történő navigációhoz a soros konzol felület az Azure Portalon. A hely kiemelten jelenik meg a képernyőn. A lépéseknek az ismertetése, a soros konzol panelen hagyja, nyomja le a `Ctrl + F6` a billentyűzeten.
+
+### <a name="use-serial-console-with-a-screen-reader"></a>A képernyőolvasó soros konzol használata
+Soros konzol tartalmaz beépített képernyőolvasó támogatása. Kapcsolva képernyőolvasóval való navigálni lehetővé teszi a helyettesítő szöveget a jelenleg kijelölt gombra kattintva a képernyőolvasó felolvassa olvasni.
 
 ## <a name="errors"></a>Hibák
 A legtöbb hiba átmeneti jellegű, és ezek újrapróbálkozás a kapcsolódási IP-címet a rendszer. Az alábbi táblázat azon hibákat és kezelési lehetőségeiket listáját

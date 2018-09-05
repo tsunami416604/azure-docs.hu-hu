@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 ms.component: common
-ms.openlocfilehash: 3c6adc3f27e49facec124401f03a036269b7c7a9
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: e87b791dda03521def32ca7473336d7d37644773
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39524447"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43666019"
 ---
 # <a name="creating-an-import-job-for-the-azure-importexport-service"></a>Az Azure Import/Export szolgáltatás importálási feladat létrehozása
 
@@ -57,7 +57,7 @@ A meghajtó előkészítése foglalja magában:
 
 ## <a name="obtaining-your-shipping-location"></a>A szállítási címhez tartozó hely beszerzése
 
-Importálási feladat létrehozása előtt be kell szereznie egy szállítási hely nevét és címét meghívásával a [lista helyek](/rest/api/storageimportexport/listlocations) műveletet. `List Locations` helyek és a levelezési címét listáját adja vissza. Válasszon egy helyet a visszaadott listában, és arra a címre rögzített meghajtók kiszállítása. Is használhatja a `Get Location` művelet egy konkrét hely a szállítási cím közvetlenül beszerzése.
+Importálási feladat létrehozása előtt be kell szereznie egy szállítási hely nevét és címét meghívásával a [lista helyek](https://docs.microsoft.com/rest/api/storageimportexport/locations/list) műveletet. `List Locations` helyek és a levelezési címét listáját adja vissza. Válasszon egy helyet a visszaadott listában, és arra a címre rögzített meghajtók kiszállítása. Is használhatja a `Get Location` művelet egy konkrét hely a szállítási cím közvetlenül beszerzése.
 
  A szállítási címhez tartozó hely beszerzése az alábbi lépésekkel:
 

@@ -9,19 +9,32 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 08/17/2018
 ms.author: juliako
-ms.openlocfilehash: 8a9409c46cac8397bc449c586374729a4d864036
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: ac9d3f8fd10a3b65a2af2999b8c7ade7965de912
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "41987547"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43664445"
 ---
 # <a name="upload-and-index-your-videos"></a>A videók feltöltése és az  
 
-Ez a cikk bemutatja, hogyan használhatja a [videó feltöltése](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) fel-és indexelése a videók az Azure Video Indexer API. Emellett ismerteti, hogy megadhatja azt az API-t a folyamat és a kimeneti API-paraméterek némelyike.
+Ez a cikk bemutatja, hogyan videó feltöltése a Video Indexer – Azure. A Video Indexer API két feltöltését lehetőségeket biztosítja: 
+
+* a (javasolt) URL-címről videó feltöltése
+* fájl elküldése egy bájttömböt a kérelem törzsében.
+
+A cikk bemutatja, hogyan használhatja a [videó feltöltése](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) API-t a videók feltöltése és az URL-címe alapján. A cikkben a példakód meg a kódot, amely bemutatja, hogyan tölthet fel a bájttömböt a megjegyzésekkel tartalmazza.  
+
+A cikk ismerteti, hogy megadhatja azt az API-t a folyamat és a kimeneti API-paraméterek némelyike is.
 
 > [!Note]
-> A Video Indexer-fiók létrehozásakor kiválaszthatja a (, ahol megkapja ingyenes indexelési perc bizonyos számú) egy ingyenes próbafiókot vagy egy fizetős lehetőség (Ha nem korlátozza a kvóta). <br/>Az ingyenes próbaverziót a Video Indexer legfeljebb 600 perc ingyenes indexeli a webhely számára biztosít, és akár 2400 percnyi ingyenes indexelő API számára. <br/>A fizetős lehetőség a Video Indexer-fiókot, amely létrehozhat [csatlakozik az Azure-előfizetés és az Azure Media Services-fiók](connect-to-azure.md). Indexelt perc, valamint a kapcsolódó adathordozó-fiók fizet díjak. 
+> A Video Indexer-fiók létrehozásakor kiválaszthatja a (, ahol megkapja ingyenes indexelési perc bizonyos számú) egy ingyenes próbafiókot vagy egy fizetős lehetőség (Ha nem korlátozza a kvóta). <br/>Az ingyenes próbaverziót a Video Indexer legfeljebb 600 perc ingyenes indexeli a webhely számára biztosít, és akár 2400 percnyi ingyenes indexelő API számára. A fizetős lehetőség a Video Indexer-fiókot, amely létrehozhat [csatlakozik az Azure-előfizetés és az Azure Media Services-fiók](connect-to-azure.md). Indexelt perc, valamint a kapcsolódó adathordozó-fiók fizet díjak. 
+
+## <a name="uploading-considerations"></a>Feltöltésével kapcsolatos szempontok
+    
+- Ha a videó feltöltése a (javasolt) URL-cím alapján a végpont védeni kell a TLS 1.2-es (vagy annál újabb)
+- A bájt tömb beállítás korlátozva, 4GB, és 30 perc után időtúllépés
+- A megadott URL-CÍMÉT a `videoURL` param kódolni kell
 
 ## <a name="configurations-and-params"></a>Konfigurációk és paraméterek
 
@@ -45,7 +58,7 @@ Díj attól függ, hogy a kiválasztott indexelési lehetőség.
 
 POST URL-címe értesítése, ha az indexelés hajtható végre. A video Indexer hozzáadja két lekérdezési karakterlánc paraméterek: azonosítója és állapota. Például, ha a visszahívási URL-címe "https://test.com/notifyme?projectName=MyProject", az értesítés jelenik meg a további paramétereket"https://test.com/notifyme?projectName=MyProject&id=1234abcd&state=Processed".
 
-Is hozzáadhat további paramétereket az URL-címet a Video Indexer hívása előtt, és ezeket a paramétereket fog szerepelni a visszahívás. Később a kódban, a lekérdezési karakterlánc elemzésére és az első biztonsági összes a megadott paramétereket a lekérdezési karakterláncban (adatok meg kellett eredetileg hozzáfűzi az URL-címe és a Video Indexer a megadott adatokat.) 
+Is hozzáadhat további paramétereket az URL-címet a Video Indexer hívása előtt, és ezeket a paramétereket fog szerepelni a visszahívás. Később a kódban, a lekérdezési karakterlánc elemzésére és az első biztonsági összes a megadott paramétereket a lekérdezési karakterláncban (adatok meg kellett eredetileg hozzáfűzi az URL-címe és a Video Indexer a megadott adatokat.) Kódolni kell az URL-címet.
 
 ### <a name="streamingpreset"></a>streamingPreset
 
@@ -56,6 +69,12 @@ Használatakor a [videó feltöltése](https://api-portal.videoindexer.ai/docs/s
 Annak érdekében, hogy az indexelést és a kódolási feladat, futtassa a [a Video Indexer-fiókot az Azure Media Services-fiók csatlakoztatva](connect-to-azure.md), fenntartott egységet igényel. További információkért lásd: [Media feldolgozás skálázása](https://docs.microsoft.com/azure/media-services/previous/media-services-scale-media-processing-overview). Mivel ezek olyan nagy számításigényű számítási feladatok, erősen ajánlott S3-egység típusa. A fenntartott egységek számát, amelyek párhuzamosan futtatható feladatok maximális száma határozza meg. Az alapkonfiguráció javasoljuk 10 S3 szintű fenntartott. 
 
 Ha csak a videó indexeléséről kívánja, de nem kódolja azokat, állítsa be `streamingPreset`való `NoStreaming`.
+
+### <a name="videourl"></a>videoUrl
+
+Egy indexelendő a videó vagy hang fájl URL-címe. Az URL-cím, egy médiafájl kell mutatnia (HTML-lapok nem támogatottak). A fájl védelmét biztosíthatja úgy egy hozzáférési jogkivonatot az URI-t részeként, és a végpont szolgálja ki a fájlt kell lennie, biztonságos, a TLS 1.2-es vagy újabb. Kódolni kell az URL-címet. 
+
+Ha a `videoUrl` nincs megadva, a Video Indexer vár, hogy át a fájlt, egy multipart/form szövegtörzse.
 
 ## <a name="code-sample"></a>Kódminta
 

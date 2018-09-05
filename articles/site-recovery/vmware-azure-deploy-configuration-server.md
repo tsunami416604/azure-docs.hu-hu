@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: 02dc4657f6c594242d12e3eca270a3549b77bf02
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: bd456e0f881f606f36f2b4d80e704ce138f7db0f
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43337758"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43666432"
 ---
 # <a name="deploy-a-configuration-server"></a>Konfigurációs kiszolgáló üzembe helyezése
 
@@ -42,7 +42,7 @@ A konfigurációs kiszolgáló méretezési követelményei potenciális adatvá
 | 12 vcpu-k (2 sockets * 6 magok \@ 2,5 GHz-es) |18 GB |600 GB |500 GB – 1 TB |100 – 150 gépeket replikálni. |
 | 16 vcpu-k (2 sockets * 8 magos \@ 2,5 GHz-es) |32 GB |1 TB |1 TB-os 2 TB-ig |150-200 gépeket replikálni. |
 
-Ha egynél több VMware virtuális gép replikál, olvassa el a [kapacitástervezésének szempontjai](/site-recovery-plan-capacity-vmware.md). Futtassa a [Deployment planner eszköz](site-recovery-deployment-planner.md) a VMWare replikálásához.
+Ha egynél több VMware virtuális gép replikál, olvassa el a [kapacitástervezésének szempontjai](https://docs.microsoft.com/azure/site-recovery/site-recovery-plan-capacity-vmware). Futtassa a [Deployment planner eszköz](site-recovery-deployment-planner.md) a VMWare replikálásához.
 
 ## <a name="download-the-template"></a>A sablon letöltése
 

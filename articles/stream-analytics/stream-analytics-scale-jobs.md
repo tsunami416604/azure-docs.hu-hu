@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/22/2017
-ms.openlocfilehash: 61ee84ccfccfa49ff2e106e7036d072c1b21ca03
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 4da97d708f8db2dcee406645a0eee409fa111012
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/04/2018
-ms.locfileid: "34652542"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43696802"
 ---
 # <a name="scale-an-azure-stream-analytics-job-to-increase-throughput"></a>Azure Stream Analytics-feladat, növelheti a teljesítményt méretezése
 Ez a cikk bemutatja, hogyan finomhangolása egy Stream Analytics-lekérdezés növeléséhez a Streaming Analytics-feladatokhoz. Ez az útmutató segítségével méretezheti a feladatot, amely magasabb terhelés kezeléséhez, és több rendszererőforrást (például a nagyobb sávszélességet, több Processzor-erőforrások, több memória) előnyeit.
@@ -70,7 +70,7 @@ Az egyes Szoftverszállítói használati esetek, ahol a szolgáltatás több k�
 2.  Csökkentse a bemeneti partíciók száma a legkisebb lehetséges értéke 2, Event Hub használatakor.
 3.  A lekérdezés 6 SU futtassa. Minden egyes segédlekérdezés a várható terhelés mellett adjon hozzá annyi ilyen segédlekérdezések a lehető mindaddig, amíg a feladat eléri rendszer erőforráskorlátok. Tekintse meg [1. eset](#case-1--your-query-is-inherently-fully-parallelizable-across-input-partitions) ebben az esetben a hibajelenségek keresése.
 4.  Ha a segédlekérdezés korlát feletti mért találkozik, indítsa el egy új feladatot ad hozzá a segédlekérdezés. A független lekérdezések száma függvényében feladatok száma viszonylag lineáris, feltéve, hogy nem kell minden döntés terhelés kell lennie. Majd előrejelzési, hogy hány 6 SU feladatok kell futtatnia, amelyet szeretne szolgálja ki a bérlők számának függvényében.
-5.  Referencia-adatok illesztési az ilyen lekérdezések használatakor meg kell union bemenetei együtt, mielőtt a hivatkozás az adatokról, akkor bontja ki az eseményeket szükség esetén. Minden hivatkozás adatok illesztési ellenkező esetben valószínűleg habosító feleslegesen a memóriahasználat mentése, memóriában tartja a referenciaadatok másolatát.
+5.  Referencia-adatok illesztési az ilyen lekérdezések használatakor union együtt, mielőtt csatlakoztatná azonos bemenetei adatokra hivatkoznak. Szükség esetén, majd ossza ki az eseményeket. Minden hivatkozás adatok illesztési ellenkező esetben valószínűleg habosító feleslegesen a memóriahasználat mentése, memóriában tartja a referenciaadatok másolatát.
 
 > [!Note] 
 > A bérlők számától el az egyes feladatokban szereplő?

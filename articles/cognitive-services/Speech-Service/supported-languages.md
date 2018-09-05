@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 04/28/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 7e2634db33d760207e9190b9955bd1f2ead179be
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: de9abac2839341e1744a694daaaa0befdff4e7fa
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43123154"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43668580"
 ---
 # <a name="supported-languages-for-speech-service"></a>Beszédszolgáltatás támogatott nyelvei
 
@@ -39,7 +39,7 @@ A Microsoft beszédfelismerési API-t a következő nyelveket támogatja.
 
 ## <a name="text-to-speech"></a>Szövegfelolvasás
 
-A **szöveg-beszéd átalakítás** API a következő beszédhangot, amelyek mindegyike támogatja egy adott nyelvhez és dialect, területi beállítás azonosítjuk kínál.
+A beszédfelismerés összefoglaló API a következő beszédhangot, amelyek mindegyike támogatja egy adott nyelvhez és dialect, területi beállítás azonosítjuk kínál.
 
 Területi beállítás | Nyelv | Nem | A felhasználónév-leképezés
 -------|----------|---------|--------------------
@@ -128,13 +128,16 @@ zh-TW | kínai (tajvani)|Nő | "A Microsoft Server beszéd szöveg Speech Voice 
 
 ### <a name="customization"></a>Testreszabás
 
-Egyéni **szöveg-beszéd átalakítás** hangtípust támogatja az Amerikai angol (en-US) és a kínai (zh-CN).
+Hangalapú testreszabási amerikai angol (en-US), a kontinens kínai (zh-CN) és az olasz (it-IT) érhető el.
+
+> [!NOTE]
+> Olasz hangalapú képzés, mint 2000 utterances adatkészlet kezdődik. Angol nyelvű kínai kétnyelvű modelleket is, mint 2000 utterances egy kezdeti adatkészlet használata támogatott.
 
 ## <a name="speech-translation"></a>Beszédfordítás
 
 A **beszédalapú fordítási** API különböző nyelveket támogat a speech beszéd és hang-szöveg transzformációs fordítás. A Forrásnyelv mindig a beszédfelismerő nyelvi táblából kell lennie. A cél elérhető nyelvek attól függ,-e a fordítási cél a speech vagy szöveget.
 
-Beszerezhet a nyelvek listája vagy programozott módon vagy a REST API-k nyelvek végpont használatával. A lista tartalmazza az egyes nyelvi kódját, valamint a nyelv nevének angol nyelven – vagy bármilyen más támogatott nyelv. Ebben a listában, amikor új nyelv elérhetővé válik a Microsoft Translator szolgáltatás frissül.
+A REST API-k nyelvek végpont programozott módon segítségével nyelvek listáját szerezheti be. A lista tartalmazza az egyes nyelvi kódját, valamint a nyelv nevének angol nyelven – vagy bármilyen más támogatott nyelv. Ebben a listában, amikor új nyelv elérhetővé válik a Microsoft Translator szolgáltatás frissül.
 
 ### <a name="speech-languages"></a>Beszédnyelvek lekérdezése
 

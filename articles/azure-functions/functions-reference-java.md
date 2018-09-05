@@ -13,12 +13,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 08/10/2018
 ms.author: routlaw
-ms.openlocfilehash: d895258a4c8a38d00932d81600dc8633d7d70112
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: bbc1c3426b52e71db84a988b39a1d76ac24b6168
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "42058100"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43697011"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Az Azure Functions Java fejlesztői útmutatója
 
@@ -93,7 +93,7 @@ az ehhez tartozó `function.json`:
 
 Az Azure Functions támogatja a külső gyártótól származó kódtárakat. Alapértelmezés szerint az összes függősége a projekt megadott `pom.xml` fájl automatikusan kötegelve fog során a `mvn package` cél. Nincs megadva függőségeként-tárak a `pom.xml` fájlt, helyezze el őket egy `lib` könyvtárat a gyökérkönyvtár a függvény. Függőségeket helyezi el a `lib` directory hozzáadódik a rendszer osztálybetöltő futásidőben.
 
-## <a name="data-types"></a>Adattípusok
+## <a name="data-type-support"></a>Adattípus-támogatás
 
 A bemeneti és kimeneti adatait, beleértve a natív típusai; is használhat bármilyen típusú adatokat Java nyelven a Java és a meghatározott specializált Azure típusainak testre szabott `azure-functions-java-library` csomagot. Az Azure Functions runtime megkísérli a kód által kért típus érkezett a bemeneti típusra konvertál.
 
@@ -243,7 +243,7 @@ public class MyClass {
 
 Az Azure Functions végrehajtási környezetben keresztül kommunikálhat a `ExecutionContext` meghatározott objektum a `azure-functions-java-library` csomagot. Használja a `ExecutionContext` objektum használata a hívási adatokat, és a functions runtime adatait a kódban.
 
-### <a name="logging"></a>Naplózás
+### <a name="custom-logging"></a>Egyéni naplózás
 
 A Functions runtime naplózó hozzáférést keresztül érhető el a `ExecutionContext` objektum. A naplózó vannak kötve, az Azure monitor, és lehetővé teszi, hogy jelző figyelmeztetéseket és hibákat észlelt függvény végrehajtása során.
 
@@ -263,6 +263,29 @@ public class Function {
     }
 }
 ```
+
+## <a name="view-logs-and-trace"></a>Naplók megtekintése és nyomkövetés
+
+Az Azure CLI-stream Java-, standard és a hibanaplózás, valamint egyéb alkalmazásnaplózás is használhatja. Először is konfiguráljon függvény alkalmazását az Azure CLI-vel alkalmazásnaplózás írni:
+
+```azurecli-interactive
+az webapp log config --name functionname --resource-group myResourceGroup --application-logging true
+```
+
+Adatfolyam-naplózás kimeneti a függvényalkalmazás az Azure CLI-vel, nyisson meg egy új parancssort, a Bash vagy a terminál-munkamenetet, és adja meg a következő parancsot:
+
+```azurecli-interactive
+az webapp log tail --name webappname --resource-group myResourceGroup
+```
+A [az webapp log tail](/cli/azure/webapp/log) parancsnak szűrése a kimenethez használt beállításai az `--provider` lehetőséget. 
+
+A naplófájlok-ként való letöltéséhez az Azure CLI használatával egyetlen ZIP-fájlban, nyisson meg egy új parancssort, a Bash vagy a terminál-munkamenetet, és írja be a következő parancsot:
+
+```azurecli-interactive
+az webapp log download --resource-group resourcegroupname --name functionappname
+```
+
+Fájlrendszer naplózása az Azure Portal vagy Azure CLI-vel a parancs futtatása előtt van engedélyezve.
 
 ## <a name="environment-variables"></a>Környezeti változók
 
@@ -288,9 +311,12 @@ Minden egyes kulcs / érték-hozzárendelését a `values` térkép lesz elérhe
 Most ezeket a környezeti változókat függően a kóddal bejelentkezhet ugyanazzal a kulccsal beállítása / érték párok, a függvény alkalmazás beállításai az Azure Portalra, hogy a kód év működjön telepítésekor tesztelés helyileg és amikor az Azure-bA.
 
 ## <a name="next-steps"></a>További lépések
-További információkért lásd a következőket:
+
+Azure-függvény Java-fejlesztésekhez kapcsolatos további információkért lásd a következőket:
 
 * [Azure Functions – ajánlott eljárások](functions-best-practices.md)
 * [Az Azure Functions fejlesztői segédanyagai](functions-reference.md)
 * [Az Azure Functions eseményindítók és kötések](functions-triggers-bindings.md)
+- Helyi fejlesztés és a hibakeresési [Visual Studio Code](https://code.visualstudio.com/docs/java/java-azurefunctions), [IntelliJ](functions-create-maven-intellij.md), és [Eclipse](functions-create-maven-eclipse.md). 
 * [Távoli hibakeresés Java az Azure Functions Visual Studio Code-dal](https://code.visualstudio.com/docs/java/java-serverless#_remote-debug-functions-running-in-the-cloud)
+* [Maven beépülő modul az Azure Functions](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-functions-maven-plugin/README.md) -függvény létrehozása révén egyszerűsíthetők a `azure-functions:add` cél és a egy átmeneti könyvtárat a előkészítése [ZIP fájl központi telepítési](deployment-zip-push.md).

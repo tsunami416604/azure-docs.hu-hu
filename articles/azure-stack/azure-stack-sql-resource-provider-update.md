@@ -1,6 +1,6 @@
 ---
-title: A verem SQL Azure erőforrás-szolgáltató frissítése |} Microsoft Docs
-description: Ismerje meg, hogy miként frissítheti az Azure verem SQL erőforrás-szolgáltató.
+title: Az Azure Stack SQL erőforrás-szolgáltató frissítése |} A Microsoft Docs
+description: Ismerje meg, hogyan frissítheti az Azure Stack SQL erőforrás-szolgáltató.
 services: azure-stack
 documentationCenter: ''
 author: jeffgilb
@@ -11,48 +11,48 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/11/2018
+ms.date: 09/04/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: ac5073d1abc32b7598a869750f9c5a801559e9e6
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 017ac3214046b812ce003ab7a190f2f2b3f4f2e2
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36264077"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43697941"
 ---
-# <a name="update-the-sql-resource-provider"></a>Frissítés az SQL erőforrás-szolgáltató
+# <a name="update-the-sql-resource-provider"></a>Az SQL erőforrás-szolgáltató frissítése
 
-*A következőkre vonatkozik: Azure verem integrált rendszerek.*
+*A következőkre vonatkozik: Azure Stackkel integrált rendszerek.*
 
-Új SQL erőforrás-szolgáltató lehet, hogy mikorra várható, Azure verem új buildverziót frissítésekor. Bár a meglévő adapter folytatja a működést, javasoljuk, minél hamarabb frissítése a legújabb buildjével.
+Azure Stack egy új létrehozást való frissítésekor előfordulhat, hogy elérhető egy új SQL erőforrás-szolgáltató. Bár a meglévő adapter továbbra is működik, javasoljuk, hogy frissítse a legújabb buildre minél hamarabb.
 
 >[!IMPORTANT]
->Ahhoz, azok által kiadott frissítéseket kell telepíteni. Verziók nem hagyható ki. Tekintse meg a verziók listájában [telepíteni az erőforrás-szolgáltató Előfeltételek](.\azure-stack-sql-resource-provider-deploy.md#prerequisites).
+>A már kiadott sorrendben frissítéseket telepíteni kell. Verziók nem hagyhatja ki. A verziók listáját lásd [üzembe helyezése az erőforrás-szolgáltatóra vonatkozó Előfeltételek](.\azure-stack-sql-resource-provider-deploy.md#prerequisites).
 
 ## <a name="overview"></a>Áttekintés
 
-Az erőforrás-szolgáltató frissítéséhez használja a *UpdateSQLProvider.ps1* parancsfájl. Ezt a parancsfájlt az új SQL erőforrás-szolgáltató a letöltés részét képezi. A frissítési folyamat hasonlít a folyamat, amellyel [telepíteni az erőforrás-szolgáltató](.\azure-stack-sql-resource-provider-deploy.md). A frissítés parancsfájl ugyanazokkal az argumentumokkal használja, mint a DeploySqlProvider.ps1 parancsfájl, és a tanúsítvány információk megadására lesz szüksége.
+Az erőforrás-szolgáltató frissítéséhez használja a *UpdateSQLProvider.ps1* parancsfájlt. Ez a szkript az új SQL erőforrás-szolgáltató a letöltés részét képezi. A frissítési folyamat hasonlít a folyamat, amellyel [az erőforrás-szolgáltató üzembe helyezése](.\azure-stack-sql-resource-provider-deploy.md). A frissítési parancsfájl ugyanazon argumentumokat használja DeploySqlProvider.ps1 szkriptet, és meg kell adnia a tanúsítvány adatait.
 
-### <a name="update-script-processes"></a>Frissítési parancsprogram folyamatok
+### <a name="update-script-processes"></a>Frissítési parancsfájl folyamatok
 
-A *UpdateSQLProvider.ps1* parancsfájlt hoz létre egy új virtuális gép (VM) az erőforrás-szolgáltató legújabb kódját.
+A *UpdateSQLProvider.ps1* a szkript létrehoz egy új virtuális gépet (VM) a legújabb erőforrás-szolgáltató kóddal.
 
 >[!NOTE]
->Azt javasoljuk, hogy töltse le a legújabb Windows Server 2016 Core kép a piactér felügyelet alól. Ha egy frissítés telepítésére van szüksége, elhelyezhet egy **egyetlen** MSU csomagot a helyi függőségi elérési úton. A parancsfájl futtatása sikertelen lesz, ha egynél több MSU fájl ezen a helyen.
+>Azt javasoljuk, hogy le kell tölteni a legújabb Windows Server 2016 Core lemezképet a Marketplace-kezelés. Ha szeretne telepíteni egy frissítést, elhelyezhet egy **egyetlen** MSU-csomagot a helyi függőségi útvonalát. A parancsfájl futtatása sikertelen lesz, ha egynél több MSU-fájlt ezen a helyen.
 
-Miután a *UpdateSQLProvider.ps1* parancsfájlt hoz létre egy új virtuális Gépet, a parancsfájl a következő beállításokat áttelepíti a virtuális gép régi szolgáltató:
+Miután a *UpdateSQLProvider.ps1* a szkript létrehoz egy új virtuális Gépet, a szkript a következő beállításokat áttelepíti a virtuális gép régi szolgáltató:
 
-* Adatbázis-információ
-* üzemeltetési kiszolgáló adatait
+* adatbázis-információ
+* üzemeltető kiszolgáló adatai
 * szükséges DNS-rekord
 
-### <a name="update-script-powershell-example"></a>PowerShell-mintaparancsfájl frissítése
+### <a name="update-script-powershell-example"></a>PowerShell példaszkript frissítése
 
-Szerkesztheti, és futtassa a következő parancsfájl egy rendszergazda jogú PowerShell ISE. Ne felejtse el módosítani a fiók- és a saját környezetéhez szükséges módon.
+Szerkesztheti, és futtassa a következő parancsfájl egy rendszergazda jogú PowerShell ISE-ben. Ne felejtse el módosítani a fiók adatait és a jelszavakat, mint a saját környezetéhez szükséges.
 
 > [!NOTE]
-> A frissítési folyamat csak az integrált Azure verem rendszerekre vonatkozik.
+> A frissítési folyamat csak az Azure Stack integrált rendszerek vonatkozik.
 
 ```powershell
 # Install the AzureRM.Bootstrapper module and set the profile.
@@ -97,21 +97,22 @@ $PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 
 ## <a name="updatesqlproviderps1-parameters"></a>UpdateSQLProvider.ps1 parameters
 
-A parancssorból a következő paramétereket is megadhat, a parancsfájl futtatásakor. Ha ezt elmulasztja, vagy bármely paraméter-ellenőrzés sikertelen, a program kéri, a szükséges paraméterek megadásához.
+A parancssorból a következő paramétereket is megadhat, a parancsfájl futtatásakor. Ha nem, vagy ha minden paraméter ellenőrzése sikertelen, kéri, hogy adja meg a szükséges paramétereket.
 
 | Paraméter neve | Leírás | Megjegyzés vagy az alapértelmezett érték |
 | --- | --- | --- |
-| **CloudAdminCredential** | A felhő rendszergazdájával, a kiemelt végpont eléréséhez szükséges hitelesítő adatait. | _Szükséges_ |
-| **AzCredential** | A verem Azure szolgáltatás-rendszergazdai fiók hitelesítő adatait. Az Azure-verem telepítéséhez használt hitelesítő használja. | _Szükséges_ |
-| **VMLocalCredential** | Az SQL erőforrás-szolgáltató VM a helyi rendszergazdai fiók hitelesítő adatait. | _Szükséges_ |
-| **PrivilegedEndpoint** | Az IP-cím vagy a kiemelt végpont DNS-nevét. |  _Szükséges_ |
-| **DependencyFilesLocalPath** | A tanúsítvány .pfx fájlját is ebben a könyvtárban kell helyezni. | _Egyetlen csomópont azonban kötelező több csomópontos a nem kötelező_ |
+| **CloudAdminCredential** | A felhő rendszergazdájához, a kiemelt végponthoz eléréséhez szükséges hitelesítő adatait. | _Szükséges_ |
+| **AzCredential** | Az Azure Stack szolgáltatás-rendszergazdai fiók hitelesítő adatait. Használja az Azure Stack üzembe helyezéséhez használt hitelesítő adatokkal. | _Szükséges_ |
+| **VMLocalCredential** | Az SQL-erőforrás-szolgáltató virtuális gép helyi rendszergazdai fiókjának hitelesítő adatait. | _Szükséges_ |
+| **PrivilegedEndpoint** | Az IP-cím vagy a kiemelt végponthoz DNS-nevét. |  _Szükséges_ |
+| **AzureEnvironment** | Az azure-környezethez az Azure Stack üzembe helyezéséhez használt szolgáltatás-rendszergazdai fiókot. Akkor kötelező, ha be nem ADFS. Támogatott környezeti nevek **AzureCloud**, **AzureUSGovernment**, vagy ha az China Azure Active Directoryval, **AzureChinaCloud**. | AzureCloud |
+| **DependencyFilesLocalPath** | A tanúsítvány .pfx fájlját is ebben a könyvtárban kell helyezni. | _Az egyetlen csomópont, de a kötelező a több csomópontos nem kötelező megadni_ |
 | **DefaultSSLCertificatePassword** | A .pfx tanúsítvány jelszava. | _Szükséges_ |
-| **MaxRetryCount** | Ennyiszer azt szeretné, majd ismételje meg minden egyes művelet, ha hiba történik.| 2 |
-| **RetryDuration** |Az időkorlát másodpercben az újrapróbálkozások között. | 120 |
-| **Eltávolítás** | Eltávolítja az erőforrás-szolgáltató és minden kapcsolódó erőforrásokat. | Nem |
-| **DebugMode** | Megakadályozza az automatikus tisztítás hiba esetén. | Nem |
+| **MaxRetryCount** | Többször ismételje meg minden művelet, ha sikertelen egy kívánt száma.| 2 |
+| **RetryDuration** |Az időkorlát között eltelő időt másodpercben mérve. | 120 |
+| **Eltávolítás** | Eltávolítja az erőforrás-szolgáltató és az összes társított erőforrást. | Nem |
+| **DebugMode** | Megakadályozza, hogy hiba esetén az automatikus tisztítás. | Nem |
 
 ## <a name="next-steps"></a>További lépések
 
-[Az erőforrás-szolgáltató SQL karbantartása](azure-stack-sql-resource-provider-maintain.md)
+[Az SQL erőforrás-szolgáltató kezelése](azure-stack-sql-resource-provider-maintain.md)

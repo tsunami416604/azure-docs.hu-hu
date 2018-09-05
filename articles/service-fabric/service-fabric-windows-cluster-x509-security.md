@@ -1,6 +1,6 @@
 ---
-title: Egy Windows Azure Service Fabric-fürt biztonságos tanúsítványok használatával |} Microsoft Docs
-description: Az Azure Service Fabric önálló vagy a helyi fürtön belül, valamint az ügyfelek és a fürt közötti kommunikáció védelméhez.
+title: Az Azure Service Fabric-fürt, a Windows biztonságos tanúsítványok használatával |} A Microsoft Docs
+description: Egy Azure Service Fabric önálló vagy a helyi fürtön belül, valamint az ügyfelek és a fürt közötti biztonságos kommunikációhoz.
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/15/2017
 ms.author: dekapur
-ms.openlocfilehash: 62d821894521c5dea8e7577b75d9590adc829263
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: b32e9628b80705a99a2a8cf77534ed37a47515c8
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34212415"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43669096"
 ---
-# <a name="secure-a-standalone-cluster-on-windows-by-using-x509-certificates"></a>Biztonságos Windows önálló fürtben, X.509-tanúsítványok
-Ez a cikk ismerteti a különálló Windows fürt különböző csomópontok közötti kommunikáció biztonságossá tételére. Azt is bemutatja, hogyan hitelesítheti a fürt X.509-tanúsítványok használatával csatlakozó ügyfelek. Hitelesítési biztosítja, hogy az csak a hitelesített felhasználóknak a fürt és a központilag telepített alkalmazások elérése és felügyeleti feladatok elvégzésére. Tanúsítvány biztonsági engedélyezni kell a fürt a fürt létrehozásakor.  
+# <a name="secure-a-standalone-cluster-on-windows-by-using-x509-certificates"></a>Windows különálló fürt védelme X.509-tanúsítványok használatával
+Ez a cikk ismerteti a különböző csomópontokhoz, a különálló Windows-fürt közötti kommunikáció biztonságossá tételére. Emellett bemutatja, hogyan lehet X.509 tanúsítványok segítségével csatlakozzon a fürt azon ügyfelek hitelesítéséhez. Hitelesítés biztosítja, hogy csak a jogosult felhasználók a fürt és a központilag telepített alkalmazások elérésére, és végrehajthat felügyeleti feladatokat. Tanúsítvány biztonsági szabad engedélyezni a fürtön, a fürt létrehozásakor.  
 
-További információ a fürt biztonsági-csomópontok biztonsági, az ügyfél-csomópont biztonsági és a szerepköralapú hozzáférés-vezérlés, például: [fürtök biztonsági forgatókönyveinek](service-fabric-cluster-security.md).
+Fürtbiztonság, például a csomópontok közötti biztonsági, ügyfél-csomópont biztonsági és szerepköralapú hozzáférés-vezérlés, a további információk: [fürtök – biztonsági helyzetek](service-fabric-cluster-security.md).
 
-## <a name="which-certificates-do-you-need"></a>Tanúsítványok van szüksége?
-Kezdő-és [a Service Fabric Windows Server csomag](service-fabric-cluster-creation-for-windows-server.md#download-the-service-fabric-for-windows-server-package) a fürtben található csomópontok egyikére. A letöltött csomagban ClusterConfig.X509.MultiMachine.json fájl található. Nyissa meg a fájlt, és tekintse át a szakasz a biztonsági tulajdonságok szakaszban:
+## <a name="which-certificates-do-you-need"></a>Mely tanúsítványokat van szüksége?
+Első lépésként [a Service Fabric Windows Server csomag](service-fabric-cluster-creation-for-windows-server.md#download-the-service-fabric-for-windows-server-package) a fürtben található csomópontok egyikére. A letöltött csomagban ClusterConfig.X509.MultiMachine.json fájl található. Nyissa meg a fájlt, és tekintse át a szakasz a biztonság a Tulajdonságok szakaszában:
 
 ```JSON
 "security": {
@@ -115,31 +115,31 @@ Kezdő-és [a Service Fabric Windows Server csomag](service-fabric-cluster-creat
 },
 ```
 
-Ez a szakasz ismerteti a tanúsítványokat, amelyekre szüksége van a különálló Windows-fürt védelmét. A fürt tanúsítványt ad meg, ha a ClusterCredentialType értékének beállítása _X509_. Ha egy külső kapcsolatok kiszolgálói tanúsítványának ad meg, állítsa a ServerCredentialType _X509_. Bár nem kötelező, javasoljuk, hogy ezek a tanúsítványok megfelelően védett fürt. Ha ezeket az értékeket állít *X509*, is meg kell a megfelelő tanúsítványok, vagy a Service Fabric kivételt jelez. Bizonyos esetekben érdemes megadása csak a _ClientCertificateThumbprints_ vagy a _ReverseProxyCertificate_. Adott esetben nem kell beállítani _ClusterCredentialType_ vagy _ServerCredentialType_ való _X509_.
+Ez a szakasz ismerteti a tanúsítványok, a különálló Windows-fürt biztonságossá tétele kell. Ha megad egy fürttanúsítványt, állítsa a ClusterCredentialType _X509_. Ha megad egy külső kapcsolatok kiszolgálói tanúsítványának, állítsa a ServerCredentialType _X509_. Bár nem kötelező, azt javasoljuk, hogy megfelelően biztonságos fürt mindkét rendelkezik. Ha ezeket az értékeket *X509*, akkor is meg kell adnia a megfelelő tanúsítványait, vagy a Service Fabric kivételt jelez. Bizonyos esetekben érdemes, csak adja meg a _ClientCertificateThumbprints_ vagy a _ReverseProxyCertificate_. Adott esetben nem kell beállítani _ClusterCredentialType_ vagy _ServerCredentialType_ való _X509_.
 
 
 > [!NOTE]
-> A [ujjlenyomat](https://en.wikipedia.org/wiki/Public_key_fingerprint) tanúsítvány elsődleges azonosítója. Az Ön által létrehozott tanúsítványok ujjlenyomatát regisztrációval, lásd: [beolvasni a tanúsítvány ujjlenyomata](https://msdn.microsoft.com/library/ms734695.aspx).
+> A [ujjlenyomat](https://en.wikipedia.org/wiki/Public_key_fingerprint) az elsődleges identitás-tanúsítvány. A létrehozott tanúsítványok ujjlenyomatát, lásd: [a tanúsítvány ujjlenyomatának lekérését](https://msdn.microsoft.com/library/ms734695.aspx).
 > 
 > 
 
-A következő táblázat, amelyekre szüksége van a fürt beállítása a tanúsítványokat sorolja fel:
+Az alábbi táblázat a tanúsítványok, a fürt beállítása a van szüksége:
 
 | **CertificateInformation beállítás** | **Leírás** |
 | --- | --- |
-| ClusterCertificate |Egy tesztkörnyezetben ajánlott. Ez a tanúsítvány szükséges a fürt a csomópontok közötti kommunikáció biztonságossá tételére. Két különböző tanúsítványok, egy elsődleges és másodlagos, használhatja a frissítésre. Állítsa be az elsődleges tanúsítvány ujjlenyomatát a ujjlenyomat szakaszban, valamint a másodlagos ThumbprintSecondary változók. |
-| ClusterCertificateCommonNames |Az éles környezetben ajánlott. Ez a tanúsítvány szükséges a fürt a csomópontok közötti kommunikáció biztonságossá tételére. Egy vagy két fürt közös kiszolgálótanúsítvány-nevek is használhatja. Ez a tanúsítvány kibocsátójának ujjlenyomata a CertificateIssuerThumbprint felel meg. Ha a ugyanazzal a névvel több tanúsítványt használ, több kibocsátó ujjlenyomatok is megadhat.|
-| ClusterCertificateIssuerStores |Az éles környezetben ajánlott. Ez a tanúsítvány a fürt tanúsítvány kiállítója megfelel-e. Megadhatja a kibocsátó köznapi név és a megfelelő Tárolónév alatt ez a szakasz a kibocsátójának ujjlenyomata alatt ClusterCertificateCommonNames megadása helyett.  Ez megkönnyíti helyettesítő fürt kiállítói tanúsítványokat. Ha egynél több fürt tanúsítvánnyal több kiállítók adható meg. Egy üres IssuerCommonName whitelists X509StoreNames alatt megadott minden tanúsítvány megfelelő tárolókat.|
-| ServerCertificate |Egy tesztkörnyezetben ajánlott. Ezt a tanúsítványt az ügyfél áll rendelkezésre, ha csatlakozik a fürthöz. Kényelmi célokat szolgál Ha szeretné, egy tanúsítvány használható ClusterCertificate és ServerCertificate. Két különböző kiszolgálói tanúsítványok, egy elsődleges és másodlagos, használhatja a frissítésre. Állítsa be az elsődleges tanúsítvány ujjlenyomatát a ujjlenyomat szakaszban, valamint a másodlagos ThumbprintSecondary változók. |
-| ServerCertificateCommonNames |Az éles környezetben ajánlott. Ezt a tanúsítványt az ügyfél áll rendelkezésre, ha csatlakozik a fürthöz. Ez a tanúsítvány kibocsátójának ujjlenyomata a CertificateIssuerThumbprint felel meg. Ha a ugyanazzal a névvel több tanúsítványt használ, több kibocsátó ujjlenyomatok is megadhat. Kényelmi célokat szolgál Ha szeretné, egy tanúsítvány használható ClusterCertificateCommonNames és ServerCertificateCommonNames. Használhat egy vagy két kiszolgálótanúsítványok köznapi neve. |
-| ServerCertificateIssuerStores |Az éles környezetben ajánlott. Ez a tanúsítvány kiállítója és a kiszolgálói tanúsítvány felel meg. Megadhatja a kibocsátó köznapi név és a megfelelő Tárolónév alatt ez a szakasz a kibocsátójának ujjlenyomata alatt ServerCertificateCommonNames megadása helyett.  Ez megkönnyíti helyettesítő server kiállítói tanúsítványokat. Több kiállítók lehet. Ha egynél több tanúsítvány szerepel-e megadva. Egy üres IssuerCommonName whitelists X509StoreNames alatt megadott minden tanúsítvány megfelelő tárolókat.|
-| ClientCertificateThumbprints |Telepítse a tanúsítványok készletét a hitelesített ügyfelek. Akkor segítségével számos különböző ügyfél-tanúsítványok engedélyezi a hozzáférést a fürthöz használni kívánt számítógépeken telepítve van. Állítsa be a minden tanúsítvány ujjlenyomatát a CertificateThumbprint változóban. Ha IsAdmin *igaz*, az ügyfél és a tanúsítvány telepítve van-e teheti rendszergazda felügyeleti tevékenységek, a fürtön. Ha IsAdmin *hamis*, az ügyfél és a tanúsítvány a felhasználó-hozzáférési jogok, általában csak olvasható esetén engedélyezett műveletek végezhetők. A szerepkörök további információkért lásd: [szerepköralapú hozzáférés-vezérlést (RBAC)](service-fabric-cluster-security.md#role-based-access-control-rbac). |
-| ClientCertificateCommonNames |Az első ügyfél tanúsítvány köznapi nevének beállítása a CertificateCommonName. A CertificateIssuerThumbprint Ez a tanúsítvány kiállítójának ujjlenyomata. Gyakori nevei és a kiállító kapcsolatos további információkért lásd: [tanúsítványok együttműködve](https://msdn.microsoft.com/library/ms731899.aspx). |
-| ClientCertificateIssuerStores |Az éles környezetben ajánlott. Ez a tanúsítvány kiállítója és az ügyféltanúsítvány (admin és a nem rendszergazdai szerepkörök) felel meg. Megadhatja a kibocsátó köznapi név és a megfelelő Tárolónév alatt ez a szakasz a kibocsátójának ujjlenyomata alatt ClientCertificateCommonNames megadása helyett.  Ez megkönnyíti az átfordulási ügyféltanúsítványokhoz kibocsátó. Több kiállítók lehet meg, ha egynél több ügyfél tanúsítvánnyal. Egy üres IssuerCommonName whitelists X509StoreNames alatt megadott minden tanúsítvány megfelelő tárolókat.|
-| ReverseProxyCertificate |Egy tesztkörnyezetben ajánlott. Ez a tanúsítvány nem kötelező lehet meg, hogy szeretné-e biztonságos a [fordított proxy](service-fabric-reverseproxy.md). Győződjön meg arról, hogy reverseProxyEndpointPort a NodeType tulajdonságok értéke van beállítva, ha a tanúsítvány használatához. |
-| ReverseProxyCertificateCommonNames |Az éles környezetben ajánlott. Ez a tanúsítvány nem kötelező lehet meg, hogy szeretné-e biztonságos a [fordított proxy](service-fabric-reverseproxy.md). Győződjön meg arról, hogy reverseProxyEndpointPort a NodeType tulajdonságok értéke van beállítva, ha a tanúsítvány használatához. |
+| ClusterCertificate |Egy tesztkörnyezetben ajánlott. Ez a tanúsítvány szükséges a fürt a csomópontok közötti kommunikáció biztonságossá tételére. Két különböző tanúsítványok, az elsődleges és a egy másodlagos frissítéshez használható. Az ujjlenyomat szakaszban, és hogy a másodlagos ThumbprintSecondary változók be az elsődleges tanúsítvány ujjlenyomatát. |
+| ClusterCertificateCommonNames |Éles környezetben ajánlott. Ez a tanúsítvány szükséges a fürt a csomópontok közötti kommunikáció biztonságossá tételére. Egy vagy két fürt közös tanúsítvány-nevet is használhat. Ez a tanúsítvány kibocsátójának ujjlenyomata a CertificateIssuerThumbprint felel meg. Ha egynél több tanúsítvány köznapi neve megegyezik a használ, több kibocsátójának ujjlenyomatai is megadhat.|
+| ClusterCertificateIssuerStores |Éles környezetben ajánlott. Ez a tanúsítvány kiállítója és a fürt tanúsítvány felel meg. Megadhatja a kibocsátó köznapi név és a megfelelő Tárolónév alatt ez a szakasz a kibocsátó ujjlenyomatát alatt ClusterCertificateCommonNames megadása helyett.  Ez megkönnyíti helyettesítő fürt kiállítói tanúsítványokat. Ha egynél több fürt tanúsítványt használja több kiállítók adható meg. Egy üres IssuerCommonName listáinak X509StoreNames alatt megadott összes tanúsítvány a megfelelő áruházakból.|
+| ServerCertificate |Egy tesztkörnyezetben ajánlott. Ezt a tanúsítványt az ügyfél számára való csatlakozás a fürthöz. Az egyszerűség kedvéért lehet váltani, ClusterCertificate és ServerCertificate ugyanazt a tanúsítványt használja. Két különböző kiszolgálói tanúsítványok, az elsődleges és a egy másodlagos frissítéshez használható. Az ujjlenyomat szakaszban, és hogy a másodlagos ThumbprintSecondary változók be az elsődleges tanúsítvány ujjlenyomatát. |
+| ServerCertificateCommonNames |Éles környezetben ajánlott. Ezt a tanúsítványt az ügyfél számára való csatlakozás a fürthöz. Ez a tanúsítvány kibocsátójának ujjlenyomata a CertificateIssuerThumbprint felel meg. Ha egynél több tanúsítvány köznapi neve megegyezik a használ, több kibocsátójának ujjlenyomatai is megadhat. Az egyszerűség kedvéért lehet váltani, ClusterCertificateCommonNames és ServerCertificateCommonNames ugyanazt a tanúsítványt használja. Használhat egy vagy két kiszolgálótanúsítványok köznapi neve. |
+| ServerCertificateIssuerStores |Éles környezetben ajánlott. Ezt a tanúsítványt a tanúsítvány kiállítója felel meg. Megadhatja a kibocsátó köznapi név és a megfelelő Tárolónév alatt ez a szakasz a kibocsátó ujjlenyomatát alatt ServerCertificateCommonNames megadása helyett.  Ez megkönnyíti helyettesítő kiszolgáló kiállítói tanúsítványokat. Több kiállítók is lehet. Ha egynél több tanúsítvány szerepel-e megadva. Egy üres IssuerCommonName listáinak X509StoreNames alatt megadott összes tanúsítvány a megfelelő áruházakból.|
+| ClientCertificateThumbprints |Telepítse a tanúsítványok készletét a hitelesített ügyfelek. Számos különböző telepítve a gépeken engedélyezi a hozzáférést a fürthöz használni kívánt ügyféltanúsítványok rendelkezhet. Minden tanúsítvány ujjlenyomatát a CertificateThumbprint változó állítja be. Ha IsAdmin *igaz*, az ügyfél és a rajta telepített tanúsítvány hajthatja végre a rendszergazda felügyeleti tevékenységeket a fürtön. Ha a IsAdmin *hamis*, az ügyfél ezt a tanúsítványt és a felhasználói hozzáférés jogokkal, általában csak olvasható csak engedélyezett műveletek végezhetők. Szerepkörökkel kapcsolatos további információkért lásd: [szerepköralapú hozzáférés-vezérlés (RBAC)](service-fabric-cluster-security.md#role-based-access-control-rbac). |
+| ClientCertificateCommonNames |Az első ügyfél-tanúsítvány köznapi nevével a CertificateCommonName be. A CertificateIssuerThumbprint ezt a tanúsítványt kibocsátó ujjlenyomatát. Köznapi nevek és a kibocsátó kapcsolatos további tudnivalókért lásd: [tanúsítványok használata](https://msdn.microsoft.com/library/ms731899.aspx). |
+| ClientCertificateIssuerStores |Éles környezetben ajánlott. Ez a tanúsítvány kiállítója és az ügyfél-tanúsítványt (felügyeleti és a nem rendszergazdai szerepkörök) felel meg. Megadhatja a kibocsátó köznapi név és a megfelelő Tárolónév alatt ez a szakasz a kibocsátó ujjlenyomatát alatt ClientCertificateCommonNames megadása helyett.  Ez megkönnyíti az helyettesítő ügyféltanúsítványokhoz kibocsátó. Több kiállítók lehet megadott, ha egynél több titkosítású ügyféltanúsítvány szükséges. Egy üres IssuerCommonName listáinak X509StoreNames alatt megadott összes tanúsítvány a megfelelő áruházakból.|
+| ReverseProxyCertificate |Egy tesztkörnyezetben ajánlott. Ez nem kötelező a tanúsítvány lehet a megadott szeretné biztonságossá tenni a [fordított proxy](service-fabric-reverseproxy.md). Győződjön meg arról, hogy reverseProxyEndpointPort a NodeType van beállítva, ha ezt a tanúsítványt használja. |
+| ReverseProxyCertificateCommonNames |Éles környezetben ajánlott. Ez nem kötelező a tanúsítvány lehet a megadott szeretné biztonságossá tenni a [fordított proxy](service-fabric-reverseproxy.md). Győződjön meg arról, hogy reverseProxyEndpointPort a NodeType van beállítva, ha ezt a tanúsítványt használja. |
 
-Íme egy példa fürtkonfiguráció, ahol a fürt, a kiszolgáló és az ügyféltanúsítványok vannak-e megadva. A fürt/server/reverseProxy tanúsítványok ujjlenyomatát és köznapi neve nem lehet konfigurálni együtt ugyanazt a tanúsítványtípust.
+Íme egy példa fürtkonfiguráció, ahol a fürt, a kiszolgáló és az ügyféltanúsítványok adtak meg. A fürt/kiszolgálói/reverseProxy tanúsítványok esetében az ujjlenyomatot, és a köznapi név nem lehet konfigurálni együtt ugyanazt a tanúsítványtípust.
 
  ```JSON
  {
@@ -250,58 +250,58 @@ A következő táblázat, amelyekre szüksége van a fürt beállítása a tanú
 }
  ```
 
-## <a name="certificate-rollover"></a>Tanúsítványok leváltása
-Használatakor a tanúsítvány egyszerű neve helyett egy ujjlenyomatot tanúsítványváltást konfigurációs Fürtfrissítés nem igényel. Kiállítójának ujjlenyomata frissítések győződjön meg arról, hogy az új ujjlenyomatot lista metszi a régi listájával. Először be kell elvégezni a konfiguráció frissítése az új kibocsátó ujjlenyomatok a, és telepítse az új tanúsítványok (fürt/kiszolgálótanúsítvány és kiállítói tanúsítványokat) tárolójában. A tanúsítványtároló a régi kibocsátói tanúsítvány ne legalább két órán keresztül, az új kibocsátói tanúsítvány telepítése után.
-Ha kibocsátó tárolókat használ, majd konfiguráció frissítése kell végezhető el a tanúsítványok leváltása kibocsátó. Az új kibocsátói tanúsítvány telepítése ez utóbbi lejárati dátummal megfelelő tanúsítványtárolójába, és távolítsa el a régi kibocsátói tanúsítvány néhány óra múlva.
+## <a name="certificate-rollover"></a>Tanúsítványváltás
+Használatakor a tanúsítvány köznapi nevét ujjlenyomat helyett tanúsítványváltás fürt konfiguráció frissítése nem igényel. Kiállító ujjlenyomata frissítését győződjön meg arról, hogy az új ujjlenyomatot lista metszi a régi listájával. Először azt kell egy konfigurációs frissíthet az új kibocsátójának ujjlenyomatai együtt, és telepítse az új tanúsítványok (fürt/kiszolgáló tanúsítványa és kiállítói tanúsítványokat) a tárolóban. A régi kibocsátói tanúsítvány legalább két órán át, az új kibocsátói tanúsítvány telepítése után ne a tanúsítványtárolóban.
+Ha kibocsátó tárolók, nincs konfiguráció frissítése szükséges végrehajtani kibocsátó váltását, majd használja. Az új kibocsátói tanúsítvány utóbbi lejárati dátummal a megfelelő tanúsítványtárolójába telepítette, és távolítsa el a régi kibocsátói tanúsítvány néhány óra múlva.
 
-## <a name="acquire-the-x509-certificates"></a>Szerezzen be X.509-tanúsítványokat
-A fürtön belüli kommunikáció védelméhez, először a fürtcsomópontok esetén, X.509-tanúsítványokat szerezzenek be. Továbbá a jogosult felhasználók vagy gépek fürthöz kapcsolat korlátozásához szüksége beszerzése és az ügyfél gépek tanúsítványok telepítése.
+## <a name="acquire-the-x509-certificates"></a>Az X.509-tanúsítványok beszerzése
+A fürtön belüli kommunikáció védelméhez, először a fürtcsomópontok X.509-tanúsítványokat szerezzenek be. Emellett korlátozni a jogosult felhasználók vagy gépek a fürthöz való csatlakozás, szüksége beszerzése és telepítése a tanúsítványokat az ügyfélgépekre.
 
-A termelési számítási feladatokhoz rendszert futtató fürtöket, használjon egy [hitelesítésszolgáltató-tanúsítvány](https://en.wikipedia.org/wiki/Certificate_authority)-védelméhez a fürt X.509 tanúsítvány aláírására használatos. Ezek a tanúsítványok beszerzéséről további információkért lásd: [tanúsítvány beszerzése](http://msdn.microsoft.com/library/aa702761.aspx).
+Az éles számítási feladatokat futtató fürtök esetén használja a [hitelesítésszolgáltatói (CA)](https://en.wikipedia.org/wiki/Certificate_authority)-aláírva, a fürt védelme X.509-tanúsítvány. Ezek a tanúsítványok beszerzésével kapcsolatban további információkért lásd: [tanúsítvány beszerzése](http://msdn.microsoft.com/library/aa702761.aspx).
 
-Tesztelési célokra használó fürtök esetén dönthet úgy, önaláírt tanúsítvány használatára.
+Tesztelési célokra használó fürtök választhat egy önaláírt tanúsítványt szeretne használni.
 
 ## <a name="optional-create-a-self-signed-certificate"></a>Választható lehetőség: Hozzon létre egy önaláírt tanúsítványt
-Egy hozzon létre egy önaláírt tanúsítványt megfelelően védett módja a CertSetup.ps1 parancsfájl használata a következő könyvtárban: C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup\Secure a Service Fabric SDK mappában. Ez a tanúsítvány az alapértelmezett nevének módosításához fájl szerkesztésével. (Keresse meg az értéket, CN = ServiceFabricDevClusterCert.) Futtassa ezt a parancsfájlt, `.\CertSetup.ps1 -Install`.
+Megfelelően védett önaláírt tanúsítvány létrehozásának egyik módja, hogy a Service Fabric SDK mappában a következő könyvtárban: C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup\Secure CertSetup.ps1 parancsfájllal. Szerkessze a fájlt, a tanúsítvány az alapértelmezett nevének módosításához. (Nézze meg CN = ServiceFabricDevClusterCert.) Futtassa ezt a szkriptet, `.\CertSetup.ps1 -Install`.
 
-Védett jelszóval egy .pfx fájlba exportálja a tanúsítványt. Első lépésként beolvasása a tanúsítvány ujjlenyomatát. 
-1. Az a **Start** menü futtatása **számítógép-tanúsítványok kezelése**. 
+Most már exportálja a tanúsítványt egy .pfx fájlba jelszóval védett. Először kérje le a tanúsítvány ujjlenyomatát. 
+1. Az a **Start** menüben futtatása **számítógép-tanúsítványok kezelése**. 
 
-2. Lépjen a **helyi számítógép személyes** mappa, és megtekintheti a tanúsítvány létrehozott. 
+2. Nyissa meg a **helyi számítógép személyes tanúsítványtárolójában** mappát, és keresse meg a tanúsítványt hozott létre. 
 
-3. Kattintson duplán a tanúsítványra megnyitásához, jelölje be a **részletek** lapot, és görgessen le a **ujjlenyomat** mező. 
+3. Kattintson duplán a tanúsítványra megnyitásához, jelölje be a **részletek** lapra, és görgessen le a **ujjlenyomat** mező. 
 
-4. Távolítsa el a szóközöket, és az ujjlenyomat értékét másolja a következő PowerShell-parancsot. 
+4. Távolítsa el a szóközöket, és másolja az ujjlenyomat értékét az alábbi PowerShell-parancsot. 
 
-5. Módosítsa a `String` védelmét, és futtassa a következő PowerShell megfelelő biztonságos jelszó értéket:
+5. Módosítsa a `String` védelmét, és futtassa a következő PowerShell megfelelő biztonságos jelszó érték:
 
    ```powershell   
    $pswd = ConvertTo-SecureString -String "1234" -Force –AsPlainText
    Get-ChildItem -Path cert:\localMachine\my\<Thumbprint> | Export-PfxCertificate -FilePath C:\mypfx.pfx -Password $pswd
    ```
 
-6. A számítógépen telepített tanúsítvány részleteinek megtekintéséhez futtassa a következő PowerShell-parancsot:
+6. A gépen telepített tanúsítvány részleteinek megtekintéséhez futtassa a következő PowerShell-parancsot:
 
    ```powershell
    $cert = Get-Item Cert:\LocalMachine\My\<Thumbprint>
    Write-Host $cert.ToString($true)
    ```
 
-Azt is megteheti, ha Azure-előfizetéssel rendelkezik, kövesse a lépéseket [a Service Fabric-fürt létrehozása az Azure Resource Manager használatával](service-fabric-cluster-creation-via-arm.md).
+Azt is megteheti, ha rendelkezik Azure-előfizetéssel, kövesse a lépéseket a [Service Fabric-fürt létrehozása az Azure Resource Managerrel](service-fabric-cluster-creation-via-arm.md).
 
 ## <a name="install-the-certificates"></a>A tanúsítványok telepítése
-Miután tanúsítványok, telepítheti azokat a fürtcsomópontokon. A csomópontok kell rendelkeznie a legújabb Windows PowerShell 3.x rajtuk. Ismételje meg ezeket a lépéseket minden egyes csomóponton fürt és a kiszolgálói tanúsítványokat és a másodlagos tanúsítványok.
+Miután tanúsítványok, akkor telepítse őket a fürtcsomópontokon. A csomópontok kell rendelkeznie a legújabb Windows PowerShell 3.x telepítve rajtuk. Ismételje meg ezeket a lépéseket minden egyes csomóponton fürt és a kiszolgálói tanúsítványokat és a másodlagos tanúsítványok.
 
-1. A csomópont a .pfx fájl vagy fájlokat másolja.
+1. A csomópontra másolja a .pfx-fájlt vagy fájlokat.
 
-2. Nyissa meg rendszergazdaként a PowerShell ablakot, és adja meg a következő parancsok. Cserélje le *$pswd* a, melyek a tanúsítvány létrehozásához használt jelszó. Cserélje le *$PfxFilePath* a teljes elérési útját a .pfx másolja ezt a csomópontot.
+2. Nyissa meg rendszergazdaként egy PowerShell-ablakot, és a következő parancsokat. Cserélje le *$pswd* az a tanúsítvány létrehozásához használt jelszót. Cserélje le *$PfxFilePath* erre a csomópontra másolja a teljes elérési útját a .pfx.
    
     ```powershell
     $pswd = "1234"
     $PfxFilePath ="C:\mypfx.pfx"
     Import-PfxCertificate -Exportable -CertStoreLocation Cert:\LocalMachine\My -FilePath $PfxFilePath -Password (ConvertTo-SecureString -String $pswd -AsPlainText -Force)
     ```
-3. Most beállítása az ezt a tanúsítványt, hogy a Service Fabric folyamat, amely a hálózati szolgáltatás fiók alatt fut, használhatja a következő parancsfájl futtatásával. Adja meg a tanúsítvány ujjlenyomatának és **hálózati szolgáltatás** a szolgáltatási fiókhoz. Ellenőrizheti, hogy a tanúsítvány az ACL-ek nyissa meg a tanúsítvány helyesen **Start** > **számítógép-tanúsítványok kezelése** és megnézi **feladataival**  >  **Titkos kulcsok kezelése**.
+3. Most állítsa be ezt a tanúsítványt a hozzáférés-vezérlés, hogy a Service Fabric-folyamat, amely a hálózati szolgáltatás fiók alatt fut, használhatja a következő szkript futtatásával. Adja meg a tanúsítvány ujjlenyomatának és **hálózati szolgáltatás** szolgáltatásfiók. Ellenőrizheti, hogy a tanúsítvány hozzáférés-vezérlési listák nyissa meg a tanúsítvány helyesen **Start** > **számítógép-tanúsítványok kezelése** és megnézzük **minden feladat**  >  **Titkos kulcsok kezelése**.
    
     ```powershell
     param
@@ -338,33 +338,33 @@ Miután tanúsítványok, telepítheti azokat a fürtcsomópontokon. A csomópon
     # Observe the access rights currently assigned to this certificate
     get-acl $keyFullPath| fl
     ```
-4. Ismételje az előző lépést minden egyes kiszolgáló-tanúsítvány. Is használhatja ezeket a lépéseket a gépeken, a fürt eléréséhez használni kívánt ügyféltanúsítványok telepítéséhez.
+4. Ismételje meg az előző lépéseket minden egyes kiszolgálói tanúsítvány. Is használhatja ezeket a lépéseket az ügyféltanúsítványok telepítése a gépeken, amely engedélyezi a hozzáférést a fürthöz.
 
 ## <a name="create-the-secure-cluster"></a>A biztonságos fürt létrehozása
-Miután konfigurálta a ClusterConfig.X509.MultiMachine.json fájl biztonsági részét, folytathatja a [a fürt létrehozása](service-fabric-cluster-creation-for-windows-server.md#create-the-cluster) szakasz a csomópontok, és hozza létre az önálló fürtöt. Fontos, hogy a ClusterConfig.X509.MultiMachine.json fájlt a fürt létrehozása során. Például a parancs nézhet ki például a következőket:
+Miután konfigurálta a biztonság szakaszában tekintheti meg a ClusterConfig.X509.MultiMachine.json fájlt, folytassa a [a fürt létrehozása](service-fabric-cluster-creation-for-windows-server.md#create-the-cluster) szakasz a csomópontok beállítása és az önálló fürt létrehozása. Ne felejtse el a ClusterConfig.X509.MultiMachine.json fájlt használja, a fürt létrehozása közben. Például a parancs a következőhöz hasonlóan nézhet ki:
 
 ```powershell
 .\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.X509.MultiMachine.json
 ```
 
-Miután a biztonságos önálló Windows sikeresen fut a fürt és a csatlakozáshoz a hitelesített ügyfelek beállítását, kövesse a szakasz a [Connect PowerShell-lel fürtre](service-fabric-connect-to-secure-cluster.md#connect-to-a-cluster-using-powershell) a csatlakozáshoz. Példa:
+Miután a biztonságos önálló Windows, a fürt sikeresen fut, és beállítása a hitelesített ügyfelek csatlakozni hozzá, kövesse a szakasz a [csatlakozás a fürthöz PowerShell használatával](service-fabric-connect-to-secure-cluster.md#connect-to-a-cluster-using-powershell) hozzá csatlakozni. Példa:
 
 ```powershell
 $ConnectArgs = @{  ConnectionEndpoint = '10.7.0.5:19000';  X509Credential = $True;  StoreLocation = 'LocalMachine';  StoreName = "MY";  ServerCertThumbprint = "057b9544a6f2733e0c8d3a60013a58948213f551";  FindType = 'FindByThumbprint';  FindValue = "057b9544a6f2733e0c8d3a60013a58948213f551"   }
 Connect-ServiceFabricCluster $ConnectArgs
 ```
 
-Ezt követően futtathatja más PowerShell-parancsok használata ehhez a fürthöz. Például futtathatja [Get-ServiceFabricNode](/powershell/module/servicefabric/get-servicefabricnode.md?view=azureservicefabricps) való megjelenítéséhez a biztonságos fürt a csomópontok listáját.
+Ezt követően futtathatja más PowerShell-parancsok használata ehhez a fürthöz. Például futtathatja [Get-ServiceFabricNode](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps) a biztonságos fürtön lévő csomópontok listájának megjelenítéséhez.
 
 
-Távolítsa el a fürtöt, a csomópont a fürt, amelybe letöltötte a Service Fabric-csomag csatlakozzon, nyisson meg egy parancssort, és a csomag mappában. Most futtassa a következő parancsot:
+A fürt eltávolításához a fürtön, amelybe letöltötte a Service Fabric-csomag a csomóponthoz csatlakozás, nyisson meg egy parancssort, és nyissa meg a csomag mappát. Most futtassa a következő parancsot:
 
 ```powershell
 .\RemoveServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.X509.MultiMachine.json
 ```
 
 > [!NOTE]
-> Tanúsítvány nem megfelelő konfigurációs megakadályozhatja, hogy a fürt üzembe helyezése során várható. Önálló biztonsági problémák elemzéséhez, keresse meg az esemény Viewer csoport **alkalmazási és Szolgáltatásnaplójában** > **Microsoft-Service Fabric**.
+> Nem megfelelő tanúsítvány konfigurálása megakadályozhatja, hogy a fürt üzembe helyezése során várható. Önálló diagnosztizálhatja a biztonsági problémákat, tekintse meg az eseménynaplóban megjelenítő csoport **alkalmazások és szolgáltatásnaplók** > **Microsoft-Service Fabric**.
 > 
 > 
 

@@ -10,21 +10,22 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: a1212befd1cc6aaf74bc596459aa5be1ef689813
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
-ms.translationtype: HT
+ms.openlocfilehash: 89f486a00f80ba4b9f4c9f38a0637e88e5bf1ad6
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43703720"
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Ismerkedés az Application Insights szolgáltatással Java webes projektben
 
 
 Az [Application Insights](https://azure.microsoft.com/services/application-insights/) egy bővíthető elemzési szolgáltatás a webfejlesztők számára, amely segít megérteni az élő alkalmazása teljesítményét és használatát. Ezzel [észlelheti és diagnosztizálhatja a teljesítménnyel kapcsolatos hibákat és kivételeket](app-insights-detect-triage-diagnose.md), és [kódot][api] írhat annak követéséhez, hogy a felhasználók hogyan használják az alkalmazást.
 
-![mintaadatok](./media/app-insights-java-get-started/5-results.png)
+![Képernyőkép a mintaadatok áttekintése](./media/app-insights-java-get-started/overview-graphs.png)
 
 Az Application Insights a Linux, Unix vagy Windows rendszeren futó Java alkalmazásokat támogatja.
 
@@ -34,6 +35,8 @@ A következők szükségesek:
 * Egy [Microsoft Azure](https://azure.microsoft.com/)-előfizetés.
 
 *Ha már élő webalkalmazása van, az alternatív eljárást követve [hozzáadhatja az SDK-t a futásidőben a webkiszolgálón](app-insights-java-live.md). Ezzel az alternatívával nem kell újraépítenie a kódot, de nem tud kódot írni a felhasználói tevékenységek követése érdekében.*
+
+Ha a Spring keretrendszert részesíti előnyben, tekintse meg a [Spring Boot inicializáló alkalmazás konfigurálása az Application Insights használatához](https://docs.microsoft.com/java/azure/spring-framework/configure-spring-boot-java-applicationinsights) című útmutatót.
 
 ## <a name="1-get-an-application-insights-instrumentation-key"></a>1. Application Insights-kialakítási kulcs beszerzése
 1. Jelentkezzen be a [Microsoft Azure Portalra](https://portal.azure.com).
@@ -219,7 +222,9 @@ package devCamp.WebApp.configurations;
     }
 ```
 
-[!NOTE] Ha a Spring Boot 1.3.8-as vagy régebbi verzióját használja, a FilterRegistrationBean helyére írja be az alábbi sort
+> [!NOTE]
+> Ha a Spring Boot 1.3.8-as vagy régebbi verzióját használja, a FilterRegistrationBean helyére írja be az alábbi sort
+
 ```Java
     import org.springframework.boot.context.embedded.FilterRegistrationBean;
 ```
@@ -391,7 +396,7 @@ Mindegyik [Windows-teljesítményszámláló](https://msdn.microsoft.com/library
 * displayName – Az Application Insights portálon megjelenő név.
 * categoryName – A teljesítményszámláló kategóriája (teljesítményobjektum), amelyhez ez a teljesítményszámláló társítva van.
 * counterName – A teljesítményszámláló neve.
-* instanceName – A teljesítményszámláló-kategória példányneve, vagy üres karakterlánc („”), ha a kategória egyetlen példányt tartalmaz. Ha a categoryName Folyamat, és a gyűjteni kívánt teljesítményszámláló az aktuális JVM folyamatról származik, amelyen az alkalmazása fut, adja meg a következőt: `"__SELF__"`.
+* instanceName – A teljesítményszámláló-kategória példányneve, vagy üres sztring („”), ha a kategória egyetlen példányt tartalmaz. Ha a categoryName Folyamat, és a gyűjteni kívánt teljesítményszámláló az aktuális JVM folyamatról származik, amelyen az alkalmazása fut, adja meg a következőt: `"__SELF__"`.
 
 A teljesítményszámlálói egyéni mérőszámokként láthatók a [Metrikaböngészőben][metrics].
 

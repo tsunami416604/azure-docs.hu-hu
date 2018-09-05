@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/08/2017
 ms.author: ryanwi
-ms.openlocfilehash: 644089cea4dccc79e67b9117187b553eb4616d9f
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: d4b27feab5c1bb5913d2ba26f7f43aca9a899aa0
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42818214"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43697669"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>Így biztosan ismerje meg a Service Fabric?
 Az Azure Service Fabric egy elosztott rendszerplatform, amely megkönnyíti a skálázható és megbízható mikroszolgáltatások csomagolását, üzembe helyezését és kezelését.  A Service Fabric rendelkezik egy nagy támadási azonban és sok további.  Ez a cikk egy szinopszist, Service fabric biztosítja, és ismerteti az alapfogalmakat, programozási modelleket, alkalmazás-életciklus során, tesztelés, fürtök és az állapotmonitorozást. Olvassa el a [áttekintése](service-fabric-overview.md) és [Mik azok a mikroszolgáltatások?](service-fabric-overview-microservices.md) bevezetést, és hogyan a Service Fabric mikroszolgáltatások létrehozására használható. Ez a cikk egy átfogó tartalmak listája nem tartalmaz, de a hivatkozások áttekintése és első lépéseket bemutató cikkekben a Service Fabric minden területéhez. 
@@ -104,7 +104,7 @@ A [futtatható vendégalkalmazás](service-fabric-guest-executables-introduction
 ## <a name="application-lifecycle"></a>Alkalmazás-életciklus
 Mivel az eltérő platformokhoz való az alkalmazás a Service Fabric általában halad végig a következő fázisok: tervezési, fejlesztési, tesztelési, központi telepítés, frissítés, karbantartási és eltávolítását. A Service Fabric első osztályú támogatási szolgáltatásokat biztosít a felhőalapú alkalmazások, a fejlesztéstől az üzembe helyezés, a napi felügyeleti és a karbantartási végleges leszerelésének alkalmazás teljes életciklusa. A modell lehetővé teszi, hogy több különböző szerepkörök egymástól függetlenül részt vesznek az alkalmazásfejlesztési életciklust. [A Service Fabric-alkalmazás-életciklus](service-fabric-application-lifecycle.md) áttekintést ad az API-k és azok hogyan használhatók a eltérő szerepkörök fázisai a a Service Fabric-alkalmazás életciklusa során. 
 
-A teljes alkalmazás-életciklus felügyelhetők [PowerShell-parancsmagok](/powershell/module/ServiceFabric/), [CLI-parancsok](service-fabric-sfctl.md), [C# API-kat](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient), [Java API-k](/java/api/system.fabric._application_management_client), és [ REST API-k](/rest/api/servicefabric/). Is beállíthat eszközök használatával, mint például a folyamatos integráció/folyamatos üzembe helyezési folyamatok [Visual Studio Team Services](service-fabric-set-up-continuous-integration.md) vagy [Jenkins](service-fabric-cicd-your-linux-applications-with-jenkins.md).
+A teljes alkalmazás-életciklus felügyelhetők [PowerShell-parancsmagok](/powershell/module/ServiceFabric/), [CLI-parancsok](service-fabric-sfctl.md), [C# API-kat](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient), [Java API-k](/java/api/system.fabric), és [ REST API-k](/rest/api/servicefabric/). Is beállíthat eszközök használatával, mint például a folyamatos integráció/folyamatos üzembe helyezési folyamatok [Visual Studio Team Services](service-fabric-set-up-continuous-integration.md) vagy [Jenkins](service-fabric-cicd-your-linux-applications-with-jenkins.md).
 
 Az alábbi Microsoft Virtual Academy-videó ismerteti, hogyan lehet az alkalmazások életciklus-kezelése: <center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=My3Ka56yC_6106218965">
 <img src="./media/service-fabric-content-roadmap/AppLifecycleVid.png" WIDTH="360" HEIGHT="244">
@@ -185,7 +185,7 @@ Beépített a Service Fabric összetevői health jelentést a fürtben lévő ö
 
 A Service Fabric több módot is biztosít [rendszerállapot-jelentések megtekintéséhez](service-fabric-view-entities-aggregated-health.md) összevonva jelenik meg a health Store adatbázisban:
 * [A Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) vagy más vizualizációs eszközökkel.
-* Állapotlekérdezések (keresztül [PowerShell](/powershell/module/ServiceFabric/), [CLI](service-fabric-sfctl.md), a [C# FabricClient API-k](/dotnet/api/system.fabric.fabricclient.healthclient) és [Java FabricClient API-k](/java/api/system.fabric._health_client), vagy [REST API-k](/rest/api/servicefabric)).
+* Állapotlekérdezések (keresztül [PowerShell](/powershell/module/ServiceFabric/), [CLI](service-fabric-sfctl.md), a [C# FabricClient API-k](/dotnet/api/system.fabric.fabricclient.healthclient) és [Java FabricClient API-k](/java/api/system.fabric), vagy [REST API-k](/rest/api/servicefabric)).
 * Általános lekérdezi, hogy visszatérési entitások listáját, amelyben állapota (a PowerShell, CLI, az API-k vagy REST) tulajdonságok egyike.
 
 Az alábbi Microsoft Virtual Academy-videó ismerteti a Service Fabric állapotközpontú modellről, és azok felhasználási módjáról: <center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=tevZw56yC_1906218965">

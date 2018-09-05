@@ -1,6 +1,6 @@
 ---
-title: Az Azure Service Bus message lejárati |} Microsoft Docs
-description: Lejárat és az Azure Service Bus üzenetek élettartama
+title: Az Azure Service Bus-üzenetek lejáratkor |} A Microsoft Docs
+description: Lejárat és az Azure Service Bus-üzenetek élettartama
 services: service-bus-messaging
 documentationcenter: ''
 author: clemensv
@@ -12,52 +12,52 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
-ms.author: sethm
-ms.openlocfilehash: 6e1f6177ccacf24955763982189bcdb1ef69c788
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.author: spelluru
+ms.openlocfilehash: e8e5cfe4774334b470de2fbba00760126db71ddc
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
-ms.locfileid: "28196768"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43696853"
 ---
-# <a name="message-expiration-time-to-live"></a>Üzenet lejárati (Live idő)
+# <a name="message-expiration-time-to-live"></a>Üzenetek lejárata (élettartama)
 
-A tartalom egy üzenetet, vagy parancsot vagy lekérdezést, amely egy üzenetet tartalmát egy fogadóra belül szinte mindig az alkalmazásszintű lejárati határidő működik valamilyen formában. A határidő után már nem a tartalom kézbesítésével, vagy már nem a kért művelet végrehajtása.
+A belül egy üzenetet, vagy parancsot vagy lekérdezést, amely egy üzenetet, a fogadó ruház hasznos szinte mindig alkalmazásszintű lejárati határidő valamilyen vonatkoznak. A határidő után a tartalom már nem érkeznek, vagy már nem hajtja végre a kért művelet.
 
-Fejlesztési és tesztkörnyezetek is, amelyekben üzenetsorok és témakörök gyakran használnak az alkalmazások és az alkalmazás részei részleges futtatása keretében is kívánatos történő automatikus szemétgyűjtő, hogy a következő vizsgálat futtatása is kimaradt teszt üzenetek Indítsa el a tiszta.
+Fejlesztési és tesztelési környezetet, amelyben üzenetsorok és témakörök gyakran használják az alkalmazások és alkalmazás részei részleges futtatások környezetében is kívánatos automatikusan be lehet, hogy a következő vizsgálat futtatása szemétgyűjtő is kimaradt teszt üzenetek Indítsa el a tiszta.
 
-Minden egyes üzenet lejárati beállításával szabályozhatja a [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) rendszer tulajdonság, amely egy relatív időtartamát határozza meg. A lejárati abszolút azonnali lesz, ha az üzenet a várólistában levő entitásban. Ekkor a [ExpiresAtUtc](/dotnet/api/microsoft.azure.servicebus.message.expiresatutc) tulajdonság időt vesz igénybe, az az érték [(**EnqueuedTimeUtc**](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc#Microsoft_ServiceBus_Messaging_BrokeredMessage_EnqueuedTimeUtc) + [**TimeToLive**)](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive).
+Bármilyen egyéni üzenet a lejárati beállításával szabályozhatja a [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) rendszer tulajdonságot használja, amely meghatározza egy relatív időtartamát. A lejárati abszolút azonnali lesz, ha az üzenet sorba az entitásba. Ugyanakkor a [ExpiresAtUtc](/dotnet/api/microsoft.azure.servicebus.message.expiresatutc) tulajdonság értékét veszi [(**EnqueuedTimeUtc**](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc#Microsoft_ServiceBus_Messaging_BrokeredMessage_EnqueuedTimeUtc) + [**TimeToLive**)](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive).
 
-Elmúlt a **ExpiresAtUtc** azonnali, üzenetek válnak a lekérdezés nem jogosult. A lejárati nem befolyásolja az üzeneteket, amelyek azonban jelenleg zárolva vannak kézbesítésre; az üzenetek továbbra is megfelelően kezeli. A zárolás lejár, vagy az üzenetet a rendszer félbehagyná, ha a lejárati azonnal érvénybe lép.
+Elmúlt a **ExpiresAtUtc** azonnali, üzenetek válnak lekérés nem lehet áttelepíteni. A lejárati nem befolyásolja az üzeneteket, amelyek jelenleg zárolva van, a tartalomkézbesítési; Ezeket az üzeneteket továbbra is megfelelően kezeli. Ha a zárolás lejárta vagy az üzenet van hagyva, a lejárati azonnal érvénybe lép.
 
-Bár az üzenetet a zárolási, az alkalmazás egy üzenetet, amely lejárt birtokában lehet. Hogy az alkalmazás hajlandó feldolgozási használatától, vagy úgy dönt, hogy az üzenet abandon esetén a végrehajtója.
+Az üzenet zárolási alatt van, amíg az alkalmazás egy üzenet, amely lejárt birtokában lehet. Hogy az alkalmazás arra, hogy lépjen tovább, és a feldolgozás, vagy úgy dönt, hogy az üzenet zárolásának feloldása a végrehajtója esetén.
 
 ## <a name="entity-level-expiration"></a>Entitásszintű lejárata
 
-Az üzenetsor vagy témakör küldött összes üzenet lépnek egy alapértelmezett lejárati, hogy az entitás nem állítják a szint a [defaultMessageTimeToLive](/azure/templates/microsoft.servicebus/namespaces/queues) tulajdonság, és amely is létrehozása a portálon beállított és később módosítani. Az alapértelmezett lejárati szolgál az entitás küldött összes üzenet ahol [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) nincs megadva. Az alapértelmezett lejárati olyan funkciókkal, mint a felső határ az **TimeToLive** érték. Üzeneteket, amelyek hosszabb **TimeToLive** lejárati, mint az alapértelmezett érték csendes van igazítva a **defaultMessageTimeToLive** mielőtt a várólistán lévő érték.
+Egy üzenetsorba vagy témakörbe küldött összes üzenet vonatkoznak rá egy alapértelmezett elévülési, amely az entitás nem állítják a szint a [defaultMessageTimeToLive](/azure/templates/microsoft.servicebus/namespaces/queues) tulajdonságot, és amely is a portálon beállított létrehozásakor és később módosítani. Az alapértelmezett lejárati szolgál az entitás küldött összes üzenet ahol [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) nem állított be. Az alapértelmezett lejárati olyan funkciókkal, mint a felső határt a **TimeToLive** értéket. Üzeneteket, amelyek rendelkeznek egy hosszabb **TimeToLive** lejárati, mint az alapértelmezett érték csendes módban vannak igazítva a **defaultMessageTimeToLive** mielőtt a várólistán lévő érték.
 
-A lejárt üzenetek szükség lehet áthelyezni egy [kézbesítetlen levelek várólistájára](service-bus-dead-letter-queues.md) úgy, hogy a [EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enabledeadletteringonmessageexpiration#Microsoft_ServiceBus_Messaging_QueueDescription_EnableDeadLetteringOnMessageExpiration) tulajdonság, vagy jelölje be a portál a megfelelő négyzetet. Ha a beállítás le van tiltva, a rendszer eldobja a lejárt üzenetek. Lejárt a kézbesítetlen levelek várólistájára helyezett üzeneteket meg lehet különböztetni a többi kézbesítetlen lettered üzenet kiértékelésével a [DeadletterReason](service-bus-dead-letter-queues.md#moving-messages-to-the-dlq) , amely a broker tárolja a felhasználói tulajdonságok szakaszának; tulajdonság értéke [TTLExpiredException](service-bus-dead-letter-queues.md#moving-messages-to-the-dlq) ebben az esetben.
+Lejárt üzenetek igény szerint helyezhetők át egy [kézbesítetlen levelek várólistájára](service-bus-dead-letter-queues.md) beállításával a [EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enabledeadletteringonmessageexpiration#Microsoft_ServiceBus_Messaging_QueueDescription_EnableDeadLetteringOnMessageExpiration) tulajdonság, vagy a portál a megfelelő négyzetet. Ha a beállítás le van tiltva, a rendszer elveti lejárt üzenetek. Lejárt üzenetek áthelyezése a kézbesíthetetlen levelek várólistájára lehet különböztetni a többi kézbesítetlen lettered üzenet kiértékelése a [DeadletterReason](service-bus-dead-letter-queues.md#moving-messages-to-the-dlq) , amely a közvetítő tárolja a felhasználói tulajdonságok szakaszának; tulajdonság értéke [TTLExpiredException](service-bus-dead-letter-queues.md#moving-messages-to-the-dlq) ebben az esetben.
 
-A fent említett esetében, amelyben az üzenet lejárati közben a zárolást, és ha a jelző be van állítva az entitás védve az üzenet átkerül a kézbesítetlen levelek várólistájára rendszer félbehagyná a zárolást, illetve lejár. Azonban nem áthelyezés Ha az üzenet sikeresen rendezik, ami azt feltételezi, hogy az alkalmazás sikeresen kezelt, függetlenül a névleges lejárati.
+A fent említett helyzet, amelyben az üzenet védett a lejárati közben a zárolást, és ha a jelző be van állítva az entitást, az üzenet átkerül a kézbesítetlen levelek várólistájára vonatkozik, a zárolás van hagyva, vagy lejár. Azonban nem áthelyezés Ha az üzenet sikeresen rendezik, amely azt feltételezi, hogy az alkalmazás már sikeresen kezelte, lejárta után névleges költséget számítunk értéket.
 
-A kombinációja [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) és automatikus (és tranzakciós) kézbesítetlen levelek kezelése lejártakor e egy feladatot, a kezelő vagy a határidőt a kezelők csoporthoz megadott lekérése az vetett bizalmat létrehozó értékes eszközt feldolgozásával a határidő elérésekor.
+Kombinációja [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) , és automatikus (és a tranzakciós) kézbesítetlen levelek kezelése lejártakor értékes eszköze a bizalom e egy feladatot, a kezelő vagy a határidőt a kezelők csoportja a rendszer lekéri a létrehozó feldolgozását a határidő elérésekor.
 
-Vegye figyelembe például egy webhely, amely megbízhatóan végrehajtani a feladatokat a skála korlátozott háttérkiszolgálón van szüksége, és amely alkalmanként lép forgalom napra, vagy el akar ellen, hogy a háttér rendelkezésre állási részének elhelyezni. A normál esetben a elküldött adatokat a kiszolgálóoldali kezelőt leküldéses értesítések az adatokat a várólistán, és ezt követően erősítse meg a tranzakció egy válasz várólistára sikeres kezelésének válasz érkezik. Ha a forgalom csúcs, és a háttér-kezelő nem tudja feldolgozni a várakozó elemek időben, a lejárt feladatok vannak vissza a kézbesítetlen levelek várólistájára. Az interaktív felhasználó is értesíti, hogy a kért művelet kissé a szokásosnál hosszabb ideig tart, és a kérelem majd elhelyezhető egy másik várólistához feldolgozási út ahol végleges feldolgozási eredménye a felhasználó által küldött e-mailek. 
+Vegyük példaként egy webhely, amely megbízhatóan futtathatnak feladatokat a méretezési csoport által korlátozott háttérkiszolgálón kell, és alkalmanként élményt adatforgalom hirtelen megugró kihasználtság, vagy el akar elhelyezni ellen rendelkezésre állási epizódját adott háttérrendszer, amely. A normál esetben a kiszolgálóoldali kezelő az elküldött felhasználói adatok leküldi az adatokat egy üzenetsorba, és ezt követően a sikeres kezelésére egy válasz üzenetsorba a tranzakció megerősítése válasz érkezik. Ha forgalmat ugrásszerű, és a háttér-kezelő nem tudja feldolgozni a várakozó elemek időben, a lejárt feladatok vannak vissza a kézbesítetlen levelek várólistájára vonatkozik. Az interaktív felhasználó értesítést kaphat, hogy a kért műveletet a szokásosnál kicsit tovább tart, és a kérés majd állítható. Ebben az egy feldolgozási elérési útja a másik üzenetsorba, a végső feldolgozási eredménye a felhasználó által küldött e-mailt. 
 
 ## <a name="temporary-entities"></a>Ideiglenes entitások
 
-Service Bus-üzenetsorok, témakörök és előfizetések ideiglenes entitások, amely automatikusan törlődnek, amikor azok nem használtak egy adott időn hozhatók létre.
+Service Bus-üzenetsorok, témakörök és előfizetések entitásokként ideiglenes, amely lesznek automatikusan eltávolítva, ha azok nem használták a megadott időtartam elteltéig hozható létre.
  
-Az automatikus tisztítás akkor hasznos, a fejlesztési és tesztelési forgatókönyvek, amelyben entitások dinamikusan jönnek létre, és nem használja, a vizsgálat vagy a hibakeresési futtatja néhány megszakadásának miatt után törlődnek. Ez akkor hasznos, ha egy alkalmazás hoz létre a dinamikus entitások, például egy válasz várólista, a válaszok vissza egy webkiszolgáló-folyamat vagy egy másik viszonylag rövid élettartamú objektum nehéz entitásokból megbízhatóan karbantartása során az objektum megjelenik a példány.
+Az automatikus tisztítás hasznos fejlesztési és tesztelési forgatókönyvek, amelyben entitások dinamikusan létrehozott, és nem használja, a teszt vagy a hibakeresési futtatása néhány megszakítás miatt után törlődnek. Ez akkor hasznos, ha egy alkalmazást hoz létre dinamikus entitások, például egy válasz várólista, a válaszfogadás vissza egy webkiszolgáló-folyamat, vagy egy másik viszonylag rövid életű objektum nehéz ezeket az entitásokat is megbízhatóan karbantartása során az objektum példány eltűnik.
 
-A szolgáltatás engedélyezve van, használja a [autoDeleteOnIdle](/azure/templates/microsoft.servicebus/namespaces/queues) tulajdonság, amely az időtartam, amelyre egy entitás kell van beállítva üresjárati (nem használt), mielőtt a rendszer automatikusan törli. A minimális időtartam érték 5 perc.
+A szolgáltatás engedélyezve van, használja a [autoDeleteOnIdle](/azure/templates/microsoft.servicebus/namespaces/queues) tulajdonság, amely az időtartam, amelyre egy entitás kell értékre van állítva üresjárati (nem használt), mielőtt a rendszer automatikusan törli azt. A minimális érték 5 perc.
  
-A **autoDeleteOnIdle** tulajdonságot kell beállítani, a .NET-keretrendszer ügyfél keresztül vagy egy Azure Resource Manager művelet [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) API-k. A portálon keresztül nem állítható be.
+A **autoDeleteOnIdle** tulajdonságot kell beállítani egy Azure Resource Manager-műveletet vagy a .NET-keretrendszer ügyfél keresztül [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) API-k. A portálon keresztül nem állítható be.
 
 
 ## <a name="next-steps"></a>További lépések
 
-Tudhat meg többet a Service Bus üzenetkezelés, a következő témakörökben:
+További információ a Service Bus-üzenetkezelés, tekintse meg a következő témaköröket:
 
 * [A Service Bus alapjai](service-bus-fundamentals-hybrid-solutions.md)
 * [Service Bus-üzenetsorok, -témakörök és -előfizetések](service-bus-queues-topics-subscriptions.md)

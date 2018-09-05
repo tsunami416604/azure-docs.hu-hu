@@ -11,19 +11,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/08/2018
 ms.author: rafats
-ms.openlocfilehash: 796971ff541b62a22a70df4022ab78817e7158e9
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 5811cb1e08ed5d02038da2a4460ae4b63580833b
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40003317"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43696139"
 ---
 # <a name="unique-keys-in-azure-cosmos-db"></a>Azure Cosmos DB-ben egyedi kulcsaival
 
 Egyedi kulcsok nyújtanak a fejlesztők számára lehetővé teszi, hogy adatintegritási réteget egy saját adatbázisba. Egyedi hoz létre, amikor egy tároló jön létre, egy vagy több értéket kiszolgálónként egyediségének biztosítása [partíciókulcs](partition-data.md). Miután a tároló egyedi létre lett hozva, ez megakadályozza, hogy az ismétlődő értékek az egyedi kulcsmegkötés által megadott értéket tartalmazó új vagy frissített elemek létrehozását.   
 
 > [!NOTE]
-> A legújabb verziói által támogatott egyedi kulcsok a [.NET](sql-api-sdk-dotnet.md) és [.NET Core](sql-api-sdk-dotnet-core.md) SQL SDK-k és a [MongoDB API-val](mongodb-feature-support.md#unique-indexes). A Table API és a Graph API támogatja jelenleg egyedi kulcsok. 
+> A legújabb verziói által támogatott egyedi kulcsok a [.NET](sql-api-sdk-dotnet.md) és [.NET Core](sql-api-sdk-dotnet-core.md) SQL SDK-k és a [MongoDB API-val](mongodb-feature-support.md#unique-indexes). A Table API és a Gremlin API támogatja jelenleg egyedi kulcsok. 
 > 
 >
 

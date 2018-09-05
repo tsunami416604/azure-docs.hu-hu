@@ -15,20 +15,20 @@ ms.component: pim
 ms.date: 08/29/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: bc60c0dbe6c609a08907feb243fe514badfe3e4e
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 9402824540f965cb89aa00791d093bd87712a89a
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43288075"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43665842"
 ---
 # <a name="approve-or-deny-requests-for-azure-ad-directory-roles-in-pim"></a>Hagyja jóvá vagy utasítsa a PIM az Azure AD-címtárbeli szerepkörökhöz tartozó kérelmek
 
-Az Azure AD Privileged Identity Management (PIM) jóváhagyást kér az aktiválási szerepkörök konfigurálása, és válasszon egy vagy több felhasználót, vagy delegált jóváhagyók csoportot.
+Az Azure AD Privileged Identity Management (PIM) jóváhagyást kér az aktiválási szerepkörök konfigurálása, és válasszon egy vagy több felhasználót, vagy delegált jóváhagyók csoportot. Kövesse az ebben a cikkben jóváhagyja vagy elutasítja a kérelmeket az Azure AD-címtárbeli szerepkörökhöz tartozó lépéseket.
 
 ## <a name="view-pending-requests"></a>Függőben lévő kérelmek megtekintése
 
-Delegált jóváhagyónak Ha a kérelem jóváhagyásra váró kap e-mail-értesítések. Megtekintheti a függőben lévő kérések az PIM-ben.
+Delegált jóváhagyónak e-mailben értesítést fog kapni, ha egy Azure AD directory szerepkör kérelem jóváhagyásra váró. Megtekintheti a függőben lévő kérések az PIM-ben.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
@@ -74,5 +74,5 @@ Delegált jóváhagyónak Ha a kérelem jóváhagyásra váró kap e-mail-értes
 
 ## <a name="next-steps"></a>További lépések
 
-- [Hagyja jóvá vagy utasítsa a PIM az Azure-erőforrások szerepköreihez tartozó kérelmek](pim-resource-roles-approval-workflow.md)
 - [A PIM e-mail-értesítések](pim-email-notifications.md)
+- [Hagyja jóvá vagy utasítsa a PIM az Azure-erőforrások szerepköreihez tartozó kérelmek](pim-resource-roles-approval-workflow.md)

@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/14/2018
-ms.openlocfilehash: 37edf60ed0b63b4ff97094a496a08a592cb46fc0
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 4fd85135ea16a5183b1b0d5220d1c160044e8841
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39715420"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43701014"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Kimenő adatait az Azure Stream Analytics ismertetése
 Ez a cikk bemutatja a kimenetek elérhető az Azure Stream Analytics-feladat különböző típusú. Kimenetek segítségével tárolhatja, és a Stream Analytics-feladat eredményének mentése. A kimeneti adatokat használja, végezhet további üzleti elemzés és az adattárház az adatokat. 
@@ -58,7 +58,7 @@ A Stream Analytics az Azure Data Lake Store-kimenet jelenleg nem érhető el az 
 ### <a name="renew-data-lake-store-authorization"></a>Data Lake Store engedély megújítása
 A Data Lake Store-fiók hitelesítse magát újra, ha a jelszó megváltozott, mivel a feladat létrehozásának vagy utolsó hitelesített kell. Ha Ön nem újrahitelesítéséhez, a feladat nem állít elő a kimeneti eredmények, és akkor jelez hibát jelezve a műveletnaplók a reauthorization van szükség. Jelenleg korlátozott, a hitelesítési jogkivonat kell manuálisan frissíteni kell a Data Lake Store-kimenet az összes feladat 90 naponta. 
 
-Engedély megújítása **leállítása** a feladat > Nyissa meg a Data Lake Store-Kimenet > kattintson a **engedély megújítása** hivatkozásra, és a egy rövid ideig lap felugró jelző **átirányítása engedélyezési... **. A lap automatikusan bezárja, és jelzi, ha ez sikeres, **engedélyezési sikeresen megújítva**. Szeretne kattintson **mentése** a lap alján, és folytathatja a feladatot újraindítja a **leállt utoljára** adatvesztés elkerülése érdekében.
+Engedély megújítása **leállítása** a feladat > Nyissa meg a Data Lake Store-Kimenet > kattintson a **engedély megújítása** hivatkozásra, és a egy rövid ideig lap felugró jelző **átirányítása engedélyezési...** . A lap automatikusan bezárja, és jelzi, ha ez sikeres, **engedélyezési sikeresen megújítva**. Szeretne kattintson **mentése** a lap alján, és folytathatja a feladatot újraindítja a **leállt utoljára** adatvesztés elkerülése érdekében.
 
 ![Data Lake Store engedélyezése](./media/stream-analytics-define-outputs/08-stream-analytics-define-outputs.png)  
 

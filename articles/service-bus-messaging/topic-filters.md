@@ -1,6 +1,6 @@
 ---
-title: Az Azure Service Bus témakör szűrők |} Microsoft Docs
-description: Azure Service Bus-üzenettémakörök szűrése
+title: Az Azure Service Bus-témakör szűrők |} A Microsoft Docs
+description: Az Azure Service Bus-üzenettémakörök szűrése
 services: service-bus-messaging
 documentationcenter: ''
 author: clemensv
@@ -12,49 +12,49 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
-ms.author: sethm
-ms.openlocfilehash: 305c017bd49f233c10479e2c33ec8db72cae3aa7
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.author: spelluru
+ms.openlocfilehash: a1616150ebf696654bc0ca9a79d39c3877c363d9
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
-ms.locfileid: "28198868"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43699386"
 ---
-# <a name="topic-filters-and-actions"></a>A témakör szűrők és műveletek
+# <a name="topic-filters-and-actions"></a>Témakörszűrők és -műveletek
 
-Előfizetők témakör fogadása szeretnék üzenetet adhat meg. Ezek az üzenetek egy vagy több elnevezett előfizetési szabályokat formájában vannak megadva. Minden egyes szabály egy feltétel, ami az adott üzeneteket, és egy műveletet, amely jelzi a kijelölt üzenet áll. Minden egyező szabályt feltétel az előfizetés az üzenet, amely előfordulhat, hogy másképp feliratozni minden egyező szabály másolatot hoz létre.
+Az előfizetők meghatározhatják, hogy mely üzeneteket szeretnék megkapni egy témakörön belül. Ezeket az üzeneteket egy vagy több előfizetés nevesített szabály formájában vannak megadva. Minden egyes szabály egy feltételt, amely kiválasztja az adott üzenetek és a egy műveletet, amely jelzi a kijelölt üzenet áll. Az előfizetés megfelelő szabályfeltételenként létrehoz egy üzenetmásolatot, amelyek azután megfelelő szabályonként más és más jelöléssel láthatók el.
 
-Minden egyes újonnan létrehozott üzenettémakör-előfizetésben a kezdeti alapértelmezett előfizetés szabályt tartalmaz. Ha nem Ön kifejezetten megad egy szűrési feltételt a szabályhoz, van-e az alkalmazott szűrő a **igaz** szűrő, amely lehetővé teszi az összes üzenet ki kell választani a előfizetéssé. Az alapértelmezett szabály nincs társítva a jegyzet művelet van.
+Minden egyes újonnan létrehozott témakör-előfizetésben rendelkezik egy kezdeti alapértelmezett előfizetés szabályt. Ha nem Ön kifejezetten megad egy szűrési feltételt a szabályhoz, van-e az alkalmazott szűrőt a **igaz** szűrőt, amely lehetővé teszi, hogy ki kell választani az előfizetést az összes üzenetet. Az alapértelmezett szabály nem társított jegyzet művelet rendelkezik.
 
-A Service Bus három szűrőfeltételei támogatja:
+Service Bus három szűrési feltételt támogat:
 
--   *Logikai szűrők* – a **TrueFilter** és **FalseFilter** vagy következtében az összes beérkező üzenetek (**igaz**) vagy a beérkező üzenetek egyike (**hamis**) ki kell választani az előfizetéshez.
+-   *Logikai szűrők* – a **TrueFilter** és **FalseFilter** vagy okoz az összes beérkező üzeneteket (**igaz**), vagy a beérkező üzeneteket (**hamis**) ki kell jelölni az előfizetéshez.
 
--   *Az SQL-szűrők* - A **SqlFilter** egy SQL-szerű feltételt, amely értékeli a beérkező üzenetek felhasználói és a rendszer tulajdonságai elleni broker tartalmazza. Az összes rendszertulajdonsághoz előtaggal kell `sys.` a feltételes kifejezés. A [SQL-nyelv részhalmaza a szűrési feltételeket](service-bus-messaging-sql-filter.md) tulajdonságok (EXISTS) is null értékek (IS NULL), a logikai nem/és/vagy, a relációs operátorok, a egyszerű numerikus aritmetika és az egyszerű szöveges minta megléte meglétének ellenőrzése a hasonló megfelelő.
+-   *Az SQL-szűrők* – **SqlFilter** tárol egy SQL-szerű feltételes kifejezés, amely a közvetítő a beérkező üzeneteket felhasználói és a rendszer tulajdonságai alapján értékeli ki. Összes rendszertulajdonsághoz előtaggal kell ellátni `sys.` a feltételes kifejezésben. A [SQL-nyelv részét a szűrési feltételek](service-bus-messaging-sql-filter.md) tesztek a Tulajdonságok (EXISTS), valamint null-értéket (NULL), logikai NOT/és/vagy, a relációs operátorok, egyszerű numerikus számtani és egyszerű szöveges minta létezik-e HASONLÓ egyezéseit.
 
--   *Korrelációs szűrők* - A **CorrelationFilter** tárolja a feltételek, amelyek megfelelnek egy vagy több, egy beérkező üzenetet felhasználói és a rendszer tulajdonság ellen. A közös használata az egyeztetéshez a **CorrelationId** tulajdonságot, de az alkalmazás is beállíthatja az egyeztetéshez **ContentType**, **címke**,  **MessageId**, **ReplyTo**, **ReplyToSessionId**, **SessionId**, **való**, és minden felhasználó által definiált tulajdonságok. Van egyezés, ha egy beérkező üzenetet egy tulajdonság értéke a korrelációs szűrőben megadott értéknél. A karakterlánc kifejezése eredményű összehasonlítás esetén kis-és nagybetűket. Több egyező tulajdonság megadása esetén a szűrő logikai AND feltétele, tehát a megfelelő szűrő egyesíti őket, minden feltétel meg kell egyeznie.
+-   *A korrelációs szűrők* – **korrelációs szűrő** feltételeket, amelyek egy vagy több felhasználó és a rendszer tulajdonságai egy beérkező üzenetet összeveti készletét tartalmazza. Egy közös használata az egyeztetéshez a **CorrelationId** tulajdonság, de az alkalmazás is beállíthatja az egyeztetéshez **ContentType**, **címke**,  **Üzenetazonosító**, **ReplyTo**, **ReplyToSessionId**, **SessionId**, **való**, és minden olyan felhasználó által definiált tulajdonságok. Ha egy beérkező üzenetet egy tulajdonság értéke megegyezik a megadott korrelációs szűrő értéke van egyezés. A karakterlánc-kifejezés az összehasonlítás eredménye kis-és nagybetűket. Több egyezés tulajdonság megadása esetén a szűrőt, logikai és feltétel, ami azt jelenti, a megfelelő szűrő egyesíti azokat, minden feltétel egyeznie kell.
 
-Az összes szűrő üzenettulajdonságok kiértékeléséhez. Szűrők az üzenettörzs nem értékelhető ki.
+Az összes szűrő kiértékelése üzenet tulajdonságai. Szűrők az üzenet törzse nem értékelhető ki.
 
-Összetett szabályokhoz feldolgozási kapacitás. SQL Állapotszűrő-szabályok használata különösen az előfizetés, a témakör és a névtér szintjén alacsonyabb teljes üzenet teljesítményt eredményez. Amikor csak lehetséges, alkalmazások válasszon korrelációs szűrők SQL-szerű szűrők, mivel sokkal hatékonyabban a feldolgozása, és ezért az átviteli sebesség rendelkezik kisebb mértékű befolyásolása mellett.
+Összetett szűrési szabályokat a feldolgozási kapacitás szükséges. SQL Állapotszűrő szabályok használata különösen alacsonyabb teljes üzeneteinek átviteli sebessége az előfizetést, az üzenettémakör és a névtér szintjén eredményez. Amikor csak lehetséges, alkalmazások kell választania, a korrelációs szűrők SQL-szerű szűrők, mivel jóval hatékonyabb, a feldolgozás, és így kell kisebb hatással lesznek az átviteli sebesség.
 
 ## <a name="actions"></a>Műveletek
 
-SQL szűrési feltételeket, és csak azokat definiálhat egy műveletet, amely az üzenet fűzhet hozzá, eltávolítása vagy cseréje a tulajdonságok és értékeik. A művelet [SQL-szerű kifejezést használ](service-bus-messaging-sql-filter.md) , amely lazán leans meg a frissítés az SQL-utasítás szintaxisa. Miután egyeztetett azt, és az üzenet van kiválasztva a témakörbe előtt, az üzenet elvégezni a műveletet. Az üzenet tulajdonságainak a módosítása csak az előfizetés átmásolja az üzenetet a.
+Az SQL-szűrési feltételeket, és csak azokat a meghatározhatja egy műveletet, amely képes jegyzettel láthatja el az üzenet hozzáadása, eltávolítása vagy cseréje a tulajdonságok és azok értékei szerint. A művelet [használ egy SQL-szerű](service-bus-messaging-sql-filter.md) , amely lazán leans a frissítés az SQL-utasítás szintaxisa a. Miután egyeztetett azt, és mielőtt az üzenet témakörben van kiválasztva, az üzenet végrehajtott művelet. Az üzenet tulajdonságainak módosítását az üzenet átmásolhatja az előfizetés csak a.
 
 ## <a name="usage-patterns"></a>Használati minták
 
-A legegyszerűbb használati forgatókönyvtől témakör, hogy minden előfizetés lekérdezi egy példányát minden üzenetet elküldenek egy témakörbe, amely lehetővé teszi egy szórási mintát.
+A témakör a legegyszerűbb használati forgatókönyvtől függ az, hogy minden előfizetés beolvasása, amely lehetővé teszi egy szórási minta témakörbe küldött minden üzenet másolata.
 
-Szűrők és műveletek lehetővé teszik annak a két további csoportok: particionálás és útválasztást.
+Szűrők és a műveletek lehetővé teszik a minták két további csoportok: a particionálás és az Útválasztás.
 
-A particionáló használ szűrők üzenetek szét több meglévő üzenettémakör-előfizetéseket a kiszámítható és egymást kölcsönösen kizáró módon. A particionálási mintát használatos, amikor a rendszer gyakorlatilag azonos szegmenst, hogy mindegyik rendelkezik-e az összesített adatok; egy részét a sok különböző környezetekben kezelésére van horizontálisan például a felhasználói profil adatait. A particionálás, a közzétevő küldi el az üzenetet egy témakörbe anélkül, hogy a particionáló modell ismerete. Az üzenet majd átkerül a megfelelő előfizetés, amelyből, majd lekérheti a partíció üzenetkezelő.
+A particionálás használt szűrők üzenetek szét több meglévő előfizetések a kiszámítható és kölcsönösen kizárják egymást. A particionálási minta használatos, amikor a rendszer horizontálisan funkcionálisan azonos veremből, hogy minden egyes tartsa az összesített adatok egy részét a számos különböző környezeteket kezeli például a felhasználói profil adatait. A particionálás, közzétevő elküldi az üzenetet egy témakörbe particionálási minta ismerete nélkül. Az üzenet majd került, amelyről, majd lekérheti a partíció üzenetkezelőt a megfelelő előfizetés.
 
-Üzenetek szét üzenettémakör-előfizetéseket, kiszámítható módon szűrők útválasztást használ, de nem feltétlenül kizárólagos. Együtt a [automatikus továbbítási](service-bus-auto-forwarding.md) funkció, szűrők segítségével összetett műveletterv témakör grafikonokon üzenet terjesztési belül egy Azure-régió, a Service Bus-névtér belül. Az Azure Functions vagy Azure Logic Apps hidat Azure Service Bus-névtér között működött az üzletági alkalmazások közvetlen integrálása összetett globális topológiák hozhat létre.
+Üzenetek szét üzenettémakör-előfizetéseket, kiszámítható módon szűrők útválasztást használ, de nem feltétlenül kizárólagos. Együtt a [automatikus továbbítását](service-bus-auto-forwarding.md) funkció, a témakör a szűrők segítségével hozzon létre összetett útválasztást grafikonokon belül üzenet terjesztési Azure régiókon belül a Service Bus-névtér. Az Azure Functions vagy Azure Logic Apps között az Azure Service Bus-névterek hídként működik, az összetett globális üzleti alkalmazások közvetlen integrálása topológiák is létrehozhat.
 
 ## <a name="next-steps"></a>További lépések
 
-Tudhat meg többet a Service Bus üzenetkezelés, a következő témakörökben:
+További információ a Service Bus-üzenetkezelés, tekintse meg a következő témaköröket:
 
 * [A Service Bus alapjai](service-bus-fundamentals-hybrid-solutions.md)
 * [Service Bus-üzenetsorok, -témakörök és -előfizetések](service-bus-queues-topics-subscriptions.md)

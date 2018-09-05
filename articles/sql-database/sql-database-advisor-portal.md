@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: v-daljep
 ms.reviewer: carlrab
-ms.openlocfilehash: 7df4033a378ce3b37a99ed0335200e7f71696594
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 67432c8751cd8809649d41195957a7d68b392074
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39528646"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43665599"
 ---
 # <a name="find-and-apply-performance-recommendations"></a>Keresse meg és teljesítménnyel kapcsolatos javaslatok alkalmazása
 
@@ -114,7 +114,7 @@ Jelölje ki bármely javaslatra, és kattintson a **parancsfájl megjelenítése
 *Manuálisan végrehajtott indexek nem monitorozott és a teljesítményt a a szolgáltatás által ellenőrzött* ezért javasoljuk, hogy nyomon, hogy ezek az indexek ellenőrizheti azok teljesítménynövekedést biztosít, és módosítsa vagy törölje őket, ha szükséges a létrehozása után. Az indexek létrehozásával kapcsolatos részletekért lásd: [a CREATE INDEX (Transact-SQL)](https://msdn.microsoft.com/library/ms188783.aspx).
 
 ### <a name="canceling-recommendations"></a>Javaslatok visszavonása
-Az ajánlások egy **függőben lévő**, **ellenőrzése**, vagy **sikeres** állapot szakadhatnak meg. Javaslatok állapottal **Executing** nem szakítható meg.
+Az ajánlások egy **függőben lévő**, **érvényesítés**, vagy **sikeres** állapot szakadhatnak meg. Javaslatok állapottal **Executing** nem szakítható meg.
 
 1. Válasszon ki egy javaslatot a a **hangolási előzmények** területen nyissa meg a **ajánlások részleteit** lapot.
 2. Kattintson a **Mégse** megszakítja a folyamatot a javaslat alkalmazása.
@@ -126,7 +126,7 @@ A javaslat alkalmazása nem fordulhat elő, azonnal. A portálon részletesen aj
 |:--- |:--- |
 | Függőben |A alkalmazni javaslat érkezett parancsot, és ütemezve van végrehajtásra. |
 | Végrehajtás |Az ajánlás alkalmazása folyamatban van. |
-| Ellenőrzés |Javaslatok sikeresen alkalmazva lett, és a szolgáltatás mérés előnyeit. |
+| Érvényesítés |Javaslatok sikeresen alkalmazva lett, és a szolgáltatás mérés előnyeit. |
 | Sikeres |Az ajánlás alkalmazása sikerült és előnyöket mért lett. |
 | Hiba |Hiba történt az ajánlás alkalmazásának folyamatában. Ez lehet egy átmeneti probléma, vagy akár egy sémát módosítani a tábla, és a szkript már nem érvényes. |
 | Visszaállítás |Az ajánlás lett alkalmazva, de nem nagy teljesítményű minősül, és automatikusan vissza. |
