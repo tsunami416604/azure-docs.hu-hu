@@ -2,19 +2,19 @@
 title: Oktatóanyag – Kereskedelmi leltárválaszték frissítése közzétételi/előfizetési csatornák és témakörszűrők használatával az Azure PowerShell-lel | Microsoft Docs
 description: Ez az oktatóanyag bemutatja, hogyan küldhet és fogadhat üzeneteket egy témakörből vagy előfizetésből, és miként adhat hozzá és használhat szűrési szabályokat az Azure PowerShell felületről
 services: service-bus-messaging
-author: sethmanheim
+author: spelluru
 manager: timlt
-ms.author: sethm
+ms.author: spelluru
 ms.date: 05/22/2018
 ms.topic: tutorial
 ms.service: service-bus-messaging
 ms.custom: mvc
-ms.openlocfilehash: 6246e951cb9b1e0b4dac656fef6acf8027e79271
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 14f3fe81ab613f05154365b832d860808c3184bf
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43126551"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43702187"
 ---
 # <a name="tutorial-update-inventory-using-powershell-and-topicssubscriptions"></a>Oktatóanyag: Leltár frissítése a PowerShell és témakörök/előfizetések használatával
 

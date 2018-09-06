@@ -14,12 +14,12 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: spelluru
-ms.openlocfilehash: fbb43d07296ca573f0c4cb9f1e10e005633ade06
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
-ms.translationtype: HT
+ms.openlocfilehash: daabf711e923e1c4ff3132c5e4765bdbff206948
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/05/2018
-ms.locfileid: "43700096"
+ms.locfileid: "43782911"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-nodejs"></a>Hogyan használható a Service Bus-üzenettémák és előfizetések a node.js használatával
 
@@ -95,7 +95,7 @@ serviceBusService.createTopicIfNotExists('MyTopic',function(error){
 });
 ```
 
-A `createServiceBusService` módszer is támogatja a további beállítások, így lehetővé teszi, például az üzenet élettartamának idején vagy a témakör maximális méretének alapértelmezett témakör beállításainak felülbírálására. 
+A `createTopicIfNotExists` módszer is támogatja a további beállítások, így lehetővé teszi, például az üzenet élettartamának idején vagy a témakör maximális méretének alapértelmezett témakör beállításainak felülbírálására. 
 
 Az alábbi példa a témakör maximális mérete 5 GB-os az egy egy perces élettartam állítja:
 
@@ -235,12 +235,12 @@ var rule={
 }
 ```
 
-Ha egy már üzenettel `MyTopic`, érkeznek fogadónak is, amelyre Ön feliratkozott a `AllMessages` témakör-előfizetés, és szelektív módon kézbesíti a `HighMessages` és `LowMessages` üzenettémakör-előfizető (attól függően, az üzenet tartalmának).
+Amikor egy üzenet most már a érkezik `MyTopic`, akkor kézbesíti az üzenetet az előfizetett a `AllMessages` témakör-előfizetés, és szelektív módon kézbesíti a `HighMessages` és `LowMessages` üzenettémakör-előfizető (attól függően, hogy a üzenet tartalma).
 
 ## <a name="how-to-send-messages-to-a-topic"></a>Üzenetek küldése egy üzenettémakörbe
 Egy üzenetet küld egy Service Bus-témakörbe, az alkalmazás használatához a `sendTopicMessage` módszere a **ServiceBusService** objektum.
 Service Bus-témakörökbe küldött üzenetek vannak **BrokeredMessage** objektumokat.
-**BrokeredMessage** objektumok rendelkeznek egy szabványos tulajdonságkészlettel (például `Label` és `TimeToLive`), egyéni alkalmazásspecifikus tulajdonságokat használt, valamint egy karakterláncadatokat törzse. Az alkalmazás beállíthatja az üzenet törzsét egy karakterláncértéket történő átadásával az `sendTopicMessage` és a szükséges alapvető tulajdonságainak alapértelmezett értékek alapján lesz kitöltve.
+**BrokeredMessage** objektumok rendelkeznek egy szabványos tulajdonságkészlettel (például `Label` és `TimeToLive`), egyéni alkalmazásspecifikus tulajdonságokat használt, valamint egy karakterláncadatokat törzse. Az alkalmazás beállíthatja az üzenet törzsét egy karakterláncértéket történő átadásával az `sendTopicMessage` és a szükséges alapvető tulajdonságainak alapértelmezett értékek szerint fel van töltve.
 
 Az alábbi példa bemutatja, hogyan küldhető öt tesztüzenet az `MyTopic`. A `messagenumber` egyes üzenetek tulajdonság értéke a ciklus ismétléseinek a változik (Ez határozza meg, melyik előfizetések megkapni):
 
@@ -268,7 +268,7 @@ A Service Bus-üzenettémakörök a [Standard csomagban](service-bus-premium-mes
 ## <a name="receive-messages-from-a-subscription"></a>Üzenetek fogadása egy előfizetésből
 Üzenetek kapott egy előfizetés az a `receiveSubscriptionMessage` metódust a **ServiceBusService** objektum. Üzenetek alapértelmezés szerint törlődnek az előfizetésből, beolvasni azokat. Ugyanakkor beállíthatja a nem kötelező paraméter `isPeekLock` való **igaz** (betekintési) és az üzenet zárolása anélkül, hogy törölné az előfizetést.
 
-Az alapértelmezett viselkedést, beolvasása, illetve a fogadás művelet részeként az üzenet törlése a legegyszerűbb modell, és forgatókönyvek, amelyben az alkalmazás működését nem dolgoz fel üzenetet egy hiba esetén a legjobban. Ez a viselkedés megismeréséhez, fontolja meg egy forgatókönyvet, amelyben a fogyasztó a fogadási kérést, és majd összeomlik a feldolgozása előtt. Mivel a Service Bus az üzenetet, jelölte, majd az alkalmazás újraindításakor és megkezdésekor üzeneteket, ki fogja hagyni az összeomlás előtt feldolgozott üzenetet.
+Az alapértelmezett viselkedést, beolvasása, illetve a fogadás művelet részeként az üzenet törlése a legegyszerűbb modell, és forgatókönyvek, amelyben az alkalmazás működését nem dolgoz fel üzenetet egy hiba esetén a legjobban. Ez a viselkedés megismeréséhez, fontolja meg egy forgatókönyvet, amelyben a fogyasztó a fogadási kérést, és majd összeomlik a feldolgozása előtt. Mivel a Service Bus az üzenetet, van megjelölve, majd az alkalmazás újraindításakor és megkezdésekor üzeneteket, kimaradt az összeomlás előtt feldolgozott üzenetet.
 
 Ha a `isPeekLock` paraméter értéke **igaz**, a fogadás kétszakaszos művelet lesz, amely lehetővé teszi az olyan alkalmazások támogatását, amelyek működését zavarják a hiányzó üzenetek. A Service Bus-kérést kap, amikor azt talál fel a következő üzenet, zárolja azt, hogy más fogyasztók számára fogadni, és visszaadja az alkalmazásnak.
 Miután az alkalmazás feldolgozza az üzenetet (vagy megbízható módon tárolja a jövőbeli feldolgozáshoz), a fogadási folyamat második fázisa befejezné meghívásával **deleteMessage** módot, és az üzenet törlése egy paraméterként átadja. A **deleteMessage** metódus feldolgozottként jelöli meg az üzenetet, és eltávolítja az előfizetésből.
