@@ -14,12 +14,12 @@ ms.date: 03/09/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 656577211a992432366033326362c9892f7ba6ef
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 29a53101bff8c384d01f952c4498e09d9d970ee3
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37861769"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43841734"
 ---
 # <a name="configure-the-expiration-policy-for-office-365-groups"></a>Az Office 365-csoportok-elévülési szabályzatának konfigurálása
 
@@ -43,9 +43,9 @@ Szerepkör | Engedélyek
 Globális rendszergazda vagy a felhasználói fiók | Létrehozása, olvasása, frissítése, vagy az Office 365 csoportok lejárati házirend-beállítások törlése<br>Minden Office 365-csoportot is megújítása
 Felhasználó | Saját Office 365-csoportot is megújítása<br>Saját Office 365-csoportot is helyreállíthatja.<br>Olvashatja a lejárati házirend-beállítások
 
-Engedélyek visszaállítani egy törölt csoport további információkért lásd: [visszaállítása egy törölt Office 365-csoportot az Azure Active Directoryban](../fundamentals/active-directory-groups-restore-azure-portal.md).
+Engedélyek visszaállítani egy törölt csoport további információkért lásd: [visszaállítása egy törölt Office 365-csoportot az Azure Active Directoryban](groups-restore-deleted.md).
 
-## <a name="set-group-expiration"></a>Csoport elévülés beállítása
+## <a name="set-group-expiration"></a>Csoportok elévülésének beállítása
 
 1. Nyissa meg a [Azure AD felügyeleti központ](https://aad.portal.azure.com) egy olyan fiókkal, amely az Azure AD-bérlő globális rendszergazdája lesz.
 
@@ -71,7 +71,7 @@ Amikor lejár egy csoportot, akkor a csoport egy nappal a lejárat után törlő
 
 ![Csoport törlése e-mail-értesítés](./media/groups-lifecycle/deletion-notification.png)
 
-A törléstől számított 30 napon belül tudja állítani a csoport kiválasztásával **csoport visszaállítása** vagy a PowerShell-parancsmagok használatával leírtak szerint [visszaállítása egy törölt Office 365-csoportot az Azure Active Directoryban](../fundamentals/active-directory-groups-restore-azure-portal.md).
+A törléstől számított 30 napon belül tudja állítani a csoport kiválasztásával **csoport visszaállítása** vagy a PowerShell-parancsmagok használatával leírtak szerint [visszaállítása egy törölt Office 365-csoportot az Azure Active Directoryban](groups-restore-deleted.md).
     
 Ha a csoportban van visszaállítása dokumentumokat, SharePoint-webhelyek vagy más állandó objektumok, teljes körűen visszaállítani a csoportot és annak tartalma akár 24 órát igénybe vehet.
 
@@ -146,8 +146,8 @@ Az alábbi parancsmagok segítségével részletesebben a szabályzat konfigurá
 ## <a name="next-steps"></a>További lépések
 E cikkekben további információk az Azure AD-csoportokat.
 
-* [Tekintse meg a meglévő csoportok](../fundamentals/active-directory-groups-view-azure-portal.md)
-* [Csoport beállításainak kezelése](../fundamentals/active-directory-groups-settings-azure-portal.md)
-* [Egy csoport tagjai kezelése](../fundamentals/active-directory-groups-members-azure-portal.md)
-* [Egy csoport tagságát kezelése](../fundamentals/active-directory-groups-membership-azure-portal.md)
-* [A csoport dinamikus szabályok kezelése](groups-dynamic-membership.md)
+* [Meglévő csoportok megtekintése](../fundamentals/active-directory-groups-view-azure-portal.md)
+* [Csoportbeállítások kezelése](../fundamentals/active-directory-groups-settings-azure-portal.md)
+* [Csoporttagok kezelése](../fundamentals/active-directory-groups-members-azure-portal.md)
+* [Csoporttagságok kezelése](../fundamentals/active-directory-groups-membership-azure-portal.md)
+* [A csoportban lévő felhasználók dinamikus szabályainak kezelése](groups-dynamic-membership.md)

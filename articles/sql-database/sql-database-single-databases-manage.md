@@ -10,12 +10,12 @@ ms.custom: DBs & servers
 ms.topic: conceptual
 ms.date: 08/01/2018
 ms.author: carlrab
-ms.openlocfilehash: a94c3a4c4b8ffb22b1d75ca064bd3e48a2e50141
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 483ac248619a6d8a0f403592b1b4e55ad5e973da
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40005678"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43841862"
 ---
 # <a name="create-and-manage-logical-servers-and-single-databases-in-azure-sql-database"></a>Logikai kiszolgáló és az Azure SQL Database önálló adatbázisok létrehozása és kezelése 
 
@@ -156,10 +156,7 @@ Létrehozása és kezelése az Azure SQL server, adatbázisok és tűzfalak, eze
 |[Kiszolgálók – frissítés](/rest/api/sql/servers/update)|Frissíti egy meglévő kiszolgálóra.|
 |[-Adatbázis létrehozása vagy frissítése](/rest/api/sql/databases/createorupdate)|Új adatbázis létrehozása vagy frissítése egy meglévő adatbázist.|
 |[Adatbázisok – Get](/rest/api/sql/databases/get)|Egy adatbázis beolvasása.|
-|[Rugalmas készlet adatbázisok – lekéréséhez](/rest/api/sql/databases/getbyelasticpool)|Lekéri egy adatbázis egy rugalmas készlet belül.|
-|[Adatbázisok – ajánlott a rugalmas készlet lekéréséhez](/rest/api/sql/databases/getbyrecommendedelasticpool)|Lekéri egy adatbázis recommented rugalmas készlet belül.|
 |[Adatbázis - listát a rugalmas készlet](/rest/api/sql/databases/listbyelasticpool)|Rugalmas készletben található adatbázisok listáját adja vissza.|
-|[Adatbázis - lista alapján ajánlott a rugalmas készlet](/rest/api/sql/databases/listbyrecommendedelasticpool)|Egy ajánlott rugalmas készletben található adatbázisok listáját adja vissza.|
 |[Adatbázis - kiszolgáló által lista](/rest/api/sql/databases/listbyserver)|A kiszolgálón az adatbázisok listáját adja vissza.|
 |[Adatbázis - frissítés](/rest/api/sql/databases/update)|Frissíti egy meglévő adatbázist.|
 |[A tűzfal - szabályok létrehozása vagy frissítése](/rest/api/sql/firewallrules/createorupdate)|Létrehozza vagy frissíti egy tűzfalszabályt.|

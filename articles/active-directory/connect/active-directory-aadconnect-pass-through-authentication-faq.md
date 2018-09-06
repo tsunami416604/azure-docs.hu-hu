@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/23/2018
+ms.date: 09/05/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 8b5f62daf2b43453aadb0373171bc98f96494688
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 58a33b2d3f06deab4f31c76e04d45f8bd0bbba4c
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39215067"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43841964"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Az Azure Active Directory átmenő hitelesítés: Gyakori kérdések
 
@@ -48,7 +48,7 @@ Igen. Az átmenő hitelesítés támogatja `Alternate ID` a felhasználóneveké
 
 ## <a name="does-password-hash-synchronization-act-as-a-fallback-to-pass-through-authentication"></a>Jelszókivonat-szinkronizálást, átmenő hitelesítés egy tartalék szerepét?
 
-Nem. Az átmenő hitelesítés _nem_ Jelszókivonat-szinkronizálás automatikusan feladatátvételt. Csak a tartalékként működik [szituációt, amelyek jelenleg nem támogatja az átmenő hitelesítés](active-directory-aadconnect-pass-through-authentication-current-limitations.md#unsupported-scenarios). Felhasználói bejelentkezési hibák elkerülése érdekében konfigurálnia kell az átmenő hitelesítés [magas rendelkezésre állású](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-4-ensure-high-availability).
+Nem. Az átmenő hitelesítés _nem_ Jelszókivonat-szinkronizálás automatikusan feladatátvételt. Felhasználói bejelentkezési hibák elkerülése érdekében konfigurálnia kell az átmenő hitelesítés [magas rendelkezésre állású](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-4-ensure-high-availability).
 
 ## <a name="can-i-install-an-azure-ad-application-proxymanage-appsapplication-proxymd-connector-on-the-same-server-as-a-pass-through-authentication-agent"></a>Telepíthetem egy [Azure AD-alkalmazásproxy](../manage-apps/application-proxy.md) -összekötő ugyanarra a kiszolgálóra, egy átmenő hitelesítési ügynök?
 
@@ -56,17 +56,17 @@ Igen. Az átmenő hitelesítési ügynök verziója 1.5.193.0 rebranded verziói
 
 ## <a name="what-versions-of-azure-ad-connect-and-pass-through-authentication-agent-do-you-need"></a>Az Azure AD Connect és az átmenő hitelesítési ügynök mely verzióit van szüksége?
 
-Ez a funkció működjön, meg kell 1.1.486.0 verzió vagy újabb Azure AD Connect és 1.5.58.0 vagy később a átmenő hitelesítési ügynök. Minden szoftver telepítése a kiszolgálókon Windows Server 2012 R2 vagy újabb.
+Ez a funkció működjön, meg kell 1.1.750.0 verzió vagy újabb Azure AD Connect és 1.5.193.0 vagy később a átmenő hitelesítési ügynök. Minden szoftver telepítése a kiszolgálókon Windows Server 2012 R2 vagy újabb.
 
 ## <a name="what-happens-if-my-users-password-has-expired-and-they-try-to-sign-in-by-using-pass-through-authentication"></a>Mi történik, ha a felhasználó jelszava lejárt, és próbáljon meg bejelentkezni az átmenő hitelesítés használatával?
 
-Ha konfigurálta a [jelszóvisszaíró](../user-help/active-directory-passwords-update-your-own-password.md) egy adott felhasználó, és ha a felhasználó bejelentkezik az átmenő hitelesítés használatával, módosíthatja vagy új jelszót kérjenek. A jelszavak rendszer visszaírja a helyszíni Active Directory elvárt módon.
+Ha konfigurálta a [jelszóvisszaíró](../authentication/concept-sspr-writeback.md) egy adott felhasználó, és ha a felhasználó bejelentkezik az átmenő hitelesítés használatával, módosíthatja vagy új jelszót kérjenek. A jelszavak rendszer visszaírja a helyszíni Active Directory elvárt módon.
 
 Ha nem konfigurálta a jelszóvisszaírás egy adott felhasználó, vagy ha a felhasználó nem rendelkezik érvényes Azure AD-licenccel, a felhasználó nem tudja frissíteni a jelszavát, a felhőben. A jelszavát, azokat nem lehet frissíteni, akkor is, ha a jelszó lejárt. A felhasználó inkább ezt az üzenetet látja: "a szervezet nem engedélyezi, hogy frissítse a jelszavát, ezen a helyen. Frissítse a munkahelye által javasolt módszerrel, vagy kérje a rendszergazda, ha segítségre van szüksége." A felhasználó vagy a rendszergazda alaphelyzetbe kell állítania a jelszavát a helyszíni Active Directoryban.
 
 ## <a name="how-does-pass-through-authentication-protect-you-against-brute-force-password-attacks"></a>Hogyan nem átmenő hitelesítés, találgatásos jelszó támadásokkal szembeni?
 
-Olvasási [Azure Active Directory átmenő hitelesítés: az intelligens zárolási](../authentication/howto-password-smart-lockout.md) további információt.
+[Olvasható információk az intelligens zárolás](../authentication/howto-password-smart-lockout.md).
 
 ## <a name="what-do-pass-through-authentication-agents-communicate-over-ports-80-and-443"></a>Milyen tegye átmenő hitelesítési ügynökök kommunikálni 80-as és 443-as portokon keresztül?
 
@@ -82,7 +82,7 @@ Igen. Ha Proxy automatikus felderítési WPAD (Web) engedélyezve van a helyszí
 
 ## <a name="can-i-install-two-or-more-pass-through-authentication-agents-on-the-same-server"></a>Két vagy több átmenő hitelesítési ügynökök telepíthető ugyanarra a kiszolgálóra?
 
-Egyetlen kiszolgáló nem, egy átmenő hitelesítési ügynök csak telepítheti. Ha az átmenő hitelesítés konfigurálása a magas rendelkezésre álláshoz szeretné, kövesse a [Azure Active Directory átmenő hitelesítés: gyors üzembe helyezési](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-4-ensure-high-availability).
+Egyetlen kiszolgáló nem, egy átmenő hitelesítési ügynök csak telepítheti. Ha az átmenő hitelesítés konfigurálása a magas rendelkezésre álláshoz szeretné [kövesse az itt](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-4-ensure-high-availability).
 
 ## <a name="how-do-i-remove-a-pass-through-authentication-agent"></a>Hogyan távolíthatom el egy átmenő hitelesítési ügynök?
 
@@ -116,6 +116,10 @@ A legtöbb ügyfél számára két vagy három hitelesítési ügynökök össze
 ## <a name="can-i-install-the-first-pass-through-authentication-agent-on-a-server-other-than-the-one-that-runs-azure-ad-connect"></a>Telepíthetem az első átmenő hitelesítési ügynök egy másik Azure AD Connectet futtató kiszolgálóra?
 
 Nem, ez a forgatókönyv még _nem_ támogatott.
+
+## <a name="why-do-i-need-a-cloud-only-global-administrator-account-to-enable-pass-through-authentication"></a>Miért kell egy csak felhőalapú globális rendszergazdai fiókkal az átmenő hitelesítés engedélyezése?
+
+Javasoljuk, hogy engedélyezi vagy letiltja az átmenő hitelesítés csak felhőalapú globális rendszergazdai fiók használatával. Ismerje meg [hozzáadása egy csak felhőalapú globális rendszergazdai fiókkal](../active-directory-users-create-azure-portal.md). Ennek során, így biztosítja, hogy ne zárja ki a bérlő.
 
 ## <a name="how-can-i-disable-pass-through-authentication"></a>Hogyan lehet átmenő hitelesítés letiltása?
 

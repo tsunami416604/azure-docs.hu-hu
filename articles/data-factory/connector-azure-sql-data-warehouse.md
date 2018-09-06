@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/28/2018
 ms.author: jingwang
-ms.openlocfilehash: f444c75fb7a7bcd96a508fed337dfc32adccf665
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: ef1bd613943543f78d358064f4abefc6fa31b63e
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43339015"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43842335"
 ---
 #  <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Adatok másolása, vagy az Azure SQL Data Warehouse-ból az Azure Data Factory használatával 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you're using:"]
@@ -163,9 +163,9 @@ MSI-alapú Azure AD alkalmazástoken-hitelesítésének használatához kövesse
 
 1. **Hozzon létre egy csoportot az Azure ad-ben.** Ellenőrizze az MSI-előállító a csoport tagja.
 
-    a. Keresse meg a data factory felügyeltszolgáltatás-identitás az Azure Portalról. Nyissa meg az adat-előállító **tulajdonságok**. Másolja az IDENTITÁS azonosítót.
+    1. Keresse meg a data factory felügyeltszolgáltatás-identitás az Azure Portalról. Nyissa meg az adat-előállító **tulajdonságok**. Másolja az IDENTITÁS azonosítót.
 
-    b. Telepítse a [az Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2) modul. Jelentkezzen be a `Connect-AzureAD` parancsot. Hozzon létre egy csoportot, és adja hozzá az adat-előállító MSI, amelynek a következő parancsok futtatásával.
+    1. Telepítse a [az Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2) modul. Jelentkezzen be a `Connect-AzureAD` parancsot. Hozzon létre egy csoportot, és adja hozzá az adat-előállító MSI, amelynek a következő parancsok futtatásával.
     ```powershell
     $Group = New-AzureADGroup -DisplayName "<your group name>" -MailEnabled $false -SecurityEnabled $true -MailNickName "NotSet"
     Add-AzureAdGroupMember -ObjectId $Group.ObjectId -RefObjectId "<your data factory service identity ID>"

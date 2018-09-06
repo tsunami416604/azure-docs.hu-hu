@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 08/14/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2060239b27ef05c34ea6f5b388b4c4086a44a826
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: 037c2714d146bd59b30573df874794342d743e03
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42059140"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782232"
 ---
 # <a name="child-runbooks-in-azure-automation"></a>Gyermek runbookok az Azure Automationben
 
@@ -72,7 +72,9 @@ Ha nem szeretné, a szülő runbook Várakozás a zárolás, a gyermek runbook h
 
 A parancsmaggal indított gyermekrunbook paramétereinek megadott egy kivonattáblát leírtak szerint [Runbook paraméterek](automation-starting-a-runbook.md#runbook-parameters). Csak egyszerű adattípusok használhatók. Ha a runbook rendelkezik összetett adattípusú paraméterrel, majd, beágyazottan kell meghívni.
 
-Ha több előfizetés használata az előfizetési környezet elveszhetnek gyermek runbookok meghívásakor. Győződjön meg arról, hogy a runbookok átadott az előfizetési környezetet, adja hozzá a `DefaultProfile` a parancsmagot, és azt a környezetet pass paramétert.
+Gyermek runbookok külön feladatként meghívásakor az előfizetési környezet elveszhetnek. Ahhoz, hogy a gyermekrunbook meghívása az Azure RM-parancsmagok egy kívánt Azure-előfizetésen a gyermek runbook ehhez az előfizetéshez, függetlenül a szülő runbook hitelesíteni kell.
+
+Ha a feladatok ugyanazt az Automation-fiókon belül több előfizetés használata során adott előfizetést kiválasztva egy feladat változhat az aktuálisan kiválasztott előfizetési környezetet, más feladatok is, amelyek normál esetben nem megfelelő. Annak érdekében, hogy a probléma elkerülése érdekében mentse a eredményét a `Select-AzureRmSubscription` parancsmag meghívása, és adja ezt az objektumot a `DefaultProfile` paraméterében minden a későbbi Azure erőforrás-kezelő parancsmagok meghívásához. Ez a minta konzisztens módon kell alkalmazni az Automation-fiókban futó minden runbookot.
 
 ### <a name="example"></a>Példa
 

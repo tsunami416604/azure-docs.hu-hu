@@ -1,6 +1,6 @@
 ---
-title: "Élő ASP.NET-webapp figyelése az Azure Application Insights segítségével | Microsoft Docs"
-description: "Megfigyelheti egy webhely teljesítményét annak ismételt üzembe helyezése nélkül. A helyszíni, valamint a virtuális gépeken, illetve az Azure-ban üzemeltetett ASP.NET-webappokhoz is használható."
+title: Élő ASP.NET-webapp figyelése az Azure Application Insights segítségével | Microsoft Docs
+description: Megfigyelheti egy webhely teljesítményét annak ismételt üzembe helyezése nélkül. A helyszíni, valamint a virtuális gépeken, illetve az Azure-ban üzemeltetett ASP.NET-webappokhoz is használható.
 services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
@@ -10,21 +10,21 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: get-started-article
-ms.date: 05/05/2017
+ms.topic: conceptual
+ms.date: 09/05/2018
 ms.author: mbullwin
-ms.openlocfilehash: 869ea96072b1492db929c16cfb1e22b0c96bca7d
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
-ms.translationtype: HT
+ms.openlocfilehash: 54a335cf1386ab29c0e0214bccf1f53a076da02b
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43783578"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights"></a>Webalkalmazások futásidejű kialakítása az Application Insights használatával
 
-
 Egy élő webalkalmazást a kód módosítása vagy ismételt telepítése nélkül is kialakíthat az Azure Application Insights használatával. Ha az alkalmazásokat egy helyszíni IIS-kiszolgáló működteti, telepítse az Állapotfigyelőt. Ha Azure-webalkalmazások, illetve egy Azure VM-en futnak, az Azure vezérlőpultján bekapcsolhatja az Application Insights-figyelést. (Külön cikkek érhetők el az [élő J2EE-webalkalmazások](app-insights-java-live.md) és az [Azure Cloud Services](app-insights-cloudservices.md) kialakításáról.) Ehhez [Microsoft Azure](http://azure.com)-előfizetésre van szükség.
 
-![mintadiagramok](./media/app-insights-monitor-performance-live-website-now/10-intro.png)
+![Képernyőkép az App Insights áttekintése gráfok sikertelen kérelmek, a kiszolgáló válaszidejét és a kiszolgálói kérelmekre vonatkozó információkat tartalmazó](./media/app-insights-monitor-performance-live-website-now/overview-graphs.png)
 
 Háromféleképpen alkalmazhatja az Application Insights szolgáltatást a .NET-webalkalmazásokra:
 

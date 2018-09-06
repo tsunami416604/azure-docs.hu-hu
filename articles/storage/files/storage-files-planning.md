@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/12/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: b4905c8bcf3c14c7f1dfa752a930f57ccbfd8fd7
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: 19adbbfc456303b471251c28cd984d1676786b19
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42818486"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43783151"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Az Azure Files üzembe helyezésének megtervezése
 [Az Azure Files](storage-files-introduction.md) teljes körűen felügyelt fájlmegosztást kínáló, amely az iparági szabvány SMB protokollon keresztül érhető el a felhőben. Mivel az Azure Files teljes körűen felügyelt, üzembe helyezés éles forgatókönyvekben, sokkal egyszerűbb, mint az üzembe helyezése és kezelése a fájlkiszolgáló vagy NAS-eszköz. Ez a cikk foglalkozik a témakörök figyelembe kell venni üzembe helyezése az Azure-fájlmegosztás a szervezeten belül éles környezetben való használatra.
@@ -41,7 +41,7 @@ ms.locfileid: "42818486"
 Az Azure Files ajánlatok két, beépített és kényelmes adat-hozzáférési módszereit, hogy önállóan vagy együtt egymással, az adatok eléréséhez:
 
 1. **A közvetlen felhőhozzáférést**: bármely Azure-fájlmegosztás által is csatlakoztathatók [Windows](storage-how-to-use-files-windows.md), [macOS](storage-how-to-use-files-mac.md), és/vagy [Linux](storage-how-to-use-files-linux.md) olyan az iparági szabványos Server Message Block (SMB) protokoll vagy a fájl REST API-n keresztül. SMB, az olvasási és írási műveletek a megosztáson található fájlok készülnek el közvetlenül a fájlmegosztás az Azure-ban. Csatlakoztatása egy Azure-beli virtuális gép által, az operációs rendszerben az SMB-ügyfél legalább kell támogatja SMB 2.1. A helyszíni, csatlakoztatni, például a felhasználói munkaállomáson, a munkaállomás által támogatott SMB-ügyfél legalább támogatnia SMB 3.0 (a titkosítás). SMB, valamint új alkalmazások vagy szolgáltatások előfordulhat, hogy tud közvetlenül hozzáférni a fájl REST, amely egy egyszerű és méretezhető alkalmazásprogramozási felületet biztosít a szoftverfejlesztést fájlmegosztást.
-2. **Az Azure File Sync** (előzetes verzió): az Azure File Sync, a megosztások replikálhatók a helyszíni Windows-kiszolgálók vagy az Azure-ban. A felhasználók számára szeretné hozzáférnie a fájlmegosztás Windows-kiszolgálón keresztül például az SMB vagy NFS-megosztások. Ez akkor hasznos, amelyben az adatok elérni és módosítani milyen távolságra egy Azure-adatközpontban, mint például a fiókirodák esetében forgatókönyvekhez. Előfordulhat, hogy lehet replikálja az adatokat között több Windows Server-végpontot, például több fiókirodák között. Végül előfordulhat, hogy lehet rétegzett adatok az Azure Files, úgy, hogy az összes adat a kiszolgáló továbbra is elérhetők, de a kiszolgáló nem rendelkezik az adatok teljes másolata. Adatok, zökkenőmentesen idézni, amikor a felhasználó megnyitja.
+2. **Az Azure File Sync**: az Azure File Sync, a megosztások replikálhatók a helyszíni Windows-kiszolgálók vagy az Azure-ban. A felhasználók számára szeretné hozzáférnie a fájlmegosztás Windows-kiszolgálón keresztül például az SMB vagy NFS-megosztások. Ez akkor hasznos, amelyben az adatok elérni és módosítani milyen távolságra egy Azure-adatközpontban, mint például a fiókirodák esetében forgatókönyvekhez. Előfordulhat, hogy lehet replikálja az adatokat között több Windows Server-végpontot, például több fiókirodák között. Végül előfordulhat, hogy lehet rétegzett adatok az Azure Files, úgy, hogy az összes adat a kiszolgáló továbbra is elérhetők, de a kiszolgáló nem rendelkezik az adatok teljes másolata. Adatok, zökkenőmentesen idézni, amikor a felhasználó megnyitja.
 
 Az alábbi táblázat mutatja be, hogy a felhasználók és alkalmazások férhet hozzá az Azure-fájlmegosztásba:
 

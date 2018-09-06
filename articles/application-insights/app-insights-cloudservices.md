@@ -6,25 +6,25 @@ documentationcenter: ''
 keywords: WAD2AI, Azure Diagnostics
 author: mrbullwinkle
 manager: carmonm
-editor: alancameronwills
 ms.assetid: 5c7a5b34-329e-42b7-9330-9dcbb9ff1f88
 ms.service: application-insights
 ms.devlang: na
 ms.tgt_pltfrm: ibiza
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.workload: tbd
-ms.date: 05/05/2017
+ms.date: 09/05/2018
 ms.author: mbullwin
-ms.openlocfilehash: f36a9e21478d2629d705d90179a6db5175c78299
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
-ms.translationtype: HT
+ms.openlocfilehash: 3b06ec3b10edc39d770e5a724125e70afd5e5477
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43783579"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Application Insights az Azure Cloud Servicesben
 Az [Application Insightsszal][start] az Application Insights SDK-iból származó adatok és a felhőszolgáltatások [Azure Diagnostics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics)-adatainak ötvözésével monitorozható a [Microsoft Azure felhőszolgáltatásbeli alkalmazások](https://azure.microsoft.com/services/cloud-services/) rendelkezésre állása, teljesítménye, hibái és használata. A széles körben elérhető módon működő alkalmazások teljesítményével és hatékonyságával kapcsolatos visszajelzések birtokában tájékozott döntéseket hozhat a fejlesztés irányát illetően az egyes fejlesztési fázisokban.
 
-![Példa](./media/app-insights-cloudservices/sample.png)
+![Áttekintő irányítópult képernyőképe](./media/app-insights-cloudservices/overview-graphs.png)
 
 ## <a name="before-you-start"></a>Előkészületek
 A következők szükségesek:
@@ -81,9 +81,8 @@ Ha úgy döntött, hogy külön erőforrást hoz létre mindegyik szerepkörhöz
 1. Hozzon létre egy új Application Insights-erőforrást az [Azure Portalon][portal]. Az alkalmazás típusánál válassza az ASP.NET alkalmazás lehetőséget. 
 
     ![Kattintson az Új, majd az Application Insights lehetőségre](./media/app-insights-cloudservices/01-new.png)
-2. Fontos észrevenni, hogy mindegyik erőforrást egy kialakítási kulcs azonosítja. Erre később még szükség lehet majd, ha manuálisan szeretné konfigurálni vagy jóváhagyni az SDK konfigurációját.
+2. Mindegyik erőforrást egy kialakítási kulcs azonosítja. Erre később még szükség lehet majd, ha manuálisan szeretné konfigurálni vagy jóváhagyni az SDK konfigurációját.
 
-    ![Kattintson a Tulajdonságok elemre, válassza ki a kulcsot, és nyomja le a ctrl+C billentyűkombinációt.](./media/app-insights-cloudservices/02-props.png) 
 
 ## <a name="set-up-azure-diagnostics-for-each-role"></a>Azure Diagnostics beállítása az egyes szerepkörökhöz
 Ezzel a beállítással figyelheti az alkalmazást az Application Insightsszal. Webes szerepkörök esetében ez biztosítja a teljesítményfigyelést, a riasztásokat és a diagnosztikát, valamint a használat elemzését. Más szerepkörök esetében keresheti és figyelheti az Azure diagnosztikai eredményeit, például az újraindításokat, a teljesítményszámlálókat és a System.Diagnostics.Trace meghívásait. 
@@ -107,14 +106,14 @@ A Visual Studióban konfigurálja külön az Application Insights SDK-t az egyes
 1. **Webes szerepkörök**: Kattintson jobb gombbal a projektre, és válassza a **Configure Application Insights** (Application Insights konfigurálása) vagy a **Add &gt; Application Insights telemetry** (Hozzáadás &gt; Application Insights Telemetria) lehetőséget.
 
 2. **Feldolgozói szerepkörök**: 
- * Kattintson a jobb gombbal a projektre, és válassza a **Manage Nuget Packages** (NuGet-csomagok kezelése) lehetőséget.
+ * Kattintson a jobb gombbal a projektre, és válassza ki **NuGet-csomagok kezelése**.
  * Adja hozzá az [Application Insights a Windows-kiszolgálókon](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/) modult.
 
     ![Az „Application Insights” kifejezés keresése](./media/app-insights-cloudservices/04-ai-nuget.png)
 
 3. Állítsa be az SDK konfigurációját, hogy adatokat küldjön az Application Insights-erőforrásba.
 
-    Egy megfelelő indítási függvényben állítsa be a .cscfg fájl konfigurációs beállításából származó kialakítási kulcsot:
+    Egy megfelelő indítási függvényben állítsa be a kialakítási kulcsot a konfigurációs beállításából származó a ``.cscfg file``:
  
     ```csharp
    
@@ -128,7 +127,7 @@ A Visual Studióban konfigurálja külön az Application Insights SDK-t az egyes
    * [Weblapok esetében](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Views/Shared/_Layout.cshtml#L13) 
 4. Állítsa be, hogy a rendszer az ApplicationInsights.config fájlt mindig a kimeneti könyvtárba másolja. 
    
-    (A .config fájlban lévő üzenetek azt tanácsolják majd, hogy ide helyezze a kialakítási kulcsot. A felhőalkalmazások esetében azonban jobb azt a .cscfg fájlból megadni. Ezzel biztosítható, hogy a szerepkör megfelelően legyen azonosítva a portálon.)
+    (A .config fájlban lévő üzenetek azt tanácsolják majd, hogy ide helyezze a kialakítási kulcsot. A felhőalapú alkalmazásokhoz célszerű azonban jobb azt a a ``.cscfg file``. Ezzel biztosítható, hogy a szerepkör megfelelően legyen azonosítva a portálon.)
 
 #### <a name="run-and-publish-the-app"></a>Az alkalmazás futtatása és közzététele
 Futtassa az alkalmazást, és jelentkezzen be az Azure-ba. Nyissa meg a létrehozott Application Insights-erőforrásokat, és külön adatpontok jelennek meg a [Keresésben](app-insights-diagnostic-search.md), valamint összesített adatok a [Metrikaböngészőben](app-insights-metrics-explorer.md). 
@@ -152,7 +151,7 @@ A teljesítményszámlálók és az eseményszámok megtekintéséhez nyissa meg
 
 ![Az Azure diagnosztikai adatai](./media/app-insights-cloudservices/23-wad.png)
 
-A [Keresés](app-insights-diagnostic-search.md) vagy egy [Analytics-lekérdezés](app-insights-analytics-tour.md) használatával kereshet az Azure Diagnostics által küldött különféle nyomkövetési naplókban. Például tételezzük fel, hogy egy nem kezelt kivétellel rendelkezik, amely egy szerepkör összeomlását és újrahasznosítását okozta. Ezek az információk a Windows eseménynaplójában, az Alkalmazás csatornában jelennek meg. A Keresés használatával megtekintheti a megfelelő hibabejegyzést a Windows eseménynaplójában, és lekérheti a kivétel teljes hívásláncát. Ennek segítségével pedig megtalálhatja a probléma alapvető okát.
+A [Keresés](app-insights-diagnostic-search.md) vagy egy [Analytics-lekérdezés](app-insights-analytics-tour.md) használatával kereshet az Azure Diagnostics által küldött különféle nyomkövetési naplókban. Például tételezzük fel, hogy egy nem kezelt kivétellel rendelkezik, amely egy szerepkör összeomlását és újrahasznosítását okozta. Ezek az információk a Windows eseménynaplójában, az Alkalmazás csatornában jelennek meg. A Keresés használatával megtekintheti a megfelelő hibabejegyzést a Windows eseménynaplójában, és lekérheti a kivétel teljes hívásláncát. Ez segít a probléma okának találja.
 
 ![Azure Diagnostics-keresés](./media/app-insights-cloudservices/25-wad.png)
 
@@ -197,7 +196,7 @@ Webes szerepkörök esetében a rendszer az alábbi számlálókat is gyűjti:
 
 Megadhat további egyéni vagy egyéb Windows-teljesítményszámlálókat is az ApplicationInsights.config szerkesztésével, [ahogy ebben a példában is](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/ApplicationInsights.config#L14).
 
-  ![Teljesítményszámlálók](./media/app-insights-cloudservices/OLfMo2f.png)
+  ![Teljesítményszámlálók](./media/app-insights-cloudservices/002-servers.png)
 
 ## <a name="correlated-telemetry-for-worker-roles"></a>A feldolgozói szerepkörök korrelált telemetriája
 Ez részletes diagnosztikai információt biztosít, mivel láthatja, mi vezetett egy kérés hibájához vagy késéséhez. A webes szerepkörök esetében az SDK automatikusan beállítja a korrelációt a vonatkozó telemetriával. A feldolgozói szerepkörök esetében az egyéni telemetriainicializáló használatával megadhat egy közös Operation.Id környezeti attribútumot az összes telemetriához ennek érdekében. Így egy pillantásra láthatja, hogy a késési/meghibásodási problémát egy függőség vagy a kód okozza. 
@@ -206,11 +205,7 @@ Ezt a következőképpen teheti meg:
 
 * Állítsa a korrelációs azonosítót egy CallContext környezetre, ahogy [itt](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L36) látható. Ebben az esetben a kérés azonosítóját használjuk korrelációs azonosítóként.
 * Adja hozzá a TelemetryInitializer egyéni implementációját az Operation.Id a fent megadott korrelációs azonosítóra történő beállításához. Íme egy példa: [ItemCorrelationTelemetryInitializer](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/Telemetry/ItemCorrelationTelemetryInitializer.cs#L13)
-* Adja hozzá az egyéni telemetriainicializálót. Ezt az ApplicationInsights.config fájlban teheti meg, vagy kódszinten az [itt](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L233) látható módon.
-
-Ennyi az egész! A portál felülete már eleve úgy van kialakítva, hogy az összes kapcsolódó telemetria egy pillantással áttekinthető legyen:
-
-![Korrelált telemetria](./media/app-insights-cloudservices/bHxuUhd.png)
+* Adja hozzá az egyéni telemetriainicializálót. Ezt az ApplicationInsights.config fájlban, vagy a kódban látható módon [Itt](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L233).
 
 ## <a name="client-telemetry"></a>Ügyfél-telemetria
 [A JavaScript SDK-t a weboldalaihoz adva][client] böngészőalapú telemetriát gyűjthet, például a lapmegtekintések számát, lapbetöltési időket és szkriptkivételeket, valamint egyéni telemetriát írhat a lapok szkriptjeibe.

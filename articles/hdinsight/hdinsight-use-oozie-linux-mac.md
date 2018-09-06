@@ -9,12 +9,12 @@ ms.author: omidm
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 06/26/2018
-ms.openlocfilehash: 9989f33721d4fc18529e63b6d1417180a8d58a9a
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 052afbe185f9c66af3759775b38b6bf0f2c2e6b2
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43049468"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43783321"
 ---
 # <a name="use-oozie-with-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Az Oozie használata a Hadooppal és a Linux-alapú Azure HDInsight munkafolyamat futtatása
 
@@ -35,7 +35,7 @@ Az Oozie használatával a rendszer, például Java programok vagy héjparancsf�
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* **Egy HDInsight-fürt**: lásd: [HDInsight Linux első lépések](/hadoop/apache-hadoop-linux-tutorial-get-started.md)
+* **Egy HDInsight-fürt**: lásd: [HDInsight Linux első lépések](hadoop/apache-hadoop-linux-tutorial-get-started.md)
 
 > [!IMPORTANT]
 > A dokumentum lépéseinek elvégzéséhez egy Linux-alapú HDInsight-fürt szükséges. Linux az egyetlen operációs rendszer használt a HDInsight 3.4-es vagy újabb verzió. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](hdinsight-component-versioning.md#hdinsight-windows-retirement).

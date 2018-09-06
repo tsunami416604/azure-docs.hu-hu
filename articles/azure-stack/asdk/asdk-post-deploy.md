@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/05/2018
+ms.date: 09/05/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: e057d7a649397083240e9f67080808a3057c7f50
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: d3bfe2c472d48a68bd818ac06874db136528b470
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42057244"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43840269"
 ---
 # <a name="post-asdk-installation-configuration-tasks"></a>ASDK telepítés utáni konfigurációs feladatok
 
@@ -140,16 +140,6 @@ A tesztek végrehajtásához néhány percet igénybe vehet. Ha a telepítés si
 ![test-azurestack](media/asdk-post-deploy/test-azurestack.png)
 
 Hiba lépett fel, ha a hibaelhárítási lépésekkel segítséget kaphat.
-
-## <a name="activate-the-administrator-and-tenant-portals"></a>A rendszergazda és bérlői portálok aktiválása
-Után az Azure AD telepítéseknek aktiválnia kell a mindkét az Azure Stack rendszergazdai és bérlői portált. Az aktiválás járul hozzá engedélyeket ad az Azure Stack portálon és az Azure Resource Manager a megfelelő (a jóváhagyás lapon felsorolt) az összes felhasználó számára a címtár.
-
-- A felügyeleti portálon nyissa meg az https://adminportal.local.azurestack.external/guest/signup, olvassa el az adatokat, és kattintson **elfogadás**. Követő, szolgáltatás-rendszergazdák, akik nem is directory bérlői rendszergazdákat is hozzáadhat.
-
-- A bérlői portálon nyissa meg az https://portal.local.azurestack.external/guest/signup, olvassa el az adatokat, és kattintson **elfogadás**. Követő, a felhasználók a címtárban a bérlői portálra jelentkezhetnek be. 
-
-> [!NOTE] 
-> Ha nem aktiválják a portálok, a directory-rendszergazda bejelentkezhet, és a portálok használata. Egy másik felhasználó jelentkezik be, ha azok hibaüzenetet kap, amely közli velük, hogy a rendszergazda nem adott engedélyek más felhasználók számára. Ha a rendszergazda nem natív módon az Azure Stack regisztrálva van a címtár tartozik, az Azure Stack-könyvtár az Aktiválás URL-címet kell bővül. Például az Azure Stack fabrikam.onmicrosoft.com és a rendszergazdai felhasználó regisztrálva van-e admin@contoso.com, navigáljon a https://portal.local.azurestack.external/guest/signup/fabrikam.onmicrosoft.com aktiválása a portálon. 
 
 ## <a name="reset-the-password-expiration-policy"></a>Jelszó-elévülési szabályzatának alaphelyzetbe állítása 
 Ahhoz, hogy, hogy a jelszó a development kit gazdagép le nem jár, a kiértékelési időszak vége előtt, kövesse az alábbi lépéseket a ASDK üzembe helyezése után.

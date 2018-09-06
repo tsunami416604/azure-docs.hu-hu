@@ -6,25 +6,25 @@ keywords: ''
 author: shizn
 manager: timlt
 ms.author: xshi
-ms.date: 06/27/2018
+ms.date: 09/04/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: a4d6d7bfe259e8616a51100162594315a5d37546
-ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
+ms.openlocfilehash: b1c6209c4d589093d7a29cd8a883d3e5d4ca12f9
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2018
-ms.locfileid: "43382427"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782302"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-c-modules-for-azure-iot-edge"></a>Fejlesztés és az Azure IoT Edge-hez a C# modul hibakeresése Visual Studio Code használatával
 
 Az Azure IoT Edge kapcsolhatja az üzleti logikára modulokat. Ez a cikk bemutatja, hogyan fejleszthet és C# modul hibakeresése Visual Studio Code-ot (a VS Code) adatokként a fő eszköz.
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ez a cikk feltételezi, hogy egy számítógép vagy futtató fejlesztői gépen Windows vagy Linux rendszerű virtuális gépet használ. Az IoT Edge-eszközt egy másik fizikai eszköz lehet. Vagy az IoT Edge-eszköz szimulálhatja a fejlesztői gépen.
+Ez a cikk feltételezi, hogy egy számítógép vagy a Windows, macOS vagy Linux rendszerű, a fejlesztői gépén futó virtuális gép használja. Az IoT Edge-eszközt egy másik fizikai eszköz lehet.
 
 > [!NOTE]
-> Hibakeresési Ez a cikk bemutatja, hogyan csatolhat egy folyamatot egy modul tárolóban, és a hibakeresés végrehajtása rajtuk a VS Code használatával. Csak a C#-modulokat: Linux-tárolók amd64 is hibakeresési. Ha nem ismeri a Visual Studio Code hibakeresési képességeit, olvassa el [Debugging](https://code.visualstudio.com/Docs/editor/debugging). 
+> Ez hibakeresési bemutatja két jellemző módon való hibakeresés a C# modul a VS Code-ban. Egyik módja egy folyamatot egy modul tárolóban, csatlakoztassa, míg a másik pedig a lanuch modul hibakeresési módban. Ha nem ismeri a Visual Studio Code hibakeresési képességeit, olvassa el [Debugging](https://code.visualstudio.com/Docs/editor/debugging).
 
 Mivel ez a cikk a fő fejlesztőeszközt, Visual Studio Code-ot használ, a VS Code telepítése. Ezután adja hozzá a szükséges bővítmények:
 * [Visual Studio Code](https://code.visualstudio.com/) 
@@ -38,9 +38,15 @@ Hozzon létre egy modult, hozhat létre a projektmappában, Docker, a modul rend
 * [Az Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) vagy [Docker Hub](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags)
    * Egy helyi Docker-beállításjegyzék prototípus és a egy felhőbeli beállításjegyzék helyett tesztelési célokra használható. 
 
+Beállítani a helyi fejlesztési környezet hibakeresése, futtassa, és az IoT Edge-megoldás teszteléséhez kell, hogy [Azure IoT EdgeHub fejlesztőeszközt](https://pypi.org/project/iotedgehubdev/). Telepítés [Python (2.7-es és 3.6) és a Pip](https://www.python.org/). Ezután telepítse **iotedgehubdev** futtassa az alábbi parancsot a terminálon.
+
+   ```cmd
+   pip install --upgrade iotedgehubdev
+   ```
+
 A modul egy eszközön teszteléséhez van szüksége active IoT hub legalább egy IoT Edge-eszköz. Az IoT Edge-eszközöket a számítógép használja, kövesse a rövid útmutatóban a [Windows](quickstart.md) vagy [Linux](quickstart-linux.md). 
 
-## <a name="create-a-new-solution-template"></a>Új megoldássablon létrehozásához
+## <a name="create-a-new-solution-with-c-module"></a>Új megoldás létrehozása a C# modul
 
 Hozzon létre egy IoT Edge-modul a Visual Studio Code és az Azure IoT Edge-bővítmény használata a .NET Core 2.0 alapján ezeket a lépéseket. Először hozzon létre egy megoldást, és ezután az első modul létrehozása ebben a megoldásban. Egyes megoldások tartalmazhatnak egynél több modul. 
 
@@ -74,39 +80,96 @@ Nincsenek a megoldáson belül a négy elemek:
 
 ## <a name="develop-your-module"></a>A modul fejlesztése
 
-Az alapértelmezett a megoldás az Azure-függvény kódjának következő helyen található **modulok** > [a modul neve] > **Program.cs**. A modul és a deployment.template.json fájl legyenek beállítva, hogy a megoldás felépítéséhez, küldje le azt a tárolóregisztrációs adatbázisba, és telepítheti az eszközöket, hogy a kód módosítása nélkül tesztelés megkezdése. A modul csak igénybe vehet a bemeneti forrásból (ami jelen esetben a tempSensor modul, amely szimulálja az adatokat), és átadhatja azt az IoT hubhoz való használatra készült. 
+Az alapértelmezett C# modul kód, amely a megoldás a következő helyen található **modulok** > ** [Ez a modul neve] ** > **Program.cs**. A modul és a deployment.template.json fájl legyenek beállítva, hogy a megoldás felépítéséhez, küldje le azt a tárolóregisztrációs adatbázisba, és telepítheti az eszközöket, hogy a kód módosítása nélkül tesztelés megkezdése. A modul csak igénybe vehet a bemeneti forrásból (ami jelen esetben a tempSensor modul, amely szimulálja az adatokat), és átadhatja azt az IoT hubhoz való használatra készült. 
 
 Ha készen áll a C#-sablont a saját kód testreszabása, használja a [Azure IoT Hub SDK-k](../iot-hub/iot-hub-devguide-sdks.md) hozhat létre a modulok a kulcsot kell IoT-megoldások, például a biztonság, a kezelés és a megbízhatóság címmel. 
 
-## <a name="build-and-deploy-your-module-for-debugging"></a>Készíthet és helyezhet üzembe a modul a hibakereséshez
+A C# támogatása a VS Code-ban a platformfüggetlen .NET Core fejlesztési van optimalizálva. Tudjon meg többet [használata a VS Code-ban a C#](https://code.visualstudio.com/docs/languages/csharp).
 
-Minden modul mappában nincsenek különböző tároló esetében több Docker-fájlok. Ezeket a fájlokat, amelyek a bővítmény végződhet bármelyike **.debug** hozhat létre a teszteléshez modul. Jelenleg a C# modul támogatja a csak a Linux-tárolók amd64 hibakeresését.
+## <a name="launch-and-debug-module-code-without-container"></a>Indítsa el, és a tároló nélkül a modul-kód hibaelhárítása
+Az IoT Edge C# modul az a .net Core-alkalmazás. És az Azure IoT C# eszközoldali SDK függ. Az alapértelmezett modul kódban inicializálása egy **ModuleClient** környezeti beállítások, a bemeneti név, ami azt jelenti, hogy az IoT Edge C# modul igényel az indításához, és futtassa a környezeti beállítások, és is szeretne küldeni, vagy az üzenetek a a bemeneti csatornák. Az alapértelmezett C# modul csak egy bemeneti csatorna tartalmaz, és a név **input1**.
 
-1. A VS Code-ban keresse meg a `deployment.template.json` fájlt. A függvény URL-címe frissítés hozzáadásával **.debug** vége.
+### <a name="setup-iot-edge-simulator-for-single-module-app"></a>IoT Edge-szimulátor egy modul alkalmazás beállítása
 
-   ![Adjon hozzá x .debug, a rendszerkép neve](./media/how-to-develop-csharp-module/image-debug.png)
+1. A VS Code parancskatalógus, írja be, majd a szimulátor indításához, és válassza ki **Azure IoT Edge: Start IoT Edge hubot szimulátor egyetlen modul**. Emellett meg kell adnia egy modul alkalmazásához, írja be a bemeneti nevek **input1** nyomja le az Enter billentyűt. A parancs elindítja a **iotedgehubdev** CLI és az IoT Edge-szimulátor és a egy tesztelési segédprogram modul tárolót. A kimenetek alább az integrált terminálon láthatja, ha a szimulátor lett egy modul módban sikeresen elindult. Emellett megtekintheti a `curl` parancs segítségével keresztül küldött. Erre később még szüksége lesz.
 
-2. A VS Code parancskatalógus adja meg, és futtassa a parancsot **Edge: Build IoT Edge solution**.
-3. Válassza ki a `deployment.template.json` a megoldás a parancskatalógus a fájlt. 
-4. Az Azure IoT Hub Device Explorer kattintson a jobb gombbal egy IoT Edge-eszköz. Válassza ki **hozzon létre telepítést az adott eszköz**. 
-5. Nyissa meg a megoldást **config** mappát. Válassza ki a `deployment.json` fájlt. Válasszon **válassza ki a peremhálózati Manifest Nasazení**. 
+   ![IoT Edge-szimulátor egy modul alkalmazás beállítása](media/how-to-develop-csharp-module/start-simulator-for-single-module.png)
 
-Látni fogja az üzembe helyezés a VS Code integrált terminálon egy üzembe helyezési Azonosítóval rendelkező létrehozása sikerült.
+   Helyezze át a Docker Explorert, és tekintse meg a modul futási állapotát.
 
-Ellenőrizze a tároló állapotát, a Docker a VS Code Explorerben vagy futtatja az `docker ps` parancsot a terminálon.
+   ![Simulátor modul állapota](media/how-to-develop-csharp-module/simulator-status.png)
 
-## <a name="start-debugging-c-module-in-vs-code"></a>Indítsa el a VS Code-ban a C# modul hibakeresése
-A VS Code tartja a hibakeresés konfigurációs információinak egy `launch.json` fájlt egy `.vscode` a munkaterület mappájában. Ez `launch.json` fájl jött létre, ha létrehozott egy új IoT Edge-megoldás. Új modul, amely támogatja a hibakeresés hozzáadásakor minden alkalommal frissíti. 
+   A **edgeHubDev** tároló-e a fő elemei a helyi IoT Edge-szimulátort. Azt a fejlesztési számítógépén az IoT Edge biztonsági démon nélkül futtathatja és környezeti beállítások megadása a natív modul vagy a modul tárolók. A **bemeneti** tároló elérhetővé tett restAPIs híd üzeneteket, amelyekre a modul bemeneti csatorna segítségével.
 
-1. Nyissa meg a VS Code hibakeresési nézetet. Válassza ki a hibakeresési konfigurációs fájlt a modul. A hibakeresési beállítás neve legyen hasonló **ModuleName távoli hibakeresés (.NET Core)**
+2. A VS Code parancskatalógus, írja be, és válassza ki **Azure IoT Edge: a modul hitelesítő adatok beállítása a felhasználói beállítások** beállítása a modul be környezeti beállítások `azure-iot-edge.EdgeHubConnectionString` és `azure-iot-edge.EdgeModuleCACertificateFile` a felhasználói beállítások. Annak a környezeti beállítások a hivatkozott **.vscode** > **launch.json** és [VS Code felhasználói beállítások](https://code.visualstudio.com/docs/getstarted/settings).
 
-   ![Válassza ki a hibakeresési konfiguráció](./media/how-to-develop-csharp-module/debug-config.png).
+### <a name="build-module-app-and-debug-in-launch-mode"></a>A modul alkalmazás fejlesztése és hibakeresése indítási módban
+
+1. Az integrált terminálon módosítsa a könyvtárat a **CSharpModule** mappában futtassa a következő parancsot hozhat létre a .net Core-alkalmazás.
+
+    ```cmd
+    dotnet build
+    ```
+
+   > [!TIP]
+   > Is [PostMan](https://www.getpostman.com/) vagy más API-eszközök helyett keresztül üzenetek küldéséhez `curl`.
 
 2. Nyissa meg a `program.cs` címet. Ebben a fájlban adja hozzá egy töréspontot.
 
-3. Válassza ki **Start Debugging** , vagy válasszon **F5**. Jelölje be a csatlakoztatni kívánt folyamatot.
+3. Nyissa meg a VS Code hibakeresési nézetet. Válassza ki a hibakeresési konfigurációt **ModuleName helyi hibakeresés (.NET Core)**. 
 
-4. A VS Code hibakereső nézet láthatja a változókat a bal oldali panelen. 
+4. Kattintson a **Start Debugging** vagy nyomja le az **F5**. A hibakeresési munkamenet indul.
+
+5. A VS Code integrált termináljában, futtassa a következő parancsot, küldhet egy **Hello World** üzenet a modulnak. Ez a parancs az előző lépésekben bemutatta az IoT Edge-szimulátor sikeresen telepítő.
+
+    ```cmd
+    curl --header "Content-Type: application/json" --request POST --data '{"inputName": "input1","data":"hello world"}' http://localhost:53000/api/v1/messages
+    ```
+
+   > [!NOTE]
+   > Windows használja, ha van gondoskodik róla, hogy a rendszerhéj, a VS Code integrált termináljában **a Git Bash** vagy **WSL Bash**. Nem futtathat `curl` parancsot a PowerShellben vagy a parancssor használatával. 
+   
+   > [!TIP]
+   > Is [PostMan](https://www.getpostman.com/) vagy más API-eszközök helyett keresztül üzenetek küldéséhez `curl`.
+
+6. A VS Code hibakereső nézet láthatja a változókat a bal oldali panelen. 
+
+    ![Változók Watch](media/how-to-develop-csharp-module/single-module-variables.png)
+
+7. A hibakeresési munkamenet leállításához kattintson a Leállítás gombra vagy nyomja meg **Shift + F5**. A VS Code parancskatalógus, írja be és válassza a **Azure IoT Edge: IoT Edge szimulátor leállítása**.
+
+## <a name="build-module-container-for-debugging-and-debug-in-attach-mode"></a>A modul tároló hibakereséshez és a hibakeresési build az attach mód
+
+Az alapértelmezés szerinti megoldás két modult tartalmaz, egy egy szimulált hőmérsékleti érzékelő modul a másik pedig a C# cső modul. A szimulált hőmérséklet-érzékelő tartja üzenetek küldése az C# modul függőleges vonal, és az üzenetek vannak eredményez az IoT hubnak. A modul mappában létrehozott nincsenek különböző tároló esetében több Docker-fájlok. Ezeket a fájlokat, amelyek a bővítmény végződhet bármelyike **.debug** hozhat létre a teszteléshez modul. Jelenleg a C# modul támogatási hibakeresés csak a Linux-amd64 tárolók csatolása mód. 
+
+### <a name="setup-iot-edge-simulator-for-iot-edge-solution"></a>IoT Edge-szimulátort az IoT Edge-megoldás beállítása
+
+A fejlesztői gépen elindíthatja az IoT Edge-szimulátor helyett az IoT Edge-megoldás futtatásához az IoT Edge biztonsági démon telepítésével. 
+
+1. A device Explorerben bal oldalán kattintson a jobb gombbal a IoT Edge-eszköz azonosítója, válassza a **beállítása IoT Edge-szimulátor** a szimulátor indításához az eszköz kapcsolati karakterlánccal.
+
+2. Láthatja, hogy az IoT Edge-szimulátor sikeresen megtörtént a telepítő az integrált terminálon.
+
+### <a name="build-and-run-container-for-debugging-and-debug-in-attach-mode"></a>Létrehozásához és futtatásához hibakereséshez és a hibakeresési tároló a csatolása mód
+
+1. A VS Code-ban keresse meg a `deployment.template.json` fájlt. Adja hozzá a C# modul kép URL-címe frissítés **.debug** vége.
+
+   ![Adjon hozzá x .debug, a rendszerkép neve](./media/how-to-develop-csharp-module/image-debug.png)
+
+2. Nyissa meg a `program.cs` címet. Ebben a fájlban adja hozzá egy töréspontot.
+3. A VS Code Fájlkezelőben válassza ki a `deployment.template.json` fájlt a megoldás a helyi menüben kattintson a **készítése és futtatása az IoT Edge-szimulátorban történő megoldás**. Megnézheti a modul összes tároló-naplók ugyanabban az ablakban. A Docker Explorert, és tekintse meg a tároló állapota is elérheti.
+
+   ![Változók Watch](media/how-to-develop-csharp-module/view-log.png)
+
+5. Nyissa meg a VS Code hibakeresési nézetet. Válassza ki a hibakeresési konfigurációs fájlt a modul. A hibakeresési beállítás neve legyen hasonló **ModuleName távoli hibakeresés (.NET Core)**
+
+   ![Válassza ki a konfiguráció](media/how-to-develop-csharp-module/debug-config.png)
+
+6. Válassza ki **Start Debugging** , vagy válasszon **F5**. Jelölje be a csatlakoztatni kívánt folyamatot.
+
+7. A VS Code hibakereső nézet láthatja a változókat a bal oldali panelen.
+
+8. A hibakeresési munkamenet leállításához kattintson a Leállítás gombra vagy nyomja meg **Shift + F5**. A VS Code parancskatalógus, írja be és válassza a **Azure IoT Edge: IoT Edge szimulátor leállítása**.
 
 > [!NOTE]
 > Ez a példa bemutatja, hogyan hibakeresése a .NET Core IoT Edge-modulok a tárolók. A hibakeresési verzió az alapján `Dockerfile.debug`, amely tartalmazza a .NET Core parancssori hibakereső VSDBG a tároló rendszerképének összeállítása során. Miután a C# modul hibakeresése, azt javasoljuk, hogy Ön közvetlenül használhatja, vagy testre szabhatja `Dockerfile` VSDBG az éles használatra kész IoT Edge-modulok nélkül.

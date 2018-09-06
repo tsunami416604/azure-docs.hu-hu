@@ -14,17 +14,17 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/07/2018
 ms.author: harijay
-ms.openlocfilehash: 725f52e55795025671036095f209fd92636a4d9c
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 4e93e455e309771ed3e33382ee49cdc144036fb1
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/05/2018
-ms.locfileid: "43701499"
+ms.locfileid: "43782413"
 ---
 # <a name="virtual-machine-serial-console-preview"></a>Virtuális gépek soros konzolja (előzetes verzió) 
 
 
-A virtuális gépek soros konzolja az Azure-ban a Linux és Windows virtuális gépek egy szöveges alapú konzol hozzáférést biztosít. A soros kapcsolat COM1 soros porton, a virtuális gép és a virtuális géphez való hozzáférés biztosít, és amelyek nem kapcsolódnak a virtuális gép hálózati / operációs rendszer állapotát. Virtuális gép a soros konzoljához való hozzáférés is jelenleg csak az Azure Portalon keresztül történik, és csak azok számára, akik rendelkeznek a virtuális gép közreműködő vagy újabb a virtuális géphez való hozzáférés engedélyezett. 
+Az Azure-beli virtuális gépek soros konzolja egy szöveges alapú konzol Windows virtuális gépek számára hozzáférést biztosít. A soros kapcsolat, hogy a virtuális gép, a virtuális gép, amely független a virtuális gépek hálózati vagy operációs rendszer állapotának való hozzáférés biztosítása a COM1 soros port. A soros konzol elérhető virtuális gépet is jelenleg csak az Azure Portalon keresztül történik, és csak azok számára, akik rendelkeznek a virtuális gép közreműködő vagy újabb a virtuális géphez való hozzáférés engedélyezett. 
 
 A soros konzol dokumentáció Linux rendszerű virtuális gépekhez [ide](../linux/serial-console.md).
 
@@ -46,7 +46,7 @@ A soros konzol dokumentáció Linux rendszerű virtuális gépekhez [ide](../lin
     ![](../media/virtual-machines-serial-console/virtual-machine-serial-console-reset-password.png)
 
 ## <a name="get-started-with-serial-console"></a>Soros konzol használatának első lépései
-A virtuális gépek soros konzolon keresztül csak érhető el [az Azure portal](https://portal.azure.com). A virtuális gépekhez a portálon keresztül a soros konzol eléréséhez a lépéseket az alábbiakban 
+A virtuális gépek soros konzolon keresztül csak érhető el [az Azure portal](https://portal.azure.com). Az alábbiakban a lépéseket a portálon keresztül a virtuális gépek a soros konzol eléréséhez.
 
   1. Nyissa meg az Azure Portalon
   2. A bal oldali menüben válassza ki a virtuális gépeket.
@@ -55,8 +55,8 @@ A virtuális gépek soros konzolon keresztül csak érhető el [az Azure portal]
 
 ![](../media/virtual-machines-serial-console/virtual-machine-windows-serial-console-connect.gif)
 
-## <a name="configure-serial-console-for-windows"></a>Soros konzol Windows konfigurálása 
-Újabb Windows Server-rendszerképeket az Azure-ban kell [speciális felügyeleti konzol](https://technet.microsoft.com/library/cc787940(v=ws.10).aspx) (SAC) alapértelmezés szerint engedélyezve van. SAC a Windows server-verziók esetében támogatott, de nem áll rendelkezésre az ügyfél-verziók (például a Windows 10, Windows 8 vagy Windows 7). Soros konzol használatával létrehozott Windows virtuális gépek engedélyezése Feb2018 vagy alacsonyabb képek használja az alábbi lépéseket: 
+## <a name="enable-serial-console-in-custom-or-older-images"></a>Soros konzol engedélyezése egyéni vagy régebbi képeken
+Újabb Windows Server-rendszerképeket az Azure-ban kell [speciális felügyeleti konzol](https://technet.microsoft.com/library/cc787940(v=ws.10).aspx) (SAC) alapértelmezés szerint engedélyezve van. SAC a Windows server-verziók esetében támogatott, de nem áll rendelkezésre az ügyfél-verziók (például a Windows 10, Windows 8 vagy Windows 7). Ahhoz, hogy a 2018 Februárja előtt létrehozott Windows virtuális gépek soros konzolon, használja az alábbi lépéseket: 
 
 1. Csatlakozás a Windows virtuális géphez a távoli asztalon keresztül
 2. Egy rendszergazdai parancssorból a következő parancsok futtatásával. 
@@ -73,13 +73,13 @@ Ha a szükséges SAC engedélyezhető offline is,
 * `bcdedit /store <mountedvolume>\boot\bcd /ems {default} on`
 * `bcdedit /store <mountedvolume>\boot\bcd /emssettings EMSPORT:1 EMSBAUDRATE:115200`
 
-### <a name="how-do-i-know-if-sac-is-enabled-or-not"></a>Honnan tudhatom meg, hogy SAC engedélyezve van-e vagy sem 
+### <a name="how-do-i-know-if-sac-is-enabled"></a>Honnan tudhatom meg, hogy engedélyezve van-e SAC?
 
-Ha a [SAC] (https://technet.microsoft.com/library/cc787940(v=ws.10).aspx) nincs engedélyezve a soros konzol nem jelenik meg a SAC használatával. Bizonyos esetekben egy virtuális gép állapotára vonatkozó megmutatja, vagy üres lenne.  
+Ha a [SAC] (https://technet.microsoft.com/library/cc787940(v=ws.10).aspx) nincs engedélyezve a soros konzol nem jelenik meg a SAC használatával. Bizonyos esetekben a virtuális gép állapotára vonatkozó jelennek meg, és más esetben üres lesz.  
 
-## <a name="enabling-boot-menu-to-show-in-the-serial-console"></a>A soros konzolon megjelenítendő rendszerindító menü engedélyezése 
+## <a name="enable-the-windows-boot-menu-in-serial-console"></a>A Windows rendszertöltő menü soros konzolon engedélyezése 
 
-Ha a Windows rendszertöltő engedélyeznie kell a Windows rendszertöltő adhat hozzá az alábbi további beállítások megjelenítéséhez a soros konzol kéri.
+Ha a Windows rendszertöltő engedélyeznie kell a rendszerindítási konfigurációs adatok adhat hozzá az alábbi további beállítások megjelenítéséhez a soros konzol kéri. Lásd: [bcdedit](https://docs.microsoft.com/windows-hardware/drivers/devtest/bcdedit--set) további részletekért
 
 1. Csatlakozás a Windows virtuális géphez a távoli asztalon keresztül
 2. Egy rendszergazdai parancssorból a következő parancsok futtatásával. 
@@ -88,8 +88,14 @@ Ha a Windows rendszertöltő engedélyeznie kell a Windows rendszertöltő adhat
 * `bcdedit /set {bootmgr} bootems yes`
 3. Indítsa újra a rendszert, engedélyezni kell a rendszerindító menü
 
-> [!NOTE] 
-> Ez a funkció pont támogatása, kulcsok nincs engedélyezve, ha speciális rendszerindítási beállítások használata bcdedit / {jelenlegi} set onetimeadvancedoptions van szüksége, tekintse meg [bcdedit](https://docs.microsoft.com/windows-hardware/drivers/devtest/bcdedit--set) további részletekért
+## <a name="use-serial-console-for-nmi-calls-in-windows-vms"></a>Használja a soros konzol NMI hívások Windows-beli virtuális gépeken
+Egy nem maszkolható (NMI) úgy tervezték, hogy hozzon létre egy olyan jelet, hogy a szoftverek virtuális gépi nem figyelmen kívül hagyja. Hagyományosan NMIs figyelje a hardverekkel kapcsolatos problémák szerepelnek, amelyek adott válaszidők szükséges rendszereken voltak használva.  Ma, programozók és a rendszer a rendszergazdák gyakran használnak NMI mechanizmusként javításához vagy hibaelhárítása a rendszerek, amelyek leáll.
+
+A soros konzol segítségével egy NMI küldeni egy Azure virtuális gépen a billentyűzet ikon használatával az alább látható a parancssávon. Miután a NMI érkezik, a virtuális gép konfigurációja szabályozza hogyan reagál a rendszer. Windows beállítható úgy, hogy az összeomlási, és a memóriakép létrehozása egy NMI fogadásakor.
+
+![](../media/virtual-machines-serial-console/virtual-machine-windows-serial-console-nmi.png) <br>
+
+Windows egy összeomlási memóriakép létrehozása egy NMI kap való konfigurálásával kapcsolatos információkért lásd: [egy teljes összeomlási memóriakép-fájl vagy a kernel összeomlási memóriakép létrehozása egy NMI egy Windows-alapú rendszeren való használatával](https://support.microsoft.com/en-us/help/927069/how-to-generate-a-complete-crash-dump-file-or-a-kernel-crash-dump-file)
 
 ## <a name="disable-serial-console"></a>Tiltsa le a soros konzol
 Alapértelmezés szerint minden előfizetés rendelkezik a soros konzol hozzáférés engedélyezve van az összes virtuális gép. Soros konzol vagy az előfizetés szintjén, vagy a virtuális gép szintjén letiltható.
@@ -157,15 +163,6 @@ Fájlrendszer sérülése és ellenőrzése | Soros konzol eléréséhez, és a 
 RDP-konfigurációs problémák | Soros konzol eléréséhez, és módosíthatja a beállításait. Nyissa meg a [RDP-dokumentáció](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-allow-access) a kezdéshez.
 Rendszer hálózati zárolása| Hozzáférés soros konzolon kezelheti a rendszer a portálon keresztül. Egyes hálózati parancsok láthatók a [soros konzolon CMD és a PowerShell dokumentációs](./serial-console-cmd-ps-commands.md). 
 A rendszertöltő használata | Hozzáférés a BCD soros konzolon keresztül. Lépjen a [engedélyezése rendszerindító menü megjelenítése a soros konzol](#enabling-boot-menu-to-show-in-the-serial-console) a kezdéshez. 
-
-## <a name="using-serial-console-for-nmi-calls-in-windows-vms"></a>Soros konzol használata NMI meghívja a Windows-beli virtuális gépeken
-Egy nem maszkolható (NMI) úgy tervezték, hogy hozzon létre egy olyan jelet, hogy a szoftverek virtuális gépi nem figyelmen kívül hagyja. Hagyományosan NMIs figyelje a hardverekkel kapcsolatos problémák szerepelnek, amelyek adott válaszidők szükséges rendszereken voltak használva.  Ma, programozók és a rendszer a rendszergazdák gyakran használnak NMI mechanizmusként javításához vagy hibaelhárítása a rendszerek, amelyek leáll.
-
-A soros konzol segítségével egy NMI küldeni egy Azure virtuális gépen a billentyűzet ikon használatával az alább látható a parancssávon. Miután a NMI érkezik, a virtuális gép konfigurációja szabályozza hogyan a rendszer reagál. Windows beállítható úgy, hogy az összeomlási, és a memóriakép létrehozása egy NMI fogadásakor.
-
-![](../media/virtual-machines-serial-console/virtual-machine-windows-serial-console-nmi.png) <br>
-
-Windows egy összeomlási memóriakép létrehozása egy NMI kap való konfigurálásával kapcsolatos információkért lásd: [egy teljes összeomlási memóriakép-fájl vagy a kernel összeomlási memóriakép létrehozása egy NMI egy Windows-alapú rendszeren való használatával](https://support.microsoft.com/en-us/help/927069/how-to-generate-a-complete-crash-dump-file-or-a-kernel-crash-dump-file)
 
 ## <a name="accessibility"></a>Kisegítő lehetőségek
 Kisegítő lehetőségek egy kulcsfontosságú fókuszának az Azure-soros konzolon. Ebből a célból hogy gondoskodott róla, hogy a soros konzolon érhető el a vizualizációt és Várjuk visszajelzését látási, valamint azokat, akik nem tudják az egérrel rendelkezők.

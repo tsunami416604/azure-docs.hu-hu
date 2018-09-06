@@ -1,44 +1,44 @@
 ---
-title: A PHP gyors üzembe helyezés az Azure kognitív szolgáltatások, Szövegelemzések API |} Microsoft Docs
-description: Get információkat és a kód minták segítségével gyorsan használatának megkezdésében a szöveg Analytics API-t a Microsoft Azure kognitív Services.
+title: A PHP a rövid útmutató az Azure Cognitive Services szövegelemzési API |} A Microsoft Docs
+description: Get information és kód minták segítségével gyorsan használatának első lépései a szövegelemzési API-t a Microsoft Cognitive Services, Azure-ban.
 services: cognitive-services
 documentationcenter: ''
 author: ashmaka
 ms.service: cognitive-services
 ms.component: text-analytics
 ms.topic: article
-ms.date: 05/02/2018
+ms.date: 08/30/2018
 ms.author: ashmaka
-ms.openlocfilehash: 837a9bab4a4b20be95f03bea0cc97b0b3f414d82
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 2f654736e998652ecaf8825b308c7ff3bf84a924
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347755"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43840770"
 ---
-# <a name="quickstart-for-text-analytics-api-with-php"></a>Szövegelemzések API a PHP a gyors üzembe helyezés 
+# <a name="quickstart-for-text-analytics-api-with-php"></a>Gyors útmutató: a Text Analytics API PHP-vel 
 <a name="HOLTop"></a>
 
-Ez a cikk bemutatja, hogyan való [nyelvi észlelése](#Detect), [elemzése a céggel kapcsolatos véleményeket](#SentimentAnalysis), [bontsa ki a legfontosabb kifejezések](#KeyPhraseExtraction), és [csatolt entitások azonosítása](#Entities) használatával a [szöveg Analytics API-k](//go.microsoft.com/fwlink/?LinkID=759711) a PHP.
+Ez a cikk bemutatja, hogyan való [nyelvfelismerés](#Detect), [vélemények elemzése](#SentimentAnalysis), [kinyerheti a kulcskifejezéseket](#KeyPhraseExtraction), és [kapcsolt entitások azonosítása](#Entities) használatával a [Text Analytics API-k](//go.microsoft.com/fwlink/?LinkID=759711) a PHP.
 
-Tekintse meg a [API-definíciók](//go.microsoft.com/fwlink/?LinkID=759346) az API-k műszaki dokumentációját.
+Tekintse meg a [API-definíciók](//go.microsoft.com/fwlink/?LinkID=759346) technikai dokumentációját az API-kat.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Rendelkeznie kell egy [kognitív szolgáltatások API-fiók](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) rendelkező **szöveg Analytics API**. Használhatja a **5000 tranzakciók/hónapban ingyenes szint** a gyors üzembe helyezés befejeződik.
+Rendelkeznie kell egy [Cognitive Services API-fiók](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) a **Text Analytics API**. Használhatja a **összesen 5 000 tranzakció/hó ingyenes szintet** a rövid útmutató elvégzéséhez.
 
-Rendelkeznie kell a [végpont és a hozzáférési kulcsot](../How-tos/text-analytics-how-to-access-key.md) meg során létrehozott jelentkezzen be. 
+Rendelkeznie kell a [végpontját és hozzáférési kulcsát](../How-tos/text-analytics-how-to-access-key.md) , amely az Ön számára közben létrehozott jelentkezzen be. 
 
 <a name="Detect"></a>
 
 ## <a name="detect-language"></a>Nyelv felismerése
 
-A nyelvi észlelési API észleli a szöveg nyelvének dokumentálása, használja a [észlelése nyelvi metódus](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7).
+A nyelvi API-t észleli a szöveg nyelvének dokumentálja, használja a [nyelv észlelése metódus](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7).
 
-1. Új PHP-projekt létrehozása a kedvenc ide.
+1. Hozzon létre egy új PHP-projektet a kedvenc IDE-ben.
 2. Adja hozzá az alábbi kódot.
-3. Cserélje le a `accessKey` hívóbetű érvényes az előfizetéshez tartozó értéket.
-4. Cserélje le a hely a `host` (jelenleg `westus`) a regisztrált a régióban.
+3. Cserélje le a `accessKey` az előfizetéshez tartozó érvényes hozzáférési kulcs-érték.
+4. Cserélje le a hely a `host` (jelenleg `westus`) regisztrált a régió.
 5. Futtassa a programot.
 
 ```php
@@ -52,7 +52,7 @@ A nyelvi észlelési API észleli a szöveg nyelvének dokumentálása, használ
 // **********************************************
 
 // Replace the accessKey string value with your valid access key.
-$accessKey = 'enter key here';
+$accessKey = 'ENTER KEY HERE';
 
 // Replace or verify the region.
 
@@ -63,7 +63,7 @@ $accessKey = 'enter key here';
 // NOTE: Free trial access keys are generated in the westcentralus region, so if you are using
 // a free trial access key, you should not need to change this region.
 $host = 'https://westus.api.cognitive.microsoft.com';
-$path = '/text/analytics/v2.0/languages';
+$path = '/text/analytics/v2.0/';
 
 function DetectLanguage ($host, $path, $key, $data) {
 
@@ -82,7 +82,7 @@ function DetectLanguage ($host, $path, $key, $data) {
         )
     );
     $context  = stream_context_create ($options);
-    $result = file_get_contents ($host . $path, false, $context);
+    $result = file_get_contents ($host . $path . 'languages', false, $context);
     return $result;
 }
 
@@ -94,20 +94,18 @@ $data = array (
     )
 );
 
-print "Please wait a moment for the results to appear.";
+print "Please wait a moment for the results to appear.\n\n";
 
 $result = DetectLanguage ($host, $path, $accessKey, $data);
 
-echo json_encode (json_decode ($result), JSON_PRETTY_PRINT);
-?>
+echo json_encode (json_decode ($result), JSON_PRETTY_PRINT) . "\n\n";
 ```
 
-**Nyelvi észlelési válasz**
+**Nyelv észlelése válasz**
 
-A sikeres válasz ad vissza a JSON-ban, a következő példában látható módon: 
+A sikeres válasz JSON-fájlban, az alábbi példában látható módon: 
 
 ```json
-
 {
    "documents": [
       {
@@ -145,45 +143,16 @@ A sikeres válasz ad vissza a JSON-ban, a következő példában látható módo
 
    ]
 }
-
-
 ```
 <a name="SentimentAnalysis"></a>
 
 ## <a name="analyze-sentiment"></a>Vélemények elemzése
 
-A céggel kapcsolatos véleményeket elemzés API detexts a céggel kapcsolatos véleményeket a szöveg rekordkészlet, használja a [véleményeket metódus](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9). A következő példában két dokumentumot, egy az angol és spanyol másik pontszámaihoz.
+A Sentiment Analysis API detexts jelöli szöveg rekordkészlet, használja a [vélemények metódus](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9). Az alábbi példa két dokumentumot, egy az angol és spanyol nyelven egy másik pontszámmodell.
 
-1. Új PHP-projekt létrehozása a kedvenc ide.
-2. Adja hozzá az alábbi kódot.
-3. Cserélje le a `accessKey` hívóbetű érvényes az előfizetéshez tartozó értéket.
-4. Cserélje le a hely a `host` (jelenleg `westus`) a regisztrált a régióban.
-5. Futtassa a programot.
+Adja hozzá a következő kódot a kódot az a [előző szakaszban](#Detect).
 
 ```php
-<?php
-
-// NOTE: Be sure to uncomment the following line in your php.ini file.
-// ;extension=php_openssl.dll
-
-// **********************************************
-// *** Update or verify the following values. ***
-// **********************************************
-
-// Replace the accessKey string value with your valid access key.
-$accessKey = 'enter key here';
-
-// Replace or verify the region.
-
-// You must use the same region in your REST API call as you used to obtain your access keys.
-// For example, if you obtained your access keys from the westus region, replace 
-// "westcentralus" in the URI below with "westus".
-
-// NOTE: Free trial access keys are generated in the westcentralus region, so if you are using
-// a free trial access key, you should not need to change this region.
-$host = 'https://westus.api.cognitive.microsoft.com';
-$path = '/text/analytics/v2.0/sentiment';
-
 function GetSentiment ($host, $path, $key, $data) {
 
     $headers = "Content-type: text/json\r\n" .
@@ -201,7 +170,7 @@ function GetSentiment ($host, $path, $key, $data) {
         )
     );
     $context  = stream_context_create ($options);
-    $result = file_get_contents ($host . $path, false, $context);
+    $result = file_get_contents ($host . $path . 'sentiment', false, $context);
     return $result;
 }
 
@@ -212,17 +181,16 @@ $data = array (
     )
 );
 
-print "Please wait a moment for the results to appear.";
+print "Please wait a moment for the results to appear.\n\n";
 
 $result = GetSentiment ($host, $path, $accessKey, $data);
 
-echo json_encode (json_decode ($result), JSON_PRETTY_PRINT);
-?>
+echo json_encode (json_decode ($result), JSON_PRETTY_PRINT) . "\n\n";
 ```
 
-**Véleményeket elemzés válasz**
+**Vélemények elemzése válasz**
 
-A sikeres válasz ad vissza a JSON-ban, a következő példában látható módon: 
+A sikeres válasz JSON-fájlban, az alábbi példában látható módon: 
 
 ```json
 {
@@ -244,38 +212,11 @@ A sikeres válasz ad vissza a JSON-ban, a következő példában látható módo
 
 ## <a name="extract-key-phrases"></a>Kulcsszavak kinyerése
 
-A kulcs kifejezés kibontási API key-kifejezések kiolvassa a egy szöveges dokumentum, használja a [kulcs kifejezések metódus](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6). Az alábbi példa is angol és spanyol dokumentumok legfontosabb kifejezések bontja ki.
+A Key kifejezés kinyerése API – a kulcskifejezések kigyűjti a szöveges dokumentum használata a [Kulcskifejezések metódus](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6). Az alábbi példa kiolvassa az angol és spanyol is dokumentumok kulcskifejezéseket.
 
-1. Új PHP-projekt létrehozása a kedvenc ide.
-2. Adja hozzá az alábbi kódot.
-3. Cserélje le a `accessKey` hívóbetű érvényes az előfizetéshez tartozó értéket.
-4. Cserélje le a hely a `host` (jelenleg `westus`) a regisztrált a régióban.
-5. Futtassa a programot.
+Adja hozzá a következő kódot a kódot az a [előző szakaszban](#SentimentAnalysis).
 
 ```php
-<?php
-
-// NOTE: Be sure to uncomment the following line in your php.ini file.
-// ;extension=php_openssl.dll
-
-// **********************************************
-// *** Update or verify the following values. ***
-// **********************************************
-
-// Replace the accessKey string value with your valid access key.
-$accessKey = 'enter key here';
-
-// Replace or verify the region.
-
-// You must use the same region in your REST API call as you used to obtain your access keys.
-// For example, if you obtained your access keys from the westus region, replace 
-// "westcentralus" in the URI below with "westus".
-
-// NOTE: Free trial access keys are generated in the westcentralus region, so if you are using
-// a free trial access key, you should not need to change this region.
-$host = 'https://westus.api.cognitive.microsoft.com';
-$path = '/text/analytics/v2.0/keyPhrases';
-
 function GetKeyPhrases ($host, $path, $key, $data) {
 
     $headers = "Content-type: text/json\r\n" .
@@ -293,7 +234,7 @@ function GetKeyPhrases ($host, $path, $key, $data) {
         )
     );
     $context  = stream_context_create ($options);
-    $result = file_get_contents ($host . $path, false, $context);
+    $result = file_get_contents ($host . $path . 'keyPhrases', false, $context);
     return $result;
 }
 
@@ -305,18 +246,16 @@ $data = array (
     )
 );
 
-print "Please wait a moment for the results to appear.";
+print "Please wait a moment for the results to appear.\n\n";
 
 $result = GetKeyPhrases ($host, $path, $accessKey, $data);
 
-echo json_encode (json_decode ($result), JSON_PRETTY_PRINT);
-?>
-
+echo json_encode (json_decode ($result), JSON_PRETTY_PRINT) . "\n\n";
 ```
 
-**Kulcs kifejezés kibontási válasz**
+**A kulcsfontosságú kifejezések kinyerése válasz**
 
-A sikeres válasz ad vissza a JSON-ban, a következő példában látható módon: 
+A sikeres válasz JSON-fájlban, az alábbi példában látható módon: 
 
 ```json
 {
@@ -356,40 +295,13 @@ A sikeres válasz ad vissza a JSON-ban, a következő példában látható módo
 
 <a name="Entities"></a>
 
-## <a name="identify-linked-entities"></a>Csatolt entitások azonosítása
+## <a name="identify-linked-entities"></a>Kapcsolt entitások azonosítása
 
-Az entitás Linking API azonosítja a szöveg jól ismert entitások dokumentálása, használja a [entitás Linking metódus](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634). Az alábbi példa angol dokumentumok entitások azonosítja.
+Az Entitáskapcsolási API azonosítja a jól ismert entitások egy szöveges dokumentum használata a [Entitáskapcsolás metódus](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634). Az alábbi példa az angol nyelvű dokumentumok entitások azonosítja.
 
-1. Új PHP-projekt létrehozása a kedvenc ide.
-2. Adja hozzá az alábbi kódot.
-3. Cserélje le a `accessKey` hívóbetű érvényes az előfizetéshez tartozó értéket.
-4. Cserélje le a hely a `host` (jelenleg `westus`) a regisztrált a régióban.
-5. Futtassa a programot.
+Adja hozzá a következő kódot a kódot az a [előző szakaszban](#KeyPhraseExtraction).
 
 ```php
-<?php
-
-// NOTE: Be sure to uncomment the following line in your php.ini file.
-// ;extension=php_openssl.dll
-
-// **********************************************
-// *** Update or verify the following values. ***
-// **********************************************
-
-// Replace the accessKey string value with your valid access key.
-$accessKey = 'enter key here';
-
-// Replace or verify the region.
-
-// You must use the same region in your REST API call as you used to obtain your access keys.
-// For example, if you obtained your access keys from the westus region, replace 
-// "westcentralus" in the URI below with "westus".
-
-// NOTE: Free trial access keys are generated in the westcentralus region, so if you are using
-// a free trial access key, you should not need to change this region.
-$host = 'https://westus.api.cognitive.microsoft.com';
-$path = '/text/analytics/v2.0/entities';
-
 function GetEntities ($host, $path, $key, $data) {
 
     $headers = "Content-type: text/json\r\n" .
@@ -407,7 +319,7 @@ function GetEntities ($host, $path, $key, $data) {
         )
     );
     $context  = stream_context_create ($options);
-    $result = file_get_contents ($host . $path, false, $context);
+    $result = file_get_contents ($host . $path . 'entities', false, $context);
     return $result;
 }
 
@@ -418,18 +330,17 @@ $data = array (
     )
 );
 
-print "Please wait a moment for the results to appear.";
+print "Please wait a moment for the results to appear.\n\n";
 
 $result = GetEntities ($host, $path, $accessKey, $data);
 
-echo json_encode (json_decode ($result), JSON_PRETTY_PRINT);
+echo json_encode (json_decode ($result), JSON_PRETTY_PRINT) . "\n\n";
 ?>
-
 ```
 
 **Entitás hivatkozási válasz**
 
-A sikeres válasz ad vissza a JSON-ban, a következő példában látható módon: 
+A sikeres válasz JSON-fájlban, az alábbi példában látható módon: 
 
 ```json
 {
@@ -494,9 +405,9 @@ A sikeres válasz ad vissza a JSON-ban, a következő példában látható módo
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [A Power BI Szövegelemzések](../tutorials/tutorial-power-bi-key-phrases.md)
+> [Szövegelemzés a Power bi-ban](../tutorials/tutorial-power-bi-key-phrases.md)
 
 ## <a name="see-also"></a>Lásd még 
 
- [Szöveg elemzés áttekintése](../overview.md)  
+ [Text Analytics áttekintése](../overview.md)  
  [Gyakori kérdések (GYIK)](../text-analytics-resource-faq.md)

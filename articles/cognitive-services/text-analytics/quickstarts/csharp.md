@@ -7,14 +7,14 @@ author: luiscabrer
 ms.service: cognitive-services
 ms.component: text-analytics
 ms.topic: article
-ms.date: 09/20/2017
+ms.date: 08/30/2018
 ms.author: ashmaka
-ms.openlocfilehash: 4bf5179ade6f49b847b8b674d33652071e19a769
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 42a682898303b742a17b0a6d4d98c2b9fedf9003
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "41987514"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43841694"
 ---
 # <a name="quickstart-for-the-text-analytics-api-with-c"></a>A szövegelemzési API-t C# Gyorsútmutató 
 <a name="HOLTop"></a>
@@ -35,7 +35,7 @@ Rendelkeznie kell a [végpontját és hozzáférési kulcsát](../How-tos/text-a
 1. Kattintson a jobb gombbal a megoldás, és válassza ki **NuGet-csomagok kezelése megoldáshoz**.
 1. Válassza ki a **tartalmaznak Prerelease** jelölőnégyzetet.
 1. Válassza ki a **Tallózás** lapra, és keressen rá a **Microsoft.Azure.CognitiveServices.Language**.
-1. Válassza ki a NuGet-csomagot, és telepítse.
+1. Válassza ki a **Microsoft.Azure.CognitiveServices.Language.TextAnalytics** NuGet csomagot, és telepítse.
 
 > [!Tip]
 > Bár a segítségével meghívhatja a [HTTP-végpontokat](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6) közvetlenül a C#, a Microsoft.Azure.CognitiveServices.Language SDK megkönnyíti a szolgáltatás hívása nélkül szerializálásához és deszerializálásához JSON aggódnia kellene.
@@ -57,6 +57,7 @@ using Microsoft.Azure.CognitiveServices.Language.TextAnalytics;
 using Microsoft.Azure.CognitiveServices.Language.TextAnalytics.Models;
 using System.Collections.Generic;
 using Microsoft.Rest;
+using System.Linq;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
@@ -87,7 +88,13 @@ namespace ConsoleApp1
             };
 
             Console.OutputEncoding = System.Text.Encoding.UTF8;
+```
 
+## <a name="detect-language"></a>Nyelv felismerése
+
+A nyelvi API-t észleli a szöveg nyelvének dokumentálja, használja a [nyelv észlelése metódus](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7).
+
+```csharp
             // Extracting language.
             Console.WriteLine("===== LANGUAGE EXTRACTION ======");
 
@@ -104,7 +111,13 @@ namespace ConsoleApp1
             {
                 Console.WriteLine("Document ID: {0} , Language: {1}", document.Id, document.DetectedLanguages[0].Name);
             }
+```
 
+## <a name="extract-key-phrases"></a>Kulcsszavak kinyerése
+
+A Key kifejezés kinyerése API – a kulcskifejezések kigyűjti a szöveges dokumentum használata a [Kulcskifejezések metódus](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6).
+
+```csharp
             // Getting key phrases.
             Console.WriteLine("\n\n===== KEY-PHRASE EXTRACTION ======");
 
@@ -129,8 +142,14 @@ namespace ConsoleApp1
                     Console.WriteLine("\t\t" + keyphrase);
                 }
             }
+```
 
-            // Extracting sentiment.
+## <a name="analyze-sentiment"></a>Vélemények elemzése
+
+Használatával észleli a Sentiment Analysis API szöveg rekordkészlet, jelöli a [vélemények metódus](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9).
+
+```csharp
+            // Analyzing sentiment.
             Console.WriteLine("\n\n===== SENTIMENT ANALYSIS ======");
 
             SentimentBatchResult result3 = client.SentimentAsync(
@@ -149,6 +168,29 @@ namespace ConsoleApp1
             {
                 Console.WriteLine("Document ID: {0} , Sentiment Score: {1:0.00}", document.Id, document.Score);
             }
+```
+
+## <a name="identify-linked-entities"></a>Kapcsolt entitások azonosítása
+
+Az Entitáskapcsolási API azonosítja a jól ismert entitások egy szöveges dokumentum használata a [Entitáskapcsolás metódus](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634).
+
+```csharp
+            // Linking entities
+            Console.WriteLine("\n\n===== ENTITY LINKING ======");
+
+            EntitiesBatchResult result4 = client.EntitiesAsync(
+                    new MultiLanguageBatchInput(
+                        new List<MultiLanguageInput>()
+                        {
+                            new MultiLanguageInput("en", "0", "I really enjoy the new XBox One S. It has a clean look, it has 4K/HDR resolution and it is affordable."),
+                            new MultiLanguageInput("en", "1", "The Seattle Seahawks won the Super Bowl in 2014."),
+                        })).Result;
+
+            // Printing entity results.
+            foreach (var document in result4.Documents)
+            {
+                Console.WriteLine("Document ID: {0} , Entities: {1}", document.Id, String.Join(", ", document.Entities.Select(entity => entity.Name)));
+            }
         }
     }
 }
@@ -163,4 +205,3 @@ namespace ConsoleApp1
 
  [Text Analytics áttekintése](../overview.md)  
  [Gyakori kérdések (GYIK)](../text-analytics-resource-faq.md)
-

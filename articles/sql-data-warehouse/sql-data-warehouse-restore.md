@@ -10,15 +10,15 @@ ms.component: manage
 ms.date: 08/29/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 31b137cca55b1dd249368ba5e287496582152c9f
-ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
+ms.openlocfilehash: 6eba50fbe7c2a7a40b08e37a96adac66583b8251
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2018
-ms.locfileid: "43382660"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43781860"
 ---
 # <a name="restoring-azure-sql-data-warehouse"></a>Az Azure SQL Data Warehouse visszaállítása 
-Ebben a cikkben megtudhatja, hogyan végezze el a következőket:
+Ebben a cikkben megtudhatja, hogyan tegye a következőket az Azure portal, PowerShell:
 
 - Visszaállítási pont létrehozása
 - Automatikus visszaállítási pont vagy egy felhasználói visszaállítási pont visszaállítása
@@ -33,12 +33,12 @@ Ebben a cikkben megtudhatja, hogyan végezze el a következőket:
 ## <a name="before-you-begin"></a>Előkészületek
 **A dtu-k kapacitásának ellenőrzése.** Minden egyes SQL Data Warehouse egy SQL Servert (például a myserver.database.windows.net) rendelkezik alapértelmezett DTU-kvótát üzemelteti.  SQL data warehouse a visszaállításhoz, ellenőrizze, hogy az az SQL Servernek elég fennmaradó DTU-kvótába a visszaállított adatbázis számára. Szükséges DTU kiszámításához, vagy kérjen további DTU kezelésével kapcsolatos információkért lásd: [DTU-kvóta módosítási kérése][Request a DTU quota change].
 
-# <a name="restore-through-powershell"></a>Állítsa vissza a PowerShell-lel
+## <a name="restore-through-powershell"></a>Állítsa vissza a PowerShell-lel
 
 ## <a name="install-powershell"></a>A PowerShell telepítése
 Annak érdekében, hogy az Azure PowerShell használata az SQL Data warehouse-ba, szüksége lesz Azure PowerShell 1.0-s vagy újabb verzió telepítéséhez.  A verzió ellenőrzéséhez futtassa **Get-Module - ListAvailable-Name-AzureRM**.  A legújabb verzió telepíthető [Microsoft Webplatform-telepítő][Microsoft Web Platform Installer].  A legújabb verzió telepítésével kapcsolatban lásd: [How to install and configure Azure PowerShell][How to install and configure Azure PowerShell] (Az Azure PowerShell telepítése és konfigurálása).
 
-## <a name="restore-an-active-or-paused-database"></a>Egy aktív vagy szüneteltetett adatbázis visszaállítása
+## <a name="restore-an-active-or-paused-database-using-powershell"></a>Egy PowerShell-lel aktív vagy szüneteltetett adatbázis visszaállítása
 Egy adatbázis visszaállítása egy visszaállítási pont használatát a [Restore-AzureRmSqlDatabase] [ Restore-AzureRmSqlDatabase] PowerShell-parancsmagot.
 
 1. Nyissa meg a Windows PowerShellt.
@@ -94,7 +94,7 @@ $RestoredDatabase.status
 > A visszaállítás befejezését követően a helyreállított adatbázis konfigurálhatja az alábbi [konfigurálása az adatbázis helyreállítása után][Configure your database after recovery].
 >
 
-## <a name="copy-your-data-warehouse-with-user-defined-restore-points"></a>Másolja ki és a felhasználó által definiált visszaállítási pontok
+## <a name="copy-your-data-warehouse-with-user-defined-restore-points-using-powershell"></a>Az adattárház másolja a felhasználó által definiált visszaállítási pontok PowerShell-lel
 Egy adatbázis visszaállítása egy felhasználói visszaállítási pont használatát a [Restore-AzureRmSqlDatabase] [ Restore-AzureRmSqlDatabase] PowerShell-parancsmagot.
 
 1. Nyissa meg a Windows PowerShellt.
@@ -102,10 +102,10 @@ Egy adatbázis visszaállítása egy felhasználói visszaállítási pont haszn
 3. Válassza ki az előfizetést, amely tartalmazza az adatbázist vissza kell állítani.
 4. Az adatbázis egy azonnali másolásához a visszaállítási pont létrehozása
 5. Nevezze át az adatbázis egy ideiglenes névre.
-5. A megadott RestorePointLabel által a legutóbbi visszaállítási pont beolvasása.
-6. A visszaállítás kezdeményezni az adatbázis erőforrás-azonosító beszerzése
-6. Állítsa vissza az adatbázist a kívánt helyreállítási pontot.
-7. Győződjön meg arról, hogy a visszaállított adatbázis online állapotban.
+6. A megadott RestorePointLabel által a legutóbbi visszaállítási pont beolvasása.
+7. A visszaállítás kezdeményezni az adatbázis erőforrás-azonosító beszerzése
+8. Állítsa vissza az adatbázist a kívánt helyreállítási pontot.
+9. Győződjön meg arról, hogy a visszaállított adatbázis online állapotban.
 
 ```Powershell
 
@@ -142,7 +142,7 @@ $RestoredDatabase.status
 
 ```
 
-## <a name="restore-a-deleted-database"></a>Törölt adatbázis visszaállítása
+## <a name="restore-a-deleted-database-using-powershell"></a>PowerShell-lel törölt adatbázis visszaállítása
 Törölt adatbázis visszaállítása, használja a [Restore-AzureRmSqlDatabase] [ Restore-AzureRmSqlDatabase] parancsmagot.
 
 1. Nyissa meg a Windows PowerShellt.
@@ -177,7 +177,7 @@ $RestoredDatabase.status
 > A visszaállítás befejezését követően a helyreállított adatbázis konfigurálhatja az alábbi [konfigurálása az adatbázis helyreállítása után][Configure your database after recovery].
 >
 
-## <a name="restore-from-an-azure-geographical-region"></a>Egy Azure-földrajzi régió visszaállítása
+## <a name="restore-from-an-azure-geographical-region-using-powershell"></a>Visszaállítás Azure-régióból egy földrajzi PowerShell-lel
 Adatbázis helyreállítása, használja a [Restore-AzureRmSqlDatabase] [ Restore-AzureRmSqlDatabase] parancsmagot.
 
 > [!NOTE]
@@ -212,9 +212,9 @@ $GeoRestoredDatabase.status
 
 A helyreállított adatbázis TDE-kompatibilis akkor lesz a forrásadatbázis TDE-t.
 
-# <a name="restore-through-the-azure-portal"></a>Állítsa vissza az Azure Portalon keresztül
+## <a name="restore-through-the-azure-portal"></a>Állítsa vissza az Azure Portalon keresztül
 
-## <a name="create-a-user-defined-restore-point"></a>Hozzon létre egy felhasználói visszaállítási pont
+## <a name="create-a-user-defined-restore-point-using-the-azure-portal"></a>Hozzon létre egy felhasználói visszaállítási pontot, az Azure portal használatával
 1. Jelentkezzen be az [Azure Portalra][Azure portal].
 
 2. Keresse meg az SQL data warehouse egy visszaállítási pontot létrehozni kívánt.
@@ -222,37 +222,37 @@ A helyreállított adatbázis TDE-kompatibilis akkor lesz a forrásadatbázis TD
 3. Válassza ki az áttekintő panel tetején lévő **+ új visszaállítási pont**.
 
     ![Új visszaállítási pont](./media/sql-data-warehouse-restore-database-portal/creating_restore_point_0.png)
-    
+
 4. Adjon meg egy nevet a visszaállítási pontot.
 
     ![Visszaállítási pont nevét](./media/sql-data-warehouse-restore-database-portal/creating_restore_point_1.png)
 
-## <a name="restore-an-active-or-paused-database"></a>Egy aktív vagy szüneteltetett adatbázis visszaállítása
+## <a name="restore-an-active-or-paused-database-using-the-azure-portal"></a>Az Azure portal használatával egy aktív vagy szüneteltetett adatbázis visszaállítása
 1. Jelentkezzen be az [Azure Portalra][Azure portal].
 2. Keresse meg az SQL data warehouse, a visszaállítani kívánt.
 3. Válassza ki az áttekintő panel tetején lévő **visszaállítása**.
 
     ![ Visszaállítás áttekintése](./media/sql-data-warehouse-restore-database-portal/restoring_0.png)
-    
+
 4. Ezek közül bármelyikre **automatikus visszaállítási pontok** vagy **felhasználói visszaállítási pontok**.
 
     ![Automatikus visszaállítási pontok](./media/sql-data-warehouse-restore-database-portal/restoring_1.png)
-    
+
 5. A felhasználó által megadott visszaállítási pontok **jelöljön ki egy visszaállítási pontot** vagy **hozzon létre egy új, felhasználó által definiált visszaállításipont**.
 
     ![Felhasználó által definiált visszaállítási pontok](./media/sql-data-warehouse-restore-database-portal/restoring_2_udrp.png)
 
-## <a name="restore-a-deleted-database"></a>Törölt adatbázis visszaállítása
+## <a name="restore-a-deleted-database-using-the-azure-portal"></a>Az Azure portal használatával törölt adatbázis visszaállítása
 1. Jelentkezzen be az [Azure Portalra][Azure portal].
 2. Keresse meg az SQL server, a törölt adatbázisok tárolt.
 3. A tartalomjegyzékből válassza ki a törölt adatbázisok ikonra.
 
     ![A törölt adatbázisok](./media/sql-data-warehouse-restore-database-portal/restoring_deleted_0.png)
-    
+
 4. Válassza ki a visszaállítani kívánt törölt adatbázisok.
 
     ![Válassza ki a törölt adatbázisok](./media/sql-data-warehouse-restore-database-portal/restoring_deleted_1.png)
-    
+
 5. Adjon meg egy új adatbázisnevet.
 
     ![Adja meg az adatbázis neve](./media/sql-data-warehouse-restore-database-portal/restoring_deleted_2.png)

@@ -12,15 +12,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 07/12/2018
+ms.date: 09/04/2018
 ms.author: alkohli
 ms.custom: ''
-ms.openlocfilehash: 358f81498d8caad7c0a67519bbb776efa153249f
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: 3b26c5f9a6d75725fb102d89192e77988b295dea
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "42057548"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782025"
 ---
 # <a name="azure-data-box-disk-limits-preview"></a>Az Azure Data Box-lemezek korlátait (előzetes verzió)
 
@@ -33,7 +33,7 @@ Vegye figyelembe ezeket a korlátokat, üzembe helyezése és működtetése meg
 
 ## <a name="data-box-service-limits"></a>A Data Box szolgáltatás korlátai
 
- - A Data Box szolgáltatás csak az USA és Európa, az Azure nyilvános felhő összes Azure régióban érhető el.
+ - A Data Box szolgáltatás csak az USA, Európa, Kanada és Ausztrália Azure-régióban összes az Azure nyilvános felhő érhető el.
  - Az egy tárfiókban Data Box-lemezek használata támogatott.
 
 ## <a name="data-box-disk-performance"></a>Data Box-lemezek teljesítménye

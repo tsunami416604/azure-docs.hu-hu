@@ -1,241 +1,242 @@
 ---
-title: Igény-előrejelzés energia műszaki útmutató |} Microsoft Docs
-description: Egy technikai útmutató a Microsoft a Cortana Intelligence megoldás-sablonnal a havi előrejelzési igény.
-services: cortana-analytics
+title: Kereslet-előrejelzés, energia műszaki útmutató |} A Microsoft Docs
+description: Technikai útmutató a Microsoft Cortana Intelligence-Megoldássablon az energiaellátás előrejelzése igény.
+services: machine-learning
 documentationcenter: ''
 author: yijichen
-manager: ilanr9
+manager: cgronlun
 editor: yijichen
 ms.assetid: 7f1a866b-79b7-4b97-ae3e-bc6bebe8c756
-ms.service: cortana-analytics
+ms.service: machine-learning
+ms.subservice: team-data-science-process
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2016
-ms.author: inqiu;yijichen;ilanr9
-ms.openlocfilehash: bb3520d36e4c34c752fe388f3126da285e2161cd
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.author: yijichen
+ms.openlocfilehash: ebf037a139b3e443238bc2fc5d0ed73e697dddf5
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "27600146"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43842549"
 ---
-# <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-demand-forecast-in-energy"></a>Műszaki útmutató a Cortana Intelligence megoldás sablont a havi előrejelzési igény szerint
+# <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-demand-forecast-in-energy"></a>Technikai útmutató a Cortana Intelligence Megoldássablon igény szerint az energiaellátás előrejelzése
 ## <a name="overview"></a>**Áttekintés**
-Megoldás sablonok készültek, annak érdekében, a folyamatot nevezzük, egy E2E bemutató Cortana Intelligence Suite felett. A telepített sablon látja el az előfizetés szükséges a Cortana Intelligence összetevő, és közötti kapcsolatok létrehozása. Azt is magok az adatok feldolgozási sor egy adatok szimuláció alkalmazás által létrehozott első mintaadatokkal. Az adatok szimulátor töltse le a megadott és a helyi számítógépre telepítse, a readme.txt fájlban további információk az a szimulátor használatával. A szimulátor alapján generált adatainak hydrates az adatok feldolgozási sorban lévő és a gépi tanulás előrejelzés, amely megjeleníthetők a Power BI-irányítópult a létrehozásakor start.
+Gyorsítsa fel a folyamat létrehozásának felül a Cortana Intelligence Suite-E2E bemutató Megoldássablonok lettek kialakítva. Egy üzembe helyezett sablon látja el az előfizetés szükséges a Cortana Intelligence-összetevővel, és a közötti kapcsolatokat hozhat létre. Első generált adatok szimuláció alkalmazás mintaadatokkal adatfolyamat is feltölti. Az adatszimuláló töltse le a megadott, és telepítheti a helyi gépén, tekintse meg a readme.txt fájlt a utasítás a szimulátor használatával. A szimulátor generált adatok hydrates a adatfolyamat és kezdő létrehozása a machine learning-előrejelzés, amelyek megjeleníthetők a Power BI-irányítópulton.
 
 A megoldássablon található [Itt](https://gallery.cortanaintelligence.com/SolutionTemplate/Demand-Forecasting-for-Energy-1)
 
-A telepítési folyamat végigvezeti a megoldás hitelesítő adatok beállításához számos lépést. Ellenőrizze, hogy a hitelesítő adatokat, például a megoldás neve, a felhasználónevet és jelszót a telepítés során megadott rögzítése.
+Az üzembe helyezési folyamat végigvezeti a megoldás hitelesítő adatok beállításához számos lépést. Győződjön meg arról, jegyezze fel ezeket a hitelesítő adatokat például a megoldás nevét, a felhasználónevet és jelszót az üzembe helyezés során.
 
-A jelen dokumentum célja a referencia-architektúrában és a különböző összetevőket az előfizetésében megoldás sablon részeként. A dokumentum is szól a mintaadatok lecserélése insights/előrejelzéseket az Ön nyert adatokat megtekintheti a saját adatok valóságosak módjáról. Emellett a dokumentum megbeszélések lehet módosítani, ha szeretné testre szabni a megoldás a saját adataival kell megoldás sablon részeivel kapcsolatos. A Power BI-irányítópultot megoldás sablon létrehozásával kapcsolatos útmutatást végén.
+A jelen dokumentum célja, hogy a referencia-architektúra és a különböző összetevőket az előfizetésében, ez a Megoldássablon részeként. A dokumentum is ismerteti a mintaadatokat, cserélje le tényleges adatok insights/előrejelzéseket, elért adatok láthatók a saját módjáról. Emellett a dokumentum előadások kapcsolatos azon részei a Megoldássablon, ha testre szeretné szabni a megoldást a saját adataival módosítani kellene. Ez a Megoldássablon hozhat létre a Power BI-irányítópulton való utasításokat a végén.
 
 ## <a name="details"></a>**Részletek**
 ![](media/cortana-analytics-technical-guide-demand-forecast/ca-topologies-energy-forecasting.png)
 
-### <a name="architecture-explained"></a>Architektúra ismertetése
-Amikor a megoldást már telepítették, Cortana Analytics Suite belül különböző Azure-szolgáltatások rendszer aktiválja azokat (Ez azt jelenti, hogy a Eseményközpont, az Stream Analytics, a HDInsight, a Data Factory, a Machine Learning *stb*). Az architektúra látható, magas szinten, hogyan energia Megoldássablon az igény szerinti előrejelzés értékekből összeállított végpontok közötti. Ezek a szolgáltatások használatával megvizsgálhatja a létrehozott a megoldás üzembe helyezése a megoldás sablon diagram rájuk kattintva. A következő szakaszok ismertetik a minden egyes adatra.
+### <a name="architecture-explained"></a>Az architektúra ismertetése
+Ha a megoldás üzembe lett helyezve, Cortana Analytics Suite belül különböző Azure-szolgáltatások rendszer aktiválja (azt jelenti, a Event Hub, az Stream Analytics, a HDInsight, a Data Factory, a Machine Learning, *stb.*). Architektúradiagram bemutatja, magas szinten, hogyan energia Megoldássablon készült kereslet-előrejelzési értékekből összeállított teljes körű. Ezek a szolgáltatások segítségével megvizsgálhatja a központi telepítés a megoldás használatával létrehozott sablon megoldásdiagramon rájuk kattintva. A következő szakaszok ismertetik az egyes.
 
-## <a name="data-source-and-ingestion"></a>**Az adatforrás és feldolgozási**
+## <a name="data-source-and-ingestion"></a>**Adatforrás és feldolgozó**
 ### <a name="synthetic-data-source"></a>Szintetikus adatforrás
-Ehhez a sablonhoz használt adatforrás egy asztali alkalmazás letöltése és futtatása helyben a sikeres telepítést jönnek létre. Töltse le és telepítse az alkalmazást a Tulajdonságok sávon havi előrejelzési adatokat szimulátor nevű megoldás sablon diagram első csomópontjának kijelölésekor vonatkozó utasításokat megkeresése Ez az alkalmazás-hírcsatornák a [Azure Event Hubs](#azure-event-hub) szolgáltatás mellett vagy ugyanazt a megoldás folyamatot a többi használt események biztosítása.
+Ehhez a sablonhoz használt adatforrás egy asztali alkalmazás, töltse le és futtassa helyileg a sikeres telepítést követően a jön létre. Töltse le és telepítse az alkalmazást a Tulajdonságok sávon, energia-előrejelzés Adatszimuláló nevű sablon megoldásdiagramon első csomópontjának kiválasztásakor utasításokat találja. Ez az alkalmazás-csatornák a [Azure Event Hub](#azure-event-hub) adatpontokat, vagy a megoldás folyamatának többi használt események szolgáltatásként.
 
-Az esemény generációs alkalmazás tölti fel az Azure Event Hubs csak, amíg a számítógép végrehajtása történik.
+Az esemény generálása alkalmazás feltöltése az Azure Event Hubs, csak azt a számítógépen végrehajtása közben.
 
-### <a name="azure-event-hub"></a>Azure Event Hub
-A [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) szolgáltatása címzettje a szintetikus adatforrás leírt által megadott bemenetet.
+### <a name="azure-event-hub"></a>Azure-eseményközpont
+A [Azure Event Hub](https://azure.microsoft.com/services/event-hubs/) szolgáltatás a címzett, a bemeneti leírt szintetikus adatforrás által biztosított.
 
-## <a name="data-preparation-and-analysis"></a>**Adatok előkészítése és elemzése**
+## <a name="data-preparation-and-analysis"></a>**Adat-előkészítési és -elemzés**
 ### <a name="azure-stream-analytics"></a>Azure Stream Analytics
-A [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) szolgáltatásával közel valós idejű elemzés a bemeneti adatfolyam nyújtanak a [Azure Event Hubs](#azure-event-hub) szolgáltatás, és tegye közzé eredményei közül a [Power BI](https://powerbi.microsoft.com)irányítópult, valamint az összes nyers bejövő események archiválása a [Azure Storage](https://azure.microsoft.com/services/storage/) szolgáltatás később feldolgozásra, amelyet a [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/) szolgáltatás.
+A [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) érkező bemeneti Stream közel valós idejű szolgáltatást használja a [Azure Event Hub](#azure-event-hub) szolgáltatást, és tegye közzé az eredményeket a egy [Power BI](https://powerbi.microsoft.com)irányítópultot, valamint a nyers bejövő eseményeket, az archiválás a [Azure Storage](https://azure.microsoft.com/services/storage/) szolgáltatás később feldolgozásra, amelyet a [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/) szolgáltatás.
 
-### <a name="hdinsight-custom-aggregation"></a>HDInsight egyéni összesítési
-Az Azure HDInsight-szolgáltatás futtatásához használt [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) (Azure Data Factory által összehangolva) parancsfájlok összesítések ad az Azure Stream Analytics szolgáltatással lettek archiválva nyers eseményeket.
+### <a name="hdinsight-custom-aggregation"></a>HDInsight egyéni összesítés
+Az Azure HDInsight szolgáltatás futtatásához használt [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) parancsfájlok (Azure Data Factory által előkészített) az Azure Stream Analytics szolgáltatással archivált nyers események összesítését.
 
 ### <a name="azure-machine-learning"></a>Azure Machine Learning
-A [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) szolgáltatás használható-e (Azure Data Factory által összehangolva.) egy adott régióban, a bemenetek kapott megadott jövőbeli energiafogyasztásának előrejelzési ellenőrzéséhez.
+A [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) szolgáltatás használható-e (az Azure Data Factory által előkészített) alapján előrejelzi egy adott régió kapott bemeneti adatok jövőbeli fogyasztást.
 
 ## <a name="data-publishing"></a>**Adatok közzététele**
 ### <a name="azure-sql-database-service"></a>Azure SQL Database Service
-A [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) szolgáltatás fogja tárolni (kezeli az Azure Data Factory) az Azure Machine Learning szolgáltatás a felhasznált az előrejelzés a [Power BI](https://powerbi.microsoft.com) irányítópult.
+A [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) szolgáltatás tárolására szolgál (az Azure Data Factory kezeli) az előrejelzés fogadja az Azure Machine Learning szolgáltatás a felhasznált a [Power BI](https://powerbi.microsoft.com) irányítópultot.
 
-## <a name="data-consumption"></a>**Adatok felhasználásához**
+## <a name="data-consumption"></a>**Adathasználat**
 ### <a name="power-bi"></a>Power BI
-A [Power BI](https://powerbi.microsoft.com) szolgáltatásával által biztosított összesítések tartalmazó irányítópult megjelenítése a [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) szolgáltatás, valamint az igény szerinti előrejelzési tárolt eredmény [Azure SQL Adatbázis](https://azure.microsoft.com/services/sql-database/) használatával keletkezett a [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) szolgáltatás. A Power BI-irányítópultot megoldás sablon létrehozásával kapcsolatos utasításokért tekintse át a következő részt.
+A [Power BI](https://powerbi.microsoft.com) szolgáltatás által biztosított összesítések tartalmazó irányítópult megjelenítéséhez használja a [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) szolgáltatás, valamint igény szerinti előrejelzési eredményeket tárolja [Azure SQL Adatbázis](https://azure.microsoft.com/services/sql-database/) használatával keletkezett a [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) szolgáltatás. Ez a Megoldássablon hozhat létre a Power BI-irányítópult kapcsolatos utasításokért tekintse meg a következő szakaszt.
 
-## <a name="how-to-bring-in-your-own-data"></a>**Útmutató saját adatok**
-Ez a szakasz ismerteti, hogyan kell a saját adatait az Azure-ba, és milyen területeken igényel módosításokat az adatok akkor vonja ebbe az architektúrába.
+## <a name="how-to-bring-in-your-own-data"></a>**Hogyan lehet a saját adatok beolvasása**
+Ez a szakasz ismerteti, hogyan lehet a saját adatok importálása az Azure-ba, és milyen területeken igényel módosításokat az adatok, ez az architektúra állapotba.
 
-Nem valószínű, hogy a dataset kapcsolása megfelelő megoldás sablon használatos a dataset. Az adatok és a követelmények megértése alapvető fontosságúak a saját adatok sablon módosítása. Ha új Azure Machine Learning szolgáltatáshoz, kaphat bevezetést azt a példánál [az első kísérlet létrehozása](machine-learning/studio/create-experiment.md).
+Nem valószínű, hogy minden olyan adatkészletben tenné az adatkészlet, ez a megoldássablon használt megfelel. Az adatok és a követelmények ismertetése alapvető fontosságúak a saját adatok sablon módosítása. Ha nem ismeri az Azure Machine Learning szolgáltatáshoz, kérheti, bemutató példa használatával [az első kísérlet létrehozása](machine-learning/studio/create-experiment.md).
 
-Az alábbi szakaszok ismertetik a szakaszok kell módosítani a kiszolgálóalkalmazásokat, amikor új adatkészlet megjelent-sablon.
+A következő részekben bemutatjuk a sablont, amikor egy új adatkészlet bevezetett módosításokat igényel a szakaszait.
 
-### <a name="azure-event-hub"></a>Azure Event Hub
-A [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) szolgáltatás általános,, úgy, hogy az adatok is közzé lehet tenni a központi vagy a fürt megosztott kötetei szolgáltatás, vagy a JSON formátumban. Az Azure Event Hubs különleges feldolgozás nem történik, de fontos tisztában bele táplált adatok.
+### <a name="azure-event-hub"></a>Azure-eseményközpont
+A [Azure Event Hub](https://azure.microsoft.com/services/event-hubs/) szolgáltatást az általános, úgy, hogy az adatok a hub CSV vagy JSON formátumban adhatók fel. Speciális feldolgozás nem következik be az Azure Event Hubs, de fontos tisztában bele adatkéréseket az adatokat.
 
-Ez a dokumentum nem ismerteti az adatok, de egy egyszerűen küldhet eseményeket vagy adatokat az Azure Event Hubs használatával a [Event Hub API](event-hubs/event-hubs-programming-guide.md).
+Ez a dokumentum nem ismerteti, hogy az adatokat, de az egyik egyszerűen küldhet eseményeket vagy adatokat egy Azure-eseményközpontba használatával a [Event Hub API](event-hubs/event-hubs-programming-guide.md).
 
 ### <a name="azure-stream-analytics"></a>Azure Stream Analytics
-A [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) szolgáltatás használható-adatfolyamok olvasása és írása források tetszőleges számú adatokat közel valós idejű elemzési nyújtanak.
+A [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) szolgáltatás közel valós idejű adatfolyamok olvasásakor és ad ki adatokat tetszőleges számú források által használható.
 
-Az igény szerinti előrejelzési energia megoldás sablon az Azure Stream Analytics-lekérdezés két segédlekérdezések, minden egyes fel az Azure Event Hubs szolgáltatásból esemény bemeneteként és kimenetek kellene két különböző helyen áll. Ezek kimenetek áll egy Power BI adathalmazt és egy Azure tárolási helyét.
+A készült kereslet-előrejelzési energia Megoldássablon az Azure Stream Analytics-lekérdezés két segédlekérdezések, minden egyes esemény az Azure Event Hubs szolgáltatásból fel bemenetként, és a kimenetek két különböző helyre áll. Ezeket a kimeneteket áll egy Power BI-adatkészletet, és a egy Azure Storage-helyre.
 
 A [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) lekérdezés találhatók:
 
-* A naplózás a [Azure-portálon](https://portal.azure.com/)
-* A stream analytics-feladatok keresése ![](media/cortana-analytics-technical-guide-demand-forecast/icon-stream-analytics.png) , hogy a megoldás telepítésekor jött létre. Egyik tárházat adatokat a blob storage (például mytest1streaming432822asablob), a másik egy az adatok küldése a Power bi-ba (például mytest1streaming432822asapbi).
+* Bejelentkezett a [Azure Portalon](https://portal.azure.com/)
+* A stream analytics-feladatok megkeresése ![](media/cortana-analytics-technical-guide-demand-forecast/icon-stream-analytics.png) , amely a megoldás telepítésekor jött létre. Egyet az adatok leküldése a blob storage (például mytest1streaming432822asablob) és a másik egy az adatok leküldése Power bi-ban (például mytest1streaming432822asapbi).
 * Kiválasztása
 
   * ***BEMENETEK*** adjon meg a lekérdezés megtekintése
-  * ***LEKÉRDEZÉS*** magát a lekérdezést megtekintése
-  * ***KIMENETI*** a különböző kimenetének megtekintése
+  * ***LEKÉRDEZÉS*** magát a lekérdezés megtekintése
+  * ***OUTPUTS*** a különböző kimenetek megtekintése
 
-Azure Stream Analytics lekérdezési konstrukció kapcsolatos információk találhatók a [Stream Analytics lekérdezési hivatkozás](https://msdn.microsoft.com/library/azure/dn834998.aspx) az MSDN Webhelyén.
+Az Azure Stream Analytics lekérdezési konstrukció információ található a [Stream Analytics lekérdezési leírása](https://msdn.microsoft.com/library/azure/dn834998.aspx) az MSDN Webhelyén.
 
-Ebben a megoldásban ez a megoldás sablon részeként az Azure Stream Analytics-feladat, amely közel valós idejű elemzési információ a Power BI-irányítópulthoz a bejövő adatfolyam adatkészlet valósul meg. Mivel a bejövő adatformátum implicit ismerete, ezeket a lekérdezéseket kell módosítani a adatformátum alapján.
+Ebben a megoldásban ez a megoldássablon részeként az Azure Stream Analytics-feladat, amely közel valós idejű elemzési információ a Power BI-irányítópultra a beérkező adatfolyam adatkészlet áll rendelkezésre. Mivel a bejövő adatok formátumának beállításszolgáltató jellegéből fakadóan ismeri, ezeket a lekérdezéseket kell módosítani az adatformátum alapján.
 
-Az egyéb Azure Stream Analytics-feladat kimenetében összes [Eseményközpont](https://azure.microsoft.com/services/event-hubs/) események [Azure Storage](https://azure.microsoft.com/services/storage/) és ezért van szükség az adatformátum függetlenül nincs változás a teljes eseményadatok Storage továbbítja adatfolyamként.
+A többi Azure Stream Analytics-feladat kimenete összes [Eseményközpont](https://azure.microsoft.com/services/event-hubs/) események [Azure Storage](https://azure.microsoft.com/services/storage/) , és ezért kell függetlenül az adatok formátuma nem lapjával, mivel a teljes esemény információk adatfolyamként történő tárolás.
 
 ### <a name="azure-data-factory"></a>Azure Data Factory
-A [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/) szolgáltatás koordinálja a mozgás és az adatok feldolgozása. Az igény szerinti előrejelzés energia megoldás sablon az adat-előállítóban áll 12 [folyamatok](data-factory/concepts-pipelines-activities.md) , helyezze át, és feldolgozza a különféle technológiái.
+A [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/) szolgáltatás koordinálja az adatáthelyezési és -adatok feldolgozása. A Megoldássablon energia készült kereslet-előrejelzési adat-előállító épül fel 12 [folyamatok](data-factory/concepts-pipelines-activities.md) áthelyezése és feldolgozása az adatokat különböző technológiák használatával, amely a.
 
-  A data factory a Data Factory-csomópont a megoldás sablon diagram a megoldás üzembe helyezése a létrehozott alján megnyitásával érheti el. Megjelenik a data factory az Azure portálon. Ha hibaüzenet jelenik meg a adatkészletek alatt, figyelmen kívül hagyhatja azokat, mivel ezek a adatgenerátor indítása előtt telepített adat-előállító miatt. Ezek a hibák nem akadályozzák a data factory működését.
+  Az adat-előállító a Data Factory csomópont alján, a központi telepítés a megoldás használatával létrehozott sablon megoldásdiagramon megnyitásával érheti el. Megjelenik a data factory, az Azure Portalon. Ha hibába ütközik, az adatkészletek alatt, figyelmen kívül hagyhatja azokat, mivel ezek miatt a data factory-folyamatban üzembe helyezése előtt az adatgenerálást lett elindítva. Ezek a hibák nem akadályozzák az adat-előállító működik.
 
-Ez a szakasz ismerteti a szükséges [folyamatok](data-factory/concepts-pipelines-activities.md) és [tevékenységek](data-factory/concepts-pipelines-activities.md) szerepel a [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/). Következő képen a megoldás a diagram nézet:
+Ez a szakasz ismerteti a szükséges [folyamatok](data-factory/concepts-pipelines-activities.md) és [tevékenységek](data-factory/concepts-pipelines-activities.md) szerepel a [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/). Következő képen látható a megoldás a diagram nézet:
 
 ![](media/cortana-analytics-technical-guide-demand-forecast/ADF2.png)
 
-Az öt, az adat-előállító adatcsatornák tartalmazhat [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) parancsfájlok használt particionálása és összesíti az adatokat. Az áttelepítés előtt feljegyzett, ha a parancsfájlok a találhatók a [Azure Storage](https://azure.microsoft.com/services/storage/) a telepítés során létrehozott fiók. A hely a következő: demandforecasting\\\\parancsfájl\\\\hive\\ \\ (vagy https://[Your megoldás name].blob.core.windows.net/demandforecasting).
+Az öt az e-előállító folyamatok tartalmazhat [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) particionálja, és az adatok összesítéséhez használt parancsfájlok. Nincs feltüntetve, ha a parancsfájlok a találhatók-e a [Azure Storage](https://azure.microsoft.com/services/storage/) telepítés során létrehozott fiókot. A hely a következő: demandforecasting\\\\parancsfájl\\\\hive\\ \\ (vagy https://[Your megoldás name].blob.core.windows.net/demandforecasting).
 
-Hasonló a [Azure Stream Analytics](#azure-stream-analytics-1) lekérdezéseket, a [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) parancsfájlok bejövő adatformátum implicit ismerete, ezeket a lekérdezéseket volna kell módosítani a Adatformátum és alapján[jellemzőkiemelés](machine-learning/team-data-science-process/create-features.md) követelményeinek.
+Hasonló a [Azure Stream Analytics](#azure-stream-analytics-1) lekérdezéseket, a [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) parancsfájlok beállításszolgáltató jellegéből fakadóan ismeri a bejövő adatok formátumának, ezeket a lekérdezéseket lenne kell úgy kell módosítani az adatok formázása és alapján[jellemzőkiemelés](machine-learning/team-data-science-process/create-features.md) követelményeinek.
 
 #### <a name="aggregatedemanddatato1hrpipeline"></a>*AggregateDemandDataTo1HrPipeline*
-Ez [csővezeték](data-factory/concepts-pipelines-activities.md) tartalmazza egy adott tevékenység - egy [HDInsightHive](data-factory/transform-data-using-hadoop-hive.md) tevékenység segítségével egy [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) , amelyen fut a [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) put és parancsfájlok összesített adatfolyamként továbbított az igény szerinti adatok 10 másodpercenként állomás szinten óránkénti régió szintre [Azure Storage](https://azure.microsoft.com/services/storage/) keresztül az Azure Stream Analytics-feladat.
+Ez [folyamat](data-factory/concepts-pipelines-activities.md) tartalmaz egyetlen tevékenység – egy [HDInsightHive](data-factory/transform-data-using-hadoop-hive.md) tevékenység használatával egy [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) futtat egy [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) összesített adatfolyamként továbbított az igény szerinti adatok szkriptet 10 másodpercenként állomás szint óránként régió szintre, és helyezze [Azure Storage](https://azure.microsoft.com/services/storage/) keresztül az Azure Stream Analytics-feladatot.
 
-A [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) particionálási feladat érték parancsfájl ***AggregateDemandRegion1Hr.hql***
+A [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) parancsfájl esetében ez a particionálási feladat ***AggregateDemandRegion1Hr.hql***
 
 #### <a name="loadhistorydemanddatapipeline"></a>*LoadHistoryDemandDataPipeline*
-Ez [csővezeték](data-factory/concepts-pipelines-activities.md) két tevékenységet tartalmaz:
+Ez [folyamat](data-factory/concepts-pipelines-activities.md) két tevékenységet tartalmaz:
 
-* [HDInsightHive](data-factory/transform-data-using-hadoop-hive.md) tevékenység segítségével egy [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) , amely egy parancsprogramot futtathat Hive összesítéséhez az óránkénti igény szerinti előzményadatok állomás szinten óránkénti régió szintre, és az Azure Stream során az Azure Storage put Analytics-feladat
-* [Másolás](https://msdn.microsoft.com/library/azure/dn835035.aspx) tevékenység, amely helyezi át az összesített adatokat az Azure Storage-blobból az Azure SQL Database, a megoldás sablon telepítésének részeként lett kiépítve.
+* [HDInsightHive](data-factory/transform-data-using-hadoop-hive.md) tevékenység használatával egy [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) állomás szinten óránként régió szintre óránkénti előzmények igény szerint adatokat tudnak összesíteni, és az Azure Storage alatt az Azure Stream egy Hive-szkriptet futtat Analytics-feladat
+* [Másolás](https://msdn.microsoft.com/library/azure/dn835035.aspx) tevékenységgel, amely helyezi át az összesített adatokat az Azure Storage-blobból az Azure SQL Database, amely a megoldás sablon telepítésének részeként lett üzembe helyezve.
 
 A [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) parancsfájl esetében ez a feladat ***AggregateDemandHistoryRegion.hql***.
 
 #### <a name="mlscoringregionxpipeline"></a>*MLScoringRegionXPipeline*
-Ezek [folyamatok](data-factory/concepts-pipelines-activities.md) több tevékenységet tartalmaz, és amelynek végeredménynek az Azure Machine Learning kísérlet megoldás sablonhoz társított pontozott előrejelzéseket. Szinte teljesen azonosak lesznek kivételével azok csak kezeli a más régióban, amely minden egyes régió az ADF feldolgozási sorban lévő és a hive-parancsfájl átadott különböző RegionID történik.  
-Ez az adatcsatorna található tevékenységeket a következők:
+Ezek [folyamatok](data-factory/concepts-pipelines-activities.md) több tevékenységet tartalmaz, és amelynek a végeredmény a pontozott előrejelzéseket, ez a megoldássablon társított Azure Machine Learning-kísérletből. Azok majdnem teljesen megegyezik azzal a különbséggel azok csak a másik régióban, amely minden olyan régió esetében az ADF folyamat és a hive-parancsfájlnak átadott különböző RegionID végzett kezeli.  
+Ez a folyamat található tevékenységeket a következők:
 
-* [HDInsightHive](data-factory/transform-data-using-hadoop-hive.md) tevékenység segítségével egy [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) , amely egy parancsprogramot futtathat Hive összesítéseket, és az Azure Machine Learning kísérlet szükséges jellemzőkiemelés. A Hive parancsfájlok a feladat olyan megfelelő ***PrepareMLInputRegionX.hql***.
-* [Másolás](https://msdn.microsoft.com/library/azure/dn835035.aspx) helyezi át az eredményeket a tevékenység a [HDInsightHive](data-factory/transform-data-using-hadoop-hive.md) tevékenység egy egyetlen Azure Storage-blobba, amelyek hozzáférését lehetnek a [AzureMLBatchScoring](https://msdn.microsoft.com/library/azure/dn894009.aspx) tevékenység.
-* [AzureMLBatchScoring](https://msdn.microsoft.com/library/azure/dn894009.aspx) tevékenység, amely behívja a Azure Machine Learning kísérlet, amely az eredményeket, mivel ez egy put egyetlen Azure Storage-blobba eredményez.
+* [HDInsightHive](data-factory/transform-data-using-hadoop-hive.md) tevékenység használatával egy [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) összesítést végez, és az Azure Machine Learning-kísérlet szükséges jellemzőkiemelés egy Hive-szkriptet futtat. A tevékenység a Hive-parancsprogramok megfelelő ***PrepareMLInputRegionX.hql***.
+* [Másolás](https://msdn.microsoft.com/library/azure/dn835035.aspx) helyezi át az eredményeket a tevékenység a [HDInsightHive](data-factory/transform-data-using-hadoop-hive.md) tevékenység, amely egy Azure Storage blob, amely szerint érhetők el a [AzureMLBatchScoring](https://msdn.microsoft.com/library/azure/dn894009.aspx) tevékenység.
+* [AzureMLBatchScoring](https://msdn.microsoft.com/library/azure/dn894009.aspx) tevékenység, amely meghívja ezt az Azure Machine Learning kísérletet üzembe egy Azure Storage blob az eredmények eredményez.
 
 #### <a name="copyscoredresultregionxpipeline"></a>*CopyScoredResultRegionXPipeline*
-Ez [csővezeték](data-factory/concepts-pipelines-activities.md) - egyetlen tevékenységet tartalmaz egy [másolási](https://msdn.microsoft.com/library/azure/dn835035.aspx) tevékenység, mely az az Azure Machine Learning kísérlet eredményeit a megfelelő ***MLScoringRegionXPipeline***az Azure SQL Database, a megoldás sablon telepítésének részeként lett kiépítve.
+Ez [folyamat](data-factory/concepts-pipelines-activities.md) egyetlen tevékenységgel - tartalmaz egy [másolási](https://msdn.microsoft.com/library/azure/dn835035.aspx) tevékenységgel, amely helyezi át az Azure Machine Learning-kísérlet eredményeit a megfelelő ***MLScoringRegionXPipeline***az Azure SQL Database, amely a megoldás sablon telepítésének részeként lett üzembe helyezve.
 
 #### <a name="copyaggdemandpipeline"></a>*CopyAggDemandPipeline*
-Ez [csővezeték](data-factory/concepts-pipelines-activities.md) - egyetlen tevékenységet tartalmaz egy [másolási](https://msdn.microsoft.com/library/azure/dn835035.aspx) tevékenység összesített folyamatos igény szerinti adatait helyezi át ***LoadHistoryDemandDataPipeline*** az Azure SQL Adatbázis, amely a megoldás sablon telepítésének részeként lett kiépítve.
+Ez [folyamat](data-factory/concepts-pipelines-activities.md) egyetlen tevékenységgel - tartalmaz egy [másolási](https://msdn.microsoft.com/library/azure/dn835035.aspx) helyezi át az összesített folyamatos igény szerint adatokat a tevékenységen ***LoadHistoryDemandDataPipeline*** az Azure SQL Adatbázis, amely a megoldás sablon telepítésének részeként lett üzembe helyezve.
 
 #### <a name="copyregiondatapipeline-copysubstationdatapipeline-copytopologydatapipeline"></a>*CopyRegionDataPipeline, CopySubstationDataPipeline, CopyTopologyDataPipeline*
-Ez [folyamat](data-factory/concepts-pipelines-activities.md) - egyetlen tevékenységet tartalmaz egy [másolási](https://msdn.microsoft.com/library/azure/dn835035.aspx) tevékenység, amely helyezi át a régió/állomás/Topologygeo a referenciaadatok Azure Storage-blobba feltölteni a megoldássablon részeként a telepítés az Azure SQL Database, a megoldás sablon telepítésének részeként lett kiépítve.
+Ez [folyamat](data-factory/concepts-pipelines-activities.md) egyetlen tevékenységgel - tartalmaz egy [másolási](https://msdn.microsoft.com/library/azure/dn835035.aspx) tevékenységgel, amely áthelyezi a régió/állomás/Topologygeo a referenciaadatokat a megoldássablon részeként az Azure Storage-blobba feltölteni a telepítés az Azure SQL Database, amely a megoldás sablon telepítésének részeként lett üzembe helyezve.
 
 ### <a name="azure-machine-learning"></a>Azure Machine Learning
-A [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) használt kísérletezhet, ez a megoldás sablon szolgáltatása igény szerinti régió előrejelzését. A kísérlet felhasznált adathalmaz és ezért a módosítás vagy helyettesítő állapotba kerül, az adatok adott van szükség.
+A [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) kísérletezéshez felhasznált esetében ez a megoldássablon biztosít az igény szerinti régió előrejelzését. A kísérlet csak a felhasznált adathalmaz, és ezért van szükség, módosítása vagy adott állapotba kerül, az adatok cseréje.
 
 ## <a name="monitor-progress"></a>**A figyelő folyamatban**
-A Adatgenerátor eszköztárat, a feldolgozási folyamat veszi át a hidratált beolvasása és a megoldás a különböző összetevők indítsa el a következő a parancsok a Data Factory által kibocsátott kicking. Két módon figyelheti a folyamatot.
+Az Adatgenerátor indul el, miután a folyamat megkezdi az első hidratált, és a megoldás összetevői, indítsa el a Data Factory által kiadott parancsok művelet következő be megkezdése. Kétféleképpen figyelheti a folyamatot.
 
 1. Ellenőrizze az adatok Azure Blob Storage-ból.
 
-    A blob storage a nyers bejövő adatokat ír a Stream Analytics-feladatok egyikét. Ha rákattint az **Azure Blob Storage** a megoldás telepítése sikeres volt a megoldás, és kattintson a képernyő a komponens **nyitott** a jobb oldali panelen, amíg a [Azure portál](https://portal.azure.com). Ezután kattintson a **Blobok**. A következő panelen tárolók listájának megtekintéséhez. Kattintson a **"energysadata"**. A következő panelen megjelenik a **"demandongoing"** mappát. A rawdata mappában található mappák nevei, például a dátum az látja = 2016-01-28 stb. Ha ezeket a mappákat, azt jelzi, hogy a nyers adatok sikeresen jön létre a számítógépen és a blob storage-ban tárolt. Meg kell jelennie a fájlokat, amelyben véges mérete (MB) az érintett mappákat.
-2. Ellenőrizze az Azure SQL-adatbázis adatait.
+    A blob storage a Stream Analytics-feladatok egyik ír a nyers bejövő adatok. Kattintva **Azure Blob Storage** sikeresen üzembe helyezte a megoldást, és kattintson a képernyőn, ahonnan a megoldás az **nyílt** a jobb oldali panelen, amíg a [Azure portál](https://portal.azure.com). Ezután kattintson a **Blobok**. A következő panelen láthatja a tárolók listáját. Kattintson a **"energysadata"**. A következő panelen láthatja a **"demandongoing"** mappát. A rawdata a mappába, például dátum nevekkel mappák látja = 2016-01-28 stb. Ha látja ezeket a mappákat, azt jelzi, hogy a nyers adatok sikeresen létrehozva: a számítógép és a blob storage-ban tárolt. Fájlokat, mappákat MB-ot véges méretek rendelkeznie kell megjelennie.
+2. Ellenőrizze az adatokat az Azure SQL Database-ből.
 
-    A folyamat utolsó lépését az adatokat (például a gépi tanulás által előrejelzéseket) az SQL-adatbázisba írni. Lehetséges, hogy várnia legfeljebb két órával az adatok jelennek meg az SQL-adatbázis. Figyelje az elérhető az SQL-adatbázis mennyi adatot egyike a keresztül [Azure-portálon](https://portal.azure.com/). A bal oldali panelen keresse meg az SQL-ADATBÁZISOK![](media/cortana-analytics-technical-guide-demand-forecast/SQLicon2.png) , és kattintson rá. Ezután keresse meg az adatbázis (azaz demo123456db), és kattintson rá. A következő oldalon **"Az adatbázishoz való csatlakozás"** kattintson **"Futtatás Transact-SQL lekérdezések írásában, az SQL-adatbázis"**.
+    A folyamat utolsó lépéseként írja az adatokat (például előrejelzéseket a gépi tanulás), SQL Database. Előfordulhat, hogy várjon legfeljebb két órával az SQL Database-ben jelennek meg adatok. Figyelheti, hogy mennyi adatot érhető el az SQL Database egyik módja, keresztül [az Azure portal](https://portal.azure.com/). Keresse meg a bal oldali panelen, az SQL Database-ADATBÁZISOK![](media/cortana-analytics-technical-guide-demand-forecast/SQLicon2.png) , és kattintson rá. Ezután keresse meg az adatbázis (azaz demo123456db), és kattintson rá. A következő oldalon **"Kapcsolódás az adatbázishoz"** területén kattintson **"Futtatás Transact-SQL-lekérdezéseket az SQL database"**.
 
-    Itt, ha rákattint az új lekérdezés és a lekérdezés megadása a sorok (például "select count(*) a DemandRealHourly) száma" az adatbázis növekedésével a tábla sorainak száma növelje.)
-3. Ellenőrizze az adatokat a Power BI-irányítópultot.
+    Itt kattintson új lekérdezés és a lekérdezés (például "válassza count(*) DemandRealHourly származó) sorok számát a" gyorsan növekszik az adatbázis, a tábla sorainak száma növelje.)
+3. Ellenőrizze az adatokat a Power BI-irányítópulton.
 
-    Power BI-irányítópultot kiemelt elérési állíthat be a nyers bejövő adatok figyelésére. Hajtsa végre az utasítást a "Power BI-irányítópulton" szakaszban.
+    Gyakori elérésű útvonal Power BI-irányítópult állíthat a nyers bejövő adatok figyelésére. Kérjük, kövesse a "Power BI-irányítópult" szakaszban.
 
-## <a name="power-bi-dashboard"></a>**A Power BI-irányítópulton**
+## <a name="power-bi-dashboard"></a>**Power BI-irányítópult**
 ### <a name="overview"></a>Áttekintés
-Ez a szakasz ismerteti, hogyan állíthat be az Azure stream Analytics (gyakran használt adatok elérési utat) a valós idejű adatok megjelenítése, valamint az Azure gépi tanulási a (cold elérési út) származó eredmények előrejelzése Power BI-irányítópultot.
+Ez a szakasz ismerteti, hogyan állítható be a Power BI-irányítópulton jelenítheti meg az Azure stream analytics (gyakori elérésű útvonal) valós idejű adatok, valamint az Azure machine learning (ritka elérésű útvonal) származó eredmények előrejelzése.
 
-### <a name="setup-hot-path-dashboard"></a>A telepítő gyakran használt adatok elérési útja irányítópult
-Az alábbi lépéseket a megoldás üzembe helyezése során létrehozott Stream Analytics-feladatok kimenete valós idejű adatok megjelenítéséhez hogyan ismerteti. A [Power BI online](http://www.powerbi.com/) fiók szükséges a következő lépésekkel. Ha nincs fiókja, akkor [hozzon létre egyet](https://powerbi.microsoft.com/pricing).
+### <a name="setup-hot-path-dashboard"></a>Gyakori elérésű útvonal irányítópult beállítása
+A következő lépések végigvezetik hogyan jelenítheti meg a Stream Analytics-feladatok, a megoldás üzembe helyezése során létrehozott valós idejű adatok kimenetét. A [online a Power BI](http://www.powerbi.com/) -fiók szükséges a következő lépésekkel. Ha nincs fiókja, akkor az [hozzon létre egyet](https://powerbi.microsoft.com/pricing).
 
-1. Adja hozzá a Power BI-kimenet Azure Stream Analytics (ASA).
+1. Adja hozzá a Power BI-kimenet az Azure Stream Analytics (ASA).
 
-   * Kövesse az utasításokat kell [Azure Stream Analytics & Power BI: valós idejű látható-e a streamelési adatok a valós idejű elemzési irányítópult](stream-analytics/stream-analytics-power-bi-dashboard.md) a Power BI-irányítópultot, az Azure Stream Analytics-feladat eredményének beállítása .
-   * Keresse meg a stream analytics-feladat a [Azure-portálon](https://portal.azure.com). A feladat a névnek kell lennie: YourSolutionName + "streamingjob" + véletlenszerű szám + "asapbi" (azaz demostreamingjob123456asapbi).
-   * Adjon hozzá egy Power bi-kimenet ASA feladat. Állítsa be a **kimeneti Alias** , **"PBIoutput"**. Állítsa be a **Adatkészletnevet** és **tábla neve** , **"EnergyStreamData"**. A kimeneti hozzáadását követően kattintson **"Start"** a Stream Analytics-feladat indítása az oldal alján. (Például "indítása stream analytics-feladat sikeres myteststreamingjob12345asablob") megerősítő üzenetet kapja meg.
-2. Jelentkezzen be [online Power bi-ban](http://www.powerbi.com)
+   * Kövesse a kell [Azure Stream Analytics és a Power bi-ban: A valós idejű elemzési irányítópultok a valós idejű streamelési adatok láthatóságának](stream-analytics/stream-analytics-power-bi-dashboard.md) állíthatja be a kimenet az Azure Stream Analytics-feladat, a Power BI-irányítópulton .
+   * Keresse meg a stream analytics-feladat a [az Azure portal](https://portal.azure.com). A feladat a névnek kell lennie: YourSolutionName + "streamingjob" + véletlenszerű szám + "asapbi" (azaz demostreamingjob123456asapbi).
+   * Adjon hozzá egy Power bi az ASA-feladat kimenetét. Állítsa be a **kimeneti Alias** , **"PBIoutput"**. Állítsa be a **adatkészlet neve** és **táblanév** , **"EnergyStreamData"**. Miután hozzáadta a kimenetet, kattintson a **"Start"** a Stream Analytics-feladat indítása az oldal alján. Érdemes kap egy megerősítő üzenetet (például "kezdő stream analytics-feladat sikeres myteststreamingjob12345asablob").
+2. Jelentkezzen be [online a Power bi-ban](http://www.powerbi.com)
 
-   * A bal oldali panelen, a saját munkaterületen adatkészletek szakasz látható a Power BI bal oldali panelje új adatkészlet látni kell lennie. Ez az az előző lépésben az Azure Stream Analytics leküldött streamadatok.
-   * Győződjön meg arról, hogy a ***képi megjelenítések*** ablak meg nyitva, és a képernyő jobb oldalán látható.
-3. Az "Igény szerint időbélyeg" csempe létrehozása:
+   * A bal oldali panelen, a saját munkaterületen, az adatkészletek a szakasz egy új adatkészlet megjelenítése a Power bi bal oldali panelen láthatja kell lennie. Ez az az előző lépésben az Azure Stream Analytics leküldve a streamelt adatokat.
+   * Győződjön meg arról, hogy a ***Vizualizációk*** panel meg nyitva, és a képernyő jobb oldalán jelenik meg.
+3. Hozza létre a "Igény szerint időbélyegző" csempére:
 
-   * Kattintson a dataset **"EnergyStreamData"** adatkészletek szakasz bal oldali panelen.
+   * Kattintson az adatkészlet **"EnergyStreamData"** bal oldali panelen adatkészletek szakaszban.
    * Kattintson a **"Vonaldiagram"** ikon ![](media/cortana-analytics-technical-guide-demand-forecast/PowerBIpic8.png).
-   * Kattintson a "EnergyStreamData" **mezők** panel.
-   * Kattintson a **"Időbélyeg"** , és győződjön meg arról, hogy a "Tengely" mutatja. Kattintson a **"Load"** , és győződjön meg arról, hogy a "Értékek" mutatja.
-   * Kattintson a **mentése** az első és a "EnergyStreamDataReport" a jelentés neve. A bal oldali ablaktáblán Navigator jelentések szakaszban látható "EnergyStreamDataReport" nevű jelentés.
-   * Kattintson a **"PIN-kód Visual"** ![](media/cortana-analytics-technical-guide-demand-forecast/PowerBIpic6.png) jobb felső sarokban található a vonaldiagram ikonjára, "PIN-kód irányítópult" ablak lehet, hogy jelenik meg, hogy válasszon egy irányítópultot. Select "EnergyStreamDataReport", then click "Pin".
-   * Ez a csempe az irányítópulton keresztül kattintson "Szerkesztés" ikonra jobb felső sarokban található az "Igény szerint időbélyeg" címet módosíthatja az egérrel
-4. Hozzon létre másik irányítópult-csempéihez megfelelő adatkészletek alapján. A végső irányítópult-nézet: ![](media/cortana-analytics-technical-guide-demand-forecast/PBIFullScreen.png)
+   * Kattintson a "EnergyStreamData" a **mezők** panel.
+   * Kattintson a **"Timestamp"** és ellenőrizze, hogy a "Tengely" jeleníti meg. Kattintson a **"Betöltés"** és ellenőrizze, hogy "Values" alatt jelenik meg.
+   * Kattintson a **mentése** felül és neve a "EnergyStreamDataReport" jelentést. Bal oldali navigációs ablaktábláján a jelentések szakaszban látható "EnergyStreamDataReport" nevű jelentés.
+   * Kattintson a **"PIN-kód Visual"** ![](media/cortana-analytics-technical-guide-demand-forecast/PowerBIpic6.png) ikonra a jobb felső sarokban található ezen a vonaldiagramon, a "Rögzítés az irányítópulton" ablak előfordulhat, hogy meg, hogy válasszon ki egy irányítópultot. Válassza a "EnergyStreamDataReport", majd kattintson a "PIN-kód".
+   * Vigye az egérmutatót át a csempét az irányítópulton, kattintson a "Szerkesztés" annak címe időbélyegzőként"igény szerint" módosításához a jobb felső sarokban lévő ikonra
+4. Egyéb irányítópult-csempék alapján a megfelelő adatkészletek létrehozása. Az utolsó irányítópult-nézet: ![](media/cortana-analytics-technical-guide-demand-forecast/PBIFullScreen.png)
 
-### <a name="setup-cold-path-dashboard"></a>A telepítő Cold elérési irányítópult
-Cold elérési adatok feldolgozási az alapvető célja az igény szerinti előrejelzés minden egyes régió beolvasása. A Power BI csatlakozik Azure SQL-adatbázis adatforrásként, az előrejelzési eredmények tárolásához.
+### <a name="setup-cold-path-dashboard"></a>Ritka elérésű útvonal irányítópult beállítása
+A ritka elérésű útvonal adatfolyamatok alapvető célja az, hogy minden egyes régió kereslet-előrejelzés. Power BI adatforrásként, az előrejelzési eredményeket tároló Azure SQL Database-adatbázishoz kapcsolódik.
 
 > [!NOTE]
-> 1) Az irányítópult elég előrejelzési eredmények gyűjtéséhez órát vesz igénybe. Azt javasoljuk, hogy a folyamat 2-3 órával azt követően, akkor a adatgenerátor delek indításához. 2.) Ez a lépés az előfeltétel, hogy töltse le és telepítse az ingyenes szoftvert [Power BI desktop](https://powerbi.microsoft.com/desktop).
+> 1) Elég előrejelzési eredményeket az irányítópult gyűjtéséhez néhány órát vesz igénybe. Azt javasoljuk, hogy a folyamat 2-3 óra után, az adatgenerálást delek megkezdéséhez. 2.) ebben a lépésben a szükséges előfeltétel, hogy töltse le és telepítse az ingyenes szoftvereket [Power BI desktop](https://powerbi.microsoft.com/desktop).
 >
 >
 
-1. Az adatbázis hitelesítő adatainak lekéréséhez.
+1. Az adatbázis hitelesítő adatainak lekérése.
 
-   Szüksége **adatbázis-kiszolgáló nevét, az adatbázisnév, felhasználónevet és jelszót** előtt áthelyezése a következő lépéseket. Az alábbiakban a lépéseit ismerteti azok megkereséséről.
+   Szükséges **adatbázis-kiszolgáló nevét, adatbázisnév, felhasználónév és jelszó** áthelyezése a következő lépések előtt. Az alábbiakban útmutató, hogyan találhatja meg azokat a lépéseket.
 
-   * Egyszer **"Azure SQL adatbázis"** a megoldás sablonban diagram zöldre, kattintson rá, és kattintson a **"Megnyitás"**. Meg vannak interaktív Azure-portálra, és az adatbázis-információ oldalát is meg van nyitva.
-   * Az oldalon található "Adatbázis" szakaszt. A létrehozott adatbázis kimenő sorolja fel. Az adatbázis neve legyen **"A megoldás neve véletlenszerű szám +"adatbázis""** (például "mytest12345db").
-   * Az adatbázis, kattintson a panel ki új pop, megtalálhatja az adatbázis-kiszolgáló nevét a felső. Az adatbázis-kiszolgáló nevét kell `"Your Solution Name + Random Number + 'database.windows.net,1433'"` (például "mytest12345.database.windows.net,1433").
-   * Az adatbázis **felhasználónév** és **jelszó** ugyanaz, mint a felhasználónév és jelszó korábban tárolja, a megoldás üzembe helyezése során.
-2. Az adatforrás a cold elérési útja a Power BI-fájl frissítése
+   * Egyszer **"Azure SQL Database"** a megoldássablon az ábra a színe zöldre vált, kattintson rá, és kattintson a **"Nyitott"**. Megismerheti az Azure Portalra, és az adatbázis-információ lapon is megnyílik.
+   * Az oldalon a "Adatbázis" szakaszban találja. Ki a létrehozott adatbázis sorolja fel. Az adatbázis neve legyen **"A megoldás neve + véletlenszerű szám +"db""** (például "mytest12345db").
+   * Az adatbázishoz, kattintson a panel ki az új pop, annak az adatbázis-kiszolgáló neve a felső. Az adatbázis-kiszolgáló nevét kell `"Your Solution Name + Random Number + 'database.windows.net,1433'"` (például "mytest12345.database.windows.net,1433").
+   * Az adatbázis **felhasználónév** és **jelszó** ugyanaz, mint a felhasználónév és jelszó korábban rögzíti a megoldás üzembe helyezése során.
+2. Az adatforrás a ritka elérésű útvonal a Power BI-fájl frissítése
 
-   * Győződjön meg arról, hogy a legújabb verziójának telepítése [Power BI desktop](https://powerbi.microsoft.com/desktop).
-   * Az a **"DemandForecastingDataGeneratorv1.0"** letöltött mappát, kattintson duplán a **"Power BI Template\DemandForecastPowerBI.pbix"** fájlt. A kezdeti képi megjelenítések dummy adatokon alapuló. **Megjegyzés:** Ha megjelenik egy hibaüzenet, győződjön meg arról, a Power BI Desktop legújabb verziójának telepítését.
+   * Győződjön meg arról, hogy telepítette a legújabb [Power BI desktop](https://powerbi.microsoft.com/desktop).
+   * Az a **"DemandForecastingDataGeneratorv1.0"** letöltött mappát, kattintson duplán a **"Power BI Template\DemandForecastPowerBI.pbix"** fájlt. A kezdeti Vizualizációk helyőrző adatokon alapulnak. **Megjegyzés:** hibaüzenet jelenik meg, ha győződjön meg arról, hogy telepítette a Power BI Desktop legújabb verzióját.
 
-     Ha megnyitja, a fájl felső részén található, kattintson a **szerkesztése lekérdezések**. Kattintson duplán a pop ki ablakot, **"Forrás"** a jobb oldali panelen.
+     Kattintson a megnyitott, a fájl felső részén, **lekérdezések szerkesztése**. A kiugró ablakban kattintson duplán **"Forrás"** a jobb oldali panelen.
      ![](media/cortana-analytics-technical-guide-demand-forecast/PowerBIpic1.png)
-   * Cserélje le a pop ki ablakot, **"Server"** és **"Adatbázis"** a saját kiszolgáló és az adatbázis nevének, és kattintson a **"OK"**. A kiszolgálónév, ellenőrizze, hogy az 1433-as port megadott (**YourSolutionName.database.windows.net, 1433**). Figyelmen kívül hagyja a képernyőn megjelenő figyelmeztető üzeneteket.
-   * A következő pop ki ablakot, két lehetőség közül választhat a bal oldali ablaktáblán látható (**Windows** és **adatbázis**). Kattintson a **"Adatbázis"**, töltse ki a **"Felhasználónév"** és **"Password"** (azt a felhasználónevet és jelszót, amikor először a megoldás telepített és létrehozott egy Azure SQL-adatbázis). A ***válassza ki, melyik szintre legyenek érvényesek a beállítások***, ellenőrizze az adatbázis-szintű beállítás. Kattintson a **"Csatlakozás"**.
-   * Amennyiben most interaktív, az előző oldalra, az ablak bezárásához. Egy üzenet végbement kimenő - kattintson **alkalmaz**. Végül kattintson a **mentése** gombra a módosítások mentéséhez. A Power BI-fájl most hozott létre kapcsolatot a kiszolgálóval. Üres a képi megjelenítés esetén győződjön meg arról, hogy törli a kijelölt elemek összes adatok megjelenítéséhez a jelmagyarázatokból jobb felső sarkában a radír ikonjára kattint a képi megjelenítések. A frissítés gombra segítségével új adatok vizuális tükrözi. Kezdetben csak akkor jelenik meg a adatait a képi megjelenítések a, az adat-előállítóban ütemezett frissítése 3 óránként. 3 óra után megjelenik a képi megjelenítések megjelennek, amikor az adatok frissítése új előrejelzéseket.
-3. (Választható) A cold elérési irányítópultot közzététele [Power BI online](http://www.powerbi.com/). Vegye figyelembe, hogy ez a lépés a Power BI fiókot (vagy Office 365-fiókkal) kell-e.
+   * Cserélje le a kiugró ablakban **"Kiszolgáló"** és **"Adatbázis"** a saját kiszolgáló és az adatbázis nevét, és kattintson a **"OK"**. A kiszolgáló nevét, győződjön meg arról, adja meg az 1433-as porton (**YourSolutionName.database.windows.net, 1433-as**). Figyelmen kívül hagyhatja a figyelmeztetéseket, a képernyőn megjelenő.
+   * A következő kiugró ablakban, a két lehetőség a bal oldali panelen láthatja (**Windows** és **adatbázis**). Kattintson a **"Adatbázis"**, töltse ki a **"Felhasználónév"** és **"Password"** (azt a felhasználónevet és jelszót, amikor először üzembe helyezte a megoldást és létrehozott egy Azure SQL-adatbázis). A ***válassza ki, melyik szintre legyenek érvényesek a beállítások***, ellenőrizze az adatbázis-szintű beállítás. Kattintson a **"Csatlakozás"**.
+   * Miután, interaktív van az előző oldalra, zárja be az ablakot. Felskálázás-– kattintson egy üzenet POP **alkalmaz**. Végül kattintson a **mentése** gombra kattintva mentse a módosításokat. A Power BI-fájl most létesített kapcsolat a kiszolgálóval. Ha a Vizualizációk üres, győződjön meg arról, törölje a jelet a választott beállításokat, a Vizualizációk adatok megjelenítése a jelmagyarázat jobb felső sarkában a radír ikonra kattintva. A frissítés gomb használatával új adatokat tükrözik a vizualizációt. Kezdetben csak látható a kezdőérték-adatok a Vizualizációk az adat-előállító 3 óránként ütemezett módon. 3 óra múlva megjelennek a Vizualizációk az adatok frissítésekor új előrejelzéseket láthatja.
+3. (Nem kötelező) A ritka elérésű útvonal irányítópult közzététele [online a Power BI](http://www.powerbi.com/). Vegye figyelembe, hogy ezt a lépést kell egy Power BI-fiók (vagy Office 365-fiókkal).
 
-   * Kattintson a **"Publish"** és néhány másodperc múlva megjelenik egy ablak megjelenítése a "Power BI sikeres közzététel!" a zöld pipa jelzi. A következő "Megnyitás demoprediction.pbix Power BI-ban" hivatkozásra kattintva. Részletes utasításokat talál [a Power BI Desktop közzététele](https://support.powerbi.com/knowledgebase/articles/461278-publish-from-power-bi-desktop).
-   * Új irányítópult létrehozása: kattintson a **+** jelentkezzen mellett a **irányítópultok** szakaszt, a bal oldali ablaktáblán. Adja meg az új irányítópult "Igény szerinti előrejelzés bemutató" nevét.
-   * Ha a jelentés megnyitásához kattintson ![](media/cortana-analytics-technical-guide-demand-forecast/PowerBIpic6.png) rögzítése az irányítópulton való rögzítéséhez képi megjelenítések. Részletes utasításokat talál [egy csempe rögzítése egy Power BI-irányítópult a jelentés](https://support.powerbi.com/knowledgebase/articles/430323-pin-a-tile-to-a-power-bi-dashboard-from-a-report).
-     Ugrás az irányítópult-oldalon, és méretének és a képi megjelenítések helyét és szerkessze a címben. Részletes utasításokat talál szerkesztése a csempéket a [Szerkesztés mozaik – átméretezési, move, nevezze át, PIN-kód, törlése, hivatkozás hozzáadása a](https://powerbi.microsoft.com/documentation/powerbi-service-edit-a-tile-in-a-dashboard/#rename). Íme egy példa irányítópult néhány cold elérési megjelenítésekkel azt van rögzítve.
+   * Kattintson a **"Közzététel"** és néhány másodperc múlva megjelenik egy ablak, "Közzététel a Power BI sikeres!" megjelenítése egy zöld pipának. A következő hivatkozás "A Power bi-ban megnyitott demoprediction.pbix" gombra. Részletes utasításokért lásd: [közzététel a Power BI Desktopból](https://support.powerbi.com/knowledgebase/articles/461278-publish-from-power-bi-desktop).
+   * Egy új irányítópult létrehozását: kattintson a **+** melletti jelentkezzen a **irányítópultok** szakaszban a bal oldali panelen. Adja meg az új irányítópult nevét "Kereslet-előrejelzés bemutató".
+   * Amikor megnyitja a jelentést, kattintson a ![](media/cortana-analytics-technical-guide-demand-forecast/PowerBIpic6.png) rögzítése az irányítópulton a vizualizációkat. Részletes utasításokért lásd: [csempe rögzítése Power BI-irányítópultra egy jelentésből](https://support.powerbi.com/knowledgebase/articles/430323-pin-a-tile-to-a-power-bi-dashboard-from-a-report).
+     Nyissa meg az irányítópult-oldalon és a méret- és a Vizualizációk és szerkessze a címben. Részletes útmutatás a csempék szerkesztésére vonatkozó információért lásd: [szerkesztése – átméretezés, áthelyezés, átnevezés, PIN-kód, csempe törlés, hivatkozás hozzáadása](https://powerbi.microsoft.com/documentation/powerbi-service-edit-a-tile-in-a-dashboard/#rename). Íme egy példa irányítópult egyes ritka elérésű útvonal vizualizációkkal rögzítve rajta.
 
      ![](media/cortana-analytics-technical-guide-demand-forecast/PowerBIpic7.png)
-4. (Választható) Az adatforrás-frissítés ütemezése.
+4. (Nem kötelező) Az adatforrás-frissítés ütemezése.
 
-   * Az adatok frissítés ütemezéséhez az egérmutatóval rámutat a **EnergyBPI végleges** dataset, kattintson ![](media/cortana-analytics-technical-guide-demand-forecast/PowerBIpic3.png) majd **ütemezés frissítése**.
-     **Megjegyzés:** Ha megjelenik egy figyelmeztetés masszírozó, kattintson a **hitelesítő adatok szerkesztése** , és győződjön meg arról, hogy az adatbázis hitelesítő adatai megegyeznek-e az 1. lépésben leírt.
+   * Frissítés ütemezéséhez az adatokat, az egérmutatóval rámutat a **EnergyBPI végleges** adatkészletet, kattintson a ![](media/cortana-analytics-technical-guide-demand-forecast/PowerBIpic3.png) majd **frissítés ütemezése**.
+     **Megjegyzés:** Ha megjelenik egy figyelmeztetés masszírozó, kattintson a **hitelesítő adatok szerkesztése** , és győződjön meg arról, hogy az adatbázis hitelesítő adatai ugyanazok, mint az 1. lépésben leírt.
 
      ![](media/cortana-analytics-technical-guide-demand-forecast/PowerBIpic4.png)
-   * Bontsa ki a **ütemezés frissítése** szakasz. Kapcsolja be "az adatok naprakészen tarthatók".
-   * A frissítés ütemezése a igények alapján. További információkért lásd: [adatfrissítési a Power BI](https://powerbi.microsoft.com/documentation/powerbi-refresh-data/).
+   * Bontsa ki a **frissítés ütemezése** szakaszban. Kapcsolja be "tartsa adatait naprakészen".
+   * A frissítés ütemezése az igényei szerint. További információkért lásd: [Adatfrissítés a Power BI](https://powerbi.microsoft.com/documentation/powerbi-refresh-data/).
 
 ## <a name="how-to-delete-your-solution"></a>**A megoldás törlése**
-Győződjön meg arról, hogy a adatgenerátor le, aktívan nem használata a megoldás, mint a adatgenerátor futtatása azt eredményezi azok háromszorosa magasabb költségek. Törölje a megoldást, ha nem használja azt. A megoldás törlése a megoldás üzembe helyezésekor az előfizetésben kiépített összetevőit. Törölje a megoldás kattintson a bal oldali panelen, a megoldás sablont, majd kattintson a Törlés a megoldás neve.
+Győződjön meg arról, hogy leállítsa az adatgenerálást amikor nem használja aktívan a megoldást, az adatgeneráló költsége magasabb szintre. Törölje a megoldást, ha nem használ. A megoldás törlésekor a megoldás üzembe helyezésekor az előfizetésben kiépített összes összetevőt. Törölje a megoldást kattintson a megoldás nevét a megoldássablon, majd kattintson a törlés, a bal oldali panelen.
 
-## <a name="cost-estimation-tools"></a>**Becslés eszközök költsége**
-A következő két eszközök segítségével jobb megértése érdekében fut az igény szerinti előrejelzés energia Megoldássablon az előfizetésében szereplő részt a teljes költségek érhetők el:
+## <a name="cost-estimation-tools"></a>**Költségek becslése eszközök**
+A következő két eszközök segítségével jobban megismerheti az a teljes költség a kereslet-előrejelzés energia Megoldássablon az előfizetésében futó részt érhetők el:
 
-* [A Microsoft Azure költség négyzetgyökének eszköz (online)](https://azure.microsoft.com/pricing/calculator/)
-* [A Microsoft Azure költség négyzetgyökének eszköz (asztali verzió)](http://www.microsoft.com/download/details.aspx?id=43376)
+* [A Microsoft Azure Cost Estimator eszközt (online)](https://azure.microsoft.com/pricing/calculator/)
+* [A Microsoft Azure Cost Estimator eszközt (asztali verzió)](http://www.microsoft.com/download/details.aspx?id=43376)
 
-## <a name="acknowledgements"></a>**A nyugtázás**
-Ez a cikk adatok tudósok JI Chen és szoftver visszafejtés Qiu Min Microsoft hozta létre.
+## <a name="acknowledgements"></a>**Nyugtázás**
+Ez a cikk adattudós JI Chen és Szoftvermérnök Qiu perc, a Microsoft hozta létre.

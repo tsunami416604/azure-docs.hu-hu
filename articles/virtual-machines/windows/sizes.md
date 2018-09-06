@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 07/06/2018
+ms.date: 09/05/2018
 ms.author: jonbeck
-ms.openlocfilehash: 9f934bfa190664f189bd40aff3f015f553d6a96f
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 25dec8388c02e834ff3d35965ab9288aca23946d
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37900956"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43840835"
 ---
 # <a name="sizes-for-windows-virtual-machines-in-azure"></a>Az Azure-beli Windows virtuális gépek méretei
 
@@ -50,7 +50,7 @@ Ez a cikk ismerteti az elérhető méretek és a beállításokat az Azure virtu
 Információk a Virtuálisgép-méretek lekérdezéshez REST API használatával tekintse meg a következőket:
 
 - [Átméretezéséhez elérhető virtuálisgép-méretek listázása](https://docs.microsoft.com/rest/api/compute/virtualmachines/listavailablesizes)
-- [Egy előfizetéshez tartozó elérhető virtuálisgép-méretek listázása](https://docs.microsoft.com/rest/api/compute/virtualmachines/listall)
+- [Egy előfizetéshez tartozó elérhető virtuálisgép-méretek listázása](https://docs.microsoft.com/rest/api/compute/virtualmachinesizes/list)
 - [Egy rendelkezésre állási csoportban elérhető virtuálisgép-méretek listázása](https://docs.microsoft.com/rest/api/compute/availabilitysets/listavailablesizes)
 
 ## <a name="acu"></a>ACU

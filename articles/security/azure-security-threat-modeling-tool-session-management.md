@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: cd843f1826ad65098a7c0f6d30383113ccd28f6a
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 97953779f1132d89c7ad07abdb4e08c0f476f4b9
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43306439"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43841813"
 ---
-# <a name="security-frame-session-management--articles"></a>Biztonsági keret: Munkamenet-kezelés |} Cikkek 
+# <a name="security-frame-session-management"></a>Biztonsági keret: Munkamenet-kezelés
 | Termék vagy szolgáltatás | Cikk |
 | --------------- | ------- |
 | **Azure AD**    | <ul><li>[Megvalósítása az ADAL módszerekkel, amikor az Azure AD megfelelő kijelentkeztetése](#logout-adal)</li></ul> |
@@ -380,36 +380,42 @@ void Page_Init (object sender, EventArgs e) {
 | **Lépések** | Munkamenet időkorlátja jelöli az esemény lépett fel, amikor a felhasználó nem bármely művelet elvégzésére egy webhelyen található egy (a webkiszolgáló által meghatározott) időköze alatt kerülne sor. Az esemény, a kiszolgálói oldalon, módosítsa a felhasználói munkamenet állapota "érvénytelen" (például "nem használt többé"), és kérje meg a webkiszolgáló megsemmisítése, (bele tárolt összes adat törlése). Az alábbi példakód a Web.config fájlban az időtúllépési munkamenetet attribútum állítja 15 perc.|
 
 ### <a name="example"></a>Példa
-"" XML-kódot <configuration> < system.web > <sessionState mode="InProc" cookieless="true" timeout="15" /> < /system.web > </configuration>
+```XML 
+<configuration>
+  <system.web>
+    <sessionState mode="InProc" cookieless="true" timeout="15" />
+  </system.web>
+</configuration>
 ```
 
-## <a id="threat-detection"></a>Enable Threat detection on Azure SQL
-```
-
-| Beosztás                   | Részletek      |
-| ----------------------- | ------------ |
-| **Összetevő**               | Web Application | 
-| **SDL fázis**               | Felépítés |  
-| **Megfelelő technológiák** | Web Forms |
-| **Attribútumok**              | –  |
-| **Hivatkozások**              | [Elem az űrlapos hitelesítéshez (nastavení Technologie ASP.NET)](https://msdn.microsoft.com/library/1d3t3c61(v=vs.100).aspx) |
-| **Lépések** | Állítsa be a az űrlapos hitelesítés jegyének cookie-k időkorlátja 15 perc|
-
-### <a name="example"></a>Példa
-"" XML-kódot <forms  name=".ASPXAUTH" loginUrl="login.aspx"  defaultUrl="default.aspx" protection="All" timeout="15" path="/" requireSSL="true" slidingExpiration="true"/>
-</forms>
+## <a id="threat-detection"></a>Az Azure SQL fenyegetésészlelés engedélyezése
 ```
 
 | Title                   | Details      |
 | ----------------------- | ------------ |
 | **Component**               | Web Application | 
 | **SDL Phase**               | Build |  
-| **Applicable Technologies** | Web Forms, MVC5 |
-| **Attributes**              | EnvironmentType - OnPrem |
-| **References**              | [asdeqa](https://skf.azurewebsites.net/Mitigations/Details/wefr) |
-| **Steps** | When the web application is Relying Party and ADFS is the STS, the lifetime of the authentication cookies - FedAuth tokens - can be set by the following configuration in web.config:|
+| **Applicable Technologies** | Web Forms |
+| **Attributes**              | N/A  |
+| **References**              | [forms Element for authentication (ASP.NET Settings Schema)](https://msdn.microsoft.com/library/1d3t3c61(v=vs.100).aspx) |
+| **Steps** | Set the Forms Authentication Ticket cookie timeout to 15 minutes|
 
 ### Example
+```XML
+<forms  name=".ASPXAUTH" loginUrl="login.aspx"  defaultUrl="default.aspx" protection="All" timeout="15" path="/" requireSSL="true" slidingExpiration="true"/>
+</forms>
+```
+
+| Beosztás                   | Részletek      |
+| ----------------------- | ------------ |
+| **Összetevő**               | Web Application | 
+| **SDL fázis**               | Felépítés |  
+| **Megfelelő technológiák** | Web Forms MVC5 |
+| **Attribútumok**              | EnvironmentType - rendszert |
+| **Hivatkozások**              | [asdeqa](https://skf.azurewebsites.net/Mitigations/Details/wefr) |
+| **Lépések** | A webes alkalmazás függő entitás pedig az AD FS az STS-re, amikor élettartama a hitelesítési cookie-k – FedAuth jogkivonatok - adhatók a Web.config fájlban a következő konfigurációt:|
+
+### <a name="example"></a>Példa
 ```XML
   <system.identityModel.services>
     <federationConfiguration>

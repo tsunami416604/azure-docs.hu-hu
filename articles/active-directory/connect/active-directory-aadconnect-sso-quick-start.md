@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/01/2018
+ms.date: 09/05/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 4710e30ad38485f47c115ac2e0e914e91c96d582
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 8cab491a874094ee195f12ba6fe7f19a87f09ef2
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39522181"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43841949"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Az Azure Active Directory zökkenőmentes egyszeri bejelentkezés: gyors üzembe helyezési
 
@@ -30,7 +30,7 @@ Az Azure Active Directory (Azure AD) zökkenőmentes egyszeri bejelentkezés (k�
 
 Közvetlen egyszeri bejelentkezés üzembe helyezéséhez kövesse az alábbi lépéseket.
 
-## <a name="step-1-check-the-prerequisites"></a>1. lépés: Az Előfeltételek ellenőrzése
+## <a name="step-1-check-the-prerequisites"></a>1. lépés: Az előfeltételek ellenőrzése
 
 Győződjön meg arról, hogy a következő előfeltételeket:
 
@@ -42,6 +42,9 @@ Győződjön meg arról, hogy a következő előfeltételeket:
     >Az Azure AD Connect-verziók 1.1.557.0, 1.1.558.0, 1.1.561.0 és 1.1.614.0 van a Jelszókivonat-szinkronizálás kapcsolatos probléma. Ha Ön _nem_ kívánja használni a Jelszókivonat-szinkronizálás az átmenő hitelesítéssel, olvassa el a [kibocsátási megjegyzések az Azure AD Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history#116470) további.
 
 * **Használjon egy támogatott az Azure AD Connect topológia**: Győződjön meg arról, hogy használja az Azure AD Connect támogatott topológiák leírt egyik [Itt](active-directory-aadconnect-topologies.md).
+
+    >[!NOTE]
+    >Közvetlen egyszeri bejelentkezés több AD-erdőkkel, támogatja a vannak-e AD Megbízhatóságok között vagy sem.
 
 * **Tartományi rendszergazdai hitelesítő adatok beállítása**: szüksége lesz a tartományi rendszergazda hitelesítő adatai esetében minden egyes Active Directory-erdő, amely:
     * Az Azure AD-keresztül az Azure AD Connect szinkronizálása.
@@ -180,7 +183,7 @@ Mozilla Firefox automatikusan nem használ Kerberos-hitelesítést. Minden felha
 
 #### <a name="safari-macos"></a>Safari (macOS)
 
-Győződjön meg arról, hogy a gép a macOS rendszerű ad-hez csatlakozik. Való csatlakozásról AD útmutatásért lásd: [ajánlott eljárások az OS X integrálja az Active Directory](http://www.isaca.org/Groups/Professional-English/identity-management/GroupDocuments/Integrating-OS-X-with-Active-Directory.pdf).
+Győződjön meg arról, hogy a gép a macOS rendszerű ad-hez csatlakozik. Utasítások az AD-csatlakozás macOS-eszköz nem ez a cikk foglalkozik.
 
 #### <a name="google-chrome-all-platforms"></a>Google Chrome (minden platform)
 

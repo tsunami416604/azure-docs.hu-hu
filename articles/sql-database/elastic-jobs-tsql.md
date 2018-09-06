@@ -8,12 +8,12 @@ ms.service: sql-database
 ms.topic: article
 ms.date: 06/14/2018
 ms.author: jaredmoo
-ms.openlocfilehash: ca21355c836a58591bbbd09874d0c5d0b5c17435
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: ae5dafcebd50ecd22309a7771b0edf01a97fd7a7
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39126425"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43842618"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>Rugalmas adatbázis-feladatok létrehozása és kezelése Transact-SQL (T-SQL) használatával
 
@@ -184,7 +184,13 @@ Ha például minden eredmény együtt ugyanazon feladat végrehajtása a csoport
 
 ## <a name="monitor-database-performance"></a>Adatbázis teljesítményének monitorozása
 
-A következő példában létrehozunk egy új feladatot, amely több adatbázisból származó teljesítményadatokat gyűjtenek.  
+A következő példában létrehozunk egy új feladatot, amely több adatbázisból származó teljesítményadatokat gyűjtenek.
+
+Alapértelmezés szerint a feladat ügynök fognak kinézni, a visszaadott eredményeket tárolja a tábla létrehozásához. Ennek eredményeképpen a bejelentkezés, a kimeneti hitelesítő adat számára használt hitelesítő adatokat társított kell végezni a megfelelő engedélyekkel. Ha szeretné manuálisan létrehozni a tábla kelljen majd annak rendelkeznie kell a következő tulajdonságokkal:
+1. A megfelelő nevű és típusú adatokkal az eredményhalmaz oszlopok.
+2. További internal_execution_id UniqueIdentifier adattípusú oszlop.
+3. Egy nem fürtözött index nevű "amelynek neve IX_<TableName>_Internal_Execution_ID" internal_execution_id oszlopában.
+
 Csatlakozás a [ *feladat adatbázis* ](elastic-jobs-overview.md#job-database) , és futtassa a következő parancsokat:
 
 ```sql

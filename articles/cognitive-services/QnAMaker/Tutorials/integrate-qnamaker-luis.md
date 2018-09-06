@@ -1,7 +1,7 @@
 ---
-title: Kérdések és válaszok Maker és LUIS - Microsoft kognitív szolgáltatások integrálása |} Microsoft Docs
+title: A QnA Maker és a LUIS - a Microsoft Cognitive Services integrálása |} A Microsoft Docs
 titleSuffix: Azure
-description: kérdések és válaszok Maker és LUIS integrálásával részletes oktatóanyaga
+description: részletes útmutató a QnA Maker és a LUIS integrálása
 services: cognitive-services
 author: nstulasi
 manager: sangitap
@@ -10,42 +10,42 @@ ms.component: QnAMaker
 ms.topic: article
 ms.date: 04/21/2018
 ms.author: saneppal
-ms.openlocfilehash: 0a0eeb3815b793ed81f60b2b239bc459e5574788
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 18eae69867dc9774f63b11c762b22df4595bdce6
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348691"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43781747"
 ---
-# <a name="integrate-qna-maker-and-luis-to-distribute-your-knowledge-base"></a>Kérdések és válaszok Maker és LUIS terjeszteni a Tudásbázis integrálása
-A kérdések és válaszok készítő Tudásbázis növekedésével nagy lesz nehéz fenntartani egységes egységes, és a Tudásbázis ossza fel kisebb logikai adattömbök szükség van.
+# <a name="integrate-qna-maker-and-luis-to-distribute-your-knowledge-base"></a>A QnA Maker és terjeszteni a Tudásbázis LUIS integrálása
+A QnA Maker Tudásbázis növekedésével nagy válik nehezen fenntartható, monolitikus egységes és a egy kell a Tudásbázis ossza fel kisebb logikai adattömböket.
 
-Is hozzon létre több Tudásbázis körrel a kérdések és válaszok készítő magától értetődő, szüksége lesz a bejövő kérdés útvonalat a megfelelő Tudásbázis néhány programot. Ehhez LUIS használatával.
+Bár a QnA Maker több tudásbázisok létrehozása egyszerű, szüksége lesz egy logikai irányíthatja a bejövő kérdést a megfelelő tudásbázisba. Ez a LUIS használatával teheti meg.
 
 ## <a name="architecture"></a>Architektúra
 
-![Kérdések és válaszok készítő luis architektúrája](../media/qnamaker-tutorials-qna-luis/qnamaker-luis-architecture.PNG)
+![A QnA Maker luis-architektúra](../media/qnamaker-tutorials-qna-luis/qnamaker-luis-architecture.PNG)
 
-A fenti esetben kérdések és válaszok készítő először lekérdezi a célt a bejövő kérdés LUIS modellből, és használja, amely a megfelelő kérdések és válaszok készítő Tudásbázis irányítja.
+Ebben az esetben QnA Maker először a bejövő kérdés szándéka olvas be egy LUIS-modellnek, és használja a QnA Maker megfelelő Tudásbázis irányítja.
 
 ## <a name="prerequisites"></a>Előfeltételek
-- Jelentkezzen be a [LUIS](https://www.luis.ai/) portal és [hozzon létre egy alkalmazást](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/create-new-app).
-- [Adja hozzá a leképezések](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/add-intents) a forgatókönyv szerint.
-- [Vonat](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/luis-how-to-train) és [közzététele](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/publishapp) az LUIS alkalmazást.
-- Jelentkezzen be [kérdések és válaszok készítő](https://qnamaker.ai) és [hozzon létre]() adatbázisok a forgatókönyv szerint.
-- [Teszt]() és [közzététele]() a Tudásbázis alapjait.
+- Jelentkezzen be a [LUIS](https://www.luis.ai/) portál és [hozzon létre egy alkalmazást](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/create-new-app).
+- [Leképezések hozzáadása](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/add-intents) forgatókönyvnek megfelelően.
+- [Train](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/luis-how-to-train) és [közzététele](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/publishapp) a LUIS-alkalmazás.
+- Jelentkezzen be [QnA Maker](https://qnamaker.ai) és [létrehozása](https://www.qnamaker.ai/Create) tudásbázisok forgatókönyvnek megfelelően.
+- Tesztelje, és tegye közzé a tudásbázisok.
 
-## <a name="qna-maker--luis-bot"></a>Kérdések és válaszok készítő + LUIS Botot
-1. Először hozzon létre egy webalkalmazás botot LUIS sablonnal, csatolja az előbb létrehozott LUIS alkalmazással, és módosítsa a leképezések. Tekintse meg a részletes lépéseket [Itt](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/luis-csharp-tutorial-build-bot-framework-sample).
+## <a name="qna-maker--luis-bot"></a>A QnA Maker + robot a LUIS
+1. Először hozzon létre egy Web App-robot a LUIS-sablonnal, a fent létrehozott LUIS alkalmazás Összekapcsoláshoz, majd módosítsa a szándék fog vonatkozni. Részletes lépések a [Itt](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/luis-csharp-tutorial-build-bot-framework-sample).
 
-2. Adja a függőségeket, a más függőségekkel rendelkező a fájl elejéhez:
+2. Adja a függőségeket, a más függőségekkel a fájl elejéhez:
 
     ```
     using RestSharp;
     using System.Collections.Generic;
     using Newtonsoft.Json;
     ```
-3. Adja hozzá az alábbi osztály a kérdések és válaszok készítő szolgáltatás hívása:
+3. Adja hozzá az alábbi osztály számára a QnA Maker szolgáltatás hívása:
 
     ```
         /// <summary>
@@ -121,11 +121,11 @@ A fenti esetben kérdések és válaszok készítő először lekérdezi a célt
         /* END - QnA Maker Response Class */
     ```
 
-3. Ugrás a https://qnamaker.ai -> saját Tudásbázis körrel nézet kódját, a megfelelő Tudásbázis ->. Szerezze be a következő adatokat:
+3. Lépjen a https://qnamaker.ai -> saját tudásbázisok nézet kódját, a kapcsolódó Tudásbázis ->. Kérje le a következő információkat:
 
-    ![Kérdések és válaszok készítő HTTP-kérelem](../media/qnamaker-tutorials-qna-luis/qnamaker-http-request.png)
+    ![A QnA Maker HTTP-kérelem](../media/qnamaker-tutorials-qna-luis/qnamaker-http-request.png)
 
-4. A QnAMakerService osztály példányosítható a Tudásbázis körrel mindegyikéhez:
+4. A QnAMakerService osztály példányosítható a tudásbázisok mindegyike esetében:
     ```
             // Instantiate the knowledge bases
             public QnAMakerService hrQnAService = new QnAMakerService("https://hrkb.azurewebsites.net", "<HR knowledge base id>", "<HR endpoint key>");
@@ -160,21 +160,21 @@ A fenti esetben kérdések és válaszok készítő először lekérdezi a célt
             }
     ```
 
-## <a name="build-the-bot"></a>A botot összeállítása
-1. A kód-szerkesztőben kattintson a jobb gombbal a `build.cmd` válassza **futtatása konzolról**.
+## <a name="build-the-bot"></a>A robot létrehozása
+1. A kódszerkesztőben, kattintson a jobb gombbal a `build.cmd` válassza **futtatása konzolról**.
 
-    ![Futtassa a konzolról](../media/qnamaker-tutorials-qna-luis/run-from-console.png)
+    ![a konzol futtatása](../media/qnamaker-tutorials-qna-luis/run-from-console.png)
 
-2. A kód nézetre egy terminálablakot, állapotának és eredményeinek a build megjelenítő helyére.
+2. A kód nézet megjelenítése a állapotának és eredményeinek megtekintéséhez a build terminálablak cseréli le.
 
     ![konzol build](../media/qnamaker-tutorials-qna-luis/console-build.png)
 
-## <a name="test-the-bot"></a>A botot tesztelése
-Válassza ki az Azure-portálon **webes Csevegés tesztelése** a botot teszteléséhez. Írja be a válasz lekérése a megfelelő Tudásbázis különböző leképezések üzeneteit.
+## <a name="test-the-bot"></a>A robot tesztelése
+Az Azure Portalon válassza ki a **tesztelni, webes csevegési** a robot teszteléséhez. Írja be a különböző leképezések lekérni a választ, a kapcsolódó Tudásbázis üzeneteit.
 
-![a webteszt Csevegés](../media/qnamaker-tutorials-qna-luis/qnamaker-web-chat.png)
+![webes csevegési teszt](../media/qnamaker-tutorials-qna-luis/qnamaker-web-chat.png)
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Kérdések és válaszok készítő hozzon létre egy üzletmenet folytonosságát biztosító terve](../How-To/business-continuity-plan.md)
+> [A QnA Maker egy üzleti folytonossági terv létrehozása](../How-To/business-continuity-plan.md)

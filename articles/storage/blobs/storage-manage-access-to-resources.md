@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 04/26/2017
 ms.author: tamram
-ms.openlocfilehash: 7270ec7c5129352b0e801808e5c7720e5021ac9d
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: bf7dabc1c3765d86e7a0f87acaa6f06a68d3d530
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39398818"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782008"
 ---
 # <a name="manage-anonymous-read-access-to-containers-and-blobs"></a>Tárolók és blobok névtelen olvasási hozzáférésének kezelése
 Engedélyezheti a névtelen, nyilvános olvasási hozzáférést a tárolóhoz és annak blobjaihoz, az Azure Blob storage-ban. Ezzel a módszerrel csak olvasási hozzáféréssel ezekhez az erőforrásokhoz a fiókkulcs megosztása nélkül, és anélkül, hogy egy közös hozzáférésű jogosultságkód (SAS) adhat meg.
@@ -39,7 +39,7 @@ A következő segítségével a tároló engedélyeinek beállítása:
 Tároló engedélyeinek beállítása a [az Azure portal](https://portal.azure.com), kövesse az alábbi lépéseket:
 
 1. Nyissa meg a **tárfiók** panel a portálon. Annak a storage-fiók kiválasztásával **tárfiókok** a fő menü a portálon a panelen.
-1. A **BLOB SERVICE** menü panelen válassza ki a **tárolók**.
+1. A **BLOB SERVICE** menü panelen válassza ki a **Blobok**.
 1. A tároló sorban kattintson a jobb gombbal, vagy kattintson a három pontra, nyissa meg a tároló **helyi menü**.
 1. Válassza ki **hozzáférési szabályzat** a helyi menüben.
 1. Válasszon egy **típus eléréséhez** a legördülő menüből.

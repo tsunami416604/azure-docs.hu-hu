@@ -11,12 +11,12 @@ ms.date: 08/01/2018
 ms.author: ninarn
 ms.topic: conceptual
 ms.reviewer: carlrab
-ms.openlocfilehash: 96ea965ac383ae449afffa62c5e9950c6fd4e4da
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: cbfbe02926907ca3ca5b6c13932c8b67862c8456
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39411933"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43842023"
 ---
 # <a name="create-and-manage-elastic-pools-in-azure-sql-database"></a>Az Azure SQL Database rugalmas készletek létrehozása és kezelése
 
@@ -104,17 +104,11 @@ Hozhat létre és kezelheti az SQL Database rugalmas készletek és a készletez
 |[Rugalmas készletek – Get](/rest/api/sql/elasticpools/get)|Rugalmas készlet beolvasása.|
 |[Rugalmas készletek – kiszolgáló listája](/rest/api/sql/elasticpools/listbyserver)|Rugalmas készletek listáját adja vissza a kiszolgálón.|
 |[Rugalmas készletek – frissítés](/rest/api/sql/elasticpools/update)|Frissíti egy meglévő rugalmas készlet.|
-|[Ajánlott a rugalmas készletek – Get](/rest/api/sql/recommendedelasticpools/get)|Lekérdezi egy ajánlott rugalmas készletet.|
-|[Ajánlott a rugalmas készletek – kiszolgáló listája](/rest/api/sql/recommendedelasticpools/listbyserver)|A javasolt rugalmas készletek értéket ad vissza.|
-|[Ajánlott a rugalmas készletek – mérőszámok listája](/rest/api/sql/recommendedelasticpools/listmetrics)|Vissza a rugalmas készletekkel kapcsolatos metrikák ajánlott.|
 |[Rugalmas készlet, tevékenységek](/rest/api/sql/elasticpoolactivities)|Rugalmas készlet, tevékenységek adja vissza.|
 |[Rugalmas készlet adatbázis-tevékenységek](/rest/api/sql/elasticpooldatabaseactivities)|Az adatbázisok rugalmas készlet belül adja vissza a tevékenység.|
 |[-Adatbázis létrehozása vagy frissítése](/rest/api/sql/databases/createorupdate)|Új adatbázis létrehozása vagy frissítése egy meglévő adatbázist.|
 |[Adatbázisok – Get](/rest/api/sql/databases/get)|Egy adatbázis beolvasása.|
-|[Rugalmas készlet adatbázisok – lekéréséhez](/rest/api/sql/databases/getbyelasticpool)|Lekéri egy adatbázis egy rugalmas készlet belül.|
-|[Adatbázisok – ajánlott a rugalmas készlet lekéréséhez](/rest/api/sql/databases/getbyrecommendedelasticpool)|Lekéri egy adatbázis ajánlott a rugalmas készlet belül.|
 |[Adatbázis - listát a rugalmas készlet](/rest/api/sql/databases/listbyelasticpool)|Rugalmas készletben található adatbázisok listáját adja vissza.|
-|[Adatbázis - lista alapján ajánlott a rugalmas készlet](/rest/api/sql/databases/listbyrecommendedelasticpool)|Egy ajánlott rugalmas készletben található adatbázisok listáját adja vissza.|
 |[Adatbázis - kiszolgáló által lista](/rest/api/sql/databases/listbyserver)|A kiszolgálón az adatbázisok listáját adja vissza.|
 |[Adatbázis - frissítés](/rest/api/sql/databases/update)|Frissíti egy meglévő adatbázist.|
 

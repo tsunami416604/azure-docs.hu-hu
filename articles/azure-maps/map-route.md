@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: codepen
-ms.openlocfilehash: 44937bbe619e3bc0b43fd9872c97a7b185f98bdd
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 80abd6db9888524aa6a66d9861d8dc2d05188e19
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43669346"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43781496"
 ---
 # <a name="show-directions-from-a-to-b"></a>Útvonal megjelenítése A-ból B-be 
 
@@ -37,7 +37,7 @@ Használja a következő kódblokkot [setCameraBounds](https://docs.microsoft.co
 
 A hatodik kódblokkot egy útvonal lekérdezést hoz létre.
 
-A legutóbbi kódblokkot keresztül az Azure Maps útválasztási szolgáltatás lekérdezi a [getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/services.route?view=azure-iot-typescript-latest#getroutedirections) metódus egy útvonalat a kezdő és a cél pont közötti lekéréséhez. A válasz majd szűrőtulajdonság GeoJSON formátumú használatával a [getGeoJsonRoutes](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.geojson.geojsonroutedirectionsresponse?view=azure-iot-typescript-latest#getgeojsonroutes) metódust. Hozzáadja a sorokra a térképre az útvonal megjelenítése. Látható [adjon hozzá egy sort a térképen](./map-add-shape.md#addALine) útmutatást.
+A legutóbbi kódblokkot keresztül az Azure Maps útválasztási szolgáltatás lekérdezi a [getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/services.route?view=azure-iot-typescript-latest#getroutedirections) metódus egy útvonalat a kezdő és a cél pont közötti lekéréséhez. A válasz majd szűrőtulajdonság GeoJSON formátumú használatával a [getGeoJsonRoutes](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.geojson.geojsonroutedirectionsresponse?view=azure-iot-typescript-latest#getgeojsonroutes) metódust. Hozzáadja a sorokra a térképre az útvonal megjelenítése. Látható [adjon hozzá egy sort a térképen](./map-add-shape.md#addALine) további információt.
 
 ## <a name="next-steps"></a>További lépések
 

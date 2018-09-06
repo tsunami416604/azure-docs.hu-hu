@@ -1,4 +1,10 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: 15863679b42962d414493804f234c9fde46172ea
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43781158"
 documentType: LandingData
 title: Azure Machine Learning-szolgáltatások (előzetes verzió) dokumentációja
 metadata:
@@ -14,12 +20,6 @@ metadata:
   ms.topic: landing-page
   ms.date: 01/18/2018
   ms.author: garye
-  ms.openlocfilehash: 8e0856cd7470c65ba1484ab47d840e4b61ee91f9
-  ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
-  ms.translationtype: HT
-  ms.contentlocale: hu-HU
-  ms.lasthandoff: 06/19/2018
-  ms.locfileid: "36266566"
 abstract:
   description: Az Azure Machine Learning-szolgáltatások (előzetes verzió) használatával gépi tanulási és AI-modelleket hozhat létre, helyezhet üzembe és kezelhet bármilyen Python-eszközzel és -kódtárral használatával. Számos különféle adat- és számítási szolgáltatást használhat az Azure-ban adatai tárolására és feldolgozására.
 sections:
@@ -71,4 +71,4 @@ sections:
     - title: Nyelvek
       html: <p><a href="https://azure.microsoft.com/develop/python/">Python</a></p>
     - title: REST
-      html: <p><a href="model-management-api-reference">Modellkezelési REST API</a></p>
+      html: <p><a href="https://docs.microsoft.com/rest/api/machinelearning/">REST-felügyeleti API-k</a></p>

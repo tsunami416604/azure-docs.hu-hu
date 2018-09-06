@@ -5,14 +5,14 @@ services: event-grid
 author: tfitzmac
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 08/08/2018
+ms.date: 09/05/2018
 ms.author: tomfitz
-ms.openlocfilehash: b34386a7b416d6f7d8b008a9cb5ef142948a370f
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 2a9ff23e5182c8cb7c91ad93e368f61f258c84f8
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40005395"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43841592"
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>Event Grid az üzenetek kézbesítését, és próbálkozzon újra 
 
@@ -35,19 +35,20 @@ A következő HTTP-válaszkódot adja meg, hogy az esemény rendelkezik lett sik
 
 ### <a name="failure-codes"></a>Sikertelen kód
 
-A következő HTTP-válaszkódot adja meg, hogy az esemény kézbesítési kísérlet meghiúsult. 
+A következő HTTP-válaszkódot adja meg, hogy az esemény kézbesítési kísérlet meghiúsult.
 
 - 400 Hibás kérés
 - 401-es nem engedélyezett
 - 404 – Nem található
 - 408 kérés időtúllépése
+- 413 kérelem az entitás túl nagy
 - 414 URI túl hosszú
 - 429 túl sok kérelem
 - 500 Belső kiszolgálóhiba
 - 503 A szolgáltatás nem érhető el
 - 504 Időtúllépés az átjárón
 
-Ha eseményrács hiba, amely azt jelzi, hogy a végpont átmenetileg nem érhető el, vagy egy jövőbeli kérés sikeres lehet, újrapróbálkozik az eseményt. Ha eseményrács egy hibaüzenetet, amely a szállítási soha nem fog sikerülni, és [kézbesíthetetlen levelek végpont konfigurálva van](manage-event-delivery.md), a kézbesíthetetlen levelek végpont elküldi az eseményt. 
+Ha rendelkezik [konfigurálva a kézbesíthetetlen levelek végpont](manage-event-delivery.md) és Event Grid vagy 400 vagy 413 válaszkódot kap, az Event Grid azonnal elküldi az eseményt a kézbesíthetetlen levelek végpont. Ellenkező esetben az Event Grid hibákat újrapróbálkozik.
 
 ## <a name="retry-intervals-and-duration"></a>Újrapróbálkozási időközök és időtartama
 

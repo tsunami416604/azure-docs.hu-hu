@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/10/2017
 ms.author: harijayms
-ms.openlocfilehash: de597424c1be01e651068b7900acbece822610b1
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: d64233883d2dd6fb174c55467fcfcd276b452775
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39008375"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782990"
 ---
 # <a name="azure-instance-metadata-service"></a>Az Azure Instance Metadata szolgáltatás
 
@@ -37,10 +37,10 @@ A szolgáltatás általánosan elérhető Azure-régióban érhető el. Lehet, h
 
 Régiók                                        | Rendelkezésre állási?                                 | Támogatott verziók
 -----------------------------------------------|-----------------------------------------------|-----------------
-[Az összes általánosan elérhető globális Azure-régiók](https://azure.microsoft.com/regions/)     | Általánosan elérhető   | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01
-[Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | Általánosan elérhető | 2017-04-02,2017-08-01
-[Az Azure China](https://www.azure.cn/)                                                           | Általánosan elérhető | 2017-04-02,2017-08-01
-[Az Azure Germany](https://azure.microsoft.com/overview/clouds/germany/)                    | Általánosan elérhető | 2017-04-02,2017-08-01
+[Az összes általánosan elérhető globális Azure-régiók](https://azure.microsoft.com/regions/)     | Mindenki számára elérhető   | 2018-04-02 2018-02-01, 2017-12-01, 2017-08-01, 2017-04-02,
+[Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | Mindenki számára elérhető | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01
+[Az Azure China](https://www.azure.cn/)                                                           | Mindenki számára elérhető | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01
+[Az Azure Germany](https://azure.microsoft.com/overview/clouds/germany/)                    | Mindenki számára elérhető | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01
 
 Ez a táblázat frissül, ha nincsenek a szolgáltatásfrissítések, és vagy új támogatott verziók érhetők el
 
@@ -49,7 +49,7 @@ Próbálja ki a Instance Metadata szolgáltatás, hozzon létre egy virtuális g
 ## <a name="usage"></a>Használat
 
 ### <a name="versioning"></a>Verziókezelés
-A Instance Metadata szolgáltatás verziószámmal. Verziók a következők kötelező, és a globális Azure-ban a jelenlegi verzió `2017-12-01`. Aktuális verziók a következők (2017-04-02, 2017-08-01,2017-12-01)
+A Instance Metadata szolgáltatás verziószámmal. Verziók a következők kötelező, és a globális Azure-ban a jelenlegi verzió `2018-04-02`. Aktuális verziók a következők (2017-04-02, 2018-04-02 2018-02-01, 2017-12-01, 2017-08-01)
 
 > [!NOTE] 
 > {Legújabb} api-verzió is támogatott, az ütemezett események korábbi előzetes kiadásokat. Ez a formátum már nem támogatott, és később elavulttá válik.
@@ -299,6 +299,8 @@ subscriptionId | A virtuális gép Azure-előfizetés | 2017-08-01
 tags | [A címkék](../../azure-resource-manager/resource-group-using-tags.md) a virtuális gép  | 2017-08-01
 resourceGroupName | [Erőforráscsoport](../../azure-resource-manager/resource-group-overview.md) a virtuális gép | 2017-08-01
 placementGroupId | [Elhelyezési csoport](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) a virtuálisgép-méretezési csoport beállítása | 2017-08-01
+csomag | [Program] (https://docs.microsoft.com/en-us/rest/api/compute/virtualmachines/createorupdate#plan) azt a virtuális gép van egy Azure Marketplace-beli rendszerképét, tartalmazza a neve, a termékek és a közzétevő | 2017-04-02
+publicKeys | Nyilvános kulcsok gyűjteményét [https://docs.microsoft.com/en-us/rest/api/compute/virtualmachines/createorupdate#sshpublickey] rendelve a virtuális gép és az elérési út | 2017-04-02
 vmScaleSetName | [Virtuálisgép-méretezési csoport neve](../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) a virtuálisgép-méretezési csoport beállítása | 2017-12-01
 zóna | [Rendelkezésre állási zónában](../../availability-zones/az-overview.md) a virtuális gép | 2017-12-01 
 ipv4/privateIpAddress | A virtuális gép helyi IPv4-cím | 2017-04-02
@@ -379,6 +381,39 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute?api-vers
 }
 ```
 
+
+### <a name="getting-azure-environment-where-the-vm-is-running"></a>Bevezetés az Azure-környezetben, ahol a virtuális gép fut. 
+
+Az Azure rendelkezik a különböző soverign felhők például [Azure Government](https://azure.microsoft.com/overview/clouds/government/) , néha kell az Azure környezetbe néhány futásidejű döntéseket. Következő minta bemutatja, hogyan lehet ezt elérni
+
+**Kérés**
+
+```
+  $metadataResponse = Invoke-WebRequest "http://169.254.169.254/metadata/instance/compute?api-version=2018-02-01" -H @{"Metadata"="true"} -UseBasicParsing
+  $metadata = ConvertFrom-Json ($metadataResponse.Content)
+ 
+  $endpointsResponse = Invoke-WebRequest "https://management.azure.com/metadata/endpoints?api-version=2017-12-01" -UseBasicParsing
+  $endpoints = ConvertFrom-Json ($endpointsResponse.Content)
+ 
+  foreach ($cloud in $endpoints.cloudEndpoint.PSObject.Properties) {
+    $matchingLocation = $cloud.Value.locations | Where-Object {$_ -match $metadata.location}
+    if ($matchingLocation) {
+      $cloudName = $cloud.name
+      break
+    }
+  }
+ 
+  $environment = "Unknown"
+  switch ($cloudName) {
+    "public" { $environment = "AzureCloud"}
+    "usGovCloud" { $environment = "AzureUSGovernment"}
+    "chinaCloud" { $environment = "AzureChinaCloud"}
+    "germanCloud" { $environment = "AzureGermanCloud"}
+  }
+ 
+  Write-Host $environment
+```
+
 ### <a name="examples-of-calling-metadata-service-using-different-languages-inside-the-vm"></a>Példák a virtuális gép több különböző nyelvet használó metadata szolgáltatás hívása 
 
 Nyelv | Példa 
@@ -404,7 +439,7 @@ Puppet | https://github.com/keirans/azuremetadata
    * A Instance Metadata szolgáltatás jelenleg csak az Azure Resource Managerrel létrehozott példányok támogatják. A Cloud Service virtuális gépeken hozzá lehet adva a jövőben támogatása.
 3. A virtuális gép az Azure Resource Manageren keresztül létrehozott egy while vissza. Miért nem tudok lásd: számítási metaadat-információkat?
    * Minden 2016. szeptember. után létrehozott virtuális gépek hozzáadása egy [címke](../../azure-resource-manager/resource-group-using-tags.md) , azokat a számítási metaadatait. A régebbi virtuális gépek (2016. szeptember előtt létrehozott) hozzáadása/eltávolítása adatok és a teljes lemezt a virtuális Gépet a metaadatok frissítése.
-4. Nem látok a 2017-08-01-es verziójának új kitölti az összes adat
+4. Nem látok feltöltve az új verzió minden adat
    * Minden 2016. szeptember. után létrehozott virtuális gépek hozzáadása egy [címke](../../azure-resource-manager/resource-group-using-tags.md) , azokat a számítási metaadatait. A régebbi virtuális gépek (2016. szeptember előtt létrehozott) hozzáadása/eltávolítása adatok és a teljes lemezt a virtuális Gépet a metaadatok frissítése.
 5. Miért jelenik meg a hiba `500 Internal Server Error`?
    * Ismételje meg a kérelmet, a rendszer exponenciális visszatartási alapján. Ha a probléma továbbra is fennáll, forduljon az Azure ügyfélszolgálatához.
@@ -414,6 +449,10 @@ Puppet | https://github.com/keirans/azuremetadata
    * Igen Metadata szolgáltatás érhető el a méretezési csoport beállítása példányokhoz. 
 8. Hogyan kérhet támogatást a szolgáltatás?
    * Segítségre van szüksége a szolgáltatáshoz, hozzon létre egy támogatási probléma az Azure Portalon a virtuális gép, ahol Ön nem sikerült beolvasni a metaadatok válasz hosszú újrapróbálkozás után 
+9. A hívás túllépte az időkorlátot kérelem jelenik meg: az a szolgáltatás?
+   * Metaadatok hívások kell tenni a hálózati kártyát a virtuális gép hozzárendelt elsődleges IP-címről, emellett abban az esetben, ha módosította az ott kell lenniük egy útvonalat a hálózati kártya ki 169.254.0.0/16 cím.
+10. A virtuális gép méretezési csoportban lévő címkék frissítése, de azok nem jelennek meg a virtuális gépek ellentétben a példányok?
+   * Jelenleg a ScaleSets címkék csak akkor látható, a virtuális Gépet egy újraindítás vagy rendszerképét alaphelyzetbe állítani/egy lemezt, vagy módosítsa a példány a. 
 
    ![Példány metaadatok támogatása](./media/instance-metadata-service/InstanceMetadata-support.png)
     

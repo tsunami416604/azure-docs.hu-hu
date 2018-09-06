@@ -14,12 +14,12 @@ ms.workload: na
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 5e265543e2ce5feeed095d89cdb47ede9817bad1
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 317d8bf40ef152e5b7dae6406be29330feaaa8d3
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40002678"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43842478"
 ---
 # <a name="create-your-first-function-with-java-and-intellij-preview"></a>Az első függvény létrehozása a Java és az intellij-vel (előzetes verzió)
 
@@ -80,11 +80,11 @@ A függvény gazdagép indítása hibakeresési módban, adjon hozzá **- Denabl
 mvn azure-functions:run -DenableDebug
 ```
 
-Hibakeresése az intellij-ben, az a **futtatása** menüből válassza **konfigurációk szerkesztése**. Kattintson a ** + ** hozzáadása egy **távoli**. Töltse ki **neve** és **beállítások**, és kattintson a **OK** a konfiguráció mentéséhez. A telepítés után kattintson a **Debug** (a távoli Configuration Name), vagy nyomja le **Shift + F9** hibakeresésének elkezdéséhez.
+Hibakeresése az intellij-ben, az a **futtatása** menüből válassza **konfigurációk szerkesztése**. Kattintson a **+** hozzáadása egy **távoli**. Töltse ki **neve** és **beállítások**, és kattintson a **OK** a konfiguráció mentéséhez. A telepítés után kattintson a **Debug** (a távoli Configuration Name), vagy nyomja le **Shift + F9** hibakeresésének elkezdéséhez.
 
 ![Az intellij-ben függvények hibakeresése](media/functions-create-first-java-intellij/debug-configuration-intellij.PNG)
 
-Amikor végzett a hibakeresőt és a futó folyamat leállítása. Csak egy függvényt gazdagép lehet aktív és futó lévő helyi időben.
+Amikor végzett a hibakeresőt és a futó folyamat leállítása. Csak egy függvényt gazdagép lehet aktív és futó helyi egyszerre.
 
 ## <a name="deploy-the-function-to-azure"></a>A függvény üzembe helyezése az Azure-ban
 

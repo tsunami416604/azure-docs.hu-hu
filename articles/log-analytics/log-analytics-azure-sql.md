@@ -15,22 +15,22 @@ ms.topic: conceptual
 ms.date: 05/03/2018
 ms.author: v-daljep
 ms.component: na
-ms.openlocfilehash: 47069f0af7409d87cb2d4fbbbce9dda0b1c2056e
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: 82845f475857f9a911febd496e86eb2a60f69c25
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42886560"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782243"
 ---
 # <a name="monitor-azure-sql-databases-using-azure-sql-analytics-preview"></a>A figyelő Azure SQL Database-adatbázisok Azure SQL Analytics (előzetes verzió) használatával
 
 ![Az Azure SQL Analytics szimbólum](./media/log-analytics-azure-sql/azure-sql-symbol.png)
 
-Az Azure SQL Analytics figyelési megoldást figyelése Azure SQL Database-adatbázisok teljesítményét, több rugalmas készletek és az előfizetések felhő. Azt gyűjti elérhetővé, és fontos Azure SQL Database teljesítmény-mérőszámok, teljesítménnyel kapcsolatos hibaelhárítás felül a beépített intelligenciával. 
+Az Azure SQL Analytics egy felhőalapú megoldást kínál a teljesítmény figyelése Azure SQL Database-adatbázisok, rugalmas készletek és a felügyelt példányok ipari méretekben, és több előfizetésre kiterjedő figyelési. Azt gyűjti elérhetővé, és fontos Azure SQL Database teljesítmény-mérőszámok – teljesítménnyel kapcsolatos hibaelhárítás a beépített intelligenciával.
 
-A megoldással gyűjtött metrikák használatával létrehozhat egyéni figyelési szabályokkal és riasztásokkal. A megoldás segítségével azonosíthatja a problémákat az alkalmazáscsoportokat az egyes rétegben. Az Azure SQL Database-adatbázisok és a egy Log Analytics-munkaterület az a rugalmas készletek kapcsolatos adatokat a Log Analytics nézeteivel együtt az Azure diagnosztikai metrikák használ. A log Analytics segítségével összegyűjtését, összekapcsolását és megjelenítését a strukturált és strukturálatlan adatok.
+A megoldással gyűjtött metrikák használatával létrehozhat egyéni figyelési szabályokkal és riasztásokkal. A megoldás segítségével azonosíthatja a problémákat az alkalmazáscsoportokat az egyes rétegben. Adatokat az összes az Azure SQL adatbázisok, rugalmas készletek és adatbázisok szerepelnek a felügyelt példányok egyetlen Log Analytics-munkaterületet a Log Analytics nézeteivel együtt az Azure diagnosztikai metrikák használ. A log Analytics segítségével összegyűjtését, összekapcsolását és megjelenítését a strukturált és strukturálatlan adatok.
 
-Jelenleg ez a megoldás előzetes legfeljebb 150 000 Azure SQL Database-adatbázisok és 5000 rugalmas SQL-készletek Munkaállomásonként.
+Jelenleg ez a minta megoldás legfeljebb 200 000 Azure SQL Database-adatbázisok és 5000 rugalmas SQL-készletek Munkaállomásonként.
 
 A gyakorlati áttekintése az Azure SQL Analytics megoldás használatával és a jellemző használati forgatókönyvei: a beágyazott videót:
 
@@ -39,9 +39,9 @@ A gyakorlati áttekintése az Azure SQL Analytics megoldás használatával és 
 
 ## <a name="connected-sources"></a>Összekapcsolt források
 
-Az Azure SQL Analytics megoldás támogató streamelési diagnostics telemetriai adatainak az Azure SQL Database-adatbázisok és rugalmas készletek figyelése felhő. A Log Analytics szolgáltatáshoz való csatlakozáshoz ügynökök nem használ, a megoldás nem támogatja a Windows, Linux-csatlakozási vagy az SCOM-erőforrásokat, tekintse meg az alábbi táblázat a kompatibilitási.
+Az Azure SQL Analytics egy felhőben csak a megoldást támogató streamelési diagnostics telemetriai adatainak az Azure SQL Database-adatbázisok, rugalmas készletek és a felügyelt példányok figyelése. A Log Analytics szolgáltatáshoz való csatlakozáshoz ügynökök nem használ, a megoldás nem támogatja a helyszíni SQL Server-kiszolgálók vagy virtuális gépek figyelése, az alábbi tábla a kompatibilitási.
 
-| Összekapcsolt forrás | Támogatás | Leírás |
+| Összekapcsolt forrás | Támogatott | Leírás |
 | --- | --- | --- |
 | **[Az Azure Diagnostics](log-analytics-azure-storage.md)** | **Igen** | Az Azure metrika- és naplózási adatok közvetlenül az Azure Log Analytics érkeznek. |
 | [Azure Storage-fiók](log-analytics-azure-storage.md) | Nem | A log Analytics egy storage-fiókból az adatok nem olvashatók. |

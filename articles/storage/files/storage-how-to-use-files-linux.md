@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/29/2018
 ms.author: renash
 ms.component: files
-ms.openlocfilehash: 89343f3e4ec91dd32b24cdea6632cecd855cc6f8
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: bbd250e9ee987403d670b2605fdb8deda8c19092
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39523223"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782050"
 ---
 # <a name="use-azure-files-with-linux"></a>Az Azure Files használata Linuxszal
 Az [Azure Files](storage-files-introduction.md) a Microsoft könnyen használható felhőalapú fájlrendszere. Azure-fájlmegosztások használatával Linux-disztribúciók csatlakoztathatók a [SMB-kernel ügyfél](https://wiki.samba.org/index.php/LinuxCIFS). Ez a cikk bemutatja az Azure-fájlmegosztások csatlakoztatására kétféleképpen: az igény a `mount` paranccsal, és a rendszerindítási bejegyzés létrehozásával `/etc/fstab`.
@@ -107,7 +107,7 @@ Az [Azure Files](storage-files-introduction.md) a Microsoft könnyen használhat
 3. **Hozzon létre egy hitelesítő adatait tartalmazó fájlt a felhasználónevet (a tárfiók neve) és a jelszót (a tárfiók-kulcsot), a fájlmegosztás tárolásához.** Ne felejtse el kicserélni `<storage-account-name>` és `<storage-account-key>` a környezetének megfelelő információkkal. 
 
     ```bash
-    if [ -d "/etc/smbcredentials" ]; then
+    if [ ! -d "/etc/smbcredentials" ]; then
         sudo mkdir /etc/smbcredentials
     fi
 

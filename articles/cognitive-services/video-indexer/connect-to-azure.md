@@ -7,14 +7,14 @@ author: juliako
 manager: erikre
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 08/05/2018
+ms.date: 09/05/2018
 ms.author: juliako
-ms.openlocfilehash: df9d3f40b28f5b030f3d7e7a63b1b3e77caedb6c
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: c598fdae40b4552e1d4dc29b8558d82d0830160a
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43700811"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43841838"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>Hozzon létre egy kapcsolódik az Azure Video Indexer-fiókot
 
@@ -80,8 +80,8 @@ Ez a cikk bemutatja, hogyan hozhat létre egy Azure-előfizetéséhez kapcsolód
         |Video Indexer régiója|A Video Indexer-fiókot régió neve. A jobb teljesítmény és alacsonyabb költségek azt javasoljuk, adja meg a nevét, a régió, ahol az Azure Media Services-erőforrás és Azure Storage-fiókban találhatók. |
         |Az Azure Active Directory (AAD) bérlő|Az Azure AD-bérlővel, például "contoso.onmicrosoft.com" neve. A bérlői kapcsolatos információkat az Azure Portalról kérhető. Vigye a kurzort az egérmutatót a bejelentkezett felhasználó felső sarokban.|
         |Előfizetés azonosítója|Az Azure-előfizetést amellyel ezt a kapcsolatot kell létrehozni. Az előfizetés-azonosító az Azure Portalról kérhető. Kattintson a **minden szolgáltatás** a bal oldali panelen, és keressen a "előfizetések". Válassza ki, **előfizetések** , majd válassza a kívánt Azonosítóját az előfizetések listáját.|
-        |Azure-erőforráscsoport neve|Az új erőforráscsoport, amelyben létrehozza a kapcsolat neve.|
-        |Azure-erőforrás neve|Az Azure Media Services-erőforrás neve.|
+        |Az Azure Media Services erőforráscsoport-név|A név, az erőforráscsoport, amelyben a Media Services-fiók létezik.|
+        |Médiaszolgáltatás erőforrás neve|Az Azure Media Services-erőforrás neve.|
         |Alkalmazásazonosító|A megadott Media Services-fiók engedélyeit az Azure AD alkalmazás azonosítója. További információkért lásd: [használata egyszerű szolgáltatásnév hitelesítése](../../media-services/previous/media-services-portal-get-started-with-aad.md#service-principal-authentication).|
         |Alkalmazáskulcs|További információkért lásd: [használata egyszerű szolgáltatásnév hitelesítése](../../media-services/previous/media-services-portal-get-started-with-aad.md#service-principal-authentication).|
 

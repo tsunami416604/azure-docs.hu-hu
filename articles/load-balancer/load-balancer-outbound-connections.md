@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/27/2018
 ms.author: kumud
-ms.openlocfilehash: 1f7e605cbf5aa3d519e04c4fdfd737a4c0926a3e
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: ea8e8ae9b0f487481ac2f25d4e2b9c5733e15431
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43122576"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43842255"
 ---
 # <a name="outbound-connections-in-azure"></a>Az Azure kimenő kapcsolatainak
 
@@ -80,7 +80,7 @@ Ebben a forgatókönyvben a virtuális gép nem része egy nyilvános terhelése
 >[!IMPORTANT] 
 >Ebben a forgatókönyvben azt is vonatkozik, amikor __csak__ egy belső alapszintű terheléselosztó van csatolva. 3. forgatókönyv van __nem érhető el__ amikor egy belső Standard Load Balancer egy virtuális Géphez van csatlakoztatva.  Explicit módon létre kell hoznia [1. forgatókönyv](#ilpip) vagy [2. forgatókönyv](#lb) Standard belső terheléselosztó használata mellett.
 
-Azure-port folyamatnak álcázott használja az SNAT ([PAT](#pat)) Ez a függvény végrehajtásához. Ez a forgatókönyv hasonlít a [2. forgatókönyv](#lb), azzal a különbséggel ott nem használt IP-cím nem szabályozza. Ez a tartalék forgatókönyv esetében, ha 1. és 2 forgatókönyvek nem létezik. Ebben a forgatókönyvben nem ajánlott, ha azt szeretné, hogy a kimenő cím felett. Ha a kimenő kapcsolatokat az alkalmazás kritikus része, egy másik forgatókönyv kell választotta.
+Azure-port folyamatnak álcázott használja az SNAT ([PAT](#pat)) Ez a függvény végrehajtásához. Ez a forgatókönyv hasonlít a [2. forgatókönyv](#lb), azzal a különbséggel ott nem használt IP-cím nem szabályozza. Ez a tartalék forgatókönyv esetében, ha 1. és 2 forgatókönyvek nem létezik. Ebben a forgatókönyvben nem ajánlott, ha azt szeretné, hogy a kimenő cím felett. Ha a kimenő kapcsolatokat az alkalmazás kritikus része, egy másik forgatókönyv kell választania.
 
 SNAT portok vannak előzetesen lefoglalt leírtak szerint a [ismertetése SNAT és a PAT](#snat) szakaszban.  A virtuális gépek rendelkezésre állási csoport megosztása száma határozza meg, melyik előzetes lefoglalás szint vonatkozik.  Egy különálló virtuális gép rendelkezésre állási csoport nélkül lényegében egy készlet 1 (1024 SNAT portok) előzetes lefoglalás meghatározása céljából. SNAT portjait véges erőforrás, amely is felhasználhatók. Fontos tudni, hogyan vannak [felhasznált](#pat). Megtudhatja, hogyan tervezhet a felhasználásra és szükség szerint, tekintse át a [kezelése SNAT Erőforrásfogyás](#snatexhaust).
 
@@ -165,7 +165,7 @@ Az alábbi táblázat az SNAT port preallocations készletméretek háttér-szin
 | 801 – 1000 | 32 |
 
 >[!NOTE]
-> A Standard Load Balancer használatakor [több előtérrendszer](load-balancer-multivip-overview.md), [minden előtérbeli IP-cím szorozza meg a rendelkezésre álló SNAT portok száma](#multivipsnat) az előző táblázatban. Például az 50 virtuális gép 2 terheléselosztási szabályok, mindegyike külön előtérbeli IP-címek, a háttérkészlet (2 x 1024) 2048 SNAT portok száma IP-konfigurációt fogja használni. A részletek megtekintéséhez [több előtérrendszer](#multife).
+> A Standard Load Balancer használatakor [több előtérrendszer](load-balancer-multivip-overview.md), [minden előtérbeli IP-cím szorozza meg a rendelkezésre álló SNAT portok száma](#multivipsnat) az előző táblázatban. Például egy háttérkészletéhez 50 virtuális gép 2 terheléselosztási szabályok, minden egyes külön előtérbeli IP-cím, az IP-konfiguráció (2 x 1024) 2048 SNAT hatportos fogja használni. A részletek megtekintéséhez [több előtérrendszer](#multife).
 
 Ne feledje, hogy a rendelkezésre álló SNAT portok száma nem fordítja le közvetlenül a folyamatok száma. Egyetlen SNAT port több egyedi célhoz felhasználhatók. Portok csak akkor, ha szükséges, hogy egyedi folyamatok használnak fel. Tervezés és kockázatcsökkentési útmutatásért tekintse meg a szakasz kapcsolatos [kezelése az kimeríthető erőforrás](#snatexhaust) és a szakasz leírja, [PAT](#pat).
 
@@ -219,16 +219,16 @@ Egy ILPIP hozzárendelése módosítja, a forgatókönyv [példány szintű nyil
 
 #### <a name="multifesnat"></a>Több előtérrendszer használata
 
-Nyilvános Standard Load Balancer használatakor hozzárendelhet [több előtérbeli IP-címet a kimenő kapcsolatok számára](#multife) és [szorozza meg a rendelkezésre álló SNAT portok száma](#preallocatedports).  Hozhat létre egy előtérbeli IP-konfiguráció, a szabály és a háttérkészlet, a programozás, a nyilvános IP-címét az előtér az SNAT aktiválásához szüksége.  A szabály nem kell működni, és az állapotfigyelő mintavételező nincs szükség a sikeres legyen.  Ha több előtérrendszer számára, valamint bejövő (helyett csak a kimenő), használjon egyéni állapotmintákkal és megbízhatóság biztosításához.
+Nyilvános Standard Load Balancer használatakor hozzárendelhet [több előtérbeli IP-címet a kimenő kapcsolatok számára](#multife) és [szorozza meg a rendelkezésre álló SNAT portok száma](#preallocatedports).  Hozhat létre egy előtérbeli IP-konfiguráció, a szabály és a háttérkészlet, a programozás, a nyilvános IP-címét az előtér az SNAT aktiválásához szüksége.  A szabály nem kell működni, és az állapotfigyelő mintavételező nincs szükség a sikeres legyen.  Ha több előtérrendszer számára, valamint bejövő (helyett csak a kimenő), használjon egyéni állapotmintákkal biztosítják a megbízhatóság.
 
 >[!NOTE]
 >A legtöbb esetben az SNAT portok kimerülése rossz kialakítás bejelentkezési.  Ellenőrizze, hogy megismerte, hogy miért áll skálázását portok használata több előtérrendszer SNAT portok hozzáadása előtt.  Előfordulhat, hogy a problémát, ami sikertelen később maszkolás.
 
 #### <a name="scaleout"></a>Horizontális felskálázás
 
-[Előzetesen lefoglalt portok](#preallocatedports) háttérrendszer készlet mérete alapján, és a csoportosított leskálázáskor, amikor néhány portot kell kiosztani a következő nagyobb háttérbeli készletet méretréteg befogadásához rétegekben vannak hozzárendelve.  Előfordulhat, hogy egy adott szint maximális mérete a háttérkészlet felskálázásával növelheti a SNAT port kihasználtsága egy adott előtérbeli intenzitását lehetőség.  Az alkalmazás horizontális felskálázása hatékonyan ehhez.
+[Előzetesen lefoglalt portok](#preallocatedports) háttérrendszer készlet mérete alapján, és a csoportosított leskálázáskor, amikor néhány portot kell kiosztani a következő nagyobb háttérbeli készletet méretréteg befogadásához rétegekben vannak hozzárendelve.  Előfordulhat, hogy egy adott szint maximális méretét a háttérkészlet felskálázásával megnövelje SNAT port kihasználtsága egy adott előtérbeli lehetőség.  Az alkalmazás horizontális felskálázása hatékonyan ehhez.
 
-Például a háttérkészletben 2 virtuális gép kellene álló IP-konfiguráció, így összesen 2048 SNAT portok a központi telepítés 1024 SNAT-port.  Ha az üzembe helyezés-ra, 50 virtuális gépeket, még ha száma előzetesen lefoglalt virtuális gépenként összesen 51,200 (50 x 1024-) portok marad állandó SNAT portok az üzemelő példány által használható.  Ha szeretné az üzemelő példány horizontális, ellenőrizheti a [előzetesen lefoglalt portok](#preallocatedports) / csomag győződjön meg arról, hogy a horizontális felskálázás a megfelelő szint maximális formázása.  Ha horizontális felskálázás legfeljebb 50 példányt helyett 51 választotta volna a portáladatbázis előző példában a lenne halad a következő réteg és a záró mentése kisebb SNAT porttal, valamint virtuális gépenként összesen látható módon.
+Például a háttérkészletben 2 virtuális gép kellene álló IP-konfiguráció, így összesen 2048 SNAT portok a központi telepítés 1024 SNAT-port.  Ha az üzembe helyezés-ra, 50 virtuális gépeket, még ha száma előzetesen lefoglalt virtuális gépenként összesen 51,200 (50 x 1024-) portok marad állandó SNAT portok az üzemelő példány által használható.  Ha szeretné az üzemelő példány horizontális, ellenőrizheti a [előzetesen lefoglalt portok](#preallocatedports) / csomag győződjön meg arról, hogy a horizontális felskálázás a megfelelő szint maximális formázása.  Az előző példában ha horizontális felskálázás legfeljebb 50 példányt helyett 51 választotta volna lenne végrehajtási a következő réteg és a záró fel mint összesen kevesebb SNAT-porttal, valamint virtuális gépenként.
 
 Horizontális felskálázás a következő nagyobb háttérrendszer készlet mérete szintre van-e az egyes ideje a kimenő kapcsolatok Ha lefoglalt portokat kell kiosztani.  Ha csak használja az SNAT portok némelyike, között a következő nagyobb háttérkiszolgáló-készlet méretét horizontális felskálázás nem léteznek.  A meglévő fél portokat fog kiosztani minden alkalommal, amikor helyez át a következő háttérkiszolgáló-készlet réteggel.  Ha nem szeretné, hogy végre lehessen hajtani ezt, a központi telepítést a méret az alakzat szeretne.  Vagy ellenőrizze, hogy az alkalmazás észlelésére, és ismételje meg igény szerint.  TCP életben segítheti az észlelés, ha az SNAT portok már nem függvény miatt újra kiosztja folyamatban van.
 

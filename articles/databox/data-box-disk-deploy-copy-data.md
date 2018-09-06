@@ -12,15 +12,15 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/12/2018
+ms.date: 09/05/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: b0769ba70f495728df5c38b43bae4059b27de88b
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: f25d0b3522658d5fcd4b34110cb03b624dd9e7b1
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39010820"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43841505"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-disk-and-verify"></a>Oktatóanyag: Adatok másolása Azure Data Box Diskre, majd azok ellenőrzése
 
@@ -76,8 +76,8 @@ Az alábbi lépések elvégzésével csatlakoztathatja, majd másolhatja át az 
     
     |Paraméterek/beállítások  |Leírás |
     |--------------------|------------|
-    |<Source>            | Megadja a forráskönyvtár elérési útját.        |
-    |<Destination>       | Megadja a célkönyvtár elérési útját.        |
+    |Forrás            | Megadja a forráskönyvtár elérési útját.        |
+    |Cél       | Megadja a célkönyvtár elérési útját.        |
     |/E                  | Átmásolja az alkönyvtárakat, az üres könyvtárakkal együtt. |
     |/MT[:N]             | Többszálas másolatokat hoz létre N szállal, ahol az N egy 1 és 128 közötti egész szám. <br>Az N alapértelmezett értéke 8.        |
     |/R: <N>             | A meghiúsult másolások esetén indított újrapróbálkozások számát határozza meg. Az N alapértelmezett értéke 1 000 000 (egymillió újrapróbálkozás).        |

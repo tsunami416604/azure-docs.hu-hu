@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/05/2018
 ms.author: jingwang
-ms.openlocfilehash: ce3a3d28a25c8e904eeebbfc4cf68003fdda07a5
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: afb4cbafeb29800b1f5b1c837da301e2944d678b
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42443632"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43842532"
 ---
 # <a name="copy-data-to-or-from-azure-sql-database-by-using-azure-data-factory"></a>Adatok másolása, vagy az Azure SQL Database-ből az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you use:"]
@@ -153,15 +153,15 @@ Adat-előállító társítható egy [Felügyeltszolgáltatás-identitás](data-
 MSI-alapú Azure AD alkalmazástoken-hitelesítésének használatához kövesse az alábbi lépéseket:
 
 1. **Hozzon létre egy csoportot az Azure ad-ben.** Ellenőrizze az MSI-előállító a csoport tagja.
-
-    a. Keresse meg a data factory felügyeltszolgáltatás-identitás az Azure Portalról. Nyissa meg az adat-előállító **tulajdonságok**. Másolja az IDENTITÁS azonosítót.
-
-    b. Telepítse a [az Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2) modul. Jelentkezzen be a `Connect-AzureAD` parancsot. Hozzon létre egy csoportot, és adja hozzá az adat-előállító MSI, amelynek a következő parancsok futtatásával.
+    
+    1. Keresse meg a data factory felügyeltszolgáltatás-identitás az Azure Portalról. Nyissa meg az adat-előállító **tulajdonságok**. Másolja az IDENTITÁS azonosítót.
+    
+    1. Telepítse a [az Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2) modul. Jelentkezzen be a `Connect-AzureAD` parancsot. Hozzon létre egy csoportot, és adja hozzá az adat-előállító MSI, amelynek a következő parancsok futtatásával.
     ```powershell
     $Group = New-AzureADGroup -DisplayName "<your group name>" -MailEnabled $false -SecurityEnabled $true -MailNickName "NotSet"
     Add-AzureAdGroupMember -ObjectId $Group.ObjectId -RefObjectId "<your data factory service identity ID>"
     ```
-
+    
 1. **[Az Azure Active Directory-rendszergazda kiépítése](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)**  az Azure SQL Serverhez, az Azure Portalon, ha ezt még nem tette meg. Az Azure AD-rendszergazda lehet egy Azure AD-felhasználó vagy az Azure AD-csoporthoz. Ha a rendszergazda szerepkörrel, engedélyezze a csoportnak MSI-vel, hagyja ki a 3. és 4. A rendszergazda az adatbázis teljes hozzáféréssel fog rendelkezni.
 
 1. **[Hozzon létre tartalmazottadatbázis-felhasználók](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)**  az Azure AD-csoport. Az adatbázis vagy amelyek adatok másolása az Azure AD identitás, amelynek legalább az ssms-ben, más eszközök használatával szeretné bármely felhasználó ALTER engedéllyel. Futtassa a következő T-SQL: 

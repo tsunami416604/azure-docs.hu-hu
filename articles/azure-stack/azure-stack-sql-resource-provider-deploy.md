@@ -11,19 +11,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/04/2018
+ms.date: 09/05/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: c9efaeed05856f830a4f0cf699cb35ebc21966c1
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 08ab76e587c4e2c8b8afe9cb27e9df59a5924475
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43700710"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43842040"
 ---
 # <a name="deploy-the-sql-server-resource-provider-on-azure-stack"></a>Az SQL Server erőforrás-szolgáltató az Azure Stack üzembe helyezése
 
 Az Azure Stack SQL Server erőforrás-szolgáltató használatával teszi közzé az SQL Database-adatbázisok Azure Stack szolgáltatásként. Az erőforrás-szolgáltató SQL szolgáltatásként fut, a Windows Server 2016 Server Core virtuális gépeken (VM).
+
+> [!IMPORTANT]
+> Konfigurációelemek létrehozása a kiszolgálókon, a fogadó SQL vagy MySQL csak az erőforrás-szolgáltató támogatott. A gazdagép-kiszolgálón létrehozott elemek nem az erőforrás-szolgáltató által létrehozott egy nem megfelelő állapot eredményezhet.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -144,8 +147,8 @@ Használhatja a következő lépésekkel ellenőrizze, hogy az erőforrás-szolg
 2. Válassza ki **erőforráscsoportok**.
 3. Válassza ki a **system.\< hely\>.sqladapter** erőforráscsoportot.
 4. Az összefoglalás lapon erőforráscsoport áttekintése nincs sikertelen üzembe helyezés kell lennie.
-
       ![Az SQL erőforrás-szolgáltató telepítésének ellenőrzése](./media/azure-stack-sql-rp-deploy/sqlrp-verify.png)
+5. Végül válassza **virtuális gépek** a felügyeleti portálon, győződjön meg arról, hogy az SQL-erőforrás-szolgáltató virtuális gép sikeresen létrehozott és fut-e.
 
 ## <a name="next-steps"></a>További lépések
 

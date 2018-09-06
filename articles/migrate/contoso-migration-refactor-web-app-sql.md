@@ -7,16 +7,16 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 09/03/2018
 ms.author: raynew
-ms.openlocfilehash: 56937a6ad5c63e662c5e9ba9a1fd05900c3790d4
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 370f90f0bbc2ebdb386aca5f47b909640271dbbf
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/05/2018
-ms.locfileid: "43699141"
+ms.locfileid: "43783048"
 ---
 # <a name="contoso-migration-refactor-an-on-premises-app-to-an-azure-web-app-and-azure-sql-database"></a>Contoso áttelepítési: Újrabontás a helyszíni alkalmazások Azure Web App és az Azure SQL Database-adatbázishoz
 
-Ez a cikk bemutatja, hogyan a Contoso refactors SmartHotel alkalmazás az Azure-ban. Az Azure Web Apps és az alkalmazás-adatbázis egy Azure SQL Database-adatbázishoz az alkalmazás előtérbeli virtuális gép át azokat.
+Ez a cikk bemutatja, hogyan a Contoso refactors a SmartHotel360 alkalmazás Azure-ban. Az Azure Web Apps és az alkalmazás-adatbázis egy Azure SQL Database-adatbázishoz az alkalmazás előtérbeli virtuális gép át azokat.
 
 Ez a dokumentum az egyik, a cikkeket, amelyek megmutatják, hogyan a fiktív Contoso áttelepíti a saját helyszíni erőforrásokat a Microsoft Azure felhőbe. A sorozat része a háttér-információkat és forgatókönyvek, amelyek a migrálás infrastruktúra beállításával, az áttelepítéshez a helyszíni erőforrások értékelése és áttelepítések különböző típusú futtató mutatják be. Forgatókönyvek egyre összetettebbé válnak. Idővel további cikkek adunk hozzá.
 
@@ -24,19 +24,19 @@ Ez a dokumentum az egyik, a cikkeket, amelyek megmutatják, hogyan a fiktív Con
 --- | --- | ---
 [1. cikk: áttekintés](contoso-migration-overview.md) | A cikk sorozat, a Contoso-áttelepítési stratégia és az adatsorozathoz használt mintaalkalmazások áttekintése. | Elérhető
 [2. cikk: Azure-infrastruktúra üzembe helyezése](contoso-migration-infrastructure.md) | Contoso előkészíti a helyszíni infrastruktúra és az Azure-infrastruktúra az áttelepítéshez. A sorozat minden migrálásról szóló cikksorozat ugyanazon az infrastruktúrán használható. | Elérhető
-[3. cikk: Mérje fel helyszíni erőforrásait az Azure-ba való migráláshoz](contoso-migration-assessment.md)  | Contoso fut, annak a helyszíni SmartHotel app VMware-en futó értékelését. Contoso értékeli az alkalmazás virtuális gépek az Azure Migrate szolgáltatás és a Data Migration Assistant szolgáltatást használó alkalmazás SQL Server-adatbázis használatával. | Elérhető
-[4. cikk: Áthelyezési egy alkalmazást egy Azure virtuális Gépen, és SQL Database felügyelt példány](contoso-migration-rehost-vm-sql-managed-instance.md) | Contoso lift-and-shift az áttelepítés fut az Azure-bA a helyszíni SmartHotel alkalmazáshoz. Contoso áttelepíti az alkalmazás előtérbeli virtuális gép használatával [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview). Contoso az alkalmazás-adatbázis áttelepítése egy Azure SQL Database felügyelt példánya a a [Azure Database Migration Service](https://docs.microsoft.com/azure/dms/dms-overview). | Elérhető  
-[5. cikk: Áthelyezési egy alkalmazást az Azure-beli virtuális gépeken](contoso-migration-rehost-vm.md) | Contoso annak SmartHotel alkalmazás virtuális gépeit áttelepíti a Site Recovery szolgáltatással az Azure virtuális gépek. | Elérhető
-[A cikk 6: Egy alkalmazás Újratárolása az Azure virtuális gépek és az SQL Server Always On rendelkezésre állási csoport](contoso-migration-rehost-vm-sql-ag.md) | Contoso áttelepíti a SmartHotel alkalmazást. Contoso Site Recovery használatával az alkalmazás virtuális gépek áttelepítéséhez. A Database Migration Service használatával az alkalmazás-adatbázis migrálása az AlwaysOn rendelkezésre állási csoport által védett SQL Server-fürtöt. | Elérhető
+[3. cikk: Mérje fel helyszíni erőforrásait az Azure-ba való migráláshoz](contoso-migration-assessment.md)  | Contoso fut, annak a helyszíni SmartHotel360 app VMware-en futó értékelését. Contoso értékeli az alkalmazás virtuális gépek az Azure Migrate szolgáltatás és a Data Migration Assistant szolgáltatást használó alkalmazás SQL Server-adatbázis használatával. | Elérhető
+[4. cikk: Áthelyezési egy alkalmazást egy Azure virtuális Gépen, és SQL Database felügyelt példány](contoso-migration-rehost-vm-sql-managed-instance.md) | Contoso lift-and-shift az áttelepítés fut az Azure-bA a helyszíni SmartHotel360 alkalmazáshoz. Contoso áttelepíti az alkalmazás előtérbeli virtuális gép használatával [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview). Contoso az alkalmazás-adatbázis áttelepítése egy Azure SQL Database felügyelt példánya a a [Azure Database Migration Service](https://docs.microsoft.com/azure/dms/dms-overview). | Elérhető   
+[5. cikk: Áthelyezési egy alkalmazást az Azure-beli virtuális gépeken](contoso-migration-rehost-vm.md) | Contoso a SmartHotel360 alkalmazás virtuális gépeit áttelepíti a Site Recovery szolgáltatással az Azure virtuális gépekhez. | Elérhető
+[A cikk 6: Egy alkalmazás Újratárolása az Azure virtuális gépek és az SQL Server Always On rendelkezésre állási csoport](contoso-migration-rehost-vm-sql-ag.md) | Contoso áttelepíti a SmartHotel360 alkalmazást. Contoso Site Recovery használatával az alkalmazás virtuális gépek áttelepítéséhez. A Database Migration Service használatával az alkalmazás-adatbázis migrálása az AlwaysOn rendelkezésre állási csoport által védett SQL Server-fürtöt. | Elérhető
 [7. cikk: Áthelyezési egy Linux-alkalmazást az Azure-beli virtuális gépeken](contoso-migration-rehost-linux-vm.md) | Contoso az Azure virtuális gépek Azure Site Recovery használatával Linux osTicket alkalmazás lift-and-shift áttelepítés befejezése | Elérhető
 [A cikk 8: Áthelyezési egy Linux-alkalmazást az Azure virtuális gépeken és az Azure MySQL-kiszolgáló](contoso-migration-rehost-linux-vm-mysql.md) | Contoso áttelepíti a Linux-osTicket alkalmazás Azure-beli virtuális gépek Azure Site Recovery használatával, és az alkalmazás-adatbázis áttelepítése Azure MySQL Server-példány, a MySQL Workbench használatával. | Elérhető
-9. cikk: Egy Azure Web App és az Azure SQL database az alkalmazás újrabontása | A Contoso a SmartHotel alkalmazást áttelepíti az Azure Web Apps és az alkalmazás-adatbázis áttelepítése az Azure SQL Server-példány, a Database Migration Assistant | Ez a cikk
+9. cikk: Egy Azure Web App és az Azure SQL database az alkalmazás újrabontása | A Contoso a SmartHotel360 alkalmazást áttelepíti az Azure Web Apps és az alkalmazás-adatbázis áttelepítése az Azure SQL Server-példány, a Database Migration Assistant | Ez a cikk
 [10. cikk: Újrabontás egy Linux-alkalmazás Azure Web Apps és az Azure MySQL](contoso-migration-refactor-linux-app-service-mysql.md) | Contoso áttelepíti a Linux-osTicket alkalmazás egy Azure-webalkalmazást az Azure Traffic Managerrel, a folyamatos készregyártás a GitHub integrált több Azure-régióban található. Contoso áttelepíti az alkalmazás-adatbázis egy Azure Database for MySQL-példányt. | Elérhető 
 [11. cikk: Újrabontás a TFS-t a vsts-ben](contoso-migration-tfs-vsts.md) | Contoso áttelepíti a helyi Team Foundation Server központi Visual Studio Team Services az Azure-ban. | Elérhető
-[A cikk 12: Azure-tárolók és az Azure SQL Database az alkalmazás újratervezése](contoso-migration-rearchitect-container-sql.md) | Contoso annak SmartHotel app áttelepíti az Azure-bA. Ezután azt rearchitects az alkalmazás webes réteg az Azure Service Fabric és az adatbázis az Azure SQL Database-ban futó Windows tárolójaként. | Elérhető
-[Cikk 13: Építse újra az alkalmazást az Azure-ban](contoso-migration-rebuild.md) | Contoso újraépíti a SmartHotel alkalmazás számos Azure-szolgáltatások és szolgáltatások, beleértve az Azure App Service, Azure Kubernetes Service (AKS), az Azure Functions, Azure Cognitive Services és az Azure Cosmos DB használatával. | Elérhető
+[A cikk 12: Azure-tárolók és az Azure SQL Database az alkalmazás újratervezése](contoso-migration-rearchitect-container-sql.md) | Contoso a SmartHotel360 alkalmazást áttelepíti az Azure-bA. Ezután azt rearchitects az alkalmazás webes réteg az Azure Service Fabric és az adatbázis az Azure SQL Database-ban futó Windows tárolójaként. | Elérhető
+[Cikk 13: Építse újra az alkalmazást az Azure-ban](contoso-migration-rebuild.md) | Contoso újraépíti a SmartHotel360 alkalmazás számos Azure-szolgáltatások és szolgáltatások, beleértve az Azure App Service, Azure Kubernetes Service (AKS), az Azure Functions, Azure Cognitive Services és az Azure Cosmos DB használatával. | Elérhető
 
-Ez a cikk a Contoso áttelepíti a kétrétegű Windows. NET SmartHotel alkalmazás VMware virtuális gépeken futó Azure-bA. Ha szeretné használni ezt az alkalmazást, nyílt forráskódú nyújtja, és töltheti le a [GitHub](https://github.com/Microsoft/SmartHotel360).
+Ez a cikk a Contoso áttelepíti a kétrétegű Windows. NET SmartHotel360 alkalmazás VMware virtuális gépeken futó Azure-bA. Ha szeretné használni ezt az alkalmazást, nyílt forráskódú nyújtja, és töltheti le a [GitHub](https://github.com/Microsoft/SmartHotel360).
 
 ## <a name="business-drivers"></a>A stratégiai
 
@@ -65,7 +65,7 @@ Után rögzíthet célokat és követelményeket állapította meg, a Contoso te
 
 ### <a name="current-app"></a>Aktuális alkalmazás
 
-- A SmartHotel helyszíni alkalmazás többszintű (WEBVM és SQLVM) két virtuális gép között.
+- A SmartHotel360 helyszíni alkalmazás többszintű (WEBVM és SQLVM) két virtuális gép között.
 - VMware ESXi-gazdagépen található virtuális gépek **contosohost1.contoso.com** (6.5-ös verzió)
 - A VMware-környezet kezeli a vCenter Server 6.5-ös (**vcenter.contoso.com**), egy virtuális gépen futó.
 - Contoso rendelkezik egy helyszíni adatközpont (contoso-datacenter), egy helyszíni tartományvezérlővel (**contosodc1**).
@@ -87,7 +87,7 @@ Contoso kiértékeli a javasolt tervezési által bármik lehetnek, és hátrán
 
 **Szempontok** | **Részletek**
 --- | ---
-**Szakemberek számára** | A SmartHotel alkalmazáskód nem kell módosítani az Azure-ba való migrálásra.<br/><br/> Contoso kihasználhatják a befektetés frissítési garanciával rendelkező SQL Server és a Windows Server az Azure Hybrid Benefit használatával.<br/><br/> Az áttelepítés után a Windows Server 2008 R2 nem kell támogatni. [További információk](https://support.microsoft.com/lifecycle).<br/><br/> Contoso is konfigurálhatja a webes szint, az alkalmazás több példánya, így már nem olyan hibaérzékeny pont.<br/><br/> Az adatbázis már nem SQL Server 2008 R2 elévülési függ.<br/><br/> Az SQL Database támogatja a műszaki követelményeket. A Contoso amelynek megfelelőségét ellenőrizni kell a helyszíni adatbázis, a Database Migration Assistant eszközzel, és talált a rendszer kompatibilis.<br/><br/> SQL-adatbázis, amely a Contoso beállítása nem kell beépített hibatűrő képességgel rendelkezik. Ez biztosítja, hogy az adatréteg már nem feladatátvételi hibaérzékeny pont.
+**Szakemberek számára** | A SmartHotel360 alkalmazáskód nem kell módosítani az Azure-ba való migrálásra.<br/><br/> Contoso kihasználhatják a befektetés frissítési garanciával rendelkező SQL Server és a Windows Server az Azure Hybrid Benefit használatával.<br/><br/> Az áttelepítés után a Windows Server 2008 R2 nem kell támogatni. [További információk](https://support.microsoft.com/lifecycle).<br/><br/> Contoso is konfigurálhatja a webes szint, az alkalmazás több példánya, így már nem olyan hibaérzékeny pont.<br/><br/> Az adatbázis már nem SQL Server 2008 R2 elévülési függ.<br/><br/> Az SQL Database támogatja a műszaki követelményeket. A Contoso amelynek megfelelőségét ellenőrizni kell a helyszíni adatbázis, a Database Migration Assistant eszközzel, és talált a rendszer kompatibilis.<br/><br/> SQL-adatbázis, amely a Contoso beállítása nem kell beépített hibatűrő képességgel rendelkezik. Ez biztosítja, hogy az adatréteg már nem feladatátvételi hibaérzékeny pont.
 **Hátrányai** | Az Azure App Services csak egy alkalmazás központi telepítési támogatja minden webes alkalmazáshoz. Ez azt jelenti, hogy a két webalkalmazást üzembe helyezett (egyet a webhelyhez) és a WCF-szolgáltatást kell lennie.<br/><br/> Ha a Contoso Data Migration Assistant helyett Data Migration Service-t használ az adatbázis migrálása, azt nem kell az infrastruktúra készen áll a migrálás adatbázisok ipari méretekben. Contoso kell hozhat létre, ha az elsődleges régióban nem érhető el, győződjön meg arról, hogy feladatátvételt egy másik régióban.
 
 ## <a name="proposed-architecture"></a>Javasolt architektúra
@@ -97,8 +97,8 @@ Contoso kiértékeli a javasolt tervezési által bármik lehetnek, és hátrán
 
 ### <a name="migration-process"></a>Áttelepítési folyamat
 
-1. A Contoso kiosztja az Azure SQL-példány és áttelepíti a a SmartHotel adatbázis.
-2. Contoso látja el és konfigurálja a Web Apps, és azokat a SmartHotel alkalmazást helyezünk üzembe.
+1. A Contoso kiosztja az Azure SQL-példány és áttelepíti a a SmartHotel360 adatbázis.
+2. Contoso látja el és konfigurálja a Web Apps, és azokat a SmartHotel360 alkalmazást helyezünk üzembe.
 
     ![Áttelepítési folyamat](media/contoso-migration-refactor-web-app-sql/migration-process.png) 
 
@@ -169,7 +169,7 @@ Itt látható, hogyan Contoso fog futni az áttelepítési:
 
 ## <a name="step-2-migrate-the-database-with-dma"></a>2. lépés: A DMA-adatbázis áttelepítése
 
-Contoso rendszergazdák telepítse át a DMA segítségével SmartHotel adatbázis.
+Contoso rendszergazdák telepítse át a SmartHotel360 adatbázis DMA segítségével.
 
 ### <a name="install-dma"></a>Telepítse a DMA
 
@@ -386,7 +386,7 @@ Ezen a ponton az alkalmazás sikeresen migrálva az Azure-bA.
 
 - Távolítsa el a helyszíni virtuális gépek a vCenter-készlet.
 - Távolítsa el a virtuális gépek helyi biztonsági mentési feladatok.
-- Frissítse a belső dokumentációt, az új hely SmartHotel alkalmazás megjelenítése. Az adatbázis-futó Azure SQL database és az előtér, két webalkalmazást futtató megjelenítése.
+- Frissítse a belső dokumentációjában az új helyeket a SmartHotel360 alkalmazás megjelenítéséhez. Az adatbázis-futó Azure SQL database és az előtér, két webalkalmazást futtató megjelenítése.
 - Tekintse át az erőforrásokat, amelyek interakciót folytatni a leszerelt virtuális gépeket, és frissítse a bármely vonatkozó beállítások vagy dokumentáció, hogy tükrözzék az új konfigurációt.
 
 
@@ -414,7 +414,7 @@ Az áttelepített erőforrások az Azure-ban, a Contoso cégnek szüksége van, 
 
 ## <a name="conclusion"></a>Összegzés
 
-Ez a cikk a Contoso refactored az alkalmazás előtérbeli virtuális gép áttelepítése két Azure Web Apps révén a SmartHotel alkalmazást az Azure-ban. Az alkalmazás-adatbázis lett migrálva az Azure SQL-adatbázis.
+Ez a cikk a Contoso refactored az alkalmazás előtérbeli virtuális gép áttelepítése két Azure Web Apps révén a SmartHotel360 alkalmazást az Azure-ban. Az alkalmazás-adatbázis lett migrálva az Azure SQL-adatbázis.
 
 
 

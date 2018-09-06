@@ -10,12 +10,12 @@ ms.service: billing
 ms.topic: article
 ms.date: 08/16/2018
 ms.author: byvinyal
-ms.openlocfilehash: 6b6e713c0da11a3d2c8cfbf388b84940a4542e95
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: 00955d5de314e6efb0e491e33708495fbdd14f3b
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42054090"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782590"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Az Azure-előfizetésekre és -szolgáltatásokra vonatkozó korlátozások, kvóták és megkötések
 Ez a dokumentum felsorolja az egyes a leggyakrabban használt Microsoft Azure korlátok, kvóták néven is ismert. Ez a dokumentum jelenleg nem vonatkozik Azure-szolgáltatásokhoz. Az idő múlásával a lista fog kibontható vagy frissítve, hogy biztosítsák a platform további.
@@ -201,7 +201,7 @@ Lásd: [virtuálisgép-méretek](virtual-machines/linux/sizes.md?toc=%2fazure%2f
 [!INCLUDE [azure-cloud-services-limits](../includes/azure-cloud-services-limits.md)]
 
 ### <a name="app-service-limits"></a>Az App Service korlátai
-A következő App Service – korlátok Web Apps, Mobile Apps, API Apps és Logic Apps korlátok közé tartoznak.
+A következő App Service – korlátok korlátok Web Apps, Mobile Apps és API-alkalmazások közé tartoznak.
 
 [!INCLUDE [azure-websites-limits](../includes/azure-websites-limits.md)]
 

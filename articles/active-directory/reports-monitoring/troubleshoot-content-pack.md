@@ -16,15 +16,19 @@ ms.component: report-monitor
 ms.date: 01/15/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: eafbe25a5a0fa9182030304e9142a6013c9fb29b
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: bf50dbf942dc7a82afbb60455be45b6c4b287ccd
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42056881"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782172"
 ---
 # <a name="troubleshooting-azure-active-directory-activity-logs-content-pack-errors"></a>Hibaelhárítás az Azure Active Directory-Tevékenységnaplók tartalomcsomag-hibái naplók 
 
+|  |
+|--|
+|Jelenleg az Azure AD Power BI-tartalomcsomag adatokat lekérni az Azure AD-bérlővel használja az Azure AD Graph API-kat. Ennek eredményeképpen látni a tartalomcsomagot a rendelkezésre álló adatok és a hitelesítő adatokat használja adatok néhány eltérése a [jelentéséért a Microsoft Graph API-k](concept-reporting-api.md). |
+|  |
 
 A Power BI-tartalomcsomag használata az Azure Active Directory előzetes kiadásában, esetén lehetséges, hogy hibákba ütközik a következő: 
 

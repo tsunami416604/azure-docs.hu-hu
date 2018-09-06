@@ -1,6 +1,6 @@
 ---
-title: PowerShell parancsfájl-átalakítási adatok használatával a Data Factory felhőben |} Microsoft Docs
-description: A PowerShell parancsfájl átalakítja az adatok a felhőben Spark programot futtat egy Azure HDInsight Spark-fürtön.
+title: PowerShell parancsfájl-átalakítási adatok használatával a Data Factory-felhőben |} A Microsoft Docs
+description: A PowerShell-példaszkript egy Azure HDInsight Spark-fürtön a Spark-program futtatásával alakítja át az adatokat a felhőben.
 services: data-factory
 author: sharonlo101
 manager: craigg
@@ -12,21 +12,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/12/2017
 ms.author: shlo
-ms.openlocfilehash: 27458a48c04a6d4ec612252dc298d454a48cf009
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: d885ffc531c24e8116da991f49ba5f8591e966d1
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30165790"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43781597"
 ---
-# <a name="powershell-script---transform-data-in-cloud-using-azure-data-factory"></a>PowerShell parancsfájl - átalakítási adatok a felhőben Azure Data Factory használatával
+# <a name="powershell-script---transform-data-in-cloud-using-azure-data-factory"></a>PowerShell-szkript – Azure Data Factory használatával felhőbeli átalakítási adatok
 
-A PowerShell-parancsfájlpélda hoz létre egy folyamatot, amely átalakítja az adatok a felhőben Spark programot futtat egy Azure HDInsight Spark-fürtön. 
+A PowerShell-példaszkript létrehoz egy folyamatot, amely alakítja át az adatokat a felhőben futó Spark-programot az Azure HDInsight Spark-fürtön. 
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
-* **Azure Storage-fiók** Hozzon létre egy python, parancsfájl és a bemeneti fájl, és töltse fel azokat az Azure Storage. A Spark-program kimenetét ebben a tárfiókban tárolja a rendszer. Az igény szerinti Spark-fürt ugyanezt a tárfiókot használja elsődleges tárterületként.  
+* **Azure Storage-fiók** Létrehoz egy python-szkriptet és egy bemeneti fájlt, és feltölti őket az Azure Storage. A Spark-program kimenetét ebben a tárfiókban tárolja a rendszer. Az igény szerinti Spark-fürt ugyanezt a tárfiókot használja elsődleges tárterületként.  
 
 ### <a name="upload-python-script-to-your-blob-storage-account"></a>Python-szkript feltöltése a Blob Storage-fiókba
 1. Hozzon létre egy **WordCount_Spark.py** nevű Python-fájlt az alábbi tartalommal: 
@@ -63,23 +63,23 @@ A PowerShell-parancsfájlpélda hoz létre egy folyamatot, amely átalakítja az
 
 ### <a name="upload-the-input-file"></a>A bemeneti fájl feltöltése
 1. Hozzon létre egy **minecraftstory.txt** nevű fájlt némi szöveges tartalommal. A Spark-program megszámolja a szavak számát ebben a szövegben. 
-2. Hozzon létre egy almappát `inputfiles` a a `spark` a blob-tároló mappa. 
+2. Hozzon létre egy almappát `inputfiles` a a `spark` mappában található blob-tárolóban. 
 3. Töltse fel a `minecraftstory.txt` fájlt az `inputfiles` almappába. 
 
 ## <a name="sample-script"></a>Példaszkript
 > [!IMPORTANT]
-> Ezt a parancsfájlt a merevlemezen a c:\ mappában hoz létre, amelyek meghatározzák a Data Factory entitások (a társított szolgáltatás, a dataset és a feldolgozási sor) JSON-fájlokat.
+> Ez a szkript létrehoz, amelyek meghatározzák a Data Factory-entitásokat (társított szolgáltatás, adatkészlet és folyamatot) JSON-fájlokat a c:\ mappába a merevlemezen.
 
 [!code-powershell[main](../../../powershell_scripts/data-factory/transform-data-using-spark/transform-data-using-spark.ps1 "Transform data using Spark")]
 
 ## <a name="clean-up-deployment"></a>Az üzemelő példány eltávolítása
 
-A minta-parancsprogram futtatása után a következő parancs segítségével távolítsa el az erőforráscsoportot és a vele társított összes erőforrás:
+A példaszkript futtatása után a következő parancsot használhatja, ha az erőforráscsoport és az ahhoz kapcsolódó összes erőforrás eltávolítása:
 
 ```powershell
 Remove-AzureRmResourceGroup -ResourceGroupName $resourceGroupName
 ```
-Az erőforráscsoport az adat-előállítóban eltávolításához futtassa a következő parancsot: 
+Az erőforráscsoport az adat-előállító eltávolításához futtassa a következő parancsot: 
 
 ```powershell
 Remove-AzureRmDataFactoryV2 -Name $dataFactoryName -ResourceGroupName $resourceGroupName
@@ -92,11 +92,11 @@ Ez a szkript a következő parancsokat használja:
 | Parancs | Megjegyzések |
 |---|---|
 | [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
-| [Set-AzureRmDataFactoryV2](/powershell/module/azurerm.datafactoryv2/new-azurermdatafactoryv2) | Adat-előállító létrehozása |
-| [Set-AzureRmDataFactoryV2LinkedService](/powershell/module/azurerm.datafactoryv2/new-azurermdatafactoryv2linkedservice) | Létrehoz egy csatolt szolgáltatást az adat-előállítóban. A társított szolgáltatás egy adat-előállító egy számítási vagy az adattárban hivatkozásokat tartalmaz. |
-| [Set-AzureRmDataFactoryV2Pipeline](/powershell/module/azurerm.datafactoryv2/new-azurermdatafactorv2ypipeline) | Az adat-előállítóban hoz létre egy folyamatot. Egy folyamatot, amely bizonyos műveletet hajt végre egy vagy több tevékenységet tartalmaz. Az adatcsatorna egy spark-tevékenység átalakítja az adatok az Azure HDInsight Spark-fürt futtatja a programot. |
-| [Invoke-AzureRmDataFactoryV2Pipeline](/powershell/module/azurerm.datafactoryv2/new-azurermdatafactoryv2pipelinerun) | A tölcsér futtató hoz létre. Ez azt jelenti futtatja a folyamatot. |
-| [Get-AzureRmDataFactoryV2ActivityRun](/powershell/module/azurerm.datafactoryv2/get-azurermdatafactoryv2activityrun) | Lekérdezi a futtatáskor a tevékenység (tevékenységfuttatási) adatait a feldolgozási. 
+| [Set-AzureRmDataFactoryV2](/powershell/module/azurerm.datafactoryv2/set-azurermdatafactoryv2) | Adat-előállító létrehozása |
+| [Set-AzureRmDataFactoryV2LinkedService](/powershell/module/azurerm.datafactoryv2/set-azurermdatafactoryv2linkedservice) | Az adat-előállító létrehoz egy társított szolgáltatást. A társított szolgáltatás hivatkozik egy adattárat vagy számítási, adat-előállító. |
+| [Set-AzureRmDataFactoryV2Pipeline](/powershell/module/azurerm.datafactoryv2/set-azurermdatafactoryv2pipeline) | Létrehoz egy folyamatot az adat-előállítóban. Egy folyamatot, amely egy bizonyos műveletet hajt végre egy vagy több tevékenységet tartalmaz. Ez a folyamat egy spark-tevékenységgel alakítja át az adatokat egy program futtatása az Azure HDInsight Spark-fürtön. |
+| [Invoke-AzureRmDataFactoryV2Pipeline](/powershell/module/azurerm.datafactoryv2/invoke-azurermdatafactoryv2pipeline) | A folyamat futtatása hoz létre. Más szóval futtatja a folyamatot. |
+| [Get-AzureRmDataFactoryV2ActivityRun](/powershell/module/azurerm.datafactoryv2/get-azurermdatafactoryv2activityrun) | A tevékenység (tevékenység-végrehajtásonként), a Futtatás részleteinek beolvasása az adatcsatorna. 
 | [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 |||
 
@@ -104,4 +104,4 @@ Ez a szkript a következő parancsokat használja:
 
 Az Azure PowerShellről további tudnivalókért tekintse meg az [Azure PowerShell dokumentációt](https://docs.microsoft.com/powershell/).
 
-További Azure Data Factory PowerShell parancsfájl minták megtalálhatók a [Azure Data Factory PowerShell-példák](../samples-powershell.md).
+További Azure Data Factory PowerShell szkriptminták találhatók az [Azure Data Factory PowerShell-minták](../samples-powershell.md).

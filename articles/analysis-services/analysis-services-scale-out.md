@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 08/27/2018
+ms.date: 08/31/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: f89a6bdbe906d490231725cf528396928faebe47
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 730b11fb5038e5d6c4f9b00fbc4eb07d673757f9
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43092094"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43840989"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Az Azure Analysis Services horizontális felskálázás
 
@@ -23,11 +23,15 @@ Horizontális felskálázás, az ügyfél lekérdezések elosztható több *lek�
 
 Egy tipikus server központi telepítés esetén egy kiszolgáló feldolgozó kiszolgáló és a lekérdezés-kiszolgálóként is szolgál. Ha az ügyfél-lekérdezéseket futtassanak a kiszolgálón modellek száma meghaladja a lekérdezés feldolgozása egységek (QPU) csomagot a server, vagy a modell feldolgozása befejeződik, a lekérdezési számítási feladatok egy időben, a teljesítmény csökkenhet. 
 
-Horizontális felskálázás létrehozhat egy lekérdezési készlet legfeljebb hét további lekérdezésreplikát (összesen nyolcat a kiszolgálóval együtt). Méretezheti a kritikus fontosságú időpontokban QPU figyelembevételével lekérdezési replikák száma és a lekérdezési készletből egy feldolgozó kiszolgáló elkülönítheti a tetszőleges időpontban. Minden lekérdezési replikák és a kiszolgáló ugyanabban a régióban jönnek létre.
+Horizontális felskálázás létrehozhat egy lekérdezési készlet legfeljebb hét további lekérdezési replika erőforrásokkal (összesen nyolcat a kiszolgálóval együtt). Méretezheti a kritikus fontosságú időpontokban QPU figyelembevételével lekérdezési replikák száma és a lekérdezési készletből egy feldolgozó kiszolgáló elkülönítheti a tetszőleges időpontban. Minden lekérdezési replikák és a kiszolgáló ugyanabban a régióban jönnek létre.
 
-Rendelkezik az adott lekérdezési készletben lekérdezési replikák számától függetlenül tranzakciófeldolgozási nem oszlanak meg lekérdezési replikák között. A feldolgozó kiszolgáló egyetlen kiszolgáló szolgál. Lekérdezési replikák szolgálják, csak a modellek között a lekérdezési készlet minden egyes replikát szinkronizálja a lekérdezéseket. 
+Rendelkezik az adott lekérdezési készletben lekérdezési replikák számától függetlenül tranzakciófeldolgozási nem oszlanak meg lekérdezési replikák között. A feldolgozó kiszolgáló egyetlen kiszolgáló szolgál. Lekérdezési replikák szolgálják, csak a modellek között a lekérdezési készlet minden egyes lekérdezés replikát szinkronizálja a lekérdezéseket. 
 
-Feldolgozási műveletek befejezése után a feldolgozó kiszolgáló és a lekérdezés replika kiszolgálók közötti szinkronizálás kell elvégezni. Feldolgozási műveletek automatizálása, esetén fontos, hogy konfigurálja a szinkronizálási művelet feldolgozási műveletek sikeres befejezése után. Szinkronizálás manuálisan hajtható végre a portálon, vagy a PowerShell vagy REST API használatával.
+Horizontális felskálázás, ha új lekérdezési replikák növekményes hozzáadódik a lekérdezési készletből. Új lekérdezés replika erőforrások szerepelnie a lekérdezési készletből; akár öt percet is igénybe vehet készen állnak a kapcsolatok és lekérdezések fogadására. Ha minden új lekérdezési replikák fel, és fut, az új ügyfélkapcsolatokat is lekérdezési készlet összes erőforrást kell osztani. Meglévő ügyfélkapcsolatok nem változnak, jelenleg csatlakoznak-erőforrásból.  Skálázás az, ha bármely meglévő ügyfélkapcsolatok éppen eltávolítják a lekérdezési készlet lekérdezési készlet erőforrás megszűnik. Lekérdezés hátralévő készleterőforráshoz újra vannak csatlakoztatni, a horizontális leskálázási művelet befejezése után.
+
+Modellek feldolgozásakor a feldolgozási műveletek után, a feldolgozó kiszolgáló és a lekérdezési replikák közötti szinkronizálás kell elvégezni. Feldolgozási műveletek automatizálása, esetén fontos, hogy konfigurálja a szinkronizálási művelet feldolgozási műveletek sikeres befejezése után. Szinkronizálás manuálisan hajtható végre a portálon, vagy a PowerShell vagy REST API használatával. 
+
+Maximális teljesítményt az feldolgozási és lekérdezési műveleteket is beállíthatja a lekérdezési készletből a feldolgozó kiszolgáló külön. Során elválasztott, csak a lekérdezési készlet lekérdezési replikák meglévő és új kapcsolatok vannak hozzárendelve. Ha feldolgozási műveletek csak igénybe vehetnek egy rövid idő alatt, választhat, a feldolgozó kiszolgáló csak ennyi ideig tart feldolgozás és a szinkronizálási műveletek végrehajtására, majd adja hozzá újra üzembe a lekérdezési készletből, a lekérdezési készletből külön. 
 
 > [!NOTE]
 > Horizontális felskálázás kiszolgálók a standard tarifacsomagban érhető el. Minden egyes lekérdezés replika költsége megegyezik a kiszolgáló számoljuk fel.

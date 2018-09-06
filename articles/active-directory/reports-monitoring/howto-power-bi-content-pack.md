@@ -14,14 +14,19 @@ ms.component: report-monitor
 ms.date: 12/06/2017
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 090e7419f80bc734ee2b1cb4f976911792046a9c
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 752e71f3c6b22a6d9f1e2392b58c01deef9de89c
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42055533"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782164"
 ---
 # <a name="how-to-use-the-azure-active-directory-power-bi-content-pack"></a>Az Azure Active Directory Power BI-tartalomcsomag használata
+
+|  |
+|--|
+|Jelenleg az Azure AD Power BI-tartalomcsomag adatokat lekérni az Azure AD-bérlővel használja az Azure AD Graph API-kat. Ennek eredményeképpen látni a tartalomcsomagot a rendelkezésre álló adatok és a hitelesítő adatokat használja adatok néhány eltérése a [jelentéséért a Microsoft Graph API-k](concept-reporting-api.md). |
+|  |
 
 Rendszergazdaként elengedhetetlen, hogy tudja, hogyan használják felhasználói az Azure Active Directory funkcióit. Ez lehetővé teszi, hogy úgy tervezze meg az informatikai infrastruktúráját és kommunikációját, hogy növelni tudja annak használatát, és a lehető legtöbbet hozza ki az AAD funkcióiból. Az Azure Active Directory lehetővé teszi adatai részletesebb elemzését, így átláthatja, hogyan használhatja ezeket az adatokat részletesebb betekintések szerzéséhez abba, mi történik az Azure Active Directoryjukban az Ön számára legfontosabb képességek tekintetében.  Az Azure Active Directory API-jainak a Power BI-ba integrálásával könnyedén letöltheti az előre összeállított tartalomcsomagokat, valamint betekintést nyerhet az Azure Active Directoryn belüli tevékenységekbe a Power BI által biztosított részletes megjelenítések használatával. Létrehozhatja saját irányítópultját, és könnyedén megoszthatja szervezete bármelyik tagjával. 
 

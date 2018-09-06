@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.component: compliance
 ms.date: 09/04/2018
 ms.author: rolyon
-ms.openlocfilehash: 0171cd3e3a39d1fe70e7c97b618d854857a1c376
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: fbed0f5fb213a18f4450ee3aa96c3b8485b16e8b
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/05/2018
-ms.locfileid: "43695523"
+ms.locfileid: "43781326"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Azure Active Directory – Használati feltételek funkció
 Az Azure AD Használati feltételek funkcióján keresztül a vállalatok egyszerűen láthatják el a végfelhasználókat a szükséges információkkal. Ez a bemutató gondoskodik arról, hogy a felhasználók megkapják a jogi vagy megfelelőségi követelményekre vonatkozó nyilatkozatokat. Ez a cikk az Azure AD Használati feltételek funkcióval kapcsolatos kezdeti lépéseket ismerteti.
@@ -223,7 +223,7 @@ Válasz: egy meglévő használati feltételek dokumentuma jelenleg nem lehet fr
 V: a PDF-fájl jelenik meg alapértelmezés szerint, JPEG, így nem kattintható hivatkozások állnak. Felhasználók rendelkeznek a kívánt **megtekintéssel? Kattintson ide a**, amely a PDF-fájl rendereli natív módon, a hivatkozások támogatottak.
 
 **K: A használati feltételek több nyelv használatát is támogatják?**</br>
-V: Igen. Jelenleg az egyetlen rendszergazda konfigurálhat több mint 100 különböző nyelvekhez használati feltételeit.
+V: Igen. Jelenleg nincsenek 108 több különböző nyelvet a rendszergazda konfigurálhatja egy egyetlen használati feltételeit.
 
 **K: Mikor lépnek életbe a használati feltételek?**</br>
 V: A használati feltételek a bejelentkezéskor lépnek életbe.

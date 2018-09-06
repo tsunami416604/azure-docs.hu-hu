@@ -84,7 +84,6 @@
 
 ## [Csoportok és tagok kezelése](fundamentals/active-directory-manage-groups.md)
 ### [Csoportok kezelése](fundamentals/active-directory-groups-create-azure-portal.md)
-### [Törölt Office 365-csoport visszaállítása](fundamentals/active-directory-groups-restore-azure-portal.md)
 ### [Csoportbeállítások kezelése](fundamentals/active-directory-groups-settings-azure-portal.md)
 ## [Jelentések kezelése](reports-monitoring/overview-reports.md)
 ### [Bejelentkezési tevékenység](reports-monitoring/concept-sign-ins.md)

@@ -1,25 +1,24 @@
 ---
 title: Telepítse a helyszíni adatátjáró – Azure Logic Apps |} A Microsoft Docs
-description: Töltse le és a helyszíni adatátjáró telepítése előtt a logikai alkalmazásokból fér hozzá a helyszíni adatokhoz
+description: A helyszíni adatok eléréséhez az Azure Logic Apps, töltse le és a helyszíni adatátjáró telepítése
 services: logic-apps
 ms.service: logic-apps
+ms.suite: integration
 author: ecfan
 ms.author: estfan
-manager: jeconnoc
+ms.reviewer: yshoukry, LADocs
 ms.topic: article
 ms.date: 07/20/2018
-ms.reviewer: yshoukry, LADocs
-ms.suite: integration
-ms.openlocfilehash: 616e3d81d577fd30e65117ec15c65250d3b3e27e
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: d4fbbcb81433876e4c57763b8a90b3ff1168a699
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39503648"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43842447"
 ---
-# <a name="install-the-on-premises-data-gateway-for-azure-logic-apps"></a>A helyszíni adatátjáró telepítése az Azure Logic Apps
+# <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>A helyszíni adatátjárót telepíthet az Azure Logic Apps
 
-Mielőtt az csatlakozna a logic apps, a helyszíni adatforrásokhoz, töltse le, és a helyszíni adatátjáró telepítése a helyi számítógépen. Az átjáró hídként, amelyen keresztül biztosítja a gyors adatátvitel és a titkosítás (nem a felhőben) helyszíni adatforrások és a logikai alkalmazások között működik. Ez a cikk bemutatja, hogyan töltik le, telepítse és állítsa be a helyszíni adatátjáró. 
+Mielőtt a helyszíni adatforrásokhoz csatlakozhat az Azure Logic Apps, töltse le, és a helyszíni adatátjáró telepítése a helyi számítógépen. Az átjáró hídként, amelyen keresztül biztosítja a gyors adatátvitel és a titkosítás (nem a felhőben) helyszíni adatforrások és a logikai alkalmazások között működik. Ez a cikk bemutatja, hogyan töltik le, telepítse és állítsa be a helyszíni adatátjáró. 
 
 Használhatja ugyanazt a kapcsolódásiátjáró-telepítés más szolgáltatásokkal, például a Power bi-ban, a Microsoft Flow, a PowerApps és az Azure Analysis Services. Tudjon meg többet [az átjáró működése](#gateway-cloud-service).
 
@@ -52,7 +51,11 @@ Az átjáró más szolgáltatásokkal való használatával kapcsolatos további
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A [munkahelyi vagy iskolai fiók](../active-directory/fundamentals/sign-up-organization.md) , amely rendelkezik egy [Azure-előfizetés](https://docs.microsoft.com/azure/architecture/cloud-adoption-guide/adoption-intro/subscription-explainer). Átjáró telepítése során, jelentkezzen be ezt a fiókot, hozzárendelheti a kapcsolódásiátjáró-telepítés az Azure-előfizetésében. Később is használhatja ugyanazt a fiókot az Azure Portalon az átjáró telepítésekor egy Azure-erőforrás létrehozásakor. Ha nem rendelkezik Azure-előfizetésem, <a href="https://azure.microsoft.com/free/" target="_blank">regisztráljon egy ingyenes Azure-fiókkal</a>.
+* A [munkahelyi vagy iskolai fiók](../active-directory/fundamentals/sign-up-organization.md) , amely rendelkezik egy [Azure-előfizetés](https://docs.microsoft.com/azure/architecture/cloud-adoption-guide/adoption-intro/subscription-explainer) 
+
+  Átjáró telepítése során, jelentkezzen be ezt a fiókot, hozzárendelheti a kapcsolódásiátjáró-telepítés az Azure-előfizetésében. 
+  Később is használhatja ugyanazt a fiókot az Azure Portalon az átjáró telepítésekor egy Azure-erőforrás létrehozásakor. 
+  Ha nem rendelkezik Azure-előfizetésem, <a href="https://azure.microsoft.com/free/" target="_blank">regisztráljon egy ingyenes Azure-fiókkal</a>.
 
 * Az alábbiakban a helyi számítógépre vonatkozó követelményeket:
 
@@ -72,8 +75,7 @@ Az átjáró más szolgáltatásokkal való használatával kapcsolatos további
     > [!TIP]
     > A késés minimalizálása érdekében az átjáró igyekezzen minél, az adatforráshoz, vagy ugyanazon a számítógépen, feltéve, hogy Ön jogosult is telepítheti.
 
-  * Az átjáró telepítése a számítógépre, amely *nem* kapcsolja ki, alvó állapotba lépjen, vagy csatlakozzon az internethez. Az átjáró nem futtatható ezen feltételek alapján. 
-  Átjáró teljesítménye is visszaeshet vezeték nélküli hálózaton keresztül.
+  * Telepítse az átjárót olyan számítógépre, amely csatlakozik az internethez, a mindig bekapcsolva, és *nem* alvó állapot. Ellenkező esetben az átjáró nem tud futni. Ezenkívül teljesítménye csökkenhet, vezeték nélküli hálózaton keresztül.
 
   * A telepítés során csak jelentkezhet be egy [munkahelyi vagy iskolai fiók](../active-directory/sign-up-organization.md) , amely kezeli az Azure Active Directory (Azure AD), és nem Microsoft-fiókkal. 
   Ellenőrizzük, hogy ez a fiók nem egy Azure B2B (vendég) fiókot. 

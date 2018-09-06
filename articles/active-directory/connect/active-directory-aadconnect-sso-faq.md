@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/07/2018
+ms.date: 09/04/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 29ed96044ceaa914db3f8b7090a1be5f65827e54
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 5f654ce8730af1e66e0186d7087aa130b00afd2b
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39627474"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782108"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Az Azure Active Directory zökkenőmentes egyszeri bejelentkezés: gyakori kérdések
 
@@ -84,12 +84,11 @@ Kövesse az alábbi lépéseket a helyszíni kiszolgálón hol futnak az Azure A
 
 ### <a name="step-1-get-list-of-ad-forests-where-seamless-sso-has-been-enabled"></a>1. lépés Ha közvetlen egyszeri bejelentkezés engedélyezve van az AD-erdőkkel listájának beolvasása
 
-1. Először töltse le és telepítse a [Microsoft Online Services bejelentkezési segéd](http://go.microsoft.com/fwlink/?LinkID=286152).
-2. Ezután töltse le és telepítse a [64 bites Azure Active Directory-modul Windows Powershellhez készült](https://docs.microsoft.com/powershell/azure/active-directory/install-msonlinev1?view=azureadps-1.0).
-3. Navigáljon a `%programfiles%\Microsoft Azure Active Directory Connect` mappához.
-4. Ezzel a paranccsal a zökkenőmentes egyszeri bejelentkezési PowerShell-modul importálása: `Import-Module .\AzureADSSO.psd1`.
-5. Futtassa a Powershellt rendszergazdaként. A PowerShellben hívás `New-AzureADSSOAuthenticationContext`. Ez a parancs egy előugró ablak, írja be a bérlő globális rendszergazdai hitelesítő adatokat adjon meg.
-6. Hívás `Get-AzureADSSOStatus`. Ez a parancs listáját jeleníti meg, AD-erdőkkel, (tekintse meg a "Tartományok" listája), amelyre ez a funkció engedélyezve van a.
+1. Először töltse le és telepítse [az Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview).
+2. Navigáljon a `%programfiles%\Microsoft Azure Active Directory Connect` mappához.
+3. Ezzel a paranccsal a zökkenőmentes egyszeri bejelentkezési PowerShell-modul importálása: `Import-Module .\AzureADSSO.psd1`.
+4. Futtassa a Powershellt rendszergazdaként. A PowerShellben hívás `New-AzureADSSOAuthenticationContext`. Ez a parancs egy előugró ablak, írja be a bérlő globális rendszergazdai hitelesítő adatokat adjon meg.
+5. Hívás `Get-AzureADSSOStatus`. Ez a parancs listáját jeleníti meg, AD-erdőkkel, (tekintse meg a "Tartományok" listája), amelyre ez a funkció engedélyezve van a.
 
 ### <a name="step-2-update-the-kerberos-decryption-key-on-each-ad-forest-that-it-was-set-it-up-on"></a>2. lépés A minden AD-erdőben, amely úgy lett beállítva, a Kerberos-visszafejtési kulcs frissítése
 
@@ -123,26 +122,24 @@ A karbantartási folyamat befejezéséhez hajtsa végre a 2. és 3 a helyszíni 
 
 Futtassa az alábbi lépéseket a helyszíni kiszolgálón, ahol futtatja az Azure AD Connect:
 
-1. Először töltse le és telepítse a [Microsoft Online Services bejelentkezési segéd](http://go.microsoft.com/fwlink/?LinkID=286152).
-2. Ezután töltse le és telepítse a [64 bites Azure Active Directory-modul Windows Powershellhez készült](http://go.microsoft.com/fwlink/p/?linkid=236297).
-3. Navigáljon a `%programfiles%\Microsoft Azure Active Directory Connect` mappához.
-4. Ezzel a paranccsal a zökkenőmentes egyszeri bejelentkezési PowerShell-modul importálása: `Import-Module .\AzureADSSO.psd1`.
-5. Futtassa a Powershellt rendszergazdaként. A PowerShellben hívás `New-AzureADSSOAuthenticationContext`. Ez a parancs egy előugró ablak, írja be a bérlő globális rendszergazdai hitelesítő adatokat adjon meg.
-6. Hívás `Enable-AzureADSSO -Enable $false`.
+1. Először töltse le és telepítse [az Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview).
+2. Navigáljon a `%programfiles%\Microsoft Azure Active Directory Connect` mappához.
+3. Ezzel a paranccsal a zökkenőmentes egyszeri bejelentkezési PowerShell-modul importálása: `Import-Module .\AzureADSSO.psd1`.
+4. Futtassa a Powershellt rendszergazdaként. A PowerShellben hívás `New-AzureADSSOAuthenticationContext`. Ez a parancs egy előugró ablak, írja be a bérlő globális rendszergazdai hitelesítő adatokat adjon meg.
+5. Hívás `Enable-AzureADSSO -Enable $false`.
 
 >[!IMPORTANT]
 >Közvetlen egyszeri bejelentkezés letiltása PowerShell-lel nem változik az állapota, az Azure AD Connectben. Engedélyezve van a közvetlen egyszeri bejelentkezés fog megjelenni a **felhasználói bejelentkezés módosítása** lapot.
 
 ### <a name="step-2-get-list-of-ad-forests-where-seamless-sso-has-been-enabled"></a>2. lépés Ha közvetlen egyszeri bejelentkezés engedélyezve van az AD-erdőkkel listájának beolvasása
 
-Ha le van tiltva a közvetlen egyszeri bejelentkezés az Azure AD Connect használatával, kövesse a lépéseket: 1 – az alábbi 5. Közvetlen egyszeri bejelentkezés használata esetén inkább a PowerShell le van tiltva, ha ugorhat alábbi 6. lépés.
+Ha le van tiltva a közvetlen egyszeri bejelentkezés az Azure AD Connect használatával, kövesse a feladatok 1 – 4 alábbi. Közvetlen egyszeri bejelentkezés használata esetén inkább a PowerShell le van tiltva, ha ugorhat alábbi 5. feladat.
 
-1. Először töltse le és telepítse a [Microsoft Online Services bejelentkezési segéd](http://go.microsoft.com/fwlink/?LinkID=286152).
-2. Ezután töltse le és telepítse a [64 bites Azure Active Directory-modul Windows Powershellhez készült](http://go.microsoft.com/fwlink/p/?linkid=236297).
-3. Navigáljon a `%programfiles%\Microsoft Azure Active Directory Connect` mappához.
-4. Ezzel a paranccsal a zökkenőmentes egyszeri bejelentkezési PowerShell-modul importálása: `Import-Module .\AzureADSSO.psd1`.
-5. Futtassa a Powershellt rendszergazdaként. A PowerShellben hívás `New-AzureADSSOAuthenticationContext`. Ez a parancs egy előugró ablak, írja be a bérlő globális rendszergazdai hitelesítő adatokat adjon meg.
-6. Hívás `Get-AzureADSSOStatus`. Ez a parancs listáját jeleníti meg, AD-erdőkkel, (tekintse meg a "Tartományok" listája), amelyre ez a funkció engedélyezve van a.
+1. Először töltse le és telepítse [az Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview).
+2. Navigáljon a `%programfiles%\Microsoft Azure Active Directory Connect` mappához.
+3. Ezzel a paranccsal a zökkenőmentes egyszeri bejelentkezési PowerShell-modul importálása: `Import-Module .\AzureADSSO.psd1`.
+4. Futtassa a Powershellt rendszergazdaként. A PowerShellben hívás `New-AzureADSSOAuthenticationContext`. Ez a parancs egy előugró ablak, írja be a bérlő globális rendszergazdai hitelesítő adatokat adjon meg.
+5. Hívás `Get-AzureADSSOStatus`. Ez a parancs listáját jeleníti meg, AD-erdőkkel, (tekintse meg a "Tartományok" listája), amelyre ez a funkció engedélyezve van a.
 
 ### <a name="step-3-manually-delete-the-azureadssoacct-computer-account-from-each-ad-forest-that-you-see-listed"></a>3. lépés Törölje kézzel a `AZUREADSSOACCT` számítógépfiókkal minden AD-erdőben, amely megjelenik a listában.
 

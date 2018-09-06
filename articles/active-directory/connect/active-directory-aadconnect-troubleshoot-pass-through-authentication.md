@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/19/2018
+ms.date: 09/24/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 99f877a0002e9a631bcfdabdbea51fcf2ca1a2c1
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 890c28601315a63e34c286289cd7378830afa9ba
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39626592"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782049"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>Az Azure Active Directory átmenő hitelesítés hibaelhárítása
 
@@ -97,7 +97,7 @@ Győződjön meg arról, hogy egy csak felhőalapú globális rendszergazdai fi�
 
 Ha az átmenő hitelesítés engedélyezve van a bérlő rendelkezik, és megpróbálja eltávolítani az Azure AD Connect, megjeleníti a következő hibaüzenet: "felhasználók nem fognak tudni jelentkezzen be az Azure AD, ha nincsenek más telepítve átmenő hitelesítési ügynökök más kiszolgálókra."
 
-Győződjön meg arról, hogy a telepítő [magas rendelkezésre álló](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-4-ensure-high-availability) felhasználói bejelentkezés használhatatlanná tévő elkerülése érdekében az Azure AD Connect eltávolítása előtt.
+Győződjön meg arról, hogy a telepítő [magas rendelkezésre állású](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-4-ensure-high-availability) felhasználói bejelentkezés használhatatlanná tévő elkerülése érdekében az Azure AD Connect eltávolítása előtt.
 
 ## <a name="issues-with-enabling-the-feature"></a>A szolgáltatás engedélyezési problémái
 
@@ -129,7 +129,7 @@ Részletes elemzés céljából a "Munkamenet" napló engedélyezése. Ez a napl
 
 ### <a name="detailed-trace-logs"></a>Részletes nyomkövetési naplók
 
-A felhasználói bejelentkezési hibák elhárításához keresse meg a nyomkövetési naplókat, **%ProgramData%\Microsoft\Azure AD Connect hitelesítési Agent\Trace\\**. Ezek a naplók például miért egy adott felhasználó bejelentkezési okokból nem sikerült az átmenő hitelesítés funkciójával. Ezek a hibák is vannak leképezve a bejelentkezési hibák okainak látható az előző [tábla](#sign-in-failure-reasons-on-the-Azure-portal). Következő egy példa naplóbejegyzés:
+A felhasználói bejelentkezési hibák elhárításához keresse meg a nyomkövetési naplókat, **%ProgramData%\Microsoft\Azure AD Connect hitelesítési Agent\Trace\\**. Ezek a naplók például miért egy adott felhasználó bejelentkezési okokból nem sikerült az átmenő hitelesítés funkciójával. Ezeket a hibákat a sikertelen bejelentkezési okokból előző táblázatban szereplő bejelentkezési hibák okainak is vannak leképezve. Következő egy példa naplóbejegyzés:
 
 ```
     AzureADConnectAuthenticationAgentService.exe Error: 0 : Passthrough Authentication request failed. RequestId: 'df63f4a4-68b9-44ae-8d81-6ad2d844d84e'. Reason: '1328'.

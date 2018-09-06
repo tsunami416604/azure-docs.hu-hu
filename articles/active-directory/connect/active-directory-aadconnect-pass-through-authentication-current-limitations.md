@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/25/2018
+ms.date: 09/04/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: a112e2f201109b71b7bab1c2b344ec4fcf2a851c
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: ff023812acd5e30bfec34254379431b3e620dac9
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39627644"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43781842"
 ---
 # <a name="azure-active-directory-pass-through-authentication-current-limitations"></a>Az Azure Active Directory átmenő hitelesítés: Aktuális korlátozások
 
@@ -47,7 +47,7 @@ A következő forgatókönyvek _nem_ támogatja:
 - Az átmenő hitelesítés nincs integrálva az [az Azure AD Connect Health](../connect-health/active-directory-aadconnect-health.md).
 
 >[!IMPORTANT]
->Nem támogatott forgatókönyvek esetében _csak_ (kivéve az Azure AD Connect Health-integráció), engedélyezze a Jelszókivonat-szinkronizálást a [választható funkciók](active-directory-aadconnect-get-started-custom.md#optional-features) lévő Azure AD Connect varázsló. Alkalmazások felhasználói bejelentkezés szerepel a listában szerepel a "nem támogatott forgatókönyvek" szakaszt, ha ezeket megadott bejelentkezési kérelmek vannak _nem_ átmenő hitelesítési ügynökök kezeli, és ezért nem rögzíti a [ Az átmenő hitelesítés naplók](active-directory-aadconnect-troubleshoot-pass-through-authentication.md#collecting-pass-through-authentication-agent-logs).
+>Nem támogatott forgatókönyvek esetében _csak_ (kivéve az Azure AD Connect Health-integráció), engedélyezze a Jelszókivonat-szinkronizálást a [választható funkciók](active-directory-aadconnect-get-started-custom.md#optional-features) lévő Azure AD Connect varázsló.
 
 >[!NOTE]
 Jelszókivonat-szinkronizálás engedélyezése teszi meg a feladatátvételi hitelesítési Ha megszakad a helyi infrastruktúrát. A feladatátvétel az átmenő hitelesítés a Jelszókivonat-szinkronizálás nem történik meg automatikusan. Váltson a bejelentkezési módszer, az Azure AD Connect segítségével manuálisan kell. Az Azure AD Connectet futtató kiszolgáló leáll, ha szüksége lesz a segítséget a Microsoft Support átmenő hitelesítés kikapcsolása.

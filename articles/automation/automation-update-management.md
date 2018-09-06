@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 08/29/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 79c78da3ba3102f41a1bd623c6844f064699b30a
-ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
+ms.openlocfilehash: 62a7bb9bf63e8ebf97f9aeb5b08bf08ef06da43b
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2018
-ms.locfileid: "43382099"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782790"
 ---
 # <a name="update-management-solution-in-azure"></a>Frissítéskezelési megoldás az Azure-ban
 
@@ -119,7 +119,7 @@ Ha a System Center Operations Manager felügyeleti csoportban a Log Analytics-mu
 Hogyan megoldás felügyeleti csomagok frissítéseivel kapcsolatos további információkért lásd: [Operations Manager csatlakoztatása a Log Analytics](../log-analytics/log-analytics-om-agents.md).
 
 > [!NOTE]
-> Azon rendszerek esetében az Operations Manager ügynök az Update Management, teljes mértékben felügyeltek lehessen az ügynökét frissíteni kell a Microsoft Monitoring Agent. Az ügynök frissítésével kapcsolatban lásd: [Operations Manager-ügynök frissítése](/system-center/scom/deploy-upgrade-agents).
+> Azon rendszerek esetében az Operations Manager ügynök az Update Management, teljes mértékben felügyeltek lehessen az ügynökét frissíteni kell a Microsoft Monitoring Agent. Az ügynök frissítésével kapcsolatban lásd: [Operations Manager-ügynök frissítése](https://docs.microsoft.com/system-center/scom/deploy-upgrade-agents).
 
 ### <a name="confirm-that-non-azure-machines-are-onboarded"></a>Győződjön meg róla, hogy nem Azure-beli gépek előkészítve
 
@@ -217,7 +217,7 @@ Hozzon létre egy új frissítéstelepítést, jelölje be **frissítések közp
 | --- | --- |
 | Name (Név) |A frissítéstelepítést beazonosító egyedi név. |
 |Operációs rendszer| Linux vagy Windows|
-| Frissítendő gépek |Válassza ki, mentett keresést, importált csoporthoz, vagy a legördülő listából válassza ki a gépet, és válassza ki az egyes gépek. Ha úgy dönt, **gépek**, jelenik meg a gép készen áll-e a **frissítési ÜGYNÖK KÉSZÜLTSÉGE** oszlop.</br> Számítógépcsoportok létrehozását a Log Analytics különböző módszereivel kapcsolatos további információkért lásd: [Log Analytics számítógépcsoportjaival](../log-analytics/log-analytics-computer-groups.md) |
+| Frissítendő gépek |Válassza ki, mentett keresést, importált csoporthoz, vagy a legördülő listából válassza ki a gépet, és válassza ki az egyes gépek. Ha a **Gépek** lehetőséget választotta, a gép állapota az **ÜGYNÖK KÉSZÜLTSÉGÉNEK FRISSÍTÉSE** oszlopban látható.</br> A számítógépcsoportok Log Analyticsben lévő létrehozásának különböző módszereivel kapcsolatos további információkért tekintse meg a [Log Analytics számítógépcsoportjait](../log-analytics/log-analytics-computer-groups.md) ismertető részt |
 |Frissítési besorolások|Válassza ki az összes szükséges|
 |Kihagyandó frissítések|Adja meg a kihagyandó frissítések. Windows adja meg a KB, a "KB" előtag nélkül. A Linux rendszerre adja meg a csomag nevét, vagy használjon helyettesítő.  |
 |Ütemezési beállítások|Válassza ki az időpontot, elindításához, és válassza ki bármelyik egyszer, vagy az ismétlődés ismétlődés|

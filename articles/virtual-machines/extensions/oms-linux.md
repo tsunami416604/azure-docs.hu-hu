@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 05/21/2018
+ms.date: 09/05/2018
 ms.author: roiyz
-ms.openlocfilehash: 58827e8abd6394b1c9359ecbabbee37193a34706
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 858c586151c8a0dd5378794a5057c22a423c43cf
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39414294"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782739"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-linux"></a>Log Analytics virtuálisgép-bővítmény linuxhoz
 
@@ -36,18 +36,24 @@ A Log Analytics-ügynök bővítményt a Linux-disztribúciók is futtatni.
 
 | Disztribúció | Verzió |
 |---|---|
-| CentOS Linux | 5, 6 és 7 (x86/x64) |
-| Oracle Linux | 5, 6 és 7 (x86/x64) |
-| Red Hat Enterprise Linux Server | 5, 6 és 7 (x86/x64) |
-| Debian GNU/Linux | 6, 7, 8 és 9 (x86/x64) |
-| Ubuntu | 12.04 LTS, 14.04 LTS, 16.04 LTS (x86/x64) |
-| SUSE Linux Enterprise Server | 11 – 12 (x86/x64) |
+| CentOS Linux | 6. és 7 (x86/x64) |
+| Amazon Linux | 2017.09 | 
+| Oracle Linux | 6. és 7 (x86/x64) |
+| Red Hat Enterprise Linux Server | 6. és 7 (x86/x64) |
+| Debian GNU/Linux | 8. és 9 (x86/x64) |
+| Ubuntu | 14.04 LTS, 16.04 LTS és 18.04 LTS (x86/x64) |
+| SUSE Linux Enterprise Server | 12 (x86/x64) |
+
+>[!NOTE]
+>OpenSSL-verzió kisebb 1.x bármilyen platformon nem támogatott, és csak támogatott verzió 1.10 x86_64 platformok (64 bites).  
+>
 
 ### <a name="agent-and-vm-extension-version"></a>Az ügynök és a Virtuálisgép-bővítmény verziója
 Az alábbi táblázat tartalmazza a Log Analytics Virtuálisgép-bővítmény és a Log Analytics-ügynököket csomag minden kiadott verziójáról. A Log Analytics csomag verziója kibocsátási megjegyzései mutató hivatkozás megtalálható. Kibocsátási megjegyzések a hibajavítások és a egy adott ügynök kiadásban elérhető új szolgáltatások közé tartozik.  
 
 | Log Analytics Linux VM-bővítmény verziója | Log Analytics-ügynököket csomag verziója | 
 |--------------------------------|--------------------------|
+| 1.7.7 | [1.6.1-3](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.6.1.3)| 
 | 1.6.42.0 | [1.6.0-42](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.6.0-42)| 
 | 1.4.60.2 | [1.4.4-210](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_GA_v1.4.4-210)| 
 | 1.4.59.1 | [1.4.3-174](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_GA_v1.4.3-174)|
@@ -84,7 +90,7 @@ A következő JSON a Log Analytics-ügynök bővítmény sémáját jeleníti me
   "properties": {
     "publisher": "Microsoft.EnterpriseCloud.Monitoring",
     "type": "OmsAgentForLinux",
-    "typeHandlerVersion": "1.6",
+    "typeHandlerVersion": "1.7",
     "settings": {
       "workspaceId": "myWorkspaceId"
     },
@@ -102,7 +108,7 @@ A következő JSON a Log Analytics-ügynök bővítmény sémáját jeleníti me
 | apiVersion | 2015-06-15 |
 | publisher | Microsoft.EnterpriseCloud.Monitoring |
 | type | OmsAgentForLinux |
-| typeHandlerVersion | 1.6 |
+| typeHandlerVersion | 1.7 |
 | munkaterület azonosítója (például:) | 6f680a37-00c6-41c7-a93f-1437e3462574 |
 | workspaceKey (például:) | z4bU3p1/GrnWpQkky4gdabWXAhbWSTz70hm4m2Xt92XI+rSRgE8qVvRhsGo9TXffbrTahyrwv35W0pOqQAU7uQ== |
 
@@ -127,7 +133,7 @@ Az alábbi példa azt feltételezi, hogy a Virtuálisgép-bővítményt a virtu�
   "properties": {
     "publisher": "Microsoft.EnterpriseCloud.Monitoring",
     "type": "OmsAgentForLinux",
-    "typeHandlerVersion": "1.6",
+    "typeHandlerVersion": "1.7",
     "settings": {
       "workspaceId": "myWorkspaceId"
     },
@@ -152,7 +158,7 @@ Helyezi el a JSON-bővítmény a sablonban gyökérmappájában, amikor az erőf
   "properties": {
     "publisher": "Microsoft.EnterpriseCloud.Monitoring",
     "type": "OmsAgentForLinux",
-    "typeHandlerVersion": "1.6",
+    "typeHandlerVersion": "1.7",
     "settings": {
       "workspaceId": "myWorkspaceId"
     },
@@ -173,7 +179,7 @@ az vm extension set \
   --vm-name myVM \
   --name OmsAgentForLinux \
   --publisher Microsoft.EnterpriseCloud.Monitoring \
-  --version 1.6 --protected-settings '{"workspaceKey": "omskey"}' \
+  --version 1.7 --protected-settings '{"workspaceKey": "omskey"}' \
   --settings '{"workspaceId": "omsid"}'
 ```
 
@@ -200,12 +206,11 @@ Bővítmény végrehajtás kimenetének a rendszer naplózza a következő fájl
 | 9 | Túl korán nevű engedélyezése | [Az Azure Linux-ügynök frissítése](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent) elérhető legújabb verzióra. |
 | 10 | Virtuális gép már csatlakoztatva van egy Log Analytics-munkaterület | A virtuális gép csatlakozik a bővítmény sémában megadott munkaterület, stopOnMultipleConnections "false" értékűre a nyilvános beállításait, vagy távolítsa el ezt a tulajdonságot. Ez a virtuális gép egyes munkaterületekre vonatkozó való csatlakozás után díjat számítjuk fel. |
 | 11 | A bővítmény megadott Érvénytelen konfiguráció | Kövesse az előző példákból való üzembe helyezéshez szükséges összes tulajdonság értéket állítsa be. |
-| 12 | A dpkg Csomagkezelő zárolva van | Győződjön meg arról, hogy minden dpkg frissítési művelet a gépen végzett, és próbálkozzon újra. |
 | 17 | OMS-csomag telepítési hiba | 
 | 19 | OMI csomag telepítési hiba | 
 | 20 | Az SCX-csomag telepítési hiba |
 | 51 | Ezt a bővítményt a virtuális gép operációs rendszer nem támogatott | |
-| 55 | Nem lehet kapcsolódni a Microsoft Operations Management Suite szolgáltatáshoz | Ellenőrizze, hogy a rendszer rendelkezik Internet-hozzáféréssel, vagy az, hogy érvényes HTTP proxy lett megadva. Ezenkívül ellenőrizze a helyességét a munkaterület-azonosítót. |
+| 55 | Nem lehet csatlakozni az OMS szolgáltatásnak vagy hiányzik a szükséges csomagokat, vagy dpkg csomagot kezelő zárolva van| Ellenőrizze, hogy a rendszer rendelkezik Internet-hozzáféréssel, vagy az, hogy érvényes HTTP proxy lett megadva. Ezenkívül ellenőrizze a munkaterület azonosítójának helyességét, és a curl és tar segédprogram telepítve van. |
 
 További hibaelhárítási információk találhatók a [OMS –--Linux-ügynök hibaelhárítási útmutatója](../../log-analytics/log-analytics-azure-vmext-troubleshoot.md).
 

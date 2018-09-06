@@ -7,12 +7,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: nolach
-ms.openlocfilehash: 1f9facf94b8068b98aa49c49ece7070a83db0686
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 35572f046b3702deba56e86819b8ad0cd7ae6e9b
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43665085"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43842470"
 ---
 # <a name="creating-custom-voice-fonts"></a>Egyéni hangtípust létrehozása
 
@@ -31,13 +31,11 @@ Az Azure-fiók és a egy előfizetést a beszédfelismerési szolgáltatás is s
 
 1. Jelentkezzen be a [egyéni beszédfelismerési portál](https://customvoice.ai) hozzáférést alkalmazásához használt ugyanazon Microsoft-fiók használatával.
 
-2. Lépjen a fiók neve alatt az "előfizetések" jobb felső sarokban.
+2. Lépjen a fiók neve alatt a "minden előfizetés" jobb felső sarokban.
 
     ![Előfizetések](media/custom-voice/subscriptions.png)
 
 3. Az "Előfizetések" oldalán válassza a "Csatlakozás meglévő előfizetés".
-
-     ![Csatlakozás a meglévő előfizetés](media/custom-voice/connect-existing-sub.png)
 
 4. Az előfizetési kulcs illessze be a táblázat alább látható módon. Minden előfizetési csomaghoz tartozik két kulcsot, és bármelyiket használhatja.
 
@@ -122,7 +120,7 @@ A hangfájl archív és szövegekben előkészítése, miután feltölti őket k
 > [!NOTE]
 > Ingyenes előfizetés felhasználóinak egyszerre két adatkészletet tölthet fel. Standard szintű előfizetés felhasználóinak is feltölthet egyszerre öt adatkészletek. Ha eléri a korlátot, kis türelmet, amíg legalább egy, az adatkészletek importálásának befejezése, és próbálkozzon újra.
 
-A feltöltés befejeződése után újra megjelenik a saját Beszédadatait tábla. Megjelenik egy bejegyzést, amely megfelel a feltöltött közvetlenül az adatkészlethez. 
+A feltöltés befejeződése után újra megjelenik a saját Beszédadatait tábla. Megjelenik egy bejegyzést, amely megfelel a feltöltött közvetlenül az adatkészlethez.
 
 Az adatkészletek automatikusan érvényesíti feltöltés után. Adatok érvényesítése tartalmaz egy sor ellenőrzést a hang fájlokat, és ellenőrizze a fájlformátum, a méretet, és a mintavételi ráta. Ellenőrzések beszédátírási fájlokról ellenőrizze a fájlformátum, és hajtsa végre az egyes szöveg normalizálási. A kimondott szöveg beszédfelismerés megjelenített érzéseket, és így a szöveg a megadott szöveges összeveti.
 
@@ -189,17 +187,11 @@ Idő képzési hang feldolgozott adatok mennyiségétől függően változik. Ti
 
 ## <a name="test-your-voice-font"></a>A hangtípusú tesztelése
 
-A hangtípusú sikeres létrehozása után tesztelheti, mielőtt központilag telepítené azt használja. Kattintson a **teszt** a műveletek oszlopban. A teszt lap megjelenik a kiválasztott hangtípusú. A táblázat üres, ha még nem még küldte el a hang teszt irányuló.
-
-![Saját Hangtípust, 2. rész](media/custom-voice/my-voice-fonts2.png)
+A hangtípusú sikeres létrehozása után tesztelheti, mielőtt központilag telepítené azt használja. Kattintson a **teszt** a műveletek oszlopban a saját Hangtípust tábla. A teszt lap megjelenik a kiválasztott hangtípusú. A táblázat üres, ha még nem még küldte el a hang teszt irányuló.
 
 Kattintson a **szöveggel teszt** , megjelenik egy legördülő menü szöveg kérések elküldésére szolgáló tábla címe alatt megjelenő gomb. A tesztelési kérelem egyszerű szöveges vagy SSML küldhet. A maximális bemeneti mérete 1024 karakter hosszúságú, beleértve az összes címke SSML kérelem. A szöveg nyelvét a hangtípusú nyelvi azonosnak kell lennie.
 
-![Hangposta betűtípus tesztelése](media/custom-voice/voice-font-testing.png)
-
 Miután a beviteli mód állapíthatja meg a beviteli mező kitöltése, kattintson a **Igen** a tesztelési kérelem elküldéséhez, és a teszt lapra való visszatéréshez. A táblázat most már tartalmaz egy bejegyzést, amely megfelel az új kérelmet, és a már ismerős Állapot oszlopban. Beszéd szintetizálásához néhány percet is igénybe vehet. Az Állapot oszlopban sikeres olvasását, letöltheti a szövegbevitel (egy `.txt` fájl) és a hangkimeneti (egy `.wav` fájl) és az utóbbi a minőségi audition.
-
-![Hangalapú betűtípus tesztelés, 2. rész](media/custom-voice/voice-font-testing2.png)
 
 ## <a name="create-and-use-a-custom-endpoint"></a>Létrehozhat és használhat egyéni végpontok
 

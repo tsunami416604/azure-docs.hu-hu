@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: abnarain
-ms.openlocfilehash: c9cebd16d34758550144a50b6ff26da84924a964
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 3c2b44455b417d1bc764337d91a5535d7ffa34a5
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42745668"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43783372"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Adatok áthelyezése az Azure Data Factoryban történő futtatásának biztonsági szempontjai
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -188,7 +188,7 @@ Ez a funkció még nem támogatott. Aktívan dolgozunk rajta.
 
 **Mik azok a saját üzemeltetésű integrációs modul működjön a port követelményei?**
 
-A saját üzemeltetésű integrációs modul lehetővé teszi a HTTP-alapú kapcsolatokat az internet eléréséhez. A 443-as és a 80-as kimenő portokat kell megnyitni az, hogy ezt a kapcsolatot a saját üzemeltetésű integrációs modult. Nyissa meg a bejövő portot 8050 csak a gépek szintjén (nem a vállalati tűzfalon szint) a hitelesítőadat-kezelő alkalmazást. Ha az Azure SQL Database vagy Azure SQL Data Warehouse a forrás vagy cél használják, meg kell nyitnia az 1433-as portot is. További információkért lásd: a [tűzfal-konfigurációk és IP-címek engedélyezési](#firewall-configurations-and-whitelisting-ip-address-of-gateway) szakaszban. 
+A saját üzemeltetésű integrációs modul lehetővé teszi a HTTP-alapú kapcsolatokat az internet eléréséhez. A saját üzemeltetésű integrációs modult, hogy ezt a kapcsolatot a 443-as kimenő portokat kell megnyitni. Nyissa meg a bejövő portot 8050 csak a gépek szintjén (nem a vállalati tűzfalon szint) a hitelesítőadat-kezelő alkalmazást. Ha az Azure SQL Database vagy Azure SQL Data Warehouse a forrás vagy cél használják, meg kell nyitnia az 1433-as portot is. További információkért lásd: a [tűzfal-konfigurációk és IP-címek engedélyezési](#firewall-configurations-and-whitelisting-ip-address-of-gateway) szakaszban. 
 
 
 ## <a name="next-steps"></a>További lépések

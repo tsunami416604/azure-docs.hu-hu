@@ -11,16 +11,24 @@ ms.topic: article
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, tárolók
 manager: douge
-ms.openlocfilehash: 3f45d8059cd4af5dbab64fef798b61e439a5f2fc
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: b66e43c0f40f184bfb2c62327f5742346ff8b187
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43286874"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43841609"
 ---
 # <a name="troubleshooting-guide"></a>Hibaelhárítási útmutató
 
 Ez az útmutató az Azure fejlesztési tárolóhelyek használata esetén előfordulhat, hogy rendelkezik kapcsolatos gyakori problémák információkat tartalmaz.
+
+## <a name="enabling-detailed-logging"></a>Részletes naplózás engedélyezése
+
+Annak érdekében, hogy a problémák hatékonyabb elhárításához, segíthet, tekintse át a részletes naplók létrehozása.
+
+A Visual Studio-bővítmény, akkor ehhez beállítása a `MS_VS_AZUREDEVSPACES_TOOLS_LOGGING_ENABLED` környezeti változót az 1. Ügyeljen arra, hogy a Visual Studio for a környezeti változó érvénybe léptetéséhez indítsa újra. Az engedélyezés után a részletes naplók lesz írva a `%TEMP%\Microsoft.VisualStudio.Azure.DevSpaces.Tools` könyvtár.
+
+A parancssori felületen, a további információk a parancs végrehajtása során küldhetnek kimenetet a `--verbose` váltani.
 
 ## <a name="error-failed-to-create-azure-dev-spaces-controller"></a>"Nem sikerült létrehozni az Azure fejlesztési tárolóhelyek vezérlő" hiba
 

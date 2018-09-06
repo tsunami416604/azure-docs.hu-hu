@@ -1,404 +1,405 @@
 ---
-title: A Cortana Intelligence megoldás sablon alkalmazástervezési az igény szerinti előrejelzési energia |} Microsoft Docs
-description: A Microsoft a Cortana Intelligence, amelyek segítségével igény szerint egy energia segédprogram vállalat előrejelzési megoldás sablon.
-services: cortana-analytics
+title: Cortana Intelligence megoldás sablon forgatókönyve a kereslet-előrejelzés, energia |} A Microsoft Docs
+description: A Microsoft Cortana Intelligence szolgáltatással, amely segít a segédprogram energiavállalat iránti kereslet-előrejelzési megoldás sablon.
+services: machine-learning
 documentationcenter: ''
 author: ilanr9
-manager: ilanr9
+manager: cgronlun
 editor: yijichen
 ms.assetid: 8855dbb9-8543-45b9-b4c6-aa743a04d547
-ms.service: cortana-analytics
+ms.service: machine-learning
+ms.subservice: team-data-science-process
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2016
-ms.author: ilanr9;yijichen;garye
-ms.openlocfilehash: 275e387878900154660d044b26ff5ac03a17a65a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: yijichen
+ms.openlocfilehash: 6a879faa88cc6cdf586f2c12283bcb6f0263bf57
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23846429"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43842582"
 ---
-# <a name="cortana-intelligence-solution-template-playbook-for-demand-forecasting-of-energy"></a>A Cortana Intelligence megoldás sablon alkalmazástervezési energia előrejelzési igény szerint
-## <a name="executive-summary"></a>Vezetői összefoglaló
-Az elmúlt néhány évben az eszközök internetes hálózatát (IoT), a másik energia források és a big Data típusú adatok egyesített rendelkező túlnyomó lehetőségek segédprogram és energia tartományban létrehozására. Egy időben a segédprogram és a teljes energia szektort láthatta egybesimítását a fogyasztók jobb módjának energia használatát igénylő felhasználási. Emiatt az segédprogram és intelligens rács vállalatok is nagy szükség van a innovációját, majd megújítani magukat. Ezenkívül számos energiagazdálkodási és segédprogram rácsok egyre elavult és nagyon költséges, kezelése és kezeléséhez. Az elmúlt év során a csapat a energia tartományon belüli kapcsolattartás során számos dolgozott. A kapcsolattartás során közben történt, amelyben a segédprogramok vagy a független szoftverszállítók (független szoftvergyártók) rendelkezik van szüksége az előrejelzés a jövőbeli energia igény szerint sok esetben. Az ilyen előrejelzések fontos szerepet játszanak az jelenlegi és jövőbeli üzleti, és a különböző használati esetek alapját váltak. Ezek közé tartozik a rövid és hosszú távú power terhelés előrejelzés, kereskedelmi, terheléselosztás, rács optimalizálás stb. Big Data típusú adatok és a speciális elemzés AA módszerek, például a Machine Learning (ML) a kulcs enablers pontos és megbízható előrejelzések készítésére.  
+# <a name="cortana-intelligence-solution-template-playbook-for-demand-forecasting-of-energy"></a>Cortana Intelligence megoldás sablon forgatókönyve a kereslet-előrejelzés, energia
+## <a name="executive-summary"></a>Végrehajtási összefoglaló
+Az elmúlt néhány évben eszközök internetes hálózata (IoT), alternatív energiaforrások és big Data típusú adatok óriási lehetőségeket létrehozásához a segédprogram és energia tartományban lehet egyesített. Egy időben a segédprogram és a teljes energia ágazat látott az erőforrás-igényes hatékonyabb módon lehet szabályozni az energia használati fogyasztóval rendelkező egybesimítás használatalapú. Ezért az segédprogram és intelligens vállalatok is nagy szükség van a innovációját, és újítsa meg magukat. Ezenkívül számos teljesítmény- és segédprogram rácsok egyre elavult, és nagyon költséges, karbantartása és kezelése. Az elmúlt év során a csapat dolgozott az energia tartományon belüli marketingmódszerek számos. Ezek marketingmódszerek során történt, amelyben a segédprogramok vagy ISV (független szoftvergyártók) keresi az előrejelzés a jövőbeli energiaszükségletét sok esetben. Ezek az előrejelzések fontos szerepet játszanak az jelenlegi és jövőbeli üzleti és a különböző használati esetek alapját váltak. Ezek közé tartozik a rövid és hosszú távú power terhelés előrejelzést, kereskedelmi, terheléselosztást, rács optimalizálás stb. Big data és fejlett analitikai AA módszerek például a Machine Learning (gépi tanulás) vonatkoznak a legfontosabb előfeltétele pontos és megbízható előrejelzések előállító.  
 
-Ez a forgatókönyv a azt helyreállíthatósága az üzleti és analitikai irányelvek sikeres fejlesztői szükséges, és energia igény szerinti telepítését előrejelzési megoldás. Javasolt iránymutatás segítséget, segédprogramok, az adatelemzők és az adatok mérnökök teljesen operationalized, felhőalapú, igény szerinti előrejelzés megoldások kialakítása során. A vállalatok számára, a big Data típusú adatok és a speciális elemzés út csak indító ilyen megoldást jelenthet a hosszú távú intelligens rács stratégiai kezdeti leképezésben.
+A forgatókönyv együtt elhelyezni az üzleti és a sikeres fejlesztéshez szükséges analitikai irányelvek és központi telepítését energiaszükségletét előrejelzési megoldás. Javasolt iránymutatás segítséget segédprogramok, az adatelemzők és adatmérnökök teljesen szolgáltatáscsomagot, felhőalapú, alkalmazható igény-előrejelzési megoldások kialakítása során. Olyan vállalatok, akik most használja először a big data és fejlett analitikai utazás ilyen megoldás megfelelhet a hosszú távú intelligens stratégiájuk kezdeti mag.
 
 > [!TIP]
-> A diagram, amely ezt a sablont az architektúra áttekintése letöltéséhez lásd: [Cortana Intelligence Megoldássablonban architektúra az igény szerinti előrejelzési energia](cortana-analytics-architecture-demand-forecasting-energy.md).  
+> Egy diagram, amely biztosítja az architektúra áttekintése a sablon letöltése: [kereslet-előrejelzés, energia-architektúrát Cortana Intelligence-Megoldássablon](cortana-analytics-architecture-demand-forecasting-energy.md).  
 > 
 > 
 
 ## <a name="overview"></a>Áttekintés
-Ez a dokumentum ismerteti a business, az adatok és a Cortana Intelligence használatával és az adott Azure Machine Learning (AML) megvalósítása és havi előrejelzési megoldások üzembe helyezésére műszaki szempontjait. A dokumentum három fő részből áll:  
+Ez a dokumentum ismerteti a business, az adatok és műszaki szempontjait a Cortana Intelligence használatával és az adott Azure Machine Learning (AML) a megvalósítás és a energia-előrejelzés megoldások üzembe helyezéséhez. A dokumentum három fő részből áll:  
 
 1. Üzleti ismertetés  
-2. Adatok ismertetése  
-3. Technikai kivitelezés
+2. Adatok megismerése  
+3. Technikai megvalósítás
 
-A **üzleti ismertetése** rész ismerteti az üzleti aspektus megértéséhez, valamint befektetési döntés előtt fontolja meg egy kell. Ismerteti, hogyan ahhoz, hogy az üzleti probléma az elvégzendő annak érdekében, hogy a prediktív elemzés és a gépi tanulás valóban hatékony és alkalmazható. A dokumentum további gépi tanulási és felhasználásukról energia-előrejelzés problémák megoldására használatának alapjait ismerteti. Azt ismerteti, az Előfeltételek és a használati esetek minősítési feltétel. Néhány példa használja esetek és üzleti eset forgatókönyvek is megadja.
+A **az üzleti igények felmérése** rész ismerteti az üzleti aspektus egy megjelölése szükséges és megfontolnia előtt befektetési döntés meghozatalakor. Ismerteti, hogyan ahhoz, hogy az üzleti probléma megoldására összpontosíthasson annak érdekében, hogy prediktív elemzési és gépi tanulási valóban hatékony és a alkalmazni. A dokumentum további machine learning és felhasználásukról energia-előrejelzés problémákra történő alapjait ismerteti. Az előfeltételekről és a egy alkalmazási helyzet a feltételnek megfelelő ismerteti. Mintául szolgáló használatieset-forgatókönyveit és vállalkozását forgatókönyveket is rendelkezésre állnak.
 
-A adata gépi tanulási megoldást a főbb összetevő. A **adatok ismertetése** Ez a dokumentum része ismertet néhány fontos szempont, az adatok. Azt ismerteti, hogy milyen típusú adatokhoz, energia előrejelzés, minőségi követelményeit, és milyen adatforrásokat általában létezik. Azt is ismertetik a nyers adatok használatáról az adatokkal kapcsolatos funkciókkal, amely a modellezési rész ténylegesen meghajtó előkészítése.
+Adatok el a fő összetevővel kapcsolatban bármilyen machine learning-megoldását. A **Data Understanding** részét ez a dokumentum bemutatja néhány fontos szempont az adatok. Ismerteti, milyen típusú adatokhoz, energia-előrejelzés, adatok minőségi követelményeknek és milyen adatforrásokat általában létezik. Is ismertetjük, hogyan a nyers adatok a modellezési rész ténylegesen hangból funkciók előkészítéséhez használható.
 
-A harmadik részét a dokumentum ismerteti a **technikai kivitelezés** szempontja, hogy a megoldás. A szolgáltatás műszaki osztály és modellezési alapját képezi az tudományos folyamat, és részletesen bemutatható ezért tárgyalt. A webes szolgáltatások, amelyek egy fontos vehicle prediktív elemzési megoldások felhőben telepítését fogalma magában foglalja. Azt is szerkezeti egy tipikus architektúra egy végpontok közötti operationalized megoldás.
+A harmadik rész a dokumentum ismerteti a **műszaki megvalósítási** egy megoldás része. Funkciófejlesztési és modellezés középpontjában álló az adatelemzési folyamat, és néhány részletet a ezért tárgyalja. Ez fedezi a webszolgáltatásokhoz, amelyek egy fontos eszközzel helyezhető üzembe prediktív elemzési megoldások felhőben vannak fogalmát. Azt is szerkezeti egy tipikus egy teljes körű szolgáltatáscsomagot megoldások architektúrájának.
 
-A dokumentum tartalmazza továbbá referenciaanyag ahhoz, hogy további ismertetése a tartomány és a technológia használható.
+Emellett a dokumentum tartalmaz, amelyek segítségével tovább a tartomány és a technológiai ismereteket szerezhet – referenciaanyag.
 
-Fontos megjegyezni, hogy azt nem kíván foglalni a dokumentum az mélyebb tudományos folyamat, a matematikai és műszaki szempontjait. A részletek megtalálhatók a [Azure ML dokumentáció](http://azure.microsoft.com/services/machine-learning/) és [blogok](http://blogs.microsoft.com/blog/tag/azure-machine-learning/).
+Fontos megjegyezni, hogy nem tervezünk, hogy biztosítsák a jelen dokumentum a mélyebb adatelemzési folyamat, a matematikai és technikai aspektusait. Ezek a részletek megtalálhatók [Azure Machine Learning dokumentációs](http://azure.microsoft.com/services/machine-learning/) és [blogok](http://blogs.microsoft.com/blog/tag/azure-machine-learning/).
 
 ### <a name="target-audience"></a>Célközönség
-A jelen dokumentum célközönsége üzleti és a technikai tanácsadási csoporthoz ki szeretné, hogy megismerje, és ismeri a Machine Learning-alapú megoldások, és hogyan ezeket használják-e kifejezetten a havi előrejelzési tartományon belül.
+Ez a dokumentum célközönsége az üzleti és műszaki személyzet kívánó ismeretek is, és ismeri a Machine Learning-alapú megoldásokat, és hogyan ezeket használják-e az energia-előrejelzés tartományon belül kifejezetten.
 
-Adatszakértőkön is kihasználhassa a dokumentum ahhoz, hogy a magas szintű folyamata, amelyek a központi telepítés egy megoldás előrejelzés energia meghajtók jobb megértése olvasva. Ebben a környezetben is használat jó meghatározásához és több kiindulási pont részletes, és speciális anyagot.
+Az adatelemzők is kihasználhatják ezt a dokumentumot, szerezhet, hogy a magas szintű folyamata, amely a központi telepítését előrejelzési megoldás az energiaszektor olvasása. Ebben a környezetben is használat jó az alapértékeket, és kiindulási pontként több részletes, és speciális anyagot.
 
-### <a name="industry-trends"></a>Trendek
-Az elmúlt néhány évben IoT, a másik energia források és a big Data típusú adatok egyesített rendelkező a segédprogram és energia területen hatalmas lehetőségek létrehozására. Egy időben a segédprogram és a teljes energia szektorok láthatta egybesimítását a fogyasztók jobb módjának energia használatát igénylő felhasználási.
+### <a name="industry-trends"></a>Iparági trendek
+Az elmúlt néhány évben IoT, alternatív energiaforrások és big Data típusú adatok óriási lehetőségeket létrehozásához a segédprogram és energia területen lehet egyesített. Egy időben a segédprogram és a teljes energia szektorok látott az erőforrás-igényes hatékonyabb módon lehet szabályozni az energia használati fogyasztóval rendelkező egybesimítás használatalapú.
 
-Számos segédprogram és intelligens energiavállalatok pioneering a [intelligens rács](https://en.wikipedia.org/wiki/Smart_grid) használja több telepítésével esetek, amelyek a rács által létrehozott adatok használata. Az elektromos áram belső tulajdonságai köré szerveződik sok használati esetek: nem lehet halmozott sem készlet fenntartott tárolja. Igen milyen hozzák kell használni. Hatékonyabban kívánt segédprogramok kell energiafogyasztását egyszerűen előrejelzési mert, amely ad nekik a nagyobb lehetőséget **ellátásának és igényének**, megelőzve az energia veszteség **üvegházhatású gáz csökkentése kibocsátási**, és a költségek szabályozásához.
+Számos segédprogram és intelligens energiaszolgáltató vállalatok számára úttörő a [intelligens](https://en.wikipedia.org/wiki/Smart_grid) használható számos üzembe helyezésével esetek, győződjön meg arról, hogy a rács által létrehozott adatok használata. Az elektromos áram éles belső tulajdonságai köré szerveződik számos alkalmazási: nem lehet halmozott sem készlet fenntartott tárolja. Tehát mi jön létre kell használni. Segédprogramok, amelyek segítségével hatékonyabban előre kell látniuk egyszerűen az energiafogyasztás mert, amely ad nekik a nagyobb lehetőséget **elosztása és kínálat**, megelőzve az energia veszteség, **üvegházhatást gáz csökkentése kibocsátási**, és a költségek.
 
-Ha van szó, a költségek, akkor egy másik fontos szempont, amely ár. Nagy szükség van az új képességek között segédprogramok kereskedelmi léptetik **előrejelzési jövőbeli igények és az elektromos áram jövőbeli ár**. Ez segít a vállalatoknak az éles kötetek meghatározása.
+Beszéd, a költségek, ha van egy másik fontos szempont, amelyre az ár. Kereskedelmi power segédprogramok között új funkciókat vehetnek igénybe a nagy szükség van a léptetik **előre jelzett keresletet és a jövőbeli ára az elektromos áram**. Ez segít meghatározni a termelési kötetek vállalatok.
 
-A "intelligens" szó használatakor ténylegesen hivatkozunk, amely majd előrejelzésekhez, és ismerje meg a rács. Azt is, amelyek várhatóan fogyasztás határozza változásainak, valamint **várható ideiglenes túlterhelés olyan helyzetekben, és az automatikus igazítása**. Távolról szabályozásához fogyasztás (ezek intelligens mérőszámok segítségével), amelyet honosított túlterhelési olyan helyzetekben lehet kezelni. **Először előrejelzésére és majd működő**, a rács teszi magát intelligensebb adott idő alatt.
+A "intelligens" szót használja, ha ténylegesen nevezzük, amely ismerje meg, és ezután az előrejelzéseket rács. Használatalapú szezonális változásai, kiszámítható legyen, valamint **ideiglenes túlterhelés helyzetekben bizonyulhat, és automatikusan módosítsa a hozzá tartozó**. Távolról szabályozó-használat (az intelligens mérőktől ezek segítségével), a honosított túlterhelési lehet kezelni. **Először előrejelzésére és majd működő**, a rácshoz teszi magát intelligensebb idővel.
 
-Ez a dokumentum egy adott családba tartozó fedik le a jövőbeli, előrejelzés használati esethez tárgyaljuk a többi rövid távú és hosszú távú energia igény szerint. Jelenleg néhány hónapig évi működik, és szereztek néhány Tudásbázis és szakértelem, amelyek lehetővé teszik a számunkra, iparági osztályú eredmények eredményezett. Más használati eseteket tárgyalja, valamint a dokumentum a közeljövőben.
+Ez a dokumentum egy adott használati esetek, mind a jövő, előrejelzés-család fogunk dolgozni a többi rövid távú és hosszú távú energiaszükségletét. Azt néhány hónapon keresztül a következő területeken működik, és néhány ismeretek és a szakértelem, amelyekkel ipari szintű eredményt révén. Más használati eseteket tárgyalja, valamint a dokumentum a közeljövőben.
 
 ## <a name="business-understanding"></a>Az üzleti igények felmérése
-### <a name="business-goals"></a>Üzleti céljaihoz
-A **energia bemutató** célja annak bemutatása egy tipikus prediktív elemzési és a gépi tanulási megoldás, amely egy nagyon rövid időkereten belül is telepíthető. Pontosabban az aktuális elsősorban energia igény szerinti előrejelzési megoldások engedélyezése, hogy az üzleti értékét gyorsan kell is tudjuk és esetén alkalmazhatók. Ez a forgatókönyv is nyújt segítséget az ügyfél a következő célok parancsokról:
+### <a name="business-goals"></a>Üzleti céljait
+A **energia bemutató** célja, hogy egy tipikus prediktív elemzési és a machine learning-megoldását, a nagyon rövid időkereten belül telepíthető. Az aktuális fókusz többek között az energia igény-előrejelzési megoldások engedélyezése, hogy az üzleti értékét gyorsan kell, hogy és ki. Ez a forgatókönyv található információk segíthetnek az ügyfél a következő célok megvalósítására:
 
-* Gépi tanulás értékének rövid ideig alapú megoldás
-* Bővíthető egy próba-és nagybetűhasználattal más használati eseteket, vagy az üzleti igények alapján szélesebb körű hatókör
-* Gyorsan hozzáférni a Cortana Intelligence Suite termékismeretek
+* Rövid idő értékre a gépi tanulás alapú megoldás
+* Bérlőnként egy próbaprogram használati eset más használati eseteket, vagy az üzleti igények alapján szélesebb hatókört
+* Gyorsan nyerhetnek a Cortana Intelligence Suite termékismeretek
 
-Az ezen célok szem előtt a forgatókönyv célja, hogy az üzleti és műszaki ismereteket, amely segít ezen célok eléréséhez.
+A következő célok szem előtt a forgatókönyv célja, hogy az üzleti és technikai ismereteit, amely segítséget nyújt az ezen célok eléréséhez.
 
-### <a name="power-load-and-demand-forecasting"></a>Energiagazdálkodási terhelés és igény szerint előrejelzés
-A energia szektort belül lehetnek az sokféleképpen mely igény szerinti előrejelzés segíthet kritikus üzleti problémák megoldásához. Valójában igény szerinti előrejelzés lehet tekinteni a sok alapvető használati esetek az iparág alapját. Általában az adatraktárakban az energia igény szerinti előrejelzések kétféle: rövid távú és hosszú távú. Minden egyes előfordulhat, hogy más célt szolgálnak, és egy másik módszert használják. A fő különbség a kettő között a előrejelzési horizon, tehát az időtartományt a jövőben, amelynek azt kellene előrejelzési.
+### <a name="power-load-and-demand-forecasting"></a>Teljesítmény terhelés és a kereslet-előrejelzés
+Az energia ágazat belül lehetnek sokféleképpen melyik igény előrejelzése segíthet kritikus fontosságú üzleti problémák megoldásában. Valójában a kereslet-előrejelzés lehessen venni az alapja az iparágban számos alapvető használati eseteit. Általánosságban javasolt energia igény szerint előrejelzések két típusú: rövid távú és hosszú távon. Egyenként előfordulhat, hogy a különböző célt szolgál, és felhasználja az eltérő megközelítést. A kettő közötti fő különbség az előrejelzési horizon, ami azt jelenti, az időtartományt, amelyhez azt kellene előrejelzési a jövőre.
 
 #### <a name="short-term-load-forecasting"></a>Rövid távú terhelés előrejelzése
-Energia igény szerinti keretén belül a rövid távú betölteni az előrejelzés (STLF) összesített be, hogy a rács (vagy a rács egész) különböző részein a közeljövőben van előrejelzett típusúként van definiálva. Ebben a környezetben a rövid távú idő horizon 1 óra 24 óra közötti tartományba kell van definiálva. Bizonyos esetekben egy horizon 48 órán keresztül is lehetőség. STLF ezért gyakran előfordul, a rács egyik működési használata esetében. Íme néhány példa a használati esetek vezérelt STLF:
+Rövid távú betöltése előrejelzés (STLF) energiaszükségletét kontextusában összesített be, amely az előrejelzett a közeljövőben a rács (vagy a rács egész) különböző részein definiálható. Ebben a környezetben a rövid távú kell idő horizon 1 óra 24 órás tartományán belül van meghatározva. Bizonyos esetekben egy horizon 48 órán keresztül is lehetőség. STLF ezért nagyon gyakori a egy működési használati eset a rács. Íme néhány példa a használati esetek driven STLF:
 
-* Terheléselosztás készletek és igények
-* Energiagazdálkodási kereskedelmi támogatása
-* Piaci elvégzése (a beállítás kiemelt ár)
+* Terheléselosztás és kínálat
+* Kereskedelmi Power-támogatás
+* Piaci így (a beállítás kiemelt díj)
 * Rács működési optimalizálása
 * [Igény szerinti válasz](https://en.wikipedia.org/wiki/Demand_response)
-* Igény szerinti előrejelzés maximális
+* Kiugró kereslet-előrejelzés
 * Igény szerinti ügyféloldali kezelése
-* Terheléselosztás és megelőzési túlterhelés
-* Hosszú távon terhelés előrejelzése
-* Hiba és anomáliadetektálási észlelése
+* Terheléselosztás és a megelőzési túlterhelni
+* Hosszú távú terhelés előrejelzése
+* Tartalék és rendellenességészlelés
 * Csúcsidőszak megszorítás/simítás 
 
-STLF modell főként a near múltbeli (utolsó nap vagy hét) adatokkal és -felhasználási előrejelzett hőmérséklet, egy fontos előrejelzőjének. A következő órában előrejelzésének pontos hőmérséklet beszerezni, majd be 24 óra egyre nagyobb kihívást most nap. Ezek a modellek kevesebb érzékenyek határozza minták vagy hosszú távú fogyasztási trendjeinek a.
+STLF modell főként közel korábban (utolsó nap vagy hét) használati adatokat és -felhasználási előrejelzett hőmérséklet, egy fontos előjelző. Következő órában előrejelzési pontos hőmérséklet beszerzése és mentése 24 órára egyre kisebb kihívást most nap. Ezek a modellek kevésbé érzékenyek a szezonális mintázatokat vagy hosszú távú használati trendeket.
 
-SLTF megoldásokat is valószínűleg nagy mennyiségű előrejelzés hívások (Szolgáltatáskérés), mert azok vannak meghívott óránként, és egyes esetekben még nagyobb gyakorisággal. Egyúttal nagyon gyakori, ahol minden egyes állomás vagy átalakító önálló modellként szerepel, és ezért a mennyiségi előrejelzés kérelmek még nagyobb beültetésre megjelenítéséhez.
+SLTF megoldásokat is várhatóan készítése a nagy mennyiségű előrejelzési hívások (szolgáltatáskérések), mivel azok vannak meghívott óránként és bizonyos esetekben még nagyobb gyakorisággal. Emellett akkor is előfordul, ahol minden egyes állomás vagy átalakító jelenik meg különálló modellt, és ezért előrejelzési kérések mennyisége még nagyobb beültetésre megtekintéséhez.
 
-#### <a name="long-term-load-forecasting"></a>Hosszú távon terhelés előrejelzése
-A hosszú távú terhelés előrejelzés (LTLF) célja egy több hónapra (és egyes esetekben az évek) 1 hét közötti idő horizon az előrejelzések power igény szerint. Ezt a tartományt az időhatár többnyire alkalmazható a tervezési és befektetési használati esetekben.
+#### <a name="long-term-load-forecasting"></a>Hosszú távú terhelés előrejelzése
+A hosszú távú terhelés előrejelzés (LTLF) célja áramellátási igény előrejelzése és a egy idő horizon 1 héttel kezdve a több hónapon (és egyes esetekben az évek). Ez horizon tartománya leginkább megfelelő tervezési és a befektetési használati esetek.
 
-Hosszú távú forgatókönyvek esetén fontos kiváló minőségű adatai, amely lefedi a span több éves (minimális 3 év). Ezek a modellek fog általában minták szezonalitás értékének kinyerése a korábbi adatok és lehetővé teszik a külső predicators például időjárása és a környezet minták szerint.
+A hosszú távú esetben fontos kiváló minőségű az adatokat, amely több év (legalább 3 év) vég lefedi. Ezek a modellek fog általában az előzményadatok szezonalitás minták kinyerése és lehetővé teszik a külső predicators például, időjárás és éghajlati mintákat.
 
-Fontos, hogy elmagyarázza, hogy minél hosszabb a előrejelzési horizon, annál kevésbé pontos lehet az előrejelzés. Ezért fontos bizonyos abban, hogy intervallumok együtt, amely lehetővé teszi az emberek azokat a tervezési folyamat lehetséges variation számításba a tényleges Előrejelzés létrehozásához.
+Fontos, hogy elmagyarázza, hogy minél hosszabb a előrejelzési közeljövőre van, a kevésbé pontos lehet az előrejelzés. Ezért fontos néhány konfidencia együtt, amelyek lehetővé teszik, hogy az emberek figyelembe vennie a lehetséges változat, a tervezési folyamatba tényleges előrejelzés előállításához.
 
-Mivel a fogyasztás forgatókönyvhöz, amelyben LTLF többnyire azt tervezi, azt várható sokkal alacsonyabb előrejelzés kötetek (képest STLF). Azt a képi megjelenítés eszközök, például Excel vagy a Power bi beilleszthető előrejelzéseket általában jelenik meg, és a felhasználó manuálisan elindítható.
+Mivel a felhasználási forgatókönyve LTLF többnyire azt tervezi, várhatóan is sokkal alacsonyabb előrejelzési kötetek (mint a korábban megszokott STLF). Általában jelennének meg ezek az előrejelzések, adatvizualizációs eszközök, például az Excel- vagy Power bi embedded, és amelyet a felhasználó manuálisan lehet meghívni.
 
-### <a name="short-term-vs-long-term-prediction"></a>Rövid távú vs. Hosszú távú előrejelzés
-A következő táblázat a legfontosabb attribútumok tekintetben STLF és LTLF hasonlítja össze:
+### <a name="short-term-vs-long-term-prediction"></a>Rövid távú vs. Hosszú távú előrejelzése
+Az alábbi táblázat a legfontosabb attribútumok tekintetben STLF és LTLF hasonlítja össze:
 
-| Attribútum | Rövid távú terhelés előrejelzése | Hosszú távon terhelés előrejelzés |
+| Attribútum | Rövid távú terhelés előrejelzése | Hosszú távú terhelés előrejelzés |
 | --- | --- | --- |
-| Horizon előrejelzés |Az 1 óra, 48 óra |1 – 6 hónapos |
-| Adatok granularitási |Óradíj |Óránként vagy naponta |
-| A tipikus használati esetek |<ul><li>Igény szerinti/ellátási terheléselosztás</li><li>Válassza ki az óra előrejelzés</li><li>Igény szerinti válasz</li></ul> |<ul><li>Hosszú távon tervezési</li><li>Rács eszközök tervezése</li><li>Erőforrás tervezése</li></ul> |
-| Tipikus előre |<ul><li>Nap vagy hét</li><li>Nap órája</li><li>Óránkénti hőmérséklet</li></ul> |<ul><li>Hónap év</li><li>Hónap napja</li><li>Hosszú távú hőmérséklet és a környezet</li></ul> |
-| Előzményadatokat tartomány |Két-három év értékelésével |5 – 10 évre visszamenőleg értékelésével |
-| Tipikus pontossága |MAPE * 5 % vagy alacsonyabb |MAPE * 25 %-os vagy alacsonyabb |
-| Előrejelzési gyakorisága |Óránként vagy 24 óránként |Miután a havi, negyedéves és éves előállított |
+| Horizon előrejelzése |Az 1 óra, 48 óra |6 hónapos 1-ről |
+| Adatok részletessége |Óradíj |Óránként vagy naponta |
+| A tipikus használati esetek |<ul><li>Igény szerint vagy ellátási terheléselosztás</li><li>Válasszon óra előrejelzés</li><li>Igény szerinti válasz</li></ul> |<ul><li>Hosszú távú tervezési</li><li>Rács eszközök tervezése</li><li>Erőforrás-tervezés</li></ul> |
+| Tipikus előrejelzőket |<ul><li>Nap vagy hét</li><li>nap órája</li><li>Óránkénti hőmérséklet</li></ul> |<ul><li>Év hónapja</li><li>Hónap napja</li><li>Hosszú távú hőmérséklet és éghajlati</li></ul> |
+| Előzményadatok tartomány |Két vagy három évnyi adat |Az adatok 5 – 10 évre visszamenőleg |
+| Tipikus pontossága |MAPE * 5 %-os vagy kisebb |MAPE * 25 %-os vagy kisebb |
+| Előrejelzési gyakorisága |Előállított óránként vagy 24 óránként |Miután a havi, negyedéves és éves előállítása |
 
-\*[MAPE](https://en.wikipedia.org/wiki/Mean_absolute_percentage_error) – témakörök átlagos százalékos hiba
+\*[MAPE](https://en.wikipedia.org/wiki/Mean_absolute_percentage_error) – jelenti azt, hogy átlagos százalékos hiba
 
-Mivel ebben a táblázatban is látható, fontos meglehetősen megkülönböztetni a rövid és a hosszú távú előrejelzés forgatókönyvek, mivel határoz meg különböző üzleti igényeknek és különböző központi telepítési és felhasználási minták rendelkezhetnek.
+Ez a táblázat is látható, fontos meglehetősen rövid és hosszú távú forgatókönyvek előrejelzés, mivel ezek képviselik a különféle üzleti igényekhez, és előfordulhat, hogy különböző üzembe helyezési és felhasználási minták között.
 
-### <a name="example-use-case-1-esmart-systems--overload-optimization"></a>Példa használati eset 1: eSmart rendszerek – túlterhelési optimalizálása
-A fontos szerepet egy [intelligens rács](https://en.wikipedia.org/wiki/Smart_grid) dinamikusan és folyamatosan optimalizálása és a változó fogyasztási igazíthatja. Energiafogyasztás befolyásolhatja, főleg hőmérséklet ingadozását által okozott rövid távú módosításokkal (*pl.*, nagyobb teljesítmény vezeték nélkül regisztrálja az állapot vagy a fűtésrendszerek használatos). Egy időben a hosszú távú trendek energiafogyasztását is befolyásol. Ezek közé tartozhatnak szezonalitás értékének hatások, nemzeti ünnepek, hosszú távú használat növekedés és fogyasztói index, olaj ár és GDP akár gazdasági tényezők.
+### <a name="example-use-case-1-esmart-systems--overload-optimization"></a>Példa használati 1. eset: eSmart rendszerek – a túlterhelési optimalizálása
+A fontos szerepet egy [intelligens](https://en.wikipedia.org/wiki/Smart_grid) dinamikus, folyamatosan optimalizálása, majd állítsa be a változó használati mintákat. Energiafogyasztás befolyásolja rövid távú módosításával, főleg hőmérséklet ingadozások által okozott (*például*, további power vezeték nélkül regisztrálja az állapot vagy a fűtésrendszerek szolgál). Egy időben hosszú távú trendek energiafogyasztás is befolyásol. Ezek közé tartozhatnak szezonalitás hatások, nemzeti ünnepek, hosszú távú használat növekedési és még gazdasági tényezők, például fogyasztói index, az olaj ár és a GDP.
 
-A használati eset a [eSmart](http://www.esmartsystems.com/) egy felhőalapú megoldás, amely lehetővé teszi, hogy a rács az összes megadott állomás egy túlterhelési helyzet propensity előrejelzésére telepíteni kívánta. Különösen eSmart szeretett volna, amelyek valószínűleg úgy azonnali intézkedésre lehet hozni elkerüléséhez vagy megoldásához ilyen esetben a következő órán belül túlterhelés alállomások azonosítása.
+Az ezt a használati esetet [eSmart](http://www.esmartsystems.com/) szeretne telepíteni egy felhőalapú megoldás, amely lehetővé teszi, hogy a magasabb kategóriájú egy túlterhelési helyzet a bármely megadott állomás a rács előrejelzésére. Különösen eSmart szerette volna azonosítani, többek között alállomásokkal, amelyek valószínűleg túlterhelni a következő órán belül, így az azonnali intézkedést elkerüléséhez vagy megoldásához helyzet lehet hozni.
 
-Pontos és gyors a előrejelzésének végrehajtása szükséges három prediktív modelleket végrehajtását:
+Pontos és előrejelzési gyors végrehajtása szükséges három prediktív modelleket végrehajtása:
 
-* Hosszú távú modell, amely lehetővé teszi, hogy a következő néhány hét és hónap során minden egyes állomás a energiafogyasztás előrejelzés
-* Rövid távú modell, amely lehetővé teszi a következő órán belül egy adott állomás túlterhelési helyzet előrejelzését
-* Hőmérséklet-modell, amely több forgatókönyv keresztül jövőbeli hőmérséklet előrejelzés
+* Hosszú távú modell, amely lehetővé teszi, hogy a következő néhány hetek vagy hónapok során minden egyes állomás a energiafogyasztás előrejelzés
+* Rövid távú modell, amely lehetővé teszi a következő órában megadott állomás túlterhelési helyzet előrejelzését
+* Hőmérséklet-modell által biztosított jövőbeli hőmérséklet számos módja létezik keresztüli előrejelzés
 
-A cél a hosszú távú modell által a innovációkká alakuljon során a következő heti vagy havi (a megadott a power transmission kapacitásának) túlterhelni a alállomások rangsorolja. Ez lehetővé teszi, hogy a rövid távú előrejelzés bemenetként szolgál alállomások rövid listáját létrehozását. Mivel hőmérséklet egy fontos előrejelzőjének a hosszú távú modell, szükség van a folyamatosan több forgatókönyv hőmérséklet előrejelzések előállításához, és azokat a hosszú távú modell bevitt hírcsatorna. A rövid távú előrejelzés majd meghívott megjósolható melyik állomás várhatóan a következő órán keresztül túlterhelést.
+A hosszú távú modell célja, hogy az alállomások rangsor során a következő week vagy month (a megadott azok power átviteli kapacitás) túlterhelni a magasabb kategóriájú szerint. Ez lehetővé teszi egy rövid lista, amely a rövid távú előrejelzéshez bemenetként szolgál az alállomások fogadják a létrehozását. Mivel hőmérséklet-fontos előjelző a hosszú távú modell, szükség van folyamatosan több forgatókönyv hőmérséklet előrejelzések létrehozására, és továbbíthatja azokat a hosszú távú modell be bemenetként. A rövid távú előrejelzés majd meghívásainak előre jelezni, melyik állomás valószínű, hogy a következő órában túlterhelni.
 
-A rövid és hosszú távú modellek minden állomás egy külön-külön vannak telepítve. Ezért a gyakorlati ezek a modellek végrehajtásához kiterjedt vezénylési. Ahhoz, hogy magasabb előrejelzés pontosságát rövid távon, a részletesebb modellek esetében minden nap van kijelölve. Ezek a modellek hajtja végre a rendszer minden órában, és fejezze be a végrehajtása néhány percig, hogy elég ideje, hogy válaszol, és megelőző műveletek végrehajtása, ha szükséges belül. Ez a témakörgyűjtemény a modellek frissül folyamatosan időszakos megőrzési a legfrissebb adatok használatával.
+A rövid és hosszú távú modellek minden állomás egy külön-külön vannak telepítve. Ezért ezek a modellek gyakorlati végrehajtásának kiterjedt vezénylési van szükség. Nagyobb előrejelzési pontosság próbál a jeggyel rövid távon, a részletesebb modell a nap minden órára van kijelölve. Ezek a modellek a rendszer végrehajtja a minden órában, és a válaszadáshoz és a megelőző jellegű műveleteket, ha szükséges, adjon elég időt az néhány percen belül végrehajtása befejeződött. Ez a témakörgyűjtemény modellek naprakész időszakos megőrzési a legfrissebb adatok használatával.
 
 További információ a használati eset található [Itt](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18945).
 
-#### <a name="use-case-qualification-criteria--prerequisites"></a>Használja a nagybetűk minősítési feltételek – Előfeltételek
-A fő Cortana Intelligence erőssége üzembe helyezését és méretezését a machine learning-központú megoldások hatékony képessége. Több ezer támogatásához párhuzamosan végrehajtott előrejelzések eltéréseinek tervezték. Az automatikusan át tudja méretezni a változó fogyasztás minta teljesítéséhez. A megoldás ezért elsősorban pontosságát és számítási teljesítményt. Például a vállalat olyan pontos energia igény szerint a következő órában, illetve a nap óránként előrejelzési előállító iránt érdeklődik. Másrészről, azt is kevesebb, az igény szerinti miért van előre jelezni kell lennie, mert az a kérdés megválaszolásához (a modellben kezeli, amely).
+#### <a name="use-case-qualification-criteria--prerequisites"></a>Használja a kis minősítési feltételeknek – Előfeltételek
+Cortana Intelligence fő erőssége, telepíthetők és méretezhetők a machine learning-központú megoldások hatékony képessége. Több ezer támogatása és az előrejelzések párhuzamosan végrehajtott szolgál. Egy változó felhasználási minta kielégítése érdekében automatikusan képes méretezni. A megoldás ezért célja a pontosság és a számítási teljesítményt. Például a vállalat előrejelzési következő órában, és a nap minden órára pontos energiaszükségletét előállító iránt. Másrészről, kevesebb iránt, miért érdemes az igény szerinti összegyűjtése várható lennie, mert az a kérdés megválaszolásával tudjuk (modellelemek a modellben gondoskodik, amelyek).
 
-Ezért fontos vegye figyelembe, hogy nem minden esetben használja, és üzleti problémák hatékonyan megoldhatók gépi tanulás használatával.
+Ezért fontos vegye figyelembe, hogy nem minden használati esetek és üzleti problémák hatékonyan megoldhatók machine learning segítségével.
 
-A Cortana Intelligence és a gépi tanulás lehet nagyon hatékony egy adott üzleti probléma megoldásához az alábbi feltételek teljesülése esetén:
+Cortana Intelligence és a gépi tanulás lehet hatékonyan az egy adott üzleti probléma megoldására, a következő feltételek teljesülése esetén:
 
-* Az aktuális üzleti probléma **prediktív** jellegűek. Egy prediktív használata eset például, amelyeket szeretne a következő órán belül egy adott állomás power terhelése előrejelzése vállalat. Másrészről, elemzése és illesztőprogramok korábbi igényű prioritás lenne **leíró** jellegű, ezért kevesebb alkalmazható.
-* Nyilvánvaló **elérési útja művelet** kell fordítani az előrejelzés elérhetővé válik. Például a következő órán belül az egy állomás túlterhelés előrejelzésére is elindíthatja egy adott állomás társított terhelés csökkentését, és így potenciálisan megakadályozza az olyan túlterhelést proaktív műveletet.
-* A használati eset jelöli egy **tipikus típusú probléma** úgy, hogy ha orvosolhatók azt is váltaniuk más hasonló elhárításához használati esetekben.
-* Az ügyfél állíthatja be **mennyiségi és minőségi célok** a sikeres megoldás megvalósításának bemutatása. Például az energia igény szerinti előrejelzés helyes mennyiségi cél lenne a szükséges pontosságot küszöbértéket (*pl.*, 5 % hiba akár engedélyezett), vagy ha állomás előrejelzésére túlterhelés majd a pontosság (true figyelmeztetéséket aránya) és a visszaírási (true figyelmeztetéséket mértékének) egy adott küszöbérték feletti kell lennie. Ezen célok az ügyfél üzleti célokat kell származnia.
-* Nyilvánvaló **integrációs forgatókönyv** a vállalat üzleti a munkafolyamathoz. Például az állomás terhelés előrejelzés integrálható a rács vezérlőközpontba lehetővé teszi a túlterhelési megelőzési tevékenységek.
-* Az ügyfél rendelkezik a felhasználásra kész **megfelelő minőségű adatok** használati eset támogatásához (bővebb információt a következő szakaszban a **az adatminőségi**, ez a forgatókönyv az).
-* Az ügyfél támogatja a központú adatok architektúra vagy **felhőalapú gépi tanulás**, beleértve az Azure ML és egyéb Cortana Intelligence Suite összetevői.
-* Az ügyfél hajlandó létrehozására **egy végpontok közötti adatáramlás** , hogy rendelkezik a adatok kézbesítését kiterjeszti a felhőbe helyezni, és hajlandó **azok** a megoldás.
-* Az ügyfél készen áll a **erőforrást fordítsanak** ki lesz kell aktívan részt vevő kezdeti kísérleti végrehajtása során, hogy a Tudásbázis és a megoldás tulajdonjogát át lehet vinni az ügyfél sikeres befejezését követően.
-* A felhasználói erőforrás kell lennie egy **gyakorlott adatok professional**, lehetőség szerint olyan adatok tudósok.
+* Az aktuális üzleti probléma, **prediktív** jellegűek. Egy prediktív használata eset például, vállalat, szeretnénk előre jelezni egy adott állomás power terhelését a következő órában. Másrészről, elemzése és illesztőprogramok előzményadatok alapján a rangsorolás lenne **leíró** jellegű, ezért kevesebb alkalmazható.
+* Nyilvánvaló **művelet az elérési út** végrehajtását követően az előrejelzési érhető el. Például előrejelzésére egy állomás a következő órában túlterhelés is indíthat, hogy az állomás kapcsolódó terhelés csökkentése és a megelőzve potenciálisan túlterhelés esetén használható proaktív művelet.
+* A használati eset jelöli egy **tipikus típusú probléma** úgy, hogy ha megoldott azt is váltaniuk elkészítésétől más hasonló használati esetek.
+* Az ügyfél állíthatja **mennyiségi és minőségi célok** bemutatása egy megoldás sikeres végrehajtását. Például az energia kereslet-előrejelzés helyes mennyiségi cél lenne a szükséges pontosság küszöbértéket (*például*, legfeljebb 5 %-os hiba engedélyezett), vagy ha állomás előrejelzésére túlterhelni majd a pontosság (valódi pozitívok mértéke) és a visszaírási (valódi pozitívok mértéke) kell lennie egy adott küszöbérték feletti. Ezen célok kell származik, az ügyfél üzleti céljainak megvalósítását.
+* Nyilvánvaló **integrációjának** a vállalat üzleti munkafolyamattal. Például az állomás terhelés előrejelzés integrálhatók a rács vezérlőközpontba lehetővé teszi a túlterhelési megelőzési tevékenységek.
+* Az ügyfél rendelkezik használatra kész **adatokat a megfelelő minőségű** használati eset támogatására (bővebb információt a következő szakaszban a **adatminőség**, az a forgatókönyv).
+* Az ügyfél támogatja a standardokat központú adatok felhőarchitektúra vagy **felhőalapú és gépi tanulási**, többek között az Azure ML és az egyéb Cortana Intelligence Suite összetevői.
+* Az ügyfél hajlandó létrehozására **egy teljes körű adatfolyam** a létesítmények kézbesítését az adatok folyamatosan, a felhőbe, és hajlandó **üzembe helyezése** a megoldás.
+* Az ügyfél készen áll a **dedikált erőforrások** ki fogja lehet aktívan foglalkozom kezdeti kísérleti végrehajtása során, hogy a Tudásbázis és a megoldás tulajdonjogát át lehet vinni az ügyfél sikeres telepítést.
+* Az ügyfél erőforrás kell lennie egy **képzett adatok professional**, lehetőleg értenie az adatokhoz.
 
-A fenti feltételeknek megfelelő használati eset minősítése nagy mértékben javíthatják a használati esetek sikerességi arányát és létrehozni egy jó beachhead jövőbeli használati esetek végrehajtásához.
+A feltételnek, a fenti feltételek alapján használati esetek nagy mértékben javíthatják a a sikerességi arányokat, használati esetek és létrehozni egy jó beachhead jövőbeli használati esetek végrehajtására.
 
-### <a name="cloud-based-solutions"></a>Felhő alapú megoldások
-Az Azure Cortana Intelligence Suite integrált környezetet a felhőben található. Egy speciális elemzésekre megoldás egy felhőalapú környezetben a központi telepítés rendelkezik, a vállalatok számára, és ezzel egy időben jelentős előnyt azt jelentheti, nagy változást a vállalatok számára, hogy továbbra is használja a helyszíni IT-megoldásokhoz. A energia szektort belül nincs fokozatos áttelepítés a felhőbeli műveletek egyértelmű tendenciát. Erre az irányra kerül jár együtt az intelligens rács fejlesztésének című szakaszban leírtaknak megfelelően a fenti a **trendek**. Mivel ez a forgatókönyv a energia tartomány felhőalapú megoldás kialakításával foglalkozik, fontos az előnyöket és az egyéb szempontok a felhőalapú megoldás.
+### <a name="cloud-based-solutions"></a>Felhőalapú megoldások
+Az Azure-ban a Cortana Intelligence Suite olyan integrált környezetben, amely a felhőben található. Egy fejlett analitikai megoldást egy felhőalapú környezetben a központi telepítés tartalmazza a vállalkozások számára, és a egy időben technológiáival jelentheti big Data jellegű módosítása a vállalatok számára, hogy továbbra is használja a helyi IT-megoldásokhoz. Az energia ágazat belül nincs egyértelmű a tendencia fokozatos migrálás a felhőbe műveletek. Erre az irányra kerül szakembereinek közreműködésével együtt a fejlesztés az intelligens rács mint már említettük, a **trendek**. Ez a forgatókönyv egy felhőalapú megoldás az energiaszektor tartományban összpontosít, fontos annak magyarázata, az előnyei és a egy felhőalapú megoldás üzembe helyezésének egyéb szempontok.
 
-Lehet, hogy a legnagyobb egy felhőalapú megoldás előnye a költségeket. Megoldás él felhő telepített összetevők nincs társaságuk költségek vagy (az árukat eladott) ELÁBÉ összetevők költsége helyett társítva. Ez azt jelenti, hogy a hardverek, szoftverek és informatikai karbantartási beruházásának nincs szükség, és ezért nem jelentős üzleti kockázat csökkentése.
+Például egy felhőalapú megoldás legnagyobb előnye a költségét. Megoldás használ felhőalapú által telepített összetevők, nem előzetes költségek, vagy (a termékek eladott) COGS összetevők költsége helyett társítva. Ez azt jelenti, hogy nem kell hardveres, szoftveres és informatikai karbantartási támogatásán, és ezért nincs jelentős üzleti kockázat csökkentése.
 
-Egy másik előnye, a felhőalapú megoldásokhoz használatalapú költség szerkezete. Kiszolgálók felhőalapú számítási és tárolási telepített, és most-szükség szerint alapon méretezhető. Egy felhőalapú megoldás költség hatékonyságát előnye jelképez.
+Egy másik előnye, felhőalapú megoldások használatalapú költség struktúráját. Kiszolgálók felhőalapú számítási vagy tárolási telepíthető és horizontálisan csak – igény szerint történik. Egy felhőalapú megoldás költség hatékonyságát előnyeit Ez jelöli.
 
-Végül, ez a felhőalapú ajánlat része informatikai karbantartás vagy későbbi infrastruktúra fejlesztési terhelésnél nincs szükség van. Olyan mértékben, hogy Cortana Intelligence Suite osztály szolgáltatások tartalmaz a legjobb, és az ütemterv fejlődnek tartja. Új szolgáltatások, összetevők és képességek folyamatosan bevezetni, és fejleszteni.
+Végül ott, nem szükséges a portfóliónk fejlesztésén informatikai karbantartás, illetve a jövőbeli infrastruktúrájának fejlesztését, mivel ez a felhőalapú ajánlat része. Olyan mértékben, hogy a Cortana Intelligence csomag tartalmazza a legjobb osztály szolgáltatások, és annak közúti térképes tartja a folyamatosan fejlődő. Új funkciók, összetevőkhöz és képességekhez folyamatosan bevezetett és hogyan fejlesztheti tovább.
 
-Egy olyan vállalat csak megkezdi annak átmenetében kiterjeszti a felhőbe magas javasoljuk a felhő áttelepítési ütemterv implementálásával fokozatos megközelítés érvénybe. Biztosak vagyunk abban, hogy segédprogramok és vállalatok energia a tartományban, a használati esetek, ez a forgatókönyv ismertetett prediktív elemzési megoldások felhőben ügyfélteszteléssel kiváló lehetőséget jelképezi.
+A vállalat, amely a felhőbe az átmenet indítása magas és útválasztókra sincs fokozatos megközelítés érvénybe léptetésével egy felhőbeli migrálás közúti térképes. Úgy véli, hogy segédprogramok és vállalatok energia a tartományban, a használati esetek, a forgatókönyv tárgyalt kiváló lehetőség a felhőbeli prediktív elemzési megoldások kiszolgálóinkat jelölik.
 
-#### <a name="business-case-justification-considerations"></a>Üzleti eset indoklás kapcsolatos szempontok
-Sok esetben az ügyfél érdekében, hogy egy adott használati eset, amelyben egy felhőalapú megoldás és a gépi tanulás olyan fontos összetevők az üzleti indoklásának érdekelt lehet. Egy helyszíni megoldás esetében egy felhőalapú megoldás eltérően a minimális társaságuk költség összetevője, és költség tényezők társított valós használatot. Amikor a központi telepítése egy megoldást a Cortana Intelligence Suite előrejelzés energia, több szolgáltatás integrálható az egyetlen közös költség struktúrára. Például adatbázisok (*pl.*, az SQL Azure) a nyers adatok tárolására is használható, és ezután az Azure ML a tényleges előrejelzések szolgál az előrejelzési szolgáltatásokat. Ebben a példában a költség struktúra tartalmazhatnak, tárolás és a tranzakciós összetevők.
+#### <a name="business-case-justification-considerations"></a>Kis üzleti indoklás kapcsolatos szempontok
+Sok esetben az ügyfél lehet egy adott alkalmazási helyzet, amelyben egy felhőalapú megoldás és a Machine Learning összetevői fontos üzleti indoklásának így iránt. Egy helyszíni megoldás esetében egy felhőalapú megoldás eltérően az előzetes költségek összetevő minimális és a legtöbb a költségelemek társítva a tényleges használat. Esetén, a-előrejelzési megoldás a Cortana Intelligence Suite energiát, több szolgáltatás integrálható legyen az egyetlen közös költség struktúrára. Például adatbázisok (*például*, SQL Azure) a nyers adatok tárolására használható, és ezután az Azure Machine Learning a tényleges előrejelzések tárolására használt előrejelzési szolgáltatásokat. Ebben a példában a költségek struktúra storage és a tranzakciós összetevők lehetnek.
 
-Másrészt rendelkeznie kell egy üzleti értékét egy energia igény szerinti (rövid és hosszú távú) előrejelzés működő beható ismerete. Fontos, vegye figyelembe az egyes előrejelzési műveletek üzleti értékét. Például pontosan előrejelzés power betöltése a következő 24 órában megakadályozhatja, hogy túltermelés vagy segít megakadályozni, hogy a rács túlterhelések és ez mennyiségi kell naponta pénzügyi megtakarítások tekintetében.
+Másrészről rendelkeznie kell egy jól ismerik az energia kereslet-előrejelzési (rövid vagy hosszú távú) működő üzleti értékét a. Valójában a fontos az üzleti értéket minden egyes előrejelzési művelet. Például pontosan előrejelzés power betöltése a következő 24 órában megakadályozhatja, hogy túltermelés vagy segít megakadályozni, hogy a rács túlterheléssel, és ez számszerűen kell naponta pénzügyi megtakarítások tekintetében.
 
-A pénzügyi előnye, hogy igény kiszámításához alapvető képlet előrejelzési megoldás: ![alapvető képletet a pénzügyi előnye, hogy igény kiszámításához előrejelzési megoldás](media/cortana-analytics-playbook-demand-forecasting-energy/financial-benefit-formula.png)
+A pénzügyi előnyeit, igény szerint kiszámításának egyszerű képlet-előrejelzési megoldás az lenne: ![egyszerű képlet a pénzügyi előnyeit, igény szerint kiszámításának-előrejelzési megoldás](media/cortana-analytics-playbook-demand-forecasting-energy/financial-benefit-formula.png)
 
-Cortana Intelligence Suite használatalapú árképzési modellt biztosít, mivel nincs szükség van a képlet rögzített költség összetevő nélül. A képlet kerülhet sor, naponta, havi vagy éves alapon.
+Cortana Intelligence Suite használatalapú díjszabási modellt biztosít, mivel nincs kellene ezt a képletet egy állandó költség összetevő nincs szükség. Ez a képlet napi, havi vagy éves alapján számítható ki.
 
-Aktuális Cortana Intelligence Suite és Azure ML díjszabások található [Itt](http://azure.microsoft.com/pricing/details/machine-learning/).
+Aktuális Cortana Intelligence Suite és az Azure Machine Learning díjszabási csomagokat található [Itt](http://azure.microsoft.com/pricing/details/machine-learning/).
 
-### <a name="solution-development-process"></a>A megoldás fejlesztési folyamata
-A fejlesztési ciklus egy energia igényű előrejelzés általában szükség 4 fázisra, biztosítjuk, amelyek minden felhőalapú technológiákat és szolgáltatásokat a Cortana Intelligence Suite belül használja.
+### <a name="solution-development-process"></a>Megoldás fejlesztési folyamata
+A fejlesztési ciklus egy energia kereslet-előrejelzési megoldás általában 4 fázisra biztosítjuk, amelyek mindegyikét magában foglalja a felhőalapú technológiák és szolgáltatások ismerik a Cortana Intelligence Suite használata.
 
-Ezt az alábbi ábra szemlélteti:
+Ez az alábbi ábrán látható:
 
-![Intelligens rács ciklus](media/cortana-analytics-playbook-demand-forecasting-energy/smart-grid-cycle.png)
+![Intelligens ciklus](media/cortana-analytics-playbook-demand-forecasting-energy/smart-grid-cycle.png)
 
-A következő bekezdés a 4. lépés folyamat ismerteti:
+A következő bekezdést a 4. lépés folyamatát ismerteti:
 
-1. **Adatgyűjtés** – minden speciális elemzési alapú megoldás adatok támaszkodik (lásd: **adatok ismertetése**). Kifejezetten amikor a prediktív elemzés és előrejelzését, azt használja a folyamatban lévő, dinamikus az adatok áramlását. Esetén energia igény szerinti előrejelzés, ezeket az adatokat közvetlenül az intelligens mérőszámok forrása lehet, vagy egy helyszíni adatbázisban már összesíteni. Azt is más külső adatforrások például időjárása és a hőmérséklet támaszkodnak. A folyamatban lévő adatok és kell lennie vezénylését, ütemezett, tárolja. [Az Azure Data Factory](http://azure.microsoft.com/services/data-factory/) (ADF) a fő workhorse való elvégzéséhez szükséges parancsokról ezt a feladatot.
-2. **Modellezési** – pontos és megbízható energia előrejelzéseket, egy kell fejlesztése (szerelvény) és egy nagy modellt, hogy elérhetővé válnak a korábbi adatok használatát, és kinyeri az adatokat a beállítás után sokatmondóbbak és prediktív minták karbantartása. A Machine Learning (ML) területen van lett gyorsan növekszik speciális algoritmusok rendszeresen fejlesztés alatt áll. Az Azure ML Studio, amely segít a teljes munkafolyamat belül a legfejlettebb ML algoritmusok használata kiváló felhasználói élményt nyújt. A munkafolyamat mutatja be egy egyszerűen elsajátítható folyamatábrája, és az adatok előkészítése, a szolgáltatás kivonása, a modellezési és a modell kiértékelése tartalmazza. A felhasználó ebben a környezetben található különböző modellek több száz bekérésére is. Ebben a fázisban végén egy adatok tudósok lesz működő modell, amely teljes kiértékelt, készen áll a központi telepítéshez.
+1. **Adatgyűjtés** – semmilyen speciális alapú analytics megoldás adatokon alapul. (lásd: **Data Understanding**). Pontosabban a esetén, a prediktív elemzés és előrejelzését, telefonszámokkal kapcsolatos adatok folyamatban lévő, dinamikus folyamat. Energia kereslet-előrejelzés, esetén ezeket az adatokat közvetlenül az intelligens mérőktől származó beolvasva is, vagy már összesíteni kell egy helyi adatbázist. Azt is támaszkodik más külső forrásokból, például az időjárás és hőmérséklettel kapcsolatos adatok. Az adatok folyamatban lévő folyamat kell vezényelt, ütemezett és tárolva. [Az Azure Data Factory](http://azure.microsoft.com/services/data-factory/) (ADF) a fő workhorse szól ez a feladat teljesítéséért.
+2. **Modellezés** – pontos és megbízható energia-előrejelzés, (train) fejlesztéséhez és karbantartásához, hogy révén az előzményadatok használja, és kinyeri az adatokat a beállítás után sokatmondóbbak és prediktív mintákat egy nagyszerű modellt kell egyet. A terület a Machine Learning (gépi tanulás) rendelkezik lett gyorsan növekszik az speciális algoritmusokkal rendszeresen fejlesztés alatt áll. Az Azure gépi tanulás Stúdióban, amely segít a legtöbb fejlett gépi Tanulási algoritmusokat, egy teljes munkahelyi flow-ban használják nagyszerű felhasználói élményt nyújt. A munkafolyamat egy intuitív folyamatábrája mutatja be, és az adat-előkészítés, a szolgáltatás kivonása, modellezés és modell kiértékelése tartalmazza. Több száz különböző modelleket, amelyek szerepelnek ebben a környezetben, a felhasználó lehet kötni. Ebben a fázisban a végén működő modell, amely teljes mértékben kiértékelt és készen áll a központi telepítési kell értenie az adatokhoz.
    
    Az alábbi ábrán egy tipikus munkafolyamat ábrája:
    
    ![Modellezési munkafolyamat](media/cortana-analytics-playbook-demand-forecasting-energy/modeling-workflow.png)
-3. **Központi telepítés** – működő modell, a következő lépés a központi telepítés. A modell itt alakul egy webszolgáltatás, amelyet egy RESTful API egyidejűleg meghívható különböző felhasználási ügyfelek az interneten keresztül mutatja be. Az Azure ML egy modellt közvetlenül az Azure ML Studio gomb egyetlen kattintással üzembe egyszerű módszert kínál. A teljes telepítési folyamat alatt a technikai részletek történik. Ez a megoldás felel meg a szükséges felhasználásához automatikusan átméretezheti.
-4. **Felhasználás** – ebben a fázisban ténylegesen biztosítjuk előrejelzéseket készítsen az előrejelzési modell használatával. A felhasználás is alapú, felhasználó-alkalmazás (*pl.*, irányítópult), vagy közvetlenül például működési rendszerből igény szerinti/rendszer és a rács optimalizálási megoldást. Több használati esetek is vezeti egyetlen modellből.
+3. **Üzembe helyezés** – egy működő modellel, a következő lépés a központi telepítés. A modell itt egy webszolgáltatás, amelyet tesz elérhetővé, amelyek különféle felhasználási ügyfelek az interneten keresztül egyidejűleg hívható RESTful API lesz konvertálva. Az Azure Machine Learning egy modellt közvetlenül az Azure ML Studio-egyetlen gombnyomással üzembe helyezésének egyszerű módszert kínál. A teljes üzembe helyezési folyamat technikai részletek történik. Ez a megoldás megfelel a szükséges használatalapú automatikusan méretezheti.
+4. **Felhasználás** – ebben a fázisban, hogy ténylegesen győződjön meg arról, használja az előrejelzési modell előrejelzéses előállításához. A használatalapú is meghatározni a felhasználó-alkalmazás (*például*, irányítópult), vagy közvetlenül a egy működési rendszer például igény szerinti/rendszer és a egy rács optimization megoldása. Több használati esetek is meghatározni egy egyetlen modellből.
 
-## <a name="data-understanding"></a>Adatok ismertetése
-Az üzleti szempontok kiterjedő után (lásd: **üzleti ismertetése**) egy energia igényű előrejelzés megoldás, azt most már készen áll és beszéljék meg, az adatok része. A prediktív elemzési megoldások megbízható adatok támaszkodik. Az előrejelzés igény szerinti energia, azt támaszkodhat különböző szintű részletességű múltbeli adatokkal. A felhasznált anyagokat, hogy az előzményadatok lesz. Azt is, amelyben az adatok tudósok előre (más néven szolgáltatások), végül hozza létre a szükséges előrejelzések modellt helyezhetők azonosítja gondos elemzést változni fog.
+## <a name="data-understanding"></a>Adatok megismerése
+Az üzleti szempontok kiterjedő után (lásd: **az üzleti igények felmérése**), az energia kereslet-előrejelzési megoldás, azt most már készen áll az adatok rész tárgyalják. Prediktív elemzési megoldások megbízható adatokon alapul. Energia kereslet-előrejelzés, hogy támaszkodhat a különböző részletességi korábbi használati adatokat. Hogy a nyersanyagok lesz korábbi adatok alapján. Azt, amelyben az adatszakértő előrejelzőket (más néven szolgáltatások), amely is elhelyezhető egy modellt, amely végül hoz létre a szükséges előrejelzések azonosítja analizálását halad át.
 
-Ez a szakasz a többi azt ismerteti, a különböző lépéseit és szempontjait az adatokat, és hogyan annak érdekében, hogy használható formába való megértéséhez.
+Ez a szakasz a többi bemutatunk néhányat a különféle lépéseit és szempontjait az adatok és a egy formába – az életre annak megértésében.
 
 ### <a name="the-model-development-cycle"></a>A modell fejlesztési ciklus
-Jó előrejelzési modellek bizonyos gondos előkészületeket és tervezési előállító. A modellezési folyamat több lépést bontásához, és egyszerre csak egy lépésben összpontosító jelentősen javíthatja a teljes folyamat eredményeit.
+Jó előrejelzési modellek bizonyos gondos előkészületeket és tervezési előállító. Használhatatlanná tévő a modellezési folyamat több lépésekre bonthatók le, és egyszerre csak egy lépéssel összpontosító sikerült jelentősen növelhető a teljes folyamat eredményéről.
 
-A következő diagram azt ábrázolja, hogyan a modellezési folyamatban volt oszlanak több lépést:
+A következő diagram azt ábrázolja, hogyan a modellezési folyamat sikerült kell bontani több lépést:
 
 ![Modell fejlesztési ciklus](media/cortana-analytics-playbook-demand-forecasting-energy/model-development-cycle.png)
 
-Amint is látható a ciklus hat lépésekből áll:
+Ahogy láthatja a ciklus hat lépésekből áll:
 
-* Probléma létrehozását
-* Adatfeldolgozást és az adatok feltárása
-* Adatok előkészítése és a szolgáltatás műszaki osztály
+* A probléma kialakításához
+* Adatbetöltés és az adatok feltárása
+* Adat-előkészítési és funkciófejlesztési feladatok
 * Modellezés
-* Modell kiértékelése
+* Modell értékelése
 * Fejlesztés
 
-A többi Ez a szakasz azt ismerteti, az egyes lépéseket és mérlegelje lépésről lépésre.
+Ez a szakasz további részében található bemutatunk néhányat az egyes lépések és a szükséges elemeket minden lépésnél.
 
-### <a name="problem-formulation"></a>Probléma létrehozását
-Azt is érdemes lehet a probléma létrehozását, a legfontosabb lépés egy kell vennie a prediktív elemzési megoldás megvalósítása előtt. Itt azt volna az üzleti probléma átalakító és felbontani azt az adott elemeket, amelyeket adatok használatával, és technikák modellezési megoldhatók. Tanácsos állítson össze a problémát, kérdésekre kell válaszolnia. Az alábbiakban néhány lehetséges kérdésre, előfordulhat, hogy alkalmazhatók energia igény szerinti előrejelzés hatókörén belül:
+### <a name="problem-formulation"></a>A probléma kialakításához
+Azt is érdemes lehet a probléma kialakításához, a kritikus fontosságú lépés egy kell tennie minden olyan prediktív elemzési megoldás bevezetése előtt. Itt mi lenne az üzleti problémát átalakítása és bontható fel azt az adott elemeket, amelyek segítségével adatokat, illetve modellezési technikák megoldhatók. Tanácsos határozhatja meg a probléma, azt szeretnénk, hogy megválaszoljuk a kérdésekre. Az alábbiakban a megfelelő energia kereslet-előrejelzés hatókörén belül lehet lehetséges kérdésekre kaphat választ:
 
-* Mit tartalmaznak az egyes állomás várható terhelése a következő óránként vagy naponta?
-* A nap milyen időpontban a rács tapasztal csúcs igény szerint?
-* Hogyan valószínűleg van a rács a terhelés fenntartása érdekében várható?
-* Energia mennyiségét kell az energiagazdálkodási állomás létrehozása minden órában, a nap során?
+* Mi várható terhelésének az egyes állomás a következő óra vagy nap?
+* A rács a nap melyik időpontjában tapasztalható megugrása?
+* Mennyire valószínű van saját rács a várható terhelés fenntartása érdekében?
+* Mekkora teljesítményre kell az energiagazdálkodási állomás létrehozása a nap minden órában?
 
-Ezeket a kérdéseket kialakítása lehetővé teszi a megfelelő adatok és az üzleti probléma az elvégzendő teljesen igazított megoldások megvalósításának összpontosítanak. Majd továbbá azt állíthatja be néhány alapvető metrikákat, amelyek lehetővé teszik a számunkra, hogy a modell teljesítményét értékeli. Például hogyan pontos az előrejelzés kell, és mi az, hogy a tartomány, amely a vállalat által elfogadható hiba?
+Ezeket a kérdéseket kialakítása lehetővé teszi számunkra, hogy a megfelelő adatokat és a egy megoldás, amely teljes mértékben teljesíti az üzleti problémára végrehajtási összpontosíthat. Továbbá hogy ezután állíthatja be néhány kulcsfontosságú metrikákhoz kaphat, amelyek lehetővé teszik számunkra, hogy a modell teljesítményét értékeli. Például hogyan pontos az előrejelzés legyen, és mi az a hiba, amely továbbra is lenne a vállalkozás számára elfogadható tartomány?
 
 ### <a name="data-sources"></a>Adatforrások
-A modern intelligens rács különböző részeit és összetevők a rács adatait gyűjti. Ezek az adatok különböző szempontjairól a művelet és a kiemelt rács kihasználtsági jelöli. Az előrejelzési energia igény szerinti hatókörén belül azt a tényleges igény szerinti fogyasztását tükrözik adatforrások döntéseken vannak korlátozása. Energiafogyasztás egyik fontos forrása intelligens mérőszámok. A világ minden táján segédprogramok intelligens mérőszámok gyorsan telepíti a fogyasztók számára. Intelligens mérőszámok jegyezze fel a tényleges energiafogyasztás, és ezeket az adatokat a vállalat biztonsági folyamatosan továbbítják. Adatok gyűjtése és küldött vissza rögzített időközönként, a beállításnak 1 óra és 5 percenként közötti. Speciális intelligens mérőszámok programozása távolról elosztása a fogyasztás háztartását belül, és szabályozhatja. Intelligens mérési adatok viszonylag megbízható, és magában foglalja az időbélyegző. Így az előrejelzés igény fontos összetevőként. A mérési adatok összesíthetők (összegzett) a rács topológia belül különböző szinteken: átalakító, állomás, régió, *stb*. Majd kiválaszthatja azt a szükséges összesítési szint, az előrejelzési modell létrehozásához. Például ha a vállalat szeretne az egyes a rács alállomások jövőbeli terhelés előrejelzése majd összes mérőszámok-adatokat is kell összesítve van minden egyes állomás és az előrejelzési modell bemenetként használja. Egy belső adatforrás lesz az intelligens mérőszámok.
+A modern intelligens rács gyűjti az adatokat különböző részeit és a rács összetevői. Ezeket az adatokat az üzemeltetés minőségének különböző szempontjait, a művelet és a kihasználtság a kiemelt rács jelöli. Előrejelzési energiaszükségletét hatókörén belül azt is korlátozza a beszélgetések adatforrások, amelyek tükrözik a tényleges használat. Energiafogyasztás egyik fontos forrása olyan intelligens mérőktől. A világ minden pontján segédprogramok gyorsan végzi el intelligens mérőktől márkák számára. Intelligens mérőktől jegyezze fel a tényleges energiafogyasztását, és folyamatosan továbbítja az adatokat a vállalat. Adatok gyűjtése és küldött vissza rögzített időközönként, és a 5 percenként 1 óra. Speciális intelligens mérőktől programozása távolról ellenőrzése és a tényleges használat háztartását belüli elosztása. Intelligens mérőszám az adatok viszonylag megbízható, és egy időbélyegzőt tartalmaz. Így a kereslet-előrejelzési fontos összetevő. Fogyasztásmérő adatok összesíthetők (összegzett) különböző szinteken belül a rács topológia: átalakító, állomás, régió, *stb*. Azt a szükséges összesítés szint hozhat létre egy előrejelzési modellt, majd kiválaszthatja. Például ha szeretné, hogy a vállalat jövőbeli terhelését a rács alállomások mindegyike az előre jelzett majd minden mérőszámok adatokat is kell minden egyes állomás a adatforgalmát összesítjük bemenetként az előrejelzési modell. Nevezzük intelligens mérőktől belső adatforrásként.
 
-Megbízható energia igény szerinti előrejelzés más külső adatforrások is támaszkodik. Egy fontos tényező, amely befolyásolja az energiafogyasztás, de a időjárási, pontosabban a hőmérséklet. Előzményadatokat erős korrelációs között külső hőmérséklet és energiafogyasztását jeleníti meg. Működés közbeni nyári napban fogyasztókat abban, hogy azok légkondicionálók és fűtésrendszerek téli bekapcsolása közben. A rács helyen korábbi hőmérséklet egy megbízható forrás, ezért kulcs. Ezenkívül azt is támaszkodniuk hőmérséklet pontos előrejelzés egy előrejelzőjének energiafogyasztás.
+Egy megbízható energia értékesítési előrejelzés is támaszkodik más külső adatforrásokhoz. Egy fontos tényező, amely befolyásolja az energiafogyasztás az időjárás, vagy még pontosabban a hőmérséklet. Előzményadatok erős korrelációját külső hőmérséklet és energiafogyasztását jeleníti meg. Gyakori elérésű nyár napban fogyasztók győződjön meg azok légkondicionálók és a téli olimpiai teljesítmény, a fűtésrendszerek során. Egy megbízható forrásból a rács helyen korábbi hőmérsékletek ezért kulcs. Ezenkívül azt is támaszkodik pontos előrejelzését, hőmérséklet, egy előjelző energiafogyasztás.
 
-Egyéb külső forrásból is hozzájárulhat a energia igény szerinti előrejelzési modellek fejlesztése során. Ezek közé tartozhatnak a hosszú távú ideértve az éghajlatból módosítások gazdaságos indexek (*pl.*, GDP), és másokkal. A jelen dokumentum nem közzétesszük ezek más adatforrásokhoz.
+Egyéb külső adatforrásokhoz is segít az energia kereslet-előrejelzési modellek létrehozása. Ezek közé tartozhatnak a hosszú távú éghajlatváltozás módosításokat, gazdaságos indexek (*például*, a GDP), és másokkal. Ebben a dokumentumban a Microsoft nem tartalmazza ezeket más adatforrásokkal.
 
-### <a name="data-structure"></a>Adatok szerkezete
-A szükséges adatforrások azonosítása, után szeretnénk győződjön meg arról, hogy a nyers adatokat gyűjtött a megfelelő szolgáltatásokat tartalmazza. Megbízható igény szerinti előrejelzési modell összeállításához, igazolnia kell győződjön meg arról, hogy az összegyűjtött adatokat tartalmaz, amelyek segítségével előre jelezni jövőbeli iránti igény miatt adatelemek. Az alábbiakban néhány alapvető követelményeivel kapcsolatos a nyers adatok adatok szerkezete (séma).
+### <a name="data-structure"></a>Adatszerkezet
+A szükséges adatforrások azonosítása, után szeretnénk győződjön meg arról, hogy a nyers adatokat összegyűjtötte-e a megfelelő adatok szolgáltatásokat tartalmazza. Egy megbízható kereslet-előrejelzési modell, hogy kell lennie annak érdekében, hogy az összegyűjtött adatokat tartalmazza, amely segíthet a kereslet-előrejelzéseket adatelem. Íme néhány a nyers adatok adatok szerkezetének (séma) vonatkozó minimális követelményeinek.
 
-A nyers adatok sorok és oszlopok áll. Minden egyes mérési adatok egyetlen sor jelzi. Minden egyes soraiban levő adatok (más néven szolgáltatásokat vagy mezők) több oszlopot tartalmaz.
+A nyers adatok sorok és oszlopok áll. Minden mérték jelenik meg az adatok egyetlen sor. Minden egyes sorára adatok (más néven funkciók vagy mezők) több oszlopot tartalmaz.
 
-1. **Időbélyeg** – a Timestamp típusú mező képviseli a tényleges időpontot, amikor a mérési lett felvéve. Azt kell tartania a közös dátum/idő formátumok egyikét. Dátum és idő is részei tartalmaznia kell. A legtöbb esetben nincs szükség vége: a második szintű részletesség rögzítendő alkalommal. Fontos adja meg, amelyben az adatok rögzítése időzónáját.
-2. **Azonosító mérni** -ebben a mezőben a mérő vagy a készülék azonosítja. Egy kategorikus változó, és számjegyek és karakterek kombinációja lehet.
-3. **Felhasználás értéke** – Ez az adott dátum/idő a fogyasztás. A felhasználási mérhető kWh-ban (kilowatt-hour), vagy bármely más elsődleges egység. Fontos megjegyezni, hogy a következő mértékegység kell maradnia konzisztens összes mérték az adatok között. Bizonyos esetekben fogyasztás lehet biztosítani a több mint 3 power fázisban. Ebben az esetben azt kell gyűjteni a független fogyasztás fázisok.
-4. **Hőmérséklet** – a hőmérséklet általában gyűjtött független forrásból. Azonban az kompatibilis legyen az fogyasztási adatokhoz. Az időbélyegző fent leírt módon, amely lehetővé teszi, hogy a tényleges adatokkal szinkronizálni kell szerepelnie kell benne. A hőmérséklet érték fok Celsius vagy Fahrenheit adható meg, de kell az összes mérték között konzisztens marad.
-5. **Hely –** a location mező általában a hely, ahol a hőmérséklet adatokat összegyűjtötte-e társítva. Irányítószám számként vagy szélességi/hosszúság (lat/hosszú) formátumban ábrázolhatók.
+1. **Időbélyeg** – az időbélyegmezőt a tényleges idő, mikor lett rögzítve a mérték jelöli. Azt meg kell felelnie az Általános dátum/idő-formátumok egyikét. Dátum- és részek tartalmaznia kell. A legtöbb esetben van, nem szükséges időpontját, a második szintű granularitási eddig rögzítve. Fontos adja meg az adott időzóna, amelyben az adat keletkezik.
+2. **Mérőszám azonosítója** – Ez a mező mérőszám vagy a készülék azonosítja. Egy kategorikus változó, és számjegyek és karakterek kombinációját is lehet.
+3. **Fogyasztási érték** – Ez az adott dátum/idő a tényleges használat. A használatalapú mérhető kWh-ban (kilowatt-hour), vagy bármely más javasolt egységek. Fontos megjegyezni, hogy a mérési egysége kell maradnia konzisztens az összes mérték, az adatok között. Bizonyos esetekben fogyasztás lehet biztosítani a több mint 3 power fázisait. Ebben az esetben azt kell gyűjteni a független fogyasztás szakaszok.
+4. **Hőmérséklet** – a hőmérséklet általában független forrásból összegyűjtött. Azonban azt kell kompatibilis a használati adatokat. A timestamp fent leírtak szerint, amely lehetővé teszi, hogy a tényleges használati adatokat szinkronizálni kell tartalmaznia. A hőmérséklet érték Celsius-fokban vagy Fahrenheit adható meg, de kell minden mérések között konzisztens marad.
+5. **Hely –** a hely mező kitöltése általában a hely, ahol a hőmérsékleti adatokat összegyűjtötte-e társítva. Zip-kód számként vagy szélességi és hosszúsági koordinátákkal (szél/hosszú) formátumban is képviseli.
 
-Az alábbi táblázatok jó használati és hőmérséklet adatformátum példát látható:
+Az alábbi táblázat egy jó felhasználás és hőmérséklet-adatformátum példákat mutat be:
 
-| **Dátum** | **Idő** | **A mérési azonosítója** | **1. fázis** | **2. fázis** | **3. fázis** |
+| **Dátum** | **idő** | **Fogyasztásmérő azonosítója** | **1. fázis** | **2. fázis** | **3. fázis** |
 | --- | --- | --- | --- | --- | --- |
 | 7/1/2015 |10:00:00 |ABC1234 |7.0 |2.1 |5.3 |
 | 7/1/2015 |10:00:01 |ABC1234 |7.1 |2.2 |4.3 |
 | 7/1/2015 |10:00:02 |ABC1234 |6.0 |2.1 |4.0 |
 
-| **Dátum** | **Idő** | **Hely** | **Hőmérséklet** |
+| **Dátum** | **idő** | **Hely** | **hőmérséklet** |
 | --- | --- | --- | --- |
 | 7/1/2015 |10:00:00 |11242 |24.4 |
 | 7/1/2015 |10:00:01 |11242 |24.4 |
 | 7/1/2015 |10:00:02 |11242 |24.5 |
 
-Mivel a fent látható, akkor ebben a példában a 3 power fázisaihoz tartozó megjeleníthető 3 eltérő értékeket tartalmaz. Vegye figyelembe azt is, hogy a dátumot és időpontot tartalmazó mezői elkülönül egymástól, azonban is kombinált egyetlen oszlopba. Ebben az esetben a hely oszlopban jelennek meg az 5 jegyű irányítószám formátum és mértékben Celsius formátumban hőmérséklet.
+Ahogy fent látható, az ebben a példában 3 power fázisok társított fogyasztás 3 különböző értékeket tartalmaz. Vegye figyelembe azt is, hogy a dátum és idő mezők el vannak különítve, azonban akkor is kombinálhatók egyetlen oszlopba. Ebben az esetben a hely oszlopban jelennek meg egy 5 számjegyű zip-kód formátuma és a hőmérséklet mértékben Celsius formátumban.
 
-### <a name="data-format"></a>Adatok formátuma
-Cortana Intelligence Suite képes támogatni a fürt megosztott kötetei szolgáltatás, TSV, JSON, leggyakrabban használt adatokat-formátumok *stb*. Fontos, hogy adatformátum számára a teljes életciklusát a projekt konzisztens marad.
+### <a name="data-format"></a>Adatformátum
+Cortana Intelligence Suite is támogatja a CSV, TSV, JSON-t, mint a leggyakoribb adatformátumok a célnyelven *stb*. Fontos, hogy az adatok formátumát a projekt teljes életciklusát a konzisztens marad.
 
 ### <a name="data-ingestion"></a>Adatfeldolgozás
-Mivel energia igény szerinti előrejelzés folyamatosan és gyakran várhatóan, gondoskodunk róla, hogy a nyers adatok áramlik teli és megbízható adatfeldolgozást eljárással. Az adatfeldolgozást folyamat biztosítania kell, hogy a nyers adatok érhető el az előrejelzési folyamathoz szükséges időt. Ez azt jelenti, hogy az adatok adatfeldolgozást gyakoriság előrejelzési gyakoriságát nagyobbnak kell lennie.
+Energia igény-előrejelzési folyamatosan és gyakori összegyűjtése várható, mivel azt biztosítania kell, hogy egy szilárd és megbízható Adatbetöltési folyamat útján áramlik a nyers adatokat. A betöltési folyamat biztosítania kell, hogy a nyers adatok érhető el az előrejelzési folyamat a szükséges időben. Ez azt jelenti, hogy az adatok betöltési gyakorisága előrejelzési gyakoriságát nagyobbnak kell lennie.
 
-Példa: Ha az igény szerinti előrejelzés megoldást hoz létre egy új előrejelzés naponta 8:00 órakor, akkor győződjön meg arról, hogy mind az adatok az elmúlt 24 órában gyűjtött rendelkezik már teljesen okozhatnak: adott pontra, és akkor is igaz, hogy rendelkezik tartalmaz-e az elmúlt órában a kell  adatok.
+Példa: Ha a kereslet-előrejelzési megoldás hoz létre egy új előrejelzés naponta 8:00 órakor, akkor győződjön meg arról, hogy mind az adatok az elmúlt 24 órában gyűjtött rendelkezik lett teljesen betöltött eddig a pont, és még rendelkezik tartalmaz-e az elmúlt órában a kell  adatok.
 
-Ehhez az szükséges, a Cortana Intelligence Suite egy megbízható adatok adatfeldolgozást folyamat támogatásához különböző lehetőséget kínál. Ez további tárgyalja a **telepítési** szakasz ebben a dokumentumban.
+Annak érdekében, hogy ennek érdekében a Cortana Intelligence Suite egy megbízható Adatbetöltési folyamat támogatásához különféle lehetőségeket biztosít a. Ez további tárgyalja a **üzembe helyezési** szakasz ebben a dokumentumban.
 
-### <a name="data-quality"></a>Az adatminőségi
-A nyers adatok forrása megbízható és pontos igény szerinti előrejelzés végrehajtásához szükséges néhány alapvető adatok minőségi feltételeknek kell megfelelnie. Habár speciális statisztikai módszerek kiegyensúlyozása érdekében néhány lehetséges minőségi probléma, továbbra is győződjön meg arról, hogy néhány alapadatokhoz minőségi küszöbérték amikor új adatok bevitele vannak meghaladó szükséges. Az alábbiakban néhány nyers adatok minőségi vonatkozó szempontok:
+### <a name="data-quality"></a>Adatminőség
+A legmegbízhatóbb és legpontosabb kereslet-előrejelzés végrehajtásához szükséges nyers adatok forrás néhány alapvető adatokat minőségi feltételeknek kell megfelelnie. Bár a meghiúsult lépések kompenzációjához minőségi lehetséges probléma speciális statisztikai módszerek segítségével, még mindig győződjön meg arról, hogy néhány alapadatok minőségi küszöbértéket, amikor új adatok feldolgozása vannak metsző kell. Az alábbiakban a nyers adatok minőséggel kapcsolatos néhány megfontolandó szempont:
 
-* **Hiányzó érték** – ez: olyan helyzet, amikor adott mérési gyűjtése nem történt meg. Az alapvető követelmény az, hogy a hiányzó érték gyakorisága nem lehet nagyobb, mint 10 % bármely adott időtartamon. Esetben egyetlen érték hiányzik, fel kell tüntetni egy előre definiált érték használatával (például: "9999"), és nem "0", amely érvényes érték lehet.
-* **Mérési pontosság** – a tényleges érték fogyasztási vagy hőmérséklet pontosan kell rögzíteni. Pontos mérések pontos előrejelzéseket eredményez. A mérési hiba általában a true érték 1 % alacsonyabbnak kell lennie.
-* **Mérési idő** – szükséges a tényleges mérési igaz idején képest több mint 10 másodperc, hogy az adatok tényleges időbélyegzője gyűjtött fog nem tér.
-* **Szinkronizálás** – Ha több adatforrást használják (*pl.*, felhasználása és hőmérséklet) azt győződjön meg arról, hogy vannak-e nem időszinkronizálást problémák közöttük. Ez azt jelenti, hogy az összegyűjtött időbélyeg bármely két független adatforrásokból közötti időeltérés nem haladhatja meg a több mint 10 másodperc.
-* **Késés** - kapcsolatban a fentiekben ismertetett, a **adatfeldolgozást**, azt a megbízható adatok folyamata és feldolgozási folyamat függenek. Szabályozhatja, hogy azt győződjön meg arról, hogy azt szabályozzák a adatkésleltetést. Ez a tényleges mérési készült és az idő, ahol a Cortana Intelligence Suite a tárba betöltődött, és használatra kész közötti időeltérés van megadva. Rövid távú terhelést a teljes késést az előrejelzés nem lehet nagyobb, mint 30 perc. Hosszú távú terhelést a teljes késést az előrejelzés nem lehet nagyobb, mint 1 nap.
+* **Hiányzó értéket** – Ez vonatkozik a helyzetet, amikor adott mérték nem gyűjtötte a program. Az alapvető követelmény az, hogy hiányzó értéket gyakorisága nem lehet nagyobb, mint 10 % bármely adott időtartamon. Az eset, hogy egyetlen érték hiányzik, fel kell tüntetni egy előre meghatározott érték használatával (például: "9999"), és nem "0", amely egy érvényes érték lehet.
+* **Mérték pontosságának** – a tényleges érték, vagy a hőmérséklet pontosan kell rögzíteni. Pontatlan mérések pontos előrejelzéseket állítja elő. A mérési hiba általában a true érték 1 % alacsonyabbnak kell lennie.
+* **A mérési idő** – szükséges a tényleges mérési igaz atáridő több mint 10 másodpercet, hogy az adatok tényleges időbélyegzője gyűjtött fog nem tér.
+* **Szinkronizálási** – Ha több adatforrást használ (*például*, felhasználás és hőmérséklet) kell biztosítható, hogy nincsenek-e nem időszinkronizálás problémák közöttük. Ez azt jelenti, hogy az összegyűjtött időbélyeg két független adatforrásokból származó közötti nem haladhatja meg a több mint 10 másodperc.
+* **Késés** – mint már említettük, a **adatbetöltés**, azt egy megbízható folyamat és a betöltési folyamat függenek. Szabályozhatja, hogy azt biztosítania kell, hogy az adatok késés befolyásolni. Ez az idő, amelyet a tényleges mérték lett, és az időpont, amely betöltődik a Cortana Intelligence Suite storage-ba, és készen áll a használatra közötti van megadva. A rövid távú terheléselosztást a teljes késést előrejelzés nem lehet nagyobb, mint 30 perc. A hosszú távú terheléselosztást a teljes késést előrejelzés nem lehet nagyobb, mint 1 nap.
 
-### <a name="data-preparation-and-feature-engineering"></a>Adatok előkészítése és a szolgáltatás műszaki osztály
-Miután a nyers adatok keresztül a szervezetbe (lásd: **adatfeldolgozást**), és biztonságosan tárolt, készen áll a feldolgozásra. Az adatok előkészítési fázis alapvetően a nyers adatok véve és átalakítás (átalakítása, átalakításakor) a modellezési fázisban űrlap be azt. Előfordulhat, hogy egyszerű olyan műveleteket tartalmaznak, például a nyers adatok oszlopa, a tényleges mért érték, szabványosított értékek, többek között az összetettebb műveletek [alkalommal elmaradt](https://en.wikipedia.org/wiki/Lag_operator), stb. Az újonnan létrehozott adatoszlopok nevezzük az adatokkal kapcsolatos funkciókkal, és ezek folyamat nevezzük szolgáltatás mérnöki csapathoz. Ez a folyamat végén, amely a nyers adatok kinyert, és nem használható modellezési új adatkészlet kellene azt. Ezenkívül az adatok előkészítési fázis irányuló a hiányzó értékeket kell (lásd: **az adatminőségi**) és ellensúlyozza a őket. Néhány esetben azt kell az adatokat annak érdekében, hogy ugyanolyan skála jelennek meg az összes érték optimalizálására.
+### <a name="data-preparation-and-feature-engineering"></a>Adat-előkészítési és Funkciófejlesztési feladatok
+Miután a nyers adatok keresztül a szervezetbe (lásd: **adatbetöltés**), és biztonságosan tárolva, készen áll a dolgozhatók. Az adat-előkészítési fázisban alapvetően véve a nyers adatokat, és átalakítása (átalakítása, átalakításakor), a modellezési fázishoz űrlapot. Amely tartalmazhat például a nyers adatok oszlopban, a tényleges mért értékeit, a szabványos értékek, az összetettebb műveleteket, mint például az egyszerű műveleteket [alkalommal elmaradt](https://en.wikipedia.org/wiki/Lag_operator), és másokkal. Az újonnan létrehozott oszlopokat nevezzük funkciókat, és létrehozni bloberőforrásokhoz, ezeket nevezik funkciófejlesztési. Ez a folyamat végén kell azt egy új adatkészlet, amely a nyers adatok kinyert és modellezés is használható. Emellett az adat-előkészítési fázisban kell használatával hitelesítik a hiányzó értékeket (lásd: **adatminőség**) és a számukra. Néhány esetben azt is kellene normalizálása győződjön meg arról, hogy minden érték megjelenjen-e az azonos méretezési csoportban lévő adatokat.
 
-Ebben a szakaszban látható néhány energia szerepelnek a közös adatok funkciója az igény szerinti előrejelzési modellek.
+Ebben a szakaszban látható a közös adatok funkcióit, amelyek szerepelnek a felhasznált energia igény-előrejelzési modelleket.
 
-**Idő áll a szolgáltatások:** ezeket a szolgáltatásokat a dátumot/időbélyegző adatok származtatja. Ezek kibontott és konvertálni kategorikus szolgáltatások, mint:
+**Szolgáltatások driven idő:** ezeket a funkciókat a dátum/timestamp adatok származnak. Ezeket ki kell olvasni, konvertálva a kategorikus funkciók, például:
 
-* Idő nap – Ez az a nap, ami értékek 0 és 23 óra
-* Napja a héten – Ez a hét napját jelöli, és 1 közötti értéket fogad (vasárnap) 7 (szombat)
-* Nap hónap – Ez az aktuális dátumot jelöli, és 1 és 31 közötti értéket vehet
-* Hónap év – Ez a hónap jelöli, és veszi értéke 1 (január) és 12 (December)
-* Hétvégi – Ez a tulajdonság bináris érték, amely a 0 érték létrehozását vagy 1-es a hétvégi
-* Szünnap - bináris érték funkciója, amely szükséges időt a 0 érték szabadnap rendszeres napi vagy 1
-* Fourier feltételek – Fourier feltételei, amelyek alapján a Timestamp típusú, és a szezonalitás értékének (ciklus) rögzítéséhez használt súlyok az adatokat. Mivel jelenleg több évszak előfordulhat, hogy rendelkezik az adatok több Fourier feltételek előfordulhat, hogy kell. Igény szerinti értékek Előfordulhat például, éves, heti és napi évszak/ciklusok 3 Fourier feltételek eredménye.
+* Idő nap – Ez az az a nap, amely értékek 0 és 23 óra
+* Nap hét – Ez a hét napját jelöli, és 1 közötti értékeket vesz igénybe (vasárnap) és 7 (szombat)
+* Naponta, hónap – Ez az aktuális dátumot jelöli, és értékek 1 és 31 is igénybe vehet.
+* Hónap év – Ez a hónapot jelöli, és 1 közötti értékeket vesz igénybe (január) és 12 (December)
+* Hétvégi – Ez a bináris érték funkció, amely az értékek 0 weekdays vagy 1-es a hétvége
+* Szünnap – Ez a bináris érték funkció, amely szükséges időt a 0 értéket egy szünnap rendszeres napi vagy 1-es
+* Fourier feltételek – Fourier feltételek, amelyek alapján történő küldés időbélyegzője legyen, és a szezonalitás értékének (cycles) rögzítéséhez használt súlyok az adatokat. Mivel az adatokban található több szezon talán van szükségünk előfordulhat, hogy több Fourier használati. Igény szerinti értékeket Előfordulhat például, éves, heti és napi szezon/ciklusok ami 3 Fourier feltételek eredményezi.
 
-**Független mérési funkciókat:** független szolgáltatásai közé tartozik a szeretnénk előre a modellben használandó összes adatelemeket. Itt azt zárja ki a függő szolgáltatás, amely előre jelezni kell azt.
+**Független mérési funkciókat:** független szolgáltatásai közé tartozik a szeretnénk használja, mint a modellben előrejelzőket minden adatelemet. Itt Elzárkózunk a függő szolgáltatást, amely azt kellene előre jelezni.
 
-* Lag szolgáltatás – ezek a idő vette a tényleges igény szerinti értékeit. Lag 1 szolgáltatások például tartsa a az igény szerinti érték az előző órában (óránkénti adatok feltételezve) az aktuális időbélyeg viszonyítva. Hasonlóképpen, a lag 3, azt, adja hozzá a lag 2 *stb*. A lag használt szolgáltatásai minőségén tényleges kombinációja határozza meg a modellezési fázis során a modell eredmények értékelése.
-* Hosszú távon trendekkel – Ez a funkció igény szerinti év közötti lineáris növekedése jelöli.
+* Késés szolgáltatás – ezek az ideje, hogy áttért a tényleges igény szerinti értékét. Lag 1 funkciók például tartsa a igény szerinti értékét az előző órában (óránkénti adatok feltételezve) az aktuális timestamp viszonyítva. Ehhez hasonlóan azt hozzáadása lag 2, 3, lag *stb*. Használt lag szolgáltatásai tényleges kombinációja határozza meg a modellezési fázis során a modell eredmények értékelése.
+* Hosszú távú felkapott – Ez a funkció igény szerinti év közötti lineáris növekedésének jelöli.
 
-**A függő szolgáltatás:** a függő szolgáltatás le az adatoszlop, amely szeretnénk előre jelezni tekinthetők. A [felügyelt gépi tanulás](https://en.wikipedia.org/wiki/Supervised_learning), igazolnia kell a először még betanítani a modellt a szolgáltatások használata (más néven a címkék). Ez lehetővé teszi, hogy a függő szolgáltatás társított adatokat a minták további modell. Az előrejelzés energia igény általában szeretnénk előre jelezni a tényleges igény szerint, és ezért azt használhatja azt a függő szolgáltatás.
+**A függő szolgáltatás:** a függő lehetőség a oszlop, amelyeket szeretnénk előre jelezni a modell. A [felügyelt machine learning](https://en.wikipedia.org/wiki/Supervised_learning), a modellt, a szolgáltatások használatával (amely szintén nevezzük címkék) először be kell. Ez lehetővé teszi, hogy ismerje meg a mintákat a függő szolgáltatás társított adatokat a modell. Az előrejelzés energiaszükségletét általában szeretnénk előre jelezni a tényleges igény szerint, és így tudjuk használni, a függő szolgáltatás.
 
-**A hiányzó értékeket kezelése:** az adatok előkészítési fázis során azt kell kezelni a hiányzó értékeket a legjobb stratégiájának meghatározása. Ez főleg használatával hajtható végre a különféle statisztikai [adatok imputálási módszerek](https://en.wikipedia.org/wiki/Imputation_\(statistics\)). Energiát igény szerinti előrejelzéséhez esetén azt általában imputálására hiányzó értékeket az előző elérhető adatpontok mozgóátlag használatával.
+**Kezelési érték hiányzik:** az adat-előkészítési fázisban azt kellene kezelni a hiányzó értékek legjobb stratégiáját határozza meg. Ez főleg használatával hajtható végre a különféle statisztikai [imputálási metody dat](https://en.wikipedia.org/wiki/Imputation_\(statistics\)). Esetén energia kereslet-előrejelzés, hogy általában imputálására hiányzó értékeket az előző elérhető adatpontok mozgóátlag használatával.
 
-**Adatok normalizálási:** adatok normalizálási átalakítása, hogy az összes numerikus adatok, például igény szerinti előrejelzési hasonló méretezési használt egy másik típusú. Ez általában javítja a modell pontosságát, és a pontosság. Azt kellene általában ehhez a tényleges érték elosztjuk az adatok a tartományon.
-Ez fogja csökkentheti az eredeti érték kisebb tartományba, általában a -1 és 1 között.
+**Adatok normalizálási:** adatok normalizálási az átalakítást, amely hasonló méretezési csoport összes numerikus adatok, mint a kereslet-előrejelzési beemelése használható egy másik típusa. Ez általában javítja a pontosság és a pontosság. Hogy általában ehhez a tényleges érték elosztjuk az adatok tartományán.
+Ez lesz az eredeti érték vertikális leskálázás kisebb tartományba, általában 1 és 1 között.
 
 ## <a name="modeling"></a>Modellezés
-A modellezési fázisban kell, ha a modell átalakításhoz adatok történik. A hiba a folyamat core speciális algoritmusok, amely az előzményadatok (betanítási adatok) vizsgálata, bontsa ki a mintákat és a modell létrehozása. A modell később használható előre jelezni az új adatokat, amelyek még egyszer sem használták a modell létrehozásához.
+A modellezés fázisban, ahol az adatokat a modellbe való átalakítása történik. Az alapvető van ezt a folyamatot a speciális algoritmusok, amely az előzményadatok (betanítási adatok) vizsgálata, bontsa ki a mintákat és modell létrehozása. Ehhez a modellhez később használható előre jelezni az új adatokat, amelyek nem használták a modell létrehozásához.
 
-Ha van egy működő megbízható modellt, majd használhatjuk, amely tartalmazza a szükséges funkciókat (X) van felépítve új adatok pontozása céljából. A pontozási folyamat használja a megőrzött modell (a képzés fázis objektumot) és a cél változó, amely Ŷ megjelölt előrejelzése biztosítják.
+Ha már rendelkezünk egy működő megbízható modell majd használhatók, amely tartalmazza a szükséges funkciókat (X) van felépítve új adatok pontozása céljából. A pontozó folyamat fogja elérhetővé tenni, használja a megőrzött modell (a betanítási fázis objektumot), és előrejelezheti a célváltozó, amely Ŷ helyén.
 
-### <a name="demand-forecasting-modeling-techniques"></a>Az előrejelzés modellezési módszereket igény szerint
-Esetén az előrejelzés biztosítjuk igény szerint van rendezve idő előzményadatoknak használja. Általában hivatkozunk, amely tartalmazza az idődimenzió adatok [time series](https://en.wikipedia.org/wiki/Time_series). Az idő adatsorozat modellezési célja, hogy megtalálja az időbeli kapcsolódó trendeket, szezonalitás értékének, automatikus-korrelációs (idővel korrelációs), és állítson össze azokat a modellbe.
+### <a name="demand-forecasting-modeling-techniques"></a>Kereslet-előrejelzési modellezési technikák
+Kereslet-előrejelzési biztosítjuk, esetén használja az előzményadatok, amely idő alapján vannak rendezve. Általában nevezzük, amely tartalmazza az idődimenzió adatok [time series](https://en.wikipedia.org/wiki/Time_series). A time series modellezési célja, hogy a keresés kapcsolatos trendeket, szezonalitás, automatikus összefüggések (korrelációs időbeli alakulása), time, és állítson össze azokat a modellbe.
 
-Az elmúlt években speciális algoritmusok fejlesztettek idő series előrejelzési alkalmazásához, és az előrejelzési pontosság növeléséhez. Röviden arról lesz szó néhány őket itt.
+Az elmúlt években a speciális algoritmusok fejlesztettek befogadásához idősorozat-előrejelzés és az előrejelzési pontosság növeléséhez. Röviden bemutatjuk, néhány őket itt.
 
 > [!NOTE]
-> Ebben a szakaszban használt, betanítási és az előrejelzés – áttekintés egy gép hanem modellezési módszereket, amelyek gyakran használják az igény szerinti előrejelzési rövid áttekintése nem használhatók. További információk és kapcsolatos idő series előrejelzési oktatási anyagok, erősen ajánlott a online könyv [előrejelzés: alapelvek és eljárás](https://www.otexts.org/book/fpp).
+> Ez a szakasz nem célja, hogy egy machine learning és az előrejelzés – áttekintés, hanem inkább egy rövid kérdőív modellezési technikák, általában használt kereslet-előrejelzés használható. További információk és az oktatási anyagok kapcsolatos idősorozat-előrejelzés, erősen ajánlott az online könyv [előrejelzés: elvek és eljárás](https://www.otexts.org/book/fpp).
 > 
 > 
 
 #### <a name="ma-moving-averagehttpswwwotextsorgfpp62"></a>[**MA (mozgóátlag)**](https://www.otexts.org/fpp/6/2)
-Mozgóátlag egyike az első analitikai módszereket is, az idő series előrejelzési használatban van, és továbbra is egyik leggyakrabban használt módszerek mai. Egyben a alapját fejlettebb, technikák előrejelzés. A mozgóátlag azt vannak az előrejelzés a következő adatpont által átlagosan azt jelzi, ahol K a mozgóátlag sorrendjének K legutóbbi pontokon keresztül.
+Mozgóátlag egyike az első elemzési módszereket, az idősorozat-előrejelzés használt, és továbbra is a legtöbb egyik leggyakrabban használt mai technikákat. Emellett akkor is alapját speciális technikák előrejelzéseket. A mozgó átlag azt is előrejelzési a következő adatpont által átlagosan kevesebb mint a K legutóbbi pontokat, ahol K azt jelzi, hogy a mozgó átlag sorrendje felett.
 
-A mozgóátlag átlagos módszer az előrejelzés simítás hatása van, és ezért előfordulhat, hogy nem kezeli az adatok is nagy illékonyság.
+A mozgó átlag technika simítás az előrejelzés hatásának rendelkezik, és emiatt előfordulhat, hogy nem kezeli a is nagy, az adatok változékonyságán.
 
-#### <a name="ets-exponential-smoothinghttpswwwotextsorgfpp75"></a>[**ETS (beállításáról)**](https://www.otexts.org/fpp/7/5)
-Az exponenciális simítás (ETS) családba tartozó legutóbbi adatpontok súlyozott átlagát használja a következő adatpont előrejelzése különböző módszerekkel. A képet, hogy nagyobb súlyt hozzárendelése újabb értékek és fokozatosan csökkentse a régebbi mért értékek súlya. Számos különböző módszer a termékcsalád is van, ezek közé tartoznak a szezonalitás értékének az adatok kezelésére, mint [Vilmos-telek jellemzők határozza metódus](https://www.otexts.org/fpp/7/5).
+#### <a name="ets-exponential-smoothinghttpswwwotextsorgfpp75"></a>[**ETS (exponenciális simítás)**](https://www.otexts.org/fpp/7/5)
+Exponenciális simítás (ETS) olyan különböző módszereket használó legutóbbi adatpontok súlyozott átlag annak érdekében, hogy a következő adatpont előrejelzése összessége. A cél, hogy nagyobb súly hozzárendelése a legújabb értékeket, és fokozatosan csökkentse a régebbi mért értékek súlya. Számos különböző módszerek és a termékcsalád, azokat közé tartoznak például az adatok szezonalitás kezelése [Holt-Winters szezonális metódus](https://www.otexts.org/fpp/7/5).
 
-Ezek a módszerek közül is figyelembe az adatok a szezonalitás értékének a.
+Ezek a módszerek közül is figyelembe vennie a szezonalitás értékének az adatok.
 
-#### <a name="arima-auto-regression-integrated-moving-averagehttpswwwotextsorgfpp8"></a>[**Elemhez tartozó ARIMA (automatikus regressziós integrált átlagos áthelyezése)**](https://www.otexts.org/fpp/8)
-Automatikus regressziós integrált áthelyezése átlagos (ARIMA) egy másik család módszerek a time series előrejelzési általánosan használt. Ez gyakorlatilag egyesíti az auto-regressziós módszerek mozgóátlaga. Automatikus-regressziós módszerek regressziós modell előző idő sorozatértékek megtételével számítási a következő dátum pont használja. ARIMA módszerek kiszámításához az adatpontok közötti különbséget, és azokat az eredeti mért érték helyett használata különböző módszereket is érvényesek. Végül, az ARIMA is használ a fent említett áthelyezése átlagos technikákat. Minden, az alábbi módszerek különböző módokon kombinációja, mi a családba tartozó ARIMA módszerek hoz létre.
+#### <a name="arima-auto-regression-integrated-moving-averagehttpswwwotextsorgfpp8"></a>[**ARIMA (automatikus regressziós integrált mozgóátlag)**](https://www.otexts.org/fpp/8)
+Automatikus regressziós integrált mozgó átlag (ARIMA) idősor-előrejelzési gyakran használt módszerek egy másik család. Gyakorlatilag kombinálja automatikus regression módszerek mozgóátlaga. Automatikus regression módszerek tovább a sorozat előző időértékek regressziós modelleket annak érdekében, hogy a következő dátum pont számítási használja. ARIMA módszereket is érvényesek lesznek a különbséglemezek módszerek, például az adatpontok közötti különbség kiszámítása, és azok eredeti mért érték helyett használja. Végül ARIMA is használ a fent tárgyalt mozgó átlagos technikákat. Különböző módokon ezen módszerek mindegyike együttes használata, mit hoz létre a családba tartozó ARIMA módszerek.
 
-ETS mind az ARIMA széles körben használják ma energia igény szerinti előrejelzés és sok más előrejelzési problémákat. Sok esetben ezek a kvóták segítségével nagyon pontos eredményeket biztosításához.
+ETS és ARIMA széles körben használják még ma energia kereslet-előrejelzés és sok más előrejelzési problémákat. A legtöbb esetben ezek együttesen együtt, így gyorsabban nagyon pontos.
 
-**Általános többváltozós regresszió** regressziós modell machine learning és a tartományon belül a legfontosabb modellezési megközelítés lehet. A time series környezetében előre jelezni a jövőbeni értékeket használjuk regressziós (*pl.*, az igény szerinti). Regressziós azt a előre lineáris kombinációja igénybe vehet, és ismerje meg, a képzési során ezek előre súlyozását (más néven együttható). A cél, hogy egy regressziós egyenes, amely az előre jelzett érték lesz előrejelzési eredményez. Regressziós módszerek is alkalmas, ha a célváltozót numerikus, és ezért is megfelelő idő series előrejelzési. Nincs regressziós metódusok, mint például a nagyon egyszerű regressziós modell számos [lineáris regressziós](https://en.wikipedia.org/wiki/Linear_regression) és azokat, például a döntési fák, további speciális [véletlenszerű erdők](https://en.wikipedia.org/wiki/Random_forest), [Neural Hálózatok](https://en.wikipedia.org/wiki/Artificial_neural_network), és a súlyozott döntési fák.
+**Általános többváltozós regresszió** regressziós modellek gépi tanulás és a statisztikáit, a tartományban a legfontosabb modellezési megközelítés lehet. A time series összefüggésében használjuk regressziós előre jelezni a jövőbeli értékek (*például*, a kereslet). Regresszió hozunk a előrejelzőket lineáris kombinációját is, és ismerje meg, a képzés során ezeket előrejelzőket súlyok (más néven együttható). A cél, hogy egy regressziós egyenes, amely az előre jelzett érték lesz előrejelzési előállításához. Regressziós módszert alkalmasak, ha a célváltozót numerikus, és így is megfelel idősorozat-előrejelzés. Számos különféle regressziós módszert, többek között például a rendkívül egyszerű regressziós modellek van [lineáris regressziós](https://en.wikipedia.org/wiki/Linear_regression) és azokról, például a döntési fákat, a speciális [véletlenszerű erdők](https://en.wikipedia.org/wiki/Random_forest), [Neural Hálózatok](https://en.wikipedia.org/wiki/Artificial_neural_network), és a súlyozott döntési fák.
 
-Hozhat létre, energia igény szerinti regressziós hibát előrejelzés biztosítanak számunkra a magas fokú rugalmasságot biztosít az adatok egyesíthetők funkciók kiválasztása külső tényezőkkel, például hőmérséklet és a tényleges igény szerinti idő adatsorozat adatokból. További információ a kiválasztott szolgáltatások ismerteti a szolgáltatás mérnöki (lásd: **adatok előkészítése és a szolgáltatás mérnöki**) Ez a forgatókönyv részét.
+Hozhat létre, amely regressziós problémaként előrejelzés energiaszükségletét biztosít számunkra nagy rugalmasságot biztosít a jelölje ki a data-funkciókat kombinálhatók, amely a tényleges idősorozat-adatok és a külső tényezők, például a hőmérséklet. További információ a kijelölt szolgáltatások tárgyalja a szolgáltatás Engineering (lásd: **adat-előkészítési és a szolgáltatás mérnöki**) szakaszában a forgatókönyv.
 
-A megvalósítás és a telepítési energia igény szerinti előrejelzések próbaüzem tapasztalatunk találtunk, amelyeknek, hogy a speciális regressziós modell által biztosított Azure ML általában a legjobb eredményt, és biztosítjuk is.
+A megvalósítás és a telepítési energia igény szerint előrejelzések próbaüzem tapasztalatainkon találtunk, hogy a speciális regressziós modellek az Azure gépi tanulás által biztosított általában a legjobb eredményeket, és elérhetővé azokat használni.
 
-## <a name="model-evaluation"></a>Modell kiértékelése
-Modell kiértékelése rendelkezik belül kulcsfontosságú szerepet a **modell fejlesztési ciklus**. Ebben a lépésben azt megismerhetők a modell és a teljesítmény valós adatok ellenőrzése. A modellezési lépés során a rendelkezésre álló adatok egy részét a modell betanítása a használjuk. A termékértékelési fázisban vesszük további része az adatokat a modell teszteléséhez használjuk. Gyakorlatilag azt jelenti, hogy azt vannak etetési a modellt új adatokat, amely rendelkezik szerkezetátalakítás lett, és a képzési dataset azonos szolgáltatásokat tartalmazza. Azonban az érvényesítési folyamat során használjuk a modell előrejelzése a célváltozó, nem pedig az elérhető célkiszolgálók változó adja meg. A Microsoft gyakran tekintse meg ezt a folyamatot, mint a modell pontozása. Azt kellene majd igaz cél értékek használatához, és hasonlítsa össze azokat előre jelzett frissítheti. A cél mérése és minimalizálása érdekében a előrejelzési hiba, tehát az előrejelzés és a true érték közötti különbséget. Kulcs mennyiségi meghatározására a hiba mérési azért, mert szeretnénk Finomhangolja a modell, és ellenőrizze, hogy ténylegesen csökken a hiba. A modell pontosabb beállításra teheti a tanulást szabályozó Modellparaméterek módosításával, vagy hozzáadásával vagy eltávolításával az adatokkal kapcsolatos funkciókkal (néven [paraméterek ismétlés](https://channel9.msdn.com/Blogs/Azure/Data-Science-Series-Building-an-Optimal-Model-With-Parameter-Sweep)). Gyakorlatilag, amely azt jelenti, hogy, hogy előfordulhat, hogy kell a következőnek között a funkció mérnöki csapathoz, modellezési, a modell kiértékelése fázisok többször amíg lehet a hiba szükséges csökkentésére.
+## <a name="model-evaluation"></a>Modell értékelése
+Modell értékelése belül szerepük van az **modell fejlesztési ciklus**. Ebben a lépésben mi megvizsgáljuk a modell és a teljesítmény valós adatok ellenőrzése. A modellezés lépés során a rendelkezésre álló adatok egy részét a modell betanításához használjuk. Az értékelési fázis során az adatokat a modell része is. Gyakorlatilag azt jelenti, hogy mi van számból a modell új adatokat, amely rendelkezik átstrukturálása lett, és ugyanazokat a szolgáltatásokat, mint a betanítási adatkészletet tartalmaz. Azonban az érvényesítési folyamat során használjuk a modell előre jelezni a célváltozó adja meg a rendelkezésre álló terület változó helyett. Hogy milyen gyakran tekintse meg ezt a folyamatot, mint a modell pontozása. Azt kellene majd igaz target értéket használja, és hasonlítsa össze azokat előre jelzett olyanokra cserélni. A cél, hogy mérni, és minimalizálja az előrejelzési hiba, ami azt jelenti, az előrejelzéseket és a true érték közötti különbséget. Kulcs mennyiségi meghatározására a hiba mérték azért, mert szeretnénk a modell finomhangolása, és ellenőrizze, hogy ténylegesen csökken a hibát. A modell finomhangoló teheti meg, amelyek vezérlik a tanulási folyamat Modellparaméterek módosításával, vagy hozzáadásával vagy eltávolításával funkciók (néven [paraméterek ismétlés](https://channel9.msdn.com/Blogs/Azure/Data-Science-Series-Building-an-Optimal-Model-With-Parameter-Sweep)). Gyakorlatilag ez azt jelenti, hogy előfordulhat, hogy szükségünk között a műszaki elemzésekhez, modellezés, ismételt futtatásával és a modell a többször értékelési fázis amíg nem tudjuk a hibát csökkentheti a szükséges szintre.
 
-Fontos, hogy az előrejelzés hiba soha nem lesznek NULL hangsúlyt soha nincs modell, amely tökéletesen képes előre jelezni minden eredménye. Van azonban bizonyos nagyságát, amely a vállalat által elfogadható. Az érvényesítési folyamat során győződjön meg arról, hogy a modell előrejelzéses hiba van a szintjén szeretnénk vagy nagyobb, mint az üzleti tűréshatáron. Ezért fontos, hogy a megengedhető hiba szintjének beállítása során a ciklus elején a **probléma létrehozását** fázisban.
+Fontos, hogy az előrejelzési hiba soha nem lesznek nulla hangsúlyt soha nincs modell, amely tökéletesen tudja jelezni minden serkenti az eredményt. Van azonban egy bizonyos mértékű hiba, amely a vállalkozás számára elfogadható. Az érvényesítési folyamat során azt szeretnénk, annak érdekében, hogy a modell előrejelzési hiba a szintjén vagy jobb, mint az üzleti tűréshatáron. Ezért fontos, hogy a megengedhető hiba szintjének beállítása a ciklus során elején a **probléma kialakításához** fázisban.
 
-### <a name="typical-evaluation-techniques"></a>Tipikus értékelési eljárások
-A mely előrejelzési hiba mérhető és mennyiségi különböző módja van. Ebben a szakaszban a kiértékelési technikákkal specifikus előrejelzési energia igény és a time Series döntéseken tárgyaljuk.
+### <a name="typical-evaluation-techniques"></a>Átlagos értékelés technikák
+Számos különféle módon, mely előrejelzésbe hiba mérhető és számszerűen. Ebben a szakaszban fogunk dolgozni a hozzászólás a time Series és a kifejezetten az előrejelzési igényeknek megfelelő értékelési technikákat.
 
 #### <a name="mapehttpsenwikipediaorgwikimeanabsolutepercentageerror"></a>[**MAPE**](https://en.wikipedia.org/wiki/Mean_absolute_percentage_error)
-MAPE rövidítése abszolút százalékos hiba jelenti. A MAPE közötti különbség számítástechnikai azt minden egyes előrejelzett pont és a tényleges érték, az adott pont. A Microsoft majd számlálása pontonkénti hiba által a tényleges érték különbség arányának kiszámításához. Az utolsó lépésben azt átlagos ezeket az értékeket. A használt MAPE matematikai képlete a következő:
+MAPE abszolút hibaszázalék jelenti azt, hogy a rövidítése. A MAPE közötti különbség számítástechnika azt minden egyes előrejelzett pont és az adott pont a tényleges érték. Hogy majd számlálása a hiba pontonként szerint kiszámításának az időarány, amíg a különbség a tényleges érték. Az utolsó lépés azt átlagos ezeket az értékeket. A használt MAPE matematikai képlete a következő:
 
 ![MAPE képlet](media/cortana-analytics-playbook-demand-forecasting-energy/mape-formula.png)
-*ahol A<sub>t</sub> a tényleges érték, F<sub>t</sub> az előre jelzett érték, és n az előrejelzési horizon.*
+*ahol A<sub>t</sub> a tényleges érték F<sub>t</sub> az előre jelzett érték van, és n az előrejelzési horizon.*
 
 ## <a name="deployment"></a>Környezet
-Amennyiben azt le a modellezési fázis rögzített, és a modell teljesítmény érvényesítve dolgozunk készen áll a központi telepítési fázis be. Ebben a környezetben központi telepítés azt jelenti, hogy az ügyfél a modell felhasználásához futtatja a tényleges előrejelzéseket, nagy méretekben engedélyezése. A központi telepítés fogalma kulcsot az Azure ML óta fő célunk folyamatosan meghívni az előrejelzéseket, szemben a csupán a insight beszerzése az adatokat. A központi telepítési fázis része Ha engedélyezzük a modell nagy léptékű fel.
+Azt le a modellezési fázis rögzített, és a modellek teljesítményének ellenőrzése után készen állunk az üzembe helyezési fázisnak bele. Ebben a környezetben üzembe helyezési azt jelenti, az ügyfél számára a modell feldolgozása a tényleges előrejelzéseket futó, nagy méretekben engedélyezése. A központi telepítési fogalmát kulcsot az Azure ML azért, mert a fő célunk, hogy folyamatosan meghívása helyett csak az adatok beszerzése a elemzés előrejelzéseket. Az üzembe helyezési fázisnak része funkciótól, nagy mennyiségű fogják a modellt.
 
-Energiát igény szerinti előrejelzés keretén belül a célja, hogy folyamatos és rendszeres időközönként előrejelzések meghívása során győződjön meg arról, hogy friss adatokat a modell és, hogy az előre jelzett adatokat a fogyasztó ügyfél zajlik.
+Energia kereslet-előrejelzési keretein belül a célja, hogy folyamatos és rendszeres előrejelzések meghívása közben biztosítva, hogy a friss adatok érhető a modellhez és, hogy az adatokat küld vissza a fogyasztó ügyfél.
 
 ### <a name="web-services-deployment"></a>A webes szolgáltatások telepítése
-Azure ml fő telepíthető építőelem a webszolgáltatás. Ez az a leghatékonyabban szeretné engedélyezni a felhőalapú prediktív modellek felhasználását. A webszolgáltatás magában foglalja a modell és foglalja össze az olyan [RESTful](http://www.restapitutorial.com/) API (Application Programming Interface). Az API-t bármely ügyfél kódot az alábbi ábrán szemléltetett részeként használható.
+Az Azure Machine Learning fő üzembe helyezhető építőelem egy webes szolgáltatás. Ez az a leghatékonyabb megoldást választja ahhoz, hogy a felhőben egy prediktív modellt az felhasználását. A Web service magában foglalja a modell, és a értünk egy [RESTful](http://www.restapitutorial.com/) API (Application Programming Interface). Az API-t az alábbi ábrán szemléltetett módon ügyfél kód részeként is használható.
 
-![Azt a szolgáltatás telepítését és használat](media/cortana-analytics-playbook-demand-forecasting-energy/web-service-deployment-and-consumption.png)
+![We szolgáltatásba, telepítés és használat](media/cortana-analytics-playbook-demand-forecasting-energy/web-service-deployment-and-consumption.png)
 
-Amint is látható, a webszolgáltatás a Cortana Intelligence Suite felhőben üzemel, és is elindítható a kitett REST API végpontra. Különböző típusú ügyfeleket különböző tartományok közötti hívhat meg egyszerre a szolgáltatás a webes API-n keresztül. A webszolgáltatás támogatja az egyidejű hívások ezer is méretezhető.
+Ahogy látható, a web service a Cortana Intelligence Suite felhőben üzemel, és az elérhetővé tett REST API-végponton keresztül ér el. Különböző típusú ügyfeleket különböző tartományok közötti hívhat meg egyszerre a webes API-n keresztül a szolgáltatás. A web service támogatja a több ezer párhuzamos hívások is méretezheti.
 
 ### <a name="a-typical-solution-architecture"></a>Egy tipikus megoldás architektúrája
-Az előrejelzés megoldás energia igény szerinti telepítésekor dolgozunk egy teljes körű megoldás, amely meghaladja a előrejelzés webszolgáltatás, és megkönnyíti a teljes adatfolyama üzembe helyezése iránt érdeklődik. Új előrejelzés meghívása azt időpontjában azt kellene győződjön meg arról, hogy a modell táplált a legfrissebb adatokat szolgáltatásokkal. Ez azt jelenti, hogy az újonnan összegyűjtött nyers adatok folyamatosan okozhatnak, feldolgozni, és akkor kell beállítani a modell készült "szükséges" funkció. Egy időben szeretnénk az ügyfelek fel End elérhetővé az előre jelzett adatokat. Egy példa adatok folyamata ciklus (vagy adatok pipeline) az alábbi ábrán látható:
+Az energia kereslet-előrejelzési megoldás üzembe helyezésekor, tudjuk egy teljes körű megoldás, amely megkezdte az előrejelzési webszolgáltatást, és lehetővé teszi a teljes adatfolyamatot üzembe helyezése iránt. Azt új előrejelzés meghívása időpontjában azt kell győződjön meg arról, hogy a modell adatkéréseket az adatok szerepeljenek-szolgáltatások. Ez azt jelenti, hogy az újonnan összegyűjtött nyers adatok folyamatosan betöltött, feldolgozása, és a szükséges szolgáltatást, állítsa be a modell készítették alakítja át. Egyszerre így elérhetővé téve az adatokat használó ügyfelek End szeretnénk. Egy példa adatok folyamat ciklus (vagy adatfolyamat) az alábbi ábra mutatja be:
 
-![Energiát igény szerinti előrejelzési végpont adatfolyama](media/cortana-analytics-playbook-demand-forecasting-energy/energy-demand-forecase-end-data-flow.png)
+![Energia igény-előrejelzési adatok végpontok közötti folyamat](media/cortana-analytics-playbook-demand-forecasting-energy/energy-demand-forecase-end-data-flow.png)
 
-A lépéseket, amelyek a energia igény szerinti előrejelzési ciklus részeként kerül sor az alábbiak:
+Az energia igény-előrejelzési ciklus részeként végzett, a lépések a következők:
 
-1. Központilag telepített adatok mérőszámok több millió valós idejű energiafogyasztási adatokkal folyamatosan generál.
-2. Folyamatban van a ezeket az adatokat gyűjt, és egy felhőalapú-tárházat töltve (*pl.*, Azure Blob).
-3. Mielőtt feldolgozhatóvá válna, a nyers adatok összesített értéket egy állomás vagy regionális szintű a vállalat által definiált konfigurációjának kialakításához.
-4. A szolgáltatás feldolgozás (lásd: **adatok előkészítése és a szolgáltatás feldolgozási**) majd történik és eredményez a szükséges adatok modell betanítása vagy pontozási – a szolgáltatás adatokat adatbázisban tárolja (*pl.*, Az SQL Azure).
-5. Meghívták a újra képzési szolgáltatás újra betanítása az előrejelzési modell –, hogy a modell frissített verzióját is, hogy a pontozási webszolgáltatás által használható megőrződjenek.
-6. A pontozási webszolgáltatás meghívták, amely megfelel a szükséges előrejelzési gyakoriságra ütemezés szerint.
-7. Az előre jelzett adatokat az end fogyasztás ügyfél által elérhető adatbázisban tárolódik.
-8. A felhasználási ügyfél lekéri az előrejelzések, újra üzembe a rács vonatkozik, és megfelel-e a szükséges használati esetnek t használ fel.
+1. Több millió üzembe helyezett mérőszámok, valós idejű folyamatosan létrehozó energiafogyasztási adatokkal.
+2. Folyamatban van, ezeket az adatokat gyűjt, és feltölti a felhőalapú adattárban (*például*, az Azure Blob).
+3. Mielőtt feldolgozhatóvá, a nyers adatokat a rendszer összesíti állomás vagy regionális szintű határozzák meg az üzleti.
+4. A funkció feldolgozási (lásd: **adat-előkészítési és a funkció feldolgozási**) majd kerül sor, és állít elő a szükséges adatmodell képzési vagy pontozási – a szolgáltatás adatokat tárolja egy adatbázisban (*például*, SQL Azure).
+5. Az újbóli képzésekre szolgáltatást hív újbóli betanítása az előrejelzési modell –, hogy a modell frissített verzióját, hogy a pontozási webszolgáltatás által használható megőrzi.
+6. A pontozási webszolgáltatás hív meg egy ütemezést, amely megfelel a szükséges előrejelzési gyakoriságát.
+7. Az adatokat, amely a teljes felhasználás ügyfél által hozzáférhető adatbázisban tárolódik.
+8. A használatalapú ügyfél kérdezi le az előrejelzéseket, vissza a rácsba vonatkozik, és használ fel, a szükséges használati eset megfelelően.
 
-Fontos megjegyezni, hogy a teljes ciklus teljesen automatizált, és ütemezés szerint futtatott. Az adatok ciklus teljes vezénylési eszközök segítségével végezhető [Azure Data Factory](http://azure.microsoft.com/services/data-factory/).
+Fontos megjegyezni, hogy a teljes ciklus teljesen automatizált, és a egy ütemezés szerint futtatja. Ezen adatok ciklus teljes vezénylési eszközök segítségével teheti meg [Azure Data Factory](http://azure.microsoft.com/services/data-factory/).
 
 ### <a name="end-to-end-deployment-architecture"></a>Teljes körű üzembe helyezési architektúrája
-Ahhoz, hogy egy energia igény szerinti előrejelzési megoldás a Cortana Intelligence gyakorlatilag telepítéséhez kell győződjön meg arról, hogy a szükséges összetevők létrehozott és megfelelően konfigurálva.
+Az energia igény szerint előrejelzési megoldás a Cortana Intelligence gyakorlatilag üzembe kell, hogy a szükséges összetevők létrehozott és megfelelően konfigurálva.
 
-Az alábbi ábrán egy tipikus Cortana Intelligence alapú architektúra, amely megvalósítja és koordinálja a fent ismertetett folyamatot adatciklus látható:
+Az alábbi ábra egy tipikus Cortana Intelligence-alapú architektúrát, amely megvalósítja és hangolja össze az adatokat a folyamat ciklus, amely a fent leírtak szerint:
 
 ![Teljes körű üzembe helyezési architektúrája](media/cortana-analytics-playbook-demand-forecasting-energy/architecture.png)
 
-További információ az összetevők és a teljes architektúra tekintse meg a energia megoldás sablont.
+Egyes összetevők és a teljes architektúrára kapcsolatos további részletekért tekintse meg az energia Megoldássablon.
 

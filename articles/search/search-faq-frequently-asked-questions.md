@@ -1,6 +1,6 @@
 ---
-title: Azure Search kapcsolatos gyakori kérdések (GYIK) |} Microsoft Docs
-description: A Microsoft Azure Search szolgáltatással kapcsolatos gyakori kérdésekre adott válaszok
+title: Azure Search kapcsolatos gyakori kérdések (GYIK) |} A Microsoft Docs
+description: A Microsoft Azure Search szolgáltatás kapcsolatos gyakori kérdésekre adott válaszok
 author: HeidiSteen
 manager: cgronlun
 services: search
@@ -8,87 +8,93 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 08/03/2017
 ms.author: heidist
-ms.openlocfilehash: d731faffe1b2448670a5fafa0278ff8c7fb21722
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 1491fdb0f208100619e569f9a74d5e697a0065a6
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31792732"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43841677"
 ---
-# <a name="azure-search---frequently-asked-questions-faq"></a>Az Azure Search - gyakran ismételt kérdések (GYIK)
+# <a name="azure-search---frequently-asked-questions-faq"></a>Az Azure Search – gyakori kérdések (GYIK)
 
- Fogalmakat, a kódot és az Azure Search kapcsolatos forgatókönyvek gyakran feltett kérdésekre adott válaszok.
+ Kapcsolatos fogalmakat, a kód és a forgatókönyvek az Azure Search kapcsolatos gyakori kérdésekre adott válaszok.
 
 ## <a name="platform"></a>Platform
 
-### <a name="how-is-azure-search-different-from-full-text-search-in-my-dbms"></a>Miben különbözik Azure Search teljes szöveges keresés a célrendszerben?
+### <a name="how-is-azure-search-different-from-full-text-search-in-my-dbms"></a>Miben különbözik az Azure Search teljes szöveges keresés a saját adatbázis-kezelő?
 
-Az Azure Search támogatja több adatforrást, [nyelvi elemzés különböző nyelvű](https://docs.microsoft.com/rest/api/searchservice/language-support), [érdekes és szokatlan adatok bemenetek egyéni elemzési](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search), keressen a sorrendet megadó vezérlők [pontozási profilok](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index), és a felhasználói élmény szolgáltatásait, például typeahead, a találatok kiemelése és a jellemzőalapú navigáció. Egyéb szolgáltatásokkal, például a szinonimák és gazdag lekérdezési szintaxis is tartalmaz, de azokat, amelyek általában nem lehetővé tevő szolgáltatások.
+Az Azure Search támogatja több adatforráson, [számos nyelvet nyelvi elemzés](https://docs.microsoft.com/rest/api/searchservice/language-support), [egyéni elemző számára érdekes és szokatlan streamadat típusú bemenetek](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search), keresés rangsorolják képernyőolvasókkal [pontozási profilok](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index), valamint felhasználói élményt funkciókat typeahead, a találatok kiemelése és a jellemzőalapú navigáció. Más szolgáltatások, például a szinonimák és funkciókban gazdag lekérdezési szintaxis, is tartalmaz, de azok vannak általában nem sokoldalúbbá funkciók.
 
-### <a name="what-is-the-difference-between-azure-search-and-elasticsearch"></a>Mi az Azure Search és Elasticsearch közötti különbség?
+### <a name="what-is-the-difference-between-azure-search-and-elasticsearch"></a>Mi a különbség az Azure Search és az Elasticsearch között?
 
-Keresési technológiák összehasonlításakor ügyfelek gyakran kérje meg a részletekért hogyan összehasonlítja az Azure Search Elasticsearch. Felhasználók Azure Search Elasticsearch keresztül a kereséshez alkalmazások általában megtenni, mert a legfontosabb feladatok könnyebb hajtottunk vagy más Microsoft-technológiák beépített integrálva van szükségük:
+A keresési technológiák összehasonlításakor ügyfelek gyakran kérje meg a részletekért az Azure Search hogyan hasonlítja össze az Elasticsearch segítségével. Ajánljuk, akik az Azure Search az Elasticsearch keresztül a keresés alkalmazás projektek általában megtenni, mert hajtottunk végre a fő feladat könnyebben vagy szükségük van a beépített integráció más Microsoft-technológiákhoz:
 
-+ Az Azure Search egy teljes körűen felügyelt felhőszolgáltatás 99,9 %-os garantált szolgáltatási szintek (SLA) esetén (olvasási hozzáféréssel 2-replikával, írható-olvasható 3 replikák) megfelelő redundanciával kiépítve.
-+ A Microsoft [természetes nyelvű processzorok](https://docs.microsoft.com/rest/api/searchservice/language-support) élvonalbeli nyelvi elemzés kínálnak.  
-+ [Az Azure keresési indexelő](search-indexer-overview.md) által bejárható különböző Azure-adatforrással kezdeti és a növekményes indexeléshez.
-+ Ha a lekérdezés vagy kötetek indexelő ingadozását gyors válasz van szüksége, használhatja [csúszkával](search-manage.md#scale-up-or-down) az Azure portál, vagy futtassa egy [PowerShell-parancsfájl](search-manage-powershell.md), shard felügyeleti megkerülésével közvetlenül.  
-+ [Pontozási és hangolási szolgáltatások](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index) adja meg az eszközöket befolyásoló keresési sorrendet megadó pontszámok túl önmagában keresőmotor biztosíthat.
++ Azure Search egy teljes körűen felügyelt felhőszolgáltatás 99,9 %-os szolgáltatói szerződések (SLA), (2 replika olvasási hozzáférés, olvasási és írási esetén 3 replikával) elegendő redundanciával üzembe helyezésekor.
++ A Microsoft [természetes nyelvi processzorok](https://docs.microsoft.com/rest/api/searchservice/language-support) élvonalbeli nyelvi elemzési ajánlat.  
++ [Az Azure Search-indexelők](search-indexer-overview.md) Azure-adatforrás kezdeti és a növekményes az indexelés számos bejárható.
++ Ha a lekérdezés vagy a kötetek indexelő ingadozása való gyors reagálásról van szüksége, használhatja [csúszkavezérlőt](search-manage.md#scale-up-or-down) az Azure portal, vagy futtassa egy [PowerShell-parancsprogram](search-manage-powershell.md), szilánkkezelési megkerülésével közvetlenül.  
++ [Pontozó- és finomhangolási funkciókhoz](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index) adja meg az eszközöket befolyásoló keresés rangsorolják pontszámok túl az önálló keresőmotor biztosíthat.
 
-### <a name="can-i-pause-azure-search-service-and-stop-billing"></a>Azure Search szolgáltatás szüneteltetése és számlázási leállítása?
+### <a name="can-i-pause-azure-search-service-and-stop-billing"></a>Az Azure Search szolgáltatás felfüggesztése és leállítása a számlázás?
 
-A szolgáltatás nem függeszthető fel. Számítási és tárolási erőforrásokat a kizárólagos használatra a szolgáltatás létrehozásakor. Nincs lehetőség felszabadítása és VISSZAIGÉNYLÉSE ezen erőforrások igény.
+A szolgáltatás szüneteltetése nem. Számítási és tárolási erőforrások vannak lefoglalva a kizárólagos használatára, ha a szolgáltatás létrehozása. Nem alkalmas felszabadítása és ezen erőforrások igény szerinti felszabadítani.
 
-## <a name="indexing-operations"></a>Indexelési műveletek
+## <a name="indexing-operations"></a>Indexelési műveleteket
 
-### <a name="backup-and-restore-or-download-and-move-indexes-or-index-snapshots"></a>Biztonsági mentése és visszaállítása (vagy töltse le és áthelyezése) indexek vagy index pillanatképeket?
+### <a name="backup-and-restore-or-download-and-move-indexes-or-index-snapshots"></a>Biztonsági mentés és visszaállítás (vagy töltse le és áthelyezése) indexek vagy index pillanatképek?
 
-Bár [beolvasása az index definícióját](https://docs.microsoft.com/rest/api/searchservice/get-index) bármikor nincs index kinyerési, pillanatképet, vagy biztonsági mentési-visszaállítási funkció le egy *feltöltve* egy helyi rendszerre, a felhőben futó index vagy Helyezze át egy másik Azure Search szolgáltatás.
+Bár [beolvasása egy indexdefiníciót](https://docs.microsoft.com/rest/api/searchservice/get-index) bármikor, nem áll fenn index a kinyerése, pillanatkép, vagy biztonsági mentési-visszaállítási funkciót letöltésével egy *feltöltve* index a helyi rendszer, a felhőben futó vagy Helyezze át egy másik Azure Search szolgáltatást.
 
-Indexek beépített és tölti be a kódot, amely írási, és csak a felhőben Azure Search futtassa. Általában a felhasználóknak, akik index áthelyezése egy másik szolgáltatás ehhez új végpont használandó kódjukat szerkesztésével, és futtassa a indexelő. Ha azt szeretné, hogy a pillanatkép vagy biztonsági mentését egy index, leadott szavazattal [User Voice](https://feedback.azure.com/forums/263029-azure-search/suggestions/8021610-backup-snapshot-of-index).
+Az indexek gyártja és tölti be a kódot írni, és csak az Azure Search a felhőben futtatni. Ügyfelek, akik át szeretné helyezni az index és egy másik szolgáltatás általában ehhez a kódot, hogy az új végpont szerkesztésével, és futtassa a indexelés. Ha azt szeretné, hogy a pillanatképet, illetve a biztonsági mentési index lehetővé teszi, leadott szavazattal [User Voice](https://feedback.azure.com/forums/263029-azure-search/suggestions/8021610-backup-snapshot-of-index).
 
-### <a name="can-i-index-from-sql-database-replicas-applies-to-azure-sql-database-indexershttpsdocsmicrosoftcomazuresearchsearch-howto-connecting-azure-sql-database-to-azure-search-using-indexers"></a>Képes vagyok felületindexét SQL adatbázis-replikák (vonatkozik [Azure SQL Database indexelők](https://docs.microsoft.com/azure/search/search-howto-connecting-azure-sql-database-to-azure-search-using-indexers))
+### <a name="can-i-restore-my-index-or-service-once-it-is-deleted"></a>Vissza tudok állítani az index vagy szolgáltatás törlés után?
 
-Nincsenek az elsődleges vagy másodlagos replikák használatára vonatkozó korlátozások adatforrásként teljesen új index létrehozásakor. Az index frissítése (a megváltozott rekordokat alapján) a növekményes frissítések azonban csak az elsődleges másodpéldány. Ez a követelmény SQL-adatbázis, mely garanciák csak elsődleges replikára változott a változáskövetés származik. Ha másodlagos replikákat használ egy index frissítési munkaterhelés, nincs kap az összes adat garancia.
+Nem, az indexek vagy a szolgáltatások nem állítható vissza. Ha törli az Azure Search-index, a művelet végleges, és az index nem lehet helyreállítani. Ha törli az Azure Search szolgáltatást, a szolgáltatás az összes index véglegesen törlődik. Emellett ha törli egy Azure-erőforráscsoportot, amely egy vagy több Azure Search szolgáltatást tartalmaz, minden szolgáltatás véglegesen törlődik.  
 
-## <a name="search-operations"></a>Keresési műveletek
+Erőforrások, például indexek, indexelők, adatforrásokat és szakértelmével visszaállítása szükséges, a kódot újra. Indexek esetén meg kell újraindexelése külső forrásokból származó adatokat. Ezért erősen ajánlott, hogy megőrizze a fő példányt vagy egy másik adattárban, például az Azure SQL Database vagy a Cosmos DB az eredeti adatokkal.
 
-### <a name="can-i-search-across-multiple-indexes"></a>Is kereshető több index között?
+### <a name="can-i-index-from-sql-database-replicas-applies-to-azure-sql-database-indexershttpsdocsmicrosoftcomazuresearchsearch-howto-connecting-azure-sql-database-to-azure-search-using-indexers"></a>E indexelésére használhatja az SQL adatbázis-replikák (vonatkozik [Azure SQL Database-indexelők](https://docs.microsoft.com/azure/search/search-howto-connecting-azure-sql-database-to-azure-search-using-indexers))
 
-Nem, ez a művelet nem támogatott. Keresési mindig egyetlen index hatókörét.
+Nem vonatkoznak korlátozások használatát az elsődleges vagy másodlagos replikák adatforrásként egy teljesen új index létrehozását. Index frissítése (a megváltozott rekordokat alapján) a növekményes frissítések azonban csak az elsődleges replika. Ez a követelmény a változáskövetés milyen garanciákat csak az elsődleges replika SQL-adatbázis származik. Ha a másodlagos replikák próbáljon index frissítése számítási feladat, nincs garancia arra, kap minden adat.
 
-### <a name="can-i-restrict-search-corpus-access-by-user-identity"></a>Is keresési corpus hozzáférés is korlátozása felhasználó identitása szerint?
+## <a name="search-operations"></a>Keresés a műveletekben
 
-Megvalósíthat [biztonsági szűrők](https://docs.microsoft.com/azure/search/search-security-trimming-for-azure-search) rendelkező `search.in()` szűrő. A szűrő composes jól [identity management services, Azure Active Directory(AAD) például](https://docs.microsoft.com/azure/search/search-security-trimming-for-azure-search-with-aad) lehet levágni a keresési eredmények alapján definiált felhasználói csoporttagság.
+### <a name="can-i-search-across-multiple-indexes"></a>Is kereshető több index esetében?
 
-### <a name="why-are-there-zero-matches-on-terms-i-know-to-be-valid"></a>Miért van nulla megegyezik tudható, hogy érvényes igényei szerint?
+Nem, ez a művelet nem támogatott. Keresés minden esetben egy egyetlen index hatókörét.
 
-A leggyakoribb eset nem fogják, hogy minden egyes lekérdezés típusa különböző keresési viselkedések és nyelvi elemzések szintű támogatja-e. Teljes szöveges keresés, ami az elsődleges munkaterhelés, a nyelvi elemzési fázis, a legfelső szintű űrlap le feltételeket megsérti tartalmazza. Ezen jellemzője lekérdezés elemzése a szélesebb körű nettó keresztül lehetséges találatok kerül, mert tokenekre kifejezés Variant típusú adatok nagyobb számának egyeznie kell.
+### <a name="can-i-restrict-search-corpus-access-by-user-identity"></a>Korlátozhatom keresési forrásgyűjteményébe hozzáférés felhasználó identitása szerint?
 
-Helyettesítő, intelligens és regex lekérdezések, azonban nem elemzett, például a reguláris kifejezést lekérdezések, és gyenge visszaírási vezethet, ha a lekérdezés nem egyezik meg a keresési index word elemzett formájában. A lekérdezés elemzése és elemzési további információkért lásd: [architektúra lekérdezése](https://docs.microsoft.com/azure/search/search-lucene-query-architecture).
+Megvalósíthat [biztonsági szűrők](https://docs.microsoft.com/azure/search/search-security-trimming-for-azure-search) az `search.in()` szűrőt. A szűrő composes jól [identity management-szolgáltatások, például az Azure Active regisztrált alkalmazástulajdonost](https://docs.microsoft.com/azure/search/search-security-trimming-for-azure-search-with-aad) szűkítheti a keresési eredmények alapján definiált felhasználói csoporttagság.
+
+### <a name="why-are-there-zero-matches-on-terms-i-know-to-be-valid"></a>Miért vannak nulla megegyezik a feltételek tudom, hogy érvényesek legyenek?
+
+A leggyakoribb eset, hogy minden egyes lekérdezés típusa támogatja-e a különböző keresési viselkedések és nyelvi elemzéseket szintjei nem ismerete. A teljes szöveges keresés, amely a domináns munkaterhelés, egy nyelvi elemzési fázisa, amely megtöri a kifejezések csak a legfelső szintű űrlapok tartalmazza. Elemzési lekérdezés ezen tulajdonsága, mert a tokenekre kifejezés megfelel variantní hodnoty nagyobb számú kerül keresztül lehetséges egyezések, egy szélesebb körű net.
+
+Helyettesítő karakter, az intelligens és regex lekérdezéseket, azonban nem elemzi, például a reguláris kifejezést lekérdezések, és gyenge visszaírási vezethet, ha a lekérdezés nem egyezik meg a word, a keresési indexben elemzett formájában. Elemzés lekérdezési és elemzési további információkért tekintse meg [architektúra lekérdezése](https://docs.microsoft.com/azure/search/search-lucene-query-architecture).
 
 ### <a name="my-wildcard-searches-are-slow"></a>Lassúak a helyettesítő karakteres kereséssel.
 
-A legtöbb helyettesítő keresési lekérdezések, például a előtag, az intelligens egyeztetésű és reguláris kifejezéssel, a rendszer újraírja belső kifejezésnek megfelelő a search-index feltételeit. A további feldolgozását vizsgálatát a search-index késés hozzá. További, széles keresési lekérdezi, például `a*` például, amelyek valószínűleg sok feltételeket kell írni nagyon lassú lehet. Performant helyettesítő karakteres kereséssel, fontolja meg definiáló egy [egyéni analyzer](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search).
+A legtöbb helyettesítő karakteres keresés lekérdezéseknél, például a előtag, az intelligens és regex, a rendszer újraírja belsőleg az egyező kifejezések a search-index. Vizsgálata a search-index, a további feldolgozás késéssel ad hozzá. További, a széles körű keresési lekérdezéseket, például `a*` például, amelyek valószínűleg sok feltételeket írni nagyon lassú lehet. A nagy teljesítményű helyettesítő karakteres kereséssel, fontolja meg a meghatározása egy [egyéni elemző](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search).
 
-### <a name="why-is-the-search-rank-a-constant-or-equal-score-of-10-for-every-hit"></a>Miért van a keresési besorolás 1.0 minden nyomja le az állandó vagy egyenlő pontszámot?
+### <a name="why-is-the-search-rank-a-constant-or-equal-score-of-10-for-every-hit"></a>Miért van a keresési besorolás minden nyomja le az 1.0-állandó vagy azzal egyenlő pontszámot?
 
-Alapértelmezés szerint keresési eredmények alapján kell kiértékelni a [statisztikai tulajdonságainak megfelelő feltételek](search-lucene-query-architecture.md#stage-4-scoring), és rendezett magastól alacsonyig az eredményben. Azonban néhány lekérdezés (helyettesítő, előtag, regex) típusú mindig hozzájárulhatnak a a teljes dokumentum pontszám állandó pontszámot. Ez a működésmód szándékos. Az Azure Search szab találat lekérdezés bővítése keresztül anélkül, hogy befolyásolná a rangsorolási foglalandó az eredményeket, hogy állandó pontszámot.
+Alapértelmezés szerint találatok alapján kell kiértékelni a [egyezési feltételek statisztikai tulajdonságainak](search-lucene-query-architecture.md#stage-4-scoring), és rendezett magastól alacsonyig az eredményben. Azonban néhány lekérdezése (altartományokra is kibővített, előtag, regex) típusú mindig közreműködés egy állandó pontszám a teljes dokumentum pontszámot. Ez a működésmód szándékos. Az Azure Search, találat lekérdezés bővítése keresztül anélkül, hogy befolyásolná a rangsorolás foglalandó az eredményeket, hogy egy állandó pontszám ír elő.
 
-Tegyük fel, hogy a "bemutató *" helyettesítő karakteres keresés bemeneti megfelel a "bemutatók", "tourettes" és "tourmaline" hoz létre. Ezekkel az eredményekkel jellegéből, nincs mód ésszerűen következtetési forrásaként, mely feltételek értékesebb, mint a többire. Ezért azt figyelmen kívül hagyása kifejezés gyakoriságot amikor pontozási eredményei típusok helyettesítő, előtag és regex lekérdezésekben. Egy részleges bemeneti keresési eredmény felé potenciálisan váratlan egyezések időeltérés elkerülése érdekében állandó pontszámot kap.
+Tegyük fel például, hogy bemenetének "bemutató *" helyettesítő karakteres keresés eredménye megfelel a "bemutatók", "tourettes" és "tourmaline". Ezekkel az eredményekkel természetéből, nincs lehetőség ésszerűen célszámítógéppel a mely feltételek, mint a többi értékét. Ebből kifolyólag azt figyelmen kívül kifejezés gyakoriságok eredmények pontozási típusok helyettesítő karakteres előtag és reguláris kifejezés a lekérdezések során. Egy részleges bemenet alapján keresési eredmények elkerülése érdekében eltérés potenciálisan váratlan egyezések felé állandó pontszámot kapnak.
 
 ## <a name="design-patterns"></a>Tervezési minták
 
-### <a name="what-is-the-best-approach-for-implementing-localized-search"></a>Honosított keresés végrehajtásához a legjobb módszer mekkora?
+### <a name="what-is-the-best-approach-for-implementing-localized-search"></a>Mi az a legjobb módja a honosított keresés megvalósításának?
 
-A legtöbb ügyfél dedikált mezők kiválasztása a tartalmazó gyűjteményen ismét ugyanazt az indexet a különböző területi beállításokhoz (nyelv) támogatására. Területibeállítás-specifikus mezők hozzárendelése egy megfelelő analyzer lehetővé teszik. A Microsoft francia Analyzer például hozzárendelése egy francia karakterláncokat tartalmazó mezőt. Emellett leegyszerűsíti az szűrést. Ha tudja, hogy egy lekérdezést lehet kezdeményezni fr-fr oldalon, korlátozhatja a keresési eredmények ebbe a mezőbe. Vagy hozzon létre egy [pontozási profil](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index) ahhoz, hogy megkapja a mező további relatív súly. Az Azure Search támogatja keresztül [50 nyelvi elemzőkkel](https://docs.microsoft.com/azure/search/search-language-support) választhat.
+A legtöbb ügyfél esetén ugyanazt az indexet különböző területi beállításokat (nyelv) támogatása, válasszon egy gyűjtemény elemein dedikált mezőket. Területibeállítás-specifikus mezők koncepcióját rendeljen egy megfelelő elemzőt. A Microsoft francia Analyzer például hozzárendelése egy francia karakterláncokat tartalmazó mezőt. Emellett leegyszerűsíti az szűrés. Ha tudja, fr-fr oldal indul el egy lekérdezést, korlátozhatja a keresési eredmények ebben a mezőben. Vagy hozzon létre egy [relevanciaprofil](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index) biztosíthat a mezőben további relatív súly. Az Azure Search támogatja keresztül [50 nyelvi elemzők](https://docs.microsoft.com/azure/search/search-language-support) közül választhat.
 
 ## <a name="next-steps"></a>További lépések
 
-Egy hiányzó szolgáltatást és funkciót a kérdése van? A funkció a kérelem a [User Voice webhely](https://feedback.azure.com/forums/263029-azure-search).
+Egy hiányzó szolgáltatás vagy funkció a kérdése van? A szolgáltatás kérése a a [felhasználói visszajelzési webhelyen](https://feedback.azure.com/forums/263029-azure-search).
 
 ## <a name="see-also"></a>Lásd még
 
  [StackOverflow: Az Azure Search](https://stackoverflow.com/questions/tagged/azure-search)   
- [Hogyan teljes szöveges keresés az Azure Search működik](search-lucene-query-architecture.md)  
+ [Teljes szöveges keresés működése az Azure Search szolgáltatásban](search-lucene-query-architecture.md)  
  [Mi az az Azure Search?](search-what-is-azure-search.md)

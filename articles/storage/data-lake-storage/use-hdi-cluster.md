@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: jamesbak
-ms.openlocfilehash: ee169f008cc5d6b95d2ddadc68e63673372e2dc5
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 3869d83ada1cbe0b234694b6acae88b6f68fc2dd
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43301833"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782277"
 ---
 # <a name="use-azure-data-lake-storage-gen2-preview-with-azure-hdinsight-clusters"></a>Az Azure Data Lake Storage Gen2 előzetes verzió használata Azure HDInsight-fürtök
 
@@ -170,7 +170,7 @@ Egy tároló létrehozásához használja az alábbi parancsot:
 
 Az Azure Storage tárolóban a HDInsight eszközről végzett fájlelérés URI sémája a következő:
 
-    abfs[s]://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.widows.net/<PATH>
+    abfs[s]://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/<PATH>
 
 Az URI séma titkosítatlan hozzáférést biztosít (az a *abfs:* előtag) és SSL titkosított hozzáférést (a *abfss*). Azt javasoljuk, *abfss* amikor csak lehetséges, akkor is, ha ugyanabban a régióban, az Azure-ban lévő adatokat éri el.
 
@@ -179,7 +179,7 @@ Az URI séma titkosítatlan hozzáférést biztosít (az a *abfs:* előtag) és 
 
     Ha az értékek &lt;FILE_SYSTEM_NAME&gt; sem &lt;ACCOUNT_NAME&gt; van megadva, az alapértelmezett fájlrendszer szolgál. Az alapértelmezett fájlrendszeren tárolt fájlok esetén relatív elérési utat vagy abszolút elérési utat használhat. Ha például a *hadoop-mapreduce-examples.jar* fájlt, amely együttműködik a HDInsight-fürtök a következő útvonalak egyikét használva lehet hivatkozni:
     
-        abfs://myfilesystempath@myaccount.dfs.core.widows.net/example/jars/hadoop-mapreduce-examples.jar
+        abfs://myfilesystempath@myaccount.dfs.core.windows.net/example/jars/hadoop-mapreduce-examples.jar
         abfs:///example/jars/hadoop-mapreduce-examples.jar
         /example/jars/hadoop-mapreduce-examples.jar
 

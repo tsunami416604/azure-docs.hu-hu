@@ -9,15 +9,15 @@ ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
 ms.service: active-directory
 ms.workload: identity
 ms.topic: article
-ms.date: 07/26/2018
+ms.date: 09/04/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: def1bbd52e05666f380ab9d5a9295366798d5ae0
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 029ba1c936862ef5c5f774dc683c4746e157c4aa
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39626923"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43781939"
 ---
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>Az Azure Active Directory zökkenőmentes egyszeri bejelentkezés hibaelhárítása
 
@@ -34,7 +34,7 @@ Ez a cikk hibaelhárítási információkat a vonatkozó Azure Active Directory 
 - Közvetlen egyszeri bejelentkezés az Internet Explorer nem működik, ha fokozott védett üzemmód be van kapcsolva.
 - Közvetlen egyszeri bejelentkezés mobilböngészőkön iOS és Android rendszeren nem működik.
 - Ha egy felhasználó az Active Directory túl sok csoport része, a felhasználó Kerberos-jegye nagy valószínűséggel el fog feldolgozni túl nagy, és ennek hatására a közvetlen egyszeri bejelentkezés meghiúsul. Az Azure AD-HTTPS-kérelmek fejlécek 50 KB; maximális mérettel rendelkezhet Kerberos-jegyet kell ezt a korlátot, például a cookie-k más Azure AD-összetevők (általában 2 – 5 KB) befogadásához kisebbnek kell lennie. Azt javasoljuk, hogy csökkentse a felhasználói csoporttagságok, majd próbálkozzon újra.
-- Ha 30 vagy több Active Directory-erdők már szinkronizálást, nem engedélyezhető a közvetlen egyszeri bejelentkezés az Azure AD Connecten keresztül. Áthidaló megoldásként is [manuális módszerrel engedélyezze](#manual-reset-of-azure-ad-seamless-sso) a funkció a bérlőn.
+- Ha 30 vagy több Active Directory-erdők már szinkronizálást, nem engedélyezhető a közvetlen egyszeri bejelentkezés az Azure AD Connecten keresztül. Áthidaló megoldásként is [manuális módszerrel engedélyezze](#manual-reset-of-the-feature) a funkció a bérlőn.
 - Az Azure AD szolgáltatás URL-cím hozzáadása (https://autologon.microsoftazuread-sso.com) a megbízható helyek zónához helyett a helyi intranetes zóna *letiltja a felhasználók bejelentkezésének*.
 - Használatának letiltása a **RC4_HMAC_MD5** titkosítási típus a Kerberos, az Active Directory-beállításokat a megszakítja a közvetlen egyszeri bejelentkezés. A Csoportházirendkezelés-szerkesztő eszközben ellenőrizze, hogy a házirend értékét **RC4_HMAC_MD5** alatt **számítógép konfigurációja -> Windows-beállítások -> biztonsági beállítások -> helyi házirendek -> biztonsági beállítások - > "Hálózati biztonság: a Kerberos használható titkosítási típusok konfigurálása"** "Engedélyezett".
 
@@ -106,10 +106,9 @@ Hibaelhárítási oldották meg, ha manuálisan alaphelyzetbe állíthatja a fun
 
 ### <a name="step-1-import-the-seamless-sso-powershell-module"></a>1. lépés: A zökkenőmentes egyszeri bejelentkezési PowerShell-modul importálása
 
-1. Töltse le és telepítse a [Microsoft Online Services bejelentkezési segéd](http://go.microsoft.com/fwlink/?LinkID=286152).
-2. Töltse le és telepítse a [64 bites Azure Active Directory-modul Windows Powershellhez készült](http://go.microsoft.com/fwlink/p/?linkid=236297).
-3. Keresse meg a `%programfiles%\Microsoft Azure Active Directory Connect` mappát.
-4. A zökkenőmentes egyszeri bejelentkezési PowerShell-modul importálása a következő paranccsal: `Import-Module .\AzureADSSO.psd1`.
+1. Először töltse le és telepítse [az Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview).
+2. Keresse meg a `%programfiles%\Microsoft Azure Active Directory Connect` mappát.
+3. A zökkenőmentes egyszeri bejelentkezési PowerShell-modul importálása a következő paranccsal: `Import-Module .\AzureADSSO.psd1`.
 
 ### <a name="step-2-get-the-list-of-active-directory-forests-on-which-seamless-sso-has-been-enabled"></a>2. lépés: Listájának megtekintéséhez, amelyen a közvetlen egyszeri bejelentkezés engedélyezve van az Active Directory-erdők
 
@@ -129,8 +128,10 @@ Hibaelhárítási oldották meg, ha manuálisan alaphelyzetbe állíthatja a fun
 ### <a name="step-4-enable-seamless-sso-for-each-active-directory-forest"></a>4. lépés: Minden egyes Active Directory-erdő közvetlen egyszeri bejelentkezés engedélyezése
 
 1. Hívás `Enable-AzureADSSOForest`. Amikor a rendszer kéri, adja meg a tartományi rendszergazda hitelesítő adatai a megfelelő Active Directory-erdőben.
+
    >[!NOTE]
    >A tartományi rendszergazda felhasználónév, a felhasználó egyszerű neve (UPN) a megadott használjuk (johndoe@contoso.com) vagy a tartomány minősített sam-fiók neve (contoso\budaipeter vagy contoso.com\johndoe) formátumban, a megfelelő AD-erdőben található. Ha minősített sam-fiók tartománynevet használ, a felhasználónevet, tartományt jelölő része használjuk [keresse meg a tartományvezérlő, a tartományi rendszergazda DNS-sel](https://social.technet.microsoft.com/wiki/contents/articles/24457.how-domain-controllers-are-located-in-windows.aspx). Ha Ehelyett használjon egyszerű felhasználónév azt [lefordíthatja minősített sam-fiók tartománynevét](https://docs.microsoft.com/windows/desktop/api/ntdsapi/nf-ntdsapi-dscracknamesa) előtt a megfelelő tartományvezérlő keresésekor.
+
 2. Ismételje meg az előző lépést minden egyes Active Directory-erdőben, ahol szeretné beállítani a szolgáltatást.
 
 ### <a name="step-5-enable-the-feature-on-your-tenant"></a>5. lépés A bérlő a funkció engedélyezése

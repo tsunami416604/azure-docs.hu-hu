@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: 429a10988fdc19863cfd6809a8d73757d33349c9
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 35bd895636bcedf0fd3fad073819d238c7850326
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/05/2018
-ms.locfileid: "43702310"
+ms.locfileid: "43783338"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe
 
@@ -57,8 +57,7 @@ Néhány fontos lépést végre kell hajtani az erőforrások áthelyezése elő
   * [Azure-előfizetés tulajdonjogának átruházása másik fiókra](../billing/billing-subscription-transfer.md)
   * [Azure-előfizetés társítása vagy hozzáadása az Azure Active Directoryhoz](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
 
-2. A szolgáltatásnak lehetővé kell tennie az erőforrások áthelyezését. Ebben a cikkben, amelyek szakaszokban [erőforrások áthelyezését engedélyező szolgáltatásokat](#services-that-can-be-moved) , és amely [erőforrások áthelyezését engedélyező szolgáltatásokat nem](#services-that-cannot-be-moved).
-3. A cél előfizetést regisztrálni kell az áthelyezett erőforrás erőforrás-szolgáltatóján. Ha nem, akkor megjelenik egy hibaüzenet, arról, hogy a **az előfizetés nincs regisztrálva az erőforrástípushoz**. Ez a probléma erőforrások új előfizetésre történő áthelyezésekor fordulhat elő, ha az előfizetést még nem használták az adott erőforrástípushoz.
+1. A cél előfizetést regisztrálni kell az áthelyezett erőforrás erőforrás-szolgáltatóján. Ha nem, akkor megjelenik egy hibaüzenet, arról, hogy a **az előfizetés nincs regisztrálva az erőforrástípushoz**. Ez a probléma erőforrások új előfizetésre történő áthelyezésekor fordulhat elő, ha az előfizetést még nem használták az adott erőforrástípushoz.
 
   A PowerShell a következő parancsok használatával a regisztrációs állapot lekérdezése:
 
@@ -86,14 +85,16 @@ Néhány fontos lépést végre kell hajtani az erőforrások áthelyezése elő
   az provider register --namespace Microsoft.Batch
   ```
 
-4. Erőforrások áthelyezése a fióknak legalább a következő engedélyekkel kell rendelkeznie:
+1. Erőforrások áthelyezése a fióknak legalább a következő engedélyekkel kell rendelkeznie:
 
    * **Microsoft.Resources/subscriptions/resourceGroups/moveResources/action** a a forrásként szolgáló erőforráscsoportot.
    * **Microsoft.Resources/subscriptions/resourceGroups/write** a cél erőforráscsoport található.
 
-5. Erőforrások áthelyezése előtt tekintse át az erőforrásokat az előfizetés az előfizetési kvóták. Erőforrások áthelyezése azt jelenti, hogy az előfizetés túl fogja lépni a teljesítménye korlátait, ha meg kell tekintenie a e kérheti a kvótájának növelését. Korlátok, és hogyan lehet növelni listáját lásd: [Azure-előfizetés és a szolgáltatások korlátozásai, kvótái és megkötései](../azure-subscription-service-limits.md).
+1. Erőforrások áthelyezése előtt tekintse át az erőforrásokat az előfizetés az előfizetési kvóták. Erőforrások áthelyezése azt jelenti, hogy az előfizetés túl fogja lépni a teljesítménye korlátait, ha meg kell tekintenie a e kérheti a kvótájának növelését. Korlátok, és hogyan lehet növelni listáját lásd: [Azure-előfizetés és a szolgáltatások korlátozásai, kvótái és megkötései](../azure-subscription-service-limits.md).
 
-5. Ha lehetséges, nagy break helyezi át a külön áthelyezési műveleteket. Erőforrás-kezelő azonnal egyetlen művelettel több mint 800 erőforrások áthelyezéséhez kísérlet sikertelen lesz. Azonban legalább 800 erőforrások áthelyezése is meghiúsulhat időtúllépés által.
+1. Ha lehetséges, nagy break helyezi át a külön áthelyezési műveleteket. Erőforrás-kezelő azonnal egyetlen művelettel több mint 800 erőforrások áthelyezéséhez kísérlet sikertelen lesz. Azonban legalább 800 erőforrások áthelyezése is meghiúsulhat időtúllépés által.
+
+1. A szolgáltatásnak lehetővé kell tennie az erőforrások áthelyezését. Határozza meg, hogy az áthelyezés sikeres lesz, hogy [ellenőrzése az áthelyezési kérelemben](#validate-move). Ebben a cikkben, amelyek szakaszokban [erőforrások áthelyezését engedélyező szolgáltatásokat](#services-that-can-be-moved) , és amely [erőforrások áthelyezését engedélyező szolgáltatásokat nem](#services-that-cannot-be-moved).
 
 ## <a name="when-to-call-support"></a>Ha az ügyfélszolgálat
 
@@ -106,6 +107,59 @@ Kapcsolattartó [támogatja](https://portal.azure.com/#blade/Microsoft_Azure_Sup
 
 * Erőforrások áthelyezése új Azure-fiókba (és az Azure Active Directory-bérlő), és az utasítások az előző szakaszban segítségre van szüksége.
 * Klasszikus erőforrások áthelyezésekor merülnek fel a korlátozások.
+
+## <a name="validate-move"></a>Áthelyezésének ellenőrzése
+
+A [áthelyezési művelet érvényesítése](/rest/api/resources/resources/validatemoveresources) az áthelyezési forgatókönyv teszteléséhez ténylegesen az erőforrások áthelyezése nélkül teszi lehetővé. Ez a művelet segítségével határozhatja meg, ha az áthelyezés sikeres lesz. Ez a művelet végrehajtásához szükséges a:
+
+* a forrás erőforráscsoport nevét
+* erőforrás-azonosító a célként megadott erőforráscsoport
+* erőforrás-azonosító az egyes erőforrások áthelyezése
+* a [hozzáférési jogkivonat](/rest/api/azure/#acquire-an-access-token) fiókja
+
+A következő kérelem küldése:
+
+```
+POST https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<source-group>/validateMoveResources?api-version=2018-02-01
+Authorization: Bearer <access-token>
+Content-type: application/json
+```
+
+A kéréstörzs:
+
+```json
+{
+ "resources": ['<resource-id-1>', '<resource-id-2>'],
+ "targetResourceGroup": "/subscriptions/<subscription-id>/resourceGroups/<target-group>"
+}
+```
+
+Ha a kérés formátuma megfelelő, a művelet adja vissza:
+
+```
+Response Code: 202
+cache-control: no-cache
+pragma: no-cache
+expires: -1
+location: https://management.azure.com/subscriptions/<subscription-id>/operationresults/<operation-id>?api-version=2018-02-01
+retry-after: 15
+...
+```
+
+A 202-es állapotkód jelzi az ellenőrzési kérést elfogadták, de még nem még meg ha az áthelyezés sikeres lesz. A `location` érték tartalmaz egy URL-címet, amellyel a hosszú ideig futó művelet állapotának ellenőrzéséhez.  
+
+Ellenőrizheti az állapotot, a következő kérelem küldése:
+
+```
+GET <location-url>
+Authorization: Bearer <access-token>
+```
+
+A művelet továbbra is fut, miközben továbbra is megjelenik a 202-es állapotkódot. Várjon jelzi a másodpercek számát a `retry-after` értéket, majd próbálkozzon újra. Ha az áthelyezés érvényesítése sikeres, a 204 állapotkód jelenik meg. Ha az áthelyezés érvényesítése sikertelen, kap egy hibaüzenet, például:
+
+```json
+{"error":{"code":"ResourceMoveProviderValidationFailed","message":"<message>"...}}
+```
 
 ## <a name="services-that-can-be-moved"></a>Áthelyezhető szolgáltatások
 

@@ -11,19 +11,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/04/2018
+ms.date: 09/05/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: 6d6ee22bd1691f1af6956330b3299a1483c588f7
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 722df244135d045e18b9f2d0dd88066ba00b7d49
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43696642"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43841879"
 ---
 # <a name="deploy-the-mysql-resource-provider-on-azure-stack"></a>Az Azure Stackben a MySQL erőforrás-szolgáltató üzembe helyezése
 
 A MySQL-kiszolgáló erőforrás-szolgáltató használatával teszi közzé a MySQL-adatbázisok Azure Stack szolgáltatásként. A MySQL erőforrás-szolgáltató szolgáltatásként fut, a Windows Server 2016 Server Core virtuális gépeken (VM).
+
+> [!IMPORTANT]
+> Konfigurációelemek létrehozása a kiszolgálókon, a fogadó SQL vagy MySQL csak az erőforrás-szolgáltató támogatott. A gazdagép-kiszolgálón létrehozott elemek nem az erőforrás-szolgáltató által létrehozott egy nem megfelelő állapot eredményezhet.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -150,6 +153,7 @@ Amikor befejezi az erőforrás-szolgáltató telepítési parancsfájlt, frissí
 2. Válassza ki **erőforráscsoportok**
 3. Válassza ki a **system.\< hely\>.mysqladapter** erőforráscsoportot.
 4. Az összefoglalás lapon erőforráscsoport áttekintése nincs sikertelen üzembe helyezés kell lennie.
+5. Végül válassza **virtuális gépek** a felügyeleti portálon, győződjön meg arról, hogy a MySQL erőforrás-szolgáltató virtuális gép sikeresen létrehozott és fut-e.
 
 ## <a name="next-steps"></a>További lépések
 

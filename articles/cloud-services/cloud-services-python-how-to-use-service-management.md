@@ -14,12 +14,12 @@ ms.devlang: python
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: lmazuel
-ms.openlocfilehash: ab2a05c55ee248d8a74f70d36b06277db3a0f38a
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: df949b65ac4a193c9e7bdb6ee3c32d7026f7c93d
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42054481"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782964"
 ---
 # <a name="use-service-management-from-python"></a>Kezelés a Python használata
 Ez az útmutató bemutatja, hogyan programozott módon a Python a gyakori felügyeleti feladatok elvégzéséhez. A **ServiceManagementService** az osztály a [Pythonhoz készült Azure SDK](https://github.com/Azure/azure-sdk-for-python) támogatja a programozási szintű hozzáférést felügyelettel kapcsolatos funkciók, amelyek érhető el a [Azure portál][management-portal]. Ez a funkció segítségével létrehozása, frissítése és törlése a cloud services, központi telepítések, adatkezelési szolgáltatások és virtuális gépeket. Ez a funkció akkor lehet hasznos, a service management programozás alapú hozzáférést igénylő alkalmazások készítése.
@@ -426,4 +426,4 @@ További információ: [Python fejlesztői központban](https://azure.microsoft.
 [svc-mgmt-rest-api]: http://msdn.microsoft.com/library/windowsazure/ee460799.aspx
 
 
-[cloud service]:/services/cloud-services/
+[cloud service]:/azure/cloud-services/

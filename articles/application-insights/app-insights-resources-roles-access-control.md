@@ -1,6 +1,6 @@
 ---
-title: Erőforrások, szerepkörök és hozzáférés szabályozása Azure Application insightsban |} Microsoft Docs
-description: Tulajdonosai, közreműködő szerepkörrel rendelkező személyek és a szervezet insights olvasói.
+title: Erőforrások, szerepkörök és hozzáférés-vezérlés az Azure Application Insightsban |} A Microsoft Docs
+description: Tulajdonosoknak, közreműködőknek és olvasóknak a szervezet insights.
 services: application-insights
 documentationcenter: ''
 author: mrbullwinkle
@@ -10,74 +10,96 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
-ms.date: 03/17/2017
+ms.topic: conceptual
+ms.date: 09/04/2018
 ms.author: mbullwin
-ms.openlocfilehash: 5bb6c33c083e1be690b70b63ca087c923d43f3ee
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: a5ea0879e9b67a27f437b1d59a1b0998c770f5f0
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43842943"
 ---
-# <a name="resources-roles-and-access-control-in-application-insights"></a>Erőforrások, szerepkörök és hozzáférés-vezérlés az Application Insightsban
-Szabályozhatja, aki rendelkezik-e olvasási és hozzáférési frissíteni az adatait az Azure-ban [Application Insights][start], használatával [Microsoft Azure szerepköralapú hozzáférés-vezérlés](../role-based-access-control/role-assignments-portal.md).
+# <a name="resources-roles-and-access-control-in-application-insights"></a>Erőforrások, szerepkörök és hozzáférés-vezérlés az Application Insights
+
+Szabályozhatja, hogy rendelkezik-e olvasási és frissítési hozzáférés az adatokhoz az Azure-ban [Application Insights][start], használatával [szerepköralapú hozzáférés-vezérlés a Microsoft Azure](../role-based-access-control/role-assignments-portal.md).
 
 > [!IMPORTANT]
-> Hozzáférést biztosít a felhasználók a **erőforráscsoportba vagy előfizetésbe** , amelyhez az alkalmazás erőforrás tartozik - magát az erőforrás nem található. Rendelje hozzá a **Application Insights-összetevővel kapcsolatos közreműködői** szerepkör. Ez biztosítja az egységes irányítását webes tesztjeinek használatát, és a riasztások mellett az alkalmazás erőforrás elérésére. [További információk](#access).
-> 
-> 
+> Hozzáférés hozzárendelése a felhasználók számára a **erőforráscsoportba vagy előfizetésbe** , amelyhez az alkalmazás-erőforrás tartozik – nem található a erőforrásán. Rendelje hozzá a **Application Insights-összetevők közreműködője** szerepkör. Ez biztosítja, hogy a webes tesztek és a riasztások mellett az alkalmazás-erőforrás elérését egységes irányítását. [További információk](#access).
 
 ## <a name="resources-groups-and-subscriptions"></a>Erőforrások, csoportok és előfizetések
-Első, néhány definíciók:
 
-* **Erőforrás** - egy Microsoft Azure service-példányhoz. Az Application Insights-erőforrás gyűjti, elemzi és az alkalmazásból küldött telemetriai adatait jeleníti meg.  Más típusú Azure-erőforrások közé tartoznak a webalkalmazások, adatbázisok és virtuális gépek.
+Első, némi definíciókat:
+
+* **Erőforrás** – Microsoft Azure-szolgáltatás példánya egy. Az Application Insights-erőforrás gyűjti, elemzi és megjeleníti az alkalmazásból küldött telemetriai adatok.  Más típusú Azure-erőforrások közé tartozik, webalkalmazások, adatbázisok és virtuális gépeket.
   
-    Az erőforrások megtekintéséhez nyissa meg a [Azure Portal][portal], jelentkezzen be, majd kattintson az összes erőforrást. Egy erőforrás található, írja be a név egy részének a Szűrő mezőbe.
+    Az erőforrások megtekintéséhez nyissa meg a [az Azure portal][portal], jelentkezzen be, és kattintson az összes erőforrást. Egy erőforrás található, írja be a nevének egy részét a Szűrő mezőbe.
   
-    ![Azure-erőforrások listája](./media/app-insights-resources-roles-access-control/10-browse.png)
+    ![Az Azure-erőforrások listája](./media/app-insights-resources-roles-access-control/10-browse.png)
 
 <a name="resource-group"></a>
 
-* [**Erőforráscsoport** ] [ group] -minden erőforrás egy csoporthoz tartozik. Egy csoport kényelmesen felügyelhetők a kapcsolódó erőforrások, különösen a hozzáférés-vezérléshez. Például az egyik erőforráscsoportból ütemezésbe helyezheti egy webalkalmazást, az Application Insights-erőforrás a figyelheti az alkalmazást, és a tároló egyik erőforrásához exportált adatokat.
+* [**Erőforráscsoport** ] [ group] – minden erőforrás egy csoporthoz tartozik. Egy csoport kényelmes módja a kapcsolódó erőforrásokat, különösen a hozzáférés-vezérlés kezelése. Ha például helyezzen egy erőforráscsoportban elhelyezheti egy webalkalmazás, az alkalmazás figyelése az Application Insights-erőforrás és egy tárolási erőforrás exportált adatok.
 
-    ![A Tallózás, erőforráscsoportok, majd válasszon ki egy csoportot](./media/app-insights-resources-roles-access-control/11-group.png)
+* [**Előfizetés** ](https://portal.azure.com) – Azure-előfizetéssel jelentkezik be az Application Insights vagy más Azure-erőforrások használatára. Minden erőforráscsoport tartozik egy Azure-előfizetéssel, ahol az ár csomag kiválasztása és, ha egy szervezet előfizetését, válassza ki a tagok és a hozzáférési engedélyeik.
+* [**Microsoft-fiók** ] [ account] – a felhasználónév és a Microsoft Azure előfizetések, XBox Live, Outlook.com-os és más Microsoft-szolgáltatásokba való bejelentkezéshez használt jelszó.
 
-* [**Előfizetés** ](https://portal.azure.com) - jelentkezzen be Azure-előfizetés az Application Insights vagy más Azure-erőforrások használatára. Minden erőforráscsoport tartozik egy Azure-előfizetéssel, ahol az ár csomag kiválasztása és, ha egy szervezet előfizetés, válassza ki a tagok és a hozzáférési engedélyeket.
-* [**Microsoft-fiók** ] [ account] -felhasználónevét és jelszavát, amelyekkel bejelentkezhet a Microsoft Azure előfizetések, XBox Live-, Outlook.com-os és más Microsoft-szolgáltatásokban.
+## <a name="access"></a> Hozzáférés vezérlése az erőforráscsoportban
 
-## <a name="access"></a> Elérés az erőforráscsoportban
-Fontos megérteni, hogy az erőforrás alkalmazás létrehozta, kívül is külön rejtett erőforrások riasztások és a webes tesztjeinek használatát. Kapcsolódó azonos [erőforráscsoport](#resource-group) az alkalmazás. Előfordulhat, hogy is vezettek be más Azure-szolgáltatásokat az ott, például webhelyekhez vagy tároló.
+Fontos megérteni, hogy az alkalmazás létrehozott erőforrást, kívül is külön rejtett riasztások és a webes tesztek erőforrásokat. Azonos vannak csatolva [erőforráscsoport](#resource-group) mint az alkalmazást. Előfordulhat, hogy Emellett más Azure-szolgáltatások az helyezett itt, például webhelyeket vagy a tároló.
 
-![Az Application Insightsban erőforrások](./media/app-insights-resources-roles-access-control/00-resources.png)
-
-Ezekhez az erőforrásokhoz való hozzáférés vezérlése érdekében ezért javasoljuk, hogy:
+Ezért javasoljuk, hogy ezekhez az erőforrásokhoz való hozzáférés szabályozásához:
 
 * Szabályozhatja a hozzáférést a **erőforráscsoportba vagy előfizetésbe** szintjét.
-* Rendelje hozzá a **Application Insights-összetevővel kapcsolatos közreműködői** szerepkör a felhasználók számára. Ez lehetővé teszi webes tesztjeinek használatát, a riasztások és az Application Insights-erőforrások, módosíthatják a csoport minden más szolgáltatásokhoz való hozzáférés megadása nélkül.
+* Rendelje hozzá a **Application Insights-összetevő közreműködői** szerepkör a felhasználók számára. Ez lehetővé teszi webes teszteket, a riasztások és az Application Insights-erőforrások, módosíthatják a csoport bármely egyéb szolgáltatásokhoz való hozzáférés biztosítása nélkül.
 
-## <a name="to-provide-access-to-another-user"></a>A másik felhasználó való hozzáférés biztosításához
+## <a name="to-provide-access-to-another-user"></a>Hozzáférést biztosít egy másik felhasználónak
+
 Az előfizetés vagy az erőforráscsoport tulajdonosi jogosultsággal kell rendelkeznie.
 
-A felhasználónak rendelkeznie kell egy [Microsoft Account][account], vagy nem érhető el a saját [szervezeti Microsoft Account](../active-directory/sign-up-organization.md). Egyéni felhasználók számára, valamint az Azure Active Directory felhasználói csoportok hozzáférést biztosíthat.
+A felhasználónak rendelkeznie kell egy [Microsoft Account][account], vagy a hozzáférést a [szervezeti Microsoft-Account](../active-directory/fundamentals/sign-up-organization.md). Megadhatja a hozzáférési egyének és az Azure Active Directoryban meghatározott felhasználói csoportok számára.
 
-#### <a name="navigate-to-the-resource-group"></a>Keresse meg az erőforráscsoport
-Nincs a felhasználó hozzáadása.
+#### <a name="navigate-to-resource-group-or-directly-to-the-resource-itself"></a>Keresse meg az erőforráscsoportot, vagy közvetlenül az erőforrásán
 
-![Az alkalmazás erőforrás panelen nyissa meg a Essentials, nyissa meg az erőforráscsoportot és nincs válassza a beállítások/felhasználók. Kattintson az Add (Hozzáadás) parancsra.](./media/app-insights-resources-roles-access-control/01-add-user.png)
+Válasszon **hozzáférés-vezérlés (IAM)** elemet a bal oldali menüben.
 
-Vagy nem sikerült lépjen be egy másik szint és a felhasználó hozzáadása az előfizetéshez.
+![Képernyőfelvétel a hozzáférési forráskezelés gomb az Azure Portalon](./media/app-insights-resources-roles-access-control/0001-access-control.png)
 
-#### <a name="select-a-role"></a>Szerepkör kiválasztása
-![Az új felhasználó szerepkör kiválasztása](./media/app-insights-resources-roles-access-control/03-role.png)
+Válassza ki **hozzáadása**
 
-| Szerepkör | Az erőforráscsoporthoz tartozik |
+![Képernyőfelvétel a hozzáférési vezérlőelemének menüjében pirossal kiemelt Hozzáadás gomb](./media/app-insights-resources-roles-access-control/0002-add.png)
+
+A **engedélyek hozzáadása** lásd alább a elsősorban jellemző az Application Insights-erőforrást a hozzáférés-vezérlési engedélyekkel az erőforráscsoportok, például magasabb szintű megtekintett jelennének meg további, nem alkalmazás Insights-központú szerepkörök.
+
+Az összes Azure szerepköralapú hozzáférés-vezérlés beépített szerepkörök használata információinak megtekintése a [hivatalos segédanyagok](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).
+
+![Képernyőfelvétel: a hozzáférés-vezérlési felhasználói szerepkör lista](./media/app-insights-resources-roles-access-control/0003-user-roles.png)
+
+#### <a name="select-a-role"></a>Szerepkörválasztás
+
+Adott esetben arra mutató hivatkozás a társított hivatalos dokumentációjában.
+
+| Szerepkör | Az erőforráscsoportban |
 | --- | --- |
-| Tulajdonos |Módosíthatja semmit, beleértve a felhasználói hozzáférés |
-| Közreműködő |Bármi, beleértve az összes erőforrás szerkesztése |
-| Application Insights-összetevővel kapcsolatos közreműködői |Az Application Insights erőforrásokat, webes tesztjeinek használatát, és a riasztások szerkesztése |
-| Olvasó |Megtekintheti, de nem bármit módosíthat |
+| [Tulajdonos](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) |Bármit módosíthat, beleértve a felhasználói hozzáférést. |
+| [Közreműködő](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) |Szerkesztheti kiterjedhet, például az összes erőforrást. |
+| [Application Insights-összetevő közreműködője](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#application-insights-component-contributor) |Szerkesztheti az Application Insights-erőforrások, webes teszteket és riasztások. |
+| [Olvasó](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader) |Megtekintheti, de nem bármin változtatni. |
+| [Application Insights Snapshot Debugger](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#application-insights-snapshot-debugger) | Application Insights Snapshot Debugger szolgáltatásainak használatához a felhasználónak engedélyt ad. Vegye figyelembe, hogy ezt a szerepkört sem a tulajdonosa, sem a közreműködői szerepkör tartalmazza. |
+| Azure-beli szolgáltatástelepítés kiadáskezelési közreműködője | Közreműködői szerepkör-szolgáltatásokhoz az Azure szolgáltatás üzembe helyezése az üzembe helyezést. |
+| [Adatok Purger](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#data-purger) | Személyes adatok végleges törlése a különleges szerepkörrel. Tekintse meg a [személyes adatokra vonatkozó útmutatás](https://docs.microsoft.com/azure/application-insights/app-insights-customer-data) további információt.   |
+| Az ExpressRoute-rendszergazda | Létrehozhat a delete és express-útvonalak kezelése.|
+| [Log Analytics-közreműködő](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-contributor) | Log Analytics-közreműködő az összes monitorozási adat olvashatja és szerkesztheti a figyelési beállításokat. Figyelési beállítások szerkesztése magában foglalja a virtuális gépek; a Virtuálisgép-bővítmény hozzáadása tudni naplógyűjtemény konfigurálása céljából az Azure Storage; tárfiók kulcsainak beolvasását létrehozásáról és konfigurálásáról az Automation-fiókok; megoldások hozzáadását; és az Azure diagnostics konfigurálása az összes Azure-erőforrást.  |
+| [Log Analytics olvasó](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-reader) | A Log Analytics-olvasó megtekintheti az összes figyelési adatot, és kereshet azokban, valamint megtekintheti a figyelési beállításokat, beleértve az összes Azure-erőforrás Azure-beli diagnosztikájának konfigurációját is. |
+| masterreader | Lehetővé teszi, hogy a felhasználót, hogy mindent megtekinthessen, de nem végezhet módosításokat. |
+| [Közreműködő figyelése](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) | Olvashatja az összes figyelési adatot, és frissítheti a figyelési beállításokat. |
+| [Figyelési metrikák közzétevő](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-metrics-publisher) | Lehetővé teszi a metrikákat az Azure-erőforrások közzétételét. |
+| [Olvasó figyelése](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) | Olvashatja az összes figyelési adatot. |
+| Erőforrás-szabályzati közreműködő (előnézet) | Erőforrás-szabályzat létrehozására/módosítására jogosultságokkal EA-beli visszatöltött felhasználók hozzon létre támogatási jegyet, és olvassa el az erőforrások/hierarchia.  |
+| [Felhasználói hozzáférés rendszergazdája](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#user-access-administrator) | Lehetővé teszi a felhasználóknak más felhasználók Azure-erőforrásokhoz való hozzáférés kezelésére.|
+| [Webhelyek Közreműködője](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#website-contributor) | Lehetővé teszi websites (a webes tarifacsomagokét), de az azokhoz való hozzáférés kezelése...|
 
-"Szerkesztés" magában foglalja a létrehozása, törlése és frissítése:
+"Szerkesztés" tartalmazza, létrehozása, törlése és frissítése:
 
 * További források
 * Webtesztek
@@ -86,8 +108,8 @@ Vagy nem sikerült lépjen be egy másik szint és a felhasználó hozzáadása 
 
 #### <a name="select-the-user"></a>Válassza ki a felhasználót
 
-Ha a felhasználó nem szerepel a könyvtár, felajánlhatja bárki, aki a Microsoft-fiók.
-(Például Outlook.com, OneDrive, Windows Phone vagy XBox Live services használata, ha rendelkeznek a Microsoft-fiók.)
+Ha azt szeretné, a felhasználó nem a címtárban, meghívhatja munkatársait, bárki Microsoft-fiókkal.
+(Ha használnak a szolgáltatások, például az Outlook.com, onedrive vállalati verzió, Windows Phone vagy XBox Live, rendelkeznek egy Microsoft-fiókjával.)
 
 ## <a name="related-content"></a>Kapcsolódó tartalom
 

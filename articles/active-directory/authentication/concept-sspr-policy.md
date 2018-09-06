@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 404be287d2e6ac693e0942c84f630f4e067127f3
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 8ec0947d041dc0d4f5423a48a443ab2dd86949e2
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43666752"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782535"
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Jelszóházirendek és -korlátozások az Azure Active Directoryban
 
@@ -80,7 +80,7 @@ Minden felhasználói fiók, amelyet az Azure AD-bejelentkezés rendelkeznie kel
 
 | Tulajdonság | UserPrincipalName követelmények |
 | --- | --- |
-| Karakterek használhatók |<ul> <li>A – Z</li> <li>a – z</li><li>0 – 9</li> <li> . - \_ ! \# ^ \~</li></ul> |
+| Karakterek használhatók |<ul> <li>A – Z</li> <li>a – z</li><li>0 – 9</li> <li> \. - \_ ! \# ^ \~</li></ul> |
 | Karakterek nem használhatók |<ul> <li>Bármely "\@ \" karakter, amely nem van elválasztva a tartomány felhasználónév.</li> <li>A pont karakter nem tartalmazhat "." közvetlenül a "\@ \" szimbólum</li></ul> |
 | Megkötés hossz alapján |<ul> <li>A teljes hossza nem haladhatja meg a 113 karaktert</li><li>Mielőtt legfeljebb 64 karakter lehet a "\@ \" szimbólum</li><li>Után legfeljebb 48 karakterből állhat a "\@ \" szimbólum</li></ul> |
 

@@ -1,6 +1,6 @@
 ---
-title: Visual keresési SDK csomópont gyors üzembe helyezés |} Microsoft Docs
-description: A vizuális keresési telepítője SDK csomópont konzolalkalmazást.
+title: Vizuális keresés SDK Node-Quickstart |} A Microsoft Docs
+description: A telepítő Visual Search SDK Node Konzolalkalmazás.
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: mikedodaro
@@ -10,46 +10,46 @@ ms.component: bing-web-search
 ms.topic: article
 ms.date: 05/18/2018
 ms.author: v-gedod
-ms.openlocfilehash: 51797f4b674224b4348f3f51518a5b087fd2329a
-ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
+ms.openlocfilehash: bb245f9eab0f367a0e1b69af88352c54132ea29d
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36961908"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782440"
 ---
-# <a name="visual-search-sdk-node-quickstart"></a>Visual keresési SDK csomópont gyors üzembe helyezés
+# <a name="visual-search-sdk-node-quickstart"></a>Vizuális keresés SDK Node-Quickstart
 
-A Bing Visual keresési SDK használja, a REST API a webes kérelmek és elemzési eredmények.
-A [forráskód csomópont Visual keresési SDK minták](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/visualSearch.js) érhető el a Git központ.
+A Bing Visual Search SDK-t használja, a REST API-webes kéréseket és az elemzési eredményeket.
+A [forráskódját csomópont Visual Search SDK-minták](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/visualSearch.js) Github érhető el.
 
-Kód forgatókönyvek szerepelnek, az alábbi kategóriákban:
-* [Visual keresési ügyfél](#client)
+Kód forgatókönyvek szerepelnek a következő kategóriákban:
+* [Visual Search-ügyfél](#client)
 * [Teljes Konzolalkalmazás](#complete)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* SDK-hívások hitelesítése egy kognitív szolgáltatások API-kulcs szükséges. Regisztráljon egy [ingyenes próba kulcs]((https://azure.microsoft.com/try/cognitive-services/?api=search-api-v7)). A Próbakulcs jó másodpercenként egy hívás a hét napja. Éles környezetben [hívóbetű megvásárlása](https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7). Lásd még: [árakról](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/visual/).
+* Hitelesítés az SDK-hívásokat a Cognitive Services API-kulcs szükséges. Regisztráljon egy [ingyenes próba kulcs](https://azure.microsoft.com/try/cognitive-services/?api=search-api-v7). A Próbakulcs jó másodpercenként egy hívás a hét napja. A termelési forgatókönyvekhez [vásárlása egy hozzáférési kulcsot](https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7). Lásd még: [díjszabási információk](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/visual/).
 
 ## <a name="application-dependencies"></a>Alkalmazásfüggőségek
 
 * Futtassa az `npm install Microsoft.Azure.CognitiveServices.Search.VisualSearch` parancsot.
 
 <a name="client"></a>
-## <a name="visual-search-client"></a>Visual keresési ügyfél
-Egy példányának létrehozása a `VisualSearchAPI` ügyfelet, adja hozzá az irányelvek segítségével:
+## <a name="visual-search-client"></a>Visual Search-ügyfél
+Hozzon létre egy példányt, a `VisualSearchAPI` ügyfél, Hozzáadás irányelvekkel:
 ```
 const Search = require('azure-cognitiveservices-visualsearch');
 const CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesCredentials;
 
 ```
-Az ügyfél ezután példányosítható:
+Ezután hozza létre az ügyfél:
 ```
 let keyVar = 'YOUR-VISUAL-SEARCH-ACCESS-KEY';
 let credentials = new CognitiveServicesCredentials(keyVar);
 let visualSearchApiClient = new Search.VisualSearchAPIClient(credentials);
 
 ```
-Az ügyfél képek kereséséhez használni:
+Az ügyfél kereshet a lemezképeket használja:
 ```
 let fileStream = fs.createReadStream('../Data/image.jpg');
 let visualSearchRequest = JSON.stringify({});
@@ -65,7 +65,7 @@ try {
 }
 
 ```
-Az előző lekérdezés az eredményeket elemezni:
+Elemezni az előző lekérdezés eredményei:
 ```
 // Visual Search results
 if (visualSearchResults.image.imageInsightsToken) {
@@ -99,7 +99,7 @@ else {
 <a name="complete"></a>
 ## <a name="complete-console-application"></a>Teljes Konzolalkalmazás
 
-A következő Konzolalkalmazás végrehajtja az előző kód egyéb forgatókönyvek, és elemzi az eredményeket:
+A következő Konzolalkalmazás végrehajtja az előző kód, az egyéb forgatókönyvek, és elemzi az eredmények:
 ```
 /*
  * Copyright (c) Microsoft Corporation. All rights reserved.
@@ -328,4 +328,4 @@ exports.sample = sample;
 
 ## <a name="next-steps"></a>További lépések
 
-[Kognitív Services .NET SDK-minták](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7).
+[Cognitive Services .NET SDK-minták](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7).

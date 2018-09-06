@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/10/2018
+ms.date: 09/05/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: de2e1defeff9ab2dd78bdf019009b62955f73b88
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 4dfeff0e22a541a39a59c37c869af41a7e444fa6
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38970551"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43842498"
 ---
 # <a name="add-hosting-servers-for-the-sql-resource-provider"></a>Az erőforrás-szolgáltató SQL üzemeltetési kiszolgáló hozzáadása
 
@@ -78,15 +78,15 @@ Adjon hozzá egy önálló üzemeltető kiszolgálót, amely már be van állít
 
 1. Jelentkezzen be az Azure Stack operátori portál szolgáltatás-rendszergazdaként.
 
-2. Válassza ki **Tallózás** &gt; **felügyeleti erőforrások** &gt; **kiszolgálókat üzemeltető SQL**.
+2. Válassza ki **minden szolgáltatás** &gt; **felügyeleti erőforrások** &gt; **SQL üzemeltető kiszolgálók**.
 
    ![Az SQL futtató kiszolgálók](./media/azure-stack-sql-rp-deploy/sqlhostingservers.png)
 
-   A **SQL üzemeltető kiszolgálók**, az erőforrás-szolgáltató SQL csatlakozhat az SQL Server azon példányai, amely az erőforrás-szolgáltató háttérrendszer szolgál.
+   A **SQL üzemeltető kiszolgálók**, az erőforrás-szolgáltató SQL csatlakozhat az erőforrás-szolgáltató háttérrendszer erre a célra az SQL Server-példányok.
 
-   ![SQL-csatoló irányítópult](./media/azure-stack-sql-rp-deploy/sqladapterdashboard.png)
+   ![SQL-csatoló irányítópult](./media/azure-stack-sql-rp-deploy/sqlrp-hostingserver.png)
 
-3. A **üzemeltető SQL-kiszolgáló hozzáadása**, adja meg a kapcsolat adatait az SQL Server-példányhoz.
+3. Kattintson a **Hozzáadás** adja meg a kapcsolat részletek az SQL Server-példány az a **üzemeltető SQL-kiszolgáló hozzáadása** panelen.
 
    ![Adjon hozzá egy SQL Server szoftvert futtatja](./media/azure-stack-sql-rp-deploy/sqlrp-newhostingserver.png)
 
