@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/20/2018
 ms.author: danoble
-ms.openlocfilehash: 368caa063ea0487923af8a29f67aa73cae7ed75e
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 355f80479ba7c6d6399bb25f7ba1511c6b18599b
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37952892"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43285227"
 ---
 # <a name="use-the-azure-cosmos-db-emulator-for-local-development-and-testing"></a>Az Azure Cosmos DB Emulator használata helyi fejlesztéshez és teszteléshez
 
@@ -51,12 +51,6 @@ Ez a cikk a következő feladatokat mutatja be:
 > * Az emulátor futtatása Windows rendszerhez készült Dockerben
 > * Profilelemzési fájlok összegyűjtése
 > * Hibaelhárítás
-
-Ajánlott először megnézni a következő videót, amelyben Kirill Gavrylyuk az Azure Cosmos DB Emulator használatának első lépéseit ismerteti. A videó DocumentDB Emulatornak hívja az emulátort, de maga az eszköz át lett nevezve Azure Cosmos DB Emulator névre a videó készítése óta. A videóban szereplő összes információ továbbra is érvényes az Azure Cosmos DB Emulatorra. 
-
-> [!VIDEO https://channel9.msdn.com/Events/Connect/2016/192/player]
-> 
-> 
 
 ## <a name="how-the-emulator-works"></a>Az emulátor működése
 

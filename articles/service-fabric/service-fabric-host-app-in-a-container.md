@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/18/2018
 ms.author: ryanwi
-ms.openlocfilehash: 50ece1d1f74ace494e6bebb84f9f121c1fad7a6c
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: a1e8c53263093554bb616ec130cd17a0d6d4339c
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "41918461"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43302915"
 ---
 # <a name="tutorial-deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>Oktatóanyag: Windows-tárolóban lévő .NET-alkalmazás telepítése Azure Service Fabricre
 
@@ -220,7 +220,7 @@ Most, hogy az alkalmazása kész, üzembe helyezheti az Azure-beli fürtben köz
 
 ![Az alkalmazás közzététele][publish-app]
 
-Az üzembe helyezés folyamatát a kimeneti ablakban követheti nyomon.  Ha az alkalmazás üzembe helyezése befejeződött, nyisson meg egy böngészőablakot, és írja be a fürt címét és az alkalmazásportot. Például: http://http://fabrikamfibercallcenter.southcentralus.cloudapp.azure.com:8659/.
+Az üzembe helyezés folyamatát a kimeneti ablakban követheti nyomon.  Ha az alkalmazás üzembe helyezése befejeződött, nyisson meg egy böngészőablakot, és írja be a fürt címét és az alkalmazásportot. Például: http://fabrikamfibercallcenter.southcentralus.cloudapp.azure.com:8659/.
 
 ![A Fabrikam mintaalkalmazás webes felülete][fabrikam-web-page-deployed]
 

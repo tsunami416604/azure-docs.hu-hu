@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 11/20/2017
 ms.author: govindk
-ms.openlocfilehash: 6ec0feeac9364b416709b45af09c79773a87d0e1
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: f2f2257d3ddc22a80600882d2078210ac27cb15d
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42022988"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43284922"
 ---
 # <a name="introduction-to-azure-cosmos-db-apache-cassandra-api"></a>Bevezetés az Azure Cosmos DB használatába: az Apache Cassandra API
 
@@ -34,10 +34,7 @@ Az Apache Cassandra API használatával az Azure Cosmos DB használható adattá
 
 ![Azure Cosmos DB Cassandra API](./media/cassandra-introduction/cosmosdb-cassandra.png)
 
-A Cassandra API segítségével a már ismert Cassandra Query Language-alapú eszközök (például a CQLSH) és Cassandra-ügyfél illesztőprogramok segítségével kezelheti az Azure Cosmos DB-ben tárolt adatokat. További információkat ezzel kapcsolatban a Kirill Gavrylyuk főmérnökkel készített Microsoft Mechanics-videóban talál.
-
-> [!VIDEO https://www.youtube.com/embed/1Sf4McGN1AQ]
->
+A Cassandra API segítségével a már ismert Cassandra Query Language-alapú eszközök (például a CQLSH) és Cassandra-ügyfél illesztőprogramok segítségével kezelheti az Azure Cosmos DB-ben tárolt adatokat. 
 
 ## <a name="what-is-the-benefit-of-using-apache-cassandra-api-for-azure-cosmos-db"></a>Milyen előnyökkel jár az Azure Cosmos DB az Apache Cassandra API-n keresztüli használata?
 

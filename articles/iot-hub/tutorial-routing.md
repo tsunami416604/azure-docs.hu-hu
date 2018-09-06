@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 05/01/2018
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: 6e421aa630dc121589dece789e2e0d7f9a56bbe6
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: a52ab4ff65312088e65d56006b6f99a7470b88f6
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39434839"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43287250"
 ---
 # <a name="tutorial-configure-message-routing-with-iot-hub"></a>Oktatóanyag: Üzenetek útválasztásának konfigurálása az IoT Hub használatával
 
@@ -184,7 +184,7 @@ az iot hub device-identity show --device-id $iotDeviceName \
 
 ### <a name="powershell-instructions"></a>PowerShell-utasítások
 
-A szkript használatának legegyszerűbb módja a [PowerShell ISE](/powershell/scripting/core-powershell/ise/introducing-the-windows-powershell-ise.md) megnyitása, a szkript másolása a vágólapra, majd a teljes szkript beillesztése a szkriptablakba. Ezután, igény esetén módosíthatja az erőforrások nevének értékeit és futtathatja a teljes szkriptet. 
+A szkript használatának legegyszerűbb módja a [PowerShell ISE](https://docs.microsoft.com/powershell/scripting/core-powershell/ise/introducing-the-windows-powershell-ise?view=powershell-6) megnyitása, a szkript másolása a vágólapra, majd a teljes szkript beillesztése a szkriptablakba. Ezután, igény esetén módosíthatja az erőforrások nevének értékeit és futtathatja a teljes szkriptet. 
 
 ```azurepowershell-interactive
 # Log into Azure account.
@@ -587,14 +587,14 @@ Jelentkezzen be a [Power BI](https://powerbi.microsoft.com/)-fiókjába. Lépjen
 
 ### <a name="clean-up-resources-using-azure-cli"></a>Az erőforrások eltávolítása az Azure CLI használatával
 
-Az erőforráscsoport az [az group delete](https://docs.microsoft.com/en-us/cli/azure/group?view=azure-cli-latest#az-group-delete) paranccsal távolítható el.
+Az erőforráscsoport az [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) paranccsal távolítható el.
 
 ```azurecli-interactive
 az group delete --name $resourceGroup
 ```
 ### <a name="clean-up-resources-using-powershell"></a>Az erőforrások eltávolítása a PowerShell használatával
 
-Az erőforráscsoport a [Remove-AzureRmResourceGroup](https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/remove-azurermresourcegroup) paranccsal távolítható el. Az oktatóanyag elején a **ContosoIoTRG1** értéket adta meg a $resourceGroup beállításhoz.
+Az erőforráscsoport a [Remove-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/azurerm.resources/remove-azurermresourcegroup) paranccsal távolítható el. Az oktatóanyag elején a **ContosoIoTRG1** értéket adta meg a $resourceGroup beállításhoz.
 
 ```azurepowershell-interactive
 Remove-AzureRmResourceGroup -Name $resourceGroup

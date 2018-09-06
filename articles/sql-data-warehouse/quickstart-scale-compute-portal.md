@@ -3,19 +3,19 @@ title: 'Gyors útmutató: Számítási bővítés az Azure SQL Data Warehouse-ba
 description: Azure SQL Data Warehouse-beli számítási bővítés az Azure Portalon. Bővítéssel a számítások teljesítménye növelhető, szűkítéssel a költségek csökkenthetők.
 services: sql-data-warehouse
 author: kevinvngo
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: quickstart
 ms.component: implement
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: d707b9a4b7b683e75bb9313dae2611fd59dbb155
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 1abafb011a445847757af3efb9e0ea4e6170408d
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32182459"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43285533"
 ---
 # <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-in-the-azure-portal"></a>Gyors útmutató: Azure SQL Data Warehouse-beli számítási bővítés az Azure Portalon
 
@@ -38,7 +38,7 @@ Az SQL Data Warehouse-ban növelheti vagy csökkentheti a számítási erőforr�
 Az adattárházegységek számának módosításához:
 
 1. Az Azure Portal bal oldali panelén kattintson az **SQL Data Warehouse-adattárházak** elemre.
-2. Az **SQL-adattárház** lapon jelölje ki a **mySampleDataWarehouse** elemet. Ekkor megnyílik az adattárház.
+2. Az **SQL adattárház** lapon jelölje ki a **mySampleDataWarehouse** elemet. Ekkor megnyílik az adattárház.
 3. Kattintson **Méretezés** lehetőségre.
 
     ![Méretezés lehetőség választása](media/quickstart-scale-compute-portal/click-scale.png)

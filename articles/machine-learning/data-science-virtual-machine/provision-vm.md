@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2018
 ms.author: gokuma
-ms.openlocfilehash: b01ef3701ffb46da57c52e5fe73828ec4252b074
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 8131122f78f743d04e332bfc8dfeba87a8c34236
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43344760"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782654"
 ---
 # <a name="provision-the-windows-data-science-virtual-machine-on-azure"></a>A Windows Data Science virtuális gép Azure-beli üzembe helyezése
 A Microsoft Data Science virtuális gépet (DSVM) egy Windows Azure virtuális gép (VM) rendszerkép. Előtelepített és konfigurált adatelemzési és machine learning használt számos eszközzel. A következő eszközök foglalja magában:
@@ -126,7 +126,7 @@ Machine Learning-kiszolgáló hozzáadásával a párhuzamos és darabolásos ad
 > 
 > 
 
-Anaconda Python 3.6-os verziója telepítve van a **C:\Anaconda**. Anaconda Python 2.7-es telepítőmappájában **c:\Anaconda\envs\python2**. Részletes lépéseiért lásd: [PVTS dokumentációban](/visualstudio/python/installing-python-interpreters.md). 
+Anaconda Python 3.6-os verziója telepítve van a **C:\Anaconda**. Anaconda Python 2.7-es telepítőmappájában **c:\Anaconda\envs\python2**. Részletes lépéseiért lásd: [PVTS dokumentációban](https://docs.microsoft.com/visualstudio/python/installing-python-interpreters). 
 
 ### <a name="the-jupyter-notebook"></a>A Jupyter Notebook
 A Jupyter Notebookot, megosztani a kódot és az elemzési környezet anaconda terjesztési is tartalmaz. A Jupyter Notebook kiszolgáló előre konfigurálva vannak a Python 2.7-es, Python 3.x, PySpark, Julia és R kernelekkel. Indítsa el a Jupyter-kiszolgálót, és indítsa el a böngészőt a notebook kiszolgálón van egy asztali ikon nevezzük **Jupyter Notebook**. 

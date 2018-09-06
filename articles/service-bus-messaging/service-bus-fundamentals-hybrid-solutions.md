@@ -3,18 +3,18 @@ title: Az Azure Service Bus alapjainak áttekintése | Microsoft Docs
 description: Bevezetés a Service Bus használatába az Azure-alkalmazások más szoftverekhez való csatlakoztatásához.
 services: service-bus-messaging
 documentationcenter: .net
-author: sethmanheim
+author: spelluru
 manager: timlt
 ms.service: service-bus-messaging
 ms.topic: get-started-article
 ms.date: 05/23/2018
-ms.author: sethm
-ms.openlocfilehash: bef88f09f182b1bb450ee0e045985ed59d5b5648
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.author: spelluru
+ms.openlocfilehash: 1f9362ae102ffce6fb9ccc31362973d58964610f
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "41917749"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43697226"
 ---
 # <a name="azure-service-bus"></a>Azure Service Bus
 

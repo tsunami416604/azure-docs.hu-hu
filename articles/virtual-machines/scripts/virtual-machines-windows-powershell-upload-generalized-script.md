@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 01/02/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 832b32ebc4cf99d17df4669b421415d0d0ca0560
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 786dbb258fa4299f80f7ff9d24a1c129a9506bb7
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39112848"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43663745"
 ---
 # <a name="sample-script-to-upload-a-vhd-to-azure-and-create-a-new-vm"></a>Példaszkript egy VHD Azure-ba történő feltöltéséhez és új virtuális gép létrehozásához
 
@@ -147,7 +147,7 @@ A szkript a következő parancsokat használja az üzemelő példány létrehoz�
 | [Set-AzureRmVMSourceImage](/powershell/module/azurerm.compute/set-azurermvmsourceimage)                           | Meghatározza egy virtuális gép rendszerképét.                                                                                                                                            |
 | [Set-AzureRmVMOSDisk](/powershell/module/azurerm.compute/set-azurermvmosdisk)                                     | Beállítja egy operációsrendszer-lemez tulajdonságait egy virtuális gépen.                                                                                                                      |
 | [Set-AzureRmVMOperatingSystem](/powershell/module/azurerm.compute/set-azurermvmoperatingsystem)                   | Beállítja egy operációsrendszer-lemez tulajdonságait egy virtuális gépen.                                                                                                                      |
-| [Add-AzureRmVMNetworkInterface](/powershell/module/azurerm.network/add-azurermvmnetworkinterface)                 | Hálózati adaptert ad egy virtuális géphez.                                                                                                                                       |
+| [Add-AzureRmVMNetworkInterface](https://docs.microsoft.com/powershell/module/azurerm.compute/add-azurermvmnetworkinterface?view=azurermps-6.8.1)                 | Hálózati adaptert ad egy virtuális géphez.                                                                                                                                       |
 | [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm)                                                 | Virtuális gépet hoz létre.                                                                                                                                                            |
 | [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup)                     | Eltávolít egy erőforráscsoportot és az összes abban található erőforrást.                                                                                                                         |
 

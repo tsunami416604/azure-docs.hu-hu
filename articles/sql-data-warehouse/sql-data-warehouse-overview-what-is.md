@@ -3,19 +3,19 @@ title: Mi az Azure SQL Data Warehouse? | Microsoft Docs
 description: Vállalati szintű elosztott adatbázis, amely petabájtnyi mennyiségű relációs és nem relációs adatot képes feldolgozni. Ez az iparág első felhőalapú adatraktára, amely másodpercek alatt szüneteltethető, illetve növelhető vagy csökkenthető a mérete.
 services: sql-data-warehouse
 author: igorstanko
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: overview
 ms.component: design
 ms.date: 04/17/2018
 ms.author: igorstan
 ms.reviewer: igorstan
-ms.openlocfilehash: c8e6af4eabc96845ff6c237735cdb0da2ed24743
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 7ba1cb75b7e7c5a93438ea4f17bb563477837099
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32185977"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43301933"
 ---
 # <a name="what-is-azure-sql-data-warehouse"></a>Mi az Azure SQL Data Warehouse?
 

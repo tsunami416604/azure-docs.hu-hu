@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/02/2017
-ms.openlocfilehash: 01635b184903b88fa12e23c370caa65bb1eb377c
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: 31676ea43acc495bf0cb6a249901e5b64ef217b7
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37024734"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782930"
 ---
 # <a name="azure-machine-learning-frequently-asked-questions-billing-capabilities-limitations-and-support"></a>Az Azure Machine Learning szolgáltatásra vonatkozó gyakori kérdések (GYIK): Számlázás, képességek, korlátozások és támogatás
 Az alábbiakban néhány gyakori kérdést (GYIK) és azok válaszait olvashatja az Azure Machine Learning szolgáltatással kapcsolatban, amely egy, a webszolgáltatásokon keresztül végrehajtott prediktív modellezést és a megoldások üzembe helyezését célzó felhőalapú szolgáltatás. Ezek a gyakori kérdések a szolgáltatás használatával kapcsolatos kérdéseket fedik le, beleértve a számlázási modell, a képességek, a korlátozások és a támogatás témaköreit.
@@ -312,7 +312,7 @@ A [Microsoft Virtual Academy](http://www.microsoftvirtualacademy.com/training-co
 
 **Hol kaphatok támogatást az Azure Machine Learninghez?**
 
-Az Azure Machine Learninghez való műszaki támogatásért lépjen az [Azure-támogatás](/support/options/) oldalára, és válassza a **Machine Learning** opciót.
+Az Azure Machine Learninghez való műszaki támogatásért lépjen az [Azure-támogatás](https://azure.microsoft.com/support/options/) oldalára, és válassza a **Machine Learning** opciót.
 
 Az Azure Machine Learning egy közösségi fórummal is rendelkezik az MSDN-en, ahol az Azure Machine Learninggel kapcsolatos kérdéseit teheti fel. A fórumot az Azure Machine Learning fejlesztőcsapata figyeli. Tekintse meg az [Azure-fórumokat](http://social.msdn.microsoft.com/Forums/windowsazure/home?forum=MachineLearning).
 

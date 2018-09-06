@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 02/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: f9fea933dd664955a0bc6f47db775fbc469fd684
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: f8f91a4c039e07b636395ab953b8031d5ffe9958
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38719401"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43343506"
 ---
 # <a name="tutorial-install-the-sql47iis47net-stack-in-a-windows-vm-with-azure-powershell"></a>Oktatóanyag: Az SQL&#47;IIS&#47;.NET verem telepítése Windows rendszerű virtuális gépeken az Azure PowerShell használatával
 
@@ -116,7 +116,7 @@ New-AzureRmVm `
     -OpenPorts 3389,1401 
 ```
 
-A [Set-AzureRmVMSqlServerExtension](/powershell/module/azurerm.compute/set-azurermvmsqlserverextension) parancsmag segítségével adja hozzá az [SQL Server-bővítményt](/sql/virtual-machines-windows-sql-server-agent-extension.md) az SQL virtuális géphez.
+A [Set-AzureRmVMSqlServerExtension](/powershell/module/azurerm.compute/set-azurermvmsqlserverextension) parancsmag segítségével adja hozzá az [SQL Server-bővítményt](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension) az SQL virtuális géphez.
 
 ```azurepowershell-interactive
 Set-AzureRmVMSqlServerExtension `

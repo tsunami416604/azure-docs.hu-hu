@@ -2,19 +2,19 @@
 title: Oktatóanyag – Kereskedelmi leltárválaszték frissítése közzétételi/előfizetési csatornák és témakörszűrők használatával az Azure Portalon | Microsoft Docs
 description: Ez az oktatóanyag bemutatja, hogyan küldhet és fogadhat témakörökhöz és előfizetésekhez tartozó üzeneteket, és hogyan adhat hozzá szűrési szabályokat a .NET használatával
 services: service-bus-messaging
-author: sethmanheim
+author: spelluru
 manager: timlt
-ms.author: sethm
+ms.author: spelluru
 ms.date: 05/22/2018
 ms.topic: tutorial
 ms.service: service-bus-messaging
 ms.custom: mvc
-ms.openlocfilehash: 654cb09621837c360deccecb7778c5d467592dd1
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 2496c931da734c019801e3fa6deee127d8e571df
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43124214"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43697053"
 ---
 # <a name="tutorial-update-inventory-using-azure-portal-and-topicssubscriptions"></a>Oktatóanyag: Leltár frissítése az Azure Portal és témakörök/előfizetések használatával
 

@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/08/2018
 ms.author: yushwang
 ms.custom: mvc
-ms.openlocfilehash: da077f013c558448be63dce9b215ded99362d22e
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 61e040fc2f7ff70794b49204e3dea01375637641
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38452464"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43336576"
 ---
 # <a name="create-and-manage-s2s-vpn-connections-with-the-azure-powershell-module"></a>S2S VPN-kapcsolatok létrehozása és felügyelete az Azure PowerShell-modullal
 
@@ -86,7 +86,7 @@ A helyi hálózati átjáró a helyszíni hálózatot jelöli. A helyszíni hál
 * A helyszíni címtér
 * (Nem kötelező) A BGP attribútumai (a BGP-társ IP-címe és AS-száma)
 
-Hozzon létre egy helyi hálózati átjárót a [New-AzureRmLocalNetworkGateway](/powershell/module/azurerm.resources/new-azurermlocalnetworkgateway) paranccsal.
+Hozzon létre egy helyi hálózati átjárót a [New-AzureRmLocalNetworkGateway](https://docs.microsoft.com/powershell/module/azurerm.network/new-azurermlocalnetworkgateway?view=azurermps-6.8.1) paranccsal.
 
 ```azurepowershell-interactive
 New-AzureRmLocalNetworkGateway -Name $LNG1 -ResourceGroupName $RG1 `
@@ -95,7 +95,7 @@ New-AzureRmLocalNetworkGateway -Name $LNG1 -ResourceGroupName $RG1 `
 
 ## <a name="create-a-s2s-vpn-connection"></a>S2S VPN-kapcsolat létrehozása
 
-Ezután hozzon létre egy helyek közötti VPN-kapcsolatot a virtuális hálózati átjáró és a VPN-eszköz között a [New-AzureRmVirtualNetworkGatewayConnection](/powershell/module/azurerm.resources/new-azurermvirtualnetworkgatewayconnection) paranccsal. Vegye figyelembe, hogy helyek közötti VPN-kapcsolat esetében a „-ConnectionType” értéke: *IPsec*.
+Ezután hozzon létre egy helyek közötti VPN-kapcsolatot a virtuális hálózati átjáró és a VPN-eszköz között a [New-AzureRmVirtualNetworkGatewayConnection](https://docs.microsoft.com/powershell/module/azurerm.network/new-azurermvirtualnetworkgatewayconnection?view=azurermps-6.8.1) paranccsal. Vegye figyelembe, hogy helyek közötti VPN-kapcsolat esetében a „-ConnectionType” értéke: *IPsec*.
 
 ```azurepowershell-interactive
 $vng1 = Get-AzureRmVirtualNetworkGateway -Name $GW1  -ResourceGroupName $RG1
@@ -112,7 +112,7 @@ BGP használata esetén egészítse ki a nem kötelező „**-EnableBGP $True**�
 
 ### <a name="view-and-update-your-pre-shared-key"></a>Az előmegosztott kulcs megtekintése és frissítése
 
-Az Azure S2S VPN-kapcsolat egy előmegosztott kulcsot (titkot) használ a helyszíni VPN-eszköz és az Azure VPN-átjáró közötti hitelesítéshez. A kapcsolat előmegosztott kulcsát a [Get-AzureRmVirtualNetworkGatewayConnectionSharedKey](/powershell/module/azurerm.resources/get-azurermvirtualnetworkgatewayconnectionsharedkey) és a [Set-AzureRmVirtualNetworkGatewayConnectionSharedKey](/powershell/module/azurerm.resources/set-azurermvirtualnetworkgatewayconnectionsharedkey) parancsokkal tekintheti meg és frissítheti.
+Az Azure S2S VPN-kapcsolat egy előmegosztott kulcsot (titkot) használ a helyszíni VPN-eszköz és az Azure VPN-átjáró közötti hitelesítéshez. A kapcsolat előmegosztott kulcsát a [Get-AzureRmVirtualNetworkGatewayConnectionSharedKey](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermvirtualnetworkgatewayconnectionsharedkey?view=azurermps-6.8.1) és a [Set-AzureRmVirtualNetworkGatewayConnectionSharedKey](https://docs.microsoft.com/powershell/module/azurerm.network/set-azurermvirtualnetworkgatewayconnectionsharedkey?view=azurermps-6.8.1) parancsokkal tekintheti meg és frissítheti.
 
 > [!IMPORTANT]
 > Az előmegosztott kulcs egy **nyomtatható ASCII-karaktereket** tartalmazó, 128 karakternél nem hosszabb karakterlánc.
@@ -140,7 +140,7 @@ Az Azure VPN-átjárók támogatják a BGP dinamikus útválasztási protokollt.
 * Helyszíni helyi hálózati átjáró ASN-száma
 * Helyszíni helyi hálózati átjáró BGP-társának IP-címe
 
-Ha nem konfigurálta a BGP-tulajdonságokat, a következő parancsokkal adhatja hozzá azokat a VPN-átjáróhoz és a helyi hálózati átjáróhoz: [Set-AzureRmVirtualNetworkGateway](/powershell/module/azurerm.resources/set-azurermvirtualnetworkgateway) és [Set-AzureRmLocalNetworkGateway](/powershell/module/azurerm.resources/set-azurermlocalnetworkgateway).
+Ha nem konfigurálta a BGP-tulajdonságokat, a következő parancsokkal adhatja hozzá azokat a VPN-átjáróhoz és a helyi hálózati átjáróhoz: [Set-AzureRmVirtualNetworkGateway](https://docs.microsoft.com/powershell/module/azurerm.network/set-azurermvirtualnetworkgateway?view=azurermps-6.8.1) és [Set-AzureRmLocalNetworkGateway](https://docs.microsoft.com/powershell/module/azurerm.network/set-azurermlocalnetworkgateway?view=azurermps-6.8.1).
 
 ```azurepowershell-interactive
 $vng1 = Get-AzureRmVirtualNetworkGateway -Name $GW1  -ResourceGroupName $RG1
@@ -151,7 +151,7 @@ Set-AzureRmLocalNetworkGateway -LocalNetworkGateway $lng1 `
   -Asn $LNGASN1 -BgpPeeringAddress $BGPPeerIP1
 ```
 
-Engedélyezze a BGP-t a [Set-AzureRmVirtualNetworkGatewayConnection](/powershell/module/azurerm.resources/set-azurermvirtualnetworkgatewayconnection) paranccsal.
+Engedélyezze a BGP-t a [Set-AzureRmVirtualNetworkGatewayConnection](https://docs.microsoft.com/powershell/module/azurerm.network/set-azurermvirtualnetworkgatewayconnection?view=azurermps-6.8.1) paranccsal.
 
 ```azurepowershell-interactive
 $connection = Get-AzureRmVirtualNetworkGatewayConnection `
@@ -214,7 +214,7 @@ Most már két S2S-kapcsolattal rendelkezik az Azure VPN-átjáróhoz.
 
 ## <a name="delete-a-s2s-vpn-connection"></a>S2S VPN-kapcsolat törlése
 
-Az S2S VPN-kapcsolatokat a [Remove-AzureRmVirtualNetworkGatewayConnection](/powershell/module/azurerm.resources/remove-azurermvirtualnetworkgatewayconnection) paranccsal törölheti.
+Az S2S VPN-kapcsolatokat a [Remove-AzureRmVirtualNetworkGatewayConnection](https://docs.microsoft.com/powershell/module/azurerm.network/remove-azurermvirtualnetworkgatewayconnection?view=azurermps-6.8.1) paranccsal törölheti.
 
 ```azurepowershell-interactive
 Remove-AzureRmVirtualNetworkGatewayConnection -Name $Connection2 -ResourceGroupName $RG1

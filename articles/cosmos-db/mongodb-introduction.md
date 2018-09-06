@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 02/12/2018
 ms.author: sclyon
-ms.openlocfilehash: 3a5978603ae57a6975b76a0736dc4e2d1f133d30
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: b0fba3cee298e55702629815da4649d9af315b25
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42023490"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43283026"
 ---
 # <a name="introduction-to-azure-cosmos-db-mongodb-api"></a>Alapvető ismeretek az Azure Cosmos DB MongoDB API-ról
 
@@ -49,11 +49,6 @@ Az Azure Cosmos DB-adatbázisok használhatók a [MongoDB](https://docs.mongodb.
 **Automatikus indexelés**: Alapértelmezés szerint az Azure Cosmos DB automatikusan indexeli a MongoDB-adatbázis dokumentumaiban található összes tulajdonságot, nem vár vagy igényel semmilyen sémát, és nem szükséges a másodlagos indexek létrehozása sem. Emellett az egyedi indexelési képesség engedélyez egy egyediségi megkötést azokon a dokumentummezőkön, amelyeket a rendszer már automatikusan indexelt az Azure Cosmos DB-ben.
 
 **Vállalati szintű**: Az Azure Cosmos DB több helyi replikát támogat, hogy biztosítsa a 99,9%-os rendelkezésre állást és az adatvédelmet a helyi és regionális meghibásodások esetén. Az Azure Cosmos DB vállalati szintű [megfelelőségi tanúsítványokkal](https://www.microsoft.com/trustcenter) és biztonsági funkciókkal rendelkezik. 
-
-További információért tekintse meg ezt a videót az Azure Cosmos DB vezető programmenedzserével, Aleksey Savateyevvel.
-
-> [!VIDEO https://channel9.msdn.com/Events/Connect/2017/T136/player]
-> 
 
 ## <a name="how-to-get-started"></a>Első lépések
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 06/12/2018
 ms.author: rolyon
-ms.openlocfilehash: 2b3bd55fd2ed9f392611fcb32b0ebd0f5c6b5e09
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 1e3043a6053625f8363e9035e59b53275714a827
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36322525"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43300609"
 ---
 # <a name="tutorial-create-a-custom-role-using-azure-powershell"></a>Oktatóanyag: Egyéni szerepkör létrehozása az Azure PowerShell használatával
 
@@ -99,7 +99,7 @@ Legegyszerűbben úgy hozhat létre egyéni szerepkört, ha egy beépített szer
     
 1. A JSON-fájl szerkesztésével adja hozzá a `"Microsoft.Support/*"` műveletet az `Actions` tulajdonsághoz. Ügyeljen arra, hogy az olvasási művelet után mindenképpen használjon vesszőt. Ez a művelet lehetővé teszi a felhasználónak a támogatási jegyek létrehozását.
 
-1. Kérje le az előfizetése azonosítóját a [Get-AzureRmSubscription](/powershell/module/azurerm.resources/get-azurermsubscription) paranccsal.
+1. Kérje le az előfizetése azonosítóját a [Get-AzureRmSubscription](/powershell/module/azurerm.profile/get-azurermsubscription) paranccsal.
 
     ```azurepowershell
     Get-AzureRmSubscription

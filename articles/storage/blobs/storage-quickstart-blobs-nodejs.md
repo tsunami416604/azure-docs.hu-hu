@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 04/09/2018
 ms.author: cshoe
-ms.openlocfilehash: acf332209ca0588ab7722ddcfdcfe7b6715d672c
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 21e09ea231853826155d1ab12d9c992d85ef568a
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39397932"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43664212"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-nodejs"></a>Rövid útmutató: blobok feltöltése, letöltése és listázása a Node.js használatával
 
@@ -100,11 +100,11 @@ A változók a következő értékekre vannak beállítva:
 - a *sourceFilePath* változó a feltölteni kívánt fájl abszolút elérési útvonalára van beállítva
 - a *blobName* változó a fáj neve lesz kiterjesztés nélkül
 
-A következő implementációban a *blobService* függvények mindegyike egy *Promise* ígéret részét képezi, amely hozzáférést biztosít a JavaScript *async* függvényéhez és *await* operátorához, ezáltal zökkenőmentessé teszi az [Azure Storage API](/nodejs/api/azure-storage/blobservice) visszahívásainak működését. Ha minden függvényre sikeres válasz érkezik, az ígéret a kapcsolódó adatokkal és a műveletre vonatkozó üzenettel oldódik fel.
+A következő implementációban a *blobService* függvények mindegyike egy *Promise* ígéret részét képezi, amely hozzáférést biztosít a JavaScript *async* függvényéhez és *await* operátorához, ezáltal zökkenőmentessé teszi az [Azure Storage API](https://docs.microsoft.com/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest) visszahívásainak működését. Ha minden függvényre sikeres válasz érkezik, az ígéret a kapcsolódó adatokkal és a műveletre vonatkozó üzenettel oldódik fel.
 
 ### <a name="create-a-blob-container"></a>Blobtároló létrehozása
 
-A *createContainer* függvény meghívja a [createContainerIfNotExists](/nodejs/api/azure-storage/blobservice#azure_storage_BlobService_createContainerIfNotExists) függvényt, és beállítja a megfelelő hozzáférési szintet a blobhoz.
+A *createContainer* függvény meghívja a [createContainerIfNotExists](https://docs.microsoft.com/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#createcontainerifnotexists) függvényt, és beállítja a megfelelő hozzáférési szintet a blobhoz.
 
 ```javascript
 const createContainer = () => {
@@ -120,13 +120,13 @@ const createContainer = () => {
 };
 ```
 
-A **createContainerIfNotExists** függvény második paramétere (*options*) egy [publicAccessLevel](/nodejs/api/azure-storage/blobservice#azure_storage_BlobService_createContainerIfNotExists) értéket fogad el. A *publicAccessLevel* *blob* értéke határozza meg bizonyos blobadatok nyilvánossá tételét. Ez a beállítás a *container* szintű hozzáféréssel ellentétben nem a tároló tartalmának listázását teszi lehetővé.
+A **createContainerIfNotExists** függvény második paramétere (*options*) egy [publicAccessLevel](https://docs.microsoft.com/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#createcontainerifnotexists) értéket fogad el. A *publicAccessLevel* *blob* értéke határozza meg bizonyos blobadatok nyilvánossá tételét. Ez a beállítás a *container* szintű hozzáféréssel ellentétben nem a tároló tartalmának listázását teszi lehetővé.
 
 A **createContainerIfNotExists** függvény engedélyezi az alkalmazás számára a *createContainer* parancs többszöri használatát anélkül, hogy hibát adna vissza, ha a tároló már létezik. Éles környezetben gyakran csak egyszer hívja meg a **createContainerIfNotExists** függvényt, ha mindig ugyanazt a tárolót használja az alkalmazásban. Ilyen esetekben előre is létrehozhatja a tárolót a portálon vagy az Azure CLI-n keresztül.
 
 ### <a name="upload-a-blob-to-the-container"></a>A blob feltöltése a tárolóba
 
-Az *upload* függvény a [createBlockBlobFromLocalFile](/nodejs/api/azure-storage/blobservice#azure_storage_BlobService_createBlockBlobFromLocalFile) függvényt használja a fájlrendszer egy fájljának a blobtárolóba való feltöltésére és írására vagy felülírására. 
+Az *upload* függvény a [createBlockBlobFromLocalFile](https://docs.microsoft.com/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#createblockblobfromlocalfile) függvényt használja a fájlrendszer egy fájljának a blobtárolóba való feltöltésére és írására vagy felülírására. 
 
 ```javascript
 const upload = () => {
@@ -141,13 +141,13 @@ const upload = () => {
     });
 };
 ```
-A mintaalkalmazás környezetén belül az *example.txt* nevű fájl lesz feltöltve az *example* nevű blobba a *test-contaier* nevű tárolóban. A tartalmak blobokba való feltöltéséhez egyéb megközelítések is elérhetők, például a [text](/nodejs/api/azure-storage/blobservice#azure_storage_BlobService_createBlockBlobFromText) és a [streams](/nodejs/api/azure-storage/blobservice#azure_storage_BlobService_createBlockBlobFromStream) használata.
+A mintaalkalmazás környezetén belül az *example.txt* nevű fájl lesz feltöltve az *example* nevű blobba a *test-contaier* nevű tárolóban. A tartalmak blobokba való feltöltéséhez egyéb megközelítések is elérhetők, például a [text](https://docs.microsoft.com/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#createblockblobfromtext) és a [streams](https://docs.microsoft.com/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#createblockblobfromstream) használata.
 
 Ha ellenőrizni szeretné, hogy a fájl feltöltődött-e a blobtárolóba, használhatja az [Azure Storage Explorert](https://azure.microsoft.com/features/storage-explorer/) a fiókban szereplő adatok megtekintéséhez.
 
 ### <a name="list-the-blobs-in-a-container"></a>A tárolóban lévő blobok listázása
 
-A *list* függvény meghívja a [listBlobsSegmented](/nodejs/api/azure-storage/blobservice#azure_storage_BlobService_createBlockBlobFromText) metódust, amely egy tároló blobmetaadatainak listáját adja vissza. 
+A *list* függvény meghívja a [listBlobsSegmented](https://docs.microsoft.com/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#listblobssegmented) metódust, amely egy tároló blobmetaadatainak listáját adja vissza. 
 
 ```javascript
 const list = () => {
@@ -163,11 +163,11 @@ const list = () => {
 };
 ```
 
-A *listBlobsSegmented* metódus [BlobResult](/nodejs/api/azure-storage/blobresult) példányok tömbjeként adja vissza a blobmetaadatokat. Az eredményeket a rendszer 5000 növekményes kötegekben (szegmensekben) adja vissza. Ha egy tároló több, mint 5000 blobot tartalmaz, akkor az eredmények egy **continuationToken** értéket is tartalmaznak. A blobtárolóban szereplő további szegmensek listázásához a folytatási jogkivonatot továbbíthatja a **listBlobSegmented** metódusba második argumentumként.
+A *listBlobsSegmented* metódus [BlobResult](https://docs.microsoft.com/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice.blobresult?view=azure-node-latest) példányok tömbjeként adja vissza a blobmetaadatokat. Az eredményeket a rendszer 5000 növekményes kötegekben (szegmensekben) adja vissza. Ha egy tároló több, mint 5000 blobot tartalmaz, akkor az eredmények egy **continuationToken** értéket is tartalmaznak. A blobtárolóban szereplő további szegmensek listázásához a folytatási jogkivonatot továbbíthatja a **listBlobSegmented** metódusba második argumentumként.
 
 ### <a name="download-a-blob-from-the-container"></a>Blob letöltése a tárolóból
 
-A *download* függvény a [getBlobToLocalFile](/nodejs/api/azure-storage/blobservice#azure_storage_BlobService_getBlobToLocalFile) utasítást használja a blob tartalmának a megadott abszolút fájlelérési útvonalra való letöltéséhez.
+A *download* függvény a [getBlobToLocalFile](https://docs.microsoft.com/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#getblobtolocalfile) utasítást használja a blob tartalmának a megadott abszolút fájlelérési útvonalra való letöltéséhez.
 
 ```javascript
 const download = () => {
@@ -187,7 +187,7 @@ Az itt látható megvalósítás megváltoztatja a forrásfájl útvonalát, és
 
 ### <a name="delete-blobs-in-the-container"></a>Blobok törlése a tárolóban
 
-A *deleteBlock* függvény (a *delete* konzolparancs aliasnévvel) meghívja a [deleteBlobIfExists](/nodejs/api/azure-storage/blobservice#azure_storage_BlobService_deleteBlobIfExists) függvényt. Ahogy a neve is mutatja, ez a függvény nem ad vissza hibát, ha blob már törölve van.
+A *deleteBlock* függvény (a *delete* konzolparancs aliasnévvel) meghívja a [deleteBlobIfExists](https://docs.microsoft.com/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#deleteblobifexists) függvényt. Ahogy a neve is mutatja, ez a függvény nem ad vissza hibát, ha blob már törölve van.
 
 ```javascript
 const deleteBlock = () => {
@@ -272,7 +272,7 @@ try {
 ```
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-Ha nem tervezi a cikkben létrehozott adatok vagy fiókok használatát, a nem kívánt számlázás elkerülése érdekében érdemes törölnie azokat. A blobok és tárolók törléséhez használhatja a [deleteBlobIfExists](/nodejs/api/azure-storage/blobservice?view=azure-node-latest#deleteBlobIfExists_container__blob__options__callback_) és a [deleteContainerIfExists](/nodejs/api/azure-storage/blobservice?view=azure-node-latest#deleteContainerIfExists_container__options__callback_) metódusokat. A tárfiókot [a portálon keresztül](../common/storage-create-storage-account.md) is törölheti.
+Ha nem tervezi a cikkben létrehozott adatok vagy fiókok használatát, a nem kívánt számlázás elkerülése érdekében érdemes törölnie azokat. A blobok és tárolók törléséhez használhatja a [deleteBlobIfExists](https://docs.microsoft.com/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#deleteblobifexists) és a [deleteContainerIfExists](https://docs.microsoft.com/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#deletecontainerifexists) metódusokat. A tárfiókot [a portálon keresztül](../common/storage-create-storage-account.md) is törölheti.
 
 ## <a name="resources-for-developing-nodejs-applications-with-blobs"></a>Blobokkal rendelkező Node.js-alkalmazások fejlesztéséhez használható forrásanyagok
 
