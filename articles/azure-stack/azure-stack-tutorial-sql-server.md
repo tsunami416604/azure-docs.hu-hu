@@ -1,6 +1,6 @@
 ---
-title: SQL-adatbázisok Azure verem felhasználók számára történő elérhetővé |} Microsoft Docs
-description: Az oktatóanyag segítséget nyújt az SQL Server erőforrás-szolgáltató telepítéséhez, és hozzon létre kínál, amelyekkel Azure verem felhasználók SQL adatbázisok létrehozására.
+title: SQL-adatbázisok az Azure Stack-felhasználók számára elérhetővé |} A Microsoft Docs
+description: Az oktatóanyag az SQL Server erőforrás-szolgáltató telepítéséhez, és hozzon létre kínál, amelyek lehetővé teszik az SQL-adatbázisok létrehozása az Azure Stack felhasználóinak.
 services: azure-stack
 documentationcenter: ''
 author: jeffgilb
@@ -12,54 +12,54 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 06/05/2018
+ms.date: 09/05/2018
 ms.author: jeffgilb
 ms.reviewer: ''
 ms.custom: mvc
-ms.openlocfilehash: b9ba2bb89bb0d7e16a28a165cf14530a7a10f71b
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 35f4d2adfe3ca64496139cdd708fb5f52f8721ee
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35234750"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44023477"
 ---
-# <a name="tutorial-make-sql-databases-available-to-your-azure-stack-users"></a>Oktatóanyag: SQL-adatbázisok felhasználók számára elérhetővé az Azure-verem
+# <a name="tutorial-make-sql-databases-available-to-your-azure-stack-users"></a>Oktatóanyag: SQL-adatbázisok számára elérhetővé az Azure Stack-felhasználók
 
-Rendszergazdaként Azure verem felhő ajánlatokat, amelyek segítségével a felhasználók hozhat létre (bérlőkkel), amely a felhő-natív alkalmazások, webhelyek és a munkaterhelések használhatják SQL-adatbázisok létrehozására. Egyéni, igény szerinti, felhőalapú adatbázist biztosít a felhasználók számára, mentheti azokat időt és erőforrásokat. Ennek beállításához a fogja végrehajtani:
+Azure Stack a felhőalapú rendszergazdák ajánlatok, amelyek lehetővé teszik a felhasználók hozhat létre (bérlők) is használható a natív felhőalkalmazásokat, a websites és a számítási feladatokat az SQL-adatbázisok létrehozása. Az egyéni, igény szerinti, felhőalapú adatbázisok biztosításával a felhasználók számára, mentheti őket időt és erőforrásokat. Állítsa, a következőket fogja végrehajtani:
 
 > [!div class="checklist"]
-> * Az erőforrás-szolgáltató SQL Server telepítése
+> * Az SQL Server erőforrás-szolgáltató üzembe helyezése
 > * Ajánlat létrehozása
 > * Az ajánlat tesztelése
 
-## <a name="deploy-the-sql-server-resource-provider"></a>Az erőforrás-szolgáltató SQL Server telepítése
+## <a name="deploy-the-sql-server-resource-provider"></a>Az SQL Server erőforrás-szolgáltató üzembe helyezése
 
-A telepítési folyamat részletes leírása a [Azure verem cikken használja az SQL adatbázisok](azure-stack-sql-resource-provider-deploy.md), és a következő elsődleges lépésekből áll:
+A telepítési folyamat részletes leírása a [használata SQL-adatbázisok az Azure Stack-cikk](azure-stack-sql-resource-provider-deploy.md), és a következő fő lépésből áll:
 
-1. [Az SQL erőforrás-szolgáltató telepítéséhez](azure-stack-sql-resource-provider-deploy.md).
+1. [Az SQL erőforrás-szolgáltató üzembe helyezése](azure-stack-sql-resource-provider-deploy.md).
 2. [A telepítés ellenőrzése](azure-stack-sql-resource-provider-deploy.md#verify-the-deployment-using-the-azure-stack-portal).
-3. Adja meg a kapacitás üzemeltetési SQL-kiszolgálójához. További információkért lásd: [üzemeltető kiszolgálók hozzáadása](azure-stack-sql-resource-provider-hosting-servers.md)
+3. Csatlakozva üzemeltető SQL server-kapacitást biztosítanak. További információkért lásd: [üzemeltető kiszolgálók hozzáadása](azure-stack-sql-resource-provider-hosting-servers.md)
 
 ## <a name="create-an-offer"></a>Ajánlat létrehozása
 
-1.  [Állítsa be a kvóta](azure-stack-setting-quotas.md) és adjon neki nevet *SQLServerQuota*. Válassza ki **Microsoft.SQLAdapter** a a **Namespace** mező.
-2.  [Hozzon létre egy csomagot](azure-stack-create-plan.md). Nevezze el *TestSQLServerPlan*, jelölje be a **Microsoft.SQLAdapter** szolgáltatás, és **SQLServerQuota** kvótát.
+1.  [Kvóták beállítása](azure-stack-setting-quotas.md) , és nevezze el *SQLServerQuota*. Válassza ki **Microsoft.SQLAdapter** számára a **Namespace** mező.
+2.  [Hozzon létre egy csomagot](azure-stack-create-plan.md). Nevezze el *TestSQLServerPlan*, jelölje be a **Microsoft.SQLAdapter** szolgáltatást, és **SQLServerQuota** kvótát.
 
     > [!NOTE]
-    > Ahhoz, hogy a felhasználók más-alkalmazásai létrehozására, a terv más szolgáltatások akkor lehet szükség. Például az Azure Functions van szükség a **Microsoft.Storage** szolgáltatással a tervet, amíg Wordpress szükséges **Microsoft.MySQLAdapter**.
+    > Ahhoz, hogy a felhasználók más alkalmazásokat hozhat létre, a terv más szolgáltatások lehet szükség. Ha például az Azure Functions igényel a **Microsoft.Storage** közben Wordpress igényel a csomag szolgáltatási **Microsoft.MySQLAdapter**.
 
-3.  [Hozzon létre egy ajánlatot](azure-stack-create-offer.md), adjon neki nevet **TestSQLServerOffer** válassza ki a **TestSQLServerPlan** terv.
+3.  [Hozzon létre egy ajánlatot](azure-stack-create-offer.md), adja neki **TestSQLServerOffer** , és válassza ki a **TestSQLServerPlan** tervet.
 
 ## <a name="test-the-offer"></a>Az ajánlat tesztelése
 
-Most, hogy az SQL Server erőforrás-szolgáltató telepítése után, és létrehozott egy ajánlatot, bármikor beléphet egy olyan felhasználó nevében, az ajánlat előfizetni, és hozzon létre egy adatbázist.
+Most, hogy üzembe helyezte az SQL Server erőforrás-szolgáltató, és létrehozott egy ajánlatot, bejelentkezhet felhasználóként, előfizetnek az ajánlatra, és hozzon létre egy adatbázist.
 
-### <a name="subscribe-to-the-offer"></a>Az ajánlat előfizetés
+### <a name="subscribe-to-the-offer"></a>Fizessen elő az ajánlatra
 
-1. Jelentkezzen be a verem Azure-portálra (https://portal.local.azurestack.external) hez bérlőként.
-2. Válassza ki **egy előfizetés** és írja be **TestSQLServerSubscription** alatt **megjelenített név**.
-3. Válassza ki **válasszon egy ajánlatot** > **TestSQLServerOffer** > **létrehozása**.
-4. Válassza ki **további szolgáltatások** > **előfizetések** > **TestSQLServerSubscription** > **erőforrás szolgáltatók**.
+1. Jelentkezzen be az Azure Stack portálon (https://portal.local.azurestack.external) bérlőként.
+2. Válassza ki **előfizetés beszerzése** és írja be **TestSQLServerSubscription** alatt **megjelenítendő név**.
+3. Válassza ki **ajánlat kiválasztása** > **TestSQLServerOffer** > **létrehozás**.
+4. Válassza ki **minden szolgáltatás** > **előfizetések** > **TestSQLServerSubscription** > **erőforrás szolgáltatók**.
 5. Válassza ki **regisztrálása** mellett a **Microsoft.SQLAdapter** szolgáltató.
 
 ### <a name="create-a-sql-database"></a>SQL-adatbázis létrehozása
@@ -67,11 +67,11 @@ Most, hogy az SQL Server erőforrás-szolgáltató telepítése után, és létr
 1. Válassza ki **+**  >  **adatok + tárolás** > **SQL-adatbázis**.
 2. Használja az alapértelmezett értékeket, vagy használjon ezekben a példákban a következő mezőket:
     - **Adatbázis neve**: SQLdb
-    - **Maximális méretét megabájtban**: 100
+    - **Maximális méret (MB)**: 100
     - **Előfizetés**: TestSQLOffer
-    - **Erőforráscsoport**: SQL-rg-n
+    - **Erőforráscsoport**: SQL-RG
 3. Válassza ki **bejelentkezési beállítások**, adja meg az adatbázis hitelesítő adatait, és válassza **OK**.
-4. Válassza ki **SKU** > Válassza ki a létrehozott üzemeltető SQL Server SQL SKU > majd **OK**.
+4. Válassza ki **Termékváltozat** > Válassza ki az SQL-Termékváltozatát üzemeltető SQL Server létrehozott > majd **OK**.
 5. Kattintson a **Létrehozás** gombra.
 
 ## <a name="next-steps"></a>További lépések
@@ -79,11 +79,11 @@ Most, hogy az SQL Server erőforrás-szolgáltató telepítése után, és létr
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
-> * Az erőforrás-szolgáltató SQL Server telepítése
+> * Az SQL Server erőforrás-szolgáltató üzembe helyezése
 > * Ajánlat létrehozása
 > * Az ajánlat tesztelése
 
-Előzetes tovább az oktatóanyaghoz, megtudhatja, hogyan:
+A következő oktatóanyaggal, amelyben tudatjuk a felhasználókkal hogyan:
 
 > [!div class="nextstepaction"]
-> [Webes, mobil és API-alkalmazások számára elérhetővé a felhasználóknak]( azure-stack-tutorial-app-service.md)
+> [Webes, mobil és API-alkalmazások elérhetővé tétele a felhasználók számára]( azure-stack-tutorial-app-service.md)

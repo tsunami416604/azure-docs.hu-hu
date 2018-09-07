@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/15/2018
+ms.date: 09/05/2018
 ms.author: mabrigg
 ms.reviewer: jiahan
-ms.openlocfilehash: fc17ce0ebd13fb7e89405fcf4d6633551f340a27
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: bdf31c72fbcd8941161e6b9df0a490df7f6a16e0
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42139474"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44026518"
 ---
 # <a name="provision-virtual-machine-disk-storage-in-azure-stack"></a>Virtuális gép lemezes tárolás az Azure Stack üzembe helyezése
 
@@ -30,9 +30,13 @@ Ez a cikk azt ismerteti, hogyan építheti ki a virtuális gép lemezes tárolá
 
 ## <a name="overview"></a>Áttekintés
 
-Az Azure Stack használatát támogatja [nem felügyelt lemezek](https://docs.microsoft.com/azure/virtual-machines/windows/about-disks-and-vhds#unmanaged-disks) a virtuális gépek, az operációs rendszer (OS) és a egy adatlemezt is.
+Azure Stack verziójától kezdve 1808, a virtuális gépek, az operációs rendszer (OS) és a egy adatlemezt is támogatja a felügyelt és a nem felügyelt lemezek használatát. 1808 verziónál régebbi csak a nem felügyelt lemezek használata támogatott. 
 
-Nem felügyelt lemezeket használ, hozzon létre egy [tárfiók](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account) a lemezeinek tárolására. A lemezeket hoz létre Virtuálisgép-lemezeket nevezik, és a tárfiókban lévő tárolók vannak tárolva.
+**[A Managed disks](https://docs.microsoft.com/azure/virtual-machines/windows/about-disks-and-vhds#managed-disks)**  az Azure IaaS virtuális gépek lemezfelügyelet egyszerűsítése a virtuális gépek lemezeihez társított storage-fiókok kezelésével. Csak meg kell adnia a méretű lemez van szüksége, és az Azure Stack létrehozza és felügyeli a lemezt Ön helyett.
+
+**[Nem felügyelt lemezek](https://docs.microsoft.com/azure/virtual-machines/windows/about-disks-and-vhds#unmanaged-disks)**, szükséges, hogy hozzon létre egy [tárfiók](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account) a lemezeinek tárolására. A lemezeket hoz létre Virtuálisgép-lemezeket nevezik, és a tárfiókban lévő tárolók vannak tárolva.
+
+ 
 
 ### <a name="best-practice-guidelines"></a>Gyakorlati előírásai
 

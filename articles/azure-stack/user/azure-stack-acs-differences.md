@@ -11,23 +11,23 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/15/2018
+ms.date: 09/05/2018
 ms.author: mabrigg
 ms.reviwer: xiaofmao
-ms.openlocfilehash: 6c0c42763ec3d124850555500c3a322073af2479
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: 89f6a0c1adaded724f159ffbf33aae98969ab9fe
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42139578"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44027169"
 ---
-# <a name="azure-stack-storage-differences-and-considerations"></a>Az Azure stack-tároló: különbségek és szempontok
+# <a name="azure-stack-storage-differences-and-considerations"></a>Az Azure Stack storage: különbségek és szempontok
 
 *A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
 
-Az Azure stack tárolási a storage cloud services a Microsoft Azure Stackhez. Az Azure stack storage biztosít a blob, table, queue és fiók felügyeleti funkciók az Azure-konzisztens szemantikáját.
+Az Azure Stack storage a storage cloud services a Microsoft Azure Stackhez. Az Azure Stack storage biztosít a blob, table, queue és fiók felügyeleti funkciók az Azure-konzisztens szemantikáját.
 
-Ez a cikk az Azure Storage szolgáltatások ismert Azure Stack Storage különbségeket foglalja össze. Szintén megfontolandó szempontok az Azure Stack telepítésekor sorolja fel. Globális Azure és az Azure Stack közötti magas szintű különbségek kapcsolatos további információkért tekintse meg a [szempontok kulcs](azure-stack-considerations.md) témakör.
+Ez a cikk az Azure Storage szolgáltatások ismert Azure Stack Storage különbségeket foglalja össze. Szintén megfontolandó szempontok az Azure Stack telepítésekor sorolja fel. Globális Azure és az Azure Stack közötti magas szintű különbségek kapcsolatos további információkért tekintse meg a [szempontok kulcs](azure-stack-considerations.md) cikk.
 
 ## <a name="cheat-sheet-storage-differences"></a>Hasznos tanácsok: Storage különbségek
 
@@ -38,7 +38,7 @@ Ez a cikk az Azure Storage szolgáltatások ismert Azure Stack Storage különbs
 |Tárfiók típusa|Általános célú és az Azure blob storage-fiókok|Általános célú csak.
 |Replikációs beállítások|Helyileg redundáns tárolás, georedundáns tárolás, georedundáns írásvédett tárolás és zónaredundáns tárolás|Helyileg redundáns tárolás.
 |Prémium szintű Storage|Teljes mértékben támogatott.|Bővítheti, de nincs teljesítményszint vagy garantálja.
-|Felügyelt lemezek|Prémium és standard szintű támogatott|Még nem támogatott.
+|Felügyelt lemezek|Prémium és standard szintű támogatott|1808 vagy újabb verzió használata esetén támogatott.
 |A blob neve|1024 karakter hosszúságú (2048 bájt)|880 karakter (1,760 bájt)
 |Block blob maximális mérete|4,75 TB (100 MB X 50 000 blokk)|Az 1802-es frissítés vagy újabb verzió 4,75 TB (100 MB x 50 000 blokk) 50 000 x 4 MB (KB. 195 GB), a korábbi verziók.
 |Blob pillanatkép-másolás lap|Biztonsági mentés nem felügyelt virtuális Géphez csatolt Azure lemezeken futó virtuális gépek támogatott|Még nem támogatott.

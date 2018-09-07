@@ -6,15 +6,15 @@ author: sethmanheim
 manager: femila
 ms.service: azure-stack
 ms.topic: get-started-article
-ms.date: 08/15/2018
+ms.date: 09/05/2018
 ms.author: sethm
 ms.reviewer: kivenkat
-ms.openlocfilehash: d478ccd0895ad067657bce56469a3a61d4ea0e17
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: 143e6c2856485e33022254abfcf0cf3806b30cef
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42139540"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44025773"
 ---
 # <a name="introduction-to-azure-stack-virtual-machines"></a>Bevezetés az Azure Stack-alapú virtuális gépekbe
 
@@ -99,7 +99,7 @@ Az alábbi táblázatban az erőforrásokat a virtuális gép által használt, 
 |Erőforrás|Szükséges|Leírás|
 |---------|---------|---------|
 |Erőforráscsoport|Igen|A virtuális gépnek egy erőforráscsoport tagjának kell lennie.|
-|Tárfiók|Igen|A virtuális gépnek szüksége van egy tárfiókra a virtuális merevlemezek tárolásához.|
+|Tárfiók|Nem|A virtuális gép does nem szükséges a tárfiók tárolja a virtuális merevlemezek, ha a felügyelt lemezek használatával. <br>A virtuális Gépet kell a tárfiók a virtuális merevlemezek tárolásához, ha nem felügyelt lemezek használatával.|
 |Virtuális hálózat|Igen|A virtuális gépnek egy virtuális hálózat tagjának kell lennie.|
 |Nyilvános IP-cím|Nem|A virtuális gép rendelkezhet hozzárendelt nyilvános IP-címmel, hogy távolról is el lehessen érni.|
 |Hálózati illesztő|Igen|A virtuális gépnek szüksége van a hálózati illesztőre a hálózattal való kommunikációhoz.|

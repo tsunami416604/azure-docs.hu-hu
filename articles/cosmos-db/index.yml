@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: f83fd24605577a16257517d96208016bea95c0af
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: b00d2c68748372c644a0966d76d5adb8e430e2d5
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43184363"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44053601"
 documentType: LandingData
 title: Azure Cosmos DB-dokumentáció
 metadata:
@@ -21,7 +21,7 @@ metadata:
   ms.date: 04/26/2018
   ms.author: sngun
 abstract:
-  description: Az Azure Cosmos DB egy globálisan elosztott, többmodelles adatbázis-szolgáltatás. Az itt elérhető rövid útmutatók, oktatóanyagok és minták segítségével dokumentum és kulcs-érték típusú, valamint széles oszlopú és gráfadatbázisokat fejleszthet népszerű API-kkal és programozási modellekkel. Azt is megismerheti, hogyan replikálhatja adatait tetszőleges számú Azure-régióban és méretezheti az átviteli sebességet a tárolótól függetlenül, úgy, hogy közben kihasználja az átfogó SLA-k nyújtotta előnyöket.
+  description: Az Azure Cosmos DB egy globálisan elosztott, többmodelles adatbázis-szolgáltatás, amely dokumentum és kulcs–érték típusú, valamint széles oszlopú és gráfadatbázisokat támogat. Ismerje meg, hogyan használhatja az Azure Cosmos DB szolgáltatást a gyors útmutatóink, oktatóanyagaink és példáink segítségével.
   aside:
     image:
       alt: 

@@ -1,6 +1,6 @@
 ---
-title: Tanúsítványproblémák javítása Azure verem |} Microsoft Docs
-description: Az Azure verem készültségi ellenőrző használatával tekintse át, és javíthatja a tanúsítvánnyal kapcsolatos hibákat.
+title: Azure Stack-tanúsítványokkal kapcsolatos problémák javítása |} A Microsoft Docs
+description: Az Azure Stack-készültségi ellenőrző használatával tekintse át és a tanúsítvány problémák elhárítására.
 services: azure-stack
 documentationcenter: ''
 author: brenduns
@@ -15,85 +15,90 @@ ms.topic: get-started-article
 ms.date: 05/08/2018
 ms.author: brenduns
 ms.reviewer: ''
-ms.openlocfilehash: 0d2c4d848f861e4e07dbd0de4609344955ca26f7
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 6bc7839e7db0022beaa9b31c390655f31d1d52c0
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33937850"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44053465"
 ---
-# <a name="remediate-common-issues-for-azure-stack-pki-certificates"></a>Gyakori problémák megoldásához Azure verem PKI-tanúsítványok
-A cikkben szereplő információk segítségével megértéséhez, valamint az Azure verem PKI-tanúsítványok gyakori problémák megoldásában. Problémákat is felderítheti, ha az Azure verem készültségi ellenőrző eszköz [Azure verem PKI-tanúsítványok ellenőrzése](azure-stack-validate-pki-certs.md). Az eszköz ellenőrzi, hogy győződjön meg arról, hogy a tanúsítvány nyilvános kulcsokra épülő infrastruktúra követelményeinek teljesítése érdekében az Azure Alkalmazásveremben üzembe és Azure verem titkos elforgatási, és naplózza az eredményeket egy [report.json fájl](azure-stack-validation-report.md).  
+# <a name="remediate-common-issues-for-azure-stack-pki-certificates"></a>Az Azure Stack PKI-tanúsítványokkal kapcsolatos gyakori hibák javítása
+Ebben a cikkben található információk segítségével megismerheti és az Azure Stack PKI-tanúsítványokkal kapcsolatos gyakori hibák elhárításához. Problémák deríthet fel, az Azure Stack készültségi ellenőrző eszköz használatakor [ellenőrzése az Azure Stack PKI-tanúsítványokat](azure-stack-validate-pki-certs.md). Az eszköz ellenőrzi, hogy a tanúsítványok nyilvános kulcsokra épülő infrastruktúra egy Azure Stack üzemelő példányához és az Azure Stack titkos rotációja követelményeinek, és naplózza az eredményeket egy [report.json fájl](azure-stack-validation-report.md).  
+
+## <a name="pfx-encryption"></a>PFX-titkosítás
+**Hiba** -PFX-titkosítás nem TripleDES-SHA1.   
+**Szervizelési** -exportálása PFX fájlok **TripleDES-SHA1** titkosítást. Ez az összes Windows 10-ügyfelek számára a tanúsítványok beépülő modul a exportálásakor, vagy az Export-PFXCertificate használatával az alapértelmezett. 
 
 ## <a name="read-pfx"></a>Olvassa el a PFX
-**Figyelmeztetés** -jelszó csak a tanúsítványban lévő titkos adatokat védi.  
-**Szervizelés** -javasoljuk, hogy az opcionális beállítás a PFX-fájlok exportálását **tanúsítvány védelmének engedélyezése**.  
+**Figyelmeztetés** – jelszót csak a tanúsítványban lévő titkos adatokat védi.  
+**Szervizelési** – javasoljuk, hogy a nem kötelező beállítás az exportált PFX-fájlok **engedélyezése tanúsítvány adatvédelmi**.  
 
 **Hiba** -PFX-fájl érvénytelen.  
-**Szervizelés** -újra exportálja a tanúsítványt, a lépések [előkészítése Azure verem PKI tanúsítványainak központi telepítési](azure-stack-prepare-pki-certs.md).
+**Szervizelési** -újra exportálja a tanúsítványt, a lépések használatával [üzembe helyezés előkészítése az Azure Stack PKI-tanúsítványai](azure-stack-prepare-pki-certs.md).
 
 ## <a name="signature-algorithm"></a>Aláírási algoritmus
 **Hiba** -aláírási algoritmus SHA1.    
-**Szervizelés** -aláírási kérelem létrehozása újragenerálja a tanúsítvány-aláírási kérelem (CSR) az aláírási algoritmus az SHA-256 Azure verem tanúsítványok kövesse a lépéseket. Küldje el a CSR-t a adja ki újra a tanúsítványt a hitelesítésszolgáltatótól.
+**Szervizelési** -aláírási kérelem generációs újragenerálja a tanúsítvány-aláírási kérelem (CSR) az SHA256 aláírási algoritmus az Azure Stack tanúsítványok kövesse a lépéseket. Ezután küldje el újra a CSR-fájl a hitelesítésszolgáltató adja ki újból a tanúsítványt.
 
 ## <a name="private-key"></a>Titkos kulcs
-**Hiba** – a titkos kulcs hiányzik, vagy nem tartalmaz a helyi gép attribútumot.  
-**Szervizelés** – a számítógépről, amely létrehozta a CSR újra exportálja a tanúsítványt, előkészítése Azure verem PKI-tanúsítványok központi telepítés lépéseit használva. Ezek a lépések az alábbiak exportálása a helyi számítógép tanúsítványtárolójába.
+**Hiba** – a titkos kulcs hiányzik, vagy a helyi gép attribútum nem tartalmaz.  
+**Szervizelési** – arról a számítógépről, a CSR-fájl jön létre újból exportálja a tanúsítványt, készítse elő az Azure Stack PKI-tanúsítványok központi telepítés lépései alapján. Ide tartozik a helyi számítógép tanúsítványtárolójába exportálása.
 
 ## <a name="certificate-chain"></a>Tanúsítványlánc
-**Hiba** -tanúsítványlánc nincs kész.  
-**Szervizelés** -tanúsítványok tartalmaznia kell egy teljes tanúsítványláncot.  Újra exportálja a tanúsítványt, a lépések [előkészítése Azure verem PKI tanúsítványainak központi telepítési](azure-stack-prepare-pki-certs.md) válassza ki, **minden tanúsítvány belefoglalása a tanúsítványláncba, ha lehetséges.**
+**Hiba** -tanúsítványlánc még nem fejeződött be.  
+**Szervizelési** -tanúsítványokat kell tartalmaznia a teljes tanúsítványlánc.  Újra exportálja a tanúsítványt, a lépések használatával [üzembe helyezés előkészítése az Azure Stack PKI-tanúsítványai](azure-stack-prepare-pki-certs.md) , és jelölje be **minden tanúsítvány belefoglalása a tanúsítványláncba, ha lehetséges.**
 
 ## <a name="dns-names"></a>DNS-nevek
-**Hiba** -DNSNameList a tanúsítvány nem tartalmaz az Azure verem szolgáltatási végpont neve, vagy érvényes helyettesítő egyezés.  Helyettesítő karakteres megegyezik a bal szélső névtér a DNS-név csak érvényesek. Például _*. region.domain.com_ csak *portal.region.domain.com*, nem _*. table.region.domain.com_.  
-**Szervizelés** -aláírási kérelem létrehozása újragenerálja a megfelelő DNS-névvel rendelkező CSR Azure verem tanúsítványok a lépések segítségével támogatja az Azure-verem végpontok. Küldje el újra a CSR egy hitelesítésszolgáltatónak, és kövesse a lépéseket [előkészítése Azure verem PKI tanúsítványainak központi telepítési](azure-stack-prepare-pki-certs.md) exportálja a tanúsítványt a számítógépről, amely a CSR jön létre.  
+**Hiba** -DNSNameList a tanúsítvány nem tartalmaz az Azure Stack szolgáltatás végpont neve, vagy érvényes helyettesítő egyezést.  Helyettesítő karakteres megegyezik a bal szélső névtér a DNS-név csak érvényesek. Ha például _*. region.domain.com_ je platná pouze Pro *portal.region.domain.com*, nem _*. table.region.domain.com_.  
+**Szervizelési** -aláírási kérelem generációs újragenerálja a CSR-fájl a megfelelő DNS-névvel rendelkező Azure Stack-tanúsítványok a lépéseket követve támogatja az Azure Stack-végpontok. Küldje el újra a CSR-fájl a hitelesítésszolgáltatótól, és kövesse a lépéseket a [üzembe helyezés előkészítése az Azure Stack PKI-tanúsítványai](azure-stack-prepare-pki-certs.md) exportálja a tanúsítványt a gépen, ami a CSR-fájl jön létre.  
 
 ## <a name="key-usage"></a>Kulcshasználat
-**Hiba** - kulcshasználat digitális aláírás hiányzik, vagy kulcstitkosítás, orEnhanced kulcshasználat hiányzik a kiszolgáló hitelesítése vagy ügyfél-hitelesítéshez.  
-**Szervizelés** -az alábbi témakörben található lépésekkel [Azure verem-aláírási kérelem létrehozása tanúsítványok](azure-stack-get-pki-certs.md) újragenerálja a CSR a megfelelő kulcshasználat attribútumokkal.  Küldje el újra a CSR-t a hitelesítésszolgáltatótól, és győződjön meg arról, hogy a tanúsítványsablon nem felülírása a kulcshasználat a kérelemben.
+**Hiba** – kulcshasználat hiányzik a digitális aláírás vagy kulcstitkosítás orEnhanced kulcshasználat hiányzik a hitelesítési kiszolgáló vagy ügyfél-hitelesítéssel.  
+**Szervizelési** -szereplő lépések segítségével [Azure Stack-aláírási kérelmet. generációs tanúsítványok](azure-stack-get-pki-certs.md) újragenerálja a CSR-fájl a megfelelő kulcshasználat attribútumokkal.  Küldje el újra a hitelesítésszolgáltatót a CSR-fájl, és ellenőrizze a tanúsítványsablon nem írja felül a kulcshasználat a kérésben.
 
 ## <a name="key-size"></a>Kulcsméret
-**Hiba** -kulcs mérete kisebb, mint 2048-ra    
-**Szervizelés** -az alábbi témakörben található lépésekkel [Azure verem-aláírási kérelem létrehozása tanúsítványok](azure-stack-get-pki-certs.md) újragenerálja a CSR megfelelő kulcs hossza (2048), és küldje el a CSR-t a hitelesítésszolgáltatótól.
+**Hiba** -kulcs mérete kisebb, mint 2048 bites    
+**Szervizelési** -szereplő lépések segítségével [Azure Stack-aláírási kérelmet. generációs tanúsítványok](azure-stack-get-pki-certs.md) újragenerálja a CSR-fájl a megfelelő kulcs hossza (2048), és küldje el a hitelesítésszolgáltató a CSR-fájl.
 
-## <a name="chain-order"></a>Lánc sorrendje
+## <a name="chain-order"></a>Lánc sorrendjében
 **Hiba** – a tanúsítványlánc sorrendje nem megfelelő.  
-**Szervizelés** -újra exportálja a tanúsítványt, a lépések [előkészítése Azure verem PKI tanúsítványainak központi telepítési](azure-stack-prepare-pki-certs.md) válassza ki, **minden tanúsítvány belefoglalása a tanúsítványláncba, ha lehetséges.** Győződjön meg arról, hogy csak a levéltanúsítvány az exportált van kiválasztva. 
+**Szervizelési** -újra exportálja a tanúsítványt, a lépések használatával [üzembe helyezés előkészítése az Azure Stack PKI-tanúsítványai](azure-stack-prepare-pki-certs.md) , és jelölje be **minden tanúsítvány belefoglalása a tanúsítványláncba, ha lehetséges.** Győződjön meg arról, hogy csak a levéltanúsítvány exportálási van-e kiválasztva. 
 
 ## <a name="other-certificates"></a>Más tanúsítványok
-**Hiba** – a PFX-csomag tartalmaz tanúsítványokat, amelyek nem a levél tanúsítványt vagy tanúsítványláncot részét.  
-**Szervizelés** -újra exportálja a tanúsítványt, a lépések [előkészítése Azure verem PKI tanúsítványainak központi telepítési](azure-stack-prepare-pki-certs.md), válassza ki, **minden tanúsítvány belefoglalása a tanúsítványláncba, ha lehetséges.** Győződjön meg arról, hogy csak a levéltanúsítvány az exportált van kiválasztva.
+**Hiba** – a PFX-csomag tartalmaz tanúsítványokat, amelyek nem a levéltanúsítvány vagy a tanúsítványlánc része.  
+**Szervizelési** -újra exportálja a tanúsítványt, a lépések használatával [üzembe helyezés előkészítése az Azure Stack PKI-tanúsítványai](azure-stack-prepare-pki-certs.md), és válassza a **minden tanúsítvány belefoglalása a tanúsítványláncba, ha lehetséges.** Győződjön meg arról, hogy csak a levéltanúsítvány exportálási van-e kiválasztva.
 
-## <a name="fix-common-packaging-issues"></a>Közös csomagolás kapcsolatos problémák megoldása
-A AzsReadinessChecker importálhatja és exportálhatja a megoldásához csomagolás gyakori problémákat, beleértve a PFX-fájlba: 
+## <a name="fix-common-packaging-issues"></a>Csomagolási kapcsolatos gyakori problémák megoldása
+A AzsReadinessChecker exportálhatók és importálhatók majd csomagolási gyakori problémák, beleértve a PFX-fájlba: 
+ - *PFX-titkosítás* nem TripleDES-SHA1
  - *Titkos kulcs* helyi gép attribútum hiányzik.
- - *Tanúsítványlánc* hiányos vagy hibás. (A helyi számítógépen kell tartalmaznia a tanúsítványlánc, ha a PFX-csomag nem.) 
+ - *Tanúsítványlánc* hiányos vagy hibás. (A helyi számítógépen kell tartalmaznia a tanúsítványlánc, ha a PFX-csomag nem létezik.) 
  - *Más tanúsítványok*.
-Azonban a AzsReadinessChecker nem segít, ha hozható létre egy új CSR, és adja ki újra a tanúsítványt kell. 
+Azonban a AzsReadinessChecker nem segíthet, ha a hozzon létre egy új CSR-fájl, és adja ki újból a tanúsítvány szükséges. 
 
 ### <a name="prerequisites"></a>Előfeltételek
-A következő előfeltételeknek kell teljesülniük a számítógépen az eszköz futtatásához: 
- - Windows 10 vagy Windows Server 2016, az internetkapcsolat.
- - PowerShell 5.1-es vagy újabb. A verzió ellenőrzéséhez futtassa a következő PowerShell-parancs, és tekintse át a *fő* verziója és *kisebb* verziók.
+A következő előfeltételeknek kell teljesülnie a számítógépen eszköz: 
+ - Windows 10-es vagy Windows Server 2016, az internetkapcsolattal rendelkező.
+ - A PowerShell 5.1-es vagy újabb. A verzió ellenőrzéséhez futtassa az alábbi PowerShell-parancsot, és tekintse át a *fő* verzió és *kisebb* verziók.
 
    > `$PSVersionTable.PSVersion`
- - Konfigurálása [PowerShell Azure verem](azure-stack-powershell-install.md). 
- - Töltse le a legújabb verzióját [Microsoft Azure verem készültségi ellenőrző](https://aka.ms/AzsReadinessChecker) eszköz.
+ - Konfigurálása [PowerShell az Azure Stack-](azure-stack-powershell-install.md). 
+ - Töltse le a legújabb verzióját [a Microsoft Azure Stack készültségi ellenőrző](https://aka.ms/AzsReadinessChecker) eszközt.
 
-### <a name="import-and-export-an-existing-pfx-file"></a>Importálni és exportálni egy meglévő PFX-fájlt
-1. A számítógépen, amely megfelel az előfeltételeknek nyisson meg egy rendszergazda PowerShell-parancssort, és futtassa a következő parancsot a AzsReadinessChecker telepítése  
+### <a name="import-and-export-an-existing-pfx-file"></a>Importálás és exportálás meglévő PFX-fájl
+1. A számítógépen, amely megfelel az előfeltételeknek nyisson meg egy rendszergazdai PowerShell-parancssort, és futtassa a következő parancsot a AzsReadinessChecker telepítése  
    > `Install-Module Microsoft.AzureStack.ReadinessChecker- Force`
 
-2. A PowerShell-parancssorból futtassa az alábbi a PFX-jelszót. Cserélje le *PFXpassword* a tényleges jelszóval. 
+2. A PowerShell parancssorában futtassa a következőt adja meg a PFX-jelszót. Cserélje le *PFXpassword* az aktuális jelszóval. 
    > `$password = Read-Host -Prompt PFXpassword -AsSecureString`
 
-3. A PowerShell-parancssorból futtassa a következő új PFX-fájl exportálását.
-   - A *- PfxPath*, dolgozunk a PFX-fájl elérési útját adja meg.  A következő példa az elérési út *.\certificates\ssl.pfx*.
-   - A *- ExportPFXPath*, adja meg a helyét és az exportált PFX-fájl nevét.  A következő példa az elérési út *.\certificates\ssl_new.pfx*
+3. A PowerShell használatával futtassa a következő új PFX-fájlba exportálni.
+   - A *- PfxPath*, dolgozunk a PFX-fájl elérési útját.  A következő példa az elérési út *.\certificates\ssl.pfx*.
+   - A *- ExportPFXPath*, adja meg a helyét és nevét, a PFX-fájlt az exportálás.  A következő példa az elérési út *.\certificates\ssl_new.pfx*
 
    > `Start-AzsReadinessChecker -PfxPassword $password -PfxPath .\certificates\ssl.pfx -ExportPFXPath .\certificates\ssl_new.pfx`  
 
-4. Az eszköz befejezése után tekintse át a kimenetet a sikeres: ![eredmények](./media/azure-stack-remediate-certs/remediate-results.png)
+4. Az eszköz befejezése után tekintse át a kimenetet, sikeres végrehajtás esetén: ![eredmények](./media/azure-stack-remediate-certs/remediate-results.png)
 
 ## <a name="next-steps"></a>További lépések
-[További tudnivalók az Azure-verem biztonsági](azure-stack-rotate-secrets.md)
+[További információ az Azure Stack-biztonság](azure-stack-rotate-secrets.md)

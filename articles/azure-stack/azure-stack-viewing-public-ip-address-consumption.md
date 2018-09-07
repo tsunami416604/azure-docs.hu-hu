@@ -1,6 +1,6 @@
 ---
-title: Tekintse meg nyilvános IP-cím fogyasztás Azure verem |} Microsoft Docs
-description: A rendszergazdák megtekinthetik a nyilvános IP-címek fogyasztás régióban
+title: Nyilvános IP-címek használatának megtekintése az Azure Stackben |} A Microsoft Docs
+description: A rendszergazdák megtekinthetik a használatalapú nyilvános IP-címek a régióban
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -12,60 +12,59 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/28/2018
+ms.date: 09/05/2018
 ms.author: mabrigg
-ms.openlocfilehash: 50bf01d6de6105d3041c6bb88e803f3d110f751d
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 0bd4ab27384f8eb31aa520cbff58c71ae58bd6f7
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2018
-ms.locfileid: "29742458"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44022933"
 ---
-# <a name="view-public-ip-address-consumption-in-azure-stack"></a>Nyilvános IP-cím fogyasztás Azure verem megtekintése
+# <a name="view-public-ip-address-consumption-in-azure-stack"></a>Nyilvános IP-címek használatának megtekintése az Azure Stackben
 
-*A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
+*A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
 
-Felhő rendszergazdaként tekintheti meg:
- - Nyilvános IP-címek a bérlők számára lefoglalt száma.
- - Nyilvános IP-címek, amelyek továbbra is elérhető a foglalási száma.
- - A százalékos nyilvános IP-címek, amelyek az adott helyre került kiosztásra.
+Felhő-rendszergazdák tekintheti meg:
+ - A bérlők számára lefoglalt nyilvános IP-címek száma.
+ - Továbbra is elérhető kiosztható nyilvános IP-címek száma.
+ - A százalékos aránya, amelyek az adott helyen lefoglalt nyilvános IP-címek.
 
-A **nyilvános IP-címet a készletbe használati** csempe nyilvános IP-címkészletek között használt nyilvános IP-címek számát jeleníti meg. IP-címek a a csempe az infrastruktúra-szolgáltatási virtuális gép bérlői használatát mutatja a példányok, a háló infrastruktúra-szolgáltatásokat és a bérlők által explicit módon létrehozott nyilvános IP-cím erőforrás.
+A **nyilvános IP-készletek használati** csempe több nyilvános IP-címkészletek felhasznált nyilvános IP-címek számát jeleníti meg. Az egyes IP-címet a csempe bérlő IaaS virtuális gépek használati mutatja, példány, a fabric infrastruktúra-szolgáltatások és a bérlők által explicit módon létrehozott nyilvános IP-cím erőforrások.
 
-A csempe célja, hogy Azure verem bizonyos értelemben az ezen a helyen használt nyilvános IP-címek számának. A szám segítségével a rendszergazda határozza meg, hogy azok kevés ezen az erőforráson.
+A csempe célja biztosíthat az Azure Stack-operátorok érteni, ezen a helyen használt nyilvános IP-címek számát. A szám segítségével a rendszergazda határozza meg, hogy, kevés a ehhez az erőforráshoz.
 
-A **nyilvános IP-címek** menüpont alatt **bérlői erőforrások** csak ezen nyilvános IP-címek listája, amelyek lettek *explicit módon a bérlők által létrehozott*. A menüpont megtalálhatja a **erőforrás-szolgáltató**, **hálózati** ablaktáblán. Száma **használható** nyilvános IP-címek a a **nyilvános IP-címet a készletbe használati** csempe nem mindig azonos a (nagyobb) a száma a **nyilvános IP-címek** acsempe **A bérlői erőforrások**.
+A **nyilvános IP-címek** menüpont alatt **bérlői erőforrások** csak ezen nyilvános IP-címek listája, amelyeket *explicit módon a bérlők által létrehozott*. A menüelem megtalálhatja a **erőforrás-szolgáltatók**, **hálózati** ablaktáblán. Száma **használható** nyilvános IP-címek a a **nyilvános IP-készletek használati** csempe mindig eltér a (nagyobb) a száma a **nyilvános IP-címek** alatt csempe **A bérlői erőforrások**.
 
-## <a name="view-the-public-ip-address-usage-information"></a>A nyilvános IP-címek használati adatait megtekintése
-Nyilvános IP-címek, amelyek a régió felhasznált teljes számának megtekintése:
+## <a name="view-the-public-ip-address-usage-information"></a>A nyilvános IP-cím használati adatok megtekintése
+A régió felhasznált nyilvános IP-címek teljes száma megtekintése:
 
-1. Válassza ki a verem Azure felügyeleti portálon **további szolgáltatások**a **felügyeleti erőforrások**, jelölje be **erőforrás-szolgáltató**.
-2. A listájáról **erőforrás-szolgáltató**, jelölje be **hálózati**.
-3. A **hálózati** ablaktáblán megjelennek azok a **nyilvános IP-címet a készletbe használati** csempére a **áttekintése** szakasz.
+1. Válassza ki az Azure Stack rendszergazdai portálon **minden szolgáltatás**. Ezt követően a **felügyeleti** kategória kiválasztása **hálózati**.
+1. A **hálózati** ablaktáblán megjelennek azok a **nyilvános IP-készletek használati** csempéje a **áttekintése** szakaszban.
 
-![Hálózati erőforrás-szolgáltató ablaktábla](media/azure-stack-viewing-public-ip-address-consumption/image01.png)
+![Hálózati erőforrás-szolgáltató panel](media/azure-stack-viewing-public-ip-address-consumption/image01.png)
 
-A **használható** szám számát jelenti, a nyilvános IP-címek hozzárendelve a nyilvános IP-címkészletet. A **szabad** szám azt jelzi, a nyilvános IP-címek számának nyilvános IP-cím a címkészlet, amely nincs hozzárendelve, és továbbra is elérhetők. A **(%) értékét** számot jelöli a számát, használt vagy címek hozzárendelve a nyilvános IP-címkészletet azon a helyen a nyilvános IP-címek száma százalékában.
+A **használható** számot jelöli száma hozzárendelt nyilvános IP-címeket nyilvános IP-címkészleteket. A **ingyenes** szám azt jelzi, a nyilvános IP-címek számának a nyilvános IP-cím címkészletek, amely nincs hozzárendelve, és továbbra is elérhető. A **% használható** szám számát jelöli, használt vagy címek hozzárendelve százalékos arányában nyilvános IP-címkészletek az adott helyen lévő nyilvános IP-címek teljes száma.
 
-## <a name="view-the-public-ip-addresses-that-were-created-by-tenant-subscriptions"></a>A nyilvános IP-címet, amelyet bérlői előfizetések megtekintése
-Válassza ki **nyilvános IP-címek** alatt **bérlői erőforrások**. Tekintse át a bérlői előfizetések egy adott régióban explicit módon létrehozott nyilvános IP-címek listáját.
+## <a name="view-the-public-ip-addresses-that-were-created-by-tenant-subscriptions"></a>Bérlői előfizetések által létrehozott nyilvános IP-címek megtekintése
+Válassza ki **nyilvános IP-címek** alatt **bérlői erőforrások**. Tekintse át az explicit módon egy adott régióban bérlői előfizetések által létrehozott nyilvános IP-címek listáját.
 
 ![Bérlő nyilvános IP-címek](media/azure-stack-viewing-public-ip-address-consumption/image02.png)
 
-Bizonyára észrevette, hogy, hogy néhány nyilvános IP-címeket dinamikusan lefoglalt szerepelnek a listán. Azonban egy címet még nem hozzájuk tartozó még. A cím erőforrás létrejött, a hálózati erőforrás-szolgáltató, de még nem található a hálózati vezérlő.
+Észreveheti, hogy néhány dinamikusan lefoglalt nyilvános IP-címek szerepelnek a listán. Azonban egy cím még nem hozzájuk tartozó még. A cím erőforrás létrejött, a hálózati erőforrás-szolgáltató, de még nem a hálózatvezérlő.
 
-A hálózati vezérlő nem egy címet rendel az erőforrás csak illesztőfelület, a hálózati kártya (NIC), a terheléselosztó vagy a virtuális hálózati átjáró is kötődik. Ha a nyilvános IP-cím illesztőfelület van kötve, a hálózati vezérlő IP-címet foglal le. A cím jelenik meg a **cím** mező.
+A hálózati vezérlő nem rendel hozzá egy címet az erőforrás mindaddig, amíg egy felületet, a hálózati kártya (NIC), egy terheléselosztó vagy a virtuális hálózati átjáró van kötve. Ha egy felület nyilvános IP-cím van kötve, a hálózati vezérlő IP-címet foglal le. A cím jelenik meg a **cím** mező.
 
-## <a name="view-the-public-ip-address-information-summary-table"></a>A nyilvános IP-cím információk összefoglaló táblázata megtekintése
-Más esetekben nyilvános IP-címek vannak társítva, amelyek meghatározzák, hogy a cím jelenik meg egy lista vagy egy másik.
+## <a name="view-the-public-ip-address-information-summary-table"></a>A nyilvános IP-információk összegzése címtábláján megtekintése
+Eltérő esetben, amelyek meghatározzák, hogy a cím megjelenik egy listában, vagy egy másik nyilvános IP-címek vannak hozzárendelve.
 
-| **Nyilvános IP-cím hozzárendelés eset** | **Megjelenik a használatának összegzése** | **A bérlő nyilvános IP-címeket tartalmazó listájában jelenik meg** |
+| **Nyilvános IP-cím hozzárendelés eset** | **Megjelenik a használat összegzése** | **A bérlő nyilvános IP-címek listája jelenik meg** |
 | --- | --- | --- |
-| Még nem rendelt (átmeneti) egy hálózati adapter vagy terheléselosztó dinamikus nyilvános IP-cím |Nem |Igen |
-| Dinamikus nyilvános IP-cím egy hálózati adapter vagy terheléselosztó rendelt. |Igen |Igen |
-| Statikus nyilvános IP-címet hozzárendelni a bérlő hálózati adapter vagy terheléselosztó. |Igen |Igen |
-| Statikus nyilvános IP-címet hozzárendelni a háló infrastruktúra-szolgáltatási végpont. |Igen |Nem |
-| Nyilvános IP-cím implicit módon létrehozott IaaS Virtuálisgép-példányok és használt kimenő forgalmat kezelő NAT a virtuális hálózaton. Amikor a bérlő hoz létre egy Virtuálisgép-példány, hogy a virtuális gépek képes információkat küldeni Internet ezek jönnek létre a háttérben. |Igen |Nem |
+| Még nem rendelt (ideiglenes) egy hálózati adapter vagy terheléselosztó dinamikus nyilvános IP-cím |Nem |Igen |
+| A dinamikus nyilvános IP-cím rendelve egy hálózati adapter vagy a load balancert. |Igen |Igen |
+| Statikus nyilvános IP-címet egy bérlő hálózati adapter vagy terheléselosztó rendelve. |Igen |Igen |
+| Statikus nyilvános IP-cím rendelve egy fabric infrastruktúra végpontot. |Igen |Nem |
+| Nyilvános IP-cím implicit módon hoztunk létre IaaS Virtuálisgép-példányok és kimenő NAT-hoz a virtuális hálózaton. Jön létre a háttérben, amikor egy bérlő létrehoz egy Virtuálisgép-példánnyal, hogy a virtuális gépek képes információkat küldeni az internethez. |Igen |Nem |
 
 ## <a name="next-steps"></a>További lépések
-[A verem az Azure Storage-fiókok kezelése](azure-stack-manage-storage-accounts.md)
+[Az Azure Stack Tárfiókok kezelése](azure-stack-manage-storage-accounts.md)

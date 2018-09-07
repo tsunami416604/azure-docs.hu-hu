@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/27/2018
+ms.date: 09/05/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: 418b2f6b156853c1a2820271808bdba922d41a87
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 290b3daf73e323b3f5a7e1ef81299e72bf1c5f1d
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39412899"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44024800"
 ---
 # <a name="download-marketplace-items-from-azure-to-azure-stack"></a>Az Azure marketplace-elemek letöltése az Azure Stackhez
 
@@ -151,7 +151,7 @@ Ebben a forgatókönyvben két részből áll:
 2. A felügyeleti portál használatával töltse fel a Piactéri elem csomag (.azpkg fájlt) az Azure Stack Blob storage. A csomag feltöltése lehetővé teszi az Azure Stack később közzétételéhez a cikk az Azure Stack piactéren.
 
    Feltöltés szükséges hozzá egy nyilvánosan elérhető tárolót egy tárfiókot, (tekintse meg a forgatókönyv előfeltételei)   
-   1. Az Azure Stack felügyeleti portálon, lépjen a **további szolgáltatások** > **tárfiókok**.  
+   1. Az Azure Stack felügyeleti portálon, lépjen a **minden szolgáltatás** , majd a a **adatok + tárolás** kategória, jelölje be **tárfiókok**.  
    
    2. Válassza ki a tárfiókot az előfizetéséből, majd a **BLOB SERVICE**válassza **tárolók**.  
       ![BLOB szolgáltatás](media/azure-stack-download-azure-marketplace-item/blob-service.png)  
@@ -198,7 +198,7 @@ Ebben a forgatókönyvben két részből áll:
      -GalleryItemUri "https://mystorageaccount.blob.local.azurestack.external/cont1/Microsoft.WindowsServer2016DatacenterServerCore-ARM.1.0.801.azpkg" `
      –Verbose
     ```
-5. A katalógus egy elemét a közzététel után megtekintheti a **további szolgáltatások** > **Marketplace**.  Ha a letöltés megoldássablon, mindenképpen adja hozzá bármelyik függő VHD-lemezképet a megoldássablon.  
+5. A katalógus egy elemét, akkor a közzététel után **minden szolgáltatás**. A következő a **általános** kategória, jelölje be **Marketplace**.  Ha a letöltés megoldássablon, mindenképpen adja hozzá bármelyik függő VHD-lemezképet a megoldássablon.  
   ![Nézet Marketplace-en](media/azure-stack-download-azure-marketplace-item/view-marketplace.png)  
 
 > [!NOTE]

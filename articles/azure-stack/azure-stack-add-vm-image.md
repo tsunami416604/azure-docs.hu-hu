@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: get-started-article
-ms.date: 08/30/2018
+ms.date: 09/05/2018
 ms.author: mabrigg
 ms.reviewer: kivenkat
-ms.openlocfilehash: 7f16f53af7d1c2f46c5c61974601833fafc8f828
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: ba4c53f03350995544eb95917102bd7123a077d2
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43698774"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44022764"
 ---
 # <a name="make-a-virtual-machine-image-available-in-azure-stack"></a>Egy virtuális gép rendszerképének elérhetővé az Azure Stackben
 
@@ -54,7 +54,7 @@ Lemezképek által blobtárolók URI azonosítójához használandó képesnek k
 
    ![A nyilvános blob-hozzáférés beállítása](./media/azure-stack-add-vm-image/image2.png)
 
-2. Jelentkezzen be az Azure Stack operátori. Válassza a menüben **további szolgáltatások**. Ezután válassza ki **számítási** > **Virtuálisgép-rendszerképek** > **Hozzáadás**.
+2. Jelentkezzen be az Azure Stack operátori. Válassza a menüben **minden szolgáltatás**. Ezt követően a **felügyeleti** kategória kiválasztása **számítási** > **Virtuálisgép-rendszerképek** > **Hozzáadás**.
 
 3. A **Virtuálisgép-rendszerkép hozzáadása**, írja be a közzétevő, ajánlat, Termékváltozat és a virtuálisgép-lemezkép verzióját. Ezek neve a szegmensek tekintse meg a Resource Manager-sablonok Virtuálisgép-rendszerkép. Ügyeljen arra, hogy válassza ki a **osType** megfelelő értékét. A **operációs rendszer Lemezblobjának URI azonosítója**, ahol a rendszerképet feltöltöttük Blob URI-t adja meg. Ezután válassza ki **létrehozás** a Virtuálisgép-lemezkép létrehozásának megkezdéséhez.
 
@@ -115,7 +115,7 @@ Lemezképek által blobtárolók URI azonosítójához használandó képesnek k
     További információkért tekintse meg a PowerShell-referencia, az a [Add-AzsPlatformimage](https://docs.microsoft.com/powershell/module/azs.compute.admin/add-azsplatformimage) parancsmag és a [New-DataDiskObject](https://docs.microsoft.com/powershell/module/Azs.Compute.Admin/New-DataDiskObject) parancsmagot.
 
 ## <a name="add-a-custom-vm-image-to-the-marketplace-by-using-powershell"></a>Egyéni Virtuálisgép-rendszerkép hozzáadása a Marketplace-en a PowerShell-lel
-
+ 
 1. [Az Azure Stack PowerShell telepítése](azure-stack-powershell-install.md).
 
   ```PowerShell  

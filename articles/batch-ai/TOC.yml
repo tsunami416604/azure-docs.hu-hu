@@ -1,43 +1,72 @@
+items:
 - name: Batch AI – dokumentáció
-  href: index.md
+  href: index.yml
 - name: Áttekintés
   items:
-    - name: Mi az a Batch AI?
-      href: overview.md
-- name: Bevezetés
-  expanded: true
+  - name: Mi az a Batch AI?
+    href: overview.md
+- name: Gyors útmutatók
   items:
-    - name: Betanítási feladat – CLI
-      href: quickstart-cli.md
-    - name: Betanítási feladat – Python
-      href: quickstart-python.md
+  - name: Fürt létrehozása – CLI
+    href: quickstart-create-cluster-cli.md
+  - name: Fürt létrehozása – Portál
+    href: quickstart-create-cluster-portal.md
+  - name: MI-modell betanítása – CLI
+    href: quickstart-tensorflow-training-cli.md
+  expanded: true
+- name: Oktatóanyagok
+  items:
+  - name: Elosztott betanítás a Horovod használatával
+    href: tutorial-horovod-tensorflow.md
+- name: Példák
+  items:
+  - name: Azure CLI
+    href: cli-samples.md
+- name: Alapelvek
+  items:
+  - name: Batch AI-erőforrások
+    href: resource-concepts.md
+  - name: Batch AI-kvóták és -korlátozások
+    href: quota-limits.md
 - name: Útmutatók
   items:
-    - name: Migrálás frissített API-ra
-      href: migrate-to-new-api.md
+  - name: Fürtök használata
+    href: clusters.md
+  - name: Az Azure Storage használata
+    href: use-azure-storage.md
+  - name: Modell betanítása Python SDK használatával
+    href: cntk-training-python.md
+  - name: Migrálás frissített API-ra
+    href: migrate-to-new-api.md
 - name: Referencia
   items:
-    - name: Azure CLI
-      href: /cli/azure/batchai
-    - name: .NET
-      href: /dotnet/api/overview/azure/batchai
-    - name: Java
-      href: /java/api/overview/azure/batchai
-    - name: Node.js
-      href: /javascript/api/overview/azure/batchai
-    - name: Python
-      href: /python/api/overview/azure/batchai
-    - name: REST
-      href: /rest/api/batchai
+  - name: Azure CLI
+    href: /cli/azure/batchai
+  - name: .NET
+    href: /dotnet/api/overview/azure/batchai
+  - name: Java
+    href: /java/api/overview/azure/batchai
+  - name: Node.js
+    href: /javascript/api/overview/azure/batchai
+  - name: Python
+    href: /python/api/overview/azure/batchai
+  - name: REST
+    href: /rest/api/batchai
 - name: További források
   items:
-    - name: Betanítási módszerek
-      href: 'https://github.com/Azure/BatchAI'
-    - name: Azure-ütemterv
-      href: 'https://azure.microsoft.com/roadmap/'
-    - name: Díjszabás
-      href: 'https://azure.microsoft.com/pricing/details/batch-ai'
-    - name: Díjkalkulátor
-      href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: Régiónkénti rendelkezésre állás
-      href: 'https://azure.microsoft.com/regions/services/'
+  - name: Betanítási módszerek
+    href: https://github.com/Azure/BatchAI
+  - name: Azure-ütemterv
+    href: https://azure.microsoft.com/roadmap/
+  - name: Díjszabás
+    href: https://azure.microsoft.com/pricing/details/batch-ai
+  - name: Díjkalkulátor
+    href: https://azure.microsoft.com/pricing/calculator/
+  - name: Régiónkénti rendelkezésre állás
+    href: https://azure.microsoft.com/regions/services/
+ms.openlocfilehash: ad3ffb48dd035f189054c40c9c1a3466230ac11d
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44051690"
