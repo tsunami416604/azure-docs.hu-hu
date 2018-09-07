@@ -8,16 +8,16 @@ ms.topic: article
 ms.date: 08/29/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: abd4a3b21ede2ddbdede2ec133938d412d5d4c8d
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: 56e7467443cb91f73a6b48f318d576345000a0e0
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43248165"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44023097"
 ---
 # <a name="use-an-azure-ad-identity-to-access-azure-storage-with-cli-or-powershell-preview"></a>Az Azure AD identity használata a parancssori felület vagy a PowerShell (előzetes verzió) az Azure Storage eléréséhez
 
-Az Azure Storage előzetes bővítményeket biztosít az Azure CLI és PowerShell, amelyek lehetővé teszik, hogy jelentkezzen be, és a egy Azure Active Directory (Azure AD) identitás alatt parancsfájl-kezelési parancsok futtatásához. Az Azure AD identity lehet egy felhasználó, csoport vagy alkalmazás egyszerű szolgáltatást, vagy lehet egy [felügyeltszolgáltatás-identitás](../../active-directory/managed-service-identity/overview.md). Hozzárendelhet engedélyeket az eléréséhez a tárolási erőforrások az Azure AD Identity szerepköralapú hozzáférés-vezérlés (RBAC) keresztül. Az Azure Storage-ban RBAC-szerepkörök kapcsolatos további információkért lásd: [kezelés hozzáférési jogosultsága ahhoz, hogy az RBAC (előzetes verzió) az Azure Storage-adatokkal](storage-auth-aad-rbac.md).
+Az Azure Storage előzetes bővítményeket biztosít az Azure CLI és PowerShell, amelyek lehetővé teszik, hogy jelentkezzen be, és a egy Azure Active Directory (Azure AD) identitás alatt parancsfájl-kezelési parancsok futtatásához. Az Azure AD identity lehet egy felhasználó, csoport vagy alkalmazás egyszerű szolgáltatást, vagy lehet egy [felügyeltszolgáltatás-identitás](../../active-directory/managed-identities-azure-resources/overview.md). Hozzárendelhet engedélyeket az eléréséhez a tárolási erőforrások az Azure AD Identity szerepköralapú hozzáférés-vezérlés (RBAC) keresztül. Az Azure Storage-ban RBAC-szerepkörök kapcsolatos további információkért lásd: [kezelés hozzáférési jogosultsága ahhoz, hogy az RBAC (előzetes verzió) az Azure Storage-adatokkal](storage-auth-aad-rbac.md).
 
 Amikor bejelentkezik az Azure CLI vagy a PowerShell egy Azure AD-identitással, egy hozzáférési jogkivonatot, hogy az identitás alatt az Azure Storage eléréséhez adja vissza. A jogkivonat ezután automatikusan használják parancssori felület vagy PowerShell történő hitelesítéséhez az Azure Storage kapcsolatos művelet-végrehajtási. A támogatott műveletek már nincs szüksége egy kulccsal vagy SAS-jogkivonat a paranccsal át.
 

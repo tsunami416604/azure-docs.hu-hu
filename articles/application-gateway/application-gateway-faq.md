@@ -7,14 +7,14 @@ manager: jpconnock
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 8/10/2018
+ms.date: 9/6/2018
 ms.author: victorh
-ms.openlocfilehash: 858427bfd2a9b4c40ddf7054e09d98bcf5c1a992
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: e180f0912bdb9145f3d36492fb9bcdcb551037f0
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42058097"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44022916"
 ---
 # <a name="frequently-asked-questions-for-application-gateway"></a>Az Application Gateway gyakori kérdések
 
@@ -84,7 +84,7 @@ Nem, az Application Gateway nem támogatja a statikus nyilvános IP-címeket, de
 
 Csak egy nyilvános IP-cím egy Application Gateway esetében támogatott.
 
-**Q. Mekkora kell még saját alhálózatot az Application Gateway?**
+**Q. Milyen méretű kell még saját alhálózatot az Application Gateway?**
 
 Az Application Gateway egy példány egy magánhálózati IP-címet, valamint egy másik magánhálózati IP-címet használ fel, ha magánhálózati előtérbeli IP-konfiguráció van konfigurálva. Emellett az Azure lefoglalja az első négy és utolsó IP-cím mindegyik olyan alhálózatban, belső használatra.
 Például, ha az Application Gateway három példányban, és nincs magánhálózati előtérbeli IP-címet, majd egy/29 méretű vagy nagyobb alhálózat van szükség. Ebben az esetben az Application Gateway három IP-címet használ. Ha rendelkezik három példányban és a egy IP-címet a magánhálózati előtérbeli IP-konfigurációhoz, majd egy/28-as méretet, vagy nagyobb alhálózat van szükség, mert négy IP-címeket kell megadni.
@@ -93,7 +93,7 @@ Például, ha az Application Gateway három példányban, és nincs magánháló
 
 Igen, az Application Gateway x – továbbított – a x továbbított protokollverzió és x továbbított port fejlécek szúr be a háttérrendszere továbbítja a kérelmet. Az x-továbbított – a fejléc formátuma IP:Port vesszővel tagolt listája. Az x továbbított proto érvényes értékei a következők: http vagy HTTPS protokollt. X továbbított port portot határozza meg, amelyen a kérelem eléri az Application gatewayben.
 
-Az Application Gateway is tartalmaz az eredeti állomásfejlécet, amelyhez a kérés érkezett X-eredeti-Host-fejlécet szúr be. Ezt a fejlécet hasznos olyan szituációkra, mint az Azure-webhely-integráció, ahol a bejövő állomásfejléc módosította-e előtt az adatforgalmat, a háttérkiszolgáló.
+Az Application Gateway is szúr be a X-eredeti-állomásfejlécet, amely tartalmazza az eredeti állomásfejlécet, amelyhez a kérés érkezett. Ezt a fejlécet hasznos olyan szituációkra, mint az Azure-webhely-integráció, ahol a bejövő állomásfejléc módosította-e előtt az adatforgalmat, a háttérkiszolgáló.
 
 **Q. Mennyi ideig tart egy Application Gateway üzembe helyezéséhez? Az Application Gateway továbbra is működik, ha a frissítés alatt?**
 
@@ -211,8 +211,8 @@ Az alábbi táblázatban az egyes SSL-alapú kiszervezéshez engedélyezett alka
 
 | Átlagos háttér-válasz mérete | Kicsi | Közepes | Nagy |
 | --- | --- | --- | --- |
-| 6KB |7,5 Mbps |13 Mbps |50 Mbps |
-| 100KB |35 Mbps |100 Mbps |200 Mbps |
+| 6 KB |7,5 Mbps |13 Mbps |50 Mbps |
+| 100 KB |35 Mbps |100 Mbps |200 Mbps |
 
 > [!NOTE]
 > Ezek az értékek az alkalmazásátjáró hozzávetőleges átviteli sebességét jelzik. A tényleges átvitel számos környezeti tényezőtől függ, például az átlagos lapmérettől, a háttérpéldányok helyétől és a lapkiszolgálás feldolgozási időtartamától. A pontos teljesítményszámokhoz saját teszteket kell futtatnia. Ezek az értékek csupán útmutatóul szolgálnak a kapacitástervezéshez.
@@ -333,7 +333,7 @@ WAF jelenleg támogatja a CRS [2.2.9-es](application-gateway-crs-rulegroups-rule
 
 **Q. WAF is támogatja a DDoS-megelőzési?**
 
-WAF nem, nem biztosítja a DDoS-megelőzési.
+Igen. Engedélyezheti a DDos protection a vneten, ahol az application gateway üzemel. Ez biztosítja, hogy az application gateway a virtuális IP-CÍMEK is védi az Azure DDos Protection szolgáltatás használatával.
 
 ## <a name="diagnostics-and-logging"></a>Diagnosztikai és naplózási
 

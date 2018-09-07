@@ -1,6 +1,6 @@
 ---
-title: Az Azure mikroszolgáltatások hibáinak szimulálása |} Microsoft Docs
-description: A szolgáltatások szabályos és ungraceful-hibákkal szemben támogatnia kell a módját.
+title: Az Azure Service Fabric-alkalmazások hibák szimulálása |} A Microsoft Docs
+description: Hogyan felvértezni a szolgáltatások szabályos és végbemenjen meghibásodásokkal szemben.
 services: service-fabric
 documentationcenter: .net
 author: anmolah
@@ -14,25 +14,25 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/15/2017
 ms.author: anmola
-ms.openlocfilehash: dccd8eeeda1a41f23c9e3dd9896e0630e2a7a0a4
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 3c075ac9642c7d050fc45ce6164071c9c733326e
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34208896"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44051914"
 ---
 # <a name="simulate-failures-during-service-workloads"></a>Hibák szimulálása a szolgáltatások számítási feladatai közben
-Azure Service Fabric tesztelhetőségi forgatókönyvei a fejlesztők nem foglalkoznia az egyéni hibák foglalkozik. Nincsenek forgatókönyvek, azonban ha explicit kihagyásos ügyfél munkaterhelési és sikertelen lehet szükség. Az ügyfél munkaterhelési és hibák kihagyásos biztosítja, hogy a szolgáltatás van ténylegesen néhány művelet végrehajtása során hiba történik. Megadott tesztelhetőségi biztosító felügyeleti, ezek lehetnek a munkaterhelés végrehajtásának pontos pontokon. A hibák, az alkalmazás különböző állapotok indukciós megkeresheti a hibák és minőségének javítása.
+A testability alkalmazási helyzetek, az Azure Service Fabric lehetővé teszi a fejlesztőknek, nem kell többé vesződnie a sérült egyes hibák foglalkoznia. Vannak helyzetek, azonban, ahol explicit kihagyásos ügyfél számítási feladatok és a hibák akkor lehet szükség. Ügyfél számítási feladatok és hibák kihagyásos biztosítja, hogy a szolgáltatás ténylegesen működik valamilyen művelet során hiba történik. Adja meg a szabályozás, amely testability biztosít, ilyenek lehetnek a számítási feladatok végrehajtásának pontos időpontokban. A hibák, az alkalmazás különböző állapoton indukciós megkeresheti a hibák és minőségének javítására.
 
 ## <a name="sample-custom-scenario"></a>Egyéni mintaforgatókönyv
-Ez a vizsgálat jeleníti meg az olyan forgatókönyvekben, amelyek az üzleti munkaterhelés interleaves [szabályos és ungraceful hibák](service-fabric-testability-actions.md#graceful-vs-ungraceful-fault-actions). A hibák kell előidézett, a szolgáltatási műveletek vagy a legjobb eredmények elérése érdekében számítási közepén.
+Ez a vizsgálat jeleníti meg az olyan forgatókönyvekben, amelyek az üzleti számítási feladat interleaves [szabályos és végbemenjen hibák](service-fabric-testability-actions.md#graceful-vs-ungraceful-fault-actions). A hibák lehet elérni, a középső szolgáltatási műveletek vagy számítási a legjobb eredmények elérése érdekében.
 
-Példa egy szolgáltatás, amely elérhetővé teszi a munkaterhelések négy keresztül bemutatjuk: A, B, C és D. mindegyike megfelel a munkafolyamatok és számítási, tárolási vagy a kettőn lehet. Az egyszerűség kedvéért azt fogja absztrakt a munkaterhelések ki ebben a példában. Az ebben a példában végre különböző hibák a következők:
+Egy szolgáltatás, amely négy számítási feladatok példán keresztül mutatja be: A, B, C és D. egyes megfelel a munkafolyamatok és a számítási, tárolási vagy vegyesen lehet. Az egyszerűség kedvéért azt fogja absztrakt ki a számítási feladatok ebben a példában. Az ebben a példában végrehajtott különböző hibák a következők:
 
-* A RestartNode: Ungraceful hiba szimulálása a számítógép újraindítását.
-* RestartDeployedCodePackage: Ungraceful hiba szimulálása a szolgáltatás gazdafolyamat összeomlik.
-* RemoveReplica: Szabályos hiba szimulálása a replika eltávolítása.
-* A MovePrimary: Szabályos hiba szimulálása a Service Fabric terheléselosztó által indított replika helyezi át.
+* RestartNode: Végbemenjen tartalék szimulálva egy gép újraindítása.
+* RestartDeployedCodePackage: Végbemenjen hiba szimulálása a szolgáltatás gazdagép-folyamat leáll.
+* RemoveReplica: Sikeres-e hiba szimulálása a replika eltávolítását.
+* A MovePrimary: Sikeres-e hiba szimulálása a replika helyezi a Service Fabric terheléselosztó által kiváltott.
 
 ```csharp
 // Add a reference to System.Fabric.Testability.dll and System.Fabric.dll.

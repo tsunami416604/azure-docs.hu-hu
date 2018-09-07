@@ -1,6 +1,6 @@
 ---
-title: 'PowerShell-parancsprogram: Set engedélyezett Virtuálisgép-méretek Azure labor szolgáltatások |} Microsoft Docs'
-description: A PowerShell parancsfájl engedélyezett Virtuálisgép-méretek Azure labor szolgáltatásokban állítja be.
+title: 'PowerShell-parancsprogram: Set engedélyezett Virtuálisgép-méretek az Azure Lab Services |} A Microsoft Docs'
+description: Ez a PowerShell-szkript engedélyezett Virtuálisgép-méretek az Azure Lab Services állítja be.
 services: lab-services
 author: spelluru
 manager: ''
@@ -12,21 +12,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/11/2018
 ms.author: spelluru
-ms.openlocfilehash: 159f175e7bb27b2d89001e1eba737c67adb89e50
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 559e74675a5d113584dca21979c20462c9cdf19c
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34638143"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44054706"
 ---
-# <a name="use-powershell-to-set-allowed-vm-sizes-in-azure-lab-services"></a>A PowerShell szolgáltatás használatával állítsa be Azure labor szolgáltatások engedélyezett Virtuálisgép-méretek
+# <a name="use-powershell-to-set-allowed-vm-sizes-in-azure-lab-services"></a>PowerShell-lel történő beállítása az Azure Lab Services engedélyezett a Virtuálisgép-méretek
 
-A PowerShell-parancsfájlpélda engedélyezett virtuális gépek (VM) méretét az Azure labor szolgáltatásokban állítja be.
+A PowerShell-példaszkript Azure Lab Services beállítása engedélyezett virtuális gépek (VM) méretét.
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
-* **Labor**. A parancsfájl szükséges hozzá egy meglévő labor. 
+* **Labor**. A szkriptnek szüksége van, hogy rendelkezik egy meglévő lab. 
 
 ## <a name="sample-script"></a>Példaszkript
 
@@ -38,13 +38,13 @@ Ez a szkript a következő parancsokat használja:
 
 | Parancs | Megjegyzések |
 |---|---|
-| [Find-AzureRmResource](/module/azurerm.resources/find-azurermresource) | A megadott paraméterek alapján erőforrásokat keres. |
-| [Get-AzureRmResource](/powershell/module/azurerm.resources/get-azurermresource) | Erőforrás lekérése. |
-| [Set-AzureRmResource](/powershell/module/azurerm.resources/set-azurermresource) | Erőforrás módosítása. |
+| [Find-AzureRmResource](/powershell/module/azurerm.resources/find-azurermresource) | Megkeresi az erőforrásokat a megadott paraméterek alapján. |
+| [Get-AzureRmResource](/powershell/module/azurerm.resources/get-azurermresource) | Megjeleníti az erőforrást. |
+| [Set-AzureRmResource](/powershell/module/azurerm.resources/set-azurermresource) | Módosít egy erőforrást. |
 | [New-AzureRmResource](/powershell/module/azurerm.resources/new-azurermresource) | Hozzon létre egy erőforrást. |
 
 ## <a name="next-steps"></a>További lépések
 
 Az Azure PowerShellről további tudnivalókért tekintse meg az [Azure PowerShell dokumentációt](https://docs.microsoft.com/powershell/).
 
-További Azure labor szolgáltatások PowerShell-parancsfájl példák találhatók a [Azure labor szolgáltatások PowerShell-példák](../samples-powershell.md).
+További Azure Lab Services PowerShell szkriptminták találhatók az [Azure Lab Services PowerShell-minták](../samples-powershell.md).

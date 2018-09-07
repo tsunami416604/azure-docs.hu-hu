@@ -1,6 +1,6 @@
 ---
-title: Az Azure mikroszolgáltatások FabricTransport beállításainak módosítását |} Microsoft Docs
-description: Ismerje meg az Azure Service Fabric szereplő kommunikációs beállításainak konfigurálása.
+title: Az Azure Service Fabric actors FabricTransport beállításainak módosítása |} A Microsoft Docs
+description: Ismerje meg az Azure Service Fabric-aktor kommunikációs beállítások konfigurálása.
 services: Service-Fabric
 documentationcenter: .net
 author: suchiagicha
@@ -14,53 +14,53 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/20/2017
 ms.author: suchiagicha
-ms.openlocfilehash: f196859500d5de883a4de3f21b803c8f83e2f0b2
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: aa4339fa1fe4b21369004e748492ee71cbe6d616
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37021412"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44052139"
 ---
 # <a name="configure-fabrictransport-settings-for-reliable-actors"></a>Reliable Actors FabricTransport beállításainak konfigurálása
 
-Az alábbiakban a konfigurálható beállítások:
+A konfigurálható beállítások a következők:
 - C#: [FabricTransportRemotingSettings](
 https://docs.microsoft.com/java/api/microsoft.servicefabric.services.remoting.fabrictransport._fabric_transport_remoting_settings)
 - Java: [FabricTransportRemotingSettings](https://docs.microsoft.com/java/api/microsoft.servicefabric.services.remoting.fabrictransport._fabric_transport_remoting_settings)
 
-A következőképpen módosíthatja FabricTransport alapértelmezett konfigurációját.
+A következő módokon FabricTransport alapértelmezett konfigurációját módosíthatja.
 
 ## <a name="assembly-attribute"></a>Szerelvény attribútum
 
-A [FabricTransportActorRemotingProvider](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.actors.remoting.fabrictransport.fabrictransportactorremotingproviderattribute?redirectedfrom=MSDN#microsoft_servicefabric_actors_remoting_fabrictransport_fabrictransportactorremotingproviderattribute) attribútumához az aktor ügyfél és a szereplő szolgáltatás szerelvények alkalmazni.
+A [FabricTransportActorRemotingProvider](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.actors.remoting.fabrictransport.fabrictransportactorremotingproviderattribute?redirectedfrom=MSDN#microsoft_servicefabric_actors_remoting_fabrictransport_fabrictransportactorremotingproviderattribute) attribútum az aktor ügyfél és az aktor service szerelvények a alkalmazni kell.
 
-A következő példa bemutatja, hogyan módosíthatja az alapértelmezett érték a FabricTransport OperationTimeout beállítások:
+Az alábbi példa bemutatja, hogyan módosíthatja az alapértelmezett érték FabricTransport így időtúllépés történt a beállítások:
 
   ```csharp
     using Microsoft.ServiceFabric.Actors.Remoting.FabricTransport;
     [assembly:FabricTransportActorRemotingProvider(OperationTimeoutInSeconds = 600)]
    ```
 
-   Második példáját FabricTransport MaxMessageSize értékek alapértelmezett és OperationTimeoutInSeconds változik.
+   Második példa FabricTransport MaxMessageSize értékek alapértelmezett OperationTimeoutInSeconds megváltozik.
 
   ```csharp
     using Microsoft.ServiceFabric.Actors.Remoting.FabricTransport;
     [assembly:FabricTransportActorRemotingProvider(OperationTimeoutInSeconds = 600,MaxMessageSize = 134217728)]
    ```
 
-## <a name="config-package"></a>A konfigurációs csomag
+## <a name="config-package"></a>Konfigurációs csomag
 
-Használhatja a [a konfigurációs csomag](service-fabric-application-and-service-manifests.md) az alapértelmezett konfiguráció módosításához.
+Használhat egy [konfigurációs csomag](service-fabric-application-and-service-manifests.md) az alapértelmezett konfiguráció módosításához.
 
 > [!IMPORTANT]
-> Linux-csomópont a tanúsítványok kell PEM-formátumú. További információ keresése és tanúsítványok konfigurálása Linux további tudnivalókért lásd: [tanúsítványok konfigurálása Linux](./service-fabric-configure-certificates-linux.md). 
+> A Linux-csomópontokat a tanúsítványok kell PEM-formátumú. További információk megkeresése és tanúsítványok konfigurálása Linux kapcsolatban lásd: [tanúsítványok konfigurálása Linux](./service-fabric-configure-certificates-linux.md). 
 > 
 
-### <a name="configure-fabrictransport-settings-for-the-actor-service"></a>Az aktor szolgáltatás FabricTransport beállításainak konfigurálása
+### <a name="configure-fabrictransport-settings-for-the-actor-service"></a>Aktorszolgáltatás FabricTransport beállításainak konfigurálása
 
-Adja hozzá a settings.xml fájlban TransportSettings szakaszt.
+Adjon hozzá egy TransportSettings szakasz a settings.xml fájlban.
 
-Alapértelmezés szerint szereplő kód keresi, SectionName "&lt;ActorName&gt;TransportSettings". Ha nem találja, ellenőrzi, hogy SectionName mint "TransportSettings".
+Alapértelmezés szerint szereplő kód keres, SectionName "&lt;ActorName&gt;TransportSettings". Ha nem találja, megkeresi SectionName, "TransportSettings".
 
   ```xml
   <Section Name="MyActorServiceTransportSettings">
@@ -77,9 +77,9 @@ Alapértelmezés szerint szereplő kód keresi, SectionName "&lt;ActorName&gt;Tr
    </Section>
   ```
 
-### <a name="configure-fabrictransport-settings-for-the-actor-client-assembly"></a>Az aktor ügyfél szerelvény FabricTransport beállításainak konfigurálása
+### <a name="configure-fabrictransport-settings-for-the-actor-client-assembly"></a>Az aktor ügyfélszerelvény FabricTransport beállításainak konfigurálása
 
-Ha az ügyfél nem fut a szolgáltatás részeként, akkor létrehozhat egy "&lt;ügyfél végrehajtható fájl neve&gt;. settings.xml" fájlt az ügyfél .exe fájl ugyanazon a helyen. Majd adja hozzá a TransportSettings szakaszt, az adott fájlban. A SectionName "TransportSettings" kell lennie.
+Ha az ügyfél nem fut a szolgáltatás részeként, létrehozhat egy "&lt;Exe Ügyfélnév&gt;. settings.xml" fájl az ügyfél .exe fájl ugyanazon a helyen. Ezután adja hozzá a TransportSettings szakaszt, az adott fájlban. SectionName "TransportSettings" kell lennie.
 
   ```xml
   <?xml version="1.0" encoding="utf-8"?>
@@ -99,9 +99,9 @@ Ha az ügyfél nem fut a szolgáltatás részeként, akkor létrehozhat egy "&lt
   </Settings>
    ```
 
-  * Másodlagos tanúsítvány biztonságos szereplő szolgáltatásügyfél FabricTransport beállításainak konfigurálása.
-  Másodlagos Tanúsítványadatok CertificateFindValuebySecondary paraméter hozzáadásával lehet hozzáadni.
-  Az alábbiakban látható a példa az a figyelő TransportSettings.
+  * Másodlagos tanúsítvány biztonságos Aktor szolgáltatás vagy ügyfél FabricTransport beállításainak konfigurálása.
+  Másodlagos tanúsítvány adatait is hozzáadhatók CertificateFindValuebySecondary paraméter hozzáadásával.
+  Az alábbi, a példában a figyelő TransportSettings számára.
 
     ```xml
     <Section Name="TransportSettings">
@@ -115,7 +115,7 @@ Ha az ügyfél nem fut a szolgáltatás részeként, akkor létrehozhat egy "&lt
     <Parameter Name="CertificateProtectionLevel" Value="EncryptAndSign" />
     </Section>
      ```
-     Az alábbiakban látható a példa az ügyfél TransportSettings a.
+     Az alábbiakban egy példa az ügyfél TransportSettings számára.
 
     ```xml
    <Section Name="TransportSettings">
@@ -129,9 +129,9 @@ Ha az ügyfél nem fut a szolgáltatás részeként, akkor létrehozhat egy "&lt
     <Parameter Name="CertificateProtectionLevel" Value="EncryptAndSign" />
     </Section>
      ```
-    * Aktor/szolgáltatásügyfél tulajdonosnévvel használatával biztonságossá tételéhez FabricTransport beállítások konfigurálása.
-    Felhasználói kell FindBySubjectName, findtype – adja meg, CertificateIssuerThumbprints és CertificateRemoteCommonNames értékek hozzáadásához.
-  Az alábbiakban látható a példa az a figyelő TransportSettings.
+    * FabricTransport beállításainak konfigurálása az Aktor szolgáltatás vagy ügyfél tulajdonosnév használatával biztonságossá tételéhez.
+    Felhasználói kell findType FindBySubjectName, adja meg, adjon hozzá CertificateIssuerThumbprints és CertificateRemoteCommonNames értékeket.
+  Az alábbi, a példában a figyelő TransportSettings számára.
 
      ```xml
     <Section Name="TransportSettings">
@@ -145,7 +145,7 @@ Ha az ügyfél nem fut a szolgáltatás részeként, akkor létrehozhat egy "&lt
     <Parameter Name="CertificateProtectionLevel" Value="EncryptAndSign" />
     </Section>
     ```
-  Az alábbiakban látható a példa az ügyfél TransportSettings a.
+  Az alábbiakban egy példa az ügyfél TransportSettings számára.
 
     ```xml
      <Section Name="TransportSettings">

@@ -1,6 +1,7 @@
 ---
-title: Gyakran feltett kérdés a Speech to Text szolgáltatás az Azure-ban
-description: Az alábbiakban a szöveg-hang transzformációs legnépszerűbb kérdésekre adott válaszok.
+title: – Gyakran ismételt kérdések a Speech to Text szolgáltatás az Azure-ban
+description: Szolgáltatás szöveg-hang transzformációs legnépszerűbb kérdésekre adott válaszok.
+titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: PanosPeriorellis
 ms.service: cognitive-services
@@ -8,136 +9,134 @@ ms.component: custom-speech
 ms.topic: article
 ms.date: 06/11/2018
 ms.author: panosper
-ms.openlocfilehash: e5ba01c25646578da22f054659051be3515e9e4b
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 31515d6867fc5524df1b081932dd2a28b0cf989c
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39281830"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44022158"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Beszédfelismerés – gyakori kérdések
 
-Ha nem találja a kérdésekre adott válaszok a gyakori kérdések, tekintse meg a támogatási lehetőségek [Itt](support.md).
+Ha nem találja a kérdésekre adott válaszok a gyakori kérdések, tekintse meg az [más támogatási lehetőségeket](support.md).
 
 ## <a name="general"></a>Általános kérdések
 
-**Kérdés**: Mi a különbség a szöveg modellek alapkonfiguráció és a custom Speech között?
+**K: Mi a különbség egy alapkonfiguráció modell és a egy egyéni beszéd szöveges modellre?**
 
-**Válasz**: kiindulási modelleket alkalmazhatnak rendelkezik betanítva a Microsoft tulajdonában lévő adatok és a már üzembe helyezte a felhőben. Egyéni modellek engedélyezése a felhasználó jobban igazodik egy adott környezetben a meghatározott a zajszint vagy a nyelvi modell igazíthatja. A gyáraktól, autók, zajos utcák igazítani akusztikai modell lenne szükség, mivel a konkrét témakörök biológiai, fizikai, radiológia, termékek neveit és egyéni betűszavakat például egy igazítani, nyelvi modell lenne szükség.
+**A**: A modell rendelkezik betanítva Microsoft tulajdonú adatok használatával, és már üzembe helyezte a felhőben.  Használhatja egy egyéni modell jobban igazodik egy adott környezetben, amely rendelkezik az adott a zajszint vagy nyelvi modell igazíthatja. A gyáraktól, autókból vagy zajos utcák megköveteli az igazítani akusztikai modell. Témakörökben, mint biológiai, fizika, radiológia, a termék nevét, és egyéni betűszavakat egy igazítani, nyelvi modell lenne szükség.
 
-**Kérdés**: Hogyan kezdjek hozzá, ha egy alapkonfiguráció modell használata?
+**K: Hogyan kezdjek hozzá, ha egy alapkonfiguráció modell használata?**
 
-**Válasz**: először le szeretné kérni egy [előfizetési kulcs](get-started.md). Ha azt szeretné, hogy a predeployed kiindulási modelleket alkalmazhatnak REST-hívások, tekintse meg a [részletesen Itt](rest-apis.md). Ha használja a websockets protokoll letöltési szeretné a [SDK](speech-sdk.md)
+**A**: először kérje le egy [előfizetési kulcs](get-started.md). Ha azt szeretné, hogy a predeployed kiindulási modelleket alkalmazhatnak REST-hívások, tekintse meg a [REST API-k](rest-apis.md). Ha azt szeretné, hogy használja a websockets protokollt, [az SDK letöltéséhez](speech-sdk.md).
 
-**Kérdés**: Do I mindig létre kell hoznia egy egyéni beszédmodellel?
+**K: mindig szükséges e hozhat létre egy egyéni beszédmodellel?**
 
-**Válasz**: nem, ha az alkalmazás az általános napi nyelv használatával, akkor nem szükséges egy modell testreszabása. Emellett, ha az alkalmazás használatban van egy környezetet, amelyben nincs a háttérzaj alig vagy egyáltalán nem, akkor szabhatja testre, vagy nem kell. A portál lehetővé teszi, hogy a felhasználók alapkonfiguráció és testreszabott modellek üzembe helyezése és pontossági tesztek futtatásához. Felhasználók használhatják ezt a szolgáltatást egy alapkonfiguráció vs pontosságát mérhető egy egyéni modell.
+**A**: nem. Ha az alkalmazás általános, napi nyelv, nem kell egy modell testreszabása. Ha az alkalmazás használatban van egy környezet alig vagy egyáltalán nem háttérzaj esetén nem kell egy modell testreszabása. 
 
-**Kérdés**: Honnan tudom, ha az adatkészlet vagy a modell feldolgozása befejeződött?
+Alapkonfiguráció és a portálon testreszabott modellek üzembe helyezése, és futtassa a pontossági tesztek őket. Ez a funkció segítségével mérheti a modell és a egy egyéni modell pontosságát.
 
-**Válasz**: a modell vagy a tábla adatkészlet állapota jelenleg az egyetlen mód arra, hogy.
-A feldolgozás befejeződése után az állapot lesz kell "sikeres".
+**K: Hogyan tudom az adatkészletet vagy a modell feldolgozása befejezésekor?**
 
-**Kérdés**: hozható létre egynél több modell?
+**A**: a modell vagy a tábla adatkészlet állapota jelenleg az egyetlen mód arra, hogy. A feldolgozás befejeződése után az állapot értéke **sikeres**.
 
-**Válasz**: nem korlátozott, hány modellek szerepelnek a gyűjteményben.
+**K: hozható létre egynél több modell?**
 
-**Kérdés**: vettem hiba. Hogyan megszakítja a saját adatok importálása vagy folyamatban lévő létrehozását modellkezelési? 
+**A**: nem rendelkezhet a gyűjteményben lévő modellek száma korlátozott.
 
-**Válasz**: jelenleg nem vonható vissza egy akusztikai és nyelvi betanítás folyamat. Importált adatok és modellek kerül után lehet törölni.
+**Kérdés, hogy hiba. Hogyan megszakítja a saját adatok importálása vagy folyamatban lévő létrehozását modellkezelési?**
 
-**Kérdés**: Mi a különbség a Keresés & Diktálás modelleket és a természetes nyelvi modellek között?
+**A**: jelenleg nem vonható vissza egy akusztikai és nyelvi betanítás folyamat. Ha kerül a törölheti az importált adatok és modellek.
 
-**Válasz**: nincsenek egynél több kiindulási modelleket alkalmazhatnak a beszédfelismerési szolgáltatás közül választhat. A természetes nyelvi modell megfelelő speech beszélt természetes nyelvi stílus felismerve. Ez a modell ideális keresése közben hívások átírás és Diktálás ideális megoldás alkalmazások indítása hanggal történik. Univerzális egy új modell, amely a célja, hogy mindkét-forgatókönyveket érintenek.
+**K: Mi a különbség a Keresés és a Diktálás modell és a természetes nyelvi modell között?**
 
-**Kérdés**: is frissíthetők a saját meglévő model (modell rétegezést)?
+**A**: a Speech service-ben több modell közül választhat. A természetes nyelvi modell, természetes nyelvi stílusú elhangzik hatékonysággal hasznos. Ez a modell ideális átírás telefonhívásokat. A Keresés és a Diktálás modell ideális voice-eseményindítóval aktivált alkalmazásokat. Az univerzális modellje új modell, amely a célja, hogy mindkét-forgatókönyveket érintenek.
 
-**Válasz**: létező modell nem frissíthető. Megkerülő megoldásként az új kombinálva a régi adatkészletet, és readapt.
+**K: is frissíthetők a saját meglévő model (modell rétegezést)?**
 
-Ha nyelvi adatok egy zip (ha akusztikai adathoz) vagy egy .txt fájl nelze kombinovat a régi és új adatkészletek. Adaptációs van befejezése után az új frissített modell kell lennie a megszüntetéséhez telepített új végpont beszerzése
+**A**: egy meglévő modell nem frissíthető. Egy megoldás kombinálja a régi adatkészletet, hogy az új adatkészletet és readapt.
 
-**Kérdés**: Mi történik, ha az üzembe helyezett modell, mire a portál érhető el, mint a magasabb szintű egyidejűség érdekében kell. 
+A régi adatkészletet, és az új adatkészletet egy zip-fájlba (az akusztikai adathoz) vagy egy .txt fájlban (a nyelvi adatok) nelze kombinovat. Adaptációs befejeződése után az új, frissített modell kell új végpont beszerzése újratelepítése
 
-**Válasz**: a modell 20 egyidejű kérelmek egységnyi növekményekben vertikálisan felskálázhatja. 
+**K: Mi történik, ha van szükség magasabb szintű egyidejűség érdekében, mire a portál érhető el, mint az üzembe helyezett modell?** 
 
-Lépjen kapcsolatba velünk, ha nagyobb méreteket van szüksége.
+**A**: a modell 20 egyidejű kérelmek egységnyi növekményekben vertikálisan felskálázhatja. 
 
-**Kérdés**: I letöltheti futtassam és helyileg futtatja az alkalmazást?
+Lépjen kapcsolatba velünk, ha szüksége van egy nagyobb méreteket.
 
-**Válasz**: modellek nem tölthető le és helyben végrehajtott.
+**K: helyezhetem saját modell letöltése és helyileg futtatja az alkalmazást?**
 
-**Kérdés**: saját naplózott kérések?
+**A**: modellek nem tölthető le és helyben végrehajtott.
 
-**Válasz**: választhat, hogy a nyomkövetés, onnantól nem hang kikapcsolhatják a központi telepítés létrehozása során, vagy beszédátírás lesz naplózva. Ellenkező esetben kérelmek általában jelentkezett be az Azure-ban biztonságos tárolására. Ha további adatvédelmi megfontolások, amelyek nem engedik a Custom Speech Service segítségével a, forduljon a támogatási csatornáit egyikét.
+**K: van saját naplózott kérések?**
+
+**A**: választhat, hogy egy nyomkövetést kikapcsolhatják a központi telepítés létrehozásakor. Ezen a ponton nincs hang- vagy beszédátírás bekerülnek a naplóba. Ellenkező esetben kérelmek általában jelentkezett be az Azure-ban biztonságos tárolására. 
+
+Ha további adatvédelmi megfontolások, amelyek nem engedik a custom Speech service használatával, lépjen kapcsolatba a támogatási csatornáit egyikét.
 
 ## <a name="importing-data"></a>Adatok importálása
 
-**Kérdés**: Mi az az adatkészlet méretének korlátját? Hogy miért? 
+**K: Mi a az adatkészlet méretének korlátja, és miért van rájuk a korlátot?**
 
-**Válasz**: az adatkészlet jelenleg legfeljebb 2 GB HTTP feltöltendő fájl mérete a korlátozás miatt nem lehetséges. 
+**A**: adatkészletek jelenleg legfeljebb 2 GB-os. A korlát HTTP feltöltendő fájl mérete a korlátozás miatt van. 
 
-**Kérdés**: is szeretnék zip saját szöveges fájlok annak érdekében, hogy töltsön fel egy nagyobb szöveges fájlt? 
+**K: I zip saját szöveges fájlok, a nagyobb szövegfájl töltök?** 
 
-**Válasz**: nem, jelenleg csak a tömörítetlen szöveges fájlok engedélyezettek.
+**A**: nem. Jelenleg csak a tömörítetlen szövegfájlok használata engedélyezett.
 
-**Kérdés**: az adatok a jelentés szerint a utterances sikertelen volt. Mi a probléma?
+**K: az adatokat a jelentés szerint utterances sikertelen volt. Mi a probléma?**
 
-**Válasz**: 100 %-a-fájlban megcímkézzen feltöltése sikertelen nem probléma.
-Ha egy akusztikai és nyelvi adatok megcímkézzen túlnyomó többsége (például > 95 %-os) sikeresen importálva, az adatkészlet is használható. Ajánlott azonban, hogy próbálja megérteni, hogy megcímkézzen miért volt sikertelen, és hárítsa el a problémákat. Leggyakoribb problémák, például a formázási hibákat, olyan könnyű megoldást kínál. 
+**A**: egy fájlban megcímkézzen 100 %-os feltöltése sikertelen nem probléma. Ha az az akusztikai és nyelvi-adatkészletek (a példában, több mint 95 %-os) megcímkézzen túlnyomó többsége importálása sikeresen megtörtént, az adatkészlet is lesz használható. Azt javasoljuk azonban, próbálja megérteni, hogy megcímkézzen miért volt sikertelen, és hárítsa el a problémákat. Leggyakoribb problémák, például a formázási hibákat, olyan könnyű megoldást kínál. 
 
-## <a name="creating-am"></a>DE létrehozása
+## <a name="creating-an-acoustic-model"></a>Az akusztikai modell létrehozása
 
-**Kérdés**: mennyi akusztikai adatot van szükségem?
+**K: mennyi akusztikai adatot van szükségem?**
 
-**Válasz**: javasoljuk, hogy az egy órás akusztikai adathoz 30 perc alatt.
+**A**: javasoljuk, hogy a 30 perc és egy órányi akusztikai adathoz.
 
-**Kérdés**: milyen adatokat kell gyűjteni?
+**Kérdés: milyen adatokat kell gyűjteni?**
 
-**Válasz**: az alkalmazás forgatókönyv legközelebb adatok gyűjtésére, és a használat célját, a lehető.
-Az adatgyűjtés meg kell egyeznie a cél alkalmazás és a felhasználók eszköz vagy eszközök, a környezetek és előadói típusú tekintetében. Általában érdemes összegyűjtötte az adatokat a legszélesebb beszélők minél számos. 
+**A**: az alkalmazás forgatókönyv legközelebb adatok gyűjtésére, és a használat célját, a lehető. Az adatgyűjtés meg kell egyeznie a cél alkalmazás és a felhasználók eszköz vagy eszközök, a környezetek és előadói típusú tekintetében. Általában érdemes összegyűjtötte az adatokat a legszélesebb beszélők minél számos. 
 
-**Kérdés**: hogyan kell gyűjteni azt? 
+**K: hogyan kell gyűjteni akusztikai adathoz?**
 
-**Válasz**: adatok gyűjtése önálló alkalmazás létrehozása, vagy használhatja a ki a kereskedelmi rendszerhang rögzítésének szoftvert.
-Az alkalmazás, amely az audio adatokat naplózza, és használja, amely egy verziója is létrehozhat. 
+**A**: adatok gyűjtése önálló alkalmazás létrehozása, vagy off-the-shelf rendszerhang rögzítésének szoftvert használ. Az alkalmazás, amely naplózza a hang adatokat, majd az adatok egy verziója is létrehozhat. 
 
-**Kérdés**: kell átvezeti betanítás magam? 
+**K: van átvezeti betanítás magam?**
 
-**Válasz**: Igen! Lefényképezze saját maga, vagy szakmai beszédátírási szolgáltatást használ. Néhány felhasználó szakmai transcribers igény szerint, míg mások közösségi használja, vagy hajtsa végre a beszédátírás magukat.
+**A**: Igen! Lefényképezze saját maga, vagy szakmai beszédátírási szolgáltatást használ. Néhány felhasználó inkább szakmai transcribers és mások közösségi használja, vagy hajtsa végre a beszédátírás magukat.
 
 ## <a name="accuracy-testing"></a>Pontosságtesztelés
 
-**Kérdés**: végrehajtható meg, hogy saját egyéni nyelvi modell segítségével importálni akusztikai modell offline tesztelés?
+**K: végrehajthatok offline tesztelés saját egyéni akusztikai modell egy testreszabott nyelvi modell használatával?**
 
-**Válasz**: Igen, csak adja meg, a testreszabott nyelvi modell a listában lévő offline vizsgálat beállításakor
+**A**: Igen, a testreszabott nyelvi modell csak válassza a legördülő menüben az offline vizsgálat beállításakor.
 
-**Kérdés**: végrehajtható meg, hogy saját egyéni nyelvi modell, egy egyéni akusztikai modell használatával offline tesztelés?
+**K: végrehajthatok offline tesztelés saját egyéni nyelvi modell, egy egyéni akusztikai modell használatával?**
 
-**Válasz**: Igen, a importálni akusztikai modell csak válassza a legördülő menüben az offline vizsgálat beállításakor.
+**A**: Igen, a importálni akusztikai modell csak válassza a legördülő menüben az offline vizsgálat beállításakor.
 
-**Kérdés**: Mi az a Word hiba sebessége (WER), és hogyan, számított?
+**K: Mi a word Hibaarány (WER), és hogyan, számított?**
 
-**Válasz**: Word hiba sebessége (WER) olyan beszédfelismerési a kiértékelés metrika. A hibák teljes száma, amely tartalmazza a beszúrások, törléseket és helyettesítések továbbá, a hivatkozás beszédátírási szavak száma osztva számítani. További részleteket [itt](https://en.wikipedia.org/wiki/Word_error_rate) talál.
+**A**: WER a kiértékelés metrika beszédfelismerési. A WER akkor számít, a hibák teljes száma, amely tartalmazza a beszúrások, törléseket és helyettesítések továbbá, a hivatkozás beszédátírási szavak száma osztva. További információkért lásd: [word Hibaarány](https://en.wikipedia.org/wiki/Word_error_rate).
 
-**Kérdés**: Hogyan állapítható meg egy pontossága vizsgálati eredményeket, hogy jó?
+**K: Hogyan állapítható meg, hogy jó-e egy pontossága teszt eredményeit?**
 
-**Válasz**: az eredmények megjelenítése a modell és a egy testreszabott összehasonlítását.
-A referenciakonfiguráció modellt, hogy a testreszabási adnak a munkánknak beat kell megfelelnek.
+**A**: az eredmények megjelenítése a modell és a testreszabott modell összehasonlítását. A referenciakonfiguráció modellt, hogy a testreszabási adnak a munkánknak beat kell megfelelnek.
 
-**Kérdés**: hogyan do I döntse el, a Word hibák aránya az alap-modellek, így látható, hogy történt-e fokozása? 
+**K: Hogyan állapítható meg a WER egy alapszintű modell, így látható, hogy történt-e egy fokozása?** 
 
-**Válasz**: az offline vizsgálat eredményeit mutatja a egyéni modell és a javítása alapkonfiguráció pontosságát pontosságát alapterv.
+**A**: az offline vizsgálat eredményeit mutatja a egyéni modell és a javítása alapkonfiguráció pontosságát alapterv.
 
-## <a name="creating-lm"></a>Az LM létrehozása
+## <a name="creating-a-language-model"></a>Nyelvi modell létrehozása
 
-**Kérdés**: szöveges adatok mennyiségét kell feltölteni?
+**K: mennyi szöveges adatok van szükségem a feltöltendő?**
 
-**Válasz**: attól függ, a különféle beszédstílusok, és az alkalmazásban használt kifejezések a kiindulási nyelvi modellek származnak. Minden új szavak célszerű azokat a szavakat használatát a lehető legtöbb példákat biztosítanak. Az alkalmazásában használt gyakori kifejezések többek között a mondatok a nyelvi adatok akkor is hasznos, ahogy azt jelzi, hogy a rendszer figyelni ezeket a feltételeket, valamint a. Gyakori, hogy legalább száz és általában több száz utterances nyelvi adatkészlet vagy több olyan fontos. Bizonyos típusú lekérdezések gyakoribb a többinél várhatóan, is az adatkészlet is beszúrhat a gyakori lekérdezések több példányát.
+**A**: attól függ, a különféle beszédstílusok, és az alkalmazásban használt kifejezések a kiindulási nyelvi modellek származnak. Minden új szavak célszerű azokat a szavakat használatát a lehető legtöbb példákat biztosítanak. Az alkalmazásában használt gyakori kifejezések többek között a mondatok a nyelvi adatok akkor is hasznos, mert azt jelzi, hogy a rendszer ezeket a feltételeket is figyelhet. Gyakori, hogy legalább 100, és általában több száz vagy több utterances nyelvi adatkészlet. Is ha bizonyos típusú lekérdezések gyakoribb a többinél várhatóan, beszúrhat több másolatot a gyakori lekérdezések az adatkészletben.
 
-**Kérdés**: csak feltölthetek olyan szólistát?
+**K: csak feltölthetek olyan szólistát?**
 
-**Válasz**: feltöltése szavak listáját beszédstílusok, a szavakat lekérése azonban tartalmazza a rendszer a szavakat általában használata.
-Teljes vagy részleges utterances (mondatokból vagy kifejezésekből vagy a felhasználók valószínűleg övezi hálózata) biztosításával a nyelvi modell tudhat meg az új szavakat, és azok használatát ismerteti. Az egyéni nyelvi modell jó, nem csak az első, a rendszer új szavak, hanem az alkalmazás ismert szavak valószínűségét hangolását. Ismerje meg jobban a rendszer teljes utterances nyújtó segítségével. 
+**A**: feltöltése szavak listáját a szavakat felveszi a szöveg szóhasználati, de azt nem tanórákon a rendszer a szavakat általában használata. Azáltal, hogy a teljes vagy részleges utterances (mondatokból vagy kifejezésekből vagy az, hogy a felhasználók valószínűleg tegyük fel, hogy miket), a nyelvi modell tudhat meg az új szavakat és a használatuk. Az egyéni nyelvi modell jó, nemcsak a rendszer új szavak, hanem az alkalmazás ismert szavak valószínűségét hangolását. Ismerje meg jobban a rendszer teljes utterances nyújtó segítségével. 
 
 ## <a name="next-steps"></a>További lépések
 

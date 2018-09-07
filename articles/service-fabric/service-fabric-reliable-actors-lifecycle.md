@@ -1,6 +1,6 @@
 ---
-title: Aktor-alapú Azure mikroszolgáltatások-életciklus áttekintése |} Microsoft Docs
-description: Ismerteti a Service Fabric megbízható szereplő életciklus, szemétgyűjtés és manuális törlése szereplője és azok állapota
+title: Az Azure Service Fabric actors-életciklus áttekintése |} A Microsoft Docs
+description: Ismerteti a Service Fabric Reliable Actor életciklusát, szemétgyűjtés és manuálisan az aktorok és állapotuk törlése
 services: service-fabric
 documentationcenter: .net
 author: amanbha
@@ -14,54 +14,54 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/06/2017
 ms.author: amanbha
-ms.openlocfilehash: 4e919c565574e0765227abda5832c858c36a77c0
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: dbd9551027744d443613e32e0a082c10d4f357d5
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34208437"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44052051"
 ---
-# <a name="actor-lifecycle-automatic-garbage-collection-and-manual-delete"></a>Aktor életciklusát, automatikus szemétgyűjtés és manuális törlése
-Egy szereplő először egy kezdeményezték bármelyik metódusa aktiválva. Egy szereplő az inaktív (szemétgyűjtési a szereplője futtatókörnyezet által összegyűjtött), ha a konfigurált időtartamon nem használható. Egy szereplő és annak állapotát is törölhetők manuálisan bármikor.
+# <a name="actor-lifecycle-automatic-garbage-collection-and-manual-delete"></a>Actors-életciklus szemétgyűjtés automatikus és manuális törlése
+Egy aktor hívást kezdeményez annak a metódusaival valamelyik első alkalommal aktiválódik. Egy szereplő inaktív (szemétgyűjtési az Actors modul által összegyűjtött) esetén nem használható egy konfigurálható ideig. Egy aktor és annak állapotát is törölhetők manuálisan tetszőleges időpontban.
 
 ## <a name="actor-activation"></a>Aktor aktiválás
-Amikor egy szereplő aktív, az alábbiak történnek:
+Ha egy szereplő aktiválva van, az alábbiak történnek:
 
-* Ha a hívás érkezik egy szereplő számára, és egy már nem aktív, egy új szereplő jön létre.
-* A aktorállapot be van töltve, ha az állapot karbantartása.
-* A `OnActivateAsync` (C#) vagy `onActivateAsync` (Java) metódust (amely felülbírálhatók szereplő megvalósítása).
-* Az aktor most tekinthető aktív.
+* Ha a hívás érkezik egy szereplő számára, és a egy még nem aktív, egy új aktor jön létre.
+* Az aktorok állapotának be van töltve, ha az állapot karbantartása.
+* A `OnActivateAsync` (C#) vagy `onActivateAsync` (Java) metódust (amely az aktor implementálása felülbírálhatók).
+* Az aktor most számít aktív.
 
 ## <a name="actor-deactivation"></a>Aktor inaktiválása
 Amikor egy szereplő az Inaktiválás az alábbiak történnek:
 
-* Amikor egy szereplő nem használják-e valamennyi ideje, a rendszer eltávolítja a aktív szereplője táblából.
-* A `OnDeactivateAsync` (C#) vagy `onDeactivateAsync` (Java) metódust (amely felülbírálhatók szereplő megvalósítása). Ez törli a szereplő összes időzítő. Szereplő műveletek, például a metódus nem hívható módosításokat állam.
+* Ha egy szereplő valamennyi ideje nem történik, a rendszer eltávolítja az aktív Actors tábla.
+* A `OnDeactivateAsync` (C#) vagy `onDeactivateAsync` (Java) metódust (amely az aktor implementálása felülbírálhatók). Ez törli az aktor az időzítők. Aktor műveletek, például állapot módosításokat a metódus nem hívható.
 
 > [!TIP]
-> A háló szereplője futásidejű megfelelően kibocsát egy [szereplő aktiválás és az inaktiválást kapcsolatos események](service-fabric-reliable-actors-diagnostics.md#list-of-events-and-performance-counters). A diagnosztika és teljesítményfigyelés hasznosak.
+> A Fabric Actors-futtatókörnyezet bocsát ki néhány [aktor aktiválás és az inaktiválást kapcsolatos eseményeket](service-fabric-reliable-actors-diagnostics.md#list-of-events-and-performance-counters). Ezek a diagnosztikai és az alkalmazásteljesítmény-figyelési hasznosak.
 >
 >
 
 ### <a name="actor-garbage-collection"></a>Aktor szemétgyűjtés
-Amikor egy szereplő az Inaktiválás kiadott szereplő objektum hivatkozik, és szemétgyűjtő általában a közös nyelvi futtatókörnyezet (CLR) vagy a java virtuális gép (JVM) típusú szemétgyűjtő. A szemétgyűjtés csak a szükségtelenné vált az aktor objektumot. létezik **nem** távolítsa el a szereplő állapotkezelője tárolt állapotát. A szereplő aktiválódik, amikor legközelebb új szereplő objektum jön létre, és az állapot visszaállítása megtörtént.
+Egy szereplő inaktiválódik, ha jelennek meg az aktor objektumra hivatkozik, és általában a közös nyelvi futtatókörnyezet (CLR) vagy a java virtuális gép (JVM) típusú szemétgyűjtő által gyűjtött szemétgyűjtési lehet. A szemétgyűjtés csak megtisztítja az aktor objektumot. ugyanúgy **nem** távolítsa el az aktor állapot Managerben tárolt állapotára. Az aktor aktiválódik, amikor legközelebb jön létre egy új szereplő objektum, és az állapot visszaállítása megtörtént.
 
-Mi számít "használatban" inaktiválási és szemétgyűjtés?
+Mi számít "használatban" inaktiválási és szemétgyűjtés céljából?
 
 * Hívás fogadása
-* `IRemindable.ReceiveReminderAsync` (csak akkor, ha a szereplő használ emlékeztetők alkalmazható) meghívott metódus
+* `IRemindable.ReceiveReminderAsync` (csak akkor, ha az aktor használ emlékeztetők alkalmazható) meghívott metódus
 
 > [!NOTE]
-> az aktor időzítők használ, és időzítő visszahívási meghívták, ha az nem **nem** mint "használják" száma.
+> az aktor időzítők használja, és időzítő visszahívási metódusa meghívásainak, ha az nem **nem** "használatban" számít.
 >
 >
 
-Előtt megnyitjuk inaktiválás részleteit, fontos, hogy adja meg a következő feltételeket:
+Mielőtt belemennénk az inaktiválást, fontos, az alábbi feltételek meghatározása:
 
-* *Beolvasás időköze*. Ez az az időköz, amellyel a szereplője futásidejű az aktív szereplője tábla keres, amely inaktiválhatók szereplője és szemétgyűjtés. Ez az alapértelmezett értéke 1 perc.
-* *Üresjárati időtúllépés*. Ez az az időtartam, amelyet egy szereplő használaton kívül hagyni (inaktív), mielőtt kikapcsolható és szemétgyűjtés. Ennek alapértelmezett értéke 60 perc.
+* *Beolvasás időköze*. Ez az az időköz, amelyen az Actors modul az aktív Actors táblában keres, amely lehet inaktiválni actors, és a szemétgyűjtési gyűjtött. Ennek alapértelmezett értéke 1 perc.
+* *Üresjárat időkorlátja*. Ez az az időtartam, amelyet egy szereplő fel nem használt (inaktív), mielőtt ki lehet kapcsolni, és a szemétgyűjtési gyűjteni. Ennek alapértelmezett értéke 60 perc.
 
-Általában nem kell módosítania a ezeket az alapértelmezett értékeket. Azonban, ha szükséges, intervallumok módosítható keresztül `ActorServiceSettings` regisztrálásakor a [szereplő szolgáltatás](service-fabric-reliable-actors-platform.md):
+Általában nem kell módosítani ezeket az alapértelmezett értékeket. Azonban, ha szükséges, ezeket az időszakokat is módosítható keresztül `ActorServiceSettings` regisztrálásakor a [Aktorszolgáltatás](service-fabric-reliable-actors-platform.md):
 
 ```csharp
 public class Program
@@ -94,36 +94,36 @@ public class Program
     }
 }
 ```
-Az egyes aktív szereplő szereplő futásidejű nyomon követi az az, hogy mennyi ideig lett inaktív (tehát nem használható). Az aktor futásidejű ellenőrzi, a gyakrabban minden `ScanIntervalInSeconds` megjelenítéséhez, ha azok szemétgyűjtési gyűjt, és azt gyűjti, ha üresjárati idő le lett `IdleTimeoutInSeconds`.
+Minden aktív színész esetében az actor-futtatókörnyezetben nyomon követi az az, hogy mennyi ideig üresjáratban volt (azaz a nem használt). Az actor-futtatókörnyezetben ellenőrzi az actors mindegyike minden `ScanIntervalInSeconds` megtekintéséhez a szemétgyűjtési által gyűjtött, és gyűjti, ha az inaktív lehet `IdleTimeoutInSeconds`.
 
-Bármikor egy szereplő használata esetén az üresjárati idő 0 lesz visszaállítva. Ezt követően a szereplő szemétgyűjtő, csak ha újra marad a tétlen lehet `IdleTimeoutInSeconds`. A visszaírási, hogy egy szereplő tekinthető fel lett használva, ha egy szereplő illesztőfelület-metódust vagy egy aktor emlékeztető visszahívás végrehajtása. Egy szereplő van **nem** fel lett használva, ha időzítő visszahívási tekinthető.
+Visszaállít egy szereplő használja, az üresjárati idő 0 alaphelyzetbe áll. Ezt követően az aktor lehet csak akkor, ha újra inaktív marad a szemétgyűjtő `IdleTimeoutInSeconds`. Ne felejtse el, hogy egy szereplő minősül, ha egy felület aktormetódus vagy egy aktor emlékeztető visszahívási használtak. Van egy szereplő **nem** számít, ha az időzítő visszahívási használni.
 
-Az alábbi ábrán egy egyetlen szereplő ezek a fogalmak szemléltetésére életciklusát.
+Az alábbi ábrán egy egyetlen aktor ezek a fogalmak szemléltetésére életciklusa látható.
 
 ![Üresjárati idő – példa][1]
 
-A példa a szereplő élettartama metódus aktorhívások, emlékeztető és időzítők hatását mutatja. A példa kapcsolatos következő szempontokat érdemes megemlíteni a következők:
+A példában szereplő metódust hívja, emlékeztetők és időzítőket hatását az aktor élettartama jeleníti meg. Tudnivalók a példában a következő szempontokat is érdemes megemlíteni:
 
-* ScanInterval és IdleTimeout értéke 5 és 10 kulcsattribútumokkal. (Egység nem számít, itt, mivel az a célja, hogy csak a koncepció bemutatására.)
-* A vizsgálat a szemétgyűjtésbe kerülése szereplőket T = 0, 5, 10, 15, 20, 25, a történik, a vizsgálat időköznek 5 által definiált.
-* Egy rendszeres számlálót: T = 4, 8, 12, 16, 20, 24, következik be, és a visszahívás végrehajtása. Nem befolyásolja a szereplő üresjárati idő.
-* Az aktor metódus hívását T = 7 alaphelyzetbe állítja az üresjárati idő 0-ra, és a szemétgyűjtés, a szereplő késlelteti.
-* Az aktor emlékeztető visszahívási T = 14 mindennap, és további késlelteti a szemétgyűjtés, a szereplő.
-* T = 25 a szemétgyűjtési gyűjtemény ellenőrzés során a szereplő üresjárati idő végül meghaladja a 10 üresjárati időkorlátját, és a szereplő szemétgyűjtő.
+* ScanInterval és az IdleTimeout beállítása 5 és 10 jelölik. (Egységek nem számít, hogy itt, mivel az a célja, hogy csak a koncepció bemutatják.)
+* Keresése, az actors szemétgyűjtésbe történik, ha T = 0, 5, 10, 15, 20, 25, 5. az ellenőrzési időköz szerint.
+* Időzítő rendszeres T = 4, 8, 12, 16, 20, 24, akkor aktiválódik, és a visszahívás végrehajtása. Nem érinti a szereplő arra a tétlenségi időre.
+* Egy aktor metódushívás T = 7 állítja vissza arra a tétlenségi időre 0-ra, és késlelteti az aktor szemétgyűjtési gyűjteménye.
+* Egy aktor emlékeztető visszahívási T = 14 délelőtt, és további késlelteti az aktor szemétgyűjtési gyűjteménye.
+* T = 25-kor a szemétgyűjtési gyűjtemény vizsgálat során az aktor üresjárati idő végül meghaladja a 10-es üresjárati időkorlátot, és az aktor szemétgyűjtő.
 
-Egy szereplő soha nem lesznek szemétgyűjtő, végrehajtja a módszerekkel, függetlenül attól, mennyi idő telhet el az adott metódus végrehajtása közben. A korábban említett aktor a felület metódusai és felszólítás visszahívások végrehajtása megakadályozza, hogy a szemétgyűjtés által a gyári beállítások visszaállításával a szereplő üresjárati idő 0. Időzítő visszahívások végrehajtása nem állítja alaphelyzetbe az üresjárati idő 0. A szemétgyűjtés, a szereplő késleltetve azonban csak a időzítő visszahívási végrehajtásának befejezése után.
+Egy aktor soha nem lesznek szemétgyűjtő azt a módszerekkel, függetlenül attól, hogy mennyi időt vesz igénybe, hogy a metódus végrehajtása a végrehajtása közben. Ahogy korábban említettük, az aktorok illesztőmetódusait és emlékeztető visszahívások végrehajtásának megakadályozza, hogy a szemétgyűjtés 0 üresjárati idő az aktor visszaállításával. Az időzítő visszahívások végrehajtását nem állítja alaphelyzetbe a arra a tétlenségi időre 0. A szemétgyűjtés, az aktor azonban késleltetve van mindaddig, amíg az időzítő visszahívás végrehajtása befejeződött.
 
-## <a name="manually-deleting-actors-and-their-state"></a>Manuálisan a szereplője és az állapot törlése
-A deaktivált szereplője szemétgyűjtés csak a szükségtelenné vált az aktor objektum, de nem távolítja el egy szereplő állapotkezelője tárolt adatokat. Ha egy szereplő újra aktivált, az adatok újra keresztül teszik elérhetővé hozzá állapotkezelő. Olyan esetekben, ahol szereplője adat tárolása állapotkezelője és inaktiválása, de soha nem újra aktiválni lehet szükség az adatok törlése.  Példák szereplője törlése, olvasása [szereplője és állapotukra törlése](service-fabric-reliable-actors-delete-actors.md).
+## <a name="manually-deleting-actors-and-their-state"></a>Manuálisan az aktorok és állapotuk törlése
+Inaktív szereplők szemétgyűjtés csak megtisztítja a szereplő objektum, de nem távolítja el az aktor State Manager tárolt adatokat. Ha egy szereplő újra aktivált, annak munkaelemeiben található adatok újra áll rendelkezésre, a State Manager keresztül. Olyan esetekben, ahol actors tárolja az adatokat az State Manager és az inaktiválása, de soha nem aktiválta újra azt lehet szükség az adatok törlése.  Törli az actors bemutató példákért olvassa el a [aktorok és állapotuk törlése](service-fabric-reliable-actors-delete-actors.md).
 
 ## <a name="next-steps"></a>További lépések
-* [Aktor időzítők és az emlékeztetők](service-fabric-reliable-actors-timers-reminders.md)
-* [Szereplő események](service-fabric-reliable-actors-events.md)
-* [Aktor rögzítve](service-fabric-reliable-actors-reentrancy.md)
-* [Aktor diagnosztika és teljesítményfigyelés](service-fabric-reliable-actors-diagnostics.md)
-* [Aktor API referenciadokumentációt](https://msdn.microsoft.com/library/azure/dn971626.aspx)
-* [C# mintakód](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
-* [Java mintakód](http://github.com/Azure-Samples/service-fabric-java-getting-started)
+* [Actors – időzítők és emlékeztetők](service-fabric-reliable-actors-timers-reminders.md)
+* [Actors-események](service-fabric-reliable-actors-events.md)
+* [Actors – újbóli belépés](service-fabric-reliable-actors-reentrancy.md)
+* [Actors diagnosztizálása és teljesítményfigyelése](service-fabric-reliable-actors-diagnostics.md)
+* [Aktor API dokumentációja](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+* [C#-minta kódja](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
+* [Java-mintakód](http://github.com/Azure-Samples/service-fabric-java-getting-started)
 
 <!--Image references-->
 [1]: ./media/service-fabric-reliable-actors-lifecycle/garbage-collection.png

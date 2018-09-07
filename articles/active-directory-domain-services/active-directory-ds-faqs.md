@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: maheshu
-ms.openlocfilehash: 02b722feece5458a31e89e4041d51104b94e52c6
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 8747e597883d96756e676061bde04b920b13cadd
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39505865"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44023205"
 ---
 # <a name="azure-active-directory-domain-services-frequently-asked-questions-faqs"></a>Az Azure Active Directory tartományi szolgáltatások: Gyakori kérdések (GYIK)
 Ezen a lapon az Azure Active Directory Domain Services kapcsolatos gyakori kérdésekre ad választ. Tartsa vissza a frissítések keresése.
@@ -96,6 +96,9 @@ Ez a szolgáltatás tartalmazza az Azure-ban az ingyenes próbaverzióra. Regisz
 
 ### <a name="can-i-pause-an-azure-ad-domain-services-managed-domain"></a>Az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz akár szüneteltetheti? 
 Nem. Miután engedélyezte az Azure AD tartományi szolgáltatásokkal felügyelt tartományban, a szolgáltatás érhető el a kiválasztott virtuális hálózaton belül csak akkor letiltása/törlése a felügyelt tartományhoz. Nincs semmilyen módon nem lehet a szolgáltatás szüneteltetése. A számlázás továbbra is óránként, amíg nem törli a felügyelt tartományhoz.
+
+### <a name="can-i-failover-azure-ad-domain-services-to-another-region-for-a-dr-event"></a>Azure AD tartományi szolgáltatások egy másik régióba DR esemény feladatátvételi lehetőségeket?
+Nem.  Az Azure AD tartományi szolgáltatások jelenleg nem biztosít georedundáns telepítési modell. Azure-régióban egyetlen virtuális hálózaton korlátozva. Ha szeretné használják a több Azure-régióban, az Active Directory-tartományvezérlőket az Azure IaaS virtuális gépekhez való futtatásához szükséges.  Architektúra-útmutató található [Itt](https://docs.microsoft.com/azure/architecture/reference-architectures/identity/adds-extend-domain).
 
 ### <a name="can-i-get-azure-ad-domain-services-as-part-of-enterprise-mobility-suite-ems-do-i-need-azure-ad-premium-to-use-azure-ad-domain-services"></a>Kaphatok Azure AD tartományi szolgáltatásokat a nagyvállalati mobilitási csomag (EMS) keretében? Prémium szintű Azure AD használata az Azure AD tartományi szolgáltatások van szükségem?
 Nem. Az Azure AD tartományi szolgáltatásokat az Azure-szolgáltatás utólagos elszámolású csomagokra, és nem EMS-hez. Az Azure AD tartományi szolgáltatások összes kiadása esetén az Azure AD használható (ingyenes, alapszintű és, prémium). Attól függően, használati óradíjat számítjuk fel.

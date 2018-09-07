@@ -1,22 +1,23 @@
 ---
-title: A LUIS előre összeállított entitások |} A Microsoft Docs
-description: Ez a cikk az előre összeállított entitások, a Language Understanding Intelligent Services (LUIS) részét képező tartalmaz.
+title: Előre összeállított entitások a Language Understanding (LUIS)
+titleSuffix: Azure Cognitive Services
+description: LUIS az általános típusú adatok, például a dátumok, időpontok, számok, mértékek és pénznem FELISMERVE előre összeállított entitások egy készletét tartalmazza. Előre összeállított entitások támogatása a LUIS-alkalmazás kulturális környezete eltérő.
 services: cognitive-services
 author: diberry
 manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 02/15/2018
+ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: 95ff173a843e7ad18ec396a1130b2e2b4035f656
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: f62c078a023d9ee7ca535cb5e02623df7a568e8a
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39248237"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44052873"
 ---
-# <a name="prebuilt-entities"></a>Előre összeállított entitások
+# <a name="prebuilt-entities-to-recognize-common-data-types"></a>Előre összeállított entitások felismerésére általános adattípusok
 
 LUIS az általános típusú adatok, például a dátumok, időpontok, számok, mértékek és pénznem FELISMERVE előre összeállított entitások egy készletét tartalmazza. Előre összeállított entitások támogatása a LUIS-alkalmazás kulturális környezete eltérő. A LUIS támogatja, beleértve támogatási kulturális környezet, előre összeállított entitások teljes listáját lásd: a [előre összeállított entitások bemutatása](./luis-reference-prebuilt-entities.md).
 
@@ -28,7 +29,6 @@ LUIS az általános típusú adatok, például a dátumok, időpontok, számok, 
 1. Nyissa meg az alkalmazás nevére kattintva **saját alkalmazások** lapon, és kattintson a **entitások** a bal oldalon. 
 2. Az a **entitások** kattintson **előre összeállított entitások kezelése**.
 
-    ![Entitások lap – előre összeállított entitások kezelése](./media/luis-use-prebuilt-entity/add-prebuilt-entity-button.png)
 3. A **előre összeállított entitások hozzáadása** párbeszédpanelen kattintson az előre létrehozott entitást szeretne hozzáadni (például "datetimeV2"). Ezután kattintson a **Save** (Mentés) gombra.
 
     ![Előre összeállított entitások párbeszédpanel hozzáadása](./media/luis-use-prebuilt-entity/add-prebuilt-entity-dialog.png)
@@ -73,7 +73,7 @@ A **datetimeV2** előre összeállított entitások felismeri a dátumok, időpo
 2. Kattintson a végpont URL-cím a **App közzététele** megnyitásához a LUIS-végpont egy webböngészőben. 
 3. Az utterance (kifejezés) hozzáfűzni a dátumtartományt tartalmazó URL-cím. Például beírhatja a `book a flight tomorrow`, és láthatja, hogy a LUIS azonosítja `tomorrow` , egy `builtin.datetimeV2.date` entitás, és azonosítja az alelem értékként a holnapi dátumot a `resolution` mező. 
 
-Az alábbi példa bemutatja a JSON-válasz, a LUIS néz Ha a mai dátum 2017 október 31-én.
+Az alábbi példa bemutatja a JSON-válasz, a LUIS néz Ha a mai dátum 2017. október 31-én.
 
 ```json
 {

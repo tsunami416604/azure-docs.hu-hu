@@ -8,14 +8,14 @@ ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 08/16/2018
+ms.date: 09/05/2018
 ms.author: sngun
-ms.openlocfilehash: 9852edfca26e78ad1b373418970dfe9c7ab477d8
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: e90c5640e571aaf28e184e9439f6228e3a5bbc6b
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42054714"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44023562"
 ---
 # <a name="azure-cosmos-db-async-java-sdk-for-sql-api-release-notes-and-resources"></a>Az Azure Cosmos DB aszinkron Java SDK SQL API-hoz: kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
@@ -52,6 +52,13 @@ Az SQL API aszinkron Java SDK azáltal, hogy az aszinkron műveletek támogatás
 </table></br>
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
+
+### <a name="a-name210210"></a><a name="2.1.0"/>2.1.0
+* Támogatás hozzáadva a Proxy.
+* Erőforrás-engedélyezési jogkivonat támogatása.
+* Kijavítva a hiba a nagyméretű partíciókulcsok kezelését ([github #63](https://github.com/Azure/azure-cosmosdb-java/issues/63)).
+* Továbbfejlesztett dokumentációját.
+* Az SDK átstrukturálása részletesebb modulokat.
 
 ### <a name="a-name201201"></a><a name="2.0.1"/>2.0.1
 * Kijavítva a hiba nem angol nyelvű területi beállításokhoz ([github #51](https://github.com/Azure/azure-cosmosdb-java/issues/51)).
@@ -103,6 +110,7 @@ Cosmos DB-hez a kivont SDK használatával bármilyen kérelmet a rendszer eluta
 
 | Verzió | Kiadás dátuma | Visszavonás dátuma |
 | --- | --- | --- |
+| [2.1.0](#2.1.0) |2018. szeptember 5.|--- |
 | [2.0.1](#2.0.1) |2018. augusztus 16.|--- |
 | [2.0.0](#2.0.0) |2018. június 20.|--- |
 | [1.0.2](#1.0.2) |2018. május 18.|--- |

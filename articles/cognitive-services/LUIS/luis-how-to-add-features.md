@@ -1,5 +1,6 @@
 ---
-title: Funkciók hozzáadása a LUIS-alkalmazások |} A Microsoft Docs
+title: A kifejezés sorolja fel, entitás észlelési növelése érdekében
+titleSuffix: Azure Cognitive Services
 description: Language Understanding (LUIS) használja, amely javítja az észlelésük vagy szándékok és entitások előrejelzését funkciók hozzáadása, a kategóriák és minták
 services: cognitive-services
 author: diberry
@@ -7,29 +8,25 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 03/30/2018
+ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: 5ec75436c7df5c08f5507794229bec1f9adb2804
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 0fe4e1c64d1d443148f1d0a8ba2a9856e3566f30
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39222953"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44052615"
 ---
-# <a name="use-features-to-improve-your-luis-apps-performance"></a>A LUIS-alkalmazás a teljesítmény javítása szolgáltatások használata  
+# <a name="use-phrase-lists-to-boost-signal-of-word-list"></a>Használja a kifejezés boost jelre a word lista sorolja fel
 
-A pontosság javítása érdekében a LUIS-alkalmazás funkciókat adhat hozzá. Szolgáltatások révén a LUIS mutatók azáltal, hogy egyes szavak és kifejezések kategória részét képezik. A LUIS megtanulja, hogyan ismerhetik fel a kategória egy tagot, ha azt is kezelheti a többi hasonló módon.
+A pontosság javítása érdekében a LUIS-alkalmazás funkciókat adhat hozzá. Szolgáltatások révén a LUIS mutatók azáltal, hogy egyes szavak és kifejezések egy alkalmazás tartomány szókincsből eredőket részét képezik. 
 
 ## <a name="add-phrase-list"></a>A kifejezés lista hozzáadása
 
 1. Nyissa meg az alkalmazás nevére kattintva **saját alkalmazások** lapon, és kattintson a **hozhat létre**, majd kattintson a **listák kifejezés** az alkalmazás bal oldali panelen. 
 
-    ![A kifejezés lista navigáció](./media/luis-add-features/phrase-list-nav.png)
-
 2. Az a **listák kifejezés** kattintson **új lista létrehozása a kifejezés**. 
  
-    ![Hozzon létre új kifejezéslista](./media/luis-add-features/create-new-phrase-list.png)
-    
 3. Az a **kifejezéslista hozzáadása** párbeszédpanelen írja be a "Város" a kifejezés-lista nevét. Az a **érték** mezőbe írja be a kifejezést lista értékeit. Írjon be egy értéket egy időben, vagy értékek vesszővel elválasztva, és nyomja le az **Enter**.
 
     ![Lista városok kifejezés hozzáadása](./media/luis-add-features/add-phrase-list-cities.png)
@@ -44,25 +41,12 @@ A pontosság javítása érdekében a LUIS-alkalmazás funkciókat adhat hozzá.
 
 6. Kattintson a **Save** (Mentés) gombra. A "Város" kifejezés helyett szerepel lista adnak hozzá a **listák kifejezés** lap.
 
-    ![Hozzáadott kifejezéslista](./media/luis-add-features/phrase-list-cities.png)
+<a name="edit-phrase-list"></a>
+<a name="delete-phrase-list"></a>
+<a name="deactivate-phrase-list"></a>
 
-## <a name="edit-phrase-list"></a>Kifejezés szerkesztése
-
-Kattintson a kifejezés lista neve az a **listák kifejezés** lap. Az a **kifejezéslista szerkesztése** párbeszédpanel megnyílik, hogy minden szükséges szerkesztése a módosításokat, majd kattintson **mentése**.
-
- ![Hozzáadott kifejezéslista](./media/luis-add-features/edit-phrase-list.png)
-
-## <a name="delete-phrase-list"></a>Kifejezéslista törlése 
-
-Kattintson a három pont (***...*** ) gombra a sor végén található, és válassza **törlése**.
-
- ![Hozzáadott tartalom törlése](./media/luis-add-features/delete-phrase-list.png)
-
-## <a name="deactivate-phrase-list"></a>Kifejezéslista inaktiválása 
-
-Kattintson a három pont (***...*** ) gombra a sor végén található, és válassza **inaktiválás**.
-
- ![Hozzáadott lista inaktiválása](./media/luis-add-features/deactivate-phrase-list.png)
+> [!Note]
+> Szerkesztése, törlése vagy inaktiválni a kifejezést a lista a három pontra (***...*** ) gombra az EAC segítségével kifejezéslista sorának végén.
 
 ## <a name="pattern-regular-expression-feature"></a>Minta (reguláris kifejezés) szolgáltatás 
 **Ez a funkció elavult**. A LUIS nem adható hozzá a minta új funkciókat. Bármely meglévő minta-szolgáltatások 2018. május ig támogatottak. Standard LUIS reguláris kifejezés egy lekéréses kérelmet a megfelelő hozzájárulnak a [felismerő szöveges Github-adattár](https://github.com/Microsoft/Recognizers-Text). 

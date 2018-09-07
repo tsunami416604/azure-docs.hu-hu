@@ -1,6 +1,6 @@
 ---
-title: Ismerkedés az Azure Content moderátor |} Microsoft Docs
-description: Ismerkedés az Azure Content moderátor módjáról.
+title: Ismerkedés az Azure Content Moderator |} A Microsoft Docs
+description: Ismerkedés az Azure Content Moderator módja.
 services: cognitive-services
 author: sanjeev3
 manager: mikemcca
@@ -9,80 +9,80 @@ ms.component: content-moderator
 ms.topic: article
 ms.date: 01/15/2018
 ms.author: sajagtap
-ms.openlocfilehash: ae4333047ebd95733c7baaed0323a0c2c477d323
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 39727b4d97ade67b854fe525afad565451cc3d77
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347662"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44024511"
 ---
 # <a name="get-started-with-content-moderator"></a>Bevezetés a Tartalommoderátor használatába
 
-Hozzáfogna a tartalom moderátor API-k és a felülvizsgálati segédprogram a következőképpen:
+A Content Moderator Ismerkedés a következő módon:
 
-- [Indítsa el a felülvizsgálati eszközzel](#start-with-the-review-tool) az API-kulcsokat és a felülvizsgálati csoport létrehozásához. A felülvizsgálati eszköz vizsgálatát, és megtudhatja, hogyan integrálható a tartalom moderátor API-k használatával.
-- [Fizessen elő a tartalom moderátor](#start-with-the-apis) az Azure portálon. Továbbra is szeretné iratkozzon fel az online tekintse át a csoport létrehozása.
-- [A folyamat összekötő és a sablonok](https://flow.microsoft.com/connectors/shared_cognitiveservicescontentmoderator/content-moderator/) integrációja egy könnyen használható tervezővel számos kivétele.
+- [Kezdje a vizsgálóeszközt](#start-with-the-review-tool) az API-kulcsot, és tekintse át a csoport létrehozása. Az az előnye, hogy az API-kulcsot a moderálási API-k hívásához vizsgálatának tartalmat és a felülvizsgálati API-k létrehozása az értékelések, további lépések nélkül használhatja.
+- [Fizessen elő a Content Moderator](#start-with-the-apis) az Azure-ban, az API-kulcs beszerzése. Tekintse meg a [API-referencia](api-reference.md) és a [SDK-k](sdk-and-samples.md#sdks-for-python-java-nodejs-and-net). Továbbra is szeretné regisztráljon online, tekintse át a csoport létrehozása.
+- [A Flow-összekötőjét, és a sablonok](https://flow.microsoft.com/connectors/shared_cognitiveservicescontentmoderator/content-moderator/) tekintse meg egy könnyen használható Tervezőeszköz integrációkat széles skáláját.
 
-Függetlenül a választott lehetőség, tekintse meg a [hitelesítő adatok kezelése](review-tool-user-guide/credentials.md) cikkben található API hitelesítő adatait.
+Tekintse meg a beállítást választja, függetlenül a [hitelesítő adatok kezelése](review-tool-user-guide/credentials.md) cikkben találja az API hitelesítő adatait.
 
-## <a name="start-with-the-review-tool"></a>Indítsa el a felülvizsgálati eszközzel
-[Regisztráció](http://contentmoderator.cognitive.microsoft.com/) a tartalom moderátor felülvizsgálati eszköz webhelyen.
+## <a name="start-with-the-review-tool"></a>Kezdje a felülvizsgálati eszköz
+[Regisztráció](http://contentmoderator.cognitive.microsoft.com/) a Content Moderator felülvizsgálati eszköz webhelyen.
 
-![Tartalom moderátor kezdőlap](images/homepage.PNG)
+![Tartalom Moderator kezdőlapja](images/homepage.PNG)
 
 ### <a name="create-a-review-team"></a>Tekintse át a csoport létrehozása
-Adjon meg egy nevet a csoport. Ha azt szeretné, a kollégák, írja be az e-mail-címét is megteheti.
+Nevezze el a csapat. Ha azt szeretné, a kollégák, írja be az e-mail címüket megteheti.
 
-![Csoport egy tagja meghívása](images/QuickStart-2-small.png)
+![Csapattag meghívása](images/QuickStart-2-small.png)
 
 ### <a name="upload-images-or-enter-text"></a>Képek feltöltése, vagy adja meg a szöveg
-Kattintson a **próbálja > kép** vagy **próbálja > szöveg**. Legfeljebb öt minta képek feltöltése, vagy adja meg a minta szöveges moderálás.
+Kattintson a **próbálja > lemezkép** vagy **próbálja > szöveg**. Legfeljebb öt minta lemezképeket tölthetnek fel, vagy adja meg szövegminta moderálás.
 
-![Próbálja meg a lemezkép vagy szöveges moderálás](images/tryimagesortext.png)
+![Próbálja ki a kép vagy szöveg moderálása](images/tryimagesortext.png)
 
-### <a name="submit-for-automated-moderation"></a>Az automatizált moderálás elküldése
-Küldje el az automatikus moderálás a tartalmat. Belső a felülvizsgálati eszköz meghívja a moderálás API-k megvizsgálja a tartalmat. Ha az ellenőrzés befejeződött, egy üzenetet fog látni a vár a tekintse át az eredményekről láthatja.
+### <a name="submit-for-automated-moderation"></a>Küldje el az automatizált moderálás előnyeit
+Küldje el a tartalmat az automatizált moderálás előnyeit. Belsőleg a felülvizsgálati eszköz meghívja a moderálási API-k vizsgálata a tartalmat. Ha a beolvasás befejeződött, arról értesíti, Várakozás a felülvizsgálati eredmények kapcsolatos üzenet jelenik meg.
 
 ![Mérsékelt fájlok](images/submitted.png)
 
-### <a name="review-and-confirm-results"></a>Tekintse át és erősítse meg az eredmények
-Tekintse át az automatikus moderált címkék, ha szükséges, módosítsa és használatával a **következő** gombra. Az üzleti alkalmazás meghívja a moderátor API-k, a sorba, címkézett tartalom kezdete, készen áll az emberi felülvizsgálati csapatok által felülvizsgálandó. Gyorsan áttekintheti nagy mennyiségű, ezzel a megközelítéssel tartalmat.
+### <a name="review-and-confirm-results"></a>Tekintse át és az eredmények ellenőrzése
+Tekintse át az automatikus Metz címkéket, ha szükséges, módosítsa és keresztül küldje el a **tovább** gombra. Az üzleti alkalmazás meghívja a Moderator API-k, az üzenetsor-kezelési, címkézett tartalom elindításakor, készen áll arra, át kell néznie az emberi ellenőrző csapat. Nagy mennyiségű tartalmat, ezzel a megközelítéssel gyorsan tekintse át.
 
 ![Eredmények áttekintése](images/reviewresults.png)
 
-Összes használata a [tekintse át az eszköz szolgáltatások](Review-Tool-User-Guide/human-in-the-loop.md) vagy folytassa a következő szakaszban olvashat az API-kat. A regisztrációs lépés kihagyása, mert az API-kulcsot, ahogy az a felülvizsgálati eszközben az Ön kiépített rendelkezik a [hitelesítő adatok kezelése](review-tool-user-guide/credentials.md) cikk.
+Ismerje meg, hogyan használhatja az összes a [tekintse át az eszköz a szolgáltatások](Review-Tool-User-Guide/human-in-the-loop.md) vagy folytassa a következő szakaszban megismerheti az API-kat. Az előfizetési lépés kihagyása, mert rendelkezik az API-kulcs ki az Ön számára a felülvizsgálati eszközben, ahogyan a [hitelesítő adatok kezelése](review-tool-user-guide/credentials.md) cikk.
 
-### <a name="use-the-apis"></a>Az API-k
+### <a name="use-the-apis"></a>Az API-k használata
 
-Most, hogy már megismerkedett a tartalom moderálás, és tekintse át az eszköz élmény, ismerje meg a tartalom moderátor integrálása az üzleti alkalmazások. Az alábbi szakasz segítségével további és gyorsított az SDK-k és minták megértését.
+Ismerje meg, hogyan integrálható a Content Moderator az üzleti alkalmazásait. Tekintse meg a [API-referencia](api-reference.md) és a [SDK-k](sdk-and-samples.md#sdks-for-python-java-nodejs-and-net).
 
-## <a name="start-with-the-apis"></a>Indítsa el az API-khoz
+## <a name="subscribe-in-the-azure-portal"></a>Fizessen elő az Azure Portalon
 
-[Fizessen elő a tartalom moderátor](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator) az Azure portálon. Indítsa el a következő API-k egyike:
+[Fizessen elő a Content Moderator](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator) az Azure Portalon. A kezdéshez válasszon egyet a következő API-kat:
 
 ### <a name="image-moderation"></a>Képmoderálás
 
-Indítsa el a [API konzol](try-image-api.md) , vagy használja a [.NET gyors üzembe helyezés](image-moderation-quickstart-dotnet.md) vizsgálati lemezképeket, és lehetséges felnőtt és ellopható tartalom észlelése címkék, várható, pontszámokat és egyéb használatával kiolvasott adatokat.
+Kezdje a [API-konzol](try-image-api.md) vagy használja a [.NET – rövid útmutató](image-moderation-quickstart-dotnet.md) kiszűrhető, és észlelheti a potenciális felnőtt és szexuális tartalom címkék, megbízhatósági pontszámokat és egyéb használatával a kinyert információkat.
 
 ### <a name="text-moderation"></a>Szövegmoderálás
 
-Indítsa el a [API konzol](try-text-api.md) , vagy használja a [.NET gyors üzembe helyezés](text-moderation-quickstart-dotnet.md) megvizsgálja a potenciális profán kifejezéseket, nem kívánt szöveg gép támogatású besorolás (előzetes verzió), a szöveges tartalom és a személyes azonosításra alkalmas adatokat (PII). 
+Kezdje a [API-konzol](try-text-api.md) vagy használja a [.NET – rövid útmutató](text-moderation-quickstart-dotnet.md) tartalomszűrés, nem kívánatos szöveg gépi támogatású besorolás (előzetes verzió), a szöveges tartalom vizsgálata és a személyes azonosításra alkalmas adatokat (PII). 
 
 
 ### <a name="video-moderation"></a>Videomoderálás
 
-Indítsa el a [.NET gyors üzembe helyezés](video-moderation-api.md) videók vizsgálata, és lehetséges felnőtt és ellopható tartalomtípusok. 
+Kezdje a [.NET – rövid útmutató](video-moderation-api.md) videók vizsgálata, és észlelheti a potenciális felnőtt és szexuális tartalom. 
 
 
 ### <a name="review-apis"></a>API-k áttekintése
 
-Válassza ki a feladatot, tekintse át és munkafolyamat API-k, kezdje itt.
+Válassza ki a feladatot, tekintse át és a munkafolyamat API-k, kezdje itt.
 
-- A [feladat API](try-review-api-job.md) a tartalmat a moderálás API-k használatával, és értékelést készít a felülvizsgálati eszközben. 
-- A [felülvizsgálati API](try-review-api-review.md) közvetlenül hoz létre kép, text vagy videó értékelést az emberi moderátorok nélkül első vizsgálatát a tartalmat. 
-- A [munkafolyamat API](try-review-api-workflow.md) hoz létre, frissíti, és lekérdezi a csapat hoz létre egyéni munkafolyamatokat részleteit.
+- A [feladat API](try-review-api-job.md) a tartalmat a moderálási API-k használatával, és értékelések készít a felülvizsgálati eszközben. 
+- A [felülvizsgálati API](try-review-api-review.md) közvetlenül hoz létre kép, szöveg vagy videót felülvizsgálatok emberi moderátorok a tartalom ellenőrzése nélkül. 
+- A [munkafolyamat API](try-review-api-workflow.md) hoz létre, frissítését és az egyéni munkafolyamatokat, amely a csapat létrehozza részleteit.
 
 ## <a name="next-steps"></a>További lépések
 
-További információ a tartalom moderálás kezdve a [moderálás API kép](image-moderation-api.md).
+Tekintse meg a [API-referencia](api-reference.md) és a [SDK-k](sdk-and-samples.md#sdks-for-python-java-nodejs-and-net). Segítségével az integráció gyorsan Beindíthatja IOT-a [.NET SDK-minták](sdk-and-samples.md#net-sdk-samples), [a C# REST API-minták](https://github.com/sanjeev3/azure-docs-pr/blob/master/articles/cognitive-services/Content-Moderator/sdk-and-samples.md#rest-api-samples-in-c) és [oktatóanyagok](sdk-and-samples.md#tutorials).

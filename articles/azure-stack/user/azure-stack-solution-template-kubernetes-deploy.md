@@ -11,22 +11,22 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/27/2018
+ms.date: 09/06/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: 67e82a4809253123e15305b5f2ecd8cc5f7ee4ed
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 5df8104907e30337cdf47e5a9489ffdb50451a94
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43046850"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44055216"
 ---
 # <a name="deploy-a-kubernetes-cluster-to-azure-stack"></a>Kubernetes-fürt üzembe helyezése az Azure Stackhez
 
 *A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
 
 > [!Note]  
-> Azure Stack az Azure Kubernetes-szolgáltatások (AKS) szolgáltatásban Kubernetesen private preview verzióban van. Az Azure Stack-operátorokról kell kérnie a Kubernetes Piactéri elem ebben a cikkben az utasítások végrehajtásához szükséges hozzáférést.
+> Az AKS (az Azure Kubernetes Service) motor, az Azure Stacken private preview verzióban van. Az Azure Stack-operátorokról kell kérnie a Kubernetes Piactéri elem ebben a cikkben az utasítások végrehajtásához szükséges hozzáférést.
 
 A következő cikkben megvizsgál egy megoldás Azure Resource Manager-sablon használatával történő üzembe helyezése és a Kubernetes-erőforrások kiépítése egyetlen, koordinált műveletben. Fogja kell az Azure Stack-telepítés, a szükséges információkat gyűjthet, létrehozni a sablont, és ezután üzembe helyezése a felhőben.
 

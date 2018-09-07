@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/22/2018
 ms.author: shlo
-ms.openlocfilehash: 1023eadbf4b799cd8b0c761c1689b9249cee450a
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: d0f36551fb06e04b50af464bac6953dda64c6202
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42616844"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44054148"
 ---
 # <a name="alert-and-monitor-data-factories-using-azure-monitor"></a>Riasztás megjelenítése és figyelése az Azure Monitor használatával adat-előállítók
 A felhőalapú alkalmazások összetettek a részek. Győződjön meg arról, hogy az alkalmazás mindig elérhető fel az adatokat és kifogástalan állapotban fut figyelést biztosít. Segít, hogy ki a lehetséges problémák stave vagy korábbi kiépítettektől hibaelhárítása. Monitorozási adatok segítségével emellett részletes elemzéseket kaphat az alkalmazásról. A Tudásbázis segítségével javíthatja az alkalmazás teljesítménye vagy Karbantarthatóság, vagy ellenkező esetben manuális beavatkozást igénylő műveletek automatizálása.
@@ -392,7 +392,7 @@ ADFV2 bocsát ki a következő metrikák
 |----------------------|---------------------------------|----------|----------------------|-------------------------------------------------------|
 | PipelineSucceededRun | Sikeres futtatások metrikák folyamat | Darabszám    | Összes                | Teljes folyamatok futtatja sikerült perces időtartamon belül |
 | PipelineFailedRuns   | Nem sikerült a folyamat futtatása metrikák    | Darabszám    | Összes                | Perc időtartamon belül a folyamatok teljes sikertelen futtatások    |
-| ActiviySucceededRuns | Sikeres futtatások metrikák tevékenység | Darabszám    | Összes                | Összes tevékenység futtatása sikeres perces időtartamon belül  |
+| ActivitySucceededRuns | Sikeres futtatások metrikák tevékenység | Darabszám    | Összes                | Összes tevékenység futtatása sikeres perces időtartamon belül  |
 | ActivityFailedRuns   | Nem sikerült a tevékenységi futtatások metrikák    | Darabszám    | Összes                | Perc időtartamon belül az összes tevékenység sikertelen futtatások     |
 | TriggerSucceededRuns | Eseményindító-futtatások metrikák sikerült  | Darabszám    | Összes                | Teljes eseményindító-futtatások sikeres perces időtartamon belül   |
 | TriggerFailedRuns    | Nem sikerült az eseményindító-futtatások metrikák     | Darabszám    | Összes                | Perc időtartamon belül az összes eseményindító sikertelen futtatások      |

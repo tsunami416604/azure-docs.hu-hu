@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/10/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: af2a3da788fd26387ccdcc36422ffa5b11893212
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: 529612aeecfcea1d775c2f4359c5135ca3c6885e
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42888083"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44052543"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>Az Azure storage emulator használata a fejlesztési és tesztelési célra
 
@@ -68,7 +68,7 @@ A storage emulator parancssori eszköz segítségével inicializálása a storag
 
   Az alábbi parancsot, amely arra utasítja az emulátor használata az alapértelmezett SQL Server-példány is használható:
 
-  `AzureStorageEmulator.exe init /server .\\`
+  `AzureStorageEmulator.exe init /server .`
 
   Vagy használhatja az alábbi parancsot, amely újrainicializálja az adatbázist az alapértelmezett LocalDB példányt:
 
@@ -93,10 +93,10 @@ Bizonyos Azure storage ügyfélkódtáraival, például a Xamarin-klienskódtár
 Azure PowerShell használatával is létrehozhat egy SAS-jogkivonatot. Az alábbi példa létrehozza az SAS-jogkivonatát blob-tárolóba teljes körű engedélyekkel:
 
 1. Telepítse az Azure PowerShell, ha még nem tette (a legújabb verzióját használja az Azure PowerShell parancsmagok ajánlott). A telepítési utasításokért lásd: [telepítse és konfigurálja az Azure Powershellt](/powershell/azure/install-azurerm-ps).
-2. Nyissa meg az Azure Powershellt, és futtassa a következő parancsokat, és cserélje le `ACCOUNT_NAME` és `ACCOUNT_KEY==` a saját hitelesítő adataival, és `CONTAINER_NAME` egy névvel, Ön:
+2. Nyissa meg az Azure Powershellt, és futtassa a következő parancsokat, és cserélje le `CONTAINER_NAME` egy névvel, Ön:
 
 ```powershell
-$context = New-AzureStorageContext -StorageAccountName "ACCOUNT_NAME" -StorageAccountKey "ACCOUNT_KEY=="
+$context = New-AzureStorageContext -Local
 
 New-AzureStorageContainer CONTAINER_NAME -Permission Off -Context $context
 
@@ -108,7 +108,7 @@ New-AzureStorageContainerSASToken -Name CONTAINER_NAME -Permission rwdl -ExpiryT
 Az eredményül kapott közös hozzáférésű jogosultságkód URI-t az új tárolóhoz hasonló lesz:
 
 ```
-https://storageaccount.blob.core.windows.net/sascontainer?sv=2012-02-12&se=2015-07-08T00%3A12%3A08Z&sr=c&sp=wl&sig=t%2BbzU9%2B7ry4okULN9S0wst%2F8MCUhTjrHyV9rDNLSe8g%3Dsss
+http://127.0.0.1:10000/devstoreaccount1/sascontainer?sv=2012-02-12&se=2015-07-08T00%3A12%3A08Z&sr=c&sp=wl&sig=t%2BbzU9%2B7ry4okULN9S0wst%2F8MCUhTjrHyV9rDNLSe8g%3Dsss
 ```
 
 A közös hozzáférésű jogosultságkódot létrehozni ebben a példában a egy napig érvényes. Az aláírás a tárolóban található blobok teljes hozzáférést (olvasási, írási, törlési, lista) biztosít.

@@ -9,18 +9,18 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/19/2018
 ms.author: manayar
-ms.openlocfilehash: 3a2ad35a5382394a6886ed14dcc4f659762f2833
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 28ea6c58eed110cfb57f3feaa6b828289bd20e64
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39172238"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44054546"
 ---
 # <a name="use-azure-site-recovery-to-protect-active-directory-and-dns"></a>Active Directory és DNS védelme az Azure Site Recovery használatával
 
 Vállalati alkalmazások, például a SharePoint, a Dynamics AX és az SAP attól függ, az Active Directory és DNS-infrastruktúra a megfelelő működéshez. Alkalmazások vészhelyreállítása beállításakor gyakran kell az Active Directory és DNS-helyre, mielőtt helyreállítja más alkalmazás-összetevők, hogy helyes-e az alkalmazás funkciói.
 
-Használhat [Site Recovery](site-recovery-overview.md) az Active Directory egy vész-helyreállítási terv létrehozásához. Egy bekövetkező szolgáltatáskimaradás esetén is kezdeményezhető feladatátvétel. Használhat fel az Active Directory és a néhány perc leforgása alatt. Ha az elsődleges helyen telepített Active Directory több alkalmazáshoz, például a SharePoint és az SAP, érdemes a webhely teljes feladatátvételt. Az Active Directory használatával helyreállítási hely először feladatátvételt. Ezt követően átadja a feladatokat a más alkalmazásokhoz, alkalmazásspecifikus helyreállítási tervet.
+Használhat [Site Recovery](site-recovery-overview.md) az Active Directory egy vész-helyreállítási terv létrehozásához. Egy bekövetkező szolgáltatáskimaradás esetén is kezdeményezhető feladatátvétel. Használhat fel az Active Directory és a néhány perc leforgása alatt. Ha az elsődleges helyen telepített Active Directory több alkalmazáshoz, például a SharePoint és az SAP, érdemes a webhely teljes feladatátvételt. Site Recovery használatával az Active Directory először feladatátvételt. Ezt követően átadja a feladatokat a más alkalmazásokhoz, alkalmazásspecifikus helyreállítási tervet.
 
 Ez a cikk bemutatja, hogyan hozhat létre vészhelyreállítási megoldást az Active Directory. Előfeltételek és a feladatátvételi utasításokat tartalmazza. Ismernie kell az Active Directory és a Site Recovery megkezdése előtt.
 

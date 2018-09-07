@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/13/2018
 ms.author: juliako
-ms.openlocfilehash: 757ba9e999bfbb46be96e653e7939d91bdf67679
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 015b8570e9cbb06a33107de7a8cb9ae00d60cacb
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43287125"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44053988"
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-rest"></a>Tartalmak továbbítása igény szerint REST használatával
 [!INCLUDE [media-services-selector-get-started](../../../includes/media-services-selector-get-started.md)]
@@ -54,7 +54,7 @@ Ebben a rövid útmutatóban a következő feladatok jelennek meg.
 >[!NOTE]
 >A különböző AMS-szabályzatok (például a Locator vagy a ContentKeyAuthorizationPolicy) esetében a korlát 1 000 000 szabályzat. Az ugyanazon házirend-azonosító akkor használja, ha Ön mindig ugyanazokat a napokat / hozzáférési engedélyeket, például olyan továbbra is helyben hosszú ideje (nem feltöltött szabályzatokat) keresők szabályzatai. További információkért tekintse meg [ezt](media-services-dotnet-manage-entities.md#limit-access-policies) a cikket.
 
-A cikk ezt használja az AMS REST entitások kapcsolatos részletekért lásd: [Azure Media Services REST API-referencia](https://docs.microsoft.com/en-us/rest/api/media/services/azure-media-services-rest-api-reference). Lásd még [Azure Media Services alapfogalmaiért](media-services-concepts.md).
+A cikk ezt használja az AMS REST entitások kapcsolatos részletekért lásd: [Azure Media Services REST API-referencia](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference). Lásd még [Azure Media Services alapfogalmaiért](media-services-concepts.md).
 
 >[!NOTE]
 >A Media Services entitások elérésekor a be kell állítani a HTTP-kérelmekre a meghatározott fejlécmezők és értékek. További információkért lásd: [beállítása a Media Services REST API-k fejlesztését](media-services-rest-how-to-use.md).
@@ -405,7 +405,7 @@ Ha ez sikeres, a következőket adja vissza:
 
 ## <a id="encode"></a>Kódolja a forrásfájlt egy adaptív sávszélességű MP4-fájlok
 
-Fürtjét a Media Services media szolgáltatásba eszközöket is kódolhatók, transmuxed, teljesítményjellemzőit, és így tovább, miután előtt biztosítását az ügyfeleknek. Ezen tevékenységek több háttérbeli szerepkörpéldányhoz képest vannak ütemezve és futtatva a magas teljesítmény és rendelkezésre állás biztosítása érdekében. Ezeket a tevékenységeket feladatoknak nevezzük, és minden feladat el a valódi munkát az adategységfájlon Részműveletből áll (további információkért lásd: [feladat](https://docs.microsoft.com/en-us/rest/api/media/operations/job), [feladat](https://docs.microsoft.com/en-us/rest/api/media/operations/task) leírása).
+Fürtjét a Media Services media szolgáltatásba eszközöket is kódolhatók, transmuxed, teljesítményjellemzőit, és így tovább, miután előtt biztosítását az ügyfeleknek. Ezen tevékenységek több háttérbeli szerepkörpéldányhoz képest vannak ütemezve és futtatva a magas teljesítmény és rendelkezésre állás biztosítása érdekében. Ezeket a tevékenységeket feladatoknak nevezzük, és minden feladat el a valódi munkát az adategységfájlon Részműveletből áll (további információkért lásd: [feladat](https://docs.microsoft.com/rest/api/media/operations/job), [feladat](https://docs.microsoft.com/rest/api/media/operations/task) leírása).
 
 Ahogy korábban már említettük, ha az Azure Media Services egyik leggyakrabban használt működő forgatókönyve az adaptív sávszélességű streamelés az ügyfelek felé. A Media Services tudja dinamikusan csomagolni adaptív sávszélességű MP4-fájlokat a következő formátumok egyikét: HTTP Live Streaming (HLS), Smooth Streaming és MPEG DASH.
 

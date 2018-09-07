@@ -14,12 +14,12 @@ ms.date: 07/16/2018
 ms.author: barbkess
 ms.reviewer: asmalser
 ms.custom: it-pro
-ms.openlocfilehash: 1a7ecbe42857e522785d5919d46b783feae4caeb
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 1ac15ce8f8abf2b30b42f02b300a17448f86fc40
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39494125"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44052768"
 ---
 # <a name="what-is-application-access-and-single-sign-on-with-azure-active-directory"></a>Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?
 Egyszeri bejelentkezés azt jelenti, nem tudnak hozzáférni az összes alkalmazásokat és erőforrásokat kell tennie az üzleti, csak egyszer, egyetlen felhasználói fiókkal jelentkezzen be. Miután bejelentkezett, elérheti összes alkalmazás hitelesítéséhez szükséges nélkül (például adjon meg egy jelszót) egy második alkalommal.
@@ -46,7 +46,7 @@ Az Azure AD három különböző módon való bejelentkezéshez alkalmazásokat 
 
 * **Összevont egyszeri bejelentkezés** lehetővé teszi az alkalmazások átirányítása az Azure AD-felhasználói hitelesítés helyett egy saját jelszót kér. Összevont egyszeri bejelentkezés alkalmazásokhoz, hogy támogatási protokollok, például a SAML 2.0, WS-Federation, vagy az OpenID Connect, és az egyszeri bejelentkezés richest mód esetén támogatott.
 * **Jelszavas egyszeri bejelentkezés** lehetővé teszi a biztonságos tárolását és visszajátszani egy webböngésző-bővítmény vagy mobilalkalmazás segítségével. Jelszavas egyszeri bejelentkezés az alkalmazás által biztosított a meglévő folyamat használja, de lehetővé teszi, hogy egy rendszergazda kezelje a jelszavakat, és nem igényel a felhasználót, hogy ismeri a jelszavát.
-* **Meglévő egyszeri bejelentkezés** lehetővé teszi bármely meglévő egyszeri bejelentkezésre van beállítva az alkalmazás, de lehetővé teszi, hogy ezeket az alkalmazásokat lehet kapcsolódni az Office 365 vagy az Azure AD hozzáférési panel portálok kihasználhatja az Azure AD, és lehetővé teszi a további jelentéskészítés az Azure ad-ben, amikor az alkalmazások elindítása van.
+* **Egyszeri bejelentkezés társított** lehetővé teszi bármely meglévő egyszeri bejelentkezésre van beállítva az alkalmazás, de lehetővé teszi, hogy ezeket az alkalmazásokat lehet kapcsolódni az Office 365 vagy az Azure AD hozzáférési panel portálok kihasználhatja az Azure AD, és lehetővé teszi a további jelentéskészítés az Azure ad-ben, amikor az alkalmazások elindítása van.
 
 Egy felhasználó egy alkalmazással rendelkezik hitelesítést követően is szükségük van üzembe helyezve, amely arra utasítja az alkalmazás az alkalmazáson belüli engedélyeit és hozzáférési szintet, amelyeknél az alkalmazás egy ügyfélrekordot. A kiépítés, a fiók rekord vagy automatikusan történik, vagy akkor fordulhat elő, manuálisan egy rendszergazda előtt áll rendelkezésre a felhasználó egyszeri bejelentkezéses hozzáférést.
 
@@ -79,10 +79,10 @@ A jelszóalapú egyszeri bejelentkezés a végfelhasználó böngészők lehet:
 * Chrome – A Windows 7 vagy újabb, és MacOS X rendszeren vagy újabb
 * A Firefox 26.0 vagy később – a Windows XP SP2 vagy újabb, és a Mac OS X 10,6 vagy újabb
 
-### <a name="existing-single-sign-on"></a>Meglévő egyszeri bejelentkezés
-Egyszeri bejelentkezés az alkalmazás konfigurálásakor az Azure portal biztosít egy harmadik lehetőség a "meglévő egyszeri bejelentkezés". Ezt a beállítást egyszerűen lehetővé teszi a rendszergazda hozzon létre egy hivatkozást egy alkalmazásba, és helyezze el a hozzáférési panelen a kiválasztott felhasználók számára.
+### <a name="linked-single-sign-on"></a>A csatolt egyszeri bejelentkezés
+Egyszeri bejelentkezés az alkalmazás konfigurálásakor az Azure portal biztosít egy harmadik lehetőség az "összekapcsolt egyszeri bejelentkezéshez". Ezt a beállítást egyszerűen lehetővé teszi a rendszergazda hozzon létre egy hivatkozást egy alkalmazásba, és helyezze el a hozzáférési panelen a kiválasztott felhasználók számára.
 
-Például ha egy alkalmazás, amely hitelesíti a felhasználót az Active Directory összevonási szolgáltatások 2.0 van beállítva, a rendszergazda segítségével a "meglévő egyszeri bejelentkezéshez" lehetőséget a hozzáférési panelen, egy hivatkozás létrehozásához. Amikor a felhasználó hozzáfér a hivatkozás, csak a hitelesítést az Active Directory összevonási szolgáltatások 2.0 vagy az alkalmazás által biztosított bármely meglévő egyszeri bejelentkezési megoldás használatával.
+Például ha egy alkalmazás, amely hitelesíti a felhasználót az Active Directory összevonási szolgáltatások 2.0 van beállítva, a rendszergazda segítségével a "társított egyszeri bejelentkezéshez" lehetőséget a hozzáférési panelen, egy hivatkozás létrehozásához. Amikor a felhasználó hozzáfér a hivatkozás, csak a hitelesítést az Active Directory összevonási szolgáltatások 2.0 vagy az alkalmazás által biztosított bármely meglévő egyszeri bejelentkezési megoldás használatával.
 
 ### <a name="user-provisioning"></a>Felhasználók átadása
 Válassza ki az alkalmazások az Azure AD lehetővé teszi automatizált felhasználókiépítése és megszüntetést külső SaaS-alkalmazásaiból az Azure Portalon található példa fióklistán használata a Windows Server Active Directory vagy az Azure AD identity adatokat. Amikor egy felhasználó engedélyekkel alkalmazások közül legalább egy Azure AD-ben, egy fiók automatikusan létrehozhatók (kiépített), a célzott SaaS-alkalmazás.
@@ -172,7 +172,7 @@ Legtöbb összevont alkalmazásokhoz, amelyek támogatják a SAML 2.0, WS-Federa
 ![](./media/what-is-single-sign-on/workdaymobile.png)
 
 ### <a name="direct-sign-on-links-for-federated-password-based-or-existing-apps"></a>Közvetlen bejelentkezés hivatkozásokat összevont, jelszóalapú vagy meglévő alkalmazásokhoz
-Az Azure AD közvetlen egyszeri bejelentkezés mutató hivatkozások jelszóalapú egyszeri bejelentkezés, a meglévő egyszeri bejelentkezést és a összevont egyszeri bejelentkezés bármilyen támogató egyéni alkalmazások is támogatja.
+Az Azure AD közvetlen egyszeri bejelentkezés mutató hivatkozások jelszóalapú egyszeri bejelentkezés, a társított egyszeri bejelentkezést és a összevont egyszeri bejelentkezés bármilyen támogató egyéni alkalmazások is támogatja.
 
 Ezek a hivatkozások akkor kifejezetten kialakított URL-címeket, anélkül, hogy azokat az Azure AD hozzáférési panel vagy az Office 365 felhasználói bevezetésével a felhasználó leállította az Azure AD bejelentkezési folyamat egy adott alkalmazáshoz küldése. Az egyszeri bejelentkezési URL-címek megtalálhatók az irányítópult lapon minden olyan előre integrált alkalmazás az Azure Portalon, az Active Directory szakaszában az alábbi képernyőképen látható módon.
 

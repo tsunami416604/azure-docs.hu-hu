@@ -3,17 +3,16 @@ title: A klasszikus Azure-tároló beállításjegyzékének frissítése
 description: Kihasználhatja a kibontott szolgáltatáskészletére vonatkozóan a Basic, Standard és prémium szintű tároló-beállításjegyzékek felügyelt a nem felügyelt klasszikus tárolóregisztrációs adatbázis frissítésével.
 services: container-registry
 author: mmacy
-manager: jeconnoc
 ms.service: container-registry
 ms.topic: article
 ms.date: 08/28/2018
 ms.author: marsma
-ms.openlocfilehash: 7a377c607639f5c044e689b11380e9778f9c72c8
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 951866c1c74cb14536ea341d80c06e0fcfe0e4fe
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43189021"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44025588"
 ---
 # <a name="upgrade-a-classic-container-registry"></a>Klasszikus tároló-beállításjegyzék frissítése
 
@@ -23,7 +22,7 @@ A klasszikus Termékváltozat hamarosan elavulttá válik, és a március 2019 u
 
 ## <a name="why-upgrade"></a>Miért érdemes frissíteni?
 
-A klasszikus beállításjegyzékben folyamatban van a Termékváltozat **elavult**, és nem lesz elérhető a **március 2019**. Az összes meglévő klasszikus beállításjegyzékek frissítése előtt március 2019 kell lennie.
+A klasszikus beállításjegyzékben folyamatban van a Termékváltozat **elavult**, és nem lesz elérhető a **március 2019**. Az összes meglévő klasszikus beállításjegyzékek március 2019 előtt kell frissíteni.
 
 Tervezett elavulásának és klasszikus nem felügyelt beállításjegyzékek korlátozott képességeit az összes klasszikus beállításjegyzékek lehet frissíthető a Basic, Standard vagy prémium szintű felügyelt beállításjegyzékek. Ezek a magasabb szintű termékváltozatok a beállításjegyzék így integrálható az Azure funkcióit.
 

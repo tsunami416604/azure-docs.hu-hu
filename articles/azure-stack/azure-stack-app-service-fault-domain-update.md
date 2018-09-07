@@ -12,14 +12,14 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/29/2018
+ms.date: 09/05/2018
 ms.author: anwestg
-ms.openlocfilehash: 53766099f283f802482fe8e84144502d386b1d69
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: acadd1adec93d10d64712a2fbedb89e098998294
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39440151"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44025962"
 ---
 # <a name="how-to-redistribute-azure-app-service-on-azure-stack-across-fault-domains"></a>Hogyan lehet Azure App Service az Azure Stacken újraterjeszteni a tartalék tartományok között
 
@@ -48,8 +48,8 @@ A méretezési csoportok üzembe helyezve, az App Service erőforrás-szolgálta
 A méretezési csoportok horizontális, kövesse az alábbi lépéseket:
 
 1. Jelentkezzen be az Azure Stack rendszergazdai portál.
-1. Válassza ki **további szolgáltatások**.
-1. Válassza a COMPUTE, **a Virtual machine scale sets**. Meglévő méretezési csoportok az alkalmazásszolgáltatás üzemelő példányának részeként üzembe helyezett példányok száma adatokkal jelennek meg. Az alábbi képernyőfelvétel-készítés méretezési csoportok egy példát mutat be.
+1. Válassza az **Összes szolgáltatás** elemet.
+2. Az a **számítási** kategória, jelölje be **a Virtual machine scale sets**. Meglévő méretezési csoportok az alkalmazásszolgáltatás üzemelő példányának részeként üzembe helyezett példányok száma adatokkal jelennek meg. Az alábbi képernyőfelvétel-készítés méretezési csoportok egy példát mutat be.
 
       ![Az Azure App Service a méretezési csoportok szerepel a Virtual Machine Scale Sets UX][1]
 

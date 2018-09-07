@@ -1,6 +1,7 @@
 ---
-title: A LUIS - Azure adattárolás ismertetése |} A Microsoft Docs
-description: Ismerje meg az adatok tárolási módját a Language Understanding (LUIS)
+title: A LUIS - Language Understanding adattárolás
+titleSuffix: Azure Cognitive Services
+description: Ismerje meg az adatok tárolási módját a Language Understanding (LUIS). A LUIS egy Azure data store, a kulcs által megadott a régióhoz tartozó, a titkosított adatokat tárolja.
 services: cognitive-services
 author: diberry
 manager: cjgronlund
@@ -9,14 +10,14 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/08/2018
 ms.author: diberry
-ms.openlocfilehash: e4e289db0803a127bdbff5122095ae2125cdbb38
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: a34426efd998a5573277e9129b832f5167c5da5e
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39226192"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44022379"
 ---
-# <a name="data-storage-and-removal"></a>Az adattárolás és eltávolítása
+# <a name="data-storage-and-removal-in-language-understanding-luis-cognitive-services"></a>Az adattárolás és eltávolítása a Cognitive Services Language Understanding (LUIS)
 A LUIS egy Azure data store, a kulcs által megadott a régióhoz tartozó, a titkosított adatokat tárolja. Ezek az adatok 30 napig tárolja. 
 
 ## <a name="export-and-delete-app"></a>Exportálás és az alkalmazás törlése

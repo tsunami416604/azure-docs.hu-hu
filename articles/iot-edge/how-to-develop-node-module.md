@@ -6,25 +6,25 @@ keywords: ''
 author: shizn
 manager: timlt
 ms.author: xshi
-ms.date: 06/26/2018
+ms.date: 09/04/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 6976314929ac2e0e099e8c2f07da32970bc57509
-ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
+ms.openlocfilehash: 22049ae0903d2735e4c1974c1071eb7582be9823
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2018
-ms.locfileid: "43382507"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44049983"
 ---
-# <a name="develop-and-debug-nodejs-modules-with-azure-iot-edge-for-visual-studio-code"></a>Fejlesztés és hibakeresés a Node.js modulok az Azure IoT Edge segítségével a Visual Studio Code
+# <a name="use-visual-studio-code-to-develop-and-debug-nodejs-modules-for-azure-iot-edge"></a>Fejlesztés és hibakeresés a Node.js modulok az Azure IoT Edge-hez a Visual Studio Code használatával
 
 Elküldheti az üzleti logikát a peremhálózaton csempefolyamot modulokat az Azure IoT Edge megfelelően működjenek. Ez a cikk részletesen ismerteti a Visual Studio Code (a VS Code), a fő fejlesztőeszközt, a Node.js modulok fejlesztését.
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ez a cikk azt feltételezi, hogy egy számítógép vagy futtató fejlesztői gépen Windows vagy Linux rendszerű virtuális gépet használ. Az IoT Edge-eszköz lehet egy másik fizikai eszközt, vagy az IoT Edge-eszköz szimulálhatja a fejlesztői gépen.
+Ez a cikk feltételezi, hogy egy számítógép vagy a Windows, macOS vagy Linux rendszerű, a fejlesztői gépén futó virtuális gép használja. Az IoT Edge-eszközt egy másik fizikai eszköz lehet.
 
 > [!NOTE]
-> A hibakeresési oktatóanyag leírja, hogyan csatolhat egy folyamatot egy modul tárolóban, és a hibakeresés végrehajtása rajtuk a VS Code használatával. A linux-amd64, a windows és a tárolók arm32 Node.js modulok is hibakeresést. Ha nem ismeri a Visual Studio Code hibakeresési képességeit, olvassa el [Debugging](https://code.visualstudio.com/Docs/editor/debugging). 
+> Ez hibakeresési hibakeresése a VS Code-ban a Node.js modult tipikus kétféleképpen bemutatja. Egyik módja egy folyamatot egy modul tárolóban, csatlakoztassa, míg a másik pedig a lanuch modul hibakeresési módban. Ha nem ismeri a Visual Studio Code hibakeresési képességeit, olvassa el [Debugging](https://code.visualstudio.com/Docs/editor/debugging).
 
 Mivel ez a cikk a fő fejlesztőeszközt, Visual Studio Code-ot használ, a VS Code telepítése, és vegye fel a szükséges bővítmények:
 * [Visual Studio Code](https://code.visualstudio.com/) 
@@ -37,7 +37,14 @@ Hozzon létre egy modult, Node.js, amely tartalmazza az npm segítségével val�
 * [Az Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) vagy [Docker Hub](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags)
    * Használhat egy helyi Docker-beállításjegyzék készíthet prototípusokat és tesztelési célra, egy felhőbeli beállításjegyzék helyett. 
 
-A modul egy eszközön teszteléséhez van szüksége active IoT hub legalább egy IoT Edge-eszköz. Ha azt szeretné, használhatja a számítógépet, IoT Edge-eszköz, megteheti a oktatóanyagok a lépéseit követve [Windows](quickstart.md) vagy [Linux](quickstart-linux.md). 
+Beállítani a helyi fejlesztési környezet hibakeresése, futtassa, és az IoT Edge-megoldás teszteléséhez kell, hogy [Azure IoT EdgeHub fejlesztőeszközt](https://pypi.org/project/iotedgehubdev/). Telepítés [Python (2.7-es és 3.6) és a Pip](https://www.python.org/). Ezután telepítse **iotedgehubdev** futtassa az alábbi parancsot a terminálon.
+
+   ```cmd
+   pip install --upgrade iotedgehubdev
+   ```
+
+Ha tesztelni szeretné a modul egy eszközön, aktív IoT hub létrehozott legalább egy IoT Edge Eszközazonosítót használó kell. IoT Edge-démon futtatja a fejlesztői gépen, ha szüksége lehet, hogy leállította EdgeHub és EdgeAgent helyez át a következő lépéssel. 
+
 
 ## <a name="create-a-new-solution-template"></a>Új megoldássablon létrehozásához
 
@@ -80,38 +87,87 @@ Az alapértelmezett Node.js-kód, amely a megoldás a következő helyen találh
 
 Ha már készen áll a saját kód a Node.js-sablon testre szabása, a [Azure IoT Hub SDK-k](../iot-hub/iot-hub-devguide-sdks.md) hozhat létre a modulok a kulcsot kell IoT-megoldások, például a biztonság, a kezelés és a megbízhatóság címmel. 
 
-## <a name="build-and-deploy-your-module-for-debugging"></a>Készíthet és helyezhet üzembe a modul a hibakereséshez
+A Visual Studio Code Node.js támogatással rendelkezik. Tudjon meg többet [használata a VS Code-ban Node.js](https://code.visualstudio.com/docs/nodejs/nodejs-tutorial).
 
-Minden modul mappában nincsenek különböző tároló esetében több Docker-fájl. Bármilyen ezeket a fájlokat, amelyek a bővítmény végződhet **.debug** hozhat létre a teszteléshez modul. Jelenleg a Node.js modulok csak támogatja a linux-amd64, a windows-amd64 és a linux-arm32v7 tárolók hibakeresését.
+## <a name="launch-and-debug-module-code-without-container"></a>Indítsa el, és a tároló nélkül a modul-kód hibaelhárítása
+Az IoT Edge Node.js modult az Azure IoT készült Node.js eszközoldali SDK függ. Az alapértelmezett modul kódban inicializálása egy **ModuleClient** környezeti beállítások, a bemeneti név, ami azt jelenti, hogy az IoT Edge Node.js modult igényel elindításához, és futtassa a környezet beállításokat, és is kell elküldeni, vagy üzenetek a bemeneti csatornához. Az alapértelmezett Node.js modult csak egy bemeneti csatorna tartalmaz, és a név **input1**.
+
+### <a name="setup-iot-edge-simulator-for-single-module-app"></a>IoT Edge-szimulátor egy modul alkalmazás beállítása
+
+1. A VS Code parancskatalógus, írja be, majd a szimulátor indításához, és válassza ki **Azure IoT Edge: Start IoT Edge hubot szimulátor egyetlen modul**. Emellett meg kell adnia egy modul alkalmazásához, írja be a bemeneti nevek **input1** nyomja le az Enter billentyűt. A parancs elindítja a **iotedgehubdev** CLI és az IoT Edge-szimulátor és a egy tesztelési segédprogram modul tárolót. A kimenetek alább az integrált terminálon láthatja, ha a szimulátor lett egy modul módban sikeresen elindult. Emellett megtekintheti a `curl` parancs segítségével keresztül küldött. Erre később még szüksége lesz.
+
+   ![IoT Edge-szimulátor egy modul alkalmazás beállítása](media/how-to-develop-csharp-module/start-simulator-for-single-module.png)
+
+   Helyezze át a Docker Explorert, és tekintse meg a modul futási állapotát.
+
+   ![Simulátor modul állapota](media/how-to-develop-csharp-module/simulator-status.png)
+
+   A **edgeHubDev** tároló-e a fő elemei a helyi IoT Edge-szimulátort. Azt a fejlesztési számítógépén az IoT Edge biztonsági démon nélkül futtathatja és környezeti beállítások megadása a natív modul vagy a modul tárolók. A **bemeneti** tároló elérhetővé tett restAPIs híd üzeneteket, amelyekre a modul bemeneti csatorna segítségével.
+
+2. A VS Code parancskatalógus, írja be, és válassza ki **Azure IoT Edge: a modul hitelesítő adatok beállítása a felhasználói beállítások** beállítása a modul be környezeti beállítások `azure-iot-edge.EdgeHubConnectionString` és `azure-iot-edge.EdgeModuleCACertificateFile` a felhasználói beállítások. Annak a környezeti beállítások a hivatkozott **.vscode** > **launch.json** és [VS Code felhasználói beállítások](https://code.visualstudio.com/docs/getstarted/settings).
+
+### <a name="debug-nodejs-module-in-launch-mode"></a>Hibakeresés a Node.js modult indítási módban
+
+1. Az integrált terminálon módosítsa a könyvtárat a **NodeModule** mappában futtassa a következő parancsot a Node-csomagok telepítéséhez
+
+   ```cmd
+   npm install
+   ```
+
+2. Nyissa meg a `app.js` címet. Ebben a fájlban adja hozzá egy töréspontot.
+
+3. Nyissa meg a VS Code hibakeresési nézetet. Válassza ki a hibakeresési konfigurációt **ModuleName helyi hibakeresés (Node.js)**. 
+
+4. Kattintson a **Start Debugging** vagy nyomja le az **F5**. A hibakeresési munkamenet indul.
+
+5. A VS Code integrált termináljában, futtassa a következő parancsot, küldhet egy **Hello World** üzenet a modulnak. Ez a parancs az előző lépésekben bemutatta az IoT Edge-szimulátor sikeresen telepítő. Szüksége lehet létrehozni, vagy egy másik integrált terminálon váltson, ha jelenlegivel le van tiltva.
+
+    ```cmd
+    curl --header "Content-Type: application/json" --request POST --data '{"inputName": "input1","data":"hello world"}' http://localhost:53000/api/v1/messages
+    ```
+
+   > [!NOTE]
+   > Windows használja, ha van gondoskodik róla, hogy a rendszerhéj, a VS Code integrált termináljában **a Git Bash** vagy **WSL Bash**. Nem futtathat `curl` parancsot a PowerShellben vagy a parancssor használatával. 
+   
+   > [!TIP]
+   > Is [PostMan](https://www.getpostman.com/) vagy más API-eszközök helyett keresztül üzenetek küldéséhez `curl`.
+
+6. A VS Code hibakereső nézet láthatja a változókat a bal oldali panelen. 
+
+7. A hibakeresési munkamenet leállításához kattintson a Leállítás gombra vagy nyomja meg **Shift + F5**. És a VS Code parancskatalógus, írja be, és válassza ki **Azure IoT Edge: IoT Edge szimulátor leállítása** leállítása és tisztítsa meg a szimulátor.
+
+
+## <a name="build-module-container-for-debugging-and-debug-in-attach-mode"></a>A modul tároló hibakereséshez és a hibakeresési build az attach mód
+
+Az alapértelmezés szerinti megoldás két modult tartalmaz, egy szimulált hőmérsékleti érzékelő modul a másik pedig a Node.js-cső modul. A szimulált hőmérséklet-érzékelő tartja üzenetek küldése az Node.js cső modult, és az üzenetek vannak eredményez az IoT hubhoz. A modul mappában létrehozott nincsenek különböző tároló esetében több Docker-fájlok. Ezeket a fájlokat, amelyek a bővítmény végződhet bármelyike **.debug** hozhat létre a teszteléshez modul. Jelenleg a Node.js modulok csak támogatja a linux-amd64, a windows-amd64 és a linux-arm32v7 tárolók hibakeresését.
+
+### <a name="setup-iot-edge-simulator-for-iot-edge-solution"></a>IoT Edge-szimulátort az IoT Edge-megoldás beállítása
+
+A fejlesztői gépen elindíthatja az IoT Edge-szimulátor helyett az IoT Edge-megoldás futtatásához az IoT Edge biztonsági démon telepítésével. 
+
+1. A device Explorerben bal oldalán kattintson a jobb gombbal a IoT Edge-eszköz azonosítója, válassza a **beállítása IoT Edge-szimulátor** a szimulátor indításához az eszköz kapcsolati karakterlánccal.
+
+2. Láthatja, hogy az IoT Edge-szimulátor sikeresen megtörtént a telepítő az integrált terminálon.
+
+### <a name="build-and-run-container-for-debugging-and-debug-in-attach-mode"></a>Létrehozásához és futtatásához hibakereséshez és a hibakeresési tároló a csatolása mód
 
 1. A VS Code-ban keresse meg a `deployment.template.json` fájlt. A modul kép URL-címe frissítés hozzáadásával **.debug** vége.
+
 2. Cserélje le a Node.js-modul createOptions a **deployment.template.json** az alábbi tartalmat, és mentse a fájlt: 
     ```json
     "createOptions": "{\"ExposedPorts\":{\"9229/tcp\":{}},\"HostConfig\":{\"PortBindings\":{\"9229/tcp\":[{\"HostPort\":\"9229\"}]}}}"
     ```
 
-2. A VS Code parancskatalógus, írja be, és futtassa a parancsot **Azure IoT Edge: Build IoT Edge solution**.
-3. Válassza ki a `deployment.template.json` a megoldás a parancskatalógus a fájlt. 
-4. Az Azure IoT Hub-eszközök Explorerben kattintson a jobb gombbal egy IoT Edge-eszköz azonosítója, majd válassza ki **hozzon létre telepítést az adott eszköz**. 
-5. Nyissa meg a **config** mappában, hogy a megoldás, majd válassza ki a `deployment.json` fájlt. Kattintson a **Select Edge Deployment Manifest** (Edge üzembehelyezési jegyzék kiválasztása) elemre. 
+5. Nyissa meg a VS Code hibakeresési nézetet. Válassza ki a hibakeresési konfigurációs fájlt a modul. A hibakeresési beállítás nevét kell kinéznie **ModuleName távoli hibakeresés (Node.js)** vagy **ModuleName távoli hibakeresés (Node.js Windows-tárolóban)**, amely a fejlesztői gépen a tároló típusa attól függ.
 
-Láthatja majd a központi telepítés sikeres létrehozása a központi telepítés azonosítója a VS Code integrált terminál.
+6. Válassza ki **Start Debugging** , vagy válasszon **F5**. Jelölje be a csatlakoztatni kívánt folyamatot.
 
-Ellenőrizheti a tárolót a Docker a VS Code Explorerben, vagy futtassa a `docker ps` parancsot a terminálon.
+7. A VS Code hibakereső nézet láthatja a változókat a bal oldali panelen.
 
-## <a name="start-debugging-nodejs-module-in-vs-code"></a>Hibakeresés a Node.js-modul a VS Code-ban
+8. A hibakeresési munkamenet leállításához kattintson a Leállítás gombra vagy nyomja meg **Shift + F5**. A VS Code parancskatalógus, írja be és válassza a **Azure IoT Edge: IoT Edge szimulátor leállítása**.
 
-A VS Code tartja a hibakeresés konfigurációs információinak egy `launch.json` fájlt egy `.vscode` a munkaterület mappájában. Ez `launch.json` fájl jött létre, ha létrehozott egy új IoT Edge-megoldás. Új modul, amely támogatja a hibakeresés hozzáadásakor minden alkalommal frissíti. 
-
-1. Keresse meg a VS Code hibakeresési nézet, és válassza ki a hibakeresési konfigurációs fájlt a modul.
-
-2. Nyissa meg a `app.js` címet. Ebben a fájlban adja hozzá egy töréspontot.
-
-3. Kattintson a **hibakeresés indítása** gombra vagy nyomja le a **F5**, és válassza ki a csatlakoztatni kívánt folyamatot.
-
-4. A változók a bal oldali panelen megjelenik a VS Code Debug nézetben. 
-
-Az előző példa bemutatja, hogyan debug a Node.js IoT Edge-modulok a tárolókat. Ez a modul tároló createOptions elérhetővé tett port egészül ki. Miután befejezte a hibakeresés a Node.js modulok, javasoljuk, éles használatra kész IoT Edge-modulok számára elérhetővé tett portokon távolítsa el.
+> [!NOTE]
+> Az előző példa bemutatja, hogyan debug a Node.js IoT Edge-modulok a tárolókat. Ez a modul tároló createOptions elérhetővé tett port egészül ki. Miután befejezte a hibakeresés a Node.js modulok, javasoljuk, éles használatra kész IoT Edge-modulok számára elérhetővé tett portokon távolítsa el.
 
 ## <a name="next-steps"></a>További lépések
 

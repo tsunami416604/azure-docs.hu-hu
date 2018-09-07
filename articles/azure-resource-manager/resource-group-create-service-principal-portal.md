@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/21/2018
 ms.author: tomfitz
-ms.openlocfilehash: 57d017e2320e5cfea15f1716bc3b6518606e2ea4
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: fc0ccd84f493fd69c84515331386592ec11a887e
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39282244"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44025293"
 ---
 # <a name="use-portal-to-create-an-azure-active-directory-application-and-service-principal-that-can-access-resources"></a>Az Azure Active Directory-alkalmazás és -erőforrások elérésére képes egyszerű szolgáltatás létrehozása a portál használatával
 
@@ -27,7 +27,7 @@ Ha rendelkezik, amelyet eléréséhez, vagy módosítsa erőforrások, be kell �
 Ez a cikk bemutatja, hogyan lehet ezeket a lépéseket a portálon keresztül. Egy egybérlős alkalmazást, ahol az alkalmazás futtatásához csak egy szervezeten belül célja összpontosít. Általában használnak a egybérlős alkalmazások az üzleti alkalmazások futtatására a szervezeten belül.
 
 > [!IMPORTANT]
-> Szolgáltatásnév létrehozása helyett fontolja meg, hogy Azure AD Managed Service Identity-t használ az alkalmazásidentitásához. Az Azure AD MSI az Azure Active Directory egy nyilvános előzetes verziójú funkciója, mely leegyszerűsíti az identitások kód számára való létrehozását. Ha a kódja egy Azure AD MSI-t támogató szolgáltatásban fut, és Azure Active Directory-hitelesítést támogató erőforrásokhoz fér hozz, akkor az Azure AD MSI jobb megoldás Önnek. Ha szeretne többet megtudni az Azure AD MSI-ről, például hogy mely szolgáltatások támogatják jelenleg, olvassa el a [Managed Service Identity az Azure-erőforrásokhoz](../active-directory/managed-service-identity/overview.md) című cikket.
+> Szolgáltatásnév létrehozása helyett fontolja meg, hogy Azure AD Managed Service Identity-t használ az alkalmazásidentitásához. Az Azure AD MSI az Azure Active Directory egy nyilvános előzetes verziójú funkciója, mely leegyszerűsíti az identitások kód számára való létrehozását. Ha a kódja egy Azure AD MSI-t támogató szolgáltatásban fut, és Azure Active Directory-hitelesítést támogató erőforrásokhoz fér hozz, akkor az Azure AD MSI jobb megoldás Önnek. Ha szeretne többet megtudni az Azure AD MSI-ről, például hogy mely szolgáltatások támogatják jelenleg, olvassa el a [Managed Service Identity az Azure-erőforrásokhoz](../active-directory/managed-identities-azure-resources/overview.md) című cikket.
 
 ## <a name="required-permissions"></a>Szükséges engedélyek
 

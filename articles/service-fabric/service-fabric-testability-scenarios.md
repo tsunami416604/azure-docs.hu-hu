@@ -1,6 +1,6 @@
 ---
-title: Hozzon létre chaos és a feladatátvételi teszt Azure mikroszolgáltatások |} Microsoft Docs
-description: A Service Fabric használatával chaos teszt feladatátvételi teszt- és forgatókönyvek idéz elő a hibákat, és ellenőrizze a szolgáltatások.
+title: Feladatátvételi és káosztesztek létrehozása az Azure Service Fabrichez |} A Microsoft Docs
+description: A Service Fabric használatával káosz teszt- és feladatátvételi Tesztelési forgatókönyvek idéz elő hibákat, és ellenőrizze a szolgáltatás megbízhatóságát.
 services: service-fabric
 documentationcenter: .net
 author: motanv
@@ -14,46 +14,46 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/07/2017
 ms.author: motanv
-ms.openlocfilehash: d9c05ba2b98af5ef26ef5b5a7ae0995512df4e75
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: d12c5097d4ba5e0ccfe0e2b2cbc8ccd758c32d98
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34208753"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44051289"
 ---
-# <a name="testability-scenarios"></a>Tesztelhetőségi forgatókönyvek
-Nagy méretű elosztott rendszerek hasonlóan a felhőalapú infrastruktúrák nem eredendően megbízhatóak. Azure Service Fabric lehetővé teszi a fejlesztők szolgáltatások futtatásához fölött megbízhatatlan infrastruktúrák írni. Írási magas színvonalú szolgáltatásokat, a fejlesztők kell tudni idéz elő az ilyen megbízhatatlan infrastruktúra a szolgáltatások stabilitásának teszteléséhez.
+# <a name="testability-scenarios"></a>Testability alkalmazási helyzetek
+Nagy méretű elosztott rendszerek, a felhőalapú infrastruktúrák rendszer természetüknél fogva nem megbízható. Az Azure Service Fabric-ra épülve a nem megbízható hálózathatáron infrastruktúrák szolgáltatások írását lehetővé teszi a fejlesztők számára. Írás a magas színvonalú szolgáltatásokat, a fejlesztők kell tudni idéz elő az ilyen megbízhatatlan infrastruktúra szolgáltatásaik stabilitását teszteléséhez.
 
-A tartalék elemzési szolgáltatás segítségével a fejlesztők idéz elő hiba műveletek tesztelése szolgáltatások hibák esetén. Azonban célzott szimulált hibákat kap, csak eddig. A tesztelés további végrehajtania, használja a tesztelési forgatókönyvek a Service Fabric: egy chaos teszt- és a feladatátvételi tesztet. Ezek a forgatókönyvek folyamatos kihagyásos hibák, a szabályos és a hosszú időn keresztül a fürt teljes ungraceful szimulálásához. Miután egy tesztet a sebesség és a hibák típusú van beállítva, vagy C# API-k vagy a Powershellen keresztül, hibák létrehozni a fürtöt és a szolgáltatás elindítható.
+A Fault Analysis Service lehetővé teszi a fejlesztők a tartalék műveletek tesztelése szolgáltatások folytonosságát hibák esetén idéz elő. Azonban célzott szimulált hibák elsajátíthatja az első csak eddig. Hogy a tesztelés további, használhatja a tesztcélú forgatókönyveket a Service Fabricben: egy káosz teszt- és a egy feladatátvételi tesztet. Ezek a forgatókönyvek folyamatos kihagyásos hibák, biztonságos és a hosszabb időn keresztül a fürt teljes végbemenjen szimulálása. Miután egy tesztet a sebesség és a hibák típusú van beállítva, azt vagy C# API-k vagy a Powershellen keresztül, a hibák létrehozni a fürtöt és a szolgáltatás elindítható.
 
 > [!WARNING]
-> ChaosTestScenario rugalmasabb, szolgáltatás-alapú Chaos lesz cserélve. Tekintse meg az új cikkek [szabályozott Chaos](service-fabric-controlled-chaos.md) további részleteket.
+> ChaosTestScenario váltja fel egy rugalmasabb, szolgáltatás-alapú káosz. Tekintse meg az új cikk [szabályozott káosz](service-fabric-controlled-chaos.md) további részletekért.
 > 
 > 
 
-## <a name="chaos-test"></a>Chaos tesztelése
-A chaos forgatókönyv hibák között a teljes Service Fabric-fürtöt hoz létre. A forgatókönyv tömöríti a hibák általában látható a hónap vagy év néhány óra. Kihagyásos hibák a magas gyakorisága a kombinációja, amelyek egyébként nem talált esetekben keresi. Ez a szolgáltatás kód minőségének jelentős fejlesztéseket vezet.
+## <a name="chaos-test"></a>A Chaos teszt
+A chaos forgatókönyv hibák között a teljes Service Fabric-fürtöt hoz létre. A forgatókönyv tömöríti a hibák általában látható a hónap vagy év néhány óra. Összefűzéses hibák a magas laphibák aránya kombinációja, amely a rendszer ellenkező esetben nem talált esetekben keresi meg. Ez a kód minőségének a jelentős fejlesztéseket tartalmaz vezet.
 
-### <a name="faults-simulated-in-the-chaos-test"></a>Az chaos teszt szimulált hibák
-* A csomópont újraindítása
+### <a name="faults-simulated-in-the-chaos-test"></a>A chaos teszt szimulált hibák
+* Csomópont újraindítása
 * Indítsa újra a központilag telepített kódcsomag
 * Replika eltávolítása
-* Indítsa újra a replikát
-* (Opcionális) elsődleges replika áthelyezése
+* Indítsa újra a replika
+* Helyezze át egy elsődleges replika (nem kötelező)
 * Helyezze át egy másodlagos másodpéldány (nem kötelező)
 
-A chaos tesztre többszöri hibák és a fürt érvényesítést a megadott ideig. A fürt stabilizálásához és érvényesítése sikeres fordított idő is lehet konfigurálni. A forgatókönyv sikertelen lesz, amikor egy egyetlen hiba a fürtellenőrzés kattint.
+A chaos tesztfuttatásai több ismétlésének hibák és a fürt érvényesítést a megadott időszakban. Az idő stabilizálódhatnak a fürt és az érvényesítés sikeres, akkor is konfigurálható. A forgatókönyvben sikertelen lesz, ha eléri a fürtellenőrzés egyetlen hiba.
 
-Vegye figyelembe például három egyidejű hibák legfeljebb egy órára futtatásához hozzon egy tesztet. A vizsgálat idéz elő a három hibák, és a fürt állapotának ellenőrzéséhez. A teszt az előző lépésben algoritmusa keretein belül a fürt akkor kerül sérült állapotba, vagy egy órán keresztül továbbítja. Ha a fürt bármely munkamenetben nem kifogástalan, vagyis azt nem stabilizálását a beállított időn belül, a teszt sikertelen lesz, és kivételt. Ez a kivétel azt jelzi, hogy valami nem megfelelő állapotba került további vizsgálat szükséges.
+Vegyük példaként egy teszt futtatásához egy órán keresztül, amely legfeljebb három egyidejű hibák beállítása. A vizsgálat három hibák idéz elő, és a fürt állapotának ellenőrzéséhez. A teszt keresztül az előző lépésben iterálni fogja, amíg a fürt akkor kerül sérült, vagy egy órán keresztül továbbítja. Ha a fürt akkor kerül sérült, az ismétlések, vagyis azt nem stabilizálódhatnak a beállított időn belül, a teszt sikertelen lesz, és a egy kivételt. Ez a kivétel azt jelzi, hogy probléma merült fel, és további vizsgálat szükséges.
 
-A jelenlegi formában a tartalék generációs motor a chaos tesztben kapott csak biztonságos hibák. Ez azt jelenti, hogy külső hibák hiányában egy kvórum vagy adatvesztés soha nem történik.
+A jelenlegi formájában a tartalék generációs motor a chaos tesztben kapott csak biztonságos hibák. Ez azt jelenti, hogy külső hibák hiányában egy kvórum vagy adatvesztés soha nem kerül.
 
-### <a name="important-configuration-options"></a>Fontos konfigurációs beállítások
-* **TimeToRun**: teljes idő, a teszt lefuttatásával sikerrel befejezése előtt. A vizsgálat be tudja fejezni korábbi helyett egy érvényesítési hiba.
-* **MaxClusterStabilizationTimeout**: legfeljebb ennyi ideig várjon a megfelelő legyen, a teszt végrehajtása előtt a fürt. Az elvégzett e a fürt állapota rendben, szolgáltatásának állapota rendben, a replikakészlet célméretének érhető el, a szolgáltatás partíció, és nem található InBuild replikák létezik.
-* **MaxConcurrentFaults**: minden egyes ismétlés előidézett egyidejű hibák maximális száma. Minél nagyobb a szám, a szigorúbb a törik, így összetettebb feladatátvétel és az átmenet kombinációját. A vizsgálat biztosítja, hogy külső hibák hiányában nem fogja a kvórum vagy adatvesztés, függetlenül attól, milyen magas van ebben a konfigurációban.
-* **EnableMoveReplicaFaults**: engedélyezheti vagy letilthatja a hibákat, amely az áthelyezés elsődleges vagy másodlagos replikán. Ezek a hibák alapesetben le vannak tiltva.
-* **WaitTimeBetweenIterations**: ismétlési, azaz egy ciklikus hibák és a megfelelő érvényesítése után közti várakozási idő.
+### <a name="important-configuration-options"></a>Fontos konfigurációs beállításai
+* **Timetorun érték**: teljes idő, hogy a teszt sikeres befejezése előtt fog futni. A teszt korábban be tudja helyett egy érvényesítési hiba.
+* **MaxClusterStabilizationTimeout**: legfeljebb ennyi idő múlva a fürt előtt a teszt sikertelen állapotúak lesznek. Az elvégzett fürtállapot-e OK, a service health rendben, a cél másodpéldánykészletének méretét a szolgáltatás partíció érhető el, és nem található InBuild replikák létezik.
+* **MaxConcurrentFaults**: minden egyes ismétléskor okozta egyidejű hibák maximális száma. Minél nagyobb a száma, a agresszívabb a teszt, így összetettebb feladatátvételt és a Váltás kombinációk eredményez. A teszt garantálja, hogy a külső hibák hiányában nem fogja a kvórum vagy adatvesztés, attól függetlenül, a nagy az ebben a konfigurációban.
+* **EnableMoveReplicaFaults**: engedélyezheti vagy letilthatja a hibákat okozó az áthelyezés elsődleges vagy másodlagos replikára. Ezek a hibák alapértelmezés szerint le vannak tiltva.
+* **WaitTimeBetweenIterations**: ismétlések, azaz egy ciklikus hibák és a megfelelő érvényesítése után közötti várakozási idő mennyiségét.
 
 ### <a name="how-to-run-the-chaos-test"></a>A chaos teszt futtatása
 C#-minta
@@ -147,23 +147,23 @@ Invoke-ServiceFabricChaosTestScenario -TimeToRunMinute $timeToRun -MaxClusterSta
 
 
 ## <a name="failover-test"></a>Feladatátvételi teszt
-A feladatátvételi teszt forgatókönyv, amelynek célja egy adott szolgáltatás partíció chaos tesztkörnyezet egy verziója. Ezt megvizsgálja egy adott szolgáltatás partíción feladatátvételi hatásának úgy, hogy a más szolgáltatások nem érinti. A cél a partíciónak az adatait és egyéb paraméterek beállítása után fut, amely C# API-k vagy a PowerShell hibák szolgáltatás partíció létrehozásához használja az ügyféloldali eszközként. A forgatókönyv telepítéseket szimulált hibák és a szolgáltatás érvényesítése közben az üzleti logikát a oldalon egy munkaterhelés számára. Szolgáltatás érvényesítési hiba azt jelzi, hogy a hibát, amely további vizsgálat szükséges.
+A feladatátvételi teszt forgatókönyv, amely egy adott szolgáltatás partíció célozza káosz vizsgálati eset verziója is. Eközben a többi szolgáltatás nincs hatással a feladatátvétel egy adott szolgáltatás partíció gyakorolt hatása azt teszteli. A cél a partíciónak az adatait és más paramétereket konfigurálása után fut, amely a C# API-k vagy a PowerShell segítségével hozzon létre egy service partíció hibák ügyféloldali eszközként. A forgatókönyv végighalad szimulált hibák és a szolgáltatás-ellenőrzés sorozata, az üzleti logikát az oldalon adja meg a számítási feladatok futtatása közben. A szolgáltatás-ellenőrzési hiba azt jelzi, hogy a hibát, amely további vizsgálatot igényel.
 
 ### <a name="faults-simulated-in-the-failover-test"></a>A feladatátvételi teszt szimulált hibák
-* Indítsa újra a telepített kódcsomag, ahol a partíció tárolása
-* Egy elsődleges és másodlagos replika- vagy állapotmentes eltávolítása
+* Indítsa újra a partíció üzemeltető üzembe helyezett kód csomag
+* Elsődleges és másodlagos replika vagy állapotmentes példány eltávolítása
 * Indítsa újra a másodlagos replikáról (Ha egy megőrzött szolgáltatás)
 * Helyezze át az elsődleges replika
-* Helyezze át egy másodlagos másodpéldány
-* Indítsa újra a partíciót
+* Egy másodlagos másodpéldány áthelyezése
+* Indítsa újra a partíció
 
-A feladatátvételi teszt választott hibát kapott, és majd érvényesítési fut a szolgáltatás stabilitásának biztosításához. A feladatátvételi teszt kapott csak egy hiba lehetséges figyelésekor egyszerre több hibák az chaos teszt. A teszt sikertelen, ha a szolgáltatás partíció nem stabilizálásához a beállított időkorláton belül minden egyes hiba után. A vizsgálat csak biztonságos hibák kapott. Ez azt jelenti, hogy külső hibák hiányában egy kvórum vagy adatvesztés történik.
+A feladatátvételi teszt a kiválasztott hibát kapott, és érvényesítési majd fut a szolgáltatás stabilitásának biztosításához. A feladatátvételi teszt kapott csak egyetlen tartalék figyelésekor lehetséges egyszerre több hibák a chaos teszt. Ha a szolgáltatás partíció nem stabilizálódhatnak a beállított időkorláton belül minden hiba után, a teszt sikertelen lesz. A vizsgálat csak biztonságos hibákat kapott. Ez azt jelenti, hogy a külső hibák hiányában egy kvórum vagy adatvesztés nem történik.
 
-### <a name="important-configuration-options"></a>Fontos konfigurációs beállítások
-* **Partitionselector osztályt**: választó objektum, amely meghatározza a partíció, amelyet a telepíthető.
-* **TimeToRun**: teljes idő, amely a vizsgálat befejezése előtt.
-* **MaxServiceStabilizationTimeout**: legfeljebb ennyi ideig várjon a megfelelő legyen, a teszt végrehajtása előtt a fürt. Az elvégzett e szolgáltatásának állapota rendben, a replikakészlet célméretének teljesíteni az összes partíció, és nem található InBuild replikák létezik.
-* **WaitTimeBetweenFaults**: minden hiba és érvényesítési ciklus közti várakozási idő.
+### <a name="important-configuration-options"></a>Fontos konfigurációs beállításai
+* **PartitionSelector**: választó objektum, amely meghatározza a partíció, amely kell kapjon.
+* **Timetorun érték**: teljes idő, hogy a teszt befejezése előtt fog futni.
+* **MaxServiceStabilizationTimeout**: legfeljebb ennyi idő múlva a fürt előtt a teszt sikertelen állapotúak lesznek. Az elvégzett a service health e OK, a cél másodpéldánykészletének méretét a érhető el az összes partíciót, és nem található InBuild replikák létezik.
+* **WaitTimeBetweenFaults**: minden tartalék és érvényesítési ciklus közötti várakozási idő.
 
 ### <a name="how-to-run-the-failover-test"></a>A feladatátvételi teszt futtatása
 **C#**

@@ -1,6 +1,6 @@
 ---
-title: Aktor-alapú Azure mikroszolgáltatások események |} Microsoft Docs
-description: A Service Fabric Reliable Actors események bemutatása.
+title: Események actor-alapú Azure Service Fabric actors |} A Microsoft Docs
+description: A Service Fabric Reliable Actors eseményei bemutatása.
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -14,19 +14,19 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/06/2017
 ms.author: amanbha
-ms.openlocfilehash: ed920c8d4ff7254b19c6eef8f5961593bb56bacf
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: c228821383a1bfedf380f97e3411fdacc322a6f9
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34207077"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44054478"
 ---
-# <a name="actor-events"></a>Szereplő események
-Szereplő események teszik lehetővé a szereplő lehető legjobb értesítések küldése az ügyfelek számára. Szereplő események szereplő ügyfél kommunikációhoz, és a használatuk kerülendő szereplő szereplő kommunikációhoz.
+# <a name="actor-events"></a>Actors-események
+Actors-események az aktor a legjobb értesítéseket küldhet az ügyfelek számára terveztek. Actors-események actor-ügyfél-kommunikáció lettek kialakítva, és nem alkalmazható az aktor actor kommunikációt.
 
-Az alábbi kódtöredékek bemutatják, hogyan az alkalmazásban szereplő események használatára.
+Az alábbi kódrészletek azt mutatják szereplő események használata az alkalmazásban.
 
-Adja meg, amely leírja a szereplő által közzétett események illesztőfelület. Ez az interfész típusból kell származtatni a `IActorEvents` felületet. Az argumentumok a módszerek [adategyezmény-szerializálható](service-fabric-reliable-actors-notes-on-actor-type-serialization.md). A módszerek void értéket kell visszaadnia, és eseményként értesítések egy- és a lehető legkedvezőbb módon.
+Adja meg, amely leírja az aktor által közzétett események illesztőfelületet. Ez az interfész kell származnia a `IActorEvents` felületet. Az argumentumok a módszerek [adatokat szerződéses szerializálható](service-fabric-reliable-actors-notes-on-actor-type-serialization.md). A módszerek musí vrátit typ void, eseményként értesítések egyik módja, és a lehető legjobb.
 
 ```csharp
 public interface IGameEvents : IActorEvents
@@ -40,7 +40,7 @@ public interface GameEvents implements ActorEvents
     void gameScoreUpdated(UUID gameId, String currentScore);
 }
 ```
-Az aktor felületen aktor által közzétett események deklarálható.
+Az aktor található az aktor illesztőjét által közzétett események deklarálható.
 
 ```csharp
 public interface IGameActor : IActor, IActorEventPublisher<IGameEvents>
@@ -58,7 +58,7 @@ public interface GameActor extends Actor, ActorEventPublisherE<GameEvents>
     CompletableFuture<String> getGameScore();
 }
 ```
-Az ügyféloldalon az eseménykezelő megvalósítása.
+Az ügyfél oldalán az eseménykezelő megvalósítása.
 
 ```csharp
 class GameEventsHandler : IGameEvents
@@ -79,7 +79,7 @@ class GameEventsHandler implements GameEvents {
 }
 ```
 
-Az ügyfélen a közzétevő az esemény szereplő proxy létrehozására és az események előfizetni.
+Az ügyfélen hozzon létre egy proxyt, amely közzéteszi az eseményt az aktor felé, és iratkozzon fel az eseményeket.
 
 ```csharp
 var proxy = ActorProxy.Create<IGameActor>(
@@ -94,9 +94,9 @@ GameActor actorProxy = ActorProxyBase.create<GameActor>(GameActor.class, new Act
 return ActorProxyEventUtility.subscribeAsync(actorProxy, new GameEventsHandler());
 ```
 
-Esetén a feladatátvétel a szereplő előfordulhat, hogy átadja egy másik folyamat vagy a csomópont. Az aktor proxy az aktív előfizetések kezeli, és automatikusan újra előfizet rájuk. Az újbóli előfizetési időköz keresztül szabályozhatja a `ActorProxyEventExtensions.SubscribeAsync<TEvent>` API. Mondhatja, használja a `ActorProxyEventExtensions.UnsubscribeAsync<TEvent>` API.
+Folyamatban lévő feladatátvételi teszteket, ha az aktor előfordulhat, hogy feladatátvételt egy másik folyamat vagy csomópont. Az aktor proxy az aktív előfizetések kezeli, és automatikusan újra feliratkozik rájuk. Szabályozhatja, hogy az előfizetés újbóli intervallum keresztül a `ActorProxyEventExtensions.SubscribeAsync<TEvent>` API-t. Előfizetés lemondása, használja a `ActorProxyEventExtensions.UnsubscribeAsync<TEvent>` API-t.
 
-Az aktor a tegye közzé a fordulhat elő, akkor az eseményeket. Ha az esemény-előfizetők, azokat a szereplője futásidejű a értesítést küld.
+Az aktor mivel azok közzé az az eseményeket. Ha az esemény-előfizetők, a az Actors modul elküldi őket az értesítést.
 
 ```csharp
 var ev = GetEvent<IGameEvents>();
@@ -109,9 +109,9 @@ event.gameScoreUpdated(Id.getUUIDId(), score);
 
 
 ## <a name="next-steps"></a>További lépések
-* [Aktor rögzítve](service-fabric-reliable-actors-reentrancy.md)
-* [Aktor diagnosztika és teljesítményfigyelés](service-fabric-reliable-actors-diagnostics.md)
-* [Aktor API referenciadokumentációt](https://msdn.microsoft.com/library/azure/dn971626.aspx)
-* [C# mintakód](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
+* [Actors – újbóli belépés](service-fabric-reliable-actors-reentrancy.md)
+* [Actors diagnosztizálása és teljesítményfigyelése](service-fabric-reliable-actors-diagnostics.md)
+* [Aktor API dokumentációja](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+* [C#-minta kódja](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [C# .NET Core mintakód](https://github.com/Azure-Samples/service-fabric-dotnet-core-getting-started)
-* [Java mintakód](http://github.com/Azure-Samples/service-fabric-java-getting-started)
+* [Java-mintakód](http://github.com/Azure-Samples/service-fabric-java-getting-started)

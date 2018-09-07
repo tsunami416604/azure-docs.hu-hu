@@ -1,6 +1,6 @@
 ---
-title: Az Azure Cosmos DB Automation - felügyelet a PowerShell használatával |} Microsoft Docs
-description: Azure Powershell használata az Azure Cosmos DB fiókok kezelése.
+title: Az Azure Cosmos DB Automation - kezelés a PowerShell-lel |} A Microsoft Docs
+description: Az Azure Powershell használata kezelheti az Azure Cosmos DB-fiókokhoz.
 services: cosmos-db
 author: dmakwana
 manager: kfile
@@ -11,29 +11,29 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/21/2017
 ms.author: dimakwan
-ms.openlocfilehash: 833202353901fb9822b756f54fbcbcc155533108
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 90de671d8e57244765f1da439649e57485814533
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34611962"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44051663"
 ---
-# <a name="create-an-azure-cosmos-db-account-using-powershell"></a>PowerShell-lel Azure Cosmos DB-fiók létrehozása
+# <a name="create-an-azure-cosmos-db-account-using-powershell"></a>Egy PowerShell-lel az Azure Cosmos DB-fiók létrehozása
 
-Ez az útmutató ismerteti a parancsok automatizált felügyelete az Azure Powershell Azure Cosmos DB adatbázis fiók. Parancsok kulcsait és a feladatátvételi prioritások kezelésére is tartalmaz [több területi adatbázis fiókok][scaling-globally]. Az adatbázisfiók frissítése lehetővé teszi a konzisztencia-házirendek módosíthatók és régiók hozzáadása/eltávolítása. A platformok közötti felügyeleti Azure Cosmos DB-fiókja, választhat [Azure CLI](cli-samples.md), a [erőforrás-szolgáltató REST API][rp-rest-api], vagy a [Azure-portálon ](create-sql-api-dotnet.md#create-account).
+Ez az útmutató azt ismerteti, automatizált felügyelete az Azure Powershell-lel az Azure Cosmos DB-adatbázisfiókhoz a parancsokat. Fiókkulcsok és a feladatátvételi prioritások kezelésére szolgáló parancsokat is tartalmaz [többrégiós adatbázisfiókhoz][scaling-globally]. Az adatbázis-fiók frissítése lehetővé teszi módosítása konzisztencia házirendek és régiók hozzáadása/eltávolítása. Platformfüggetlen kezelése érdekében az Azure Cosmos DB-fiókot, vagy használhatja [Azure CLI-vel](cli-samples.md), a [erőforrás-szolgáltató REST API][rp-rest-api], vagy a [Azure Portalon ](create-sql-api-dotnet.md#create-account).
 
 ## <a name="getting-started"></a>Első lépések
 
-Kövesse az utasításokat a [telepítése és konfigurálása az Azure PowerShell] [ powershell-install-configure] telepítéséhez, és jelentkezzen be az Azure Resource Manager fiókjába a PowerShellben.
+Kövesse a [telepítése és konfigurálása az Azure PowerShell-lel] [ powershell-install-configure] telepítéséhez, és jelentkezzen be az Azure Resource Manager-fiókjába, a PowerShellben.
 
 ### <a name="notes"></a>Megjegyzések
 
-* Ha szeretné hajtható végre az alábbi parancsokat a felhasználó jóváhagyásának kérése nélkül, hozzáfűző a `-Force` jelzőjét, hogy a parancs.
-* A következő parancsok szinkronizáltak.
+* Ha szeretné, hajtsa végre a következő parancsokat a felhasználó jóváhagyásának kérése nélkül, fűzze hozzá a `-Force` jelző a következő paranccsal.
+* Az alábbi parancsokat a rendszer szinkron.
 
-## <a id="create-documentdb-account-powershell"></a> Az Azure Cosmos DB-fiók létrehozása
+## <a id="create-documentdb-account-powershell"></a> Egy Azure Cosmos DB-fiók létrehozása
 
-Ez a parancs egy Azure Cosmos DB adatbázisfiók létrehozása teszi lehetővé. Az új adatbázis-fiók beállítása vagy egyetlen területi vagy [több területi] [ scaling-globally] az egy bizonyos [konzisztencia házirend](consistency-levels.md).
+Ez a parancs lehetővé teszi, hogy hozzon létre egy Azure Cosmos DB-adatbázisfiók. Konfigurálja az új adatbázis-fiók vagy egyetlen régióban vagy [többrégiós] [ scaling-globally] az egy adott [konzisztencia-szabályzat](consistency-levels.md).
 
     $locations = @(@{"locationName"="<write-region-location>"; "failoverPriority"=0}, @{"locationName"="<read-region-location>"; "failoverPriority"=1})
     $iprangefilter = "<ip-range-filter>"
@@ -41,15 +41,15 @@ Ez a parancs egy Azure Cosmos DB adatbázisfiók létrehozása teszi lehetővé.
     $CosmosDBProperties = @{"databaseAccountOfferType"="Standard"; "locations"=$locations; "consistencyPolicy"=$consistencyPolicy; "ipRangeFilter"=$iprangefilter}
     New-AzureRmResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName <resource-group-name>  -Location "<resource-group-location>" -Name <database-account-name> -Properties $CosmosDBProperties
     
-* `<write-region-location>` Az adatbázisfiók írási régiója hely neve. Ezen a helyen szükség van a feladatátvételi prioritási értéke 0. Másodpercenkénti adatbázis-fiók pontosan egy írási régióban kell lennie.
-* `<read-region-location>` Az adatbázisfiók írásvédett régió hely neve. Ez a hely szükséges feladatátvevő prioritás értéke csak 0-nál nagyobb. Másodpercenkénti adatbázis-fiók több mint egy olvasási régiók lehet.
-* `<ip-range-filter>` Megadja az IP-címek vagy IP-címtartományok része, mint az engedélyezett bővítmények listájához ügyfél IP-címek egy adott adatbázis fiókjához tartozó CIDR formátumban. IP-címeken/tartományokon vesszővel elválasztott, és nem tartalmazhat szóközt kell lennie. További információkért lásd: [Azure Cosmos DB-Tűzfaltámogatás](firewall-support.md)
-* `<default-consistency-level>` A Azure Cosmos DB-fiók alapértelmezett konzisztencia szintjét. További információkért lásd: [Azure Cosmos DB-ben Konzisztenciaszintek](consistency-levels.md).
-* `<max-interval>` Kötött elavulási konzisztencia használata esetén ezt az értéket jelenti idő (másodpercben) elavulási megengedett. Ez az érték elfogadható tartománya 1-100.
-* `<max-staleness-prefix>` Kötött elavulási konzisztencia használata esetén ezt az értéket jelöli megengedett elavult kérelmek számát jelenti. Ez az érték elfogadható tartománya 1 – 2 147 483 647.
-* `<resource-group-name>` Neve a [Azure erőforráscsoport] [ azure-resource-groups] , amelyhez az új Azure Cosmos DB adatbázisfiók való tartozik.
-* `<resource-group-location>` Az Azure-erőforráscsoportot, amelyhez az új Azure Cosmos DB adatbázis fiók tartozik helyét.
-* `<database-account-name>` A létrehozandó Azure Cosmos DB fiók neve. Csak kisbetűket, számokat, képes használni a "-" karakter, és 3 – 50 karakter közé kell esnie.
+* `<write-region-location>` A hely neve, az írási régió az adatbázisfiókot. Ezen a helyen kell rendelkeznie a feladatátvétel prioritási érték 0. Adatbázis-fiókonként pontosan egy írási régiót kell lennie.
+* `<read-region-location>` Az olvasási régióban az adatbázisfiók hely neve. Ez a hely 0-nál nagyobb feladatátvételi prioritás értéke szükséges. Adatbázis-fiókonként egynél több olvasási régióval is lehet.
+* `<ip-range-filter>` Megadja az IP-cím vagy IP-címtartományok része, mint az engedélyezett listára ügyfél IP-címek egy adott adatbázis fiókjához tartozó CIDR formátumban. IP-címek/címtartományok vesszővel elválasztott, és nem tartalmazhat szóközöket kell lennie. További információkért lásd: [Azure Cosmos DB Tűzfaltámogatásáról](firewall-support.md)
+* `<default-consistency-level>` Az Azure Cosmos DB-fiók alapértelmezett konzisztencia szintjét. További információkért lásd: [Azure Cosmos DB-ben Konzisztenciaszintek](consistency-levels.md).
+* `<max-interval>` Elavulás konzisztencia használata esetén ezt az értéket a idő mennyisége frissesség (másodpercben) megengedhető jelöli. Ez az érték elfogadható tartománya 1-100.
+* `<max-staleness-prefix>` Elavulás konzisztencia használata esetén ezt az értéket a megengedhető elavult kérések számát jelöli. Ehhez az értékhez elfogadott tartomány: 1 – 2 147 483 647.
+* `<resource-group-name>` Neve a [Azure-erőforráscsoport] [ azure-resource-groups] , amelyhez az új Azure Cosmos DB-adatbázisfiók való tartozik.
+* `<resource-group-location>` Az Azure-erőforráscsoportot, amelyhez az új Azure Cosmos DB adatbázis-fiók helyét, amelyhez tartozik.
+* `<database-account-name>` Neve az Azure Cosmos DB adatbázis-fiókot létrehozni. Csak kisbetűket, számokat, képes használni az '-' karaktert, és 3 – 50 karakter között kell lennie.
 
 Példa: 
 
@@ -60,15 +60,15 @@ Példa:
     New-AzureRmResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "rg-test" -Location "West US" -Name "docdb-test" -Properties $CosmosDBProperties
 
 ### <a name="notes"></a>Megjegyzések
-* A fenti példában egy adatbázis-fiók két régió hoz létre. Akkor is egy régió tartozik (amely a írási régió van kijelölve, és a feladatátvételi prioritási értéke csak 0) vagy a több mint két régiók adatbázis-fiók létrehozásához. További információkért lásd: [több területi adatbázis fiókok][scaling-globally].
-* A helyek, amelyben Azure Cosmos DB általánosan elérhető régiók kell lennie. Az aktuális területek listája a a [Azure-régiókat lap](https://azure.microsoft.com/regions/#services).
+* Az előző példában egy adatbázis-fiókot hoz létre két régióban. Akkor is egy adatbázis-fiók létrehozása az egyik régió (amely ki van jelölve, az írási régió, és a feladatátvételi prioritási értéke 0) vagy a több mint két régióban. További információkért lásd: [többrégiós adatbázisfiókhoz][scaling-globally].
+* A helyek, amelyben az Azure Cosmos DB általánosan elérhető a régióban kell lennie. Aktuális régiók listája, a megadott a [Azure-régiók lap](https://azure.microsoft.com/regions/#services).
 
-## <a id="update-documentdb-account-powershell"></a> Egy Azure Cosmos DB adatbázisfiók frissítése
+## <a id="update-documentdb-account-powershell"></a> Frissítés az Azure Cosmos DB-adatbázisfiók
 
-Ez a parancs lehetővé teszi az Azure Cosmos DB adatbázis fiók tulajdonságainak módosítása. Ez magában foglalja a konzisztencia-házirend és a helyek, amely az adatbázis-fiók létezik-e.
+Ez a parancs lehetővé teszi az Azure Cosmos DB-adatbázis fiók tulajdonságainak frissítése. Ez magában foglalja a konzisztencia-szabályzat és a helyek, amely megtalálható az adatbázis-fiókot.
 
 > [!NOTE]
-> Ez a parancs lehetővé teszi a hozzáadása és eltávolítása a régiókban, de nem engedélyezi feladatátvételi prioritások módosíthatja. Feladatátvételi prioritások módosításához lásd [alatt](#modify-failover-priority-powershell).
+> Ez a parancs lehetővé teszi, hogy hozzá és távolíthat el a régióban, de nem engedélyezi, hogy módosítsa a feladatátvételi prioritások. Feladatátvételi prioritások módosítása esetén lásd: [alább](#modify-failover-priority-powershell).
 
     $locations = @(@{"locationName"="<write-region-location>"; "failoverPriority"=0}, @{"locationName"="<read-region-location>"; "failoverPriority"=1})
     $iprangefilter = "<ip-range-filter>"
@@ -76,15 +76,15 @@ Ez a parancs lehetővé teszi az Azure Cosmos DB adatbázis fiók tulajdonságai
     $CosmosDBProperties = @{"databaseAccountOfferType"="Standard"; "locations"=$locations; "consistencyPolicy"=$consistencyPolicy; "ipRangeFilter"=$iprangefilter}
     Set-AzureRmResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName <resource-group-name> -Name <database-account-name> -Properties $CosmosDBProperties
     
-* `<write-region-location>` Az adatbázisfiók írási régiója hely neve. Ezen a helyen szükség van a feladatátvételi prioritási értéke 0. Másodpercenkénti adatbázis-fiók pontosan egy írási régióban kell lennie.
-* `<read-region-location>` Az adatbázisfiók írásvédett régió hely neve. Ez a hely szükséges feladatátvevő prioritás értéke csak 0-nál nagyobb. Másodpercenkénti adatbázis-fiók több mint egy olvasási régiók lehet.
-* `<default-consistency-level>` A Azure Cosmos DB-fiók alapértelmezett konzisztencia szintjét. További információkért lásd: [Azure Cosmos DB-ben Konzisztenciaszintek](consistency-levels.md).
-* `<ip-range-filter>` Megadja az IP-címek vagy IP-címtartományok része, mint az engedélyezett bővítmények listájához ügyfél IP-címek egy adott adatbázis fiókjához tartozó CIDR formátumban. IP-címeken/tartományokon vesszővel elválasztott, és nem tartalmazhat szóközt kell lennie. További információkért lásd: [Azure Cosmos DB-Tűzfaltámogatás](firewall-support.md)
-* `<max-interval>` Kötött elavulási konzisztencia használata esetén ezt az értéket jelenti idő (másodpercben) elavulási megengedett. Ez az érték elfogadható tartománya 1-100.
-* `<max-staleness-prefix>` Kötött elavulási konzisztencia használata esetén ezt az értéket jelöli megengedett elavult kérelmek számát jelenti. Ez az érték elfogadható tartománya 1 – 2 147 483 647.
-* `<resource-group-name>` Neve a [Azure erőforráscsoport] [ azure-resource-groups] , amelyhez az új Azure Cosmos DB adatbázisfiók való tartozik.
-* `<resource-group-location>` Az Azure-erőforráscsoportot, amelyhez az új Azure Cosmos DB adatbázis fiók tartozik helyét.
-* `<database-account-name>` Frissíteni kell az Azure Cosmos DB adatbázis fiók nevét.
+* `<write-region-location>` A hely neve, az írási régió az adatbázisfiókot. Ezen a helyen kell rendelkeznie a feladatátvétel prioritási érték 0. Adatbázis-fiókonként pontosan egy írási régiót kell lennie.
+* `<read-region-location>` Az olvasási régióban az adatbázisfiók hely neve. Ez a hely 0-nál nagyobb feladatátvételi prioritás értéke szükséges. Adatbázis-fiókonként egynél több olvasási régióval is lehet.
+* `<default-consistency-level>` Az Azure Cosmos DB-fiók alapértelmezett konzisztencia szintjét. További információkért lásd: [Azure Cosmos DB-ben Konzisztenciaszintek](consistency-levels.md).
+* `<ip-range-filter>` Megadja az IP-cím vagy IP-címtartományok része, mint az engedélyezett listára ügyfél IP-címek egy adott adatbázis fiókjához tartozó CIDR formátumban. IP-címek/címtartományok vesszővel elválasztott, és nem tartalmazhat szóközöket kell lennie. További információkért lásd: [Azure Cosmos DB Tűzfaltámogatásáról](firewall-support.md)
+* `<max-interval>` Elavulás konzisztencia használata esetén ezt az értéket a idő mennyisége frissesség (másodpercben) megengedhető jelöli. Ez az érték elfogadható tartománya 1-100.
+* `<max-staleness-prefix>` Elavulás konzisztencia használata esetén ezt az értéket a megengedhető elavult kérések számát jelöli. Ehhez az értékhez elfogadott tartomány: 1 – 2 147 483 647.
+* `<resource-group-name>` Neve a [Azure-erőforráscsoport] [ azure-resource-groups] , amelyhez az új Azure Cosmos DB-adatbázisfiók való tartozik.
+* `<resource-group-location>` Az Azure-erőforráscsoportot, amelyhez az új Azure Cosmos DB adatbázis-fiók helyét, amelyhez tartozik.
+* `<database-account-name>` Neve az Azure Cosmos DB-adatbázisfiók frissíteni kell.
 
 Példa: 
 
@@ -94,95 +94,95 @@ Példa:
     $CosmosDBProperties = @{"databaseAccountOfferType"="Standard"; "locations"=$locations; "consistencyPolicy"=$consistencyPolicy; "ipRangeFilter"=$iprangefilter}
     Set-AzureRmResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "rg-test" -Name "docdb-test" -Properties $CosmosDBProperties
 
-## <a id="delete-documentdb-account-powershell"></a> Egy Azure Cosmos DB adatbázisfiók törlése
+## <a id="delete-documentdb-account-powershell"></a> Az Azure Cosmos DB-adatbázisfiók törlése
 
-Ez a parancs lehetővé teszi egy meglévő Azure Cosmos DB adatbázisfiók törlése.
+Ez a parancs lehetővé teszi, hogy egy meglévő Azure Cosmos DB-adatbázisfiók törlése.
 
     Remove-AzureRmResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "<resource-group-name>" -Name "<database-account-name>"
     
-* `<resource-group-name>` Neve a [Azure erőforráscsoport] [ azure-resource-groups] , amelyhez az új Azure Cosmos DB adatbázisfiók való tartozik.
-* `<database-account-name>` A törlendő Azure Cosmos DB fiók neve.
+* `<resource-group-name>` Neve a [Azure-erőforráscsoport] [ azure-resource-groups] , amelyhez az új Azure Cosmos DB-adatbázisfiók való tartozik.
+* `<database-account-name>` Neve az Azure Cosmos DB-adatbázisfiók törölni.
 
 Példa:
 
     Remove-AzureRmResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "rg-test" -Name "docdb-test"
 
-## <a id="get-documentdb-properties-powershell"></a> Egy Azure Cosmos DB adatbázis fiók tulajdonságainak beolvasása
+## <a id="get-documentdb-properties-powershell"></a> Az Azure Cosmos DB-adatbázisfiók tulajdonságainak beolvasása
 
-A parancs lehetővé teszi, hogy egy meglévő Azure Cosmos DB adatbázisfiók tulajdonságainak beolvasása.
+Ez a parancs lehetővé teszi, hogy egy meglévő Azure Cosmos DB-adatbázisfiók tulajdonságainak beolvasása.
 
     Get-AzureRmResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "<resource-group-name>" -Name "<database-account-name>"
 
-* `<resource-group-name>` Neve a [Azure erőforráscsoport] [ azure-resource-groups] , amelyhez az új Azure Cosmos DB adatbázisfiók való tartozik.
-* `<database-account-name>` Az Azure Cosmos adatbázis adatbázis-fiók nevét.
+* `<resource-group-name>` Neve a [Azure-erőforráscsoport] [ azure-resource-groups] , amelyhez az új Azure Cosmos DB-adatbázisfiók való tartozik.
+* `<database-account-name>` Az Azure Cosmos DB-adatbázisfiók neve.
 
 Példa:
 
     Get-AzureRmResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "rg-test" -Name "docdb-test"
 
-## <a id="update-tags-powershell"></a> Egy Azure Cosmos DB adatbázis fiók címkék frissítése
+## <a id="update-tags-powershell"></a> Frissítheti a címkéket az Azure Cosmos DB-adatbázisfiók
 
-Az alábbi példa ismerteti, hogyan lehet beállítani [Azure erőforráscímkék] [ azure-resource-tags] az Azure Cosmos DB az adatbázis-fiók.
+Az alábbi példa azt ismerteti, hogyan állíthatja be [Azure-erőforráscímkék] [ azure-resource-tags] adatbázis az Azure Cosmos DB-fiókot.
 
 > [!NOTE]
 > Ez a parancs kombinálva, a létrehozás vagy frissítés parancsok hozzáfűzésével a `-Tags` jelzőt mellékel a megfelelő paraméter.
 
 Példa:
 
-    $tags = @{"dept" = "Finance”; environment = “Production”}
-    Set-AzureRmResource -ResourceType “Microsoft.DocumentDB/databaseAccounts”  -ResourceGroupName "rg-test" -Name "docdb-test" -Tags $tags
+    $tags = @{"dept" = "Finance"; environment = "Production"}
+    Set-AzureRmResource -ResourceType "Microsoft.DocumentDB/databaseAccounts"  -ResourceGroupName "rg-test" -Name "docdb-test" -Tags $tags
 
-## <a id="list-account-keys-powershell"></a> Fiók listázása
+## <a id="list-account-keys-powershell"></a> Fiók kulcsainak listázása
 
-Egy Azure Cosmos DB fiók létrehozásakor a szolgáltatás két fő kulcsot, amely az Azure Cosmos DB fiók elérésekor hitelesítéshez használt állít elő. Két tárelérési kulcsok megadásával Azure Cosmos DB teszi Azure Cosmos DB fiókjába megszakítás nélkül a kulcsok újragenerálását. Az olvasási műveletek csak olvasható kulcsokat is elérhetők. Nincsenek két írható-olvasható (elsődleges és másodlagos) és két írásvédett kulcsokat (elsődleges és másodlagos).
+Az Azure Cosmos DB-fiók létrehozásakor a szolgáltatás két fő kulcsot, amely az Azure Cosmos DB-fiók elérésekor hitelesítéshez használt állít elő. Azáltal, hogy a két hozzáférési kulcsot, az Azure Cosmos DB lehetővé teszi a kulcsok az Azure Cosmos DB-fiók megszakítás nélkül. Írásvédett kulcsok hitelesítéséhez a csak olvasható műveletekhez is elérhetők. Nincsenek két írható és olvasható kulcsok (elsődleges és másodlagos) és a két csak olvasható kulcsok (elsődleges és másodlagos).
 
     $keys = Invoke-AzureRmResourceAction -Action listKeys -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "<resource-group-name>" -Name "<database-account-name>"
 
-* `<resource-group-name>` Neve a [Azure erőforráscsoport] [ azure-resource-groups] , amelyhez az új Azure Cosmos DB adatbázisfiók való tartozik.
-* `<database-account-name>` Az Azure Cosmos adatbázis adatbázis-fiók nevét.
+* `<resource-group-name>` Neve a [Azure-erőforráscsoport] [ azure-resource-groups] , amelyhez az új Azure Cosmos DB-adatbázisfiók való tartozik.
+* `<database-account-name>` Az Azure Cosmos DB-adatbázisfiók neve.
 
 Példa:
 
     $keys = Invoke-AzureRmResourceAction -Action listKeys -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "rg-test" -Name "docdb-test"
 
-## <a id="list-connection-strings-powershell"></a> Lista kapcsolati karakterláncok
+## <a id="list-connection-strings-powershell"></a> Kapcsolati karakterláncok listája
 
-A MongoDB-fiókok a kapcsolati karakterláncot a MongoDB-alkalmazás csatlakoztatása a következő adatbázisfiókot lehet beolvasni a következő parancsot.
+MongoDB-fiókok esetében a kapcsolati karakterláncot a MongoDB-alkalmazás csatlakozni az adatbázis-fiókot az alábbi parancs használatával lekérhetők.
 
     $keys = Invoke-AzureRmResourceAction -Action listConnectionStrings -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "<resource-group-name>" -Name "<database-account-name>"
 
-* `<resource-group-name>` Neve a [Azure erőforráscsoport] [ azure-resource-groups] , amelyhez az új Azure Cosmos DB adatbázisfiók való tartozik.
-* `<database-account-name>` Az Azure Cosmos adatbázis adatbázis-fiók nevét.
+* `<resource-group-name>` Neve a [Azure-erőforráscsoport] [ azure-resource-groups] , amelyhez az új Azure Cosmos DB-adatbázisfiók való tartozik.
+* `<database-account-name>` Az Azure Cosmos DB-adatbázisfiók neve.
 
 Példa:
 
     $keys = Invoke-AzureRmResourceAction -Action listConnectionStrings -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "rg-test" -Name "docdb-test"
 
-## <a id="regenerate-account-key-powershell"></a> Fiók kulcs újragenerálása
+## <a id="regenerate-account-key-powershell"></a> Fiókkulcs újragenerálása
 
-Módosítsa a tárelérési kulcsok rendszeres időközönként a Azure Cosmos DB fiókját biztonságosabbá a kapcsolatokat. Engedélyezi, hogy az egyik kulcs, amíg a többi hozzáférési kulcs újragenerálása Azure Cosmos DB fiókhoz kapcsolatok karbantartása két tárelérési kulcsok vannak hozzárendelve.
+Az Azure Cosmos DB-fiókot, és rendszeres időközönként biztonságosabb fenntarthatja a kapcsolatokat, módosítania kell a hozzáférési kulcsokat. Lehetővé teszi az Azure Cosmos DB-fiók az egyik kulcs, míg más hozzáférési kulcs kapcsolatok fenntartásához két kulcsot vannak hozzárendelve.
 
     Invoke-AzureRmResourceAction -Action regenerateKey -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "<resource-group-name>" -Name "<database-account-name>" -Parameters @{"keyKind"="<key-kind>"}
 
-* `<resource-group-name>` Neve a [Azure erőforráscsoport] [ azure-resource-groups] , amelyhez az új Azure Cosmos DB adatbázisfiók való tartozik.
-* `<database-account-name>` Az Azure Cosmos adatbázis adatbázis-fiók nevét.
-* `<key-kind>` A négy típusú kulcsok: ["Elsődleges" |} " Másodlagos "|}" PrimaryReadonly "|}" SecondaryReadonly"], amely szeretné generálni.
+* `<resource-group-name>` Neve a [Azure-erőforráscsoport] [ azure-resource-groups] , amelyhez az új Azure Cosmos DB-adatbázisfiók való tartozik.
+* `<database-account-name>` Az Azure Cosmos DB-adatbázisfiók neve.
+* `<key-kind>` A négy különböző típusú kulcs: ["Elsődleges" |} " Másodlagos "|}" PrimaryReadonly "|}" SecondaryReadonly"], amely, amelyet szeretne generálni.
 
 Példa:
 
     Invoke-AzureRmResourceAction -Action regenerateKey -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "rg-test" -Name "docdb-test" -Parameters @{"keyKind"="Primary"}
 
-## <a id="modify-failover-priority-powershell"></a> Egy Azure Cosmos DB adatbázisfiók feladatátvételi prioritásának módosítása
+## <a id="modify-failover-priority-powershell"></a> Egy Azure Cosmos DB-adatbázisfiók feladatátvétel prioritásának módosítása
 
-Több területi adatbázis fiókok módosíthatja a különböző régiókban, amelyek az Azure Cosmos DB adatbázis fiók létezik-e a feladatátvételi prioritását. Feladatátvétel az Azure Cosmos DB adatbázis fiókban további információkért lásd: [adatok globálisan Azure Cosmos DB terjesztése][distribute-data-globally].
+A többrégiós adatbázisfiókhoz a különböző régiók, amely megtalálható az Azure Cosmos DB-adatbázisfiók feladatátvételi prioritását módosíthatja. Feladatátvétel a Azure Cosmos DB-fiókot a további információkért lásd: [globális adatterjesztés az Azure Cosmos DB][distribute-data-globally].
 
     $failoverPolicies = @(@{"locationName"="<write-region-location>"; "failoverPriority"=0},@{"locationName"="<read-region-location>"; "failoverPriority"=1})
     Invoke-AzureRmResourceAction -Action failoverPriorityChange -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "<resource-group-name>" -Name "<database-account-name>" -Parameters @{"failoverPolicies"=$failoverPolicies}
 
-* `<write-region-location>` Az adatbázisfiók írási régiója hely neve. Ezen a helyen szükség van a feladatátvételi prioritási értéke 0. Másodpercenkénti adatbázis-fiók pontosan egy írási régióban kell lennie.
-* `<read-region-location>` Az adatbázisfiók írásvédett régió hely neve. Ez a hely szükséges feladatátvevő prioritás értéke csak 0-nál nagyobb. Másodpercenkénti adatbázis-fiók több mint egy olvasási régiók lehet.
-* `<resource-group-name>` Neve a [Azure erőforráscsoport] [ azure-resource-groups] , amelyhez az új Azure Cosmos DB adatbázisfiók való tartozik.
-* `<database-account-name>` Az Azure Cosmos adatbázis adatbázis-fiók nevét.
+* `<write-region-location>` A hely neve, az írási régió az adatbázisfiókot. Ezen a helyen kell rendelkeznie a feladatátvétel prioritási érték 0. Adatbázis-fiókonként pontosan egy írási régiót kell lennie.
+* `<read-region-location>` Az olvasási régióban az adatbázisfiók hely neve. Ez a hely 0-nál nagyobb feladatátvételi prioritás értéke szükséges. Adatbázis-fiókonként egynél több olvasási régióval is lehet.
+* `<resource-group-name>` Neve a [Azure-erőforráscsoport] [ azure-resource-groups] , amelyhez az új Azure Cosmos DB-adatbázisfiók való tartozik.
+* `<database-account-name>` Az Azure Cosmos DB-adatbázisfiók neve.
 
 Példa:
 
@@ -191,8 +191,8 @@ Példa:
 
 ## <a name="next-steps"></a>További lépések
 
-* A csatlakozás, .NET használatával, lásd: [kapcsolódás és lekérdezés .NET](create-sql-api-dotnet.md).
-* A csatlakozás, Node.js használatával, lásd: [kapcsolódás és lekérdezés a Node.js és a MongoDB-alkalmazás](create-mongodb-nodejs.md).
+* Csatlakozás a .NET használatával, lásd: [.NET végzett csatlakozásról és lekérdezésről](create-sql-api-dotnet.md).
+* Való csatlakozáshoz a Node.js használatával, tekintse meg [Node.js és MongoDB-alkalmazás végzett csatlakozásról és lekérdezésről](create-mongodb-nodejs.md).
 
 <!--Reference style links - using these makes the source content way more readable than using inline links-->
 [powershell-install-configure]: https://docs.microsoft.com/azure/powershell-install-configure

@@ -1,6 +1,6 @@
 ---
-title: Nyomon követheti a Azure Application Insights .NET SDK-val egyéni műveleteket |} Microsoft Docs
-description: Azure Application Insights .NET SDK-val egyéni műveletek nyomon követése
+title: Az Azure Application Insights .NET SDK-val egyéni műveletek követése |} A Microsoft Docs
+description: Az Azure Application Insights .NET SDK-val egyéni műveletek követése
 services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
@@ -9,43 +9,45 @@ ms.service: application-insights
 ms.workload: TBD
 ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/30/2017
-ms.author: sergkanz;mbullwin
-ms.openlocfilehash: e66d5e8674d6564d3910daddb1119c22a8b8bd9f
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.reviewer: sergkanz
+ms.author: mbullwin
+ms.openlocfilehash: 8295fb58bdf92ca8688f5f7b6270dc1b48632a73
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44057131"
 ---
-# <a name="track-custom-operations-with-application-insights-net-sdk"></a>Application Insights .NET SDK-val egyéni műveletek nyomon követése
+# <a name="track-custom-operations-with-application-insights-net-sdk"></a>Application Insights .NET SDK-val egyéni műveletek követése
 
-Az Azure Application Insights SDK-k automatikusan követi nyomon a bejövő HTTP-kérelmek és a függő szolgáltatások, például HTTP-kérelmek és az SQL-lekérdezések. Nyomon követését és a kérelmek és a függőségek korrelációs biztosítanak a teljes alkalmazáshoz válaszidejét és megbízhatóság láthatósága összes mikroszolgáltatások létrehozására, az alkalmazás felhasználó között. 
+Az Azure Application Insights SDK-k automatikusan nyomon követheti a bejövő HTTP-kérések és a függő szolgáltatások, például HTTP-kérelmekre, és az SQL-lekérdezéseket. Nyomon követését és a kérelmek és a függőségek korrelációs teszik lehetővé a teljes alkalmazáshoz válaszkészségének és megbízhatóság minden mikroszolgáltatás-alapú, amelyek az alkalmazás között. 
 
-Nincs alkalmazás mintáról olvashat, amelyek nem tudják támogatni az általános osztály. Az ilyen minták megfelelő figyeléshez szükséges manuális kód instrumentation. Ez a cikk manuális instrumentation egyéni várólista feldolgozása és a hosszú futású háttérfeladatok futtatása például szükség lehet néhány mintázatokat tartalmazza.
+Nincs olyan osztályát alkalmazásminták általános nem támogatott. Az ilyen minták a megfelelő figyelési igényel manuális kód kialakítási. Ez a cikk ismerteti a néhány minta, amelyek manuális instrumentation, például az egyéni várólista feldolgozása és a hosszú ideig futó háttérfeladatokat futtató lehet szükség.
 
-Ez a dokumentum útmutatást nyújt a történő nyomon követheti az Application Insights SDK-val egyéni műveleteket. Ebben a dokumentációban fontos:
+Ez a dokumentum útmutatást nyújt az Application Insights SDK-val egyéni műveletek követése való. Ez a dokumentáció fontos lehetőség:
 
-- Az Application Insights .NET (más néven alapvető SDK) verziójának 2.4 +.
-- Az Application Insights webes (ASP.NET futó) alkalmazások verziójához 2.4 +.
-- Az Application Insights az ASP.NET Core 2.1-es vagy újabb.
+- Az Application Insights .NET (más néven alapszintű SDK) verzió 2.4 +.
+- Az Application Insights web applications (ASP.NET fut) verzió 2.4 +.
+- Application Insights az ASP.NET Core 2.1-es vagy újabb.
 
 ## <a name="overview"></a>Áttekintés
-Egy művelet egy logikai munkákat az alkalmazások futtatása. Az idő, időtartam, eredmény és olyan környezetben, például a felhasználónevet, a tulajdonságok és az eredmény végrehajtás start neve van. Ha A műveletet kezdeményezett művelet B, majd művelet B be van állítva az A. szülője Egy művelet csak egy szülőhöz lehet, de sok gyermek művelet veheti fel. Műveletek és telemetriai korrelációs további információkért lásd: [Azure Application Insights telemetria korrelációs](application-insights-correlation.md).
+Egy logikai munkákat egy alkalmazás által futtatott művelet. Rendelkezik egy névvel, indítsa el az idő, az időtartam, a eredmény és a egy környezetet a Futtatás mint felhasználónév, a tulajdonságok és az eredmény. Ha a művelet A kezdeményezett művelet B, akkor művelet B értéke adja meg szülőként az A. Művelet csak egy szülő rendelkezhet, de számos gyermek műveletek lehetnek. A műveletek és telemetriai korreláció további információkért lásd: [Azure Application Insights telemetriai korreláció](application-insights-correlation.md).
 
-Az Application Insights .NET SDK a művelet leírását a absztrakt osztály [OperationTelemetry](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/Microsoft.ApplicationInsights/Extensibility/Implementation/OperationTelemetry.cs) és a leszármazottai [RequestTelemetry](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/Microsoft.ApplicationInsights/DataContracts/RequestTelemetry.cs) és [DependencyTelemetry](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/Microsoft.ApplicationInsights/DataContracts/DependencyTelemetry.cs).
+Az Application Insights .NET SDK a művelet az absztrakt osztály által leírt [OperationTelemetry](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/Microsoft.ApplicationInsights/Extensibility/Implementation/OperationTelemetry.cs) és a leszármazottai [RequestTelemetry](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/Microsoft.ApplicationInsights/DataContracts/RequestTelemetry.cs) és [DependencyTelemetry](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/Microsoft.ApplicationInsights/DataContracts/DependencyTelemetry.cs).
 
 ## <a name="incoming-operations-tracking"></a>Bejövő műveletek nyomon követése 
-Az Application Insights webes SDK-t automatikusan gyűjti az ASP.NET futtatni egy IIS-feldolgozási folyamat összes ASP.NET Core alkalmazásokat és a HTTP-kérelmekre. Nincsenek megoldások Közösség által támogatott más platformok és -keretrendszerek számára. Azonban ha az alkalmazás nem támogatja a standard vagy a Közösség által támogatott megoldások bármelyikét, hogy állíthatnak be azt manuálisan.
+Az Application Insights webes SDK automatikusan gyűjti a HTTP-kérelmeket az IIS-folyamatban futó ASP.NET alkalmazások és az összes ASP.NET Core-alkalmazás. Nincsenek megoldások Közösség által támogatott más platformokra és keretrendszerekre. Azonban ha az alkalmazás nem támogatja a standard vagy a Közösség által támogatott megoldások bármelyikét, is kialakíthat azt manuálisan.
 
-Egy másik, amelyhez az egyéni nyomkövetési: a worker, amely megkapja a cikkek az üzenetsorból. Egyes várólisták üzenet hozzáadása a várólista-hívás a függőség beállításához nyomon követni. Azonban a magas szintű műveletet leíró üzenet feldolgozása nem automatikusan összegyűjtött.
+Egyéni követési igénylő egy másik példa, amely a várólistában lévő elemek kap a feldolgozó. Bizonyos üzenetsorok meghívásához adjon meg egy üzenetet az üzenetsorba minősülnek függőség. Ugyanakkor a magas szintű művelet, amely leírja az üzenet feldolgozása nem automatikusan lesznek begyűjtve.
 
-Nézzük meg az ilyen műveletek sikerült nyomon követésének módja.
+Nézzük meg, hogyan sikerült követni ezeket a műveleteket.
 
-Magas szinten, a feladatütemezés, ha a `RequestTelemetry` és ismert tulajdonságainak beállítása. A művelet befejezése után a telemetriai adatok nyomon követéséhez. A következő példa bemutatja, ezt a feladatot.
+Magas szinten, a feladat, ha a `RequestTelemetry` és ismert tulajdonságainak beállítása. A művelet befejezése után nyomon követheti a telemetriát. A következő példa bemutatja ezt a feladatot.
 
-### <a name="http-request-in-owin-self-hosted-app"></a>Önálló üzemeltetett alkalmazás Owin HTTP-kérelem
-Ebben a példában a következők szerint propagálja nyomkövetési környezetben a [HTTP protokoll a korrelációs](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md). Fogadási hiba ismertetett fejlécek kell látnia.
+### <a name="http-request-in-owin-self-hosted-app"></a>HTTP-kérelem Owin helyi alkalmazás
+Ebben a példában a nyomkövetési környezet propagálja a következők szerint a [HTTP-protokoll Összekapcsoláshoz](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md). A fejlécek, amelyek nem szerepeltek kap kell látnia.
 
 ```csharp
 public class ApplicationInsightsMiddleware : OwinMiddleware
@@ -118,19 +120,19 @@ public class ApplicationInsightsMiddleware : OwinMiddleware
 }
 ```
 
-A HTTP protokoll a korrelációs is deklarálja a `Correlation-Context` fejléc. Azonban ki van hagyva itt az egyszerűség érdekében.
+A HTTP-protokoll, a korrelációs is deklarálja a `Correlation-Context` fejléc. Azonban ezt kihagyja itt az egyszerűség kedvéért.
 
-## <a name="queue-instrumentation"></a>Várólista instrumentation
-Ha van [HTTP protokoll a korrelációs](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md) felelt meg a korrelációs információ a HTTP-kérelem, minden várólista protokollt meghatározásához, hogy ugyanazokat a részleteket az üzenetsorban lévő üzenetet továbbítódnak rendelkezik. Néhány várólista protokollok (például az AMQP) engedélyezése sikeres metaadatokat és más (ilyen Azure Storage Üzenetsorába) igényelnek a környezetben, kódolhatók a a üzenetadatokat.
+## <a name="queue-instrumentation"></a>Várólista rendszerállapot
+Amíg [HTTP-protokoll Összekapcsoláshoz](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md) átadandó HTTP-kérés a korreláció részletei, minden várólista protokollt meghatározásához, hogy ugyanazokat a részleteket az üzenetsorban található üzenet továbbítódnak rendelkezik. Néhány várólista protokollok (például AMQP) engedélyezése megadásának további metaadatokat, és mások (például Azure Storage-üzenetsor) van szükség a környezet, az üzenet hasznos adattartalmából értéket kódolni kell.
 
 ### <a name="service-bus-queue"></a>Service Bus-üzenetsor
-Az Application Insights nyomon követi az új Service Bus üzenetkezelés hívások [Microsoft Azure Szolgáltatásbusz-ügyfél .NET](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus/) verzió 3.0.0 és magasabb.
-Használatakor [üzenet kezelő mintát](/dotnet/api/microsoft.azure.servicebus.queueclient.registermessagehandler) üzenetek feldolgozásához, végzett: a szolgáltatás által végzett összes Service Bus hívások automatikusan követni, és egyéb telemetriai elemek tartozzanak. Tekintse meg a [nyomkövetés Microsoft Application insights szolgáltatással a Service Bus-ügyfélalkalmazást](../service-bus-messaging/service-bus-end-to-end-tracing.md) Ha manuálisan üzenetek feldolgozásához.
+Az Application Insights nyomon követi az új Service Bus-üzenetkezelés hívások [a Microsoft Azure Szolgáltatásbusz-ügyfél .NET](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus/) 3.0.0-s verziójával és újabb verzióit.
+Ha [üzenetet kezelő minta](/dotnet/api/microsoft.azure.servicebus.queueclient.registermessagehandler) -üzenetek feldolgozása kész: automatikusan nyomon követi és egyéb telemetriát elemeket is vonatkozhatnak, és a szolgáltatás által végzett összes Service Bus-hívás. Tekintse meg a [nyomkövetés Microsoft Application Insights a Service Bus-ügyfélalkalmazást](../service-bus-messaging/service-bus-end-to-end-tracing.md) Ha manuálisan üzenetek feldolgozását.
 
-Ha [WindowsAzure.ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) csomag, olvasná - a következő példák bemutatják, hogyan lehet nyomon követéséhez (és összefüggéseket) a Service Bus hívja Service Bus-üzenetsorba AMQP protokollt használja, és az Application Insights nem automatikusan követi nyomon az üzenetsor-műveletet.
-Az üzenet tulajdonságai átadott korrelációs azonosítót.
+Ha [WindowsAzure.ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) csomag, további – a következő példák bemutatják, hogyan lehet nyomon követéséhez (és korrelálni) meghívja a Service Bus, Service Bus-üzenetsorba AMQP protokollt használja, és nem az Application Insights üzenetsor-műveletek automatikusan nyomon.
+Korrelációs azonosítók adja át a rendszer az üzenet tulajdonságait.
 
-#### <a name="enqueue"></a>Sorba helyezni
+#### <a name="enqueue"></a>Sorba
 
 ```csharp
 public async Task Enqueue(string payload)
@@ -202,13 +204,13 @@ public async Task Process(BrokeredMessage message)
 }
 ```
 
-### <a name="azure-storage-queue"></a>Az Azure Storage üzenetsorába
-A következő példa bemutatja, hogyan nyomon követéséhez a [Azure Storage üzenetsorába](../storage/queues/storage-dotnet-how-to-use-queues.md) műveletek és a gyártó fogyasztói, és az Azure Storage közötti összefüggésbe telemetriai. 
+### <a name="azure-storage-queue"></a>Az Azure Storage-üzenetsor
+Az alábbi példa bemutatja, hogyan nyomon követheti a [Azure Storage-üzenetsor](../storage/queues/storage-dotnet-how-to-use-queues.md) műveletek és összevetését telemetriát az előállítói, a fogyasztói és az Azure Storage között. 
 
-A tároló várólista rendelkezik egy HTTP API-t. A várólistára minden hívást követi az Application Insights függőségi gyűjtő a HTTP-kérelmekre.
-Győződjön meg arról, hogy `Microsoft.ApplicationInsights.DependencyCollector.HttpDependenciesParsingTelemetryInitializer` a `applicationInsights.config`. Ha nem rendelkezik, adja hozzá a programozott módon [szűrést és az Azure Application Insights SDK előfeldolgozása](app-insights-api-filtering-sampling.md).
+A tárolási üzenetsort rendelkezik HTTP API-val. Összes hívás az üzenetsorba kötetblokkok az Application Insights függőségi gyűjtő a HTTP-kéréseket.
+Ellenőrizze, hogy `Microsoft.ApplicationInsights.DependencyCollector.HttpDependenciesParsingTelemetryInitializer` a `applicationInsights.config`. Ha nem rendelkezik, adja hozzá a programozott módon [szűrése és előfeldolgozása a az Azure Application Insights SDK](app-insights-api-filtering-sampling.md).
 
-Ha manuálisan adja meg az Application Insights, győződjön meg arról, létrehozása és inicializálása `Microsoft.ApplicationInsights.DependencyCollector.DependencyTrackingTelemetryModule` mint:
+Ha az Application Insights manuális beállítása, ellenőrizze, hogy hozzon létre inicializálása `Microsoft.ApplicationInsights.DependencyCollector.DependencyTrackingTelemetryModule` hasonlóan:
  
 ```csharp
 DependencyTrackingTelemetryModule module = new DependencyTrackingTelemetryModule();
@@ -221,17 +223,17 @@ module.Initialize(TelemetryConfiguration.Active);
 // Do not forget to dispose of the module during application shutdown.
 ```
 
-Érdemes azt is összefüggéseket az Application Insights Műveletazonosító tároló kérelemben azonosítóval. Állítsa be, és egy tároló kérelemben ügyfél és a kiszolgáló Kérelemazonosító információkért lásd: [figyelése, diagnosztizálása és elhárítása az Azure Storage](../storage/common/storage-monitoring-diagnosing-troubleshooting.md#end-to-end-tracing).
+Érdemes azt is korrelációját, ha az Application Insights Műveletazonosító tárolási kérelem azonosítóval. Információk a beállítása és lekérése a tárolási kérelem ügyfél és a egy kiszolgálói kérelem azonosítója: [figyelése, diagnosztizálása és hibaelhárítása az Azure Storage](../storage/common/storage-monitoring-diagnosing-troubleshooting.md#end-to-end-tracing).
 
-#### <a name="enqueue"></a>Sorba helyezni
-Tárolási sorok támogatja a HTTP API-t, mert a sor összes művelet automatikusan követi az Application Insights. Sok esetben elegendő a instrumentation kell lennie. Azonban összefüggéseket készítő nyomkövetési adatokat a fogyasztói oldalon a nyomkövetéseket, át kell korrelációs környezete hasonlóképpen hogyan azt ehhez a HTTP protokoll korrelációhoz. 
+#### <a name="enqueue"></a>Sorba
+Tároló-üzenetsorok támogatják a HTTP API-t, mert az üzenetsorhoz minden művelet automatikusan nyomon követi az Application Insights. Sok esetben elegendő az ebben a kialakítási kell lennie. Azonban korrelációját, ha a feldolgozói oldalon nyomkövetéseket az előállítói nyomkövetések, meg kell kontextust korrelációs hasonlóan, hogyan tesszük azt a HTTP protokoll a korrelációs. 
 
 Ez a példa bemutatja, hogyan nyomon követheti a `Enqueue` műveletet. A következőket teheti:
 
- - **Összefüggéseket találni az újrapróbálkozások között (ha van ilyen)**: minden rendelkeznek egy közös szülő, amely rendelkezik a `Enqueue` műveletet. Ellenkező esetben ezek még nyomon követi a bejövő kérelem gyermekeként. Ha a várólista logikai kéréseket, hívást eredményezett újrapróbálkozások található nehéz lehet.
- - **A tárolási naplófájljai összefüggéseket (ha szükséges)**: azok az Application Insights telemetria most tartozzanak.
+ - **Újrapróbálkozások összekapcsolását (ha vannak)**: összes rendelkeznek egy közös szülő, amely rendelkezik a `Enqueue` műveletet. Ellenkező esetben ezek még nyomon követi a bejövő kérelem gyermekeiként. Ha több logikai kérelmeket az üzenetsorban, nehéz megtalálni a hívást eredményezett az újrapróbálkozásokat lehet.
+ - **Vesse össze a Storage-naplók (ha szükséges)**:, Ön is vonatkozhatnak, és az Application Insights telemetria.
 
-A `Enqueue` művelet egy szülő műveletet (például egy bejövő HTTP-kérelem) gyermeke. A HTTP-függőségi hívás nem gyermeke a `Enqueue` művelet és a bejövő kérelem unoka:
+A `Enqueue` művelet egy szülő művelet (például a bejövő HTTP-kérést) gyermekét. A HTTP-függőségi hívás gyermekobjektuma a `Enqueue` művelet és a unoka a bejövő kérelem:
 
 ```csharp
 public async Task Enqueue(CloudQueue queue, string message)
@@ -274,18 +276,18 @@ public async Task Enqueue(CloudQueue queue, string message)
 }  
 ```
 
-A telemetriai adatok mennyiségének csökkentésére az alkalmazás jelentéseket, vagy ha nem kívánja nyomon követni a `Enqueue` más okok miatt, használja a `Activity` API közvetlenül:
+A telemetriai adatok mennyiségének csökkentésére az alkalmazás jelentéseket, vagy ha nem kívánja nyomon követni a `Enqueue` művelet más okok miatt, használja a `Activity` API közvetlenül:
 
-- Hozzon létre (és indítása) egy új `Activity` helyett az Application Insights művelet elindítása. Ezt megteheti *nem* kell hozzárendelni kívánt tulajdonságokat rajta a művelet nevén kívül.
-- Szerializálható `yourActivity.Id` ahelyett, hogy a üzenetadatokat be `operation.Telemetry.Id`. Is `Activity.Current.Id`.
+- Hozzon létre (és start) egy új `Activity` helyett az Application Insights művelet indítása. Mégis *nem* hozzá kell rendelni, kivéve a művelet nevét, a tulajdonságokat.
+- Szerializálható `yourActivity.Id` helyett a üzenet hasznos adatok `operation.Telemetry.Id`. Is `Activity.Current.Id`.
 
 
-#### <a name="dequeue"></a>Created
-Hasonlóképpen, a `Enqueue`, a tároló várólista tényleges HTTP-kérelem automatikusan követi nyomon az Application Insights. Azonban a `Enqueue` művelet feltehetően történik, a szülő környezetben, például egy bejövő kérelem környezete. Application Insights SDK-k automatikusan összefüggéseket ilyen művelet (és a HTTP része) a szülő kérelem és egyéb telemetriai jelentett ugyanabban a hatókörben.
+#### <a name="dequeue"></a>Eltávolítása a sorból
+Hasonlóan `Enqueue`, a tárterület üzenetsorával tényleges HTTP-kérelem automatikusan nyomon követi az Application Insights. Azonban a `Enqueue` művelet valószínűleg történik, a szülő a környezetben, például egy bejövő kérelem környezetéből. Application Insights SDK-k automatikusan korrelációját, ha ilyen művelet (és a HTTP-része) a szülő kérelem és egyéb telemetriát jelentett ugyanabban a hatókörben.
 
-A `Dequeue` legbonyolultabb művelet. Az Application Insights SDK automatikusan nyomon követi a HTTP-kérelmekre. A korrelációs környezetben azonban azt nem ismert mindaddig, amíg az üzenetet a rendszer értelmezi. Nincs lehetőség a HTTP-kérelem és a telemetriai adatokat a többi üzenet összefüggéseket.
+A `Dequeue` meglehetősen műveletet. Az Application Insights SDK automatikusan nyomon követi a HTTP-kérelmekre. A korrelációs környezetben azonban azt nem ismert mindaddig, amíg a rendszer elemzi az üzenetet. Nem alkalmas korrelációját, ha a HTTP-kérelem a telemetriát a többi üzenet jelenik meg.
 
-Sok esetben hasznos lehet a más nyomkövetési adatokat, valamint a HTTP-kérelem a várólista összefüggéseket. A következő példa bemutatja, hogyan teheti meg:
+Sok esetben hasznos lehet más nyomkövetéseket, valamint a korrelációját, ha a HTTP-kérelem az üzenetsorba. Az alábbi példa bemutatja, hogyan teheti meg:
 
 ```csharp
 public async Task<MessagePayload> Dequeue(CloudQueue queue)
@@ -336,7 +338,7 @@ public async Task<MessagePayload> Dequeue(CloudQueue queue)
 
 #### <a name="process"></a>Folyamat
 
-A következő példában bejövő üzenet zajlik a módon hasonlóan a bejövő HTTP-kérelem:
+A következő példában egy bejövő üzenet követi nyomon módon hasonlóan a bejövő HTTP-kérelem:
 
 ```csharp
 public async Task Process(MessagePayload message)
@@ -366,24 +368,24 @@ public async Task Process(MessagePayload message)
 }
 ```
 
-Hasonlóképpen a többi üzenetsor-műveletet tagolva is. Egy betekintés művelet egy dequeue művelet, hasonló módon lesznek tagolva. Üzenetsor-kezelési műveletet tagolása nem szükséges. Az Application Insights nyomon követi a műveletek, például HTTP, és a legtöbb esetben elegendő.
+Ehhez hasonlóan más üzenetsor-műveletek lesznek tagolva. A betekintési művelet eltávolítási műveletként hasonló módon lesznek tagolva. Üzenetsor-kezelési műveletek szándékkal nem szükséges. Az Application Insights nyomon követi a műveletek, például a HTTP és a legtöbb esetben elegendő.
 
-Amikor állíthatnak üzenet törlése, ellenőrizze, hogy beállította a művelet (korrelációs) azonosítót. Másik lehetőségként használhatja a `Activity` API. Majd nincs szükség művelet azonosítók a telemetriai adatok elemek beállítani, mert az Application Insights SDK minderre meg:
+Üzenet törlése, ezenkívül, ha mindenképpen állítsa be a műveletet (korrelációs) azonosítók. Másik lehetőségként használhatja a `Activity` API-t. Ezután nincs szükség művelet azonosítók a telemetriai adatok elemek be, mert az Application Insights SDK mindezt megteszi Ön helyett:
 
 - Hozzon létre egy új `Activity` után egy elemet az üzenetsorból.
-- Használjon `Activity.SetParentId(message.ParentId)` fogyasztói és gyártó naplók összefüggéseket.
+- Használat `Activity.SetParentId(message.ParentId)` korrelációját, fogyasztói és a gyártó naplókat.
 - Indítsa el a `Activity`.
-- Track created, feldolgozása és törlési műveletek használatával `Start/StopOperation` segítő. Ehhez a a azonos aszinkron folyamatábrán (a végrehajtási környezet). Ezzel a módszerrel azok még korrelált megfelelően.
+- Track eltávolítása a sorból, feldolgozása és törlési műveletek használatával `Start/StopOperation` segítők. Megteheti azt az azonos aszinkron átvitelvezérlés (végrehajtási környezet). Így azok még korrelált megfelelően.
 - Állítsa le a `Activity`.
-- Használjon `Start/StopOperation`, vagy hívja az `Track` telemetriai manuálisan.
+- Használat `Start/StopOperation`, vagy hívja az `Track` telemetriai adatokat manuálisan.
 
 ### <a name="batch-processing"></a>Kötegelt feldolgozás
-Az egyes üzenetsorok egy kérelem több üzenetet is created. Ilyen üzenetek feldolgozása feltételezhetően független, és a különböző logikai műveletek tartozik. Ebben az esetben nincs lehetőség a összefüggéseket a `Dequeue` adott üzenetfeldolgozást művelet.
+Az egyes üzenetsorok sorból eltávolítás több üzenetet egy kéréssel. Ilyen üzenetek feldolgozása elvileg független, és a különböző logikai művelethez tartozik. Ebben az esetben már nem korrelációját, ha a `Dequeue` adott üzenet feldolgozási művelet.
 
-Minden üzenet fel kell dolgozni a saját aszinkron vezérlési folyamatában. További információkért lásd: a [követési kimenő függőségek](#outgoing-dependencies-tracking) szakasz.
+Mindegyik üzenet a saját aszinkron átvitelvezérlés fel. További információkért lásd: a [kimenő függőségek követése](#outgoing-dependencies-tracking) szakaszban.
 
-## <a name="long-running-background-tasks"></a>Hosszan futó háttérfeladatok
-Egyes alkalmazások start hosszú futású műveleteket, amelyek a felhasználói kérelmek oka lehet. A nyomkövetés/instrumentation szempontjából nincs eltér a kérelem vagy függőségi instrumentation: 
+## <a name="long-running-background-tasks"></a>Hosszan futó háttérfeladatokat
+Egyes alkalmazások indítása hosszú ideig futó műveletek, amelyek a felhasználói kérelmek oka lehet. A nyomkövetés/rendszerállapot szempontjából, nem tér kérés és a függőségi rendszerállapot: 
 
 ```csharp
 async Task BackgroundTask()
@@ -413,22 +415,22 @@ async Task BackgroundTask()
 }
 ```
 
-Ebben a példában `telemetryClient.StartOperation` hoz létre `RequestTelemetry` és tölti ki a korrelációs környezetben. Tegyük fel, a bejövő kérelmeket, amelyek ütemezett a művelet által létrehozott szülő művelet van. Amennyiben a megjelölt `BackgroundTask` ugyanazon aszinkron elindul egy bejövő kérelem folyamata kontrolljához szülő művelet tartozzanak. `BackgroundTask` és minden beágyazott telemetriai elem mellékel a kérelemhez, amely a, a kérelem befejeződését követően automatikusan közötti kapcsolatot.
+Ebben a példában `telemetryClient.StartOperation` hoz létre `RequestTelemetry` , és kitölti vele a korrelációs környezetet. Tegyük fel, hogy egy szülő művelet bejövő kérelmek, amelyek ütemezve a művelet által létrehozott-e meg. Mindaddig, `BackgroundTask` átvitelvezérlés azonos aszinkron indul el, egy bejövő kérésnek, azt, hogy szülőművelet összefügg. `BackgroundTask` és minden beágyazott telemetriai elem is automatikusan is vonatkozhatnak, és a kérés által okozott, a kérelem befejezése után is.
 
-A feladat indításakor a háttérben szálból, amely nem tartalmaz semmilyen műveletet (`Activity`) társított, `BackgroundTask` bármelyik szülő nem rendelkezik. Azonban azt is beágyazott műveletek. A feladat jelentett összes telemetriai elemet összefüggő a `RequestTelemetry` létrehozott `BackgroundTask`.
+A feladat indításakor a háttér-szálból, amely nem rendelkezik minden olyan művelet (`Activity`) tartozik, `BackgroundTask` bármelyik szülő nem rendelkezik. Azonban azt is beágyazott műveleteket. A feladat által jelentett összes telemetriai elem lebontva a `RequestTelemetry` létrehozott `BackgroundTask`.
 
 ## <a name="outgoing-dependencies-tracking"></a>Kimenő függőségek nyomon követése
-Nyomon követheti a saját függőségi fajta vagy az Application Insights nem támogatja a műveletet.
+Követheti, hogy a saját függőség típusa vagy az Application Insights által nem támogatott művelet.
 
-A `Enqueue` metódus a Service Bus-üzenetsorba, vagy a tároló várólista ilyen egyéni követési példák lehetnek.
+A `Enqueue` metódus a Service Bus-üzenetsor vagy a tárolási üzenetsort az ilyen egyéni követési példák szolgálhat.
 
-Az általános módszer követési egyéni függőséget, hogy:
+Az általános megközelítés az egyéni függőségi nyomkövetés, hogy:
 
-- Hívja a `TelemetryClient.StartOperation` (kiterjesztés) módszer, amelynek változó kitöltése a `DependencyTelemetry` összefüggések keresésére és néhány egyéb tulajdonság szükséges tulajdonságok (kezdő időpont stamp, időtartama).
-- Egyéb egyéni tulajdonságának beállítása a `DependencyTelemetry`, például a nevét és minden egyéb környezetre van szüksége.
-- Ellenőrizze a függőségi hívás, és várjon, amíg az.
-- Állítsa le a műveletet a `StopOperation` amikor befejeződött.
-- Kivétel kezelése.
+- Hívja a `TelemetryClient.StartOperation` (kiterjesztés) módszer, amely alapján tölti ki a `DependencyTelemetry` tulajdonságai, a korrelációs és néhány egyéb tulajdonságok szükséges (kezdési idő bélyeg, időtartama).
+- Állítsa be az egyéb egyéni tulajdonságait a `DependencyTelemetry`, például a nevét és minden más környezetre van szüksége.
+- Győződjön meg arról, egy függőségi hívás, és várjon, amíg.
+- Állítsa le a műveletet `StopOperation` amikor befejeződött.
+- Kivételek kezelésére.
 
 ```csharp
 public async Task RunMyTaskAsync()
@@ -448,16 +450,15 @@ public async Task RunMyTaskAsync()
 }
 ```
 
-Művelet leállt, értékesítésére művelet hatására az, akkor azt a telefonhívás helyett `StopOperation`.
+Művelet leállt, értékesítésére művelet okozza, így meghívása nélkül előfordulhat, hogy tegye `StopOperation`.
 
-*Figyelmeztetés*: bizonyos esetekben unhanded kivétel is [megakadályozása](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/try-finally) `finally` hívandó, műveletek nem követhető nyomon.
+*Figyelmeztetés*: bizonyos esetekben unhanded kivétel előfordulhat, hogy [megakadályozása](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/try-finally) `finally` kell meghívni, ezért nem lehetséges, hogy követi nyomon a műveleteket.
 
-### <a name="parallel-operations-processing-and-tracking"></a>Párhuzamos művelet feldolgozása és nyomon követése
+### <a name="parallel-operations-processing-and-tracking"></a>Párhuzamos műveletek feldolgozása és nyomon követése
 
-`StopOperation` csak leállítja a műveletet, amely elkezdődött. Ha az aktuális futó művelet nem egyezik meg szeretné szüntetni, azzal `StopOperation` nincs semmi hatása. Ez a helyzet akkor fordulhat elő, ha azonos végrehajtási környezetében párhuzamosan több művelet indítása:
+`StopOperation` csak leállítja a műveletet, amely lett elindítva. Ha az aktuális futó művelet nem felel meg a megfelelőt, leállításához `StopOperation` nem csinál semmit. Ez a helyzet akkor fordulhat elő, ha több műveletet elindítani a párhuzamos végrehajtás ugyanabban a környezetben:
 
 ```csharp
-var firstOperation = telemetryClient.StartOperation<DependencyTelemetry>("task 1");
 var firstOperation = telemetryClient.StartOperation<DependencyTelemetry>("task 1");
 var firstTask = RunMyTaskAsync();
 
@@ -473,7 +474,7 @@ telemetryClient.StopOperation(firstOperation);
 await secondTask;
 ```
 
-Győződjön meg arról, hogy mindig hívja `StartOperation` és ugyanaz a művelet feldolgozása **aszinkron** különítheti el a párhuzamosan futó műveletek metódust. Ha a művelet szinkron (vagy nem aszinkron), burkolja a folyamat, és nyomon követni `Task.Run`:
+Győződjön meg arról, hogy mindig hívja `StartOperation` és ugyanaz a művelet feldolgozása **aszinkron** metódus elkülöníteni a párhuzamosan futó műveletek. Ha a művelet szinkron (vagy nem aszinkron), wrap folyamat, és nyomon követheti a `Task.Run`:
 
 ```csharp
 public void RunMyTask(string name)
@@ -496,8 +497,8 @@ public async Task RunAllTasks()
 
 ## <a name="next-steps"></a>További lépések
 
-- Az alapvető [telemetriai korrelációs](application-insights-correlation.md) az Application insights szolgáltatással.
-- Tekintse meg a [adatmodell](application-insights-data-model.md) Application Insights-típusok és az adatok modell.
-- Egyéni jelentést [eseményeket és metrikákat](app-insights-api-custom-events-metrics.md) az Application Insights részére.
-- Tekintse meg a standard [konfigurációs](app-insights-configuration-with-applicationinsights-config.md#telemetry-initializers-aspnet) környezeti tulajdonságok gyűjtemény.
-- Ellenőrizze a [System.Diagnostics.Activity felhasználói útmutató](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) hogyan azt összefüggéseket telemetriai adatok megjelenítéséhez.
+- Alapismeretek a Mobilfunkciók [telemetriai korreláció](application-insights-correlation.md) az Application Insightsban.
+- Tekintse meg a [adatmodell](application-insights-data-model.md) Application Insights és modellhez.
+- Egyéni jelentés [eseményeket és mérőszámokat](app-insights-api-custom-events-metrics.md) az Application Insightsba.
+- Tekintse meg a standard [konfigurációs](app-insights-configuration-with-applicationinsights-config.md#telemetry-initializers-aspnet) környezeti tulajdonságok a gyűjteményhez.
+- Ellenőrizze a [System.Diagnostics.Activity felhasználói útmutató](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) megtekintéséhez, hogyan telemetria korrelációját, ha azt.

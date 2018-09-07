@@ -18,12 +18,12 @@ ms.date: 07/23/2018
 ms.author: markvi
 ms.reviewer: tanning
 ms.custom: it-pro
-ms.openlocfilehash: a80bec460fffcc7c7170204d541d578428980394
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: c7a2428e4e5e3b5af0e9e01514ba433707e6a3c8
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39223949"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44022798"
 ---
 # <a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>Az Azure Active Directoryban hibaelhárítási Enterprise State Roaming beállítások
 
@@ -71,7 +71,7 @@ Az eszköz regisztrálása az Azure ad-vel Enterprise State Roaming igényel. B�
 **Lehetséges probléma**: **WamDefaultSet** és **AzureAdJoined** egyaránt mező értéke "Nem" rendelkeznek, az eszköz volt a tartományhoz csatlakoztatott és az Azure AD-ben regisztrált és nem szinkronizálja az eszköz. Ez látható, ha az eszköz is kell várnia a alkalmazni lehessen a házirend vagy az eszköz a hitelesítés sikertelen, amikor csatlakozik az Azure ad-ben. A felhasználó jogosult az a alkalmazni lehessen a szabályzat néhány óráig várnia. További hibaelhárítási lépéseket tartalmazhatnak automatikus regisztráció újrapróbálkozás kijelentkezés és a biztonsági, illetve a feladat a Feladatütemező indítása. Bizonyos esetekben futtatása "*dsregcmd.exe /leave*" egy rendszergazda jogú parancssori ablakban, a rendszer újraindítása, és próbálkozzon újra a regisztrációs segíthet a probléma megoldásához.
 
 
-**Lehetséges probléma**: mezőjére **AzureAdSettingsUrl** üres és nem szinkronizálja az eszközt. A felhasználó előfordulhat, hogy utoljára bejelentkezett az eszközt ahhoz Enterprise State Roaming engedélyezve lett az Azure Active Directory portálon. Indítsa újra az eszközt, és a felhasználói bejelentkezési rendelkezik. Szükség esetén a portálon, próbálja letiltását és újraengedélyezését, felhasználók, előfordulhat, hogy szinkronizálási beállítások és a vállalati alkalmazások adatainak rendszergazdának kellene. Ha újra engedélyezi, indítsa újra az eszközt, és a felhasználói bejelentkezési rendelkezik. Ha ez nem oldja meg a problémát, **AzureAdSettingsUrl** hibás eszköz tanúsítvány esetén üres is lehet. Ebben az esetben fut "*dsregcmd.exe /leave*" egy rendszergazda jogú parancssori ablakban, a rendszer újraindítása, és próbálkozzon újra a regisztrációs segíthet a probléma megoldásához.
+**Lehetséges probléma**: mezőjére **SettingsUrl** üres és nem szinkronizálja az eszközt. A felhasználó előfordulhat, hogy utoljára bejelentkezett az eszközt ahhoz Enterprise State Roaming engedélyezve lett az Azure Active Directory portálon. Indítsa újra az eszközt, és a felhasználói bejelentkezési rendelkezik. Szükség esetén a portálon, próbálja letiltását és újraengedélyezését, felhasználók, előfordulhat, hogy szinkronizálási beállítások és a vállalati alkalmazások adatainak rendszergazdának kellene. Ha újra engedélyezi, indítsa újra az eszközt, és a felhasználói bejelentkezési rendelkezik. Ha ez nem oldja meg a problémát, **SettingsUrl** hibás eszköz tanúsítvány esetén üres is lehet. Ebben az esetben fut "*dsregcmd.exe /leave*" egy rendszergazda jogú parancssori ablakban, a rendszer újraindítása, és próbálkozzon újra a regisztrációs segíthet a probléma megoldásához.
 
 ## <a name="enterprise-state-roaming-and-multi-factor-authentication"></a>Enterprise State Roaming és a multi-factor Authentication hitelesítés 
 Bizonyos körülmények között az Enterprise State Roaming sikertelen lehet szinkronizálja az adatokat, ha az Azure multi-factor Authentication hitelesítés van konfigurálva. További részleteket az alábbi tüneteket figyelje, tekintse meg a támogatási dokumentum [KB3193683](https://support.microsoft.com/kb/3193683). 
@@ -81,7 +81,7 @@ Bizonyos körülmények között az Enterprise State Roaming sikertelen lehet sz
 **Lehetséges probléma**: szinkronizálás meghiúsulhat, ha a rendszergazda konfigurálja az Active Directory összevonási szolgáltatások multi-factor Authentication feltételes hozzáférési szabályzatot, és az eszközön a hozzáférési jogkivonat lejár. Győződjön meg arról, hogy jelentkezzen be, és jelentkezzen ki, használja a Microsoft Passport for Work PIN-kód, vagy fejezze be a multi-factor Authentication az Office 365-höz hasonló más Azure-szolgáltatások használata közben.
 
 ### <a name="event-viewer"></a>Eseménynapló
-Speciális hibaelhárításhoz, az Eseménynapló használható hibaüzenetek megkereséséhez. Ezek az alábbi táblázat ismerteti. Az eseményeket az Eseménynapló területen található > alkalmazások és szolgáltatásnaplók > **Microsoft** > **Windows** > **SettingSync** és a identitással kapcsolatos problémáinak szinkronizálással **Microsoft** > **Windows** > **AAD**.
+Speciális hibaelhárításhoz, az Eseménynapló használható hibaüzenetek megkereséséhez. Ezek az alábbi táblázat ismerteti. Az eseményeket az Eseménynapló területen található > alkalmazások és szolgáltatásnaplók > **Microsoft** > **Windows** > **SettingSync Azure-beli** és identitással kapcsolatos problémáinak szinkronizálási **Microsoft** > **Windows** > **AAD**.
 
 
 ## <a name="known-issues"></a>Ismert problémák
@@ -174,14 +174,6 @@ Az eseménynaplóban az AAD/műveleti naplók alapján ez a hiba lehetséges, ho
 
 **Javasolt művelet**  
 Folytassa a felsorolt lépésekkel [KB3196528](https://support.microsoft.com/kb/3196528).  
-
-
-
-## <a name="next-steps"></a>További lépések
-
-- Használja a [felhasználói Visszajelzési fórum](https://social.technet.microsoft.com/Forums/windows/en-US/f51c856c-db92-4cf7-a497-720da21d7d31/enterprise-state-roaming) visszajelzést, és javaslatokat Enterprise State Roaming fejlesztéséhez.
-
-- További információkért lásd: a [vállalati Állapothordozás áttekintése](active-directory-windows-enterprise-state-roaming-overview.md). 
 
 ## <a name="related-topics"></a>Kapcsolódó témakörök
 * [Vállalati állapot központi áttekintése](active-directory-windows-enterprise-state-roaming-overview.md)

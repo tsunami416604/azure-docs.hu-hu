@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: 0935867e835fe88568f1cdce1ea8dfcea14a451a
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 1d2f194eb6a2186fc1e8451a7022d26cd1013bb2
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43669315"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44022396"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vms"></a>A konfigurációs kiszolgáló VMware virtuális gépek kezelése
 
@@ -88,7 +88,22 @@ Ha szeretne újraregisztrálásához a konfigurációs kiszolgáló az ugyanahho
           net stop obengine
           net start obengine
   ```
-  
+
+## <a name="register-a-configuration-server-with-a-different-vault"></a>Konfigurációs kiszolgáló regisztrálása másik tárolóval
+
+> [!WARNING]
+> A következő lépés disassociates a konfigurációs kiszolgáló, a jelenlegi tárolóból, és az a konfigurációs kiszolgáló területén az összes védett virtuális gép replikációja leáll.
+
+1. Jelentkezzen be a konfigurációs kiszolgálón.
+2. Nyisson meg egy rendszergazdai PowerShell-parancsablakot, és futtassa a következő parancsot:
+
+    ```
+    reg delete HKLM\Software\Microsoft\Azure Site Recovery\Registration
+    net stop dra
+    ```
+3. Indítsa el a konfigurációs kiszolgáló készülék böngésző portáljának használatával a parancsikont az asztalon.
+4. Hajtsa végre a regisztrációs lépéseket egy új konfigurációs kiszolgáló hasonló [regisztrációs](vmware-azure-tutorial.md#register-the-configuration-server).
+
 ## <a name="upgrade-the-configuration-server"></a>A konfigurációs kiszolgáló frissítése
 
 Kumulatív frissítés a konfigurációs kiszolgálót frissíteni fogja futtatni. Frissítések akár N-4 verziók esetében is alkalmazható. Példa:

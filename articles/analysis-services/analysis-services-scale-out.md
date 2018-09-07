@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 08/31/2018
+ms.date: 09/06/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 730b11fb5038e5d6c4f9b00fbc4eb07d673757f9
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: ecf56f3172ebeab54757d7cbd164b92ca1470ce5
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43840989"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44051170"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Az Azure Analysis Services horizontális felskálázás
 
@@ -27,7 +27,7 @@ Horizontális felskálázás létrehozhat egy lekérdezési készlet legfeljebb 
 
 Rendelkezik az adott lekérdezési készletben lekérdezési replikák számától függetlenül tranzakciófeldolgozási nem oszlanak meg lekérdezési replikák között. A feldolgozó kiszolgáló egyetlen kiszolgáló szolgál. Lekérdezési replikák szolgálják, csak a modellek között a lekérdezési készlet minden egyes lekérdezés replikát szinkronizálja a lekérdezéseket. 
 
-Horizontális felskálázás, ha új lekérdezési replikák növekményes hozzáadódik a lekérdezési készletből. Új lekérdezés replika erőforrások szerepelnie a lekérdezési készletből; akár öt percet is igénybe vehet készen állnak a kapcsolatok és lekérdezések fogadására. Ha minden új lekérdezési replikák fel, és fut, az új ügyfélkapcsolatokat is lekérdezési készlet összes erőforrást kell osztani. Meglévő ügyfélkapcsolatok nem változnak, jelenleg csatlakoznak-erőforrásból.  Skálázás az, ha bármely meglévő ügyfélkapcsolatok éppen eltávolítják a lekérdezési készlet lekérdezési készlet erőforrás megszűnik. Lekérdezés hátralévő készleterőforráshoz újra vannak csatlakoztatni, a horizontális leskálázási művelet befejezése után.
+Horizontális felskálázás, ha új lekérdezési replikák növekményes hozzáadódik a lekérdezési készletből. Új lekérdezés replika erőforrások szerepelnie a lekérdezési készletből; akár öt percet is igénybe vehet készen állnak a kapcsolatok és lekérdezések fogadására. Ha minden új lekérdezési replikák fel, és fut, az új ügyfélkapcsolatokat is lekérdezési készlet összes erőforrást kell osztani. Meglévő ügyfélkapcsolatok nem változnak, jelenleg csatlakoznak-erőforrásból.  Skálázás az, ha bármely meglévő ügyfélkapcsolatok éppen eltávolítják a lekérdezési készlet lekérdezési készlet erőforrás megszűnik. Ezek újracsatlakoztatását a fennmaradó lekérdezési készlet erőforrás befejeződésekor a horizontális leskálázási művelet, amely akár öt percet is igénybe vehet.
 
 Modellek feldolgozásakor a feldolgozási műveletek után, a feldolgozó kiszolgáló és a lekérdezési replikák közötti szinkronizálás kell elvégezni. Feldolgozási műveletek automatizálása, esetén fontos, hogy konfigurálja a szinkronizálási művelet feldolgozási műveletek sikeres befejezése után. Szinkronizálás manuálisan hajtható végre a portálon, vagy a PowerShell vagy REST API használatával. 
 

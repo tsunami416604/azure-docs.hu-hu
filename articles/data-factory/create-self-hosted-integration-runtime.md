@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: abnarain
-ms.openlocfilehash: af7d4253b4e631295f8c04c96601e932595af9c1
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: bb5e58c0cb06baabf76d7d0443e94b368549176f
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43697764"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44051340"
 ---
 # <a name="how-to-create-and-configure-self-hosted-integration-runtime"></a>Hogyan hozhat létre, és a helyi integrációs modul konfigurálása
 Az Integration Runtime (IR) a különböző hálózati környezetekben adatintegrációs képességeket biztosít az Azure Data Factory által használt számítási infrastruktúra áll. Integrációs modul kapcsolatos részletekért lásd: [Integration Runtime áttekintése](concepts-integration-runtime.md).
@@ -30,16 +30,16 @@ Ez a dokumentum bemutatja, hogyan hozzon létre és konfigurálhatja a helyi IR.
 1. Hozzon létre egy saját üzemeltetésű integrációs modult. Használhat ADF felhasználói felület létrehozása a saját üzemeltetésű Itt látható egy PowerShell-példa:
 
     ```powershell
-    Set-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $resouceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntimeName -Type SelfHosted -Description "selfhosted IR description"
+    Set-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntimeName -Type SelfHosted -Description "selfhosted IR description"
     ```
 2. Töltse le és telepítse a saját üzemeltetésű integration runtime (helyi gépen).
 3. Kérje le a hitelesítési kulcsot, és saját üzemeltetésű integrációs modult regisztrálhassa a a kulcsot. Itt látható egy PowerShell-példa:
 
     ```powershell
-    Get-AzureRmDataFactoryV2IntegrationRuntimeKey -ResourceGroupName $resouceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntime.  
+    Get-AzureRmDataFactoryV2IntegrationRuntimeKey -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntime.  
     ```
 
-## <a name="setting-up-self-hosted-ir-on-azure-vm-using-azure-resource-manager-template-automatation"></a>Az Azure Resource Manager-sablon (automatation) használata Azure virtuális Gépen lévő saját üzemeltetésű integrációs modul beállítása
+## <a name="setting-up-self-hosted-ir-on-azure-vm-using-azure-resource-manager-template-automation"></a>Az Azure Resource Manager-sablon (automatizálás) használata Azure virtuális Gépen lévő saját üzemeltetésű integrációs modul beállítása
 Helyi integrációs modul telepítése egy Azure virtuális gép használatával automatizálható [ezen Azure Resource Manager-sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vms-with-selfhost-integration-runtime). Ez itt egy egyszerű módja annak, hogy rendelkezik Azure virtuális hálózaton belül teljes mértékben működő helyi integrációs modul magas Avalaibility és méretezhetőséget biztosít a szolgáltatással (feltéve, meg kell a 2-es vagy újabb csomópontok száma).
 
 ## <a name="command-flow-and-data-flow"></a>Parancsot a folyamat és az adatfolyam

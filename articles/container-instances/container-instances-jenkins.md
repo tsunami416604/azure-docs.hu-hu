@@ -8,12 +8,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 08/31/2018
 ms.author: marsma
-ms.openlocfilehash: 6419753a48e1356b2d94592fca72cee1f848dcdb
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: 9108d9e1b230fe2267f0195bd2c33c5a4c57d956
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39390653"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44021940"
 ---
 # <a name="use-azure-container-instances-as-a-jenkins-build-agent"></a>A Jenkins használata Azure Container Instances szolgáltatásban az ügynök létrehozása
 
@@ -48,7 +48,7 @@ További információ az Azure Container Instances: [kapcsolatos Azure Container
 
    ![A Jenkins portálon keresztüli üzembe helyezési további beállításai](./media/container-instances-jenkins/jenkins-portal-02.png)
 
-4. A szolgáltatás egyszerű integráció, válassza ki a **Auto(MSI)** rendelkeznie [Azure Felügyeltszolgáltatás-identitás] [ managed-service-identity] automatikusan létrehozza a hitelesítési identitást a Jenkins a példány. Válassza ki **manuális** saját szolgáltatásnév hitelesítő adatainak megadását.
+4. A szolgáltatás egyszerű integráció, válassza ki a **Auto(MSI)** rendelkezik az [Azure Felügyeltszolgáltatás-identitás] [felügyelt-identitások – azure-erőforrások] automatikusan hozzon létre egy hitelesítési identitást a Jenkins-példány. Válassza ki **manuális** saját szolgáltatásnév hitelesítő adatainak megadását.
 
 5. Felhő-ügynökök konfigurálása egy felhőalapú platform, Jenkins felépítési feladatok. Válassza ki az ebben a cikkben **ACI**. Az ACI felhőalapú ügynököt minden egyes Jenkins létrehozási feladatot futtatja egy tárolópéldányt.
 
@@ -128,9 +128,9 @@ Tesztelje a fordítási feladatot, és tekintse meg az Azure Container Instances
 
    ![Az eltávolított container instances szolgáltatással erőforráscsoport](./media/container-instances-jenkins/jenkins-aci-none.png)
 
-## <a name="troubleshooting-the-jenkins-plugin"></a>Hibaelhárítás a Jenkins beépülő modul
+## <a name="troubleshooting-the-jenkins-plugin"></a>A Jenkins beépülő modul hibáinak elhárítása
 
-Ha bármely hibái a Jenkins beépülő modulok, a fájl be a problémát a [Jenkins JIRA](https://issues.jenkins-ci.org/) az adott összetevő.
+Ha a Jenkins beépülő modulok használata során bármilyen hibát tapasztal, jelentse be a problémát az adott összetevő [Jenkins JIRA](https://issues.jenkins-ci.org/) felületén.
 
 ## <a name="next-steps"></a>További lépések
 

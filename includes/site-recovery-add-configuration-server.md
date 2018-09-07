@@ -1,3 +1,21 @@
+---
+title: fájl belefoglalása
+description: fájl belefoglalása
+services: site-recovery
+author: rayne-wiselman
+manager: carmonm
+ms.service: site-recovery
+ms.topic: include
+ms.date: 09/06/2018
+ms.author: raynew
+ms.custom: include file
+ms.openlocfilehash: 2ca4916d48da6fe8a2c061056a1ea0fed9a78bb6
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44058303"
+---
 1. Futtassa az egyesített telepítő fájlját.
 2. A **alapismeretek**válassza **a konfigurációs kiszolgáló és a folyamatkiszolgáló telepítése**.
 
@@ -21,10 +39,7 @@
 7. A **MySQL-konfiguráció** területen hozza létre a telepített MySQL-kiszolgálópéldányra való bejelentkezéshez szükséges hitelesítő adatokat.
 
     ![MySQL](./media/site-recovery-add-configuration-server/combined-wiz6.png)
-8. A **Környezet részletei** területen válassza ki, hogy kívánja-e replikálni a VMware virtuális gépeket. Ha Ön, a telepítő ellenőrzi, hogy a PowerCLI 6.0 telepítve van-e.
-
-    ![MySQL](./media/site-recovery-add-configuration-server/combined-wiz7.png)
-
+8. A **környezet részletei**, jelölje be, nem, ha az Azure Stack-beli virtuális vagy fizikai kiszolgálókat replikál. 
 9. A **Telepítés helye** területen válassza ki, hová szeretné telepíteni a bináris fájlokat, és hol kívánja tárolni a gyorsítótárat. A kiválasztott meghajtón legalább 5 GB szabad lemezterületre van szükség, de javasoljuk, hogy a gyorsítótárazáshoz használt lemezen legyen legalább 600 GB szabad hely.
 
     ![Telepítés helye](./media/site-recovery-add-configuration-server/combined-wiz8.png)

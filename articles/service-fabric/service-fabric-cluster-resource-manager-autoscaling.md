@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/17/2018
 ms.author: miradic
-ms.openlocfilehash: 55feb64f06c2d67f85f230cb92e84dfe8fd3ada2
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: db4f83d0d407ad3d9e895759ea2a687662f5620a
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43782389"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44053295"
 ---
 # <a name="introduction-to-auto-scaling"></a>Automatikus skálázás bemutatása
 Automatikus skálázás egy további lehetőség a Service Fabric dinamikusan méretezheti az services szolgáltatásokat jelent, vagy az erőforrások használat alapján a terhelés alapján. Automatikus skálázás nagy rugalmasságot biztosít, és lehetővé teszi, hogy további példányok vagy a partíciók az igény szerinti szolgáltatás kiépítése. A teljes automatikus skálázást folyamat automatizált és átlátható, és a szabályzatok a szolgáltatás beállítása után esetén nem kell a szolgáltatási szintű manuális méretezési műveletekhez. Automatikus skálázás is be kell kapcsolni vagy szolgáltatás-létrehozás időpontjában, vagy bármikor a szolgáltatás frissítésével.
@@ -117,7 +117,7 @@ Update-ServiceFabricService -Stateless -ServiceName "fabric:/AppName/ServiceName
 A második eseményindító a terhelés az egyik szolgáltatás összes partíció alapul. Metrika terhelések először szerezze be a terhelés minden replika és a egy partíció példánya van Görbített. Az állapotalapú szolgáltatások esetében a terhelést a partíció tekinthető a terhelés, az elsődleges másodpéldány, amíg az állapotmentes szolgáltatások esetében a terhelést a partíció a partíció összes példány átlagos terhelés. Ezek az értékek vannak átlagolja az a szolgáltatás összes partíció, és ez az érték használható az automatikus skálázás aktiválásához. Egyezik a kérésben előző mechanizmust, mindhárom tényezőt, amelyek meghatározzák, amikor a program átméretezi a szolgáltatás van:
 
 * _Alsó betöltési küszöb_ érték, amely azt határozza meg, ha a szolgáltatás lesz **skálázva**. Ha az átlagos terhelés, a szolgáltatás összes partíció nem éri el ezt az értéket, majd a szolgáltatás lesz skálázva a.
-* _Felső betöltési küszöb_ érték, amely azt határozza meg, ha a szolgáltatás lesz **horizontálisan felskálázott**. Ha az átlagos terhelés, a szolgáltatás összes partíció nem éri el ezt az értéket, majd a szolgáltatás fogja terjeszthető ki.
+* _Felső betöltési küszöb_ érték, amely azt határozza meg, ha a szolgáltatás lesz **horizontálisan felskálázott**. Ha az átlagos terhelés, a szolgáltatás összes partíció nagyobb, mint ezt az értéket, majd a szolgáltatás fogja terjeszthető ki.
 * _Méretezési időközhöz_ határozza meg, hogy milyen gyakran kell ellenőrizni az eseményindító. Amint az eseményindító be van jelölve, ha szükség van a méretezés a mechanizmus lépnek érvénybe. Ha már nincs szükség a méretezés, semmilyen művelet nem lesz végrehajtva. Mindkét esetben az eseményindító nem kerül sor újra méretezési időközhöz újra lejárta előtt.
 
 Ez az eseményindító lehet használt mindkettőt, állapotalapú és állapotmentes szolgáltatások. A csak mechanizmus, amely erre az eseményindítóra használható AddRemoveIncrementalNamedParitionScalingMechanism. Szolgáltatás horizontálisan felskálázott, majd egy új partíciót hozzáadásakor, illetve egy meglévő partíciók méretezett szolgáltatás törlődik. Szolgáltatás létrehozásakor vagy frissítésekor és a szolgáltatás létrehozása és frissítése sikertelen lesz, ha ezek a feltételek nem teljesülnek ellenőrzött korlátozások vonatkoznak:

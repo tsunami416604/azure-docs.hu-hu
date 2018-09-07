@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/30/2018
 ms.author: wielriac
 ms.component: blobs
-ms.openlocfilehash: a215771b0126e9048b7d9da4ed1d6073c8e960a4
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: dc15dcb9f7b342d2d5140199ecf34c1a4781fa25
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39265900"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44022688"
 ---
 # <a name="unique-features-of-azure-page-blobs"></a>Egyedi jellemzőinek oldala az Azure-blobok
 
@@ -71,7 +71,7 @@ pageBlob.Resize(32 * OneGigabyteAsBytes);
 ```
 
 #### <a name="writing-pages-to-a-page-blob"></a>Lapok, egy lapblob írása
-Írási oldalak, használja a [CloudPageBlob.WritePages](/library/microsoft.windowsazure.storageclient.cloudpageblob.writepages.aspx) metódust.  Ez lehetővé teszi, hogy legfeljebb 4MBs szekvenciális meg írni. Az eltolás ír egy 512 bájtos határhoz kell kezdődniük (startingOffset % 512 == 0), és a egy 512 határon – 1 teljes.  Az alábbi példakód bemutatja, hogyan hívhat meg **WritePages** egy BLOB:
+Írási oldalak, használja a [CloudPageBlob.WritePages](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.blob.cloudpageblob.beginwritepages?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_CloudPageBlob_BeginWritePages_System_IO_Stream_System_Int64_System_String_Microsoft_WindowsAzure_Storage_AccessCondition_Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_Microsoft_WindowsAzure_Storage_OperationContext_System_AsyncCallback_System_Object_) metódust.  Ez lehetővé teszi, hogy legfeljebb 4MBs szekvenciális meg írni. Az eltolás ír egy 512 bájtos határhoz kell kezdődniük (startingOffset % 512 == 0), és a egy 512 határon – 1 teljes.  Az alábbi példakód bemutatja, hogyan hívhat meg **WritePages** egy BLOB:
 
 ```csharp
 pageBlob.WritePages(dataStream, startingOffset); 
@@ -116,8 +116,6 @@ foreach (PageRange range in pageRanges)
 
 #### <a name="leasing-a-page-blob"></a>Bérlési egy lapblob
 A Blobbérlet műveletet hoz létre, és egy BLOB egy zár kezeli az írási és törlési műveletek. Ez a művelet egy lapblob annak érdekében, hogy csak egy ügyfél egyszerre írhat a blob több ügyfél hozzáférnek ahol forgatókönyvekben hasznos. Azure-os lemezekre, például használja a bérlési mechanizmus biztosítására, hogy a lemez csak egyetlen virtuális gép kezeli. A Zárolás időtartama 15 és 60 másodperc is lehet, vagy lehet végtelen. A dokumentációt [Itt](/rest/api/storageservices/lease-blob) további részletekért.
-
-> A következő hivatkozás használatával [Kódminták](/resources/samples/?service=storage&term=blob&sort=0 ) sok más alkalmazás-forgatókönyvek esetében. 
 
 Mellett részletes REST API-k a lapblobok azt is megadhatja, közös hozzáférésű, tartósság és fokozott biztonságot. Ezek az előnyök részletesebben a következő bekezdésekben erről. 
 

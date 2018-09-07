@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/24/2018
+ms.date: 09/06/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: e381d2ed3c6a972d776dd31f311fcebe2e35823a
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: 1e7d3c4d5f91a74adb881840e3c5a5ac7e8f3763
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42917083"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44053552"
 ---
 # <a name="validate-azure-stack-pki-certificates"></a>Az Azure Stack PKI-tanúsítványok ellenőrzése
 
@@ -66,21 +66,20 @@ Használja ezeket a lépéseket, előkészítéséhez és az Azure Stack PKI-tan
 
 1. Telepítés **AzsReadinessChecker** PowerShell parancssorból (5.1-es vagy újabb), a következő parancsmagot:
 
-    ````PowerShell  
+    ```PowerShell  
         Install-Module Microsoft.AzureStack.ReadinessChecker -force 
-    ````
+    ```
 
 2. A tanúsítvány könyvtárstruktúrát létrehozása. Az alábbi példában módosíthatja `<c:\certificates>` , az új elérési utat a választott.
-
-    ````PowerShell  
+    ```PowerShell  
     New-Item C:\Certificates -ItemType Directory
     
-    $directories = 'ACSBlob','ACSQueue','ACSTable','ADFS','Admin Portal','ARM Admin','ARM Public','Graph','KeyVault','KeyVaultInternal','Public Portal'
+    $directories = 'ACSBlob','ACSQueue','ACSTable','ADFS','Admin Portal','ARM Admin','ARM Public','Graph','KeyVault','KeyVaultInternal','Public Portal','Admin Extension Host','Public Extension Host'
     
     $destination = 'c:\certificates'
     
     $directories | % { New-Item -Path (Join-Path $destination $PSITEM) -ItemType Directory -Force}
-    ````
+    ```
     
     > [!Note]  
     > Az AD FS- és Graph szükségesek, ha az AD FS használja, a identitáskezelő rendszerbe.
@@ -92,16 +91,15 @@ Használja ezeket a lépéseket, előkészítéséhez és az Azure Stack PKI-tan
 
 3. A PowerShell-ablakban módosítsa az értékét **RegionName** és **FQDN** az Azure Stack környezettel való megfelelő, és futtassa a következő:
 
-    ````PowerShell  
+    ```PowerShell  
     $pfxPassword = Read-Host -Prompt "Enter PFX Password" -AsSecureString 
 
     Start-AzsReadinessChecker -CertificatePath c:\certificates -pfxPassword $pfxPassword -RegionName east -FQDN azurestack.contoso.com -IdentitySystem AAD 
-
-    ````
+    ```
 
 4. Ellenőrizze, hogy a kimenet és az összes tanúsítvány adja át az összes teszt. Példa:
 
-    ````PowerShell
+    ```PowerShell  
     AzsReadinessChecker v1.1803.405.3 started
     Starting Certificate Validation
 
@@ -134,7 +132,7 @@ Használja ezeket a lépéseket, előkészítéséhez és az Azure Stack PKI-tan
     AzsReadinessChecker Report location: 
     C:\AzsReadinessChecker\AzsReadinessReport.json
     AzsReadinessChecker Completed
-    ````
+    ```
 
 ### <a name="known-issues"></a>Ismert problémák
 
@@ -144,7 +142,7 @@ Használja ezeket a lépéseket, előkészítéséhez és az Azure Stack PKI-tan
 
  - Ha a tanúsítványlánc nem sikerül, a rendszer kihagyja többi tanúsítvány.
 
-    ````PowerShell  
+    ```PowerShell  
     Testing: ACSBlob\singlewildcard.pfx
         Read PFX: OK
         Signature Algorithm: OK
@@ -165,7 +163,7 @@ Használja ezeket a lépéseket, előkészítéséhez és az Azure Stack PKI-tan
     AzsReadinessChecker Log location: C:\AzsReadinessChecker\AzsReadinessChecker.log
     AzsReadinessChecker Report location (for OEM): C:\AzsReadinessChecker\AzsReadinessChecker.log
     AzsReadinessChecker Completed
-    ````
+    ```
 
 **Feloldási**: minden egyes tanúsítvány tesztek minden készlete a részletek szakaszában az eszköz útmutatót követve.
 
@@ -175,13 +173,13 @@ Segítségével ezeket a lépéseket előkészítése, és ellenőrizze a platfo
 
 1.  Telepítés **AzsReadinessChecker** PowerShell parancssorból (5.1-es vagy újabb), a következő parancsmagot:
 
-    ````PowerShell  
+    ```PowerShell  
       Install-Module Microsoft.AzureStack.ReadinessChecker -force
-    ````
+    ```
 
 2.  Hozzon létre egy beágyazott kivonattáblát tartalmazó elérési út és a jelszót, hogy minden egyes PaaS tanúsítvány érvényességi kellene. A PowerShell-ablakban futtassa:
 
-    ```PowerShell
+    ```PowerShell  
         $PaaSCertificates = @{
         'PaaSDBCert' = @{'pfxPath' = '<Path to DBAdapter PFX>';'pfxPassword' = (ConvertTo-SecureString -String '<Password for PFX>' -AsPlainText -Force)}
         'PaaSDefaultCert' = @{'pfxPath' = '<Path to Default PFX>';'pfxPassword' = (ConvertTo-SecureString -String '<Password for PFX>' -AsPlainText -Force)}
@@ -193,7 +191,7 @@ Segítségével ezeket a lépéseket előkészítése, és ellenőrizze a platfo
 
 3.  Módosítsa az értékeket a **RegionName** és **FQDN** megfelelően az Azure Stack-környezet indítsa el az ellenőrzést. Majd futtassa ezt:
 
-    ```PowerShell
+    ```PowerShell  
     Start-AzsReadinessChecker -PaaSCertificates $PaaSCertificates -RegionName east -FQDN azurestack.contoso.com 
     ```
 4.  Ellenőrizze, hogy a kimenetet, és hogy minden tanúsítvány adja át az összes teszt.

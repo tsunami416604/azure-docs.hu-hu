@@ -2,7 +2,7 @@
 title: Mi egy alapvető védelmet az Azure Active Directory feltételes hozzáférés? – előzetes verzió |} A Microsoft Docs
 description: Ismerje meg, hogy alapvető védelmet biztosítja, hogy legalább engedélyezve van az Azure Active Directory-környezetet a biztonsági alapkonfiguráció szintjét.
 services: active-directory
-keywords: feltételes hozzáférés az alkalmazásokhoz, az Azure AD feltételes hozzáférés, biztonságos hozzáférés a vállalati erőforrásokhoz, a feltételes hozzáférési szabályzatok
+keywords: feltételes hozzáférés az alkalmazásokhoz, feltételes hozzáférés az Azure AD-vel, biztonságos hozzáférés a vállalati erőforrásokhoz, feltételes hozzáférési szabályzatok
 documentationcenter: ''
 author: MarkusVi
 manager: mtillman
@@ -17,12 +17,12 @@ ms.workload: identity
 ms.date: 08/08/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 856673d2a5465f9646172a1436ed75c0d73692cb
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 57fef112186834ead76f6223e32cb358e4d6d053
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40003172"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44024073"
 ---
 # <a name="what-is-baseline-protection-preview"></a>Mi az alapvető védelmet (előzetes verzió)?  
 
@@ -51,7 +51,7 @@ Kiemelt jogosultságú fiókok hozzáféréssel rendelkező felhasználó ugyano
 
 ![Azure Active Directory](./media/baseline-protection/01.png)
 
-Ez a alapvető házirend biztosít arra, hogy felhasználók és csoportok kizárása. Előfordulhat, hogy szeretne zárni egy * [válságkezelési hozzáférés rendszergazdai fiók](../users-groups-roles/directory-emergency-access.md) * , győződjön meg arról, hogy nem záródik ki a bérlő.
+Ez a alapvető házirend biztosít arra, hogy felhasználók és csoportok kizárása. Előfordulhat, hogy szeretne zárni egy *[válságkezelési hozzáférés rendszergazdai fiók](../users-groups-roles/directory-emergency-access.md)* , győződjön meg arról, hogy nem záródik ki a bérlő.
 
 
 ## <a name="enable-a-baseline-policy"></a>Egy alapkonfiguráció házirend engedélyezése 
@@ -86,7 +86,7 @@ Egyéni feltételes hozzáférési szabályzatok kezelése egy prémium szintű 
 
 A referenciakonfiguráció-házirendben telepítésben a címtárbeli szerepkörök a jogosultsági Azure AD-szerepkörök. 
 
-Ha a parancsfájlok privilegizált használt fiókok, kell cserélni, azokat a [Felügyeltszolgáltatás-identitás (MSI)](../managed-service-identity/overview.md) vagy [tanúsítványokkal rendelkező egyszerű szolgáltatás](../../azure-resource-manager/resource-group-authenticate-service-principal.md). Ideiglenes Áthidaló megoldásként a referenciakonfiguráció házirendből zárhat ki egyedi felhasználói fiókokhoz. 
+Ha a parancsfájlok privilegizált használt fiókok, kell cserélni, azokat a [Felügyeltszolgáltatás-identitás (MSI)](../managed-identities-azure-resources/overview.md) vagy [tanúsítványokkal rendelkező egyszerű szolgáltatás](../../azure-resource-manager/resource-group-authenticate-service-principal.md). Ideiglenes Áthidaló megoldásként a referenciakonfiguráció házirendből zárhat ki egyedi felhasználói fiókokhoz. 
 
 Alapkonfiguráció házirendek vonatkoznak az örökölt hitelesítési folyamatok például a POP, IMAP, régebbi Office asztali ügyfelet. 
 

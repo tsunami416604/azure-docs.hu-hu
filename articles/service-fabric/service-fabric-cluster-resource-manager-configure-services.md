@@ -1,6 +1,6 @@
 ---
-title: Metrikák és elhelyezési beállításainak megadása az Azure mikroszolgáltatások |} Microsoft Docs
-description: A Service Fabric-szolgáltatás leíró metrikákat, placement Constraints korlátozásokat és egyéb elhelyezési házirendeket megadásával.
+title: Metrikák és elhelyezési beállításainak megadása az Azure Service Fabricben |} A Microsoft Docs
+description: Ismerje meg, hogyan ismertetik a Service Fabric-szolgáltatás metrikákat, elhelyezési korlátozások és más elhelyezési házirendeket megadásával.
 services: service-fabric
 documentationcenter: .net
 author: masnider
@@ -14,37 +14,37 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 16e19a02bf12e30e81eb1743fc637bce435df914
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: ea781b5dbbf09c0a21fbcf781ae129295d02dbad
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34210579"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44054791"
 ---
-# <a name="configuring-cluster-resource-manager-settings-for-service-fabric-services"></a>A Service Fabric-szolgáltatások fürt resource manager beállításainak konfigurálása
-A Service Fabric fürt erőforrás-kezelő lehetővé teszi, hogy a minden részletre kiterjedő szabályozhatják a minden személy nevű szolgáltatás meghatározó szabályok. Minden elnevezett szolgáltatás hogyan azt kell kiosztani a fürt szabályokat adhat meg. Minden elnevezett szolgáltatás is meghatározhatók szeretnének metrikák készletét a jelentéshez, beleértve a fontos hogyan vannak az adott szolgáltatáshoz. A három különböző feladatok szolgáltatások konfigurálása megszakad:
+# <a name="configuring-cluster-resource-manager-settings-for-service-fabric-services"></a>Fürt resource manager beállításainak megadása a Service Fabric-szolgáltatások
+A Service Fabric-fürt Resource Manager lehetővé teszi, hogy a szükséges megtennie minden vállalkozásnak nevű szolgáltatás meghatározó szabályok részletesen szabályozhatja. Minden elnevezett szolgáltatás hogyan azt kell kiosztani a fürt szabályokat adhat meg. Minden elnevezett szolgáltatás is meghatározhat jelentésre, beleértve az mennyire fontos vannak az adott szolgáltatásra szeretné metrikák készletét. Három különböző feladatokra szolgáltatások konfigurálása felszámolja:
 
-1. Egy elhelyezési korlátozás konfigurálása
+1. Elhelyezési korlátozások konfigurálása
 2. Metrikák konfigurálása
-3. Speciális elhelyezési házirendeket és az egyéb szabályokkal (kevésbé közös) konfigurálása
+3. Speciális elhelyezési házirendeket és az egyéb szabályokkal (kevésbé gyakori) konfigurálása
 
-## <a name="placement-constraints"></a>Egy elhelyezési korlátozás
-Egy elhelyezési korlátozás segítségével szabályozhatja, hogy mely csomópontok a fürtben a szolgáltatás ténylegesen futtatható. Általában egy adott nevű szolgáltatáspéldány vagy egy adott típusú korlátozott futtatásához egy adott típusú csomópont összes szolgáltatás. Egy elhelyezési korlátozás is kiterjeszthető. Minden csomópont típusonkénti tulajdonságok a kulcstulajdonságokat határozza meg, és válassza ki azokat a-korlátozásokkal rendelkező szolgáltatások létrehozásakor. A szolgáltatás egy elhelyezési korlátozás futása közben is módosíthatja. Ez lehetővé teszi, hogy a fürt vagy a szolgáltatás követelményeinek változásait. Egy adott csomópont a Tulajdonságok dinamikusan is frissíthetők a fürt. Egy elhelyezési korlátozás és konfigurálásukról további információt található [Ez a cikk](service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints)
+## <a name="placement-constraints"></a>Elhelyezési korlátozások
+Elhelyezési korlátozások segítségével szabályozhatja, hogy mely csomópontok a fürtben a szolgáltatás ténylegesen futhatnak. Általában egy adott nevű szolgáltatáspéldány vagy egy adott típusú korlátozott futtathatók csomópontot egy adott típusú összes szolgáltatást. Elhelyezési korlátozások bővíthető. Minden csomópont-típusonként tulajdonságai készletét határozza meg, és válassza ki azokat a megkötésekkel rendelkező szolgáltatások létrehozásakor. Egy szolgáltatás-elhelyezési megkötések futás közben is módosíthatja. Ez lehetővé teszi, hogy reagálni az igények változásaira, a fürt vagy a szolgáltatás követelményeinek. Egy adott csomópont a tulajdonságai dinamikusan is frissíthetők a fürtben. Az elhelyezési korlátozások és a konfigurálásukról további információt található [Ez a cikk](service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints)
 
 ## <a name="metrics"></a>Mérőszámok
-Adatok gyűjtése le egy adott névvel ellátott szolgáltatást igénylő erőforrások készletét. A szolgáltatás konfigurációja mennyi erőforrás minden egyes állapot-nyilvántartó replika vagy állapotmentes szolgáltatáspéldány használ fel, alapértelmezés szerint tartalmazza. Metrikák is, amely meghatározza, hogy mennyire fontos, hogy a metrika terheléselosztás van az adott szolgáltatáshoz, esetben mellékhatásokkal szükséges súlyt.
+Metrikák olyan erőforrásokat, amelyek egy adott névvel ellátott szolgáltatást kell. A szolgáltatás konfigurációja mennyi erőforrás minden egyes állapot-nyilvántartó replika vagy adott állapot nélküli szolgáltatáspéldány használ fel, alapértelmezés szerint tartalmaz. Metrikák is a súlyozás, amely jelzi, hogy mennyire fontos, hogy a metrika terheléselosztási van erre a szolgáltatásra, esetben kompromisszumokra lenne szükség.
 
-## <a name="advanced-placement-rules"></a>Speciális elhelyezési szabályokat
-Nincsenek más típusú elhelyezési szabályokat, amelyek hasznosak lehetnek a kisebb gyakori forgatókönyvet. Néhány példa:
-- Földrajzilag elosztott fürtöket segítenek megkötések
-- Egyes alkalmazás-architektúra
+## <a name="advanced-placement-rules"></a>Speciális elhelyezési szabályok
+Elhelyezési szabályok, amelyek hasznosak lehetnek a kevésbé gyakori helyzetek más típusai is vannak. Néhány példa:
+- Korlátok, amelyek segítik a földrajzilag elosztott fürtöket
+- Bizonyos architektúrák
 
-Más elhelyezési szabályokat korrelációk és házirendek úgy vannak konfigurálva.
+Más elhelyezési szabályok összefüggéseket vagy a szabályzatok vannak konfigurálva.
 
 ## <a name="next-steps"></a>További lépések
-- Adatok gyűjtése le hogyan kezeli a Service Fabric fürt erőforrás-kezelő a használati és a fürt teljes kapacitását. A metrikák és konfigurálásuk módját kapcsolatos további tudnivalókért tekintse meg [Ez a cikk](service-fabric-cluster-resource-manager-metrics.md)
-- Kapcsolat a szolgáltatások a állíthatja be az egyik mód. Nincs közös, de ha esetleg szükség lenne rá megismerheti az [Itt](service-fabric-cluster-resource-manager-advanced-placement-rules-affinity.md)
-- Nincsenek sok különböző elhelyezési szabályokat, amelyek a szolgáltatás nem tudja kezelni a további helyzeteket is konfigurálhatja. Azt is megtudhatja, azokat a különböző elhelyezési házirendeket kapcsolatos [Itt](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md)
-- Indítsa el az elejétől és [Bevezetés a Service Fabric fürt Resource Manager](service-fabric-cluster-resource-manager-introduction.md)
-- Hogyan kezeli a fürt erőforrás-kezelő, és elosztja a terhelést a fürt kapcsolatos további tudnivalókért tekintse meg a cikk a [terheléselosztás](service-fabric-cluster-resource-manager-balancing.md)
-- A fürt erőforrás-kezelő rendelkezik a fürt leíró számos lehetőséget. További információkért róluk, tekintse meg a cikk a [leíró a Service Fabric-fürt](service-fabric-cluster-resource-manager-cluster-description.md)
+- Metrikák, hogyan kezeli a Service Fabric-fürt erőforrás-kezelő a használat és a kapacitás a fürtben. Metrikák és a konfigurálásukról kapcsolatos további információkért tekintse meg [Ez a cikk](service-fabric-cluster-resource-manager-metrics.md)
+- Kapcsolat egy módot konfigurálhatja a szolgáltatásokhoz. Nem gyakori, de ha szüksége lesz rá talál további információt, [Itt](service-fabric-cluster-resource-manager-advanced-placement-rules-affinity.md)
+- Nincsenek számos különböző elhelyezési szabályokat, a szolgáltatás további forgatókönyvek kezelése konfigurálható. Azt is megismerheti ezeket különböző elhelyezési házirendeket [Itt](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md)
+- Elölről kezdődik, és [, a Service Fabric fürterőforrás-kezelő bemutatása](service-fabric-cluster-resource-manager-introduction.md)
+- Ismerje meg hogyan a fürterőforrás-kezelő felügyeli, és elosztja a terhelést a fürtben, tekintse meg a cikk a [terheléselosztás](service-fabric-cluster-resource-manager-balancing.md)
+- A fürterőforrás-kezelő leíró a fürt számos lehetőség áll. A velük kapcsolatos további információért tekintse meg a cikk a [leíró, Service Fabric-fürt](service-fabric-cluster-resource-manager-cluster-description.md)

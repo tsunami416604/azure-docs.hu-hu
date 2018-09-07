@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/26/2018
 ms.author: elioda
-ms.openlocfilehash: 7704e08246798108aa251c19a4ab0c3baaaad570
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: f6959e0fec77ff046e4db86bad30502259775a49
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42059477"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44022839"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>IoT Hub lekérdezési nyelv az eszköz és a modul twins, feladatokkal és üzenet-útválasztása
 
@@ -165,7 +165,7 @@ A lekérdezés: ikereszközök lekérdezése az ikermodulokkal hasonlít, de egy
 SELECT * FROM devices.modules
 ```
 
-Hogy az eszközök és devices.modules gyűjtemények közötti illesztési nem teszik lehetővé. Ha szeretne lekérdezés ikermodulokkal eszközök között, ezt megteheti címkék alapján. Ez a lekérdezés összes eszközön vizsgálati állapotú összes ikermodulokkal adja vissza:
+Hogy az eszközök és devices.modules gyűjtemények közötti illesztési nem teszik lehetővé. Ha szeretne lekérdezés ikermodulokkal eszközök között, ezt megteheti a címkék alapján. Ez a lekérdezés összes eszközön vizsgálati állapotú összes ikermodulokkal adja vissza:
 
 ```sql
 Select * from devices.modules where properties.reported.status = 'scanning'

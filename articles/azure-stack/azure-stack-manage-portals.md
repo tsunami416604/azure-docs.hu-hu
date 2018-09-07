@@ -1,6 +1,6 @@
 ---
-title: Azure-készletben a felügyeleti portál használatával |} Microsoft Docs
-description: Azure verem kezelőként útmutató a felügyeleti portálon.
+title: A felügyeleti portál használatával az Azure Stackben |} A Microsoft Docs
+description: Az Azure Stack operátorait szerint megtudhatja, hogyan használhatja a felügyeleti portált.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -12,77 +12,77 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/05/2018
+ms.date: 09/05/2018
 ms.author: mabrigg
-ms.openlocfilehash: 673b1144fe927e0619f5f8638d7e8ce9a181f48c
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: cea59d061dadfa3e10330cbce7b6005a286524cc
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35248520"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44024166"
 ---
-# <a name="using-the-administrator-portal-in-azure-stack"></a>Azure-készletben a felügyeleti portál használatával
+# <a name="using-the-administrator-portal-in-azure-stack"></a>A felügyeleti portál használatával az Azure Stackben
 
-*A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
+*A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
 
-Nincsenek a két portál Azure verem; a rendszergazda és a felhasználói portálhoz (más néven a *bérlői* portal.) Azure verem kezelőként használhatja az adminisztrációs portálhoz a napi szintű felügyeletéért és Azure verem műveletekhez.
+Nincsenek két portált az Azure Stackben; a felügyeleti portál és a felhasználói portál (más néven a *bérlői* portálon.) A napi szintű felügyeletéért és műveletek az Azure Stack az Azure Stack operátorait szerint használhatja a felügyeleti portálon.
 
-## <a name="access-the-administrator-portal"></a>A felügyeleti portál eléréséhez
+## <a name="access-the-administrator-portal"></a>A felügyeleti portál elérése
 
-A fejlesztőkörnyezet kit kell először győződjön meg arról, hogy [a development kit állomáshoz](azure-stack-connect-azure-stack.md) távoli asztali kapcsolat vagy virtuális magánhálózati (VPN) keresztül.
+A fejlesztőkörnyezet kit kell először győződjön meg arról, hogy [development kit állomás csatlakozni](azure-stack-connect-azure-stack.md) távoli asztali kapcsolaton keresztül, vagy virtuális magánhálózati (VPN) keresztül.
 
-A felügyeleti portál eléréséhez keresse meg a portál URL-címet, és jelentkezzen be Azure verem operátor hitelesítő adataival. Egy integrált rendszer a portál URL-cím változó alapján a régió nevét és külső teljesen minősített tartományneve (FQDN) az Azure Alkalmazásveremben üzembe.
+A felügyeleti portál eléréséhez keresse meg a portál URL-címet, és jelentkezzen be az Azure Stack operátorait hitelesítő adataival. Az integrált rendszer a portál URL-cím változik alapul a régió neve és a külső teljesen minősített tartománynevét (FQDN) az Azure Stack üzembe helyezés.
 
 | Környezet | Felügyeleti portál URL-címe |   
 | -- | -- | 
-| Szoftverfejlesztői készlet| https://adminportal.local.azurestack.external  |
-| Integrált rendszerek | https://adminportal.&lt; *régió*&gt;.&lt; *Teljesen minősített Tartományneve*&gt; | 
+| Fejlesztői készlete| https://adminportal.local.azurestack.external  |
+| Integrált rendszerek | https://adminportal.&lt; *régió*&gt;.&lt; *Teljes Tartományneve*&gt; | 
 | | |
 
- ![A felügyeleti portálon](media/azure-stack-manage-portals/image1.png)
+ ![Az adminisztrátori portál](media/azure-stack-manage-portals/admin-portal.png)
 
-A felügyeleti portálon műveleteket végezheti el, mint:
+A felügyeleti portálon lehetőség van például:
 
-* kezelheti az infrastruktúra-(beleértve a helyrendszer állapotát, a frissítések, a kapacitás, a stb.)
+* Kezelheti az infrastruktúra-(beleértve a rendszer állapotát, a frissítések, a kapacitás, stb.)
 * A Marketplace feltöltése
-* a felhasználók számára előfizetés létrehozása
-* tervek és ajánlatok létrehozása
+* A felhasználók számára előfizetés létrehozása
+* Csomag és ajánlat létrehozása
 
-A **gyors üzembe helyezési útmutató** csempe hivatkozások a leggyakoribb feladatokat tartozó online dokumentációt.
+A **a rövid útmutató** csempe hivatkozások a leggyakoribb feladatokat az online dokumentációt.
 
-Bár egy üzemeltetőt erőforrások hozhat létre például a virtuális gépek, virtuális hálózatok és a felügyeleti portál storage-fiók, akkor [a felhasználói portálra történő bejelentkezéshez](user/azure-stack-use-portal.md) és erőforrások.
+Bár az operátornak rendelkezik erőforrásokat hozhat létre például a virtuális gépek, virtuális hálózatok és tárfiókok a felügyeleti portálon, akkor [jelentkezzen be a felhasználói portál](user/azure-stack-use-portal.md) hozhat létre, és tesztelje az erőforrásokat.
 
 >[!NOTE]
->A **hozzon létre egy virtuális gépet** hivatkozás a gyors üzembe helyezési oktatóanyag csempén rendelkezik, akkor hozzon létre egy virtuális gépet a felügyeleti portálon, de ez csak a Azure verem ellenőrzése után először telepítették szolgál.
+>A **hozzon létre egy virtuális gépet** csatolása a rövid útmutató csempe rendelkezik, hozzon létre egy virtuális gépet a felügyeleti portálon, de ez csak a ellenőrzése az Azure Stack, először üzembe helyezését követően szolgál.
 
-## <a name="understand-subscription-behavior"></a>Előfizetés viselkedésének megértése
+## <a name="understand-subscription-behavior"></a>Előfizetés a viselkedés értelmezése
 
-Nincs elérhető a felügyeleti portál csak egyetlen előfizetéssel. Ez az előfizetés a *alapértelmezett szolgáltató előfizetés*. Nem minden más előfizetéseket, és nem használja őket a felügyeleti portálon.
+Nincs elérhető legyen a rendszergazdai portálon csak egyetlen előfizetéssel. Ez az előfizetés a *szolgáltatói előfizetés alapértelmezett*. Nem lehet bármely más előfizetéseket, és használja azokat a felügyeleti portálon.
 
-Egy Azure verem operátorként is hozzáadhat előfizetések a felhasználók számára (beleértve a saját kezűleg) felügyeleti portálján. (Önt is), a felhasználók elérhetik és használja ezeket az előfizetéseket a **felhasználói** portálon. A felhasználói portál azonban nem biztosít érheti el a felügyeleti vagy működési funkcióiról az adminisztrációs portálhoz.
+Az Azure Stack operátorait szerint adhat hozzá az előfizetések (beleértve a saját maga) a felhasználók számára a felügyeleti portálról. Felhasználókat (beleértve a saját maga) eléri és használja ezeket az előfizetéseket a **felhasználói** portálon. A felhasználói portál azonban nem biztosít hozzáférést a felügyeleti portál felügyeleti vagy működési képességeit.
 
-A rendszergazda és a felhasználói portálon külön példányokban Azure Resource Manager által támogatott. Ez az erőforrás-kezelő elkülönítés miatt előfizetések nem kereszt-portálok. Például, egy Azure verem operátort, mint a bejelentkezést a felhasználói portálra, akkor nem tud hozzáférni a *alapértelmezett szolgáltató előfizetés*. Bár nem fér bármely felügyeleti funkciókkal, létrehozhat saját előfizetések elérhető nyilvános ajánlatokat. Mindaddig, amíg a felhasználói portálra van bejelentkezve a felhasználó egy bérlői felhasználói minősül.
+A rendszergazda és a felhasználói portált különálló példány az Azure Resource Manager élvezik. Az erőforrás-kezelő elkülönítés miatt előfizetések nem lépi túl portálokat. Például, mint az Azure Stack operátorait jelentkezik be a felhasználói portálra, ha nem fér hozzá a *szolgáltatói előfizetés alapértelmezett*. Bár nem kell minden olyan felügyeleti funkciók elérését, létrehozhat saját előfizetések elérhető nyilvános ajánlatokat. Mindaddig, amíg a felhasználói portálra van bejelentkezve, egy bérlő felhasználói minősülnek.
 
   >[!NOTE]
-  >A development kit környezetben egy felhasználó tagja a bérlő könyvtárába az Azure-verem operátor szükséges, ha azok nem blokkolva vannak a felügyeleti portálra való bejelentkezéskor. Azonban ezek egyikét sem tudja használni a felügyeleti funkciókat. Emellett a felügyeleti portálon nem adhat előfizetések vagy hozzáférést kínál, amelyek számára elérhető a felhasználói portálon.
+  >Development kit a környezetben ha egy felhasználó tartozik, az Azure Stack-operátorokról bérlői könyvtárába, nincs letiltva a jelentkezik be a felügyeleti portálon. Azonban nem tudják elérni a felügyeleti funkciók bármelyikét. Emellett a felügyeleti portálról, azok nem vehető fel előfizetések vagy hozzáférést kínál, amelyek számára elérhető a felhasználói portálon.
 
 ## <a name="administrator-portal-tips"></a>Felügyeleti portál tippek
 
-### <a name="customize-the-dashboard"></a>Testre szabhatja az irányítópultot
+### <a name="customize-the-dashboard"></a>Az irányítópult testreszabásával
 
-Az irányítópult tartalmaz egy alapértelmezett csempék. Kiválaszthatja **Szerkesztés irányítópult** módosíthatja az alapértelmezett irányítópultot, vagy válasszon **új irányítópult** egyéni irányítópult hozzáadása. Csempék könnyen irányítópult adhat hozzá. Kiválaszthatja például **új**, kattintson a jobb gombbal **kínál + tervek**, majd válassza ki **rögzítés az irányítópulton**.
+Az irányítópult tartalmaz az alapértelmezett csempék jelennek meg. Választhat **irányítópult szerkesztése** módosítsa az alapértelmezett irányítópult, vagy válasszon **új irányítópult** egyéni irányítópult hozzáadása. Egyszerűen hozzáadhatja csempét az irányítópulton. Kiválaszthatja például **új**, kattintson a jobb gombbal **ajánlatok és csomagok**, majd válassza ki **rögzítés az irányítópulton**.
 
-### <a name="quick-access-to-online-documentation"></a>Online dokumentáció gyors eléréséhez
+### <a name="quick-access-to-online-documentation"></a>Online dokumentáció gyors elérése
 
-Az Azure-verem operátor dokumentáció eléréséhez a súgóban és ikon (kérdőjel) támogatja a felügyeleti portál jobb felső sarkában. A kurzor az ikonra, majd válassza ki **súgó + támogatás**.
+Hozzáférhet az Azure Stack operátori dokumentációja, használja a Súgó és ikonra (kérdőjel) támogatja a felügyeleti portál jobb felső sarkában. Helyezze a kurzort a ikonra, és válassza ki **súgó + támogatás**.
 
-### <a name="quick-access-to-help-and-support"></a>Súgó és támogatás gyorsan elérheti őket
+### <a name="quick-access-to-help-and-support"></a>Súgó és támogatás gyors elérése
 
-Ha meg a Súgó és támogatás ikon (kérdőjel) a felügyeleti portál jobb felső sarkában, majd válassza ki és **új támogatja a kérelem**, egyet az alábbi eredményeket fordulhat elő:
+Ha a felügyeleti portál jobb felső sarkában válassza ki a Súgó és támogatás ikonra (kérdőjel), és válassza **új támogatási kérelem**, egyet az alábbi eredményeket fordulhat elő:
 
-- Ha egy integrált rendszer használata esetén ez a művelet megnyitja egy helyet, ahol közvetlenül megnyithatja a támogatási jegy a Microsoft ügyfél támogatja a szolgáltatások (CSS). Tekintse meg [Honnan szerezhetők be támogatási](azure-stack-manage-basics.md#where-to-get-support) megérteni, hogy mikor kell lépjen a Microsoft támogatási szolgálatához vagy az eredeti hardvergyártó (OEM) hardver gyártójával támogatási keresztül.
-- A csomag használata, ezzel megnyílik a verem Azure fórumok hely közvetlenül. Ezek a fórumok rendszeresen figyeli. A csomag egy kiértékelési környezete, mert nincs Microsoft CSS kínált hivatalos támogatás.
+- Integrált rendszer használja, ha ez a művelet megnyitja a hely, ahol közvetlenül megnyithatja egy támogatási jegyet a Microsoft ügyfél támogatási szolgálat (CSS). Tekintse meg [kérhet támogatást Where](azure-stack-manage-basics.md#where-to-get-support) megértéséhez, hogy mikor kell lépjen a Microsoft támogatási vagy a számítógépgyártó (OEM) hardver szállítójával támogatási keresztül.
+- Ha a csomag használata esetén ez a művelet közvetlenül megnyitja az Azure Stack-fórumok. Ezek a fórumok rendszeresen figyeli a program. Mivel a csomag egy kiértékelési környezete, rendszer nem hivatalos támogatja a Microsoft CSS keresztül érhető el.
 
 ## <a name="next-steps"></a>További lépések
 
-- [Azure-készletben régió kezelése](azure-stack-region-management.md)
+- [Régiók kezelése az Azure Stackben](azure-stack-region-management.md)

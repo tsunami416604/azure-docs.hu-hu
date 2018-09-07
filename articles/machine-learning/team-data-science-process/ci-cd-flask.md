@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/22/2018
 ms.author: jainr
-ms.openlocfilehash: 4d95fc25ed6f2f2efec8313e5b208b3cccbb619f
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 6de1832dde1764b2655d4c34643d6a026e198f64
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38968791"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44052224"
 ---
 # <a name="devops-for-artificial-intelligence-ai-applications-creating-continuous-integration-pipeline-on-azure-using-docker-and-kubernetes"></a>Mesterséges intelligencia (AI) alkalmazások fejlesztési és üzemeltetési útmutatónk: folyamatos integrációs folyamat létrehozása az Azure-ban a Docker és a Kubernetes használatával
 AI-alkalmazások a munkahelyi, machine learning-modellek és az alkalmazás létrehozása és a végfelhasználók számára való használata adatokhoz hozzáférést biztosító alkalmazás-fejlesztők az Adatszakértők gyakran két adatfolyamot vannak. Ebben a cikkben bemutatjuk, hogyan valósíthat meg egy folyamatos integrációs (CI) / folyamatos kézbesítési (CD) folyamat AI-alkalmazáshoz. AI-alkalmazások beépítve imagenet machine learning (gépi tanulás) modell alkalmazáskód kombinációját. Ebben a cikkben azt is pretrained modell beolvasása a saját Azure blob storage-fiók, annak oka az AWS S3 szintű fiók is lehet. A cikk egy egyszerű python flask-webalkalmazás használjuk.
@@ -65,7 +65,7 @@ A folyamat architektúra az alábbi táblázat a.
 11. DNS-kiszolgáló a terheléselosztó továbbítja, és visszaküldi a választ felhasználói.
 
 ## <a name="next-steps"></a>További lépések
-* Tekintse meg a [oktatóanyag]((https://github.com/Azure/DevOps-For-AI-Apps/blob/master/Tutorial.md)) kövesse a részleteket, és a saját CI/CD-folyamat az alkalmazás végrehajtása.
+* Tekintse meg a [oktatóanyag](https://github.com/Azure/DevOps-For-AI-Apps/blob/master/Tutorial.md) kövesse a részleteket, és a saját CI/CD-folyamat az alkalmazás végrehajtása.
 
 ## <a name="references"></a>Referencia
 * [Csoportos adatelemzési folyamat (TDSP)](https://aka.ms/tdsp)

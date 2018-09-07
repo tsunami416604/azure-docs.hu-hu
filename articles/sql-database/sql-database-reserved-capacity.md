@@ -8,18 +8,18 @@ manager: craigg
 ms.service: sql-database
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/08/2018
+ms.date: 09/05/2018
 ms.author: carlrab
-ms.openlocfilehash: fcb7f2c1bb3e1653b9f8112abc0effaddc45fa54
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: e66bc77894b417b80d51b9b7e87ef61a654b3b2e
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43306469"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44054495"
 ---
 # <a name="prepay-for-sql-database-compute-resources-with-azure-sql-database-reserved-capacity"></a>Fizessen elő az SQL-adatbázis számítási erőforrásokat, hogy az Azure SQL Database szolgáltatás számára fenntartott kapacitás
 
-Pénzt takaríthat meg az Azure SQL Database az Azure SQL Database számítási erőforrások a használatalapú fizetéshez képest előre. Azure SQL Database szolgáltatás számára fenntartott kapacitás esetén módosítani egy előzetes kötelezettségvállalás az SQL Database egy vagy három évig, jelentős árkedvezményeket lekérni a számítási költségek. SQL Database szolgáltatás számára fenntartott kapacitás vásárlása, meg kell adnia az Azure-régió, a központi telepítési típus, a szolgáltatás és a kifejezés. 
+Pénzt takaríthat meg az Azure SQL Database az Azure SQL Database számítási erőforrások a használatalapú fizetéshez képest előre. Azure SQL Database szolgáltatás számára fenntartott kapacitás esetén módosítani egy előzetes kötelezettségvállalás az SQL Database egy vagy három évig, jelentős árkedvezményeket lekérni a számítási költségek. SQL Database szolgáltatás számára fenntartott kapacitás vásárlása, meg kell adnia az Azure-régió, a központi telepítési típus, a teljesítményszint és a kifejezés. 
 
 Nem kell a Foglalás hozzárendelése az SQL Database-példányokat. SQL Database-példány, amelyeken már fut, vagy azokat, amelyeket újonnan telepített, automatikusan megkapja a juttatás megfelelő. A Foglalás megvásárlásával Ön előre fizetés a számítási költségek a SQL Database-példányok esetében egy vagy három évig. Amint vásárol egy foglalást, a számítási díjakat, amelyek megfelelnek a Foglalás attribútumok már nem számoljuk el a használatalapú-as-, SQL Database díjszabása nyissa meg. A foglalás nem fedi le szoftvereket, hálózati vagy tárolási díjak az SQL Database-példányhoz társított. A Foglalás időtartamára végén a számlázási ellátás lejár, és az SQL-adatbázisok számlázása a használatalapú – mint-akkor lépjen díj ellenében. Foglalások nem automatikus megújítási. Díjszabási információkért tekintse meg a [SQL Database szolgáltatás számára fenntartott kapacitás ajánlat](https://azure.microsoft.com/pricing/details/sql-database/managed/).
 
@@ -52,7 +52,7 @@ Például tegyük fel, hogy futtatja egy általános célú, Gen5 – 16 virtuá
     |Hatókör       |A virtuális mag foglalás hatóköre egy előfizetés vagy több előfizetés (megosztott hatókör) is foglalkozik. Ha ki: <ul><li>Egyetlen előfizetés – a virtuális mag foglalási kedvezményt alkalmazza a rendszer SQL Database-példány ebben az előfizetésben. </li><li>Közös – a virtuális mag van alkalmazza a foglalási kedvezményt olyan előfizetéseket, a számlázási környezetben futó SQL Database-példányok. A vállalati ügyfelek a megosztott hatókörrel a regisztráció és előfizetéseken belül a regisztráció (kivéve a fejlesztési és tesztelési előfizetések) magában foglalja. Használatalapú fizetéses ügyfelek számára a megosztott hatókörrel a fiók rendszergazdája által létrehozott összes utólagos elszámolású előfizetések.</li></ul>|
     |Régió      |Az Azure-régióban, az SQL Database által fenntartott kapacitás foglalás.|    
     |Központi telepítés típusa|Az SQL központi telepítési típus, amely szeretné megvásárolni a foglalást.|
-    |Szolgáltatási szint|Az SQL Database-példány szolgáltatási szintjei.
+    |Teljesítményszint|Az SQL Database-példányok teljesítményszint.
     |Időtartam        |Egy vagy három év.|
     |Mennyiség    |Az SQL Database megvásárolt példányainak számát fenntartott kapacitás foglalás. A mennyiség a futó kérheti le a számlázási kedvezményt SQL Database-példányok számát. Például ha 10 SQL Database-példányt futtat az USA keleti régiójában, majd kell megadni mennyiség 10 az összes futó gépek juttatása maximalizálása érdekében. |
 
@@ -60,7 +60,14 @@ Például tegyük fel, hogy futtatja egy általános célú, Gen5 – 16 virtuá
 6. Válassza a **Beszerzés** lehetőséget.
 7. Válassza ki **megtekintése a Foglalás** a vásárlás állapotának megjelenítéséhez.
 
-## <a name="next-steps"></a>További lépések 
+## <a name="cancellations-and-exchanges"></a>Lemondás és cseréje
+
+Ha megszakítja az SQL Database szolgáltatás számára fenntartott kapacitás foglalás, előfordulhat, hogy a 12 %-os korai lemondási díj levonása után. A befizetett a legalacsonyabb ár a vételár vagy a jelenlegi árát a Foglalás alapulnak. A befizetett $ 50 000 / év korlátozódnak. A visszatérítés kap a fennmaradó időarányos egyenleget a 12 %-os korai lemondási díj. Visszavonást, nyissa meg az Azure Portalon, és válassza a Foglalás **visszatérítés** támogatási kérelmet szeretne létrehozni.
+
+Az SQL Database szolgáltatás számára fenntartott kapacitás foglalás váltson egy másik régióba, központi telepítési típus, a teljesítményszint vagy kifejezés kell, ha egy másik, amely egyenlő vagy nagyobb értékű foglalás tudjon cserélni. Az új foglalás az időszak kezdő dátum nem jelenik meg a kicserélt foglalási. Az 1 vagy 3 éves távon elindítja az új Foglalás létrehozásakor. Egy exchange kérést, nyissa meg a foglalást az Azure Portalon, és válassza **Exchange** támogatási kérelmet szeretne létrehozni.
+
+## <a name="next-steps"></a>További lépések
+
 A virtuális mag foglalási kedvezményt automatikusan alkalmazni, amelyek megfelelnek az SQL Database szolgáltatás számára fenntartott kapacitás foglalás hatóköre és attribútumok az SQL Database-példányok száma. Frissítheti a keresztül az SQL Database szolgáltatás számára fenntartott kapacitás foglalási hatókört [az Azure portal](https://portal.azure.com), PowerShell, CLI és az API-n keresztül. 
 
 Megtudhatja, hogyan kezelheti az SQL Database szolgáltatás számára fenntartott kapacitás foglalás, lásd: [felügyelete az SQL Database szolgáltatás számára fenntartott kapacitás](../billing/billing-manage-reserved-vm-instance.md).
@@ -68,7 +75,7 @@ Megtudhatja, hogyan kezelheti az SQL Database szolgáltatás számára fenntarto
 Azure-foglalások kapcsolatos további információkért tekintse meg a következő cikkeket:
 
 - [Mik az Azure-foglalásokat?](../billing/billing-save-compute-costs-reservations.md)
-- [Az Azure-fenntartások kezelése](../billing/billing-manage-reserved-vm-instance.md)
+- [Az Azure Reservations kezelése](../billing/billing-manage-reserved-vm-instance.md)
 - [Megismerheti a kedvezményes Azure-foglalások](../billing/billing-understand-reservation-charges.md)
 - [A használatalapú fizetéses előfizetést foglalás használati adatai](../billing/billing-understand-reserved-instance-usage.md)
 - [A nagyvállalati beléptetés foglalás használati adatai](../billing/billing-understand-reserved-instance-usage-ea.md)

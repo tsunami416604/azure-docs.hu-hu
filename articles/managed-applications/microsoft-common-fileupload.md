@@ -1,6 +1,6 @@
 ---
-title: Az Azure FileUpload felhasználói felületi elem |} Microsoft Docs
-description: Azure-portálon a Microsoft.Common.FileUpload felhasználói felületi elem ismerteti.
+title: Az Azure FileUpload felhasználói felületi elemben |} A Microsoft Docs
+description: Az Azure portal a Microsoft.Common.FileUpload felhasználói felületi elem ismerteti.
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -11,17 +11,17 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/27/2018
+ms.date: 09/05/2018
 ms.author: tomfitz
-ms.openlocfilehash: c41ff548ed4020ab85d15f610503a3b1592910a5
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 2886dbafe6bf20718f4e3cd2976764fc432dbb04
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37059889"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44021752"
 ---
-# <a name="microsoftcommonfileupload-ui-element"></a>Microsoft.Common.FileUpload felhasználói felületi elem
-Lehetővé teszi a felhasználóknak adjon meg egy vagy több fájl feltöltése vezérlő.
+# <a name="microsoftcommonfileupload-ui-element"></a>Microsoft.Common.FileUpload felhasználói felületi elemben
+Egy olyan vezérlőelem, amely lehetővé teszi a felhasználóknak adjon meg egy vagy több fájlt feltölteni.
 
 ## <a name="ui-sample"></a>Felhasználói felület minta
 ![Microsoft.Common.FileUpload](./media/managed-application-elements/microsoft.common.fileupload.png)
@@ -48,21 +48,22 @@ Lehetővé teszi a felhasználóknak adjon meg egy vagy több fájl feltöltése
 ```
 
 ## <a name="remarks"></a>Megjegyzések
-- `constraints.accept` Adja meg a fájlokat, amelyek megjelennek a böngésző fájlpárbeszédpanelt típusú. Tekintse meg a [HTML5-specifikációt](http://www.w3.org/TR/html5/forms.html#attr-input-accept) az engedélyezett értékek. Az alapértelmezett érték **null**.
-- Ha `options.multiple` értéke **igaz**, a felhasználó által megadható egynél több fájl a böngésző fájl párbeszédpanelen. Az alapértelmezett érték **hamis**.
-- Ez az elem feltöltése fájlokat támogatja a két mód értéke alapján `options.uploadMode`. Ha **fájl** van megadva, a kimeneti blob, a fájl tartalma. Ha **URL-cím** van megadva, akkor a fájl feltöltése egy ideiglenes helyre, és a kimeneti tartalmaz a blob URL-CÍMÉT. Ideiglenes blobok kiürítendő 24 óra múlva. Az alapértelmezett érték **fájl**.
-- Értékének `options.openMode` határozza meg, hogy a fájl írásvédett. Ha a fájl várt egyszerű szövegként, adja meg **szöveg**; más, adja meg **bináris**. Az alapértelmezett érték **szöveg**.
-- Ha `options.uploadMode` értéke **fájl** és `options.openMode` értéke **bináris**, a base64-kódolású kimenete.
-- `options.encoding` Meghatározza, hogy a fájl olvasásánál használandó kódolás. Az alapértelmezett érték **UTF-8**, és csak akkor, ha `options.openMode` értéke **szöveg**.
+- `constraints.accept` fájltípusok látható a böngészőben vyhledání souboru meghatározza. Tekintse meg a [HTML5-specifikációt](http://www.w3.org/TR/html5/forms.html#attr-input-accept) az engedélyezett értékek. Az alapértelmezett érték **null**.
+- Ha `options.multiple` értékre van állítva **igaz**, a felhasználó számára engedélyezett a böngésző fájl párbeszédpanelen válassza ki a egynél több fájlt. Az alapértelmezett érték **hamis**.
+- Ez az elem értéke alapján két módban támogatja a fájlokat tölthet fel `options.uploadMode`. Ha **fájl** van megadva, a kimenet tartalmaz a blob, fájl tartalmát. Ha **URL-cím** van megadva, akkor a fájlt töltenek fel egy ideiglenes helyre, és a kimenet tartalmaz a blob URL-CÍMÉT. Ideiglenes blobok 24 óra múlva lesz kiürítve. Az alapértelmezett érték **fájl**.
+- A feltöltött fájl védelmét. A kimeneti URL-cím tartalmazza egy [SAS-jogkivonat](../storage/common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) üzembe helyezés során a fájl eléréséhez.
+- Az érték `options.openMode` határozza meg, hogyan van olvasni a fájlt. Ha a fájl várt lehet egyszerű szöveges, adja meg a **szöveg**; más, adja meg **bináris**. Az alapértelmezett érték **szöveg**.
+- Ha `options.uploadMode` értékre van állítva **fájl** és `options.openMode` értékre van állítva **bináris**, a kimenet a base64-kódolású.
+- `options.encoding` Itt adhatja meg a használni kívánt kódolás és a fájl olvasásakor. Az alapértelmezett érték **UTF-8**, és csak akkor, ha `options.openMode` értékre van állítva **szöveg**.
 
 ## <a name="sample-output"></a>Példa kimenet
-Ha options.multiple értéke false, és options.uploadMode fájl, akkor a kimeneti rendelkezik a fájl tartalmát egy JSON-karakterlánc:
+Options.multiple értéke hamis és options.uploadMode fájlt, majd a kimenetet a fájl tartalmát egy JSON-karakterlánc:
 
 ```json
 "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
 ```
 
-Ha igaz options.multiple and'options.uploadMode fájl, akkor a kimeneti fájl tartalmának rendelkezik egy JSON-tömb:
+Ha options.multiple igaz and'options.uploadMode fájl, akkor a kimeneti fájl tartalmának megegyezik egy JSON-tömb:
 
 ```json
 [
@@ -73,13 +74,13 @@ Ha igaz options.multiple and'options.uploadMode fájl, akkor a kimeneti fájl ta
 ]
 ```
 
-Ha options.multiple értéke false, és options.uploadMode URL-címet, majd a kimeneti rendelkezik JSON karakterláncnak egy URL-cím:
+Options.multiple értéke hamis és options.uploadMode URL-címet, majd a kimenetet a egy URL-cím egy JSON-karakterlánc:
 
 ```json
 "https://myaccount.blob.core.windows.net/pictures/profile.jpg?sv=2013-08-15&st=2013-08-16&se=2013-08-17&sr=c&sp=r&rscd=file;%20attachment&rsct=binary &sig=YWJjZGVmZw%3d%3d&sig=a39%2BYozJhGp6miujGymjRpN8tsrQfLo9Z3i8IRyIpnQ%3d"
 ```
 
-Ha options.multiple értéke true, és options.uploadMode URL-címet, majd a kimeneti rendelkezik egy JSON-tömb URL-címek listáját:
+Options.multiple nastavena nA hodnotu true és options.uploadMode URL-címet, majd a kimenetet a URL-címek listáját, egy JSON-tömböt:
 ```json
 [
   "https://myaccount.blob.core.windows.net/pictures/profile1.jpg?sv=2013-08-15&st=2013-08-16&se=2013-08-17&sr=c&sp=r&rscd=file;%20attachment&rsct=binary &sig=YWJjZGVmZw%3d%3d&sig=a39%2BYozJhGp6miujGymjRpN8tsrQfLo9Z3i8IRyIpnQ%3d",
@@ -88,9 +89,9 @@ Ha options.multiple értéke true, és options.uploadMode URL-címet, majd a kim
 ]
 ```
 
-Egy CreateUiDefinition tesztelésekor (például a Google Chrome) egyes böngészők csonkolja a böngészőbeli konzolon a Microsoft.Common.FileUpload eleme által generált URL-címeket. Kattintson a jobb gombbal az egyes hivatkozások másolása a teljes URL-címeket szeretne.
+A CreateUiDefinition tesztelésekor egyes böngészők (mint például a Google Chrome) csonkolja a böngészőbeli konzolon Microsoft.Common.FileUpload eleme által létrehozott URL-címeket. Kattintson a jobb gombbal az egyes kapcsolatok másolása a teljes URL-címeket szeretne.
 
 
 ## <a name="next-steps"></a>További lépések
-* A bevezetést UI-definíciók létrehozásáról lásd: [Ismerkedés a CreateUiDefinition](create-uidefinition-overview.md).
-* Általános tulajdonságok felhasználói felületi elemei ismertetését lásd: [CreateUiDefinition elemek](create-uidefinition-elements.md).
+* Felhasználóifelület-definíciók létrehozása bevezetésért lásd: [CreateUiDefinition használatának első lépései](create-uidefinition-overview.md).
+* Egy felhasználói felületi elemeket általános tulajdonságok leírásáért lásd: [CreateUiDefinition elemek](create-uidefinition-elements.md).

@@ -8,18 +8,18 @@ ms.topic: article
 ms.date: 10/25/2017
 ms.author: cbrooks
 ms.component: common
-ms.openlocfilehash: 9eaaaaa4cc9be661cdc2ffde2b634e062c95a404
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 56c464b9fbc9fe5f2d9acd1a403333fd1c729113
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39523257"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44023392"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Az Azure Storage-tűzfalak és virtuális hálózatok konfigurálása
 Az Azure Storage lehetővé teszi, hogy a tárfiókok meghatározott engedélyezett hálózatok biztonságos többrétegű biztonsági modellt biztosít.  Ha a hálózati szabályok vannak beállítva, csak az engedélyezett hálózatok alkalmazások férhetnek hozzá egy tárfiókot.  Egy engedélyezett hálózatról hívásakor az alkalmazások továbbra is megfelelő jogosultságokkal (egy érvényes hozzáférési kulcs vagy SAS-token) a tárfiók eléréséhez szükséges.
 
 > [!IMPORTANT]
-> Ne tudják bekapcsolni a tűzfalszabályok a tárfiók letiltja a hozzáférést adataihoz, más Azure-szolgáltatásokból származó bejövő kérelmek.  Ez magában foglalja a portálról, írása, naplók, stb.  A programban részt vevő services újra engedélyezheti a funkciót a [kivételek](#Exceptions) az alábbi szakaszban.  A portál eléréséhez kell ehhez a gépről megbízható modulokon belül (IP vagy virtuális hálózat), amely meg van adva.
+> Ne tudják bekapcsolni a tűzfalszabályok a tárfiók letiltja a hozzáférést adataihoz, más Azure-szolgáltatásokból származó bejövő kérelmek.  Ez magában foglalja a portálról, írása, naplók, stb.  A programban részt vevő services újra engedélyezheti a funkciót a [kivételek](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) az alábbi szakaszban.  A portál eléréséhez kell ehhez a gépről megbízható modulokon belül (IP vagy virtuális hálózat), amely meg van adva.
 >
 
 ## <a name="scenarios"></a>Forgatókönyvek
@@ -35,7 +35,7 @@ Virtuálisgép-lemez forgalom (ideértve a csatlakoztatást és műveletek levá
 
 Klasszikus tárfiókokat **nem** támogatja a tűzfalak és virtuális hálózatok.
 
-Biztonsági mentés és visszaállítás a virtuális gépek nem felügyelt lemezek használata a storage-fiókok a alkalmazni a hálózati szabályok kivétel létrehozása leírtak szerint keresztül támogatott a [kivételek](/storage/common/storage-network-security#exceptions) című szakaszát.  Végezze el a tűzfalkivételek nem vonatkoznak a Managed Disks már kezeli az Azure.
+Biztonsági mentés és visszaállítás a virtuális gépek nem felügyelt lemezek használata a storage-fiókok a alkalmazni a hálózati szabályok kivétel létrehozása leírtak szerint keresztül támogatott a [kivételek](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) című szakaszát.  Végezze el a tűzfalkivételek nem vonatkoznak a Managed Disks már kezeli az Azure.
 
 ## <a name="change-the-default-network-access-rule"></a>Módosítsa az alapértelmezett hálózati hozzáférési szabályt
 Alapértelmezés szerint a tárfiókok bármely hálózati ügyfelek kapcsolatokat fogadjon.  A kiválasztott hálózatok való hozzáférés korlátozásához, először módosítania kell az alapértelmezett művelet.

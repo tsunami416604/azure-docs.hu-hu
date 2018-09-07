@@ -15,15 +15,15 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 12/04/2017
 ms.author: memccror
-ms.openlocfilehash: fd93f1ad83f6627f27534eca17f91c9fe9b2cc9f
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: ab56ad07bd3da17f105bd09f2484173207d30015
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43667857"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44025064"
 ---
 # <a name="understanding-azure-virtual-machine-usage"></a>Az Azure virtuális gép használatának megismerése
-Az Azure-használati adatok elemzésével hatékony használati adatokba kaphatunk – insights, ami lehetővé teszi a jobban költségek kezelése és a szervezeten belül foglalási. Ez a dokumentum tartalmaz egy részletes ismertetése az Azure Compute használati adatait. Általános Azure használatáról a további részletekért lépjen [a számla értelmezéséhez](/billing/billing-understand-your-bill.md).
+Az Azure-használati adatok elemzésével hatékony használati adatokba kaphatunk – insights, ami lehetővé teszi a jobban költségek kezelése és a szervezeten belül foglalási. Ez a dokumentum tartalmaz egy részletes ismertetése az Azure Compute használati adatait. Általános Azure használatáról a további részletekért lépjen [a számla értelmezéséhez](https://docs.microsoft.com/azure/billing/billing-understand-your-bill).
 
 ## <a name="download-your-usage-details"></a>A használati adatok letöltése
 Első lépésként [a használati adatok letöltése](https://docs.microsoft.com/azure/billing/billing-download-azure-invoice-daily-usage-date#download-usage-from-the-account-center-csv). Az alábbi táblázat biztosít az Azure Resource Manageren keresztül üzembe helyezett virtuális gépek használati definíció- és példa értékeit. Ez a dokumentum nem tartalmaz részletes információkat a klasszikus modellen keresztül telepített virtuális gépek.
@@ -143,5 +143,6 @@ A klasszikus modellben számlázás az erőforrások összesített értéket jel
 A Premium storage képes a virtuális gépek számlázása költsége megegyezik a nem prémium szintű storage képes a virtuális gépeket. Csak a tárolási költségek eltérőek. Látogasson el a [tárolási díjszabást ismertető weblapon](https://azure.microsoft.com/pricing/details/storage/unmanaged-disks/) további információt.
 
 ## <a name="next-steps"></a>További lépések
-További információk a használat részleteiről lásd: [Microsoft Azure-hoz kapcsolódó számlák magyarázata.](/billing/billing-understand-your-bill.md)
+További információk a használat részleteiről lásd: [Microsoft Azure-hoz kapcsolódó számlák magyarázata.](https://docs.microsoft.com/azure/billing/billing-understand-your-bill
+)
 

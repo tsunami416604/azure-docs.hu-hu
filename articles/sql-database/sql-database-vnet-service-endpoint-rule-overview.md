@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/28/2018
 ms.reviewer: carlrab
 ms.author: dmalik
-ms.openlocfilehash: 223a8da0c3c940c57dfc58d9cc87a19ae45a64eb
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.openlocfilehash: 38806b3dbf47b21885ef704cfec8be3c491a66a0
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43143810"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44055386"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql-database-and-sql-data-warehouse"></a>Virtuális hálózati Szolgáltatásvégpontok és szabályok használata Azure SQL Database és SQL Data warehouse-bA
 
@@ -184,7 +184,7 @@ Ha ez a funkció használata a Storage-fiók egy Azure SQL Server által haszná
 PolyBase az adatok betöltése az Azure SQLDW tárfiókokban gyakran szolgál. Ha a tárfiókot, amely adatokat tölt be csak a VNet-alhálózatok halmaza hozzáférést korlátozza, kapcsolat és a fiók a PolyBase megszakadnak. Ez a megoldás, és előfordulhat, hogy forduljon a Microsoft ügyfélszolgálatához további információt.
 
 #### <a name="azure-sqldb-blob-auditing"></a>Azure SQLDB Blob Auditing
-Auditnaplók blobnaplózás leküldi a saját tárfiókját. Ha ezt a tárfiókot használ a MŰVELE szolgáltatásvégponti funkciója Azure SQLDB storage-fiókhoz kapcsolat megszakad.
+Auditnaplók blobnaplózás leküldi a saját tárfiókját. Ha ezt a tárfiókot használ a virtuális hálózatok szolgáltatásvégponti funkciója Azure SQLDB storage-fiókhoz kapcsolat megszakad.
 
 ## <a name="adding-a-vnet-firewall-rule-to-your-server-without-turning-on-vnet-service-endpoints"></a>A VNET tűzfalszabály nélkül szolgáltatják a virtuális hálózati Szolgáltatásvégpontok hozzáadása a kiszolgálóhoz
 
@@ -254,7 +254,7 @@ Már rendelkeznie kell egy, az adott virtuális hálózati szolgáltatásvégpon
 
 ### <a name="azure-portal-steps"></a>Azure-portál lépések
 
-1. Jelentkezzen be a [az Azure portal][http-azure-portal-link-ref-477t].
+1. Jelentkezzen be az [Azure Portalra][http-azure-portal-link-ref-477t].
 
 2. Keresse meg a portál **SQL Server-kiszolgálók** &gt; **tűzfal / virtuális hálózatok**.
 

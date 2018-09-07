@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2018
+ms.date: 09/05/2018
 ms.author: mabrigg
-ms.openlocfilehash: 7eb82457d8c8d7e306dcbdac39510ce328cd925b
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: 30cdb07f8e0d5481f34148b99fa86f2a1bb85e0b
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42056677"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44022196"
 ---
 # <a name="considerations-for-using-virtual-machines-in-azure-stack"></a>Szempontok a virtuális gépek az Azure Stackben
 
@@ -36,7 +36,7 @@ Az Azure Stack virtuális gépek igény szerinti, méretezhető számítási er�
 | Virtuális gép kvóták | [Magkvóta korlátozásának](../../azure-subscription-service-limits.md#service-specific-limits) Microsoft-beállításokat | Az Azure Stack-felhő rendszergazdája hozzá kell rendelnie kvóták, mielőtt azok a felhasználók számára a virtuális gépek kínálnak. |
 | Virtuálisgép-bővítmények |Az Azure számos különböző virtuálisgép-bővítmények támogatja. Az elérhető bővítmények kapcsolatos további információkért tekintse meg a [virtuális gépi bővítmények és szolgáltatások](../../virtual-machines/windows/extensions-features.md) cikk.| Az Azure Stack az Azure-ban elérhető bővítmények egy részét támogatja, és a bővítmény rendelkező verzióját. Az Azure Stack-felhő rendszergazdája választhat a kiterjesztések lehetővé kell tenni a felhasználók számára. A támogatott bővítmények listájának megtekintéséhez, tekintse meg a [virtuálisgép-bővítmények](#virtual-machine-extensions) című szakaszát. |
 | Virtuálisgép-hálózat | A bérlői virtuális géphez rendelt nyilvános IP-címeket az interneten keresztül érhetők el.<br><br><br>Az Azure Virtual Machines rögzített DNS névvel rendelkezik. | A bérlői virtuális géphez társított nyilvános IP-címek csak az Azure Stack Development Kit környezetben érhetők el. A felhasználó az Azure Stack Development Kit használatával hozzáféréssel kell rendelkeznie [RDP](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop) vagy [VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn) kapcsolódni egy virtuális gépet, amely jön létre az Azure Stackben.<br><br>Egy adott Azure Stack-példánnyal belül létrehozott virtuális gépeket kell egy DNS-nevet, a felhő rendszergazdája által beállított értéke alapján. |
-| Virtuálisgép-tároló | Támogatja a [felügyelt lemezeket.](../../virtual-machines/windows/managed-disks-overview.md) | A felügyelt lemezek még nem támogatottak az Azure Stackben. |
+| Virtuálisgép-tároló | Támogatja a [felügyelt lemezeket.](../../virtual-machines/windows/managed-disks-overview.md) | A felügyelt lemezek az Azure Stackben 1808 és újabb verziói támogatottak. |
 | API-verziók | Az Azure mindig a legújabb API-verziók a virtuális gép minden funkció esetén rendelkezik. | Az Azure Stack konkrét Azure-szolgáltatás és az adott API-verziók támogatja ezeket a szolgáltatásokat. Ha szeretné megtekinteni a támogatott API-verziók listáját, tekintse meg a [API-verziók](#api-versions) című szakaszát. |
 |Virtuális gép rendelkezésre állási csoportok|Több tartalék tartomány (2 vagy 3 régiónként)<br>Több frissítési tartomány<br>Felügyelt lemezek támogatása|Több tartalék tartomány (2 vagy 3 régiónként)<br>(Legfeljebb 20) több frissítési tartomány<br>Nem felügyelt lemezes támogatás|
 |Virtuálisgép-méretezési csoportok|Automatikus skálázás támogatott|Automatikus skálázás nem támogatott.<br>További példányok hozzáadása egy méretezési csoportot a portálon, a Resource Manager-sablonok vagy a PowerShell használatával.

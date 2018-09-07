@@ -1,6 +1,7 @@
 ---
-title: Megismerheti a LUIS-alkalmazásokon iteratív megtervezése – Azure |} A Microsoft Docs
-description: A LUIS-alkalmazások tervezési ismétlések beolvasni a legjobb adatkinyerés LUIS betanításához szükséges.
+title: A LUIS iteratív Alkalmazástervezés – beszédfelismerés ismertetése
+description: LUIS legjobb megtanulja az iteratív ciklusának adatmodell változásainak, utterance (kifejezés) példákat, közzététel és adatok összegyűjtése a végpont lekérdezések.  A LUIS-alkalmazások tervezési ismétlések beolvasni a legjobb adatkinyerés LUIS betanításához szükséges.
+titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: diberry
 manager: cjgronlund
@@ -9,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 02/12/2018
 ms.author: diberry
-ms.openlocfilehash: 947350a1d0dcfb0caaca654768c3660fc1b146e1
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 7c267d53c9057ac05427ff14a7e3c25d56ab1f62
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39225441"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44025427"
 ---
 # <a name="authoring-cycle"></a>Tartalomkészítési ciklus
 LUIS legjobb megtanulja az iteratív ciklusának adatmodell változásainak, utterance (kifejezés) példákat, közzététel és adatok összegyűjtése a végpont lekérdezések. 

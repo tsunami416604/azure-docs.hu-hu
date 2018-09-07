@@ -9,12 +9,12 @@ ms.author: xshi
 ms.date: 09/04/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: b1c6209c4d589093d7a29cd8a883d3e5d4ca12f9
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: a66a17a0f8daed5f61753dd7c20ed5d9987c0b15
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43782302"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44053900"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-c-modules-for-azure-iot-edge"></a>Fejlesztés és az Azure IoT Edge-hez a C# modul hibakeresése Visual Studio Code használatával
 
@@ -44,7 +44,7 @@ Beállítani a helyi fejlesztési környezet hibakeresése, futtassa, és az IoT
    pip install --upgrade iotedgehubdev
    ```
 
-A modul egy eszközön teszteléséhez van szüksége active IoT hub legalább egy IoT Edge-eszköz. Az IoT Edge-eszközöket a számítógép használja, kövesse a rövid útmutatóban a [Windows](quickstart.md) vagy [Linux](quickstart-linux.md). 
+Ha tesztelni szeretné a modul egy eszközön, aktív IoT hub létrehozott legalább egy IoT Edge Eszközazonosítót használó kell. IoT Edge-démon futtatja a fejlesztői gépen, ha szüksége lehet, hogy leállította EdgeHub és EdgeAgent helyez át a következő lépéssel. 
 
 ## <a name="create-a-new-solution-with-c-module"></a>Új megoldás létrehozása a C# modul
 
@@ -111,9 +111,6 @@ Az IoT Edge C# modul az a .net Core-alkalmazás. És az Azure IoT C# eszközolda
     dotnet build
     ```
 
-   > [!TIP]
-   > Is [PostMan](https://www.getpostman.com/) vagy más API-eszközök helyett keresztül üzenetek küldéséhez `curl`.
-
 2. Nyissa meg a `program.cs` címet. Ebben a fájlban adja hozzá egy töréspontot.
 
 3. Nyissa meg a VS Code hibakeresési nézetet. Válassza ki a hibakeresési konfigurációt **ModuleName helyi hibakeresés (.NET Core)**. 
@@ -136,7 +133,7 @@ Az IoT Edge C# modul az a .net Core-alkalmazás. És az Azure IoT C# eszközolda
 
     ![Változók Watch](media/how-to-develop-csharp-module/single-module-variables.png)
 
-7. A hibakeresési munkamenet leállításához kattintson a Leállítás gombra vagy nyomja meg **Shift + F5**. A VS Code parancskatalógus, írja be és válassza a **Azure IoT Edge: IoT Edge szimulátor leállítása**.
+7. A hibakeresési munkamenet leállításához kattintson a Leállítás gombra vagy nyomja meg **Shift + F5**. És a VS Code parancskatalógus, írja be, és válassza ki **Azure IoT Edge: IoT Edge szimulátor leállítása** állítsa le, és tisztítsa meg a szimulátor.
 
 ## <a name="build-module-container-for-debugging-and-debug-in-attach-mode"></a>A modul tároló hibakereséshez és a hibakeresési build az attach mód
 

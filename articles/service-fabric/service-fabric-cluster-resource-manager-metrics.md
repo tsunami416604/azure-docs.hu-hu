@@ -1,5 +1,5 @@
 ---
-title: Mérőszámok segítségével az Azure mikroszolgáltatás-terhelés kezelése |} A Microsoft Docs
+title: Mérőszámok segítségével az Azure Service Fabric-alkalmazás terhelés kezelése |} A Microsoft Docs
 description: Ismerje meg hogyan konfigurálhatja és használhatja a metrikák a Service Fabric service erőforrás-használat kezelésére.
 services: service-fabric
 documentationcenter: .net
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: e16f1ae28f2212d0cec61368a2fba946d48fd811
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 7a7d3ad59d743287e5fe13c52c6c6a1a115d53f3
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39006284"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44053312"
 ---
 # <a name="managing-resource-consumption-and-load-in-service-fabric-with-metrics"></a>Kezelését erőforrás-használat és a terhelés a Service Fabric-metrikák
 *Metrikák* az erőforrások, a szolgáltatások ellátás kapcsolatban, és amely a fürt csomópontjainak által biztosított. Egy metrika, amelyeket szeretne kezelni, annak érdekében, hogy monitorozza a szolgáltatások teljesítményét és tökéletesítéséhez. Például előfordulhat, hogy tekintse meg memóriát tudni, hogy ha a szolgáltatás túlterhelt. Egy másik használata döntse el, hogy a szolgáltatás áthelyezhetők máshol ahol memória mérete kisebb jobb teljesítmény érdekében korlátozott.
@@ -33,7 +33,7 @@ Tegyük fel, hogy szeretné-e a bevezetés írása, és a szolgáltatás telepí
   - ReplicaCount – a csomóponton teljes állapotalapú replikák száma
   - Darabszám - száma minden szolgáltatási objektumok (állapot nélküli és állapotalapú) a csomóponton
 
-| Metrika | Állapot nélküli példány betöltése | Állapot-nyilvántartó másodlagos betöltése | Állapot-nyilvántartó elsődleges betöltése | Súlyozás |
+| Metrika | Állapot nélküli példány betöltése | Állapot-nyilvántartó másodlagos betöltése | Állapot-nyilvántartó elsődleges betöltése | Tömeg |
 | --- | --- | --- | --- | --- |
 | PrimaryCount |0 |0 |1 |Magas |
 | ReplicaCount |0 |1 |1 |Közepes |

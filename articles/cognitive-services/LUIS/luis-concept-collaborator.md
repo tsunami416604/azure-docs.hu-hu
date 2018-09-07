@@ -1,5 +1,6 @@
 ---
-title: Megismerheti a LUIS alkalmazás együttműködés – Azure |} A Microsoft Docs
+title: A LUIS alkalmazás együttműködés – beszédfelismerés
+titleSuffix: Azure Cognitive Services
 description: A LUIS-alkalmazások egyetlen tulajdonosnak és a választható közreműködők van szükség.
 services: cognitive-services
 author: diberry
@@ -9,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: diberry
-ms.openlocfilehash: fe5e35c2dcb08cdff9d92142558cf8d7ec81c36c
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: fd4955cb2d7ea76e8d0fd6c60027740b64bd8b24
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39399571"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44026247"
 ---
 # <a name="collaborating"></a>Együttműködés
 
@@ -41,7 +42,7 @@ Ha szeretné megosztani több alkalmazás közreműködőkkel együtt, a minden 
 ## <a name="managing-multiple-authors"></a>Több szerző kezelése
 A [LUIS](luis-reference-regions.md#luis-website) webhely jelenleg nem biztosít tranzakciószintű szerzői. Engedélyezheti a szerzők a kiindulási verzióról független verzióin működik. Az alábbiakban két különböző módszereket ismerteti.
 
-### <a name="manage-multiple-versions-inside-the-same-app"></a>Alkalmazáson belül több verziók kezelése
+## <a name="manage-multiple-versions-inside-the-same-app"></a>Alkalmazáson belül több verziók kezelése
 Első lépésként [Klónozás](luis-how-to-manage-versions.md#clone-a-version), a kiindulási verzióról, mindegyik szerző számára. 
 
 Mindegyik Szerző módosítást hajt végre az alkalmazás a saját verzióját. Ha mindegyik Szerző elégedett a modellel, JSON-fájlok exportálása az új verziókat.  
@@ -50,7 +51,7 @@ Exportált alkalmazások olyan JSON-formátumú fájlokat, amelyek a módosítá
 
 Ez a módszer lehetővé teszi, hogy egy aktív verzióját, egy szakasz és egy közzétett verziója. Összehasonlíthatja az eredményeket az interaktív vizsgálati panelen a három verziója között.
 
-### <a name="manage-multiple-versions-as-apps"></a>Alkalmazások több verziók kezelése
+## <a name="manage-multiple-versions-as-apps"></a>Alkalmazások több verziók kezelése
 [Exportálás](luis-how-to-manage-versions.md#export-version) Alapverzió. Mindegyik Szerző importálja a verziót. A személy, amely az alkalmazás importál a verzió tulajdonosa. Amikor végzett a verzió módosítása az alkalmazás exportálása. 
 
 Exportált alkalmazások olyan JSON-formátumú fájlokat, amelyek a módosítások az alap exportálás összehasonlíthatók. A fájlokat, és hozzon létre egy egyetlen JSON-fájlt az új verzió össze. Módosítsa a **versionId** tulajdonság a JSON az új, egyesített verzió jelölésére. Importálja azt a verziót az eredeti alkalmazásba.

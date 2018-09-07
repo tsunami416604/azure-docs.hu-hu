@@ -13,20 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/14/2017
+ms.date: 09/06/2018
 ms.author: celested
-ms.reviewer: hirsin, dastrock
-ms.openlocfilehash: 41c7de3039634f262efedc1bb3de1b39dda4593a
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.reviewer: jlu, annaba, hirsin
+ms.openlocfilehash: 3120bf36c32a8be42f325ef584bfc8a2c5cd04df
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43698060"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44055294"
 ---
 # <a name="migrate-from-the-azure-access-control-service"></a>A hozzáférés-vezérlés az Azure-szolgáltatás áttelepítése
 
-Az Azure hozzáférés-vezérlést, az Azure Active Directory (Azure AD), a szolgáltatás 2018. November 7 kivezetjük. Alkalmazások és szolgáltatások, amelyek jelenleg használják a hozzáférés-vezérlés kell teljes áttelepíteni meg egy másik hitelesítési mechanizmust. Ez a cikk ismerteti a javaslatok a jelenlegi ügyfelek tervezésekor kivezetjük a hozzáférés-vezérlés használatát. Ha hozzáférés-vezérlés jelenleg nem használja, akkor nem kell semmit sem.
-
+A Microsoft Azure Access Control Service (ACS), az Azure Active Directory (Azure AD), a szolgáltatás 2018. November 7 kivezetjük. Alkalmazások és szolgáltatások, amelyek jelenleg használják a hozzáférés-vezérlés kell teljes áttelepíteni meg egy másik hitelesítési mechanizmust. Ez a cikk ismerteti a javaslatok a jelenlegi ügyfelek tervezésekor kivezetjük a hozzáférés-vezérlés használatát. Ha hozzáférés-vezérlés jelenleg nem használja, akkor nem kell semmit sem.
 
 ## <a name="overview"></a>Áttekintés
 
@@ -73,7 +72,6 @@ A következő hozzáférés-vezérlés összetevői kivezetése ütemezése:
 - **2018. április 2.**: az Azure klasszikus portál teljesen kivonják, ami azt jelenti, hozzáférés-vezérlési névtér-felügyelet már nem érhető el minden olyan URL-CÍMEN keresztül. Ezen a ponton nem letiltása vagy engedélyezése, törlése, vagy a hozzáférés-vezérlés névterek számbavétele. Azonban a hozzáférés-vezérlési felügyeleti portálon lesz a teljes működési és a következő helyen található `https://\<namespace\>.accesscontrol.windows.net`. Továbbra is szokott hozzáférés-vezérlés összes összetevőjét.
 - **2018. november 7**: hozzáférés-vezérlés összetevői véglegesen állítsa le. Ez magában foglalja a hozzáférés-vezérlési felügyeleti portálon, a felügyeleti szolgáltatás, STS és a jogkivonatok átalakítását szabályalapú motor. Ezen a ponton minden olyan hozzáférés-vezérlés küldött kérelmek (található \<névtér\>. accesscontrol.windows.net) sikertelen. Kell áttelepítette az összes meglévő alkalmazások és szolgáltatások más technológiák is a megadott idő előtti.
 
-
 ## <a name="migration-strategies"></a>Migrálási stratégiák
 
 A következő szakaszok ismertetik a hozzáférés-vezérlés más Microsoft-technológiákhoz áttelepíthető magas szintű ajánlásokat.
@@ -98,7 +96,6 @@ Minden Microsoft-felhőszolgáltatás, amely hozzáférés-vezérlés által mos
 <!-- Retail federation services are moving, customers don't need to move -->
 <!-- Azure StorSimple: TODO -->
 <!-- Azure SiteRecovery: TODO -->
-
 
 ### <a name="sharepoint-customers"></a>SharePoint-ügyfelek számára
 
@@ -175,26 +172,14 @@ WS-Federation vagy WIF segítségével integrálhatja az Azure ad-vel, javasolju
 - Az Azure AD-token testreszabás teljesen rugalmasan kap. Testre szabhatja a jogcímek, az Azure AD megfelelő hozzáférés-vezérlés által kibocsátott jogcímek által kiállított. Ez különösen akkor tartalmazza a felhasználói azonosító vagy Névazonosító jogcímet. Továbbra is megjelenik a felhasználók egységes felhasználói azonosítók technológiák módosítása után, győződjön meg arról, hogy a felhasználói azonosítók által kiállított Azure AD-egyezés azokat, amelyeket a hozzáférés-vezérlés által.
 - Konfigurálhatja egy adott, az alkalmazáshoz, és Ön által megadott élettartamú jogkivonat-aláíró tanúsítványt.
 
-<!--
-
-Possible nameIdentifiers from Access Control (via AAD or AD FS):
-- AD FS - Whatever AD FS is configured to send (email, UPN, employeeID, what have you)
-- Default from AAD using App Registrations, or Custom Apps before ClaimsIssuance policy: subject/persistent ID
-- Default from AAD using Custom apps nowadays: UPN
-- Kusto can't tell us distribution, it's redacted
-
--->
-
 > [!NOTE]
 > Ez a megközelítés egy prémium szintű Azure AD-licencre van szükség. Ha az ügyfél egy hozzáférés-vezérlés és egyszeri bejelentkezést az alkalmazáshoz beállításának prémium licencre van szüksége, lépjen kapcsolatba velünk. Készséggel adja meg a fejlesztői licenc kell használni.
 
 Egy másik módszert, hogy [Ez a kódminta](https://github.com/Azure-Samples/active-directory-dotnet-webapp-wsfederation), WS-Federation beállításának némileg eltérő utasításait révén. Ez a kódminta nem használja a WIF, de ehelyett az ASP.NET 4.5-ös OWIN közbenső szoftvert. Azonban az utasításokat az alkalmazás regisztrációját a WIF használó alkalmazások esetében érvényesek, és nem egy prémium szintű Azure AD-licenc szükséges. 
 
-Ha ezt a módszert választja, tisztában kell [az Azure Active Directory aláírókulcs](https://docs.microsoft.com/azure/active-directory/develop/active-directory-signing-key-rollover). Ez a megközelítés az Azure AD globális probléma jogkivonatok aláírókulcsot használja. Alapértelmezés szerint WIF nem frissül automatikusan aláírási kulcsokat. Az Azure AD globális aláíró kulcsai forog, amikor a WIF-implementációjának szüksége van, elő kell készíteni a módosítások elfogadásához.
+Ha ezt a módszert választja, tisztában kell [az Azure Active Directory aláírókulcs](https://docs.microsoft.com/azure/active-directory/develop/active-directory-signing-key-rollover). Ez a megközelítés az Azure AD globális probléma jogkivonatok aláírókulcsot használja. Alapértelmezés szerint WIF nem frissül automatikusan aláírási kulcsokat. Az Azure AD globális aláíró kulcsai forog, amikor a WIF-implementációjának szüksége van, elő kell készíteni a módosítások elfogadásához. További információkért lásd: [fontos információ az Azure Active Directory aláírókulcs](https://msdn.microsoft.com/en-us/library/azure/dn641920.aspx).
 
 Ha integrálható az Azure AD-n keresztül az OpenID Connect vagy OAuth protokollt, javasoljuk, így. Széles körű dokumentációval és útmutatást az Azure AD integrálása a webes alkalmazások, elérhető a [az Azure AD fejlesztői útmutató](https://aka.ms/aaddev).
-
-<!-- TODO: If customers ask about authZ, let's put a blurb on role claims here -->
 
 #### <a name="migrate-to-azure-active-directory-b2c"></a>Az Azure Active Directory B2C-vel áttelepítése
 
@@ -237,7 +222,6 @@ Ha úgy dönt, hogy az Azure AD B2C-vel-e a legjobb áttelepítési útvonal az 
 - [Az Azure AD B2C-vel egyéni szabályzatok](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview-custom)
 - [Az Azure AD B2C díjszabása](https://azure.microsoft.com/pricing/details/active-directory-b2c/)
 
-
 #### <a name="migrate-to-ping-identity-or-auth0"></a>A Ping Identity vagy Auth0 áttelepítése
 
 Bizonyos esetekben előfordulhat, hogy az Azure AD és az Azure AD B2C-vel nem elegendő a hozzáférés-vezérlés cserélnie a webes alkalmazások főbb kódmódosítások nélkül. Néhány gyakori példa a következők lehetnek:
@@ -249,8 +233,6 @@ Bizonyos esetekben előfordulhat, hogy az Azure AD és az Azure AD B2C-vel nem e
 - Az ACS használatával központilag kezelhető az összevonási számos különböző identitás-szolgáltatóktól, több-bérlős webalkalmazások
 
 Ezekben az esetekben érdemes megfontolni a felhő egy másik hitelesítési szolgáltatást a webes alkalmazásba való migrálás. Azt javasoljuk, hogy a következő opciók megismerését. Hozzáférés-vezérlés hasonló képességeket kínálnak az alábbi beállításokat:
-
-
 
 |     |     | 
 | --- | --- |

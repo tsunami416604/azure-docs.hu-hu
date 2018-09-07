@@ -1,5 +1,6 @@
 ---
-title: A Language Understanding (LUIS) alkalmazások – az Azure Cognitive Services-szolgáltatás megtervezése |} A Microsoft Docs
+title: A Language Understanding (LUIS) alkalmazások megtervezése
+titleSuffix: Azure Cognitive Services
 description: Megfelelő alkalmazást szándékok és entitások, és ezután terveket hozhat létre az alkalmazás a Language Understanding Intelligent Services (LUIS).
 services: cognitive-services
 author: diberry
@@ -7,14 +8,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
-ms.date: 09/06/2017
+ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: 7c8974767621ad574b243fba5c3e49d97ec142e6
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: 971d5ed47c5778315e2b7c75997c945e8489b1ce
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43842272"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44052241"
 ---
 # <a name="plan-your-luis-app"></a>A LUIS-alkalmazás megtervezése
 

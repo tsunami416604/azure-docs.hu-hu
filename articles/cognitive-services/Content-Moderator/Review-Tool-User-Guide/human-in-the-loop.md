@@ -1,6 +1,6 @@
 ---
-title: Tartalom moderálás gép támogatású és a tartalom moderátor emberi értékelést |} Microsoft Docs
-description: Hogyan gépek és emberek együtt nyújtanak a legjobb eredmények elérése érdekében a tartalom moderálás
+title: Tartalom-jóváhagyás gépi támogatású és az emberi felülvizsgálatot a Content Moderator |} A Microsoft Docs
+description: Hogyan gépek és az emberek együtt biztosítja a legjobb eredmények elérése érdekében a tartalom-jóváhagyás
 services: cognitive-services
 author: sanjeev3
 manager: mikemcca
@@ -9,25 +9,25 @@ ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: article
 ms.author: sajagtap
-ms.openlocfilehash: da657404e4cb8b86d67f56084a6f5a261bad4de2
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 1c08b30c0e59aac21d24f75d88530ba51b67d6b4
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35346986"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44023933"
 ---
 # <a name="human-in-the-loop"></a>Emberi hurok
 
-Emberek és a gépek működnek együtt a tartalom moderálás a leghatékonyabb kapott. Gépek hatékony kiegészíthető, mivel az emberi értékelést, ahol az előrejelzés abban, hogy rendelkezik-e támogatott vagy kötelező valós környezetben. Jobb, mint ha a emberek vagy gépek dolgozott különálló által végrehajtott hibrid tartalom moderálás folyamat eredménye.
+És a gépek együttműködésekor közösen dolgozhatnak a tartalom-jóváhagyás küldése az a legjobb eredmények elérése érdekében. Gépek hatékonyan bővítésével emberi értékelések, ahol az előrejelzés megbízhatósági vannak eszközkapcsolat és mérsékelni a való világból bármit környezeten belül. Az eredmény az egy hibrid tartalom-jóváhagyás, amely jobb, mint hogy az emberek és a gépek önmagában is működik.
 
-## <a name="how-the-review-tool-helps"></a>A felülvizsgálati eszköz segítségével hogyan ##
+## <a name="how-the-review-tool-helps"></a>Hogyan segít a a felülvizsgálati eszköz ##
 
-A gép támogatású moderálás API-k együtt használható emberi felülvizsgálati eszköz lehetővé teszi ezen fontos feladatokat a tartalom moderálás életciklusának viszonyítva.
+Az emberi ellenőrző eszközt, ha a gépi támogatású képmoderálás API-kkal együtt használva teszi lehetővé ezen fontos feladatokat a tartalom-jóváhagyás életciklusának viszonyítva.
 
-1. A mögöttes API moderálás eredmények emberi értékelést automatizálhatja
-2. Egy eszköz (felülvizsgálati eszköz és API) segítségével közepes szintű több formátumok (szöveg, kép, és a videó - hamarosan elérhető)
-3. Rendelje hozzá, vagy eszkalálása a tartalom értékelést több felülvizsgálati csoportokhoz tartalom kategóriát vagy a felhasználói élmény szint szerint vannak rendezve.
-4. Alapértelmezett munkafolyamatok használja, vagy adja meg az egyéni munkafolyamatokat rugalmas szabályait, és programozás nélkül.
-5. Emberi felülvizsgálat hozzáadása bármely API-t vagy az üzleti folyamatok egyszerűen épület az összekötőt.
-6. Az alapértelmezett összekötők használatával tekintse át a Microsoft PhotoDNA, Szövegelemzések és Arcfelismerési API-k eredményeket.
-7. A tartalom moderálás folyamatok fontos teljesítménymutatókat szerezni.
+1. Automatizálhatja az alapul szolgáló moderálási API eredményeket az emberi ellenőrzések
+2. Közepes szintű többféle formátumban (szöveg, kép- és) (felülvizsgálati eszköz és API-t) egy eszköz használatával
+3. Tartalom kategória vagy felhasználói szinten szerint vannak rendezve több felülvizsgálati csapatok tartalom felülvizsgálatok eszkalálása vagy rendelhet hozzá.
+4. Alapértelmezett munkafolyamatok, vagy adja meg az egyéni munkafolyamatok rugalmas szabályokkal és kód írása nélkül.
+5. Adja hozzá az emberi ellenőrző bármely API-t vagy az üzleti folyamat egyszerűen egy olyan összekötő létrehozásával.
+6. Az alapértelmezett összekötők használatával a Microsoft PhotoDNA, a Szövegelemzés és a Face API-k eredmények áttekintése.
+7. Bevezetés a fő teljesítménymutatói a tartalom-jóváhagyás folyamatokat.

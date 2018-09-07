@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: sngun
-ms.openlocfilehash: 131ba3dfb8bd8ad8be893e26fcc22c5a0e65f145
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 010556dae1649754df5199fb81c10efcf4c5a226
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39431640"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44050000"
 ---
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>Csatlakozás az Azure Cosmos DB BI elemzési eszközök használata az ODBC-illesztő
 
@@ -173,7 +173,7 @@ Adja meg, és a mintavételi folyamat részeként nézeteket hozhat létre. Ezek
 
 Az adatok nézet létrehozása az a **Sémaszerkesztőt** ablakban, a a **Nézetdefiníciókból** oszlopot, kattintson a **Hozzáadás** mintát a gyűjtemény a sorban. Ezt a a **Nézetdefiníciókból** ablakban tegye a következőket:
 1. Kattintson a **új**, adja meg a nézet, például EmployeesfromSeattleView nevét, majd kattintson **OK**.
-1. Az a **nézet szerkesztése** ablakban adja meg az Azure Cosmos DB-lekérdezést. Ez lehet például egy Azure Cosmos DB SQL-lekérdezés,`SELECT c.City, c.EmployeeName, c.Level, c.Age, c.Gender, c.Manager FROM c WHERE c.City = “Seattle”`, és kattintson a **OK**.
+1. Az a **nézet szerkesztése** ablakban adja meg az Azure Cosmos DB-lekérdezést. Ez lehet például egy Azure Cosmos DB SQL-lekérdezés,`SELECT c.City, c.EmployeeName, c.Level, c.Age, c.Gender, c.Manager FROM c WHERE c.City = "Seattle"`, és kattintson a **OK**.
 
 Tetszés szerint számos nézet hozhat létre. Ha elkészült a nézetek meghatározása, segítségével majd mintavételi az adatokat. 
 

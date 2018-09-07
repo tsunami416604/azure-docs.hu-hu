@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/27/2018
 ms.author: aljo
-ms.openlocfilehash: ed904f7d4de9406e60de1652cefeb5bb84e5a1d8
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.openlocfilehash: cf8e9dff020e16efe4b37a2bfd66563211be3020
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43144038"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44055539"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Service Fabric-fürt beállítások testre szabása
 Ez a cikk ismerteti, hogyan szabhatja testre a különböző hálóbeállítások a Service Fabric-fürt számára. A fürtök az Azure-ban üzemeltetett, testre szabhatja a beállításokat a [az Azure portal](https://portal.azure.com) vagy Azure Resource Manager-sablon használatával. Az önálló fürtök esetén a beállítások a ClusterConfig.json fájl frissítése és a fürtön lévő konfigurációs frissítés végrehajtása testre. 
@@ -624,10 +624,13 @@ A következő fabric testreszabható, beállítások szakasz szerint vannak rend
 ## <a name="security"></a>Biztonság
 | **A paraméter** | **Megengedett értékek** |**Szabályzat frissítése**| **Útmutató vagy rövid leírása** |
 | --- | --- | --- | --- |
+|AADCertEndpointFormat|sztring, alapértelmezett érték a ""|Statikus|AAD Cert végpont formátuma, az Azure kereskedelmi alapértelmezett megadott nem alapértelmezett környezetekben, például az Azure Government "https://login.microsoftonline.us/{0}/federationmetadata/2007-06/federationmetadata.xml" |
 |AADClientApplication|sztring, alapértelmezett érték a ""|Statikus|Natív ügyfél alkalmazás nevét vagy Azonosítóját jelölő Fabric ügyfelek |
 |AADClusterApplication|sztring, alapértelmezett érték a ""|Statikus|Webes API-alkalmazás neve vagy a fürt jelölő azonosító |
+|AADLoginEndpoint|sztring, alapértelmezett érték a ""|Statikus|AAD bejelentkezési végpont, az Azure kereskedelmi alapértelmezett megadott nem alapértelmezett környezetekben, például az Azure Government "https://login.microsoftonline.us" |
 |AADTenantId|sztring, alapértelmezett érték a ""|Statikus|Bérlő azonosítója (GUID) |
 |AdminClientCertThumbprints|sztring, alapértelmezett érték a ""|Dinamikus|Rendszergazdai szerepkör az ügyfelek által használt tanúsítványok ujjlenyomatai. Egy név vesszővel tagolt lista. |
+|AADTokenEndpointFormat|sztring, alapértelmezett érték a ""|Statikus|AAD jogkivonat-végpont, az Azure kereskedelmi alapértelmezett megadott nem alapértelmezett környezetekben, például az Azure Government "https://login.microsoftonline.us/{0}" |
 |AdminClientClaims|sztring, alapértelmezett érték a ""|Dinamikus|Minden lehetséges jogcím rendszergazdai ügyfelektől; a várt felhasználónévként ClientClaims; Ez a lista belsőleg lekérdezi hozzáadott ClientClaims; így nincs szükség ClientClaims bejegyzések is hozzáadhat. |
 |AdminClientIdentities|sztring, alapértelmezett érték a ""|Dinamikus|Rendszergazdai szerepkör; háló ügyfelének Windows identitások emelt szintű fabric operations engedélyezésére használja. Egy vesszővel elválasztott listát; mindegyik bejegyzés a domain Fióknév vagy a csoport nevét. A kényelem; a fabric.exe futtató fiók automatikusan rendszergazdai szerepkör; tehát van ServiceFabricAdministrators csoportba. |
 |CertificateExpirySafetyMargin|Időtartam, az alapértelmezett érték Common::TimeSpan::FromMinutes(43200)|Statikus|Adja meg az időtartam másodpercben. Tanúsítvány lejáratának; biztonsági időkorlát tanúsítvány egészségügyi jelentés figyelmeztetési állapotra vált az OK gombra, ha ennél nagyobb közelebb a lejárati. Alapértelmezett érték 30 nap. |

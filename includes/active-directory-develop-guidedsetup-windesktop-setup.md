@@ -15,51 +15,55 @@ ms.workload: identity
 ms.date: 04/19/2018
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: 5e933406b266b8371019abf0f62365184d8900b3
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: c5d61da61f6ec98a1cac37ce9b12b28019ce2ae1
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "36205244"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44058422"
 ---
 ## <a name="set-up-your-project"></a>A projekt beállítása
 
-Ebben a szakaszban a létrehozhat egy új projektet bemutatják, hogyan integrálhatja a Windows asztali .NET-alkalmazás (XAML) *jelentkezzen be Microsoft* , hogy az alkalmazás webes API-k jogkivonat igénylő lekérdezheti.
+Ebben a szakaszban létrehozott új projektek bemutatják, hogyan integrálható a Windows asztali .NET-alkalmazás (XAML) *Bejelentkezés Microsoft-* úgy, hogy az alkalmazás kérdezheti le jogkivonatot igénylő webes API-k.
 
-Az alkalmazást, amely létrehozta a jelen útmutató egy grafikon, az eredményeket a képernyőn megjeleníthető területe meghívásához használt, és a kijelentkezési gomb jeleníti meg.
+Az alkalmazást, amelyet ez az útmutató létrehoz egy gombot, egy grafikon, egy adott területre a képernyőn az eredmények megjelenítéséhez kezdeményezték, és a Kijelentkezés gombbal jeleníti meg.
 
 > [!NOTE]
-> Ez a minta Visual Studio-projekt letöltése helyette inkább? [Töltse le a projekt](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2/archive/master.zip), és ugorjon a [konfigurációs lépés](#register-your-application) konfigurálása a példakód azt végrehajtása előtt.
+> Töltse le ezt a mintát a Visual Studio-projekt ehelyett inkább? [Töltse le a projekt](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2/archive/master.zip), és ugorjon a [konfigurációs lépés](#register-your-application) konfigurálása a kódminta azt végrehajtása előtt.
 >
 
 Az alkalmazás létrehozásához tegye a következőket:
-1. A Visual Studio válassza **fájl** > **új** > **projekt**.
-2. A **sablonok**, jelölje be **Visual C#**.
-3. Válassza ki **WPF-alkalmazás** vagy **WPF-alkalmazás**, attól függően, a Visual Studio verziója használata verzióját.
+1. A Visual Studióban válassza ki a **fájl** > **új** > **projekt**.
+2. A **sablonok**válassza **Visual C#**.
+3. Válassza ki **WPF-alkalmazás** vagy **Aplikace WPF**, attól függően, Ön által használt verziója a Visual Studio verziójának.
 
-## <a name="add-msal-to-your-project"></a>MSAL hozzáadása a projekthez
-1. A Visual Studio válassza **eszközök** > **NuGet-Csomagkezelő**> **Csomagkezelő konzol**.
+## <a name="add-msal-to-your-project"></a>Az MSAL hozzáadása a projekthez
+1. A Visual Studióban válassza ki a **eszközök** > **NuGet-Csomagkezelő**> **Package Manager Console**.
 2. A Package Manager Console ablakban illessze be a következő Azure PowerShell-parancsot:
 
     ```powershell
-    Install-Package Microsoft.Identity.Client -Pre
+    Install-Package Microsoft.Identity.Client -Pre -Version 1.1.4-preview0002
     ```
 
     > [!NOTE] 
-    > Ez a parancs telepíti a Microsoft-hitelesítési tár. MSAL kezeli az beszerzése, gyorsítótárazás, és az Azure Active Directory v2 által védett API-k elérésére használt felhasználói jogkivonatokhoz frissítésekor.
+    > Ez a parancs telepíti a Microsoft-hitelesítési tár. Az MSAL beszerzéséhez, gyorsítótárazási és frissítése az Azure Active Directory v2-védelemmel ellátott API-k elérésére használt felhasználói jogkivonatok kezeli.
     >
 
-## <a name="add-the-code-to-initialize-msal"></a>Adja hozzá a kódot MSAL inicializálása
-Ebben a lépésben hozzon létre egy osztályt, például jogkivonatokat kezelésének MSAL, interakcióba kezelésére.
+    > [!NOTE]
+    > Ebben a rövid útmutatóban azonban nem használja, de az MSAL.NET, legújabb verzióját, de azt frissítése folyamatban van
+    > 
 
-1. Nyissa meg a *App.xaml.cs* fájlt, és adja hozzá a hivatkozás MSAL az osztályra:
+## <a name="add-the-code-to-initialize-msal"></a>Adja hozzá a kódot az MSAL inicializálása
+Ebben a lépésben hozzon létre egy osztályt, amely kezeli a interakció MSAL, például a jogkivonatok kezelését.
+
+1. Nyissa meg a *App.xaml.cs* fájlt, és adja hozzá a hivatkozást az MSAL az osztályhoz:
 
     ```csharp
     using Microsoft.Identity.Client;
     ```
 <!-- Workaround for Docs conversion bug -->
 
-2. Frissítse az alkalmazás osztály a következőhöz:
+2. Az alkalmazás osztály frissítése a következőhöz:
 
     ```csharp
     public partial class App : Application
@@ -75,9 +79,9 @@ Ebben a lépésben hozzon létre egy osztályt, például jogkivonatokat kezelé
 
 ## <a name="create-the-application-ui"></a>Az alkalmazás felhasználói felület létrehozása
 
-Ez a szakasz bemutatja, hogyan tudja lekérdezni egy alkalmazást a védett háttér-kiszolgálók, például a Microsoft Graph. 
+Ez a szakasz bemutatja, hogyan egy alkalmazás például a Microsoft Graph egy védett háttérrendszeri kiszolgáló lekérdezheti-e. 
 
-A *MainWindow.xaml* fájl automatikusan létrejöjjön a projekt sablon részeként. Nyissa meg a fájlt, és lecseréli a az alkalmazás  *\<rács >* csomópont a következő kóddal:
+A *MainWindow.xaml* fájl automatikusan létrejönnek a projektsablon részeként. Nyissa meg ezt a fájlt, és ezután cserélje le az alkalmazás  *\<rács >* csomópont a következő kóddal:
 
 ```xml
 <Grid>

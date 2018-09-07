@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 ms.component: common
-ms.openlocfilehash: e87b791dda03521def32ca7473336d7d37644773
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: c1effeba7e4b0750d5af3a5a82b755704379af68
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43666019"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44021846"
 ---
 # <a name="creating-an-import-job-for-the-azure-importexport-service"></a>Az Azure Import/Export szolgáltatás importálási feladat létrehozása
 
@@ -97,7 +97,7 @@ Meg kell meghajtók kiszállítása a a címet az előző lépésben beszerzett,
 >  Meg kell egy támogatott szolgáltató szolgáltatással, amely a csomag biztosít egy nyomkövetési azonosító szám meghajtók kiszállítása.
 
 ## <a name="updating-the-import-job-with-your-shipping-information"></a>A szállítási adatait az importálási feladat frissítése
-Miután a nyomkövetési azonosító szám, hívja a [feladat tulajdonságainak frissítése](/api/storageimportexport/jobs#Jobs_Update) szállítási szállító nevét, a feladat a nyomkövetési azonosító szám és a Szállítmányozó számlaszáma a visszaszállítási frissítésére szolgáló művelet. Opcionálisan megadhatja a meghajtókat és a szállítási címhez tartozó dátumot is a számot.
+Miután a nyomkövetési azonosító szám, hívja a [feladat tulajdonságainak frissítése](https://docs.microsoft.com/rest/api/storageimportexport/Jobs/Update) szállítási szállító nevét, a feladat a nyomkövetési azonosító szám és a Szállítmányozó számlaszáma a visszaszállítási frissítésére szolgáló művelet. Opcionálisan megadhatja a meghajtókat és a szállítási címhez tartozó dátumot is a számot.
 
 [!INCLUDE [storage-import-export-delete-personal-info.md](../../../includes/storage-import-export-delete-personal-info.md)]
 

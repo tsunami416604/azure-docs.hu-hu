@@ -1,6 +1,6 @@
 ---
-title: Az Azure Content moderátor - mérsékelt képek .NET használatával |} Microsoft Docs
-description: Hogyan mérsékelt képek Azure tartalom moderátor SDK for .NET használatával
+title: Az Azure Content Moderator – mérsékelt lemezképek .NET használatával |} A Microsoft Docs
+description: Hogyan közepes rendszerképeket az Azure Content Moderator SDK a .NET-hez
 services: cognitive-services
 author: sanjeev3
 manager: mikemcca
@@ -9,40 +9,40 @@ ms.component: content-moderator
 ms.topic: article
 ms.date: 01/04/2018
 ms.author: sajagtap
-ms.openlocfilehash: cc2329c233029a1ff6bd82da3d090c4e98a8bac8
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 4a73892d44b4ae92f08976c8f54771292bba3a1d
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347090"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44025516"
 ---
-# <a name="moderate-images-using-net"></a>Mérsékelt képek .NET használatával
+# <a name="moderate-images-using-net"></a>Mérsékelt lemezképek .NET használatával
 
-Ez a cikk információkat tartalmazza, és mintakódok segítséget első lépései a .NET-hez, hogy a tartalom moderátor SDK használatával: 
-- Ellenőrizze a felnőtt vagy ellopható tartalom kép
-- Észleli és a szöveg kinyerése a képfájl
-- A kép lapok észlelése
+Ez a cikk nyújt információt, és kódminták segítségével történő használatának első lépései a [Content Moderator SDK for .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) való: 
+- Ellenőrizze a felnőtt vagy pikáns tartalom kép
+- Észlelése és a egy rendszerképből szöveg kinyerése
+- A kép arcok észlelése
 
-Ez a cikk feltételezi, hogy Ön már ismeri a Visual Studio és a C#.
+Ez a cikk azt feltételezi, hogy már ismeri a Visual Studio és C#.
 
-## <a name="sign-up-for-content-moderator-services"></a>Iratkozzon fel a tartalom moderátor szolgáltatások
+## <a name="sign-up-for-content-moderator-services"></a>Iratkozzon fel a Content Moderator szolgáltatások
 
-Tartalom moderátor-szolgáltatások díjairól a REST API-t vagy az SDK használata előtt be kell egy előfizetési kulcsot.
-Tekintse meg a [gyors üzembe helyezés](quick-start.md) megtudhatja, hogyan szerezhet a kulcsot.
+A REST API-t vagy az SDK-t a Content Moderator szolgáltatások használata előtt szüksége van egy előfizetési kulcsot.
+Tekintse meg a [rövid](quick-start.md) megtudhatja, hogyan szerezheti be a kulcsot.
 
 ## <a name="create-your-visual-studio-project"></a>A Visual Studio-projekt létrehozása
 
-1. Adjon hozzá egy új **Konzolalkalmazás (.NET-keretrendszer)** -projektet a megoldásban.
+1. Vegyen fel egy új **Console app (.NET Framework)** projektet a megoldáshoz.
 
-   A mintakód a nevet a projektnek **ImageModeration**.
+   A mintakód adja a projektnek **ImageModeration**.
 
-1. Jelölje ki a projektet a megoldásban egyetlen kiindulási projektként.
+1. Jelölje ki a projektet a megoldáshoz egyetlen indítási projektként.
 
-1. Adjon hozzá egy hivatkozást, a **ModeratorHelper** szerelvény a projektre a [tartalom moderátor ügyfél segítő gyors üzembe helyezés](content-moderator-helper-quickstart-dotnet.md).
+1. Vegyen fel egy hivatkozást a **ModeratorHelper** projekt szerelvény, amelyet a [a Content Moderator ügyfél segítő rövid](content-moderator-helper-quickstart-dotnet.md).
 
 ### <a name="install-required-packages"></a>Szükséges csomagok telepítése
 
-A következő NuGet-csomagok telepítése:
+A következő NuGet-csomagok telepítéséhez:
 
 - Microsoft.Azure.CognitiveServices.ContentModerator
 - Microsoft.Rest.ClientRuntime
@@ -50,7 +50,7 @@ A következő NuGet-csomagok telepítése:
 
 ### <a name="update-the-programs-using-statements"></a>Frissítés a program által utasítások segítségével.
 
-Módosítsa a program által using utasításokat.
+Módosítsa a program által utasítások segítségével.
 
     using Microsoft.CognitiveServices.ContentModerator;
     using Microsoft.CognitiveServices.ContentModerator.Models;
@@ -61,9 +61,9 @@ Módosítsa a program által using utasításokat.
     using System.IO;
     using System.Threading;
 
-### <a name="initialize-application-specific-settings"></a>Az alkalmazás-specifikus beállításokat inicializálása
+### <a name="initialize-application-specific-settings"></a>Alkalmazás-specifikus beállítások inicializálása
 
-A következő statikus mezők hozzáadása a **Program** osztály a program.cs fájlban.
+Adja hozzá a következő statikus mezőket a **Program** osztály a program.cs fájlban.
 
     ///<summary>
     ///The name of the file that contains the image URLs to evaluate.
@@ -82,13 +82,13 @@ A következő statikus mezők hozzáadása a **Program** osztály a program.cs f
 
 
 > [!NOTE]
-> A példa használja az alábbi képek a kimenetet a gyors üzembe helyezés létre.
+> A példa az alábbi lemezképek létrehozása ebben a rövid útmutatóban a kimenetet.
 > - https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg
 > - https://moderatorsampleimages.blob.core.windows.net/samples/sample5.png
 
-## <a name="store-the-analysis-results"></a>Az elemzés eredményeinek tárolásához
+## <a name="store-the-analysis-results"></a>Az elemzés eredménye Store
 
-Adja hozzá a következő osztályt a **Program** osztály. Ez az osztály példánya segítségével rögzítheti a át kell tekinteni képek moderálás eredményét.
+Adja hozzá a következő osztály a **Program** osztály. Ez az osztály egy példányát segítségével rögzítheti az ellenőrzött rendszerképek az moderálás eredményeket.
 
     /// <summary>
     /// Contains the image moderation results for an image, 
@@ -117,14 +117,14 @@ Adja hozzá a következő osztályt a **Program** osztály. Ez az osztály péld
         public FoundFaces FaceDetection;
     }
 
-## <a name="evaluate-an-individual-image"></a>Egyéni lemezkép kiértékelése
+## <a name="evaluate-an-individual-image"></a>Egyéni kép kiértékelése
 
-Adja hozzá a **Program** osztályhoz a következő metódust. Ez a metódus egyetlen lemezkép kiértékeli, és az értékelés eredményét adja vissza.
+Adja hozzá a **Program** osztályhoz a következő metódust. Ez a módszer egy lemezkép kiértékeli, és az értékelés eredményét adja vissza.
 
 > [!NOTE]
-> A tartalom moderátor szolgáltatási kulcs egy kérelmek / második (RPS) sávszélesség-korlátjának rendelkezik, és ha meghaladja a korlátot, az SDK 429-es jelű hibakód kivételt jelez. 
+> A Content Moderator Szolgáltatáskulcs rendelkezik egy második (RPS) sávszélesség-korlátjának kérelemre, és ha túllépi a korlátot, az SDK kivételt 429 hibakód. 
 >
-> Ingyenes szint kulcs egy RPS sávszélesség-korlátjának rendelkezik.
+> Ingyenes szint kulcs esetében egy függő Entitás sebessége.
 
 
     /// <summary>
@@ -165,16 +165,16 @@ Adja hozzá a **Program** osztályhoz a következő metódust. Ez a metódus egy
         return imageData;
     }
 
-A **EvaluateUrlInput** módszer a kép moderálás REST API-t egy burkolót.
-Az eredményül kapott értéket a az API-hívás által visszaadott objektumot tartalmaz.
+A **EvaluateUrlInput** módszer a következő egy burkoló a lemezkép moderálás REST API-hoz.
+A visszaadott érték tartalmazza az API-hívás által visszaadott objektum.
 
-A **OCRUrlInput** módszer a kép OCR REST API-t egy burkolót.
-Az eredményül kapott értéket a az API-hívás által visszaadott objektumot tartalmaz.
+A **OCRUrlInput** módszer a következő egy burkoló a lemezkép OCR REST API-hoz.
+A visszaadott érték tartalmazza az API-hívás által visszaadott objektum.
 
-A **FindFacesUrlInput** módszer a kép keresése előtt álló REST API-t egy burkolót.
-Az eredményül kapott értéket a az API-hívás által visszaadott objektumot tartalmaz.
+A **FindFacesUrlInput** módszer a következő egy burkoló a rendszerkép keresése arcokat REST API-hoz.
+A visszaadott érték tartalmazza az API-hívás által visszaadott objektum.
 
-## <a name="process-the-image-urls-in-your-code"></a>A kép URL-címek a kódban feldolgozására
+## <a name="process-the-image-urls-in-your-code"></a>A kép URL-címeket a kódban feldolgozása
 
 Adja hozzá a következő kódot a **fő** metódust.
 
@@ -211,11 +211,11 @@ Adja hozzá a következő kódot a **fő** metódust.
 
 ## <a name="run-the-program-and-review-the-output"></a>Futtassa a programot, és tekintse át a kimenetet
 
-A következő JSON-objektum tartalmazza a program kimenete.
+A következő JSON-objektum tartalmazza a program kimenetét.
 
 > [!NOTE]
-> `isImageAdultClassified` olyan lemezképkészlet, amellyel ivarilag explicit vagy bizonyos esetekben felnőtt tekinthetők lehetséges meglétének jelöli.
-> `isImageRacyClassified` olyan lemezképkészlet, amellyel ivarilag kétértelmű vagy bizonyos esetekben érett tekinthetők lehetséges meglétének jelöli.
+> `isImageAdultClassified` a rendszerkép található, előfordulhat, hogy figyelembe kell venni, nyíltan explicit vagy bizonyos esetekben felnőtt lehetséges jelenléte jelöli.
+> `isImageRacyClassified` a rendszerkép található, előfordulhat, hogy figyelembe kell venni, nyíltan kétértelmű vagy bizonyos esetekben érett lehetséges jelenléte jelöli.
 >
 
     [
@@ -401,6 +401,6 @@ A következő JSON-objektum tartalmazza a program kimenete.
     ]
 
 
-## <a name="next-steps---get-the-source-code"></a>További lépések - forráskódot beolvasása
+## <a name="next-steps---get-the-source-code"></a>A forrás kód lekérése a következő lépések szükségesek:
 
-[Töltse le a Visual Studio megoldás](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) ennél és egyéb tartalom moderátor quickstarts a .NET-hez, és az integráció a kezdéshez.
+Első a [Content Moderator .NET SDK-val](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) és a [Visual Studio-megoldás](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) ennél és a többi a Content Moderator rövid útmutató a .NET-hez, és az integrációval kapcsolatos első lépések.

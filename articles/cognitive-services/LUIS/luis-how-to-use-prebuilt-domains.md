@@ -1,20 +1,21 @@
 ---
-title: A LUIS-alkalmazások az Azure-ban előre összeállított tartományok használata |} A Microsoft Docs
-description: Ismerje meg, a Language Understanding Intelligent Service (LUIS) alkalmazások előre összeállított tartományok használata.
+title: Előre összeállított tartományok használata az alkalmazások gyorsabb a LUIS-alkalmazások készítése
+titleSuffix: Azure Cognitive Services
+description: Language Understanding (LUIS) biztosít az előre összeállított tartományok, az ügyfélalkalmazások általános kategóriáit vagy előre létrehozott adatkészletek szándékok és entitások, amelyek együtt, a tartományok számára. Az előre összeállított tartományok előre betanított, és készen áll, hogy a LUIS-alkalmazás.
 services: cognitive-services
 author: diberry
 manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 12/13/2017
+ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: df57f9adf5bf7f5f652a77ddeafe950463c6a9fc
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 80a83fdb1e2b84ac03d0ae0cf969f1635f00cca0
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224177"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44053723"
 ---
 # <a name="use-prebuilt-domains-in-luis-apps"></a>A LUIS-alkalmazások előre összeállított tartományok használata  
 

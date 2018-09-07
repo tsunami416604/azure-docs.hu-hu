@@ -9,16 +9,16 @@ ms.component: content-moderator
 ms.topic: article
 ms.date: 01/04/2018
 ms.author: sajagtap
-ms.openlocfilehash: 7320286e186d7e6ba4041d3ed52f19e573b4d7e3
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 87ed816077d2c742223a0350851cdf2f0c5653f6
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39049881"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44023038"
 ---
 # <a name="moderate-text-using-net"></a>Mérsékelt szöveg .NET használatával
 
-Ez a cikk nyújt információt, és kódminták segítségével .NET-Content Moderator SDK használatának első lépései:
+Ez a cikk nyújt információt, és kódminták segítségével történő használatának első lépései a [Content Moderator SDK for .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) való:
 - Vulgáris SMS-t kifejezés szerinti szűrés
 - A machine learning-alapú modellek használata [besorolása a szöveg](text-moderation-api.md#classification) három kategóriába sorolhatók.
 - Például Egyesült Államok és UK telefonszámok, e-mail-címeket és postai címéhez USA észleli a személyes azonosításra alkalmas adatokat (PII).
@@ -211,4 +211,4 @@ A minta a program kimenetét, a naplófájlba írt van:
 
 ## <a name="next-steps"></a>További lépések
 
-[Töltse le a Visual Studio-megoldás](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) ennél és a többi a Content Moderator rövid útmutató a .NET-hez, és az integrációval kapcsolatos első lépések.
+Első a [Content Moderator .NET SDK-val](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) és a [Visual Studio-megoldás](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) ennél és a többi a Content Moderator rövid útmutató a .NET-hez, és az integrációval kapcsolatos első lépések.

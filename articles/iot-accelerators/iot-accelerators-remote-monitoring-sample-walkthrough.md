@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 11/10/2017
 ms.author: dobett
-ms.openlocfilehash: dfe584532efeab1dbc0d2928b7afb0a6695a21ee
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 097eba4f5bcbb74d4158cc8d4135255d31e03ebd
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39184945"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44027010"
 ---
 # <a name="remote-monitoring-solution-accelerator-overview"></a>Távoli figyelés megoldásgyorsító áttekintése
 
@@ -42,9 +42,15 @@ Felhőarchitektúra alakult óta a Microsoft, amely az első megoldásgyorsító
 
 A megoldás az eszköz kapcsolat a logikai architektúra egy része a következő összetevőket tartalmazza:
 
-### <a name="simulated-devices"></a>Szimulált eszközök
+### <a name="physical-devices"></a>Fizikai eszközök
 
-A megoldás, amely lehetővé teszi a végpontok közötti folyamat teszteléséhez a megoldásban a szimulált eszközök készletét kezelését mikroszolgáltatások tartalmaz. A szimulált eszközök:
+Fizikai eszközök csatlakoztatása a megoldáshoz. A szimulált eszközök Azure IoT eszközoldali SDK-k használatával viselkedését valósítható meg.
+
+Telepíthet fizikai eszközökön a megoldásportál az irányítópultról.
+
+### <a name="device-simulation-microservice"></a>Eszköz szimulálása mikroszolgáltatások
+
+A megoldás magában foglalja a [eszköz szimulálása mikroszolgáltatás](https://github.com/Azure/remote-monitoring-services-dotnet/tree/master/device-simulation) , amely lehetővé teszi a megoldás irányítópultján a végpontok közötti folyamat teszteléséhez a megoldásban a szimulált eszközök készletét alakítja kezelését. A szimulált eszközök:
 
 * Hozzon létre az eszköz – felhő telemetriát.
 * Az IoT hubról válaszolni a felhőből az eszközre metódust hívja.
@@ -53,24 +59,24 @@ A mikroszolgáltatások létrehozása, indítása és leállítása szimuláció
 
 Szimulált eszközök a megoldásportálon az irányítópultról építhető ki.
 
-### <a name="physical-devices"></a>Fizikai eszközök
+### <a name="iot-hub"></a>IoT Hub
 
-Fizikai eszközök csatlakoztatása a megoldáshoz. A szimulált eszközök Azure IoT eszközoldali SDK-k használatával viselkedését valósítható meg.
-
-Telepíthet fizikai eszközökön a megoldásportál az irányítópultról.
-
-### <a name="iot-hub-and-the-iot-manager-microservice"></a>Az IoT Hub és az IoT-kezelő mikroszolgáltatások
-
-A [az IoT hub](../iot-hub/index.yml) feltölti a felhőbe az eszközök által küldött adatokat, és lehetővé teszi az a `telemetry-agent` mikroszolgáltatás.
+A [az IoT hub](../iot-hub/index.yml) feltölti a felhőbe a fizikai és szimulált eszközök által küldött telemetriát. Az IoT hub teszi az IoT-megoldás háttérszolgáltatás feldolgozásra a szolgáltatások elérhetővé a telemetriát.
 
 A megoldásban az IoT Hub ezenkívül a következőket teszi:
 
-* Fenntart egy identitásjegyzéket, amely tárolja a azonosítók és a hitelesítési kulcsokat, a portálhoz csatlakoztatható összes eszköz. Az identitásjegyzéken keresztül a felhasználó engedélyezheti és letilthatja az eszközöket.
-* Metódusokat indít az eszközökön a megoldásportál nevében.
+* Fenntart egy identitásjegyzéket, amely tárolja a azonosítók és a hitelesítési kulcsokat, a portálhoz csatlakoztatható összes eszköz.
+* Az eszközök metódusokat indít a megoldásgyorsító nevében.
 * Az összes regisztrált eszközhöz biztosítja a megfelelő ikereszközt. Az ikereszközök tárolják az eszközök által jelentett tulajdonságértékeket. Az ikereszközök a megoldásportálon beállított kívánt tulajdonságokat is tárolják, amelyeket az eszköz a következő csatlakozáskor kérhet le.
 * Feladatokat ütemez, hogy több eszközön is beállíthasson tulajdonságokat vagy meghívhasson metódusokat.
 
-A megoldás magában foglalja a `iot-manager` mikroszolgáltatás például kezelni az interakciók az IoT hubbal:
+## <a name="data-processing-and-analytics"></a>Adatfeldolgozás és -elemzés
+
+A megoldás az adatfeldolgozás és -elemzés a logikai architektúra egy része a következő összetevőket tartalmazza:
+
+### <a name="iot-hub-manager-microservice"></a>Az IoT Hub manager mikroszolgáltatások
+
+A megoldás magában foglalja a [az IoT Hub manager mikroszolgáltatás](https://github.com/Azure/remote-monitoring-services-dotnet/tree/master/iothub-manager) például kezelni az interakciók az IoT hubbal:
 
 * Létrehozása, és IoT-eszközök kezelése.
 * Ikereszközök kezelése.
@@ -81,36 +87,45 @@ Ez a szolgáltatás is fut, az IoT Hub lekérdezések felhasználói csoportokho
 
 A mikroszolgáltatás egy RESTful végpontot kezelheti az eszközöket és ikereszközök, metódusokat hívhat meg, és az IoT Hub-lekérdezések futtatásához biztosít.
 
-## <a name="data-processing-and-analytics"></a>Adatfeldolgozás és -elemzés
+### <a name="telemetry-microservice"></a>Telemetria mikroszolgáltatások
 
-A megoldás az adatfeldolgozás és -elemzés a logikai architektúra egy része a következő összetevőket tartalmazza:
+A [telemetriai mikroszolgáltatás](https://github.com/Azure/remote-monitoring-services-dotnet/tree/master/device-telemetry) RESTful végpontot biztosít olvasási hozzáférésének eszköztelemetria, szabályok és olvasási/írási hozzáférést riasztás definíciók CRUD-műveletek storage-ból.
 
-### <a name="device-telemetry"></a>Eszköztelemetria
+### <a name="storage-adapter-microservice"></a>Tárolási adapter mikroszolgáltatások
 
-A megoldás tartalmaz két mikroszolgáltatás-alapú eszköz telemetriai adatok kezeléséhez.
+A [tárolási adapter mikroszolgáltatás](https://github.com/Azure/remote-monitoring-services-dotnet/tree/master/storage-adapter) kezeli a kulcs-érték párok, a storage szolgáltatás szemantikát paltformfüggetlen, és a egy egyszerű felületen bemutatása, a tetszőleges méretű, az Azure Cosmos DB adatait tárolja.
 
-A [telemetriai ügynök](https://github.com/Azure/telemetry-agent-dotnet) mikroszolgáltatás:
+Értékek a gyűjteményekben vannak rendszerezve. Egyéni értékeket dolgozhat, vagy teljes gyűjtemények beolvasni. Összetett adatstruktúrákat szerializálni az ügyfelek és felügyelt egyszerű szöveges tartalom.
 
-* Az Azure Cosmos DB tárolja a telemetriai adatokat.
-* Az eszközök telemetriastreamjét elemzi.
-* Meghatározott szabályok szerint riasztást generál.
+A szolgáltatás egy RESTful végpontot biztosít a kulcs-érték párok CRUD-műveletek. Értékek
 
-A riasztások az Azure Cosmos DB tárolja.
+### <a name="cosmos-db"></a>Cosmos DB
 
-A [telemetriai ügynök](https://github.com/Azure/telemetry-agent-dotnet) mikroszolgáltatás lehetővé teszi, hogy a megoldás portálján, olvassa el az eszközök által küldött telemetriát. A megoldás portálja is használja ezt a szolgáltatást:
+Használja a normál a megoldásgyorsító központi [Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/) a fő tárolási szolgáltatásként.
 
-* Például a küszöbértékeket, riasztást kiváltó figyelési szabályok definiálása
-* Elmúlt riasztások listájának beolvasása.
+### <a name="azure-stream-analytics-manager-microservice"></a>Az Azure Stream Analytics manager mikroszolgáltatások
 
-A mikroszolgáltatások által biztosított RESTful-végpont használatával telemetriai adatokat, a szabályok és a riasztások kezelése.
+A [Azure Stream Analytics manager mikroszolgáltatás](https://github.com/Azure/remote-monitoring-services-dotnet/tree/master/asa-manager) kezeli az Azure Stream Analytics (ASA) feladatokat, beleértve a beállítás a konfigurációt, indítása és leállítása őket, és azok állapotának figyelése.
 
-### <a name="storage"></a>Storage
+Az ASA-feladat két referencia-adathalmaz támogatja. Egy adatkészlet meghatározza a szabályok, és a egy meghatározza, hogy az eszközcsoportok. A szabályok referenciaadatokat a telemetriai adatok mikroszolgáltatás által kezelt adatok alapján jön létre. Az Azure Stream Analytics manager mikroszolgáltatás streamfeldolgozó logikákat telemetriai szabályok alakítja át.
 
-A [tárolóadaptert](https://github.com/Azure/pcs-storage-adapter-dotnet) a mikroszolgáltatások általában az adapter beállításai a megoldásgyorsító használt fő storage szolgáltatás elé. Egyszerű adatgyűjtési és -kulcs-érték tároló biztosít.
+Az eszköz csoportok referenciaadatok melyik csoporthoz a alkalmazni a bejövő telemetriát üzenet szabályok azonosítására szolgál. Az eszközcsoportok a konfigurációs mikroszolgáltatás által felügyelt, és az Azure IoT Hub ikereszköz-lekérdezések használata.
 
-A normál a megoldásgyorsító központi Azure Cosmos DB használja, mint a fő storage szolgáltatás.
+### <a name="azure-stream-analytics"></a>Azure Stream Analytics
 
-Az Azure Cosmos DB-adatbázisban tárol adatokat a megoldásgyorsító. A **tárolóadaptert** mikroszolgáltatás a többi mikroszolgáltatások hozzáférés tárolási szolgáltatásokhoz a megoldásban az adapter funkcionál.
+[Az Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/) egy eseményfeldolgozó motor, amely lehetővé teszi, hogy az adatokat az eszközökről streamelt nagy mennyiségű van.
+
+### <a name="configuration-microservice"></a>Konfigurációs mikroszolgáltatások
+
+A [konfigurációs mikroszolgáltatás](https://github.com/Azure/remote-monitoring-services-dotnet/tree/master/config) RESTful végpontot biztosít az eszközcsoportok, a megoldásbeállítások és a felhasználói-beállítások a megoldásgyorsító CRUD-műveletek. A tárolási adapter mikroszolgáltatás megőrizheti a konfigurációs adatokat is működik.
+
+### <a name="authentication-and-authorization-microservice"></a>Hitelesítés és engedélyezés mikroszolgáltatások
+
+A [hitelesítési és engedélyezési mikroszolgáltatás](https://github.com/Azure/remote-monitoring-services-dotnet/tree/master/auth) jogosult hozzáférni a megoldásgyorsító a felhasználókat kezeli. Felhasználókezelés végezhető identitásszolgáltatóval minden olyan szolgáltatás, amely támogatja a [OpenId Connect](http://openid.net/connect/).
+
+### <a name="azure-active-directory"></a>Azure Active Directory
+
+Használja a normál a megoldásgyorsító központi [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/) , az OpenID Connect-szolgáltató. Az Azure Active Directory tárolja a felhasználói adatok és tanúsítványok ellenőrzése a JWT jogkivonat-aláírás biztosítja. 
 
 ## <a name="presentation"></a>Bemutató
 
@@ -122,16 +137,16 @@ A [webes felhasználói felülete egy React Javascript-alkalmazás, amely](https
 * A kódstílusként CSS használatával.
 * Nyilvános irányuló mikroszolgáltatások AJAX-hívások keresztül kommunikál.
 
-A felhasználói felület a megoldás gyorsító funkciókat mutat be, és más szolgáltatásokkal együttműködő például:
+A felhasználói felület a megoldás gyorsító funkciókat mutat be, és kommunikál a többi mikroszolgáltatások például:
 
-* A [hitelesítési](https://github.com/Azure/pcs-auth-dotnet) mikroszolgáltatás felhasználói adatok védelme érdekében.
-* A [iothub-kezelő](https://github.com/Azure/iothub-manager-dotnet) mikroszolgáltatás listázása és az IoT-eszközök felügyeletére.
+* A hitelesítési és engedélyezési mikroszolgáltatás felhasználói adatok védelme érdekében.
+* Az IoT Hub manager mikroszolgáltatás listázása és az IoT-eszközök felügyeletére.
 
-A [ui-config](https://github.com/Azure/pcs-config-dotnet) mikroszolgáltatás lehetővé teszi, hogy a felhasználói felület, tárolására és beolvasására a konfigurációs beállításokat.
+A konfigurációs mikroszolgáltatás lehetővé teszi, hogy a felhasználói felület, tárolására és beolvasására a konfigurációs beállításokat.
 
 ## <a name="next-steps"></a>További lépések
 
-Ha szeretné a forrás-kód és a fejlesztői dokumentáció, a kezdéshez válasszon egyet a két fő GitHub-adattárak:
+Ha szeretné a forrás-kód és a fejlesztői dokumentáció, a kezdéshez válasszon egyet a két GitHub-adattárak:
 
 * [A távoli megfigyelés az Azure IoT (.NET) megoldásgyorsító](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/).
 * [Az Azure IoT (Java) a távoli figyelési megoldásgyorsító](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java).

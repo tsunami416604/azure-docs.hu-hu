@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 06/02/2017
 ms.author: rogarana
 ms.component: common
-ms.openlocfilehash: 12b383267cb90d9305043b52450572add0c1c202
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: d09505e4738243576dbde64fa6daba22d054bc8e
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39527490"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44053267"
 ---
 # <a name="using-the-azure-cli-20-with-azure-storage"></a>Az Azure Storage az Azure CLI 2.0 használatával
 
@@ -105,7 +105,7 @@ Ezután fogja együttműködünk egy kis héjparancsfájlt, amely néhány alapv
 # A simple Azure Storage example script
 
 export AZURE_STORAGE_ACCOUNT=<storage_account_name>
-export AZURE_STORAGE_ACCESS_KEY=<storage_account_key>
+export AZURE_STORAGE_KEY=<storage_account_key>
 
 export container_name=<container_name>
 export blob_name=<blob_name>
@@ -210,7 +210,7 @@ Most, hogy a kulcs, környezeti változókként, és a fiók nevét adhatja meg:
 
 ```azurecli
 export AZURE_STORAGE_ACCOUNT=<account_name>
-export AZURE_STORAGE_ACCESS_KEY=<key>
+export AZURE_STORAGE_KEY=<key>
 ```
 
 Egy alapértelmezett tárfiókot be egy másik úgy, hogy a kapcsolati karakterlánc használatával. Először kérje le a kapcsolati karakterláncot a `show-connection-string` parancsot:
@@ -228,7 +228,7 @@ export AZURE_STORAGE_CONNECTION_STRING="<connection_string>"
 ```
 
 > [!NOTE]
-> Ez a cikk a következő szakaszokban az összes példák azt feltételezik, hogy beállított a `AZURE_STORAGE_ACCOUNT` és `AZURE_STORAGE_ACCESS_KEY` környezeti változókat.
+> Ez a cikk a következő szakaszokban az összes példák azt feltételezik, hogy beállított a `AZURE_STORAGE_ACCOUNT` és `AZURE_STORAGE_KEY` környezeti változókat.
 
 ## <a name="create-and-manage-blobs"></a>Hozzon létre és kezelheti a blobokat
 Az Azure Blob storage szolgáltatás nagy mennyiségű strukturálatlan adat, például szöveg vagy bináris adatot, amely segítségével bárhonnan elérhetők HTTP- vagy HTTPS keresztül a világon tárolásához. Ez a szakasz azt feltételezi, hogy már ismeri az Azure Blob-tárolóval kapcsolatos fogalmak. Részletes információkért lásd: [.NET használatával az Azure Blob storage használatának első lépései](../blobs/storage-dotnet-how-to-use-blobs.md) és [Blob szolgáltatással kapcsolatos fogalmak](/rest/api/storageservices/blob-service-concepts).
@@ -257,6 +257,8 @@ az storage blob upload \
     --container-name <container_name> \
     --name <blob_name>
 ```
+
+Ha közvetlenül feltöltése egy mappát a tárolóban, a storage-fiókban, szeretné, cserélje le a `--name <blob_name>` a `--name <folder/blob_name>`.
 
  Alapértelmezés szerint a `blob upload` parancs feltölti *.vhd fájlok lapblobok, illetve egyéb a blokkblobok használatát támogatják. Adjon meg egy másik típusú, ha feltölt egy blobot, használhatja a `--type` argumentum – engedélyezett értékek `append`, `block`, és `page`.
 

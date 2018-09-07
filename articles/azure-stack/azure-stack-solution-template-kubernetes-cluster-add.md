@@ -11,22 +11,22 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/09/2018
+ms.date: 09/06/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: bff0140d173fc3393ac56ec3d709c3c067842a2a
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: 9287eb0925556d382410f95caf16a9ca478ca2da
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42055698"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44054417"
 ---
 # <a name="add-a-kubernetes-cluster-to-the-azure-stack-marketplace"></a>Adjon hozzá egy Kubernetes-fürtöt az Azure Stack piactéren
 
 *A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
 
 > [!note]  
-> Azure Stack az Azure Kubernetes-szolgáltatások (AKS) szolgáltatásban Kubernetesen private preview verzióban van. A Kubernetes Piactéri elem ebben a cikkben szereplő utasítások végrehajtásához szükséges hozzáférési kérelmek [hozzáférés beolvasására irányuló kérelem elküldése](https://aka.ms/azsk8).
+> Az AKS (az Azure Kubernetes Service) motor, az Azure Stacken private preview verzióban van. A Kubernetes Piactéri elem ebben a cikkben szereplő utasítások végrehajtásához szükséges hozzáférési kérelmek [hozzáférés beolvasására irányuló kérelem elküldése](https://aka.ms/azsk8).
 
 Elérhetővé teheti egy Kubernetes-fürtöt, a Piactéri elem a felhasználók számára. A felhasználók egyetlen, koordinált műveletben telepítheti a Kubernetes.
 
@@ -66,7 +66,7 @@ Adja hozzá a következő Ubuntu Server-lemezképet a Marketplace-en:
 
 1. Jelentkezzen be a [felügyeleti portálján](https://adminportal.local.azurestack.external).
 
-1. Válassza ki **további szolgáltatások** > **Marketplace felügyeleti**.
+1. Válassza ki **minden szolgáltatás**, majd a a **felügyeleti** kategória, jelölje be **Marketplace felügyeleti**.
 
 1. Válassza ki **+ hozzáadása az Azure-ból**.
 
@@ -89,7 +89,7 @@ A Kubernetes-fürt hozzáadása a Marketplace-ről:
 
 1. Nyissa meg a [felügyeleti portálján](https://adminportal.local.azurestack.external).
 
-1. Válassza ki **további szolgáltatások** > **Marketplace felügyeleti**.
+1. Válassza ki **minden szolgáltatás** , majd a a **felügyeleti** kategória, jelölje be **Marketplace felügyeleti**.
 
 1. Válassza ki **+ hozzáadása az Azure-ból**.
 
@@ -110,7 +110,7 @@ A Kubernetes-fürt hozzáadása a Marketplace-ről:
 
 1. Nyissa meg a [felügyeleti portálján](https://adminportal.local.azurestack.external).
 
-1. Válassza ki **további szolgáltatások** > **Marketplace felügyeleti**.
+1. Válassza ki **A; szolgáltatások** , majd a a **felügyeleti** kategória, jelölje be **Marketplace felügyeleti**.
 
 1. Válassza ki **+ hozzáadása az Azure-ból**.
 

@@ -1,6 +1,6 @@
 ---
-title: Az Azure Content moderátor - indítási moderálás feladatok .NET használatával |} Microsoft Docs
-description: Hogyan moderálás feladatokat Azure tartalom moderátor SDK for .NET használatával
+title: Az Azure Content Moderator – kezdő moderálás feladatok .NET használatával |} A Microsoft Docs
+description: .NET-hez készült Azure Content Moderator SDK használatával moderálás feladatok indítása
 services: cognitive-services
 author: sanjeev3
 manager: mikemcca
@@ -9,49 +9,61 @@ ms.component: content-moderator
 ms.topic: article
 ms.date: 01/06/2018
 ms.author: sajagtap
-ms.openlocfilehash: a103875607355993e216ce1ddea02009fc8fa1c4
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: d936ff91cd2b7db6a88c4adb0a6f332205b814bb
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347079"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44022066"
 ---
-# <a name="start-moderation-jobs-using-net"></a>Indítsa el a moderálás feladatok .NET használatával
+# <a name="start-moderation-jobs-using-net"></a>.NET-tel moderálás feladatok indításához
 
-Ez a cikk információkat tartalmazza, és mintakódok segítséget első lépései a .NET-hez, hogy a tartalom moderátor SDK használatával:
+Ez a cikk nyújt információt, és kódminták segítségével történő használatának első lépései a [Content Moderator SDK for .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) való:
  
-- Vizsgálati, és hozzon létre értékelést emberi moderátorok moderálás feladat indítása
-- A függőben lévő felülvizsgálat állapotának beolvasása
-- Követésének és a nézze át a végső állapot
+- Vizsgálat, és hozzon létre értékelések emberi moderátorok moderálás feladat indítása
+- A függőben lévő felülvizsgálati állapotának lekérése
+- Nyomon követheti, és a felülvizsgálat végső állapotának lekérése
 - Küldje el az eredmény a visszahívási URL-cím
 
-Ez a cikk feltételezi, hogy Ön már ismeri a Visual Studio és a C#.
+Ez a cikk azt feltételezi, hogy már ismeri a Visual Studio és C#.
 
-## <a name="sign-up-for-content-moderator-services"></a>Iratkozzon fel a tartalom moderátor szolgáltatások
+## <a name="sign-up-for-content-moderator"></a>Iratkozzon fel a Content Moderator
 
-Tartalom moderátor-szolgáltatások díjairól a REST API-t vagy az SDK használata előtt be kell egy előfizetési kulcsot.
-Tekintse meg a [gyors üzembe helyezés](quick-start.md) megtudhatja, hogyan szerezhet a kulcsot.
+A REST API-t vagy az SDK-t a Content Moderator szolgáltatások használata előtt szüksége van egy előfizetési kulcsot.
+Tekintse meg a [rövid](quick-start.md) megtudhatja, hogyan szerezheti be a kulcsot.
 
-## <a name="define-a-custom-moderation-workflow"></a>Adja meg egy egyéni moderálás munkafolyamat
+## <a name="sign-up-for-a-review-tool-account-if-not-completed-in-the-previous-step"></a>Ha nem végzi el az előző lépésben felülvizsgálati eszköz fiókot regisztráljon
 
-Egy moderálás feladat megvizsgálja az API-k és használ a tartalom egy **munkafolyamat** annak megállapításához, hogy értékelést létrehozásához, vagy nem.
-Amíg a felülvizsgálati eszköz tartalmaz egy alapértelmezett munkafolyamat most [adja meg egy egyéni munkafolyamat](Review-Tool-User-Guide/Workflows.md) a gyors üzembe helyezés a.
+Ha kapott a Content Moderator az Azure Portalon is [a felülvizsgálati eszköz fiók](https://contentmoderator.cognitive.microsoft.com/) , és tekintse át a csoport létrehozása. A csoport azonosítója, és indítsa el a feladatot, és tekintse meg az értékelések a vizsgálóeszközt, a felülvizsgálati API hívása a felülvizsgálati eszköz szükséges.
 
-A munkafolyamat nevét a kódban, amely elindítja a moderálás feladatot használja.
+## <a name="ensure-your-api-key-can-call-the-review-api-for-review-creation"></a>Győződjön meg arról, az API-kulcs segítségével meghívhatja a felülvizsgálati API felülvizsgálat létrehozása
+
+Az előző lépések végrehajtását követően, előfordulhat, hogy végül két a Content Moderator kulcs Ha használatba az Azure Portalról. 
+
+Ha azt tervezi, használja az Azure által biztosított API-kulcsot az SDK-minta, hajtsa végre a szereplő lépéseket a [a felülvizsgálati API-val az Azure key](review-tool-user-guide/credentials.md#use-the-azure-account-with-the-review-tool-and-review-api) szakaszban, hogy az alkalmazása a felülvizsgálati API-t, és létrehozni a felülvizsgálatok.
+
+Ingyenes próba hozza létre a kulcsot a felülvizsgálati eszköz használatakor a felülvizsgálati eszköz fiók már ismer a kulcsot, és ezért semmilyen további lépésekre szükség.
+
+## <a name="define-a-custom-moderation-workflow"></a>Egy egyéni moderálás munkafolyamatokat
+
+A moderálás feladat megvizsgálja az API-kkal és használ a tartalom egy **munkafolyamat** annak megállapításához, hogy hozhat létre értékelések, vagy sem.
+Bár a vizsgálóeszközt tartalmaz egy alapértelmezett munkafolyamat hozzunk [egy egyéni munkafolyamatokat](Review-Tool-User-Guide/Workflows.md) ebben a rövid útmutatóban.
+
+A munkafolyamat neve a kódban, amely elindítja a moderálás feladatot használhatja.
 
 ## <a name="create-your-visual-studio-project"></a>A Visual Studio-projekt létrehozása
 
-1. Adjon hozzá egy új **Konzolalkalmazás (.NET-keretrendszer)** -projektet a megoldásban.
+1. Vegyen fel egy új **Console app (.NET Framework)** projektet a megoldáshoz.
 
-   A mintakód a nevet a projektnek **CreateReviews**.
+   A mintakód adja a projektnek **CreateReviews**.
 
-1. Jelölje ki a projektet a megoldásban egyetlen kiindulási projektként.
+1. Jelölje ki a projektet a megoldáshoz egyetlen indítási projektként.
 
-1. Adjon hozzá egy hivatkozást, a **ModeratorHelper** szerelvény a projektre a [tartalom moderátor ügyfél segítő gyors üzembe helyezés](content-moderator-helper-quickstart-dotnet.md).
+1. Vegyen fel egy hivatkozást a **ModeratorHelper** projekt szerelvény, amelyet a [a Content Moderator ügyfél segítő rövid](content-moderator-helper-quickstart-dotnet.md).
 
 ### <a name="install-required-packages"></a>Szükséges csomagok telepítése
 
-A következő NuGet-csomagok telepítése:
+A következő NuGet-csomagok telepítéséhez:
 
 - Microsoft.Azure.CognitiveServices.ContentModerator
 - Microsoft.Rest.ClientRuntime
@@ -59,7 +71,7 @@ A következő NuGet-csomagok telepítése:
 
 ### <a name="update-the-programs-using-statements"></a>Frissítés a program által utasítások segítségével.
 
-Módosítsa a program által using utasításokat.
+Módosítsa a program által utasítások segítségével.
 
     using Microsoft.CognitiveServices.ContentModerator;
     using Microsoft.CognitiveServices.ContentModerator.Models;
@@ -70,15 +82,15 @@ Módosítsa a program által using utasításokat.
     using System.IO;
     using System.Threading;
 
-### <a name="initialize-application-specific-settings"></a>Az alkalmazás-specifikus beállításokat inicializálása
+### <a name="initialize-application-specific-settings"></a>Alkalmazás-specifikus beállítások inicializálása
 
-Adja hozzá a következő állandók és a statikus mezők a **Program** osztály a program.cs fájlban.
+Adja hozzá a következő állandókat és a statikus mezők a **Program** osztály a program.cs fájlban.
 
 > [!NOTE]
-> A TeamName konstans értékre a tartalom moderátor előfizetés létrehozásakor használt név. A TeamName lekérése a [tartalom moderátor webhely](https://westus.contentmoderator.cognitive.microsoft.com/).
-> Után jelentkezzen be, válassza a **hitelesítő adatok** a a **beállítások** (fogaskerék) menü.
+> A TeamName konstans értékre állítjuk, a Content Moderator előfizetés létrehozásakor használt név. Kérheti le a TeamName a [a Content Moderator webhely](https://westus.contentmoderator.cognitive.microsoft.com/).
+> Miután bejelentkezett, válassza ki a **hitelesítő adatok** származó a **beállítások** (fogaskerék) menüben.
 >
-> A csoport nevét az az érték a **azonosító** mező mellett a **API** szakasz.
+> A csapat nevét az az érték a **azonosító** mezőbe a **API** szakaszban.
 
 
     /// <summary>
@@ -122,12 +134,12 @@ Adja hozzá a következő állandók és a statikus mezők a **Program** osztál
     /// callback endpoint using an HTTP POST request.</remarks>
     private const string CallbackEndpoint = "";
 
-## <a name="add-code-to-auto-moderate-create-a-review-and-get-the-job-details"></a>Automatikus Közepes hozzá a kódot, hozzon létre egy áttekintése és a feladat részletes
+## <a name="add-code-to-auto-moderate-create-a-review-and-get-the-job-details"></a>Adja hozzá a kódot az automatikus Közepes, létrehoz egy és a feladat részleteinek beolvasása
 
 > [!Note]
-> A gyakorlatban a visszahívási URL-Címének beállítása **CallbackEndpoint** URL-címet, amely megkapja a (via HTTP POST-kérelmet) manuális felülvizsgálati eredményeit.
+> A gyakorlatban a visszahívási URL-Címének beállítása **CallbackEndpoint** az URL-címet, amely megkapja a manuális ellenőrzést (keresztül egy HTTP POST-kérés) eredményét.
 
-Először vegyen fel a következő kódot a **fő** metódust.
+Először adja hozzá a következő kódot a **fő** metódust.
 
     using (TextWriter writer = new StreamWriter(OutputFile, false))
     {
@@ -181,27 +193,27 @@ Először vegyen fel a következő kódot a **fő** metódust.
     }
 
 > [!NOTE]
-> A tartalom moderátor szolgáltatás kulcs egy kérelmek / második (RPS) sávszélesség-korlátjának rendelkezik. Ha meghaladja a korlátot, az SDK kivételt 429-es jelű hibakóddal. 
+> A Content Moderator Szolgáltatáskulcs rendelkezik egy második (RPS) sávszélesség-korlátjának kérelemből. Ha túllépi a korlátot, akkor az SDK-t egy 429 hibakód kivételt jelez. 
 >
-> Ingyenes szint kulcs egy RPS sávszélesség-korlátjának rendelkezik.
+> Ingyenes szint kulcs esetében egy függő Entitás sebessége.
 
 ## <a name="run-the-program-and-review-the-output"></a>Futtassa a programot, és tekintse át a kimenetet
 
-A konzolon a következő minta kimenet jelenik meg:
+Az alábbi kimeneti példa a konzolon láthatja:
 
     Perform manual reviews on the Content Moderator site.
     Then, press any key to continue.
 
-Jelentkezzen be a tartalom moderátor tekintse át az eszköz tekintse át a függőben lévő kép megtekintéséhez.
+Jelentkezzen be a Content Moderator felülvizsgálati eszközében megtekintheti a függőben lévő rendszerképet, tekintse át.
 
-Használja a **következő** gombra kattintva küldje el.
+Használja a **tovább** gombra kattintva küldje el.
 
 ![Az emberi moderátorok kép áttekintése](images/ocr-sample-image.PNG)
 
-## <a name="see-the-sample-output-in-the-log-file"></a>Lásd: a minta kimenet a naplófájlban
+## <a name="see-the-sample-output-in-the-log-file"></a>A naplófájl a minta kimenet
 
 > [!NOTE]
-> A kimeneti fájl, a karakterláncok **Teamname**, **ContentId**, **CallBackEndpoint**, és **WorkflowId** használt értékeknek felelnek korábban.
+> A kimeneti fájl, a karakterláncok **Teamname**, **ContentId**, **CallBackEndpoint**, és **WorkflowId** tükrözze ezeket az értékeket használta korábban.
 
     Create moderation job for an image.
     {
@@ -235,12 +247,12 @@ Használja a **következő** gombra kattintva küldje el.
     }
 
 
-## <a name="your-callback-url-if-provided-receives-this-response"></a>A visszahívási URL-címet ad meg, ha a válasz fogadása.
+## <a name="your-callback-url-if-provided-receives-this-response"></a>A visszahívási URL-címét. Ha meg van adva, a válasz fogadása.
 
-Az alábbi példához hasonló válasz jelenik meg:
+A válasz az alábbi példához hasonlóan jelenik meg:
 
 > [!NOTE]
-> A visszahívási válaszként, a karakterláncok **ContentId** és **WorkflowId** tükrözik a korábban használt értékek.
+> A visszahívási válaszként, a karakterláncok **ContentId** és **WorkflowId** tükrözik a korábban használt értékeket.
 
     {
         "JobId": "2018014caceddebfe9446fab29056fd8d31ffe",
@@ -260,4 +272,4 @@ Az alábbi példához hasonló válasz jelenik meg:
 
 ## <a name="next-steps"></a>További lépések
 
-[Töltse le a Visual Studio megoldás](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) ennél és egyéb tartalom moderátor quickstarts a .NET-hez, és az integráció a kezdéshez.
+Első a [Content Moderator .NET SDK-val](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) és a [Visual Studio-megoldás](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) ennél és a többi a Content Moderator rövid útmutató a .NET-hez, és az integrációval kapcsolatos első lépések.

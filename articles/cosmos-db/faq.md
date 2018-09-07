@@ -8,14 +8,14 @@ manager: kfile
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/03/2018
+ms.date: 09/05/2018
 ms.author: sngun
-ms.openlocfilehash: 375990f095d3a6cbbbfa18db70466c274fd7e17b
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 2f18840802a39f03659792a4d5b33ad3a73c5961
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43702595"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44051442"
 ---
 # <a name="azure-cosmos-db-faq"></a>Az Azure Cosmos DB – gyakori kérdések
 ## <a name="azure-cosmos-db-fundamentals"></a>Az Azure Cosmos DB – alapok
@@ -441,15 +441,132 @@ Az Azure Table storage és az Azure Cosmos DB Table API az azonos SDK-kat haszn�
 Az Azure Cosmos DB amely késés, átviteli sebesség, rendelkezésre állás és konzisztencia megvalósulásának biztosító SLA-alapú rendszer. Mivel a szolgáltatás egy üzembe helyezett rendszert, ezek a követelmények biztosításához erőforrások fenntartja magának. A táblák létrehozásának gyors aránya észlelt és szabályozott. Azt javasoljuk, hogy, tekintse meg a táblák létrehozásának sebessége alacsonyabb, kevesebb mint 5 percenként. Ne feledje, hogy a tábla API-t egy üzembe helyezett rendszer. A pillanatban, annak üzembe helyezésekor, elkezdi akkor kell fizetnie. 
 
 ## <a name="gremlin-api"></a>Gremlin API
-### <a name="how-can-i-apply-the-functionality-of-gremlin-api-to-azure-cosmos-db"></a>Hogyan használhatom a Gremlin API funkcióit az Azure Cosmos DB?
-Használhatja egy bővítménykódtár a alkalmazni a Gremlin API funkcióit. A könyvtár neve a Microsoft Azure-diagramok, és elérhető a [NuGet](https://www.nuget.org/packages/Microsoft.Azure.Graphs). 
 
-### <a name="it-looks-like-you-support-the-gremlin-graph-traversal-language-do-you-plan-to-add-more-forms-of-query"></a>Úgy tűnik, a Gremlin graph bejárási nyelv támogatott. Tervezi a lekérdezés további űrlapokat vehet fel?
-Igen, bővítését tervezzük más mechanizmusok lekérdezés a jövőben. 
+### <a name="for-cnet-development-should-i-use-the-microsoftazuregraphs-package-or-gremlinnet"></a>A C# / .NET-fejlesztéshez, érdemes használni a Microsoft.Azure.Graphs csomag vagy a Gremlin.NET? 
 
-### <a name="how-can-i-use-the-new-gremlin-api-offering"></a>Hogyan használható az új Gremlin API-ajánlat? 
-Első lépésként hajtsa végre a [Gremlin API](../cosmos-db/create-graph-dotnet.md) rövid útmutatóban.
+Az Azure Cosmos DB Gremlin API a nyílt forráskódú illesztőprogramokat használja, a szolgáltatás fő összekötőkként. Ezért az ajánlott lehetőség [illesztőprogramok, Apache Tinkerpop által támogatott](http://tinkerpop.apache.org/).
 
+### <a name="how-are-rus-charged-when-running-queries-on-a-graph-database"></a>Hogyan számlázzuk a RU/s a gráfadatbázisok lekérdezések futtatásakor? 
+
+Az összes gráfsémákkal, csúcsok és élek, a háttérben JSON-dokumentumok formájában jelennek meg. Mivel egy Gremlin lekérdezési módosíthatja egy vagy több graph-objektumok egyszerre, a költség társítva isbe közvetlenül kapcsolódik az objektumok, a lekérdezés által feldolgozott élek. Ez az eljárást minden más API-t használó Azure Cosmos DB. További információkért lásd: [Azure Cosmos DB-ben a kérelemegység](request-units.md).
+
+A Kérelemegység díj alapja az bejárási munkakészletének adatokat, és nem az eredményt. Például ha egy lekérdezést a célja, hogy egyetlen csúcs eredményeképpen beszerzése a következőnek kell von haladnak át a több más objektumot, majd a költségek alapul fog tartani a egy eredményt csúcspont számítási graph-objektumon.
+
+### <a name="whats-the-maximum-scale-that-a-graph-database-can-have-in-azure-cosmos-db-gremlin-api"></a>Mi az a maximális skála, amelyeken egy gráfadatbázist az Azure Cosmos DB Gremlin API-hoz? 
+
+Az Azure Cosmos DB teszi [horizontális particionálást](partition-data.md) tárolási és átviteli követelményei automatikusan cím növekedéséhez. Számítási feladatok maximális adatátviteli és tárolási kapacitása egy adott gyűjteményhez társított partíciók mennyiségét határozza meg. Azonban a Gremlin API-gyűjtemény van egy meghatározott készletének a szabályokat, hogy a megfelelő teljesítmény biztosítása érdekében, ipari méretekben. További információ és ajánlott eljárások: [ajánlott particionálási eljárások](partition-data.md#best-practices-when-choosing-a-partition-key) dokumentumot. 
+
+### <a name="how-can-i-protect-against-injection-attacks-using-gremlin-drivers"></a>Hogyan tudja megvédeni Gremlin-illesztőprogramokkal injektálási támadások ellen? 
+
+Legtöbb natív Tinkerpop Gremlin-illesztőprogramok a lehetőséget, ha a lekérdezés-végrehajtáshoz paramétereket tartalmazó engedélyezése. Ez a példa bemutatja, hogyan a [Gremlin.Net]() és a [Gremlin-Javascript](https://github.com/Azure-Samples/azure-cosmos-db-graph-nodejs-getting-started/blob/master/app.js).
+
+### <a name="why-am-i-getting-the-gremlin-query-compilation-error-unable-to-find-any-method-error"></a>Miért jelenik meg a "Gremlin lekérdezésfordítási hiba: minden olyan metódus nem található" hiba?
+
+Az Azure Cosmos DB Gremlin API valósítja meg a Gremlin támadási meghatározott funkciók egy részét. Támogatott lépések és további tudnivalókat lásd: [Gremlin-támogatás](gremlin-support.md) cikk.
+
+A legjobb megoldás, hogy írja át a Gremlin szükséges lépéseket a támogatott funkciókkal, mivel az Azure Cosmos DB által támogatott összes alapvető fontosságú gremlinnel kapcsolatos lépések.
+
+### <a name="why-am-i-getting-the-websocketexception-the-server-returned-status-code-200-when-status-code-101-was-expected-error"></a>Miért jelenik meg a "WebSocketException: A kiszolgáló állapotkód:"200"adott vissza, ha a várt állapotkód:"101: "hiba?
+
+Ez a hiba valószínűleg akkor fordul elő, ha a nem megfelelő végpont van használatban. A végpont, amely állít elő, ez a hiba van a következő mintának:
+
+`https:// YOUR_DATABASE_ACCOUNT.documents.azure.com:443/` 
+
+Ez az a graph-adatbázis a dokumentumok végpont.  A megfelelő végpontra való használatához a Gremlin-végpont, amely rendelkezik a következő formátumban: 
+
+`https://YOUR_DATABASE_ACCOUNT.gremlin.cosmosdb.azure.com:443/`
+
+### <a name="why-am-i-getting-the-requestrateistoolarge-error"></a>Miért jelenik meg a "RequestRateIsTooLarge" hiba?
+
+Ez a hiba azt jelenti, hogy a lefoglalt kérelemegység / másodperc nem elegendő, a lekérdezések kiszolgálása érdekében. Ez a hiba általában látható, amely lekéri az összes csúcsot lekérdezés futtatásakor:
+
+```
+// Query example:
+g.V()
+```
+
+Ez a lekérdezés megkísérli a gráf összes csúcspontok lekérése. Tehát ez a lekérdezés költsége lesz legalább az azonos számú kérelemegység tekintetében csúcspontok. Oldja meg ezt a lekérdezést az RU/s-beállítást kell állítani.
+
+### <a name="why-do-my-gremlin-driver-connections-get-dropped-eventually"></a>Miért hajtsa végre a Gremlin-illesztőprogram kapcsolatok lekérése eldobott idővel?
+
+A Gremlin kapcsolat WebSocket kapcsolaton keresztül. Bár a WebSocket-kapcsolatok nem rendelkezik egy adott időpont Live, az Azure Cosmos DB Gremlin API megszűnik tétlen kapcsolatok 30 perc inaktivitás után. 
+
+### <a name="why-cant-i-use-fluent-api-calls-in-the-native-gremlin-drivers"></a>Miért nem használható a natív Gremlin-illesztőprogramok fluent API-hívások?
+
+Fluent API-hívások még nem támogatottak az Azure Cosmos DB Gremlin API által. Fluent API-hívások bytecode támogatása, amely az Azure Cosmos DB Gremlin API jelenleg nem támogatja más néven egy belső formázási szolgáltatás szükséges. Ugyanebből az okból miatt a legújabb Gremlin-JavaScript-illesztőprogramot is jelenleg nem támogatott. 
+
+### <a name="how-can-i-evaluate-the-efficiency-of-my-gremlin-queries"></a>Hogyan tudom értékelni a Gremlin-lekérdezések hatékonyságának?
+
+A **executionProfile()** előzetes lépés segítségével adja meg a lekérdezés-végrehajtási terv elemzése. Ebben a lépésben leírtak szerint a következő példában bármely Gremlin-lekérdezés végére hozzá kell adnia:
+
+**Lekérdezési példa**
+
+```
+g.V('mary').out('knows').executionProfile()
+```
+
+**Példa a kimenetre**
+
+```json
+[
+  {
+    "gremlin": "g.V('mary').out('knows').executionProfile()",
+    "totalTime": 8,
+    "metrics": [
+      {
+        "name": "GetVertices",
+        "time": 3,
+        "annotations": {
+          "percentTime": 37.5
+        },
+        "counts": {
+          "resultCount": 1
+        }
+      },
+      {
+        "name": "GetEdges",
+        "time": 5,
+        "annotations": {
+          "percentTime": 62.5
+        },
+        "counts": {
+          "resultCount": 0
+        },
+        "storeOps": [
+          {
+            "partitionsAccessed": 1,
+            "count": 0,
+            "size": 0,
+            "time": 0.6
+          }
+        ]
+      },
+      {
+        "name": "GetNeighborVertices",
+        "time": 0,
+        "annotations": {
+          "percentTime": 0
+        },
+        "counts": {
+          "resultCount": 0
+        }
+      },
+      {
+        "name": "ProjectOperator",
+        "time": 0,
+        "annotations": {
+          "percentTime": 0
+        },
+        "counts": {
+          "resultCount": 0
+        }
+      }
+    ]
+  }
+]
+```
+
+A fenti profil kimenetét jeleníti meg, mennyi időt vesz igénybe a csúcspont és él objektumok, valamint az adatok munkakészlet mérete beszerzése. Ez a standard szintű költség mérések az Azure Cosmos DB-lekérdezések kapcsolódik.
 
 ## <a id="cassandra"></a> Cassandra API
 

@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2018
 ms.author: sujayt
-ms.openlocfilehash: 32bdf1080aa6e7c5884747eeecad3f42c7334c3a
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: c3852f4055b5afe84aaa233c50f50732f98537a2
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42444826"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44022892"
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Egy Azure-régióból a másikba történő replikálásához támogatási mátrix
 
@@ -38,8 +38,8 @@ Ez a cikk összefoglalja a támogatott konfigurációk és replikálásakor öss
 --- | --- | ---
 **Tároló áthelyezése erőforráscsoportok közt** | Nem támogatott<br/><br/> Recovery services-tároló nem helyezhetők át erőforráscsoportok közt.
 **Számítási és tárolási és hálózati erőforrások áthelyezése erőforráscsoportok közt** | Nem támogatott.<br/><br/> Ha egy virtuális gép vagy a kapcsolódó összetevők, például a tárolási és hálózati után végez, replikáció letiltása és a virtuális gép újraengedélyezni szüksége.
-**Azure virtuális gépek replikálása egy előfizetésből egy másikba vész-helyreállítási** | Támogatott azonos Azure Active Directory-bérlőben.
-**Virtuális gépek áttelepítése az előfizetések között** | Nem támogatott.
+**Azure virtuális gépek replikálása egy előfizetésből egy másikba vész-helyreállítási** | Támogatott a "Resource manager üzemi modelljét" virtuális gépek azonos Azure Active Directory-bérlőben. Nem, "A klasszikus üzemi modellt" virtuális gépek esetében támogatott.
+**Virtuális gépek áttelepítése a támogatott földrajzi fürtökben (belül és több előfizetés)-régiók között** | Támogatott a "Resource manager üzemi modelljét" virtuális gépek azonos Azure Active Directory-bérlőben. Nem, "A klasszikus üzemi modellt" virtuális gépek esetében támogatott.
 **Az azonos régión belüli virtuális gépek áttelepítése** | Nem támogatott.
 
 
@@ -147,6 +147,7 @@ Lemez hozzáadása a replikált virtuális gép | Nem támogatott. Meg kell leti
 --- | --- | ---
 Méret | Minden olyan Azure virtuális gép méretét legalább 2 processzormag és 1 GB RAM | Tekintse meg [Azure virtuálisgép-méretek](../virtual-machines/windows/sizes.md)
 Rendelkezésre állási csoportok | Támogatott | A portál az alapértelmezett beállítás a "Replikáció engedélyezése" lépés során használ, a rendelkezésre állási csoport-e automatikusan létrehozott forrás régió konfigurációja alapján. Módosíthatja a cél rendelkezésre állási csoport "replikált elem > Beállítások > Számítás és hálózat > rendelkezésre állási csoport" bármikor.
+Rendelkezésre állási zónák | Nem támogatott | Rendelkezésre állási zónában üzembe helyezett virtuális gépek jelenleg nem támogatott.
 A hibrid használatra Benefit (HUB) virtuális gépek | Támogatott | Ha a forrásoldali virtuális gép HUB licenc engedélyezve van, a feladatátvételi teszt vagy feladatátvétel virtuális gép is az ESEMÉNYKÖZPONT-licencet használ.
 Virtuálisgép-méretezési csoportok | Nem támogatott |
 Az Azure-katalógus rendszerképek – a Microsoft közzétett | Támogatott | Támogatott mindaddig, amíg a virtuális gép Site Recovery által támogatott operációs rendszeren futtatja.

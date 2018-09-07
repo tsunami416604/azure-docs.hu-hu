@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: markvi
-ms.openlocfilehash: e6cb83eb6aaaea38686c63d0f3f70738efa4bcff
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 39d3913013d9528405191c5f052a943f1869048a
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39630756"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44026856"
 ---
 # <a name="settings-and-data-roaming-faq"></a>Beállítások és adatroaming GYIK
 Ez a cikk rendszergazdák lehet beállításai és alkalmazás data Sync szolgáltatással kapcsolatos kérdésekre ad választ.
@@ -35,12 +35,12 @@ Ez a cikk rendszergazdák lehet beállításai és alkalmazás data Sync szolgá
 * *Jelszavak*, többek között internetes jelszavakat, a Wi-Fi profilok és mások.
 * *Nyelvi beállítások*, amely tartalmazza a billentyűzetkiosztás, rendszer nyelve, dátum és idő és további beállításait.
 * *Könnyű hozzáférés funkciók*, például a Narrátor, Nagyító és a kontrasztos téma.
-* *Egyéb Windows-beállítások*, például a parancssor használatával beállítások és alkalmazások listája.
+* *Egyéb Windows-beállítások*, például az egér beállításait.
 
 **Alkalmazásadatok**: univerzális Windows-alkalmazások beállításainak adatokat írhatna központi mappába, és minden ebbe a mappába írt adatok automatikusan szinkronizálja. Fontos az egyéni alkalmazás fejlesztőjénél, ez a funkció kihasználásához alkalmazásokat. Egy univerzális Windows-alkalmazást, amely központi fejlesztésével kapcsolatos további részletekért lásd: a [appdata storage API-JÁNAK](https://msdn.microsoft.com/library/windows/apps/mt299098.aspx) és a [fejlesztői blog barangolás Windows 8 appdata](http://blogs.msdn.com/b/windowsappdev/archive/2012/07/17/roaming-your-app-data.aspx).
 
 ## <a name="what-account-is-used-for-settings-sync"></a>Milyen fiókot szolgál szinkronizálási beállítások?
-A Windows 8 és Windows 8.1-beállítások szinkronizálása mindig használja a fogyasztói Microsoft-fiókok. Vállalati felhasználó számára lehetővé teszi egy Microsoft-fiók csatlakozni az Active Directory tartományi fiók a szinkronizálási beállítások eléréséhez rendelkezett. A Windows 10 csatlakozik egy elsődleges és másodlagos fiók keretrendszer helyére, a funkciók Microsoft-fiókjával.
+Windows 8.1, a szinkronizálási beállítások mindig használja a fogyasztói Microsoft-fiókok. Vállalati felhasználó számára lehetővé teszi egy Microsoft-fiók csatlakozni az Active Directory tartományi fiók a szinkronizálási beállítások eléréséhez rendelkezett. A Windows 10 csatlakozik egy elsődleges és másodlagos fiók keretrendszer helyére, a funkciók Microsoft-fiókjával.
 
 Az elsődleges fióknak számít, ha a Windows való bejelentkezéshez használt fiók. Ez lehet egy Microsoft-fiókkal, egy Azure Active Directory (Azure AD-) fiók, a helyszíni Active Directory-fiókkal vagy egy helyi fiókot. Az elsődleges fiókon kívül Windows 10-es fiókokat is hozzáadhat egy vagy több másodlagos felhőbeli eszközére. Egy másodlagos fiókot alapvetően egy Microsoft-fiókkal, egy Azure AD-fiók vagy néhány egyéb fiók, mint például a Gmail vagy a Facebook. Másodlagos hozzáférést biztosít a további szolgáltatásokat, például az egyszeri bejelentkezést és a Windows Store, de azok nem képes a motorja olyan beállítások szinkronizálása.
 
@@ -59,7 +59,7 @@ Ha egy alkalmazás tulajdonosa nem azonosítható, azt fogja hordozhatók a els�
 >
 
 ## <a name="how-do-i-upgrade-from-microsoft-account-settings-sync-in-windows-8-to-azure-ad-settings-sync-in-windows-10"></a>Hogyan frissíthetem a Microsoft-Fiókbeállítások szinkronizálását a Windows 8 az Azure AD-beállítások szinkronizálása a Windows 10-ben?
-Ha tartományhoz csatlakozik az Active Directory-tartománynak Windows 8 vagy Windows 8.1 rendszerű összekapcsolt Microsoft-fiókkal, akkor beállítások a Microsoft-fiókján keresztül szinkronizálódnak. Windows 10-re a frissítés után továbbra is keresztül a Microsoft-fiók felhasználói beállítások szinkronizálása, mindaddig, amíg egy tartományhoz csatlakozó felhasználók és az Active Directory-tartomány nem csatlakozik az Azure ad-ben.
+Ha tartományhoz csatlakozik az Active Directory-tartománynak Windows 8.1 rendszerű összekapcsolt Microsoft-fiókkal, akkor beállítások a Microsoft-fiókján keresztül szinkronizálódnak. Windows 10-re a frissítés után továbbra is keresztül a Microsoft-fiók felhasználói beállítások szinkronizálása, mindaddig, amíg egy tartományhoz csatlakozó felhasználók és az Active Directory-tartomány nem csatlakozik az Azure ad-ben.
 
 Ha a helyszíni Active Directory-tartomány az Azure AD connect, az eszköz megkísérli beállítások segítségével a csatlakoztatott szinkronizálása az Azure AD-fiókot. Ha az Azure AD-rendszergazda nem engedélyezi a vállalati Állapothordozás, a csatlakoztatott Azure AD-fiókot a beállítások szinkronizálása leáll. Ha a Windows 10-felhasználók és jelentkezik be egy Azure AD identity, hozzákezdhet windows-beállítások szinkronizálása, amint a rendszergazda engedélyezi a beállítások szinkronizálása az Azure AD-n keresztül.
 
@@ -94,7 +94,7 @@ A rendszergazdák konfigurálhatják UE-V számára a Windows asztali alkalmazá
 A jövőben a Microsoft előfordulhat, hogy vizsgálja meg, győződjön meg arról, UE-V Windows mélyen integrált és kiterjesztése UE-V számára a beállítások az Azure AD-felhőn keresztül.
 
 ## <a name="can-i-store-synced-settings-and-data-on-premises"></a>Tárolhatok szinkronizált beállítás és adat a helyszínen?
-Enterprise State Roaming tárolja az összes szinkronizált adatot az Azure-felhőben. UE-V kínál a helyszíni központi megoldás.
+A Microsoft cloud Enterprise State Roaming az összes szinkronizált adatot tárol. UE-V kínál a helyszíni központi megoldás.
 
 ## <a name="who-owns-the-data-thats-being-roamed"></a>Kié az adatokat, amelyek a forrásul van folyamatban?
 A saját vállalatok számára az adatok forrásul Enterprise State Roaming-n keresztül. Az Azure-adatközpontban tárolt adatokat. Összes felhasználói adatot van titkosítva, mind az átvitel során, míg az inaktív, a felhőben az Azure Information Protection az Azure Rights Management szolgáltatás használatával. Ez az, hogy javulást Microsoft tárfiókalapú beállítások szinkronizálása, amely csak bizonyos felhasználói hitelesítő adatokat például bizalmas adatokat titkosítja, mielőtt az eszköz kikerül képest.

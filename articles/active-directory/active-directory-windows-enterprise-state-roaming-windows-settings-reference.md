@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: markvi
-ms.openlocfilehash: 9a06ff345d1bf91efd1abff9960a1a6f9a681dce
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 40e67dfd4ffa427ac47198e88994762a4a45cc94
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39223667"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44023351"
 ---
 # <a name="windows-10-roaming-settings-reference"></a>Windows 10 roaming beállítások referenciája
 Forrásul vagy a biztonsági másolat a Windows 10-es beállítások teljes listáját a következő: 
@@ -44,10 +44,11 @@ A következő beállítások csoportok szinkronizálását a Windows 10-es eszk�
 
 * Téma: asztali háttérkép, felhasználói csempe, tálca pozícióját, stb. 
 * Az Internet Explorer beállításainak: böngészési előzményeket beírt URL-címeket, a Kedvencek, stb. 
-* Jelszavak: [Windows hitelesítő adatok széfjét](https://technet.microsoft.com/library/jj554668.aspx), beleértve a Wi-Fi profilok 
+* Jelszavak: Windows hitelesítőadat-kezelő, beleértve a Wi-Fi profilok 
 * Nyelvi beállítások: helyesírás-ellenőrzés szótárban, a rendszer nyelvi beállítások 
 * Könnyű elérés: Narrátor, Nagyító, képernyő-billentyűzet 
 * Egyéb Windows-beállítások: tekintse meg a Windows-beállítások részletei
+* Böngészőbeállítások él: a Microsoft Edge-beli Kedvencek, olvassa és egyéb beállítások
 
 ![](./media/active-directory-enterprise-state-roaming/active-directory-enterprise-state-roaming-syncyoursettings.png)
 
@@ -73,7 +74,7 @@ Nem hordozhatók a beállításokat, vagy szinkronizálási csoporthoz nem fog t
 | **Az alkalmazásadatok**: egyéni alkalmazásokat is szinkronizálja az adatokat |szinkronizálási biztonsági mentés |szinkronizálási biztonsági mentés |Belső |
 | **Alkalmazáslista**: a telepített alkalmazások listája |X |biztonsági mentés |Egyéb |
 | **Bluetooth**: az összes Bluetooth-beállítások |X |X | |
-| **Parancssor**: parancssor "Alapértelmezett" beállításai |Szinkronizálás |X | |
+| **Parancssor**: parancssor "Alapértelmezett" beállításai |Szinkronizálás |X |Belső |
 | **Hitelesítő adatok**: hitelesítő adatok Széfjének |Szinkronizálás |Szinkronizálás |jelszó |
 | **Dátum, idő és régióját**: automatikus idő (Internet idő szinkronizálása) |Szinkronizálás |Szinkronizálás |Nyelv |
 | **Dátum, idő és régióját**: 24 órás formátumban |Szinkronizálás |X |Nyelv |

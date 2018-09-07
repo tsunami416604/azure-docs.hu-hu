@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/01/2018
+ms.date: 09/05/2018
 ms.author: jeffgilb
 ms.reviewer: hectorl
-ms.openlocfilehash: 578bb864f56b788db77d1201533e73d3b9616669
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: a11de2a4580515f6a358438a706e5be3f5543e28
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42055292"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44025310"
 ---
 # <a name="back-up-azure-stack"></a>Készítsen biztonsági másolatot az Azure Stackben
 
@@ -81,7 +81,7 @@ Az eredmény a következő kimenet hasonlóan kell kinéznie:
 Az Azure Stack felügyeleti portál használatával győződjön meg arról, hogy a biztonsági mentés sikeresen befejeződött a következő lépésekkel:
 
 1. Nyissa meg a [Azure Stack felügyeleti portálon](azure-stack-manage-portals.md).
-2. Válassza ki **további szolgáltatások** > **infrastruktúra biztonsági mentését**. Válasszon **konfigurációs** a a **infrastruktúra biztonsági mentését** panelen.
+2. Válassza ki **minden szolgáltatás**, majd a **felügyeleti** kategória kiválasztása > **infrastruktúra biztonsági mentését**. Válasszon **konfigurációs** a a **infrastruktúra biztonsági mentését** panelen.
 3. Keresse meg a **neve** és **dátuma** a biztonsági mentési **elérhető biztonsági másolatok** listája.
 4. Ellenőrizze a **állapot** van **sikeres**.
 

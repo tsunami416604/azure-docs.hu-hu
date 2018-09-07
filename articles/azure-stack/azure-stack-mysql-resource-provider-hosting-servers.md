@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/02/2018
+ms.date: 09/05/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: bccc2dcad8e326cd29cfe031a95a7c2d0cf5ec7f
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: aacf99afef344564d028e78892091c6618c7d495
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38302313"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44026689"
 ---
 # <a name="add-hosting-servers-for-the-mysql-resource-provider"></a>Üzemeltetési kiszolgáló hozzáadása a MySQL erőforrás-szolgáltató
 
@@ -32,8 +32,8 @@ Az üzemeltetési kiszolgáló 5.6-os, 5.7-es és 8.0 MySQL verziók használhat
 Győződjön meg arról, hogy rendszergazdai jogosultságokkal rendelkező fiók hitelesítő adatait. Üzemeltetési kiszolgáló hozzáadásához kövesse az alábbi lépéseket:
 
 1. A szolgáltatás-rendszergazdaként jelentkezzen be az Azure Stack operátori portálon
-2. Válassza ki **további szolgáltatások**.
-3. Válassza ki **felügyeleti erőforrások** > **üzemeltető kiszolgálók MySQL** > **+ Hozzáadás**. Ekkor megnyílik a **üzemeltető MySQL-kiszolgáló hozzáadása** párbeszédpanelen, az alábbi képernyőfelvételen is látható.
+2. Válassza az **Összes szolgáltatás** elemet.
+3. Alatt a **felügyeleti erőforrások** kategória kiválasztása **MySQL üzemeltető kiszolgálók** > **+ Hozzáadás**. Ekkor megnyílik a **üzemeltető MySQL-kiszolgáló hozzáadása** párbeszédpanelen, az alábbi képernyőfelvételen is látható.
 
    ![Üzemeltetési kiszolgáló konfigurálása](./media/azure-stack-mysql-rp-deploy/mysql-add-hosting-server-2.png)
 

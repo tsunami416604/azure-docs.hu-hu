@@ -1,5 +1,5 @@
 ---
-title: Konfigurálja a megbízható Azure mikroszolgáltatások |} A Microsoft Docs
+title: Az Azure Service Fabric Reliable Services konfigurálása |} A Microsoft Docs
 description: Ismerje meg az Azure Service Fabric állapotalapú Reliable Services konfigurálása.
 services: Service-Fabric
 documentationcenter: .net
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/02/2017
 ms.author: sumukhs
-ms.openlocfilehash: f2af7c65d42cbbec28fd511be18c72a6cd3c3d0c
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: ee8010fbbadc011e04d6d43599d671a1f926bb5f
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39249019"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44049656"
 ---
 # <a name="configure-stateful-reliable-services"></a>A stateful reliable services konfigurálása
 Nincsenek konfigurációs beállításait a reliable services két csoportját. Egy, a fürt összes reliable Services globális, viszont a többi csoport csak egy adott megbízható szolgáltatás.

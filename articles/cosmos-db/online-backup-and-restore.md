@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/15/2017
 ms.author: govindk
-ms.openlocfilehash: 613c61d9b881b7d736a50cadbf313c1f9aac57c9
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: a2c52844e09daf42418b4e548f7185e31dcf4ae9
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42054478"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44053533"
 ---
 # <a name="automatic-online-backup-and-restore-with-azure-cosmos-db"></a>Automatikus online biztonsági mentés és visszaállítás Azure Cosmos DB-vel
 Az Azure Cosmos DB az összes biztonsági mentések a rendszeres időközönként automatikusan vesz igénybe. Az automatikus biztonsági mentést készít a teljesítmény vagy az adatbázis-műveleteket rendelkezésre állásának befolyásolása nélkül. A biztonsági mentések külön-külön tárolja, egy másik storage szolgáltatásban, és ezeket a biztonsági mentéseket globálisan replikálva vannak a regionális katasztrófa szembeni ellenálló-képesség. Az automatikus biztonsági mentések készültek forgatókönyvek esetén, ha véletlenül törli a Cosmos DB-tárolóhoz, és később a adat-helyreállítás vagy egy vész-helyreállítási megoldást igényelnek.  

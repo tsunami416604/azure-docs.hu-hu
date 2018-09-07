@@ -8,19 +8,19 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: bd456e0f881f606f36f2b4d80e704ce138f7db0f
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 4222214705c42fe09d90d77faa7be63cc2a13206
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43666432"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44025276"
 ---
 # <a name="deploy-a-configuration-server"></a>Konfigurációs kiszolgáló üzembe helyezése
 
 Egy helyszíni konfigurációs kiszolgálót telepít, használatakor [Azure Site Recovery](site-recovery-overview.md) vész-helyreállítási VMware virtuális gépek és fizikai kiszolgálók Azure-bA. A konfigurációs kiszolgáló koordináták kommunikációhoz között a helyszíni VMware és az Azure. Azt is felügyeli az adatreplikációt. Ez a cikk végigvezeti a konfigurációs kiszolgáló telepítése, ha VMware virtuális gépeket replikál az Azure-bA szükséges lépéseket. [Kövesse az ebben a cikkben](physical-azure-set-up-source.md) Ha kell állítani a konfigurációs kiszolgálót fizikai kiszolgáló replikációjához.
 
 >[!TIP]
-Megismerkedhet a konfigurációs kiszolgáló szerepe az Azure Site Recovery architektúrájáról részeként [Itt](vmware-azure-architecture.md).
+Megismerheti a konfigurációs kiszolgáló szerepe az Azure Site Recovery architektúrájáról részeként [Itt](vmware-azure-architecture.md).
 
 ## <a name="deployment-of-configuration-server-through-ova-template"></a>Konfigurációs kiszolgáló OVA sablon segítségével üzembe helyezés
 
@@ -42,7 +42,7 @@ A konfigurációs kiszolgáló méretezési követelményei potenciális adatvá
 | 12 vcpu-k (2 sockets * 6 magok \@ 2,5 GHz-es) |18 GB |600 GB |500 GB – 1 TB |100 – 150 gépeket replikálni. |
 | 16 vcpu-k (2 sockets * 8 magos \@ 2,5 GHz-es) |32 GB |1 TB |1 TB-os 2 TB-ig |150-200 gépeket replikálni. |
 
-Ha egynél több VMware virtuális gép replikál, olvassa el a [kapacitástervezésének szempontjai](https://docs.microsoft.com/azure/site-recovery/site-recovery-plan-capacity-vmware). Futtassa a [Deployment planner eszköz](site-recovery-deployment-planner.md) a VMWare replikálásához.
+Ha egynél több VMware virtuális gép replikál, olvassa el a [kapacitástervezésének szempontjai](site-recovery-plan-capacity-vmware.md). Futtassa a [Deployment planner eszköz](site-recovery-deployment-planner.md) a VMWare replikálásához.
 
 ## <a name="download-the-template"></a>A sablon letöltése
 
@@ -119,9 +119,9 @@ Ha szeretne további hálózati Adaptereket adhat hozzá a konfigurációs kiszo
 
 ## <a name="faq"></a>GYIK
 
-1. A virtuális gép, amelyen a konfigurációs kiszolgálót telepíteni, különböző felhasználási célokra használható?
+1. A virtuális gép, amelyen a konfigurációs kiszolgáló telepítve van, különböző célokra használható?
 
-    **Nem**, azt javasoljuk, hogy a virtuális gép konfigurációs kiszolgáló egyetlen célra használható. Kövesse az említett összes specifikációit a [előző szakaszban](vmware-azure-deploy-configuration-server.md#Prerequisites) vész-helyreállítási hatékony kezelését.
+    **Nem**, azt javasoljuk, hogy a virtuális gép konfigurációs kiszolgáló egyetlen célra használható. Mindenképpen kövesse a említett összes specifikációk [Előfeltételek](#prerequisites) vész-helyreállítási hatékony kezelését.
 2. Válthatok-e a tárolóban már regisztrálva van egy újonnan létrehozott tárolót a konfigurációs kiszolgálón?
 
     **Nem**, miután a tároló konfigurációs kiszolgáló regisztrálva van, ezért nem módosítható.
@@ -130,10 +130,10 @@ Ha szeretne további hálózati Adaptereket adhat hozzá a konfigurációs kiszo
     **Igen**, ugyanarra a konfigurációs kiszolgálóra replikálni a fizikai és virtuális gépeken is használható. Azonban a fizikai gép rendszer nem csak a VMware virtuális gép vissza.
 4. Mi az a célja a konfigurációs kiszolgáló, és amelyben a rendszer azt használja?
 
-    Tekintse meg az Azure Site Recovery architektúrájáról [Itt](vmware-azure-architecture.md) tudhat meg többet a konfigurációs kiszolgáló és a számítást.
+    Tekintse meg [VMware-ből az Azure-bA architektúra](vmware-azure-architecture.md) tudhat meg többet a konfigurációs kiszolgáló és a számítást.
 5. Hol található a konfigurációs kiszolgáló legújabb verzióját?
 
-    A cikkben található lépéseket a konfigurációs kiszolgáló frissítése [portálon keresztül](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server). Emellett közvetlenül is letöltheti a [Microsoft Download Center](https://aka.ms/asrconfigurationserver).
+    A portálon keresztül a konfigurációs kiszolgáló frissítése lépéseiért lásd: [a konfigurációs kiszolgáló frissítése](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server). Emellett közvetlenül is letöltheti a [Microsoft Download Center](https://aka.ms/asrconfigurationserver).
 6. Honnan tölthetem le a konfigurációs kiszolgáló hozzáférési kódot?
 
     Tekintse meg [Ez a cikk](vmware-azure-manage-configuration-server.md#generate-configuration-server-passphrase) töltheti le a hozzáférési kódot.
@@ -143,7 +143,7 @@ Ha szeretne további hálózati Adaptereket adhat hozzá a konfigurációs kiszo
 
 ## <a name="upgrade-the-configuration-server"></a>A konfigurációs kiszolgáló frissítése
 
-A konfigurációs kiszolgáló frissítése a legújabb verzióra, olvassa el a megadott lépéseket [Itt](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server)
+A konfigurációs kiszolgáló frissítése a legújabb verzióra, kövesse az alábbi [lépéseket](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server).
 
 ## <a name="manage-the-configuration-server"></a>A konfigurációs kiszolgáló kezelése
 

@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: rafats
-ms.openlocfilehash: 11aac0ab4476494f74453ca64a1b77964197adaa
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: b090c1593b49bec4f51fea8d498860e8af8b2f4b
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42748075"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44053084"
 ---
 # <a name="use-key-vault-to-store-and-access-azure-cosmos-db-keys"></a>A Key Vault használatával tárolhatja és érheti el az Azure Cosmos DB-kulcsok
 
@@ -56,7 +56,7 @@ A következő lépések szükségesek, tárolására, és olvassa el az Azure Co
 
 ## <a name="create-an-azure-web-application"></a>Azure-alapú webes alkalmazás létrehozása
 
-1. Azure-webalkalmazások létrehozása, vagy letöltheti az alkalmazásból a [GitHub-adattár](https://github.com/rsarosh/CosmosDB-KeyVault). Egy egyszerű MVC alkalmazást.  
+1. Azure-webalkalmazások létrehozása, vagy letöltheti az alkalmazásból a [GitHub-adattár](https://github.com/Azure/azure-cosmosdb-dotnet/tree/master/Demo/keyvaultdemo). Egy egyszerű MVC alkalmazást.  
 
 2. Csomagolja ki a letöltött alkalmazást, és nyissa meg a **HomeController.cs** fájlt. Frissítse a titkos kód azonosítója a következő sorban:
 
@@ -87,11 +87,9 @@ Most futtassa az alkalmazást, a titkos kulcsot a Key vaultból érheti el.
 
 ![Titkos kulcs használatával üzembe helyezett alkalmazás](./media/access-secrets-from-keyvault/app-deployed-with-access.png)
  
-Hasonlóképpen a felhasználók számára a key Vault is hozzáadhat. Szeretne saját maga hozzáadása a Key Vault "Adathozzáférési szabályzatok" kattintva, és adjon a Visual studióból az alkalmazás futtatásához szükséges összes engedélyt. Ha az alkalmazás fut, az asztalon, az identitás vesz igénybe.
+Hasonlóképpen a felhasználók számára a key Vault is hozzáadhat. Válassza a Key Vault hozzá saját magának kell **hozzáférési szabályzatok** és majd az összes szükséges engedélyek biztosítása a Visual studióból az alkalmazás futtatásához szükséges. Ha az alkalmazás fut, az asztalon, az identitás vesz igénybe.
 
 ## <a name="next-steps"></a>További lépések
 
 * Az Azure Cosmos DB-hez lásd: a tűzfal konfigurálása [tűzfal-támogatás](firewall-support.md) cikk.
 * Virtuális hálózati szolgáltatásvégpont beállítása: [biztonságos hozzáférés a virtuális hálózati szolgáltatásvégpont](vnet-service-endpoint.md) cikk.
-
-

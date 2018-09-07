@@ -1,5 +1,5 @@
 ---
-title: Egy feltöltött SSL-tanúsítvány használható az alkalmazás kódjában, az Azure App Service szolgáltatásban |} Microsoft Docs
+title: Egy feltöltött SSL-tanúsítvány használata az alkalmazáskódban az Azure App Service szolgáltatásban |} A Microsoft Docs
 description: ''
 services: app-service\web
 documentationcenter: ''
@@ -13,55 +13,55 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2017
 ms.author: cephalin
-ms.openlocfilehash: 6800bf766deb2044d400f92dbe370fa15bdd5f00
-ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
+ms.openlocfilehash: 87c9cd5955dda1a379733e5ad48d58f8361f0e6b
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2017
-ms.locfileid: "26047699"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44051476"
 ---
-# <a name="use-an-ssl-certificate-in-your-application-code-in-azure-app-service"></a>Egy SSL-tanúsítvány használható az alkalmazás kódjában, az Azure App Service-ben
+# <a name="use-an-ssl-certificate-in-your-application-code-in-azure-app-service"></a>SSL-tanúsítvány használata az alkalmazáskódban az Azure App Service-ben
 
-Ez az útmutató útmutató bemutatja, hogyan SSL-tanúsítványok feltöltött, illetve az alkalmazás kódjában az App Service alkalmazásba importált egyikét kell használnia. Egy példa a használati eset az, hogy az alkalmazás hozzáfér-e a tanúsítvány alapú hitelesítést igényel egy külső szolgáltatás. 
+Ez az útmutató bemutatja, hogyan feltöltött vagy az alkalmazáskódban az App Service alkalmazásba importált SSL-tanúsítványok egyikével. Egy példa a használati eset az, hogy az alkalmazás hozzáfér egy tanúsítványalapú hitelesítést igénylő külső szolgáltatáshoz. 
 
-Ez a megközelítés a kódban SSL-tanúsítványok használatával lehetővé teszi, hogy az SSL használatát az App Service szolgáltatásban kell lennie az alkalmazás funkcióinak **alapvető** réteg vagy újabb. A tanúsítványfájl tartalmazza az alkalmazás könyvtárába, és töltse be közvetlenül helyett (lásd: [alternatív: terhelés tanúsítványt fájlként](#file)). Azonban ez a megoldás nem engedélyezi a titkos kulcsot a tanúsítvány az alkalmazás kódja vagy a fejlesztői elrejtése. Továbbá ha az alkalmazás kódjában egy nyílt forráskódú tárházban, tanúsítványt és a titkos kulcs a tárházban tartása lehetőség nem érhető el.
+SSL-tanúsítványok használata a kódban, ez a megközelítés lehetővé teszi, hogy az SSL használata az App Service, amelyhez szükséges az alkalmazását az a funkciók **alapszintű** szint vagy újabb. A tanúsítványfájl felvenni az alkalmazás könyvtárába, majd betölti azokat közvetlenül helyett (lásd: [alternatív: load tanúsítványt fájlként](#file)). Azonban ez a megoldás nem teszi lehetővé az alkalmazáskód vagy a fejlesztő a tanúsítvány a titkos kulcs elrejtése. Továbbá ha az alkalmazás kódja egy nyílt forráskódú tárházban, a tárházban található titkos kulccsal rendelkező tanúsítvány tartja lehetőség nem.
 
-Ha engedélyezi az SSL-tanúsítványok kezelése az App Service, a tanúsítványok és az alkalmazás kódjában külön karbantartása, és a bizalmas adatok védelme.
+Ha engedélyezi az SSL-tanúsítványok kezelése az App Service, a tanúsítványok és az alkalmazás kódjában fenntartása érdekében külön-külön, és a bizalmas adatok védelme érdekében.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez az útmutató útmutató befejezése:
+Ez az útmutató végrehajtásához:
 
-- [Az App Service-alkalmazás létrehozása](/azure/app-service/)
-- [Egy egyéni DNS-nevet a webalkalmazás hozzárendelését](app-service-web-tutorial-custom-domain.md)
-- [SSL-tanúsítvány feltöltése](app-service-web-tutorial-custom-ssl.md) vagy [tanúsítványt importálni az App Service](web-sites-purchase-ssl-web-site.md) a webalkalmazáshoz
+- [Létre kell hoznia egy App Service-alkalmazást.](/azure/app-service/)
+- [Le kell képeznie egy egyéni DNS-nevet a webalkalmazásra.](app-service-web-tutorial-custom-domain.md)
+- [SSL-tanúsítvány feltöltése](app-service-web-tutorial-custom-ssl.md) vagy [egy App Service-tanúsítvány importálása](web-sites-purchase-ssl-web-site.md) a webalkalmazáshoz
 
 
 ## <a name="load-your-certificates"></a>A tanúsítványok betöltése
 
-Olyan tanúsítvány, amely fel van töltve, vagy az App Service importálni használatához először elérhetővé teszik az alkalmazás kódjában. Az ebben a `WEBSITE_LOAD_CERTIFICATES` Alkalmazásbeállítás.
+Feltöltött vagy importált App Service-tanúsítványt szeretne használni, először elérhetővé teszik az alkalmazás kódjában. Az ebben a `WEBSITE_LOAD_CERTIFICATES` alkalmazásbeállítást.
 
-Az a <a href="https://portal.azure.com" target="_blank">Azure-portálon</a>, nyissa meg a weblap alkalmazást.
+Az a <a href="https://portal.azure.com" target="_blank">az Azure portal</a>, a webalkalmazás lapjának megnyitásához.
 
-Kattintson a bal oldali navigációs **SSL-tanúsítványok**.
+A bal oldali navigációs sávján kattintson **SSL-tanúsítványok**.
 
-![A tanúsítvány feltöltése](./media/app-service-web-tutorial-custom-ssl/certificate-uploaded.png)
+![Feltöltött tanúsítvány](./media/app-service-web-tutorial-custom-ssl/certificate-uploaded.png)
 
-Összes a feltöltött és importált SSL-tanúsítvány a webalkalmazás az ujjlenyomatok az itt látható. Másolja át a használni kívánt tanúsítvány ujjlenyomata.
+Összes a feltöltött és importált SSL-tanúsítvány a webalkalmazás az ujjlenyomatok az itt látható. Másolja ki a használni kívánt tanúsítvány ujjlenyomatát.
 
-Kattintson a bal oldali navigációs **Alkalmazásbeállítások**.
+A bal oldali navigációs sávján kattintson **Alkalmazásbeállítások**.
 
-Hozzáadhat egy alkalmazást nevű beállítása `WEBSITE_LOAD_CERTIFICATES` és állítsa be az értékét a tanúsítvány ujjlenyomatát. Ahhoz, hogy több tanúsítvány elérhető, ujjlenyomat vesszővel elválasztott értékeket használja. Minden tanúsítvány válik elérhetővé, adja meg az értéket `*`. 
+Adjon hozzá egy alkalmazás nevű beállítása `WEBSITE_LOAD_CERTIFICATES` és az értékét állítsa a tanúsítvány ujjlenyomatát. Több tanúsítvány elérhetővé, ujjlenyomat vesszővel elválasztott értékeket használja. Ahhoz, hogy minden tanúsítvány érhető el, állítsa az értékét `*`. Hajtsa végre a megfelelő vegye figyelembe, hogy ez fogja helyezni a tanúsítványt a `CurrentUser\My` tárolásához.
 
 ![Alkalmazás-beállítás konfigurálása](./media/app-service-web-ssl-cert-load/configure-app-setting.png)
 
 Ha befejezte, kattintson a **mentése**.
 
-A konfigurált tanúsítvánnyal készen áll a a kódot kell használja.
+A konfigurált tanúsítvánnyal már készen áll a kód által használható.
 
 ## <a name="use-certificate-in-c-code"></a>Tanúsítvány használata a C#-kódban
 
-Ha a tanúsítvány érhető el, érhetők el, C#-kódban a tanúsítvány ujjlenyomatát. Az alábbi kód betölti az ujjlenyomattal rendelkező tanúsítványt `E661583E8FABEF4C0BEF694CBC41C28FB81CD870`.
+A tanúsítványt nem érhető el, miután érhetők el, a C#-kódban a tanúsítvány ujjlenyomatát. Az alábbi kód betölti az ujjlenyomattal rendelkező tanúsítvány `E661583E8FABEF4C0BEF694CBC41C28FB81CD870`.
 
 ```csharp
 using System;
@@ -87,11 +87,11 @@ certStore.Close();
 ```
 
 <a name="file"></a>
-## <a name="alternative-load-certificate-as-a-file"></a>Másik megoldás: a tanúsítványnak-fájlként
+## <a name="alternative-load-certificate-as-a-file"></a>Alternatív: betölteni a tanúsítványt fájlként
 
-Ez a szakasz bemutatja, hogyan, és betölti a tanúsítványfájlt, amely az alkalmazás könyvtárába. 
+Ez a szakasz bemutatja, hogyan és a egy tanúsítványfájlt, amely az alkalmazás könyvtárába betölteni. 
 
-Az alábbi C# példa betölti a tanúsítvány nevezik `mycert.pfx` a a `certs` könyvtárhoz, az alkalmazás tárház.
+Az alábbi C#-példa egy nevű tanúsítványt betölti `mycert.pfx` származó a `certs` az alkalmazás könyvtárába.
 
 ```csharp
 using System;

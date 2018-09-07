@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/10/2017
 ms.author: harijayms
-ms.openlocfilehash: 8a7a58581133d98738403bee2e659fae056e1a7f
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: f2b6ba4b7faaeb7092c24d964d32c69946264906
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43782481"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44023293"
 ---
 # <a name="azure-instance-metadata-service"></a>Az Azure Instance Metadata szolgáltatás
 
@@ -310,7 +310,7 @@ alhálózat/előtag | Alhálózati előtag, például 24 | 2017-04-02
 ipv6/ipAddress | A virtuális gép helyi IPv6-cím | 2017-04-02 
 macAddress | Virtuális gép mac-cím | 2017-04-02 
 scheduledevents | Lásd: [ütemezett események](scheduled-events.md) | 2017-08-01
-identity | (Előzetes verzió) Felügyeltszolgáltatás-identitást. Lásd: [hozzáférési jogkivonat beszerzése](../../active-directory/managed-service-identity/how-to-use-vm-token.md) | 2018-02-01 
+identity | (Előzetes verzió) Felügyeltszolgáltatás-identitást. Lásd: [hozzáférési jogkivonat beszerzése](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md) | 2018-02-01 
 
 ## <a name="example-scenarios-for-usage"></a>Példa használati forgatókönyvek  
 

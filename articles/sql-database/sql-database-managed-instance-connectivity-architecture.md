@@ -12,12 +12,12 @@ ms.date: 08/16/2018
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
 ms.topic: conceptual
-ms.openlocfilehash: 54917c6548c7f0bfacad6408732c5619e6346683
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: 56a1e7038515a64f1dfe3fda639213bcfcde63d6
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "40177625"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44053431"
 ---
 # <a name="azure-sql-database-managed-instance-connectivity-architecture"></a>Az Azure SQL Database felügyelt példány kapcsolati architektúra 
 
@@ -73,7 +73,7 @@ Felügyeleti és a központi telepítési szolgáltatások csatlakozhat a felüg
 - Áttekintéséhez lásd: [mit jelent a felügyelt példány](sql-database-managed-instance.md) 
 - Virtuális hálózati konfigurációval kapcsolatos további információkért lásd: [felügyelt példányok Vnetjének konfigurálásával](sql-database-managed-instance-vnet-configuration.md). 
 - Ehhez a rövid útmutatóhoz lásd: a felügyelt példány létrehozása: 
-  - az a [Azure Portalon](sql-database-managed-instance-create-tutorial-portal.md) 
+  - Az a [Azure Portalon](sql-database-managed-instance-get-started.md) 
   - használatával [PowerShell](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/27/quick-start-script-create-azure-sql-managed-instance-using-powershell/) 
   - használatával [Azure Resource Manager-sablon](https://azure.microsoft.com/resources/templates/101-sqlmi-new-vnet/) 
   - használatával [Azure Resource Manager-sablon (jumpbox az ssms-ben szereplő)](https://portal.azure.com/) 

@@ -1,6 +1,6 @@
 ---
-title: Funkciók megvalósítása az Azure Service Fabric actors |} A Microsoft Docs
-description: Ismerteti, hogyan írhat saját aktorszolgáltatás, amely megvalósítja a szolgáltatásszintű funkciók ugyanúgy statefulservice-ből öröklődés esetén tenné.
+title: Az Azure Service Fabric actors valósít meg olyan funkciókat |} A Microsoft Docs
+description: Ismerteti, hogyan írhat saját aktorszolgáltatás, ugyanúgy, mint a szolgáltatásiszint-funkciókat tartalmazza, amikor öröklik a statefulservice-ből.
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -14,22 +14,24 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/19/2018
 ms.author: vturecek
-ms.openlocfilehash: 6aff9e9599d31942f994f3cb4e5e9219f33dc7e1
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: 89161f3dad68c4b208f4badc548e2057c7ed58c1
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39205520"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44022049"
 ---
-# <a name="implementing-service-level-features-in-your-actor-service"></a>Szolgáltatásszintű funkciók megvalósítása az aktor service-ben
-Leírtak szerint [rétegezett szolgáltatás](service-fabric-reliable-actors-platform.md#service-layering), az aktorszolgáltatás magát egy olyan megbízható szolgáltatás.  Írhat saját szolgáltatás származó `ActorService` és szolgáltatásszintű funkciók megvalósítása ugyanúgy ugyanúgy, mint például a statefulservice-ből, öröklődés esetén:
+# <a name="implement-service-level-features-in-your-actor-service"></a>Szolgáltatásszintű funkciók megvalósítása az aktor service-ben
+
+Leírtak szerint [rétegezett szolgáltatás](service-fabric-reliable-actors-platform.md#service-layering), az aktorszolgáltatás magát egy olyan megbízható szolgáltatás. Írhat saját szolgáltatás származó `ActorService`. Is meg lehet valósítani szolgáltatásszintű funkciók ugyanúgy, mint amikor az állapotalapú szolgáltatások, például öröklése:
 
 - Szolgáltatás biztonsági mentése és visszaállítása.
 - Megosztott funkció az összes szereplő, például egy áramkör-megszakító.
 - Távoli eljáráshívások az aktorszolgáltatás magát és minden egyes színész.
 
-## <a name="using-the-actor-service"></a>Az aktor szolgáltatással
-Aktorpéldányok hozzáférése az aktorszolgáltatás folyamatukban futnak. Az aktor szolgáltatáson keresztül aktorpéldányokat programozott módon szerezheti be a szolgáltatási környezet. A szolgáltatási környezet rendelkezik a Partícióazonosító, szolgáltatásnév, alkalmazás neve és egyéb Service Fabric platform jellemző információkat:
+## <a name="use-the-actor-service"></a>Az aktor használatára
+
+Aktorpéldányok hozzáférése az aktorszolgáltatás folyamatukban futnak. Az aktor szolgáltatáson keresztül aktorpéldányokat programozott módon szerezheti be a szolgáltatási környezet. A szolgáltatási környezet rendelkezik a Partícióazonosító, szolgáltatásnév, alkalmazás neve és egyéb Azure Service Fabric platform jellemző információkat.
 
 ```csharp
 Task MyActorMethod()
@@ -50,7 +52,7 @@ CompletableFuture<?> MyActorMethod()
 }
 ```
 
-Az összes megbízható szolgáltatásokhoz hasonlóan az aktorszolgáltatást regisztrálni kell egy bizonyos szolgáltatástípusként a Service Fabric-futtatókörnyezet. Az az aktorszolgáltatás futtatni tudja az aktorpéldányokat az aktor típusát is regisztrálni kell az aktorszolgáltatásba. Az aktorok esetében ezt a feladatot az `ActorRuntime` regisztrációs metódus végzi el. A legegyszerűbb esetben egyszerűen regisztrálhatja az aktor típusát, és alapértelmezett beállítások használatával az aktorszolgáltatás implicit módon használható:
+Az összes megbízható szolgáltatásokhoz hasonlóan az aktorszolgáltatást regisztrálni kell egy bizonyos szolgáltatástípusként a Service Fabric-futtatókörnyezet. Az az aktorszolgáltatás futtatni tudja az aktorpéldányokat az aktor típusát is regisztrálni kell az aktorszolgáltatásba. Az aktorok esetében ezt a feladatot az `ActorRuntime` regisztrációs metódus végzi el. A legegyszerűbb esetben regisztrálhatja az aktor típusát, és az aktorszolgáltatás majd az alapértelmezett beállítást használja.
 
 ```csharp
 static class Program
@@ -64,7 +66,7 @@ static class Program
 }
 ```
 
-Azt is megteheti az egy lambda, a regisztrációs módszer által biztosított segítségével kialakíthatja az aktorszolgáltatás saját magának. Ezután konfigurálhatja az aktorszolgáltatás, és explicit módon hozhat létre az aktorpéldányokat, ahol az függőségek beszúrása az aktor a konstruktor keresztül:
+Azt is megteheti az egy lambda, a regisztrációs módszer által biztosított segítségével kialakíthatja az aktorszolgáltatás saját magának. Ezután konfigurálhatja az aktorszolgáltatás és explicit módon hozhat létre az aktorpéldányokat. Függőségek megváltoztathatják a az aktor keresztül a konstruktor.
 
 ```csharp
 static class Program
@@ -95,11 +97,13 @@ static class Program
 ```
 
 ## <a name="actor-service-methods"></a>Aktor service módszerek
-Az Aktor service valósítja meg `IActorService` (C#) vagy `ActorService` (Java), amely viszont valósít meg `IService` (C#) vagy `Service` (Java). Ez az a Reliable Services távelérésének lehetővé tétele, ami lehetővé teszi a távoli eljáráshívások szolgáltatás módszerek által használt kapcsolat. Szolgáltatás távelérésének lehetővé tétele keresztül távolról lehet hívni, és lehetővé teszi, hogy szolgáltatásiszint-metódusokat tartalmaz [számbavétele](service-fabric-reliable-actors-enumerate.md) és [törlése](service-fabric-reliable-actors-delete-actors.md) actors.
+
+Az aktor service valósítja meg `IActorService` (C#) vagy `ActorService` (Java), amely viszont valósít meg `IService` (C#) vagy `Service` (Java). Ez az interfész a Reliable Services távelérésének lehetővé tétele, ami lehetővé teszi a távoli eljáráshívások szolgáltatás módszerek használják. Szolgáltatás távelérésének lehetővé tétele keresztül távolról hívható szolgáltatásiszint-metódusokat tartalmaz. Használhatja azt, hogy [számbavétele](service-fabric-reliable-actors-enumerate.md) és [törlése](service-fabric-reliable-actors-delete-actors.md) actors.
 
 
 ## <a name="custom-actor-service"></a>Egyéni aktorszolgáltatás
-Az aktor regisztrációs lambda használatával regisztrálhatja a saját egyéni aktorszolgáltatás származó `ActorService` (C#) és `FabricActorService` (Java). Az egyéni aktorszolgáltatás Megvalósíthat a saját szolgáltatásiszint-funkciót, ha egy szolgáltatás osztályból `ActorService` (C#) vagy `FabricActorService` (Java). Egy egyéni aktorszolgáltatás örökli az összes aktor futtatókörnyezet funkcióinak `ActorService` (C#) vagy `FabricActorService` (Java) és a saját szolgáltatás módszerek végrehajtásához használható.
+
+Az aktor regisztrációs lambda használatával regisztrálhatja a saját egyéni aktorszolgáltatás származó `ActorService` (C#) és `FabricActorService` (Java). Ezután valósítható meg a saját szolgáltatásiszint-funkciót, ha egy szolgáltatás osztályból `ActorService` (C#) vagy `FabricActorService` (Java). Egy egyéni aktorszolgáltatás örökli az összes aktor futtatókörnyezet funkcióinak `ActorService` (C#) vagy `FabricActorService` (Java). Saját szolgáltatás módszerek végrehajtásához használható.
 
 ```csharp
 class MyActorService : ActorService
@@ -146,68 +150,78 @@ public class Program
 }
 ```
 
-## <a name="implementing-actor-backup-and-restore"></a>Aktorok biztonsági mentés és visszaállítás végrehajtása
-Egy egyéni aktorszolgáltatás tehetők közzé a biztonsági másolatok aktor kihasználásával a távoli eljáráshívás figyelő már szerepel a metódus `ActorService`.  Egy vonatkozó példáért lásd: [biztonsági mentési és visszaállítási actors](service-fabric-reliable-actors-backup-and-restore.md).
+## <a name="implement-actor-backup-and-restore"></a>Alkalmazzon aktorok biztonsági mentése és visszaállítása
 
-## <a name="actor-using-remoting-v2interfacecompatible-stack"></a>Az aktor távoli eljáráshívás V2(InterfaceCompatible) Stack használatával
-Távoli eljáráshívás V2 (más néven V2_1 InterfaceCompatible) verem minden V2 távoli eljáráshívás funkcióját a verem mellett felület kompatibilis stack távoli eljáráshívás V1 stack, de nem kompatibilis a V2 és V1 rendelkezik. Nyugodtan Dolgozhatok addig is a frissítés V1-től V2_1 a szolgáltatás rendelkezésre állása befolyásolása nélkül, kövesse az alábbi [cikk](#actor-service-upgrade-to-remoting-v2interfacecompatible-stack-without-impacting-service-availability).
+Egy egyéni aktorszolgáltatás tehetők közzé a biztonsági másolatok aktor kihasználásával a távoli eljáráshívás figyelő már szerepel a metódus `ActorService`. Egy vonatkozó példáért lásd: [biztonsági mentési és visszaállítási actors](service-fabric-reliable-actors-backup-and-restore.md).
 
-Következő módosítások szükségesek a távoli eljáráshívás V2_1 verem használata.
- 1. Adja hozzá a következő szerelvény attribútumot az Aktorok.
+## <a name="actor-that-uses-a-remoting-v2-interface-compatible-stack"></a>A távoli eljáráshívás V2 (interface-kompatibilis) stack használó aktor
+
+A távoli eljáráshívás V2 (csatoló kompatibilis, más néven V2_1) stack rendelkezik a V2 távoli eljáráshívás verem összes funkcióját. A kapcsolat a távoli eljáráshívás V1 verem kompatibilis, de már nem kompatibilis a V2 és V1. Frissítse a V1 V2_1 nincs hatással a szolgáltatás rendelkezésre állására, kövesse a következő szakaszban.
+
+A következő módosítások szükségesek a távoli eljáráshívás V2_1 verem használata:
+
+ 1. Adja hozzá a következő szerelvény attribútumot az aktorok.
+  
    ```csharp
    [assembly:FabricTransportActorRemotingProvider(RemotingListenerVersion = RemotingListenerVersion.V2_1,RemotingClientVersion = RemotingClientVersion.V2_1)]
    ```
 
- 2. Build és a frissítés ActorService és Aktor ügyfél projektek V2 Stack használatának megkezdéséhez.
+ 2. Hozhat létre, és frissítse az aktorszolgáltatás és az ügyfél aktorprojektek a V2-verem használatának megkezdéséhez.
 
-#### <a name="actor-service-upgrade-to-remoting-v2interfacecompatible-stack-without-impacting-service-availability"></a>Aktor szolgáltatás távelérésének lehetővé tétele V2(InterfaceCompatible) Stack szolgáltatás rendelkezésre állása befolyásolása nélkül frissítse.
-Ez a változás a 2. lépés – frissítés lesz. Felsorolt, kövesse a lépéseket, ugyanabban a sorrendben.
+### <a name="actor-service-upgrade-to-remoting-v2-interface-compatible-stack-without-affecting-service-availability"></a>Aktor szolgáltatás frissítése távoli eljáráshívás V2 (interface-kompatibilis) stack anélkül, hogy befolyásolná a szolgáltatás rendelkezésre állása
 
-1.  Adja hozzá a következő szerelvény attribútumot az Aktorok. Ez az attribútum indul el két ActorService, V1-figyelője (meglévő) és V2_1 figyelő. A frissítés ActorService ezt a módosítást.
+Ez a módosítás egy kétlépéses frissítése. Kövesse az itt látható sorrendben.
+
+1. Adja hozzá a következő szerelvény attribútumot az aktorok. Ez az attribútum elindít két figyelői aktorszolgáltatás, V1 (meglévő) és a V2_1 figyelő. Ez a változás az aktorszolgáltatás frissítése.
 
   ```csharp
   [assembly:FabricTransportActorRemotingProvider(RemotingListenerVersion = RemotingListenerVersion.V1|RemotingListenerVersion.V2_1,RemotingClientVersion = RemotingClientVersion.V2_1)]
   ```
 
-2. A fenti frissítés befejezése után frissítse a ActorClients.
-Ez a lépés biztosítja, hogy Aktor Proxy távoli eljáráshívás V2_1 Stack használ.
+2. Az aktor ügyfelek frissítése, az előző frissítés befejezése után.
+Ebben a lépésben gondoskodik arról, hogy az aktor proxyt használ-e a távoli eljáráshívás V2_1 stack.
 
-3. Ez a lépés nem kötelező. A fenti attribútumát távolítsa el a V1-figyelőt.
+3. Ez a lépés nem kötelező. Módosítsa az előző attribútum távolítsa el a V1-figyelőt.
 
     ```csharp
     [assembly:FabricTransportActorRemotingProvider(RemotingListenerVersion = RemotingListenerVersion.V2_1,RemotingClientVersion = RemotingClientVersion.V2_1)]
     ```
 
-## <a name="actor-using-remoting-v2-stack"></a>Az aktor távoli eljáráshívás V2 Stack használatával
-2.8-as nuget-csomagot, a felhasználók mostantól használhatják a távoli eljáráshívás V2 stack, amely több nagy teljesítményű, és biztosítja a Funkciók, például egyéni sorba rendezésre. Távoli eljáráshívás V2 nem kompatibilis a meglévő távoli eljáráshívás stack (hívjuk most azt V1 távoli eljáráshívás veremként).
+## <a name="actor-that-uses-the-remoting-v2-stack"></a>A távoli eljáráshívás V2 verem használó aktor
 
-Következő módosítások szükségesek a távoli eljáráshívás V2 verem használata.
- 1. Adja hozzá a következő szerelvény attribútumot az Aktorok.
+A 2.8-as verziója NuGet-csomagot, a felhasználók most már használhatja a távoli eljáráshívás V2 verem, amely jobb, és biztosítja a Funkciók, például egyéni sorba rendezésre. Távoli eljáráshívás V2 nem visszamenőlegesen kompatibilis a meglévő távoli eljáráshívás hibával (most már a V1 távoli eljáráshívás verem is nevezik).
+
+A következő módosítások szükségesek a távoli eljáráshívás V2 verem használata.
+
+ 1. Adja hozzá a következő szerelvény attribútumot az aktorok.
+
    ```csharp
    [assembly:FabricTransportActorRemotingProvider(RemotingListenerVersion = RemotingListenerVersion.V2,RemotingClientVersion = RemotingClientVersion.V2)]
    ```
 
- 2. Build és a frissítés ActorService és Aktor ügyfél projektek V2 Stack használatának megkezdéséhez.
+ 2. Hozhat létre, és frissítse az aktorszolgáltatás és aktorprojektek ügyfél használatához a V2-vermet.
 
-#### <a name="actor-service-upgrade-to-remoting-v2-stack-without-impacting-service-availability"></a>Aktor szolgáltatás távelérésének lehetővé tétele V2 Stack szolgáltatás rendelkezésre állása befolyásolása nélkül frissítse.
-Ez a változás a 2. lépés – frissítés lesz. Felsorolt, kövesse a lépéseket, ugyanabban a sorrendben.
+### <a name="upgrade-the-actor-service-to-the-remoting-v2-stack-without-affecting-service-availability"></a>A távoli eljáráshívás V2 verem az aktorszolgáltatás frissíteni anélkül, hogy befolyásolná a szolgáltatás rendelkezésre állása
 
-1.  Adja hozzá a következő szerelvény attribútumot az Aktorok. Ez az attribútum indul el két ActorService, V1-figyelője (meglévő) és V2-figyelő. A frissítés ActorService ezt a módosítást.
+Ez a módosítás egy kétlépéses frissítése. Kövesse az itt látható sorrendben.
+
+1. Adja hozzá a következő szerelvény attribútumot az aktorok. Ez az attribútum elindít két figyelői aktorszolgáltatás, V1 (meglévő) és a V2-figyelő. Ez a változás az aktorszolgáltatás frissítése.
 
   ```csharp
   [assembly:FabricTransportActorRemotingProvider(RemotingListenerVersion = RemotingListenerVersion.V1|RemotingListenerVersion.V2,RemotingClientVersion = RemotingClientVersion.V2)]
   ```
 
-2. A fenti frissítés befejezése után frissítse a ActorClients.
-Ez a lépés biztosítja, hogy Aktor Proxy távoli eljáráshívás V2 Stack használ.
+2. Az aktor ügyfelek frissítése, az előző frissítés befejezése után.
+Ebben a lépésben gondoskodik arról, hogy az aktor proxyt használ-e a távoli eljáráshívás V2 stack.
 
-3. Ez a lépés nem kötelező. A fenti attribútumát távolítsa el a V1-figyelőt.
+3. Ez a lépés nem kötelező. Módosítsa az előző attribútum távolítsa el a V1-figyelőt.
 
     ```csharp
     [assembly:FabricTransportActorRemotingProvider(RemotingListenerVersion = RemotingListenerVersion.V2,RemotingClientVersion = RemotingClientVersion.V2)]
     ```
 
 ## <a name="next-steps"></a>További lépések
+
 * [Aktor állapotkezelés](service-fabric-reliable-actors-state-management.md)
 * [Actors-életciklus-kezelés és szemétgyűjtés gyűjtemény](service-fabric-reliable-actors-lifecycle.md)
 * [Aktorok API dokumentációja](https://msdn.microsoft.com/library/azure/dn971626.aspx)

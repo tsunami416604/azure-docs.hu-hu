@@ -1,6 +1,6 @@
 ---
-title: Az aktor-alapú Azure mikroszolgáltatások rögzítve |} Microsoft Docs
-description: A Service Fabric Reliable Actors rögzítve bemutatása
+title: Az Azure Service Fabric actors – újbóli belépés |} A Microsoft Docs
+description: A Service Fabric Reliable Actors – újbóli belépés bemutatása.
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 40f52cb399f2d7391657ce4356a0c30921d46e5f
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: c7a4066a949ad6e66c45dff67f1e80801f2fa4cd
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34207094"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44055260"
 ---
-# <a name="reliable-actors-reentrancy"></a>Megbízható szereplője rögzítve
-A Reliable Actors futásidejű alapértelmezés szerint lehetővé teszi, hogy logikai hívás környezetfüggő rögzítve. Ez lehetővé teszi a szereplőket ismételten belépő, ha azok hívás környezetben ugyanabba a láncba kell. Például A Aktor üzenetet küld szereplő B, egy üzenet küld Aktor a c kiszolgálóra. Az üzenet feldolgozása részeként szereplő C Aktor A, ha az üzenet ismételten belépő, amelynek engedélyezni. Bármely más üzeneteket, amelyek egy másik hívás környezetet részei le lesz tiltva a Aktor A feldolgozás befejezéséig.
+# <a name="reliable-actors-reentrancy"></a>A Reliable Actors – újbóli belépés
+A Reliable Actors-futtatókörnyezet, alapértelmezés szerint lehetővé teszi a logikai hívás környezetfüggő – újbóli belépés. Ez lehetővé teszi, hogy ha az azonos környezetben hívásláncot azok ismételten belépő az aktorok esetében. Például egy Aktor üzenetet küld az Aktor B, akik egy üzenetet küld az Aktor c-hez Feldolgozni az üzenetet részeként Aktor C meghívja az Aktor A, az üzenet-e ismételten belépő, így a megengedett, hogy. Bármely más hívási környezet részét képező többi üzenet le lesz tiltva az Aktor A feldolgozás befejezéséig tartó.
 
-Nincsenek definiálva szereplő rögzítve két lehetőség közül választhat a `ActorReentrancyMode` enum:
+Két lehetőség van definiálva actors – újbóli belépés érhető el a `ActorReentrancyMode` enum:
 
 * `LogicalCallContext` (alapértelmezés)
-* `Disallowed` -rögzítve letiltása
+* `Disallowed` -letiltása – újbóli belépés
 
 ```csharp
 public enum ActorReentrancyMode
@@ -43,9 +43,9 @@ public enum ActorReentrancyMode
     Disallowed(2)
 }
 ```
-Rögzítve konfigurálható egy `ActorService`tartozó beállítások regisztrálás során. A beállítás csak az aktor szolgáltatásban létrehozott összes szereplő példányok.
+– Újbóli belépés konfigurálható egy `ActorService`a beállítások a regisztráció során. A beállítás az aktorszolgáltatás létrehozott összes aktorpéldányok vonatkozik.
 
-A következő példa bemutatja az aktor szolgáltatása, amely a rögzítve mód beállítása `ActorReentrancyMode.Disallowed`. Ebben az esetben, ha egy szereplő ismételten belépő üzenetet küld egy másik szereplő, típusú kivételt `FabricException` fog jelezni.
+Az alábbi példa bemutatja egy aktor szolgáltatás, amely a – újbóli belépés mód beállítása `ActorReentrancyMode.Disallowed`. Ebben az esetben, ha egy szereplő ismételten belépő üzenetet küld egy másik aktor, típusú kivételt adott `FabricException` , a rendszer hibajelzést.
 
 ```csharp
 static class Program
@@ -111,4 +111,4 @@ static class Program
 
 
 ## <a name="next-steps"></a>További lépések
-* További információ a rögzítve a [szereplő API referenciadokumentációt tartalmaz](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+* További információ – újbóli belépés a [Aktor API dokumentációja](https://msdn.microsoft.com/library/azure/dn971626.aspx)

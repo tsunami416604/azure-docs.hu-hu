@@ -8,16 +8,16 @@ ms.topic: article
 ms.date: 05/18/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 6ddae66ee6408a3cab905826cd0d7c0831607d33
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: e20e0c412206b2a35973b192ef911bb99ed7c210
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39526385"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44021863"
 ---
 # <a name="authenticate-with-azure-ad-from-an-azure-managed-service-identity-preview"></a>Hitelesítés az Azure Felügyeltszolgáltatás-identitás (előzetes verzió) az Azure AD-vel
 
-Az Azure Storage támogatja az Azure Active Directory (Azure AD) hitelesítési [Felügyeltszolgáltatás-identitás](../../active-directory/managed-service-identity/overview.md). Felügyelt Felügyeltszolgáltatás-identitás (MSI) az Azure Active Directoryban (Azure AD) egy automatikus felügyelt identitást biztosít. Az MSI használatával az Azure virtual machines, a függvényalkalmazások, a virtual machine scale sets és mások a futó alkalmazások az Azure Storage-hitelesítéshez. Az MSI használatával, és alkalmazásaiban az Azure AD-hitelesítés, elkerülheti a hitelesítő adatokat az alkalmazásokkal, amelyek futtatását a felhőben tárolja.  
+Az Azure Storage támogatja az Azure Active Directory (Azure AD) hitelesítési [Felügyeltszolgáltatás-identitás](../../active-directory/managed-identities-azure-resources/overview.md). Felügyelt Felügyeltszolgáltatás-identitás (MSI) az Azure Active Directoryban (Azure AD) egy automatikus felügyelt identitást biztosít. Az MSI használatával az Azure virtual machines, a függvényalkalmazások, a virtual machine scale sets és mások a futó alkalmazások az Azure Storage-hitelesítéshez. Az MSI használatával, és alkalmazásaiban az Azure AD-hitelesítés, elkerülheti a hitelesítő adatokat az alkalmazásokkal, amelyek futtatását a felhőben tárolja.  
 
 A storage-tárolók vagy várólisták felügyeltszolgáltatás-identitás engedélyeket, rendelje hozzá az RBAC-szerepkör, amely magában foglalja a tárolási engedélyek az MSI-csomag. További információ a tárolási RBAC-szerepkörök: [kezelés hozzáférési jogosultsága ahhoz, hogy az RBAC (előzetes verzió) tárolási adatok](storage-auth-aad-rbac.md). 
 
@@ -33,14 +33,14 @@ Ez a cikk bemutatja, hogyan hitelesítheti az MSI-vel az Azure Storage, Azure vi
 Az MSI használatával a virtuális gépről az Azure Storage-hitelesítést, mielőtt a virtuális gépen az MSI először engedélyeznie kell. Az MSI engedélyezéséhez ezekben a cikkekben talál további információt:
 
 - [Azure Portal](https://docs.microsoft.com/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm)
-- [Azure PowerShell](../../active-directory/managed-service-identity/qs-configure-powershell-windows-vm.md)
-- [Azure CLI](../../active-directory/managed-service-identity/qs-configure-cli-windows-vm.md)
-- [Az Azure Resource Manager-sablon](../../active-directory/managed-service-identity/qs-configure-template-windows-vm.md)
-- [Azure SDK-k](../../active-directory/managed-service-identity/qs-configure-sdk-windows-vm.md)
+- [Azure PowerShell](../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)
+- [Azure CLI](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md)
+- [Az Azure Resource Manager-sablon](../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
+- [Azure SDK-k](../../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
 
 ## <a name="get-an-msi-access-token"></a>MSI szükséges hozzáférési jogkivonat beszerzése
 
-MSI-hitelesítésre, az alkalmazást vagy parancsfájlt kell MSI hozzáférési jogkivonat beszerzése. Hozzáférési jogkivonat beszerzése kapcsolatos tudnivalókért lásd: [egy Azure virtuális gépek Felügyeltszolgáltatás-identitás (MSI) használata a token beszerzéséhez](../../active-directory/managed-service-identity/how-to-use-vm-token.md).
+MSI-hitelesítésre, az alkalmazást vagy parancsfájlt kell MSI hozzáférési jogkivonat beszerzése. Hozzáférési jogkivonat beszerzése kapcsolatos tudnivalókért lásd: [egy Azure virtuális gépek Felügyeltszolgáltatás-identitás (MSI) használata a token beszerzéséhez](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md).
 
 ## <a name="net-code-example-create-a-block-blob"></a>.NET mintakód: block blob létrehozása
 

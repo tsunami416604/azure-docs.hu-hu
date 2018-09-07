@@ -9,16 +9,16 @@ ms.component: content-moderator
 ms.topic: article
 ms.date: 01/18/2018
 ms.author: sajagtap
-ms.openlocfilehash: fe321d08a44e7f843228668908c8b2c4ff3a3c32
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: 808ee3637d67ff4874c5d4837d5c53cbe7b18680
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "41987480"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44024590"
 ---
 # <a name="create-video-reviews-using-net"></a>Hozzon létre videót felülvizsgálatok .NET használatával
 
-Ez a cikk nyújt információt, és kódminták segítségével gyorsan Ismerkedés a Content Moderator SDK használatával a C# használatával:
+Ez a cikk nyújt információt, és kódminták segítségével gyorsan használatának első lépései a [Content Moderator SDK a C#](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) való:
 
 - Létrehoz egy videó az emberi moderátorok
 - Felülvizsgálat keretek hozzáadása
@@ -32,11 +32,22 @@ Ez a cikk feltételezi, hogy [Metz a videó (lásd a rövid útmutató)](video-m
 
 Ez a cikk azt is feltételezi, hogy már ismeri a Visual Studio és C#.
 
-### <a name="sign-up-for-content-moderator-services"></a>Iratkozzon fel a Content Moderator szolgáltatások
+## <a name="sign-up-for-content-moderator"></a>Iratkozzon fel a Content Moderator
 
 A REST API-t vagy az SDK-t a Content Moderator szolgáltatások használata előtt szüksége van egy előfizetési kulcsot.
+Tekintse meg a [rövid](quick-start.md) megtudhatja, hogyan szerezheti be a kulcsot.
 
-A Content Moderator irányítópultján található az előfizetési kulcs a **beállítások** > **hitelesítő adatok** > **API**  >  **Próbaverziós Ocp-Apim-Subscription-Key**. További információkért lásd: [áttekintése](overview.md).
+## <a name="sign-up-for-a-review-tool-account-if-not-completed-in-the-previous-step"></a>Ha nem végzi el az előző lépésben felülvizsgálati eszköz fiókot regisztráljon
+
+Ha kapott a Content Moderator az Azure Portalon is [a felülvizsgálati eszköz fiók](https://contentmoderator.cognitive.microsoft.com/) , és tekintse át a csoport létrehozása. A csoport azonosítója, és indítsa el a feladatot, és tekintse meg az értékelések a vizsgálóeszközt, a felülvizsgálati API hívása a felülvizsgálati eszköz szükséges.
+
+## <a name="ensure-your-api-key-can-call-the-review-api-for-review-creation"></a>Győződjön meg arról, az API-kulcs segítségével meghívhatja a felülvizsgálati API felülvizsgálat létrehozása
+
+Az előző lépések végrehajtását követően, előfordulhat, hogy végül két a Content Moderator kulcs Ha használatba az Azure Portalról. 
+
+Ha azt tervezi, használja az Azure által biztosított API-kulcsot az SDK-minta, hajtsa végre a szereplő lépéseket a [a felülvizsgálati API-val az Azure key](review-tool-user-guide/credentials.md#use-the-azure-account-with-the-review-tool-and-review-api) szakaszban, hogy az alkalmazása a felülvizsgálati API-t, és létrehozni a felülvizsgálatok.
+
+Ingyenes próba hozza létre a kulcsot a felülvizsgálati eszköz használatakor a felülvizsgálati eszköz fiók már ismer a kulcsot, és ezért semmilyen további lépésekre szükség.
 
 ### <a name="prepare-your-video-and-the-video-frames-for-review"></a>Tekintse át a videót, és a videókban előkészítése
 
@@ -536,8 +547,8 @@ Végül tekintse meg a videó felülvizsgálatot a Content Moderator a tekintse 
 
 ## <a name="next-steps"></a>További lépések
 
+Első a [Content Moderator .NET SDK-val](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) és a [Visual Studio-megoldás](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) ennél és a többi a Content Moderator rövid útmutató a .NET-hez.
+
 Ismerje meg, hogyan adhat hozzá [átiratok moderálás](video-transcript-moderation-review-tutorial-dotnet.md) a videó felülvizsgálatra. 
 
 Tekintse meg a részletes oktatóanyag, hogyan hozhat létre egy [videomoderálás megoldás befejezéséhez](video-transcript-moderation-review-tutorial-dotnet.md).
-
-[Töltse le a Visual Studio-megoldás](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) ennél és a többi a Content Moderator rövid útmutató a .NET-hez.

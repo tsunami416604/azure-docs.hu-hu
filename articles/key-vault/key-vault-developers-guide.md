@@ -7,14 +7,14 @@ manager: mbaldwin
 ms.service: key-vault
 ms.topic: article
 ms.workload: identity
-ms.date: 10/12/2017
+ms.date: 09/05/2018
 ms.author: bryanla
-ms.openlocfilehash: d8554d235fdfeb5b192ddf1268e60b7bc32aabe7
-ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
+ms.openlocfilehash: b4522d9eb2e9af782918f021c79bbcb155c5c383
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42060816"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44053621"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Az Azure Key Vault fejlesztői útmutató
 
@@ -53,11 +53,9 @@ A fenti videó erőforrások:
 
 ## <a name="creating-and-managing-key-vaults"></a>Létrehozása és kezelése a Kulcstartók
 
-Az Azure Key Vault módot kínál a hitelesítő adatok, valamint egyéb kulcsok és titkos kódok biztonságos tárolására, azonban a kódnak hitelesítenie kell magát a Key Vaultban az adatok lekéréséhez. A felügyeltszolgáltatás-identitás (MSI) segít leegyszerűsíteni ezt a problémát, mivel az Azure-szolgáltatások számára egy automatikusan felügyelt identitást biztosít az Azure Active Directoryban (Azure AD-ben). Ezzel az identitással bármely, az Azure AD-hitelesítést támogató szolgáltatásban, többek között a Key Vaultban is elvégezheti a hitelesítést anélkül, hogy a hitelesítő adatokat a kódban kellene tárolnia. 
+Az Azure Key Vault módot kínál a hitelesítő adatok, valamint egyéb kulcsok és titkos kódok biztonságos tárolására, azonban a kódnak hitelesítenie kell magát a Key Vaultban az adatok lekéréséhez. Felügyelt identitások az Azure-erőforrások így egyszerűbb a probléma megoldására azzal, hogy az Azure-szolgáltatások automatikusan felügyelt identitás az Azure Active Directoryban (Azure AD). Ezzel az identitással bármely, az Azure AD-hitelesítést támogató szolgáltatásban, többek között a Key Vaultban is elvégezheti a hitelesítést anélkül, hogy a hitelesítő adatokat a kódban kellene tárolnia. 
 
-Az MSI további információkért lásd: [Felügyeltszolgáltatás-identitás (MSI) Azure-erőforrások](https://docs.microsoft.com/azure/active-directory/msi-overview).
-
-Aad-ben való használatáról további információkért lásd: [alkalmazások integrálása az Azure Active Directory](/azure/active-directory/develop/active-directory-integrating-applications).
+További információ az Azure-erőforrások felügyelt identitások: [a felügyelt identitások áttekintése](../active-directory/managed-identities-azure-resources/overview.md). Aad-ben való használatáról további információkért lásd: [alkalmazások integrálása az Azure Active Directory](/azure/active-directory/develop/active-directory-integrating-applications).
 
 Mielőtt elkezdene dolgozni az kulcsok, titkos kódok és tanúsítványok tárol a kulcstárolóban, fog létrehozni, és kezelése a key vault – CLI, a PowerShell, a Resource Manager-sablonok vagy a REST, az alábbi cikkekben ismertetett módon:
 
@@ -110,14 +108,14 @@ Node.js-ben a Key Vault-felügyeleti API-t és a Key Vault objektum API is kül�
 ### <a name="quick-start-guides"></a>Rövid útmutatók
 
 - [Kulcstartó létrehozása](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create)
-- [Ismerkedés a Key Vault Node.js-ben](https://azure.microsoft.com/resources/samples/key-vault-node-getting-started/)
+- [Ismerkedés a Key Vault Node.js-ben](https://github.com/Azure-Samples/key-vault-node-getting-started)
 
 ### <a name="code-examples"></a>Hitelesítésikód-példák
 
 A Key Vault használata az alkalmazások teljes példákért lásd:
 
-- [Az Azure Key Vault-Kódminták](http://www.microsoft.com/download/details.aspx?id=45343) – .NET mintaalkalmazás *HelloKeyVault* és a egy Azure-webalkalmazások példa. 
-- [Használata egy webalkalmazásból az Azure Key Vault](key-vault-use-from-web-application.md) -oktatóanyag segítségével elsajátíthatja az Azure Key Vault használata egy webalkalmazásból az Azure-ban. 
+- [Az Azure Key Vault-Kódminták](https://azure.microsoft.com/resources/samples/?service=key-vault) -Kódminták az Azure Key Vault. 
+- [Használata egy webalkalmazásból az Azure Key Vault](quick-create-net.md) -oktatóanyag segítségével elsajátíthatja az Azure Key Vault használata egy webalkalmazásból az Azure-ban. 
 
 ## <a name="how-tos"></a>Használati útmutatók
 

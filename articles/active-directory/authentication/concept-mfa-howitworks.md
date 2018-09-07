@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 46c99011a22f855f6faf53e03169b2d1e4c6ce85
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: a79c09df7d5fec5884a6810b82b7c174042a4c93
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43669007"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44054563"
 ---
 # <a name="how-it-works-azure-multi-factor-authentication"></a>Hogyan működik: az Azure multi-factor Authentication
 
@@ -35,7 +35,7 @@ A multi-factor Authentication szolgáltatás része a következő ajánlatokra:
 
 * **Az Azure Active Directory Premium licenccel** – teljes kiemelt Azure multi-factor Authentication szolgáltatás (felhő) vagy az Azure multi-factor Authentication-kiszolgáló (helyszíni) használatát.
    * **Az Azure MFA szolgáltatáshoz (felhő)** - **Ez a beállítás akkor az új üzembe helyezésekhez javasolt elérési**. Az Azure MFA a felhőben nincsenek a helyszíni infrastruktúrát igényel, és az összevont vagy kizárólag felhőbeli felhasználó használható.
-   * **Az Azure MFA-kiszolgáló** – Ha a szervezet szeretne a kapcsolódó infrastruktúra-elemek kezelése és az AD FS-előfizetésébe a környezetében telepített ezzel a módszerrel lehet, hogy egy lehetőséget.
+   * **Az Azure MFA-kiszolgáló** – Ha a szervezet szeretne a kapcsolódó infrastruktúra-elemek kezelése és az AD FS a helyszíni környezetben telepített ezzel a módszerrel lehet, hogy egy lehetőséget.
 * **A multi-factor Authentication for Office 365** – Azure multi-factor Authentication funkcióinak egy részét, az előfizetés részeként érhetők el. Az Office 365-höz MFA kapcsolatos további információkért tekintse meg a cikket [a multi-factor authentication for Office 365 központi telepítések tervezése](https://support.office.com/article/plan-for-multi-factor-authentication-for-office-365-deployments-043807b2-21db-4d5c-b430-c8a6dee0e6ba).
 * **Az Azure Active Directory globális rendszergazdái** – Azure multi-factor Authentication funkcióinak egy részét, globális rendszergazdai fiókok védelme való érhetők el.
 

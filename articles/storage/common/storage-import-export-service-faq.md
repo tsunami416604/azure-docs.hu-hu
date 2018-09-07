@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/22/2018
 ms.author: alkohli
 ms.component: common
-ms.openlocfilehash: 6a2d067625e96aefdcb0197e1abb13b0c41fbe7f
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: edaff86531a9c40064d25a046bbbb70f48b75c84
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39521438"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44027129"
 ---
 # <a name="azure-importexport-service-frequently-asked-questions"></a>Az Azure Import/Export szolgáltatás: gyakori kérdések 
 Az alábbiakban a kérdések és válaszok, amelyek az adatok átviteléhez az Azure storage-bA az Azure Import/Export szolgáltatás használatakor előfordulhat, hogy rendelkezik. A kérdéseket és a válaszokat az alábbi kategóriák szerint csoportosítottuk:
@@ -119,7 +119,7 @@ Ha a merevlemez-meghajtó előkészítése importálási feladatokhoz, a cél az
 Függ. Amikor előkészíti a meghajtót, megadhatja a cél fájlok felülírható akár Disposition figyelmen kívül hagyott mező használatával adatkészlet CSV-fájl neve: < átnevezése |} nem írja felül |} felülírása >. Alapértelmezés szerint a szolgáltatás az új fájlok átnevezése helyett meglévő blobok és fájlok felülírása.
 
 ### <a name="is-the-waimportexport-tool-compatible-with-32-bit-operating-systems"></a>Az a WAImportExport eszköz kompatibilis az operációs rendszerek 32 bites?
-Nem. A WAImportExport eszköze csak 64 bites Windows operációs rendszerekkel kompatibilis. Támogatott operációs rendszer teljes listájának megtekintéséhez keresse fel [támogatott operációs rendszerek](). 
+Nem. A WAImportExport eszköze csak 64 bites Windows operációs rendszerekkel kompatibilis. Támogatott operációs rendszer teljes listájának megtekintéséhez keresse fel [támogatott operációs rendszerek](https://docs.microsoft.com/azure/storage/common/storage-import-export-requirements). 
 
 
 ### <a name="what-is-the-maximum-block-blob-and-page-blob-size-supported-by-azure-importexport"></a>Mi az a maximális Blokkblobok és a támogatott az Azure Import/Export Lapblob méretét?

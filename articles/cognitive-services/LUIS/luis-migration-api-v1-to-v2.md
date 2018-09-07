@@ -1,6 +1,6 @@
 ---
-title: API áttelepítése útmutató v1, v2 |} A Microsoft Docs
-titleSuffix: Azure
+title: V2 a v1 útmutató API-k áttelepítése
+titleSuffix: Azure Cognitive Services
 description: Ismerje meg, hogyan áttelepítése a legújabb API-ra állította.
 services: cognitive-services
 author: diberry
@@ -8,14 +8,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 03/01/2018
+ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: e7460a0eaf51e839accf08b6f8b07a112033af17
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 637bd6f17873dd779f3b12466f8060e98296e721
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43130561"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44049311"
 ---
 # <a name="api-v2-migration-guide"></a>API v2-Migrálási útmutató
 Az 1. verziójának [végpont](https://aka.ms/v1-endpoint-api-docs) és [szerzői](https://aka.ms/v1-authoring-api-docs) API-k elavulttá válik. Ez az útmutató segítségével megtudhatja, hogyan 2. verzióban át [végpont](https://aka.ms/luis-endpoint-apis) és [szerzői](https://aka.ms/luis-authoring-apis) API-k. 
