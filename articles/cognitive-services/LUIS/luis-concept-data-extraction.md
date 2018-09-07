@@ -1,5 +1,6 @@
 ---
-title: Adatok kinyerése fogalmait a LUIS - Azure megismerése |} A Microsoft Docs
+title: Adatok kinyerése fogalmait a LUIS - hangfelismerés
+titleSuffix: Azure Cognitive Services
 description: Ismerje meg, milyen típusú adatok kinyerhetők a Language Understanding (LUIS)
 services: cognitive-services
 author: diberry
@@ -9,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: diberry
-ms.openlocfilehash: f57e7cb85e6d183a59b358e347d70d4d185868a7
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 40c7e0744825697779e6bd19a78d8d3512b5d63e
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39225682"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44023460"
 ---
 # <a name="data-extraction"></a>Adatok kinyerése
 A LUIS teszi lehetővé a felhasználó a természetes nyelvű utterances lekérni adatait. Az adatokat oly módon, hogy használat szerint a program, alkalmazás vagy csevegőrobot műveletet ki kell olvasni.
@@ -46,7 +47,7 @@ Az elsődleges adatokat a felső pontozási **leképezés neve**. Használatáva
 
 |Objektum|Adattípus|Az adatok helye|Érték|
 |--|--|--|--|
-|Leképezés|Sztring|topScoringIntent.intent|"GetStoreInfo"|
+|Szándék|Sztring|topScoringIntent.intent|"GetStoreInfo"|
 
 Ha a csevegőrobot, vagy a LUIS-hívása alkalmazás meghozta a döntést, egynél több leképezés pontszám alapján, lépjen vissza a leképezések pontszámok a lekérdezési karakterlánc paraméter által `verbose=true`. A végpont válasz a következő:
 
@@ -75,8 +76,8 @@ A leképezések vannak rendezve legmagasabbtól a legalacsonyabb pontszámot.
 
 |Objektum|Adattípus|Az adatok helye|Érték|Pontszám|
 |--|--|--|--|:--|
-|Leképezés|Sztring|[0]. szándék .intent|"GetStoreInfo"|0.984749258|
-|Leképezés|Sztring|[1]. szándék .intent|"Nincs"|0.0168218873|
+|Szándék|Sztring|[0]. szándék .intent|"GetStoreInfo"|0.984749258|
+|Szándék|Sztring|[1]. szándék .intent|"Nincs"|0.0168218873|
 
 Előre összeállított tartományok ad hozzá, ha a leképezés neve azt jelzi, hogy a tartományhoz, mint például `Utilties` vagy `Communication` valamint célja:
 
@@ -104,11 +105,11 @@ Előre összeállított tartományok ad hozzá, ha a leképezés neve azt jelzi,
 }
 ```
     
-|Tartomány|Objektum|Adattípus|Az adatok helye|Érték|
+|Domain|Objektum|Adattípus|Az adatok helye|Érték|
 |--|--|--|--|--|
-|Közművek|Leképezés|Sztring|[0]. szándék .intent|"<b>Segédprogramok</b>. ShowNext"|
-|Kommunikáció|Leképezés|Sztring|[1]. szándék .intent|<b>Kommunikációs</b>. StartOver"|
-||Leképezés|Sztring|[a(z) 2]. szándék .intent|"Nincs"|
+|Közművek|Szándék|Sztring|[0]. szándék .intent|"<b>Segédprogramok</b>. ShowNext"|
+|Kommunikáció|Szándék|Sztring|[1]. szándék .intent|<b>Kommunikációs</b>. StartOver"|
+||Szándék|Sztring|[a(z) 2]. szándék .intent|"Nincs"|
 
 
 ## <a name="data-from-entities"></a>Entitások adatainak

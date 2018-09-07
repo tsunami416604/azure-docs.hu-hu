@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/05/2018
 ms.author: jeffgilb
 ms.reviewer: brbartle
-ms.openlocfilehash: 5a6dcddce3337989a7a34515570ac3277aa1edd5
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: 52d0706177482e162d1f4bc038c967a4596fd3b3
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/06/2018
-ms.locfileid: "43841930"
+ms.locfileid: "44024858"
 ---
 # <a name="register-azure-stack-with-azure"></a>Regisztráljon az Azure Stack az Azure-ral
 
@@ -45,7 +45,7 @@ Regisztráció előtt szüksége lesz a következő helyen:
 
 Mielőtt regisztrálná az Azure Stack az Azure-ral, a következőkkel kell rendelkeznie:
 
-- Azure-előfizetés előfizetés-azonosítója. Azonosítójának lekéréséhez jelentkezzen be az Azure-ba, kattintson a **további szolgáltatások** > **előfizetések**, kattintson arra az előfizetésre szeretné használni, majd a **Essentials** találja a Előfizetés-azonosítójára.
+- Azure-előfizetés előfizetés-azonosítója. Az azonosító lekéréséhez jelentkezzen be az Azure-ba, kattintson a **minden szolgáltatás**. Ezt követően a **általános** kategória, válassza **előfizetések**, kattintson arra az előfizetésre szeretné használni, majd a **Essentials** is megtalálhatja, hogy az előfizetés-azonosító.
 
   > [!Note]  
   > A Németországi felhőalapú előfizetések jelenleg nem támogatottak.
@@ -284,7 +284,7 @@ A Get-tartalom parancsmag segítségével igény szerint, a regisztrációs jogk
 Használja ezeket a lépéseket, győződjön meg arról, hogy az Azure Stack sikeresen regisztrálva van az Azure-ral.
 
 1. Jelentkezzen be az Azure Stack [adminisztrátori portál](https://docs.microsoft.com/azure/azure-stack/azure-stack-manage-portals#access-the-administrator-portal): https&#58;/ / adminportal. *&lt;régió >. &lt;teljesen minősített tartományneve >*.
-2. Válassza ki **további szolgáltatások** > **Marketplace felügyeleti** > **hozzáadása az Azure-ból**.
+2. Válassza ki **minden szolgáltatás**, majd a a **felügyeleti** kategória, jelölje be **Marketplace felügyeleti** > **Azurehozzáadása**.
 
 Ha látja az Azure (például WordPress) rendelkezésre álló elemek listáját, az aktiválás sikeres volt. Azonban a kapcsolat nélküli környezetben nem látják az Azure Stack piactéren Azure marketplace-elemek.
 

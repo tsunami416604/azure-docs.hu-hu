@@ -1,5 +1,6 @@
 ---
-title: Taníthat vagy tesztelhet a LUIS-alkalmazás – Azure |} A Microsoft Docs
+title: A LUIS portálon belül, a LUIS-alkalmazás tesztelése
+titleSuffix: Azure Cognitive Services
 description: Folyamatosan dolgozunk azon, pontosítsa és javítható a beszédfelismerés annak az alkalmazás a Language Understanding (LUIS) használatával.
 services: cognitive-services
 author: diberry
@@ -7,18 +8,18 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 05/07/2018
+ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: 925b96b61de876d40105c89556fd6dcb600d1b1a
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: f697e55e095baf113b7e622c4e7447b78444d4ac
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39223650"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44054743"
 ---
 # <a name="test-your-luis-app"></a>A LUIS-alkalmazás tesztelése
 <a name="train-your-app"></a>
-[Képzési](luis-how-to-train.md) és [tesztelés](luis-concept-test.md) az alkalmazás az iteratív folyamat. A LUIS-alkalmazás képzésekről, után tesztelje azt az minta utterances annak ellenőrzéséhez, hogy a szándékok és entitások helyesen ismeri. Ha nem, a LUIS-alkalmazásokon, tanítási és tesztelési ellenőrizze újra frissítéseket. 
+[Tesztelés](luis-concept-test.md) az alkalmazás az iteratív folyamat. A LUIS-alkalmazás képzésekről, után tesztelje azt az minta utterances annak ellenőrzéséhez, hogy a szándékok és entitások helyesen ismeri. Ha nem, a LUIS-alkalmazásokon, tanítási és tesztelési ellenőrizze újra frissítéseket. 
 
 <!-- anchors for H2 name changes -->
 <a name="test-your-app"></a>

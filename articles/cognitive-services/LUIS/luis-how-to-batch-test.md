@@ -1,22 +1,23 @@
 ---
-title: Batch tesztelése a LUIS-alkalmazás – Azure |} A Microsoft Docs
-description: Beszédmódok helytelen szándékok és entitások kereséséhez használja a Language Understanding (LUIS) batch-tesztelés.
+title: Batch-vizsgálat a 1000 példa kimondott szöveg
+titleSuffix: Azure Cognitive Services
+description: Tesztelési Language Understanding (LUIS) batch használatával kereshet a helytelen szándékok és entitások kimondott szöveg.
 services: cognitive-services
 author: diberry
 manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 03/14/2018
+ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: 07c38aa5f66fc8c38392c5407449ec6911e80d47
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: e5820b7d65cb989411657670ae19ef1bdca2122d
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42888626"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44054774"
 ---
-# <a name="batch-testing"></a>Kötegelt tesztelés
+# <a name="batch-testing-with-a-set-of-example-utterances"></a>A Batch példa utterances vannak beállítva tesztelése
  A LUIS a teljesítmény méréséhez az aktuális betanított modell egy átfogó teszt Batch tesztelés. 
 
 <a name="batch-testing"></a>
@@ -27,8 +28,6 @@ ms.locfileid: "42888626"
     ![Batch-tesztelési hivatkozás](./media/luis-how-to-batch-test/batch-testing-link.png)
 
 2. Válassza ki **importálás adatkészlet**. A **importálása új adatkészlet** párbeszédpanel jelenik meg. Válassza ki **fájl kiválasztása** , és keresse meg a JSON-fájlt a megfelelő [JSON formátumban](luis-concept-batch-test.md#batch-file-format) tartalmazó *legfeljebb 1000* teszteléséhez kimondott szöveg.
-
-    ![Adatkészlet-fájl importálása](./media/luis-how-to-batch-test/batchtest-importset.png)
 
     Az importálási hibák kell jelenteni, egy piros értesítési sáv felső részén a böngészőben. Ha az importálás hibákkal rendelkezik, egyetlen adatkészlet jön létre. További információkért lásd: [gyakran előforduló hibák](luis-concept-batch-test.md#common-errors-importing-a-batch).
 

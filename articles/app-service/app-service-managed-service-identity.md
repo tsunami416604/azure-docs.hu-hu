@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 06/25/2018
 ms.author: mahender
-ms.openlocfilehash: fc1251cafcb2a535ccaf8354cb5c7c8b6a4afd33
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: c7a819f987de41ba7705d21bb6de95475cd3f9c8
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43337534"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44027186"
 ---
 # <a name="how-to-use-azure-managed-service-identity-in-app-service-and-azure-functions"></a>Az Azure a Felügyeltszolgáltatás-identitást az App Service-ben és az Azure Functions használatával
 
@@ -26,7 +26,7 @@ ms.locfileid: "43337534"
 > [!Important] 
 > Az App Service-ben és az Azure Functions Felügyeltszolgáltatás-identitás nem várakozásoknak megfelelően működik, ha az alkalmazás előfizetések/bérlők keresztül telepítik át. Az alkalmazás kell szereznie egy új identitás, amely letiltásával és újbóli engedélyezésével végezhető. Lásd: [eltávolítása az identitás](#remove) alatt. Alsóbb rétegbeli erőforrások is kell rendelkeznie a hozzáférési szabályzatok frissítve az új identitás használatára.
 
-Ez a témakör bemutatja, hogyan hozhat létre egy App Service-ben és az Azure Functions-alkalmazások által kezelt alkalmazás identitás és egyéb erőforrásainak elérésére használatával. A felügyeltszolgáltatás-identitás az Azure Active Directoryból lehetővé teszi az alkalmazás más AAD által védett erőforrások, például az Azure Key Vault könnyen hozzáférhet. Az identitás az Azure platform kezeli, és nem igényli, üzembe helyezése és titkos kulcsok elforgatása. Felügyeltszolgáltatás-identitás kapcsolatos további információkért tekintse meg a [Felügyeltszolgáltatás-identitás – áttekintés](../active-directory/managed-service-identity/overview.md).
+Ez a témakör bemutatja, hogyan hozhat létre egy App Service-ben és az Azure Functions-alkalmazások által kezelt alkalmazás identitás és egyéb erőforrásainak elérésére használatával. A felügyeltszolgáltatás-identitás az Azure Active Directoryból lehetővé teszi az alkalmazás más AAD által védett erőforrások, például az Azure Key Vault könnyen hozzáférhet. Az identitás az Azure platform kezeli, és nem igényli, üzembe helyezése és titkos kulcsok elforgatása. Felügyeltszolgáltatás-identitás kapcsolatos további információkért tekintse meg a [Felügyeltszolgáltatás-identitás – áttekintés](../active-directory/managed-identities-azure-resources/overview.md).
 
 ## <a name="creating-an-app-with-an-identity"></a>Az identitást tartalmazó alkalmazás létrehozása
 
@@ -151,7 +151,7 @@ Ahol `<TENANTID>` és `<PRINCIPALID>` cserélése GUID-azonosítói. A tenantId 
 Egy alkalmazás használatával az identitása tokenekhez az aad-ben, például az Azure Key Vault által védett erőforrásokhoz. Ezek a jogkivonatok jelölik az alkalmazás az erőforrást, és nem bármely adott felhasználó az alkalmazás eléréséhez. 
 
 > [!IMPORTANT]
-> Szükség lehet a célként megadott erőforrás, hogy engedélyezze a hozzáférést az alkalmazás konfigurálásához. Például ha egy Key Vault tokent kér, szüksége, hogy hozzáadott egy hozzáférési szabályzatot, amely tartalmazza az alkalmazás azonosítóját. Ellenkező esetben a Key Vault hívásainak rendszer elutasítja, akkor is, ha a jogkivonat tartalmazzák. További erőforrások kapcsolatos tokeny Felügyeltszolgáltatás-identitás kapcsolatban lásd: [Azure-szolgáltatások, hogy a támogatás az Azure AD-hitelesítés](../active-directory/managed-service-identity/services-support-msi.md#azure-services-that-support-azure-ad-authentication).
+> Szükség lehet a célként megadott erőforrás, hogy engedélyezze a hozzáférést az alkalmazás konfigurálásához. Például ha egy Key Vault tokent kér, szüksége, hogy hozzáadott egy hozzáférési szabályzatot, amely tartalmazza az alkalmazás azonosítóját. Ellenkező esetben a Key Vault hívásainak rendszer elutasítja, akkor is, ha a jogkivonat tartalmazzák. További erőforrások kapcsolatos tokeny Felügyeltszolgáltatás-identitás kapcsolatban lásd: [Azure-szolgáltatások, hogy a támogatás az Azure AD-hitelesítés](../active-directory/managed-identities-azure-resources/services-support-msi.md#azure-services-that-support-azure-ad-authentication).
 
 Nincs a beszerzésével egy lexikális elem szerepel az App Service-ben és az Azure Functions egy egyszerű REST-protokollon. A .NET-alkalmazásokban a Microsoft.Azure.Services.AppAuthentication library absztrakciós biztosít a protokoll, és támogatja a helyi fejlesztési környezetet biztosít.
 

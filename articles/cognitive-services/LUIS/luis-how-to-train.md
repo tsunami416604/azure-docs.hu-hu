@@ -1,20 +1,21 @@
 ---
-title: A LUIS-alkalmazás – Azure betanítása |} A Microsoft Docs
-description: Language Understanding (LUIS) használja a modell betanításához.
+title: A LUIS-alkalmazás betanítása
+titleSuffix: Azure Cognitive Services
+description: Képzési az a folyamat, a Language Understanding (LUIS) alkalmazásával a beszédfelismerés oktatási. A LUIS-alkalmazás betanításához például hozzáadása, szerkesztése, címkézés vagy entitásokat, a leképezések és a kimondott szöveg törlése a modellhez való frissítés után.
 services: cognitive-services
 author: diberry
 manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 03/14/2018
+ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: e947df20141b0b9870f318f410488aea23bafcf5
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 42cff3dd8237598da5aa71ed1a4d6462c5b4c25d
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39223184"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44049131"
 ---
 # <a name="train-your-luis-app"></a>A LUIS-alkalmazás betanítása
 
@@ -32,11 +33,7 @@ A iteratív folyamat elindításához először a LUIS-alkalmazás során legal�
 
 2. Jelölje be az alkalmazásba, **Train** a az ablak tetején. 
 
-    ![Betanítás gomb](./media/luis-how-to-train/train-button.png)
-
 3. Képzési befejeződése után a böngésző tetején egy zöld értesítési sáv jelenik meg.
-
-    ![Tanítási és tesztelési lap](./media/luis-how-to-train/train-success.png)
 
 <!-- The following note refers to what might cause the error message "Training failed: FewLabels for model: <ModelName>" -->
 

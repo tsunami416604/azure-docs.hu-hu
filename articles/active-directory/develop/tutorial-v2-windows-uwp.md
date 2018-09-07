@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 04/20/2018
 ms.author: andret
 ms.custom: aaddev
-ms.openlocfilehash: 48d03b590d718cf82d692dc177a69f6d54de43d1
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: cd6cf2e94b032408fd6c3b298294d84837e102a6
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39496320"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44024748"
 ---
 # <a name="call-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>A Microsoft Graph API meghívása (XAML) az univerzális Windows Platform-alkalmazásból
 
@@ -71,11 +71,14 @@ Ez az útmutató létrehoz egy alkalmazás, amely egy gomb megjeleníti a lekér
 2. Másolja és illessze be a következő parancsot a **Package Manager Console** ablakban:
 
     ```powershell
-    Install-Package Microsoft.Identity.Client -Pre
+    Install-Package Microsoft.Identity.Client -Pre -Version 1.1.4-preview0002
     ```
 
 > [!NOTE]
 > Ez a parancs telepíti [Microsoft-hitelesítési tár](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet). Az MSAL beszerzi, gyorsítótárazza, és frissíti a felhasználói jogkivonatokhoz, amelyek védi az Azure Active Directory v2 API-k elérésére.
+
+> [!NOTE]
+> Ebben az oktatóanyagban viszont nem használható, de az MSAL.NET, legújabb verzióját, de azt frissítése folyamatban van.
 
 ## <a name="initialize-msal"></a>Az MSAL inicializálása
 Ebben a lépésben segítségével hozhat létre egy osztályt, amely kezeli a interakció MSAL, például a jogkivonatok kezelése.

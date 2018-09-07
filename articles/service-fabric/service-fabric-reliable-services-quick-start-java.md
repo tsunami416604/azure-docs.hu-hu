@@ -1,6 +1,6 @@
 ---
-title: Hozzon létre az első megbízható Azure mikroszolgáltatási Java nyelven |} Microsoft Docs
-description: Bevezetés a Microsoft Azure Service Fabric-alkalmazás létrehozása az állapotmentes és állapotalapú szolgáltatással.
+title: Hozzon létre az első Azure Service Fabric reliable Services Java nyelven |} A Microsoft Docs
+description: Bevezetés a Microsoft Azure Service Fabric-alkalmazás létrehozása állapot nélküli és állapotalapú szolgáltatásokkal.
 services: service-fabric
 documentationcenter: java
 author: suhuruli
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2017
 ms.author: suhuruli
-ms.openlocfilehash: 7e83f141791bb49130f7cf01086537f8ae08c406
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: d4e3419241d44744f8a692896848edb6cebb56a0
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37019695"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44049694"
 ---
 # <a name="get-started-with-reliable-services"></a>Ismerkedés a Reliable Services használatával
 > [!div class="op_single_selector"]
@@ -28,30 +28,30 @@ ms.locfileid: "37019695"
 >
 >
 
-Ez a cikk Azure Service Fabric Reliable Services használatának alapjait ismerteti, és végigvezeti a létrehozott és telepített egy egyszerű Java nyelven írt megbízható szolgáltatásalkalmazást. A Microsoft Virtual Academy videó is bemutatja, hogyan hozzon létre egy megbízható állapotmentes szolgáltatások: <center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=DOX8K86yC_206218965">  
+Ez a cikk ismerteti az Azure Service Fabric Reliable Services alapjait, és végigvezeti a létrehozása és telepítése Java nyelven írt egyszerű Reliable Services-alkalmazás. A Microsoft Virtual Academy-videó is bemutatja, hogyan hozhat létre egy megbízható állapotmentes szolgáltatás: <center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=DOX8K86yC_206218965">  
 <img src="./media/service-fabric-reliable-services-quick-start-java/ReliableServicesJavaVid.png" WIDTH="360" HEIGHT="244">  
 </a></center>
 
 ## <a name="installation-and-setup"></a>Telepítés és beállítás
-Mielőtt elkezdené, győződjön meg arról, hogy a Service Fabric fejlesztőkörnyezet, állítsa be a számítógépre.
-Ha szeretné beállítani, lépjen [Mac bevezetés](service-fabric-get-started-mac.md) vagy [Linux első lépések](service-fabric-get-started-linux.md).
+Mielőtt elkezdené, győződjön meg arról, hogy telepítette a Service Fabric fejlesztési környezet beállítása a gépen.
+Ha azt szeretné, lépjen a [– az első lépések Mac](service-fabric-get-started-mac.md) vagy [Ismerkedés a Linuxos](service-fabric-get-started-linux.md).
 
 ## <a name="basic-concepts"></a>Alapfogalmak
-Bevezetés a Reliable Services használatába, hogy meg kell ismernie néhány főbb fogalmait és kifejezéseit:
+Ismerkedés a Reliable Services szolgáltatással, akkor csak kell néhány alapvető fogalmak megismerése:
 
-* **Szolgáltatás típusa**: Ez a szolgáltatás megvalósítása. Azt határozza meg a osztályt írt `StatelessService` és bármely más kód vagy függőségek használt, valamint nevét és verziószámát.
-* **Szolgáltatáspéldány nevű**: a szolgáltatás futtatásához hoz létre a szolgáltatástípus elnevezett példányok sokkal például létrehozhat egy osztálytípus objektum példánya. Szolgáltatáspéldány valóban objektum példányának a szolgáltatásosztály írást.
-* **Szolgáltatásgazda**: az elnevezett szolgáltatáspéldány létrehozása egy gazdagépen belül futtatnia kell. A szolgáltatásgazda csak az egyik folyamat, ahol a szolgáltatás példányának futtatható.
-* **Eszközregisztrációs szolgáltatás**: regisztráció egyesíti mindent. A szolgáltatás típusának regisztrálva kell lennie a Service Fabric-futtatókörnyezet engedélyezése az osztályt létrehozni a Service Fabric-szolgáltatás gazdán futtatásához.  
+* **Szolgáltatás típusa**: Ez a szolgáltatás megvalósítása. Azt határozza meg az osztályt, írása, amely kibővíti `StatelessService` és más kód vagy függőségeket, egy nevet és a egy verziószámot együtt használni.
+* **Szolgáltatáspéldány nevű**: a szolgáltatás futtatásához hoz létre a típusú szolgáltatás elnevezett példányok sokkal például osztálytípus figyelőobjektum-példányok létrehozása. Szolgáltatás példányai valójában az írást szolgáltatásosztály megvalósításokkal objektum.
+* **Szolgáltatásgazda**: egy gazdagépen belül futtatni kell a megnevezett szolgáltatáspéldányok hoz létre. A szolgáltatásgazda az csak az egy folyamatot, ahol a szolgáltatás példányát futtathatja.
+* **Eszközregisztrációs szolgáltatás**: regisztráció magában foglal minden. A szolgáltatás típusának futtatásához egy gazdagépet a szolgáltatás példányainak, Service Fabric lehetővé teszi a Service Fabric-futtatókörnyezet regisztrálva kell lennie.  
 
-## <a name="create-a-stateless-service"></a>Állapot nélküli szolgáltatás létrehozása
-Először hozzon létre egy Service Fabric-alkalmazás. A Service Fabric SDK Linux tartalmaz egy Yeoman generátor a állványok a Service Fabric-alkalmazás az állapotmentes szolgáltatások biztosításához. Indítsa el a következő Yeoman futtassa a parancsot:
+## <a name="create-a-stateless-service"></a>Állapotmentes szolgáltatás létrehozása
+Először hozzon létre egy Service Fabric-alkalmazás. A Linuxhoz készült Service Fabric SDK tartalmaz egy Yeoman generátor át az állapotmentes szolgáltatás a Service Fabric-alkalmazás a keret létrehozásához adjon meg. Indítsa el a következő Yeoman futtatásával parancsot:
 
 ```bash
 $ yo azuresfjava
 ```
 
-Kövesse az útmutatást követve hozzon létre egy **megbízható állapotmentes szolgáltatások**. Ebben az oktatóanyagban nevezze el az alkalmazást "HelloWorldApplication" és a "HelloWorld" szolgáltatás. Az eredmény tartalmazza a könyvtárak a `HelloWorldApplication` és `HelloWorld`.
+Kövesse az utasításokat, hozzon létre egy **Reliable Stateless Services**. Ebben az oktatóanyagban nevezze el az alkalmazást "HelloWorldApplication" és a "HelloWorld" szolgáltatást. Az eredmény tartalmazza a könyvtárak a `HelloWorldApplication` és `HelloWorld`.
 
 ```bash
 HelloWorldApplication/
@@ -77,8 +77,8 @@ HelloWorldApplication/
 ├── settings.gradle
 └── uninstall.sh
 ```
-### <a name="service-registration"></a>Eszközregisztrációs szolgáltatás
-Szolgáltatástípusok a Service Fabric-futtatókörnyezet regisztrálva kell lennie. A szolgáltatás típus definiálva van a `ServiceManifest.xml` és a szolgáltatás osztály, amely megvalósítja az `StatelessService`. A folyamat a fő belépési pont szolgáltatás regisztrációs történik. Ebben a példában a folyamat fő belépési pont van `HelloWorldServiceHost.java`:
+### <a name="service-registration"></a>Szolgáltatás regisztrációs
+Szolgáltatástípusok a Service Fabric-futtatókörnyezet regisztrálva kell lennie. A szolgáltatás típusának van definiálva a `ServiceManifest.xml` és a szolgáltatás osztály, amely megvalósítja `StatelessService`. A folyamat hlavní vstupní BOD szolgáltatás regisztrációs történik. Ebben a példában a folyamat hlavní vstupní BOD van `HelloWorldServiceHost.java`:
 
 ```java
 public static void main(String[] args) throws Exception {
@@ -96,9 +96,9 @@ public static void main(String[] args) throws Exception {
 
 ## <a name="implement-the-service"></a>A szolgáltatás megvalósítása
 
-Nyissa meg **HelloWorldApplication/HelloWorld/src/statelessservice/HelloWorldService.java**. Ez az osztály a szolgáltatás típusa határozza meg, és semmilyen kódot futtathat. A service API két belépési pontok biztosít a kódot:
+Nyissa meg **HelloWorldApplication/HelloWorld/src/statelessservice/HelloWorldService.java**. Ez az osztály a szolgáltatás típusa határozza meg, és bármely kódot futtathatja. A szolgáltatás API-t biztosít a kód két belépési pontok:
 
-* Egy nyílt belépési pont metódus hívása `runAsync()`, ahol el lehet kezdeni a munkaterheléseket, ideértve a hosszan futó számítási feladatok végrehajtása.
+* Nevű egy nyílt belépési pont metódust `runAsync()`, megkezdheti a számítási feladatokat, beleértve a hosszú ideig futó számítási feladatok végrehajtása.
 
 ```java
 @Override
@@ -107,7 +107,7 @@ protected CompletableFuture<?> runAsync(CancellationToken cancellationToken) {
 }
 ```
 
-* Egy kommunikációs belépési pontot, amelyen csatlakoztathatja a kommunikációs verem választott. Ez azért, ahol elindíthatja kéréseket fogad a felhasználók és más szolgáltatások védelmét.
+* Egy kommunikációs belépési ponthoz csatlakoztatható, ahol a választott kommunikációs verem. Ez az, ahol elkezdheti kérések fogadása a felhasználók és más szolgáltatások védelmét.
 
 ```java
 @Override
@@ -116,22 +116,22 @@ protected List<ServiceInstanceListener> createServiceInstanceListeners() {
 }
 ```
 
-Ez az oktatóanyag összpontosít a `runAsync()` belépési pont metódusa. Ez azért, ahol azonnal elindíthatja a kódja.
+Ebben az oktatóanyagban összpontosít a `runAsync()` belépési pont metódust. Ez az, ahol azonnal elkezdheti a kódja fut.
 
 ### <a name="runasync"></a>RunAsync
-A platform ezt a módszert hívja, ha a szolgáltatás egy példánya elhelyezett és a végrehajtásra kész. Az állapotmentes szolgáltatások, ez azt jelenti, amikor a szolgáltatáspéldány meg van nyitva. A megszakítási jogkivonat koordinálására, amikor a szolgáltatáspéldány kell lezárni van megadva. A Service Fabric a megnyitása/bezárása ciklus egy szolgáltatáspéldány akkor fordulhat elő, a szolgáltatás életciklusa alatt számos alkalommal egész. Ez akkor fordulhat elő, beleértve a különböző okokból:
+A platform meghívja ezt a módszert, ha egy szolgáltatás egy példányának elhelyezett, és készen áll a hajtsa végre. Egy állapotmentes szolgáltatás, amely azt jelenti, hogy a szolgáltatáspéldány megnyitásakor. A megszakítás jogkivonat van megadva, a koordinációt, amikor a service-példányt kell zárni. A Service Fabric-példányok a megnyitása vagy bezárása ciklus fordulhat elő, a szolgáltatás életciklusa alatt számos alkalommal egészére. Ez akkor fordulhat elő, beleértve a különböző okok miatt:
 
-* A rendszer áthelyezi a szolgáltatáspéldány terheléselosztás erőforrás.
-* Hibák merülnek fel, a kódban.
-* Az alkalmazás- vagy frissítése.
-* Az alapul szolgáló hardverben során kimaradás lép fel.
+* A rendszer a szolgáltatáspéldányok terheléselosztási erőforrás helyezi.
+* A kód fordulnak elő hibák.
+* Az alkalmazás- vagy frissül.
+* Az alapul szolgáló hardver során kimaradás lép fel.
 
-A vezénylési kezeli a Service Fabric tartani a szolgáltatás magas rendelkezésre állású és megfelelően kiegyensúlyozott által.
+Ennek vezénylését felügyelt, hogy a szolgáltatás magas rendelkezésre állású és megfelelően kiegyensúlyozott Service Fabric által.
 
-`runAsync()` meg nem blokkolják szinkron módon történik. RunAsync megvalósítását kell visszaadnia egy CompletableFuture folytatja a futtatókörnyezet engedélyezéséhez. Ha a számítási feladatok kell-e a CompletableFuture belül el kell végezni hosszú ideig futó feladat végrehajtásához.
+`runAsync()` érdemes blokkolja a szinkron módon történik. RunAsync megvalósítását, hogy a modul folytatja a CompletableFuture adja vissza. Ha a számítási feladatok szüksége van egy adott hosszú ideig futó feladat, amely a CompletableFuture belül kell elvégezni.
 
-#### <a name="cancellation"></a>Megszakítása
-A számítási feladatok megszakítását egy együttműködési elérhető a megadott cancellation jogkivonat által összehangolva. A rendszer vár a feladat befejezéséhez (által sikeres befejezése, megszakítása vagy hiba), mielőtt az átvitel során. Fontos, hogy a megszakítási token tiszteletben, Befejezés munka és kilépés `runAsync()` lehető leggyorsabban tegye, amikor a rendszer törlését kéri. A következő példa bemutatja, hogyan kezelje a megszakítási esemény:
+#### <a name="cancellation"></a>Megszakítás
+A számítási feladat megszakításának célja egy olyan együttműködési vezényli a megadott megszakítás jogkivonatot. A rendszer megvárja, amíg a feladat befejezéséhez (a sikeres befejezése, megszakítás vagy hiba), mielőtt áthelyezi azt. Fontos, hogy tartsa tiszteletben a megszakítás jogkivonat, Befejezés munka és a kilépéshez `runAsync()` ismerhető meg leggyorsabban, amikor a rendszer kéri a megszakítás. Az alábbi példa bemutatja, hogyan kezeli a törlés eseményt:
 
 ```java
 @Override
@@ -155,18 +155,18 @@ protected CompletableFuture<?> runAsync(CancellationToken cancellationToken) {
 }
 ```
 
-A állapotmentes szolgáltatások példában a count lokális változó tárolja. Azonban mivel ez egy állapotmentes szolgáltatások, a tárolt érték csak az aktuális a szolgáltatáspéldány-életciklus létezik. A szolgáltatás helyezi át, vagy újraindul, az érték elvész.
+Az állapotmentes szolgáltatás ebben a példában egy helyi változó tárolja a száma. De mivel ez egy állapotmentes szolgáltatás, a tárolt érték csak az aktuális élettartama a szolgáltatáspéldány létezik-e. A szolgáltatás áthelyezi vagy újraindul, ha az érték elvész.
 
-## <a name="create-a-stateful-service"></a>Az állapotalapú szolgáltatás létrehozása
-A Service Fabric egy olyan szolgáltatás, amely állapotalapú új típusú vezet be. Az állapotalapú szolgáltatás megbízhatóan belül a szolgáltatást, a kód által használt közösen elhelyezett is állapotban. Állapot köszönhetően magas rendelkezésre állású Service Fabric nélkül megőrizni a külső áruházban állapotra.
+## <a name="create-a-stateful-service"></a>Állapotalapú szolgáltatás létrehozása
+A Service Fabric állapotalapú szolgáltatás egy új adatraktározási mutatja be. Az állapotalapú szolgáltatások megbízható a szolgáltatásban, a kód által használt közös elhelyezésű állapot fenntartására. Állapot magas rendelkezésre állású legyen a Service Fabric által állapotban ahhoz, hogy egy külső tároló megőrzése nélkül.
 
-Átalakítása a teljesítményszámláló értéke állapot nélküli magas rendelkezésre állású és állandó, akkor is, ha a szolgáltatás áthelyezi vagy újraindul, szükség van egy állapotalapú szolgáltatásra.
+Konvertálható egy számláló értékét állapot nélküli, magas rendelkezésre állású, tartós, akkor is, ha a szolgáltatás áthelyezi vagy újraindul, az állapotalapú szolgáltatások van szükség.
 
-A HelloWorld alkalmazás könyvtárába, adhat hozzá egy új szolgáltatás futtatásával a `yo azuresfjava:AddService` parancsot. Válassza ki a "megbízható állapotalapú alkalmazások és szolgáltatások szolgáltatás" a keretrendszer, és a szolgáltatás "HelloWorldStateful". 
+Ugyanabban a könyvtárban az HelloWorld alkalmazásként, hozzáadhat egy új szolgáltatás fut a `yo azuresfjava:AddService` parancsot. Válassza ki a "megbízható állapotalapú szolgáltatás" a keretrendszer, és nevezze el a szolgáltatást "HelloWorldStateful". 
 
-Az alkalmazás most már rendelkeznie kell a két szolgáltatás: az állapotmentes szolgáltatások HelloWorld és az állapotalapú szolgáltatási HelloWorldStateful.
+Az alkalmazás most már két szolgáltatást: a HelloWorld állapotmentes szolgáltatás és az állapotalapú szolgáltatás HelloWorldStateful.
 
-Állapotalapú szolgáltatási állapot nélküli szolgáltatásként ugyanazon belépési pontokat rendelkezik. A fő különbség a rendelkezésre állási állapot szolgáltatóra állapot megbízhatóan tárolására is. A Service Fabric tartalmaz egy állapot szolgáltató általi megvalósítása megbízható gyűjteménynek, amely lehetővé teszi a megbízható állapotkezelője keresztül replikált adatstruktúrák létrehozását. Egy állapot-nyilvántartó megbízható szolgáltatás alapértelmezés szerint az állapotszolgáltató használja.
+Az állapotalapú szolgáltatások a ugyanazon belépési pontok állapotmentes szolgáltatás rendelkezik. A fő különbség a rendelkezésre állási állapot-szolgáltató állapota megbízható tárolását is. A Service Fabric egy állam adatbázisszolgáltatói implementációt, amely a Reliable State Manager keresztül replikált adatok struktúrák létrehozását teszi lehetővé a Reliable Collections nevű tartalmaz. Egy állapotalapú Reliable Services alapértelmezés szerint ez szolgáltatóját használja.
 
 Nyissa meg a HelloWorldStateful.java **HelloWorldStateful src ->**, amely tartalmazza a következő RunAsync metódusában:
 
@@ -194,26 +194,26 @@ protected CompletableFuture<?> runAsync(CancellationToken cancellationToken) {
 ```
 
 ### <a name="runasync"></a>RunAsync
-`RunAsync()` az állapot nélküli és állapotalapú alkalmazások és szolgáltatások hasonlóan működnek. Azonban az állapotalapú service, a platform hajt végre további feladata az Ön nevében végrehajtása előtt `RunAsync()`. Ez a munkahelyi tartalmazhatnak, ezzel biztosítható, hogy a megbízható állapotkezelője és megbízható gyűjtemények rendszer készen áll a használatra.
+`RunAsync()` állapotalapú és állapotmentes szolgáltatások hasonlóan működik. Azonban egy állapotalapú szolgáltatásban, a platform további munkát végez az Ön nevében hajtja végre a rendszer `RunAsync()`. Ezt a munkát ezzel biztosítható, hogy a Reliable State Manager és a Reliable Collections készen áll a használatára is tartalmazhatnak.
 
-### <a name="reliable-collections-and-the-reliable-state-manager"></a>Megbízható gyűjtemények és a megbízható állapot-kezelő
+### <a name="reliable-collections-and-the-reliable-state-manager"></a>A Reliable Collections és a Reliable State Manager
 ```java
 ReliableHashMap<String,Long> map = this.stateManager.<String, Long>getOrAddReliableHashMapAsync("myHashMap")
 ```
 
-[ReliableHashMap](https://docs.microsoft.com/java/api/microsoft.servicefabric.data.collections._reliable_hash_map) a szótár megvalósítása, amely megbízható adattárolóban állapotokat a szolgáltatás segítségével. A Service Fabric és a megbízható HashMaps tárolható adatok közvetlenül a szolgáltatás egy külső állandó tároló szükségessége nélkül. Megbízható HashMaps magas rendelkezésre állásúvá adatait. A Service Fabric ezt a feladatot el létrehozásával és kezelésével több *replikák* meg a szolgáltatás. Az API-k, amelyek számítógépnél kivonatolja a bonyolultságára ezeket a replikák és a Állapotváltások kezelése is tartalmazza.
+[ReliableHashMap](https://docs.microsoft.com/java/api/microsoft.servicefabric.data.collections._reliable_hash_map) szótár megvalósítása, amely segítségével megbízhatóan tárolja az állapot a szolgáltatásban. A Service Fabric és a megbízható HashMaps adatokat közvetlenül a szolgáltatásban egy külső állandó tároló nélkül tárolhatja. Megbízható HashMaps legyen az adatok magas rendelkezésre állású. A Service Fabric úgy hajtja ezt végre létrehozása és kezelése több *replikák* a szolgáltatás az Ön számára. Egy API, amely a kezelésével járó összetettséget, e replikák és az állapotváltozási adat áramlik kódbázis is tartalmazza.
 
-Megbízható gyűjtemények Java bármilyen, beleértve a felhasználói típusok, a figyelmeztetések néhány tudja tárolni:
+A Reliable Collections képes tárolni bármilyen Java, beleértve az egyéni típusok, mindössze pár korlátozásokkal:
 
-* A Service Fabric lehetővé teszi a állapot magas rendelkezésre állású által *replikálása* csomópontokat, és megbízható HashMap állapot tárolja az adatokat, hogy a helyi lemez minden replikán. Ez azt jelenti, hogy minden, a megbízható HashMaps tárolt kell *szerializálható*. 
-* Objektumok replikálása a magas rendelkezésre állású ha véglegesíti a megbízható HashMaps tranzakciók. A megbízható HashMaps tárolt objektumok kell tartani a szolgáltatás a helyi memóriához. Ez azt jelenti, hogy rendelkezik-e helyi hivatkozik az objektumra.
+* A Service Fabric biztosítja az állapot szerint magas rendelkezésre állású *replikálása* csomópont, és megbízható HashMap között állapota minden egyes replikának tárolja az adatokat a helyi lemezre. Ez azt jelenti, hogy minden tárolt megbízható HashMaps kell *szerializálható*. 
+* Objektumok a magas rendelkezésre állású lesznek replikálva, amikor a megbízható HashMaps tranzakció véglegesítése után. Megbízható HashMaps tárolt objektumok őrzi meg a helyi memória a szolgáltatásban. Ez azt jelenti, hogy rendelkezik-e egy helyi odkaz nA Objekt.
   
-   Fontos, hogy Ön nem mutálódni azokat az objektumokat helyi példányát a megbízható gyűjtemény a frissítési művelet végrehajtása egy tranzakcióban nélkül. Ez az objektum helyi példányát módosításai nem lesz automatikusan replikálja. Az objektum helyezze vissza a szótár vagy valamelyikével kell a *frissítése* metódusai a szótárban.
+   Fontos, hogy Ön nem mutálódni azokat az objektumokat helyi példánya egy tranzakcióban a megbízható gyűjteményben frissítési műveletek végrehajtása nélkül. Ennek oka az, helyi példánya objektumok módosításai nem lesznek automatikusan replikálva. Az objektum helyezze vissza a szótár vagy valamelyikével kell a *frissítése* a szótár metody.
 
-A megbízható állapotkezelője megbízható HashMaps az Ön kezeli. Kérje meg a megbízható állapotkezelője megbízható gyűjtemény neve és bárhol, bármikor a szolgáltatásban. A megbízható állapotkezelője biztosítja, hogy vissza a hivatkozás. Nem ajánlott, az osztály tagváltozók vagy tulajdonságai menti a megbízható gyűjtemény példányok hivatkozik. Győződjön meg arról, hogy a hivatkozás értéke egy példányát a szolgáltatás életciklusának mindig különös gondot kell fordítani. A megbízható állapotkezelője kezeli a megfelelőek Önnek, és ismétlési látogatások van optimalizálva.
+A Reliable State Manager megbízható HashMaps kezeli az Ön számára. Kérhet a Reliable State Manager egy megbízható gyűjteményben név szerint bármikor és bárhol a service-ben. A Reliable State Manager biztosítja, hogy vissza egy hivatkozást. Nem javasoljuk, hogy menti a megbízható gyűjtemény példányok mutató hivatkozások tagváltozók osztály vagy tulajdonság. Speciális ügyelni kell annak érdekében, hogy a hivatkozás értéke egy példánya mindig a szolgáltatás-életciklusának. A Reliable State Manager kezeli ezt a munkát, az Ön számára, és ismételje meg a műveletet látogatások van optimalizálva.
 
 
-### <a name="transactional-and-asynchronous-operations"></a>Tranzakciós és aszinkron műveletek
+### <a name="transactional-and-asynchronous-operations"></a>Tranzakciós és az aszinkron műveletek
 ```java
 return map.computeAsync(tx, "counter", (k, v) -> {
     if (v == null)
@@ -231,20 +231,20 @@ return map.computeAsync(tx, "counter", (k, v) -> {
 });
 ```
 
-A megbízható HashMaps műveletek aszinkron jellegűek. Ennek az az oka megbízható gyűjteményekkel írási műveletek végrehajtása i/o-műveletek történő replikálásához és megőrizni az adatokat a lemezre.
+A megbízható HashMaps műveletek aszinkron jellegűek. Ennek az oka az írási műveletek a Reliable Collections replikálja, és megőrizni az adatokat a lemezre i/o-műveletek végrehajtása.
 
-Megbízható HashMap műveletek *tranzakciós*, így biztosítható állapot konzisztens több megbízható HashMaps és műveletek. Például Ön lekérni a munkaelem egy megbízható szótárból, rajta egy adott művelet elvégzéséhez, és mentse az eredmény egy másik, megbízható HashMap, egy tranzakción belül. Ez a rendszer egy atomi művelet, és Ez garantálja, hogy vagy a teljes műveletet sikeres lesz, vagy a teljes műveletet állítja vissza. Ha hiba lép fel, akkor created elem után, de az eredmény mentése előtt, a teljes tranzakció vissza lesz állítva, és a marad, a feldolgozási várakozási sorban.
+Megbízható HashMap műveletek *tranzakciós*, így megtarthatja állapot konzisztens több megbízható HashMaps és műveleteket. Például, előfordulhat, hogy egy munkaelemet beolvasni egy megbízható szótárban végrehajtania egy műveletet, és mentheti az eredményt egy másik, megbízható HashMap, egy tranzakción belül a. Ez atomi műveletnek számít, és Ez garantálja, hogy vagy a teljes művelet sikeres lesz, vagy a teljes művelet visszaállítja. Hiba bekövetkezése után, az elem eltávolítása a sorból, de még mielőtt mentené az eredményt, a teljes tranzakció vissza lesz állítva, és az elem továbbra is a feldolgozási várakozási sorban.
 
 
 ## <a name="build-the-application"></a>Az alkalmazás létrehozása
 
-A Yeoman állványok tartozik gradle parancsfájl építenie az alkalmazást, és a bash parancsfájlok telepítéséhez, és távolítsa el az alkalmazást. Az alkalmazás futtatásához előbb építenie az alkalmazást a gradle-lel:
+A Yeoman szerkezetkialakító tartalmaz egy gradle szkript hozza létre az alkalmazást, és a bash-szkriptek üzembe helyezéséhez, és távolítsa el az alkalmazást. Az alkalmazás futtatásához, hozhat létre az alkalmazás a gradle-lel:
 
 ```bash
 $ gradle
 ```
 
-Ezzel létrehozza a Service Fabric alkalmazáscsomagok, amelyek a Service Fabric parancssori felület használatával is telepíthető.
+Ez hoz létre egy Service Fabric-alkalmazáscsomagot, Service Fabric parancssori felület használatával telepíthető.
 
 ## <a name="deploy-the-application"></a>Az alkalmazás központi telepítése
 
@@ -269,7 +269,7 @@ Ezen parancsok paraméterezése megtalálható az alkalmazáscsomagon belül, a 
 Az alkalmazás telepítése után nyisson meg egy böngészőt, és keresse fel a [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)t a [http://localhost:19080/Explorer](http://localhost:19080/Explorer) URL-címen. Bontsa ki az **Alkalmazások** csomópontot, és figyelje meg, hogy most már megjelenik benne egy bejegyzés az alkalmazás típusához, és egy másik a típus első példányához.
 
 > [!IMPORTANT]
-> Biztonságos Linux fürthöz az Azure-ban az alkalmazás központi telepítése, konfigurálása a Service Fabric-futtatókörnyezet az alkalmazásba érvényesítendő tanúsítvánnyal kell. Így lehetővé teszi, hogy a Reliable Services szolgáltatások kommunikálni az alapul szolgáló Service Fabric-futtatókörnyezet API-k. További tudnivalókért lásd: [konfigurálása a Reliable Services alkalmazás futtatásának Linux fürtökön](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters).  
+> Biztonságos Linux-fürt az Azure-ban az alkalmazás központi telepítése, konfigurálása a Service Fabric-futtatókörnyezet az alkalmazás érvényesítendő tanúsítvánnyal kell. Ez lehetővé teszi a Reliable Services szolgáltatások kommunikálni az alapul szolgáló Service Fabric-futtatókörnyezet API-k. További tudnivalókért lásd: [egy Reliable Services-alkalmazás Linux-fürtök konfigurálása](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters).  
 >
 
 ## <a name="next-steps"></a>További lépések

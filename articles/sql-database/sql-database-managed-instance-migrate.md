@@ -11,12 +11,12 @@ ms.custom: managed instance
 ms.topic: conceptual
 ms.date: 07/24/2018
 ms.author: bonova
-ms.openlocfilehash: e152fa4bb439f1881dc9974bfdf1b3e8c77c434a
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: 276d36562aece7101465752528f59008e1ee7607
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42059473"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44050323"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>Az SQL Server-példány migrálása az Azure SQL Database felügyelt példánya
 
@@ -100,13 +100,13 @@ Az alábbi táblázatban bővebb információt a forrás SQL Server verzióját�
 |Helyezze az Azure Storage biztonsági mentés|Előzetes SQL 2012 SP1 CU2|Közvetlenül az Azure storage-bA a .bak-fájl feltöltése|
 ||2012 SP1 CU2 – 2016|A közvetlen biztonsági mentési használata elavult [WITH CREDENTIAL](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql) szintaxis|
 ||2016 vagy újabb verzió|A közvetlen biztonsági másolat használatával [az SAS-hitelesítő adat](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url)|
-|Felügyelt példány visszaállítása az Azure Storage-ból|[Állítsa vissza az URL-címet az SAS-hitelesítő adatot](sql-database-managed-instance-restore-from-backup-tutorial.md)|
+|Felügyelt példány visszaállítása az Azure Storage-ból|[Állítsa vissza az URL-címet az SAS-hitelesítő adatot](sql-database-managed-instance-get-started-restore.md)|
 
 > [!IMPORTANT]
 > - Amikor [transzparens adattitkosítással](transparent-data-encryption-azure-sql.md) védett adatbázist migrál egy felügyelt Azure SQL-példányra a natív visszaállítási megoldással, az adatbázis visszaállítása előtt migrálni kell a helyszíni vagy az IaaS SQL Server-példányról a megfelelő tanúsítványt. Részletes lépéseiért lásd: [áttelepítése TDE cert egy felügyelt példányra](sql-database-managed-instance-migrate-tde-certificate.md)
 > - Rendszer-adatbázisok visszaállítása nem támogatott. Példány szolgáltatásszint-objektumokhoz (master vagy msdb-adatbázisokban tárolt) áttelepítéséhez, javasoljuk, hogy parancsfájl, és T-SQL-szkriptek a cél-példányon futnak.
 
-A teljes útmutató, amely tartalmazza az adatbázis biztonsági másolatának visszaállítása egy felügyelt példányhoz az SAS-hitelesítő adatot: [visszaállítása biztonsági másolatból egy felügyelt példányra](sql-database-managed-instance-restore-from-backup-tutorial.md).
+A rövid útmutató, amely egy adatbázis biztonsági másolatának visszaállítása egy felügyelt példányra, SAS-hitelesítő adatok használatával, lásd: [visszaállítása biztonsági másolatból egy felügyelt példányra](sql-database-managed-instance-get-started-restore.md).
 
 ## <a name="monitor-applications"></a>Alkalmazások figyelése
 

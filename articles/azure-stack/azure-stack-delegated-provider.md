@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/07/2018
+ms.date: 09/05/2018
 ms.author: brenduns
 ms.reviewer: alfredop
-ms.openlocfilehash: 112586d3ee5f49eab9adb72d41a210e2dd9828d8
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: b58118a3ed4fba5017e0eb630d822ec59f04aa16
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42055096"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44024776"
 ---
 # <a name="delegate-offers-in-azure-stack"></a>Ajánlat delegálása az Azure Stackben
 
@@ -128,7 +128,7 @@ Jelentkezzen be a felhasználói portál átadott szolgáltatója, és majd hozz
 
 4. A nyilvános delegált ajánlatokkal. most már csak a delegált portálon jelennek meg. Keresse meg, és módosítsa az URL-cím:
 
-    a.  Válassza ki **Tallózás** > **további szolgáltatások** > **előfizetések**. Ezután válassza ki a delegált szolgáltatói előfizetés. Ha például **DPSubscription** > **tulajdonságok**.
+    a.  Válassza ki **Tallózás** > **minden szolgáltatás**, majd a a **általános** kategória, jelölje be **előfizetések**. A delegált szolgáltatói előfizetés kiválasztása Ha például **DPSubscription** > **tulajdonságok**.
 
     b.  Másolja a portál URL-címet egy külön helyen, például a Jegyzettömbben.
 

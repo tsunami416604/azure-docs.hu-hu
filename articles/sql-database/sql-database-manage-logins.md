@@ -9,14 +9,14 @@ ms.service: sql-database
 ms.prod_service: sql-database, sql-data-warehouse
 ms.custom: security
 ms.topic: conceptual
-ms.date: 08/15/2018
+ms.date: 09/07/2018
 ms.author: carlrab
-ms.openlocfilehash: 7dbd2585628c64f5baf7df6083e38217d00953be
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 4abdbac44f4730d15c36d587190db1f95ea54d19
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42056872"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44050729"
 ---
 # <a name="controlling-and-granting-database-access-to-sql-database-and-sql-data-warehouse"></a>Szabályozása és adatbázis-hozzáférés biztosítása az SQL Database és SQL Data warehouse-bA
 
@@ -49,7 +49,7 @@ A **kiszolgáló-rendszergazdai** és **Azure AD-rendszergazdai** fiókok az al�
 - Megtekintheti a `sys.sql_logins` rendszertáblában.
 
 ### <a name="configuring-the-firewall"></a>A tűzfal konfigurálása
-Ha a kiszolgálószintű tűzfal egy önálló IP-címhez vagy -tartományhoz van konfigurálva, az **SQL Server-rendszergazda** és az **Azure Active Directory-rendszergazda** a master adatbázishoz és az összes felhasználói adatbázishoz csatlakozhat. A kezdeti kiszolgálószintű tűzfal az [Azure Portalon](sql-database-get-started-portal.md) konfigurálható a [PowerShell](sql-database-get-started-powershell.md) vagy a [REST API](https://msdn.microsoft.com/library/azure/dn505712.aspx) segítségével. A kapcsolat létrehozása után további kiszolgálószintű tűzfalszabályok is konfigurálhatók a [Transact-SQL](sql-database-configure-firewall-settings.md) segítségével.
+Ha a kiszolgálószintű tűzfal egy önálló IP-címhez vagy -tartományhoz van konfigurálva, az **SQL Server-rendszergazda** és az **Azure Active Directory-rendszergazda** a master adatbázishoz és az összes felhasználói adatbázishoz csatlakozhat. A kezdeti kiszolgálószintű tűzfal az [Azure Portalon](sql-database-get-started-portal.md) konfigurálható a [PowerShell](sql-database-powershell-samples.md) vagy a [REST API](https://msdn.microsoft.com/library/azure/dn505712.aspx) segítségével. A kapcsolat létrehozása után további kiszolgálószintű tűzfalszabályok is konfigurálhatók a [Transact-SQL](sql-database-configure-firewall-settings.md) segítségével.
 
 ### <a name="administrator-access-path"></a>Rendszergazdai hozzáférés elérési útja
 Ha a kiszolgálószintű tűzfal megfelelően van konfigurálva, az **SQL Server-rendszergazda** és az **Azure Active Directory-rendszergazda** olyan ügyféleszközökkel csatlakozhat, mint az SQL Server Management Studio vagy az SQL Server Data Tools. Csak a legújabb verziójú eszközök teszik elérhetővé az összes rendelkezésre álló funkciót és képességet. Az alábbi ábrán a két rendszergazdai fiók tipikus konfigurációja látható.

@@ -13,12 +13,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 09/04/2018
 ms.author: glenga
-ms.openlocfilehash: fdc66da6ed7645d72ad43c885cc1491f56f5442b
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 274b6d84e5190c0275f8479e16ee5c7b935e3953
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43699678"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44026160"
 ---
 # <a name="code-and-test-azure-functions-locally"></a>Kódolás és tesztelés az Azure Functions helyi
 
@@ -31,7 +31,7 @@ Amelyben a helyi számítógépen fejleszt funkciók módja függ az [nyelvi](su
 |Környezet                              |Nyelvek         |Leírás|
 |-----------------------------------------|------------|---|
 | [Parancssorba vagy terminálba](functions-run-local.md) | [C# (osztálytár)](functions-dotnet-class-library.md), [C#-szkript (.csx)](functions-reference-csharp.md), [JavaScript](functions-reference-node.md) | [Az Azure Functions Core Tools] biztosítja a Funkciók, létrehozásához, amely lehetővé teszi a helyi fejlesztési core runtime és sablonokat. Verzió 2.x verziója támogatja a fejlesztési Linux, MacOS és Windows. Minden környezet a helyi Functions futtatókörnyezetének Core Tools támaszkodnak. |
-|[Visual Studio Code](https://code.visualstudio.com/tutorials/functions-extension/getting-started)| [C#-szkript (.csx)](functions-reference-csharp.md), [JavaScript](functions-reference-node.md) | A [VS Code-bővítmény az Azure Functions](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) funkciók támogatása a VS Code hozzáadja. A Core Tools szükséges. Fejlesztési támogatja a Linux, MacOS és Windows, a verzió használatakor 2.x verzióját az Core Tools. További tudnivalókért lásd: [üzembe helyezés az Azure-ban az Azure Functions](https://code.visualstudio.com/tutorials/functions-extension/getting-started).  |
+|[Visual Studio Code](functions-create-first-function-vs-code.md)| [C# (osztálytár)](functions-dotnet-class-library.md), [C#-szkript (.csx)](functions-reference-csharp.md), [JavaScript](functions-reference-node.md) | A [VS Code-bővítmény az Azure Functions](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) funkciók támogatása a VS Code hozzáadja. A Core Tools szükséges. Fejlesztési támogatja a Linux, MacOS és Windows, a verzió használatakor 2.x verzióját az Core Tools. További tudnivalókért lásd: [Visual Studio Code használatával az első függvény létrehozása](functions-create-first-function-vs-code.md). |
 | [Visual Studio 2017](functions-develop-vs.md) | [C# (osztálytár)](functions-dotnet-class-library.md) | Az Azure Functions tools szerepelnek a **Azure-fejlesztési** számítási [Visual Studio 2017 15.5 verzió](https://www.visualstudio.com/vs/) és újabb verziók. Lehetővé teszi egy osztálytár függvényei összeállításához és a .dll fájl közzététele az Azure-bA. Magában foglalja a Core Tools való helyi tesztelést. További tudnivalókért lásd: [fejlesztése az Azure Functions Visual Studio használatával](functions-develop-vs.md). |
 | [Maven](functions-create-first-java-maven.md) (különböző) | [Java](functions-reference-java.md) | Integrálható a Core Tools fejlesztés Java-funkciók engedélyezéséhez. Verzió 2.x verziója támogatja a fejlesztési Linux, MacOS és Windows. További tudnivalókért lásd: [az első függvény létrehozása a Java és Maven](functions-create-first-java-maven.md). Emellett támogatja a fejlesztési [Eclipse](functions-create-maven-eclipse.md) és [az IntelliJ IDEA](functions-create-maven-intellij.md) |
 

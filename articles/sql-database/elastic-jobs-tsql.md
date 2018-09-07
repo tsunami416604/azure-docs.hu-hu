@@ -8,12 +8,12 @@ ms.service: sql-database
 ms.topic: article
 ms.date: 06/14/2018
 ms.author: jaredmoo
-ms.openlocfilehash: ae5dafcebd50ecd22309a7771b0edf01a97fd7a7
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: d524f7756c8dd394d8651839a1f6426c512d6a73
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/06/2018
-ms.locfileid: "43842618"
+ms.locfileid: "44023528"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>Rugalmas adatbázis-feladatok létrehozása és kezelése Transact-SQL (T-SQL) használatával
 
@@ -482,7 +482,7 @@ a feladat ügynök adatbázisból a feladatügynök létrehozásakor megadott sp
 Miután sp_add_job végre lett hajtva a feladat hozzáadása, sp_add_jobstep vegyen fel olyan lépéseket a feladat tevékenységeit végző használható. A feladat kezdeti verziószáma 0, amely az első lépés hozzáadásakor 1-re növekszik.
 
 #### <a name="permissions"></a>Engedélyek
-Alapértelmezés szerint a a sysadmin (rendszergazda) rögzített kiszolgálói szerepkör tagjai hajthatják végre ezt a tárolt eljárást. A korlátozása a felhasználót, hogy most, hogy feladatok figyelése, a felhasználó a következő adatbázis-szerepkör a feladat ügynök adatbázisban a feladatügynök létrehozásakor megadott részeként biztosítani:
+Alapértelmezés szerint a a sysadmin (rendszergazda) rögzített kiszolgálói szerepkör tagjai hajthatják végre ezt a tárolt eljárást. Akkor korlátozzák a felhasználót, hogy csak a feladatok nyomon kell, a felhasználó a következő adatbázis-szerepkör a feladat ügynök adatbázisban a feladatügynök létrehozásakor megadott részeként biztosítani:
 
 - jobs_reader
 
@@ -544,7 +544,7 @@ A dátum mely a feladat a végrehajtás leállíthatja. schedule_end_time DATETI
 Miután sp_add_job végre lett hajtva a feladat hozzáadása, sp_add_jobstep vegyen fel olyan lépéseket a feladat tevékenységeit végző használható. A feladat kezdeti verziószáma 0, amely az első lépés hozzáadásakor 1-re növekszik.
 
 #### <a name="permissions"></a>Engedélyek
-Alapértelmezés szerint a a sysadmin (rendszergazda) rögzített kiszolgálói szerepkör tagjai hajthatják végre ezt a tárolt eljárást. A korlátozása a felhasználót, hogy most, hogy feladatok figyelése, a felhasználó a következő adatbázis-szerepkör a feladat ügynök adatbázisban a feladatügynök létrehozásakor megadott részeként biztosítani:
+Alapértelmezés szerint a a sysadmin (rendszergazda) rögzített kiszolgálói szerepkör tagjai hajthatják végre ezt a tárolt eljárást. Akkor korlátozzák a felhasználót, hogy csak a feladatok nyomon kell, a felhasználó a következő adatbázis-szerepkör a feladat ügynök adatbázisban a feladatügynök létrehozásakor megadott részeként biztosítani:
 - jobs_reader
 
 Ezek a szerepkörök engedélyeivel kapcsolatos részletekért lásd: a engedély szakasz ebben a dokumentumban. Csak a sysadmin (rendszergazda) tagjai a tárolt eljárás segítségével más felhasználók tulajdonában lévő feladatok az attribútumok szerkesztését.
@@ -576,7 +576,7 @@ Megadja, hogy törölnie kell-e a feladat minden végrehajtás folyamatban van, 
 Feladatelőzmények automatikusan törlődik a feladat törlése.
 
 #### <a name="permissions"></a>Engedélyek
-Alapértelmezés szerint a a sysadmin (rendszergazda) rögzített kiszolgálói szerepkör tagjai hajthatják végre ezt a tárolt eljárást. A korlátozása a felhasználót, hogy most, hogy feladatok figyelése, a felhasználó a következő adatbázis-szerepkör a feladat ügynök adatbázisban a feladatügynök létrehozásakor megadott részeként biztosítani:
+Alapértelmezés szerint a a sysadmin (rendszergazda) rögzített kiszolgálói szerepkör tagjai hajthatják végre ezt a tárolt eljárást. Akkor korlátozzák a felhasználót, hogy csak a feladatok nyomon kell, a felhasználó a következő adatbázis-szerepkör a feladat ügynök adatbázisban a feladatügynök létrehozásakor megadott részeként biztosítani:
 - jobs_reader
 
 Ezek a szerepkörök engedélyeivel kapcsolatos részletekért lásd: a engedély szakasz ebben a dokumentumban. Csak a sysadmin (rendszergazda) tagjai a tárolt eljárás segítségével más felhasználók tulajdonában lévő feladatok az attribútumok szerkesztését.
@@ -701,7 +701,7 @@ A rugalmas készletenként párhuzamosság maximális szintjét. Ha be van áll�
 Ha a sp_add_jobstep sikeres, a feladat jelenlegi verziószám értéke akkor növekszik. A következő alkalommal, amikor a feladat végrehajtása, az új verziót fogja használni. Ha a feladat végrehajtása folyamatban van, a végrehajtás nem tartalmazza majd az új lépés.
 
 #### <a name="permissions"></a>Engedélyek
-Alapértelmezés szerint a a sysadmin (rendszergazda) rögzített kiszolgálói szerepkör tagjai hajthatják végre ezt a tárolt eljárást. A korlátozása a felhasználót, hogy most, hogy feladatok figyelése, a felhasználó a következő adatbázis-szerepkör a feladat ügynök adatbázisban a feladatügynök létrehozásakor megadott részeként biztosítani:  
+Alapértelmezés szerint a a sysadmin (rendszergazda) rögzített kiszolgálói szerepkör tagjai hajthatják végre ezt a tárolt eljárást. Akkor korlátozzák a felhasználót, hogy csak a feladatok nyomon kell, a felhasználó a következő adatbázis-szerepkör a feladat ügynök adatbázisban a feladatügynök létrehozásakor megadott részeként biztosítani:  
 
 - jobs_reader
 
@@ -825,7 +825,7 @@ A rugalmas készletenként párhuzamosság maximális szintjét. Ha be van áll�
 Minden folyamatban lévő végrehajtások a feladat nem érinti. Ha a sp_update_jobstep sikeres, a feladat verziószáma értéke akkor növekszik. A következő alkalommal, amikor a feladat végrehajtása, az új verziót fogja használni.
 
 #### <a name="permissions"></a>Engedélyek
-Alapértelmezés szerint a a sysadmin (rendszergazda) rögzített kiszolgálói szerepkör tagjai hajthatják végre ezt a tárolt eljárást. A korlátozása a felhasználót, hogy most, hogy feladatok figyelése, a felhasználó a következő adatbázis-szerepkör a feladat ügynök adatbázisban a feladatügynök létrehozásakor megadott részeként biztosítani:
+Alapértelmezés szerint a a sysadmin (rendszergazda) rögzített kiszolgálói szerepkör tagjai hajthatják végre ezt a tárolt eljárást. Akkor korlátozzák a felhasználót, hogy csak a feladatok nyomon kell, a felhasználó a következő adatbázis-szerepkör a feladat ügynök adatbázisban a feladatügynök létrehozásakor megadott részeként biztosítani:
 
 - jobs_reader
 
@@ -870,7 +870,7 @@ Minden folyamatban lévő végrehajtások a feladat nem érinti. Ha a sp_update_
 A többi feladat lépés automatikusan újraszámozásakor fogja a törölt feladatról lépés az űrt tölti ki.
  
 #### <a name="permissions"></a>Engedélyek
-Alapértelmezés szerint a a sysadmin (rendszergazda) rögzített kiszolgálói szerepkör tagjai hajthatják végre ezt a tárolt eljárást. A korlátozása a felhasználót, hogy most, hogy feladatok figyelése, a felhasználó a következő adatbázis-szerepkör a feladat ügynök adatbázisban a feladatügynök létrehozásakor megadott részeként biztosítani:
+Alapértelmezés szerint a a sysadmin (rendszergazda) rögzített kiszolgálói szerepkör tagjai hajthatják végre ezt a tárolt eljárást. Akkor korlátozzák a felhasználót, hogy csak a feladatok nyomon kell, a felhasználó a következő adatbázis-szerepkör a feladat ügynök adatbázisban a feladatügynök létrehozásakor megadott részeként biztosítani:
 - jobs_reader
 
 Ezek a szerepkörök engedélyeivel kapcsolatos részletekért lásd: a engedély szakasz ebben a dokumentumban. Csak a sysadmin (rendszergazda) tagjai a tárolt eljárás segítségével más felhasználók tulajdonában lévő feladatok az attribútumok szerkesztését.
@@ -906,7 +906,7 @@ A kimeneti paraméter, amely a feladat-végrehajtási azonosítóhoz hozzá lesz
 Nincs.
  
 #### <a name="permissions"></a>Engedélyek
-Alapértelmezés szerint a a sysadmin (rendszergazda) rögzített kiszolgálói szerepkör tagjai hajthatják végre ezt a tárolt eljárást. A korlátozása a felhasználót, hogy most, hogy feladatok figyelése, a felhasználó a következő adatbázis-szerepkör a feladat ügynök adatbázisban a feladatügynök létrehozásakor megadott részeként biztosítani:
+Alapértelmezés szerint a a sysadmin (rendszergazda) rögzített kiszolgálói szerepkör tagjai hajthatják végre ezt a tárolt eljárást. Akkor korlátozzák a felhasználót, hogy csak a feladatok nyomon kell, a felhasználó a következő adatbázis-szerepkör a feladat ügynök adatbázisban a feladatügynök létrehozásakor megadott részeként biztosítani:
 - jobs_reader
 
 Ezek a szerepkörök engedélyeivel kapcsolatos részletekért lásd: a engedély szakasz ebben a dokumentumban. Csak a sysadmin (rendszergazda) tagjai a tárolt eljárás segítségével más felhasználók tulajdonában lévő feladatok az attribútumok szerkesztését.
@@ -934,7 +934,7 @@ A feladat végrehajtásának leállítása azonosítószáma. job_execution_id u
 Nincs.
  
 #### <a name="permissions"></a>Engedélyek
-Alapértelmezés szerint a a sysadmin (rendszergazda) rögzített kiszolgálói szerepkör tagjai hajthatják végre ezt a tárolt eljárást. A korlátozása a felhasználót, hogy most, hogy feladatok figyelése, a felhasználó a következő adatbázis-szerepkör a feladat ügynök adatbázisban a feladatügynök létrehozásakor megadott részeként biztosítani:
+Alapértelmezés szerint a a sysadmin (rendszergazda) rögzített kiszolgálói szerepkör tagjai hajthatják végre ezt a tárolt eljárást. Akkor korlátozzák a felhasználót, hogy csak a feladatok nyomon kell, a felhasználó a következő adatbázis-szerepkör a feladat ügynök adatbázisban a feladatügynök létrehozásakor megadott részeként biztosítani:
 - jobs_reader
 
 Ezek a szerepkörök engedélyeivel kapcsolatos részletekért lásd: a engedély szakasz ebben a dokumentumban. Csak a sysadmin (rendszergazda) tagjai a tárolt eljárás segítségével más felhasználók tulajdonában lévő feladatok az attribútumok szerkesztését.
@@ -966,7 +966,7 @@ Hozhat létre a célcsoport neve. target_group_name nvarchar(128), nem alapérte
 Célcsoportok, amelyekre egy feladatot egy adatbázis-gyűjtemény, egyszerű módot biztosítanak.
 
 #### <a name="permissions"></a>Engedélyek
-Alapértelmezés szerint a a sysadmin (rendszergazda) rögzített kiszolgálói szerepkör tagjai hajthatják végre ezt a tárolt eljárást. A korlátozása a felhasználót, hogy most, hogy feladatok figyelése, a felhasználó a következő adatbázis-szerepkör a feladat ügynök adatbázisban a feladatügynök létrehozásakor megadott részeként biztosítani:
+Alapértelmezés szerint a a sysadmin (rendszergazda) rögzített kiszolgálói szerepkör tagjai hajthatják végre ezt a tárolt eljárást. Akkor korlátozzák a felhasználót, hogy csak a feladatok nyomon kell, a felhasználó a következő adatbázis-szerepkör a feladat ügynök adatbázisban a feladatügynök létrehozásakor megadott részeként biztosítani:
 - jobs_reader
 
 Ezek a szerepkörök engedélyeivel kapcsolatos részletekért lásd: a engedély szakasz ebben a dokumentumban. Csak a sysadmin (rendszergazda) tagjai a tárolt eljárás segítségével más felhasználók tulajdonában lévő feladatok az attribútumok szerkesztését.
@@ -994,7 +994,7 @@ Törli a célcsoport neve. target_group_name nvarchar(128), nem alapértelmezett
 Nincs.
 
 #### <a name="permissions"></a>Engedélyek
-Alapértelmezés szerint a a sysadmin (rendszergazda) rögzített kiszolgálói szerepkör tagjai hajthatják végre ezt a tárolt eljárást. A korlátozása a felhasználót, hogy most, hogy feladatok figyelése, a felhasználó a következő adatbázis-szerepkör a feladat ügynök adatbázisban a feladatügynök létrehozásakor megadott részeként biztosítani:
+Alapértelmezés szerint a a sysadmin (rendszergazda) rögzített kiszolgálói szerepkör tagjai hajthatják végre ezt a tárolt eljárást. Akkor korlátozzák a felhasználót, hogy csak a feladatok nyomon kell, a felhasználó a következő adatbázis-szerepkör a feladat ügynök adatbázisban a feladatügynök létrehozásakor megadott részeként biztosítani:
 - jobs_reader
 
 Ezek a szerepkörök engedélyeivel kapcsolatos részletekért lásd: a engedély szakasz ebben a dokumentumban. Csak a sysadmin (rendszergazda) tagjai a tárolt eljárás segítségével más felhasználók tulajdonában lévő feladatok az attribútumok szerkesztését.
@@ -1050,7 +1050,7 @@ Visszatérési kód értékek 0 (sikeres) vagy 1 (hiba)
 Egy feladatot hajt végre egy kiszolgálón található összes adatbázis, vagy a célcsoportban végrehajtása, ha egy logikai kiszolgálón vagy a rugalmas készlet időpontjában rugalmas készlet része.
 
 #### <a name="permissions"></a>Engedélyek
-Alapértelmezés szerint a a sysadmin (rendszergazda) rögzített kiszolgálói szerepkör tagjai hajthatják végre ezt a tárolt eljárást. A korlátozása a felhasználót, hogy most, hogy feladatok figyelése, a felhasználó a következő adatbázis-szerepkör a feladat ügynök adatbázisban a feladatügynök létrehozásakor megadott részeként biztosítani:
+Alapértelmezés szerint a a sysadmin (rendszergazda) rögzített kiszolgálói szerepkör tagjai hajthatják végre ezt a tárolt eljárást. Akkor korlátozzák a felhasználót, hogy csak a feladatok nyomon kell, a felhasználó a következő adatbázis-szerepkör a feladat ügynök adatbázisban a feladatügynök létrehozásakor megadott részeként biztosítani:
 - jobs_reader
 
 Ezek a szerepkörök engedélyeivel kapcsolatos részletekért lásd: a engedély szakasz ebben a dokumentumban. Csak a sysadmin (rendszergazda) tagjai a tárolt eljárás segítségével más felhasználók tulajdonában lévő feladatok az attribútumok szerkesztését.
@@ -1115,7 +1115,7 @@ Távolítsa el a célként megadott csoport tagja, amelyből a célcsoport neve.
 Célcsoportok, amelyekre egy feladatot egy adatbázis-gyűjtemény, egyszerű módot biztosítanak.
 
 #### <a name="permissions"></a>Engedélyek
-Alapértelmezés szerint a a sysadmin (rendszergazda) rögzített kiszolgálói szerepkör tagjai hajthatják végre ezt a tárolt eljárást. A korlátozása a felhasználót, hogy most, hogy feladatok figyelése, a felhasználó a következő adatbázis-szerepkör a feladat ügynök adatbázisban a feladatügynök létrehozásakor megadott részeként biztosítani:
+Alapértelmezés szerint a a sysadmin (rendszergazda) rögzített kiszolgálói szerepkör tagjai hajthatják végre ezt a tárolt eljárást. Akkor korlátozzák a felhasználót, hogy csak a feladatok nyomon kell, a felhasználó a következő adatbázis-szerepkör a feladat ügynök adatbázisban a feladatügynök létrehozásakor megadott részeként biztosítani:
 - jobs_reader
 
 Ezek a szerepkörök engedélyeivel kapcsolatos részletekért lásd: a engedély szakasz ebben a dokumentumban. Csak a sysadmin (rendszergazda) tagjai a tárolt eljárás segítségével más felhasználók tulajdonában lévő feladatok az attribútumok szerkesztését.
@@ -1166,7 +1166,7 @@ A feladat, amelynek a replikálásielőzmény-rekord törlése neve. job_name nv
 0 (sikeres) vagy 1 (hiba) megjegyzések célcsoportokat, amelyekre egy feladatot egy adatbázis-gyűjtemény, egyszerű módot biztosítanak.
 
 #### <a name="permissions"></a>Engedélyek
-Alapértelmezés szerint a a sysadmin (rendszergazda) rögzített kiszolgálói szerepkör tagjai hajthatják végre ezt a tárolt eljárást. A korlátozása a felhasználót, hogy most, hogy feladatok figyelése, a felhasználó a következő adatbázis-szerepkör a feladat ügynök adatbázisban a feladatügynök létrehozásakor megadott részeként biztosítani:
+Alapértelmezés szerint a a sysadmin (rendszergazda) rögzített kiszolgálói szerepkör tagjai hajthatják végre ezt a tárolt eljárást. Akkor korlátozzák a felhasználót, hogy csak a feladatok nyomon kell, a felhasználó a következő adatbázis-szerepkör a feladat ügynök adatbázisban a feladatügynök létrehozásakor megadott részeként biztosítani:
 - jobs_reader
 
 Ezek a szerepkörök engedélyeivel kapcsolatos részletekért lásd: a engedély szakasz ebben a dokumentumban. Csak a sysadmin (rendszergazda) tagjai a tárolt eljárás segítségével más felhasználók tulajdonában lévő feladatok az attribútumok szerkesztését.
@@ -1336,7 +1336,7 @@ Minden célként megadott csoport minden tagját mutatja.
 
 ## <a name="resources"></a>További források
 
- - ![Témakör-hivatkozás ikon](https://docs.microsoft.com/sql/database-engine/configure-windows/media/topic-link.gif "témakör kapcsolat ikon") [Transact-SQL-szintaxis konvenciók](/sql/t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)  
+ - ![Témakör-hivatkozás ikon](https://docs.microsoft.com/sql/database-engine/configure-windows/media/topic-link.gif "témakör kapcsolat ikon") [Transact-SQL-szintaxis konvenciók](https://docs.microsoft.com/sql/t-sql/language-elements/transact-sql-syntax-conventions-transact-sql)  
 
 
 ## <a name="next-steps"></a>További lépések

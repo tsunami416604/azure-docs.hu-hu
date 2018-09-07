@@ -8,14 +8,14 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: dobett
-ms.openlocfilehash: 912bb0dd3e48e53134ad848119ae7428b380b88d
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 767c91e4926e553b63b8331ac99edcd7823d2c13
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39124936"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44055015"
 ---
-# <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>A beépített végpontról eszköz – felhő üzenetek olvasása
+# <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>Az eszközről a felhőbe irányuló üzenetek beolvasása a beépített végpontról
 
 Alapértelmezés szerint üzenetek irányíthatók át a beépített szolgáltatás felé néző végpont (**üzenetek/események**), amely kompatibilis a rendszer [az Event Hubs][lnk-event-hubs]. Ez a végpont a jelenleg csak közzétett használja a [AMQP] [ lnk-amqp] 5671-es port-protokoll. Az IoT hub mutatja meg, hogy szabályozza a beépített üzenetkezelési Event Hub-kompatibilis végpont a következő tulajdonságok **üzenetek/események**.
 
@@ -80,5 +80,5 @@ Ha szeretné az eszköz a felhőbe irányuló üzenetek átirányítása egyéni
 [lnk-d2c-tutorial]: tutorial-routing.md
 [lnk-event-hub-partitions]: ../event-hubs/event-hubs-features.md#partitions
 [lnk-servicebus-sdk]: https://www.nuget.org/packages/WindowsAzure.ServiceBus
-[lnk-eventprocessorhost]: http://blogs.msdn.com/b/servicebus/archive/2015/01/16/event-processor-host-best-practices-part-1.aspx
+[lnk-eventprocessorhost]: https://docs.microsoft.com/azure/event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph
 [lnk-amqp]: https://www.amqp.org/

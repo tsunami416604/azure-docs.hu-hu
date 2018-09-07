@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: markvi
-ms.openlocfilehash: 9db0fa29f6af0053d45f9f0238b52ac34fdb464a
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: f1bbbecf1f40b110614b3da9874d5d2c560f9e58
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39223261"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44024635"
 ---
 # <a name="group-policy-and-mdm-settings"></a>A csoportházirend és a mobileszköz-kezelési beállítások
 Használja ezeket a csoportházirend és a mobileszköz-felügyelet (MDM) beállítások csak a vállalat által birtokolt eszközök, mert ezek a szabályzatok érvénybe lépnek a felhasználó-eszköz teljes. Letiltja a személyes beállítások szinkronizálása egy mobileszköz-kezelési házirend alkalmazása, felhasználó által birtokolt eszközök hátrányosan befolyásolhatja, hogy az eszköz használatát. Ezenkívül az eszközön más felhasználói fiókok is érinti a szabályzatot.
@@ -30,7 +30,7 @@ Olyan vállalatok, amelyek személyes (nem felügyelt) eszközök központi keze
 Az alábbi táblázatok ismertetik a rendelkezésre álló házirend-beállításokat.
 
 ## <a name="mdm-settings"></a>Mobileszköz-kezelési beállítások
-A mobileszköz-kezelési házirend-beállítások Windows 10 és Windows 10 Mobile is vonatkozik.  Windows 10 Mobile-támogatás csak a Microsoft-fiók roaming a felhasználó OneDrive-fiók létezik.  Tekintse meg az "Eszközök és végpontok" című szakasz részletezi az Azure AD-alapú szinkronizálása a támogatott eszközök.
+A mobileszköz-kezelési házirend-beállítások Windows 10 és Windows 10 Mobile is vonatkozik.  Windows 10 Mobile-támogatás csak a Microsoft-fiók roaming a felhasználó OneDrive-fiók létezik.  Tekintse meg [eszközök és a végpontok](active-directory-windows-enterprise-state-roaming-windows-settings-reference.md) milyen eszközökön használható az Azure AD-alapú szinkronizálása részleteiért.
 
 | Name (Név) | Leírás |
 | --- | --- |

@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/07/2018
+ms.date: 09/05/2018
 ms.author: brenduns
 ms.reviewer: harik
-ms.openlocfilehash: a76cf1394dc2c4900b370b52f3479dc03d1d8afe
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: f74a4ad0507f1c1f029befff88d733ffa719a763
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42054276"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44023511"
 ---
 # <a name="azure-stack-servicing-policy"></a>Az Azure Stack karbantartási szabályzat
 Ez a cikk ismerteti a karbantartási szabályzat az Azure Stack integrált rendszerek, és hogy mit kell tennie, hogy a rendszer egy támogatott állapotban. 
@@ -38,9 +38,10 @@ Integrált rendszerek frissítési csomagokat két típusa van:
 A Microsoft vár a szoftverfrissítési csomagok havi kiadása ütemben történik felszabadítása érdekében. Viszont azt, lehetséges, hogy több, vagy nincs kiadásai az adott hónapban. OEM hardverszállítók a frissítéseket egy igény szerint történik. 
 
 Megtervezheti és kezelheti a frissítéseket, és miként állapítható meg, a jelenlegi verziót dokumentáció [kezelés frissítések – áttekintés](azure-stack-updates.md). Egy adott frissítés, és töltheti le, beleértve kapcsolatos információkat lásd: kibocsátási megjegyzései, amely frissítése: 
+- [Azure Stack 1808 frissítése](azure-stack-update-1808.md)
 - [Azure Stack 1807 frissítése](azure-stack-update-1807.md)
 - [Azure Stack 1805 frissítése](azure-stack-update-1805.md)
-- [Azure Stack 1804 frissítése](azure-stack-update-1804.md)
+
 
 ## <a name="hotfixes"></a>Gyorsjavítások
 Néha előfordul, a Microsoft kínál gyorsjavítások Azure Stack egy adott probléma, amely gyakran megelőző vagy időérzékeny címmel.  A megfelelő Microsoft Tudásbázis megfelelő cikkében, amely leírja a problémát, a kiváltó okkal és a megoldás, az egyes gyorsjavítások szabadul fel. 
