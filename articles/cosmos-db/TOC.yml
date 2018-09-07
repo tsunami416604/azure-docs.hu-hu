@@ -223,9 +223,8 @@ items:
     items:
     - name: Áttekintés
       href: mongodb-introduction.md
-      items:
-      - name: A MongoDB támogatása
-        href: mongodb-feature-support.md
+    - name: A MongoDB támogatása
+      href: mongodb-feature-support.md
     - name: Oktatóanyagok
       items:
       - name: 1 – Fiók létrehozása
@@ -274,9 +273,8 @@ items:
     items:
     - name: Áttekintés
       href: graph-introduction.md
-      items:
-      - name: Gremlin-támogatás
-        href: gremlin-support.md
+    - name: Gremlin-támogatás
+      href: gremlin-support.md
     - name: Oktatóanyagok
       items:
       - name: 1 – Adatok lekérdezése
@@ -396,8 +394,6 @@ items:
       href: key-value-store-cost.md
     - name: SQL-adatparticionálás
       href: sql-api-partition-data.md
-    - name: Gráfadatok particionálása
-      href: graph-partitioning.md
   - name: Integráció más Azure-szolgáltatásokkal
     items:
     - name: Változáscsatorna – Elektronikus kereskedelmi megoldás
@@ -459,13 +455,11 @@ items:
   - name: Díjszabás
     href: https://azure.microsoft.com/pricing/details/cosmos-db/
   - name: Használati esetek
-  - name: Az adatkonzisztencia magyarázata a baseball példáján
-    href: http://research.microsoft.com/apps/pubs/default.aspx?id=206913
   - name: Közösségimédia-alkalmazások
     href: social-media-apps.md
-ms.openlocfilehash: afa2ccd0998ba78aa0f9e75bb87691ead8b96697
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: 6f7d5290dd64b074a9933c8e10ccab2922355283
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43783256"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44054121"

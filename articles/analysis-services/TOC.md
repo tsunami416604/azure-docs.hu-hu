@@ -38,9 +38,9 @@
 ### [Kiszolgáló kezelése](analysis-services-manage.md)
 ### [A kiszolgáló metrikáinak monitorozása](analysis-services-monitor.md)
 ### [Diagnosztikai naplózás beállítása](analysis-services-logging.md)
-### [Egyszerű szolgáltatásnév létrehozása – Azure Portal](../azure-resource-manager/resource-group-create-service-principal-portal.md)
-### [Egyszerű szolgáltatásnév létrehozása – PowerShell](../azure-resource-manager/resource-group-authenticate-service-principal.md)
-### [Egyszerű szolgáltatásnév hozzáadása kiszolgálói rendszergazdai szerepkörhöz](analysis-services-addservprinc-admins.md)
+### [Szolgáltatásnév létrehozása – Azure Portal](../azure-resource-manager/resource-group-create-service-principal-portal.md)
+### [Szolgáltatásnév létrehozása – PowerShell](../azure-resource-manager/resource-group-authenticate-service-principal.md)
+### [Szolgáltatásnév hozzáadása a kiszolgálói rendszergazdai szerepkörhöz](analysis-services-addservprinc-admins.md)
 
 ## Modell
 ### [Power BI Desktop-fájlok importálása](analysis-services-import-pbix.md)

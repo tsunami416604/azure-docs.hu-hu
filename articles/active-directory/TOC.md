@@ -49,7 +49,6 @@
 ### [Felhasználói jelszavak alaphelyzetbe állítása](fundamentals/active-directory-users-reset-password-azure-portal.md)
 ### [Fiókok megosztása](active-directory-sharing-accounts.md)
 ### [Felhasználók hozzárendelése rendszergazdai szerepkörökhöz ](fundamentals/active-directory-users-assign-role-azure-portal.md)
-### [Törölt felhasználó visszaállítása](fundamentals/active-directory-users-restore.md)
 ### [Vendég felhasználók hozzáadása másik címtárból (B2B)](b2b/what-is-b2b.md)
 #### [B2B-felhasználók rendszergazdák általi hozzáadása](b2b/add-users-administrator.md)
 #### [B2B-felhasználók infomunkások általi hozzáadása](b2b/add-users-information-worker.md)
@@ -163,7 +162,7 @@
 ##### [Csendes telepítés](manage-apps/application-proxy-register-connector-powershell.md)
 ##### [Egyéni kezdőlap](manage-apps/application-proxy-configure-custom-home-page.md)
 ##### [Beágyazott hivatkozások fordítása](manage-apps/application-proxy-configure-hard-coded-link-translation.md)
-##### [Helyettesítő karakterek](active-directory-application-proxy-wildcard.md)
+##### [Helyettesítő karakterek](manage-apps/application-proxy-wildcard.md)
 ##### [Személyes adatok eltávolítása](manage-apps/application-proxy-remove-personal-data.md)
 
 
@@ -172,7 +171,7 @@
 ##### [SharePoint](manage-apps/application-proxy-integrate-with-sharepoint-server.md)
 ##### [Microsoft Teams](manage-apps/application-proxy-integrate-with-teams.md)
 ##### [Tableau](manage-apps/application-proxy-integrate-with-tableau.md)
-##### [Qlik](active-directory-application-proxy-qlik.md)
+##### [Qlik](manage-apps/application-proxy-qlik.md)
 #### [PowerShell](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#application_proxy_application_management) 
 
 #### [Hibaelhárítás](manage-apps/application-proxy-troubleshoot.md)

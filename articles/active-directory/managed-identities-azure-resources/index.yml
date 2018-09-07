@@ -1,0 +1,79 @@
+### YamlMime:YamlDocument
+ms.openlocfilehash: ccc508b8dbfb990639abe24efa2822ff27f2f910
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44029416"
+documentType: LandingData
+title: Azure-erőforrások Azure AD-alapú felügyelt identitásai – dokumentáció
+metadata:
+  document_id: 
+  title: Azure AD felügyelt identitások használata Azure-erőforrásokkal – dokumentáció
+  description: Ebből a cikkből megtudhatja, hogyan használhat felügyelt identitásokat az Azure-erőforrásokkal, hogy a forráskódban tárolt hitelesítő adatok nélkül végezhessen biztonságos hitelesítést az Azure-felhőszolgáltatásokban.
+  services: active-directory
+  ms.component: msi
+  author: daveba
+  manager: mtillman
+  ms.service: active-directory
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 03/16/2018
+  ms.author: daveba
+abstract:
+  description: Az Azure-erőforrások felügyelt identitásai automatikusan felügyelt identitást biztosítanak az Azure-szolgáltatásoknak az Azure Active Directoryban (Azure AD-ben). Ezzel az identitással bármely, Azure AD-hitelesítést támogató szolgáltatáshoz végezhet hitelesítést anélkül, hogy a hitelesítő adatokat a kódban kellene tárolnia.  Rövid útmutatóinkból és oktatóanyagainkból megtudhatja, hogyan hozhatja létre és kezelheti az Azure-erőforrások felügyelt identitásait.
+  aside:
+    image:
+      alt: 
+      height: 112
+      src: media/index/video-thumb-landing-page.png
+      width: 200
+    title: Az Azure-erőforrások felügyelt identitásainak bemutatása
+    href: https://www.youtube.com/embed/bBi1bll2928
+    width: 200
+sections:
+- title: 5 perces gyors útmutatók
+  items:
+  - type: paragraph
+    text: Megtudhatja, hogyan érheti el az Azure Resource Manager API-t az Azure-erőforrások felügyelt identitásaival
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="/azure/active-directory/managed-service-identity/tutorial-windows-vm-access-arm">Az Azure Resource Manager elérése Windows Azure-beli virtuális gépről</a>
+    - html: <a href="/azure/active-directory/managed-service-identity/tutorial-linux-vm-access-arm">Az Azure Resource Manager elérése Linux Azure-beli virtuális gépről</a>
+- title: Részletes útmutatók
+  items:
+  - type: paragraph
+    text: Megtudhatja, hogyan érheti el biztonságosan az Azure-erőforrásokat az Azure-erőforrások felügyelt identitásaival
+  - type: paragraph
+    text: Windows VM/VMSS
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="/azure/active-directory/managed-service-identity/tutorial-windows-vm-access-datalake">Az Azure Data Lake Store elérése</a>
+    - html: <a href="/azure/active-directory/managed-service-identity/tutorial-windows-vm-access-storage">Az Azure Storage elérése hozzáférési kulcs használatával</a>
+    - html: <a href="/azure/active-directory/managed-service-identity/tutorial-windows-vm-access-sql">Az Azure SQL elérése</a>
+    - html: <a href="/azure/active-directory/managed-service-identity/tutorial-windows-vm-access-nonaad">Az Azure Key Vault elérése</a>
+    - html: <a href="/azure/active-directory/managed-service-identity/tutorial-windows-vm-access-cosmos-db">Az Azure Cosmos DB elérése</a>
+    - html: <a href="/azure/active-directory/managed-service-identity/tutorial-windows-vm-ua-arm">Az Azure Resource Manager elérése felhasználó által hozzárendelt identitással</a>
+  - type: paragraph
+    text: Linux VM/VMSS
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="/azure/active-directory/managed-service-identity/tutorial-linux-vm-access-datalake">Az Azure Data Lake Store elérése</a>
+    - html: <a href="/azure/active-directory/managed-service-identity/tutorial-linux-vm-access-storage-access-key">Az Azure Storage elérése hozzáférési kulcs használatával</a>
+    - html: <a href="/azure/active-directory/managed-service-identity/tutorial-linux-vm-access-nonaad">Az Azure Key Vault elérése</a>
+    - html: <a href="/azure/active-directory/managed-service-identity/tutorial-linux-vm-access-cosmos-db">Az Azure Cosmos DB elérése</a>
+    - html: <a href="/azure/active-directory/managed-service-identity/msi-tutorial-linux-vm-access-arm">Az Azure Resource Manager elérése felhasználó által hozzárendelt identitással</a>
+- title: Referencia
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: Parancssor
+      html: <p><a href="/powershell/module/azurerm.managedserviceidentity#managed_service_identity">Azure PowerShell</a></p><p><a href="/cli/azure/identity">Azure CLI</a></p>
+    - title: Nyelvek
+      html: <p><a href="/dotnet/api/microsoft.azure.management.resourcemanager.fluent.authentication#azure-dotnet">.NET</a></p><p><a href="https://github.com/Azure/azure-libraries-for-java#ready-to-run-code-samples-for-virtual-machines">Java</a></p><p><a href="/javascript/api/ms-rest-azure">Node.js</a></p><p><a href="/python/api/azure.mgmt.msi">Python</a></p></p><a href="https://rubygems.org/gems/azure_mgmt_msi">Ruby</a></p></p><a href="https://godoc.org/github.com/Azure/azure-sdk-for-go/services/msi/mgmt/2015-08-31-preview/msi">Go</a></p>

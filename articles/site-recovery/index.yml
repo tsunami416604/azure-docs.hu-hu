@@ -1,4 +1,10 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: e7a5c7f08b34c91512ad2bf5d9f3fcb82feb9e08
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44026096"
 documentType: LandingData
 title: A Site Recovery dokumentációja
 metadata:
@@ -13,12 +19,6 @@ metadata:
   ms.topic: landing-page
   ms.date: 09/23/2017
   ms.author: carolz
-  ms.openlocfilehash: 0d66952b5f159ce92b8586f7beb71c25fe7c7b39
-  ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
-  ms.translationtype: HT
-  ms.contentlocale: hu-HU
-  ms.lasthandoff: 01/10/2018
-  ms.locfileid: "27740084"
 abstract:
   description: Az Azure Site Recovery az Azure-beli virtuális gépek, illetve a helyszíni virtuális gépek és fizikai kiszolgálók vészhelyreállítását irányítja és felügyeli. Rövid útmutatóink és oktatóanyagaink segítségével megtudhatja, hogyan végezhet replikálást, feladatátadást és feladatátvételt.
 sections:
@@ -54,7 +54,7 @@ sections:
     - html: <a href="tutorial-prepare-on-premises-vmware">Helyszíni VMware előkészítése</a>
     - html: <a href="tutorial-vmware-to-azure">Vészhelyreállítás beállítása</a>
     - html: <a href="tutorial-dr-drill-azure">Vészhelyreállítási próba végrehajtása</a>
-    - html: <a href="tutorial-vmware-to-azure-failover-failback">Feladatátvétel és feladat-visszavétel futtatása</a>
+    - html: <a href="vmware-azure-tutorial-failover-failback">Feladatátvétel és feladat-visszavétel futtatása</a>
   - type: text
     html: <h3>Hyper-V</h3>
   - type: list
@@ -73,13 +73,13 @@ sections:
     items:
     - html: <a href="tutorial-prepare-azure">Az Azure előkészítése</a>
     - html: <a href="tutorial-migrate-on-premises-to-azure">Helyszíni gépek</a> vagy <a href="tutorial-migrate-aws-to-azure">AWS-példányok áttelepítése az Azure-ba</a>
-- title: Hivatkozás
+- title: Referencia
   items:
   - type: list
     style: cards
     className: cardsD
     items:
     - title: Parancssor
-      html: <p><a href="/powershell/module/azurerm.siterecovery/?view=azurermps-4.3.1">Azure PowerShell</a></p>
+      html: <p><a href="/powershell/module/azurerm.siterecovery>Azure PowerShell</a></p>
     - title: REST
       html: <p><a href="/rest/api/site-recovery/">REST API-referencia</a></p>
