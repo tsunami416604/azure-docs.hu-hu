@@ -11,12 +11,12 @@ ms.custom: DBs & servers
 ms.topic: conceptual
 ms.date: 08/30/2018
 ms.author: bonova
-ms.openlocfilehash: 2e1fd7c87931f804433708b6ac30a5960e6006ae
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 5caafdfbaca1a701d2728afdfcb31e8e73b4fded
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43287663"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44050306"
 ---
 # <a name="what-is-a-managed-instance-preview"></a>Mi a felügyelt példány (előzetes verzió)?
 
@@ -200,7 +200,7 @@ A felügyelt példány céljainak felhasználói esetek tömeges adatbázis átt
 ### <a name="backup-and-restore"></a>Biztonsági mentés és visszaállítás  
 
 A migrálási megközelítés használ az SQL biztonsági másolatokat az Azure blob storage. Az Azure storage-blobban tárolt biztonsági másolatok közvetlenül állíthatók be a felügyelt példány használatával az [T-SQL RESTORE parancsot](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql?view=azuresqldb-mi-current). 
-  - A Wide World Importers – Standard adatbázis biztonsági másolatát, visszaállítása lekérdezéséről lásd: [visszaállítása biztonsági másolatból egy felügyelt példányon](sql-database-managed-instance-restore-from-backup-tutorial.md). Ebből az oktatóanyagból megtudhatja, hogy a biztonsági mentési fájl feltöltése az Azure-blog storage és a biztonságos, egy közös hozzáférési jogosultságkód (SAS) kulccsal rendelkezik.
+  - A Wide World Importers – Standard adatbázis biztonsági másolatát, visszaállítása lekérdezéséről lásd: [visszaállítása biztonsági másolatból egy felügyelt példányon](sql-database-managed-instance-get-started-restore.md). Ebből az oktatóanyagból megtudhatja, hogy a biztonsági mentési fájl feltöltése az Azure-blog storage és a biztonságos, egy közös hozzáférési jogosultságkód (SAS) kulccsal rendelkezik.
   - URL-címről visszaállítási kapcsolatos információkért lásd: [natív VISSZAÁLLÍTÁSA URL-címről](sql-database-managed-instance-migrate.md#native-restore-from-url).
   
 ### <a name="data-migration-service"></a>Data Migration Service
@@ -251,6 +251,6 @@ Az alábbi táblázat Transact SQL-n keresztül elérhető számos tulajdonság,
 - Ismerje meg, hogyan hozhat létre az első felügyelt példányhoz, lásd: [gyors üzembe helyezési útmutató](sql-database-managed-instance-get-started.md).
 - Az a funkciók és összehasonlító listában, lásd: [általános SQL-szolgáltatások](sql-database-features.md).
 - A VNetek konfigurálásával kapcsolatos további információkért tekintse meg a [felügyelt példányok VNetjének konfigurálásával kapcsolatos](sql-database-managed-instance-vnet-configuration.md) cikket.
-- Oktatóanyag, amely létrehoz egy felügyelt példányt, és visszaállít egy adatbázist egy biztonsági mentési fájlból, lásd: [létrehoz egy felügyelt példányt](sql-database-managed-instance-create-tutorial-portal.md).
+- Oktatóanyag, amely létrehoz egy felügyelt példányt, és visszaállít egy adatbázist egy biztonsági mentési fájlból, lásd: [létrehoz egy felügyelt példányt](sql-database-managed-instance-get-started.md).
 - Az Azure Database Migration Service migráláshoz való használatát a [felügyelt példány DMS használatával történő migrálását](../dms/tutorial-sql-server-to-managed-instance.md) bemutató oktatóanyag ismerteti.
 - Díjszabási információkért tekintse meg a [SQL Database felügyelt példányain díjszabás](https://azure.microsoft.com/pricing/details/sql-database/managed/).

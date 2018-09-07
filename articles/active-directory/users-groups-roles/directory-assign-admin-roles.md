@@ -14,12 +14,12 @@ ms.date: 08/31/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 384afb36f2a63fcbf290fa96ed15db2a1f469f55
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: c49f15ddde60513be47feb264da0e35f4e8b3a0d
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43337851"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44055573"
 ---
 # <a name="assigning-administrator-roles-in-azure-active-directory"></a>Rendszergazdai jogosultságok kiosztása az Azure Active Directoryban
 
@@ -44,6 +44,8 @@ A következő rendszergazdai szerepkörök érhetők el:
 * **[Számlázási adminisztrátor](#billing-administrator)**: lebonyolítja a vásárlásokat, kezeli az előfizetéseket, támogatási jegyeket, és figyeli a szolgáltatás állapotát.
 
 * **[Felhőalkalmazás-rendszergazda](#cloud-application-administrator)**: a szerepkör felhasználói ugyanazokkal az engedélyekkel rendelkeznek az alkalmazás-rendszergazda szerepkörnek képes kezelni az application proxy kivételével. A szerepkörök létrehozása és kezelése vállalati alkalmazásokkal és az alkalmazást az alkalmazásregisztrációk minden aspektusát. Ez a szerepkör lehetővé teszi, hogy engedélyt adjanak az delegált engedélyeket, és az Alkalmazásengedélyek, kivéve a Microsoft Graph és az Azure AD Graph is nyújt. Ezen szerepkör tagjai nem adódnak tulajdonosként, amikor új alkalmazásregisztráció vagy a vállalati alkalmazások létrehozása.
+
+* **[Felhőbeli Eszközrendszergazda](#cloud-device-administrator)**: az ehhez a szerepkörhöz felhasználók engedélyezhetik, tiltsa le, és eszközök törlése az Azure ad-ben és (ha van ilyen) olvassa el a Windows 10-es BitLocker-kulcsok az Azure Portalon. A szerepkör nem biztosítanak engedélyeket más tulajdonságokat, az eszköz kezelésére.
 
 * **[Szabályozási ügyintéző](#compliance-administrator)**: Ezzel a szerepkörrel rendelkező felhasználók az Office 365 Security & Compliance Centerben és Exchange felügyeleti központban a felügyeleti engedélyekkel rendelkeznek. További információ: [Office 365 rendszergazdai szerepköreinek](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
 
@@ -97,7 +99,7 @@ A következő rendszergazdai szerepkörök érhetők el:
 
 * **[Jelentések olvasó](#reports-reader)**: Ezzel a szerepkörrel rendelkező felhasználók megtekinthetik a használati adatok és az Office 365 felügyeleti központot, és a bevezetési környezeti jelentések irányítópult a Power bi csomag jelentéskészítés. Ezenkívül a szerepkör bejelentkezés hozzáférést biztosít jelentéseket és a tevékenység az Azure ad-ben és a Microsoft Graph által visszaadott adatok jelentéskészítési API-t. A jelentések Olvasó szerepkörhöz rendelt felhasználó hozzáférhet, csak a releváns használati és mérőszámairól. Nincs szükség semmilyen konfigurálni vagy a hozzáférés a termék meghatározott felügyeleti központok, mint az Exchange-rendszergazdai jogosultságokkal. 
 
-* **[Biztonsági rendszergazda](#security-administrator)**: Ezzel a szerepkörrel rendelkező felhasználók rendelkeznek a biztonsági olvasói szerepkör, valamint a lehetővé teszi a biztonsággal kapcsolatos szolgáltatások konfigurációjának kezelését csak olvasási engedélyei: Azure Active Directory Identity Protection, Az Azure Information Protection, Privileged Identity Management és az Office 365 Security & Compliance Centerben. Office 365-engedélyekkel kapcsolatos további információt [az engedélyek az Office 365 Security & Compliance Centerben](https://support.office.com/article/Permissions-in-the-Office-365-Security-Compliance-Center-d10608af-7934-490a-818e-e68f17d0e9c1).
+* **[Biztonsági rendszergazda](#security-administrator)**: Ezzel a szerepkörrel rendelkező felhasználók rendelkeznek a biztonsági olvasói szerepkör, valamint a lehetővé teszi a biztonsággal kapcsolatos szolgáltatások konfigurációjának kezelését csak olvasási engedélyei: Azure Active Directory Identity Protection, Az Azure Information Protection, és az Office 365 Security & Compliance Centerben. Office 365-engedélyekkel kapcsolatos további információt [az engedélyek az Office 365 Security & Compliance Centerben](https://support.office.com/article/Permissions-in-the-Office-365-Security-Compliance-Center-d10608af-7934-490a-818e-e68f17d0e9c1).
   
   | Eleme ennek | Teheti meg |
   | --- | --- |
@@ -117,7 +119,7 @@ A következő rendszergazdai szerepkörök érhetők el:
 
 * **[A SharePoint szolgáltatás-rendszergazda](#sharepoint-service-administrator)**: az ehhez a szerepkörhöz tartozó felhasználók globális engedélyekkel rendelkeznek a Microsoft SharePoint online-ban, a szolgáltatás megléte esetén, ezenkívül kezelhetik a támogatási jegyeket, és a szolgáltatások állapotának figyelése. További információ: [Office 365 rendszergazdai szerepköreinek](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
 
-* **[Skype vállalati verzió / Lync-szolgáltatások rendszergazdája](#lync-service-administrator)**: Ezzel a szerepkörrel rendelkező felhasználók a Microsoft Skype vállalati verzió, globális engedélyekkel rendelkeznek a szolgáltatás megléte esetén, valamint kezelheti a Skype-specifikus felhasználói attribútumok az Azure Active A könyvtár. Ez a szerepkör ezenkívül listázását teszi kezelhetik a támogatási jegyeket, és a szolgáltatások állapotának figyelése. További információ: [kapcsolatos a Skype for Business rendszergazdai szerepkör](https://support.office.com/en-us/article/about-the-skype-for-business-admin-role-aeb35bda-93fc-49b1-ac2c-c74fbeb737b5).
+* **[Skype vállalati verzió / Lync-szolgáltatások rendszergazdája](#lync-service-administrator)**: Ezzel a szerepkörrel rendelkező felhasználók a Microsoft Skype vállalati verzió, globális engedélyekkel rendelkeznek a szolgáltatás megléte esetén, valamint kezelheti a Skype-specifikus felhasználói attribútumok az Azure Active A könyvtár. Ezenkívül a szerepkörök a kezelhetik a támogatási jegyeket, és a szolgáltatások állapotának figyelése, valamint a Teams és a Skype for Business felügyeleti központ eléréséhez. A fiók is licenccel kell rendelkezniük a csapatok vagy csoportokkal PowerShell-parancsmagok nem lesz futtatható. További információ: [kapcsolatos a Skype for Business rendszergazdai szerepkör](https://support.office.com/en-us/article/about-the-skype-for-business-admin-role-aeb35bda-93fc-49b1-ac2c-c74fbeb737b5) és a licencelési adatokat csapat [Skype for Business és a Microsoft Teams kiegészítő licencelési](https://docs.microsoft.com/en-us/skypeforbusiness/skype-for-business-and-microsoft-teams-add-on-licensing/skype-for-business-and-microsoft-teams-add-on-licensing)
 
   > [!NOTE]
   > A Microsoft Graph API, Azure AD Graph API és az Azure AD PowerShell a szerepkör azonosítja "Lync-Szolgáltatásadminisztrátor". Az "Skype for Business szolgáltatás-rendszergazda" a [az Azure portal](https://portal.azure.com/).
@@ -145,6 +147,7 @@ A következő szerepkörök nem használható. Ezek már elavult, és a jövőbe
 ## <a name="detailed-azure-active-directory-permissions"></a>Az Azure Active Directory-engedélyek részletes
 Az alábbi táblázatok ismertetik az Azure Active Directory minden egyes szerepkörhöz megadott engedélyeket. Néhány szerepkört, például a globális rendszergazda, előfordulhat, hogy további engedélyekkel rendelkeznek a Microsoft services outide az Azure Active Directory.
 
+
 ### <a name="adhoc-license-administrator"></a>Speciális licencek adminisztrátora
 Az alkalmazásregisztrációkkal és a vállalati alkalmazásokkal kapcsolatos összes létrehozási és felügyeleti jogosultsággal rendelkezik.
 
@@ -155,26 +158,26 @@ Az alkalmazásregisztrációkkal és a vállalati alkalmazásokkal kapcsolatos �
 
 | **Műveletek** | **Leírás** |
 | --- | --- |
-| Microsoft.aad.Directory/Domains/default/Read | Az Azure Active Directory-tartományokban alapvető tulajdonságainak olvasása. |
+| Microsoft.aad.Directory/Domains/Basic/Read | Az Azure Active Directory-tartományokban alapvető tulajdonságainak olvasása. |
 | microsoft.aad.directory/groups/appRoleAssignments/read | Groups.appRoleAssignments tulajdonság olvasása az Azure Active Directoryban. |
-| Microsoft.aad.Directory/groups/default/Read | A csoportok az Azure Active Directory alapvető tulajdonságainak olvasása. |
+| Microsoft.aad.Directory/groups/Basic/Read | A csoportok az Azure Active Directory alapvető tulajdonságainak olvasása. |
 | microsoft.aad.directory/groups/memberOf/read | Groups.memberOf tulajdonság olvasása az Azure Active Directoryban. |
 | Microsoft.aad.Directory/groups/Members/Read | Groups.members tulajdonság olvasása az Azure Active Directoryban. |
 | Microsoft.aad.Directory/groups/Owners/Read | Olvassa el a groups.owners tulajdonság frissítése az Azure Active Directoryban. |
 | Microsoft.aad.Directory/groups/Settings/Read | Groups.settings tulajdonság olvasása az Azure Active Directoryban. |
-| microsoft.aad.directory/oAuth2PermissionGrants/default/read | Az Azure Active Directoryban az oauth2-engedélyezések alapvető tulajdonságainak olvasása. |
+| microsoft.aad.directory/oAuth2PermissionGrants/basic/read | Az Azure Active Directoryban az oauth2-engedélyezések alapvető tulajdonságainak olvasása. |
 | microsoft.aad.directory/oAuth2PermissionGrants/update | Frissítse az oauth2-engedélyezések az Azure Active Directoryban. |
-| Microsoft.aad.Directory/Organization/default/Read | A szervezet az Azure Active Directory alapvető tulajdonságainak olvasása. |
+| Microsoft.aad.Directory/Organization/Basic/Read | A szervezet az Azure Active Directory alapvető tulajdonságainak olvasása. |
 | microsoft.aad.directory/organization/trustedCAsForPasswordlessAuth/read | Organization.trustedCAsForPasswordlessAuth tulajdonság olvasása az Azure Active Directoryban. |
 | microsoft.aad.directory/users/assignLicense | Az Azure Active Directory felhasználók licenceinek kezelése. |
 | microsoft.aad.directory/users/appRoleAssignments/read | A users.appRoleAssignments tulajdonság olvasása az Azure Active Directoryban. |
-| Microsoft.aad.Directory/Users/Default/Read | A felhasználók az Azure Active Directory alapvető tulajdonságainak olvasása. |
+| Microsoft.aad.Directory/Users/Basic/Read | A felhasználók az Azure Active Directory alapvető tulajdonságainak olvasása. |
 | microsoft.aad.directory/users/directReports/read | Users.directReports tulajdonság olvasása az Azure Active Directoryban. |
 | microsoft.aad.directory/users/invitedBy/read | A users.invitedBy tulajdonság olvasása az Azure Active Directoryban. |
 | microsoft.aad.directory/users/invitedUsers/read | Users.invitedUsers tulajdonság olvasása az Azure Active Directoryban. |
 | Microsoft.aad.Directory/Users/Manager/Read | A users.manager tulajdonság olvasása az Azure Active Directoryban. |
 | microsoft.aad.directory/users/memberOf/read | A users.memberOf tulajdonság olvasása az Azure Active Directoryban. |
-| microsoft.aad.directory/users/oAuth2PermissionGrants/default/read | Users.oAuth2PermissionGrants tulajdonság olvasása az Azure Active Directoryban. |
+| microsoft.aad.directory/users/oAuth2PermissionGrants/basic/read | Users.oAuth2PermissionGrants tulajdonság olvasása az Azure Active Directoryban. |
 | microsoft.aad.directory/users/ownedDevices/read | A users.ownedDevices tulajdonság olvasása az Azure Active Directoryban. |
 | microsoft.aad.directory/users/ownedObjects/read | A users.ownedObjects tulajdonság olvasása az Azure Active Directoryban. |
 | microsoft.aad.directory/users/registeredDevices/read | A users.registeredDevices tulajdonság olvasása az Azure Active Directoryban. |
@@ -189,24 +192,28 @@ Az alkalmazásregisztrációkkal és a vállalati alkalmazásokkal kapcsolatos �
 
 | **Műveletek** | **Leírás** |
 | --- | --- |
+| Microsoft.aad.Directory/Applications/Audience/Update | Frissítés az Azure Active Directoryban applications.audience tulajdonság. |
+| Microsoft.aad.Directory/Applications/Authentication/Update | Frissítés az Azure Active Directoryban applications.authentication tulajdonság. |
+| Microsoft.aad.Directory/Applications/Basic/Update | Alkalmazások az Azure Active Directory alapvető tulajdonságainak frissítése. |
 | Microsoft.aad.Directory/Applications/Create | Alkalmazások létrehozása az Azure Active Directoryban. |
-| Microsoft.aad.Directory/Applications/default/Update | Alkalmazások az Azure Active Directory alapvető tulajdonságainak frissítése. |
+| Microsoft.aad.Directory/Applications/credentials/Update | Frissítés az Azure Active Directoryban applications.credentials tulajdonság. |
 | Microsoft.aad.Directory/Applications/DELETE | Törölje az alkalmazást az Azure Active Directoryban. |
 | Microsoft.aad.Directory/Applications/Owners/Update | Az applications.owners tulajdonság az Azure Active Directory frissítéséhez. |
+| Microsoft.aad.Directory/Applications/permissions/Update | Frissítés az Azure Active Directoryban applications.permissions tulajdonság. |
 | Microsoft.aad.Directory/Applications/Policies/Update | Frissítés az Azure Active Directoryban applications.policies tulajdonság. |
 | microsoft.aad.directory/appRoleAssignments/create | Alkalmazások szerepkör-hozzárendeléseinek létrehozása az Azure Active Directoryban. |
 | microsoft.aad.directory/appRoleAssignments/read | Olvassa el az alkalmazások szerepkör-hozzárendelései az Azure Active Directoryban. |
 | microsoft.aad.directory/appRoleAssignments/update | Az Azure Active Directoryban hozzárendeléseinek frissítése. |
 | microsoft.aad.directory/appRoleAssignments/delete | Alkalmazások szerepkör-hozzárendelései az Azure Active Directoryban törölje. |
+| microsoft.aad.directory/policies/applicationConfiguration/basic/read | Policies.applicationConfiguration tulajdonság olvasása az Azure Active Directoryban. |
+| microsoft.aad.directory/policies/applicationConfiguration/basic/update | Frissítés az Azure Active Directoryban policies.applicationConfiguration tulajdonság. |
 | microsoft.aad.directory/policies/applicationConfiguration/create | Szabályzatok létrehozása az Azure Active Directoryban. |
-| microsoft.aad.directory/policies/applicationConfiguration/default/read | Policies.applicationConfiguration tulajdonság olvasása az Azure Active Directoryban. |
-| microsoft.aad.directory/policies/applicationConfiguration/default/update | Frissítés az Azure Active Directoryban policies.applicationConfiguration tulajdonság. |
 | microsoft.aad.directory/policies/applicationConfiguration/delete | Törölje a szabályzatok az Azure Active Directoryban. |
 | microsoft.aad.directory/policies/applicationConfiguration/owners/read | Policies.applicationConfiguration tulajdonság olvasása az Azure Active Directoryban. |
 | microsoft.aad.directory/policies/applicationConfiguration/owners/update | Frissítés az Azure Active Directoryban policies.applicationConfiguration tulajdonság. |
 | microsoft.aad.directory/policies/applicationConfiguration/policyAppliedTo/read | Policies.applicationConfiguration tulajdonság olvasása az Azure Active Directoryban. |
+| microsoft.aad.directory/servicePrincipals/basic/update | Az Azure Active Directoryban szolgáltatásnevek alapvető tulajdonságainak frissítése. |
 | microsoft.aad.directory/servicePrincipals/create | Szolgáltatásnevek létrehozása az Azure Active Directoryban. |
-| microsoft.aad.directory/servicePrincipals/default/update | Az Azure Active Directoryban szolgáltatásnevek alapvető tulajdonságainak frissítése. |
 | microsoft.aad.directory/servicePrincipals/delete | Szolgáltatásnevek törlése az Azure Active Directoryban. |
 | microsoft.aad.directory/servicePrincipals/appRoleAssignedTo/update | Frissítse a servicePrincipals.appRoleAssignedTo tulajdonság az Azure Active Directoryban. |
 | microsoft.aad.directory/servicePrincipals/appRoleAssignments/update | Frissítse a servicePrincipals.appRoleAssignments tulajdonság az Azure Active Directoryban. |
@@ -249,7 +256,7 @@ Számlázással kapcsolatos általános feladatokat hajthat végre, például fr
 
 | **Műveletek** | **Leírás** |
 | --- | --- |
-| Microsoft.aad.Directory/Organization/default/Update | Az Azure Active Directory szervezeti alapvető tulajdonságainak frissítése. |
+| Microsoft.aad.Directory/Organization/Basic/Update | Az Azure Active Directory szervezeti alapvető tulajdonságainak frissítése. |
 | microsoft.aad.directory/organization/trustedCAsForPasswordlessAuth/update | Frissítés az Azure Active Directoryban organization.trustedCAsForPasswordlessAuth tulajdonság. |
 | microsoft.azure.accessService/allEntities/allTasks | Az Azure szolgáltatás minden szempontjának kezeléséhez. |
 | microsoft.azure.serviceHealth/allEntities/allTasks | Olvassa el, és konfigurálja az Azure Service Health. |
@@ -268,25 +275,29 @@ Az Application Proxy kivételével az alkalmazásregisztrációkkal és a válla
 
 | **Műveletek** | **Leírás** |
 | --- | --- |
+| Microsoft.aad.Directory/Applications/Audience/Update | Frissítés az Azure Active Directoryban applications.audience tulajdonság. |
+| Microsoft.aad.Directory/Applications/Authentication/Update | Frissítés az Azure Active Directoryban applications.authentication tulajdonság. |
+| Microsoft.aad.Directory/Applications/Basic/Update | Alkalmazások az Azure Active Directory alapvető tulajdonságainak frissítése. |
 | Microsoft.aad.Directory/Applications/Create | Alkalmazások létrehozása az Azure Active Directoryban. |
-| Microsoft.aad.Directory/Applications/default/Update | Alkalmazások az Azure Active Directory alapvető tulajdonságainak frissítése. |
+| Microsoft.aad.Directory/Applications/credentials/Update | Frissítés az Azure Active Directoryban applications.credentials tulajdonság. |
 | Microsoft.aad.Directory/Applications/DELETE | Törölje az alkalmazást az Azure Active Directoryban. |
 | Microsoft.aad.Directory/Applications/Owners/Update | Az applications.owners tulajdonság az Azure Active Directory frissítéséhez. |
+| Microsoft.aad.Directory/Applications/permissions/Update | Frissítés az Azure Active Directoryban applications.permissions tulajdonság. |
 | Microsoft.aad.Directory/Applications/Policies/Update | Frissítés az Azure Active Directoryban applications.policies tulajdonság. |
 | microsoft.aad.directory/appRoleAssignments/create | Alkalmazások szerepkör-hozzárendeléseinek létrehozása az Azure Active Directoryban. |
 | microsoft.aad.directory/appRoleAssignments/update | Az Azure Active Directoryban hozzárendeléseinek frissítése. |
 | microsoft.aad.directory/appRoleAssignments/delete | Alkalmazások szerepkör-hozzárendelései az Azure Active Directoryban törölje. |
 | microsoft.aad.directory/policies/applicationConfiguration/create | Szabályzatok létrehozása az Azure Active Directoryban. |
-| microsoft.aad.directory/policies/applicationConfiguration/default/read | Policies.applicationConfiguration tulajdonság olvasása az Azure Active Directoryban. |
-| microsoft.aad.directory/policies/applicationConfiguration/default/update | Frissítés az Azure Active Directoryban policies.applicationConfiguration tulajdonság. |
+| microsoft.aad.directory/policies/applicationConfiguration/basic/read | Policies.applicationConfiguration tulajdonság olvasása az Azure Active Directoryban. |
+| microsoft.aad.directory/policies/applicationConfiguration/basic/update | Frissítés az Azure Active Directoryban policies.applicationConfiguration tulajdonság. |
 | microsoft.aad.directory/policies/applicationConfiguration/delete | Törölje a szabályzatok az Azure Active Directoryban. |
 | microsoft.aad.directory/policies/applicationConfiguration/owners/read | Policies.applicationConfiguration tulajdonság olvasása az Azure Active Directoryban. |
 | microsoft.aad.directory/policies/applicationConfiguration/owners/update | Frissítés az Azure Active Directoryban policies.applicationConfiguration tulajdonság. |
 | microsoft.aad.directory/policies/applicationConfiguration/policyAppliedTo/read | Policies.applicationConfiguration tulajdonság olvasása az Azure Active Directoryban. |
 | microsoft.aad.directory/servicePrincipals/appRoleAssignedTo/update | Frissítse a servicePrincipals.appRoleAssignedTo tulajdonság az Azure Active Directoryban. |
 | microsoft.aad.directory/servicePrincipals/appRoleAssignments/update | Frissítse a servicePrincipals.appRoleAssignments tulajdonság az Azure Active Directoryban. |
+| microsoft.aad.directory/servicePrincipals/basic/update | Az Azure Active Directoryban szolgáltatásnevek alapvető tulajdonságainak frissítése. |
 | microsoft.aad.directory/servicePrincipals/create | Szolgáltatásnevek létrehozása az Azure Active Directoryban. |
-| microsoft.aad.directory/servicePrincipals/default/update | Az Azure Active Directoryban szolgáltatásnevek alapvető tulajdonságainak frissítése. |
 | microsoft.aad.directory/servicePrincipals/delete | Szolgáltatásnevek törlése az Azure Active Directoryban. |
 | microsoft.aad.directory/servicePrincipals/owners/update | Frissítse a servicePrincipals.owners tulajdonság az Azure Active Directoryban. |
 | microsoft.aad.directory/servicePrincipals/policies/update | Frissítés az Azure Active Directoryban servicePrincipals.policies tulajdonság. |
@@ -296,6 +307,22 @@ Az Application Proxy kivételével az alkalmazásregisztrációkkal és a válla
 | microsoft.azure.supportTickets/allEntities/allTasks | Létrehozhat és kezelhet az Azure támogatási jegyeket. |
 | Microsoft.office365.serviceHealth/allEntities/allTasks | Office 365-szolgáltatás-állapot olvasása és konfigurálása. |
 | Microsoft.office365.supportTickets/allEntities/allTasks | Office 365-támogatási jegyek létrehozása és kezelése. |
+
+### <a name="cloud-device-administrator"></a>Felhőbeli Eszközrendszergazda
+Teljes körű jogosultság az eszközök Azure AD-beli kezelésére.
+
+  > [!NOTE]
+  > Ez a szerepkör további engedélyek örökli a címtár olvasói szerepköréhez.
+  >
+  >
+
+| **Műveletek** | **Leírás** |
+| --- | --- |
+| Microsoft.aad.Directory/Devices/DELETE | Eszközök törlése az Azure Active Directoryban. |
+| Microsoft.aad.Directory/Devices/Update | A accountEnabled tulajdonság frissítése az eszközökön az Azure Active Directoryban |
+| microsoft.aad.reports/allEntities/read | Azure AD-jelentések olvasása. |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Olvassa el, és konfigurálja az Azure Service Health. |
+| Microsoft.office365.serviceHealth/allEntities/allTasks | Office 365-szolgáltatás-állapot olvasása és konfigurálása. |
 
 ### <a name="company-administrator"></a>Céges rendszergazda
 Az Azure AD-identitásokat használó Azure AD- és Microsoft-szolgáltatásokkal kapcsolatos összes felügyeleti jogosultsággal rendelkezik.
@@ -347,9 +374,9 @@ Az Azure AD-identitásokat használó Azure AD- és Microsoft-szolgáltatásokka
 | microsoft.azure.serviceHealth/allEntities/allTasks | Olvassa el, és konfigurálja az Azure Service Health. |
 | microsoft.azure.supportTickets/allEntities/allTasks | Létrehozhat és kezelhet az Azure támogatási jegyeket. |
 | microsoft.commerce.billing/allEntities/allTasks | Jogosultság az Office 365 számlázásának teljes körű felügyeletére. |
+| microsoft.intune/allEntities/allTasks | Az Intune teljes körű felügyelete. |
 | Microsoft.office365.complianceManager/allEntities/allTasks | Office 365-megfelelőségi vezető minden szempontjának kezeléséhez |
 | Microsoft.office365.Exchange/allEntities/allTasks | Az Exchange Online teljes körű felügyelete. |
-| microsoft.intune/allEntities/allTasks | Az Intune teljes körű felügyelete. |
 | Microsoft.office365.lockbox/allEntities/allTasks | Office 365-ügyfél kulcstároló minden szempontjának kezeléséhez |
 | microsoft.powerApps.powerBI/allEntities/allTasks | A Power BI teljes körű felügyelete. |
 | Microsoft.office365.protectionCenter/allEntities/allTasks | Az Office 365 védelmi központ minden szempontjának kezeléséhez. |
@@ -394,9 +421,9 @@ A feltételes hozzáférési lehetőségekkel kapcsolatos összes felügyeleti j
 
 | **Műveletek** | **Leírás** |
 | --- | --- |
+| microsoft.aad.directory/policies/conditionalAccess/basic/read | Policies.conditionalAccess tulajdonság olvasása az Azure Active Directoryban. |
+| microsoft.aad.directory/policies/conditionalAccess/basic/update | Frissítés az Azure Active Directoryban policies.conditionalAccess tulajdonság. |
 | microsoft.aad.directory/policies/conditionalAccess/create | Szabályzatok létrehozása az Azure Active Directoryban. |
-| microsoft.aad.directory/policies/conditionalAccess/default/read | Policies.conditionalAccess tulajdonság olvasása az Azure Active Directoryban. |
-| microsoft.aad.directory/policies/conditionalAccess/default/update | Frissítés az Azure Active Directoryban policies.conditionalAccess tulajdonság. |
 | microsoft.aad.directory/policies/conditionalAccess/delete | Törölje a szabályzatok az Azure Active Directoryban. |
 | microsoft.aad.directory/policies/conditionalAccess/owners/read | Policies.conditionalAccess tulajdonság olvasása az Azure Active Directoryban. |
 | microsoft.aad.directory/policies/conditionalAccess/owners/update | Frissítés az Azure Active Directoryban policies.conditionalAccess tulajdonság. |
@@ -452,8 +479,8 @@ Ezen szerepkör tagjai a helyi Rendszergazdák csoport, az Azure AD-hez csatlako
 
 | **Műveletek** | **Leírás** |
 | --- | --- |
-| microsoft.aad.directory/groupSettings/default/read | Az Azure Active Directoryban groupSettings a alapvető tulajdonságainak olvasása. |
-| microsoft.aad.directory/groupSettingTemplates/default/read | Az Azure Active Directoryban groupSettingTemplates a alapvető tulajdonságainak olvasása. |
+| microsoft.aad.directory/groupSettings/basic/read | Az Azure Active Directoryban groupSettings a alapvető tulajdonságainak olvasása. |
+| microsoft.aad.directory/groupSettingTemplates/basic/read | Az Azure Active Directoryban groupSettingTemplates a alapvető tulajdonságainak olvasása. |
 
 ### <a name="device-managers"></a>Eszközkezelők
 Jóváhagyhatja a szervezeti ügyféladatok elérésére vonatkozó Microsoft-támogatási kérelmeket.
@@ -470,8 +497,8 @@ Jóváhagyhatja a szervezeti ügyféladatok elérésére vonatkozó Microsoft-t�
 
 | **Műveletek** | **Leírás** |
 | --- | --- |
-| Microsoft.aad.Directory/Devices/default/Read | Az eszközökön az Azure Active Directory alapvető tulajdonságainak olvasása. |
-| Microsoft.aad.Directory/Devices/default/Update | Az Azure Active Directoryban eszközök alapvető tulajdonságainak frissítése. |
+| Microsoft.aad.Directory/Devices/Basic/Read | Az eszközökön az Azure Active Directory alapvető tulajdonságainak olvasása. |
+| Microsoft.aad.Directory/Devices/Basic/Update | Az Azure Active Directoryban eszközök alapvető tulajdonságainak frissítése. |
 | microsoft.aad.directory/devices/memberOf/read | A devices.memberOf tulajdonság olvasása az Azure Active Directoryban. |
 | microsoft.aad.directory/devices/registeredOwners/read | Devices.registeredOwners tulajdonság olvasása az Azure Active Directoryban. |
 | microsoft.aad.directory/devices/registeredOwners/update | Frissítés az Azure Active Directoryban devices.registeredOwners tulajdonság. |
@@ -488,49 +515,54 @@ Alapszintű directory információkat olvashatja. Az alkalmazásokhoz való hozz
 
 | **Műveletek** | **Leírás** |
 | --- | --- |
-| microsoft.aad.directory/administrativeUnits/default/read | Az Azure Active Directoryban administrativeUnits a alapvető tulajdonságainak olvasása. |
+| microsoft.aad.directory/administrativeUnits/basic/read | Az Azure Active Directoryban administrativeUnits a alapvető tulajdonságainak olvasása. |
 | microsoft.aad.directory/administrativeUnits/members/read | Az administrativeUnits.members tulajdonság olvasása az Azure Active Directoryban. |
-| Microsoft.aad.Directory/Applications/default/Read | Az alkalmazások az Azure Active Directory alapvető tulajdonságainak olvasása. |
+| Microsoft.aad.Directory/Applications/Audience/Read | Applications.audience tulajdonság olvasása az Azure Active Directoryban. |
+| Microsoft.aad.Directory/Applications/Authentication/Read | Applications.authentication tulajdonság olvasása az Azure Active Directoryban. |
+| Microsoft.aad.Directory/Applications/Basic/Read | Az alkalmazások az Azure Active Directory alapvető tulajdonságainak olvasása. |
+| Microsoft.aad.Directory/Applications/credentials/Read | Applications.credentials tulajdonság olvasása az Azure Active Directoryban. |
 | Microsoft.aad.Directory/Applications/Owners/Read | Az applications.owners tulajdonság olvasása az Azure Active Directoryban. |
-| Microsoft.aad.Directory/Contacts/default/Read | A partnerek az Azure Active Directory alapvető tulajdonságainak olvasása. |
+| Microsoft.aad.Directory/Applications/permissions/Read | Applications.permissions tulajdonság olvasása az Azure Active Directoryban. |
+| Microsoft.aad.Directory/Applications/Policies/Read | Applications.policies tulajdonság olvasása az Azure Active Directoryban. |
+| Microsoft.aad.Directory/Contacts/Basic/Read | A partnerek az Azure Active Directory alapvető tulajdonságainak olvasása. |
 | microsoft.aad.directory/contacts/memberOf/read | Contacts.memberOf tulajdonság olvasása az Azure Active Directoryban. |
-| Microsoft.aad.Directory/Contracts/default/Read | A szerződés az Azure Active Directory alapvető tulajdonságainak olvasása. |
-| Microsoft.aad.Directory/Devices/default/Read | Az eszközökön az Azure Active Directory alapvető tulajdonságainak olvasása. |
+| Microsoft.aad.Directory/Contracts/Basic/Read | A szerződés az Azure Active Directory alapvető tulajdonságainak olvasása. |
+| Microsoft.aad.Directory/Devices/Basic/Read | Az eszközökön az Azure Active Directory alapvető tulajdonságainak olvasása. |
 | microsoft.aad.directory/devices/memberOf/read | A devices.memberOf tulajdonság olvasása az Azure Active Directoryban. |
 | microsoft.aad.directory/devices/registeredOwners/read | Devices.registeredOwners tulajdonság olvasása az Azure Active Directoryban. |
 | microsoft.aad.directory/devices/registeredUsers/read | Devices.registeredUsers tulajdonság olvasása az Azure Active Directoryban. |
-| microsoft.aad.directory/directoryRoles/default/read | Az Azure Active Directoryban directoryRoles a alapvető tulajdonságainak olvasása. |
+| microsoft.aad.directory/directoryRoles/basic/read | Az Azure Active Directoryban directoryRoles a alapvető tulajdonságainak olvasása. |
 | microsoft.aad.directory/directoryRoles/eligibleMembers/read | DirectoryRoles.eligibleMembers tulajdonság olvasása az Azure Active Directoryban. |
 | microsoft.aad.directory/directoryRoles/members/read | DirectoryRoles.members tulajdonság olvasása az Azure Active Directoryban. |
-| Microsoft.aad.Directory/Domains/default/Read | Az Azure Active Directory-tartományokban alapvető tulajdonságainak olvasása. |
+| Microsoft.aad.Directory/Domains/Basic/Read | Az Azure Active Directory-tartományokban alapvető tulajdonságainak olvasása. |
 | microsoft.aad.directory/groups/appRoleAssignments/read | Groups.appRoleAssignments tulajdonság olvasása az Azure Active Directoryban. |
-| Microsoft.aad.Directory/groups/default/Read | A csoportok az Azure Active Directory alapvető tulajdonságainak olvasása. |
+| Microsoft.aad.Directory/groups/Basic/Read | A csoportok az Azure Active Directory alapvető tulajdonságainak olvasása. |
 | microsoft.aad.directory/groups/memberOf/read | Groups.memberOf tulajdonság olvasása az Azure Active Directoryban. |
 | Microsoft.aad.Directory/groups/Members/Read | Groups.members tulajdonság olvasása az Azure Active Directoryban. |
 | Microsoft.aad.Directory/groups/Owners/Read | Olvassa el a groups.owners tulajdonság frissítése az Azure Active Directoryban. |
 | Microsoft.aad.Directory/groups/Settings/Read | Groups.settings tulajdonság olvasása az Azure Active Directoryban. |
-| microsoft.aad.directory/groupSettings/default/read | Az Azure Active Directoryban groupSettings a alapvető tulajdonságainak olvasása. |
-| microsoft.aad.directory/groupSettingTemplates/default/read | Az Azure Active Directoryban groupSettingTemplates a alapvető tulajdonságainak olvasása. |
-| microsoft.aad.directory/oAuth2PermissionGrants/default/read | Az Azure Active Directoryban az oauth2-engedélyezések alapvető tulajdonságainak olvasása. |
-| Microsoft.aad.Directory/Organization/default/Read | A szervezet az Azure Active Directory alapvető tulajdonságainak olvasása. |
+| microsoft.aad.directory/groupSettings/basic/read | Az Azure Active Directoryban groupSettings a alapvető tulajdonságainak olvasása. |
+| microsoft.aad.directory/groupSettingTemplates/basic/read | Az Azure Active Directoryban groupSettingTemplates a alapvető tulajdonságainak olvasása. |
+| microsoft.aad.directory/oAuth2PermissionGrants/basic/read | Az Azure Active Directoryban az oauth2-engedélyezések alapvető tulajdonságainak olvasása. |
+| Microsoft.aad.Directory/Organization/Basic/Read | A szervezet az Azure Active Directory alapvető tulajdonságainak olvasása. |
 | microsoft.aad.directory/organization/trustedCAsForPasswordlessAuth/read | Organization.trustedCAsForPasswordlessAuth tulajdonság olvasása az Azure Active Directoryban. |
 | microsoft.aad.directory/servicePrincipals/appRoleAssignedTo/read | A servicePrincipals.appRoleAssignedTo tulajdonság olvasása az Azure Active Directoryban. |
 | microsoft.aad.directory/servicePrincipals/appRoleAssignments/read | A servicePrincipals.appRoleAssignments tulajdonság olvasása az Azure Active Directoryban. |
-| microsoft.aad.directory/servicePrincipals/default/read | A szolgáltatásnevek Azure Active Directory alapvető tulajdonságainak olvasása. |
+| microsoft.aad.directory/servicePrincipals/basic/read | A szolgáltatásnevek Azure Active Directory alapvető tulajdonságainak olvasása. |
 | microsoft.aad.directory/servicePrincipals/memberOf/read | A servicePrincipals.memberOf tulajdonság olvasása az Azure Active Directoryban. |
-| microsoft.aad.directory/servicePrincipals/oAuth2PermissionGrants/default/read | A servicePrincipals.oAuth2PermissionGrants tulajdonság olvasása az Azure Active Directoryban. |
+| microsoft.aad.directory/servicePrincipals/oAuth2PermissionGrants/basic/read | A servicePrincipals.oAuth2PermissionGrants tulajdonság olvasása az Azure Active Directoryban. |
 | microsoft.aad.directory/servicePrincipals/ownedObjects/read | ServicePrincipals.ownedObjects tulajdonság olvasása az Azure Active Directoryban. |
 | microsoft.aad.directory/servicePrincipals/owners/read | A servicePrincipals.owners tulajdonság olvasása az Azure Active Directoryban. |
 | microsoft.aad.directory/servicePrincipals/policies/read | ServicePrincipals.policies tulajdonság olvasása az Azure Active Directoryban. |
-| microsoft.aad.directory/subscribedSkus/default/read | Az Azure Active Directoryban subscribedSkus a alapvető tulajdonságainak olvasása. |
+| microsoft.aad.directory/subscribedSkus/basic/read | Az Azure Active Directoryban subscribedSkus a alapvető tulajdonságainak olvasása. |
 | microsoft.aad.directory/users/appRoleAssignments/read | A users.appRoleAssignments tulajdonság olvasása az Azure Active Directoryban. |
-| Microsoft.aad.Directory/Users/Default/Read | A felhasználók az Azure Active Directory alapvető tulajdonságainak olvasása. |
+| Microsoft.aad.Directory/Users/Basic/Read | A felhasználók az Azure Active Directory alapvető tulajdonságainak olvasása. |
 | microsoft.aad.directory/users/directReports/read | Users.directReports tulajdonság olvasása az Azure Active Directoryban. |
 | microsoft.aad.directory/users/invitedBy/read | A users.invitedBy tulajdonság olvasása az Azure Active Directoryban. |
 | microsoft.aad.directory/users/invitedUsers/read | Users.invitedUsers tulajdonság olvasása az Azure Active Directoryban. |
 | Microsoft.aad.Directory/Users/Manager/Read | A users.manager tulajdonság olvasása az Azure Active Directoryban. |
 | microsoft.aad.directory/users/memberOf/read | A users.memberOf tulajdonság olvasása az Azure Active Directoryban. |
-| microsoft.aad.directory/users/oAuth2PermissionGrants/default/read | Users.oAuth2PermissionGrants tulajdonság olvasása az Azure Active Directoryban. |
+| microsoft.aad.directory/users/oAuth2PermissionGrants/basic/read | Users.oAuth2PermissionGrants tulajdonság olvasása az Azure Active Directoryban. |
 | microsoft.aad.directory/users/ownedDevices/read | A users.ownedDevices tulajdonság olvasása az Azure Active Directoryban. |
 | microsoft.aad.directory/users/ownedObjects/read | A users.ownedObjects tulajdonság olvasása az Azure Active Directoryban. |
 | microsoft.aad.directory/users/registeredDevices/read | A users.registeredDevices tulajdonság olvasása az Azure Active Directoryban. |
@@ -548,8 +580,8 @@ Csak Azure AD Connect szolgáltatást használják.
 | microsoft.aad.directory/organization/dirSync/update | Frissítés az Azure Active Directoryban organization.dirSync tulajdonság. |
 | Microsoft.aad.Directory/Policies/Create | Szabályzatok létrehozása az Azure Active Directoryban. |
 | Microsoft.aad.Directory/Policies/DELETE | Törölje a szabályzatok az Azure Active Directoryban. |
-| Microsoft.aad.Directory/Policies/default/Read | A szabályzatok az Azure Active Directory alapvető tulajdonságainak olvasása. |
-| Microsoft.aad.Directory/Policies/default/Update | Házirendek az Azure Active Directory alapvető tulajdonságainak frissítése. |
+| Microsoft.aad.Directory/Policies/Basic/Read | A szabályzatok az Azure Active Directory alapvető tulajdonságainak olvasása. |
+| Microsoft.aad.Directory/Policies/Basic/Update | Házirendek az Azure Active Directory alapvető tulajdonságainak frissítése. |
 | Microsoft.aad.Directory/Policies/Owners/Read | Policies.owners tulajdonság olvasása az Azure Active Directoryban. |
 | Microsoft.aad.Directory/Policies/Owners/Update | Frissítés az Azure Active Directoryban policies.owners tulajdonság. |
 | microsoft.aad.directory/policies/policiesAppliedTo/read | Policies.policiesAppliedTo tulajdonság olvasása az Azure Active Directoryban. |
@@ -557,11 +589,11 @@ Csak Azure AD Connect szolgáltatást használják.
 | microsoft.aad.directory/servicePrincipals/appRoleAssignedTo/update | Frissítse a servicePrincipals.appRoleAssignedTo tulajdonság az Azure Active Directoryban. |
 | microsoft.aad.directory/servicePrincipals/appRoleAssignments/read | A servicePrincipals.appRoleAssignments tulajdonság olvasása az Azure Active Directoryban. |
 | microsoft.aad.directory/servicePrincipals/appRoleAssignments/update | Frissítse a servicePrincipals.appRoleAssignments tulajdonság az Azure Active Directoryban. |
+| microsoft.aad.directory/servicePrincipals/basic/read | A szolgáltatásnevek Azure Active Directory alapvető tulajdonságainak olvasása. |
+| microsoft.aad.directory/servicePrincipals/basic/update | Az Azure Active Directoryban szolgáltatásnevek alapvető tulajdonságainak frissítése. |
 | microsoft.aad.directory/servicePrincipals/create | Szolgáltatásnevek létrehozása az Azure Active Directoryban. |
-| microsoft.aad.directory/servicePrincipals/default/read | A szolgáltatásnevek Azure Active Directory alapvető tulajdonságainak olvasása. |
-| microsoft.aad.directory/servicePrincipals/default/update | Az Azure Active Directoryban szolgáltatásnevek alapvető tulajdonságainak frissítése. |
 | microsoft.aad.directory/servicePrincipals/memberOf/read | A servicePrincipals.memberOf tulajdonság olvasása az Azure Active Directoryban. |
-| microsoft.aad.directory/servicePrincipals/oAuth2PermissionGrants/default/read | A servicePrincipals.oAuth2PermissionGrants tulajdonság olvasása az Azure Active Directoryban. |
+| microsoft.aad.directory/servicePrincipals/oAuth2PermissionGrants/basic/read | A servicePrincipals.oAuth2PermissionGrants tulajdonság olvasása az Azure Active Directoryban. |
 | microsoft.aad.directory/servicePrincipals/owners/read | A servicePrincipals.owners tulajdonság olvasása az Azure Active Directoryban. |
 | microsoft.aad.directory/servicePrincipals/owners/update | Frissítse a servicePrincipals.owners tulajdonság az Azure Active Directoryban. |
 | microsoft.aad.directory/servicePrincipals/ownedObjects/read | ServicePrincipals.ownedObjects tulajdonság olvasása az Azure Active Directoryban. |
@@ -582,16 +614,16 @@ Olvasás, és alapszintű directory adatokat írnak a. Az alkalmazásokhoz való
 | Microsoft.aad.Directory/groups/Create | Csoportok létrehozása az Azure Active Directoryban. |
 | microsoft.aad.directory/groups/createAsOwner | Csoportok létrehozása az Azure Active Directoryban. Létrehozót első tulajdonosként kerül, és a létrehozott objektum beleszámít a létrehozó 250 létrehozott objektumos kvótáját. |
 | microsoft.aad.directory/groups/appRoleAssignments/update | Frissítés az Azure Active Directoryban groups.appRoleAssignments tulajdonság. |
-| Microsoft.aad.Directory/groups/default/Update | Az Azure Active Directory alapvető tulajdonságainak frissítése. |
+| Microsoft.aad.Directory/groups/Basic/Update | Az Azure Active Directory alapvető tulajdonságainak frissítése. |
 | Microsoft.aad.Directory/groups/Members/Update | Frissítés az Azure Active Directoryban groups.members tulajdonság. |
 | Microsoft.aad.Directory/groups/Owners/Update | Frissítse a groups.owners tulajdonság frissítése az Azure Active Directoryban. |
 | Microsoft.aad.Directory/groups/Settings/Update | Frissítés az Azure Active Directoryban groups.settings tulajdonság. |
+| microsoft.aad.directory/groupSettings/basic/update | Az Azure Active Directoryban groupSettings alapvető tulajdonságainak frissítése. |
 | microsoft.aad.directory/groupSettings/create | GroupSettings létrehozása az Azure Active Directoryban. |
-| microsoft.aad.directory/groupSettings/default/update | Az Azure Active Directoryban groupSettings alapvető tulajdonságainak frissítése. |
 | microsoft.aad.directory/groupSettings/delete | Az Azure Active Directoryban groupSettings törlése. |
 | microsoft.aad.directory/users/appRoleAssignments/update | Frissítse a users.appRoleAssignments tulajdonság az Azure Active Directoryban. |
 | microsoft.aad.directory/users/assignLicense | Az Azure Active Directory felhasználók licenceinek kezelése. |
-| Microsoft.aad.Directory/Users/Default/Update | Az Azure Active Directory felhasználók alapszintű tulajdonságainak frissítése. |
+| Microsoft.aad.Directory/Users/Basic/Update | Az Azure Active Directory felhasználók alapszintű tulajdonságainak frissítése. |
 | microsoft.aad.directory/users/invalidateAllRefreshTokens | Az összes felhasználófrissítési jogkivonat érvénytelenítése az Azure Active Directoryban. |
 | Microsoft.aad.Directory/Users/Manager/Update | A users.manager tulajdonság frissítése az Azure Active Directory frissítéséhez. |
 | microsoft.aad.directory/users/userPrincipalName/update | Frissítés az Azure Active Directoryban users.userPrincipalName tulajdonság. |
@@ -628,11 +660,16 @@ Alapértelmezett szerepkör a vendégfelhasználók számára. Korlátozott szá
 
 | **Műveletek** | **Leírás** |
 | --- | --- |
-| Microsoft.aad.Directory/Applications/default/Read | Az alkalmazások az Azure Active Directory alapvető tulajdonságainak olvasása. |
+| Microsoft.aad.Directory/Applications/Audience/Read | Applications.audience tulajdonság olvasása az Azure Active Directoryban. |
+| Microsoft.aad.Directory/Applications/Authentication/Read | Applications.authentication tulajdonság olvasása az Azure Active Directoryban. |
+| Microsoft.aad.Directory/Applications/Basic/Read | Az alkalmazások az Azure Active Directory alapvető tulajdonságainak olvasása. |
+| Microsoft.aad.Directory/Applications/credentials/Read | Applications.credentials tulajdonság olvasása az Azure Active Directoryban. |
 | Microsoft.aad.Directory/Applications/Owners/Read | Az applications.owners tulajdonság olvasása az Azure Active Directoryban. |
-| Microsoft.aad.Directory/Domains/default/Read | Az Azure Active Directory-tartományokban alapvető tulajdonságainak olvasása. |
+| Microsoft.aad.Directory/Applications/permissions/Read | Applications.permissions tulajdonság olvasása az Azure Active Directoryban. |
+| Microsoft.aad.Directory/Applications/Policies/Read | Applications.policies tulajdonság olvasása az Azure Active Directoryban. |
+| Microsoft.aad.Directory/Domains/Basic/Read | Az Azure Active Directory-tartományokban alapvető tulajdonságainak olvasása. |
 | microsoft.aad.directory/groups/appRoleAssignments/read | Groups.appRoleAssignments tulajdonság olvasása az Azure Active Directoryban. |
-| Microsoft.aad.Directory/groups/default/Read | A csoportok az Azure Active Directory alapvető tulajdonságainak olvasása. |
+| Microsoft.aad.Directory/groups/Basic/Read | A csoportok az Azure Active Directory alapvető tulajdonságainak olvasása. |
 | microsoft.aad.directory/groups/memberOf/read | Groups.memberOf tulajdonság olvasása az Azure Active Directoryban. |
 | Microsoft.aad.Directory/groups/Members/Read | Groups.members tulajdonság olvasása az Azure Active Directoryban. |
 | Microsoft.aad.Directory/groups/Owners/Read | Olvassa el a groups.owners tulajdonság frissítése az Azure Active Directoryban. |
@@ -640,23 +677,23 @@ Alapértelmezett szerepkör a vendégfelhasználók számára. Korlátozott szá
 | microsoft.aad.directory/organization/basicProfile/read | Szervezetek alapvető profiladatainak olvasása az Azure Active Directoryban. |
 | microsoft.aad.directory/servicePrincipals/appRoleAssignedTo/read | A servicePrincipals.appRoleAssignedTo tulajdonság olvasása az Azure Active Directoryban. |
 | microsoft.aad.directory/servicePrincipals/appRoleAssignments/read | A servicePrincipals.appRoleAssignments tulajdonság olvasása az Azure Active Directoryban. |
-| microsoft.aad.directory/servicePrincipals/default/read | A szolgáltatásnevek Azure Active Directory alapvető tulajdonságainak olvasása. |
+| microsoft.aad.directory/servicePrincipals/basic/read | A szolgáltatásnevek Azure Active Directory alapvető tulajdonságainak olvasása. |
 | microsoft.aad.directory/servicePrincipals/memberOf/read | A servicePrincipals.memberOf tulajdonság olvasása az Azure Active Directoryban. |
 | microsoft.aad.directory/servicePrincipals/members/read | ServicePrincipals.members tulajdonság olvasása az Azure Active Directoryban. |
-| microsoft.aad.directory/servicePrincipals/oAuth2PermissionGrants/default/read | A servicePrincipals.oAuth2PermissionGrants tulajdonság olvasása az Azure Active Directoryban. |
+| microsoft.aad.directory/servicePrincipals/oAuth2PermissionGrants/basic/read | A servicePrincipals.oAuth2PermissionGrants tulajdonság olvasása az Azure Active Directoryban. |
 | microsoft.aad.directory/servicePrincipals/owners/read | A servicePrincipals.owners tulajdonság olvasása az Azure Active Directoryban. |
 | microsoft.aad.directory/servicePrincipals/ownedObjects/read | ServicePrincipals.ownedObjects tulajdonság olvasása az Azure Active Directoryban. |
 | microsoft.aad.directory/servicePrincipals/policies/read | ServicePrincipals.policies tulajdonság olvasása az Azure Active Directoryban. |
 | microsoft.aad.directory/users/basicProfile/read | Users.basicProfile tulajdonság olvasása az Azure Active Directoryban. |
 | microsoft.aad.directory/users/appRoleAssignments/read | A users.appRoleAssignments tulajdonság olvasása az Azure Active Directoryban. |
-| Microsoft.aad.Directory/Users/Default/Read | A felhasználók az Azure Active Directory alapvető tulajdonságainak olvasása. |
+| Microsoft.aad.Directory/Users/Basic/Read | A felhasználók az Azure Active Directory alapvető tulajdonságainak olvasása. |
 | microsoft.aad.directory/users/directReports/read | Users.directReports tulajdonság olvasása az Azure Active Directoryban. |
 | microsoft.aad.directory/users/eligibleMemberOf/read | Users.eligibleMemberOf tulajdonság olvasása az Azure Active Directoryban. |
 | microsoft.aad.directory/users/invitedBy/read | A users.invitedBy tulajdonság olvasása az Azure Active Directoryban. |
 | microsoft.aad.directory/users/invitedUsers/read | Users.invitedUsers tulajdonság olvasása az Azure Active Directoryban. |
 | Microsoft.aad.Directory/Users/Manager/Read | A users.manager tulajdonság olvasása az Azure Active Directoryban. |
 | microsoft.aad.directory/users/memberOf/read | A users.memberOf tulajdonság olvasása az Azure Active Directoryban. |
-| microsoft.aad.directory/users/oAuth2PermissionGrants/default/read | Users.oAuth2PermissionGrants tulajdonság olvasása az Azure Active Directoryban. |
+| microsoft.aad.directory/users/oAuth2PermissionGrants/basic/read | Users.oAuth2PermissionGrants tulajdonság olvasása az Azure Active Directoryban. |
 | microsoft.aad.directory/users/ownedDevices/read | A users.ownedDevices tulajdonság olvasása az Azure Active Directoryban. |
 | microsoft.aad.directory/users/ownedObjects/read | A users.ownedObjects tulajdonság olvasása az Azure Active Directoryban. |
 | Microsoft.aad.Directory/Users/Password/Update | Frissítés az Azure Active Directory összes felhasználó jelszavát. További részleteket talál online dokumentációjában talál. |
@@ -675,14 +712,14 @@ Meghívás vendégfelhasználókat független a tagok is meghívhatja a vendége
 | **Műveletek** | **Leírás** |
 | --- | --- |
 | microsoft.aad.directory/users/appRoleAssignments/read | A users.appRoleAssignments tulajdonság olvasása az Azure Active Directoryban. |
-| Microsoft.aad.Directory/Users/Default/Read | A felhasználók az Azure Active Directory alapvető tulajdonságainak olvasása. |
+| Microsoft.aad.Directory/Users/Basic/Read | A felhasználók az Azure Active Directory alapvető tulajdonságainak olvasása. |
 | microsoft.aad.directory/users/directReports/read | Users.directReports tulajdonság olvasása az Azure Active Directoryban. |
 | microsoft.aad.directory/users/invitedBy/read | A users.invitedBy tulajdonság olvasása az Azure Active Directoryban. |
 | microsoft.aad.directory/users/inviteGuest | Vendégfelhasználók meghívása az Azure Active Directoryba. |
 | microsoft.aad.directory/users/invitedUsers/read | Users.invitedUsers tulajdonság olvasása az Azure Active Directoryban. |
 | Microsoft.aad.Directory/Users/Manager/Read | A users.manager tulajdonság olvasása az Azure Active Directoryban. |
 | microsoft.aad.directory/users/memberOf/read | A users.memberOf tulajdonság olvasása az Azure Active Directoryban. |
-| microsoft.aad.directory/users/oAuth2PermissionGrants/default/read | Users.oAuth2PermissionGrants tulajdonság olvasása az Azure Active Directoryban. |
+| microsoft.aad.directory/users/oAuth2PermissionGrants/basic/read | Users.oAuth2PermissionGrants tulajdonság olvasása az Azure Active Directoryban. |
 | microsoft.aad.directory/users/ownedDevices/read | A users.ownedDevices tulajdonság olvasása az Azure Active Directoryban. |
 | microsoft.aad.directory/users/ownedObjects/read | A users.ownedObjects tulajdonság olvasása az Azure Active Directoryban. |
 | microsoft.aad.directory/users/registeredDevices/read | A users.registeredDevices tulajdonság olvasása az Azure Active Directoryban. |
@@ -741,18 +778,18 @@ Az Intune termékkel kapcsolatos összes felügyeleti jogosultsággal rendelkezi
 
 | **Műveletek** | **Leírás** |
 | --- | --- |
+| Microsoft.aad.Directory/Contacts/Basic/Update | Partnerek az Azure Active Directory alapvető tulajdonságainak frissítése. |
 | Microsoft.aad.Directory/Contacts/Create | Az Azure Active Directoryban létre. |
-| Microsoft.aad.Directory/Contacts/default/Update | Partnerek az Azure Active Directory alapvető tulajdonságainak frissítése. |
 | Microsoft.aad.Directory/Contacts/DELETE | Az Azure Active Directoryban törléséhez. |
+| Microsoft.aad.Directory/Devices/Basic/Update | Az Azure Active Directoryban eszközök alapvető tulajdonságainak frissítése. |
 | Microsoft.aad.Directory/Devices/Create | Eszközök létrehozása az Azure Active Directoryban. |
-| Microsoft.aad.Directory/Devices/default/Update | Az Azure Active Directoryban eszközök alapvető tulajdonságainak frissítése. |
 | Microsoft.aad.Directory/Devices/DELETE | Eszközök törlése az Azure Active Directoryban. |
 | microsoft.aad.directory/devices/registeredOwners/update | Frissítés az Azure Active Directoryban devices.registeredOwners tulajdonság. |
 | microsoft.aad.directory/devices/registeredUsers/update | Frissítés az Azure Active Directoryban devices.registeredUsers tulajdonság. |
 | microsoft.aad.directory/groups/appRoleAssignments/update | Frissítés az Azure Active Directoryban groups.appRoleAssignments tulajdonság. |
+| Microsoft.aad.Directory/groups/Basic/Update | Az Azure Active Directory alapvető tulajdonságainak frissítése. |
 | Microsoft.aad.Directory/groups/Create | Csoportok létrehozása az Azure Active Directoryban. |
 | microsoft.aad.directory/groups/createAsOwner | Csoportok létrehozása az Azure Active Directoryban. Létrehozót első tulajdonosként kerül, és a létrehozott objektum beleszámít a létrehozó 250 létrehozott objektumos kvótáját. |
-| Microsoft.aad.Directory/groups/default/Update | Az Azure Active Directory alapvető tulajdonságainak frissítése. |
 | Microsoft.aad.Directory/groups/DELETE | Az Azure Active Directoryban csoportok törlése. |
 | microsoft.aad.directory/groups/hiddenMembers/read | Groups.hiddenMembers tulajdonság olvasása az Azure Active Directoryban. |
 | Microsoft.aad.Directory/groups/Members/Update | Frissítés az Azure Active Directoryban groups.members tulajdonság. |
@@ -760,7 +797,7 @@ Az Intune termékkel kapcsolatos összes felügyeleti jogosultsággal rendelkezi
 | Microsoft.aad.Directory/groups/restore | Csoportok visszaállítása az Azure Active Directoryban. |
 | Microsoft.aad.Directory/groups/Settings/Update | Frissítés az Azure Active Directoryban groups.settings tulajdonság. |
 | microsoft.aad.directory/users/appRoleAssignments/update | Frissítse a users.appRoleAssignments tulajdonság az Azure Active Directoryban. |
-| Microsoft.aad.Directory/Users/Default/Update | Az Azure Active Directory felhasználók alapszintű tulajdonságainak frissítése. |
+| Microsoft.aad.Directory/Users/Basic/Update | Az Azure Active Directory felhasználók alapszintű tulajdonságainak frissítése. |
 | Microsoft.aad.Directory/Users/Manager/Update | A users.manager tulajdonság frissítése az Azure Active Directory frissítéséhez. |
 | microsoft.azure.supportTickets/allEntities/allTasks | Létrehozhat és kezelhet az Azure támogatási jegyeket. |
 | microsoft.intune/allEntities/allTasks | Az Intune teljes körű felügyelete. |
@@ -837,8 +874,8 @@ Ne használjon – általános használatra nem alkalmas.
 
 | **Műveletek** | **Leírás** |
 | --- | --- |
+| Microsoft.aad.Directory/Contacts/Basic/Update | Partnerek az Azure Active Directory alapvető tulajdonságainak frissítése. |
 | Microsoft.aad.Directory/Contacts/Create | Az Azure Active Directoryban létre. |
-| Microsoft.aad.Directory/Contacts/default/Update | Partnerek az Azure Active Directory alapvető tulajdonságainak frissítése. |
 | Microsoft.aad.Directory/Contacts/DELETE | Az Azure Active Directoryban törléséhez. |
 | Microsoft.aad.Directory/groups/Create | Csoportok létrehozása az Azure Active Directoryban. |
 | microsoft.aad.directory/groups/createAsOwner | Csoportok létrehozása az Azure Active Directoryban. Létrehozót első tulajdonosként kerül, és a létrehozott objektum beleszámít a létrehozó 250 létrehozott objektumos kvótáját. |
@@ -846,7 +883,7 @@ Ne használjon – általános használatra nem alkalmas.
 | Microsoft.aad.Directory/groups/Owners/Update | Frissítse a groups.owners tulajdonság frissítése az Azure Active Directoryban. |
 | microsoft.aad.directory/users/appRoleAssignments/update | Frissítse a users.appRoleAssignments tulajdonság az Azure Active Directoryban. |
 | microsoft.aad.directory/users/assignLicense | Az Azure Active Directory felhasználók licenceinek kezelése. |
-| Microsoft.aad.Directory/Users/Default/Update | Az Azure Active Directory felhasználók alapszintű tulajdonságainak frissítése. |
+| Microsoft.aad.Directory/Users/Basic/Update | Az Azure Active Directory felhasználók alapszintű tulajdonságainak frissítése. |
 | Microsoft.aad.Directory/Users/DELETE | Felhasználók törlése az Azure Active Directoryban. |
 | microsoft.aad.directory/users/invalidateAllRefreshTokens | Az összes felhasználófrissítési jogkivonat érvénytelenítése az Azure Active Directoryban. |
 | Microsoft.aad.Directory/Users/Manager/Update | A users.manager tulajdonság frissítése az Azure Active Directory frissítéséhez. |
@@ -874,19 +911,19 @@ Ne használjon – általános használatra nem alkalmas.
 
 | **Műveletek** | **Leírás** |
 | --- | --- |
+| Microsoft.aad.Directory/Contacts/Basic/Update | Partnerek az Azure Active Directory alapvető tulajdonságainak frissítése. |
 | Microsoft.aad.Directory/Contacts/Create | Az Azure Active Directoryban létre. |
-| Microsoft.aad.Directory/Contacts/default/Update | Partnerek az Azure Active Directory alapvető tulajdonságainak frissítése. |
 | Microsoft.aad.Directory/Contacts/DELETE | Az Azure Active Directoryban törléséhez. |
 | microsoft.aad.directory/domains/allTasks | Hozzon létre és tartományok törlése, és olvassa el és az Azure Active Directory alapvető tulajdonságainak frissítése. |
 | Microsoft.aad.Directory/groups/Create | Csoportok létrehozása az Azure Active Directoryban. |
 | Microsoft.aad.Directory/groups/DELETE | Az Azure Active Directoryban csoportok törlése. |
 | Microsoft.aad.Directory/groups/Members/Update | Frissítés az Azure Active Directoryban groups.members tulajdonság. |
 | Microsoft.aad.Directory/groups/restore | Csoportok visszaállítása az Azure Active Directoryban. |
-| Microsoft.aad.Directory/Organization/default/Update | Az Azure Active Directory szervezeti alapvető tulajdonságainak frissítése. |
+| Microsoft.aad.Directory/Organization/Basic/Update | Az Azure Active Directory szervezeti alapvető tulajdonságainak frissítése. |
 | microsoft.aad.directory/organization/trustedCAsForPasswordlessAuth/update | Frissítés az Azure Active Directoryban organization.trustedCAsForPasswordlessAuth tulajdonság. |
 | microsoft.aad.directory/users/appRoleAssignments/update | Frissítse a users.appRoleAssignments tulajdonság az Azure Active Directoryban. |
 | microsoft.aad.directory/users/assignLicense | Az Azure Active Directory felhasználók licenceinek kezelése. |
-| Microsoft.aad.Directory/Users/Default/Update | Az Azure Active Directory felhasználók alapszintű tulajdonságainak frissítése. |
+| Microsoft.aad.Directory/Users/Basic/Update | Az Azure Active Directory felhasználók alapszintű tulajdonságainak frissítése. |
 | Microsoft.aad.Directory/Users/DELETE | Felhasználók törlése az Azure Active Directoryban. |
 | microsoft.aad.directory/users/invalidateAllRefreshTokens | Az összes felhasználófrissítési jogkivonat érvénytelenítése az Azure Active Directoryban. |
 | Microsoft.aad.Directory/Users/Manager/Update | A users.manager tulajdonság frissítése az Azure Active Directory frissítéséhez. |
@@ -975,8 +1012,8 @@ Olvashatja a biztonsági információk és jelentések
 | **Műveletek** | **Leírás** |
 | --- | --- |
 | Microsoft.aad.Directory/Applications/Policies/Update | Frissítés az Azure Active Directoryban applications.policies tulajdonság. |
+| Microsoft.aad.Directory/Policies/Basic/Update | Házirendek az Azure Active Directory alapvető tulajdonságainak frissítése. |
 | Microsoft.aad.Directory/Policies/Create | Szabályzatok létrehozása az Azure Active Directoryban. |
-| Microsoft.aad.Directory/Policies/default/Update | Házirendek az Azure Active Directory alapvető tulajdonságainak frissítése. |
 | Microsoft.aad.Directory/Policies/DELETE | Törölje a szabályzatok az Azure Active Directoryban. |
 | Microsoft.aad.Directory/Policies/Owners/Update | Frissítés az Azure Active Directoryban policies.owners tulajdonság. |
 | microsoft.aad.directory/servicePrincipals/policies/update | Frissítés az Azure Active Directoryban servicePrincipals.policies tulajdonság. |
@@ -1067,13 +1104,13 @@ Felhasználók és csoportok minden aspektusát felügyelheti
 | microsoft.aad.directory/appRoleAssignments/create | Alkalmazások szerepkör-hozzárendeléseinek létrehozása az Azure Active Directoryban. |
 | microsoft.aad.directory/appRoleAssignments/delete | Alkalmazások szerepkör-hozzárendelései az Azure Active Directoryban törölje. |
 | microsoft.aad.directory/appRoleAssignments/update | Az Azure Active Directoryban hozzárendeléseinek frissítése. |
+| Microsoft.aad.Directory/Contacts/Basic/Update | Partnerek az Azure Active Directory alapvető tulajdonságainak frissítése. |
 | Microsoft.aad.Directory/Contacts/Create | Az Azure Active Directoryban létre. |
-| Microsoft.aad.Directory/Contacts/default/Update | Partnerek az Azure Active Directory alapvető tulajdonságainak frissítése. |
 | Microsoft.aad.Directory/Contacts/DELETE | Az Azure Active Directoryban törléséhez. |
 | microsoft.aad.directory/groups/appRoleAssignments/update | Frissítés az Azure Active Directoryban groups.appRoleAssignments tulajdonság. |
+| Microsoft.aad.Directory/groups/Basic/Update | Az Azure Active Directory alapvető tulajdonságainak frissítése. |
 | Microsoft.aad.Directory/groups/Create | Csoportok létrehozása az Azure Active Directoryban. |
 | microsoft.aad.directory/groups/createAsOwner | Csoportok létrehozása az Azure Active Directoryban. Létrehozót első tulajdonosként kerül, és a létrehozott objektum beleszámít a létrehozó 250 létrehozott objektumos kvótáját. |
-| Microsoft.aad.Directory/groups/default/Update | Az Azure Active Directory alapvető tulajdonságainak frissítése. |
 | Microsoft.aad.Directory/groups/DELETE | Az Azure Active Directoryban csoportok törlése. |
 | microsoft.aad.directory/groups/hiddenMembers/read | Groups.hiddenMembers tulajdonság olvasása az Azure Active Directoryban. |
 | Microsoft.aad.Directory/groups/Members/Update | Frissítés az Azure Active Directoryban groups.members tulajdonság. |
@@ -1082,8 +1119,8 @@ Felhasználók és csoportok minden aspektusát felügyelheti
 | Microsoft.aad.Directory/groups/Settings/Update | Frissítés az Azure Active Directoryban groups.settings tulajdonság. |
 | microsoft.aad.directory/users/appRoleAssignments/update | Frissítse a users.appRoleAssignments tulajdonság az Azure Active Directoryban. |
 | microsoft.aad.directory/users/assignLicense | Az Azure Active Directory felhasználók licenceinek kezelése. |
+| Microsoft.aad.Directory/Users/Basic/Update | Az Azure Active Directory felhasználók alapszintű tulajdonságainak frissítése. |
 | Microsoft.aad.Directory/Users/Create | Felhasználók létrehozása az Azure Active Directoryban. |
-| Microsoft.aad.Directory/Users/Default/Update | Az Azure Active Directory felhasználók alapszintű tulajdonságainak frissítése. |
 | Microsoft.aad.Directory/Users/DELETE | Felhasználók törlése az Azure Active Directoryban. |
 | microsoft.aad.directory/users/invalidateAllRefreshTokens | Az összes felhasználófrissítési jogkivonat érvénytelenítése az Azure Active Directoryban. |
 | Microsoft.aad.Directory/Users/Manager/Update | A users.manager tulajdonság frissítése az Azure Active Directory frissítéséhez. |
@@ -1107,34 +1144,38 @@ Alapértelmezett szerepkör tagja számára. Az összes olvashat és írhat a ko
 | **Műveletek** | **Leírás** |
 | --- | --- |
 | microsoft.aad.directory/applications/createAsOwner | Alkalmazások létrehozása az Azure Active Directoryban. Létrehozót első tulajdonosként kerül, és a létrehozott objektum beleszámít a létrehozó 250 létrehozott objektumos kvótáját. |
+| Microsoft.aad.Directory/groups/Basic/Read | A csoportok az Azure Active Directory alapvető tulajdonságainak olvasása. |
 | microsoft.aad.directory/groups/createAsOwner | Csoportok létrehozása az Azure Active Directoryban. Létrehozót első tulajdonosként kerül, és a létrehozott objektum beleszámít a létrehozó 250 létrehozott objektumos kvótáját. |
-| Microsoft.aad.Directory/groups/default/Read | A csoportok az Azure Active Directory alapvető tulajdonságainak olvasása. |
 | microsoft.aad.directory/oAuth2PermissionGrants/create | Az oauth2-engedélyezések létrehozása az Azure Active Directoryban. |
 | microsoft.aad.directory/oAuth2PermissionGrants/delete | Törölje az oauth2-engedélyezések az Azure Active Directoryban. |
 | microsoft.aad.directory/oAuth2PermissionGrants/update | Frissítse az oauth2-engedélyezések az Azure Active Directoryban. |
 | microsoft.aad.directory/servicePrincipals/createAsOwner | Szolgáltatásnevek létrehozása az Azure Active Directoryban. Létrehozót első tulajdonosként kerül, és a létrehozott objektum beleszámít a létrehozó 250 létrehozott objektumos kvótáját. |
 | microsoft.aad.directory/users/activateServicePlan | Az Azure Active Directory felhasználók Activateserviceplan. |
 | microsoft.aad.directory/users/inviteGuest | Vendégfelhasználók meghívása az Azure Active Directoryba. |
+| Microsoft.aad.Directory/Applications/Audience/Update | Frissítés az Azure Active Directoryban applications.audience tulajdonság. |
+| Microsoft.aad.Directory/Applications/Authentication/Update | Frissítés az Azure Active Directoryban applications.authentication tulajdonság. |
+| Microsoft.aad.Directory/Applications/Basic/Update | Alkalmazások az Azure Active Directory alapvető tulajdonságainak frissítése. |
+| Microsoft.aad.Directory/Applications/credentials/Update | Frissítés az Azure Active Directoryban applications.credentials tulajdonság. |
 | Microsoft.aad.Directory/Applications/DELETE | Törölje az alkalmazást az Azure Active Directoryban. |
-| Microsoft.aad.Directory/Applications/restore | Állítsa vissza az alkalmazások az Azure Active Directoryban. |
-| Microsoft.aad.Directory/Applications/default/Update | Alkalmazások az Azure Active Directory alapvető tulajdonságainak frissítése. |
 | Microsoft.aad.Directory/Applications/Owners/Update | Az applications.owners tulajdonság az Azure Active Directory frissítéséhez. |
+| Microsoft.aad.Directory/Applications/permissions/Update | Frissítés az Azure Active Directoryban applications.permissions tulajdonság. |
 | Microsoft.aad.Directory/Applications/Policies/Update | Frissítés az Azure Active Directoryban applications.policies tulajdonság. |
+| Microsoft.aad.Directory/Applications/restore | Állítsa vissza az alkalmazások az Azure Active Directoryban. |
 | Microsoft.aad.Directory/Devices/disable | Letilthatja az eszközöket az Azure Active Directoryban. |
 | microsoft.aad.directory/groups/appRoleAssignments/update | Frissítés az Azure Active Directoryban groups.appRoleAssignments tulajdonság. |
+| Microsoft.aad.Directory/groups/Basic/Update | Az Azure Active Directory alapvető tulajdonságainak frissítése. |
 | Microsoft.aad.Directory/groups/DELETE | Az Azure Active Directoryban csoportok törlése. |
-| Microsoft.aad.Directory/groups/default/Update | Az Azure Active Directory alapvető tulajdonságainak frissítése. |
 | microsoft.aad.directory/groups/dynamicMembershipRule/update | Frissítés az Azure Active Directoryban groups.dynamicMembershipRule tulajdonság. |
 | Microsoft.aad.Directory/groups/Members/Update | Frissítés az Azure Active Directoryban groups.members tulajdonság. |
 | Microsoft.aad.Directory/groups/Owners/Update | Frissítse a groups.owners tulajdonság frissítése az Azure Active Directoryban. |
 | Microsoft.aad.Directory/groups/restore | Csoportok visszaállítása az Azure Active Directoryban. |
 | Microsoft.aad.Directory/groups/Settings/Update | Frissítés az Azure Active Directoryban groups.settings tulajdonság. |
+| Microsoft.aad.Directory/Policies/Basic/Update | Házirendek az Azure Active Directory alapvető tulajdonságainak frissítése. |
 | Microsoft.aad.Directory/Policies/DELETE | Törölje a szabályzatok az Azure Active Directoryban. |
-| Microsoft.aad.Directory/Policies/default/Update | Házirendek az Azure Active Directory alapvető tulajdonságainak frissítése. |
 | Microsoft.aad.Directory/Policies/Owners/Update | Frissítés az Azure Active Directoryban policies.owners tulajdonság. |
 | microsoft.aad.directory/servicePrincipals/appRoleAssignedTo/update | Frissítse a servicePrincipals.appRoleAssignedTo tulajdonság az Azure Active Directoryban. |
 | microsoft.aad.directory/servicePrincipals/appRoleAssignments/update | Frissítse a servicePrincipals.appRoleAssignments tulajdonság az Azure Active Directoryban. |
-| microsoft.aad.directory/servicePrincipals/default/update | Az Azure Active Directoryban szolgáltatásnevek alapvető tulajdonságainak frissítése. |
+| microsoft.aad.directory/servicePrincipals/basic/update | Az Azure Active Directoryban szolgáltatásnevek alapvető tulajdonságainak frissítése. |
 | microsoft.aad.directory/servicePrincipals/delete | Szolgáltatásnevek törlése az Azure Active Directoryban. |
 | microsoft.aad.directory/servicePrincipals/owners/update | Frissítse a servicePrincipals.owners tulajdonság az Azure Active Directoryban. |
 | microsoft.aad.directory/servicePrincipals/policies/update | Frissítés az Azure Active Directoryban servicePrincipals.policies tulajdonság. |
@@ -1143,6 +1184,7 @@ Alapértelmezett szerepkör tagja számára. Az összes olvashat és írhat a ko
 | microsoft.aad.directory/users/basicProfile/update | Frissítés az Azure Active Directoryban users.basicProfile tulajdonság. |
 | Microsoft.aad.Directory/Users/Mobile/Update | Frissítés az Azure Active Directoryban users.mobile tulajdonság. |
 | microsoft.aad.directory/users/searchableDeviceKey/update | Frissítés az Azure Active Directoryban users.searchableDeviceKey tulajdonság. |
+
 
 ## <a name="next-steps"></a>További lépések
 
