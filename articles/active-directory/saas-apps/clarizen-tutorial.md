@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2017
 ms.author: jeedes
-ms.openlocfilehash: 510bf383848725f3864c40af02c2b309370237f0
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 855f147b0622ecc0831f2bc464e83d245af9e574
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39438086"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44158671"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clarizen"></a>Oktatóanyag: Azure Active Directory-integráció az Clarizen
 
@@ -39,7 +39,7 @@ Ha az Azure ad-vel szoftverként (saas biztosított) alkalmazás integrációja 
 ## <a name="prerequisites"></a>Előfeltételek
 Clarizen az Azure AD-integráció konfigurálásához a következőkre van szükség:
 
-- Az Azure AD-előfizetéshez
+- Azure AD-előfizetés
 - Egy Clarizen előfizetést, amelyen engedélyezve van az egyszeri bejelentkezés
 
 Ebben az oktatóanyagban a lépéseket teszteléséhez hajtsa végre ezeket a javaslatokat:
@@ -188,7 +188,7 @@ Az Azure Portalon hozzon létre egy tesztfelhasználót Britta Simon nevű.
 
 ### <a name="create-a-clarizen-test-user"></a>Clarizen tesztfelhasználó létrehozása
 
-Ez a szakasz célja Clarizen Britta Simon nevű felhasználó létrehozásához. Clarizen támogatja a felhasználók automatikus átadása, amely alapértelmezés szerint van engedélyezve. További részleteket talál [Itt](clarizen-provisioning-tutorial.md) konfigurálásának a felhasználók automatikus átadása.
+Ez a szakasz célja Clarizen Britta Simon nevű felhasználó létrehozásához.
 
 **Ha szeretné manuálisan létrehozni a felhasználói, hajtson végre a következő lépéseket:**
 
@@ -196,11 +196,11 @@ Ahhoz, hogy jelentkezzen be a Clarizen az Azure AD-felhasználók, felhasználó
 
 1. Jelentkezzen be rendszergazdaként a Clarizen vállalati webhely.
 
-1. Kattintson a **személyek**.
+2. Kattintson a **személyek**.
 
     ![Kattintson a "Azok, akik"](./media/clarizen-tutorial/create_aaduser_001.png "személyek")
 
-1. Kattintson a **felhasználó meghívása**.
+3. Kattintson a **felhasználó meghívása**.
 
     !["A felhasználó meghívása" gomb](./media/clarizen-tutorial/create_aaduser_002.png "felhasználó meghívása")
 
@@ -242,7 +242,7 @@ Britta Simon számára a hozzáférés biztosításával a Clarizen Azure egysze
 
 1. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 Az Azure AD egyszeri bejelentkezés beállításainak ellenőrzéséhez a hozzáférési panelen.
 
 Ha a hozzáférési panelen a Clarizen csempére kattint, akkor kell lehet automatikusan bejelentkezett Clarizen alkalmazását.
@@ -251,7 +251,6 @@ Ha a hozzáférési panelen a Clarizen csempére kattint, akkor kell lehet autom
 
 * [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
-* [Felhasználók átadásának konfigurálása](clarizen-provisioning-tutorial.md)
 
 <!--Image references-->
 

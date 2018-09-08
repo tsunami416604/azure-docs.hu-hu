@@ -11,22 +11,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/22/2018
+ms.date: 09/06/2018
 ms.author: sethm
-ms.openlocfilehash: f7233d6a27b9ec3d58f33f7032bbec7a646d24f7
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 65fa9593b35af45ee9b8568bac5e4886909314e1
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42366119"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44092543"
 ---
 # <a name="provide-applications-access-to-azure-stack"></a>Hozzáférést biztosít az alkalmazásoknak az Azure Stackhez
 
 *A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
 
-Amikor egy alkalmazás központi telepítése, illetve az Azure Resource Manager erőforrások konfigurálása az Azure Stackben hozzáférésre van szüksége, hozzon létre egy egyszerű szolgáltatás, amely az alkalmazás hitelesítő adatot.  Ezután delegálhat egyszerű szolgáltatást csak a szükséges engedélyekkel.  
+Amikor egy alkalmazás központi telepítése, illetve az Azure Resource Manager erőforrások konfigurálása az Azure Stackben hozzáférésre van szüksége, hozzon létre egy egyszerű szolgáltatás, amely az alkalmazás hitelesítő adatot. Ezután delegálhat egyszerű szolgáltatást csak a szükséges engedélyekkel.  
 
-Tegyük fel szükség lehet egy Konfigurációkezelő eszközzel, amely a készlet az Azure-erőforrások Azure Resource Manager használatával.  Ebben a forgatókönyvben egyszerű szolgáltatás létrehozása, az Olvasó szerepkör biztosítani az egyszerű szolgáltatást, és korlátozhatja a csak olvasási hozzáféréssel az eszközbe. 
+Tegyük fel szükség lehet egy Konfigurációkezelő eszközzel, amely a készlet az Azure-erőforrások Azure Resource Manager használatával. Ebben a forgatókönyvben egyszerű szolgáltatás létrehozása, az Olvasó szerepkör biztosítani az egyszerű szolgáltatást, és korlátozhatja a csak olvasási hozzáféréssel az eszközbe. 
 
 Szolgáltatásnevek használata előnyösebb az alkalmazást a saját hitelesítő adatokkal futtatja, mivel:
 
@@ -36,17 +36,17 @@ Szolgáltatásnevek használata előnyösebb az alkalmazást a saját hitelesít
 
 ## <a name="getting-started"></a>Első lépések
 
-Attól függően, hogyan telepített Azure Stack első lépésként létrehozni egy szolgáltatásnevet.  Ez a dokumentum végigvezeti a szolgáltatásnév létrehozása [Azure Active Directory (Azure AD)](azure-stack-create-service-principals.md#create-service-principal-for-azure-ad) és [Active Directory összevonási Services(AD FS)](azure-stack-create-service-principals.md#create-service-principal-for-ad-fs).  Az egyszerű szolgáltatás létrehozása után használható-e az AD FS és az Azure Active Directory közös ismertetett lépések [engedélyeket delegálhatnak](azure-stack-create-service-principals.md#assign-role-to-service-principal) a szerepkörhöz.     
+Attól függően, hogyan telepített Azure Stack első lépésként létrehozni egy szolgáltatásnevet. Ez a dokumentum ismerteti, hogy a szolgáltatásnév létrehozása [Azure Active Directory (Azure AD)](#create-service-principal-for-azure-ad) és [Active Directory összevonási Services(AD FS)](#create-service-principal-for-ad-fs). Az egyszerű szolgáltatás létrehozása után használható-e az AD FS és az Azure Active Directory közös ismertetett lépések [engedélyeket delegálhatnak](#assign-role-to-service-principal) a szerepkörhöz.     
 
 ## <a name="create-service-principal-for-azure-ad"></a>Az Azure ad egyszerű szolgáltatás létrehozása
 
-Ha már telepítette az Azure AD az ügyfélidentitás-tárolóval, mint az Azure Stack, létrehozhat egyszerű szolgáltatásokat, mint az Azure-ban végezhet el.  Ez a szakasz bemutatja, hogyan végezheti el a lépéseket a portálon keresztül.  Ellenőrizze, hogy rendelkezik a [szükséges Azure AD-engedélyekről](../azure-resource-manager/resource-group-create-service-principal-portal.md#required-permissions) megkezdése előtt.
+Ha már telepítette az Azure AD az ügyfélidentitás-tárolóval, mint az Azure Stack, létrehozhat egyszerű szolgáltatásokat, mint az Azure-ban végezhet el. Ez a szakasz bemutatja, hogyan végezheti el a lépéseket a portálon keresztül. Ellenőrizze, hogy rendelkezik a [szükséges Azure AD-engedélyekről](../azure-resource-manager/resource-group-create-service-principal-portal.md#required-permissions) megkezdése előtt.
 
 ### <a name="create-service-principal"></a>Egyszerű szolgáltatás létrehozása
 Ebben a szakaszban az alkalmazást képviselő Azure AD-alkalmazásokhoz (egyszerű szolgáltatásnevének) létrehozása.
 
 1. Jelentkezzen be az Azure-fiók révén a [az Azure portal](https://portal.azure.com).
-2. Válassza ki **Azure Active Directory** > **alkalmazásregisztrációk** > **hozzáadása**   
+2. Válassza ki **Azure Active Directory** > **alkalmazásregisztrációk** > **új alkalmazás regisztrálása**   
 3. Adja meg az alkalmazás nevét és URL-címét. Válassza ki vagy **webalkalmazás / API** vagy **natív** szeretne létrehozni az alkalmazás számára. Miután beállította az értékeket, válassza ki a **létrehozás**.
 
 Létrehozott egy egyszerű szolgáltatást az alkalmazás.
@@ -63,23 +63,21 @@ Ha programozott módon jelentkezik be, ezt az Azonosítót használja az alkalma
 
 4. Adjon meg egy leírást és egy időtartamot a kulcshoz. Ha elkészült, kattintson a **Mentés** elemre.
 
-A kulcs mentése után megjelenik a kulcs értéke. Másolja ezt az értéket, mivel később nem lesz lehetősége lekérni a kulcsot. A kulcs értékét az alkalmazás aláírásához az alkalmazás azonosítójával adja meg. A kulcsértéket olyan helyen tárolja, ahonnan az alkalmazás le tudja kérni.
+A kulcs mentése után megjelenik a kulcs értéke. Másolja a Jegyzettömbbe vagy egy másik ideiglenes helyre ezt az értéket, mivel később nem tudja lekérni a kulcsot. A kulcs értékét az alkalmazás aláírásához az alkalmazás azonosítójával adja meg. Store a kulcsértéket olyan helyen, ahol az alkalmazás le tudja kérni.
 
 ![mentett kulcs](./media/azure-stack-create-service-principal/image15.png)
 
-
-Ha elkészült, lépjen tovább [az alkalmazás-szerepkör hozzárendelése](azure-stack-create-service-principals.md#assign-role-to-service-principal).
+Ha elkészült, lépjen tovább [az alkalmazás-szerepkör hozzárendelése](#assign-role-to-service-principal).
 
 ## <a name="create-service-principal-for-ad-fs"></a>Az AD FS egyszerű szolgáltatás létrehozása
 Ha telepítette az AD FS az Azure Stack, PowerShell segítségével hozzon létre egy egyszerű szolgáltatást, hozzáférés szerepkör hozzárendelése és jelentkezzen be a PowerShell használatával az identitásukat.
 
 A parancsfájl-ERCS virtuális gépen fut az emelt szintű végpontról.
 
-
 Követelmények:
 - Egy tanúsítványra szükség.
 
-**Paraméterek**
+#### <a name="parameters"></a>Paraméterek
 
 Az alábbi adatokra szükség az automation-paraméterek bemenetként:
 
@@ -88,36 +86,36 @@ Az alábbi adatokra szükség az automation-paraméterek bemenetként:
 |---------|---------|---------|
 |Name (Név)|Az SPN-fiók nevét|MyAPP|
 |ClientCertificates|Tanúsítvány-objektumok tömbje|X509 tanúsítvány|
-|ClientRedirectUris<br>(Választható lehetőség)|Alkalmazás átirányítási URI-ja|         |
+|ClientRedirectUris<br>(Választható lehetőség)|Alkalmazás átirányítási URI-ja|-|
 
-**Példa**
+#### <a name="example"></a>Példa
 
 1. Nyisson meg egy rendszergazda jogú Windows PowerShell-munkamenetet, és futtassa a következő parancsokat:
 
    > [!NOTE]
-   > Ez a példa létrehoz egy önaláírt tanúsítványt. Ezen parancsok futtatása termelési környezetben, ha a Get-tanúsítvány használatával kérje le a használni kívánt tanúsítványt a tanúsítvány objektumot.
+   > Ez a példa létrehoz egy önaláírt tanúsítványt. Éles környezetben ezek a parancsok futtatásakor használja [Get-tanúsítvány](/powershell/module/pkiclient/get-certificate) a tanúsítványobjektumot is használni szeretné a tanúsítvány lekéréséhez.
 
    ```PowerShell  
-    # Credential for accessing the ERCS PrivilegedEndpoint typically domain\cloudadmin
+    # Credential for accessing the ERCS PrivilegedEndpoint, typically domain\cloudadmin
     $creds = Get-Credential
 
     # Creating a PSSession to the ERCS PrivilegedEndpoint
     $session = New-PSSession -ComputerName <ERCS IP> -ConfigurationName PrivilegedEndpoint -Credential $creds
 
-    # This produces a self signed cert for testing purposes.  It is prefered to use a managed certificate for this.
+    # This produces a self signed cert for testing purposes. It is prefered to use a managed certificate for this.
     $cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=<yourappname>" -KeySpec KeyExchange
 
     $ServicePrincipal = Invoke-Command -Session $session -ScriptBlock { New-GraphApplication -Name '<yourappname>' -ClientCertificates $using:cert}
     $AzureStackInfo = Invoke-Command -Session $session -ScriptBlock { get-azurestackstampinformation }
     $session|remove-pssession
 
-    # For Azure Stack development kit, this value is set to https://management.local.azurestack.external. We will read this from the AzureStackStampInformation output of the ERCS VM.
+    # For Azure Stack development kit, this value is set to https://management.local.azurestack.external. This is read from the AzureStackStampInformation output of the ERCS VM.
     $ArmEndpoint = $AzureStackInfo.TenantExternalEndpoints.TenantResourceManager
 
-    # For Azure Stack development kit, this value is set to https://graph.local.azurestack.external/. We will read this from the AzureStackStampInformation output of the ERCS VM.
+    # For Azure Stack development kit, this value is set to https://graph.local.azurestack.external/. This is read from the AzureStackStampInformation output of the ERCS VM.
     $GraphAudience = "https://graph." + $AzureStackInfo.ExternalDomainFQDN + "/"
 
-    # TenantID for the stamp. We will read this from the AzureStackStampInformation output of the ERCS VM.
+    # TenantID for the stamp. This is read from the AzureStackStampInformation output of the ERCS VM.
     $TenantID = $AzureStackInfo.AADTenantID
 
     # Register an AzureRM environment that targets your Azure Stack instance
@@ -146,7 +144,7 @@ Az alábbi adatokra szükség az automation-paraméterek bemenetként:
 
    Példa:
 
-   ```
+   ```shell
    ApplicationIdentifier : S-1-5-21-1512385356-3796245103-1243299919-1356
    ClientId              : 3c87e710-9f91-420b-b009-31fa9e430145
    Thumbprint            : 30202C11BE6864437B64CE36C8D988442082A0F1
@@ -156,7 +154,7 @@ Az alábbi adatokra szükség az automation-paraméterek bemenetként:
    ```
 
 ### <a name="assign-a-role"></a>Szerepkör hozzárendelése
-Az egyszerű szolgáltatás létrehozása után kell [rendelje hozzá egy szerepkörhöz](azure-stack-create-service-principals.md#assign-role-to-service-principal)
+Az egyszerű szolgáltatás létrehozása után kell [rendelje hozzá egy szerepkörhöz](#assign-role-to-service-principal).
 
 ### <a name="sign-in-through-powershell"></a>Jelentkezzen be a PowerShell-lel
 Miután hozzárendelte a szerepkört, bejelentkezhet az Azure Stackhez az egyszerű szolgáltatás használatával a következő paranccsal:

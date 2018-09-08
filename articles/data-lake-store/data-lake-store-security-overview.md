@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: 3b836859dd2af45e84d0f53db06d2c7ab2828253
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 4ecc94f4ab5e9091db1705e99d4a5df6abbaf350
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/07/2018
-ms.locfileid: "44057085"
+ms.locfileid: "44161084"
 ---
 # <a name="security-in-azure-data-lake-store"></a>Az Azure Data Lake Store biztonság
 Sok vállalat is kihasználhatja a big data-analitika, amelyekkel az intelligens döntések üzleti elemzések készítése. Egy szervezet rendelkezhet egy összetett és szabályozott környezettel, és az egyre növekvő számú különböző felhasználók. A vállalatok számára, győződjön meg arról, hogy kritikus fontosságú üzleti adatokat tárolja biztonságosabban, és egyéni felhasználók számára a hozzáférést a megfelelő szintű, elengedhetetlen, hogy. Az Azure Data Lake Store célja biztonsági követelményeknek. Ez a cikk a Data Lake Store, biztonsági funkcióinak bemutatása többek között:
@@ -80,7 +80,7 @@ Az Azure Data Lake Store védi az adatok teljes életciklusa során. Az adatok t
 
 A Data Lake Store biztosítja a fiókban tárolt adatok titkosítását. Dönthet úgy, hogy titkosítja az adatokat, vagy választhatja a titkosítás nélküli lehetőséget. Amennyiben a titkosításhoz, Data Lake Store-ban tárolt adatok a rendszer titkosítja, mielőtt állandó adathordozón tárolná. Ebben az esetben a Data Lake Store automatikusan titkosítja az adatokat, és mindig visszafejti az adatokat lekérés, előtt, így teljes mértékben átlátható az ügyfélnek, az adatok elérése. Nem történik kód változás az ügyféloldalon kell adatok titkosítása/visszafejtése.
 
-Kulcskezelés, a Data Lake Store kétféle módon biztosítja a titkosítási főkulcsok (MEK), az adatokat a Data Lake Store-ban tárolt visszafejtés szükséges kezeléséhez. Vagy engedélyezheti a Data Lake Store a MEK kezeléséről, vagy is megtartja a MEK az Azure Key Vault-fiók használatával tulajdonjogát. Kulcskezelés módját közben az egy Data Lake Store-fiók létrehozása során adja meg. További információkat a titkosítással kapcsolatos konfigurációról a következő témakörben talál: [Az Azure Data Lake Store használatának első lépései az Azure Portal használatával](data-lake-store-get-started-portal.md).
+Kulcskezelés, a Data Lake Store kétféle módon biztosítja a titkosítási főkulcsok (MEK), az adatokat a Data Lake Store-ban tárolt visszafejtés szükséges kezeléséhez. Vagy engedélyezheti a Data Lake Store a MEK kezeléséről, vagy is megtartja a MEK az Azure Key Vault-fiók használatával tulajdonjogát. Kulcskezelés módját egy Data Lake Store-fiók létrehozásakor adja meg. További információkat a titkosítással kapcsolatos konfigurációról a következő témakörben talál: [Az Azure Data Lake Store használatának első lépései az Azure Portal használatával](data-lake-store-get-started-portal.md).
 
 ## <a name="activity-and-diagnostic-logs"></a>Tevékenység és a diagnosztikai naplók
 Tevékenység vagy a diagnosztikai naplók függően e Ön által keresett naplók fiók felügyelettel kapcsolatos tevékenységek és adatokkal kapcsolatos tevékenységeket is használhatja.

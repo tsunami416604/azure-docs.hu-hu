@@ -6,14 +6,14 @@ manager: timlt
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 04/01/2018
+ms.date: 09/05/2018
 ms.author: dobett
-ms.openlocfilehash: c9004e776488006d563fd4de791cade69736a5b8
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 3989ff6e8ef600500f1c3dcc292d4385d6fb4a8b
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44024369"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44162563"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Referencia az IoT Hub kvótái és szabályozása
 
@@ -25,7 +25,7 @@ Minden IoT-központ ki van építve a bizonyos számú egység az adott szinten.
 A réteg a sávszélesség-szabályozási korlátok, amelyeket az IoT Hub kényszerít minden művelet azt is meghatározza.
 
 ## <a name="operation-throttles"></a>A művelet szabályozások
-A művelet szabályozások címtartományok perc után lesznek alkalmazva, és célja, hogy a visszaélések megelőzése arány korlátozások is. Az IoT Hub próbál elkerülése érdekében, amikor csak lehetséges hibát adna vissza, de elindítja a kivételek visszaadása, ha a szabályozás sérül túl sokáig várakozott.
+A művelet szabályozások címtartományok perc után lesznek alkalmazva, és célja, hogy a visszaélések megelőzése arány korlátozások is. Az IoT Hub próbál elkerülése érdekében, amikor csak lehetséges hibát adna vissza, de elindítja a visszatérő `429 ThrottlingException` Ha túl sokáig a szabályozás sérül.
 
 Egy adott időpontban növelheti a kvóták vagy szabályozási korlátairól növelje az IoT hubban kiosztott egységek számát.
 
@@ -42,15 +42,14 @@ Az alábbi táblázat a kényszerített szabályozások. Értékek tekintse meg 
 | Közvetlen metódusok<sup>1</sup> | 160KB/sec/unit<sup>2</sup> | 480KB/sec/unit<sup>2</sup> | 24MB/mp/egység<sup>2</sup> | 
 | A páros olvasási (eszköz- és modul)<sup>1</sup> | 10/mp | Magasabb 10/mp vagy 1/mp/egység | 50/mp/egység |
 | Ikereszköz frissítések (eszköz- és modul)<sup>1</sup> | 10/mp | Magasabb 10/mp vagy 1/mp/egység | 50/mp/egység |
-| Feladatok létrehozása, frissítése, listázása és törlési műveletek | 1.67/sec/Unit (100/perc/egység) | 1.67/sec/Unit (100/perc/egység) | 83.33/sec/Unit (5000/perc/egység) |
-| Frissítés, a feladatok páros operations közvetlen metódus meghívása | 10/mp | Magasabb 10/mp vagy 1/mp/egység | 50/mp/egység |
-| Feladatok tömeges importálási műveletek | 1 aktív feladat hub kiszolgálónként | 1 aktív feladat hub kiszolgálónként | 1 aktív feladat hub kiszolgálónként |
+| Operatív feladatok<sup>1,3</sup> <br/> (létrehozás, frissítés, listázás, törlés) | 1.67/sec/Unit (100/perc/egység) | 1.67/sec/Unit (100/perc/egység) | 83.33/sec/Unit (5000/perc/egység) |
+| Eszközművelet feladatok<sup>1</sup> <br/> (iker frissítése, a közvetlen metódus meghívása) | 10/mp | Magasabb 10/mp vagy 1/mp/egység | 50/mp/egység |
 | Konfigurációk és az edge-telepítések<sup>1</sup> <br/> (létrehozás, frissítés, listázás, törlés) | 0.33/sec/Unit (20/perc/egység) | 0.33/sec/Unit (20/perc/egység) | 0.33/sec/Unit (20/perc/egység) |
 
 
-<sup>1</sup>Ez a funkció nem érhető el az IoT hub az alapszintű díjcsomagban. További információkért lásd: [kiválasztása a megfelelő IoT Hub](iot-hub-scaling.md). <br/><sup>2</sup>mérőszám méret lett 8 KB-os.
+<sup>1</sup>Ez a funkció nem érhető el az IoT hub az alapszintű díjcsomagban. További információkért lásd: [kiválasztása a megfelelő IoT Hub](iot-hub-scaling.md). <br/><sup>2</sup>mérőszám méret lett 8 KB-os. <br/><sup>3</sup>akkor legfeljebb egy aktív eszköz importálási/exportálási feladat egyszerre.
 
-A *eszközkapcsolatok* késleltetési szabályozza a sebesség, amellyel új eszköz kapcsolatok hozhatók létre az IoT hub. A *eszközkapcsolatok* szabályozás nem szabályozza a egyidejűleg csatlakoztatott eszközök maximális számát. A szabályozás az IoT hub felhasznált egységek számától függ.
+A *eszközkapcsolatok* késleltetési szabályozza a sebesség, amellyel új eszköz kapcsolatok hozhatók létre az IoT hub. A *eszközkapcsolatok* szabályozás nem szabályozza a egyidejűleg csatlakoztatott eszközök maximális számát. A *eszközkapcsolatok* sebesség szabályozása az IoT hub felhasznált egységek számától függ.
 
 Például ha vásárol egy S1-egységet, kap egy késleltetési 100 kapcsolatok száma másodpercenként. Tehát 100 000 eszközt a csatlakozáshoz másodpercet vesz igénybe legalább 1000 (körülbelül 16 percig). Azonban akkor is, hogy regisztrált az eszközidentitás-jegyzékben lévő eszközök egyszerre kapcsolódó eszközről annyi.
 

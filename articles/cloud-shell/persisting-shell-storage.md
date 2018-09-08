@@ -12,14 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 06/06/2018
+ms.date: 09/04/2018
 ms.author: juluk
-ms.openlocfilehash: 9a22b14df18e10342bb2a872b82b94ab4ea62d0a
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 606b36be4a2bbeff8dd226f41341d60e23f0d988
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37859867"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44163277"
 ---
 [!INCLUDE [PersistingStorage-introblock](../../includes/cloud-shell-persisting-shell-storage-introblock.md)]
 
@@ -42,9 +42,7 @@ A Cloud Shell Bash, egy olyan parancsot futtathat `clouddrive`, amely lehetővé
 #### <a name="prerequisites-for-manual-mounting"></a>Manuális csatlakoztatásának előfeltételei
 A fájlmegosztás társított Cloud Shell használatával frissítheti a `clouddrive mount` parancsot.
 
-Ha egy meglévő fájlmegosztás csatlakoztatása, a storage-fiókok kell lennie:
-* Helyileg redundáns tárolás vagy georedundáns tárolást támogatja a fájlmegosztások.
-* A hozzárendelt régióban található. Ha bevezetése, a régió, hogy szerepel-e az erőforráscsoport neve `cloud-shell-storage-<region>`.
+Ha egy meglévő fájlmegosztás csatlakoztatása, a storage-fiókok a válassza a Cloud Shell-régió kell működnie. Helyének beolvasásához futtatásával `env` a Bash és ellenőrzése a `ACC_LOCATION`.
 
 #### <a name="the-clouddrive-mount-command"></a>A `clouddrive mount` parancs
 
@@ -74,7 +72,7 @@ A fájlmegosztás továbbra is megmarad, ha manuálisan törölni. A cloud Shell
 > [!WARNING]
 > Bár a parancs futtatása nem inaktiválja azokat az erőforrásokat, egy erőforráscsoport, a storage-fiók vagy a Cloud Shell leképezett fájlmegosztás törlésével törli az `$Home` directory lemezképét és a fájlmegosztás található fájlokat. A művelet nem vonható vissza.
 
-### <a name="list-clouddrive"></a>Lista `clouddrive`
+### <a name="list-clouddrive"></a>lista `clouddrive`
 Felderítheti, mely fájlmegosztás van csatlakoztatva, `clouddrive`futtassa a `df` parancsot. 
 
 Clouddrive fájl elérési útját jeleníti meg a tárfiók nevét és a fájlmegosztás URL-címét. Például: `//storageaccountname.file.core.windows.net/filesharename`

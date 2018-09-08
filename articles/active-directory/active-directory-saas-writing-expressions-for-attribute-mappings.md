@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: barbkess
-ms.openlocfilehash: 0fa8fc6408a81429dfa9e8d73ef842644591c144
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 1c9fe9fb63b45233ed1a11bb63c0763c6103bc6d
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39365939"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44095181"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Az Azure Active Directoryban attribútumleképezések kifejezések írása
 Amikor konfigurál egy SaaS-alkalmazáshoz való üzembe helyezést, az Ön által megadott attribútum-leképezéshez típusú egyik egy kifejezés-hozzárendelést. Ezeknél a parancsfájl-szerű kifejezés, amely lehetővé teszi, hogy a felhasználók adatokat alakíthatja, amelyek esetében a SaaS-alkalmazás több elfogadható formátumok kell írnia.
@@ -173,7 +173,7 @@ Lecseréli az értékeket egy karakterláncból. A megadott paraméterek függő
 
 | Name (Név) | Szükséges / ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
-| **source** |Szükséges |Sztring |**Forrás** érték frissítéséhez. |
+| **source** |Szükséges |Sztring |**forrás** érték frissítéséhez. |
 
 - - -
 ### <a name="switch"></a>Kapcsoló
@@ -185,7 +185,7 @@ Lecseréli az értékeket egy karakterláncból. A megadott paraméterek függő
 
 | Name (Név) | Szükséges / ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
-| **source** |Szükséges |Sztring |**Forrás** érték frissítéséhez. |
+| **source** |Szükséges |Sztring |**forrás** érték frissítéséhez. |
 | **defaultValue** |Optional |Sztring |Alapértelmezett érték használható, ha a forrás nem felel meg minden olyan kulcsokat. Üres karakterlánc lehet (""). |
 | **key** |Szükséges |Sztring |**Kulcs** összehasonlítására **forrás** értéket. |
 | **value** |Szükséges |Sztring |Az érték a **forrás** összekapcsolja a kulcsot. |
@@ -207,7 +207,7 @@ Például ha a tartomány a "contoso.com", majd használhatja a következő kife
 Ha egy Salesforce védőfal használja, szüksége lehet egy további utótagok hozzáfűzése a felhasználónevek őket szinkronizálása előtt.
 
 **Kifejezés:** <br>
-`Append([userPrincipalName], ".test"))`
+`Append([userPrincipalName], ".test")`
 
 **Bemeneti/kimeneti. példa:** <br>
 

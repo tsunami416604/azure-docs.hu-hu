@@ -1,88 +1,84 @@
 ---
-title: Az Azure Functions segítségével hajtsa végre a tisztítási feladat adatbázis |} Microsoft Docs
-description: Az Azure Functions használatával, amely kapcsolódik az Azure SQL-adatbázis rendszeres időközönként sorait tisztítja meg a feladat ütemezését.
+title: Hajtsa végre a karbantartási feladat egy adatbázist az Azure Functions használatával |} A Microsoft Docs
+description: Az Azure Functions használatával, amely csatlakozik az Azure SQL Database rendszeres időközönként sorait Tisztítja a feladat ütemezését.
 services: functions
 documentationcenter: na
 author: ggailey777
-manager: cfowler
-editor: ''
-tags: ''
+manager: jeconnoc
 ms.assetid: 076f5f95-f8d2-42c7-b7fd-6798856ba0bb
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: multiple
-ms.workload: na
+ms.topic: conceptual
 ms.date: 05/22/2017
 ms.author: glenga
-ms.openlocfilehash: 2947fc6da0c4559e81cf97255b8375b020e0b657
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: a257948c97437d6045f705acb02054928d22ff89
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30231276"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44092869"
 ---
-# <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>Használja az Azure Functions egy Azure SQL adatbázishoz való kapcsolódáshoz
-Ez a témakör bemutatja, hogyan hozzon létre egy ütemezett feladatot, amely egy Azure SQL-adatbázis egy tábla sorainak a szükségtelenné vált az Azure Functions használatával. Az új C# parancsfájl függvény az Azure-portálon előre definiált időzítő eseményindító sablon alapján jön létre. Ez a forgatókönyv támogatása érdekében is meg kell adni egy adatbázis-kapcsolati karakterláncot, a függvény alkalmazás Alkalmazásbeállítás. Ez a forgatókönyv használ egy tömeges művelet az adatbázison. 
+# <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>Csatlakozás az Azure SQL Database az Azure Functions használatával
+Ez a témakör bemutatja, hogyan hozzon létre egy ütemezett feladatot, amely törli a sorokat egy Azure SQL Database egyik táblájában az Azure Functions használatával. Az új C#-szkriptfüggvény jön létre az Azure Portalon előre meghatározott időzítő eseményindító sablon alapján. Ennek támogatásához is meg kell adni egy adatbázis-kapcsolati karakterlánc, a függvényalkalmazáshoz egy alkalmazásbeállításhoz. Ebben a forgatókönyvben az adatbázison tömeges műveletet használja. 
 
-Szeretné, hogy a függvény folyamat egyéni létrehozás, Olvasás, frissítés és Törlés (CRUD) operations a Mobile Apps tábla, Ehelyett használjon [Mobile Apps kötések](functions-bindings-mobile-apps.md).
+A függvény folyamat saját kell létrehozni, olvasási, frissítési és törlési (CRUD) műveleteket egy Mobile Apps-tábla, Ehelyett használjon [Mobile Apps-kötések](functions-bindings-mobile-apps.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-+ Ez a témakör egy időzítő indított függvényt használja. Hajtsa végre a következő témakör lépéseit [függvény létrehozása az Azure-időzítő által elindított](functions-create-scheduled-function.md) egy C# verzió függvény létrehozásához.   
++ Ebben a témakörben egy időzítővel aktivált függvényt használ. A témakörben található lépésekkel [az Azure-ban egy időzítő által aktivált függvény létrehozása](functions-create-scheduled-function.md) egy C# verzióhoz, a függvény létrehozásához.   
 
-+ Ebben a témakörben bemutatjuk hajt végre egy tömeges törlésének művelete a Transact-SQL parancsot a **SalesOrderHeader** a AdventureWorksLT mintaadatbázis tábla. A AdventureWorksLT mintaadatbázis létrehozásához hajtsa végre a témakör lépéseit [Azure SQL-adatbázis létrehozása az Azure portálon](../sql-database/sql-database-get-started-portal.md). 
++ Ez a témakör bemutatja a Transact-SQL parancsot, amely végrehajtja a műveletcsoport törlése a **SalesOrderHeader** az AdventureWorksLT mintaadatbázis táblájában. Az AdventureWorksLT mintaadatbázis létrehozásához hajtsa végre a lépéseket a témakör [egy Azure SQL database létrehozása az Azure Portalon](../sql-database/sql-database-get-started-portal.md). 
 
 ## <a name="get-connection-information"></a>Kapcsolatadatok lekérése
 
-Le kell töltenie a kapcsolati karakterláncot az adatbázishoz való befejezésekor létrehozott [Azure SQL-adatbázis létrehozása az Azure portálon](../sql-database/sql-database-get-started-portal.md).
+A kapcsolati sztring lekérése befejezésekor létrehozott adatbázis kell [egy Azure SQL database létrehozása az Azure Portalon](../sql-database/sql-database-get-started-portal.md).
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
  
-3. Válassza ki **SQL-adatbázisok** a bal oldali menüben válassza ki az adatbázist a a **SQL-adatbázisok** lap.
+3. Válassza ki **SQL-adatbázisok** elemet a bal oldali menüben válassza ki az adatbázist a a **SQL-adatbázisok** lapot.
 
-4. Válassza ki **adatbázis-kapcsolati karakterláncok megjelenítése** , és másolja a teljes **ADO.NET** kapcsolati karakterláncot. 
+4. Válassza ki **adatbázis kapcsolati karakterláncainak megjelenítése** , és másolja a teljes **ADO.NET** kapcsolati karakterláncot. 
 
     ![Másolja az ADO.NET kapcsolati karakterláncot.](./media/functions-scenario-database-table-cleanup/adonet-connection-string.png)
 
-## <a name="set-the-connection-string"></a>A kapcsolati karakterlánc beállítása 
+## <a name="set-the-connection-string"></a>A kapcsolati sztring beállítása 
 
-A függvények végrehajtásához szükséges gazdaszolgáltatást az Azure-ban egy függvényalkalmazás biztosítja. Ajánlott a kapcsolati karakterláncokat és más titkos adatokat tárolja a függvény Alkalmazásbeállítások. Alkalmazásbeállítások használatával elkerülheti a véletlen közzétételét a kód a kapcsolati karakterlánc. 
+A függvények végrehajtásához szükséges gazdaszolgáltatást az Azure-ban egy függvényalkalmazás biztosítja. Akkor célszerű kapcsolati karakterláncok és egyéb titkos információinak tárolása a függvényalkalmazás-beállításokat. Alkalmazásbeállítások használatával megakadályozza a véletlen közzétételét a kód a kapcsolati karakterláncot. 
 
-1. Keresse meg a létrehozott függvény app [függvény létrehozása az Azure-időzítő által elindított](functions-create-scheduled-function.md).
+1. Keresse meg a létrehozott függvényalkalmazás [az Azure-ban egy időzítő által aktivált függvény létrehozása](functions-create-scheduled-function.md).
 
-2. Válassza ki **Platform funkciói** > **Alkalmazásbeállítások**.
+2. Válassza ki **platformfunkciók** > **Alkalmazásbeállítások**.
    
-    ![A függvény alkalmazás Alkalmazásbeállítások.](./media/functions-scenario-database-table-cleanup/functions-app-service-settings.png)
+    ![Alkalmazásbeállítások a függvényalkalmazáshoz.](./media/functions-scenario-database-table-cleanup/functions-app-service-settings.png)
 
-2. Görgessen le a **kapcsolati karakterláncok** , és adja hozzá egy kapcsolati karakterláncot a táblázatban megadott beállításokkal.
+2. Görgessen le a **kapcsolati karakterláncok** , és adjon hozzá egy kapcsolati karakterláncot a táblázatban megadott beállításokkal.
    
-    ![A kapcsolati karakterlánc hozzáadásának a függvény alkalmazás beállításai.](./media/functions-scenario-database-table-cleanup/functions-app-service-settings-connection-strings.png)
+    ![Adja hozzá a kapcsolati karakterláncot a függvényalkalmazás-beállításokat.](./media/functions-scenario-database-table-cleanup/functions-app-service-settings-connection-strings.png)
 
     | Beállítás       | Ajánlott érték | Leírás             | 
     | ------------ | ------------------ | --------------------- | 
-    | **Name (Név)**  |  sqldb_connection  | A tárolt kapcsolati karakterlánc, a függvény kódban elérésére használhatók.    |
-    | **Érték** | Másolt karakterlánc  | Illessze be a az előző szakaszban kimásolt kapcsolati karakterláncot, és cserélje le `{your_username}` és `{your_password}` helyőrzőt valódi értékek. |
-    | **Típus** | SQL Database | Az alapértelmezett SQL-adatbázis-kapcsolat használata. |   
+    | **Name (Név)**  |  sqldb_connection  | A függvény kódját a tárolt kapcsolati karakterlánc eléréséhez használt.    |
+    | **Érték** | Másolt karakterláncot  | Illessze be az előző szakaszban kimásolt kapcsolati karakterláncot, és cserélje le `{your_username}` és `{your_password}` valódi értékek helyőrzőt. |
+    | **Típus** | SQL Database | Használja az alapértelmezett SQL-adatbázis-kapcsolat. |   
 
 3. Kattintson a **Save** (Mentés) gombra.
 
-Most a C# függvény kódot, amely összeköti az SQL-adatbázis is hozzáadhat.
+Most a C#-függvénykódot, amely csatlakozik az SQL-adatbázis is hozzáadhat.
 
-## <a name="update-your-function-code"></a>Frissítse a függvény kódot
+## <a name="update-your-function-code"></a>A függvénykód módosítása
 
-1. A függvény alkalmazásban a portálon válassza ki a időzítő indított függvényt.
+1. A portálon a függvényalkalmazásban jelölje ki az időzítő által aktivált függvény.
  
-3. A meglévő C# függvény parancsfájlkód tetején adja hozzá a következő szerelvény hivatkozásokat:
+3. A meglévő C# szkriptet függvénykódot tetején adja hozzá a következő szerelvény hivatkozásokat:
 
     ```cs
     #r "System.Configuration"
     #r "System.Data"
     ```
     >[!NOTE]
-    >A kód a következő példákban olyan C# parancsfájl a portálról. Amikor egy lefordított C# függvény helyileg fejleszt, helyette hozzá kell ezeket a hivatkozásokat állítja össze a helyi projekt.  
+    >A kód ezekben a példákban olyan C#-szkript a portálról. Helyette előre lefordított C#-függvény helyi fejlesztésekor adja hozzá ezeket a hivatkozásokat a helyi projekt tartalomkiszolgálójáról.  
 
-3. Adja hozzá a következő `using` utasítást, hogy a funkciót:
+3. Adja hozzá a következő `using` utasítások a függvény használatával:
     ```cs
     using System.Configuration;
     using System.Data.SqlClient;
@@ -110,20 +106,20 @@ Most a C# függvény kódot, amely összeköti az SQL-adatbázis is hozzáadhat.
     }
     ```
 
-    Ez a minta parancs frissíti a `Status` oszlop a szállítási dátum alapján. Azt frissítenie kell a 32 sornyi adatot.
+    A mintául szolgáló parancs frissíti a `Status` oszlop a szállítási dátum alapján. Azt frissítenie kell a 32 sornyi adatot.
 
-5. Kattintson a **mentése**, tekintse meg a **naplók** windows a következő függvény végrehajtása, majd jegyezze fel a frissített sorok száma a **SalesOrderHeader** tábla.
+5. Kattintson a **mentése**, tekintse meg a **naplók** windows esetében a következő végrehajtási függvényt, és jegyezze fel a frissített sorok száma a **SalesOrderHeader** tábla.
 
-    ![A függvény naplók megtekintéséhez.](./media/functions-scenario-database-table-cleanup/functions-logs.png)
+    ![A függvény naplóinak megtekintése.](./media/functions-scenario-database-table-cleanup/functions-logs.png)
 
 ## <a name="next-steps"></a>További lépések
 
-A következő további funkciók használata a Logic Apps a más szolgáltatásokkal való integrációjához.
+Ezután megtudhatja, hogyan használhatja a Functions a Logic Apps szolgáltatással való integráció más szolgáltatásokkal.
 
 > [!div class="nextstepaction"] 
-> [Hozzon létre egy függvényt, amely integrálható a Logic Apps](functions-twitter-email.md)
+> [A Logic Apps szolgáltatással integrálható függvények létrehozása](functions-twitter-email.md)
 
-Funkciók kapcsolatos további információkért lásd a következő témaköröket:
+Függvények kapcsolatos további információkért lásd a következő témaköröket:
 
 * [Az Azure Functions fejlesztői segédanyagai](functions-reference.md)  
   Programozói segédanyagok függvények kódolásához, valamint eseményindítók és kötések meghatározásához.

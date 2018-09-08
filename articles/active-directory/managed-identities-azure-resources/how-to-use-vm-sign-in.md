@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
 ms.author: daveba
-ms.openlocfilehash: a61dca8332a613176b01eb85b44cd743ff8b4085
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 0f8789d64b550d9f0a45aa65728fbc1db64d6def
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44028428"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44094926"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-for-sign-in"></a>Az Azure-erőforrások egy Azure virtuális gép esetében jelentkezzen be a felügyelt identitások használatával 
 
@@ -89,7 +89,7 @@ Például a következő válaszok arra utalhat, hogy a virtuális gép felügyel
 Ha ezek a hibák egyike jelentkezik, térjen vissza az Azure VM a [az Azure portal](https://portal.azure.com) és:
 
 - Nyissa meg a **identitás** lapon és ellenőrizze, **rendszerhez rendelt** van beállítva az "Igen"értéket.
-- Nyissa meg a **bővítmények** lapon, és győződjön meg, hogy a felügyelt identitások Azure-erőforrások bővítmény sikeresen telepítve.
+- Nyissa meg a **bővítmények** lapon, és győződjön meg, hogy a felügyelt identitások Azure-erőforrás-kiterjesztés **(elavult. január 2019 a tervezett)** üzembe helyezése sikeresen befejeződött.
 
 Ha vagy helytelen, szükség lehet ismételt üzembe helyezése az Azure-erőforrásokhoz az erőforráson a felügyelt identitásokból újra, vagy az üzemelő példány hibájának elhárítása. Lásd: [egy virtuális gépen az Azure portal segítségével Azure-erőforrások konfigurálása felügyelt identitások](qs-configure-portal-windows-vm.md) Ha Virtuálisgép-konfiguráció segítségre van szüksége.
 

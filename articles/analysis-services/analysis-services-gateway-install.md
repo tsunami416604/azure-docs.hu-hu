@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 08/13/2018
+ms.date: 09/07/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 10bcf54da9660da1edcc8358f10289e9678be5cb
-ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
+ms.openlocfilehash: 89b21af5303afc2082d3d56ddb9e894f3ae4c4b8
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42054078"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44158423"
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>Telepítse és konfigurálja a helyszíni adatátjáró
 Akkor ugyanabban a régióban egy vagy több Azure Analysis Services-kiszolgálót a helyszíni adatforrásokhoz kapcsolódik, egy helyszíni adatátjáróra szükség. Az átjáró kapcsolatos további információkért lásd: [a helyszíni adatátjáró](analysis-services-gateway.md).
@@ -35,6 +35,7 @@ Akkor ugyanabban a régióban egy vagy több Azure Analysis Services-kiszolgál�
 * Amikor a telepítés során, az átjáró regisztrálása az Azure-ral az alapértelmezett régió az előfizetés van kiválasztva. Választhat egy másik régióban. Ha több régióban a kiszolgálók, telepítenie kell egy átjárót, minden olyan régió esetében. 
 * Az átjáró nem telepíthető tartományvezérlőre.
 * Csak egy átjáró egyetlen számítógépre telepíthető.
+* Alapértelmezés szerint az átjáró NT SERVICE\PBIEgwService fiókot használja, jelentkezzen be. Másik fiók beállítása során, vagy a szolgáltatások adható meg. Ellenőrizze, hogy a csoportházirend-beállítások lehetővé teszik, hogy a szolgáltatás fiók rendelkezzen a bejelentkezés szolgáltatás jogosultságokkal.
 * Telepítse az átjárót olyan számítógépre, amely továbbra is megtalálható, és nem lép alvó állapotba.
 * Ne telepítse az átjáró egy a hálózat vezeték nélkül csatlakozó számítógépen. Is csökkenteni kell a teljesítményt.
 * Jelentkezzen be Azure-fiókkal ugyanabban az Azure AD-ben [bérlői](https://msdn.microsoft.com/library/azure/jj573650.aspx#BKMK_WhatIsAnAzureADTenant) az előfizetést, az átjáró regisztrálja. Az Azure B2B (vendég) fiókok nem támogatottak, telepítése és a egy átjáró regisztrálása során.
@@ -116,4 +117,4 @@ Ennyi az egész. Ha a portok megnyitásához, vagy tegye hibaelhárításra van 
 ## <a name="next-steps"></a>További lépések
 * [Analysis Services kezelése](analysis-services-manage.md)   
 * [Adatok lekérése az Azure Analysis Services](analysis-services-connect.md)   
-* [Az adatforrások egy Azure virtuális hálózati átjáró használata](analysis-services-vnet-gateway.md)
+* [Átjáró használata az adatforrásokhoz egy Azure-beli virtuális hálózaton](analysis-services-vnet-gateway.md)

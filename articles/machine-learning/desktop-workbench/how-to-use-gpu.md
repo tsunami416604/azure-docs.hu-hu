@@ -11,12 +11,12 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/14/2017
-ms.openlocfilehash: f3b6c4f6af14615511400650662fe7a350c172ba
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 09d8e3da543cdf4433d986b321697abcad88eb22
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42061057"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44157990"
 ---
 # <a name="how-to-use-gpu-in-azure-machine-learning"></a>Az Azure Machine Learning GPU használata
 Grafikus feldolgozóegység (GPU) széles körben használt, nagy számítási igényű feladatokat, amelyek általában fordulhat elő, amikor bizonyos Neurális hálózat modellek betanítása feldolgozásához. Gpu-k használatával jelentősen csökkentheti a modellek képzési idején. Ebből a dokumentumból megismerheti, hogyan konfigurálhatja az Azure Machine Learning Workbench használata [DSVM (adatelemző virtuális gép)](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/overview) gpu-kkal felszerelt végrehajtási célként. 
@@ -86,7 +86,7 @@ C:\MyProj> az ml computetarget attach remotedocker --name "my_dsvm" --address "m
 ### <a name="configure-azure-ml-workbench-to-access-gpu"></a>Az Azure ML Workbenchben való hozzáférés GPU konfigurálása
 Lépjen vissza a projektet, és nyissa meg **Fájlnézetben**, majd kattintson a **frissítése** gombra. Ekkor megjelenik a két új konfigurációs fájlok `my_dsvm.compute` és `my_dsvm.runconfig`.
  
-Nyissa meg a `my_dsvm.compute`. Módosítsa a `baseDockerImage` való `microsoft/mmlspark:plus-gpu-0.7.9` , és adjon hozzá egy új sort `nvidiaDocker: true`. Ezért a fájl alábbi két sorral kell rendelkeznie:
+Nyissa meg a `my_dsvm.compute`. Módosítsa a `baseDockerImage` való `microsoft/mmlspark:plus-gpu-0.9.9` , és adjon hozzá egy új sort `nvidiaDocker: true`. Ezért a fájl alábbi két sorral kell rendelkeznie:
  
 ```yaml
 ...

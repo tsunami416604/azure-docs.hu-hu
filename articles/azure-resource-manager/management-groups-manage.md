@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/31/2018
 ms.author: rithorn
-ms.openlocfilehash: 04d5f5dc340d6be47a26baf05aa3d2f2ea7458ae
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: f7677d8b545c28522c370f3af422a55f3a656646
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39428818"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44091186"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Az erőforrások kezelése a felügyeleti csoportokkal
 
@@ -167,7 +167,7 @@ Milyen engedélyek megtekintéséhez, rendelkezik, válassza ki a felügyeleti c
     ![Gyermekek](media/management-groups/add_context_sub.png)
 1. Válassza ki "a Mentés"
 
-**Előfizetés eltávolítása a felügyeleti csoport**
+**Helyezze át az előfizetést egy másik felügyeleti csoportba**
 
 1. Jelentkezzen be a [Azure Portalon](https://portal.azure.com)
 2. Válassza ki **minden szolgáltatás** > **felügyeleti csoportok** 

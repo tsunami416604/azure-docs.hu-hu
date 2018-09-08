@@ -3,26 +3,21 @@ title: A függvény hívása a Powerappsből |} A Microsoft Docs
 description: Hozzon létre egy egyéni összekötőt, majd ezt az összekötőt használó függvény hívása.
 services: functions
 keywords: felhőalapú alkalmazások, szolgáltatások, a PowerApps, üzleti folyamatok, felhőalapú üzleti alkalmazás
-documentationcenter: ''
 author: ggailey777
-manager: cfowler
-editor: ''
+manager: jeconnoc
 ms.assetid: ''
-ms.service: functions
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.service: azure-functions
+ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: glenga
 ms.reviewer: sunayv
 ms.custom: ''
-ms.openlocfilehash: 3693b167f196b82c520703fa50ffabb27b555050
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 55de3cd8830834a2af512661d5389952d927ef9f
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38586976"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44094315"
 ---
 # <a name="call-a-function-from-powerapps"></a>Függvény hívása a PowerAppsből
 A [PowerApps](https://powerapps.microsoft.com) platform benne hagyományos alkalmazáskódot nélküli alkalmazásokat hozhat létre üzleti szakértők lett tervezve. Professzionális fejlesztők számára az Azure Functions használatával kiterjesztheti a PowerApps képességeit a technikai részleteket a PowerApps alkalmazáskészítők sikerei védelme során.

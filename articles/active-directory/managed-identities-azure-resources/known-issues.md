@@ -15,18 +15,21 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 12/12/2017
 ms.author: daveba
-ms.openlocfilehash: a58905d4e6ab22af38bb06b41a4523e6e5ddf86e
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 27f9e0a3875b8d7e9411517863f7d7c2f6982ab3
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44028420"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44158636"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Gyakori kérdések és ismert problémái az Azure-erőforrások felügyelt identitásokból
 
-[!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
+[!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
 ## <a name="frequently-asked-questions-faqs"></a>Gyakori kérdések (GYIK)
+
+> [!NOTE]
+> Felügyelt identitások azure-erőforrások számára az új nevet a szolgáltatás-ként ismert, Felügyeltszolgáltatás-identitás (MSI).
 
 ### <a name="does-managed-identities-for-azure-resources-work-with-azure-cloud-services"></a>Az Azure-erőforrások felügyelt identitások működik az Azure Cloud Services?
 
@@ -49,7 +52,7 @@ Ha felügyelt identitások használatával az Azure-erőforrások virtuális gé
 3. Az Azure-erőforrások felügyelt identitások által használt tanúsítványok már nem találhatók a virtuális gépen. 
 4. IMDS végpont egy jól ismert nem átirányítható IP-címet, csak érhetőek el a virtuális gép. 
 
-A felügyelt identitásokból Virtuálisgép-bővítmény továbbra is érhető el még ma; használható az Azure-erőforrások azonban előrefelé lesznek érvényben a IMDS végpont használatával. Az Azure-erőforrások Virtuálisgép-bővítmény egy elavult kezdődik a felügyelt identitásokból hamarosan megtervezése. 
+A felügyelt identitásokból Virtuálisgép-bővítmény továbbra is érhető el még ma; használható az Azure-erőforrások azonban előrefelé lesznek érvényben a IMDS végpont használatával. A felügyelt identitások Azure-erőforrások Virtuálisgép-bővítmény a január 2019 elavulttá válik. 
 
 Az Azure Instance Metadata szolgáltatás további információkért lásd: [IMDS dokumentációja](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service)
 
@@ -57,7 +60,7 @@ Az Azure Instance Metadata szolgáltatás további információkért lásd: [IMD
 
 Felügyelt identitások az Azure-erőforrásokhoz a IMDS végponton keresztül az összes Azure IaaS által támogatott Linux-disztribúciók is használható. 
 
-Megjegyzés: Az Azure-erőforrások támogatja a Virtuálisgép-bővítmény csak a következő Linux-disztribúciókon felügyelt identitásainak:
+Megjegyzés: A felügyelt identitások az Azure-erőforrások (elavult. január 2019 a tervezett) Virtuálisgép-bővítmény a következő Linux-disztribúciók csak támogatja:
 - CoreOS Stable
 - CentOS 7.1
 - Red Hat 7.2
@@ -87,9 +90,9 @@ Ha egy virtuális gépen engedélyezve van a felügyelt identitások az Azure-er
 
 ![Az Azure-erőforrások automation-szkript felügyelt identitások exportálási hiba](./media/msi-known-issues/automation-script-export-error.png)
 
-A felügyelt identitások Azure-erőforrások Virtuálisgép-bővítmény jelenleg nem támogatja a séma egy erőforráscsoport sablonjának exportálása lehetővé teszi. Ennek eredményeképpen a létrejött sablon nem jeleníti meg konfigurációs paraméter egy felügyelt identitások az Azure-erőforrásokhoz az erőforráson. Ezek a szakaszok manuálisan is hozzáadhatók a következő szereplő példák [konfigurálása felügyelt Azure-erőforrások egy Azure-beli Virtuálisgép-sablonok használata az identitások](qs-configure-template-windows-vm.md).
+A felügyelt identitások az Azure-erőforrások (elavult. január 2019 a tervezett) Virtuálisgép-bővítmény amelyen jelenleg nem teszi lehetővé a séma egy erőforráscsoport sablonjának exportálása. Ennek eredményeképpen a létrejött sablon nem jeleníti meg konfigurációs paraméter egy felügyelt identitások az Azure-erőforrásokhoz az erőforráson. Ezek a szakaszok manuálisan is hozzáadhatók a következő szereplő példák [konfigurálása felügyelt Azure-erőforrások egy Azure-beli Virtuálisgép-sablonok használata az identitások](qs-configure-template-windows-vm.md).
 
-Ha a séma exportálási funkció válik elérhetővé a felügyelt identitások Azure-erőforrások Virtuálisgép-bővítmény, az lesz jelenik meg [exportálása előtt erőforráscsoportok, a Virtuálisgép-bővítmények tartalmazó](../../virtual-machines/extensions/export-templates.md#supported-virtual-machine-extensions).
+Ha a séma exportálási funkciót az Azure-erőforrások Virtuálisgép-bővítmény (elavult. január 2019 a tervezett) felügyelt identitások számára elérhetővé válik, az lesz jelenik meg [exportálása előtt erőforráscsoportok, a Virtuálisgép-bővítményektartalmazó](../../virtual-machines/extensions/export-templates.md#supported-virtual-machine-extensions).
 
 ### <a name="configuration-blade-does-not-appear-in-the-azure-portal"></a>Konfigurációs panelen nem jelenik meg az Azure Portalon
 
@@ -125,11 +128,11 @@ az vm update -n <VM Name> -g <Resource Group> --remove tags.fixVM
 
 - Identitás-hozzárendelések felhasználó által hozzárendelt virtuális gép és a VMSS csak érhetők el. Fontos: felhasználó által hozzárendelt identitás hozzárendelések módosítani fogja a hónapon belül.
 - Az azonos VM/VMSS a felhasználó által hozzárendelt identitások ismétlődő, okoz a VM/VMSS sikertelen lesz. Ez magában foglalja az identitások, a másik kis-és a hozzáadott. Példa: MyUserAssignedIdentity és myuserassignedidentity. 
-- A Virtuálisgép-bővítményt a virtuális gép kiépítése a DNS-keresési hibák miatt meghiúsulhat. Indítsa újra a virtuális Gépet, és próbálkozzon újra. 
+- DNS-keresési hibák miatt meghiúsulhat a virtuális géphez (tervezett elavult a január 2019 esetében) a Virtuálisgép-bővítmény kiépítése. Indítsa újra a virtuális Gépet, és próbálkozzon újra. 
 - Sikertelen a virtuális gép hozzáadása egy "nem létező" felhasználó által hozzárendelt identitással miatt. 
 - Egy felhasználó által hozzárendelt identitás létrehozása a különleges karakterek (például aláhúzásjelet lehet) a neve, nem támogatott.
 - felhasználó által hozzárendelt identitás nevek korlátozva, végpontok közötti forgatókönyv 24 karakter hosszúságú lehet. a 24 karakternél hosszabb nevű, felhasználó által hozzárendelt identitások nem fogja tudni hozzárendelni.
-- Felügyelt identitás virtuálisgép-bővítmény használata esetén a támogatott határértéke 32, felhasználó által hozzárendelt felügyelt identitások. Nem felügyelt identitás virtuálisgép-bővítmény a támogatott határértéke 512.  
+- (Elavult. január 2019 a tervezett) felügyelt identitás virtuálisgép-bővítmény használata esetén a támogatott határértéke 32, felhasználó által hozzárendelt felügyelt identitások. Nem felügyelt identitás virtuálisgép-bővítmény a támogatott határértéke 512.  
 - Egy második felhasználó által hozzárendelt identitással hozzáadásakor a clientID előfordulhat, hogy nem érhető el, a Virtuálisgép-bővítmény kérések jogkivonatok. A megoldás, indítsa újra a felügyelt identitásokból Virtuálisgép-bővítmény a következő két bash-parancsok az Azure-erőforrások:
  - `sudo bash -c "/var/lib/waagent/Microsoft.ManagedIdentity.ManagedIdentityExtensionForLinux-1.0.0.8/msi-extension-handler disable"`
  - `sudo bash -c "/var/lib/waagent/Microsoft.ManagedIdentity.ManagedIdentityExtensionForLinux-1.0.0.8/msi-extension-handler enable"`

@@ -10,20 +10,20 @@ ms.component: manage
 ms.date: 07/27/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 35ae3d1a8a6de2d348f90e2f55b732421b879917
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 48d64873f0a8c3754ac5c3ecda2294c0f337b9d5
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43307637"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44094604"
 ---
 # <a name="sql-data-warehouse-recommendations"></a>Az SQL Data Warehouse javaslatok
 
 Ez a cikk ismerteti az Azure advisorral az SQL Data Warehouse által kiszolgált javaslatokat.  
 
-Az SQL Data Warehouse biztosít annak biztosítása érdekében az adattárház javaslatok következetesen teljesítmény van optimalizálva. Data warehouse javaslatok szorosan integrált az [az Azure Advisor](https://docs.microsoft.com/azure/advisor/advisor-performance-recommendations) belül ajánlott eljárások közvetlenül tudja biztosítani a [az Azure portal](https://aka.ms/Azureadvisor). Az SQL Data Warehouse elemzi az adattárház jelenlegi állapotát, a napi szintű telemetriai és a Surface-eszközök javaslatok a aktív számítási feladatok számára gyűjti. Az alábbiakban javasolt műveletek alkalmazása mellett vázolt a támogatott data warehouse javaslat forgatókönyveket.
+Az SQL Data Warehouse biztosít annak biztosítása érdekében az adattárház javaslatok következetesen teljesítmény van optimalizálva. Data warehouse javaslatok szorosan integrálva [az Azure Advisor](https://docs.microsoft.com/azure/advisor/advisor-performance-recommendations) belül ajánlott eljárások közvetlenül tudja biztosítani a [az Azure portal](https://aka.ms/Azureadvisor). Az SQL Data Warehouse elemzi az adattárház jelenlegi állapotát, a napi szintű telemetriai és a Surface-eszközök javaslatok a aktív számítási feladatok számára gyűjti. Az alábbiakban javasolt műveletek alkalmazása mellett vázolt a támogatott data warehouse javaslat forgatókönyveket.
 
-Ha bármilyen visszajelzése van az SQL Data Warehouse Advisor a vagy problémákat tapasztal, vegye fel a kapcsolatot [ sqldwadvisor@service.microsoft.com ](mailto:sqldwadvisor@service.microsoft.com).   
+Ha bármilyen visszajelzése van az SQL Data Warehouse Advisor a vagy problémákat tapasztal, forduljon [ sqldwadvisor@service.microsoft.com ](mailto:sqldwadvisor@service.microsoft.com).   
 
 Kattintson a [Itt](https://aka.ms/Azureadvisor) a javaslatok ellenőrzése még ma! Ez a funkció jelenleg csak a Gen2 adattárházak alkalmazható. 
 
@@ -39,4 +39,4 @@ Optimálisnál rosszabb statisztikáit súlyosan hatással lehet a lekérdezési
 
 - [Tábla statisztikák létrehozása és frissítése](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistic)
 
-E két javaslatok az advisor folyamatosan fut a következő [T-SQL parancsfájl](https://github.com/Microsoft/sql-data-warehouse-samples/blob/master/samples/sqlops/MonitoringScripts/ImpactedTables) negatív hatással a döntés és statisztikai javaslatok táblák azonosítására.
+Ezekkel az ajánlásokkal által érintett táblák listájának megtekintéséhez futtassa a következő [T-SQL parancsfájl](https://github.com/Microsoft/sql-data-warehouse-samples/blob/master/samples/sqlops/MonitoringScripts/ImpactedTables). Az advisor folyamatosan futó ugyanezt a T-SQL szkriptet létrehozni ezeket a javaslatokat.

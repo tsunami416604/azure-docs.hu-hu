@@ -11,15 +11,15 @@ ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: conceptual
 ms.date: 10/16/2017
 ms.author: barclayn
-ms.openlocfilehash: e7dcb3778de31258f4aa3c946ffa214d87cb858a
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.openlocfilehash: e86d68107278641e40346327fa3a8cb7059b7d71
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32178823"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44159588"
 ---
 # <a name="azure-key-vault-logging"></a>Az Azure Key Vault naplózása
 Az Azure Key Vault a legtöbb régióban elérhető. További információ: [A Key Vault díjszabása](https://azure.microsoft.com/pricing/details/key-vault/).
@@ -151,7 +151,7 @@ A dátum- és időértékek az UTC hivatkozási időzónát használják.
 
 Mivel ugyanazt a tárfiókot több erőforrásból gyűjtött naplók tárolására is használhatja, a blob nevének teljes erőforrás-azonosítója segít abban, hogy csak a szükséges blobokat töltse le, illetve csak azokhoz férjen hozzá. Előtte azonban nézzük meg, hogyan tölthető le az összes blob.
 
-Elsőként hozzon létre egy mappát, amelybe letölti a blobokat. Például:
+Elsőként hozzon létre egy mappát, amelybe letölti a blobokat. Példa:
 
     New-Item -Path 'C:\Users\username\ContosoKeyVaultLogs' -ItemType Directory -Force
 
@@ -165,7 +165,7 @@ A listát a „Get-AzureStorageBlobContent” paranccsal töltse le a mappába:
 
 A második parancs futtatásakor a blob nevének **/** elválasztója egy teljes mapparendszert létrehoz a célmappában, és a program ebben a rendszerben tárolja majd fájlokként a letöltött blobokat.
 
-A blobok egyenkénti letöltéséhez használjon helyettesítő elemeket. Például:
+A blobok egyenkénti letöltéséhez használjon helyettesítő elemeket. Példa:
 
 * Ha több kulcstárolóval rendelkezik, de csak a CONTOSOKEYVAULT3 nevűhöz szeretne naplókat letölteni:
 
@@ -225,7 +225,7 @@ Az alábbi táblázat a mezők neveit és leírásait sorolja fel.
 | identity |A REST API-kérelemhez megadott tokenben szereplő identitás. Ez általában egy „felhasználó”, „egyszerű szolgáltatásnév” vagy „felhasználó + alkalmazás-azonosító”, az Azure PowerShell-parancsmagok által eredményezett kérelmekhez hasonlóan. |
 | properties |Ez a mező a művelettől (operationName) függően más-más adatokat tartalmaz. A legtöbb esetben ügyféladatokat (az ügyfél által használt felhasználói ügynök sztringjét), a REST API-kérelem pontos URI-ját és a HTTP-állapot kódját tartalmazza. Ezenkívül ha egy objektumot a rendszer egy kérelem (például a KeyCreate vagy a VaultGet) eredményeként ad vissza, a kulcs URI-ját („id”), a tároló URI-ját vagy a titkos kulcs URI-ját is tartalmazza. |
 
-Az **operationName** mező értékei ObjectVerb formátumúak. Például:
+Az **operationName** mező értékei ObjectVerb formátumúak. Példa:
 
 * Minden kulcstárolón elvégzett művelet „Vault`<action>`” formátumú, például `VaultGet` és `VaultCreate`.
 * Minden kulcson elvégzett művelet „Key`<action>`” formátumú, például `KeySign` és `KeyList`.

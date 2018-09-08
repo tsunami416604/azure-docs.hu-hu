@@ -4,20 +4,17 @@ description: Ismerje meg, hogyan találhatja meg a bejövő és kimenő IP-címe
 services: functions
 documentationcenter: ''
 author: ggailey777
-manager: cfowler
-editor: ''
-ms.service: functions
-ms.workload: na
-ms.devlang: na
-ms.topic: article
+manager: jeconnoc
+ms.service: azure-functions
+ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: glenga
-ms.openlocfilehash: ce520c5972bf27c30ecb175d58b6b6071bf804db
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: 0fcda59add346d60f37273625fbbcf41faab0e15
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42818292"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44091203"
 ---
 # <a name="ip-addresses-in-azure-functions"></a>IP-címek az Azure Functions szolgáltatásban
 

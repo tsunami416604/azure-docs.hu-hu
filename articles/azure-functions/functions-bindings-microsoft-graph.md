@@ -3,20 +3,18 @@ title: Microsoft Graph-kötések az Azure Functions szolgáltatáshoz
 description: Megtudhatja, hogyan használhatja a Microsoft Graph-eseményindítók és kötések az Azure Functions szolgáltatásban.
 services: functions
 author: mattchenderson
-manager: cfowler
-editor: ''
-ms.service: functions
-ms.tgt_pltfrm: na
+manager: jeconnoc
+ms.service: azure-functions
 ms.devlang: multiple
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/20/2017
 ms.author: mahender
-ms.openlocfilehash: 06ee959d7b38f21684280a35cf770fdcc590b102
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 128e7f693755e7baf752d546fddd786b07c0de78
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43287987"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44093736"
 ---
 # <a name="microsoft-graph-bindings-for-azure-functions"></a>Microsoft Graph-kötések az Azure Functions szolgáltatáshoz
 
@@ -217,7 +215,7 @@ A következő táblázat ismerteti a megadott kötés konfigurációs tulajdons�
 |**direction**||Kötelező – kell állítani `in`.|
 |**Identitás**|**Identitáskezelés**|Szükséges – az identitás, a művelet végrehajtásához használt. A következő értékek egyike lehet:<ul><li><code>userFromRequest</code> – Csak érvényes [HTTP-eseményindító]. A hívó felhasználó identitást használja.</li><li><code>userFromId</code> – Egy korábban bejelentkezett felhasználó használja a megadott azonosítóval. Tekintse meg a <code>userId</code> tulajdonság.</li><li><code>userFromToken</code> – A megadott jogkivonat által képviselt identitást használja. Tekintse meg a <code>userToken</code> tulajdonság.</li><li><code>clientCredentials</code> – A függvény alkalmazás identitását használja.</li></ul>|
 |**userId**|**Felhasználói azonosító**  |Ha szükséges, és csak akkor, ha _identitás_ értékre van állítva `userFromId`. A felhasználó résztvevő-azonosító egy korábban bejelentkezett felhasználóhoz társított.|
-|**userToken**|**UserToken**|Ha szükséges, és csak akkor, ha _identitás_ értékre van állítva `userFromToken`. A jogkivonat érvényes, a függvényalkalmazás. |
+|**userToken**|**userToken**|Ha szükséges, és csak akkor, ha _identitás_ értékre van állítva `userFromToken`. A jogkivonat érvényes, a függvényalkalmazás. |
 |**Erőforrás**|**resource**|Szükséges – az Azure ad-ben erőforrás URL-címe, amelyhez a jogkivonatot kért.|
 
 <a name="token-input-code"></a>
@@ -350,9 +348,9 @@ A következő táblázat ismerteti a megadott kötés konfigurációs tulajdons�
 |**direction**||Kötelező – kell állítani `in`.|
 |**Identitás**|**Identitáskezelés**|Szükséges – az identitás, a művelet végrehajtásához használt. A következő értékek egyike lehet:<ul><li><code>userFromRequest</code> – Csak érvényes [HTTP-eseményindító]. A hívó felhasználó identitást használja.</li><li><code>userFromId</code> – Egy korábban bejelentkezett felhasználó használja a megadott azonosítóval. Tekintse meg a <code>userId</code> tulajdonság.</li><li><code>userFromToken</code> – A megadott jogkivonat által képviselt identitást használja. Tekintse meg a <code>userToken</code> tulajdonság.</li><li><code>clientCredentials</code> – A függvény alkalmazás identitását használja.</li></ul>|
 |**userId**|**Felhasználói azonosító**  |Ha szükséges, és csak akkor, ha _identitás_ értékre van állítva `userFromId`. A felhasználó résztvevő-azonosító egy korábban bejelentkezett felhasználóhoz társított.|
-|**userToken**|**UserToken**|Ha szükséges, és csak akkor, ha _identitás_ értékre van állítva `userFromToken`. A jogkivonat érvényes, a függvényalkalmazás. |
+|**userToken**|**userToken**|Ha szükséges, és csak akkor, ha _identitás_ értékre van állítva `userFromToken`. A jogkivonat érvényes, a függvényalkalmazás. |
 |**path**|**Elérési út**|Kötelező – a onedrive-on az Excel-munkafüzet elérési útját.|
-|**worksheetName**|**WorksheetName**|A táblázatot tartalmazó munkalap.|
+|**worksheetName**|**worksheetName**|A táblázatot tartalmazó munkalap.|
 |**Táblanév**|**Táblanév**|A tábla neve. Ha nincs megadva, a munkalap tartalmát fogja használni.|
 
 <a name="excel-input-code"></a>
@@ -510,9 +508,9 @@ A következő táblázat ismerteti a megadott kötés konfigurációs tulajdons�
 |**direction**||Kötelező – kell állítani `out`.|
 |**Identitás**|**Identitáskezelés**|Szükséges – az identitás, a művelet végrehajtásához használt. A következő értékek egyike lehet:<ul><li><code>userFromRequest</code> – Csak érvényes [HTTP-eseményindító]. A hívó felhasználó identitást használja.</li><li><code>userFromId</code> – Egy korábban bejelentkezett felhasználó használja a megadott azonosítóval. Tekintse meg a <code>userId</code> tulajdonság.</li><li><code>userFromToken</code> – A megadott jogkivonat által képviselt identitást használja. Tekintse meg a <code>userToken</code> tulajdonság.</li><li><code>clientCredentials</code> – A függvény alkalmazás identitását használja.</li></ul>|
 |**Felhasználói azonosító** |**userId** |Ha szükséges, és csak akkor, ha _identitás_ értékre van állítva `userFromId`. A felhasználó résztvevő-azonosító egy korábban bejelentkezett felhasználóhoz társított.|
-|**userToken**|**UserToken**|Ha szükséges, és csak akkor, ha _identitás_ értékre van állítva `userFromToken`. A jogkivonat érvényes, a függvényalkalmazás. |
+|**userToken**|**userToken**|Ha szükséges, és csak akkor, ha _identitás_ értékre van állítva `userFromToken`. A jogkivonat érvényes, a függvényalkalmazás. |
 |**path**|**Elérési út**|Kötelező – a onedrive-on az Excel-munkafüzet elérési útját.|
-|**worksheetName**|**WorksheetName**|A táblázatot tartalmazó munkalap.|
+|**worksheetName**|**worksheetName**|A táblázatot tartalmazó munkalap.|
 |**Táblanév**|**Táblanév**|A tábla neve. Ha nincs megadva, a munkalap tartalmát fogja használni.|
 |**updateType**|**Frissítés típusa**|Kötelező – a táblázaton végrehajtani kívánt módosítás típusa. A következő értékek egyike lehet:<ul><li><code>update</code> -Váltja fel a OneDrive-ban a tábla tartalmát.</li><li><code>append</code> – Ad hozzá a tartalom a onedrive-on a tábla végére új sorok létrehozásával.</li></ul>|
 
@@ -654,7 +652,7 @@ A következő táblázat ismerteti a megadott kötés konfigurációs tulajdons�
 |**direction**||Kötelező – kell állítani `in`.|
 |**Identitás**|**Identitáskezelés**|Szükséges – az identitás, a művelet végrehajtásához használt. A következő értékek egyike lehet:<ul><li><code>userFromRequest</code> – Csak érvényes [HTTP-eseményindító]. A hívó felhasználó identitást használja.</li><li><code>userFromId</code> – Egy korábban bejelentkezett felhasználó használja a megadott azonosítóval. Tekintse meg a <code>userId</code> tulajdonság.</li><li><code>userFromToken</code> – A megadott jogkivonat által képviselt identitást használja. Tekintse meg a <code>userToken</code> tulajdonság.</li><li><code>clientCredentials</code> – A függvény alkalmazás identitását használja.</li></ul>|
 |**userId**|**Felhasználói azonosító**  |Ha szükséges, és csak akkor, ha _identitás_ értékre van állítva `userFromId`. A felhasználó résztvevő-azonosító egy korábban bejelentkezett felhasználóhoz társított.|
-|**userToken**|**UserToken**|Ha szükséges, és csak akkor, ha _identitás_ értékre van állítva `userFromToken`. A jogkivonat érvényes, a függvényalkalmazás. |
+|**userToken**|**userToken**|Ha szükséges, és csak akkor, ha _identitás_ értékre van állítva `userFromToken`. A jogkivonat érvényes, a függvényalkalmazás. |
 |**path**|**Elérési út**|Kötelező – a onedrive-on a fájl elérési útját.|
 
 <a name="onedrive-input-code"></a>
@@ -799,7 +797,7 @@ A következő táblázat ismerteti a megadott kötés konfigurációs tulajdons�
 |**direction**||Kötelező – kell állítani `out`.|
 |**Identitás**|**Identitáskezelés**|Szükséges – az identitás, a művelet végrehajtásához használt. A következő értékek egyike lehet:<ul><li><code>userFromRequest</code> – Csak érvényes [HTTP-eseményindító]. A hívó felhasználó identitást használja.</li><li><code>userFromId</code> – Egy korábban bejelentkezett felhasználó használja a megadott azonosítóval. Tekintse meg a <code>userId</code> tulajdonság.</li><li><code>userFromToken</code> – A megadott jogkivonat által képviselt identitást használja. Tekintse meg a <code>userToken</code> tulajdonság.</li><li><code>clientCredentials</code> – A függvény alkalmazás identitását használja.</li></ul>|
 |**Felhasználói azonosító** |**userId** |Ha szükséges, és csak akkor, ha _identitás_ értékre van állítva `userFromId`. A felhasználó résztvevő-azonosító egy korábban bejelentkezett felhasználóhoz társított.|
-|**userToken**|**UserToken**|Ha szükséges, és csak akkor, ha _identitás_ értékre van állítva `userFromToken`. A jogkivonat érvényes, a függvényalkalmazás. |
+|**userToken**|**userToken**|Ha szükséges, és csak akkor, ha _identitás_ értékre van állítva `userFromToken`. A jogkivonat érvényes, a függvényalkalmazás. |
 |**path**|**Elérési út**|Kötelező – a onedrive-on a fájl elérési útját.|
 
 <a name="onedrive-output-code"></a>
@@ -948,7 +946,7 @@ A következő táblázat ismerteti a megadott kötés konfigurációs tulajdons�
 |**direction**||Kötelező – kell állítani `out`.|
 |**Identitás**|**Identitáskezelés**|Szükséges – az identitás, a művelet végrehajtásához használt. A következő értékek egyike lehet:<ul><li><code>userFromRequest</code> – Csak érvényes [HTTP-eseményindító]. A hívó felhasználó identitást használja.</li><li><code>userFromId</code> – Egy korábban bejelentkezett felhasználó használja a megadott azonosítóval. Tekintse meg a <code>userId</code> tulajdonság.</li><li><code>userFromToken</code> – A megadott jogkivonat által képviselt identitást használja. Tekintse meg a <code>userToken</code> tulajdonság.</li><li><code>clientCredentials</code> – A függvény alkalmazás identitását használja.</li></ul>|
 |**userId**|**Felhasználói azonosító**  |Ha szükséges, és csak akkor, ha _identitás_ értékre van állítva `userFromId`. A felhasználó résztvevő-azonosító egy korábban bejelentkezett felhasználóhoz társított.|
-|**userToken**|**UserToken**|Ha szükséges, és csak akkor, ha _identitás_ értékre van állítva `userFromToken`. A jogkivonat érvényes, a függvényalkalmazás. |
+|**userToken**|**userToken**|Ha szükséges, és csak akkor, ha _identitás_ értékre van állítva `userFromToken`. A jogkivonat érvényes, a függvényalkalmazás. |
 
 <a name="outlook-output-code"></a>
 ### <a name="outlook-output---usage"></a>Az Outlook kimenete – használat

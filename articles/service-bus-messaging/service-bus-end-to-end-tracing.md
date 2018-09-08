@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
 ms.author: lmolkova
-ms.openlocfilehash: 5489fa999f3427345c3ee9f07f904296de224e31
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: e30c6b9ef8f593f2fea3f6e3f5ccf22734ca5bee
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42055730"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44092173"
 ---
 # <a name="distributed-tracing-and-correlation-through-service-bus-messaging"></a>Elosztott nyomkövetést és korrelációs révén a Service Bus-üzenetkezelés
 
@@ -83,10 +83,10 @@ async Task ProcessAsync(Message message)
 Ebben a példában `RequestTelemetry` feldolgozott üzenetek, egy időbélyeg, időtartama és (siker) eredményt kellene jelentett. A telemetriai korreláció tulajdonságait is tartalmaz.
 Beágyazott hívásláncokat és kivételeket jelentett üzenet feldolgozása közben is megjelölve őket képviselő "gyermekeként" korrelációs tulajdonságokkal a `RequestTelemetry`.
 
-Abban az esetben támogatott külső összetevők hívásokat hajt végre üzenet feldolgozása közben, azok is nyomon követi és korrelált automagically. Tekintse meg [Application Insights .NET SDK-val egyéni műveletek követése](../application-insights/application-insights-custom-operations-tracking.md) , manuális követési és összehasonlítás céljából.
+Abban az esetben támogatott külső összetevők hívásokat hajt végre üzenet feldolgozása közben, ezeket is automatikusan nyomon követi és korrelált. Tekintse meg [Application Insights .NET SDK-val egyéni műveletek követése](../application-insights/application-insights-custom-operations-tracking.md) , manuális követési és összehasonlítás céljából.
 
 ### <a name="tracking-without-tracing-system"></a>Nyomkövetési rendszert nélkül nyomon követése
-Abban az esetben a nyomkövetési rendszer nem támogatja a automagical a Service Bus hívások nyomon követése előfordulhat, hogy információra van szüksége, az ilyen támogatást egy nyomkövetési rendszert vagy az alkalmazás. Ez a szakasz ismerteti a Service Bus .NET-ügyfél által küldött diagnosztikai események.  
+Abban az esetben a nyomkövetési rendszer nem támogatja az automatikus Service Bus-hívások nyomon követése előfordulhat, hogy információra van szüksége, az ilyen támogatást egy nyomkövetési rendszert vagy az alkalmazás. Ez a szakasz ismerteti a Service Bus .NET-ügyfél által küldött diagnosztikai események.  
 
 Service Bus .NET ügyféloldali van kialakítva használata a .NET-nyomkövetés primitívek [System.Diagnostics.Activity](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) és [System.Diagnostics.DiagnosticSource](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/DiagnosticSourceUsersGuide.md).
 

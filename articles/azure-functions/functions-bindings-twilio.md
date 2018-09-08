@@ -4,24 +4,20 @@ description: Megtudhatja, hogyan használhatja a Twilio-kötések az Azure Funct
 services: functions
 documentationcenter: na
 author: ggailey777
-manager: cfowler
-editor: ''
-tags: ''
+manager: jeconnoc
 keywords: az Azure functions, függvények, eseményfeldolgozás, dinamikus számítás, kiszolgáló nélküli architektúra
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: reference
-ms.tgt_pltfrm: multiple
-ms.workload: na
 ms.date: 07/09/2018
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8d973e4003f8501fb3b4d1b461703bd0b869c205
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 6fc563c4d75551d441880a915dea0e1871deae46
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43669154"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44092342"
 ---
 # <a name="twilio-binding-for-azure-functions"></a>A Twilio-kötést az Azure Functions
 

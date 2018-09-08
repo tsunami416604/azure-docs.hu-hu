@@ -5,23 +5,23 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 09/01/2018
+ms.date: 09/06/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: b601a3d23b23faa16925881a54e2ceba85c800f8
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 8e77a33667bd6794f667348958e0edb9c6a8fb0d
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43669065"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44094977"
 ---
 # <a name="when-to-use-an-azure-multi-factor-authentication-provider"></a>Mikor érdemes használni az Azure multi-factor Authentication-szolgáltatót
 
 A kétlépéses ellenőrzés alapértelmezés szerint elérhető az Azure Active Directory- és Office 365-felhasználókkal rendelkező globális adminisztrátorok számára. De ha ki szeretné használni a [speciális szolgáltatásokat](howto-mfa-mfasettings.md), az Azure Multi-Factor Authentication (MFA) teljes verzióját meg kell vásárolnia.
 
-Az Azure multi-factor Auth szolgáltató segítségével a felhasználók számára az Azure multi-factor Authentication szolgáltatás által biztosított szolgáltatások előnyeinek akik **nem rendelkeznek licenccel**. 
+Az Azure multi-factor Auth szolgáltató segítségével a felhasználók számára az Azure multi-factor Authentication szolgáltatás által biztosított szolgáltatások előnyeinek akik **nem rendelkeznek licenccel**.
 
 Ha rendelkezik licencekkel, mind a minden felhasználó a szervezetben, majd nincs szüksége Azure multi-factor Auth szolgáltatót. Hozzon létre egy Azure multi-factor Authentication-szolgáltatót, csak akkor, ha is meg kell adnia a kétlépéses ellenőrzést, amelyek nem rendelkeznek licenccel az egyes felhasználók számára.
 
@@ -36,41 +36,16 @@ Az SDK letöltéséhez hozzon létre egy Azure multi-factor Auth szolgáltatót,
 
 ## <a name="what-is-an-mfa-provider"></a>Mi az az MFA-szolgáltató?
 
-Ha az Azure multi-factor Authentication nem rendelkezik licencekkel, létrehozhat egy hitelesítési szolgáltatót a kétlépéses ellenőrzés megkövetelése a felhasználók számára.
-
 Hitelesítésszolgáltatók két típusa van, és a különbséget körül módját az Azure-előfizetés után kell fizetni. A hitelesítésenkénti lehetőség választásakor a rendszer kiszámítja a bérlőn havonta végzett hitelesítések számát. Ezt a lehetőséget akkor érdemes használni, ha néhány felhasználó csak alkalmanként végez hitelesítést. A felhasználónkénti lehetőség választásakor a rendszer kiszámítja a bérlőn egy hónap alatt kétlépéses ellenőrzést végző egyének számát. Ez a lehetőség akkor a legjobb, ha van néhány licenccel rendelkező felhasználója, de ki kell terjesztenie az MFA-t a licenckorlátján túl több felhasználóra.
-
-## <a name="create-an-mfa-provider"></a>MFA-szolgáltató létrehozása
-
-A következő lépésekkel hozhat létre Azure Multi-Factor Authentication-szolgáltatót az Azure Portalon:
-
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) globális rendszergazdaként.
-2. Válassza az **Azure Active Directory** > **MFA-kiszolgáló** > **Szolgáltatók** lehetőséget.
-
-   ![Szolgáltatók][Providers]
-
-3. Válassza a **Hozzáadás** lehetőséget.
-4. Töltse ki az alábbi mezőket, és válassza a **Hozzáadás** lehetőséget:
-   - **Név** – A szolgáltató neve.
-   - **Használati modell** – Válassza az alábbi két lehetőség egyikét:
-      * Hitelesítésenként – Hitelesítésenként díjat felszámító vásárlási modell. Általában ügyfél felől elérhető alkalmazásokban Azure Multi-Factor Authentication hitelesítést használó forgatókönyvekben használják.
-      * Engedélyezett felhasználónként – Felhasználónként díjat felszámító vásárlási modell. Általában az alkalmazottak alkalmazásokhoz (pl. az Office 365-höz) való hozzáféréséhez használják. Akkor válassza ezt a beállítást, ha már van néhány Azure MFA-licenccel ellátott felhasználója.
-   - **Előfizetés** – Az Azure-előfizetés, amely után fizet a szolgáltatón keresztül végzett kétlépéses ellenőrzési tevékenységért.
-   - **Címtár** – Az Azure Active Directory-bérlő, amelyhez a szolgáltató társítva van.
-      * Szolgáltató létrehozásához nincs szükség Azure AD-címtárra. Ha csak az Azure Multi-Factor Authentication-kiszolgálót szeretné letölteni, hagyja üresen a mezőt.
-      * A szolgáltatót egy Azure AD-címtárral kell társítani a speciális szolgáltatások igénybevételéhez.
-      * Egy Azure AD-címtárral csak egyetlen szolgáltató társítható.
 
 ## <a name="manage-your-mfa-provider"></a>Az MFA-szolgáltató kezelése
 
-Az MFA szolgáltató létrehozását követően már nem módosíthatja a használati modellt (engedélyezett felhasználónként vagy hitelesítésenként). Azonban törölheti az MFA szolgáltatót, majd létrehozhat egy újat egy eltérő használati modellel.
+Az MFA szolgáltató létrehozását követően már nem módosíthatja a használati modellt (engedélyezett felhasználónként vagy hitelesítésenként).
 
-Ha az aktuális Multi-Factor Auth szolgáltató Azure AD-címtárral (más néven Azure AD-bérlővel) van társítva, akkor biztonságosan törölheti az MFA szolgáltatót, majd létrehozhat egy újat, amely ugyanahhoz az Azure AD-bérlőhöz van kapcsolva. Azt is megteheti Ha az összes olyan felhasználó, a multi-factor Authentication engedélyezett elegendő licenccel vásárolta, törölheti az MFA-szolgáltató teljesen.
+Ha az összes olyan felhasználó, a multi-factor Authentication engedélyezett elegendő licenccel vásárolta, érvényesítette törölheti az MFA szolgáltatót.
 
-Ha az MFA szolgáltató nincs Azure AD-bérlőhöz kapcsolva, vagy új MFA szolgáltatót kapcsol egy másik Azure AD-bérlőhöz, a felhasználói és konfigurációs beállításokat a rendszer nem viszi át. Emellett a meglévő Azure MFA-kiszolgálókat újra aktiválni kell az új MFA szolgáltatón keresztül létrehozott aktiváló hitelesítők adatokkal. Az MFA-kiszolgálók az új MFA szolgáltatóhoz történő kapcsolás céljából újraaktiválása nem érinti, telefonhívás vagy szöveges üzenetben, de a mobilalkalmazás-értesítések leáll az összes felhasználó számára addig, amíg a mobilalkalmazás hitelesítésekre.
+Ha az MFA szolgáltató nincs Azure AD-bérlőhöz kapcsolva, vagy új MFA szolgáltatót kapcsol egy másik Azure AD-bérlőhöz, a felhasználói és konfigurációs beállításokat a rendszer nem viszi át. Továbbá a meglévő Azure MFA-kiszolgálókat újra aktiválni kell az MFA szolgáltatón keresztül létrehozott aktiváló hitelesítő adatok használatával kell. Az MFA-kiszolgálók összekapcsolása őket az MFA szolgáltatót újraaktiválása nem érinti, telefonhívás vagy szöveges üzenetben, de mobilapp-értesítések leáll az összes felhasználó számára addig, amíg a mobilalkalmazás hitelesítésekre.
 
 ## <a name="next-steps"></a>További lépések
 
 [A Multi-Factor Authentication beállításainak konfigurálása](howto-mfa-mfasettings.md)
-
-[Providers]: ./media/concept-mfa-authprovider/add-providers.png "MFA-szolgáltatók hozzáadása"

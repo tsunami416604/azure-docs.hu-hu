@@ -13,16 +13,16 @@ ms.topic: article
 ms.date: 07/24/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: c96e7385356354d398108ad69492603d38667e46
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 56251245a23df031f3bc8fe3d36de43e194fbcc7
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "40234946"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44159673"
 ---
 # <a name="what-is-validation-as-a-service-for-azure-stack"></a>Mit jelent a szolgáltatását az Azure Stack érvényesítési?
 
-[!INCLUDE[Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
+[!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
 Érvényesítés szolgáltatásként (VaaS) egy natív Azure-szolgáltatás, amelynek megoldás azon partnereinknek, akik a Microsoft Azure Stack-ajánlatok közös vannak mérnöki. Megoldáspartnerek a szolgáltatás használatával ellenőrizze, hogy megoldásaikat a Microsoft követelményeinek, és működnek megfelelően, az Azure Stack használatával.
 

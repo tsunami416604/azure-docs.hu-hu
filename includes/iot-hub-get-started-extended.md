@@ -1,10 +1,26 @@
+---
+title: fájl belefoglalása
+description: fájl belefoglalása
+services: iot-hub
+author: dominicbetts
+ms.service: iot-hub
+ms.topic: include
+ms.date: 09/07/2018
+ms.author: dobett
+ms.custom: include file
+ms.openlocfilehash: 73b7604e3072e76c69383481259e1cd8990f4df4
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44168362"
+---
 ## <a name="extended-iot-scenarios"></a>Bővített IoT-forgatókönyvek
 
 Más Azure-szolgáltatásokat és -eszközöket is használhat. Miután csatlakoztatta eszközét az IoT Hubhoz, további forgatókönyveket tekinthet át, amelyek más Azure-eszközöket és -szolgáltatásokat használnak:
 
 | Forgatókönyv                                                   | Azure-szolgáltatás vagy -eszköz              |
 |----------------------------------------------------------- |------------------------------------|
-| [IoT Hub-üzenetek kezelése][Mg_IoT_Hub_Msg]                  | iothub-explorer eszköz               |
 | [IoT Hub-üzenetek kezelése][Mg_IoT_Toolkit]                  | A VS Code Azure IoT-eszközkészlet bővítmény|
 | [IoT-eszközök felügyelete][Mg_IoT_Dv]                        | Az Azure CLI 2.0 és az IoT-bővítmény|
 | [IoT-eszközök felügyelete][Mg_IoT_Dv_Toolkit]                | A VS Code Azure IoT-eszközkészlet bővítmény|
@@ -19,7 +35,6 @@ Más Azure-szolgáltatásokat és -eszközöket is használhat. Miután csatlako
 Miután végrehajtotta ezeket az oktatóanyagokat, az IoT Hub képességeiről továbbiakat a [fejlesztői útmutatóból][lnk-dev-guide] tudhat meg. További oktatóanyagokat az [Útmutató][lnk-how-to] részben találhat.
 
 
-[Mg_IoT_Hub_Msg]: ../articles/iot-hub/iot-hub-explorer-cloud-device-messaging.md
 [Mg_IoT_Toolkit]: ../articles/iot-hub/iot-hub-vscode-iot-toolkit-cloud-device-messaging.md
 [Mg_IoT_Dv]: ../articles/iot-hub/iot-hub-device-management-iot-extension-azure-cli-2-0.md
 [Mg_IoT_Dv_Toolkit]: ../articles/iot-hub/iot-hub-device-management-iot-toolkit.md

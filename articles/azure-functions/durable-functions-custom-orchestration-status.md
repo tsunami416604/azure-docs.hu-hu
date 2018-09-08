@@ -1,35 +1,31 @@
 ---
-title: Egyéni vezénylési állapota a tartós funkciók – Azure
-description: Megtudhatja, hogyan konfigurálhatja és használhatja egyéni vezénylési állapota a tartós funkcióihoz.
+title: Egyéni vezénylési állapot Durable Functions – Azure
+description: Megtudhatja, hogyan konfigurálhatja és használhatja az egyéni vezénylési állapot Durable Functions.
 services: functions
 author: kadimitr
-manager: cfowler
-editor: ''
-tags: ''
+manager: jeconnoc
 keywords: ''
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: multiple
-ms.workload: na
+ms.topic: conceptual
 ms.date: 04/24/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 840b96b9cfdb28ca1b17f54698677f4d491342c8
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: c8eb2be6836e11ddbaed81970024ea7200ea819d
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2018
-ms.locfileid: "32310350"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44093091"
 ---
-# <a name="custom-orchestration-status-in-durable-functions-azure-functions"></a>Egyéni vezénylési állapota a tartós függvények (az Azure Functions)
+# <a name="custom-orchestration-status-in-durable-functions-azure-functions"></a>Durable Functions (az Azure Functions) az egyéni vezénylési állapot
 
-Egyéni vezénylési állapot lehetővé teszi az orchestrator-függvény egyéni állapot értékének beállítása. A HTTP-GetStatus API-n keresztül valósul meg ez az állapot vagy a `DurableOrchestrationClient.GetStatusAsync` API.
+Egyéni vezénylési állapot lehetővé teszi az orchestrator függvény egyéni állapot értékének beállítása. A HTTP-GetStatus API-n keresztül biztosított Ez az állapot vagy a `DurableOrchestrationClient.GetStatusAsync` API-t.
 
 ## <a name="sample-use-cases"></a>Példa használati esetek 
 
-### <a name="visualize-progress"></a>Folyamatban lévő megjelenítése
+### <a name="visualize-progress"></a>Előrehaladásának megjelenítése
 
-Ügyfelek kérdezze le a állapot végpontot, és jelenítse meg a felhasználói felület, amely az aktuális végrehajtási szakasza visualizes. A következő példa bemutatja, folyamatban lévő megosztás:
+Ügyfelek lekérdezi az állapot végpontját és egy folyamat, amely megjeleníti az aktuális végrehajtási fázis felhasználói felület megjelenítéséhez. A következő minta azt mutatja be, folyamat megosztása:
 
 ```csharp
 [FunctionName("E1_HelloSequence")]
@@ -56,7 +52,7 @@ public static string SayHello([ActivityTrigger] string name)
 }
 ```
 
-És hogy az ügyfél majd kap a vezénylési kimenete csak akkor, ha `CustomStatus` "Londoni" mező értéke:
+Majd az ügyfél fog kapni a vezénylési kimenetét, és csak akkor, ha `CustomStatus` mező "London" értékre van állítva:
 
 ```csharp
 [FunctionName("HttpStart")]
@@ -91,7 +87,7 @@ public static async Task<HttpResponseMessage> Run(
 
 ### <a name="output-customization"></a>Kimeneti testreszabása 
 
-Egy másik érdekes forgatókönyv van szegmentálja a felhasználók egyéni jellemzőire vagy kapcsolati alapján testreszabott kimeneti vissza. Egyéni vezénylési állapot segítségével az ügyféloldali kódot általános marad. Az összes fő módosítások a kiszolgáló oldalán történik, az alábbi mintában látható módon:
+Egy másik érdekes forgatókönyv van szegmentálja a felhasználók egyedi jellemzőit és az interakciók alapján testre szabott kimeneti felismerésével. Egyéni vezénylési állapot segítségével az ügyféloldali kódot általános marad. Az összes fő módosításokat a kiszolgálói oldalon történik, az alábbi mintában látható módon:
 
 ```csharp
 [FunctionName("CityRecommender")]
@@ -129,9 +125,9 @@ public static void Run(
 } 
 ```
 
-### <a name="instruction-specification"></a>Utasítás meghatározása 
+### <a name="instruction-specification"></a>Utasítás specifikáció 
 
-Az orchestrator egyedi utasításokat biztosíthat az ügyfeleknek az egyéni állapot keresztül. Az egyéni állapot utasításokat kell hozzárendelni a vezénylési kódot lépéseit:
+Az orchestrator biztosíthat egyedi utasításokat az egyéni állapot-n keresztül az ügyfelek számára. Az egyéni utasításokat lesz rendelve a lépéseket a vezénylési kódban:
 
 ```csharp
 [FunctionName("ReserveTicket")]
@@ -161,7 +157,7 @@ public static async Task<bool> Run(
 
 ## <a name="sample"></a>Sample
 
-A következő példában az egyéni beállítás először;
+Az alábbi minta egyéni Ez a beállítás először;
 
 ```csharp
 public static async Task SetStatusTest([OrchestrationTrigger] DurableOrchestrationContext ctx)
@@ -176,14 +172,14 @@ public static async Task SetStatusTest([OrchestrationTrigger] DurableOrchestrati
 }
 ```
 
-A vezénylési futása közben, a külső ügyfelek lehet beolvasni az egyéni állapotát:
+A vezénylési futása közben a külső ügyfelek lehet beolvasni az egyéni állapot:
 
 ```http
 GET /admin/extensions/DurableTaskExtension/instances/instance123
 
 ```
 
-Az ügyfelek a következő válasz jelenik meg: 
+Az ügyfelek a következő választ fog kapni: 
 
 ```http
 {
@@ -197,12 +193,12 @@ Az ügyfelek a következő válasz jelenik meg:
 ```
 
 > [!WARNING]
->  Az egyéni adattartalom korlátozódik a 16 KB-os UTF-16 JSON-szöveg, mert fel kell tudni az Azure Table Storage oszlop elfér. Ha nagyobb payload van szükségük a fejlesztők a külső tárhelyen.
+>  Az egyéni hasznos adat, képesnek kell lennie ahhoz, hogy elférjen az Azure Table Storage oszlop azért legfeljebb 16 KB-os UTF-16 JSON-szövegben. Ha nagyobb hasznos adat van szükségük a fejlesztők a külső tárhelyen.
 
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [További tudnivalók a tartós funkciók HTTP API-k](durable-functions-http-api.md)
+> [Durable Functions HTTP API-k ismertetése](durable-functions-http-api.md)
 
 

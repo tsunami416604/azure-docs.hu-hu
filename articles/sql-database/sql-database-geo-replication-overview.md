@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/24/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 71268c07f7e653e1f7cf545f373717fd2760fee9
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: 026b9147bf6f0f5ab4732d1937bd61d803967854
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42918235"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44159520"
 ---
 # <a name="overview-active-geo-replication-and-auto-failover-groups"></a>Áttekintés: Aktív georeplikációs és automatikus feladatátvételi csoportok
 
@@ -30,7 +30,7 @@ Aktív georeplikáció üzleti folytonossági megoldás, amely lehetővé teszi 
 > Aktív georeplikáció által a felügyelt példány nem érhető el.
 >  
 
-Automatikus feladatátvételi csoportok az aktív georeplikáció a kiterjesztése. Ez a célja, hogy egy alkalmazás által kezdeményezett feladatátvételi több georeplikált adatbázis sumultaneously feladatátvételének kezelésében, vagy delegálása feladatátvétel hajtható végre az SQL Database szolgáltatás, a felhasználó által megadott feltételek szerint. Az utóbbi lehetővé teszi az automatikus helyreállításán egy másodlagos régióban több kapcsolódó adatbázisok egy Katasztrofális hiba vagy egyéb nem tervezett esemény, amely az SQL Database szolgáltatás rendelkezésre állása az elsődleges régióban teljes vagy részleges elvesztését eredményezi. Emellett használhatja az olvasható másodlagos adatbázis csak olvasható lekérdezési számítási feladatok kiszervezéséhez. Automatikus feladatátvételi csoportok több adatbázis között, mivel ezeknek az adatbázisoknak az elsődleges kiszolgálón kell konfigurálni. Az adatbázisok a feladatátvételi csoport elsődleges és másodlagos kiszolgálók ugyanabban az előfizetésben kell lennie. Automatikus feladatátvételi csoportok támogatja az összes adatbázis replikálása a csoportban csak egy másodlagos kiszolgáló egy másik régióban.
+Automatikus feladatátvételi csoportok az aktív georeplikáció a kiterjesztése. Ez célja, hogy több egyidejű használata egy alkalmazás által kezdeményezett feladatátvételt georeplikált adatbázis feladatátvételének kezelésében, vagy delegálása a feladatátvétel lehet végrehajtani az SQL Database szolgáltatás, a felhasználó által megadott feltételek szerint. Az utóbbi lehetővé teszi az automatikus helyreállításán egy másodlagos régióban több kapcsolódó adatbázisok egy Katasztrofális hiba vagy egyéb nem tervezett esemény, amely az SQL Database szolgáltatás rendelkezésre állása az elsődleges régióban teljes vagy részleges elvesztését eredményezi. Emellett használhatja az olvasható másodlagos adatbázis csak olvasható lekérdezési számítási feladatok kiszervezéséhez. Automatikus feladatátvételi csoportok több adatbázis között, mivel ezeknek az adatbázisoknak az elsődleges kiszolgálón kell konfigurálni. Az adatbázisok a feladatátvételi csoport elsődleges és másodlagos kiszolgálók ugyanabban az előfizetésben kell lennie. Automatikus feladatátvételi csoportok támogatja az összes adatbázis replikálása a csoportban csak egy másodlagos kiszolgáló egy másik régióban.
 
 > [!NOTE]
 > Aktív georeplikációt használja, ha több másodlagos példány hozható létre szükség.

@@ -12,14 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 07/24/2018
+ms.date: 09/04/2018
 ms.author: juluk
-ms.openlocfilehash: 9588bebdc827760f0e0d3e2aadccbff5f24723f1
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: ff50ea8c49d35306ccb48ec703de39c27c24bf7b
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39258925"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44160676"
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Az Azure Cloud Shell áttekintése
 Az Azure Cloud Shell egy interaktív, a böngésző által elérhető shell Azure-erőforrások kezeléséhez.
@@ -34,7 +34,8 @@ Próbálja ki az Azure Portalról, a Cloud Shell ikon használatával.
 
 ![Portál indítása](media/overview/portal-launch-icon.png)
 
-## <a name="features"></a>Áttekintés
+## <a name="features"></a>Szolgáltatások
+
 ### <a name="browser-based-shell-experience"></a>Böngészőalapú rendszerhéj-felület
 A cloud Shell lehetővé teszi a hozzáférést egy beépített szem előtt az Azure felügyeleti feladatainak parancssori böngészőalapú felület.
 Használja ki a Cloud Shell működik a helyi gépről untethered oly módon csak a felhőben is biztosítanak.
@@ -65,33 +66,11 @@ A cloud Shell rugalmas eszköz használható a következő:
 * [A VS Code Azure-fiók bővítmény](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)
 
 ### <a name="connect-your-microsoft-azure-files-storage"></a>A Microsoft Azure Files storage csatlakoztatása
-Cloud Shell gépek ideiglenes, és egy Azure-fájlmegosztási fürtkötetként való igényel `clouddrive` fájlmegtartás érdekében.
+Cloud Shell gépek ideiglenes, és egy új vagy meglévő Azure-fájlmegosztási fürtkötetként való igényel `clouddrive` fájlmegtartás érdekében.
 
 A Cloud Shell utasításait követve hozzon létre egy erőforrást első indításkor csoport, a storage-fiók és az Azure Files ossza meg az Ön nevében. Ez egy egyszeri lépés és lesz automatikusan hozzárendelve az összes munkamenet során. Egyetlen fájlmegosztást is le lehet képezni, és a Bash és a PowerShell használatával a Cloud Shell-(előzetes verzió) használják.
 
-#### <a name="create-new-storage"></a>Új tároló létrehozása
-![](media/overview/basic-storage.png)
-
-Egy helyileg redundáns tárolás (LRS) fiókot és az Azure-fájlmegosztást az Ön nevében hozható létre. Az Azure-fájlmegosztást, ha úgy dönt, hogy egyaránt használható Bash és a PowerShell környezetben. Rendszeres tárolási költségek a alkalmazni.
-
-Az Ön nevében három erőforrások jönnek létre:
-1. Az erőforráscsoport neve: `cloud-shell-storage-<region>`
-2. A Tárfiók neve: `cs<uniqueGuid>`
-3. A fájlmegosztás neve: `cs-<user>-<domain>-com-<uniqueGuid>`
-
-> [!Note]
-> A Cloud Shell bash is létrehoz egy alapértelmezett 5 GB méretű lemezképet `$Home`. Az SSH-kulcsok például a $Home könyvtár található összes fájl megmaradnak, az a felhasználó a csatlakoztatott Azure-fájlmegosztásban tárolt lemezképet. Alkalmazza az ajánlott eljárásokat, ha a fájlok mentése a $Home könyvtár konzisztenciája és a csatlakoztatott Azure-fájlmegosztást.
-
-#### <a name="use-existing-resources"></a>Meglévő erőforrások használata
-![](media/overview/advanced-storage.png)
-
-Egy speciális beállítás a Cloud Shell a meglévő erőforrások társítása biztosítunk.
-A tároló a telepítő parancssorába kattintson a "Speciális beállítások megjelenítése" További beállítások megjelenítéséhez.
-
-> [!Note]
-> Legördülő menük az előzetesen hozzárendelt Cloud Shell-régióra és LRS vagy GRS/ZRS tárfiókok vannak szűrve.
-
-[Ismerje meg a Cloud Shell-storage, Azure-fájlmegosztások frissítése és feltöltése/letöltése fájlok.](persisting-shell-storage.md)
+További információ a megtudhatja, hogyan csatlakoztathat egy [új vagy meglévő storage-fiók](persisting-shell-storage.md).
 
 ## <a name="concepts"></a>Alapelvek
 * A cloud Shell egy ideiglenes a munkamenetenkénti, felhasználónként megadott gazdagépen fut.

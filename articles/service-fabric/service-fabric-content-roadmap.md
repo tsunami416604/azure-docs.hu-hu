@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/08/2017
 ms.author: ryanwi
-ms.openlocfilehash: d4b27feab5c1bb5913d2ba26f7f43aca9a899aa0
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: b24860aaf10ba483aeab54d215816314a7d0bc36
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43697669"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44162852"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>Így biztosan ismerje meg a Service Fabric?
 Az Azure Service Fabric egy elosztott rendszerplatform, amely megkönnyíti a skálázható és megbízható mikroszolgáltatások csomagolását, üzembe helyezését és kezelését.  A Service Fabric rendelkezik egy nagy támadási azonban és sok további.  Ez a cikk egy szinopszist, Service fabric biztosítja, és ismerteti az alapfogalmakat, programozási modelleket, alkalmazás-életciklus során, tesztelés, fürtök és az állapotmonitorozást. Olvassa el a [áttekintése](service-fabric-overview.md) és [Mik azok a mikroszolgáltatások?](service-fabric-overview-microservices.md) bevezetést, és hogyan a Service Fabric mikroszolgáltatások létrehozására használható. Ez a cikk egy átfogó tartalmak listája nem tartalmaz, de a hivatkozások áttekintése és első lépéseket bemutató cikkekben a Service Fabric minden területéhez. 
@@ -84,7 +84,7 @@ Miért kell állapotalapú mikroszolgáltatások és állapot nélküli azokat? 
 A Service Fabric írni, és a szolgáltatások kezeléséhez több lehetőséget is kínál. Szolgáltatások a Service Fabric API-k a teljes mértékben kihasználhatja a platform szolgáltatásai és alkalmazás-keretrendszerek használatával. Szolgáltatások is lehet bármely lefordított végrehajtható programot bármilyen nyelven fejlesztett és üzemeltetett Service Fabric-fürtön. További információkért lásd: [támogatott programozási modellek](service-fabric-choose-framework.md).
 
 ### <a name="containers"></a>Containers
-Alapértelmezés szerint a Service Fabric üzembe helyezi, és aktiválja a szolgáltatást folyamatokat is. A Service Fabric is üzembe helyezheti a szolgáltatások [tárolók](service-fabric-containers-overview.md). Kombinálhatja is fontosabb, folyamatokon belüli és tárolókon belüli ugyanazt az alkalmazást szolgáltatásokat. Service Fabric Linux-tárolók Windows-tárolók üzembe az támogatja a Windows Server 2016 rendszeren. Telepítheti a meglévő alkalmazásokat, állapotmentes szolgáltatások vagy állapotalapú szolgáltatások tárolókban. 
+Alapértelmezés szerint a Service Fabric üzembe helyezi, és aktiválja a szolgáltatást folyamatokat is. A Service Fabric is üzembe helyezheti a szolgáltatások [tárolók](service-fabric-containers-overview.md). Kombinálhatja is fontosabb, folyamatokon belüli és tárolókon belüli ugyanazt az alkalmazást szolgáltatásokat. Service Fabric Linux-tárolók és a Windows-tárolók üzembe helyezése, támogatja a Windows Server 2016 rendszeren. Telepítheti a meglévő alkalmazásokat, állapotmentes szolgáltatások vagy állapotalapú szolgáltatások tárolókban. 
 
 ### <a name="reliable-services"></a>Reliable Services
 [A Reliable Services](service-fabric-reliable-services-introduction.md) egy egyszerűsített keretrendszer, szolgáltatások, amelyek integrálása a Service Fabric platformot és a platform funkciók teljes készletét írása. A Reliable Services lehet állapot nélküli (hasonlóan a legtöbb szolgáltatás platformok, például webkiszolgálók vagy az Azure Cloud Services feldolgozói szerepkörök), ahol állapot rendszer megőrzi a külső megoldás, például az Azure DB vagy az Azure Table Storage. A Reliable Services is lehet állapotfüggő, ahol állapot maga a Reliable Collections használata a szolgáltatás közvetlenül a rendszer megőrzi. Állapot legyen [magas rendelkezésre állású](service-fabric-availability-services.md) replikációval és elosztott keresztül [particionálás](service-fabric-concepts-partitioning.md), minden felügyelt automatikusan, a Service Fabric.

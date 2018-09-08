@@ -3,23 +3,19 @@ title: Durable Functions - Azure-példányok kezelése
 description: Megtudhatja, hogyan kezelheti a Durable Functions bővítmény-példányok az Azure Functions szolgáltatáshoz.
 services: functions
 author: cgillum
-manager: cfowler
-editor: ''
-tags: ''
+manager: jeconnoc
 keywords: ''
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: multiple
-ms.workload: na
+ms.topic: conceptual
 ms.date: 03/19/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 5cb3ccbc949f8250101fab6cb7899b859149fdfd
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: 72ea5e54bf86ce408700c0456f6d37f5f3c29924
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37341092"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44091782"
 ---
 # <a name="manage-instances-in-durable-functions-azure-functions"></a>Durable Functions (az Azure Functions)-példányok kezelése
 
@@ -224,7 +220,7 @@ Külső rendszerek kommunikálhatnak a webhook URL-címeket, amelyek részei ism
 
 [CreateHttpManagementPayload](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_CreateHttpManagementPayload_) egy paraméterrel rendelkezik:
 
-* **instanceId**:-példány egyedi azonosítója.
+* **InstanceId**:-példány egyedi azonosítója.
 
 A metódus egy példányát adja vissza a [HttpManagementPayload](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.Extensions.DurableTask.HttpManagementPayload.html#Microsoft_Azure_WebJobs_Extensions_DurableTask_HttpManagementPayload_) karakterlánc a következő tulajdonságokkal:
 

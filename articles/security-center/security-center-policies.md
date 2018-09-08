@@ -3,26 +3,28 @@ title: Biztonsági szabályzatok beállítása az Azure Security Centerben | Mic
 description: Ebből a cikkből megismerheti az Azure Security Center biztonsági szabályzatainak konfigurálásához szükséges lépéseket.
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: mbaldwin
 editor: ''
 ms.assetid: 3b9e1c15-3cdb-4820-b678-157e455ceeba
 ms.service: security-center
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/05/2018
-ms.author: terrylan
-ms.openlocfilehash: f12cede430a94da937a874ade2e50e4ed9860da9
-ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
-ms.translationtype: HT
+ms.date: 09/3/2018
+ms.author: rkarlin
+ms.openlocfilehash: c68b55beba445b7f5d30efe7155a47e7f6f76690
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34756991"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44161288"
 ---
 # <a name="set-security-policies-in-azure-security-center"></a>Biztonsági szabályzatok beállítása az Azure Security Centerben
 Ebből a cikkből megismerheti a Security Center biztonsági szabályzatainak konfigurálásához szükséges lépéseket.
+
+PowerShell-lel házirendek beállításával kapcsolatos utasításokért lásd: [a rövid útmutató: az Azure RM PowerShell modullal a nem megfelelő erőforrások azonosítására a szabályzat-hozzárendelés létrehozása](../azure-policy/assign-policy-definition-ps.md).
 
 ## <a name="how-security-policies-work"></a>A biztonsági szabályzatok működése
 A Security Center automatikusan létrehoz egy alapértelmezett biztonsági szabályzatot minden egyes Azure-előfizetéséhez. A Security Centerben szerkesztheti a szabályzatokat, és felügyelheti az azoknak való megfelelőséget.
@@ -37,13 +39,12 @@ Az egyes Azure-előfizetések alapértelmezett biztonsági szabályzatait a Secu
 
 1. Jelentkezzen be az Azure portálra.
 
-2. A **Security Center** irányítópultjának **Általános** területén válassza a **Biztonsági szabályzat** elemet.
+2. A **Security Center** irányítópultjának **SZABÁLYZAT ÉS MEGFELELŐSÉG** területén válassza a **Biztonsági szabályzat** elemet.
 
 3. Válassza ki azt az előfizetést, amelyhez biztonsági szabályzatot szeretne engedélyezni.
 
-4. A **Szabályzat összetevői** szakaszban válassza a **Biztonsági szabályzat** elemet.  
-    Ez a Security Centerhez hozzárendelt alapértelmezett szabályzat. Ki- vagy bekapcsolhatja az elérhető biztonsági javaslatokat.
-
+4. Kapcsolja be az előfizetés engedélyezni szeretné a szabályzatok. Javaslatok, válassza ki az egyes házirendek alapján fog kapni. 
+  ![szabályzatok listája](./media/security-center-policies/policies.png)
 5. Amikor befejezte a szerkesztést, válassza a **Mentés** elemet.
 
 ## <a name="available-security-policy-definitions"></a>Elérhető biztonságiszabályzat-definíciók

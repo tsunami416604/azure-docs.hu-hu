@@ -11,16 +11,16 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: abd2984574f80f03f276861782ff9ee51348d07e
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: f9a77c1f3fbce295a40db366619d7485d44efc4f
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39391377"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44162716"
 ---
 # <a name="manage-your-security-info-preview"></a>A biztonsági adatok (előzetes verzió) kezelése
 
-[!INCLUDE[preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
+[!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
 
 Használhatja a biztonsági adatait, jelentkezzen be munkahelyi vagy iskolai fiókjával, vagy a jelszó.
 
@@ -92,13 +92,13 @@ Ez a cikk segít, hogy a biztonsági adatait, beleértve a kétlépéses ellenő
 
 - Kövesse az alábbi útmutató cikkek, hogyan állíthatja be az eszközök a biztonsági adatok területen:
 
-    - [Állítsa be a biztonsági adatok használata egy hitelesítő alkalmazást](security-info-setup-auth-app.md)
+    - [A biztonsági adatok hitelesítő alkalmazással történő hitelesítésének beállítása](security-info-setup-auth-app.md)
 
-    - [Állítsa be a biztonsági adatok telefonhívásokat használata](security-info-setup-phone-number.md)
+    - [A biztonsági adatok telefonhívással történő hitelesítésének beállítása](security-info-setup-phone-number.md)
 
     - [Biztonsági adatok beállítása a szöveges üzenetek használata](security-info-setup-text-msg.md)
 
-    - [Biztonsági adatok beállítása az e-mailben](security-info-setup-email.md)
+    - [A biztonsági adatok e-mailben történő hitelesítésének beállítása](security-info-setup-email.md)
 
     - [Állítsa be a biztonsági adatok biztonsági kérdések használata](security-info-setup-questions.md)
 

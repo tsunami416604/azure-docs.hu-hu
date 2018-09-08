@@ -3,23 +3,19 @@ title: Durable Functions – az Azure a külső vezénylések
 description: Ismerje meg, hogy külső vezénylések megvalósítása az Azure Functions a Durable Functions bővítmény használatával.
 services: functions
 author: cgillum
-manager: cfowler
-editor: ''
-tags: ''
+manager: jeconnoc
 keywords: ''
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: multiple
-ms.workload: na
+ms.topic: conceptual
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 0af61ec3b22692402697df5331df80ca044759b5
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: 98504534332b6faa7a7019aea9ab7b534d4c3faa
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37340661"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44094450"
 ---
 # <a name="eternal-orchestrations-in-durable-functions-azure-functions"></a>Durable Functions (az Azure Functions) a külső vezénylések
 

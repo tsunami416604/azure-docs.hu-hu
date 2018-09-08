@@ -1,6 +1,6 @@
 ---
-title: Lépteti elő a Microsofttal az üzleti |} Azure
-description: Az Azure piactér és AppSource használata az alkalmazás és szolgáltatás közzétevők üzleti előléptetése
+title: Népszerűsítse cégét a Microsofttal |} Az Azure
+description: Népszerűsítse cégét alkalmazás és szolgáltatás-közzétevők Azure Marketplace-en és az AppSource használatával
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 documentationcenter: ''
 author: jm-aditi-ms
@@ -14,30 +14,30 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/04/2018
 ms.author: ellacroi
-ms.openlocfilehash: b2b0a0bbc91115de22eda98df91fb104eb5972ed
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: b02ab403c82fd781af72c3b1f08e843c3fc770e3
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34825147"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44094943"
 ---
-# <a name="promote-your-business-with-microsoft"></a>A Microsoft az üzleti előléptetése  
-A Microsoftnál partnerek (,) támogatásához, és ahhoz egyszerűsítése kínál az alkalmazás vagy a piactéren kirakatokkal tud nyújtani a célhoz. Által listázása a piactéren, hozzáférhet a Programok telepítése és erőforrások a piactér. 
+# <a name="promote-your-business-with-microsoft"></a>Népszerűsítse cégét a Microsofttal  
+A Microsoft rendelkezik a cél támogatja a partnerek, (,) és a egyszerűsítése érdekében az alkalmazás értékesítési vagy a kirakattípus a piactéren az ajánlat. A Marketplace-en való felkerüléshez szerint érheti el a programok és erőforrások a marketplace-en. 
 
-Ha nem már feliratkozott a Microsoft Partner Network (MPN), majd a bejelentkezési folytatása előtt.  
-*   MPN kapcsolatos további információkért látogasson el a Microsoft Partner Network lapon található [partner.microsoft.com](https://partner.microsoft.com).  
+Ha nincs már feliratkozott a Microsoft Partner Network (MPN), majd erre a folytatás előtt.  
+*   MPN kapcsolatos további információkért látogasson el a Microsoft Partner Network oldalon található [partner.microsoft.com](https://partner.microsoft.com).  
 
 MPN nyújt útmutatást a következő témaköröket.  
 *   Új üzleti lehetőségek  
-*   Kapcsolódás a csapatok vagy partnerek  
-*   Megoldások és képzési a skillset méretének növelése érdekében  
+*   Csatlakozás a teams és a partnerei  
+*   Megoldások és tanfolyamai segítségével növelheti a indexmezők  
 
-Az ajánlat vagy alkalmazás elősegítése, a következő táblázattal további előnyei és erőforrások eléréséhez. 
+Az ajánlat vagy az előléptetni, használja a következő táblázat további előnyök és erőforrások elérését. 
 
-| Juttatás | erőforrások |  
+| Értékelemek | erőforrások |  
 |:--- |:--- |  
-| A Core előnyeit használja | A Microsoft Partner Network részeként kap olyan készlete, amelyek hozzájárulhatnak időt és pénzt takaríthatnak core előnyeit. A következő előnyöket is segítenek erősíti képességeit, jobban ügyfelek kiszolgálásához, és állítsa be a teljes üzleti lehetőségeit eléréséhez kapcsolatok.<ul> <li>Fő előnyök kapcsolatos további információkért látogasson el a fő előnyt és követelmények lapján található [partner.microsoft.com/membership/core-benefits](https://partner.microsoft.com/membership/core-benefits).</li> </ul> |  
-| A felhő Platform kompetencia nyerjen | Kompetenciát megszerzéséhez segít különbséget tenni saját kezűleg más Microsoft-partnerek között. Kompetenciát megszerzéséhez is segítséget nyújt technikai segítséget és az ügyfél sikeres a piacon bemutatása. Kompetencia sok kulcsok fiókpartner programok, például a közös értékesít előfeltétele.<ul> <li>Cloud Platform kompetencia kapcsolatos további információkért látogasson el a felhő Platform kompetencia lapon található [partner.microsoft.com/membership/cloud-platform-competency](https://partner.microsoft.com/membership/cloud-platform-competency).</li> </ul> |  
-| Közös értékesít kész lesz | A közös értékesít készen áll a program lehetővé teszi, hogy közvetlenül a Microsoft eladók és a cél ügyfél lehetőségek és a fiók tervezési többi partner közötti együttműködés. A megoldás válik láthatóvá Microsoft értékesítő az értékesítő megoldás katalógusban. Microsoft eladók dolgoznak, és Önnek győzelmével is megkapja.<ul> <li>Közös értékesít készültségi kapcsolatos további információkért látogasson el a előléptetni üzleti lapon található [partner.microsoft.com/reach-customers/promote-your-business](https://partner.microsoft.com/reach-customers/promote-your-business).</li> </ul> |  
+| Használja az alapértelmezett érték használatának legfontosabb előnyei | A Microsoft Partner Network részeként a kap egy készletét használatának legfontosabb előnyei, amelyek segítségére lehetnek az Ön időt és pénzt takaríthat meg. Az előnyöket is segíthet erősíti képességeit, jobb szolgáltatást nyújt ügyfeleinek és kapcsolatokat épít annak érdekében, a teljes üzleti lehetőségeit.<ul> <li>Használatának legfontosabb előnyei kapcsolatos további információkért látogasson el a használatának legfontosabb előnyei és a követelmények lapon található [partner.microsoft.com/membership/core-benefits](https://partner.microsoft.com/membership/core-benefits).</li> </ul> |  
+| A Cloud Platform kompetencia megszerzésére | Kompetenciát megszerzéséhez segít különbséget tenni saját maga a más Microsoft-partnerek között. Kompetenciát megszerzéséhez is segítséget nyújt technikai szakértelemmel és az ügyfelek sikerességét a piacon elérhető bemutatásához. Kompetencia számos kulcsfontosságú partner programok, például a közös értékesítési előfeltétele.<ul> <li>Cloud Platform kompetenciával kapcsolatos további információkért látogasson el a Cloud Platform kompetencia oldalon található [partner.microsoft.com/membership/cloud-platform-competency](https://partner.microsoft.com/membership/cloud-platform-competency).</li> </ul> |  
+| Közös értékesítési kész legyen | A közös értékesítési program lehetővé teszi a közvetlenül a Microsoft-értékesítőkkel közösen és a cél ügyfél lehetőségeket és a fiók tervezési más partnerekkel közösen dolgozzon. A megoldás lesz látható a Microsoft-értékesítőkkel közösen az értékesítői megoldás-katalógusban. Microsoft-értékesítőkkel közösen van jutalmakat a beküldött fordításaiért együttműködés és a winning with meg.<ul> <li>A közös értékesítésben kapcsolatos további információkért látogasson el a lapon található a előléptetése üzleti [partner.microsoft.com/reach-customers/promote-your-business](https://partner.microsoft.com/reach-customers/promote-your-business).</li> </ul> |  
 
 ---  

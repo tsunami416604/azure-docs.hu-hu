@@ -13,16 +13,16 @@ ms.topic: article
 ms.date: 07/24/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: c15478597103d28635d4d54e48039f72a2878495
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 4a1d900f41b590497a8c114668c136c9cf6ac4ee
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "40234947"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44156494"
 ---
 # <a name="known-issues-for-validation-as-a-service"></a>Érvényesítési szolgáltatás ismert problémái
 
-[!INCLUDE[Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
+[!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
 Ezek azok az ismert problémái az Azure Stack érvényesítési szolgáltatásként.
 

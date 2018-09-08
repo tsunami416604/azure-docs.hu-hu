@@ -3,24 +3,20 @@ title: Az Azure Functions monitorozása
 description: Útmutató az Azure Functions Azure Application Insights használni függvény végrehajtása.
 services: functions
 author: ggailey777
-manager: cfowler
-editor: ''
-tags: ''
+manager: jeconnoc
 keywords: azure-függvények, függvények, eseményfeldolgozás, webhookok, dinamikus számítás, kiszolgáló nélküli architektúra
 ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: multiple
-ms.workload: na
+ms.topic: conceptual
 ms.date: 09/15/2017
 ms.author: glenga
-ms.openlocfilehash: ba820c594b5afb34c050c74de30300b0dfc8c3a6
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 9c39d621bfc8df338a4556fd412ae54489982074
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39344055"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44092767"
 ---
 # <a name="monitor-azure-functions"></a>Az Azure Functions monitorozása
 

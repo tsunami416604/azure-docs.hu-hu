@@ -1,6 +1,6 @@
 ---
-title: Módosítsa a virtuális gépek rendelkezésre állási csoport |} Microsoft Docs
-description: Megtudhatja, hogyan módosíthatja a rendelkezésre állási csoportot a virtuális gépek Azure PowerShell és a Resource Manager üzembe helyezési modellben.
+title: A virtuális gépek rendelkezésre állási csoport módosítása |} A Microsoft Docs
+description: Megtudhatja, hogyan módosíthatja a rendelkezésre állási csoportot a virtuális gépek Azure PowerShell és a Resource Manager üzemi modell használatával.
 keywords: ''
 services: virtual-machines-windows
 documentationcenter: ''
@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2018
 ms.author: cynthn
-ms.openlocfilehash: 2ce73ca0a50a9884337258be0fab00528800db27
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 8d11f81d5fea47ccef8689a84c06768c4ca36012
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34701819"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44162036"
 ---
-# <a name="change-the-availability-set-for-a-windows-vm"></a>A rendelkezésre állási csoportot a Windows virtuális gépek módosítása
-A következő lépések azt ismertetik, hogyan módosíthatja a rendelkezésre állási csoport a virtuális gépek Azure PowerShell használatával. A virtuális gépek csak rendelkezésre állási készlet létrehozásakor lehet hozzáadni. Módosítsa a rendelkezésre állási adja meg, törölje és hozza létre a virtuális gép szükséges. 
+# <a name="change-the-availability-set-for-a-windows-vm"></a>A Windows virtuális gép rendelkezésre állási módosítása
+A következő lépések bemutatják, hogyan módosíthatja a rendelkezésre állási csoport a virtuális gépek Azure PowerShell-lel. Virtuális gép csak egy rendelkezésre állási csoport létrehozásakor lehet hozzáadni. Módosíthatja a rendelkezésre állási beállítása, törölje és hozza létre a virtuális gép szükséges. 
 
 ## <a name="change-the-availability-set"></a>A rendelkezésre állási csoport módosítása 
 
-A következő parancsfájl egy példát a szükséges információk összegyűjtéséhez. az eredeti virtuális gép törlése, majd újbóli létrehozása egy új rendelkezésre állási csoportot.
+Az alábbi parancsprogram azt szemlélteti, a szükséges adatok összegyűjtését. az eredeti virtuális gép törlése, majd újra létrehozni egy új rendelkezésre állási csoportot.
 
 ```powershell
 # Set variables
@@ -35,8 +35,8 @@ A következő parancsfájl egy példát a szükséges információk összegyűjt
     $vmName = "myVM"
     $newAvailSetName = "myAvailabilitySet"
 
-# Get VM Details
-    $originalVM = get-azurermvm `
+# Get the details of the VM to be moved to the Availablity Set
+    $originalVM = Get-AzureRmVM `
        -ResourceGroupName $resourceGroup `
        -Name $vmName
 
@@ -98,5 +98,5 @@ A következő parancsfájl egy példát a szükséges információk összegyűjt
 
 ## <a name="next-steps"></a>További lépések
 
-További tárhely hozzáadása a virtuális Gépet egy további hozzáadásával [adatlemez](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+A virtuális gép további tárhely hozzáadása egy további hozzáadásával [adatlemez](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 

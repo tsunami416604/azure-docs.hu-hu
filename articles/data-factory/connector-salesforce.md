@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: jingwang
-ms.openlocfilehash: 19ba4a97b93c01a049f921904d0f5aba4b8c0617
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 56f1721240d4b685133149d50dd7c2a0e6b7e974
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42442054"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44158841"
 ---
 # <a name="copy-data-from-and-to-salesforce-by-using-azure-data-factory"></a>Adatok másolása a Salesforce-hoz, és az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -293,7 +293,7 @@ Adatok másolása a Salesforce-ból, ha SOQL lekérdezés vagy SQL-lekérdezést
 | Oszlop kiválasztása | Kell felsorolni a lekérdezés, pl. másolandó mezők `SELECT field1, filed2 FROM objectname` | `SELECT *` Oszlop kiválasztása mellett támogatott. |
 | Idézőjelek között | Nem szerepelhetnek idézőjelek között az iktatott/objektumok nevét. | A mező/objektumok nevét is szerepelhetnek idézőjelek között, például: `SELECT "id" FROM "Account"` |
 | Dátum és idő formátumban |  Tekintse meg a részleteket [Itt](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql_select_dateformats.htm) és a felhozott példák a következő szakaszban. | Tekintse meg a részleteket [Itt](https://docs.microsoft.com/sql/odbc/reference/develop-app/date-time-and-timestamp-literals?view=sql-server-2017) és a felhozott példák a következő szakaszban. |
-| Logikai értékek | -Kiszolgálókként `False` és `Ture`, pl. `SELECT … WHERE IsDeleted=True`. | 0 vagy 1, pl. kiszolgálókként `SELECT … WHERE IsDeleted=1`. |
+| Logikai értékek | -Kiszolgálókként `False` és `True`, pl. `SELECT … WHERE IsDeleted=True`. | 0 vagy 1, pl. kiszolgálókként `SELECT … WHERE IsDeleted=1`. |
 | Oszlop átnevezése | Nem támogatott. | Támogatott, például: `SELECT a AS b FROM …`. |
 | Kapcsolat | Támogatott, például `Account_vod__r.nvs_Country__c`. | Nem támogatott. |
 

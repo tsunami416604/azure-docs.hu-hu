@@ -9,12 +9,12 @@ ms.component: luis
 ms.topic: article
 ms.date: 08/02/2018
 ms.author: diberry
-ms.openlocfilehash: 5f11409ff49830be97d9a13a0ab7f033d9cc1041
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 17a8110624975d8053ad69c5bf30477e6d715ee8
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39494465"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44159826"
 ---
 # <a name="tutorial-6-add-composite-entity"></a>Oktatóanyag: 6. Összetett entitás hozzáadása 
 Ebben az oktatóanyagban egy összetett entitás szeretné a befoglaló entitás be kinyert adatok hozzáadása.
@@ -28,7 +28,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Alkalmazás betanítása és közzététele
 > * Alkalmazás végpontjának lekérdezése a LUIS által visszaadott JSON-válasz megtekintéséhez
 
-[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="before-you-begin"></a>Előkészületek
 Ha még nincs meg az Emberi erőforrások alkalmazása a [hierarchikus entitás](luis-quickstart-intent-and-hier-entity.md) oktatóanyagából, [importálja](luis-how-to-start-new-app.md#import-new-app) a JSON-t egy új alkalmazásba a [LUIS](luis-reference-regions.md#luis-website) webhelyén. Az importálandó alkalmazás a [LUIS-minták](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-hier-HumanResources.json) GitHub-adattárban található.
@@ -100,15 +100,15 @@ A kibontott adatok végpontról tartalmazzák ezt az információt és küldje v
 
 ## <a name="train-the-luis-app"></a>A LUIS-alkalmazás betanítása
 
-[!include[LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
+[!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
 ## <a name="publish-the-app-to-get-the-endpoint-url"></a>Az alkalmazás közzététele a végpont URL-címének lekéréshez
 
-[!include[LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
+[!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
 ## <a name="query-the-endpoint"></a>A végpont lekérdezése 
 
-1. [!include[LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
+1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
 2. Lépjen az URL-cím végéhez, és írja be a következőt: `Move Jill Jones from a-1234 to z-2345 on March 3 2 p.m.`. Az utolsó lekérdezési karakterlánc paraméter `q`, az utterance (kifejezés) lekérdezést. 
 
@@ -296,7 +296,7 @@ A LUIS végzett ezzel a kéréssel. A hívó alkalmazás, például egy csevegő
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-[!include[LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
+[!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>További lépések
 > [!div class="nextstepaction"] 

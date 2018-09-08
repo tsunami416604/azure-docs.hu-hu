@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: d140cbdb0548de869c7aab6ba5da281046a215f9
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: a235b85887e64e0a5ca35aae8f31734250a78bb5
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39434112"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44160234"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-xmatters-ondemand"></a>Oktatóanyag: Azure Active Directory-integráció az OnDemand xMatters
 
@@ -37,7 +37,7 @@ Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsol
 
 Az Azure AD-integráció konfigurálása az xMatters OnDemand, a következőkre van szükség:
 
-- Az Azure AD-előfizetéshez
+- Azure AD-előfizetés
 - Egy OnDemand egyszeri bejelentkezés xMatters előfizetés engedélyezve van.
 
 > [!NOTE]
@@ -59,7 +59,7 @@ Az Azure AD integrálása a xMatters OnDemand konfigurálásához hozzá kell xM
 
 **XMatters OnDemand hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Active Directory][1]
 
@@ -202,7 +202,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
 ### <a name="creating-a-xmatters-ondemand-test-user"></a>XMatters OnDemand tesztfelhasználó létrehozása
 
-Ez a szakasz célja xMatters OnDemand Britta Simon nevű felhasználó létrehozásához. xMatters OnDemand támogatja a felhasználók automatikus átadása, amely alapértelmezés szerint van engedélyezve. További részleteket talál [Itt](xmatters-ondemand-provisioning-tutorial.md) konfigurálásának a felhasználók automatikus átadása.
+Ez a szakasz célja xMatters OnDemand Britta Simon nevű felhasználó létrehozásához.
 
 **Hozza létre a felhasználó manuálisan kell, ha hajtsa végre a következő lépéseket:**
 
@@ -269,7 +269,6 @@ A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezet�
 
 * [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
-* [Felhasználók átadásának konfigurálása](xmatters-ondemand-provisioning-tutorial.md)
 
 <!--Image references-->
 

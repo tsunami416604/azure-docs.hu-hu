@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/05/2018
+ms.date: 09/07/2018
 ms.author: mabrigg
-ms.openlocfilehash: ca07c3aca106f6c92187fea5a3ebf7bf172cddcc
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 8e4c86a3c9ff40f23a2a758b450d685b81dabc1a
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44026202"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44091900"
 ---
 # <a name="apply-updates-in-azure-stack"></a>Alkalmazza a frissítéseket az Azure Stackben
 
@@ -65,7 +65,7 @@ Az alábbi eljárás bemutatja, hogyan importálhatja és frissítési csomagok 
 6. A **blob feltöltése**, kattintson a mappa ikonra, és keresse meg a frissítési csomag .exe fájlt, majd kattintson a **nyílt** a fájl explorer-ablakban.
   
 7. A **blob feltöltése**, kattintson a **feltöltése**. 
- 
+  
     ![Látható minden alkalmazáscsomag-fájl feltöltése](media/azure-stack-apply-updates/ApplyUpdates6.png)
 
 8. Ismételje meg a 6 és 7 a *PackageName*állapotára vonatkozó .bin és Metadata.xml fájlt. Ha tartalmazza, ne importálja a kiegészítő Notice.txt fájlt.
@@ -74,6 +74,8 @@ Az alábbi eljárás bemutatja, hogyan importálhatja és frissítési csomagok 
 11. Telepítheti a frissítést, válassza ki a csomagot, amely van megjelölve **készen áll** vagy kattintson a jobb gombbal a csomagot, és kattintson **frissítés most**, vagy kattintson a **frissítés most** tetejénél művelet .
 12. Frissítési csomag telepítése gombra kattint, megtekintheti az állapotát a **frissítési menetet részletek** területen. Itt is kattinthat **teljes naplók letöltéséhez** letöltéséhez a rendszernapló fájljaiban.
 13. A frissítés befejeződött, a frissítés csempét jelenít meg a frissített Azure Stack-verzió.
+
+Manuálisan törölheti frissítések a storage-fiókból az Azure Stack telepítése után. Az Azure Stack rendszeresen keresi a korábbi frissítési csomagokat, és eltávolítja azokat a storage-ból. Azure Stack is igénybe vehet, távolítsa el a régi csomagot két hét.
 
 ## <a name="next-steps"></a>További lépések
 

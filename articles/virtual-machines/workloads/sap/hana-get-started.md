@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 09/15/2016
+ms.date: 09/06/2018
 ms.author: hermannd
-ms.openlocfilehash: 1948fb927c00e928a46c347bc6f1a01a43e155df
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 5ce80e85f00c4c3542bf61e910baec9ccd635bcd
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43112139"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44161305"
 ---
 # <a name="quickstart-manual-installation-of-single-instance-sap-hana-on-azure-vms"></a>Gyors útmutató: Egy példányban – SAP HANA az Azure virtuális gépek manuális telepítése
 ## <a name="introduction"></a>Bevezetés
@@ -45,7 +45,9 @@ Ez az útmutató feltételezi, hogy Ön ismeri a:
    * Részletes információk a egy több SID-vel telepített Azure-on futó ASCS/SCS kihasználva a hatékonyság növelése érdekében. Lásd: [hozzon létre egy SAP NetWeaver több biztonsági AZONOSÍTÓVAL konfigurációt](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-multi-sid). 
    * Alapelvek futó SAP NetWeaver Linux-alapú virtuális gépek az Azure-ban alapján. Lásd: [Microsoft Azure SUSE Linux rendszerű virtuális gépeken futó SAP NetWeaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/suse-quickstart). Az útmutató Linux az Azure virtuális gépek és a részletek vonatkozó beállításokat tartalmaz a megfelelően az Azure storage-lemez csatlakoztatása Linux rendszerű virtuális gépekhez.
 
-Jelenleg Azure virtuális gépek által minősített az SAP az SAP HANA vertikális felskálázás konfiguráció. Az SAP HANA számítási feladatainak kibővített konfigurációkhoz még nem támogatott. Tekintse meg az SAP HANA magas rendelkezésre álláshoz a vertikális felskálázás konfigurációt eseteit [magas rendelkezésre állás az SAP Hana az Azure-beli virtuális gépek (VM)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability).
+A termelési forgatókönyvekhez használható Azure-beli Virtuálisgép-típusok szerepelnek a [IAAS SAP dokumentációjában](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html). Nem éles környezethez natív Azure-beli Virtuálisgép-típusok választéka áll rendelkezésére.
+További részletekért a virtuális gép konfigurációs és műveletek tekintse meg a dokumentum [SAP HANA-infrastruktúra konfigurációi és a műveletek az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations).
+Tekintse meg az SAP HANA magas rendelkezésre állás érdekében [SAP HANA magas rendelkezésre állás az Azure-beli virtuális gépek](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-overview).
 
 Ha egy SAP HANA-példány vagy S/4HANA vagy BW/4HANA rendszert üzembe helyezett nagyon gyors piacra tudásbázison, fontolja meg a használatát [SAP Cloud Appliance Library](http://cal.sap.com). Központi telepítésével kapcsolatos, például SAP CAL az Azure-on keresztül az S/4HANA rendszer dokumentációjában talál [Ez az útmutató](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/cal-s4h). Szeretné, hogy szüksége egy Azure-előfizetés és a egy SAP-felhasználó, az SAP Cloud Appliance Library regisztrált.
 

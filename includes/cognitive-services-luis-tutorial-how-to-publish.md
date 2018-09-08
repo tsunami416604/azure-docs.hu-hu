@@ -11,11 +11,11 @@ ms.custom: include file
 ms.date: 07/26/2018
 ms.author: diberry
 ms.openlocfilehash: 0d72cde105ad7043f1c063151a667298d50962df
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
-ms.translationtype: MT
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39358345"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44163768"
 ---
 Ahhoz, hogy LUIS-előrejelzéseket kaphasson egy csevegőrobotban vagy más alkalmazásban, közzé kell tennie az alkalmazást. 
 

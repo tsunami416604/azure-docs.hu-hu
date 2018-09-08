@@ -3,23 +3,19 @@ title: Teljesítmény- és horizontális leskálázás Durable Functions – Azu
 description: Az Azure Functions szolgáltatáshoz a Durable Functions bővítmény bemutatása.
 services: functions
 author: cgillum
-manager: cfowler
-editor: ''
-tags: ''
+manager: jeconnoc
 keywords: ''
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: multiple
-ms.workload: na
+ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: b7e6a5a4f4e449926bfb63425c2f45bd09f63827
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 52582a6fe3f6c8ccc22c57268e20a94139be9e6f
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39214767"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44094858"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Teljesítmény és méretezhetőség a tartós függvények (az Azure Functions)
 
@@ -164,7 +160,7 @@ Durable Functions használata a termelési alkalmazások tervezésekor fontos fi
 
 Az alábbi táblázatban láthatók a várt *maximális* átviteli számokat a leírt forgatókönyvek esetén. "Példány" hivatkozik egy orchestrator-függvényt egyetlen kisméretű futó egyetlen példányát ([A1](../virtual-machines/windows/sizes-previous-gen.md#a-series)) virtuális Gépen az Azure App Service-ben. Minden esetben azt feltételezzük, hogy [bővített munkamenet](#orchestrator-function-replay) engedélyezve vannak. A tényleges eredmények eltérőek lehetnek attól függően, a CPU- vagy i/o által elvégzett a függvénykódot.
 
-| Eset | Maximális átviteli sebesség |
+| Forgatókönyv | Maximális átviteli sebesség |
 |-|-|
 | Soros tevékenység-végrehajtás | példány, másodpercenként 5 tevékenység |
 | Párhuzamos tevékenység-végrehajtás (logikájával) | 100 tevékenység / másodperc, példányonként |

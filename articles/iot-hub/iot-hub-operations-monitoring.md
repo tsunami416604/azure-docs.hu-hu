@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/10/2017
 ms.author: nberdy
-ms.openlocfilehash: 0f4d5105b7266ba24fc5efa9af887b4458c05d5e
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 3aa452cd178bd0d064726c5be7dbdf65c6ef8d92
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39186196"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44160048"
 ---
 # <a name="iot-hub-operations-monitoring"></a>IoT Hub-műveletek monitorozása
 
@@ -96,7 +96,7 @@ Az eszközkategória telemetriai előforduló hibák az IoT hubra kapcsolódnak,
 }
 ```
 
-### <a name="cloud-to-device-commands"></a>Felhőből az eszközre irányuló parancsok
+### <a name="cloud-to-device-commands"></a>Felhő–eszköz irányú parancsok
 
 A felhőből az eszközre irányuló parancsok kategória előforduló hibák az IoT hubra a felhőből az eszközre irányuló üzenetek folyamat kapcsolódó követi nyomon. Ez a kategória tartalmazza a hibák fordulhatnak elő, amikor a felhőből az eszközre irányuló üzenetküldés (például illetéktelen küldő), (például a szállítási darabszám túllépve) a felhőből az eszközre irányuló üzenetek fogadása és visszajelzés a felhőből az eszközre irányuló üzenetek fogadása (mint például a visszajelzések lejárt). Ez a kategória nem dolgozza hibák az eszközről, amely nem megfelelően kezeli a felhőből az eszközre irányuló üzenet, ha a felhőből az eszközre irányuló üzenet sikeresen kézbesítve.
 
@@ -185,26 +185,6 @@ Az üzenet-útválasztási kategória üzenet útvonal értékelése és a végp
     "details": "ExternalEndpointDisabled"
 }
 ```
-
-## <a name="view-events"></a>Események megtekintése
-
-Használhatja a *iothub-explorer* eszköz gyors teszteléséhez, hogy az IoT hub generáló figyelési esemény. Az eszköz telepítése a következő témakör utasításait: a [iothub-explorer] [ lnk-iothub-explorer] GitHub-adattárban.
-
-1. Győződjön meg arról, hogy a **kapcsolatok** figyelési kategória értéke **részletes** a portálon.
-
-1. Parancsot egy parancssorba futtassa a következő parancsot a figyelési végpontról való olvasáshoz:
-
-    ```
-    iothub-explorer monitor-ops --login {your iothubowner connection string}
-    ```
-
-1. Egy másik-parancssorban futtassa a következő parancsot hozhat létre szimulált eszközt a felhőbe irányuló üzenetek küldése egy eszközt:
-
-    ```
-    iothub-explorer simulate-device {your device name} --send "My test message" --login {your iothubowner connection string}
-    ```
-
-1. A szimulált eszköz csatlakozik az IoT hub első parancssor látható a figyelési esemény.
 
 ## <a name="connect-to-the-monitoring-endpoint"></a>A felügyeleti végponthoz való csatlakozás
 
@@ -303,5 +283,4 @@ Részletesebb megismerése az IoT Hub képességeit, tekintse meg:
 
 [lnk-devguide]: iot-hub-devguide.md
 [lnk-iotedge]: ../iot-edge/tutorial-simulate-device-linux.md
-[lnk-iothub-explorer]: https://github.com/azure/iothub-explorer
 [lnk-eventhubs-tutorial]: ../event-hubs/event-hubs-csharp-ephcs-getstarted.md

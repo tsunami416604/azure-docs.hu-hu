@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/25/2017
 ms.author: daveba
-ms.openlocfilehash: a5da06eac7f4680282aad305f57cb9ca1c9d5730
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: f46475dfc74212a01b70d487c04d6cd54ca4ca2f
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44028359"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44158160"
 ---
 # <a name="assign-a-managed-service-identity-msi-access-to-a-resource-using-azure-cli"></a>A Felügyeltszolgáltatás-identitás (MSI) hozzáférés hozzárendelése egy erőforrást az Azure CLI használatával
 
-[!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
+[!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
 Miután konfigurálta az Azure-erőforrás egy MSI-vel, az MSI hozzáférést biztosíthat egy másik erőforráshoz, csakúgy, mint egy rendszerbiztonsági tagot. Ez a példa bemutatja, hogyan biztosíthat az Azure virtuális gép vagy a virtuális gép méretezési csoportjának MSI-hozzáférés az Azure storage-fiókba, az Azure CLI használatával.
 

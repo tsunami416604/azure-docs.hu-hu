@@ -1,6 +1,6 @@
 ---
-title: Verizon egyéni jelentések |} Microsoft Docs
-description: 'Megtekintheti használati minták a CDN a következő jelentések segítségével: sávszélesség, adatokat továbbít, a találatok, gyorsítótár állapotok, gyorsítótári találati aránya, IPV4/IPV6 adatokat továbbít.'
+title: Egyéni jelentések a Verizontól |} A Microsoft Docs
+description: 'Az alábbi jelentések használatával a CDN használati mintáinak is megtekintheti: a sávszélesség, átvitt adatok, a találatok, gyorsítótárak állapota, gyorsítótár találati aránya, IPV4/IPV6 átvitt adatok.'
 services: cdn
 documentationcenter: ''
 author: dksimpson
@@ -14,79 +14,79 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/11/2017
 ms.author: v-deasim
-ms.openlocfilehash: f09195dc07a96ebcca7f7a9e4bcf521fae13630c
-ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
+ms.openlocfilehash: f18b6edb900640e48e5ca87639f71cec9287af38
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2017
-ms.locfileid: "26343888"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44159741"
 ---
-# <a name="custom-reports-from-verizon"></a>Verizon egyéni jelentések
+# <a name="custom-reports-from-verizon"></a>Egyéni jelentések a Verizontól
 
-[!INCLUDE[cdn-verizon-only](../../includes/cdn-verizon-only.md)]
+[!INCLUDE [cdn-verizon-only](../../includes/cdn-verizon-only.md)]
 
-Verizon egyéni jelentések segítségével a kezelés portálon Verizon profilokhoz, megadhatja a peremhálózati CNAME jelentések gyűjtendő adatok típusát.
+Verizon egyéni jelentések segítségével a kezelés portálján Verizon profilokhoz, megadhatja az edge CNAME-rekordokat jelentések gyűjtendő adatok típusát.
 
 
-## <a name="accessing-verizon-custom-reports"></a>Verizon egyéni jelentések használata
-1. A CDN-profil panelje, kattintson a **kezelése** gombra.
+## <a name="accessing-verizon-custom-reports"></a>Verizon egyéni jelentések elérése
+1. A CDN-profil panelje, kattintson a **kezelés** gombra.
    
-    ![CDN-profil Manage gomb](./media/cdn-reports/cdn-manage-btn.png)
+    ![A CDN-profil felügyelet gombra](./media/cdn-reports/cdn-manage-btn.png)
    
-    Megnyitja a CDN-felügyeleti portálon.
-2. Vigye a **Analytics** lapra, és vigye a **egyéni jelentések** menü. Kattintson a **CNAME él**.
+    Megnyílik a CDN felügyeleti portálját.
+2. A kurzort a **Analytics** lapfülre, majd mutasson a **egyéni jelentések** úszó menü. Kattintson a **CNAME-rekordokat él**.
    
-    ![Kezelési portál CDN - egyéni jelentések menü](./media/cdn-reports/cdn-custom-reports.png)
+    ![CDN felügyeleti portálját – egyéni jelentések menüben](./media/cdn-reports/cdn-custom-reports.png)
 
-## <a name="edge-cnames-custom-report"></a>Peremhálózati CNAME egyedi jelentés
-A peremhálózati CNAME egyéni jelentés biztosít a találatok és a statisztika átvitt adatok peremhálózati CNAME, amelyen az egyéni naplózás engedélyezve van. Peremhálózati CNAME Azure CDN-végpont állomásnevek és bármely tartozó egyéni tartomány állomásnevek állnak. 
+## <a name="edge-cnames-custom-report"></a>Edge CNAME-REKORDOKAT egyéni jelentés
+Az Edge CNAME-REKORDOKAT egyéni jelentés edge CNAME-rekordokat, amelyen a jelentés egyéni naplózás engedélyezve van a találatok és az átvitt adatok statisztikai tartalmazza. Edge CNAME-rekordokat az Azure CDN-végpont állomásnevek és a kapcsolódó egyéni tartomány gazdanév állnak. 
 
-Egyéni jelentés adatok naplózásának engedélyezése az edge CNAME egyéni jelentéskészítési képességet után egy órán keresztül kezdődik. Jelentés adatainak megtekintéséhez egy peremhálózati CNAME jelentés egy adott platform vagy az összes platformra létrehozásakor. A jelentés a szervezet a peremhálózati CNAME, amelyhez egyéni jelentés adatokat gyűjtött a program a megadott időtartam alatt korlátozódik. A metrika a metrikák beállítás meghatározása szerint egy grafikonon és adattáblát 10 tetejéhez CNAME a peremhálózaton CNAME jelentés áll. 
+Egyéni jelentés naplózása egy edge CNAME egyéni jelentéskészítési funkció engedélyezése után egy órán keresztül kezdődik. Jelentés adatai egy adott platformhoz tartozó vagy az összes platformra Edge CNAME-rekordokat a jelentés létrehozásával tekintheti meg. Ez a jelentés tartozó lefedettséget korlátozódik a peremhálózati CNAME-rekordokat, amelyhez egyéni jelentés adatai gyűjtötte a program a megadott időtartam alatt. Az edge CNAME-rekordokat a jelentés a metrikák paneljén a meghatározott metrika szerint a felső 10 edge CNAME-rekordokat a graph és az adatok táblázatként áll. 
 
-Egyéni jelentés készítése a következő jelentés beállításainak megadásával:
+Egyéni jelentés létrehozása a következő jelentés beállítások megadásával:
 
-- Metrikák: A következő beállításokat támogatja:
+- Metrikák: A következő beállítások támogatottak:
 
-   - Találatok: Azt jelzi, hogy egy biztonsági CNAME, amelyeken engedélyezve van az egyéni jelentéskészítési képességet irányított kérelmek teljes száma. Ez a metrika nem tartalmazza az állapotkódot adott vissza az ügyfélnek.
+   - Találatok: Azt jelzi, hogy az edge CNAME, amelyen engedélyezve van az egyéni jelentéskészítési képességet irányított kérelmek teljes száma. Ez a metrika nem tartalmazza az ügyfélnek visszaadott állapotkódot követi.
 
-   - Adatok átutalt: A HTTP-ügyfelek (például a webböngészők) a peremhálózati kiszolgálókról átvitt adatok teljes mennyisége egy peremhálózati CNAME, amelyeken engedélyezve van az egyéni jelentéskészítési képességet irányított kérelmek jelzi. Az átvitt adatok mennyisége HTTP-válaszfejlécek ad hozzá az adott válasz törzsének kiszámítása. Ennek eredményeképpen a minden eszköz átvitt adatok mérete nagyobb, mint a fájl tényleges mérete.
+   - Adatok átutalt: Azt jelzi, hogy a HTTP-ügyfelekre (például a webböngészők) a peremhálózati kiszolgálókról történő átvitt adatok teljes mennyisége a kéréseket, amely egy edge CNAME, amelyen az egyéni jelentéskészítési funkció engedélyezve van a rendszer átirányítja. Az átvitt adatok mennyisége HTTP-válaszfejlécek ad hozzá a válasz törzse számolható ki. Ennek eredményeképpen az egyes eszközök továbbított adatok mennyisége nagyobb, mint a fájl tényleges méretével.
 
-- Csoportosítás: Határozza meg a statisztikai adatokat tartalmaz a sávdiagram alább látható. A következő beállításokat támogatja:
+- Csoportosítás: Határozza meg a statisztikát, amely a sávdiagram alább láthatók. A következő beállítások támogatottak:
 
-   - A HTTP válaszkódot: Statisztikák rendszerezi által HTTP-válaszkód (például 200, 403-as, stb.) az ügyfél számára. 
+   - HTTP-válaszkódot: HTTP-válaszkód szerint rendezi a statisztika (Ha például 200-as, 403, stb.), az ügyfél. 
 
    - Gyorsítótár állapota: Statisztikák gyorsítótár állapot szerint rendezi.
 
 
-A jelentés dátumtartományának beállítása, kiválaszthat vagy egy előre definiált dátumtartományt, például a **Ma** vagy **ezen a héten**, a legördülő listából, vagy meg is kiválaszthat **egyéni** és a naptár ikonok kattintva manuálisan adjon meg egy dátumtartományt. 
+Hogy a jelentés a dátumtartományt, vagy egy előre definiált dátum tartományt választhat, például **Ma** vagy **ezen a héten**, a legördülő listából, vagy választhat **egyéni** és a naptár-ikonokat kattintva manuálisan adjon meg egy dátumtartományt. 
 
-Miután kiválasztotta a dátumtartományt, kattintson a **Ugrás** jelentést.
+Miután kiválasztotta a dátumtartományt, kattintson a **Go** a jelentés létrehozásához.
 
-Exportálhatja az Excel formátumú adatokat az Excel szimbólum jobb oldalán kattintson a **Ugrás** gombra.
+Az Excel szimbólum jobbra található gombra kattintva exportálhatja az adatokat az Excel-formátumban a **Go** gombra.
 
-![CNAME-jelentés](./media/cdn-reports/cdn-cnames-report.png)
+![CNAME-rekordokat a jelentés](./media/cdn-reports/cdn-cnames-report.png)
 
-## <a name="edge-cnames-custom-report-fields"></a>Peremhálózati egyéni CNAME jelentésmezők
+## <a name="edge-cnames-custom-report-fields"></a>Edge CNAME-REKORDOKAT a jelentés egyéni mezők
 
 | Mező                     | Leírás   |
 |---------------------------|---------------|
-| 2xx                       | A kéréseket, és az átvitt adatok (MB) a peremhálózati CNAME REKORDOT, amely egy 2xx HTTP-állapotkódot eredményez a teljes számát jelöli (például 200 OK). |
-| 3xx                       | A kéréseket, és az átvitt adatok (MB) a peremhálózati CNAME REKORDOT, amely egy 3xx HTTP-állapotkódot eredményez a teljes számát jelöli (például 302 található vagy 304 nem módosultak. |
-| 4xx                       | A kéréseket, és az átvitt adatok (MB) a peremhálózati CNAME REKORDOT, amely egy 4xx HTTP-állapotkódot eredményez a teljes számát jelöli (például 400 Hibás kérelem, 403 Tiltott vagy 404-es nem található). |
-| 5XX                       | Jelzi a kéréseket, és az átvitt adatok (MB) teljes számát a szegély CNAME REKORDOT, amely egy 5xx HTTP-állapotkódot (például 500 belső kiszolgálóhiba vagy 502 Hibás átjáró) eredményez. |
-| -Gyorsítótárának találati százaléka               | Azt jelzi, hogy a kérelmező gyorsítótár-ről volt szolgáltatott kérelmeznék kérelem azon százaléka. |
-| Gyorsítótárbeli találatok                | Azt jelzi, hogy a kéréseket, és az átvitt adatok (MB) a peremhálózati CNAME REKORDOT, amely egy találati aránya (például TCP_EXPIRED_HIT, TCP_HIT vagy TCP_PARTIAL_HIT) eredményez a teljes száma. A gyorsítótár-találat következik be, amikor a kért tartalom egy gyorsítótárazott verziója található. |
-| Az átvitt adatmennyiség (MB)     | Azt jelzi, hogy a teljes az átvitt adatok mennyisége (MB) a peremhálózati kiszolgálókról HTTP ügyfelek (webböngésző) a peremhálózati CNAME felé. Az átvitt adatok mennyisége kiszámítása a HTTP-válaszfejlécek ad hozzá az adott válasz törzse. Ennek eredményeképpen a minden eszköz átvitt adatok mérete nagyobb, mint a fájl tényleges mérete. |
-| Leírás               | Az állomásnév szerint él CNAME azonosítja. |
-| Találatok                      | Azt jelzi, a peremhálózati CNAME kérelmek teljes száma |
-| Tévesztések                    | Azt jelzi, hogy a kéréseket, és az átvitt adatok (MB) a peremhálózati CNAME REKORDOT, amely egy gyorsítótár-tévesztései (például TCP_CLIENT_REFRESH_MISS, TCP_EXPIRED_MISS vagy TCP_MISS) eredményez a teljes száma. A gyorsítótár-tévesztései következik be, amikor a kért tartalom nem került a gyorsítótárba, figyelembe véve a kérelem a biztonsági kiszolgálón. | 
-| Gyorsítótár                  | Azt jelzi, hogy a kéréseket, és az átvitt adatok (MB) a peremhálózati CNAME REKORDOT, amely egy CONFIG_NOCACHE gyorsítótár állapotkódot eredményez a teljes száma.  |
-| Egyéb                     | Azt jelzi, hogy a kéréseket, és a 2xx - 5xx tartományon kívül eső HTTP-állapotkódot eredményez átvitt (MB) a peremhálózati CNAME megjelölt adatok teljes száma. |
-| Platform                  | Azt jelzi, hogy a platform, amely a peremhálózati CNAME-forgalmat kezeli. |
-| Nincs hozzárendelve               | A peremhálózati CNAME melyik gyorsítótár állapotkód vagy a HTTP-állapotkód: információ nem naplózza a kéréseket, és az átvitt adatok (MB) teljes számát jelzi.  |
-| Uncacheable               | Azt jelzi, hogy a kéréseket, és az átvitt adatok (MB) a peremhálózati CNAME REKORDOT, amely egy UNCACHEABLE gyorsítótár állapotkódot eredményez a teljes száma.  |
+| 2xx                       | Azt jelzi, hogy a kérések vagy az átvitt adatok (MB) az Edge-hez, amely a 2xx HTTP-állapotkódot eredményez CNAME teljes száma (például 200 OK). |
+| 3xx                       | Azt jelzi, hogy a kérések vagy az átvitt adatok (MB) az Edge-hez, amely egy 3xx HTTP-állapotkódot eredményez CNAME teljes száma (például 302 található vagy a 304 nem módosulnak. |
+| 4xx                       | Azt jelzi, hogy a kérések vagy az átvitt adatok (MB) az Edge-hez, amely egy HTTP 4xx típusú állapotkódot eredményez CNAME teljes száma (például 400 Hibás kérés, 403 Tiltott vagy 404-es nem található). |
+| 5XX                       | Az Edge-hez, amelyek egy 5XX kódú HTTP-állapotkódot (például 500 belső kiszolgálóhiba vagy 502 Hibás átjáró) CNAME kérések vagy az átvitt adatok (MB) teljes számát jelzi. |
+| -Gyorsítótárának találati százaléka               | Azt jelzi, hogy közvetlenül a gyorsítótárból is rendereléséhez szükséges a kérelmező gyorsítótárazható kérelmek aránya. |
+| Gyorsítótárbeli találatok                | Azt jelzi, hogy a kérések vagy az átvitt adatok (MB) az Edge-hez, amelyek taggyorsítótárának találati aránya (például TCP_EXPIRED_HIT, TCP_HIT vagy TCP_PARTIAL_HIT) CNAME teljes száma. Egy taggyorsítótárának találati aránya akkor fordul elő, ha egy gyorsítótárazott verziója a lekért tartalom megtalálható. |
+| Átvitt adatok (MB)     | Azt jelzi, hogy az összes átvitt adatok mennyisége (MB) a peremhálózati kiszolgálókról történő az Edge CNAME (webböngésző) HTTP-ügyfelek. Az átvitt adatok mennyisége a válasz törzse ad hozzá a HTTP-válaszfejlécek számolható ki. Ennek eredményeképpen az egyes eszközök továbbított adatok mennyisége nagyobb, mint a fájl tényleges méretével. |
+| Leírás               | Azonosítja az CNAME beállításával a peremhálózaton |
+| Találatok                      | Azt jelzi, hogy az Edge-ben CNAME kérelmek teljes száma |
+| Tévesztések                    | Azt jelzi, hogy a kérések vagy az átvitt adatok (MB) az Edge-hez, amely a gyorsítótár-tévesztés (például TCP_CLIENT_REFRESH_MISS, TCP_EXPIRED_MISS vagy TCP_MISS) CNAME teljes száma. Gyorsítótár-tévesztés esetén az, hogy a kért tartalom nem gyorsítótárazva lett figyelembe véve a kérést a biztonsági kiszolgálón. | 
+| Nincs gyorsítótárazás                  | Azt jelzi, hogy a kérések vagy az átvitt adatok (MB) az Edge-hez, amely CONFIG_NOCACHE gyorsítótár állapotkódot eredményez CNAME teljes száma.  |
+| Egyéb                     | Azt jelzi, hogy a kérések vagy adatok átvitt (MB) az Edge CNAME jelzi, amely a 2xx - 5xx tartományon kívül esik HTTP-állapotkód eredményez teljes száma. |
+| Platform                  | Azt jelzi, hogy azt a platformot, az edge CNAME forgalmat kezeli. |
+| Nincs hozzárendelés               | Azt jelzi, a peremhálózati CNAME melyik gyorsítótár állapotkód vagy a HTTP-állapotkód: nem naplózott információ a kérések vagy az átvitt adatok (MB) teljes száma.  |
+| Uncacheable               | Azt jelzi, hogy a kérések vagy az átvitt adatok (MB) az Edge-hez, amely egy UNCACHEABLE gyorsítótár állapotkódot eredményez CNAME teljes száma.  |
 
 
 ## <a name="considerations"></a>Megfontolandó szempontok
-Jelentések csak az utolsó 18 hónapon belül létrehozható.
+Jelentések csak az elmúlt 18 hónapban hozhatók létre.
 

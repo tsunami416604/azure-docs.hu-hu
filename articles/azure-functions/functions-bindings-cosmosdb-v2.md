@@ -4,23 +4,19 @@ description: Megtudhatja, hogyan használhatja az Azure Cosmos DB-eseményindít
 services: functions
 documentationcenter: na
 author: ggailey777
-manager: cfowler
-editor: ''
-tags: ''
+manager: jeconnoc
 keywords: az Azure functions, függvények, eseményfeldolgozás, dinamikus számítás, kiszolgáló nélküli architektúra
-ms.service: functions; cosmos-db
+ms.service: azure-functions; cosmos-db
 ms.devlang: multiple
 ms.topic: reference
-ms.tgt_pltfrm: multiple
-ms.workload: na
 ms.date: 11/21/2017
 ms.author: glenga
-ms.openlocfilehash: 919ccdc1a3623a0bb52dbf287b7868fc1929d16e
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: ea1403ed8afe6e84a3118d891e8c2d34b390d158
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43288319"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44093430"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-2x-preview"></a>Az Azure Functions az Azure Cosmos DB-kötéseket 2.x (előzetes verzió)
 

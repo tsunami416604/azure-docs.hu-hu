@@ -1,35 +1,31 @@
 ---
-title: Hibák a tartós funkciók - Azure kezelése
-description: További tudnivalók az Azure Functions a tartós funkciók bővítményben hibák kezelésének módját.
+title: Durable Functions – az Azure a hibák kezelése
+description: Ismerje meg, hogy az a Durable Functions bővítmény hibáinak kezelése az Azure Functions szolgáltatáshoz.
 services: functions
 author: cgillum
-manager: cfowler
-editor: ''
-tags: ''
+manager: jeconnoc
 keywords: ''
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: multiple
-ms.workload: na
+ms.topic: conceptual
 ms.date: 04/30/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 944fab5ccc55bc9a697e870208338bd0e697672d
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 0b19fe7441d3c2c5222095c31d9c3677b8c9cf34
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33763305"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44092717"
 ---
-# <a name="handling-errors-in-durable-functions-azure-functions"></a>Hibák a tartós funkciók (az Azure Functions) kezelése
+# <a name="handling-errors-in-durable-functions-azure-functions"></a>Durable Functions (az Azure Functions) a hibák kezelése
 
-Tartós függvény álló üzenettípusok összehangolását kódba, és a hiba-kezelési lehetőségei a programozási nyelv. Ennek tudatában hogy valóban nincs bármely új elveket, megismerni hiba- és kompenzációs beépítése a álló üzenettípusok összehangolását. Van azonban néhány olyan viselkedéseket, amelyek akkor érdemes figyelembe.
+Tartós függvény vezénylések kódban vannak megvalósítva, és használhatja a hibakezelési képességekkel programozási nyelv. Ezt szem valójában nincs ismerje meg hiba- és kártalanítási beépítése a vezénylések kell minden olyan új fogalmakat. Vannak azonban érdemes figyelembe vennie, néhány működés.
 
-## <a name="errors-in-activity-functions"></a>Hibák a tevékenység-funkciók
+## <a name="errors-in-activity-functions"></a>Hibák a tevékenységfüggvényeket
 
-Bármely, amely egy tevékenység függvényben történt kivétel vissza az orchestrator függvény a hívott és vált ki, mint egy `FunctionFailedException`. Kezelési és a hibakódot az orchestrator függvényben igényeinek megfelelő írhat.
+Bármely, amely egy tevékenység függvényben történt kivétel vissza az orchestrator függvény a hívott, és lépett fel, mint egy `FunctionFailedException`. Az állapotkezelés és kártalanítási hibakódot az orchestrator-funkció az igényeinek megfelelő írhat.
 
-Vegyük példaként a következő orchestrator függvény alapok átviszi az egyik fiókból másikba:
+Vegyük példaként a következő az orchestrator-függvény, amely alapok továbbítja az egyik fiókból a másikba:
 
 ```csharp
 #r "Microsoft.Azure.WebJobs.Extensions.DurableTask"
@@ -68,11 +64,11 @@ public static async Task Run(DurableOrchestrationContext context)
 }
 ```
 
-Ha a hívást a **CreditAccount** függvény a célként megadott fiók nem sikerül, akkor az orchestrator függvény kiegyenlíti ez által a alapok jóváírására vissza a forrás-fiókjának.
+Ha a hívást a **CreditAccount** függvény nem sikerül, a cél-fiók, az orchestrator függvény kompenzálja ez által a alapok jóváírására térjen vissza a forrás-fiók.
 
-## <a name="automatic-retry-on-failure"></a>Automatikus újrapróbálkozási hiba esetén
+## <a name="automatic-retry-on-failure"></a>Automatikus újrapróbálkozás hiba esetén
 
-Ha a tevékenység függvényeinek meghívása, vagy a alárendelt vezénylési funkciók is megadhat az automatikus újrapróbálkozási házirendet. Az alábbi példa megpróbálja meghívni a függvényt legfeljebb 3-szor, és megvárja-e 5 másodperc közötti minden újra:
+Tevékenységfüggvényeket vagy alárendelt vezénylési függvényt hívja, megadhat egy automatikus újrapróbálkozási szabályzat. Az alábbi példa meghívhat egy függvényt, legfeljebb három alkalommal próbál, és az egyes újrapróbálkozások közötti 5 másodpercet vár:
 
 ```csharp
 public static async Task Run(DurableOrchestrationContext context)
@@ -87,20 +83,20 @@ public static async Task Run(DurableOrchestrationContext context)
 }
 ```
 
-A `CallActivityWithRetryAsync` API vesz egy `RetryOptions` paraméter. Alárendelt vezénylési meghívja a használatával a `CallSubOrchestratorWithRetryAsync` API ezek azonos újrapróbálkozási házirendek is használhatók.
+A `CallActivityWithRetryAsync` API vesz igénybe egy `RetryOptions` paraméter. Suborchestration meghívja a használatával a `CallSubOrchestratorWithRetryAsync` API ezek azonos újrapróbálkozási szabályzatokat használhatja.
 
-Az automatikus újrapróbálkozási házirendje testreszabásához több lehetőség áll rendelkezésre. Ezek a következők:
+Többféle módon is automatikus újrapróbálkozási szabályzat testreszabása. Ezek a következők:
 
-* **A kísérletek maximális száma**: az újrapróbálkozások maximális számát.
-* **Első újrapróbálkozás**: mennyi ideig várjon, mielőtt az első újrapróbálkozásnál.
-* **Leállítási együttható**: határozza meg a leállítási üteme együttható. Az alapértelmezett érték 1.
-* **Maximális újrapróbálkozási időköz**: az újrapróbálkozások között a várakozási idő maximális mennyisége.
-* **Ismételje meg a timeout**: A maximális időt ezzel egy újrapróbálkozik. Az alapértelmezés lesz határozatlan ideig próbálja meg újra.
-* **Egyéni**: egy felhasználói visszahívás amely meghatározza, hogy-e egy adott hívás meg kell ismételni adható meg.
+* **Maximális számú kísérlet**: az újrapróbálkozások maximális számát.
+* **Első újrapróbálkozás**: mennyi ideig kell várni, mielőtt az első újrapróbálkozási kísérlet.
+* **Leállítási együttható**: A hányados leállítási üteme határozza meg. Alapértelmezett értéke 1.
+* **Maximális újrapróbálkozási időköz**: köztes várakozási idő maximális mennyisége újrapróbálkozások száma.
+* **Ismételje meg a timeout**: A legnagyobb ezzel időnk újrapróbálkozik. Az alapértelmezett viselkedést, hogy határozatlan ideig próbálja újra.
+* **Egyéni**: egy felhasználó által meghatározott visszahívást is adható meg, amely meghatározza, hogy e egy adott hívás meg kell ismételni.
 
 ## <a name="function-timeouts"></a>Függvény időtúllépések
 
-Előfordulhat, hogy szeretne az orchestrator függvényen belül függvényhívás abandon, ha túl sokáig tart. A megfelelő Ez ma módja hozzon létre egy [tartós időzítő](durable-functions-timers.md) használatával `context.CreateTimer` együtt `Task.WhenAny`, az alábbi példa:
+Előfordulhat, hogy szeretné abandon egy függvény hívásához szükséges egy orchestrator függvényen belül, ha túl sokáig tart. A megfelelő módszer ehhez még ma, hozzon létre egy [tartós időzítő](durable-functions-timers.md) használatával `context.CreateTimer` együtt `Task.WhenAny`, ahogy az alábbi példában:
 
 ```csharp
 public static async Task<bool> Run(DurableOrchestrationContext context)
@@ -130,13 +126,13 @@ public static async Task<bool> Run(DurableOrchestrationContext context)
 ```
 
 > [!NOTE]
-> A mechanizmus ténylegesen állítsa le a folyamatban lévő tevékenységek függvény végrehajtása. Ehelyett egyszerűen lehetővé teszi az orchestrator függvény figyelmen kívül hagyja az eredményt, és helyezze át. Tekintse meg a [időzítők](durable-functions-timers.md#usage-for-timeout) dokumentációjában talál további információt.
+> Ez a mechanizmus ténylegesen nem szünteti meg a folyamatban lévő tevékenység függvény-végrehajtási. Inkább egyszerűen lehetővé teszi a az orchestrator-függvény, amely figyelmen kívül hagyja az eredményt, és lépjen tovább. További információkért lásd: a [időzítők](durable-functions-timers.md#usage-for-timeout) dokumentációját.
 
 ## <a name="unhandled-exceptions"></a>Nem kezelt kivételek
 
-Ha egy orchestrator-függvény sikertelen, és nem kezelt kivételt, a kivétel részletei naplózza, és a példány befejeződik, az egy `Failed` állapotát.
+Az orchestrator függvény egy nem kezelt kivétel miatt nem sikerül, ha a részleteket a kivétel jelentkezett, és a példány befejeződik, az egy `Failed` állapotát.
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Útmutató a problémák diagnosztizálásához](durable-functions-diagnostics.md)
+> [Ismerje meg, hogyan diagnosztizálhatja a problémákat](durable-functions-diagnostics.md)

@@ -1,37 +1,33 @@
 ---
-title: Kötések tartós függvények – Azure
-description: Hogyan eseményindítók és kötések használható az Azure Functions a tartós Functons bővítmény.
+title: Durable Functions – Azure kötései
+description: Hogyan eseményindítók és kötések a tartós Functons bővítmény használata az Azure Functions szolgáltatáshoz.
 services: functions
 author: cgillum
-manager: cfowler
-editor: ''
-tags: ''
+manager: jeconnoc
 keywords: ''
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: multiple
-ms.workload: na
+ms.topic: conceptual
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 370e6e2c569aaf6d9289bddccde2174b4dd2ee97
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 32cf0ad791a8b36d6a90519d428df0b21d542a31
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33763356"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44092801"
 ---
-# <a name="bindings-for-durable-functions-azure-functions"></a>Kötések tartós függvények (az Azure Functions)
+# <a name="bindings-for-durable-functions-azure-functions"></a>Durable Functions (az Azure Functions) kötései
 
-A [tartós funkciók](durable-functions-overview.md) bővítmény vezet be az orchestrator és a tevékenység függvény végrehajtása szabályozó két új eseményindító kötés. Egy kimeneti kötése, amely különbséglemezként funkcionál a tartós Functions futtatókörnyezete ügyfelet is okozna.
+A [Durable Functions](durable-functions-overview.md) bővítmény bevezeti az orchestrator, illetve a tevékenység funkciók végrehajtását szabályozó két új eseményindító kötéseket. Emellett egy kimeneti kötést, amely indextáblaként a Durable Functions futtatókörnyezetének ügyfél vezet be.
 
 ## <a name="orchestration-triggers"></a>Vezénylési eseményindítók
 
-Az orchestration eseményindító lehetővé teszi a tartós orchestrator funkciók készíthet. Ehhez az eseményindítóhoz támogatja az új orchestrator-funkció példányai kezdő- és orchestrator függvény meglévő példányai váró "" feladat folytatása.
+Az orchestration eseményindító lehetővé teszi az orchestrator durable functions hozhat létre. Az eseményindító támogatja az orchestrator-funkció új példányok elindításából és az orchestrator függvény meglévő példányai, amely a "elnyerésére" feladat folytatása.
 
-Az Azure Functions a Visual Studio eszközök használata esetén a vezénylési eseményindító segítségével lett konfigurálva a [OrchestrationTriggerAttribute](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.OrchestrationTriggerAttribute.html) .NET attribútum.
+A Visual Studio-eszközök az Azure Functions használatakor az orchestration eseményindító van konfigurálva, használja a [OrchestrationTriggerAttribute](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.OrchestrationTriggerAttribute.html) .NET attribútum.
 
-Írásakor orchestrator funkciók (például az Azure portálon) programozási nyelven, a vezénylési eseményindító határozzák meg a következő JSON-objektum a `bindings` tömbje a *function.json* fájlt:
+Ír az orchestrator-funkciók (például az Azure Portalon) programozási nyelven, amikor az orchestration eseményindító határozza meg a következő JSON-objektumában a `bindings` tömbje a *function.json* fájlt:
 
 ```json
 {
@@ -42,32 +38,32 @@ Az Azure Functions a Visual Studio eszközök használata esetén a vezénylési
 }
 ```
 
-* `orchestration` a vezénylési neve van. Ez az érték ügyfelek szeretne elindítani az új példányokat orchestrator függvény segítségével. Ez a tulajdonság nem kötelező. Ha nincs megadva, a függvény nevét használja.
+* `orchestration` a vezénylés neve van. Ez az érték ügyfelek szeretne elindítani az új példányokat az orchestrator-funkció segítségével. Ez a tulajdonság nem kötelező. Ha nincs megadva, a függvény neve szolgál.
 
-Belső eseményindító kötés kérdezze le az alapértelmezett tárfiókot, a függvény alkalmazás várólistákból sorozata. Ezek a várólisták belső megvalósítás részletei bővítmény, ezért explicit módon nincsenek beállítva a kötési tulajdonságok.
+A trigger kötés belsőleg az alapértelmezett tárfiókot a függvényalkalmazás az üzenetsorok sorozatát kérdezi le. Ezek a várólisták belső megvalósítási részletei a bővítményt, ezért azok nem explicit módon konfigurált a kötési tulajdonságok.
 
-### <a name="trigger-behavior"></a>Eseményindító viselkedése
+### <a name="trigger-behavior"></a>Az eseményindító viselkedés
 
-Íme néhány a vezénylési eseményindító kapcsolatos megjegyzések:
+Íme néhány az orchestration eseményindító kapcsolatos megjegyzések:
 
-* **Single-threading** -egy egyetlen dispatcher száltól használt összes orchestrator függvény végrehajtása egyetlen példányán. Ezért fontos győződjön meg arról, hogy az orchestrator funkciókódot hatékony, és nem hajtja végre az összes i/o. Fontos továbbá győződjön meg arról, hogy a szál nem kivéve, ha a tartós funkciók-specifikus feladat típusok várakozó aszinkron munka.
-* **Poison-üzenetek kezelésének** -nem az elhalt üzenet támogatja a vezénylési eseményindítók.
-* **Üzenet-láthatósági** -Vezénylési eseményindító üzenetek várólistából kivéve és konfigurálható idejére láthatatlan tartani. Látható-e az üzenetek automatikusan megújítják mindaddig, amíg a függvény alkalmazás fut, és megfelelő.
-* **Visszatérési értékek** -visszatérési értékek JSON formátumúvá szerializált és maradnak meg a vezénylési előzménytábla Azure Table storage-ban. A visszatérési érték lehet lekérdezni a vezénylési ügyfél kötést, a későbbiekben olvashat.
+* **Single-threading** – egy egyetlen dispatcher szálon egyetlen gazdagép-példány összes orchestrator függvény végrehajtásához. Ezért fontos, hogy az orchestrator függvénykód hatékony, és nem hajtja végre az összes i/o. Fontos továbbá győződjön meg arról, hogy ez a hozzászóláslánc nem aszinkron munka, kivéve, ha vár a Durable Functions-specifikus tevékenységtípust.
+* **Poison üzenetkezelés** -vezénylési eseményindítók nem ártalmas üzenetek támogatottak.
+* **Üzenet látható-e** -Vezénylési eseményindító üzenetek el távolítva a sorból, és egy konfigurálható időtartamának láthatatlan marad. Ezek az üzenetek látható-e automatikusan megújul, mindaddig, amíg a függvényalkalmazás fut, és kifogástalan állapotban.
+* **Visszatérési értékek** -értékek JSON-szerializált, és megőrzi a az Azure Table storage a vezénylési előzménytábla adja vissza. A visszaadott értékeket a vezénylési ügyfél kötelező érvényű, a később ismertetett kérdezhetők le.
 
 > [!WARNING]
-> Orchestrator funkciók soha nem kell használni a bemeneti vagy kimeneti kötések eltérő a vezénylési indítás kötés. Ezzel a tartós feladatkiterjesztés problémákat okozhat, mert ezeket a kötések nem veszi fel a single-threading és i/o-szabályok rendelkezik.
+> Orchestrator funkciók soha nem kell használni minden olyan bemeneti vagy kimeneti kötés eltérő a vezénylési kötés aktiválásához. Tartós feladat kiterjesztésű problémákat okozhat, ezeket a kötések nem lehetséges, hogy betartani, a single-threading és i/o-szabályokat mivel így van.
 
-### <a name="trigger-usage"></a>Eseményindító kihasználtsága
+### <a name="trigger-usage"></a>Eseményindító-használat
 
-A bemeneti és kimeneti az orchestration eseményindító kötése támogatja. A következőkben bemeneti és kimeneti kezelése:
+A bemeneti és kiírja a vezénylési trigger kötés támogatja. Néhány dolog tudni a bemeneti és kimeneti kezelése:
 
-* **bemenetek** -támogatás csak Vezénylési működik [DurableOrchestrationContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html) paramétertípusaként. Közvetlenül a függvényaláíráshoz a bemeneti adatok deszerializálása nem támogatott. Kódot kell használnia a [GetInput\<T >](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_GetInput__1) metódus lehívása orchestrator függvény bemenet. A bemeneti JSON-szerializálható típusnak kell lennie.
-* **kimeneti** -Vezénylési eseményindítók támogatja a kimeneti értékeit, valamint a bemeneti adatok. A függvény visszatérési értéke a kimeneti értéket hozzárendelni szolgál, és JSON-szerializálhatónak kell lennie. Ha egy olyan függvényt ad vissza `Task` vagy `void`, egy `null` értéket a rendszer menti a kimenetként.
+* **bemenetek** -Vezénylési funkciók támogatása csak [DurableOrchestrationContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html) paraméter típusaként. Közvetlenül a függvényaláíráshoz a bemenet deszerializálása nem támogatott. Kódot kell használnia a [GetInput\<T >](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_GetInput__1) metódussal beolvassa az orchestrator függvény bemenetei között. Ezeket a bemeneteket JSON-szerializálható típusok kell lennie.
+* **outputs** -Vezénylési eseményindítók támogatják a kimeneti értékeket, valamint bemenetei között. A függvény visszatérési értéke a kimeneti értéket használja, és JSON-szerializálható kell lennie. Ha olyan függvényt ad vissza `Task` vagy `void`, amely egy `null` értékét menti a rendszer a kimenetként.
 
-### <a name="trigger-sample"></a>Eseményindító minta
+### <a name="trigger-sample"></a>Eseményindító-minta
 
-A következő egy példa hogyan nézhet ki a "Hello, World" legegyszerűbb orchestrator függvény:
+Az alábbiakban látható egy példa a "Hello World" orchestrator legegyszerűbb függvény néz:
 
 #### <a name="c"></a>C#
 
@@ -80,7 +76,7 @@ public static string Run([OrchestrationTrigger] DurableOrchestrationContext cont
 }
 ```
 
-#### <a name="javascript-functions-v2-only"></a>JavaScript (csak funkciók v2)
+#### <a name="javascript-functions-v2-only"></a>JavaScript (csak függvények v2)
 
 ```javascript
 const df = require("durable-functions");
@@ -92,9 +88,9 @@ module.exports = df(function*(context) {
 ```
 
 > [!NOTE]
-> JavaScript orchestrators használandó `return`. A `durable-functions` könyvtár hívása gondoskodik a `context.done` metódust.
+> A JavaScript vezénylők használjon `return`. A `durable-functions` tár meghívása nélkül gondoskodik a `context.done` metódust.
 
-A legtöbb orchestrator függvény tevékenység funkciók, hívható meg, a "Hello, World" példa azt mutatja be, hogyan hívhatja meg egy tevékenység függvényben:
+A legtöbb orchestrator hívnia a tevékenység funkciók, így a "Hello World" példa azt mutatja be, hogyan hívhat meg egy tevékenység függvényt:
 
 #### <a name="c"></a>C#
 
@@ -109,7 +105,7 @@ public static async Task<string> Run(
 }
 ```
 
-#### <a name="javascript-functions-v2-only"></a>JavaScript (csak funkciók v2)
+#### <a name="javascript-functions-v2-only"></a>JavaScript (csak függvények v2)
 
 ```javascript
 const df = require("durable-functions");
@@ -121,13 +117,13 @@ module.exports = df(function*(context) {
 });
 ```
 
-## <a name="activity-triggers"></a>Tevékenység eseményindítók
+## <a name="activity-triggers"></a>Tevékenység-eseményindítók
 
-A tevékenység indítási függvények, amelyek az orchestrator-funkciók által meghívott szerzői teszi lehetővé.
+A tevékenység eseményindító lehetővé teszi az orchestrator-funkciók által meghívott függvényeket hozhat létre.
 
-Ha a Visual Studio használata esetén a tevékenység indítási segítségével lett konfigurálva a [ActvityTriggerAttribute](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.ActivityTriggerAttribute.html) .NET attribútum. 
+Visual Studio használata, ha a tevékenység trigger van konfigurálva, használja a [ActvityTriggerAttribute](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.ActivityTriggerAttribute.html) .NET attribútum. 
 
-Fejlesztési használata az Azure-portálon, a tevékenység indítási határozzák meg a következő JSON-objektum a `bindings` tömbje *function.json*:
+Fejlesztési használata az Azure Portalon, a tevékenység eseményindító határozza meg a következő JSON-objektum a `bindings` tömbje *function.json*:
 
 ```json
 {
@@ -138,33 +134,33 @@ Fejlesztési használata az Azure-portálon, a tevékenység indítási határoz
 }
 ```
 
-* `activity` a tevékenység esetén. Ez az érték az orchestrator funkciók segítségével a tevékenység függvény meghívása. Ez a tulajdonság nem kötelező. Ha nincs megadva, a függvény nevét használja.
+* `activity` a tevékenység nevét a rendszer. Ez az érték, amely az orchestrator függvények használatával a tevékenység függvény meghívása. Ez a tulajdonság nem kötelező. Ha nincs megadva, a függvény neve szolgál.
 
-Belső eseményindító kötés kérdezze le az alapértelmezett tárfiókot, a függvény alkalmazás üzenetsorból. A várólista egy belső végrehajtási részletei bővítmény, ezért a kötési tulajdonságok explicit módon nincs konfigurálva.
+A trigger kötés belsőleg az alapértelmezett tárfiókot a függvényalkalmazás üzenetsorok kérdezi le. Ez a várólista egy belső implementálási részlete a bővítményt, ezért azt nem explicit módon történik a kötés tulajdonságai.
 
-### <a name="trigger-behavior"></a>Eseményindító viselkedése
+### <a name="trigger-behavior"></a>Az eseményindító viselkedés
 
-Az alábbiakban néhány tevékenység eseményindító megjegyzéseket:
+Íme néhány a tevékenység eseményindító kapcsolatos megjegyzések:
 
-* **Szálkezelési** -eltérően az orchestration eseményindító tevékenység eseményindítók nem rendelkezik körül szálkezelési korlátozások vagy i/o. Például reguláris funkciók kezelhető.
-* **Poising üzenetének** -tevékenység eseményindítók nem az elhalt üzenet támogatja.
-* **Üzenet-láthatósági** -tevékenység indítási üzenetek várólistából kivéve és konfigurálható idejére láthatatlan tartani. Látható-e az üzenetek automatikusan megújítják mindaddig, amíg a függvény alkalmazás fut, és megfelelő.
-* **Visszatérési értékek** -visszatérési értékek JSON formátumúvá szerializált és maradnak meg a vezénylési előzménytábla Azure Table storage-ban.
+* **Threading** – ellentétben az orchestration eseményindító tevékenység eseményindítók nem rendelkezik körül threading korlátozások vagy i/o. Normál funkciók például kezelhető.
+* **Poising üzenetkezelés** -tevékenység eseményindítók nem ártalmas üzenetek támogatottak.
+* **Üzenet látható-e** -tevékenység eseményindító üzenetek el távolítva a sorból, és egy konfigurálható időtartamának láthatatlan marad. Ezek az üzenetek látható-e automatikusan megújul, mindaddig, amíg a függvényalkalmazás fut, és kifogástalan állapotban.
+* **Visszatérési értékek** -értékek JSON-szerializált, és megőrzi a az Azure Table storage a vezénylési előzménytábla adja vissza.
 
 > [!WARNING]
-> A tároló háttér tevékenység függvények egy megvalósítási részletes, és a felhasználói kód nem működhet együtt a tárolási entitások közvetlenül.
+> A tárolási háttéralkalmazások létre tevékenységfüggvényeket egy implementálási részlete és felhasználói kódban nem működhet együtt ezeket entitások közvetlenül.
 
-### <a name="trigger-usage"></a>Eseményindító kihasználtsága
+### <a name="trigger-usage"></a>Eseményindító-használat
 
-A bemeneti és kimeneti, csakúgy, mint a vezénylési eseményindító a tevékenység indítási kötése támogatja. A következőkben bemeneti és kimeneti kezelése:
+A bemeneti és kiírja, csakúgy, mint az orchestration eseményindító a tevékenység az eseményindító támogatja a kötés. Néhány dolog tudni a bemeneti és kimeneti kezelése:
 
-* **bemenetek** -tevékenység funkciók natív módon használja [DurableActivityContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContext.html) paramétertípusaként. Alternatív megoldásként egy tevékenység függvény deklarálható szerializálhatók a JSON paraméter típussal. Amikor `DurableActivityContext`, hívása [GetInput\<T >](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContext.html#Microsoft_Azure_WebJobs_DurableActivityContext_GetInput__1) beolvasásához és a tevékenység függvény deszerializálni adjon meg.
-* **kimeneti** -tevékenység funkciókat támogatja a kimeneti értékeit, valamint a bemeneti adatok. A függvény visszatérési értéke a kimeneti értéket hozzárendelni szolgál, és JSON-szerializálhatónak kell lennie. Ha egy olyan függvényt ad vissza `Task` vagy `void`, egy `null` értéket a rendszer menti a kimenetként.
-* **metaadatok** -tevékenység funkciók köthető egy `string instanceId` paraméter használatával beolvassa az a szülő vezénylési Példányazonosítója.
+* **bemenetek** -tevékenységfüggvényeket natív módon használhatják [DurableActivityContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContext.html) paraméter típusaként. Azt is megteheti tevékenység függvényének deklarálható szerializálható JSON paraméter típussal. Ha használ `DurableActivityContext`, meghívhatja [GetInput\<T >](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContext.html#Microsoft_Azure_WebJobs_DurableActivityContext_GetInput__1) beolvasásához és deszerializálni a tevékenység függvény bemeneti.
+* **outputs** -tevékenységfüggvényeket támogatja a kimeneti értékeket, valamint bemenetei között. A függvény visszatérési értéke a kimeneti értéket használja, és JSON-szerializálható kell lennie. Ha olyan függvényt ad vissza `Task` vagy `void`, amely egy `null` értékét menti a rendszer a kimenetként.
+* **metaadatok** -kötést hozhasson létre tevékenységfüggvényeket egy `string instanceId` paramétert a szülő vezénylési példány Azonosítójának lekéréséhez.
 
-### <a name="trigger-sample"></a>Eseményindító minta
+### <a name="trigger-sample"></a>Eseményindító-minta
 
-A következő egy példa hogyan nézhet ki egy egyszerű "Hello, World" tevékenység függvény:
+Az alábbiakban látható egy példa egy egyszerű "Hello World" tevékenység függvény néz:
 
 #### <a name="c"></a>C#
 
@@ -177,7 +173,7 @@ public static string SayHello([ActivityTrigger] DurableActivityContext helloCont
 }
 ```
 
-#### <a name="javascript-functions-v2-only"></a>JavaScript (csak funkciók v2)
+#### <a name="javascript-functions-v2-only"></a>JavaScript (csak függvények v2)
 
 ```javascript
 module.exports = function(context) {
@@ -185,7 +181,7 @@ module.exports = function(context) {
 };
 ```
 
-Az alapértelmezett paraméter típusa a `ActivityTriggerAttribute` kötés `DurableActivityContext`. Azonban a tevékenység eseményindítók is közvetlenül a JSON-serializeable kötelező támogatási típusokat (beleértve a primitív típusok), ugyanezt a funkciót sikerült egyszerűsített, mint a következő:
+Az alapértelmezett paraméter típusa a `ActivityTriggerAttribute` kötés `DurableActivityContext`. Azonban tevékenység eseményindítók is közvetlenül a JSON-serializeable kötelező támogatási típusokat, (beleértve az egyszerű típusok), ugyanannak a függvénynek sikerült egyszerűbb, mint a következőképpen:
 
 #### <a name="c"></a>C#
 
@@ -197,7 +193,7 @@ public static string SayHello([ActivityTrigger] string name)
 }
 ```
 
-#### <a name="javascript-functions-v2-only"></a>JavaScript (csak funkciók v2)
+#### <a name="javascript-functions-v2-only"></a>JavaScript (csak függvények v2)
 
 ```javascript
 module.exports = function(context, name) {
@@ -207,9 +203,9 @@ module.exports = function(context, name) {
 
 ### <a name="passing-multiple-parameters"></a>Több paraméterek átadása 
 
-Nincs lehetőség több paraméterek átadása egy tevékenység függvény közvetlenül. A javaslat a jelen esetben ez adjon át egy objektumokból álló tömb vagy [ValueTuples](https://docs.microsoft.com/dotnet/csharp/tuples) objektumok.
+Nem alkalmas több paraméterek átadása egy tevékenység függvényt közvetlenül. Az ajánlás ebben az esetben az objektumok egy tömbjét adja át, vagy használja, [ValueTuples](https://docs.microsoft.com/dotnet/csharp/tuples) objektumokat.
 
-A következő mintát használja az új szolgáltatások [ValueTuples](https://docs.microsoft.com/dotnet/csharp/tuples) hozzá, amelyeknél [C# 7](https://docs.microsoft.com/dotnet/csharp/whats-new/csharp-7#tuples):
+A következő mintát használja az új funkciók [ValueTuples](https://docs.microsoft.com/dotnet/csharp/tuples) szolgáltatással együtt [C# 7](https://docs.microsoft.com/dotnet/csharp/whats-new/csharp-7#tuples):
 
 ```csharp
 [FunctionName("GetCourseRecommendations")]
@@ -245,15 +241,15 @@ public static async Task<dynamic> Mapper([ActivityTrigger] DurableActivityContex
 
 ## <a name="orchestration-client"></a>Vezénylési ügyfél
 
-Az orchestration ügyfél kötés lehetővé teszi az orchestrator functions interaktív funkciók írását. Például akkor műveleteket hajthat végre vezénylési példányok a következő módon:
+A vezénylési ügyfél kötés lehetővé teszi az orchestrator-függvényekkel kezelheti funkciók írását. Például akkor műveleteket hajthat végre vezénylési példányok a következő módon:
 * Indítsa el őket.
-* Lekérdezési azok állapotát.
+* A lekérdezés azok állapotát.
 * Állítsa le azokat.
-* Küldeni események őket most közben.
+* Események küldése őket, miközben futnak.
 
-Ha a Visual Studio használata esetén köthető az orchestration ügyfél használatával a [OrchestrationClientAttribute](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.OrchestrationClientAttribute.html) .NET attribútum.
+Ha a Visual Studio használata esetén kell kötni a vezénylési ügyfél használatával a [OrchestrationClientAttribute](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.OrchestrationClientAttribute.html) .NET attribútum.
 
-Parancsprogramnyelv használata (pl. *.csx* fájlok) fejlesztési, a vezénylési eseményindító határozzák meg a következő JSON-objektum a `bindings` tömbje *function.json*:
+Programozási nyelvek használata (pl. *.csx* fájlok) fejlesztéshez, az orchestration eseményindító meghatározása szerint a következő JSON-objektum a `bindings` tömbje *function.json*:
 
 ```json
 {
@@ -265,28 +261,28 @@ Parancsprogramnyelv használata (pl. *.csx* fájlok) fejlesztési, a vezénylés
 }
 ```
 
-* `taskHub` -Forgatókönyvekben, ahol több függvény alkalmazás megosztása ugyanazt a tárfiókot, de el legyen különítve egymástól kell használni. Ha nincs megadva, az alapértelmezett érték a `host.json` szolgál. Ezt az értéket meg kell egyeznie a cél az orchestrator függvény által használt érték.
-* `connectionName` -A tárolási fiók kapcsolati karakterláncot tartalmazó alkalmazásbeállítás neve. Ez a kapcsolati karakterlánc által képviselt tárfiók azonosnak kell lennie a cél az orchestrator-funkciók által alkalmazott. Ha nincs megadva, a függvény alkalmazás alapértelmezett tárolási fiók kapcsolati karakterlánca szolgál.
+* `taskHub` – Amikor több függvényalkalmazás osztani ugyanazt a tárfiókot, de kell elkülöníteni egymástól esetekben használatos. Ha nincs megadva, az alapértelmezett érték a `host.json` szolgál. Ezt az értéket meg kell egyeznie a cél az orchestrator functions által használt érték.
+* `connectionName` -A egy tárfiók kapcsolati sztringje tartalmazó alkalmazásbeállítás neve. A tárfiók, ez a kapcsolati karakterlánc által képviselt ugyanaz a cél az orchestrator függvények által használt kell lennie. Ha nincs megadva, az alapértelmezett tárfiók kapcsolati sztringje a függvényalkalmazás szolgál.
 
 > [!NOTE]
 > A legtöbb esetben azt javasoljuk, hogy hagyja ki ezeket a tulajdonságokat, és az alapértelmezett viselkedés támaszkodnak.
 
-### <a name="client-usage"></a>Az ügyfelek általi használattal
+### <a name="client-usage"></a>Ügyfelek általi használattal
 
-A C# függvények, akkor általában kötni `DurableOrchestrationClient`, amely hozzáférést biztosít a tartós funkciók által támogatott API-k az összes ügyfél számára. Az ügyfél objektum API-kat a következők:
+A C#-függvények, általában kötött `DurableOrchestrationClient`, amely teljes hozzáférést biztosít az összes ügyfél API-k Durable Functions által támogatott. API-k, az ügyfél-objektumon a következők:
 
 * [StartNewAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_StartNewAsync_)
 * [GetStatusAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_GetStatusAsync_)
 * [TerminateAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_TerminateAsync_)
 * [RaiseEventAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_RaiseEventAsync_)
 
-Másik lehetőségként kell kötni az `IAsyncCollector<T>` ahol `T` van [StartOrchestrationArgs](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.StartOrchestrationArgs.html) vagy `JObject`.
+Azt is megteheti, hogy kötést hozhasson létre `IAsyncCollector<T>` ahol `T` van [StartOrchestrationArgs](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.StartOrchestrationArgs.html) vagy `JObject`.
 
-Tekintse meg a [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) API dokumentációja további részleteket a ezeket a műveleteket.
+Tekintse meg a [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) API-dokumentáció további részleteket az ezeket a műveleteket.
 
-### <a name="client-sample-visual-studio-development"></a>Ügyfél-mintát (a Visual Studio fejlesztői)
+### <a name="client-sample-visual-studio-development"></a>Eszközügyfél minta (Visual Studio fejlesztési)
 
-Íme egy példa várólista-eseményindítóval aktivált függvény, hogy a "HelloWorld" vezénylési elindul.
+Íme egy példa üzenetsor által aktivált függvényt, amely elindítja a "HelloWorld" vezénylési.
 
 ```csharp
 [FunctionName("QueueStart")]
@@ -299,9 +295,9 @@ public static Task Run(
 }
 ```
 
-### <a name="client-sample-not-visual-studio"></a>Ügyfél-mintát (nem a Visual Studio)
+### <a name="client-sample-not-visual-studio"></a>Eszközügyfél minta (nem a Visual Studio)
 
-Ha nem használja a Visual Studio fejlesztési, hozhat létre a következő *function.json* fájlt. A példa bemutatja, hogyan konfigurálhatja a várólista-eseményindítóval aktivált függvény, amely a kötés tartós vezénylési ügyfélprogramot használ:
+Ha nem használ a Visual Studio-fejlesztéshez, hozhat létre a következő *function.json* fájlt. Ez a példa bemutatja, hogyan üzenetsor által aktivált függvény, amely használ a tartós vezénylési ügyfél kötésének konfigurálása:
 
 ```json
 {
@@ -322,11 +318,11 @@ Ha nem használja a Visual Studio fejlesztési, hozhat létre a következő *fun
 } 
 ```
 
-Az alábbiakban nyelvspecifikus mintát, amely elindítani az új orchestrator-funkció példányokat.
+Az alábbiakban nyelvét a minták azt elindítani az új orchestrator-funkció példányokat.
 
-#### <a name="c-sample"></a>C# minta
+#### <a name="c-sample"></a>C#-minta
 
-A következő példa bemutatja, hogyan használhatja a tartós vezénylési indítson egy új függvény példányt egy C# parancsfájl függvény kötési:
+A következő minta bemutatja, hogyan használhatja az új funkció-példány egy C#-szkriptfüggvény kezdő kötés tartós vezénylési ügyfél:
 
 ```csharp
 #r "Microsoft.Azure.WebJobs.Extensions.DurableTask"
@@ -339,7 +335,7 @@ public static Task<string> Run(string input, DurableOrchestrationClient starter)
 
 #### <a name="javascript-sample"></a>JavaScript-minta
 
-A következő példa bemutatja, hogyan használhatja a tartós orchestration-függvény új példányt a JavaScript függvény történő kötés:
+A következő minta bemutatja, hogyan használhatja az új funkció-példány indítása a JavaScript-függvény kötése tartós vezénylési ügyfél:
 
 ```js
 module.exports = function (context, input) {
@@ -354,10 +350,10 @@ module.exports = function (context, input) {
 };
 ```
 
-További részleteket a példányok indítása található [példány felügyeleti](durable-functions-instance-management.md).
+További részletek a példányok indítása található [példány felügyeleti](durable-functions-instance-management.md).
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [További tudnivalók az ellenőrzőpontok létrehozása és a visszajátszás viselkedések](durable-functions-checkpointing-and-replay.md)
+> [Ellenőrzőpont és visszajátszás viselkedések ismertetése](durable-functions-checkpointing-and-replay.md)
 

@@ -11,15 +11,15 @@ ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: conceptual
 ms.date: 05/10/2018
 ms.author: barclayn
-ms.openlocfilehash: 3f3adb1230d6ca6b3a7e616a0beed15d66895124
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
-ms.translationtype: HT
+ms.openlocfilehash: af4ab892ab84ba2f1a19e72710f23ce5ba1232f9
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43282997"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44163107"
 ---
 # <a name="get-started-with-azure-key-vault"></a>Bevezetés az Azure Key Vault használatába
 Ez a cikk útmutatást nyújt az Azure Key Vault PowerShell segítségével történő használatának a megismerésében, és az alábbi tevékenységeken vezeti végig:
@@ -66,7 +66,7 @@ Connect-AzureRmAccount
 ```
 
 >[!NOTE]
- Az Azure bizonyos példányainak használatakor az -Environment paramétert kell használni. Például: 
+ Az Azure bizonyos példányainak használatakor az -Environment paramétert kell használni. Példa: 
  ```powershell
  Connect-AzureRmAccount –Environment (Get-AzureRmEnvironment –Name AzureUSGovernment)
  ```
@@ -140,7 +140,7 @@ A létrehozott vagy az Azure Key Vaultba feltöltött kulcsra ez után az URI ha
 
 ### <a name="importing-an-existing-pfx-file-into-azure-key-vault"></a>Meglévő PFX-fájl importálása az Azure Key Vaultba
 
-Az Azure Key Vaultba feltölteni kívánt PFX-fájlban tárolt meglévő kulcsok esetén más lépéseket kell végrehajtania. Például:
+Az Azure Key Vaultba feltölteni kívánt PFX-fájlban tárolt meglévő kulcsok esetén más lépéseket kell végrehajtania. Példa:
 - Ha PFX-fájlban tárolt meglévő, szoftveresen védett kulccsal rendelkezik
 - A PFX-fájl neve softkey.pfx 
 - A fájlt a C: meghajtón tárolja a rendszer.

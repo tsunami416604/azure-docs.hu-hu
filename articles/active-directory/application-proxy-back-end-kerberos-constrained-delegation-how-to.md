@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: ad2140d9d94cc4655043625200d42485b03c719b
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 258df8f784cf673d628e3e70874a89c8ade692bd
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39364291"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44093685"
 ---
 # <a name="troubleshoot-kerberos-constrained-delegation-configurations-for-application-proxy"></a>A Kerberos általi korlátozott delegálás konfigurációi alkalmazásproxy hibaelhárítása
 
@@ -117,42 +117,42 @@ A fogyasztó az összekötő által biztosított Kerberos jegy. Ezen a ponton v�
 
 3.  Futtatás DevTools (**F12**) a Internet Explorer vagy [Fiddler](https://blogs.msdn.microsoft.com/crminthefield/2012/10/10/using-fiddler-to-check-for-kerberos-auth/) az összekötő-gazdagépről. Nyissa meg az alkalmazás a belső URL-cím használatával. Vizsgálja meg a felajánlott WWW engedélyezési fejléceket, a visszaadott győződjön meg arról, hogy az alkalmazás válasza vagy egyeztetni vagy Kerberos megtalálható. 
 
-    a. A következő Kerberos blob az alkalmazást a böngészőből érkező válaszban visszaadott kezdődik **YII**. Ezek a betűk jelzi, hogy a Kerberos fut-e. A Microsoft NT LAN Manager (NTLM), másrészt, mindig kezdődik **TlRMTVNTUAAB**, amely beolvassa az NTLM biztonsági támogatási szolgáltatóhoz (NTLMSSP) amikor dekódovat a Base64 kódolású anyag. Ha látja **TlRMTVNTUAAB** a blob elején Kerberos nem érhető el. Ha nem lát **TlRMTVNTUAAB**, Kerberos akkor valószínűséggel érhető el.
-
+    - A következő Kerberos blob az alkalmazást a böngészőből érkező válaszban visszaadott kezdődik **YII**. Ezek a betűk jelzi, hogy a Kerberos fut-e. A Microsoft NT LAN Manager (NTLM), másrészt, mindig kezdődik **TlRMTVNTUAAB**, amely beolvassa az NTLM biztonsági támogatási szolgáltatóhoz (NTLMSSP) amikor dekódovat a Base64 kódolású anyag. Ha látja **TlRMTVNTUAAB** a blob elején Kerberos nem érhető el. Ha nem lát **TlRMTVNTUAAB**, Kerberos akkor valószínűséggel érhető el.
+   
        > [!NOTE]
        > Fiddler használatakor ez a metódus szükséges, ideiglenesen letiltani az alkalmazást az IIS-ben a kiterjesztett védelem.
-
-       ![Hálózati ellenőrzési böngészőablakban](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic6.png)
-
-    b. Ezen az ábrán a blob nem ezzel kezdődik **TIRMTVNTUAAB**. Ezért ebben a példában a Kerberos érhető el, és a Kerberos-blob nem ezzel kezdődik **YII**.
+      
+      ![Hálózati ellenőrzési böngészőablakban](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic6.png)
+   
+    - Ezen az ábrán a blob nem ezzel kezdődik **TIRMTVNTUAAB**. Ezért ebben a példában a Kerberos érhető el, és a Kerberos-blob nem ezzel kezdődik **YII**.
 
 4.  NTLM ideiglenesen eltávolítása a szolgáltatók listája az IIS-webhelyen. Az alkalmazást elérheti a Internet Explorer, az összekötő-állomáson. NTLM már nem szerepel a szolgáltatók listája. Csak Kerberos használatával elérhetik az alkalmazást. Ha a hozzáférés meghiúsul, az alkalmazás konfigurációs probléma lehet. A Kerberos-hitelesítés nem működik.
 
-    a. Ha a Kerberos nem érhető el, ellenőrizze az alkalmazás hitelesítési beállításait az IIS-ben. Győződjön meg arról, hogy **egyeztetés** szerepel a listán a lap tetején az NTLM-hez közvetlenül alatta. Ha látja **egyeztet**, **Kerberos vagy az egyeztetés**, vagy **PKU2U**, csak folytatja, ha a Kerberos egy funkcionális.
+    - Ha a Kerberos nem érhető el, ellenőrizze az alkalmazás hitelesítési beállításait az IIS-ben. Győződjön meg arról, hogy **egyeztetés** szerepel a listán a lap tetején az NTLM-hez közvetlenül alatta. Ha látja **egyeztet**, **Kerberos vagy az egyeztetés**, vagy **PKU2U**, csak folytatja, ha a Kerberos egy funkcionális.
 
        ![Windows-hitelesítési szolgáltatók](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic7.png)
    
-    b. A Kerberos és NTLM helyen ideiglenesen letilthatja az alkalmazás a portálon előhitelesítés során. Próbálja meg elérni az internetről a külső URL-cím használatával. Hitelesítést kér. Most már képes ehhez az előző lépésben használt ugyanazzal a fiókkal. Ha nem, a háttér-alkalmazással, nem KCD probléma merül fel.
+    - A Kerberos és NTLM helyen ideiglenesen letilthatja az alkalmazás a portálon előhitelesítés során. Próbálja meg elérni az internetről a külső URL-cím használatával. Hitelesítést kér. Most már képes ehhez az előző lépésben használt ugyanazzal a fiókkal. Ha nem, a háttér-alkalmazással, nem KCD probléma merül fel.
 
-    c. Engedélyezze újra a előtti hitelesítés, a portálon. Azure-on keresztül hitelesítést az alkalmazás a külső URL-CÍMEN keresztül csatlakozni próbál. Egyszeri bejelentkezés nem sikerül, egy a böngésző és az esemény 13022 a tiltott hibaüzenet jelenik meg:
+    - Engedélyezze újra a előtti hitelesítés, a portálon. Azure-on keresztül hitelesítést az alkalmazás a külső URL-CÍMEN keresztül csatlakozni próbál. Egyszeri bejelentkezés nem sikerül, egy a böngésző és az esemény 13022 a tiltott hibaüzenet jelenik meg:
 
        *Microsoft AAD alkalmazásproxy-összekötő nem tudja hitelesíteni a felhasználót, mert a háttérkiszolgáló válaszol egy HTTP 401-es hiba miatt a Kerberos hitelesítési kísérleteket.*
 
        ![HTTTP 401-es tiltott hibaüzenet](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic8.png)
-
-    d. Ellenőrizze az IIS-alkalmazás. Győződjön meg arról, hogy a konfigurált alkalmazáshoz a készletet és az egyszerű szolgáltatásnév használatára vannak konfigurálva ugyanazt a fiókot az Azure ad-ben. Keresse meg az IIS-ben, az alábbi ábrán látható módon:
-
+   
+    - Ellenőrizze az IIS-alkalmazás. Győződjön meg arról, hogy a konfigurált alkalmazáshoz a készletet és az egyszerű szolgáltatásnév használatára vannak konfigurálva ugyanazt a fiókot az Azure ad-ben. Keresse meg az IIS-ben, az alábbi ábrán látható módon:
+      
        ![IIS alkalmazás konfigurációs ablaka](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic9.png)
-
+      
        Ha már tudja, hogy az identitás, ellenőrizze, hogy ennek a fióknak az egyszerű szolgáltatásnév van konfigurálva. Például: `setspn –q http/spn.wacketywack.com`. Adja meg a következő szöveget a parancsot a parancssorba:
-
+      
        ![SetSPN parancssori ablakban](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic10.png)
-
-    e. Ellenőrizze az egyszerű Szolgáltatásnevet, az alkalmazás beállításait a portálon képest van meghatározva. Győződjön meg arról, hogy az azonos SPN-t a következő célon: Azure AD-fiókot konfigurálni az alkalmazáskészlet alkalmazás használja.
+      
+    - Ellenőrizze az egyszerű Szolgáltatásnevet, az alkalmazás beállításait a portálon képest van meghatározva. Győződjön meg arról, hogy az azonos SPN-t a következő célon: Azure AD-fiókot konfigurálni az alkalmazáskészlet alkalmazás használja.
 
        ![Egyszerű szolgáltatásnév konfigurálása az Azure Portalon](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic11.png)
    
-    f. Nyissa meg a távoli IIS, és válassza a **Konfigurációszerkesztő** az alkalmazás lehetőséget. Navigáljon a **system.webServer/security/authentication/windowsAuthentication**. Győződjön meg arról, hogy az érték **UseAppPoolCredentials** van **igaz**.
+    - Nyissa meg a távoli IIS, és válassza a **Konfigurációszerkesztő** az alkalmazás lehetőséget. Navigáljon a **system.webServer/security/authentication/windowsAuthentication**. Győződjön meg arról, hogy az érték **UseAppPoolCredentials** van **igaz**.
 
        ![Az IIS konfigurációs alkalmazás készletek hitelesítőadat-beállítás](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic12.png)
 

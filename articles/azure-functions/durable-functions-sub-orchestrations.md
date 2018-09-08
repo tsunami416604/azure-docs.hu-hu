@@ -1,40 +1,36 @@
 ---
-title: Alárendelt álló üzenettípusok összehangolását tartós funkciók – Azure
-description: Hogyan hívhatja meg a álló üzenettípusok összehangolását a tartós funkciók bővítményben Azure Functions álló üzenettípusok összehangolását.
+title: Durable Functions – Azure alárendelt vezénylések
+description: Hogyan hívhat meg az Azure Functions a Durable Functions bővítmény a vezénylések vezénylések.
 services: functions
 author: cgillum
-manager: cfowler
-editor: ''
-tags: ''
+manager: jeconnoc
 keywords: ''
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: multiple
-ms.workload: na
+ms.topic: conceptual
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 7545a371749ed9af88f08af23cce3a513f494374
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 59e8eb41b7e9fe3d57196f6844d1a768c3ef598b
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33761333"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44094436"
 ---
-# <a name="sub-orchestrations-in-durable-functions-azure-functions"></a>A tartós függvények (az Azure Functions) alárendelt álló üzenettípusok összehangolását
+# <a name="sub-orchestrations-in-durable-functions-azure-functions"></a>Durable Functions (az Azure Functions) az alárendelt vezénylések
 
-Az orchestrator funkciók mellett hívja meg a tevékenység funkciók, más orchestrator függvényeinek meghívása. Például hozhat létre egy nagyobb vezénylési orchestrator funkciók eltávolítva a szalagtárból. Vagy párhuzamosan az orchestrator függvény több példányát is futtathatja.
+Mellett tevékenységfüggvényeket hívja meg, az orchestrator-funkciók meghívhatja az orchestrator-függvényekkel. Ha például hozhat létre egy nagyobb vezénylési orchestrator funkciók kívül egy könyvtár. Vagy egy orchestrator-függvényt több példánya is futtatható egyszerre.
 
-Az orchestrator függvény meghívásával meghívhatja másik orchestrator függvény a [CallSubOrchestratorAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CallSubOrchestratorAsync_) vagy a [CallSubOrchestratorWithRetryAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CallSubOrchestratorWithRetryAsync_) metódust. A [hiba kezelése & kompenzációs](durable-functions-error-handling.md#automatic-retry-on-failure) cikk automatikus újrapróbálkozáskor további részleteket tartalmaz.
+Az orchestrator függvény meghívhat egy másik orchestrator függvény meghívásával a [CallSubOrchestratorAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CallSubOrchestratorAsync_) vagy a [CallSubOrchestratorWithRetryAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CallSubOrchestratorWithRetryAsync_) metódust. A [hibakezelés & kompenzációs](durable-functions-error-handling.md#automatic-retry-on-failure) cikk tartalmaz további információkat az automatikus újrapróbálkozáskor.
 
-Alárendelt orchestrator funkciók ugyanúgy viselkednek tevékenység funkciók a hívó szempontjából. Ezek adhat vissza értéket, kivételt jelez, és a szülő orchestrator függvény is kell várni.
+Alárendelt orchestrator funkciók csak a hívó szempontból tevékenységfüggvényeket viselkednek. Akkor adhat vissza értéket, kivételt, és a szülő orchestrator függvény által is kell várni.
 
 > [!NOTE]
-> A `CallSubOrchestratorAsync` és `CallSubOrchestratorWithRetryAsync` módszerek még nem állnak rendelkezésre a JavaScript.
+> A `CallSubOrchestratorAsync` és `CallSubOrchestratorWithRetryAsync` módszerek még nem érhető el a JavaScript.
 
 ## <a name="example"></a>Példa
 
-Az alábbi példában látható egy IoT ("az eszközök internetes hálózatát") forgatókönyvet, ahol több eszközön, amely ki kell építeni. Van egy adott vezénylési, amely az egyes eszközök, és előfordulhat, hogy keresse meg a következő hasonlót kell elvégezni:
+Az alábbi példa egy ("IOT-") IoT-forgatókönyvet mutatja be, ha több eszköz, amely szükség lesz. Egy adott vezénylési az szükségességéről a következőhöz hasonló a következő eszközre van:
 
 ```csharp
 public static async Task DeviceProvisioningOrchestration(
@@ -55,9 +51,9 @@ public static async Task DeviceProvisioningOrchestration(
 }
 ```
 
-Az orchestrator függvény használható-van egyszeri eszközök kiépítését, vagy egy nagyobb vezénylési része lehet. Az utóbbi esetben a fölérendelt orchestrator függvény ütemezheti a példányai `DeviceProvisioningOrchestration` használatával a `CallSubOrchestratorAsync` API.
+Az orchestrator függvény is használható – van az egyszeri eszközök üzembe helyezését, vagy pedig egy nagyobb vezénylési része lehet. Az utóbbi esetben a szülő orchestrator függvény példányait is ütemezheti `DeviceProvisioningOrchestration` használatával a `CallSubOrchestratorAsync` API-t.
 
-Íme egy példa, amely bemutatja, hogyan több orchestrator funkciók párhuzamosan futnak.
+Íme egy példa, amely bemutatja, hogyan párhuzamosan több orchestrator függvények futnak.
 
 ```csharp
 [FunctionName("ProvisionNewDevices")]
@@ -83,4 +79,4 @@ public static async Task ProvisionNewDevices(
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Ismertetése feladat hubok és konfigurálásuk módját](durable-functions-task-hubs.md)
+> [Feladatközpontok vannak, és a konfigurálásukról további](durable-functions-task-hubs.md)

@@ -1,49 +1,45 @@
 ---
-title: A tartós funkciók - Azure feladat hubok
-description: Ismerje meg, milyen feladat hubot megtalálható-e az Azure Functions tartós funkciók bővítményét. Megtudhatja, hogyan konfigurálhatja a feladat hubs konfigurálása.
+title: Durable Functions – az Azure a feladatközpontok
+description: Ismerje meg, milyen feladatot a központ egy az Azure Functions Durable Functions-bővítményben. Ismerje meg, hogyan konfigurálhatja feladatközpontok konfigurálása.
 services: functions
 author: cgillum
-manager: cfowler
-editor: ''
-tags: ''
+manager: jeconnoc
 keywords: ''
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: multiple
-ms.workload: na
+ms.topic: conceptual
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 563667684accf8b434052cd412bf6e93c77ea63a
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 53c70d4407222a80a9bc948db51294cd3e4e1bb4
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33762326"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44092835"
 ---
-# <a name="task-hubs-in-durable-functions-azure-functions"></a>A tartós függvények (az Azure Functions) feladat hubok
+# <a name="task-hubs-in-durable-functions-azure-functions"></a>Feladatközpontok a tartós függvények (az Azure Functions)
 
-A *feladat hub* a [tartós funkciók](durable-functions-overview.md) álló üzenettípusok összehangolását használt Azure Storage-erőforrások logikai tárolója. Az orchestrator- és tevékenységkezelési funkciók tevékenység egy központban tartoznak, csak is kapcsolatba egymással.
+A *feladat hub* a [Durable Functions](durable-functions-overview.md) vezénylések használt Azure Storage-erőforrások logikai tárolója. Orchestrator, illetve a tevékenység funkciók tartoznak, a tevékenység egy központban csak is kapcsolatba egymással.
 
-Minden függvény alkalmazás rendelkezik egy külön feladat központot. Ha több függvény alkalmazást egy tárfiókot, a tárfiók a több feladat hubok tartalmazza. A következő ábra szemlélteti a megosztott és dedikált tárfiókokban függvény alkalmazásonkénti egy feladat központ.
+Minden függvényalkalmazáshoz egy külön feladat központ rendelkezik. Ha több függvényalkalmazás egy tárfiókot, a storage-fiókot a több feladatközpontok tartalmazza. A következő ábra szemlélteti egy feladat hub függvényalkalmazást a közös vagy dedikált storage-fiókok száma.
 
-![Diagram ábrázoló megosztott, és a storage-fiókok dedikált.](media/durable-functions-task-hubs/task-hubs-storage.png)
+![Bemutató ábra. Ez a megosztott, és a storage-fiókok dedikált.](media/durable-functions-task-hubs/task-hubs-storage.png)
 
-## <a name="azure-storage-resources"></a>Azure Storage-erőforrások
+## <a name="azure-storage-resources"></a>Az Azure Storage-erőforrások
 
-Egy feladat központ a következő tároló-erőforrások áll: 
+Egy feladat hub a következő tároló-erőforrások áll: 
 
-* Egy vagy több vezérlő várólisták.
+* Egy vagy több vezérlő üzenetsorok.
 * Egy munkaelem várólistát.
 * Egy előzménytábla.
-* Egy példány tábla.
-* Egy tároló tartalmazó egy vagy több bérleti blobot.
+* Példányok egy olyan táblát.
+* Egy storage-tárolót tartalmazó egy vagy több bérletet blobot.
 
-Minden forrás jönnek létre automatikusan az alapértelmezett Azure Storage-fiók az orchestrator vagy tevékenység függvények futtatása vagy ütemezett. A [teljesítmény és méretezhetőség](durable-functions-perf-and-scale.md) a cikk azt ismerteti, hogyan használják ezeket az erőforrásokat.
+Összes ilyen erőforrásról jönnek létre automatikusan az alapértelmezett Azure Storage-fiókban az orchestrator vagy tevékenység függvények futtatása vagy ütemezésére. A [teljesítmény és méretezhetőség](durable-functions-perf-and-scale.md) a cikk azt ismerteti, hogyan használhatók a ezeket az erőforrásokat.
 
-## <a name="task-hub-names"></a>Feladatnév hub
+## <a name="task-hub-names"></a>A feladat értesítésiközpont-nevek
 
-Feladat hubok azonosítják a nevet, amely deklarálva van a *host.json* fájl, a következő példában látható módon:
+Feladatközpontok van deklarálva a név azonosítja a *host.json* fájljához a következő példában látható módon:
 
 ```json
 {
@@ -53,12 +49,12 @@ Feladat hubok azonosítják a nevet, amely deklarálva van a *host.json* fájl, 
 }
 ```
 
-Feladatnév hub kell betűvel kezdődhet, és csak betűkből és számokból állhat. Ha nincs megadva, az alapértelmezett név az **DurableFunctionsHub**.
+A feladat értesítésiközpont-nevek kell betűvel kezdődhet, és csak betűkből és számokból állhat. Ha nincs megadva, az alapértelmezett név az **DurableFunctionsHub**.
 
 > [!NOTE]
-> A név nem egy feladatütemezési központi másik kódjába, ha egy megosztott tárfiókot több feladat hubok. Ha egy megosztott tárfiókot megosztása több függvény alkalmazást, be kell állítania a minden feladat központ eltérő nevet a *host.json* fájlokat.
+> A név egy feladat hub másik kódjába, ha több feladatközpontok megosztott tárfiók található. Ha egy megosztott tárfiókot megosztása több függvényalkalmazás, hogy konfigurálnia minden egyes feladat hub, a különböző neveket a *host.json* fájlokat.
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Ismerje meg, hogyan legyen kezelve versioning](durable-functions-versioning.md)
+> [Ismerje meg, hogyan kezelje a verziókezelés](durable-functions-versioning.md)

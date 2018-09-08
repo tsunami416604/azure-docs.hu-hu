@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/15/2018
 ms.author: daveba
-ms.openlocfilehash: d5c285f13ce45047619b327b9440fbd69c18267e
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 2ec52adec85cc209cee07225cc753a2c40d874c0
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44028415"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44157633"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-azure-cli"></a>Az Azure-erőforrások felügyelt identitások konfigurálása a virtuális gép méretezési csoportban Azure CLI-vel
 
-[!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
+[!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
 Felügyelt identitások az Azure-erőforrások Azure-szolgáltatásokat az Azure Active Directoryban automatikusan felügyelt identitást biztosít. Használhatja ezt az identitást, amely támogatja az Azure AD-hitelesítés, a kód a hitelesítő adatok nélkül bármely szolgáltatással való hitelesítésre. 
 
@@ -109,7 +109,7 @@ Ha már nincs szüksége a felügyelt identitás rendszer által hozzárendelt v
 az vmss update -n myVM -g myResourceGroup --set identity.type="none"
 ```
 
-A felügyelt identitásokból Virtuálisgép-bővítmény Azure-erőforrások eltávolításához használja [eltávolítása az vmss-identitási](/cli/azure/vmss/identity/#az-vmss-remove-identity) paranccsal távolítható el, a rendszer által hozzárendelt egy VMSS felügyelt identitás:
+A felügyelt identitások Azure-erőforrások Virtuálisgép-bővítmény (elavult. január 2019 a tervezett) eltávolításához használja [eltávolítása az vmss-identitási](/cli/azure/vmss/identity/#az-vmss-remove-identity) paranccsal távolítható el, a rendszer által hozzárendelt egy VMSS felügyelt identitás:
 
 ```azurecli-interactive
 az vmss extension delete -n ManagedIdentityExtensionForWindows -g myResourceGroup -vmss-name myVMSS
@@ -131,7 +131,7 @@ Ez a szakasz végigvezeti egy VMSS létrehozásának és a egy felhasználó ál
 
 2. Hozzon létre egy felügyelt identitás felhasználó által hozzárendelt [az identitás létrehozása](/cli/azure/identity#az-identity-create).  A `-g` paraméter adja meg az erőforráscsoport, ahol a felhasználó által hozzárendelt felügyelt identitás jön létre, és a `-n` paraméter adja meg a nevét. Ne felejtse el a `<RESOURCE GROUP>` és `<USER ASSIGNED IDENTITY NAME>` paraméterek értékeit a saját értékeire cserélni:
 
-   [!INCLUDE[ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
+   [!INCLUDE [ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 
    ```azurecli-interactive
    az identity create -g <RESOURCE GROUP> -n <USER ASSIGNED IDENTITY NAME>

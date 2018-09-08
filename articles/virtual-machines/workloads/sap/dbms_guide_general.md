@@ -13,15 +13,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 07/12/2018
+ms.date: 09/06/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e7ad93cbfd096cacadaef8666b0ea5b31d7fd992
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: e46503f8dc97f58db1cd5acfd2122e2895fb15b0
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42918801"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44162308"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Az SAP számítási feladatok Azure virtuális gépek DBMS üzembe szempontjai
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
@@ -272,6 +272,11 @@ Nincsenek kívül rendszereit több száz szabványosította többféle ajánlot
 - A virtuális gépek a virtuális hálózaton belül egy privát IP-cím statikus foglalási rendelkezik. Tekintse meg a cikket [IP-címtípusokat és foglalási módszereket az Azure-ban](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm) hivatkozásként van listázva.
 - Az adatbázis-kezelő virtuális gépek útválasztási korlátozások **nem** rendelkező tűzfal van telepítve a helyi adatbázis-kezelő virtuális gépeken. Ehelyett forgalom-útválasztást van definiálva a [Azure hálózati biztonsági csoportok (NSG)](https://docs.microsoft.com/azure/virtual-network/security-overview)
 - Megadhat, és az adatbázis-kezelő virtuális gép forgalom elkülönítése, a virtuális gép rendeljen hozzá különböző hálózati adapterein. Ha minden hálózati adapter egy másik IP-címmel rendelkezik, és minden hálózati adapter egy hozzárendelt egy másik VNet-alhálózathoz, amely különböző NSG-szabályok újra rendelkezik. Ne feledje, hogy az elkülönítés vagy a hálózati forgalom-útválasztás csak egy mérték, és nem teszi lehetővé a hálózati átviteli sebességet a kvóták beállítását.
+
+> [!NOTE]
+> Segítségével Azure azt jelenti, hogy statikus IP-címeket kell rendel az egyes Vnic. A vendég operációs rendszeren belül a statikus IP-címek nem egy virtuális hálózati adaptert kell hozzárendelése. Egyes Azure-szolgáltatásokhoz hasonlóan az Azure Backup szolgáltatás támaszkodhat, hogy legalább az elsődleges virtuális hálózati adapter van beállítva, a DHCP és a statikus IP-címeket. Lásd még a dokumentum [elhárítása Azure virtuális gépek biztonsági mentésének](https://docs.microsoft.com/azure/backup/backup-azure-vms-troubleshoot#networking). Ha több statikus IP-cím hozzárendelése virtuális Géphez van szüksége, több virtuális hálózati adapter hozzárendelése virtuális Géphez szeretné.
+>
+>
 
 Két virtuális gépet az éles üzemben futó DBMS üzembe helyezési belüli Azure rendelkezésre állási csoport és a egy külön útválasztási az SAP-alkalmazási rétegre és a felügyeleti és a műveletek forgalmat a két adatbázis-kezelő virtuális gépekhez használja, a nyers diagram jelenne meg:
 

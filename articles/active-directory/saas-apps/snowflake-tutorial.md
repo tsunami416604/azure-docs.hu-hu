@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/29/2018
+ms.date: 09/07/2018
 ms.author: jeedes
-ms.openlocfilehash: 3ad3f42563878d829f900d5cddb0c6866d2deab5
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 247d18eb13f7bad10cbfd89891a80d2d1c6135c3
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43307788"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44160545"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-snowflake"></a>Oktatóanyag: Snowflake-Azure Active Directory-integráció
 
@@ -39,6 +39,7 @@ Az Azure AD-integráció konfigurálása a Snowflake, a következőkre van szük
 
 - Azure AD-előfizetés
 - A Snowflake egyszeri bejelentkezés engedélyezve van az előfizetés
+- Olvassa el az ügyfeleknek, akik még nem rendelkezik a Snowflake-fiókkal, és szeretné kipróbálni az Azure AD-alkalmazás katalógusában, [ez](https://trial.snowflake.net/?cloud=azure&utm_source=azure-marketplace&utm_medium=referral&utm_campaign=self-service-azure-mp) hivatkozásra.
 
 > [!NOTE]
 > Ebben az oktatóanyagban a lépéseket teszteléséhez nem ajánlott éles környezetben használja.
@@ -103,22 +104,22 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
  
     ![Egyszeri bejelentkezési párbeszédpanel](./media/snowflake-tutorial/tutorial_snowflake_samlbase.png)
 
-3. Az a **Snowflake-tartomány és URL-címek** területén kövesse az alábbi lépéseket, ha az alkalmazás a konfigurálni kívánt **Identitásszolgáltató** kezdeményezett mód:
+3. Az a **Snowflake-tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
 
     ![Snowflake-tartomány és URL-címeket egyetlen bejelentkezési adatait](./media/snowflake-tutorial/tutorial_snowflake_url.png)
 
-    a. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<SNOWFLAKE-URL>`
+    a. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<SNOWFLAKE-URL>.snowflakecomputing.com`
 
-    b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<SNOWFLAKE-URL>/fed/login`
+    b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<SNOWFLAKE-URL>.snowflakecomputing.com/fed/login`
 
 4. Ellenőrizze **speciális URL-beállítások megjelenítése** , és hajtsa végre a következő lépést, ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett mód:
 
     ![Snowflake-tartomány és URL-címeket egyetlen bejelentkezési adatait](./media/snowflake-tutorial/tutorial_snowflake_url1.png)
 
-    Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<SNOWFLAKE-URL>`
+    Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<SNOWFLAKE-URL>.snowflakecomputing.com`
      
     > [!NOTE] 
-    > Ezek a értékei nem valódi. Frissítse a tényleges azonosítóját, válasz URL-cím és bejelentkezési URL-ezeket az értékeket. Kapcsolattartó [Snowflake ügyfél-támogatási csapatának](https://support.snowflake.net/s/snowflake-support) beolvasni ezeket az értékeket. 
+    > Ezek a értékei nem valódi. Frissítse a tényleges azonosítóját, válasz URL-cím és bejelentkezési URL-ezeket az értékeket.
 
 5. Az a **SAML-aláíró tanúsítvány** területén kattintson **tanúsítvány (Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
 
@@ -132,7 +133,22 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     ![Snowflake-konfiguráció](./media/snowflake-tutorial/tutorial_snowflake_configure.png) 
 
-8. Az egyszeri bejelentkezés konfigurálása **Snowflake** oldalon kell küldenie a letöltött **tanúsítvány (Base64)** és **SAML egyszeri bejelentkezési szolgáltatás URL-cím** való [ Snowflake-ügyfélszolgálathoz](https://support.snowflake.net/s/snowflake-support). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
+8. Egy másik böngészőablakban, jelentkezzen be a Snowflake-Security-rendszergazdaként.
+
+9. Futtassa az alábbi SQL-lekérdezést a munkalapon beállításával a **tanúsítvány** értéket a következőre a **dowloaded tanúsítvány** és **ssoUrl** , a másolt **SAML egyszeri bejelentkezés Szolgáltatás URL-címe** az értékre, ahogy az alábbi Azure AD-ből.
+
+    ![Snowflake-sql](./media/snowflake-tutorial/tutorial_snowflake_sql.png) 
+
+    ```
+    use role accountadmin;
+    alter account set saml_identity_provider = '{
+    "certificate": "<Paste the content of downloaded certificate from Azure portal>",
+    "ssoUrl":"<SAML single sign-on service URL value which you have copied from the Azure portal>",
+    "type":"custom",
+    "label":"AzureAD"
+    }';
+    alter account set sso_login_page = TRUE;
+    ```
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
@@ -168,7 +184,25 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
  
 ### <a name="create-a-snowflake-test-user"></a>Snowflake tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy Snowflake Britta Simon nevű felhasználói hoz létre. Együttműködve [Snowflake-ügyfélszolgálathoz](https://support.snowflake.net/s/snowflake-support) a felhasználók hozzáadása a Snowflake-platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
+Ahhoz, hogy jelentkezzen be a snowflake-hez az Azure AD-felhasználók, akkor ki kell építeni Snowflake-be. Snowflake a kiépítés manuális feladat.
+
+**Üzembe helyez egy felhasználói fiókot, hajtsa végre az alábbi lépéseket:**
+
+1. Jelentkezzen be a Snowflake-Security-rendszergazdaként.
+
+2. **Váltson a szerepkör** való **ACCOUNTADMIN**, kattintva **profil** a jobb felső oldalán található.  
+
+    ![A Snowflake-rendszergazda ](./media/snowflake-tutorial/tutorial_snowflake_accountadmin.png)
+
+3. A felhasználó létrehozásához futtassa az alábbi SQL-lekérdezés, biztosítva a "Login name" értékre van állítva az Azure ad-ben felhasználónév a munkalapon alább látható módon.
+
+    ![A Snowflake adminsql ](./media/snowflake-tutorial/tutorial_snowflake_usersql.png)
+
+    ```
+
+    use role accountadmin;
+    CREATE USER britta_simon PASSWORD = '' LOGIN_NAME = 'BrittaSimon@contoso.com' DISPLAY_NAME = 'Britta Simon';
+    ```
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 

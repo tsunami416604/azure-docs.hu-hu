@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 12/04/2017
 ms.author: memccror
-ms.openlocfilehash: ab56ad07bd3da17f105bd09f2484173207d30015
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: d9df71f6fa2f64544cbefc7d9aca8c153c86ac98
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44025064"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44094255"
 ---
 # <a name="understanding-azure-virtual-machine-usage"></a>Az Azure virtuális gép használatának megismerése
 Az Azure-használati adatok elemzésével hatékony használati adatokba kaphatunk – insights, ami lehetővé teszi a jobban költségek kezelése és a szervezeten belül foglalási. Ez a dokumentum tartalmaz egy részletes ismertetése az Azure Compute használati adatait. Általános Azure használatáról a további részletekért lépjen [a számla értelmezéséhez](https://docs.microsoft.com/azure/billing/billing-understand-your-bill).
@@ -128,7 +128,7 @@ A ImageType mező kitöltése csak képek egy részét. Ha nem telepítette rend
 ### <a name="why-is-the-vmname-blank-in-the-additional-info"></a>Miért nem üres, a további adatainak a VMName?
 A VMName csak töltse be a további információ a mező a virtuális gépek egy méretezési csoportban. A InstanceId azonosító mezőben a virtuális gép neve nem – méretezési csoport virtuális gépeinek esetében.
 ### <a name="what-does-computehr-mean-in-the-usagetype-field-in-the-additional-info"></a>Mit ComputeHR jelent a további adatokat UsageType mezőjében?
-ComputeHR a számítási óra, amely jelöli az alapul szolgáló infrasturcture költségeket a használat esemény rövidítése. Ha a UsageType ComputeHR\_SW, a használati esemény jelenti. a prémium szintű szoftverhasználati díj a virtuális gép számára.
+ComputeHR a számítási óra, amely jelöli az alapul szolgáló infrastruktúra költségeket a használat esemény rövidítése. Ha a UsageType ComputeHR\_SW, a használati esemény jelenti. a prémium szintű szoftverhasználati díj a virtuális gép számára.
 ### <a name="how-do-i-know-if-i-am-charged-for-premium-software"></a>Honnan tudhatom meg, ha a prémium szintű szoftver fizetni?
 Ha milyen Virtuálisgép-lemezkép legjobb felfedezése a legjobban az igényeinek, mindenképpen tekintse meg a [Azure Marketplace-en](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute). A rendszerképre a szoftverfrissítési csomag sebességét. "Ingyenes" jelennek meg a sebesség, van-e a szoftverhez további költség nélkül. 
 ### <a name="what-is-the-difference-between-microsoftclassiccompute-and-microsoftcompute-in-the-consumed-service"></a>Mi a különbség Microsoft.ClassicCompute és Microsoft.Compute a Consumed szolgáltatásban?

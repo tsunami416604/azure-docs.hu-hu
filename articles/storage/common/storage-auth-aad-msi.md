@@ -1,36 +1,33 @@
 ---
-title: Az Azure-hitelesítést AD az Azure virtuális gépből felügyelt Felügyeltszolgáltatás-identitás (előzetes verzió) |} A Microsoft Docs
-description: Az Azure-hitelesítést AD az Azure virtuális gépből felügyelt Felügyeltszolgáltatás-identitás (előzetes verzió).
+title: Hitelesíti a hozzáférést a blobok és üzenetsorok az Azure Active Directory által felügyelt identitásokat az Azure-erőforrásokhoz (előzetes verzió) – Azure Storage |} A Microsoft Docs
+description: Az Azure Blob- és Queue storage támogatja a felügyelt identitások Azure Active Directory-hitelesítést az Azure-erőforrások. Az Azure-erőforrások felügyelt identitások használatával hitelesíti a hozzáférést az Azure virtual machines, a függvényalkalmazások, a virtual machine scale sets és mások a futó alkalmazások a blobok és üzenetsorok. Felügyelt identitások használatával az Azure-erőforrások és alkalmazásaiban az Azure AD-hitelesítés, elkerülheti a hitelesítő adatokat az alkalmazásokkal, amelyek futtatását a felhőben tárolja.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 05/18/2018
+ms.date: 09/05/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: e20e0c412206b2a35973b192ef911bb99ed7c210
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 67e0731c1f10bb635baa4e0d1a26dce0a336b555
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44021863"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44090355"
 ---
-# <a name="authenticate-with-azure-ad-from-an-azure-managed-service-identity-preview"></a>Hitelesítés az Azure Felügyeltszolgáltatás-identitás (előzetes verzió) az Azure AD-vel
+# <a name="authenticate-access-to-blobs-and-queues-with-azure-managed-identities-for-azure-resources-preview"></a>Hitelesíti a hozzáférést a blobok és üzenetsorok az Azure által felügyelt identitásokat az Azure-erőforrások (előzetes verzió)
 
-Az Azure Storage támogatja az Azure Active Directory (Azure AD) hitelesítési [Felügyeltszolgáltatás-identitás](../../active-directory/managed-identities-azure-resources/overview.md). Felügyelt Felügyeltszolgáltatás-identitás (MSI) az Azure Active Directoryban (Azure AD) egy automatikus felügyelt identitást biztosít. Az MSI használatával az Azure virtual machines, a függvényalkalmazások, a virtual machine scale sets és mások a futó alkalmazások az Azure Storage-hitelesítéshez. Az MSI használatával, és alkalmazásaiban az Azure AD-hitelesítés, elkerülheti a hitelesítő adatokat az alkalmazásokkal, amelyek futtatását a felhőben tárolja.  
+Az Azure Blob- és Queue storage támogatja az Azure Active Directory (Azure AD-) hitelesítés a [felügyelt identitások az Azure-erőforrások](../../active-directory/managed-identities-azure-resources/overview.md). Az Azure-erőforrások felügyelt identitások használatával hitelesíti a hozzáférést az Azure-beli virtuális gépek (VM), a függvényalkalmazások, a virtual machine scale sets és mások futó alkalmazások a blobok és üzenetsorok. Felügyelt identitások használatával az Azure-erőforrások és alkalmazásaiban az Azure AD-hitelesítés, elkerülheti a hitelesítő adatokat az alkalmazásokkal, amelyek futtatását a felhőben tárolja.  
 
-A storage-tárolók vagy várólisták felügyeltszolgáltatás-identitás engedélyeket, rendelje hozzá az RBAC-szerepkör, amely magában foglalja a tárolási engedélyek az MSI-csomag. További információ a tárolási RBAC-szerepkörök: [kezelés hozzáférési jogosultsága ahhoz, hogy az RBAC (előzetes verzió) tárolási adatok](storage-auth-aad-rbac.md). 
+A szerepköralapú hozzáférés-vezérlés (RBAC) szerepkör hozzárendelése a felügyelt identitás, amely magában foglalja a megfelelő hatókörben adott erőforrásra vonatkozó engedélyeket egy felügyelt identitás egy blob-tároló vagy egy üzenetsor, engedélyt kell adnia. További információ a tárolási RBAC-szerepkörök: [kezelés hozzáférési jogosultsága ahhoz, hogy az RBAC (előzetes verzió) tárolási adatok](storage-auth-aad-rbac.md). 
 
-> [!IMPORTANT]
-> Ebben az előzetes verzióban csak a nem éles használatra szolgál. Éles szolgáltatásiszint-szerződések (SLA) nem lesz elérhető, amíg az Azure AD integrálása az Azure Storage általánosan elérhető lett deklarálva. Ha az Azure AD-integrációs még nem támogatott a forgatókönyvnek, továbbra is használhatja a megosztott kulcsos engedélyezési vagy SAS-tokeneket az alkalmazásokban. Az előzetes verzióra vonatkozó további információkért lásd: [hitelesíti a hozzáférést az Azure Storage, Azure Active Directory (előzetes verzió) használatával](storage-auth-aad.md).
->
-> Az előzetes verzióban RBAC szerepkör-hozzárendelések eltarthat propagálása akár öt perc alatt.
+Ez a cikk bemutatja, hogyan hitelesítheti az Azure Blob vagy a Queue storage felügyelt identitással Azure virtuális gépből.  
 
-Ez a cikk bemutatja, hogyan hitelesítheti az MSI-vel az Azure Storage, Azure virtuális gépből.  
+[!INCLUDE [storage-auth-aad-note-include](../../../includes/storage-auth-aad-note-include.md)]
 
-## <a name="enable-msi-on-the-vm"></a>A virtuális gépen az MSI engedélyezéséhez
+## <a name="enable-managed-identities-on-a-vm"></a>A virtuális gép felügyelt identitások engedélyezése
 
-Az MSI használatával a virtuális gépről az Azure Storage-hitelesítést, mielőtt a virtuális gépen az MSI először engedélyeznie kell. Az MSI engedélyezéséhez ezekben a cikkekben talál további információt:
+Az Azure-erőforrások felügyelt identitások használatával hitelesíti a hozzáférést a blobok és üzenetsorok, a virtuális gépről, mielőtt először engedélyeznie kell a felügyelt identitások az Azure-erőforrások a virtuális gépen. Felügyelt identitások engedélyezése az Azure-erőforrások kezelésével kapcsolatos információkért lásd: egyet az alábbi cikkek:
 
 - [Azure Portal](https://docs.microsoft.com/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm)
 - [Azure PowerShell](../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)
@@ -38,20 +35,20 @@ Az MSI használatával a virtuális gépről az Azure Storage-hitelesítést, mi
 - [Az Azure Resource Manager-sablon](../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
 - [Azure SDK-k](../../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
 
-## <a name="get-an-msi-access-token"></a>MSI szükséges hozzáférési jogkivonat beszerzése
+## <a name="get-a-managed-identity-access-token"></a>Egy felügyelt identitás-hozzáférési jogkivonat beszerzése
 
-MSI-hitelesítésre, az alkalmazást vagy parancsfájlt kell MSI hozzáférési jogkivonat beszerzése. Hozzáférési jogkivonat beszerzése kapcsolatos tudnivalókért lásd: [egy Azure virtuális gépek Felügyeltszolgáltatás-identitás (MSI) használata a token beszerzéséhez](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md).
+Egy felügyelt identitás-hitelesítésre, az alkalmazást vagy parancsfájlt kell beszerezni egy felügyelt identitás-hozzáférési jogkivonatot. Hozzáférési jogkivonat beszerzése kapcsolatos tudnivalókért lásd: [felügyelt identitások használata az Azure-erőforrások egy Azure-beli virtuális gépen a hozzáférési jogkivonat beszerzése](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md).
 
 ## <a name="net-code-example-create-a-block-blob"></a>.NET mintakód: block blob létrehozása
 
-A mintakód feltételezi, hogy egy MSI-hozzáférési jogkivonatot. A hozzáférési jogkivonat segítségével engedélyezi a felügyeltszolgáltatás-identitás létrehozása a blokkblobok.
+A mintakód feltételezi, hogy egy felügyelt identitás-hozzáférési jogkivonatot. A hozzáférési jogkivonat blokkblob létrehozása felügyelt identitás hitelesítésére szolgál.
 
 ### <a name="add-references-and-using-statements"></a>Mutató hivatkozásokat tudjon felvenni, és utasításokkal  
 
 A Visual Studióban az Azure Storage ügyféloldali kódtár előzetes verzióját telepítse. Az a **eszközök** menüjében válassza **Nuget-Csomagkezelő**, majd **Package Manager Console**. A konzolba írja be a következő parancsot:
 
 ```
-Install-Package https://www.nuget.org/packages/WindowsAzure.Storage/9.2.0  
+Install-Package https://www.nuget.org/packages/WindowsAzure.Storage  
 ```
 
 Adja hozzá a következő using utasításokat a kódját:
@@ -60,13 +57,13 @@ Adja hozzá a következő using utasításokat a kódját:
 using Microsoft.WindowsAzure.Storage.Auth;
 ```
 
-### <a name="create-credentials-from-the-msi-access-token"></a>Az MSI-jogkivonat a hitelesítő adatok létrehozása
+### <a name="create-credentials-from-the-managed-identity-access-token"></a>A felügyelt identitás-hozzáférési jogkivonatot a hitelesítő adatok létrehozása
 
-A blokkblob típusú létrehozásához használja a **TokenCredentials** az előzetes verzió csomag által nyújtott osztály. Egy új példányát hozza létre **TokenCredentials**, az MSI-hozzáférési jogkivonat korábban beszerzett passzok:
+A blokkblob típusú létrehozásához használja a **TokenCredentials** az előzetes verzió csomag által nyújtott osztály. Egy új példányát hozza létre **TokenCredentials**, a korábban beszerzett felügyelt identitás-hozzáférési jogkivonatot a passzok:
 
 ```dotnet
-// Create storage credentials from your MSI access token.
-TokenCredential tokenCredential = new TokenCredential(msiAccessToken);
+// Create storage credentials from your managed identity access token.
+TokenCredential tokenCredential = new TokenCredential(accessToken);
 StorageCredentials storageCredentials = new StorageCredentials(tokenCredential);
 
 // Create a block blob using the credentials.

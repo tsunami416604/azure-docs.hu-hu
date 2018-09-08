@@ -1,6 +1,6 @@
 ---
-title: Az Azure verem PowerShell-környezet konfigurálása |} Microsoft Docs
-description: Megtudhatja, hogyan konfigurálja az Azure verem PowerShell környezetet.
+title: Csatlakozhat az Azure Stack a PowerShell-lel kezelőként |} A Microsoft Docs
+description: Ismerje meg, hogyan csatlakozhat az Azure Stack-kezelőként PowerShell használatával
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -11,32 +11,32 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: article
-ms.date: 06/22/2018
+ms.date: 09/07/2018
 ms.author: mabrigg
 ms.reviewer: thoroet
-ms.openlocfilehash: 74a5a9408a78dd0da12fb3f8ed721774030cc438
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: e6e1ffdf4384080649a769b2fdf6877ea744ec51
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36749861"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44162172"
 ---
-# <a name="configure-the-azure-stack-powershell-environment"></a>Az Azure verem PowerShell-környezet konfigurálása
+# <a name="connect-to-azure-stack-with-powershell-as-an-operator"></a>Csatlakozás Azure Stack PowerShell-kezelőként
 
-*A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
+*A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
 
-Beállíthatja, hogy a PowerShell használatával kezelheti az erőforrásokat, például ajánlatokat, tervek, kvóták és riasztásokat hozhat létre Azure-készlet. Ez a témakör segítséget nyújt a operátor környezet konfigurálásához.
+Az Azure Stack, például az ajánlatok, tervek, kvóták és riasztások létrehozása-erőforrások kezelése a PowerShell segítségével konfigurálhatja. Ez a témakör segít az üzemeltető környezet konfigurálásához.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Futtassa a következő előfeltételek származhatnak a [szoftverfejlesztői készlet](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop), vagy egy Windows-alapú külső ügyfél Ha [VPN-en keresztül csatlakozó](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn). 
+Futtassa a következő előfeltételek vonatkoznak, az a [development Kitet](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop), vagy egy Windows-alapú külső ügyfél Ha [VPN-kapcsolaton keresztül csatlakozó](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn). 
 
- - Telepítés [Azure verem-kompatibilis Azure PowerShell-modulok](azure-stack-powershell-install.md).  
- - Töltse le a [az Azure veremnek megfelelő működéséhez szükséges eszközök](azure-stack-powershell-download.md).  
+ - Telepítés [Azure Stack-kompatibilis Azure PowerShell-modulok](azure-stack-powershell-install.md).  
+ - Töltse le a [az Azure Stack működéséhez szükséges eszközök](azure-stack-powershell-download.md).  
 
-## <a name="configure-the-operator-environment-and-sign-in-to-azure-stack"></a>A kezelő-környezet beállításait, és jelentkezzen be Azure verem
+## <a name="configure-the-operator-environment-and-sign-in-to-azure-stack"></a>Konfigurálja az operátor környezetet, és jelentkezzen be az Azure Stackhez
 
-Az Azure-verem operátor környezet konfigurálása a PowerShell használatával. Futtassa az alábbi parancsfájlok egyikét: az Azure AD tenantName, GraphAudience végpont és ArmEndpoint értékek cserélje le a saját környezet konfigurációjának.
+Az Azure Stack-üzemeltető környezet konfigurálása a PowerShell használatával. Futtassa az alábbi parancsfájlok egyikét: az Azure ad-ben tenantName, GraphAudience endpoint és ArmEndpoint értékeket cserélje le a saját környezetének konfigurációját.
 
 ````PowerShell  
     # For Azure Stack development kit, this value is set to https://adminmanagement.local.azurestack.external.
@@ -54,7 +54,7 @@ Az Azure-verem operátor környezet konfigurálása a PowerShell használatával
 
 ## <a name="test-the-connectivity"></a>A kapcsolat tesztelése
 
-Most, hogy minden van beállításról, Azure verem erőforrások létrehozása a PowerShell használatával. Például hozzon létre egy erőforráscsoportot az alkalmazáshoz, és adja hozzá a virtuális gépet. Az alábbi parancs segítségével hozzon létre egy erőforráscsoportot nevű **MyResourceGroup**.
+Most, hogy mindent beállítottunk beállításról, belül az Azure Stack-erőforrások létrehozása a PowerShell használatával. Például hozzon létre egy erőforráscsoportot egy alkalmazáshoz, és adjon hozzá egy virtuális gépet. Az alábbi parancs segítségével hozzon létre egy erőforráscsoportot **MyResourceGroup**.
 
 ```powershell
 New-AzureRmResourceGroup -Name "MyResourceGroup" -Location "Local"
@@ -62,5 +62,5 @@ New-AzureRmResourceGroup -Name "MyResourceGroup" -Location "Local"
 
 ## <a name="next-steps"></a>További lépések
 
- - [Az Azure-verem sablonok fejlesztése](user/azure-stack-develop-templates.md)
+ - [Sablonok fejlesztése az Azure Stackhez](user/azure-stack-develop-templates.md)
  - [Sablonok üzembe helyezése a PowerShell-lel](user/azure-stack-deploy-template-powershell.md)

@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 08/02/2018
 ms.author: diberry
-ms.openlocfilehash: e907a1f5ad8e75e018149e53ae0c2f9faff10a89
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 5abaeaee87d54e82df29e75b89c83522b8746730
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39493105"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44158245"
 ---
 # <a name="improve-app-with-batch-test"></a>A batch-teszt alkalmazás fejlesztéséhez
 
@@ -31,7 +31,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 * Hibák javítása 
 * A batch ellenőrzése hosszadalmas
 
-[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -228,7 +228,7 @@ Hibák keresése a Batch és a modell javításának nőtt az alkalmazás előre
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-[!include[LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
+[!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>További lépések
 

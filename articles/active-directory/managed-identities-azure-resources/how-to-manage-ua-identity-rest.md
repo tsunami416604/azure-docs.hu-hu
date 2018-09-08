@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/26/2018
 ms.author: daveba
-ms.openlocfilehash: 72f098cac32422ddbd2632336dd82cfc09a8bc93
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: dc7abd4bdec30ae870ff6add33d4b9b1c08b5bbd
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44028363"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44159639"
 ---
 # <a name="create-list-or-delete-a-user-assigned-managed-identity-using-rest-api-calls"></a>Lista létrehozása, vagy egy REST API-hívások segítségével felügyelt felhasználó által hozzárendelt Identitások törlése
 
-[!INCLUDE[preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)]
+[!INCLUDE [preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)]
 
 Felügyelt identitások, az Azure-erőforrások teszi lehetővé Azure-szolgáltatásokkal hitelesítést szolgáltatásokat, hogy a támogatás az Azure AD-hitelesítés anélkül, hogy a kód a hitelesítő adatokat. 
 
@@ -47,7 +47,7 @@ Ebből a cikkből megismerheti, hogyan létrehozása, listázása és a egy REST
 
 Egy felhasználó által hozzárendelt felügyelt identitás létrehozásához használja a következő CURL-kérést az Azure Resource Manager API. Cserélje le a `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>`, `<USER ASSIGNED IDENTITY NAME>`,`<LOCATION>`, és `<ACCESS TOKEN>` értékeket a saját értékeire:
 
-[!INCLUDE[ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
+[!INCLUDE [ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 
 ```bash
 curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup

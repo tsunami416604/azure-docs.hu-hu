@@ -5,15 +5,15 @@ services: storage
 author: jeffpatt24
 ms.service: storage
 ms.topic: article
-ms.date: 08/22/2018
+ms.date: 09/06/2018
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: 4434b67393d34c3418e44e82681a586c268a37e5
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 88c73b3c9fd3ffc0c323b9971e245e6f6d9695a0
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42746996"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44095538"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure-fájlok szinkronizálásának hibaelhárítása
 Az Azure File Sync használatával fájlmegosztásainak a szervezet az Azure Files között, miközben gondoskodik a rugalmasságát, teljesítményét és kompatibilitását a helyszíni fájlkiszolgálók. Az Azure File Sync Windows Server az Azure-fájlmegosztás gyors gyorsítótáraivá alakítja át. Helyileg, az adatok eléréséhez a Windows Serveren elérhető bármely protokollt használhatja, beleértve az SMB, NFS és FTPS. Tetszőleges számú gyorsítótárak világszerte igény szerint is rendelkezhet.
@@ -125,6 +125,16 @@ Set-AzureRmStorageSyncServerEndpoint `
     -CloudTiering true `
     -VolumeFreeSpacePercent 60
 ```
+<a id="server-endpoint-noactivity"></a>**Kiszolgálói végpont rendelkezik egy "Nincs tevékenység" vagy "Függő" állapotát, és a regisztrált kiszolgálók panelen a kiszolgáló állapota "Offline jelenik meg"**  
+
+A probléma akkor fordulhat elő, ha a tárterület-figyelő szinkronizálási folyamat nem fut, vagy a kiszolgáló nem tud kommunikálni az Azure File Sync szolgáltatás egy proxy vagy tűzfal miatt.
+
+A probléma megoldásához hajtsa végre az alábbi lépéseket:
+
+1. A kiszolgálón nyissa meg a Feladatkezelőt, és ellenőrizze, hogy fut-e a Storage Sync figyelő (AzureStorageSyncMonitor.exe) folyamat. A folyamat nem fut, ha először próbálja meg újraindítani a kiszolgálót. Ha a kiszolgáló újraindítása nem oldja meg a probléma, távolítsa el, telepítse újra az Azure File Sync ügynök (Megjegyzés: kiszolgáló beállítások megmaradnak, ha eltávolítása és újratelepítése az ügynök).
+2. Ellenőrizze a tűzfalakról és Proxykról beállításai megfelelően vannak konfigurálva:
+    - Ha a kiszolgáló egy tűzfal mögött található, ellenőrizze a 443-as kimenő porton engedélyezve van. Ha a tűzfal adott tartományokra korlátozza a forgalmat, erősítse meg a tartományokat, a tűzfal szereplő [dokumentáció](https://docs.microsoft.com/en-us/azure/storage/files/storage-sync-files-firewall-and-proxy#firewall) érhetők el.
+    - Ha a kiszolgáló proxy mögött található, a gépre kiterjedő vagy alkalmazásspecifikus Proxybeállítások konfigurálása a proxy szakasz lépéseit követve [dokumentáció](https://docs.microsoft.com/en-us/azure/storage/files/storage-sync-files-firewall-and-proxy#proxy).
 
 ## <a name="sync"></a>Sync
 <a id="afs-change-detection"></a>**Ha Létrehoztam egy fájlt közvetlenül a saját Azure-fájlmegosztást az SMB-n keresztül, vagy a portálon keresztül, mennyi ideig tart a fájl szinkronizálása a szinkronizálási csoport kiszolgálóira?**  
@@ -223,7 +233,7 @@ Ezek a hibák megtekintéséhez futtassa a **FileSyncErrorsReport.ps1** (az Azur
 | 0x80c80018 | -2134376424 | ECS_E_SYNC_FILE_IN_USE | A fájl nem szinkronizálható, mert az használatban van. Ha már nincs használatban a fájl lesznek szinkronizálva. | Nincs szükség felhasználói műveletre. Az Azure File Sync naponta egyszer létrehoz egy ideiglenes VSS-pillanatkép megnyitott kezelőkkel rendelkező fájlok szinkronizálása a kiszolgálón. |
 | 0x20 | 32 | ÚJRA | A fájl nem szinkronizálható, mert az használatban van. Ha már nincs használatban a fájl lesznek szinkronizálva. | Nincs szükség felhasználói műveletre. |
 | 0x80c80207 | -2134375929 | ECS_E_SYNC_CONSTRAINT_CONFLICT | Egy fájl vagy címtár módosítása nem szinkronizálható még, mert egy függő mappa szinkronizálása még nem történt. Ez az elem után a rendszer szinkronizálja a függő módosításokat szinkronizálja. | Nincs szükség felhasználói műveletre. |
-| 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | Egy fájl módosult a szinkronizálás közben, ezért a fájlt újra kell szinkronizálni. | Nincs szükség felhasználói műveletre. |
+| 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | A fájl módosításának szinkronizálás során a szinkronizálható, újra kell. | Nincs szükség felhasználói műveletre. |
 
 #### <a name="handling-unsupported-characters"></a>Kezelése nem támogatott karaktereket
 Ha a **FileSyncErrorsReport.ps1** PowerShell-parancsfájl bemutatja a hiba oka nem támogatott karaktereket (hibakódjai 0x7b és 0x8007007b), érdemes távolítsa el vagy nevezze át a megfelelő fájlok hibás karaktereket. PowerShell valószínűleg nyomtatja ki ezeket a karaktereket a kérdőjelek vagy üres téglalapok, mivel ezek a karakterek a legtöbb nem szabványos kódolással.
@@ -413,7 +423,7 @@ Ez a hiba akkor fordulhat elő, ha a szervezet az SSL-megszakító proxy, vagy h
     Restart-Service -Name FileSyncSvc -Force
     ```
 
-Ha beállítja ezt a beállításazonosítót, az Azure File Sync-ügynök minden helyileg megbízhatónak minősülő SSL-tanúsítványt elfogad a kiszolgáló és a felhőszolgáltatás közötti adatátvitel során.
+Ez a beállításazonosító beállításával az Azure File Sync ügynök fogad el minden olyan helyi megbízható SSL-tanúsítványt a kiszolgáló és a felhőszolgáltatás közötti adatátvitel során.
 
 <a id="-2147012894"></a>**Nem sikerült létrehozni a kapcsolatot a szolgáltatással.**  
 | | |
@@ -506,7 +516,7 @@ Azokban az esetekben vannak sok fájl a szinkronizálási hibák száma, ahol sz
 | **Hibakarakterlánc** | ECS_E_SYNC_INVALID_PATH |
 | **Szervizelés szükséges** | Igen |
 
-Győződjön meg arról, hogy az elérési út létezik, helyi NTFS-köteten található, és nem újraelemzési pont vagy meglévő kiszolgálói végpont.
+Győződjön meg arról, az elérési út létezik, a helyi NTFS-köteten, és nem egy újraelemzési pontot vagy a meglévő kiszolgálói végpontot.
 
 <a id="-2134376373"></a>**A szolgáltatás jelenleg nem érhető el.**  
 | | |
