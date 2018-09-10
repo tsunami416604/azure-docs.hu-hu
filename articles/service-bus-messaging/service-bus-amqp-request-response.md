@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/22/2018
 ms.author: spelluru
-ms.openlocfilehash: f5d5b8064821dfb1aa6d4e99d0152e364f9a83fe
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 0299b05517629740576c562effaa41658f28532f
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43700518"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44163243"
 ---
 # <a name="amqp-10-in-microsoft-azure-service-bus-request-response-based-operations"></a>A Microsoft Azure Service Bus AMQP 1.0-s: kérés-válasz alapú műveletek
 
@@ -142,6 +142,10 @@ A kérelemüzenet tartalmaznia kell a következő alkalmazás tulajdonságai:
 |Kulcs|Érték típusa|Szükséges|Érték tartalma|  
 |---------|----------------|--------------|--------------------|  
 |`lock-tokens`|uuid tömbje|Igen|Üzenet zárolási-token megújításához.|  
+
+> [!NOTE]
+> Zárolás a következő tokenek: a `DeliveryTag` fogadott üzenetek tulajdonsága. A következő példa a a [.NET SDK-val](https://github.com/Azure/azure-service-bus-dotnet/blob/6f144e91310dcc7bd37aba4e8aebd535d13fa31a/src/Microsoft.Azure.ServiceBus/Amqp/AmqpMessageConverter.cs#L336) ezek kérdezi le. A jogkivonat is megjelenhetnek "DeliveryAnnotations", "x-jóváhagyás-lock-token" azonban, ez nem garantált, és a `DeliveryTag` előnyben részesített kell lennie. 
+> 
   
 #### <a name="response"></a>Válasz  
 
