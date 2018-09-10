@@ -2,4 +2,4 @@ A szolgáltatás és az előfizetés típusa határozza meg a másodpercenként 
 
 ## <a name="denial-of-service-versus-throttling"></a>Szolgáltatásmegtagadás kontra szabályozás
 
-A szolgáltatás különbséget tesz a szolgáltatásmegtagadásos (DoS-) támadások és a QPS-eltérések között. Ha DoS-támadást feltételez, a kérés sikeres lesz (200 OK HTTP-állapotkóddal), azonban a választörzs üresen marad.
+A szolgáltatás különbséget tesz a szolgáltatásmegtagadásos (DoS-) támadások és a QPS-eltérések között. Ha DoS-támadást feltételez, a kérés sikeres lesz (200 OK HTTP-állapotkóddal). A választörzs azonban üresen marad.
