@@ -2,11 +2,15 @@
 ## [Áttekintés](azure-dev-spaces.md)
 
 ## Gyors útmutatók
+### [Java (VS Code és CLI)](quickstart-java.md)
 ### [.NET Core (VS Code & CLI)](quickstart-netcore.md)
 ### [.NET Core (Visual Studio 2017)](quickstart-netcore-visualstudio.md)
 ### [Node.js (VS Code & CLI)](quickstart-nodejs.md)
 
 ## Oktatóanyagok
+### Java (VS Code és CLI)
+#### [1 – Első lépések](get-started-java.md)
+#### [2 – Csoportos fejlesztés](team-development-java.md)
 ### .NET Core (VS Code és parancssori felület)
 #### [1 – Első lépések](get-started-netcore.md)
 #### [2 – Csoportos fejlesztés](team-development-netcore.md)

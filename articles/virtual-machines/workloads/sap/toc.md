@@ -16,14 +16,21 @@
 ### [Hálózati architektúra](hana-network-architecture.md)
 ### [Tároló-architektúra](hana-storage-architecture.md)
 ### [HLI – támogatott esetek](hana-supported-scenario.md)
-## [Infrastruktúra és kapcsolódás](hana-overview-infrastructure-connectivity.md)
-## [Az SAP HANA telepítése](hana-installation.md)
+## Infrastruktúra és csatlakozási lehetőségek
+### [HLI – üzembe helyezés](hana-overview-infrastructure-connectivity.md)
+### [Azure-beli virtuális gépek csatlakozása nagy méretű HANA-példányokhoz](hana-connect-azure-vm-large-instances.md)
+### [Virtuális hálózat csatlakoztatása nagy méretű HANA-példányokhoz – ExpressRoute](hana-connect-vnet-express-route.md)
+### [További hálózati követelmények](hana-additional-network-requirements.md)
+## Az SAP HANA telepítése
+### [A konfiguráció ellenőrzése](hana-installation.md)
+### [Minta HANA-telepítés](hana-example-installation.md)
 ## [Magas rendelkezésre állás és vészhelyreállítás](hana-overview-high-availability-disaster-recovery.md)
 ## [Hibaelhárítás és figyelés](troubleshooting-monitoring.md)
 ## Útmutató
 ### [Magas rendelkezésre állás beállítása a STONITH használatával](ha-setup-with-stonith.md)
 ### [Az operációs rendszer biztonsági mentése II. típusú termékváltozatokhoz](os-backup-type-ii-skus.md)
 ### [HANA nagyméretű példányainak operációsrendszer-frissítése](os-upgrade-hana-large-instance.md)
+### [SMT-kiszolgáló beállítása SUSE Linuxhoz](hana-setup-smt.md)
 # SAP HANA az Azure-beli virtuális gépeken
 ## [Egyetlen példánnyal rendelkező SAP HANA telepítése](hana-get-started.md)
 ## [S/4 HANA vagy BW/4 HANA SAP CAL üzembehelyezési útmutatója](cal-s4h.md)
