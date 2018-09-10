@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 08/02/2018
 ms.author: diberry
-ms.openlocfilehash: de295a93d395cee4c4dfbea4f2e7f7338036feb8
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 3f23ade2b0256c72c344e2a619227a79e3c79a47
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39494373"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44160115"
 ---
 # <a name="tutorial-1-build-app-with-custom-domain"></a>Oktatóanyag: 1. Egyéni tartományt használó alkalmazás létrehozása
 Ebben az oktatóanyagban létrehozunk egy alkalmazást, amely bemutatja, hogyan használhatja a **szándékokat** a felhasználó _szándékának_ meghatározásához az alkalmazás számára elküldött kimondott szöveg (szöveg) alapján. Amikor végzett, egy felhőben futó LUIS-végponttal fog rendelkezni.
@@ -32,7 +32,7 @@ Ez az alkalmazás a legegyszerűbb típusú LUIS-alkalmazás, mert nem nyer ki a
 > * Kimondott példaszövegek hozzáadása az ApplyForJob szándékhoz 
 > * Betanítás, közzététel és végpont ismételt lekérdezése 
 
-[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="purpose-of-the-app"></a>Az alkalmazás célja
 Az alkalmazás rendelkezik szándékokkal. Az első szándék (**`GetJobInformation`**) azonosítja, amikor egy felhasználó a vállalatnál meghirdetett állásokkal kapcsolatban szeretne információt kapni. A második szándék (**`None`**) az összes többi típusú kimondott szöveget azonosítja. A rövid útmutató későbbi szakaszában hozzáadunk egy harmadik szándékot is: `ApplyForJob`. 
@@ -85,15 +85,15 @@ Az alkalmazás rendelkezik szándékokkal. Az első szándék (**`GetJobInformat
 
 ## <a name="train-and-publish-the-app"></a>Az alkalmazás betanítása és közzététele
 
-[!include[LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
+[!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
 ## <a name="publish-app-to-endpoint"></a>Alkalmazás közzététele a végponton
 
-[!include[LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)] 
+[!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)] 
 
 ## <a name="query-endpoint-for-getjobinformation-intent"></a>Végpont lekérdezése a GetJobInformation szándékhoz
 
-1. [!include[LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
+1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
 2. Lépjen az URL-cím végéhez, és írja be a következőt: `I'm looking for a job with Natual Language Processing`. Az utolsó lekérdezésisztring-paraméter a `q`, a kimondott szöveg pedig **query**. A kimondott szöveg nem egyezik meg a 4. lépésben található egyik kimondott példaszöveggel sem, ezért tesztnek megfelelő, és a `GetJobInformation` szándékot kell visszaadnia a legmagasabb pontszámot elérő szándékként. 
 
@@ -147,7 +147,7 @@ Térjen vissza a LUIS-webhely böngészőlapjára, és hozzon létre egy új, á
 
 ## <a name="query-endpoint-for-applyforjob-intent"></a>Végpont lekérdezése az ApplyForJob szándékhoz
 
-1. [!include[LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
+1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
 2. Az új böngészőablakban az URL-cím végén adja meg a következőt: `Can I submit my resume for job 235986`. 
 
@@ -186,7 +186,7 @@ A LUIS végzett ezzel a kéréssel. A hívó alkalmazás, például egy csevegő
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-[!include[LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
+[!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>További lépések
 
