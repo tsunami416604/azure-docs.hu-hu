@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/11/2017
 ms.author: fhryo-msft
 ms.component: common
-ms.openlocfilehash: e560eb9e0bbce09c541bfc66ea760ea3e636f841
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 0807bc5df9d4ee8782ae017dbb7ed63c38a13443
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39528714"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44304679"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure Storage felügyelete, diagnosztizálása és hibaelhárítása
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -73,7 +73,7 @@ Teljes körű hibaelhárítás az Azure Storage-alkalmazások gyakorlati útmuta
   * [2. függelékben: Wireshark használó rögzítheti a hálózati forgalom]
   * [3. függelék: Microsoft Message Analyzert segítségével rögzítheti a hálózati forgalom]
   * [4. függelék: Segítségével Excel metrikák megtekintése és az adatok naplózása]
-  * [5. függelék: A Visual Studio Team Services az Application insights szolgáltatással figyelését.]
+  * [5. függelék: Figyelés az Application insights szolgáltatással az Azure DevOps]
 
 ## <a name="introduction"></a>Bevezetés
 Ez az útmutató bemutatja, hogyan használható az Azure Storage Analytics, funkciókat jelentkezik be az Azure Storage ügyféloldali kódtárat, és egyéb harmadik felektől származó eszközök azonosítása, diagnosztizálása és hibaelhárítása az Azure Storage ügyféloldali kapcsolatos problémákat.
@@ -125,7 +125,7 @@ Használhatja a [az Azure portal](https://portal.azure.com) minden régióban az
 A [az Azure portal](https://portal.azure.com) is lehetővé teszi a különböző Azure-szolgáltatások érintő incidensek értesítéseket.
 Megjegyzés: Ez az információ korábban elérhető volt, valamint az előzményadatok, az a [Azure-szolgáltatások irányítópultját](http://status.azure.com).
 
-Bár a [az Azure portal](https://portal.azure.com) egészségügyi adatokat gyűjt a (belső kibővített figyelés), az Azure adatközpontokon belül is érdemes lehet létrehozni rendszeresen hozzáférő szintetikus tranzakciók összetevős megközelítés bevezetése az Azure-ban üzemeltetett webes alkalmazás több helyről. A szolgáltatások [Dynatrace](http://www.dynatrace.com/en/synthetic-monitoring) és Application Insights a Visual Studio Team Services, erre a megközelítésre példa. Visual Studio Team Serviceshez készült Application Insights kapcsolatos további információkért lásd: a függelék: "[5. függelék: Monitorování pomocí Application Insights a Visual Studio Team Services](#appendix-5)."
+Bár a [az Azure portal](https://portal.azure.com) egészségügyi adatokat gyűjt a (belső kibővített figyelés), az Azure adatközpontokon belül is érdemes lehet létrehozni rendszeresen hozzáférő szintetikus tranzakciók összetevős megközelítés bevezetése az Azure-ban üzemeltetett webes alkalmazás több helyről. A szolgáltatások [Dynatrace](http://www.dynatrace.com/en/synthetic-monitoring) és Application Insights az Azure DevOps, erre a megközelítésre példa. Az Azure DevOps Application Insights kapcsolatos további információkért lásd: a függelék: "[5. függelék: figyelés az Application insights szolgáltatással az Azure DevOps](#appendix-5)."
 
 ### <a name="monitoring-capacity"></a>Monitorozási kapacitás
 Storage-mérőszámok csak tárolja a teljesítmény-mérőszámait a blob service, mert blobok általában fiók tárolt adatok legnagyobb részét (írása idején ez még nem használható a Storage Metrics figyelése kapacitását, a táblák és üzenetsorok). Ezek az adatok a annak a **$MetricsCapacityBlob** táblából, ha engedélyezte a Blob szolgáltatás figyelése. Storage-mérőszámok rögzíti az adatok naponta egyszer, és értékét használhatja a **rowkey tulajdonságok esetén** meghatározni, hogy a sor tartalmaz-e olyan entitás, amely kapcsolódik a felhasználói adatok (érték **adatok**) vagy elemzési adatok (érték **analytics**). Minden tárolt entitás tartalmaz információt a felhasznált tárterület mérete (**kapacitás** bájtban mért) és a tárolók száma (**ContainerCount**) és blobokon (**ObjectCount** ) használja a storage-fiókban. További információ a kapacitási mérőszámot tárolja a **$MetricsCapacityBlob** táblában, tekintse meg [Storage Analytics mérőszámainak Táblasémáját](http://msdn.microsoft.com/library/azure/hh343264.aspx).
@@ -799,8 +799,8 @@ A blob storage-ból való letöltése után a Storage naplózási adatok import�
 
 Az 1. lépésében a **szöveg importálása varázsló**válassza **pontosvesszővel** csak elválasztóként, idézőjel, majd a **Szöveghatároló**. Kattintson a **Befejezés** és elhelyezése az adatok a munkafüzet kiválasztása.
 
-### <a name="appendix-5"></a>5. függelék: Monitorování pomocí Application Insights a Visual Studio Team Serviceshez
-Az Application Insights szolgáltatást a Visual Studio Team Services a teljesítmény és rendelkezésre állásának figyelésére szolgáló részeként is használnia. Ez az eszköz a következőket teheti:
+### <a name="appendix-5"></a>5. függelék: Figyelés az Application insights szolgáltatással az Azure DevOps
+Az Application Insights szolgáltatást az Azure DevOps, a teljesítmény és rendelkezésre állásának figyelésére szolgáló részeként is használnia. Ez az eszköz a következőket teheti:
 
 * Ellenőrizze, hogy a web service elérhető és válaszkész. Legyen az alkalmazás egy webhely vagy egy eszköz alkalmazást, amely egy webszolgáltatás, néhány perces időközönként URL ellenőrzése a világ különböző pontjain található helyekről, és értesíti, ha probléma van.
 * Gyorsan diagnosztizálhatja a teljesítménnyel kapcsolatos problémák vagy a kivételek, a web service-ben. Tudja meg, ha a Processzorhasználat vagy egyéb erőforrásokat is nyújtja, hívásláncokat kivételek, és könnyedén kereshet a nyomkövetési naplók. Ha az alkalmazás teljesítmény elfogadható keretek alá csökken, a Microsoft küldheti el Önnek egy e-mailt. .NET-hez és a Java webes szolgáltatásokat is figyelhet.
@@ -865,7 +865,7 @@ További információt talál [Mi az Application Insights](../../application-ins
 [2. függelékben: Wireshark használó rögzítheti a hálózati forgalom]: #appendix-2
 [3. függelék: Microsoft Message Analyzert segítségével rögzítheti a hálózati forgalom]: #appendix-3
 [4. függelék: Segítségével Excel metrikák megtekintése és az adatok naplózása]: #appendix-4
-[5. függelék: A Visual Studio Team Services az Application insights szolgáltatással figyelését.]: #appendix-5
+[5. függelék: Figyelés az Application insights szolgáltatással az Azure DevOps]: #appendix-5
 
 <!--Image references-->
 [1]: ./media/storage-monitoring-diagnosing-troubleshooting/overview.png

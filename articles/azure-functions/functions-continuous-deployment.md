@@ -11,15 +11,15 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/25/2016
 ms.author: glenga
-ms.openlocfilehash: 4561b343fa15346388572a70616840be0dd06679
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 7529d20535eedab92d164df5a0435efeda83fca2
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44095487"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44301548"
 ---
 # <a name="continuous-deployment-for-azure-functions"></a>Azure Functions – folyamatos üzembe helyezés
-Az Azure Functions megkönnyíti az alkalmazás üzembe helyezése a függvény használatával az App Service folyamatos integrációt. Functions integrálható a BitBucket, Dropbox, GitHub és Visual Studio Team Services (VSTS). Ez lehetővé teszi egy munkafolyamatot, ahol frissíti a függvénykódot ezek integrált szolgáltatások eseményindító üzembe helyezés az Azure-bA egyikének használatával végzett. Ha most ismerkedik az Azure Functions, kezdje [Azure Functions áttekintése](functions-overview.md).
+Az Azure Functions megkönnyíti az alkalmazás üzembe helyezése a függvény használatával az App Service folyamatos integrációt. Functions integrálható a BitBucket, Dropbox, GitHub és az Azure DevOps. Ez lehetővé teszi egy munkafolyamatot, ahol frissíti a függvénykódot ezek integrált szolgáltatások eseményindító üzembe helyezés az Azure-bA egyikének használatával végzett. Ha most ismerkedik az Azure Functions, kezdje [Azure Functions áttekintése](functions-overview.md).
 
 A folyamatos üzembe helyezés jó megoldás lehet olyan projektek esetén, amelyeknél többszöri és gyakori közreműködői változtatást kell integrálni. Lehetővé teszi a functions-kódhoz a verziókövetés kezelése. Jelenleg a következő központi telepítési források támogatottak:
 
@@ -29,7 +29,7 @@ A folyamatos üzembe helyezés jó megoldás lehet olyan projektek esetén, amel
 * [Helyi Git-tárház](../app-service/app-service-deploy-local-git.md)
 * [GitHubon](https://github.com)
 * [Onedrive vállalati verzió](https://onedrive.live.com/)
-* [Visual Studio Team Services](https://www.visualstudio.com/team-services/)
+* [Az Azure DevOps-szolgáltatásokkal](https://www.visualstudio.com/team-services/)
 
 Központi telepítések függvény alkalmazás alapon vannak konfigurálva. Folyamatos üzembe helyezés engedélyezését követően a függvénykódot a portálon való hozzáférés értéke *csak olvasható*.
 
@@ -39,10 +39,10 @@ A központi telepítési forrás folyamatos üzembe helyezés előtt rendelkezni
 
 [!INCLUDE [functions-folder-structure](../../includes/functions-folder-structure.md)]
 
-Az, hogy az üzembe helyezés a vsts-ben, először az Azure-előfizetésében kell kapcsolni a VSTS-fiók. További információkért lásd: [beállítása a VSTS-fiók használati díjának felszámolása](https://docs.microsoft.com/vsts/billing/set-up-billing-for-your-account-vs?view=vsts#set-up-billing-via-the-azure-portal).
+Az, hogy üzembe helyezése az Azure DevOps, először az Azure-előfizetésében kell kapcsolni az Azure DevOps-szervezet. További információkért lásd: [állítsa be a számlázás az Azure DevOps-szervezet](https://docs.microsoft.com/azure/devops/organizations/billing/set-up-billing-for-your-organization-vs?view=vsts#set-up-billing-via-the-azure-portal).
 
 ## <a name="set-up-continuous-deployment"></a>Folyamatos üzembe helyezés beállítása
-Ezzel az eljárással meglévő függvényalkalmazással – folyamatos üzembe helyezés konfigurálása. Ezeket a lépéseket egy GitHub-tárházat az integráció bemutatásához, de hasonló lépésekkel Visual Studio Team Services vagy más központi telepítési szolgáltatások érvényesek.
+Ezzel az eljárással meglévő függvényalkalmazással – folyamatos üzembe helyezés konfigurálása. Ezeket a lépéseket egy GitHub-tárházat az integráció bemutatásához, de hasonló lépésekkel Azure DevOps-vagy más központi telepítési szolgáltatások érvényesek.
 
 1. A függvényalkalmazásban, az a [az Azure portal](https://portal.azure.com), kattintson a **platformfunkciók** és **központi telepítési beállítások**. 
    

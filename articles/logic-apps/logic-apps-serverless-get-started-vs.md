@@ -11,12 +11,12 @@ ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
 ms.custom: vs-azure
 ms.topic: article
 ms.date: 08/01/2018
-ms.openlocfilehash: a69c129d5ae1405462e3a54a24cd2edbad2a86a7
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: f5555d9a60934529bf8fed6db6a18dd783f46075
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43126777"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44297468"
 ---
 # <a name="build-your-first-serverless-app-with-azure-logic-apps-and-azure-functions---visual-studio"></a>Az Azure Logic Apps és az Azure Functions – a Visual Studio az első kiszolgáló nélküli alkalmazás létrehozása
 
@@ -122,7 +122,7 @@ A Functions-projekt és a függvény JavaScript, Python, F #, PowerShell, a Batc
 
 ## <a name="deploy-functions-from-visual-studio"></a>A Visual Studio functions üzembe helyezése
 
-A központi telepítési sablont bármely az Azure functions, amely rendelkezik a Git-adattár, amely a változó által meghatározott, a megoldás üzembe helyezi a `azuredeploy.json` fájlt. Hoz létre, és a Functions-projekt létrehozásához a megoldásában, ha a Git verziókövetési, például a GitHub vagy a Visual Studio Team Services, tekintsen meg erre a projektre, és frissítse a `repo` változó, úgy, hogy a sablon üzembe helyez az Azure-függvény.
+A központi telepítési sablont bármely az Azure functions, amely rendelkezik a Git-adattár, amely a változó által meghatározott, a megoldás üzembe helyezi a `azuredeploy.json` fájlt. Hoz létre, és a Functions-projekt létrehozásához a megoldásában, ha a Git verziókövetési, például a GitHub vagy az Azure DevOps, tekintsen meg erre a projektre, és frissítse a `repo` változó, úgy, hogy a sablon üzembe helyez az Azure-függvény.
 
 ## <a name="manage-logic-apps-and-view-run-history"></a>Kezelheti a logic apps és a futtatási előzmények megtekintése
 

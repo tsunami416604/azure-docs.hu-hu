@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/21/2018
+ms.date: 09/06/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 6c080d44aed7c2b3db54a34f4b711db66681cbe9
-ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
+ms.openlocfilehash: 5de5177db92e4069710e597a41c44287e5af90b2
+ms.sourcegitcommit: 465ae78cc22eeafb5dfafe4da4b8b2138daf5082
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42056913"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44325294"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Az Azure AD Connect: Verziókiadások
 Az Azure Active Directory (Azure AD) csapat rendszeresen frissíti az Azure AD Connect új szolgáltatásait és funkcióit. Nem minden hozzárendelések nem gyarapítsa alkalmazható.
@@ -36,6 +36,16 @@ Lépések az Azure AD Connect frissítése | Különböző módszerekkel [friss�
 Szükséges engedélyek | Tekintse meg a frissítés alkalmazásához szükséges engedélyek [fiókok és engedélyek](./active-directory-aadconnect-accounts-permissions.md#upgrade).
 
 Letöltés |} [Töltse le az Azure AD Connect](http://go.microsoft.com/fwlink/?LinkId=615771).
+
+
+ 
+## <a name="118820"></a>1.1.882.0  
+
+9/7/2018:, amely letölthető, nem lehet kiadási automatikus frissítés 
+
+### <a name="fixed-issues"></a>Rögzített kapcsolatos problémák  
+
+Az Azure AD Connect frissítés sikertelen lesz, ha SQL mindig a rendelkezésre állás konfigurálva van az ADSync-adatbázis. Ez a gyorsjavítás ezt a kérdést, és lehetővé teszi a sikeres frissítéshez. 
 
 ## <a name="118800"></a>1.1.880.0
 
@@ -91,7 +101,7 @@ Letöltés |} [Töltse le az Azure AD Connect](http://go.microsoft.com/fwlink/?L
 - Eszközkonfiguráció visszaírás kizárólag az Azure AD Connect varázsló belül mostantól felügyelet alatt.
 - Egy új PowerShell-modul nevű ADSyncTools.psm1 kerül, amely az SQL-kapcsolati hibák és a különböző hibaelhárítási segédprogramok segítségével. További információ a ADSyncTools modul [Itt](active-directory-aadconnect-tshoot-sql-connectivity.md). 
 - Új további tevékenység "Konfigurálása eszköz options" lett hozzáadva. A feladat segítségével konfigurálhatja az alábbi két műveletet: 
-    -   **Hibrid Azure AD-csatlakozás**: Ha a környezetben egy helyszíni AD erőforrás-igényű, és azt is szeretné profitál az Azure Active Directory által biztosított képességek, a hibrid Azure AD-csatlakoztatott eszközök valósíthat meg. Ezek a is, amelyek a helyszíni Active Directory és az Azure Active Directory tartományhoz.
+    -   **Hibrid Azure AD-csatlakozás**: Ha a környezetben egy helyszíni AD erőforrás-igényű, és azt is szeretné profitál az Azure Active Directory által biztosított képességek, a hibrid Azure AD-csatlakoztatott eszközök valósíthat meg. Ezek olyan eszközök, amelyek a helyszíni Active Directoryhoz és az Azure Active Directoryhoz is csatlakoznak.
     -   **Eszközvisszaírás**: eszközvisszaírás alapján az AD FS-eszközök feltételes hozzáférésének engedélyezésére használja (2012 R2 vagy újabb) által védett eszközök
 
    >[!NOTE] 

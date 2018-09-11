@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 08/14/2018
 ms.author: glenga
-ms.openlocfilehash: 294dea695f120ff47712e0ccf79072a41baca07b
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: b33c9246bef2ca22542e338a1ec1f91a92aa300e
+ms.sourcegitcommit: 465ae78cc22eeafb5dfafe4da4b8b2138daf5082
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44092818"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44324835"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Az Azure Functions Core Tools használata
 
@@ -26,11 +26,11 @@ Az Azure Functions Core Tools lehetővé teszi a fejlesztés és tesztelés a he
 
 ## <a name="core-tools-versions"></a>Core Tools-verzió
 
-Nincsenek az Azure Functions Core Tools két verziója. A verzió, a helyi fejlesztési környezetét, az nyelvválasztás, és a szükséges támogatási szint függ:
+Nincsenek az Azure Functions Core Tools két verziója. A verzió, attól függ, a helyi fejlesztési környezetbe [choice nyelvi](supported-languages.md), és a szükséges támogatási szint:
 
-+ [Verzió 1.x](#v1): verziót támogatja, amely általánosan elérhető (GA) a futtatókörnyezet 1.x. Ez a verzió, az eszközök csak Windows-számítógépeken támogatott, és telepítve van a egy [npm-csomag](https://docs.npmjs.com/getting-started/what-is-npm). Az ebben a verzióban a kísérleti nem hivatalosan támogatott nyelvek funkciókat is létrehozhat. További információkért lásd: [támogatott nyelv az Azure Functions szolgáltatásban](supported-languages.md)
++ [Verzió 1.x](#v1): verziót támogatja, amely általánosan elérhető (GA) a futtatókörnyezet 1.x. Ez a verzió, az eszközök csak Windows-számítógépeken támogatott, és telepítve van a egy [npm-csomag](https://docs.npmjs.com/getting-started/what-is-npm).
 
-+ [Verzió 2.x](#v2): támogatja a [verzió 2.x verziójú futtatókörnyezet](functions-versions.md). Ez a verzió támogatja a [Windows](#windows-npm), [macOS](#brew), és [Linux](#linux). Telepítési platformspecifikus csomagkezelők vagy az npm-et használ. A 2.x verziójú futtatókörnyezet, például ez a alapvető eszközök verziója jelenleg előzetes verzióban érhető el. 
++ [Verzió 2.x](#v2): támogatja a [verzió 2.x verziójú futtatókörnyezet](functions-versions.md). Ez a verzió támogatja a [Windows](#windows-npm), [macOS](#brew), és [Linux](#linux). Telepítési platformspecifikus csomagkezelők vagy az npm-et használ. A 2.x verziójú futtatókörnyezet, például ez a alapvető eszközök verziója jelenleg előzetes verzióban érhető el. A verzió 2.x-es, a függvényalkalmazás a függvények az azonos nyelvi futtatókörnyezetet kell használnia.
 
 Ha másként nincs jelezve, az ebben a cikkben szereplő példák verziójára vonatkoznak 2.x. Verzió fontos frissítések fogadása 2.x, beleértve a használhatatlanná tévő módosítja a bejelentésekről, tekintse meg a [Azure App Service közlemények](https://github.com/Azure/app-service-announcements/issues) tárház.
 
