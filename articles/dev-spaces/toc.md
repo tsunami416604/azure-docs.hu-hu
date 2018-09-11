@@ -1,5 +1,5 @@
 # Azure Dev Spaces
-## [Áttekintés](azure-dev-spaces.md)
+## [Áttekintés](index.yml)
 
 ## Gyors útmutatók
 ### [Java (VS Code és CLI)](quickstart-java.md)
