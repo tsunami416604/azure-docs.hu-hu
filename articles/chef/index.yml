@@ -1,60 +1,54 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 87bef3568e45f3d966d90d980403c83c96aa461f
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
-ms.translationtype: HT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44300868"
 documentType: LandingData
 title: Chef szoftver az Azure-ban – dokumentáció
 metadata:
-  title: Chef szoftver az Azure-ban – dokumentáció – oktatóanyagok, minták, referenciák és forrásanyagok
-  description: A Chef szoftver egy Linux és Windows rendszerhez készült DevOps automatizálási platformot biztosít, amely lehetővé teszi a fizikai és a virtuális kiszolgálók konfigurációjának kezelését. A rövid útmutatók és oktatóanyagok segítségével megismerheti, hogyan használhatók a Chef szoftvertermékek az infrastruktúra kódként való használatára vonatkozó receptek automatizálására, illetve a virtuális gépek kezelésére és üzembe helyezésére az Azure-ban.
+  title: 'Chef szoftver az Azure-ban – dokumentáció – oktatóanyagok, minták, referenciák és forrásanyagok'
+  description: 'A Chef szoftver egy Linux és Windows rendszerhez készült DevOps automatizálási platformot biztosít, amely lehetővé teszi a fizikai és a virtuális kiszolgálók konfigurációjának kezelését. A rövid útmutatók és oktatóanyagok segítségével megismerheti, hogyan használhatók a Chef szoftvertermékek az infrastruktúra kódként való használatára vonatkozó receptek automatizálására, illetve a virtuális gépek kezelésére és üzembe helyezésére az Azure-ban.'
   ms.service: chef
-  keywords: chef, azure, devops, oktatóanyagok, minták, referencia
+  keywords: 'chef, azure, devops, oktatóanyagok, minták, referencia'
   author: tomarcher
   manager: jeconnoc
   ms.author: tarcher
   ms.topic: landing page
   ms.date: 08/27/2018
 abstract:
-  description: A Chef szoftver egy Linux és Windows rendszerhez készült DevOps automatizálási platformot biztosít, amely lehetővé teszi a fizikai és a virtuális kiszolgálók konfigurációjának kezelését. A rövid útmutatók és oktatóanyagok segítségével megismerheti, hogyan használhatók a Chef szoftvertermékek az infrastruktúra kódként való használatára vonatkozó receptek automatizálására, illetve a virtuális gépek kezelésére és üzembe helyezésére az Azure-ban.
+  description: 'A Chef szoftver egy Linux és Windows rendszerhez készült DevOps automatizálási platformot biztosít, amely lehetővé teszi a fizikai és a virtuális kiszolgálók konfigurációjának kezelését. A rövid útmutatók és oktatóanyagok segítségével megismerheti, hogyan használhatók a Chef szoftvertermékek az infrastruktúra kódként való használatára vonatkozó receptek automatizálására, illetve a virtuális gépek kezelésére és üzembe helyezésére az Azure-ban.'
   aside:
     image:
       alt: Chef embléma
       height: 133
       width: 48
       src: media/chef.png
-    title: 
+    title: null
 sections:
-- title: 5 perces gyors útmutatók
-  items:
-  - type: paragraph
-    text: Telepítse és konfigurálja a Chef szoftvert, majd használja Linux virtuális gépek létrehozására az Azure-ban.
-  - type: list
-    style: icon48
+  - title: 5 perces gyors útmutatók
     items:
-    - image:
-        src: /azure/media/index/azure_dev-9.svg
-      text: A Chef telepítése és konfigurálása
-      href: ./chef-extension-portal.md
-- title: Részletes útmutatók
-  items:
-  - type: paragraph
-    text: Megtudhatja, hogyan hozhat létre és felügyelhet Azure számítási és hálózatkezelési infrastruktúrákat a Chef szoftvereszközök használatával.
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: 'Telepítse és konfigurálja a Chef szoftvert, majd használja Linux virtuális gépek létrehozására az Azure-ban.'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: /azure/media/index/azure_dev-9.svg
+            text: A Chef telepítése és konfigurálása
+            href: ./chef-extension-portal.md
+  - title: Részletes útmutatók
     items:
-    - html: <a href="/azure/virtual-machines/windows/chef-automation">Az Azure-beli virtuális gép automatikus üzembe helyezése a Chef segítségével</a>.
-- title: Erőforrások és eszközök
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: paragraph
+        text: 'Megtudhatja, hogyan hozhat létre és felügyelhet Azure számítási és hálózatkezelési infrastruktúrákat a Chef szoftvereszközök használatával.'
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/azure/virtual-machines/windows/chef-automation">Az Azure-beli virtuális gép automatikus üzembe helyezése a Chef segítségével</a>.
+  - title: Erőforrások és eszközök
     items:
-    - title: Chef Automate
-      html: <p><a href="https://docs.chef.io/chef_automate.html">A Chef Automate áttekintése</a></p> <p><a href="https://docs.chef.io/install_chef_automate.html">Chef Automate telepítési útmutató</a></p> <p><a href="https://azuremarketplace.microsoft.com/en-us/marketplace/apps/chef-software.chef-automate">Chef Automate az Azure Marketplace-en</a></p>
-    - title: Chef szoftvereszközök
-      html: <p><a href="https://marketplace.visualstudio.com/items?itemName=chef-software.vsts-chef-tasks">Chef Azure DevOps-bővítmény</a></p> <p><a href="https://marketplace.visualstudio.com/items?itemName=chef-software.vsts-habitat-tasks">Habitat Azure DevOps-bővítmény</a></p>
-    - title: Chef szoftver – Hírek
-      html: <p><a href="https://blog.chef.io/">Chef szoftver – Blog</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Chef Automate
+            html: '<p><a href="https://docs.chef.io/chef_automate.html">A Chef Automate áttekintése</a></p> <p><a href="https://docs.chef.io/install_chef_automate.html">Chef Automate telepítési útmutató</a></p> <p><a href="https://azuremarketplace.microsoft.com/en-us/marketplace/apps/chef-software.chef-automate">Chef Automate az Azure Marketplace-en</a></p>'
+          - title: Chef szoftvereszközök
+            html: '<p><a href="https://marketplace.visualstudio.com/items?itemName=chef-software.vsts-chef-tasks">Chef Azure DevOps-bővítmény</a></p> <p><a href="https://marketplace.visualstudio.com/items?itemName=chef-software.vsts-habitat-tasks">Habitat Azure DevOps-bővítmény</a></p>'
+          - title: Chef szoftver – Hírek
+            html: '<p><a href="https://blog.chef.io/">Chef szoftver – Blog</a></p>'

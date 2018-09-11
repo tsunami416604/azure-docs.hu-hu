@@ -1,10 +1,4 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: b275387e5d884f8ca6484690b7caf5a84759e9e2
-ms.sourcegitcommit: 465ae78cc22eeafb5dfafe4da4b8b2138daf5082
-ms.translationtype: HT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44326014"
 documentType: LandingData
 title: Azure Dev Spaces
 metadata:
@@ -18,48 +12,47 @@ metadata:
   ms.date: 08/23/2018
   ms.author: ghogen
 sections:
-- title: Gyors, iteratív Kubernetes-fejlesztési élményt biztosít a csapatok számára
-  items:
-  - type: paragraph
-    text: A fejlesztői gép minimális szintű beállítása mellett iteratív módon futtathat tárolókat és végezhet azokon hibakeresést közvetlenül az Azure Kubernetes Service-ben (AKS).  Csapatával megosztott Kubernetes-fürt, illetve végpontok közötti tesztelés segítségével működhet együtt (más összetevőkkel, a függőségek replikálása vagy utánzása nélkül). Az Azure Dev Spaces használatával fejleszthet Windows, Mac vagy Linux rendszeren is, olyan közismert eszközöket használva, mint a Visual Studio, a Visual Studio Code vagy a parancssor.
-  - type: markdown
-    text: >-
-      > [!IMPORTANT]
-
-      > Az Azure Dev Spaces jelenleg előzetes verzióban érhető el, és csak az **USA keleti régiója**,**USA középső régiója**, **USA 2. nyugati régiója**, **Nyugat-Európa**, **Közép-Kanada**, és **Kelet-Kanada** régió AKS-nyugati régiója támogatják. Az előzetes verziók azzal a feltétellel érhetők el, hogy Ön beleegyezik a [kiegészítő használati feltételekbe](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). A szolgáltatás néhány eleme megváltozhat a nyilvános rendelkezésre állás előtt.
-- title: Bevezetés az Azure Dev Spaces használatába
-  items:
-  - type: paragraph
-    text: 'A kezdéshez válasszon egy nyelvspecifikus útmutatót:'
-  - type: list
-    style: icon48
+  - title: 'Gyors, iteratív Kubernetes-fejlesztési élményt biztosít a csapatok számára'
     items:
-    - image:
-        src: https://docs.microsoft.com/media/logos/logo_java.svg
-      text: Java
-      href: quickstart-java.md
-    - image:
-        src: https://docs.microsoft.com/media/logos/logo_NETcore.svg
-      text: .NET és VS Code
-      href: quickstart-netcore.md
-    - image:
-        src: https://docs.microsoft.com/media/logos/logo_visual-studio.svg
-      text: .NET és Visual Studio
-      href: quickstart-netcore-visualstudio.md
-    - image:
-        src: https://docs.microsoft.com/media/logos/logo_nodejs.svg
-      text: Node.js
-      href: quickstart-nodejs.md
-- title: Hogyan egyszerűsíti le az Azure Dev Spaces a Kubernetes fejlesztést
-  items:
-  - type: paragraph
-    text: Az Azure Dev Spaces a következő módokon segíti hatékonyabbá tenni a fejlesztői csapatok Kubernetesen végzett munkáját
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: 'A fejlesztői gép minimális szintű beállítása mellett iteratív módon futtathat tárolókat és végezhet azokon hibakeresést közvetlenül az Azure Kubernetes Service-ben (AKS).  Csapatával megosztott Kubernetes-fürt, illetve végpontok közötti tesztelés segítségével működhet együtt (más összetevőkkel, a függőségek replikálása vagy utánzása nélkül). Az Azure Dev Spaces használatával fejleszthet Windows, Mac vagy Linux rendszeren is, olyan közismert eszközöket használva, mint a Visual Studio, a Visual Studio Code vagy a parancssor.'
+      - type: markdown
+        text: |-
+          > [!IMPORTANT]
+          > Az Azure Dev Spaces jelenleg előzetes verzióban érhető el, és csak az **USA keleti régiója**,**USA középső régiója**, **USA 2. nyugati régiója**, **Nyugat-Európa**, **Közép-Kanada**, és **Kelet-Kanada** régió AKS-nyugati régiója támogatják. Az előzetes verziók azzal a feltétellel érhetők el, hogy Ön beleegyezik a [kiegészítő használati feltételekbe](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). A szolgáltatás néhány eleme megváltozhat a nyilvános rendelkezésre állás előtt.
+  - title: Bevezetés az Azure Dev Spaces használatába
     items:
-    - text: Minimalizálja az egyes csapattagok által a helyi fejlesztői gépen elvégzendő beállítások mértékét, és lehetővé teszi a munkavégzést közvetlenül az AKS-ben, amely egy felügyelt Kubernetes-fürt az Azure-ban.
-    - text: Gyorsan elvégzi a kódok iterációját és hibakeresését közvetlenül a Kubernetesen a Visual Studio 2017 vagy a Visual Studio Code használatával.
-    - text: A Dockerhez és a Kuberneteshez kóddal való konfigurálási objektumokat hoz létre, amelyek a fejlesztéstől egészen az éles környezetig használhatók.
-    - text: Megoszt egy felügyelt Kubernetes-fürtöt a csapat tagjai között a közös munka értekében. A kód elkülönített fejlesztése, illetve végpontok közötti tesztelés más összetevőkkel a függőségek replikálása vagy utánzása nélkül.
-  - type: markdown
-    text: '![](media/azure-dev-spaces/vscode-overview.png)'
+      - type: paragraph
+        text: 'A kezdéshez válasszon egy nyelvspecifikus útmutatót:'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/media/logos/logo_java.svg'
+            text: Java
+            href: quickstart-java.md
+          - image:
+              src: 'https://docs.microsoft.com/media/logos/logo_NETcore.svg'
+            text: .NET és VS Code
+            href: quickstart-netcore.md
+          - image:
+              src: 'https://docs.microsoft.com/media/logos/logo_visual-studio.svg'
+            text: .NET és Visual Studio
+            href: quickstart-netcore-visualstudio.md
+          - image:
+              src: 'https://docs.microsoft.com/media/logos/logo_nodejs.svg'
+            text: Node.js
+            href: quickstart-nodejs.md
+  - title: Hogyan egyszerűsíti le az Azure Dev Spaces a Kubernetes fejlesztést
+    items:
+      - type: paragraph
+        text: Az Azure Dev Spaces a következő módokon segíti hatékonyabbá tenni a fejlesztői csapatok Kubernetesen végzett munkáját
+      - type: list
+        style: unordered
+        items:
+          - text: 'Minimalizálja az egyes csapattagok által a helyi fejlesztői gépen elvégzendő beállítások mértékét, és lehetővé teszi a munkavégzést közvetlenül az AKS-ben, amely egy felügyelt Kubernetes-fürt az Azure-ban.'
+          - text: Gyorsan elvégzi a kódok iterációját és hibakeresését közvetlenül a Kubernetesen a Visual Studio 2017 vagy a Visual Studio Code használatával.
+          - text: 'A Dockerhez és a Kuberneteshez kóddal való konfigurálási objektumokat hoz létre, amelyek a fejlesztéstől egészen az éles környezetig használhatók.'
+          - text: 'Megoszt egy felügyelt Kubernetes-fürtöt a csapat tagjai között a közös munka értekében. A kód elkülönített fejlesztése, illetve végpontok közötti tesztelés más összetevőkkel a függőségek replikálása vagy utánzása nélkül.'
+      - type: markdown
+        text: '![](media/azure-dev-spaces/vscode-overview.png)'
