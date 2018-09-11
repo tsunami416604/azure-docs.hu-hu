@@ -15,12 +15,12 @@ ms.date: 05/24/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017, it-pro
-ms.openlocfilehash: 4ce76f1156d4d8d85f5e10bb750b012f93ba7afb
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 1178d85f295c6ac01f367db8adc2c9b855cdc829
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39366680"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44347831"
 ---
 # <a name="kerberos-constrained-delegation-for-single-sign-on-to-your-apps-with-application-proxy"></a>Kerberos által korlátozott delegálás az egyszeri bejelentkezést az alkalmazásokba az alkalmazásproxy használatával
 
@@ -135,12 +135,12 @@ Delegált bejelentkezési azonosító használata esetén az érték nem egyedi 
    * A helyi SAM-fiók neve (a tartományvezérlő konfigurációja függ)
 
 ### <a name="troubleshooting-sso-for-different-identities"></a>Egyszeri bejelentkezés hibaelhárítása a különböző identitások
-Ha hiba van az egyszeri bejelentkezési folyamat, megjelenik az összekötő gép eseménynaplóban leírtak [hibaelhárítás](../application-proxy-back-end-kerberos-constrained-delegation-how-to.md).
+Ha hiba van az egyszeri bejelentkezési folyamat, megjelenik az összekötő gép eseménynaplóban leírtak [hibaelhárítás](application-proxy-back-end-kerberos-constrained-delegation-how-to.md).
 De egyes esetekben a sikeresen irányuló kérést küld a háttéralkalmazás az alkalmazás válaszol a különböző HTTP-válaszok során. Ezekben az esetekben hibaelhárítási el kell indítaniuk az alkalmazásproxy-munkamenet eseménynaplóban összekötő gépen 24029 eseményazonosítóval megvizsgálásával. A felhasználói identitás delegálásához használt belül az esemény részleteinek a "user" mezőjében jelenik meg. Munkamenet napló bekapcsolásához válassza **megjelenítése elemzési és hibakeresési naplók** a eseményt megjelenítő Nézet menü.
 
 ## <a name="next-steps"></a>További lépések
 
-* [Az Application Proxy-alkalmazások használata a Kerberos által korlátozott delegálás konfigurálása](../application-proxy-back-end-kerberos-constrained-delegation-how-to.md)
+* [Az Application Proxy-alkalmazások használata a Kerberos által korlátozott delegálás konfigurálása](application-proxy-back-end-kerberos-constrained-delegation-how-to.md)
 * [Problémák merültek fel az alkalmazásproxy használatával](application-proxy-troubleshoot.md)
 
 

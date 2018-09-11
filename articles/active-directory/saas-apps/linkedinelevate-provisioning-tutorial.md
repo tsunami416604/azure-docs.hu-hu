@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Konfigurálása LinkedIn jogosultságszint-emelés automatikus a felhasználók átadása az Azure Active Directoryhoz |} Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálja az Azure Active Directory automatikus kiépítése és leépíti a felhasználói fiókok LinkedIn jogosultságszintjének emeléséhez.
+title: 'Oktatóanyag: Konfigurálása LinkedIn szintjének emelése a felhasználók automatikus átadása az Azure Active Directoryban |} A Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az Azure Active Directoryban történő automatikus kiépítésének és megszüntetésének LinkedIn megszereznie a felhasználói fiókok.
 services: active-directory
 documentationcenter: ''
 author: asmalser-msft
@@ -15,115 +15,115 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/28/2018
 ms.author: asmalser-msft
-ms.openlocfilehash: fdba165fc66c07c39ecb242b572fbbe12e96a720
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 1dcc198c1a1cc798e991f489e6897d4b930c0593
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36215833"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44348499"
 ---
-# <a name="tutorial-configure-linkedin-elevate-for-automatic-user-provisioning"></a>Oktatóanyag: Konfigurálása LinkedIn jogosultságszint-emelés automatikus a felhasználók átadása
+# <a name="tutorial-configure-linkedin-elevate-for-automatic-user-provisioning"></a>Oktatóanyag: Konfigurálása LinkedIn szintjének emelése a felhasználók automatikus átadása
 
 
-Ez az oktatóanyag célja a lépéseket kell elvégeznie a LinkedIn jogosultságszint-emelés és az Azure AD automatikus kiépítése és leépíti a felhasználói fiókok Azure AD-ből való jogosultságszint-emelés LinkedIn mutatjuk be. 
+Ez az oktatóanyag célja, a lépéseket kell elvégeznie a LinkedIn jogosultságszint-emelés és az Azure AD automatikus kiépítésének és megszüntetésének felhasználói fiókok Azure AD-ből való jogosultságszint-emelés LinkedIn mutatni. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ebben az oktatóanyagban leírt forgatókönyv feltételezi, hogy már rendelkezik a következő elemek:
+Az ebben az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy Ön már rendelkezik a következőkkel:
 
-*   Az Azure Active Directory-bérlő
-*   A LinkedIn jogosultságszint-emelés bérlő 
-*   A LinkedIn Account Center hozzáféréssel rendelkező LinkedIn jogosultságszint-emelés a rendszergazdai fiók
+*   Egy Azure Active Directory-bérlő
+*   A LinkedIn jogosultságszint-emelés bérlőt 
+*   Egy rendszergazdai fiók, a LinkedIn-szintjének emelése a LinkedIn-fiókkezelési központ a hozzáférést
 
 > [!NOTE]
-> Az Azure Active Directory integrálható LinkedIn jogosultságszint-emelés használatával a [SCIM](http://www.simplecloud.info/) protokoll.
+> Az Azure Active Directory integrálható a LinkedIn jogosultságszint-emelés használata a [SCIM](http://www.simplecloud.info/) protokollt.
 
-## <a name="assigning-users-to-linkedin-elevate"></a>Felhasználók hozzárendelése LinkedIn jogosultságszint-emelés
+## <a name="assigning-users-to-linkedin-elevate"></a>Felhasználók hozzárendelése LinkedIn szintjének emelése
 
-Az Azure Active Directory egy fogalom, más néven "hozzárendeléseket" használ annak meghatározásához, hogy mely felhasználók kell kapnia a kiválasztott alkalmazásokhoz való hozzáférés. Automatikus fiók felhasználókiépítése keretében csak a felhasználók és csoportok "hozzárendelt" az Azure AD-alkalmazáshoz való szinkronizálásra kerül. 
+Az Azure Active Directory "-hozzárendelések" nevű fogalma használatával határozza meg, hogy mely felhasználók kell kapnia a kiválasztott alkalmazásokhoz való hozzáférés. Automatikus felhasználói fiók kiépítése kontextusában csak a felhasználók és csoportok rendelt "" az Azure AD-alkalmazáshoz való szinkronizálásra kerül. 
 
-A létesítési szolgáltatás engedélyezése és konfigurálása, előtt kell döntse el, hogy mely felhasználók és/vagy az Azure AD-csoportok határoz meg a felhasználók, akik LinkedIn jogosultságszint-emelés elérésére. Ha úgy döntött, itt cikk utasításait követve ezeket a felhasználókat rendelhet LinkedIn jogosultságszintjének emeléséhez:
+A kiépítési szolgáltatás engedélyezése és konfigurálása, mielőtt kell dönthet arról, hogy mely felhasználók, illetve a csoportok az Azure ad-ben a felhasználók, akik hozzáférhetnek a LinkedIn jogosultságszint-emelés jelölik. Ha úgy döntött, hozzárendelheti ezeket a felhasználókat LinkedIn jogosultságszint-emelés utasításokat követve:
 
 [Egy felhasználó vagy csoport hozzárendelése egy vállalati alkalmazás](../manage-apps/assign-user-or-group-access-portal.md)
 
 ### <a name="important-tips-for-assigning-users-to-linkedin-elevate"></a>Felhasználók hozzárendelése LinkedIn jogosultságszint-emelés fontos tippek
 
-*   Javasoljuk, hogy egyetlen Azure AD-felhasználó hozzárendelni LinkedIn jogosultságszint-emelés teszteli a telepítési konfigurációt. További felhasználók és/vagy csoportok később is rendelhető.
+*   Javasoljuk, hogy egyetlen Azure AD-felhasználót rendelni LinkedIn jogosultságszint-emelés az üzembe helyezési konfiguráció tesztelése. További felhasználók és csoportok később is rendelhető.
 
-*   Amikor egy felhasználó hozzárendelése LinkedIn jogosultságszint-emelés, ki kell választania a **felhasználói** szerepkör-hozzárendelés párbeszédpanelen. A "Default" szerepkör nem működik történő üzembe helyezéséhez.
-
-
-## <a name="configuring-user-provisioning-to-linkedin-elevate"></a>Felhasználók átadására LinkedIn jogosultságszintjének emeléséhez
-
-Ez a szakasz végigvezeti a csatlakozás az Azure AD LinkedIn jogosultságszintjének SCIM felhasználói fiókhoz kiépítés API, és a felhasználói fiókok a LinkedIn jogosultságszint-emelés alapján a felhasználó és csoport-hozzárendelés létrehozásához, frissítéséhez és tiltsa le a létesítési szolgáltatás konfigurálása hozzárendelve az Azure ad-ben.
-
-**Tipp:** is választhatja, hogy engedélyezze SAML-alapú egyszeri bejelentkezést a LinkedIn jogosultságszint-emelés, a megjelenő utasításokat követve [Azure-portálon](https://portal.azure.com). Egyszeri bejelentkezés konfigurálható függetlenül automatikus kiépítés, abban az esetben, ha ez a két funkció egészítik ki egymást.
+*   Amikor egy felhasználó hozzárendelése LinkedIn jogosultságszint-emelés, ki kell választania a **felhasználói** szerepkör-hozzárendelés párbeszédpanelen. Az "Alapértelmezett hozzáférés" szerepkör nem működik a kiépítéshez.
 
 
-### <a name="to-configure-automatic-user-account-provisioning-to-linkedin-elevate-in-azure-ad"></a>Konfigurálása automatikus felhasználói fiók kiépítése LinkedIn jogosultságszintjének emeléséhez Azure AD-ben:
+## <a name="configuring-user-provisioning-to-linkedin-elevate"></a>LinkedIn jogosultságszint-emelés történő felhasználókiépítés konfigurálása
+
+Ez a szakasz végigvezeti az Azure AD-csatlakozás LinkedIn jogosultságszintjének SCIM felhasználói fiók üzembe helyezési API és az eszközkiépítési szolgáltatás létrehozása, frissítése és letiltását konfigurálása hozzárendelt felhasználói fiókok a LinkedIn jogosultságszint-emelés felhasználó és csoport-hozzárendelés alapján az Azure ad-ben.
+
+**Tipp:** is dönthet úgy, hogy a LinkedIn jogosultságszintjének emeléséhez szereplő utasítások a következő SAML-alapú egyszeri bejelentkezés engedélyezve [az Azure portal](https://portal.azure.com). Egyszeri bejelentkezés konfigurálható az Automatikus kiépítés függetlenül ellenére, hogy ezen két funkció kiegészíti egymást.
 
 
-Az első lépés a LinkedIn-jogkivonatot lekérdezni. Ha a vállalati rendszergazdák, önálló megadhat egy hozzáférési jogkivonatot. A fiók központban navigáljon **beállítások &gt; globális beállítások** , és nyissa meg a **SCIM telepítő** panel.
+### <a name="to-configure-automatic-user-account-provisioning-to-linkedin-elevate-in-azure-ad"></a>Konfigurálása automatikus felhasználói fiók kiépítése LinkedIn megszereznie az Azure ad-ben:
+
+
+Az első lépés, hogy a LinkedIn-hozzáférési token lekérése. Ha egy vállalati rendszergazda engedélyezte, önálló telepíthet egy hozzáférési jogkivonatot. Lépjen az account Center webhelyen **beállítások &gt; globális beállítások** , és nyissa meg a **SCIM telepítő** panel.
 
 > [!NOTE]
-> Ha az account center érik el, hanem közvetlenül mutató hivatkozás, csatlakozni tud hozzá az alábbi lépéseket követve.
+> Ha közvetlenül helyett kapcsolaton keresztül érik el az account Center webhelyen, elérhetővé válik az alábbi lépéseket követve.
 
-1)  Jelentkezzen be Center fiók.
+1)  Jelentkezzen be az Account Center.
 
-2)  Válassza ki **Admin &gt; rendszergazdai beállítások** .
+2)  Válassza ki **rendszergazdai &gt; adminisztrátori beállítások** .
 
-3)  Kattintson a **speciális integrációja** a bal oldali oldalsávon. Az account center van irányítva.
+3)  Kattintson a **speciális Integrációk** a bal oldali oldalsáv. Átirányítjuk az account Center webhelyen.
 
-4)  Kattintson a **+ Hozzáadás új SCIM konfigurációs** és hajtsa végre az eljárást minden mező kitöltésével.
+4)  Kattintson a **+ Hozzáadás új SCIM konfigurációs** , és hajtsa végre az eljárást minden mező kitöltésével.
 
-> Autoassign licencek nincs engedélyezve, az azt jelenti, hogy csak a felhasználói adatok van-e szinkronizálva.
+> Autoassign licencek nincs engedélyezve, ha az azt jelenti, hogy csak a felhasználói adatok szinkronizálva van-e.
 
 ![LinkedIn jogosultságszint-emelés kiépítése](./media/linkedinelevate-provisioning-tutorial/linkedin_elevate1.PNG)
 
-> Ha autolicense hozzárendelés engedélyezve van, jegyezze fel az alkalmazáspéldány és licenc típusa kell. Elsőként érkezett a hozzárendelt licenceket, először kiszolgálására alapján, addig, amíg a licencek kerül.
+> Ha autolicense hozzárendelés engedélyezve van, vegye figyelembe az alkalmazás példányát és a licenc típusa kell. Vannak licencek rendelve az első származnak, először szolgálja ki alapján, amíg megnyílik a licenceket.
 
 ![LinkedIn jogosultságszint-emelés kiépítése](./media/linkedinelevate-provisioning-tutorial/linkedin_elevate2.PNG)
 
-5)  Kattintson a **Generate token**. A hozzáférési token megjelenítési alatt kell megjelennie a **hozzáférési jogkivonat** mező.
+5)  Kattintson a **jogkivonat létrehozása**. A hozzáférési jogkivonat megjelenítési alatt kell megjelennie a **hozzáférési jogkivonat** mező.
 
-6)  Az oldal elhagyása előtt mentse a vágólapra vagy a számítógép a hozzáférési jogkivonat.
+6)  A hozzáférési jogkivonatának mentéset a vágólapra vagy a számítógépre mielőtt elhagyja a lapot.
 
-7) Ezután jelentkezzen be a [Azure-portálon](https://portal.azure.com), és keresse meg a **Azure Active Directory > Vállalati alkalmazások > összes alkalmazás** szakasz.
+7) Ezután jelentkezzen be a [az Azure portal](https://portal.azure.com), és keresse meg a a **Azure Active Directory > Vállalati alkalmazások > minden alkalmazás** szakaszban.
 
-8) Ha már konfigurált LinkedIn jogosultságszint-emelés egyszeri bejelentkezést, keresse meg a LinkedIn jogosultságszint-emelés használja a keresőmezőt példányát. Máskülönben válassza **Hozzáadás** keresse meg a **LinkedIn jogosultságszint-emelés** az alkalmazás katalógusában. Válassza ki a LinkedIn jogosultságszint-emelés a keresési eredmények közül, és adja hozzá az alkalmazások listáját.
+8) Ha már konfigurált LinkedIn jogosultságszint-emelés az egyszeri bejelentkezés, keresse meg a LinkedIn jogosultságszint-emelés a keresőmező használatával példányát. Ellenkező esetben válassza **Hozzáadás** és keressen rá a **LinkedIn jogosultságszint-emelés** az alkalmazás-katalógusában. Válassza ki a LinkedIn-szintjének emelése a keresési eredmények között, és adja hozzá az alkalmazások listáját.
 
-9)  Jelölje ki a LinkedIn jogosultságszint-emelés példányát, majd válassza ki a **kiépítési** fülre.
+9)  Válassza ki a LinkedIn jogosultságszint-emelés példányát, majd válassza ki a **kiépítési** fülre.
 
-10) Állítsa be a **kiépítési üzemmódját** való **automatikus**.
+10) Állítsa be a **Kiépítési mód** való **automatikus**.
 
 ![LinkedIn jogosultságszint-emelés kiépítése](./media/linkedinelevate-provisioning-tutorial/linkedin_elevate3.PNG)
 
-11)  Töltse ki a következő mezőket a **rendszergazdai hitelesítő adataival** :
+11)  Töltse ki a következő mezőket alatt **rendszergazdai hitelesítő adataival** :
 
-* Az a **bérlői URL-cím** mezőbe írja be https://api.linkedin.com.
+* Az a **bérlői URL-cím** írja be a következőt https://api.linkedin.com.
 
-* Az a **titkos Token** mezőben adja meg az 1. lépésben létrehozott jogkivonat, és kattintson a **kapcsolat tesztelése** .
+* Az a **titkos jogkivonat** mezőben adja meg az 1. lépésben létrehozott jogkivonat, és kattintson a **kapcsolat tesztelése** .
 
-* A portál upperright oldalán egy sikeres következő értesítésnek kell megjelennie.
+* A portál eddig: upperright oldalán kell megjelennie a sikeres címtármódosítást jelző értesítés.
 
-12) Adja meg az e-mail címet vagy egy csoport, az üzembe helyezési hiba értesítéseket kapjanak a **értesítő e-mailt** mezőben, majd jelölje be az alábbi jelölőnégyzetet.
+12) Adja meg az e-mail-címét egy személyt vagy csoportot, amelyre az üzembe helyezési hiba értesítéseket szeretné kapni a **értesítő e-mailt** mezőben, majd jelölje be az alábbi jelölőnégyzetet.
 
 13) Kattintson a **Save** (Mentés) gombra. 
 
-14) Az a **attribútum-leképezésekhez** szakaszban, tekintse át a felhasználói és csoportattribútum LinkedIn jogosultságszintjének emeléséhez az Azure Active Directoryból szinkronizált. Vegye figyelembe, hogy az attribútumok választotta **egyező** tulajdonságok felel meg a felhasználói fiókok és csoportok LinkedIn jogosultságszint-emelés frissítés műveletekhez használható. Válassza ki a Mentés gombra a módosítások véglegesítéséhez.
+14) Az a **attribútumleképezések** területen tekintse át a LinkedIn jogosultságszint-emelés Azure AD-ből szinkronizált felhasználói és csoportattribútum. Vegye figyelembe, hogy a kiválasztott attribútumok **megfelelést kiváltó** tulajdonságok használandó felel meg a felhasználói fiókokat és csoportokat a LinkedIn jogosultságszint-emelés a frissítési műveleteket. Válassza ki a Mentés gombra a módosítások véglegesítéséhez.
 
 ![LinkedIn jogosultságszint-emelés kiépítése](./media/linkedinelevate-provisioning-tutorial/linkedin_elevate4.PNG)
 
-15) Az Azure AD szolgáltatás LinkedIn jogosultságszint-emelés kiépítés engedélyezéséhez módosítsa a **kiépítési állapot** való **a** a a **beállítások** szakasz
+15) Az Azure AD létesítési szolgáltatás a LinkedIn jogosultságszint-emelés engedélyezéséhez módosítsa a **üzembe helyezési állapotra** való **a** a a **beállítások** szakasz
 
 16) Kattintson a **Save** (Mentés) gombra. 
 
-Elindítja a kezdeti szinkronizálás bármely felhasználói és/vagy csoportok rendelt LinkedIn jogosultságszint-emelés a felhasználók és csoportok szakaszban. Figyelje meg, hogy a kezdeti szinkronizálás hosszabb ideig tart hajtsa végre ezt követő szinkronizálások, amely körülbelül 40 percenként történik, amíg a szolgáltatás fut-nál. Használhatja a **szinkronizálás részleteivel** szakasz figyelemmel az előrehaladást, és hivatkozásokat követve történő rendszerbe állításához tevékenységi naplóit, amelyek ismertetik a LinkedIn jogosultságszint-emelés app a létesítési szolgáltatás által végzett összes műveletet.
+Ekkor elindul a kezdeti szinkronizálás, a felhasználók és/vagy LinkedIn megszereznie a felhasználók és csoportok szakaszban hozzárendelt csoportok. Vegye figyelembe, hogy a kezdeti szinkronizálás hosszabb időt vesz igénybe, mint az ezt követő szinkronizálások, amely körülbelül 40 percenként történik, amíg a szolgáltatás fut hajtsa végre. Használhatja a **szinkronizálás részleteivel** szakasz előrehaladásának figyeléséhez, és kövesse a hivatkozásokat kiépítés tevékenységeket tartalmazó naplók, amelyek leírják a LinkedIn jogosultságszint-emelés alkalmazásban a kiépítési szolgáltatás által végrehajtott összes műveletet.
 
-Olvassa el az Azure AD-naplók kiépítés módjáról további információkért lásd: [automatikus felhasználói fiók kiépítése jelentések](../active-directory-saas-provisioning-reporting.md).
+Az Azure AD létesítési naplók olvasása további információkért lásd: [-jelentések automatikus felhasználói fiók kiépítése](../manage-apps/check-status-user-account-provisioning.md).
 
 
 ## <a name="additional-resources"></a>További források
 
-* [Felhasználói fiók kiépítése vállalati alkalmazások kezelése](../manage-apps/configure-automatic-user-provisioning-portal.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](../manage-apps/what-is-single-sign-on.md)
+* [Felhasználói fiók kiépítése a vállalati alkalmazások kezelése](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

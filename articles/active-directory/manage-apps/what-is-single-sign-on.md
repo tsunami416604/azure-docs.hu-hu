@@ -14,12 +14,12 @@ ms.date: 07/16/2018
 ms.author: barbkess
 ms.reviewer: asmalser
 ms.custom: it-pro
-ms.openlocfilehash: 1ac15ce8f8abf2b30b42f02b300a17448f86fc40
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: d17b5967519bc51e4fb33a410149d17c82c28d10
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44052768"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44347987"
 ---
 # <a name="what-is-application-access-and-single-sign-on-with-azure-active-directory"></a>Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?
 Egyszeri bejelentkezés azt jelenti, nem tudnak hozzáférni az összes alkalmazásokat és erőforrásokat kell tennie az üzleti, csak egyszer, egyetlen felhasználói fiókkal jelentkezzen be. Miután bejelentkezett, elérheti összes alkalmazás hitelesítéséhez szükséges nélkül (például adjon meg egy jelszót) egy második alkalommal.
@@ -89,7 +89,7 @@ Válassza ki az alkalmazások az Azure AD lehetővé teszi automatizált felhasz
 
 Amikor a felhasználót törlik, vagy adataik módosításokat az Azure ad-ben, ezeket a változásokat is is megjelennek a SaaS-alkalmazás. Ez azt jelenti, automatizált identitás életciklus-kezelés konfigurálása lehetővé teszi a rendszergazdák a vezérlőelemet, és adja meg az automatikus üzembe helyezést és megszüntetést az SaaS-alkalmazásokhoz. Az identitás-életciklus-felügyelet automatizálása az Azure AD-ben engedélyezve van a felhasználó kiépítésével.
 
-További tudnivalókért lásd: [automatizált Felhasználókiépítése és -megszüntetés SaaS-alkalmazásokhoz](../active-directory-saas-app-provisioning.md)
+További tudnivalókért lásd: [automatizált Felhasználókiépítése és -megszüntetés SaaS-alkalmazásokhoz](user-provisioning.md)
 
 ## <a name="get-started-with-the-azure-ad-application-gallery"></a>Ismerkedés az Azure AD alkalmazáskatalógusában
 Készen áll a kezdésre? Egyszeri bejelentkezés az Azure AD között üzembe helyezéséhez és SaaS-alkalmazásokhoz, amelyek a szervezet használja, kövesse ezeket az irányelveket.
@@ -109,7 +109,7 @@ Miután az alkalmazás talált, részletes utasításokat követve az alkalmazá
 ### <a name="application-not-in-the-gallery"></a>A katalógusban nem szereplő alkalmazást?
 Ha az alkalmazás nem található az Azure AD alkalmazáskatalógusában, majd ezen lehetőségek állnak rendelkezésére:
 
-* **Adjon hozzá egy listán nem szereplő alkalmazást használ** – az egyéni kategória használata az Azure Portalon az alkalmazásgyűjtemény listán nem szereplő alkalmazást, amely a szervezet használja. Minden olyan alkalmazás, amely támogatja az SAML 2.0, mint az összevont alkalmazások vagy bármilyen alkalmazás, amely rendelkezik egy HTML-alapú bejelentkezési oldal egyszeri bejelentkezés jelszó alkalmazásként is hozzáadhat. További részletekért lásd: Ez a cikk a [saját alkalmazás hozzáadása](../application-config-sso-how-to-configure-federated-sso-non-gallery.md).
+* **Adjon hozzá egy listán nem szereplő alkalmazást használ** – az egyéni kategória használata az Azure Portalon az alkalmazásgyűjtemény listán nem szereplő alkalmazást, amely a szervezet használja. Minden olyan alkalmazás, amely támogatja az SAML 2.0, mint az összevont alkalmazások vagy bármilyen alkalmazás, amely rendelkezik egy HTML-alapú bejelentkezési oldal egyszeri bejelentkezés jelszó alkalmazásként is hozzáadhat. További részletekért lásd: Ez a cikk a [saját alkalmazás hozzáadása](configure-federated-single-sign-on-non-gallery-applications.md).
 * **Adjon hozzá saját alkalmazást fejleszt** – Ha az alkalmazás saját maga is rendelkezik fejlesztett összevont egyszeri bejelentkezés megvalósítása az Azure AD fejlesztői dokumentáció útmutatását, vagy üzembe az Azure AD graph API-t. További információkért tekintse meg ezeket az erőforrásokat:
   
   * [Hitelesítési forgatókönyvek az Azure AD-hez](../develop/authentication-scenarios.md)

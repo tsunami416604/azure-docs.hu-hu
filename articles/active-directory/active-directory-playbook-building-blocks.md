@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
-ms.openlocfilehash: 41d495e38a8360609afe924bb49ccf2f6aea086e
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 4c8f2966df9c33ec227b14c00996f84f39043cdb
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43340039"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44349228"
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Az Azure Active Directory megvalósíthatósági fogalom forgatókönyv: építőelemek
 
@@ -340,7 +340,7 @@ Ha az alkalmazás-kiépítés engedélyezve van, szüksége lehet Várjon néhá
 | Lépés | További források |
 | --- | --- |
 | A felhasználó eltávolítása a csoportból, az alkalmazás hozzá van rendelve. | [A felhasználók számára az Azure Active Directory-bérlőben csoporttagság kezelése](fundamentals/active-directory-groups-members-azure-portal.md) |
-| Várjon néhány percet megszüntetést | [Automatikus SaaS-alkalmazás Felhasználókiépítés Azure AD-ben: hogyan működik az automatikus kiépítési?](active-directory-saas-app-provisioning.md#how-does-automatic-provisioning-work) |
+| Várjon néhány percet megszüntetést | [Automatikus SaaS-alkalmazás Felhasználókiépítés Azure AD-ben: hogyan működik az automatikus kiépítési?](manage-apps/user-provisioning.md#how-does-automatic-provisioning-work) |
 | A külön böngésző-munkamenet jelentkezzen be az információkkal dolgozó szakemberek saját alkalmazások portál számára, és győződjön meg arról, hogy a csempe nem található | http://myapps.microsoft.com |
 
 

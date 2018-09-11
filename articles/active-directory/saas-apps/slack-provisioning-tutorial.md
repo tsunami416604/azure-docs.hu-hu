@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser-msft
 ms.reviewer: asmalser
-ms.openlocfilehash: 9763c7a9e79f4c9e9d6296efb79e944205e8a99c
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: 7d6056987ee05f68eecf026e954327a2f62cf886
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39264147"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44348905"
 ---
 # <a name="tutorial-configure-slack-for-automatic-user-provisioning"></a>Oktatóanyag: Felhasználók automatikus átadása Slack konfigurálása
 
@@ -32,7 +32,7 @@ Ebben az oktatóanyagban célja, hogy a lépéseket kell elvégeznie a Slack, é
 
 Az ebben az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy Ön már rendelkezik a következőkkel:
 
-*   Az Azure Active Directory-bérlő
+*   Egy Azure Active Directory-bérlő
 *   Egy Slack-bérlőben a [Plus csomag](https://aadsyncfabric.slack.com/pricing) vagy jobban engedélyezve 
 *   A Slack csapat rendszergazdai engedélyekkel rendelkező felhasználói fiókkal 
 
@@ -111,7 +111,7 @@ Igény szerint engedélyezheti az Azure AD-ből származó objektumok csoport Sl
 
 Ez az eredmény a Slack, a hozzárendelt csoport objektumokat a **felhasználók és csoportok** szakasz a Slack, az Azure ad-ből teljesen szinkronizált. Használhatja a **szinkronizálás részleteivel** szakasz előrehaladásának figyeléséhez, és kövesse a hivatkozásokat kiépítés tevékenységeket tartalmazó naplók, amelyek leírják a Slack alkalmazást a kiépítési szolgáltatás által végrehajtott összes műveletet.
 
-Az Azure AD létesítési naplók olvasása további információkért lásd: [-jelentések automatikus felhasználói fiók kiépítése](../active-directory-saas-provisioning-reporting.md).
+Az Azure AD létesítési naplók olvasása további információkért lásd: [-jelentések automatikus felhasználói fiók kiépítése](../manage-apps/check-status-user-account-provisioning.md).
 
 
 ## <a name="additional-resources"></a>További források

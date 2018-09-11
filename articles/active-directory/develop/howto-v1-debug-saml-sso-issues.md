@@ -15,12 +15,12 @@ ms.date: 06/15/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: hirsin, dastrock, smalser
-ms.openlocfilehash: 5895e918fbd3b67074069ccc81bd794a75725c9a
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 388337fa80d174cb17dae12fa9d5f2fbdfe7e737
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39620936"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44347783"
 ---
 # <a name="debug-saml-based-single-sign-on-to-applications-in-azure-active-directory"></a>SAML-alapú egyszeri bejelentkezés az Azure Active Directory-alkalmazások hibakeresése
 
@@ -96,11 +96,11 @@ A hiba megoldásához:
     - A jogkivonatban kiadott jogcímek
     - A jogkivonat aláírásához használt tanúsítványt. Tekintse át a SAML-válasz módjáról további információkért lásd: [egyszeri bejelentkezéses SAML-protokoll](single-sign-on-saml-protocol.md).
 4. SAML-válasszal kapcsolatos további információkért lásd: [egyszeri bejelentkezéses SAML-protokoll](single-sign-on-saml-protocol.md).
-5. Most, hogy áttekintette a SAML-válasz, tekintse meg a [hiba történt a bejelentkezés után az alkalmazás lapon](../application-sign-in-problem-application-error.md) útmutatást a probléma megoldása. 
+5. Most, hogy áttekintette a SAML-válasz, tekintse meg a [hiba történt a bejelentkezés után az alkalmazás lapon](../manage-apps/application-sign-in-problem-application-error.md) útmutatást a probléma megoldása. 
 6. Ha továbbra sem tudja sikeres bejelentkezés nem ismeri, megkérheti az alkalmazás gyártójától Mi hiányzik a SAML-válasz.
 
 
 ## <a name="next-steps"></a>További lépések
-Most, hogy az egyszeri bejelentkezés az alkalmazás működik, próbálja meg [automatizálhatja a felhasználókiépítés és -megszüntetés SaaS-alkalmazásokhoz](../active-directory-saas-app-provisioning.md), vagy [feltételes hozzáférés használatának első lépései](../conditional-access/app-based-conditional-access.md).
+Most, hogy az egyszeri bejelentkezés az alkalmazás működik, próbálja meg [automatizálhatja a felhasználókiépítés és -megszüntetés SaaS-alkalmazásokhoz](../manage-apps/user-provisioning.md), vagy [feltételes hozzáférés használatának első lépései](../conditional-access/app-based-conditional-access.md).
 
 

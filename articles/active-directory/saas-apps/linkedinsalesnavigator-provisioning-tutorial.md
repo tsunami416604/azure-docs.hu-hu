@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: LinkedIn értékesítési Navigator konfigurálása az automatikus felhasználó-átadási az Azure Active Directoryval |} Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálja az Azure Active Directory automatikus kiépítése és leépíti LinkedIn értékesítési Navigator felhasználói fiókok.
+title: 'Oktatóanyag: A felhasználók automatikus átadása az Azure Active Directory konfigurálása a LinkedIn Sales Navigator |} A Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az Azure Active Directoryban történő automatikus kiépítésének és megszüntetésének LinkedIn Sales Navigator felhasználói fiókokat.
 services: active-directory
 documentationcenter: ''
 author: asmalser-msft
@@ -15,116 +15,116 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser-msft
-ms.openlocfilehash: 544fcb2c10d2efc4ee02f9ce70c6ce06214c85cd
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 1c5b8f2f8f8ea43e37bc65eb8f6ad03c3f198878
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36215249"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44347443"
 ---
-# <a name="tutorial-configure-linkedin-sales-navigator-for-automatic-user-provisioning"></a>Oktatóanyag: Automatikus felhasználólétesítés LinkedIn értékesítési Navigator konfigurálása
+# <a name="tutorial-configure-linkedin-sales-navigator-for-automatic-user-provisioning"></a>Oktatóanyag: Felhasználók automatikus átadása LinkedIn Sales Navigator konfigurálása
 
 
-Ez az oktatóanyag célja a lépéseket kell elvégeznie a LinkedIn értékesítési Navigator és az Azure AD automatikus kiépítése és leépíti a felhasználói fiókok Azure ad-LinkedIn értékesítési Navigator mutatjuk be. 
+Ez az oktatóanyag célja, a lépéseket kell elvégeznie a LinkedIn Sales Navigator és az Azure AD automatikus kiépítésének és megszüntetésének felhasználói fiókok Azure AD-ből a LinkedIn Sales Navigator mutatni. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ebben az oktatóanyagban leírt forgatókönyv feltételezi, hogy már rendelkezik a következő elemek:
+Az ebben az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy Ön már rendelkezik a következőkkel:
 
-*   Az Azure Active Directory-bérlő
-*   A LinkedIn értékesítési Navigator bérlő 
-*   A LinkedIn Account Center hozzáféréssel rendelkező LinkedIn értékesítési Navigator rendszergazdai fiók
+*   Egy Azure Active Directory-bérlő
+*   A LinkedIn Sales Navigator-bérlő 
+*   Egy rendszergazdai fiók, hozzáféréssel a LinkedIn-fiókkezelési központ a LinkedIn Sales Navigator
 
 > [!NOTE]
-> Az Azure Active Directory integrálható LinkedIn értékesítési Navigator használatával a [SCIM](http://www.simplecloud.info/) protokoll.
+> Az Azure Active Directory integrálható a LinkedIn Sales Navigator használatával a [SCIM](http://www.simplecloud.info/) protokollt.
 
-## <a name="assigning-users-to-linkedin-sales-navigator"></a>Felhasználók hozzárendelése LinkedIn értékesítési Navigator
+## <a name="assigning-users-to-linkedin-sales-navigator"></a>Felhasználók hozzárendelése a LinkedIn Sales Navigator
 
-Az Azure Active Directory egy fogalom, más néven "hozzárendeléseket" használ annak meghatározásához, hogy mely felhasználók kell kapnia a kiválasztott alkalmazásokhoz való hozzáférés. Automatikus fiók felhasználókiépítése keretében csak a felhasználók és csoportok "hozzárendelt" az Azure AD-alkalmazáshoz való szinkronizálásra kerül. 
+Az Azure Active Directory "-hozzárendelések" nevű fogalma használatával határozza meg, hogy mely felhasználók kell kapnia a kiválasztott alkalmazásokhoz való hozzáférés. Automatikus felhasználói fiók kiépítése kontextusában csak a felhasználók és csoportok rendelt "" az Azure AD-alkalmazáshoz való szinkronizálásra kerül. 
 
-A létesítési szolgáltatás engedélyezése és konfigurálása, előtt kell döntse el, hogy mely felhasználók és/vagy az Azure AD-csoportok határoz meg a felhasználók, akik LinkedIn értékesítési Navigator elérésére. Ha úgy döntött, itt utasításokat követve hozzárendelheti ezek a felhasználók LinkedIn értékesítési Navigator:
+A kiépítési szolgáltatás engedélyezése és konfigurálása, mielőtt kell dönthet arról, hogy mely felhasználók, illetve a csoportok az Azure ad-ben a felhasználók, akik hozzáférhetnek a LinkedIn Sales Navigator jelölik. Ha úgy döntött, utasításokat követve hozzárendelheti ezeket a felhasználókat LinkedIn Sales Navigator:
 
 [Egy felhasználó vagy csoport hozzárendelése egy vállalati alkalmazás](../manage-apps/assign-user-or-group-access-portal.md)
 
-### <a name="important-tips-for-assigning-users-to-linkedin-sales-navigator"></a>Felhasználók hozzárendelése LinkedIn értékesítési Navigator fontos tippek
+### <a name="important-tips-for-assigning-users-to-linkedin-sales-navigator"></a>Felhasználók hozzárendelése a LinkedIn Sales Navigator fontos tippek
 
-*   Javasoljuk, hogy egyetlen Azure AD-felhasználó hozzárendelni LinkedIn értékesítési Navigator teszteli a telepítési konfigurációt. További felhasználók és/vagy csoportok később is rendelhető.
+*   Javasoljuk, hogy egyetlen Azure AD-felhasználót az üzembe helyezési konfiguráció teszteléséhez a LinkedIn Sales Navigator rendelni. További felhasználók és csoportok később is rendelhető.
 
-*   Amikor egy felhasználó hozzárendelése LinkedIn értékesítési Navigator, ki kell választania a **felhasználói** szerepkör-hozzárendelés párbeszédpanelen. A "Default" szerepkör nem működik történő üzembe helyezéséhez.
+*   Amikor egy felhasználó hozzárendelése a LinkedIn Sales Navigator, ki kell választania a **felhasználói** szerepkör-hozzárendelés párbeszédpanelen. Az "Alapértelmezett hozzáférés" szerepkör nem működik a kiépítéshez.
 
 
-## <a name="configuring-user-provisioning-to-linkedin-sales-navigator"></a>A felhasználók átadása a LinkedIn értékesítési Navigator konfigurálása
+## <a name="configuring-user-provisioning-to-linkedin-sales-navigator"></a>LinkedIn Sales Navigator felhasználókiépítés konfigurálása
 
-Ez a szakasz végigvezeti az összekötő API-kiépítés LinkedIn értékesítési Navigator SCIM felhasználói fiókhoz az Azure AD, és a LinkedIn értékesítési Navigator alapján a felhasználó a felhasználói fiókok létrehozásához, frissítéséhez és tiltsa le a létesítési szolgáltatás konfigurálása hozzárendelve és az Azure AD-csoport-hozzárendelést.
+Ez a szakasz végigvezeti a LinkedIn Sales Navigator SCIM felhasználói fiók üzembe helyezési API az Azure AD-csatlakozás, valamint konfigurálása az eszközkiépítési szolgáltatás létrehozása, frissítése, és tiltsa le a hozzárendelt felhasználói fiókok a felhasználó alapján a LinkedIn Sales Navigator és csoport-hozzárendelést az Azure ad-ben.
 
 > [!TIP]
-> Dönthet úgy is, LinkedIn értékesítési Navigator SAML-alapú egyszeri bejelentkezés engedélyezése, utasítások megadott [Azure-portálon](https://portal.azure.com). Egyszeri bejelentkezés konfigurálható függetlenül automatikus kiépítés, abban az esetben, ha ez a két funkció egészítik ki egymást.
+> Választhatja azt is, a LinkedIn Sales Navigator SAML-alapú egyszeri bejelentkezés engedélyezve, a biztonsági utasítások megadott [az Azure portal](https://portal.azure.com). Egyszeri bejelentkezés konfigurálható az Automatikus kiépítés függetlenül ellenére, hogy ezen két funkció kiegészíti egymást.
 
 
-### <a name="to-configure-automatic-user-account-provisioning-to-linkedin-sales-navigator-in-azure-ad"></a>Konfigurálása automatikus felhasználói fiók kiépítés LinkedIn értékesítési Navigator Azure AD-ben:
+### <a name="to-configure-automatic-user-account-provisioning-to-linkedin-sales-navigator-in-azure-ad"></a>Konfigurálhatja a felhasználók automatikus fióklétesítés LinkedIn Sales Navigator az Azure ad-ben:
 
 
-Az első lépés a LinkedIn-jogkivonatot lekérdezni. Ha a vállalati rendszergazdák, önálló megadhat egy hozzáférési jogkivonatot. A fiók központban navigáljon **beállítások &gt; globális beállítások** , és nyissa meg a **SCIM telepítő** panel.
+Az első lépés, hogy a LinkedIn-hozzáférési token lekérése. Ha egy vállalati rendszergazda engedélyezte, önálló telepíthet egy hozzáférési jogkivonatot. Lépjen az account Center webhelyen **beállítások &gt; globális beállítások** , és nyissa meg a **SCIM telepítő** panel.
 
 > [!NOTE]
-> Ha az account center érik el, hanem közvetlenül mutató hivatkozás, csatlakozni tud hozzá az alábbi lépéseket követve.
+> Ha közvetlenül helyett kapcsolaton keresztül érik el az account Center webhelyen, elérhetővé válik az alábbi lépéseket követve.
 
-1)  Jelentkezzen be Center fiók.
+1)  Jelentkezzen be az Account Center.
 
-2)  Válassza ki **Admin &gt; rendszergazdai beállítások** .
+2)  Válassza ki **rendszergazdai &gt; adminisztrátori beállítások** .
 
-3)  Kattintson a **speciális integrációja** a bal oldali oldalsávon. Az account center van irányítva.
+3)  Kattintson a **speciális Integrációk** a bal oldali oldalsáv. Átirányítjuk az account Center webhelyen.
 
-4)  Kattintson a **+ Hozzáadás új SCIM konfigurációs** és hajtsa végre az eljárást minden mező kitöltésével.
+4)  Kattintson a **+ Hozzáadás új SCIM konfigurációs** , és hajtsa végre az eljárást minden mező kitöltésével.
 
-> Autoassign licencek nincs engedélyezve, az azt jelenti, hogy csak a felhasználói adatok van-e szinkronizálva.
+> Autoassign licencek nincs engedélyezve, ha az azt jelenti, hogy csak a felhasználói adatok szinkronizálva van-e.
 
-![A Navigátor értékesítési LinkedIn-kiépítés](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_1.PNG)
+![LinkedIn Sales Navigator-kiépítés](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_1.PNG)
 
-> Ha autolicense hozzárendelés engedélyezve van, jegyezze fel az alkalmazáspéldány és licenc típusa kell. Elsőként érkezett a hozzárendelt licenceket, először kiszolgálására alapján, addig, amíg a licencek kerül.
+> Ha autolicense hozzárendelés engedélyezve van, vegye figyelembe az alkalmazás példányát és a licenc típusa kell. Vannak licencek rendelve az első származnak, először szolgálja ki alapján, amíg megnyílik a licenceket.
 
-![A Navigátor értékesítési LinkedIn-kiépítés](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_2.PNG)
+![LinkedIn Sales Navigator-kiépítés](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_2.PNG)
 
-5)  Kattintson a **Generate token**. A hozzáférési token megjelenítési alatt kell megjelennie a **hozzáférési jogkivonat** mező.
+5)  Kattintson a **jogkivonat létrehozása**. A hozzáférési jogkivonat megjelenítési alatt kell megjelennie a **hozzáférési jogkivonat** mező.
 
-6)  Az oldal elhagyása előtt mentse a vágólapra vagy a számítógép a hozzáférési jogkivonat.
+6)  A hozzáférési jogkivonatának mentéset a vágólapra vagy a számítógépre mielőtt elhagyja a lapot.
 
-7) Ezután jelentkezzen be a [Azure-portálon](https://portal.azure.com), és keresse meg a **Azure Active Directory > Vállalati alkalmazások > összes alkalmazás** szakasz.
+7) Ezután jelentkezzen be a [az Azure portal](https://portal.azure.com), és keresse meg a a **Azure Active Directory > Vállalati alkalmazások > minden alkalmazás** szakaszban.
 
-8) Ha már konfigurált LinkedIn értékesítési Navigator egyszeri bejelentkezést, keresse meg a példányát használja a keresőmezőt LinkedIn értékesítési Navigátor. Máskülönben válassza **Hozzáadás** keresse meg a **LinkedIn értékesítési Navigator** az alkalmazás katalógusában. Válassza ki a LinkedIn értékesítési Navigator a keresési eredmények közül, és adja hozzá az alkalmazások listáját.
+8) Ha a LinkedIn Sales Navigator már konfigurált az egyszeri bejelentkezés, keresse meg a keresési mező használatával a LinkedIn Sales Navigator-példányát. Ellenkező esetben válassza **Hozzáadás** és keressen rá a **LinkedIn Sales Navigator** az alkalmazás-katalógusában. A keresési eredmények közül válassza ki a LinkedIn Sales Navigator, és adja hozzá az alkalmazások listáját.
 
-9)  Jelölje ki a LinkedIn értékesítési Navigator példányát, majd válassza ki a **kiépítési** fülre.
+9)  Válassza ki a LinkedIn Sales Navigator-példányát, majd válassza ki a **kiépítési** fülre.
 
-10) Állítsa be a **kiépítési üzemmódját** való **automatikus**.
+10) Állítsa be a **Kiépítési mód** való **automatikus**.
 
-![A Navigátor értékesítési LinkedIn-kiépítés](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_3.PNG)
+![LinkedIn Sales Navigator-kiépítés](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_3.PNG)
 
-11)  Töltse ki a következő mezőket a **rendszergazdai hitelesítő adataival** :
+11)  Töltse ki a következő mezőket alatt **rendszergazdai hitelesítő adataival** :
 
-* Az a **bérlői URL-cím** mezőbe írja be https://api.linkedin.com.
+* Az a **bérlői URL-cím** írja be a következőt https://api.linkedin.com.
 
-* Az a **titkos Token** mezőben adja meg az 1. lépésben létrehozott jogkivonat, és kattintson a **kapcsolat tesztelése** .
+* Az a **titkos jogkivonat** mezőben adja meg az 1. lépésben létrehozott jogkivonat, és kattintson a **kapcsolat tesztelése** .
 
-* A portál upperright oldalán egy sikeres következő értesítésnek kell megjelennie.
+* A portál eddig: upperright oldalán kell megjelennie a sikeres címtármódosítást jelző értesítés.
 
-12) Adja meg az e-mail címet vagy egy csoport, az üzembe helyezési hiba értesítéseket kapjanak a **értesítő e-mailt** mezőben, majd jelölje be az alábbi jelölőnégyzetet.
+12) Adja meg az e-mail-címét egy személyt vagy csoportot, amelyre az üzembe helyezési hiba értesítéseket szeretné kapni a **értesítő e-mailt** mezőben, majd jelölje be az alábbi jelölőnégyzetet.
 
 13) Kattintson a **Save** (Mentés) gombra. 
 
-14) Az a **attribútum-leképezésekhez** szakaszban, tekintse át a felhasználói és csoportattribútum, amely szinkronizálva lesznek az Azure AD az LinkedIn értékesítési Navigator. Vegye figyelembe, hogy az attribútumok választotta **egyező** tulajdonságok felel meg a felhasználói fiókokat és csoportokat LinkedIn értékesítési Navigator frissítés műveletekhez használható. Válassza ki a Mentés gombra a módosítások véglegesítéséhez.
+14) Az a **attribútumleképezések** területen tekintse át a felhasználói és csoportattribútum, amely az Azure ad-ből LinkedIn Sales Navigator szinkronizálódnak. Vegye figyelembe, hogy a kiválasztott attribútumok **megfelelést kiváltó** tulajdonságok használandó felel meg a felhasználói fiókokat és csoportokat a LinkedIn Sales Navigator a frissítési műveleteket. Válassza ki a Mentés gombra a módosítások véglegesítéséhez.
 
-![A Navigátor értékesítési LinkedIn-kiépítés](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_4.PNG)
+![LinkedIn Sales Navigator-kiépítés](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_4.PNG)
 
-15) Az Azure AD szolgáltatás LinkedIn értékesítési Navigator kiépítés engedélyezéséhez módosítsa a **kiépítési állapot** való **a** a a **beállítások** szakasz
+15) Az Azure AD létesítési szolgáltatás a LinkedIn Sales Navigator engedélyezéséhez módosítsa a **üzembe helyezési állapotra** való **a** a a **beállítások** szakasz
 
 16) Kattintson a **Save** (Mentés) gombra. 
 
-Elindítja a kezdeti szinkronizálás bármely felhasználói és/vagy csoportok rendelt LinkedIn értékesítési Navigator a felhasználók és csoportok szakaszban. Figyelje meg, hogy a kezdeti szinkronizálás hosszabb ideig tart hajtsa végre ezt követő szinkronizálások, amely körülbelül 40 percenként történik, amíg a szolgáltatás fut-nál. Használhatja a **szinkronizálás részleteivel** szakasz figyelemmel az előrehaladást, és hivatkozásokat követve történő rendszerbe állításához tevékenységi naplóit, amely az értékesítési Navigator LinkedIn-alkalmazás a létesítési szolgáltatás által végzett összes műveletet írják le.
+Ekkor elindul a kezdeti szinkronizálás, a felhasználók és/vagy LinkedIn Sales Navigator a felhasználók és csoportok szakaszban hozzárendelt csoportok. Vegye figyelembe, hogy a kezdeti szinkronizálás hosszabb időt vesz igénybe, mint az ezt követő szinkronizálások, amely körülbelül 40 percenként történik, amíg a szolgáltatás fut hajtsa végre. Használhatja a **szinkronizálás részleteivel** szakasz előrehaladásának figyeléséhez, és kövesse a hivatkozásokat kiépítés tevékenységeket tartalmazó naplók, amelyek leírják a LinkedIn Sales Navigator-alkalmazásban a kiépítési szolgáltatás által végrehajtott összes műveletet.
 
-Olvassa el az Azure AD-naplók kiépítés módjáról további információkért lásd: [automatikus felhasználói fiók kiépítése jelentések](../active-directory-saas-provisioning-reporting.md).
+Az Azure AD létesítési naplók olvasása további információkért lásd: [-jelentések automatikus felhasználói fiók kiépítése](../manage-apps/check-status-user-account-provisioning.md).
 
 
 ## <a name="additional-resources"></a>További források
 
-* [Felhasználói fiók kiépítése vállalati alkalmazások kezelése](../manage-apps/configure-automatic-user-provisioning-portal.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](../manage-apps/what-is-single-sign-on.md)
+* [Felhasználói fiók kiépítése a vállalati alkalmazások kezelése](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

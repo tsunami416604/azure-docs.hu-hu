@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/27/2018
 ms.author: chackdan
-ms.openlocfilehash: dc70a20667db7e59f0fe77ec4d84831cfb7e75a5
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: d1d17ff331d3e770b77ce729904e57cf88ebc16c
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42617218"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44348568"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Tervezési megfontolások a Service Fabric-fürt kapacitása
 Éles rendszerek üzembe a kapacitástervezés egy fontos lépés. Íme néhány, az elem, meg kell figyelembe venni, hogy a folyamat részeként.
@@ -51,7 +51,7 @@ Mindegyik csomóponttípus különböző méretezési csoport beállítása és 
 
 Service Fabric-fürtben több csomóponttípus állhat. Ebben az esetben a fürt tartalmaz egy elsődleges csomóponttípusok és a egy vagy több nem elsődleges csomóponttípusok.
 
-Egyetlen csomóponttípus; egyszerűen legfeljebb 100 csomópont virtuálisgép-méretezési csoportonként. Virtuálisgép-méretezési csoport állítja be a célzott méretezhetőség és automatikus skálázást automagically nem adhat hozzá szükség lehet a virtual machine scale sets hozzáadása. Virtuálisgép-méretezési csoportok helyben hozzáadása egy élő fürthöz egy feladat, és az új fürtök kiépítése a létrehozás időpontjában kiosztott megfelelő csomóponttípusok a felhasználók gyakran eredmény. 
+Egyetlen csomóponttípus; nem lehet megbízhatóan méretezheti meghaladja a 100-csomópontok maximális száma virtuálisgép-méretezési SF az alkalmazások számára. elérése nagyobb, mint 100 csomópont megbízhatóan, arra kéri, adjon hozzá további virtuálisgép-méretezési csoportok.
 
 ### <a name="primary-node-type"></a>Elsődleges csomóponttípus
 

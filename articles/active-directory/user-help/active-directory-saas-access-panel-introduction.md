@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 05/11/18
 ms.author: lizross
 ms.reviewer: asteen
-ms.openlocfilehash: e382f53678806aa3442151703277c3a57bb30830
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 2e74e45761a2f21c522f80d453da48948e17de58
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43302277"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44347750"
 ---
 # <a name="what-is-the-myapps-portal"></a>Mi az a MyApps portálról?
 
@@ -109,16 +109,6 @@ Az Azure Active Directory-csapat tesz közzé a saját alkalmazások mobilalkalm
 
 > [!NOTE]
 > Bejelentkezhet az Azure ad-vel (beleértve a Salesforce, a Google Apps, a Dropbox, Box, beleértve, Workday, Office 365-höz és több mint 70 mások is) az összevonási támogató alkalmazások bármilyen eszközön, gyakorlatilag bármely webböngészőben anélkül, hogy a beépülő modul vagy a mobile app. Egy mobileszközön, a másik használandó [MyApps portálról élmény](https://myapps.microsoft.com/) nincs szükség a saját alkalmazások mobilalkalmazást is.
->
->
-
-### <a name="my-apps-for-android"></a>Saját Android-alkalmazások
-
-Saját alkalmazások Android 4.1-es vagy újabb Android-verzió fut. Androidos eszközön támogatott.  
-
-Érhető el, a [Google Play áruház](https://play.google.com/store/apps/details?id=com.microsoft.myapps).
-
-![Saját Android-alkalmazások][3]   
 
 ### <a name="my-apps-for-iphone-and-ipad"></a>Saját alkalmazások iPhone és iPad
 
@@ -129,13 +119,13 @@ Minden iPhone vagy iPad, 7 vagy újabb IOS-es verziója fut. saját IOS-alkalmaz
 ![Saját IOS-alkalmazások][4]    
 
 
-## <a name="managed-browser-for-my-apps"></a>Felügyelt böngésző saját alkalmazások
+## <a name="intune-managed-browser-for-my-apps"></a>Az Intune Managed Browser for saját alkalmazások
 
-Saját alkalmazások is integrálva van az Intune Managed Browsert. Az iOS és Android-eszközökhöz az Intune Managed Browser kulcsfontosságú szerepet abban, győződjön meg arról, hogy a mobileszközök adatait biztonságban tudhassa. A böngésző lehetővé teszi, hogy biztonságosan megtekintheti, és keresse meg, amelyek a vállalati adatokat tartalmazhatnak, és a egy biztonságos internetes böngészési élményt segít.  
+Saját alkalmazások is integrálva van az Intune Managed Browsert. Az Intune Managed Browser iOS és Android-eszközök segítségével biztonságosan megtekintheti, és keresse meg, amelyek a vállalati adatokat tartalmazhatnak, védi az egy biztonságosabb internetes böngészési élményt nyújt.  
 
-Kap saját alkalmazások gyors elérése a Managed Browser kezdőlapon és a könyvjelzők, így kevesebb kattintással használni kívánt alkalmazások eléréséhez szükséges.
+Érheti el saját alkalmazások kezdőlapjáról is a Managed Browser és a könyvjelzők, ami azt jelenti, hogy az alkalmazások eléréséhez szükséges kevesebb kattintással.
 
-Az Intune Managed Browser mindig elérhető legyen a [Apple App Store](https://itunes.apple.com/us/app/microsoft-intune-managed-browser/id943264951?mt=8) és [Google Play Store](https://play.google.com/store/apps/details?id=com.microsoft.intune.mam.managedbrowser&hl=en).
+Az Intune Managed Browser mindig elérhető legyen a [Apple App Store](https://itunes.apple.com/us/app/microsoft-intune-managed-browser/id943264951?mt=8) és [Google Play Store](https://play.google.com/store/apps/details?id=com.microsoft.intune.mam.managedbrowser).
 
 ![Felügyelt böngésző saját alkalmazások][5]    
 
@@ -216,11 +206,10 @@ Például ha egy alkalmazás a felhasználók hitelesítéséhez az AD FS 2.0 ha
  
 - Alkalmazások kezelése az Azure ad-ben kapcsolatos további információkért tekintse meg a [bemutatása az Azure Active Directoryval egyszeri bejelentkezést és azzal való kezelésének app access](../manage-apps/what-is-single-sign-on.md).
  
-- A felhasználók átadásának kapcsolatos további információkért lásd: [automatizálhatja a felhasználókiépítés és -megszüntetés SaaS-alkalmazásokhoz](../active-directory-saas-app-provisioning.md).
+- A felhasználók átadásának kapcsolatos további információkért lásd: [automatizálhatja a felhasználókiépítés és -megszüntetés SaaS-alkalmazásokhoz](../manage-apps/user-provisioning.md).
 
 <!--Image references-->
 [1]: ./media/active-directory-saas-access-panel-introduction/01.png
 [2]: ./media/active-directory-saas-access-panel-introduction/02.png
-[3]: ./media/active-directory-saas-access-panel-introduction/03.png
 [4]: ./media/active-directory-saas-access-panel-introduction/04.png
 [5]: ./media/active-directory-saas-access-panel-introduction/05.png

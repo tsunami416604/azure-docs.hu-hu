@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 9c9cde23f8f8dc557b99d2f1508c923aaa2dce91
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: b7b1279dbb1256269705da3f8be6f6d2c1151368
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42054104"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44346338"
 ---
 # <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>Támogatás B2B-felhasználók Azure AD-ben a hozzáférést a helyszíni alkalmazások
 
@@ -27,7 +27,7 @@ Ha a helyszíni alkalmazás SAML-alapú hitelesítést használ, akkor is haszn�
 
 A következő két kell tennie:
 
-- Az SAML-alkalmazásba integrálja a katalógusban nem szereplő alkalmazást sablon használatával, leírtak szerint [konfigurálása egyszeri bejelentkezéshez, az alkalmazásokat, amelyek nem szerepelnek az Azure Active Directory alkalmazáskatalógusában](../active-directory-saas-custom-apps.md). Mindenképpen jegyezze fel, a használatért a **bejelentkezési URL-** értéket.
+- Az SAML-alkalmazásba integrálja a katalógusban nem szereplő alkalmazást sablon használatával, leírtak szerint [konfigurálása egyszeri bejelentkezéshez, az alkalmazásokat, amelyek nem szerepelnek az Azure Active Directory alkalmazáskatalógusában](../manage-apps/configure-single-sign-on-non-gallery-applications.md). Mindenképpen jegyezze fel, a használatért a **bejelentkezési URL-** értéket.
 -  A helyszíni alkalmazás közzététele az Azure AD-alkalmazásproxy használatával **Azure Active Directory** a hitelesítési forrásaként beállított. Útmutatásért lásd: [alkalmazások közzététele az Azure AD-alkalmazásproxy](../manage-apps/application-proxy-publish-azure-portal.md). 
 
    Konfigurálása során a **belső URL-cím** beállítást, a bejelentkezési URL-cím használata a katalógusban nem szereplő alkalmazás sablonban megadott. Ezzel a módszerrel a felhasználók elérhetik az alkalmazást a szervezet határán kívüli. Az alkalmazásproxy a helyszíni alkalmazás a SAML egyszeri bejelentkezést hajt végre.

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: 050e8efed38c40d8c7da292c0d6865869a07c9f9
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 2a4bae196e956d92548944637509b23f78ceb5d2
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43121709"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44348004"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lessonlycom"></a>Oktatóanyag: Azure Active Directory-integráció az Lessonly.com
 
@@ -126,7 +126,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     | `https://<companyname>.lessonly.com/auth/saml/metadata`|
 
     > [!NOTE] 
-    > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges bejelentkezési URL- és azonosító. Kapcsolattartó [Lessonly.com ügyfél-támogatási csapatának](mailto:dev@lessonly.com) beolvasni ezeket az értékeket. 
+    > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges bejelentkezési URL- és azonosító. Kapcsolattartó [Lessonly.com ügyfél-támogatási csapatának](mailto:support@lessonly.com) beolvasni ezeket az értékeket. 
 
 1. Az a **SAML-aláíró tanúsítvány** területén kattintson **Certificate(Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
 
@@ -165,7 +165,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     ![Egyszeri bejelentkezés konfigurálása](./media/lessonly-tutorial/tutorial_lessonly.com_configure.png)
 
-1. Az egyszeri bejelentkezés konfigurálása **Lessonly.com** oldalon kell küldenie a letöltött **Certificate(Base64)** és **kijelentkezéses URL-címe, SAML Entitásazonosító és SAML egyszeri bejelentkezési szolgáltatás URL-cím** való [Lessonly.com támogatási csapatának](mailto:dev@lessonly.com).
+1. Az egyszeri bejelentkezés konfigurálása **Lessonly.com** oldalon kell küldenie a letöltött **Certificate(Base64)** és **kijelentkezéses URL-címe, SAML Entitásazonosító és SAML egyszeri bejelentkezési szolgáltatás URL-cím** való [Lessonly.com támogatási csapatának](mailto:support@lessonly.com).
 
 > [!TIP]
 > Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Azure ad-ben embedded – dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -208,7 +208,7 @@ Ez a szakasz célja Lessonly.com Britta Simon nevű felhasználó létrehozásá
 Nincs meg ebben a szakaszban a művelet elem. Egy új felhasználót hoz létre az Lessonly.com elérésére, ha még nem létezik tett kísérlet során.
 
 > [!NOTE]
-> Hozzon létre egy felhasználót manuálisan kell, ha kapcsolódni kell a [Lessonly.com támogatási csapatának](mailto:dev@lessonly.com).
+> Hozzon létre egy felhasználót manuálisan kell, ha kapcsolódni kell a [Lessonly.com támogatási csapatának](mailto:support@lessonly.com).
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 

@@ -9,22 +9,23 @@ editor: ''
 ms.assetid: ''
 ms.service: security
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 8/17/2018
+ms.date: 9/10/2018
 ms.author: tomsh
-ms.openlocfilehash: cc922762f84b3a0658d503c4bfa6eb0079173e4e
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: b6953cc45305cf0812b185187c01149f0345756d
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43841547"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44346067"
 ---
 # <a name="azure-security-white-papers"></a>Az Azure Security-tanulmányok
 | | |
 |-|-|
 |[Bevezetés&nbsp;való&nbsp;Azure&nbsp;biztonsági](azure-security.md)|Azt ismerteti, hogy az ügyfél és a Microsoft operations perspektívából az Azure-ban végrehajtott biztonsági vezérlők gyűjteménye. Biztosít egy átfogó az ügyfelek által használt biztonsági vezérlő érhető el az Azure-ral.|
+|[Ajánlott biztonsági eljárások az Azure-megoldások](https://azure.microsoft.com/resources/security-best-practices-for-azure-solutions)|Használatára, amikor Ön tervezése, telepítése és a felhőalapú megoldások kezelése az Azure ajánlott biztonsági eljárások gyűjteménye.|
 |[Fejlett fenyegetésészlelés](azure-threat-detection.md)|Útmutatók az Azure-on keresztül, megközelíti a veszélyforrások elleni biztonsági értékelések, diagnosztikai és elemzési felé. Ismerteti, hogyan a Microsoft használja az advanced threat detection mechanizmusok védik a platformot. Is bemutatja, hogyan Microsoft tartalmazza a nyilvános irányuló funkciók és szolgáltatások ezek a mechanizmusok.|
 |[Az Azure data encryption inaktív](azure-security-encryption-atrest.md)|Az adatok védelme a tárolt Azure-ban és a különböző összetevők vesz részt a data protection megvalósítás összpontosít. Ellenőrzi, és a hátrányai a különböző kulcskezelés védelmi megközelítés.|
 |[Azure-naplózás](azure-log-audit.md)|Ismerteti az generálása, összegyűjtése és az Azure-ban üzemeltetett szolgáltatások biztonsági naplóinak elemzéséhez. Ezek a naplók segíthetnek a biztonsági betekintést nyerhet az Azure-környezetek. |

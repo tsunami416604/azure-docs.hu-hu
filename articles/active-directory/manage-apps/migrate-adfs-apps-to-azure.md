@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 03/02/2018
 ms.author: barbkess
-ms.openlocfilehash: d22b86ad33db600eb5273e3ab09e71a1b1fd527b
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: cdce0ae223a637ac30ed472d2bf711aa36958414
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39577496"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44346763"
 ---
 # <a name="migrate-ad-fs-on-premises-apps-to-azure"></a>AD FS helyszíni alkalmazások migrálása az Azure-ba 
 
@@ -55,7 +55,7 @@ Az olyan vállalatok számára, amelyek az AD FS-t, a Pinget vagy valamely más 
 - Az SaaS-alkalmazások identitásszolgáltatójaként az Azure AD további képességeket is támogat, például:
   - Alkalmazásonkénti jogkivonat-aláíró tanúsítványok.
   - [A tanúsítványok konfigurálható lejárati dátuma](manage-certificates-for-federated-single-sign-on.md).
-  - [A felhasználói fiókok automatikus üzembe helyezése](../active-directory-saas-app-provisioning.md) (a legfontosabb Azure Marketplace-alkalmazásokban) az Azure AD-identitások alapján.
+  - [A felhasználói fiókok automatikus üzembe helyezése](user-provisioning.md) (a legfontosabb Azure Marketplace-alkalmazásokban) az Azure AD-identitások alapján.
 
 **A helyszíni identitásszolgáltatók által biztosított előnyök megmaradnak**
 - Az Azure AD előnyei mellett továbbra is használhatja a helyszíni hitelesítési megoldását. Így például a helyszíni többtényezős hitelesítési megoldások, a naplózás, a felülvizsgálat és az egyéb előnyök nem vesznek el. 
@@ -232,7 +232,7 @@ A korábban az **Identitás** > **Egyszeri bejelentkezés beállításai** felü
 ![Az Azure AD kiválasztása hitelesítési szolgáltatásként](media/migrate-adfs-apps-to-azure/migrate10.png)
 
 ### <a name="optional-configure-user-provisioning-in-azure-ad"></a>Választható: Felhasználók átadásának konfigurálása az Azure AD-ben
-Ha szeretné megtudni, hogyan kezelje közvetlenül az Azure AD a felhasználókiépítést egy SaaS-alkalmazásban, tekintse meg [A felhasználókiépítés és -megszüntetés automatizálása az SaaS-alkalmazásokban az Azure Active Directoryval](../active-directory-saas-app-provisioning.md) témakort.
+Ha szeretné megtudni, hogyan kezelje közvetlenül az Azure AD a felhasználókiépítést egy SaaS-alkalmazásban, tekintse meg [A felhasználókiépítés és -megszüntetés automatizálása az SaaS-alkalmazásokban az Azure Active Directoryval](user-provisioning.md) témakort.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -1,24 +1,18 @@
 ---
 title: Az Azure Disk Encryption előfeltétel-konfigurációs |} A Microsoft Docs
 description: Ez a cikk ismerteti a Microsoft Azure Disk Encryption használatával IaaS-beli virtuális gépek előfeltételei.
-services: security
-documentationcenter: na
 author: mestew
-manager: MBaldwin
-ms.assetid: 1b2daefc-1326-44dd-9c8b-10e413769af7
 ms.service: security
-ms.devlang: na
+ms.subservice: Azure Disk Encryption
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 08/29/2018
 ms.author: mstewart
-ms.openlocfilehash: 67c3591b0218beac6343b49ba7867294ebeb3f44
-ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
+ms.date: 09/10/2018
+ms.openlocfilehash: 0750ea0877d5f27a8ceb091f8c3904048c9314aa
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2018
-ms.locfileid: "43381980"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44348276"
 ---
 # <a name="azure-disk-encryption-prerequisites"></a>Az Azure Disk Encryption előfeltételei 
  Ez a cikk az Azure Disk Encryption titkosítási előfeltétel, biztosítani kell, mielőtt használhatná az Azure Disk Encryption igénylő elemeket ismerteti. Az Azure Disk Encryption integrálva van [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/) titkosítási kulcsok kezeléséhez. Használhat [Azure PowerShell-lel](/powershell/azure/overview), [Azure CLI-vel](/cli/azure/), vagy a [az Azure portal](https://portal.azure.com) konfigurálása az Azure Disk Encryption.
@@ -76,7 +70,7 @@ Parancsok, amelyek segítségével csatlakoztathatja az adatlemezeket és a szü
         -  A PowerShell Core, .NET Core, az Azure PowerShell telepítése és az AzureRM.Netcore modul betöltése.
 
 2. Az AzureRM-modul telepített verzióinak ellenőrzése. Ha szükséges, [frissítése az Azure PowerShell-modul](/powershell/azure/install-azurerm-ps#update-the-azure-powershell-module).
-    -  Az AzureRM-modul verzióját kell lennie a 6.0.0 vagy újabb verziója.
+    -  Az AzureRM-modul verziószáma 6.0.0 vagy annál magasabb legyen.
     - Az AzureRM modul legújabb verziója használata javasolt.
 
      ```powershell
@@ -131,7 +125,7 @@ A [Azure CLI 2.0](/cli/azure) Azure-erőforrások kezelésére szolgáló paranc
 Ha már ismeri az Azure Disk Encryption Key Vault és az Azure AD szükséges előfeltételeket, használhatja a [az Azure Disk Encryption előfeltétel PowerShell-parancsprogram](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/ResourceManager/Compute/Commands.Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1 ). Az előfeltétel-konfigurációs parancsprogram használatáról további információkért lásd: a [titkosítani a virtuális gépek gyors üzembe helyezés](quick-encrypt-vm-powershell.md) és a [Azure Disk Encryption függelék](azure-security-disk-encryption-appendix.md#bkmk_prereq-script). 
 
 1. Ha szükséges, hozzon létre egy erőforráscsoportot.
-2. Hozzon létre egy kulcstartót. 
+2. Kulcstartó létrehozása. 
 3. Set a key vault speciális hozzáférési szabályzatok.
  
 ## <a name="bkmk_KeyVault"></a> Kulcstartó létrehozása 

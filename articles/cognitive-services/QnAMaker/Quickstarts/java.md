@@ -1,20 +1,21 @@
 ---
-title: A Microsoft a QnA Maker API (v4) – az Azure Cognitive Services Java rövid |} A Microsoft Docs
+title: 'Gyors útmutató: Java a QnA Maker API (v4)'
+titleSuffix: Azure Cognitive Services
 description: Get information és kód minták segítségével gyorsan használatának első lépései a Microsoft Translator Text API a Microsoft Cognitive Services, Azure-ban.
 services: cognitive-services
-documentationcenter: ''
-author: v-jaswel
+author: nitinme
+manager: cgronlun
 ms.service: cognitive-services
 ms.technology: qna-maker
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-jaswel
-ms.openlocfilehash: d8df77d43441331bdda38814e4bddfb29d1576c1
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: b436cbc1efde2e28b388e6bfc1843af1808ea993
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37868398"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44346673"
 ---
 # <a name="quickstart-for-microsoft-qna-maker-api-with-java"></a>Gyors útmutató: a Microsoft a QnA Maker API a Javával 
 <a name="HOLTop"></a>

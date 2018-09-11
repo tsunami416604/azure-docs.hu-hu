@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: ee606540bef47b11ad8fd9e820af2f5b51d47b0b
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 00b2b249f5889888f34d57fd1577ccfea776d00c
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39493021"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44347970"
 ---
 # <a name="securing-paas-databases-in-azure"></a>Az Azure PaaS-adatbázisok védelme
 
@@ -79,7 +79,7 @@ Az Azure SQL-tűzfal- és IP-korlátozások kapcsolatos további információké
 ### <a name="encryption-of-data-at-rest"></a>A tárolt adatok titkosítása
 [Transzparens adattitkosítás (TDE)](https://msdn.microsoft.com/library/azure/bb934049) alapértelmezés szerint engedélyezve van. TDE az SQL Server, az Azure SQL Database és az Azure SQL Data Warehouse adathoz és naplófájlhoz transzparens módon titkosítja. TDE tranzakciómentes közvetlen hozzáférést a fájlokhoz vagy a biztonsági mentés biztonságának sérüléséhez. Ez lehetővé teszi az inaktív adatok titkosítását a meglévő alkalmazások módosítása nélkül. TDE mindig maradjon engedélyezve; Ez azonban nem állítja le a támadó a normál elérési út használatával. TDE lehetővé teszi a sok törvényekkel, előírásokkal és a különböző iparágak létrehozott iránymutatásokat ahhoz, hogy.
 
-Az Azure SQL TDE kulcs kapcsolódó problémák kezeli. A TDE, a helyszíni speciális gondot kell fordítani helyreállíthatóságának érdekében, és adatbázisok áthelyezése. Az összetettebb forgatókönyveket, a kulcsok explicit módon felügyelhető az Azure Key Vaultban bővíthető kulcskezelés (lásd: [engedélyezése a TDE az SQL Server használatával EKM](/security/encryption/enable-tde-on-sql-server-using-ekm)). Ez lehetővé teszi a Bring Your Own Key (BYOK) Azure Key tárolók BYOK képesség révén.
+Az Azure SQL TDE kulcs kapcsolódó problémák kezeli. A TDE, a helyszíni speciális gondot kell fordítani helyreállíthatóságának érdekében, és adatbázisok áthelyezése. Az összetettebb forgatókönyveket, a kulcsok explicit módon felügyelhető az Azure Key Vaultban bővíthető kulcskezelés (lásd: [engedélyezése a TDE az SQL Server használatával EKM](/sql/relational-databases/security/encryption/enable-tde-on-sql-server-using-ekm)). Ez lehetővé teszi a Bring Your Own Key (BYOK) Azure Key tárolók BYOK képesség révén.
 
 Az Azure SQL keresztül oszlopokhoz titkosítást nyújt [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine). Ez lehetővé teszi a bizalmas oszlopok csak jogosult alkalmazások elérését. Az ilyen típusú titkosítás használata korlátozza a titkosított oszlopokban értékek egyenlőség-alapú SQL-lekérdezéseket.
 

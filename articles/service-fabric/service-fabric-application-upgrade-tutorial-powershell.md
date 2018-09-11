@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 0238dce3f8cbf838e7fce3afefb866e3aaa791bc
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: c1005d60df0b1cfd3b24be954ab4ff1b18c8f7a8
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42059150"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44348769"
 ---
 # <a name="service-fabric-application-upgrade-using-powershell"></a>A Service Fabric alkalmazás frissítése a PowerShell használatával
 > [!div class="op_single_selector"]
@@ -46,7 +46,7 @@ Hozhat létre, és kattintson a jobb gombbal az alkalmazásprojektre, az alkalma
 > 
 > 
 
-Után hoz létre a projektet a Visual Studióban, a PowerShell-parancs használható [másolási-ServiceFabricApplicationPackage](/powershell/servicefabric/vlatest/copy-servicefabricapplicationpackage) az alkalmazáscsomag átmásolása a ImageStore. Ha szeretné ellenőrizni az alkalmazáscsomagot helyileg, használja a [Test-ServiceFabricApplicationPackage](/powershell/servicefabric/vlatest/test-servicefabricapplicationpackage) parancsmagot. A következő lépés az, hogy regisztrálnia kell az alkalmazást a Service Fabric futtatókörnyezet történő a [Register-ServiceFabricApplicationType](/powershell/servicefabric/vlatest/register-servicefabricapplicationtype) parancsmagot. A következő lépés az, hogy indítsa el az alkalmazás egy példányát a [New-ServiceFabricApplication](/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps) parancsmagot.  Ezek három lépések a következők használatával csatlakoztatja a **telepítés** menüpont a Visual Studióban.  A telepítés elvégzése után meg kell törölni a képet tárból másolt alkalmazáscsomag annak érdekében, hogy csökkentse a felhasznált erőforrásokért.  Az alkalmazástípus már nem szükséges, ha, akkor ugyanezen okból nem regisztrált kell lennie. Lásd: [PowerShell-lel telepítés és eltávolítás alkalmazások](service-fabric-application-upgrade-tutorial-powershell.md) további információt.
+Után hoz létre a projektet a Visual Studióban, a PowerShell-parancs használható [másolási-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage) az alkalmazáscsomag átmásolása a ImageStore. Ha szeretné ellenőrizni az alkalmazáscsomagot helyileg, használja a [Test-ServiceFabricApplicationPackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage) parancsmagot. A következő lépés az, hogy regisztrálnia kell az alkalmazást a Service Fabric futtatókörnyezet történő a [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype) parancsmagot. A következő lépés az, hogy indítsa el az alkalmazás egy példányát a [New-ServiceFabricApplication](/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps) parancsmagot.  Ezek három lépések a következők használatával csatlakoztatja a **telepítés** menüpont a Visual Studióban.  A telepítés elvégzése után meg kell törölni a képet tárból másolt alkalmazáscsomag annak érdekében, hogy csökkentse a felhasznált erőforrásokért.  Az alkalmazástípus már nem szükséges, ha, akkor ugyanezen okból nem regisztrált kell lennie. Lásd: [PowerShell-lel telepítés és eltávolítás alkalmazások](service-fabric-application-upgrade-tutorial-powershell.md) további információt.
 
 Most már használhatja [a fürt és az alkalmazás megtekintése a Service Fabric Explorer](service-fabric-visualizing-your-cluster.md). Az alkalmazás rendelkezik egy webszolgáltatás, amelyet is azután nyit meg, az Internet Explorerben írja be [ http://localhost:8081/visualobjects ](http://localhost:8081/visualobjects) címet a címsorba.  Megtekintheti az egyes lebegőpontos visual objektumok Navigálás a képernyő.  Emellett használhatja [Get-ServiceFabricApplication](/powershell/module/servicefabric/get-servicefabricapplication?view=azureservicefabricps) alkalmazás állapotának ellenőrzéséhez.
 

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/19/2017
 ms.author: asmalser
 ms.reviewer: asmalser
-ms.openlocfilehash: 93c3b0cbc3ce063aaeb086d089631a8810293bbe
-ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
+ms.openlocfilehash: e96ea7d212f1a34bb6d10f8c49a15e1b34bfc469
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2018
-ms.locfileid: "43382533"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44348956"
 ---
 # <a name="tutorial-configure-pingboard-for-automatic-user-provisioning"></a>Oktatóanyag: Felhasználók automatikus átadása Pingboard konfigurálása
 
@@ -89,7 +89,7 @@ Ez a szakasz végigvezeti az Azure AD-csatlakozás üzembe helyezési API Pingbo
 
 1. Alatt a **leképezések** szakaszban jelölje be **szinkronizálása az Azure Active Directory-felhasználók a Pingboard**.
 
-1. Az a **attribútumleképezések** területen tekintse át a felhasználói attribútumok Pingboard szinkronizálását az Azure ad-ből. A kiválasztott attribútumok **megfelelést kiváltó** tulajdonságok segítségével felel meg a frissítési műveletek Pingboard levő felhasználói fiókokat. Válassza ki **mentése** véglegesíti a módosításokat. További információkért lásd: [attribútumleképezések testreszabása felhasználókiépítés](../active-directory-saas-customizing-attribute-mappings.md).
+1. Az a **attribútumleképezések** területen tekintse át a felhasználói attribútumok Pingboard szinkronizálását az Azure ad-ből. A kiválasztott attribútumok **megfelelést kiváltó** tulajdonságok segítségével felel meg a frissítési műveletek Pingboard levő felhasználói fiókokat. Válassza ki **mentése** véglegesíti a módosításokat. További információkért lásd: [attribútumleképezések testreszabása felhasználókiépítés](../manage-apps/customize-application-attributes.md).
 
 1. Ahhoz, hogy az Azure AD létesítési szolgáltatás a Pingboard, az a **beállítások** területén módosíthatja **üzembe helyezési állapotra** való **a**.
 
@@ -97,7 +97,7 @@ Ez a szakasz végigvezeti az Azure AD-csatlakozás üzembe helyezési API Pingbo
 
 A kezdeti szinkronizálás, mint a következő szinkronizálás, amely körülbelül 40 percenként történik, amíg a szolgáltatás fut hosszabb időt vesz igénybe. Használja a **szinkronizálás részleteivel** előrehaladásának figyeléséhez, és kövesse a hivatkozásokat tevékenységeket tartalmazó naplók kiépítés szakaszt. A naplók Pingboard alkalmazásban a kiépítési szolgáltatás által végrehajtott összes műveletet ismerteti.
 
-Az Azure AD létesítési naplók olvasása további információkért lásd: [automatikus felhasználói fiók üzembe helyezésének jelentést](../active-directory-saas-provisioning-reporting.md).
+Az Azure AD létesítési naplók olvasása további információkért lásd: [automatikus felhasználói fiók üzembe helyezésének jelentést](../manage-apps/check-status-user-account-provisioning.md).
 
 ## <a name="additional-resources"></a>További források
 

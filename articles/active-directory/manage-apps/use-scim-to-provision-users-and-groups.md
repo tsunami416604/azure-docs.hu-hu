@@ -16,12 +16,12 @@ ms.date: 12/12/2017
 ms.author: barbkess
 ms.reviewer: asmalser
 ms.custom: aaddev;it-pro;seohack1
-ms.openlocfilehash: b696325c19d4e1d9c9fe6b85a3c46add756340ea
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 4247ef1ffd1b8d5c5ec393e3ebff20c3e04e32b3
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39443511"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44347698"
 ---
 # <a name="using-system-for-cross-domain-identity-management-scim-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>A rendszer a tartományok közötti Identity Management (SCIM) használatával automatikus kiépítésére a felhasználók és csoportok alkalmazásokhoz az Azure Active Directoryból
 
@@ -70,7 +70,7 @@ Ebben a cikkben leírt az SCIM-profil támogató alkalmazások csatlakoztatható
   ![][2]
   *3. ábra: Az Azure Portalon létrehozás konfigurálása*
     
-6. Az a **bérlői URL-cím** mezőben adja meg az alkalmazás SCIM-végpont URL-CÍMÉT. Példa: https://api.contoso.com/scim/v2/
+6. Az a **bérlői URL-cím** mezőben adja meg az alkalmazás SCIM-végpont URL-CÍMÉT. Például: https://api.contoso.com/scim/v2/
 7. Ha az SCIM-végpont egy OAuth tulajdonosi jogkivonat egy Azure AD-től eltérő kiállítótól van szüksége, majd másolja a szükséges OAuth tulajdonosi jogkivonat a választható **titkos jogkivonat** mező. Ha ezt a mezőt üresen hagyja, az Azure AD az OAuth tulajdonosi jogkivonat kiállított Azure ad-ben minden egyes kérelemmel tartalmazza. Alkalmazások, amelyek használhatja az Azure AD Identitásszolgáltatóként ellenőrizheti ezt az Azure AD-jogkivonatot állít ki.
 8. Kattintson a **kapcsolat tesztelése** szeretné, hogy az Azure Active Directory megpróbál csatlakozni az SCIM-végpont gombra. Sikertelen kísérlet, hibaüzenetet jelenik meg.  
 9. Ha a kísérel meg csatlakozni az alkalmazás Succeed, majd kattintson az **mentése** a rendszergazdai hitelesítő adatok mentéséhez.
@@ -84,7 +84,7 @@ Ebben a cikkben leírt az SCIM-profil támogató alkalmazások csatlakoztatható
 13. Kattintson a **mentése** az Azure AD létesítési szolgáltatás elindításához. 
 14. Ha szinkronizálása csak a hozzárendelt felhasználók és csoportok (ajánlott), mindenképpen jelölje ki a **felhasználók és csoportok** lapra, és rendelje hozzá a felhasználókat, illetve a szinkronizálni kívánt csoportokat.
 
-A kezdeti szinkronizálás megkezdése után is használhatja a **Auditnaplók** fülre, és a figyelő folyamatban, amely megjeleníti a kiépítési szolgáltatást a az alkalmazás által végrehajtott összes műveletet. Az Azure AD létesítési naplók olvasása további információkért lásd: [-jelentések automatikus felhasználói fiók kiépítése](../active-directory-saas-provisioning-reporting.md).
+A kezdeti szinkronizálás megkezdése után is használhatja a **Auditnaplók** fülre, és a figyelő folyamatban, amely megjeleníti a kiépítési szolgáltatást a az alkalmazás által végrehajtott összes műveletet. Az Azure AD létesítési naplók olvasása további információkért lásd: [-jelentések automatikus felhasználói fiók kiépítése](check-status-user-account-provisioning.md).
 
 >[!NOTE]
 >A kezdeti szinkronizálás végrehajtásához, mint az ezt követő szinkronizálások, amely körülbelül 40 percenként történik, amíg a szolgáltatás fut hosszabb időt vesz igénybe. 
@@ -152,7 +152,7 @@ A legegyszerűbb módja egy SCIM-végpontot, amely az Azure ad-ből kiépítési
 13. Kattintson a **mentése** az Azure AD létesítési szolgáltatás elindításához. 
 14. Ha szinkronizálása csak a hozzárendelt felhasználók és csoportok (ajánlott), mindenképpen jelölje ki a **felhasználók és csoportok** lapra, és rendelje hozzá a felhasználókat, illetve a szinkronizálni kívánt csoportokat.
 
-A kezdeti szinkronizálás megkezdése után is használhatja a **Auditnaplók** fülre, és a figyelő folyamatban, amely megjeleníti a kiépítési szolgáltatást a az alkalmazás által végrehajtott összes műveletet. Az Azure AD létesítési naplók olvasása további információkért lásd: [-jelentések automatikus felhasználói fiók kiépítése](../active-directory-saas-provisioning-reporting.md).
+A kezdeti szinkronizálás megkezdése után is használhatja a **Auditnaplók** fülre, és a figyelő folyamatban, amely megjeleníti a kiépítési szolgáltatást a az alkalmazás által végrehajtott összes műveletet. Az Azure AD létesítési naplók olvasása további információkért lásd: [-jelentések automatikus felhasználói fiók kiépítése](check-status-user-account-provisioning.md).
 
 Az utolsó lépés a minta ellenőrzése, hogy nyissa meg a TargetFile.csv fájlt a Windows-gépen \AzureAD-BYOA-Provisioning-Samples\ProvisioningAgent\bin\Debug mappában. A kiépítési folyamat futtatása után a fájl részleteit az összes hozzárendelt, és üzembe helyezett felhasználók és csoportok jeleníti meg.
 
@@ -692,11 +692,11 @@ A következő ábra azt mutatja, hogy Azure AcD által SCIM szolgáltatásba kü
 
 ## <a name="related-articles"></a>Kapcsolódó cikkek
 * [Az Azure Active Directory segítségével végzett alkalmazásfelügyeletre vonatkozó cikkek jegyzéke](../active-directory-apps-index.md)
-* [Felhasználói kiépítés és megszüntetés SaaS-alkalmazások automatizálása](../active-directory-saas-app-provisioning.md)
-* [A felhasználók átadásának attribútumleképezések testreszabása](../active-directory-saas-customizing-attribute-mappings.md)
-* [Attribútum-leképezéshez kifejezések írása](../active-directory-saas-writing-expressions-for-attribute-mappings.md)
-* [A felhasználók átadásának Hatókörszűrő](../active-directory-saas-scoping-filters.md)
-* [Alkalmazáskiépítési értesítések](../active-directory-saas-app-provisioning.md)
+* [Felhasználói kiépítés és megszüntetés SaaS-alkalmazások automatizálása](user-provisioning.md)
+* [A felhasználók átadásának attribútumleképezések testreszabása](customize-application-attributes.md)
+* [Attribútum-leképezéshez kifejezések írása](functions-for-customizing-application-data.md)
+* [A felhasználók átadásának Hatókörszűrő](define-conditional-rules-for-provisioning-user-accounts.md)
+* [Alkalmazáskiépítési értesítések](user-provisioning.md)
 * [Az SaaS-alkalmazások integrálásával foglalkozó oktatóanyagok listája](../saas-apps/tutorial-list.md)
 
 <!--Image references-->

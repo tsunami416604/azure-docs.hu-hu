@@ -1,6 +1,6 @@
 ---
-title: Az Azure Service Fabric üzemeltetési modell |} Microsoft Docs
-description: Replikák (vagy példányok) egy telepített Service Fabric-szolgáltatás és folyamata közötti kapcsolatot ismerteti.
+title: Az Azure Service Fabric üzemeltetési modell |} A Microsoft Docs
+description: Üzembe helyezett Service Fabric-szolgáltatás és a szolgáltatás gazdafolyamat replikák (vagy példányok) közötti kapcsolatot ismerteti.
 services: service-fabric
 documentationcenter: .net
 author: harahma
@@ -12,54 +12,54 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/15/2017
 ms.author: harahma
-ms.openlocfilehash: d56bb10041e3baffddf6fd4121a6e1f7ba8e0632
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 367f21c63eac3969fb19eada91eae9a8577921de
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34206320"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44348480"
 ---
 # <a name="azure-service-fabric-hosting-model"></a>Az Azure Service Fabric üzemeltetési modell
-Ez a cikk egy áttekintést nyújt az Azure Service Fabric által biztosított modellek futtató alkalmazás, és közötti különbségeket mutatja a **megosztott folyamat** és **kizárólagos folyamat** modellek. Leírja, hogyan egy telepített alkalmazás néz ki egy Service Fabric-csomópont, és a replikák (vagy példányok) szolgáltatás és folyamata közötti kapcsolat.
+Ez a cikk az Azure Service Fabric által biztosított modellek üzemeltető alkalmazás nyújt áttekintést, és közötti különbségeket ismerteti a **megosztott folyamatot** és **kizárólagos folyamat** modellek. Leírja, hogyan néz ki a központilag telepített alkalmazás egy Service Fabric-csomópont és a szolgáltatás és a szolgáltatás gazdafolyamat replikák (vagy példányok) közötti kapcsolat.
 
-A folytatás előtt, lehet, hogy megismerte a különféle fogalmakat és a kapcsolatokat, tekintse meg a [egy alkalmazás a Service Fabric modell][a1]. 
+Mielőtt továbblépne, győződjön meg, hogy különböző kapcsolatos fogalmak megismeréséhez és kapcsolatok ismertetett [minta Service Fabric-alkalmazásokhoz][a1]. 
 
 > [!NOTE]
-> A cikkben kivéve, ha explicit módon azt jelenti, egy másik:
+> Ebben a cikkben kivéve, ha explicit módon említett, ami azt jelenti, más:
 >
-> - *A replika* mindkét egy replikát készít egy állapotalapú szolgáltatás és állapot nélküli szolgáltatás egy példánya hivatkozik.
-> - *CodePackage* kezelnek egyenértékűként egy *ServiceHost* folyamat, amely regisztrálja a *ServiceType*, és az adott szolgáltatások állomások replikák *ServiceType*.
+> - *Replika* egy állapotalapú szolgáltatás és a egy állapotmentes szolgáltatás egy példányának mindkét replika hivatkozik.
+> - *CodePackage* kezelik egyenértékűként egy *ServiceHost* folyamat, amely regisztrál egy *ServiceType*, és -szolgáltatások, amelyek gazdagépek replikáját *ServiceType*.
 >
 
-Ha szeretné megtudni a üzemeltetési modell, bemutatjuk, egy példán keresztül. Tegyük fel, van egy *ApplicationType* "MyAppType", amely rendelkezik egy *ServiceType* "MyServiceType". "MyServiceType" biztosítja a *ServicePackage* "MyServicePackage", amely rendelkezik egy *CodePackage* "MyCodePackage". "MyCodePackage" regisztrálja *ServiceType* "MyServiceType" futtatásakor.
+Szeretné megtudni, a üzemeltetési modell, nézzük végig egy példa. Tegyük fel, hogy egy *ApplicationType* "MyAppType", amely rendelkezik egy *ServiceType* "MyServiceType". "MyServiceType" biztosítják a *ServicePackage* "MyServicePackage", amely rendelkezik egy *CodePackage* "MyCodePackage". "MyCodePackage" regisztrálja *ServiceType* "MyServiceType" futtatásakor.
 
-Tegyük fel, egy három csomópontos fürtre van, és létrehozhatunk egy *alkalmazás* **fabric: / App1** "MyAppType" típusú. Ebben az alkalmazásban **fabric: / App1**, azt a szolgáltatás létrehozása **fabric: / App1/ServiceA** "MyServiceType" típusú. Ez a szolgáltatás két partíciókkal rendelkezik (például **P1** és **P2**), és három replikák partíciónként. Az alábbi ábrán látható az alkalmazás, mert a nézet említi telepített egy csomóponton.
-
-
-![Diagram nézet csomópont a központilag telepített alkalmazás][node-view-one]
+Tegyük fel, és egy három csomópontos fürt van, és létrehozunk egy *alkalmazás* **fabric: / App1** "MyAppType" típusú. Ebben az alkalmazásban **fabric: / App1**, létrehozunk egy szolgáltatás **fabric: / App1/ServiceA** "MyServiceType" típusú. Ez a szolgáltatás két partícióval rendelkezik (például **P1** és **P2**), és három replika partíciónként. Az alábbi ábrán látható, mert ez az alkalmazás nézetét is említi üzembe helyezett egy csomóponton.
 
 
-A Service Fabric "MyServicePackage", amelynek hatására elindult "MyCodePackage", amely a replikák mindkét a partíciók az üzemeltető aktiválva. A fürt összes csomópontjának rendelkeznie ugyanazt a nézetet, mert a fürtben található csomópontok számának egyenlőnek kell lennie partíciónként replikák száma választottuk. Hozzon létre egy másik szolgáltatás **fabric: / App1/ServiceB**, az alkalmazás **fabric: / App1**. A szolgáltatás egy partíció rendelkezik (például **P3**), és három replikák partíciónként. Az alábbi ábrán a nézet a csomóponton:
+![Az üzembe helyezett alkalmazás csomópont nézet diagramja][node-view-one]
 
 
-![Diagram nézet csomópont a központilag telepített alkalmazás][node-view-two]
+A Service Fabric aktiválva "MyServicePackage", amelynek hatására elindult a "MyCodePackage", amely a egyaránt a partíciók replikáit. A fürt összes csomópontja van ugyanabban a nézetben, mert a partíciónként a fürtben található csomópontok számának egyenlőnek kell lennie a replikák száma választottuk. Hozzon létre egy másik szolgáltatás, **fabric: / App1/ServiceB**, az alkalmazás **fabric: / App1**. Ez a szolgáltatás egy partícióval rendelkezik (például **P3**), és három replika partíciónként. Az alábbi ábrán látható, a csomóponton az új nézet:
 
 
-A Service Fabric helyezni az új replikára partíció **P3** szolgáltatás **fabric: / App1/ServiceB** a meglévő "MyServicePackage"-aktiválásnál. Most. Hozzon létre egy másik alkalmazás **fabric: / App2** "MyAppType" típusú. Belül **fabric: / App2**, hozzon létre szolgáltatást **fabric: / App2/ServiceA**. Ez a szolgáltatás két partíciói (**P4** és **P5**), és három replikák partíciónként. Az alábbi ábrán látható, az új csomópont nézet:
+![Az üzembe helyezett alkalmazás csomópont nézet diagramja][node-view-two]
 
 
-![Diagram nézet csomópont a központilag telepített alkalmazás][node-view-three]
+A Service Fabric helyezni az új replikára partíció **P3** szolgáltatás **fabric: / App1/ServiceB** a "MyServicePackage" meglévő aktiválását. Most. Hozzon létre egy másik alkalmazás **fabric: / App2** "MyAppType" típusú. Belül **fabric: / App2**, hozzon létre egy szolgáltatás **fabric: / App2/ServiceA**. Ez a szolgáltatás két partícióval rendelkezik (**P4** és **P5**), és három replika partíciónként. Az alábbi ábrán látható, az új csomópont nézet:
 
 
-A Service Fabric aktiválja "MyServicePackage", amely elindítja a "MyCodePackage" másolatát egy új példányát. Replikák szolgáltatás mindkét partíciókból **fabric: / App2/ServiceA** (**P4** és **P5**) kerülnek, az új példány "MyCodePackage".
+![Az üzembe helyezett alkalmazás csomópont nézet diagramja][node-view-three]
 
-## <a name="shared-process-model"></a>Megosztott folyamatmodell
-Az előző szakaszban az alapértelmezett futtatási modell Service Fabric, a megosztott folyamatmodell néven által biztosított ismerteti. Ebben a modellben egy adott alkalmazáshoz, csak az egyik másolata egy adott *ServicePackage* aktiválva van a csomópont (amely elindítja az összes a *CodePackages* benne tárolt). Az összes olyan szolgáltatás, a replikákat egy adott *ServiceType* kerülnek a *CodePackage* , amely regisztrálja, amelyek *ServiceType*. Ez azt jelenti, minden replika az összes olyan szolgáltatás egy olyan csomópontján egy adott *ServiceType* osztani ugyanazt a folyamatot.
+
+A Service Fabric aktiválja a "MyServicePackage',"MyCodePackage"új példányának indító egy új példányát. A szolgáltatás mindkét partíciójáról replikák **fabric: / App2/ServiceA** (**P4** és **P5**) kerülnek, az új példány "MyCodePackage".
+
+## <a name="shared-process-model"></a>A megosztott folyamatmodell
+Az előző szakasz futtatási modell a megosztott folyamatmodell néven, a Service Fabric által biztosított alapértelmezett. Ebben a modellben egy adott alkalmazáshoz, csak egy példányát egy adott *ServicePackage* egy csomóponton aktív (amely elindítja az összes a *CodePackages* benne tárolt). Az összes szolgáltatások minden replika egy adott *ServiceType* kerülnek a *CodePackage* , amely regisztrálja, amelyek *ServiceType*. Más szóval minden replika összes szolgáltatás egy olyan csomópontján, egy adott *ServiceType* osztani ugyanazt a folyamatot.
 
 ## <a name="exclusive-process-model"></a>Kizárólagos folyamatmodell
-A Service Fabric által biztosított egyéb üzemeltetési modell kizárólagos folyamatmodell. Ebben a modellben adott csomóponton minden egyes replikának él, a saját dedikált folyamat. A Service Fabric aktiválja az új példányt a *ServicePackage* (amely elindítja az összes a *CodePackages* benne tárolt). Replikák helyezi a *CodePackage* regisztrált a *ServiceType* a szolgáltatás, amelyhez a replika tartozik. 
+A Service Fabric által biztosított egyéb üzemeltetési modell a kizárólagos folyamatmodell. Ebben a modellben egy adott csomóponton minden egyes replikának helyén a saját dedikált folyamat során. A Service Fabric aktiválja az új példányának *ServicePackage* (amely elindítja az összes a *CodePackages* benne tárolt). Replikák kerülnek a *CodePackage* regisztrált a *ServiceType* a szolgáltatás, amelyhez a replika tartozik. 
 
-Ha a Service Fabric 5.6 verzióját használja, vagy később, válassza a kizárólagos folyamatmodell időpontjában szolgáltatás létrehozása (használatával [PowerShell][p1], [REST] [ r1], vagy [FabricClient][c1]). Adja meg **ServicePackageActivationMode** mint "ExclusiveProcess".
+Ha a Service Fabric 5.6-os verzióját használja, vagy később választhat a kizárólagos folyamatmodell időben létrehoz egy szolgáltatást (használatával [PowerShell][p1], [REST] [ r1], vagy [FabricClient][c1]). Adja meg **ServicePackageActivationMode** mint "ExclusiveProcess".
 
 ```powershell
 PS C:\>New-ServiceFabricService -ApplicationName "fabric:/App1" -ServiceName "fabric:/App1/ServiceA" -ServiceTypeName "MyServiceType" -Stateless -PartitionSchemeSingleton -InstanceCount -1 -ServicePackageActivationMode "ExclusiveProcess"
@@ -80,7 +80,7 @@ var fabricClient = new FabricClient(clusterEndpoints);
 await fabricClient.ServiceManager.CreateServiceAsync(serviceDescription);
 ```
 
-Ha egy alapértelmezett szolgáltatás a alkalmazásjegyzékben, dönthet úgy, kizárólagos folyamatmodell megadásával a **ServicePackageActivationMode** attribútum:
+Ha egy alapértelmezett szolgáltatás az alkalmazásjegyzékben, a kizárólagos folyamatmodell megadásával kiválaszthatja a **ServicePackageActivationMode** attribútum:
 
 ```xml
 <DefaultServices>
@@ -91,95 +91,95 @@ Ha egy alapértelmezett szolgáltatás a alkalmazásjegyzékben, dönthet úgy, 
   </Service>
 </DefaultServices>
 ```
-Most hozzon létre egy másik szolgáltatás **fabric: / App1/ServiceC**, az alkalmazás **fabric: / App1**. Ez a szolgáltatás két partíciókkal rendelkezik (például **P6** és **S7**), és három replikák partíciónként. Beállíthatja **ServicePackageActivationMode** "ExclusiveProcess" számára. Az alábbi ábrán látható a csomóponton új nézet:
+Most hozzunk létre egy másik szolgáltatás, **fabric: / App1/ServiceC**, az alkalmazás **fabric: / App1**. Ez a szolgáltatás két partícióval rendelkezik (például **P6** és **S7**), és három replika partíciónként. Beállított **ServicePackageActivationMode** a "ExclusiveProcess". Az alábbi ábrán látható, a csomópont új nézet:
 
 
-![Diagram nézet csomópont a központilag telepített alkalmazás][node-view-four]
+![Az üzembe helyezett alkalmazás csomópont nézet diagramja][node-view-four]
 
 
-Ahogy látja, a Service Fabric aktiválása "MyServicePackage" két új példányát (egy partícióról minden egyes replikához **P6** és **S7**). A Service Fabric minden egyes replikának helyezett dedikált példányát *CodePackage*. Egy adott alkalmazás használatakor a kizárólagos folyamatmodell, először az egy adott *ServicePackage* azon a csomóponton aktív lehet. Az előző példában három másolatot "MyServicePackage" aktívak **fabric: / App1**. "MyServicePackage" aktív másolatait mindegyike rendelkezik egy **ServicePackageActivationId** társítva. Ezt az Azonosítót azonosítja az alkalmazáson belül példányt **fabric: / App1**.
+Amint láthatja, a Service Fabric aktiválva "MyServicePackage" új két példányban (egy partícióról minden egyes replikának a **P6** és **S7**). A Service Fabric minden egyes replikának helyezett saját dedikált példányát *CodePackage*. A kizárólagos folyamatmodell egy adott alkalmazás használatakor először az egy adott *ServicePackage* lehet egy csomóponton aktív. Az előző példában a "MyServicePackage" három másolata aktívak az **fabric: / App1**. Ezeket "MyServicePackage" aktív példánya mindegyike rendelkezik egy **ServicePackageActivationId** társítva. Ezzel az Azonosítóval azonosítja az alkalmazáson belül a másolatot **fabric: / App1**.
 
-Az alkalmazás csak a megosztott folyamatmodell használata esetén csak egy aktív példányát van *ServicePackage* csomóponton. A **ServicePackageActivationId** a aktiválásához *ServicePackage* egy üres karakterlánc. Ez a helyzet, például a **fabric: / App2**.
-
-> [!NOTE]
->- A megosztott üzemeltetési modell megfelel-e folyamat **ServicePackageActivationMode** egyenlő **SharedProcess**. Ez az az alapértelmezett futtatási modell, és **ServicePackageActivationMode** nem kell megadni a szolgáltatás létrehozása idején.
->
->- A kizárólagos folyamat üzemeltetési modell megfelel-e **ServicePackageActivationMode** egyenlő **ExclusiveProcess**. Ez a beállítás használatához a szolgáltatás létrehozása idején explicit módon kell megadnia. 
->
->- A szolgáltatás üzemeltetési modell megtekintéséhez kérdezze a [szolgáltatás leírását][p2], és keresse meg az értéket **ServicePackageActivationMode**.
->
->
-
-## <a name="work-with-a-deployed-service-package"></a>Egy telepített service-csomag használata
-Egy aktív másolatot készít egy *ServicePackage* csomóponton nevezzük egy [telepített service-csomag][p3]. Egy adott alkalmazáshoz, a szolgáltatások létrehozásának kizárólagos folyamatmodell használatakor előfordulhat ugyanazon több telepített szervizcsomagok *ServicePackage*. Egy telepített szervizcsomag jellemző műveleteket hajt végre, ha meg kell adnia **ServicePackageActivationId** egy adott központilag telepített service-csomag azonosításához. Például adja meg az Azonosítót, ha Ön [telepített szervizcsomag állapotának reporting] [ p4] vagy [újraindítása a kódcsomag egy telepített service-csomag] [p5].
-
-Azt is megtudhatja, a **ServicePackageActivationId** egy telepített service-csomag listájának lekérdezésével [telepített szervizcsomagok] [ p3] csomóponton. Ha kérdez le a a [szolgáltatástípusok telepített][p6], [replikák telepített][p7], és [kód csomagok telepítése ] [ p8] a csomóponton a lekérdezés eredménye is tartalmaz a **ServicePackageActivationId** a szülő telepített service-csomag.
+Ha egy alkalmazás csak a megosztott folyamatot modellt használ, nincs-e csak egy aktív másolata, *ServicePackage* egy csomóponton. A **ServicePackageActivationId** ez aktiválásához *ServicePackage* üres karakterlánc. Ez a helyzet, ha például a **fabric: / App2**.
 
 > [!NOTE]
->- A megosztott üzemeltetési folyamatmodell, adott csomóponton, egy adott alkalmazáshoz, csak egy példányát a *ServicePackage* aktiválva van. Rendelkezik egy **ServicePackageActivationId** egyenlő *üres karakterlánc*, és a telepített service-csomag kapcsolódó műveletek végrehajtása közben nem kell megadni. 
+>- Üzemeltetési modell felel meg a megosztott folyamatot **ServicePackageActivationMode** egyenlő **SharedProcess**. Ez a futtatási modell, az alapértelmezett és **ServicePackageActivationMode** a szolgáltatás létrehozása alkalmával nem kell megadni.
 >
-> - A kizárólagos folyamat üzemeltető alapján egy adott csomópont, egy adott alkalmazáshoz, a modell egy vagy több példányát egy *ServicePackage* lehet aktív. Az egyes aktiválások rendelkezik egy *nem üres* **ServicePackageActivationId**megadva a telepített service-csomag kapcsolódó műveletek végrehajtása közben. 
+>- Üzemeltetési modell felel meg a kizárólagos folyamat **ServicePackageActivationMode** egyenlő **ExclusiveProcess**. Ez a beállítás használatához a szolgáltatás létrehozásának időpontjában explicit módon kell megadnia. 
 >
-> - Ha **ServicePackageActivationId** van megadva, alapértelmezés szerint a *üres karakterlánc*. Ha egy telepített szolgáltatást csomagot, amely alatt a megosztott folyamatmodell aktiválása megtörtént, a rendszer a művelet a végezhető. Ellenkező esetben a művelet sikertelen lesz.
->
-> - Egyszer, és a gyorsítótár nem lekérdezni a **ServicePackageActivationId**. Az azonosító dinamikusan generált, és számos okból módosíthatja. Igénylő művelet végrehajtása előtt **ServicePackageActivationId**, érdemes először kérdezze le a listája [telepített szervizcsomagok] [ p3] csomóponton. Ezután a **ServicePackageActivationId** az eredeti művelet végrehajtásához a lekérdezés eredménye.
+>- A szolgáltatás üzemeltetési modell megtekintéséhez lekérdezheti a [szolgáltatás leírása][p2], és tekintse meg az értékét **ServicePackageActivationMode**.
 >
 >
 
-## <a name="guest-executable-and-container-applications"></a>Vendég végrehajtható parancs és a tároló alkalmazások
-Kezeli a Service Fabric [Vendég végrehajtható] [ a2] és [tároló] [ a3] állapotmentes szolgáltatásokhoz, amelyek önálló kérelmeket. Nincs a nem a Service Fabric-futtatókörnyezet *ServiceHost* (a folyamatot vagy tároló). Ezek a szolgáltatások önálló, mert egyes replikák száma *ServiceHost* esetén nem alkalmazható ezeket a szolgáltatásokat. A leggyakoribb konfigurációja ezekkel a szolgáltatásokkal használt, egypartíciós, a [InstanceCount] [ c2] – 1 (egy példányát a szolgáltatáskód hibáit, a fürt mindegyik csomópontján fut). 
+## <a name="work-with-a-deployed-service-package"></a>A telepített service-csomag használata
+Egy aktív másolata, egy *ServicePackage* a csomópont a neve egy [service-csomagban üzembe helyezett][p3]. A kizárólagos folyamatmodell szolgáltatások egy adott alkalmazás létrehozásának használatakor előfordulhat, a több telepített szervizcsomagok *ServicePackage*. Egy telepített szervizcsomag jellemző műveleteket hajt végre, ha meg kell adnia **ServicePackageActivationId** egy adott központilag telepített service-csomag azonosításához. Például adja meg az Azonosítót, ha Ön [egy üzembe helyezett service-csomag állapotát reporting] [ p4] vagy [a kódcsomag üzembe helyezett szolgáltatás újraindítása] [p5].
 
-Az alapértelmezett **ServicePackageActivationMode** ezeket a szolgáltatásokat a **SharedProcess**, ebben az esetben a Service Fabric csak akkor aktiválódik, egy példányát *ServicePackage* csomóponton egy adott alkalmazáshoz.  Ez azt jelenti, hogy szolgáltatás kódot csak egy példányát futtatja egy csomópont. Ha azt szeretné, hogy több példányát egy csomópontján futtatni a szolgáltatáskód hibáit, adja meg **ServicePackageActivationMode** , **ExclusiveProcess** a szolgáltatás létrehozása idején. Például ehhez több szolgáltatások létrehozásakor (*Service1* való *ServiceN*) a *ServiceType* (a megadott *ServiceManifest*), vagy ha a szolgáltatás több particionált. 
+Talál a **ServicePackageActivationId** egy üzembe helyezett service-csomag listája lekérdezésével [service-csomagok üzembe helyezett] [ p3] egy csomóponton. Amikor kérdez le a a [üzembe helyezett szolgáltatástípusok][p6], [üzembe helyezett replikák][p7], és [kódcsomagok telepített ] [ p8] egy csomóponton, a lekérdezés eredménye is tartalmaz a **ServicePackageActivationId** a szülő telepített service-csomag.
 
-## <a name="change-the-hosting-model-of-an-existing-service"></a>Módosítsa a meglévő szolgáltatási üzemeltetési modell
-Jelenleg nem módosíthatja a meglévő szolgáltatási üzemeltetési modell megosztott folyamat kizárólagos folyamat (vagy fordítva).
+> [!NOTE]
+>- Egy adott alkalmazás egy adott csomóponton a megosztott folyamatot üzemeltetési modell alatt csak egy példányát egy *ServicePackage* aktiválva van. Rendelkezik egy **ServicePackageActivationId** egyenlő *üres karakterlánc*, és nem kell megadni a telepített csomag kapcsolódó műveletek végrehajtása közben. 
+>
+> - Az üzemeltető kizárólagos folyamat alatt egy adott csomópont egy adott alkalmazáshoz, a modell egy vagy több példányban egy *ServicePackage* lehet aktív. Az egyes aktiválások rendelkezik egy *nem üres* **ServicePackageActivationId**, a telepített csomag kapcsolódó műveletek végrehajtása során megadott. 
+>
+> - Ha **ServicePackageActivationId** van megadva, a rendszer alapértelmezés szerint *üres karakterlánc*. Ha egy telepített service-csomag, amely alatt a közös folyamatmodell aktiválva volt megtalálható, a művelet rajta történik. Ellenkező esetben a művelet sikertelen lesz.
+>
+> - Egyszer, és a gyorsítótár nem lekérdezni a **ServicePackageActivationId**. Az azonosító dinamikusan hozzuk létre, és módosíthatja a különböző okok miatt. Szüksége van egy művelet végrehajtása előtt **ServicePackageActivationId**, először le kell kérdezni listájának [service-csomagok üzembe helyezett] [ p3] egy csomóponton. Ezután a **ServicePackageActivationId** a lekérdezési eredmény az eredeti művelet végrehajtásához.
+>
+>
 
-## <a name="choose-between-the-hosting-models"></a>Válassza ki az üzemeltetési modellek között
-Azt ki kell értékelnie legjobb üzemeltetési modellt a követelményeinek megfelelő. A megosztott folyamatmodell operációs rendszer erőforrást használ, mert kevesebb folyamatok indított vannak, és ugyanabban a folyamatban több replika is ugyanazt a portot. Azonban ha a replikák egyike hibát amikor kell a szolgáltatásgazda leállíthatja, az hatással van ugyanazt a folyamatot a többi replikához.
+## <a name="guest-executable-and-container-applications"></a>Vendég végrehajtható fájl és tároló alkalmazások
+Kezeli a Service Fabric [futtatható vendégalkalmazás] [ a2] és [tároló] [ a3] alkalmazások, például állapotmentes szolgáltatások, amelyek önálló. Nem Service Fabric-futtatókörnyezet, a hiba nem *ServiceHost* (a folyamat vagy tároló). Ezek a szolgáltatások önálló, mert kiszolgálónként replikák száma *ServiceHost* nem alkalmazható ezen szolgáltatások. Ezekkel a szolgáltatásokkal használt a leggyakrabban használt konfigurációs single-partition- [InstanceCount] [ c2] – 1 (egy példányát a fürt mindegyik csomópontján fut a szolgáltatás-kódot). 
 
- A kizárólagos folyamatmodell el vannak különítve jobb, és minden replika-folyamatban. A replikák egyike hiba, ha más replikák nincs hatással. Ez a modell akkor hasznos olyan esetekben, ahol port megosztása nem támogatja a kommunikációs protokollhoz. Elősegíti a replika szintű erőforrás-irányítás alkalmazni lehessen. Azonban a kizárólagos folyamat több operációs rendszer-erőforrásokat használ fel, mivel azt a csomópont minden egyes replikához egy folyamatot indít.
+Az alapértelmezett **ServicePackageActivationMode** ezen szolgáltatások **SharedProcess**, ebben az esetben a Service Fabric egy példánya csak aktiválja *ServicePackage* a csomópont egy adott alkalmazáshoz.  Ez azt jelenti, hogy csak egy példányát a webszolgáltatás kódjához fog futni egy csomópontot. Ha azt szeretné, hogy a kódban, hogy a csomóponton futó szolgáltatás több példányát, adja meg **ServicePackageActivationMode** , **ExclusiveProcess** a szolgáltatás létrehozásának időpontjában. Például, ehhez több szolgáltatás létrehozásakor (*Service1* való *ServiceN*), *ServiceType* (a megadott *ServiceManifest*), vagy ha a szolgáltatás több particionált. 
+
+## <a name="change-the-hosting-model-of-an-existing-service"></a>Egy létező szolgáltatás, a üzemeltetési modell módosítása
+Jelenleg nem módosíthatja egy létező szolgáltatás, a üzemeltetési modell a megosztott folyamat kizárólagos folyamatát (vagy fordítva).
+
+## <a name="choose-between-the-hosting-models"></a>Válassza ki, a üzemeltetési modellek között
+Ki kell értékelni melyik ajánlott üzemeltetési modell a legjobban a követelményeinek. A megosztott folyamatmodell operációs rendszer erőforrásokat használ hatékonyabban, mert kevesebb folyamatokat a rendszer létrehozta, és több replika ugyanabban a folyamatban is ugyanazt a portot. Azonban ha replikára tartalmaz egy hibát, leállíthatja a szolgáltatásgazda van szüksége, a következőkre hat ugyanabban a folyamatban lévő összes többi replika.
+
+ A kizárólagos folyamatmodell el vannak különítve jobb, az összes replikára, külön folyamatban. Ha hiba van a replikára, más replikák nem érinti. Ez a modell hasznos olyan esetekben, ahol-port megosztása nem támogatja a kommunikációs protokollt. Ez megkönnyíti a alkalmazni az erőforrás-szabályozás replika szintjén teszi. Azonban a kizárólagos folyamat több erőforrást használ fel operációs rendszer, ahogy azt a csomópont minden egyes replikának egy folyamata indít.
 
 ## <a name="exclusive-process-model-and-application-model-considerations"></a>Kizárólagos folyamatmodell és alkalmazás modell kapcsolatos szempontok
-A legtöbb alkalmazás esetén egyik tartja az alkalmazás a Service Fabric is modell *ServiceType* / *ServicePackage*. 
+A legtöbb alkalmazás esetén modellezheti az alkalmazás a Service Fabric egy tartja *ServiceType* kiszolgálónként *ServicePackage*. 
 
-Bizonyos esetekben a Service Fabric is lehetővé teszi, hogy egynél több *ServiceType* / *ServicePackage* (és egy *CodePackage* regisztrálhatja az egynél több  *ServiceType*). Az alábbiakban néhány a forgatókönyv, ahol ezek a beállítások akkor lehet hasznos:
+Bizonyos esetekben a Service Fabric lehetővé teszi több *ServiceType* kiszolgálónként *ServicePackage* (és a egy *CodePackage* regisztrálhatja egynél több  *ServiceType*). Az alábbiakban a forgatókönyvek, ahol ezek a beállítások akkor lehet hasznos:
 
-- Erőforrás-használat származtatását kevesebb folyamatokat, és amelyek magasabb replika sűrűsége folyamatonként optimalizálni szeretné.
-- Replikák különböző *ServiceTypes* kell néhány gyakori adatmegosztásra magas inicializálási vagy memória költsége.
-- Egy szabad szolgáltatásajánlat rendelkezik, és el szeretné helyezni a korlátozása az erőforrás-használat a szolgáltatás összes replika tegyen ugyanazon folyamatban.
+- Erőforrás-használat optimalizálása származtatását kevesebb folyamatokat, és a magasabb replika sűrűségű folyamatonként által szeretné.
+- A különböző replikák *ServiceTypes* kell ahhoz, hogy bizonyos közös adatokhoz, amely egy nagy inicializálása, vagy a memória költsége.
+- Egy ingyenes szolgáltatás, amely rendelkezik, és szeretné korlátozni az erőforrás-használat ugyanahhoz a folyamathoz a szolgáltatás összes replika írja.
 
-A kizárólagos folyamat futtatási modell nincs összefüggő több alkalmazás-modellel *ServiceTypes* / *ServicePackage*. Ez azért, mert több *ServiceTypes* / *ServicePackage* replikák közötti magasabb erőforrás eléréséhez, és a következő lehetővé teszi, hogy magasabb replika sűrűség folyamatonként. A kizárólagos folyamatmodell célja, hogy különböző eredmények elérése érdekében.
+A kizárólagos folyamat futtatási modell még nem következetes egy alkalmazás több kellene modellel *ServiceTypes* kiszolgálónként *ServicePackage*. Ennek oka, hogy több *ServiceTypes* kiszolgálónként *ServicePackage* tervezték, hogy magasabb szintű erőforrás-replika között megosztást érhet el, és lehetővé teszi nagyobb replika sűrűsége folyamatonként. A kizárólagos folyamatmodell célja különböző eredmények elérése érdekében.
 
-Gondoljuk végig azt az esetet több *ServiceTypes* / *ServicePackage*, egy másik *CodePackage* regisztrálása egyes *ServiceType*. Tegyük fel, van egy *ServicePackage* "MultiTypeServicePackge", amely két *CodePackages*:
+Fontolja meg a kis-és több *ServiceTypes* kiszolgálónként *ServicePackage*, egy másik *CodePackage* regisztrálása egyes *ServiceType*. Tegyük fel, hogy egy *ServicePackage* "MultiTypeServicePackge", amely két *CodePackages*:
 
-- "MyCodePackageA", amely *ServiceType* "MyServiceTypeA".
-- "MyCodePackageB", amely *ServiceType* "MyServiceTypeB".
+- "MyCodePackageA", amely regisztrálja *ServiceType* "MyServiceTypeA".
+- "MyCodePackageB", amely regisztrálja *ServiceType* "MyServiceTypeB".
 
-Most tegyük fel, hogy hozzon létre egy alkalmazást, **fabric: / SpecialApp**. Belül **fabric: / SpecialApp**, a következő két szolgáltatás kizárólagos folyamatmodellt létrehozhatunk:
+Most tegyük fel, hogy létrehozunk egy alkalmazást, **fabric: / SpecialApp**. Belül **fabric: / SpecialApp**, hozunk létre a következő két szolgáltatás kizárólagos folyamatmodellt:
 
-- Szolgáltatás **fabric: / SpecialApp/ServiceA** "MyServiceTypeA" típusú, és két partíció (például **P1** és **P2**), és három replikák partíciónként.
-- Szolgáltatás **fabric: / SpecialApp/ServiceB** "MyServiceTypeB" típusú, és két partíció (**P3** és **P4**), és három replikák partíciónként.
+- Szolgáltatás **fabric: / SpecialApp/ServiceA** típusa "MyServiceTypeA", a két partíció (például **P1** és **P2**), és három replika partíciónként.
+- Szolgáltatás **fabric: / SpecialApp/ServiceB** típusa "MyServiceTypeB", a két partíció (**P3** és **P4**), és három replika partíciónként.
 
-Adott csomóponton a szolgáltatások is két replika. Kizárólagos folyamatmodell használatával hozzon létre a szolgáltatást, mert a Service Fabric aktiválja másolatát "MyServicePackage" minden egyes replikához. Az egyes aktiválások "MultiTypeServicePackge" a "MyCodePackageA" és "MyCodePackageB" másolatát elindul. Azonban csak az egyik "MyCodePackageA" vagy "MyCodePackageB" az replikát, amelynek "MultiTypeServicePackge" lett aktiválva. Az alábbi ábrán látható, a csomópont megtekintése:
-
-
-![A telepített alkalmazás csomópont nézet diagramja][node-view-five]
+Az egy adott csomópont mindkét szolgáltatás rendelkezésre áll két replika. A kizárólagos folyamatmodell használtuk a szolgáltatások létrehozását, mert a Service Fabric aktiválja minden replika "MyServicePackage" új példányát. Minden egyes aktiválási "MultiTypeServicePackge", "MyCodePackageA" és "MyCodePackageB" másolatát elindul. Azonban csak az egyik "MyCodePackageA" vagy "MyCodePackageB" az replikát, amelynek "MultiTypeServicePackge" aktiválva lett. Az alábbi ábrán látható, a csomópont nézet:
 
 
-A partíció replikája számára "MultiTypeServicePackge" aktiválásának **P1** szolgáltatás **fabric: / SpecialApp/ServiceA**, "MyCodePackageA" a replika üzemelteti. "MyCodePackageB" fut. Hasonlóképpen, a "MultiTypeServicePackge" a replika partíció aktiválásának **P3** szolgáltatás **fabric: / SpecialApp/ServiceB**, "MyCodePackageB" a replika üzemelteti. "MyCodePackageA" fut. Ezért minél nagyobb a száma *CodePackages* (regisztrálása különböző *ServiceTypes*) / *ServicePackage*, annál a redundáns Erőforrás kihasználtsága. 
+![A csomópontnézet üzembe helyezett alkalmazás ábrája][node-view-five]
+
+
+A partíció replikája számára "MultiTypeServicePackge" aktiválásának **P1** szolgáltatás **fabric: / SpecialApp/ServiceA**, "MyCodePackageA" üzemelteti a replikát. "MyCodePackageB" fut. Hasonlóképpen, a "MultiTypeServicePackge" a partíció replikája aktiválását **P3** szolgáltatás **fabric: / SpecialApp/ServiceB**, "MyCodePackageB" üzemelteti a replikát. "MyCodePackageA" fut. Ezért, annál nagyobb szám *CodePackages* (regisztrálása másik *ServiceTypes*) / *ServicePackage*, annál nagyobb a redundáns erőforrás-használat. 
  
- Azonban ha a szolgáltatások létrehozhatunk **fabric: / SpecialApp/ServiceA** és **fabric: / SpecialApp/ServiceB** megosztott folyamatmodellt, a Service Fabric csak egy példányban aktiválja " MultiTypeServicePackge "az alkalmazás **fabric: / SpecialApp**. "MyCodePackageA" a szolgáltatás összes replikát üzemeltető **fabric: / SpecialApp/ServiceA**. "MyCodePackageB" a szolgáltatás összes replikát üzemeltető **fabric: / SpecialApp/ServiceB**. Az alábbi ábrán a csomópont nézet ebben a beállításban: 
+ Azonban ha hozunk létre, a szolgáltatások **fabric: / SpecialApp/ServiceA** és **fabric: / SpecialApp/ServiceB** megosztott folyamatmodellt, Service Fabric aktiválja csak egy példányát: MultiTypeServicePackge "az alkalmazás **fabric: / SpecialApp**. "MyCodePackageA" üzemelteti a szolgáltatást az összes replika **fabric: / SpecialApp/ServiceA**. "MyCodePackageB" üzemelteti a szolgáltatást az összes replika **fabric: / SpecialApp/ServiceB**. Ezt a beállítást a csomópont nézet az alábbi ábrán látható: 
 
 
-![A telepített alkalmazás csomópont nézet diagramja][node-view-six]
+![A csomópontnézet üzembe helyezett alkalmazás ábrája][node-view-six]
 
 
-Az előző példában azt hiszi, hogy ha "MyCodePackageA" regisztrálása "MyServiceTypeA" és a "MyServiceTypeB", és nem MyCodePackageB van, nem redundáns van *CodePackage* futtatása. Bár ez helyes, a alkalmazásmodell topológia nem igazodik a futtatási modell kizárólagos folyamat. Ha az a célja, hogy minden replika be a saját dedikált folyamat, nem kell regisztrálnia mindkét *ServiceTypes* azonos *CodePackage*. Ehelyett egyszerűen helyezünk egyes *ServiceType* a saját *ServicePackage*.
+Az előző példában úgy tűnhet, ha "MyCodePackageA" is "MyServiceTypeA" és "MyServiceTypeB", regisztrálja, és nincs MyCodePackageB van, akkor nem redundáns van *CodePackage* futtatása. Bár ez helyes, az alkalmazásmodell nem esik egybe a kizárólagos folyamat futtatási modell. Ha a cél a saját dedikált folyamat egyes replika helyezi, nem kell regisztrálnia, mind *ServiceTypes* azonos *CodePackage*. Ehelyett egyszerűen nyilvántartani egyes *ServiceType* a saját *ServicePackage*.
 
 ## <a name="next-steps"></a>További lépések
-[Egy alkalmazás becsomagolása] [ a4] és üzembe helyezésére.
+[Alkalmazás becsomagolása] [ a4] és felkészülés üzembe helyezéséhez.
 
-[Központi telepítése és távolíthat el alkalmazásokat][a5]. Ez a cikk ismerteti, hogyan lehet alkalmazáspéldányok kezelése a PowerShell használatával.
+[Üzembe helyezése és távolíthat el alkalmazásokat][a5]. Ez a cikk bemutatja, hogyan alkalmazáspéldányok kezelése a PowerShell használatával.
 
 <!--Image references-->
 [node-view-one]: ./media/service-fabric-hosting-model/node-view-one.png
@@ -201,11 +201,11 @@ Az előző példában azt hiszi, hogy ha "MyCodePackageA" regisztrálása "MySer
 [c1]: https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync
 [c2]: https://docs.microsoft.com/dotnet/api/system.fabric.description.statelessservicedescription.instancecount
 
-[p1]: https://docs.microsoft.com/powershell/servicefabric/vlatest/new-servicefabricservice
-[p2]: https://docs.microsoft.com/powershell/servicefabric/vlatest/get-servicefabricservicedescription
-[p3]: https://docs.microsoft.com/powershell/servicefabric/vlatest/get-servicefabricdeployedservicePackage
-[p4]: https://docs.microsoft.com/powershell/servicefabric/vlatest/send-servicefabricdeployedservicepackagehealthreport
-[p5]: https://docs.microsoft.com/powershell/servicefabric/vlatest/restart-servicefabricdeployedcodepackage
-[p6]: https://docs.microsoft.com/powershell/servicefabric/vlatest/get-servicefabricdeployedservicetype
-[p7]: https://docs.microsoft.com/powershell/servicefabric/vlatest/get-servicefabricdeployedreplica
-[p8]: https://docs.microsoft.com/powershell/servicefabric/vlatest/get-servicefabricdeployedcodepackage
+[p1]: https://docs.microsoft.com/powershell/module/servicefabric/new-servicefabricservice
+[p2]: https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricservicedescription
+[p3]: https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricdeployedservicePackage
+[p4]: https://docs.microsoft.com/powershell/module/servicefabric/send-servicefabricdeployedservicepackagehealthreport
+[p5]: https://docs.microsoft.com/powershell/module/servicefabric/restart-servicefabricdeployedcodepackage
+[p6]: https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricdeployedservicetype
+[p7]: https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricdeployedreplica
+[p8]: https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricdeployedcodepackage

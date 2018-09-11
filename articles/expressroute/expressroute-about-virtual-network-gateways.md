@@ -5,14 +5,14 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 07/19/2018
+ms.date: 09/10/2018
 ms.author: cherylmc
-ms.openlocfilehash: d89463826cb05bf4cafd36cf4a38e60852d93094
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: 34d84a27406f0ebabd7bca576ee443da1d0c9bcd
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42054064"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44348804"
 ---
 # <a name="about-virtual-network-gateways-for-expressroute"></a>Az ExpressRoute virtuális hálózati átjáróinak ismertetése
 A virtuális hálózati átjáró Azure virtuális hálózatok közötti hálózati adatforgalom elküldésére használatosak, és a helyszínek. Használhatja egy virtuális hálózati átjáró vagy ExpressRoute-forgalmat, vagy VPN-forgalmat is használható. Ez a cikk az ExpressRoute virtuális hálózati átjárók összpontosít.
@@ -31,7 +31,7 @@ Mindegyik virtuális hálózat csak egy virtuális hálózati átjáróval rende
 ## <a name="gwsku"></a>Átjáró-termékváltozatok
 [!INCLUDE [expressroute-gwsku-include](../../includes/expressroute-gwsku-include.md)]
 
-Ha azt szeretné, hogy nagyobb teljesítményű átjárók Termékváltozatainak az átjáró frissítése, a legtöbb esetben használhatja a "Átméretezése-AzureRmVirtualNetworkGateway" PowerShell-parancsmagot. Ez a Standard és a nagy teljesítményű termékváltozatok frissítéseket fog működni. Azonban az UltraPerformance Termékváltozattal frissíteni, meg kell hozza létre újra az átjárót.
+Ha azt szeretné, hogy nagyobb teljesítményű átjárók Termékváltozatainak az átjáró frissítése, a legtöbb esetben használhatja a "Átméretezése-AzureRmVirtualNetworkGateway" PowerShell-parancsmagot. Ez a Standard és a nagy teljesítményű termékváltozatok frissítéseket fog működni. Azonban az UltraPerformance Termékváltozattal frissíteni, meg kell hozza létre újra az átjárót. Újra létre kellene hoznia egy átjáró leállást.
 
 ### <a name="aggthroughput"></a>Átjárók Termékváltozata alapján becsült teljesítmény
 Az alábbi táblázatban az átjárótípusok és a becsült teljesítményét mutatja. Ez a tábla a Resource Managerre és a klasszikus üzembe helyezési modellre is érvényes.

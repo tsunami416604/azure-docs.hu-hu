@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/27/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: cde70518164c386697127b079979b5b3b76ae088
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: cd95a1f1e0631340fa9844fd31c3d8c0af1168dd
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42060174"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44347052"
 ---
 # <a name="article-index-for-application-management-in-azure-active-directory"></a>Article Index for Application Management in Azure Active Directory (Az Azure Active Directory segítségével végzett alkalmazásfelügyeletre vonatkozó cikkek jegyzéke)
 Ezen a lapon minden dokumentumnak Azure Active Directory (Azure AD) különböző-alkalmazásokkal kapcsolatos lehetőségei írt átfogó listáját tartalmazza.
@@ -42,7 +42,7 @@ Ez a szakasz gyors hozzáférést biztosít a vonatkozó hibaelhárítási útmu
 | Szolgáltatási terület |  |
 |:---:| --- |
 | Összevont egyszeri bejelentkezés |[SAML-alapú egyszeri bejelentkezés hibaelhárítása](develop/howto-v1-debug-saml-sso-issues.md) |
-| Jelszavas egyszeri bejelentkezés |[Az Internet Explorer a hozzáférési Panel bővítmény hibaelhárítása](active-directory-saas-ie-troubleshooting.md) |
+| Jelszavas egyszeri bejelentkezés |[Az Internet Explorer a hozzáférési Panel bővítmény hibaelhárítása](manage-apps/manage-access-panel-browser-extension.md) |
 | Alkalmazásproxy |[Alkalmazásproxy hibaelhárítási útmutatója](manage-apps/application-proxy-troubleshoot.md) |
 | Egyszeri bejelentkezés között a helyszíni AD és az Azure ad-ben |[A Jelszókivonat-szinkronizálás hibáinak elhárítása](connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md#troubleshoot-password-hash-synchronization)<br /><br />[A Jelszóvisszaíró hibaelhárítása](authentication/active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback) |
 | Dinamikus csoporttagság |[Dinamikus csoporttagságok hibaelhárítása](users-groups-roles/groups-troubleshooting.md) |
@@ -56,7 +56,7 @@ Egyszeri bejelentkezés lehetővé teszi a felhasználók férhetnek hozzá a k�
 | Összevonási és a bejelentkezés egyéb bemutatása |[Egyszeri bejelentkezés az Azure ad-vel](manage-apps/what-is-single-sign-on.md) |
 | Több ezer SaaS-alkalmazások az Azure AD-vel előre integrált, egyszerűsített egyszeri bejelentkezéses konfigurációs lépések |[Ismerkedés az Azure AD alkalmazáskatalógusában](manage-apps/what-is-single-sign-on.md#get-started-with-the-azure-ad-application-gallery)<br /><br />[Összevonási támogató előre integrált alkalmazások teljes listája](saas-apps/tutorial-list.md)<br /><br />[Az alkalmazás hozzáadása az Azure AD Alkalmazáskatalógusában](develop/howto-app-gallery-listing.md) |
 | Több mint 150 alkalmazás oktatóanyagok konfigurálásának egyszeri bejelentkezési alkalmazások például [Salesforce](saas-apps/salesforce-tutorial.md), [ServiceNow](saas-apps/servicenow-tutorial.md), [Google Apps](saas-apps/google-apps-tutorial.md), [Workday](saas-apps/workday-tutorial.md), és még sok más |[SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](saas-apps/tutorial-list.md) |
-| Manuálisan állítsa be, és az egyszeri bejelentkezés beállításainak testreszabása |[Hogyan való konfigurálása összevont egyszeri bejelentkezés az alkalmazásokhoz, amelyek nem szerepelnek az Azure Active Directory Alkalmazáskatalógusában](application-config-sso-how-to-configure-federated-sso-non-gallery.md)<br /><br />[Az előre integrált alkalmazások SAML-jogkivonatban kiadott jogcímek testreszabása](active-directory-saml-claims-customization.md) |
+| Manuálisan állítsa be, és az egyszeri bejelentkezés beállításainak testreszabása |[Hogyan való konfigurálása összevont egyszeri bejelentkezés az alkalmazásokhoz, amelyek nem szerepelnek az Azure Active Directory Alkalmazáskatalógusában](manage-apps/configure-federated-single-sign-on-non-gallery-applications.md)<br /><br />[Az előre integrált alkalmazások SAML-jogkivonatban kiadott jogcímek testreszabása](active-directory-saml-claims-customization.md) |
 | Az összevont alkalmazások az SAML protokollt használó hibaelhárítási útmutató |[SAML-alapú egyszeri bejelentkezés hibaelhárítása](develop/howto-v1-debug-saml-sso-issues.md) |
 | Az alkalmazás tanúsítvány lejárati dátuma konfigurálása és a tanúsítványok megújítása |[Tanúsítványok kezelése az összevont egyszeri bejelentkezés az Azure Active Directoryban](manage-apps/manage-certificates-for-federated-single-sign-on.md) |
 
@@ -70,7 +70,7 @@ Egyszeri bejelentkezés alkalmazásokhoz, amelyek nem támogatják az összevon�
 | Hogyan jelszavas egyszeri Bejelentkezést működését bemutató és a egy rövid technikai áttekintése |[Jelszavas egyszeri bejelentkezés az Azure ad-vel](manage-apps/what-is-single-sign-on.md#password-based-single-sign-on) |
 | A fiók megosztása, és hogyan a ezeket a problémákat telepítésével lehet megoldani az Azure AD által kapcsolódó forgatókönyveket összefoglalása |[Az Azure AD-fiókok megosztása](active-directory-sharing-accounts.md) |
 | Automatikusan módosítsa a jelszót, az egyes alkalmazások rendszeres időközönként |[Automatizált Jelszóváltás (előzetes verzió)](https://blogs.technet.microsoft.com/enterprisemobility/2015/02/20/azure-ad-automated-password-roll-over-for-facebook-twitter-and-linkedin-now-in-preview/) |
-| Üzembe helyezése és hibaelhárítása az Azure AD-jelszó felügyeleti bővítmény, az Internet Explorer verziójára vonatkozó útmutatók |[A hozzáférési Panel bővítmény telepítése csoportházirend használatával az Internet Explorer](active-directory-saas-ie-group-policy.md)<br /><br />[Az Internet Explorer a hozzáférési Panel bővítmény hibaelhárítása](active-directory-saas-ie-troubleshooting.md) |
+| Üzembe helyezése és hibaelhárítása az Azure AD-jelszó felügyeleti bővítmény, az Internet Explorer verziójára vonatkozó útmutatók |[A hozzáférési Panel bővítmény telepítése csoportházirend használatával az Internet Explorer](manage-apps/deploy-access-panel-browser-extension.md)<br /><br />[Az Internet Explorer a hozzáférési Panel bővítmény hibaelhárítása](manage-apps/manage-access-panel-browser-extension.md) |
 
 Jelszavas egyszeri bejelentkezéssel felhasználónként legfeljebb tíz alkalmazások az Azure AD minden kiadása érhető el. [Az Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) korlátlan alkalmazásokat támogatja. Ha a szervezete [alapszintű Azure AD](https://azure.microsoft.com/pricing/details/active-directory/) vagy [prémium szintű Azure AD](https://azure.microsoft.com/pricing/details/active-directory/), akkor [alkalmazásokhoz való hozzáférés hozzárendelése csoportok használatával](#managing-access-to-applications). Automatizált jelszóváltás van egy [prémium szintű Azure AD](https://azure.microsoft.com/pricing/details/active-directory/) funkció.
 
@@ -130,11 +130,11 @@ A létrehozás, a karbantartással és a SaaS-alkalmazások, például a Dropbox
 
 | A cikk az útmutató |  |
 |:---:| --- |
-| Ismerje meg annak működését és a gyakori kérdésekre adott válaszok |[Kiépítés & megszüntetés SaaS-alkalmazások felhasználói automatizálása](active-directory-saas-app-provisioning.md) |
-| Hogyan van leképezve az információk között az Azure AD konfigurálása és az SaaS-alkalmazás |[Attribútumleképezések testreszabása](active-directory-saas-customizing-attribute-mappings.md)<br><br>[Attribútum-leképezéshez kifejezések írása](active-directory-saas-writing-expressions-for-attribute-mappings.md) |
+| Ismerje meg annak működését és a gyakori kérdésekre adott válaszok |[Kiépítés & megszüntetés SaaS-alkalmazások felhasználói automatizálása](manage-apps/user-provisioning.md) |
+| Hogyan van leképezve az információk között az Azure AD konfigurálása és az SaaS-alkalmazás |[Attribútumleképezések testreszabása](manage-apps/customize-application-attributes.md)<br><br>[Attribútum-leképezéshez kifejezések írása](manage-apps/functions-for-customizing-application-data.md) |
 | Amely támogatja az SCIM-protokollt minden alkalmazásba tiltott az Automatikus kiépítés engedélyezése |[Automatizált Felhasználókiépítése bármely SCIM-Enabled alkalmazás beállítása](manage-apps/use-scim-to-provision-users-and-groups.md) |
-| A jelentést, és a felhasználók átadásának hibaelhárítása |[A felhasználók automatikus átadásáról Reporting](active-directory-saas-provisioning-reporting.md)<br><br>[Felhasználók átadásának hibaelhárítása](active-directory-application-provisioning-content-map.md) |
-| Korlátozzák, hogy kihez lekérdezi létrehozni, hogy egy alkalmazás az attribútumértékek alapján |[Hatókörkezeléshez kapcsolódó szűrők](active-directory-saas-scoping-filters.md) |
+| A jelentést, és a felhasználók átadásának hibaelhárítása |[A felhasználók automatikus átadásáról Reporting](manage-apps/check-status-user-account-provisioning.md)<br><br>[Felhasználók átadásának hibaelhárítása](active-directory-application-provisioning-content-map.md) |
+| Korlátozzák, hogy kihez lekérdezi létrehozni, hogy egy alkalmazás az attribútumértékek alapján |[Hatókörkezeléshez kapcsolódó szűrők](manage-apps/define-conditional-rules-for-provisioning-user-accounts.md) |
 
 Automatizált felhasználókiépítése felhasználónként legfeljebb tíz alkalmazások az Azure AD összes kiadása esetén érhető el. [Az Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) korlátlan alkalmazásokat támogatja. Ha a szervezete [alapszintű Azure AD](https://azure.microsoft.com/pricing/details/active-directory/) vagy [prémium szintű Azure AD](https://azure.microsoft.com/pricing/details/active-directory/), akkor [csoportok használata kezelheti, hogy mely felhasználók kiépítve](#managing-access-to-applications).
 

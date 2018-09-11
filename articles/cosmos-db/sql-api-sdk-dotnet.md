@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 03/09/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: de0203a06e71a90223b864ab3ba059ad1ac9b5e3
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 26de3545c5d79c711703fa97cb796cd6c504f663
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44052280"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44346475"
 ---
 # <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>Az Azure Cosmos DB .NET SDK, az SQL API-hoz: Töltse le és kibocsátási megjegyzések
 > [!div class="op_single_selector"]
@@ -50,6 +50,15 @@ ms.locfileid: "44052280"
 </table></br>
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
+### <a name="a-name200200"></a><a name="2.0.0"/>2.0.0
+
+* Új kérelem visszavonás támogatása.
+* A hozzáadott SetCurrentLocation való ConnectionPolicy, amely automatikusan feltölti az elsődleges helyek a régióhoz igazodik.
+* Kijavítva a hiba a partíció-lekérdezésekben Adatbázisközi minimális/maximális és a egy szűrőt, amely megegyezik az egyetlen dokumentum egyes partíción.
+* DocumentClient módszerek IDocumentClient paritás most már rendelkezik.
+* Frissített közvetlen TCP átviteli stack létesített kapcsolatok számának csökkentése érdekében.
+* Támogatás hozzáadva a közvetlen mód TCP nem Windows-ügyfelek számára.
+
 ### <a name="a-name200-preview2200-preview2"></a><a name="2.0.0-preview2"/>2.0.0-preview2
 
 * Új kérelem visszavonás támogatása.
@@ -309,8 +318,7 @@ Az Azure Cosmos DB egy kivont SDK használatával bármilyen kérelmeket a szolg
 
 | Verzió | Kiadás dátuma | Visszavonás dátuma |
 | --- | --- | --- |
-| [2.0.0-preview2](#2.0.0-preview2) |2018. július 26. |--- |
-| [2.0.0-Preview](#2.0.0-preview) |2018. május 11. |--- |
+| [2.0.0](#2.0.0) |2018. szeptember 07. |--- |
 | [1.22.0](#1.22.0) |2018. április 19. |--- |
 | [1.21.1](#1.20.1) |2018. március 09. |--- |
 | [1.20.2](#1.20.1) |2018. február 21. |--- |

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/18/2018
 ms.author: asmalser
-ms.openlocfilehash: 0df23d50fa208482e45d2d35555ec79c587cc80a
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 930ca49a63e34214ec197d8dd37f38361b34fe90
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42445660"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44347035"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning-preview"></a>Oktatóanyag: Felhasználók automatikus kiépítési (előzetes verzió) a Workday konfigurálása
 
@@ -27,7 +27,7 @@ Ez az oktatóanyag célja, a lépéseket kell elvégeznie, importálja a személ
 
 ## <a name="overview"></a>Áttekintés
 
-A [-kiszolgáló üzembe helyezése az Azure Active Directory-felhasználó](../active-directory-saas-app-provisioning.md) integrálható a [Workday emberierőforrás API](https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v21.1/Get_Workers.html) felhasználói fiókok üzembe helyezéséhez. Azure ad-ben Ez a kapcsolat engedélyezéséhez a következő felhasználó kiépítési munkafolyamatnak használja:
+A [-kiszolgáló üzembe helyezése az Azure Active Directory-felhasználó](../manage-apps/user-provisioning.md) integrálható a [Workday emberierőforrás API](https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v21.1/Get_Workers.html) felhasználói fiókok üzembe helyezéséhez. Azure ad-ben Ez a kapcsolat engedélyezéséhez a következő felhasználó kiépítési munkafolyamatnak használja:
 
 * **Az Active Directory felhasználók kiépítése** – a felhasználók Workday-ből a kiválasztott csoportok szinkronizálása be egy vagy több Active Directory-erdők.
 
@@ -39,13 +39,13 @@ A [-kiszolgáló üzembe helyezése az Azure Active Directory-felhasználó](../
 
 A Workday felhasználói kiépítési munkafolyamatokat az Azure AD-felhasználó kiépítési szolgáltatás által támogatott a következő emberi erőforrások és az identitás-életciklus felügyeleti forgatókönyvek automatizálását engedélyezése:
 
-* **Új alkalmazottak felvétele** – egy új alkalmazotti Workday, való felvételekor egy felhasználói fiók automatikusan létrejön az Active Directory, Azure Active Directory, és igény szerint Office 365-höz és [Azure ADáltaltámogatottmásSaaS-alkalmazásokhoz](../active-directory-saas-app-provisioning.md), a késleltetve visszaírt a Workday e-mail-címe.
+* **Új alkalmazottak felvétele** – egy új alkalmazotti Workday, való felvételekor egy felhasználói fiók automatikusan létrejön az Active Directory, Azure Active Directory, és igény szerint Office 365-höz és [Azure ADáltaltámogatottmásSaaS-alkalmazásokhoz](../manage-apps/user-provisioning.md), a késleltetve visszaírt a Workday e-mail-címe.
 
-* **Alkalmazott attribútum és a profil frissítések** – amikor egy alkalmazotti rekordot a Workdayben frissítésekor (például a nevét, a cím vagy a kezelő), a felhasználói fiókjának automatikusan frissül az Active Directory, Azure Active Directory, és igény szerint Office 365-höz és [más SaaS-alkalmazásokhoz az Azure AD által támogatott](../active-directory-saas-app-provisioning.md).
+* **Alkalmazott attribútum és a profil frissítések** – amikor egy alkalmazotti rekordot a Workdayben frissítésekor (például a nevét, a cím vagy a kezelő), a felhasználói fiókjának automatikusan frissül az Active Directory, Azure Active Directory, és igény szerint Office 365-höz és [más SaaS-alkalmazásokhoz az Azure AD által támogatott](../manage-apps/user-provisioning.md).
 
-* **Alkalmazott végződnek** – amikor egy alkalmazott megszakad a Workdayben, a felhasználói fiókjának automatikusan le van tiltva az Active Directory, Azure Active Directory, és igény szerint Office 365-höz és [más SaaS-alkalmazásokhoz az Azure által támogatott AD](../active-directory-saas-app-provisioning.md).
+* **Alkalmazott végződnek** – amikor egy alkalmazott megszakad a Workdayben, a felhasználói fiókjának automatikusan le van tiltva az Active Directory, Azure Active Directory, és igény szerint Office 365-höz és [más SaaS-alkalmazásokhoz az Azure által támogatott AD](../manage-apps/user-provisioning.md).
 
-* **Alkalmazott újra hires** – amikor egy alkalmazott van rehired WORKDAY, a régi fiókot automatikusan lehet aktiválni vagy újra létrehozni (rendelkezésére), hogy az Active Directory, Azure Active Directoryban, és igény szerint Office 365-höz és [más SaaS-alkalmazásokhoz az Azure AD által támogatott](../active-directory-saas-app-provisioning.md).
+* **Alkalmazott újra hires** – amikor egy alkalmazott van rehired WORKDAY, a régi fiókot automatikusan lehet aktiválni vagy újra létrehozni (rendelkezésére), hogy az Active Directory, Azure Active Directoryban, és igény szerint Office 365-höz és [más SaaS-alkalmazásokhoz az Azure AD által támogatott](../manage-apps/user-provisioning.md).
 
 ### <a name="who-is-this-user-provisioning-solution-best-suited-for"></a>Akik esetén a felhasználó kiépítési megoldás ajánlott használhatók?
 
@@ -327,7 +327,7 @@ Ebben a szakaszban konfigurálhatja felhasználói adatfolyamok Workday-ből az 
 
          * **Állandó** – egy statikus, állandó karakterláncértéket írni az AD-attribútum
 
-         * **Kifejezés** – lehetővé teszi, hogy az AD attribútuma, egyéni értékké írni egy vagy több Workday-attribútumok alapján. [További információ: Ez a cikk a kifejezések](../active-directory-saas-writing-expressions-for-attribute-mappings.md).
+         * **Kifejezés** – lehetővé teszi, hogy az AD attribútuma, egyéni értékké írni egy vagy több Workday-attribútumok alapján. [További információ: Ez a cikk a kifejezések](../manage-apps/functions-for-customizing-application-data.md).
 
       * **Adatforrás-attribútum** – Workday-ből a felhasználói attribútum. Ha az Ön által keresett attribútum nem található, lásd: [Workday felhasználói attribútumok listája testre szabható](#customizing-the-list-of-workday-user-attributes).
 
@@ -356,7 +356,7 @@ Ebben a szakaszban konfigurálhatja felhasználói adatfolyamok Workday-ből az 
 
 -   A userPrincipalName attribútum az Active Directoryban jön létre elkülönített változó összefűzésével előállítjuk a Workday-felhasználói Azonosítót és a tartományutótag
 
--   [Van itt kifejezések írása dokumentációért](../active-directory-saas-writing-expressions-for-attribute-mappings.md). Ez magában foglalja a példák a speciális karakterek eltávolítása.
+-   [Van itt kifejezések írása dokumentációért](../manage-apps/functions-for-customizing-application-data.md). Ez magában foglalja a példák a speciális karakterek eltávolítása.
 
   
 | MUNKANAPI ATTRIBÚTUM | AZ ACTIVE DIRECTORY-ATTRIBÚTUM |  EGYEZŐ AZONOSÍTÓ? | LÉTREHOZÁSA / FRISSÍTÉSE |
@@ -490,7 +490,7 @@ Ha az Active Directory vagy az Azure Active Directory hitelesítő adatokkal a P
 
 3. Ekkor elindul a kezdeti szinkronizálás, amely változó számú, attól függően, hogy hány felhasználó van WORKDAY órát is igénybe vehet.
 
-4. Bármikor, ellenőrizze a **Auditnaplók** lap meg, milyen műveletet végzett el a kiépítési szolgáltatás, az Azure Portalon. A naplók a kiépítési szolgáltatás, például, hogy melyik felhasználók vannak kívül workdayjel képes olvasni és majd ezt követően hozzáadása vagy frissítése az Active Directory által végrehajtott minden egyes szinkronizálási események listája. **[Tekintse meg a kiépítési jelentéskészítési útmutató részletes útmutatás a naplók olvasása](../active-directory-saas-provisioning-reporting.md)**
+4. Bármikor, ellenőrizze a **Auditnaplók** lap meg, milyen műveletet végzett el a kiépítési szolgáltatás, az Azure Portalon. A naplók a kiépítési szolgáltatás, például, hogy melyik felhasználók vannak kívül workdayjel képes olvasni és majd ezt követően hozzáadása vagy frissítése az Active Directory által végrehajtott minden egyes szinkronizálási események listája. **[Tekintse meg a kiépítési jelentéskészítési útmutató részletes útmutatás a naplók olvasása](../manage-apps/check-status-user-account-provisioning.md)**
 
 1.  Ellenőrizze a [Windows Eseménynapló](https://technet.microsoft.com/library/cc722404(v=ws.11).aspx) a Windows Server az esetleges új hibák vagy figyelmeztetések az ügynököt futtató gépen. Ezek az események teljesítményobjektumok elindításával **Eventvwr.msc** a kiszolgálón, majd válasszon **Windows-naplók > alkalmazás**. Az összes kiépítési kapcsolatos üzeneteket forrás alatt jelentkezett **AADSyncAgent**.
 
@@ -581,7 +581,7 @@ Ebben a szakaszban konfigurálhatja felhasználói adatfolyamok Workday-ből az 
 
       * **Állandó** – egy statikus, állandó karakterláncértéket írni az AD-attribútum
 
-      * **Kifejezés** – lehetővé teszi, hogy az AD attribútuma, egyéni értékké írni egy vagy több Workday-attribútumok alapján. [További információ: Ez a cikk a kifejezések](../active-directory-saas-writing-expressions-for-attribute-mappings.md).
+      * **Kifejezés** – lehetővé teszi, hogy az AD attribútuma, egyéni értékké írni egy vagy több Workday-attribútumok alapján. [További információ: Ez a cikk a kifejezések](../manage-apps/functions-for-customizing-application-data.md).
 
    * **Adatforrás-attribútum** – Workday-ből a felhasználói attribútum. Ha az Ön által keresett attribútum nem található, lásd: [Workday felhasználói attribútumok listája testre szabható](#customizing-the-list-of-workday-user-attributes).
 
@@ -611,7 +611,7 @@ Ebben a szakaszban konfigurálhatja felhasználói adatfolyamok Workday-ből az 
 
 3. Ekkor elindul a kezdeti szinkronizálás, amely változó számú, attól függően, hogy hány felhasználó van WORKDAY órát is igénybe vehet.
 
-4. Egyes szinkronizálási események lehet megtekinteni a **Auditnaplók** fülre. **[Tekintse meg a kiépítési jelentéskészítési útmutató részletes útmutatás a naplók olvasása](../active-directory-saas-provisioning-reporting.md)**
+4. Egyes szinkronizálási események lehet megtekinteni a **Auditnaplók** fülre. **[Tekintse meg a kiépítési jelentéskészítési útmutató részletes útmutatás a naplók olvasása](../manage-apps/check-status-user-account-provisioning.md)**
 
 5. Befejeződött, akkor fog kiírni, összefoglaló jelentést a **kiépítési** lapon, a lent látható módon.
 
@@ -669,7 +669,7 @@ Ebben a szakaszban konfigurálhatja felhasználói adatfolyamok Workday-ből az 
 
 3. Ekkor elindul a kezdeti szinkronizálás, amely változó számú, attól függően, hogy hány felhasználó van WORKDAY órát is igénybe vehet.
 
-4. Egyes szinkronizálási események lehet megtekinteni a **Auditnaplók** fülre. **[Tekintse meg a kiépítési jelentéskészítési útmutató részletes útmutatás a naplók olvasása](../active-directory-saas-provisioning-reporting.md)**
+4. Egyes szinkronizálási események lehet megtekinteni a **Auditnaplók** fülre. **[Tekintse meg a kiépítési jelentéskészítési útmutató részletes útmutatás a naplók olvasása](../manage-apps/check-status-user-account-provisioning.md)**
 
 5. Befejeződött, akkor fog kiírni, összefoglaló jelentést a **kiépítési** lapon, a lent látható módon.
 
@@ -808,7 +808,7 @@ A Workday megoldás kiépítése az Active Directory szükséges a szinkronizál
 
 ## <a name="next-steps"></a>További lépések
 
-* [Tekintse át a naplók és jelentések készítése a tevékenység kiépítése](../active-directory-saas-provisioning-reporting.md)
+* [Tekintse át a naplók és jelentések készítése a tevékenység kiépítése](../manage-apps/check-status-user-account-provisioning.md)
 * [Ismerje meg, hogyan konfigurálása egyszeri bejelentkezéshez Workday és az Azure Active Directory között](workday-tutorial.md)
 * [Ismerje meg, hogyan integrálhatja más SaaS-alkalmazásokhoz az Azure Active Directoryval](tutorial-list.md)
 

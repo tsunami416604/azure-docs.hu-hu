@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/30/2018
 ms.author: spelluru
-ms.openlocfilehash: ff0e3124168927d03816079a4f5ab322663459ac
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: e6dd30fc8da919995849ba818f608604a57a0b37
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43702452"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44346826"
 ---
 # <a name="prefetch-azure-service-bus-messages"></a>Azure Service Bus-üzenetek előzetes betöltése
 
@@ -44,7 +44,7 @@ Az a [ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode) 
 
 Az a [PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode#Microsoft_ServiceBus_Messaging_ReceiveMode_PeekLock) mód kap, üzeneteket beolvasni a lehívott puffer, a puffer zárolt állapotban való beszerzett, és rendelkezik a timeout órája a zárolás óramű pontossággal működik. A lehívott puffer mérete nagy, és a feldolgozásra kerül rövidre az üzenet zárolása közben a lehívott puffer, vagy az alkalmazás az üzenet feldolgozása közben is levő lejár, az alkalmazás kezelni bizonyos zavaró eseményeket lehet.
 
-Az alkalmazás egy üzenetet egy lejárt vagy imminently lejáró zárolási előfordulhat, hogy beszerezni. Ha igen, az alkalmazás lehet feldolgozni az üzenetet, de keresse meg, hogy azt nem tudja végrehajtani, a zárolás lejárati miatt. Az alkalmazás ellenőrizheti a [LockedUntilUtc](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.lockeduntilutc#Microsoft_Azure_ServiceBus_Core_MessageReceiver_LockedUntilUtc) tulajdonság (amelynek óra torzulása a közvetítő és a helyi gép óra között). Ha az üzenet zárolási lejárt, az alkalmazás kell figyelmen kívül hagyhatja az üzenetet; egyetlen API-hívás vagy annak segítségével az üzenet kell tenni. Ha az üzenet nem járt le, de lejárati közvetlen, a zárolás megújítani-e, és hogy meghívásával egy másik alapértelmezett zárolási időszak szerint kiterjesztett [üzenet. RenewLock()](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.renewlockasync#Microsoft_Azure_ServiceBus_Core_MessageReceiver_RenewLockAsync_System_String_)
+Az alkalmazás egy üzenetet egy lejárt vagy imminently lejáró zárolási előfordulhat, hogy beszerezni. Ha igen, az alkalmazás lehet feldolgozni az üzenetet, de keresse meg, hogy azt nem tudja végrehajtani, a zárolás lejárati miatt. Az alkalmazás ellenőrizheti a [LockedUntilUtc](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.lockeduntilutc) tulajdonság (amelynek óra torzulása a közvetítő és a helyi gép óra között). Ha az üzenet zárolási lejárt, az alkalmazás kell figyelmen kívül hagyhatja az üzenetet; egyetlen API-hívás vagy annak segítségével az üzenet kell tenni. Ha az üzenet nem járt le, de lejárati közvetlen, a zárolás megújítani-e, és hogy meghívásával egy másik alapértelmezett zárolási időszak szerint kiterjesztett [üzenet. RenewLock()](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.renewlockasync#Microsoft_Azure_ServiceBus_Core_MessageReceiver_RenewLockAsync_System_String_)
 
 Ha a zárolást a lehívott pufferben csendes lejár, az üzenet félbeszakadtként való megjelölése kezeli, és ismét felhasználhatóvá válik beolvasása az üzenetsorból. Amely azt kéri le, a lehívott puffer; vezethet a végén helyezi. Ha az előzetes betöltési puffer nem általában kell keresztül során az üzenetek lejáratkor, ez használható (érvényesen zárolt) állapotban lehet ismételten prefetched, de soha nem hatékony kézbesített üzenetek, és végül helyezik át a kézbesítetlen levelek várólistájára egyszer a kézbesítések maximális száma túl van.
 

@@ -7,14 +7,14 @@ manager: carmonm
 keywords: biztonsági másolatok biztonsági mentése;
 ms.service: backup
 ms.topic: conceptual
-ms.date: 6/21/2018
+ms.date: 9/10/2018
 ms.author: markgal
-ms.openlocfilehash: 40a83b93443ebe1482f89a114505a1ba27b93bd2
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: dc9d7b924f51fb3a4e9662dfa7ad4b9557b481bc
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39445743"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44347001"
 ---
 # <a name="prepare-your-environment-to-back-up-resource-manager-deployed-virtual-machines"></a>A környezet előkészítése a Resource Managerrel üzembe helyezett virtuális gépek biztonsági mentéséhez
 
@@ -46,6 +46,7 @@ Ha ezek a feltételek a környezetében már létezik, ugorjon a [a virtuális g
 ## <a name="limitations-when-backing-up-and-restoring-a-vm"></a>Korlátozások a biztonsági mentése és visszaállítása egy virtuális gép esetén
 Mielőtt a környezet előkészítése, ügyeljen arra, hogy ezek a korlátozások ismertetése:
 
+* Standard SSD-virtuális gépek biztonsági mentésének jelenleg nem támogatott.
 * Több mint 16 adatlemezekkel rendelkező virtuális gépek biztonsági mentése nem támogatott.
 * A fenntartott IP-cím és a nem meghatározott végpontot a virtuális gépek biztonsági mentése nem támogatott.
 * Linux egyesített kulcs beállítása (LUKS) titkosítással titkosított Linux rendszerű virtuális gépek biztonsági mentésének nem támogatott.

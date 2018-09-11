@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 766f617f3534ffaccdc326e7de8155adb84a69ce
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: da5905af4a861502f190cd873033923d8fd0bfa7
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39162143"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44349092"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Az Azure multi-factor Authentication beállításainak konfigurálása
 
@@ -67,7 +67,7 @@ Konfigurálja a _visszaélési riasztás_ funkciót, hogy a felhasználók jelen
 3. Állítsa be a **engedélyezése a felhasználóknak visszaélési riasztás küldésének** beállítást **a**.
 4. Kattintson a **Mentés** gombra.
 
-### <a name="configuration-options"></a>Konfigurációs beállítások
+### <a name="configuration-options"></a>Beállítási lehetőségek
 
 - **Felhasználó blokkolása visszaélés jelentésekor**: Ha egy felhasználó a csalás jelentéseket, a fiók le van tiltva 90 napig, vagy amíg a rendszergazda feloldja a fiók. A rendszergazdák, tekintse át a bejelentkezések bejelentkezési jelentés használatával, és megfelelő lépéseket a jövőbeli csalások megakadályozásához. A rendszergazda tudja majd [feloldása](#unblock-a-user) a felhasználói fiók.
 - **Csalást jelent a kezdeti üdvözlés során kódot**: amikor a felhasználók megkapják a telefonhívás, a kétlépéses hitelesítés végrehajtására, azokat általában nyomja le az **#** a bejelentkezés megerősítéséhez. Csalást jelent be, hogy a felhasználó nem ír kódot előtt **#**. Ez a kód **0** alapértelmezés szerint azonban testre szabható.
@@ -200,7 +200,7 @@ Függetlenül attól, hogy a megbízható IP-címek szolgáltatás engedélyezve
 ### <a name="enable-the-trusted-ips-feature-by-using-service-settings"></a>A megbízható IP-címek funkció engedélyezéséhez a szolgáltatási beállítások használatával
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. A bal oldalon válassza ki a **Azure Active Directory** > **felhasználók és csoportok** > **minden felhasználó**.
+2. A bal oldalon válassza ki a **Azure Active Directory** > **felhasználók**.
 3. Válassza ki **multi-factor Authentication**.
 4. Válassza ki a multi-factor Authentication hitelesítés **Szolgáltatásbeállítások**.
 5. Az a **Szolgáltatásbeállítások** lap **megbízható IP-címek**, a következő két lehetőség közül választhat:

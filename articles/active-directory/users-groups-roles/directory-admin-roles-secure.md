@@ -13,12 +13,12 @@ ms.workload: identity
 ms.component: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer, MarkMorow
-ms.openlocfilehash: b52a447bf643510528e1bd8c6d473bf5d77731fe
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: ead6202b0365df770382077618795cd6b6e57cd2
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42057260"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44346729"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Az Azure AD felhőalapú és hibrid telepítések emelt szintű hozzáférés biztonságossá tétele
 
@@ -173,7 +173,7 @@ Kapcsolja be:
 
 Ha használ Windows Hello for Business, az MFA úgy érheti el használata a Windows Hello bejelentkezési élményt nyújt. További információkért lásd: [Windows Hello](https://docs.microsoft.com/windows/uwp/security/microsoft-passport). 
 
-#### <a name="configure-identity-protection"></a>Identity Protection konfigurálása 
+#### <a name="configure-identity-protection"></a>Az Identity Protection konfigurálása 
 
 Az Azure AD Identity Protection, az algoritmus-alapú figyelési és jelentéskészítési eszköz, amellyel a szervezet identitásait érintő esetleges biztonsági rések észlelését. Automatikus válaszok e észlelt gyanús tevékenységek konfigurálhatja, és hajtsa végre a problémák megoldásához a megfelelő műveletet. További információkért lásd: [Azure Active Directory Identity Protection](../active-directory-identityprotection.md).
 
@@ -300,7 +300,7 @@ Azure-naplók integrációja lehetővé teszi a szervezet meglévő biztonsági 
 
 #### <a name="implement-user-provisioning-for-connected-apps"></a>Csatlakoztatott alkalmazások felhasználókiépítése megvalósítása
 
-Az Azure AD lehetővé teszi a létrehozása, a karbantartással és a felhasználói identitásokat felhőalapú (SaaS) alkalmazások, például a Dropbox vagy a Salesforce, ServiceNow eltávolításának automatizálása, és így tovább. További információkért lásd: [automatizálhatja a felhasználókiépítés és -megszüntetés SaaS-alkalmazásokhoz az Azure ad-vel](../active-directory-saas-app-provisioning.md).
+Az Azure AD lehetővé teszi a létrehozása, a karbantartással és a felhasználói identitásokat felhőalapú (SaaS) alkalmazások, például a Dropbox vagy a Salesforce, ServiceNow eltávolításának automatizálása, és így tovább. További információkért lásd: [automatizálhatja a felhasználókiépítés és -megszüntetés SaaS-alkalmazásokhoz az Azure ad-vel](../manage-apps/user-provisioning.md).
 
 #### <a name="integrate-information-protection"></a>Information protection integrálása
 
@@ -370,7 +370,7 @@ Ha szeretné meghatározni [Azure-előfizetés tulajdonjogának átruházása m�
 
 ## <a name="break-glass-what-to-do-in-an-emergency"></a>"Vészhelyzeti": Mi a teendő vészhelyzet esetén
 
-![A válságkezelési](./media/directory-admin-roles-secure/emergency.jpeg)
+![Vészhelyzet](./media/directory-admin-roles-secure/emergency.jpeg)
 
 1. Kulcs kezelők és a profiljával kapcsolatos információkat az incidens security officer értesíti.
 

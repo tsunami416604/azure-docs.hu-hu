@@ -15,15 +15,15 @@ ms.workload: identity
 ms.date: 07/26/2017
 ms.author: barbkess
 ms.reviewer: asmalser
-ms.openlocfilehash: 2b2b44deacf8278b8e8c2554cc873c5d0b75f6f9
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 95d2f65e99b37b38f99ec5a750d74828661fe7ee
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39366188"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44349143"
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Felhasználói fiók kiépítése az Azure Portalon a vállalati alkalmazások kezelése
-Ez a cikk ismerteti, hogyan használható a [az Azure portal](https://portal.azure.com) automatikus felhasználói fiók kiépítése és megszüntetést, amelyek támogatják ezt, különösen megjelennek a "kiemelt" kategóriát adta meg a hozzáadottalkalmazásokkezeléséhez[ Az Azure Active Directory alkalmazáskatalógusában](what-is-single-sign-on.md#get-started-with-the-azure-ad-application-gallery). Automatikus felhasználói fiók kiépítése, és hogyan működik kapcsolatos további tudnivalókért lásd: [automatizálhatja a Felhasználókiépítés és -megszüntetés SaaS-alkalmazásokhoz az Azure Active Directoryval](../active-directory-saas-app-provisioning.md).
+Ez a cikk ismerteti, hogyan használható a [az Azure portal](https://portal.azure.com) automatikus felhasználói fiók kiépítése és megszüntetést, amelyek támogatják ezt, különösen megjelennek a "kiemelt" kategóriát adta meg a hozzáadottalkalmazásokkezeléséhez[ Az Azure Active Directory alkalmazáskatalógusában](what-is-single-sign-on.md#get-started-with-the-azure-ad-application-gallery). Automatikus felhasználói fiók kiépítése, és hogyan működik kapcsolatos további tudnivalókért lásd: [automatizálhatja a Felhasználókiépítés és -megszüntetés SaaS-alkalmazásokhoz az Azure Active Directoryval](user-provisioning.md).
 
 ## <a name="finding-your-apps-in-the-portal"></a>A portál az alkalmazások keresése
 Az egyszeri bejelentkezés egy könyvtárban, a használatával directory rendszergazdája által beállított összes alkalmazás a [Azure Active Directory alkalmazáskatalógusában](what-is-single-sign-on.md#get-started-with-the-azure-ad-application-gallery), tekinthetők meg és kezelhetők a [az Azure portal](https://portal.azure.com). Tekintheti meg az alkalmazások a **minden szolgáltatás** &gt; **vállalati alkalmazások** a portál szakaszát. Vállalati alkalmazások olyan alkalmazások, telepített és a szervezetén belül.
@@ -46,7 +46,7 @@ A **kiépítési** ablaktábla kezdődik a **mód** menüben, amely bemutatja, m
 Válassza a **automatikus** lehetőség jelenít meg egy képernyő, amely négy részből áll:
 
 ### <a name="admin-credentials"></a>Rendszergazdai hitelesítő adatok
-Ebben a szakaszban, ahol a hitelesítő adatokat szeretne csatlakozni a megadott API-t az alkalmazás felhasználói kezelése az Azure AD szükséges. A bemeneti szükséges az alkalmazás függvényében eltérő. A hitelesítő adatok típusát és az adott alkalmazásokra vonatkozó követelmények kapcsolatos további információkért tekintse meg a [konfigurációjára vonatkozó oktatóanyag, hogy az adott alkalmazáshoz](../active-directory-saas-app-provisioning.md).
+Ebben a szakaszban, ahol a hitelesítő adatokat szeretne csatlakozni a megadott API-t az alkalmazás felhasználói kezelése az Azure AD szükséges. A bemeneti szükséges az alkalmazás függvényében eltérő. A hitelesítő adatok típusát és az adott alkalmazásokra vonatkozó követelmények kapcsolatos további információkért tekintse meg a [konfigurációjára vonatkozó oktatóanyag, hogy az adott alkalmazáshoz](user-provisioning.md).
 
 Válassza a **kapcsolat tesztelése** gomb lehetővé teszi, hogy a hitelesítő adatok tesztelése létesíteni az Azure AD próbál csatlakozni a az alkalmazás a kiépítés alkalmazást a megadott hitelesítő adatok használatával.
 
@@ -60,7 +60,7 @@ Van egy egy előre konfigurált Azure AD-felhasználói objektumok és az egyes 
 Támogatott testreszabások a következők:
 
 * Engedélyezése és letiltása adott objektumok, például az SaaS-alkalmazás felhasználói objektum az Azure AD felhasználói objektum leképezések.
-* Szerkesztés az attribútumokat, amelyek az alkalmazás felhasználói objektumhoz az Azure AD-felhasználói objektum áramlani. Attribútumleképzés további információkért lásd: [attribútum typy mapování ismertetése](../active-directory-saas-customizing-attribute-mappings.md#understanding-attribute-mapping-types).
+* Szerkesztés az attribútumokat, amelyek az alkalmazás felhasználói objektumhoz az Azure AD-felhasználói objektum áramlani. Attribútumleképzés további információkért lásd: [attribútum typy mapování ismertetése](customize-application-attributes.md#understanding-attribute-mapping-types).
 * Szűrés az Azure AD hajt végre a célzott alkalmazás üzembe helyezési műveleteket. Ahelyett, hogy az Azure AD-objektumok teljes szinkronizálása, korlátozhatja a végrehajtott műveleteket. Például kiválasztásával csak **frissítés**, az Azure AD csak frissítések meglévő felhasználói fiókok egy alkalmazásban, és hozzon létre újakat. Csak kiválasztásával **létrehozás**, az Azure csak új felhasználói fiókokat hoz létre, de nem frissíti a már meglévőket. Ez a funkció lehetővé teszi, hogy a rendszergazdák a fióklétrehozás különböző leképezéseit létrehozni és frissíteni a munkafolyamatokat.
 
 ### <a name="settings"></a>Beállítások

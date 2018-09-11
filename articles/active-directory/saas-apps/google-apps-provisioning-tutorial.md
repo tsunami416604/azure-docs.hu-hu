@@ -14,25 +14,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 26715c6abb9c2c940090c84b64a30f7fb701d059
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 924584a77d36ec41488d8c76d9631baf484ff494
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39445689"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44346389"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>Oktatóanyag: A G Suite konfigurálása a felhasználók automatikus átadása
 
 Ez az oktatóanyag célja bemutatják, hogyan automatikus kiépítésének és megszüntetésének felhasználói fiókok Azure Active Directory (Azure AD) a G Suite-hoz.
 
 > [!NOTE]
-> Ez az oktatóanyag az Azure AD-felhasználó Provisioning Service-ra épülő összekötők ismerteti. Ez a szolgáltatás leírása, hogyan működik és gyakran ismételt kérdések a fontos tudnivalókat tartalmaz [automatizálhatja a felhasználókiépítés és -átadás megszüntetése SaaS-alkalmazásokban az Azure Active Directory](./../active-directory-saas-app-provisioning.md).
+> Ez az oktatóanyag az Azure AD-felhasználó Provisioning Service-ra épülő összekötők ismerteti. Ez a szolgáltatás leírása, hogyan működik és gyakran ismételt kérdések a fontos tudnivalókat tartalmaz [automatizálhatja a felhasználókiépítés és -átadás megszüntetése SaaS-alkalmazásokban az Azure Active Directory](../manage-apps/user-provisioning.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az Azure AD-integráció konfigurálása a G Suite, a következőkre van szükség:
 
-- Az Azure AD-előfizetéshez
+- Azure AD-előfizetés
 - A G Suite egyszeri bejelentkezés engedélyezve van az előfizetés
 - A Google Apps előfizetést vagy a Google Cloud Platform-előfizetés.
 
@@ -88,7 +88,7 @@ Ez a szakasz végigvezeti az Azure AD-csatlakozás a felhasználói fiók kiép�
 
     b. Válassza ki **tartománynév** a bal oldali navigációs panelen, és válassza ki a **Hozzáadás**.
      
-     ![Tartomány](./media/google-apps-provisioning-tutorial/domain_1.png)
+     ![Domain](./media/google-apps-provisioning-tutorial/domain_1.png)
 
      ![Tartomány hozzáadása](./media/google-apps-provisioning-tutorial/domain_2.png)
 
@@ -100,7 +100,7 @@ Ez a szakasz végigvezeti az Azure AD-csatlakozás a felhasználói fiók kiép�
     
     Hogyan lehet ellenőrizni a tartománynevek az Azure ad-vel átfogóbb utasításokért lásd: [saját tartománynév hozzáadása az Azure ad-ben](https://go.microsoft.com/fwLink/?LinkID=278919&clcid=0x409).
      
-     ![Tartomány](./media/google-apps-provisioning-tutorial/domain_4.png)
+     ![Domain](./media/google-apps-provisioning-tutorial/domain_4.png)
 
     e. Ismételje meg a fenti lépéseket minden olyan tartományban, amelyet hozzá kíván adni a könyvtárhoz.
 
@@ -172,7 +172,7 @@ Ez a szakasz végigvezeti az Azure AD-csatlakozás a felhasználói fiók kiép�
 
 Ez a folyamat elindítja a kezdeti szinkronizálás, a felhasználók és csoportok, a felhasználók és csoportok szakaszban G Suite-hoz rendelt. A kezdeti szinkronizálás végrehajtásához, mint az ezt követő szinkronizálások, amely körülbelül 40 percenként történik, miközben fut a szolgáltatás több időt vesz igénybe. Használhatja a **szinkronizálás részleteivel** előrehaladásának figyeléséhez, és kövesse a hivatkozásokat tevékenységeket tartalmazó naplók kiépítés szakaszt. Ezek a naplók a kiépítési szolgáltatást a az alkalmazás által végrehajtott összes műveletet ismerteti.
 
-Az Azure AD létesítési naplók olvasása további információkért lásd: [-jelentések automatikus felhasználói fiók kiépítése](../active-directory-saas-provisioning-reporting.md).
+Az Azure AD létesítési naplók olvasása további információkért lásd: [-jelentések automatikus felhasználói fiók kiépítése](../manage-apps/check-status-user-account-provisioning.md).
 
 ## <a name="additional-resources"></a>További források
 

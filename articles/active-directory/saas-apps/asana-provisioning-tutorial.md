@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser
 ms.reviewer: asmalser
-ms.openlocfilehash: 9ab2b22840d162fc0194151c5eec02675aad92dc
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 26642fefbb86b2709e110b13d782286fd18d5e60
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39427652"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44348055"
 ---
 # <a name="tutorial-configure-asana-for-automatic-user-provisioning"></a>Oktatóanyag: Felhasználók automatikus átadása Asana konfigurálása
 
@@ -89,7 +89,7 @@ Ez a szakasz végigvezeti az Azure AD-csatlakozás üzembe helyezési API Asana-
 
 1. Alatt a **leképezések** szakaszban jelölje be **szinkronizálása az Azure Active Directory-felhasználók az Asanában**.
 
-1. Az a **attribútumleképezések** területen tekintse át a felhasználói attribútumok Asana szinkronizálását az Azure ad-ből. A kiválasztott attribútumok **megfelelést kiváltó** tulajdonságok segítségével felel meg a felhasználói fiókokat az Asanában a frissítési műveleteket. Válassza ki **mentése** véglegesíti a módosításokat. További információkért lásd: [felhasználó kiépítése attribútumleképezések testreszabása](../active-directory-saas-customizing-attribute-mappings.md).
+1. Az a **attribútumleképezések** területen tekintse át a felhasználói attribútumok Asana szinkronizálását az Azure ad-ből. A kiválasztott attribútumok **megfelelést kiváltó** tulajdonságok segítségével felel meg a felhasználói fiókokat az Asanában a frissítési műveleteket. Válassza ki **mentése** véglegesíti a módosításokat. További információkért lásd: [felhasználó kiépítése attribútumleképezések testreszabása](../manage-apps/customize-application-attributes.md).
 
 1. Ahhoz, hogy az Azure AD létesítési szolgáltatás az Asanában, az a **beállítások** területén módosíthatja **üzembe helyezési állapotra** való **a**.
 
@@ -97,7 +97,7 @@ Ez a szakasz végigvezeti az Azure AD-csatlakozás üzembe helyezési API Asana-
 
 Most a kezdeti szinkronizálás indítása az Asanában rendelt bármely felhasználó számára a **felhasználók** szakaszban. A kezdeti szinkronizálás végrehajtásához, mint az ezt követő szinkronizálások, amely körülbelül 40 percenként történik, amíg a szolgáltatás fut hosszabb időt vesz igénybe. Használja a **szinkronizálás részleteivel** előrehaladásának figyeléséhez, és kövesse a hivatkozásokat tevékenységeket tartalmazó naplók kiépítés szakaszt. A naplók a Asana-alkalmazásban a kiépítési szolgáltatás által végrehajtott összes műveletet ismerteti.
 
-Az Azure AD létesítési naplók olvasása további információkért lásd: [automatikus felhasználói fiók üzembe helyezésének jelentést](../active-directory-saas-provisioning-reporting.md).
+Az Azure AD létesítési naplók olvasása további információkért lásd: [automatikus felhasználói fiók üzembe helyezésének jelentést](../manage-apps/check-status-user-account-provisioning.md).
 
 ## <a name="additional-resources"></a>További források
 

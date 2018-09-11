@@ -1,24 +1,18 @@
 ---
 title: Az Azure Disk Encryption Windows és Linux rendszerű IaaS virtuális gépek |} A Microsoft Docs
 description: 'Ez a cikk a függelék: a Microsoft Azure Disk Encryption a Windows és Linux rendszerű IaaS virtuális gépek.'
-services: security
-documentationcenter: na
 author: mestew
-manager: MBaldwin
-ms.assetid: 98bbcb84-8e6c-4eb2-8490-c2a0c67aad79
 ms.service: security
-ms.devlang: na
+ms.subservice: Azure Disk Encryption
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 08/24/2018
 ms.author: mstewart
-ms.openlocfilehash: 9efd8730af292e6f720c3bacd5707c48f0eab7ac
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.date: 09/10/2018
+ms.openlocfilehash: 2f932ff39495916c4a9fb55714c73383e06c72e1
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42887933"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44346843"
 ---
 # <a name="appendix-for-azure-disk-encryption"></a>Az Azure Disk Encryption for függelék 
 Ez a cikk a mellékletet [IaaS virtuális gépekhez az Azure Disk Encryption](azure-security-disk-encryption-overview.md). Ellenőrizze, hogy az Azure Disk Encryption, IaaS virtuális gépek cikkek előbb a környezetet tudni elolvasni. Ez a cikk ismerteti, hogyan készíti elő az előzetes titkosítással VHD-k és egyéb feladatokhoz.
@@ -116,8 +110,8 @@ Az alábbi táblázat mutatja, hogy mely paraméterek is használható a PowerSh
 |------|------|------|
 |$resourceGroupName| Az erőforrás nevét, amelyhez a KeyVault tartozik.  Ezen a néven egy új erőforráscsoport létrejön, ha egy nem létezik.| True (Igaz)|
 |$keyVaultName|A KeyVault a melyik titkosítási kulcsai elhelyezni kívánt nevét. Ezen a néven egy új tároló létrejön, ha egy nem létezik.| True (Igaz)|
-|$location|A KeyVault helye. Győződjön meg arról a KeyVault és a virtuális gépek titkosítását ugyanazon a helyen. A hely listáját `Get-AzureRMLocation`.|True (Igaz)|
-|$subscriptionId|Használható az Azure-előfizetés azonosítója.  Megtekintheti az előfizetés-Azonosítóját az `Get-AzureRMSubscription`.|True (Igaz)|
+|$location|A KeyVault helye. Győződjön meg arról a KeyVault és a virtuális gépek titkosítását ugyanazon a helyen. A helyek listáját a következővel érheti el: `Get-AzureRMLocation`.|True (Igaz)|
+|$subscriptionId|Használható az Azure-előfizetés azonosítója.  Az előfizetés-azonosítóját a következővel érheti el: `Get-AzureRMSubscription`.|True (Igaz)|
 |$aadAppName|Neve az Azure AD-alkalmazást, amely a KeyVault titkos kódok írása történik. Ha a megadott néven még nem létezik alkalmazás, a rendszer létrehoz egyet a beírt néven. Ha az alkalmazás már létezik, aadClientSecret a paramétert átadhatja a parancsfájlt.|False (Hamis)|
 |$aadClientSecret|A korábban létrehozott Azure AD-alkalmazás titkos ügyfélkódja.|False (Hamis)|
 |$keyEncryptionKeyName|A KeyVault választható kulcstitkosítási kulcs neve. Ezen a néven egy új kulcsot létrejön, ha egy nem létezik.|False (Hamis)|

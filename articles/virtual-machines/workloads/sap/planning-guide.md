@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 09/06/2018
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 91ed29b100e0fab0f0e386f771dc6f71d7b424c6
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 7b1f937a71a0ff5b8030c922073dc463af3c8430
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44163413"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44349262"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Az Azure virtuális gépek tervezése és megvalósítása SAP NetWeaver
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -1921,6 +1921,7 @@ A következő Azure szerkezetek az SAP NetWeaver rendszerhez által infrastruktu
 * A teljes rendszer fut (kötelező) egy Azure-előfizetésen belül.
 * A teljes rendszer fut, egy Azure virtuális hálózaton belül (kötelező).
 * Az azonos virtuális hálózatba tartozó virtuális gépek mellett is lehetőség a virtuális gépek egy SAP-rendszer elválasztása három rendelkezésre állási csoportokba.
+* Minden egyes réteg (például adatbázis-kezelő, ascs rendszerbe fut be, az alkalmazáskiszolgálók) egy dedikált rendelkezésre állási csoportot kell használnia.
 * Egy SAP-rendszer DBMS-példányok futó összes virtuális gép egy rendelkezésre állási csoportban vannak. Feltételezzük, hogy nincs-e egynél több virtuális gép DBMS példányok esetében a rendszer natív adatbázis-kezelő rendelkezésre állással használják a szolgáltatásokat, például az SQL Server AlwaysOn- vagy Oracle Data Guard óta.
 * Az adatbázis-kezelő rendszert futtató összes virtuális gép saját tárfiókot használni. Adathoz és naplófájlhoz az adatbázis-kezelő a rendszer szinkronizálja az adatokat az adatbázis-kezelő magas rendelkezésre állású funkciókat használja egy másik tárfiókba replikálja egyik tárfiókból. Egy tárfiók elérhetetlensége egy SQL Windows fürtcsomópont, de nem a teljes SQL Server szolgáltatás elérhetetlensége miatt.
 * (A) SCS példányhoz egy SAP-rendszer futó összes virtuális gép egy rendelkezésre állási csoportban vannak. A Windows Server feladatátvételi fürt (WSFC) van konfigurálva, belüli virtuális gépek védelme érdekében a (A) SCS példányhoz.

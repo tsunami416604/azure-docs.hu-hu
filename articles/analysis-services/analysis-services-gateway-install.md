@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 09/07/2018
+ms.date: 09/10/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 89b21af5303afc2082d3d56ddb9e894f3ae4c4b8
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 1ef5d51db34e0d0a947a4d6ba6c7e614b1ac3384
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44158423"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44348888"
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>Telepítse és konfigurálja a helyszíni adatátjáró
 Akkor ugyanabban a régióban egy vagy több Azure Analysis Services-kiszolgálót a helyszíni adatforrásokhoz kapcsolódik, egy helyszíni adatátjáróra szükség. Az átjáró kapcsolatos további információkért lásd: [a helyszíni adatátjáró](analysis-services-gateway.md).
@@ -35,9 +35,9 @@ Akkor ugyanabban a régióban egy vagy több Azure Analysis Services-kiszolgál�
 * Amikor a telepítés során, az átjáró regisztrálása az Azure-ral az alapértelmezett régió az előfizetés van kiválasztva. Választhat egy másik régióban. Ha több régióban a kiszolgálók, telepítenie kell egy átjárót, minden olyan régió esetében. 
 * Az átjáró nem telepíthető tartományvezérlőre.
 * Csak egy átjáró egyetlen számítógépre telepíthető.
-* Alapértelmezés szerint az átjáró NT SERVICE\PBIEgwService fiókot használja, jelentkezzen be. Másik fiók beállítása során, vagy a szolgáltatások adható meg. Ellenőrizze, hogy a csoportházirend-beállítások lehetővé teszik, hogy a szolgáltatás fiók rendelkezzen a bejelentkezés szolgáltatás jogosultságokkal.
 * Telepítse az átjárót olyan számítógépre, amely továbbra is megtalálható, és nem lép alvó állapotba.
 * Ne telepítse az átjáró egy a hálózat vezeték nélkül csatlakozó számítógépen. Is csökkenteni kell a teljesítményt.
+* Az átjáró telepítésekor a számítógépre bejelentkezett felhasználói fiók kell rendelkeznie napló, szolgáltatás-jogosultságokkal. Ha a telepítés befejeződött, a helyszíni adatátjáró szolgáltatás szolgáltatásként jelentkezzen be az NT SERVICE\PBIEgwService fiókot használja. Telepítés befejezése után egy másik fiókot telepítés során vagy a szolgáltatások adható meg. Ellenőrizze, hogy a csoportházirend-beállítások lehetővé teszik, hogy a fiók be van jelentkezve a következővel, telepítésekor és a választott fiók is, hogy szolgáltatás jogosultságokat.
 * Jelentkezzen be Azure-fiókkal ugyanabban az Azure AD-ben [bérlői](https://msdn.microsoft.com/library/azure/jj573650.aspx#BKMK_WhatIsAnAzureADTenant) az előfizetést, az átjáró regisztrálja. Az Azure B2B (vendég) fiókok nem támogatottak, telepítése és a egy átjáró regisztrálása során.
 * Ha az adatforrásokat egy Azure virtuális hálózaton (VNet), konfigurálnia kell a [AlwaysUseGateway](analysis-services-vnet-gateway.md) kiszolgáló tulajdonság.
 * Az itt ismertetett (egyesített) átjáró nem támogatott az Azure Government, Azure Germany és Azure China szuverén régiók. Használat **dedikált helyszíni átjáró az Azure Analysis Services**, a kiszolgáló telepített **gyors üzembe helyezés** a portálon. 
@@ -79,7 +79,7 @@ Annak érdekében, hogy az átjáró erőforrás létrehozása az Azure-ban, reg
 ## <a name="create-resource"></a>Hozzon létre egy Azure-átjáró-erőforrást
 Telepítve van, és az átjáró regisztrálása után kell átjáró erőforrás létrehozása az Azure-előfizetésében. Jelentkezzen be az Azure-ban a fiók is, ha az átjáró regisztrálása.
 
-1. Az Azure Portalon, kattintson a **hozzon létre egy új szolgáltatást** > **vállalati integráció** > **a helyszíni adatátjáró**  >   **Hozzon létre**.
+1. Az Azure Portalon, kattintson a **erőforrás létrehozása** > **integrációs** > **a helyszíni adatátjáró**.
 
    ![Hozzon létre egy átjáró-erőforrást](media/analysis-services-gateway-install/aas-gateway-new-azure-resource.png)
 

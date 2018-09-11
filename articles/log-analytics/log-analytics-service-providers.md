@@ -15,19 +15,19 @@ ms.topic: conceptual
 ms.date: 07/05/2018
 ms.author: meirm
 ms.component: na
-ms.openlocfilehash: ad0a3b8e0ee5f1114ea1db95cfe2f4176b8e2ddb
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 7e555eb2618dbebf939fe0ab2f313b88299cd2d0
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37931990"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44346202"
 ---
 # <a name="log-analytics-for-service-providers"></a>A log Analytics, a szolgáltatók számára
 A log Analytics segítségével a felügyelt szolgáltatóknak (MSP), a nagyobb vállalatok, független szoftverszállítók (ISV-k) és üzemeltetési szolgáltatók az ügyfél helyszíni vagy felhőalapú infrastruktúrában lévő kiszolgálók kezelése és figyelése. 
 
 A nagyobb cégeknek is megoszthatja számos Hasonlóságok szolgáltatók, különösen akkor, ha van egy központi informatikai csoportját, amelyek kezeléséért felelős informatikai számos különböző üzleti egységek számára. Az egyszerűség kedvéért a jelen dokumentum kifejezést használja *szolgáltató* , de ugyanazokat a funkciókat is vállalatok és más ügyfelek számára érhető el.
 
-Partnerek és szolgáltatók, akik részét képezik, a [Cloud Solution Provider (CSP)](https://partner.microsoft.com/Solutions/cloud-reseller-overview) program, a Log Analytics az elérhető az Azure-szolgáltatások egyik [Azure CSP-előfizetésekben](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview). 
+A partnerek és szolgáltatók, akik részei, a [Cloud Solution Provider (CSP)](https://partner.microsoft.com/Solutions/cloud-reseller-overview) program, a Log Analytics az elérhető az Azure-szolgáltatások egyik [Azure CSP-előfizetésekben](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview). 
 
 ## <a name="architectures-for-service-providers"></a>A szolgáltatók számára architektúrák
 
@@ -37,34 +37,34 @@ Nincsenek három lehetséges architektúrák szolgáltatók Log Analytics-munkat
 
 ### <a name="1-distributed---logs-are-stored-in-workspaces-located-in-the-customers-tenant"></a>1. Elosztott - naplók vannak tárolva az ügyfél-bérlőben található munkaterületek 
 
-Ebben az architektúrában a munkaterület az ügyfél-bérlőben, hogy az ügyfél a naplókhoz használt van telepítve. A service provider rendszergazdái hozzáférhetnek a munkaterület használatával [Azure Active Directory vendégfelhasználók (B2B)](https://docs.microsoft.com/en-us/azure/active-directory/b2b/what-is-b2b). A szolgáltatást nyújtó rendszergazdája lesz, váltson át az ügyfél könyvtárat férhetnek hozzá ezekhez a munkaterületekhez, az Azure Portalon.
+Ebben az architektúrában a munkaterület az ügyfél-bérlőben, hogy az ügyfél a naplókhoz használt van telepítve. A service provider rendszergazdái hozzáférhetnek a munkaterület használatával [Azure Active Directory vendégfelhasználók (B2B)](https://docs.microsoft.com/en-us/azure/active-directory/b2b/what-is-b2b). A service provider rendszergazdák kell váltania, az ügyfél Directory férhetnek hozzá ezekhez a munkaterületekhez, az Azure Portalon.
 
 Ez az architektúra előnyei a következők:
 * Az ügyfél a naplók használata a saját hozzáférését kezelheti [szerepköralapú hozzáférés-](https://docs.microsoft.com/en-us/azure/role-based-access-control/overview).
 * Minden ügyfél saját munkaterület megőrzésére és az adatok kapacitástól különböző beállítással is rendelkezhetnek.
 * Az ügyfelek közötti elkülönítés szabályozási és a megfelelőség érdekében.
 * Minden munkaterülethez a díja az ügyfél-előfizetés be lesz állítva.
-* Az összes típusú erőforrások, nem csak az ügynök-alapú naplók gyűjthetők össze. Ha például az Azure-naplózás.
+* Az összes típusú erőforrások, nem csak az ügynök-alapú naplók gyűjthetők össze. Ha például az Azure vizsgálati naplók.
 
 Ez az architektúra a hátrányai:
-* Nagy számú vevő bérlők egyszerre kezelheti a service provider nehezebben.
-* Service provider rendszergazdák rendelkeznek ki kell építeni az ügyfél-címtár.
+* Nagy számú vevő bérlők egyszerre kezelheti a szolgáltató nehezebb.
+* Szolgáltatás-rendszergazdák szolgáltató kell építhető ki a könyvtárat.
 * A szolgáltató nem adatainak elemzését az ügyfeleinek.
 
-### <a name="2-central---logs-are-stored-in-workspace-located-in-the-service-provider-tenant"></a>2. Közép - naplók a service provider bérlőben található munkaterület vannak tárolva.
+### <a name="2-central---logs-are-stored-in-a-workspace-located-in-the-service-provider-tenant"></a>2. Közép - naplók a service provider bérlőben található munkaterület vannak tárolva.
 
 Ebben az architektúrában a naplók nem tárolódnak, a vevő bérlők számára, de csak egy központi helyen belül a szolgáltató előfizetések egyike. Az ügyfél virtuális gépeken telepített ügynökök a naplók elküldése a munkaterület Azonosítójára és a titkos kulcs használatával vannak konfigurálva.
 
 Ez az architektúra előnyei a következők:
-* Nagy mennyiségű kezeléséhez, és integrálhatja őket különböző háttérrendszerekhez, könnyebbé vált.
+* Az ügyfelek nagy számú kezelhet, és integrálhatja őket különböző háttérrendszerekhez, könnyebbé vált.
 * A szolgáltató rendelkezik teljes körű tulajdonjogát a naplókból és a különböző összetevőket, például a functions és a mentett lekérdezések.
-* A szolgáltató ügyfelek összes hajthat végre analytics.
+* A szolgáltató végezhet analytics összes ügyfeleinek.
 
 Ez az architektúra a hátrányai:
 * Ez az architektúra az ügynök-alapú virtuális gép adatai csak az érvényes, nem fedezik, PaaS, SaaS- és az Azure fabric adatforrások.
 * Rögzített adatokat az ügyfelek olyan egységes munkaterületre egyesítésekor között lehet. Ehhez az egyetlen jó módszer, hogy a számítógép teljesen minősített tartománynevét (FQDN) használja, vagy keresztül az Azure-előfizetés azonosítóját. 
 * Minden az ügyfelektől származó összes adatot ugyanabban a régióban, az egyetlen számlán és azonos megőrzési és konfigurációs beállítások tárolódik.
-* Az Azure fabric és a PaaS szolgáltatásokat, mint az Azure Diagnostics és az Azure-naplózás a munkaterületet és az erőforrásnak ugyanabban a bérlőben így ezek nem küldi el a naplókat a központi munkaterület szükséges.
+* Az Azure fabric és a PaaS szolgáltatásokat, mint az Azure Diagnostics és az Azure-Auditnaplók a munkaterületet és az erőforrásnak ugyanabban a bérlőben így ezek nem küldi el a naplókat a központi munkaterület szükséges.
 * Minden ügyfél az összes Virtuálisgép-ügynökök hitelesítése a cental-munkaterülethez a azonos munkaterület Azonosítóját és kulcsát. Nincs más ügyfelek megszakítása nélkül naplók egy adott ügyfél blokkolása módszer.
 
 
@@ -74,7 +74,7 @@ A harmadik architektúra vegyesen a két lehetőség között. A naplók esetén
 
 A központi hely megvalósításához a Log Analytics két lehetőség van:
 
-1. Központi munkaterület: A szolgáltató hozzon létre egy munkaterületet a bérlőben, és a egy parancsfájlt, amelyik a használni a [Query API](https://dev.loganalytics.io/) az a [adatok gyűjtési API](log-analytics-data-collector-api.md) életre az adatokat a különböző munkaterületekhez, ez a központi hely. Egy másik lehetőség, eltérő parancsfájl [Azure Logic Apps](https://docs.microsoft.com/en-us/azure/logic-apps/logic-apps-overview).
+1. Központi munkaterület: A szolgáltató hozzon létre egy munkaterületet a bérlőben, és a egy parancsfájlt, amelyik a használni a [Query API](https://dev.loganalytics.io/) az a [adatok gyűjtési API](log-analytics-data-collector-api.md) életre az adatokat a különböző munkaterületekhez, ez a központi hely. Egy másik lehetőség, a parancsfájl nem [Azure Logic Apps](https://docs.microsoft.com/en-us/azure/logic-apps/logic-apps-overview).
 
 2. Power bi-ban egy központi helyet: Ha a különböző munkaterületekhez rájuk a Log Analytics integrációjával adatok exportálása Power BI működhet a központi helyet és [Power BI](log-analytics-powerbi.md). 
 

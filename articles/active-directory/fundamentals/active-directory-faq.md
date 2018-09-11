@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 12/14/2017
 ms.author: lizross
-ms.openlocfilehash: 419b5d480ebd1f978eb2a870231d151b549b25ea
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: cc9b5810085d3300861735a95a94e577bf61d70e
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42055747"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44346049"
 ---
 # <a name="azure-active-directory-faq"></a>Azure Active Directory – gyakori kérdések
 Az Azure Active Directory (Azure AD) egy átfogó szolgáltatott identitási (IDaaS) megoldás, amely az identitások, a hozzáférés-kezelés és a biztonság minden szempontját lefedi.
@@ -48,14 +48,13 @@ A fizetős Azure AD szolgáltatások, például az Enterprise Mobility + Securit
 
 - - -
 
-**K: Mi a különbség az előfizetés-rendszergazda és a címtárrendszergazda között?**
+**K: Mi a címtárrendszergazda között tulajdonos és a globális rendszergazda?**
 
-**V:** Alapértelmezés szerint Önhöz az előfizetés-rendszergazda szerepkör van rendelve az Azure-ba történő regisztráláskor. Az előfizetés-rendszergazda használhat egy Microsoft-fiókot vagy egy munkahelyi és iskolai fiókot abból a címtárból, amelyhez az Azure-előfizetés társítva van.  Ez a szerepkör jogosult szolgáltatások kezelésére az Azure Portalon.
+**V:** alapértelmezés szerint a személy, aki Azure-előfizetésre regisztrál az Azure-erőforrások tulajdonosi szerepkör van rendelve. Egy olyan tulajdonost Microsoft-fiók vagy a címtárból, amelyhez az Azure-előfizetés társítva van egy munkahelyi vagy iskolai fiókot használhat.  Ez a szerepkör jogosult szolgáltatások kezelésére az Azure Portalon.
 
-Ha másoknak is ugyanezzel az előfizetéssel kell bejelentkezniük és elérniük a szolgáltatásokat, társadminisztrátorként felveheti őket. Ez a szerepkör ugyanazokkal a hozzáférési jogosultságokkal rendelkezik, mint a szolgáltatás-rendszergazda, de nem módosíthatja az előfizetések és az Azure-címtárak közötti társítást.  Az előfizetés-rendszergazdákról további információért lásd: [Azure-rendszergazdai szerepkörök felvétele vagy módosítása](https://docs.microsoft.com/azure/billing/billing-add-change-azure-subscription-administrator) és[Hogyan kapcsolódnak az Azure-előfizetések az Azure Active Directory-hoz?](active-directory-how-subscriptions-associated-directory.md).
+Ha másoknak is kell bejelentkezniük és elérniük a szolgáltatásokat az ugyanahhoz az előfizetéshez, hozzárendelheti azokat a megfelelő [beépített szerepkör](../../role-based-access-control/built-in-roles.md). További információkért lásd: [rbac-RÓL és az Azure portal-hozzáférés kezelése](../../role-based-access-control/role-assignments-portal.md).
 
-
-Az Azure AD különböző rendszergazdai szerepkörökkel rendelkezik a címtárral és az identitással kapcsolatos funkciók kezeléséhez.  Ezek a rendszergazdák hozzáférnek az Azure Portal vagy a klasszikus Azure portál különböző szolgáltatásaihoz. A rendszergazda szerepköre határozza meg, hogy mit tehet, például létrehozhatja vagy szerkeszthet-e felhasználókat, hozzárendelhet-e másokhoz rendszergazdai szerepköröket, visszaállíthatja-e a felhasználói jelszavakat, kezelheti-e a felhasználói licenceket, vagy kezelheti-e a tartományokat.  Az Azure AD címtárrendszergazdáival és azok szerepköreivel kapcsolatos tovább információkért lásd: [Rendszergazdai szerepkörök hozzárendelése az Azure Active Directoryban](../users-groups-roles/directory-assign-admin-roles.md).
+Alapértelmezés szerint az Azure-előfizetésre feliratkozó személy van rendelve a címtár globális rendszergazdai szerepkörrel. A globális rendszergazda az összes Azure AD-címtár funkciók hozzáféréssel rendelkezik. Az Azure AD különböző rendszergazdai szerepköröket a címtárral és az identitással kapcsolatos funkciók kezeléséhez rendelkezik. Ezek a rendszergazdák különböző funkciókhoz is hozzáférést kap az Azure Portalon. A rendszergazda szerepkör meghatározza, hogy mit tehet, például a létrehozása vagy szerkesztése a felhasználók, rendszergazdai szerepköröket hozzárendelni más, felhasználók új jelszavainak létrehozására, felhasználói licencek kezelése vagy tartományok kezelése.  További információ az Azure AD címtárrendszergazdáival és azok szerepköreivel: [felhasználó hozzárendelése az Azure Active Directory rendszergazdai szerepkörök](active-directory-users-assign-role-azure-portal.md) és [rendszergazdai szerepkörök hozzárendelése az Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md).
 
 Ezenkívül a fizetős Azure AD szolgáltatások, például az Enterprise Mobility + Security, átfogó vállalati méretű felügyeleti és biztonsági megoldásokkal egészítenek ki más webes szolgáltatásokat, például az Office 365-öt és a Microsoft Azure-t.
 
@@ -163,7 +162,7 @@ Az előre integrált alkalmazások teljes listájáért lásd: [Active Directory
 
 További információkért lásd:
 
-* [Egyszeri bejelentkezés konfigurálása az Azure Active Directory alkalmazáskatalógusában nem szereplő alkalmazásokhoz](../application-config-sso-how-to-configure-federated-sso-non-gallery.md)
+* [Egyszeri bejelentkezés konfigurálása az Azure Active Directory alkalmazáskatalógusában nem szereplő alkalmazásokhoz](../manage-apps/configure-federated-single-sign-on-non-gallery-applications.md)
 * [SCIM használata a felhasználók és csoportok automatikus üzembe helyezésének engedélyezéséhez az Azure Active Directoryból az alkalmazásokba](../manage-apps/use-scim-to-provision-users-and-groups.md)
 
 - - -
@@ -208,7 +207,7 @@ További információkért lásd: [Az Office 365 és az Azure Active Directoryho
 
 **V:** Az Azure AD-vel automatizálhatja a felhasználói identitások létrehozását, karbantartását és eltávolítását számos népszerű felhőalapú SaaS alkalmazásban.
 
-További információ: [A felhasználókiépítés és -megszüntetés automatizálása a SaaS-alkalmazásokban az Azure Active Directoryval](../active-directory-saas-app-provisioning.md).
+További információ: [A felhasználókiépítés és -megszüntetés automatizálása a SaaS-alkalmazásokban az Azure Active Directoryval](../manage-apps/user-provisioning.md).
 
 - - -
 **K: Állíthatok be biztonságos LDAP-kapcsolatot az Azure AD-vel?**

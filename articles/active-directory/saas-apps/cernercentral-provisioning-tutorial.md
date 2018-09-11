@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Cerner központi konfigurálása az Azure Active Directoryval automatikus felhasználólétesítés |} Microsoft Docs'
-description: 'Útmutató: Azure Active Directory konfigurálása automatikusan rendelkezni felhasználóknak, hogy a Résztvevőlista Cerner közép-India'
+title: 'Oktatóanyag: Felhasználók automatikus átadása az Azure Active Directoryval Cerner központi konfigurálása |} A Microsoft Docs'
+description: Ismerje meg az Azure Active Directory konfigurálása az Automatikus kiépítés felhasználóknak, hogy a Résztvevőlista Cerner közép-India.
 services: active-directory
 documentationcenter: ''
 author: asmalser-msft
@@ -15,124 +15,124 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser-msft
-ms.openlocfilehash: 694274abb9a762bc6ca6309cbd56b0eb65bb5a5e
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: bc215061d5f2f139c5912f29f709346cb681ee86
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36228781"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44346631"
 ---
-# <a name="tutorial-configure-cerner-central-for-automatic-user-provisioning"></a>Oktatóanyag: Automatikus felhasználólétesítés Cerner központi konfigurálása
+# <a name="tutorial-configure-cerner-central-for-automatic-user-provisioning"></a>Oktatóanyag: Felhasználók automatikus átadása Cerner központi konfigurálása
 
-Ez az oktatóanyag célja mutatjuk be, a lépéseket kell elvégeznie a Cerner központi és az Azure AD automatikus kiépítése és leépíti a felhasználói fiókok Azure ad-egy felhasználó Résztvevőlista Cerner közép-India. 
+Ez az oktatóanyag célja a megjelenítése, hogy a lépéseket kell elvégeznie a Cerner központi és az Azure AD automatikus kiépítésének és megszüntetésének felhasználói fiókok Azure AD-ből egy felhasználó a Résztvevőlista Cerner közép-India. 
 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ebben az oktatóanyagban leírt forgatókönyv feltételezi, hogy már rendelkezik a következő elemek:
+Az ebben az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy Ön már rendelkezik a következőkkel:
 
-*   Az Azure Active Directory-bérlő
-*   A Cerner központi bérlő 
+*   Egy Azure Active Directory-bérlő
+*   A bérlő egy Cerner közép-India 
 
 > [!NOTE]
-> Az Azure Active Directory használatával Cerner központi integrálható a [SCIM](http://www.simplecloud.info/) protokoll.
+> Az Azure Active Directory használatával Cerner központi integrálható a [SCIM](http://www.simplecloud.info/) protokollt.
 
-## <a name="assigning-users-to-cerner-central"></a>Felhasználók hozzárendelése Cerner központi
+## <a name="assigning-users-to-cerner-central"></a>Felhasználók hozzárendelése Cerner közép-India
 
-Az Azure Active Directory egy fogalom, más néven "hozzárendeléseket" használ annak meghatározásához, hogy mely felhasználók kell kapnia a kiválasztott alkalmazásokhoz való hozzáférés. Automatikus fiók felhasználókiépítése keretében csak a felhasználók és csoportok számára "rendelt" az Azure AD alkalmazás szinkronizálva. 
+Az Azure Active Directory "-hozzárendelések" nevű fogalma használatával határozza meg, hogy mely felhasználók kell kapnia a kiválasztott alkalmazásokhoz való hozzáférés. Felhasználók automatikus fióklétesítés kontextusában csak a felhasználók és csoportok rendelt "" az Azure AD-alkalmazáshoz való szinkronizálódnak. 
 
-A létesítési szolgáltatás engedélyezése és konfigurálása, előtt meg kell határoznia, mely felhasználók és/vagy az Azure AD-csoportok határoz meg a felhasználók, akik Cerner központi elérésére. Ha úgy döntött, itt utasításokat követve hozzárendelheti ezek a felhasználók Cerner központi:
+A kiépítési szolgáltatás engedélyezése és konfigurálása, mielőtt, meg kell határoznia, melyik felhasználók, illetve a csoportok az Azure ad-ben a felhasználók, akik hozzáférhetnek a Cerner központi jelölik. Ha úgy döntött, az itt leírt utasításokat követve hozzárendelheti ezeket a felhasználókat Cerner központi:
 
 [Egy felhasználó vagy csoport hozzárendelése egy vállalati alkalmazás](../manage-apps/assign-user-or-group-access-portal.md)
 
 ### <a name="important-tips-for-assigning-users-to-cerner-central"></a>Felhasználók hozzárendelése Cerner központi fontos tippek
 
-*   Javasoljuk, hogy egyetlen Azure AD-felhasználó a kiépítési konfigurációjának tesztelése rendelendő Cerner központi. További felhasználók és/vagy csoportok később is rendelhető.
+*   Javasoljuk, hogy egyetlen Azure AD-felhasználót az üzembe helyezési konfiguráció teszteléséhez Cerner központi rendelni. További felhasználók és csoportok később is rendelhető.
 
-* Kezdeti tesztelés befejezése után egy-egy felhasználóhoz, Cerner központi azt javasolja, hogy hozzárendelése a teljes listát a felhasználók bármely Cerner megoldás (nem csak Cerner központi) eléréséhez szánt Cerner tartozó felhasználói Résztvevőlista kell létrehozni.  Cerner megoldásait használja ki a felhasználók a felhasználói Résztvevőlista listájában.
+* Kezdeti tesztelés befejezése után egy-egy felhasználóhoz a Cerner központi javasolja a hozzárendelése a felhasználók Cerner megoldással (nem csak Cerner központi) elérésére szolgál ki kell építeni a Cerner a felhasználó a Résztvevőlista teljes listáját.  Cerner megoldásait használhatja ezt a felhasználót a Résztvevőlista felhasználóinak listája.
 
-*   Amikor egy felhasználó hozzárendelése Cerner központi, ki kell választania a **felhasználói** szerepkör-hozzárendelés párbeszédpanelen. A "Default hozzáférés" szerepkörrel rendelkező felhasználók kiépítés tartoznak.
+*   Amikor egy felhasználó hozzárendelése Cerner központi, ki kell választania a **felhasználói** szerepkör-hozzárendelés párbeszédpanelen. A "Alapértelmezett hozzáférés" szerepkörrel rendelkező felhasználók ki vannak zárva, a létesítési.
 
 
-## <a name="configuring-user-provisioning-to-cerner-central"></a>A felhasználók átadása a Cerner központi konfigurálása
+## <a name="configuring-user-provisioning-to-cerner-central"></a>Cerner központi történő felhasználókiépítés konfigurálása
 
-Ez a szakasz végigvezeti az Azure AD Cerner központi felhasználói Résztvevőlista Cerner tartozó SCIM felhasználói fiók kiépítése API használatával való kapcsolódás és a létesítési szolgáltatás létrehozása, konfigurálása frissítése, és tiltsa le a hozzárendelt felhasználói fiókok a Cerner központi alapján felhasználók és csoportok hozzárendelése az Azure ad-ben.
+Ez a szakasz végigvezeti az Azure AD-csatlakozás Cerner központi felhasználói Résztvevőlista Cerner az SCIM felhasználói fiók üzembe helyezési API használatával, és konfigurálása az eszközkiépítési szolgáltatás létrehozása, frissítése, és tiltsa le a hozzárendelt felhasználói fiókok Cerner közép-India alapján felhasználók és csoportok hozzárendelése az Azure ad-ben.
 
 > [!TIP]
-> Választhatja azt is, SAML-alapú egyszeri bejelentkezést a Cerner központi engedélyezve van, az utasításoknak a megadott [Azure portal (https://portal.azure.com). Egyszeri bejelentkezés konfigurálható függetlenül automatikus kiépítés, abban az esetben, ha ez a két funkció egészítik ki egymást. További információkért lásd: a [Cerner központi egyszeri bejelentkezés az oktatóanyag](cernercentral-tutorial.md).
+> Előfordulhat, hogy meg Cerner központi SAML-alapú egyszeri bejelentkezés engedélyezve, a biztonsági utasítások megadott [az Azure portal (https://portal.azure.com). Egyszeri bejelentkezés konfigurálható az Automatikus kiépítés függetlenül ellenére, hogy ezen két funkció kiegészíti egymást. További információkért lásd: a [Cerner központi egyszeri bejelentkezéses oktatóanyag](cernercentral-tutorial.md).
 
 
-### <a name="to-configure-automatic-user-account-provisioning-to-cerner-central-in-azure-ad"></a>Konfigurálása automatikus felhasználói fiók kiépítés Cerner központi Azure AD-ben:
+### <a name="to-configure-automatic-user-account-provisioning-to-cerner-central-in-azure-ad"></a>Konfigurálása automatikus felhasználói fiók kiépítése Cerner középső régiója, az Azure ad-ben:
 
 
-Ahhoz, hogy a felhasználói fiókok Cerner központi telepítéséhez, szüksége lesz egy Cerner központi rendszer fiókot kérhetnek Cerner, és létrehozzon egy OAuth tulajdonosi jogkivonatot, amely az Azure AD használatával Cerner tartozó SCIM végponthoz kapcsolódni. Ajánlott továbbá, hogy az integrációs végezhető el egy Cerner védőfal mögötti környezet üzemi környezetben üzembe helyezése előtt.
+Felhasználói fiókok Cerner központi üzembe helyezéséhez, szüksége Cerner Cerner központi rendszerfiók kérhet, és hozzon létre egy OAuth tulajdonosi jogkivonat, amely az Azure AD használható Cerner az SCIM-végponthoz csatlakozik. Emellett javasoljuk, hogy az integrációs végezhető el egy Cerner próbakörnyezetben éles környezetben való üzembe helyezés előtt.
 
-1.  Az első lépés annak a személynek a Cerner kezelése érdekében, és az Azure AD-integrációs kell CernerCare-fiókkal, amely utasítások végrehajtásához szükséges dokumentáció eléréséhez szükséges. Ha szükséges, használja az alábbi URL-címek CernerCare fiókokat létrehozni minden esetben környezetben.
+1.  Az első lépés a személyek a Cerner kezelésének biztosítása érdekében, és az Azure AD-integrációs rendelkezik CernerCare-fiókkal, amely utasítások végrehajtásához szükséges dokumentáció eléréséhez szükséges. Ha szükséges, használja az alábbi URL-címek CernerCare fiókok létrehozásához minden esetben környezetben.
 
-   * Védőfal:  https://sandboxcernercare.com/accounts/create
+   * A védőfal:  https://sandboxcernercare.com/accounts/create
 
-   * Éles:  https://cernercare.com/accounts/create  
+   * Éles környezetben:  https://cernercare.com/accounts/create  
 
-2.  A következő rendszerfiók léteznie kell az Azure AD. Az alábbi utasításokat követve a védőfal és éles környezetekhez rendszerfiók kérelem.
+2.  Ezután a rendszer fiókot kell létrehoznia az Azure ad. Kérjen egy rendszer-fiókot a védőfal vagy éles környezetben használja az alábbi utasításokat.
 
-   * Útmutatás:  https://wiki.ucern.com/display/CernerCentral/Requesting+A+System+Account
+   * Utasítások:  https://wiki.ucern.com/display/CernerCentral/Requesting+A+System+Account
 
-   * Védőfal: https://sandboxcernercentral.com/system-accounts/
+   * A védőfal: https://sandboxcernercentral.com/system-accounts/
 
-   * Éles:  https://cernercentral.com/system-accounts/
+   * Éles környezetben:  https://cernercentral.com/system-accounts/
 
-3.  Ezt követően készítse el az OAuth tulajdonosi jogkivonat minden rendszer fiók. Ehhez kövesse az alábbi utasításokat.
+3.  Következő lépésként hozza létre az OAuth tulajdonosi jogkivonat minden rendszer fiókhoz. Ehhez kövesse az alábbi utasításokat.
 
-   * Útmutatás:  https://wiki.ucern.com/display/public/reference/Accessing+Cerner%27s+Web+Services+Using+A+System+Account+Bearer+Token
+   * Utasítások:  https://wiki.ucern.com/display/public/reference/Accessing+Cerner%27s+Web+Services+Using+A+System+Account+Bearer+Token
 
-   * Védőfal: https://sandboxcernercentral.com/system-accounts/
+   * A védőfal: https://sandboxcernercentral.com/system-accounts/
 
-   * Éles:  https://cernercentral.com/system-accounts/
+   * Éles környezetben:  https://cernercentral.com/system-accounts/
 
-4. Végezetül beszerzése szükséges felhasználói Résztvevőlista tartomány azonosítók Cerner a konfigurálás befejezéséhez a védőfal mind az üzemi környezetben. Ez beszerzésére vonatkozó további információkért lásd:: https://wiki.ucern.com/display/public/reference/Publishing+Identity+Data+Using+SCIM. 
+4. Végül kell beszerezni a Résztvevőlista tartomány felhasználóazonosító Cerner konfigurálásának befejezéséhez az védőfal és az éles környezetekhez. Beszerezni az ennek módjáról további információkért lásd: https://wiki.ucern.com/display/public/reference/Publishing+Identity+Data+Using+SCIM. 
 
-5. Azure AD-felhasználói fiókok létesítése Cerner most konfigurálhatja. Jelentkezzen be a [Azure-portálon](https://portal.azure.com), és keresse meg a **Azure Active Directory > Vállalati alkalmazások > összes alkalmazás** szakasz.
+5. Most már Azure AD-felhasználói fiókok kiépítése Cerner konfigurálhatja. Jelentkezzen be a [az Azure portal](https://portal.azure.com), és keresse meg a a **Azure Active Directory > Vállalati alkalmazások > minden alkalmazás** szakaszban.
 
-6. Ha már konfigurált Cerner központi egyszeri bejelentkezést, keresse meg a példányát használja a keresőmezőt Cerner központi. Máskülönben válassza **Hozzáadás** keresse meg a **Cerner központi** az alkalmazás katalógusában. Válassza ki a Cerner központi a keresési eredmények közül, és adja hozzá az alkalmazások listáját.
+6. Ha már konfigurált Cerner központi az egyszeri bejelentkezés, a példány Cerner közép keresési mező használatával keresése. Ellenkező esetben válassza **Hozzáadás** és keressen rá a **Cerner központi** az alkalmazás-katalógusában. A keresési eredmények közül válassza ki a Cerner központi, és adja hozzá az alkalmazások listáját.
 
-7.  Jelölje ki a Cerner központi példányát, majd válassza ki a **kiépítési** fülre.
+7.  Válassza ki azt a példányt Cerner közép, majd válassza ki a **kiépítési** fülre.
 
-8.  Állítsa be a **kiépítési üzemmódját** való **automatikus**.
+8.  Állítsa be a **Kiépítési mód** való **automatikus**.
 
-   ![Kiépítés Cerner központi](./media/cernercentral-provisioning-tutorial/Cerner.PNG)
+   ![Kiépítés Cerner közép-India](./media/cernercentral-provisioning-tutorial/Cerner.PNG)
 
-9.  Töltse ki a következő mezőket a **rendszergazdai hitelesítő adataival**:
+9.  Töltse ki a következő mezőket alatt **rendszergazdai hitelesítő adataival**:
 
-   * Az a **bérlői URL-cím** mezőbe írja be az alábbi formátumban "Felhasználói Résztvevőlista-tartományi-azonosító" cseréje a tartomány azonosítója #4. lépésben beszerzett URL.
+   * Az a **bérlői URL-cím** mezőbe írjon be egy URL-címet az alábbi formátumban "Felhasználói Osztálynévjegyzék-tartomány-azonosító" cserélje le a #4. lépésében beszerzett tartomány azonosítója.
 
-> Védőfal: https://user-roster-api.sandboxcernercentral.com/scim/v1/Realms/User-Roster-Realm-ID/ 
+> A védőfal: https://user-roster-api.sandboxcernercentral.com/scim/v1/Realms/User-Roster-Realm-ID/ 
 
-> Éles: https://user-roster-api.cernercentral.com/scim/v1/Realms/User-Roster-Realm-ID/ 
+> Éles környezetben: https://user-roster-api.cernercentral.com/scim/v1/Realms/User-Roster-Realm-ID/ 
 
-   * Az a **titkos Token** mezőben adja meg a #3. lépésében létrehozott OAuth tulajdonosi jogkivonatot, és kattintson a **kapcsolat tesztelése**.
+   * Az a **titkos jogkivonat** mezőben adja meg a #3. lépésben létrehozott OAuth tulajdonosi jogkivonat, és kattintson a **kapcsolat tesztelése**.
 
-   * A portál upperright oldalán egy sikeres következő értesítésnek kell megjelennie.
+   * A portál eddig: upperright oldalán kell megjelennie a sikeres címtármódosítást jelző értesítés.
 
-10. Adja meg az e-mail címet vagy egy csoport, az üzembe helyezési hiba értesítéseket kapjanak a **értesítő e-mailt** mezőben, majd jelölje be az alábbi jelölőnégyzetet.
+10. Adja meg az e-mail-címét egy személyt vagy csoportot, amelyre az üzembe helyezési hiba értesítéseket szeretné kapni a **értesítő e-mailt** mezőben, majd jelölje be az alábbi jelölőnégyzetet.
 
 11. Kattintson a **Save** (Mentés) gombra. 
 
-12. Az a **attribútum-leképezésekhez** szakaszban, tekintse át a felhasználói és csoportattribútum Cerner központi az Azure ad-szinkronizálandó. A kiválasztott attribútumok **egyező** tulajdonságok használt a felhasználói fiókok és a frissítési műveletek Cerner központi csoportok kereséséhez. Válassza ki a Mentés gombra a módosítások véglegesítéséhez.
+12. Az a **attribútumleképezések** területen tekintse át a felhasználói és csoportattribútum Cerner központi szinkronizálását az Azure ad-ből. A kiválasztott attribútumok **megfelelést kiváltó** tulajdonságok segítségével megfeleljen a felhasználói fiókok és csoportok Cerner közép-India, a frissítési műveleteket. Válassza ki a Mentés gombra a módosítások véglegesítéséhez.
 
-13. Az Azure AD szolgáltatás a Cerner központi kiépítés engedélyezéséhez módosítsa a **kiépítési állapot** való **a** a a **beállítások** szakasz
+13. Az Azure AD létesítési szolgáltatás a Cerner központi engedélyezéséhez módosítsa a **üzembe helyezési állapotra** való **a** a a **beállítások** szakasz
 
 14. Kattintson a **Save** (Mentés) gombra. 
 
-Ezzel elindítja a kezdeti szinkronizálás bármely felhasználói és/vagy a felhasználók és csoportok szakaszban Cerner központi rendelt csoportok. A kezdeti szinkronizálás végrehajtásához, mint az ezt követő szinkronizálások, körülbelül 40 percenként történik, amíg az Azure AD szolgáltatás kiépítését fut-e hosszabb időt vesz igénybe. Használhatja a **szinkronizálás részleteivel** szakasz figyelemmel az előrehaladást, és hivatkozásokat követve történő rendszerbe állításához tevékenységi naplóit, amelyek ismertetik a Cerner központi app a létesítési szolgáltatás által végzett összes műveletet.
+Ezzel elindítja a kezdeti szinkronizálás, a felhasználók és/vagy a felhasználók és csoportok szakaszban Cerner központi hozzárendelt csoportokat. A kezdeti szinkronizálás végrehajtásához, mint az ezt követő szinkronizálások, amely körülbelül 40 percenként történik, amennyiben az Azure AD létesítési szolgáltatás fut-e több időt vesz igénybe. Használhatja a **szinkronizálás részleteivel** szakasz előrehaladásának figyeléséhez, és kövesse a hivatkozásokat kiépítés tevékenységeket tartalmazó naplók, amelyek leírják a Cerner központi alkalmazásban a kiépítési szolgáltatás által végrehajtott összes műveletet.
 
-Olvassa el az Azure AD-naplók kiépítés módjáról további információkért lásd: [automatikus felhasználói fiók kiépítése jelentések](../active-directory-saas-provisioning-reporting.md).
+Az Azure AD létesítési naplók olvasása további információkért lásd: [-jelentések automatikus felhasználói fiók kiépítése](../manage-apps/check-status-user-account-provisioning.md).
 
 ## <a name="additional-resources"></a>További források
 
 * [Cerner központi: Az Azure AD identity adatok közzététele](https://wiki.ucern.com/display/public/reference/Publishing+Identity+Data+Using+Azure+AD)
-* [Oktatóanyag: Cerner központi konfigurálása egyszeri bejelentkezéshez az Azure Active Directoryval](cernercentral-tutorial.md)
-* [Felhasználói fiók kiépítése vállalati alkalmazások kezelése](../manage-apps/configure-automatic-user-provisioning-portal.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](../manage-apps/what-is-single-sign-on.md)
+* [Oktatóanyag: Az egyszeri bejelentkezés az Azure Active Directory konfigurálása a Cerner közép-India](cernercentral-tutorial.md)
+* [Felhasználói fiók kiépítése a vállalati alkalmazások kezelése](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>További lépések
-* [Ismerje meg, tekintse át a naplók és jelentések készítése a kiépítés tevékenység](https://docs.microsoft.com/azure/active-directory/active-directory-saas-provisioning-reporting).
+* [Tekintse át a naplók és jelentések készítése a kiépítési tevékenység](https://docs.microsoft.com/azure/active-directory/active-directory-saas-provisioning-reporting).
