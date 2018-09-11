@@ -25,7 +25,9 @@
 ### [A konfiguráció ellenőrzése](hana-installation.md)
 ### [Minta HANA-telepítés](hana-example-installation.md)
 ## [Magas rendelkezésre állás és vészhelyreállítás](hana-overview-high-availability-disaster-recovery.md)
-## [Hibaelhárítás és figyelés](troubleshooting-monitoring.md)
+## Hibaelhárítás és monitorozás
+### [A HLI monitorozása](troubleshooting-monitoring.md)
+### [HANA-oldali monitorozás és hibaelhárítás](hana-monitor-troubleshoot.md)
 ## Útmutató
 ### [Magas rendelkezésre állás beállítása a STONITH használatával](ha-setup-with-stonith.md)
 ### [Az operációs rendszer biztonsági mentése II. típusú termékváltozatokhoz](os-backup-type-ii-skus.md)

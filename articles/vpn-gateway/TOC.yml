@@ -1,231 +1,242 @@
+items:
 - name: A VPN Gateway dokumentációja
   href: index.yml
 - name: Áttekintés
   items:
-    - name: Információk a VPN Gateway-ről
-      href: vpn-gateway-about-vpngateways.md
+  - name: Információk a VPN Gateway-ről
+    href: vpn-gateway-about-vpngateways.md
 - name: Oktatóanyagok
   items:
-    - name: VPN-átjáró létrehozása és kezelése
-      href: vpn-gateway-tutorial-create-gateway-powershell.md
-    - name: S2S VPN-kapcsolatok létrehozása és kezelése
-      href: vpn-gateway-tutorial-vpnconnection-powershell.md
+  - name: VPN-átjáró létrehozása és kezelése
+    href: vpn-gateway-tutorial-create-gateway-powershell.md
+  - name: S2S VPN-kapcsolatok létrehozása és kezelése
+    href: vpn-gateway-tutorial-vpnconnection-powershell.md
 - name: Példák
   items:
-    - name: Azure PowerShell
-      href: powershell-samples.md
+  - name: Azure PowerShell
+    href: powershell-samples.md
 - name: Alapelvek
   items:
-    - name: A VPN Gateway tervezése és kialakítása
-      href: vpn-gateway-plan-design.md
-    - name: További információk a VPN Gateway beállításairól
-      href: vpn-gateway-about-vpn-gateway-settings.md
-    - name: Tudnivalók a VPN-eszközökről
-      href: vpn-gateway-about-vpn-devices.md
-    - name: Információ a kriptográfiai követelményekről
-      href: vpn-gateway-about-compliance-crypto.md
-    - name: A BGP és a VPN Gateway ismertetése
-      href: vpn-gateway-bgp-overview.md
-    - name: Tudnivalók a magas rendelkezésre állású kapcsolatokról
-      href: vpn-gateway-highlyavailable.md
-    - name: Tudnivalók a pont–hely kapcsolatokról
-      href: point-to-site-about.md
-    - name: Tudnivalók a pont–hely VPN-útválasztásról
-      href: vpn-gateway-about-point-to-site-routing.md
+  - name: A VPN Gateway tervezése és kialakítása
+    href: vpn-gateway-plan-design.md
+  - name: További információk a VPN Gateway beállításairól
+    href: vpn-gateway-about-vpn-gateway-settings.md
+  - name: Tudnivalók a VPN-eszközökről
+    href: vpn-gateway-about-vpn-devices.md
+  - name: Információ a kriptográfiai követelményekről
+    href: vpn-gateway-about-compliance-crypto.md
+  - name: A BGP és a VPN Gateway ismertetése
+    href: vpn-gateway-bgp-overview.md
+  - name: Tudnivalók a magas rendelkezésre állású kapcsolatokról
+    href: vpn-gateway-highlyavailable.md
+  - name: Tudnivalók a pont–hely kapcsolatokról
+    href: point-to-site-about.md
+  - name: Tudnivalók a pont–hely VPN-útválasztásról
+    href: vpn-gateway-about-point-to-site-routing.md
 - name: Útmutatók
   items:
-    - name: Helyek közötti kapcsolatok konfigurálása
+  - name: Helyek közötti kapcsolatok konfigurálása
+    items:
+    - name: Azure Portal
+      href: vpn-gateway-howto-site-to-site-resource-manager-portal.md
+    - name: Azure PowerShell
+      href: vpn-gateway-create-site-to-site-rm-powershell.md
+    - name: Azure CLI
+      href: vpn-gateway-howto-site-to-site-resource-manager-cli.md
+  - name: VPN-eszközök konfigurációs szkriptjeinek letöltése
+    href: vpn-gateway-download-vpndevicescript.md
+  - name: Pont–hely kapcsolatok konfigurálása – hitelesítés natív Azure-tanúsítvánnyal
+    items:
+    - name: Pont–hely VPN-kapcsolat konfigurálása
       items:
-        - name: Azure Portal
-          href: vpn-gateway-howto-site-to-site-resource-manager-portal.md
+      - name: Azure Portal
+        href: vpn-gateway-howto-point-to-site-resource-manager-portal.md
+      - name: Azure PowerShell
+        href: vpn-gateway-howto-point-to-site-rm-ps.md
+    - name: P2S-tanúsítványok és -ügyfelek
+      items:
+      - name: Önaláírt tanúsítványok létrehozása
+        items:
         - name: Azure PowerShell
-          href: vpn-gateway-create-site-to-site-rm-powershell.md
-        - name: Azure CLI
-          href: vpn-gateway-howto-site-to-site-resource-manager-cli.md
-    - name: VPN-eszközök konfigurációs szkriptjeinek letöltése
-      href: vpn-gateway-download-vpndevicescript.md
-    - name: Pont–hely kapcsolatok konfigurálása – hitelesítés natív Azure-tanúsítvánnyal
+          href: vpn-gateway-certificates-point-to-site.md
+        - name: Makecert
+          href: vpn-gateway-certificates-point-to-site-makecert.md
+        - name: Linux
+          href: vpn-gateway-certificates-point-to-site-linux.md
+    - name: Ügyféltanúsítványok telepítése
+      href: point-to-site-how-to-vpn-client-install-azure-cert.md
+    - name: A VPN-ügyfél konfigurációs fájljainak létrehozása és telepítése
+      href: point-to-site-vpn-client-configuration-azure-cert.md
+  - name: Pont–hely kapcsolatok konfigurálása – RADIUS hitelesítés
+    items:
+    - name: Pont–hely VPN-kapcsolat konfigurálása
       items:
-        - name: Pont–hely VPN-kapcsolat konfigurálása
-          items:
-            - name: Azure Portal
-              href: vpn-gateway-howto-point-to-site-resource-manager-portal.md
-            - name: Azure PowerShell
-              href: vpn-gateway-howto-point-to-site-rm-ps.md
-        - name: Önaláírt tanúsítványok létrehozása
-          items:
-            - name: Azure PowerShell
-              href: vpn-gateway-certificates-point-to-site.md
-            - name: Makecert
-              href: vpn-gateway-certificates-point-to-site-makecert.md
-        - name: A VPN-ügyfél konfigurációs fájljainak létrehozása és telepítése
-          href: point-to-site-vpn-client-configuration-azure-cert.md
-        - name: Ügyféltanúsítványok telepítése
-          href: point-to-site-how-to-vpn-client-install-azure-cert.md
-    - name: Pont–hely kapcsolatok konfigurálása – RADIUS hitelesítés
+      - name: Azure PowerShell
+        href: point-to-site-how-to-radius-ps.md
+    - name: A VPN-ügyfél konfigurációs fájljainak létrehozása és telepítése
+      href: point-to-site-vpn-client-configuration-radius.md
+    - name: P2S VPN RADIUS-hitelesítés integrálása az NPS-kiszolgálóval
+      href: vpn-gateway-radiuis-mfa-nsp.md
+  - name: Virtuális hálózatok közötti kapcsolatok konfigurálása
+    items:
+    - name: Azure Portal
+      href: vpn-gateway-howto-vnet-vnet-resource-manager-portal.md
+    - name: Azure PowerShell
+      href: vpn-gateway-vnet-vnet-rm-ps.md
+    - name: Azure CLI
+      href: vpn-gateway-howto-vnet-vnet-cli.md
+  - name: Virtuális hálózatok közötti kapcsolat konfigurálása üzemi modellek között
+    items:
+    - name: Azure Portal
+      href: vpn-gateway-connect-different-deployment-models-portal.md
+    - name: Azure PowerShell
+      href: vpn-gateway-connect-different-deployment-models-powershell.md
+  - name: Egyidejű helyek közötti és ExpressRoute-kapcsolatok konfigurálása
+    items:
+    - name: Azure PowerShell
+      href: ../expressroute/expressroute-howto-coexist-resource-manager.md?toc=%2fazure%2fvpn-gateway%2ftoc.json
+  - name: Több helyek közötti kapcsolat konfigurálása
+    items:
+    - name: Azure Portal
+      href: vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md
+  - name: Több házirendalapú VPN-eszköz csatlakoztatása
+    items:
+    - name: Azure PowerShell
+      href: vpn-gateway-connect-multiple-policybased-rm-ps.md
+  - name: IPsec/IKE kapcsolati házirendjeinek konfigurálása
+    items:
+    - name: Azure PowerShell
+      href: vpn-gateway-ipsecikepolicy-rm-powershell.md
+  - name: Magas rendelkezésre állású aktív–aktív kapcsolatok konfigurálása
+    items:
+    - name: Azure PowerShell
+      href: vpn-gateway-activeactive-rm-powershell.md
+  - name: Zónaredundáns virtuális hálózati átjáró létrehozása az Azure Availability Zones szolgáltatásban
+    href: create-zone-redundant-vnet-gateway.md
+  - name: Útválasztás, BGP és virtuális hálózatok közötti társviszony
+    items:
+    - name: BGP konfigurálása egy VPN-átjáró számára
       items:
-        - name: Pont–hely VPN-kapcsolat konfigurálása
-          items:
-            - name: Azure PowerShell
-              href: point-to-site-how-to-radius-ps.md
-        - name: A VPN-ügyfél konfigurációs fájljainak létrehozása és telepítése
-          href: point-to-site-vpn-client-configuration-radius.md
-        - name: P2S VPN RADIUS-hitelesítés integrálása az NPS-kiszolgálóval
-          href: vpn-gateway-radiuis-mfa-nsp.md
-    - name: Virtuális hálózatok közötti kapcsolatok konfigurálása
+      - name: Azure PowerShell
+        href: vpn-gateway-bgp-resource-manager-ps.md
+      - name: Azure CLI
+        href: bgp-how-to-cli.md
+    - name: Kényszerített bújtatás konfigurálása
       items:
-        - name: Azure Portal
-          href: vpn-gateway-howto-vnet-vnet-resource-manager-portal.md
-        - name: Azure PowerShell
-          href: vpn-gateway-vnet-vnet-rm-ps.md
-        - name: Azure CLI
-          href: vpn-gateway-howto-vnet-vnet-cli.md
-    - name: Virtuális hálózatok közötti kapcsolat konfigurálása üzemi modellek között
+      - name: Azure PowerShell
+        href: vpn-gateway-forced-tunneling-rm.md
+      - name: Azure PowerShell (klasszikus)
+        href: vpn-gateway-about-forced-tunneling.md
+    - name: Átjáróval történő adatátvitel konfigurálása virtuális hálózatok közötti társviszonyhoz
+      href: vpn-gateway-peering-gateway-transit.md
+  - name: Helyi hálózati átjáró beállításainak módosítása
+    items:
+    - name: Azure Portal
+      href: vpn-gateway-modify-local-network-gateway-portal.md
+    - name: Azure PowerShell
+      href: vpn-gateway-modify-local-network-gateway.md
+    - name: Azure CLI
+      href: vpn-gateway-modify-local-network-gateway-cli.md
+  - name: Útvonalalapú VPN-átjáró létrehozása
+    items:
+    - name: Azure Portal
+      href: create-routebased-vpn-gateway-portal.md
+    - name: Azure PowerShell
+      href: create-routebased-vpn-gateway-powershell.md
+    - name: Azure CLI
+      href: create-routebased-vpn-gateway-cli.md
+  - name: VPN-átjárókapcsolat ellenőrzése
+    href: vpn-gateway-verify-connection-resource-manager.md
+  - name: VPN-átjáró alaphelyzetbe állítása
+    href: vpn-gateway-resetgw-classic.md
+  - name: VPN Gateway törlése
+    items:
+    - name: Azure Portal
+      href: vpn-gateway-delete-vnet-gateway-portal.md
+    - name: Azure PowerShell
+      href: vpn-gateway-delete-vnet-gateway-powershell.md
+  - name: Átjáró-termékváltozatok (örökölt)
+    href: vpn-gateway-about-skus-legacy.md
+  - name: Külső gyártótól származó VPN-eszközök konfigurálása
+    items:
+    - name: Áttekintés és Azure-konfiguráció
+      href: vpn-gateway-3rdparty-device-config-overview.md
+    - name: 'Minta: Cisco ASA-eszköz (IKEv2/nincs BGP)'
+      href: vpn-gateway-3rdparty-device-config-cisco-asa.md
+  - name: Hibaelhárítás
+    href: vpn-gateway-troubleshoot.md
+    items:
+    - name: Közösség által javasolt VPN- vagy tűzfaleszköz-beállítások
+      href: vpn-gateway-third-party-settings.md
+    - name: VNet- vagy VPN-kapcsolatok konfigurálása és ellenőrzése
+      href: https://support.microsoft.com/help/4032151/configuring-and-validating-vnet-or-vpn-connections
+    - name: VPN virtuális hálózatra irányuló átviteli sebességének ellenőrzése
+      href: vpn-gateway-validate-throughput-to-vnet.md
+    - name: Pont–hely kapcsolatok
       items:
-        - name: Azure Portal
-          href: vpn-gateway-connect-different-deployment-models-portal.md
-        - name: Azure PowerShell
-          href: vpn-gateway-connect-different-deployment-models-powershell.md
-    - name: Egyidejű helyek közötti és ExpressRoute-kapcsolatok konfigurálása
+      - name: Pont–hely kapcsolati problémák
+        href: vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md
+      - name: Pont–hely kapcsolati problémák – Mac OS X-alapú VPN-ügyfél
+        href: vpn-gateway-troubleshoot-point-to-site-osx-ikev2.md
+    - name: Helyek közötti kapcsolatok problémái
       items:
-        - name: Azure PowerShell
-          href: ../expressroute/expressroute-howto-coexist-resource-manager.md?toc=%2fazure%2fvpn-gateway%2ftoc.json
-    - name: Több helyek közötti kapcsolat konfigurálása
-      items:
-        - name: Azure Portal
-          href: vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md
-    - name: Több házirendalapú VPN-eszköz csatlakoztatása
-      items:
-        - name: Azure PowerShell
-          href: vpn-gateway-connect-multiple-policybased-rm-ps.md
-    - name: IPsec/IKE kapcsolati házirendjeinek konfigurálása
-      items:
-        - name: Azure PowerShell
-          href: vpn-gateway-ipsecikepolicy-rm-powershell.md
-    - name: Magas rendelkezésre állású aktív–aktív kapcsolatok konfigurálása
-      items:
-        - name: Azure PowerShell
-          href: vpn-gateway-activeactive-rm-powershell.md
-    - name: Zónaredundáns virtuális hálózati átjáró létrehozása az Azure Availability Zones szolgáltatásban
-      href: create-zone-redundant-vnet-gateway.md
-    - name: 'Útválasztás, BGP és virtuális hálózatok közötti társviszony'
-      items:
-        - name: BGP konfigurálása egy VPN-átjáró számára
-          items:
-            - name: Azure PowerShell
-              href: vpn-gateway-bgp-resource-manager-ps.md
-            - name: Azure CLI
-              href: bgp-how-to-cli.md
-        - name: Kényszerített bújtatás konfigurálása
-          items:
-            - name: Azure PowerShell
-              href: vpn-gateway-forced-tunneling-rm.md
-            - name: Azure PowerShell (klasszikus)
-              href: vpn-gateway-about-forced-tunneling.md
-        - name: Átjáróval történő adatátvitel konfigurálása virtuális hálózatok közötti társviszonyhoz
-          href: vpn-gateway-peering-gateway-transit.md
-    - name: Helyi hálózati átjáró beállításainak módosítása
-      items:
-        - name: Azure Portal
-          href: vpn-gateway-modify-local-network-gateway-portal.md
-        - name: Azure PowerShell
-          href: vpn-gateway-modify-local-network-gateway.md
-        - name: Azure CLI
-          href: vpn-gateway-modify-local-network-gateway-cli.md
-    - name: Útvonalalapú VPN-átjáró létrehozása
-      items:
-        - name: Azure Portal
-          href: create-routebased-vpn-gateway-portal.md
-        - name: Azure PowerShell
-          href: create-routebased-vpn-gateway-powershell.md
-        - name: Azure CLI
-          href: create-routebased-vpn-gateway-cli.md
-    - name: VPN-átjárókapcsolat ellenőrzése
-      href: vpn-gateway-verify-connection-resource-manager.md
-    - name: VPN-átjáró alaphelyzetbe állítása
-      href: vpn-gateway-resetgw-classic.md
+      - name: Helyek közötti kapcsolatok
+        href: vpn-gateway-troubleshoot-site-to-site-cannot-connect.md
+      - name: A helyek közötti kapcsolat időnként megszakad
+        href: vpn-gateway-troubleshoot-site-to-site-disconnected-intermittently.md
+  - name: Klasszikus üzemi modellhez kapcsolódó cikkek
+    items:
+    - name: Hely-hely közötti kapcsolat konfigurálása
+      href: vpn-gateway-howto-site-to-site-classic-portal.md
+    - name: Pont–hely közötti kapcsolat konfigurálása
+      href: vpn-gateway-howto-point-to-site-classic-azure-portal.md
+    - name: Virtuális hálózatok közötti kapcsolat konfigurálása
+      href: vpn-gateway-howto-vnet-vnet-portal-classic.md
+    - name: Kényszerített bújtatás konfigurálása
+      href: vpn-gateway-about-forced-tunneling.md
     - name: VPN Gateway törlése
-      items:
-        - name: Azure Portal
-          href: vpn-gateway-delete-vnet-gateway-portal.md
-        - name: Azure PowerShell
-          href: vpn-gateway-delete-vnet-gateway-powershell.md
-    - name: Átjáró-termékváltozatok (örökölt)
-      href: vpn-gateway-about-skus-legacy.md
-    - name: Külső gyártótól származó VPN-eszközök konfigurálása
-      items:
-        - name: Áttekintés és Azure-konfiguráció
-          href: vpn-gateway-3rdparty-device-config-overview.md
-        - name: 'Minta: Cisco ASA-eszköz (IKEv2/nincs BGP)'
-          href: vpn-gateway-3rdparty-device-config-cisco-asa.md
-    - name: Hibaelhárítás
-      href: vpn-gateway-troubleshoot.md
-      items:
-        - name: Közösség által javasolt VPN- vagy tűzfaleszköz-beállítások
-          href: vpn-gateway-third-party-settings.md
-        - name: VNet- vagy VPN-kapcsolatok konfigurálása és ellenőrzése
-          href: 'https://support.microsoft.com/help/4032151/configuring-and-validating-vnet-or-vpn-connections'
-        - name: VPN virtuális hálózatra irányuló átviteli sebességének ellenőrzése
-          href: vpn-gateway-validate-throughput-to-vnet.md
-        - name: Pont–hely kapcsolatok
-          items:
-            - name: Pont–hely kapcsolati problémák
-              href: vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md
-            - name: Pont–hely kapcsolati problémák – Mac OS X-alapú VPN-ügyfél
-              href: vpn-gateway-troubleshoot-point-to-site-osx-ikev2.md
-        - name: Helyek közötti kapcsolatok problémái
-          items:
-            - name: Helyek közötti kapcsolatok
-              href: vpn-gateway-troubleshoot-site-to-site-cannot-connect.md
-            - name: A helyek közötti kapcsolat időnként megszakad
-              href: vpn-gateway-troubleshoot-site-to-site-disconnected-intermittently.md
-    - name: Klasszikus üzemi modellhez kapcsolódó cikkek
-      items:
-        - name: Hely-hely közötti kapcsolat konfigurálása
-          href: vpn-gateway-howto-site-to-site-classic-portal.md
-        - name: Pont–hely közötti kapcsolat konfigurálása
-          href: vpn-gateway-howto-point-to-site-classic-azure-portal.md
-        - name: Virtuális hálózatok közötti kapcsolat konfigurálása
-          href: vpn-gateway-howto-vnet-vnet-portal-classic.md
-        - name: Kényszerített bújtatás konfigurálása
-          href: vpn-gateway-about-forced-tunneling.md
-        - name: VPN Gateway törlése
-          href: vpn-gateway-delete-vnet-gateway-classic-powershell.md
-        - name: Több helyek közötti kapcsolat konfigurálása
-          href: vpn-gateway-multi-site.md
-        - name: VPN-átjáró konfigurálása
-          href: vpn-gateway-configure-vpn-gateway-mp.md
-        - name: Áttelepítés klasszikusról Resource Manager-alapú környezetbe
-          href: vpn-gateway-classic-resource-manager-migration.md
+      href: vpn-gateway-delete-vnet-gateway-classic-powershell.md
+    - name: Több helyek közötti kapcsolat konfigurálása
+      href: vpn-gateway-multi-site.md
+    - name: VPN-átjáró konfigurálása
+      href: vpn-gateway-configure-vpn-gateway-mp.md
+    - name: Áttelepítés klasszikusról Resource Manager-alapú környezetbe
+      href: vpn-gateway-classic-resource-manager-migration.md
 - name: Referencia
   items:
-    - name: Azure PowerShell
-      href: '/powershell/module/azurerm.network/?view=azurermps-4.0.0#vpn'
-    - name: Azure PowerShell (klasszikus)
-      href: '/powershell/module/azure/?view=azuresmps-3.7.0#networking'
-    - name: REST
-      href: /rest/api/network/virtualnetworkgateways
-    - name: REST (klasszikus)
-      href: 'https://msdn.microsoft.com/library/jj154113'
-    - name: Azure CLI
-      href: /cli/azure/network/vnet-gateway
+  - name: Azure PowerShell
+    href: /powershell/module/azurerm.network/?view=azurermps-4.0.0#vpn
+  - name: Azure PowerShell (klasszikus)
+    href: /powershell/module/azure/?view=azuresmps-3.7.0#networking
+  - name: REST
+    href: /rest/api/network/virtualnetworkgateways
+  - name: REST (klasszikus)
+    href: https://msdn.microsoft.com/library/jj154113
+  - name: Azure CLI
+    href: /cli/azure/network/vnet-gateway
 - name: További források
   items:
-    - name: VPN Gateway – gyakori kérdések
-      href: vpn-gateway-vpn-faq.md
-    - name: Azure-ütemterv
-      href: 'https://azure.microsoft.com/roadmap/?category=networking'
-    - name: Blog
-      href: 'https://azure.microsoft.com/blog/topics/networking'
-    - name: Fórum
-      href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=WAVirtualMachinesVirtualNetwork'
-    - name: Előfizetés- és szolgáltatáskorlátok
-      href: ../azure-subscription-service-limits.md?toc=%2fazure%2fvpn-gateway%2ftoc.json
-    - name: Díjszabás
-      href: 'https://azure.microsoft.com/pricing/details/vpn-gateway'
-    - name: Díjkalkulátor
-      href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: SLA
-      href: 'https://azure.microsoft.com/support/legal/sla'
-    - name: Videók
-      href: 'https://azure.microsoft.com/documentation/videos/index/?services=vpn-gateway'
+  - name: VPN Gateway – gyakori kérdések
+    href: vpn-gateway-vpn-faq.md
+  - name: Azure-ütemterv
+    href: https://azure.microsoft.com/roadmap/?category=networking
+  - name: Blog
+    href: https://azure.microsoft.com/blog/topics/networking
+  - name: Fórum
+    href: https://social.msdn.microsoft.com/Forums/azure/home?forum=WAVirtualMachinesVirtualNetwork
+  - name: Előfizetés- és szolgáltatáskorlátok
+    href: ../azure-subscription-service-limits.md?toc=%2fazure%2fvpn-gateway%2ftoc.json
+  - name: Díjszabás
+    href: https://azure.microsoft.com/pricing/details/vpn-gateway
+  - name: Díjkalkulátor
+    href: https://azure.microsoft.com/pricing/calculator/
+  - name: SLA
+    href: https://azure.microsoft.com/support/legal/sla
+  - name: Videók
+    href: https://azure.microsoft.com/documentation/videos/index/?services=vpn-gateway
+ms.openlocfilehash: 130a20a5ce01b9be1b47050f11cbcea8e354b0a6
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44299321"

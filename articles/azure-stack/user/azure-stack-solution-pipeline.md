@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/04/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 391cc4ca4b34149aeda54a60bfe6f6949e5a379b
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 773acd3a22244403548ef4ce35164291f5c0be7d
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43697747"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44300835"
 ---
 # <a name="tutorial-deploy-apps-to-azure-and-azure-stack"></a>Oktatóanyag: alkalmazások telepítése az Azure és az Azure Stackben
 
@@ -30,7 +30,7 @@ Ismerje meg, hogyan helyezhet üzembe egy alkalmazást az Azure és az Azure Sta
 Ebben az oktatóanyagban egy mintául szolgáló környezetet hozunk létre:
 
 > [!div class="checklist"]
-> * Kód véglegesítése a Visual Studio Team Services (VSTS) tárházhoz alapján új build kezdeményezni.
+> * Kód véglegesítése a az Azure DevOps-szolgáltatásokkal adattár alapján új build kezdeményezni.
 > * A felhasználói tesztelés az Azure globális üzembe helyezhetők az alkalmazást.
 > * A kód továbbítja, tesztelés, üzembe helyezhetők az alkalmazás az Azure Stackhez.
 
@@ -81,30 +81,30 @@ Ez az oktatóanyag feltételezi, hogy néhány alapvető ismeretek az Azure és 
  * Hozzon létre [csomag/ajánlatok](https://docs.microsoft.com/azure/azure-stack/azure-stack-plan-offer-quota-overview) az Azure Stackben.
  * Hozzon létre egy [bérlői előfizetéshez](https://docs.microsoft.com/azure/azure-stack/azure-stack-subscribe-plan-provision-vm) az Azure Stackben.
  * Webalkalmazás létrehozása a bérlői előfizetéshez. Jegyezze fel az új webes alkalmazás URL-CÍMÉT a későbbi használatra.
- * A bérlő előfizetés VSTS virtuális gép üzembe helyezése.
+ * A bérlő előfizetés Azure fejlesztési és üzemeltetési szolgáltatások virtuális gép üzembe helyezése.
 * Adja meg a .NET 3.5 a Windows Server 2016 rendszerképet a virtuális gép (VM). Ez a virtuális gép, egy privát fordító-ügynökhöz az Azure Stack lesz felépítve.
 
 ### <a name="developer-tool-requirements"></a>Fejlesztői eszköz követelményei
 
-* Hozzon létre egy [VSTS munkaterület](https://docs.microsoft.com/vsts/repos/tfvc/create-work-workspaces). A regisztrációs folyamat hoz létre a projekt neve **MyFirstProject**.
-* [Visual Studio 2017 telepítése](https://docs.microsoft.com/visualstudio/install/install-visual-studio) és [jelentkezzen be a vsts-ben](https://www.visualstudio.com/docs/setup-admin/team-services/connect-to-visual-studio-team-services).
+* Hozzon létre egy [Azure fejlesztési és üzemeltetési szolgáltatások munkaterület](https://docs.microsoft.com/azure/devops/repos/tfvc/create-work-workspaces). A regisztrációs folyamat hoz létre a projekt neve **MyFirstProject**.
+* [Visual Studio 2017 telepítése](https://docs.microsoft.com/visualstudio/install/install-visual-studio) és [jelentkezzen be az Azure DevOps-szolgáltatásokkal](https://www.visualstudio.com/docs/setup-admin/team-services/connect-to-visual-studio-team-services).
 * Csatlakozás a projekthez, és [helyben klónozhatja](https://www.visualstudio.com/docs/git/gitquickstart).
 
  > [!Note]
  > Az Azure Stack környezettel kell a megfelelő rendszerképek hírcsatorna-a Windows Server és SQL Server futtatásához. App Service-ben üzembe helyezett is kell rendelkeznie.
 
-## <a name="prepare-the-private-build-and-release-agent-for-visual-studio-team-services-integration"></a>Visual Studio Team Services-integráció előkészítését a saját build és kiadás ügynök
+## <a name="prepare-the-private-azure-pipelines-agent-for-azure-devops-services-integration"></a>A privát Azure folyamatok ügynök előkészítése az Azure DevOps Services integrációja
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-Visual Studio Team Services (VSTS) hitelesíti, szemben az Azure Resource Manager használatával egy egyszerű szolgáltatást. VSTS kell rendelkeznie a **közreműködői** szerepkör erőforrások kiépítése az Azure Stack-előfizetéshez.
+Az Azure DevOps-szolgáltatásokkal szemben az Azure Resource Manager egy egyszerű szolgáltatás használatával hitelesíti magát. Rendelkeznie kell az Azure DevOps-szolgáltatásokkal a **közreműködői** szerepkör erőforrások kiépítése az Azure Stack-előfizetéshez.
 
 Az alábbi lépések bemutatják, hogy mi szükséges hitelesítés konfigurálása:
 
 1. Hozzon létre egy egyszerű szolgáltatást, vagy használjon egy meglévő egyszerű szolgáltatást.
 2. Hitelesítési kulcsok számára az egyszerű szolgáltatás létrehozása.
 3. Ellenőrizze az Azure Stack-előfizetéshez szerepköralapú hozzáférés-vezérlést, hogy a egyszerű szolgáltatásnév (SPN), a közreműködő szerepkör részét.
-4. A vsts-ben az Azure Stack-végpontok és egyszerű szolgáltatásnév segítségével, hozzon létre egy új szolgáltatás definíciójában.
+4. Az Azure DevOps-szolgáltatásokkal az Azure Stack-végpontok és egyszerű szolgáltatásnév segítségével, hozzon létre egy új szolgáltatás definíciójában.
 
 ### <a name="create-a-service-principal"></a>Egyszerű szolgáltatás létrehozása
 
@@ -122,7 +122,7 @@ Egy egyszerű szolgáltatást a hitelesítési kulcs szükséges. Az alábbi lé
 
     ![Válassza ki az alkalmazást](media\azure-stack-solution-hybrid-pipeline\000_01.png)
 
-2. Jegyezze fel az értékét **Alkalmazásazonosító**. Ezt az értéket fogja használni, amikor a szolgáltatásvégpont beállítása a vsts-ben.
+2. Jegyezze fel az értékét **Alkalmazásazonosító**. Ezt az értéket fogja használni, amikor a szolgáltatásvégpont beállítása az Azure DevOps-szolgáltatásokkal.
 
     ![Alkalmazásazonosító](media\azure-stack-solution-hybrid-pipeline\000_02.png)
 
@@ -144,7 +144,7 @@ Egy egyszerű szolgáltatást a hitelesítési kulcs szükséges. Az alábbi lé
 
 ### <a name="get-the-tenant-id"></a>A Bérlőazonosító beszerzése
 
-A Szolgáltatásvégpontok konfigurálásának részeként a vsts-ben van szükség a **Bérlőazonosító** , amely megfelel az AAD-címtárában, amelyet az Azure Stack stamp. Kövesse az alábbi lépéseket lekérni a bérlő azonosítóját.
+A Szolgáltatásvégpontok konfigurálásának részeként az Azure DevOps-szolgáltatásokkal igényel a **Bérlőazonosító** , amely megfelel az AAD-címtárában, amelyet az Azure Stack stamp. Kövesse az alábbi lépéseket lekérni a bérlő azonosítóját.
 
 1. Válassza az **Azure Active Directory** elemet.
 
@@ -194,20 +194,21 @@ Beállíthatja a hatókör szintjén is az előfizetés, erőforráscsoport vagy
 
 Az Azure szerepköralapú hozzáférés-vezérlés (RBAC) részletes hozzáférés-vezérlést az Azure biztosít. Az RBAC használatával szabályozhatja, amelyek a feladataik elvégzéséhez szükséges felhasználói hozzáférési szintjét. Szerepköralapú hozzáférés-vezérléssel kapcsolatos további információkért lásd: [Azure-előfizetések erőforrásaihoz való hozzáférés kezelése](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal?toc=%252fazure%252factive-directory%252ftoc.json).
 
-### <a name="vsts-agent-pools"></a>VSTS-Ügynökkészletek
+### <a name="azure-devops-services-agent-pools"></a>Az Azure DevOps Services Ügynökkészletek
 
-Ahelyett, hogy minden ügynök külön-külön, ügynökök is szervezheti ügynökkészletek. Az ügynökkészlet a megosztási határt a készlet az összes ügynöknek határozza meg. A vsts-ben a VSTS-fiók, ami azt jelenti, hogy különböző csapatprojektek megoszthatja az ügynökkészlet ügynökkészletek hatóköre. Ügynökkészletek kapcsolatos további információkért lásd: [Ügynökkészletek létrehozása és az üzenetsorok](https://docs.microsoft.com/vsts/build-release/concepts/agents/pools-queues?view=vsts).
+Ahelyett, hogy minden ügynök külön-külön, ügynökök is szervezheti ügynökkészletek. Az ügynökkészlet a megosztási határt a készlet az összes ügynöknek határozza meg. Az Azure DevOps-szolgáltatásokkal ügynökkészletek hatóköre a szervezet az Azure DevOps-szolgáltatásokkal, ami azt jelenti, hogy az ügynökkészlet megoszthatja projektek között. Ügynökkészletek kapcsolatos további információkért lásd: [Ügynökkészletek létrehozása és az üzenetsorok](https://docs.microsoft.com/azure/devops/pipelines/agents/pools-queues?view=vsts).
 
 ### <a name="add-a-personal-access-token-pat-for-azure-stack"></a>Adjon hozzá egy személyes hozzáférési jogkivonat (PAT) az Azure Stackhez
 
-Hozzon létre egy személyes hozzáférési tokent VSTS eléréséhez.
+Hozzon létre egy személyes hozzáférési tokent az Azure DevOps-szolgáltatásokhoz való hozzáférést.
 
-1. Jelentkezzen be a VSTS-fiók, és válassza ki a profil nevét.
+1. Jelentkezzen be a szervezet az Azure DevOps-szolgáltatásokkal, és válassza ki a szervezet profil neve.
+
 2. Válassza ki **biztonság kezeléséhez** hozzáférési token létrehozása oldalra.
 
     ![Felhasználói bejelentkezés](media\azure-stack-solution-hybrid-pipeline\000_17.png)
 
-    ![Válassza ki a csapatprojekt](media\azure-stack-solution-hybrid-pipeline\000_18.png)
+    ![Projekt kiválasztása](media\azure-stack-solution-hybrid-pipeline\000_18.png)
 
     ![Személyes hozzáférési jogkivonat hozzáadása](media\azure-stack-solution-hybrid-pipeline\000_18a.png)
 
@@ -220,7 +221,7 @@ Hozzon létre egy személyes hozzáférési tokent VSTS eléréséhez.
 
     ![Személyes hozzáférési jogkivonat](media\azure-stack-solution-hybrid-pipeline\000_19.png)
 
-### <a name="install-the-vsts-build-agent-on-the-azure-stack-hosted-build-server"></a>Telepítse a VSTS ügynök létrehozása az Azure Stack-kiszolgálón üzemeltetett kiszolgáló létrehozása
+### <a name="install-the-azure-devops-services-build-agent-on-the-azure-stack-hosted-build-server"></a>Telepítse az Azure DevOps-szolgáltatásokkal ügynök létrehozása az Azure Stack-kiszolgálón üzemeltetett kiszolgáló létrehozása
 
 1. Csatlakozzon a hozhat létre, az Azure Stack gazdagépen telepített kiszolgáló.
 2. Letöltése és telepítése a fordító-ügynökhöz szolgáltatás használata a személyes hozzáférési jogkivonat (PAT), és a virtuális gép rendszergazdai fiókot használnia.
@@ -237,17 +238,17 @@ Hozzon létre egy személyes hozzáférési tokent VSTS eléréséhez.
 
     ![Az ügynök mappa frissítés létrehozása](media\azure-stack-solution-hybrid-pipeline\009_token_file.png)
 
-    Az ügynök VSTS mappában tekintheti meg.
+    Az ügynök az Azure DevOps-szolgáltatásokkal mappában tekintheti meg.
 
 ## <a name="endpoint-creation-permissions"></a>Végpont létrehozása engedélyek
 
-Végpontok létrehozása a Visual Studio online-hoz (VSTO) build helyezzen üzembe Azure Service-alkalmazások az Azure Stackhez. Vsts-ben a fordító-ügynökhöz, amely csatlakoztatja az Azure Stackhez csatlakozik.
+Végpontok létrehozása a Visual Studio online-hoz (VSTO) build helyezzen üzembe Azure Service-alkalmazások az Azure Stackhez. Az Azure DevOps-szolgáltatásokkal a fordító-ügynökhöz, amely csatlakoztatja az Azure Stackhez csatlakozik.
 
 ![A VSTO NorthwindCloud mintaalkalmazás](media\azure-stack-solution-hybrid-pipeline\012_securityendpoints.png)
 
 1. Jelentkezzen be a VSTO, és nyissa meg az alkalmazás beállítások oldalát.
 2. A **beállítások**válassza **biztonsági**.
-3. A **VSTS csoportok**válassza **végpont alkotói**.
+3. A **Azure fejlesztési és üzemeltetési szolgáltatások csoportok**válassza **végpont alkotói**.
 
     ![A létrehozók NorthwindCloud végpont](media\azure-stack-solution-hybrid-pipeline\013_endpoint_creators.png)
 
@@ -257,7 +258,7 @@ Végpontok létrehozása a Visual Studio online-hoz (VSTO) build helyezzen üzem
 
 5. A **felhasználók és csoportok hozzáadása**, írjon be egy felhasználónevet, és válassza ki, hogy a felhasználó a felhasználók listájából.
 6. Válassza ki **módosítások mentése**.
-7. Az a **VSTS csoportok** listáról válassza ki **végpont rendszergazdák**.
+7. Az a **Azure fejlesztési és üzemeltetési szolgáltatások csoportok** listáról válassza ki **végpont rendszergazdák**.
 
     ![A rendszergazdák NorthwindCloud végpont](media\azure-stack-solution-hybrid-pipeline\015_save_endpoint.png)
 
@@ -265,6 +266,7 @@ Végpontok létrehozása a Visual Studio online-hoz (VSTO) build helyezzen üzem
 9. A **felhasználók és csoportok hozzáadása**, írjon be egy felhasználónevet, és válassza ki, hogy a felhasználó a felhasználók listájából.
 10. Válassza ki **módosítások mentése**.
 
+Most, hogy létezik a végpont adatait, az Azure DevOps-szolgáltatásokkal az Azure Stack kapcsolat készen áll a használatra. A fordító-ügynökhöz az Azure Stackben utasításokat olvas be az Azure DevOps-szolgáltatásokkal, és ezután az ügynök közvetíti a kommunikációt az Azure Stack-végpontjának információit.
 ## <a name="create-an-azure-stack-endpoint"></a>Az Azure Stack-végpont létrehozása
 
 Az utasítások a [kapcsolatot hozhat létre egy Azure Resource Manager szolgáltatás egy meglévő szolgáltatás egyszerű ](https://docs.microsoft.com/vsts/pipelines/library/connect-to-azure?view=vsts#create-an-azure-resource-manager-service-connection-with-an-existing-service-principal) hozzon létre egy szolgáltatás-kapcsolatot egy meglévő szolgáltatás egyszerű, és használja a következő társítás a cikk:
@@ -285,18 +287,18 @@ Most, hogy a végpont a létrehozás, a vsts-ben az Azure Stack kapcsolat késze
 
 Az oktatóanyag ezen részében jelennek meg:
 
-* Adja hozzá a kódot egy VSTS-projekthez.
+* Az Azure DevOps-szolgáltatásokkal projekthez adja hozzá a kódot.
 * Hozzon létre önálló webes alkalmazás üzembe helyezése.
 * A folyamatos üzembe helyezési folyamat beállítása
 
 > [!Note]
  > Az Azure Stack környezettel kell a megfelelő rendszerképek hírcsatorna-a Windows Server és SQL Server futtatásához. App Service-ben üzembe helyezett is kell rendelkeznie. Tekintse meg az App Service-ben dokumentációt "Előfeltételek" szakaszban az Azure Stack-kezelők követelményeinek.
 
-CI/CD hibrid alkalmazás kódja és az infrastruktúra kódjának alkalmazhatja. Használat [Azure Resource Manager-sablonokat, mint webes ](https://azure.microsoft.com/resources/templates/) alkalmazáskód mindkét felhőben való üzembe helyezése a VSTS-ből.
+CI/CD hibrid alkalmazás kódja és az infrastruktúra kódjának alkalmazhatja. Használat [Azure Resource Manager-sablonokat, mint webes ](https://azure.microsoft.com/resources/templates/) mindkét felhőben való üzembe helyezéséhez az Azure DevOps-szolgáltatásokkal kódját.
 
-### <a name="add-code-to-a-vsts-project"></a>Adja hozzá a kódot egy VSTS-projektbe
+### <a name="add-code-to-an-azure-devops-services-project"></a>Adja hozzá a kódot az Azure DevOps-szolgáltatásokkal projekthez
 
-1. Jelentkezzen be a VSTS-fiókkal rendelkező projekt létrehozása az Azure Stacken. A következő képernyőfelvétel bemutatja, hogyan kapcsolódjon a HybridCICD.
+1. Jelentkezzen be az Azure DevOps-szolgáltatásokkal rendelkező projekt létrehozása az Azure Stacken szervezetet. A következő képernyőfelvétel bemutatja, hogyan kapcsolódjon a HybridCICD.
 
     ![Csatlakozás a projekthez](media\azure-stack-solution-hybrid-pipeline\017_connect_to_project.png)
 
@@ -310,37 +312,38 @@ CI/CD hibrid alkalmazás kódja és az infrastruktúra kódjának alkalmazhatja.
 
     ![Runtimeidentifier konfigurálása](media\azure-stack-solution-hybrid-pipeline\019_runtimeidentifer.png)
 
-2. Team Explorer segítségével ellenőrizze a kódot a VSTS-be.
+2. Team Explorer segítségével ellenőrizze a kódot az Azure DevOps-szolgáltatásokkal.
 
-3. Győződjön meg arról, hogy az alkalmazás kódja Visual Studio Team Services-be lett-e érvényesítve.
+3. Győződjön meg arról, hogy az alkalmazáskódban az Azure DevOps-szolgáltatásokkal lett érvényesítve.
 
-### <a name="create-the-build-definition"></a>A build definíció létrehozása
+### <a name="create-the-build-pipeline"></a>A létrehozási folyamat létrehozása
 
-1. Jelentkezzen be a VSTS-fiókkal, amely a builddefiníció hozhat létre.
-2. Keresse meg a **webes alkalmazás készítése** a projekt lapját.
+1. Jelentkezzen be a szervezet, amely egy build folyamatot hozhat létre az Azure DevOps-szolgáltatásokkal.
+
+2. Keresse meg a **hozhat létre webes Applicaiton** a projekt lapját.
 
 3. A **argumentumok**, adjon hozzá **- r win10-x64** kódot. Ez egy önálló telepítés a .NET használatával aktiválásához szükséges alapvető.
 
-    ![Argument builddefiníció hozzáadása](media\azure-stack-solution-hybrid-pipeline\020_publish_additions.png)
+    ![Argument buildelési folyamat hozzáadása](media\azure-stack-solution-hybrid-pipeline\020_publish_additions.png)
 
 4. Futtassa a build. A [önálló telepítés build](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) folyamat közzéteszi az összetevők, amelyek futhatnak az Azure és az Azure Stackben.
 
 ### <a name="use-an-azure-hosted-build-agent"></a>Azure-beli használatra üzemeltetett fordító-ügynökhöz
 
-A vsts-ben üzemeltetett build ügynök használatával lehetőség egy kényelmes és webes alkalmazások üzembe. Ügynök karbantartása és frissítései automatikusan végzi a Microsoft Azure, amely lehetővé teszi a folyamatos és zavartalan fejlesztési ciklus.
+Használatával egy üzemeltetett fordító-ügynökhöz az Azure DevOps-szolgáltatásokkal a lehetőség egy kényelmes és webes alkalmazások üzembe. Ügynök karbantartása és frissítései automatikusan végzi a Microsoft Azure, amely lehetővé teszi a folyamatos és zavartalan fejlesztési ciklus.
 
 ### <a name="configure-the-continuous-deployment-cd-process"></a>Konfigurálja a folyamatos készregyártás (CD) folyamatot
 
-Visual Studio Team Services (VSTS) és a Team Foundation Server (TFS) adja meg hatékonyan konfigurálható és kezelhető folyamat számára több környezetekben, például fejlesztési, előkészítési, minőségbiztosítási (Tesztelés), és éles környezetben. Ez a folyamat tartalmazhat jóváhagyásokat igénylő az alkalmazás életciklusát az adott szakaszában.
+Az Azure DevOps-szolgáltatásokkal és a Team Foundation Server (TFS) adja meg egy hatékonyan konfigurálható és kezelhető folyamat több, például fejlesztési, átmeneti, minőségbiztosítási (Tesztelés) és éles környezetek számára. Ez a folyamat tartalmazhat jóváhagyásokat igénylő az alkalmazás életciklusát az adott szakaszában.
 
-### <a name="create-release-definition"></a>Kiadási definíció létrehozása
+### <a name="create-release-pipeline"></a>Kibocsátási folyamatok létrehozása
 
-Kiadási definíció létrehozása az utolsó lépés az alkalmazás létrehozása folyamatban. A kiadási definíció kiadás létrehozása és üzembe helyezése a build szolgál.
+Kiadási folyamatok létrehozásába az utolsó lépés az alkalmazás létrehozása folyamatban. A kibocsátási folyamat kiadás létrehozása és üzembe helyezése a build szolgál.
 
-1. Jelentkezzen be a vsts-ben, és navigáljon a **készítése és kiadása** a projekthez.
+1. Jelentkezzen be az Azure DevOps-szolgáltatásokkal, és navigáljon a **Azure folyamatok** a projekthez.
 2. Az a **kiadásokban** lapon jelölje be  **\[ +]** majd válasszon **kiadási definíció létrehozása**.
 
-   ![Kiadási definíció létrehozása](media\azure-stack-solution-hybrid-pipeline\021a_releasedef.png)
+   ![Kibocsátási folyamatok létrehozása](media\azure-stack-solution-hybrid-pipeline\021a_releasedef.png)
 
 3. A **válasszon ki egy sablont**, válassza a **Azure App Service üzembe helyezési**, majd válassza ki **alkalmaz**.
 
@@ -427,11 +430,11 @@ Kiadási definíció létrehozása az utolsó lépés az alkalmazás létrehozá
 23. Mentse az összes módosítást.
 
 > [!Note]
-> Néhány beállítás, a feladatkiadási tevékenységeket előfordulhat, hogy automatikusan meghatározott [környezeti változók](https://docs.microsoft.com/vsts/build-release/concepts/definitions/release/variables?view=vsts#custom-variables) létrehozásakor, a kiadási definíció a sablon alapján. Ezek a beállítások nem módosíthatók az a tevékenység beállításait. Azonban ezeket a beállításokat a környezetben a szülőelemektől szerkesztheti.
+> Néhány beállítás, a feladatkiadási tevékenységeket előfordulhat, hogy automatikusan meghatározott [környezeti változók](https://docs.microsoft.com/azure/devops/pipelines/release/variables?view=vsts#custom-variables) létrehozásakor egy kiadási folyamatot sablonból. Ezek a beállítások nem módosíthatók az a tevékenység beállításait. Azonban ezeket a beállításokat a környezetben a szülőelemektől szerkesztheti.
 
 ## <a name="create-a-release"></a>Hozzon létre egy kiadás
 
-Most, hogy végrehajtotta a kiadási definíció módosításait, azt az idő a üzembe helyezésének megkezdéséhez. Ehhez hozzon létre egy a kiadási definíció a kiadásra. A kiadás automatikusan; előfordulhat, hogy hozható létre Ha például a folyamatos készregyártás eseményindítója van megadva a kiadási definíció. Ez azt jelenti, hogy a Forráskód módosítása elindul egy új létrehozást és az új kiadás. Azonban ebben a szakaszban létrehoz egy új kiadásban manuálisan.
+Most, hogy elvégezte a módosításokat a kiadási folyamathoz, azt az idő a üzembe helyezésének megkezdéséhez. Ehhez hozzon létre egy a kiadásra a kiadási folyamathoz. A kiadás automatikusan; előfordulhat, hogy hozható létre például a folyamatos készregyártás eseményindítója van megadva a kiadási folyamathoz. Ez azt jelenti, hogy a Forráskód módosítása elindul egy új létrehozást és az új kiadás. Azonban ebben a szakaszban létrehoz egy új kiadásban manuálisan.
 
 1. Az a **folyamat** lap meg van nyitva a **kiadási** legördülő listában, és válassza a **kiadás létrehozása**.
 

@@ -1,33 +1,40 @@
+items:
 - name: Docker – dokumentáció
   href: index.md
 - name: Első lépések
-  expanded: true
   items:
-    - name: Docker Marketplace-sablon
-      href: 'https://azuremarketplace.microsoft.com/en-us/marketplace/apps/CanonicalandMSOpenTech.DockerOnUbuntuServer1404LTS'
+  - name: Docker Marketplace-sablon
+    href: https://azuremarketplace.microsoft.com/en-us/marketplace/apps/CanonicalandMSOpenTech.DockerOnUbuntuServer1404LTS
+  expanded: true
 - name: Oktatóanyagok
   items:
-    - name: Python-webapp a Docker és a PostgreSQL használatával
-      href: /azure/app-service-web/app-service-web-tutorial-docker-python-postgresql-app
-    - name: CI/CD – Docker Swarm és VSTS
-      href: /azure/container-service/container-service-docker-swarm-mode-setup-ci-cd-acs-engine
-    - name: 'CI/CD a Docker, a Jenkins és a Linux használatával'
-      href: /azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd
+  - name: Python-webapp a Docker és a PostgreSQL használatával
+    href: /azure/app-service-web/app-service-web-tutorial-docker-python-postgresql-app
+  - name: CI/CD a Docker Swarm és az Azure DevOps használatával
+    href: /azure/container-service/container-service-docker-swarm-mode-setup-ci-cd-acs-engine
+  - name: CI/CD a Docker, a Jenkins és a Linux használatával
+    href: /azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd
 - name: Útmutatók
   items:
-    - name: Docker virtuálisgép-bővítmény
-      href: /azure/virtual-machines/linux/dockerextension
-    - name: Docker Machine
-      href: /azure/virtual-machines/linux/docker-machine
-    - name: Docker tárolóregisztrációs adatbázis
-      href: /azure/container-registry/container-registry-get-started-portal
+  - name: Docker virtuálisgép-bővítmény
+    href: /azure/virtual-machines/linux/dockerextension
+  - name: Docker Machine
+    href: /azure/virtual-machines/linux/docker-machine
+  - name: Docker tárolóregisztrációs adatbázis
+    href: /azure/container-registry/container-registry-get-started-portal
 - name: További források
   items:
-    - name: Azure-ütemterv
-      href: 'https://azure.microsoft.com/roadmap/'
-    - name: Docker Azure-illesztő
-      href: 'https://docs.docker.com/machine/drivers/azure/'
-    - name: Docker Azure-hely
-      href: 'https://www.docker.com/docker-azure'
-    - name: Docker-hely
-      href: 'https://docker.com'
+  - name: Azure-ütemterv
+    href: https://azure.microsoft.com/roadmap/
+  - name: Docker Azure-illesztő
+    href: https://docs.docker.com/machine/drivers/azure/
+  - name: Docker Azure-hely
+    href: https://www.docker.com/docker-azure
+  - name: Docker-hely
+    href: https://docker.com
+ms.openlocfilehash: f972901eb06345b7bfd241ec8d21bb10cacd9f73
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44293888"

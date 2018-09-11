@@ -1,4 +1,10 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: dd941fcb57c358e33abe0da54ab8f76f2dccae28
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44295226"
 documentType: LandingData
 title: Azure DevOps Project
 metadata:
@@ -14,12 +20,6 @@ metadata:
   ms.topic: landing-page
   ms.date: 07/06/2018
   ms.author: mlearned
-  ms.openlocfilehash: f9137634c6b2ec07364939cb965b4cabaf5bad3a
-  ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
-  ms.translationtype: HT
-  ms.contentlocale: hu-HU
-  ms.lasthandoff: 07/10/2018
-  ms.locfileid: "37951923"
 abstract:
   description: Az Azure DevOps Projecttel meglévő kódok és a Git-adattár segítségével, vagy valamelyik mintaalkalmazásból egyszerűen hozhat létre egy folyamatos integrációs (CI) és folyamatos kézbesítési (CD) folyamatot az Azure-ban.
   aside:
@@ -70,7 +70,7 @@ sections:
 - title: Részletes útmutatók
   items:
   - type: paragraph
-    text: Útmutató VSTS-kiadási folyamatok létrehozásához az Azure DevOps Project segítségével
+    text: Útmutató Azure Release-folyamatok az Azure DevOps Project segítségével történő létrehozásához
   - type: list
     style: ordered
     items:

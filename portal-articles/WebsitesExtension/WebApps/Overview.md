@@ -8,15 +8,15 @@ ms.service: app-service
 ms.topic: article
 ms.date: 04/27/2017
 ms.author: sewatson
-ms.openlocfilehash: c01fcc7e69cf5af26b127519f183062ccf4923cc
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 0d4121bd68611c1f3c6a8c89a0d60251401d670a
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39172744"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44301293"
 ---
 # <a name="app-service-documentation"></a>App Service – dokumentáció
-Az Azure App Service segítségével egy tetszőleges programozási nyelven hozhat létre és üzemeltethet webalkalmazásokat az infrastruktúra, a nyelv vagy a webes keretrendszer futtatókörnyezetének kezelése nélkül. Automatikus méretezést és magas rendelkezésre állást kínál, támogatja a Windows és a Linux rendszert is, valamint lehetővé teszi az automatikus telepítéseket a GitHub, Visual Studio Team Services vagy bármely egyéb Git-adattárból. Gyors útmutatóink, oktatóanyagaink és a felhozott példák segítségével megismerkedhet az Azure App Service használatával.
+Az Azure App Service segítségével egy tetszőleges programozási nyelven hozhat létre és üzemeltethet webalkalmazásokat az infrastruktúra, a nyelv vagy a webes keretrendszer futtatókörnyezetének kezelése nélkül. Automatikus méretezést és magas rendelkezésre állást kínál, támogatja a Windows és a Linux rendszert is, valamint lehetővé teszi az automatikus üzembe helyezéseket a GitHub, az Azure DevOps Services vagy bármely egyéb Git-adattár használatával. Gyors útmutatóink, oktatóanyagaink és a felhozott példák segítségével megismerkedhet az Azure App Service használatával.
 
 ## <a name="windows-linux-and-docker"></a>Windows, Linux és Docker
 A [Web Apps](/app-service/app-service-web-overview) az App Service fő ajánlata webalkalmazások Windows-környezetek segítségével történő összeállításához és üzemeltetéséhez. A Linux-környezeteket előnyben részesítő fejlesztőknek az [App Service for Linuxot](/app-service/containers/app-service-linux-intro) érdemes választaniuk. A fejlesztők közvetlenül az App Service for Linuxban is üzembe helyezhetik a rendszerképeket az egyéni futtatókörnyezetek/keretrendszerek beüzemeléséhez.

@@ -1,24 +1,18 @@
 ---
 title: Az Azure Disk Encryption IaaS virtuális gépek – áttekintés |} A Microsoft Docs
 description: Ez a cikk a Microsoft Azure Disk Encryption áttekintést nyújt az IaaS virtuális gépekhez.
-services: security
-documentationcenter: na
 author: mestew
-manager: MBaldwin
-ms.assetid: 30324adb-e24c-433a-9214-2d1465cbdf45
 ms.service: security
-ms.devlang: na
+ms.subservice: Azure Disk Encryption
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 08/24/2018
 ms.author: mstewart
-ms.openlocfilehash: 88500be4bae83049e8a7060719f4f85e7622c645
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.date: 09/10/2018
+ms.openlocfilehash: ea72e4ac778e52d4f6e4f5597d38a1de59ba43fc
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42886991"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44348939"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms"></a>Az Azure Disk Encryption IaaS virtuális gépekhez 
 A Microsoft Azure számára fontos, hogy annak biztosítása, az adatvédelem, az adatok elkülönítése, és a vezérlő lehetővé teszi, hogy az Azure-ban üzemeltetett adatok titkosításához, szabályozhatja és titkosítási kulcsok kezelése fejlett technológiák számos keresztül, és az adatok hozzáférés-vezérlő & naplózási. Ez a vezérlő rugalmasságának köszönhetően az Azure ügyfelei üzleti igényeiknek leginkább megfelelő megoldást választhatja. Ez a cikk bemutatja, egy technológiai megoldást, az "Azure lemez titkosítási a Windows és Linux rendszerű IaaS virtuális gépek", a szervezeti biztonsági és megfelelőségi követelmények kielégítése érdekében az adatok biztonsága érdekében. 
@@ -175,4 +169,4 @@ Ez a technológia által használt gyakori kifejezések megérteni, használja a
 
 ## <a name="next-steps"></a>További lépések
 > [!div class="nextstepaction"]
-> [Az Azure Disk Encryption előfeltétel-konfigurációs](azure-security-disk-encryption-prerequisites.md)
+> [Azure Disk Encryption előfeltételei](azure-security-disk-encryption-prerequisites.md)
