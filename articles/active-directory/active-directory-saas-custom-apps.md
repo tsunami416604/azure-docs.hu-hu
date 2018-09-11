@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/30/2018
+ms.date: 09/09/2018
 ms.author: barbkess
 ms.reviewer: asmalser,luleon
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 928e4811f15953313df167375043231478f5c11a
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 3dafef052f181a961cdf30cb647328ee1b2db601
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42055326"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44299916"
 ---
 # <a name="configure-single-sign-on-to-applications-that-are-not-in-the-azure-active-directory-application-gallery"></a>Egyszeri bejelentkezés konfigurálása olyan alkalmazások, amelyek nem szerepelnek az Azure Active Directory alkalmazáskatalógusában
 
@@ -42,17 +42,17 @@ Ezek a képességek, más néven *integrációs alkalmazássablonok*, szabványo
 ## <a name="adding-an-unlisted-application"></a>Egy listán nem szereplő alkalmazás hozzáadása
 Egy alkalmazás egy alkalmazás-integráció sablon használatával csatlakozhat, jelentkezzen be az Azure Portalon az Azure Active Directory-rendszergazdai fiók használatával. Keresse meg a **Active Directory > Vállalati alkalmazások > új alkalmazás > katalógusban nem szereplő alkalmazás** szakaszban jelölje be **Hozzáadás**, majd **alkalmazás hozzáadása a katalógusból** .
 
-  ![](./media/active-directory-saas-custom-apps/customapp1.png)
+  ![Alkalmazás hozzáadása](./media/active-directory-saas-custom-apps/customapp1.png)
 
 Az alkalmazáskatalógusban, kiválasztásával adhat hozzá egy listán nem szereplő alkalmazást a **katalógusban nem szereplő alkalmazás** csempét, amely a keresési eredmények között látható, ha a kívánt alkalmazás nem található. Miután megadta az alkalmazás nevét, konfigurálhatja az egyszeri bejelentkezésre vonatkozó beállításokat és viselkedését. 
 
 **Gyors tipp**: ajánlott eljárásként a keresési funkció segítségével ellenőrizze, hogy ha az alkalmazás már létezik-e az alkalmazás-katalógusában. Ha az alkalmazás megtalálható, és egyszeri bejelentkezés említi a leírását, majd az alkalmazás már támogatja az összevont egyszeri bejelentkezést.
 
-  ![](./media/active-directory-saas-custom-apps/customapp2.png)
+  ![Keresés](./media/active-directory-saas-custom-apps/customapp2.png)
 
 Ezzel a módszerrel egy alkalmazás hozzáadása egy előre integrált alkalmazások számára elérhető hasonló élményt nyújt. Válassza **konfigurálása egyszeri bejelentkezéshez** , vagy kattintson az **egyszeri bejelentkezési** az alkalmazás bal oldali navigációs menüjében. A következő képernyőn kapcsolódhatnak az egyszeri bejelentkezés konfigurálásához. A beállítások a következő szakaszban Ez a cikk ismerteti.
   
-![](./media/active-directory-saas-custom-apps/customapp3.png)
+![Beállítási lehetőségek](./media/active-directory-saas-custom-apps/customapp3.png)
 
 ## <a name="saml-based-single-sign-on"></a>SAML-alapú egyszeri bejelentkezés
 Válassza ki ezt a beállítást, az alkalmazás SAML-alapú hitelesítés konfigurálása. Ehhez az szükséges, hogy az alkalmazás támogatja-e a SAML 2.0. Információkat gyűjtenek a folytatás előtt az alkalmazás SAML funkcióinak használatát. Hajtsa végre a következő szakaszok konfigurálása egyszeri bejelentkezéshez az alkalmazások és az Azure AD között.
@@ -98,7 +98,7 @@ Amikor egy felhasználó hitelesíti magát az alkalmazást, az Azure AD fog kia
 
 Megtekintheti és szerkesztheti a jogcímek, az alkalmazásnak a SAML-jogkivonatban elküldött a **attribútumok** fülre.
 
-  ![](./media/active-directory-saas-custom-apps/customapp7.png)
+  ![Attribútumok](./media/active-directory-saas-custom-apps/customapp7.png)
 
 Előfordulhat, hogy miért a SAML-jogkivonatban kiadott jogcímek szerkesztése kell két oka van:
 
@@ -138,7 +138,7 @@ Miután az alkalmazás SAML-alapú identitás-szolgáltatóként az Azure AD has
 
 Az alkalmazás hozzárendelése egy felhasználóhoz vagy csoporthoz, kattintson a **felhasználók hozzárendelése** gombra. Válassza ki a felhasználót vagy csoportot szeretne hozzárendelni, és válassza ki a **hozzárendelése** gombra.
 
-  ![](./media/active-directory-saas-custom-apps/customapp6.png)
+  ![Felhasználók hozzárendelése](./media/active-directory-saas-custom-apps/customapp6.png)
 
 Egy felhasználó számára a felhasználói jogkivonatok kiállítása az Azure AD lehetővé teszi. Ez az alkalmazás a felhasználó hozzáférési panelen jelennek meg a csempe is okoz. Egy alkalmazás-csempét is megjelennek az Office 365 alkalmazásindítójában, ha a felhasználó Office 365-höz használ. 
 
@@ -175,5 +175,5 @@ Kiválasztása után **tovább**, meg kell adnia összekapcsolása az alkalmazá
 
 - [Az Azure Active Directory segítségével végzett alkalmazásfelügyeletre vonatkozó cikkek jegyzéke](active-directory-apps-index.md)
 - [Az előre integrált alkalmazások SAML-jogkivonatban kiadott jogcímek testreszabása](active-directory-saml-claims-customization.md)
-- [SAML-alapú egyszeri bejelentkezés hibaelhárítása](active-directory-saml-debugging.md)
+- [SAML-alapú egyszeri bejelentkezés hibaelhárítása](develop/howto-v1-debug-saml-sso-issues.md)
 

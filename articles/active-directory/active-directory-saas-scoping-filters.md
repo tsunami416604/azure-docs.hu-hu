@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/30/2018
+ms.date: 09/09/2018
 ms.author: barbkess
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9f28c97fed2a5fa4990c1310e8389868c6b7dc20
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 1da742f54a9a415c6078a6185a9605db700dffd5
+ms.sourcegitcommit: 465ae78cc22eeafb5dfafe4da4b8b2138daf5082
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39369085"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44324954"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>Attribútum-alapú alkalmazások üzembe helyezése és hatókörének beállítása szűrőket
 Ez a cikk célja, hogy azt ismertetik, hogyan hatókörszűrők használata, amelyek meghatározzák, hogy mely felhasználók lesznek kiépítve, egy alkalmazás Attribútumalapú szabályok meghatározásához.
@@ -115,7 +115,7 @@ Hatókörszűrő vannak konfigurálva, az egyes Azure AD-felhasználó kiépít�
 * [Felhasználói kiépítésének és megszüntetésének biztosítása az SaaS-alkalmazások automatizálása](active-directory-saas-app-provisioning.md)
 * [A felhasználók átadásának attribútumleképezések testreszabása](active-directory-saas-customizing-attribute-mappings.md)
 * [Kifejezések írása attribútumleképezésekhez](active-directory-saas-writing-expressions-for-attribute-mappings.md)
-* [Alkalmazáskiépítési értesítések](active-directory-saas-account-provisioning-notifications.md)
+* [Alkalmazáskiépítési értesítések](active-directory-saas-app-provisioning.md)
 * [SCIM használata a felhasználók és csoportok Azure Active Directoryból származó alkalmazások automatikus kiépítésének engedélyezése](manage-apps/use-scim-to-provision-users-and-groups.md)
 * [Az SaaS-alkalmazások integrálásával foglalkozó oktatóanyagok listája](saas-apps/tutorial-list.md)
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2018
 ms.author: apimpm
-ms.openlocfilehash: 1b52c64db29e17a0c52eb63721be81844e856b64
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: cd022677da59588eca910a508b2596aa513eff4b
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "42055506"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44302809"
 ---
 # <a name="how-to-authorize-developer-accounts-using-oauth-20-in-azure-api-management"></a>Hogyan lehet OAuth 2.0-val az Azure API Management fejlesztői fiókok engedélyezése
 
@@ -63,9 +63,9 @@ Ez az útmutató bemutatja, hogyan konfigurálhatja az API Management szolgálta
 
     ![OAuth 2.0 új kiszolgálóra](./media/api-management-howto-oauth2/oauth-03.png)
 
-    Egy Azure Active Directory OAuth 2.0-kiszolgáló a **jogkivonat-végpont URL-címe** lesz a következő formátumban, ahol `<APPID>` formátuma alább látható a `yourapp.onmicrosoft.com`.
+    Egy Azure Active Directory OAuth 2.0-kiszolgáló a **jogkivonat-végpont URL-címe** lesz a következő formátumban, ahol `<TenantID>` formátuma alább látható a `yourapp.onmicrosoft.com`.
 
-    `https://login.microsoftonline.com/<APPID>/oauth2/token`
+    `https://login.microsoftonline.com/<TenantID>/oauth2/token`
 
     Az alapértelmezett beállítás a **ügyfél-hitelesítési módszer** van **alapszintű**, és **hozzáférési jogkivonatok elküldésének módja** van **engedélyeztetési fejléc**. Ezeket az értékeket a történik az űrlap ebben a szakaszban a **alapértelmezett hatókör**.
 

@@ -1,6 +1,6 @@
 ---
-title: Az Azure Security Centerben Internet felé néző végpontok-en keresztüli hozzáférés korlátozása |} Microsoft Docs
-description: Ez a dokumentum azt ismerteti, hogyan valósítja meg az Azure Security Center ajánlás **internetes végpont-en keresztüli hozzáférés korlátozása**.
+title: Az Azure Security Centerben az Internet felé néző végpontok hozzáférésének korlátozása |} A Microsoft Docs
+description: Ez a dokumentum bemutatja, hogyan valósíthat meg az Azure Security Center javaslatait **internetről elérhető végponton keresztüli hozzáférés korlátozása**.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
@@ -9,51 +9,51 @@ editor: ''
 ms.assetid: 727d88c9-163b-4ea0-a4ce-3be43686599f
 ms.service: security-center
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/03/2017
 ms.author: terrylan
-ms.openlocfilehash: 92906d31f4db21f37094f192dadd080e28cc6e8e
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 0b7de1f63f765705a78535ae04c1b844e06c029c
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34363053"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44301157"
 ---
-# <a name="restrict-access-through-internet-facing-endpoints-in-azure-security-center"></a>Az Azure Security Centerben Internet felé néző végpontok-en keresztüli hozzáférés korlátozása
-Azure Security Center javasolni fogja, az Internet felé néző végpontok-en keresztüli hozzáférés korlátozása, ha bármely, a hálózati biztonsági csoportok (NSG-k) egy vagy több bejövő szabályok, amelyek lehetővé teszik a hozzáférést a "bármely" forrás IP-cím. Megnyitása access "bármely" engedélyezheti, hogy a támadók a erőforrások eléréséhez. Security Center javasolni fogja, hogy a forrás IP-címek, amelyek ténylegesen hozzá kell férniük való hozzáférés korlátozása a bejövő szabályok szerkesztése.
+# <a name="restrict-access-through-internet-facing-endpoints-in-azure-security-center"></a>Az Azure Security Centerben az Internet felé néző végpontok hozzáférésének korlátozása
+Az Azure Security Center javasolni fogja, hogy az Internet felé néző végpontok hozzáférésének korlátozása, ha bármely a hálózati biztonsági csoportok (NSG) egy vagy több bejövő szabályt, amely engedélyezi a hozzáférést a "bármely" forrás IP-címről. Nyissa meg a "bármely" való hozzáférést lehetővé teheti a támadók számára az erőforrások eléréséhez. A Security Center javasolni fogja, hogy a forrás IP-címek, amelyek ténylegesen hozzá kell férniük való hozzáférés korlátozása a bejövő szabályok szerkesztése.
 
-Ez a javaslat bármely nem webes porthoz, amely rendelkezik "a" forrás jön létre.
+Ez az ajánlás bármely nem webes porthoz, amely rendelkezik "bármely" forrás jön létre.
 
 > [!NOTE]
 > Ez a dokumentum egy üzembe helyezést szemléltető példa segítségével mutatja be a szolgáltatást. A dokumentum nem tartalmaz lépésenkénti útmutatót.
 >
 >
 
-## <a name="implement-the-recommendation"></a>A javaslat megvalósítása
-1. Az a **javaslatok panel**, jelölje be **internetes végpont-en keresztüli hozzáférés korlátozása**.
+## <a name="implement-the-recommendation"></a>A javaslatok megvalósítása
+1. Az a **javaslatok panel**válassza **internetről elérhető végponton keresztüli hozzáférés korlátozása**.
 
    ![Internetről elérhető végponton keresztüli hozzáférés korlátozása][1]
-2. Ekkor megnyílik a panel **internetes végpont-en keresztüli hozzáférés korlátozása**. Ezen a panelen a virtuális gépek (VM) rendelkező bejövő szabályok létrehozása a potenciális biztonsági kockázatot listáját tartalmazza. Jelöljön ki egy virtuális Gépet.
+2. Ekkor megnyílik a panel **internetről elérhető végponton keresztüli hozzáférés korlátozása**. Ezen a panelen a virtuális gépek (VM) a bejövő szabályok létrehozása egy potenciális biztonsági kockázatot sorolja fel. Válasszon egy virtuális Gépet.
 
-   ![Jelöljön ki egy virtuális Gépet][2]
-3. A **NSG** csempe megjeleníti a társított virtuális Gépet, a hálózati biztonsági csoport információkat és a kapcsolódó bejövő szabályok. Válassza ki **bejövő szabályok szerkesztése** egy bejövő forgalomra vonatkozó szabály szerkesztése gombra.
+   ![Válasszon ki egy virtuális Gépet][2]
+3. A **NSG** panel jeleníti meg az információkat, kapcsolódó bejövő szabályok és a kapcsolódó virtuális gép hálózati biztonsági csoport. Válassza ki **bejövő szabályok szerkesztése** folytatásához egy bejövő szabály szerkesztését.
 
    ![Hálózati biztonsági csoport panel][3]
-4. Az a **bejövő biztonsági szabályok** panelen válassza ki a bejövő forgalomra vonatkozó szabály szerkesztése. Ebben a példában most válasszon **AllowWeb**.
+4. Az a **bejövő biztonsági szabályok** panelen adja meg a bejövő szabály szerkesztését. Ebben a példában válassza **AllowWeb**.
 
-   ![Bejövő biztonsági szabályok][4]
+   ![Bejövő biztonsági szabály][4]
 
-   Vegye figyelembe, igény szerint kiválaszthatja **alapértelmezett szabályok** című szakaszban láthat az alapértelmezett szabályokat minden NSG-k által tartalmazott. Az alapértelmezett szabályokat nem lehet törölni, de hozzárendeli őket egy alacsonyabb prioritású virtuális gép, mert azok az Ön által létrehozott szabályok felülbírálható. További információ [alapértelmezett szabályok](../virtual-network/security-overview.md#default-security-rules).
+   Vegye figyelembe, választhatja **alapértelmezett szabályokkal** megtekintheti az összes NSG-k által tartalmazott alapértelmezett szabálykészletet. Az alapértelmezett szabályok nem törölhetők, de alacsonyabb prioritású hozzá vannak rendelve, mert azok az Ön által létrehozott szabályok szerint felülbírálható. Tudjon meg többet [alapértelmezett szabályokkal](../virtual-network/security-overview.md#default-security-rules).
 
    ![Alapértelmezett szabályok][5]
-5. A a **AllowWeb** panelen a bejövő forgalomra vonatkozó szabály tulajdonságait szerkesztheti, hogy a **forrás** blokkot az IP-címek vagy IP-cím. A bejövő szabály tulajdonságait kapcsolatos további információkért lásd: [NSG-szabályok](../virtual-network/security-overview.md#security-rules).
+5. Az a **AllowWeb** panelen bejövő szabály tulajdonságainak szerkesztéséhez, hogy a **forrás** egy olyan IP-cím vagy IP-Címblokk. A bejövő szabály tulajdonságainak kapcsolatos további információkért lásd: [NSG-szabályok](../virtual-network/security-overview.md#security-rules).
 
-   ![Bejövő forgalomra vonatkozó szabály szerkesztése][6]
+   ![Bejövő szabály szerkesztése][6]
 
 ## <a name="see-also"></a>Lásd még
-Ez a cikk bemutatta megvalósításához a Security Center javaslat "Hozzáférés korlátozása az Internet felé néző végpont keresztül." Az NSG-k és szabályok engedélyezésével kapcsolatos további tudnivalókért olvassa el a következőket:
+Ez a cikk bemutatta, hogyan valósíthat meg a Security Center javaslatait "Hozzáférés korlátozása az Internet felé néző végpont használatával." NSG-ket és szabályok engedélyezésével kapcsolatos további tudnivalókért tekintse meg a következőket:
 
 * [Mi az a hálózati biztonsági csoport (NSG)?](../virtual-network/security-overview.md)
 * [A hálózati biztonsági csoportok kezelése](../virtual-network/manage-network-security-group.md)

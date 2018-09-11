@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: cherylmc
-ms.openlocfilehash: 5f40b4c9fff57b105b7d96de69780fea83871032
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 3e2648bc019612835baa172210984d8fc1c6d801
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43302296"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44304086"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – Gyakori kérdések
 
@@ -66,15 +66,25 @@ Az ExpressRoute támogatja [három útválasztási tartományt](expressroute-cir
 >Nyilvános társviszony-létesítés le lett tiltva az új ExpressRoute-kapcsolatcsoportot. Azure-szolgáltatások érhetők el a Microsoft társviszony-létesítés.
 >
 
+* Power BI
+* Dynamics 365 for Finance and Operations (korábbi nevén Dynamics AX Online-hoz)
+* Az Azure-szolgáltatások többsége támogatottak. Tekintse meg közvetlenül a kívánt ellenőrizheti a támogatási szolgáltatással.<br>
+  A következő szolgáltatások nem támogatottak:
+    * Tartalomkézbesítési hálózat (CDN)
+    * Az Azure DevOps-szolgáltatásokkal terheléses tesztelés
+    * Multi-Factor Authentication
+    * Traffic Manager
+
 ### <a name="microsoft-peering"></a>Microsoft társviszony-létesítés
 
 * [Office 365](http://aka.ms/ExpressRouteOffice365)
 * Dynamics 365 
 * Power BI
 * Azure Active Directory
-* Visual Studio Team Services terheléses tesztelés
+* Az Azure DevOps-szolgáltatásokkal terheléses tesztelés
 * Az Azure-szolgáltatások többsége támogatottak. Tekintse meg közvetlenül a kívánt ellenőrizheti a támogatási szolgáltatással.<br>A következő szolgáltatásokat **nem támogatott**:
     * Tartalomkézbesítési hálózat (CDN)
+    * Az Azure DevOps-szolgáltatásokkal terheléses tesztelés
     * Multi-Factor Authentication
     * Traffic Manager
 

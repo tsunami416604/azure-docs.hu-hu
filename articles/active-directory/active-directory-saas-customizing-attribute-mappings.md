@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/30/2018
+ms.date: 09/09/2018
 ms.author: barbkess
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: accc2e994e7ea361315d5dfb33b257e58410490c
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 4d3967acc7c6dc3b2c94236cc53e8b45e09e6b6d
+ms.sourcegitcommit: 465ae78cc22eeafb5dfafe4da4b8b2138daf5082
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42055538"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44325379"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Az SaaS-alkalmazásokhoz az Azure Active Directory-attribútumleképezések testreszabása Felhasználókiépítés
 A Microsoft Azure AD külső SaaS-alkalmazások például a Salesforce, a Google Apps és a másokkal való támogatást nyújt. Ha felhasználókiépítése egy külső SaaS-alkalmazás engedélyezve van, az Azure Portalon szabályozza az attribútumértékek attribútum-leképezések formájában.
@@ -33,18 +33,18 @@ Nincs attribútumokat és az Azure AD felhasználói és minden egyes SaaS-alkal
 Az Azure AD-portálon érhető el ez a funkció kattint egy **leképezések** konfigurációja **kiépítési** a a **kezelés** szakaszában egy  **A vállalati alkalmazás**.
 
 
-![Salesforce][5] 
+![Salesforce](media/active-directory-saas-customizing-attribute-mappings/21.png) 
 
 Kattintson egy **leképezések** konfigurációs, megnyílik a kapcsolódó **attribútum-hozzárendelési** képernyő. Számos attribútum-leképezések egy SaaS-alkalmazáshoz megfelelő működéséhez szükséges. A szükséges attribútumok a **törlése** funkció nem érhető el.
 
 
-![Salesforce][6]  
+![Salesforce](media/active-directory-saas-customizing-attribute-mappings/22.png)
 
 A fenti példában láthatja, hogy a **felhasználónév** attribútum a Salesforce-ban felügyelt objektum megjelenik a **userPrincipalName** a társított Azure Active Directory objektum értékét.
 
 Testre szabhatja a meglévő **attribútum-leképezések** leképezés kattintva. Ekkor megnyílik a **attribútum szerkesztése** képernyő.
 
-![Salesforce][7]  
+![Salesforce](media/active-directory-saas-customizing-attribute-mappings/23.png)
 
 
 ### <a name="understanding-attribute-mapping-types"></a>Attribútum-hozzárendelési típusainak ismertetése
@@ -77,7 +77,7 @@ Ez a tulajdonság mellett attribútum-leképezések is támogatják a következ�
 
 Alkalmazások, például a ServiceNow, a Box és a Google Apps, a kiválasztott számú támogatja a felhasználói objektumok mellett csoportházirend-objektumok létrehozására. Csoportobjektumokhoz is tartalmaz a csoport tulajdonságai, például a megjelenített nevek és e-mail-aliasok csoporttagok mellett.
 
-![ServiceNow][8]  
+![ServiceNow](media/active-directory-saas-customizing-attribute-mappings/24.png)
 
 Csoportos kiépítését lehet szükség esetén engedélyezhető vagy letiltható az eszközcsoport-leképezés szerinti kiválasztásával **leképezések**, és a beállítás **engedélyezve** a kívánt opcióhoz a **attribútumleképezés** képernyő.
 
@@ -104,7 +104,7 @@ Alkalmazások és rendszerek, amelyek támogatják az attribútumlista testre sz
 >[!NOTE]
 >Támogatott attribútumok listáját szerkesztési csak rendszergazdák számára, akik testreszabták a saját alkalmazások és rendszerek sémája és első kézből tudomásuk egyéni attribútumaik definiálva hogyan ajánlott. Egyes esetekben ehhez az API-k és fejlesztők egy alkalmazás vagy rendszer által biztosított eszközök ismeretét. 
 
-![Szerkesztő][9]  
+![Szerkesztő](media/active-directory-saas-customizing-attribute-mappings/25.png) 
 
 Támogatott attribútumok listáját szerkesztésekor a következő tulajdonságok áll rendelkezésre:
 
@@ -152,10 +152,4 @@ Ez a beállítás hatékonyan kényszeríti az összes olyan felhasználó újb�
 * [SCIM használata a felhasználók és csoportok automatikus üzembe helyezésének engedélyezéséhez az Azure Active Directoryból az alkalmazásokba](manage-apps/use-scim-to-provision-users-and-groups.md)
 * [Az SaaS-alkalmazások integrálásával foglalkozó oktatóanyagok listája](saas-apps/tutorial-list.md)
 
-<!--Image references-->
-[5]: ./media/active-directory-saas-customizing-attribute-mappings/21.png
-[6]: ./media/active-directory-saas-customizing-attribute-mappings/22.png
-[7]: ./media/active-directory-saas-customizing-attribute-mappings/23.png
-[8]: ./media/active-directory-saas-customizing-attribute-mappings/24.png
-[9]: ./media/active-directory-saas-customizing-attribute-mappings/25.PNG
 

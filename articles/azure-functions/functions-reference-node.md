@@ -12,12 +12,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 03/04/2018
 ms.author: glenga
-ms.openlocfilehash: 36307c86332ac331e444d65ba27c044585379e68
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: d80914fcd1f667924b52122b39f95871c1e21532
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44093400"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44298012"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Az Azure Functions JavaScript-fejlesztői útmutató
 
@@ -67,13 +67,19 @@ module.exports = function(context) {
 ```
 context.bindings
 ```
-Egy elnevezett objektumot, amely tartalmazza a bemeneti és kimeneti adatokat ad vissza. Például a következő kötés meghatározást az *function.json* lehetővé teszi, hogy a várólistából tartalmának eléréséhez a `context.bindings.myInput` objektum. 
+Egy elnevezett objektumot, amely tartalmazza a bemeneti és kimeneti adatokat ad vissza. Ha például a következő kötési meghatározások a a *function.json* lehetővé teszi, hogy a várólista tartalmának eléréséhez `context.bindings.myInput` és a egy üzenetsor a kimenetek hozzárendelése `context.bindings.myOutput`.
 
 ```json
 {
     "type":"queue",
     "direction":"in",
     "name":"myInput"
+    ...
+},
+{
+    "type":"queue",
+    "direction":"out",
+    "name":"myOutput"
     ...
 }
 ```
@@ -87,25 +93,27 @@ context.bindings.myOutput = {
         a_number: 1 };
 ```
 
+Vegye figyelembe, hogy ha szeretné, adja meg a kimeneti kötés használatával a `context.done` metódus helyett a `context.binding` objektum (lásd alább).
+
 ### <a name="contextdone-method"></a>Context.Done metódus
 ```
 context.done([err],[propertyBag])
 ```
 
-Arról tájékoztatja a futtatókörnyezet, amely a kód befejeződött. Ha a függvényt használ a `async function` deklarace (érhető el a függvények verzió 8 + csomópontja használatával 2.x-es), nem szeretné használni `context.done()`. A `context.done` visszahívási implicit módon nevezzük.
+Arról tájékoztatja a futtatókörnyezet, amely a kód befejeződött. Ha a függvényt használ a JavaScript [ `async function` ](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/async_function) deklarace (érhető el a függvények verzió 8 + csomópontja használatával 2.x-es), nem szeretné használni `context.done()`. A `context.done` visszahívási implicit módon nevezzük.
 
 Ha a függvény nem egy aszinkron függvény **hívja meg `context.done`**  tájékoztatja a futtatókörnyezet, hogy helyesek-e a függvényt. A végrehajtás időtúllépést okoz, ha hiányzik.
 
-A `context.done` módszer lehetővé teszi, hogy vissza mindkét egy felhasználó által definiált hiba történt a futásidejű és tulajdonságai egy tulajdonságcsomagot, hogy felülírja a tulajdonságok a adnia a `context.bindings` objektum.
+A `context.done` módszer lehetővé teszi, hogy vissza mindkét egy felhasználó által definiált hiba történt a modul és a egy kimeneti kötés adatokat tartalmazó JSON-objektum adnia. Az átadott tulajdonságok `context.done` bármit beállítása felülírja a `context.bindings` objektum.
 
 ```javascript
 // Even though we set myOutput to have:
-//  -> text: hello world, number: 123
+//  -> text: 'hello world', number: 123
 context.bindings.myOutput = { text: 'hello world', number: 123 };
 // If we pass an object to the done function...
 context.done(null, { myOutput: { text: 'hello there, world', noNumber: true }});
 // the done method will overwrite the myOutput binding to be: 
-//  -> text: hello there, world, noNumber: true
+//  -> text: 'hello there, world', noNumber: true
 ```
 
 ### <a name="contextlog-method"></a>Context.log metódus  
@@ -113,7 +121,7 @@ context.done(null, { myOutput: { text: 'hello there, world', noNumber: true }});
 ```
 context.log(message)
 ```
-Lehetővé teszi az adatfolyam-konzol naplói a nyomkövetési szint írni. A `context.log`, további naplózási metódusokat elérhetőek, amelyekkel a többi nyomkövetési szintű konzol naplóba:
+A nyomkövetési szint függvény streamnaplókba vizsgálatát teszi lehetővé. A `context.log`, további naplózási módszerek érhetők, amelyek segítségével a függvény naplóihoz, a többi nyomkövetési szint:
 
 
 | Módszer                 | Leírás                                |
@@ -123,12 +131,14 @@ Lehetővé teszi az adatfolyam-konzol naplói a nyomkövetési szint írni. A `c
 | **info(_message_)**    | Írási és naplózás, vagy alacsonyabb információ szintet.    |
 | **verbose(_message_)** | Részletes webhelyszintű naplózás ír.           |
 
-Az alábbi példa ír a konzolban, amikor a figyelmeztetési nyomkövetési szint:
+A következő példa ír a naplófájlba a figyelmeztetési nyomkövetési szint:
 
 ```javascript
 context.log.warn("Something has happened."); 
 ```
-A nyomkövetési szintű küszöbérték a host.json fájlban naplózásának beállítása, vagy kapcsolja ki.  A naplókba írásával kapcsolatban további információkért tekintse meg a következő szakaszt.
+Is [konfigurálja a nyomkövetési szintű küszöbértéket, a naplózáshoz](#configure-the-trace-level-for-console-logging) a host.json fájlban. Naplók írásáról további információkért lásd: [nyomkövetési kimenetek írása](#writing-trace-output-to-the-console) alatt.
+
+Olvasási [Azure Functions figyelése](functions-monitoring.md) tudhat meg többet a megtekintése, és a függvény naplóinak lekérdezéséhez.
 
 ## <a name="binding-data-type"></a>Kötés adattípus
 
@@ -143,11 +153,11 @@ Bemeneti kötés adattípusát meghatározásához használja a `dataType` tulaj
 }
 ```
 
-Egyéb lehetőségek `dataType` vannak `stream` és `string`.
+A beállítások `dataType` vannak: `binary`, `stream`, és `string`.
 
 ## <a name="writing-trace-output-to-the-console"></a>A konzol nyomkövetési írása 
 
-A függvények, használja a `context.log` módszerek nyomkövetési írni a konzolon. Ezen a ponton nem használható `console.log` írni a konzolon.
+A függvények, használja a `context.log` módszerek nyomkövetési írni a konzolon. A Functions v1.x, nem használhat `console.log` írni a konzolon. A Functions 2.x, nyomkövetési keresztül ouputs `console.log` rögzítve lesznek a Függvényalkalmazás szintjén. Ez azt jelenti, hogy a kimenet `console.log` nem egy adott függvény meghívási vannak társítva.
 
 Meghívásakor `context.log()`, az üzenet íródik a konzolt a nyomkövetési szint, amely a _info_ nyomkövetési szint. A következő kódot ír a konzolban, amikor az információ a nyomkövetési szintet:
 
@@ -155,22 +165,21 @@ Meghívásakor `context.log()`, az üzenet íródik a konzolt a nyomkövetési s
 context.log({hello: 'world'});  
 ```
 
-A fenti kód megegyezik a következő kódot:
+Ez a kód megegyezik a fenti kód:
 
 ```javascript
 context.log.info({hello: 'world'});  
 ```
 
-A következő kódot ír a konzolban, amikor a hiba szintje:
+Ezt a kódot ír a konzolban, amikor a hiba szintje:
 
 ```javascript
 context.log.error("An error has occurred.");  
 ```
 
-Mivel _hiba_ van a legmagasabb nyomkövetési szint a nyomkövetési íródik a kimenetet a minden nyomkövetési szintek mindaddig, amíg naplózás engedélyezve van.  
+Mivel _hiba_ van a legmagasabb nyomkövetési szint a nyomkövetési íródik a kimenetet a minden nyomkövetési szintek mindaddig, amíg naplózás engedélyezve van.
 
-
-Az összes `context.log` módszereket támogatja a paraméter formátuma a Node.js által támogatott [util.format metódus](https://nodejs.org/api/util.html#util_util_format_format). Vegye figyelembe a következő kódra, amely az alapértelmezett nyomkövetési szint használatával írja a konzolon:
+Az összes `context.log` módszereket támogatja a paraméter formátuma a Node.js által támogatott [util.format metódus](https://nodejs.org/api/util.html#util_util_format_format). Vegye figyelembe a következő kódra, amely az alapértelmezett nyomkövetési szint használatával írja a függvény naplóihoz:
 
 ```javascript
 context.log('Node.js HTTP trigger function processed a request. RequestUri=' + req.originalUrl);
@@ -204,7 +213,7 @@ HTTP és a webhook eseményindítók és a HTTP-kimeneti kötések használata k
 
 ### <a name="request-object"></a>Támogatásikérelem-objektum
 
-A `request` objektum a következő tulajdonságokkal rendelkezik:
+A `context.req` (kérelem) objektum a következő tulajdonságokkal rendelkezik:
 
 | Tulajdonság      | Leírás                                                    |
 | ------------- | -------------------------------------------------------------- |
@@ -219,7 +228,7 @@ A `request` objektum a következő tulajdonságokkal rendelkezik:
 
 ### <a name="response-object"></a>Válaszobjektum
 
-A `response` objektum a következő tulajdonságokkal rendelkezik:
+A `context.res` (válasz) objektum a következő tulajdonságokkal rendelkezik:
 
 | Tulajdonság  | Leírás                                               |
 | --------- | --------------------------------------------------------- |
@@ -230,13 +239,7 @@ A `response` objektum a következő tulajdonságokkal rendelkezik:
 
 ### <a name="accessing-the-request-and-response"></a>A kérés- és hozzáférés 
 
-Ha HTTP-eseményindítók használata esetén a HTTP kérés- és objektumok három módokon érheti el:
-
-+ A nevesített bemeneti és kimeneti kötések. Ezzel a módszerrel a HTTP-eseményindítóval és kötések működik ugyanaz, mint bármely másik kötés. Az alábbi példa a válasz objektum beállítja a használatával egy nevesített `response` kötést: 
-
-    ```javascript
-    context.bindings.response = { status: 201, body: "Insert succeeded." };
-    ```
+Ha HTTP-eseményindítók használata során a HTTP kérés- és objektumokat számos módon érheti el:
 
 + A `req` és `res` tulajdonságai a `context` objektum. Ezzel a módszerrel használhatja a hagyományos minta adatokhoz való hozzáférésének HTTP a context objektumot, az összes használata helyett a `context.bindings.name` mintát. Az alábbi példa bemutatja, hogyan lehet hozzáférni a `req` és `res` az objektumokat a `context`:
 
@@ -247,7 +250,20 @@ Ha HTTP-eseményindítók használata esetén a HTTP kérés- és objektumok há
     context.res = { status: 202, body: 'You successfully ordered more coffee!' }; 
     ```
 
-+ Meghívásával `context.done()`. HTTP-kötést egy különleges visszaadja a választ, az átadott a `context.done()` metódust. A következő HTTP-kimeneti kötés határozza meg a `$return` kimeneti paraméterként:
++ A nevesített bemeneti és kimeneti kötések. Ezzel a módszerrel a HTTP-eseményindítóval és kötések működik ugyanaz, mint bármely másik kötés. Az alábbi példa a válasz objektum beállítja a használatával egy nevesített `response` kötést: 
+
+    ```json
+    {
+        "type": "http",
+        "direction": "out",
+        "name": "response"
+    }
+    ```
+    ```javascript
+    context.bindings.response = { status: 201, body: "Insert succeeded." };
+    ```
+
++ [Csak válasz] Meghívásával `context.done()`. HTTP-kötést egy különleges visszaadja a választ, az átadott a `context.done()` metódust. A következő HTTP-kimeneti kötés határozza meg a `$return` kimeneti paraméterként:
 
     ```json
     {
@@ -256,15 +272,13 @@ Ha HTTP-eseményindítók használata esetén a HTTP kérés- és objektumok há
       "name": "$return"
     }
     ``` 
-    A kimeneti kötés vár, hogy adja meg a választ, amikor hívja `done()`, az alábbiak szerint:
-
     ```javascript
      // Define a valid response object.
     res = { status: 201, body: "Insert succeeded." };
     context.done(null, res);   
     ```  
 
-## <a name="node-version-and-package-management"></a>Csomópont verziója és a csomag kezelése
+## <a name="node-version"></a>Csomópont verziója
 
 Az alábbi táblázat az egyes főverziója a Functions futtatókörnyezete által használt Node.js-verzió:
 
@@ -275,6 +289,7 @@ Az alábbi táblázat az egyes főverziója a Functions futtatókörnyezete ált
 
 Láthatja, hogy a jelenlegi verzió a modul által használt nyomtasson `process.version` a függvényeket.
 
+## <a name="package-management"></a>Csomagkezelés
 A következő lépések segítségével csomagok tartalmazzák a függvényalkalmazásban: 
 
 1. Nyissa meg a következőt: `https://<function_app_name>.scm.azurewebsites.net`.

@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/03/2016
 ms.author: cephalin
-ms.openlocfilehash: 0f053c0293488f19adcd058f1ba8304d8d238738
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 3ec67488b238118067e771baf3dd5124308a84cf
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43128306"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44296193"
 ---
 # <a name="troubleshoot-slow-web-app-performance-issues-in-azure-app-service"></a>Lassú webalkalmazás teljesítménybeli problémáinak az Azure App Service hibaelhárítása
 Ez a cikk segítséget nyújt a lassú webalkalmazások alkalmazás teljesítménnyel kapcsolatos problémáinak elhárítása [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714).
@@ -88,7 +88,7 @@ Az alkalmazás teljesítményéhez használatával is ellenőrizheti a *webhelyb
 
 Minden App Service webalkalmazás egy bővíthető felügyeleti végpontot, amely lehetővé teszi, hogy üzembe helyezett eszközök hatékony gyűjteménye, mint webhelybővítmények biztosít. Bővítmények a következők: 
 
-- Kód szerkesztők, mint [Visual Studio Team Services](https://www.visualstudio.com/products/what-is-visual-studio-online-vs.aspx). 
+- Kód szerkesztők, mint [Azure DevOps](https://www.visualstudio.com/products/what-is-visual-studio-online-vs.aspx). 
 - Felügyeleti eszközök csatlakoztatott források, például egy MySQL-adatbázis egy webalkalmazás csatlakozik.
 
 [Az Azure Application Insights](https://azure.microsoft.com/services/application-insights/) egy teljesítményfigyelési webhelybővítmény is rendelkezésre áll. Az Application Insights használatához újra kell építeni a kód egy SDK-val. Bővítménye által biztosított további adatokhoz való hozzáférés is telepítheti. Az SDK lehetővé teszi, hogy írhat kódot a használatot és a további részleteket az alkalmazás teljesítményét. További információkért lásd: [webalkalmazások teljesítményének monitorozása](../application-insights/app-insights-web-monitor-performance.md).
@@ -158,7 +158,7 @@ Néhány dolog, ami a Kudu biztosít a következők:
 
 Egy másik hasznos funkció, a Kudu, abban az esetben, ha az alkalmazás az első-alkalommal kivételeket dob, használhatja a Kudu, és kiírja a SysInternals eszköz Procdump memória létrehozásához. Ezek a memóriaképek pillanatfelvételei a folyamat, és gyakran segíthet a webalkalmazás bonyolultabb hibáinak elhárítása.
 
-A Kudu elérhető funkciókról további információkért lásd: [kell tudni az Azure Websites Team Services-eszközök](https://azure.microsoft.com/blog/windows-azure-websites-online-tools-you-should-know-about/).
+A Kudu elérhető funkciókról további információkért lásd: [kell tudni az Azure DevOps-eszközök](https://azure.microsoft.com/blog/windows-azure-websites-online-tools-you-should-know-about/).
 
 <a name="mitigate" />
 

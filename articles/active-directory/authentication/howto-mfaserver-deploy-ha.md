@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 2097ce5cf249e7ff895769142d63b6cf47eed06d
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 5d3833d3218a4b6252c9591bb67686ddc1c3cdf9
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39161007"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44298574"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-for-high-availability"></a>Azure multi-factor Authentication-kiszolgáló magas rendelkezésre állás konfigurálása
 
@@ -29,9 +29,9 @@ Az Azure MFA-kiszolgáló szolgáltatás architektúrája több összetevőből 
 
 Az MFA-kiszolgáló az az Azure multi-factor Authentication szoftverrel rendelkező Windows Server. Az MFA-kiszolgálópéldányra aktiválnia kell az Azure MFA szolgáltatás működéséhez. Egynél több MFA-kiszolgáló lehet a telepített helyszíni.
 
-Az első MFA-kiszolgáló, amely telepítve a fő MFA-kiszolgáló által alapértelmezés szerint az Azure MFA szolgáltatás aktiválása után. A fő MFA-kiszolgáló rendelkezik a PhoneFactor.pfdata adatbázis írható másolatát. MFA-kiszolgáló példánya telepítéseinél alkiszolgálók nevezzük. Az MFA-buildelés alárendelt replikált csak olvasható adatbázis egy példányát a PhoneFactor.pfdata rendelkezik. MFA-kiszolgálók replikálása a távoli eljáráshívás (RPC) használatával. Többtényezős hitelesítés minden kiszolgálója együttesen kell kell tartományhoz csatlakoztatott vagy önálló replikálja az adatokat.
+Az első MFA-kiszolgáló, amely telepítve a fő MFA-kiszolgáló által alapértelmezés szerint az Azure MFA szolgáltatás aktiválása után. A fő MFA-kiszolgáló rendelkezik a PhoneFactor.pfdata adatbázis írható másolatát. További példányok MFA-kiszolgáló telepítésekor a beosztottak nevezzük. A többtényezős hitelesítés beosztottak replikált csak olvasható adatbázis egy példányát a PhoneFactor.pfdata rendelkezik. MFA-kiszolgálók replikálása a távoli eljáráshívás (RPC) használatával. Többtényezős hitelesítés minden kiszolgálója együttesen kell kell tartományhoz csatlakoztatott vagy önálló replikálja az adatokat.
 
-MFA fő és az MFA-kiszolgáló alárendelt kiszolgálójának kommunikálnak az MFA szolgáltatással, ha kétfaktoros hitelesítés szükséges. Például amikor egy felhasználó megpróbál kéttényezős hitelesítést igénylő alkalmazás eléréséhez, a felhasználó először hitelesítése egy identitásszolgáltató, például az Active Directory (AD).
+MFA fő és a többtényezős hitelesítés az alárendelt kiszolgálók kommunikálnak az MFA szolgáltatással, ha kétfaktoros hitelesítés szükséges. Például amikor egy felhasználó megpróbál kéttényezős hitelesítést igénylő alkalmazás eléréséhez, a felhasználó először hitelesítése egy identitásszolgáltató, például az Active Directory (AD).
 
 Az ad-vel a sikeres hitelesítés után az MFA-kiszolgáló az MFA szolgáltatással kommunikál. Az MFA-kiszolgáló megvárja, amíg az MFA szolgáltatás engedélyezéséhez vagy letiltásához az alkalmazás eléréséhez a felhasználó értesítést.
 
@@ -42,7 +42,7 @@ A fő MFA-kiszolgáló offline állapotba kerül, ha hitelesítések továbbra i
 Vegye figyelembe az alábbi fontos szempontokat terheléselosztási Azure MFA-kiszolgáló és kapcsolódó összetevői.
 
 * **RADIUS-szabvány használatával magas rendelkezésre állás**. Ha az Azure MFA-kiszolgálót RADIUS-kiszolgálóként használ, potenciálisan konfigurálhatja egy MFA-kiszolgáló elsődleges RADIUS-hitelesítés célként és más Azure MFA-kiszolgálókat a másodlagos hitelesítés célként. Azonban ez a módszer a magas rendelkezésre állás nem lehet gyakorlati mert időtúllépés fordulhat elő, ha a hitelesítés sikertelen az elsődleges hitelesítési célon, akkor is hitelesíthetők a másodlagos hitelesítési célon előtt meg kell várnia. Terheléselosztás a RADIUS-forgalmat a RADIUS-ügyfél és a RADIUS-kiszolgálók (az ebben az esetben az Azure MFA-kiszolgálók a RADIUS-kiszolgálóként működő) között hatékonyabb úgy, hogy konfigurálhatja a RADIUS-ügyfelektől, mutathat egyetlen URL-címet.
-* **Manuálisan főkiszolgálóvá előléptetni a többtényezős hitelesítés alkiszolgálók kell**. A fő Azure MFA-kiszolgáló offline állapotba kerül, ha az Azure MFA másodlagos kiszolgálók továbbra is az MFA-kérelmeket. Azonban amíg nem érhető el a fő MFA-kiszolgáló, a rendszergazdák nem felhasználók hozzáadása vagy módosítása az MFA-beállítások, és felhasználók nem módosíthatja a felhasználói portál használatával. A főkiszolgálói szerepkör egy MFA alárendelt kiszolgáló előléptetése, mindig manuális folyamat.
+* **Manuálisan főkiszolgálóvá előléptetni a többtényezős hitelesítés a beosztottak kell**. A fő Azure MFA-kiszolgáló offline állapotba kerül, ha az Azure MFA másodlagos kiszolgálók továbbra is az MFA-kérelmeket. Azonban amíg nem érhető el a fő MFA-kiszolgáló, a rendszergazdák nem felhasználók hozzáadása vagy módosítása az MFA-beállítások, és felhasználók nem módosíthatja a felhasználói portál használatával. A többtényezős hitelesítés támogatása a főkiszolgálói szerepkör alárendelt, mindig manuális folyamat.
 * **Összetevők separability**. Az Azure MFA-kiszolgáló, amely telepíthető ugyanazon a Windows Server-példányon, vagy a különböző példányokon több összetevőt magában foglalja. Ezen összetevők közé tartoznak a felhasználói portálra, a Mobile App Web Service és az ADFS-adaptert (ügynök). Ez separability lehetővé teszi a felhasználói portál és a Mobile App Web Server közzététele a szegélyhálózatról a webalkalmazás-Proxy használatával. Ilyen konfiguráció hozzáadása a tervezés, az általános biztonságának, az alábbi ábrán látható módon. Az MFA felhasználói portál és a Mobile App Web Server is is üzembe helyezhetők a magas rendelkezésre ÁLLÁSÚ, elosztott terhelésű konfigurációkban.
 
    ![MFA-kiszolgáló a szegélyhálózaton](./media/howto-mfaserver-deploy-ha/mfasecurity.png)
@@ -62,7 +62,7 @@ Vegye figyelembe a következő elemeket a fentebbi ábra ennek megfelelően a re
    ![Az Azure MFA-kiszolgáló - alkalmazáskiszolgáló magas rendelkezésre ÁLLÁS](./media/howto-mfaserver-deploy-ha/mfaapp.png)
 
    > [!NOTE]
-   > Mivel az RPC dinamikus portok használja, nem ajánlott tűzfalak, akár a körét, amely potenciálisan használható RPC dinamikus portok megnyitásához. Ha van egy tűzfal **között** az MFA az alkalmazáskiszolgálókat, konfigurálnia kell az MFA-kiszolgáló statikus port a replikációs forgalom alárendelt kiszolgáló és a fő kiszolgálók közötti kommunikációra, és nyissa meg a portot a tűzfalon. Hozzon létre egy DWORD beállításazonosítót, kényszerítheti a statikus port ```HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Positive Networks\PhoneFactor``` nevű ```Pfsvc_ncan_ip_tcp_port``` és a egy rendelkezésre álló statikus portra értékre állítja. Kapcsolatok mindig a fő az alárendelt MFA-kiszolgálók által kezdeményezett, a statikus portot csak a fő szükséges, de bármikor a fő kell egy alárendelt léptetheti elő, mivel minden MFA-kiszolgálón kell beállítania a statikus portot.
+   > Mivel az RPC dinamikus portok használja, nem ajánlott tűzfalak, akár a körét, amely potenciálisan használható RPC dinamikus portok megnyitásához. Ha van egy tűzfal **között** az MFA az alkalmazáskiszolgálókat, konfigurálnia kell az MFA-kiszolgáló kommunikálhasson a fő- és alárendelt kiszolgálók közötti replikációs forgalom statikus portot, és nyissa meg az erre a portra a tűzfalon. Hozzon létre egy DWORD beállításazonosítót, kényszerítheti a statikus port ```HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Positive Networks\PhoneFactor``` nevű ```Pfsvc_ncan_ip_tcp_port``` és a egy rendelkezésre álló statikus portra értékre állítja. Kapcsolatok mindig a fő az alárendelt MFA-kiszolgálók által kezdeményezett, a statikus portot csak a fő szükséges, de bármikor a fő kell egy alárendelt léptetheti elő, mivel minden MFA-kiszolgálón kell beállítania a statikus portot.
 
 2. A két felhasználói portál/MFA Mobile Apps-kiszolgálók (MFA-UP-MAS1 és az MFA-UP-MAS2) az elosztott terhelésű egy **állapotalapú** configuration (mfa.contoso.com). Ne felejtse el, hogy fix kiszolgálású munkameneteket-e az MFA felhasználói portál és a Mobile App Service terheléselosztási követelmény.
    ![Az Azure MFA-kiszolgáló – felhasználói portál és a Mobile App szolgáltatás magas rendelkezésre ÁLLÁS](./media/howto-mfaserver-deploy-ha/mfaportal.png)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 07/22/2016
 ms.author: mlearned
-ms.openlocfilehash: 01741ba25ac3a6ab187a08636b7e26ee58dbee90
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 07a7c1e11d8ca20ff4f42abcb84961cb7cd9e0e1
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42058096"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44298213"
 ---
 # <a name="debugging-apps-in-a-local-docker-container"></a>Alkalmazások hibakeresése a helyi Docker-tárolóban
 ## <a name="overview"></a>Áttekintés
@@ -96,7 +96,7 @@ A Docker-támogatás a Visual Studio 2017 kérheti le a termelékenység helyile
 [Hibaelhárítás a Visual Studio Docker fejlesztési](vs-azure-tools-docker-troubleshooting-docker-errors.md)
 
 ## <a name="more-about-docker-with-visual-studio-windows-and-azure"></a>További tudnivalók a Visual Studio, a Windows és az Azure Docker
-* [Docker-eszközök Visual Studio Team Services](http://aka.ms/dockertoolsforvsts) – létrehozása és üzembe helyezése a docker-tárolók
+* [Docker Azure DevOps-eszközök](http://aka.ms/dockertoolsforvsts) – létrehozása és üzembe helyezése a docker-tárolók
 * [Docker-eszközök Visual Studio Code](http://aka.ms/dockertoolsforvscode) – nyelvi szolgáltatásokat docker-fájlok szerkesztéséhez hamarosan további e2e forgatókönyvekkel
 * [Windows-tároló információk](http://aka.ms/containers)– Windows Server és a Nano Server adatait
 * [Az Azure Container Service](https://azure.microsoft.com/services/container-service/) - [az Azure Container Service-tartalom](http://aka.ms/AzureContainerService)

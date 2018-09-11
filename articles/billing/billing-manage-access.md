@@ -1,5 +1,5 @@
 ---
-title: Azure számlázás szerepkörök használatával való hozzáférés kezelése |} Microsoft Docs
+title: Az Azure számlázási szerepkörök használatával való hozzáférés kezelése |} A Microsoft Docs
 description: ''
 services: ''
 documentationcenter: ''
@@ -15,68 +15,68 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: vikdesai
-ms.openlocfilehash: 7329b06171bd538cc6e9aa8172380a2d4dd47dae
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 38702fde344bb5fb831f7c26177438456035beae
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33204122"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44294459"
 ---
 # <a name="manage-access-to-billing-information-for-azure-using-role-based-access-control"></a>Számlázási adatokat az Azure szerepköralapú hozzáférés-vezérlés használatával való hozzáférés kezelése
 
-Ön hozzáférést biztosíthat az Azure számlázási adatokat a csoport tagjai számára úgy egyet az alábbi felhasználói szerepkörök hozzárendelése az előfizetéshez: Fiókadminisztrátor, szolgáltatás-rendszergazdát, társadminisztrátoraként, tulajdonos, közreműködő, olvasó és számlázási olvasó. Férhet számlázási adatokhoz a [Azure-portálon](https://portal.azure.com/), és használhatják a [számlázási API-k](billing-usage-rate-card-overview.md) programozott módon le a számlák (egyszer engedélyezte, bejövő) és a használat részleteiről. További információ szerepkörök adhatnak ki, és mely szerepköröket is mi, olvassa el [szerepkörök az Azure RBAC](../role-based-access-control/built-in-roles.md).
+Akkor adhat hozzáférést az Azure számlázási információihoz a csapat tagjai számára egyet az alábbi felhasználói szerepkörök hozzárendelése az előfizetés: a fiók rendszergazdája, szolgáltatás-rendszergazda, társ-rendszergazda, tulajdonos, közreműködő, olvasó és számlázási olvasó. Akkor férhet hozzá, a számlázási adatokat a [az Azure portal](https://portal.azure.com/), és használhatják a [számlázási API-k](billing-usage-rate-card-overview.md) (Miután választott, bejövő) számlák és használati adatok programozott módon megszerezni. További információ szerepkörök adhat ki, és mely szerepkörök mi megtekintéséhez látogasson [Azure RBAC-szerepkörök](../role-based-access-control/built-in-roles.md).
 
-## <a name="opt-in"></a> Felhasználó számlák eléréséhez
+## <a name="opt-in"></a> További felhasználóknak engedélyt számlák
 
-A Fiókadminisztrátor használatával bírálhatja felül a [Azure-portálon](https://portal.azure.com/) számlák a hozzáférést, a más felhasználók számára, és API-n keresztül.
+A fiók rendszergazdája használatával kell részt a [az Azure portal](https://portal.azure.com/) számlákat való hozzáférés engedélyezése, más felhasználók számára, és API-n keresztül.
 
-1. A fiók rendszergazdaként, válassza ki az előfizetést a [előfizetések panel](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) Azure-portálon.
+1. A fiók rendszergazdája, válassza ki az előfizetését a [előfizetések paneljén](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) az Azure Portalon.
 
-1. Válassza ki **számlák** , majd **számlák elérésére**.
+1. Válassza ki **számlákat** , majd **számlákat hozzáférést**.
 
-    ![Képernyőkép bemutatja, hogyan adhat hozzáférést számlák](./media/billing-manage-access/AA-optin.png)
+    ![Képernyőfelvétel bemutatja, hogyan számlákat hozzáférésének delegálása](./media/billing-manage-access/AA-optin.png)
 
-1. Kapcsolja be **a** a hozzáférés a felhasználó az előfizetéshez, a módosítások mentése után töltse le a számla szerepkörök hatóköre.
+1. Kapcsolja be **a** a hozzáférést, majd menti a módosításokat, a felhasználók előfizetéshez számla letöltése szerepkörök hatóköre.
 
-    ![Képernyőfelvétel a ki-és delegálja a számla elérésére](./media/billing-manage-access/AA-optinAllow.png)
+    ![A képernyőfelvételen ki-és delegálja a számlához való hozzáférés](./media/billing-manage-access/AA-optinAllow.png)
 
-Engedélyezés lehetővé teszi, hogy szolgáltatás-rendszergazdát, társadminisztrátoraként, tulajdonos, közreműködő, olvasó és számlázási olvasó letölteni az Azure portálon PDF számlák előfizetésben. Azonban régebbi, mint a 2016. December számlák érhetők el csak az a fiók rendszergazdája most.
+Engedélyezés lehetővé teszi, hogy szolgáltatás-rendszergazda, társ-rendszergazda, tulajdonos, közreműködő, olvasó és számlázási olvasó az előfizetés az Azure Portalon PDF számlákat letölteni. Azonban a számlákat régebbi, mint a 2016. December érhetők el csak a fiók rendszergazdája most.
 
-A Fiókadminisztrátor is konfigurálhatja az e-mailben küldött számlákat. További tudnivalókért lásd: [e-mailben a számla beolvasása](billing-download-azure-invoice-daily-usage-date.md).
+A fiók rendszergazdája is konfigurálhatja az e-mailen keresztül küldött számlákat. További tudnivalókért lásd: [a számlát kapni e-mailben](billing-download-azure-invoice-daily-usage-date.md).
 
-## <a name="adding-users-to-the-billing-reader-role"></a>Felhasználók hozzáadása a számlázási olvasó szerepkört
+## <a name="adding-users-to-the-billing-reader-role"></a>Felhasználók hozzáadása a számlázási olvasó szerepkör
 
-A számlázási olvasó szerepkört az előfizetés számlázási adatokat az Azure portál csak olvasási hozzáféréssel, és nem érhető el a szolgáltatásokat, például virtuális gépek és tárfiókok rendelkezik. A számlázási olvasó szerepkör hozzárendelése valaki hozzá kell férnie az előfizetés számlázási adatokat, de nem képes kezelni az Azure-szolgáltatásokhoz. Ez a szerepkör azon egy szervezet számára, akik csak Azure-előfizetések végrehajtani a pénzügyi és költség-kezelés megfelelő.
+A számlázási olvasó szerepkör rendelkezik a csak olvasási hozzáféréssel az előfizetés számlázási adatainak az Azure Portalon, és nem elérhető, a szolgáltatások, például virtuális gépek és a storage-fiókok. Rendelje hozzá a számlázási olvasó szerepkört az előfizetés számlázási adatokat, de nem képes kezelni az Azure-szolgáltatásokhoz való hozzáférést igénylő valaki. Ez a szerepkör a szervezeten belüli felhasználók, akik csak az Azure-előfizetések végrehajtani a pénzügyi és a cost management megfelelő.
 
-1. Válassza ki az előfizetést a [előfizetések panel](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) Azure-portálon.
+1. Válassza ki az előfizetését a [előfizetések paneljén](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) az Azure Portalon.
 
 1. Válassza ki **hozzáférés-vezérlés (IAM)** majd **Hozzáadás**.
 
-    ![Képernyőfelvétel az előfizetés panelen IAM](./media/billing-manage-access/select-iam.PNG)
+    ![Az előfizetés paneljén képernyőfelvételen IAM](./media/billing-manage-access/select-iam.PNG)
 
-1. Válasszon **számlázási olvasó** a a **Szerepkörválasztás** lap.
+1. Válasszon **számlázási olvasó** a a **Szerepkörválasztás** lapot.
 
-    ![Képernyőfelvétel a helyi menü Nézet számlázási olvasó](./media/billing-manage-access/select-roles.PNG)
+    ![A képernyőfelvételen a helyi menü Nézet számlázási olvasó](./media/billing-manage-access/select-roles.PNG)
 
-1. Írja be az e-mailt a meghívót, majd kattintson a kívánt felhasználó **OK** a meghívó elküldésére.
+1. Írja be az e-mail a felhasználó meghívása, majd kattintson a kívánt **OK** a meghívó küldéséhez.
 
-    ![Adja meg e-mail címét meghívni a képernyőkép](./media/billing-manage-access/add-user.PNG)
+    ![Adja meg az e-mailek meghívás a megjelenítő képernyőkép](./media/billing-manage-access/add-user.PNG)
 
-1. Kövesse a meghívott felhasználó e-mailben szereplő utasításokat Jelentkezzen be egy számlázási olvasó.
+1. Jelentkezzen be egy számlázási olvasó a meghívó e-mailben szereplő utasításokat követve.
 
-    ![Képernyőkép a számlázási olvasó csoportszűrést Azure-portálon](./media/billing-manage-access/billing-reader-view.png)
+    ![Képernyőkép a számlázási olvasó láthatja az Azure Portalon](./media/billing-manage-access/billing-reader-view.png)
 
 > [!NOTE]
-> A számlázási olvasó jelenleg előzetes verzióban érhető vagy szolgáltatás egyelőre nem támogatják a vállalati (EA) előfizetések vagy nem globális felhők.
+> A számlázási olvasó funkció előzetes verzióban érhető el, és még nem támogatja (EA) enterprise-előfizetések vagy a nem globális felhők.
 
-## <a name="adding-users-to-other-roles"></a>Felhasználók más szerepkörök hozzáadása
+## <a name="adding-users-to-other-roles"></a>Felhasználók hozzáadása a többi szerepkörhöz
 
-Más szerepkörök, például a tulajdonos vagy közreműködő szerepkörrel, a felhasználók férhetnek hozzá csak számlázási adatokat, de az Azure-szolgáltatásokat is. Ezek a szerepkörök kezeléséhez, tekintse meg a [hozzáadása vagy módosítása, hogy az előfizetés vagy a szolgáltatások kezelése az Azure rendszergazdai szerepkörök](billing-add-change-azure-subscription-administrator.md).
+Az egyéb szerepköröket, például a tulajdonos vagy közreműködő szerepkörrel, a felhasználók csak a számlázási adatokat, de az Azure-szolgáltatásokat is. Ezek a szerepkörök kezeléséhez, lásd: [rbac-RÓL és az Azure portal-hozzáférés kezelése](../role-based-access-control/role-assignments-portal.md).
 
-## <a name="who-can-access-the-account-centerhttpsaccountwindowsazurecom"></a>Ki férhet hozzá a [Account Center](https://account.windowsazure.com)?
+## <a name="who-can-access-the-account-centerhttpsaccountwindowsazurecom"></a>Férhet hozzá a [Account Center](https://account.windowsazure.com)?
 
-Csak a Fiókadminisztrátor az Account center bejelentkezhet. A Fiókadminisztrátor az előfizetés jogi tulajdonosa. Alapértelmezés szerint a a személy, aki regisztrált a vagy vásárolt Azure-előfizetést a Fiókadminisztrátor, kivéve, ha a [előfizetés tulajdonjogának áthelyezése történt](billing-subscription-transfer.md) valaki másnak. A Fiókadminisztrátor előfizetések létrehozása, előfizetések megszakíthatja, módosítsa az előfizetés számlázási címét, és hozzáférési házirendek az előfizetés kezelése.
+Csak a Fiókadminisztrátor az Account Center webhelyen is bejelentkezhetnek. A fiók rendszergazdája az előfizetés a jogos tulajdonosa. Alapértelmezés szerint a a személy, aki regisztrált vagy az Azure-előfizetést vásárolt a fiók rendszergazdája, kivéve, ha a [előfizetés tulajdonjogát átruházták](billing-subscription-transfer.md) valaki más. A fiók rendszergazdája előfizetések létrehozása, megszakítja az előfizetések, módosítani az előfizetéshez tartozó számlázási címét, és az előfizetéshez tartozó hozzáférési szabályzatok kezelése.
 
-## <a name="need-help-contact-support"></a>Segítség Forduljon a támogatási szolgálathoz.
+## <a name="need-help-contact-support"></a>Segítség Forduljon az ügyfélszolgálathoz.
 
-Ha további kérdései további, [forduljon a támogatási szolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma elhárítva gyors eléréséhez.
+Ha további kérdése van, [forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma gyors megoldása érdekében.

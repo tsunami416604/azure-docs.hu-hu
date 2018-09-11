@@ -1,6 +1,6 @@
 ---
-title: Tudományos adatok - projektek Azure Machine Learning végrehajtásának |} Microsoft Docs
-description: Hogyan egy adatok tudósok nyomon követheti a adatok tudományos projekt.
+title: Adatelemzési projektek – az Azure Machine Learning végrehajtásának |} A Microsoft Docs
+description: Hogyan értenie az adatokhoz is előrehaladását úgy követheti nyomon az adatelemzési projektjéhez.
 documentationcenter: ''
 author: deguhath
 manager: cgronlun
@@ -14,43 +14,43 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: deguhath
-ms.openlocfilehash: e50390a1b6385cabfd0e6b30340634860a062d8d
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 32390b05d2ec258a68ed4f53135399675105a7e9
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34838942"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44302085"
 ---
-# <a name="track-progress-of-data-science-projects"></a>Nyomon követni az adatok tudományos projektek
+# <a name="track-progress-of-data-science-projects"></a>Adatelemzési projektek előrehaladását úgy követheti nyomon
 
-Adatok tudományos csoport kezelők team érdeklődők és projekt érdeklődők kell a csapatprojektek előrehaladását úgy követheti nyomon, milyen munkahelyi őket, és ki végzett, és továbbra is megtalálható a feladatlisták. 
+Data science csoportvezetők Csapatvezetők és projekt érdeklődők kell a projektek előrehaladását úgy követheti nyomon, milyen munkahelyi végeztük el őket, és ki használja őket, és a feladatlisták nem marad. 
 
-## <a name="vsts-dashboards"></a>VSTS irányítópultok
-Ha a Visual Studio Team Services (VSTS) használata esetén is a tevékenységeket és a megadott gyors projekthez tartozó munkaelemek követéséhez irányítópultok létrehozásához. 
+## <a name="azure-devops-dashboards"></a>Az Azure DevOps-irányítópult
+Ha használja az Azure DevOps, is nyomon követheti a tevékenységeket és a egy adott projektkezelési társított munkaelemek irányítópultokat hozhat létre. 
 
-További információ a létrehozásáról és testre szabhatja a Visual Studio Team Services widgeteket és az irányítópultokat tekintse meg a következő utasítássor:
+További információ a létrehozása és testreszabása az Azure DevOps widgeteket és az irányítópultokat a következő eljárások egyikét az utasításokat lásd:
 
-- [Fel és kezelheti az irányítópultok](https://docs.microsoft.com/vsts/report/dashboards/dashboards)
-- [Widgetek hozzáadása az irányítópult](https://docs.microsoft.com/vsts/report/dashboards/add-widget-to-dashboard).
+- [Adja hozzá, és az irányítópultok kezelése](https://docs.microsoft.com/azure/devops/report/dashboards/dashboards)
+- [Widgetek hozzáadása egy irányítópulthoz](https://docs.microsoft.com/azure/devops/report/dashboards/add-widget-to-dashboard).
 
 ## <a name="example-dashboard"></a>Példa irányítópult
 
-Ez egy egyszerű példa irányítópult gyors adatok tudományos projektben, valamint a véglegesítések számát sprint tevékenységeit követésére társított adattárak beépített. A **bal felső** panelen látható:
+Íme egy egyszerű példa irányítópult, amely egy hatékony adatelemzési projektjéhez, valamint a véglegesítések száma sprint tevékenységének nyomon társított tárházakba. A **bal felső** panelen látható:
 
-- az aktuális sprint a visszaszámlálási 
-- az elmúlt 7 napban minden tárház véglegesítések száma
-- a munkaelem bizonyos felhasználók részére. 
+- az aktuális sprint, a visszaszámlálás 
+- az elmúlt 7 napban minden tárház a véglegesítések száma
+- a munkaelem egyedi felhasználók számára. 
 
-A fennmaradó panelek jelenítse meg az összesített folyamatábrája (CFD), a burndown és a projekt burnup:
+A fennmaradó panelek a összegző flow diagram (CFD), a projektek burndown és a projekt burnup megjelenítése:
 
-- **Bal alsó részén**: CFD munkaelem egy adott állapotban mennyisége megjelenítő jóváhagyott szürke kék véglegesítve lett, és zöld történik.
-- **Jobb felső**: burndown diagram bal oldali és a hátralévő idő befejezéséhez munka).
-- **Jobb alsó**: burnup diagram befejezése és a munka teljes mennyisége munkáját.
+- **Bal alsó sarokban található**: egy adott állapotban munka mennyisége CFD megjelenítő jóváhagyott szürke, látható kék és zöld színnel történik.
+- **Jobb oldalán**: burndown diagram a munka elvégzéséhez és a hátralévő idő maradt).
+- **Alul a jobb oldalon**: burnup diagram munkát, és a munkahelyi teljes mennyisége befejeződött.
 
 ![irányítópult](./media/track-progress/dashboard.png)
 
-Hogyan hozhat létre diagramokat egy leírását lásd a quickstarts és oktatóanyagok: [irányítópultok](https://docs.microsoft.com/vsts/report/dashboards/).
+Bemutatja, hogyan hozhat létre a diagramokat, olvassa el a rövid útmutatók és oktatóanyagok, [irányítópultok](https://docs.microsoft.com/azure/devops/report/dashboards/).
  
 ## <a name="next-steps"></a>További lépések
 
-Forgatókönyvek, amelyek azt mutatják, a folyamat lépései **meghatározott forgatókönyvek** is rendelkezésre állnak. Szerepel a listában, és kapcsolódik a miniatűr leírásokat a [példa forgatókönyvek](walkthroughs.md) cikk. Ezek bemutatják, hogyan lehet felhő, a helyszíni eszközök és szolgáltatások egyesítése munkafolyamat vagy csővezeték intelligens alkalmazás létrehozása. 
+Forgatókönyvek, amelyek bemutatják, a folyamat összes lépését **meghatározott forgatókönyvek** is rendelkezésre állnak. Felsorolt, és a miniatűr leírásokat tartalmazó társított a [példa forgatókönyvek](walkthroughs.md) cikk. Ezek bemutatják, hogyan kombinálhatja a felhőbeli, helyszíni eszközöket és szolgáltatásokat, munkafolyamat vagy folyamat, intelligens alkalmazások létrehozására. 

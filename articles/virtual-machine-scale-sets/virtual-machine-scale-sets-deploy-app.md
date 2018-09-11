@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2018
 ms.author: cynthn
-ms.openlocfilehash: 8817facc21d2a7ac86bdaf198aab3179a93c4914
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 25773124fcd479489f5d2d544cc5b6e3b11e325a
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38718981"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44301140"
 ---
 # <a name="deploy-your-application-on-virtual-machine-scale-sets"></a>A virtual machine scale sets az alkalmazás üzembe helyezése
 Ha alkalmazásokat szeretne futtatni egy méretezési csoport virtuálisgép-példányán, először telepítenie kell az alkalmazás összetevőit és szükséges fájljait. Ez a cikk bemutatja a módon hozhat létre egyéni Virtuálisgép-rendszerképet a méretezési csoportban lévő példányok állítsa be, vagy már meglévő Virtuálisgép-példányok automatikus futtatásra telepítési szkriptek. Azt is megtudhatja, hogyan kezelhetők alkalmazás vagy az operációs rendszer frissítése egy méretezési csoportot.
@@ -114,7 +114,7 @@ az vmss create \
 ### <a name="install-applications-with-os-updates"></a>Alkalmazások telepítése az operációs rendszer frissítése
 Új operációsrendszer-verziók érhetők el, amikor használja, vagy egy új egyéni rendszerkép összeállítása és [üzembe helyezése operációs rendszer verziófrissítései](virtual-machine-scale-sets-upgrade-scale-set.md) beállítani egy méretezési csoport. Minden egyes Virtuálisgép-példány frissítése a legújabb lemezképet történik. Az alkalmazással előre telepítve van, az egyéni szkriptek futtatására szolgáló bővítmény, vagy a PowerShell DSC egyéni rendszerkép használatával rendelkezik az alkalmazás automatikusan elérhető, a frissítés végrehajtása közben. Szükség lehet tervezése alkalmazás karbantartás végrehajtása közben, győződjön meg arról, hogy nincs kompatibilitási problémák a folyamat.
 
-Az előre telepített alkalmazás egy egyéni Virtuálisgép-rendszerképet használja, ha meg az alkalmazás-frissítések egy központi telepítési folyamat az új rendszerképek létrehozása és üzembe helyezése operációs rendszer verziófrissítései a teljes méretezési és integrálhatja. Ez a megközelítés lehetővé teszi, hogy a folyamat folytattuk a munkát a legfrissebb alkalmazás-buildekről, hozzon létre, ellenőrizze a Virtuálisgép-rendszerkép, majd frissítse a méretezési csoportban lévő Virtuálisgép-példányok. Egy központi telepítési folyamatot, amely felépítése és üzembe helyezése az alkalmazás frissítései között egyéni Virtuálisgép-rendszerképek futtatásához sikerült [Packer lemezkép létrehozása és üzembe helyezése a Visual Studio Team Services](/vsts/pipelines/apps/cd/azure/deploy-azure-scaleset), vagy használjon egy másik platformot például [Spinnaker ](https://www.spinnaker.io/) vagy [Jenkins](https://jenkins.io/).
+Az előre telepített alkalmazás egy egyéni Virtuálisgép-rendszerképet használja, ha meg az alkalmazás-frissítések egy központi telepítési folyamat az új rendszerképek létrehozása és üzembe helyezése operációs rendszer verziófrissítései a teljes méretezési és integrálhatja. Ez a megközelítés lehetővé teszi, hogy a folyamat folytattuk a munkát a legfrissebb alkalmazás-buildekről, hozzon létre, ellenőrizze a Virtuálisgép-rendszerkép, majd frissítse a méretezési csoportban lévő Virtuálisgép-példányok. Egy központi telepítési folyamatot, amely felépítése és üzembe helyezése az alkalmazás frissítései között egyéni Virtuálisgép-rendszerképek futtatásához sikerült [Packer lemezkép létrehozása és üzembe helyezése az Azure DevOps-szolgáltatásokkal](/azure/devops/pipelines/apps/cd/azure/deploy-azure-scaleset), vagy használjon egy másik platformot például [Spinnaker](https://www.spinnaker.io/) vagy [Jenkins](https://jenkins.io/).
 
 
 ## <a name="next-steps"></a>További lépések

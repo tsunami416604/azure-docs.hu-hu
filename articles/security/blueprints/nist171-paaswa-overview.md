@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/31/2018
 ms.author: jomolesk
-ms.openlocfilehash: 8411e9d2d4118c4e1f656b5bc6e9dafb311aeb26
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: 8212788eb775e86918c7111265f3276c7bd99d91
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39391752"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44304220"
 ---
 # <a name="azure-security-and-compliance-blueprint---paas-web-application-for-nist-special-publication-800-171"></a>Azure biztonsági és megfelelőségi terv – a NIST Special Publication 800-171 PaaS webes alkalmazás
 
@@ -83,7 +83,7 @@ Ez a megoldás létrehoz egy virtuális gépet egy tartományhoz csatlakoztatott
 -   Egy [automatikus leállítási házirend](https://azure.microsoft.com/blog/announcing-auto-shutdown-for-vms-using-azure-resource-manager/) csökkenthető a fogyasztása a virtuális gépi erőforrások, amikor nincs használatban
 -   [Windows Defender Credential Guard](https://docs.microsoft.com/windows/access-protection/credential-guard/credential-guard) engedélyezve van, hogy a hitelesítő adatokat és egyéb titkos adatait, amely el van különítve a futó operációs rendszert a védett környezetben futnak
 
-**Az Azure Web App**: [Azure Web Apps](https://docs.microsoft.com/azure/app-service/) lehetővé teszi ügyfeleink számára hozhat létre és üzemeltethet webalkalmazásokat az általuk választott programozási nyelven infrastruktúra kezelése nélkül. Automatikus méretezést és magas rendelkezésre állást kínál, támogatja a Windows és a Linux rendszert is, valamint lehetővé teszi az automatikus telepítéseket a GitHub, Visual Studio Team Services vagy bármely egyéb Git-adattárból.
+**Az Azure Web App**: [Azure Web Apps](https://docs.microsoft.com/azure/app-service/) lehetővé teszi ügyfeleink számára hozhat létre és üzemeltethet webalkalmazásokat az általuk választott programozási nyelven infrastruktúra kezelése nélkül. Automatikus méretezést biztosít, és magas rendelkezésre állás, Windows és Linux egyaránt támogatja, és lehetővé teszi az automatikus telepítéseket a GitHub-, Azure DevOps, vagy bármely egyéb Git-adattárból.
 
 **Alkalmazás Service Environment v2-környezetet**: A [Azure-alkalmazás Service-környezet](https://docs.microsoft.com/azure/app-service/environment/intro) egy App Service-funkció, amely a biztonságos futtatása az App Service-alkalmazásokkal egy teljesen elkülönített és dedikált környezetet biztosít egy nagy méretű.
 

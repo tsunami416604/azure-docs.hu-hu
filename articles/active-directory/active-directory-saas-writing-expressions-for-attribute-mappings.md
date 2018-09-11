@@ -11,14 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/30/2018
+ms.date: 09/09/2018
 ms.author: barbkess
-ms.openlocfilehash: 1c9fe9fb63b45233ed1a11bb63c0763c6103bc6d
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: a48b5aabdaf7f8f9e7269a995d92d046cca21786
+ms.sourcegitcommit: 465ae78cc22eeafb5dfafe4da4b8b2138daf5082
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44095181"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44325566"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Az Azure Active Directoryban attribútumleképezések kifejezések írása
 Amikor konfigurál egy SaaS-alkalmazáshoz való üzembe helyezést, az Ön által megadott attribútum-leképezéshez típusú egyik egy kifejezés-hozzárendelést. Ezeknél a parancsfájl-szerű kifejezés, amely lehetővé teszi, hogy a felhasználók adatokat alakíthatja, amelyek esetében a SaaS-alkalmazás több elfogadható formátumok kell írnia.
@@ -269,6 +269,6 @@ Ha az állapot-kód nem egyezik az előre definiált beállításokat, használj
 * [A felhasználók átadásának attribútumleképezések testreszabása](active-directory-saas-customizing-attribute-mappings.md)
 * [A felhasználók átadásának Hatókörszűrő](active-directory-saas-scoping-filters.md)
 * [SCIM használata a felhasználók és csoportok automatikus üzembe helyezésének engedélyezéséhez az Azure Active Directoryból az alkalmazásokba](manage-apps/use-scim-to-provision-users-and-groups.md)
-* [Alkalmazáskiépítési értesítések](active-directory-saas-account-provisioning-notifications.md)
+* [Alkalmazáskiépítési értesítések](active-directory-saas-app-provisioning.md)
 * [Az SaaS-alkalmazások integrálásával foglalkozó oktatóanyagok listája](saas-apps/tutorial-list.md)
 

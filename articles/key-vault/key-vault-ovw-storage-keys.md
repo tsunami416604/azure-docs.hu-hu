@@ -2,19 +2,19 @@
 ms.assetid: ''
 title: Az Azure Key Vault-Tárfiókkulcsok
 description: A tárfiókkulcsok egy Azure Key Vault és alapuló hozzáférés a kulcshoz seemless integrációjával nyújtson az Azure Storage-fiókot.
-ms.topic: article
+ms.topic: conceptual
 services: key-vault
 ms.service: key-vault
 author: bryanla
 ms.author: bryanla
 manager: mbaldwin
 ms.date: 08/21/2017
-ms.openlocfilehash: 0112d48647c031845bc89ccebfcdd40954c59f14
-ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
+ms.openlocfilehash: 7545a035541a4e464a6c82acb9fa9de18cf8e86d
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42056709"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44304322"
 ---
 # <a name="azure-key-vault-storage-account-keys"></a>Az Azure Key Vault-Tárfiókkulcsok
 

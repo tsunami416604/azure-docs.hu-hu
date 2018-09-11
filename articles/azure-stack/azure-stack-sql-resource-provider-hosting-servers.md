@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 09/05/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: 4dfeff0e22a541a39a59c37c869af41a7e444fa6
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: c33d1fe1385619420215ec0f0fa3b0a2f90dddc0
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43842498"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44299457"
 ---
 # <a name="add-hosting-servers-for-the-sql-resource-provider"></a>Az erőforrás-szolgáltató SQL üzemeltetési kiszolgáló hozzáadása
 
@@ -38,13 +38,16 @@ Mielőtt hozzáadja egy SQL server szoftvert futtatja, tekintse át a következ�
 
 * Használja az SQL-példány dedikált a erőforrás-szolgáltató és a felhasználó munkaterhelések által. Bármely más felhasználói által használt SQL-példány nem használhat. Ez a korlátozás is vonatkozik, az App Servicesbe való.
 * A megfelelő jogosultsággal rendelkező fiók konfigurálása az erőforrás-szolgáltató (lásd alább).
-* Ön az SQL Server-példányok és gazdagépeik kezeléséért.  Például az erőforrás-szolgáltató nem alkalmazza a frissítéseket, kezelni a biztonsági mentések vagy kezelni hitelesítőadat-elforgatás.
+* Ön felelős az SQL Server-példányok és gazdagépeik kezelése.  Például az erőforrás-szolgáltató nem alkalmazza a frissítéseket, kezelni a biztonsági mentések vagy kezelni hitelesítőadat-elforgatás.
 
 ### <a name="sql-server-virtual-machine-images"></a>Az SQL Server virtuálisgép-lemezképek
 
 Az SQL IaaS virtuálisgép-lemezképet a Marketplace-en felügyeleti szolgáltatáson keresztül érhetők el. Ezek a lemezképek ugyanazok, mint az SQL virtuális gépek az Azure-ban elérhető.
 
 Győződjön meg arról, hogy mindig a legújabb verzióját töltse le a **SQL IaaS-bővítményt** Piactéri elem használatával SQL virtuális gép üzembe helyezése előtt. Az IaaS-bővítményt és a megfelelő portál fejlesztések például az automatikus javítás további alkalmazásszolgáltatások biztosítása érdekében, és készítsen biztonsági másolatot. Ez a bővítmény kapcsolatos további információkért lásd: [Azure virtuális gépeken az SQL Server Agent bővítmény a felügyeleti feladatok automatizálása](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension).
+
+> [!NOTE]
+> Az SQL IaaS-bővítményt van _szükséges_ a piactéren; Windows-rendszerképeket az összes SQL a virtuális gép meghiúsul, ha nem tölti le a bővítmény telepítése. Linux-alapú SQL VM-lemezképek nem használható.
 
 SQL virtuális gépek, beleértve a sablonok üzembe helyezésének egyéb lehetőség van a [Azure Stack gyorsindítási galéria](https://github.com/Azure/AzureStack-QuickStart-Templates).
 
@@ -125,7 +128,7 @@ Ahhoz, hogy minden példány automatikus összehangolása, szerkesztése, és fu
   GO
   ```
 
-Vegye figyelembe, hogy a rendelkezésre állási csoport szögletes zárójelbe kell tenni.
+A rendelkezésre állási csoport szögletes zárójelek közé kell tenni.
 
 A másodlagos csomópontokra, futtassa a következő SQL-parancsot:
 

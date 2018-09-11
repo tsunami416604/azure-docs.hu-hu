@@ -13,21 +13,21 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/14/2018
 ms.author: shlo
-ms.openlocfilehash: b457d1ae01e523ac99c6171fa8d2123023ebcd2c
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: 8ad587f7aa7aeb5b7176e63b52f6dea8286055a6
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42059143"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44296891"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Az Azure Data Factoryban vizuális szerzői
 Az Azure Data Factory felhasználói felületen felület (UX) lehetővé teszi, hogy vizuálisan hozhat létre és helyezheti üzembe az erőforrásokat a data Factory kód írása nélkül. Húzza a tevékenységeket a folyamatvásznon, végre, iteratív hibakeresést és üzembe helyezése és a folyamat futásának monitorozása. Kétféleképpen felhasználói a vizuális szerzői műveletek végrehajtásához:
 
 - Szerző közvetlenül a Data Factory szolgáltatással.
-- Felügyeleti csomagok készítése a Visual Studio Team Services (VSTS) Git-integráció együttműködés, verziókövetési vagy versioning.
+- Az Azure DevOps Git-integráció együttműködés, verziókövetési vagy versioning Szerző.
 
 ## <a name="author-directly-with-the-data-factory-service"></a>Szerző közvetlenül a Data Factory szolgáltatással
-A Data Factory szolgáltatásban történő vizuális tartalomkészítésről eltér a vizuális szerzői a vsts-sel két módon:
+A Data Factory szolgáltatásban történő vizuális tartalomkészítésről eltér a vizuális szerzői az Azure DevOps két módon:
 
 - A Data Factory szolgáltatás nem tartalmaz egy helyen a JSON-entitások a módosítások tárolásához.
 - A Data Factory szolgáltatás együttműködési vagy a verziókezeléshez nincs optimalizálva.
@@ -38,39 +38,39 @@ A felhasználói felület használata esetén **szerzői vászon** ahhoz, hogy a
 
 ![Közzétételi mód](media/author-visually/data-factory-publish.png)
 
-## <a name="author-with-vsts-git-integration"></a>Felügyeleti csomagok készítése a VSTS Git-integráció
-VSTS Git-integrációval történő vizuális tartalomkészítésről támogatja a forráskezelés és az együttműködést az adat-előállító folyamatok munka. Adat-előállító társíthatja egy VSTS Git-fiók tárház verziókövetés, együttműködési, verziószámozása és így tovább. VSTS Git egyetlen fiók több tárházak rendelkezhet, de egy VSTS Git-tárház társítható csak egy adat-előállító. Ha nem rendelkezik a VSTS-fiók vagy a tárház, hajtsa végre a [ezek az utasítások](https://docs.microsoft.com/vsts/accounts/create-account-msa-or-work-student) az erőforrások létrehozásához.
+## <a name="author-with-azure-devops-git-integration"></a>Azure DevOps Git-integrációval történő tartalomkészítést
+Az Azure DevOps Git-integrációval történő vizuális tartalomkészítésről támogatja a forráskezelés és az együttműködés az adat-előállító folyamatok munka. Adat-előállító társíthatja az Azure DevOps Git szervezeti adattárba a verziókövetés, együttműködési, verziószámozása és így tovább. Az Azure DevOps Git egyetlen szervezet rendelkezhet több adattárak, de az Azure DevOps Git-tárház társítható csak egy adat-előállító. Ha nem rendelkezik az Azure DevOps-szervezet vagy a tárház, hajtsa végre a [ezek az utasítások](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization-msa-or-work-student) az erőforrások létrehozásához.
 
 > [!NOTE]
-> Egy VSTS Git-tárház feladatparancsfájl és adatfájlok tárolhatja. Azonban hogy a fájlok manuális feltöltése az Azure Storage. Data Factory-folyamatok nem automatikusan tölti fel parancsfájl vagy adatfájlok VSTS Git-tárházat az Azure Storage tárolja.
+> Az Azure DevOps Git-tárház feladatparancsfájl és adatfájlok tárolhatja. Azonban hogy a fájlok manuális feltöltése az Azure Storage. Data Factory-folyamatok nem automatikusan tölti fel az Azure Storage az Azure DevOps Git-adattárban tárolt parancsfájl- vagy adatfájlok.
 
-### <a name="configure-a-vsts-git-repository-with-azure-data-factory"></a>VSTS Git-adattár konfigurálása az Azure Data Factoryvel
-Az adat-előállító egy VSTS Git-tárház két módszer segítségével konfigurálhatja.
+### <a name="configure-an-azure-devops-git-repository-with-azure-data-factory"></a>Az Azure Data Factoryt az Azure DevOps Git-adattár konfigurálása
+Az adat-előállító kétféleképpen keresztül konfigurálhatja az Azure DevOps Git-tárházba.
 
-#### <a name="method1"></a> 1 (VSTS Git-tárház) a konfigurálási módszerhez: első lépések lap
+#### <a name="method1"></a> 1 (Azure fejlesztési és üzemeltetési Git-tárház) a konfigurálási módszerhez: első lépések lap
 
 Az Azure Data Factoryben, nyissa meg a **első lépések** lapot. Válassza ki **kódtár konfigurálása**:
 
-![Egy VSTS-kódtárral konfigurálása](media/author-visually/configure-repo.png)
+![Az Azure DevOps-kódtár konfigurálása](media/author-visually/configure-repo.png)
 
 A **adattár beállításai** konfigurációs panelen jelenik meg:
 
 ![A kód tárház beállításainak konfigurálása](media/author-visually/repo-settings.png)
 
-A panelen látható a következő VSTS kód adattár beállításai:
+A panelen látható a következő Azure DevOps-kód adattár beállításai:
 
 | Beállítás | Leírás | Érték |
 |:--- |:--- |:--- |
-| **Adattár típusa** | A VSTS-kódtárral típusa.<br/>**Megjegyzés:**: GitHub jelenleg nem támogatott. | Visual Studio Team Services Git |
+| **Adattár típusa** | Az Azure DevOps-kódtár típusa.<br/>**Megjegyzés:**: GitHub jelenleg nem támogatott. | Az Azure fejlesztési Ops Git |
 | **Azure Active Directory** | Az Azure AD-bérlő neve. | <your tenant name> |
-| **Visual Studio Team Services Account** | A VSTS-fiók nevét. Megkeresheti a VSTS-fiók nevét, `https://{account name}.visualstudio.com`. Is [jelentkezzen be a VSTS-fiók](https://www.visualstudio.com/team-services/git/) érhető el a Visual Studio-profil, és az adattárak és a projekteket. | <your account name> |
-| **ProjectName** | A VSTS-projekt neve. Megkeresheti a VSTS-projekt neve, `https://{account name}.visualstudio.com/{project name}`. | <your VSTS project name> |
-| **RepositoryName** | A VSTS kód adattár nevét. VSTS-projekteket a Git-tárházakat a forráskód kezelheti a projekt növekedésével tartalmaz. Hozzon létre egy új adattár, vagy használjon egy meglévő adattárhoz, amely a projektben már van. | <your VSTS code repository name> |
-| **Együttműködés ág** | A VSTS együttműködési ág közzététel szolgálja ki. Alapértelmezés szerint a `master`. Ezen beállítás módosításához, abban az esetben, ha szeretne közzétenni egy másik ágban származó erőforrásokat. | <your collaboration branch name> |
-| **Gyökérmappa** | A VSTS-együttműködés ág a gyökérmappában. | <your root folder name> |
-| **Meglévő Data Factory-erőforrások importálása az adattárba** | Megadja, hogy a meglévő data factory-erőforrások importálása a UX **szerzői vászon** egy VSTS Git-tárházba. Jelölje be a data factory-erőforrások importálása a társított Git-tárház JSON formátumban. Ez a művelet exportálja az egyes erőforrások külön-külön (azaz a társított szolgáltatásokat és adatkészleteket exportálása külön JSONs be). Ha a jelölőnégyzet nincs bejelölve, a meglévő erőforrások nem importálja. | Kiválasztott (alapértelmezett) |
+| **Az Azure DevOps-szervezet** | Az Azure DevOps-szervezet neve. Megkeresheti az Azure DevOps-szervezet neve, `https://{organization name}.visualstudio.com`. Is [jelentkezzen be az Azure DevOps-szervezet](https://www.visualstudio.com/team-services/git/) érhető el a Visual Studio-profil, és az adattárak és a projekteket. | <your organization name> |
+| **ProjectName** | Az Azure DevOps-projekt nevét. Megkeresheti az Azure DevOps project nevét `https://{organization name}.visualstudio.com/{project name}`. | <your Azure DevOps project name> |
+| **RepositoryName** | Az Azure DevOps kód adattár nevét. Az Azure DevOps projects tartalmaz Git-tárházakat a forráskód kezelheti a projekt növekedésével. Hozzon létre egy új adattár, vagy használjon egy meglévő adattárhoz, amely a projektben már van. | <your Azure DevOps code repository name> |
+| **Együttműködés ág** | Az Azure DevOps együttműködési ágban közzététel szolgálja ki. Alapértelmezés szerint a `master`. Ezen beállítás módosításához, abban az esetben, ha szeretne közzétenni egy másik ágban származó erőforrásokat. | <your collaboration branch name> |
+| **Gyökérmappa** | Az Azure DevOps-együttműködés ág a gyökérmappában. | <your root folder name> |
+| **Meglévő Data Factory-erőforrások importálása az adattárba** | Megadja, hogy a meglévő data factory-erőforrások importálása a UX **szerzői vászon** Azure DevOps Git-tárházba. Jelölje be a data factory-erőforrások importálása a társított Git-tárház JSON formátumban. Ez a művelet exportálja az egyes erőforrások külön-külön (azaz a társított szolgáltatásokat és adatkészleteket exportálása külön JSONs be). Ha a jelölőnégyzet nincs bejelölve, a meglévő erőforrások nem importálja. | Kiválasztott (alapértelmezett) |
 
-#### <a name="configuration-method-2--vsts-git-repo-ux-authoring-canvas"></a>2 (VSTS Git-tárház) a konfigurálási módszerhez: UX szerzői vászon
+#### <a name="configuration-method-2--azure-devops-git-repo-ux-authoring-canvas"></a>2 (Azure fejlesztési és üzemeltetési Git-tárház) a konfigurálási módszerhez: UX szerzői vászon
 Az Azure Data Factory felhasználói **szerzői vászon**, keresse meg az adat-előállítóhoz. Válassza ki a **adat-előállító** legördülő menüből, és válassza ki **kódtár konfigurálása**.
 
 A konfiguráció panelen jelenik meg. A konfigurációs beállításaival kapcsolatos információkért lásd: található leírások <a href="#method1">konfigurációs módszer 1</a>.
@@ -79,7 +79,7 @@ A konfiguráció panelen jelenik meg. A konfigurációs beállításaival kapcso
 
 ## <a name="use-a-different-azure-active-directory-tenant"></a>Egy másik Azure Active Directory-bérlő használata
 
-Létrehozhat egy VSTS Git-tárház egy másik Azure Active Directory-bérlőben található. Egy másik Azure AD-bérlővel, rendelkeznie kell Azure-előfizetést használ, rendszergazdai jogosultságokkal.
+Létrehozhat egy Azure-fejlesztési és üzemeltetési Git-tárház egy másik Azure Active Directory-bérlőben található. Egy másik Azure AD-bérlővel, rendelkeznie kell Azure-előfizetést használ, rendszergazdai jogosultságokkal.
 
 ## <a name="switch-to-a-different-git-repo"></a>Váltson egy másik Git-adattár
 
@@ -92,11 +92,11 @@ Miután eltávolítja a társítást az aktuális tárház, konfigurálhatja a G
 ## <a name="use-version-control"></a>Használja a verziókövetés
 Verziókövető rendszereket (más néven _verziókövetés_) lehetővé teszik a fejlesztőknek, kód és nyomon követésére helyadatbázisokban végrehajtott módosításokat a kód alap másokkal közös használatához. Verziókövetés fontos több fejlesztési projektek eszközzel.
 
-Minden egyes VSTS Git-tárház az adat-előállító társított együttműködési ág rendelkezik. (`master` alapértelmezett együttműködési ág). Felhasználók is létrehozhat a szolgáltatás ágak kattintva **+ új ág** és végezze el a szolgáltatás ágak fejlesztés.
+Minden adat-előállító társított Azure DevOps Git-tárház együttműködési ág rendelkezik. (`master` alapértelmezett együttműködési ág). Felhasználók is létrehozhat a szolgáltatás ágak kattintva **+ új ág** és végezze el a szolgáltatás ágak fejlesztés.
 
 ![A kód módosítása szinkronizálása vagy közzététele](media/author-visually/sync-publish.png)
 
-Amikor készen áll a funkció fejlesztéséhez a szolgáltatás ágban, kattintson **Create pull-kérelem**. Ez a művelet vesz igénybe, hogy hol is növelheti a pull-kérelmek, VSTS Git felülvizsgálatok code, és egyesíti az egyes módosításokat az együttműködés ágban. (`master` az alapértelmezett beállítás). A Data Factory szolgáltatásban közzétenni az együttműködés ágból csak engedélyezett. 
+Amikor készen áll a funkció fejlesztéséhez a szolgáltatás ágban, kattintson **Create pull-kérelem**. Ez a művelet vesz igénybe, hogy hol is növelheti a pull-kérelmek, az Azure DevOps Git felülvizsgálatok code, és egyesíti az egyes módosításokat az együttműködés ágban. (`master` az alapértelmezett beállítás). A Data Factory szolgáltatásban közzétenni az együttműködés ágból csak engedélyezett. 
 
 ![Új lekéréses kérelem létrehozása](media/author-visually/create-pull-request.png)
 
@@ -140,11 +140,11 @@ A **adattár beállításai** konfigurációs panelen jelenik meg:
 
 ![GitHub-adattár beállításai](media/author-visually/github-integration-image2.png)
 
-A panelen látható a következő VSTS kód adattár beállításai:
+A panelen látható a következő Azure DevOps-kód adattár beállításai:
 
 | **Beállítás**                                              | **Leírás**                                                                                                                                                                                                                                                                                                                                                                                                                   | **Érték**          |
 |----------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
-| **Adattár típusa**                                      | A VSTS-kódtárral típusa.                                                                                                                                                                                                                                                                                                                                                                                             | GitHub             |
+| **Adattár típusa**                                      | Az Azure DevOps-kódtár típusa.                                                                                                                                                                                                                                                                                                                                                                                             | GitHub             |
 | **GitHub-fiók**                                       | A GitHub-fiók neve. Ez a név megtalálja https://github.com/{account neve} / {adattár neve}. Ellenőrizheti, hogy ezen a lapon kéri, hogy adja meg a GitHub OAuth hitelesítő adatokat ahhoz a GitHub-fiókhoz.                                                                                                                                                                                                                                               |                    |
 | **RepositoryName**                                       | A GitHub code-adattár neve. GitHub-fiókjukban, kezelheti a forráskód Git-tárházak tartalmaznak. Hozzon létre egy új adattár, vagy használjon egy meglévő adattárhoz, amely már a fiókjához.                                                                                                                                                                                                                              |                    |
 | **Együttműködés ág**                                 | A GitHub együttműködési ág közzététel szolgálja ki. Alapértelmezés szerint a főadatbázis. Ezen beállítás módosításához, abban az esetben, ha szeretne közzétenni egy másik ágban származó erőforrásokat.                                                                                                                                                                                                                                                               |                    |
@@ -172,11 +172,11 @@ A **adattár beállításai** konfigurációs panelen jelenik meg:
 
 ![GitHub-adattár beállításai](media/author-visually/github-integration-image3.png)
 
-A panelen látható a következő VSTS kód adattár beállításai:
+A panelen látható a következő Azure DevOps-kód adattár beállításai:
 
 | **Beállítás**                                              | **Leírás**                                                                                                                                                                                                                                                                                                                                                                                                                   | **Érték**          |
 |----------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
-| **Adattár típusa**                                      | A VSTS-kódtárral típusa.                                                                                                                                                                                                                                                                                                                                                                                             | GitHub             |
+| **Adattár típusa**                                      | Az Azure DevOps-kódtár típusa.                                                                                                                                                                                                                                                                                                                                                                                             | GitHub             |
 | **Használja a GitHub Enterprise-zal**                                | Jelölőnégyzetet, válassza ki a GitHub Enterprise-zal                                                                                                                                                                                                                                                                                                                                                                                              |                    |
 | **GitHub Enterprise-zal URL-címe**                                | A GitHub Enterprise-zal gyökér URL-címe. Például:https://github.mydomain.com                                                                                                                                                                                                                                                                                                                                                          |                    |
 | **GitHub-fiók**                                       | A GitHub-fiók neve. Ez a név megtalálja https://github.com/{account neve} / {adattár neve}. Ellenőrizheti, hogy ezen a lapon kéri, hogy adja meg a GitHub OAuth hitelesítő adatokat ahhoz a GitHub-fiókhoz.                                                                                                                                                                                                                                               |                    |

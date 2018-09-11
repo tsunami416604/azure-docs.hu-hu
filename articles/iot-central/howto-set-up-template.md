@@ -1,6 +1,6 @@
 ---
-title: Egy Azure IoT központi alkalmazásban eszköz sablon beállítása |} Microsoft Docs
-description: Megtudhatja, hogyan állíthat be egy eszköz sablon mérések, beállítások, tulajdonságok, szabályok és egy irányítópultot.
+title: Az Azure IoT Central alkalmazáshoz eszköz sablon beállítása |} A Microsoft Docs
+description: Ismerje meg, hogyan állítható be egy eszköz sablon mérések, beállítások, tulajdonságainak, szabályok és a egy irányítópultot.
 author: viv-liu
 ms.author: viviali
 ms.date: 04/16/2018
@@ -8,268 +8,268 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: f71d4c7dc94fedfd598ab87c51366ba9fb1f184a
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: dafa58c5356c89351ab0eb711e4095b767aee1ae
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37063035"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44298166"
 ---
 # <a name="set-up-a-device-template"></a>Eszköz sablon beállítása
 
-Egy eszköz sablon egy tervezetének, jellemzőit és egy eszköz, amely csatlakozik a Microsoft Azure IoT központi alkalmazások típusú viselkedés határozza meg.
+Egy eszköz, amely meghatározza a jellemzőit és a egy eszköz, amely a Microsoft Azure IoT Central alkalmazáshoz típusú viselkedéseit tervrajz áll.
 
-A jelentéskészítő például egy IoT-csatlakoztatott ventilátor rendelkező eszköz sablont hozhat létre:
+Például egy jelentéskészítő egy IoT-csatlakoztatott ventilátor rendelkező eszköz sablont hozhat létre:
 
-- Hőmérséklet-telemetria mérési
+- Hőmérsékleti telemetria mérési
 
 - Ventilátor motor hiba esemény mérési
 
 - Működési állapot mérési ventilátor
 
-- Ventilátor beállítása
+- Ventilátor sebesség beállítása
 
 - Location tulajdonság
 
 - Szabályok, amelyek az értesítések küldése
 
-- Irányítópultot, amely lehetővé teszi az átfogó képet az eszköz
+- Irányítópult, amelyen az eszköz átfogó képet
 
-A eszköz sablonból operátor hozhat létre és valós ventilátor eszközök csatlakoztatása a névvel, mint **ventilátor.-1** és **ventilátor-2**. A ventilátorok rendelkezik mérések, beállítások, tulajdonságok, szabályok és egy irányítópultot, amely a felhasználók az alkalmazás figyelése és kezelése.
+Eszköz sablonból, az operátornak hozhat létre és valódi ventilátor eszközök csatlakoztatása a neveket például **ventilátor.-1** és **ventilátor-2**. Az összes alábbi ventilátorok mérések, beállítások, tulajdonságainak, szabályok és egy irányítópultot, amely az alkalmazás felhasználóinak monitorozni és kezelni a rendelkezik.
 
 > [!NOTE]
-> Csak a létrehozói és a rendszergazdák létrehozása, szerkesztése és törlése eszköz sablonok. Bármely felhasználó létrehozhat eszközök a a **eszköz Explorer** meglévő eszköz felügyeleticsomag-sablonok lap.
+> Csak a kapcsolat építői és a rendszergazdák létrehozása, szerkesztése és törlése eszköz sablonok. Minden felhasználó létrehozhat eszközök a a **Device Explorer** meglévő eszközsablonok lapot.
 
-## <a name="create-a-device-template"></a>Eszköz-sablon létrehozása
+## <a name="create-a-device-template"></a>Egy eszköz-sablon létrehozása
 
-1. Lépjen a **alkalmazás jelentéskészítő** lap.
+1. Nyissa meg a **alkalmazás Builder** lapot.
 
-2. Hozzon létre egy üres sablont, válassza ki **eszköz sablon létrehozása**, majd válassza ki **egyéni**.
+2. Hozzon létre egy üres sablont, válassza a **eszköz-sablon létrehozása**, majd válassza ki **egyéni**.
 
-3. Adja meg az új eszköz-sablon nevét, és válassza ki **létrehozása**.
+3. Adjon meg egy nevet az új eszköz sablont, és válassza ki **létrehozás**.
 
-   ![Eszköz részleteit megjelenítő oldalon a "Hűtő" a sablonnevet](./media/howto-set-up-template/devicedetailspage.png)
+   !["Hűtőszekrények" a sablon nevét az eszköz részleteit tartalmazó oldalra](./media/howto-set-up-template/devicedetailspage.png)
 
-4. Épp most a **eszközadatok** új szimulált eszköz oldalán. A szimulált eszköz automatikusan létrejön egy eszköz sablon létrehozásakor. Adatok jelentéseket, és szabályozhatja csakúgy, mint egy valós eszközt.
+4. Most már használ a **eszközadatok** új szimulált eszköz lapján. Szimulált eszköz automatikusan létrejön az Ön számára, egy eszköz sablon létrehozásakor. Jelentések adatait és a egy igazi eszközön hasonlóan lehet irányítani.
 
-Egyes lapokon nézze most a **eszközadatok** lap.
+Most nézzük meg egyes lapokon a **eszközadatok** lapot.
 
 ## <a name="measurements"></a>Mérések
 
-A méréseket az adatokat, hogy az eszköz származik. Az eszköz lehetőségeinek megfelelő eszköz sablonjára több mérések is hozzáadhat.
+Mértékek az eszközről az adatokat. Az eszköz a sablon megfelelő az eszköz képességeit több mérések adhat hozzá.
 
-- **Telemetria** mérések, amely az eszköz által összegyűjtött numerikus adatpontok. Ezek állandó folyama most jelöli. Példa: hőmérséklet.
-- **Esemény** méréseket időpontban adatok, amelyek valamilyen többszörösére az eszközön. Egy súlyossági szintet az esemény fontosságát jelöli. Példa: egy ventilátor motor hiba.
-- **Állapot** mérések határoz meg az eszköz vagy az összetevők állapotát egy meghatározott időtartamra vonatkozóan. Például egy ventilátor mód adható meg kellene **operációs** és **leállítva** , a két lehetséges állapota.
+- **Telemetria** mérések, amely az eszköz által összegyűjtött numerikus adatpontok. Ezek még folyama jelöli. Ilyen például a hőmérsékletet.
+- **Esemény** mérések időponthoz adatok, amelyek valamit az eszközön a jelentősége. Egy súlyossági szintet az esemény fontossága jelöli. Példa ventilátor motor hiba.
+- **Állapot** mérések az eszköz vagy összetevőinek állapotát képviselik egy időszakon belül. Például egy ventilátor mód lehet meghatározni, hogy **operációs** és **leállítva** , a két lehetséges állapota.
 
-### <a name="create-a-telemetry-measurement"></a>A telemetriai adatok mérési létrehozása
-Egy új telemetriai mérési hozzáadásához válassza a **+ új mérési** gombra. Válassza ki **Telemetriai** a mérték, írja be, és adja meg a részleteket a a **létrehozása Telemetriai** űrlap.
+### <a name="create-a-telemetry-measurement"></a>Telemetria mérték létrehozása
+Egy új telemetriai mérési hozzáadásához válassza **sablon szerkesztése**, majd kattintson a **+ új mérték** gombra. Válassza ki **Telemetriai** a mérték, írja be, és adja meg, hogy a **Telemetriát hozzon létre** űrlap.
 
 > [!NOTE]
-> Ha egy valódi eszköz csatlakozik, a neve, amely az eszköz jelentés készít a mérés figyelmet fordítania. A név pontosan meg kell egyeznie a **mezőnév** bejegyzés egy mérték.
+> Ha valós eszköz van csatlakoztatva, a neve, a mérték által jelentett figyelmet fordítania. A névnek pontosan egyeznie kell a **mezőnév** bejegyzés egy mérték.
 
-Hozzáadhat például egy új hőmérséklet telemetriai mérési:
+Például egy új hőmérsékleti telemetria mérték is hozzáadhat:
 
-![Hőmérséklet méréséhez adatokkal "Telemetriai létrehozása" képernyő](./media/howto-set-up-template/measurementsform.png)
+!["A telemetriai adatok létrehozása" űrlapján hőmérséklet mérési adatait](./media/howto-set-up-template/measurementsform.png)
 
-Miután kiválasztotta a **mentése**, a **hőmérséklet** mérési mérések listájában jelenik meg. A képi megjelenítés gyűjtő, az eszköz hőmérséklete adatok operátor tekintheti meg.
+Miután kiválasztotta **kész**, a **hőmérséklet** mérték megjelenik a listában a mértékek. Az operátor az eszköz gyűjti hőmérsékleti adatok a Vizualizáció látható.
 
-![Mérési diagramhoz](./media/howto-set-up-template/measurementsgraph.png)
+![Mérési graph](./media/howto-set-up-template/measurementsgraph.png)
 
-### <a name="create-an-event-measurement"></a>Egy esemény mérték létrehozása
-Egy új esemény mérési hozzáadásához válassza a **+ új mérési** gombra. Válassza ki **esemény** a mérték, írja be, és adja meg a részleteket a a **esemény létrehozása** űrlap.
+### <a name="create-an-event-measurement"></a>Egy esemény-mérték létrehozása
+Egy új esemény mérési hozzáadásához válassza **sablon szerkesztése**, majd kattintson a **+ új mérték** gombra. Válassza ki **esemény** a mérték, írja be, és adja meg, hogy a **esemény létrehozása** űrlap.
 
-Adja meg a **megjelenített név**, **mezőnév**, és **súlyossági** az esemény részleteit. A három elérhető súlyossági szintek közül választhat: **hiba**, **figyelmeztetés**, és **információk**.  
+Adja meg a **megjelenítendő név**, **mezőnév**, és **súlyossági** az esemény részleteit. Súlyosság három szintjei közül választhat: **hiba**, **figyelmeztetés**, és **információk**.  
 
 Például hozzáadhat egy új **ventilátor Motor hiba** esemény.
 
-![Egy ventilátor motor esemény részleteinek "Esemény létrehozása" képernyő](./media/howto-set-up-template/eventmeasurementsform.png)
+!["Esemény létrehozása" űrlapján ventilátor motor esemény részletei](./media/howto-set-up-template/eventmeasurementsform.png)
 
-Miután kiválasztotta a **mentése**, a **ventilátor Motor hiba** mérési mérések listájában jelenik meg. Az esemény-adatok, amely az eszköz küld a képi megjelenítés operátor tekintheti meg.
+Kiválasztása után **kész**, a **ventilátor Motor hiba** mérési mérések listájában jelenik meg. Az operátor az eseményadatokat, hogy az eszköz által küldött, a Vizualizáció látható.
 
 ![Esemény mérési diagram](./media/howto-set-up-template/eventmeasurementschart.png)
 
-Az esemény részletes adatainak megtekintéséhez jelölje ki az esemény ikonra a diagram:
+Az esemény részleteinek megtekintéséhez jelölje ki a diagramon az esemény ikonra:
 
 ![A "Ventilátor Motor Error" esemény részletei](./media/howto-set-up-template/eventmeasurementsdetail.png)
 
 
-### <a name="create-a-state-measurement"></a>Hozzon létre egy állapot mérési
-Új állapot a mérés hozzáadásához válassza a **+ új mérési** gombra. Válassza ki **állapot** a mérték, írja be, és adja meg a részleteket a a **létrehozás állapot** űrlap.
+### <a name="create-a-state-measurement"></a>Egy állapot-mérték létrehozása
+Új állapot a mérés hozzáadásához válassza **sablon szerkesztése**, majd kattintson a **+ új mérték** gombra. Válassza ki **állapot** a mérték, írja be, és adja meg, hogy a **létrehozása állapot** űrlap.
 
-Adja meg a részletes **megjelenített név**, **mezőnév**, és **értékek** az állapot. Az egyes értékek is használandó, ha az érték diagramok és táblák megjelenítendő nevét.
+Adja meg az adatait **megjelenített név**, **mezőnév**, és **értékek** az állapot. Minden egyes érték is használható, ha az érték jelenik meg, diagramok és táblázatok megjelenített név.
 
-Például hozzáadhat egy új **ventilátor mód** , két lehetséges értéket, amely az eszköz küld, amelynek állapota **operációs** és **leállítva**.
+Például hozzáadhat egy új **ventilátor mód** állapota, az eszköz küldhet, két lehetséges értékekkel rendelkező **operációs** és **leállítva**.
 
-![Ventilátor mód adatokkal "Szerkesztés állapot" képernyő](./media/howto-set-up-template/statemeasurementsform.png)
+![Ventilátor mód részleteit tartalmazó "Szerkesztés állapot" képernyő](./media/howto-set-up-template/statemeasurementsform.png)
 
-Miután kiválasztotta a **mentése**, a **ventilátor mód** állapot mérési mérések listájában jelenik meg. Az operátor tekintheti meg a képi megjelenítés küld az eszköz állapota adatok.
+Kiválasztása után **kész**, a **ventilátor mód** állapot mérési mérések listájában jelenik meg. Az operátor az állapotadatokat, amelyeket az eszköz által küldött, a Vizualizáció látható.
 
 ![Állapot mérési diagram](./media/howto-set-up-template/statemeasurementschart.png)
 
-Az eszköz túl sok adatpont küld egy kis idő, az állapot mérés az egy másik visual megjelenik az alábbi képernyőfelvételen látható módon. Ha a diagram gombra kattint, a meghatározott időszakon belül adatpontok időrendi sorrendben jelennek meg. Az időtartományt, tekintse meg a mérték a diagramon ábrázolt is szűkítéséhez.
+Az eszköz a kis időtartam túl sok adatpont küld, ha az állapot mérték jelenik meg egy másik vizualizációt, az alábbi képernyőképen látható módon. Ha rákattint a diagram, az adott időtartamon belül minden adatpontok időrendi sorrendben jelennek meg. Az időtartomány, tekintse meg a diagramon ábrázolt mérését is szűkíthető.
 
-![Az állapotadatok mérési adatokat a "statikus ventilátor mód"](./media/howto-set-up-template/statemeasurementsdetail.png)
+![A "Statikus ventilátor üzemmód" állapot mérték részletei](./media/howto-set-up-template/statemeasurementsdetail.png)
 
 
 ## <a name="settings"></a>Beállítások
 
-Beállítások egy eszköz vezérlésére. Az alkalmazás arra, hogy az eszközhöz bevitelek operátorok lehetővé teszik. Az eszköz sablon megjelenő mozaikként több beállítást is hozzáadhat a **beállítások** fülre az operátorok használatára. Hat típusú beállítások is hozzáadhat: szám, dátum, váltása, kivételezési listát, és a szakasz címke.
+Beállítások egy eszköz vezérlésére. Adja meg a bemeneti adatok az eszközön az alkalmazás üzemeltetői lehetővé teszik. Csempék formájában jelenik meg az eszköz-sablon több beállítást is hozzáadhat a **beállítások** fülre az operátorok használatához. Hat-beállítástípusokat is hozzáadhat: szám, szöveg, dátum, be-vagy kikapcsolása, választéklista és szakaszcímke.
 
 > [!NOTE]
-> Ha egy valódi eszköz csatlakozik, a neve, amely az eszköz jelentés készít beállítás figyelmet fordítania. A név pontosan meg kell egyeznie a **mezőnév** bejegyzés beállítás.
+> Valós eszköz van csatlakoztatva, ha a beállítás által jelentett nevére figyelmet. A névnek pontosan egyeznie kell a **mezőnév** beállítás-bejegyzést.
 
-Beállítások az alábbi három állapotban lehet. Az eszköz jelentés készít ezeket az állapotokat.
+Három állapota lehet. Az eszköz ezeket az állapotokat az jelenti.
 
-- **Szinkronizált**: az eszköz megfelelően a beállítás értéke megváltozott.
+- **Szinkronizált**: az eszközt, hogy a beállítás értéke megváltozott.
 
-- **Függőben lévő**: az eszköz jelenleg vált át a beállítás értéke.
+- **Függőben lévő**: az eszköz jelenleg módosul, a beállítás értéke.
 
 - **Hiba**: az eszköz hibát adott vissza.
 
-Például egy új ventilátor sebesség beállítást is hozzáadhat:
+Például hozzáadhat egy új ventilátor sebesség beállítás kiválasztásával **sablon szerkesztése** , és adjon meg az új beállítás található:
 
-![Sebesség beállításai részleteinek "Számának konfigurálása" képernyő](./media/howto-set-up-template/settingsform.png)
+!["Configure száma" űrlapján beállításai sebességét részletei](./media/howto-set-up-template/settingsform.png)
 
-Miután kiválasztotta a **mentése**, a **Ventilátor sebessége** beállítás csempe jelenik meg, és az eszköz ventilátor sebességének módosítása használatra kész.
+Kiválasztása után **mentése**, a **ventilátor sebesség** beállítás csempeként jelenik meg, és készen áll a használatra, az eszköz ventilátor sebességének módosítása.
 
-Miután létrehozott egy csempe, kipróbálhatja az új beállítással. Első lépésként kapcsolja ki a tervezési módba, a képernyő jobb felső részén.
+Miután létrehozott egy csempét, kipróbálhatja az új beállítást. Először jelölje ki **kész** a képernyő jobb felső részén.
 
-![A "Tervezési módba" kapcsolóval csempe "Beállítások" lapon](./media/howto-set-up-template/settingstile.png)
+![A "Tervezési mód" kapcsolóval csempe "Beállítások" lap](./media/howto-set-up-template/settingstile.png)
 
 ## <a name="properties"></a>Tulajdonságok
 
-A rendszer az eszköz metaadatait az eszköz, például az eszköz helyét és sorozatszám társított tulajdonságokat. Az eszköz sablon megjelenő mozaikként több tulajdonságot is hozzáadhat a **tulajdonságok** fülre. Operátor megadhatja az értékeket azokhoz a tulajdonságokhoz, hoznak létre egy eszközt, és bármikor ezeket az értékeket szerkesztheti azokat. Hat típusú tulajdonságokat is hozzáadhat: szám, dátum, váltása, eszköztulajdonságon, és címke.
+A tulajdonságok akkor, az eszköz metaadatait, amely az eszköz, például az eszköz helye és sorozatszám vannak társítva. Több tulajdonságokat adhat hozzá, csempék formájában jelenik meg az eszköz-sablon a **tulajdonságok** fülre. Az operátor is adja meg a tulajdonságok értékeit, hozzon létre egy eszközt, és ezeket az értékeket bármikor szerkesztheti azokat. Hat különböző típusú tulajdonságokat is hozzáadhat: szám, szöveg, dátum, be-vagy kikapcsolása, eszköztulajdonság és címke.
 
 Tulajdonságok két kategóriába sorolhatók:
 
-- **Eszköz** tulajdonságait, amely az eszköz jelentés készít.
+- **Eszköz** által jelentett tulajdonságok.
 - **Alkalmazás** pusztán az alkalmazásban tárolt tulajdonságai. Az eszköz nem ismeri fel az alkalmazás tulajdonságait.
 
 > [!NOTE]
-> Az eszköz tulajdonságok valós eszköz csatlakozik, amikor nagy figyelmet fordítani az, hogy az eszköz jelentés készít a tulajdonság nevét. A név pontosan meg kell egyeznie a **mezőnév** bejegyzés tulajdonság. Az alkalmazás tulajdonságait, a mező neve lehet bármilyen, mindaddig, amíg az eszköz sablon egyedi neve.
+> Az eszköz tulajdonságainál valós eszköz van csatlakoztatva, amikor odafigyelni által jelentett tulajdonság nevére. A névnek pontosan egyeznie kell a **mezőnév** tulajdonság-bejegyzést. Az alkalmazás tulajdonságait a mező neve lehet bármit, mindaddig, amíg az eszköz sablonban egyedi név.
 
-Például egy új tulajdonságként eszköz helyét is hozzáadhat:
+Például hozzáadhat az eszközök helyére egy új tulajdonságként kiválasztásával **sablon szerkesztése** és az új tulajdonság megadásával:
 
-![A "Tulajdonságok" lapon "Szöveget konfigurálása" képernyő](./media/howto-set-up-template/propertiesform.png)
+![A "Tulajdonságok" lap "Szöveg konfigurálása" képernyő](./media/howto-set-up-template/propertiesform.png)
 
-Miután kiválasztotta a **mentése**, eszköz helyét csempe jelenik meg:
+Miután kiválasztotta **mentése**, az eszközök helyére egy csempe jelenik meg:
 
 ![Hely csempe](./media/howto-set-up-template/propertiestile.png)
 
-Miután létrehozott egy csempe, módosíthatja a tulajdonság értékét. Első lépésként kapcsolja ki a tervezési módba, a képernyő jobb felső részén.
+Miután létrehozott egy csempét, módosíthatja a tulajdonság értéke. Először jelölje ki **kész** a képernyő jobb felső részén.
 
-### <a name="create-a-location-property-through-azure-maps"></a>Hozzon létre egy Azure-leképezések helye tulajdonság
-Földrajzi környezet rendszerében a hely adatait az Azure IoT-központ, és bármely olyan utca, házszám szélességi és hosszúsági koordinátáját hozzárendelését. Vagy Önnek egyszerűen térkép szélességi és hosszúsági koordinátákkal is. Az Azure Maps lehetővé teszi, hogy ezt a lehetőséget az IoT központi.
+### <a name="create-a-location-property-through-azure-maps"></a>Hozzon létre egy hely tulajdonságot az Azure Maps révén
+Az Azure IoT Central helyadatok földrajzi összefüggésbe, és bármely olyan utca, házszám szélességi és hosszúsági koordinátáit leképezése. Vagy egyszerűen térkép szélességi és hosszúsági koordinátákat is. Az Azure Maps ezt a lehetőséget az IoT Central lehetővé teszi.
 
-Kétféle típusú hely tulajdonságai is hozzáadhat:
-- **Egy alkalmazás tulajdonság helyének**, amely kizárólag az alkalmazás tárolódik. Az eszköz nem ismeri fel az alkalmazás tulajdonságait.
-- **Hely eszköz tulajdonságként**, amely az eszköz jelentés készít.
+Hely tulajdonságai két típusú adhat hozzá:
+- **A helyen, ahol egy alkalmazás tulajdonság**, amely csak az alkalmazásban tárolt. Az eszköz nem ismeri fel az alkalmazás tulajdonságait.
+- **A helyen, ahol egy adott eszköztulajdonság**, amely az eszköz jelenti.
 
-#### <a name="add-location-as-an-application-property"></a>Alkalmazás tulajdonságként hely hozzáadása 
-A location tulajdonság egy alkalmazás tulajdonság létrehozásához, ha Azure IoT központi alkalmazásában megtekintését. Például az eszköz telepítési címe is hozzáadhat. 
+#### <a name="add-location-as-an-application-property"></a>Egy alkalmazás tulajdonságként helyének hozzáadása 
+Egy alkalmazás tulajdonságként a location tulajdonsághoz hozhat létre az IoT-központ alkalmazás az Azure Maps használatával. Ha például az eszköz telepítési címe is hozzáadhat. 
 
-1. Az a **tulajdonságok** lapra, győződjön meg arról, hogy **tervezési módba** van **a**.
+1. Az a **tulajdonságok** lapon jelölje be **sablon szerkesztése**.
 
-   ![A Tervező mód engedélyezve van a "Tulajdonságok" lapon](./media/howto-set-up-template/locationcloudproperty1.png)
+   ![Tervezési mód engedélyezve van a "Tulajdonságok" lap](./media/howto-set-up-template/locationcloudproperty1.png)
 
-2. Válassza ki a szalagtár **hely**.
-3. Konfigurálása **megjelenített név**, **mezőnév**, és (opcionálisan) **kezdeti érték** helyét. 
+2. Válassza ki a könyvtárban **hely**.
+3. Konfigurálása **megjelenítendő név**, **mezőnév**, és (opcionálisan) **kezdeti érték** helyéhez. 
 
-   !["A hely konfigurálása" űrlap hely adatokkal](./media/howto-set-up-template/locationcloudproperty2.png)
+   !["A hely konfigurálása" űrlapján hely részletei](./media/howto-set-up-template/locationcloudproperty2.png)
 
-   Nincsenek két támogatott formátumok hely hozzáadásához:
+   Van egy hely hozzáadásához két támogatott formátumok:
    - **Hely-címként**
-   - **Hely-koordináták** 
+   - **A helyen, ahol koordinátái** 
 
-4. Kattintson a **Mentés** gombra. 
+4. Válassza ki **mentése** és **kész**. 
 
-   ![Telepítési címmel hozzáadott helyet jelölő tulajdonsághoz](./media/howto-set-up-template/locationcloudproperty3.png)
+   ![Telepítési címmel hozzáadott Location tulajdonság](./media/howto-set-up-template/locationcloudproperty3.png)
 
-Most egy olyan operátort frissítheti a hely mező űrlap a hely értéke. 
+Az operátornak most már frissítheti az a hely értéket a hely mező képernyőn. 
 
-#### <a name="add-location-as-a-device-property"></a>Eszköz tulajdonságként hely hozzáadása 
+#### <a name="add-location-as-a-device-property"></a>Eszköz-tulajdonságként helyének hozzáadása 
 
-A helyet jelölő tulajdonsághoz, amely az eszköz jelentés készít eszköz tulajdonságként hozhat létre. Például, ha szeretné nyomon követni az eszköz helyét:
+A location tulajdonság által jelentett tulajdonságként eszköz hozhat létre. Ha például szeretné nyomon követni az eszköz helye:
 
-1. Az a **tulajdonságok** lapra, győződjön meg arról, hogy **tervezési módba** van **a**.
+1. Az a **tulajdonságok** lapon jelölje be **sablon szerkesztése**.
 
-   ![A Tervező mód engedélyezve van a "Tulajdonságok" lapon](./media/howto-set-up-template/locationdeviceproperty1.png)
+   ![Tervezési mód engedélyezve van a "Tulajdonságok" lap](./media/howto-set-up-template/locationdeviceproperty1.png)
 
-2. Válassza ki **Eszköztulajdonságon** a könyvtárból.
-3. Konfigurálja a megjelenített név és a mező nevét, majd válassza ki **hely** adattípusaként. 
+2. Válassza ki **Eszköztulajdonság** a könyvtárból.
+3. Állítsa be a megjelenítendő név és a mező nevét, és válassza ki **hely** adattípusának. 
 
    > [!NOTE]
-   > A mezőnév pontosan egyeznie kell, hogy az eszköz jelentés készít a tulajdonságnevet kell megadni. 
+   > A mező neve pontosan meg kell egyeznie a tulajdonság által jelentett nevét. 
 
-   ![Hely adatokkal "Eszköztulajdonságok konfigurálása" képernyő](./media/howto-set-up-template/locationdeviceproperty2.png)
+   !["Az eszköz tulajdonságainak konfigurálása" űrlapján hely részletei](./media/howto-set-up-template/locationdeviceproperty2.png)
 
-Most, hogy konfigurálta a helyet jelölő tulajdonsághoz, akkor [vegyen fel egy társítást a helyet, az eszköz irányítópult megjelenítéséhez](#add-an-azure-maps-location-in-the-dashboard).
+Most, hogy konfigurálta a location tulajdonsághoz, [jeleníthetik meg a helyet, az eszköz irányítópult térképen hozzáadása](#add-an-azure-maps-location-in-the-dashboard).
 
 ## <a name="commands"></a>Parancsok
 
-Parancsok segítségével a eszköz távoli felügyelete. Lehetővé teszik az operátorok az alkalmazás azonnal futtassa a parancsokat az eszközön. Az eszköz sablon megjelenő mozaikként több parancs is hozzáadhat a **parancsok** fülre az operátorok használatára. A szerkesztő az eszköz, mint így rugalmasan megadhatók a parancsok a követelményeknek megfelelően.
+Parancsok segítségével eszköz távoli felügyelete. Ezek lehetővé teszi a kezelők az alkalmazás azonnal az eszközön a parancsok futtatásához. Csempék formájában jelenik meg az eszköz-sablon több parancsot is hozzáadhat a **parancsok** fülre az operátorok használatához. Az eszköz a szerkesztő, mint rugalmasan adhatók meg a parancsok a követelményeinek megfelelően.
 
-Miben különbözik a parancs egy beállítást? 
+Miben különbözik egy parancs egy beállítást? 
 
-* **Beállítás**: A beállítás a konfigurációkat, amelyek egy eszközre alkalmazni kívánja, és azt szeretné, hogy a konfigurálás továbbra is fennáll, addig az eszköz. Például be szeretné állítani a feldolgozó hőmérséklete, és azt szeretné, hogy a beállítást, akkor is, ha a feldolgozó újraindul. 
+* **Beállítás**: A beállítás nem egy-egy eszköz a alkalmazni kívánt konfigurációját, és azt szeretné, hogy az eszköz számára, hogy a konfigurációs maradnak, amíg nem módosítja azt. Például a hőmérsékletet, a feldolgozó beállítja, és azt szeretné, hogy a beállítást, akkor is, ha a feldolgozó újraindítja. 
 
-* **A parancs**: parancsok segítségével azonnal futtassa a parancsot az eszköz távoli IoT központi. Ha egy eszköz nincs csatlakoztatva, a parancs végrehajtásának időkorlátja, és sikertelen lesz. Például szeretné egy eszköz újraindítása.  
+* **A parancs**: parancsok használatával azonnal parancsot az eszközön távolról futtatni az IoT-központ. Ha egy eszköz nem kapcsolódik, a parancs túllépi az időkorlátot, és nem sikerül. Ha például szeretné eszköz újraindítása.  
 
-A parancs futtatásakor az alábbi három állapotban, attól függően, hogy az eszköz a parancsot kapott lehet. 
+A parancs futtatásakor, attól függően, hogy az eszköz kapott-e a parancs három állapota lehet.
 
-Például hozzáadhat egy új **Echo** parancs:
+Például hozzáadhat egy új **Echo** parancsot választva **sablon szerkesztése**, majd kattintson **+ új parancs**, és beírja az új parancsot:
 
-!["A parancsot konfigurálása" űrlap echo részleteit](./media/howto-set-up-template/commandsecho.png)
+![Echo részleteit tartalmazó "Parancs konfigurálása" képernyő](./media/howto-set-up-template/commandsecho.png)
 
-Miután kiválasztotta a **mentése**, a **Echo** parancs csempe jelenik meg, és az eszköz echo való használatra kész.
+Kiválasztása után **mentése** és **kész**, a **Echo** parancs csempeként jelenik meg, és készen áll a használatra az echo az eszközön.
 
-Miután létrehozott egy csempe, kipróbálhatja az új parancsot.
+Miután létrehozott egy csempét, kipróbálhatja az új parancsot.
 
 ## <a name="rules"></a>Szabályok
 
-Szabályok szereplői eszközök közel valós idejű figyelése. Szabályok automatikus műveleteket végez, például egy e-mailt küld, ha a szabály akkor lesz kiváltva lép működésbe. A szabály egy típusú ma akkor érhető el:
+Szabályok kezelők számára az eszközök közel valós idejű figyelését. Szabályok automatikus hajthatók végre műveletek, például az e-mailt küld, amikor a szabály akkor lesz kiváltva. Egy szabály típus érhető el még ma:
 
-- **Telemetria szabály**, amely akkor váltódik ki, a kijelölt telemetriát ebbe a megadott küszöbértéket. [További információ a telemetriai adatok szabályok](howto-create-telemetry-rules.md).
+- **Telemetria szabály**, amely akkor aktiválódik, ha a kiválasztott eszköz telemetriai átlép egy küszöbértéket. [További tudnivalók a telemetriai adatok szabályok](howto-create-telemetry-rules.md).
 
 ## <a name="dashboard"></a>Irányítópult
 
-Az irányítópult pedig operátor eszközök adatainak megjelenítéséhez hová. Szerkesztő, mert ezen a lapon, a kezelők számára az eszköz működésének megértése hozzáadhatja a csempéket. Az eszköz sablon több irányítópulton található csempe is hozzáadhat. Hat típusú irányítópulton található csempe is hozzáadhat: kép, diagram, a sávdiagram, a KPI, a beállítások és a tulajdonságok és címkézését.
+Az irányítópulton, ahol az operátornak lépjen az eszköz adatainak megtekintése:. Mint szerkesztő csempék is hozzáadhat az ezen a lapon, a kezelők számára a megértéséhez, hogy az eszköz működése. Az eszköz sablon több irányítópult-csempék is hozzáadhat. Az irányítópulton lévő csempék hat különböző is hozzáadhat: rendszerképet, diagram, sávdiagramot oszlopdiagramra cseréli, KPI-t, beállításait és tulajdonságait. sor, és a címkét.
 
-Például hozzáadhat egy **beállítások és a Tulajdonságok** mozaiklapra a kijelölt beállítások és tulajdonságainak aktuális értékeivel:
+Hozzáadhat például egy **beállításait és tulajdonságait** csempe kiválasztásával az aktuális értékek beállítás- és a egy kijelölt megjeleníthető **sablon szerkesztése** és a csempét a tárból:
 
-!["Az eszköz részletes adatainak konfigurálása" képernyő beállításait és a Tulajdonságok adatokkal](./media/howto-set-up-template/dashboardsettingsandpropertiesform.png)
+![Részletes beállítások és tulajdonságok "Konfigurálása eszköz részletei" képernyő](./media/howto-set-up-template/dashboardsettingsandpropertiesform.png)
 
-Most operátor megtekinti az irányítópulton, amikor ez a csempe megjeleníti a tulajdonságok és az eszköz beállításait láthatják:
+Mostantól Ha operátor megtekinti az irányítópultot, meghatározhatják, hogy ez a csempe, amely megjeleníti a tulajdonságokat és beállításokat az eszköz:
 
-!["Irányítópult" lapon megjelenített beállításokat és a csempe tulajdonságai](./media/howto-set-up-template/dashboardtile.png)
+![A megjelenített beállítások és tulajdonságok csempe "Az irányítópult" lap](./media/howto-set-up-template/dashboardtile.png)
 
-### <a name="add-an-azure-maps-location-in-the-dashboard"></a>Adja hozzá az Azure-leképezések helye az irányítópulton
+### <a name="add-an-azure-maps-location-in-the-dashboard"></a>Az Azure Maps-hely hozzáadása az irányítópult
 
-Ha konfigurálta a location tulajdonság korábban a [hozzon létre egy Azure-leképezések helye tulajdonság](#create-a-location-property-through-azure-maps), az eszköz irányítópulton térképre használatával jelenítheti meg a helyet.
+Ha konfigurálta a location tulajdonsághoz korábban a [hozzon létre egy hely tulajdonságot keresztül az Azure Maps](#create-a-location-property-through-azure-maps), az eszköz irányítópultján egy térkép használatával jelenítheti meg a helyet.
 
-1. Az a **irányítópult** lapra, győződjön meg arról, hogy **tervezési módba** van **a**.
+1. Az a **irányítópult** lapon jelölje be **sablon szerkesztése**.
 
-   ![A Tervező mód engedélyezve van a "Irányítópult" lap](./media/howto-set-up-template/locationcloudproperty4map.png)
+   ![Tervezési mód engedélyezve van az "Irányítópult" lap](./media/howto-set-up-template/locationcloudproperty4map.png)
 
-2. Az eszköz irányítópultra, válassza ki a **térkép** a könyvtárból. 
-3. Olyan címet adjon, és válassza ki a korábban beállított a eszköztulajdonságok részeként helyet jelölő tulajdonsághoz.
+2. Az eszköz irányítópultján válassza **térkép** a könyvtárból. 
+3. Adjon meg egy címet, és válassza ki a helyet jelölő tulajdonsághoz, amely az eszköz tulajdonságait részeként korábban konfigurált.
 
-   ![Cím és a Tulajdonságok adatokkal "Térkép konfigurálása" képernyő](./media/howto-set-up-template/locationcloudproperty5map.png)
+   ![Cím és a Tulajdonságok részleteit tartalmazó "Konfigurálása a Map" képernyő](./media/howto-set-up-template/locationcloudproperty5map.png)
 
-4. Kattintson a **Mentés** gombra. A térkép csempe mostantól megjeleníti a kiválasztott hely. 
+4. Kattintson a **Mentés** gombra. A szolgáltatástérkép csempe mostantól megjeleníti a kiválasztott hely. 
 
-   ![Térkép csempe, amely a kijelölt hely](./media/howto-set-up-template/locationcloudproperty6map.png) 
+   ![A kiválasztott helyen a szolgáltatástérkép csempe](./media/howto-set-up-template/locationcloudproperty6map.png) 
 
-A térkép átméretezheti a kívánt méretre.
+A térkép méretezheti át a kívánt méretre.
 
-Most operátor megtekinti az irányítópulton, amikor konfigurálását, beleértve egy helyének hozzárendelése az összes irányítópult-csempéihez láthatják.
+Most már az operátornak megtekinti az irányítópultot, amikor megjelenik az összes az irányítópult-csempék, amelyek konfigurálta, többek között a helyek térképe.
 
-![A az irányítópult csempéi](./media/howto-set-up-template/locationcloudproperty7map.png) 
+![Az irányítópult csempéi](./media/howto-set-up-template/locationcloudproperty7map.png) 
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy megismerte az Azure IoT központi alkalmazás eszköz sablont beállításával, akkor a következőket teheti:
+Most, hogy megismerte az Azure IoT Central alkalmazáshoz egy eszköz-sablon beállítása, hogy a következőket teheti:
 
 > [!div class="nextstepaction"]
 > [Hozzon létre egy új eszköz sablon verziója](howto-version-devicetemplate.md)

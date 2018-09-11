@@ -11,15 +11,15 @@ ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/14/2018
 ms.author: bryanla
-ms.openlocfilehash: f36e0e3ddc605d960ed764252308cbf09578832c
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 60b8689e602f0716cdd1a383ab6568979a37e7c0
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43126142"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44302945"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>Tudnivalók a kulcsok, titkos kódok és tanúsítványok
 Az Azure Key Vault lehetővé teszi, hogy a felhasználók tárolhatják és a Microsoft Azure-környezeten belül titkosítási kulcsok használata. A Key Vault több kulcstípusok és algoritmusokat támogatja, és lehetővé teszi az értékes kulcsok használható hardveres biztonsági modulok (HSM). Emellett a Key Vault lehetővé teszi a felhasználók számára a titkos kulcsok biztonságos tárolása. A titkok olyan mérete korlátozott oktett objektumok nem adott sémantikou. A Key Vault támogatja a tanúsítványok, kulcsok és titkos kulcsok épülnek, és adja hozzá az automatikus megújítási szolgáltatást is.

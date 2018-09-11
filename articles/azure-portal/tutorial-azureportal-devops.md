@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/05/2016
 ms.author: mlearned
-ms.openlocfilehash: db3cc8bb546758402e4f0b3fe91449e597e754fa
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: d0bf66a224a8a42f813bc817f78321167e309bdb
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42058400"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44303523"
 ---
 # <a name="tutorial-devops-with-the-azure-portal"></a>Oktatóanyag: A DevOps és az Azure Portalon
 Az Azure platform számos rugalmas DevOps-munkafolyamatot tartalmaz. Ebben az oktatóanyagban elsajátíthatja, hogyan használható a funkcióinak fejlesztése, tesztelése, üzembe helyezése, hibaelhárítása, figyelheti és kezelheti a futó alkalmazások az Azure Portalon. Ez az oktatóanyag a következő témákkal foglalkozik:
@@ -82,7 +82,7 @@ Hozzon létre egy webalkalmazást az [Azure App Service](https://azure.microsoft
     
     ![image15][image15]
     
-    Folyamatos üzembe helyezés az Azure Portalon engedélyezése nem túl bonyolult. Létrehozhat ennél bonyolultabb kiadási folyamatokat, és sok más módszert is használhat a meglévő forrásvezérlő és folyamatos integrációjú rendszerekkel az Azure-ba való üzembe helyezéshez, például használhat automatikus rendszereket a létrehozás és a kiadás felügyeletéhez.
+    Folyamatos üzembe helyezés az Azure Portalon engedélyezése nem túl bonyolult. Is ennél bonyolultabb kiadási folyamatokat hozhat létre, és sok más módszert használja a meglévő Forrásvezérlő és folyamatos integrációjú rendszerekkel való üzembe helyezése az Azure-ba, például kihasználva automatizált folyamatokat az Azure felügyeleti rendszerekkel.
 
 ## <a name="develop-and-test-an-app"></a>Alkalmazás fejlesztése és tesztelése
 Ezután hajtson végre néhány módosítást az alapkódban, és gyorsan helyezze üzembe ezeket a módosításokat. Is beállíthat a webalkalmazás néhány teljesítménytesztet.
@@ -99,7 +99,7 @@ Ezután hajtson végre néhány módosítást az alapkódban, és gyorsan helyez
 4. A konzolablakban élő parancsokat adhat meg a alkalmazáshoz. Írja be a dir parancsot, és nyomja le az Enter billentyűt. Megjegyzendő, hogy az emelt szintű jogosultságokat igénylő parancsok nem működnek.
    
    ![image19][image19]
-5. Lépjen vissza a Fejlesztés kategóriához, és válassza a Visual Studio Online lehetőséget. Megjegyzés: A Visual Studio Online új neve Visual Studio Team Services.
+5. Lépjen vissza a Fejlesztés kategóriához, és válassza a Visual Studio Online lehetőséget. Megjegyzés: A Visual Studio Online új neve az Azure DevOps-szolgáltatásokkal.
    
    ![image20][image20]
 6. Váltson át a böngészőbeli szerkesztésre az alkalmazásnál.
@@ -125,7 +125,7 @@ Ezután hajtson végre néhány módosítást az alapkódban, és gyorsan helyez
 12. Lépjen vissza az eszközök paneljére, és a Fejlesztés kategóriában kattintson a Teljesítményteszt elemre.
     
     ![image28][image28]
-13. Be kell állítania egy Team Services-fiókot. További információt itt talál: [Team Services-fiók létrehozása](https://docs.microsoft.com/vsts/organizations/accounts/create-organization-msa-or-work-student).
+13. Az Azure DevOps-szolgáltatásokkal szervezetekben szükség. További információt itt talál: [hozzon létre egy Azure-fejlesztési és üzemeltetési szolgáltatások szervezet](https://docs.microsoft.com/vsts/organizations/accounts/create-organization-msa-or-work-student).
 14. Az Új gombra kattintva hozzon létre egy új teljesítménytesztet.
     
     ![image29][image29]

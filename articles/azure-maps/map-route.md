@@ -9,20 +9,20 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: codepen
-ms.openlocfilehash: 37323bacf47613c0faf7769701808ecef2645115
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: cb0d5d7239095b67235cc68233d9492377178362
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44157953"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44295533"
 ---
 # <a name="show-directions-from-a-to-b"></a>Útvonal megjelenítése A-ból B-be 
 
 Ez a cikk bemutatja, hogyan indítson egy útvonalat, és az útvonal megjelenítése a térképen.
 
-Ehhez két módszer van, az egyik módszer, amelyet lekérdezésével a [Azure Maps útvonal API](https://docs.microsoft.com/rest/api/maps/route/getroutedirections) szolgáltatáson keresztül modul és a egy másik program azáltal, hogy egy [XMLHttpRequest](https://xhr.spec.whatwg.org/) az API-hoz. Mindkettő az alábbiak ismertetik.
+Ehhez két módszer van, az egyik módszer, lekérdezésével a [Azure Maps útvonal API](https://docs.microsoft.com/rest/api/maps/route/getroutedirections) szolgáltatáson keresztül modul és a egy másik program azáltal, hogy egy [XMLHttpRequest](https://xhr.spec.whatwg.org/) az API-hoz. Mindkettő az alábbiak ismertetik.
 
-## <a name="use-service-module-to-query-for-a-route"></a>Útvonal lekérdezéshez modul használata
+## <a name="querying-the-route-via-service-module"></a>Lekérdezése a route service modulon keresztül
 
 ## <a name="understand-the-code"></a>A kód értelmezése
 
@@ -43,7 +43,7 @@ A hatodik kódblokkot egy útvonal lekérdezést hoz létre.
 
 A legutóbbi kódblokkot keresztül az Azure Maps útválasztási szolgáltatás lekérdezi a [getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/services.route?view=azure-iot-typescript-latest#getroutedirections) metódus egy útvonalat a kezdő és a cél pont közötti lekéréséhez. A válasz majd szűrőtulajdonság GeoJSON formátumú használatával a [getGeoJsonRoutes](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.geojson.geojsonroutedirectionsresponse?view=azure-iot-typescript-latest#getgeojsonroutes) metódust. Hozzáadja a sorokra a térképre az útvonal megjelenítése. Látható [adjon hozzá egy sort a térképen](./map-add-shape.md#addALine) további információt.
 
-## <a name="use-xmlhttprequest-to-query-for-a-route"></a>Lekérdezés útvonal XMLHTTPRequest használatával
+## <a name="querying-the-route-via-xmlhttprequest"></a>Az útvonal keresztül XMLHttpRequest lekérdezése
 
 ## <a name="understand-the-code"></a>A kód értelmezése
 

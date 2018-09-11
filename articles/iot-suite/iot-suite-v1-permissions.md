@@ -1,6 +1,6 @@
 ---
-title: Az Azure IoT Suite és az Azure Active Directory |} Microsoft Docs
-description: Ismerteti, hogyan Azure IoT Suite az Azure Active Directory használatával kezeli az engedélyeket.
+title: Az Azure IoT Suite és az Azure Active Directory |} A Microsoft Docs
+description: Ismerteti, hogyan Azure IoT Suite-ot használja engedélyek kezelése Azure Active Directoryban.
 services: ''
 suite: iot-suite
 documentationcenter: ''
@@ -15,131 +15,131 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2017
 ms.author: dobett
-ms.openlocfilehash: 4d0c7aff54ee20cf9ae4e6cdf2fc0718cd0b2f2a
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: a56d535ee06a097c7c18bcd507c25708f6a33f91
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35303721"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44296924"
 ---
 # <a name="permissions-on-the-azureiotsuitecom-site"></a>Engedélyek az azureiotsuite.com webhelyen
 
-## <a name="what-happens-when-you-sign-in"></a>Mi történik, amikor bejelentkezik
+## <a name="what-happens-when-you-sign-in"></a>Mi történik, ha bejelentkezik
 
-Az első bejelentkezéskor, [azureiotsuite.com][lnk-azureiotsuite], a hely határozza meg a jogosultsági szintek rendelkezik a kijelölt Azure Active Directory (AAD) bérlői és az Azure-előfizetés alapján.
+Az első alkalommal bejelentkezik, [azureiotsuite.com][lnk-azureiotsuite], a hely határozza meg a jogosultsági szintek rendelkezik az aktuálisan kijelölt Azure Active Directory (AAD) bérlői és az Azure-előfizetés alapján.
 
-1. Először töltse fel adatokkal a bérlők mellett a felhasználónévnek látható listáját, a hely szerzi meg az Azure-ból mely AAD-bérlő tartozik. Jelenleg a hely csak szerezhet be egy bérlői felhasználói jogkivonatokhoz egyszerre. Ezért amikor a bérlők a legördülő lista használatával jobb felső sarokban, a hely naplózza a arra a bérlőre, hogy a bérlő a tokenek beszerzése.
+1. Először is feltöltheti a listát, a bérlők a felhasználónév mellett látható, hogy a hely házigazdája, az Azure-ból melyik AAD-bérlők, amelyekhez tartozik. Jelenleg a hely csak szerezhet be egy bérlő felhasználói jogkivonatok egyszerre. Ezért amikor használatával a legördülő listában a jobb felső sarokban a bérlők, a hely naplózza a arra a bérlőre, a jogkivonatok lekérésére, hogy a bérlő számára.
 
-2. A hely a következő megkeresése, melyik előfizetések vannak társítva a kiválasztott bérlő az Azure-ból. Megjelenik az elérhető előfizetésekkel, amikor létrehoz egy új előkonfigurált megoldást.
+2. Ezután a hely házigazdája melyik előfizetések társítva van a kiválasztott bérlő Azure-ból. Az elérhető előfizetésekkel megjelenik egy új, előre konfigurált megoldás létrehozásakor.
 
-3. Végezetül a hely veszi át összes lévő erőforrásokat a előfizetésekhez és erőforráscsoportokhoz előkonfigurált megoldásokat címkével rendelkeznek, és feltölti a csempék a kezdőlapon.
+3. Végül a hely lekéri az összes az erőforrásokat az előfizetésekhez és erőforráscsoportokhoz megjelölve az előre konfigurált megoldások és tölti fel a csempéket a kezdőlapon.
 
-A következő szakaszok ismertetik a szerepköröket, amelyek hozzáférést az előre konfigurált megoldásokhoz.
+A következő szakaszok ismertetik a szerepköröket, amelyek szabályozzák a hozzáférést, az előre konfigurált megoldások.
 
-## <a name="aad-roles"></a>Az AAD-szerepkörök
+## <a name="aad-roles"></a>AAD-szerepkörök
 
-Az AAD-szerepkörök szabályozhatja a képes előre konfigurált rendelkezés megoldások, és előre konfigurált megoldás a felhasználók kezeléséhez.
+Az AAD-szerepkörök képessége kiépítése, előre konfigurált megoldások vezérlőelemet, és kezelni a felhasználókat az előre konfigurált megoldást.
 
-Tudnivalók a rendszergazdai szerepkörökről további információkat talál az aad-ben a [rendszergazdai szerepkörök hozzárendelése az Azure AD][lnk-aad-admin]. A jelen cikkben összpontosít a **globális rendszergazda** és a **felhasználói** directory szerepkörök az előkonfigurált megoldásokat által használt.
+Tudnivalók a rendszergazdai szerepkörökről további információ található az AAD [rendszergazdai szerepkörök hozzárendelése az Azure ad-ben][lnk-aad-admin]. A jelen cikkben összpontosít a **globális rendszergazdai** és a **felhasználói** címtárbeli szerepkörök az előre konfigurált megoldások által használt.
 
 ### <a name="global-administrator"></a>Globális rendszergazda
 
-Az AAD bérlőnként globális rendszergazdák közül sokan lehet:
+AAD bérlőnként számos globális rendszergazda is lehet:
 
-* Amikor létrehoz egy AAD-bérlőt, áll alapértelmezés szerint, hogy a bérlő globális rendszergazdája.
-* A globális rendszergazda előkonfigurált megoldást hozhat létre, és hozzá van rendelve egy **Admin** szerepkör az alkalmazás az AAD-bérlőt belül.
-* Ha egy másik felhasználója ugyanazt az AAD-bérlőt alkalmazást hoz létre, az alapértelmezett számára a globális rendszergazdai szerepköre **ReadOnly**.
-* A globális rendszergazda felhasználók hozzárendelése a szerepkörök használó alkalmazások esetében a [Azure-portálon][lnk-portal].
+* Amikor létrehoz egy AAD-bérlőt, Ön alapértelmezés szerint a bérlő globális rendszergazdája.
+* A globális rendszergazda is egy előre konfigurált megoldás kiépítése, és hozzá van rendelve egy **rendszergazdai** szerepkör esetében az alkalmazás az AAD-bérlő belül.
+* Az azonos AAD-bérlő egy másik felhasználója létrehoz egy alkalmazást, az alapértelmezett szerepkör a globális rendszergazda kap-e **ReadOnly**.
+* Globális rendszergazda felhasználók hozzárendelése a szerepköröket használó alkalmazások számára a [az Azure portal][lnk-portal].
 
-### <a name="domain-user"></a>Tartományi felhasználó
+### <a name="domain-user"></a>Tartomány felhasználó
 
-AAD-bérlőt sok tartományi felhasználók lehet:
+AAD bérlőnként több Tartományfelhasználók is lehetnek:
 
-* A tartományi felhasználók építhető ki előkonfigurált megoldást a [azureiotsuite.com] [ lnk-azureiotsuite] hely. Alapértelmezés szerint a tartományi felhasználó számára biztosított a **Admin** szerepkör a kiépített alkalmazásban.
-* Egy olyan tartományi felhasználó hozhat létre egy alkalmazást a build.cmd parancsfájl a [azure iot-távoli-ellenőrző][lnk-rm-github-repo], [azure iot – prediktív-karbantartás] [ lnk-pm-github-repo], vagy [azure iot-csatlakoztatott-gyári] [ lnk-cf-github-repo] tárházba. Azonban az alapértelmezett a tartományi felhasználó számára biztosított szerepköre **ReadOnly**, mert egy olyan tartományi felhasználó nem jogosult rendelhet szerepköröket.
-* Az AAD-bérlőt egy másik felhasználója alkalmazást hoz létre, ha a tartományi felhasználó van-e hozzárendelve a **ReadOnly** szerepkör az alkalmazás alapértelmezés szerint.
-* Egy olyan tartományi felhasználó nem rendelhető hozzá a szerepkört az alkalmazások számára. ezért egy olyan tartományi felhasználó nem vehető fel felhasználók vagy szerepkörök a felhasználók számára az alkalmazás akkor is, ha azok kiépítése azt.
+* Tartományi felhasználó építhető ki egy előre konfigurált megoldás keretében a [azureiotsuite.com] [ lnk-azureiotsuite] hely. Alapértelmezés szerint a tartományi felhasználó számára biztosított a **rendszergazdai** az üzembe helyezett alkalmazás szerepkörben.
+* Egy tartományi felhasználó egy alkalmazást a build.cmd-parancsprogram használatával hozhat létre a [azure-iot-remote-monitoring][lnk-rm-github-repo], [azure-iot-predictive-maintenance] [ lnk-pm-github-repo], vagy [azure-iot-connected-factory] [ lnk-cf-github-repo] tárház. Viszont az alapértelmezett szerepkör a tartományi felhasználó számára biztosított, **ReadOnly**, mert egy tartományi felhasználó nincs engedélye rendelhet szerepköröket.
+* Ha az AAD-bérlő egy másik felhasználója létrehoz egy alkalmazást, a tartományi felhasználó van hozzárendelve a **ReadOnly** szerepkör az adott alkalmazáshoz alapértelmezés szerint.
+* Tartományi felhasználó nem rendelhető hozzá a szerepkört az alkalmazások számára. ezért egy tartományi felhasználó nem adható hozzá felhasználókkal vagy szerepkörökkel, a felhasználók számára az alkalmazás akkor is, ha azok építette ki azt.
 
-### <a name="guest-user"></a>Vendég felhasználó
+### <a name="guest-user"></a>A vendégfelhasználók
 
-Az AAD bérlőnként számos Vendég felhasználó lehet. Vendégfelhasználók rendelkeznek korlátozott jogok az AAD-bérlőben. Ennek eredményeképpen a vendégfelhasználók az AAD-bérlőt az előkonfigurált megoldás nem használhatók.
+AAD bérlőnként számos vendég felhasználók is lehet. Vendég felhasználók rendelkeznek jogosultságokkal korlátozott számú az AAD-bérlő. Ennek eredményeképpen a vendégfelhasználók nem sikerült kiépíteni egy előre konfigurált megoldásban az AAD-bérlő.
 
-Felhasználók és szerepkörök az aad-ben kapcsolatos további információkért lásd a következőket:
+További információ a felhasználók és szerepkörök az aad-ben a következő forrásanyagokban talál:
 
 * [Felhasználók létrehozása az Azure ad-ben][lnk-create-edit-users]
-* [Felhasználók hozzárendelése alkalmazásokhoz][lnk-assign-app-roles]
+* [Felhasználók hozzárendelése alkalmazások][lnk-assign-app-roles]
 
-## <a name="azure-subscription-administrator-roles"></a>Azure-előfizetéshez rendszergazdai szerepkörök
+## <a name="azure-subscription-administrator-roles"></a>Azure-előfizetéshez, rendszergazdai szerepkörök
 
-Az Azure rendszergazdai szerepkörök az Azure-előfizetés van leképezve az AD-bérlő általi szabályozása.
+Az Azure-rendszergazdai szerepkörök szabályozása az Azure-előfizetés leképezése egy AD-bérlővel.
 
-További információk a cikkben az Azure rendszergazdai szerepkörök [hozzáadása vagy módosítása az Azure Társadminisztrátoraként, a szolgáltatás-rendszergazda és a fiók rendszergazdájához][lnk-admin-roles].
+További információk a cikk az Azure-rendszergazdai szerepkörök [hozzáadása vagy módosítása az Azure-előfizetés rendszergazdái][lnk-admin-roles].
 
 ## <a name="application-roles"></a>Alkalmazás-szerepkörök
 
-A szerepkörökhöz az előkonfigurált megoldás eszközökre való hozzáférés szabályozása.
+Az alkalmazás-szerepkörök eszközök az előre konfigurált megoldásban való hozzáférés szabályozása.
 
-Két megadott szerepkörök és meghatározott egy telepített alkalmazás egy implicit szerepkör vannak:
+Nincsenek a két meghatározott szerepkör és a egy kiosztott alkalmazás meghatározott egy implicit szerepkör:
 
-* **Felügyeleti:** hozzáadása, kezelése, távolítsa el az eszközök és beállítások módosítása teljes körű vezérléssel rendelkezik.
-* **Csak olvasható:** eszközök, szabályok, műveletek, feladatok és telemetriai adatok megtekintéséhez.
+* **Rendszergazda:** hozzáadása, kezelése, távolítsa el az eszközt és beállításainak módosítása a teljes körű vezérléssel rendelkezik.
+* **Írásvédett:** megtekintheti az eszközök, szabályok, műveletek, feladatok és telemetriai adatokat.
 
-A jogosultságait az egyes szerepkör található a [RolePermissions.cs] [ lnk-resource-cs] forrásfájl.
+Annak az az egyes szerepkörökhöz rendelt engedélyeket a [RolePermissions.cs] [ lnk-resource-cs] forrásfájl.
 
-### <a name="changing-application-roles-for-a-user"></a>A felhasználó alkalmazás-szerepkörök módosítása
+### <a name="changing-application-roles-for-a-user"></a>Egy felhasználó alkalmazás-szerepkörök módosítása
 
-Az alábbi eljárás segítségével végezze el a felhasználó az Active Directory rendszergazdája az előkonfigurált megoldás.
+A következő eljárást használhatja az előre konfigurált megoldás az rendszergazdájának, a felhasználók az Active Directoryban.
 
-Egy felhasználó szerepköreinek módosítása egy aad-ben globális rendszergazdának kell lennie:
+Felhasználó szerepkörök módosítása egy aad-ben globális rendszergazdának kell lennie:
 
 1. Nyissa meg az [Azure Portalt][lnk-portal].
 2. Válassza az **Azure Active Directory** elemet.
-3. Ellenőrizze, hogy használ a könyvtárat úgy döntött, hogy a azureiotsuite.com létesített a megoldás. Ha az Ön előfizetéséhez rendelve több címtárral rendelkezik, válthat őket, ha a fiók nevére, a portál felső – jobb kattint.
-4. Kattintson a **vállalati alkalmazások**, majd **összes alkalmazás**.
-4. Megjelenítése **összes alkalmazás** rendelkező **bármely** állapotát. Majd keresse meg az előkonfigurált megoldás nevű kérelmet.
-5. Kattintson a nevére, az alkalmazás, amely megfelel az előkonfigurált megoldás neve.
-6. Kattintson a **felhasználók és csoportok**.
-7. Válassza ki a használni kívánt szerepkörök felhasználót.
-8. Kattintson a **hozzárendelése** , válassza ki a szerepkört (például **Admin**) szeretné rendelni a felhasználóhoz, kattintson a pipa jelre.
+3. Ellenőrizze, hogy használja a kiválasztott könyvtár az azureiotsuite.com webhelyen, a megoldás üzembe helyezésekor. Ha az előfizetéshez társított több címtárral rendelkezik, közöttük a jobb felső sarkában a portálon, a fiók nevére kattintva válthat.
+4. Kattintson a **vállalati alkalmazások**, majd **minden alkalmazás**.
+4. Megjelenítés **minden alkalmazás** az **bármely** állapotát. Keressen rá az előre konfigurált megoldás nevű kérelmet.
+5. Kattintson a nevére, az alkalmazás, amely megegyezik az előre konfigurált megoldás nevét.
+6. Kattintson a **Felhasználók és csoportok** elemre.
+7. Válassza ki a használni kívánt szerepkörök felhasználó.
+8. Kattintson a **hozzárendelése** , és válassza ki a szerepkört (például **rendszergazdai**), amelyet szeretne hozzárendelni a felhasználóhoz, kattintson a pipa jelre.
 
 ## <a name="faq"></a>GYIK
 
-### <a name="im-a-service-administrator-and-id-like-to-change-the-directory-mapping-between-my-subscription-and-a-specific-aad-tenant-how-do-i-complete-this-task"></a>A szolgáltatás-rendszergazdáknak vagyok, és szeretnék módosítani a könyvtár leképezése az előfizetésem és egy adott AAD-bérlőt között. Hogyan hajthatja végre ezt a feladatot?
+### <a name="im-a-service-administrator-and-id-like-to-change-the-directory-mapping-between-my-subscription-and-a-specific-aad-tenant-how-do-i-complete-this-task"></a>Szolgáltatás-rendszergazda vagyok, és szeretném, ha az előfizetés és a egy adott AAD-bérlő közötti címtár leképezést módosítása. Hogyan végezhető el ez a feladat?
 
-Lásd: [hozzáadása egy meglévő előfizetéshez az Azure AD-címtár](../active-directory/active-directory-how-subscriptions-associated-directory.md#to-associate-an-existing-subscription-to-your-azure-ad-directory)
+Lásd: [egy meglévő előfizetés hozzáadása az Azure AD-címtár](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md#to-associate-an-existing-subscription-to-your-azure-ad-directory)
 
-### <a name="im-a-domain-usermember-on-the-aad-tenant-and-ive-created-a-preconfigured-solution-how-do-i-get-assigned-a-role-for-my-application"></a>Egy tartományi felhasználói/tagja az AAD-bérlőt vagyok, és létrehozott egy előre konfigurált megoldás. Hogyan tegye beolvasása kiosztott egy szerepkört az alkalmazáshoz?
+### <a name="im-a-domain-usermember-on-the-aad-tenant-and-ive-created-a-preconfigured-solution-how-do-i-get-assigned-a-role-for-my-application"></a>Egy tartományi felhasználói/tagot az AAD-bérlő vagyok, és létrehozott egy előre konfigurált megoldás. Hogyan tegye első kiosztott szerepkör saját alkalmazás?
 
-Kérje meg a globális rendszergazdák is képesek adja meg az AAD-bérlőt a globális rendszergazdaként, majd rendelje hozzá szerepkörök a felhasználók számára saját maga. Azt is megteheti kérje meg egy globális rendszergazda, hogy rendeljen Önhöz közvetlenül egy szerepkört. Ha szeretné módosítani az AAD-bérlőt az előkonfigurált megoldás már alkalmazva van, tekintse meg a következő kérdés.
+Kérje meg a globális rendszergazda végez az AAD-bérlő, és ezután szerepkörök hozzárendelése a felhasználók számára saját magának egy globális rendszergazdához. Azt is megteheti kérje meg egy globális rendszergazdai, szerepkör hozzárendelése közvetlenül. Ha az AAD-bérlő módosítása az előre konfigurált megoldás van telepítve, a következő kérdésben talál.
 
-### <a name="how-do-i-switch-the-aad-tenant-my-remote-monitoring-preconfigured-solution-and-application-are-assigned-to"></a>Az AAD-bérlőt, a távoli felügyeleti előkonfigurált megoldás és az alkalmazás hozzárendelni átváltása?
+### <a name="how-do-i-switch-the-aad-tenant-my-remote-monitoring-preconfigured-solution-and-application-are-assigned-to"></a>Hogyan válthatok az AAD-bérlő, a távoli figyelési előre konfigurált megoldás és az alkalmazás hozzá van rendelve?
 
-A felhő üzembe helyezése a futtatása <https://github.com/Azure/azure-iot-remote-monitoring> és telepítse újra az újonnan létrehozott AAD-bérlőt. Mert, alapértelmezés szerint egy globális rendszergazda, amikor létrehoz egy AAD-bérlőt Ön jogosult felhasználók hozzáadásához és szerepkörök hozzárendelése azoknak a felhasználóknak.
+A felhőbeli telepítés futtatása <https://github.com/Azure/azure-iot-remote-monitoring> és ismételt üzembe helyezése egy újonnan létrehozott AAD-bérlőben. Mivel Ön, amikor hoz létre az AAD-bérlő globális rendszergazdájának alapértelmezés szerint felhasználók hozzáadásához és szerepköröket rendelhet felhasználókhoz engedélyekkel rendelkezik.
 
-1. Hozzon létre egy AAD-címtárában lévő a [Azure-portálon][lnk-portal].
+1. Hozzon létre egy AAD-címtárában található a [az Azure portal][lnk-portal].
 2. Nyissa meg a következőt: <https://github.com/Azure/azure-iot-remote-monitoring>.
 3. Futtatás `build.cmd cloud [debug | release] {name of previously deployed remote monitoring solution}` (például `build.cmd cloud debug myRMSolution`)
-4. Amikor a rendszer kéri, állítsa be a **tenantid** kell lennie az újonnan létrehozott bérlő az előző bérlő helyett.
+4. Amikor a rendszer kéri, állítsa be a **tenantid** kell az előző bérlő helyett az újonnan létrehozott bérlőhöz.
 
-### <a name="i-want-to-change-a-service-administrator-or-co-administrator-when-logged-in-with-an-organisational-account"></a>A szolgáltatás rendszergazdai vagy társadminisztrátori Ha egy szervezeti fiókkal jelentkezik módosítása
+### <a name="i-want-to-change-a-service-administrator-or-co-administrator-when-logged-in-with-an-organisational-account"></a>Szeretném megváltoztatni a szolgáltatás-rendszergazdaként vagy társ-rendszergazdaként szervezeti fiókkal bejelentkezve
 
-Tekintse meg a támogatási cikk [módosítása szolgáltatás-rendszergazda és Társadminisztrátoraként, amikor egy szervezeti fiókkal jelentkezik be][lnk-service-admins].
+Tekintse meg a támogatási cikk [módosítása szolgáltatás-rendszergazda és a társ-rendszergazdaként szervezeti fiókkal bejelentkezve][lnk-service-admins].
 
-### <a name="why-am-i-seeing-this-error-your-account-does-not-have-the-proper-permissions-to-create-a-solution-please-check-with-your-account-administrator-or-try-with-a-different-account"></a>Miért jelenik meg ezt a hibát? "A fiók nem rendelkezik a megoldás létrehozása a megfelelő engedélyekkel. Ellenőrizze a fiók rendszergazdájához, vagy próbálkozzon egy másik fiókkal."
+### <a name="why-am-i-seeing-this-error-your-account-does-not-have-the-proper-permissions-to-create-a-solution-please-check-with-your-account-administrator-or-try-with-a-different-account"></a>Miért jelenik meg a hiba? "A fiók rendelkezik a megfelelő engedélyek megoldást hozhat létre. Ellenőrizze az a fiók rendszergazdája vagy próbálkozzon egy másik fiókkal."
 
-Tekintse meg az alábbi ábrában útmutatást:
+Keresse meg a következő ábra útmutatást:
 
 ![][img-flowchart]
 
 > [!NOTE]
-> Ha továbbra is megjelenik a hiba akkor ellenőrzése után egy globális rendszergazdája az AAD-bérlőt és egy az előfizetés társadminisztrátoraként, a fiók rendszergazdájához, távolítsa el a felhasználót, és újra hozzárendelnie az itt megadott sorrendben szükséges engedélyekkel rendelkezik. Először adja hozzá a felhasználót egy globális rendszergazdaként, és adja hozzá a felhasználó az Azure-előfizetés társadminisztrátoraként. Ha a probléma továbbra is fennáll, forduljon a [Súgó és támogatás][lnk-help-support].
+> Ha továbbra is megjelenik a hiba, miután ellenőrizte, hogy-e az AAD-bérlő globális rendszergazdai és a egy társ-rendszergazdaként az előfizetésre, a fiók rendszergazdája eltávolítja a felhasználót és újbóli hozzárendelése ebben a sorrendben szükséges engedélyekkel rendelkezik. Először adja hozzá a felhasználót egy globális rendszergazdaként, és adja hozzá a felhasználó az Azure-előfizetés társadminisztrátorai. Ha a problémák továbbra is fennállnak, lépjen kapcsolatba [Súgó és támogatás][lnk-help-support].
 
-### <a name="why-am-i-seeing-this-error-when-i-have-an-azure-subscription-an-azure-subscription-is-required-to-create-pre-configured-solutions-you-can-create-a-free-trial-account-in-just-a-couple-of-minutes"></a>Miért jelenik meg a hiba, ha az Azure-előfizetésre van? "Előkonfigurált megoldások létrehozásához Azure-előfizetés szükséges. Létrehozhat egy ingyenes próbafiók néhány percig."
+### <a name="why-am-i-seeing-this-error-when-i-have-an-azure-subscription-an-azure-subscription-is-required-to-create-pre-configured-solutions-you-can-create-a-free-trial-account-in-just-a-couple-of-minutes"></a>Miért látok a hiba, amikor az Azure előfizetéssel rendelkezem? ", Előre konfigurált megoldásokat hozhat létre Azure-előfizetés szükséges. Létrehozhat egy ingyenes próbafiókot mindössze néhány perc alatt."
 
-Ha bizonyos Azure-előfizetéssel rendelkezik, a bérlő hozzárendelése az előfizetéshez, és ellenőrizheti a megfelelő bérlő a legördülő listában kiválasztott. Ha ellenőrizte, hogy a kívánt bérlő megfelelő, kövesse a fenti ábrán és az előfizetés és az AAD-bérlőt a leképezés érvényesítése.
+Ha Ön bizonyos Azure-előfizetéssel rendelkezik, a bérlő az előfizetés-leképezés érvényesítése, és győződjön meg arról, a megfelelő bérlő van kiválasztva a legördülő listában. Ha érvényesíteni kívánt bérlőre helyességéről, kövesse a fentebbi ábra, és az előfizetés és az AAD-bérlő a leképezés érvényesítése.
 
 ## <a name="next-steps"></a>További lépések
-És folytathatja az IoT Suite, tekintse meg, hogyan zajlik [előkonfigurált megoldás testreszabása][lnk-customize].
+IoT Suite megismerését a folytatáshoz tekintse meg, hogyan zajlik [előkonfigurált megoldások testreszabása][lnk-customize].
 
 [img-flowchart]: media/iot-suite-v1-permissions/flowchart.png
 

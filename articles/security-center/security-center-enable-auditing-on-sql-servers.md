@@ -1,6 +1,6 @@
 ---
-title: Engedélyezze a naplózást és a fenyegetések észlelésére SQL-kiszolgálón az Azure Security Centerben |} Microsoft Docs
-description: Ez a dokumentum azt ismerteti, hogyan valósítja meg az Azure Security Center ajánlás ** naplózás engedélyezését & Threat detection az SQL-kiszolgálók **.
+title: Naplózás és fenyegetésészlelés engedélyezése SQL-kiszolgálón az Azure Security Centerben |} A Microsoft Docs
+description: Ez a dokumentum bemutatja, hogyan valósíthat meg az Azure Security Center javaslatait **engedélyezése naplózás és fenyegetésészlelés az SQL Server-kiszolgálók**.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
@@ -9,56 +9,56 @@ editor: ''
 ms.assetid: 042fca4d-7dab-4172-8614-e8c21ccb4960
 ms.service: security-center
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/30/2017
 ms.author: terrylan
-ms.openlocfilehash: 660b537aef8d175a478ff93d60b8391d55fc92ad
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fade8de73a35b75f6096a25af13335d679caffac
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23866407"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44300902"
 ---
-# <a name="enable-auditing-and-threat-detection-on-sql-servers-in-azure-security-center"></a>SQL-kiszolgálón az Azure Security Centerben a naplózás és a fenyegetések észlelésére engedélyezése
-Azure Security Center javasolni fogja, hogy bekapcsolja a naplózást, és fenyegetésészlelés az összes olyan adatbázis az Azure SQL-kiszolgálón, ha a naplózás nincs engedélyezve. Naplózás és a fenyegetések észlelése segítségével törvényi megfelelőség fenntartásában, ismerje meg adatbázis-tevékenység, és betekintést azok az eltérések és rendellenességek, amelyek üzleti problémát jelenthetnek, vagy a biztonság megsértésére.
+# <a name="enable-auditing-and-threat-detection-on-sql-servers-in-azure-security-center"></a>Naplózás és fenyegetésészlelés engedélyezése SQL-kiszolgálón az Azure Security Centerben
+Az Azure Security Center javasolni fogja, hogy kapcsolja be a naplózást, és a fenyegetésészlelés, az összes adatbázis az Azure SQL-kiszolgálón, ha naplózás már nem érhető. Naplózás és fenyegetés-észlelési segíthet a jogszabályoknak való megfelelőség, adatbázis-tevékenység megértésében, valamint betekintést eltéréseket és rendellenességeket, amelyek üzleti aggályokra vagy biztonsági problémákat.
 
-Után a naplózás bekapcsolta a Fenyegetésészlelés beállítások és az e-maileket a biztonsági riasztások állíthatja be. A Fenyegetésészlelés az adatbázist érintő rendellenes tevékenységeket, amelyek esetleges biztonsági fenyegetéseket jelezhetnek a észleli. Ez lehetővé teszi, hogy észlelje és azok bekövetkezésekor reagáljon a lehetséges veszélyforrásokra.
+Miután bekapcsolta a naplózást konfigurálhatja a Fenyegetésészlelési beállításainak és az e-maileket a biztonsági riasztást küld. Fenyegetésészlelés észleli a rendellenes adatbázis-tevékenységek utaló esetleges biztonsági fenyegetések az adatbázishoz. Ez lehetővé teszi, hogy észlelése és azok bekövetkezésekor reagáljon a lehetséges veszélyforrásokra.
 
-Ez a javaslat vonatkozik az Azure SQL-szolgáltatás csak; az Azure infrastruktúra-szolgáltatásokat (Azure IaaS) a virtuális gépeken futó SQL Server nem tartoznak bele.
+Ez a javaslat vonatkozik; csak az Azure SQL szolgáltatásba az Azure infrastruktúra-szolgáltatások (az Azure IaaS) virtuális gépeken futó SQL Server nem tartalmazza.
 
 > [!NOTE]
 > Ez a dokumentum egy üzembe helyezést szemléltető példa segítségével mutatja be a szolgáltatást.  A dokumentum nem tartalmaz lépésenkénti útmutatót.
 >
 >
 
-## <a name="implement-the-recommendation"></a>A javaslat megvalósítása
-1. Az a **javaslatok** panelen válassza **naplózás engedélyezését & Threat detection SQL-kiszolgálón**.  Ekkor megnyílik a **naplózás engedélyezését & Threat detection SQL-kiszolgálón** panelen.
+## <a name="implement-the-recommendation"></a>A javaslatok megvalósítása
+1. Az a **javaslatok** panelen válassza ki **engedélyezése naplózás és fenyegetésészlelés az SQL Server-kiszolgálók**.  Ekkor megnyílik a **engedélyezése naplózás és fenyegetésészlelés az SQL Server-kiszolgálók** panelen.
 
    ![SQL Serverek naplózásának engedélyezése][1]
-2. A naplózás és a fenyegetések észlelésére engedélyezése az SQL Servert választ. Ekkor megnyílik a **naplózás és Fenyegetésészlelés** panelen.
+2. Válassza ki a naplózás és fenyegetésészlelés engedélyezése SQL-kiszolgáló. Ekkor megnyílik a **naplózás és Fenyegetésészlelés** panelen.
 
-3. Az a **naplózás és Fenyegetésészlelés** panelen válassza **ON** alatt **naplózási**.
+3. Az a **naplózás és Fenyegetésészlelés** panelen válassza ki **ON** alatt **naplózási**.
 
    ![Kapcsolja be a naplózási beállítások][2]
-4. Kövesse a [SQL-adatbázis az Azure portálon naplózás](../sql-database/sql-database-auditing-portal.md) a vizsgálati naplók tárolására szolgáló-tároló konfigurálását. Az előfizetés tárfiók-gyűjtemény kerül az alapértelmezett tárfiók.
-5. Kövesse a [Ismerkedés az SQL-adatbázis Fenyegetésészlelés](../sql-database/sql-database-threat-detection.md) bekapcsolásának és konfigurálásának fenyegetések észlelése és konfigurálhatja az e-maileket, a rendellenes tevékenységek észlelésekor a biztonsági riasztásokat fogadó listáját.
+4. Kövesse a [SQL database naplózási szolgáltatásával az Azure Portalon](../sql-database/sql-database-auditing-portal.md) a vizsgálati naplók tárolására szolgáló tároló konfigurálásához. Az adatgyűjtés az előfizetéshez tartozó tárfiók az alapértelmezett tárfiók.
+5. Kövesse a [Ismerkedés az SQL Database Threat Detection](../sql-database/sql-database-threat-detection.md) bekapcsolásához és a Fenyegetésészlelés konfigurálása és a rendellenes tevékenységek észlelésekor biztonsági riasztást fog kapni e-maileket listájának konfigurálásához.
 
-## <a name="see-also"></a>Lásd még:
-Ez a cikk bemutatta megvalósításához a Security Center ajánlás "Enable naplózás és a fenyegetések észlelésére SQL-kiszolgálón." SQL-adatbázisok védelme kapcsolatos további tudnivalókért olvassa el a következőket:
+## <a name="see-also"></a>Lásd még
+Ez a cikk bemutatta, hogyan valósíthat meg a Security Center ajánlás "Enable naplózás és fenyegetésészlelés az SQL Server-kiszolgálók." SQL-adatbázis védelme kapcsolatos további információkért tekintse meg a következőket:
 
 * [Az SQL Database-adatbázis védelme](../sql-database/sql-database-security-overview.md)
 
 A Security Centerrel kapcsolatos további információkért olvassa el a következőket:
 
 * [Biztonsági szabályzatok beállítása az Azure Security Centerben](security-center-policies.md) – Ez a cikk bemutatja, hogyan konfigurálhat biztonsági házirendeket Azure-előfizetései és -erőforráscsoportjai számára.
-* [Biztonsági javaslatok kezelése az Azure Security Center](security-center-recommendations.md) – megtudhatja, miként könnyítik meg a javaslatok az Azure-erőforrások védelme.
-* [Biztonsági állapotfigyelés az Azure Security Center](security-center-monitoring.md) – útmutató az Azure-erőforrások állapotának figyelésére.
+* [Biztonsági javaslatok kezelése az Azure Security Center](security-center-recommendations.md) – megtudhatja, hogyan javaslatok az Azure-erőforrások védelme.
+* [Biztonsági állapotfigyelés az Azure Security Center](security-center-monitoring.md) – útmutató az Azure-erőforrások állapotának monitorozásához.
 * [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](security-center-managing-and-responding-alerts.md) – A biztonsági riasztások kezelése és az azokra való reagálás.
 * [Partnermegoldások figyelése az Azure Security Centerrel](security-center-partner-solutions.md) – Megtudhatja, hogyan figyelheti a partnermegoldások biztonsági állapotát.
 * [Azure Security Center – gyakran ismételt kérdések](security-center-faq.md) – Gyakran ismételt kérdések a szolgáltatás használatával kapcsolatban.
-* [Az Azure biztonsági blog](http://blogs.msdn.com/b/azuresecurity/) --az Azure biztonsági legfrissebb hírek és információ.
+* [Az Azure Security blog](http://blogs.msdn.com/b/azuresecurity/) – a legújabb Azure biztonsági hírek és információ.
 
 <!--Image references-->
 [1]: ./media/security-center-enable-auditing-on-sql-server/enable-auditing-on-sql-servers.png

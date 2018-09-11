@@ -1,6 +1,6 @@
 ---
-title: REST API-t Azure Security Center szabályzatoknak való megfelelés ellenőrzése |} Microsoft Docs
-description: Ismerje meg, tekintse át az aktuális szabályzatoknak való megfelelőségét, a Security Center Azure REST API-k használatával.
+title: Tekintse át a Security Center szabályzatoknak való megfelelés, Azure REST API-val |} A Microsoft Docs
+description: Ismerje meg, tekintse át a jelenlegi szabályzatoknak való megfelelőségét, a Security Center az Azure REST API-k használatával.
 services: security-center
 documentationcenter: na
 author: lleonard-msft
@@ -9,24 +9,25 @@ editor: ''
 ms.assetid: 82D50B98-40F2-44B1-A445-4391EA9EBBAA
 ms.service: security-center
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/05/2017
 ms.author: alleonar
-ms.openlocfilehash: 6c6764eec59633f0bdd0fa396c1581117a0c1e1d
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 1443486590859aac5591aff2ab0551bed9228d7b
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44301749"
 ---
 # <a name="review-security-center-policy-compliance-using-rest-apis"></a>Tekintse át a Security Center szabályzatoknak való megfelelés REST API-k használatával
 
-A Security Center rendszeresen ellenőrzi az Azure-erőforrások a meghatározott biztonsági házirendek szerinti. A Security Center is biztosít a REST API-t, amely lehetővé teszi, hogy tekintse át a megfelelőségüket a saját alkalmazásai; közvetlenül lekérdezni a szolgáltatást, vagy JSON-eredményeket importálása más alkalmazások. 
+A Security Center rendszeresen ellenőrzi a meghatározott biztonsági házirendek ellen az Azure-erőforrások. A Security Center is biztosít, amellyel áttekintheti a megfelelőséget a saját alkalmazások; a REST API-val közvetlenül le a szolgáltatást, vagy JSON-eredményeket importálása más alkalmazásokat is. 
 
-Itt megismerheti egy előfizetéshez társított összes Azure-erőforrások aktuális készletében lévő javaslatok lekérdezni.
+Itt megtudhatja a jelenlegi javaslatcsoportot lekérése egy előfizetéshez társított összes Azure-erőforrást.
 
-Az aktuális készletében lévő javaslatok beolvasása:
+A jelenlegi javaslatcsoportot lekéréséhez:
 ``` http
 GET https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.Security/tasks?api-version={api-version}
 Content-Type: application/json   
@@ -35,20 +36,20 @@ Authorization: Bearer
 
 ## <a name="build-the-request"></a>A kérelem létrehozása  
 
-A `{subscription-id}` paraméter szükséges, és tartalmaznia kell az előfizetési Azonosítóját az Azure-előfizetés a házirendek meghatározása. Ha több előfizetéssel rendelkezik, tekintse meg [működik-e több előfizetés](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest#working-with-multiple-subscriptions).  
+A `{subscription-id}` paraméter megadása kötelező, és tartalmaznia kell az Azure-előfizetést a házirendek meghatározása az előfizetés-azonosítója. Ha több előfizetéssel rendelkezik, tekintse meg [több előfizetés használata](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest#working-with-multiple-subscriptions).  
 
 A `api-version` paraméter megadása kötelező. Ezeket a végpontokat jelenleg csak a támogatott `api-version=2015-06-01-preview`. 
 
-A következő fejléc szükség: 
+A következő fejléceket szükség: 
 
-|Fejléc|Leírás|  
+|Kérelem fejléce|Leírás|  
 |--------------------|-----------------|  
-|*Content-Type:*|Kötelező. Beállítása `application/json`.|  
-|*Engedélyezési:*|Kötelező. Egy érvényes értékre `Bearer` [hozzáférési jogkivonat](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients). |  
+|*A Content-Type:*|Kötelező. Állítsa be `application/json`.|  
+|*Hitelesítés:*|Kötelező. Egy érvényes értékre `Bearer` [hozzáférési jogkivonat](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients). |  
 
 ## <a name="response"></a>Válasz  
 
-Állapotkód 200 (OK) visszaküldött a sikeres válasz, amely az Azure-erőforrások biztonságossá ajánlott feladatok listáját tartalmazza.
+Állapotkód: 200 (OK) adja vissza a sikeres válasz, amely biztonságossá tétele az Azure-erőforrások ajánlott feladatok listáját tartalmazza.
 
 ``` json
 {  
@@ -68,19 +69,19 @@ A következő fejléc szükség:
 }  
 ```  
 
-Az egyes elemek **érték** ajánlást jelöli:
+Egyes elemeiről **érték** ajánlás jelöli:
 
 |Válasz tulajdonság|Leírás|
 |----------------|----------|
-|**Állapot** | Azt jelzi, hogy a javaslat `active` vagy `resolved`. |
-|**creationTimeUtc** | Dátum és idő, az UTC-t, az ajánlás létrehozásának megjelenítő. |
-|**lastStateChangeUtc** | Dátum és idő, a UTV, az utolsó állapotváltozás, ha van ilyen. |
-|**securityTaskParameters** | A javaslat; részletek tulajdonságok az alapul szolgáló ajánlás függvényében. |
+|**állapot** | Azt jelzi, hogy javaslatot `active` vagy `resolved`. |
+|**CreationTimeUtc** | Dátum és időpont (UTC), a javaslat létrehozásakor megjelenítése. |
+|**lastStateChangeUtc** | Dátum és idő, UTV, a legutóbbi állapot változik, ha van ilyen. |
+|**securityTaskParameters** | Az ajánlás; részletei az alapul szolgáló ajánlás tulajdonságok függően változnak. |
 ||
   
-A jelenleg támogatott vonatkozó javaslatokkal kapcsolatban lásd: [biztonsági ajánlások megvalósításával](https://docs.microsoft.com/azure/security-center/security-center-recommendations).
+Jelenleg támogatott javaslatokért lásd: [biztonsági ajánlások megvalósítása](https://docs.microsoft.com/azure/security-center/security-center-recommendations).
 
-Más állapotkódok hibaállapotok jelzi. Ezekben az esetekben a válasz-objektum tartalmaz egy leírást, amely ismerteti, hogy miért volt sikertelen a kérelem.
+Más állapotkódok hibaállapotok jelzik. Ezekben az esetekben a Válaszobjektum elmagyarázza, hogy miért nem sikerült a kérés leírása tartalmazza.
 
 ``` json
 {  
@@ -139,13 +140,13 @@ Más állapotkódok hibaállapotok jelzi. Ezekben az esetekben a válasz-objektu
 }  
 ```  
 
-Ez a válasz jeleníti meg két javaslatok; a lista minden eleme egy adott javaslat felel meg. Az első azt javasolja, hogy a Linux virtuális gépek a tárolás titkosítása és a második javasol egy SQL Server-naplózás engedélyezése.
+A válaszból kiderül, két javaslatok; a lista minden eleme egy adott javaslatot felel meg. Az első javasolja a tároló a Linux rendszerű virtuális gép titkosított, és a második javasol egy SQL Server naplózásának engedélyezése.
 
-A javaslatok engedélyezése a házirendek függvényében. További, beleértve az aktuálisan elérhető javaslatokat [biztonsági javaslatok kezelése az Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-recommendations).
+A javaslatok a szabályzatok, hogy engedélyezve van a függően változnak. További, beleértve a jelenleg elérhető javaslatok: [biztonsági javaslatok kezelése az Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-recommendations).
 
 
 ## <a name="see-also"></a>Lásd még  
 - [Biztonsági szabályzatok beállítása](https://docs.microsoft.com/azure/security-center/security-center-policies-overview)
-- [Az Azure biztonsági erőforrás-szolgáltató REST API-n](https://msdn.microsoft.com/library/azure/mt704034.aspx)   
-- [Ismerkedés az Azure REST API](https://docs.microsoft.com/rest/api/azure/)   
+- [Az Azure Security erőforrás-szolgáltató REST API-val](https://msdn.microsoft.com/library/azure/mt704034.aspx)   
+- [Azure REST API használatának első lépései](https://docs.microsoft.com/rest/api/azure/)   
 - [Az Azure Security Center PowerShell-modul](https://www.powershellgallery.com/packages/Azure-Security-Center/0.0.22)

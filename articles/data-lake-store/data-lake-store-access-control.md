@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: ca1ea5fb95ba1c49b5c1e3660c598e8f1443b43c
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 8680a8fa9c460983b88aa4845adcbe72d3a43abf
+ms.sourcegitcommit: 465ae78cc22eeafb5dfafe4da4b8b2138daf5082
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43666267"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44325515"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen1"></a>Hozzáférés-vezérlés az Azure Data Lake Storage Gen1
 
@@ -121,19 +121,7 @@ Az alábbiakban néhány gyakori helyzet segítenek megérteni, milyen engedély
 * A hívónak a felsorolandó mappához **Olvasás + Végrehajtás** engedéllyel kell rendelkeznie.
 * A hívónak az összes elődmappához **Végrehajtás** engedéllyel kell rendelkeznie.
 
-## <a name="viewing-permissions-in-the-azure-portal"></a>Engedélyek megtekintése az Azure Portalon
 
-Az a **adatkezelő** a Data Lake Storage Gen1-fiók paneljén kattintson **hozzáférés** a fájl vagy mappa az adatkezelőben megtekintett ACL-ek megtekintéséhez. Kattintson a **Hozzáférés** lehetőségre a **mydatastore** fiókban lévő **catalog** mappához tartozó ACL-ek megtekintéséhez.
-
-![Data Lake Storage Gen1 ACL-EK](./media/data-lake-store-access-control/data-lake-store-show-acls-1.png)
-
-E panel felső részén a tulajdonos engedélyei láthatók. (A képernyőképen a tulajdonos felhasználó Bob.) Alatta a hozzárendelt hozzáférési ACL-ek láthatók. 
-
-![Data Lake Storage Gen1 ACL-EK](./media/data-lake-store-access-control/data-lake-store-show-acls-simple-view.png)
-
-Kattintson a **Speciális nézet** elemre egy részletesebb nézet megtekintéséhez, ahol az alapértelmezett ACL-ek, a maszk és a felügyelők leírása látható.  A panel ezen kívül lehetőséget biztosít a gyermekfájlokhoz és mappákhoz tartozó hozzáférési és alapértelmezett ACL-ek rekurzív módon történő beállításához az aktuális mappa engedélyei alapján.
-
-![Data Lake Storage Gen1 ACL-EK](./media/data-lake-store-access-control/data-lake-store-show-acls-advance-view.png)
 
 ## <a name="the-super-user"></a>A felügyelő
 
@@ -227,30 +215,27 @@ def access_check( user, desired_perms, path ) :
   return ( (desired_perms & perms & mask ) == desired_perms)
 ```
 
-## <a name="the-mask-and-effective-permissions"></a>A maszk és „hatályos engedélyek”
+## <a name="the-mask"></a>A maszk
 
-A **maszk** egy olyan RWX-érték, amely a **nevesített felhasználókhoz**, a **tulajdonoscsoporthoz** és a **nevesített csoportokhoz** történő hozzáférést korlátozza a hozzáférés-ellenőrzési algoritmus futtatása közben. Itt ismertetjük a maszk legfontosabb fogalmait.
-
-* A maszk „hatályos engedélyeket” hoz létre. Ez azt jelenti, hogy módosítja az engedélyeket a hozzáférés-ellenőrzés során.
-* A maszkot közvetlenül szerkesztheti a fájl tulajdonosa vagy bármely felügyelő.
-* A maszk eltávolíthat engedélyeket a hatályos engedélyek létrehozása érdekében. A maszk *nem* adhat hozzá engedélyeket a hatályos engedélyekhez.
-
-Lássunk néhány példát. Az alábbi példában a maszk **RWX** értékre van állítva, ami azt jelenti, hogy a maszk nem távolít el engedélyeket. A nevesített felhasználóhoz, tulajdonoscsoporthoz és nevesített csoporthoz tartozó hatályos engedélyek nem változtak meg a hozzáférés-ellenőrzés során.
-
-![Data Lake Storage Gen1 ACL-EK](./media/data-lake-store-access-control/data-lake-store-acls-mask-1.png)
-
-Az alábbi példában a maszk a következőre van állítva: **R-X**. Ez azt jelenti, hogy a maszk **kikapcsolja az Írás engedélyt** a **nevesített felhasználó**, a **tulajdonoscsoport** és a **nevesített csoport** számára a hozzáférés-ellenőrzés idejére.
-
-![Data Lake Storage Gen1 ACL-EK](./media/data-lake-store-access-control/data-lake-store-acls-mask-2.png)
-
-Hivatkozásként itt megtalálja, hogy hol jelenik meg egy fájlhoz vagy mappához tartozó maszk az Azure Portalon.
-
-![Data Lake Storage Gen1 ACL-EK](./media/data-lake-store-access-control/data-lake-store-show-acls-mask-view.png)
+A maszk, ahogyan a hozzáférés-ellenőrzési algoritmus, korlátozza a hozzáférést **nevesített felhasználókhoz**, a **tulajdonoscsoport**, és **nevesített csoportokhoz**.  
 
 > [!NOTE]
 > Az új Data Lake Storage Gen1-fiókoknál a gyökérmappa ("/") hozzáférési ACL-JÉNEK maszk alapértelmezés szerint RWX-re.
 >
 >
+
+### <a name="the-sticky-bit"></a>Ragadós bit
+
+A ragadós (sticky) bit a POSIX-fájlrendszer egy speciális funkciója. Data Lake Storage Gen1 összefüggésben nem valószínű, hogy a ragadós bit lesz szükség.
+
+Az alábbi táblázat a ragadós bit működését mutatja a Data Lake Storage Gen1.
+
+| Felhasználói csoport         | Fájl    | Mappa |
+|--------------------|---------|-------------------------|
+| Ragadós bit **KI** | Nincs hatás   | Nincs hatás.           |
+| Ragadós bit **BE**  | Nincs hatás   | A gyermekelem **felügyelőjét** és **tulajdonosát** kivéve mindenkit meggátol a gyermekelem törlésében vagy átnevezésében.               |
+
+A ragadós bit nem látható az Azure Portalon.
 
 ## <a name="permissions-on-new-files-and-folders"></a>Új fájlok és mappák engedélyei
 
@@ -278,34 +263,37 @@ Amikor egy szülőmappán belül gyermekmappát hoz létre, a szülőmappa alap�
 
 Az alábbiakban néhány speciális témakört annak megértéséhez, hogyan határozzák meg a Data Lake Storage Gen1 fájlok és mappák ACL-ek.
 
-### <a name="umasks-role-in-creating-the-access-acl-for-new-files-and-folders"></a>Az umask szerepe hozzáférési az új fájlok és mappák ACL-jének létrehozásakor
+### <a name="umask"></a>umask
 
-A POSIX-kompatibilis rendszerekben az általános elképzelés az, hogy az umask egy 9 bites érték a szülőmappára vonatkozóan, amely a **tulajdonos**, a **tulajdonoscsoport** és az **egyéb** felhasználók engedélyeinek átalakítására használatos az új gyermekfájlok vagy mappák hozzáférési ACL-jén. Az umask bitjei határozzák meg, hogy mely bitek legyenek kikapcsolva a gyermekelem hozzáférési ACL-jében. Ennek megfelelően arra használható, hogy a **tulajdonos**, a **tulajdonoscsoport** és az **egyéb** felhasználók engedélyének terjesztését külön-külön akadályozza meg.
+Egy fájl vagy mappa létrehozásakor umask segítségével módosíthatja az alapértelmezett ACL-ek az alárendelt elem beállításának módját. umask egy 9 bites egy 9 bites érték, amely tartalmaz egy RWX-érték a fölérendelt mappák **tulajdonos**, **tulajdonoscsoport**, és **más**.
 
-A HDFS-rendszerekben, az umask általában a teljes helyre vonatkozó konfigurációs beállítás, amelyet a rendszergazdák kezelnek. Data Lake Storage Gen1 használ egy **fiókra kiterjedő umaskot** , amely nem módosítható. Az alábbi táblázat az umask beállítása szerepel a Data Lake Storage Gen1.
+Az Azure Data Lake Storage Gen1 állandó érték, amely az umask 007 beállítása. Ezt az értéket a rendszer lefordítja arra
 
-| Felhasználói csoport  | Beállítás | Hatás az új gyermekelemek hozzáférési ACL-jére |
-|------------ |---------|---------------------------------------|
-| Tulajdonos felhasználó | ---     | Nincs hatás                             |
-| Tulajdonoscsoport| ---     | Nincs hatás                             |
-| Egyéb       | RWX     | Olvasás + Írás + Végrehajtás eltávolítása         |
+* umask.owning_user = 0 #---
+* umask.owning_group = 0 #---
+* umask.Other = 7 # RWX
 
-Az alábbi ábrán az umask működése látható. Az eredő hatás az **Olvasás + Írás + Végrehajtás** eltávolítása az **egyéb** felhasználóról. Mivel az umask nem határoz meg biteket a **tulajdonos felhasználóhoz** és a **tulajdonoscsoporthoz**, a rendszer ezeket az engedélyeket nem alakítja át.
+Az umask érték hatékonyan azt jelenti, hogy az érték más soha nem továbbított alapértelmezés szerint az új gyermek - függetlenül az alapértelmezett ACL-t jelzi. 
 
-![Data Lake Storage Gen1 ACL-EK](./media/data-lake-store-access-control/data-lake-store-acls-umask.png)
+A következő psuedocode bemutatja, hogyan kell alkalmazni az umask a hozzáférés-vezérlési egy gyermek-konfigurációelem létrehozása során.
 
-### <a name="the-sticky-bit"></a>Ragadós bit
+```
+def set_default_acls_for_new_child(parent, child):
+    child.acls = []
+    foreach entry in parent.acls :
+        new_entry = None
+        if (entry.type == OWNING_USER) :
+            new_entry = entry.clone(perms = entry.perms & (~umask.owning_user))
+        elif (entry.type == OWNING_GROUP) :
+            new_entry = entry.clone(perms = entry.perms & (~umask.owning_group))
+        elif (entry.type == OTHER) :
+            new_entry = entry.clone(perms = entry.perms & (~umask.other))
+        else :
+            new_entry = entry.clone(perms = entry.perms )
+        child_acls.add( new_entry )
+```
 
-A ragadós (sticky) bit a POSIX-fájlrendszer egy speciális funkciója. Data Lake Storage Gen1 összefüggésben nem valószínű, hogy a ragadós bit lesz szükség.
 
-Az alábbi táblázat a ragadós bit működését mutatja a Data Lake Storage Gen1.
-
-| Felhasználói csoport         | Fájl    | Mappa |
-|--------------------|---------|-------------------------|
-| Ragadós bit **KI** | Nincs hatás   | Nincs hatás.           |
-| Ragadós bit **BE**  | Nincs hatás   | A gyermekelem **felügyelőjét** és **tulajdonosát** kivéve mindenkit meggátol a gyermekelem törlésében vagy átnevezésében.               |
-
-A ragadós bit nem látható az Azure Portalon.
 
 ## <a name="common-questions-about-acls-in-data-lake-storage-gen1"></a>A Data Lake Storage Gen1 ACL-lel kapcsolatos gyakori kérdésekre
 
@@ -348,15 +336,6 @@ Ha a felhasználó már nem létezik az Azure AD-ben, egy GUID lesz látható. E
 ### <a name="does-data-lake-storage-gen1-support-inheritance-of-acls"></a>Támogatja a Data Lake Storage Gen1 ACL-ek öröklése?
 
 Nem, az alapértelmezett ACL-ek azonban használhatók a szülő mappán belül újonnan létrehozott gyermekfájlok és mappák ACL-jeinek beállításához.  
-
-### <a name="what-is-the-difference-between-mask-and-umask"></a>Mi a különbség a mask és az umask között?
-
-| mask | umask|
-|------|------|
-| A **mask** tulajdonság minden fájl és mappa esetében elérhető. | A **umask** a Data Lake Storage Gen1 fiók egyik tulajdonsága. Így nincs csak egyetlen umask a Data Lake Storage Gen1.    |
-| Egy fájl vagy mappa mask tulajdonságát a fájl tulajdonosa vagy tulajdonoscsoportja, illetve egy felügyelő változtathatja meg. | Az umask tulajdonságot semmilyen felhasználó nem módosíthatja, még a felügyelők sem. Ez egy megváltoztathatatlan, állandó érték.|
-| A mask tulajdonság a hozzáférés-ellenőrzési algoritmus futásakor használható annak megállapítására, hogy egy felhasználó jogosult-e műveletek elvégzésére egy fájlon vagy mappán. A mask szerepe a „hatályos engedélyek létrehozása” a hozzáférés-ellenőrzés során. | Az umask a hozzáférés-ellenőrzés során egyáltalán nincs használatban. Az umask egy mappa új gyermekelemei hozzáférési ACL-jeinek meghatározására használható. |
-| A mask egy 3 bites RWX-érték, amely a nevesített felhasználóra, a tulajdonoscsoportra és a nevesített csoportra lesz alkalmazva a hozzáférés-ellenőrzés időpontjában.| Az umask egy 9 bites érték, amely egy új gyermek tulajdonosára, tulajdonoscsoportjára vagy **egyéb** jellemzőjére lesz alkalmazva.|
 
 ### <a name="where-can-i-learn-more-about-posix-access-control-model"></a>Hol tudhatok meg többet a POSIX hozzáférés-vezérlési modellről?
 

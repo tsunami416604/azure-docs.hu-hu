@@ -17,12 +17,12 @@ ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b6055dbab85acb1e5fed9679a5072144bc84712c
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: f58c156019048a4e6b08267bf28325857ec69b3a
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42917123"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44302204"
 ---
 # <a name="transfer-ownership-of-an-azure-subscription-to-another-account"></a>Azure-előfizetés tulajdonjogának átruházása másik fiókra
 
@@ -33,7 +33,7 @@ Az előfizetés egy másik felhasználó módosíthatja a Fiókadminisztrátor �
 > Új Azure AD-előfizetés átvitele esetén a bérlőben, az összes szerepkör-hozzárendelések [szerepköralapú hozzáférés-vezérlés (RBAC)](../role-based-access-control/overview.md) véglegesen törlődnek a forrás-bérlőből, és nem lesznek áttelepítve a cél-bérlőhöz.
 
 > [!div class="nextstepaction"]
-> [Segítheti az Azure számlázási docs](https://go.microsoft.com/fwlink/p/?linkid=2010091)
+> [Segítsen az Azure számlázási dokumentumok fejlesztésében](https://go.microsoft.com/fwlink/p/?linkid=2010091)
 
 ## <a name="transfer-ownership-of-an-azure-subscription"></a>Azure-előfizetés tulajdonjogának átruházása
 
@@ -77,7 +77,7 @@ A vállalati rendszergazda előfizetések regisztrációs belül is tulajdonjog�
 
 ## <a name="next-steps-after-accepting-ownership-of-a-subscription"></a>Egy előfizetés tulajdonjogának elfogadásával követő lépések
 
-1. Most már áll a fiók rendszergazdája. Tekintse át, és más RBAC-szerepkörök, a szolgáltatás-rendszergazda és Társrendszergazdák frissítése. További tudnivalókért lásd: [hozzáadása vagy módosítása az előfizetést vagy szolgáltatásokat kezelő Azure-rendszergazdai szerepkörök](billing-add-change-azure-subscription-administrator.md).
+1. Most már áll a fiók rendszergazdája. Tekintse át, és más RBAC-szerepkörök, a szolgáltatás-rendszergazda és Társrendszergazdák frissítése. További tudnivalókért lásd: [hozzáadása vagy módosítása az Azure-előfizetés rendszergazdái](billing-add-change-azure-subscription-administrator.md) és [rbac-RÓL és az Azure portal-hozzáférés kezelése](../role-based-access-control/role-assignments-portal.md).
 1. Ez az előfizetés-szolgáltatások, beleértve a társított hitelesítő adatok frissítése:
    1. Felügyeleti tanúsítvány, amely a felhasználó-előfizetések erőforrásaihoz való rendszergazdai engedélyeket kap. További információkért lásd: [létrehozása és feltöltése, egy felügyeleti tanúsítvány az Azure-hoz](../cloud-services/cloud-services-certs-create.md)
    1. Hozzáférési kulcsok szolgáltatásokhoz, például tárolási. További információkért lásd: [tudnivalók az Azure storage-fiókok](../storage/common/storage-create-storage-account.md)

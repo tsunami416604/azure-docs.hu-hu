@@ -9,19 +9,19 @@ ms.topic: conceptual
 ms.service: active-directory
 ms.component: msi
 manager: mtillman
-ms.openlocfilehash: 4ebbf4c69f589c105aa3e7553a6b24470e266382
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: f09704a5befedb99625595e50587fa6bbd704899
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44161883"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44304152"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Az Azure-erőforrások felügyelt identitást támogató szolgáltatások
 
 Felügyelt identitások az Azure-erőforrások Azure-szolgáltatásokat az Azure Active Directoryban automatikusan felügyelt identitást biztosít. Egy felügyelt identitás használata esetén elvégezheti a hitelesítést minden olyan szolgáltatás, amely támogatja az Azure AD-hitelesítés hitelesítő adatok nélkül a kódban. Jelenleg is zajlik integráló felügyelt identitások Azure-erőforrások és az Azure AD-hitelesítés, Azure-ban. Ellenőrizze gyakran frissítéseit.
 
 > [!NOTE]
-> Felügyelt identitások azure-erőforrások számára az új nevet a szolgáltatás-ként ismert, Felügyeltszolgáltatás-identitás (MSI).
+> Felügyelt identitások Azure-erőforrások számára az új nevet a szolgáltatás-ként ismert, Felügyeltszolgáltatás-identitás (MSI).
 
 ## <a name="azure-services-that-support-managed-identities-for-azure-resources"></a>Az Azure-erőforrások felügyelt identitásait támogató Azure-szolgáltatások
 

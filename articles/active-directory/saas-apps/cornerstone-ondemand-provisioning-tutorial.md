@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Legfontosabb feladatai közé tartoznak OnDemand konfigurálása az Azure Active Directoryval automatikus felhasználólétesítés |} Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálja az Azure Active Directory automatikus kiépítése és leépíti a legfontosabb feladatai közé tartoznak OnDemand felhasználói fiókok.
+title: 'Oktatóanyag: Felhasználók automatikus átadása az Azure Active Directoryval alapkövei OnDemand konfigurálása |} A Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az Azure Active Directoryban történő automatikus kiépítésének és megszüntetésének alapkövei OnDemand felhasználói fiókokat.
 services: active-directory
 documentationcenter: ''
 author: zhchia
@@ -15,156 +15,156 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2018
 ms.author: v-ant
-ms.openlocfilehash: 8e31400363800f557c6f7c81060c59ac3defb184
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 6a6cfb2cb1fd6b70be0437c8b6fa62f50e76e53b
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36215154"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44345413"
 ---
-# <a name="tutorial-configure-cornerstone-ondemand-for-automatic-user-provisioning"></a>Oktatóanyag: Automatikus felhasználólétesítés legfontosabb feladatai közé tartoznak OnDemand konfigurálása
+# <a name="tutorial-configure-cornerstone-ondemand-for-automatic-user-provisioning"></a>Oktatóanyag: Felhasználók automatikus átadása alapkövei OnDemand konfigurálása
 
 
-Ez az oktatóanyag célja az legfontosabb feladatai közé tartoznak OnDemand és Azure Active Directory (Azure AD) és az Azure AD konfigurálása automatikusan ellátásához, majd leépíti a felhasználók és/vagy csoportok legfontosabb feladatai közé tartoznak OnDemand végrehajtandó lépések bemutatása.
+Ez az oktatóanyag célja a lépéseket kell végrehajtania a alapkövei OnDemand és Azure Active Directory (Azure AD) konfigurálása az Azure AD automatikus kiépítésének és megszüntetésének felhasználók és csoportok a alapkövei OnDemand bemutatása.
 
 
 > [!NOTE]
-> Ez az oktatóanyag leírja egy összekötőt, az Azure AD-felhasználó kiépítési Service platformra épül. Ez a szolgáltatás funkciója, hogyan működik, és gyakran ismételt kérdések fontos tudnivalókat tartalmaz [felhasználói kiépítésének és megszüntetésének biztosítása SaaS-alkalmazásokhoz az Azure Active Directoryval történő automatizálásához](./../active-directory-saas-app-provisioning.md).
+> Ez az oktatóanyag az Azure AD-felhasználó Provisioning Service-ra épülő összekötők ismerteti. Ez a szolgáltatás leírása, hogyan működik és gyakran ismételt kérdések a fontos tudnivalókat tartalmaz [automatizálhatja a felhasználókiépítés és -átadás megszüntetése SaaS-alkalmazásokban az Azure Active Directory](../manage-apps/user-provisioning.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ebben az oktatóanyagban leírt forgatókönyv feltételezi, hogy már rendelkezik a következő előfeltételek teljesülését:
+Az ebben az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik a következő előfeltételek vonatkoznak:
 
 *   Az Azure AD-bérlő
-*   A legfontosabb feladatai közé tartoznak OnDemand bérlő
-*   A legfontosabb feladatai közé tartoznak OnDemand rendszergazdai engedélyekkel rendelkező felhasználói fiók
+*   Egy alapkövei OnDemand-bérlő
+*   Alapkövei OnDemand rendszergazdai engedélyekkel rendelkező felhasználói fiók
 
 
 > [!NOTE]
-> Az Azure AD-integrációs kiépítés támaszkodik a [legfontosabb feladatai közé tartoznak OnDemand Webservice](https://help.csod.com/help/csod_0/Content/Resources/Documents/WebServices/CSOD_-_Summary_of_Web_Services_v20151106.pdf), amely legfontosabb feladatai közé tartoznak OnDemand csapat rendelkezésére áll.
+> Az Azure AD létesítési integrációs támaszkodik a [alapkövei OnDemand webszolgáltatás](https://help.csod.com/help/csod_0/Content/Resources/Documents/WebServices/CSOD_-_Summary_of_Web_Services_v20151106.pdf), amely alapkövei OnDemand csapatok rendelkezésére áll.
 
-## <a name="adding-cornerstone-ondemand-from-the-gallery"></a>Legfontosabb feladatai közé tartoznak OnDemand hozzáadása a gyűjteményből
-Mielőtt konfigurálná a legfontosabb feladatai közé tartoznak OnDemand automatikus felhasználói az Azure ad-vel történő üzembe helyezéséhez, kell hozzáadnia OnDemand legfontosabb feladatai közé tartoznak az Azure AD alkalmazás-galériából a felügyelt SaaS-alkalmazások listájára.
+## <a name="adding-cornerstone-ondemand-from-the-gallery"></a>Alapkövei OnDemand hozzáadása a katalógusból
+Mielőtt konfigurálná a alapkövei OnDemand a felhasználók automatikus átadása az Azure ad-vel, szüksége az Azure AD alkalmazáskatalógusában alapkövei OnDemand hozzáadása a felügyelt SaaS-alkalmazások listája.
 
-**Az Azure AD application gallery legfontosabb feladatai közé tartoznak OnDemand hozzáadásához hajtsa végre az alábbi lépéseket:**
+**Az Azure AD alkalmazáskatalógusában alapkövei OnDemand hozzáadásához hajtsa végre az alábbi lépéseket:**
 
-1. A a  **[Azure-portálon](https://portal.azure.com)**, a bal oldali navigációs panelen kattintson a **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, a bal oldali navigációs panelen, kattintson a a **Azure Active Directory** ikonra. 
 
     ![Az Azure Active Directory gomb][1]
 
-2. Navigáljon a **vállalati alkalmazások** > **összes alkalmazás**.
+2. Navigáljon a **vállalati alkalmazások** > **minden alkalmazás**.
 
     ![A vállalati alkalmazások szakasz][2]
     
-3. Legfontosabb feladatai közé tartoznak OnDemand hozzáadásához kattintson a **új alkalmazás** gombra a párbeszédpanel tetején.
+3. Alapkövei OnDemand hozzáadásához kattintson a **új alkalmazás** gombra a párbeszédpanel tetején.
 
     ![Az új alkalmazás gomb][3]
 
-4. Írja be a keresőmezőbe, **legfontosabb feladatai közé tartoznak OnDemand**.
+4. A Keresés mezőbe írja be a **alapkövei OnDemand**.
 
-    ![Legfontosabb feladatai közé tartoznak OnDemand kiépítése](./media/cornerstone-ondemand-provisioning-tutorial/AppSearch.png)
+    ![Alapkövei OnDemand kiépítése](./media/cornerstone-ondemand-provisioning-tutorial/AppSearch.png)
 
-5. Az eredmények panelen válassza ki a **legfontosabb feladatai közé tartoznak OnDemand**, és kattintson a **Hozzáadás** gombra kattintva vegye fel OnDemand legfontosabb feladatai közé tartoznak a SaaS-alkalmazásokhoz.
+5. Az eredmények panelen válassza ki a **alapkövei OnDemand**, majd kattintson a **Hozzáadás** gombra kattintva adhat hozzá OnDemand alapja az SaaS-alkalmazások listájához.
 
-    ![Legfontosabb feladatai közé tartoznak OnDemand kiépítése](./media/cornerstone-ondemand-provisioning-tutorial/AppSearchResults.png)
+    ![Alapkövei OnDemand kiépítése](./media/cornerstone-ondemand-provisioning-tutorial/AppSearchResults.png)
 
-    ![Legfontosabb feladatai közé tartoznak OnDemand kiépítése](./media/cornerstone-ondemand-provisioning-tutorial/AppCreation.png)
+    ![Alapkövei OnDemand kiépítése](./media/cornerstone-ondemand-provisioning-tutorial/AppCreation.png)
 
-## <a name="assigning-users-to-cornerstone-ondemand"></a>Felhasználók hozzárendelése legfontosabb feladatai közé tartoznak kötegmérete
+## <a name="assigning-users-to-cornerstone-ondemand"></a>Felhasználók hozzárendelése alapkövei OnDemand
 
-Az Azure Active Directory egy fogalom, más néven "hozzárendeléseket" használ annak meghatározásához, hogy mely felhasználók kell kapnia a kiválasztott alkalmazásokhoz való hozzáférés. Automatikus felhasználókiépítése keretében csak a felhasználók és/vagy csoportok "hozzárendelt" egy az Azure AD alkalmazás szinkronizálva. 
+Az Azure Active Directory "-hozzárendelések" nevű fogalma használatával határozza meg, hogy mely felhasználók kell kapnia a kiválasztott alkalmazásokhoz való hozzáférés. Felhasználók automatikus átadása kontextusában csak a felhasználók, illetve "rendelt" egy alkalmazás az Azure AD-csoportok szinkronizálódnak. 
 
-Automatikus felhasználó-kiépítés engedélyezése és konfigurálása, mielőtt meg kell határoznia, melyik felhasználói és/vagy az Azure AD-csoportok legfontosabb feladatai közé tartoznak OnDemand hozzáférésre van szükségük. Ha úgy döntött, hozzárendelheti a felhasználók és/vagy csoportok legfontosabb feladatai közé tartoznak OnDemand itt cikk utasításait követve:
+Felhasználók automatikus kiépítés engedélyezése és konfigurálása, mielőtt, meg kell határoznia, melyik felhasználók, illetve a csoportok az Azure ad-ben alapkövei OnDemand hozzáférésre van szükségük. Ha úgy döntött, rendelhet a felhasználók és csoportok alapkövei OnDemand utasításokat követve:
 
 *   [Egy felhasználó vagy csoport hozzárendelése egy vállalati alkalmazás](../manage-apps/assign-user-or-group-access-portal.md)
 
-### <a name="important-tips-for-assigning-users-to-cornerstone-ondemand"></a>Felhasználók hozzárendelése legfontosabb feladatai közé tartoznak OnDemand fontos tippek
+### <a name="important-tips-for-assigning-users-to-cornerstone-ondemand"></a>Felhasználók hozzárendelése alapkövei OnDemand fontos tippek
 
-*   Javasoljuk, hogy egyetlen Azure AD-felhasználó van rendelve OnDemand legfontosabb feladatai közé tartoznak a kiépítés konfigurációs automatikus felhasználó teszteléséhez. További felhasználók és/vagy csoportok később is rendelhető.
+*   Javasoljuk, hogy egyetlen Azure AD-felhasználó van rendelve alapkövei OnDemand a felhasználók automatikus konfiguráció teszteléséhez. További felhasználók és csoportok később is rendelhető.
 
-*   Amikor egy felhasználó rendel a legfontosabb feladatai közé tartoznak OnDemand, a hozzárendelés párbeszédpanelen válassza ki érvényes alkalmazás-specifikus szerepköröket (ha elérhető). A felhasználók a **alapértelmezett hozzáférési** szerepkör nem kiépítés tartoznak.
+*   Amikor egy felhasználó hozzárendelése alapkövei OnDemand, a hozzárendelés párbeszédpanelen válassza ki bármely érvényes alkalmazás-specifikus szerepkört (ha elérhető). A felhasználók a **alapértelmezett hozzáférési** szerepkör nem tartoznak kiépítése.
 
-## <a name="configuring-automatic-user-provisioning-to-cornerstone-ondemand"></a>Automatikus felhasználók átadására a legfontosabb feladatai közé tartoznak kötegmérete
+## <a name="configuring-automatic-user-provisioning-to-cornerstone-ondemand"></a>Alapkövei OnDemand történő automatikus felhasználókiépítés konfigurálása
 
-Ez a szakasz végigvezeti az Azure AD szolgáltatás kiépítését, módosítása, és tiltsa le a felhasználók és/vagy a csoportokat az Azure AD-ben a felhasználói és/vagy a csoport-hozzárendelések alapján legfontosabb feladatai közé tartoznak OnDemand-konfigurálásának lépéseit.
-
-
-### <a name="to-configure-automatic-user-provisioning-for-cornerstone-ondemand-in-azure-ad"></a>Konfigurálása automatikus felhasználókiépítése OnDemand legfontosabb feladatai közé tartoznak az Azure AD-ben:
+Ez a szakasz végigvezeti az Azure AD létesítési szolgáltatás létrehozása, frissítése és tiltsa le a felhasználók és csoportok az Azure AD-ben a felhasználó és/vagy a csoport-hozzárendelések alapján alapkövei OnDemand konfigurálásáról.
 
 
-1. Jelentkezzen be a [Azure-portálon](https://portal.azure.com) és keresse meg a **Azure Active Directory > Vállalati alkalmazások > összes alkalmazás**.
+### <a name="to-configure-automatic-user-provisioning-for-cornerstone-ondemand-in-azure-ad"></a>Konfigurálhatja a felhasználók automatikus átadása alapkövei OnDemand az Azure AD-ben:
 
-2. Válassza ki a legfontosabb feladatai közé tartoznak OnDemand Szolgáltatottszoftver-alkalmazáshoz a listából.
+
+1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) és keresse meg a **Azure Active Directory > Vállalati alkalmazások > minden alkalmazás**.
+
+2. Válassza ki a OnDemand alapja az SaaS-alkalmazások listájában.
  
-    ![Legfontosabb feladatai közé tartoznak OnDemand kiépítése](./media/cornerstone-ondemand-provisioning-tutorial/Successcenter2.png)
+    ![Alapkövei OnDemand kiépítése](./media/cornerstone-ondemand-provisioning-tutorial/Successcenter2.png)
 
 3. Válassza ki a **kiépítési** fülre.
 
-    ![Legfontosabb feladatai közé tartoznak OnDemand kiépítése](./media/cornerstone-ondemand-provisioning-tutorial/ProvisioningTab.png)
+    ![Alapkövei OnDemand kiépítése](./media/cornerstone-ondemand-provisioning-tutorial/ProvisioningTab.png)
 
-4. Állítsa be a **kiépítési üzemmódját** való **automatikus**.
+4. Állítsa be a **Kiépítési mód** való **automatikus**.
 
-    ![Legfontosabb feladatai közé tartoznak OnDemand kiépítése](./media/cornerstone-ondemand-provisioning-tutorial/ProvisioningCredentials.png)
+    ![Alapkövei OnDemand kiépítése](./media/cornerstone-ondemand-provisioning-tutorial/ProvisioningCredentials.png)
 
-5. Az a **rendszergazdai hitelesítő adataival** területen adjon meg a **rendszergazda felhasználóneve**, **rendszergazdai jelszó**, és **tartomány** , a legfontosabb feladatai közé tartoznak OnDemand fiók.
+5. Alatt a **rendszergazdai hitelesítő adataival** szakaszban adjon meg a **rendszergazdai felhasználónév**, **rendszergazdai jelszó**, és **tartomány** , a alapkövei OnDemand fiók.
 
-    *   Az a **rendszergazda felhasználóneve** mezőben, a rendszergazda fiók a legfontosabb feladatai közé tartoznak OnDemand tenant tartomány\felhasználónév feltöltéséhez. Példa: contoso\admin.
+    *   Az a **rendszergazdai felhasználónév** mezőbe a rendszergazdai fiók az alapkövei OnDemand-bérlőre az tartomány\felhasználónév feltöltéséhez. Példa: contoso\admin.
 
     *   Az a **rendszergazdai jelszó** mezőbe a jelszót a rendszergazdai felhasználónév megfelelő feltöltéséhez.
 
-    *   Az a **tartomány** mezőben, a webszolgáltatás URL-címe a legfontosabb feladatai közé tartoznak OnDemand bérlő feltöltéséhez. Példa: A szolgáltatás nem található: `https://ws-[corpname].csod.com/feed30/clientdataservice.asmx`, amely a Contoso tartomány `https://ws-contoso.csod.com/feed30/clientdataservice.asmx`. Hogyan lehet lekérni a webszolgáltatás URL-címe további információkért lásd: [Itt](https://help.csod.com/help/csod_0/Content/Resources/Documents/WebServices/CSOD_Web_Services_-_User-OU_Technical_Specification_v20160222.pdf).
+    *   Az a **tartomány** mezőbe a webszolgáltatás URL-címe a alapkövei OnDemand bérlő feltöltéséhez. Példa: A szolgáltatás nem található: `https://ws-[corpname].csod.com/feed30/clientdataservice.asmx`, a Contoso tartomány `https://ws-contoso.csod.com/feed30/clientdataservice.asmx`. A webszolgáltatás URL-címe lekérésével további információkért lásd: [Itt](https://help.csod.com/help/csod_0/Content/Resources/Documents/WebServices/CSOD_Web_Services_-_User-OU_Technical_Specification_v20160222.pdf).
 
-6. A program kitölti a mezőket az 5. lépés, után kattintson a **kapcsolat tesztelése** biztosításához az Azure AD csatlakozhat OnDemand legfontosabb feladatai közé tartoznak. Ha nem sikerül, győződjön meg arról, a legfontosabb feladatai közé tartoznak OnDemand fiók rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
+6. 5. lépésben megjelenő mezők feltöltése, után kattintson a **kapcsolat tesztelése** annak biztosítása érdekében az Azure AD alapkövei OnDemand csatlakozhat. Ha a kapcsolat hibája esetén, győződjön meg arról, alapkövei OnDemand fiókja rendszergazdai engedélyekkel rendelkező, és próbálkozzon újra.
 
-    ![Legfontosabb feladatai közé tartoznak OnDemand kiépítése](./media/cornerstone-ondemand-provisioning-tutorial/TestConnection.png)
+    ![Alapkövei OnDemand kiépítése](./media/cornerstone-ondemand-provisioning-tutorial/TestConnection.png)
 
-7. Az a **értesítő e-mailt** mezőbe írja be az e-mail cím vagy egy csoportot kell az üzembe helyezési hiba értesítéseket, és jelölje be a jelölőnégyzetet - **e-mailben értesítést küld, ha hiba lép fel**.
+7. Az a **értesítő e-mailt** mezőbe írja be az e-mail-címét egy személyt vagy csoportot, akik kell üzembe helyezési hiba értesítéseket fogadni, és jelölje be a jelölőnégyzetet - **e-mail-értesítés küldése, ha hiba történik**.
 
-    ![Legfontosabb feladatai közé tartoznak OnDemand kiépítése](./media/cornerstone-ondemand-provisioning-tutorial/EmailNotification.png)
+    ![Alapkövei OnDemand kiépítése](./media/cornerstone-ondemand-provisioning-tutorial/EmailNotification.png)
 
 8. Kattintson a **Save** (Mentés) gombra.
 
-9. Az a **hozzárendelések** szakaszban jelölje be **szinkronizálása Azure Active Directory-felhasználók számára legfontosabb feladatai közé tartoznak OnDemand**.
+9. Alatt a **leképezések** szakaszban jelölje be **szinkronizálása az Azure Active Directory-felhasználók a alapkövei OnDemand**.
 
-    ![Legfontosabb feladatai közé tartoznak OnDemand kiépítése](./media/cornerstone-ondemand-provisioning-tutorial/UserMapping.png)
+    ![Alapkövei OnDemand kiépítése](./media/cornerstone-ondemand-provisioning-tutorial/UserMapping.png)
 
-10. Tekintse át a felhasználói attribútumok, az Azure AD a legfontosabb feladatai közé tartoznak OnDemand lettek szinkronizálva a **attribútum leképezési** szakasz. A kiválasztott attribútumok **egyező** tulajdonságok használatával felel meg a felhasználói fiókokat az OnDemand legfontosabb feladatai közé tartoznak a frissítési műveletek. Válassza ki a **mentése** gombra a módosítások véglegesítéséhez.
+10. Tekintse át a alapkövei OnDemand a az Azure AD-ből szinkronizált felhasználói attribútumok a **attribútumleképzés** szakaszban. A kiválasztott attribútumok **megfelelést kiváltó** tulajdonságok segítségével felel meg a frissítési műveletek alapkövei OnDemand levő felhasználói fiókokat. Válassza ki a **mentése** gombra kattintva véglegesítse a módosításokat.
 
-    ![Legfontosabb feladatai közé tartoznak OnDemand kiépítése](./media/cornerstone-ondemand-provisioning-tutorial/UserMappingAttributes.png)
+    ![Alapkövei OnDemand kiépítése](./media/cornerstone-ondemand-provisioning-tutorial/UserMappingAttributes.png)
 
-11. Hatókörként szűrők konfigurálásához tekintse meg a következő utasításokat a [Scoping szűrő oktatóanyag](./../active-directory-saas-scoping-filters.md).
+11. Hatókörszűrő konfigurálásához tekintse meg a következő utasításokat a [Scoping szűrő oktatóanyag](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
 
-12. Az Azure AD szolgáltatás OnDemand legfontosabb feladatai közé tartoznak a kiépítés engedélyezéséhez módosítsa a **kiépítési állapot** való **a** a a **beállítások** szakasz.
+12. Az Azure AD létesítési szolgáltatás alapkövei OnDemand engedélyezéséhez módosítsa a **üzembe helyezési állapotra** való **a** a a **beállítások** szakaszban.
 
-    ![Legfontosabb feladatai közé tartoznak OnDemand kiépítése](./media/cornerstone-ondemand-provisioning-tutorial/ProvisioningStatus.png)
+    ![Alapkövei OnDemand kiépítése](./media/cornerstone-ondemand-provisioning-tutorial/ProvisioningStatus.png)
 
-13. Válassza ki a kívánt értékeket a legfontosabb feladatai közé tartoznak OnDemand azokat a felhasználók és/vagy csoportok, amelyeket meg szeretne meghatározásához **hatókör** a a **beállítások** szakasz.
+13. A felhasználók és/vagy a kívánt csoportok definiálása alapkövei OnDemand való kiépítéséhez válassza ki a kívánt értékeket a **hatókör** a a **beállítások** szakaszban.
 
-    ![Legfontosabb feladatai közé tartoznak OnDemand kiépítése](./media/cornerstone-ondemand-provisioning-tutorial/SyncScope.png)
+    ![Alapkövei OnDemand kiépítése](./media/cornerstone-ondemand-provisioning-tutorial/SyncScope.png)
 
 14. Ha készen áll rendelkezésre, kattintson a **mentése**.
 
-    ![Legfontosabb feladatai közé tartoznak OnDemand kiépítése](./media/cornerstone-ondemand-provisioning-tutorial/Save.png)
+    ![Alapkövei OnDemand kiépítése](./media/cornerstone-ondemand-provisioning-tutorial/Save.png)
 
 
-Ez a művelet elindítja a kezdeti szinkronizálás az összes felhasználót és/vagy csoportok meghatározott **hatókör** a a **beállítások** szakasz. A kezdeti szinkronizálás végrehajtásához, mint az ezt követő szinkronizálások, körülbelül 40 percenként történik, amíg az Azure AD szolgáltatás kiépítését fut-e hosszabb időt vesz igénybe. Használhatja a **szinkronizálás részleteivel** szakasz figyelemmel az előrehaladást, és hivatkozásokat követve történő rendszerbe állításához tevékenység jelentést, amely ismerteti a legfontosabb feladatai közé tartoznak OnDemand szolgáltatás kiépítését az Azure AD által végzett összes műveletet.
+Ez a művelet elindítja a kezdeti szinkronizálás, az összes olyan felhasználó és/vagy meghatározott csoportoknak **hatókör** a a **beállítások** szakaszban. A kezdeti szinkronizálás végrehajtásához, mint az ezt követő szinkronizálások, amely körülbelül 40 percenként történik, amennyiben az Azure AD létesítési szolgáltatás fut-e több időt vesz igénybe. Használhatja a **szinkronizálás részleteivel** szakasz előrehaladásának figyeléséhez, és kövesse a hivatkozásokat kiépítés tevékenységgel kapcsolatos jelentés, amely az Azure AD létesítési szolgáltatás a alapkövei OnDemand által végrehajtott összes műveletet ismerteti.
 
-Olvassa el az Azure AD-naplók kiépítés módjáról további információkért lásd: [automatikus felhasználói fiók kiépítése jelentések](../active-directory-saas-provisioning-reporting.md).
-## <a name="connector-limitations"></a>Összekötő korlátozásai
+Az Azure AD létesítési naplók olvasása további információkért lásd: [-jelentések automatikus felhasználói fiók kiépítése](../manage-apps/check-status-user-account-provisioning.md).
+## <a name="connector-limitations"></a>Összekötő-korlátozások
 
-* A legfontosabb feladatai közé tartoznak OnDemand **pozíció** attribútum egy értéket, amely megfelel a legfontosabb feladatai közé tartoznak OnDemand-portál szerepkörök vár. Érvényes listájának **pozíció** értékek útvonalon érhető el **felhasználói rekord szerkesztése > szervezeti felépítés > pozíció** a legfontosabb feladatai közé tartoznak OnDemand-portálon.
-    ![Felhasználó legfontosabb feladatai közé tartoznak OnDemand kiépítés szerkesztése](./media/cornerstone-ondemand-provisioning-tutorial/UserEdit.png) ![pozíció kiépítés legfontosabb feladatai közé tartoznak OnDemand](./media/cornerstone-ondemand-provisioning-tutorial/UserPosition.png) ![legfontosabb feladatai közé tartoznak OnDemand pozíciók lista kiépítése](./media/cornerstone-ondemand-provisioning-tutorial/PostionId.png)
+* A alapkövei OnDemand **pozíció** attribútum, amely megfelel a szerepköröket a alapkövei OnDemand portál értéket vár. Érvényes listájának **pozíció** értékek szerezhető be az **felhasználói rekord szerkesztése > szervezeti felépítés > pozíció** a alapkövei OnDemand-portálon.
+    ![Felhasználó alapkövei OnDemand kiépítés szerkesztése](./media/cornerstone-ondemand-provisioning-tutorial/UserEdit.png) ![pozíció kiépítés alapkövei OnDemand](./media/cornerstone-ondemand-provisioning-tutorial/UserPosition.png) ![alapkövei OnDemand pozíciók lista kiépítése](./media/cornerstone-ondemand-provisioning-tutorial/PostionId.png)
     
 ## <a name="additional-resources"></a>További források
 
-* [Felhasználói fiók kiépítése vállalati alkalmazások kezelése](../manage-apps/configure-automatic-user-provisioning-portal.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](../manage-apps/what-is-single-sign-on.md)
+* [Felhasználói fiók kiépítése a vállalati alkalmazások kezelése](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 
 
 ## <a name="next-steps"></a>További lépések
 
-* [Ismerje meg, tekintse át a naplók és jelentések készítése a kiépítés tevékenység](../active-directory-saas-provisioning-reporting.md)
+* [Tekintse át a naplók és jelentések készítése a tevékenység kiépítése](../manage-apps/check-status-user-account-provisioning.md)
 
 <!--Image references-->
 [1]: ./media/cornerstone-ondemand-provisioning-tutorial/tutorial_general_01.png

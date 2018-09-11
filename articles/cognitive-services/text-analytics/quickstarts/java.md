@@ -1,6 +1,7 @@
 ---
-title: Java-gyors üzembe helyezés az Azure kognitív szolgáltatások, Szövegelemzések API |} Microsoft Docs
-description: Get információkat és a kód minták segítségével gyorsan használatának megkezdésében a szöveg Analytics API-t a Microsoft Azure kognitív Services.
+title: 'Gyors útmutató: Java használatával a szövegelemzési API meghívására |} A Microsoft Docs'
+titleSuffix: Azure Cognitive Services
+description: Get information és kód minták segítségével gyorsan használatának első lépései a szövegelemzési API-t a Microsoft Cognitive Services, Azure-ban.
 services: cognitive-services
 documentationcenter: ''
 author: ashmaka
@@ -9,35 +10,35 @@ ms.component: text-analytics
 ms.topic: article
 ms.date: 05/02/2018
 ms.author: ashmaka
-ms.openlocfilehash: 720459f65b9572a0599205c631d7de1b4d39f30b
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 9c08536c8bf5fc4d27c896c7eed00999d14b8872
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348759"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44300508"
 ---
-# <a name="quickstart-for-text-analytics-api-with-java"></a>Szövegelemzések Java API a gyors üzembe helyezés 
+# <a name="quickstart-using-java-to-call-the-text-analytics-cognitive-service"></a>Gyors útmutató: A Text Analytics kognitív szolgáltatás hívásához Java használatával
 <a name="HOLTop"></a>
 
-Ez a cikk bemutatja, hogyan való [nyelvi észlelése](#Detect), [elemzése a céggel kapcsolatos véleményeket](#SentimentAnalysis), [bontsa ki a legfontosabb kifejezések](#KeyPhraseExtraction), és [csatolt entitások azonosítása](#Entities) használatával a [szöveg Analytics API-k](//go.microsoft.com/fwlink/?LinkID=759711) Java.
+Ez a cikk bemutatja, hogyan való [nyelvfelismerés](#Detect), [vélemények elemzése](#SentimentAnalysis), [kinyerheti a kulcskifejezéseket](#KeyPhraseExtraction), és [kapcsolt entitások azonosítása](#Entities) használatával a [Text Analytics API-k](//go.microsoft.com/fwlink/?LinkID=759711) Java használatával.
 
-Tekintse meg a [API-definíciók](//go.microsoft.com/fwlink/?LinkID=759346) az API-k műszaki dokumentációját.
+Tekintse meg a [API-definíciók](//go.microsoft.com/fwlink/?LinkID=759346) technikai dokumentációját az API-kat.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Rendelkeznie kell egy [kognitív szolgáltatások API-fiók](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) rendelkező **szöveg Analytics API**. Használhatja a **5000 tranzakciók/hónapban ingyenes szint** a gyors üzembe helyezés befejeződik.
-Rendelkeznie kell a [végpont és a hozzáférési kulcsot](../How-tos/text-analytics-how-to-access-key.md) meg során létrehozott jelentkezzen be. 
+Rendelkeznie kell egy [Cognitive Services API-fiók](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) a **Text Analytics API**. Használhatja a **összesen 5 000 tranzakció/hó ingyenes szintet** a rövid útmutató elvégzéséhez.
+Rendelkeznie kell a [végpontját és hozzáférési kulcsát](../How-tos/text-analytics-how-to-access-key.md) , amely az Ön számára közben létrehozott jelentkezzen be. 
 
 <a name="Detect"></a>
 
 ## <a name="detect-language"></a>Nyelv felismerése
 
-A nyelvi észlelési API észleli a szöveg nyelvének dokumentálása, használja a [észlelése nyelvi metódus](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7).
+A nyelvi API-t észleli a szöveg nyelvének dokumentálja, használja a [nyelv észlelése metódus](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7).
 
-1. Hozzon létre egy új Java-projektet a kedvenc ide.
+1. Hozzon létre egy új Java-projektet a kedvenc IDE-ben.
 2. Adja hozzá az alábbi kódot.
-3. Cserélje le a `accessKey` hívóbetű érvényes az előfizetéshez tartozó értéket.
-4. Cserélje le a hely a `host` (jelenleg `westus`) a regisztrált a régióban.
+3. Cserélje le a `accessKey` az előfizetéshez tartozó érvényes hozzáférési kulcs-érték.
+4. Cserélje le a hely a `host` (jelenleg `westus`) regisztrált a régió.
 5. Futtassa a programot.
 
 ```java
@@ -158,9 +159,9 @@ public class DetectLanguage {
 }
 ```
 
-**Nyelvi észlelési válasz**
+**Nyelv észlelése válasz**
 
-A sikeres válasz ad vissza a JSON-ban, a következő példában látható módon: 
+A sikeres válasz JSON-fájlban, az alábbi példában látható módon: 
 
 ```json
 
@@ -206,12 +207,12 @@ A sikeres válasz ad vissza a JSON-ban, a következő példában látható módo
 
 ## <a name="analyze-sentiment"></a>Vélemények elemzése
 
-A céggel kapcsolatos véleményeket elemzés API detexts a céggel kapcsolatos véleményeket a szöveg rekordkészlet, használja a [véleményeket metódus](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9). A következő példában két dokumentumot, egy az angol és spanyol másik pontszámaihoz.
+A Sentiment Analysis API detexts jelöli szöveg rekordkészlet, használja a [vélemények metódus](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9). Az alábbi példa két dokumentumot, egy az angol és spanyol nyelven egy másik pontszámmodell.
 
-1. Hozzon létre egy új Java-projektet a kedvenc ide.
+1. Hozzon létre egy új Java-projektet a kedvenc IDE-ben.
 2. Adja hozzá az alábbi kódot.
-3. Cserélje le a `accessKey` hívóbetű érvényes az előfizetéshez tartozó értéket.
-4. Cserélje le a hely a `uriBase` (jelenleg `westus`) a regisztrált a régióban.
+3. Cserélje le a `accessKey` az előfizetéshez tartozó érvényes hozzáférési kulcs-érték.
+4. Cserélje le a hely a `uriBase` (jelenleg `westus`) regisztrált a régió.
 5. Futtassa a programot.
 
 ```java
@@ -331,9 +332,9 @@ public class GetSentiment {
     }
 }
 ```
-**Véleményeket elemzés válasz**
+**Vélemények elemzése válasz**
 
-A sikeres válasz ad vissza a JSON-ban, a következő példában látható módon: 
+A sikeres válasz JSON-fájlban, az alábbi példában látható módon: 
 
 ```json
 {
@@ -355,12 +356,12 @@ A sikeres válasz ad vissza a JSON-ban, a következő példában látható módo
 
 ## <a name="extract-key-phrases"></a>Kulcsszavak kinyerése
 
-A kulcs kifejezés kibontási API key-kifejezések kiolvassa a egy szöveges dokumentum, használja a [kulcs kifejezések metódus](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6). Az alábbi példa is angol és spanyol dokumentumok kulcs kifejezések bontja ki.
+A Key kifejezés kinyerése API – a kulcskifejezések kigyűjti a szöveges dokumentum használata a [Kulcskifejezések metódus](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6). Az alábbi példa a kulcskifejezések angol és spanyol is dokumentumok adja eredményül.
 
-1. Hozzon létre egy új Java-projektet a kedvenc ide.
+1. Hozzon létre egy új Java-projektet a kedvenc IDE-ben.
 2. Adja hozzá az alábbi kódot.
-3. Cserélje le a `accessKey` hívóbetű érvényes az előfizetéshez tartozó értéket.
-4. Cserélje le a hely a `uriBase` (jelenleg `westus`) a regisztrált a régióban.
+3. Cserélje le a `accessKey` az előfizetéshez tartozó érvényes hozzáférési kulcs-érték.
+4. Cserélje le a hely a `uriBase` (jelenleg `westus`) regisztrált a régió.
 5. Futtassa a programot.
 
 ```java
@@ -481,9 +482,9 @@ public class GetKeyPhrases {
     }
 }
 ```
-**Kulcs kifejezés kibontási válasz**
+**A kulcsfontosságú kifejezések kinyerése válasz**
 
-A sikeres válasz ad vissza a JSON-ban, a következő példában látható módon: 
+A sikeres válasz JSON-fájlban, az alábbi példában látható módon: 
 
 ```json
 {
@@ -522,14 +523,14 @@ A sikeres válasz ad vissza a JSON-ban, a következő példában látható módo
 ```
 <a name="Entities"></a>
 
-## <a name="identify-linked-entities"></a>Csatolt entitások azonosítása
+## <a name="identify-linked-entities"></a>Kapcsolt entitások azonosítása
 
-Az entitás Linking API azonosítja a szöveg jól ismert entitások dokumentálása, használja a [entitás Linking metódus](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634). Az alábbi példa angol dokumentumok entitások azonosítja.
+Az Entitáskapcsolási API azonosítja a jól ismert entitások egy szöveges dokumentum használata a [Entitáskapcsolás metódus](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634). Az alábbi példa az angol nyelvű dokumentumok entitások azonosítja.
 
-1. Hozzon létre egy új Java-projektet a kedvenc ide.
+1. Hozzon létre egy új Java-projektet a kedvenc IDE-ben.
 2. Adja hozzá az alábbi kódot.
-3. Cserélje le a `accessKey` hívóbetű érvényes az előfizetéshez tartozó értéket.
-4. Cserélje le a hely a `uriBase` (jelenleg `westus`) a regisztrált a régióban.
+3. Cserélje le a `accessKey` az előfizetéshez tartozó érvényes hozzáférési kulcs-érték.
+4. Cserélje le a hely a `uriBase` (jelenleg `westus`) regisztrált a régió.
 5. Futtassa a programot.
 
 ```java
@@ -651,7 +652,7 @@ public class GetEntities {
 ```
 **Entitás hivatkozási válasz**
 
-A sikeres válasz ad vissza a JSON-ban, a következő példában látható módon: 
+A sikeres válasz JSON-fájlban, az alábbi példában látható módon: 
 
 ```json
 {
@@ -716,9 +717,9 @@ A sikeres válasz ad vissza a JSON-ban, a következő példában látható módo
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [A Power BI Szövegelemzések](../tutorials/tutorial-power-bi-key-phrases.md)
+> [Szövegelemzés a Power bi-ban](../tutorials/tutorial-power-bi-key-phrases.md)
 
 ## <a name="see-also"></a>Lásd még 
 
- [Szöveg elemzés áttekintése](../overview.md)  
+ [Text Analytics áttekintése](../overview.md)  
  [Gyakori kérdések (GYIK)](../text-analytics-resource-faq.md)

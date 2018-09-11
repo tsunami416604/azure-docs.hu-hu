@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2018
 ms.author: spelluru
-ms.openlocfilehash: 143d0d4b66fc8e6e62364090e3d3187c4aa7bb51
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: e53e3e551041ed5bb04ae8e692a3fe3baf2521f8
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42919006"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44302239"
 ---
 # <a name="create-multi-vm-environments-and-paas-resources-with-azure-resource-manager-templates"></a>Több virtuális gépes környezet és PaaS-erőforrások létrehozása Azure Resource Manager-sablonokkal
 
 A [az Azure portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) lehetővé teszi, hogy könnyen [egyszerre egy virtuális gép hozzáadása egy laborhoz](https://docs.microsoft.com/azure/devtest-lab/devtest-lab-add-vm). Azonban ha a környezet több virtuális gépet tartalmaz, minden virtuális gép külön-külön léteznie kell. Például egy többrétegű webalkalmazást vagy a SharePoint-farm forgatókönyvek esetén olyan mechanizmus szükséges ahhoz, hogy egyetlen lépésben több virtuális gép létrehozásához. Az Azure Resource Manager-sablonok használatával ezután határozza meg az infrastruktúra és az Azure-megoldás konfigurációját, és ismételten üzembe több virtuális gépet egy konzisztens állapotba. Ez a funkció az alábbi előnyöket nyújtja:
 
-- Az Azure Resource Manager-sablonok töltődnek be közvetlenül a (a GitHub vagy a Team Services Git) a verziókövetési tárházzal.
+- Az Azure Resource Manager-sablonok töltődnek be közvetlenül a (a GitHub vagy az Azure fejlesztési és üzemeltetési szolgáltatás Git) a verziókövetési tárházzal.
 - Miután konfigurálta a felhasználók létrehozna egy környezetet az Azure Portalon egy Azure Resource Manager-sablon kiválasztásával, mint a más típusú [Virtuálisgép-adatbázisok](./devtest-lab-comparing-vm-base-image-types.md).
 - Azure PaaS-erőforrások kiépítése egy Azure Resource Manager-sablon IaaS virtuális gépek mellett a környezetben.
 - A környezetek költségei a labor létrehozása mellett egyéb típusú bázisok által létrehozott egyedi virtuális gépek követhető nyomon.
@@ -42,7 +42,7 @@ További információ a több [Resource Manager-sablonok használatának előnye
 Az Azure DevTest Labs rendelkezik egy [nyilvános tárházban az Azure Resource Manager-sablonok](https://github.com/Azure/azure-devtestlab/tree/master/Environments) , amelyek segítségével való csatlakozáshoz külső GitHub forrás saját magának nélkül hozhat létre környezeteket. Ez a tárház például az Azure Web Apps, a Service Fabric-fürt és a fejlesztési környezet SharePoint-Farm gyakran használt sablont tartalmaz. Ez a funkció az összetevők a nyilvános tárház, amely tartalmaz minden Ön által létrehozott laborban hasonlít. A környezet tárház használatának gyors megkezdése minimális bemeneti paraméterei, zökkenőmentes első lépések felhasználói élményt biztosíthat a PaaS-erőforrásokhoz labs belül az előre létrehozott környezeti sablonokkal teszi lehetővé. További információkért lásd: [konfigurálása és használata a nyilvános környezetben a DevTest Labs szolgáltatásban](devtest-lab-configure-use-public-environments.md).
 
 ## <a name="configure-your-own-template-repositories"></a>Saját sablon tárházak konfigurálása
-Az ajánlott eljárásokat az infrastruktúra mint kód és konfigurációs a kódot, egyik környezeti sablonokkal verziókövetési rendszerben kell kezelni. Az Azure DevTest Labs ezzel a gyakorlattal követi, és az összes Azure Resource Manager-sablonok közvetlenül tölt be a GitHub vagy a VSTS Git-tárházak. Ennek eredményeképpen a Resource Manager-sablonok között a teljes kiadási ciklus a tesztkörnyezetből az éles környezetbe használható.
+Az ajánlott eljárásokat az infrastruktúra mint kód és konfigurációs a kódot, egyik környezeti sablonokkal verziókövetési rendszerben kell kezelni. Az Azure DevTest Labs ezzel a gyakorlattal követi, és az összes Azure Resource Manager-sablonok közvetlenül tölt be a GitHub vagy az Azure fejlesztési és üzemeltetési szolgáltatás Git-tárházak. Ennek eredményeképpen a Resource Manager-sablonok között a teljes kiadási ciklus a tesztkörnyezetből az éles környezetbe használható.
 
 Tekintse meg a DevTest Labs csapat által létrehozott sablonok az [nyilvános GitHub-adattárból](https://github.com/Azure/azure-devtestlab/tree/master/Environments). A nyilvános tárházban megtekintheti, hogy közvetlenül használni, vagy testre is szabhatja őket, hogy illeszkedjen az igényeihez mások által megosztott sablonok. Miután létrehozta a sablont, tárolja a tárházban, ossza meg másokkal. A saját Git-tárház környezeteket a felhőben használható sablonokkal is állíthatja. 
 
@@ -79,9 +79,9 @@ A következő lépések végigvezetik egy tárház hozzáadása a labor, az Azur
 1. Válassza ki **Add +** hozzáadása az Azure Resource Manager-sablon adattár.
 1. Ha a második **Tárházak** panel megnyílik, adja meg a szükséges információkat a következő:
     - **Név** – adja meg a tárház nevet, amelyen a tesztkörnyezetben.
-    - **Git clone URL-cím** – adja meg a GIT HTTPS clone URL-cím a GitHub vagy a Visual Studio Team Services.  
+    - **Git clone URL-cím** – adja meg a GIT HTTPS clone URL-cím a GitHub vagy az Azure DevOps-szolgáltatásokkal.  
     - **Ág** – adja meg az Azure Resource Manager-sablon definíciók eléréséhez ág nevét. 
-    - **Személyes hozzáférési tokent** – a személyes hozzáférési jogkivonat segítségével biztonságosan érhetik el a tárházat. Válassza ki a Visual Studio Team Services a token beszerzéséhez  **&lt;Sajátneve >> saját profil > biztonsági > nyilvános hozzáférési jogkivonat**. A token beszerzése a Githubról, válassza az avatar kiválasztásával követni **beállítások > nyilvános hozzáférési jogkivonat**. 
+    - **Személyes hozzáférési tokent** – a személyes hozzáférési jogkivonat segítségével biztonságosan érhetik el a tárházat. Válassza ki a beszerezni a jogkivonatot az Azure DevOps-szolgáltatásokkal,  **&lt;Sajátneve >> saját profil > Biztonság > nyilvános hozzáférési jogkivonat**. A token beszerzése a Githubról, válassza az avatar kiválasztásával követni **beállítások > nyilvános hozzáférési jogkivonat**. 
     - **Mappa elérési útjának** – az egyik a két beviteli mezőt, adja meg a mappa elérési útja, amely - / - perjellel kezdődik, és a Git-klón URI-t vagy képest a összetevő definíciók (első szövegbeviteli mező) vagy az Azure Resource Manager-sablon definíciók .   
     
         ![Nyilvános adattár](./media/devtest-lab-create-environment-from-arm/repo-values.png)

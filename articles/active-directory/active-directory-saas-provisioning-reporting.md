@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: app-mgmt
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/30/2018
+ms.date: 09/09/2018
 ms.author: barbkess
 ms.reviewer: asmalser
-ms.openlocfilehash: 3231792ed1cb7f80cd2a106faf3760c48dd13c19
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 47ce9729e25fdfe3b72f45b3090473bb7dbeaa7a
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42055536"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44296329"
 ---
 # <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>Oktatóanyag: Jelentések automatikus felhasználói fiók kiépítése
 
@@ -30,11 +30,11 @@ Ez a cikk bemutatja, hogyan ellenőrizheti az üzembe helyezés állapotát az f
 
 ## <a name="overview"></a>Áttekintés
 
-Üzembe helyezési összekötők beállítása és konfiguráltak a [az Azure portal](https://portal.azure.com), a következő a [biztosított dokumentáció](saas-apps/tutorial-list.md) a támogatott alkalmazás. Miután konfigurálva és fusson, kiépítés feladatok jelenteni lehet a két módszer egyikével:
+Üzembe helyezési összekötők beállítása és konfiguráltak a [az Azure portal](https://portal.azure.com), a következő a [biztosított dokumentáció](./saas-apps/tutorial-list.md) a támogatott alkalmazás. Miután konfigurálva és fusson, kiépítés feladatok jelenteni lehet a két módszer egyikével:
 
 * **Azure felügyeleti portálján** – Ez a cikk elsősorban ismerteti a jelentés adatainak beolvasása a [az Azure portal](https://portal.azure.com), amely biztosít egy összesítő jelentés kiépítés és is részletes kiépítés auditnaplók egy az adott alkalmazáshoz.
 
-* **API naplózása** – Azure Active Directory is kínál, amely lehetővé teszi a programozott lekéréséhez a részletes üzembe helyezési naplók naplózási API. Lásd: [API-referencia az Azure Active Directory naplózási](active-directory-reporting-api-audit-reference.md) az adott használatával az API dokumentációjában. Ez a cikk nem tárgyalja kifejezetten az API használatát, amíg azt a kiépítés események, které jsou zaznamenány v auditovacím protokolu típusú részletesen.
+* **API naplózása** – Azure Active Directory is kínál, amely lehetővé teszi a programozott lekéréséhez a részletes üzembe helyezési naplók naplózási API. Lásd: [API-referencia az Azure Active Directory naplózási](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) az adott használatával az API dokumentációjában. Ez a cikk nem tárgyalja kifejezetten az API használatát, amíg azt a kiépítés események, které jsou zaznamenány v auditovacím protokolu típusú részletesen.
 
 ### <a name="definitions"></a>Meghatározások
 
@@ -131,7 +131,7 @@ Az olvashatóság érdekében ajánlott az Azure Portalon, válassza ki a **oszl
 
 A kiépítési összefoglaló jelentés- és vizsgálati naplókat útmutatás nyújtása a különböző felhasználói fiók kiépítéssel kapcsolatos problémák elhárítása rendszergazdák kulcsfontosságú szerepet játszanak.
 
-Forgatókönyv-alapú hogyan háríthatók el a felhasználók automatikus átadása, tekintse át [konfigurálásával és a felhasználók alkalmazásban való létrehozásával kapcsolatos problémák](active-directory-application-provisioning-content-map.md).
+Forgatókönyv-alapú hogyan háríthatók el a felhasználók automatikus átadása, tekintse át [konfigurálásával és a felhasználók alkalmazásban való létrehozásával kapcsolatos problémák](application-provisioning-config-problem.md).
 
 
 ## <a name="additional-resources"></a>További források

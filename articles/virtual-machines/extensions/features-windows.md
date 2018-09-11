@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: roiyz
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fc2433b8ac12bc1d485b6f23b56f356041e5128e
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: 4fd6175f68f98cce726e70e76b0b884a7a31fbda
+ms.sourcegitcommit: 465ae78cc22eeafb5dfafe4da4b8b2138daf5082
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43783100"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44325328"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Virtuálisgép-bővítmények és szolgáltatások Windows
 
@@ -66,7 +66,7 @@ Néhány bővítmény nem támogatja az összes OSE-kre között, és bocsáthat
 Bővítménycsomagok letöltődnek az Azure Storage-bővítmény adattárból, és az Azure Storage-bővítmény állapota feltöltések videóközpontba. Ha [támogatott](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support) az ügynökök verzióját, akkor nem kell engedélyezi a hozzáférést az Azure Storage a virtuális gép régióban, mivel az ügynök használhatják a kommunikáció átirányítása az Azure fabric controller, az ügynök-kommunikációhoz. Ha az ügynök nem támogatott verziója van, engedélyezi a kimenő hozzáférést az adott régióban az Azure Storage a virtuális gépről szeretne.
 
 > [!IMPORTANT]
-> Ha a hozzáférést a letiltott *168.63.129.1* a Vendég tűzfalat használ, akkor bővítmények sikertelen a fenti függetlenül.
+> Ha a hozzáférést a letiltott *168.63.129.16* a Vendég tűzfalat használ, akkor bővítmények sikertelen a fenti függetlenül.
 
 Ügynökök csak bővítménycsomagok és állapotjelentést letöltéséhez használható. Például, ha a bővítmény telepítését le kell töltenie egy szkriptet a Githubról (egyéni szkript), vagy kell elérni az Azure Storage (Azure Backup), majd további tűzfal és a hálózati biztonsági csoport portokat kell megnyitni. A különböző bővítmények eltérő követelmények vonatkoznak, lehet, mert a saját jobb alkalmazások. Az Azure Storage-hozzáférést igénylő bővítmények, Azure NSG szolgáltatás címkék használatával hozzáférést biztosíthat [tárolási](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags).
 

@@ -4,36 +4,20 @@ description: Hozzon létre egy önaláírt főtanúsítványt, exportálja a nyi
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
-manager: jpconnock
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 02/12/2018
+ms.date: 09/05/2018
 ms.author: cherylmc
-ms.openlocfilehash: b2f31761e4560cf4b9b9a5b92f5de9982a663a75
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 3ff7e754a55e15a8fa8a32f846efbbbe5025e46e
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38651787"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44297859"
 ---
 # <a name="generate-and-export-certificates-for-point-to-site-connections-using-makecert"></a>A MakeCert használatával, pont – hely kapcsolatokhoz a tanúsítványok létrehozása és exportálása
 
-Pont – hely kapcsolatok tanúsítványok segítségével hitelesíti. Ez a cikk bemutatja, hogyan hozzon létre egy önaláírt tanúsítványt, és a MakeCert használatával ügyféltanúsítványokat. Ha pont – hely konfigurációs lépések, például a legfelső szintű tanúsítványok feltöltése keres az alábbi listából válassza ki a "Konfigurálás pont – hely" cikkekben:
-
-> [!div class="op_single_selector"]
-> * [Önaláírt tanúsítványok létrehozása – PowerShell](vpn-gateway-certificates-point-to-site.md)
-> * [Önaláírt tanúsítványok létrehozása – MakeCert](vpn-gateway-certificates-point-to-site-makecert.md)
-> * [Pont – hely – Resource Manager – Azure portal konfigurálása](vpn-gateway-howto-point-to-site-resource-manager-portal.md)
-> * [Pont – hely – Resource Manager – a PowerShell konfigurálása](vpn-gateway-howto-point-to-site-rm-ps.md)
-> * [Pont – hely – klasszikus – Azure portal konfigurálása](vpn-gateway-howto-point-to-site-classic-azure-portal.md)
-> 
-> 
+Pont – hely kapcsolatok tanúsítványok segítségével hitelesíti. Ez a cikk bemutatja, hogyan hozzon létre egy önaláírt tanúsítványt, és a MakeCert használatával ügyféltanúsítványokat. Ha ugyanazt a tanúsítványt utasításokat keres, tekintse meg [tanúsítványok – PowerShell](vpn-gateway-certificates-point-to-site.md) vagy [tanúsítványok – Linux](vpn-gateway-certificates-point-to-site-linux.md).
 
 Bár javasoljuk a [Windows 10-es PowerShell-lépések](vpn-gateway-certificates-point-to-site.md) a tanúsítványok létrehozásához, egy nem kötelező módszerként kínálunk Makecertre vonatkozó utasítások. A tanúsítványok, létrehozhat módszerek használatával is telepíthető [bármely támogatott ügyfél operációs rendszer](vpn-gateway-howto-point-to-site-resource-manager-portal.md#faq). Azonban a MakeCert van a következő korlátozást:
 

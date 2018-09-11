@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: 411d7bae-c9d4-4e83-be63-9f2f2312b075
 ms.service: security-center
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/02/2018
 ms.author: rkarlin
-ms.openlocfilehash: 21ffab10b87925513a50198b5b0e66188ef15455
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: e74a5a431144c303b0301c8b7a22417784ecb65b
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44024910"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44300500"
 ---
 # <a name="onboarding-to-azure-security-center-standard-for-enhanced-security"></a>Bevezetés az Azure Security Center Standard a fokozott biztonság
 Frissítse a Security Center Standard kihasználásához fokozott biztonsági felügyeletet és fenyegetésvédelmet a hibrid felhőalapú számítási feladatokhoz.  Standard 60 napig ingyenesen kipróbálhatja. Tekintse meg a Security Center [díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/security-center/) további információt.

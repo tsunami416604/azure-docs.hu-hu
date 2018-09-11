@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 09/03/2018
 ms.author: snehaa
-ms.openlocfilehash: ce9dc4aab26b99bbb1e9f24f018354b8c91f66f4
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: f4ce2130b18b183f633c649f98fc1add30753a27
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43699964"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44296007"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Az Azure Migrate – gyakori kérdések (GYIK)
 
@@ -41,7 +41,7 @@ Az Azure Migrate egy felméréseket készítő szolgáltatás, amely segít feld
 Az Azure Migrate egy migrálási eszközt, és az Azure Site Recovery Deployment Planner eszközt vészhelyreállítás (DR).
 
 **Áttelepítés a VMware-ből az Azure-bA**: Ha azt tervezi, a helyszíni számítási feladatok migrálása az Azure-ba, az Azure Migrate az áttelepítés tervezéséhez. Az Azure Migrate a helyszíni számítási feladatokat értékeli, és útmutatást, insights, és segítséget nyújtanak az Azure-ba való migrálás mechanizmusokat biztosít. Miután elkészült a migrálási terv, szolgáltatások, például az Azure Site Recovery és az Azure Database Migration Service segítségével a gépek áttelepítése az Azure-bA.
-
+ 
 **Az Azure-ba történő Hyper-V áttelepítés**: az Azure Migrate jelenleg csak az támogatja a VMware virtuális gépek értékelése az Azure-ba való migrálásra. Hyper-V támogatása az Azure Migrate tervbe van véve. A belső, a Site Recovery Deployment Planner is használhatja. Hyper-V támogatása az Azure Migrate engedélyezése után is használhatja az Azure Migrate Hyper-V-alapú számítási feladatok migrálásának megtervezéséhez.
 
 **Az Azure-ba történő VMware vagy Hyper-V vész-helyreállítási**: Ha azt tervezi, ehhez a vészhelyreállítás (DR) az Azure-ban az Azure Site Recovery (a Site Recovery), használja a Site Recovery Deployment Planner a vészhelyreállítás megtervezése. A Site Recovery Deployment Planner hajtja végre a helyszíni környezet mély, az ASR-specifikus értékelését. Javaslatok a sikeres Vészhelyreállítási műveletek, például a replikáció, feladatátvétel, a virtuális gépek Site Recovery által igényelt biztosít.  
@@ -87,6 +87,10 @@ A berendezés-alapú felderítés a helyszíni virtuális gépek metaadatait gy�
   - Kimenő hálózati forgalom
 
 Az ügynökalapú felderítés beállítás elérhető, a készülék-alapú felderítés felett, és segítséget nyújt ügyfeleinknek [függőségek vizualizálása](how-to-create-group-machine-dependencies.md) a helyszíni virtuális gépek. A függőségi ügynökök gyűjthet adatokat, például teljes tartománynév, az operációs rendszer, IP címe, a MAC-cím, a virtuális gépről a virtuális gép és a bejövő/kimenő TCP-kapcsolatok belül futó folyamatok. Az ügynökalapú felderítés nem kötelező, és ha szeretné, ha nem szeretné a virtuális gépek a függőségek képi megjelenítése érdekében telepítse az ügynököket.
+
+### <a name="would-there-be-any-performance-impact-on-the-analyzed-esxi-host-environment"></a>A elemzett ESXi-gazdagép környezet teljesítményét hatással az ott lenne?
+
+Az információkat gyűjtünk a vCenter-kiszolgálón keresztül, mert nincs semmilyen teljesítménycsökkenést az ESXi-gazdagépek. A vCenter-kiszolgáló még a nem szinte nullára gyakorolt hatást.
 
 ### <a name="where-is-the-collected-data-stored-and-for-how-long"></a>Hol található az összegyűjtött adatok tárolt és mennyi ideig?
 

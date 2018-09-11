@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 108abe45b4b296e0d7928f2da00a06ac43e1ccbe
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: b7ce07547eccd52a8b10d4cffecaf1456778da4a
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39438783"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44301208"
 ---
-# <a name="integrate-azure-devtest-labs-into-your-vsts-continuous-integration-and-delivery-pipeline"></a>Az Azure DevTest Labs integrálása a VSTS folyamatos integrációs és teljesítési folyamat
-Használhatja a *Azure DevTest Labs-feladatok* bővítmény, amely egyszerűen települ a Visual Studio Team Services (VSTS) hogy a build és kiadás folyamatos üzembe helyezési folyamat integrálása az Azure DevTest Labs szolgáltatásban. A bővítmény telepítését három feladatot: 
+# <a name="integrate-azure-devtest-labs-into-your-azure-devops-continuous-integration-and-delivery-pipeline"></a>Az Azure DevTest Labs integrálása az Azure DevOps folyamatos integrációs és teljesítési folyamat
+Használhatja a *Azure DevTest Labs-feladatok* bővítmény, amely telepítve van az Azure DevOps-könnyedén integrálhatja a build és kiadás folyamatos üzembe helyezési folyamat az Azure DevTest Labs. A bővítmény telepítését három feladatot: 
 * Virtuális gép létrehozása
 * Egyéni lemezkép készítése egy virtuális Gépről
 * Virtuális gép törlése 
@@ -85,16 +85,16 @@ Ez a szakasz ismerteti, hogyan hozhat létre az Azure Resource Manager-sablon, a
 
 1. Ellenőrizze a parancsfájl, hogy a forráskódú verziókezelő rendszer. Nevezze el például **GetLabVMParams.ps1**.
 
-   A parancsfájl futtatásakor az ügynök a kiadási definíció részeként, és ha a feladat lépéseket használhatja például a *Azure File Copy* vagy *PowerShellben célszámítógépekre*, a parancsfájl gyűjti az értékeket, amelyeket szeretne az alkalmazás üzembe helyezése a virtuális géphez. Ezek a feladatok az alkalmazások üzembe helyezése az Azure virtuális gép általában használna. A feladatokat a virtuális gép erőforráscsoportja nevét, IP-címet, és teljesen minősített tartománynevét (FQDN) például értékekre van szükség.
+   A parancsfájl futtatásakor az ügynökön a kibocsátási folyamat részeként, és ha a feladat lépéseket használhatja például a *Azure File Copy* vagy *PowerShellben célszámítógépekre*, a parancsfájl gyűjti az értékeket, amelyeket szeretne az alkalmazás üzembe helyezése a virtuális géphez. Ezek a feladatok az alkalmazások üzembe helyezése az Azure virtuális gép általában használna. A feladatokat a virtuális gép erőforráscsoportja nevét, IP-címet, és teljesen minősített tartománynevét (FQDN) például értékekre van szükség.
 
-## <a name="create-a-release-definition-in-release-management"></a>A kiadási felügyeleti kiadási definíció létrehozása
-A kiadási definíció létrehozása, tegye a következőket:
+## <a name="create-a-release-pipeline-in-release-management"></a>A kiadási felügyeleti kibocsátási folyamat létrehozása
+A kibocsátási folyamat létrehozásához tegye a következőket:
 
 1. Az a **kiadásokban** lapján a **Build & Release** hub, válassza a plusz jelre (+) gombot.
 1. Az a **kiadási definíció létrehozása** ablakban válassza ki a **üres** sablont, és válassza ki **tovább**.
-1. Válassza ki **válasszon később**, majd válassza ki **létrehozás** új kiadási definíció létrehozása egy alapértelmezett környezetet, és nem társított összetevők.
-1. A helyi menü megnyitásához, az új kiadás definíciója, a környezet neve melletti három pontra (...), majd válassza ki és **változók konfigurálása**. 
-1. Az a **konfigurálása - környezet** ablakban, a változók a kiadási definíció feladatok során használt, adja meg a következő értékeket:
+1. Válassza ki **válasszon később**, majd válassza ki **létrehozás** hozhat létre egy új kiadási folyamatot egy alapértelmezett környezetet, és nem társított összetevők.
+1. Az új kiadási folyamatot a helyi menü megnyitásához a környezet neve melletti három pontra (...), majd válassza ki és **változók konfigurálása**. 
+1. Az a **konfigurálása - környezet** ablakban, a változók, a feladatkiadási folyamat során használt, adja meg a következő értékeket:
 
    a. A **vmName**, adja meg a nevét, amely a virtuális gép az Azure Portalon a Resource Manager-sablon létrehozásakor hozzárendelt.
 
@@ -106,13 +106,13 @@ A kiadási definíció létrehozása, tegye a következőket:
 
 A központi telepítés a következő szintre, ha a virtuális Géphez használandó "arany lemezképpel" az ezt követő központi telepítések. A virtuális gép az Azure DevTest Labs-példány belül kifejezetten erre a célra fejlesztik feladat használatával hoz létre. 
 
-1. Válassza ki a kiadási definíció **tevékenységek hozzáadása a**.
+1. Válassza ki a kibocsátási folyamat **tevékenységek hozzáadása a**.
 1. Az a **telepítés** lapon maradva adja hozzá egy *Azure DevTest Labs szolgáltatásban hozzon létre virtuális gép* feladat. A feladat a következőképpen konfigurálja:
 
    > [!NOTE]
    > Az ezt követő központi telepítéséhez használandó virtuális gép létrehozásához lásd: [Azure DevTest Labs-feladatok](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks).
 
-   a. A **Azure RM-előfizetés**, válassza ki a kapcsolat a **elérhető Azure-szolgáltatás kapcsolatok** listában, vagy hozzon létre több korlátozott engedélyek kapcsolat az Azure-előfizetéshez. További információkért lásd: [Azure Resource Manager-szolgáltatásvégpont](https://docs.microsoft.com/vsts/build-release/concepts/library/service-endpoints#sep-azure-rm).
+   a. A **Azure RM-előfizetés**, válassza ki a kapcsolat a **elérhető Azure-szolgáltatás kapcsolatok** listában, vagy hozzon létre több korlátozott engedélyek kapcsolat az Azure-előfizetéshez. További információkért lásd: [Azure Resource Manager-szolgáltatásvégpont](https://docs.microsoft.com/azure/devops/pipelines/library/service-endpoints#sep-azure-rm).
 
    b. A **labor nevét**, válassza ki a korábban létrehozott példány nevét.
 
@@ -135,14 +135,14 @@ A központi telepítés a következő szintre, ha a virtuális Géphez használa
    ```
 
 1. Hajtsa végre a gyűjtése a DevTest Labs virtuális gép részletei korábban létrehozott parancsfájlt. 
-1. Válassza ki a kiadási definíció **tevékenységek hozzáadása a** , majd a a **telepítés** lapon maradva adja hozzá egy *Azure PowerShell-lel* feladat. A feladat a következőképpen konfigurálja:
+1. Válassza ki a kibocsátási folyamat **tevékenységek hozzáadása a** , majd a a **telepítés** lapon maradva adja hozzá egy *Azure PowerShell-lel* feladat. A feladat a következőképpen konfigurálja:
 
    > [!NOTE]
    > Gyűjteni a DevTest Labs virtuális gép adatait, tekintse meg [üzembe helyezés: Azure PowerShell-lel](https://github.com/Microsoft/vsts-tasks/tree/master/Tasks/AzurePowerShell) , és hajtsa végre a parancsprogramot.
 
    a. A **Azure kapcsolattípus**válassza **Azure Resource Manager**.
 
-   b. A **Azure RM-előfizetés**, ki egy kapcsolatot a listában **elérhető Azure-szolgáltatás kapcsolatok**, vagy hozzon létre több korlátozott engedélyek kapcsolat az Azure-előfizetéshez. További információkért lásd: [Azure Resource Manager-szolgáltatásvégpont](https://docs.microsoft.com/vsts/build-release/concepts/library/service-endpoints#sep-azure-rm).
+   b. A **Azure RM-előfizetés**, ki egy kapcsolatot a listában **elérhető Azure-szolgáltatás kapcsolatok**, vagy hozzon létre több korlátozott engedélyek kapcsolat az Azure-előfizetéshez. További információkért lásd: [Azure Resource Manager-szolgáltatásvégpont](https://docs.microsoft.com/azure/devops/pipelines/library/service-endpoints#sep-azure-rm).
 
    c. A **Szkripttípus**válassza **parancsfájl**.
  
@@ -154,22 +154,22 @@ A központi telepítés a következő szintre, ha a virtuális Géphez használa
       ```
       -labVmId '$(labVMId)'
       ```
-    A parancsfájl összegyűjti a szükséges értékeket, és az környezeti változókat a kiadási definíció belül tárolja őket, így könnyen hivatkozhat rájuk a későbbi lépésekben.
+    A parancsfájl összegyűjti a szükséges értékeket, és az környezeti változókat a kiadási folyamaton belül tárolja őket, így könnyen hivatkozhat rájuk a későbbi lépésekben.
 
 1. Az alkalmazás üzembe helyezése az új DevTest Labs virtuális gépre. A feladatok általában használatával az alkalmazás üzembe helyezése *Azure fájlmásolás* és *PowerShellben célszámítógépekre*.
-   A virtuális Gépet, ezeket a feladatokat a paraméterek szükséges információ nevű három konfigurációs változókban tárolt **labVmRgName**, **labVMIpAddress**, és **labVMFqdn**a kiadási definíció belül. Ha csak szeretné létrehozása a DevTest Labs virtuális gép és a egy egyéni rendszerképet, az alkalmazás üzembe helyezése nélkül kísérletezhet, kihagyhatja ezt a lépést.
+   A virtuális Gépet, ezeket a feladatokat a paraméterek szükséges információ nevű három konfigurációs változókban tárolt **labVmRgName**, **labVMIpAddress**, és **labVMFqdn**belül a kiadási folyamathoz. Ha csak szeretné létrehozása a DevTest Labs virtuális gép és a egy egyéni rendszerképet, az alkalmazás üzembe helyezése nélkül kísérletezhet, kihagyhatja ezt a lépést.
 
 ### <a name="create-an-image"></a>Rendszerkép létrehozása
 
 A következő szakaszban, hogy az újonnan üzembe helyezett virtuális gép rendszerképének létrehozása az Azure DevTest Labs-példányban. Ezután használhatja a lemezképet, igény szerint hozhat létre a virtuális gép másolatát, ha szeretné végrehajtani egy fejlesztési feladatot, vagy egyes tesztek futtatása. 
 
-1. Válassza ki a kiadási definíció **tevékenységek hozzáadása a**.
+1. Válassza ki a kibocsátási folyamat **tevékenységek hozzáadása a**.
 1. Az a **telepítés** lapon maradva adja hozzá egy **Azure DevTest Labs szolgáltatásban hozzon létre egyéni lemezkép** feladat. Ez a következőképpen konfigurálja:
 
    > [!NOTE]
    > A kép létrehozásához lásd: [Azure DevTest Labs-feladatok](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks).
 
-   a. A **Azure RM-előfizetés**, a a **elérhető Azure-szolgáltatás kapcsolatok** listában válassza ki a kapcsolat a listából, vagy hozzon létre több korlátozott engedélyek kapcsolat az Azure-előfizetéshez. További információkért lásd: [Azure Resource Manager-szolgáltatásvégpont](https://docs.microsoft.com/vsts/build-release/concepts/library/service-endpoints#sep-azure-rm).
+   a. A **Azure RM-előfizetés**, a a **elérhető Azure-szolgáltatás kapcsolatok** listában válassza ki a kapcsolat a listából, vagy hozzon létre több korlátozott engedélyek kapcsolat az Azure-előfizetéshez. További információkért lásd: [Azure Resource Manager-szolgáltatásvégpont](https://docs.microsoft.com/azure/devops/pipelines/library/service-endpoints#sep-azure-rm).
 
    b. A **labor nevét**, válassza ki a korábban létrehozott példány nevét.
 
@@ -185,17 +185,17 @@ A következő szakaszban, hogy az újonnan üzembe helyezett virtuális gép ren
 
 Az utolsó fáziséit, hogy törli a virtuális Gépet üzembe helyezett Azure DevTest Labs-példányában. A virtuális gép után hajtsa végre a fejlesztési feladatokat, vagy a telepített virtuális gépen futtatni a teszteket, amelyekre szüksége parancsmagokéval töröljük. 
 
-1. Válassza ki a kiadási definíció **tevékenységek hozzáadása a** , majd a a **telepítés** lapon maradva adja hozzá egy *Azure DevTest Labs törlése VM* feladat. Ez a következőképpen konfigurálja:
+1. Válassza ki a kibocsátási folyamat **tevékenységek hozzáadása a** , majd a a **telepítés** lapon maradva adja hozzá egy *Azure DevTest Labs törlése VM* feladat. Ez a következőképpen konfigurálja:
 
       > [!NOTE]
       > Törölje a virtuális Gépet, tekintse meg [Azure DevTest Labs-feladatok](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks).
 
-   a. A **Azure RM-előfizetés**, válassza ki a kapcsolat a **elérhető Azure-szolgáltatás kapcsolatok** listában, vagy hozzon létre több korlátozott engedélyek kapcsolat az Azure-előfizetéshez. További információkért lásd: [Azure Resource Manager-szolgáltatásvégpont](https://docs.microsoft.com/vsts/build-release/concepts/library/service-endpoints#sep-azure-rm).
+   a. A **Azure RM-előfizetés**, válassza ki a kapcsolat a **elérhető Azure-szolgáltatás kapcsolatok** listában, vagy hozzon létre több korlátozott engedélyek kapcsolat az Azure-előfizetéshez. További információkért lásd: [Azure Resource Manager-szolgáltatásvégpont](https://docs.microsoft.com/azure/devops/pipelines/library/service-endpoints#sep-azure-rm).
  
    b. A **tesztlabor virtuális gép azonosítója**, ha a labor virtuális gép egy korábbi feladat azonosítójú a környezeti változó, amely a rendszer automatikusan kitölti a rendszer alapértelmezett neve módosította Itt szerkesztheti. Az alapértelmezett érték **$(labVMId)**.
 
-1. Adja meg a kiadási definíció nevét, és mentse azt.
-1. Hozzon létre egy új kiadás, válassza ki a legújabb buildre és telepítheti a definícióban az egyetlen környezetre.
+1. Adjon meg egy nevet a kiadási folyamathoz, és mentse azt.
+1. Hozzon létre egy új kiadás, válassza ki a legújabb buildre és üzembe helyezése az a folyamat az egyetlen környezetben.
 
 Minden egyes fázisában a nézet frissítése a DevTest Labs-példány az Azure Portalon a virtuális gép és a lemezkép létrehozása és a virtuális gép által törlése folyamatban van újra megtekintéséhez.
 
@@ -207,5 +207,5 @@ Mostantól használhatja az egyéni rendszerképet hozhat létre virtuális gép
 ## <a name="next-steps"></a>További lépések
 * Ismerje meg, hogyan [több virtuális gépes környezet létrehozása a Resource Manager-sablonok](devtest-lab-create-environment-from-arm.md).
 * Ismerje meg a további a rövid útmutató Resource Manager-sablonokkal a DevTest Labs automation a [nyilvános DevTest Labs GitHub-adattárat](https://github.com/Azure/azure-quickstart-templates).
-* Ha szükséges, tekintse meg a [VSTS hibaelhárítási](https://docs.microsoft.com/vsts/build-release/actions/troubleshooting) lapot.
+* Ha szükséges, tekintse meg a [Azure DevOps hibaelhárítási](https://docs.microsoft.com/azure/devops/pipelines/troubleshooting) lap.
  

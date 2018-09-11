@@ -10,12 +10,12 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.workload: big-data
 ms.date: 07/03/2018
-ms.openlocfilehash: ae34355485f7d5081cc11ce4dd36df5ba81ae320
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 82ffcc6f891a64650375121b9418daad33dc2628
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43041228"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44301694"
 ---
 # <a name="test-your-azure-data-lake-analytics-code"></a>Az Azure Data Lake Analytics tesztelhetnek
 
@@ -111,11 +111,11 @@ UDO-függvények hívása, miután a séma és a sorkészlet érték ellenőrzé
 
 Után a tesztelő projektet hoz létre, futtathatja az összes vizsgálati eset azonban **tesztelése Explorer > lista**, vagy kattintson a jobb gombbal a .cs fájlt, és válassza a **tesztek futtatása**.
 
-## <a name="run-test-cases-in-visual-studio-team-service"></a>A Visual Studio Team Service vizsgálati eset futtatása
+## <a name="run-test-cases-in-azure-devops"></a>Vizsgálati eset futtatása az Azure DevOps
 
-Mindkét **U-SQL parancsfájl tesztelési projekt** és **C# UDO tesztelési projekt** öröklik a C# egység tesztelési projekt. A [Visual Studio test feladat](https://docs.microsoft.com/vsts/pipelines/test/getting-started-with-continuous-testing?view=vsts) a Visual Studio Team Services futtathatja a vizsgálati eset. 
+Mindkét **U-SQL parancsfájl tesztelési projekt** és **C# UDO tesztelési projekt** öröklik a C# egység tesztelési projekt. A [Visual Studio test feladat](https://docs.microsoft.com/azure/devops/pipelines/test/getting-started-with-continuous-testing?view=vsts) az Azure DevOps futtathatja a vizsgálati eset. 
 
-### <a name="run-u-sql-test-cases-in-visual-studio-team-service"></a>A Visual Studio Team Service U-SQL vizsgálati eset futtatása
+### <a name="run-u-sql-test-cases-in-azure-devops"></a>U-SQL-vizsgálati eset futtatása az Azure DevOps
 
 U-SQL teszteléséhez, ellenőrizze, hogy betöltötte `CPPSDK` a build gépre, és ezután pass a `CPPSDK` USqlScriptTestRunner elérési útját (cppSdkFolderFullPath: @"").
 
@@ -126,16 +126,16 @@ CPPSDK egy csomagot, amely magában foglalja a Microsoft Visual C++ 14 és a Win
 - A Visual Studio 2015, alatt áll `C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Microsoft\Microsoft Azure Data Lake Tools for Visual Studio 2015\X.X.XXXX.X\CppSDK`
 - A Visual Studio 2017, alatt áll `C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\SDK\ScopeCppSDK`
 
-**A Visual Studio Team Services build ügynök CPPSDK előkészítése**
+**Az Azure DevOps fordító-ügynökhöz az CPPSDK előkészítése**
 
-A Visual Studio Team Service CPPSDK függőséghez előkészítése leggyakoribb módja a következőképpen történik:
+A leggyakoribb módja az Azure DevOps CPPSDK függőség előkészítése a következőképpen történik:
 
 1.  A ZIP a mappát, amely a CPPSDK kódtárait is tartalmazza.
 2.  Ellenőrizze, hogy a zip-fájlt a forráskódú verziókezelő rendszer. (A zip-fájlt biztosítja, hogy ellenőrizze az összes szalagtárra a CPPSDK mappában, hogy az egyes fájlok nem ".gitignore" által figyelmen kívül hagyja.)   
 3.  Bontsa ki a .zip fájlt, a létrehozási folyamat.
 4.  Pont `USqlScriptTestRunner` ezt a build gép kicsomagolt mappájába.
 
-### <a name="run-c-udo-test-cases-in-visual-studio-team-services"></a>C# UDO vizsgálati eset futtatása a Visual Studio Team Servicesben
+### <a name="run-c-udo-test-cases-in-azure-devops"></a>C# UDO vizsgálati eset futtatása az Azure DevOps
 
 C# UDO teszteléséhez ügyeljen arra, hogy az alábbi szerelvényeket, amelyek szükségesek a udo-k hivatkozhat. Ha azokhoz [a Nuget-csomag Microsoft.Azure.DataLake.USQL.Interfaces](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.Interfaces/), mindenképpen adja hozzá a NuGet-visszaállítási feladat a buildelési folyamat.
 

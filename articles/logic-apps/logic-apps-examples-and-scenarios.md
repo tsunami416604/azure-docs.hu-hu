@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.assetid: e06311bc-29eb-49df-9273-1f05bbb2395c
 ms.date: 01/31/18
-ms.openlocfilehash: f35822351a1ff5176548d67c8d94ada02f470421
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 0d5a7cb97636b9ca3aabf6c4199ce9e41bc1665d
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43123708"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44304424"
 ---
 # <a name="common-scenarios-examples-tutorials-and-walkthroughs-for-azure-logic-apps"></a>Gyakori forgatókönyvek, példák, oktatóanyagok és útmutatók az Azure Logic Apps
 
@@ -76,7 +76,7 @@ Logikai alkalmazások közé tartoznak a speciális ellenőrzési folyamat, pél
 
 ## <a name="deploy-and-manage-logic-apps"></a>Logikai alkalmazások telepítése és felügyelete
 
-Teljes körűen fejlesztéséhez és üzembe helyezése a Visual Studio, Visual Studio Team Services vagy bármely más verziókezelő és automatizált összeállítási eszközök rendelkező logikai alkalmazások. Azure-erőforrások központi telepítési sablonok használatával támogatja az üzembe helyezési munkafolyamatok és a egy erőforrás-sablonban függő kapcsolatok, a logic apps. Visual Studio-eszközök automatikusan létrehozni ezeket a sablonokat és ellenőrizheti verziókövetési verziószámozása.
+Teljes körűen fejlesztéséhez és üzembe helyezése a Visual Studio, az Azure DevOps, vagy bármely más forráskezelés és az automatizált összeállítási eszközök rendelkező logikai alkalmazások. Azure-erőforrások központi telepítési sablonok használatával támogatja az üzembe helyezési munkafolyamatok és a egy erőforrás-sablonban függő kapcsolatok, a logic apps. Visual Studio-eszközök automatikusan létrehozni ezeket a sablonokat és ellenőrizheti verziókövetési verziószámozása.
 
 * [Létrehozása és üzembe helyezése a logikai alkalmazások Visual studióval](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)
 * [Figyelés, naplózás és a meglévő logic apps riasztások bekapcsolása](../logic-apps/logic-apps-monitor-your-logic-apps.md)

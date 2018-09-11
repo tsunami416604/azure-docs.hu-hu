@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/25/2017
 ms.author: cbrooks
 ms.component: common
-ms.openlocfilehash: 56c464b9fbc9fe5f2d9acd1a403333fd1c729113
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 05a7dda67ca9747c5d6205952bc9337af628de8f
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44023392"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44296737"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Az Azure Storage-tűzfalak és virtuális hálózatok konfigurálása
 Az Azure Storage lehetővé teszi, hogy a tárfiókok meghatározott engedélyezett hálózatok biztonságos többrétegű biztonsági modellt biztosít.  Ha a hálózati szabályok vannak beállítva, csak az engedélyezett hálózatok alkalmazások férhetnek hozzá egy tárfiókot.  Egy engedélyezett hálózatról hívásakor az alkalmazások továbbra is megfelelő jogosultságokkal (egy érvényes hozzáférési kulcs vagy SAS-token) a tárfiók eléréséhez szükséges.
@@ -208,7 +208,7 @@ IP-hálózati szabályok storage-fiókok az Azure portal, PowerShell vagy CLIv2 
 2. Kattintson a beállítások menü nevű **tűzfalak és virtuális hálózatok**.
 3. Győződjön meg arról, hogy úgy döntött, hogy engedélyezze a hozzáférést a "Kijelölt hálózatok".
 4. Adja meg az IP-címtartomány egy internetes hozzáférést, adja meg az IP-címet vagy címtartományt a tűzfalat, címtartomány (CIDR formátumban).
-5. Egy IP-hálózati szabály eltávolításához kattintson a "...", a szabály a helyi menü megnyitásához, majd kattintson a "Remove".
+5. Az IP-hálózati szabály eltávolításához kattintson a Kuka ikonra a hálózati szabály mellett.
 6. Kattintson a *mentése* alkalmazza a módosításokat.
 
 #### <a name="powershell"></a>PowerShell

@@ -1,5 +1,6 @@
 ---
-title: Cognitive Services Text Analytics API rövid útmutatóban a C# |} A Microsoft Docs
+title: 'Gyors útmutató: C# használatával a szövegelemzési API meghívására |} A Microsoft Docs'
+titleSuffix: Azure Cognitive Services
 description: Információk és Kódminták a szövegelemzési API-val a Microsoft Cognitive Services, Azure-beli használatának gyors megkezdéséhez segítséget kaphat.
 services: cognitive-services
 documentationcenter: ''
@@ -9,14 +10,14 @@ ms.component: text-analytics
 ms.topic: article
 ms.date: 08/30/2018
 ms.author: ashmaka
-ms.openlocfilehash: 42a682898303b742a17b0a6d4d98c2b9fedf9003
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: b4d945b7495897caf1f4edd1e909581614798a23
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43841694"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44303021"
 ---
-# <a name="quickstart-for-the-text-analytics-api-with-c"></a>A szövegelemzési API-t C# Gyorsútmutató 
+# <a name="quickstart-using-c-to-call-the-text-analytics-cognitive-service"></a>Gyors útmutató: C# használatával a Text Analytics kognitív szolgáltatás hívásához
 <a name="HOLTop"></a>
 
 Ez a cikk bemutatja, hogyan nyelv felismerése, vélemények elemzése és kinyerheti a kulcskifejezéseket használatával a [Text Analytics API-k](//go.microsoft.com/fwlink/?LinkID=759711) a C# használatával. A kód írása volt működik a .NET Core-alkalmazást, minimális hivatkozó külső kódtáraiban, így a Linux vagy MacOS rendszeren is futtathatja.

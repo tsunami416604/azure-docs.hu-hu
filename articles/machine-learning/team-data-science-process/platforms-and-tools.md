@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: deguhath
-ms.openlocfilehash: 4b0c5d55c8a62dadbe11382997f4d258e66e1a31
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 0c5cfaad096b5702f321eead1f3da0d9225f4b53
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37951141"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44302860"
 ---
-# <a name="platforms-and-tools-for-data-science-team-projects"></a>Platformok és eszközök a data science csapatprojektek
+# <a name="platforms-and-tools-for-data-science-projects"></a>Platformok és eszközök a adatelemzési projektek
 
 A Microsoft cloud vagy a helyszíni rendszerek egy teljes spektruma elérhető data és analitikai szolgáltatásokat és erőforrásokat kínál. Győződjön meg arról, az adatelemzési projektek végrehajtásának hatékony és méretezhető telepíthetők. Útmutató a végrehajtási adatelemzési projektek egy trackable csapatok, verzió ellenőrzött, és remek biztosítja a [csoportos adatelemzési folyamat](overview.md) (TDSP).  A személyzet szerepkörök és hozzájuk kapcsolódó részfeladatokat szabványosításával egy data science csapat ezt a folyamatot a kezelt áttekintését lásd: [csoportos adatelemzési folyamat szerepkörök és feladatok](roles-tasks.md).
 
@@ -126,7 +126,7 @@ A következő paranccsal bash Git telepítéséhez (CentOS) Linuxos gépeken:
 
 ### <a name="generate-public-ssh-key-on-linux-centos-machines"></a>(CentOS) Linuxos gépeken a nyilvános SSH-kulcs létrehozása
 
-(CentOS) Linux-gépek használatakor a git-parancsok futtatásához kell hozzáadnia a nyilvános SSH-kulcsot a gép a VSTS-kiszolgálóhoz, hogy a gép a VSTS-kiszolgáló felismer. Először hozzon létre egy nyilvános SSH-kulcsot, és a kulcs hozzáadása a VSTS-biztonsági beállítások oldalon nyilvános SSH-kulcsokat. 
+(CentOS) Linux-gépek használatakor a git-parancsok futtatásához szüksége a gép a nyilvános SSH-kulcs hozzáadása az Azure DevOps-szolgáltatásokkal, hogy a gép már ismeri fel az Azure DevOps-szolgáltatásokkal. Először hozza létre a nyilvános SSH-kulcsot, és adja hozzá a kulcsot az Azure DevOps-szolgáltatásokkal biztonsági beállítások oldalon nyilvános SSH-kulcsokat. 
 
 - Az SSH-kulcs létrehozásához futtassa az alábbi két parancsot: 
 
@@ -136,7 +136,7 @@ A következő paranccsal bash Git telepítéséhez (CentOS) Linuxos gépeken:
 ![](./media/platforms-and-tools/resources-1-generate_ssh.png)
 
 - Másolja a teljes ssh kulcs beleértve *ssh-rsa*. 
-- Jelentkezzen be a VSTS-kiszolgáló. 
+- Jelentkezzen be az Azure DevOps-szolgáltatásokkal. 
 - Kattintson a **< név\>**  a lapot, majd kattintson a jobb felső sarokban található **biztonsági**. 
     
     ![](./media/platforms-and-tools/resources-2-user-setting.png)

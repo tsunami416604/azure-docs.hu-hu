@@ -1,5 +1,6 @@
 ---
-title: A PHP a rövid útmutató az Azure Cognitive Services szövegelemzési API |} A Microsoft Docs
+title: 'Gyors útmutató: A szövegelemzési API meghívására PHP használatával |} A Microsoft Docs'
+titleSuffix: Azure Cognitive Services
 description: Get information és kód minták segítségével gyorsan használatának első lépései a szövegelemzési API-t a Microsoft Cognitive Services, Azure-ban.
 services: cognitive-services
 documentationcenter: ''
@@ -9,14 +10,14 @@ ms.component: text-analytics
 ms.topic: article
 ms.date: 08/30/2018
 ms.author: ashmaka
-ms.openlocfilehash: 2f654736e998652ecaf8825b308c7ff3bf84a924
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: 602988747f54c3dbdfa933986d47b631b757db65
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43840770"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44298709"
 ---
-# <a name="quickstart-for-text-analytics-api-with-php"></a>Gyors útmutató: a Text Analytics API PHP-vel 
+# <a name="quickstart-using-php-to-call-the-text-analytics-cognitive-service"></a>Gyors útmutató: A Text Analytics kognitív szolgáltatás hívásához PHP használatával
 <a name="HOLTop"></a>
 
 Ez a cikk bemutatja, hogyan való [nyelvfelismerés](#Detect), [vélemények elemzése](#SentimentAnalysis), [kinyerheti a kulcskifejezéseket](#KeyPhraseExtraction), és [kapcsolt entitások azonosítása](#Entities) használatával a [Text Analytics API-k](//go.microsoft.com/fwlink/?LinkID=759711) a PHP.

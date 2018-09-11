@@ -16,12 +16,12 @@ ms.date: 03/20/2018
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: 58108bd2851050e96df1b5453ce96856374b7163
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: bd75ecde75d0f22dc66f047cd063dd85807f6f33
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37437035"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44304441"
 ---
 # <a name="manage-access-for-external-users-using-rbac"></a>A külső felhasználók számára az RBAC használatával-hozzáférés kezelése
 
@@ -42,7 +42,7 @@ Ha az RBAC használja (de nem kizárólag), van két gyakori példa:
 RBAC-szerepkörök kizárólag a kaphatnak **tulajdonosok** az előfizetés. Ezért a rendszergazdának kell bejelentkeznie, ezzel a szerepkörrel rendelkező felhasználóként előre hozzárendelt vagy az Azure-előfizetést hozott létre.
 
 Az Azure Portalról után jelentkezzen be rendszergazdaként, válassza ki "az előfizetések", és válassza a kívántra.
-![az Azure portal előfizetés paneljén](./media/role-assignments-external-users/0.png) alapértelmezés szerint a rendszergazda felhasználó megvásárolta az Azure-előfizetéssel, ha a felhasználó fog megjelenni **Fiókadminisztrátor**, ez az előfizetés szerepkör alatt. Az Azure-előfizetési szerepkörökhöz kapcsolatos további információkért lásd: [hozzáadása vagy módosítása az előfizetést vagy szolgáltatásokat kezelő Azure-rendszergazdai szerepkörök](../billing/billing-add-change-azure-subscription-administrator.md).
+![az Azure portal előfizetés paneljén](./media/role-assignments-external-users/0.png) alapértelmezés szerint a rendszergazda felhasználó megvásárolta az Azure-előfizetéssel, ha a felhasználó fog megjelenni **Fiókadminisztrátor**, ez az előfizetés szerepkör alatt. Az Azure-előfizetési szerepkörökhöz kapcsolatos további információkért lásd: [hozzáadása vagy módosítása az Azure-előfizetés rendszergazdái](../billing/billing-add-change-azure-subscription-administrator.md).
 
 Ebben a példában a felhasználó "alflanigan@outlook.com" van a **tulajdonos** az "ingyenes próbaverzió" előfizetést, az AAD bérlői "Alapértelmezett bérlőt Azure". Mivel ez a felhasználó kezdeti Microsoft Account "Outlook" az Azure-előfizetés létrehozója (a Microsoft Account = az Outlook, élő stb.) az alapértelmezett tartomány nevét, ezen a bérlőn hozzáadott összes többi felhasználó számára lesz **"\@ alflaniganuoutlook.onmicrosoft.com"**. A kialakításból fakadóan az új tartomány szintaxisa a következő bármik lehetnek, a felhasználó, aki létrehozta a bérlő nevét felhasználónevét és tartományát, és vegye fel a bővítmény megfelelő **". onmicrosoft.com"**.
 Ezenkívül felhasználók is után kell bejelentkeznie a bérlőben lévő egyéni tartománynév hozzáadása és ellenőrzi az új bérlőhöz. Az Azure Active Directory-bérlő egyéni tartománynév ellenőrzése További információkért lásd: [egyéni tartománynév hozzáadása a címtárhoz](/active-directory/active-directory-add-domain).

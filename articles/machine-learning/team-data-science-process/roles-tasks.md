@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: deguhath
-ms.openlocfilehash: 8cec2c2b72b88a27c4a6c15b197e859b879bef43
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: 3e0e9a59d7f77355077fc1f7781eb3be4dbe0532
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39308524"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44296703"
 ---
 # <a name="team-data-science-process-roles-and-tasks"></a>Csapat adatelemzési folyamat szerepkörök és feladatok
 
 A csoportos adatelemzési folyamat egy keretrendszer, amely egy strukturált hozhat létre prediktív elemzési megoldások és intelligens alkalmazások hatékony módszert biztosít a Microsoft által kifejlesztett. Ez a cikk ismerteti a kulcsfontosságú személyzet szerepköröket, és a hozzájuk kapcsolódó részfeladatokat rendszerű adatelemzési által kezelt csapat szabványosításával ezen folyamatról. 
 
-Ez a bevezető oktatóanyagok, amely a TDSP-környezetet, a teljes adatelemzési adatcsoport, azoknak és projektek vonatkozó utasítások mutató hivatkozásokat tartalmaz. Visual Studio Team Services (VSTS) használatával a oktatóanyagok részletes útmutatást biztosít.  VSTS-kódszolgáltatás platform és Agilis tervezési eszköz a csapat feladatait, hozzáférés és az adattárak kezelése biztosít. 
+Ez a bevezető oktatóanyagok, amely a TDSP-környezetet, a teljes adatelemzési adatcsoport, azoknak és projektek vonatkozó utasítások mutató hivatkozásokat tartalmaz. Az oktatóanyagok az Azure DevOps használatával részletes útmutatást biztosít. Az Azure DevOps-kódszolgáltatás platform és Agilis tervezési eszköz a csapat feladatait, hozzáférés és az adattárak kezelése biztosít. 
 
 Ezen információk használatával TDSP megvalósítani a saját kód üzemeltetési és Agilis tervezési eszköz. 
 
@@ -64,7 +64,7 @@ A következő képen látható a legfelső szintű feladatok munkatársak beveze
 Ez a séma- és az alábbi, részletes áttekintése, amelyek a TDSP az egyes szerepkörökhöz rendelt feladatok kell segítségével eldöntheti, az oktatóanyagokat, az Ön feladatkörei, a szervezet alapján.
 
 > [!NOTE]
-> A következőkben megtudhatja TDSP-környezet kialakítása és más adatok adatelemzési feladatokat a Visual Studio Team Services (VSTS) lépéseit. Azt adja meg, hogyan végezheti el ezeket a feladatokat a vsts-sel, mivel az a mi használjuk a Microsoft TDSP megvalósításához. Vsts-ben úgy, hogy integrálja a felügyeleti feladatok nyomon követése, munkaelemekből álló csapatmunkát és megosztásához segédprogramok, használja a kód üzemeltetési szolgáltatás verziók rendszerezésére, és adja meg a szerepköralapú biztonság. Ön választhat más platformokon, ha szeretné, a TDSP által ismertetett feladatok végrehajtásához. De a platformtól függően néhány szolgáltatás ki a vsts Szolgáltatásból lehet, hogy nem érhető el. 
+> A következőkben megtudhatja lépéseket TDSP-környezet kialakítása, és végezze el az Azure DevOps más adatelemzési feladatokat. Azt adja meg, hogyan végezheti el ezeket a feladatokat az Azure DevOps, mivel az a mi használjuk a Microsoft TDSP megvalósításához. Az Azure DevOps integrálásával a felügyeleti feladatok nyomon követése, munkaelemekből álló csapatmunkát és a egy üzemeltetési szolgáltatás kódot, segédprogramok, megosztására használt verziók rendszerezheti, és adja meg a szerepkör alapú biztonsági. Ön választhat más platformokon, ha szeretné, a TDSP által ismertetett feladatok végrehajtásához. De a platformtól függően néhány szolgáltatás az Azure DevOps ki lehet, hogy nem érhető el. 
 >
 >Itt leírt utasításokat is használhatja a [adatelemzési virtuális gépet (DSVM)](http://aka.ms/dsvm) az Azure-ban a felhő mint az elemzési asztal számos népszerű beépített adatelemzési eszközzel, előre konfigurált, és a különböző Microsoft-szoftverek és az Azure integrált szolgáltatások. A dsvm-hez vagy bármilyen más fejlesztési környezet használatával TDSP megvalósításához. 
 
@@ -73,7 +73,7 @@ Ez a séma- és az alábbi, részletes áttekintése, amelyek a TDSP az egyes sz
 
 A következő feladatokat végzi a csoport kezelőjének (vagy a kijelölt TDSP-rendszergazda) a TDSP fogad el:
 
-- Hozzon létre egy **csoportfióknak** az üzemeltetési platform (például a Github, a Git, vsts-ben vagy más) kódot
+- Hozzon létre egy **csoportfióknak** az üzemeltetési platform (például a Github, a Git, Azure DevOps, és mások) kódot
 - Hozzon létre egy **projekt sablontár** a fiók, és a projekt sablontár Microsoft TDSP csapata által fejlesztett kezdőérték. A Microsoft TDSP projekt sablontár 
     - biztosít egy **könyvtárstruktúrát szabványosított** többek között az adatokat, a kód és a dokumentumok, könyvtárak 
     - számos új **dokumentum sablonok szabványosított** egy hatékony adatelemzési folyamat irányításához. 
@@ -86,10 +86,10 @@ A részletes részletes tudnivalókért lásd: [Csoportkezelő feladatokat egy a
 
 ## <a name="team-lead-tasks"></a>Csapat vezető feladatok
 
-A következő feladatokat végzi a Csapatvezető (vagy egy kijelölt csapat projekt adminisztrátorához) a TDSP el:
+A következő feladatokat végzi a Csapatvezető (vagy egy kijelölt projekt adminisztrátorához) a TDSP el:
 
-- Ha a VSTS, a kód üzemeltetési platform verziókezelés és együttműködési kell van kijelölve, hozzon létre egy **csapatprojekt** a csoporthoz tartozó VSTS-kiszolgálón. Ellenkező esetben ez a feladat lehet hagyni.
-- Hozzon létre a **csapat projekt sablontár** csapatprojekt és a csoport projekt sablontár állítsa be a csoport a műveletek irányítója vagy a vezető által kezdőérték alatt. 
+- Ha a kód üzemeltetési platform verziókezelés és együttműködés az Azure DevOps kijelölt, hozzon létre egy **projekt** meg a csoport az Azure DevOps-szolgáltatásokkal. Ellenkező esetben ez a feladat lehet hagyni.
+- Hozzon létre a **projekt sablontár** a projektet, és a csoport projekt sablontár állítsa be a csoport a műveletek irányítója vagy a vezető által kezdőérték alatt. 
 - Hozzon létre a **csapat segédprogram tárház**, és adja hozzá a csapat-specifikus parancssori segédeszközöket a tárházba. 
 - (Nem kötelező) Hozzon létre **[az Azure file storage](https://azure.microsoft.com/services/storage/files/)** azon adategységeiről, amelyeket a teljes csoport számára hasznos lehet tárolására használható. Más csapattagokat is csatlakoztatása a megosztott felhőalapú fájltároló analytics gépeiken.
 - (Nem kötelező) Csatlakoztassa az Azure file storage-a **adatelemző virtuális gép** (DSVM) a csapat vezethet, és adja hozzá az adategységek rajta.
@@ -102,7 +102,7 @@ A részletes részletes tudnivalókért lásd: [feladatok csapata egy adatelemz�
 
 A következő feladatokat végzi el a TDSP projekt vezet:
 
-- Hozzon létre egy **projektadattárat** csapatprojekt és kezdőérték alatt, a csapat sablontár projektre. 
+- Hozzon létre egy **projektadattárat** a projekt keretében és a projekt sablontár ültet be azt. 
 - (Nem kötelező) Hozzon létre **az Azure file storage** a projekthez, adategységeket tárolására használható. 
 - (Nem kötelező) Csatlakoztassa az Azure file storage-a **adatelemző virtuális gép** (DSVM) a projekt vezethet, és adja hozzá a projekthez, adategységeket rajta.
 - Állítsa be a **biztonsági ellenőrzést** a projekt tagok hozzáadása és konfigurálása a jogosultságait. 
@@ -125,7 +125,7 @@ Részletes útmutatásért az előkészítési alakzatot a projekt számára, l�
  
 Az alábbi utasításokat a megfelelő készletét, az adatszakértők, projektvezető és csapatvezetők hozhat létre munkaelemeket összes feladat és egy projektet szakaszok követése az elejétől vége. A git használatával is elősegíti az adatelemzők közötti együttműködés, és biztosítja, hogy a projekt végrehajtása során létrehozott összetevők verziója, ellenőrzött és az összes projekt tagjai által megosztott.
 
-A megjelenő utasításokat a projekt végrehajtása feltételezzük, hogy mindkét munkaelemeit kapcsolja össze, és a projekt git-tárházakat a vsts-en vannak alapján fejlesztettek. VSTS használatával is lehetővé teszi, hogy a Git-ágak az projekt tárházak a munkaelemeket. Ezzel a módszerrel könnyen követheti a munkaelemhez Mi történt meg. 
+A megjelenő utasításokat a projekt végrehajtása feltételezzük, hogy mindkét munkaelemeit kapcsolja össze, és a git-tárházak vannak az Azure DevOps project alapján fejlesztettek. Azure DevOps használatával is lehetővé teszi, hogy a Git-ágak az projekt tárházak a munkaelemeket. Ezzel a módszerrel könnyen követheti a munkaelemhez Mi történt meg. 
 
 Az alábbi ábra ezt a munkafolyamatot a projekt végrehajtása TDSP használata vázolja fel.
 

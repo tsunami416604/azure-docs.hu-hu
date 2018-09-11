@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: genli
-ms.openlocfilehash: 448622f0406eb709c8d94d60722edb4ef00f42de
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 1eb2a3c13a1bbf7f2fd7a9691d833fc9c4b3a2b8
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43669938"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44294034"
 ---
 # <a name="understand-azure-spending-limit-and-how-to-remove-it"></a>Tudnivalók az Azure-költségkeretről és annak eltávolításáról
 
@@ -64,7 +64,7 @@ Az alábbi lépéseket követve távolíthatja el a költségkeretet:
 
 A költségkeret megakadályozhatja, hogy telepítését vagy bizonyos külső és a Microsoft-szolgáltatások használatával. A következő szituációkban javasolt a költségkeret eltávolítása az előfizetésből.
 
-* Belső rendszerképeket tervez üzembe helyezni, mint például az Oracle, és olyan szolgáltatásokat, mint például a Visual Studio Online Team Services. Ez a forgatókönyv hatására szinte azonnal túllépi a költségkeretet, és hatására az előfizetés le kell tiltani.
+* Belső rendszerképeket például az Oracle és olyan szolgáltatásokat, például az Azure DevOps-szolgáltatások telepítését tervezi. Ez a forgatókönyv hatására szinte azonnal túllépi a költségkeretet, és hatására az előfizetés le kell tiltani.
 * Olyan szolgáltatásai vannak, amelyek működése nem szakadhat meg.
 * Olyan szolgáltatásokkal és erőforrásokkal rendelkezik, amelyeknek beállításait – például a virtuális IP-címeket – nem szeretné elveszteni. Ezek a beállítások elvesznek, ha a szolgáltatások és erőforrások szüntethető.
 

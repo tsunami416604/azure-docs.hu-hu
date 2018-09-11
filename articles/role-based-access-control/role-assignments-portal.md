@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/07/2018
+ms.date: 09/05/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 97bf33cb882d5a121b9811a8e36a1d26f9a954f8
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 14ac23e6b69302ac412aac3ecab06345e5d722fd
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39715369"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44296346"
 ---
 # <a name="manage-access-using-rbac-and-the-azure-portal"></a>Hozzáférés kezelése az RBAC és az Azure Portal használatával
 
@@ -89,7 +89,7 @@ A hozzáférések kezelésekor szeretné tudni, kinek van hozzáférése, milyen
 
     ![Egy előfizetés hozzáférés-vezérlés (IAM) paneljén](./media/role-assignments-portal/subscription-access-control.png)
 
-    Az RBAC-modellben a hagyományos előfizetések adminisztrátorai és társadminisztrátorai minősülnek az előfizetés tulajdonosának.
+    Klasszikus előfizetés rendszergazdái és társadminisztrátorai minősülnek tulajdonosoknak az RBAC-modellben.
 
 ### <a name="list-role-assignments-for-a-management-group"></a>Szerepkör-hozzárendelések lista felügyeleti csoport
 
@@ -109,9 +109,9 @@ A hozzáférések kezelésekor szeretné tudni, kinek van hozzáférése, milyen
 
 ## <a name="grant-access"></a>Hozzáférés biztosítása
 
-Az RBAC-ben a hozzáférés biztosítása egy szerepkör-hozzárendelés létrehozásával történik. Kövesse az alábbi lépéseket a különféle hatókörű hozzáférést.
+RBAC hozzáférést biztosítani, rendeljen hozzá egy szerepkörhöz. Kövesse az alábbi lépéseket a különféle hatókörű hozzáférést.
 
-### <a name="create-a-role-assignment-at-a-resource-group-scope"></a>Szerepkör-hozzárendelés létrehozása erőforráscsoporti hatókörben
+### <a name="assign-a-role-at-a-resource-group-scope"></a>Egy erőforrás-csoport hatókörben szerepkör hozzárendelése
 
 1. A navigációs listában válassza az **Erőforráscsoportok** lehetőséget.
 
@@ -131,11 +131,11 @@ Az RBAC-ben a hozzáférés biztosítása egy szerepkör-hozzárendelés létreh
 
 1. A **Kiválasztás** listában válasszon ki egy felhasználót, csoportot vagy alkalmazást. Ha a listában nem látja a rendszerbiztonsági tagot, írhat a **Kiválasztás** mezőbe megjelenítendő nevek, e-mail-címek és objektumazonosítók a címtárban történő kereséséhez.
 
-1. Kattintson a **Mentés** gombra a szerepkör-hozzárendelés létrehozásához.
+1. Válasszon **mentése** a szerepkör hozzárendelése.
 
    Néhány pillanat múlva a rendszerbiztonsági tagot a rendszer hozzárendeli a szerepkörhöz az erőforráscsoporti hatókörben.
 
-### <a name="create-a-role-assignment-at-a-subscription-scope"></a>Szerepkör-hozzárendelés létrehozása előfizetési hatókörben
+### <a name="assign-a-role-at-a-subscription-scope"></a>Egy előfizetési hatókörben szerepkör hozzárendelése
 
 1. Az Azure Portalon válassza a **Minden szolgáltatás**, majd az **Előfizetések** elemet.
 
@@ -155,11 +155,37 @@ Az RBAC-ben a hozzáférés biztosítása egy szerepkör-hozzárendelés létreh
 
 1. A **Kiválasztás** listában válasszon ki egy felhasználót, csoportot vagy alkalmazást. Ha a listában nem látja a rendszerbiztonsági tagot, írhat a **Kiválasztás** mezőbe megjelenítendő nevek, e-mail-címek és objektumazonosítók a címtárban történő kereséséhez.
 
-1. Kattintson a **Mentés** gombra a szerepkör-hozzárendelés létrehozásához.
+1. Válasszon **mentése** a szerepkör hozzárendelése.
 
    Néhány pillanat múlva a rendszerbiztonsági tagot a rendszer hozzárendeli a szerepkörhöz az előfizetés hatókörében.
 
-### <a name="create-a-role-assignment-at-a-management-group-scope"></a>Szerepkör-hozzárendelés létrehozása a felügyeleti csoport hatóköre:
+### <a name="assign-a-user-as-an-administrator-of-a-subscription"></a>Az előfizetés rendszergazda felhasználó hozzárendelése
+
+Ahhoz, hogy a felhasználó az Azure-előfizetés rendszergazdájának, hozzárendelheti azokat a [tulajdonosa](built-in-roles.md#owner) szerepkör az előfizetések szintjén. A tulajdonosi szerepkör a felhasználó teljes hozzáférést biztosít, az összes erőforrást az előfizetésben, beleértve a jogot arra, hogy mások való hozzáférés delegálására. Ezek a lépések ugyanazok, mint bármilyen más szerepkör-hozzárendelés.
+
+1. Az Azure Portalon válassza a **Minden szolgáltatás**, majd az **Előfizetések** elemet.
+
+1. Válassza ki az előfizetését.
+
+1. Válassza a **Hozzáférés-vezérlés (IAM)** lehetőséget az előfizetési hatókörben található szerepkör-hozzárendelések aktuális listájának megtekintéséhez.
+
+   ![Egy előfizetés hozzáférés-vezérlés (IAM) paneljén](./media/role-assignments-portal/grant-subscription-access-control.png)
+
+1. Kattintson a **Hozzáadás** elemre az **Engedélyek hozzáadása** panel megnyitásához.
+
+   Ha nem rendelkezik a szerepkörök hozzárendeléséhez szükséges engedéllyel, a **Hozzáadás** lehetőség nem jelenik meg.
+
+   ![Engedélyek hozzáadása panel](./media/role-assignments-portal/add-permissions.png)
+
+1. Az a **szerepkör** legördülő listában válassza a **tulajdonosa** szerepkör.
+
+1. Az a **kiválasztása** listában, válasszon ki egy felhasználót. Ha nem látja a felhasználónévre a listában, megadhatja a **kiválasztása** mezőben keressen a könyvtárban, a megjelenített nevek és e-mail-címeket.
+
+1. Válasszon **mentése** a szerepkör hozzárendelése.
+
+   Néhány pillanat múlva a felhasználó hozzárendelve a tulajdonosi szerepkör az előfizetések szintjén.
+
+### <a name="assign-a-role-at-a-management-group-scope"></a>Egy felügyeleti csoport hatókörű szerepkör hozzárendelése
 
 1. Az Azure Portalon válassza ki a **minden szolgáltatás** , majd **felügyeleti csoportok**.
 
@@ -185,7 +211,7 @@ Az RBAC-ben a hozzáférés biztosítása egy szerepkör-hozzárendelés létreh
 
 1. A **Kiválasztás** listában válasszon ki egy felhasználót, csoportot vagy alkalmazást. Ha a listában nem látja a rendszerbiztonsági tagot, írhat a **Kiválasztás** mezőbe megjelenítendő nevek, e-mail-címek és objektumazonosítók a címtárban történő kereséséhez.
 
-1. Kattintson a **Mentés** gombra a szerepkör-hozzárendelés létrehozásához.
+1. Válasszon **mentése** a szerepkör hozzárendelése.
 
    Néhány pillanat múlva a rendszerbiztonsági tag szerepköre a a felügyeleti csoport hatókörben.
 

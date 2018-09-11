@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/31/2018
 ms.author: marsma
-ms.openlocfilehash: e78be76d68cf75cf9d59f5b5dff86c65524275a9
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 16349af5932987cc0db4295355a0365c8579fcbf
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43697241"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44345740"
 ---
 # <a name="network-configuration-in-azure-kubernetes-service-aks"></a>Hálózati konfiguráció az Azure Kubernetes Service (AKS)
 
@@ -173,11 +173,14 @@ A alkalmazni az alábbi kérdések és válaszok a **speciális** hálózati kon
 
 További információ a hálózatkezelés az aks-ben a következő cikkeket:
 
-[Az Azure Kubernetes Service (AKS) terheléselosztót statikus IP-cím használata](static-ip.md)
+- [Az Azure Kubernetes Service (AKS) terheléselosztót statikus IP-cím használata](static-ip.md)
+- [Belső terheléselosztó az Azure Container Service (AKS) használatához](internal-lb.md)
 
-[Az Azure Container Service (AKS) bejövő HTTPS-forgalom](ingress.md)
-
-[Belső terheléselosztó az Azure Container Service (AKS) használatához](internal-lb.md)
+- [Hozzon létre egy alapszintű bejövőforgalom-vezérlőjéhez külső hálózatok közötti kapcsolatokkal][aks-ingress-basic]
+- [A HTTP-kérelem útválasztási bővítmény engedélyezése][aks-http-app-routing]
+- [Hozzon létre egy bejövőforgalom-vezérlőt, amely egy belső, saját hálózat és IP-cím][aks-ingress-internal]
+- [Hozzon létre egy bejövőforgalom-vezérlőjéhez dinamikus nyilvános IP-cím, és nézzük titkosítása automatikusan létrehozni a TLS-tanúsítványok konfigurálása][aks-ingress-tls]
+- [Hozzon létre egy bejövőforgalom-vezérlőjéhez statikus nyilvános IP-cím, és nézzük titkosítása automatikusan létrehozni a TLS-tanúsítványok konfigurálása][aks-ingress-static-tls]
 
 ### <a name="acs-engine"></a>ACS Engine
 
@@ -200,3 +203,8 @@ ACS Engine használatával létrehozott Kubernetes-fürtök támogatják mind a 
 [az-aks-create]: /cli/azure/aks?view=azure-cli-latest#az-aks-create
 [aks-ssh]: ssh.md
 [ManagedClusterAgentPoolProfile]: /azure/templates/microsoft.containerservice/managedclusters#managedclusteragentpoolprofile-object
+[aks-ingress-basic]: ingress-basic.md
+[aks-ingress-tls]: ingress-tls.md
+[aks-ingress-static-tls]: ingress-static-ip.md
+[aks-http-app-routing]: http-application-routing.md
+[aks-ingress-internal]: ingress-internal-ip.md

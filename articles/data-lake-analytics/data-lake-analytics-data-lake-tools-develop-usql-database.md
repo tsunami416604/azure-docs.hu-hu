@@ -10,12 +10,12 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.workload: big-data
 ms.date: 07/03/2018
-ms.openlocfilehash: 98dc33cc961c5c90fc3f6737a1cc470d4a753fd0
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: c731fd78ed7052697b3a5bd7c4da3a743e5a208d
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43048757"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44299613"
 ---
 # <a name="use-a-u-sql-database-project-to-develop-a-u-sql-database-for-azure-data-lake"></a>A U-SQL database-projekt használata az Azure Data Lake U-SQL adatbázis fejlesztéséhez
 
@@ -57,7 +57,7 @@ Az eszköz egy szerelvény objektum egy felhasználóbarát UI-szerkesztő, amel
 
 A U-SQL database-projekt van egy U-SQL-adatbázis központi telepítési csomagot, az utótag nevű kimeneti build `.usqldbpack`. A `.usqldbpack` csomag egy .zip fájlt, amely tartalmaz egy U-SQL parancsfájl az összes DDL-utasítások a **DDL** mappát, és az összes DLL-EK és további fájlok szerelvények a **Temp** mappát.
 
-Tudjon meg többet [hogyan hozhat létre egy U-SQL-adatbázis projektet, az MSBuild a parancssor és a egy Visual Studio Team Services build feladat](data-lake-analytics-cicd-overview.md).
+Tudjon meg többet [hogyan hozhat létre egy U-SQL-adatbázis projektet, az MSBuild a parancssor és a egy Azure-fejlesztési és üzemeltetési szolgáltatásokat hozhat létre feladat](data-lake-analytics-cicd-overview.md).
 
 ## <a name="deploy-a-u-sql-database"></a>U-SQL-adatbázis üzembe helyezése
 
@@ -94,7 +94,7 @@ Telepíthet egy U-SQL-adatbázis egy U-SQL database-projekt vagy egy .usqldbpack
 
 `PackageDeploymentTool.exe` biztosítja a programozás és parancssori felületek, amelyek segítenek a U-SQL-adatbázisok üzembe helyezéséhez. Az SDK tartalmazza a [U-SQL SDK Nuget-csomagot](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/), a következő helyen található `build/runtime/PackageDeploymentTool.exe`.
 
-[További információ az SDK-t és a U-SQL-adatbázis üzembe helyezése a CI/CD-folyamat beállítása](data-lake-analytics-cicd-overview.md#deploy-u-sql-database-through-visual-studio-team-service).
+[További információ az SDK-t és a U-SQL-adatbázis üzembe helyezése a CI/CD-folyamat beállítása](data-lake-analytics-cicd-overview.md#deploy-u-sql-database-through-azure-devops).
 
 ## <a name="reference-a-u-sql-database-project"></a>Hivatkozás egy U-SQL database-projekt
 

@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 04/11/2018
 ms.author: markvi
 ms.reviewer: spunukol
-ms.openlocfilehash: 0055968e4333f5ac7653a37fcd728b040024ee55
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 6010ea7f4997e4604e72cdf4a993956ab76b1ef2
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39629847"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44296567"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Az Azure Active Directory feltételes hozzáférés beállításainak ismertetése
 
@@ -64,7 +64,7 @@ Feltételes hozzáférési szabályzatot rendelhet a következő felhőalapú al
 
 - Microsoft Power BI 
 
-- A Microsoft Visual Studio Team Services
+- Azure DevOps
 
 - Microsoft Teams
 
@@ -192,7 +192,7 @@ Ez a beállítás hatással van a hozzáférési kísérletek a következő mobi
 |Az Outlook mobilalkalmazás|Az Office 365 Exchange online-hoz|Android, iOS|
 |A Power bi alkalmazás|Power bi szolgáltatásban|A Windows 10, Windows 8.1, Windows 7, Android és iOS|
 |Skype Vállalati verzió|Az Office 365 Exchange online-hoz|Android, IOS |
-|A Visual Studio Team Services-alkalmazás|Visual Studio Team Services|A Windows 10, Windows 8.1, Windows 7, iOS és Android|
+|Az Azure DevOps-alkalmazás|Azure DevOps|A Windows 10, Windows 8.1, Windows 7, iOS és Android|
 
 
 

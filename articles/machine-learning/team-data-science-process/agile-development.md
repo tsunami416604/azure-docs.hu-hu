@@ -1,6 +1,6 @@
 ---
-title: Gyors fejlesztési tudományos adatok - projektek Azure Machine Learning |} Microsoft Docs
-description: Hogyan fejlesztők hajthat végre egy tudományos adatprojekthez egy rendszeres, a szabályozott verzióját és az együttműködési módot a projektcsapattal az Team tudományos folyamat használatával.
+title: Rugalmas fejlesztés az adatelemzési projektek – az Azure Machine Learning |} A Microsoft Docs
+description: Hogyan fejlesztők is végrehajthat egy a egy szisztematikus adatelemzési projektjéhez, a szabályozott verzió és a egy projektcsapattal remek a csoportos adatelemzési folyamat használatával.
 documentationcenter: ''
 author: deguhath
 manager: cgronlun
@@ -14,180 +14,180 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: deguhath
-ms.openlocfilehash: b57b77f5adfa3fb73372ac8297f408fb339b5d79
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: a032127d249f944d08cc6578a03f1a7e5a658361
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34837429"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44301089"
 ---
-# <a name="agile-development-of-data-science-projects"></a>Az adatok tudományos projektek gyors fejlesztés
+# <a name="agile-development-of-data-science-projects"></a>Hatékony adatelemzési projektek fejlesztését
 
-Ez a dokumentum ismerteti, hogyan fejlesztők végrehajthat egy tudományos adatprojekthez egy rendszeres, a szabályozott verzióját és az együttműködési módot a projektcsapattal használatával a [Team adatok tudományos folyamat](overview.md) (TDSP). A TDSP egy felhőalapú, a prediktív elemzési megoldások hatékonyan végrehajtandó tevékenységek strukturált sorrendje biztosító Microsoft által kifejlesztett keretrendszert. A személyzet szerepkörök és a kapcsolódó feladatok szabványosításával egy adatok tudományos csapat a folyamatban végrehajtott áttekintését lásd: [Team adatok tudományos folyamat szerepköröket és feladatokat](roles-tasks.md). 
+Ez a dokumentum ismerteti, hogyan fejlesztők végrehajthat egy a egy szisztematikus adatelemzési projektjéhez, a szabályozott verzió és a egy projektcsapattal remek használatával a [csoportos adatelemzési folyamat](overview.md) (TDSP). A TDSP egy keretrendszer, amely hatékony felhőalapú, prediktív elemzési megoldások végrehajtásához tevékenységek strukturált sorrendje biztosít a Microsoft által kifejlesztett. A személyzet szerepkörök és hozzájuk kapcsolódó részfeladatokat szabványosításával egy data science csapat ezt a folyamatot a kezelt áttekintését lásd: [csoportos adatelemzési folyamat szerepkörök és feladatok](roles-tasks.md). 
 
 Ez a cikk útmutatást tartalmazza: 
 
-1. Tegye **sprint tervezési** munkaelemekre részt a projektben.<br> Ha nem ismeri a sprint tervezést, adatokat és általános információk található [Itt](https://en.wikipedia.org/wiki/Sprint_(software_development) "Itt"). 
-2. **Adja hozzá a munkaelemek** sprints számára. 
+1. Tegye **sprint tervezési** a munkaelemek a projektben szereplő.<br> Ha ismeri a sprint tervezést, Észreveheti, hogy adatait és általános [Itt](https://en.wikipedia.org/wiki/Sprint_(software_development) "Itt"). 
+2. **munkaelemek hozzáadása** sprintekben való. 
 
 > [!NOTE]
-> Visual Studio Team Services (VSTS) használatával TDSP csoportos környezetben beállításához szükséges lépéseket az utasítások a következő készletben eljárásokat. Akkor adja meg, hogyan hajthat végre ezeket a feladatokat a VSTS, mivel az a Microsoft TDSP megvalósításához.  Ha VSTS, (3) elemet, és (4) használt a fenti listán szereplő vannak a következő előnyöket természetes. Egy másik kódot platform üzemeltető csoport használata esetén a feladatokat, amelyeket teljesíteni a csapat az érdeklődési általában ne módosítsa. De ezek a feladatok úgy a különböző lesz. Például szakaszban hat, az elem **hivatkozásra a Git ág munkaelem**, nem feltétlenül egyszerű, mint az VSTS.
+> Az Azure fejlesztési és üzemeltetési szolgáltatásokat használó TDSP csoportos környezetben beállításához szükséges lépéseket a következő utasításkészlet rendszerkövetelményeknek. Akkor adja meg, hogyan végezheti el ezeket a feladatokat az Azure DevOps-szolgáltatásokkal, mert a Microsoft TDSP megvalósítása.  Ha úgy dönt, hogy az Azure DevOps-szolgáltatásokkal, (3) elemet, és (4) használja a fenti listán szereplő előnyökkel, amely természetesen kap. Egy másik, a üzemeltetési platform kód a csoport használható, ha a feladatokat kell végrehajtani a csapatvezetők általában, ne módosítsa. Azonban ezeket a feladatokat a módja eltérő lesz. Például szakaszban hat, az elem **hivatkozás egy munkaelemet a Git-ágak**, lehetséges, hogy nem olyan egyszerű, mint az Azure DevOps-szolgáltatásokkal.
 >
 >
 
-Verziókövetési munkafolyamat végrehajtási adatok tudományos projekt szükséges, és a következő ábra azt mutatja be egy tipikus sprint tervezési, kódolási:
+Az alábbi ábra egy tipikus sprint megtervezése, kódolási és source-control munkafolyamat vesz részt az adatelemzési projektjéhez megvalósításához:
 
 ![1](./media/agile-development/1-project-execute.png)
 
 
 ##  1. <a name='Terminology-1'></a>Terminológia 
 
-Az a TDSP súlyadatainak nyomtatása tervezési keretrendszer, négy gyakran használt típusú **munkaelemek**: **szolgáltatás**, **felhasználói szövegegység**, **feladat**, és **Hiba**. Minden egyes csapatprojekt tart fenn minden munkaelemekre egyetlen hátralék. Nincs várakoztatás alatt egy csapatprojekt Git tárház szinten. Az alábbiakban a definíciójukat:
+A TDSP a tervezési keretrendszer sprint, négy gyakran használt típusú **munkaelemek**: **funkció**, **felhasználói történetet blokkol**, **feladat**, és **Bug**. Minden projekt fenntart egy egyetlen mappájában várakozó fájlok számát az összes munkaelem. Git-tárház szintjén egy projekt keretében nincs várakoztatás van. Az alábbiakban a definíciójukat:
 
-- **A szolgáltatás**: A szolgáltatás felel meg a projekt engagement. Ügyfelek különböző bevonására minősülnek különböző szolgáltatások. Hasonlóképpen célszerű egy ügyféllel a projekt különböző fázisait tekinti különböző szolgáltatások. Ha úgy dönt, a séma, mint ***ClientName-EngagementName*** a szolgáltatások elnevezéséhez majd könnyen felismerheti a név a projekt/engagement környezetében.
-- **Szövegegység**: szövegek, melyek szükségesek ahhoz, hogy végezze el a szolgáltatást (projekt)-végpontok különböző munkaelemek. Szövegegység közé:
+- **A szolgáltatás**: a projekt engagement felel meg egyik funkciója. Az ügyfél másik marketingmódszerek minősülnek különböző funkcióit. Hasonlóképpen érdemes másik lehetőségként fontolja meg egy projektet az egyes fázisokat futtatni az ügyfél. Ha úgy dönt, a séma például ***ClientName-EngagementName*** , nevezze el a szolgáltatásokat, majd könnyen felismerheti a projekt/engagement magukat a paraméterkészletben kontextusában.
+- **Történetet**: történetek, melyek szükségesek ahhoz, hogy végezze el a szolgáltatást (projekt)-végpontok különböző munkaelemek. Történetek közé:
     - Adatok beolvasása 
-    - Adatok 
-    - Szolgáltatások létrehozása
-    - Épület modellek
-    - Végrehajtott modellek 
-    - Modellek átképezési
-- **A feladat**: feladatokat is hozzárendelhető kód vagy a dokumentum munkaelemek vagy egyéb tevékenységeket, amelyek egy adott szövegegység befejezéséhez kell elvégezni. Például a szövegegység feladatok *első adatok* lehet:
-    -  Az SQL Server hitelesítő adatok beolvasása 
-    -  Az SQL Data Warehouse-adatok feltöltését. 
-- **Hiba**: hibák általában javítások, a szükséges egy meglévő kód vagy a dokumentum történik, amikor a tevékenység hivatkozik. Ha a hiba okozta szakaszában vagy feladatok rendre hiányzik, akkor eszkaláció szövegegység vagy egy feladatot. 
+    - Adatok feltárása 
+    - Funkciók létrehozása
+    - Modellek létrehozása
+    - Modellek modellezést 
+    - Megőrzési modellek
+- **A feladat**: feladatok olyan rendelhető hozzá a kódot, vagy a dokumentum munkaelemeket és egyéb tevékenységeket, amelyek egy adott történetet elvégzéséhez szükséges. Például a történetet feladatainak *adatok beolvasása* lehet:
+    -  Bevezetés az SQL Server hitelesítő adatok 
+    -  Az SQL Data warehouse-ba való feltöltéséhez. 
+- **Programhiba**: hibák általában javításcsomagot tartalmaz, amely szükséges ahhoz, hogy egy meglévő kódot vagy a dokumentum, amely minden kész, amikor egy tevékenység befejezése hivatkoznak. Ha a hibát okozta szakaszában vagy feladatok rendre hiányzik, a is eszkalálása egy történetet vagy a feladat indításához. 
 
 > [!NOTE]
-> Fogalmak vannak tárolt, közös funkciók, szövegek, feladatok és hibák a kód szoftverkezelés (SCM) adattudomány használhatók. Ezek némileg eltér a hagyományos SCM definíciójukat.
+> Fogalmak funkciók, történetek, feladatok és-hibák szoftver kód forráskezelési (SCM) használhatók az adatelemzés a hitelt. Ezek némileg eltér a hagyományos SCM definíciójukat.
 >
 >
 
 > [!NOTE]
-> Adatszakértőkön úgy érezhetik kényelmesebb gyors sablonnal, amely kifejezetten a TDSP életciklusának szakaszait igazodik. Vele szem előtt tervezősablon Agile származtatott sprint létrejött, ahol Epics, szöveg stb helyébe TDSP életciklusának szakaszait vagy substages. Egy gyors sablon létrehozásával kapcsolatos utasításokért lásd: [gyors adatok tudományos folyamat a Visual Studio Online beállítása](agile-development.md#set-up-agile-dsp-6).
+> Az adatszakértők úgy otthonosabban egy Agilis sablonnal, amely kifejezetten illeszkedik a TDSP életciklusának szakaszait. Vegye figyelembe, hogy a sablon tervezési Agile-származtatott sprint létrejött, ahol Epics stb. történetek helyébe TDSP életciklusának szakaszai vagy substages. Egy Agilis sablon létrehozásával kapcsolatos útmutatásért lásd: [állítsa be a Visual Studio Online hatékony adatelemzési folyamat](agile-development.md#set-up-agile-dsp-6).
 >
 >
 
-## 2. <a name='SprintPlanning-2'></a>Súlyadatainak nyomtatása tervezése 
+## 2. <a name='SprintPlanning-2'></a>Sprint tervezése 
 
-Sprint tervezésre is hasznosak lehetnek a projekt rangsorolási és erőforrás-tervezés és lefoglalás. Sok adatszakértőkön részt vevő a hónap befejezéséhez is igénybe vehet, amelyek mindegyike több projektet. Projektek gyakran különböző szóközként, a folytatáshoz. A VSTS-kiszolgálón akkor is könnyen létrehozására, kezelésére, és a munkaelemek nyomon a csapatprojekt és sprint tervezi, győződjön meg arról, hogy a projektek helyezi előre a várt módon végezze el. 
+Sprint tervezési hasznos projekt rangsorolási, és az erőforrás-tervezés és lefoglalás. Számos adatszakértők több projektet, hónapok végrehajtásához is igénybe vehet, amelyek mindegyike a foglalkoznak. Projektek gyakran különböző szóközként, folytatható. Az Azure DevOps-szolgáltatásokkal, a egyszerűen létrehozása, kezelése, és nyomon követheti a munkaelemek a projekt és viselkedési szabályzattal sprint tervezi, győződjön meg arról, hogy a projektek előre a várt módon helyez át. 
 
-Hajtsa végre a [Ez a hivatkozás](https://www.visualstudio.com/en-us/docs/work/scrum/sprint-planning) sprint VSTS a tervezés részletes útmutatást. 
+Hajtsa végre a [ezt a hivatkozást](https://www.visualstudio.com/en-us/docs/work/scrum/sprint-planning) sprint tervezése az Azure DevOps-szolgáltatásokkal részletes útmutatást. 
 
 
-## 3. <a name='AddFeature-3'></a>A funkció hozzáadása  
+## 3. <a name='AddFeature-3'></a>Funkció hozzáadása  
 
-A csapatprojekt alatt a projekt tárház létrehozása után nyissa meg a csapat **áttekintése** lapot, és kattintson **munkáját**.
+A csapat lépjen a projektadattárat a projekt létrehozása után **áttekintése** lapot, és kattintson **végzett munka kezeléséhez**.
 
 ![2](./media/agile-development/2-sprint-team-overview.png)
 
-A várakozó fájlok számát a szolgáltatásnak a szolgáltatással, kattintson a **várakozási sorok** --> **szolgáltatások** --> **új**, írja be a szolgáltatás **cím**(általában a projekt neve), és kattintson a **Hozzáadás** .
+Egy szolgáltatás belefoglalni a várakozó fájlok számát, kattintson a **várakozási sorok** --> **funkciók** --> **új**, írja be a szolgáltatás **cím**(általában a projekt neve), és kattintson a **Hozzáadás** .
 
 ![3](./media/agile-development/3-sprint-team-add-work.png)
 
-Kattintson duplán a létrehozott szolgáltatást. Töltse ki a leírásokat, rendelje hozzá a szolgáltatáshoz tartozó csoport tagjai és tervezési a szolgáltatáshoz tartozó paraméterek beállítása. 
+Kattintson duplán a szolgáltatás hozott létre. Töltse ki a leírások, rendelje hozzá a szolgáltatás csapattagok és tervezési ennek a funkciónak a paraméterek beállítása. 
 
-Ez a funkció a projekt tárház is társíthatja. Kattintson a **hivatkozás hozzáadása** alatt a **fejlesztési** szakasz. Miután végzett a szolgáltatás szerkesztésével, kattintson **mentés és Bezárás** való kilépéshez.
+Ez a funkció a projektadattárat is csatolható. Kattintson a **hivatkozás hozzáadása** alatt a **fejlesztési** szakaszban. Miután ezzel végzett, a szolgáltatás szerkesztését, kattintson a **mentés és Bezárás** való kilépéshez.
 
 
-## 4. <a name='AddStoryunderfeature-4'></a>A szolgáltatás szövegegység hozzáadása 
+## 4. <a name='AddStoryunderfeature-4'></a>A szolgáltatás alatt adja hozzá a történetet 
 
-A funkció a szövegek megadásával írhatja le a (szolgáltatás) projekt befejezéséhez szükséges fő lépéseken lehet hozzáadni. Egy új szövegegység hozzáadásához kattintson a **+** jelre a szolgáltatás várakozó nézetben.  
+A szolgáltatás alatt történetek is hozzáadhatók (szolgáltatás) projekt létrehozásához szükséges főbb lépéseket ismertetik. Adjon hozzá egy új történetet, kattintson a **+** jelre a funkció a várakozó fájlok számát a nézetben.  
 
 ![4](./media/agile-development/4-sprint-add-story.png)
 
-Szerkesztheti a szöveg, például a állapot, leírás, megjegyzések, tervezés és az előugró ablakban prioritású virtuális gép adatait.
+Szerkesztheti a történetet, például állapot, leírás, megjegyzések, tervezési és prioritás a felugró ablakban részleteit.
 
 ![5](./media/agile-development/5-sprint-edit-story.png)
 
-Egy meglévő tárház Ez a cikk a kattintva csatolhatja **+ Hozzáadás hivatkozásra** alatt **fejlesztési**. 
+Egy meglévő adattárhoz Ez a cikk a kattintva csatolhatja **+ Hozzáadás hivatkozás** alatt **fejlesztési**. 
 
 ![6](./media/agile-development/6-sprint-link-existing-branch.png)
 
 
-## 5. <a name='AddTaskunderstory-5'></a>Adja hozzá a feladatot egy története 
+## 5. <a name='AddTaskunderstory-5'></a>Feladat hozzáadása egy történetet 
 
-Feladatokat is, amely minden szövegegység szükséges részletes lépéseit. Miután egy szövegegység minden feladat befejeződött, a szöveg túl kell végrehajtani. 
+Feladatok olyan egyes történetet végrehajtásához szükséges részletes lépéseit. Miután egy történetet a minden feladat befejeződött, a szöveg túl kell elvégezni. 
 
-Adja hozzá a feladatot egy története, kattintson a **+** mellett a Szövegegység elem, jelölje be a bejelentkezési **feladat**, majd adja meg a részletes információkat, ennek a feladatnak az előugró ablakban.
+Feladat hozzáadása egy történetet, kattintson a **+** mellett a történetet elemre, majd válassza a bejelentkezés **feladat**, és a részletes információkat, ennek a feladatnak az előugró ablakban töltse ki.
 
 ![7](./media/agile-development/7-sprint-add-task.png)
 
-A szolgáltatások, a szövegek és a feladatok létrehozását követően megtekintheti azokat a **várakozó** vagy **Board** nézetek azok állapotának nyomon követéséhez.
+A Funkciók, történeteket és feladatok létrehozását követően megtekintheti őket a **várakozó** vagy **tábla** nézetek azok állapotának nyomon követéséhez.
 
 ![8](./media/agile-development/8-sprint-backlog-view.png)
 
 ![9](./media/agile-development/9-link-to-a-new-branch.png)
 
 
-## 6. <a name='set-up-agile-dsp-6'></a> Állítson be egy gyors TDSP munkahelyi sablont a Visual Studio Online-ban
+## 6. <a name='set-up-agile-dsp-6'></a> Állítson be egy Agilis TDSP munkahelyi sablont a Visual Studio online-ban
 
-Ez a cikk ismerteti, hogyan állíthat be egy gyors adatok tudományos folyamatsablont használ a TDSP adatok tudományos életciklusának szakaszait, és nyomon követi a Visual Studio Online (vso) munkaelemek. Az alábbi lépésein végighaladva beállítása az adatok tudományos-specifikus gyors példát lépéseket feldolgozni sablon *AgileDataScienceProcess* és tudományos munkaelemek a sablon alapján létrehozását mutatják be.
+Ez a cikk bemutatja, hogyan állítható be egy Agilis data science folyamatsablon TDSP data science életciklusának szakaszai használ, és nyomon követi a munkatételek a Visual Studio Online (vso). Az útmutató egy példa a data science-specifikus Agilis beállítását az alábbi lépéseket a folyamatsablon *AgileDataScienceProcess* és bemutatják, hogyan hozhat létre data science munkaelemek a sablon alapján.
 
-### <a name="agile-data-science-process-template-setup"></a>Agilis adatok tudományos folyamat sablon beállítása
+### <a name="agile-data-science-process-template-setup"></a>Agilis adatok adatelemzési folyamat sablon beállítása
 
-1. Navigáljon a kiszolgálón-kezdőlap, **konfigurálása** -> **folyamat**.
+1. Keresse meg a kiszolgáló kezdőlap elérését, **konfigurálása** -> **folyamat**.
 
     ![10](./media/agile-development/10-settings.png) 
 
-2. Navigáljon a **minden folyamat** -> **folyamatok**a **Agile** , majd kattintson a **létrehozás örökölt folyamat**. Majd a folyamat neve "AgileDataScienceProcess" put, és kattintson az **folyamat létrehozása**.
+2. Navigáljon a **összes folyamat** -> **folyamatok**alatt **Agile** , majd kattintson a **létrehozás örökölt folyamat**. Ezután "AgileDataScienceProcess" folyamat nevét, és kattintson a **létrehozni folyamatot**.
 
     ![11](./media/agile-development/11-agileds.png)
 
-3. Az a **AgileDataScienceProcess** -> **munkaelem-típusok** lap, tiltsa le a **Epic**, **szolgáltatás**,  **Felhasználói szövegegység**, és **feladat** munkaelem-típusok által **beállítása -> letiltása**
+3. Alatt a **AgileDataScienceProcess** -> **munkaelem-típusok** lapon, tiltsa le a **Epic**, **funkció**,  **Felhasználói történetet blokkol**, és **feladat** munkaelem-típusok szerint **konfigurálása -> letiltása**
 
     ![12](./media/agile-development/12-disable.png)
 
-4. Navigáljon a **AgileDataScienceProcess** -> **szintek tartalék** fülre. "Epics", "TDSP projektek" átnevezéséhez kattintson a a **konfigurálása** -> **szerkesztése/átnevezése**. A azonos párbeszédpanelen kattintson a **+ új munkaelem típusa** "Adatok tudományos projektben", és állítsa be a **alapértelmezett munkaelemtípus** "TDSP projekthez" 
+4. Navigáljon a **AgileDataScienceProcess** -> **várakozó fájlok a szintek** fülre. Nevezze át a "Epics", "TDSP projekt" parancsával a **konfigurálása** -> **Szerkesztés/átnevezése**. Azonos párbeszédpanelen kattintson a **+ új munkaelem típusa** "Adatelemzési projektjéhez" a, és állítsa az értékét **alapértelmezett munkaelemtípus** "TDSP projekt" 
 
     ![13](./media/agile-development/13-rename.png)  
 
-5. Hasonlóképpen, várakozó neve "Szolgáltatások" "TDSP szakaszból" módosítsa, majd adja hozzá a következőt a **új munkahelyi konfigurációelem-típust**:
+5. Ehhez hasonlóan várakozó fájlok számát a neve "Szolgáltatások" módosítsa "TDSP szakaszok", majd adja hozzá a következőt a **új munkahelyi konfigurációelem-típust**:
 
     - Az üzleti igények felmérése
-    - Adatok beszerzése
+    - Adatgyűjtés
     - Modellezés
     - Környezet
 
-6. Nevezze át a "Felhasználói szövegegység" "TDSP Substages" alapértelmezett munkaelemtípus az újonnan létrehozott "TDSP segédalátét" típust adott meg.
+6. Nevezze át a "Felhasználói történetet blokkol" "TDSP Substages" alapértelmezett munkaelemtípus az újonnan létrehozott "TDSP segédalátét" típusú értékre.
 
-7. Állítsa be a "tevékenységek" az újonnan létrehozott munkaelemtípus "TDSP feladat" 
+7. Állítsa be a "tevékenységek" az újonnan létrehozott "TDSP feladat" munkaelem-típusok 
 
-8. Ezeket a lépéseket alatti a várakozó szintek kell kinéznie:
+8. Ezeket a lépéseket a várakozó szintek kell kinéznie:
 
     ![14](./media/agile-development/14-template.png)  
 
  
-### <a name="create-data-science-work-items"></a>Adatok tudományos munkaelemek létrehozása
+### <a name="create-data-science-work-items"></a>Data Science munkaelem létrehozása
 
-Az adatok tudományos folyamat sablon létrehozása után hozhat létre és az adatok tudományos munkaelemek, amelyek megfelelnek a TDSP életciklus követik.
+A data science folyamat sablon létrehozása után hozzon létre, és a data science munkaelemek, amelyek megfelelnek a TDSP életciklusának nyomon követésére.
 
-1. Amikor létrehoz egy új csapatprojektbe, jelölje ki "Agile\AgileDataScienceProcess" a **munkaelemet bekérő folyamat**:
+1. Amikor egy új projektet hoz létre, válassza a "Agile\AgileDataScienceProcess" a **munkaelemet bekérő folyamat**:
 
     ![15](./media/agile-development/15-newproject.png)
 
-2. Keresse meg az újonnan létrehozott csapatprojektben, és kattintson a **munkahelyi** -> **várakozási sorok**.
+2. Keresse meg az újonnan létrehozott projektre, és kattintson a **munkahelyi** -> **sorait**.
 
-3. "TDSP projektek" parancsával láthatóvá **team beállításainak konfigurálása** , és ellenőrizze a "TDSP projektek"; mentse.
+3. Kattintson a "TDSP projekt" láthatóvá **team beállításainak konfigurálása** és ellenőrzése "TDSP projekt", majd mentse.
 
     ![16](./media/agile-development/16-enabledsprojects.png)
 
-4. Most elindíthatja az adatok tudományos-specifikus munkaelemek létrehozása.
+4. Most már megkezdheti a data science-specifikus munkaelemek létrehozása.
 
     ![17](./media/agile-development/17-dsworkitems.png)
 
-5. Íme egy példa hogyan jelenjenek meg a tudományos projekt munkaelemek:
+5. Íme egy példa hogyan jelenjenek meg a data science projekt munkaelemek:
 
     ![18](./media/agile-development/18-workitems.png)
 
 
 ## <a name="next-steps"></a>További lépések
 
-[A Git együttműködési kódolási](collaborative-coding-with-git.md) hajtsa végre az adatok tudományos projektek Git használatával, a megosztott kód fejlesztési keretrendszer együttműködési kód fejlesztésére és csatolása ezeket kódolás tevékenységekhez, hogy a gyors folyamattal tervezett munka ismerteti.
+[Együttműködésen alapuló kódolás a Gittel](collaborative-coding-with-git.md) hajtsa végre az adatelemzési projektek készítése a Git használatával, a megosztott kód fejlesztési keretrendszer által biztosított együttműködési környezettel kód fejlesztési és összekapcsolhatók a munkát, az Agilis folyamattal tervezett tevékenységek kódolási ismerteti.
 
-Az alábbiakban további, a gyors folyamatokon forrásanyagokra mutató hivatkozásokat tartalmaz.
+Az alábbiakban Agilis folyamatok erőforrásokhoz további hivatkozásokat tartalmaz.
 
-- Agilis folyamat   [https://www.visualstudio.com/en-us/docs/work/guidance/agile-process](https://www.visualstudio.com/en-us/docs/work/guidance/agile-process)
-- Agilis folyamat munkaelem-típusok és a munkafolyamat   [https://www.visualstudio.com/en-us/docs/work/guidance/agile-process-workflow](https://www.visualstudio.com/en-us/docs/work/guidance/agile-process-workflow)
+- Agilis   [https://www.visualstudio.com/en-us/docs/work/guidance/agile-process](https://www.visualstudio.com/en-us/docs/work/guidance/agile-process)
+- Agilis munkaelem-típusok és munkafolyamat   [https://www.visualstudio.com/en-us/docs/work/guidance/agile-process-workflow](https://www.visualstudio.com/en-us/docs/work/guidance/agile-process-workflow)
 
 
-Forgatókönyvek, amelyek azt mutatják, a folyamat lépései **meghatározott forgatókönyvek** is rendelkezésre állnak. Szerepel a listában, és kapcsolódik a miniatűr leírásokat a [példa forgatókönyvek](walkthroughs.md) cikk. Ezek bemutatják, hogyan lehet felhő, a helyszíni eszközök és szolgáltatások egyesítése munkafolyamat vagy csővezeték intelligens alkalmazás létrehozása. 
+Forgatókönyvek, amelyek bemutatják, a folyamat összes lépését **meghatározott forgatókönyvek** is rendelkezésre állnak. Felsorolt, és a miniatűr leírásokat tartalmazó társított a [példa forgatókönyvek](walkthroughs.md) cikk. Ezek bemutatják, hogyan kombinálhatja a felhőbeli, helyszíni eszközöket és szolgáltatásokat, munkafolyamat vagy folyamat, intelligens alkalmazások létrehozására. 

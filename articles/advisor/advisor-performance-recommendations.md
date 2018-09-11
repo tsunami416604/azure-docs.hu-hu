@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
 ms.author: makohli
-ms.openlocfilehash: c2d7cc21b1546c9594a2ef174927777f583a6841
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: 9516534216c4a2c0f61e33ea3cbf1bbcb2ab58c7
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42059455"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44301310"
 ---
 # <a name="advisor-performance-recommendations"></a>Advisor-teljesítményajánlások
 
@@ -60,6 +60,10 @@ Adatok torzulása szükségtelen adatok mozgását vagy az erőforrás szűk ker
 ## <a name="create-or-update-outdated-table-statistics-on-your-sql-data-warehouse-table-to-increase-query-performance"></a>Az SQL data warehouse-tábla lekérdezési teljesítmény érdekében az elavult tábla statisztikák létrehozása vagy frissítése
 
 Az Advisor azonosítja, amelyek nem rendelkeznek naprakész táblák [táblastatisztikák](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics) és táblastatisztikák javasolja létrehozása vagy frissítése. Az SQL data warehouse-optimalizáló naprakész ukazatelé segítségével megbecsülheti a számosság vagy a lekérdezés eredményét, amely lehetővé teszi a lekérdezésoptimalizáló hozhat létre kiváló minőségű lekérdezésterv a leggyorsabb teljesítmény sorainak lekérdezés.
+
+## <a name="migrate-your-storage-account-to-azure-resource-manager-to-get-all-of-the-latest-azure-features"></a>A Tárfiók migrálása az Azure Resource Managerhez való csatlakoztatásával minden, a legújabb Azure-funkciók
+
+Telepítse át a Storage-fiók üzembe helyezési modellben az Azure Resource Manager (ARM) sablon-üzembehelyezések, a további biztonsági beállításokat és a lehet majd frissíteni GPv2-fiókra kihasználtságát az Azure Storage a legújabb funkciók előnyeinek kihasználása érdekében. Az Advisor összes önálló tárfiókot a klasszikus üzemi modellt használó azonosítja, és javasolja, hogy az ARM-alapú üzemi modellbe való migrálás. 
 
 ## <a name="how-to-access-performance-recommendations-in-advisor"></a>Az Advisor teljesítményajánlásainak elérése
 

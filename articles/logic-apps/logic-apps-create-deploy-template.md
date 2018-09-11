@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.assetid: 85928ec6-d7cb-488e-926e-2e5db89508ee
 ms.date: 10/18/2016
-ms.openlocfilehash: 68e655490470db6aade53c6f3523d0c9d87c3fbd
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 393543bbb1891e14ed67487aff26a7bda1eebcd5
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43123465"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44304237"
 ---
 # <a name="create-azure-resource-manager-templates-for-deploying-logic-apps"></a>Logic Apps-alkalmazások üzembe helyezéséhez Azure Resource Manager-sablonok létrehozása
 
@@ -173,7 +173,7 @@ Ha rendelkezik egy meglévő erőforráscsoport-projektet, a logikai alkalmazás
 
 ## <a name="deploy-a-logic-app-template"></a>Logic app-sablon üzembe helyezése
 
-A sablon olyan eszközöket, mint például a PowerShell, REST API segítségével telepíthet [Visual Studio Team Services Kiadáskezelési](#team-services), és a sablon telepítése az Azure Portalon keresztül.
+A sablon olyan eszközöket, mint például a PowerShell, REST API segítségével telepíthet [Azure DevOps-Kiadáskezelés](#team-services), és a sablon telepítése az Azure Portalon keresztül.
 Emellett szeretné tárolni a paraméterek értékeit, javasoljuk, hogy hozzon létre egy [paraméterfájl](../azure-resource-manager/resource-group-template-deploy.md#parameter-files).
 Ismerje meg, hogyan [erőforrások üzembe helyezése Azure Resource Manager-sablonok és PowerShell](../azure-resource-manager/resource-group-template-deploy.md) vagy [erőforrások üzembe helyezése Azure Resource Manager-sablonokkal és az Azure Portalon](../azure-resource-manager/resource-group-template-deploy-portal.md).
 
@@ -185,13 +185,13 @@ OAuth-kapcsolatok hitelesítéséhez, nyissa meg a logikai alkalmazás a Logic A
 Példa parancsfájl van a githubon a [LogicAppConnectionAuth](https://github.com/logicappsio/LogicAppConnectionAuth) projekt.
 
 <a name="team-services"></a>
-## <a name="visual-studio-team-services-release-management"></a>A Visual Studio Team Services Kiadáskezelés
+## <a name="azure-devops-release-management"></a>Az Azure DevOps-Kiadáskezelés
 
-Egy általános forgatókönyv üzembe helyezéséhez és felügyeletéhez egy környezetet, hogy egy eszköz, például a Kiadáskezelés a Visual Studio Team Services, a logikai alkalmazás központi telepítési sablont. A Visual Studio Team Services-ben egy [üzembe helyezése Azure-erőforráscsoport](https://github.com/Microsoft/vsts-tasks/tree/master/Tasks/DeployAzureResourceGroup) feladat, amelyet minden build ad hozzá vagy kibocsátásában. Rendelkeznie kell egy [szolgáltatásnév](https://blogs.msdn.microsoft.com/visualstudioalm/2015/10/04/automating-azure-resource-group-deployment-using-a-service-principal-in-visual-studio-online-buildrelease-management/) az engedélyezési üzembe helyezéséhez, és engedélyezi a kiadási definíció hozhat létre.
+Egy általános forgatókönyv üzembe helyezéséhez és felügyeletéhez egy környezetet, hogy egy eszköz, például Release Management az Azure DevOps, a logikai alkalmazás központi telepítési sablont. Az Azure DevOps tartalmaz egy [üzembe helyezése Azure-erőforráscsoport](https://github.com/Microsoft/vsts-tasks/tree/master/Tasks/DeployAzureResourceGroup) feladat, amelyet minden build ad hozzá vagy kibocsátásában. Rendelkeznie kell egy [szolgáltatásnév](https://blogs.msdn.microsoft.com/visualstudioalm/2015/10/04/automating-azure-resource-group-deployment-using-a-service-principal-in-visual-studio-online-buildrelease-management/) az engedélyezési üzembe helyezéséhez, és engedélyezi a kiadási folyamathoz hozhat létre.
 
-1. A Kiadáskezelés, válassza ki **üres** úgy, hogy létrehozott egy üres definíciót.
+1. A Kiadáskezelés, válassza ki **üres** úgy, hogy létrehoz egy üres folyamatot.
 
-    ![Üres definíció létrehozása][1]
+    ![Üres folyamat létrehozása][1]
 
 2. Válassza ki bármelyik van szüksége ennek, nagy valószínűséggel többek között a logikaialkalmazás-sablon manuálisan, vagy a létrehozási folyamat részeként létrehozott erőforrásokat.
 3. Adjon hozzá egy **Azure erőforráscsoport-telepítés** feladat.

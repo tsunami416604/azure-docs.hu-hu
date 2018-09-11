@@ -1,6 +1,6 @@
 ---
-title: Engedélyek az Azure Security Centerben |} Microsoft Docs
-description: Ez a cikk azt ismerteti, hogyan az Azure Security Center segítségével szerepköralapú hozzáférés-vezérlési engedélyek hozzárendelése a felhasználókhoz, és az egyes szerepkörökhöz engedélyezett műveleteket azonosítja.
+title: Engedélyek az Azure Security Centerben |} A Microsoft Docs
+description: Ez a cikk azt ismerteti, hogyan az Azure Security Center használja szerepköralapú hozzáférés-vezérlési engedélyek hozzárendelése a felhasználókhoz, és azonosítja az engedélyezett műveletek az egyes szerepkörökhöz.
 services: security-center
 cloud: na
 documentationcenter: na
@@ -11,40 +11,40 @@ ms.service: security-center
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/13/2017
 ms.author: terrylan
-ms.openlocfilehash: f85f49bd54eacbca67143b35eaf555cfb744a41d
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: b93b57d50ccf5d5dfb092bdb71820da77f345878
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31410522"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44295462"
 ---
 # <a name="permissions-in-azure-security-center"></a>Engedélyek az Azure Security Centerben
 
-Az Azure Security Center által használt [szerepköralapú hozzáférés-vezérlést (RBAC)](../role-based-access-control/role-assignments-portal.md), amely biztosítja [beépített szerepkörök](../role-based-access-control/built-in-roles.md) , hogy a felhasználók, csoportok és az Azure rendelhető.
+Használja az Azure Security Center [szerepköralapú hozzáférés-vezérlés (RBAC)](../role-based-access-control/role-assignments-portal.md), amely biztosítja [beépített szerepkörök](../role-based-access-control/built-in-roles.md) , hogy a felhasználók, csoportok és Azure-szolgáltatások rendelhetők.
 
-A Security Center értékeli a konfigurációs az erőforrások biztonsági problémák és biztonsági rések azonosítása. A biztonsági központban csak akkor jelenik meg egy erőforrás tulajdonos, közreműködő vagy olvasó szerepkört az előfizetés vagy az erőforráscsoportot, amelyhez tartozik egy erőforrás hozzárendelése esetén kapcsolatos adatokat.
+A Security Center a biztonsági problémák és biztonsági rések azonosításához erőforrásán konfiguráció értékeli. A Security Centerben csak láthatja az előfizetés vagy az erőforráscsoport, amely egy erőforrás tartozik, a tulajdonos, közreműködő vagy olvasó a szerepkör hozzárendelése esetén egy erőforráshoz kapcsolódó információkat.
 
 Ezen szerepkörök mellett két speciális Security Center-szerepkör van:
 
-* **Biztonsági olvasó**: ehhez a szerepkörhöz tartozó felhasználó van jogosultsága ahhoz, hogy a Security Center megtekintése. A felhasználó megtekintheti a javaslatok, a riasztások, a biztonsági házirend és a biztonsági állapotok, de nem módosíthatja.
-* **Biztonsági rendszergazda**: ehhez a szerepkörhöz tartozó felhasználó a biztonsági olvasó megegyező jogokkal rendelkezik és is frissíteni a biztonsági házirendet, és hagyja figyelmen kívül a riasztások és javaslatok.
+* **Biztonsági olvasó**: ehhez a szerepkörhöz tartozó felhasználó rendelkezik megtekintése a Security Center jogosultságait. A felhasználó megtekintheti a javaslatok, riasztások, a biztonsági szabályzatot és biztonsági állapotok, de nem végezhet módosításokat.
+* **Biztonsági rendszergazda**: ehhez a szerepkörhöz tartozó felhasználó ugyanazokat a jogosultságokat, a biztonsági olvasó rendelkezik, és is frissítheti a biztonsági házirend és riasztások és javaslatok elvetése.
 
 > [!NOTE]
-> A biztonsági szerepkörök, biztonsági olvasó és a biztonsági rendszergazda, csak a Security Center rendelkezik hozzáféréssel. A biztonsági szerepkörök az Azure tárolási, webes & mobilalkalmazás vagy az eszközök internetes hálózatát más szolgáltatás területéhez nincs hozzáférése.
+> A biztonsági szerepkörök, biztonsági olvasó és a biztonsági rendszergazda, csak a Security Center rendelkezik hozzáféréssel. A biztonsági szerepkörök nem rendelkeznek hozzáféréssel, például a Storage, Web & Mobile vagy az eszközök internetes hálózatát az Azure egyéb szolgáltatási területeihez.
 >
 >
 
-## <a name="roles-and-allowed-actions"></a>Szerepkörök és az engedélyezett műveletek
+## <a name="roles-and-allowed-actions"></a>Szerepkörök és engedélyezett műveletek
 
-A következő táblázat megjeleníti a szerepkört, és a Security Center műveletek engedélyezett. Az X jelzi, hogy a művelet engedélyezett-e az adott szerepkörhöz.
+Az alábbi táblázat megjeleníti a szerepköröket, és a műveletek a Security Centerben engedélyezett. Egy X azt jelzi, hogy a művelet szerepkör számára engedélyezett.
 
-| Szerepkör | Biztonsági házirend szerkesztése | Egy erőforrás biztonsági javaslatok alkalmazása | Hagyja figyelmen kívül a riasztások és javaslatok | Riasztások megtekintése és javaslatok |
+| Szerepkör | Biztonsági szabályzat szerkesztése | Erőforrás biztonsági javaslatok alkalmazása | Riasztások és javaslatok elvetése | Riasztások megtekintése és javaslatok |
 |:--- |:---:|:---:|:---:|:---:|
 | Előfizetés tulajdonosa | X | X | X | X |
-| Előfizetés közreműködő | X | X | X | X |
+| Előfizetési közreműködő | X | X | X | X |
 | Erőforráscsoport tulajdonosa | -- | X | -- | X |
 | Erőforráscsoport közreműködő | -- | X | -- | X |
 | Olvasó | -- | -- | -- | X |
@@ -52,15 +52,15 @@ A következő táblázat megjeleníti a szerepkört, és a Security Center műve
 | Biztonsági olvasó | -- | -- | -- | X |
 
 > [!NOTE]
-> Javasoljuk, hogy a felhasználókhoz azt a lehető legalacsonyabb szintű szerepkört rendelje, amellyel még el tudják végezni feladataikat. Például az olvasó szerepkört rendelni felhasználók, akik csak egy erőforrás biztonsági állapotával kapcsolatos információk megtekintése, de nem tesznek lépéseket, például a alkalmazhatnak javaslatokat, és módosíthatják a szabályzatokat.
+> Javasoljuk, hogy a felhasználókhoz azt a lehető legalacsonyabb szintű szerepkört rendelje, amellyel még el tudják végezni feladataikat. Az Olvasó szerepkör például rendelje hozzá a felhasználók számára, akik csak egy adott erőforrás biztonsági állapotával kapcsolatos információk megtekintéséhez, de nem hajtsa végre a műveletet, például alkalmazhatnak javaslatokat, vagy módosíthatják a szabályzatokat.
 >
 >
 
 ## <a name="next-steps"></a>További lépések
-Ez a cikk alapján hogyan Security Center segítségével RBAC engedélyek hozzárendelése a felhasználókhoz, és azonosítja az egyes szerepkörökhöz engedélyezett műveletek. Most, hogy ismeri az előfizetés biztonsági állapotának figyeléséhez szükséges szerepkör-hozzárendelések, szerkesztheti a biztonsági szabályzatokat, és a javaslatok alkalmazni, megtudhatja, hogyan:
+Ez a cikk részletesen a Security Center általi RBAC engedélyek hozzárendelése a felhasználókhoz, és az engedélyezett műveletek az egyes szerepkörökhöz meghatározott. Most, hogy már ismeri az előfizetés biztonsági állapotának figyeléséhez szükséges a szerepkör-hozzárendeléseket, szerkesztheti a biztonsági szabályzatokat, és alkalmazhatja a javaslatokat, megtudhatja, hogyan lehet:
 
-- [A Security Center biztonsági házirendek beállítása](security-center-policies.md)
-- [A Security Center biztonsági javaslatok kezelése](security-center-recommendations.md)
-- [Az Azure-erőforrások biztonsági állapotának figyelésére](security-center-monitoring.md)
+- [Biztonsági szabályzatok beállítása a Security Centerben](security-center-policies.md)
+- [A Security Centerben a biztonsági javaslatok kezelése](security-center-recommendations.md)
+- [Az Azure-erőforrások biztonsági állapotának figyelése](security-center-monitoring.md)
 - [A biztonsági riasztások kezelése és a riasztásokra való válaszadás a Security Centerben](security-center-managing-and-responding-alerts.md)
-- [Biztonsági partnermegoldások figyelése](security-center-partner-solutions.md)
+- [Biztonsági partnermegoldások monitorozása](security-center-partner-solutions.md)

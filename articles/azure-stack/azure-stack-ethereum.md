@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-stack
 ms.reviewer: coborn
 manager: femila
-ms.openlocfilehash: 0e03b524834f528ddb7555a344fbebe720b4d9ff
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: d3c89e2028986e05d5d3957c9805d22f07a840b3
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37446973"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44298113"
 ---
 # <a name="azure-stack-ethereum-blockchain-solution-templates"></a>Az Azure Stack Ethereum blockchain megoldássablonok
 
@@ -25,16 +25,14 @@ Felhasználói adatok és a egy kattintással üzembe helyezést, az Azure Stack
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Töltse le a következő [a Marketplace-ről](azure-stack-download-azure-marketplace-item.md):
+Töltse le a legújabb elemeket [a Marketplace-ről](azure-stack-download-azure-marketplace-item.md):
 
-* Ubuntu Server 16.04 LTS verzió 16.04.201802220
-* Windows Server 2016 
-* Egyéni parancsfájl 2.0 linuxhoz 
-* Egyéni szkriptbővítmény 
+* Ubuntu Server 16.04 LTS
+* Windows Server 2016
+* Egyéni parancsfájl 2.0 linuxhoz
+* A Windows egyéni szkriptek futtatására szolgáló bővítmény
 
-Az Azure blockchain-forgatókönyvekkel kapcsolatos további információkért lásd: [Ethereum proof of work consortium megoldássablon](../blockchain-workbench/ethereum-deployment-guide.md).
-
-Azure-előfizetés által támogatott több virtuális gépek üzembe helyezéséről megadása kötelező. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) a virtuális gép létrehozásának megkezdése előtt.
+Blockchain-forgatókönyvekkel kapcsolatos további információkért lásd: [Ethereum proof of work consortium megoldássablon](../blockchain-workbench/ethereum-deployment-guide.md).
 
 ## <a name="deployment-architecture"></a>Üzembe helyezési architektúrája
 
@@ -43,6 +41,7 @@ Ez a megoldássablon telepíthet egy vagy több rétegből tag Ethereum consorti
 ## <a name="deployment-use-cases"></a>Üzembe helyezés alkalmazási helyzetek
 
 A sablon Ethereum consortium vezető és tag illesztés, számos módon telepítheti, Íme az általunk tesztelt azokat:
+
 - A több csomópontos Azure Stack az Azure AD vagy az AD FS-ben és üzembe helyezése érdeklődő tag gyermekeihez ugyanabba az előfizetésbe, vagy eltérő előfizetésekben.
 - Az egy egycsomópontos Azure Stacken (az Azure ad-vel) üzembe helyezése érdeklődő és tag gyermekeihez ugyanahhoz az előfizetéshez.
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: glenga
-ms.openlocfilehash: 2c6db85763b448133d53b22c0600b27b533b2041
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 468c6486274b8bf1dc202716f525c39face91862
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39424228"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44297298"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Első lépésekhez készült útmutató Azure-fejlesztőknek
 
@@ -58,7 +58,7 @@ Webalkalmazások, mobilalkalmazások háttérkomponenseit és API-alkalmazásoka
 
 Mivel minden három alkalmazástípus az App Service-modul, egy webhely üzemeltetéséhez, mobilos ügyfeleket támogatja, és teszi közzé az API-k az Azure-ban, az ugyanazon a projekten, vagy a megoldás egy. App Service-ben kapcsolatos további információkért lásd: [Mi az Azure Web Apps](../../app-service/app-service-web-overview.md).
 
-App Service-ben úgy tervezték, a fejlesztési és üzemeltetési szem előtt. Közzététel és a folyamatos integráció környezetekhez, például a GitHub webhookok, a Jenkins, a Visual Studio Team Services, TeamCity és mások különböző eszközöket támogatja.
+App Service-ben úgy tervezték, a fejlesztési és üzemeltetési szem előtt. Közzététel és a folyamatos integráció környezetekhez, például a GitHub webhookok, a Jenkins, Azure DevOps, TeamCity és mások különböző eszközöket támogatja.
 
 Áttelepítheti a meglévő alkalmazásokkal, az App Service használatával a [online migrálási eszköz](https://www.migratetoazure.net/).
 
@@ -186,7 +186,7 @@ Az alkalmazás mentése és az Azure-ban fut, a, kell figyelje a teljesítmény�
 
 ### <a name="devops-integration"></a>DevOps-integráció
 
-Virtuális gépek kiépítése, vagy a web apps, a folyamatos közzététel, az Azure együttműködik a népszerű DevOps-eszközök a legtöbb. A Jenkins, GitHub, Puppet, Chef, TeamCity, az Ansible, VSTS és más hasonló eszközökkel való támogatását használhatja az eszközöket, hogy már rendelkezik, és maximalizálja a már meglévő felhasználói élményt.
+Virtuális gépek kiépítése, vagy a web apps, a folyamatos közzététel, az Azure együttműködik a népszerű DevOps-eszközök a legtöbb. A Jenkins, GitHub, Puppet, Chef, TeamCity, az Ansible, Azure DevOps és más hasonló eszközökkel való támogatását használhatja az eszközöket, hogy már rendelkezik, és maximalizálja a már meglévő felhasználói élményt.
 
 >**Kipróbálás:** [próbálja ki a DevOps-integrációkkal számos](https://azure.microsoft.com/try/devops/).
 
@@ -269,19 +269,7 @@ Mellett definiálása az egyes Azure-fiók identitásokat, más néven *felhaszn
 
 ### <a name="manage-your-subscriptions"></a>Saját előfizetések kezelése
 
-Egy előfizetés az Azure-szolgáltatások egy logikai egységet, amely egy Azure-fiókra van csatolva. Minden társított fiók rendelkezik egy szerepkörhöz az előfizetéshez. Azure-szolgáltatások használati díjának felszámolása előfizetésenként alapon történik. A rendelkezésre álló előfizetési ajánlatok típus szerint listáját lásd: [a Microsoft Azure-ajánlat részletei](https://azure.microsoft.com/support/legal/offer-details/).
-
-#### <a name="administrator-roles"></a>Rendszergazdai szerepkörök
-
-Azure-előfizetéssel rendelkezik, több fiók rendszergazdai szerepkör, amely bármikor hozzárendelhet.
-
--   **A fiók rendszergazdája**: ezt a szerepkört az előfizetés feletti teljes körű vezérléssel rendelkezik, és a fiókot, amely felelős a számlázásért.
-
--   **Szolgáltatás-rendszergazda**: Ez a szerepkör rendelkezik összes szolgáltatását szabályozhatja az előfizetésben. Alapértelmezés szerint ez a fiók rendszergazdaként ugyanazzal a fiókkal.
-
--   **Társ-rendszergazdaként**: Ez a szerepkör, szolgáltatás-rendszergazda azonos hozzáféréssel rendelkezik, azzal a különbséggel, hogy azt a társítást az előfizetés nem módosítható egy Azure-címtárhoz.
-
-További tudnivalók a rendszergazdai szerepkörökről, lásd: [hozzáadása vagy módosítása az Azure-rendszergazdai szerepkörök](../../billing/billing-add-change-azure-subscription-administrator.md#add-an-admin-for-a-subscription).
+Egy előfizetés az Azure-szolgáltatások logikai csoportosítása, amely egy Azure-fiókra van csatolva. Egyetlen Azure-fiók több előfizetést is tartalmazhat. Azure-szolgáltatások használati díjának felszámolása előfizetésenként alapon történik. A rendelkezésre álló előfizetési ajánlatok típus szerint listáját lásd: [a Microsoft Azure-ajánlat részletei](https://azure.microsoft.com/support/legal/offer-details/). Azure-előfizetéssel rendelkezik, az előfizetés teljes hozzáféréssel rendelkező fiókot a rendszergazdák és az előfizetés az összes szolgáltatás felett rendelkező szolgáltatás-rendszergazdák. További információ a hagyományos előfizetés-rendszergazda: [hozzáadása vagy módosítása az Azure-előfizetés rendszergazdái](../../billing/billing-add-change-azure-subscription-administrator.md). A rendszergazdák, amellett az egyes fiókok is megadható az Azure-erőforrások kézben részletes [szerepköralapú hozzáférés-vezérlés (RBAC)](../../role-based-access-control/overview.md).
 
 #### <a name="resource-groups"></a>Erőforráscsoportok
 
@@ -293,11 +281,11 @@ Az Azure erőforrás-kezelő használatával megjelenítheti az erőforrásokat,
 
 Ha engedélyezi a hozzáférést az Azure-erőforrásokkal, mindig ajánlott az egy adott feladat végrehajtásához szükséges minimális jogosultságokkal rendelkező felhasználók számára.
 
--   **Szerepköralapú hozzáférés-vezérlés (RBAC)**: az Azure-ban, is hozzáférést biztosít a felhasználói fiókok (egyszerű) a megadott hatókörben: előfizetés, erőforráscsoport vagy egyes erőforrásokat. Az RBAC lehetővé teszi az erőforráscsoport üzembe helyezzen egy erőforráscsoportban, és engedélyek egy adott felhasználó vagy csoport számára. Azt is lehetővé teszik csak a célként megadott erőforráscsoportja tartozó erőforrásokhoz való hozzáférés korlátozásához. A hozzáférést egy egyetlen erőforrást, például a virtuális gép vagy a virtuális hálózat. Hozzáférés biztosításához szerepkör a felhasználó, csoport vagy egyszerű szolgáltatás hozzárendelése. Számos előre definiált szerepkörök állnak rendelkezésre, és azt is megadhatja a saját egyéni szerepkörökkel.
+-   **Szerepköralapú hozzáférés-vezérlés (RBAC)**: az Azure-ban, is hozzáférést biztosít a felhasználói fiókok (egyszerű) a megadott hatókörben: előfizetés, erőforráscsoport vagy egyes erőforrásokat. Az RBAC lehetővé teszi az erőforráscsoport üzembe helyezzen egy erőforráscsoportban, és engedélyek egy adott felhasználó vagy csoport számára. Azt is lehetővé teszik csak a célként megadott erőforráscsoportja tartozó erőforrásokhoz való hozzáférés korlátozásához. A hozzáférést egy egyetlen erőforrást, például a virtuális gép vagy a virtuális hálózat. Hozzáférés biztosításához szerepkör a felhasználó, csoport vagy egyszerű szolgáltatás hozzárendelése. Számos előre definiált szerepkörök állnak rendelkezésre, és azt is megadhatja a saját egyéni szerepkörökkel. További tudnivalókért lásd: [Mi a szerepköralapú hozzáférés-vezérlés (RBAC)?](../../role-based-access-control/overview.md).
 
-    >**Mikor érdemes használni**: amikor a felhasználók és csoportok részletes hozzáférés-vezérlést kell.
+    >**Mikor érdemes használni**: amikor a felhasználók és csoportok és mikor kell, hogy a felhasználó az előfizetés tulajdonosa részletes hozzáférés-vezérlést kell.
 
-    >**Első lépések**: további információkért lásd: [hozzáférés-kezelés az Azure portal – első lépések](../../role-based-access-control/overview.md).
+    >**Első lépések**: további információkért lásd: [rbac-RÓL és az Azure portal-hozzáférés kezelése](../../role-based-access-control/role-assignments-portal.md).
 
 -   **Szolgáltatás egyszerű objektumok**: hozzáférés biztosítása mellett az egyszerű felhasználói névnek és a csoportok, is hozzáférést biztosít az ugyanazon a szolgáltatásnév.
 

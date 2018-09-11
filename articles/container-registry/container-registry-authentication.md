@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 01/23/2018
 ms.author: stevelas
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 30ca8fe89105584b1062c5a068e107bdfde154fc
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: be8adf9779c2d168c0ac7a0ed7dbc3e85935df68
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39579520"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44293728"
 ---
 # <a name="authenticate-with-a-private-docker-container-registry"></a>Hitelesítés a egy privát Docker regisztrációs adatbázist
 
@@ -48,7 +48,7 @@ Az egyszerű szolgáltatások beállításjegyzékhez a lekérést és a egy, a 
 
   * *Olvasó*: a beállításjegyzék vezénylési rendszerekhez, beleértve a Kubernetes, DC/OS és Docker Swarm üzemelő Tárolópéldányokat. Is olvashatók a tároló-beállításjegyzékek kapcsolódó Azure-szolgáltatások, például [AKS](../aks/index.yml), [App Service-ben](../app-service/index.yml), [Batch](../batch/index.yml), [Service Fabric](/azure/service-fabric/), és mások.
 
-  * *Közreműködői*: folyamatos integrációs és üzembe helyezési megoldásokat, mint a Visual Studio Team Services (VSTS) vagy a Jenkins, amelyek tárolórendszerképek létrehozása és azok leküldése egy beállításjegyzék.
+  * *Közreműködői*: folyamatos integrációs és üzembe helyezési megoldásokat, mint az Azure DevOps vagy a Jenkins, amelyek tárolórendszerképek létrehozása és azok leküldése egy beállításjegyzék.
 
 > [!TIP]
 > Egyszerű szolgáltatás jelszava futtatásával létrehozhatja a [az ad sp reset-credentials](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-reset-credentials) parancsot.

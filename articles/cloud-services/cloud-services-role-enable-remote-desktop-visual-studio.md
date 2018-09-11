@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.workload: azure-vs
 ms.date: 03/06/2018
 ms.author: ghogen
-ms.openlocfilehash: 87c7029836bf28464fd48e17480119a4dcb1201c
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 703e969fe31def329be60037cceba27864063b4e
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42060632"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44304054"
 ---
 # <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services-using-visual-studio"></a>Távoli asztali kapcsolat engedélyezése egy szerepkörhöz az Azure Cloud Services, a Visual Studio használatával
 
@@ -30,7 +30,7 @@ A távoli asztal segítségével elérheti az Azure-ban futó szerepkörök aszt
 
 A közzétételi varázsló, amely a Visual Studio biztosít a felhőalapú szolgáltatások beállítással rendelkezik, amely távoli asztal engedélyezése a közzétételi folyamat során megadott hitelesítő adatokat használ. Ezt a lehetőséget akkor megfelelő, ha a Visual Studio 2017 15.4-es és korábbi használatával.
 
-A Visual Studio 2017 15.5-ös és újabb verziók azonban ajánlott, hogy, ne engedélyezze a távoli asztal a publish varázsló lépéseit, kivéve, ha csak egyetlen fejlesztőként dolgozik. Minden olyan helyzet, amelyben a projekt előfordulhat, hogy nyitható meg a-fejlesztőknek szántam ehelyett engedélyeznie a távoli asztal keresztül az Azure portal, PowerShell-lel vagy a folyamatos üzembe helyezést megvalósító munkafolyamat a kiadási definíció. Ez a javaslat hogyan Visual Studio kommunikál a távoli asztal a felhőszolgáltatásbeli virtuális Gépet, az ebben a cikkben leírtak megváltozása miatt van.
+A Visual Studio 2017 15.5-ös és újabb verziók azonban ajánlott, hogy, ne engedélyezze a távoli asztal a publish varázsló lépéseit, kivéve, ha csak egyetlen fejlesztőként dolgozik. Minden olyan helyzet, amelyben a projekt előfordulhat, hogy nyitható meg a többi fejlesztők, a, ehelyett távoli asztal engedélyezése az Azure portal, PowerShell-lel vagy a folyamatos üzembe helyezést megvalósító munkafolyamat a kibocsátási folyamat segítségével. Ez a javaslat hogyan Visual Studio kommunikál a távoli asztal a felhőszolgáltatásbeli virtuális Gépet, az ebben a cikkben leírtak megváltozása miatt van.
 
 ## <a name="configure-remote-desktop-through-visual-studio-2017-version-154-and-earlier"></a>A Visual Studio 2017 15.4-es és korábbi keresztül a távoli asztal konfigurálása
 
@@ -82,9 +82,9 @@ Ha a projekt a csapattal, majd, érdemes a publish varázsló bejelölését, é
 
 ### <a name="deploying-from-a-build-server-with-visual-studio-2017-version-155-and-later"></a>Üzembe helyezése a Visual Studio 2017 15.5-ös és újabb buildelési kiszolgáló
 
-Telepíthet egy kiszolgálóról egy build (például a Visual Studio Team Services) melyik Visual Studio 2017 15.5-ös vagy újabb verziója telepítve van a fordító-ügynökhöz a felhőszolgáltatás-projekt. Ezzel az elrendezéssel az üzembe helyezés még ugyanazon a számítógépen, amelyen a titkosítási tanúsítvány áll rendelkezésre.
+Telepíthet egy kiszolgálóról egy build (például az Azure DevOps-szolgáltatásokkal) melyik Visual Studio 2017 15.5-ös vagy újabb verziója telepítve van a fordító-ügynökhöz a felhőszolgáltatás-projekt. Ezzel az elrendezéssel az üzembe helyezés még ugyanazon a számítógépen, amelyen a titkosítási tanúsítvány áll rendelkezésre.
 
-Az RDP-bővítmény a Visual Studio Team Services használata esetén a builddefiníció az a következő részleteket tartalmazza:
+Az RDP-bővítmény, az Azure DevOps-szolgáltatások használatához a buildelési folyamat a következő részleteket tartalmazza:
 
 1. Például `/p:ForceRDPExtensionOverPlugin=true` az, hogy az üzembe helyezés működik együtt az RDP-beépülő modul helyett inkább az RDP-bővítmény az MSBuild-argumentumok. Példa:
 

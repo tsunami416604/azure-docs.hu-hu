@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2018
 ms.author: yili
-ms.openlocfilehash: cd107ddc5ac443daee592c40bbed451c913a8a3b
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: aba6a1f7028ac09cad8acf587fd56dcc2c16919b
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39444589"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44295718"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Az Azure App Service linuxon – gyakori kérdések
 
@@ -74,7 +74,7 @@ Igen, szükség nevű beállítása alkalmazás `WEBSITE_WEBDEPLOY_USE_SCM` val�
 
 Ha a Linux-webalkalmazás Git-telepítés nem sikerül, válassza ki az alkalmazáskód üzembe helyezéséhez az alábbi lehetőségek közül:
 
-- A folyamatos Készregyártás (előzetes verzió) szolgáltatással: az alkalmazás forráskódjának egy Team Services Git-tárház vagy az Azure folyamatos készregyártással GitHub-adattárat is tárolhatja. További információkért lásd: [a folyamatos teljesítés konfigurálása Linux-webalkalmazás](https://blogs.msdn.microsoft.com/devops/2017/05/10/use-azure-portal-to-setup-continuous-delivery-for-web-app-on-linux/).
+- A folyamatos Készregyártás (előzetes verzió) szolgáltatással: az alkalmazás forráskódjának tárolhatja az Azure DevOps Git-tárház vagy az Azure folyamatos készregyártással GitHub-adattárat. További információkért lásd: [a folyamatos teljesítés konfigurálása Linux-webalkalmazás](https://blogs.msdn.microsoft.com/devops/2017/05/10/use-azure-portal-to-setup-continuous-delivery-for-web-app-on-linux/).
 
 - Használja a [ZIP API üzembe helyezése](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file): Ez az API használatára [SSH-t a webalkalmazás](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-ssh-support#making-a-client-connection) , és keresse meg a mappát, ahol szeretné telepíteni a kódot. Futtassa a következő kódot:
 

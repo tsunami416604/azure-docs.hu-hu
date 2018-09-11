@@ -10,14 +10,16 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 02/09/2018
-ms.author: sdash ; mbullwin
-ms.openlocfilehash: c97b45616a58035dd5a1d7e832212fb90694ccce
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
-ms.translationtype: HT
+ms.reviewer: sdash
+ms.author: mbullwin
+ms.openlocfilehash: 392abef7f92dce024ba6e4af091cf58fde5119b6
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44302391"
 ---
 # <a name="monitor-availability-and-responsiveness-of-any-web-site"></a>Webhelyek rendelkezésre állásának és válaszkészségének megfigyelése
 Miután telepítette a webappot vagy a webhelyet bármely kiszolgálóra, webes teszteket állíthat be az alkalmazás rendelkezésre állásának és válaszkészségének megfigyeléséhez. Az [Azure Application Insights](app-insights-overview.md) rendszeres időközönként, világszerte különböző helyekről webes kéréseket küld az alkalmazására. Riasztást jelenít meg, ha az alkalmazás nem válaszol, vagy lassan válaszol.
@@ -52,7 +54,7 @@ Nyissa meg a Rendelkezésre állás panelt, és adjon hozzá egy tesztet.
 
 ![Töltse ki legalább a webhelye URL-címét](./media/app-insights-monitor-web-app-availability/13-availability.png)
 
-* **Az URL-cím** bármilyen tesztelni kívánt weblap lehet, de láthatónak kell lennie a nyilvános internetről. Az URL-cím tartalmazhat lekérdezési karakterláncot. Tehát például kísérletezhet egy kicsit az adatbázissal. Ha az URL feloldása egy átirányítást eredményez, legfeljebb 10 átirányításig követjük.
+* **Az URL-cím** bármilyen tesztelni kívánt weblap lehet, de láthatónak kell lennie a nyilvános internetről. Az URL-cím tartalmazhat lekérdezési sztringet. Tehát például kísérletezhet egy kicsit az adatbázissal. Ha az URL feloldása egy átirányítást eredményez, legfeljebb 10 átirányításig követjük.
 * **Függő kérelmek elemzése**: Ha a beállítás be van jelölve, a teszt lekéri a tesztelt weblap képeit, szkriptjeit, stílusfájljait és más erőforrásait. A rögzített válaszidőbe a fájlok lekérése is beleszámít. A teszt meghiúsul, ha nem tölthető le sikeresen az összes erőforrás a teljes teszt időtúllépése előtt. 
 
     Ha a beállítás nincs bejelölve, a teszt csak a fájlt és a megadott URL-címet kéri le.
@@ -69,7 +71,7 @@ Nyissa meg a Rendelkezésre állás panelt, és adjon hozzá egy tesztet.
 
     **HTTP-válasz**: A visszaadott, sikert jelző állapotkód. A 200-as kód jelzi, hogy normál weblap lett visszaküldve.
 
-    **Tartalmi egyezés**: egy karakterlánc, például „Üdvözöljük!” Teszteljük, hogy minden válaszban előfordul-e a kis- és nagybetűket figyelembe véve is pontos egyezés. Egyszerű karakterláncnak kell lennie helyettesítő karakterek nélkül. Ne feledje, hogy ha a laptartalom megváltozik, lehet, hogy ezt is frissíteni kell.
+    **Tartalmi egyezés**: egy sztring, például „Üdvözöljük!” Teszteljük, hogy minden válaszban előfordul-e a kis- és nagybetűket figyelembe véve is pontos egyezés. Egyszerű sztringnek kell lennie helyettesítő karakterek nélkül. Ne feledje, hogy ha a laptartalom megváltozik, lehet, hogy ezt is frissíteni kell.
 * Alapértelmezés szerint akkor kap **riasztásokat**, ha öt perc alatt három helyen fordulnak elő hibák. Ha egy helyen fordul elő a hiba, azt valószínűleg hálózati probléma okozza, és nem a hellyel van probléma. A küszöbérték érzékenységét állítani lehet, és azt is módosíthatja, hogy kinek küldje a rendszer az e-maileket.
 
     Be lehet állítani egy [webhookot](../monitoring-and-diagnostics/insights-webhooks-alerts.md), amelyet a rendszer egy riasztás megjelenésekor hív meg. (Vegye figyelembe, hogy jelenleg a lekérdezési paraméterek nem továbbítódnak Tulajdonságokként.)
@@ -113,7 +115,7 @@ A rendelkezésre állási tesztek eredményei alapján a következőket teheti:
 
 * Megvizsgálhatja a kiszolgálótól érkezett választ.
 * Diagnosztizálhatja a hibákat a sikertelen kéréspéldány feldolgozásakor begyűjtött kiszolgálóoldali telemetriával.
-* Naplózhat egy problémát vagy munkaelemet a Git vagy a VSTS segítségével a probléma nyomon követéséhez. A hiba tartalmazni fog egy hivatkozást erre az eseményre.
+* Probléma jelentkezik, vagy a Git vagy az Azure DevOps, a probléma nyomon követéséhez munkaelem. A hiba tartalmazni fog egy hivatkozást erre az eseményre.
 * Megnyithatja a webes teszt eredményét a Visual Studióban.
 
 *Úgy tűnik, hogy rendben van, mégis sikertelenként lett jelentve?* A zaj csökkentésére a [GYIK](#qna) dokumentumban talál lehetőségeket.
@@ -180,7 +182,9 @@ A webes munkamenet rögzítéséhez használja a Visual Studio Enterprise-t.
 
 Tekintse meg a teszt eredményeit és a hibákat ugyanúgy, mint az egyetlen URL-címre kiterjedő teszteknél.
 
-Emellett le is töltheti és megtekintheti a teszteredményeket a Visual Studióban.
+A vizsgálati eredmények megtekinthetők a Visual Studióban is letöltheti.
+
+Töltse le a vizsgálati eredmények. Keresse meg a rendelkezésre állási tesztek összefoglalása, kattintson a diagramra kattintva megnyithatja a rendelkezésre állási teszt eredménye ablak az eredményt a, és kattintson a **nyissa meg a Visual Studióban** teszteredmények letöltéséhez.
 
 #### <a name="too-many-failures"></a>Túl sok a hiba?
 
@@ -253,7 +257,7 @@ Ha a tesztnek az OAuth protokollal kell bejelentkeznie, az általános megközel
 ## <a name="performance-tests"></a>Teljesítménytesztek
 Terheléstesztelést futtathat a webhelyén. Csakúgy, mint a rendelkezésre állási teszt esetében, egyszerű vagy több lépésből álló kéréseket küldhet a világ minden táján található helyekről. A rendelkezésre állási teszttől eltérően sok kérés lesz elküldve, több párhuzamos felhasználót szimulálva.
 
-Az Áttekintés panelről nyissa meg a **Beállítások**, **Teljesítménytesztek** elemet. Teszt létrehozásakor egy kérést kap arra, hogy csatlakozzon a Visual Studio Team Services-fiókhoz, vagy hozzon létre egyet.
+Az Áttekintés panelről nyissa meg a **Beállítások**, **Teljesítménytesztek** elemet. Amikor létrehoz egy tesztet, meghívjuk, hogy csatlakozni, vagy hozzon létre egy Azure-fejlesztési és üzemeltetési szolgáltatások szervezetet.
 
 A teszt befejezése után a válaszidők és a sikerességi arány jelenik meg.
 

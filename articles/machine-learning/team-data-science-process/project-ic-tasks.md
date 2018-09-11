@@ -1,6 +1,6 @@
 ---
-title: Vonja össze az adatokat tudományos folyamat feladatok számára egy egyéni közreműködő - Azure |} Microsoft Docs
-description: A feladatok a tudományos adatok team projekt egy egyéni közreműködő áttekintését.
+title: Csoportos adatelemzési folyamat feladatok számára egy egyéni közreműködő – Azure |} A Microsoft Docs
+description: A tevékenységek a data science csapatprojekt egy egyéni közreműködőjének röviden ismerteti.
 documentationcenter: ''
 author: deguhath
 manager: cgronlun
@@ -14,67 +14,67 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: deguhath
-ms.openlocfilehash: e431d89e5d74f5712f6f109075201c95dc233bd3
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: f21098381d75a4843e9300beaae687adc6ec107d
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34838551"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44303761"
 ---
-# <a name="individual-contributor-tasks"></a>Egyes közreműködői feladatok
+# <a name="individual-contributor-tasks"></a>Közreműködői feladatok
 
-Ez a témakör vázol fel, amely egy egyéni közreműködő feladatok befejezéséhez az adatok tudományos csoport nem várt. Hoz létre, amely egységesíti az együttműködést team környezetet a [Team adatok tudományos folyamat](overview.md) (TDSP). A személyzet szerepkörök és a kapcsolódó feladatok, egy data tudományos csapat által kezelt vázlat szabványosítása a folyamattal, lásd: [Team adatok tudományos folyamat szerepköröket és feladatokat](roles-tasks.md).
+Ez a témakör ismerteti a feladatokat, amely egy egyéni közreműködő várható esetében az adatelemzési csapatával. Együttműködő csapat környezet, amely szabványosítja az a célja a [csoportos adatelemzési folyamat](overview.md) (TDSP). Röviden ismerteti a személyzet szerepkörök és hozzájuk kapcsolódó részfeladatokat adatelemzési csapatával által végrehajtott ezt a folyamatot, a szabványosításával lásd [csoportos adatelemzési folyamat szerepkörök és feladatok](roles-tasks.md).
 
-Project egyes közreműködő szerepkörrel rendelkező személyek (adatszakértőkön) a TDSP környezetet a projekt feladatainak ezek ábrázolva az alábbiak szerint: 
+A feladatokat a projektben egyes közreműködők (adatszakértők) a TDSP környezetet a projekt következő vannak kitaláltak: 
 
 ![1](./media/project-ic-tasks/project-ic-1-tdsp-data-scientist.png)
 
-- **GroupUtilities** tárolja a célszámítógépekre, hogy a csoport számára hasznos segédprogramok megosztani a teljes csoport karbantartása. 
-- **TeamUtilities** tárolja a célszámítógépekre, amely a csapat karbantartása kifejezetten a csapat számára. 
+- **GroupUtilities** az adattár, amely a csoport a hasznos segédprogramok megosztása a teljes csoport karbantartása. 
+- **TeamUtilities** az adattár, amely a csapat karbantartása kifejezetten a csapat számára. 
 
-Hogyan hajthat végre a TDSP tudományos adatok projektté, lásd: [végrehajtási az adatok tudományos projektek](project-execution.md). 
+Hogyan hajtható végre a TDSP adatelemzési projektjéhez kapcsolatos utasításokért lásd: [végrehajtási az adatelemzési projektek](project-execution.md). 
 
->[AZURE.NOTE] A Microsoft helyzeteit vázolják fel, az alábbi utasításokat a Visual Studio Team Services (VSTS) alkalmazásával TDSP team környezet beállítása szükséges lépéseket. Azt adja meg, hogyan hajthat végre ezeket a feladatokat a VSTS, mivel az a Microsoft TDSP megvalósítása módját. Ha egy másik kódot futtató platform csoport használata esetén a feladatokat, amelyeket teljesíteni a csapat az érdeklődési általában ne módosítsa. De ezek a feladatok úgy a különböző lesz.
-
-
-## <a name="repositories-and-directories"></a>Tárolóhelyekkel és könyvtárak
-
-Ez az oktatóanyag adattárak és könyvtárak rövidített nevét használja. Ezek a nevek könnyebben hajtsa végre a műveletek a tárolóhelyekkel és a címtárak között. Ez a notation (**R** a Git-tárházak és **D** a DSVM a helyi könyvtárak) a következő szakaszokban szolgál:
-
-- **R2**: a csoport kezelőjének úgy van beállítva, a VSTS csoport kiszolgálón Git a GroupUtilities tárházából.
-- **R4**: a csoport az érdeklődési beállított Git a TeamUtilities tárházából.
-- **R5**: A projekt tárházat a Git, amely be van állítva a projekt vezethet.
-- **D2**: R2 alapján klónozták a helyi címtárszolgáltatásban.
-- **D4**: R4 alapján klónozták a helyi címtárszolgáltatásban.
-- **D5**: R5 alapján klónozták a helyi címtárszolgáltatásban.
+>[AZURE.NOTE] Az Azure DevOps használatával a következő utasítások TDSP csoportos környezetben beállításához szükséges lépéseket szerkezeti azt. Azt adja meg, hogyan végezheti el ezeket a feladatokat az Azure DevOps, mivel az a Microsoft TDSP tanfolyamsorozat. Ha egy másik kódot üzemeltető platform szolgál a csoport, a feladatokat kell végrehajtani a csapatvezetők általában, ne módosítsa. Azonban ezeket a feladatokat a módja eltérő lesz.
 
 
-## <a name="step-0-prerequisites"></a>Lépés-0: Előfeltételek
+## <a name="repositories-and-directories"></a>Adattárak és könyvtárak
 
-Az előfeltételek teljesülnek, a csoport kezelőjének leírt rendelt feladatok végrehajtásával [csoport kezelőjének feladatokat tudományos adatok csoport](group-manager-tasks.md). Itt összefoglalva, az alábbi követelményeket kell teljesíteni a csapat az érdeklődési feladatok megkezdése előtt: 
-- A csoport kezelőjének állította be a **GroupUtilities** tárház (ha van ilyen). 
-- A csoport az érdeklődési állította be a **TeamUtilities** tárház (ha van ilyen).
-- A projekt vezető beállította a projekt tárházba. 
-- Ön érhetőek el a projekt tárház klónozandó és a projekt tárház vissza leküldése a jogosultságot a projekt vezethet.
+Ebben az oktatóanyagban rövidített adattárak és a könyvtárakat. Ezeket a neveket könnyebben hajtsa végre a műveleteket az adattárak és a címtárak között. Ezen jelölés (**R** a Git-tárházak és **D** a dsvm-hez a helyi címtárak) szerepel a következő szakaszokban:
 
-A második **TeamUtilities** -tárházban, előfeltételként szükséges nem kötelező megadni, attól függően, hogy rendelkezik-e a csoport egy team-specifikus segédprogram-tárházat. Ha más három Előfeltételek bármelyike nem végzett, lépjen kapcsolatba a csapat segítséget, a projekt vezető vagy a delegáltak beállításához szükséges utasításokat követve [tudományos adatok csoport feladatainak Team vezethet](team-lead-tasks.md) vagy [ A projekt vezető feladatok tudományos adatok csoport](project-lead-tasks.md).
+- **R2**: A GroupUtilities tárházat a Git, a csoport kezelőjének úgy van beállítva, az Azure DevOps-csoport kiszolgálón.
+- **R4**: A TeamUtilities tárházat a Git, a Csapatvezető úgy állította be.
+- **R5**: A projektadattárat a Git, amely be lett állítva a projektvezető által.
+- **D2**: A helyi könyvtárban klónozott R2-ről.
+- **D4**: A helyi könyvtárban klónozható R4 a.
+- **D5**: A helyi könyvtárban klónozható R5 a.
 
-- Git telepítenie kell a számítógépre. Ha egy tudományos virtuális gép (DSVM) használ, Git előre telepítve van, és visszaigazolásához. Ellenkező esetben tekintse meg a [platformok és az eszközök függelék](platforms-and-tools.md#appendix).  
-- Ha használ egy **Windows DSVM**, telepíteni kell [Git hitelesítőadat-kezelő (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) van telepítve a számítógépre. A README.md fájl görgessen le a **töltse le és telepítse** szakaszt, és kattintson a *installer legújabb*. Ezzel megnyitná a legfrissebb telepítési oldal. Töltse le a .exe-telepítő címről, és futtassa. 
-- Ha használ **Linux DSVM**, a DSVM a nyilvános SSH-kulcs létrehozása, és adja hozzá a csoporthoz VSTS-kiszolgáló. SSH kapcsolatos további információkért tekintse meg a **létrehozása SSH nyilvános kulcs** szakasz a [platformok és az eszközök függelék](platforms-and-tools.md#appendix). 
-- A csoport és/vagy a projekt vezető néhány, a DSVM csatlakoztatni kell az Azure file storage hozott létre, ha a fájl Azure tárolással kapcsolatos szerezheti be azokat. 
 
-## <a name="step-1-3-clone-group-team-and-project-repositories-to-local-machine"></a>1 – 3. lépés: csoport, a csapat és a helyi számítógép projekt tárhelyek klónozása
+## <a name="step-0-prerequisites"></a>. Lépés – 0: Előfeltételek
 
-Ez a szakasz a projekt egyedi közreműködők első három feladatok végrehajtásával kapcsolatos tudnivalókat tartalmazza: 
+Az előfeltételek teljesülnek, a hozzárendelve a csoport kezelőjének ismertetett feladatok végrehajtásával [Csoportkezelő feladatokat egy adatelemzési csapatával](group-manager-tasks.md). Összefoglalva az itt, az alábbi követelményeknek kell teljesülniük a csapat vezető feladatok megkezdése előtt: 
+- A csoport kezelőjének úgy állította be a **GroupUtilities** tárház (ha van). 
+- A Csapatvezető úgy állította be a **TeamUtilities** tárház (ha van).
+- A projektvezető beállította a projektadattárat. 
+- Felvették a projekt tárházra a jogosultság a klónozza, és küldhet vissza a projektadattárat a projektvezető által.
 
-- Klónozott a **GroupUtilities** D2 R2 tárház
-- Klónozott a **TeamUtilities** D4 R4 tárház 
-- Klónozott a **projekt** D5 R5 tárház.
+A második **TeamUtilities** előfeltétel-adattárban nem kötelező, attól függően, a csapat rendelkezik-e egy csapat-specifikus segédprogram-adattárhoz. Ha más három Előfeltételek bármelyike nem fejeződött, lépjen kapcsolatba a csapatvezető, a projektvezető vagy saját delegáltakat vonatkozó utasításokat követve be [feladatok csapata egy adatelemzési csapatával](team-lead-tasks.md) vagy [ A projekt vezető feladatok egy adatelemzési csapatával](project-lead-tasks.md).
 
-A helyi gépén, hozzon létre egy könyvtárat ***C:\GitRepos*** (a Windows) vagy ***$home/GitRepos*** (forLinux), majd állítsa át a könyvtárhoz. 
+- Git a gépen telepítve kell lennie. Ha egy adatelemzési virtuális gép (DSVM) használ, Git előre telepítve van, és készen áll. Egyéb esetben a [platformok és eszközök függelék](platforms-and-tools.md#appendix).  
+- Ha használ egy **Windows DSVM**, rendelkeznie kell [Git Credential Manager (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) telepítve van a gépén. A README.md fájl görgessen le a **töltse le és telepítse** szakaszt, és kattintson a *legújabb*. Ezzel továbblép a telepítő legújabb lapra. Töltse le az .exe itt, és futtathatja. 
+- Ha használ **Linuxos DSVM**, egy nyilvános SSH-kulcs létrehozása a dsvm-hez, és adja hozzá a csoport az Azure DevOps-szolgáltatásokkal. SSH kapcsolatos további információkért lásd: a **hozzon létre SSH nyilvános kulcs** című rész a [platformok és eszközök függelék](platforms-and-tools.md#appendix). 
+- Ha a csoport és/vagy érdeklődő néhány, a dsvm-hez csatlakoztatni kell az Azure file storage hozott létre, szerezheti be a az Azure file storage információkat belőlük. 
 
-Klónozás megfelelően (az operációs rendszer) a következő parancsok egyikét futtassa a **GroupUtilities**, **TeamUtilities**, és **projekt** könyvtárak tárhelyek a helyi számítógép: 
+## <a name="step-1-3-clone-group-team-and-project-repositories-to-local-machine"></a>1 – 3. lépés: klónozza a csoportot, a csapat és a projekt tárház helyi számítógépre
+
+Ez a szakasz útmutatást első három projektben egyes munkatársak feladatainak elvégzését: 
+
+- Klónozás a **GroupUtilities** D2 R2-adattár
+- Klónozás a **TeamUtilities** D4 R4-adattár 
+- Klónozás a **projekt** D5 R5 adattárat.
+
+A helyi gépén hozzon létre egy könyvtárat ***C:\GitRepos*** (a Windows) vagy ***$home/GitRepos*** (forLinux), majd módosítsa a könyvtárhoz. 
+
+Megfelelően (az operációs rendszer) a következő parancsok egyikét futtatásával klónozza a **GroupUtilities**, **TeamUtilities**, és **projekt** könyvtáraihoz tárházakat a helyi számítógép: 
 
 **Windows**
     
@@ -84,7 +84,7 @@ Klónozás megfelelően (az operációs rendszer) a következő parancsok egyik�
     
 ![2](./media/project-ic-tasks/project-ic-2-clone-three-repo-to-ic.png)
 
-Ellenőrizze, hogy látható-e a három mappák a projekt könyvtárában.
+Győződjön meg arról, hogy megjelenik-e a három mappát a projekt könyvtárában.
 
 ![3](./media/project-ic-tasks/project-ic-3-three-repo-cloned-to-ic.png)
 
@@ -96,20 +96,20 @@ Ellenőrizze, hogy látható-e a három mappák a projekt könyvtárában.
 
 ![4](./media/project-ic-tasks/project-ic-4-clone-three-repo-to_ic-linux.png)
 
-Ellenőrizze, hogy látható-e a három mappák a projekt könyvtárában.
+Győződjön meg arról, hogy megjelenik-e a három mappát a projekt könyvtárában.
 
 ![5](./media/project-ic-tasks/project-ic-5-three-repo-cloned-to-ic-linux.png)
 
-## <a name="step-4-5-mount-azure-file-storage-to-your-dsvm-optional"></a>4-5. lépés: a DSVM (nem kötelező) a csatlakoztatási Azure fájltároló
+## <a name="step-4-5-mount-azure-file-storage-to-your-dsvm-optional"></a>4 – 5. lépés: az Azure file storage csatlakoztatása t a dsvm-hez (nem kötelező)
 
-Csatlakoztatási Azure file Storage a DSVM számára, lásd a 4. szakaszban található utasítások a [Team átfutási feladatok tudományos adatok csoport](team-lead-tasks.md)
+Az Azure file storage csatlakoztatása t a dsvm-hez, lásd 4. szakasz utasításait a [csapat vezető feladatok egy adatelemzési csapatával](team-lead-tasks.md)
 
 ## <a name="next-steps"></a>További lépések
 
-Az alábbiakban a szerepkörök és az adatok tudományos eljárással meghatározott feladatok részletes leírását mutató hivatkozásokat:
+Az alábbiakban a hivatkozások a szerepkörök és feladatok határozzák meg a csoportos adatelemzési folyamat részletes ismertetését:
 
-- [Tudományos adatok csoport csoport Manager-feladatok](group-manager-tasks.md)
-- [Az érdeklődési feladatainak egy adatok tudományos csoport](team-lead-tasks.md)
-- [Az érdeklődési tevékenységeket a tudományos adatok csoport](project-lead-tasks.md)
-- [Project egyes közreműködők a tudományos adatok csoport](project-ic-tasks.md)
+- [Adatelemzési csapatával csoport Manager-feladatok](group-manager-tasks.md)
+- [Csoportos adatelemzési csapatával az érdeklődő feladatok](team-lead-tasks.md)
+- [Érdeklődő tevékenységeket az adatelemzési csapatával](project-lead-tasks.md)
+- [Projektben egyes közreműködők az adatelemzési csapatával](project-ic-tasks.md)
 

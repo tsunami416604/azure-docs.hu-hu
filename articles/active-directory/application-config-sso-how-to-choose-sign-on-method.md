@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/11/2017
+ms.date: 09/09/2018
 ms.author: barbkess
-ms.openlocfilehash: 336aa4f671e6d86684664fa5e5d15a03a4beff23
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: ad7247d81422436e7a4c996e7849f770184ee2d8
+ms.sourcegitcommit: 465ae78cc22eeafb5dfafe4da4b8b2138daf5082
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39366289"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44325209"
 ---
 # <a name="how-to-determine-what-single-sign-on-method-to-use"></a>Annak megállapítása, hogy milyen egyszeri bejelentkezéses módszert szeretné használni
 
@@ -29,7 +29,7 @@ Ez a cikk segít megérteni az egyszeri bejelentkezési módot támogat az Azure
 
 A következő táblázat ismerteti az egyszeri bejelentkezéshez és az üzembe helyezési mód az előző alkalmazástípusok által támogatott. Ez a táblázat segítségével melyik támogatásához egy bizonyos cél hozzá kell application megértését.
 
-  ![AP típusok táblázata](./media/application-tables/table1.png)
+  ![Alkalmazás-típusok táblázata](./media/application-config-sso-how-to-choose-sign-on-method/table1.png)
 
 ## <a name="how-to-choose-a-single-sign-on-mode"></a>Egy egyszeri bejelentkezési mód kiválasztása
 

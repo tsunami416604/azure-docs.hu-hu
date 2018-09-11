@@ -9,12 +9,12 @@ ms.date: 04/12/2018
 ms.topic: article
 ms.service: active-directory
 ms.workload: identity
-ms.openlocfilehash: c6e82dfef55a49a8db70bdbefd0d7150b4fbac40
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: c08dba56e3a7d9590ea95e7e4c569839f3a32100
+ms.sourcegitcommit: 465ae78cc22eeafb5dfafe4da4b8b2138daf5082
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43305182"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44324852"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Válassza ki a megfelelő hitelesítési módszert az Azure Active Directory hibrid identitáskezelési megoldás 
 
@@ -171,7 +171,7 @@ Az alábbi ábrák a magas szintű architektúra minden hitelesítési módszert
 |Mik a feltételes hozzáférési beállításokat?|[Az Azure AD feltételes hozzáférés](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)|[Az Azure AD feltételes hozzáférés](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)|[Az Azure AD feltételes hozzáférés](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)<br><br>[Az AD FS-jogcímszabályok](https://adfshelp.microsoft.com/AadTrustClaims/ClaimsGenerator)|
 |Támogatott régebbi protokollokra blokkolja?|[Igen](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-conditions#legacy-authentication)|[Igen](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-conditions#legacy-authentication)|[Igen](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/access-control-policies-w2k12)|
 |Testreszabhatja a embléma, a lemezkép és a leírás a bejelentkezési oldalakon?|[Igen, az Azure AD Premium szolgáltatással](https://docs.microsoft.com/azure/active-directory/customize-branding)|[Igen, az Azure AD Premium szolgáltatással](https://docs.microsoft.com/azure/active-directory/customize-branding)|[Igen](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-federation-management#customlogo)|
-|Milyen speciális forgatókönyvek támogatottak?|[Az intelligens jelszózárolás](https://docs.microsoft.com/azure/active-directory/active-directory-secure-passwords)<br><br>[Kiszivárgott hitelesítő adatok jelentések](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-risk-events)|[Az intelligens jelszózárolás](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication-smart-lockout)|Többhelyes közel valós idejű hitelesítő rendszerrel<br><br>[Az AD FS extranetes fiókzárolás](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-lockout-protection)<br><br>[Integráció a külső identitáskezelési rendszerek](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-federation-compatibility)|
+|Milyen speciális forgatókönyvek támogatottak?|[Az intelligens jelszózárolás](https://docs.microsoft.com/azure/active-directory/active-directory-secure-passwords)<br><br>[Kiszivárgott hitelesítő adatok jelentések](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-risk-events)|[Az intelligens jelszózárolás](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication-smart-lockout)|Többhelyes közel valós idejű hitelesítő rendszerrel<br><br>[Az AD FS extranetes fiókzárolás](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-soft-lockout-protection)<br><br>[Integráció a külső identitáskezelési rendszerek](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-federation-compatibility)|
 
 > [!NOTE] 
 > Egyéni vezérlők az Azure AD feltételes hozzáférés jelenleg nem támogatja az eszköz regisztrálása.

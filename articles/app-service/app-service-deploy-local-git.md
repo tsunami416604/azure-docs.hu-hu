@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: dariagrigoriu;cephalin
-ms.openlocfilehash: f461a9a7cc900ce5f8fdba7b255417b1790d3f4d
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: ae8739a65efbe7662a8f72e961d772fecaf4b527
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42055110"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44303694"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Helyi üzembe helyezés Git használatával az Azure App Service szolgáltatásban
 
@@ -101,10 +101,10 @@ A kimenetben, például az ASP.NET, MSBuild futtatókörnyezet-specifikus automa
 
 Keresse meg az alkalmazásba és ellenőrizze, hogy telepítve van-e a tartalmat.
 
-## <a name="deploy-from-local-git-with-vsts-builds"></a>Üzembe helyezés a VSTS-buildek használatával a helyi Gitből
+## <a name="deploy-from-local-git-with-azure-devops-services-builds"></a>Üzembe helyezés a helyi Gitből az Azure DevOps-szolgáltatásokkal-buildek használatával
 
 > [!NOTE]
-> Az App Service létrehozná az szükséges, és a kiadási definícióiról a VSTS-fiókban, az Azure-fiókkal kell rendelkeznie szerepe **tulajdonos** az Azure-előfizetésében.
+> Az App Service a szükséges Azure-folyamatok létrehozására a szervezet az Azure DevOps-szolgáltatásokkal, az Azure-fiókkal kell rendelkeznie szerepe **tulajdonos** az Azure-előfizetésében.
 >
 
 Ahhoz, hogy az alkalmazás a Kudu-buildelési kiszolgáló tartozó helyi Git üzemelő példányt, keresse meg az alkalmazás a [az Azure portal](https://portal.azure.com).
@@ -113,14 +113,14 @@ Az alkalmazás lapjának bal oldali navigációs sávján kattintson **üzembe h
 
 ![](media/app-service-deploy-local-git/portal-enable.png)
 
-Kattintson a **VSTS folyamatos Készregyártás** > **továbbra is**.
+Kattintson a **Services az Azure DevOps, a folyamatos teljesítés** > **továbbra is**.
 
 ![](media/app-service-deploy-local-git/vsts-build-server.png)
 
-Az a **konfigurálása** lapon konfigurálja egy új VSTS-fiókot, vagy egy meglévő fiókot. Ha befejezte, kattintson a **Folytatás**.
+Az a **konfigurálása** oldalon konfigurálása az Azure DevOps-szolgáltatásokkal új szervezetet, vagy adjon meg egy már meglévő szervezet. Ha befejezte, kattintson a **Folytatás**.
 
 > [!NOTE]
-> Ha egy meglévő VSTS-fiók, amely nem szerepel a használni kívánt, kell [a VSTS-fiók összekapcsolása az Azure-előfizetés](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App).
+> Ha egy már meglévő Azure DevOps-szolgáltatásokkal szervezet, amely nem szerepel a használni kívánt, kell [az Azure DevOps-szolgáltatásokkal szervezet összekapcsolása az Azure-előfizetés](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App).
 
 Az a **teszt** lapon, döntse el, hogy engedélyezze a terhelési teszteket, majd kattintson a **Folytatás**.
 
@@ -128,7 +128,7 @@ Attól függően, a [tarifacsomag](https://azure.microsoft.com/pricing/details/a
 
 Az a **összefoglalás** oldalon ellenőrizze a beállításokat, kattintson a **Befejezés**.
 
-A VSTS-fiók készen áll a pár percet vesz igénybe. Amikor elkészült, az üzembe helyezési központ másoljon át a Git-adattár URL-címe.
+Készen áll az Azure DevOps-szolgáltatásokkal a szervezet néhány percet vesz igénybe. Amikor elkészült, az üzembe helyezési központ másoljon át a Git-adattár URL-címe.
 
 ![](media/app-service-deploy-local-git/vsts-repo-ready.png)
 
@@ -138,7 +138,7 @@ A _helyi terminálablakba_ visszatérve adjon hozzá egy távoli Azure-mappát a
 git remote add vsts <url>
 ```
 
-A távoli Azure-mappához történő küldéssel helyezze üzembe az alkalmazást a következő paranccsal. Amikor a Git hitelesítőadat-kezelője kéri, jelentkezzen be a visualstudio.com felhasználói. További hitelesítési módszereket, lásd: [VSTS hitelesítési áttekintés](/vsts/git/auth-overview?view=vsts).
+A távoli Azure-mappához történő küldéssel helyezze üzembe az alkalmazást a következő paranccsal. Amikor a Git hitelesítőadat-kezelője kéri, jelentkezzen be a visualstudio.com felhasználói. További hitelesítési módszereket, lásd: [Azure DevOps-szolgáltatásokkal hitelesítést áttekintése](/vsts/git/auth-overview?view=vsts).
 
 ```bash
 git push vsts master

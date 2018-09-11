@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2018
 ms.author: gokuma
-ms.openlocfilehash: 8131122f78f743d04e332bfc8dfeba87a8c34236
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: 37a30055e567b27f4e215dac162642d4447a8e49
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43782654"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44298205"
 ---
 # <a name="provision-the-windows-data-science-virtual-machine-on-azure"></a>A Windows Data Science virtuális gép Azure-beli üzembe helyezése
 A Microsoft Data Science virtuális gépet (DSVM) egy Windows Azure virtuális gép (VM) rendszerkép. Előtelepített és konfigurált adatelemzési és machine learning használt számos eszközzel. A következő eszközök foglalja magában:
@@ -40,7 +40,7 @@ A Microsoft Data Science virtuális gépet (DSVM) egy Windows Azure virtuális g
   * [Weka](http://www.cs.waikato.ac.nz/ml/weka/). Vizuális adatbányászat és a gépi tanulási Java szoftvert.
   * [Apache Drill](https://drill.apache.org/). Séma nélküli SQL lekérdezési motorja Apache Hadoop, a nosql-alapú és a felhőalapú tárolást.  A nosql-alapú, és a standard szintű BI eszközök, Power BI, a Microsoft Excel és a Tableau fájlok ODBC, JDBC és felületek támogatja.
 * Kódtárak R és Python esetében az Azure Machine Learning és más Azure-szolgáltatásokat használja.
-* A Git, beleértve a Git bash eszközt, például a GitHub és Visual Studio Team Services forráskódtárházak dolgozhat. A Git nyújt számos népszerű Linux parancssor eszközök, amelyek elérhetők mind a Git Bash és a egy parancssort. Példák awk, a csökkentésének, a perl, a grep, a keresés, a wget és a curl.
+* A Git, beleértve a Git bash eszközt, például a GitHub és az Azure DevOps forráskódtárházak dolgozhat. A Git nyújt számos népszerű Linux parancssor eszközök, amelyek elérhetők mind a Git Bash és a egy parancssort. Példák awk, a csökkentésének, a perl, a grep, a keresés, a wget és a curl.
 
 Az adatelemzés magában foglalja a feladatok egy sorozatát léptetés:
 

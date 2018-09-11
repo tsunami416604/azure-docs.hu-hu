@@ -6,14 +6,14 @@ author: saurabhsensharma
 manager: shivamg
 ms.service: backup
 ms.topic: conceptual
-ms.date: 8/6/2018
+ms.date: 9/7/2018
 ms.author: saurse
-ms.openlocfilehash: ddde297de49edb5f6543d03dfdb972771533301b
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 20d2f289f4d40d773fde9f6b770dc49b87c34804
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39576185"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44297247"
 ---
 # <a name="restore-files-to-a-windows-server-or-windows-client-machine-using-resource-manager-deployment-model"></a>Fájlok visszaállítása a Windows-kiszolgálóra vagy -ügyfélre a Resource Manager-alapú üzemi modell használatával
 
@@ -54,6 +54,9 @@ Ha véletlenül törölte a fájlt, és vissza szeretné állítani, (, amelyrő
 > [!IMPORTANT]
 > Helyreállítható *egyes fájlok és mappák* szükséges a .NET-keretrendszer 4.5.2-es vagy újabb verziója. Ha nem látja a *egyes fájlok és mappák* lehetőséget, frissítenie kell .NET-keretrendszer 4.5.2-es vagy újabb, és próbálkozzon újra.
 
+> [!TIP]
+> A *egyes fájlok és mappák* beállítás lehetővé teszi a helyreállítási pont adataiban gyors eléréséhez. Megfelelő az egyes fájlok helyreállítása összesen mérete nem lehet hosszabb 80 GB méretű, és ajánlatok átviteli másolatot legfeljebb 6 MB/s lerövidíti a helyreállítás során. A *kötet* beállítást egy adott kötet összes biztonsági másolat adatait állítja helyre. Ez a beállítás nagyobb átviteli sebességre képes itt (legfeljebb 60 MB/s), amely ideális a számára helyreállítás nagy méretű adatok vagy a teljes kötet.
+
 5. Az a **kötet és dátum kiválasztása** ablaktáblán válassza ki a fájlokat és/vagy a visszaállítani kívánt mappákat tartalmazó kötetet.
 
     A naptárban válasszon ki egy helyreállítási pontot. Időben bármelyik helyreállítási pontra visszaállíthatja. A dátumok **félkövér** azt jelzik, legalább egy helyreállítási pont rendelkezésre állását. Ha dátum, akkor válassza, ha több helyreállítási pont érhető el, válassza az adott helyreállítási pontot a **idő** legördülő menüből.
@@ -72,6 +75,7 @@ Ha véletlenül törölte a fájlt, és vissza szeretné állítani, (, amelyrő
 8. A Windows Explorerben másolja a fájlokat és/vagy mappák visszaállítása, és illessze be őket a helyi kiszolgáló vagy számítógép bármely helyére. Nyissa meg vagy adatfolyam a fájlok közvetlenül a helyreállítási kötetet, és győződjön meg arról, hogy a megfelelő verzióra állít helyre.
 
     ![Másolja és illessze be a fájlok és mappák csatlakoztatott kötet helyi helyre](./media/backup-azure-restore-windows-server/samemachine_copy_instantrestore.png)
+
 
 9. Ha elkészült a fájlok és/vagy mappák visszaállítása az a **fájlok tallózása és visszaállítása** ablaktáblán kattintson a **leválasztás**. Kattintson a **Igen** annak ellenőrzéséhez, hogy szeretné-e választani a kötetet.
 

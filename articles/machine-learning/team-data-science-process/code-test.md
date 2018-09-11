@@ -1,5 +1,5 @@
 ---
-title: Adatok tudományos kódot a UCI felnőtt bevétel előrejelzése adatkészlet – csoportos adatelemzési folyamat és a Visual Studio Team Services az Azure-beli tesztelése
+title: Adatok tudományos kód tesztelése az Azure-ban a UCI felnőtt jövedelem előrejelzési adatkészlettel – csoportos adatelemzési folyamat és az Azure DevOps-szolgáltatásokkal
 description: Data science kód UCI felnőtt jövedelem előrejelzési adatokkal tesztelés
 services: machine-learning, team-data-science-process
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/19/2018
 ms.author: weig
-ms.openlocfilehash: 46d156ce09b1ebcdcceb27ede6e7fa1595d30da6
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: ad0a8b5b0bb9afbbe626c9481961f20ccd4797bf
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39439497"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44294695"
 ---
 # <a name="data-science-code-testing-with-the-uci-adult-income-prediction-dataset"></a>Adatok adatelemzési kódot a UCI felnőtt bevétel előrejelzése adatkészlettel tesztelése
 Ez a cikk tartalmaz útmutatást előzetes kód tesztelése egy adatelemzési munkafolyamathoz. Az ilyen tesztelést adatszakértők egy rendszeres és hatékony módszert kínál ellenőrizze a minőség és a kódját a várt eredményt kapja. A csoportos adatelemzési folyamat (TDSP) használjuk [a UCI felnőtt jövedelem adatkészletet használó projekt](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome) azt korábban közzétett megjelenítéséhez a kódot tesztelés menetét. 
@@ -37,8 +37,8 @@ Ez a cikk váltja fel az előfizetési időszak "egység tesztelése" a "kód te
 
 Ez a cikk hivatkozásokat hasznos forrásokat biztosít.
 
-## <a name="visual-studio-team-services-for-the-testing-framework"></a>A Visual Studio Team Services esetében a tesztelési keretrendszer
-Ez a cikk ismerteti, hogyan hajtsa végre és tesztelése a Visual Studio Team Services (VSTS) használatával automatizálható. Dönthet, hogy más eszközökkel. Azt is bemutatják, hogyan egy automatikus build beállítása a VSTS használatával, és hozhat létre ügynököket. A build-ügynökök használ az Azure Data Science virtuális gépek (Dsvm).
+## <a name="azure-devops-for-the-testing-framework"></a>Az Azure DevOps, a tesztelési keretrendszer
+Ez a cikk ismerteti, hogyan hajtsa végre és tesztelés az Azure DevOps használatával automatizálhatja. Dönthet, hogy más eszközökkel. Azt is bemutatják, hogyan egy automatikus build beállítása az Azure DevOps használatával, és hozhat létre ügynököket. A build-ügynökök használ az Azure Data Science virtuális gépek (Dsvm).
 
 ## <a name="flow-of-code-testing"></a>A kód a tesztelési folyamat
 Az adatelemzési projektjéhez tesztelési szabályzat a teljes munkafolyamat így néz ki: 
@@ -48,7 +48,7 @@ Az adatelemzési projektjéhez tesztelési szabályzat a teljes munkafolyamat í
     
 ## <a name="detailed-steps"></a>Részletes lépések
 
-A következő lépések segítségével állítsa be, és futtassa a kódot tesztelés és a egy automatizált összeállítási fordító-ügynökhöz és a VSTS használatával:
+A következő lépések segítségével állítsa be, és futtassa a kódot tesztelés és a egy automatizált összeállítási fordító-ügynökhöz és az Azure DevOps használatával:
 
 1. Hozzon létre egy projektet a Visual Studio asztali alkalmazásban:
 
@@ -60,7 +60,7 @@ A következő lépések segítségével állítsa be, és futtassa a kódot tesz
 
     ![Megoldáskezelő](./media/code-test/solution_explorer_in_vs.PNG)
 
-1. Hírcsatorna projektkódját a VSTS projekt kód tárházba: 
+1. Hírcsatorna projektkódját az Azure DevOps project kód tárházba: 
 
     ![Projekt kódtár](./media/code-test/create_repo.PNG)
 
@@ -108,13 +108,13 @@ A következő lépések segítségével állítsa be, és futtassa a kódot tesz
 
     ![A tesztek futtatása](./media/code-test/run_tests.PNG)
 
-1. Ellenőrizze a kódban, hogy a projekt tárház Git-parancsok használatával. A legutóbbi munkahelyi röviddel a vsts-ben jelennek meg.
+1. Ellenőrizze a kódban, hogy a projekt tárház Git-parancsok használatával. A legutóbbi munkahelyi hamarosan az Azure DevOps megjelennek.
 
     ![Git-parancsok a kód ellenőrzése](./media/code-test/git_check_in.PNG)
 
-    ![Legutóbbi munkahelyi a vsts-ben](./media/code-test/git_check_in_most_recent_work.PNG)
+    ![Legutóbbi munka az Azure DevOps](./media/code-test/git_check_in_most_recent_work.PNG)
 
-1. Állítsa be az automatikus hozhat létre, és tesztelje a vsts-ben:
+1. Automatikus build beállítása és tesztelése az Azure DevOps:
 
     a. Válassza ki a projektadattárat **készítése és kiadása**, majd válassza ki **+ új** új buildelési folyamat létrehozásához.
 
@@ -128,7 +128,7 @@ A következő lépések segítségével állítsa be, és futtassa a kódot tesz
 
        ![List of templates and "Empty process" button](./media/code-test/start_empty_process_template.PNG)
 
-    d. Nevezze el a build, és válassza ki az ügynököt. Az alapértelmezett itt is válassza, ha a buildelési folyamat befejezéséhez a dsvm-hez használni kívánt. A beállítás ügynökök kapcsolatos további információkért lásd: [készítése és kiadása ügynökök](https://docs.microsoft.com/vsts/build-release/concepts/agents/agents?view=vsts).
+    d. Nevezze el a build, és válassza ki az ügynököt. Az alapértelmezett itt is válassza, ha a buildelési folyamat befejezéséhez a dsvm-hez használni kívánt. A beállítás ügynökök kapcsolatos további információkért lásd: [készítése és kiadása ügynökök](https://docs.microsoft.com/azure/devops/pipelines/agents/agents?view=vsts).
     
        ![Build and agent selections](./media/code-test/select_agent.PNG)
 
@@ -142,17 +142,17 @@ A következő lépések segítségével állítsa be, és futtassa a kódot tesz
     
        ![PowerShell details](./media/code-test/powershell_scripts.PNG)
 
-    g. Válassza ki **várólistára & mentése** a build definíció folyamat befejezéséhez.
+    g. Válassza ki **várólistára & mentése** a buildelési folyamat folyamat befejezéséhez.
 
        !["Save & queue" button](./media/code-test/save_and_queue_build_definition.PNG)
 
 Most már minden alkalommal, amikor egy új véglegesítés át lett helyezve a kódtárat, a létrehozási folyamat automatikusan elindul. (Jelen példában használjuk fő mint a tárház, de megadhat bármilyen ág.) A folyamat a **test1.py** az ügynökgépen, győződjön meg arról, hogy minden definiálva a kód megfelelően fut, a fájlt. 
 
-Riasztások megfelelően legyenek beállítva, ha Ön fog értesítést küldünk e-mailben a build elkészült. A build állapota a vsts-ben is ellenőrizheti. Ha nem sikerül, ellenőrizze a részleteket a build, és ismerje meg, hogy megszakad a kódrészlet meghatározásával.
+Riasztások megfelelően legyenek beállítva, ha Ön fog értesítést küldünk e-mailben a build elkészült. Az Azure DevOps build állapotát is ellenőrizheti. Ha nem sikerül, ellenőrizze a részleteket a build, és ismerje meg, hogy megszakad a kódrészlet meghatározásával.
 
 ![E-mail értesítés a build success](./media/code-test/email_build_succeed.PNG)
 
-![VSTS-értesítés a build success](./media/code-test/vs_online_build_succeed.PNG)
+![Az Azure DevOps értesítés a build success](./media/code-test/vs_online_build_succeed.PNG)
 
 ## <a name="next-steps"></a>További lépések
 * Tekintse meg a [UCI bevétel előrejelzése tárház](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome) konkrét példákat egységteszteket adatelemzési célokra.
@@ -161,5 +161,5 @@ Riasztások megfelelően legyenek beállítva, ha Ön fog értesítést küldün
 ## <a name="references"></a>Referencia
 * [Csoportos adatelemzési folyamat](https://aka.ms/tdsp)
 * [Visual Studio-tesztelési eszközök](https://www.visualstudio.com/vs/features/testing-tools/)
-* [VSTS-tesztelés erőforrások](https://www.visualstudio.com/team-services/)
+* [Az Azure DevOps-tesztelés erőforrások](https://www.visualstudio.com/team-services/)
 * [Adatelemző virtuális gépek](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/)

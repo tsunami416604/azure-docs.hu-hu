@@ -1,6 +1,6 @@
 ---
 title: Git-adattár hozzáadása az Azure DevTest Labs szolgáltatásban létrehozott tesztkörnyezet |} A Microsoft Docs
-description: Útmutató az egyéni összetevők forrás-GitHub vagy a Visual Studio Team Services Git adattár hozzáadása az Azure DevTest Labs szolgáltatásban.
+description: Ismerje meg, hogyan adhat hozzá egy GitHub- vagy Azure fejlesztési és üzemeltetési szolgáltatás Git-tárház az egyéni összetevők forrás az Azure DevTest Labs szolgáltatásban.
 services: devtest-lab,virtual-machines,visual-studio-online
 documentationcenter: na
 author: spelluru
@@ -14,35 +14,35 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 80724a7d8d2b5cec19bdbce27cdafd4a9c09eb47
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: e6c6f36d877f220bcc8d83b75750f54f85dcc198
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38452498"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44299882"
 ---
 # <a name="add-a-git-repository-to-store-custom-artifacts-and-resource-manager-templates"></a>Egyéni összetevők és a Resource Manager-sablonok tárolása a Git-adattár hozzáadása
 
-Is [egyéni összetevők létrehozása](devtest-lab-artifact-author.md) tesztkörnyezetben, virtuális gépek vagy [Azure Resource Manager-sablonok használatával hozzon létre egy egyéni tesztkörnyezetben](devtest-lab-create-environment-from-arm.md). Privát Git-tárházat az összetevők vagy a Resource Manager-sablonok, amely a csapat létrehozza hozzá kell adnia. A tárház üzemeltethető [GitHub](https://github.com) vagy a [Visual Studio Team Services](https://visualstudio.com).
+Is [egyéni összetevők létrehozása](devtest-lab-artifact-author.md) tesztkörnyezetben, virtuális gépek vagy [Azure Resource Manager-sablonok használatával hozzon létre egy egyéni tesztkörnyezetben](devtest-lab-create-environment-from-arm.md). Privát Git-tárházat az összetevők vagy a Resource Manager-sablonok, amely a csapat létrehozza hozzá kell adnia. A tárház üzemeltethető [GitHub](https://github.com) vagy a [Azure DevOps-szolgáltatásokkal](https://visualstudio.com).
 
 Biztosítunk egy [GitHub-adattár az összetevők](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts) üzembe helyezhető-van, vagy testre szabhatja a laborral kapcsolatos. Ha testre szabhatja, vagy hozzon létre egy, a nyilvános tárházban összetevő nem tárolhatja. Létre kell hoznia a saját privát tárházban az egyéni összetevők és az Ön által létrehozott összetevők. 
 
 Amikor létrehoz egy virtuális Gépet, a Resource Manager-sablon mentése, testre szabni, ha szeretné, és, amellyel később további virtuális gépeket hozhat létre. Létre kell hoznia a saját privát tárházban az egyéni Resource Manager-sablonok.  
 
 * Ismerje meg, hogyan hozhat létre egy GitHub-adattárból, lásd: [GitHub alapképzés](https://help.github.com/categories/bootcamp/).
-* Ismerje meg, hogyan hozzon létre egy Team Services-projektet egy Git-tárház rendelkező, lásd: [kapcsolódás a Visual Studio Team Services](https://www.visualstudio.com/get-started/setup/connect-to-visual-studio-online).
+* Ismerje meg, hogyan hozhat létre, amely rendelkezik egy Git-tárházat az Azure DevOps-szolgáltatásokkal projekt, lásd: [csatlakozhat az Azure DevOps-szolgáltatásokkal](https://www.visualstudio.com/get-started/setup/connect-to-visual-studio-online).
 
 Az alábbi ábra egy példát, hogyan nézhet ki egy adattár, amely rendelkezik az összetevők a GitHub:  
 
 ![Minta GitHub-összetevők adattárat](./media/devtest-lab-add-repo/devtestlab-github-artifact-repo-home.png)
 
 ## <a name="get-the-repository-information-and-credentials"></a>Az adattár információit és a hitelesítő adatok beszerzése
-A labor ad hozzá egy adattár, először kérje le kulcsfontosságú adatokat az adattárból. A következő szakaszok ismertetik, hogyan kérhet le a GitHub vagy a Visual Studio Team Services az üzemeltetett tárházak szükséges információkat.
+A labor ad hozzá egy adattár, először kérje le kulcsfontosságú adatokat az adattárból. A következő szakaszok ismertetik, hogyan kérhet le a GitHub vagy az Azure DevOps-szolgáltatásokkal, üzemeltetett tárházak számára szükséges információkat.
 
 ### <a name="get-the-github-repository-clone-url-and-personal-access-token"></a>A GitHub-tárház clone URL-cím és a személyes hozzáférési jogkivonat beszerzése
 
 1. Nyissa meg a kezdőlapon GitHub-adattár, amely az összetevő vagy a Resource Manager-sablon definíciókat tartalmazza.
-2. Válassza ki **Klónozás vagy letöltés**.
+2. Válassza a **Clone or download** (Klónozás vagy letöltés) lehetőséget.
 3. Az URL-címet a vágólapra másolásához jelölje ki a **HTTPS clone URL-cím** gombra. Mentse az URL-cím későbbi használatra.
 4. GitHub jobb felső sarkában, a profilkép, majd válassza ki és **beállítások**.
 5. Az a **személyes beállítások** a bal oldalon válassza a menü **személyes hozzáférési jogkivonatok**.
@@ -52,7 +52,7 @@ A labor ad hozzá egy adattár, először kérje le kulcsfontosságú adatokat a
 9. Zárja be a Githubon.   
 10. Továbbra is a [a labor csatlakozni a tárház](#connect-your-lab-to-the-repository) szakaszban.
 
-### <a name="get-the-visual-studio-team-services-repository-clone-url-and-personal-access-token"></a>A Visual Studio Team Services tárház clone URL-cím és a személyes hozzáférési jogkivonat beszerzése
+### <a name="get-the-azure-repos-clone-url-and-personal-access-token"></a>Az Azure-Adattárakkal klón első URL-CÍMÉT és a személyes hozzáférési jogkivonat
 
 1. Lépjen a kezdőlapra, a csapat gyűjtemény (például https://contoso-web-team.visualstudio.com), majd válassza ki a projekthez.
 2. Válassza ki a projekt kezdőlapját, **kód**.
@@ -79,9 +79,9 @@ A labor ad hozzá egy adattár, először kérje le kulcsfontosságú adatokat a
     ![Adattár hozzáadása gombbal](./media/devtest-lab-add-repo/devtestlab-add-repo.png)
 5. A második **Tárházak** csoportjában adja meg a következő információkat:
   1. **Név**. Adja meg a tárház nevét.
-  2. **Git Clone URL-cím**. Adja meg a Git HTTPS clone URL-cím, amely korábban vágólapra másolt a GitHub vagy a Visual Studio Team Services.
+  2. **Git Clone URL-cím**. Adja meg a Git HTTPS clone URL-cím, amely korábban vágólapra másolt a GitHub vagy a az Azure DevOps-szolgáltatásokkal.
   3. **Ág**. A definíciók lekéréséhez adja meg az ágat.
-  4. **Személyes hozzáférési tokent**. Adja meg a személyes hozzáférési tokent korábban a GitHub vagy a Visual Studio Team Services.
+  4. **Személyes hozzáférési tokent**. Adja meg a személyes hozzáférési tokent korábban a GitHub vagy a az Azure DevOps-szolgáltatásokkal.
   5. **Mappa elérési útjának**. Adjon meg legalább egy mappa elérési útja a clone URL-cím, amely tartalmazza az összetevő vagy a Resource Manager-sablon definíciók viszonyítva. Alkönyvtár megadásakor ellenőrizze, hogy a perjel szerepel a mappa elérési útját.
 
      ![Tárházak terület](./media/devtest-lab-add-repo/devtestlab-repo-blade.png)

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: tamram
 ms.component: blobs
-ms.openlocfilehash: 4d714d0c345f465fc4911d55f9c57cbfd99087df
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 5139f41832446add3431fc0f4e321af806342da2
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43128066"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44296976"
 ---
 # <a name="tutorial-encrypt-and-decrypt-blobs-in-microsoft-azure-storage-using-azure-key-vault"></a>Oktatóanyag: Blobok titkosítása és visszafejtése az Azure Key Vault használatával a Microsoft Azure Storage-ban
 ## <a name="introduction"></a>Bevezetés
@@ -45,7 +45,7 @@ Itt látható egy rövid leírást ügyféloldali titkosítása működése:
 ## <a name="set-up-your-azure-key-vault"></a>Az Azure Key Vault beállítása
 Folytassa az oktatóanyagot, kövesse az alábbi lépéseket, amelyek az oktatóanyagban leírt kell [első lépései az Azure Key Vault](../../key-vault/key-vault-get-started.md):
 
-* Hozzon létre egy kulcstartót.
+* Kulcstartó létrehozása.
 * Egy kulcs vagy titkos kód hozzáadása a key vaultban.
 * Alkalmazás regisztrálása az Azure Active Directoryval.
 * Engedélyezze az alkalmazás használatához a kulcs vagy titkos kód.
@@ -61,9 +61,7 @@ Adja hozzá a Package Manager Console szükséges nuget-csomagok.
 
 ```
 Install-Package WindowsAzure.Storage
-
-// This is the latest stable release for ADAL.
-Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 2.16.204221202
+Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
 
 Install-Package Microsoft.Azure.KeyVault
 Install-Package Microsoft.Azure.KeyVault.Extensions

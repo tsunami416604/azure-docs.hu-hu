@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: jomolesk
-ms.openlocfilehash: f465a6e6cb0642f64670a8d2727c939f91bad134
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: 6fe85d7ac527179ab39e89739f5744f3aa1ef8e2
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42617249"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44297555"
 ---
 # <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Azure biztonsági és megfelelőségi terv: PaaS webes alkalmazások üzemeltetése Egyesült Királyság hivatalos számítási feladatokhoz
 
@@ -27,7 +27,7 @@ Az Azure biztonsági és megfelelőségi terv nyújt útmutatást és automatiz�
 
 Ez a megoldás által az Egyesült Királyság nemzeti Kibertámadások biztonsági központ (NCSC) felülvizsgálták, és illeszkedik az NCSC 14 Felhőbiztonsági irányelveinek.
 
-Az architektúra az Azure [szolgáltatásként nyújtott platformon](https://azure.microsoft.com/overview/what-is-paas/) , hogy olyan környezetet, amely lehetővé teszi, hogy elkerülje a költségeket és összetettséget, hogy a szoftverlicencek, az alkalmazás háttér-infrastruktúra összetevői és közbenső vagy a fejlesztői eszközöket, és egyéb erőforrásokat. Ügyfelek kezelése az alkalmazások és szolgáltatások, általa fejlesztett, üzleti értéket, továbbítása, míg a Microsoft Azure kezeli a többi Azure-erőforrások például a virtuális gépek, tárolási és hálózatkezelési, több üzembe kellene összpontosítani a [megosztása felelősség](https://docs.microsoft.com/azure/security/security-paas-deployments#division-of-responsibility) az infrastruktúra-felügyelettel az Azure platform be. [Az Azure App Services](https://azure.microsoft.com/services/app-service/) automatikus méretezés, magas rendelkezésre állást kínál, támogatja a Windows és Linux rendszerű, és lehetővé teszi az automatikus telepítéseket a GitHub, Visual Studio Team Services vagy bármely Git-tárház alapértelmezés szerinti szolgáltatásként. App Services használatával, a fejlesztők anélkül infrastruktúra kezelése üzleti értéket a összpontosíthat. Lehetséges, előzmények nélküli új alkalmazást szeretne létrehozni a Java, PHP, Node.js, Python, HTML vagy C# webes vagy áttelepíteni meglévő felhő vagy a helyi webalkalmazások Azure App Services (bár alapos megfelelő gondossággal, valamint tesztelési megerősítéséhez a teljesítmény megadása kötelező).
+Az architektúra az Azure [szolgáltatásként nyújtott platformon](https://azure.microsoft.com/overview/what-is-paas/) , hogy olyan környezetet, amely lehetővé teszi, hogy elkerülje a költségeket és összetettséget, hogy a szoftverlicencek, az alkalmazás háttér-infrastruktúra összetevői és közbenső vagy a fejlesztői eszközöket, és egyéb erőforrásokat. Ügyfelek kezelése az alkalmazások és szolgáltatások, általa fejlesztett, üzleti értéket, továbbítása, míg a Microsoft Azure kezeli a többi Azure-erőforrások például a virtuális gépek, tárolási és hálózatkezelési, több üzembe kellene összpontosítani a [megosztása felelősség](https://docs.microsoft.com/azure/security/security-paas-deployments#division-of-responsibility) az infrastruktúra-felügyelettel az Azure platform be. [Az Azure App Services](https://azure.microsoft.com/services/app-service/) automatikus méretezés, magas rendelkezésre állást kínál, támogatja a Windows és Linux rendszerű, és lehetővé teszi az automatikus telepítéseket a GitHub-, Azure DevOps, vagy minden Git-tárház alapértelmezés szerinti szolgáltatásként. App Services használatával, a fejlesztők anélkül infrastruktúra kezelése üzleti értéket a összpontosíthat. Lehetséges, előzmények nélküli új alkalmazást szeretne létrehozni a Java, PHP, Node.js, Python, HTML vagy C# webes vagy áttelepíteni meglévő felhő vagy a helyi webalkalmazások Azure App Services (bár alapos megfelelő gondossággal, valamint tesztelési megerősítéséhez a teljesítmény megadása kötelező).
 
 Ez a megoldás összpontosít a kiépítés egy biztonságos alaprendszerrel [szolgáltatásként nyújtott platformon](https://azure.microsoft.com/overview/what-is-paas/) nyilvános és a is vissza felhasználói webes felület. Ezt a tervrajz forgatókönyvre is figyelembe veszi az Azure használatát üzemeltetett szolgáltatások webes, ahol egy nyilvános felhasználói biztonságosan elküldése, megtekintheti, és bizalmas adatkezelés; is, hogy vissza office vagy a kormányzati operátor biztonságosan, amely a nyilvános felhasználó elküldte a bizalmas adatokat képes feldolgozni. Ebben a forgatókönyvben a használati esetek lehetnek:
 
@@ -103,7 +103,7 @@ Adatok kívül az átvitel során, és az Azure-összetevők közötti védje [T
 
 #### <a name="azure-app-service"></a>Azure App Service
 
-Az Azure Web Apps egy teljes körűen felügyelt webes webalkalmazás fejlesztett infrastruktúra kezelése nélkül a Java, PHP, Node.js, Python, HTML és C# környezetet üzemeltetési biztosít. Automatikus méretezést biztosít, és magas rendelkezésre állás érdekében támogatja a Windows és Linux egyaránt, és lehetővé teszi, hogy az automatikus telepítéseket a [Visual Studio Team Services](https://azure.microsoft.com/services/visual-studio-team-services/) vagy bármely egyéb Git-alapú adattárból.
+Az Azure Web Apps egy teljes körűen felügyelt webes webalkalmazás fejlesztett infrastruktúra kezelése nélkül a Java, PHP, Node.js, Python, HTML és C# környezetet üzemeltetési biztosít. Automatikus méretezést biztosít, és magas rendelkezésre állás érdekében támogatja a Windows és Linux egyaránt, és lehetővé teszi, hogy az automatikus telepítéseket a [Azure DevOps](https://azure.microsoft.com/services/visual-studio-team-services/) vagy bármely egyéb Git-alapú adattárból.
 
 App Service [ISO, SOC és PCI szabványoknak](https://www.microsoft.com/TrustCenter/) és hitelesítheti a felhasználókat a [Azure Active Directory](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-active-directory-authentication) vagy közösségi bejelentkezés ([Google](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-google-authentication), [Facebook](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-facebook-authentication), [Twitter](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-twitter-authentication), és [Microsoft hitelesítési](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-microsoft-authentication).
 

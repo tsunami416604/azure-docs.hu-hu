@@ -13,12 +13,12 @@ ms.component: pim
 ms.date: 07/23/2018
 ms.author: rolyon
 ms.custom: pim ; H1Hack27Feb2017;oldportal;it-pro;
-ms.openlocfilehash: fc45cde1a5f0f287274302541ac0115569e2239d
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: cf0c9b76a7edace9f2a9147823b292e218e20bf7
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43666336"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44300273"
 ---
 # <a name="azure-ad-directory-roles-you-can-manage-in-pim"></a>A PIM segítségével kezelheti az Azure AD címtárszerepkörök
 <!-- **PLACEHOLDER: Need description of how this works. Azure PIM uses roles from MSODS objects.**-->
@@ -63,21 +63,19 @@ Ha azt szeretné, egy másik felhasználói hozzáférésének kezelése a PIM m
 ## <a name="roles-not-managed-in-pim"></a>A PIM által nem felügyelt szerepkörök
 Szerepkörök az Exchange Online vagy SharePoint online-hoz, kivéve azokat, a fent említett nem szerepelnek az Azure AD-ben, és ezért nem láthatók a PIM. Az alábbi Office 365-szolgáltatások részletes szerepkör-hozzárendelések módosítása további információkért lásd: [engedélyeket az Office 365-ben](https://support.office.com/article/Permissions-in-Office-365-da585eea-f576-4f55-a1e0-87090b6aaa9d).
 
-Az Azure-előfizetések és -erőforráscsoportok még nem szerepelnek az Azure AD-ben. Azure-előfizetések kezeléséhez lásd: [hozzáadása vagy módosítása az Azure-rendszergazdai szerepkörök](../../billing/billing-add-change-azure-subscription-administrator.md) és az Azure RBAC további információkért lásd: [Azure szerepköralapú hozzáférés-vezérlés](../../role-based-access-control/role-assignments-portal.md).
-
 <!--**The above links might be replaced by ones that are from within this documentation repository **-->
 
 
 ## <a name="user-roles-and-signing-in"></a>Felhasználói szerepkörök, és jelentkezzen be
 Bizonyos Microsoft-szolgáltatások és alkalmazások hozzárendelése egy felhasználói szerepkörhöz nem elegendő lehet, hogy a rendszergazdai felhasználó engedélyezése.
 
-Az Azure portal eléréséhez kell, hogy a felhasználó lehet egy szolgáltatás-rendszergazdaként vagy társ-rendszergazdaként az Azure-előfizetéssel, akkor is, ha a felhasználónak nem kell az Azure-előfizetések kezelése.  Például konfigurációs beállítások kezelése az Azure ad-hez, a felhasználónak kell lennie az Azure AD globális rendszergazda és a egy Azure-előfizetés előfizetéshez társadminisztrátorként.  Felhasználók hozzáadása az Azure-előfizetések kezelésével kapcsolatos információkért lásd: [hozzáadása vagy módosítása az Azure-rendszergazdai szerepkörök](../../billing/billing-add-change-azure-subscription-administrator.md).
+Az Azure portal eléréséhez kell, hogy a felhasználó Azure-előfizetés tulajdonosa legyen akkor is, ha a felhasználónak nem kell az Azure-előfizetések kezelése.  Például konfigurációs beállítások kezelése az Azure ad-hez, a felhasználónak rendszergazdának kell lennie mindkét egy globális Azure AD-ben és a egy Azure-előfizetés tulajdonosa.  Felhasználók hozzáadása az Azure-előfizetések kezelésével kapcsolatos információkért lásd: [rbac-RÓL és az Azure portal-hozzáférés kezelése](../..//role-based-access-control/role-assignments-portal.md).
 
 Online Microsoft-szolgáltatásokhoz való hozzáférés szükségessé, a felhasználó is hozzá lehet rendelni egy licenc nyissa meg a szolgáltatási portált vagy felügyeleti feladatok végrehajtása előtt.
 
 ## <a name="assign-a-license-to-a-user-in-azure-ad"></a>Rendeljen egy licencet a felhasználó Azure AD-ben
 
-1. Jelentkezzen be a [az Azure portal](http://portal.azure.com) egy globális rendszergazdai fiókkal vagy egy társ-rendszergazda fiókkal.
+1. Jelentkezzen be a [az Azure portal](http://portal.azure.com) egy globális rendszergazdai vagy tulajdonosi szerepkörrel rendelkező.
 
 1. Válassza ki a használni kívánt Azure AD-címtár, és licenceket társítva van.
 

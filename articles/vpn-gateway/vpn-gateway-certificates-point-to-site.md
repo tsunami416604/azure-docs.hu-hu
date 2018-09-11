@@ -4,36 +4,20 @@ description: Hozzon létre egy önaláírt főtanúsítványt, exportálja a nyi
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 27b99f7c-50dc-4f88-8a6e-d60080819a43
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 04/12/2018
+ms.date: 09/05/2018
 ms.author: cherylmc
-ms.openlocfilehash: 385b6ed2e8104fd2e15e6e55d46dcd12b963ec6b
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 18d705f68ff06621e30c051dac9fb9607fd043ac
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38696548"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44300936"
 ---
 # <a name="generate-and-export-certificates-for-point-to-site-using-powershell"></a>Tanúsítványok létrehozása és exportálása pont – hely a PowerShell használatával
 
-Pont – hely kapcsolatok tanúsítványok segítségével hitelesíti. Ez a cikk bemutatja, hogyan hozzon létre egy önaláírt főtanúsítványt, és a PowerShell használatával a Windows 10-es vagy Windows Server 2016 ügyféltanúsítványokat. Ha pont – hely konfigurációs lépések, például a legfelső szintű tanúsítványok feltöltése keres az alábbi listából válassza ki a "Konfigurálás pont – hely" cikkekben:
-
-> [!div class="op_single_selector"]
-> * [Önaláírt tanúsítványok létrehozása – PowerShell](vpn-gateway-certificates-point-to-site.md)
-> * [Önaláírt tanúsítványok létrehozása – MakeCert](vpn-gateway-certificates-point-to-site-makecert.md)
-> * [Pont – hely – Resource Manager – Azure portal konfigurálása](vpn-gateway-howto-point-to-site-resource-manager-portal.md)
-> * [Pont – hely – Resource Manager – a PowerShell konfigurálása](vpn-gateway-howto-point-to-site-rm-ps.md)
-> * [Pont – hely – klasszikus – Azure portal konfigurálása](vpn-gateway-howto-point-to-site-classic-azure-portal.md)
-> 
-> 
+Pont – hely kapcsolatok tanúsítványok segítségével hitelesíti. Ez a cikk bemutatja, hogyan hozzon létre egy önaláírt főtanúsítványt, és a PowerShell használatával a Windows 10-es vagy Windows Server 2016 ügyféltanúsítványokat. Ha ugyanazt a tanúsítványt utasításokat keres, tekintse meg [tanúsítványok – Linux](vpn-gateway-certificates-point-to-site-linux.md) vagy [tanúsítványok – MakeCert](vpn-gateway-certificates-point-to-site-makecert.md).
 
 Ez a cikk a Windows 10-es vagy Windows Server 2016 rendszert futtató számítógépen kell hajtsa végre a lépéseket. A PowerShell-parancsmagok használatával is létrehozhat tanúsítványokat az operációs rendszer részét képezik, és a Windows más verziói nem működnek. A Windows 10-es vagy Windows Server 2016 számítógép csak akkor van szükség a tanúsítványok előállításához. A tanúsítványok jönnek létre, miután feltölti őket, vagy telepítse őket a támogatott ügyfél operációs rendszereken. 
 

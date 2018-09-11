@@ -10,8 +10,7 @@ Hozzon létre, és kezeli az Azure-beli virtuális gépek (VM) egységes módon 
     - [Az Azure Automation](#azure-automation) műveleteket hajthat végre az Azure-ban és a helyszíni infrastruktúra között.
 
 - Alkalmazás központi telepítése és a továbbítás automatizálása
-    - Ilyenek például [Visual Studio Team Services](#visual-studio-team-services) és [Jenkins](#jenkins).
-
+    - Ilyenek például [Azure DevOps-szolgáltatásokkal](#visual-studio-team-services) és [Jenkins](#jenkins).
 
 ## <a name="ansible"></a>Ansible
 [Az Ansible](https://www.ansible.com/) automatizálási motor konfigurációkezelés, a virtuális gép létrehozása és alkalmazások központi telepítése. Az Ansible ügynök nélküli modellt alkalmaz, általában az SSH-kulcsokkal hitelesítheti és kezelheti a célgéphez való. Forgatókönyvek, az Ansible modulok meghatározott feladatok végrehajtásához rendelkezésre álló számos konfigurációs feladatok vannak definiálva. További információkért lásd: [hogyan Ansible működik](https://www.ansible.com/how-ansible-works).
@@ -52,8 +51,8 @@ A cloud-init különböző disztribúciókon is működik. Például nem kell az
 |Canonical |UbuntuServer |16.04-LTS |legújabb |igen | 
 |Canonical |UbuntuServer |14.04.5-LTS |legújabb |igen |
 |CoreOS |CoreOS |Stable |legújabb |igen |
-|OpenLogic |CentOS |7-CI |legújabb |előzetes verzióban |
-|RedHat |RHEL |7-RAW-CI |legújabb |előzetes verzióban |
+|OpenLogic |CentOS |7-CI |legújabb |előzetes verzió |
+|RedHat |RHEL |7-RAW-CI |legújabb |előzetes verzió |
 
 Ismerje meg, az Azure cloud-Init használatával kapcsolatos további részletek:
 
@@ -114,12 +113,12 @@ Az alábbiak végrehajtásának módját ismerheti meg:
 - [Az Azure Automation DSC használata](../articles/automation/automation-dsc-getting-started.md).
 
 
-## <a name="visual-studio-team-services"></a>Visual Studio Team Services
-[Team Services](https://www.visualstudio.com/team-services/) olyan eszközöket tartalmazza, amelyek segítséget nyújtanak a megosztások és -kód, használja az automatizált buildekig és hozzon létre egy teljes folyamatos integrációs és fejlesztési (CI/CD) folyamatot nyomon követése. Team Services integrálja a Visual Studio és az egyéb szerkesztők használatának leegyszerűsítése érdekében. Team Services is létrehozhat és Azure virtuális gépek konfigurálása és őket, majd kód üzembe helyezése.
+## <a name="azure-devops-services"></a>Azure DevOps Services
+[Az Azure DevOps-szolgáltatásokkal](https://www.visualstudio.com/team-services/) olyan eszközöket tartalmazza, amelyek segítséget nyújtanak a megosztások és -kód, használja az automatizált buildekig és hozzon létre egy teljes folyamatos integrációs és fejlesztési (CI/CD) folyamatot nyomon követése. Az Azure DevOps-szolgáltatásokkal integrálja a Visual Studio és az egyéb szerkesztők használatának leegyszerűsítése érdekében. Az Azure DevOps-szolgáltatásokkal is létrehozhat és Azure virtuális gépek konfigurálása és őket, majd kód üzembe helyezése.
 
 Az alábbiak végrehajtásának módját ismerheti meg:
 
-- [A Team Services használatával folyamatos integrációs folyamat létrehozása](../articles/virtual-machines/windows/tutorial-vsts-iis-cicd.md).
+- [Folyamatos integrációs folyamat létrehozása az Azure DevOps-szolgáltatásokkal](../articles/virtual-machines/windows/tutorial-vsts-iis-cicd.md).
 
 
 ## <a name="jenkins"></a>Jenkins

@@ -1,6 +1,6 @@
 ---
-title: Az Azure biztonsági adatok exportálása a SIEM - feldolgozási folyamat konfigurációs [előzetes verzió] |} Microsoft Docs
-description: Ez a cikk dokumentálja a termék az első Azure biztonsági központ naplói a siem-rendszerébe
+title: Az Azure biztonsági adatok exportálása SIEM - folyamat konfigurációs [előzetes verzió] |} A Microsoft Docs
+description: Ez a cikk dokumentálja a Bevezetés az Azure security center naplókat a siem-nek a termék
 services: security-center
 documentationcenter: na
 author: Barclayn
@@ -9,65 +9,65 @@ editor: ''
 ms.assetid: ''
 ms.service: security-center
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/01/2018
 ms.author: barclayn
-ms.openlocfilehash: 7a0a72a25010952f13eb190f0e0a1a65cc6d42d3
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: aede60a729fe9c0594ded485e189c0b467e34271
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
-ms.locfileid: "29124833"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44298233"
 ---
-# <a name="azure-security-data-export-to-siem--pipeline-configuration-preview"></a>Az Azure biztonsági adatok exportálása a SIEM - feldolgozási folyamat konfigurációs [előzetes verzió]
+# <a name="azure-security-data-export-to-siem--pipeline-configuration-preview"></a>Az Azure biztonsági adatok exportálása SIEM - folyamat konfigurációs [előzetes verzió]
 
-Ez a dokumentum részletesen az Azure Security Center biztonsági adatok exportálásával egy siem-rendszerébe.
+Ez a dokumentum az Azure Security Center biztonsági adatok exportálásával egy siem-be részletesen.
 
-Az Azure Security Center által feldolgozott esemény közzé lesz téve, az Azure-bA [tevékenységnapló](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md), a napló egyikét meg kell adnia Azure figyelő keresztül érhető el. A figyelő az Azure útválasztási a figyelési adatok olyan SIEM eszközt egy olyan összevont folyamatot biztosít. Egy partner eszközt, hogy az adatok egy Eseményközpontot, ahol tudja majd kell kért le adatfolyam ehhez.
+Az Azure Security Center által feldolgozott események az Azure-ban közzétett [tevékenységnapló](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md), a napló egyik Azure monitoron keresztül elérhető típusokat. Az Azure Monitor egy konszolidált folyamatot a figyelési adatokat egy SIEM-eszközével történő útválasztáshoz kínál. Ez történik, a streamelési adatokat egy eseményközpontba, ahol azt is majd le kell kérnie egy partner eszközt.
 
-Ez az adatcsatorna használja a [Azure figyelése egyetlen feldolgozási sorként](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md) a hozzáférést a figyelési adatok lekérése az Azure környezetben. Ez lehetővé teszi, hogy egyszerűen állítsa be az adatokat a siem-ektől és figyelési eszközök.
+A függőleges vonal használja a [egyetlen folyamat Azure Monitoring](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md) hozzáférés a monitorozási adatok lekérése az Azure-környezet számára. Ez lehetővé teszi, hogy könnyedén létrehozhasson siem-EK és figyelési eszközök az adatok felhasználásához.
 
-A következő szakaszok ismertetik, hogyan konfigurálhat egy eseményközpontba közzétett adatokat. A lépések azt feltételezik, hogy már rendelkezik az Azure Security Center az Azure-előfizetéshez konfigurált.
+A következő szakaszok ismertetik, hogyan konfigurálható egy eseményközpontba is streamelhetők adatokat. A lépések feltételezik, hogy már rendelkezik az Azure Security Center az Azure-előfizetéshez konfigurált.
 
 Áttekintés
 
 ![Magas szintű áttekintése](media/security-center-export-data-to-siem/overview.png)
 
-## <a name="what-is-the-azure-security-data-exposed-to-siem"></a>Mi az az Azure biztonsági adatok érhető el az SIEM?
+## <a name="what-is-the-azure-security-data-exposed-to-siem"></a>Mi az az Azure biztonsági adatok siem-be közzétett?
 
-Az előzetes verzióban elérhetővé kell tenni a [biztonsági riasztásokat.](../security-center/security-center-managing-and-responding-alerts.md) A jövőbeli kiadásokban azt fogja kiegészítése az adathalmaz a biztonsági javaslatok.
+Az előzetes verzióban elérhetővé tesszük a [biztonsági riasztásokat.](../security-center/security-center-managing-and-responding-alerts.md) A jövőbeli kiadásokban az adatkészlet, a biztonsági javaslatok azt fogja bővítését.
 
-## <a name="how-to-setup-the-pipeline"></a>A telepítő a folyamat hogyan? 
+## <a name="how-to-setup-the-pipeline"></a>Hogyan állíthatja be a folyamat? 
 
 ### <a name="create-an-event-hub"></a>Eseményközpont létrehozása 
 
-Kezdés előtt kell [az Event Hubs-névtér létrehozása](../event-hubs/event-hubs-create.md). A névtér és az Event Hubs a figyelési adatok célját.
+Mielőtt elkezdené, kell [Event Hubs-névtér létrehozása](../event-hubs/event-hubs-create.md). A névtér és Eseményközpont az összes monitorozási adatot célját.
 
-### <a name="stream-the-azure-activity-log-to-event-hubs"></a>Az Event hubs Azure tevékenységnapló adatfolyam
+### <a name="stream-the-azure-activity-log-to-event-hubs"></a>Az Event hubs Azure tevékenységnapló Stream
 
-Tekintse meg a következő cikk [adatfolyam tevékenységnapló Event hubs](../monitoring-and-diagnostics/monitoring-stream-activity-logs-event-hubs.md)
+Tekintse meg a következő cikkben [tevékenységnapló streamelése az Event hubs szolgáltatásba](../monitoring-and-diagnostics/monitoring-stream-activity-logs-event-hubs.md)
 
-### <a name="install-a-partner-siem-connector"></a>Egy partner SIEM-összekötő telepítése 
+### <a name="install-a-partner-siem-connector"></a>Partneri SIEM-összekötő telepítése 
 
-A figyelési adatokat az Azure-megfigyelővel Eseményközpontba útválasztási lehetővé teszi, könnyen integrálható a partner SIEM és figyelési eszközök.
+A figyelési adatok útválasztást egy eseményközpontba, és az Azure Monitor lehetővé teszi könnyen integrálhatja a partneri SIEM és figyelési eszközöket.
 
-Tekintse meg a következő hivatkozásra kattintva megtekintheti a listája [támogatott siem-ektől](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md#what-can-i-do-with-the-monitoring-data-being-sent-to-my-event-hub)
+Tekintse meg a következő hivatkozásra kattintva megtekintheti [támogatott siem-ektől](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md#what-can-i-do-with-the-monitoring-data-being-sent-to-my-event-hub)
 
 ## <a name="example-for-querying-data"></a>Például az adatok lekérdezése 
 
-Íme néhány Splunk lekérdezések, amelyek segítségével olvasnak be riasztási adatokat:
+Íme néhány Splunk lekérdezések, amelyek segítségével kérje le a riasztási adatokat:
 
 | **Lekérdezés leírása**                                | **Lekérdezés**                                                                                                                              |
 |---------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
-| Minden riasztás                                              | index=main Microsoft.Security/locations/alerts                                                                                         |
-| Műveletek száma a nevük összefoglalója             | index fő forrástípus = = "amal: biztonsági" \| tábla operationName \| operationName lépésköz statisztikák                                |
-| Riasztások adatok beolvasása: idő, neve, állapota, azonosítója és előfizetés | index fő Microsoft.Security/locations/alerts = \| tábla \_idő, properties.eventName, állapot, properties.operationId, am_subscriptionId |
+| Minden riasztás                                              | index fő Microsoft.Security/locations/alerts =                                                                                         |
+| Műveletek száma összefoglalója neve szerint             | index = fő forrás típusa = "amal: biztonsági" \| tábla operationName \| statisztikák szerint operationName száma                                |
+| Riasztások adatainak beolvasása: idő, neve, állam, ID és az előfizetés | index = fő Microsoft.Security/locations/alerts \| tábla \_idő, properties.eventName, állam, properties.operationId, am_subscriptionId |
 
 
 ## <a name="next-steps"></a>További lépések
 
-- [Támogatott siem-ektől](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md#what-can-i-do-with-the-monitoring-data-being-sent-to-my-event-hub)
+- [Támogatott siem-EK](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md#what-can-i-do-with-the-monitoring-data-being-sent-to-my-event-hub)
 - [Tevékenységnapló streamelése az Event Hubs szolgáltatásba](../monitoring-and-diagnostics/monitoring-stream-activity-logs-event-hubs.md)
 - [Biztonsági riasztások.](../security-center/security-center-managing-and-responding-alerts.md)

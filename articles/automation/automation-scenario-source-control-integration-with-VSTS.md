@@ -1,98 +1,99 @@
 ---
-title: Azure Automation integrálása Visual Stuido Team Services verziókezelő
-description: A forgatókönyv bemutatja, hogyan egy Azure Automation-fiók és a Visual Stuido Team Services a verziókövetési rendszerrel való integráció beállításával.
+title: Azure Automation integrálása az Azure DevOps-szolgáltatásokkal verziókövetés
+description: A forgatókönyv végigvezeti egy Azure Automation-fiók és az Azure DevOps-szolgáltatásokkal verziókövetés-integráció beállítása.
 services: automation
 author: eamonoreilly
 ms.author: eamono
-keywords: az Azure powershell, a VSTS, verziókezelő, automatizálás
+keywords: az Azure powershell, az Azure DevOps-szolgáltatásokkal, verziókezelő, automatizálás
 ms.service: automation
 ms.component: process-automation
 ms.topic: conceptual
 ms.date: 03/19/2017
-ms.openlocfilehash: f34267490a0db71e05ece97c23b86467dbf7dbeb
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 022fca09b9e748c030df6b5fc944f7930942a6f7
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34194301"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44302408"
 ---
-# <a name="azure-automation-scenario---automation-source-control-integration-with-visual-studio-team-services"></a>Azure Automation forgatókönyv - automatizálási verziókövetés integrálása a Visual Studio Team Services
+# <a name="azure-automation-scenario---automation-source-control-integration-with-azure-devops"></a>Az Azure Automation-forgatókönyv – Automation verziókövetés integrálása az Azure DevOps
 
-Ebben a forgatókönyvben egy Azure Automation-forgatókönyveket vagy a DSC-konfigurációk verziókövetési felügyeletéhez használt Visual Studio Team Services projekt rendelkezik.
-Ez a cikk ismerteti, hogyan VSTS integrálása az Azure Automation-környezet, így folyamatos integrációt történik, az egyes be.
+Ilyen esetben van egy Azure Automation-runbook vagy DSC-konfigurációk verziókövetési kezeléséhez használt Azure DevOps-projekt.
+Ez a cikk ismerteti az Azure DevOps integrálása az Azure Automation-környezetet, hogy a folyamatos integráció esetében minden egyes bejelentkezéskor történik.
 
 ## <a name="getting-the-scenario"></a>A forgatókönyv beszerzése
 
-Ebben a forgatókönyvben két PowerShell-forgatókönyvek, amelyek közvetlenül importálhatók áll a [forgatókönyvek](automation-runbook-gallery.md) az Azure-portálon vagy letölthető a [PowerShell-galériában](https://www.powershellgallery.com).
+Ebben a forgatókönyvben két PowerShell-forgatókönyvek, amelyet közvetlenül importálhat áll a [forgatókönyv-katalógusában](automation-runbook-gallery.md) az Azure Portalon, vagy letölthető a [PowerShell-galériából](https://www.powershellgallery.com).
 
 ### <a name="runbooks"></a>Runbookok
 
 Forgatókönyv | Leírás| 
 --------|------------|
-Sync-VSTS | Importálhat forgatókönyvek vagy konfigurációk VSTS verziókezelő végzett egy be. Ha manuálisan futtassa importálja, és teszi közzé a runbookok vagy a beállításokat az Automation-fiók rendszerbe.| 
-Sync-VSTSGit | Importálhat forgatókönyvek vagy konfigurációk VSTS a Git verziókezelő végzett egy be. Ha manuálisan futtassa importálja, és teszi közzé a runbookok vagy a beállításokat az Automation-fiók rendszerbe.|
+Sync-VSTS | Importálja runbookok és a konfigurációk a forráskezelőből az Azure DevOps amikor egy bejelentkezés történik. Ha manuálisan futtatja, importálja, és közzéteszi a runbookok vagy a konfigurációkat az Automation-fiókba.| 
+Sync-VSTSGit | Importálhat runbookok és a konfigurációk az Azure DevOps Git verziókövetési amikor egy bejelentkezés történik. Ha manuálisan futtatja, importálja, és közzéteszi a runbookok vagy a konfigurációkat az Automation-fiókba.|
 
 ### <a name="variables"></a>Változók
 
 Változó | Leírás|
 -----------|------------|
-VSToken | Biztonságos változóeszköz létrehozása, amely tartalmazza a VSTS személyes hozzáférési jogkivonat. Megismerheti a VSTS személyes hozzáférési jogkivonat létrehozásához a [VSTS hitelesítés lap](/vsts/accounts/use-personal-access-tokens-to-authenticate).
+VSToken | Biztonságos változóeszköz hoz létre, amely tartalmazza az Azure DevOps személyes hozzáférési tokent. Megismerheti az Azure DevOps személyes hozzáférési jogkivonat létrehozása a [Azure DevOps-hitelesítés lap](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate).
 ## <a name="installing-and-configuring-this-scenario"></a>A forgatókönyv telepítése és konfigurálása
 
-Hozzon létre egy [személyes hozzáférési jogkivonat](/vsts/accounts/use-personal-access-tokens-to-authenticate) a VSTS, amelyekkel a runbookok vagy a beállításokat a rendszerbe az automation-fiók szinkronizálása.
+Hozzon létre egy [személyes hozzáférési tokent](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate) az Azure DevOps, amellyel szinkronizálni a runbookok és a konfigurációk az automation-fiókba.
 
 ![](media/automation-scenario-source-control-integration-with-VSTS/VSTSPersonalToken.png) 
 
-Hozzon létre egy [biztonságos változó](automation-variables.md) a személyes hozzáférési jogkivonat tárolásához, hogy a runbook VSTS hitelesítést, és a runbookok vagy konfiguráció az Automation-fiók szinkronizálása az automation-fiókban. A VSToken nevére. 
+Hozzon létre egy [biztonságos változó](automation-variables.md) az automation-fiókban a személyes hozzáférési jogkivonat tárolására, hogy a runbook hitelesítheti az Azure DevOps és szinkronizálása a runbookok és a konfigurációk az Automation-fiókba. Nevezze el az e VSToken.
 
 ![](media/automation-scenario-source-control-integration-with-VSTS/VSTSTokenVariable.png)
 
-A forgatókönyv Szinkronizáló a runbookok vagy az automation-fiók konfigurációk importálása. Használhatja a [VSTS minta runbook](https://www.powershellgallery.com/packages/Sync-VSTS/1.0/DisplayScript) vagy az [a Git minta runbook VSTS] (https://www.powershellgallery.com/packages/Sync-VSTSGit/1.0/DisplayScript) a PowerShellGallery.com attól függően, hogy a VSTS verziókezelő vagy VSTS használja a Gitet, és telepítse az automation-fiók.
+Importálja a forgatókönyvet, mely szinkronizálja a runbookok és a konfigurációk az automation-fiókba. Használhatja a [Azure DevOps-minta runbook](https://www.powershellgallery.com/packages/Sync-VSTS/1.0/DisplayScript) vagy a [Azure DevOps és a Git minta runbook](https://www.powershellgallery.com/packages/Sync-VSTSGit/1.0/DisplayScript) a PowerShellGallery.com attól függően, hogy a használhatja az Azure DevOps verziókövetés vagy az Azure DevOps a Git és a Helyezze üzembe az automation-fiók.
 
 ![](media/automation-scenario-source-control-integration-with-VSTS/VSTSPowerShellGallery.png)
 
-Most [közzététele](automation-creating-importing-runbook.md#publishing-a-runbook) ezt a runbookot, hogy létrehozhasson egy webhook. 
+Mostantól [közzététele](automation-creating-importing-runbook.md#publishing-a-runbook) ezt a runbookot, így hozhat létre egy webhook. 
 ![](media/automation-scenario-source-control-integration-with-VSTS/VSTSPublishRunbook.png)
 
-Hozzon létre egy [webhook](automation-webhooks.md) a Sync-VSTS runbookhoz és adja meg a lent látható módon a paramétereket. Ellenőrizze, hogy a szolgáltatás hook a VSTS a szükség szerinti másolja át a webhook URL-címét. A VSAccessTokenVariableName esetén (VSToken) ahhoz, hogy a személyes hozzáférési jogkivonat korábban létrehozott biztonságos változó. 
+Hozzon létre egy [webhook](automation-webhooks.md) a szinkronizálás – VSTS runbookhoz és adja meg a paramétereket az alább látható módon. Ellenőrizze, hogy szükség szerinti kiosztását az Azure devops-szolgáltatás hook a webhook URL-címet másolja. A VSAccessTokenVariableName pedig (VSToken) neve, amely tárolja a személyes hozzáférési tokent korábban létrehozott biztonságos változó. 
 
-VSTS (szinkronizálási-VSTS.ps1) integrálása a következő paramétereket fogadja:
-### <a name="sync-vsts-parameters"></a>Szinkronizálási-VSTS-paraméterek
+Integrálás az Azure DevOps (szinkronizálási-VSTS.ps1) a következő paramétereket fogadja:
+### <a name="sync-vsts-parameters"></a>Szinkronizálás – VSTS-paraméterek
 
 Paraméter | Leírás| 
 --------|------------|
-WebhookData | Ez a VSTS szolgáltatás hook küldött beadása információkat tartalmazza. Ez a paraméter kell hagyja üresen.| 
-ResourceGroup | Azt a nevet, hogy az automation-fiók megtalálható az erőforráscsoportban.|
-AutomationAccountName | A VSTS szinkronizál automation-fiók neve.|
-VSFolder | Amennyiben a runbookokat és konfigurációk léteznek VSTS mappájában neve.|
-VSAccount | A Visual Studio Team Services-fiók nevét.| 
-VSAccessTokenVariableName | A biztonságos változó (VSToken), amely tárolja a VSTS személyes hozzáférési jogkivonat neve.| 
+WebhookData | Ez az Azure DevOps szolgáltatás hook küldött beadni információkat tartalmazza. Ezt a paramétert kell hagyja üresen.| 
+ResourceGroup | Azt a nevet, az erőforráscsoport, amely az automation-fiókot.|
+AutomationAccountName | Az Azure DevOps szinkronizál automation-fiók neve.|
+VSFolder | Az Azure DevOps, ahol a runbookokban és konfigurációkban létezik a mappa neve.|
+VSAccount | Az Azure DevOps-szervezet nevét.| 
+VSAccessTokenVariableName | A biztonságos változó (VSToken), amely tartalmazza az Azure DevOps személyes hozzáférési jogkivonat neve.| 
 
 
 ![](media/automation-scenario-source-control-integration-with-VSTS/VSTSWebhook.png)
 
-Ha VSTS git (szinkronizálási-VSTSGit.ps1) használ a következő paraméterek fog tartani.
+Az Azure DevOps a GITTEL (szinkronizálási-VSTSGit.ps1) használatakor a következő paraméterek vesz igénybe.
 
 Paraméter | Leírás|
 --------|------------|
-WebhookData | A küldött a VSTS szolgáltatás hook beadása információkat tartalmaz. Ez a paraméter kell hagyja üresen.| ResourceGroup | Ez az erőforráscsoport, amely az automation-fiók nevét.|
-AutomationAccountName | A VSTS szinkronizál automation-fiók neve.|
-VSAccount | A Visual Studio Team Services-fiók nevét.|
-VSProject | Amennyiben a runbookokat és konfigurációk léteznek VSTS a projekt nevét.|
-GitRepo | A Git-tárház neve.|
-GitBranch | A fiókirodai VSTS Git-tárházban neve.|
-Mappa | A VSTS Git ágában mappa neve.|
-VSAccessTokenVariableName | A biztonságos változó (VSToken), amely tárolja a VSTS személyes hozzáférési jogkivonat neve.|
+WebhookData | A beadni adatokat küld az Azure DevOps szolgáltatás hook tartalmaz. Ezt a paramétert kell hagyja üresen.| 
+ResourceGroup | Ez az erőforráscsoport, amely az automation-fiók nevére.|
+AutomationAccountName | Az Azure DevOps szinkronizál automation-fiók neve.|
+VSAccount | Az Azure DevOps-szervezet nevét.|
+VSProject | Az Azure DevOps, ahol a runbookokban és konfigurációkban létezik a projekt neve.|
+A GitRepo | A Git-adattár neve.|
+GitBranch | Az ág az Azure DevOps Git-adattár neve.|
+Mappa | Az Azure DevOps Git-ágak a mappa neve.|
+VSAccessTokenVariableName | A biztonságos változó (VSToken), amely tartalmazza az Azure DevOps személyes hozzáférési jogkivonat neve.|
 
 ![](media/automation-scenario-source-control-integration-with-VSTS/VSTSGitWebhook.png)
 
-Hozzon létre egy service hook VSTS jelölőnégyzet-modulok a mappába, amely elindítja a kód be a webhook. Válassza ki **webes csatlakozik** a szolgáltatás integrálása egy új előfizetés létrehozásakor. További service hurkok kapcsolatos a [VSTS szolgáltatás hurkok dokumentáció](https://www.visualstudio.com/en-us/docs/marketplace/integrate/service-hooks/get-started).
+Hozzon létre egy service hook az Azure DevOps-ellenőrzéshez a mappába, amely ezt a webhookot a kódbeadás. Válassza ki **Web Hooks** a szolgáltatás integrálása egy új előfizetés létrehozásakor. További információ szolgáltatás hurkokat a [Azure fejlesztési és üzemeltetési szolgáltatás hurkokat dokumentáció](https://www.visualstudio.com/en-us/docs/marketplace/integrate/service-hooks/get-started).
 ![](media/automation-scenario-source-control-integration-with-VSTS/VSTSServiceHook.png)
 
-Most kell tudni hajtsa végre az összes ellenőrzés-modulok a runbookok és a beállításokat a VSTS rendszerbe, és ezek automatikusan be az automation-fiók synched rendelkezik.
+Most el szeretnék megtenni az összes-ellenőrzéshez a runbookokat és konfigurációkat az Azure DevOps, és rendelkezik ezek automatikusan szinkronizálva az automation-fiókba.
 
 ![](media/automation-scenario-source-control-integration-with-VSTS/VSTSSyncRunbookOutput.png)
 
-Ha ez a forgatókönyv manuálisan nélkül futtatja VSTS által indított alatt, üresen webhookdata paraméter, és a VSTS mappából megadott egy teljes szinkronizálást végez el.
+Ha futtatja a runbook manuálisan anélkül, hogy folyamatban van az Azure DevOps váltott, a webhookdata paraméter üresen hagyhatja, és hajtja végre a teljes szinkronizálás az Azure DevOps mappából a megadott.
 
-Ha kívánja, a forgatókönyv eltávolításához távolítsa el a szolgáltatás hook VSTS, a runbookot és a VSToken változó törlése.
+Ha szeretné eltávolítani a forgatókönyvet, távolítsa el a szolgáltatás hook Azure DevOps, a runbook és VSToken változó törlése.

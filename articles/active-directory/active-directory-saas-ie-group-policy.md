@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/30/2018
+ms.date: 09/09/2018
 ms.author: barbkess
 ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 70552e982ff4c21d02b5f52ea48f108ce7f3b97e
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: ce27f51dc5e80b4ce2bd83b5f9f6c75853a2ea73
+ms.sourcegitcommit: 465ae78cc22eeafb5dfafe4da4b8b2138daf5082
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39366809"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44325277"
 ---
 # <a name="how-to-deploy-the-access-panel-extension-for-internet-explorer-using-group-policy"></a>A hozzáférési Panel bővítmény telepítése csoportházirend használatával az Internet Explorer
 Ez az oktatóanyag bemutatja, hogyan csoportházirend használatával távolról telepíteni a felhasználók gépein az Internet Explorer a hozzáférési Panel bővítményt. A bővítmény szükséges az Internet Explorer-felhasználók, akik alkalmazásokat használatával vannak konfigurálva, be kell jelentkeznie az [jelszóalapú egyszeri bejelentkezés](manage-apps/what-is-single-sign-on.md#password-based-single-sign-on).
@@ -120,7 +120,7 @@ A bővítmény már engedélyezni kell a gépek a kiválasztott szervezeti egys�
 ## <a name="step-5-optional-disable-remember-password-prompt"></a>5. lépés (nem kötelező): "A jelszó megjegyzése" üzenet letiltása
 Amikor a felhasználók jelentkezzen be a hozzáférési Panel bővítmény-webhelyeken, az Internet Explorer előfordulhat, hogy megjelenítése a következő megkérdezi "Szeretné a jelszó tárolásához?"
 
-![](./media/active-directory-saas-ie-group-policy/remember-password-prompt.png)
+![Jelszó kérése](./media/active-directory-saas-ie-group-policy/remember-password-prompt.png)
 
 Ha szeretné, hogy a felhasználók jelennek meg a parancssort, majd kövesse az alábbi lépéseket, hogy az automatikus kiegészítés szeret jelszavakat megjegyezni a:
 

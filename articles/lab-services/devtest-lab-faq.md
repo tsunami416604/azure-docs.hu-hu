@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: a295cad2bf1cafce4dc64909174e9417daa7918e
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 08b27acc2d3114486b86aa0c311b9396c0bed48f
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38235448"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44297315"
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure DevTest Labs GYIK
 Az Azure DevTest Labs kapcsolatos leggyakoribb kérdésekre adott válaszok.
@@ -88,17 +88,17 @@ Egyéni szerepkörök létrehozása és az engedélyek hozzárendelése szerepk�
 
 **CI/CD-integráció és automatizálás**
 ## <a name="does-devtest-labs-integrate-with-my-cicd-toolchain"></a>DevTest Labs a CI/CD eszközlánc integrálása?
-Ha a Visual Studio Team Services használ, használhatja a [DevTest Labs-feladatok bővítmény](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks) a DevTest Labs szolgáltatásban létrehozott kibocsátási folyamatok automatizálásához. Ez a bővítmény elvégezhető feladatok a következők:
+Ha az Azure DevOps használ, használhatja a [DevTest Labs-feladatok bővítmény](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks) a DevTest Labs szolgáltatásban létrehozott kibocsátási folyamatok automatizálásához. Ez a bővítmény elvégezhető feladatok a következők:
 
-* Hozzon létre, és automatikusan üzembe helyezése egy virtuális Gépet. Is konfigurálhatja a virtuális Gépet a legújabb buildben az Azure File Copy vagy a PowerShell Team Services feladatok használatával.
+* Hozzon létre, és automatikusan üzembe helyezése egy virtuális Gépet. Is konfigurálhatja a virtuális Gépet a legújabb buildben az Azure File Copy vagy a PowerShell az Azure DevOps-szolgáltatásokkal feladatok használatával.
 * Tesztelés reprodukálnia a hibát ugyanarról a virtuális gépről további vizsgálat után automatikusan rögzítheti a virtuális gép állapotát.
 * Ha már nincs rá szükség, törölje a kibocsátási folyamat végén a virtuális gép.
 
-Az alábbi blogbejegyzések ajánlat útmutató és a Team Services-bővítmény használatával kapcsolatos információk:
+Az alábbi blogbejegyzések ajánlat útmutató és az Azure DevOps-szolgáltatásokkal bővítmény használatával kapcsolatos információk:
 
-* [DevTest Labs szolgáltatásban és a Visual Studio Team Services-bővítmény](https://blogs.msdn.microsoft.com/devtestlab/2016/06/15/azure-devtest-labs-vsts-extension/)
-* [Új virtuális gép üzembe helyezése a Team Services-ből egy meglévő DevTest Labs labor](http://www.visualstudiogeeks.com/blog/DevOps/Deploy-New-VM-To-Existing-AzureDevTestLab-From-VSTS)
-* [Team Services kiadáskezelés használatával DevTest Labs folyamatos központi telepítésére](http://www.visualstudiogeeks.com/blog/DevOps/Use-VSTS-ReleaseManagement-to-Deploy-and-Test-in-AzureDevTestLabs)
+* [DevTest Labs és az Azure DevOps-bővítmény](https://blogs.msdn.microsoft.com/devtestlab/2016/06/15/azure-devtest-labs-vsts-extension/)
+* [Az Azure DevOps-szolgáltatások egy meglévő DevTest Labs labor egy új virtuális gép üzembe helyezése](http://www.visualstudiogeeks.com/blog/DevOps/Deploy-New-VM-To-Existing-AzureDevTestLab-From-VSTS)
+* [Az Azure DevOps Services kiadáskezelés használatával DevTest Labs folyamatos központi telepítésére](http://www.visualstudiogeeks.com/blog/DevOps/Use-VSTS-ReleaseManagement-to-Deploy-and-Test-in-AzureDevTestLabs)
 
 Egyéb folyamatos integrációs (CI) / folyamatos készregyártás (CD) fordíthatók, akkor érhető el, ugyanezeket a forgatókönyveket a telepítése [Azure Resource Manager-sablonok](https://aka.ms/dtlquickstarttemplate) használatával [Azure PowerShell-parancsmagok](../azure-resource-manager/resource-group-template-deploy.md) és [.NET SDK-k](https://www.nuget.org/packages/Microsoft.Azure.Management.DevTestLabs/). Használhatja még [REST API-k a DevTest Labs](http://aka.ms/dtlrestapis) az eszközlánc integrálását.  
 
@@ -112,7 +112,7 @@ Egyéni rendszerkép egy virtuális merevlemezt (VHD). A képlet egy képet tov�
 
 ## <a name="how-do-i-create-multiple-vms-from-the-same-template-at-once"></a>Hogyan hozhatok létre több virtuális gép ugyanazt a sablont a egyszerre?
 Egyszerre több virtuális gép ugyanazt a sablont hoz létre a két lehetősége van:
-* Használhatja a [Visual Studio Team Services feladatok bővítmény](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks). 
+* Használhatja a [Azure fejlesztési és üzemeltetési feladatokat bővítmény](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks). 
 * Is [Resource Manager-sablon létrehozása](devtest-lab-add-vm.md#save-azure-resource-manager-template) egy virtuális gép létrehozása közben, és [üzembe helyezése a Resource Manager-sablon a Windows Powershellből](../azure-resource-manager/resource-group-template-deploy.md).
 
 ## <a name="how-do-i-move-my-existing-azure-vms-into-my-devtest-labs-lab"></a>Hogyan helyezhetek át meglévő Azure virtuális gépek a DevTest Labs labor be?
@@ -145,7 +145,7 @@ A cél tárfiók a labor társított megkeresése:
 2. A bal oldali menüben válassza ki a **erőforráscsoportok**.
 3. Keresse meg és válassza ki az erőforráscsoportot, amely a labor van társítva.
 4. A **áttekintése**, válasszon ki egy tárfiókot.
-5. Válassza ki **Blobok**.
+5. Válassza ki a **Blobok** lehetőséget.
 6. Keresse meg a listában lévő feltöltések. Ha még nem létezik, térjen vissza a 4. lépés, és próbálja meg egy másik tárfiókba.
 7. Használja a **URL-cím** az AzCopy-parancsban céljaként.
 

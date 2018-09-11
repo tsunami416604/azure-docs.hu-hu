@@ -11,28 +11,38 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.component: pim
-ms.date: 07/24/2018
+ms.date: 09/07/2018
 ms.author: rolyon
 ms.reviewer: hanki
 ms.custom: pim
-ms.openlocfilehash: 1a1635e0ba16bdc0fa6dc90aa0e1a417f43e04ac
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: de1d29d3ab1b370257c3a2d6b6ff9f677197fc2a
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43190176"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44303064"
 ---
 # <a name="email-notifications-in-pim"></a>A PIM e-mail-értesítések
 
-Kulcs események előfordulásakor az Azure AD Privileged Identity Management (PIM) e-mail értesítések küldését a megfelelő rendszergazdai vagy a felhasználónak. Például a PIM küld e-mailt a következő események:
+Kulcs események előfordulásakor az Azure AD Privileged Identity Management (PIM) e-mail értesítések küldését. Például a PIM küld e-mailt a következő események:
 
 - Ha egy rendszerjogosultságú szerepkör aktiválása a jóváhagyásra van
-- Ha egy rendszerjogosultságú szerepkör-aktiválási kérelem jóváhagyása
+- Ha egy rendszerjogosultságú szerepkör-aktiválási kérelem befejeződött
 - Ha a kiemelt szerepkörű aktiválva van
 - Ha egy rendszerjogosultságú szerepkör hozzá van rendelve
 - Ha engedélyezve van-e az Azure AD PIM-ben
 
-2018 július végén kezdődően a PIM keresztül küldött e-mailekre fog egy új feladó e-mail címe és a egy új vizuális Tervező. Ez a frissítés mindkét PIM hatással van az Azure ad és a PIM az Azure-erőforrásokhoz. Összes esemény, amely korábban az e-mail-értesítés aktiválódik továbbra is küldje el e-mailt. Néhány e-maileket fog frissülni tartalom több célként megadott információk.
+E-mail értesítések küldését a következő rendszergazdáknak:
+
+- Kiemelt szerepkörű rendszergazda
+- Biztonsági rendszergazda
+
+E-mail értesítések küldését is a végfelhasználók számára, aki rendelkezik a következő események a kiemelt szerepkörök:
+
+- Ha egy rendszerjogosultságú szerepkör-aktiválási kérelem befejeződött
+- Ha egy rendszerjogosultságú szerepkör hozzá van rendelve
+
+2018 július végén kezdődően a PIM keresztül küldött e-mailekre rendelkezik egy új feladó e-mail címe és a egy új vizuális Tervező. Ez a frissítés mindkét PIM hatással van az Azure ad és a PIM az Azure-erőforrásokhoz. Összes esemény, amely korábban az e-mail-értesítés aktiválódik továbbra is küldje el e-mailt. Néhány e-maileket fog frissülni tartalom több célként megadott információk.
 
 ## <a name="sender-email-address"></a>Feladó e-mail-címe
 

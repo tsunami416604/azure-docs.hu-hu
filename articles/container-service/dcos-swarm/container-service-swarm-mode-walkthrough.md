@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 07/16/2018
 ms.author: iainfou
 ms.custom: ''
-ms.openlocfilehash: d3438f42753cba82a28d16be2b63926c4762b26b
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 35b8ae347181d272dc899f41f07af36a611aa9f0
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39421933"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44299151"
 ---
 # <a name="deploy-docker-ce-cluster"></a>Docker CE-fürt üzembe helyezése
 
@@ -169,7 +169,7 @@ Ebben a rövid útmutatóban előre létrehozott tárolórendszerképekkel hoztu
 
 Ebben a rövid útmutatóban egy Docker Swarm-fürtöt és azon egy többtárolós alkalmazást helyezett üzembe.
 
-A Docker Swarm és a Visual Studio Team Services integrálásával kapcsolatos információk megtekintéséhez olvassa el a CI/CD, a Docker Swarm és a VSTS használatával foglalkozó cikket.
+További tudnivalók a Docker swarm integrálása az Azure DevOps-továbbra is a CI/CD – Docker Swarm és az Azure DevOps.
 
 > [!div class="nextstepaction"]
-> [CI/CD – Docker Swarm és VSTS](./container-service-docker-swarm-setup-ci-cd.md)
+> [CI/CD – Docker Swarm és az Azure DevOps](./container-service-docker-swarm-setup-ci-cd.md)

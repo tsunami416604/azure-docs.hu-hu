@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: mbullwin
-ms.openlocfilehash: 1a343e238662393995404b8e4c705cf799866855
-ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
+ms.openlocfilehash: 4d49b6c4fca668a6afe88ade5fbafb0ea9c02dfc
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39137376"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44296159"
 ---
 # <a name="using-search-in-application-insights"></a>Az Application Insights keresés használata
 Keresés az egyik szolgáltatása [Application Insights](app-insights-overview.md) keresse meg és Fedezze fel a telemetriai elem, például a lapmegtekintések, kivételek, vagy webes kérelmek küldéséhez használt. És megtekintheti a nyomkövetési naplók és eseményeket, amelyek van kódolva.
@@ -133,13 +133,13 @@ Ha az alkalmazása sok telemetriát hoz létre (és használ, akkor a verzió az
 [Ismerkedés a mintavételezéssel](app-insights-sampling.md).
 
 ## <a name="create-work-item"></a>Munkaelem létrehozása
-A részleteket az összes telemetriai elem hibát hozhat létre a GitHub vagy a Visual Studio Team Services. 
+Létrehozhat egy hiba a GitHub vagy az Azure DevOps bármilyen szereplő telemetriai elem adatait. 
 
 ![Kattintson az új munkaelem, módosítsa a mezőket, és kattintson az OK gombra.](./media/app-insights-diagnostic-search/42.png)
 
-Ebben az esetben először a rendszer felkéri egy hivatkozást a Team Services-fiók és a projekt konfigurálásához.
+Ebben az esetben először a rendszer felkéri egy hivatkozást az Azure DevOps-szervezetnek és a projekt konfigurálásához.
 
-![Töltse ki az URL-címét a Team Services-kiszolgáló és a projekt nevére, majd kattintson az Engedélyezés parancsra](./media/app-insights-diagnostic-search/41.png)
+![Töltse ki az URL-címét az Azure DevOps-szolgáltatásokkal és a projekt nevére, majd kattintson az Engedélyezés parancsra](./media/app-insights-diagnostic-search/41.png)
 
 (Is konfigurálhat a hivatkozás a munkaelemek panelen.)
 

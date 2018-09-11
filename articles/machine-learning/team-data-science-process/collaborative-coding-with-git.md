@@ -1,6 +1,6 @@
 ---
-title: A Git - Azure Machine Learning együttműködési kódolási |} Microsoft Docs
-description: Együttműködési kód fejlesztési adatok tudományos projektek Git használatával gyors tervezéssel módjáról.
+title: Együttműködésen alapuló kódolás a Gittel – az Azure Machine Learning |} A Microsoft Docs
+description: Együttműködési kód fejlesztés a Git használata az Agilis tervezéshez adatelemzési projektek módjáról.
 documentationcenter: ''
 author: deguhath
 manager: cgronlun
@@ -14,54 +14,54 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: deguhath
-ms.openlocfilehash: abb1c7a3f597804a84f06462b1e50bb5a63fb9b3
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 78bbdb244d9bd52a06623f7a6fa3bca123ef3828
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34837361"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44300069"
 ---
 # <a name="collaborative-coding-with-git"></a>Együttműködésen alapuló kódolás a Gittel
 
-Ebben a cikkben azt ismerteti, hogyan együttműködési kód fejlesztési adatok tudományos projektek Git használatával, a megosztott kód fejlesztési keretrendszer elvégzéséhez. Bemutatja, hogyan adhat hivatkozás ezeket kódolás tevékenységekhez, hogy a tervezett munka [gyors fejlesztési](agile-development.md) és kód értékelést.
+Ebben a cikkben azt ismertetjük, hogyan adatelemzési projektek készítése a Git használatával, a megosztott kód fejlesztési keretrendszer által biztosított együttműködési környezettel kód fejlesztése tennie. Bemutatja, hogyan adhat összekapcsolhatók a a tervezett munka tevékenységek kódolási [Agilis fejlesztési](agile-development.md) és értékelések code.
 
 
-## 1. <a name='Linkaworkitemwithagitbranch-1'></a>A Git ág munkaelem hivatkozás 
+## 1. <a name='Linkaworkitemwithagitbranch-1'></a>Hivatkozás egy munkaelemet a Git-ágak 
 
-VSTS (szövegegység vagy feladat) munkaelem csatlakozni kényelmes megoldást kínál a Git ág. Ez lehetővé teszi, hogy a szövegegység vagy feladat közvetlen hivatkozás a vele társított kód. 
+Az Azure DevOps-szolgáltatásokkal való kapcsolódáshoz (a történetet vagy a feladat) munkaelem kényelmes módot biztosít Git-ágak. Ez lehetővé teszi, hogy a történetet, vagy a feladat mutató közvetlen hivatkozás szerepel a hozzá társított kód. 
 
-Munkaelem egy új fiókirodai való kapcsolódáshoz kattintson duplán egy munkaelemet, és az előugró ablakban kattintson **hozzon létre egy új fiókirodai** alatt **+ Hozzáadás hivatkozásra**.  
+A munkaelem egy új ágba, kattintson duplán egy munkaelemet, és az előugró ablakban kattintson a **hozzon létre egy új ágat** alatt **+ Hozzáadás hivatkozás**.  
 
 ![1](./media/collaborative-coding-with-git/1-sprint-board-view.png)
 
-Adja meg az új fiókirodai, például a fióknév alap Git-tárház vagy a fiókiroda az adatokat. A kiválasztott Git-tárház a tárház, amely a munkaelem tartozik azonos csapatprojekt alatt kell lennie. Az alap ág a főágba vagy valamilyen más meglévő ág lehet.
+Adja meg az adatokat, az új ághoz, például a kiadásiág-nevet, kiindulási Git-tárházat és az ágat. A kiválasztott Git-tárház ugyanazon a projekten, amelyhez a munkaelem tartozik a tárházban kell lennie. Az alap ág a főágban vagy valamilyen más meglévő ág is lehet.
 
 ![2](./media/collaborative-coding-with-git/2-create-a-branch.png)
 
-Bevált gyakorlat, ha minden szövegegység munkatétel Git ág. Ezután minden feladat munkatétel létrehoz egy ágat a szövegegység fiókirodai alapján. A hierarchikus módon, amely megfelel a szövegegység-kapcsolatokat a fiókirodák telephelyeire rendszerezéséhez akkor hasznos, ha több személy dolgozik a különböző szövegek az ugyanabban a projektben van, vagy több személy dolgozik a különböző feladatok a azonos szövegegység rendelkezik. Ütközések minimalizálható, ha minden csoport egy tagja egy másik ágat, és minden tag akkor működik a különböző kód vagy más összetevők, amikor egy ágat megosztása működik. 
+Bevált gyakorlat, hogy egy Git-ágak egyes történetet munkatétel létrehozása. Ezt követően minden feladatot munkatétel hozzon létre egy ágat a történetet ág alapján. Az ágak rendszerezése, amely megfelel a történetet-tevékenység kapcsolatokat hierarchikus így akkor hasznos, ha különböző történetek, ugyanazon a projekten dolgozik, a több felhasználó rendelkezik, vagy ha több felhasználó dolgozik a különböző feladatok azonos. Ütközések minimalizálható, ha minden egyes csapattag működik, ha másik ágat, és minden tagjának működik különböző kódok vagy más összetevők ág megosztásakor. 
 
-Az alábbi képen a javasolt elágaztatási stratégiát a TDSP mutatja be. Előfordulhat, nem kell különböző elágazik itt látható, különösen ha csak rendelkezik egy vagy két dolgozó ugyanabban a projektben, vagy csak egy személy működik-e az összes feladat egy szövegegység. Azonban a fejlesztési fiókirodai mappától a főágba mindig célszerű. Ez segítséget nyújt a kiadási fiókirodai az éppen a fejlesztési tevékenységek miatt megszakadt. Git fiókirodai modell részletesebb leírását található [egy sikeres Git ugorhat modellt](http://nvie.com/posts/a-successful-git-branching-model/).
+A következő képen látható a javasolt elágazási stratégia a TDSP mutatja be. Előfordulhat, hogy nem kell számos ágak itt látható, különösen ha csak eggyel rendelkezik, vagy ugyanazon a projekten dolgozik, a két személynek, vagy csak egy személy dolgozik egy történet az összes feladat. Azonban mindig jó megoldás a fejlesztési ágban elválasztja a főágban. Ez segít megakadályozza, hogy a kiadási ág a fejlesztési tevékenységek által megszakított folyamatban van. Git-ág modell teljes leírása megtalálható [egy sikeres Git elágaztatás modellre](http://nvie.com/posts/a-successful-git-branching-model/).
 
 ![3](./media/collaborative-coding-with-git/3-git-branches.png)
 
-Váltson át a fiókiroda, amelyet szeretne dolgozni, a következő parancsot a rendszerhéj parancsban (Windows vagy Linux). 
+A használni kívánt ágat vált, a következő parancsot a rendszerhéj parancsban (Windows vagy Linux). 
 
     git checkout <branch name>
 
-Módosítása a *< fióknév\>*  való **fő** biztonsági kapcsolók a **fő** ág. Miután a munkaágat váltani, indítsa el függ, hogy működjön, a cikk befejezéséhez szükséges kód vagy a dokumentációjával az összetevők fejleszt. 
+Módosítása a *< kiadásiág-nevet\>*  való **fő** biztonsági kapcsolók a **fő** ágat. Aktuális ág való váltás után elkezdheti a munkaelem dolgozik, az elem befejezéséhez szükséges kód vagy dokumentációs összetevők fejlesztéséhez. 
 
-Egy meglévő elágazási is hozzárendelhet egy munkaelemet. Az a **részletes** munkaelem, helyett kattintva oldalán **hozzon létre egy új fiókirodai**, kattint **+ Hozzáadás hivatkozásra**. Válassza ki a fiókiroda szeretne kapcsolni a munkaelemet. 
+Egy meglévő ágban is hozzárendelhet egy munkaelemet. Az a **részletes** munkaelem, helyett kattintva lapján **hozzon létre egy új ágat**, kattint **+ Hozzáadás hivatkozás**. Ezután válassza ki az ágat szeretne kapcsolni munkaelemet. 
 
 ![4](./media/collaborative-coding-with-git/4-link-to-an-existing-branch.png)
 
-Is létrehozhat egy új fiókirodai a Git bash eszközben parancsokat. Ha < alap fióknevének\> hiányzik, a < új fiókirodai neve\> alapuló _fő_ ág. 
+Is létrehozhat egy új ágat a Git Bash parancsokat. Ha a < alap kiadásiág-nevet\> hiányzik, a < új ág nevét\> alapján _fő_ ágat. 
     
     git checkout -b <new branch name> <base branch name>
 
 
-## 2. <a name='WorkonaBranchandCommittheChanges-2'></a>Működjenek az egy ágat, és véglegesítse a módosításokat 
+## 2. <a name='WorkonaBranchandCommittheChanges-2'></a>Egy ágban dolgozik, és véglegesítse a módosításokat 
 
-Most tegyük fel, hogy néhány módosítást a *adatok\_adatfeldolgozást* ág a munkaelem, például a fiókiroda egy R fájl hozzáadása a helyi gépen. Az R fájl, a fiókiroda a munkaelem hozzá véglegesítheti, feltéve, hogy a fiókirodában lévő a Git rendszerhéj az alábbi Git-parancsok használatával:
+Most tegyük fel, hogy néhány módosítást, a *adatok\_Adatbetöltési* ág a munkaelem, például az R fájlt az ág hozzáadása a helyi gépen. Az R-fájl az ágat a munkaelem hozzá véglegesítheti, a következők a fiókirodában lévő a Git rendszerhéjban az alábbi Git-parancsok használatával:
 
     git status
     git add .
@@ -70,39 +70,39 @@ Most tegyük fel, hogy néhány módosítást a *adatok\_adatfeldolgozást* ág 
 
 ![5](./media/collaborative-coding-with-git/5-sprint-push-to-branch.png)
 
-## 3. <a name='CreateapullrequestonVSTS-3'></a>Hozzon létre egy lekérési kérelmet a VSTS 
+## 3. <a name='CreateapullrequestonVSTS-3'></a>Pull-kérelem létrehozása az Azure DevOps-szolgáltatásokkal 
 
-Ha készen áll után néhány véglegesíti és leküldéses értesítések, az aktuális ág egyesíteni az alap fiókirodai elküldheti a **lekérési kérelmet** VSTS-kiszolgálón. 
+Készen áll után néhány véglegesítéseket, és leküldéses értesítést, ha az aktuális ág egyesítése a kiinduló ág, küldhet egy **pull-kérelem** az Azure DevOps-szolgáltatásokkal. 
 
-Nyissa meg a csapatprojekt fő lapján, és kattintson a **kód**. Válassza ki a fiókiroda való egyesíthetők és az ág az egyesíteni kívánt Git-tárház nevét. Kattintson a **lekérési kérelmek**, kattintson a **új lekérési kérelmet** előtt létre szeretne hozni egy lekérési kérelmet tekintse át a munkát az ág az alap elágazási egyesített.
+Nyissa meg a projekt fő lapján, és kattintson a **kód**. Válassza ki az ág az egyesíteni kívánt és az ágat az egyesíteni kívánt Git-adattár neve. Kattintson a **Pull-kérelmek**, kattintson a **új lekéréses kérelem** előtt létre szeretne hozni egy lekéréses kérelmek ellenőrzése a munkát az ág az egyesített az alap ágban.
 
 ![6](./media/collaborative-coding-with-git/6-spring-create-pull-request.png)
 
-Töltse ki a lekérési kérelmet néhány leírása, vegye fel a felülvizsgálók és továbbíthatja.
+Adja meg a lekéréses kérelem kapcsolatos leírás, felülvizsgálók hozzáadása, és továbbíthatja.
 
 ![7](./media/collaborative-coding-with-git/7-spring-send-pull-request.png)
 
 ## 4. <a name='ReviewandMerge-4'></a>Tekintse át és egyesítése 
 
-A lekérési kérelem létrehozásakor, akkor a felülvizsgálók áttekintheti a lekérési kérelmek e-mail értesítést kap. A felülvizsgálók ellenőrizze, hogy a módosítások dolgozik-e, és ha lehetséges tesztelése a módosításokat a kérelmező kell. Az értékelés alapján, a többi felhasználó jóváhagyhatja vagy elutasíthatja a lekérési kérelmet. 
+A pull-kérelem létrejöttekor a felülvizsgálók e-mail értesítés a pull-kérelmek áttekintése. A felülvizsgálók kell ellenőrizze, hogy a módosításokat, vagy nem működik, és a módosításokat a kérelmező tesztelése amennyiben lehetséges. Az értékelés alapján, a többi felhasználó jóváhagyhatja vagy elutasíthatja a pull-kérelmet. 
 
 ![8](./media/collaborative-coding-with-git/8-add_comments.png)
 
 ![9](./media/collaborative-coding-with-git/9-spring-approve-pullrequest.png)
 
-Miután elkészült a tekintse át, a munkaágat egyesített az alap elágazási kattintva a **Complete** gombra. Választhatja a munkaágat törlése után összevont rendelkezik. 
+Miután elvégezte a felülvizsgálatot, az aktuális ág egyesített az alap ágra kattintva a **Complete** gombra. Törölje az aktuális ág, ha azt egyesített választhatja. 
 
 ![10](./media/collaborative-coding-with-git/10-spring-complete-pullrequest.png)
 
-Erősítse meg a bal felső sarkában, amely van megjelölve, a kérelem **BEFEJEZVE**. 
+Erősítse meg a bal felső sarokban, amely a kérés van megjelölve a **BEFEJEZVE**. 
 
 ![11](./media/collaborative-coding-with-git/11-spring-merge-pullrequest.png)
 
-Ha később visszatérhet a tárházba **kód**, megtudja, hogy a főágba lett átadva.
+Amikor visszatér a tárházban **kód**, hogy megtudja, hogy a főágba lett átadva.
 
 ![12](./media/collaborative-coding-with-git/12-spring-branch-deleted.png)
 
-A következő Git-parancsok segítségével a munkaágat az alap elágazási egyesíteni, és törölje a munkaágat egyesítése után:
+A munkaág, a kiinduló ágra egyesítése és törölni az aktuális ág egyesítése után is használhatja a következő Git-parancsokat:
 
     git checkout master
     git merge data_ingestion
@@ -114,7 +114,7 @@ A következő Git-parancsok segítségével a munkaágat az alap elágazási egy
  
 ## <a name="next-steps"></a>További lépések
 
-[Adatok tudományos feladatok végrehajtása](execute-data-science-tasks.md) több közös adatok tudományos feladatokhoz, mint az adatok interaktív áttekintését, a adatelemzés, a jelentéskészítés és a modell létrehozása befejezéséhez segédprogramok használatát ismerteti.
+[Az adatelemzési műveletek végrehajtása](execute-data-science-tasks.md) bemutatja, hogyan segédprogramok használatával számos gyakori adatelemzési feladatok például interaktív adatkutatási, adatelemzés, jelentés és modell létrehozásához hajtsa végre.
 
-Forgatókönyvek, amelyek azt mutatják, a folyamat lépései **meghatározott forgatókönyvek** is rendelkezésre állnak. Szerepel a listában, és kapcsolódik a miniatűr leírásokat a [példa forgatókönyvek](walkthroughs.md) cikk. Ezek bemutatják, hogyan lehet felhő, a helyszíni eszközök és szolgáltatások egyesítése munkafolyamat vagy csővezeték intelligens alkalmazás létrehozása. 
+Forgatókönyvek, amelyek bemutatják, a folyamat összes lépését **meghatározott forgatókönyvek** is rendelkezésre állnak. Felsorolt, és a miniatűr leírásokat tartalmazó társított a [példa forgatókönyvek](walkthroughs.md) cikk. Ezek bemutatják, hogyan kombinálhatja a felhőbeli, helyszíni eszközöket és szolgáltatásokat, munkafolyamat vagy folyamat, intelligens alkalmazások létrehozására. 
 

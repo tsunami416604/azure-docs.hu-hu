@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
-ms.openlocfilehash: b3550c771b4c2916987c66f318010e5bb246fa39
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 80abe29c80898b691aa6e5e47bf068a9e69e50e4
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39446850"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44303370"
 ---
 # <a name="use-an-app-service-environment"></a>App Service-környezet használata #
 
@@ -136,7 +136,7 @@ A külső ASE környezetben ezek a közzétételi beállítások minden úgy vis
 
 A fő közzétételi különbség garanciát az ILB ASE környezetben. ILB ASE környezetben a közzétételi végpontjai érhetők el az összes csak az ILB keresztül. Az ILB személyes IP-címet a virtuális hálózatban az ASE alhálózat be van kapcsolva. Nem kell hálózati hozzáféréssel az ILB ASE olyan alkalmazások nem tehető közzé. Amint [létrehozása és használata az ILB ASE][MakeILBASE], kell konfigurálnia a DNS a-alkalmazások a rendszerben. Az SCM-végpontot, amely tartalmazza. Ha ezek még nincs megfelelően definiálva, nem tehető közzé. Az ide-ket is kell rendelkeznie az ILB való hálózati hozzáférés közvetlenül történő közzétételhez.
 
-Internetes alapú CI rendszerek, például a GitHub és Visual Studio Team Services, nem működnek az ILB ASE környezetben, mert a közzététel végpontja nem elérhető az internetről. Ehelyett egy lekérési modellt használó CI-rendszert kell használnia, ilyen például a Dropbox.
+Internetes alapú CI rendszerek, például a GitHub és az Azure DevOps, nem működnek az ILB ASE környezetben, mert a közzététel végpontja nem elérhető az internetről. Ehelyett egy lekérési modellt használó CI-rendszert kell használnia, ilyen például a Dropbox.
 
 Az ILB ASE alkalmazásainak közzétételi végpontjai az ILB ASE létrehozásakor megadott tartományt használják. Az alkalmazás közzétételi profilján és az alkalmazás portálpanelén láthatja (a **áttekintése** > **Essentials** és a **tulajdonságok**). 
 

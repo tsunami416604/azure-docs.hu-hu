@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/29/2017
 ms.author: mbullwin
-ms.openlocfilehash: 4ae5adaf37f49e9909fa80fd31f088ed6ee1b081
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 91b5c2c23445e5cd3445d1d5b640cb3ecb8e5e7a
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39449868"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44301191"
 ---
 # <a name="automate-application-insights-processes-by-using-logic-apps"></a>Az Application Insights-folyamatok automatizálása a Logic Apps használatával
 
@@ -25,7 +25,7 @@ Tegye észre magát ismételten a telemetriai adatok, ellenőrizze, hogy a szolg
 
 Ez az integráció számos olyan folyamatokat egyetlen kódsor megírása nélkül automatizálható. Létrehozhat egy logikai alkalmazást az Application Insights-összekötővel gyorsan automatizálhatja az Application Insights-folyamatokhoz. 
 
-További műveleteket is hozzáadhat. Az Azure App Service Logic Apps funkcióját elérhetővé több száz műveleteket. Ha például a logikai alkalmazás használatával automatikusan e-mail-értesítés küldése vagy hibajelentés létrehozása a Visual Studio Team Services. Is használhatja az egyik rendelkezésre álló számos [sablonok](https://docs.microsoft.com/azure/logic-apps/logic-apps-use-logic-app-templates) felgyorsítani a logikai alkalmazás létrehozásának folyamatán. 
+További műveleteket is hozzáadhat. Az Azure App Service Logic Apps funkcióját elérhetővé több száz műveleteket. Ha például egy logikai alkalmazás használatával automatikusan e-mail-értesítés küldése vagy hibajelentés létrehozása az Azure DevOps. Is használhatja az egyik rendelkezésre álló számos [sablonok](https://docs.microsoft.com/azure/logic-apps/logic-apps-use-logic-app-templates) felgyorsítani a logikai alkalmazás létrehozásának folyamatán. 
 
 ## <a name="create-a-logic-app-for-application-insights"></a>Logikai alkalmazás létrehozása az Application Insights
 

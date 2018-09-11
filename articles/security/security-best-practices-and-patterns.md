@@ -1,43 +1,48 @@
 ---
-title: Az Azure biztonsági ajánlott eljárásairól és mintáiról |} Microsoft Docs
-description: A cikkben az Azure biztonsági ajánlott eljárásairól és mintáiról listáját az Azure-erőforrás.
+title: Az Azure ajánlott biztonsági eljárások és minták |} A Microsoft Docs
+description: A cikk a különböző Azure-erőforrások Azure ajánlott biztonsági eljárások és minták listáját tartalmazza.
 services: azure-security
 documentationcenter: na
-author: TomShinder
+author: TerryLanfear
 manager: MBaldwin
 editor: TomSh
 ms.assetid: 1cbbf8dc-ea94-4a7e-8fa0-c2cb198956c5
 ms.service: security
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/16/2018
-ms.author: ''
-ms.openlocfilehash: 6713580325450d7548e63c78af4d44c65653f884
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.date: 9/10/2018
+ms.author: terrylan
+ms.openlocfilehash: 3cee4a9e7d32214610b5d5de21f6853148ed01c4
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
-ms.locfileid: "29802590"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44345717"
 ---
-# <a name="azure-security-best-practices-and-patterns"></a>Az Azure biztonsági ajánlott eljárásairól és mintáiról
+# <a name="azure-security-best-practices-and-patterns"></a>Az Azure Security ajánlott biztonsági eljárásai és mintái
+
+Az alábbi cikkeket tartalmaz, akkor használja, ha Ön tervezése, telepítése és a felhőalapú megoldások kezelése az Azure ajánlott biztonsági eljárások. Ajánlott eljárások az Azure biztonsági és Ügyfeleink javaslatai tapasztalatainak Tapasztalataink származnak.
+
+Az ajánlott eljárásokat célja, hogy egy erőforrás az informatikai szakembereknek nyújtanak segítséget. Ez tartalmazhat tervezők, a tervezőket, fejlesztők és tesztelők, akik létrehozása és biztonságos Azure-megoldások üzembe helyezése.
 
 * [Az Azure határ ajánlott biztonsági eljárások](../best-practices-network-security.md)
-* [Azure-adatbázishoz ajánlott biztonsági eljárások](azure-database-security-best-practices.md)
-* [Gyakorlati tanácsok az Azure data biztonsági és titkosítás](azure-security-data-encryption-best-practices.md)
-* [Azure-identitás kezelése és hozzáférés szabályozása ajánlott biztonsági eljárások](azure-security-identity-management-best-practices.md)
-* [Azure-hálózat ajánlott biztonsági eljárások](azure-security-network-security-best-practices.md)
-* [Az Azure operational biztonsági gyakorlati tanácsok](azure-operational-security-best-practices.md)
-* [Az Azure PaaS gyakorlati tanácsok](security-paas-deployments.md) 
+* [Azure database ajánlott biztonsági eljárások](azure-database-security-best-practices.md)
+* [Az Azure Adatbiztonság és titkosítás ajánlott eljárások](azure-security-data-encryption-best-practices.md)
+* [Azure-Identitáskezelés és hozzáférés-vezérlés ajánlott biztonsági eljárások](azure-security-identity-management-best-practices.md)
+* [Azure-beli hálózati biztonsági eljárások](azure-security-network-security-best-practices.md)
+* [Az Azure operational ajánlott biztonsági eljárások](azure-operational-security-best-practices.md)
+* [Az Azure PaaS-ajánlott eljárások](security-paas-deployments.md)
 * [Az Azure Service Fabric ajánlott biztonsági eljárások](azure-service-fabric-security-best-practices.md)
-* [Ajánlott eljárások az Azure virtuális gép biztonsági](azure-security-best-practices-vms.md)
+* [Azure virtuális gép biztonsági védelmének bevált gyakorlata](azure-security-best-practices-vms.md)
 * [Biztonságos hibrid hálózati architektúra megvalósítása az Azure-ban](../guidance/guidance-iaas-ra-secure-vnet-hybrid.md)
 * [Az eszközök internetes hálózatát ajánlott biztonsági eljárások](azure-security-iot-best-practices.md)
-* [Az Azure-ban PaaS-adatbázisok védelme](security-paas-applications-using-sql.md)
-* [A PaaS webes és mobilalkalmazásokhoz, használja az Azure App Service biztonságossá tétele](security-paas-applications-using-app-services.md)
+* [Az Azure PaaS-adatbázisok védelme](security-paas-applications-using-sql.md)
+* [PaaS web- és mobilalkalmazások az Azure App Service használatával biztonságossá tétele](security-paas-applications-using-app-services.md)
 * [PaaS web- és mobilalkalmazások védelme az Azure Storage segítségével](security-paas-applications-using-storage.md)
-* [Ajánlott biztonsági eljárások az Azure IaaS munkaterhelések](azure-security-iaas.md)
+* [Ajánlott biztonsági eljárások IaaS számítási feladatokhoz az Azure-ban](azure-security-iaas.md)
 
+A tanulmány [ajánlott biztonsági eljárások az Azure-megoldások](https://azure.microsoft.com/resources/security-best-practices-for-azure-solutions) gyűjteménye, a biztonság ajánlott eljárások a fenti cikkekben található.
 
-
+[A tanulmány letöltése](https://azure.microsoft.com/mediahandler/files/resourcefiles/security-best-practices-for-azure-solutions/Azure%20Security%20Best%20Practices.pdf)

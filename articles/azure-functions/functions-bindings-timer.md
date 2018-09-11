@@ -10,15 +10,15 @@ ms.assetid: d2f013d1-f458-42ae-baf8-1810138118ac
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: reference
-ms.date: 08/08/2018
+ms.date: 09/08/2018
 ms.author: glenga
 ms.custom: ''
-ms.openlocfilehash: e6a3df79bf0786b536dc4c454d19beea2730125a
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: c033a465bb6e8e03c909ac7bc5a233f6b8b4cd76
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44093124"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44298086"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Az Azure Functions időzítő eseményindító 
 
@@ -191,10 +191,13 @@ A következő táblázat ismerteti a megadott kötés konfigurációs tulajdons�
 |**direction** | n/a | Meg kell "a". Ez a tulajdonság beállítása automatikusan történik, ha az eseményindítót fog létrehozni az Azure Portalon. |
 |**name** | n/a | A függvénykódot az időzítő objektumot képviselő változó neve. | 
 |**schedule**|**ScheduleExpression**|A [CRON-kifejezés](#cron-expressions) vagy egy [TimeSpan](#timespan) értéket. A `TimeSpan` csak egy függvényalkalmazást, amely egy App Service-csomag futtat használható. Az ütemezés kifejezés helyezni egy alkalmazásbeállításhoz, és ezzel a tulajdonsággal, a beállítás neve a beburkolt alkalmazás **%** jelentkezik, mint ebben a példában: "% ScheduleAppSetting %". |
-|**runOnStartup**|**RunOnStartup**|Ha `true`, a függvény meghívása a futtatókörnyezet indításakor. A modul például akkor kezdődik, amikor a függvényalkalmazás felébred végeztével üresjárati inaktivitás miatt. Amikor a függvényalkalmazás újraindítja a függvény változtatások miatt, és amikor a függvényalkalmazás elvégzi a horizontális felskálázást. Ezért **runOnStartup** ritkán, ha minden eddiginél meg `true`szerint fog létrehozni, akkor kód magas kiszámíthatatlan időpontokban hajtható végre.|
+|**runOnStartup**|**RunOnStartup**|Ha `true`, a függvény meghívása a futtatókörnyezet indításakor. A modul például akkor kezdődik, amikor a függvényalkalmazás felébred végeztével üresjárati inaktivitás miatt. Amikor a függvényalkalmazás újraindítja a függvény változtatások miatt, és amikor a függvényalkalmazás elvégzi a horizontális felskálázást. Ezért **runOnStartup** ritkán, ha minden eddiginél meg `true`, különösen az éles környezetben. |
 |**useMonitor**|**useMonitor**|Állítsa be `true` vagy `false` jelzi, hogy az ütemezés kell figyelni a. Figyelési ütemezés továbbra is fennáll, ezzel elősegítve annak biztosítása, az ütemezés megfelelően, kezelik, akkor is, ha a függvény alkalmazáspéldány indítsa újra az ütemezés előfordulási. Ha nincs explicit módon beállítva, az alapértelmezett érték `true` , amelyek rendelkeznek a nagyobb, mint 1 perces ismétlődési időköz ütemezések esetében. Percenként egynél többször kiváltó ütemezések esetében az alapértelmezett érték `false`.
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
+
+> [!CAUTION]
+> Javasoljuk, hogy beállítás **runOnStartup** való `true` éles környezetben. Ez a beállítás révén a kód magas kiszámíthatatlan időpontokban hajtható végre. Az egyes éles beállításokat ezek további végrehajtások az Consumption-csomagokban üzemeltetett alkalmazásokhoz jelentősen magasabb költségeket eredményezhet. Ha például a **runOnStartup** engedélyezve van az eseményindítót hív meg, amikor a függvényalkalmazás erőforrások méretezése pedig ettől. Ellenőrizze, hogy megértette a függvények éles viselkedésének engedélyezése előtt **runOnStartup** éles környezetben.   
 
 ## <a name="usage"></a>Használat
 

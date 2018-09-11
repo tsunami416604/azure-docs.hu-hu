@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 57109848bf78311ea4d601b135c5dd304d613aeb
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: ece3511d0d3c12be13a649385ea9b6dd5c75bfe0
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39008127"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44303710"
 ---
 # <a name="how-to-create-and-deploy-a-cloud-service"></a>Hogyan hozhat létre, és a egy felhőalapú szolgáltatás üzembe helyezése
 Az Azure portal két módon is hozhat létre és telepíthet egy felhőalapú szolgáltatás biztosít: *Gyorslétrehozás* és *egyéni létrehozás*.
@@ -27,7 +27,7 @@ Az Azure portal két módon is hozhat létre és telepíthet egy felhőalapú sz
 Ez a cikk ismerteti, hogyan hozzon létre egy új felhőszolgáltatást, majd a gyors létrehozás módszerrel **feltöltése** és az Azure-ban a felhőszolgáltatás-csomagok telepítése. Ezt a módszert használja, ha az Azure Portalon elérhető hivatkozásokkal, a szükséges összes követelmény fizetést lehetővé teszi. Ha már készen áll, létrehozásakor, üzembe helyezéséhez a cloud service, érdemes egyéni létrehozás használatával egyszerre mindkettő.
 
 > [!NOTE]
-> Ha közzé szeretné tenni a felhőszolgáltatás a Visual Studio Team Services (VSTS), gyorsan hozhat létre, és ezután vsts-ben történő közzététel beállítása az Azure gyors üzembe helyezés vagy az irányítópulton. További információkért lásd: [folyamatos Készregyártás az Azure használatával a Visual Studio Team Services által][TFSTutorialForCloudService], vagy tekintse meg a Súgó a **gyors üzembe helyezés** lapot.
+> Ha közzé szeretné tenni a cloud Services, Azure DevOps, gyorsan hozhat létre, és ezután az Azure DevOps történő közzététel beállítása az Azure gyors üzembe helyezés vagy az irányítópulton. További információkért lásd: [folyamatos Készregyártás az Azure által az Azure DevOps használatával][TFSTutorialForCloudService], vagy tekintse meg a Súgó a **gyors üzembe helyezés** lapot.
 >
 >
 

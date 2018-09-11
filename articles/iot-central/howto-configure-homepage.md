@@ -8,26 +8,26 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 93f406a1d5e4a8c2ce5ad1db0c3936dd3ad2bfb9
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: 1b4d97c1e8c4360028cb249b7e1a61f9fc26e9f2
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38991302"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44300528"
 ---
 ## <a name="configuring-homepage"></a>Kezdőlap konfigurálása
 
 A kezdőlapon az oldal, amely betölti, ha a hozzáféréssel rendelkező felhasználók keresse meg az alkalmazás URL-címe. Ha az alkalmazás létrehozásakor a "Contoso minta" vagy "Minta Devkits" alkalmazássablonok választotta, az alkalmazás fogja előre meghatározott kezdőlapok. Ha azonban az "Egyéni alkalmazás" sablon, akkor a kezdőlapon üres lesz.
 
-Például itt látható a "Contoso minta" sablonon alapuló alkalmazások kezdőlapja. Testre szabhatja az alkalmazás kezdőlapja, először kapcsolja **a** **tervezési mód** jobb felső sarokban lévő. 
+Például itt látható a "Contoso minta" sablonon alapuló alkalmazások kezdőlapja. Testre szabhatja az alkalmazás kezdőlapja, először válassza **szerkesztése** jobb felső sarokban lévő. 
 
 ![A "Contoso minta" sablonon alapuló alkalmazások kezdőlapja](media\howto-configure-homepage\image1.png)
 
-Bekapcsolásával **tervezési mód** **a**, ekkor megnyílik az irányítópult-könyvtár a bal oldali panelen. Nincsenek csempék és irányítópultot is hozzáadhatók a kezdőlap testreszabása primitívekre számos különböző típusú.
+Kiválasztásával **szerkesztése**, ekkor megnyílik az irányítópult-könyvtár a bal oldali panelen. Nincsenek csempék és irányítópultot is hozzáadhatók a kezdőlap testreszabása primitívekre számos különböző típusú.
 
 ![Irányítópult-könyvtár](media\howto-configure-homepage\image2.png)
 
-Hozzáadhat például egy **beállításait és tulajdonságait** csempére, hogy az aktuális értékek beállításait és tulajdonságait, a választott megjelenítés. Ehhez először válassza ki a **eszköz sablon** válassza ki a **eszközpéldány**. Miután egy cím, és kattintson a csempére, adjon egy **beállítás** vagy egy **tulajdonság** megjelenítéséhez. Ebben az esetben kiválasztottuk **ventilátor sebesség**. Kattintson a **mentése** miatt ez a csempe jelenik meg a kezdőlapon.
+Hozzáadhat például egy **beállításait és tulajdonságait** csempére, hogy az aktuális értékek beállításait és tulajdonságait, a választott megjelenítés. Ehhez először válassza ki a **eszköz sablon** válassza ki a **eszközpéldány**. Miután egy cím, és kattintson a csempére, adjon egy **beállítás** vagy egy **tulajdonság** megjelenítéséhez. Ebben az esetben kiválasztottuk **ventilátor sebesség**. Kattintson a **kész** miatt ez a csempe jelenik meg a kezdőlapon.
 
 ![Részletes beállítások és tulajdonságok "Konfigurálása eszköz részletei" képernyő](media\howto-configure-homepage\image3.png)
 

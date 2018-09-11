@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: jovanpop
 ms.reviewer: carlrab, sashan
-ms.openlocfilehash: 7a60d800ce76f8ff9a903cc068fa7bc87cd33f3f
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 1aab8dfd3a4bcc33cddb71dec08157ee7eb68f8d
+ms.sourcegitcommit: 465ae78cc22eeafb5dfafe4da4b8b2138daf5082
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43700635"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44324648"
 ---
 # <a name="high-availability-and-azure-sql-database"></a>Magas rendelkezésre állású és az Azure SQL Database
 
@@ -57,7 +57,7 @@ Emellett a kritikus fontosságú üzleti fürt biztosít beépített csak olvash
 
 ## <a name="zone-redundant-configuration-preview"></a>Zóna redundáns configuration (előzetes verzió)
 
-Alapértelmezés szerint a kvórum-set a replikákat a helyi tárolási konfigurációk jönnek létre ugyanabban az adatközpontban. Bevezetésével [Azure-beli rendelkezésre állási zónák](../availability-zones/az-overview.md), lehetősége nyílik a különböző replikába helyezni, a kvórum-készletek a különböző rendelkezésre állási zónák ugyanabban a régióban. Kiküszöbölése a meghibásodási pont, a vezérlő körgyűrűs is duplikálódnak több zónában, három átjárókiszolgáló körök (GW). Egy adott átjáró kör útválasztást vezérlik [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) (ATM). Mivel a zóna redundáns konfiguráció nem hoz létre az adatbázis-redundancia, a prémium szintű a rendelkezésre állási zónák használatát, vagy üzletileg kritikus (előzetes verzió) szolgáltatásszintek részeként érhető el költség. A zóna redundáns adatbázis kiválasztásával teheti a prémium szintű vagy üzletileg kritikus (előzetes verzió) adatbázisok rugalmas jóval nagyobb körét a hiba, katasztrofális adatközpont valamilyen okból kimaradás lép, az alkalmazáslogika módosítása nélkül. A zóna redundáns konfiguráció bármely meglévő prémium és üzletileg kritikus fontosságú adatbázisok vagy készletek (előzetes verzió) is konvertálható.
+Alapértelmezés szerint a kvórum-set a replikákat a helyi tárolási konfigurációk jönnek létre ugyanabban az adatközpontban. Bevezetésével [Azure-beli rendelkezésre állási zónák](../availability-zones/az-overview.md), lehetősége nyílik a különböző replikába helyezni, a kvórum-készletek a különböző rendelkezésre állási zónák ugyanabban a régióban. Kiküszöbölése a meghibásodási pont, a vezérlő körgyűrűs is duplikálódnak több zónában, három átjárókiszolgáló körök (GW). Egy adott átjáró kör útválasztást vezérlik [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) (ATM). A zóna redundáns konfiguráció nem hoz létre az adatbázis-redundancia, mert a rendelkezésre állási zónák (előzetes verzió) használatát a prémium szintű és az üzletileg kritikus szolgáltatási szinten érhető el részeként költség. A zóna redundáns adatbázis kiválasztásával teheti a prémium szintű és az üzletileg kritikus adatbázisokat rugalmas sokkal nagyobb körét a hiba, katasztrofális adatközpont valamilyen okból kimaradás lép, az alkalmazáslogika módosítása nélkül. A zóna redundáns konfiguráció bármely meglévő prémium és az üzletileg kritikus adatbázisokat vagy készleteket is konvertálható.
 
 A redundáns kvórum-zónakészlet replikák néhány távolsága a különböző adatközpontokban van, mert a hálózati késés növelheti a véglegesítés ideje, és így hatással az egyes OLTP számítási feladatok teljesítményére. Mindig visszatérhet az Egyzónás konfiguráció a zóna redundancia beállítás letiltásával. Ez a folyamat egy adatművelet méretét, és hasonló a normál szolgáltatás szolgáltatásiszint-célkitűzés (SLO) frissítése. A folyamat végén az adatbázis vagy készlet való áttelepítése a zóna redundáns kört a zónában kört vagy fordítva.
 
@@ -69,13 +69,13 @@ A magas rendelkezésre állású architektúra redundáns zóna verziója által
 ![magas rendelkezésre állású architektúra zónaredundáns](./media/sql-database-high-availability/high-availability-architecture-zone-redundant.png)
 
 ## <a name="read-scale-out"></a>Felskálázás olvasása
-Leírt, prémium és üzletileg kritikus (előzetes verzió) szolgáltatás rétegek emelés Kvórum beállítása és az AlwaysOn technológia a magas rendelkezésre álláshoz egyetlen zóna és a redundáns zónabeállítások is. AlwaysOn előnyeinek egyik célja, hogy a replika mindig a tranzakciós szempontból konzisztens állapotban van. A replika az elsődleges teljesítményszint rendelkezik, mert az alkalmazás kihasználhatja, hogy további kapacitást a csak olvasható számítási feladatok részeként karbantartási költségek (olvasási horizontális felskálázás). Ezzel a módszerrel a csak olvasási lekérdezések elkülönül a fő olvasási és írási számítási feladatok, és nem lesz hatással a teljesítményét. Olvasási horizontális felskálázás funkció célja az alkalmazások, amelyek logikailag tartalmaznak csak olvasható feladatokhoz, mint például az elemzési választják, és ezért hasznosíthatja a további kapacitások anélkül, hogy az elsődleges csatlakozna. 
+Leírt, a prémium és üzletileg kritikus szolgáltatási szintek a magas rendelkezésre álláshoz egyetlen zóna és a redundáns zónabeállítások is használja ki a kvórum beállítása és AlwaysOn technológia. AlwaysOn előnyeinek egyik célja, hogy a replika mindig a tranzakciós szempontból konzisztens állapotban van. A replika az elsődleges teljesítményszint rendelkezik, mert az alkalmazás kihasználhatja, hogy további kapacitást a csak olvasható számítási feladatok részeként karbantartási költségek (olvasási horizontális felskálázás). Ezzel a módszerrel a csak olvasási lekérdezések elkülönül a fő olvasási és írási számítási feladatok, és nem lesz hatással a teljesítményét. Olvasási horizontális felskálázás funkció célja az alkalmazások, amelyek logikailag tartalmaznak csak olvasható feladatokhoz, mint például az elemzési választják, és ezért hasznosíthatja a további kapacitások anélkül, hogy az elsődleges csatlakozna. 
 
 Az olvasási horizontális Felskálázás funkció használatához, hogy adott adatbázissal, explicit módon aktiválnia kell az adatbázis létrehozásakor vagy később a PowerShell használatával meghívásával konfiguráció módosítása a [Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase) vagy a [New-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase) parancsmagok vagy az Azure Resource Manager REST API használatával a [- adatbázisok létrehozása vagy frissítése](/rest/api/sql/databases/createorupdate) metódust.
 
 Olvasási horizontális Felskálázás egy adatbázis engedélyezését követően, hogy az adatbázis csatlakozó alkalmazások lesznek irányítva, vagy az írható-olvasható replika, vagy egy csak olvasható replika adatbázis szerint a `ApplicationIntent` tulajdonság, az alkalmazás konfigurálása kapcsolati karakterlánc. Információk a `ApplicationIntent` tulajdonságot használja, lásd: [adja meg az alkalmazások szándékáról](https://docs.microsoft.com/sql/relational-databases/native-client/features/sql-server-native-client-support-for-high-availability-disaster-recovery#specifying-application-intent). 
 
-Ha olvasási kibővített le van tiltva, vagy a ReadScale tulajdonsága egy nem támogatott szolgáltatási rétegben, minden kapcsolat a rendszer átirányítja az írható-olvasható replika, a független a `ApplicationIntent` tulajdonság.  
+Ha olvasási kibővített le van tiltva, vagy a ReadScale tulajdonsága egy nem támogatott szolgáltatási rétegben, minden kapcsolat a rendszer átirányítja az írható-olvasható replika, a független a `ApplicationIntent` tulajdonság.
 
 ## <a name="conclusion"></a>Összegzés
 Az Azure SQL Database és az Azure platform mélyen integrált, és nagymértékben függ, a Service Fabric hiba észlelése és a helyreállítás, az Azure Storage-Blobokból a data protection és a hibatűrés magasabb rendelkezésre állási zónák. Egy időben az Azure SQL database teljes mértékben kihasználja az Always On rendelkezésre állási csoport technológia a replikációt és feladatátvételt az SQL Server box termékből. Ezek a technológiák kombinációja lehetővé teszi, hogy az alkalmazásokat a teljes mértékben a vegyes tárolási modell előnyeinek és a legnagyobb erőforrás-igényű SLA-kat támogatja. 

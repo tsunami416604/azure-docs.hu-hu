@@ -10,14 +10,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/06/2018
+ms.date: 09/07/2018
 ms.author: tomfitz
-ms.openlocfilehash: e0a2e26fb3dd0afeb4d1f3d030cb42bdc181e63c
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 807026d2de40de1b14d2eb1d9eeb9da0aade4ad7
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44094960"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44297757"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe
 
@@ -163,7 +163,7 @@ A művelet továbbra is fut, miközben továbbra is megjelenik a 202-es állapot
 
 ## <a name="services-that-can-be-moved"></a>Áthelyezhető szolgáltatások
 
-A szolgáltatások, amelyek lehetővé teszik egy új erőforráscsoportot és az előfizetés áthelyezése a következők:
+Az alábbi lista egy új erőforráscsoportot és egy előfizetést is áthelyezhető Azure-szolgáltatások általános összegzését tartalmazza. Nagyobb részletességgel, lásd: [művelet támogatási erőforrások áthelyezése](move-support-resources.md).
 
 * Analysis Services
 * API Management
@@ -173,6 +173,7 @@ A szolgáltatások, amelyek lehetővé teszik egy új erőforráscsoportot és a
 * Automation
 * Azure Active Directory B2C
 * Azure Cosmos DB
+* Az Azure DevOps - szervezetek számára az Azure DevOps nem Microsoft-bővítmény vásárlása kell [megszakítja a vásárlások](https://go.microsoft.com/fwlink/?linkid=871160) előtt azok is a fiók áthelyezése előfizetések között.
 * Azure Maps
 * Azure Relay
 * Az Azure Stack - regisztrációk
@@ -227,12 +228,11 @@ A szolgáltatások, amelyek lehetővé teszik egy új erőforráscsoportot és a
 * Tekintse meg a virtuális gépek (klasszikus) – [klasszikus üzembe helyezési korlátozásoknak](#classic-deployment-limitations)
 * Tekintse meg a Virtual Machine Scale Sets – [virtuális gépek korlátozások](#virtual-machines-limitations)
 * Tekintse meg a virtuális hálózatok - [virtuális hálózatok korlátozások](#virtual-networks-limitations)
-* A Visual Studio Team Services - a VSTS-fiókok nem a Microsofttól kiterjesztésű vásárol kell [megszakítja a vásárlások](https://go.microsoft.com/fwlink/?linkid=871160) előtt azok is a fiók áthelyezése előfizetések között.
 * VPN Gateway
 
 ## <a name="services-that-cannot-be-moved"></a>Szolgáltatások, amelyek nem lehet áthelyezni
 
-A szolgáltatások, amelyek jelenleg nem engedélyezi az erőforrások áthelyezése a következők:
+Az alábbi lista nem lehet áthelyezni egy új erőforráscsoportot és egy előfizetést az Azure-szolgáltatások általános összegzését tartalmazza. Nagyobb részletességgel, lásd: [művelet támogatási erőforrások áthelyezése](move-support-resources.md).
 
 * AD Domain Services
 * Hibrid AD Állapotfigyelő szolgáltatás

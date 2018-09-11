@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 03/29/2018
 ms.author: cynthn
-ms.openlocfilehash: 5f19a6cb356332e95f96484953f1be3df006dd09
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 03723b8653e42bca371f47e16657e7e973c257ae
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37931922"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44294986"
 ---
 # <a name="how-to-use-packer-to-create-windows-virtual-machine-images-in-azure"></a>Windows virtuálisgép-rendszerképek létrehozása az Azure-ban a Packer használatával
 Az Azure-ban minden virtuális gép (VM) jön létre egy rendszerképből, amely meghatározza a Windows-telepítési és az operációs rendszer verzióját. Rendszerképek előre telepített alkalmazások és konfigurációk tartalmazhatnak. Az Azure piactér sok első és a külső képek biztosít az operációs rendszer leggyakrabban használt, és az környezetek, vagy létrehozhat saját igényeire szabott lemezképek. Ez a cikk részletesen bemutatja a nyílt forráskódú eszköz [Packer](https://www.packer.io/) definiálására és egyéni lemezképeket az Azure-ban.
@@ -36,7 +36,7 @@ $location = "East US"
 New-AzureRmResourceGroup -Name $rgName -Location $location
 ```
 
-## <a name="create-azure-credentials"></a>Az Azure hitelesítő adatok létrehozása
+## <a name="create-azure-credentials"></a>Azure-beli hitelesítő adatok létrehozása
 Csomagolói hitelesíti az Azure-ral egyszerű szolgáltatás használatával. Azure-beli szolgáltatásnév egy biztonsági identitás, az alkalmazások, szolgáltatások és automatizálási eszközökkel, mint például a Packer használható. Szabályozhatja és az egyszerű szolgáltatás az Azure-ban hajthat végre műveleteket helyrendszerszerepkörökre engedélyeinek megadásához.
 
 Az egyszerű szolgáltatás létrehozása [New-AzureRmADServicePrincipal](/powershell/module/azurerm.resources/new-azurermadserviceprincipal) és az egyszerű szolgáltatás létrehozása és-erőforrások kezelése a engedélyeket [New-AzureRmRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment):
@@ -243,6 +243,6 @@ A virtuális Gépen, amely tartalmazza az IIS telepítését a Packer webhelyki�
 
 
 ## <a name="next-steps"></a>További lépések
-Ebben a példában használt Packer a Virtuálisgép-rendszerkép létrehozása az IIS már telepítve van. A Virtuálisgép-lemezkép együtt a meglévő központi telepítési munkafolyamatokba, használhatja például az alkalmazás üzembe helyezése a Team Services, az Ansible, Chef vagy Puppet a lemezképből létrehozott virtuális gépekre.
+Ebben a példában használt Packer a Virtuálisgép-rendszerkép létrehozása az IIS már telepítve van. A Virtuálisgép-lemezkép együtt a meglévő központi telepítési munkafolyamatokba, használhatja például az alkalmazás üzembe helyezése az Azure DevOps-szolgáltatásokkal, az Ansible, Chef vagy Puppet a lemezképből létrehozott virtuális gépek.
 
 További Packer példasablonkészlet más Windows-disztribúciókat, lásd: [a GitHub-adattár](https://github.com/hashicorp/packer/tree/master/examples/azure).

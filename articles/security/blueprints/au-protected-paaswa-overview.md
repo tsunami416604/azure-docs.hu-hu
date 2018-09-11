@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 08/23/2018
 ms.author: meladie
-ms.openlocfilehash: 7d200cfa6a529c33555a18cd6598183fedbfd2fc
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: ea9c9d773cb863c6ee2b052fcbd097275f00fc87
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42818273"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44300987"
 ---
 # <a name="azure-security-and-compliance-blueprint---paas-web-application-for-australia-protected"></a>Azure biztonsági és megfelelőségi terv – PaaS-webalkalmazás Ausztráliában védett
 
@@ -101,7 +101,7 @@ Ez az architektúra App Service Environment-környezetek használatának engedé
 - [Webalkalmazási tűzfal – korlátozzák az adatokat](https://docs.microsoft.com/azure/app-service-web/app-service-app-service-environment-web-application-firewall)
 - Lehetővé teszi [Azure SQL Database-forgalom](https://docs.microsoft.com/azure/app-service-web/app-service-app-service-environment-network-architecture-overview)
 
-**Az Azure Web App**: [Azure Web Apps](https://docs.microsoft.com/azure/app-service/) lehetővé teszi ügyfeleink számára hozhat létre és üzemeltethet webalkalmazásokat az általuk választott programozási nyelven infrastruktúra kezelése nélkül. Automatikus méretezést és magas rendelkezésre állást kínál, támogatja a Windows és a Linux rendszert is, valamint lehetővé teszi az automatikus telepítéseket a GitHub, Visual Studio Team Services vagy bármely egyéb Git-adattárból.
+**Az Azure Web App**: [Azure Web Apps](https://docs.microsoft.com/azure/app-service/) lehetővé teszi ügyfeleink számára hozhat létre és üzemeltethet webalkalmazásokat az általuk választott programozási nyelven infrastruktúra kezelése nélkül. Automatikus méretezést biztosít, és magas rendelkezésre állás, Windows és Linux egyaránt támogatja, és lehetővé teszi az automatikus telepítéseket a GitHub-, Azure DevOps-szolgáltatásokkal, vagy bármely egyéb Git-adattárból.
 
 ### <a name="virtual-network"></a>Virtual Network
 Az architektúra egy 10.200.0.0/16 címtere a privát virtuális hálózat határozza meg.
@@ -202,7 +202,7 @@ A következő Log Analytics [felügyeleti megoldások](https://docs.microsoft.co
 
 **Az Azure Monitor**: [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) segít a felhasználóknak a teljesítmény, biztonság fenntartására és a trendek azonosítására által lehetővé teszi a cégeknek naplózása, riasztásokat hozhat létre, és archiválja az adatokat, többek között API-hívások nyomon követése az Azure-ban az erőforrásokat.
 
-Az Azure Network Watcher: [Azure Network Watcher] 9https://docs.microsoft.com/en-us/azure/network-watcher/network-watcher-monitoring-overview) eszközeivel monitorozása, diagnosztizálása, megtekintheti a metrikákat, és engedélyezheti vagy tilthatja le a naplókat a további erőforrások az Azure-beli virtuális hálózathoz.  Közösségének entitások meg kell valósítania a Network Watcher flow-naplók az NSG-ket és virtuális gépekhez. Ezek a naplók, amely csak a biztonsági naplók vannak tárolva, és a tárfiókhoz való hozzáférést kell biztosítani, a szerepkör alapú hozzáférés-vezérlés dedikált tárfiókban kell tárolni.
+Az Azure Network Watcher: [Azure Network Watcher] 9 https://docs.microsoft.com/en-us/azure/network-watcher/network-watcher-monitoring-overview) eszközeivel monitorozása, diagnosztizálása, megtekintheti a metrikákat, és engedélyezheti vagy tilthatja le a naplókat a további erőforrások az Azure-beli virtuális hálózathoz.  Közösségének entitások meg kell valósítania a Network Watcher flow-naplók az NSG-ket és virtuális gépekhez. Ezek a naplók, amely csak a biztonsági naplók vannak tárolva, és a tárfiókhoz való hozzáférést kell biztosítani, a szerepkör alapú hozzáférés-vezérlés dedikált tárfiókban kell tárolni.
 
 ## <a name="threat-model"></a>Fenyegetések modellezése
 

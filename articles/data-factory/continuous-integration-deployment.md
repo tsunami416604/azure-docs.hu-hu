@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: douglasl
-ms.openlocfilehash: 8bbc64a34b5ae95e044b95f921770adc9045574c
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 57c691271c2b2673ade40d600162934341e18a81
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42054928"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44300240"
 ---
 # <a name="continuous-integration-and-deployment-in-azure-data-factory"></a>Folyamatos integráció és üzembe helyezés az Azure Data Factoryban
 
@@ -53,9 +53,9 @@ Válassza ki **fájl betöltése** válassza ki az exportált Resource Manager-s
 ![Nyissa meg a kapcsolati karakterlánc kód megtekintéséhez](media/continuous-integration-deployment/continuous-integration-codeview.png)
 
 ## <a name="continuous-integration-lifecycle"></a>Folyamatos integráció életciklusa
-Itt van a folyamatos integráció és üzembe helyezés, amelyekkel a teljes életciklusát a Data Factory felhasználói felületén VSTS GIT-integráció engedélyezése után:
+Itt van a folyamatos integráció és üzembe helyezés, amelyekkel a teljes életciklusát a Data Factory felhasználói felületén Azure fejlesztési és üzemeltetési szolgáltatás GIT-integráció engedélyezése után:
 
-1.  Állítsa be a fejlesztési adat-előállító a vsts-sel, amelyben minden fejlesztő hozhat létre Data Factory-erőforrások, például folyamatokat, adatkészletek és így tovább.
+1.  Állítsa be egy fejlesztési data factoryt az Azure DevOps-szolgáltatásokkal, amelyben minden fejlesztő hozhat létre Data Factory-erőforrások, például folyamatokat, adatkészletek és így tovább.
 
 1.  A fejlesztők ezután módosíthatja az erőforrások, például folyamatokat. Mivel ezek a módosításokat, és kiválaszthatja **Debug** hogyan a folyamatfuttatások a legutóbbi módosítások megtekintéséhez.
 
@@ -67,25 +67,25 @@ Itt van a folyamatos integráció és üzembe helyezés, amelyekkel a teljes él
 
 1.  Az exportált Resource Manager-sablon különböző paraméterfájlokkal a teszt factory és az éles előállító is telepíthető.
 
-## <a name="automate-continuous-integration-with-vsts-releases"></a>Folyamatos integráció a VSTS-kiadások automatizálása
+## <a name="automate-continuous-integration-with-azure-devops-services-releases"></a>Folyamatos integráció Azure fejlesztési és üzemeltetési szolgáltatások kiadásokban a automatizálása
 
-Az alábbiakban a lépések a VSTS-kiadási beállításához, adat-előállító több környezethez való telepítésének automatizálásához.
+Az alábbiakban a lépéseket egy Azure-fejlesztési és üzemeltetési szolgáltatások kiadás beállításához, adat-előállító több környezethez való telepítésének automatizálásához.
 
-![Folyamatos integráció, a vsts-sel ábrája](media/continuous-integration-deployment/continuous-integration-image12.png)
+![Folyamatos integráció Azure DevOps-szolgáltatásokkal ábrája](media/continuous-integration-deployment/continuous-integration-image12.png)
 
 ### <a name="requirements"></a>Követelmények
 
--   Egy Azure-előfizetéshez kapcsolódó Team Foundation Server vagy a VSTS használatával a [ *Azure Resource Manager-szolgáltatásvégpont*](https://docs.microsoft.com/vsts/build-release/concepts/library/service-endpoints#sep-azure-rm).
+-   A Team Foundation Server vagy az Azure DevOps-szolgáltatásokkal a kapcsolódó Azure-előfizetés a [ *Azure Resource Manager-szolgáltatásvégpont*](https://docs.microsoft.com/azure/devops/pipelines/library/service-endpoints#sep-azure-rm).
 
--   VSTS Git konfigurált rendelkező Data Factoryt.
+-   Az Azure fejlesztési és üzemeltetési szolgáltatás Git konfigurált rendelkező Data Factoryt.
 
 -   Egy [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) tartalmazó a titkos kulcsok.
 
-### <a name="set-up-a-vsts-release"></a>Egy VSTS-kiadási beállítása
+### <a name="set-up-a-azure-devops-services-release"></a>Állítsa be az Azure fejlesztési és üzemeltetési szolgáltatások kiadás
 
-1.  Nyissa meg a VSTS-oldalát, azzal, az adat-előállító konfigurált ugyanabban a projektben.
+1.  Nyissa meg az Azure DevOps-szolgáltatásokkal oldalát, a Data factoryval konfigurált ugyanabban a projektben.
 
-1.  Kattintson a felső menüben **készítése és kiadása** &gt; **kiadásokban** &gt; **kiadási definíció létrehozása**.
+1.  Kattintson a felső menüben **Azure folyamatok** &gt; **kiadásokban** &gt; **kiadási definíció létrehozása**.
 
     ![](media/continuous-integration-deployment/continuous-integration-image6.png)
 
@@ -113,15 +113,15 @@ Az alábbiakban a lépések a VSTS-kiadási beállításához, adat-előállít�
 
     ![](media/continuous-integration-deployment/continuous-integration-image9.png)
 
-1.  A kiadási definíció mentéséhez.
+1.  Mentse a kiadási folyamathoz.
 
-1.  Hozzon létre egy új kiadása, a kiadási definíció.
+1.  Hozzon létre egy új kiadás az ebben a kiadásban folyamat.
 
     ![](media/continuous-integration-deployment/continuous-integration-image10.png)
 
 ### <a name="optional---get-the-secrets-from-azure-key-vault"></a>Nem kötelező – a titkos kulcsok lekérése az Azure Key vault
 
-Ha rendelkezik egy Azure Resource Manager-sablonban adja át a titkos kulcsokat, javasoljuk, az Azure Key Vault használata a VSTS-kiadási.
+Ha rendelkezik egy Azure Resource Manager-sablonban adja át a titkos kulcsok, az Azure DevOps-szolgáltatásokkal kiadással az Azure Key Vault használatát javasoljuk.
 
 A titkos kulcsok kezeléséhez két módja van:
 
@@ -148,7 +148,7 @@ A titkos kulcsok kezeléséhez két módja van:
 
     -   A paraméterfájl kell lennie, valamint a közzététel ágban.
 
-1.  Adjon hozzá egy [Azure Key Vault feladat](https://docs.microsoft.com/vsts/build-release/tasks/deploy/azure-key-vault) az előző szakaszban ismertetett Azure Resource Manager üzembe helyezése előtt:
+1.  Adjon hozzá egy [Azure Key Vault feladat](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-key-vault) az előző szakaszban ismertetett Azure Resource Manager üzembe helyezése előtt:
 
     -   Válassza ki a **feladatok** lapon, hozzon létre egy új feladatot, keressen rá a **Azure Key Vault** , és adja hozzá.
 
@@ -156,13 +156,13 @@ A titkos kulcsok kezeléséhez két módja van:
 
     ![](media/continuous-integration-deployment/continuous-integration-image8.png)
 
-### <a name="grant-permissions-to-the-vsts-agent"></a>Engedélyek megadása a VSTS-ügynök
-Az Azure Key Vault-tevékenység az első alkalommal a hozzáférés megtagadva hiba miatt sikertelen lehet. A kiadás a naplók letöltéséhez, és keresse meg a `.ps1` fájlt a paranccsal a VSTS-ügynök engedélyt. Futtathatja a parancsot közvetlenül, vagy a résztvevő-azonosító átmásolhatja a fájlt, és manuálisan adja hozzá a hozzáférési szabályzat az Azure Portalon. (*Első* és *lista* rendszer szükséges minimális engedélyeket).
+### <a name="grant-permissions-to-the-azure-devops-services-agent"></a>Engedélyek megadása az Azure DevOps-Services-ügynök
+Az Azure Key Vault-tevékenység az első alkalommal a hozzáférés megtagadva hiba miatt sikertelen lehet. A kiadás a naplók letöltéséhez, és keresse meg a `.ps1` fájlt adjon jogosultságot az Azure DevOps-Services-ügynök a parancsot. Futtathatja a parancsot közvetlenül, vagy a résztvevő-azonosító átmásolhatja a fájlt, és manuálisan adja hozzá a hozzáférési szabályzat az Azure Portalon. (*Első* és *lista* rendszer szükséges minimális engedélyeket).
 
 ### <a name="update-active-triggers"></a>Aktív eseményindítók frissítése
 Központi telepítés is sikertelen, ha aktív eseményindítók frissíti. Aktív eseményindítók frissítéséhez szüksége manuális állítják őket, és indítsa el őket az üzembe helyezés után. Erre a célra az Azure PowerShell-lel feladat adhat hozzá az alábbi példában látható módon:
 
-1.  A VSTS-kiadási tevékenységek lapján keresse meg **Azure PowerShell-lel** , és adja hozzá.
+1.  Az Azure fejlesztési és üzemeltetési szolgáltatások üzembehelyezési feladatok lapon keressen **Azure PowerShell-lel** , és adja hozzá.
 
 1.  Válasszon **Azure Resource Manager** kapcsolatként írja be, és válassza ki az előfizetését.
 
@@ -180,7 +180,7 @@ Hasonló lépésekkel és a hasonló kóddal (az a `Start-AzureRmDataFactoryV2Tr
 
 ## <a name="sample-deployment-template"></a>A mintasablon üzembe helyezés
 
-Íme egy példa központi telepítési sablont, amelyet importálhat a vsts-ben.
+Íme egy minta központi telepítési sablont, amelyet importálhat az Azure DevOps-szolgáltatásokkal.
 
 ```json
 {

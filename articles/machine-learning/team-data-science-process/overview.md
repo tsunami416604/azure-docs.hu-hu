@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/20/2017
 ms.author: deguhath
-ms.openlocfilehash: e44b21530cb3db8a2ba354ef19ebb3d2c557ecae
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 2cce0b883c18a813aed386186c825c26b0e4b674
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39125759"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44303778"
 ---
 # <a name="what-is-the-team-data-science-process"></a>Mi a csoportos adatelemzési folyamat?
 
@@ -71,7 +71,7 @@ A következő ábra összetevőkről (zöld) (a vízszintes tengely) életciklus
 
 ## <a name="standardized-project-structure"></a>Szabványos projektstruktúra
 
-Az összes projekt megosztása a könyvtárstruktúra és sablonok használatával projekt dokumentumok kellene megkönnyíti a projektjeikhez további információt a csoport tagjai. Kód és a dokumentumok a verziókezelő rendszer (virtuális) például a Git, TFS Subversion engedélyezése és együttműködést vannak tárolva. Követési feladatokat és a egy követési rendszer például Jira projektkezelési szolgáltatásai, Rally, a Visual Studio Team Services lehetővé teszi, hogy közelebb nyomon követését, a kód egyes funkciókra. Az ilyen nyomkövetési is lehetővé teszi a csapatok beszerzése jobban költségekről. TDSP azt javasolja, különálló-tárházat az egyes projektek létrehozása a alapú VC-k verziószámozása, információ-biztonság és együttműködést. A szabványos struktúra az összes projekt segítségével hozhat létre az intézményi ismeretek a szervezeten belül.
+Az összes projekt megosztása a könyvtárstruktúra és sablonok használatával projekt dokumentumok kellene megkönnyíti a projektjeikhez további információt a csoport tagjai. Kód és a dokumentumok a verziókezelő rendszer (virtuális) például a Git, TFS Subversion engedélyezése és együttműködést vannak tárolva. Követési feladatokat és a szolgáltatások a nyomon követési rendszer például a Jira, Rally és az Azure DevOps-projektkezelési lehetővé teszi, hogy közelebb nyomon követését, a kód egyes funkciókra. Az ilyen nyomkövetési is lehetővé teszi a csapatok beszerzése jobban költségekről. TDSP azt javasolja, különálló-tárházat az egyes projektek létrehozása a alapú VC-k verziószámozása, információ-biztonság és együttműködést. A szabványos struktúra az összes projekt segítségével hozhat létre az intézményi ismeretek a szervezeten belül.
 
 Sablonok a mappastruktúrát és a nem szabványos helyekre szükséges dokumentumok biztosítunk. A mappastruktúra rendszerezi a fájlokat, amelyek az adatok feltárása és a szolgáltatás kivonása kódját tartalmazza, és, jegyezze fel a modell az ismétlések. Ezek a sablonok megkönnyítik a csapattagok, melyben megismerheti a mások által végzett munka, illetve új tagokat felvenni a csapatok számára. Könnyű megtekintése és módosítása a dokumentumok sablonjainak markdown formátumban. Sablonok segítségével biztosíthat ellenőrzőlista biztosítása érdekében, hogy a probléma, jól definiált és, hogy teljesíti-e az elvárt minőségi le minden projekt fő kérdést. Példák erre vonatkozóan:
 

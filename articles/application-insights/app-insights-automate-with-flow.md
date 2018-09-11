@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/25/2017
 ms.author: mbullwin
-ms.openlocfilehash: 28228755f76f38ef2ed5e50c776a99427118e090
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 449a6274b67f3eb72ea6d8bd19f555fc59158d7e
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39424551"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44299100"
 ---
 # <a name="automate-azure-application-insights-processes-with-the-connector-for-microsoft-flow"></a>Az összekötő Azure Application Insights folyamatok automatizálása a Microsoft Flow
 
@@ -25,7 +25,7 @@ Tegye észre magát ismételten ugyanazon lekérdezéseket futtat, ellenőrizze,
 
 Ez az integráció, mostantól automatizálhatja számos olyan folyamatokat egyetlen kódsor megírása nélkül. Az Application Insights művelet használatával hoz létre egy folyamatot, miután a folyamat automatikusan futtatja az Application Insights-elemzési lekérdezés. 
 
-További műveleteket is hozzáadhat. Microsoft Flow elérhetővé több száz műveleteket. Használhatja például a Microsoft Flow automatikusan e-mail-értesítés küldése vagy hibajelentés létrehozása a Visual Studio Team Services. Használhatja egy a többhöz [sablonok](https://ms.flow.microsoft.com/en-us/connectors/shared_applicationinsights/?slug=azure-application-insights) , melyek a Microsoft Flow-összekötő érhetőek el. Ezek a sablonok gyorsítsa fel a folyamat létrehozásának folyamatán. 
+További műveleteket is hozzáadhat. Microsoft Flow elérhetővé több száz műveleteket. Használhatja például a Microsoft Flow automatikusan e-mail-értesítés küldése vagy hibajelentés létrehozása az Azure DevOps. Használhatja egy a többhöz [sablonok](https://ms.flow.microsoft.com/en-us/connectors/shared_applicationinsights/?slug=azure-application-insights) , melyek a Microsoft Flow-összekötő érhetőek el. Ezek a sablonok gyorsítsa fel a folyamat létrehozásának folyamatán. 
 
 <!--The Application Insights connector also works with [Azure Power Apps](https://powerapps.microsoft.com/en-us/) and [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/?v=17.23h). --> 
 

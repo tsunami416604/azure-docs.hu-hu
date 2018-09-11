@@ -1,30 +1,23 @@
 ---
 title: 'Számítógép csatlakoztatása Azure-beli virtuális hálózathoz pont–hely kapcsolat és az Azure natív tanúsítványalapú hitelesítésének használatával: Azure Portal | Microsoft Docs'
-description: Windows- vagy Mac OS X-ügyfelek biztonságos csatlakoztatása egy Azure-beli virtuális hálózathoz, a pont–hely kapcsolat és önaláírt vagy hitelesítésszolgáltató által kibocsátott tanúsítványok használatával. Ebben a cikkben az Azure Portalon fogunk dolgozni.
+description: Windows, Mac OS X és Linux rendszerű ügyfelek biztonságos csatlakoztatása egy Azure virtuális hálózat P2S használatával, és önaláírt vagy hitelesítésszolgáltató által kibocsátott tanúsítványok. Ebben a cikkben az Azure Portalon fogunk dolgozni.
 services: vpn-gateway
-documentationcenter: na
 author: cherylmc
-manager: jpconnock
-editor: ''
 tags: azure-resource-manager
-ms.assetid: a15ad327-e236-461f-a18e-6dbedbf74943
 ms.service: vpn-gateway
-ms.devlang: na
-ms.topic: hero-article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 03/19/2018
+ms.topic: conceptual
+ms.date: 09/06/2018
 ms.author: cherylmc
-ms.openlocfilehash: 4fd82c110590c3aa5ede729b317fb722e58cc406
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
-ms.translationtype: HT
+ms.openlocfilehash: 477913ba13c2bcfe6dd7ba88ee4e53546fd69be6
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "41920356"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44303540"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-native-azure-certificate-authentication-azure-portal"></a>Pont–hely kapcsolat konfigurálása virtuális hálózathoz az Azure natív tanúsítványalapú hitelesítésének használatával: Azure Portal
 
-Ez a cikk ahhoz nyújt segítséget, hogyan lehet biztonságosan csatlakoztatni Windowst vagy Mac OS X-et futtató egyedi ügyfeleket egy Azure-beli virtuális hálózathoz. A pont–hely VPN-kapcsolat akkor hasznos, ha távoli helyről szeretne csatlakozni a virtuális hálózathoz, például otthonról vagy egy konferenciáról. Pont–hely kapcsolatot is használhat helyek közötti VPN helyett, ha csak néhány ügyfelet szeretne egy virtuális hálózathoz csatlakoztatni. A pont–hely kapcsolatok nem igényelnek VPN-eszközt vagy nyilvános IP-címet. Pont–hely kapcsolat esetén SSTP (Secure Socket Tunneling Protocol) vagy IKEv2-protokoll használatával jön létre a VPN-kapcsolat. További információkat a pont–hely VPN-ről a [pont–hely VPN-t ismertető](point-to-site-about.md) témakör tartalmaz.
+Ez a cikk segítséget nyújt a Windows, Linux vagy Mac OS X rendszerű Azure virtuális hálózatba az egyes ügyfelek biztonságos csatlakoztatása. A pont–hely VPN-kapcsolat akkor hasznos, ha távoli helyről szeretne csatlakozni a virtuális hálózathoz, például otthonról vagy egy konferenciáról. Pont–hely kapcsolatot is használhat helyek közötti VPN helyett, ha csak néhány ügyfelet szeretne egy virtuális hálózathoz csatlakoztatni. A pont–hely kapcsolatok nem igényelnek VPN-eszközt vagy nyilvános IP-címet. Pont–hely kapcsolat esetén SSTP (Secure Socket Tunneling Protocol) vagy IKEv2-protokoll használatával jön létre a VPN-kapcsolat. További információkat a pont–hely VPN-ről a [pont–hely VPN-t ismertető](point-to-site-about.md) témakör tartalmaz.
 
 ![Számítógép csatlakoztatása Azure-beli virtuális hálózathoz – pont-hely kapcsolati diagram](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/p2snativeportal.png)
 

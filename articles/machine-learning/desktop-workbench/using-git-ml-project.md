@@ -1,122 +1,122 @@
 ---
-title: A Git-tárház használata az Azure Machine Learning-munkaterület projektek |} Microsoft Docs
-description: Ez a cikk ismerteti, hogyan együtt egy Git-tárházat az Azure Machine Learning-munkaterület-projekt esetében.
+title: Az Azure Machine Learning Workbench-projekt Git-adattár használata |} A Microsoft Docs
+description: Ez a cikk azt ismerteti, hogy egy Git-tárház együttes használata az Azure Machine Learning Workbench-projekt.
 services: machine-learning
 author: hning86
 ms.author: haining
 manager: haining
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 11/18/2017
-ms.openlocfilehash: 134e02f976f1ed0084e24ddbda06ba70b237edad
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 58ab1d77218595344c899dff654ba5b7a5bfb0d8
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34833240"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44296636"
 ---
-# <a name="use-a-git-repo-with-a-machine-learning-workbench-project"></a>A Git-tárház használata a Machine Learning-munkaterület projekt
-Ismerje meg, hogyan Azure Machine Learning-munkaterület segítségével Git verziókezelést, és a tudományos adatok kísérletbe reprodukálhatósági biztosítja. Megtudhatja, hogyan rendelje hozzá a projekt Git-tárház (tárház) felhő.
+# <a name="use-a-git-repo-with-a-machine-learning-workbench-project"></a>A Machine Learning Workbench-projekt Git-adattár használata
+Ismerje meg, hogyan Azure Machine Learning Workbench használja az Git a verziókövetéshez, és megismételhetőség az adatelemzési kísérlet az biztosítja. Ismerje meg, hogyan rendelje hozzá a projekthez egy felhőbeli Git-tárház (adattár).
 
-Machine Learning-munkaterület a Git integráció szolgál. Új projekt létrehozása a projektmappa esetén automatikusan "Git-inicializálása" egy helyi Git-tárház. Egy második, rejtett helyi Git-tárház is létrejön, a fiókiroda AzureMLHistory nevű /\<GUID projekt\>. A fiókirodai nyomon követi az egyes végrehajtásra projekt módosításait. 
+Machine Learning Workbench alkalmazásban a Git-integrációval lett tervezve. Amikor egy új projektet hoz létre, a projektmappa fájllistájának, automatikusan "Git-inicializálása" helyi Git-adattár. Egy második, rejtett helyi Git-tárház is létrejön egy ágat AzureMLHistory nevű /\<GUID projekt\>. Az ág nyomon követi az egyes végrehajtási projekt módosításait. 
 
-Az Azure Machine Learning projekt társít egy Git-tárház lehetővé teszi, hogy automatikus verziókezelést, helyileg és távolról. A Git-tárház egy, a Visual Studio Team Services (Team Services). Mivel a Machine Learning projekt Git-tárház társítva, birtokában bárki, aki hozzáfér a távoli tárház töltse le a legfrissebb forráskód (központi) egy másik számítógépre.  
+Automatikus verziókezelést, társítása az Azure Machine Learning-projektet egy Git-adattárral való lehetővé teszi a helyileg és távolról. A Git-adattár üzemel az Azure DevOps. Mivel a Machine Learning-projektet egy Git-adattár társítva, bárki, aki hozzáfér a távoli adattárat töltse le a legújabb forráskóddal (központi) egy másik számítógépre.  
 
 > [!NOTE]
-> Team Services rendelkezik saját hozzáférés-vezérlési lista (ACL), amely független az Azure Machine Learning kísérletezhet szolgáltatás. Felhasználói hozzáférés Git-tárház és a Machine Learning-munkaterület vagy projekt között változhat. Szükség lehet a hozzáférés kezelése. 
+> Az Azure DevOps rendelkezik a saját hozzáférés-vezérlési lista (ACL), amely független az Azure Machine Learning-kísérletezés szolgáltatás. Felhasználói hozzáférés Git-adattár és a egy Machine Learning-munkaterületet, vagy a projekt között változhat. Szüksége lehet a hozzáférés kezelésére. 
 > 
-> E kíván adni a csoport tagjainak kód szintű hozzáférés a Machine Learning projekthez vagy egyszerűen csak megoszthatja a munkaterület, kell biztosítania a felhasználó a megfelelő engedélyekkel a Team Services Git-tárház eléréséhez. 
+> Hogy egy csapattag biztosíthat kód szintű hozzáférést a Machine Learning-projektet vagy egyszerűen csak megoszthatja a munkaterülethez, kell biztosítania a felhasználó a megfelelő engedélyekkel ahhoz, hogy az Azure DevOps Git-adattár eléréséhez. 
 
-Kezelheti a Git verziókezelést, használja a főágba, vagy hozzon létre a többi fiók közben a tárházban. A helyi Git-tárház használjon, és ha ki van építve a távoli Git-tárház leküldéssel is.
+Kezelheti a Git a verziókövetéshez, használja a master ággal, vagy további ág létrehozása a tárházban. Használja a helyi Git-adattár, és küldje le a távoli Git-tárház kiosztása esetén is.
 
-Ez az ábra a kapcsolat egy Team Services Git-tárház és a gépi tanulás projekt ábrázol:
+Ez az ábra az Azure DevOps Git-adattár és a egy Machine Learning-projektet közötti kapcsolatot ábrázolja:
 
 ![Az Azure Machine Learning Git](media/using-git-ml-project/aml_git.png)
 
-Egy távoli Git-tárház használatának megkezdéséhez hajtsa végre a lépéseket, amelyek a következő szakaszok ismertetik.
+Első lépésként távoli Git-tárház használatával végezze el a következő szakaszban leírt lépéseket.
 
 > [!NOTE]
-> Azure Machine Learning jelenleg csak az Team Services-fiókot támogatja a Git adattárak. Általános Git repók, például a github webhelyen, támogatása tervezünk-e a jövőben.
+> Az Azure Machine Learning jelenleg csak az Azure DevOps-szervezetek támogatja a Git-tárházakat.
 
-## <a name="step-1-create-a-machine-learning-experimentation-account"></a>1. lépés A Machine Learning kísérletezhet-fiók létrehozása
-Machine Learning kísérletezhet fiók létrehozásához, és telepítse az Azure Machine Learning-munkaterület alkalmazást. További információkért lásd: [telepítse, és hozzon létre a gyors üzembe helyezés](../service/quickstart-installation.md).
+## <a name="step-1-create-a-machine-learning-experimentation-account"></a>1. lépés Machine Learning-Kísérletezési fiók létrehozása
+Hozzon létre egy Machine Learning-kísérletezés-fiókot, és az Azure Machine Learning Workbench alkalmazás telepítéséhez. További információkért lásd: [telepítése és létrehozási rövid útmutató](../service/quickstart-installation.md).
 
-## <a name="step-2-create-a-team-project-or-use-an-existing-team-project"></a>2. lépés A csapatprojekt létrehozni, vagy egy meglévő csapatprojekt
-Az a [Azure-portálon](https://portal.azure.com/), hozzon létre egy új csapatprojektbe:
+## <a name="step-2-create-an-azure-devops-project-or-use-an-existing-project"></a>2. lépés Az Azure DevOps-projekt létrehozása, vagy használjon egy meglévő projekt
+Az a [az Azure portal](https://portal.azure.com/), hozzon létre egy új projektet:
 1. Válassza ki **+**.
-2. Keresse meg **projekt csapat**.
+2. Keresse meg **Team Project**.
 3. Adja meg a szükséges adatokat:
     - **Név**: A csoport nevét.
     - **Verziókövetés**: válasszon **Git**.
-    - **Előfizetés**: Válasszon egy előfizetést, amely a Machine Learning kísérletezhet fiókkal rendelkezik.
-    - **Hely**: ideális esetben válasszon egy régiót, amelynek mérete megközelítőleg a Machine Learning kísérletezhet erőforrásokhoz.
+    - **Előfizetés**: Válasszon ki egy előfizetést, amely rendelkezik egy Machine Learning-kísérletezés-fiókot.
+    - **Hely**: ideális esetben válasszon egy közeli régiót, a Machine Learning-kísérletezés-erőforrásokat.
 4. Kattintson a **Létrehozás** gombra. 
 
-![Csoport-projekt létrehozása az Azure-portálon](media/using-git-ml-project/create_vsts_team.png)
+![Hozzon létre egy projektet az Azure Portalon](media/using-git-ml-project/create_vsts_team.png)
 
-Győződjön meg arról, hogy használatával írja alá Machine Learning-munkaterület eléréséhez használt azonos Azure Active Directory (Azure AD-) fiók. Ellenkező esetben a rendszer nem érhető el Machine Learning-munkaterület az Azure AD hitelesítő adataival. Kivétel, ha a parancs segítségével a Machine Learning-projekt létrehozása, és adja meg a Git-tárház eléréséhez személyes hozzáférési jogkivonat. Ez a cikk későbbi részében részletesebben azt tárgyalják.
+Győződjön meg arról, hogy, jelentkezzen be ugyanazzal a fiókkal az Azure Active Directory (Azure AD), amely a Machine Learning Workbench elérésére használja. Ellenkező esetben a rendszer nem fér hozzá Machine Learning Workbench használatával az Azure AD hitelesítő adatait. Kivétel, ha a parancssor használatával hozzon létre a Machine Learning-projektet, és megadja a személyes hozzáférési tokent a Git-adattár eléréséhez. Bemutatjuk, ez a cikk későbbi részében részletesebben.
 
-Ugrás a közvetlenül a csapatprojekt létrehozott, használja az URL-cím https://\<csapatprojekt nevét\>. visualstudio.com webhelyre.
+Lépjen a létrehozott projekt, használja az URL-cím https://\<projektnév\>. visualstudio.com.
 
-## <a name="step-3-set-up-a-machine-learning-project-and-git-repo"></a>3. lépés A Machine Learning projektet és a Git-tárház beállítása
+## <a name="step-3-set-up-a-machine-learning-project-and-git-repo"></a>3. lépés A Machine Learning-projektet és a Git-tárház beállítása
 
-A Machine Learning projekt beállításához két lehetőség közül választhat:
-- Egy távoli Git-tárház rendelkezik Machine Learning-projekt létrehozása
-- Rendelje hozzá egy meglévő Machine Learning-projektet egy Team Services Git-tárház
+Állítsa be a Machine Learning-projektet, két lehetősége van:
+- Hozzon létre egy Machine Learning-projektet, amelyen a távoli Git-adattár
+- Rendelje hozzá egy meglévő Machine Learning-projektet az Azure DevOps Git-adattár
 
-### <a name="create-a-machine-learning-project-that-has-a-remote-git-repo"></a>Egy távoli Git-tárház rendelkezik Machine Learning-projekt létrehozása
-Nyissa meg a Machine Learning-munkaterület, és hozzon létre egy új projektet. Az a **Git-tárház** mezőbe írja be a Team Services Git-tárház URL-cím a 2. lépésben. Általában néz ki: https://\<Team Services-fiók neve\>.visualstudio.com/_git/\<projekt neve\>
+### <a name="create-a-machine-learning-project-that-has-a-remote-git-repo"></a>Hozzon létre egy Machine Learning-projektet, amelyen a távoli Git-adattár
+Nyissa meg a Machine Learning Workbench, és hozzon létre egy új projektet. Az a **Git-tárház** mezőbe írja be az Azure DevOps Git-adattár URL-CÍMÉT a 2. lépés. Általában néz ki: https://\<Azure DevOps-szervezet nevét\>.visualstudio.com/_git/\<projekt neve\>
 
-![A Git-tárház rendelkezik Machine Learning-projekt létrehozása](media/using-git-ml-project/create_project_with_git_rep.png)
+![Hozzon létre egy Machine Learning-projektet, amelyen a Git-adattár](media/using-git-ml-project/create_project_with_git_rep.png)
 
-A projekt az Azure parancssori eszköz (Azure CLI) használatával is létrehozhat. Lehetősége nyílik személyes hozzáférési jogkivonat megadásáról. Gépi tanulás a token használatával is hozzáférhetnek a Git-tárház helyett az Azure AD hitelesítő adatait:
+A projekt az Azure parancssori felület (Azure CLI) használatával is létrehozhat. Lehetősége van a személyes hozzáférési tokent beírását. Machine Learning a jogkivonat használatával is hozzáférhetnek a Git-adattár helyett az Azure ad-ben használt hitelesítő adataival:
 
 ```
 # Create a new project that has a Git repo by using a personal access token.
-$ az ml project create -a <Experimentation account name> -n <project name> -g <resource group name> -w <workspace name> -r <Git repo URL> --vststoken <Team Services personal access token>
+$ az ml project create -a <Experimentation account name> -n <project name> -g <resource group name> -w <workspace name> -r <Git repo URL> --vststoken <Azure DevOps personal access token>
 ```
 
 > [!IMPORTANT]
-> Ha úgy dönt, hogy az üres projektsablon, a Git-tárház használt valószínűleg már rendelkezik egy főághoz. Gépi tanulás egyszerűen klónokat helyileg a főágba. Hozzáadja a aml_config mappa és egyéb metaadatokat projektfájlokat a helyi projekt mappába. 
+> Ha úgy dönt, az üres projekt sablon, a Git-tárház használt előfordulhat, hogy már a master ággal. Machine Learning egyszerűen csak klónozza helyileg a master ágról. A aml_config mappát és egyéb metaadatok soubory projektu hozzáadja a helyi projektmappában. 
 >
-> Ha úgy dönt más projekt sablonokat, a Git-tárház *nem* már rendelkezik egy főághoz. Ha igen, hibaüzenet jelenik meg. Ez esetben használja a `az ml project create` parancsot a projekt létrehozásához egy `--force` váltani. Ez törli a fájlokat az eredeti fő ág és azok az Ön által a sablont az új fájlokat.
+> Ha úgy dönt, bármely más webesprojekt-sablon, a Git-tárház *nem* már rendelkezik a master ággal. Ha igen, hibaüzenet jelenik meg. Ez esetben használja a `az ml project create` parancsot a projekt létrehozása egy `--force` váltson. Ez törli a fájlokat az eredeti főágban, és lecseréli azokat az új fájlokat a sablonban, hogy az Ön által választott.
 
-Egy új Machine Learning projekt létrehozása a Git-tárház távoli integráció engedélyezésével. A projektmappa Git-inicializálása egy helyi Git-tárház mindig. A távoli Git beállítása a távoli Team Services Git-tárház, véglegesítések leküldése a távoli Git-tárház.
+Új Machine Learning-projekt jön létre, a Git-tárház távoli integráció engedélyezve van. A projektmappa fájllistájának mindig, mint egy helyi Git-tárház Git-inicializálva. A távoli Git a távoli Azure-fejlesztési és üzemeltetési Git-adattár, így a távoli Git-tárház is véglegesítéseknél van beállítva.
 
-### <a name="associate-an-existing-machine-learning-project-with-a-team-services-git-repo"></a>Rendelje hozzá egy meglévő Machine Learning-projektet egy Team Services Git-tárház
-A Team Services Git-tárház nélkül Machine Learning-projekt létrehozása, és futtatási előzményei a pillanatképek helyi Git-tárház támaszkodnak. Később társíthatja egy Team Services Git-tárház a meglévő Machine Learning-projekt a következő paranccsal:
+### <a name="associate-an-existing-machine-learning-project-with-an-azure-devops-git-repo"></a>Rendelje hozzá egy meglévő Machine Learning-projektet az Azure DevOps Git-adattár
+Hozzon létre egy Machine Learning-projektet az Azure DevOps Git-tárház nélkül, és a helyi Git-tárház futtatási előzmények pillanatképek támaszkodnak. Később is társíthat egy Azure-fejlesztési és üzemeltetési Git-adattár a meglévő Machine Learning-projektet a következő paranccsal:
 
 ```azurecli
 # Ensure that you are in the project path so Azure CLI has the context of your current project.
-$ az ml project update --repo https://<Team Services account name>.visualstudio.com/_git/<project name>
+$ az ml project update --repo https://<Azure DevOps organization name>.visualstudio.com/_git/<project name>
 ```
 
 > [!NOTE] 
-> A frissítés-tárház művelet csak a Machine Learning-projekt, amely nincs társítva egy Git-tárház végezheti el. Emellett a Git-tárház társítja a Machine Learning, miután nem távolítható el.
+> A frissítés-tárház műveletet csak a Machine Learning-projektet, amelyen nincs telepítve egy Git-adattár társítva is végezhet. Emellett a Machine Learning Git-adattár társítani, miután nem távolítható el.
 
-## <a name="step-4-capture-a-project-snapshot-in-the-git-repo"></a>4. lépés A Git-tárházban projekt pillanatkép rögzítése
-Végrehajtási néhány parancsfájl futtatása a projekt és az fut Between néhány módosítást. Ehhez az asztali alkalmazásban vagy az Azure parancssori felület használatával a `az ml experiment submit` parancsot. További információkért lásd: a [zárolásának Iris oktatóanyag](tutorial-classifying-iris-part-1.md). Minden egyes futtatásához, ha bármilyen változás történik, a projekt mappában található minden fájl teljes projektmappában pillanatképe véglegesítve lett, és leküldeni a távoli Git-tárház AzureMLHistory nevű ág a /\<GUID projekt\>. Az ágakkal rendelkező és véglegesíti, beleértve a AzureMLHistory megtekintése /\<GUID projekt\> fiókirodai, keresse fel a Team Services Git-tárház URL-cím. 
+## <a name="step-4-capture-a-project-snapshot-in-the-git-repo"></a>4. lépés A Git-adattárat a projekthez pillanatkép rögzítése
+Hajtsa végre a néhány parancsprogramot futtatja a projektet, és hajtson végre néhány módosítást a futtatások között. Ezt megteheti is az asztali alkalmazás vagy Azure parancssori felület használatával a `az ml experiment submit` parancsot. További információkért lásd: a [Írisz osztályozása oktatóanyaghoz](tutorial-classifying-iris-part-1.md). Az egyes futtatások, ha bármilyen változás történik, az minden olyan fájlt a projektmappa fájllistájának a teljes projektmappáról pillanatképét véglegesített, és leküldte a távoli Git-tárház AzureMLHistory nevű ág alapján /\<GUID projekt\>. Az ágak és véglegesítéseket, beleértve a AzureMLHistory megtekintése /\<GUID projekt\> ág, nyissa meg az Azure DevOps Git-adattár URL-CÍMÉT. 
 
 > [!NOTE] 
-> A pillanatkép csak egy parancsprogram végrehajtása előtt véglegesítése. Jelenleg egy adatok prep végrehajtása vagy a Notebook cella végrehajtási nem indítható el, a pillanatkép.
+> A pillanatkép-parancsprogram végrehajtása előtt csak véglegesítése. Jelenleg egy adatelőkészítéshez végrehajtási vagy egy Jegyzetfüzet cella végrehajtás nem aktiválja a pillanatkép.
 
-![futtatási előzményei ág](media/using-git-ml-project/run_history_branch.png)
+![Futtatási előzmények ág](media/using-git-ml-project/run_history_branch.png)
 
 > [!IMPORTANT] 
-> Célszerű, ha nem működik az előzmények ág Git-parancsok használatával. Akkor lehet, hogy zavarják a futtatási előzményeit. Ehelyett a főágba használja, vagy hozzon létre a többi fiók közben a saját Git műveletekhez.
+> Emellett akkor ajánlott, ha nem működik az előzmények ág Git-parancsok használatával. A zavarhatják a futtatási előzményekben. Ehelyett a főágban vagy hozzon létre további ág számára a saját Git-műveletet.
 
-## <a name="step-5-restore-a-previous-project-snapshot"></a>5. lépés Visszaállítás egy korábbi pillanatképből projekt 
-Teljes projektmappában visszaállítása egy előző futtatási előzményei, készítsen pillanatképet a Machine Learning-munkaterület állapotát:
-1. A tevékenység (homokóra ikon) látható, válassza ki **futtatása**.
-2. Az a **futtatása listában** megtekintéséhez válassza ki a visszaállítani kívánt Futtatás.
-3. Az a **futtatása részletes** nézetben jelölje ki **visszaállítása**.
+## <a name="step-5-restore-a-previous-project-snapshot"></a>5. lépés Egy előző projekt-pillanatkép visszaállítása 
+A teljes projektmappáról visszaállítása egy korábbi futtatási előzmények a Machine Learning Workbench a pillanatkép állapotát:
+1. Sáv (homokóra ikon) a tevékenységben, válassza ki a **futtatások**.
+2. Az a **futtatási lista** megtekinteni, válassza ki a visszaállítani kívánt Futtatás.
+3. Az a **Futtatás részletei** nézetben válassza **visszaállítása**.
 
-![futtatási előzményei ág](media/using-git-ml-project/restore_project.png)
+![Futtatási előzmények ág](media/using-git-ml-project/restore_project.png)
 
-Másik lehetőségként használhatja a következő parancsokat a Machine Learning-munkaterület Azure CLI ablakban:
+Szükség esetén használhatja ki az Azure parancssori felület ablakában, a Machine Learning Workbench a következő parancsokat:
 
 ```azurecli
 # Discover the run I want to restore a snapshot from.
@@ -126,12 +126,12 @@ $ az ml history list -o table
 $ az ml project restore --run-id <run ID>
 ```
 
-Legyen óvatos, ez a parancs futtatásakor. A parancs végrehajtása a teljes projektmappa felülírja a pillanatkép készült, ha a megadott futtató lett kezdődött el. A projekt az aktuális ág marad. Ez azt jelenti, hogy Ön **összes módosítás elvész.** a jelenlegi projekt mappában.  
+Legyen óvatos, ez a parancs futtatásakor. Ez a parancs végrehajtása felülírja a teljes projektmappáról pillanatképre, amikor adott futtató kezdődjön volt kerül. A projektet az aktuális ág marad. Ez azt jelenti, hogy Ön **módosítások elvesztése** az aktuális projektmappában.  
 
-Előfordulhat, hogy szeretné véglegesíteni a módosításokat az aktuális ág, ez a művelet végrehajtása előtt a Git segítségével.
+A Git használatával az aktuális ágra, a módosítások véglegesítéséhez, a művelet végrehajtása előtt érdemes.
 
-## <a name="step-6-use-the-master-branch"></a>6. lépés A főágba használata
-Egy véletlenül a a jelenlegi projekt állapota elvesztésének elkerülése érdekében módja a projekt véglegesíti a Git-tárház főágába (vagy bármely olyan fiókja, saját maga hozott létre). Segítségével Git a parancssorból vagy a kedvenc Git ügyfél eszközből a főágba működik. Példa:
+## <a name="step-6-use-the-master-branch"></a>6. lépés A főágat
+Egyik módja a jelenlegi projekt állapota véletlen elvesztésének elkerülése érdekében, hogy véglegesíti a projekt a Git-tárház főágába (vagy bármely ágra, amelyet saját maga hozott létre). Használhatja a Git a parancssorból vagy a kedvenc Git-ügyfél eszközről a master ággal a művelethez használandó. Példa:
 
 ```sh
 # Check status to make sure you are on the master branch (or branch of your choice).
@@ -143,16 +143,16 @@ $ git add -A
 # Commit all changes locally on the master branch.
 $ git commit -m 'these are my updates so far'
 
-# Push changes to the remote Team Services Git repo master branch.
+# Push changes to the remote Azure DevOps Git repo master branch.
 $ git push origin master
 ```
 
-Most már biztonságosan visszaállíthatja a projekt egy korábbi pillanatkép 5. lépés végrehajtásával. Akkor bármikor visszatérhet, amelyeket az imént készített a a főágba.
+Most már nyugodtan visszaállíthatja a projekt egy korábbi pillanatkép 5. lépés végrehajtásával. Akkor bármikor visszatérhet, véglegesítésére épp most módosította a master ággal.
 
 ## <a name="authentication"></a>Hitelesítés
-Ha használ, csak a futtatási előzményei funkciókat a Machine Learning projekt pillanatfelvételeket, és állítsa vissza őket, nem kell foglalkoznia a Git-tárház hitelesítés. Hitelesítési kezeli a Machine Learning kísérletezhet szolgáltatásrétegben.
+Ha használ, csak a futtatási előzmények funkciókat pillanatfelvételeket a projektet, és állíthatja vissza őket a Machine Learning, nem kell aggódnia a Git-tárház hitelesítést. Hitelesítés a Machine Learning-kísérletezés szolgáltatás réteg kezeli.
 
-Azonban ha a saját Git eszközök használatával felügyeli a verziókövetés, szeretné kezelni a távoli Git-tárház Team Services a hitelesítést. A gépi tanulásban a távoli Git-tárház bekerül a helyi tárház távoli Git mappaként a HTTPS protokoll használatával. Ez azt jelenti, hogy a távoli Git-parancsok (például a lekérés és küldés) elküldésekor meg kell adnia a felhasználónevet és jelszót vagy személyes hozzáférési jogkivonat. A Team Services Git-tárház személyes hozzáférési jogkivonat létrehozásához kövesse a [személyes hozzáférési jogkivonat segítségével hitelesítheti a](https://docs.microsoft.com/vsts/accounts/use-personal-access-tokens-to-authenticate).
+Azonban a saját Git-eszközök használatával verziókövetés kezelése, ha szeretné a távoli Git-adattárból az Azure DevOps ellen a hitelesítésnek a kezelésére. A Machine Learning a távoli Git-tárház bekerül a helyi tárháznak távoli Git-elemként a HTTPS protokoll használatával. Ez azt jelenti, hogy amikor a távoli Git-parancsok (például leküldéses és lekéréses), meg kell adnia a felhasználónevét és jelszavát, vagy a személyes hozzáférési tokent. A személyes hozzáférési tokent az Azure DevOps Git-tárház létrehozásához kövesse a [használják a hitelesítéshez a személyes hozzáférési tokent](https://docs.microsoft.com/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate).
 
 ## <a name="next-steps"></a>További lépések
-- Megtudhatja, hogyan [az Team tudományos folyamat segítségével a projekt struktúra](how-to-use-tdsp-in-azure-ml.md).
+- Ismerje meg, hogyan [a csoportos adatelemzési folyamat használata az projektstruktúra rendszerezéséhez](how-to-use-tdsp-in-azure-ml.md).

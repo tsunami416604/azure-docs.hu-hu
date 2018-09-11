@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/14/2017
 ms.author: roiyz
-ms.openlocfilehash: 2c228784e7a0a78f6dfdb93ce632bf340dea0ee9
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 94e45462a676f6a03e838f63ad37dfbf68839eb4
+ms.sourcegitcommit: 465ae78cc22eeafb5dfafe4da4b8b2138daf5082
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39414742"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44325073"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-windows"></a>Log Analytics virtuálisgép-bővítmény a Windows
 
@@ -74,8 +74,10 @@ A következő JSON a Log Analytics-ügynök bővítmény sémáját jeleníti me
 | publisher | Microsoft.EnterpriseCloud.Monitoring |
 | type | MicrosoftMonitoringAgent |
 | typeHandlerVersion | 1.0 |
-| munkaterület azonosítója (például:) | 6f680a37-00c6-41c7-a93f-1437e3462574 |
+| munkaterület azonosítója (e.g)* | 6f680a37-00c6-41c7-a93f-1437e3462574 |
 | workspaceKey (például:) | z4bU3p1/GrnWpQkky4gdabWXAhbWSTz70hm4m2Xt92XI+rSRgE8qVvRhsGo9TXffbrTahyrwv35W0pOqQAU7uQ== |
+
+\* A munkaterület azonosítója a consumerId nevezzük a Log Analytics API-ban.
 
 ## <a name="template-deployment"></a>Sablonalapú telepítés
 

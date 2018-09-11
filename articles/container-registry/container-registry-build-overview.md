@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 08/01/2018
 ms.author: marsma
-ms.openlocfilehash: 63bbd9b5711330207c34ac4aa05aac3a71304653
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 5c5e41f1baad8bd49f4fa2889ef0677d69db10da
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39413579"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44299865"
 ---
 # <a name="automate-os-and-framework-patching-with-acr-build"></a>Automatizálja az operációs rendszer és a keretrendszer javítás ACR builddel
 
@@ -31,7 +31,7 @@ Eseményindító tárolórendszerkép automatikusan épít, amikor a kód szám�
 
 ## <a name="quick-build-inner-loop-extended-to-the-cloud"></a>Gyors Build: belső ciklikus kiterjesztése a felhőbe a
 
-Az életciklus-felügyelet elején elindítja a fejlesztők számára az első sornyi kód véglegesítése előtt. ACR Builddel [gyors létrehozása](container-registry-tutorial-quick-build.md) funkció lehetővé teszi egy integrált helyi belső-hurok fejlesztési környezetet biztosít, tehermentesítést buildeket, az Azure-bA. A gyors hoz létre ellenőrizheti az automatizált buildelési definíciókat a kód véglegesítése előtt.
+Az életciklus-felügyelet elején elindítja a fejlesztők számára az első sornyi kód véglegesítése előtt. ACR Builddel [gyors létrehozása](container-registry-tutorial-quick-build.md) funkció lehetővé teszi egy integrált helyi belső-hurok fejlesztési környezetet biztosít, tehermentesítést buildeket, az Azure-bA. A gyors létrejött a kód véglegesítése előtt a automatizált összeállítási folyamatok ellenőrizheti.
 
 Az ismert `docker build` formátum, a [az acr-build] [ az-acr-build] paranccsal az Azure CLI-ben egy **környezet** (fájlok halmazát hozhat létre), elküldi azt az ACR Builddel szolgáltatásnak és alapértelmezés szerint leküldi a lemezképet a beállításjegyzék befejezése után.
 

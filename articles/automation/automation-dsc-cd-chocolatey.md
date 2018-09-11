@@ -9,12 +9,12 @@ ms.author: dacoulte
 ms.date: 08/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: dc0e49f2857468338f6e1f16462ed814893ea6e7
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 100b3fa0e43be054a85ca9e32d9bb1b11033afb8
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42055294"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44296261"
 ---
 # <a name="usage-example-continuous-deployment-to-virtual-machines-using-automation-state-configuration-and-chocolatey"></a>Példa: Való Automation konfigurációs és a chocolatey-t használó virtuális gépek folyamatos üzembe helyezés
 
@@ -182,7 +182,7 @@ Adott nuspec kell összeállítani, és a NuGet-kiszolgálón tárolt. Ennek men
 ## <a name="step-6-tying-it-all-together"></a>6. lépés: Minden egy helyen összeköthető
 
 Minden alkalommal, amikor egy verziót adja át a QA és jóvá van hagyva központi telepítéshez, a csomag létrejött, nuspec és nupkg frissítve, és a NuGet-kiszolgálóra telepített. Emellett a konfigurációs (4. lépés a fenti) frissíteni kell, hogy fogadja el az új verziószámmal. Fel kell a pull-kiszolgálónak küldött, és fordítva.
-Ezt követően a szolgáltatás a virtuális gépekhez, kérje le a frissítést, és telepítse az adott konfigurációtól függenek. Ezek a frissítések mindegyike egyszerű – mindössze egy vonal- vagy két PowerShell. A Visual Studio Team Services esetében némelyike vannak beágyazva, amely a build összefűzhetők úlohy buildu. Ez [cikk](https://www.visualstudio.com/docs/alm-devops-feature-index#continuous-delivery) további részleteket. Ez [GitHub-adattárat](https://github.com/Microsoft/vso-agent-tasks) a különböző elérhető összeállítási feladatok részleteit.
+Ezt követően a szolgáltatás a virtuális gépekhez, kérje le a frissítést, és telepítse az adott konfigurációtól függenek. Ezek a frissítések mindegyike egyszerű – mindössze egy vonal- vagy két PowerShell. Az Azure DevOps, esetén némelyike vannak ágyazva, amely a build összefűzhetők úlohy buildu. Ez [cikk](https://www.visualstudio.com/docs/alm-devops-feature-index#continuous-delivery) további részleteket. Ez [GitHub-adattárat](https://github.com/Microsoft/vso-agent-tasks) a különböző elérhető összeállítási feladatok részleteit.
 
 ## <a name="notes"></a>Megjegyzések
 

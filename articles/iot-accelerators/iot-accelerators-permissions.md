@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 11/10/2017
 ms.author: dobett
-ms.openlocfilehash: 676d5e553e2929ae09d447141ca315fd1cc448e3
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: c88ae933360b5040ad3d2b877041049512f08b0d
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37449886"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44303404"
 ---
 # <a name="permissions-on-the-azureiotsolutionscom-site"></a>Engedélyek az azureiotsolutions.com webhelyen
 
@@ -62,7 +62,7 @@ További információ a felhasználók és szerepkörök az aad-ben a következ�
 
 Az Azure-rendszergazdai szerepkörök szabályozása az Azure-előfizetés hozzárendelése egy AAD-bérlőt.
 
-További információk a cikk az Azure-rendszergazdai szerepkörök [hozzáadása vagy módosítása a társ-rendszergazdaként az Azure, szolgáltatás-rendszergazdai és Fiókadminisztrátori][lnk-admin-roles].
+További információk a cikk az Azure-rendszergazdai szerepkörök [hozzáadása vagy módosítása az Azure-előfizetés rendszergazdái][lnk-admin-roles].
 
 ## <a name="faq"></a>GYIK
 

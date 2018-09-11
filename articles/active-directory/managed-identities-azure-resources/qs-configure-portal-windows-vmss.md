@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/20/2018
 ms.author: daveba
-ms.openlocfilehash: e2bc6f9444d7e413612dbbbb4ade2c5e1f1722f2
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: cfd9936a4eb43fcecb66e672767b6f1133262c1d
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44157785"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44345712"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-the-azure-portal"></a>Felügyelt identitások az Azure-erőforrások konfigurálása egy virtuális gép méretezési csoportban az Azure portal használatával
 
@@ -31,7 +31,9 @@ Ebben a cikkben PowerShell-lel, megismerheti, hogyan hajthat végre a következ�
 
 - Ha még nem ismeri a felügyelt identitások Azure-erőforrások számára, tekintse meg a [áttekintés szakaszban](overview.md).
 - Ha még nincs Azure-fiókja, a folytatás előtt [regisztráljon egy ingyenes fiókra](https://azure.microsoft.com/free/).
-- Ebben a cikkben a kezelési műveletek végrehajtásához a fióknak rendelkeznie kell a következő szerepkör-hozzárendelés:
+- Ez a cikk a felügyeleti műveleteket hajt végre, a fiók az alábbi Azure szerepkör-alapú access control-hozzárendelések van szüksége:
+    > [!NOTE]
+    > Nincsenek további Azure AD directory szerepkör-hozzárendelések megadása kötelező.
     - [Virtuális gépek Közreműködője](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) engedélyezése és a rendszer által hozzárendelt felügyelt identitás eltávolítása egy virtuálisgép-méretezési csoportot.
 
 ## <a name="system-assigned-managed-identity"></a>Rendszer által hozzárendelt felügyelt identitás

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 0cc0ec79cf23d3bba01845ed64493df010c1ca66
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: b324d0a68fde8f47072a087330f2e40a99378984
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44161696"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44299474"
 ---
 # <a name="show-search-results-on-the-map"></a>A térképen a keresési eredmények megjelenítése
 
@@ -22,7 +22,7 @@ Ez a cikk bemutatja, hogyan keresse meg a lényeges helyét, és a keresési ere
 
 Keresse meg a lényeges, egyik módja a helyet kötelező használatával indítson egy keresési szolgáltatás modul használatával, és más azáltal, hogy egy keresési kérelmet kétféleképpen egy [XMLHttpRequest](https://xhr.spec.whatwg.org/) való [Azure Maps intelligens keresés API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy). Bemutatjuk, mind az alábbi.
 
-## <a name="use-service-module-to-make-a-search-request"></a>Modul használata a keresési kérelem
+## <a name="making-a-search-request-via-service-module"></a>Keresési szolgáltatás modulon keresztül kérés
 
 ### <a name="understand-the-code"></a>A kód értelmezése
 
@@ -36,7 +36,7 @@ A második kódblokkot használ az intelligens keresés [Azure Maps intelligens 
 A legutóbbi kódblokkot segítségével állítja be a kamera esik, a térkép a térkép [setCameraBounds](https://docs.microsoft.com/javascript/api/azure-maps-control/models.cameraboundsoptions?view=azure-iot-typescript-latest) tulajdonság.
 
 
-## <a name="search-by-xmlhttprequest"></a>Keresés XMLHttpRequest alapján
+##  <a name="making-a-search-request-via-xmlhttprequest"></a>Így egy keresési kérelmet XMLHttpRequest keresztül
 
 ### <a name="understand-the-code"></a>A kód értelmezése
 

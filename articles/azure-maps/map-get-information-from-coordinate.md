@@ -3,18 +3,18 @@ title: Az Azure Maps koordináta információkat jelenít meg |} A Microsoft Doc
 description: Hogyan egy címet kapcsolatos információk megjelenítéséhez a térképen, amikor a felhasználó kiválaszt egy koordinátája
 author: jingjing-z
 ms.author: jinzh
-ms.date: 09/07/2018
+ms.date: 09/08/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: d1baa4adc555e65c4a25928d19f201dba6109142
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 993d1da4b2a99ec0f30a5a685835d9f6b6d35a9e
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44157684"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44302894"
 ---
 # <a name="get-information-from-a-coordinate"></a>Koordináta információinak lekérése
 
@@ -22,7 +22,7 @@ Ez a cikk bemutatja, hogyan készítheti el egy fordított cím keresése, és k
 
 Két módon, hogy egy fordított cím keresési, lekérdezési által a [Azure Maps fordított cím Search API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) szolgáltatáson keresztül modul és a egy másik program azáltal, hogy egy [XMLHttpRequest](https://xhr.spec.whatwg.org/) a lekérdezésben az API-t a cím. Bemutatjuk, mind az alábbi.
 
-## <a name="use-the-service-module-to-make-a-reverse-address-search"></a>A modul egy fordított cím keresés használata
+## <a name="making-a-reverse-search-request-via-service-module"></a>Szolgáltatás-modulon keresztül fordított keresési kérelem
 
 ### <a name="understand-the-code"></a>A kód értelmezése
 
@@ -41,7 +41,7 @@ A legutóbbi kódblokkot hozzáad egy Eseményfigyelőt, a kattintások. Egy kat
 
 Sikeres válasz, a cím való kattintás helyéhez gyűjti, és meghatározza az előugró ablak tartalmát és pozícióját keresztül [setPopupOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#setpopupoptions) függvény az előugró osztály.
 
-## <a name="use-xmlhttprequest-to-make-a-reverse-address-search"></a>XMLHTTPRequest fordított cím keresés használata
+## <a name="making-a-reverse-search-request-via-xmlhttprequest"></a>Egy fordított keresési kérést XMLHttpRequest keresztül
 
 ### <a name="understand-the-code"></a>A kód értelmezése
 

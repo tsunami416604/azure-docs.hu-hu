@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 08/24/2018
 ms.author: mibender
-ms.openlocfilehash: 06365e4397075d18150095f7e77367f457e3308c
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 28eeae8906480a5a160bfe11386da96b646f7427
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43190425"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44296856"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Ismerkedés az Azure-operátorok
 
@@ -149,7 +149,7 @@ Az Azure használatának beneﬁts egyike, hogy a világ különböző pontjain 
 
 ### <a name="azure-portal"></a>Azure Portal
 
-Az Azure Portalon egy webalapú alkalmazás, amely segítségével létrehozása, kezelése és Azure-erőforrások és szolgáltatások eltávolítása. Az Azure Portalon a következő helyen található [Shell.Azure.com](https://portal.azure.com). Tartalmaz egy testreszabható irányítópulton és az Azure-erőforrások kezeléséhez. Számlázási és előfizetés-információkat is biztosít. További információkért lásd: [Microsoft Azure portal áttekintése](https://azure.microsoft.com/documentation/articles/azure-portal-overview/) és [Azure-erőforrások a portál](https://docs.microsoft.com/azure/azure-portal/resource-group-portal).
+Az Azure Portalon egy webalapú alkalmazás, amely segítségével létrehozása, kezelése és Azure-erőforrások és szolgáltatások eltávolítása. Az Azure Portalon a következő helyen található [portal.azure.com](https://portal.azure.com). Tartalmaz egy testreszabható irányítópulton és az Azure-erőforrások kezeléséhez. Számlázási és előfizetés-információkat is biztosít. További információkért lásd: [Microsoft Azure portal áttekintése](https://azure.microsoft.com/documentation/articles/azure-portal-overview/) és [Azure-erőforrások a portál](https://docs.microsoft.com/azure/azure-portal/resource-group-portal).
 
 ### <a name="resources"></a>További források
 
@@ -185,7 +185,7 @@ Rendszergazdák hozzáférhetnek az Azure PowerShell és az Azure CLI a böngés
 
 ## <a name="azure-subscriptions"></a>Azure-előfizetések
 
-Egy előfizetés az Azure-szolgáltatások logikai csoportosítása, amely egy Azure-fiókra van csatolva. Egy konfigurált replikához Azure-fiók több előfizetést is tartalmazhat. Azure-szolgáltatások használati díjának felszámolása előfizetésenként alapon történik. Azure-előfizetéssel rendelkezik, az előfizetés teljes hozzáféréssel rendelkező fiókot a rendszergazdák és az előfizetés az összes szolgáltatás felett rendelkező szolgáltatás-rendszergazdák. A rendszergazdák, amellett az egyes fiókok is megadható részletes vezérlési Azure-erőforrások szerepköralapú hozzáférés-vezérlés (RBAC) révén.
+Egy előfizetés az Azure-szolgáltatások logikai csoportosítása, amely egy Azure-fiókra van csatolva. Egyetlen Azure-fiók több előfizetést is tartalmazhat. Azure-szolgáltatások használati díjának felszámolása előfizetésenként alapon történik. Azure-előfizetéssel rendelkezik, az előfizetés teljes hozzáféréssel rendelkező fiókot a rendszergazdák és az előfizetés az összes szolgáltatás felett rendelkező szolgáltatás-rendszergazdák. További információ a hagyományos előfizetés-rendszergazda: [hozzáadása vagy módosítása az Azure-előfizetés rendszergazdái](../../billing/billing-add-change-azure-subscription-administrator.md). A rendszergazdák, amellett az egyes fiókok is megadható az Azure-erőforrások kézben részletes [szerepköralapú hozzáférés-vezérlés (RBAC)](../../role-based-access-control/overview.md).
 
 ### <a name="select-and-enable-an-azure-subscription"></a>Válassza ki, és a egy Azure-előfizetés engedélyezése
 
@@ -205,13 +205,9 @@ Ha túllépi a kreditösszeg erejéig, a szolgáltatás le vannak tiltva, amíg 
 
 ### <a name="grant-administrative-access-to-an-azure-subscription"></a>Rendszergazdai hozzáférés engedélyezése az Azure-előfizetés
 
-Több fiók rendszergazdai szerepkörök érhetők el, és bármikor módosítható. Két fő szerepkörök a következők:
+Az RBAC, amelyek segítségével engedélyek hozzárendelése több beépített szerepkörrel rendelkezik. Ahhoz, hogy a felhasználó az Azure-előfizetés rendszergazdájának, hozzárendelheti azokat a [tulajdonosa](../../role-based-access-control/built-in-roles.md#owner) szerepkör az előfizetések szintjén. A tulajdonosi szerepkör a felhasználó teljes hozzáférést biztosít, az összes erőforrást az előfizetésben, beleértve a jogot arra, hogy mások való hozzáférés delegálására.
 
-- **Szolgáltatás-rendszergazda**: Ez a szerepkör jogosult Azure-szolgáltatások kezeléséhez. Alapértelmezés szerint rendelkezik azzal a fiókkal, a fiók rendszergazdája a hozzáférést.
-
-- **Társ-rendszergazdaként**: Ez a szerepkör hozzáfér a szolgáltatás-rendszergazdaként. Ez a szerepkör azonban Azure-címtárak nem módosíthatja a társítást az előfizetés.
-
-További információkért lásd: [hozzáadása vagy módosítása az Azure-rendszergazdai szerepkörök](../../billing/billing-add-change-azure-subscription-administrator.md).
+További információkért lásd: [rbac-RÓL és az Azure portal-hozzáférés kezelése](../../role-based-access-control/role-assignments-portal.md).
 
 ### <a name="view-billing-information-in-the-azure-portal"></a>Számlázási adatok megtekintése az Azure Portalon
 
@@ -307,21 +303,21 @@ A megadott hatókörben felhasználói fiókokhoz működési hozzáférést biz
 
 Hozzáférést biztosítani, hozzárendelhet egy szerepkört a felhasználó vagy felhasználói csoportot. Számos előre definiált szerepkörök tartoznak. Saját egyéni szerepköröket is meghatározhat.
 
-Az alábbiakban néhány példa szerepkörök az Azure-bA épített:
+Íme néhány példa [beépített szerepkörök az Azure-ban](../../role-based-access-control/built-in-roles.md):
 
 - **Tulajdonos**: Ezzel a szerepkörrel rendelkező felhasználók mindent felügyelhetnek, beleértve a hozzáférést.
 
 - **Olvasó**: Ezzel a szerepkörrel rendelkező felhasználók (kivéve a titkos kulcsok) minden típusú erőforrásokat tudja olvasni, de nem végezhet módosításokat.
 
-- **Virtuális gépek közreműködője**: Ezzel a szerepkörrel rendelkező felhasználók kezelhetik a virtuális gépek, de nem kezelheti a virtuális hálózatot, amelyhez csatlakoznak, vagy a tárfiókot, ahol a VHD-fájl található.
+- **Virtuális gépek Közreműködője**: Ezzel a szerepkörrel rendelkező felhasználók kezelhetik a virtuális gépek, de nem kezelheti a virtuális hálózatot, amelyhez csatlakoznak, vagy a tárfiókot, ahol a VHD-fájl található.
 
-- **Az SQL DB contributor**: Ezzel a szerepkörrel rendelkező felhasználók kezelhetik az SQL Database-adatbázisok, de nem a biztonsággal kapcsolatos házirendjeiket.
+- **SQL-Adatbázisok Közreműködője**: Ezzel a szerepkörrel rendelkező felhasználók kezelhetik az SQL Database-adatbázisok, de nem a biztonsággal kapcsolatos házirendjeiket.
 
 - **SQL-biztonságkezelő**: Ezzel a szerepkörrel rendelkező felhasználók kezelhetik az SQL Server-kiszolgálók és adatbázisok biztonsági házirendeket.
 
 - **Tárfiók-közreműködő**: Ezzel a szerepkörrel rendelkező felhasználók is tárfiókok kezelését, de nem tudja kezelni a storage-fiókok hozzáférést.
 
-További információkért lásd: [az Azure-előfizetések erőforrásaihoz való hozzáférés kezelése a szerepkör-hozzárendelésekkel](../../role-based-access-control/role-assignments-portal.md).
+További információkért lásd: [rbac-RÓL és az Azure portal-hozzáférés kezelése](../../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="azure-virtual-machines"></a>Azure-alapú virtuális gépek
 

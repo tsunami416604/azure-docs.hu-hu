@@ -1,5 +1,5 @@
 ---
-title: Tartomány és az Azure web apps SSL tanúsítvánnyal kapcsolatos problémák elhárítása |} Microsoft Docs
+title: Tartomány és az Azure web apps SSL tanúsítvánnyal kapcsolatos problémák elhárítása |} A Microsoft Docs
 description: Tartomány és az Azure web apps SSL tanúsítvánnyal kapcsolatos problémák elhárítása
 services: app-service\web
 documentationcenter: ''
@@ -14,187 +14,187 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/18/2018
 ms.author: genli
-ms.openlocfilehash: 59a9011edef49494288716ab16f30e28e440293b
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 5dd87c75638c3d084226becaace5c9454660c907
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34195182"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44303676"
 ---
 # <a name="troubleshoot-domain-and-ssl-certificate-problems-in-azure-web-apps"></a>Tartomány és az Azure web apps SSL tanúsítvánnyal kapcsolatos problémák elhárítása
 
-Ez a cikk az Azure web Apps tartomány- vagy SSL-tanúsítvány konfigurálásakor előforduló gyakori problémák sorolja fel. Lehetséges okait és megoldásait ezeket a problémákat is ismerteti.
+Ez a cikk felsorolja az Azure web Apps egy tartományhoz vagy az SSL-tanúsítvány konfigurálásakor előforduló gyakori problémák. Lehetséges okait és megoldásait ezeket a problémákat is ismerteti.
 
-Ha ez a cikk bármely pontján további segítségre van szüksége, forduljon az Azure-szakértők a [az MSDN és a Stack Overflow fórumok](https://azure.microsoft.com/support/forums/). Másik lehetőségként is fájl az Azure támogatási incidens. Lépjen a [Azure támogatási webhelyén](https://azure.microsoft.com/support/options/) válassza **támogatás**.
+Ha ebben a cikkben bármikor további segítségre van szüksége, forduljon az Azure-szakértőket a [az MSDN és Stack Overflow-fórumok](https://azure.microsoft.com/support/forums/). Másik lehetőségként a egy Azure-támogatási esemény is fájl. Nyissa meg a [Azure támogatási webhelyén](https://azure.microsoft.com/support/options/) válassza **támogatás kérése**.
 
 ## <a name="certificate-problems"></a>Tanúsítvánnyal kapcsolatos problémák
 
-### <a name="you-cant-add-an-ssl-certificate-binding-to-a-web-app"></a>A webes alkalmazás nem tudja felvenni egy SSL-tanúsítvány kötése 
+### <a name="you-cant-add-an-ssl-certificate-binding-to-a-web-app"></a>Nem adhat hozzá egy SSL-tanúsítvány kötése egy webalkalmazáshoz 
 
 #### <a name="symptom"></a>Jelenség
 
-Ha hozzáad egy SSL-kötést, a következő hibaüzenet jelenhet meg:
+SSL-kötést ad hozzá, amikor a következő hibaüzenet jelenhet meg:
 
-"Nem sikerült hozzáadni az SSL-kötést. Nem állítható be tanúsítvány meglévő VIP mert egy másik VIP már azt a tanúsítványt használja."
+"Nem sikerült hozzáadni az SSL-kötés létrehozásához. Tanúsítvány nem állítható be a meglévő virtuális IP-cím, mert egy másik virtuális IP-cím már használja a tanúsítványt."
 
 #### <a name="cause"></a>Ok
 
-Ez a probléma akkor fordulhat elő, ha a ugyanazon IP-cím több IP-alapú SSL-kötések még több webes alkalmazások között. A webalkalmazás például egy IP-alapú SSL-Titkosítást az egy régi tanúsítvány van. A webes alkalmazás B rendelkezik egy IP-alapú SSL-Titkosítást az új tanúsítványt az azonos IP-címhez. Ha a webes alkalmazás SSL-kötést frissíti az új tanúsítvánnyal, azt sikertelen lesz. Ez a hiba, mert egy másik alkalmazás használja az ugyanazon IP-cím. 
+Ez a probléma akkor fordulhat elő, ha több IP-alapú SSL-kötéseit az azonos IP-cím több web apps között. Például egy webalkalmazás, egy IP-alapú SSL-régi tanúsítványt. Webes alkalmazás B az IP-alapú SSL a azonos IP-cím egy új tanúsítvánnyal rendelkezik. Amikor frissíti a webes alkalmazás SSL-kötést az új tanúsítvánnyal, az nem hiba, mert egy másik alkalmazás használja az ugyanazon IP-cím. 
 
 #### <a name="solution"></a>Megoldás 
 
 A probléma megoldásához használja a következő módszerek egyikét:
 
-- Az IP-alapú SSL-kötést a webalkalmazásban a régi tanúsítványt használó törlése. 
+- Az IP-alapú SSL-kötés van a webalkalmazást, amely a régi tanúsítvány törlése. 
 - Hozzon létre egy új IP-alapú SSL-kötést, amely az új tanúsítványt használja.
 
 ### <a name="you-cant-delete-a-certificate"></a>A tanúsítvány nem törölhető 
 
 #### <a name="symptom"></a>Jelenség
 
-Amikor megpróbálja törölni a tanúsítványt, a következő hibaüzenet jelenhet meg:
+Amikor próbál meg törölni a tanúsítványt, a következő hibaüzenet jelenhet meg:
 
-"Nem sikerült törölni a tanúsítványt, mert jelenleg használatban van az SSL-kötést. Az SSL-kötés el kell távolítani a tanúsítvány törlése előtt."
+"Nem lehet törölni a tanúsítványt, mert azt jelenleg használatban van az SSL-kötést. Az SSL-kötés létrehozásához meg kell szüntetni a tanúsítvány törlése előtt."
 
 #### <a name="cause"></a>Ok
 
-Ez a probléma akkor fordulhat elő, ha a tanúsítványt használja egy másik webes alkalmazást.
+Ez a probléma akkor fordulhat elő, ha egy másik webes alkalmazást a tanúsítványt használ.
 
 #### <a name="solution"></a>Megoldás
 
-Az SSL-kötés az adott tanúsítvány eltávolítása a webalkalmazásokat. Próbálja meg törölni a tanúsítványt. Ha még mindig nem tudja törölni a tanúsítványt, törölje az internetes gyorsítótárban, és nyissa meg újra az Azure portál egy új böngészőablakban. Próbálja meg törölni a tanúsítványt.
+Távolítsa el a web apps az SSL-kötés az adott tanúsítvány. Próbálja meg törölni a tanúsítványt. Ha még mindig nem tudja törölni a tanúsítványt, törölje az internetes gyorsítótárban, és nyissa meg újra az Azure Portalon, egy új böngészőablakban. Próbálja meg törölni a tanúsítványt.
 
-### <a name="you-cant-purchase-an-app-service-certificate"></a>Nem vásárolhat egy tanúsítványt az alkalmazás szolgáltatáshoz 
+### <a name="you-cant-purchase-an-app-service-certificate"></a>Nem vásárolhat egy App Service-tanúsítvány 
 
 #### <a name="symptom"></a>Jelenség
-Nem vásárolhat egy [Azure App Service tanúsítvány](./web-sites-purchase-ssl-web-site.md) Azure-portálról.
+Nem vásárolhat egy [Azure App Service-tanúsítvány](./web-sites-purchase-ssl-web-site.md) az Azure Portalról.
 
 #### <a name="cause-and-solution"></a>OK és megoldás
-Ez a probléma a következő okok miatt:
+Ez a probléma a következő okokból fordulhat elő:
 
-- Az App Service-csomag ingyenes vagy közös. Ezek a tarifacsomagok nem támogatja az SSL. 
+- Az App Service-csomag az ingyenes és közös. Ezek a tarifacsomag nem támogatják az SSL. 
 
-    **Megoldás**: Standard webalkalmazás az App Service-csomag frissítése.
+    **Megoldás**: webalkalmazás az App Service-csomag frissítsen a standard előfizetésre.
 
-- Az előfizetés nem rendelkezik érvényes hitelkártyát.
+- Az előfizetés nem rendelkezik érvényes bankkártyaadatok.
 
-    **Megoldás**: egy érvényes hitelkártya hozzáadásához az előfizetéshez. 
+    **Megoldás**: érvényes bankkártyaadatok hozzáadása az előfizetéshez. 
 
-- Az előfizetés ajánlat nem támogatja a beszerzési egy App Service-tanúsítvány, például a Microsoft Student.  
+- Az előfizetési ajánlatok között nem támogatja az App Service-tanúsítvány, például a Microsoft Student megvásárlásával.  
 
-    **Megoldás**: az előfizetés frissítése. 
+    **Megoldás**: frissíti az előfizetését. 
 
-- Az előfizetés elérte a vásárlás egy előfizetésben megengedett számát.
+- Az előfizetés elérte a korlátot, amelyek egy adott előfizetés engedélyezett vásárolt.
 
-    **Megoldás**: App Service-tanúsítványok maximális száma 10 tanúsítvány beszerzése, hogy a használatalapú fizetés és EA előfizetéstípusok rendelkezik. A más előfizetés típusú határérték 3. A korlát növeléséhez forduljon [az Azure támogatási](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
-- Az App Service tanúsítvány csalás lett megjelölve. A következő hibaüzenet: "a tanúsítvány rendelkezik már meg van jelölve a lehetséges csalásról. A kérelem jelenleg felülvizsgálat alatt. Ha a tanúsítvány nem lesz használható 24 órán belül, forduljon Azure támogatási szolgálatához."
+    **Megoldás**: App Service-tanúsítványok legfeljebb 10 tanúsítványa vásárlásokra a használatalapú fizetés és a nagyvállalati szerződéssel rendelkező előfizetés esetében. Minden olyan előfizetés esetében a korlát: 3. A korlát növeléséhez forduljon [az Azure-támogatás](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+- Az App Service-tanúsítvány csalás lett megjelölve. A következő hibaüzenet: "a tanúsítvány meg lett jelölve lehetséges csalás. A kérelem jelenleg felülvizsgálat alatt áll. Ha a tanúsítvány nem válik használhatóvá 24 órán belül, forduljon az Azure ügyfélszolgálatához."
 
-    **Megoldás**: Ha a tanúsítvány csalás van megjelölve, és nincs feloldva 24 óra múlva, kövesse az alábbi lépéseket:
+    **Megoldás**: Ha a tanúsítvány csalás van megjelölve, és 24 óra nincs feloldva, kövesse az alábbi lépéseket:
 
     1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-    2. Ugrás a **App Service-tanúsítványokkal**, és válassza ki azt a tanúsítványt.
-    3. Válassza ki **Tanúsítványkonfiguráció** > **2. lépés: Ellenőrizze** > **tartományok ellenőrzésének**. Ebben a lépésben egy e-mail értesítést küld az Azure tanúsítványszolgáltató a probléma megoldásához.
+    2. Lépjen a **App Service-tanúsítványok**, és válassza ki a tanúsítványt.
+    3. Válassza ki **Tanúsítványkonfiguráció** > **2. lépés: Ellenőrizze** > **tartomány-ellenőrzés**. Ebben a lépésben egy e-mailben értesítést küld az Azure-tanúsítvány-szolgáltatóhoz a probléma megoldásához.
 
 ## <a name="domain-problems"></a>Tartomány-problémák
 
-### <a name="you-purchased-an-ssl-certificate-for-the-wrong-domain"></a>A megfelelő tartományhoz tartozó SSL-tanúsítvány megvásárlása
+### <a name="you-purchased-an-ssl-certificate-for-the-wrong-domain"></a>Megvásárolta a megfelelő tartomány SSL-tanúsítvány
 
 #### <a name="symptom"></a>Jelenség
 
-Egy App Service-tanúsítvány a megfelelő tartomány vásárolta. Nem frissíthető a megfelelő tartományhoz használni kívánt tanúsítványt.
+App Service-tanúsítvány, a megfelelő tartomány vásárolt. A tanúsítványt használja, a megfelelő tartománynevet nem lehet frissíteni.
 
 #### <a name="solution"></a>Megoldás
 
-Törölje a tanúsítványt, és megvásárolni az új tanúsítványt.
+Törölje a tanúsítványt, és ezután vásárol egy új tanúsítványt.
 
-Ha az aktuális tanúsítvány, amely a megfelelő tartomány használja a "feltüntetett tulajdonos" állapotban van, a fogjuk is számlázni tanúsítvány. App Service-tanúsítványok nem téríthető, de felveheti a kapcsolatot [az Azure támogatási](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) , hogy van-e egyéb beállításokat. 
+Ha az aktuális tanúsítvány, amely a megfelelő tartományt használ a "feltüntetett tulajdonos" állapotban van, a fog is felszámítjuk a tanúsítványt. App Service-tanúsítványok nem téríthető, hanem forduljon [az Azure-támogatás](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) megtekintéséhez, hogy vannak-e más lehetőségek. 
 
-### <a name="an-app-service-certificate-was-renewed-but-the-web-app-shows-the-old-certificate"></a>Egy App Service-tanúsítvány megújított, de a webes alkalmazás látható a régi tanúsítvány 
+### <a name="an-app-service-certificate-was-renewed-but-the-web-app-shows-the-old-certificate"></a>App Service-tanúsítvány megújított, de a webalkalmazás jeleníti meg a régi tanúsítvány 
 
 #### <a name="symptom"></a>Jelenség
 
-Az App Service-tanúsítvány megújított, de a webalkalmazást az App Service-tanúsítványt használó továbbra is a régi tanúsítványt használ. Is hogy figyelmeztető üzenet, hogy a HTTPS protokoll megadása kötelező.
+Az App Service-tanúsítvány megújított, de a webalkalmazást az App Service-tanúsítványt használó továbbra is a régi tanúsítványt használ. Ezenkívül, figyelmeztető üzenet, hogy a HTTPS protokoll megadása kötelező.
 
 #### <a name="cause"></a>Ok 
-Az Azure App Service Web Apps szolgáltatása fut a háttérben történő feldolgozás 8 óránként, és szinkronizálja a tanúsítvány erőforrás, ha a módosul. Forgassa el, vagy a tanúsítvány frissítésekor, egyes esetekben az alkalmazás továbbra is beolvassa a régi tanúsítvány és nem az újonnan frissített tanúsítvány. A hiba oka, hogy a tanúsítvány erőforrás szinkronizálása feladat még nem futott. 
+Az Azure App Service Web Apps funkcióját háttérfeladatként 8 óránként fut, és szinkronizálja a tanúsítvány erőforrás, ha vannak a módosításokat. Forgatás vagy frissítésekor egy tanúsítványt, néha az az alkalmazás továbbra is beolvasása van, a régi tanúsítványt, és nem az újonnan frissített tanúsítványt. A hiba oka, hogy a feladat szinkronizálja a tanúsítvány erőforrás még futott-e. 
  
 #### <a name="solution"></a>Megoldás
 
-Beállíthatja, hogy a tanúsítvány szinkronizálási:
+Kényszerítheti, hogy a tanúsítvány szinkronizálást:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Válassza ki **App Service-tanúsítványokkal**, majd válassza ki a tanúsítványt.
-2. Válassza ki **kulcsismétlés és tényleges szinkronizálási**, majd válassza ki **szinkronizálási**. A szinkronizálás befejezése némi időt vesz igénybe. 
-3. A szinkronizálás befejezése után megjelenik a következő üzenet: "Sikeresen frissített összes erőforrást a legújabb tanúsítvány."
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Válassza ki **App Service-tanúsítványok**, majd válassza ki a tanúsítványt.
+2. Válassza ki **Újrakulcsolás és szinkronizálás**, majd válassza ki **szinkronizálási**. A szinkronizálás befejezése hosszabb időt vesz igénybe. 
+3. Amikor a szinkronizálás befejeződött, megjelenik a következő értesítés: "Frissítése sikerült összes erőforrást a legújabb tanúsítvánnyal."
 
-### <a name="domain-verification-is-not-working"></a>Nem működik a tartomány ellenőrzése 
+### <a name="domain-verification-is-not-working"></a>Tartomány-ellenőrzés nem működik. 
 
 #### <a name="symptom"></a>Jelenség 
-Az App Service tanúsítvány tartományok ellenőrzésének igényel, mielőtt használatra készen áll a tanúsítvány. Ha bejelöli **ellenőrizze**, a folyamat sikertelen lesz.
+Az App Service-tanúsítvány tartomány-ellenőrzés van szükség, mielőtt a tanúsítvány készen áll a használatra. Ha bejelöli **ellenőrizze**, a folyamat sikertelen lesz.
 
 #### <a name="solution"></a>Megoldás
-Manuálisan ellenőrizze a tartományt a TXT-rekord hozzáadásával:
+Manuálisan ellenőrizze a tartomány egy txt típusú rekord hozzáadásával:
  
-1.  Nyissa meg a tartománynév-szolgáltatás (DNS) szolgáltató, amelyen a tartomány nevét.
-2.  Adja hozzá a TXT-rekord a tartományhoz, amely a tartomány token az Azure-portálon megjelenő értékét használja. 
+1.  Nyissa meg a tartomány neve szolgáltatás (DNS) szolgáltató, amelyen a tartomány nevét.
+2.  Adjon hozzá egy txt típusú rekordot a tartományhoz, amely a tartomány-token, amely az Azure Portalon látható értékét használja. 
 
-Várjon néhány percet a DNS-propagálás futtatásához, és válassza ki a **frissítése** indul el, az ellenőrzés gombra. 
+Várjon néhány percet a DNS-propagálás futtatásához, és válassza ki a **frissítése** gombra az ellenőrzés indításához. 
 
-Alternatív megoldásként a HTML-weblap módszer segítségével manuálisan ellenőrizze a tartományt. Ez a módszer lehetővé teszi, hogy a tulajdonjogát, a tartományban, amelyhez a tanúsítványt a hitelesítésszolgáltatótól.
+Alternatív megoldásként a HTML-weblap módszer segítségével manuálisan ellenőrizze a tartományt. Ez a módszer lehetővé teszi, hogy a hitelesítésszolgáltató ellenőrizze annak a tartománynak, amelyet a tanúsítványt a tartomány tulajdonjogát.
 
-1.  Hozzon létre {tartomány érvényesítési jogkivonat} .html nevű HTML-fájlba. Ez a fájl tartalma tartomány érvényesítési jogkivonat értékének kell lennie.
-3.  A feltöltés a webalkalmazás-kiszolgáló, amelyen a tartomány gyökerében.
-4.  Válassza ki **frissítése** tanúsítvány állapotának ellenőrzéséhez. Az ellenőrzés befejezéséhez néhány percig is eltarthat.
+1.  Hozzon létre egy {tartomány-ellenőrzési token} .html nevű HTML-fájlt. Ez a fájl tartalmát a tartomány-ellenőrzési token értékét kell lennie.
+3.  Töltse fel ezt a fájlt a webalkalmazás-kiszolgáló, amelyen az a tartomány gyökerében.
+4.  Válassza ki **frissítése** tanúsítvány állapotának ellenőrzéséhez. Az ellenőrzés befejezése néhány percet igénybe vehet.
 
-Például, ha a tartomány ellenőrző jogkivonat 1234abcd az Azure.com webhelyre szabványos tanúsítványt vásárol, webes kérelem végzett http://azure.com/1234abcd.html 1234abcd kell visszaadnia. 
+Például, ha a tartomány ellenőrzési token 1234abcd értéket az Azure.com webhelyen egy normál tanúsítványt vásárol, webes kérelem végzett http://azure.com/1234abcd.html 1234abcd értéket kell visszaadnia. 
 
 > [!IMPORTANT]
-> A tanúsítvány sorrendet rendelkezik csak 15 nappal a tartomány ellenőrzési művelet befejezéséhez. 15 nap elteltével a hitelesítésszolgáltató a tanúsítvány megtagadja, és nem kell fizetnie a tanúsítványt. Ebben a helyzetben törölje ezt a tanúsítványt, és próbálkozzon újra.
+> A tanúsítványrendelések csak 15 nap áll a tartomány-ellenőrzési művelet befejezéséhez. 15 nap után a hitelesítésszolgáltató a tanúsítványt megtagadja, és nem terheli a tanúsítványt. Ebben a helyzetben törli ezt a tanúsítványt, és próbálkozzon újra.
 >
 > 
 
-### <a name="you-cant-purchase-a-domain"></a>Nem vásárolhat egy tartományhoz
+### <a name="you-cant-purchase-a-domain"></a>Nem vásárolhat egy tartományt
 
 #### <a name="symptom"></a>Jelenség
-A Web Apps vagy az App Service-tartományból az Azure portálon tartomány nem vásárlása.
+Nem vásárolhat egy tartományt az Azure Portalon vagy az App Service Web Apps tartományból.
 
 #### <a name="cause-and-solution"></a>OK és megoldás
 
 Ez a probléma akkor fordul elő, a következő okok valamelyike:
 
-- Az Azure-előfizetés bankkártyaadatok van, vagy a hitelkártya érvénytelen.
+- Nincs bankkártyára az Azure-előfizetést, vagy a hitelkártya érvénytelen.
 
-    **Megoldás**: egy érvényes hitelkártya hozzáadásához az előfizetéshez.
+    **Megoldás**: érvényes bankkártyaadatok hozzáadása az előfizetéshez.
 
-- Ön nem az előfizetés tulajdonosa, ezért nem rendelkezik engedéllyel a tartomány vásárlásához.
+- Ön nem az előfizetés tulajdonosa, így nem kell tartományt vásárolnia engedéllyel.
 
-    **Megoldás**: [hozzáadása a tulajdonosi szerepkört](../billing/billing-add-change-azure-subscription-administrator.md) fiókjába. Vagy az előfizetés-rendszergazdától engedélyt tartomány vásárlásához.
-- Elérte a korlátot, az előfizetés tartományokhoz megvásárlása. A jelenlegi maximum 20.
+    **Megoldás**: [a tulajdonosi szerepkör hozzárendelése](../role-based-access-control/role-assignments-portal.md) a fiókjához. Vagy forduljon az előfizetés adminisztrátorát, hogy kérjen engedélyt vásárolhat egy tartományt.
+- Elérte a határértéket tartományok az előfizetés megvásárlásával kapcsolatos. A jelenlegi maximum 20.
 
-    **Megoldás**: a korlát növelését kérelmezéséhez forduljon [az Azure támogatási](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
-- Az Azure-előfizetés típusa nem támogatja a beszerzési az App Service-tartományhoz.
+    **Megoldás**: Ha szeretné növelni a korlátot, lépjen kapcsolatba [az Azure-támogatás](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+- Az Azure-előfizetés típusa nem támogatja az App Service-tartományok vásárlása.
 
-    **Megoldás**: az Azure-előfizetéshez váltson egy másik előfizetés-típus, például az előfizetést használatalapú fizetésre.
+    **Megoldás**: az Azure-előfizetés váltson egy másik előfizetés-típus, például egy használatalapú fizetéses előfizetésre.
 
-### <a name="you-cant-add-a-host-name-to-a-web-app"></a>Nem adható hozzá egy állomásnevet a webalkalmazáshoz 
+### <a name="you-cant-add-a-host-name-to-a-web-app"></a>A webalkalmazás nem adhat hozzá egy nevet 
 
 #### <a name="symptom"></a>Jelenség
 
-Ha hozzáad egy állomásnevet, ellenőrizze a tartományt, és ellenőrizheti a folyamat sikertelen lesz.
+Amikor hozzáad egy állomásnevet, a folyamat érvényesítéséhez és a tartomány ellenőrzése sikertelen lesz.
 
 #### <a name="cause"></a>Ok 
 
 Ez a probléma akkor fordul elő, a következő okok valamelyike:
 
-- Nincs engedélye hozzáadása egy állomásnevet.
+- Nincs engedélye a gazdagépnév hozzáadása.
 
-    **Megoldás**: kérje meg az előfizetés rendszergazdájától állomásnév-hozzáadási jogosultsággal.
-- Nem sikerült ellenőrizni a tartomány tulajdonosa.
+    **Megoldás**: kérje meg az előfizetés adminisztrátorát, hogy adjon engedélyt adjon hozzá egy nevet.
+- Nem sikerült ellenőrizni a tartomány tulajdonjogát.
 
-    **Megoldás**: Győződjön meg arról, hogy a CNAME vagy egy olyan rekordot megfelelően van konfigurálva. Egyéni tartomány leképezése a webes alkalmazás, hozzon létre vagy egy olyan CNAME rekordot, vagy egy A rekordot. Ha azt szeretné, a legfelső szintű tartományt használ, és TXT-rekordok kell használnia:
+    **Megoldás**: Győződjön meg arról, hogy a CNAME és a egy rekord megfelelően van konfigurálva. Egyéni tartomány leképezése a webalkalmazást, hozzon létre egy CNAME-rekordot vagy egy A rekordot. Ha szeretne egy legfelső szintű tartományt használja, és txt típusú rekordok kell használnia:
 
-    |Rekordtípus|Gazdagép|Mutasson a|
+    |Rekordtípus|Gazdagép|Mutasson|
     |------|------|-----|
-    |A|@|A webalkalmazáshoz tartozó IP-cím|
+    |A|@|Webes alkalmazás IP-címe|
     |TXT|@|< alkalmazásnév >. azurewebsites.net|
     |CNAME|www|< alkalmazásnév >. azurewebsites.net|
 
@@ -209,30 +209,30 @@ A következő hibaüzenetet kapott:
 #### <a name="cause"></a>Ok
 Ez a probléma akkor fordul elő, a következő okok valamelyike:
 
-- A rendszer mennyi ideig live (TTL) időszak még nem járt le. Ellenőrizze a tartomány az élettartam értéke határozza meg, és várjon, amíg az időszak lejár a DNS-beállításait.
-- A DNS-konfiguráció nem megfelelő.
+- Az élő (TTL) időszak ideje nem járt le. Ellenőrizze az élettartam értéke határozza meg, és ezután Várjon, amíg az időszak lejár, a tartomány DNS-konfigurációját.
+- A DNS-konfiguráció helytelen.
 
 #### <a name="solution"></a>Megoldás
-- Várjon, amíg ez a probléma megoldódik 48 órán belül.
-- Ha a DNS-konfiguráció a TTL-beállítást módosíthatja, módosítsa az értéket 5 perc – tekintse meg, hogy ez megoldja-e a problémát.
-- Használjon [WhatsmyDNS.net](https://www.whatsmydns.net/) való győződjön meg arról, hogy a tartomány a webes alkalmazás IP-címre mutat. Ha nem, az A rekord, a megfelelő IP-címre a webalkalmazás konfigurálása.
+- Várjon, amíg ez a probléma megoldódik, hogy 48 órán belül.
+- Ha a DNS-konfiguráció is megváltoztatjuk a TTL-értéket, módosítsa az értéket 5 perc megtekintéséhez, hogy ez megoldja a problémát.
+- Használat [WhatsmyDNS.net](https://www.whatsmydns.net/) , ellenőrizze, hogy a tartomány a webalkalmazás IP-címre mutat-e. Ha nem, az A rekord helyes IP-címet a webalkalmazás konfigurálása
 
-### <a name="you-need-to-restore-a-deleted-domain"></a>Vissza kell állítania egy törölt tartományhoz 
+### <a name="you-need-to-restore-a-deleted-domain"></a>Vissza kell állítania egy tartomány törlése 
 
 #### <a name="symptom"></a>Jelenség
-A tartomány már nem jelenik meg az Azure-portálon.
+A tartomány már nem jelenik meg az Azure Portalon.
 
 #### <a name="cause"></a>Ok 
-Az előfizetés tulajdonosa elképzelhető, hogy véletlenül törölte a tartományhoz.
+Az előfizetés tulajdonosa előfordulhat, hogy véletlenül törölt a tartományhoz.
 
 #### <a name="solution"></a>Megoldás
-Ha a tartomány törlése kevesebb mint hét napja, a tartomány még nem kezdődött a törlési folyamat. Ebben az esetben vásárolhatja meg ugyanabban a tartományban, az Azure portál ugyanahhoz az előfizetéshez meg újra. (Ügyeljen arra, hogy a keresési mezőbe írja be a teljes tartománynevet.) Ön nem számlázni újra ezt a tartományt. Ha a tartomány törlése több mint hét napja, forduljon a [az Azure támogatási](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) visszaállítása a tartomány segítségét.
+Ha a tartomány törölték a kevesebb mint hét napja, a tartomány még nem indult a törlési folyamat. Ebben az esetben is vásárolhatnak ugyanahhoz a tartományhoz újra, az Azure Portalon egy előfizetésen belül. (Ügyeljen arra, hogy a Keresés mezőbe írja be a pontos tartománynév.) Nem kell fizetnie az újra ezt a tartományt. Ha a tartományt törölték a több mint hét napja, lépjen kapcsolatba [az Azure-támogatás](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) segítséget visszaállítani a tartományhoz.
 
-### <a name="a-custom-domain-returns-a-404-error"></a>Az egyéni tartománynév a 404-es hibaüzenetet adja vissza. 
+### <a name="a-custom-domain-returns-a-404-error"></a>Egyéni tartomány 404-es hibát ad vissza. 
 
 #### <a name="symptom"></a>Jelenség
 
-Ha a felhasználó a helyhez az egyéni tartománynév használatával, a következő hibaüzenet jelenhet meg:
+Ha a felhasználó a helynek az egyéni tartománynév használatával, a következő hibaüzenet jelenhet meg:
 
 "Hiba 404-webalkalmazás nem található."
 
@@ -241,32 +241,32 @@ Ha a felhasználó a helyhez az egyéni tartománynév használatával, a követ
 
 **OK: 1** 
 
-Az egyéni tartomány konfigurált hiányzik, vagy A CNAME rekord. 
+Az egyéni tartomány konfigurált hiányzik egy CNAME és a egy rekordot. 
 
-**Megoldás ok 1**
+**1 OK megoldás**
 
-- Ha hozzáadott egy A rekordot, győződjön meg arról, hogy egy TXT rekordot is megjelenik. További információkért lásd: [hozza létre az A rekordot](./app-service-web-tutorial-custom-domain.md#create-the-a-record).
-- A legfelső szintű tartomány használata a webalkalmazás nem szükséges, ha azt javasoljuk, hogy használja-e egy olyan CNAME rekordot helyett egy A rekordot.
-- Ne használjon egy olyan CNAME rekordot, és egy A rekordot is ugyanabban a tartományban. Ez ütközést okozhat, és a tartomány megakadályozása feloldva. 
+- Ha hozzáadott egy A rekordot, győződjön meg arról, hogy egy txt típusú rekordot adott is. További információkért lásd: [a rekord létrehozása](./app-service-web-tutorial-custom-domain.md#create-the-a-record).
+- Ha nem rendelkezik a legfelső szintű tartományt használja, a webalkalmazás, javasoljuk, hogy használjon-e egy CNAME-rekordot helyett egy A rekordot.
+- Ne használja egy CNAME-rekordot és a egy A rekordot is ugyanabban a tartományban. Ez egy ütközést okozhat, és megakadályozza, hogy a tartomány feloldva. 
 
 **OK 2** 
 
-Előfordulhat, hogy továbbra is gyorsítótárazás a régi IP-cím a tartomány az a böngészőben. 
+Az internetböngészőben továbbra is előfordulhat, hogy gyorsítótárazza a tartomány régi IP-címét. 
 
 **Megoldás ok 2**
 
-Törölje a böngészőben. Windows-eszközök esetén a parancs futtatható `ipconfig /flushdns`. Használjon [WhatsmyDNS.net](https://www.whatsmydns.net/) való győződjön meg arról, hogy a tartomány a webes alkalmazás IP-címre mutat. 
+Törölje a böngészőben. Windows-eszközök esetén a parancs futtatása `ipconfig /flushdns`. Használat [WhatsmyDNS.net](https://www.whatsmydns.net/) , ellenőrizze, hogy a tartomány a webalkalmazás IP-címre mutat-e. 
 
-### <a name="you-cant-add-a-subdomain"></a>Nem adható hozzá egy altartomány 
+### <a name="you-cant-add-a-subdomain"></a>Nem adhat hozzá egy altartományt 
 
 #### <a name="symptom"></a>Jelenség
 
-A webes alkalmazás hozzárendelése egy altartomány nem adható hozzá egy új nevet.
+Altartomány hozzárendelése egy webalkalmazáshoz nem adjon hozzá egy új nevet.
 
 #### <a name="solution"></a>Megoldás
 
-- Ellenőrizze az előfizetés rendszergazdájához, és győződjön meg arról, hogy Ön jogosult állomásnév hozzáadása a webalkalmazáshoz.
-- Ha további altartományok van szüksége, azt javasoljuk, hogy módosítsa az Azure DNS-tartomány üzemeltető. Azure DNS használatával 500 állomásnevek adhat hozzá a webes alkalmazást. További információkért lásd: [hozzáadása egy altartomány](https://blogs.msdn.microsoft.com/waws/2014/10/01/mapping-a-custom-subdomain-to-an-azure-website/).
+- Ellenőrizze az előfizetés adminisztrátorát, hogy győződjön meg arról, hogy Ön jogosult a gazdagépnév hozzáadása a webalkalmazáshoz.
+- Ha több altartománnyal van szüksége, javasoljuk, hogy módosítsa az Azure DNS-tartomány üzemeltetése. Az Azure DNS használatával a webes alkalmazás 500 állomásnevek adhat hozzá. További információkért lásd: [altartomány hozzáadása](https://blogs.msdn.microsoft.com/waws/2014/10/01/mapping-a-custom-subdomain-to-an-azure-website/).
 
 
 

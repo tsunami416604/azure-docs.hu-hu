@@ -1,92 +1,93 @@
 ---
-title: "Folyamatos figyelés a DevOps kiadási folyamatának VSTS és Azure Application Insights |} Microsoft Docs"
-description: "Ez a gyors a folyamatos figyelés az Application Insights beállítása"
+title: Folyamatos figyelés a fejlesztési és üzemeltetési kibocsátási folyamat az Azure DevOps és az Azure Application Insights |} A Microsoft Docs
+description: Ez a gyors beállítani a folyamatos figyelés az Application insights segítségével
 services: application-insights
-keywords: 
+keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 11/13/2017
 ms.service: application-insights
-ms.topic: article
+ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5bfbdd0033f966422a84071a694845627827f016
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: ecda8621640223f1c27f32834f2e4a098da4aba6
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44301624"
 ---
-# <a name="add-continuous-monitoring-to-your-release-pipeline"></a>Folyamatos figyelés felvétele a kiadási folyamat
+# <a name="add-continuous-monitoring-to-your-release-pipeline"></a>A kiadási folyamathoz folyamatos megfigyelés hozzáadása
 
-A Visual Studio Team Services (VSTS) integrálódik az Azure Application Insights folyamatos figyelés a szoftver fejlesztési életciklus során a DevOps kiadási-feldolgozási folyamat engedélyezéséhez. 
+Az Azure DevOps-szolgáltatásokkal integrálható az Azure Application Insights, hogy a szoftver fejlesztési életciklus során, a DevOps-kiadási folyamatok folyamatos figyelésére. 
 
-VSTS mostantól támogatja a folyamatos figyelését, amelyek segítségével a kiadási folyamatok figyelési adatok az Application insights szolgáltatással és más Azure-erőforrások építhessék be. Az Application Insights riasztást észlelésekor a központi telepítés gated maradjanak, vagy állítható vissza, amíg a riasztás oldódik meg. Ha az ellenőrzés átadni, központi telepítések lépne automatikusan tesztből egészen éles kézi beavatkozás nélkül. 
+Az Azure DevOps-szolgáltatásokkal mostantól támogatja a folyamatos monitorozással, amelyek segítségével a kiadási folyamatokat építhet be az Application Insights és az egyéb Azure-erőforrások figyelési adatait. Az Application Insights riasztást észlelt, amikor a központi telepítés sorompós maradhat, vagy állítható vissza a riasztás megszüntetéséig. Ha minden ellenőrzések sikeres központi telepítések folytassa automatikusan tesztből egészen az éles környezetbe manuális beavatkozás nélkül. 
 
 ## <a name="configure-continuous-monitoring"></a>Folyamatos figyelés konfigurálása
 
-1. Válasszon ki egy meglévő VSTS projektet.
+1. Válassza ki egy meglévő Azure-fejlesztési és üzemeltetési szolgáltatások projekt.
 
-2. Vigye **összeállítása, és felszabadíthatja a** > Válassza ki **kiadásokban** > kattintson a **plusz jelre** > **létrehozás kiadás definition** > Keressen **figyelési** > **folyamatos figyelését, az Azure App Service központi telepítése.**
+2. A kurzort **készítése és kiadása** > válassza **kiadásokban** > kattintson a **plusz jelre** > **kiadási definíció létrehozása** > Keresse meg **figyelési** > **az Azure App Service üzembe helyezés, a folyamatos figyelés.**
 
-   ![Új VSTS kiadás meghatározása](.\media\app-insights-continuous-monitoring\001.png)
+   ![Új Azure fejlesztési és üzemeltetési szolgáltatások kibocsátási folyamatok](.\media\app-insights-continuous-monitoring\001.png)
 
-3. Kattintson a **alkalmazni.**
+3. Kattintson a **vonatkoznak.**
 
-4. A piros felkiáltójel mellett válassza ki a szöveget a kék **környezettel kapcsolatos feladatok megtekintéséhez.**
+4. A piros felkiáltójel mellett jelölje ki a szöveget a kék **környezettel kapcsolatos feladatok megtekintéséhez.**
 
    ![Környezet feladatok megtekintése](.\media\app-insights-continuous-monitoring\002.png)
 
-   Egy konfigurációs mezőben jelenik meg, használja a következő táblázat a beviteli mezők kitöltéséhez.
+   Egy konfigurációs képernyő jelenik meg, a következő táblázat segítségével az adatbeviteli mezők kitöltéséhez.
 
     | Paraméter        | Érték |
    | ------------- |:-----|
-   | **A környezeti neve**      | A kiadási definition környezet leíró nevet |
-   | **Azure-előfizetés** | Legördülő lista bármely Azure-előfizetések a VSTS-fiókhoz kapcsolódó tölti fel|
-   | **App Service-neve** | Új értéket kézi bevitele ezt a mezőt, attól függően, hogy más beállításokat szükség lehet. |
-   | **Erőforráscsoport**    | Legördülő elérhető erőforráscsoportok tölti fel |
-   | **Application Insights-erőforrás neve** | Legördülő lista összes Application Insights-erőforrások, amelyek megfelelnek a korábban kiválasztott erőforráscsoporthoz tölti fel.
+   | **Környezet neve**      | A kibocsátási folyamat környezetet leíró neve |
+   | **Azure-előfizetés** | Legördülő tölti fel az Azure DevOps-szolgáltatásokkal szervezet kapcsolódó Azure-előfizetést|
+   | **App Service neve** | Manuális bejegyzés egy új értéket ebben a mezőben más kijelölések, attól függően szükséges lehet |
+   | **Erőforráscsoport**    | Legördülő tölti fel az elérhető erőforráscsoportok |
+   | **Application Insights-erőforrás neve** | Minden Application Insights-erőforrások, amelyek megfelelnek a korábban kiválasztott erőforráscsoportba tartozó legördülő tölti fel.
 
-5. Válassza ki **konfigurálja az Application Insights-riasztások**
+5. Válassza ki **konfigurálása az Application Insights-riasztások**
 
-6. A riasztási szabályok alapértelmezett, válassza az **mentése** > adjon meg egy leíró megjegyzés > kattintson **OK**
+6. Válassza ki a riasztási szabályok alapértelmezett, **mentése** > adjon meg egy leíró megjegyzés > kattintson **OK**
 
 ## <a name="modify-alert-rules"></a>Riasztási szabályok módosítása
 
-1. Az előre meghatározott riasztási beállítások módosításához kattintson a mező **folytatást jelző pontokra...**  jobb oldalán **riasztási szabályok.**
+1. Az előre meghatározott riasztási beállítások módosításához kattintson a mező **három pont...**  jobbra **riasztási szabályok.**
 
-   (Out-of-box négy riasztási szabályok: rendelkezésre állási, a sikertelen kérelmek, a kiszolgáló válaszideje, a kivételek.)
+   (Out-of-box négy riasztási szabályok: rendelkezésre állás, a sikertelen kérelmek, a kiszolgáló válaszideje, a kiszolgálókivételek.)
 
-2. Kattintson a Tovább gombra a legördülő lista szimbólum **rendelkezésre állását.**
+2. Kattintson a legördülő menü mellett **rendelkezésre állását.**
 
-3. Módosíthatja a rendelkezésre állási **küszöbérték** lehet elégíteni a szolgáltatások szint.
+3. Módosítsa a rendelkezésre állási **küszöbérték** a szolgáltatási szint követelményeinek.
 
-   ![-Riasztás módosítása](.\media\app-insights-continuous-monitoring\003.png)
+   ![Riasztás módosítása](.\media\app-insights-continuous-monitoring\003.png)
 
-4. Válassza ki **OK** > **mentése** > adjon meg egy leíró megjegyzés > kattintson **OK gombra.**
+4. Válassza ki **OK** > **mentése** > adjon meg egy leíró megjegyzés > kattintson **OK.**
 
-## <a name="add-deployment-conditions"></a>Központi telepítés feltételek hozzáadása
+## <a name="add-deployment-conditions"></a>Üzembe helyezés feltételek hozzáadása
 
-1. Kattintson a **csővezeték** > Válassza ki a **előtti** vagy **telepítés utáni feltételek** szimbólum attól függően, hogy a folyamatos figyelési kaput igénylő szakasszal.
+1. Kattintson a **folyamat** > Válassza ki a **előtti** vagy **üzembe helyezés utáni feltételek** függően a szakaszban egy folyamatos figyelési kapu igénylő szimbólum.
 
    ![Központi telepítés előtti feltételek](.\media\app-insights-continuous-monitoring\004.png)
 
 2. Állítsa be **kapuk** való **engedélyezve** > **jóváhagyási kapuk**> kattintson **hozzáadása.**
 
-3. Válassza ki **Azure figyelő** (Ez a beállítás lehetővé teszi a hozzáférést riasztásokat is az Azure-figyelő és az Application Insights)
+3. Válassza ki **Azure Monitor** (Ez a beállítás lehetővé teszi a hozzáférés riasztásokra mind az Azure Monitor és az Application Insights)
 
     ![Azure Monitor](.\media\app-insights-continuous-monitoring\005.png)
 
-4. Adjon meg egy **kapuk időtúllépés** érték.
+4. Adjon meg egy **kapuk időtúllépési** értéket.
 
-5. Adjon meg egy **mintavételi gyakoriság.**
+5. Adjon meg egy **mintavételi időköz.**
 
 ## <a name="deployment-gate-status-logs"></a>Telepítési kapu állapot naplói
 
-Miután hozzáadta a központi telepítés kapuk, az Application Insightsban, ami meghaladja a korábban meghatározott küszöbértéket, riasztást védi a nemkívánatos kiadás előléptetés telepítését. Ha a riasztás fel lett oldva, a központi telepítés automatikusan lépne.
+Miután hozzáadta a központi telepítési kapuk, az Application insights szolgáltatásban, ami meghaladja a korábban meghatározott küszöbértéket, riasztást nyújt a nemkívánatos kiadási előléptetés-telepítése. A riasztás fel lett oldva, miután a telepítés automatikusan folytassa.
 
-Válassza ezt a viselkedést betartásának, **kiadásokban** > kattintson a jobb gombbal kiadás neve **nyissa meg a** > **naplók.**
+Tekintse meg ezt a viselkedést, jelölje be **kiadásokban** > kattintson a jobb gombbal kiadás neve **nyissa meg a** > **naplókat.**
 
 ![Logs](.\media\app-insights-continuous-monitoring\006.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-További VSTS-Build és tájékozódhat kiadás próbálja ki az alábbiakat [quickstarts.](https://docs.microsoft.com/vsts/build-release/)
+További információ az Azure-folyamatok próbálja ki ezeket a további [rövid útmutatók.](https://docs.microsoft.com/azure/devops/pipelines)

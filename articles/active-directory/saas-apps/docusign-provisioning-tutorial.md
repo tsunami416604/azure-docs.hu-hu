@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 97fd54b9da537ae57fe59bfb4091da5fd252c722
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 6099c07a0f27966eb4c253b85d24afb0561a708b
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39443432"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44345540"
 ---
 # <a name="tutorial-configure-docusign-for-automatic-user-provisioning"></a>Oktatóanyag: Felhasználók automatikus átadása DocuSign konfigurálása
 
@@ -93,7 +93,7 @@ Ez a szakasz célja engedélyezése a felhasználó kiépítése az Active Direc
 
 Elindítja a kezdeti szinkronizálás, a DocuSign, a felhasználók és csoportok szakaszban hozzárendelve felhasználók. A kezdeti szinkronizálás végrehajtásához, mint az ezt követő szinkronizálások, amely körülbelül 40 percenként történik, amíg a szolgáltatás fut hosszabb időt vesz igénybe. Használhatja a **szinkronizálás részleteivel** szakasz előrehaladásának figyeléséhez, és kövesse a hivatkozásokat kiépítés tevékenységeket tartalmazó naplók, amelyek leírják a DocuSign az alkalmazást a kiépítési szolgáltatás által végrehajtott összes műveletet.
 
-Az Azure AD létesítési naplók olvasása további információkért lásd: [-jelentések automatikus felhasználói fiók kiépítése](../active-directory-saas-provisioning-reporting.md).
+Az Azure AD létesítési naplók olvasása további információkért lásd: [-jelentések automatikus felhasználói fiók kiépítése](../manage-apps/check-status-user-account-provisioning.md).
 
 ## <a name="additional-resources"></a>További források
 

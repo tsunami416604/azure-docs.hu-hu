@@ -1,6 +1,6 @@
 ---
-title: Felhasználói adatokat az Azure Security Centerben |} Microsoft Docs
-description: " Tudnivalók a felhasználói adatokat az Azure Security Centerben. "
+title: Felhasználói adatokat az Azure Security Centerben |} A Microsoft Docs
+description: " Ismerje meg, hogyan kezelheti a felhasználói adatokat az Azure Security Centerben. "
 services: security-center
 documentationcenter: na
 author: TerryLanfear
@@ -9,96 +9,96 @@ editor: ''
 ms.assetid: 411d7bae-c9d4-4e83-be63-9f2f2312b075
 ms.service: security-center
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/23/2018
 ms.author: terrylan
-ms.openlocfilehash: 2495bae5c63cdafe049ec39f71ab53106c5f2df7
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: fcaac3d248b676e4b7b1fe0344b54e52ce1fb558
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34655229"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44302673"
 ---
 # <a name="manage-user-data-in-azure-security-center"></a>Felhasználói adatokat az Azure Security Centerben
-Ez a cikk bemutatja, hogyan kezelheti a felhasználói adatokat az Azure Security Centerben. Felhasználói adatok kezelése lehetővé teszi a hozzáférést, törölje vagy exportálhatja az adatokat.
+Ez a cikk ismerteti, hogyan kezelheti a felhasználói adatokat az Azure Security Centerben. Felhasználói adatok kezelése lehetőség eléréséhez, törléséhez vagy exportálhat adatokat.
 
 [!INCLUDE [gdpr-intro-sentence.md](../../includes/gdpr-intro-sentence.md)]
 
-A Security Center felhasználó olvasó, a tulajdonos, közreműködő szerepkörrel, vagy a Fiókadminisztrátor férhet hozzá a felhasználói adatokhoz belül az eszköz. Lásd: [Azure szerepköralapú hozzáférés-vezérlés beépített szerepkörök](../role-based-access-control/built-in-roles.md) további információt az olvasó, a tulajdonos és közreműködő szerepkört. Lásd: [Azure-előfizetés rendszergazdái](../billing/billing-add-change-azure-subscription-administrator.md) további információt a fiók rendszergazdai szerepkörrel.
+A Security Center felhasználó olvasó, a tulajdonos, közreműködő szerepkörrel, vagy a fiók rendszergazdája hozzáférhet a vásárlói adatokat az eszköz belül. Lásd: [Azure szerepköralapú hozzáférés-vezérlés beépített szerepkörei](../role-based-access-control/built-in-roles.md) tudhat meg többet az olvasó, a tulajdonos és közreműködő szerepkört. Lásd: [Azure-előfizetés rendszergazdái](../billing/billing-add-change-azure-subscription-administrator.md) további információ a fiók rendszergazdai szerepkörrel.
 
-## <a name="searching-for-and-identifying-personal-data"></a>Keres, és a személyes adatok azonosítása
-A Security Center felhasználó megtekintheti a személyes adataik az Azure portálon keresztül. A Security Center biztonsági kapcsolattartási adatait, például az e-mail-címeket és telefonszámokat csak tárolja. Lásd: [adja meg az Azure Security Centerben a biztonsági kapcsolattartási adatait](security-center-provide-security-contact-details.md) további információt.
+## <a name="searching-for-and-identifying-personal-data"></a>Keresse meg, majd a személyes adatok azonosítása
+A Security Center felhasználó megtekintheti a személyes adataikat az Azure Portalon keresztül. A Security Center csak tárolja a biztonsági kapcsolattartói adatok, például az e-mail-címeket és telefonszámokat. Lásd: [az Azure Security Center biztonsági kapcsolattartói adatok megadása](security-center-provide-security-contact-details.md) további információt.
 
-Az Azure-portálon a felhasználók megtekinthetik a Security Center csak idő VM hozzáférési funkciónak használatával engedélyezett IP-konfigurációk. További információkért lásd: [A virtuális gépekhez való hozzáférés kezelése igény szerinti hozzáféréssel](security-center-just-in-time.md).
+Az Azure Portalon a felhasználó megtekintheti a Security Center használatával csak az time VM access funkció engedélyezett IP-konfigurációk. További információkért lásd: [A virtuális gépekhez való hozzáférés kezelése igény szerinti hozzáféréssel](security-center-just-in-time.md).
 
-Az Azure portálon a felhasználók megtekinthetik az IP-címek és a támadó részletek többek között a Security Center által biztosított biztonsági riasztások. Lásd: [kezelése és az Azure Security Centerben a biztonsági riasztásokra való reagálásról](security-center-managing-and-responding-alerts.md) további információt.
+Az Azure Portalon a felhasználók megtekinthetik az IP-címek és a támadó részletek többek között a Security Center által biztosított biztonsági riasztásokat. Lásd: [kezelése és válaszadás a biztonsági riasztásokra az Azure Security Center](security-center-managing-and-responding-alerts.md) további információt.
 
 ## <a name="classifying-personal-data"></a>Személyes adatok besorolása
-Nem található a Security Center biztonsági kapcsolattartási szolgáltatás személyes adatok osztályozására szolgáló igényelnek. A mentett adatok egy e-mail címet (vagy több e-mail cím) és telefonszámát. [Lépjen kapcsolatba az adatok](security-center-provide-security-contact-details.md) Security Center érvényesíti.
+Nem kell besorolni a Security Center biztonsági kapcsolattartó szolgáltatás található személyes adatok. Az adatok mentve egy e-mail-cím (vagy több e-mail-cím) és egy telefonszám. [Lépjen kapcsolatba az adatok](security-center-provide-security-contact-details.md) a Security Center által.
 
-Nem kell az IP-címek besorolásához, és a Security Center által mentett portszámokat [JIT](security-center-just-in-time.md) szolgáltatás.
+Nem kell az IP-címek besorolását, és a Security Center által mentett portszámokat [szerinti](security-center-just-in-time.md) funkció.
 
-Csak a felhasználó a rendszergazda szerepkörrel sorolhatja be a személyes adatok által [riasztások megtekintése](security-center-managing-and-responding-alerts.md) a biztonsági központban.
+Csak a felhasználó a rendszergazda szerepkörrel osztályozhat személyes adatokat [riasztások](security-center-managing-and-responding-alerts.md) a Security Centerben.
 
-## <a name="securing-and-controlling-access-to-personal-data"></a>Védelme és személyes adatokhoz való hozzáférés vezérlése
-A Security Center felhasználó olvasó, a tulajdonos, közreműködő szerepkörrel, vagy a Fiókadminisztrátor férhet [biztonsági kapcsolattartási adatok](security-center-provide-security-contact-details.md).
+## <a name="securing-and-controlling-access-to-personal-data"></a>Biztonságossá tétele és a személyes adatokhoz való hozzáférés szabályozása
+A Security Center felhasználó olvasó, a tulajdonos, közreműködő szerepkörrel, vagy a fiók rendszergazdája hozzáférhet [biztonsági kapcsolattartói adatok](security-center-provide-security-contact-details.md).
 
-A Security Center felhasználó olvasó, a tulajdonos, közreműködő szerepkörrel, vagy a fiók rendszergazdája hozzáférhet a [JIT](security-center-just-in-time.md) házirendek.
+A Security Center felhasználó olvasó, a tulajdonos, közreműködő szerepkörrel, vagy a fiók rendszergazdája hozzáférhet a [szerinti](security-center-just-in-time.md) házirendeket.
 
-A Security Center felhasználó olvasó, a tulajdonos, közreműködő szerepkörrel, vagy a fiók rendszergazdája tekintheti a [riasztások](security-center-managing-and-responding-alerts.md).
+A Security Center felhasználó olvasó, a tulajdonos, közreműködő szerepkörrel, vagy a fiók rendszergazdája tekintheti meg azok [riasztások](security-center-managing-and-responding-alerts.md).
 
 ## <a name="updating-personal-data"></a>Személyes adatok frissítése
-A Security Center felhasználói szerepkörrel tulajdonos, közreműködő, vagy a fiók rendszergazdája frissítheti [biztonsági kapcsolattartási adatok](security-center-provide-security-contact-details.md) az Azure-portálon.
+A Security Center felhasználói szerepkörrel a tulajdonos, közreműködő, vagy a fiók rendszergazdája frissítheti [biztonsági kapcsolattartói adatok](security-center-provide-security-contact-details.md) az Azure Portalon keresztül.
 
-A Security Center felhasználói szerepkörrel tulajdonos, közreműködő, vagy a fiók rendszergazdája frissítheti az [csak az idő házirendek](security-center-just-in-time.md).
+A Security Center felhasználói szerepkörrel a tulajdonos, közreműködő, vagy a fiók rendszergazdája frissítheti azok [csak az idő házirendek](security-center-just-in-time.md).
 
-A fiók rendszergazda figyelmeztetési események nem szerkeszthető. Egy [a riasztásokat szinkronizáló](security-center-managing-and-responding-alerts.md) tekinthető biztonsági adatokat, és csak olvasható.
+Egy fiók rendszergazdai riasztás incidensek nem szerkeszthető. Egy [riasztásokat szinkronizáló](security-center-managing-and-responding-alerts.md) számít a biztonsági adatokat, és csak olvasható.
 
-## <a name="deleting-personal-data"></a>Személyes adatok törlése
-A Security Center felhasználói szerepkörrel tulajdonos, közreműködő, vagy törölheti a Fiókadminisztrátor [biztonsági kapcsolattartási adatok](security-center-provide-security-contact-details.md) az Azure-portálon.
+## <a name="deleting-personal-data"></a>Személyes adatok törléséről
+A Security Center felhasználói szerepkörrel a tulajdonos, közreműködő, vagy törölhetik Fiókadminisztrátort [biztonsági kapcsolattartói adatok](security-center-provide-security-contact-details.md) az Azure Portalon keresztül.
 
-A Security Center felhasználói szerepkörrel tulajdonos, közreműködő, vagy a fiók rendszergazda törölheti a [csak az idő házirendek](security-center-just-in-time.md) az Azure-portálon.
+A Security Center felhasználói szerepkörrel a tulajdonos, közreműködő, vagy a fiók rendszergazdája törölheti a [csak az idő házirendek](security-center-just-in-time.md) az Azure Portalon keresztül.
 
-A Security Center felhasználó figyelmeztetési események nem törölhető. Biztonsági igényeket elégíti ki, mert egy [a riasztásokat szinkronizáló](security-center-managing-and-responding-alerts.md) csak adatolvasási számít.
+A Security Center felhasználó riasztási incidensek nem lehet törölni. Biztonsági igényeinek, mert egy [riasztásokat szinkronizáló](security-center-managing-and-responding-alerts.md) számít a csak olvasható adatok.
 
 ## <a name="exporting-personal-data"></a>Személyes adatok exportálása
-A Security Center felhasználó olvasó, a tulajdonos, közreműködő szerepkörrel, vagy a fiók rendszergazdájához exportálhatja [biztonsági kapcsolattartási adatok](security-center-provide-security-contact-details.md) szerint:
+A Security Center felhasználó olvasó, a tulajdonos, közreműködő szerepkörrel, vagy a fiók rendszergazdája is exportálhat [biztonsági kapcsolattartói adatok](security-center-provide-security-contact-details.md) szerint:
 
-- A másolási végrehajtása az Azure-portálon
+- A másolási végrehajtása az Azure Portalról
 - Az Azure REST API-hívás, GET HTTP végrehajtása:
 ```HTTP
 GET https://<endpoint>/subscriptions/{subscriptionId}/providers/Microsoft.Security/securityContacts?api-version={api-version}
 ```
 
-A Security Center felhasználói fiók rendszergazdai szerepkörrel exportálhatja a [csak az idő házirendek](security-center-just-in-time.md) az IP-cím tartalmazó nyújtja:
+A Security Center a fiók rendszergazdája szerepkörrel exportálhatják a [csak az idő házirendek](security-center-just-in-time.md) tartalmazó IP-címeinek:
 
-- A másolási végrehajtása az Azure-portálon
+- A másolási végrehajtása az Azure Portalról
 - Az Azure REST API-hívás, GET HTTP végrehajtása:
 ```HTTP
 GET https://<endpoint>/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Security/locations/{location}/jitNetworkAccessPolicies/default?api-version={api-version}
 ```
 
-A fiók rendszergazda exportálhatja a riasztás részletei:
+Egy fiók rendszergazdája által a riasztási adatok exportálásához:
 
-- A másolási végrehajtása az Azure-portálon
+- A másolási végrehajtása az Azure Portalról
 - Az Azure REST API-hívás, GET HTTP végrehajtása:
 ```HTTP
 GET https://<endpoint>/subscriptions/{subscriptionId}/providers/microsoft.Security/alerts?api-version={api-version}
 ```
 
-Lásd: [biztonsági riasztások beolvasása (GET gyűjtemény)](https://msdn.microsoft.com/library/mt704050.aspx) további információt.
+Lásd: [lekérése a biztonsági riasztások (gyűjtemény beolvasása)](https://msdn.microsoft.com/library/mt704050.aspx) további információt.
 
-## <a name="restricting-the-use-of-personal-data-for-profiling-or-marketing-without-consent"></a>A személyes adatok profilkészítési vagy hozzájárulása nélkül marketing használatának korlátozása
-A Security Center felhasználó törlésével nem vesznek választhat a [biztonsági kapcsolattartási adatok](security-center-provide-security-contact-details.md).
+## <a name="restricting-the-use-of-personal-data-for-profiling-or-marketing-without-consent"></a>A személyes adatok használatát a profilkészítés vagy hozzájárulása nélkül marketing korlátozása
+A Security Center a felhasználó törlésével vesznek dönthet a [biztonsági kapcsolattartói adatok](security-center-provide-security-contact-details.md).
 
-[Csak a időre vonatkozó adatok](security-center-just-in-time.md) nem azonosítható adatok minősül, és 30 napig őrzi meg.
+[Csak az idő adatok](security-center-just-in-time.md) számít nem alkalmas adatokat, és őrződnek meg egy 30 napos időszak.
 
-[Riasztási adatokat](security-center-managing-and-responding-alerts.md) tekinthető biztonsági adatokat, és a két évig őrzi meg.
+[Riasztási adatokat](security-center-managing-and-responding-alerts.md) biztonsági adatok számít, és a két évig őrzi meg a rendszer.
 
 ## <a name="auditing-and-reporting"></a>Naplózás és jelentéskészítés
-Naplók biztonsági kapcsolódási, igény szerint, és riasztást küldjön, frissítések karbantartása [Azure tevékenységi naplóit](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md).
+A Naplók biztonsági kapcsolattartó, igény szerint, és riasztást küldjön, frissítések karbantartása [Azure-tevékenységnaplóinak](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md).
 
 ## <a name="next-steps"></a>További lépések
 Felhasználói adatok kezelésével kapcsolatos további információkért lásd: [felhasználói adatokat az Azure Security Center vizsgálat található](security-center-investigation-user-data.md).
