@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/20/2018
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: 67144407b078a30c521201cbc31c6087c839fa26
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 4aa4809c57eaf26b10053d432f9191580ec143a0
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39030006"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44381080"
 ---
 Data factory az olyan több-bérlős szolgáltatás, amely az alábbi alapértelmezett korlátozások, hogy az ügyfél-előfizetések védettek, a többi összes számítási feladatokat a helyen. A korlátok számos egyszerűen kiváltható az előfizetéséhez, a maximális korlátig lépjen kapcsolatba az ügyfélszolgálattal.
 
@@ -28,7 +28,7 @@ Data factory az olyan több-bérlős szolgáltatás, amely az alábbi alapértel
 | Egyidejű folyamatfuttatások száma a data factory | 10,000  | [Kapcsolatfelvétel az ügyfélszolgálattal](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 | Maximális tevékenységek / folyamat (beleértve a belső tevékenységek tárolók) | 40 | 40 |
 | Egy folyamat maximális paraméterek | 50 | 50 |
-| ForEach-elemek | 100,000 | 100,000 |
+| ForEach-elemek | 100 000 | 100 000 |
 | ForEach-párhuzamosság | 20 | 50 |
 | Karakterszám kifejezésenként | 8,192 | 8,192 |
 | Átfedésmentes ablakos eseményindító minimális időköz | 15 perc | 15 perc |
@@ -38,6 +38,8 @@ Data factory az olyan több-bérlős szolgáltatás, amely az alábbi alapértel
 | Adatok integrációs egység másolási tevékenység futtatási <sup>3</sup> | 256 | [Kapcsolatfelvétel az ügyfélszolgálattal](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 | API-hívások írási | 2500/óra<br/><br/> Ez korlátozva az Azure Resource Manager által, nem az Azure Data Factoryban. | [Forduljon az ügyfélszolgálathoz](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Elolvashatják az API-hívások | 12 500/óra<br/><br/> Ez korlátozva az Azure Resource Manager által, nem az Azure Data Factoryban. | [Kapcsolatfelvétel az ügyfélszolgálattal](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
+| Percenkénti lekérdezések figyelése | 1000 | [Kapcsolatfelvétel az ügyfélszolgálattal](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
+| Entitás CRUD-műveletek száma percenként | 50 | [Kapcsolatfelvétel az ügyfélszolgálattal](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 
 
 ### <a name="version-1"></a>1-es verzió

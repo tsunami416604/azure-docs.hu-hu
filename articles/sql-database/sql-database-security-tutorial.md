@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: mvc,security
 ms.topic: tutorial
-ms.date: 04/24/2018
+ms.date: 09/07/2018
 ms.author: daredis
-ms.openlocfilehash: 54ec3c1386d6ce2023106367a6af1915e754948f
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 6d805a39831ce2eea204689a4daa069d10b757e8
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32193461"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44054070"
 ---
 # <a name="secure-your-azure-sql-database"></a>Az Azure SQL Database-adatbázis védelme
 
@@ -32,7 +32,7 @@ Mindössze néhány lépés végrehajtásával fokozhatja az adatbázis védelm�
 > [!div class="checklist"]
 > * Kiszolgálószintű tűzfalszabályok beállítása a kiszolgáló számára az Azure Portalon.
 > * Adatbázisszintű tűzfalszabályok beállítása az adatbázis számára SSMS használatával.
-> * Csatlakozás az adatbázishoz biztonságos kapcsolati karakterlánc használatával.
+> * Csatlakozás az adatbázishoz biztonságos kapcsolati sztring használatával.
 > * Felhasználói hozzáférés kezelése.
 > * Adatok védelme titkosítással.
 > * Az SQL Database naplózási funkciójának engedélyezése.
@@ -46,11 +46,11 @@ Az oktatóanyag elvégzéséhez győződjön meg arról, hogy rendelkezik az al�
 
 - Telepítette az [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) legújabb verzióját. 
 - Telepítette a Microsoft Excelt.
-- Létrehozott egy Azure SQL Server-kiszolgálót és Database-adatbázist – erről az [Azure SQL Database létrehozása az Azure Portalon](sql-database-get-started-portal.md), az [Önálló Azure SQL-adatbázis létrehozása az Azure CLI használatával](sql-database-get-started-cli.md) és az [Önálló Azure SQL-adatbázis létrehozása a PowerShell használatával](sql-database-get-started-powershell.md) című cikkben talál további információt. 
+- Létrehozott egy Azure SQL Server-kiszolgálót és Database-adatbázist – erről az [Azure SQL Database létrehozása az Azure Portalon](sql-database-get-started-portal.md), az [Önálló Azure SQL-adatbázis létrehozása az Azure CLI használatával](sql-database-cli-samples.md) és az [Önálló Azure SQL-adatbázis létrehozása a PowerShell használatával](sql-database-powershell-samples.md) című cikkben talál további információt. 
 
 ## <a name="log-in-to-the-azure-portal"></a>Bejelentkezés az Azure Portalra
 
-Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 ## <a name="create-a-server-level-firewall-rule-in-the-azure-portal"></a>Kiszolgálószintű tűzfalszabály létrehozása az Azure Portalon
 
@@ -100,22 +100,22 @@ Kövesse az alábbi lépéseket egy adatbázis-specifikus tűzfalszabály létre
 
 4. Az eszköztáron kattintson az **Execute** (Végrehajtás) elemre a tűzfalszabály létrehozásához.
 
-## <a name="view-how-to-connect-an-application-to-your-database-using-a-secure-connection-string"></a>Alkalmazás csatlakoztatása az adatbázishoz biztonságos kapcsolati karakterlánc használatával
+## <a name="view-how-to-connect-an-application-to-your-database-using-a-secure-connection-string"></a>Alkalmazás csatlakoztatása az adatbázishoz biztonságos kapcsolati sztring használatával
 
-Ahhoz, hogy biztonságos, titkosított kapcsolatot létesíthessen az ügyfélalkalmazás és az SQL Database között, a kapcsolati karakterláncot a következőképpen kell konfigurálni:
+Ahhoz, hogy biztonságos, titkosított kapcsolatot létesíthessen az ügyfélalkalmazás és az SQL Database között, a kapcsolati sztringet a következőképpen kell konfigurálni:
 
 - titkosított kapcsolatot kérjen; és
 - ne bízzon meg a kiszolgálói tanúsítványban. 
 
-A kapcsolat így a Transport Layer Security (TLS) protokoll használatával jön létre, és védettebb lesz a közbeékelődéses támadásokkal szemben. Az SQL Database-adatbázis megfelelően konfigurált kapcsolati karakterláncát az alábbi képernyőképen, az ADO.net esetén bemutatott módon szerezheti be a támogatott ügyfélillesztőkhöz az Azure Portalról. További információ a TLS-ről és a kapcsolatokról: [A TLS megfontolandó szempontjai](sql-database-connect-query.md#tls-considerations-for-sql-database-connectivity).
+A kapcsolat így a Transport Layer Security (TLS) protokoll használatával jön létre, és védettebb lesz a közbeékelődéses támadásokkal szemben. Az SQL Database-adatbázis megfelelően konfigurált kapcsolati sztringjét az alábbi képernyőképen, az ADO.net esetén bemutatott módon szerezheti be a támogatott ügyfélillesztőkhöz az Azure Portalról. További információ a TLS-ről és a kapcsolatokról: [A TLS megfontolandó szempontjai](sql-database-connect-query.md#tls-considerations-for-sql-database-connectivity).
 
 1. Válassza az **SQL-adatbázisok** elemet a bal oldali menüben, majd kattintson az adatbázisra az **SQL-adatbázisok** oldalon.
 
-2. Az adatbázis **Áttekintés** oldalán kattintson az **Adatbázis kapcsolati karakterláncainak megjelenítése** elemre.
+2. Az adatbázis **Áttekintés** oldalán kattintson az **Adatbázis kapcsolati sztringjeinek megjelenítése** elemre.
 
-3. Tekintse át az **ADO.NET** teljes kapcsolati karakterláncát.
+3. Tekintse át az **ADO.NET** teljes kapcsolati sztringjét.
 
-    ![ADO.NET kapcsolati karakterlánc](./media/sql-database-security-tutorial/adonet-connection-string.png)
+    ![ADO.NET kapcsolati sztring](./media/sql-database-security-tutorial/adonet-connection-string.png)
 
 ## <a name="creating-database-users"></a>Adatbázis-felhasználók létrehozása
 
@@ -244,7 +244,7 @@ Ebben az oktatóanyagban megtanulta, hogy hogyan fokozhatja mindössze néhány 
 
 > [!div class="checklist"]
 > * Tűzfalszabályok beállítása a kiszolgáló és/vagy az adatbázis számára.
-> * Csatlakozás az adatbázishoz biztonságos kapcsolati karakterlánc használatával.
+> * Csatlakozás az adatbázishoz biztonságos kapcsolati sztring használatával.
 > * Felhasználói hozzáférés kezelése.
 > * Adatok védelme titkosítással.
 > * Az SQL Database naplózási funkciójának engedélyezése.

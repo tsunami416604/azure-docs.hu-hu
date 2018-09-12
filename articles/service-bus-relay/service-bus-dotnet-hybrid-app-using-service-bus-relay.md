@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 11/02/2017
 ms.author: spelluru
-ms.openlocfilehash: 23e0e487914b6e8810d8db00462c353c99955665
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: fa8c4b07f79564a1e9aa4e78b2323789283d4e73
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43697468"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44054621"
 ---
 # <a name="net-on-premisescloud-hybrid-application-using-azure-wcf-relay"></a>Helyszíni/felhőbeli .NET-hibridalkalmazás az Azure WCF Relay használatával
 
@@ -232,7 +232,7 @@ Ebben a szakaszban egy egyszerű ASP.NET-alkalmazást fog létrehozni, amely meg
     ![][18]
 
 7. A **New ASP.NET Web Application** (Új ASP.NET-webalkalmazás) párbeszédpanelen kattintson az **OK** gombra az MVC-alkalmazás létrehozásához.
-8. Most az Azure-erőforrásokat kell konfigurálnia az új webalkalmazáshoz. Kövesse a [cikk Közzététel az Azure platformon szakaszában](../app-service/app-service-web-get-started-dotnet-framework.md#publish-to-azure) található lépéseket. Ezután térjen vissza ehhez az oktatóanyaghoz, és folytassa a következő lépéssel.
+8. Most az Azure-erőforrásokat kell konfigurálnia az új webalkalmazáshoz. Kövesse a [cikk Közzététel az Azure platformon szakaszában](../app-service/app-service-web-get-started-dotnet-framework.md#launch-the-publish-wizard) található lépéseket. Ezután térjen vissza ehhez az oktatóanyaghoz, és folytassa a következő lépéssel.
 10. A Megoldáskezelőben kattintson a jobb gombbal a **Models** (Modellek) elemre, kattintson az **Add** (Hozzáadás) parancsra, majd kattintson a **Class** (Osztály) elemre. A **Name** (Név) mezőbe írja be a **Product.cs** nevet. Ezután kattintson az **Add** (Hozzáadás) gombra.
 
     ![][17]

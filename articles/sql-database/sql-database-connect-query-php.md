@@ -10,12 +10,12 @@ ms.devlang: php
 ms.topic: quickstart
 ms.date: 04/01/2018
 ms.author: carlrab
-ms.openlocfilehash: 8fe343587336ff22f82ed0d1ef700fc56c86f577
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 19ffb1043317cf7e7ce4c00fd85d21274dab7c0a
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38561094"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44055522"
 ---
 # <a name="use-php-to-query-an-azure-sql-database"></a>PHP használata Azure SQL Database-adatbázis lekérdezéséhez
 
@@ -27,7 +27,7 @@ A rövid útmutató elvégzéséhez győződjön meg arról, hogy rendelkezik az
 
 [!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
 
-- A rövid útmutatóhoz használt számítógép nyilvános IP-címére vonatkozó [kiszolgálószintű tűzfalszabály](sql-database-get-started-portal.md#create-a-server-level-firewall-rule).
+- A rövid útmutatóhoz használt számítógép nyilvános IP-címére vonatkozó [kiszolgálószintű tűzfalszabály](sql-database-get-started-portal-firewall.md).
 
 - Telepítette a PHP-t és az operációs rendszerének megfelelő kapcsolódó szoftvereket:
 

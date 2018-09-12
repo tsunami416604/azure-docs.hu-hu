@@ -10,12 +10,12 @@ ms.author: ghogen
 ms.date: 05/11/2018
 ms.topic: include
 manager: douge
-ms.openlocfilehash: 0d3bdb6cc56b90d1975af73be1bb8cc1f73e1213
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: 9e0dfccd98592243623613648cdbd076e429dafb
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "40129121"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44164289"
 ---
 Eddig úgy futtatta alkalmazása kódját, mintha csak Ön dolgozna fejlesztőként az alkalmazáson. Ebben a szakaszban megismerheti, hogyan teszi zökkenőmentessé az Azure Dev Spaces a csapatban végzett fejlesztést:
 * Lehetővé teszi, hogy egy fejlesztőcsapat ugyanabban a környezetben dolgozhasson. Ez lehet egy megosztott Dev Spaces-tér, vagy igény szerint több különálló Dev Spaces-tér.
@@ -48,11 +48,12 @@ A szolgáltatás kódjának fejlesztése során, de még leadás előtt a kód s
 Tekintsük meg, hogy hol futnak jelenleg a szolgáltatások. Futtassa az `azds list-up` parancsot. A következőhöz hasonló kimenet fog megjelenni:
 
 ```
-Name                          DevSpace  Type     Updated      Status
-----------------------------  --------  -------  -----------  ----------------
-mywebapi                      default   Service  10m 1s ago   Running
-mywebapi-54f9cf5b59-bjnkm     default   Pod      10m 4s ago   Running
-webfrontend-5b697958d6-b6v96  default   Pod      26m 38s ago  Init:1/3:mindaro-build
+Name                          DevSpace  Type     Updated  Status
+----------------------------  --------  -------  -------  -------
+mywebapi                      default   Service  3m ago   Running
+mywebapi-56c8f45d9-zs4mw      default   Pod      3m ago   Running
+webfrontend                   default   Service  1m ago   Running
+webfrontend-6b6ddbb98f-fgvnc  default   Pod      1m ago   Running
 ```
 
 A DevSpace oszlop azt mutatja, hogy mindkét szolgáltatás a `default` nevű térben fut. Bárki, aki megnyitja a nyilvános URL-címet, és felkeresi a webalkalmazást, meghívja az Ön által korábban megírt kódútvonalat, amely mindkét szolgáltatást futtatja. Tegyük fel, hogy folytatni szeretné a `mywebapi` fejlesztését. Hogyan módosíthatja a kódokat, és tesztelheti őket úgy, hogy nem akadályozza a fejlesztői környezetet használó többi fejlesztőt? Ehhez be kell állítania a saját terét.

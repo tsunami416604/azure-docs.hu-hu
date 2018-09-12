@@ -8,14 +8,14 @@ tags: billing
 ms.assetid: 60d848f9-ff26-496e-a5ec-ccf92ad7d125
 ms.service: billing
 ms.topic: article
-ms.date: 08/16/2018
+ms.date: 09/11/2018
 ms.author: byvinyal
-ms.openlocfilehash: 00955d5de314e6efb0e491e33708495fbdd14f3b
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: 6a514abf9c34335e1665ca0fd221d2399fddd039
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43782590"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44390826"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Az Azure-előfizetésekre és -szolgáltatásokra vonatkozó korlátozások, kvóták és megkötések
 Ez a dokumentum felsorolja az egyes a leggyakrabban használt Microsoft Azure korlátok, kvóták néven is ismert. Ez a dokumentum jelenleg nem vonatkozik Azure-szolgáltatásokhoz. Az idő múlásával a lista fog kibontható vagy frissítve, hogy biztosítsák a platform további.
@@ -56,6 +56,7 @@ Az alábbi korlátok egy új táblát bővült, hogy minden korlátokat különb
 * [Azure Redis Cache](#azure-redis-cache-limits)
 * [Biztonsági mentés](#backup-limits)
 * [Batch](#batch-limits)
+* [Batch AI](#batch-ai-limits)
 * [BizTalk Services](#biztalk-services-limits)
 * [TARTALOMKÉZBESÍTÉSI HÁLÓZAT (CDN)](#cdn-limits)
 * [Felhőszolgáltatások](#cloud-services-limits)
@@ -210,6 +211,9 @@ A következő App Service – korlátok korlátok Web Apps, Mobile Apps és API-
 
 ### <a name="batch-limits"></a>Batch-korlátok
 [!INCLUDE [azure-batch-limits](../includes/azure-batch-limits.md)]
+
+### <a name="batch-ai-limits"></a>A Batch AI-korlátok
+[!INCLUDE [azure-batch-ai-limits](../includes/azure-batch-ai-limits.md)]
 
 ### <a name="biztalk-services-limits"></a>A BizTalk Services korlátok
 Az alábbi táblázat a korlátokat az Azure Biztalk Services.

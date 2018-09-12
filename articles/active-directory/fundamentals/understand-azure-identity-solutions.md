@@ -14,12 +14,12 @@ ms.component: fundamentals
 ms.technology: ''
 ms.assetid: ''
 ms.custom: it-pro
-ms.openlocfilehash: 118f8258673c8a19d5f06e5fc62ff56d0fb44ea1
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: ec84cdb4e226eea4d16d28d63acd7be59241b973
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39398364"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44346916"
 ---
 # <a name="understand-azure-identity-solutions"></a>Az Azure identitáskezelési megoldásainak ismertetése
 A Microsoft Azure Active Directory (Azure AD) egy felhőalapú identitás- és hozzáférés-kezelési megoldás, amely címtárszolgáltatásokat, identitáskezelést és alkalmazáshozzáférés-felügyeletet kínál. Az Azure AD lehetővé teszi az [egyszeri bejelentkezést](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-sso) több ezer előre integrált kereskedelmi és egyéni alkalmazásba, amelyek szerepelnek [az Azure AD alkalmazáskatalógusában](https://azure.microsoft.com/marketplace/active-directory/all/). Ezen alkalmazások között számos olyan van, például az Office 365, a Salesforce.com, a Box, a ServiceNow vagy a Workday, amelyeket Ön valószínűleg már használ.
@@ -110,10 +110,10 @@ Rengeteg hasznos forrásanyagunk található online, amelyekből mindent megtudh
 
 * [Címtár hibrid kezelésének engedélyezése az Azure AD Connect segítségével](../connect/active-directory-aadconnect.md)
 * [Még nagyobb biztonság a mai hálózati kapcsolatokkal átszőtt világban](../authentication/multi-factor-authentication.md)
-* [Felhasználók átadásának és megszüntetésének automatizálása a SaaS-alkalmazásokban az Azure Active Directoryval](../active-directory-saas-app-provisioning.md)
+* [Felhasználók átadásának és megszüntetésének automatizálása a SaaS-alkalmazásokban az Azure Active Directoryval](../manage-apps/user-provisioning.md)
 * [Jelszavak kezelése tetszőleges helyről](../user-help/active-directory-passwords-update-your-own-password.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
-* [Felhasználók átadásának és megszüntetésének automatizálása a SaaS-alkalmazásokban az Azure Active Directoryval](../active-directory-saas-app-provisioning.md)
+* [Felhasználók átadásának és megszüntetésének automatizálása a SaaS-alkalmazásokban az Azure Active Directoryval](../manage-apps/user-provisioning.md)
 * [Helyszíni alkalmazások biztonságos távoli elérése](../manage-apps/application-proxy.md)
 * [Erőforráshozzáférés-kezelés Azure Active Directory-csoportokkal](active-directory-manage-groups.md)
 * [Mi az a Microsoft Azure Active Directory-licencelés?](active-directory-licensing-whatis-azure-portal.md)

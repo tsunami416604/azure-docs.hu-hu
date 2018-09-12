@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/05/2018
+ms.date: 09/11/2018
 git ms.author: brenduns
 ms.reviewer: misainat
-ms.openlocfilehash: fe6be5a041b87af2323c7978c5371e326b3cd3d6
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: c1b88518f9e27093ff00ad020e470fa5670dfcd6
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44051272"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391946"
 ---
 # <a name="azure-stack-development-kit-release-notes"></a>Az Azure Stack Development Kit kibocsátási megjegyzései  
 Ez a cikk fejlesztései, javításokat és ismert problémák az Azure Stack Development Kit ismerteti. Ha nem biztos abban, hogy melyik verziót futtatja, akkor az [ellenőrizhető a portál használatával](.\.\azure-stack-updates.md#determine-the-current-version).
@@ -60,6 +60,8 @@ A build tartalmaz a következő fejlesztések és javítások az Azure Stackhez.
 - <!-- 1697698  | IS, ASDK --> *Gyorsútmutatók* az ide tartozó cikkekre az online az Azure Stack dokumentáció a felhasználói portál irányítópultján most hivatkozásra.
 
 - <!-- 2515955   | IS ,ASDK--> *Az összes szolgáltatás* váltja fel *további szolgáltatások* az az Azure Stack rendszergazdai és felhasználói portálon. Most már használhatja *minden szolgáltatás* helyett az Azure Stack portálon lépjen a ugyanúgy, mint az az Azure Portalon teheti meg.
+
+- <!-- TBD | IS, ASDK --> **+ Erőforrás létrehozása** váltja fel **+ új** az az Azure Stack rendszergazdai és felhasználói portálon.  Most már használhatja *+ erőforrás létrehozása* helyett az Azure Stack portálon lépjen a ugyanúgy, mint az az Azure Portalon teheti meg. 
 
 - <!--  TBD – IS, ASDK --> *Alapszintű A* virtuálisgép-méretek esetében kivezettük [virtuálisgép-méretezési csoportok létrehozása](.\.\azure-stack-compute-add-scalesets.md) (VMSS) a portálon keresztül. Ez a méret a VMSS létrehozásához, használja a PowerShell vagy a sablont. 
 

@@ -7,14 +7,14 @@ author: CarlRabeler
 manager: craigg
 ms.service: sql-database
 ms.topic: overview
-ms.date: 08/01/2018
+ms.date: 09/07/2018
 ms.author: carlrab
-ms.openlocfilehash: f7a314b3de112ad1fa7a5a356c2325846e9371b1
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 6e793c0227300b836c0a14b4252eeaf63c1bc949
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39413382"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44054580"
 ---
 # <a name="what-is-the-azure-sql-database-service"></a>Mi az Azure SQL Database szolgáltatás? 
 
@@ -177,8 +177,8 @@ Az SQL Database támogatja a Python, Java, Node.js, PHP, Ruby, és .NET alkalmaz
 - Tekintse meg ezeket a rövid útmutatókat a kezdéshez:
 
   - [SQL Database létrehozása az Azure Portalon](sql-database-get-started-portal.md)  
-  - [SQL Database létrehozása az Azure CLI-vel](sql-database-get-started-cli.md)
-  - [SQL Database létrehozása PowerShell használatával](sql-database-get-started-powershell.md)
+  - [SQL Database létrehozása az Azure CLI-vel](sql-database-cli-samples.md)
+  - [SQL Database létrehozása PowerShell használatával](sql-database-powershell-samples.md)
 
 - Több Azure CLI és PowerShell-mintát talál itt:
   - [Azure CLI-minták az SQL Database-hez](sql-database-cli-samples.md)

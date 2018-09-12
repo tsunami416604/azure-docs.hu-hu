@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 04/09/2018
 ms.author: rogarana
-ms.openlocfilehash: 7fc5b164792907644a0a41615436806f998a8b1e
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 2f5396826da88fd2efdd3588babdbdfdeb42252a
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39398709"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44026143"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-java-sdk-v7"></a>Rövid útmutató: Blobok feltöltése, letöltése és listázása a Java SDK V7 használatával
 
@@ -208,7 +208,7 @@ Ennek a gyorsútmutatónak a segítségével megtanulta, hogyan vihetők át fá
 
 > [!div class="nextstepaction"]
 > [A Javához készült Azure Storage SDK](https://github.com/azure/azure-storage-java) 
-> [API-referencia](https://docs.microsoft.com/en-us/java/api/storage/client?view=azure-java-stable)
+> [API-referencia](https://docs.microsoft.com/java/azure/?view=azure-java-stable)
 > [Java-kódminták](../common/storage-samples-java.md)
 
 * További információk a Storage Explorerről és a blobokról: [Azure Blob Storage-erőforrások kezelése a Storage Explorer használatával](../../vs-azure-tools-storage-explorer-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).

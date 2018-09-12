@@ -10,12 +10,12 @@ ms.custom: mvc,DBs & servers
 ms.topic: quickstart
 ms.date: 01/10/2018
 ms.author: ayolubek
-ms.openlocfilehash: 6e9dbeb5915f98ec4d08d8656b6b338ea78117da
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 4dca277326ec89d0c7ab512e9d107ce68cefb2ca
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31792630"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44050850"
 ---
 # <a name="azure-portal-use-the-sql-query-editor-to-connect-and-query-data"></a>Azure Portal: Csatlakozás és az adatok lekérdezése az SQL-lekérdezésszerkesztő használatával
 
@@ -32,7 +32,7 @@ Ez a rövid útmutató az alábbi rövid útmutatókban létrehozott erőforrás
 
 ## <a name="log-in-to-the-azure-portal"></a>Bejelentkezés az Azure Portalra
 
-Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 
 ## <a name="connect-using-sql-authentication"></a>Csatlakozás SQL-hitelesítés használatával

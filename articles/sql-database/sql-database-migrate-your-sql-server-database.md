@@ -9,12 +9,12 @@ ms.custom: mvc,migrate
 ms.topic: tutorial
 ms.date: 07/02/2018
 ms.author: carlrab
-ms.openlocfilehash: ceab627d98149774a3eb767ee56d688f9c11ff99
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 1d8ec772293354c059f21aaae8006f5c40540058
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37346841"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44050204"
 ---
 # <a name="migrate-your-sql-server-database-to-azure-sql-database-using-dma"></a>SQL Server-adatbázis migrálása az Azure SQL Database-be a DMA használatával
 
@@ -43,7 +43,7 @@ Az oktatóanyag teljesítéséhez meg kell felelnie az alábbi előfeltételekne
 
 ## <a name="log-in-to-the-azure-portal"></a>Bejelentkezés az Azure Portalra
 
-Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 ## <a name="create-a-blank-sql-database"></a>Üres SQL-adatbázis létrehozása
 
@@ -133,7 +133,7 @@ Mostantól csatlakozhat az SQL Database-kiszolgálóhoz és annak adatbázisaiho
 
 Kérje le az Azure SQL Database kiszolgáló teljes kiszolgálónevét az Azure Portalon. Használja a teljes kiszolgálónevet az Azure SQL-kiszolgálóhoz történő csatlakozáshoz ügyféloldali eszközök, például a Data Migration Assistant és az SQL Server Management Studio segítségével.
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 2. Válassza az **SQL-adatbázisok** elemet a bal oldali menüben, majd kattintson az új adatbázisra az **SQL-adatbázisok** oldalon. 
 3. Az Azure Portalon az adatbázishoz tartozó lap **Alapvető erőforrások** ablaktábláján keresse meg, majd másolja ki a **Kiszolgáló nevét**.
 

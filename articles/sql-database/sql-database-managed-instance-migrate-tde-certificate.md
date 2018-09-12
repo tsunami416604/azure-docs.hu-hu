@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 08/09/2018
 ms.author: mlandzic
 manager: craigg
-ms.openlocfilehash: afecd69cdf9832e1c6dc294ca01968ee50a3eabd
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 73990d6feeed56114bc3c66164bbb53c093bbe21
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41920094"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44050611"
 ---
 # <a name="migrate-certificate-of-tde-protected-database-to-azure-sql-managed-instance"></a>A TDE-vel védett adatbázis tanúsítványának migrálása felügyelt Azure SQL-példányra
 
@@ -141,4 +141,4 @@ A tanúsítvány ezzel elérhetővé válik a megadott felügyelt példányban, 
 
 Ebből a cikkből megtudhatta, hogyan migrálhatja az adatbázis titkosító kulcsának tanúsítványát transzparens adattitkosítással egy helyszíni vagy az IaaS SQL Server-példányról a felügyelt Azure SQL-példányra.
 
-Az adatbázis biztonsági másolatának egy felügyelt Azure SQL Database-példányra történő visszaállításáról itt olvashat: [Adatbázis biztonsági másolatának visszaállítása egy felügyelt Azure SQL Database-példányon](sql-database-managed-instance-restore-from-backup-tutorial.md).
+Az adatbázis biztonsági másolatának egy felügyelt Azure SQL Database-példányra történő visszaállításáról itt olvashat: [Adatbázis biztonsági másolatának visszaállítása egy felügyelt Azure SQL Database-példányon](sql-database-managed-instance-get-started-restore.md).

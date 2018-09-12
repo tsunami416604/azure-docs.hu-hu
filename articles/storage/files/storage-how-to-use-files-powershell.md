@@ -8,12 +8,12 @@ ms.topic: get-started-article
 ms.date: 03/26/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: a69e8946c050cc69411f843b07e907a119c6edea
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 72f320279d23dc701f045ee6db1681a355f98808
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39522929"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44022286"
 ---
 # <a name="managing-azure-file-shares-with-azure-powershell"></a>Azure-fájlmegosztások felügyelete az Azure PowerShell használatával 
 Az [Azure Files](storage-files-introduction.md) a Microsoft könnyen használható felhőalapú fájlrendszere. Az Azure-fájlmegosztások Windows, Linux és macOS rendszeren csatlakoztathatók. Ez az útmutató az Azure-fájlmegosztások a PowerShell segítségével való használatának alapvető lépéseit mutatja be. Ebben a cikkben az alábbiakkal fog megismerkedni:
@@ -55,7 +55,7 @@ $storageAcct = New-AzureRmStorageAccount `
 ```
 
 ## <a name="create-an-azure-file-share"></a>Azure-fájlmegosztás létrehozása
-Most létrehozhatja az első Azure-fájlmegosztását. A [New-AzureStorageShare](/powershell/module/azurerm.storage/new-azurestorageshare) parancsmaggal hozhat létre fájlmegosztást. Ez a példa egy `myshare` nevű fájlmegosztást hoz létre.
+Most létrehozhatja az első Azure-fájlmegosztását. A [New-AzureStorageShare](https://docs.microsoft.com/powershell/module/servicemanagement/azure.storage/new-azurestorageshare) parancsmaggal hozhat létre fájlmegosztást. Ez a példa egy `myshare` nevű fájlmegosztást hoz létre.
 
 ```azurepowershell-interactive
 New-AzureStorageShare `
@@ -75,7 +75,7 @@ Most, hogy létrehozott egy Azure-fájlmegosztást, csatlakoztathatja azt az SMB
 
 
 ### <a name="create-directory"></a>Könyvtár létrehozása
-Ha egy új, *myDirectory* nevű könyvtárat szeretne létrehozni az Azure-fájlmegosztás gyökérmappájában, használja a [New-AzureStorageDirectory](/powershell/module/azurerm.storage/new-azurestoragedirectory) parancsmagot.
+Ha egy új, *myDirectory* nevű könyvtárat szeretne létrehozni az Azure-fájlmegosztás gyökérmappájában, használja a [New-AzureStorageDirectory](https://docs.microsoft.com/powershell/module/azure.storage/new-azurestoragedirectory) parancsmagot.
 
 
 ```azurepowershell-interactive

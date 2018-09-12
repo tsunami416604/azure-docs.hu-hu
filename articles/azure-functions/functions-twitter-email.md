@@ -3,25 +3,20 @@ title: Az Azure Logic Apps szolgáltatással integrálható függvények létreh
 description: Létrehozhat egy függvényt, amely integrálható az Azure Logic Apps és az Azure Cognitive Services szolgáltatással a tweetek hangulatának kategorizálásához és értesítések küldéséhez, amennyiben azok kedvezőtlen véleményt tükröznek.
 services: functions, logic-apps, cognitive-services
 keywords: munkafolyamat, felhőalapú alkalmazások, felhőszolgáltatások, üzleti folyamatok, rendszerintegráció, vállalati alkalmazásintegráció, EAI
-documentationcenter: ''
 author: ggailey777
-manager: cfowler
-editor: ''
+manager: jeconnoc
 ms.assetid: 60495cc5-1638-4bf0-8174-52786d227734
-ms.service: functions
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.service: azure-functions
 ms.topic: tutorial
 ms.date: 12/12/2017
 ms.author: glenga
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 16a46b4c49687186e25c399dcc2c5c168e7c5004
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 23db8d307892b100f291a1f32c9b77c73a60f23e
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38586874"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44090763"
 ---
 # <a name="create-a-function-that-integrates-with-azure-logic-apps"></a>Az Azure Logic Apps szolgáltatással integrálható függvények létrehozása
 

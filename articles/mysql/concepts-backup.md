@@ -1,83 +1,83 @@
 ---
-title: Biztonsági mentés és MySQL az Azure-adatbázis visszaállítása
-description: Információ az automatikus biztonsági mentés és a MySQL-kiszolgálóhoz tartozó Azure-adatbázis visszaállítása.
+title: Biztonsági mentés és visszaállítás az Azure Database for MySQL-hez
+description: További tudnivalók az automatikus biztonsági mentés és az Azure Database for MySQL-kiszolgáló visszaállítása.
 services: mysql
-author: kamathsun
-ms.author: sukamat
+author: ajlam
+ms.author: andrela
 manager: kfile
 editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: bdc9a0ef393b55563691d7a52f8fa074eacc4594
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 21d6ed8a21e4c9273446eff6b0057214c715873f
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35264476"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391725"
 ---
-# <a name="backup-and-restore-in-azure-database-for-mysql"></a>Biztonsági mentés és MySQL az Azure-adatbázis visszaállítása
+# <a name="backup-and-restore-in-azure-database-for-mysql"></a>Biztonsági mentés és visszaállítás az Azure Database for MySQL-hez
 
-Azure MySQL-adatbázis automatikusan hoz létre a biztonsági mentések, és a beállított felhasználó helyileg redundáns vagy georedundáns tárolás tárolja. Biztonsági mentések segítségével visszaállíthatja a kiszolgáló egy-időpontban. Biztonsági mentés és visszaállítás bármilyen folytonos üzletmenetre vonatkozó stratégiája alapvető részét képezik, mert ezek az adatok védelméhez véletlen sérülése vagy törlése.
+Azure Database for MySQL automatikusan hoz létre a kiszolgáló biztonsági mentése és konfigurált felhasználó helyileg redundáns vagy georedundáns tárolóban tárolja azokat. Biztonsági másolatokat állíthatja vissza a kiszolgáló egy-időponthoz használható. Biztonsági mentés és visszaállítás bármely üzletmenet-folytonossági stratégiát alapvető részét képezik, mert azok megvédheti adatait a véletlen adatsérülések vagy -törlések.
 
 ## <a name="backups"></a>Biztonsági másolatok
 
-Azure MySQL-adatbázis teljes különbségi és a tranzakciónapló biztonsági mentései vesz igénybe. Ezek a biztonsági másolatok lehetővé teszi bármely-időpontban a konfigurált biztonsági mentési megőrzési időtartamon belül a kiszolgáló visszaállításához. A biztonsági mentés megőrzési idő érték hét nap. Igény szerint konfigurálható mentése 35 nap. Minden biztonsági mentés titkosítása AES 256 bites titkosítás használata.
+Azure Database for MySQL teljes, differenciális és tranzakciónapló biztonsági mentései vesz igénybe. Ezeket a biztonsági másolatokat lehetővé teszik bármely-időponthoz a kiszolgáló visszaállítása a konfigurált biztonsági másolatok megőrzési időtartamon belül. Az alapértelmezett biztonsági másolat megőrzési idejének hét nap. Igény szerint beállíthatja, másolatot 35 napon belül. Minden biztonsági mentés vannak titkosítva, 256 bites AES-titkosítással.
 
 ### <a name="backup-frequency"></a>Biztonsági mentés gyakorisága
 
-Általában teljes biztonsági mentés hetente, kerül sor különbözeti biztonsági mentések naponta kétszer fordul elő, és a tranzakciónapló biztonsági mentései fordulhat elő, ötpercenként. Az első teljes biztonsági mentés van ütemezve, közvetlenül az után a kiszolgáló akkor jön létre. A kezdeti biztonsági másolatot több időt vesz igénybe egy nagy visszaállított kiszolgálón. A legkorábbi pont időben, hogy az új kiszolgáló vissza tudja állítani az az idő, ahol a kezdeti teljes biztonsági mentés befejeződött.
+Általában a teljes biztonsági mentés hetente, a különbségi biztonsági mentések naponta kétszer fordul elő, és tranzakciónaplók biztonsági mentését öt percenként történik. Az első teljes biztonsági mentés van ütemezve, a kiszolgáló létrehozása után azonnal. A kezdeti biztonsági mentés több időt vesz igénybe a nagy helyreállított kiszolgálón. A legkorábbi pont, amely egy új kiszolgálóra vissza tudja állítani az időben az az idő, amellyel a kezdeti biztonsági mentés befejeződött.
 
-### <a name="backup-redundancy-options"></a>Biztonsági mentési redundancia beállítások
+### <a name="backup-redundancy-options"></a>Biztonsági mentés redundanciabeállításai
 
-Azure MySQL-adatbázis rugalmasságot biztosít, és az általános célú és Memóriaoptimalizált szinteket helyileg redundáns vagy georedundáns biztonsági másolatok tárolásának választhat. Ha a biztonsági másolatai georedundáns biztonsági másolatok tárolásának, nem csak tárolásuk abban a régióban, amelyben a kiszolgáló üzemelteti, de is replikálódnak a [párosított adatközpont](https://docs.microsoft.com/azure/best-practices-availability-paired-regions). Ez biztosítja, hatékonyabb védelmére és lehetőség, hogy a kiszolgáló egy másik régióban legyen katasztrófahelyzet esetén. Az alapvető csak kínál, helyileg redundáns biztonságimásolat-tároláshoz.
+Azure Database for MySQL rugalmasságot biztosít, és válassza a helyileg redundáns vagy georedundáns biztonsági mentési tár az általános célú és memóriahasználatra optimalizált csomagok között. Ha a biztonsági másolatai georedundáns biztonsági mentési tár, csak nem is tárolja a régiót, amelyben a kiszolgáló van tárolva, de emellett replikálva vannak egy [párosított adatközpontba](https://docs.microsoft.com/azure/best-practices-availability-paired-regions). Ez biztosítja a hatékonyabb védelmére és helyreállítására a kiszolgáló egy másik régióban egy esetleges vészhelyzet esetén. Az alapszintű csomag csak a helyileg redundáns biztonsági mentési tárhelyet kínál.
 
 > [!IMPORTANT]
-> Konfigurálásával helyileg redundáns vagy georedundáns tárolás során a kiszolgáló csak engedélyezett a biztonsági mentés létrehozása. Miután a kiszolgáló ki van építve, a biztonsági másolatok tárolásának redundancia beállítás nem módosítható.
+> Konfigurálása helyileg redundáns vagy a georedundáns tárolás során a kiszolgáló csak engedélyezett a biztonsági mentés létrehozása. Ha a kiszolgáló ki van építve, a biztonsági mentési tár adatredundáns tárolási mód nem módosítható.
 
-### <a name="backup-storage-cost"></a>Biztonsági másolatok tárolási költségek
+### <a name="backup-storage-cost"></a>Biztonsági másolat tárolási költség
 
-Azure MySQL-adatbázis kiosztott kiszolgáló tárhelyét legfeljebb 100 %-os biztonsági mentési tároló minden további költség nélkül biztosít. Ez általában a biztonsági másolatok megőrzésének hétnapos alkalmas. Minden további, a használt biztonsági mentési tárterület GB-hónap fel van töltve.
+Azure Database for MySQL biztonsági mentési tár díjmentesen biztosít tárhelyet a kiszolgáló kiépített tárolója 100 %. Ez általában egy hét napos megőrzésének alkalmas. Bármely használt biztonsági mentési tár GB-hónap kell fizetnie.
 
-Például ha ellátta 250 GB tartalmazó kiszolgálóra, akkor a biztonsági másolatok tárolásának 250 GB használatáért nem kell külön fizetni. Amelyek átlépik ezt a 250 GB tárhely fel van töltve.
+Például ha egy 250 GB-os kiszolgálót létrehozta, azok 250 GB-os biztonsági tárhelyet használhat külön díj nélkül. Ajánlatunkban 250 GB-os tárolási díjat számítunk fel.
 
 ## <a name="restore"></a>Visszaállítás
 
-A MySQL adatbázis Azure a visszaállítási folyamat végrehajtása hoz létre egy új kiszolgálót az eredeti kiszolgáló biztonsági másolatból.
+Az Azure Database for MySQL-hez a visszaállítás végrehajtása hoz létre egy új kiszolgálót az eredeti kiszolgáló biztonsági mentése.
 
-Kétféle visszaállítási érhetők el:
+Nincsenek elérhető visszaállítási két típusa:
 
-- **Pont időponthoz kötött visszaállítás** bármelyik biztonsági mentési redundancia beállítás érhető el, és létrehoz egy új kiszolgálót az eredeti kiszolgáló ugyanabban a régióban.
-- **Georedundáns helyreállítás** áll rendelkezésre, csak akkor, ha a kiszolgálónak a georedundáns tárolás konfigurált, és lehetővé teszi, hogy a kiszolgáló helyreállítása egy másik régióban.
+- **Visszaállítási pont kötött** vagy a biztonsági másolat redundancia beállítás érhető el, és létrehoz egy új kiszolgálót az eredeti kiszolgáló ugyanabban a régióban.
+- **A GEO-visszaállítás** érhető el, csak akkor, ha a kiszolgáló georedundáns tárolás konfigurált, és lehetővé teszi, hogy a kiszolgáló helyreállítása egy másik régióba.
 
-A helyreállítási becsült időtartama többek között az adatbázis mérete, a tranzakciós napló mérete, a hálózati sávszélesség, és az összes-adatbázisok helyreállítása ugyanabban a régióban egy időben számos tényezőtől függ. A helyreállítási idő az általában 12 óránál kevesebb.
+A becsült helyreállítási idő az adatbázis maximális mérete, a tranzakciós napló méretétől, a hálózati sávszélességet és az adatbázis helyreállítása zajlik egyidejűleg ugyanabban a régióban száma több tényezőtől függ. A helyreállítási idő általában a kevesebb mint 12 óra.
 
 > [!IMPORTANT]
-> Ha törli a kiszolgálót, akkor a kiszolgálóhoz tartozó összes adatbázis is törlődnek, és nem állítható helyre. A Törölt kiszolgáló nem tudja visszaállítani.
+> Törölt kiszolgálók **nem** állítható vissza. Ha törli a kiszolgálót, akkor a kiszolgálóhoz tartozó összes adatbázis is törlődik, és nem állítható helyre. 
 
 ### <a name="point-in-time-restore"></a>Adott időpontnak megfelelő helyreállítás
 
-A biztonsági mentési redundancia beállítás független, végezheti el a visszaállítás bármely időben a biztonsági mentés megőrzési időn belül. Új kiszolgáló és az eredeti kiszolgáló Azure ugyanabban a régióban jön létre. Azt a tarifacsomagok az eredeti kiszolgáló beállításokkal jön létre, számítási generációs, vCores, a tároló méretét, a biztonsági mentés megőrzési időtartam és a biztonsági mentési redundancia beállítás száma.
+A biztonsági másolat redundancia beállítás független, is végrehajthatja a visszaállítás bármely időpontra idő a biztonsági másolatok megőrzési időtartamon belül. Új kiszolgáló és az eredeti kiszolgálón Azure ugyanabban a régióban jön létre. Az eredeti kiszolgáló konfigurációját a tarifacsomag-létrehozást, a számítási generáció és a virtuális magok, a tárméret, a biztonsági másolat megőrzési idejének és a biztonsági mentési adatredundáns tárolási mód száma.
 
-Több forgatókönyv pont időponthoz kötött visszaállítás érdemes alkalmazni. Például amikor egy felhasználó véletlenül törli az adatokat, csökken az fontos tábla vagy az adatbázis, vagy ha egy alkalmazás véletlenül felülírja jó adatokra helytelen adatot az alkalmazás hiba miatt.
+Visszaállítási pont kötött hasznos számos módja létezik. Ha például egy felhasználó véletlenül törli az adatokat, ha csökken egy fontos táblát vagy -adatbázist, vagy ha egy alkalmazás véletlenül felülírja a helyes adatokat rossz adatokkal egy alkalmazás valamilyen alkalmazáshiba miatt.
 
-Várja meg a következő tranzakciós napló biztonsági mentési pontra az elmúlt 5 percben belül visszaállítása előtt végrehajtandó szeretne.
+Szükség lehet a következő tranzakciónapló biztonsági mentését kell venni az utolsó öt percen belül a pontra visszaállítása előtt várja.
 
 ### <a name="geo-restore"></a>Georedundáns helyreállítás
 
-Is helyreállíthatja a kiszolgáló egy másik Azure-régió, ahol a szolgáltatás nem érhető el, ha a kiszolgáló, a georedundáns biztonsági mentéshez konfigurált. Georedundáns helyreállítás az alapértelmezett helyreállítási beállítás esetén a kiszolgáló nem érhető el a régióban, ahol a kiszolgáló tárolása esemény miatt. Ha a felügyeleti teendők központjaként, amelyhez a régió eredmények hiányában az adatbázis-alkalmazás, a kiszolgáló más régióban a georedundáns biztonsági másolatból visszaállíthatja egy kiszolgálót. Amikor egy biztonsági mentést készít-e, és amikor azt a rendszer replikálja más régióban késleltetés van. Ez a késés lehet akár egy óra alatt tehát ha katasztrófa történik, lehet fel egy órával adatok veszhetnek el.
+Visszaállíthatja egy kiszolgáló egy másik Azure-régió a szolgáltatás elérhető, ha már konfigurálta a kiszolgáló georedundáns biztonsági mentésekhez. A GEO-visszaállítás az alapértelmezett helyreállítási beállítást esetén a kiszolgáló nem érhető el a régióban, ahol a kiszolgáló üzemel incidens miatt. Ha egy nagy méretű incidens egy elérhetetlensége régió eredményez az adatbázis-alkalmazását, egy kiszolgálóhoz az összes kiszolgáló helyreállíthatja a georedundáns biztonsági másolatokból. Ha egy biztonsági mentés készül, és ha replikálása másik régióba késleltetés van. Ez a késleltetés is lehet akár egy órát, tehát ha katasztrófa történik, is lehet másolatot az adatvesztést egy óra.
 
 ### <a name="perform-post-restore-tasks"></a>Hajtsa végre visszaállítás utáni feladatok
 
-Után visszaállítása vagy helyreállítás mechanizmus végre kell hajtania a következő feladatok végrehajtásával a felhasználók és alkalmazások biztonsági működik, és:
+Helyreállítási mechanizmusok visszaállítás után végre kell hajtania a következő feladatokat beolvasni a felhasználók és alkalmazások biztonsági és:
 
-- Célja, hogy az új kiszolgáló lecseréli az eredeti kiszolgálón, ha az ügyfelek és az új kiszolgálóra ügyfélalkalmazások átirányítása
-- Biztosítsa, hogy megfelelő kiszolgálószintű tűzfal-szabályokat helyen való csatlakozáskor
-- Biztosítsa, hogy megfelelő bejelentkezések és adatbázis-szintű engedélyek helyen
+- Ha az eredeti kiszolgálót cserélje le az új kiszolgáló hivatott, átirányítva az ügyfelek és az ügyfélalkalmazások az új kiszolgálóra
+- Ellenőrizze, hogy megfelelő kiszolgálószintű tűzfalszabályok vannak érvényben a felhasználók számára
+- Győződjön meg, hogy megfelelő bejelentkezések és az adatbázis-szintű engedélyeit helyen
 - Konfigurálja a riasztásokat, ha szükséges.
 
 ## <a name="next-steps"></a>További lépések
 
-- Az üzletmenet folytonossága kapcsolatos további tudnivalókért tekintse meg a [üzleti folytonosság – áttekintés](concepts-business-continuity.md).
-- A pont visszaállítása az Azure portál használatával időpontra, lásd: [ponttá adatbázis visszaállítása az Azure portál használatával időpontra](howto-restore-server-portal.md).
-- Visszaállítása egy alkalommal az Azure parancssori felület használatával, lásd: [adatbázis visszaállítása pontra parancssori felület használatával időpontra](howto-restore-server-cli.md).
+- Üzletmenet-folytonossági kapcsolatos további információkért tekintse meg a [üzleti folytonosság – áttekintés](concepts-business-continuity.md).
+- Visszaállítását egy időpontra az Azure portal használatával, lásd: [database visszaállítása egy időpontra az Azure portal használatával](howto-restore-server-portal.md).
+- Visszaállítását egy időpontra az Azure CLI használatával, lásd: [database visszaállítása egy CLI-vel](howto-restore-server-cli.md).

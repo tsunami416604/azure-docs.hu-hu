@@ -11,12 +11,12 @@ ms.topic: tutorial
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, tárolók
 manager: douge
-ms.openlocfilehash: 818d11e49b0223d42179b4d409f946776dcb73aa
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 602e2a691dfa150c2e8332cb6dca070dbdd57901
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43185716"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44162087"
 ---
 # <a name="team-development-with-azure-dev-spaces"></a>Csoportos fejlesztés az Azure Dev Spaces használatával
 
@@ -82,7 +82,7 @@ Remek! Most már rendelkezik egy többtárolós alkalmazással, ahol az egyes t�
 
 ## <a name="learn-about-team-development"></a>A csapatban végzett fejlesztés bemutatása
 
-[!INCLUDE[](includes/team-development-1.md)]
+[!INCLUDE [](includes/team-development-1.md)]
 
 Lássuk működés közben. Váltson a `mywebapi` VS Code-ablakára, és szerkessze a `string Get(int id)` metódus kódját, például:
 
@@ -95,8 +95,8 @@ public string Get(int id)
 ```
 
 
-[!INCLUDE[](includes/team-development-2.md)]
+[!INCLUDE [](includes/team-development-2.md)]
 
-[!INCLUDE[](includes/well-done.md)]
+[!INCLUDE [](includes/well-done.md)]
 
-[!INCLUDE[](includes/clean-up.md)]
+[!INCLUDE [](includes/clean-up.md)]
