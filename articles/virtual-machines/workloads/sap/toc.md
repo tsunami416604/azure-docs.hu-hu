@@ -24,7 +24,11 @@
 ## Az SAP HANA telepítése
 ### [A konfiguráció ellenőrzése](hana-installation.md)
 ### [Minta HANA-telepítés](hana-example-installation.md)
-## [Magas rendelkezésre állás és vészhelyreállítás](hana-overview-high-availability-disaster-recovery.md)
+## Magas rendelkezésre állás és vészhelyreállítás
+### [Lehetőségek és megfontolandó szempontok](hana-overview-high-availability-disaster-recovery.md)
+### [Biztonsági mentés és visszaállítás](hana-backup-restore.md)
+### [Alapelvek és előkészítés](hana-concept-preparation.md)
+### [Vészhelyreállítási feladatátvételi eljárás](hana-failover-procedure.md)
 ## Hibaelhárítás és monitorozás
 ### [A HLI monitorozása](troubleshooting-monitoring.md)
 ### [HANA-oldali monitorozás és hibaelhárítás](hana-monitor-troubleshoot.md)

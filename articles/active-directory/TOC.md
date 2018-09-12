@@ -197,6 +197,7 @@
 #### [Bérlőkorlátozások](manage-apps/tenant-restrictions.md)
 #### [SCIM használata a felhasználók átadására](manage-apps/use-scim-to-provision-users-and-groups.md)
 
+### [Az Azure AD-alkalmazások hozzájárulási folyamatának ismertetése](application-consent-experience.md)
 
 ### Hibaelhárítás
 

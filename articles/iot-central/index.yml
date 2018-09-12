@@ -1,4 +1,10 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: f8dcee53aecfcb7468d87c480c68f14715dea035
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391572"
 documentType: LandingData
 title: Azure IoT Central (előnézet) Dokumentáció
 metadata:
@@ -11,15 +17,13 @@ metadata:
   ms.service: iot-central
   services: iot-central
   manager: timlt
-  ms.openlocfilehash: df6acc821183e7336d8079895c7494eed397eea1
-  ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-  ms.translationtype: HT
-  ms.contentlocale: hu-HU
-  ms.lasthandoff: 06/01/2018
-  ms.locfileid: "34628572"
 abstract:
   description: Az Azure IoT Central egy teljes körűen felügyelt SaaS (szoftverszolgáltatási) megoldás, amely megkönnyíti az IoT-eszközök méretezhető csatlakoztatását, monitorozását és felügyeletét. Az Azure IoT Central leegyszerűsíti IoT-megoldásának kezdeti beállítását, és csökkenti a felügyeleti terheket, az üzemeltetési költségeket és a tipikus IoT-projektek többletterhelését. Rövid útmutatóink és oktatóanyagaink segítségével megtudhatja, hogyan hozhat létre, szabhat testre, kezelhet és használhat Azure IoT Central alkalmazásokat.
 sections:
+- title: Várható változás
+  items:
+  - type: paragraph
+    text: Az elkövetkező hetekben az Azure IoT Central minden eszközkapcsolata átvált az Azure IoT Hub Device Provisioning szolgáltatás (DPS) használatára. Amint a változás életbe lép, frissítenie kell majd eszközkódját, hogy a DPS SDK segítségével regisztráljon és csatlakoztassa eszközeit. A folyamatos adatexportálási funkciót és/vagy a Power BI-megoldássablont használó minden alkalmazás esetében módosítani kell majd a céltárolót és egy új megoldássablont kell létrehozni. <a href="https://aka.ms/iotcentral-create-technical-support-ticket">További információért kérjük, forduljon a műszaki támogatáshoz.</a>
 - title: 5 perces gyors útmutatók
   items:
   - type: paragraph

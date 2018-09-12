@@ -1,0 +1,126 @@
+items:
+- name: Az Azure AD alkalmazáskezelési dokumentációja
+  href: index.yml
+- name: Áttekintés
+  items:
+  - name: Az alkalmazáskezelés ismertetése
+    href: what-is-application-management.md
+- name: Gyors útmutatók
+  items:
+  - name: Alkalmazás hozzáadása – portál
+    href: add-application-portal.md
+  - name: Bérlői alkalmazások megtekintése – portál
+    href: view-applications-portal.md
+  expanded: true
+- name: Oktatóanyagok
+  items:
+  - name: Egyszeri bejelentkezés konfigurálása – portál
+    href: configure-single-sign-on-portal.md
+- name: Alapelvek
+  items:
+  - name: Felhőalkalmazás-integráció megtervezése
+    items:
+    - name: Mi történik egy új alkalmazás hozzáadásakor?
+      href: plan-an-application-integration.md
+  - name: Helyszíni alkalmazásintegráció megtervezése
+    items:
+    - name: Alkalmazásproxy
+      href: application-proxy.md
+    - name: Összekötők
+      href: application-proxy-connectors.md
+    - name: Összekötőcsoportok
+      href: application-proxy-connector-groups.md
+    - name: Biztonság
+      href: application-proxy-security.md
+    - name: Hálózati topológia
+      href: application-proxy-network-topology.md
+    - name: Távelérési megoldások összehasonlítása
+      href: application-proxy-migration.md
+  - name: Felhasználók és csoportok üzembe helyezése
+    items:
+    - name: Felhasználók automatikus üzembe helyezése
+      href: configure-automatic-user-provisioning-portal.md
+    - name: SCIM-kompatibilis alkalmazások
+      href: use-scim-to-provision-users-and-groups.md
+  - name: Alkalmazások biztonsága
+    items:
+    - name: Alkalmazás-hozzáférési lehetőségek
+      href: what-is-access-management.md
+    - name: Tanúsítvány-aláírási lehetőségek
+      href: certificate-signing-options.md
+    - name: Tanúsítványok kezelése
+      href: manage-certificates-for-federated-single-sign-on.md
+  - name: Egyszeri bejelentkezés
+    items:
+    - name: SSO-metódusok
+      href: application-proxy-single-sign-on.md
+    - name: Kezdőtartomány felderítése
+      href: configure-authentication-for-federated-users-portal.md
+    - name: Kerberos általi korlátozott delegálás (KCD)
+      href: application-proxy-configure-single-sign-on-with-kcd.md
+    - name: Jelszótárolás
+      href: application-proxy-configure-single-sign-on-password-vaulting.md
+    - name: Ping-hozzáférés
+      href: application-proxy-configure-single-sign-on-with-ping-access.md
+- name: Útmutatók
+  items:
+  - name: Felhőalkalmazás-integráció
+    items:
+    - name: Név vagy embléma módosítása
+      href: change-name-or-logo-portal.md
+  - name: Helyszíni alkalmazásintegráció
+    items:
+    - name: Alkalmazásproxy engedélyezése
+      href: application-proxy-enable.md
+    - name: Alkalmazás közzététele táveléréshez
+      href: application-proxy-publish-azure-portal.md
+    - name: Összekötők konfigurálása
+      href: application-proxy-configure-connectors-with-proxy-servers.md
+    - name: Jogcímbarát alkalmazások konfigurálása
+      href: application-proxy-configure-for-claims-aware-applications.md
+    - name: Összekötő regisztrálása – csendes telepítés
+      href: application-proxy-register-connector-powershell.md
+    - name: Natív ügyfélalkalmazások konfigurálása
+      href: application-proxy-configure-native-client-application.md
+    - name: Egyéni kezdőlap konfigurálása
+      href: application-proxy-configure-custom-home-page.md
+    - name: Beágyazott hivatkozások fordítása
+      href: application-proxy-configure-hard-coded-link-translation.md
+    - name: Közzététel helyettesítő karakterek használatával
+      href: application-proxy-wildcard.md
+    - name: Személyes adatok eltávolítása
+      href: application-proxy-remove-personal-data.md
+    - name: Egyéni tartomány konfigurálása
+      href: application-proxy-configure-custom-domain.md
+    - name: Integrálás a Távoli asztallal
+      href: application-proxy-integrate-with-remote-desktop-services.md
+    - name: Integrálás a Sharepointtal
+      href: application-proxy-integrate-with-sharepoint-server.md
+    - name: Integrálás a Teamsszel
+      href: application-proxy-integrate-with-teams.md
+    - name: Integrálás a Tableau-vel
+      href: application-proxy-integrate-with-tableau.md
+    - name: Integrálás a Qlikkel
+      href: application-proxy-qlik.md
+    - name: Konfigurálási hibák
+      href: application-proxy-troubleshoot.md
+  - name: Alkalmazás-hozzáférés
+    items:
+    - name: Felhasználó hozzárendelése egy alkalmazáshoz
+      href: assign-user-or-group-access-portal.md
+    - name: Felhasználó vagy csoport hozzáférésének eltávolítása
+      href: remove-user-or-group-access-portal.md
+    - name: Alkalmazás elrejtése egy felhasználó elől
+      href: hide-application-from-user-portal.md
+    - name: Felhasználói bejelentkezések letiltása
+      href: disable-user-sign-in-portal.md
+  - name: Migrálás
+    items:
+    - name: Egy ADFS-alkalmazás migrálása az Azure-ba
+      href: migrate-adfs-apps-to-azure.md
+ms.openlocfilehash: 57a377c56764272b70814bc78b31f718d3d902b7
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44381800"
