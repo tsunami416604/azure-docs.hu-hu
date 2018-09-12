@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 18/30/2018
 ms.author: rkarlin
-ms.openlocfilehash: f43ebff65cf32dce1dae6bb9a592b491e56c8810
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 08174a6781772abdebd9e203a3433a1a4ac82859
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44295395"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44378363"
 ---
 # <a name="customize-os-security-configurations-in-azure-security-center-preview"></a>Testre szabhatja az operációs rendszer biztonsági konfigurációival az Azure Security Centerben (előzetes verzió)
 
@@ -69,9 +69,11 @@ Testre szabhatja az alapértelmezett operációs rendszer biztonsági konfigurá
    > Alapértelmezés szerint a konfigurációs fájl letöltése van *json* formátumban. Ez a fájl módosításával kapcsolatos útmutatásért lépjen [a konfigurációs fájljának testreszabása](#customize-the-configuration-file).
    >
 
-   Miután sikeresen mentette a fájlt, a konfiguráció alkalmazása az összes virtuális gépek és az előfizetéshez tartozó összes munkaterülethez csatlakoztatott számítógép. A folyamat általában néhány percet vesz igénybe, de az infrastruktúra méretétől függően több időt vesz igénybe.
-
 6. A módosítás véglegesítéséhez kattintson **mentése**. Ellenkező esetben a házirend nem tárolja.
+
+    ![A Mentés gombra](media/security-center-customize-os-security-config/save-successfully.png)
+
+   Miután sikeresen mentette a fájlt, a konfiguráció alkalmazása az összes virtuális gépek és az előfizetéshez tartozó a munkaterülethez csatlakoztatott számítógép. A folyamat általában néhány percet vesz igénybe, de az infrastruktúra méretétől függően több időt vesz igénybe.
 
 Bármikor visszaállíthatja a jelenlegi házirend-konfigurációt az alapértelmezett állapotba. Az ehhez a **szerkesztése operációs rendszer biztonsági konfigurációs szabályok** ablakban válassza **alaphelyzetbe**. Erősítse meg ezt a lehetőséget választva **Igen** a megerősítési előugró ablakban.
 

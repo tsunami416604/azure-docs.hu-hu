@@ -6,21 +6,20 @@ documentationcenter: ''
 author: mattbriggs
 manager: femila
 editor: ''
-ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/22/2018
+ms.date: 09/10/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 387c4ce51d7bc9b618bb87fd347b9448926452b7
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: ef9fe0e05343f9c99656634a075b1bd464a13c7e
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39426795"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44379587"
 ---
 # <a name="prepare-azure-stack-pki-certificates-for-deployment"></a>Az Azure Stack PKI-tanúsítványok telepítésének előkészítése
 A tanúsítványfájlokat [választott a hitelesítésszolgáltatótól kapott](azure-stack-get-pki-certs.md) kell exportálható és importálható az Azure Stack szemben támasztott követelményeknek megfelelő tulajdonságokkal.
@@ -45,7 +44,7 @@ Ezen lépések előkészítéséhez és az Azure Stack PKI-tanúsítványok elle
 
     ![A tanúsítványtároló konfigurálása](.\media\prepare-pki-certs\3.png)
 
-    a. Ha importál egy PFX megjelenik egy további párbeszédpanel. Az a **titkos kulcs védelme** lap, adja meg a jelszót a tanúsítványfájlokat, majd engedélyezze a **a kulcs megjelölése exportálhatóként. Ez lehetővé teszi, hogy készítsen biztonsági másolatot, vagy egy későbbi időpontban a kulcsok átviteli** lehetőséget. Kattintson a **Tovább** gombra.
+    a. Ha egy PFX importál, megjelenik egy további párbeszédpanel. Az a **titkos kulcs védelme** lap, adja meg a jelszót a tanúsítványfájlokat, majd engedélyezze a **a kulcs megjelölése exportálhatóként. Ez lehetővé teszi, hogy készítsen biztonsági másolatot, vagy egy későbbi időpontban a kulcsok átviteli** lehetőséget. Kattintson a **Tovább** gombra.
 
     ![Kulcs megjelölése exportálhatóként](.\media\prepare-pki-certs\2.png)
 

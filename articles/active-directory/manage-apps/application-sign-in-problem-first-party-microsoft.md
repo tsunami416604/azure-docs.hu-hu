@@ -12,17 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/11/2017
+ms.date: 09/10/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: d1987d6774b7fc831b26d6463f280259ee9f961a
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: ab0face3c211a8ea1477f40167f80330f0423498
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/11/2018
-ms.locfileid: "44356707"
+ms.locfileid: "44379264"
 ---
-## <a name="problems-signing-in-to-a-microsoft-application"></a>Egy Microsoft-alkalmazásba történő bejelentkezésnél
+# <a name="problems-signing-in-to-a-microsoft-application"></a>Egy Microsoft-alkalmazásba történő bejelentkezésnél
 
 A Microsoft Applications (például Office 365 Exchange, SharePoint, a Yammer stb.) társítva, vagy mint 3. fél SaaS-alkalmazások vagy más alkalmazásokhoz, az egyszeri bejelentkezéshez az Azure AD integrálása egy kicsit másképp kezeli.
 

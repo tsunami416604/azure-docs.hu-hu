@@ -8,14 +8,14 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 04/30/2018
+ms.date: 09/06/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 136316feab5a08308a9f10e499f645aaee0c90d3
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 1d6160f8c66fd749942be581cb2992977da82911
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44093243"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44377989"
 ---
 # <a name="durable-functions-overview"></a>Durable Functions áttekintése
 
@@ -334,7 +334,7 @@ A színfalak mögött a Durable Functions bővítmény épül fel a a [tartós f
 
 ### <a name="event-sourcing-checkpointing-and-replay"></a>Az Event sourcing, ellenőrzőpont és visszajátszás
 
-Az orchestrator funkciók képesek megbízhatóan fenntartani a végrehajtási állapot néven felhőalapú tervezési minta használatával [Event Sourcing](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing). Helyett közvetlenül az *aktuális* folyamattevékenységek vezénylése, a tartós bővítmény állapotát egy csak hozzáfűzéssel bővíthető tár használatával rögzíti a *műveletsorozat teljes* függvény vezénylési által készített. Számos előnnyel jár, többek között, javul a teljesítmény, méretezhetőség és válaszképességét képest "való kiírása" teljes futásidejű állapot azt. Más értékelemek közé tartozik a végleges konzisztencia biztosítása a tranzakciós adatoknak, és teljes körű naplók és előzmények fenntartása. Maguk a naplók megbízható kompenzáló műveleteinek engedélyezése.
+Az orchestrator funkciók képesek megbízhatóan fenntartani a végrehajtási állapot, más néven tervezési minta használatával [Event Sourcing](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing). Helyett közvetlenül az *aktuális* folyamattevékenységek vezénylése, a tartós bővítmény állapotát egy csak hozzáfűzéssel bővíthető tár használatával rögzíti a *műveletsorozat teljes* függvény vezénylési által készített. Számos előnnyel jár, többek között, javul a teljesítmény, méretezhetőség és válaszképességét képest "való kiírása" teljes futásidejű állapot azt. Más értékelemek közé tartozik a végleges konzisztencia biztosítása a tranzakciós adatoknak, és teljes körű naplók és előzmények fenntartása. Maguk a naplók megbízható kompenzáló műveleteinek engedélyezése.
 
 Az Event Sourcing a bővítmény által használata átlátszó. Valójában a `await` operátor szerepel egy orchestrator-függvényt az orchestrator szál irányítását poskytne térjen vissza a tartós feladat keretrendszer dispatcher. A kézbesítő fel minden olyan új műveletek (például egy vagy több alárendelt függvények hívása, vagy egy tartós időzítő ütemezésének) ütemezett az orchestrator függvény ezután véglegesíti Storage. A transzparens véglegesítési művelet fűz a *futtatási előzményei* orchestration-példány. Az előzmények tárolása egy tárolótáblában. A véglegesítési művelet üzeneteket ad hozzá egy üzenetsorba, a tényleges feladatok ütemezéséhez. Ezen a ponton az orchestrator függvény memóriából lehet. A számlázás, leállítja a használata az Azure Functions Használatalapú csomagban.  Ha több munka elvégzéséhez, a függvény újraindítását, és állapotában újraépíti.
 
@@ -369,6 +369,8 @@ A Durable Functions bővítmény használja az Azure Storage-üzenetsorok, tábl
 Az orchestrator funkciók tevékenységfüggvényeket ütemezés, és azok belső üzenetsorbeli üzenetek keresztül válaszokat kaphatnak. Amikor egy függvényalkalmazást az Azure Functions Használatalapú csomagban fut, ezek a várólisták által figyelt a [Azure Functions méretezési vezérlő](functions-scale.md#how-the-consumption-plan-works) és új számítási példányt szükség szerint adja hozzá. Horizontálisan felskálázott több virtuális gépet, ha egy orchestrator-függvényt egy virtuális gépen futtathatja, tevékenységfüggvényeket meghívja a számos különböző virtuális gépek futtatása közben. További részleteket talál a méretezési csoport működését a tartós függvények [teljesítmény és méretezhetőség](durable-functions-perf-and-scale.md).
 
 A TABLE storage a futtatási előzményei, az orchestrator-fiókok tárolására szolgál. Minden alkalommal, amikor egy példányt az egy adott virtuális gép rehydrates, lekérdezi a futtatási előzményei table storage-ból, hogy a helyi állapotában újraépítését. A Table storage-ban elérhető előzmények kapcsolatos kényelmes dolog, hogy figyelje, és tekintse meg az eszközök használatával, mint például a vezénylések előzményeit [Microsoft Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer).
+
+Storage-blobokat használhatók legfőképp pedig a bérlési mechanizmus koordinálja a horizontális felskálázási példányok vezénylési több virtuális gép között. Akkor is használhatók a nagy méretű üzenetek, amely közvetlenül a táblák és üzenetsorok nem tárolható adatok tárolásához.
 
 ![Képernyőkép az Azure Storage Explorerrel](media/durable-functions-overview/storage-explorer.png)
 

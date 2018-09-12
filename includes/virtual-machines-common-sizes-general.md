@@ -8,21 +8,24 @@ ms.topic: include
 ms.date: 07/06/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 1606b5e38b79cb535108ca747783a05de1fbc982
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: eac6c6d76bcc3b3d9cfeda7d8ca4e52e28ba9d8f
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40026292"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44369165"
 ---
 Általános célú virtuális gépek méreteit adja meg a kiegyensúlyozott Processzor-memória arány. Ideális választás tesztelési-fejlesztési feladatokhoz, kis és közepes méretű adatbázisokhoz, valamint kis és közepes adatforgalmú webkiszolgálókhoz. Ez a cikk ismerteti a vcpu-k, az adatlemezeket és a hálózati adapterek, valamint az ennél a csoportosításnál méretek esetében a tárterületek átviteli sebességének számát. 
 
-- Az Av2-sorozat virtuális gépei különféle hardvertípusokon és processzorokon is telepíthető. A méretük a hardvernek megfelelően szabályozott, hogy egyenletes processzorteljesítményt nyújtsanak a futó példány számára, a futtató hardvertől függetlenül. Az adott méretet futtató fizikai hardver meghatározásához kérdezze le a virtuális hardvert a virtuális gépen belülről.
+- Az Av2-sorozat virtuális gépei különféle hardvertípusokon és processzorokon is telepíthető. Az A sorozatú virtuális gépek a belépő szintű számítási feladatokhoz – például fejlesztéshez és teszteléshez – igazodó CPU-teljesítmény- és memóriakonfigurációkkal rendelkeznek. A méretük a hardvernek megfelelően szabályozott, hogy egyenletes processzorteljesítményt nyújtsanak a futó példány számára, a futtató hardvertől függetlenül. Az adott méretet futtató fizikai hardver meghatározásához kérdezze le a virtuális hardvert a virtuális gépen belülről.
 
-- A Dv2-sorozat az eredeti D-sorozat újabb verziója, amely nagyobb teljesítményű processzorokat kínál. A Dv2-sorozathoz használt processzor mintegy 35%-kal gyorsabb, mint a D-sorozathoz használt processzorok. -Alapú, a legújabb generációs Intel Xeon® E5-2673 v3 (Haswell) 2,4 GHz vagy E5-2673 v4 (Broadwell) 2,3 GHz processzor, és az Intel Turbo Boost Technology 2.0-akár 3,1 GHz-es. A Dv2-sorozat ugyanolyan memória- és lemezkonfigurációkban érhető el, mint a D-sorozat.
+  Használati példák közé tartozik a fejlesztési és tesztelése kiszolgálók, kis forgalmú webkiszolgálók, kicsi, közepes méretű adatbázisokhoz, megvalósíthatósági próbamegoldásokhoz és kódtárházak.
+
+- A Dv2-sorozat az eredeti D-sorozat következő generációját képviselő funkciókat egy nagyobb teljesítményű CPU és optimális CPU-memória konfigurációs teszi őket a legtöbb éles számítási feladathoz. A Dv2-sorozathoz használt processzor mintegy 35%-kal gyorsabb, mint a D-sorozathoz használt processzorok. -Alapú, a legújabb generációs Intel Xeon® E5-2673 v3 (Haswell) 2,4 GHz vagy E5-2673 v4 (Broadwell) 2,3 GHz processzor, és az Intel Turbo Boost Technology 2.0-akár 3,1 GHz-es. A Dv2-sorozat ugyanolyan memória- és lemezkonfigurációkban érhető el, mint a D-sorozat.
 
 - A Dv3-sorozat funkciói a 2,4 GHz-es Intel Xeon® E5-2673 v3 (Haswell) processzor- és a legújabb 2,3 GHz-es Intel XEON® E5-2673 v4 (Broadwell) processzoron többszálú konfiguráció esetén a legtöbb általános célú számítási feladatok esetében jobb értékajánlat biztosít.  Memória (a ~3.5 GiB/vCPU, 4 GB/vcpu-ira) ki lett terjesztve, amíg a lemez és a hálózati korlátok hozzá lett igazítva, helyezze át a Hyper-Threading technológia igazodva magonként alapon.  A Dv3 már nem rendelkezik a D/Dv2 családok magas memóriahasználat Virtuálisgép-méretek, ezek az új Ev3 termékcsalád lettek áthelyezve.
 
+  A D-sorozat használati Példák többek között a nagyvállalati alkalmazások, relációs adatbázisok, memórián belüli gyorsítótárazás és elemzés. 
 
 ## <a name="b-series"></a>B sorozat
 
@@ -31,6 +34,8 @@ A Premium Storage: támogatott
 Prémium szintű Storage gyorsítótárazási: Nem támogatott
 
 A B sorozat – adatlöket-kezelés virtuális gépek ideálisak a nagy számítási feladatokhoz, amelyek nem a teljes teljesítmény, a processzor folyamatos kell például a webkiszolgálók, kis méretű adatbázisokhoz, és a fejlesztési és tesztelési környezetek. Ezeket a feladatokat jellemzően rendelkeznek – adatlöket-kezelés teljesítményre vonatkozó követelmények. A B sorozat teszi lehetővé ezen ügyfelek vásárolhat egy tudatában alapkonfiguráció árteljesítménnyel, amely lehetővé teszi, hogy a Virtuálisgép-példány krediteket felépíthető, a virtuális gép kevesebb, mint az alapszintű teljesítmény használatakor a Virtuálisgép-méretét. A virtuális gép kredit keletkezett, amikor a a virtuális Géphez is megnövelheti arra legfeljebb 100 %-a CPU-használatát, amikor az alkalmazás magasabb processzorteljesítményre van szükség a virtuális gép eredeti felett.
+
+Használati Példák többek között a fejlesztési és tesztelési kiszolgálók, alacsony adatforgalmú webkiszolgálók, kis méretű adatbázisokhoz, mikroszolgáltatásokhoz, kiszolgálók megvalósíthatósági próbamegoldásokhoz, lemezképfájl-kiszolgálókhoz.
 
 
 | Méret             | vCPU  | Memória: GiB | Helyi SSD: GiB | Az alapszintű alap Teljesítményoptimalizált | A kreditek banki / óra | Maximális banki kreditek | Adatlemezek max. száma | Maximális helyi lemez teljesítményoptimalizált: IOPS / MBps | Maximális lemez teljesítményoptimalizált teljesítményterhelési: IOPS / MBps | Hálózati adapterek maximális száma |          

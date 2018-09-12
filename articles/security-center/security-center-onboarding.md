@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/02/2018
 ms.author: rkarlin
-ms.openlocfilehash: e74a5a431144c303b0301c8b7a22417784ecb65b
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 50055befaa0a5f0bb03bda18e01edfb751e49369
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44300500"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44379995"
 ---
 # <a name="onboarding-to-azure-security-center-standard-for-enhanced-security"></a>Bevezetés az Azure Security Center Standard a fokozott biztonság
 Frissítse a Security Center Standard kihasználásához fokozott biztonsági felügyeletet és fenyegetésvédelmet a hibrid felhőalapú számítási feladatokhoz.  Standard 60 napig ingyenesen kipróbálhatja. Tekintse meg a Security Center [díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/security-center/) további információt.
@@ -103,7 +103,7 @@ A munkafolyamat a következő is hozzáadhat egy számítógép **bevezetési**,
 
    ![Számítógépek hozzáadása][7]
 
- A **közvetlen ügynök** panel egy hivatkozást kínál a Windows vagy Linux-ügynök letöltése és a kulcsok a munkaterület-azonosító használható az ügynök telepítése.   
+ A **közvetlen ügynök** panel egy hivatkozást kínál letöltésével egy Windows vagy Linux-ügynököt, valamint a munkaterület-Azonosítót és kulcsok használata az ügynök telepítése.   
 
 ## <a name="next-steps"></a>További lépések
 Ebben a cikkben megtanulta, hogyan előkészítése az Azure és annak érdekében, hogy a Security Center fejlett biztonsági kihasználhatják a nem Azure-erőforrások.  A regisztrált erőforrás lásd: a további lehetőségek

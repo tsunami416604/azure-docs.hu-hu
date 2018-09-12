@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 07/23/2018
 ms.author: twounder
 ms.reviewer: twounder
-ms.openlocfilehash: 6dff2d1886a560e3a7e2758816a884782e33787f
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 12023216575b08732f3ef2d04bac9e825621f720
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43287970"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44376969"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-june-2018"></a>Mi az új Azure SQL Data warehouse? 2018. június
 Az Azure SQL Data Warehouse fejlesztései folyamatosan kap. Ez a cikk ismerteti az új szolgáltatásokat és változásokat tartalmazza, amelyek a 2018 június. 
@@ -23,7 +23,7 @@ Az Azure SQL Data Warehouse fejlesztései folyamatosan kap. Ez a cikk ismerteti 
 ## <a name="user-defined-restore-points"></a>Felhasználó által definiált visszaállítási pontok
 Az SQL Data Warehouse szolgáltatás automatikusan pillanatképeket készít az adatraktárról garantáló egy 8 órás helyreállításipont-célkitűzés (RPO) 8 óránként. Amíg ez a felügyeleti terheket, az adattárház futó automatikus pillanatfelvételek egyszerű, szükség van a pillanatfelvételt a üzleti igények alapján kritikus időpontokban. Ha például pillanatképének elkészítése közvetlenül egy jelentős az adatok betöltése vagy új parancsfájl központi telepítése előtt, közvetlenül a művelet előtt visszaállítási pont engedélyezése a data warehouse-bA. 
 
-Az SQL Data Warehouse mostantól támogatja [felhasználói visszaállítási pontok](https://azure.microsoft.com/blog/quick-recovery-time-with-sql-data-warehouse-using-user-defined-restore-points/) keresztül a [New-AzureRmSqlDatabaseRestorePoint](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqldatabaserestorepoin) parancsmagot.
+Az SQL Data Warehouse mostantól támogatja [felhasználói visszaállítási pontok](https://azure.microsoft.com/blog/quick-recovery-time-with-sql-data-warehouse-using-user-defined-restore-points/) keresztül a [New-AzureRmSqlDatabaseRestorePoint](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqldatabaserestorepoint) parancsmagot.
 
 ```PowerShell
 New-AzureRmSqlDatabaseRestorePoint
@@ -50,7 +50,7 @@ The SELECT permission was denied on the column 'SSN' of the object 'Membership',
 ```
 
 ## <a name="objectschemaname"></a>OBJECT_SCHEMA_NAME
-A [OBJECT_SCHEMA_NAME()]() függvény séma hatókörébe tartozó objektumok sémájának nevét adja vissza. Ez a függvény vált az ETL-eszközök gyakori objektum séma érvényesítése. 
+A [OBJECT_SCHEMA_NAME()](https://docs.microsoft.com/sql/t-sql/functions/object-schema-name-transact-sql) függvény séma hatókörébe tartozó objektumok sémájának nevét adja vissza. Ez a függvény vált az ETL-eszközök gyakori objektum séma érvényesítése. 
 
 ```sql
 SELECT

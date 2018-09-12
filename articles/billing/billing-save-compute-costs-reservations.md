@@ -1,5 +1,5 @@
 ---
-title: Mik az Azure-foglalásokat? | Microsoft Docs
+title: Mi az az Azure Reservations? | Microsoft Docs
 description: További tudnivalók az Azure-foglalásokat és a díjszabás menteni a virtuális gépeket, SQL Database-adatbázisok és egyéb erőforrás-használati díjak a.
 services: billing
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2018
 ms.author: yashar
-ms.openlocfilehash: 82b23f46acc94fefccc871583657200b90a33f05
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 9ca31a09cd14a8b05e6f98d05f552e202ca4a9fd
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43303562"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391861"
 ---
-# <a name="what-are-azure-reservations"></a>Mik az Azure-foglalásokat?
+# <a name="what-are-azure-reservations"></a>Mi az az Azure Reservations?
 
 Azure foglalások révén pénzt takaríthat meg előre egyéves vagy hároméves virtuális gép, SQL Database és a számítási kapacitás, vagy más Azure-erőforrások. Előre kell fizetnie lehetővé teszi a kedvezményt szeretne kapni a használt erőforrások. Foglalások jelentősen csökkentheti a virtuális gép, SQL database számítási vagy más erőforrásköltségek akár 72 % a használatalapú fizetéssel. Foglalások számlázási engedményt adja meg, és az erőforrások futási állapotát nem befolyásolják.
 
@@ -70,13 +70,21 @@ Jobban megérteni, milyen hatással van a foglalások a számlázási, a követk
 
 A Foglalás az előfizetési időszak végén lejár a számlázási kedvezményeket, és a virtuális gép, SQL database vagy más erőforráshoz elszámolása a használatalapú – mint-akkor lépjen ár. Az Azure-foglalások nem automatikus megújítási. Bevezetés a számlázási kedvezményeket a folytatáshoz meg kell vásárolnia egy új foglalást a jogosult szolgáltatások és szoftverek.
 
+## <a name="discount-applies-to-different-sizes-with-instance-size-flexibility"></a>Különböző méretű példány mérete rugalmasan vonatkozik kedvezmény
+
+Ha vásárol egy foglalást, a kedvezmény alkalmazhat más példányaira, amelyek az ugyanazon méretcsoport attribútumokkal. A kedvezmény lefedettség rugalmasságát foglalás és az attribútumokat, válassza ki, amikor azt megvásárolni a foglalást függ.
+
+- Fenntartott VM-példányok: Ha azt megvásárolni a foglalást, ha **optimalizált**: **példány mérete rugalmasan**, a kedvezmény lefedettség választja virtuális gép méretétől függ. A Foglalás az azonos méretű adatsorozat-csoport a virtuális gépek (VM)-méretek is alkalmazhat. További információkért lásd: [virtuális gép mérete rugalmasan Reserved VM Instances](../virtual-machines/windows/reserved-vm-instance-size-flexibility.md).
+- SUSE Linux Enterprise szoftvercsomag: A kedvezményes lefedettség függ a vcpu-k, a virtuális gépek, a SUSE szoftver futtatásához. További információkért lásd: [megismerheti, hogyan kell alkalmazni a SUSE Linux Enterprise szoftverfrissítési csomag kedvezményt](billing-understand-suse-reservation-charges.md).
+- Az SQL Database szolgáltatás számára fenntartott kapacitás: A kedvezményes lefedettség attól függ, a teljesítményszint, válasszon ki. További információkért lásd: [megismerheti, hogyan kell alkalmazni az Azure a foglalási kedvezményt](billing-understand-reservation-charges.md).
+
 ## <a name="next-steps"></a>További lépések
 
 Kezdő mentése a virtuális gépeken megvásárlásával egy [fenntartott VM-példány](../virtual-machines/windows/prepay-reserved-vm-instances.md) vagy [SQL Database szolgáltatás számára fenntartott kapacitás](../sql-database/sql-database-reserved-capacity.md).
 
 Azure-foglalások kapcsolatos további információkért tekintse meg a következő cikkeket:
 
-- [Az Azure-fenntartások kezelése](billing-manage-reserved-vm-instance.md)
+- [Az Azure Reservations kezelése](billing-manage-reserved-vm-instance.md)
 - [A használatalapú fizetéses előfizetést foglalás használati adatai](billing-understand-reserved-instance-usage.md)
 - [A nagyvállalati beléptetés foglalás használati adatai](billing-understand-reserved-instance-usage-ea.md)
 - [Windows szoftverek díjait nem tartalmazza a foglalások](billing-reserved-instance-windows-software-costs.md)

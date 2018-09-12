@@ -8,14 +8,14 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 09/29/2017
+ms.date: 09/06/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 3fa4f230f5e2d15e815c47792c3955aa93d29fc4
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 29fd4e62c13852e23e15f89ab6b4e2976fc42b25
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44094739"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44377140"
 ---
 # <a name="http-apis-in-durable-functions-azure-functions"></a>Durable Functions (az Azure Functions) HTTP API-k
 
@@ -45,6 +45,7 @@ Ez a példa a függvény a következő JSON-adatokat eredményez. Az összes mez
 | statusQueryGetUri |Az orchestration-példány állapota URL-címe |
 | sendEventPostUri  |A vezénylési példány "raise esemény" URL-címe |
 | terminatePostUri  |A "le" példány URL-címét a vezénylési. |
+| rewindPostUri     |A vezénylési példány "visszatekerés" URL-címe |
 
 Íme egy példa választ:
 
@@ -52,13 +53,14 @@ Ez a példa a függvény a következő JSON-adatokat eredményez. Az összes mez
 HTTP/1.1 202 Accepted
 Content-Length: 923
 Content-Type: application/json; charset=utf-8
-Location: https://{host}/runtime/webhooks/DurableTaskExtension/instances/34ce9a28a6834d8492ce6a295f1a80e2?taskHub=DurableFunctionsHub&connection=Storage&code=XXX
+Location: https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d8492ce6a295f1a80e2?taskHub=DurableFunctionsHub&connection=Storage&code=XXX
 
 {
     "id":"34ce9a28a6834d8492ce6a295f1a80e2",
-    "statusQueryGetUri":"https://{host}/runtime/webhooks/DurableTaskExtension/instances/34ce9a28a6834d8492ce6a295f1a80e2?taskHub=DurableFunctionsHub&connection=Storage&code=XXX",
-    "sendEventPostUri":"https://{host}/runtime/webhooks/DurableTaskExtension/instances/34ce9a28a6834d8492ce6a295f1a80e2/raiseEvent/{eventName}?taskHub=DurableFunctionsHub&connection=Storage&code=XXX",
-    "terminatePostUri":"https://{host}/runtime/webhooks/DurableTaskExtension/instances/34ce9a28a6834d8492ce6a295f1a80e2/terminate?reason={text}&taskHub=DurableFunctionsHub&connection=Storage&code=XXX"
+    "statusQueryGetUri":"https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d8492ce6a295f1a80e2?taskHub=DurableFunctionsHub&connection=Storage&code=XXX",
+    "sendEventPostUri":"https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d8492ce6a295f1a80e2/raiseEvent/{eventName}?taskHub=DurableFunctionsHub&connection=Storage&code=XXX",
+    "terminatePostUri":"https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d8492ce6a295f1a80e2/terminate?reason={text}&taskHub=DurableFunctionsHub&connection=Storage&code=XXX",
+    "rewindPostUri":"https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d8492ce6a295f1a80e2/rewind?reason={text}&taskHub=DurableFunctionsHub&connection=Storage&code=XXX"
 }
 ```
 > [!NOTE]
@@ -110,7 +112,7 @@ GET /admin/extensions/DurableTaskExtension/instances/{instanceId}?taskHub={taskH
 A Functions 2.0 formátum ugyanazokat paraméterekkel rendelkezik, de egy némileg különböző URL-cím előtagja:
 
 ```http
-GET /runtime/webhooks/DurableTaskExtension/instances/{instanceId}?taskHub={taskHub}&connection={connection}&code={systemKey}&showHistory={showHistory}&showHistoryOutput={showHistoryOutput}
+GET /runtime/webhooks/durabletask/instances/{instanceId}?taskHub={taskHub}&connection={connection}&code={systemKey}&showHistory={showHistory}&showHistoryOutput={showHistoryOutput}
 ```
 
 #### <a name="response"></a>Válasz
@@ -121,6 +123,7 @@ Számos lehetséges állapota kódértékek adhatók vissza.
 * **202 (elfogadva) HTTP**: A megadott példány folyamatban van.
 * **HTTP 400 (hibás kérés)**: A megadott példány nem sikerült, vagy meg lett szakítva.
 * **A HTTP 404 (nem található)**: A megadott példány nem létezik, vagy nem kezdődött.
+* **A HTTP 500-as (belső kiszolgálóhiba)**: A megadott példány nem kezelt kivétel miatt sikertelen volt.
 
 A válasz-adattartalomra vonatkozó a **HTTP 200** és **HTTP 202** esetben egy JSON-objektum a következő mezőket:
 
@@ -206,7 +209,7 @@ GET /admin/extensions/DurableTaskExtension/instances/?taskHub={taskHub}&connecti
 A Functions 2.0 formátum ugyanazokat egy némileg különböző URL-előtagot azonban paraméterekkel rendelkezik: 
 
 ```http
-GET /runtime/webhooks/DurableTaskExtension/instances/?taskHub={taskHub}&connection={connection}&code={systemKey}
+GET /runtime/webhooks/durabletask/instances/?taskHub={taskHub}&connection={connection}&code={systemKey}
 ```
 
 #### <a name="response"></a>Válasz
@@ -281,7 +284,7 @@ POST /admin/extensions/DurableTaskExtension/instances/{instanceId}/raiseEvent/{e
 A Functions 2.0 formátum ugyanazokat paraméterekkel rendelkezik, de egy némileg különböző URL-cím előtagja:
 
 ```http
-POST /runtime/webhooks/DurableTaskExtension/instances/{instanceId}/raiseEvent/{eventName}?taskHub=DurableFunctionsHub&connection={connection}&code={systemKey}
+POST /runtime/webhooks/durabletask/instances/{instanceId}/raiseEvent/{eventName}?taskHub=DurableFunctionsHub&connection={connection}&code={systemKey}
 ```
 
 A kérelem paraméterekkel az API az alapértelmezett készlet korábban már említettük, valamint az alábbi egyedi paramétereket tartalmazza:
@@ -321,13 +324,13 @@ Egy futó vezénylési példány leáll.
 A Functions 1.0 a kérés formátuma a következőképpen történik:
 
 ```http
-DELETE /admin/extensions/DurableTaskExtension/instances/{instanceId}/terminate?reason={reason}&taskHub={taskHub}&connection={connection}&code={systemKey}
+POST /admin/extensions/DurableTaskExtension/instances/{instanceId}/terminate?reason={reason}&taskHub={taskHub}&connection={connection}&code={systemKey}
 ```
 
 A Functions 2.0 formátum ugyanazokat paraméterekkel rendelkezik, de egy némileg különböző URL-cím előtagja:
 
 ```http
-DELETE /runtime/webhooks/DurableTaskExtension/instances/{instanceId}/terminate?reason={reason}&taskHub={taskHub}&connection={connection}&code={systemKey}
+POST /runtime/webhooks/durabletask/instances/{instanceId}/terminate?reason={reason}&taskHub={taskHub}&connection={connection}&code={systemKey}
 ```
 
 Kérelem, az API paraméternek számít a korábban már említettük, valamint a következő egyedi paraméter alapértelmezett beállítása.
@@ -347,7 +350,47 @@ Számos lehetséges állapota kódértékek adhatók vissza.
 Íme egy példa kérelmet, amely egy futó példány leáll, és adja meg az okot **buggy**:
 
 ```
-DELETE /admin/extensions/DurableTaskExtension/instances/bcf6fb5067b046fbb021b52ba7deae5a/terminate?reason=buggy&taskHub=DurableFunctionsHub&connection=Storage&code=XXX
+POST /admin/extensions/DurableTaskExtension/instances/bcf6fb5067b046fbb021b52ba7deae5a/terminate?reason=buggy&taskHub=DurableFunctionsHub&connection=Storage&code=XXX
+```
+
+Az API-hoz a válaszok nem tartalmaznak minden tartalom.
+
+## <a name="rewind-instance-preview"></a>Visszatekerés példány (előzetes verzió)
+
+A futtatási állapot egy sikertelen vezénylési példány visszaállítja a legutóbbi sikertelen műveletek visszajátszása alapján.
+
+#### <a name="request"></a>Kérés
+
+A Functions 1.0 a kérés formátuma a következőképpen történik:
+
+```http
+POST /admin/extensions/DurableTaskExtension/instances/{instanceId}/rewind?reason={reason}&taskHub={taskHub}&connection={connection}&code={systemKey}
+```
+
+A Functions 2.0 formátum ugyanazokat paraméterekkel rendelkezik, de egy némileg különböző URL-cím előtagja:
+
+```http
+POST /runtime/webhooks/durabletask/instances/{instanceId}/rewind?reason={reason}&taskHub={taskHub}&connection={connection}&code={systemKey}
+```
+
+Kérelem, az API paraméternek számít a korábban már említettük, valamint a következő egyedi paraméter alapértelmezett beállítása.
+
+| Mező       | Paraméter típusa  | Adattípus | Leírás |
+|-------------|-----------------|-----------|-------------|
+| reason      | Lekérdezési sztring    | sztring    | Választható. A vezénylési példány visszatekerése okát. |
+
+#### <a name="response"></a>Válasz
+
+Számos lehetséges állapota kódértékek adhatók vissza.
+
+* **202 (elfogadva) HTTP**: A visszatekerés kérés elfogadva feldolgozásra.
+* **A HTTP 404 (nem található)**: A megadott példány nem található.
+* **A HTTP 410 (Gone)**: A megadott példány befejeződött, vagy meg lett szakítva.
+
+Íme egy példa kérelmet, amely gyors visszatekerés a hibás szolgáltatáspéldányt, és adja meg az okot **rögzített**:
+
+```
+POST /admin/extensions/DurableTaskExtension/instances/bcf6fb5067b046fbb021b52ba7deae5a/rewind?reason=fixed&taskHub=DurableFunctionsHub&connection=Storage&code=XXX
 ```
 
 Az API-hoz a válaszok nem tartalmaznak minden tartalom.

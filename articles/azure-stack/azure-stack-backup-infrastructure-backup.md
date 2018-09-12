@@ -1,6 +1,6 @@
 ---
-title: Biztonsági mentés és adatok helyreállítása Azure verem az infrastruktúra biztonsági másolat szolgáltatással |} Microsoft Docs
-description: Készítsen biztonsági másolatot, és állítsa vissza a konfigurációs és a szolgáltatás adatokat az infrastruktúra biztonsági másolat szolgáltatással.
+title: Az Azure Stackhez az infrastruktúra biztonsági másolat szolgáltatással biztonsági mentés és adat helyreállítási |} A Microsoft Docs
+description: Készítsen biztonsági másolatot, és állítsa vissza a konfigurációs és szolgáltatási adatokat az infrastruktúra biztonsági másolat szolgáltatással.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -12,53 +12,53 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 4/20/2017
+ms.date: 9/10/2018
 ms.author: mabrigg
 ms.reviewer: hectorl
-ms.openlocfilehash: 12138ac5a173f66d8b6b0041de9f31f4ac326485
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: 9f2668ff84ade4ba99b7aa7dcd67feafadc1c6c4
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34822955"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44377836"
 ---
-# <a name="backup-and-data-recovery-for-azure-stack-with-the-infrastructure-backup-service"></a>Azure verem és az infrastruktúra biztonsági mentési szolgáltatás biztonsági mentési és az adatok helyreállítása
+# <a name="backup-and-data-recovery-for-azure-stack-with-the-infrastructure-backup-service"></a>Az Azure Stackhez az infrastruktúra biztonsági mentési szolgáltatással a biztonsági mentés és adat-helyreállítás
 
-*A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
+*A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
 
-Készítsen biztonsági másolatot, és állítsa vissza a konfigurációs és a szolgáltatás adatokat az infrastruktúra biztonsági másolat szolgáltatással. Minden Azure verem telepítés tartalmaz-e a szolgáltatás egy példánya. A központi telepítésre, az Azure-verem felhőalapú szolgáltatás által létrehozott biztonsági másolatok segítségével azonosító, biztonsági és Azure Resource Manager-adatok visszaállítása.
+Készítsen biztonsági másolatot, és állítsa vissza a konfigurációs és szolgáltatási adatokat az infrastruktúra biztonsági másolat szolgáltatással. Minden egyes Azure Stack-telepítés tartalmazza a szolgáltatás egy példányát. Az újbóli üzembe helyezés az Azure Stack-felhőben, a szolgáltatás által létrehozott biztonsági mentéseket használatával állítsa vissza az identitás, a biztonság és az Azure Resource Manager-adatokat.
 
-Engedélyezheti a biztonsági mentés, ha készen áll a felhőalapú üzembe helyezésre. Ne engedélyezze a biztonsági mentés, ha azt tervezi, hogy tesztek végrehajtása és -ellenőrzés hosszú ideig.
+Amikor készen áll a felhőben üzembe éles engedélyezheti a biztonsági mentés. Ne engedélyezze a biztonsági mentés, ha azt tervezi, hogy a teszt végrehajtása és a egy hosszú ideig ellenőrzése.
 
-A biztonsági mentési szolgáltatás engedélyezése előtt győződjön meg arról, hogy [követelmények teljesülnek](#verify-requirements-for-the-infrastructure-backup-service).
+Mielőtt engedélyezné a biztonsági mentési szolgáltatás, ellenőrizze, hogy [követelmények teljesülnek](#verify-requirements-for-the-infrastructure-backup-service).
 
 > [!Note]  
-> Az infrastruktúra biztonsági mentési szolgáltatás nem tartalmaz felhasználói adatokat és alkalmazásokat. A következő cikkekben további tájékoztatást lásd a biztonsági mentése és visszaállítása [alkalmazásszolgáltatások](https://aka.ms/azure-stack-app-service), [SQL](https://aka.ms/azure-stack-ms-sql), és [MySQL](https://aka.ms/azure-stack-mysql) erőforrás-szolgáltatók és a kapcsolódó felhasználói adatokat.
+> Az infrastruktúra biztonsági mentési szolgáltatás nem tartalmaz felhasználói adatokat és alkalmazásokat. Lásd az alábbi cikkeket, útmutatást a biztonsági mentése és visszaállítása [App Services](https://aka.ms/azure-stack-app-service), [SQL](https://aka.ms/azure-stack-ms-sql), és [MySQL](https://aka.ms/azure-stack-mysql) erőforrás-szolgáltatók és a kapcsolódó felhasználói adatok...
 
-## <a name="the-infrastructure-backup-service"></a>Az infrastruktúra a biztonsági mentési szolgáltatás
+## <a name="the-infrastructure-backup-service"></a>A biztonsági mentési infrastruktúra-szolgáltatás
 
 A szolgáltatások a következő szolgáltatásokat tartalmazza.
 
 | Szolgáltatás                                            | Leírás                                                                                                                                                |
 |----------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Biztonsági mentési infrastruktúra-szolgáltatásokat                     | Biztonsági mentés koordinálja a verem Azure infrastruktúra-szolgáltatások egy részhalmaza között. Ha egy olyan vészhelyzet esetén, az adatok visszaállítása végezhető el az újratelepítés részeként. |
-| A tömörítés és az exportált biztonsági mentési adatok titkosítása | Biztonsági mentési adatok tömörített, és a rendszer a külső tárhelyen, a rendszergazda által biztosított exportálása előtt titkosítja.                |
-| Biztonsági mentési feladat figyelése                              | Rendszer értesítést küld, ha a biztonsági mentési feladat sikertelen lesz, a javítási lépéseket.                                                                                                |
-| Biztonságimásolat-felügyeleti élmény                       | Biztonsági mentési RP lehetővé teszi biztonsági mentését is támogatja.                                                                                                                         |
-| A helyreállítási felhő                                     | Végzetes adatvesztés esetén a biztonsági mentések visszaállításáról core Azure verem központi telepítésének részeként használható.                                 |
+| Biztonsági mentési infrastruktúra-szolgáltatások                     | A biztonsági mentés koordináta az Azure Stack infrastruktúra-szolgáltatások egy részhalmaza között. Katasztrófa esetén az adatok újbóli üzembe helyezés részeként is visszaállítható. |
+| A tömörítés és titkosítás exportált biztonsági mentési adatok | Biztonsági mentési adatok tömörített, és a rendszer titkosítja, mielőtt exportálja azt a külső tárhelyen találhatók, a rendszergazda által biztosított.                |
+| Biztonsági mentési feladat figyelése                              | Rendszer értesíti, ha a biztonsági mentési feladatok sikertelenek, a javítási lépéseket.                                                                                                |
+| Biztonságimásolat-kezelési élményt                       | Biztonsági mentési helyreállítási pont Védettként engedélyezése biztonsági mentést támogatja.                                                                                                                         |
+| Felhőbeli helyreállítási                                     | Végzetes adatvesztés esetén a biztonsági mentések visszaállítása az Azure Stack legfontosabb tudnivalók a központi telepítésének részeként használható.                                 |
 
-## <a name="verify-requirements-for-the-infrastructure-backup-service"></a>Ellenőrizze az infrastruktúra biztonsági mentési szolgáltatás követelményei
+## <a name="verify-requirements-for-the-infrastructure-backup-service"></a>Az infrastruktúra biztonsági mentési szolgáltatás követelményeinek ellenőrzése
 
-- **Tárolási helye**  
-  A fájlmegosztás elérhető Azure veremből hét biztonsági másolatokat tartalmazó kell. Minden biztonsági mentés körülbelül 10 GB-TAL. A megosztás képes tárolni a biztonsági mentések 140 GB lehet. További információ a tárolási helyének kiválasztása az Azure verem infrastruktúra biztonsági másolat szolgáltatás: [biztonsági mentést vezérlő követelmények](azure-stack-backup-reference.md#backup-controller-requirements).
+- **Tárolási hely**  
+  Fájlmegosztás elérhető az Azure Stacken, amely tartalmazhat hét biztonsági mentéseket kell. Minden biztonsági mentés: 10 GB. A megosztás tárolja a biztonsági mentések 140 GB képesnek kell lennie. Az Azure Stack infrastruktúra Backup szolgáltatás egy tárolási hely kiválasztásával kapcsolatos további információkért lásd: [biztonsági mentést vezérlő követelmények](azure-stack-backup-reference.md#backup-controller-requirements).
 - **Hitelesítő adatok**  
-  Szükség van egy tartományi felhasználói fiók és a hitelesítő adatok, például használhatja az Azure-verem rendszergazdájának hitelesítő adatait.
+  Szüksége van egy tartományi felhasználói fiók és a hitelesítő adatok, például használhatja az Azure Stack rendszergazdai hitelesítő adatait.
 - **Titkosítási kulcs**  
-  A biztonságimásolat-fájlok titkosítása a kulcs használatával. Győződjön meg arról, hogy ezt a kulcsot biztonságos helyen tárolja. Állítsa be ezt a kulcsot az első alkalommal vagy a jövőben forgassa el a kulcsot, nem lehet megtekinteni, ezt a kulcsot, az adott csatolón. Egy előre megosztott kulcs létrehozásához további útmutatást kövesse a scripts [Azure verem PowerShell és a biztonsági mentés engedélyezése](azure-stack-backup-enable-backup-powershell.md).
+  Biztonsági másolatok ezt a kulcsot az vannak titkosítva. Ellenőrizze, hogy ezt a kulcsot biztonságos helyen tárolja. Után állítsa be ezt a kulcsot az első alkalommal vagy a kulcs rotálása a jövőben, akkor ezt a kulcsot a felületén nem jelennek meg. Előre megosztott kulcs létrehozásához további utasításokért hajtsa végre a scripts [biztonsági mentés engedélyezése az Azure Stack a PowerShell-lel](azure-stack-backup-enable-backup-powershell.md).
 
 ## <a name="next-steps"></a>További lépések
 
-- Megtudhatja, hogyan [biztonsági mentés engedélyezése a felügyeleti portál Azure verem](azure-stack-backup-enable-backup-console.md).
-- Megtudhatja, hogyan [biztonsági mentésének engedélyezése a PowerShell-lel Azure verem](azure-stack-backup-enable-backup-powershell.md).
-- Megtudhatja, hogyan [biztonsági mentése Azure verem](azure-stack-backup-back-up-azure-stack.md )
-- Megtudhatja, hogyan [végzetes adatvesztés helyreállítása](azure-stack-backup-recover-data.md)
+- Ismerje meg, hogyan [biztonsági mentés engedélyezése az Azure Stack a felügyeleti portálról](azure-stack-backup-enable-backup-console.md).
+- Ismerje meg, hogyan [biztonsági mentés engedélyezése a PowerShell-lel az Azure Stack](azure-stack-backup-enable-backup-powershell.md).
+- Ismerje meg, hogyan [biztonsági mentése az Azure Stackben](azure-stack-backup-back-up-azure-stack.md )
+- Ismerje meg, hogyan [végzetes adatvesztés utáni helyreállítás](azure-stack-backup-recover-data.md)

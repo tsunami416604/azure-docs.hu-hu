@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 4/26/2018
 ms.author: snmuvva
 ms.component: alerts
-ms.openlocfilehash: 4dba3d182c7c2927aa4feb88e70fe5711fcc6818
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 7289259214f90507c5b9cf527f19f0cf7026798c
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37932211"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391453"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Metrikariasztás létrehozása Resource Manager-sablonnal
 Ez a cikk bemutatja, hogyan használhatja egy [Azure Resource Manager-sablon](../azure-resource-manager/resource-group-authoring-templates.md) konfigurálása [újabb metrikákhoz kapcsolódó riasztások](monitoring-near-real-time-metric-alerts.md) az Azure monitorban. Resource Manager-sablonok lehetővé teszik a programozott módon riasztások beállítása egy egységes és megismételhető módon, a környezetek között. Újabb metrikákhoz kapcsolódó riasztások jelenleg érhetők el a [erőforrástípusok készlete](monitoring-near-real-time-metric-alerts.md#metrics-and-dimensions-supported).
@@ -409,12 +409,12 @@ Mentse, és ez az útmutató céljából advancedmetricalert.parameters.json, az
                     "dimensions": [
                         {
                             "name":"ResponseType",
-                            "operator": "Includes",
+                            "operator": "Include",
                             "values": ["Success"]
                         },
                         {
                             "name":"ApiName",
-                            "operator": "Includes",
+                            "operator": "Include",
                             "values": ["GetBlob"]
                         }
                     ],
@@ -430,7 +430,7 @@ Mentse, és ez az útmutató céljából advancedmetricalert.parameters.json, az
                 "dimensions": [
                     {
                         "name":"ApiName",
-                        "operator": "Includes",
+                        "operator": "Include",
                         "values": ["GetBlob"]
                     }
                 ],

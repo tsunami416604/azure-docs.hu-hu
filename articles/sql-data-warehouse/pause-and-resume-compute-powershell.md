@@ -10,19 +10,19 @@ ms.component: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 3e2008315a8b1c728ef1dac50002b8322907eb51
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: c035ef1a79cde7c594c66964052c0653c5c709d9
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43248004"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44377972"
 ---
 # <a name="quickstart-pause-and-resume-compute-in-azure-sql-data-warehouse-with-powershell"></a>Gyors útmutató: Szünet és folytatás számítási az Azure SQL Data Warehouse a PowerShell-lel
 PowerShell-lel történő szüneteltetése compute az Azure SQL Data Warehouse költségek csökkentése érdekében. [Folytathatja a számítást](sql-data-warehouse-manage-compute-overview.md) Ha készen áll az adattárház használata.
 
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
-Az oktatóanyaghoz az Azure PowerShell-modul 5.1.1-es vagy újabb verziója szükséges. A jelenleg rendelkezésére álló verzió azonosításához futtassa a következőt: ` Get-Module -ListAvailable AzureRM`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps.md) ismertető cikket.
+Az oktatóanyaghoz az Azure PowerShell-modul 5.1.1-es vagy újabb verziója szükséges. A jelenleg rendelkezésére álló verzió azonosításához futtassa a következőt: ` Get-Module -ListAvailable AzureRM`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -67,7 +67,7 @@ Keresse meg adattárháza helyinformációit ezekkel lépésekkel.
 ## <a name="pause-compute"></a>Számítás szüneteltetése
 Költségek csökkentése érdekében is szüneteltetése és folytatása a számítási erőforrások igény szerinti. Például ha az adatbázis nem használ, az éjszaka és hétvégén, is szüneteltetheti, ilyen alkalmakkor, és folytathatja a nap folyamán. Nem jár költséggel a számítási erőforrásokat, miközben az adatbázis fel van függesztve. Azonban továbbra is tárolásért kell fizetnie.
 
-Egy adatbázis szüneteltetése, használja a [Suspend-AzureRmSqlDatabase](/powershell/module/azurerm.sql/suspend-azurermsqldatabase.md) parancsmagot. A következő példa leállítja nevű adattárház **mySampleDataWarehouse** nevű kiszolgálón található **newserver-20171113**. A kiszolgáló része egy Azure-erőforráscsoportot **myResourceGroup**.
+Egy adatbázis szüneteltetése, használja a [Suspend-AzureRmSqlDatabase](/powershell/module/azurerm.sql/suspend-azurermsqldatabase) parancsmagot. A következő példa leállítja nevű adattárház **mySampleDataWarehouse** nevű kiszolgálón található **newserver-20171113**. A kiszolgáló része egy Azure-erőforráscsoportot **myResourceGroup**.
 
 
 ```Powershell
@@ -93,7 +93,7 @@ Resume-AzureRmSqlDatabase –ResourceGroupName "myResourceGroup" `
 –ServerName "newserver-20171113" -DatabaseName "mySampleDataWarehouse"
 ```
 
-Egy módosított névvel, a következő példa kérdezi le az adatbázist a $database objektumba. Ezt követően átadja a kívánt objektum [Resume-AzureRmSqlDatabase](/powershell/module/azurerm.sql/resume-azurermsqldatabase.md) és $resultDatabase tárolja az eredményeket. A végső parancs megjeleníti az eredményeket.
+Egy módosított névvel, a következő példa kérdezi le az adatbázist a $database objektumba. Ezt követően átadja a kívánt objektum [Resume-AzureRmSqlDatabase](/powershell/module/azurerm.sql/resume-azurermsqldatabase) és $resultDatabase tárolja az eredményeket. A végső parancs megjeleníti az eredményeket.
 
 ```Powershell
 $database = Get-AzureRmSqlDatabase –ResourceGroupName "ResourceGroup1" `

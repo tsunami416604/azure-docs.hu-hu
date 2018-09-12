@@ -8,12 +8,12 @@ ms.technology: speech
 ms.topic: article
 ms.date: 06/28/2018
 ms.author: mahilleb
-ms.openlocfilehash: 082002b25b02e1e496221f4686d0e636630dd438
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: 1cb00035dc8f1cdeabd1beb22ca69f47bf4bd89e
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39324391"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44379570"
 ---
 # <a name="regions-of-the-speech-service"></a>A beszédfelismerési szolgáltatás régiók
 
@@ -35,11 +35,16 @@ Az a [beszéd SDK](speech-sdk.md), régiók karakterláncként vannak megadva (p
 
 Az alábbi táblázat felsorolja az elérhető régiók **beszédfelismerés** és **fordítási**:
 
-Régió| A beszédfelismerés SDK régió paraméter értéke
+Régió| A beszédfelismerés SDK régió paraméter értéke| Portál
 -|-
-USA nyugati régiója| `westus`
-Kelet-Ázsia| `eastasia`
-Észak-Európa| `northeurope`
+USA nyugati régiója| `westus`| https://westus.cris.ai
+USA 2. nyugati régiója| `westus2`| https://westus2.cris.ai
+USA keleti régiója| `eastus`| https://eastus.cris.ai
+USA 2. keleti régiója| `eastus2`| https://eastus2.cris.ai
+Kelet-Ázsia| `eastasia`| https://eastasia.cris.ai
+Délkelet-Ázsia| `southeastasia`| https://southeastasia.cris.ai
+Észak-Európa| `northeurope`| https://northeurope.cris.ai
+Nyugat-Európa|  `westeurope`| https://westeurope.cris.ai
 
 ### <a name="regions-for-intent-recognition"></a>Régióban a szándékának felismerése
 

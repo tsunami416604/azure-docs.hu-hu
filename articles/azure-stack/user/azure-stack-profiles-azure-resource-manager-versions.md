@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 08/24/2018
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: 9d33ccf9262d4432ac7255121e97f318d00b5145
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: bc57d445c334baeb32dbffda814cb10a35956d03
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43050649"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44380216"
 ---
 # <a name="resource-provider-api-versions-supported-by-profiles-in-azure-stack"></a>Erőforrás-szolgáltató API-ja verziókat támogatja az Azure Stackben profilok
 
@@ -54,9 +54,9 @@ Egy API-profilokat és verzió kiadási ütem az Azure Stack, ismertetését [ke
 | Resources_Locks | 2016-10-01 |
 | Előfizetések | 2016-10-01 |
 
-Több a szolgáltatók a api-profilban az egyes erőforrástípusok verzióját, lásd: [részleteit a 2018-03-01-hibrid](#details-for-the-2018-03-01-hybrid) profilt.
+Több a szolgáltatók a API-profilban az egyes erőforrástípusok verzióját, lásd: [részleteit a 2018-03-01-hibrid](#details-for-the-2018-03-01-hybrid) profilt.
 
-## <a name="overview-of-2017-03-09-profile"></a>2017-03-09-profile áttekintése
+## <a name="overview-of-2018-03-01-hybrid"></a>A 2018-03-01-hibrid áttekintése
 
 | Erőforrás-szolgáltató | API-verzió |
 |------------------------------------------------|------------------------------|
@@ -76,7 +76,7 @@ Több a szolgáltatók a api-profilban az egyes erőforrástípusok verzióját,
 | Resources_Locks | 2016-09-01 |
 | Előfizetések | 2016. 06. 1 |
 
-Több a szolgáltatók a api-profilban az egyes erőforrástípusok verzióját, lásd: [a 2017-03-09-profile részletei](#details-for-the-2017-03-09-profile)
+Több a szolgáltatók a api-profilban az egyes erőforrástípusok verzióját, lásd: [a 2018-03-01-hibrid részletei](#details-for-the-2018-03-01-hybrid)
 
 ## <a name="details-for-the-2018-03-01-hybrid"></a>A 2018-03-01-hibrid részletei
 
@@ -231,7 +231,7 @@ A Storage erőforrás-szolgáltató (SRP) lehetővé teszi, hogy a storage-fiók
 | Tárfiókok | 2016-01-01 |
 | Használati listák | 2016-01-01 |
 
-## <a name="details-for-the-2017-03-09-profile"></a>A 2017-03-09-profile részletei
+## <a name="details-for-the-2018-03-01-hybrid"></a>A 2018-03-01-hibrid részletei
 
 ### <a name="microsoft-authorization"></a>Microsoft-engedély
 

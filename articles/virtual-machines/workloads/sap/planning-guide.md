@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 09/06/2018
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7b1f937a71a0ff5b8030c922073dc463af3c8430
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 274f9d89113f583cc7b65ae01f3132d35b82b920
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/11/2018
-ms.locfileid: "44349262"
+ms.locfileid: "44380420"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Az Azure virtuális gépek tervezése és megvalósítása SAP NetWeaver
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -511,7 +511,7 @@ Az Azure Resource Manager lehetővé teszi, hogy alkalmazásait egy deklaratív 
 
 Resource Manager-sablonok használatával kapcsolatos további információk itt található:
 
-* [Telepítését és kezelését a virtuális gépek Azure Resource Manager-sablonok és az Azure parancssori felület használatával][../../linux/create-ssh-secured-vm-from-template.md]
+* [Üzembe helyezése és kezelése a virtuális gépek az Azure Resource Manager-sablonokkal és az Azure CLI használatával](../../linux/create-ssh-secured-vm-from-template.md)
 * [Virtuális gépek kezelése az Azure Resource Managerrel és Powershellel][virtual-machines-deploy-rmtemplates-powershell]
 * <https://azure.microsoft.com/documentation/templates/>
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 8/06/2018
 ms.author: markgal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1d8e2d3e6a303009f5718a86772cdc3db8ed332a
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: faa0908f9317c10713c41d06a22e9251998fe3c7
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39523852"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44378448"
 ---
 # <a name="use-azurermrecoveryservicesbackup-cmdlets-to-back-up-virtual-machines"></a>Virtuális gépek biztonsági mentése az AzureRM.RecoveryServices.Backup parancsmagok segítségével
 
@@ -450,7 +450,7 @@ Az adattitkosítás lemezeket manuálisan engedélyezni kell a következő paran
    Felügyelt nem titkosított virtuális gépek esetén kell felügyelt lemez gyors létrehozásához a blob storage-ból, majd csatlakoztassa a lemezeket. Részletes információkért lásd: a cikk [adatlemez csatolása a PowerShell használatával Windows virtuális gép](../virtual-machines/windows/attach-disk-ps.md). Az alábbi mintakód bemutatja, hogyan az adatlemezek felügyelt nem titkosított virtuális gépek számára.
 
     ```
-    PS C:\> $storageType = "StandardLRS"
+    PS C:\> $storageType = "Standard_LRS"
     PS C:\> $osDiskName = $vm.Name + "_osdisk"
     PS C:\> $osVhdUri = $obj.'properties.storageProfile'.osDisk.vhd.uri
     PS C:\> $diskConfig = New-AzureRmDiskConfig -AccountType $storageType -Location "West US" -CreateOption Import -SourceUri $osVhdUri
@@ -473,7 +473,7 @@ Az adattitkosítás lemezeket manuálisan engedélyezni kell a következő paran
      ```
     PS C:\> $dekUrl = "https://ContosoKeyVault.vault.azure.net:443/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
     PS C:\> $keyVaultId = "/subscriptions/abcdedf007-4xyz-1a2b-0000-12a2b345675c/resourceGroups/ContosoRG108/providers/Microsoft.KeyVault/vaults/ContosoKeyVault"
-    PS C:\> $storageType = "StandardLRS"
+    PS C:\> $storageType = "Standard_LRS"
     PS C:\> $osDiskName = $vm.Name + "_osdisk"
     PS C:\> $osVhdUri = $obj.'properties.storageProfile'.osDisk.vhd.uri
     PS C:\> $diskConfig = New-AzureRmDiskConfig -AccountType $storageType -Location "West US" -CreateOption Import -SourceUri $osVhdUri
@@ -503,7 +503,7 @@ Az adattitkosítás lemezeket manuálisan engedélyezni kell a következő paran
     PS C:\> $dekUrl = "https://ContosoKeyVault.vault.azure.net:443/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
     PS C:\> $kekUrl = "https://ContosoKeyVault.vault.azure.net:443/keys/ContosoKey007/x9xxx00000x0000x9b9949999xx0x006"
     PS C:\> $keyVaultId = "/subscriptions/abcdedf007-4xyz-1a2b-0000-12a2b345675c/resourceGroups/ContosoRG108/providers/Microsoft.KeyVault/vaults/ContosoKeyVault"
-    PS C:\> $storageType = "StandardLRS"
+    PS C:\> $storageType = "Standard_LRS"
     PS C:\> $osDiskName = $vm.Name + "_osdisk"
     PS C:\> $osVhdUri = $obj.'properties.storageProfile'.osDisk.vhd.uri
     PS C:\> $diskConfig = New-AzureRmDiskConfig -AccountType $storageType -Location "West US" -CreateOption Import -SourceUri $osVhdUri

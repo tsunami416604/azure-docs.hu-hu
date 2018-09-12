@@ -1,6 +1,6 @@
 ---
-title: Nagy mennyiségű adatok feltöltése a Data Lake Store kapcsolat nélküli módszerrel |} Microsoft Docs
-description: Adatok másolása az Azure Storage blobs Data Lake store a AdlCopy eszközzel
+title: Nagy mennyiségű adat feltöltése az Azure Data Lake Storage Gen1 offline módszerrel |} A Microsoft Docs
+description: Adatok másolása az Azure Storage-blobokat az Azure Data Lake Storage Gen1 az AdlCopy eszközzel
 services: data-lake-store
 documentationcenter: ''
 author: nitinme
@@ -12,32 +12,32 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 2b3ae9e4ecb8b8db4eee109f0867c7884bea37c2
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: HT
+ms.openlocfilehash: 6430bf524ac81af242bf7afb4c2c8196309806ab
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34625678"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391676"
 ---
-# <a name="use-the-azure-importexport-service-for-offline-copy-of-data-to-data-lake-store"></a>Data Lake Store-adatok offline példányát az Azure Import/Export szolgáltatás használata
-Ebből a cikkből megtudhatja, hogyan hatalmas adatok másolása (> 200 GB-os) azokat az Azure Data Lake Store módszerrel offline másolat, például a [Azure Import/Export szolgáltatás](../storage/common/storage-import-export-service.md). Pontosabban ebben a cikkben példa fájl 339,420,860,416 bájt vagy körülbelül 319 GB-TAL a lemezen. Most hívja meg a fájl 319GB.tsv.
+# <a name="use-the-azure-importexport-service-for-offline-copy-of-data-to-azure-data-lake-storage-gen1"></a>Az Azure Data Lake Storage Gen1 adatok offline másolásához az Azure Import/Export szolgáltatás használata
+Ebből a cikkből elsajátíthatja a hatalmas adatkészletek másolása (> 200 GB-os) az Azure Data Lake Storage Gen1 módszerrel offline másolásához, például a [Azure Import/Export szolgáltatás](../storage/common/storage-import-export-service.md). Pontosabban a fájl, használjuk példaként ebben a cikkben nem 339,420,860,416 bájt vagy a lemezen körülbelül 319 GB. Adjuk a fájl 319GB.tsv.
 
-Az Azure Import/Export szolgáltatás segítségével átvitele nagy mennyiségű adatok biztonsága érdekében az Azure Blob storage szállítási merevlemez-meghajtók számára egy Azure-adatközpontban.
+Az Azure Import/Export szolgáltatás segít a nagy mennyiségű adat átvitele biztonságosabb az Azure Blob storage-merevlemez-meghajtók egy Azure-adatközpontban való szállításával.
 
 ## <a name="prerequisites"></a>Előfeltételek
-Mielőtt hozzákezd, rendelkeznie kell a következő:
+Elkezdéséhez az alábbiakkal kell rendelkeznie:
 
 * **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
-* **Azure-tárfiók**.
-* **Egy Azure Data Lake Store-fiók**. Hogyan hozhat létre ilyet, lásd: [Ismerkedés az Azure Data Lake Store](data-lake-store-get-started-portal.md)
+* **Az Azure storage-fiók**.
+* **Az Azure Data Lake Storage Gen1 fiók**. Létrehozásával kapcsolatos utasításokért lásd: [Ismerkedés az Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md)
 
 ## <a name="preparing-the-data"></a>Az adatok előkészítése
 
-A Import/Export szolgáltatás használata előtt át kell helyezni az adatfájl törés **azokat, amelyek 200 GB-nál kisebb másolatok** mérete. 200 GB-nál nagyobb fájlokat nem működik az import eszközt. Az oktatóanyag azt ossza fel a fájl minden 100 GB méretű adattömböket írnak. Ehhez a [Cygwin](https://cygwin.com/install.html). Cygwin támogatja a Linux-parancsok. Ebben az esetben használja a következő parancsot:
+Az Import/Export szolgáltatást használja, mielőtt felosztása át lehet adni az adatfájl **be, amelyek a 200 GB-nál kevesebb példányt** mérete. Az importálási eszköz nem működik a 200 GB-nál nagyobb fájlokkal. Ebben az oktatóanyagban a fájl adattömbökbe egyenként 100 GB-os osztottuk. Ezt megteheti használatával is [Cygwin](https://cygwin.com/install.html). Cygwin támogatja a Linux-parancsok. Ebben az esetben használja a következő parancsot:
 
     split -b 100m 319GB.tsv
 
-A felosztott művelet a következő nevű fájlokat hozza létre.
+A felosztási művelet fájlokat hoz létre a következő nevekkel.
 
     319GB.tsv-part-aa
 
@@ -48,30 +48,30 @@ A felosztott művelet a következő nevű fájlokat hozza létre.
     319GB.tsv-part-ad
 
 ## <a name="get-disks-ready-with-data"></a>Felkészülés a lemezek adatokkal
-Kövesse az utasításokat a [az Azure Import/Export szolgáltatás használatával](../storage/common/storage-import-export-service.md) (alatt a **készítse elő a meghajtók** szakasz) a merevlemez-meghajtók előkészítéséhez. Az általános feladatütemezési itt található:
+Kövesse a [az Azure Import/Export szolgáltatás használatával](../storage/common/storage-import-export-service.md) (alatt a **meghajtó előkészítése** szakaszt) a merevlemezek előkészítéséhez. Itt látható a teljes feladatütemezés:
 
-1. Be kell szereznie egy merevlemezt, amely megfelel a követelmény az Azure Import/Export szolgáltatás használt.
-2. Az adatok másolatának tárolására után a szállított az Azure-adatközpontban az Azure storage-fiók azonosítása.
-3. Használja a [Azure Import/Export eszköz](http://go.microsoft.com/fwlink/?LinkID=301900&clcid=0x409), parancssori segédprogramot. Íme egy minta kódrészletet, amely bemutatja, hogyan használhatja az eszközt.
+1. Be kell szereznie egy merevlemezt, amely megfelel a követelmény az Azure Import/Export szolgáltatás használható.
+2. Azonosítsa az Azure storage-fiók, amelyben az adatok másolandó után el az Azure-adatközpontba.
+3. Használja a [Azure Import/Export eszköz](http://go.microsoft.com/fwlink/?LinkID=301900&clcid=0x409), parancssori segédprogramot. Íme egy példa kódrészletet, amely bemutatja, hogyan használhatja az eszközt.
 
     ````
     WAImportExport PrepImport /sk:<StorageAccountKey> /t: <TargetDriveLetter> /format /encrypt /logdir:e:\myexportimportjob\logdir /j:e:\myexportimportjob\journal1.jrn /id:myexportimportjob /srcdir:F:\demo\ExImContainer /dstdir:importcontainer/vf1/
     ````
-    Lásd: [az Azure Import/Export szolgáltatás használatával](../storage/common/storage-import-export-service.md) a minta további részletek.
-4. Az előző parancs létrehoz egy napló fájlt a megadott helyen. Ez a napló fájl segítségével az importálási feladat létrehozása a [Azure-portálon](https://portal.azure.com).
+    Lásd: [az Azure Import/Export szolgáltatás használatával](../storage/common/storage-import-export-service.md) további példa kódtöredékek esetében.
+4. Az előző parancs létrehoz egy journal-fájlt a megadott helyen. Ez a naplófájl használatával az importálási feladat létrehozása a [az Azure portal](https://portal.azure.com).
 
 ## <a name="create-an-import-job"></a>Importálási feladat létrehozása
-Mostantól létrehozhat egy importálási feladat található utasítások segítségével [az Azure Import/Export szolgáltatás használatával](../storage/common/storage-import-export-service.md) (alatt a **az importálási feladat létrehozása** szakaszban). Az importálási feladathoz más adatokkal is adja meg a napló-fájlját a merevlemez-meghajtók előkészítése során létrehozott.
+Mostantól létrehozhat az importálási feladat szakaszban foglaltak szerint [az Azure Import/Export szolgáltatás használatával](../storage/common/storage-import-export-service.md) (alatt a **az importálási feladat létrehozása** szakaszt). Az importálási feladatot más adatokkal is adja meg a napló-fájlt a merevlemez-meghajtók előkészítése során létrehozott.
 
-## <a name="physically-ship-the-disks"></a>Fizikailag küldje el a lemezek
-Fizikailag most szállítása a lemezt egy Azure-adatközpontban. Hiba, a adatokat másolja át az Azure Storage blobs szolgáltatásban, az importálási feladat létrehozásakor megadott. Is a feladat létrehozásakor, ha később, a nyomon követési információk választotta mostantól térjen vissza az importálás és frissítés a nyomon követési száma.
+## <a name="physically-ship-the-disks"></a>Fizikailag szállítsa
+Most már fizikailag küldhet el a lemezeket egy Azure-adatközpontban. Itt az adatok át van másolva az Azure Storage-blobokkal, az importálási feladat létrehozásakor megadott. Is a feladat létrehozásakor, ha úgy döntött, hogy később, a nyomon követési információkat biztosít, ezután lépjen vissza az importálási feladat és a nyomkövetési azonosító szám frissítése.
 
-## <a name="copy-data-from-azure-storage-blobs-to-azure-data-lake-store"></a>Adatok másolása az Azure Storage blobs szolgáltatásban az Azure Data Lake Store
-Után az importálási feladat állapotát jeleníti meg, hogy végzett, ellenőrizheti, hogy az adatok érhető el az Azure Storage blobs volt megadva. Számos módszer a blobok adatok áthelyezése az Azure Data Lake Store használhatja. Az összes elérhető beállítások adatfeltöltési, lásd: [adatok bevitele a Data Lake Store](data-lake-store-data-scenarios.md#ingest-data-into-data-lake-store).
+## <a name="copy-data-from-azure-storage-blobs-to-azure-data-lake-storage-gen1"></a>Adatok másolása az Azure Storage-blobokat az Azure Data Lake Storage Gen1
+Után az importálási feladat állapotát jeleníti meg, hogy elkészült, ellenőrizheti, hogy volt a megadott Azure Storage-blobokban rendelkezésre áll-e az adatok. A blobok az adatok áthelyezése az Azure Data Lake Storage Gen1 felhasználhatja többféle módszerrel. Az elérhető lehetőségeket tölthet fel adatokat, lásd: [tölt be adatot a Data Lake Storage Gen1 be](data-lake-store-data-scenarios.md#ingest-data-into-data-lake-storage-gen1).
 
-Ez a szakasz azt adja meg a JSON-definíciók, amelyek segítségével hozzon létre egy Azure Data Factory-folyamat az adatok másolása. A JSON-definíciókban is használhatja a [Azure-portálon](../data-factory/v1/data-factory-copy-activity-tutorial-using-azure-portal.md), vagy [Visual Studio](../data-factory/v1/data-factory-copy-activity-tutorial-using-visual-studio.md), vagy [Azure PowerShell](../data-factory/v1/data-factory-copy-activity-tutorial-using-powershell.md).
+Ebben a szakaszban olyan biztosítunk, amelyek segítségével hozzon létre egy Azure Data Factory-folyamatot az adatok másolása JSON-definíciói. Ezek a JSON-definíciók is használhatja a [az Azure portal](../data-factory/tutorial-copy-data-portal.md) vagy [Visual Studio](../data-factory/tutorial-copy-data-dot-net.md).
 
-### <a name="source-linked-service-azure-storage-blob"></a>Forrás társított szolgáltatás (Azure Storage-blobba)
+### <a name="source-linked-service-azure-storage-blob"></a>Társított adatforrás-szolgáltatása (Azure Storage blob)
 ````
 {
     "name": "AzureStorageLinkedService",
@@ -85,22 +85,22 @@ Ez a szakasz azt adja meg a JSON-definíciók, amelyek segítségével hozzon l�
 }
 ````
 
-### <a name="target-linked-service-azure-data-lake-store"></a>Cél társított szolgáltatás (az Azure Data Lake Store)
+### <a name="target-linked-service-azure-data-lake-storage-gen1"></a>Cél társított szolgáltatás (Azure Data Lake Storage Gen1)
 ````
 {
-    "name": "AzureDataLakeStoreLinkedService",
+    "name": "AzureDataLakeStorageGen1LinkedService",
     "properties": {
         "type": "AzureDataLakeStore",
         "description": "",
         "typeProperties": {
-            "authorization": "<Click 'Authorize' to allow this data factory and the activities it runs to access this Data Lake Store with your access rights>",
-            "dataLakeStoreUri": "https://<adls_account_name>.azuredatalakestore.net/webhdfs/v1",
+            "authorization": "<Click 'Authorize' to allow this data factory and the activities it runs to access this Data Lake Storage Gen1 account with your access rights>",
+            "dataLakeStoreUri": "https://<adlsg1_account_name>.azuredatalakestore.net/webhdfs/v1",
             "sessionId": "<OAuth session id from the OAuth authorization session. Each session id is unique and may only be used once>"
         }
     }
 }
 ````
-### <a name="input-data-set"></a>Bemeneti adatkészlet
+### <a name="input-data-set"></a>A bemeneti adatkészlet
 ````
 {
     "name": "InputDataSet",
@@ -127,7 +127,7 @@ Ez a szakasz azt adja meg a JSON-definíciók, amelyek segítségével hozzon l�
 "properties": {
   "published": false,
   "type": "AzureDataLakeStore",
-  "linkedServiceName": "AzureDataLakeStoreLinkedService",
+  "linkedServiceName": "AzureDataLakeStorageGen1LinkedService",
   "typeProperties": {
     "folderPath": "/importeddatafeb8job/"
     },
@@ -138,7 +138,7 @@ Ez a szakasz azt adja meg a JSON-definíciók, amelyek segítségével hozzon l�
   }
 }
 ````
-### <a name="pipeline-copy-activity"></a>Feldolgozási sor (másolási tevékenység)
+### <a name="pipeline-copy-activity"></a>Folyamat (a másolási tevékenység)
 ````
 {
     "name": "CopyImportedData",
@@ -187,12 +187,12 @@ Ez a szakasz azt adja meg a JSON-definíciók, amelyek segítségével hozzon l�
     }
 }
 ````
-További információkért lásd: [helyezze át az adatokat az Azure Storage-blobból az Azure Data Lake Store Azure Data Factory használatával](../data-factory/connector-azure-data-lake-store.md).
+További információkért lásd: [adatok áthelyezése az Azure Storage-blobból az Azure Data Lake Storage Gen1 Azure Data Factory használatával](../data-factory/connector-azure-data-lake-store.md).
 
-## <a name="reconstruct-the-data-files-in-azure-data-lake-store"></a>Hozza létre újból az Azure Data Lake Store-adatfájlok
-A fájl, 319 GB, és úgy, hogy az Azure Import/Export szolgáltatás használatával sikerült továbbítani túllépte azt le a kisebb méretű fájlok használatába azt. Most, hogy az adatok Azure Data Lake Store-ban, hogy a fájl eredeti méretének is helyreállítására. A következő Azure PowerShell cmldts ehhez használhatja.
+## <a name="reconstruct-the-data-files-in-azure-data-lake-storage-gen1"></a>Hozza az adatfájlokat az Azure Data Lake Storage Gen1
+Hogy lépései egy fájlt, amely 319 GB volt, és úgy, hogy sikerült átvinni az Azure Import/Export szolgáltatás használatával érvénytelenítése azt le azokat a kisebb méretű fájlokat. Most, hogy az adatokat az Azure Data Lake Storage Gen1, hogy rekonstruálhassák a betűméretét az eredeti fájlt. Ehhez a következő Azure PowerShell-parancsmagok segítségével.
 
-````
+```
 # Login to our account
 Connect-AzureRmAccount
 
@@ -204,10 +204,10 @@ Set-AzureRmContext -SubscriptionId
 Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.DataLakeStore"
 
 # Join  the files
-Join-AzureRmDataLakeStoreItem -AccountName "<adls_account_name" -Paths "/importeddatafeb8job/319GB.tsv-part-aa","/importeddatafeb8job/319GB.tsv-part-ab", "/importeddatafeb8job/319GB.tsv-part-ac", "/importeddatafeb8job/319GB.tsv-part-ad" -Destination "/importeddatafeb8job/MergedFile.csv"
+Join-AzureRmDataLakeStoreItem -AccountName "<adlsg1_account_name" -Paths "/importeddatafeb8job/319GB.tsv-part-aa","/importeddatafeb8job/319GB.tsv-part-ab", "/importeddatafeb8job/319GB.tsv-part-ac", "/importeddatafeb8job/319GB.tsv-part-ad" -Destination "/importeddatafeb8job/MergedFile.csv"
 ````
 
 ## <a name="next-steps"></a>További lépések
-* [Biztonságos adattárolás a Data Lake Store-ban](data-lake-store-secure-data.md)
-* [Az Azure Data Lake Analytics használata a Data Lake Store-ral](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
-* [Az Azure HDInsight használata a Data Lake Store-ral](data-lake-store-hdinsight-hadoop-use-portal.md)
+* [Az adatok védelme az 1. generációs Data Lake Storage-ban](data-lake-store-secure-data.md)
+* [Az Azure Data Lake Analytics használata a Data Lake Storage Gen1](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
+* [Az Azure HDInsight használata a Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md)

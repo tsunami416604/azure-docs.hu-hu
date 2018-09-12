@@ -6,20 +6,19 @@ documentationcenter: ''
 author: mattbriggs
 manager: femila
 editor: ''
-ms.assetid: 6996DFC1-5E05-423A-968F-A9427C24317C
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/30/2018
+ms.date: 09/10/2018
 ms.author: mabrigg
-ms.openlocfilehash: 70c1fd72df437ade3bc12cd23db923f6d449e7fb
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 5d988e8a8a32924b8424a07cf20c75f0e8f8cf4d
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38465743"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391074"
 ---
 # <a name="get-up-and-running-with-powershell-in-azure-stack"></a>Első lépésekhez a PowerShell-lel az Azure Stackben
 
@@ -27,12 +26,14 @@ ms.locfileid: "38465743"
 
 A rövid útmutató segítségével telepítését és a egy Azure Stack-környezet konfigurálása a PowerShell használatával. A parancsfájl, amely ebben a cikkben kínálunk hatókörét a **Azure Stack-operátorokról** csak.
 
-Ebben a cikkben ismertetett lépéseket a rövidített változata a [PowerShell telepítése]( azure-stack-powershell-install.md), [eszközök]( azure-stack-powershell-download.md), és [az Azure Stack-operátorokrólPowerShell-környezetkonfigurálása]( azure-stack-powershell-configure-admin.md) cikkeket. Ez a témakör a parancsfájlok használatával állíthat be PowerShell az Azure Active Directoryval vagy az Active Directory összevonási szolgáltatások (AD FS) üzembe helyezett Azure Stack-környezetekhez.  
+Ebben a cikkben ismertetett lépéseket a rövidített változata a [PowerShell telepítése]( azure-stack-powershell-install.md), [eszközök]( azure-stack-powershell-download.md), és [az Azure Stack-operátorokrólPowerShell-környezetkonfigurálása]( azure-stack-powershell-configure-admin.md) cikkeket. Ez a cikk a parancsfájlok használatával állíthat be PowerShell az Azure Active Directoryval vagy az Active Directory összevonási szolgáltatások (AD FS) üzembe helyezett Azure Stack-környezetekhez.  
 
 
 ## <a name="set-up-powershell-for-azure-active-directory-based-deployments"></a>Az Azure Active Directory-alapú környezetekben a PowerShell beállítása
 
-Jelentkezzen be az Azure Stack fejlesztői készletet, vagy egy Windows-alapú külső ügyfél Ha VPN-kapcsolaton keresztül kapcsolódik. Nyisson meg egy rendszergazda jogú PowerShell ISE-munkamenetet, és futtassa az alábbi parancsfájlt. Győződjön meg arról, hogy frissítette a **TenantName**, **ArmEndpoint**, és **GraphAudience** változók szükség szerint az Ön környezetének konfigurációját:
+<a name="sign-in-to-your-azure-stack-development-kit-or-a-windows-based-external-client-if-you-are-connected-through-vpn-open-an-elevated-powershell-ise-session-and-then-run-the-following-script"></a>Jelentkezzen be az Azure Stack fejlesztői készletet, vagy egy Windows-alapú külső ügyfél Ha VPN-kapcsolaton keresztül kapcsolódik. Nyisson meg egy rendszergazda jogú PowerShell ISE-munkamenetet, és futtassa az alábbi parancsfájlt. 
+-  
+- Győződjön meg arról, hogy frissítette a **TenantName**, **ArmEndpoint**, és **GraphAudience** változók szükség szerint az Ön környezetének konfigurációját:
 
 ```powershell
 # Specify Azure Active Directory tenant name.

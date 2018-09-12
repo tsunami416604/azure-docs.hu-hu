@@ -1,6 +1,6 @@
 ---
-title: Adatait átmásolja WASB érkező vagy oda irányuló Data Lake Store használatának ból a Distcp |} Microsoft Docs
-description: Adatok másolása és az Azure Storage Blobs Data Lake Store-ból a Distcp eszközzel
+title: Adatok másolása, illetve onnan a Distcp használata az Azure Data Lake Storage Gen1 WASB |} A Microsoft Docs
+description: A Distcp eszközzel másolhat adatokat, és az Azure Storage-Blobokból az Azure Data Lake Storage Gen1
 services: data-lake-store
 documentationcenter: ''
 author: nitinme
@@ -12,109 +12,109 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: d6f4d1f7b974a3cd44e7cb9ffc2c63548f0bc321
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 9740de34fe7cf7d06af1803cc6d77d7e89bbb73f
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34624393"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391521"
 ---
-# <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-data-lake-store"></a>Adatmásolás az Azure Storage-blobok és a Data Lake Store között a DistCp-vel
+# <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-azure-data-lake-storage-gen1"></a>Adatok másolása az Azure Storage-blobokat és az Azure Data Lake Storage Gen1 között a Distcp használatával
 > [!div class="op_single_selector"]
 > * [A DistCp használata](data-lake-store-copy-data-wasb-distcp.md)
 > * [Az AdlCopy használata](data-lake-store-copy-data-azure-storage-blob.md)
 >
 >
 
-Ha egy HDInsight-fürt hozzáféréssel rendelkező Data Lake Store-ba, segítségével például ból a Distcp Hadoop-ökoszisztémával eszközök adatok másolása **a** egy HDInsight fürt storage (WASB) a Data Lake Store-fiók. Ez a cikk nyújt útmutatást a ból a Distcp eszközzel.
+Ha egy HDInsight-fürtöt az Azure Data Lake Storage Gen1 hozzáféréssel rendelkezik, használhatja az adatok másolásához Hadoop-ökoszisztéma eszközökkel, mint például a Distcp **a** egy HDInsight fürt storage (WASB) egy Data Lake Storage Gen1 fiókba. Ez a cikk útmutatást nyújt a Distcp eszközzel.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
-* **Egy Azure Data Lake Store-fiók**. Hogyan hozhat létre ilyet, lásd: [Ismerkedés az Azure Data Lake Store](data-lake-store-get-started-portal.md)
-* **Az Azure HDInsight-fürt** a Data Lake Store-fiók eléréséhez. Lásd: [HDInsight-fürtök létrehozása a Data Lake Store](data-lake-store-hdinsight-hadoop-use-portal.md). Győződjön meg arról, hogy a fürt számára engedélyezi a távoli asztal.
+* **Az Azure Data Lake Storage Gen1 fiók**. Létrehozásával kapcsolatos utasításokért lásd: [Ismerkedés az Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md)
+* **Az Azure HDInsight-fürt** hozzáférést egy Data Lake Storage Gen1 fiókot. Lásd: [egy HDInsight-fürt létrehozása a Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md). Ellenőrizze, hogy engedélyezi a távoli asztal a fürtöt.
 
 ## <a name="do-you-learn-fast-with-videos"></a>Gyorsan tanul videók segítségével?
-[A videó](https://mix.office.com/watch/1liuojvdx6sie) az adatok Azure Storage Blobs és a Data Lake Store használatának ból a DistCp közötti másolása.
+[Ebben a videóban](https://mix.office.com/watch/1liuojvdx6sie) hogyan másolhat adatokat az Azure Storage-Blobok és a Data Lake Storage Gen1 között a DistCp használata.
 
-## <a name="use-distcp-from-an-hdinsight-linux-cluster"></a>HDInsight Linux fürtök ból a Distcp használata
+## <a name="use-distcp-from-an-hdinsight-linux-cluster"></a>A Distcp használata a HDInsight Linux-fürt
 
-HDInsight-fürtök a ból a Distcp segédprogramot, amely segítségével különböző forrásokból származó adatok másolása HDInsight-fürtöt tartalmaz. Ha a HDInsight-fürtöt használja a Data Lake Store további tárolására van beállítva, a ból a Distcp segédprogram lehet használt, a-kész adatok másolása, illetve onnan, valamint egy Data Lake Store-fiókot. Ez a szakasz azt tekintse meg a ból a Distcp segédprogram használata.
+A Distcp segédprogram, amely segítségével különböző forrásokból származó adatokat másolja egy HDInsight-fürt tartalmaz egy HDInsight-fürtön. Ha konfigurálta a HDInsight-fürt használata a Data Lake Storage Gen1 kiegészítő tárolóként, a Distcp segédprogram használt-a-beépített másolhat adatokat, és a egy Data Lake Storage Gen1 fiókjához, továbbá az is lehet. Ebben a szakaszban áttekintjük, hogyan használható a Distcp segédprogramot.
 
-1. Az asztalról a SSH parancs használatával csatlakozzon a fürthöz. Lásd: [csatlakozás egy Linux-alapú HDInsight-fürt](../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md). Futtassa a parancsokat az SSH-kérés.
+1. Az asztalon SSH használatával csatlakozhat a fürthöz. Lásd: [csatlakozás Linux-alapú HDInsight-fürthöz](../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md). Futtassa a parancsokat a SSH használatával.
 
-2. Győződjön meg arról, hogy az Azure Storage Blobs (WASB) végezheti el. Futtassa az alábbi parancsot:
+2. Győződjön meg arról, hogy hozzáférhet-e az Azure Storage Blobs (WASB). Futtassa az alábbi parancsot:
 
         hdfs dfs –ls wasb://<container_name>@<storage_account_name>.blob.core.windows.net/
 
-    A kimeneti biztosítania kell a tárolási blob tartalmának listáját.
+    A kimenet kell biztosítania az storage blob tartalmának listáját.
 
-3. Ehhez hasonlóan ellenőrizze, hogy a Data Lake Store-fiók hozzáférhet a fürtből. Futtassa az alábbi parancsot:
+3. Ehhez hasonlóan ellenőrizze, hogy a Data Lake Storage Gen1 fiók hozzáférhet a fürtből. Futtassa az alábbi parancsot:
 
-        hdfs dfs -ls adl://<data_lake_store_account>.azuredatalakestore.net:443/
+        hdfs dfs -ls adl://<data_lake_storage_gen1_account>.azuredatalakestore.net:443/
 
-    A kimeneti fájlok és mappák a Data Lake Store-fiókban listáját kell biztosítania.
+    A kimenet a Data Lake Storage Gen1 fiókban lévő fájlok és mappák listáját kell biztosítania.
 
-4. Az ból a Distcp WASB a Data Lake Store-fiók adatainak másolhatja.
+4. A Distcp használatával adatokat másol a WASB egy Data Lake Storage Gen1 fiókhoz.
 
-        hadoop distcp wasb://<container_name>@<storage_account_name>.blob.core.windows.net/example/data/gutenberg adl://<data_lake_store_account>.azuredatalakestore.net:443/myfolder
+        hadoop distcp wasb://<container_name>@<storage_account_name>.blob.core.windows.net/example/data/gutenberg adl://<data_lake_storage_gen1_account>.azuredatalakestore.net:443/myfolder
 
-    A parancs átmásolja a tartalmát a **/példa/data/gutenberg/** a WASB mappájában **/myfolder** a Data Lake Store-fiókban.
+    A parancs másolja a tartalmát a **/példa/data/gutenberg/** a WASB-mappában **/myfolder** a Data Lake Storage Gen1 fiókban.
 
-5. Ehhez hasonlóan ból a Distcp segítségével WASB Data Lake Store-fiók adatainak másolása.
+5. Ehhez hasonlóan a Distcp használatával adatokat másol a Data Lake Storage Gen1 fiók a WASB.
 
-        hadoop distcp adl://<data_lake_store_account>.azuredatalakestore.net:443/myfolder wasb://<container_name>@<storage_account_name>.blob.core.windows.net/example/data/gutenberg
+        hadoop distcp adl://<data_lake_storage_gen1_account>.azuredatalakestore.net:443/myfolder wasb://<container_name>@<storage_account_name>.blob.core.windows.net/example/data/gutenberg
 
-    A parancs átmásolja a tartalmát **/myfolder** a Data Lake Store-fiók **/példa/data/gutenberg/** WASB mappájában.
+    A parancs másolja a tartalmát **/myfolder** , a Data Lake Storage Gen1 fiókban **/példa/data/gutenberg/** WASB-mappában.
 
-## <a name="performance-considerations-while-using-distcp"></a>Teljesítménnyel kapcsolatos szempontok ból a DistCp használata során
+## <a name="performance-considerations-while-using-distcp"></a>A DistCp használata közben a teljesítménnyel kapcsolatos szempontok
 
-Mivel a legalacsonyabb granularitási ból a DistCp meg egyetlen fájl, a legfontosabb paraméter optimalizálása, szemben a Data Lake Store egyidejű példányok maximális száma. Egyidejű példányszám vezérli mappers számának beállítása (a perceké 'M ') paraméter a parancssorban. Ez a paraméter-adatok másolása használt mappers maximális számát. Alapértelmezett érték 20.
+Mivel a DistCp a legalacsonyabb granularitási egyetlen fájlt, beállítás egyidejű példányok maximális száma az a legfontosabb paraméter, a Data Lake Storage Gen1 elleni optimalizálhatja azt. Egyidejű példányszám vezérli leképező számának beállítása ('M ') paraméter a parancssorban. Ez a paraméter leképező adatmásolás céljából használt maximális számát. Alapértelmezett értéke 20.
 
 **Példa**
 
-    hadoop distcp wasb://<container_name>@<storage_account_name>.blob.core.windows.net/example/data/gutenberg adl://<data_lake_store_account>.azuredatalakestore.net:443/myfolder -m 100
+    hadoop distcp wasb://<container_name>@<storage_account_name>.blob.core.windows.net/example/data/gutenberg adl://<data_lake_storage_gen1_account>.azuredatalakestore.net:443/myfolder -m 100
 
-### <a name="how-do-i-determine-the-number-of-mappers-to-use"></a>Hogyan állapítható meg a használandó mappers száma?
+### <a name="how-do-i-determine-the-number-of-mappers-to-use"></a>Hogyan állapítható meg a használandó leképező száma?
 
 Az alábbiakban olvashat némi útmutatást ezzel kapcsolatban.
 
-* **1. lépés: A teljes YARN memória meghatározása** – az első lépés az, hogy határozza meg a YARN memória az a ból a DistCp feladat futtató fürtre. Ez az információ az Ambari portálon a fürthöz tartozó érhető el. A YARN és a Configs lapon tekintse meg a YARN memória. Ahhoz, hogy a teljes YARN memória, szorozza meg a YARN csomópontonkénti memória a csomópontok számát a fürt rendelkezik.
+* **1. lépés: Határozható meg a teljes YARN** – az első lépés az, hogy határozza meg a YARN a fürt, amelyen futtatja a DistCp feladat számára elérhető memória. Ez az információ a fürthöz társított Ambari portálon érhető el. Keresse meg a YARN és a Configs lapon, a YARN memória megtekintéséhez. A teljes YARN memória lekéréséhez szorozza meg a YARN-csomópontonkénti memória a csomópontok számát a fürt rendelkezik.
 
-* **2. lépés: Mappers számának kiszámítása** -értékének **m** megegyezik a YARN tároló mérete elosztva teljes YARN memória hányadosa. A YARN tároló mérete információ áll rendelkezésre, valamint az Ambari portálon. A YARN és a Configs lapon. A YARN tároló mérete ebben az ablakban jelenik meg. A kiszolgálófarmban lévő mappers száma összefüggést (**m**) van
+* **2. lépés: Leképező számának kiszámítása** -értékét **m** egyenlő teljes YARN memória, a YARN-tároló mérete elosztva a hányadosa. A YARN tároló mérete információkat, valamint az Ambari-portálon érhető el. Keresse meg a YARN és a konfigurációkat lapon. A YARN tárolóméret ebben az ablakban jelenik meg. Ahhoz, hogy eljusson leképező száma a egyenlőségi (**m**) van
 
         m = (number of nodes * YARN memory for each node) / YARN container size
 
 **Példa**
 
-Tegyük fel, hogy a fürt rendelkezik egy 4 D14v2s csomópontok pedig 10 TB-nyi adat átvitele 10 különböző mappák kívánt. Mappánkénti változó mennyiségű adatot tartalmaz, és a fájlméret, minden egyes mappákban lévő eltérőek.
+Tegyük fel, hogy a fürt egy 4 D14v2s csomóponttal rendelkezik, és 10 TB-nyi adat átvitele 10 különböző mappákat szeretne. A mappák mindegyike a különböző mennyiségű adatot tartalmaz, és a fájlméret belül különböznek.
 
-* Összes YARN memória - az Ambari portal annak meghatározását, hogy-e a YARN memória 96 GB egy D14 csomópont. Igen négy csomópontos a fürt teljes YARN memória van: 
+* Teljes YARN memória - portálon az Ambari meghatározni, hogy a YARN memória 96 GB egy D14 csomópont. Így a YARN memória összesen négy csomópontot tartalmazó fürtben van: 
 
         YARN memory = 4 * 96GB = 384GB
 
-* Ennyi mappers - az Ambari portal annak meghatározását, hogy a YARN tároló mérete 3072 D14 fürtcsomópont esetén. Igen van mappers száma:
+* Ennyi leképező - meghatározni, hogy a YARN tárolóméret 3072 D14 fürtcsomópont esetén az Ambari-portálon. Tehát van leképező száma:
 
         m = (4 nodes * 96GB) / 3072MB = 128 mappers
 
-Ha más alkalmazásokat memóriát használ, akkor választhatja használandó csak egy részét a fürt YARN memória ból a DistCp.
+Ha más alkalmazásokat használ a memóriát, majd lehet váltani, csak a fürt YARN memória egy részét a DistCp használják.
 
-### <a name="copying-large-datasets"></a>Nagy adatkészletek másolása
+### <a name="copying-large-datasets"></a>Nagy mennyiségű adat másolása
 
-Ha a dataset áthelyezésének mérete nagy (például > 1 TB-os), vagy ha több különböző mappa, érdemes lehet használni több ból a DistCp feladat. Valószínűleg nincs nincs jobb teljesítménye, de hogy terjeszti ki a feladatot, hogy a feladat sikertelen lesz, ha csak kell, hogy adott feladat, hanem a teljes feladat újraindításához.
+Ha az adatkészlet áthelyezésének mérete nagy (például > 1 TB-ot), vagy ha több különböző mappa, akkor érdemes megfontolni a DistCp több feladatot. Valószínűleg nem nincs teljesítmény miatt, de terjeszti ki a feladatokat, hogy minden olyan feladat sikertelen lesz, ha csak a teljes feladat ahelyett, hogy az adott feladat újraindításához.
 
 ### <a name="limitations"></a>Korlátozások
 
-* Ból a DistCp megpróbál létrehozni mappers hasonló-nál, teljesítményének optimalizálása érdekében. Növelje meg a mappers nem mindig növelheti a teljesítményt.
+* A DistCp megpróbálja létrehozni a teljesítmény optimalizálása érdekében mérete hasonló leképező. Leképező számának növelésével előfordulhat, hogy nem mindig növelheti teljesítményt.
 
-* Ból a DistCp fájlonként csak egy leképező korlátozódik. Emiatt nem kell további mappers, mint a fájlokat. Ból a DistCp hozzárendelhet egy leképező fájlba, mert ez megoldással csökkenthető a feldolgozási nagy fájlok másolása használható.
+* A DistCp fájlonként egyetlen eseményleképező korlátozódik. Így nem kell további leképező, mint a fájlokat. A DistCp csak rendelhet egy eseményleképező egy fájlt, mivel ez használható, nagy méretű fájlok másolása egyidejűségi mennyiségét korlátozza.
 
-* Ha kis számú nagyméretű fájlokat, majd meg kell bontva 256 MB fájl adattömbök további lehetséges egyidejűségi Önnek. 
+* Ha kevés nagyméretű fájlokat, majd akkor fel kell őket adattömbökbe 256 MB-os fájlt a lehetséges több egyidejűséget biztosít. 
  
-* Az Azure Blob Storage-fiók másolása, a másolási feladat lehet, hogy szabályozva a blob storage oldalon. Ez csökkenti a teljesítményt, a másolat. Az Azure Blob Storage korlátai által megszabott kapcsolatos további információkért lásd: Azure Storage-korlátok, [Azure-előfizetés és a szolgáltatásra vonatkozó korlátozások](../azure-subscription-service-limits.md).
+* Másol egy Azure Blob Storage-fiókból, ha a másolási feladat szabályozva előfordulhat, hogy a blob storage-oldalon. Ez csökkenti a másolási feladat teljesítményét. Az Azure Blob Storage a korlátozásokkal kapcsolatos további tudnivalókért tekintse meg az Azure Storage-korlátok, [Azure-előfizetés- és Szolgáltatáskorlátok](../azure-subscription-service-limits.md).
 
 ## <a name="see-also"></a>Lásd még
-* [Adatok másolása az Azure Storage Blobs Data Lake Store-bA](data-lake-store-copy-data-azure-storage-blob.md)
-* [Biztonságos adattárolás a Data Lake Store-ban](data-lake-store-secure-data.md)
-* [Az Azure Data Lake Analytics használata a Data Lake Store-ral](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
-* [Az Azure HDInsight használata a Data Lake Store-ral](data-lake-store-hdinsight-hadoop-use-portal.md)
+* [Adatok másolása az Azure Storage-Blobokból a Data Lake Storage Gen1](data-lake-store-copy-data-azure-storage-blob.md)
+* [Az adatok védelme az 1. generációs Data Lake Storage-ban](data-lake-store-secure-data.md)
+* [Az Azure Data Lake Analytics használata a Data Lake Storage Gen1](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
+* [Az Azure HDInsight használata a Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md)

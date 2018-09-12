@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 09/03/2018
 ms.author: snehaa
-ms.openlocfilehash: f4ce2130b18b183f633c649f98fc1add30753a27
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 16fce3eb5ab3874f7106d05bf99dc795cc22a528
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44296007"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44377541"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Az Azure Migrate – gyakori kérdések (GYIK)
 
@@ -48,13 +48,13 @@ Az Azure Migrate egy migrálási eszközt, és az Azure Site Recovery Deployment
 
 ### <a name="which-azure-regions-are-supported-by-azure-migrate"></a>Mely Azure-régiók az Azure Migrate által támogatott?
 
-Az Azure Migrate jelenleg támogatja az USA keleti RÉGIÓJA és USA nyugati középső Régiója migrálási projekt helyként. Vegye figyelembe, hogy annak ellenére, hogy a migrálási projektek csak az USA nyugati középső Régiója és USA keleti Régiójában hozhat létre, továbbra is felmérheti a gépek [több célhelyek](https://docs.microsoft.com/azure/migrate/how-to-modify-assessment#edit-assessment-properties). A projekt helye csak használatos a detektált adatok tárolásához.
+Az Azure Migrate jelenleg támogatja az USA keleti RÉGIÓJA és USA nyugati középső Régiója migrálási projekt helyként. Annak ellenére, hogy a migrálási projektek csak az USA nyugati középső Régiója és USA keleti Régiójában hozhat létre, továbbra is felmérheti a gépek [több célhelyek](https://docs.microsoft.com/azure/migrate/how-to-modify-assessment#edit-assessment-properties). A projekt helye csak használatos a detektált adatok tárolásához.
 
 ### <a name="how-does-the-on-premises-site-connect-to-azure-migrate"></a>Hogyan nem a helyszíni hely csatlakozni az Azure Migrate?
 
 A kapcsolat az interneten keresztül vagy az ExpressRoute használata a nyilvános társviszony-létesítés.
 
-### <a name="can-i-harden-the-vm-set-up-with-the-ova-template"></a>Is szeretnék felvértezni a virtuális gép beállítása a. OVA sablont?
+### <a name="can-i-harden-the-vm-set-up-with-theova-template"></a>Is szeretnék felvértezni a virtuális gép beállítása a. OVA sablont?
 
 További összetevőket (például víruskereső) is lesz hozzáadva a. OVA mindaddig, amíg a kommunikációs és a tűzfal szabályok az Azure Migrate berendezés működéséhez szükség van hátra áll.   
 
@@ -90,7 +90,9 @@ Az ügynökalapú felderítés beállítás elérhető, a készülék-alapú fel
 
 ### <a name="would-there-be-any-performance-impact-on-the-analyzed-esxi-host-environment"></a>A elemzett ESXi-gazdagép környezet teljesítményét hatással az ott lenne?
 
-Az információkat gyűjtünk a vCenter-kiszolgálón keresztül, mert nincs semmilyen teljesítménycsökkenést az ESXi-gazdagépek. A vCenter-kiszolgáló még a nem szinte nullára gyakorolt hatást.
+Abban az esetben, a [egy ideje a felderítési módszer](https://docs.microsoft.com/azure/migrate/concepts-collector#discovery-methods), annak érdekében, hogy a teljesítményadatok összegyűjtése a statisztikai szint a vCenter-kiszolgálón 3 értéke lenne. Ezen a szinten értékre állítaná összegyűjtik a nagy mennyiségű adatokat, amelyek a vCenter Server-adatbázis a hibaelhárítás. A vcenter Server oldalán teljesítményproblémák lépnek fel, így eredményezhet. Lenne elhanyagolható hatással az ESXi-gazdagépen.
+
+Bevezettük a folyamatos profilkészítés teljesítményadatok (amely előzetes verzióban érhető el). A folyamatos profilkészítés már nem látható egy kell módosítani, a vCenter Server statisztikai szintje a teljesítményalapú értékelés futtatása. A gyűjtőberendezés most fog profilt készíteni a helyszíni gépek és mérhető, a virtuális gépek teljesítményadatait. Ez az ESXi-gazdagépek, valamint a vCenter-kiszolgáló rendelkezik szinte nullára gyakorolt hatást.
 
 ### <a name="where-is-the-collected-data-stored-and-for-how-long"></a>Hol található az összegyűjtött adatok tárolt és mennyi ideig?
 

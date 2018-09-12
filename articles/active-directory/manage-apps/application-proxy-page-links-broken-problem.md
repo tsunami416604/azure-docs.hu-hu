@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/18/2018
+ms.date: 09/10/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 505b3e7df64ef804448bd5753bdaa6148b22a2c3
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 382b484f5ed1e45863d24635554cd7c3a55176a4
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/11/2018
-ms.locfileid: "44357269"
+ms.locfileid: "44378414"
 ---
 # <a name="links-on-the-page-dont-work-for-an-application-proxy-application"></a>A lapon lévő hivatkozások nem működnek az alkalmazásproxy-alkalmazáshoz
 
@@ -43,9 +43,7 @@ A probléma megoldásához három módja van. Az alábbi lehetőségek a felsoro
 
     Ez a beállítás biztosítja, hogy az alkalmazás hivatkozásai proxyn keresztül történő alkalmazás kívülről hozzáférhetővé, mivel a belső URL-címek az alkalmazásban lévő hivatkozások kívülről is felismeri. Minden hivatkozásnak kell elvégeznie a közzétett alkalmazás tartozik. Azonban ez a beállítás a hivatkozások nem kell tartozniuk ugyanazt az alkalmazást, és több alkalmazás is tartozik.
 
-3.  Ha ezen beállítások egyike sem megvalósítható, megtekintheti az új funkciója, amely URL-cím fordítása/újraírását. Ezzel a funkcióval belső URL-címek vagy az alkalmazások HTML törzsében lévő hivatkozásokat a lefordított, vagy "leképezve", a közzétett alkalmazás külső Proxy URL. A fordítási csak a HTML és CSS, hivatkozások a működik, így nem jön létre a hivatkozás JS keresztül. 
-
-Emiatt erősen javasoljuk a [egyéni tartományok](application-proxy-configure-custom-domain.md) megoldás, ha lehetséges. Ha csatlakozni szeretne az előzetes verzióra, e-mailt <aadapfeedback@microsoft.com> a applicationId(s) együtt.
+3.  Ha ezen beállítások egyike sem megvalósítható, több módon beágyazott hivatkozást fordítási engedélyezéséhez. A lehetőségek közé tartozik, az Intune Managed Browser és a saját alkalmazások kiterjesztése, vagy az alkalmazás a hivatkozás fordítási beállítás használatával. Minden egyes ezeket a beállításokat és azok engedélyezéséről kapcsolatos további információkért lásd: [szoftveresen kötött mutató hivatkozásokat az Azure AD-alkalmazásproxyval közzétett alkalmazások átirányítási](application-proxy-configure-hard-coded-link-translation.md).
 
 ## <a name="next-steps"></a>További lépések
 [Meglévő helyszíni proxykiszolgálók használata](application-proxy-configure-connectors-with-proxy-servers.md)

@@ -5,18 +5,18 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/03/2018
+ms.date: 10/11/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 8ba46223f0d0a4db7615bc94fe8a1bbfa18e57f8
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 9ed2614969952eab90dfec572d9b61071981c4bf
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37442338"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391623"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-azure-on-premises-data-gateway"></a>Csatlakozás helyszíni adatforrásokhoz Azure helyszíni adatátjáróval
-A helyszíni adatátjáró hídként működnek, és a helyszíni adatforrások és a felhőben az Azure Analysis Services-kiszolgálók közötti biztonságos adatátvitelt biztosítanak. Mellett használata több Azure Analysis Services-kiszolgáló ugyanabban a régióban, az átjáró legújabb verzióját is használható az Azure Logic Apps, a Power bi-ban, a Power Apps és a Microsoft Flow. Egyetlen átjáró ugyanabban a régióban több szolgáltatást is társíthat. 
+A helyszíni adatátjáró hídként működnek, és a helyszíni adatforrások és a felhőben az Azure Analysis Services-kiszolgálók közötti biztonságos adatátvitelt biztosítanak. Mellett használata több Azure Analysis Services-kiszolgáló ugyanabban a régióban, az átjáró legújabb verzióját is használható az Azure Logic Apps, a Power bi-ban, a Power Apps és a Microsoft Flow. Egyetlen átjáró ugyanabban az előfizetésben és azonos régióban több szolgáltatást is társíthat. 
 
 A telepítő az átjáró első először az egy négyrészes folyamat:
 
@@ -26,7 +26,7 @@ A telepítő az átjáró első először az egy négyrészes folyamat:
 
 - **Átjáró erőforrás létrehozása az Azure-ban** – ebben a lépésben az Azure-előfizetésében létrehozott egy átjáró-erőforrást.
 
-- **Csatlakoztassa a kiszolgálókat az átjáró-erőforrás** – Ha egy átjáró-erőforrást az előfizetésében, elkezdheti, a kiszolgálók csatlakozik. Több kiszolgáló- és egyéb erőforrások csatlakozhatnak hozzá.
+- **Csatlakoztassa a kiszolgálókat az átjáró-erőforrás** – Ha egy átjáró-erőforrást az előfizetésében, elkezdheti, a kiszolgálók csatlakozik. Több kiszolgáló- és más erőforrások, amennyiben azok ugyanahhoz az előfizetéshez és azonos régióban kapcsolódhat.
 
 Azonnal használatba, lásd: [telepítése és konfigurálása a helyszíni adatátjáró](analysis-services-gateway-install.md).
 

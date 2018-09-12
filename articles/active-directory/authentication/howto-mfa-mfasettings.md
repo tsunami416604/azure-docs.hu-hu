@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: da5905af4a861502f190cd873033923d8fd0bfa7
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 890a6b9dd1ef63fcc59984686b2d6dec773cdb52
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/11/2018
-ms.locfileid: "44349092"
+ms.locfileid: "44391844"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Az Azure multi-factor Authentication beállításainak konfigurálása
 
@@ -180,7 +180,7 @@ Függetlenül attól, hogy a megbízható IP-címek szolgáltatás engedélyezve
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. A bal oldalon válassza ki a **Azure Active Directory** > **feltételes hozzáférési** > **nevesített helyek**.
 3. Válassza ki **konfigurálása MFA megbízható IP-címek**.
-4. Az a **Szolgáltatásbeállítások** lap **megbízható IP-címek**, a következő két lehetőség közül választhat:
+4. Az a **Szolgáltatásbeállítások** lap **megbízható IP-címek**, bármelyik a következő két lehetőség közül választhat:
    
    * **Az összevont felhasználók intranetről származó**: válassza ezt a lehetőséget, jelölje be a jelölőnégyzetet. Az összes összevont felhasználók, akik jelentkezzen be a vállalati hálózatról a kétlépéses ellenőrzés megkerülését az AD FS által kiadott jogcím használatával. Győződjön meg arról, hogy az AD FS rendelkezik-e a megfelelő forgalmat az intranetes jogcím hozzáadása egy szabályt. Ha a szabály nem létezik, hozza létre a következő szabályt az AD FS-ben:<br/>
 
@@ -203,7 +203,7 @@ Függetlenül attól, hogy a megbízható IP-címek szolgáltatás engedélyezve
 2. A bal oldalon válassza ki a **Azure Active Directory** > **felhasználók**.
 3. Válassza ki **multi-factor Authentication**.
 4. Válassza ki a multi-factor Authentication hitelesítés **Szolgáltatásbeállítások**.
-5. Az a **Szolgáltatásbeállítások** lap **megbízható IP-címek**, a következő két lehetőség közül választhat:
+5. Az a **Szolgáltatásbeállítások** lap **megbízható IP-címek**, a következő két lehetőség egyikét (vagy mindkettőt):
    
    * **Az összevont felhasználók intranetről**: válassza ezt a lehetőséget, jelölje be a jelölőnégyzetet. Az összes összevont felhasználók, akik jelentkezzen be a vállalati hálózatról a kétlépéses ellenőrzés megkerülését az AD FS által kiadott jogcím használatával. Győződjön meg arról, hogy az AD FS rendelkezik-e a megfelelő forgalmat az intranetes jogcím hozzáadása egy szabályt. Ha a szabály nem létezik, hozza létre a következő szabályt az AD FS-ben:<br/>
 

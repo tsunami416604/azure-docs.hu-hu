@@ -1,36 +1,36 @@
 ---
-title: Az Azure verem képzési és minősítési
-description: 'Tudnivalók Azure verem képzési hitelesítő lehetőségek:'
+title: Az Azure Stack-képzési és minősítési lehetőségek
+description: További tudnivalók az Azure Stack képzési minősítési lehetőségek
 services: azure-stack
 author: mattbriggs
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 02/28/2018
+ms.date: 09/10/2018
 ms.author: mabrigg
-keywords: ''
-ms.openlocfilehash: 19dba180d19967dcd6a01a6b2851d746ad1f9831
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 2b9a769abb1e704dce0bd6924372be62bb85d68d
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32154511"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44376867"
 ---
-# <a name="azure-stack-training-and-certification"></a>Az Azure verem képzési és minősítési
+# <a name="azure-stack-training-and-certification"></a>Az Azure Stack-képzési és minősítési lehetőségek
 
-*A következőkre vonatkozik: Azure verem integrált rendszerek*
+*A következőkre vonatkozik: Azure Stackkel integrált rendszerek*
 
-További tudnivalók az Azure-vermet, és mutassa be a Azure verem ismerete segítséget a következő képzési és minősítési lehetőségek érhetők el.
+Segít az Azure stackről megismerése és bemutatása az Azure Stack jártasságot szerezni az alábbi képzési és minősítési lehetőségek érhetők el.
 
 ## <a name="training"></a>Képzés
 
-- [Működés során 20537A: konfigurálása, és működik a Microsoft Azure verem hibrid felhő](https://www.microsoft.com/en-us/learning/course.aspx?cid=20537)
-- [edX: Azure verem Online képzési](https://aka.ms/AzureStackMOOC)
-- [Feladat szerepkörök és tanulási útvonalai](https://azure.microsoft.com/training/learning-paths/)
+- [20537A tanfolyam: Microsoft Azure Stack egy hibrid felhő működtetése és konfigurálása](https://www.microsoft.com/en-us/learning/course.aspx?cid=20537)
+- [edX: Azure Stack-Online képzés](https://aka.ms/AzureStackMOOC)
+- [Feladat szerepkörök és a képzési tervek](https://azure.microsoft.com/training/learning-paths/)
 
 ## <a name="certification"></a>Tanúsítvány
-Az Azure verem minősítései közül jelenleg fejlesztés alatt. A legújabb frissítéseinek keresése.
+
+Azure Stack-minősítésekről jelenleg fejlesztés alatt állnak. Látogasson vissza a legújabb frissítéseket.
 
 ## <a name="next-steps"></a>További lépések
 
-[Az Azure verem dokumentációja](https://docs.microsoft.com/azure/azure-stack/)
+[Azure Stack – dokumentáció](https://docs.microsoft.com/azure/azure-stack/)

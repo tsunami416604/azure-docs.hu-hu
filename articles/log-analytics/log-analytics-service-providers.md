@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/05/2018
+ms.date: 07/11/2018
 ms.author: meirm
 ms.component: na
-ms.openlocfilehash: 7e555eb2618dbebf939fe0ab2f313b88299cd2d0
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 7898af1a8d516fa74deef5614b5373f1dbd22f5a
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/11/2018
-ms.locfileid: "44346202"
+ms.locfileid: "44378602"
 ---
 # <a name="log-analytics-for-service-providers"></a>A log Analytics, a szolgáltatók számára
 A log Analytics segítségével a felügyelt szolgáltatóknak (MSP), a nagyobb vállalatok, független szoftverszállítók (ISV-k) és üzemeltetési szolgáltatók az ügyfél helyszíni vagy felhőalapú infrastruktúrában lévő kiszolgálók kezelése és figyelése. 
@@ -84,4 +84,4 @@ A központi hely megvalósításához a Log Analytics két lehetőség van:
 * Munkaterületek használatával létrehozásának automatizálása [PowerShell](log-analytics-powershell-workspace-configuration.md) 
 * Használat [riasztások](log-analytics-alerts.md) a meglévő rendszerekkel való integrációt segítik
 * Összegző jelentéseket használatával [Power bi-ban](log-analytics-powerbi.md)
-
+* Tekintse át a folyamat [konfigurálása a Log Analytics és a Power BI több CSP-ügyfeleinek figyelése](https://docs.microsoft.com/azure/cloud-solution-provider/support/monitor-multiple-customers)

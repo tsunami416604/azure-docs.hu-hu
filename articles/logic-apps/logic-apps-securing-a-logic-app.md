@@ -10,12 +10,12 @@ ms.reviewer: estfan, LADocs
 ms.assetid: 9fab1050-cfbc-4a8b-b1b3-5531bee92856
 ms.topic: article
 ms.date: 11/22/2016
-ms.openlocfilehash: fc4fdff5080e6ebe13850157e8d560a1d31e7719
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 1307b6df22c51af9710d44abb23178d65e3507aa
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43127479"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44377394"
 ---
 # <a name="secure-access-in-azure-logic-apps"></a>Biztonságos hozzáférés az Azure Logic Appsben
 
@@ -77,7 +77,7 @@ Ez a beállítás a logikai alkalmazás beállítások konfigurálhatók:
 1. Kattintson a **munkafolyamat-beállítások** menüpont alatt **beállításai**
 1. Adja meg az IP-címtartományok, fogadja el az eseményindító listája
 
-Érvényes IP-címtartománynak formátuma `192.168.1.1/255`. Ha azt szeretné, hogy a logikai alkalmazás csak akkor aktiválódjanak, mint egy beágyazott logikai alkalmazást, válassza ki a **csak más logikai alkalmazások** lehetőséget. Ez a beállítás ír egy üres tömb az erőforrás jelentése csak hívásait (szülő a logic apps) maga a szolgáltatás sikeresen aktiválódik.
+Érvényes IP-címtartománynak formátuma `192.168.1.1/32`. Ha azt szeretné, hogy a logikai alkalmazás csak akkor aktiválódjanak, mint egy beágyazott logikai alkalmazást, válassza ki a **csak más logikai alkalmazások** lehetőséget. Ez a beállítás ír egy üres tömb az erőforrás jelentése csak hívásait (szülő a logic apps) maga a szolgáltatás sikeresen aktiválódik.
 
 > [!NOTE]
 > Továbbra is futtathatja a logikai alkalmazás kérelem-eseményindítóval rendelkező a REST API-n keresztül / felügyeleti `/triggers/{triggerName}/run` IP függetlenül. Ebben a forgatókönyvben az Azure REST API-n hitelesítést igényel, és az összes esemény jelenik meg az Azure-Auditnapló. Ennek megfelelően beállított hozzáférés-vezérlési házirendek.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/07/2018
 ms.author: harijay
-ms.openlocfilehash: 196882cf4515be8afd129128402e9eaee322cb4b
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 1bb6e464b748f2558cec35a95554bb3e08b667f0
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44093583"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44378329"
 ---
 # <a name="virtual-machine-serial-console-preview"></a>Virtuális gépek soros konzolja (előzetes verzió) 
 
@@ -98,7 +98,10 @@ A soros konzol segítségével egy NMI küldeni egy Azure virtuális gépen a bi
 Windows egy összeomlási memóriakép létrehozása egy NMI kap való konfigurálásával kapcsolatos információkért lásd: [egy teljes összeomlási memóriakép-fájl vagy a kernel összeomlási memóriakép létrehozása egy NMI egy Windows-alapú rendszeren való használatával](https://support.microsoft.com/en-us/help/927069/how-to-generate-a-complete-crash-dump-file-or-a-kernel-crash-dump-file)
 
 ## <a name="disable-serial-console"></a>Tiltsa le a soros konzol
-Alapértelmezés szerint minden előfizetés rendelkezik a soros konzol hozzáférés engedélyezve van az összes virtuális gép. Soros konzol vagy az előfizetés szintjén, vagy a virtuális gép szintjén letiltható.
+Alapértelmezés szerint minden előfizetés rendelkezik a soros konzol hozzáférés engedélyezve van az összes virtuális gép. Soros konzol vagy az előfizetés szintjén, vagy a virtuális gép szintjén letiltható. 
+
+> [!Note] 
+> Annak érdekében, hogy engedélyezi vagy letiltja a soros konzol-előfizetéssel, az előfizetés írási engedéllyel kell rendelkeznie. Ez magában foglalja, de a rendszergazda vagy tulajdonos szerepkörök nem korlátozódik. Egyéni szerepkörök is rendelkezhetnek írási jogosultsággal.
 
 ### <a name="subscription-level-disable"></a>Előfizetés-szintű letiltása
 Soros konzolon keresztül szerint az egész előfizetésre letiltható a [tiltsa le a konzolon REST API-hívás](https://aka.ms/disableserialconsoleapi). Használhatja a "Kipróbálom" elérhető funkciók az API-dokumentáció oldalon letiltása és engedélyezése a soros konzol egy előfizetés. Adja meg a `subscriptionId`, az "alapértelmezett" a `default` mezőben, majd kattintson az OK gombra. Az Azure CLI-parancsok még nem érhető el, és a egy későbbi időpontban fog megérkezni. [Próbálja ki a REST API-hívást Itt](https://aka.ms/disableserialconsoleapi).
@@ -190,7 +193,6 @@ Sok továbbra is szakaszaiban az előzetes verzió a soros hozzáféréshez, hog
 
 Probléma                             |   Kezelés 
 :---------------------------------|:--------------------------------------------|
-A virtual machine scale set példány soros konzol nem választható | Előzetes verzió idején a virtuális gép méretezési csoport példányaihoz a soros konzoljához való hozzáférés nem támogatott.
 Szerezze meg, miután a kapcsolaton transzparens nem jeleníti meg a napló-parancssorban | Tekintse át ezt oldal: [Hitting adja meg a hatástalan](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md). Ez előfordulhat, hogy fordulhat elő, ha egy egyéni virtuális Gépet futtat, megerősített készülék, vagy a config LÁRVAJÁRAT adott causers Windows megfelelően csatlakozni a soros port sikertelen lesz.
 Csak az egészségügyi információk Windows virtuális Géphez való csatlakozáskor jelenik meg| Ez fog megjelenni Ha a speciális felügyeleti konzol nincs engedélyezve a Windows-lemezkép számára. Lásd: [hozzáférés soros konzol a Windows](#access-serial-console-for-windows) manuálisan engedélyezni a virtuális Gépen Windows SAC létrehozásával kapcsolatos útmutatást. További részleteket tekinthet meg [Windows egészségügyi jelek](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Windows_Health_Info.md).
 Írja be a SAC kérdezzen rá Ha engedélyezve van a kernel hibakeresés nem sikerült | A virtuális gép, és futtassa az RDP `bcdedit /debug {current} off` egy rendszergazda jogú parancssorból. Ha Ön nem használhatja az RDP lehet helyette az operációsrendszer-lemez csatolása egy másik Azure virtuális géphez és módosítani, amíg csatlakoztatva, egy lemezt a `bcdedit /store <drive letter of data disk>:\boot\bcd /debug <identifier> off`, majd felcserélheti a lemez vissza.
@@ -203,9 +205,25 @@ Egy "Tiltott" válasz fordult elő a virtuális gép rendszerindítás-diagnoszt
 
 A. Visszajelzés küldése egy problémát, a https://aka.ms/serialconsolefeedback. Másik lehetőségként kevesebb (elsődleges) visszajelzés küldése a keresztül azserialhelp@microsoft.com vagy a virtuális gép kategóriáját http://feedback.azure.com
 
-**Q. Nem tudom elérni a soros konzol, ahol is fájlt egy támogatási kérést?**
+**Q. Támogatja a soros konzol másolja és illessze be?**
 
-A. Ezt az előzetes funkciót a hatálya alá tartozó keresztül az Azure előzetes verziójú szolgáltatás feltételeit. Támogatás a legjobban a fent említett csatornákon keresztül kezeli. 
+A. Igen hajtja végre. Ctrl + Shift + C és a Ctrl + Shift + V használatával másolja és illessze be a terminálba.
+
+**Q. Ki engedélyezheti vagy letilthatja a soros konzol az előfizetésemet?**
+
+A. Annak érdekében, hogy engedélyezi vagy letiltja a soros konzol egy előfizetési szintű szintjén, az előfizetés írási engedéllyel kell rendelkeznie. Írási engedéllyel rendelkező szerepek közé tartozik, de nem kizárólagosan, a rendszergazda vagy tulajdonos szerepkörök. Egyéni szerepkörök is rendelkezhetnek írási jogosultsággal.
+
+**Q. Virtuális gép soros konzol férhet hozzá?**
+
+A. Közreműködője szintű hozzáféréssel kell rendelkeznie legalább egy virtuális géphez a virtuális gép soros konzol eléréséhez. 
+
+**Q. A soros konzol nem látható semmi, mi a teendő?**
+
+A. A rendszerkép valószínűleg hibásan konfigurált, soros hozzáféréshez. Lásd: [engedélyezése soros konzolon, az egyéni vagy régebbi rendszerképek](#Enable-Serial-Console-in-custom-or-older-images) engedélyezése a soros konzol lemezképeiben konfigurációval kapcsolatos részletekért.
+
+**Q. Soros konzolon érhető el a Virtual Machine Scale Sets?**
+
+A. A virtuális gép méretezési csoport példányaihoz a soros konzoljához való hozzáférés jelenleg nem támogatott.
 
 ## <a name="next-steps"></a>További lépések
 * A részletes útmutatót a cmd Parancsot, és a PowerShell parancsokat is használhat, a Windows SAC, kattintson a [Itt](serial-console-cmd-ps-commands.md).

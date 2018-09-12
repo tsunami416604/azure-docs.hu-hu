@@ -1,41 +1,41 @@
 ---
-title: A Chef ügyfél telepítése az Azure-portálon
-description: Megtudhatja, hogyan telepítheti és konfigurálhatja a Chef ügyfél az Azure-portálon
-keywords: Azure, a chef, a devops, a ügyfél, a telepítés, a portal
+title: A Chef-ügyfél telepítése az Azure Portalról
+description: Ismerje meg, hogyan helyezheti üzembe, és az Azure Portalról a Chef-ügyfél konfigurálása
+keywords: Azure, chef, a devops, ügyfél, telepítés, portál
 ms.service: virtual-machines-linux
 author: tomarcher
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 05/15/2018
 ms.topic: article
-ms.openlocfilehash: 52f34361d7c1f3dff47f2571a714b8be7764cc6f
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: e121cd038b8becee1e9c4c12659dbbee0696a9f1
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34260068"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44378652"
 ---
-# <a name="install-the-chef-client-from-the-azure-portal"></a>A Chef ügyfél telepítése az Azure-portálon
-Létrehozásakor, vagy egy Linux vagy a Windows virtuális gép az Azure-portálon módosítja, a Chef bővítményt a virtuális gép is hozzáadhat. Ez a cikk bemutatja, hogyan adott folyamatot használja egy új Linux virtuális gépet.
+# <a name="install-the-chef-client-from-the-azure-portal"></a>A Chef-ügyfél telepítése az Azure Portalról
+Létrehozásakor, vagy módosítása egy Linux vagy Windows virtuális gép az Azure Portalról, a Chef bővítményt a virtuális gép is hozzáadhat. Ez a cikk végigvezeti a folyamat új Linux rendszerű virtuális gép használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 - **Azure-előfizetés**: Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-- **Chef**: Ha nincs egy aktív Chef fiókja, regisztráljon egy [üzemeltetett Chef ingyenes](https://manage.chef.io/signup). Az alábbi lépések a jelen cikkben lévő utasítások követése, a következő értékek Chef fiókjából lesz szüksége: 
+- **Chef**: Ha nem rendelkezik aktív Chef-fiókkal, regisztráljon egy [ingyenes próbaverzióra, Chef üzemeltetett](https://manage.chef.io/signup). Kövesse a jelen cikkben lévő utasítások együtt, a következő értékeket a Chef fiókból lesz szüksége: 
     - organization_validation kulcs
     - RB
     - run_list
 
-## <a name="install-the-chef-extension-on-a-new-linux-virtual-machine"></a>Új Linux virtuális gépen a Chef-kiterjesztés telepítése
-Ebben a szakaszban először fogjuk az Azure-portálon a Linux-gépek létrehozásához. A folyamat során a Chef bővítmény telepítése az új virtuális gép is láthatja.
+## <a name="install-the-chef-extension-on-a-new-linux-virtual-machine"></a>Új Linux rendszerű virtuális gépen a Chef bővítmény telepítése
+Ebben a szakaszban először hozhat létre Linux rendszerű gépen fogja használni az Azure Portalon. A folyamat során is látni fogja az új virtuális gép a Chef-bővítmény telepítése.
 
-1. Keresse meg a [Azure-portálon](http://portal.azure.com).
+1. Keresse meg a [az Azure portal](http://portal.azure.com).
 
-1. A bal oldali menüben válassza ki a **virtuális gépek** lehetőséget. Ha a **virtuális gépek** , nincs lehetőség van, jelölje be **minden szolgáltatás** majd **virtuális gépek**.
+1. A bal oldali menüben válassza a **virtuális gépek** lehetőséget. Ha a **virtuális gépek** beállítás nincs jelen, jelölje be **minden szolgáltatás** majd **virtuális gépek**.
 
 1. Az a **virtuális gépek** lapon jelölje be **Hozzáadás**.
 
-    ![Adja hozzá az új virtuális gépet az Azure portálon](./media/chef-extension-portal/add-vm.png)
+    ![Adjon hozzá egy új virtuális gépet az Azure Portalon](./media/chef-extension-portal/add-vm.png)
 
 1. Az a **számítási** lapra, válassza ki a kívánt operációs rendszerrel. Ebben a bemutatóban **Ubuntu Server** van kiválasztva.
 
@@ -43,67 +43,67 @@ Ebben a szakaszban először fogjuk az Azure-portálon a Linux-gépek létrehoz�
 
     ![Egy Ubuntu virtuális gép létrehozásakor adja meg a szükséges verziót](./media/chef-extension-portal/ubuntu-server-version.png)
 
-1. Az a **Ubuntu Server 16.04 LTS** lapon jelölje be **létrehozása**.
+1. Az a **Ubuntu Server 16.04 LTS** lapon jelölje be **létrehozás**.
 
-    ![Ubuntu a termék további információkkal szolgál.](./media/chef-extension-portal/create-vm.png)
+    ![Ubuntu termékük további információkat tartalmaz.](./media/chef-extension-portal/create-vm.png)
 
 1. Az a **hozzon létre virtuális gépet** lapon jelölje be **alapjai**.
 
-1. Az a **alapjai** lapon adja meg a következő értékeket, és válassza ki **OK**.
+1. Az a **alapjai** lapot, adja meg a következő értékeket, majd **OK**.
 
-    - **Név** -adja meg az új virtuális gép nevét.
-    - **Virtuális gép lemeztípus** -adja meg **SSD** vagy **HDD** a lemez tárolási típusát. Az Azure virtuális gép lemeztípusokkal kapcsolatos további információkért lásd: a cikk [prémium szintű Storage nagy teljesítményű és a virtuális gépek felügyelt lemezek](/azure/virtual-machines/windows/premium-storage).
-    - **Felhasználónév** -adjon meg egy felhasználónevet, amely rendszergazdai jogosultságokkal a virtuális gépen engedélyezett.
-    - **Hitelesítés típusa** – Itt adhatja meg **jelszó**. Igény szerint kiválaszthatja **nyilvános SSH-kulcs**, és adja meg az SSH nyilvános kulcs értékét. Ez a bemutató (és a képernyőfelvételeken), a **jelszó** van kiválasztva.
-    - **Jelszó** és **jelszó megerősítése** -adjon meg egy jelszót a felhasználó számára.
-    - **Bejelentkezés Azure Active Directoryval** – Itt adhatja meg **letiltott**.
-    - **Előfizetés** -válassza ki a kívánt Azure-előfizetéssel, ha egynél több.
-    - **Erőforráscsoport** -adja meg az erőforráscsoport nevét.
-    - **Hely** – Itt adhatja meg **USA keleti régiója**.
+    - **Név** – adja meg az új virtuális gép nevét.
+    - **Virtuális merevlemez típusa** -vagy **SSD** vagy **HDD** tartozó tárolólemez típusának. Azure-beli virtuális gép lemeztípusokkal kapcsolatos további információkért tekintse meg a cikket [nagy teljesítményű Premium Storage és a felügyelt lemezek virtuális gépekhez](/azure/virtual-machines/windows/premium-storage).
+    - **Felhasználónév** – adja meg a virtuális gép rendszergazdai jogosultsággal rendelkező felhasználó nevét.
+    - **Hitelesítési típus** – ki **jelszó**. Lehetőség kiválasztásával **nyilvános SSH-kulcs**, és adja meg az SSH nyilvános kulcs értékét. A bemutatóhoz (és a képernyőképeket), célokra **jelszó** van kiválasztva.
+    - **Jelszó** és **jelszó megerősítése** – adjon meg egy jelszót a felhasználó számára.
+    - **Jelentkezzen be az Azure Active Directory** – ki **letiltott**.
+    - **Előfizetés** – válassza ki a kívánt Azure-előfizetéssel, ha egynél több.
+    - **Erőforráscsoport** – adja meg az erőforráscsoport nevét.
+    - **Hely** – ki **USA keleti Régiójában**.
 
-    ![Alapvető beállítások lapján egy virtuális gép létrehozása](./media/chef-extension-portal/add-vm-basics.png)
+    ![Alapvető beállítások lapon a virtuális gép létrehozása](./media/chef-extension-portal/add-vm-basics.png)
 
-1. Az a **méret kiválasztása** lapra, válassza ki a virtuális gép méretét, és válassza **válasszon**.
+1. Az a **méret kiválasztása** lapot, válassza ki a virtuális gép méretét, majd **kiválasztása**.
 
-1. Az a **beállítások** lapon, az értékek a legtöbb az előző lapon kiválasztott értékei alapján lesz kitöltve. Válassza ki **bővítmények**.
+1. Az a **beállítások** lapon, az értékek a legtöbb elkészül, az előző lapon kiválasztott értékek alapján. Válassza ki **bővítmények**.
 
-    ![Bővítmények hozzáadódnak a virtuális gépek használatával a beállítások lap](./media/chef-extension-portal/add-vm-select-extensions.png)
+    ![Bővítmények hozzáadódnak a beállítások lapon-n keresztül a virtuális gépek](./media/chef-extension-portal/add-vm-select-extensions.png)
 
-1. Az a **bővítmények** lapon jelölje be **felvenni a bővítményt**.
+1. Az a **bővítmények** lapon jelölje be **bővítmény hozzáadása**.
 
-    ![Egy bővítmény hozzáadása a virtuális gépek hozzáadása bővítmény kiválasztása](./media/chef-extension-portal/add-vm-add-extension.png)
+    ![Egy bővítmény hozzáadása egy virtuális gép hozzáadása bővítmény kiválasztása](./media/chef-extension-portal/add-vm-add-extension.png)
 
 1. Az a **új erőforrás** lapon jelölje be **Linux Chef bővítmény (1.2.3)**.
 
-    ![Chef tartozik a Linux és a Windows virtuális gépek bővítmények](./media/chef-extension-portal/select-linux-chef-extension.png)
+    ![Chef rendelkezik a virtuális gépek Linux és Windows-bővítmények](./media/chef-extension-portal/select-linux-chef-extension.png)
 
-1. Az a **Linux Chef bővítmény** lapon jelölje be **létrehozása**.
+1. Az a **Linux Chef bővítmény** lapon jelölje be **létrehozás**.
 
-1. Az a **bővítményének telepítése** lapon adja meg a következő értékeket, és válassza ki **OK**.
+1. Az a **bővítmény telepítése** lapot, adja meg a következő értékeket, majd **OK**.
 
-    - **Chef URL-címe** -adja meg a Chef URL-címe, amely a szervezet nevét tartalmazza. Használt *https://api.chef.io/organization/hessco* a bemutató a.
-    - **Chef csomópontnév** -adja meg a Chef csomópont nevét. Ez tetszőleges érték lehet.
-    - **Futtatásához** -adja meg a Futtatás Chef listáját adnak, akkor a gép. Ez lehet üres.
-    - **Érvényesítési Ügyfélnév** -adja meg a Chef érvényesítési ügyfél neve. Használt *tarcher-érvényesítő* a bemutató a.
-    - **Érvényesítési kulcs** -válassza ki az érvényesítési kulcs használható, ha a gépek rendszerindítása tartalmazó fájlt. 
-    - **Ügyfél-konfigurációs fájl** -chef-ügyfél-konfigurációs fájl kiválasztása. Ez lehet üres.
-    - **Chef ügyfélverzió** -adja meg a chef ügyfél, telepítendő verzióját. Üres, akkor telepíteni kell a legújabb verzióra. Ez lehet üres.
-    - **SSL-hitelesítési mód** -válassza **nincs** vagy **társ**. A kiválasztott *nincs* a bemutató a.
-    - **Chef környezet** -adja meg a Chef környezet ebben a csomópontban tagjának kell lennie. Ez lehet üres.
-    - **Databag titkos kulcs titkosított** -válasszon egy fájlt, a titkosított Databag ezen a számítógépen hozzáféréssel kell rendelkeznie, amely tartalmazza a titkos kulcsot. Ez lehet üres.
-    - **Chef kiszolgáló SSL-tanúsítvány** -Chef-kiszolgálóhoz rendelve SSL-tanúsítvány kiválasztása. Ez lehet üres.
+    - **Chef-kiszolgáló URL-címe** – adja meg a Chef URL-címe, amely magában foglalja a szervezet nevét, például *https://api.chef.io/organization/hessco*.
+    - **Chef csomópontnév** – adja meg a Chef csomópont nevét. Ez bármilyen érték lehet.
+    - **Futtatási listához** – adja meg, hogy a gép bekerül a Chef futtatása listáját. Ez lehet üresen hagyni.
+    - **Érvényesítési Ügyfélnév** – adja meg a Chef érvényesítési ügyfél nevét. Ha például *tarcher-érvényesítő*.
+    - **Érvényesítési kulcs** – válassza ki az érvényesítési kulcs használatos, ha a gépek rendszerindítása tartalmazó fájlt. 
+    - **Ügyfél-konfigurációs fájl** – válassza ki a konfigurációs fájl chef-ügyfélnek. Ez lehet üresen hagyni.
+    - **Chef ügyfélverzió** – adja meg a verziót, a chef-ügyfél telepítéséhez. Ez lehet üresen hagyni. Üres érték hatására a legújabb verzióra kell telepíteni. 
+    - **SSL-ellenőrzési mód** – ezek közül bármelyikre **nincs** vagy **társ**. *Nincs* szeretne a bemutatóra lett kiválasztva.
+    - **Chef környezet** – adja meg a Chef környezet ezen a csomóponton, tagjának kell lennie. Ez lehet üresen hagyni.
+    - **Titkosított titok Databag** – válasszon ki egy fájlt, a titkosított Databag ezen a számítógépen hozzáféréssel kell rendelkeznie, amely tartalmazza a titkos kulcsot. Ez lehet üresen hagyni.
+    - **Chef-kiszolgáló SSL-tanúsítvány** – válassza ki a Chef kiszolgálóhoz rendelt SSL-tanúsítványt. Ez lehet üresen hagyni.
 
-    ![A Chef kiszolgáló telepítése egy Linux virtuális gépen](./media/chef-extension-portal/install-extension.png)
+    ![A Chef-kiszolgáló telepítése egy Linux rendszerű virtuális gépre](./media/chef-extension-portal/install-extension.png)
 
 1. Amikor visszatér a **bővítmények** lapon jelölje be **OK**.
 
 1. Amikor visszatér a **beállítások** lapon jelölje be **OK**.
 
-1. Amikor vissza a **létrehozása** (a beállításokat, és a megadott összegzését jelölő) lapon ellenőrizze az adatokat, valamint a **használati feltételek**, és válassza ki **létrehozása**.
+1. Amikor visszatér a **létrehozás** lap (ezt választotta, és a megadott beállítások összesítését jelölő), ellenőrizze az adatokat, valamint a **használati feltételeket tartalmazó fájl**, és válassza ki **létrehozás**.
 
-Ha befejeződött a folyamat létrehozásának és központi telepítése a virtuális gép Chef kiterjesztésű, értesítést azt jelzi, a sikeres vagy sikertelen volt, a művelet. Továbbá az erőforrás lap az új virtuális gép automatikusan megnyílik az Azure-portálon van a létrehozása után.
+A folyamat létrehozásának és a Chef kiterjesztésű a virtuális gép üzembe helyezésének befejeződése után egy értesítés azt jelzi, hogy sikeres vagy sikertelen a művelet. Emellett az új virtuális gép erőforrás-oldalon automatikusan megnyílik az Azure Portalon, a létrehozása után.
 
-![A Chef kiszolgáló telepítése egy Linux virtuális gépen](./media/chef-extension-portal/resource-created.png)
+![A Chef-kiszolgáló telepítése egy Linux rendszerű virtuális gépre](./media/chef-extension-portal/resource-created.png)
 
 ## <a name="next-steps"></a>További lépések
-* [Windows virtuális gép létrehozása Azure-ban Chef](/azure/virtual-machines/windows/chef-automation)
+* [Windows virtuális gép létrehozása Chef használatával Azure-ban](/azure/virtual-machines/windows/chef-automation)

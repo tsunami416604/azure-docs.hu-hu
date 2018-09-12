@@ -10,15 +10,15 @@ ms.component: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: befb4cc075841d45cae769b5ddf924434e65eff3
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 3500754c7e9cb14ea86e9c0e562ec5f98fc1fc94
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43307247"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44377768"
 ---
 # <a name="troubleshooting-azure-sql-data-warehouse"></a>Hibaelhárítás az Azure SQL Data warehouse-bA
-Ez a témakör a gyakori hibaelhárítási kérdések listája.
+Ez a cikk a gyakori hibaelhárítási kérdések listája.
 
 ## <a name="connecting"></a>Csatlakozás
 | Probléma | Megoldás: |
@@ -27,7 +27,7 @@ Ez a témakör a gyakori hibaelhárítási kérdések listája.
 | Az egyszerű "MyUserName" kiszolgálója nem érhetik el a "master" adatbázis aktuális biztonsági környezetében. Nem lehet megnyitni a felhasználói alapértelmezett adatbázist. A bejelentkezés nem sikerült. "MyUserName" felhasználó bejelentkezése sikertelen volt. (A Microsoft SQL Server, a hiba: 916) |Ez a hiba akkor fordul elő, amikor egy AAD-felhasználót úgy próbál csatlakozni a master adatbázisban, de nem rendelkezik egy felhasználót a főadatbázisban.  A probléma, vagy adja meg az SQL Data Warehouse kívánt kapcsolat időpontban csatlakozni, vagy adja hozzá a felhasználót a master adatbázishoz.  Lásd: [biztonsági áttekintése] [ Security overview] további részleteivel. |
 | CTAIP hiba |Ez a hiba akkor fordulhat elő, egy bejelentkezés létrehozása után az SQL server főadatbázisában, de nem az SQL Data Warehouse-adatbázisban.  Ha ezt a hibát tapasztal, vessen egy pillantást a [biztonsági áttekintése] [ Security overview] cikk.  Ez a cikk bemutatja, hogyan hozhat létre a bejelentkezést és felhasználót a master, majd egy felhasználó létrehozása az SQL Data Warehouse-adatbázis. |
 | Tűzfal által blokkolva |Az Azure SQL Database által védett kiszolgáló és az adatbázis adatbázisszintű tűzfalakra, győződjön meg arról, hogy csak ismert IP-címek rendelkezik hozzáféréssel egy adatbázishoz. A tűzfalak biztonságosak alapértelmezett, ami azt jelenti, hogy explicit módon engedélyeznie kell, és IP-címet vagy címtartományt, mielőtt az csatlakozna.  A tűzfal hozzáférés konfigurálásához kövesse [kiszolgálói tűzfal-hozzáférés konfigurálása az ügyfél IP-] [ Configure server firewall access for your client IP] a a [utasításokat kiépítés] [Provisioning instructions]. |
-| Eszköz vagy az illesztőprogram nem tud csatlakozni |Az SQL Data Warehouse használatát javasolja [SSMS][SSMS], [SSDT a Visual Studio][SSDT for Visual Studio], vagy [sqlcmd] [ sqlcmd] az adatok lekérdezéséhez. Az illesztőprogramok és csatlakozás az SQL Data Warehouse további részletekért lásd: [illesztőprogramok az Azure SQL Data Warehouse] [ Drivers for Azure SQL Data Warehouse] és [csatlakozhat az Azure SQL Data Warehouse] [ Connect to Azure SQL Data Warehouse] cikkeket. |
+| Eszköz vagy az illesztőprogram nem tud csatlakozni |Az SQL Data Warehouse használatát javasolja [SSMS][SSMS], [SSDT a Visual Studio][SSDT for Visual Studio], vagy [sqlcmd] [ sqlcmd] az adatok lekérdezéséhez. Az illesztőprogramok és csatlakozás az SQL Data Warehouse további információkért lásd: [illesztőprogramok az Azure SQL Data Warehouse] [ Drivers for Azure SQL Data Warehouse] és [csatlakozhat az Azure SQL Data Warehouse] [ Connect to Azure SQL Data Warehouse] cikkeket. |
 
 ## <a name="tools"></a>Eszközök
 | Probléma | Megoldás: |
@@ -56,7 +56,7 @@ Ez a témakör a gyakori hibaelhárítási kérdések listája.
 ## <a name="polybase"></a>PolyBase
 | Probléma | Megoldás: |
 |:--- |:--- |
-| Betöltés nagy sorokat tartalmazó miatt meghiúsul |Nagy méretű sor támogatása jelenleg a Polybase nem érhető el.  Ez azt jelenti, hogy ha a tábla tartalmaz, VARCHAR(MAX), NVARCHAR(MAX) vagy VARBINARY(MAX), külső táblák nem használhatók az adatok betöltéséhez.  Nagy sorokat tartalmazó betöltése jelenleg csak a támogatott – az Azure Data Factory (a BCP használatával), az Azure Stream Analytics, SSIS, BCP vagy a kapcsolatot az SQLBulkCopy .NET-osztályt. PolyBase támogatása nagy sorokat a rendszer felveszi egy későbbi kiadásban. |
+| Betöltés nagy sorokat tartalmazó miatt meghiúsul |Nagy méretű sor támogatása jelenleg a Polybase nem érhető el.  Ez azt jelenti, hogy ha a tábla tartalmaz, VARCHAR(MAX), NVARCHAR(MAX) vagy VARBINARY(MAX), külső táblák nem használhatók az adatok betöltéséhez.  Nagy sorokat tartalmazó betöltése jelenleg csak az Azure Data Factory (a BCP használatával), az Azure Stream Analytics, SSIS, BCP vagy a kapcsolatot az SQLBulkCopy .NET-osztály támogatta. PolyBase támogatása nagy sorokat a rendszer felveszi egy későbbi kiadásban. |
 | MAXIMÁLIS adattípusú tábla BCP betöltése sikertelen |Van egy ismert probléma, amely megköveteli, hogy az VARCHAR(MAX), NVARCHAR(MAX) vagy VARBINARY(MAX) kerüljenek-e a tábla egyes forgatókönyvekben végén.  Próbálja ki a maximális oszlopok áthelyezése a táblázat végére. |
 
 ## <a name="differences-from-sql-database"></a>Különbségek az SQL Database-ből
@@ -102,7 +102,7 @@ További segítségre van szüksége a megoldás a problémára Íme néhány m�
 [Unsupported data types]: sql-data-warehouse-tables-data-types.md#unsupported-data-types
 [Overview]: sql-data-warehouse-tables-overview.md
 [Data types]: sql-data-warehouse-tables-data-types.md
-[Distribute]:/sql-data-warehouse-tables-distribute.md
+[Distribute]: sql-data-warehouse-tables-distribute.md
 [Index]: sql-data-warehouse-tables-index.md
 [Partition]: sql-data-warehouse-tables-partition.md
 [Statistics]: sql-data-warehouse-tables-statistics.md

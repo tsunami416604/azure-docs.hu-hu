@@ -6,14 +6,14 @@ author: dlepow
 manager: jeconnoc
 ms.service: batch
 ms.topic: article
-ms.date: 08/23/2018
+ms.date: 09/07/2018
 ms.author: danlep
-ms.openlocfilehash: 0ef3cc373b3b87bbd1dde5682fbc076e6b77d6a0
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: e1d6f2d6181e70fde75907191664dcf6cd0b7252
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43698383"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391759"
 ---
 # <a name="monitor-batch-solutions-by-counting-tasks-and-nodes-by-state"></a>Feladatok és az állapot szerint a csomópontok számolását Batch-megoldások monitorozása
 
@@ -53,11 +53,9 @@ Console.WriteLine("Failed task count: {0}", taskCounts.Failed);
 
 REST esetében hasonló mintát és más támogatott nyelv segítségével feladat számát egy feladat lekérése. 
 
-### <a name="counts-for-large-numbers-of-tasks"></a>Feladatok nagy számú darabszáma
-
-A feladat száma beolvasása művelettel adja vissza feladatállapotok számát a rendszer egy időben. Ha a feladatnál feladatok nagy számú, az első feladat száma által visszaadott számok késhet a tényleges feladatállapotok által akár néhány másodpercig. A Batch biztosítja a végleges konzisztencia között Counts lekérése tevékenység eredményeit és a tényleges feladatállapotok (amely lekérdezheti, ha a lista feladatok API-n keresztül). Azonban ha a feladatnál feladatok nagyon nagy számú (> 200 000), azt javasoljuk, hogy a lista feladatok API-t használja és a egy [szűrt lekérdezési](batch-efficient-list-queries.md) helyette, amely további naprakész információkat biztosít. 
-
-Batch szolgáltatás API-verziók előtt 2018-08-01.7.0 is visszaad egy `validationStatus` tulajdonság lekérése tevékenység számolja a válaszban. Ez a tulajdonság azt jelzi, hogy Batch véve az államok jelenteni a lista feladatok API-konzisztenciát száma az állapot. Érték `validated` csak jelzi, hogy a Batch konzisztencia-ellenőrzésének legalább egyszer a feladathoz. Értékét a `validationStatus` tulajdonság nem látható, hogy a számlálás által visszaadott első számolja meg a feladat jelenleg naprakészek.
+> [!NOTE]
+> Batch szolgáltatás API-verziók előtt 2018-08-01.7.0 is visszaad egy `validationStatus` tulajdonság lekérése tevékenység számolja a válaszban. Ez a tulajdonság azt jelzi, hogy Batch véve az államok jelenteni a lista feladatok API-konzisztenciát száma az állapot. Érték `validated` csak jelzi, hogy a Batch konzisztencia-ellenőrzésének legalább egyszer a feladathoz. Értékét a `validationStatus` tulajdonság nem látható, hogy a számlálás által visszaadott első számolja meg a feladat jelenleg naprakészek.
+>
 
 ## <a name="node-state-counts"></a>Csomópont állapota száma
 

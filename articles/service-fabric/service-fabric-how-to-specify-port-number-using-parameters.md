@@ -1,6 +1,6 @@
 ---
-title: A paraméterek az Azure Service Fabric szolgáltatás portszámát megadása |} Microsoft Docs
-description: Bemutatja, hogyan paraméterek használatával adja meg a portot, az alkalmazás a Service Fabric
+title: A port számát, a paraméterek használatával az Azure Service Fabric szolgáltatás megadása |} A Microsoft Docs
+description: Bemutatja, hogyan paraméterek használatával adja meg a portot, az alkalmazás a Service Fabricben
 documentationcenter: .net
 author: mikkelhegn
 manager: markfuss
@@ -12,28 +12,28 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/06/2017
 ms.author: mikhegn
-ms.openlocfilehash: 06cfb375c6c18082a0d0316cfcb742a7779fc8a8
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: d69e02126564388bf045693b9960e6e574307641
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34206378"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391334"
 ---
 # <a name="how-to-specify-the-port-number-of-a-service-using-parameters-in-service-fabric"></a>A port számát, a paraméterek használatával a Service Fabric szolgáltatás megadása
 
-Ez a cikk bemutatja, hogyan adja meg a portszámot, a paraméterek használatával a Service Fabric szolgáltatás Visual Studio használatával.
+Ez a cikk bemutatja, hogyan adható meg a portot a paraméterek használatával a Service Fabric szolgáltatás Visual Studio használatával.
 
-## <a name="procedure-for-specifying-the-port-number-of-a-service-using-parameters"></a>Az eljárás megadásának paraméterek szolgáltatás portjának száma
+## <a name="procedure-for-specifying-the-port-number-of-a-service-using-parameters"></a>Adja meg a port számát, a paraméterek használatával szolgáltatás eljárását
 
-Ebben a példában az asp.net core webes API-t egy paraméter segítségével állítsa be a port számát.
+Ebben a példában az asp.net core webes API-t egy paraméter használatával állítsa be a port számát.
 
-1. Nyissa meg a Visual Studio, és hozzon létre egy új Service Fabric-alkalmazás.
-1. Válassza ki az állapot nélküli ASP.NET Core sablont.
-1. Válassza a webes API-t.
-1. Nyissa meg a ServiceManifest.xml fájlt.
-1. Megjegyzés: a végpont, a szolgáltatás számára megadott név. Az alapértelmezett szint a `ServiceEndpoint`.
-1. Nyissa meg a ApplicationManifest.xml fájlt
-1. Az a `ServiceManifestImport` elem, adjon hozzá egy új `RessourceOverrides` elem a végpont a ServiceManifest.xml fájlban hivatkozást.
+1. Nyissa meg a Visual Studiót, és a egy új Service Fabric-alkalmazás létrehozása.
+1. Az állapot nélküli ASP.NET Core-sablon kiválasztása.
+1. Válassza ki a webes API-t.
+1. Nyissa meg az objektumhoz a ServiceManifest.xml fájlban.
+1. Megjegyzés: az a végpont nevét, a szolgáltatás számára megadott. Az alapértelmezett szint a `ServiceEndpoint`.
+1. Nyissa meg az ApplicationManifest.xml fájl
+1. Az a `ServiceManifestImport` elem, vegyen fel egy új `RessourceOverrides` elemet egy hivatkozást a végpont-objektumhoz a ServiceManifest.xml fájlban.
 
     ```xml
       <ServiceManifestImport>
@@ -47,7 +47,7 @@ Ebben a példában az asp.net core webes API-t egy paraméter segítségével á
       </ServiceManifestImport>
     ```
 
-1. Az a `Endpoint` elem, most felülbírálhatja azok az attribútumok egy paraméterrel. A jelen példában adja meg `Port` , majd állítsa be a kapcsos zárójeleket – például használatával paraméter neve `[MyWebAPI_PortNumber]`
+1. Az a `Endpoint` elem, most felülbírálhatja egy paraméter használatával bármely attribútum. Ebben a példában adja meg `Port` , illetve beállíthatja a szögletes zárójelek – például használatával paraméter neve `[MyWebAPI_PortNumber]`
 
     ```xml
       <ServiceManifestImport>
@@ -61,7 +61,7 @@ Ebben a példában az asp.net core webes API-t egy paraméter segítségével á
       </ServiceManifestImport>
     ```
 
-1. Továbbra is a ApplicationManifest.xml fájlban, akkor adja meg a paraméter a `Parameters` elem
+1. Továbbra is az ApplicationManifest.xml fájlt, majd adja meg a paramétert a `Parameters` elem
 
     ```xml
       <Parameters>
@@ -69,7 +69,7 @@ Ebben a példában az asp.net core webes API-t egy paraméter segítségével á
       </Parameters>
     ```
 
-1. És adja meg a `DefaultValue`
+1. Adja meg, és egy `DefaultValue`
 
     ```xml
       <Parameters>
@@ -77,18 +77,18 @@ Ebben a példában az asp.net core webes API-t egy paraméter segítségével á
       </Parameters>
     ```
 
-1. Nyissa meg a ApplicationParameters mappát és a `Cloud.xml` fájl
-1. Távoli fürtre közzétételekor használt egy másik portra megadásához adja hozzá a paramétert portszámmal ehhez a fájlhoz.
+1. Nyissa meg a ApplicationParameters mappát, és a `Cloud.xml` fájl
+1. Adjon meg egy másik portot egy távoli fürtön való közzétételéhez használt, adja hozzá a paraméter portszámmal ehhez a fájlhoz.
 
     ```xml
       <Parameters>
-        <Parameter Name="MyWebAPI_PortNumber" DefaultValue="80" />
+        <Parameter Name="MyWebAPI_PortNumber" Value="80" />
       </Parameters>
     ```
 
-A Visual Studio használatával a Cloud.xml az alkalmazás közzétételéhez közzétételi profil, ha a szolgáltatás 80-as port használatára van konfigurálva. Az alkalmazás központi telepítése a MyWebAPI_PortNumber paraméter megadása nélkül, ha a szolgáltatás a 8080-as portot használ.
+Ha az alkalmazás a Visual Studio használatával a Cloud.xml közzétételéhez közzétételi profil, a szolgáltatás 80-as port használatára van konfigurálva. Az alkalmazás üzembe helyezése a MyWebAPI_PortNumber paraméter megadása nélkül, ha a szolgáltatás a 8080-as portot használja.
 
 ## <a name="next-steps"></a>További lépések
-Ebben a cikkben ismertetett alapfogalmakat némelyike kapcsolatos további tudnivalókért tekintse meg a [több környezetek cikkek alkalmazásokat kezeléséhez](service-fabric-manage-multiple-environment-app-configuration.md).
+Az ebben a cikkben ismertetett alapfogalmak némelyike kapcsolatos további információkért lásd: a [alkalmazások több cikket is környezetek kezelése](service-fabric-manage-multiple-environment-app-configuration.md).
 
-Más elérhető a Visual Studio alkalmazás-felügyeleti képességekkel kapcsolatos információkért lásd: [kezelése a Service Fabric-alkalmazások, a Visual Studio](service-fabric-manage-application-in-visual-studio.md).
+Egyéb elérhető a Visual Studio alkalmazás-felügyeleti képességekkel kapcsolatos információkért lásd: [kezelése a Service Fabric-alkalmazásokat a Visual Studióban](service-fabric-manage-application-in-visual-studio.md).

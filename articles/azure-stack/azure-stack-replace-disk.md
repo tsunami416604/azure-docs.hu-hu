@@ -1,6 +1,6 @@
 ---
-title: Cserélje le a fizikai lemez Azure verem |} Microsoft Docs
-description: Azure-készletben a fizikai lemez cseréje folyamatának ismertetése.
+title: Cserélje le egy fizikai lemezt az Azure Stackben |} A Microsoft Docs
+description: Az Azure Stack fizikai lemez cseréje folyamatának ismertetése.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -12,48 +12,48 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/30/2018
+ms.date: 09/10/2018
 ms.author: mabrigg
-ms.openlocfilehash: f168c005c729ae75a5369b80b3dc5eab03ee0243
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 7ce501be5458282273e51a5b2bc18482592d2333
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30311321"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44376952"
 ---
-# <a name="replace-a-physical-disk-in-azure-stack"></a>Egy Azure verem fizikai lemezének cseréje
+# <a name="replace-a-physical-disk-in-azure-stack"></a>Az Azure Stack fizikai lemez cseréje
 
-*A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
+*A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
 
-Ez a cikk ismerteti az általános folyamat egy Azure verem fizikai lemezének cseréje. Ha egy fizikai lemez meghibásodik, akkor cserélje le a lehető leghamarabb.
+Ez a cikk ismerteti az Azure Stack fizikai lemez cseréje általános folyamata. Ha a fizikai lemez meghibásodik, cserélje le a lehető legrövidebb időn belül.
 
-Ez az eljárás használható integrált rendszerek, valamint a közbeni-cserélhető lemezeken rendelkező development kit központi telepítések.
+Ezt az eljárást követve integrált rendszerek, valamint development kit központi telepítésekhez, amelyek gyakran használt adatok rétegére – cserélhető lemezekkel rendelkeznek.
 
-Tényleges lemezcsere lépései eltérőek lesznek a számítógépgyártó (OEM) hardvergyártójához alapján. A rendszer vonatkozó részletes lépéseket a gyártója által biztosított mező cserélhető Cisco egységet (FRU) dokumentációjában talál. 
+Tényleges lemezcsere lépései eltérőek lesznek a számítógépgyártó (OEM) hardver szállítójával alapján. Konkrétan a rendszer a részletes lépéseket a gyártója által biztosított mező telepen cserélhető egység (FRU) dokumentációjában talál. 
 
 ## <a name="review-disk-alert-information"></a>Lemez riasztási információk áttekintése
-Ha egy lemez meghibásodik, akkor figyelmeztetést küld, amely közli, hogy kapcsolat megszakadt a fizikai lemezen. 
+Ha egy lemez meghibásodik, kap egy riasztást, mely arra kéri, hogy kapcsolat megszakadt-e egy fizikai lemezt. 
 
- ![Riasztás megjelenítése kapcsolat megszakadt a fizikai lemez](media/azure-stack-replace-disk/DiskAlert.png)
+ ![Riasztás megjelenítése megszakad a fizikai lemez](media/azure-stack-replace-disk/DiskAlert.png)
 
-Megnyitja a riasztás, ha a riasztás leírásában a skálázási egység csomópont, és le kell cserélni a lemez fizikai tárolóhely pontos helyét. További Azure verem segítségével azonosíthatja a hibás lemezen LED kijelző képességek segítségével.
+Megnyitja a riasztás, ha a riasztás leírása tartalmazza a skálázási egység csomópont és a lemezre, le kell cserélnie fizikai tárolóhely pontos helyét. Az Azure Stack további segít azonosítani a meghibásodott lemezt LED kijelző képességek segítségével.
 
- ## <a name="replace-the-disk"></a>A rendszerlemez cseréje
+ ## <a name="replace-the-disk"></a>Cserélje le a lemezt
 
-Kövesse a OEM hardver gyártója által biztosított FRU tényleges lemezcsere utasításokat.
+Utasítások a OEM hardver szállítójával FRU tényleges lemezt kell cserélni.
 
 > [!note]
-> Cserélje le a lemezeket a skálázási egység egy csomópont egyszerre. Várjon, amíg véget ér, csak a következő méretezési egység csomópontba helyezze át a virtuális lemezek javítási feladat
+> Cserélje le a lemezeket egy skálázási egység csomópont egyszerre. Várjon, amíg a virtuális lemez helyreállítási feladat befejeződését, mielőtt továbblép a következő skálázási egység csomópont
 
-Letilthatja az egy nem támogatott lemezt egy integrált rendszerben, a rendszer blokkolja a lemezek, a szállító által nem támogatott. Nem támogatott lemez használata kísérli meg, ha új riasztás tájékoztat, hogy az egy lemezt egy nem támogatott modell vagy a belső vezérlőprogram miatt karanténba-e.
+Letilthatja az egy nem támogatott lemez egy integrált rendszer, a rendszer blokkolja a lemezek, a szállító által nem támogatott. Meg nem támogatott lemez használata, ha egy új riasztás kiderül, hogy, hogy az egy lemezt egy nem támogatott modell vagy a belső vezérlőprogram miatt karanténba-e.
 
-A lemezt cserél ki, Azure verem automatikusan felderíti az új lemezt, és a virtuális lemezek javítási folyamat elindul.  
+A lemezt cserél ki, az Azure Stack automatikusan felderíti az új lemezt, és elindítja a Virtuálislemez-javítási folyamatot.  
  
- ## <a name="check-the-status-of-virtual-disk-repair"></a>Tekintse meg a virtuális lemezek javítása
+ ## <a name="check-the-status-of-virtual-disk-repair"></a>A Virtuálislemez-javítási állapot ellenőrzése
  
- Miután a lemezt cserél ki, a virtuális lemez állapot figyelése, és javítsa a feladat előrehaladását a kiemelt végpont segítségével. Bármely olyan számítógépről, amely rendelkezik hálózati kapcsolattal a kiemelt végpont kövesse az alábbi lépéseket.
+ Követően a lemezt cserél ki, a virtuális lemez állapot figyelése, és javítsa ki a feladat állapotát a rendszerjogosultságú végpont használatával. Kövesse az alábbi lépéseket bármely olyan számítógépről, amelyen a kiemelt végponthoz való hálózati kapcsolatot.
 
-1. Nyisson meg egy Windows PowerShell-munkamenetet, és a kiemelt végponthoz kapcsolódni.
+1. Nyisson meg egy Windows PowerShell-munkamenetet, és a kiemelt végponthoz kapcsolódjon.
     ````PowerShell
         $cred = Get-Credential
         Enter-PSSession -ComputerName <IP_address_of_ERCS>`
@@ -66,7 +66,7 @@ A lemezt cserél ki, Azure verem automatikusan felderíti az új lemezt, és a v
     ````
    ![PowerShell Get-VirtualDisk parancs kimenete](media/azure-stack-replace-disk/GetVirtualDiskOutput.png)
 
-3. Futtassa a jelenlegi tárolási feladat állapotának megtekintéséhez a következő parancsot:
+3. Futtassa a storage-feladat aktuális állapotának megtekintéséhez a következő parancsot:
     ```PowerShell
         Get-VirtualDisk -CimSession s-cluster | Get-StorageJob
     ````
@@ -74,7 +74,7 @@ A lemezt cserél ki, Azure verem automatikusan felderíti az új lemezt, és a v
 
 ## <a name="troubleshoot-virtual-disk-repair"></a>Virtuális lemezek javítási hibaelhárítása
 
-Ha a virtuális lemezek javítása feladat jelenik meg lefagyott, a következő parancsot a feladat újraindításához:
+Ha a virtuális lemezek javítása feladat jelenik meg elakadt, indítsa újra a feladatot, a következő parancsot:
   ````PowerShell
         Get-VirtualDisk -CimSession s-cluster | Repair-VirtualDisk
   ```` 

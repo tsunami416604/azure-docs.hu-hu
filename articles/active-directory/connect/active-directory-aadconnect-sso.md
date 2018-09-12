@@ -12,21 +12,21 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/26/2018
+ms.date: 09/10/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 41e75fcfd0b88d5c37bb8dd6fcc16b1767b34dba
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: bc3b5cfc106fdb90e99fb918113f4f371f928b26
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39285357"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44377955"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Az Azure Active Directory zökkenőmentes egyszeri bejelentkezés
 
 ## <a name="what-is-azure-active-directory-seamless-single-sign-on"></a>Mi az Azure Active Directory zökkenőmentes egyszeri bejelentkezés?
 
-Az Azure Active Directory zökkenőmentes egyszeri bejelentkezés (Azure AD közvetlen egyszeri bejelentkezés) automatikusan aláírja a felhasználók mikor legyenek a vállalati eszközeiket a vállalati hálózathoz csatlakozik. Ha engedélyezve van, a felhasználók nem kell írja be az jelszavait, hogy jelentkezzen be Azure ad-ben, és általában, még akkor is írja a felhasználónevek. Ez a szolgáltatás felhőalapú alkalmazásait is egyszerű hozzáférést biztosít a felhasználók anélkül, hogy bármilyen további helyszíni összetevők.
+Az Azure Active Directory közvetlen egyszeri bejelentkezése (Azure AD közvetlen SSO) automatikusan bejelentkezteti a felhasználókat, ha azok a vállalati hálózatra csatlakozó vállalati eszközeiket használják. Ha engedélyezve van, a felhasználók nem kell írja be az jelszavait, hogy jelentkezzen be Azure ad-ben, és általában, még akkor is írja a felhasználónevek. A szolgáltatás használatával a felhasználók könnyen elérhetik a felhőalapú alkalmazásokat anélkül, hogy ehhez további helyszíni összetevőkre lenne szükség.
 
 >[!VIDEO https://www.youtube.com/embed/PyeAC85Gm7w]
 
@@ -62,13 +62,15 @@ Közvetlen egyszeri bejelentkezés kombinálva, vagy a [Jelszókivonat-szinkroni
 
 | OS\Browser |Internet Explorer|Edge|Google Chrome|Mozilla Firefox|Safari|
 | --- | --- |--- | --- | --- | -- 
-|Windows 10|Igen|Nem|Igen|igen\*|–
-|Windows 8.1|Igen|–|Igen|igen\*|–
-|Windows 8|Igen|–|Igen|igen\*|–
-|Windows 7|Igen|–|Igen|igen\*|–
-|Mac OS X|–|–|igen\*|igen\*|igen\*
+|Windows 10|igen\*|Nem|Igen|igen\*\*|–
+|Windows 8.1|igen\*|–|Igen|igen\*\*|–
+|Windows 8|igen\*|–|Igen|igen\*\*|–
+|Windows 7|igen\*|–|Igen|igen\*\*|–
+|Mac OS X|–|–|igen\*\*|igen\*\*|igen\*
 
-\*Szükséges [további konfigurációs](active-directory-aadconnect-sso-quick-start.md#browser-considerations)
+\*Igényli az Internet Explorer verzióinak 10-es vagy újabb
+
+\*\*Szükséges [további konfigurációs](active-directory-aadconnect-sso-quick-start.md#browser-considerations)
 
 >[!NOTE]
 >A Windows 10 esetén ajánlott használni [az Azure AD Join](../active-directory-azureadjoin-overview.md) az optimális egyszeri bejelentkezést az Azure AD számára.

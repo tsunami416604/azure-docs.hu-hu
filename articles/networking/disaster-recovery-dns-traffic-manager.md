@@ -1,6 +1,6 @@
 ---
-title: Azure DNS-ben és a Traffic Manager vész-helyreállítási |} Microsoft Docs
-description: Az Azure DNS-ben és a Traffic Manager vész-helyreállítási megoldások áttekintése.
+title: Az Azure DNS-ben és a Traffic Manager vész-helyreállítási |} A Microsoft Docs
+description: A vészhelyreállítási megoldások az Azure DNS-ben és a Traffic Manager áttekintése.
 services: dns
 documentationcenter: na
 author: KumudD
@@ -15,96 +15,96 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/08/2018
 ms.author: kumud
-ms.openlocfilehash: d608378f9b3ff3179f9e37ef13f88c65a645d018
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: ce3e8f31c7fee6afdeabf931485a49934e98f81b
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37112986"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391351"
 ---
 # <a name="disaster-recovery-using-azure-dns-and-traffic-manager"></a>Vészhelyreállítás az Azure DNS-sel és a Traffic Managerrel
 
-Végezze el az alkalmazás funkciói súlyos adatvesztést a vész-helyreállítási összpontosít. Ahhoz, hogy válassza ki a vész-helyreállítási megoldást, üzleti és informatikai tulajdonosok először meg kell határoznia szolgáltatási szükséges során katasztrófa, például - nem érhető el, részben elérhető csökkentett vagy késleltetett rendelkezésre állását, vagy teljesen érhető el.
-A legtöbb vállalati ügyfelek választ egy alkalmazás vagy infrastruktúra szintű feladatátvételi szembeni hibatűrést több területi architektúrát. Az ügyfelek több megközelítés közül választhatja ki a kérelem kitöltése feladatátvételi és a redundáns architektúra keresztül magas rendelkezésre állás elérése érdekében. Íme néhány a népszerű megközelítések közül:
+Az alkalmazás funkciói súlyos adatvesztést helyreállva vész-helyreállítási összpontosít. Annak érdekében, hogy a vész-helyreállítási megoldást válassza, üzleti és technológiai tulajdonosok először meg kell határoznia a szükséges funkciót egy katasztrófa során például – nem érhető el, korlátozott funkciókkal, vagy a késleltetett rendelkezésre állását, részben elérhető szintjét, vagy teljes körűen elérhető.
+A legtöbb vállalati ügyfelek számára az adott alkalmazás vagy infrastruktúra szolgáltatásszint feladatátvételi szembeni ellenálló-képesség a többrégiós architektúrák választja. Ügyfelek feladatátvételi és redundáns architektúra használatával magas rendelkezésre állás elérése érdekében a tanúsítványmegújítási több megközelítés közül választhatja ki. Íme néhány a népszerű megközelítés:
 
-- **Aktív-passzív a meleg készenléti**: feladatátvételi ebben a megoldásban a virtuális gépek és egyéb készülékek, hogy a készenléti régióban fut csak nem aktív feladatátvételi szükség van. Azonban az éles környezetben replikálja a rendszer biztonsági mentést, a Virtuálisgép-rendszerképek vagy a Resource Manager-sablonok, hogy egy másik régióban formájában. A feladatátvételi mechanizmus költséghatékony, de egy befejezheti a feladatátvételt elvégzésére hosszabb időt vesz igénybe.
+- **Aktív-passzív hidegtartalékkal**: a feladatátvétel megoldásban a virtuális gépek és a készenléti régióban futó egyéb készülékek nem aktívak mindaddig, amíg a feladatátvételhez szükség van. Azonban az éles környezet replikálja a rendszer a biztonsági mentések, a Virtuálisgép-rendszerképek vagy a Resource Manager-sablonok, egy másik régióba. Ez a feladatátvételi mechanizmus költséghatékony, de vállalja a feladatátvétel befejezése hosszabb időt vesz igénybe.
  
-    ![A meleg készenléti állapotban lévő aktív/passzív](./media/disaster-recovery-dns-traffic-manager/active-passive-with-cold-standby.png)
+    ![Aktív/passzív hidegtartalékkal](./media/disaster-recovery-dns-traffic-manager/active-passive-with-cold-standby.png)
     
-    *. Ábra – aktív/passzív meleg készenléti vész helyreállítási konfiguráció*
+    *. Ábra – a meleg készenléti vész-helyreállítási konfiguráció aktív/passzív*
 
-- **A próbaüzem világos aktív/passzív**: feladatátvételi ebben a megoldásban a készenléti kiszolgálói környezet kialakítása minimális konfigurációval. A telepítő csak a futó csak minimális és a kritikus meghatározott alkalmazások támogatásához szükséges szolgáltatásokat tartalmaz. Natív formájában ebben a forgatókönyvben csak minimális funkciók hajtható végre, de is növelheti és elindítanak érvénybe az üzemi terhelés tömeges, ha feladatátvétel kiegészítő szolgáltatásokat.
+- **A jelzőlámpa aktív/passzív**: a feladatátvétel megoldásban a készenléti környezet be van állítva egy minimális konfigurációval. A telepítő csak a futó csak egy minimális igényű és kritikus fontosságú alkalmazások készlete támogatásához szükséges szolgáltatásokat tartalmaz. A natív formájában ebben a forgatókönyvben csak minimális funkciók végrehajtása, de képes vertikális felskálázás és gyemekfolyamatként létrehozni a következő további szolgáltatások esetén a feladatátvétel történik, hajtsa végre a éles terhelés tömeges.
     
-    ![Aktív/passzív a próbaüzem világos](./media/disaster-recovery-dns-traffic-manager/active-passive-with-pilot-light.png)
+    ![A jelzőlámpa aktív/passzív](./media/disaster-recovery-dns-traffic-manager/active-passive-with-pilot-light.png)
     
-    *Ábra: Aktív/passzív próbaüzem világos vész helyreállítási konfiguráció*
+    *. Ábra: A vészhelyreállítási konfigurációban jelzőlámpa aktív/passzív*
 
-- **A meleg készenléti állapotban lévő aktív/passzív**: feladatátvételi ebben a megoldásban a készenléti régió előmelegíteni van, és készen áll a kiinduló terhelés elkészítésére, automatikus skálázás be van kapcsolva, és a példányok megfelelően működik. Ez a megoldás nem méretezve, a teljes üzemi terhelés érvénybe, de működik, és az összes szolgáltatás megfelelően működik. Ez a megoldás a próbaüzem világos megközelítés egy kibővített verziója telepítve.
+- **A meleg készenlétben aktív/passzív**: a feladatátvétel megoldásban a készenléti régió van előmelegíteni és, hogy az alapszintű load, automatikus skálázás be van kapcsolva, és összes példány üzembe helyezéséig. Ez a megoldás van méretezve, hogy a teljes éles terhelés igénybe nem, de működik, és minden szolgáltatás áll. Ez a megoldás a jelzőlámpa megközelítés kibővített verziója.
     
-    ![A meleg készenléti állapotban lévő aktív/passzív](./media/disaster-recovery-dns-traffic-manager/active-passive-with-warm-standby.png)
+    ![A meleg készenlétben aktív/passzív](./media/disaster-recovery-dns-traffic-manager/active-passive-with-warm-standby.png)
     
-    *Ábra: Aktív/passzív meleg készenléti vész-helyreállítási konfiguráció*
+    *. Ábra: A meleg készenléti vész-helyreállítási konfiguráció aktív/passzív*
     
-Feladatátvétel és a magas rendelkezésre állású kapcsolatos további információkért lásd: [Azure alkalmazások vész-helyreállítási](https://docs.microsoft.com/azure/architecture/resiliency/disaster-recovery-azure-applications).
+Feladatátvétel és a magas rendelkezésre állású kapcsolatos további információkért lásd: [Azure-alkalmazások Vészhelyreállítása](https://docs.microsoft.com/azure/architecture/resiliency/disaster-recovery-azure-applications).
 
 
-## <a name="planning-your-disaster-recovery-architecture"></a>A vész-helyreállítási architektúrájának tervezése
+## <a name="planning-your-disaster-recovery-architecture"></a>A vész-helyreállítási architektúra tervezése
 
 Két szempontot műszaki felé a vész-helyreállítási architektúra beállítása:
--  A központi telepítés alapján történő példányok, az adatok és konfigurációk replikálja az elsődleges és készenléti különböző környezetek között. Az ilyen típusú vész-helyreállítási megteheti a natív Azure-helyreállítás keresztül a Microsoft Azure partner készülékek vagy szolgáltatásokat, mint a Veritas vagy a NetApp. 
-- A hálózati vagy webes forgalom az elsődleges helyről a készenléti helyre átállításával megoldás kifejlesztése. Az ilyen típusú vész-helyreállítási elérhető Azure DNS-ben, az Azure Traffic Manager(DNS) vagy a külső globális terheléselosztók.
+-  A központi telepítési mechanizmussal példányok, az adatok és konfigurációk replikálni az elsődleges és készenléti környezetek között. Ilyen típusú vész-helyreállítási megteheti a natív módon az Azure Site-Recovery keresztül a Microsoft Azure partneri berendezések/szolgáltatások, például a Veritas vagy a NetApp. 
+- Fejlesztés a készenléti hely az elsődleges helyről származó hálózati/webes adatforgalom átirányít megoldást. Az ilyen típusú vész-helyreállítási Azure DNS-ben, az Azure Traffic Manager(DNS) vagy harmadik felek globális terheléselosztók keresztül érhető el.
 
-Ez a cikk a hálózat és a webes forgalom átirányítással megközelítések korlátozódik. Az Azure Site Recovery beállítása útmutatáshoz lásd: [Azure Site Recovery dokumentációjában](https://docs.microsoft.com/azure/site-recovery/).
-DNS egyike a leghatékonyabb mechanizmusokat átirányít hálózati forgalmat, mert DNS gyakran globális és az Adatközpont külső, területi vagy rendelkezésre állási zóna (AZ) szintű hibák van szigetelve. Egy DNS-alapú feladatátvevő mechanizmust használni, és az Azure két DNS-szolgáltatások is elérheti a án - Azure DNS (mérvadó DNS-) és az Azure Traffic Manager (DNS-alapú intelligens forgalom-Útválasztás). 
+Ez a cikk megközelítések a hálózati és a webes forgalom átirányítása keresztül korlátozódik. Az Azure Site Recovery beállítása útmutatáshoz lásd: [Azure Site Recovery dokumentációja](https://docs.microsoft.com/azure/site-recovery/).
+DNS a leghatékonyabb mechanizmusokat átirányít a hálózati forgalmat, mert DNS gyakran globális és az Adatközpont külső, és minden olyan régióhoz, vagy a rendelkezésre állási zóna (AZ) meghibásodások van szigetelve egyike. Egy DNS-alapú feladatátvevő mechanizmust használni, és az Azure-ban két DNS-szolgáltatás végezheti azonos valamilyen módon – az Azure DNS (mérvadó DNS-) és az Azure Traffic Manager (az intelligens forgalom DNS-alapú útválasztás). 
 
-Fontos tudni, hogy a DNS-ben, és beszéljék meg a jelen cikkben szereplő megoldások széles körben használt néhány fogalommal:
-- **DNS-A rekord** – A rekordok mutatók, amelyek egy IPv4-cím a tartományban. 
-- **CNAME-vagy Canonical** -bejegyzéstípus szolgál, hogy egy másik DNS-rekord mutasson. A rekord, amely tartalmazza az IP-cím az IP-címet, de ahelyett, hogy a mutató CNAME nem válaszol. 
-- **Útválasztás súlyozott** – egy weight a végpontok és közzétennie a forgalmat a társított súlyok alapján választhat. Az útválasztási módszer a négy forgalom útválasztási módszerek egyikével Traffic Manager belül érhető el. További információkért lásd: [útválasztási módszer súlyozott](../traffic-manager/traffic-manager-routing-methods.md#weighted).
-- **Prioritás útválasztás** – állapotellenőrzést végpontok prioritású virtuális gép útválasztási alapul. Alapértelmezés szerint az Azure Traffic manager az összes forgalom küldése a legmagasabb prioritású végpont, és egy hiba vagy katasztrófa esetén a Traffic Manager irányítja a forgalmat a másodlagos végponti. További információkért lásd: [prioritású virtuális gép útválasztási módszer](../traffic-manager/traffic-manager-routing-methods.md#priority).
+Fontos tudni, hogy a DNS-ben tárgyalják a jelen cikkben szereplő megoldások széles körben használt néhány fogalommal:
+- **A DNS-rekord** – A rekordok olyan mutatók, amelyek tartomány átirányítása egy IPv4-címet. 
+- **CNAME-vagy Canonical** -e rekordtípus szolgál, hogy egy másik DNS-rekord mutasson. A rekord, amely tartalmazza az IP-cím az IP-címet, de inkább a mutató CNAME nem válaszol. 
+- **Súlyozott útválasztási** – választhat egy súlyt Szolgáltatásvégpontok, és majd terjesztheti a forgalom, a hozzárendelt súlyok alapján. Az útválasztási módszer a négy forgalom útválasztási módszerek egyikével Traffic Manager belül érhető el. További információkért lásd: [súlyozott útválasztási mód](../traffic-manager/traffic-manager-routing-methods.md#weighted).
+- **Prioritás útválasztás** – állapot-ellenőrzések végpontok prioritása útválasztás alapul. Alapértelmezés szerint az Azure Traffic manager a legmagasabb prioritású végpontra minden forgalmat küld, és a egy hiba vagy katasztrófa esetén a Traffic Manager irányítja a forgalmat a másodlagos végpontra. További információkért lásd: [prioritásos útválasztási mód](../traffic-manager/traffic-manager-routing-methods.md#priority).
 
-## <a name="manual-failover-using-azure-dns"></a>Kézi feladatátvételre Azure DNS-sel
-Az Azure DNS kézi feladatátvételre vész-helyreállítási megoldás a szabványos DNS mechanizmus, amellyel a feladatátvétel a biztonsági mentési hely használja. A manuális beállítás Azure DNS-rendszerben működik optimálisan, ha a meleg készenléti vagy a próbaüzem világos megközelítés együtt használható. 
+## <a name="manual-failover-using-azure-dns"></a>Manuális feladatátvétel az Azure DNS-sel
+Az Azure DNS manuális feladatátvétel vész-helyreállítási megoldás a helykiszolgáló biztonsági mentése a szabványos DNS mechanizmus feladatátvételre használja. Az Azure DNS segítségével a manuális beállítás akkor működik a legjobban, és a ritkán használt készenléti vagy jelzőlámpa megközelítés együttes használatakor. 
 
-![Kézi feladatátvételre Azure DNS-sel](./media/disaster-recovery-dns-traffic-manager/manual-failover-using-dns.png)
+![Manuális feladatátvétel az Azure DNS-sel](./media/disaster-recovery-dns-traffic-manager/manual-failover-using-dns.png)
 
-*Ábra - kézi feladatátvételre Azure DNS-sel*
+*. Ábra – a manuális feladatátvételt az Azure DNS-sel*
 
-A megoldás a ismertetése a következők:
--   Elsődleges és másodlagos végpontok rendelkezik statikus IP-címek, amelyek nem változnak. Az IP-cím 100.168.124.44, és az IP-Címek használhatók a másodlagos hely 100.168.124.43 mondja ki a elsődleges helyhez.
--   Az Azure DNS-zóna az elsődleges és másodlagos hely tartozik. Az elsődleges helyhez tartozó mondja ki a végpont prod.contoso.com pedig a biztonsági mentési hely dr.contoso.com. A www.contoso.com néven alkalmazás egy DNS-rekordot is létezik.   
--   Az élettartam (TTL) vagy az alatt állítsa be a szervezet RTO SLA-t. Ha például egy vállalati beállítja 60 perc, lehetőség szerint az alsó-nál kisebb lehet 60 perc, a TTL-t kell alkalmazás katasztrófa válasz RTO minél pontosabban. Állíthat be Azure DNS kézi feladatátvételre az alábbiak szerint:
+A kalkulált aránnyal megoldáshoz a következők:
+-   Elsődleges és másodlagos végpontoknak statikus IP-címek, amelyek nem változnak gyakran. Tegyük fel, hogy az elsődleges hely számára az IP-címe 100.168.124.44 és a másodlagos hely az IP-címe 100.168.124.43.
+-   Azure DNS-zóna az elsődleges és másodlagos hely tartozik. Például: az elsődleges hely számára a végpont prod.contoso.com pedig a biztonsági mentési hely dr.contoso.com. A DNS-rekordot a főalkalmazástól www.contoso.com néven is létezik.   
+-   Az élettartam (TTL), vagy az alatt állítsa be a szervezet RTO SLA-t. Ha például egy vállalati beállítja az RTO 60 perc, lehetőség szerint az alsó-nál kisebb lehet 60 perc, akkor az élettartam kell lennie a vészhelyreállítási alkalmazásteljesítmény annál jobbak. Ön is Azure DNS a manuális feladatátvételt az alábbiak szerint állíthatja:
 1. DNS-zóna létrehozása
 2. DNS-zóna-rekordok létrehozása
 3. CNAME rekord frissítése
 
-### <a name="step-1-create-a-dns"></a>1. lépés: A DNS-létrehozása
-Hozzon létre egy DNS-zóna (például www.contoso.com), alább látható módon:
+### <a name="step-1-create-a-dns"></a>1. lépés: Hozzon létre egy DNS
+(Például www.contoso.com) DNS-zóna létrehozása a lent látható módon:
 
-![Hozzon létre egy DNS-zónát az Azure-ban](./media/disaster-recovery-dns-traffic-manager/create-dns-zone.png)
+![DNS-zóna létrehozása az Azure-ban](./media/disaster-recovery-dns-traffic-manager/create-dns-zone.png)
 
-*. Ábra – hozzon létre egy DNS-zónát az Azure-ban*
+*. Ábra – DNS-zóna létrehozása az Azure-ban*
 
-### <a name="step-2-create-dns-zone-records"></a>2. lépés: A DNS-zóna-rekordok létrehozása
+### <a name="step-2-create-dns-zone-records"></a>2. lépés: Hozzon létre DNS-zóna rekordjait
 
-A zónán belül (például - www.contoso.com, prod.contoso.com és dr.consoto.com) három rekordokat hozza létre, mint az alábbi megjelenítése.
+Ebben a zónában belül hozzon létre három rekordot (például: www.contoso.com, prod.contoso.com és dr.consoto.com) az alábbi megjelenítése.
 
 ![DNS-zóna-rekordok létrehozása](./media/disaster-recovery-dns-traffic-manager/create-dns-zone-records.png)
 
-*. Ábra – a DNS-zóna-rekordok létrehozása az Azure-ban*
+*. Ábra – DNS-zóna rekordok létrehozása az Azure-ban*
 
-Ebben a forgatókönyvben a helyet, a www.contoso.com 30 perc, amely alatt a megadott RTO, és a termelési hely prod.contoso.com mutató TTL rendelkezik. Ez a konfiguráció nincs normál üzleti műveletek során. Az élettartam prod.contoso.com és dr.contoso.com 300 másodperc vagy 5 perc van beállítva. Használhatja az Azure szolgáltatással, például az Azure-megfigyelőt vagy az Azure App Insights figyelési, vagy figyelési megoldások például Dynatrace partnerszervezetek, otthoni részben megoldások, amelyek figyelése, vagy alkalmazás vagy virtuális infrastruktúra szintű hibák is használhatja.
+Ebben a forgatókönyvben a hely, a www.contoso.com 30 perc alatt a megadott RTO-és az éles webhely prod.contoso.com mutató Élettartamot. Ez a konfiguráció van a normál üzleti műveletek során. Az élettartam prod.contoso.com és dr.contoso.com 300 másodperc vagy 5 percre van beállítva. Használhatja az Azure monitoring, például az Azure Monitor vagy az Azure App service, vagy bármely partner figyelési megoldások, például a dynatrace-szel, is használható, amely figyelheti és észleli az alkalmazást vagy a virtuális infrastruktúra meghibásodások otthoni túlhaladottá megoldások.
 
 ### <a name="step-3-update-the-cname-record"></a>3. lépés: A CNAME rekord frissítése
 
-Ha hiba lép fel, módosítsa a rekord dr.contoso.com mutassanak, alább látható módon:
+Ha hibát észlel, módosítsa a rekord értéket dr.contoso.com mutasson az alább látható módon:
        
 ![CNAME rekord frissítése](./media/disaster-recovery-dns-traffic-manager/update-cname-record.png)
 
-*Ábra - a frissítések a CNAME rekord, az Azure-ban*
+*. Ábra – az Azure-ban a CNAME-rekord frissítése*
 
-30 perc során, ami a legtöbb feloldókat frissíti a gyorsítótárazott zónafájl belül bármely www.contoso.com lekérdezést dr.contoso.com irányítja.
-A következő Azure CLI parancsot, módosítsa a CNAME értéket is futtathatja:
+30 percen belül, amely során a legtöbb feloldók frissíti a gyorsítótárazott zónafájl www.contoso.com minden lekérdezés dr.contoso.com irányítja.
+Módosítsa a CNAME értéket a következő Azure CLI-parancsot is futtathatja:
  ```azurecli
    az network dns record-set cname set-record \
    --resource-group 123 \
@@ -112,62 +112,62 @@ A következő Azure CLI parancsot, módosítsa a CNAME értéket is futtathatja:
    --record-set-name www \
    --cname dr.contoso.com
 ```
-Ebben a lépésben kézzel vagy automation segítségével hajtható végre. Azt is manuálisan kell elvégezni a konzol révén vagy az Azure parancssori felület. Az Azure SDK-t és az API segítségével automatizálhatja a CNAME frissítés, hogy nincs manuális beavatkozásra szükség. Automatizálás az Azure functions segítségével vagy egy külső figyelési alkalmazáson belül vagy akár a helyszíni építhető.
+Ezt a lépést manuálisan vagy automation is végrehajthatók. Ezt megteheti manuálisan a konzolon keresztül, vagy az Azure CLI. Az Azure SDK és az API segítségével automatizálhatja a CNAME-frissítés, így nincs szükség kézi beavatkozásra. Automation keresztül az Azure functions vagy egy külső monitorozási alkalmazáson belül, vagy akár a helyszíni építhetők fel.
 
-### <a name="how-manual-failover-works-using-azure-dns"></a>Hogyan kézi feladatátvételt works Azure DNS-sel
-Mivel a DNS-kiszolgáló a feladatátvétel vagy katasztrófa területen kívül, a rendszer megfelelően leállási ellen. Ez lehetővé teszi, hogy a felhasználót, hogy egy egyszerű feladatátvétel forgatókönyv költséghatékony tervezővel és működni fog minden a idő feltéve, hogy az üzemeltető rendelkezik hálózati kapcsolattal vészhelyreállítás során, és végezheti a tükrözés. Ha a megoldás van parancsprogrammal létrehozva, majd egy ellenőriznie kell, hogy a kiszolgáló vagy a szolgáltatás fut a parancsfájl kell lennie megfelelően szemben a problémát, hogy az hatással lenne az éles környezetben. Emellett vegye figyelembe a kis TTL-t, hogy a zóna elleni be lett állítva, hogy a világ különböző feloldó tartja a gyorsítótárba helyezett hosszú végpont és ügyfelek is hozzáférhetnek a RTO a webhelyen. A meleg készenléti állapotban lévő és a próbaüzem világos mivel egyes prewarming és más felügyeleti tevékenység lehet szükség – egy is adjon elég ideje a tükrözés elvégzése előtt.
+### <a name="how-manual-failover-works-using-azure-dns"></a>Az Azure DNS használatával hogyan kézi feladatátvételi folyamatok
+Mivel a DNS-kiszolgáló a feladatátvétel vagy katasztrófa zónán kívüli, a van szigetelni állásidő ellen. Ez lehetővé teszi, hogy a felhasználó egyszerű feladatátviteli forgatókönyv költséghatékony tervezhet és az összes az időt feltételezve, hogy az üzemeltető rendelkezik hálózati kapcsolattal katasztrófa során fog működni, és teheti a tükrözés. Ha a megoldás parancsfájlalapú van, majd egy biztosítania kell, hogy a kiszolgáló vagy a szolgáltatás fut a parancsfájl kell lennie szigetelni ellen a problémát, hogy ez hatással lenne az éles környezetben. Továbbá vegye figyelembe az alacsony élettartam, amelyet a zóna ellen, hogy nincs feloldó a világ különböző pontjain található a végpont hosszú ideig a gyorsítótárban tartja, és az ügyfelek elérhetik az RTO belül a hely. Áll készenlétben és jelzőlámpa mivel bizonyos prewarming és más felügyeleti tevékenységre lehet szükség – egyet kell is meg kell adni elegendő időt a tükrözés elvégzése előtt.
 
-## <a name="automatic-failover-using-azure-traffic-manager"></a>Automatikus feladatátvétel Azure Traffic Manager használatával
-Ha összetett architektúrák és erőforrások azonos funkció végrehajtására képes több példányban, konfigurálhatja az erőforrások állapotának ellenőrzése és irányíthatja a forgalmat a nem kifogástalan erőforrás a megfelelő Azure Traffic Manager (a DNS-alapú) az erőforrás. A következő példában az elsődleges régióban, mind a másodlagos régióba rendelkezik teljes körű telepítésére. A központi telepítés a felhőszolgáltatások és egy szinkronizált adatbázist tartalmaz. 
+## <a name="automatic-failover-using-azure-traffic-manager"></a>Automatikus feladatátvétel az Azure Traffic Managerrel
+Ha rendelkezik összetett architektúrák és több példányban képes végrehajtani ugyanannak a függvénynek erőforrásokat, az Azure Traffic Manager (a DNS alapján) konfigurálhatja az erőforrások állapotának ellenőrzését, és átirányítja a forgalmat a kifogástalan állapotú, a nem kifogástalan erőforrás az erőforrás. A következő példában mind az elsődleges régióban, és a másodlagos régióba rendelkezik teljes körű telepítésére. A központi telepítés magában foglalja a cloud services és a egy szinkronizált adatbázis. 
 
-![Automatikus feladatátvétel Azure Traffic Manager használatával](./media/disaster-recovery-dns-traffic-manager/automatic-failover-using-traffic-manager.png)
+![Automatikus feladatátvétel az Azure Traffic Managerrel](./media/disaster-recovery-dns-traffic-manager/automatic-failover-using-traffic-manager.png)
 
-*Ábra - automatikus feladatátvételi Azure Traffic Manager használatával*
+*. Ábra – az Automatikus feladatátvétel az Azure Traffic Managerrel*
 
-Csak az elsődleges régióban azonban aktívan kezeli a hálózati kérelmek, a felhasználóktól. A másodlagos régióba válik aktívvá, csak akkor, ha az elsődleges régióban észlel a szolgáltatás szüneteltetése. Ebben az esetben minden új hálózati kérelmek átirányíthatja a másodlagos régióba. Az adatbázis a biztonsági mentés óta van szinte azonnali, mindkét a terheléselosztók rendelkezik IP-címet, amely be van jelölve, állapotát és a példányt a rendszer mindig naprakészek, és fut, ez a topológia lehetőséget biztosít számára alacsony RTO és feladatátvételi kézi beavatkozás nélkül is. A másodlagos feladatátvételi régió éles közvetlenül az elsődleges régióban hiba után készen kell lennie.
-Ebben a forgatókönyvben ideális megoldás az Azure Traffic Managerben, amelynek használata beépített mintavételt különféle típusú állapotellenőrzést, beleértve a http / https- és TCP. Az Azure Traffic manager is rendelkezik, amely beállítható úgy, hogy feladatátvétel során hiba lép fel, az alább ismertetett jogcímszabály-motor. Mérlegeljük, ezzel a megoldással a Traffic Manager használata:
-- Ügyfél van a régió #1 végpont egy statikus IP-100.168.124.44 és egy régió 2 végpont egy statikus IP-mint 100.168.124.43 dr.contoso.com néven prod.contoso.com néven ismert. 
--   Egyes ezekben a környezetekben van fronted, például a terheléselosztók nyilvános irányuló tulajdonsága révén. A load balancer beállítható úgy, hogy rendelkezik egy DNS-alapú végpont vagy teljesen minősített tartománynevét (FQDN), a fentiek szerint.
--   Közel valós idejű replikációs 1 régió van régió 2 példányait. Továbbá a gépek lemezképét naprakészek legyenek, és minden szoftver vagy a konfigurációs adatok van telepítve, és 1 régió összhangban legyenek.  
--   Automatikus skálázás előre előre konfigurált. 
+Azonban csak az elsődleges régió aktívan kezeli a felhasználók a hálózati kérelmek. A másodlagos régióhoz csak amikor az elsődleges régióban egy szolgáltatáskimaradás aktívvá válik. Ebben az esetben minden új hálózati kérés átirányítása a másodlagos régióba. Mivel a biztonsági másolatot az adatbázisról van közel azonnali, mind a terheléselosztók rendelkezik IP-címek, hogy be van jelölve, egészségügyi és a példányok mindig naprakészen és fut, ez a topológia a kezdeti időszak után egy alacsony RTO- és manuális beavatkozás nélküli feladatátvevő lehetőséget biztosít. A másodlagos feladatátvételi régióban éles közvetlenül az elsődleges régióban hiba után készen kell lennie.
+Ebben a forgatókönyvben ideális választás használata az Azure Traffic Manager, amely rendelkezik a beépített mintavételek különféle típusú állapot-ellenőrzések, beleértve a http / https és a TCP. Az Azure Traffic manager is rendelkezik egy szabályalapú motor, amely hiba esetén az alább ismertetett feladatátvételre konfigurálva. Vegyünk például a Traffic Managert használva a következő megoldást:
+- -Ügyfél a régió 1 végpont prod.contoso.com néven 100.168.124.44 és a egy régió 2 végpont 100.168.124.43, statikus IP-Címmel rendelkező dr.contoso.com néven statikus IP-címmel rendelkezik. 
+-   Ezekben a környezetekben mindegyike van fronted, például a terheléselosztó a nyilvános irányuló tulajdonság használatával. A load balancer beállítható úgy, hogy rendelkezik egy DNS-alapú végpontot, illetve egy teljesen minősített tartománynevét (FQDN), ahogy fent látható.
+-   Közel valós idejű replikációs régió 1 szerepelnek régió 2 szereplő összes példányt. Továbbá a gép képek naprakészek legyenek, és minden szoftver vagy konfigurációs adatok javítva van, és régió 1 összhangban legyenek.  
+-   Az automatikus skálázás előre előre konfigurált. 
 
-A feladatátvétel konfigurálása az Azure Traffic Manager tett lépések a következők:
+A feladatátvétel konfigurálása az Azure Traffic Managerrel tett lépések a következők:
 1. Új Azure Traffic Manager-profil létrehozása
 2. A Traffic Manager-profil belüli végpontok létrehozása
-3. Állapotának ellenőrzése és a feladatátvételi konfigurációjának beállítása
+3. Állapot ellenőrzése és a feladatátvételi konfiguráció beállítása
 
-### <a name="step-1-create-a-new-azure-traffic-manager-profile"></a>1. lépés: Új Azure Traffic Manager-profil létrehozása
-Hozzon létre egy új Azure Traffic manager-profil a név contoso123 és útválasztási mód a prioritás. Ha egy már meglévő erőforráscsoportot, amelyet szeretne társítani, jelölje be egy meglévő erőforráscsoportot, máskülönben hozzon létre egy új erőforráscsoportot.
+### <a name="step-1-create-a-new-azure-traffic-manager-profile"></a>1. lépés: Hozzon létre egy új Azure Traffic Manager-profil
+A név contoso123 hozzon létre egy új Azure Traffic manager-profilt, és válassza ki az útválasztási módszer prioritásúként. Ha rendelkezik egy meglévő erőforráscsoportot, amelyet szeretne társítani, majd egy meglévő erőforráscsoportot kiválaszthatja, ellenkező esetben hozzon létre egy új erőforráscsoportot.
 
 ![Traffic Manager-profil létrehozása](./media/disaster-recovery-dns-traffic-manager/create-traffic-manager-profile.png)
- *. ábra - a Traffic Manager-profil létrehozása*
+ *. ábra – Traffic Manager-profil létrehozása*
 
-### <a name="step-2-create-endpoints-within-the-traffic-manager-profile"></a>2. lépés: A Traffic Manager-profil belüli végpontok létrehozása
+### <a name="step-2-create-endpoints-within-the-traffic-manager-profile"></a>2. lépés: Végpontok belül a Traffic Manager-profil létrehozása
 
-Ebben a lépésben hoz létre, amely a termelési és vész-helyreállítási helyeken végpontok. Itt válassza a **típus** külső végpont, de ha az erőforrás található, az Azure-ban, akkor választhatja **Azure-végpont** is. Ha úgy dönt, **Azure-végpont**, majd jelölje be a **célerőforrás** , amely vagy egy **App Service** vagy egy **nyilvános IP-cím** , amely is lefoglalta Azure. A prioritás értéke **1** mivel ez a régió 1 elsődleges szolgáltatáshoz.
-Hasonlóképpen, a vész helyreállítási-végpont létrehozása Traffic Manager belül is.
+Ebben a lépésben hoz létre, amelyek az éles és a vész-helyreállítási hely végpontok. Itt válassza ki a **típus** külső végpontja, de ha az erőforrást az Azure-ban üzemel, akkor választhatja **Azure-végpont** is. Ha úgy dönt, **Azure-végpont**, majd válassza ki a **Célerőforrásnál** , amely vagy egy **App Service-ben** vagy egy **nyilvános IP-cím** is lefoglalta Azure-t. A prioritás van beállítva, **1** az elsődleges régió 1 szolgáltatást, mert.
+Ehhez hasonlóan hozzon létre a vész helyreállítási végpont a Traffic Manager belül is.
 
-![Katasztrófa utáni helyreállítás végpontok létrehozása](./media/disaster-recovery-dns-traffic-manager/create-disaster-recovery-endpoint.png)
+![Vész-helyreállítási végpontok létrehozása](./media/disaster-recovery-dns-traffic-manager/create-disaster-recovery-endpoint.png)
 
-*. Ábra – vész helyreállítási végpontok létrehozása*
+*. Ábra – vész-helyreállítási végpontok létrehozása*
 
-### <a name="step-3-set-up-health-check-and-failover-configuration"></a>3. lépés: Állapotának ellenőrzése és a feladatátvételi konfigurációjának beállítása
+### <a name="step-3-set-up-health-check-and-failover-configuration"></a>3. lépés: Állapotának ellenőrzése és a feladatátvételi konfiguráció beállítása
 
-Ebben a lépésben beállította a DNS-élettartam 10 másodpercet, amely a legtöbb internet felé néző rekurzív feloldókat van ezt a funkciót. Ez a konfiguráció azt jelenti, hogy nincs DNS-feloldási gyorsítótárazza-e a több mint 10 másodperc az információkat. A végpont a megadott beállítások, az elérési út jelenlegi beállított / vagy a gyökér, de beállítások is testre szabhatók a végpont elérési útja, például prod.contoso.com/index kiértékeléséhez. Az alábbi példa a **https** a vizsgálathoz használt protokoll. Választhatja azonban **http** vagy **tcp** is. A választott protokoll függ az alkalmazás bezárása. A vizsgálathoz használt időköz értéke 10 másodperc, amely lehetővé teszi, hogy gyors probing, és az újrapróbálkozási értéke 3. Ennek eredményeképpen a Traffic Manager fog megfelelni a feladatátvétel, a második végpontnak, ha három egymást követő intervallumok regisztrálja hiba. A következő képlet határozza meg a teljes időnek az Automatikus feladatátvétel: a feladatátvételi idő = TTL + próbálja meg újra * vizsgálat időköz és ebben az esetben az értéke 10 + 3 * 10 = 40 másodperc (max.).
-Ha az ismételt próbálkozás értéke 1 és a TTL majd a hozzá tartozó feladatátvételi 10 + 1 * 10 = 20 másodperc érték 10 másodperc. Az újrapróbálkozási nagyobb értékre beállítva **1** elkerülése érdekében feladatátvételek miatt a vakriasztások vagy bármely másodlagos hálózati blips esélyét. 
+Ebben a lépésben beállíthat egy a DNS-Élettartamot 10 másodperc, amely a legtöbb internetkapcsolattal rendelkező rekurzív feloldók tartja. Ez a konfiguráció azt jelenti, hogy nincs DNS-feloldási gyorsítótárazzák az adatokat több mint 10 másodpercig. A Végpontfigyelő beállításai, az az elérési út jelenlegi beállított / vagy a legfelső szintű, de egy elérési utat, például prod.contoso.com/index kiértékelheti, hogy a végpont a beállítások testre. Az alábbi példában a **https** ellenőrzési protokollként. Választhatja azonban **http** vagy **tcp** is. A kiválasztott protokoll attól függ, hogy a teljes alkalmazás. Az ellenőrzési időköz értéke 10 másodperc, amely lehetővé teszi, hogy gyors tesztelés, és az újrapróbálkozási 3 értékre van állítva. A Traffic Manager ennek eredményeképpen a második végpontnak feladatátvételt hajt végre, ha három egymást követő időközök regisztrálása sikertelen. A következő képlet határozza meg az automatikus feladatátvételre fordított időt: a feladatátvételi idő = TTL + újra * Probing időköz és ebben az esetben az értéke 10 + 3 * 10 = 40 másodperc (Max).
+Ha az újrapróbálkozás értéke 1 és az élettartam szerepel majd a hozzá tartozó feladatátvételi 10 + 1 * 10 = 20 másodperc értéke 10 másodperc. Az újrapróbálkozás nagyobb értékre állítva **1** kiküszöbölése vakriasztások vagy bármely kisebb hálózati jelekből miatt folyamatban lévő feladatátvételi teszteket esélyét. 
 
 
-![Az állapot-ellenőrzéssel beállítása](./media/disaster-recovery-dns-traffic-manager/set-up-health-check.png)
+![Állapot-ellenőrzés beállítása](./media/disaster-recovery-dns-traffic-manager/set-up-health-check.png)
 
-*Ábra - állapotának ellenőrzése és a feladatátvételi konfigurációjának beállítása*
+*. Ábra – állapotának ellenőrzése és a feladatátvételi konfiguráció beállítása*
 
-### <a name="how-automatic-failover-works-using-traffic-manager"></a>Automatikus feladatátvétel működik a Traffic Managerrel
+### <a name="how-automatic-failover-works-using-traffic-manager"></a>A Traffic Manager használatával automatikus feladatátvételi folyamatok
 
-A vészhelyreállítás során az elsődleges végpont megadott lekérdezi és állapota **csökkentett teljesítményű** és a vész-helyreállítási hely marad **Online**. Alapértelmezés szerint a Traffic Manager elküldi az összes forgalom az elsődleges (legnagyobb prioritás) végpont. Ha az elsődleges végpont csökkent jelenik meg, a Traffic Manager irányítja a forgalmat a második végpontnak mindaddig, amíg azt kifogástalan. Egy további végpontok Traffic Manager belül, amely további feladatátvételi végpontként, vagy, mint a terheléselosztók a terhelés, végpontok közötti megosztása konfigurálása lehetősége van.
+Egy katasztrófa során az elsődleges végpont vizsgált lekérdezi és állapotra vált, **csökkentett teljesítményű** és a vész-helyreállítási webhelyként marad **Online**. Alapértelmezés szerint a Traffic Manager minden forgalmat küld az elsődleges (legnagyobb prioritás) végponthoz. Ha az elsődleges végpont csökkentett teljesítményű jelenik meg, a Traffic Manager irányítja a forgalmat a második végpontnak mindaddig, amíg kifogástalan állapotban marad. További végpontok Traffic Manager belül, amely további feladatátvételi végpontként szolgál, akár, mint terheléselosztók a terhelés, végpontok közötti megosztása konfigurálhatja egy rendelkezik.
 
 ## <a name="next-steps"></a>További lépések
-- További információ [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md).
-- További információ [Azure DNS](../dns/dns-overview.md).
+- Tudjon meg többet [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md).
+- Tudjon meg többet [Azure DNS](../dns/dns-overview.md).
 
 
 

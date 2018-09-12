@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: apimpm
-ms.openlocfilehash: d4eb8f3e805d96a276851052b74cac90465d1185
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 4c1696fc373975eb9857c40366829fbe6a535911
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42058107"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391878"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>Az Azure Active Directoryval az Azure API Management fejlesztői fiókok engedélyezése
 
@@ -79,7 +79,10 @@ Ez a cikk bemutatja, hogyan hozzáférés engedélyezése a felhasználók szám
 
     ![A jelölőnégyzetek az engedélyek](./media/api-management-howto-aad/api-management-with-aad005.png)
 
+1. Válassza ki **engedélyeket** Alkalmazásengedélyek jóváhagyást.
+
     További információ az alkalmazás és delegált engedélyek: [eléréséhez a Graph API][Accessing the Graph API].
+    
 1. A bal oldali ablaktáblán, másolja a **Alkalmazásazonosító** értéket.
 
     !["Az alkalmazás Azonosítójának" érték](./media/api-management-howto-aad/application-id.png)
@@ -98,6 +101,7 @@ Ez a cikk bemutatja, hogyan hozzáférés engedélyezése a felhasználók szám
     > Jegyezze fel ezt a kulcsot. Miután bezárta az Azure AD-konfiguráció panelen, a kulcs nem jeleníthető meg újra.
     > 
     > 
+
 1. Váltson vissza az API Management alkalmazás. 
 
     A a **Hozzáadás identitásszolgáltató** ablakban illessze be a kulcsot a **titkos Ügyfélkód** szövegmező.
@@ -106,6 +110,7 @@ Ez a cikk bemutatja, hogyan hozzáférés engedélyezése a felhasználók szám
     > Ellenőrizze, hogy frissítette a **titkos Ügyfélkód** a kulcs érvényességének lejárta előtt. 
     >  
     >
+
 1. A **Hozzáadás identitásszolgáltató** ablakban is tartalmaz a **engedélyezett bérlők** szövegmezőben. Itt adja meg a tartományban, amelyhez hozzá szeretné hozzáférést biztosítani az API-k az API Management szolgáltatáspéldányt, az Azure AD-példányban. Több tartomány elválasztás sortörésekből álló szóközöket tartalmazza, szóközök és vesszővel válassza el egymástól.
 
     A több tartományt is megadhat a **engedélyezett bérlők** szakaszban. Minden felhasználó egy másik tartományban található, mint az eredeti tartomány, ahol az alkalmazás regisztrálva lett a bejelentkezéshez, a másik tartományban globális rendszergazdájának engedélyt kell az alkalmazás hozzáférési címtáradatok. Engedélyt adni, a globális rendszergazdának kell elvégeznie:

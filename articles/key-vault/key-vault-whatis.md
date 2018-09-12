@@ -14,20 +14,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: barclayn
-ms.openlocfilehash: d7357dc7e8fa473bd8517dd80ede749b9d8e3f07
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 580ebbf219daa4c22034ffbf9ee3abbbdd0c8130
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44162835"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44378763"
 ---
 # <a name="what-is-azure-key-vault"></a>Mi az Azure Key Vault?
 
 Az Azure Key Vault segít megoldani az alábbi problémákat
-- Az Azure Key Vaulttal biztonságosan tárolhatók a jogkivonatok, jelszavak, tanúsítványok, API-kulcsok és egyéb titkos kulcsok, valamint szigorúan szabályozható az ezekhez való hozzáférés.
-- Az Azure Key Vault kulcskezelési megoldásként is használható. Az Azure Key Vaulttal egyszerűen létrehozhatja és vezérelheti az adatok titkosításához használt titkosítási kulcsokat. 
-- Az Azure Key Vault egyben egy olyan szolgáltatás is, amellyel egyszerűen építhet ki, kezelhet és helyezhet üzembe az Azure-ral és a belső csatlakoztatott erőforrásokkal használható nyilvános és privát SSL- és TLS-tanúsítványokat. 
-- A titkos kulcsok és a kulcsok védelmét szoftverek vagy a 2. szintű FIPS 140-2 szerint érvényesített HSM-ek is biztosíthatják.
+- **Titkok kezelése** – Azure Key Vault segítségével biztonságosan tárolhatja, és szorosan jogkivonatok, jelszavak, tanúsítványok, API-kulcsok és egyéb titkok való hozzáférésének
+- **Kulcskezelés** – Azure Key Vault Key Management megoldás is használható. Az Azure Key Vaulttal egyszerűen létrehozhatja és vezérelheti az adatok titkosításához használt titkosítási kulcsokat. 
+- **Tanúsítványkezelés az** – Azure Key Vault szolgáltatás is, amellyel könnyen üzembe helyezése, kezelése és üzembe helyezése az Azure és a belső csatlakozó használt nyilvános és privát Secure Sockets Layer/Transport Layer Security (SSL/TLS) tanúsítványok az erőforrásokat. 
+- **Hardveres biztonsági modulok** -kulcsok és titkok védelme biztosítható szoftver vagy a FIPS 140-2 2. szintje érvényesíti a HSM-EK
 
 ## <a name="basic-concepts"></a>Alapfogalmak
 

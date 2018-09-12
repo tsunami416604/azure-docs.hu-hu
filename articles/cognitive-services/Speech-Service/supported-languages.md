@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 04/28/2018
 ms.author: v-jerkin
-ms.openlocfilehash: de9abac2839341e1744a694daaaa0befdff4e7fa
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 704534ed50e12e7f9290cb321ad3b9e1b99117d5
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43668580"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44377888"
 ---
 # <a name="supported-languages-for-speech-service"></a>Beszédszolgáltatás támogatott nyelvei
 
@@ -29,13 +29,22 @@ A Microsoft beszédfelismerési API-t a következő nyelveket támogatja.
  ar – példa | Arab (Egyiptom), a modern standard | Nem | Igen | Nem
  It-IT | olasz (Olaszország) | Nem | Igen | Nem 
  de-DE | német (Németország) | Nem | Igen | Igen
- ja-JP | japán (Japán) | Nem | Igen | Nem
- hu-HU | angol (Egyesült Államok) | Igen | Igen | Igen
- pt-BR | portugál (brazíliai) | Nem | Igen | Nem
- es-ES | Spanyol (Spanyolország) | Nem | Igen | Nem
- ru-RU | orosz (Oroszország) | Nem | Igen | Nem
  FR-FR | francia (Franciaország) | Nem | Igen | Nem
+ hu-HU | angol (Egyesült Államok) | Igen | Igen | Igen
+ en-GB | Angol (brit) | Nem | Igen | Nem
+ en-hitelesítésszolgáltató | Angol (kanadai) | Nem | Igen | Nem
+ en-Ausztrália | Angol (Ausztrália) | Nem | Igen | Nem
+ es-ES | Spanyol (Spanyolország) | Nem | Igen | Nem
+ NL-NL | holland (Hollandia) | Nem | Igen | Nem
+ PT-PT | Portoguese (Portogal) | Nem | Igen | Nem
+ tr-TR | török (Törökország) | Nem | Igen | Nem
+ pt-BR | portugál (brazíliai) | Nem | Igen | Nem
+ ru-RU | orosz (Oroszország) | Nem | Igen | Nem
  zh-CN | Kínai (Mandarin, egyszerűsített) | Nem | Igen | Nem
+ zh-HK | Kínai (Mandarin, hagyományos) | Nem | Igen | Nem
+ zh-TW | Kínai (tajvani Mandarin) | Nem | Igen | Nem
+ ja-JP | japán (Japán) | Nem | Igen | Nem
+ ko-KR | koreai (Korea) | Nem | Igen | Nem
 
 ## <a name="text-to-speech"></a>Szövegfelolvasás
 

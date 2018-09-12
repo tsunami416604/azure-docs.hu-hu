@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 08/08/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: e4b6d115aebfd96d127e0d72c0c99188bedd93e6
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: cade124cefbd4e2e63ab4cb6fa4f22b3bd672ad0
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44057093"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391810"
 ---
 # <a name="batch-ai-service-quotas-and-limits"></a>A Batch AI szolgáltatás kvótái és korlátai
 
@@ -33,22 +33,7 @@ Ha azt tervezi, éles számítási feladatok futtatása a Batch AI, szükség le
 
 ## <a name="resource-quotas"></a>Erőforráskvóták
 
-A Batch AI a magok számát és a egy előfizetésben régiónként engedélyezett a fürtök számának alapértelmezett kvóta korlátozva van.
-
-| **Erőforrás** | **Alapértelmezett korlát** | **Felső korlát** |
-| --- | --- | --- |
-| Dedikált magok régiónként | 10 – 24 | N/A<sup>1</sup> |
-| Alacsony prioritású magok régiónként | 10 – 24 | N/A<sup>2</sup> |
-| Fürtök régiónként | 20 | 200-as<sup>3</sup> |
-
-> [!NOTE]
-> Alapértelmezett korlátok előfizetés típusától függően eltérőek lehetnek.
-
-<sup>1</sup> a Batch AI előfizetésenként dedikált magok száma növelhető, de a maximális száma nincs megadva. Lépjen kapcsolatba a növelési lehetőségek tekintetében az Azure ügyfélszolgálatától.
-
-<sup>2</sup> Batch AI előfizetésenként alacsony prioritású magok száma növelhető, de a maximális száma nincs megadva. Lépjen kapcsolatba a növelési lehetőségek tekintetében az Azure ügyfélszolgálatától.
-
-<sup>3</sup> Azure forduljon az ügyfélszolgálathoz, ha meghaladja ezt a korlátot növelni szeretné.
+[!INCLUDE [azure-batch-ai-limits](../../includes/azure-batch-ai-limits.md)]
 
 ## <a name="other-limits"></a>Egyéb korlátok
 

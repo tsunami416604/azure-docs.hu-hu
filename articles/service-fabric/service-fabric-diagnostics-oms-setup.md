@@ -1,6 +1,6 @@
 ---
-title: A Naplóelemzési figyelés beállítása az Azure Service Fabric - |} Microsoft Docs
-description: Megtudhatja, hogyan állíthatja be Naplóelemzési megjelenítése és események elemzése az Azure Service Fabric-fürtök figyelése.
+title: Az Azure Service Fabric - figyelés a Log Analytics beállítása |} A Microsoft Docs
+description: Megtudhatja, hogyan állíthatja be a Log Analytics jelenítenek meg, és az események az Azure Service Fabric-fürtök figyelése.
 services: service-fabric
 documentationcenter: .net
 author: srrengar
@@ -12,185 +12,90 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 4/03/2018
+ms.date: 9/11/2018
 ms.author: srrengar
-ms.openlocfilehash: 90a28162fb1f455c154ad4d2da7beac6bc785bc7
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: 5fa7b7ebfb1495a737a6d037566101df632764aa
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36301036"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44377751"
 ---
-# <a name="set-up-log-analytics-for-a-cluster"></a>A Naplóelemzési beállítása egy fürtben
+# <a name="set-up-log-analytics-for-a-cluster"></a>Fürt Log Analytics beállítása
 
-A Naplóelemzési az ajánlott megoldás a fürt szolgáltatásiszint-események figyelésére. A Naplóelemzési munkaterület Azure Resource Manager, a PowerShell vagy az Azure piactér állíthat be. Ha a telepítés későbbi használat érdekében egy frissített Resource Manager-sablon, ugyanazt a sablont segítségével állítsa be a Naplóelemzési környezetet. Üzembe helyezés piactér egyszerűbb, ha már rendelkezik egy fürt engedélyezve diagnosztikai telepítik. Ha a fiók, amely telepíti az előfizetés szintű hozzáférés nem rendelkezik, a PowerShell vagy a Resource Manager-sablon telepíthet.
+A log Analytics a fürt események monitorozása az ajánlott megoldás. Beállíthat a Log Analytics-munkaterületet az Azure Resource Manager, a PowerShell vagy az Azure Marketplace-en keresztül. Ha fenntartja az üzembe helyezés későbbi használat céljából egy frissített Resource Manager-sablon, használja ugyanazt a sablont a Log Analytics-környezetet. Marketplace-en keresztüli üzembe helyezést az egyszerűbb, ha már rendelkezik egy diagnosztika engedélyezve van az üzembe helyezett fürt. Ha a fiók, amelyre telepíti, akkor nem kell az előfizetési szintű hozzáféréssel, üzembe helyezése PowerShell vagy a Resource Manager-sablon használatával.
 
 > [!NOTE]
-> Naplóelemzési be, figyelheti a fürtöt, meg kell rendelkeznie a fürt- vagy platform-szintjén eseményeinek engedélyezve diagnosztikai. Tekintse meg [diagnosztika a Windows-fürtök beállítása](service-fabric-diagnostics-event-aggregation-wad.md) és [diagnosztika a Linux-fürtök beállítása](service-fabric-diagnostics-event-aggregation-lad.md) további
+> A Log Analytics beállítása a fürt monitorozásához, szüksége lesz a diagnosztika engedélyezve van a fürt-szintű vagy platformszintű események megtekintéséhez. Tekintse meg [diagnosztika a Windows-fürtök beállítása](service-fabric-diagnostics-event-aggregation-wad.md) és [Linux-fürtöket-diagnosztika beállítása](service-fabric-diagnostics-event-aggregation-lad.md) további
 
-## <a name="deploy-a-log-analytics-workspace-by-using-azure-marketplace"></a>A Naplóelemzési munkaterület telepítését az Azure piactéren
+## <a name="deploy-a-log-analytics-workspace-by-using-azure-marketplace"></a>Log Analytics-munkaterület üzembe az Azure Marketplace-en
 
-Ha szeretne hozzáadni a Naplóelemzési munkaterület fürt telepítése után, nyissa meg a portálon az Azure piactéren, és keressen **Service Fabric Analytics**. Ez a Service Fabric központi telepítések egy egyéni megoldás, amely a Service Fabric vonatkozó adatokat tartalmaz. A folyamat a megoldás (az irányítópult megtekintéséhez insights) és a munkaterület (fürt adatok összesítésének) hoz létre.
+Ha szeretne egy fürt üzembe helyezését követően adja hozzá a Log Analytics-munkaterületet, Azure Marketplace-en nyissa meg a portálon, és keressen **Service Fabric-elemzés**. Ez a Service Fabric-telepítésekhez egy egyéni megoldás, amely rendelkezik a Service Fabric jellemző adatok. Ezt a folyamatot fog létrehozni a megoldás (az irányítópultra való insights) és a munkaterület (ilyenkor az összesítést az alapul szolgáló fürt adatok).
 
-1. Válassza ki **új** a bal oldali navigációs menü. 
+1. Válassza ki **új** a bal oldali navigációs menüben. 
 
-2. Keresse meg **háló Analytics szolgáltatás**. Válassza ki az erőforrást, amely akkor jelenik meg.
+2. Keresse meg **Service Fabric-elemzés**. Válassza ki az erőforrást, amely akkor jelenik meg.
 
 3. Kattintson a **Létrehozás** gombra.
 
-    ![Service Fabric Analytics a piactéren](media/service-fabric-diagnostics-event-analysis-oms/service-fabric-analytics.png)
+    ![Service Fabric-elemzés a Marketplace-en](media/service-fabric-diagnostics-event-analysis-oms/service-fabric-analytics.png)
 
-4. Válassza a Service Fabric Analytics létrehozása ablak **munkaterület kiválasztása** a a **OMS-munkaterület** mezőben, majd **hozzon létre egy új munkaterületet**. Töltse ki a szükséges bejegyzéseket. Az egyetlen követelménye, hogy az előfizetés, a Service Fabric-fürt és a munkaterület megegyezik. Ha a bejegyzések érvényesítése a munkaterület központi telepítése elindul. A telepítés csak néhány percet vesz igénybe.
+4. Jelölje ki a Service Fabric-elemzés létrehozása ablakban **válasszon ki egy munkaterületet** a a **OMS-munkaterület** mezőben, majd **hozzon létre egy új munkaterületet**. Adja meg a szükséges tételeket. Az egyetlen követelménye, hogy a Service Fabric-fürt és a munkaterület előfizetés azonos. Ha a bejegyzések érvényesítése a munkaterület üzembe helyezéséhez elindul. A telepítés néhány percet vesz igénybe.
 
-5. Ha elkészült, válassza ki a **létrehozása** újra a Service Fabric Analytics létrehozása ablak alján. Győződjön meg arról, hogy alatt megjelenik az új munkaterületet **OMS-munkaterület**. Ez a művelet hozzáadja a megoldás a munkaterületet.
+5. Amikor végzett, válassza ki a **létrehozás** újra a Service Fabric-elemzés létrehozása ablak alján. Győződjön meg arról, hogy az új munkaterület alatt jelenik meg, **OMS-munkaterület**. Ez a művelet hozzáadja a létrehozott munkaterületet, a megoldás.
 
-Ha Windows használ, folytassa a Log Analyticshez való csatlakozáshoz a tárfiók a fürthöz kapcsolódó események tároló az alábbi lépéseket. 
+Ha Windows rendszert továbbra is a Log Analytics csatlakozni a fürthöz kapcsolódó események tárolására a storage-fiókot az alábbi lépéseket követve. 
 
 >[!NOTE]
->Ez a felület Linux-fürtök engedélyezése még nem érhető el. 
+>A Linux-fürtök használatát teszi lehetővé a még nem áll rendelkezésre. 
 
-### <a name="connect-the-log-analytics-workspace-to-your-cluster"></a>A Naplóelemzési munkaterület csatlakozzon a fürthöz 
+### <a name="connect-the-log-analytics-workspace-to-your-cluster"></a>A Log Analytics-munkaterület csatlakozni a fürthöz 
 
-1. A munkaterület kell kapcsolódnia kell a fürtből származó diagnosztikai adatokat. Nyissa meg az erőforráscsoporthoz, amelyben létrehozta a Service Fabric elemzési megoldások. Válassza ki **ServiceFabric\<nameOfWorkspace\>**  és Ugrás a – áttekintés oldalra. Ott módosíthatja a megoldás beállításai, a munkaterület-beállításokat és a hozzáférés a Naplóelemzési munkaterület.
+1. A munkaterület csatlakoztatva kell lennie a fürt származó diagnosztikai adatokhoz. Nyissa meg az erőforráscsoport, amelyben létrehozta a Service Fabric-elemzés megoldás. Válassza ki **ServiceFabric\<nameOfWorkspace\>**  és annak – áttekintés oldalra lépjen. Itt módosíthatja a megoldás munkaterület beállítások, és hozzáférést a Log Analytics-munkaterületet.
 
-2. A bal oldali navigációs menü alatti **munkaterület adatforrások**, jelölje be **tárfiókok naplók**.
+2. A bal oldali navigációs menü alatt **munkaterület adatforrásai**válassza **tárfióknaplók**.
 
-3. A a **a tárolási fiók naplófájljai** lapon jelölje be **Hozzáadás** hozzáadása a fürt naplók a munkaterület tetején.
+3. Az a **tárfióknaplók** lapon jelölje be **Hozzáadás** hozzáadása a fürt naplóit a munkaterület tetején.
 
-4. Válassza ki **tárfiók** vegye fel a fürt létrehozása a megfelelő fiókot. Ha az alapértelmezett nevet, van-e a tárfiók **sfdg\<resourceGroupName\>**. Azt is ellenőrizheti az Azure Resource Manager sablon által használt érték a fürt telepítéséhez használandó **applicationDiagnosticsStorageAccountName**. Ha a név nem jelenik meg, görgessen lefelé, és válassza ki **betöltése több**. Válassza ki a tárfiók nevét.
+4. Válassza ki **tárfiók** létre a fürtön a megfelelő fiók hozzáadásához. Ha az alapértelmezett nevet használt, a storage-fiók van **sfdg\<resourceGroupName\>**. Azt is ellenőrizheti az Azure Resource Manager sablon által használt érték ellenőrzése a fürt, üzembe helyezéséhez használt **applicationDiagnosticsStorageAccountName**. Ha a név nem jelenik meg, görgessen lefelé, és válassza ki **Továbbiak betöltése**. Válassza ki a tárfiók nevét.
 
-5. Adja meg az adatok típusát. Állítsa az értékét **Service Fabric események**.
+5. Adja meg az adatok típusát. Állítsa be **Service Fabric-események**.
 
 6. Győződjön meg arról, hogy a forrás értéke automatikusan **WADServiceFabric\*címke**.
 
-7. Válassza ki **OK** a munkaterület kapcsolódni a fürt naplókat.
+7. Válassza ki **OK** munkaterületét kapcsolódni a fürt naplóit.
 
-    ![A Naplóelemzési adja hozzá a tárolási fiók naplófájljai](media/service-fabric-diagnostics-event-analysis-oms/add-storage-account.png)
+    ![Tárfióknaplók hozzáadása a Log Analyticsbe](media/service-fabric-diagnostics-event-analysis-oms/add-storage-account.png)
 
-A fiók most megjelenik, a munkaterület adatforrások bejelentkezik a tárfiók részét.
+A fiókkal most már megjelenik-e, a storage-fiók részeként jelentkezik be a munkaterület adatforrásai.
 
-A Service Fabric elemzési megoldás az, hogy most már megfelelően csatlakozik-e a fürt platform és Alkalmazásnapló-tábla Naplóelemzési munkaterület jelentek meg. Azonos módon adhat hozzá további források a munkaterületre.
+A Service Fabric-elemzés megoldás hozzáadott egy Log Analytics-munkaterületen, amely most már megfelelően csatlakozik-e a fürt platformot és alkalmazást naplótábláját. Ugyanúgy adhat hozzá további források a munkaterületre.
 
 
-## <a name="deploy-log-analytics-by-using-a-resource-manager-template"></a>Log Analytics telepítése egy Resource Manager-sablon használatával
+## <a name="deploy-log-analytics-by-using-a-resource-manager-template"></a>Log Analytics üzembe helyezése Resource Manager-sablon használatával
 
-A Resource Manager-sablon használatával egy fürt üzembe helyezésekor a sablont hoz létre egy új Naplóelemzési munkaterület, a Service Fabric-megoldás hozzáadja a munkaterület, és konfigurálja úgy, hogy a megfelelő tárolási táblákból származó adatokat olvasni.
+Egy fürtöt egy Resource Manager-sablon használatával történő telepítésekor a sablon létrehoz egy új Log Analytics-munkaterületet, a Service Fabric megoldást ad hozzá a munkaterülethez, és konfigurálja, hogy a megfelelő tárolási táblákból származó adatokat olvasni.
 
-Használ, és módosítsa [minta sablon](https://github.com/krnese/azure-quickstart-templates/tree/master/service-fabric-oms) az igényeknek.
+Használ, és módosítsa [ezt a mintasablont](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-OMS-UnSecure) az igényeknek. Ez a sablon a következőket hajtja végre
 
-A következő módosításokat:
-1. Adja hozzá `omsWorkspaceName` és `omsRegion` a paramétereire az alábbi kódrészletet a definiált paraméterek hozzáadásával a *template.json* fájlt. Nyugodtan módosíthatja az alapértelmezett értékeket, ahogyan szeretné. Továbbá adja hozzá a két új paramétereket tartalmaz a *parameters.json* megadhatók azok az erőforrások telepítése értékeinek fájlt:
-    
-    ```json
-    "omsWorkspacename": {
-        "type": "string",
-        "defaultValue": "sfomsworkspace",
-        "metadata": {
-            "description": "Name of your Log Analytics Workspace"
-        }
-    },
-    "omsRegion": {
-        "type": "string",
-        "defaultValue": "East US",
-        "allowedValues": [
-            "West Europe",
-            "East US",
-            "Southeast Asia"
-        ],
-        "metadata": {
-            "description": "Specify the Azure Region for your Log Analytics workspace"
-        }
-    }
-    ```
+* Létrehoz egy 5 csomópontos Service Fabric-fürt
+* Létrehoz egy Log Analytics-munkaterület és egy Service Fabric-megoldás
+* Konfigurálja az OMS-ügynök összegyűjti és elküldi a munkaterület 2 minta kérelemteljesítmény-számlálókat
+* A Service Fabric összegyűjtése a WAD konfigurálja, és elküldi őket az Azure storage-táblák (WADServiceFabric * címke)
+* Konfigurálja a Log Analytics-munkaterületet, olvassa az eseményeket, ezek a táblák
 
-    A `omsRegion` értéknek meg kell felelnie egy meghatározott értéket. Ki kell választania azt a központi telepítés, a fürt legközelebb van.
 
-2. Ha bármely alkalmazás naplókat küld a Naplóelemzési, először győződjön meg arról, hogy a `applicationDiagnosticsStorageAccountType` és `applicationDiagnosticsStorageAccountName` szerepel a sablonban szereplő paraméterekkel. Ha nem szerepel, a változók szakaszban adja hozzá, és igény szerint szerkessze az értékekre. Is használható őket paraméterekként következő előző formátuma.
+Telepítheti a sablont egy Resource Manager-frissítés, és a fürt használatával a `New-AzureRmResourceGroupDeployment` az AzureRM PowerShell-modul API-t. A példában a parancs a következő lesz:
 
-    ```json
-    "applicationDiagnosticsStorageAccountType": "Standard_LRS",
-    "applicationDiagnosticsStorageAccountName": "[toLower(concat('oms', uniqueString(resourceGroup().id), '3' ))]"
-    ```
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName "<resourceGroupName>" -TemplateFile "<templatefile>.json" 
+``` 
 
-3. Vegye fel a Service Fabric-megoldás a sablon változók:
+Az Azure Resource Manager azt észleli, hogy ez a parancs egy meglévő erőforrás frissítése. Csak feldolgozza a módosításokat a vezetői a meglévő központi telepítési sablont és a megadott új sablon között.
 
-    ```json
-    "solution": "[Concat('ServiceFabric', '(', parameters('omsWorkspacename'), ')')]",
-    "solutionName": "ServiceFabric"
-    ```
+## <a name="deploy-log-analytics-by-using-azure-powershell"></a>Log Analytics üzembe helyezése Azure PowerShell-lel
 
-4. Adja hozzá a következő, az erőforrások szakasz végén után, ahol a Service Fabric-fürt erőforrás van deklarálva:
-
-    ```json
-    {
-        "apiVersion": "2015-11-01-preview",
-        "location": "[parameters('omsRegion')]",
-        "name": "[parameters('omsWorkspacename')]",
-        "type": "Microsoft.OperationalInsights/workspaces",
-        "properties": {
-            "sku": {
-                "name": "Free"
-            }
-        },
-        "resources": [
-            {
-                "apiVersion": "2015-11-01-preview",
-                "name": "[concat(parameters('applicationDiagnosticsStorageAccountName'),parameters('omsWorkspacename'))]",
-                "type": "storageinsightconfigs",
-                "dependsOn": [
-                    "[concat('Microsoft.OperationalInsights/workspaces/', parameters('omsWorkspacename'))]",
-                    "[concat('Microsoft.Storage/storageAccounts/', parameters('applicationDiagnosticsStorageAccountName'))]"
-                ],
-                "properties": {
-                    "containers": [ ],
-                    "tables": [
-                        "WADServiceFabric*EventTable",
-                        "WADWindowsEventLogsTable",
-                        "WADETWEventTable"
-                    ],
-                    "storageAccount": {
-                        "id": "[resourceId('Microsoft.Storage/storageaccounts/', parameters('applicationDiagnosticsStorageAccountName'))]",
-                        "key": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', parameters('applicationDiagnosticsStorageAccountName')),'2015-06-15').key1]"
-                    }
-                }
-            }
-        ]
-    },
-    {
-        "apiVersion": "2015-11-01-preview",
-        "location": "[parameters('omsRegion')]",
-        "name": "[variables('solution')]",
-        "type": "Microsoft.OperationsManagement/solutions",
-        "id": "[resourceId('Microsoft.OperationsManagement/solutions/', variables('solution'))]",
-        "dependsOn": [
-            "[concat('Microsoft.OperationalInsights/workspaces/', parameters('OMSWorkspacename'))]"
-        ],
-        "properties": {
-            "workspaceResourceId": "[resourceId('Microsoft.OperationalInsights/workspaces/', parameters('omsWorkspacename'))]"
-        },
-        "plan": {
-            "name": "[variables('solution')]",
-            "publisher": "Microsoft",
-            "product": "[Concat('OMSGallery/', variables('solutionName'))]",
-            "promotionCode": ""
-        }
-    }
-    ```
-    
-    > [!NOTE]
-    > Ha hozzáadta a `applicationDiagnosticsStorageAccountName` változóként, ügyeljen arra, hogy módosítsa úgy, hogy minden egyes hivatkozás `variables('applicationDiagnosticsStorageAccountName')` helyett `parameters('applicationDiagnosticsStorageAccountName')`.
-
-5. A sablon üzembe helyezése a Resource Manager-frissítés a fürthöz, segítségével a `New-AzureRmResourceGroupDeployment` API-nak a AzureRM PowerShell-modult. A példában a parancs a következő lesz:
-
-    ```powershell
-    New-AzureRmResourceGroupDeployment -ResourceGroupName "sfcluster1" -TemplateFile "<path>\template.json" -TemplateParameterFile "<path>\parameters.json"
-    ``` 
-
-    Az Azure Resource Manager azt észleli, hogy ez a parancs egy frissítést adunk ki a meglévő erőforrás. Csak feldolgozza a módosításokat a befolyásoló tényezők a meglévő központi telepítési sablont és az új sablon között.
-
-## <a name="deploy-log-analytics-by-using-azure-powershell"></a>Log Analytics telepítése Azure PowerShell használatával
-
-A Naplóelemzési erőforrás PowerShell használatával is telepítheti a `New-AzureRmOperationalInsightsWorkspace` parancsot. Ezt a módszert használja, győződjön meg arról, hogy telepítette [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.1.1). Ezen parancsfájl segítségével hozzon létre egy új munkaterületet, és a Service Fabric-megoldás felvétele: 
+A Log Analytics-erőforrás PowerShell használatával is telepítheti a `New-AzureRmOperationalInsightsWorkspace` parancsot. Ezt a módszert használja, győződjön meg arról, hogy telepítve van-e [Azure PowerShell-lel](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.1.1). Ez a szkript használatával hozzon létre egy új Log Analytics-munkaterületet, és hozzá tud adni a Service Fabric megoldást: 
 
 ```PowerShell
 
@@ -216,11 +121,11 @@ Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName $ResourceGroup
 
 ```
 
-Amikor elkészült, hajtsa végre a megfelelő tárfiók Naplóelemzési csatlakozni az előző szakaszban leírt lépéseket.
+Ha elkészült, kövesse az előző szakaszban fiókhoz való csatlakozás a Log Analytics a megfelelő tárolási.
 
-Más megoldások hozzáadása vagy más módosításokat a Naplóelemzési munkaterület PowerShell használatával is. További tudnivalókért lásd: [PowerShell-lel kezelése Naplóelemzési](../log-analytics/log-analytics-powershell-workspace-configuration.md).
+Más megoldások hozzáadása is, vagy más módosításokat a Log Analytics-munkaterület PowerShell használatával. További tudnivalókért lásd: [kezelése a Log Analytics PowerShell-lel](../log-analytics/log-analytics-powershell-workspace-configuration.md).
 
 ## <a name="next-steps"></a>További lépések
-* [A Log Analytics Agent telepítése](service-fabric-diagnostics-oms-agent.md) alakzatot a csomópontok teljesítményszámlálók gyűjtsön, és a docker statisztikák és a tárolók naplóinak gyűjtése
-* Az beszerzése familiarized a [naplófájl keresési és lekérdezése](../log-analytics/log-analytics-log-searches.md) szolgáltatásai által kínált Naplóelemzési
-* [Adatforrásnézet-tervezőből segítségével egyéni nézeteket hozhat létre a Naplóelemzési](../log-analytics/log-analytics-view-designer.md)
+* [A Log Analytics-ügynök telepítése](service-fabric-diagnostics-oms-agent.md) alakzatot a csomópontok összegyűjtéséhez a teljesítményszámlálókat és a docker-statisztikák és a tárolókhoz naplóinak összegyűjtésére
+* Ismerkedjen meg a [naplókeresési és lekérdezési](../log-analytics/log-analytics-log-searches.md) funkciók a Log Analytics részeként érhető el
+* [Nézettervező segítségével egyéni nézeteket hozhat létre a Log Analyticsben](../log-analytics/log-analytics-view-designer.md)

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: anwestg
-ms.openlocfilehash: 9173dfcbb5f73c2292bce7d28c2dae5dbece79cd
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 9e868788d0cf3b3c0f2f30095388046f64ced71c
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42058403"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44378540"
 ---
 # <a name="add-an-app-service-resource-provider-to-azure-stack"></a>Az App Service erőforrás-szolgáltató hozzáadása az Azure Stackhez
 
@@ -97,7 +97,7 @@ Az App Service erőforrás-szolgáltató üzembe helyezéséhez kövesse az alá
 8. Adja meg a fájlmegosztás az adatokat, majd **tovább**. A cím a fájlmegosztás a teljesen minősített tartomány nevét (FQDN), vagy a fájlkiszolgáló IP-címét kell használnia. Ha például \\\appservicefileserver.local.cloudapp.azurestack.external\websites, vagy \\\10.0.0.1\websites.
 
    >[!NOTE]
-   >A telepítő megpróbálja a fájlmegosztáson, mielőtt folytatná a kapcsolat teszteléséhez. De ha egy meglévő virtuális hálózatra telepíti, a kapcsolódási teszt előfordulhat, hogy a fájl. Felhőszolgáltatására, figyelmeztetés és a egy parancssort a folytatáshoz. Ha a fájlmegosztás adatok helyesek, továbbra is az üzembe helyezés.
+   >A telepítő megpróbálja a fájlmegosztáson, mielőtt folytatná a kapcsolat teszteléséhez. De ha egy meglévő virtuális hálózatra telepíti, a kapcsolódási teszt sikertelen lehet. Felhőszolgáltatására, figyelmeztetés és a egy parancssort a folytatáshoz. Ha a fájlmegosztás adatok helyesek, továbbra is az üzembe helyezés.
 
    ![Az App Service-telepítő][7]
 

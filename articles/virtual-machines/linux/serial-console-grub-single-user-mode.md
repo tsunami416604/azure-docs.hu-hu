@@ -3,7 +3,7 @@ title: A grub-HIBÁT és egyfelhasználós üzemmódban Azure soros konzol |} A 
 description: Soros konzol használata az Azure-beli virtuális gépek grub-hibát.
 services: virtual-machines-linux
 documentationcenter: ''
-author: alsin
+author: asinn826
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,15 +14,17 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 059cb0cbc7e62af16dbf95693be421feebcc1ee0
-ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
+ms.openlocfilehash: 9952720e917dc9202630b2feda0fadd0402d9eb6
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42059184"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44377870"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>Használja a soros konzol eléréséhez a grub-HIBÁT, és az egyfelhasználós módot
 Egyfelhasználós módban, minimális környezetet minimális funkciókkal. Rendszerindító kapcsolatos problémák vizsgálatában vagy hálózati problémák hasznos lehet, mivel kevesebb services futhat a háttérben, és attól függően, a paraméterben megadott futtatási szint, a fájlrendszer előfordulhat, hogy még akkor is automatikusan csatlakoztatása nem. Ez akkor hasznos, amikor például egy sérült fájlrendszer, a tört fstab vizsgálata vagy a hálózati kapcsolat (helytelen engedélyezze az iptables konfigurálása).
+
+Hozzáférhet a grub-HIBÁT, kell, miközben a soros konzol panelen nyissa meg a virtuális gép újraindítása. Ezt megteheti egy SysRq a `'b'` parancsot, vagy az Áttekintés panelen kattintson az Újraindítás gombra. Néhány disztribúciókhoz bevitelt a billentyűzetről megjelenítéséhez a grub-HIBÁT, míg mások automatikusan GRUB megjelenítése az rendszerindításkor néhány másodpercet, és megszakítja az időtúllépési bevitelt a billentyűzetről a felhasználói bevitel engedélyezése szükséges. 
 
 Néhány disztribúciókhoz automatikusan csökken, egyfelhasználós módban vagy vészhelyzeti módban, ha a virtuális gép rendszerindítási nem lehet. További telepítési, mások azonban szükség van, mielőtt azok vethetők el, egyfelhasználós, vagy vészhelyzeti módban automatikusan.
 

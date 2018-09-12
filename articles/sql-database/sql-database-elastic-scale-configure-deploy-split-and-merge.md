@@ -9,12 +9,12 @@ ms.custom: scale out apps
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 10ba369c9627f7492f9776a757d4bccb74013b5f
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: c7682b63689d9b47fce5fa65a3c0a2301d53502a
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/11/2018
-ms.locfileid: "44349194"
+ms.locfileid: "44379197"
 ---
 # <a name="deploy-a-split-merge-service"></a>Felosztási-egyesítési szolgáltatás üzembe helyezése
 A felosztási-egyesítési eszközének szilánkokra osztott adatbázisok közötti adatáthelyezés teszi lehetővé. Lásd: [adatok mozgatása kiterjesztett felhőalapú adatbázisok között](sql-database-elastic-scale-overview-split-and-merge.md)
@@ -143,7 +143,7 @@ Ha nem sikerül dolgozó munkaköre online állapotba, de a webes szerepkör sik
 
 ## <a name="test-the-service-deployment"></a>A szolgáltatás központi telepítés tesztelése
 ### <a name="connect-with-a-web-browser"></a>Kapcsolódás egy webes böngésző
-A webes végpont a felosztási-egyesítési szolgáltatás határozza meg. Megtalálhatja a klasszikus Azure portálon lépjen a **irányítópult** a cloud Services és a alapján keresi **webhely URL-címe** jobb oldalán. Cserélje le **http://** a **https://** óta az alapértelmezett biztonsági beállítások letiltása a HTTP-végpontot. A lap betöltéséhez a böngészőbe az URL-címhez.
+A webes végpont a felosztási-egyesítési szolgáltatás határozza meg. Megtalálhatja a portálon lépjen a **áttekintése** a cloud Services és a alapján keresi **webhely URL-címe** jobb oldalán. Cserélje le **http://** a **https://** óta az alapértelmezett biztonsági beállítások letiltása a HTTP-végpontot. A lap betöltéséhez a böngészőbe az URL-címhez.
 
 ### <a name="test-with-powershell-scripts"></a>A PowerShell-parancsfájlok tesztelése
 Az üzembe helyezés és a környezet tesztelhető legyen a mellékelt PowerShell-parancsprogramok futtatásával.

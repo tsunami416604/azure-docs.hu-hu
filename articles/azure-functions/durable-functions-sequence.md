@@ -8,14 +8,14 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 03/19/2018
+ms.date: 09/06/2018
 ms.author: azfuncdf
-ms.openlocfilehash: ea8c275e5cc37f8c5ecd7c29491b7146669d00fb
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: c84977dacddcf9ccca7fde735ad4acb8a1523fa9
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44092903"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44378703"
 ---
 # <a name="function-chaining-in-durable-functions---hello-sequence-sample"></a>Durable Functions - Hello feladatütemezési minta a láncolási függvény
 
@@ -104,6 +104,9 @@ Végrehajtásához a `E1_HelloSequence` vezénylés, a következő HTTP POST ké
 ```
 POST http://{host}/orchestrators/E1_HelloSequence
 ```
+
+> [!NOTE]
+> Az előző HTTP a kódtöredék azt feltételezi, hogy a bejegyzés a `host.json` fájlt, amely eltávolítja az alapértelmezett `api/` előtag a HTTP eseményindító függvény URL-címekhez. Ezt a konfigurációt a jelölőnyelvi megtalálja a `host.json` a mintákban található fájl.
 
 Például ha a minta egy függvényalkalmazáshoz "myfunctionapp" nevű rendszert használ, cserélje le "{host}" "myfunctionapp.azurewebsites.net".
 

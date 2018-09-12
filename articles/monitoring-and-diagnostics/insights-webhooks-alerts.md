@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 04/03/2017
 ms.author: snmuvva
 ms.component: alerts
-ms.openlocfilehash: 74a4066e3d30b1e91fe558fcfeb6f39220e41c02
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: 08ba5e7cbdc041a41f1d006d69980bf6efc00101
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37887344"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44380290"
 ---
-# <a name="configure-a-webhook-on-an-azure-metric-alert"></a>Webhook beállítása az Azure metrikaalapú riasztás
+# <a name="have-a-classic-metric-alert-notify-a-non-azure-system-using-a-webhook"></a>Klasszikus metrikariasztás értesítése egy webhook használatával nem Azure-beli system rendelkezik
 Webhookok használatával irányíthatja a riasztási értesítés az Azure utólagos feldolgozási vagy egyéni műveleteket más rendszerekre. A riasztás egy webhook használatával átirányítása a szolgáltatások által küldött SMS-ezni, hibák, csevegési vagy az üzenetkezelési szolgáltatások révén, vagy a különböző műveleteknél csapat értesítése bejelentkezni. 
 
 Ez a cikk ismerteti, hogyan lehet beállítani a webhook a egy Azure metrikariasztás. Azt is bemutatja, hogy az a HTTP POST a webhook hasznos adatai néz ki. További információ a telepítő és a egy Azure-tevékenységi sémája (riasztás események), riasztás: [webhook meghívására az Azure tevékenységnapló-riasztás](insights-auditlog-to-webhook-email.md).
@@ -72,20 +72,20 @@ A POST művelet a következő JSON-adattartalom és az összes mérőszám-alap�
 | Mező | Kötelező | Rögzített számú értékek | Megjegyzések |
 |:--- |:--- |:--- |:--- |
 | status |I |Aktivált, feloldva |A feltételek alapján a riasztás állapotának beállítása. |
-| környezet |I | |A riasztás környezetét. |
+| Környezet |I | |A riasztás környezetét. |
 | időbélyeg |I | |Az idő, amelyen a riasztás lett elindítva. |
 | id |I | |Minden riasztási szabály tartozik egy egyedi azonosítót. |
 | név |I | |A riasztás neve. |
 | leírás |I | |A riasztás leírása. |
 | conditionType |I |A metrika esemény |A riasztások két típusok támogatottak: metrika- és esemény. Metrikákhoz kapcsolódó riasztások egy metrikai feltétel teljesülésekor alapulnak. Egy esemény a tevékenységnaplóban miatti riasztás alapul. Ez az érték használatával ellenőrizze-e a riasztás egy metrikát, illetve egy esemény alapul-e. |
 | feltétel |I | |Ellenőrizze, hogy az adott mezők alapján a **conditionType** értéket. |
-| metricName |A metrikákhoz kapcsolódó riasztások | |A mérőszám, amely meghatározza, mit figyeli a szabály neve. |
+| MetricName |A metrikákhoz kapcsolódó riasztások | |A mérőszám, amely meghatározza, mit figyeli a szabály neve. |
 | metricUnit |A metrikákhoz kapcsolódó riasztások |Bájt, BytesPerSecond, Count, CountPerSecond, %, másodperc |Az egység a metrika az engedélyezett. Lásd: [megengedett értékek](https://msdn.microsoft.com/library/microsoft.azure.insights.models.unit.aspx). |
 | metricValue |A metrikákhoz kapcsolódó riasztások | |A metrika a riasztást kiváltó tényleges értéke. |
-| küszöbérték |A metrikákhoz kapcsolódó riasztások | |A küszöbérték, a riasztás aktiválódik. |
+| Küszöbérték |A metrikákhoz kapcsolódó riasztások | |A küszöbérték, a riasztás aktiválódik. |
 | windowSize |A metrikákhoz kapcsolódó riasztások | |Az az időtartam, használt figyelése a riasztás a küszöbérték alapján. Az érték 5 perc és 1 nap között kell lennie. Az értéknek időtartama ISO 8601 formátumban kell lennie. |
 | timeAggregation |A metrikákhoz kapcsolódó riasztások |Átlagos, Last, maximális, minimális, None, összesen |A gyűjtött adatokat hogyan idővel nelze kombinovat. Az alapértelmezett érték: átlaga. Lásd: [megengedett értékek](https://msdn.microsoft.com/library/microsoft.azure.insights.models.aggregationtype.aspx). |
-| operátor |A metrikákhoz kapcsolódó riasztások | |Az operátort, amelynek a szolgál hasonlítani a jelenlegi metrikaadatok a beállított küszöbértéket. |
+| Operátor |A metrikákhoz kapcsolódó riasztások | |Az operátort, amelynek a szolgál hasonlítani a jelenlegi metrikaadatok a beállított küszöbértéket. |
 | subscriptionId |I | |Az Azure-előfizetés azonosítóját. |
 | resourceGroupName |I | |Az erőforráscsoport az érintett erőforrás neve. |
 | Erőforrásnév |I | |Az érintett erőforrás erőforrás neve. |

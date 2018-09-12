@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: kakampf
-ms.openlocfilehash: 120068cb9dcd92b2b18c2e175793d2072baa2724
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 95d6c392bb0fcb5dfef21fabde9b0bd44e2284a3
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43112163"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44379485"
 ---
 # <a name="what-are-the-hadoop-components-and-versions-available-with-hdinsight"></a>Mik azok a Hadoop-összetevők és a HDInsight-verziók?
 
@@ -242,7 +242,7 @@ Az alábbi táblázatok sorolják fel a HDInsight-fürtök esetében az alapért
   | Edge: Virtuálisgép-méretet ajánlott | | | | | |Windows: D12 v2, D13 v2 és D14 v2; Linux: D4 v2, D12 v2, D13 v2, D14 v2 |
 * Dél-Brazíliát és Nyugat-Japánban csak (nincs v2 méretű):
 
-  | Fürttípus | Hadoop | HBase | Interaktív lekérdezés |Storm | Spark | Machine Learning-kiszolgáló |
+  | Fürttípus | Hadoop | HBase | Interaktív lekérdezés |Storm | Spark | Machine Learning szolgáltatás |
   | --- | --- | --- | --- | --- | --- | --- |
   | A fő: virtuális gépek alapértelmezett mérete |D3 |D3  | D13, D14 |A3 |D12 |D12 |
   | A fő: javasolt Virtuálisgép-méretek |D4, D3, D12 CSOMAG |D4, D3, D12 CSOMAG  | D13, D14 |A3, A4, A5 CSOMAG |D12, D13, D14 |D12, D13, D14 |

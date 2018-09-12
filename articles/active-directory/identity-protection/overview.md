@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 11/08/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 06e3a596b60bf96319071fff68b0bf1655869559
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 791abd52ff4c016fe873288008e9d9b6adec6480
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40003797"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44378496"
 ---
 # <a name="azure-active-directory-identity-protection"></a>Azure Active Directory Identity Protection
 
@@ -83,7 +83,7 @@ Terheléselosztás a felügyeleti tevékenységek körül az Identity Protection
 | :--                          | ---                                |  ---   |
 | Globális rendszergazda         | Teljes hozzáférés az Identity Protection előkészítése Identity Protection| |
 | Biztonsági rendszergazda       | Teljes hozzáférés az Identity Protection | Identity Protection előkészítése, a felhasználó a jelszavak alaphelyzetbe állítása |
-| Biztonsági olvasó              | Csak olvasási hozzáférés az Identity Protection | Előkészítése Identity Protection, a felhasználók remidiate, szabályzatok konfigurálása, a jelszavak alaphelyzetbe állítása |
+| Biztonsági olvasó              | Csak olvasási hozzáférés az Identity Protection | Identity Protection előkészítése, felhasználók szervizelése, a szabályzatok konfigurálására, jelszavak alaphelyzetbe állítása |
 
 
 

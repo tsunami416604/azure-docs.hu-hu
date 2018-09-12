@@ -7,23 +7,22 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.devlang: c
 ms.topic: conceptual
-ms.date: 12/03/2018
+ms.date: 05/09/2018
 ms.author: isacabe
-ms.openlocfilehash: d3175290c1a7fca5e35f4438392f29324868f1a3
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 35ef6ef02e5ae8a4b9231121615f44e0dc00ad15
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44054916"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44378737"
 ---
 # <a name="connect-mxchip-iot-devkit-az3166-to-the-iot-remote-monitoring-solution-accelerator"></a>Az MXChip IoT DevKit AZ3166 csatlakozni az IoT távoli figyelési megoldásgyorsító
-
 
 [!INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan futtathat egy mintaalkalmazást az érzékelő adatokat küldeni a megoldásgyorsító DevKit.
 
-A [MXChip IoT DevKit](https://aka.ms/iot-devkit) egy teljes körű Arduino kompatibilis tábla a gazdag perifériák és érzékelők van. A használatával is fejleszthet [Arduino a Visual Studio Code-bővítmény](https://aka.ms/arduino). És az egyre növekvő együtt származik [projektek katalógus](https://microsoft.github.io/azure-iot-developer-kit/docs/projects/) segítséget nyújtanak prototípus Internet of Things (IoT) megoldás, amely a Microsoft Azure-szolgáltatások előnyeit.
+A [MXChip IoT DevKit](https://aka.ms/iot-devkit) egy teljes körű Arduino kompatibilis tábla a gazdag perifériák és érzékelők van. A használatával is fejleszthet [Azure IoT Workbench](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-iot-workbench) Visual Studio Code-ban. És az egyre növekvő együtt származik [projektek katalógus](https://microsoft.github.io/azure-iot-developer-kit/docs/projects/) segítséget nyújtanak prototípus Internet of Things (IoT) megoldás, amely a Microsoft Azure-szolgáltatások előnyeit.
 
 ## <a name="what-you-need"></a>Mi szükséges
 
@@ -35,95 +34,117 @@ Olvassa el a [Getting Started Guide](https://docs.microsoft.com/azure/iot-hub/io
 * A fejlesztési környezet előkészítése
 
 
-## <a name="open-the-remotemonitoring-sample-in-vs-code"></a>Nyissa meg a RemoteMonitoring minta a VS Code-ban
+## <a name="create-an-azure-iot-remote-monitoring-solution-accelerator"></a>Hozzon létre egy Azure IoT távoli figyelési megoldásgyorsító
 
-1. Az MXChip fejlesztői készlet leválasztása a számítógépre, ha csatlakoztatva van.
+Ebben az oktatóanyagban létrehozott AZ3166 eszköz adatokat küld a távoli figyelési megoldásgyorsító egy példányát. Ha, még nem még egy példányt az Azure-fiókjában, kövesse a [rövid](https://docs.microsoft.com/azure/iot-accelerators/quickstart-remote-monitoring-deploy) ehhez az útmutató.
 
-2. Indítsa el a VS Code.
+A távoli figyelési megoldás az üzembe helyezést követően nyissa meg a megoldás irányítópultján.
 
-3. Az MXChip fejlesztői készlet csatlakoztatása a számítógéphez.
+![A megoldás irányítópultja](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/azure-iot-suite-dashboard-info.png)
 
-4. Használat `Ctrl+Shift+P` (macOS: `Cmd+Shift+P`) a parancskatalógus megnyitásához, írja be a **Arduino**, keresse meg és válassza a **Arduino: Példák**.
+## <a name="add-a-device-to-the-remote-monitoring-solution"></a>Hozzáad egy eszközt a távoli figyelési megoldás
 
- 5. Bontsa ki a bal oldali **ARDUINO példák** területén keresse meg a **példák az MXCHIP AZ3166 > AzureIoT**, és válassza ki **RemoteMonitoringv2**. Egy új VS Code-ablak nyílik, a projektmappa.
+1. Az irányítópulton, lépjen a **eszközök** szakaszt, és kattintson a **új eszköz**.
+   ![Új eszköz hozzáadása](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/azure-iot-suite-add-device.png)
 
-  > [!NOTE]
-  > Ha Ön nem látható **példák az MXCHIP**, használja `Ctrl+Shift+P` (macOS: `Cmd+Shift+P`), nyissa meg a parancskatalógus és a típus **Arduino tábla Manager**. Válassza ki, majd keresse meg **AZ3166** az üzenőfal-kezelő belül. Majd tudnia kell a példákat, és ismételje meg a fenti 5. lépés.
+2. Az eszköz konfigurálása az alábbi információk segítségével, és kattintson a **alkalmaz**.
+  * Eszköz típusa: **fizikai**
+  * Eszközazonosító: **AZ3166**
+  * Hitelesítés típusa: **szimmetrikus kulcs**
+  * Hitelesítési kulcs: **kulcsok automatikus létrehozása**
+  
+  ![Új eszköz képernyő hozzáadása](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/azure-iot-suite-add-new-device-form.png)
 
-  ![Távoli figyelés projekt megnyitása](./media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringV2/azure-iot-suite-arduino-examples.png)
+3. Az új eszköz létrehozása után másolja a **kapcsolati karakterlánc – elsődleges kulcs**. Ez az, hogy az eszközt, hogy az Azure IoT Hub alatt létrehozott.
+  
+  ![Eszköz kapcsolati karakterláncát](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/azure-iot-suite-new-device-connstring.png)
 
-  > [!NOTE]
-  > Zárja be a panelt az MSDN-előfizetőknek, megnyithatja azt. Használat `Ctrl+Shift+P` (macOS: `Cmd+Shift+P`) a parancskatalógus megnyitásához, írja be a **Arduino**, keresse meg és válassza a **Arduino: Példák**.
+## <a name="open-the-remote-monitoring-sample-in-vs-code"></a>Nyissa meg a távoli figyelési minta a VS Code-ban
 
-## <a name="build-and-upload-the-device-code-to-your-mxchip"></a>Hozhat létre és tölt fel az eszköz kódot az MXChip
+1. Győződjön meg arról, hogy az IoT DevKit **nincs csatlakoztatva** a számítógépre. Először indítsa el a VS Code, és a fejlesztői készlet csatlakoztatása a számítógéphez.
 
-1. Használat `Ctrl+P` (macOS: `Cmd + P`), és írja be **tevékenység-config-eszközkapcsolat**.
+1. Kattintson a `F1` nyissa meg a parancskatalógus, írja be és válassza ki a **IoT Workbench: Példák**. Válassza ki **IoT DevKit** , tábla.
 
-  ![Válassza ki az Azure-előfizetés és az IoT hubhoz](./media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringV2/iot-suite-task-config-device-conexion.png)
+1. Keresés **távoli figyelési** kattintson **nyílt minta**. Egy új VS Code-ablak azt a projektmappában nyílik.
+  ![IoT Workbench, válassza a távoli figyelési példa](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/iot-workbench-example.png)
 
-2. A terminálban rákérdez, hogy szeretné-e használni az IoT-eszközök kapcsolati karakterláncot szeretne használni. Válassza ki *létrehozása új*, és illessze be azt.
+## <a name="configure-iot-hub-device-connection-string"></a>Az IoT Hub eszköz kapcsolati karakterlánc konfigurálása
 
-  ![illessze be a kapcsolati karakterlánc](./media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringV2/iot-suite-task-config-device-conexion-choose-iot-hub-press-button-A.png)
+1. Az IoT DevKit való váltás **konfigurációs mód**. Ehhez tegye a következőket:
+   * Tartsa lenyomva a gomb **A**.
+   * Leküldéses és kiadása a **alaphelyzetbe** gombra.
 
-3. A terminálban néha kéri, hogy adja meg a konfigurációs mód. Ehhez tartsa lenyomva a **gombra A**, majd továbbítsa és kiadása a **alaphelyzetbe állítása gomb** és engedje a gomb rögzíti. A képernyőn megjelenik a fejlesztői készlet azonosítója és a "Konfiguráció".
+2. A képernyőn megjelenik a fejlesztői készlet azonosítója és a "Konfiguráció".
+   
+  ![IoT DevKit konfigurációs mód](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/devkit-configuration-mode.png)
 
-  ![Eszköz DevKit képernyő](./media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringV2/azure-iot-suite-devkit-screen.png)
+3. Kattintson a `F1` nyissa meg a parancskatalógus, írja be és válassza ki a **IoT Workbench: eszköz > konfigurációs beállítások**.
 
-  > [!NOTE]
-  > A kapcsolati karakterláncot a vágólapra kell menteni, ha követte az oktatóanyag utolsó szakasza. Ha nem, akkor kell az Azure Portalon, és keresse meg az IoT Hub, a távoli figyelési erőforráscsoport. Itt láthatja az IoT Hub csatlakoztatott eszközök és az eszköz kapcsolati karakterlánc másolása.
+4. Illessze be a kapcsolati karakterláncot az imént másolt kattintson `Enter` konfigurálásához.
 
-  ![Keresse meg a kapcsolati karakterlánc](./media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringV2/azure-iot-suite-connection-string-of-a-device.png)
+## <a name="build-and-upload-the-device-code"></a>Hozhat létre és töltse fel az eszköz kódot
 
-  Most már sikeresen csatlakoztatva, és ellenőrizte az MXChip eszközt az IoT Hub. Tekintse meg az "Azure IoT Hub-eszközök" a VS Code szakaszában az új fizikai eszközt, hogy le kell töltenie a [Azure IoT-eszközkészlet bővítmény.](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) 
+1. Kattintson a `F1` nyissa meg a parancskatalógus, írja be és válassza ki a **IoT Workbench: eszköz > eszköz feltöltése**.
+  ![IoT Workbench: Eszközök - > feltöltése](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/iot-workbench-device-upload.png)
 
-  Most megjelenik az új fizikai eszköz az "Azure IoT Hub-eszközök" a VS Code szakaszban:
+1. A VS Code majd elindítja a kódja lefordításának és a kódot a DevKit való feltöltését.
+  ![IoT Workbench: Eszközök - > feltöltve.](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/iot-workbench-device-uploaded.png)
 
-  ![Figyelje meg, hogy az új IoT Hub-eszköz](./media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringV2/iot-suite-new-iot-hub-device.png)
-
-4. Végül a RemoteMonitoringV2.ino kód feltölti az alakzatot, megkezdheti az IoT-megoldásgyorsítók adatok küldését az MxChip. Használat `Ctrl + Shift + P` (macOS: `Cmd + Shift + P`), és írja be **Arduino feltöltése**. A VS Code ezután a kód az MXChip alakzatot a feltöltés elindításához, és értesítést küld, amikor végzett. 
+A fejlesztői készlet újraindul, és elindítja a kód futtatása.
 
 ## <a name="test-the-project"></a>A projekt tesztelése
 
-A mintaalkalmazás futtatásakor a MXChip fejlesztői készlet keresztül Wi-Fi érzékelői adatokat küld az IoT-megoldásgyorsítók. Az eredmény megjelenítéséhez kövesse az alábbi lépéseket:
+### <a name="view-the-telemetry-sent-to-remote-monitoring-solution"></a>A távoli figyelési megoldás küldött telemetriai adatok megtekintése
 
-1. Nyissa meg az IoT-megoldásgyorsítók, és kattintson a **IRÁNYÍTÓPULT**.
+A mintaalkalmazás futtatásakor a DevKit Wi-Fi keresztül érzékelői adatokat küld a távoli figyelési megoldáshoz. Az eredmény megjelenítéséhez kövesse az alábbi lépéseket:
 
-2. A megoldás gyorsító IoT konzolon látni fogja az MXChip fejlesztői készlet érzékelő állapota. 
+1. Nyissa meg a megoldás irányítópultján, és kattintson a **eszközök**.
 
-![Érzékelőktől kapott adatok valós IoT-megoldásgyorsítók](./media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringV2/azure-iot-suite-dashboard.png)
+1. Kattintson a lap jobb oldalán található, ahol megtekintheti az érzékelő állapot DevKit a valós idejű irányítópulton megnyílik az eszköz nevét (AZ3166).
+  ![Érzékelőktől kapott adatok az Azure IoT Suite-ban](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/azure-iot-suite-dashboard.png)
 
-Az érzékelő neve (AZ3166) kattintva a lap jobb oldalán található, ahol megtekintheti a MXChip érzékelők diagram valós idejű irányítópulton nyílik meg.
+### <a name="send-a-c2d-message"></a>C2D üzenet küldése
 
+Távoli figyelés megoldás lehetővé teszi, hogy az eszköz távoli metódus meghívása. A sxample kódot közzéteszi az is látható három módszert a **metódus** szakaszt, amikor az érzékelő van kiválasztva.
 
-## <a name="send-a-c2d-message"></a>C2D üzenet küldése
-Távoli figyelés v2 lehetővé teszi, hogy az eszköz távoli metódus meghívása.
-MX lapka példakód tesz közzé az érzékelő kiválasztásakor láthatja a metódus szakaszban három módszert.
+![IoT DevKit módszerek](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/azure-iot-suite-methods.png)
 
-![Metódusok MX-lapkával](./media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringV2/azure-iot-suite-methods.png)
+Ossza meg velünk próbálja ki az egyik módszerrel "LedColor" DevKit LED-ek színének módosítása.
 
-Módosíthatja a MX lapka LED-ek a metódussal "LedColor" egyik színét. Ezt, jelölje be a jelölőnégyzetet az eszköz és kattintson az ütemezés gombra. 
+1. Válassza ki a **AZ3166** az eszközök listáját, majd kattintson a a **feladatok**.
 
-![Metódusok MX-lapkával](./media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringV2/azure-iot-suite-schedule.png)
+  ![Hozzon létre egy feladatot](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/azure-iot-suite-job.png)
 
-Válassza ki a legördülő listában, ahol mindazokat a módszereket jelenik meg, egy nevet, és alkalmazni a ChangeColor meghívott metódus.
+2. A feladatok konfigurálása az alábbi, és kattintson a **alkalmaz**.
+  * Válassza a feladat: **Run metódus**
+  * Metódus neve: **LedColor**
+  * Feladat neve: **ChangeLedColor**
+  
+  ![Feladatbeállítások](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/iot-suite-change-color.png)
 
-![Legördülő lista MX-lapkával](./media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringV2/iot-suite-change-color.png)
+Néhány másodpercen belül a fejlesztői készlet módosítani kell a RGB LED (alább a gomb A) színét.
 
-Néhány másodpercen belül, a fizikai MX lapkával kell a RGB LED színének módosítása (alább a gomb)
+![IoT DevKit red vezetett](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/azure-iot-suite-devkit-led.png)
 
-![LED MX-lapkával](./media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringV2/azure-iot-suite-devkit-led.png)
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+Ha tovább kíván lépni a további oktatóanyagokra, ne kapcsolja ki a távoli monitorozási megoldásgyorsítót.
+
+Ha már nincs szüksége a megoldásgyorsító, törölje azt a kiépített megoldások lapon kiválasztja, és kattintson a megoldás törlése:
+
+![Megoldás törlése](media/quickstart-remote-monitoring-deploy/deletesolution.png)
 
 ## <a name="problems-and-feedback"></a>Problémák és visszajelzés
 
-Ha problémákat tapasztal, tekintse meg [– gyakori kérdések](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/) vagy fel velünk a kapcsolatot, a következő csatornákon:
+Ha problémákat tapasztal, tekintse meg [az IoT DevKit – gyakori kérdések](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/) vagy fel velünk a kapcsolatot a következő csatornák használatával:
 
 * [Gitter.im](http://gitter.im/Microsoft/azure-iot-developer-kit)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/iot-devkit)
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy megtanulhatta, hogyan lehet egy DevKit eszköz csatlakoztatása az IoT-megoldásgyorsítók és jelenítheti meg az érzékelő adatokat, az alábbiakban a javasolt következő lépések:
+Most, hogy megtanulhatta, hogyan jelenítheti meg az érzékelő adatokat és a egy DevKit eszköz csatlakoztatása az Azure IoT távoli figyelési megoldásgyorsító, Íme a javasolt következő lépések:
 
-* [IoT a megoldásgyorsítók áttekintése](https://docs.microsoft.com/azure/iot-suite/)
-* [Az MXChip IoT DevKit eszköz csatlakoztatása a Microsoft IoT Central alkalmazáshoz](https://docs.microsoft.com/microsoft-iot-central/howto-connect-devkit)
-* [IoT fejlesztői készlet](https://microsoft.github.io/azure-iot-developer-kit/)
+* [Az Azure IoT a megoldásgyorsítók áttekintése](https://docs.microsoft.com/azure/iot-suite/)
+* [A felhasználói felület testreszabása](../iot-accelerators/iot-accelerators-remote-monitoring-customize.md)
+* [IoT DevKit csatlakoztatása az Azure IoT Central alkalmazáshoz](../iot-central/howto-connect-devkit.md)

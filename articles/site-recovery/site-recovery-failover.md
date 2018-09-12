@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 09/11/2018
 ms.author: ponatara
-ms.openlocfilehash: 3ef52030f694b0f9ccf2bd10545918a4fae9f2ee
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: c9a2f258ca952ca36000e1ca0630fbde31ba7ba0
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37918305"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391317"
 ---
 # <a name="failover-in-site-recovery"></a>Feladatátvétel a Site Recoveryben
 Ez a cikk bemutatja, hogyan a feladatátvételi virtuális gépekhez és fizikai kiszolgálók Site Recovery által védett.
@@ -31,14 +31,14 @@ Az alábbi táblázat segítségével az Azure Site Recovery által biztosított
 
 
 ## <a name="run-a-failover"></a>Feladatátvétel futtatása
-Az eljárás ismerteti, hogy futtasson egy feladatátvételt a egy [helyreállítási terv](site-recovery-create-recovery-plans.md). Alternatív megoldásként futtathatja a feladatátvételt egyetlen virtuális gép vagy fizikai kiszolgálót a **replikált elemek** lap
+Az eljárás ismerteti, hogy futtasson egy feladatátvételt a egy [helyreállítási terv](site-recovery-create-recovery-plans.md). Alternatív megoldásként futtathatja a feladatátvételt egyetlen virtuális gép vagy fizikai kiszolgálót a **replikált elemek** oldalon leírt módon [Itt](vmware-azure-tutorial-failover-failback.md#run-a-failover-to-azure).
 
 
 ![Feladatátvétel](./media/site-recovery-failover/Failover.png)
 
 1. Válassza ki **helyreállítási tervek** > *recoveryplan_name*. Kattintson a **feladatátvétel**
 2. Az a **feladatátvételi** képernyőn válassza ki a **helyreállítási pont** irányuló feladatátvételt. Az alábbi lehetőségek egyikét használhatja:
-    1.  **Legújabb** (alapértelmezett): Ez a beállítás szerint a Site Recovery szolgáltatásba küldött összes adat feldolgozása elindítja a feladatot. Az adatok feldolgozását az egyes virtuális gépek helyreállítási pont létrehozása. A helyreállítási pontot használják a virtuális gép feladatátvétel során. Ez a beállítás a feladatátvételi minden adat, amelyet követően létrehozott virtuális gép, amely a feladatátvétel elindításakor a Site Recovery szolgáltatásba replikálása a legkisebb helyreállítási Időkorlát (Helyreállításipont-célkitűzés) biztosít.
+    1.  **Legújabb**: Ez a beállítás szerint a Site Recovery szolgáltatásba küldött összes adat feldolgozása elindítja a feladatot. Az adatok feldolgozását az egyes virtuális gépek helyreállítási pont létrehozása. A helyreállítási pontot használják a virtuális gép feladatátvétel során. Ez a beállítás a feladatátvételi minden adat, amelyet követően létrehozott virtuális gép, amely a feladatátvétel elindításakor a Site Recovery szolgáltatásba replikálása a legkisebb helyreállítási Időkorlát (Helyreállításipont-célkitűzés) biztosít.
     1.  **Legutóbb feldolgozott**: Ez a beállítás átadja a feladatokat a helyreállítási terv, amely a Site Recovery szolgáltatás által feldolgozott legutóbbi helyreállítási pontot az összes virtuális gépet. A virtuális gép feladatátvételi teszt során, a legutóbbi feldolgozott helyreállítási pontot időbélyegzőjét is látható. Ha a helyreállítási terv feladatátvétele, nyissa meg az egyes virtuális géphez, és nézze **legutóbbi helyreállítási pontok** csempére, hogy ezt az információt. Rendszer nem tölt időt a feldolgozatlan adatok feldolgozásához, ezt a lehetőséget egy alacsony RTO (helyreállítási időre vonatkozó célkitűzés) feladatátvételi lehetőséget biztosít.
     1.  **Legutóbbi alkalmazáskonzisztens**: Ez a beállítás az összes virtuális gép a legutóbbi alkalmazáskonzisztens helyreállítási pont, amely a Site Recovery szolgáltatás által feldolgozott, a helyreállítási terv feladatait. A virtuális gép feladatátvételi teszt során, a legutóbbi alkalmazáskonzisztens helyreállítási pont időbélyeg is látható. Ha a helyreállítási terv feladatátvétele, nyissa meg az egyes virtuális géphez, és nézze **legutóbbi helyreállítási pontok** csempére, hogy ezt az információt.
     1.  **Legújabb több virtuális gépre kiterjedő feldolgozott**: Ez a beállítás csak érhető el a helyreállítási terv, amely rendelkezik legalább egy virtuális gép több virtuális gépre kiterjedő konzisztencia. Virtuális gépek, amelyek részei egy replikációs csoport feladatátvételt a legutóbbi közös virtuális gépre kiterjedő konzisztens helyreállítási pont. Más virtuális gépek feladatátvételt a legutóbbi feldolgozott helyreállítási pontot.  
@@ -104,18 +104,19 @@ Bizonyos esetekben a virtuális gépek feladatátvétele egy extra közbenső l�
 
 Minden más esetben ez a köztes lépés nem kötelező, és a feladatátvétel végrehajtásához szükséges idő kisebb.
 
-
-
-
-
 ## <a name="using-scripts-in-failover"></a>A feladatátvevő szkriptek használatával
 Előfordulhat, hogy automatizálni szeretné bizonyos műveleteket feladatátvétel végrehajtása közben. Parancsprogramokkal vagy [az Azure automation-runbookok](site-recovery-runbook-automation.md) a [helyreállítási tervek](site-recovery-create-recovery-plans.md) valósítható meg.
 
 ## <a name="post-failover-considerations"></a>Feladatátvételi szempontokat részletező cikkben közzététele
 Vegye figyelembe a következőket érdemes feladatátvétel után:
 ### <a name="retaining-drive-letter-after-failover"></a>Meghajtóbetűjel megőrzése feladatátvétel után
-A meghajtó betűjelét, a virtuális gépek a feladatátvételt követően megőrzéséhez beállíthatja a **TÁROLÓHÁLÓZATI szabályzata** a virtuális gép **OnlineAll**. [További információk](https://support.microsoft.com/en-us/help/3031135/how-to-preserve-the-drive-letter-for-protected-virtual-machines-that-are-failed-over-or-migrated-to-azure).
+A meghajtó betűjelét, a virtuális gépek a feladatátvételt követően megőrzéséhez beállíthatja a **TÁROLÓHÁLÓZATI szabályzata** a virtuális gép **OnlineAll**. [További információk](https://support.microsoft.com/help/3031135/how-to-preserve-the-drive-letter-for-protected-virtual-machines-that-are-failed-over-or-migrated-to-azure).
 
+## <a name="prepare-to-connect-to-azure-vms-after-failover"></a>Felkészülés az Azure virtuális gépekhez való kapcsolódásra a feladatátvételt követően
+
+Ha azt szeretné, az Azure-beli virtuális gépek a feladatátvételt követően RDP/SSH segítségével kapcsolódni, kövesse a követelmények a táblázat foglalja össze [Itt](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover).
+
+Ismertetett lépéseket követve [Itt](site-recovery-failover-to-azure-troubleshoot.md) bármely-kapcsolatának hibaelhárítása a problémákat a feladatátvétel után.
 
 
 ## <a name="next-steps"></a>További lépések

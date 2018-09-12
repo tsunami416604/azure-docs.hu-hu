@@ -9,12 +9,12 @@ ms.author: xshi
 ms.date: 09/04/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: a66a17a0f8daed5f61753dd7c20ed5d9987c0b15
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 7fec050f43ed6facef548ea19d1d67030458fbb1
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44053900"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44380250"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-c-modules-for-azure-iot-edge"></a>Fejlesztés és az Azure IoT Edge-hez a C# modul hibakeresése Visual Studio Code használatával
 
@@ -116,6 +116,9 @@ Az IoT Edge C# modul az a .net Core-alkalmazás. És az Azure IoT C# eszközolda
 3. Nyissa meg a VS Code hibakeresési nézetet. Válassza ki a hibakeresési konfigurációt **ModuleName helyi hibakeresés (.NET Core)**. 
 
 4. Kattintson a **Start Debugging** vagy nyomja le az **F5**. A hibakeresési munkamenet indul.
+
+   > [!NOTE]
+   > Ha a .net Core `TargetFramework` replikája nem konzisztens a program elérési útja a `launch.json`. Frissítenie kell manuálisan a program elérési útja a `launch.json` figyelembe veszi a `TargetFramework` a .csproj fájlban. Tehát, hogy a VS Code sikeresen indíthatják el ezt a programot.
 
 5. A VS Code integrált termináljában, futtassa a következő parancsot, küldhet egy **Hello World** üzenet a modulnak. Ez a parancs az előző lépésekben bemutatta az IoT Edge-szimulátor sikeresen telepítő.
 

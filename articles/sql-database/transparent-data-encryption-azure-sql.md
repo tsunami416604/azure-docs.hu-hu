@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 07/09/2018
 ms.author: aliceku
 monikerRange: = azuresqldb-current || = azure-sqldw-latest || = sqlallproducts-allversions
-ms.openlocfilehash: 0ed05fd2d55f1c4c80bec9f64925be2eddddc067
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: afc53fc1abce74b247ec2e25bc3e4845bc870860
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "40043859"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44380199"
 ---
 # <a name="transparent-data-encryption-for-sql-database-and-data-warehouse"></a>Transzparens adattitkosítás az SQL Database és a Data warehouse-bA
 
@@ -128,7 +128,7 @@ A REST API-n keresztül transzparens adattitkosításának konfigurálásához, 
 
 ## <a name="next-steps"></a>További lépések
 
-- Transzparens adattitkosítás általános ismertetését lásd: [transzparens adattitkosítás] ((https://docs.microsoft.com/sql/relational-databases/security/transparent-data-encryption).
+- Transzparens adattitkosítás általános ismertetését lásd: [transzparens adattitkosítás](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption).
 - Transzparens adattitkosítás az SQL Database és az adatraktár Bring Your Own Key-támogatásával kapcsolatos további információkért lásd: [transzparens adattitkosítás Bring Your Own Key-támogatással rendelkező](transparent-data-encryption-byok-azure-sql.md).
 - Transzparens adattitkosítás használatával Bring Your Own Key-támogatással rendelkező indításához lásd: útmutatója [transzparens adattitkosítás kapcsolja be a Key Vaultból saját kulcs használatával a PowerShell-lel](transparent-data-encryption-byok-azure-sql-configure.md).
 - A Key Vaulttal kapcsolatos további információkért tekintse meg a [Key Vault-dokumentációs oldalát](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault).

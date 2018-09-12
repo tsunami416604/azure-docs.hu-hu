@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 03/25/2017
 ms.author: ghogen
-ms.openlocfilehash: a4be3f063c51f26e1df9ecf4cca4ae0655554750
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 596db56a71d4cc73517b9a9cbfe9b97e536aa83a
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42057574"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44378846"
 ---
 # <a name="manage-the-resources-associated-with-your-azure-accounts-in-visual-studio-cloud-explorer"></a>A Visual Studio Cloud Explorer az Azure-fiókokhoz kapcsolódó erőforrások kezelése
 Cloud Explorer segítségével is megtekintheti az Azure-erőforrások és erőforráscsoportok, azok tulajdonságait megvizsgálhatja és műveleteket kulcs Fejlesztőeszközök diagnosztika a Visual Studión belül. 
@@ -40,9 +40,9 @@ Az Azure-fiókkal társított erőforrások megtekintéséhez először hozzá k
 
     ![Cloud Explorer Azure fiók beállítások ikon](media/vs-azure-tools-resources-managing-with-cloud-explorer/azure-account-settings.png)
 
-1. Válassza ki **új fiók hozzáadása**. 
+1. Válassza ki **fiókok kezelése**. 
 
-    ![Cloud Explorer-fiók hozzáadása hivatkozás](media/vs-azure-tools-resources-managing-with-cloud-explorer/add-account-link.png)
+    ![Cloud Explorer-fiók hozzáadása hivatkozás](media/vs-azure-tools-resources-managing-with-cloud-explorer/manage-accounts-link.png)
 
 1. Jelentkezzen be az Azure-fiók amelynek Tallózás kívánt erőforrásokat. 
 
@@ -56,13 +56,17 @@ Az Azure-fiókkal társított erőforrások megtekintéséhez először hozzá k
 
 ## <a name="remove-an-azure-account-from-cloud-explorer"></a>A Cloud Explorer az Azure-fiók eltávolítása 
 
-1. A **Cloud Explorer**válassza **Azure-fiók beállításai**.
+1. A **Cloud Explorer**válassza **fiókkezelés**.
 
     ![Cloud Explorer Azure fiók beállítások ikon](media/vs-azure-tools-resources-managing-with-cloud-explorer/azure-account-settings.png)
 
-1. El kívánja távolítani a fiókot, mellett válassza ki a **eltávolítása**.
+1. El kívánja távolítani a fiókot, mellett válassza ki a **fiókok kezelése**.
 
     ![Cloud Explorer Azure fiók beállítások ikon](media/vs-azure-tools-resources-managing-with-cloud-explorer/remove-account.png)
+
+1. Válasszon **eltávolítása** eltávolítani egy fiókot.
+
+    ![Cloud Explorer kezelése fiókok párbeszédpanel](media/vs-azure-tools-resources-managing-with-cloud-explorer/accountmanage.PNG)
 
 ## <a name="view-resource-types-or-resource-groups"></a>Típusú erőforrások vagy erőforráscsoportok megtekintése
 Az Azure-erőforrások megtekintéséhez, vagy választhat **erőforrástípusok** vagy **erőforráscsoportok** megtekintése.

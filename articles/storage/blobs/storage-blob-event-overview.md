@@ -8,16 +8,18 @@ ms.date: 01/30/2018
 ms.topic: article
 ms.service: storage
 ms.component: blobs
-ms.openlocfilehash: d38ab71ed2d2ebff04004f02589cfccca4199318
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: c6dfb8ac36f3b5d51cc1d6126449b458f8f4946c
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42060639"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44377429"
 ---
 # <a name="reacting-to-blob-storage-events"></a>Reagálás Blob storage-események
 
-Az Azure Storage-események lehetővé teszik az alkalmazások létrehozását és törlését, a korszerű, kiszolgáló nélküli architektúra használatával blobok reagálni. Így összetettebb kódja vagy költséges és hatékony lekérdezési szolgáltatások nélkül hajtja végre.  Ehelyett eseményt leküld [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) például előfizetők [Azure Functions](https://azure.microsoft.com/services/functions/), [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/), vagy akár a saját egyéni http-figyelőt, és csak akkor Mit kell fizetni. 
+Az Azure Storage-események lehetővé teszik az alkalmazások létrehozását és törlését, a korszerű, kiszolgáló nélküli architektúra használatával blobok reagálni. Így összetettebb kódja vagy költséges és hatékony lekérdezési szolgáltatások nélkül hajtja végre.  Ehelyett eseményt leküld [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) például előfizetők [Azure Functions](https://azure.microsoft.com/services/functions/), [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/), vagy akár a saját egyéni http-figyelőt, és csak akkor Mit kell fizetni.
+
+BLOB storage-események megbízhatóan érkeznek a Event grid szolgáltatás, amely gazdag újrapróbálkozási szabályzatok és a kézbesíthetetlen levelek kézbesítési révén az alkalmazások megbízható kézbesítést szolgáltatásokat biztosít.
 
 Blob storage esemény gyakori forgatókönyvek kép vagy videó feldolgozása, keresési indexelő vagy minden fájl alapú munkafolyamat tartalmazza.  Aszinkron fájlfeltöltéseket egy kiválóan alkalmas eseményeket a rendszer.  Módosítások ritkák, de a forgatókönyvhöz szükséges azonnali válaszképességét, eseményalapú architektúrát különösen hatékony is lehet.
 

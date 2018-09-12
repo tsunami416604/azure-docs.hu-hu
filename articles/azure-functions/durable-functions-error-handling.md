@@ -8,14 +8,14 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 04/30/2018
+ms.date: 09/05/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 0b19fe7441d3c2c5222095c31d9c3677b8c9cf34
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 6bf9eb2cd2ebdf5f6d53e00923146bab49a142bf
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44092717"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44377905"
 ---
 # <a name="handling-errors-in-durable-functions-azure-functions"></a>Durable Functions (az Azure Functions) a hibák kezelése
 
@@ -92,7 +92,7 @@ Többféle módon is automatikus újrapróbálkozási szabályzat testreszabása
 * **Leállítási együttható**: A hányados leállítási üteme határozza meg. Alapértelmezett értéke 1.
 * **Maximális újrapróbálkozási időköz**: köztes várakozási idő maximális mennyisége újrapróbálkozások száma.
 * **Ismételje meg a timeout**: A legnagyobb ezzel időnk újrapróbálkozik. Az alapértelmezett viselkedést, hogy határozatlan ideig próbálja újra.
-* **Egyéni**: egy felhasználó által meghatározott visszahívást is adható meg, amely meghatározza, hogy e egy adott hívás meg kell ismételni.
+* **Kezelni**: egy felhasználó által meghatározott visszahívást is adható meg, amely meghatározza, hogy e egy adott hívás meg kell ismételni.
 
 ## <a name="function-timeouts"></a>Függvény időtúllépések
 

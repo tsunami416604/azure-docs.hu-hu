@@ -1,6 +1,6 @@
 ---
-title: Kompatibilis a Data Lake tárolási Gen1 big data-alkalmazások |} Microsoft Docs
-description: Azure Data Lake tárolási Gen1 (korábbi nevén az Azure Data Lake Store) együtt használható nyílt forráskódú alkalmazások listája
+title: Kompatibilis a Data Lake Storage Gen1 big data-alkalmazások |} A Microsoft Docs
+description: Az Azure Data Lake Storage Gen1 (korábbi nevén Azure Data Lake Store) együtt használható nyílt forráskódú alkalmazások listája
 services: data-lake-store
 documentationcenter: ''
 author: nitinme
@@ -10,34 +10,34 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: nitinme
-ms.openlocfilehash: 61187a26190e8d449a572e00d5abe8338d9060c2
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 4a0b3272bc0e4711c555bec17411960aad5a3f16
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37029638"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391200"
 ---
-# <a name="open-source-big-data-applications-that-work-with-azure-data-lake-storage-gen1"></a>Nyissa meg a forrás Big Data-alkalmazások Azure Data Lake tárolási Gen1 együtt használható
+# <a name="open-source-big-data-applications-that-work-with-azure-data-lake-storage-gen1"></a>Nyílt forráskódú Big Data-alkalmazások, amelyek együttműködnek az Azure Data Lake Storage Gen1
 
 [!INCLUDE [data-lake-storage-gen1-rename-note.md](../../includes/data-lake-storage-gen1-rename-note.md)]
 
-Ez a cikk az Azure Data Lake Store a nyílt forráskódú big data-alkalmazások listája. Az alábbi táblázat az alkalmazások csak az elérhető a felsorolt terjesztési verziók támogatottak. Ezeket az alkalmazásokat mely verziói érhetők el a hdinsight eszközzel kapcsolatos tudnivalókért lásd: [HDInsight-összetevők verziószámozása](../hdinsight/hdinsight-component-versioning.md).
+Ez a cikk a nyílt forráskódú big data-alkalmazások, amelyek együttműködnek az Azure Data Lake Storage Gen1 sorolja fel. Az alábbi táblázat az alkalmazások csak a felsorolt terjesztési elérhető verziók támogatottak. Ezek az alkalmazások milyen verziói elérhetők a HDInsight a további információkért lásd: [HDInsight összetevők verziószámozása](../hdinsight/hdinsight-component-versioning.md).
 
-| Nyílt forráskódú szoftvereket | Disztribúció |
+| Nyílt forráskódú szoftverek | Disztribúció |
 | --- | --- |
-| [Apache Sqoop](http://sqoop.apache.org/) |A HDInsight 3.2-es, 3.4, 3.5-ös és 3.6. |
-| [MapReduce](http://hadoop.apache.org/docs/r1.0.4/mapred_tutorial.html) |A HDInsight 3.2-es, 3.4, 3.5-ös és 3.6. |
-| [Apache Storm](https://storm.apache.org/) |A HDInsight 3.2-es, 3.4, 3.5-ös és 3.6. |
-| [Apache Hive](http://hive.apache.org/) |A HDInsight 3.2-es, 3.4, 3.5-ös és 3.6. |
-| [HCatalog](https://cwiki.apache.org/confluence/display/Hive/HCatalog) |A HDInsight 3.2-es, 3.4, 3.5-ös és 3.6. |
-| [Apache Mahout](http://mahout.apache.org/) |A HDInsight 3.2-es, 3.4, 3.5-ös és 3.6. |
-| [Apache Pig/Pig Latin](http://pig.apache.org/) |A HDInsight 3.2-es, 3.4, 3.5-ös és 3.6. |
-| [Apache Oozie](http://oozie.apache.org/) |A HDInsight 3.2-es, 3.4, 3.5-ös és 3.6. |
-| [Apache Zookeeper](http://zookeeper.apache.org/) |A HDInsight 3.2-es, 3.4, 3.5-ös és 3.6. |
-| [Apache Tez](http://tez.apache.org/) |A HDInsight 3.2-es, 3.4, 3.5-ös és 3.6. |
-| [Apache Spark](http://spark.apache.org/) |HDInsight 3.4, 3.5-ös és 3.6. |
+| [Az Apache sqoop használatával](http://sqoop.apache.org/) |A HDInsight 3.2-es, 3.4-es, 3.5-ös és 3.6-os |
+| [MapReduce](http://hadoop.apache.org/docs/r1.0.4/mapred_tutorial.html) |A HDInsight 3.2-es, 3.4-es, 3.5-ös és 3.6-os |
+| [Apache Storm](https://storm.apache.org/) |A HDInsight 3.2-es, 3.4-es, 3.5-ös és 3.6-os |
+| [Az Apache Hive](http://hive.apache.org/) |A HDInsight 3.2-es, 3.4-es, 3.5-ös és 3.6-os |
+| [HCatalog](https://cwiki.apache.org/confluence/display/Hive/HCatalog) |A HDInsight 3.2-es, 3.4-es, 3.5-ös és 3.6-os |
+| [Az Apache mahout használatával](http://mahout.apache.org/) |A HDInsight 3.2-es, 3.4-es, 3.5-ös és 3.6-os |
+| [Az Apache Pig és a Pig Latin](http://pig.apache.org/) |A HDInsight 3.2-es, 3.4-es, 3.5-ös és 3.6-os |
+| [Az Apache Oozie](http://oozie.apache.org/) |A HDInsight 3.2-es, 3.4-es, 3.5-ös és 3.6-os |
+| [Az Apache Zookeeper](http://zookeeper.apache.org/) |A HDInsight 3.2-es, 3.4-es, 3.5-ös és 3.6-os |
+| [Az Apache Tez](http://tez.apache.org/) |A HDInsight 3.2-es, 3.4-es, 3.5-ös és 3.6-os |
+| [Apache Spark](http://spark.apache.org/) |A HDInsight 3.4-es, 3.5-ös és 3.6-os |
 
 
 ## <a name="see-also"></a>Lásd még
-* [Az Azure Data Lake tárolási Gen1 áttekintése](data-lake-store-overview.md)
+* [Az Azure Data Lake Storage Gen1 áttekintése](data-lake-store-overview.md)
 

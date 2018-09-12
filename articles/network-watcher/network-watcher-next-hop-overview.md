@@ -1,6 +1,6 @@
 ---
-title: Bevezetés az Azure hálózati figyelőt a következő ugrás |} Microsoft Docs
-description: Ez a cikk áttekintést a hálózati figyelőt következő ugrás funkció.
+title: Az Azure Network Watcher következő ugrás bemutatása |} A Microsoft Docs
+description: Ez a cikk áttekintést a Network Watcher következő ugrás képesség.
 services: network-watcher
 documentationcenter: na
 author: jimdial
@@ -14,30 +14,32 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: bbb782e700781dcfedbbd340c7d10db53767b035
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 28eacdce922e26d391cf34f78cb03ead9c6887a1
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32180385"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391266"
 ---
-# <a name="use-next-hop-to-diagnose-virtual-machine-routing-problems"></a>Használja a következő ugrás a virtuális gép útválasztási problémák diagnosztizálásához
+# <a name="use-next-hop-to-diagnose-virtual-machine-routing-problems"></a>Használja a következő ugrás virtuális gép útválasztási problémáinak diagnosztizálása
 
-A virtuális gép (VM) forgalmat elküldi egy cél, a hálózati kártya (NIC) társított hatékony útvonalak alapján. Következő ugrás lekérése a következő ugrás típusa és a csomagok IP-cím egy adott virtuális gép és egy hálózati adaptert. A következő ugrás ismerete segít meghatározni, ha a rendeltetési fordítani, a forgalom, vagy ha a forgalom sehol küldi. Az útvonalak, ahol forgalom irányítja a rendszer egy helyi helyre, vagy a virtuális készülék, egy nem megfelelő konfigurációs problémák vezethet. Következő ugrás is a következő ugrás hozzárendelt útválasztási táblázatot ad vissza. Ha egy felhasználó által megadott útvonalat az útvonal van meghatározva, a rendszer, hogy az útvonal adja vissza. Ellenkező esetben a következő ugrás értéket ad vissza **Rendszerútvonal**.
+Egy virtuális gépet (VM) érkező forgalmat küld egy cél hálózati adapter (NIC) tartozó érvényes útvonalak alapján. Következő ugrás olvas be a következő ugrás típusa és a egy csomag IP-címét egy adott virtuális Gépről vagy hálózati adapterhez. A következő ugrás ismerete segít meghatározni, hogy ha a rendeltetési átirányítja folyamatban van a forgalmat, vagy ha forgalmat küld a rendszer sehol. Kapcsolódási problémák útvonalakat, ahol átirányítja a forgalmat egy a helyszíni helyre, vagy egy olyan virtuális berendezésre, egy nem megfelelő konfigurációja vezethet. Következő ugrás is az a következő ugrás társított útvonaltábla adja vissza. Ha az útvonal egy felhasználó által definiált útvonal van meghatározva, azt a módot adja vissza. Ellenkező esetben a következő Ugrás vissza **Rendszerútvonal**.
 
-![a következő ugrás – áttekintés](./media/network-watcher-next-hop-overview/figure1.png)
+![a következő ugrás áttekintése](./media/network-watcher-next-hop-overview/figure1.png)
 
-A következő ugrások beállított esetleg a következő ugrás által visszaadott a következők:
+A következő ugrásokkal együtt, amely a következő ugrás funkció által visszaadott előfordulhat, hogy a következők:
 
 * Internet
 * VirtualAppliance
 * VirtualNetworkGateway
-* VnetLocal
-* VnetPeering
+* VirtualNetwork
+* VirtualNetworkPeering
+* VirtualNetworkServiceEndpoint 
+* MicrosoftEdge
 * None
 
-Minden egyes következő ugrás típusa kapcsolatos további információkért lásd: [Útválasztás – áttekintés](../virtual-network/virtual-networks-udr-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
+Következő ugrások típusaira kapcsolatos további információkért lásd: [Útválasztás áttekintése](../virtual-network/virtual-networks-udr-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 
 ## <a name="next-steps"></a>További lépések
 
-Következő Ugrás használata a virtuális gép hálózati útválasztási problémák diagnosztizálásához kapcsolatban [diagnosztizálása Virtuálisgép-hálózat útválasztási problémák](diagnose-vm-network-routing-problem.md).
+VM-hálózat útválasztási problémáinak diagnosztizálása a következő ugrás használatával kapcsolatban lásd: [diagnosztizálhatja a Virtuálisgép-hálózat útválasztási problémáinak](diagnose-vm-network-routing-problem.md).

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: abnarain
-ms.openlocfilehash: bb5e58c0cb06baabf76d7d0443e94b368549176f
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 7948b54bd6402cf238c5709d270087746ed4fa95
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44051340"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44380369"
 ---
 # <a name="how-to-create-and-configure-self-hosted-integration-runtime"></a>Hogyan hozhat létre, és a helyi integrációs modul konfigurálása
 Az Integration Runtime (IR) a különböző hálózati környezetekben adatintegrációs képességeket biztosít az Azure Data Factory által használt számítási infrastruktúra áll. Integrációs modul kapcsolatos részletekért lásd: [Integration Runtime áttekintése](concepts-integration-runtime.md).
@@ -134,7 +134,6 @@ Az alábbiakban az integrációsmodul-csomópontot integrációs közötti kommu
 
 - A tanúsítványnak kell lennie egy nyilvánosan megbízható X509 v3 tanúsítvány. Azt javasoljuk, hogy a nyilvános (külső) hitelesítésszolgáltató (CA) által kiállított tanúsítványokat használ.
 - Minden egyes az integration runtime csomópontja meg kell bíznia a tanúsítványt.
-- A rendszer támogatja a helyettesítő tanúsítványokat. Ha a tartománynév **node1.domain.contoso.com**, használhatja ***. domain.contoso.com** a tanúsítvány tulajdonos neve.
 - A SAN-tanúsítványok használata nem ajánlott, mert a tulajdonos alternatív neveket csak az utolsó elem fogja használni, és minden más figyelmen kívül jelenlegi korlátozás miatt. Például van egy SAN-tanúsítvány, amelynek SAN vannak **node1.domain.contoso.com** és **node2.domain.contoso.com**, ezzel a tanúsítvánnyal csak használhatja a gépet, amelynek FQDN-je **node2.domain.contoso.com**.
 - Támogatja az SSL-tanúsítványokra vonatkozó Windows Server 2012 R2 által támogatott bármely kulcsának mérete.
 - Tanúsítvány használata a CNG kulcsok nem támogatottak.  

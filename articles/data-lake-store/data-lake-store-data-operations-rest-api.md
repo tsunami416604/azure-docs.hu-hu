@@ -1,25 +1,24 @@
 ---
-title: "REST API: Fájlrendszerműveletek az Azure Data Lake Store-ban | Microsoft Docs"
-description: "Fájlrendszerműveletek végrehajtása a Data Lake Store-on WebHDFS REST API-k használatával"
+title: 'REST API: Fájlrendszerműveletek az Azure Data Lake Storage Gen1 |} A Microsoft Docs'
+description: Az Azure Data Lake Storage Gen1 fájlrendszerműveletek végrehajtása a WebHDFS REST API-k használatával
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 01/09/2018
+ms.topic: conceptual
+ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: a850b3fdff956abe41ac9a4af10a96dc119a75f4
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
-ms.translationtype: HT
+ms.openlocfilehash: 62ecf3b1983853629f6bc5fd594231188aa67bcd
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391606"
 ---
-# <a name="filesystem-operations-on-azure-data-lake-store-using-rest-api"></a>Fájlrendszerműveletek az Azure Data Lake Store-ban a REST API használatával
+# <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-rest-api"></a>Fájlrendszerműveletek az Azure Data Lake Storage Gen1 REST API használatával
 > [!div class="op_single_selector"]
 > * [.NET SDK](data-lake-store-data-operations-net-sdk.md)
 > * [Java SDK](data-lake-store-get-started-java-sdk.md)
@@ -28,30 +27,30 @@ ms.lasthandoff: 01/10/2018
 >
 > 
 
-Ebből a cikkből megtudhatja, hogyan hajthat végre fájlrendszerműveleteket a WebHDFS REST API-k és az Azure Data Lake Store REST API-k használatával. A Data Lake Store fiókkezelési műveleteinek REST API használatával való végrehajtásával kapcsolatban lásd: [Fiókkezelési műveletek a Data Lake Store-ban a REST API használatával](data-lake-store-get-started-rest-api.md).
+Ebből a cikkből megismerheti, hogyan hajthat végre fájlrendszerműveleteket a Azure Data Lake Storage Gen1 WebHDFS REST API-k és Data Lake Storage Gen1 REST API-k használatával. Fiókkezelési műveletek végrehajtása a Data Lake Storage Gen1 REST API-val kapcsolatos utasításokért lásd: [fiókkezelési műveletek a Data Lake Storage Gen1 REST API-val](data-lake-store-get-started-rest-api.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 * **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 
-* **Azure Data Lake Store-fiók**. Kövesse [Az Azure Data Lake Store használatának első lépései az Azure Portal használatával](data-lake-store-get-started-portal.md) című témakör utasításait.
+* **Az Azure Data Lake Storage Gen1 fiók**. Kövesse az utasításokat, [Azure Data Lake Storage Gen1 használatának első lépései az Azure portal használatával](data-lake-store-get-started-portal.md).
 
-* **[cURL](http://curl.haxx.se/)**. Ez a cikk a cURL használatával mutatja be, hogyan lehet REST API-hívásokat indítani a Data Lake Store-fiókra.
+* **[cURL](http://curl.haxx.se/)**. Ez a cikk a curl használatával bemutatják, hogyan lehet REST API-hívásokat a Data Lake Storage Gen1 fiók ellen.
 
 ## <a name="how-do-i-authenticate-using-azure-active-directory"></a>Hogyan végezhető el a hitelesítés az Azure Active Directory használatával?
 Az Azure Active Directory használatával történő hitelesítést két módon végezheti el.
 
-* Az alkalmazás (interaktív) végfelhasználói hitelesítésével kapcsolatban lásd: [Végfelhasználói hitelesítés a Data Lake Store-ban a .NET SDK használatával](data-lake-store-end-user-authenticate-rest-api.md).
-* Az alkalmazás szolgáltatások közötti hitelesítésével kapcsolatban (nem interaktív) lásd: [Szolgáltatások közötti hitelesítés a Data Lake Store-ban a .NET SDK használatával](data-lake-store-service-to-service-authenticate-rest-api.md).
+* Az alkalmazás (interaktív) végfelhasználói hitelesítésével kapcsolatban lásd: [végfelhasználói hitelesítés a Data Lake Storage Gen1 .NET SDK használatával](data-lake-store-end-user-authenticate-rest-api.md).
+* (Nem interaktív) az alkalmazás szolgáltatások közötti hitelesítésével kapcsolatban lásd: [szolgáltatások közötti hitelesítés a Data Lake Storage Gen1 .NET SDK használatával](data-lake-store-service-to-service-authenticate-rest-api.md).
 
 
 ## <a name="create-folders"></a>Mappák létrehozása
 Ez a művelet az [itt](http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#Make_a_Directory) definiált WebHDFS REST API-híváson alapul.
 
-Használja a következő cURL-parancsot. Cserélje le a **\<yourstorename>** elemet saját Data Lake Store-nevére.
+Használja a következő cURL-parancsot. Cserélje le  **\<yourstorename >** a Data Lake Storage Gen1 fiók nevére.
 
     curl -i -X PUT -H "Authorization: Bearer <REDACTED>" -d "" 'https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/?op=MKDIRS'
 
-Az előző parancsban cserélje le a \<`REDACTED`\> részt a korábban kapott hitelesítő jogkivonatra. Ez a parancs egy **mytempdir** nevű könyvtárat hoz létre a Data Lake Store-fiók gyökérkönyvtárában.
+Az előző parancsban cserélje le a \<`REDACTED`\> részt a korábban kapott hitelesítő jogkivonatra. Ez a parancs létrehoz egy könyvtárat nevű **mytempdir** a Data Lake Storage Gen1 fiókja gyökérmappájában.
 
 Ha a művelet sikeresen befejeződik, a következő kódrészlethez hasonló választ kell kapnia:
 
@@ -60,7 +59,7 @@ Ha a művelet sikeresen befejeződik, a következő kódrészlethez hasonló vá
 ## <a name="list-folders"></a>Mappák listázása
 Ez a művelet az [itt](http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#List_a_Directory) definiált WebHDFS REST API-híváson alapul.
 
-Használja a következő cURL-parancsot. Cserélje le a **\<yourstorename>** elemet saját Data Lake Store-nevére.
+Használja a következő cURL-parancsot. Cserélje le  **\<yourstorename >** a Data Lake Storage Gen1 fiók nevére.
 
     curl -i -X GET -H "Authorization: Bearer <REDACTED>" 'https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/?op=LISTSTATUS'
 
@@ -88,7 +87,7 @@ Ha a művelet sikeresen befejeződik, a következő kódrészlethez hasonló vá
 ## <a name="upload-data"></a>Adatok feltöltése
 Ez a művelet az [itt](http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#Create_and_Write_to_a_File) definiált WebHDFS REST API-híváson alapul.
 
-Használja a következő cURL-parancsot. Cserélje le a **\<yourstorename>** elemet saját Data Lake Store-nevére.
+Használja a következő cURL-parancsot. Cserélje le  **\<yourstorename >** a Data Lake Storage Gen1 fiók nevére.
 
     curl -i -X PUT -L -T 'C:\temp\list.txt' -H "Authorization: Bearer <REDACTED>" 'https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/list.txt?op=CREATE'
 
@@ -110,12 +109,12 @@ A kimenet a következő kódrészlethez hasonló:
 ## <a name="read-data"></a>Adatok olvasása
 Ez a művelet az [itt](http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#Open_and_Read_a_File) definiált WebHDFS REST API-híváson alapul.
 
-Az adatok beolvasása a Data Lake Store-fiókból egy kétlépéses folyamat.
+A Data Lake Storage Gen1 történő adatkiolvasás fiók egy kétlépéses folyamat.
 
 * Először küldenie kell egy GET kérelmet a `https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile.txt?op=OPEN` végponthoz. Ez a hívás visszaadja azt a helyet, ahová a következő GET kérelmet kell küldenie.
 * Ezután küldenie kell egy GET kérelmet a `https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile.txt?op=OPEN&read=true` végponthoz. Ez a hívás megjeleníti a fájl tartalmát.
 
-Mivel azonban az első és második lépésben nincs különbség a bemeneti paraméterek között, az első kérelem elküldéséhez használhatja az `-L` paramétert. A `-L` kapcsoló lényegében egyesít két kérelmet, és megismételteti a kérelmet a cURL-paranccsal az új helyen. Végül megjelenik az összes kérelemhívás kimenete az alábbi kódrészletben látható módon. Cserélje le a **\<yourstorename>** elemet saját Data Lake Store-nevére.
+Mivel azonban az első és második lépésben nincs különbség a bemeneti paraméterek között, az első kérelem elküldéséhez használhatja az `-L` paramétert. A `-L` kapcsoló lényegében egyesít két kérelmet, és megismételteti a kérelmet a cURL-paranccsal az új helyen. Végül megjelenik az összes kérelemhívás kimenete az alábbi kódrészletben látható módon. Cserélje le  **\<yourstorename >** a Data Lake Storage Gen1 fiók nevére.
 
     curl -i -L GET -H "Authorization: Bearer <REDACTED>" 'https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile.txt?op=OPEN'
 
@@ -134,7 +133,7 @@ Az alábbi kódrészlethez hasonló kimenetnek kell megjelennie:
 ## <a name="rename-a-file"></a>Fájl átnevezése
 Ez a művelet az [itt](http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#Rename_a_FileDirectory) definiált WebHDFS REST API-híváson alapul.
 
-Fájl átnevezéséhez használja a következő cURL-parancsot. Cserélje le a **\<yourstorename>** elemet saját Data Lake Store-nevére.
+Fájl átnevezéséhez használja a következő cURL-parancsot. Cserélje le  **\<yourstorename >** a Data Lake Storage Gen1 fiók nevére.
 
     curl -i -X PUT -H "Authorization: Bearer <REDACTED>" -d "" 'https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile.txt?op=RENAME&destination=/mytempdir/myinputfile1.txt'
 
@@ -148,7 +147,7 @@ Az alábbi kódrészlethez hasonló kimenetnek kell megjelennie:
 ## <a name="delete-a-file"></a>Fájl törlése
 Ez a művelet az [itt](http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#Delete_a_FileDirectory) definiált WebHDFS REST API-híváson alapul.
 
-Fájl törléséhez használja a következő cURL-parancsot. Cserélje le a **\<yourstorename>** elemet saját Data Lake Store-nevére.
+Fájl törléséhez használja a következő cURL-parancsot. Cserélje le  **\<yourstorename >** a Data Lake Storage Gen1 fiók nevére.
 
     curl -i -X DELETE -H "Authorization: Bearer <REDACTED>" 'https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile1.txt?op=DELETE'
 
@@ -160,9 +159,9 @@ A következőhöz hasonló kimenetnek kell megjelennie:
     {"boolean":true}
 
 ## <a name="next-steps"></a>További lépések
-* [Fiókkezelési műveletek a Data Lake Store-ban a REST API használatával](data-lake-store-get-started-rest-api.md).
+* [Fiókkezelési műveletek a Data Lake Storage Gen1 REST API-val](data-lake-store-get-started-rest-api.md).
 
 ## <a name="see-also"></a>Lásd még
-* [Azure Data Lake Store REST API-referencia](https://docs.microsoft.com/rest/api/datalakestore/)
-* [Az Azure Data Lake Store-ral kompatibilis nyílt forráskódú big data-alkalmazások](data-lake-store-compatible-oss-other-applications.md)
+* [Az Azure Data Lake Storage Gen1 REST API-referencia](https://docs.microsoft.com/rest/api/datalakestore/)
+* [Nyílt forráskódú Big Data-alkalmazások kompatibilis az Azure Data Lake Storage Gen1](data-lake-store-compatible-oss-other-applications.md)
 

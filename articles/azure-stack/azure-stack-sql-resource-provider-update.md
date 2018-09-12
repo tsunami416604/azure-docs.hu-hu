@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 09/04/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: 017ac3214046b812ce003ab7a190f2f2b3f4f2e2
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 3517114d5bc267aa32cea49161d0d34156a2ed1e
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43697941"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44390909"
 ---
 # <a name="update-the-sql-resource-provider"></a>Az SQL erőforrás-szolgáltató frissítése
 
@@ -49,7 +49,9 @@ Miután a *UpdateSQLProvider.ps1* a szkript létrehoz egy új virtuális Gépet,
 
 ### <a name="update-script-powershell-example"></a>PowerShell példaszkript frissítése
 
-Szerkesztheti, és futtassa a következő parancsfájl egy rendszergazda jogú PowerShell ISE-ben. Ne felejtse el módosítani a fiók adatait és a jelszavakat, mint a saját környezetéhez szükséges.
+<a name="you-can-edit-and-run-the-following-script-from-an-elevated-powershell-ise"></a>Szerkesztheti, és futtassa a következő parancsfájl egy rendszergazda jogú PowerShell ISE-ben. 
+-  
+- Ne felejtse el módosítani a fiók adatait és a jelszavakat, mint a saját környezetéhez szükséges.
 
 > [!NOTE]
 > A frissítési folyamat csak az Azure Stack integrált rendszerek vonatkozik.

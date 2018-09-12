@@ -1,24 +1,25 @@
 ---
-title: Az Azure HDInsight Tools – Visual Studio Code használata a Hive, LLAP vagy pySpark
+title: Az Azure HDInsight-eszközök – Visual Studio Code-ot használja a Hive, LLAP vagy PySpark |} A Microsoft Docs
 description: Ismerje meg, hogyan használható az Azure HDInsight Tools for Visual Studio Code létrehozásához és elküldéséhez a lekérdezések és a parancsfájlokat.
-keywords: A VS Code, az Azure HDInsight-eszközök, Hive, Python, PySpark, Spark, HDInsight, Hadoop LLAP, interaktív Hive, interaktív lekérdezés
-services: hdinsight
+Keywords: VS Code,Azure HDInsight Tools,Hive,Python,PySpark,Spark,HDInsight,Hadoop,LLAP,Interactive Hive,Interactive Query
+services: HDInsight
+documentationcenter: ''
 author: jejiang
 ms.author: jejiang
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/27/2017
-ms.openlocfilehash: 58f930b7bb1dee8f8f95b6627ebf70fe095126c0
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 5cf3a18dc01ba5670e73aa93cb6c9aab2d5de660
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43697849"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44378619"
 ---
 # <a name="use-azure-hdinsight-tools-for-visual-studio-code"></a>Az Azure HDInsight Tools for Visual Studio Code használata
 
-Ismerje meg, hogyan használhatja az Azure HDInsight Tools for Visual Studio Code (a VS Code) létrehozásához és elküldéséhez a Hive kötegelt feladatokat, interaktív Hive-lekérdezéseket és pySpark szkripteket. Az Azure HDInsight-eszközök a VS Code által támogatott platformokat is telepíthető. Ezek közé tartozik a Windows, a Linux és a macOS. A különböző platformok előfeltételei is megtalálhatja.
+Ismerje meg, hogyan használhatja az Azure HDInsight Tools for Visual Studio Code (a VS Code) létrehozásához és elküldéséhez a Hive kötegelt feladatokat, interaktív Hive-lekérdezéseket és PySpark szkripteket. Az Azure HDInsight-eszközök a VS Code által támogatott platformokat is telepíthető. Ezek közé tartozik a Windows, a Linux és a macOS. A különböző platformok előfeltételei is megtalálhatja.
 
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -33,17 +34,17 @@ A következő elemekre szükség, az ebben a cikkben ismertetett lépéseket kö
    
 Az előfeltételek telepítése után az Azure HDInsight Tools for VS Code is telepítheti. 
 
-**Telepítse az Azure HDInsight-eszközök**
+### <a name="to-install-azure-hdinsight-tools"></a>Az Azure HDInsight-eszközök telepítése
 
 1. Nyissa meg a Visual Studio Code-ot.
 
 2. A bal oldali panelen válassza ki a **bővítmények**. A Keresés mezőbe írja be a **HDInsight**.
 
-3. A **Azure HDInsight eszközök**válassza **telepítése**. Néhány másodperc elteltével a **telepítése** gomb felirata **Újrabetöltés**.
+3. A **Azure HDInsight Tools**válassza **telepítése**. Néhány másodperc elteltével a **telepítése** gomb felirata **Újrabetöltés**.
 
-4. Válassza ki **Újrabetöltés** aktiválása a **Azure HDInsight eszközök** bővítmény.
+4. Válassza ki **Újrabetöltés** aktiválása a **Azure HDInsight Tools** bővítmény.
 
-5. Válassza ki **Reload Window** megerősítéséhez. Látható **Azure HDInsight eszközök** a a **bővítmények** ablaktáblán.
+5. Válassza ki **Reload Window** megerősítéséhez. Látható **Azure HDInsight Tools** a a **bővítmények** ablaktáblán.
 
    ![HDInsight Visual Studio Code Python-telepítés](./media/hdinsight-for-vscode/install-hdInsight-plugin.png)
 
@@ -51,7 +52,7 @@ Az előfeltételek telepítése után az Azure HDInsight Tools for VS Code is te
 
 Munkaterület létrehozása a VS Code-ban, mielőtt az csatlakozna az Azure-bA.
 
-**Munkaterület megnyitása**
+### <a name="to-open-a-workspace"></a>Munkaterület megnyitása
 
 1. Az a **fájl** menüjében válassza **mappa megnyitása**. Ezután kijelölni a munkahelyi mappa egy létező mappát, vagy hozzon létre egy újat. A bal oldali panelen megjelenik a mappa.
 
@@ -59,25 +60,28 @@ Munkaterület létrehozása a VS Code-ban, mielőtt az csatlakozna az Azure-bA.
 
    ![Új fájl](./media/hdinsight-for-vscode/new-file.png)
 
-3. Adjon nevet az új fájl a .hql (Hive-lekérdezések) vagy a (Spark-szkriptet) .py fájl kiterjesztése. Figyelje meg, hogy egy **XXXX_hdi_settings.json** konfigurációs fájl automatikusan hozzáadódik a munkahelyi mappa.
-
-4. Nyissa meg **XXXX_hdi_settings.json** a **EXPLORER**, vagy kattintson a jobb gombbal, válassza ki a parancsprogram-szerkesztő **konfigurációs beállítása**. Konfigurálhatja a bejelentkezési belépési, a fürt alapértelmezett és a feladat beküldése paramétereit a fájlban a mintában látható módon. Ön is a fennmaradó paraméterekkel üresen hagyhatja.
+3. Adjon nevet az új fájl a .hql (Hive-lekérdezések) vagy a (Spark-szkriptet) .py fájl kiterjesztése. 
 
 ## <a name="connect-to-hdinsight-cluster"></a>Csatlakozhat a HDInsight-fürt
 
 Elküldés előtt szkriptek HDInsight-fürtök a VS Code-ból, szeretné-e csatlakozni az Azure-fiókjába, vagy egy fürtöt (az Ambari felhasználónév/jelszó és a tartományhoz csatlakoztatott fiók).
 
-**Csatlakozás az Azure-bA**
+### <a name="to-connect-to-azure"></a>Csatlakozás az Azure-bA
 
 1. Hozzon létre egy új munkahelyi mappa és a egy új parancsfájlt, ha már nincs rájuk.
 
 2. Kattintson a jobb gombbal a parancsprogram-szerkesztő, és ezt követően a helyi menüben válassza **HDInsight: bejelentkezési**. Is megadhat **Ctrl + Shift + P**, majd adja meg **HDInsight: bejelentkezési**.
 
-    ![HDInsight Tools for Visual Studio Code jelentkezzen be](./media/hdinsight-for-vscode/hdinsight-for-vscode-extension-login.png)
+    ![HDInsight Tools for Visual Studio Code-bejelentkezés](./media/hdinsight-for-vscode/hdinsight-for-vscode-extension-login.png)
 
 3. Jelentkezzen be, kövesse a bejelentkezési utasításait a **kimeneti** ablaktáblán.
+    + Globális környezetben, a HDInsight bejelentkezési aktiválják Azure jelentkezzen be a folyamatot.
 
-    **Azure:** ![HDInsight Tools for Visual Studio Code bejelentkezési adatai](./media/hdinsight-for-vscode/hdinsight-for-vscode-extension-Azurelogin-info.png)
+        ![Bejelentkezési utasítások az Azure-hoz](./media/hdinsight-for-vscode/hdi-azure-hdinsight-azure-signin.png)
+
+    + Más környezetek esetén kövesse a bejelentkezési utasításokat.
+
+        ![Bejelentkezési utasítások az más környezetben](./media/hdinsight-for-vscode/hdi-azure-hdinsight-hdinsight-signin.png)
 
     Miután csatlakozott, az Azure-fiók nevét a VS Code ablakának bal alsó állapotjelző sáv jelenik meg. 
 
@@ -94,9 +98,9 @@ Elküldés előtt szkriptek HDInsight-fürtök a VS Code-ból, szeretné-e csatl
     - Hive-os kötegelt szkriptek küldése
     - PySpark interaktív lekérdezések elküldése
     - Küldje el a PySpark kötegelt parancsfájlok
-    - Set-konfigurációk
+    - Konfiguráció beállítása
 
-<a id="linkcluster"></a>**A fürt összekapcsolása**
+<h3 id="linkcluster">A fürt összekapcsolása</h3>
 
 Hivatkozás egy normál fürt kezelése az Ambari felhasználónév használatával is, is hivatkozásra a biztonsági hadoop-fürt használatával: tartomány felhasználónév (például: user1@contoso.com).
 1. Nyissa meg a parancskatalógust kiválasztásával **CTRL + SHIFT + P**, majd adja meg **HDInsight: egy fürtöt**.
@@ -116,12 +120,25 @@ Hivatkozás egy normál fürt kezelése az Ambari felhasználónév használatá
 
 4. Is megszüntetheti a fürt által bevitelével **HDInsight: a fürt leválasztása** a parancskatalógus.
 
+
+### <a name="to-link-a-generic-livy-endpoint"></a>Egy általános livy-végpontra mutat.
+
+1. Nyissa meg a parancskatalógust kiválasztásával **CTRL + SHIFT + P**, majd adja meg **HDInsight: egy fürtöt**.
+2. Válassza ki **általános Livy végpont**.
+3. Adja meg az általános livy-végpont, például: http://10.172.41.42:18080.
+4. Válassza ki **alapszintű** mikor van szükség az általános livy-végpont, egyébként, engedélyezési válassza **None**.
+5. A bemeneti felhasználónév válassza **alapszintű** step4 a.
+6. Be a jelszót, ha a select **alapszintű** step4 a.
+7. Az általános livy endpoint összekapcsolás sikerült.
+
+   ![a csatolt általános livy-fürthöz](./media/hdinsight-for-vscode/link-cluster-process-generic-livy.png)
+
 ## <a name="list-hdinsight-clusters"></a>HDInsight-fürtök listázása
 
 A kapcsolat teszteléséhez, a HDInsight-fürtök listázhatja:
 
-**A HDInsight-fürtök listázása az Azure-előfizetéshez**
-1. Megnyit egy munkaterületet, és csatlakoztassa az Azure-bA. További információkért lásd: [nyissa meg a HDInsight-munkaterület](#open-hdinsight-workspace) és [csatlakozás az Azure](#connect-to-azure).
+### <a name="to-list-hdinsight-clusters-under-your-azure-subscription"></a>A HDInsight-fürtök listázása az Azure-előfizetéshez
+1. Megnyit egy munkaterületet, és csatlakoztassa az Azure-bA. További információkért lásd: [nyissa meg a HDInsight-munkaterület](#open-hdinsight-workspace) és [csatlakozás az Azure](#connect-to-hdinsight-cluster).
 
 2. Kattintson a jobb gombbal a parancsprogram-szerkesztő, és válassza **HDInsight: lista fürt** a helyi menüből. 
 
@@ -130,39 +147,41 @@ A kapcsolat teszteléséhez, a HDInsight-fürtök listázhatja:
     ![Egy fürt alapértelmezett konfigurációjának beállítása](./media/hdinsight-for-vscode/list-cluster-result.png)
 
 ## <a name="set-a-default-cluster"></a>Egy alapértelmezett fürt beállítása
-1. Megnyit egy munkaterületet, és csatlakozzon az Azure-bA. Lásd: [nyissa meg a HDInsight-munkaterület](#open-hdinsight-workspace) és [csatlakozás az Azure](#connect-to-azure).
+1. Megnyit egy munkaterületet, és csatlakozzon az Azure-bA. Lásd: [nyissa meg a HDInsight-munkaterület](#open-hdinsight-workspace) és [csatlakozás az Azure](#connect-to-hdinsight-cluster).
 
 2. Kattintson a jobb gombbal a parancsprogram-szerkesztő, és válassza **HDInsight: állítsa be a fürt alapértelmezett**. 
 
-3. Válasszon egy fürtöt, az alapértelmezett fürt meg a jelenlegi parancsfájlt. Az eszközök automatikusan frissítse a konfigurációs fájl **XXXX_hdi_settings.json**. 
+3. Válasszon egy fürtöt, az alapértelmezett fürt meg a jelenlegi parancsfájlt. Az eszközök automatikusan frissítse a konfigurációs fájl **. VSCode\settings.json**. 
 
    ![Készlet alapértelmezett fürtkonfiguráció](./media/hdinsight-for-vscode/set-default-cluster-configuration.png)
 
-## <a name="set-the-azure-environment"></a>Az Azure-környezet beállítása 
+## <a name="set-the-azure-environment"></a>Az Azure-környezet beállítása
 1. Nyissa meg a parancskatalógust kiválasztásával **CTRL + SHIFT + P**.
 
 2. Adja meg **HDInsight: állítsa be az Azure-környezet**.
 
 3. Válassza ki Azure-AzureChina egyik módja az alapértelmezett bejelentkezési bejegyzésként.
 
-4. Ugyanakkor az eszköz már mentette az alapértelmezett bejelentkezési bejegyzést **XXXX_hdi_settings.json**. Emellett közvetlenül is frissíti, a konfigurációs fájlban. 
+4. Ugyanakkor az eszköz már mentette az alapértelmezett bejelentkezési bejegyzést **. VSCode\settings.json**. Emellett közvetlenül is frissíti, a konfigurációs fájlban. 
 
    ![Alapértelmezett bejelentkezési belépési konfigurációjának beállítása](./media/hdinsight-for-vscode/set-default-login-entry-configuration.png)
 
-## <a name="submit-interactive-hive-queries"></a>Interaktív Hive-lekérdezések küldése
+## <a name="submit-interactive-hive-queries-hive-batch-scripts"></a>Interaktív Hive-lekérdezések elküldéséhez, Hive kötegelt parancsfájlok
 
-HDInsight Tools for VS Code elküldheti a HDInsight interaktív lekérdezési fürtökhöz való interaktív Hive-lekérdezéseket.
+HDInsight Tools for VS Code elküldheti az interaktív Hive-lekérdezések, Hive kötegelt szkriptek HDInsight-fürtök.
 
 1. Ha még nem tette, hozzon létre egy új munkamappát és egy új Hive-szkriptfájlt.
 
-2. Csatlakozzon az Azure-fiókhoz, majd konfigurálja az alapértelmezett fürtöt, ha még nem tette.
+2. Az Azure-fiók vagy a hivatkozás-fürtök csatlakoztatásához.
 
 3. Másolja ki és illessze be az alábbi kódot a Hive-fájlba, majd mentse el.
 
     ```hiveql
     SELECT * FROM hivesampletable;
     ```
-3. Kattintson jobb gombbal a szkriptszerkesztőre, majd válassza a **HDInsight: Hive Interactive (Interaktív Hive)** lehetőséget a lekérdezés küldéséhez. Az eszközök segítségével a helyi menüt használva egy kódblokkot is beküldhet az egész szkriptfájl helyett. A lekérdezés eredményei hamarosan megjelennek egy új lapon.
+4. Kattintson a jobb gombbal a parancsprogram-szerkesztő, jelölje be **HDInsight: interaktív Hive-** elküldheti a lekérdezést, vagy használja a helyi **Ctrl + Alt + I**. Válassza ki **HDInsight: Hive kötegelt** küldje el a szkriptet, vagy használja a helyi **Ctrl + Alt + H**. 
+
+5. Válassza ki a fürt amikor szüksége van. Az eszközök segítségével a helyi menüt használva egy kódblokkot is beküldhet az egész szkriptfájl helyett. A lekérdezés eredményei hamarosan megjelennek egy új lapon.
 
    ![Az interaktív Hive eredményei](./media/hdinsight-for-vscode/interactive-hive-result.png)
 
@@ -170,31 +189,10 @@ HDInsight Tools for VS Code elküldheti a HDInsight interaktív lekérdezési f�
 
     - **MESSAGES** (ÜZENETEK) panel: A **sor** számának kiválasztásakor a futó szkript első sorához ugrik.
 
-Az interaktív lekérdezés futtatása lényegesen kevesebb időt vesz igénybe, mint [egy Hive-os kötegelt feladat futtatása](#submit-hive-batch-scripts).
-
-## <a name="submit-hive-batch-scripts"></a>Hive-os kötegelt szkriptek küldése
-
-1. Ha még nem tette, hozzon létre egy új munkamappát és egy új Hive-szkriptfájlt.
-
-2. Csatlakozzon az Azure-fiókhoz, majd konfigurálja az alapértelmezett fürtöt, ha még nem tette.
-
-3. Másolja ki és illessze be az alábbi kódot a Hive-fájlba, majd mentse el.
-
-    ```hiveql
-    SELECT * FROM hivesampletable;
-    ```
-3. Kattintson jobb gombbal a szkriptszerkesztőre, majd válassza a **HDInsight: Hive Batch (Kötegelt Hive)** lehetőséget egy Hive-feladat küldéséhez. 
-
-4. Válassza ki a küldés célpontjául szolgáló fürtöt.  
-
-    Egy Hive-feladat elküldése után a küldés sikerességére vonatkozó információk és a feladatazonosító megjelenik az **OUTPUT** (KIMENET) panelen. A Hive-feladat megnyitja a **WEB BROWSER** (WEBBÖNGÉSZŐ) felületet is, itt jelennek a valós idejű feladatnaplók és a feladat állapota.
-
-   ![Hive-feladat küldésének eredménye](./media/hdinsight-for-vscode/submit-Hivejob-result.png)
-
-Az [interaktív Hive-lekérdezés küldése](#submit-interactive-hive-queries) lényegesen kevesebb időt vesz igénybe, mint egy kötegelt feladat küldése.
-
 ## <a name="submit-interactive-pyspark-queries"></a>PySpark interaktív lekérdezések elküldése
-HDInsight Tools for VS Code is lehetővé teszi, hogy a Spark-fürtök interaktív PySpark-lekérdezések elküldéséhez.
+
+### <a name="to-submit-interactive-pyspark-queries-to-spark-clusters"></a>A Spark-fürtök interaktív PySpark-lekérdezések elküldéséhez.
+
 1. Hozzon létre egy új munkahelyi mappa és a egy új parancsfájlt a .py kiterjesztéssel, ha még nem rendelkezik őket.
 
 2. Csatlakozhat az Azure-fiókjával, ha még nem tette.
@@ -213,7 +211,7 @@ HDInsight Tools for VS Code is lehetővé teszi, hogy a Spark-fürtök interakt�
    for i in range(0, 5):
         print(sortedCollection[i])
    ```
-4. Jelöljön ki ezeket a parancsfájlokat. Ezután kattintson a jobb gombbal a parancsprogram-szerkesztő, és válassza ki **HDInsight: PySpark interaktív**.
+4. Jelöljön ki ezeket a parancsfájlokat. Ezután kattintson a jobb gombbal a parancsprogram-szerkesztő, és válassza ki **HDInsight: PySpark interaktív**, vagy használja a helyi **Ctrl + Alt + I**.
 
 5. Ha még nem telepítette a **Python** a VS Code-bővítmény kiválasztása a **telepítése** gombra az alábbi ábrán látható módon:
 
@@ -233,7 +231,32 @@ HDInsight Tools for VS Code is lehetővé teszi, hogy a Spark-fürtök interakt�
 
 >[!NOTE]
 >A fürtök is fenntartható a munkamenet-információk. A definiált változó, a függvény és a megfelelő értékeket a munkamenetet, így azok között ugyanazon fürt több szolgáltatás-hívást lehet hivatkozni tartanak. 
- 
+
+### <a name="to-disable-environment-check"></a>Környezet ellenőrzés letiltása
+
+Alapértelmezés szerint a HDInsight tools környezet ellenőrzése és függő csomagok telepítéséhez fog mikor a PySpark interaktív lekérdezések elküldéséhez. Környezet ellenőrzése letiltásához állítsa be a **hdinsight.disablePysparkEnvironmentValidation** való **Igen** alatt **felhasználói beállítások**.
+
+   ![A beállítások a környezet ellenőrzés beállítása](./media/hdinsight-for-vscode/hdi-azure-hdinsight-environment-check.png)
+
+Másik lehetőségként kattintson **letiltása érvényesítési** gombot, ha a párbeszédpanel.
+
+   ![Párbeszédpanelen adja meg a környezet ellenőrzése](./media/hdinsight-for-vscode/hdi-azure-hdinsight-environment-check-dialog.png)
+
+### <a name="pyspark3-is-not-supported-with-spark2223"></a>PySpark3 Spark2.2/2.3 használata nem támogatott
+
+PySpark3 már nem támogatott a Spark 2.2-es és Spark2.3 fürtön, csak a "PySpark" Python esetében támogatott. Ismert probléma, amely a spark 2.2-es/2.3 a helyrendszerekre sikertelen, és a Python3.
+
+   ![Az elküldés elemre kattintva python3 szabályzatbeolvasási hiba](./media/hdinsight-for-vscode/hdi-azure-hdinsight-py3-error.png)
+
+Kövesse a lépéseket Python2.x használja: 
+
+1. Telepítse a Python 2.7-t helyi számítógépen, és adja hozzá rendszerbeli elérési úton.
+
+2. Indítsa újra a VSCode.
+
+3. Python 2-re kattintva válthat a **Python XXX** a Status sávot, majd válassza ki a cél Python.
+
+   ![Válassza ki a python-verzió](./media/hdinsight-for-vscode/hdi-azure-hdinsight-select-python.png)
 
 ## <a name="submit-pyspark-batch-job"></a>PySpark batch-feladat elküldése
 
@@ -263,7 +286,7 @@ HDInsight Tools for VS Code is lehetővé teszi, hogy a Spark-fürtök interakt�
             print("%s: %i" % (word, count))
         spark.stop()
     ```
-4. Kattintson a jobb gombbal a parancsprogram-szerkesztő, és válassza **HDInsight: PySpark Batch**. 
+4. Kattintson a jobb gombbal a parancsprogram-szerkesztő, és válassza **HDInsight: PySpark Batch**, vagy használja a helyi **Ctrl + Alt + H**. 
 
 5. Válassza ki a fürt, amelyre szeretné elküldeni a PySpark feladatot. 
 
@@ -271,15 +294,22 @@ HDInsight Tools for VS Code is lehetővé teszi, hogy a Spark-fürtök interakt�
 
 Miután elküldött egy Python-feladatot, a naplók küldése megjelennek a **kimeneti** ablak a VS Code-ban. A **Spark felhasználói felület URL-cím** és **Yarn felhasználói felületének URL-cím** is látható. Megnyithatja az URL-címet egy webböngészőben a feladat állapotának nyomon követését.
 
->[!NOTE]
->PySpark3 Livy 0,4 (amely a spark 2.2-es HDI-fürt) többé nem támogatott. Csak a "PySpark" támogatott python. Ismert probléma, amely a spark 2.2-es terjeszt sikertelen, és a python3.
-   
 ## <a name="livy-configuration"></a>Livy-konfiguráció
-Livy-konfiguráció támogatott, azt beállíthatók a project Settings munkahelyi mappáját. További információ: [Livy információs](https://github.com/cloudera/livy/blob/master/README.rst ).
+
+Livy-konfiguráció támogatott, azt meg a **. VSCode\settings.json** munkahelyi terület mappában. Jelenleg a livy-konfigurációt csak támogatja a Python-szkriptet. További információ: [Livy információs](https://github.com/cloudera/livy/blob/master/README.rst ).
+
+<a id="triggerlivyconf"></a>**Hogy miként indítható el livy-konfiguráció**
+   
+Megtalálhatja **fájl** menüben válassza **beállítások**, és válassza a **beállítások** helyi menüben. Kattintson a **MUNKATERÜLET BEÁLLÍTÁSAINAK** lapon megkezdheti a livy-konfiguráció beállítása.
+
+Egy fájlt is elküldhet, figyelje meg a .vscode mappába kerül automatikusan a munkahelyi mappa. Annak a livy-konfiguráció kattintva **.vscode\settings.json**.
 
 + A Projektbeállítások között:
 
     ![Livy-konfiguráció](./media/hdinsight-for-vscode/hdi-livyconfig.png)
+
+>[!NOTE]
+>A beállítások **driverMomory** és **executorMomry**, állítsa be az értéket az egység, például 1 g vagy 1024 m. 
 
 + A támogatott Livy-konfigurációk:   
 
@@ -316,6 +346,30 @@ Livy-konfiguráció támogatott, azt beállíthatók a project Settings munkahel
     | napló | A napló sorok | karakterláncok |
     | state |   A batch-állapot | sztring |
 
+>[!NOTE]
+>A hozzárendelt livy-konfigurációs megjelennek a tesztkimenet ablaktáblán amikor küldje el a szkriptet.
+
+## <a name="integrate-with-azure-hdinsight-from-explorer"></a>Integrálása az Azure HDInsight Explorerből
+
+Az Azure HDInsight bővült a bal oldali panelen. Keresse meg, és közvetlenül a fürt kezeléséhez.
+
+1. Bontsa ki a **AZURE HDINSIGHT**, ha nem a bejelentkezési, jelenik **jelentkezzen be az Azure-bA...**  hivatkozásra.
+
+    ![Jelentkezzen be a hivatkozás képe](./media/hdinsight-for-vscode/hid-azure-hdinsight-sign-in.png)
+
+2. Kattintson a **jelentkezzen be Azure**, bejelentkezési hivatkozásra, és a kód böngésző alján jobb oldalon.
+
+    ![Bejelentkezési utasítások az más környezetben](./media/hdinsight-for-vscode/hdi-azure-hdinsight-azure-signin-code.png)
+
+3. Kattintson a **nyissa meg a & másolása** gomb megnyílik a böngészőben, illessze be a kódot, kattintson a **Folytatás** gombra, adja meg a bejelentkezési kapcsolatos mutató sikeresen fogja látni.
+
+4. Miután bejelentkezett, a rendelkezésre álló előfizetésekről és a fürtök (a HBase, Spark és Hadoop támogatottak) jelenik meg **AZURE HDINSIGHT**. 
+
+   ![Az Azure HDInsight-előfizetés](./media/hdinsight-for-vscode/hdi-azure-hdinsight-subscription.png)
+
+5. Bontsa ki a fürtöt, hive metaadatok adatbázis és tábla sémájának megtekintéséhez.
+
+   ![Azure HDInsight-fürt](./media/hdinsight-for-vscode/hdi-azure-hdinsight-cluster.png)
 
 ## <a name="additional-features"></a>További funkciók
 

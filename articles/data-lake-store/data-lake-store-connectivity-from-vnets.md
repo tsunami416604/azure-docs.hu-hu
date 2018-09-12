@@ -1,6 +1,6 @@
 ---
-title: Csatlakozás az Azure Data Lake Store a Vnetek |} Microsoft Docs
-description: Csatlakozás az Azure Data Lake Store az Azure Vnetekhez
+title: Csatlakozás a virtuális hálózatok az Azure Data Lake Storage Gen1 |} A Microsoft Docs
+description: Az Azure Data Lake Storage Gen1 csatlakozhat az Azure virtuális hálózatok
 services: data-lake-store,data-catalog
 documentationcenter: ''
 author: esung22
@@ -12,28 +12,28 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2018
 ms.author: elsung
-ms.openlocfilehash: 4086ef6ce2a95e0467eda61116ac002cf53610b5
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: 130d0154fc0558ae7284e8407ba88fda3a2a53d5
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36300802"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391300"
 ---
-# <a name="access-azure-data-lake-store-from-vms-within-an-azure-vnet"></a>Az Azure Data Lake Store egy Azure virtuális hálózaton belüli virtuális gépek
-Azure Data Lake Store PaaS szolgáltatás, amely a nyilvános Internet IP-címek. Bármely kiszolgáló csatlakozni tud-e a nyilvános internethez általában csatlakozhat, valamint az Azure Data Lake Store-végpontok. Alapértelmezés szerint az Azure Vnetekhez lévő összes virtuális gép hozzáférhet az interneten, és ezért férhetnek hozzá az Azure Data Lake Store. Azonban úgy is egy VNET és nem rendelkezik Internet-hozzáférés a virtuális gépek konfigurálása. Ilyen virtuális gépek elérése az Azure Data Lake Store történik is. Nyilvános Internet-hozzáférés letiltása a virtuális gépek az Azure Vnetekhez végezhető a következő módszerek bármelyikével:
+# <a name="access-azure-data-lake-storage-gen1-from-vms-within-an-azure-vnet"></a>Hozzáférés az Azure Data Lake Storage Gen1 egy Azure virtuális hálózaton belüli virtuális gépek
+Az Azure Data Lake Storage Gen1 egy PaaS szolgáltatás, amely a nyilvános internetes IP-címeket. Bármely kiszolgálóra, amely képes kapcsolódni a nyilvános interneten általában csatlakozhat az Azure Data Lake Storage Gen1 végpontokat is. Alapértelmezés szerint minden virtuális gépre, amelyek az Azure Vneteken hozzáférnek az internethez, és így hozzáférhet az Azure Data Lake Storage Gen1. Azonban fontos konfigurálhatja a virtuális gépek Internet-hozzáféréssel rendelkezik a virtuális hálózaton. Az ilyen virtuális gépek az Azure Data Lake Storage Gen1 való hozzáférés korlátozva is. Nyilvános Internet-hozzáférés letiltása a virtuális gépek az Azure Vneteken teheti meg a következő módszerek bármelyikével:
 
-* Úgy konfigurálja a hálózati biztonsági csoportok (NSG)
-* Úgy konfigurálja a felhasználó definiált útvonalakat (UDR)
-* Útvonalak BGP (industry standard dinamikus útválasztási protokoll) útján kicserélésével ExpressRoute használata esetén, amelyek blokkolják az Internet-hozzáférés
+* Konfigurálja a hálózati biztonsági csoportok (NSG)
+* Konfigurálja a felhasználó által megadott útvonalak (UDR)
+* Útvonalak (industry standard dinamikus útválasztási protokoll) BGP-n keresztül kicserélésével ExpressRoute használata esetén, amelyek blokkolják az Internet-hozzáférés
 
-Ebből a cikkből megismerheti, hogyan hozzáférés engedélyezése az Azure Data Lake Store az Azure virtuális gépek, amelyek hozzáférését az erőforrásokhoz a korábban felsorolt három módszer egyikével korlátozott lesz.
+Ebben a cikkben megtudhatja, az Azure Data Lake Storage Gen1 való hozzáférés engedélyezése az Azure virtuális gépekről, amelyek hozzáférését az erőforrásokhoz a korábban felsorolt három módszer valamelyikével korlátozott.
 
-## <a name="enabling-connectivity-to-azure-data-lake-store-from-vms-with-restricted-connectivity"></a>Azure Data Lake Store engedélyezése kapcsolat korlátozott kapcsolattal rendelkező virtuális gépek
-Azure Data Lake Store ilyen virtuális gépek eléréséhez konfigurálnia kell azokat az IP-cím, amennyiben rendelkezésre áll-e az Azure Data Lake Store-fiók eléréséhez. Az IP-címek a Data Lake Store-fiókok alapján azonosíthatja a fiókok a DNS-nevek feloldása (`<account>.azuredatalakestore.net`). Hárítsa el a DNS-nevek a fiókok, használhatja eszközök például **nslookup**. Nyisson meg egy parancssort a számítógépen, és futtassa a következő parancsot:
+## <a name="enabling-connectivity-to-azure-data-lake-storage-gen1-from-vms-with-restricted-connectivity"></a>Az Azure Data Lake Storage Gen1 engedélyezése kapcsolat korlátozott kapcsolattal rendelkező virtuális gépekről
+Az ilyen virtuális gépek az Azure Data Lake Storage Gen1 eléréséhez konfigurálnia kell azokat az IP-cím, amennyiben rendelkezésre áll-e az Azure Data Lake Storage Gen1 fiók eléréséhez. Az IP-címek a Data Lake Storage Gen1 fiókok alapján azonosíthatja a DNS-nevek a fiókok feloldását (`<account>.azuredatalakestore.net`). A fiókok a DNS-nevek feloldására, eszközöket használhat például **nslookup**. Nyisson meg egy parancssort a számítógépen, és futtassa a következő parancsot:
 
     nslookup mydatastore.azuredatalakestore.net
 
-A kimenet az alábbihoz hasonló. Az érték alapján **cím** tulajdonság a Data Lake Store-fiókjához társított IP-címét.
+A kimenet az alábbihoz hasonló. Az érték elleni **cím** tulajdonság pedig a Data Lake Storage Gen1 fiókjához társított IP-címe.
 
     Non-authoritative answer:
     Name:    1434ceb1-3a4b-4bc0-9c69-a0823fd69bba-mydatastore.projectcabostore.net
@@ -41,16 +41,16 @@ A kimenet az alábbihoz hasonló. Az érték alapján **cím** tulajdonság a Da
     Aliases:  mydatastore.azuredatalakestore.net
 
 
-### <a name="enabling-connectivity-from-vms-restricted-by-using-nsg"></a>Virtuális gépek NSG szolgáltatással kapcsolat engedélyezése
-Az NSG-szabályok használata Internet-hozzáférés letiltása, majd hozhat létre egy másik NSG-t, amely lehetővé teszi a hozzáférést a Data Lake Store IP-címet. NSG-szabályok kapcsolatos további információkért lásd: [hálózati biztonsági csoportok – áttekintés](../virtual-network/security-overview.md). Az NSG-k létrehozása, lásd: [hálózati biztonsági csoport létrehozása](../virtual-network/tutorial-filter-network-traffic.md).
+### <a name="enabling-connectivity-from-vms-restricted-by-using-nsg"></a>Korlátozza az NSG-t használó virtuális gépek kapcsolat engedélyezése
+Ha Internet-hozzáférés letiltása egy NSG-szabályt használják, majd hozhat létre egy másik NSG-t, amely lehetővé teszi a hozzáférést a Data Lake Storage Gen1 IP-címre. Az NSG-szabályok kapcsolatos további információkért lásd: [hálózati biztonsági csoportok áttekintése](../virtual-network/security-overview.md). NSG-k létrehozásával kapcsolatos útmutatásért lásd: [egy hálózati biztonsági csoport létrehozása](../virtual-network/tutorial-filter-network-traffic.md).
 
-### <a name="enabling-connectivity-from-vms-restricted-by-using-udr-or-expressroute"></a>Virtuális gépek szolgáltatással UDR vagy ExpressRoute kapcsolat engedélyezése
-Útvonalak udr-EK vagy a BGP-kicserélt útvonalakat, Internet-hozzáférés letiltása használata esetén egy különös útvonalat kell konfigurálni, hogy az ilyen alhálózatban lévő virtuális gépek hozzáférhessenek a Data Lake Store-végpontok. További információkért lásd: [felhasználó által definiált útvonalak áttekintése](../virtual-network/virtual-networks-udr-overview.md). Udr-EK létrehozásával kapcsolatos utasításokért lásd: [létrehozása udr a Resource Manager-EK](../virtual-network/tutorial-create-route-table-powershell.md).
+### <a name="enabling-connectivity-from-vms-restricted-by-using-udr-or-expressroute"></a>Virtuális gépek, az URD vagy az ExpressRoute használatával korlátozható kapcsolat engedélyezése
+Amikor útvonalakat, vagy az udr-EK, vagy az útvonalakat a BGP-kicserélt használ az interneten való hozzáférés letiltását, egy speciális útvonalat kell konfigurálni, hogy az ilyen alhálózatokban található virtuális gépek elérhetik a Data Lake Storage Gen1 végpontjait. További információkért lásd: [felhasználó által megadott útvonalak áttekintését](../virtual-network/virtual-networks-udr-overview.md). Az udr-EK létrehozásával kapcsolatos útmutatóért lásd: [Udr létrehozása a Resource Managerben](../virtual-network/tutorial-create-route-table-powershell.md).
 
-### <a name="enabling-connectivity-from-vms-restricted-by-using-expressroute"></a>Virtuális gépek szolgáltatással ExpressRoute kapcsolat engedélyezése
-Ha ExpressRoute-kapcsolatcsoportot van konfigurálva, a helyszíni kiszolgálók elérhető Data Lake Store nyilvános társviszony keresztül. További részleteket a nyilvános társviszony található ExpressRoute konfigurálása [ExpressRoute – gyakori kérdések](../expressroute/expressroute-faqs.md).
+### <a name="enabling-connectivity-from-vms-restricted-by-using-expressroute"></a>Virtuális gépek az ExpressRoute használatával korlátozható kapcsolat engedélyezése
+Ha az ExpressRoute-kapcsolatcsoport van konfigurálva, a helyszíni kiszolgálók elérhető Data Lake Storage Gen1 nyilvános társviszony-létesítésen keresztül. További részleteket a nyilvános társviszony-létesítés mindig elérhető legyen az ExpressRoute konfigurálása [ExpressRoute – gyakori kérdések](../expressroute/expressroute-faqs.md).
 
 ## <a name="see-also"></a>Lásd még
-* [Az Azure Data Lake Store áttekintése](data-lake-store-overview.md)
-* [Azure Data Lake Store-ban tárolt adatok védelme](data-lake-store-security-overview.md)
+* [Az Azure Data Lake Storage Gen1 áttekintése](data-lake-store-overview.md)
+* [Az Azure Data Lake Storage Gen1 tárolt adatok védelme](data-lake-store-security-overview.md)
 

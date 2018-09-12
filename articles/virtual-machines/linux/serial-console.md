@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/07/2018
 ms.author: harijay
-ms.openlocfilehash: 857998c73abed76c9e20d5b3422ce607fb9f733d
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: ceaa61832212093ac52225fc34db1ed7f4571a18
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43782881"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44380298"
 ---
 # <a name="virtual-machine-serial-console-preview"></a>Virtuális gépek soros konzolja (előzetes verzió) 
 
@@ -73,7 +73,7 @@ Ubuntu      | Ubuntu-rendszerképek az Azure-ban elérhető hozzáféréséhez a
 CoreOS      | CoreOS lemezkép érhető el az Azure-ban hozzáféréséhez a konzolhoz alapértelmezés szerint engedélyezve van.
 SUSE        | Újabb SLES rendszerképek az Azure-ban elérhető hozzáféréséhez a konzolhoz alapértelmezés szerint engedélyezve van. Ha régebbi verzióit (10 vagy az alábbi) SLES használ az Azure-ban, hajtsa végre a [tudásbáziscikk](https://www.novell.com/support/kb/doc.php?id=3456486) engedélyezése a soros konzol. 
 Oracle Linux        | Az Azure-ban elérhető Oracle Linux-rendszerképeket hozzáféréséhez a konzolhoz alapértelmezés szerint engedélyezve van.
-Egyéni Linux-rendszerképek     | A Linux rendszerű virtuális gép egyéni rendszerkép soros konzol engedélyezéséhez a parancsot egy terminálban a futtathatók ttyS0 /etc/inittab hozzáféréséhez a konzolhoz. Íme egy példa hozzáadja a a inittab fájlban: `S0:12345:respawn:/sbin/agetty -L 115200 console vt102`. Megfelelően az egyéni lemezképek létrehozásával kapcsolatos további információkért lásd: [létrehozása és feltöltése az Azure-ban Linux rendszerű virtuális merevlemez](https://aka.ms/createuploadvhd).
+Egyéni Linux-rendszerképek     | A Linux rendszerű virtuális gép egyéni rendszerkép soros konzol engedélyezéséhez hozzáféréséhez a konzolhoz a `/etc/inittab` , futtassa a parancsot egy terminálban `ttyS0`. Íme egy példa hozzáadja a a inittab fájlban: `S0:12345:respawn:/sbin/agetty -L 115200 console vt102`. Megfelelően az egyéni lemezképek létrehozásával kapcsolatos további információkért lásd: [létrehozása és feltöltése az Azure-ban Linux rendszerű virtuális merevlemez](https://aka.ms/createuploadvhd).
 
 ## <a name="common-scenarios-for-accessing-serial-console"></a>Általános forgatókönyvek a soros konzol eléréséhez 
 Forgatókönyv          | A soros konzol műveletek                
@@ -87,6 +87,9 @@ A rendszertöltő használata | Hozzáférés grub-HIBÁT a soros konzolon keres
 
 ## <a name="disable-serial-console"></a>Tiltsa le a soros konzol
 Alapértelmezés szerint minden előfizetés rendelkezik a soros konzol hozzáférés engedélyezve van az összes virtuális gép. Soros konzol vagy az előfizetés szintjén, vagy a virtuális gép szintjén letiltható.
+
+> [!Note] 
+> Annak érdekében, hogy engedélyezi vagy letiltja a soros konzol-előfizetéssel, az előfizetés írási engedéllyel kell rendelkeznie. Ez magában foglalja, de a rendszergazda vagy tulajdonos szerepkörök nem korlátozódik. Egyéni szerepkörök is rendelkezhetnek írási jogosultsággal.
 
 ### <a name="subscription-level-disable"></a>Előfizetés-szintű letiltása
 Soros konzolon keresztül szerint az egész előfizetésre letiltható a [tiltsa le a konzolon REST API-hívás](https://aka.ms/disableserialconsoleapi). Használhatja a "Kipróbálom" elérhető funkciók az API-dokumentáció oldalon letiltása és engedélyezése a soros konzol egy előfizetés. Adja meg a `subscriptionId`, az "alapértelmezett" a `default` mezőben, majd kattintson az OK gombra. Az Azure CLI-parancsok még nem érhető el, és a egy későbbi időpontban fog megérkezni. [Próbálja ki a REST API-hívást Itt](https://aka.ms/disableserialconsoleapi).
@@ -167,7 +170,6 @@ Sok továbbra is szakaszaiban az előzetes verzió a soros hozzáféréshez, dol
 
 Probléma                           |   Kezelés 
 :---------------------------------|:--------------------------------------------|
-A virtual machine scale set példány soros konzol nem választható |  Előzetes verzió idején a virtuális gép méretezési csoport példányaihoz a soros konzoljához való hozzáférés nem támogatott.
 Szerezze meg, miután a kapcsolaton transzparens nem jeleníti meg a napló-parancssorban | Tekintse át ezt oldal: [Hitting adja meg a hatástalan](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md). Ez akkor fordulhat elő, ha egy egyéni virtuális Gépet, megerősített készülék vagy megfelelően csatlakozni a soros port sikertelen Linux okozó GRUB konfigurációs futtatja.
 Egy "Tiltott" válasz fordult elő a virtuális gép rendszerindítás-diagnosztikai tárfiók elérésekor. | Győződjön meg arról, hogy a rendszerindítási diagnosztika nincs egy fiók tűzfal. Egy elérhető rendszerindítás-diagnosztikai tárfiók a soros konzol működéséhez szükséges.
 Soros konzol szöveg mindössze egy részét a képernyő méretétől (gyakran után egy szövegszerkesztő használatával) | Ez az egy ismert probléma az ismeretlen képernyőméret soros kapcsolatokon keresztül. Javasoljuk, hogy instaling xterm vagy valamilyen más hasonló segédprogram, amely biztosítja a "átméretezése" parancsot. Futó átméretezése"elháríthatja ezt a hibát.
@@ -178,18 +180,32 @@ Soros konzol szöveg mindössze egy részét a képernyő méretétől (gyakran 
 
 A. Visszajelzés küldése egy problémát, a https://aka.ms/serialconsolefeedback. Másik lehetőségként kevesebb (elsődleges) visszajelzés küldése a keresztül azserialhelp@microsoft.com vagy a virtuális gép kategóriáját http://feedback.azure.com
 
-**Q. Nem tudom elérni a soros konzol, ahol is fájlt egy támogatási kérést?**
+**Q. Támogatja a soros konzol másolja és illessze be?**
 
-A. Ezt az előzetes funkciót a hatálya alá tartozó keresztül az Azure előzetes verziójú szolgáltatás feltételeit. Támogatás a legjobban a fent említett csatornákon keresztül kezeli. 
+A. Igen hajtja végre. Ctrl + Shift + C és a Ctrl + Shift + V használatával másolja és illessze be a terminálba.
 
 **Q. Használható a soros konzol helyett az SSH-kapcsolatot?**
 
 A. Bár technikailag lehetséges tűnhet, soros konzol szolgáló elsősorban a hibaelhárító eszköz helyzetekben, ahol kapcsolat SSH-kapcsolaton keresztül nem alkalmas szolgál. Azt javasoljuk, szemben a soros konzol segítségével egy SSH-helyettesítője két oka:
 
-1. Soros konzol nem rendelkezik a legtöbb sávszélességet ssh -, nem csak szöveg kapcsolat, így több grafikus felhasználói Felülettel műveltekből interakciók soros konzolon nehéz lesz.
+1. Soros konzol nem rendelkezik a legtöbb sávszélességet SSH -, nem csak szöveg kapcsolat, így több grafikus felhasználói Felülettel műveltekből interakciók soros konzolon nehéz lesz.
 1. Soros hozzáférés jelenleg csak a felhasználónevet és jelszót. Az SSH-kulcsok biztonságosabbak sokkal felhasználónév/jelszó kombináció, javasolt a bejelentkezési biztonság szempontjából SSH soros konzolon keresztül.
 
+**Q. Ki engedélyezheti vagy letilthatja a soros konzol az előfizetésemet?**
 
+A. Annak érdekében, hogy engedélyezi vagy letiltja a soros konzol egy előfizetési szintű szintjén, az előfizetés írási engedéllyel kell rendelkeznie. Írási engedéllyel rendelkező szerepek közé tartozik, de nem kizárólagosan, a rendszergazda vagy tulajdonos szerepkörök. Egyéni szerepkörök is rendelkezhetnek írási jogosultsággal.
+
+**Q. Virtuális gép soros konzol férhet hozzá?**
+
+A. Közreműködője szintű hozzáféréssel kell rendelkeznie legalább egy virtuális géphez a virtuális gép soros konzol eléréséhez. 
+
+**Q. A soros konzol nem látható semmi, mi a teendő?**
+
+A. A rendszerkép valószínűleg hibásan konfigurált, soros hozzáféréshez. Lásd: [Linux hozzáférés a soros konzol](#Access-Serial-Console-for-Linux) engedélyezése a soros konzol lemezképeiben konfigurációval kapcsolatos részletekért.
+
+**Q. Soros konzolon érhető el a Virtual Machine Scale Sets?**
+
+A. A virtuális gép méretezési csoport példányaihoz a soros konzoljához való hozzáférés jelenleg nem támogatott.
 
 ## <a name="next-steps"></a>További lépések
 * Használja a soros konzol [indítsa el a grub-HIBÁT, és adja meg az egyfelhasználós mód](serial-console-grub-single-user-mode.md)

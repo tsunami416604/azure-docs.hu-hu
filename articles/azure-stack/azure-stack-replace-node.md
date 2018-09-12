@@ -1,6 +1,6 @@
 ---
-title: Cserélje le a skálázási egység csomópont az integrált Azure verem rendszeren |} Microsoft Docs
-description: Cserélje le a fizikai skálázási egység csomópont az integrált Azure verem rendszeren itt olvashat.
+title: Cserélje le a skálázási egység csomópont az Azure Stackkel integrált rendszerek |} A Microsoft Docs
+description: Ismerje meg, hogyan cserélje le az Azure Stackkel integrált rendszerek fizikai skálázási egység csomópontjait.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -12,61 +12,61 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/20/2017
+ms.date: 09/10/2018
 ms.author: mabrigg
-ms.openlocfilehash: 468af385833395963ef8acad905b99a9b7e6b8fa
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: 1b37b150dad4951a4ade81f226b515ce9cae9053
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2018
-ms.locfileid: "27598773"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44377054"
 ---
-# <a name="replace-a-scale-unit-node-on-an-azure-stack-integrated-system"></a>Cserélje le a skálázási egység csomópont az integrált Azure verem rendszeren
+# <a name="replace-a-scale-unit-node-on-an-azure-stack-integrated-system"></a>Cserélje le az Azure Stackkel integrált rendszerek a skálázási egység csomópont
 
-*A következőkre vonatkozik: Azure verem integrált rendszerek*
+*A következőkre vonatkozik: Azure Stackkel integrált rendszerek*
 
-Ez a cikk ismerteti az általános folyamat a fizikai számítógép helyett (más néven a *skálázási egység csomópont*) egy Azure veremben integrált a rendszer. Tényleges skálázási egység csomópont helyettesítő lépései eltérőek lesznek a számítógépgyártó (OEM) hardvergyártójához alapján. A rendszer vonatkozó részletes lépéseket a gyártója által biztosított mező cserélhető Cisco egységet (FRU) dokumentációjában talál.
+Ez a cikk ismerteti az általános folyamat helyett egy fizikai számítógépen (más néven egy *skálázási egység csomópont*) a az Azure Stackkel integrált rendszer. Tényleges skálázási egység csomópont helyettesítő lépései eltérőek lesznek a számítógépgyártó (OEM) hardver szállítójával alapján. Konkrétan a rendszer a részletes lépéseket a gyártója által biztosított mező telepen cserélhető egység (FRU) dokumentációjában talál.
 
-A következő folyamatábra általános FRU folyamata lecseréli egy teljes skálázási egység csomópont jeleníti meg.
+Az alábbi folyamatábrája bemutatja cserélje le a teljes méretezési egység csomópont FRU általános folyamata.
 
-![A név felülírandó csomópont folyamat folyamatábrája](media/azure-stack-replace-node/replacenodeflow.png)
+![Cserélje le a csomópont folyamatot folyamatábra](media/azure-stack-replace-node/replacenodeflow.png)
 
-* Ez a művelet nem lehet szükség a fizikai hardver-feltételen alapszik.
+* Ez a művelet nem lehet szükség a fizikai hardverek feltétel alapján.
 
-## <a name="review-alert-information"></a>Riasztási információk áttekintése
+## <a name="review-alert-information"></a>Tekintse át a riasztás adatai
 
-Ha egy méretezési egység csomópont nem működik, a következő kritikus riasztások kap:
+Ha egy méretezési egység csomópont nem működik, kapni fog a következő kritikus riasztások:
 
-- A csomópont nem kapcsolódik a hálózati vezérlő
-- A csomópont nem érhető el a virtuális gépek elhelyezése
-- Skálázási egység csomópontja offline állapotban
+- Nem csatlakozik a hálózati vezérlő csomópont
+- A csomópont nem érhető el a virtuálisgép-elhelyezés
+- Skálázási egység csomópont offline állapotban.
 
-![Skálázási egység le riasztások listája](media/azure-stack-replace-node/nodedownalerts.png)
+![A skálázási egység le riasztások listája](media/azure-stack-replace-node/nodedownalerts.png)
 
-Ha megnyitja a **skálázási egység csomópontja offline állapotban** riasztást, a riasztás leírásában a skálázási egység csomópontot tartalmaz, amely nem érhető el. Az OEM-specifikus figyelési megoldást igényelnek, hogy a hardver életciklus gazdagépen fut a további riasztásokat is megjelenhet.
+Ha megnyitja a **skálázási egység csomópont offline állapotban** riasztást, a riasztás leírásában a skálázási egység csomópontot tartalmaz, amely nem érhető el. Az OEM-specifikus figyelési megoldás, amely a hardver életciklus gazdagépen fut is kaphat további riasztásokat.
 
-![Csomópont offline riasztás részletei](media/azure-stack-replace-node/nodeoffline.png)
+![A csomópont offline riasztás részletei](media/azure-stack-replace-node/nodeoffline.png)
 
 ## <a name="scale-unit-node-replacement-process"></a>Skálázási egység csomópont cseréjét.
 
-A következő lépések vannak megadva, a méretezési egység csomópont cseréjét magas szintű áttekintését. A rendszer vonatkozó részletes lépéseket a OEM hardver gyártója által biztosított FRU dokumentációjában talál. Az OEM által biztosított dokumentációt utaló nélkül nem kövesse az alábbi lépéseket.
+A következő lépések szolgálnak, a skálázási egység csomópont cseréjét magas szintű áttekintését. A részletes lépéseket, amelyek az adott rendszerhez a OEM hardver szállítójával FRU dokumentációjában talál. Ne kövesse ezeket a lépéseket az OEM által biztosított dokumentációt hivatkozó nélkül.
 
-1. Használja a [kiürítésére](azure-stack-node-actions.md#scale-unit-node-actions) műveletet a skálázási egység csomópont állítható karbantartási üzemmódba. Ez a művelet nem lehet szükség a fizikai hardver-feltételen alapszik.
+1. Használja a [kiürítési](azure-stack-node-actions.md#scale-unit-node-actions) műveletet a skálázási egység csomópont karbantartási módba. Ez a művelet nem lehet szükség a fizikai hardverek feltétel alapján.
 
    > [!NOTE]
-   > Minden esetben merül le és ki van kapcsolva egy időben a S2D megszüntetése nélkül a csak egy csomópont (közvetlen tárolóhelyek).
+   > Minden esetben csak egy csomópont lehet ürítve és ki van kapcsolva egy időben az S2D megszakítása nélkül (a közvetlen tárolóhelyek).
 
-2. Ha a csomópont továbbra is be van kapcsolva, használja a [kikapcsolásához](azure-stack-node-actions.md#scale-unit-node-actions) művelet. Ez a művelet nem lehet szükség a fizikai hardver-feltételen alapszik.
+2. Ha a csomópont továbbra is be van kapcsolva, használja a [kikapcsolásához](azure-stack-node-actions.md#scale-unit-node-actions) művelet. Ez a művelet nem lehet szükség a fizikai hardverek feltétel alapján.
  
    > [!NOTE]
-   > Az valószínű esetében, amelyek a kikapcsolási művelet nem működik használja helyette az alaplapi felügyeleti vezérlővel (BMC) webes felülete.
+   > A valószínűtlen eset, hogy a művelet kikapcsolás nem működik használja helyette a alaplapi felügyeleti vezérlőnek (BMC) webes felületén.
 
-1. A fizikai számítógép helyett. Általában ehhez a OEM hardver gyártójához.
-2. Használja a [javítási](azure-stack-node-actions.md#scale-unit-node-actions) műveletet az új fizikai számítógép hozzáadása a méretezési egységhez.
-3. Használja a rendszerjogosultságú végpontot [tekintse meg a virtuális lemezek javítási](azure-stack-replace-disk.md#check-the-status-of-virtual-disk-repair). Új adatok meghajtók a teljes helyreállítási feladat rendszerterhelés függően több órát is igénybe vehet, és a felhasznált lemezterület.
-4. A javítási művelet befejeződését követően ellenőrizze, hogy az összes aktív riasztás automatikusan bezárták.
+1. Cserélje le a fizikai számítógép. Általában ez történik a számítógép-Gyártói hardver gyártója által.
+2. Használja a [javítási](azure-stack-node-actions.md#scale-unit-node-actions) műveleteket kíván hozzáadni az új fizikai számítógépet a skálázási egység.
+3. Használja a kiemelt végponthoz [Virtuálislemez-javítási állapotának ellenőrzéséhez](azure-stack-replace-disk.md#check-the-status-of-virtual-disk-repair). Az új adatok meghajtókat egy teljes helyreállítási feladat rendszerterheléstől függően több órát is igénybe vehet, és a felhasznált lemezterület.
+4. A javítási művelet befejezése után, ellenőrizze, hogy az összes aktív riasztás automatikusan lezárták.
 
 ## <a name="next-steps"></a>További lépések
 
-- További információ a közbeni-cserélhető fizikai lemez cseréje: [olyan lemezt cserél ki](azure-stack-replace-disk.md). 
-- További információ a nem közbeni-cserélhető hardverösszetevő cseréje: [cserélje ki egy hardverösszetevő](azure-stack-replace-component.md).
+- További információ a gyakran használt adatok rétegére – cserélhető fizikai lemez cseréje: [olyan lemezt cserél ki](azure-stack-replace-disk.md). 
+- További információ a nem ritkáról gyakori elérésű-cserélhető hardverkomponensek cseréje: [hardverkomponensek cseréje](azure-stack-replace-component.md).

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 07/06/2018
+ms.date: 09/11/2018
 ms.author: ponatara
-ms.openlocfilehash: b7b5dcd88b6e4e09dd9beb21e83ef405df148115
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 6be71424e30c5783a03b157171b3f5acd0160e65
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39443384"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391010"
 ---
 # <a name="troubleshoot-errors-when-failing-over-a-virtual-machine-to-azure"></a>Az Azure virtuális gép feladatátvétele során előforduló hibák elhárítása
 
@@ -45,36 +45,51 @@ A Site Recovery nem tudta egy nem sikerült létrehozni a klasszikus virtuális 
 
 * Például egy virtuális hálózatot a virtuális gépet létrehozni a szükséges erőforrások egyike nem létezik. A virtuális hálózat létrehozása a virtuális gép számítási és hálózati beállításaiban meg vagy módosítsa a beállítást, amely már létezik, és próbálkozzon újra a feladatátvételi virtuális hálózathoz.
 
-## <a name="unable-to-connectrdpssh-to-the-failed-over-virtual-machine-due-to-grayed-out-connect-button-on-the-virtual-machine"></a>Nem lehet csatlakozni RDP/SSH a feladatátviteli virtuális géphez oka az, hogy szürkén jelenik meg a virtuális gépen a csatlakozás gomb
+## <a name="unable-to-connectrdpssh---vm-connect-button-grayed-out"></a>Nem lehet csatlakozni RDP/SSH - virtuális gép csatlakoztatása gomb szürkén jelenik meg
 
-Ha a csatlakozás gomb szürkén jelenik meg, és az Express Route vagy helyek közötti VPN-kapcsolaton keresztül, ezt követően nem csatlakozik Azure
+Ha a **Connect** a feladatait átadó virtuális gép az Azure-beli gomb szürkén jelenik meg, és az Express Route vagy helyek közötti VPN-kapcsolaton keresztül, ezt követően nem csatlakozik Azure
 
 1. Lépjen a **virtuális gép** > **hálózatkezelés**, kattintson a szükséges hálózati kapcsolat neve.  ![hálózati-adapter](media/site-recovery-failover-to-azure-troubleshoot/network-interface.PNG)
-1. Navigáljon a **Ip-konfigurációk**, majd kattintson a szükséges IP-konfiguráció a név mező. ![IP-konfigurációk](media/site-recovery-failover-to-azure-troubleshoot/IpConfigurations.png)
-1. Ahhoz, hogy a nyilvános IP-címet, kattintson a **engedélyezése**. ![IP engedélyezése](media/site-recovery-failover-to-azure-troubleshoot/Enable-Public-IP.png)
-1. Kattintson a **kötelező beállítások konfigurálása** > **új létrehozása**. ![Új létrehozása](media/site-recovery-failover-to-azure-troubleshoot/Create-New-Public-IP.png)
-1. Adja meg a nyilvános cím nevére, és válassza ki az alapértelmezett beállításainak **Termékváltozat** és **hozzárendelés**, majd kattintson a **OK**.
-1. Most a módosítások mentéséhez kattintson **mentése**.
-1. Zárja be a panelt, és keresse meg a **áttekintése** virtuális gép csatlakoztatása/RDP szakaszában.
+2. Navigáljon a **Ip-konfigurációk**, majd kattintson a szükséges IP-konfiguráció a név mező. ![IP-konfigurációk](media/site-recovery-failover-to-azure-troubleshoot/IpConfigurations.png)
+3. Ahhoz, hogy a nyilvános IP-címet, kattintson a **engedélyezése**. ![IP engedélyezése](media/site-recovery-failover-to-azure-troubleshoot/Enable-Public-IP.png)
+4. Kattintson a **kötelező beállítások konfigurálása** > **új létrehozása**. ![Új létrehozása](media/site-recovery-failover-to-azure-troubleshoot/Create-New-Public-IP.png)
+5. Adja meg a nyilvános cím nevére, és válassza ki az alapértelmezett beállításainak **Termékváltozat** és **hozzárendelés**, majd kattintson a **OK**.
+6. Most a módosítások mentéséhez kattintson **mentése**.
+7. Zárja be a panelt, és keresse meg a **áttekintése** virtuális gép csatlakoztatása/RDP szakaszában.
 
-## <a name="unable-to-connectrdpssh-to-the-failed-over-virtual-machine-even-though-connect-button-is-available-not-grayed-out-on-the-virtual-machine"></a>Nem lehet csatlakozni RDP/SSH a keresztül a virtuális gép akkor is, ha a csatlakozás gomb érhető el (szürkén nem jelenik meg) a virtuális gépen
+## <a name="unable-to-connectrdpssh---vm-connect-button-available"></a>Nem lehet csatlakozni RDP/SSH - rendelkezésre álló virtuális gép csatlakoztatása gombhoz
 
-Ellenőrizze **rendszerindítási diagnosztika** a virtuális gép és ellenőrzése ebben a cikkben felsorolt hibákat.
+Ha a **Connect** gombjára a feladatátvételen átesett virtuális gép az Azure-ban érhető el (szürkén nem jelenik meg), majd ellenőrizze **rendszerindítási diagnosztika** a virtuális gép és a hibakeresés [Ez a cikk](../virtual-machines/windows/boot-diagnostics.md).
 
 1. Ha a virtuális gép nem indult el, próbálja meg átvitelét egy régebbi helyreállítási pontra.
-1. Ha az alkalmazás a virtuális gépen belül nem átvitelét, próbálkozzon egy alkalmazáskonzisztens helyreállítási pontra.
-1. Ha a virtuális gép tartományhoz, majd győződjön meg arról, hogy a tartományvezérlő pontosan működik. A következő ehhez az alábbiakban megadott lépéseket.
-    a. Hozzon létre egy új virtuális gép ugyanazon a hálózaton
+2. Ha az alkalmazás a virtuális gépen belül nem átvitelét, próbálkozzon egy alkalmazáskonzisztens helyreállítási pontra.
+3. Ha a virtuális gép tartományhoz, majd győződjön meg arról, hogy a tartományvezérlő pontosan működik. A következő ehhez az alábbiakban megadott lépéseket:
+
+    a. Hozzon létre egy új virtuális gép ugyanazon a hálózaton.
 
     b.  Győződjön meg arról, hogy csatlakozni tudjon ugyanahhoz a tartományhoz, amely a feladatátviteli virtuális géphez várhatóan merülnek fel.
 
-    c. Ha a tartományvezérlő **nem** működik pontosan, majd próbálja jelentkezzen be a feladatátviteli virtuális gépre a helyi rendszergazdai fiókkal
-1. Ha egyéni DNS-kiszolgálót használ, majd győződjön meg arról, hogy legyen elérhető. A következő ehhez az alábbiakban megadott lépéseket.
-    a. Hozzon létre egy új virtuális gép a hálózat és a b. Ellenőrizze, hogy a virtuális gép tud-e névfeloldást végezni az egyéni DNS-kiszolgáló használatával
+    c. Ha a tartományvezérlő **nem** működik pontosan, majd próbálja jelentkezzen be a feladatátviteli virtuális gépre a helyi rendszergazdai fiókkal.
+4. Ha egyéni DNS-kiszolgálót használ, majd győződjön meg arról, hogy legyen elérhető. A következő ehhez az alábbiakban megadott lépéseket:
+
+    a. Hozzon létre egy új virtuális gép ugyanazon a hálózaton és a
+
+    b. Ellenőrizze, hogy a virtuális gép tud-e névfeloldást végezni az egyéni DNS-kiszolgáló használatával
 
 >[!Note]
 >Azure Virtuálisgép-ügynököt kell telepíteni a virtuális gépet a feladatátvétel előtt a rendszerindítási Diagnosztikán kívül más beállítások engedélyezéséhez lenne szükség
 
+## <a name="unexpected-shutdown-message-event-id-6008"></a>Váratlan leállás üzenet (Event ID 6008-as)
+
+Másolatából egy Windows virtuális gép feladatátvétel után, ha a helyreállított virtuális gép egy nem tervezett leállás üzenetet kap, amikor azt jelzi, hogy egy virtuális gép Leállítás utáni állapotba nem lett rögzítve a feladatátvételhez használt helyreállítási pontot. Ez akkor történik, ha egy állít helyre, ha a virtuális Gépet kellett nem teljesen le lett állítva.
+
+Ez általában nem egy okának aggodalomra és a nem tervezett feladatátvételeket általában figyelmen kívül hagyhatja. Egy tervezett feladatátvétel esetén győződjön meg arról, hogy a virtuális gép megfelelően leállt feladatátvétel előtt, és adja meg a replikációs adatokat a helyszíni Azure-bA küldendő függőben lévő elegendő időt. Ezután a **legújabb** beállítást a [feladatátvételi képernyő](site-recovery-failover.md#run-a-failover) úgy, hogy a függőben lévő adatokat az Azure-ban egy helyreállítási pontot, majd használja a virtuális gép feladatátvételre való feldolgozása.
+
+## <a name="retaining-drive-letter-after-failover"></a>Meghajtóbetűjel megőrzése feladatátvétel után
+A meghajtó betűjelét, a virtuális gépek a feladatátvételt követően megőrzéséhez beállíthatja a **TÁROLÓHÁLÓZATI szabályzata** a virtuális gép, helyszíni való **OnlineAll**. [További információk](https://support.microsoft.com/help/3031135/how-to-preserve-the-drive-letter-for-protected-virtual-machines-that-are-failed-over-or-migrated-to-azure).
+
 ## <a name="next-steps"></a>További lépések
+- Hibaelhárítás [Windows virtuális gép RDP-kapcsolatának](../virtual-machines/windows/troubleshoot-rdp-connection.md)
+- Hibaelhárítás [Linux rendszerű virtuális gép SSH-kapcsolatot](../virtual-machines/linux/detailed-troubleshoot-ssh-connection.md)
 
 Ha további segítségre van szüksége, majd el a lekérdezést az [Site Recovery fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr) vagy ez a dokumentum végén található Megjegyzés írása. Van egy aktív Közösség, amely segítségére képesnek kell lennie.
