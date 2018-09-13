@@ -232,11 +232,11 @@
 
 
 #### Alkalmazásregisztráció
-##### [Az alkalmazásobjektum mezőinek megadása](application-dev-registration-config-specific-application-property-how-to.md)
-##### [A jogkivonatok alapértelmezett élettartamának módosítása](application-dev-registration-config-change-token-lifetime-how-to.md)
+##### [Az alkalmazásobjektum mezőinek megadása](develop/registration-config-specific-application-property-how-to.md)
+##### [A jogkivonatok alapértelmezett élettartamának módosítása](develop/registration-config-change-token-lifetime-how-to.md)
 
 #### Hitelesítés
-##### [Végpontok konfigurálása](application-dev-registration-config-how-to.md)
+##### [Végpontok konfigurálása](develop/registration-config-how-to.md)
 
 #### Feltételes hozzáférés
 ##### [Az ügyfél nem felelt meg az eszközregisztrációs előfeltételeknek](active-directory-conditional-access.md)
@@ -248,7 +248,7 @@
 ##### [Mely alkalmazásokban támogatott a feltételes hozzáférés?](active-directory-conditional-access-supported-apps.md)
 
 #### API keresése
-##### [API keresése](application-dev-api-find-an-api-how-to.md)
+##### [API keresése](develop/api-find-an-api-how-to.md)
 
 #### Hozzáférés-kezelés
 ##### [Felhasználók és csoportok hozzárendelése az alkalmazáshoz](manage-apps/methods-for-assigning-users-and-groups.md)
@@ -258,14 +258,14 @@
 ##### [Váratlan alkalmazás az alkalmazáslistában](manage-apps/application-types.md)
 
 #### Több-bérlős alkalmazások
-##### [Új alkalmazás konfigurálása](application-dev-setup-multi-tenant-app.md)
-##### [Hozzáadás az alkalmazáskatalógushoz](application-dev-registration-config-multi-tenant-application-add-to-gallery-how-to.md)
+##### [Új alkalmazás konfigurálása](develop/setup-multi-tenant-app.md)
+##### [Hozzáadás az alkalmazáskatalógushoz](develop/registration-config-multi-tenant-application-add-to-gallery-how-to.md)
 
 #### Engedélyek
-##### [API engedélyeinek kiválasztása](application-dev-perms-for-given-api.md)
-##### [Engedélyek megadása az alkalmazásnak](application-dev-registration-config-grant-permissions-how-to.md)
-##### [Delegált és alkalmazásengedélyek](application-dev-delegated-and-app-perms.md)
-##### [Alkalmazás jóváhagyása](application-dev-consent-framework.md)
+##### [API engedélyeinek kiválasztása](develop/perms-for-given-api.md)
+##### [Engedélyek megadása az alkalmazásnak](develop/registration-config-grant-permissions-how-to.md)
+##### [Delegált és alkalmazásengedélyek](develop/delegated-and-app-perms.md)
+##### [Alkalmazás jóváhagyása](develop/consent-framework.md)
 
 #### Kiépítés
 ##### [Mennyi időt vesz igénybe](manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md)
@@ -278,7 +278,7 @@
 
 #### Egyszeri bejelentkezés
 ##### [Válasszon módszert](manage-apps/single-sign-on-modes.md)
-##### [Konfigurálás](application-dev-registration-config-sso-how-to.md)
+##### [Konfigurálás](develop/registration-config-sso-how-to.md)
 ##### [Összevontak konfigurálása – katalógusbeli alkalmazások](manage-apps/configure-federated-single-sign-on-gallery-applications.md)
 ##### [Gyakori problémák az összevontak konfigurálásakor – katalógusbeli alkalmazások](manage-apps/configure-federated-single-sign-on-gallery-applications-problems.md)
 ##### [Összevontak konfigurálása – nem katalógusbeli alkalmazások](manage-apps/configure-federated-single-sign-on-non-gallery-applications.md)
@@ -303,7 +303,7 @@
 ##### [Probléma egy helyszíni alkalmazásban – Alkalmazásproxy](manage-apps/application-sign-in-problem-on-premises-application-proxy.md)
 
 ### [Alkalmazásfejlesztés](active-directory-applications-guiding-developers-for-lob-applications.md)
-### [Dokumentumtár](active-directory-apps-index.md)
+
 
 ## Címtár kezelése
 ### [Azure AD Connect](./connect/active-directory-aadconnect.md)
