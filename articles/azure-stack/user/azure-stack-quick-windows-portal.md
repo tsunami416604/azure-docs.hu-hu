@@ -6,16 +6,16 @@ author: mattbriggs
 manager: femila
 ms.service: azure-stack
 ms.topic: quickstart
-ms.date: 09/05/2018
+ms.date: 09/12/2018
 ms.author: mabrigg
 ms.reviewer: ''
 ms.custom: mvc
-ms.openlocfilehash: 7277aeb97409815e2e218da8f233cd836bccc72b
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: e4e3fdbdd3bc9eb982f993a9be60ba0812c68a9d
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44022416"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44713739"
 ---
 # <a name="quickstart-create-a-windows-server-virtual-machine-with-the-azure-stack-portal"></a>Gyors útmutató: egy Windows server virtuális gép létrehozása az Azure Stack portálon
 
@@ -36,7 +36,7 @@ Jelentkezzen be az Azure Stack portálon. Az Azure Stack portálon címe attól 
 
 ## <a name="create-a-virtual-machine"></a>Virtuális gép létrehozása
 
-1. Kattintson a **új** > **számítási** > **Windows Server 2016 Datacenter – Használatalapú mint-akkor-használható** > **létrehozása**. Ha nem lát **Windows Server 2016 Datacenter – Használatalapú mint-akkor-használható** bejegyzést, lépjen kapcsolatba az Azure Stack-operátorokról. Kérje meg, hogy azok adja hozzá a Marketplace-en leírtak a [a Windows Server 2016 virtuális gép lemezképének hozzáadása az Azure Stack piactéren](../azure-stack-add-default-image.md) cikk.
+1. Kattintson a **+ erőforrás létrehozása** > **számítási** > **Windows Server 2016 Datacenter – Használatalapú mint-akkor-használható**  >   **Hozzon létre**. Ha nem lát **Windows Server 2016 Datacenter – Használatalapú mint-akkor-használható** bejegyzést, lépjen kapcsolatba az Azure Stack-operátorokról. Kérje meg, hogy azok adja hozzá a Marketplace-en leírtak a [a Windows Server 2016 virtuális gép lemezképének hozzáadása az Azure Stack piactéren](../azure-stack-add-default-image.md) cikk.
 
     ![A portál egy Windows virtuális gép létrehozásának lépései](media/azure-stack-quick-windows-portal/image01.png)
 2. A **alapjai**, adjon meg egy **neve**, **felhasználónév**, és **jelszó**. Válasszon egy **előfizetés**. Hozzon létre egy **erőforráscsoport**, vagy válasszon ki egy meglévő egy, válassza ki a **hely**, és kattintson a **OK**.

@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/14/2018
+ms.date: 09/12/2018
 ms.author: brenduns
 ms.reviewer: ''
-ms.openlocfilehash: 878b7952938c7ec534bc09e27ee8b859c1aaeefb
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: db9f19154668fa33bb94e59a4da6735b1a6d3d49
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42139376"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44720497"
 ---
 # <a name="connect-azure-stack-to-azure-using-azure-expressroute"></a>Csatlakozás Azure Stack az Azure ExpressRoute használatával
 
@@ -98,7 +98,7 @@ Az alábbi eljárásokkal a szükséges hálózati erőforrások létrehozása a
 #### <a name="create-the-virtual-network-and-vm-subnet"></a>A virtuális hálózat és a virtuálisgép-alhálózat létrehozása
 
 1. Jelentkezzen be a felhasználói portál (bérlő) felhasználói fiókkal.
-1. Válassza a portál **új**.
+1. Válassza a portál **+ erőforrás létrehozása**.
 
 1. A **Azure Marketplace-en**válassza **hálózatkezelés**.
 
@@ -131,7 +131,7 @@ Az alábbi eljárásokkal a szükséges hálózati erőforrások létrehozása a
 
 #### <a name="create-the-virtual-network-gateway"></a>Virtuális hálózati átjáró létrehozása
 
-1. Az Azure Stack felhasználói portálon, válassza ki a **új**.
+1. Az Azure Stack felhasználói portálon, válassza ki a **+ erőforrás létrehozása**.
 1. A **Azure Marketplace-en**válassza **hálózatkezelés**.
 1. A hálózati erőforrások listájában válassza a **Virtuális hálózati átjáró** elemet.
 1. Az a **neve** írja be a következőt **GW1**.
@@ -146,7 +146,7 @@ Az alábbi eljárásokkal a szükséges hálózati erőforrások létrehozása a
 
 A helyi hálózati átjáró erőforrás azonosítja a VPN-kapcsolat másik végén lévő távoli átjárót. Ebben a példában a kapcsolat a távoli vég a hálózati Ébresztés alkapcsolat az ExpressRoute-útválasztó. 1. bérlői, ahogyan *2. ábra*, távoli cím 10.60.3.255.
 
-1. Jelentkezzen be az Azure Stack felhasználói portálon, a felhasználói fiókjával, és válassza ki **új**.
+1. Jelentkezzen be az Azure Stack felhasználói portálon, a felhasználói fiókjával, és válassza ki **+ erőforrás létrehozása**.
 1. A **Azure Marketplace-en**válassza **hálózatkezelés**.
 1. Az erőforrások listájában válassza a **Helyi hálózati átjáró** elemet.
 1. Az a **neve** írja be a következőt **ER-útválasztó-GW**.
@@ -163,7 +163,7 @@ A helyi hálózati átjáró erőforrás azonosítja a VPN-kapcsolat másik vég
 
 #### <a name="create-the-connection"></a>A kapcsolat létrehozása
 
-1. Az Azure Stack felhasználói portálon, válassza ki a **új**.
+1. Az Azure Stack felhasználói portálon, válassza ki a **+ erőforrás létrehozása**.
 1. A **Azure Marketplace-en**válassza **hálózatkezelés**.
 1. Az erőforrások listájában válassza a **Kapcsolat** elemet.
 1. A **alapjai**, válassza a **Site-to-site (IPSec)** , a **kapcsolattípus**.
@@ -187,7 +187,7 @@ A virtuális hálózati átjáró létrehozása után megtekintheti az átjáró
 
 A VPN-kapcsolaton keresztüli adatforgalom teszteléséhez küldhet és fogadhat adatokat az Azure Stack virtuális hálózat virtuális gépeket kell. Hozzon létre egy virtuális gépet, és helyezze üzembe azt a Virtuálisgép-alhálózatot a virtuális hálózat.
 
-1. Az Azure Stack felhasználói portálon, válassza ki a **új**.
+1. Az Azure Stack felhasználói portálon, válassza ki a **+ erőforrás létrehozása**.
 1. A **Azure Marketplace-en**válassza **számítási**.
 1. A virtuálisgép-rendszerképek listájában válassza ki a **Windows Server 2016 Datacenter próbaverzió** kép.
 

@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/05/2018
+ms.date: 09/12/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: 290b3daf73e323b3f5a7e1ef81299e72bf1c5f1d
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
-ms.translationtype: MT
+ms.openlocfilehash: ddb1fcd91ff0c0018bcab9988a5ab063b882cf36
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44024800"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44714667"
 ---
 # <a name="download-marketplace-items-from-azure-to-azure-stack"></a>Az Azure marketplace-elemek letöltése az Azure Stackhez
 
@@ -66,7 +66,7 @@ Az Azure Stack üzemelő példányához kell internetkapcsolattal rendelkezik, �
 
     A letöltés befejezése után telepítheti az új Piactéri elem az Azure Stack-operátorokról vagy a felhasználó.
 
-5. A letöltött elem üzembe helyezéséhez válassza **+ új**, majd keresse meg az új Piactéri elem a kategóriák között. Ezután válassza ki az elemet, a telepítés megkezdéséhez. A folyamat különböző marketplace-elemek esetében eltérő. 
+5. A letöltött elem üzembe helyezéséhez válassza **+ erőforrás létrehozása**, majd keresse meg az új Piactéri elem a kategóriák között. Ezután válassza ki az elemet, a telepítés megkezdéséhez. A folyamat különböző marketplace-elemek esetében eltérő. 
 
 ## <a name="disconnected-or-a-partially-connected-scenario"></a>Leválasztott vagy részlegesen csatlakoztatott forgatókönyv
 

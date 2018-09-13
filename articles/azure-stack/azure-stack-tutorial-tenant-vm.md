@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/05/2018
+ms.date: 09/11/2018
 ms.author: jeffgilb
 ms.reviewer: ''
 ms.custom: mvc
-ms.openlocfilehash: 09b9126125006fb70f5e2560f04b815b4a874405
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: d106d9f79498678f08142f952e09c5125c6e5d6c
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44027299"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44721517"
 ---
 # <a name="tutorial-make-virtual-machines-available-to-your-azure-stack-users"></a>Oktatóanyag: virtuális gépek számára elérhetővé az Azure Stack-felhasználók
 
@@ -46,11 +46,11 @@ További tudnivalókért lásd: [funkcióiról és koncepciójáról az Azure St
 
 Ajánlatok egy vagy több olyan csomag, amelyet szolgáltatók vásárolhatja meg vagy fizessen elő a felhasználók csoportjai. Ajánlat létrehozásának folyamata több lépésből áll. Először kéri, hogy az ajánlatra, majd a csomagot, végül pedig, kvóták létrehozása.
 
-1. [Jelentkezzen be a](azure-stack-connect-azure-stack.md) egy felhőalapú rendszergazdaként, és válassza ki a Portal **új** > **ajánlatok és csomagok** > **ajánlat**.
+1. [Jelentkezzen be a](azure-stack-connect-azure-stack.md) egy felhőalapú rendszergazdaként, és válassza ki a Portal **+ erőforrás létrehozása** > **ajánlatok és csomagok** > **ajánlat**.
 
    ![Új ajánlat](media/azure-stack-tutorial-tenant-vm/image01.png)
 
-1. A **új ajánlat**, adja meg egy **megjelenített név** és **erőforrásnév**, és ezután válasszon ki egy új vagy meglévő **erőforráscsoport**. A megjelenítendő név az ajánlat rövid neve. Csak a felhő üzemeltetője láthatja az erőforrás neve. Ezt a nevet használják a rendszergazdák az ajánlattal mint Azure Resource Manager-erőforrással végzett műveletekhez.
+1. A **új ajánlat**, adja meg egy **megjelenített név** és **erőforrásnév**, és ezután válasszon ki egy új vagy meglévő **erőforráscsoport**. A megjelenítendő név az ajánlat rövid neve. Csak a felhő üzemeltetője láthatja az erőforrás nevét, amelynek a neve, amely segítségével a rendszergazdák az ajánlattal mint Azure Resource Manager-erőforrással működik.
 
    ![Megjelenített név](media/azure-stack-tutorial-tenant-vm/image02.png)
 
@@ -58,7 +58,7 @@ Ajánlatok egy vagy több olyan csomag, amelyet szolgáltatók vásárolhatja me
 
    ![Csomag hozzáadása](media/azure-stack-tutorial-tenant-vm/image03.png)
 
-1. Az a **új csomag** területén adja meg **megjelenítendő név** és **erőforrásnév**. Megjelenített név a csomag rövid neve, a felhasználók számára. Csak a felhő üzemeltetője láthatja az erőforrás neve. A felhő üzemeltetői használják a csomaggal mint Azure Resource Manager-erőforrással a neve.
+1. Az a **új terv** területén adja meg **megjelenített név** és **erőforrásnév**. Megjelenített név a csomag rövid neve, a felhasználók számára. Csak a felhő üzemeltetője láthatja az erőforrás nevét, amely a felhő üzemeltetői használják a csomaggal mint Azure Resource Manager-erőforrással a neve.
 
    ![Csomag megjelenített neve](media/azure-stack-tutorial-tenant-vm/image04.png)
 
@@ -112,11 +112,11 @@ Most, hogy létrehozott egy ajánlatot, tesztelheti azt. Egy felhasználó, regi
    - Egy integrált rendszer, az URL-címet az operátor régió és külső tartománynév függően változik, és a következő formátumban lesz https://portal.&lt; *régió*&gt;.&lt; *FQDN*&gt;.
    - Ha az Azure Stack fejlesztői készletet használ, a portál címe https://portal.local.azurestack.external.
 
-   ![Előfizetés beszerzése](media/azure-stack-subscribe-plan-provision-vm/image01.png)
+   ![Előfizetés beszerzése](media/azure-stack-tutorial-tenant-vm/image10.png)
 
    b. A **előfizetés beszerzése**, adjon meg egy nevet az Ön előfizetéséhez az **megjelenítendő név** mező. Válassza ki **ajánlat**, majd válassza a lehetővé teszi a **válasszon ajánlatot** lista. Kattintson a **Létrehozás** gombra.
 
-   ![Ajánlat létrehozása](media/azure-stack-subscribe-plan-provision-vm/image02.png)
+   ![Ajánlat létrehozása](media/azure-stack-tutorial-tenant-vm/image11.png)
 
    c. Az előfizetés megtekintéséhez jelölje ki **minden szolgáltatás**, majd a **általános** kategória kiválasztása **előfizetések**. Válassza ki az új előfizetés megtekintéséhez, hogy mely szolgáltatások tartoznak az előfizetés.
 
@@ -131,7 +131,7 @@ Most, hogy létrehozott egy ajánlatot, tesztelheti azt. Egy felhasználó, regi
       - Egy integrált rendszer, az URL-címet az operátor régió és külső tartománynév függően változik, és a következő formátumban lesz https://portal.&lt; *régió*&gt;.&lt; *FQDN*&gt;.
    - Ha az Azure Stack fejlesztői készletet használ, a portál címe https://portal.local.azurestack.external.
 
-   b.  Az irányítópulton, válassza ki a **új** > **számítási** > **Windows Server 2016 Datacenter próbaverzió**, majd válassza ki **létrehozása**.
+   b.  Az irányítópulton, válassza ki a **+ erőforrás létrehozása** > **számítási** > **Windows Server 2016 Datacenter próbaverzió**, majd válassza ki a **Létrehozása**.
 
    c. A **alapjai**, adja meg a következő információkat:
       - Adjon meg egy **neve**
@@ -151,14 +151,11 @@ Most, hogy létrehozott egy ajánlatot, tesztelheti azt. Egy felhasználó, regi
 
    h. Válassza ki **OK** a **beállítások** a hálózati konfiguráció mentéséhez.
 
-   ![Virtuális hálózat létrehozása](media/azure-stack-provision-vm/image04.png)
-
-   i. A **összefoglalás**válassza **OK** a virtuális gép létrehozásához.  
+      i. A **összefoglalás**válassza **OK** a virtuális gép létrehozásához.  
 
    j. Az új virtuális gép, jelölje ki a **összes erőforrás**. Keresse meg a virtuális gépet, és válassza ki a nevét a keresési eredmények közül.
 
-   ![Minden erőforrás](media/azure-stack-provision-vm/image06.png)
-
+   
 ## <a name="next-steps"></a>További lépések
 
 Ennek az oktatóanyagnak a segítségével megtanulta a következőket:

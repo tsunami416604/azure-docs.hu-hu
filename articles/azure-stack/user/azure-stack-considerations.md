@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 08/15/2018
+ms.date: 09/12/2018
 ms.author: sethm
-ms.openlocfilehash: a8d211992f52c9719cad76f16133e23eba24d422
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: 9f229caa76059db403ced5b74c7a35ec2f0b8e9d
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42139505"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44721891"
 ---
 # <a name="key-considerations-using-services-or-building-apps-for-azure-stack"></a>Kulcs szempontok: services használatával, vagy alkalmazások készítéséhez az Azure Stackhez
 
@@ -33,7 +33,7 @@ Az Azure Stack-operátorokról lehetővé teszi, hogy mely szolgáltatások érh
 
 Az Azure műszaki tartalom azt feltételezi, hogy alkalmazásokat fejlesztenek ki az Azure Stack helyett az Azure-szolgáltatások. Amikor hozhat létre, és az alkalmazások üzembe helyezése az Azure Stack, néhány fontos eltérés, például kell ismernie:
 
-* Az Azure Stack tesz lehetővé a szolgáltatások és az Azure-ban elérhető funkciók egy részét.
+* Az Azure Stack biztosít egy **részhalmazát** szolgáltatásokat és az Azure-ban elérhető szolgáltatásokat.
 * A vállalat vagy a service provider kiválaszthatja, hogy mely szolgáltatásokat, azok kíván kíván felajánlani. A rendelkezésre álló beállítások testre szabott szolgáltatások vagy alkalmazások lehetnek. Előfordulhat, hogy a saját testre szabott dokumentáció kínálnak.
 * A megfelelő kell használni (például a portál címet és az Azure Resource Manager-végpont URL-címek) az Azure Stack-specifikus végpontok.
 * PowerShell és API-verziók az Azure Stack által támogatott kell használnia. Támogatott verziók használata biztosítja, hogy az alkalmazások működni fog-e az Azure Stack és az Azure.
@@ -75,11 +75,11 @@ Az Azure Stack az Azure PowerShell és az Azure-szolgáltatás API-k adott verzi
 Győződjön meg arról, hogy az Azure PowerShell megfelelő verzióját használja, használja a [API-verzióprofilok](azure-stack-version-profiles.md). Annak megállapításához, a legújabb API verzió-profilt, amelyet használhat, megtudhatja a build, az Azure Stack használata esetén. Ezt az információt kaphat az Azure Stack rendszergazdájától.
 
 >[!NOTE]
- Ha az Azure Stack Development Kit használ, és rendelkezik rendszergazdai hozzáféréssel, "Az aktuális verzió meghatározása" című szakaszában talál [frissítéseinek kezelése](https://docs.microsoft.com/azure/azure-stack/azure-stack-updates#determine-the-current-version) meghatározni az Azure Stack-build.
+ Ha az Azure Stack Development Kit használ, és rendelkezik rendszergazdai hozzáféréssel, "Az aktuális verzió meghatározása" című szakaszában talál [frissítéseinek kezelése](../azure-stack-updates.md#determine-the-current-version) meghatározni az Azure Stack-build.
 
 A más API-k futtassa a következő PowerShell-parancsot a kimenetben a névterek, erőforrástípusok és API-verziók által támogatott az Azure Stack-előfizetéssel. Vegye figyelembe, hogy továbbra is lehet különbségek tulajdonság szinten. (A parancs működéséhez rendelkeznie kell már [telepített](azure-stack-powershell-install.md) és [konfigurált](azure-stack-powershell-configure-user.md) PowerShell az Azure Stack-környezet. Akkor is rendelkeznie kell az ajánlatot az Azure Stack-előfizetést.)
 
- ```powershell
+```powershell
 Get-AzureRmResourceProvider | Select ProviderNamespace -Expand ResourceTypes | Select * -Expand ApiVersions | `
 Select ProviderNamespace, ResourceTypeName, @{Name="ApiVersion"; Expression={$_}} 
 ```

@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 7/10/2017
+ms.date: 09/12/2018
 ms.author: brenduns
 ms.reviewer: scottnap
 ROBOTS: NOINDEX
-ms.openlocfilehash: 6225a12b50ebb7bf0a0cb9244153800ba734d93a
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: a219f44cb27bb6ebe4e17079ad487457ae8852f0
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39006903"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44718117"
 ---
 # <a name="create-a-site-to-site-vpn-connection-between-two-virtual-networks-in-different-azure-stack-development-kit-environments"></a>Site-to-site VPN-kapcsolat létrehozása két virtuális hálózat között eltérő Azure Stack Development Kit környezetek között
 ## <a name="overview"></a>Áttekintés
@@ -92,10 +92,7 @@ Szolgáltatás-rendszergazda bejelentkezhet bérlőként teszteléséhez a csoma
 
 ### <a name="create-the-virtual-network-and-vm-subnet"></a>A virtuális hálózat és a virtuálisgép-alhálózat létrehozása
 1. Jelentkezzen be a felhasználói portálra egy bérlői fiókot használni.
-2. Válassza ki a felhasználói portálon **új**.
-
-    ![Új virtuális hálózat létrehozása](media/azure-stack-create-vpn-connection-one-node-tp2/image3.png)
-
+2. Válassza ki a felhasználói portálon **+ erőforrás létrehozása**.
 3. Lépjen a **Marketplace**, majd válassza ki **hálózatkezelés**.
 4. Válassza ki **virtuális hálózati**.
 5. A **neve**, **címtér**, **alhálózatnév**, és **alhálózati címtartomány**, használja az értékeket, amelyeket korábban a hálózati jelennek meg konfigurációs tábla.
@@ -118,7 +115,7 @@ Szolgáltatás-rendszergazda bejelentkezhet bérlőként teszteléséhez a csoma
 6. Válassza ki **OK** az átjáró-alhálózat létrehozásához.
 
 ### <a name="create-the-virtual-network-gateway"></a>Virtuális hálózati átjáró létrehozása
-1. Az Azure Portalon válassza ki a **új**. 
+1. Az Azure Portalon válassza ki a **+ erőforrás létrehozása**. 
 2. Lépjen a **Marketplace**, majd válassza ki **hálózatkezelés**.
 3. Hálózati erőforrások listájából válassza ki a **virtuális hálózati átjáró**.
 4. A **neve**, adja meg **GW1**.
@@ -140,7 +137,7 @@ Gondoljon erre általánosabb értelemben úgy, hogy a helyi hálózati átjár�
 
 ### <a name="create-the-local-network-gateway-resource"></a>A helyi hálózati átjáró erőforrás létrehozása
 1. Jelentkezzen be a POC1 Azure Stack fizikai gépére.
-2. Válassza ki a felhasználói portálon **új**.
+2. Válassza ki a felhasználói portálon **+ erőforrás létrehozása**.
 3. Lépjen a **Marketplace**, majd válassza ki **hálózatkezelés**.
 4. Az erőforrások listájában válassza ki a **helyi hálózati átjáró**.
 5. A **neve**, adja meg **POC2-GW**.
@@ -149,7 +146,7 @@ Gondoljon erre általánosabb értelemben úgy, hogy a helyi hálózati átjár�
 8. Ellenőrizze, hogy a **előfizetés**, **erőforráscsoport**, és **hely** helyes-e, és válassza ki **létrehozás**.
 
 ### <a name="create-the-connection"></a>A kapcsolat létrehozása
-1. Válassza ki a felhasználói portálon **új**.
+1. Válassza ki a felhasználói portálon **+ erőforrás létrehozása**.
 2. Lépjen a **Marketplace**, majd válassza ki **hálózatkezelés**.
 3. Az erőforrások listájában válassza ki a **kapcsolat**.
 4. Az a **alapjai** beállítások panelen a a **kapcsolattípus**, jelölje be **Site-to-site (IPSec)**.
@@ -163,7 +160,7 @@ Gondoljon erre általánosabb értelemben úgy, hogy a helyi hálózati átjár�
 ### <a name="create-a-vm"></a>Virtuális gép létrehozása
 Ellenőrizze az adatokat, a VPN-kapcsolaton keresztül haladó, a virtuális gépek adatokat küldeni és fogadni az egyes Azure Stack Development Kit szükséges. Most már a poc1-ben hozzon létre egy virtuális gépet, és majd a virtuális hálózaton helyezi azt a Virtuálisgép-alhálózatot.
 
-1. Az Azure Portalon válassza ki a **új**.
+1. Az Azure Portalon válassza ki a **+ erőforrás létrehozása**.
 2. Lépjen a **Marketplace**, majd válassza ki **számítási**.
 3. A virtuálisgép-rendszerképek listájában válassza ki a **Windows Server 2016 Datacenter próbaverzió** kép.
 4. Az a **alapjai** panelen, a **neve**, adja meg **VM01**.
@@ -185,7 +182,7 @@ Szolgáltatás-rendszergazda bejelentkezhet bérlőként teszteléséhez a csoma
 ### <a name="create-the-virtual-network-and-vm-subnet"></a>A virtuális hálózat és a virtuálisgép-alhálózat létrehozása
 
 1. Jelentkezzen be a bérlői fiókkal.
-2. Válassza ki a felhasználói portálon **új**.
+2. Válassza ki a felhasználói portálon **+ erőforrás létrehozása**.
 3. Lépjen a **Marketplace**, majd válassza ki **hálózatkezelés**.
 4. Válassza ki **virtuális hálózati**.
 5. Korábban a hálózati konfiguráció táblázatban szereplő információk segítségével azonosítsa azokat az értékeket a poc2 **neve**, **címtér**, **alhálózatnév**, és **Alhálózati címtartomány**.
@@ -205,7 +202,7 @@ Szolgáltatás-rendszergazda bejelentkezhet bérlőként teszteléséhez a csoma
 6. Válassza ki **OK** az átjáró-alhálózat létrehozásához.
 
 ### <a name="create-the-virtual-network-gateway"></a>Virtuális hálózati átjáró létrehozása
-1. Az Azure Portalon válassza ki a **új**.  
+1. Az Azure Portalon válassza ki a **+ erőforrás létrehozása**.  
 2. Lépjen a **Marketplace**, majd válassza ki **hálózatkezelés**.
 3. Hálózati erőforrások listájából válassza ki a **virtuális hálózati átjáró**.
 4. A **neve**, adja meg **GW2**.
@@ -218,7 +215,7 @@ Szolgáltatás-rendszergazda bejelentkezhet bérlőként teszteléséhez a csoma
 
 ### <a name="create-the-local-network-gateway-resource"></a>A helyi hálózati átjáró erőforrás létrehozása
 
-1. Jelölje be a POC2 felhasználói portálon **új**. 
+1. Jelölje be a POC2 felhasználói portálon **+ erőforrás létrehozása**. 
 4. Lépjen a **Marketplace**, majd válassza ki **hálózatkezelés**.
 5. Az erőforrások listájában válassza ki a **helyi hálózati átjáró**.
 6. A **neve**, adja meg **POC1-GW**.
@@ -227,7 +224,7 @@ Szolgáltatás-rendszergazda bejelentkezhet bérlőként teszteléséhez a csoma
 9. Ellenőrizze, hogy a **előfizetés**, **erőforráscsoport**, és **hely** helyes-e, és válassza ki **létrehozás**.
 
 ## <a name="create-the-connection"></a>A kapcsolat létrehozása
-1. Válassza ki a felhasználói portálon **új**. 
+1. Válassza ki a felhasználói portálon **+ erőforrás létrehozása**. 
 2. Lépjen a **Marketplace**, majd válassza ki **hálózatkezelés**.
 3. Az erőforrások listájában válassza ki a **kapcsolat**.
 4. Az a **alapszintű** beállítások panelen a a **kapcsolattípus**, válassza a **Site-to-site (IPSec)**.
@@ -241,7 +238,7 @@ Szolgáltatás-rendszergazda bejelentkezhet bérlőként teszteléséhez a csoma
 ## <a name="create-a-virtual-machine"></a>Virtuális gép létrehozása
 Most már POC2-ben hozzon létre egy virtuális gépet, és a virtuális hálózat Virtuálisgép-alhálózatára helyezi azt.
 
-1. Az Azure Portalon válassza ki a **új**.
+1. Az Azure Portalon válassza ki a **+ erőforrás létrehozása**.
 2. Lépjen a **Marketplace**, majd válassza ki **számítási**.
 3. A virtuálisgép-rendszerképek listájában válassza ki a **Windows Server 2016 Datacenter próbaverzió** kép.
 4. Az a **alapjai** panelen a **neve**, adja meg **VM02**.

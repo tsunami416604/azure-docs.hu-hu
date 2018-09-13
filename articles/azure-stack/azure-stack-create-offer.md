@@ -11,21 +11,21 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/20/2018
+ms.date: 09/12/2018
 ms.author: brenduns
 ms.reviewer: efemmano
-ms.openlocfilehash: 66a89c3cb14dd642ae993cbf3c45885635f59759
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 7b26afa99e9ab14db83aee5c0487c1c405243962
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42139419"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44719766"
 ---
 # <a name="create-an-offer-in-azure-stack"></a>Ajánlat létrehozása az Azure Stackben
 
 [Kínál](azure-stack-key-features.md) egy vagy több olyan csomag, amelyet szolgáltatók vásárolni, vagy iratkozzon fel a felhasználók csoportja. Ez a dokumentum bemutatja, hogyan hozzon létre egy ajánlatot, amely tartalmazza a [létrehozott csomagot](azure-stack-create-plan.md). Ez az ajánlat lehetővé teszi előfizetők a virtuális gépek telepítése.
 
-1. Jelentkezzen be az Azure Stack rendszergazdai portálon (https://adminportal.local.azurestack.external) válassza **új** > **bérlői ajánlatok és csomagok** > **ajánlat**.
+1. Jelentkezzen be az Azure Stack rendszergazdai portálon (https://adminportal.local.azurestack.external) válassza **+ erőforrás létrehozása** > **bérlői ajánlatok és csomagok** > **ajánlat**.
 
    ![Ajánlat létrehozása](media/azure-stack-create-offer/image01.png)
   
