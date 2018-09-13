@@ -1,6 +1,6 @@
 ---
-title: Az Azure tároló beállításjegyzék webhook adatbázisséma hivatkozása
-description: Webhook kérelem JSON hasznos referencia az Azure-tároló beállításjegyzék.
+title: Az Azure Container Registry webhookok adatbázisséma hivatkozása
+description: Webhook kérés JSON hasznos referencia az Azure Container Registry.
 services: container-registry
 author: mmacy
 manager: jeconnoc
@@ -8,67 +8,68 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 12/02/2017
 ms.author: marsma
-ms.openlocfilehash: f62477a4c68abf1617d9689047913fd820ee5461
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 87fe978416c29b50abeef0e0a6624d7440dd87ef
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35644691"
 ---
-# <a name="azure-container-registry-webhook-reference"></a>Az Azure tároló beállításjegyzék webhook referencia
+# <a name="azure-container-registry-webhook-reference"></a>Az Azure Container Registry webhookok leírása
 
-Is [konfigurálása webhookokkal](container-registry-webhook.md) a tároló rendszerleíró, amelyek bizonyos végrehajt rajta eseményeket. Például engedélyezheti a tároló rendszerképre által kiváltott webhookok `push` és `delete` műveletek. A webhook aktiválása esetén az Azure tároló beállításjegyzék az esemény akkor adja meg a végpont kapcsolatos információkat tartalmazó HTTP vagy HTTPS-kérelmet ad ki. A végpont a webhook feldolgozni, majd ennek megfelelően működjön.
+Is [webhookok konfigurálása](container-registry-webhook.md) a tároló-beállításjegyzékhez, amelyek létrehozzák az eseményeket, amikor bizonyos műveleteket alapján történik. Például engedélyezheti a webhookok, a tároló rendszerképét kiváltó `push` és `delete` műveleteket. Webhook akkor aktiválódik, amikor az Azure Container Registry bocsát ki, adja meg a végpont az eseménnyel kapcsolatos adatokat tartalmazó HTTP vagy HTTPS-kérést. A végpont ezután a webhook feldolgozni, és azoknak megfelelő cselekvést.
 
-A következő részek a séma támogatott események által webhook kérelmek. Az esemény szakaszok tartalmaznak az eseménytípus, egy példa-kérések forgalma és egy vagy több indítsa el a webhook Példaparancsok hasznos sémáját.
+Az alábbi szakaszok a séma támogatott események által webhook-kérelmet. Az esemény szakaszok az esemény típusa, egy példa kérelem hasznos adatai, és aktiválja a webhookot egy vagy több Példaparancsok tartalom sémáját.
 
-További információ a webhookok beállításáról az Azure-tárolót rendszerleíró: [Azure tároló beállításjegyzék használatával webhookok](container-registry-webhook.md).
+Az Azure container registry webhookok konfigurálásával kapcsolatos további információkért lásd: [használata Azure Container Registry webhookokat](container-registry-webhook.md).
 
-## <a name="webhook-requests"></a>Webhook kérelmek
+## <a name="webhook-requests"></a>Webhook-kérelmek
 
 ### <a name="http-request"></a>HTTP-kérelem
 
-Egy kiváltott webhook HTTP teszi `POST` kérése az URL-végpontjának a webhook konfigurálásakor megadott.
+Aktivált webhook lehetővé teszi egy olyan HTTP `POST` kérése az URL-végpontot, a webhook konfigurálásakor megadott.
 
 ### <a name="http-headers"></a>HTTP-fejlécek
 
-Webhook kérelmek közé tartozik egy `Content-Type` a `application/json` Ha nem adott meg egy `Content-Type` a webhook egyéni fejlécet.
+Webhook kérések tartalmazzák egy `Content-Type` , `application/json` Ha nem adott meg egy `Content-Type` a webhook egyéni fejlécet.
 
-A kérelem túl ezen egyéni fejlécek esetleg lett megadva a webhook más fejlécek nem lettek hozzáadva.
+A kérelem ezek egyéni fejlécek, előfordulhat, hogy a megadott a webhook mellett egyéb fejlécek kerülnek.
 
 ## <a name="push-event"></a>Leküldéses esemény
 
-A tároló-lemezkép a rendszer előkészítésre továbbít egy tárház által elindított Webhook.
+A Webhook aktiválódik, ha egy adattár át lett helyezve egy tárolórendszerképet.
 
 ### <a name="push-event-payload"></a>Leküldéses eseménytartalom
 
 |Elem|Típus|Leírás|
 |-------------|----------|-----------|
-|`id`|Karakterlánc|A webhook esemény azonosítója.|
-|`timestamp`|DateTime|Az az idő, ahol a webhook esemény lett elindítva.|
-|`action`|Karakterlánc|A webhook eseményt kiváltó művelet.|
-|[cél](#target)|Összetett típus|A webhook eseményt kiváltó esemény célját.|
-|[Kérelem](#request)|Összetett típus|A kérelem a webhook eseményt létrehozó.|
+|`id`|Sztring|A webhook-esemény azonosítója.|
+|`timestamp`|DateTime|Az idő, amikor a webhook-esemény lett elindítva.|
+|`action`|Sztring|A művelet, amely kiváltotta a webhook-esemény.|
+|[Cél](#target)|Komplex típus|A webhook-esemény kiváltó esemény célját.|
+|[Kérelem](#request)|Komplex típus|A kérelem, ami a webhook-esemény jön létre.|
 
 ### <a name="target"></a>cél
 
 |Elem|Típus|Leírás|
 |------------------|----------|-----------|
-|`mediaType`|Karakterlánc|A hivatkozott objektum MIME-típusát.|
-|`size`|Int32|A tartalom bájtok száma. Ugyanaz, mint hosszúság mezője.|
-|`digest`|Karakterlánc|A kivonatoló a tartalom határozzák meg a beállításjegyzék V2 HTTP API-specifikációnak.|
+|`mediaType`|Sztring|A hivatkozott objektum MIME-típusát.|
+|`size`|Int32|A tartalom bájtok száma. Ugyanaz, mint a Hossz mezőben.|
+|`digest`|Sztring|A tartalom, ahogyan a beállításjegyzék V2 HTTP API-specifikációnak a kivonat.|
 |`length`|Int32|A tartalom bájtok száma. Ugyanaz, mint mérete mező.|
-|`repository`|Karakterlánc|A tárház nevét.|
-|`tag`|Karakterlánc|A kép címke neve.|
+|`repository`|Sztring|A tárház nevét.|
+|`tag`|Sztring|A kép címke neve.|
 
-### <a name="request"></a>Kérelem
+### <a name="request"></a>kérelem
 
 |Elem|Típus|Leírás|
 |------------------|----------|-----------|
-|`id`|Karakterlánc|A kérelem, az esemény kezdeményezett azonosítója.|
-|`host`|Karakterlánc|A beállításjegyzék-példányban leírtak szerint a HTTP állomásfejléc bejövő kérelmek kívülről elérhető állomásnevét.|
-|`method`|Karakterlánc|A kérelem metódus az eseményt létrehozó.|
-|`useragent`|Karakterlánc|A felhasználói ügynök a kérelem fejléce.|
+|`id`|Sztring|Az esemény által kezdeményezett kérelem azonosítója.|
+|`host`|Sztring|A kívülről elérhető-példányának gazdagépnevét a beállításjegyzék, a bejövő kérelem HTTP-állomásfejlécet által megadott.|
+|`method`|Sztring|A kérelmi metódust, ami az esemény jön létre.|
+|`useragent`|Sztring|A felhasználói ügynök fejléc a kérelem.|
 
-### <a name="payload-example-push-event"></a>Hasznos példa: leküldéses esemény
+### <a name="payload-example-push-event"></a>Adattartalom-példa: leküldéses esemény
 
 ```JSON
 {
@@ -92,7 +93,7 @@ A tároló-lemezkép a rendszer előkészítésre továbbít egy tárház által
 }
 ```
 
-Példa [Docker parancssori felületén](https://docs.docker.com/engine/reference/commandline/cli/) parancs, amely elindítja a **leküldéses** esemény webhook:
+Példa [Docker CLI](https://docs.docker.com/engine/reference/commandline/cli/) parancsot, amely elindítja a **leküldéses** event webhook:
 
 ```bash
 docker push myregistry.azurecr.io/hello-world:v1
@@ -100,36 +101,36 @@ docker push myregistry.azurecr.io/hello-world:v1
 
 ## <a name="delete-event"></a>Esemény törlése
 
-A Webhook kiváltva, ha a tárház vagy jegyzékfájl törlődik. Nem indulnak el, egy címke törlésekor.
+A Webhook aktiválódik, ha a tárház vagy az jegyzékfájl törlődik. Nem aktiválódik, ha egy címke törlése.
 
 ### <a name="delete-event-payload"></a>Eseménytartalom törlése
 
 |Elem|Típus|Leírás|
 |-------------|----------|-----------|
-|`id`|Karakterlánc|A webhook esemény azonosítója.|
-|`timestamp`|DateTime|Az az idő, ahol a webhook esemény lett elindítva.|
-|`action`|Karakterlánc|A webhook eseményt kiváltó művelet.|
-|[cél](#delete_target)|Összetett típus|A webhook eseményt kiváltó esemény célját.|
-|[Kérelem](#delete_request)|Összetett típus|A kérelem a webhook eseményt létrehozó.|
+|`id`|Sztring|A webhook-esemény azonosítója.|
+|`timestamp`|DateTime|Az idő, amikor a webhook-esemény lett elindítva.|
+|`action`|Sztring|A művelet, amely kiváltotta a webhook-esemény.|
+|[Cél](#delete_target)|Komplex típus|A webhook-esemény kiváltó esemény célját.|
+|[Kérelem](#delete_request)|Komplex típus|A kérelem, ami a webhook-esemény jön létre.|
 
-### <a name="delete_target"></a> cél
+### <a name="delete_target"></a> Cél
 
 |Elem|Típus|Leírás|
 |------------------|----------|-----------|
-|`mediaType`|Karakterlánc|A hivatkozott objektum MIME-típusát.|
-|`digest`|Karakterlánc|A kivonatoló a tartalom határozzák meg a beállításjegyzék V2 HTTP API-specifikációnak.|
-|`repository`|Karakterlánc|A tárház nevét.|
+|`mediaType`|Sztring|A hivatkozott objektum MIME-típusát.|
+|`digest`|Sztring|A tartalom, ahogyan a beállításjegyzék V2 HTTP API-specifikációnak a kivonat.|
+|`repository`|Sztring|A tárház nevét.|
 
 ### <a name="delete_request"></a> Kérelem
 
 |Elem|Típus|Leírás|
 |------------------|----------|-----------|
-|`id`|Karakterlánc|A kérelem, az esemény kezdeményezett azonosítója.|
-|`host`|Karakterlánc|A beállításjegyzék-példányban leírtak szerint a HTTP állomásfejléc bejövő kérelmek kívülről elérhető állomásnevét.|
-|`method`|Karakterlánc|A kérelem metódus az eseményt létrehozó.|
-|`useragent`|Karakterlánc|A felhasználói ügynök a kérelem fejléce.|
+|`id`|Sztring|Az esemény által kezdeményezett kérelem azonosítója.|
+|`host`|Sztring|A kívülről elérhető-példányának gazdagépnevét a beállításjegyzék, a bejövő kérelem HTTP-állomásfejlécet által megadott.|
+|`method`|Sztring|A kérelmi metódust, ami az esemény jön létre.|
+|`useragent`|Sztring|A felhasználói ügynök fejléc a kérelem.|
 
-### <a name="payload-example-delete-event"></a>Hasznos példa: az esemény törlése
+### <a name="payload-example-delete-event"></a>Adattartalom-példa: esemény törlése
 
 ```JSON
 {
@@ -150,7 +151,7 @@ A Webhook kiváltva, ha a tárház vagy jegyzékfájl törlődik. Nem indulnak e
   }
 ```
 
-Példa [Azure CLI 2.0](/cli/azure/acr) parancsok, amely egy **törlése** esemény webhook:
+Példa [Azure CLI-vel](/cli/azure/acr) parancsok, az eseményindító egy **törlése** event webhook:
 
 ```azurecli
 # Delete repository
@@ -162,4 +163,4 @@ az acr repository delete -n MyRegistry --repository MyRepository --tag MyTag --m
 
 ## <a name="next-steps"></a>További lépések
 
-[Azure-tároló beállításjegyzék webhookok használatával](container-registry-webhook.md)
+[Azure Container Registry webhookok használata](container-registry-webhook.md)

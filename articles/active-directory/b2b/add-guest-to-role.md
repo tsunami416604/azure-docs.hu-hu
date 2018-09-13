@@ -1,39 +1,39 @@
 ---
-title: Adja hozzá az Azure Active Directory B2B együttműködés felhasználó egy szerepkörhöz |} Microsoft Docs
-description: A Vendég felhasználó hozzáadása egy szerepkört az Azure Active Directoryban
+title: Adjon hozzá egy Azure Active Directory B2B-együttműködés felhasználói szerepkörhöz |} A Microsoft Docs
+description: Vendégfelhasználó hozzáadása szerepkörhöz az Azure Active Directoryban
 services: active-directory
 ms.service: active-directory
 ms.component: B2B
 ms.topic: article
 ms.date: 05/08/2018
-ms.author: twooley
-author: twooley
+ms.author: mimart
+author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 91abc2ef4d893c57816ca3b6552f19f07c2f588a
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
-ms.translationtype: HT
+ms.openlocfilehash: 47615309d71ac6bf4352e30284f23fbbfdd6d4be
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34260075"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35644667"
 ---
-# <a name="grant-permissions-to-users-from-partner-organizations-in-your-azure-active-directory-tenant"></a>Felhasználói engedélyek kiosztása a fiókpartner-szervezetek, az Azure Active Directory-bérlőben
+# <a name="grant-permissions-to-users-from-partner-organizations-in-your-azure-active-directory-tenant"></a>Felhasználói engedélyek kiosztása az erőforráspartner-szervezeteknél az Azure Active Directory-bérlőben
 
-Az Azure Active Directory (Azure AD) B2B együttműködés felhasználók hozzá szeretné adni vendégfelhasználók számára a könyvtárba, és a címtárban Vendég engedélye korlátozott alapértelmezés szerint. A vállalat esetleg néhány vendégfelhasználók a szervezet magasabb szintű szerepkörök betöltésére. Magasabb jogosultsági szerepkörök definiálása támogatásához vendégfelhasználók egyetlen szerepkörhöz sem felügyelni, a szervezet igényei alapján is hozzáadhatók.
+Az Azure Active Directory (Azure AD) B2B együttműködési felhasználókat adódnak, vendégfelhasználókat arra a könyvtárra, és alapértelmezés szerint korlátozva vannak a Vendég engedélyeket a címtárban. Az üzleti szükség lehet néhány vendégfelhasználók töltse ki a szervezet magasabb szintű szerepköröket. Támogatja a magasabb szintű szerepkörök definiálása, vendégfelhasználókat is hozzáadhatók minden olyan szerepkörhöz, amennyit csak szeretne, a szervezet igényeinek megfelelően.
 
-## <a name="default-role"></a>alapértelmezett szerepkör
+## <a name="default-role"></a>Alapértelmezett szerepkör
 
 ![alapértelmezett szerepkör](./media/add-guest-to-role/default-role.png)
 
-## <a name="global-administrator-role"></a>Globális rendszergazdai szerepkörrel
+## <a name="global-administrator-role"></a>Globális rendszergazdai szerepkör
 
-![globális rendszergazdai szerepkörrel](./media/add-guest-to-role/global-admin-role.png)
+![globális rendszergazdai szerepkör](./media/add-guest-to-role/global-admin-role.png)
 
 ## <a name="limited-administrator-role"></a>Korlátozott rendszergazdai szerepkör
 
-![korlátozott rendszergazdai szerepkörrel](./media/add-guest-to-role/limited-admin-role.png)
+![korlátozott rendszergazdai szerepkört](./media/add-guest-to-role/limited-admin-role.png)
 
 ## <a name="next-steps"></a>További lépések
 
 - [Mi az az Azure AD B2B együttműködés?](what-is-b2b.md)
-- [B2B együttműködés felhasználó tulajdonságai](user-properties.md)
+- [B2B-együttműködés felhasználói tulajdonságok](user-properties.md)

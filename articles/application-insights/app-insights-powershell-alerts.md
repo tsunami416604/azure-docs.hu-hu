@@ -1,8 +1,8 @@
 ---
-title: "Riasztások beállítása az Application Insights a Powershell használatával |} Microsoft Docs"
-description: "Az Application Insights metrika változásaira vonatkozó e-mailek eléréséhez automatizálásához."
+title: A Powershell használata riasztások beállításához az Application Insights |} A Microsoft Docs
+description: Automatizálhatja a konfigurálását, az Application Insights metrika változásaira vonatkozó e-mailek beolvasása.
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: 05d6a9e0-77a2-4a35-9052-a7768d23a196
@@ -10,35 +10,36 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/31/2016
 ms.author: mbullwin
-ms.openlocfilehash: b90a540afd1c2815db8f5a99ee210ce21ea4d874
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 8e317d44b7fdff1ef244e2e549fbbebf3f829740
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35645206"
 ---
 # <a name="use-powershell-to-set-alerts-in-application-insights"></a>A PowerShell használata riasztások beállításához az Application Insights szolgáltatásban
-Automatizálható a konfigurációja [riasztások](app-insights-alerts.md) a [Application Insights](app-insights-overview.md).
+Automatizálhatja a konfigurációját [riasztások](app-insights-alerts.md) a [Application Insights](app-insights-overview.md).
 
-Emellett képes [webhookok automatizálhatja a válasz riasztás beállítása](../monitoring-and-diagnostics/insights-webhooks-alerts.md).
+Emellett akkor is [állítsa be a webhookok automatizálható a riasztás](../monitoring-and-diagnostics/insights-webhooks-alerts.md).
 
 > [!NOTE]
-> Ha azt szeretné, erőforrások és a riasztások létrehozásához egy időben, érdemes lehet [Azure Resource Manager-sablonnal](app-insights-powershell.md).
+> Ha azt szeretné, erőforrások és a riasztások létrehozásához egy időben, érdemes lehet [egy Azure Resource Manager-sablonnal](app-insights-powershell.md).
 >
 >
 
-## <a name="one-time-setup"></a>Egyszeri beállítása
-Ha még nem használta PowerShell Azure-előfizetéséhez előtt:
+## <a name="one-time-setup"></a>Egyszeri beállítás
+Ha még nem használta a Powershellt az Azure-előfizetésében előtt:
 
-Az Azure Powershell modul telepítése a számítógépen, ahová a parancsfájlok futtatása.
+Azure Powershell-modul telepítéséhez a számítógépen, ahol szeretné a szkriptek futtatására.
 
-* Telepítés [Microsoft Webplatform-telepítővel (v5 vagy magasabb)](http://www.microsoft.com/web/downloads/platform.aspx).
+* Telepítés [Microsoft Webplatform-telepítővel (5-ös verzióját vagy újabb)](http://www.microsoft.com/web/downloads/platform.aspx).
 * Telepítse a Microsoft Azure Powershell használatával
 
 ## <a name="connect-to-azure"></a>Csatlakozás az Azure szolgáltatáshoz
-Indítsa el az Azure PowerShell és [csatlakozás az előfizetéshez](/powershell/azure/overview):
+Indítsa el az Azure Powershellt, és [csatlakozzon az előfizetéséhez](/powershell/azure/overview):
 
 ```PowerShell
 
@@ -46,10 +47,10 @@ Indítsa el az Azure PowerShell és [csatlakozás az előfizetéshez](/powershel
 ```
 
 
-## <a name="get-alerts"></a>Riasztásokat kaphat
+## <a name="get-alerts"></a>Riasztások beolvasása
     Get-AzureAlertRmRule -ResourceGroup "Fabrikam" [-Name "My rule"] [-DetailedOutput]
 
-## <a name="add-alert"></a>Riasztások hozzáadása
+## <a name="add-alert"></a>Riasztás hozzáadása
     Add-AlertRule  -Name "{ALERT NAME}" -Description "{TEXT}" `
      -ResourceGroup "{GROUP NAME}" `
      -ResourceId "/subscriptions/{SUBSCRIPTION ID}/resourcegroups/{GROUP NAME}/providers/microsoft.insights/components/{APP RESOURCE NAME}" `
@@ -65,9 +66,9 @@ Indítsa el az Azure PowerShell és [csatlakozás az előfizetéshez](/powershel
 
 
 ## <a name="example-1"></a>1. példa
-E-mailt kérek a HTTP-kérelmekre, átlagosan több mint 5 perc, a kiszolgáló válaszát lassabb, mint 1 másodperc esetén is. Az Application Insights-erőforrás neve IceCreamWebApp, és a Fabrikam az erőforráscsoporthoz tartozik. Az Azure-előfizetés tulajdonosa vagyok.
+E-mailt kérek a kiszolgáló válasza a HTTP-kérelmekre, több mint 5 perc elteltével átlagolt lassabb, mint 1 másodperc esetén. Az Application Insights-erőforrás neve IceCreamWebApp, és a Fabrikam az erőforráscsoportban. Az Azure-előfizetés tulajdonosa vagyok.
 
-A GUID-azonosító az előfizetés-azonosító (nem az alkalmazás instrumentation kulcsa).
+A GUID azonosító az előfizetés-azonosító (nem a kialakítási kulcsot az alkalmazás).
 
     Add-AlertRule -Name "slow responses" `
      -Description "email me if the server responds slowly" `
@@ -81,7 +82,7 @@ A GUID-azonosító az előfizetés-azonosító (nem az alkalmazás instrumentati
      -Location "East US" -RuleType Metric
 
 ## <a name="example-2"></a>2. példa
-Egy alkalmazás, amelyben használni kell [trackmetric() függvény](app-insights-api-custom-events-metrics.md#trackmetric) "salesPerHour." nevű metrika bejelenteni Küldjön egy e-mailt, a munkatársak számára, ha "salesPerHour" 100, alá süllyed átlagosan 24 órán át.
+Az alkalmazástól, amelyben van [a trackmetric() függvény](app-insights-api-custom-events-metrics.md#trackmetric) jelentéséhez "salesPerHour." nevű metrika Küldjön egy e-mailt a munkatársainak, ha 100, alá csökken "salesPerHour" átlagolt 24 órán át.
 
     Add-AlertRule -Name "poor sales" `
      -Description "slow sales alert" `
@@ -94,33 +95,33 @@ Egy alkalmazás, amelyben használni kell [trackmetric() függvény](app-insight
      -CustomEmails "satish@fabrikam.com","lei@fabrikam.com" `
      -Location "East US" -RuleType Metric
 
-A metrika a jelentett ugyanaz a szabály használható az [mérési paraméter](app-insights-api-custom-events-metrics.md#properties) TrackEvent vagy trackPageView például egy másik nyomkövetési hívás.
+A metrika használata által jelentett ugyanaz a szabály használható a [mérési paraméter](app-insights-api-custom-events-metrics.md#properties) TrackEvent vagy trackPageView például egy másik nyomkövetési hívás.
 
 ## <a name="metric-names"></a>Metrika neve
-| Metrika neve | Képernyő neve | Leírás |
+| Metrika neve | Képernyő nevét | Leírás |
 | --- | --- | --- |
 | `basicExceptionBrowser.count` |Böngészőkivételek |A böngészőben fellépő nem kezelt kivételek száma. |
-| `basicExceptionServer.count` |Kivételek |Az alkalmazás által nem kezelt kivételek száma |
-| `clientPerformance.clientProcess.value` |Ügyfél feldolgozási ideje |Egy dokumentum utolsó bájtját fogadását, amíg a DOM betöltése között eltelt idő. Aszinkron kérelmek feldolgozása még folyamatban lehet is. |
-| `clientPerformance.networkConnection.value` |Lapbetöltési hálózati csatlakozás ideje |A böngészőben a hálózathoz való kapcsolódáshoz szükséges idő. 0 akkor lehet, ha a gyorsítótárba. |
-| `clientPerformance.receiveRequest.value` |A fogadó válaszidő |A böngésző küldött kérelmek válaszideje kiindulási között eltelt idő. |
-| `clientPerformance.sendRequest.value` |A küldési kérelem ideje |A kérés küldése böngésző szükséges időt. |
-| `clientPerformance.total.value` |Böngésző lapbetöltési ideje |Felhasználói kérelemtől a DOM, a stíluslapok, parancsfájlok és a képeket idő töltődnek be. |
-| `performanceCounter.available_bytes.value` |Rendelkezésre álló memória |A folyamat vagy a rendszer általi használatra azonnal elérhető fizikai memória. |
-| `performanceCounter.io_data_bytes_per_sec.value` |Feldolgozási IO sebessége |Összes bájt / mp olvashatók és írhatók a fájlokon, hálózaton és eszközökön. |
-| `performanceCounter.number_of_exceps_thrown_per_sec.value` |Kivétel arány |Kivételek száma másodpercenként. |
-| `performanceCounter.percentage_processor_time.value` |CPU folyamat |Az alkalmazások folyamat végrehajtása utasításokat a processzor által használt összes Folyamatszál eltelt idő hány százalékát. |
-| `performanceCounter.percentage_processor_total.value` |Processzoridő |A processzor nem üresjárati szálak futtatásával töltött idő százalékos aránya |
-| `performanceCounter.process_private_bytes.value` |Folyamat saját bájtok |Kizárólag a megfigyelt alkalmazás rendelt memória. |
+| `basicExceptionServer.count` |Kiszolgálókivételek |Az alkalmazás által fellépő nem kezelt kivételek száma |
+| `clientPerformance.clientProcess.value` |Ügyfél feldolgozási ideje |Az utolsó bájtig eltelt egy dokumentum fogadása, mindaddig, amíg a DOM betöltése között eltelt idő. Aszinkron kérelmek feldolgozása még folyamatban lehet is. |
+| `clientPerformance.networkConnection.value` |Hálózati kapcsolat ideje lapbetöltéskor |A böngészőben a hálózathoz való csatlakozáshoz szükséges idő. 0 is lehet, ha a gyorsítótárba. |
+| `clientPerformance.receiveRequest.value` |Válasz fogadási ideje |Kérelem küldése a válasz fogadására indítása böngésző között eltelt idő. |
+| `clientPerformance.sendRequest.value` |Kérelem küldési ideje |Kérelem elküldéséhez a böngésző által igénybe vett idő. |
+| `clientPerformance.total.value` |Böngésző lapbetöltési ideje |A felhasználói kérelemtől a DOM, a stíluslapok, a szkriptek és a képek betöltéséig eltelt idő. |
+| `performanceCounter.available_bytes.value` |Elérhető memória |A folyamatot, vagy a rendszer általi használatra azonnal elérhető fizikai memória. |
+| `performanceCounter.io_data_bytes_per_sec.value` |Folyamat átviteli sebessége |Olvasási-írási műveletek fájlokon, hálózaton és eszközökön összesen (bájt/mp). |
+| `performanceCounter.number_of_exceps_thrown_per_sec.value` |kivételek sebessége |Kivételek száma másodpercenként. |
+| `performanceCounter.percentage_processor_time.value` |Folyamat CPU |Az alkalmazások a folyamatot a processzor-végrehajtási utasításokat által használt összes szál futtatására fordított időt százalékos. |
+| `performanceCounter.percentage_processor_total.value` |Processzoridő |A processzor nem üresjárati szálak futtatásával töltött százalékos időhányada. |
+| `performanceCounter.process_private_bytes.value` |Folyamat saját bájtjai |A kizárólag a megfigyelt alkalmazás folyamataihoz hozzárendelt memória mennyisége. |
 | `performanceCounter.request_execution_time.value` |ASP.NET-kérelem végrehajtási ideje |A legutóbbi kérelem végrehajtási ideje. |
-| `performanceCounter.requests_in_application_queue.value` |ASP.NET-kérelem végrehajtásának várólista |Az alkalmazás kérelem-várólistájának hossza. |
-| `performanceCounter.requests_per_sec.value` |ASP.NET-kérelmek gyakorisága |Az ASP.NET az alkalmazás másodpercenkénti összes kérelmek száma. |
-| `remoteDependencyFailed.durationMetric.count` |Függőségi hiba |A kiszolgáló alkalmazás által külső erőforrások felé indított sikertelen hívások száma. |
+| `performanceCounter.requests_in_application_queue.value` |Végrehajtási üzenetsorban lévő ASP.NET-es kérelmek |Az alkalmazás kérelem-várólistájának hossza. |
+| `performanceCounter.requests_per_sec.value` |ASP.NET-kérelmek gyakorisága |Az ASP.NET által az alkalmazásnak küldött összes kérelem száma másodpercenként. |
+| `remoteDependencyFailed.durationMetric.count` |Függőségi hibák |A kiszolgálói alkalmazás által külső erőforrások indított sikertelen hívások száma. |
 | `request.duration` |Kiszolgáló válaszideje |Egy HTTP-kérelem fogadása és a válasz küldésének befejezése között eltelt idő. |
-| `request.rate` |Kérelmek gyakorisága |Az alkalmazás másodpercenkénti összes kérelmek arányát. |
-| `requestFailed.count` |Sikertelen kérelmek |HTTP-kérelmek száma válaszkódot eredményező > = 400 |
-| `view.count` |Lapmegtekintések |A weblap ügyfélfelhasználói kéréseinek száma. Szintetikus forgalom ki van szűrve. |
-| {az egyéni metrika neve} |{A metrika neve} |A metrika értékét által jelentett [TrackMetric](app-insights-api-custom-events-metrics.md#trackmetric) vagy a [mérések paraméter követési hívásának](app-insights-api-custom-events-metrics.md#properties). |
+| `request.rate` |Kérelmek száma |Az alkalmazásnak küldött kérelmek száma másodpercenként. |
+| `requestFailed.count` |Sikertelen kérelmek |HTTP-kérelmek száma, amelyek válaszkódot eredményezett > = 400 |
+| `view.count` |Lapmegtekintések |Egy weblap kéréseinek száma. Szintetikus forgalom ki van szűrve. |
+| {az egyéni metrika neve} |{A metrika neve} |A metrikaérték által jelentett [TrackMetric](app-insights-api-custom-events-metrics.md#trackmetric) vagy a [követési hívás mérések paraméterében](app-insights-api-custom-events-metrics.md#properties). |
 
 A metrikák különféle telemetriai modulok által küldött:
 
@@ -131,11 +132,11 @@ A metrikák különféle telemetriai modulok által küldött:
 | remoteDependencyFailed |[Függőség](app-insights-configuration-with-applicationinsights-config.md) |
 | kérelem,<br/>requestFailed |[Kiszolgálói kérelem](app-insights-configuration-with-applicationinsights-config.md) |
 
-## <a name="webhooks"></a>webhook
-Is [automatizálhatja a válasz riasztás](../monitoring-and-diagnostics/insights-webhooks-alerts.md). Riasztást hoz létre Azure egy webcímet az Ön által választott fog hívni.
+## <a name="webhooks"></a>Webhookok
+Is [automatizálható a riasztás](../monitoring-and-diagnostics/insights-webhooks-alerts.md). Riasztást hoz létre az Azure egy webcímet tetszőleges fogja hívni.
 
-## <a name="see-also"></a>Lásd még:
-* [Konfigurálhatja az Application Insights-parancsprogramot](app-insights-powershell-script-create-resource.md)
-* [Az Application Insights és webes teszt erőforrások létrehozása sablonból](app-insights-powershell.md)
-* [Az Application Insights a Microsoft Azure Diagnostics kapcsoló automatizálásához](app-insights-powershell-azure-diagnostics.md)
-* [A válasz riasztás automatizálásához](../monitoring-and-diagnostics/insights-webhooks-alerts.md)
+## <a name="see-also"></a>Lásd még
+* [Nakonfigurovat Application Insights-szkript](app-insights-powershell-script-create-resource.md)
+* [Az Application Insights és a webes teszt erőforrások létrehozása sablonból](app-insights-powershell.md)
+* [Az Application insights szolgáltatásba a Microsoft Azure Diagnostics kapcsolási automatizálása](app-insights-powershell-azure-diagnostics.md)
+* [Automatizálható a riasztás](../monitoring-and-diagnostics/insights-webhooks-alerts.md)

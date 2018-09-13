@@ -1,5 +1,5 @@
 ---
-title: Az Application Insights-erőforrás létrehozása a PowerShell parancsfájl |} Microsoft Docs
+title: Application Insights-erőforrás létrehozása a PowerShell-parancsfájl |} A Microsoft Docs
 description: Application Insights-erőforrások létrehozásának automatizálása.
 services: application-insights
 documentationcenter: windows
@@ -10,32 +10,32 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/19/2016
 ms.author: mbullwin
-ms.openlocfilehash: d06b44246b694c0d2a83503ecd1ae0cedfadd9ec
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
-ms.translationtype: HT
+ms.openlocfilehash: c6ef869bd211b156ba17d2aa8f384d15269b6d59
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31587588"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35644676"
 ---
 # <a name="powershell-script-to-create-an-application-insights-resource"></a>PowerShell-parancsfájl egy Application Insights-erőforrás létrehozásához
 
 
-Ha figyelni kívánt új alkalmazás - vagy egy alkalmazás új verziójának – a [Azure Application Insights](https://azure.microsoft.com/services/application-insights/), állít be egy új erőforrást a Microsoft Azure-ban. Ehhez az erőforráshoz, ahol az alkalmazásból a telemetriai adatok elemzése és jelenik meg. 
+Ha szeretne egy új alkalmazás - vagy egy alkalmazás új verziójának – figyelheti a [Azure Application Insights](https://azure.microsoft.com/services/application-insights/), beállíthat egy új erőforrást a Microsoft Azure-ban. Ehhez az erőforráshoz, ahol az alkalmazásából származó telemetriai adatokat elemzi és jelenik meg. 
 
-Egy új erőforrást a PowerShell segítségével automatizálható.
+Új erőforrás létrehozása a PowerShell használatával automatizálható.
 
-Például ha egy mobileszköz-alkalmazást fejleszt, valószínű, hogy tetszőleges időpontban lesz közzétett változatának ügyfelei az alábbiakra használhatják az alkalmazást. Nem szeretnénk vegyes különböző verzióiból a telemetriai adatok eredményt. Ezért az egyes buildekhez új erőforrás létrehozása a felépítési folyamat kap.
+Például ha egy mobileszköz-alkalmazást fejleszt, akkor valószínű, hogy bármikor lesz az alkalmazás az ügyfelek által használt számos közzétett verziója. Nem kívánja a telemetriai adatok eredményt lenne szerencsés különböző verzióit. Így kaphat a build-folyamatoknak minden build új erőforrás létrehozása.
 
 > [!NOTE]
-> Ha szeretne létrehozni az erőforráscsoport összes egyszerre, fontolja meg a [létrehozása az Azure-sablon alapján erőforrások](app-insights-powershell.md).
+> Ha azt szeretné, létrehozhat egy csoportot az erőforrások ugyanabban az időben, érdemes lehet [létrehozása az Azure-sablon használatával erőforrások](app-insights-powershell.md).
 > 
 > 
 
-## <a name="script-to-create-an-application-insights-resource"></a>Hozzon létre egy Application Insights-erőforrást parancsprogram
-Tekintse meg a megfelelő parancsmag specifikációk:
+## <a name="script-to-create-an-application-insights-resource"></a>Parancsfájl egy Application Insights-erőforrás létrehozása
+Tekintse meg a megfelelő parancsmag adatait tartalmazza:
 
 * [New-AzureRmResource](https://msdn.microsoft.com/library/mt652510.aspx)
 * [New-AzureRmRoleAssignment](https://msdn.microsoft.com/library/mt678995.aspx)
@@ -99,19 +99,19 @@ Write-Host "IKey = " $resource.Properties.InstrumentationKey
 
 ```
 
-## <a name="what-to-do-with-the-ikey"></a>Mi a teendő, ha a iKey
-Az egyes erőforrások azonosítja a rendszerállapot-kulcsok (iKey). A iKey az erőforrás-létrehozási parancsfájl kimenete. A build script kell biztosítania az Application Insights SDK iKey az alkalmazásba ágyazott.
+## <a name="what-to-do-with-the-ikey"></a>Mi a teendő a Rendszerállapotkulcsot az
+Az egyes erőforrások azonosítására a kialakítási kulcsot (Rendszerállapotkulcsot). A Rendszerállapotkulcsot az erőforrás-létrehozási parancsprogrammal kimeneteként. A buildszkript a Rendszerállapotkulcsot az Application Insights SDK-t az alkalmazásba ágyazott kell biztosítania.
 
-Két módon lehet elérhetővé tenni a iKey az SDK-val:
+A Rendszerállapotkulcsot az SDK-val elérhetővé két módja van:
 
 * A [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md): 
-  * `<instrumentationkey>`*ikey*`</instrumentationkey>`
-* Vagy a [inicializálási kód](app-insights-api-custom-events-metrics.md): 
+  * `<instrumentationkey>`*rendszerállapotkulcsot*`</instrumentationkey>`
+* Vagy a [inicializálási kódot](app-insights-api-custom-events-metrics.md): 
   * `Microsoft.ApplicationInsights.Extensibility.
-    TelemetryConfiguration.Active.InstrumentationKey = "`*iKey*`";`
+    TelemetryConfiguration.Active.InstrumentationKey = "`*Rendszerállapotkulcsot*`";`
 
 ## <a name="see-also"></a>Lásd még
-* [Az Application Insights és webes teszt erőforrások létrehozása sablonból](app-insights-powershell.md)
-* [A PowerShell segítségével az Azure diagnosztikai figyelés beállítása](app-insights-powershell-azure-diagnostics.md) 
-* [Értesítések beállítása a PowerShell használatával](app-insights-powershell-alerts.md)
+* [Az Application Insights és a webes teszt erőforrások létrehozása sablonból](app-insights-powershell.md)
+* [A PowerShell-lel az Azure diagnostics-figyelés beállítása](app-insights-powershell-azure-diagnostics.md) 
+* [Riasztások beállítása a PowerShell használatával](app-insights-powershell-alerts.md)
 

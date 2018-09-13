@@ -1,5 +1,5 @@
 ---
-title: Adatok áthelyezése az és az Azure Blob Storage |} Microsoft Docs
+title: Adatok áthelyezése Azure Blob Storage szolgáltatásba vagy onnan |} A Microsoft Docs
 description: Adatok áthelyezése Azure Blob Storage-tárolóba vagy onnan máshová
 services: machine-learning,storage
 documentationcenter: ''
@@ -15,39 +15,39 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: deguhath
-ms.openlocfilehash: 40ec20765bf7874f245d3e37800b0b38dcda475d
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 854c671d4db6cdca2b019ed9adb0475e588281b1
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34838047"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35622551"
 ---
-# <a name="move-data-to-and-from-azure-blob-storage"></a>Adatok áthelyezése, és az Azure-Blobtárolóba
+# <a name="move-data-to-and-from-azure-blob-storage"></a>Adatok importálására és az Azure Blob Storage-ból
 [!INCLUDE [cap-ingest-data-selector](../../../includes/cap-ingest-data-selector.md)]
 
 <!-- just in case, adding this to separate these two include references -->
 
 [!INCLUDE [blob-storage-tool-selector](../../../includes/machine-learning-blob-storage-tool-selector.md)]
 
-Az ideális módszer attól függ, hogy a forgatókönyv. A [forgatókönyvek az Azure Machine Learning speciális elemzésekre](plan-sample-scenarios.md) cikk segít meghatározni, a különböző adatok tudományos munkafolyamatokat a speciális elemzés folyamat használja a szükséges erőforrások.
+A forgatókönyvtől függ, hogy melyik módszer a legjobb az Ön számára. A [az Azure Machine Learning speciális elemzési forgatókönyvek](plan-sample-scenarios.md) a cikknek a segítségével meghatározhatja, hogy a fejlett analitikai folyamat során használt adatok adatelemzési munkafolyamatainak különböző a szükséges erőforrásokat.
 
 > [!NOTE]
-> Az Azure blob storage teljes bevezetéséhez hivatkozik [Azure Blob alapjai](../../storage/blobs/storage-dotnet-how-to-use-blobs.md) és [Azure Blob szolgáltatás](https://msdn.microsoft.com/library/azure/dd179376.aspx).
+> Egy teljes körű Bevezetés az Azure blob storage, tekintse meg a [Azure Blob alapjai](../../storage/blobs/storage-dotnet-how-to-use-blobs.md) és [Azure Blob Service-ben](https://msdn.microsoft.com/library/azure/dd179376.aspx).
 > 
 > 
 
-Alternatív megoldásként használható [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) számára: 
+Alternatív megoldásként használható [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) való: 
 
-* Hozzon létre, és egy folyamatot, amely letölti az adatokat az Azure blob storage ütemezése 
+* Hozzon létre és ütemezhet egy folyamatot, amely adatokat tölt le az Azure blob storage-ban 
 * Adja át azt egy közzétett Azure Machine Learning webszolgáltatás 
-* a prediktív elemzési eredményeket, és 
-* Töltse fel az eredményeket a tároló. 
+* a prediktív elemzési eredményeket és 
+* Töltse fel az eredmények tárolása. 
 
-További információkért lásd: [létrehozása az Azure Data Factory és az Azure Machine Learning a prediktív folyamatok](../../data-factory/v1/data-factory-azure-ml-batch-execution-activity.md).
+További információkért lásd: [hozhatók létre az Azure Data Factory és az Azure Machine Learning prediktív adatcsatornák](../../data-factory/transform-data-using-machine-learning.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
-Jelen dokumentum céljából feltételezzük, hogy az Azure-előfizetéssel, a tárfiók és a megfelelő kulcsot adott fiók rendelkezik. Adatok feltöltése/letöltése, előtt ismernie kell az Azure storage-fiók nevét és a fiók kulcs.
+Jelen dokumentum céljából feltételezzük, hogy rendelkezik Azure-előfizetéssel, egy storage-fiókot és a kapcsolódó tárfiók-kulcsot az adott fiók. Adatok feltöltése/letöltése, előtt ismernie kell az Azure storage-fiók tárfióknév és fiókkulcs.
 
-* Állítsa be Azure-előfizetéssel, lásd: [ingyenes egy hónapos próbaverzió](https://azure.microsoft.com/pricing/free-trial/).
-* A storage-fiók létrehozásával és az első fiók és a fontos információkat lásd: [tudnivalók az Azure storage-fiókok](../../storage/common/storage-create-storage-account.md).
+* Azure-előfizetés beállításával kapcsolatban lásd: [ingyenes egy hónapos próbaidőszak](https://azure.microsoft.com/pricing/free-trial/).
+* Storage-fiók létrehozásával és az első fiók és a kulcsadatokat: [tudnivalók az Azure storage-fiókok](../../storage/common/storage-create-storage-account.md).
 

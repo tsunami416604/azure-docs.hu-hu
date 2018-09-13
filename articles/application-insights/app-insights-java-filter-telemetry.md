@@ -1,41 +1,42 @@
 ---
-title: "A Java-webalkalmazás az Azure Application Insights telemetria szűrése |} Microsoft Docs"
-description: "Telemetria forgalom csökkentése a nem kell figyelnie események kiszűrésével."
+title: A Java-webalkalmazását az Azure Application Insights telemetria szűrése |} A Microsoft Docs
+description: Csökkenthető a telemetriai forgalom szűrésével ki az eseményeket, nem kell figyelnie.
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/23/2016
 ms.author: mbullwin
-ms.openlocfilehash: f9e061c010667bc18ac54e6546cc25339e9c0e3e
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 8ea431b3ab1836626fc6c7551f3bee24e4a3db86
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35644719"
 ---
-# <a name="filter-telemetry-in-your-java-web-app"></a>A Java-webalkalmazás az telemetriai szűrése
+# <a name="filter-telemetry-in-your-java-web-app"></a>A Java-webalkalmazásban szűrőtelemetria
 
-Szűrők hardvermódosításainak válassza ki a telemetriai adatok, amelyek a [Java-webalkalmazás küld az Application Insights](app-insights-java-get-started.md). Néhány, a-kész szűrő használható, és a saját egyéni szűrők is írhat.
+Szűrők hardvermódosításainak válassza ki a telemetriát, amely a [küld az Application Insights Java-webalkalmazás](app-insights-java-get-started.md). Néhány-a-beépített szűrőket, amelyeket használhat, és a saját egyéni szűrőket is kiírhatja.
 
-A out-of-az-box szűrők a következők:
+A-beépített szűrők a következők:
 
 * Nyomkövetési súlyossági szint
-* Adott URL-címek, kulcsszavak vagy válaszkódok
-* Gyors válaszok – Ez azt jelenti, hogy kér, amelyhez az alkalmazás válaszolt gyorsan
-* Adott események neve
+* Konkrét URL-címeket, kulcsszavakat vagy válaszkódok
+* Gyors válaszokat – vagyis a kérelmeket, amelyhez az alkalmazás válasza, gyorsan
+* Az események egyedi neve
 
 > [!NOTE]
-> Szűrők az alkalmazás a metrikák eltolódhat. Például dönthet úgy, hogy lassú válaszok meghatározásához akkor állítja be egy szűrőt, amely elveti a gyors válaszidők. De vegye figyelembe, hogy az Application Insights által jelentett átlagos válaszideje majd lesz lassabb, mint a sebesség, és a kérelmek száma kisebb, mint a valós szám lesz.
-> Ha ez problémát jelent, akkor [mintavételi](app-insights-sampling.md) helyette.
+> Szűrők az alkalmazás a metrikák döntés. Például dönthet úgy, hogy lassúak a válaszok diagnosztizálhatja, hogy beállítsa az elveti a gyors válaszidők szűrőt. De vegye figyelembe, hogy az átlagos válaszidők az Application Insights által jelentett igaz sebessége lassabb lesz, és a kérelmek száma kisebb, mint a valós szám lesz.
+> Ez nagyon fontos, ha [mintavételi](app-insights-sampling.md) helyette.
 
 ## <a name="setting-filters"></a>Szűrők beállítása
 
-A ApplicationInsights.xml, adjon hozzá egy `TelemetryProcessors` szakasz ebben a példában például:
+Az applicationinsights.xml fájlt, adja hozzá a `TelemetryProcessors` szakasz példához hasonlóan:
 
 
 ```XML
@@ -88,11 +89,11 @@ A ApplicationInsights.xml, adjon hozzá egy `TelemetryProcessors` szakasz ebben 
 
 
 
-[Vizsgálja meg a beépített processzor teljes készletének](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/core/src/main/java/com/microsoft/applicationinsights/internal/processor).
+[Vizsgálja meg a beépített processzorok teljes körű](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/core/src/main/java/com/microsoft/applicationinsights/internal/processor).
 
-## <a name="built-in-filters"></a>A beépített szűrők
+## <a name="built-in-filters"></a>Beépített szűrők
 
-### <a name="metric-telemetry-filter"></a>Metrika Telemetriai szűrő
+### <a name="metric-telemetry-filter"></a>Metrikaszűrőjének Telemetria
 
 ```XML
 
@@ -101,10 +102,10 @@ A ApplicationInsights.xml, adjon hozzá egy `TelemetryProcessors` szakasz ebben 
            </Processor>
 ```
 
-* `NotNeeded`-Egyéni metrika nevek vesszővel tagolt listája.
+* `NotNeeded` -Egyéni metrikák nevei vesszővel tagolt listája.
 
 
-### <a name="page-view-telemetry-filter"></a>Lap nézet Telemetriai szűrő
+### <a name="page-view-telemetry-filter"></a>Lapmegtekintések telemetriai adatai szűrő
 
 ```XML
 
@@ -115,12 +116,12 @@ A ApplicationInsights.xml, adjon hozzá egy `TelemetryProcessors` szakasz ebben 
            </Processor>
 ```
 
-* `DurationThresholdInMS`-A lap betöltéséhez szükséges idő időtartam hivatkozik. Ha ez be van állítva, a lapok, amelyek a gyorsabb, mint a jelenleg betöltött nem jelenti.
-* `NotNeededNames`-Lap neve vesszővel tagolt listája.
-* `NotNeededUrls`-Töredékei URL vesszővel tagolt listája. Például `"home"` kiszűri összes lapok, amelyek "otthoni" URL-címét.
+* `DurationThresholdInMS` – A lap betöltéséhez szükséges idő időtartam hivatkozik. Ha a beállítás engedélyezése esetén gyorsabb, mint a jelenleg betöltött oldalak nem jelenti.
+* `NotNeededNames` – Lap neve vesszővel tagolt listája.
+* `NotNeededUrls` -Töredékek URL-cím vesszővel tagolt listája. Ha például `"home"` szűri ki minden olyan lap, amely rendelkezik a "home" URL-címét.
 
 
-### <a name="request-telemetry-filter"></a>Telemetria szűrő kérése
+### <a name="request-telemetry-filter"></a>Telemetria szűrése kérése
 
 
 ```XML
@@ -134,11 +135,11 @@ A ApplicationInsights.xml, adjon hozzá egy `TelemetryProcessors` szakasz ebben 
 
 
 
-### <a name="synthetic-source-filter"></a>Szintetikus forrásszűrő
+### <a name="synthetic-source-filter"></a>Szintetikus adatforrásszűrő
 
-A SyntheticSource tulajdonság értéket tartalmazó összes telemetriai adat kiszűri. Ezek közé tartozik a botok, csillag és rendelkezésreállás figyelésére szolgáló tesztek érkező kérelmeket.
+Kiszűri a SyntheticSource tulajdonság értéket tartalmazó összes telemetriai adat. Ezek közé tartozik a robotok, a csillag és a rendelkezésre állási tesztek érkező kérelmeket.
 
-Összes szintetikus kérelem telemetriai szűrheti:
+Szűrje ki a szintetikus kéréseket az összes telemetriai adatokat:
 
 
 ```XML
@@ -146,7 +147,7 @@ A SyntheticSource tulajdonság értéket tartalmazó összes telemetriai adat ki
            <Processor type="SyntheticSourceFilter" />
 ```
 
-Adott szintetikus források telemetriai szűrheti:
+Szűrje ki a meghatározott szintetikus források telemetriája:
 
 
 ```XML
@@ -156,11 +157,11 @@ Adott szintetikus források telemetriai szűrheti:
            </Processor>
 ```
 
-* `NotNeeded`-Szintetikus adatforrások nevének vesszővel tagolt listája.
+* `NotNeeded` – Szintetikus adatforrások nevének vesszővel tagolt listája.
 
-### <a name="telemetry-event-filter"></a>Telemetria szűrő
+### <a name="telemetry-event-filter"></a>Telemetriai események szűrése
 
-Egyéni események szűrése (használja a rendszer naplózza [trackevent() függvény](app-insights-api-custom-events-metrics.md#trackevent)).
+Egyéni események szűrők (használatával naplózza [TrackEvent()](app-insights-api-custom-events-metrics.md#trackevent)).
 
 
 ```XML
@@ -171,12 +172,12 @@ Egyéni események szűrése (használja a rendszer naplózza [trackevent() füg
 ```
 
 
-* `NotNeededNames`-Esemény nevek vesszővel tagolt listája.
+* `NotNeededNames` – Az események neve vesszővel tagolt listája.
 
 
-### <a name="trace-telemetry-filter"></a>Nyomkövetési Telemetria szűrő
+### <a name="trace-telemetry-filter"></a>Nyomkövetési Telemetriai szűrő
 
-Szűrők nyomkövetési naplófájl (használja a rendszer naplózza [TrackTrace()](app-insights-api-custom-events-metrics.md#tracktrace) vagy egy [naplózási keretrendszer adatgyűjtő](app-insights-java-trace-logs.md)).
+Nyomkövetési naplók szűrők (használatával naplózza [TrackTrace()](app-insights-api-custom-events-metrics.md#tracktrace) vagy egy [naplózási keretrendszer gyűjtő](app-insights-java-trace-logs.md)).
 
 ```XML
 
@@ -185,20 +186,20 @@ Szűrők nyomkövetési naplófájl (használja a rendszer naplózza [TrackTrace
            </Processor>
 ```
 
-* `FromSeverityLevel`érvényes értékek a következők:
- *  KI - szűrheti az összes olyan nyomkövetés
- *  NYOMKÖVETÉS - nincs szűrés. a nyomkövetési szint egyenlő
- *  INFORMÁCIÓ - szűrő kimenő NYOMKÖVETÉSI szint
- *  Figyelmeztetés - szűrő NYOMKÖVETÉSI és információ
- *  Hiba – kimenő figyelmeztetés, információ, a NYOMKÖVETÉSI szűrő
- *  KRITIKUS - szűrő, az összes kritikus
+* `FromSeverityLevel` Érvényes értékek a következők:
+ *  KI - összes nyomkövetési kiszűréséhez
+ *  NYOMKÖVETÉS - szűrés. Nyomkövetési szint egyenlő
+ *  INFORMÁCIÓ - szűrő ki NYOMKÖVETÉSI szint
+ *  FIGYELMEZTETÉS – ki információkat és a NYOMKÖVETÉSI szűrő
+ *  HIBA – meg figyelmeztetés, információ a NYOMKÖVETÉSI szűrő
+ *  KRITIKUS - szűrő, kivéve a kritikus fontosságú
 
 
 ## <a name="custom-filters"></a>Egyéni szűrők
 
 ### <a name="1-code-your-filter"></a>1. A szűrő-kód
 
-A kódban, hozzon létre egy osztályt, amely megvalósítja az `TelemetryProcessor`:
+A kódban, hozzon létre egy osztályt, amely megvalósítja `TelemetryProcessor`:
 
 ```Java
 
@@ -235,9 +236,9 @@ A kódban, hozzon létre egy osztályt, amely megvalósítja az `TelemetryProces
 ```
 
 
-### <a name="2-invoke-your-filter-in-the-configuration-file"></a>2. A konfigurációs fájlban a szűrő meghívása
+### <a name="2-invoke-your-filter-in-the-configuration-file"></a>2. A szűrő a konfigurációs fájl meghívása
 
-A ApplicationInsights.xml:
+Az applicationinsights.xml fájlt:
 
 ```XML
 
@@ -256,10 +257,10 @@ A ApplicationInsights.xml:
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-*A szűrő nem működik.*
+*A szűrés nem működik.*
 
-* Ellenőrizze, hogy megadta-e érvényes paraméterértékekért. Például időtartamok egész számnak kell lennie. Érvénytelen értékeket, akkor figyelmen kívül hagyja a szűrőt. Ha az egyéni szűrő konstruktor vagy set metódus kivételt jelez, akkor figyelmen kívül.
+* Ellenőrizze, hogy megadta-e érvényes paraméterértékeket. Például időtartamok egész számoknak kell lenniük. Érvénytelen értékek miatt a szűrőt, hogy figyelmen kívül lesz hagyva. Ha az egyéni szűrő konstruktor vagy set metódus kivételt jelez, akkor figyelmen kívül.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [A mintavételi](app-insights-sampling.md) -érdemes lehet a metrikákat nem döntés alternatívájaként mintavételi.
+* [Mintavételi](app-insights-sampling.md) -fontolja meg a mintavétel a metrikák nem tevékenységdiagramon alternatívájaként.

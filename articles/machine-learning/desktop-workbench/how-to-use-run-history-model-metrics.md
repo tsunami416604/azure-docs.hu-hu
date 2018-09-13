@@ -1,40 +1,40 @@
 ---
-title: Hogyan Futtatás előzmények és az Azure-ban modell metrikák gép munkaterület tanulási |} Microsoft Docs
-description: Útmutató az Azure Machine Learning-munkaterület az előzmények futtatása és a modell metrikák funkciók használatához
+title: Hogyan Futtatás előzmények és modell mérőszámok az Azure Machine Learning Workbench |} A Microsoft Docs
+description: Útmutató az Azure Machine Learning Workbench futtatási előzmények és modell metrikák funkciójának használatával
 services: machine-learning
 author: rastala
 ms.author: roastala
 manager: haining
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/07/2017
-ms.openlocfilehash: df29117235e890a9b20619744df6320f298a73b2
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 34fe72087a3de133d65ea4a4737ab5dba45242f4
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34831869"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35645036"
 ---
-# <a name="how-to-use-run-history-and-model-metrics-in-azure-machine-learning-workbench"></a>Használjon futtatási előzményei és az Azure Machine Learning-munkaterület modell metrikák
+# <a name="how-to-use-run-history-and-model-metrics-in-azure-machine-learning-workbench"></a>Futtatási előzmények használata és a modell mérőszámok az Azure Machine Learning Workbenchben
 
-Az Azure Machine Learning-munkaterület adatok tudományos kísérletezhet keresztül támogatja a **futtatása előzmények** és **modell metrikák** szolgáltatásokat.
-**Futtatási előzményei** segítségével nyomon követheti a machine learning kísérleteket kimenetének, és lehetővé teszi a szűrés és az eredmények összehasonlítása.
-**A modell metrikák** bejelentkezhet a parancsfájlok, függetlenül az adatok tudományos kísérletekben legfontosabb értékei követési egyetlen pontról.
-A cikkből megtudhatja, hogyan végezheti el ezeket a funkciókat, növelje a sebesség és az adatok tudományos kísérletezhet minőségének eredményes használatához.
+Az Azure Machine Learning Workbench data science Kísérletezési keresztül támogatja a **futtatási előzmények** és **modell metrikák** funkciókat.
+**Futtatási előzmények** segítségével nyomon követheti a machine learning-példakísérleteket kimeneteire, és lehetővé teszi a szűrési és az eredmények összehasonlítása.
+**Metrikák modell** parancsfájlját, függetlenül a data science kísérletek a legfontosabb értékei követési bármely pontról is naplózva.
+Ez a cikk ismerteti, hogyan javíthatja ezeket a szolgáltatásokat a sebesség és a data science Kísérletezési minőségének növelése eredményes használatához.
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ez az útmutató Útmutató lépéseit, kell:
-* [Hozzon létre és telepítse az Azure gépi tanulás](../service/quickstart-installation.md)
-- [A projekt létrehozása](../service/quickstart-installation.md)
+Ez az útmutató elvégezhető, kell tennie:
+* [Hozzon létre és telepítse az Azure Machine Learning](../service/quickstart-installation.md)
+- [Projekt létrehozása](../service/quickstart-installation.md)
 
 
-## <a name="azure-ml-logging-api-overview"></a>Az Azure ML naplózási API – áttekintés
-A [Azure ML-naplózás API](reference-logging-api.md) keresztül érhető el a **azureml.logging** (amely telepítve van az Azure ML-munkaterület.) a Python modul Ez a modul importálása után is használhatja a **get_azureml_logger** metódus példányának létrehozása egy **naplózó** objektum.
-Ezután használhatja a naplózó **napló** a Python-parancsfájl által visszaadott metódus kulcs/érték párok tárolására.
-Jelenleg naplózási modell metrikája skaláris és lista típusok támogatottak látható módon.
+## <a name="azure-ml-logging-api-overview"></a>Az Azure ml saját naplózási API – áttekintés
+A [Azure ML API-naplózás](reference-logging-api.md) keresztül érhető el a **azureml.logging** modul Python (amennyiben van telepítve, az Azure ML workbenchben.) Ez a modul az importálás után is használhatja a **get_azureml_logger** metódus példányosítása egy **naplózó** objektum.
+Ezután használhatja a naplózó **log** a Python-szkriptek által előállított metódus kulcs-érték párok tárolására.
+Jelenleg skaláris naplózási modell metrikáit és a lista típusok támogatottak látható módon.
 
 ```Python
 # create a logger instance in already set up environment 
@@ -48,29 +48,29 @@ logger.log("simple value", 7)
 # log list
 logger.log("all values", [5, 6, 7])
 ```
-Könnyen használható az Azure ML munkaterület projektek belül naplózó, és ez a cikk bemutatja, hogyan.
+A naplózó belül az Azure ML Workbench projektek használatához egyszerűen, és ez a cikk bemutatja, hogyan.
 
-## <a name="create-a-project-in-azure-ml-workbench"></a>Az Azure ML munkaterület-projekt létrehozása
-Ha még nem rendelkezik a projekt, létrehozhat egyet a [létrehozása és telepítése gyors üzembe helyezés](../service/quickstart-installation.md) a a **projekt irányítópultján**, megnyithatja a **iris_sklearn.py** parancsfájl () ahogy.)
+## <a name="create-a-project-in-azure-ml-workbench"></a>Az Azure ML Workbench-projekt létrehozása
+Ha még nem rendelkezik egy projektet, létrehozhat egyet a [létrehozása és telepítése a rövid útmutató](../service/quickstart-installation.md) származó a **projekt-irányítópult**, megnyithatja a **iris_sklearn.py** parancsfájl () ahogy.)
 
-![a parancsfájl eléréséhez a fájlok lap](media/how-to-use-run-history-model-metrics/how-to-use-run-history-model-metrics-01b.png)
+![a fájlok lapon a parancsfájl elérése](media/how-to-use-run-history-model-metrics/how-to-use-run-history-model-metrics-01b.png)
 
-Ez a parancsfájl útmutatóként használhatja a várt végrehajtási modell mérőszám Azure ML-naplózás.
+Használhatja ezt a szkriptet segítségképp bejelentkezett az Azure gépi Tanulási modell metrika várt végrehajtásához.
 
-## <a name="parameterize-and-log-model-metrics-from-script"></a>Parametrizálja és modell metrikák jelentkeznek, a parancsfájl
-Az a **iris_sklearn.py** parancsfájl, a várt minta importálása és a Python naplózó csökkenthető, az alábbi kódsorokat szerkezet.
+## <a name="parameterize-and-log-model-metrics-from-script"></a>Paraméterezni és jelentkezhet be a modell metrikák a parancsfájl
+Az a **iris_sklearn.py** szkriptet, az importálás és a Python naplózó lehet szűkíteni a következő kódsorokat szerkezet várt mintának.
 
 ```Python
 from azureml.logging import get_azureml_logger
 run_logger = get_azureml_logger()
 ```
 
-Létrehozása után hívhat meg a **napló** metódus egyetlen név-érték pár.
+Létrehozása után hívhatók meg a **log** módszer bármely név-érték pár.
 
-Ha fejlesztési befejeződött, célszerű gyakran parametrizálja parancsfájlok, így értékeket tudja átadni a parancssorból.
-Az alábbi példa bemutatja, hogyan fogadja el a szabványos Python könyvtárak segítségével parancssori paraméterek (ha van ilyen).
-Ezt a parancsfájlt egy egyetlen paramétert fogad, a exportügyletek sebessége (*reg*) használja annak érdekében, hogy növelje a besorolási modell megfelelően *pontossága* overfitting nélkül.
-Ezek a változók vannak kerül naplózásra *exportügyletek arány* és *pontossága* , hogy optimális eredmények elérése érdekében a modell könnyen azonosítható legyen.
+Fejlesztési befejeződése után célszerű gyakran paraméterezni a parancsfájlokat úgy, hogy az értékek a parancssor használatával adhatók át.
+Az alábbi minta bemutatja, hogyan fogadja el a Python-kódtárakat használó parancssori paraméterek (ha van ilyen).
+Ez a szkript egyetlen paramétert szükséges időt a Regularizációs arány (*reg*) használja annak érdekében, hogy növelje a besorolási modell igazítás *pontossága* overfitting nélkül.
+Ezeket a változókat majd jelentkezett *Regularizációs arány* és *pontossága* úgy, hogy az optimális eredmények elérése érdekében a modell könnyedén azonosíthatók.
 
 ```Python
 # change regularization rate and you will likely get a different accuracy.
@@ -96,82 +96,82 @@ print ("Accuracy is {}".format(accuracy))
 run_logger.log("Accuracy", accuracy)
 ```
 
-A fenti lépések végrehajtását a parancsfájlokban engedélyezése, hogy állítsák be az optimális használat **futtatása előzmények**.
+A fenti lépések végrehajtását a parancsfájlok engedélyezheti őket, hogy optimális használatát **futtatási előzmények**.
 
-## <a name="launch-runs-from-project-dashboard"></a>Indítsa el a projekt irányítópultján fut
-Visszatérés a **projekt irányítópultján**, indítja el egy **nyomon követett Futtatás** kiválasztásával a **iris_sklearn.py** parancsfájlt, majd gépelje be a **exportügyletek arány**  paramétere a **argumentumok** szerkesztési mezőhöz.
+## <a name="launch-runs-from-project-dashboard"></a>Indítsa el a projekt-irányítópult fut
+Térjen vissza a **projekt-irányítópult**, elindíthatja egy **nyomon követett futtatási** kiválasztásával a **iris_sklearn.py** parancsfájl, és írja be a **regularizációs arány**  paramétert a **argumentumok** szerkesztési mezőhöz.
 
-![sérült volt fut és paraméterek megadása](media/how-to-use-run-history-model-metrics/how-to-use-run-history-model-metrics-05.png)
+![paraméterek megadásának és a futtatások indítása](media/how-to-use-run-history-model-metrics/how-to-use-run-history-model-metrics-05.png)
 
-Mivel a nyomon követett futtatása indítása nem blokkolja az Azure ML munkaterület, több párhuzamosan indulhat.
-Minden egyes követett futtatásához állapota látható a **feladatok Panel** látható módon.
+Mivel a nyomon követett futtatások indítása nem tiltja le az Azure ML Workbench, több párhuzamos indulhat.
+Minden egyes követett futtatási állapota látható az **feladatok Panel** látható módon.
 
-![a feladatok panelen fut nyomon követése](media/how-to-use-run-history-model-metrics/how-to-use-run-history-model-metrics-06.png)
+![követési fut, a feladatok panel](media/how-to-use-run-history-model-metrics/how-to-use-run-history-model-metrics-06.png)
 
-Ez lehetővé teszi, hogy optimális erőforrás-használat anélkül, hogy minden feladat futtatásának sorozatszámát.
+Ez lehetővé teszi optimális erőforrás-használatot, anélkül, hogy minden feladatot futtathat a soros.
 
-## <a name="view-results-in-run-history"></a>Az eredmények megtekintése futtatási előzményei
-Állapotának és eredményeinek nyomon követett futtatása érhetők el az Azure ML munkaterület elemzés **futtatása előzmények**.
-**Futtatási előzményei** három különböző nézeteket biztosítja:
+## <a name="view-results-in-run-history"></a>Az eredmények futtatási előzmények megtekintése
+Állapotának és eredményeinek megtekintéséhez a nyomon követett futtatások érhetők el az Azure ML Workbenchben elemzéshez **futtatási előzmények**.
+**Futtatási előzmények** három különböző nézeteket biztosítja:
 - Irányítópult
 - Részletek
 - Összehasonlítás
 
-A **irányítópult** nézet összes frissítési kísérletei során egy adott parancsfájl, grafikus, mind a táblázatos formában megjelenített adatokat jeleníti meg.
-A **részletek** a nézet jeleníti meg az összes adat jön létre egy adott futni, hanem egy adott parancsfájl, beleértve a naplózott metrikák és a kimeneti fájlok (például egy megjelenített tevékenységtérkép.) A **összehasonlító** nézet lehetővé teszi a két vagy három futtatása kell egymás mellett megjelenített eredményeit, is beleértve metrikák naplózott kimeneti fájlok.
+A **irányítópult** megtekintése az adatokat egy adott parancsfájl, a grafikus, mind táblázatos formában jelenik meg az összes kísérletei jeleníti meg.
+A **részletek** a nézet jeleníti meg minden adat, létrehozott egy adott Futtatás egy adott parancsfájl, beleértve a naplózott mérőszámok és a kimeneti fájlok (például eredménykészletből jeleníti meg.) A **összehasonlító** nézet lehetővé teszi, hogy két vagy három futtatást kell egymás mellett megtekintett eredményeit, a naplózott mérőszámok, és a kimeneti fájlokat is beleértve.
 
-Nyolc keresztül nyomon követheti a frissítési kísérletei során **iris_sklearn.py**, értékei a **exportügyletek arány** paraméter és **pontossága** eredményét mutatja be a Futtatás naplózta Előzmények nézetek.
+Nyolc különböző nyomon követett futtatásának **iris_sklearn.py**, értékei a **regularizációs arány** paraméter és **pontossága** result megmutatják, hogyan használható a Futtatás kerültek naplózásra. Előzmények nézeteinek.
 
-### <a name="run-history-dashboard"></a>Futtatási előzményei irányítópult
-Minden nyolc futtatása eredményei láthatók a **futtatása előzmények irányítópult**.
-Mint **iris_sklearn.py** naplók *exportügyletek arány* és *pontossága*, a **futtatása előzmények irányítópult** ezeket az értékeket a diagramot jelenít meg alapértelmezett érték.
+### <a name="run-history-dashboard"></a>Futtatási előzmények irányítópultja
+Minden nyolc futtatásának eredményeit láthatók a **futtatási előzmények irányítópult**.
+Mint **iris_sklearn.py** naplók *Regularizációs arány* és *pontossága*, a **futtatási előzmények irányítópult** ezeket az értékeket a diagramot jelenít meg Alapértelmezés szerint.
 
-![Futtatási előzményei irányítópult](media/how-to-use-run-history-model-metrics/how-to-use-run-history-model-metrics-07.png)
+![futtatási előzmények irányítópultja](media/how-to-use-run-history-model-metrics/how-to-use-run-history-model-metrics-07.png)
 
-A **futtatása előzmények irányítópult** testre szabható, hogy a naplózott értékek is megjelennek a rács.  Kattintson a **testreszabása** ikon megjelenítése a **nézet testreszabása** párbeszéd látható módon.
+A **futtatási előzmények irányítópult** testre szabható, így naplózott értékeket is a rács jelennek meg.  Kattintson a **testreszabása** ikon megjelenik a **nézet testreszabása** párbeszéd látható módon.
 
-![futtatási előzményei irányítópult rács testreszabása](media/how-to-use-run-history-model-metrics/how-to-use-run-history-model-metrics-08.png)
+![futtatási előzmények irányítópultján rács testreszabása](media/how-to-use-run-history-model-metrics/how-to-use-run-history-model-metrics-08.png)
 
-Bármely nyomon követett futtatása során naplózott értékei jeleníthetők meg, és választ **exportügyletek arány** és **pontossága** felveszi őket.
+Bármely követett futtatások során naplózott értékek a következők jeleníthetők meg, és válassza **Regularizációs arány** és **pontossága** hozzáadja őket a rácsra.
 
-![testre szabott rácsban naplózott értékek](media/how-to-use-run-history-model-metrics/how-to-use-run-history-model-metrics-09.png)
+![a testre szabott rácsban naplózott értékek](media/how-to-use-run-history-model-metrics/how-to-use-run-history-model-metrics-09.png)
 
-Nem található érdekes futtatása pontok diagramok fölé.  Futtatás 7 ebben az esetben egy kis időtartam alapján kialakulhat egy jó pontossága eredményezte.
+Érdekes futtatások keresése az egérmutatót a diagramokban pontok könnyebbé vált.  Ebben az esetben a 7 futtatása egy jó pontosságát az alacsony időtartam összefüggő eredményezte.
 
-![Futtassa az érdekes keresése](media/how-to-use-run-history-model-metrics/how-to-use-run-history-model-metrics-10.png)
+![egy érdekes futtatás keresése](media/how-to-use-run-history-model-metrics/how-to-use-run-history-model-metrics-10.png)
 
-Kattintson egy pont futtatásához 7 bármelyik olyan diagram vagy a 7 futtassa a rács jelennek meg a társított a **futtatása előzmények részletek**.
+Kattintson egy pont 7 futtatása bármely diagramra vagy a hivatkozásra kattintva futtassa 7 a rács jeleníti meg a társított a **Futtatás részletei**.
 
-### <a name="run-history-details"></a>Futtassa az előzmények részletei
-Ebben a nézetben együtt futtatása 7 által előállított összetevőihez futtatása 7 teljes eredményei jelennek meg.
+### <a name="run-history-details"></a>Futtatás részletei
+Ebben a nézetben a Futtatás 7 futtatása 7 által létrehozott összes összetevőt együtt teljes eredményei jelennek meg.
 
-![Futtassa az előzmények részletei](media/how-to-use-run-history-model-metrics/how-to-use-run-history-model-metrics-11.png)
+![Futtatás részletei](media/how-to-use-run-history-model-metrics/how-to-use-run-history-model-metrics-11.png)
 
-A **futtatása előzmények részletek** nézet is lehetővé teszi a **letöltése** azon fájlok írása a **. / kimenete** (ezek a fájlok által támogatott Azure ML munkaterület mappa felhőalapú tárolás előzmények futtassa egy másik cikk tárgyát képező.)
+A **Futtatás részletei** nézetet is lehetővé teszi, hogy **letöltése** írt fájlok a **. / kimenete** (e fájlok biztonsági az Azure ML Workbench mappa felhőtárhely a futtatási előzmények, egy másik cikk tárgyát képező.)
 
-Végezetül **futtatása előzmények részletek** lehetővé teszi a projekt visszaállítása állapotában ehhez a futtató időpontjában.
-Kattintson a **visszaállítása** gomb látható jeleníti meg a megerősítését kérő párbeszédpanel.
+Végül **Futtatás részletei** lehetővé teszi a projekt visszaállítása állapotában futtatni időpontjában.
+Kattintson a **visszaállítása** gombra a megerősítő párbeszédpanelen látható módon jelenik meg.
 
-![visszaállítási futtatás megerősítése](media/how-to-use-run-history-model-metrics/how-to-use-run-history-model-metrics-13.png)
+![Futtatás Visszaállítás megerősítése](media/how-to-use-run-history-model-metrics/how-to-use-run-history-model-metrics-13.png)
 
-Ha megerősítette, a fájlok felülírhatja, vagy eltávolítja, így a szolgáltatás használatához gondosan.
+Megerősítést, ha a fájlok felülírhatja, vagy eltávolítani, tehát a funkció használatához alaposan.
 
 ### <a name="run-history-comparison"></a>Futtassa az előzmények összehasonlítása
-Két vagy három kiválasztása fut a **futtatása előzmények irányítópult** elemre kattintva **összehasonlítása** biztosítható az Ön a **előzmények összehasonlítás futtassa** nézet.
-Másik lehetőségként kattintson **összehasonlítása** , majd válassza a Futtatás belül a **előzmények részletek futtassa** nézet is jelent, a **előzmények összehasonlítás futtassa** nézet.
-Mindkét esetben a **futtatása előzmények összehasonlító** nézet, a naplózott eredményeit, és a két vagy három futtatása egymás melletti összetevők módszert biztosít.
+Két vagy három beállítást fut a **futtatási előzmények irányítópult** parancsra **összehasonlítása** biztosítható, hogy az a **előzmények összehasonlító futtatása** megtekintése.
+Másik lehetőségként kattintson **összehasonlítása** és a egy Futtatás belül a **Futtatás részletei** nézetet is kínál a **előzmények összehasonlító futtatása** megtekintése.
+Mindkét esetben a **futtatása előzmények összehasonlító** nézet lehetővé teszi a naplózás és a két vagy három futtatást egymás melletti összetevők.
 
 ![Futtassa az előzmények összehasonlítása](media/how-to-use-run-history-model-metrics/how-to-use-run-history-model-metrics-12.png)
 
-Ez a nézet különösen hasznos az előkészítésére összehasonlítása, de általában olyan tulajdonsága fut, itt hasonlítható.
+Ez a nézet különösen hasznos a grafikon összehasonlítása, de általában futtatások tulajdonságokat itt hasonlítható.
 
 ### <a name="command-line-interface"></a>Parancssori felület
-Az Azure Machine Learning-munkaterület futtatása előzmények keresztül is hozzáférést biztosít a **parancssori felület**.
-Hozzáférés a **parancssori felület**, kattintson a **nyissa meg a parancssort** menü látható módon.
+Az Azure Machine Learning Workbench futtatási előzmények keresztül is hozzáférést biztosít a **parancssori felület**.
+Hozzáférés a **parancssori felület**, kattintson a **parancssor megnyitása** menü látható módon.
 
-![Nyissa meg a parancssort](media/how-to-use-run-history-model-metrics/how-to-use-run-history-model-metrics-14.png)
+![Nyissa meg a parancssor használatával](media/how-to-use-run-history-model-metrics/how-to-use-run-history-model-metrics-14.png)
 
-Elérhető előzmények futtassa a parancsokat keresztül elért `az ml history`, az online súgó elérhető hozzáadásával a `-h` jelzőt.
+Érhetők el a futtatási előzmények esetén használható parancsokat `az ml history`, az online súgó hozzáadásával érhető el a `-h` jelzőt.
 ```
 $ az ml history -h
 
@@ -186,8 +186,8 @@ Commands:
     list    : List runs.
     promote : Promote Artifacts.
 ```
-Ezek a parancsok azonos szolgáltatásokat nyújtanak, és térjen vissza a látható ugyanazokat az adatokat a **futtatása előzmények nézetek**.
-Például a legutóbbi futtatás eredményeit jeleníthetőek JSON-objektumként.
+Ezek a parancsok ugyanazokat a szolgáltatásokat biztosít, és látható ugyanazokat az adatokat adja vissza a **futtatása előzmények nézeteinek**.
+Utolsó futtatás eredményeit például JSON-objektumként is megjeleníthetők.
 ```
 $ az ml history last
 {
@@ -215,7 +215,7 @@ $ az ml history last
   "user_id": "e9fafe06-b0e4-4154-8374-aae34f9977b2"
 }
 ```
-Az összes futtatásának listáját is, jeleníthetőek táblázatos formában.
+Is minden Futtatás listájában is megjelenik a táblázatos formában.
 ```
 $ az ml history list -o table
   Accuracy    Regularization Rate  Duration        Run_id                  Script_name      Start_time_utc                    Status
@@ -230,10 +230,10 @@ $ az ml history list -o table
   0.641509              10         0:00:06.059082  IrisDemo_1504832109906  iris_sklearn.py  2017-09-08T00:55:14.739806+00:00  Completed
 
 ```
-A **parancssori felület** van egy alternatív út Azure Machine Learning-munkaterület a teljesítmény eléréséhez.
+A **parancssori felület** van egy alternatív út eléréséhez az Azure Machine Learning Workbench hatékonyságát.
 
 ## <a name="next-steps"></a>További lépések
-Ezek a funkciók érhetők el segít az adatok tudományos kísérletezhet folyamatát.
-Reméljük, hogy azokat, hogy hasznos legyen, és jelentős mértékben fogadjuk visszajelzéseit.
-Ez csak a kezdeti telepítés, és tervezett fejlesztései nagy mennyiségű van.
-Kíváncsian folyamatosan kézbesíti őket az Azure Machine Learning-munkaterület. 
+Ezek a funkciók érhetők el, amelyek segítik a data science Kísérletezési folyamata.
+Reméljük, hogy megtalálhassa azokat, hogy hasznos legyen, és nagy mértékben kellene értékeljük a visszajelzését.
+Ez a kezdeti implementációjában, és tervezett fejlesztései nagy fokú van.
+Örömmel várjuk a folyamatosan küldésére az Azure Machine Learning Workbench. 

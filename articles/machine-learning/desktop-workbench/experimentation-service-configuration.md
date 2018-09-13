@@ -1,81 +1,81 @@
 ---
-title: Az Azure Machine Learning kísérletezhet szolgáltatás konfigurálása |} Microsoft Docs
-description: Ez a cikk magas szintű áttekintést nyújt az Azure Machine Learning kísérletezhet szolgáltatás utasításokat tartalmaz a konfigurálásának.
+title: Az Azure Machine Learning-kísérletezés szolgáltatás konfigurálása |} A Microsoft Docs
+description: Ez a cikk utasításokat tartalmazó Azure Machine Learning-kísérletezés szolgáltatás magas szintű áttekintést nyújt a konfigurálásával.
 services: machine-learning
 author: gokhanuluderya-msft
 ms.author: gokhanu
 manager: haining
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/28/2017
-ms.openlocfilehash: 6903a02a2f714dc6a8de7bcdd6a81cdd14f2cb0a
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: e79817ffad139e0a3bcb0ba32b9bc6e5666319d0
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34831354"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35644695"
 ---
-# <a name="configuring-azure-machine-learning-experimentation-service"></a>Az Azure Machine Learning kísérletezhet szolgáltatás konfigurálása
+# <a name="configuring-azure-machine-learning-experimentation-service"></a>Az Azure Machine Learning-kísérletezés szolgáltatás konfigurálása
 
 ## <a name="overview"></a>Áttekintés
-Az Azure Machine Learning kísérletezhet szolgáltatás lehetővé teszi, hogy az adatszakértőkön át a használatával az Azure Machine Learning végrehajtási kísérletek hajtható végre, és futtassa a felügyeleti képességek. A gyors ismétlési gyors kísérletezés keretet biztosít. Az Azure Machine Learning-munkaterület lehetővé teszi kezdődnie helyi fut a gépen, és könnyen elérési útjának méretezéshez be és ki más környezetekben, például a távoli adatok tudományos rendelkező virtuális gépek GPU vagy futtatása Spark on HDInsight-fürtök.
+Az Azure Machine Learning-kísérletezés szolgáltatás a kísérleteket az Azure Machine Learning végrehajtási használatával, és felügyeleti képességek futtatása adatszakértők számára lehetővé teszi. A gyors ismétlésének Agilis kísérletezéssel keretet biztosít. Az Azure Machine Learning Workbench lehetővé teszi a kezdéshez helyi fut a gépen, és egy egyszerű elérési út megadását és méretezési lehetőségek érhetők el más környezetekben, például a távoli adatelemzési virtuális gépek a GPU-n és a Spark futtatása HDInsight-fürtök.
 
-Kísérletezhet szolgáltatás biztosítása elkülönített, megismételhető és egységes futtatása a kísérletek lett tervezve. Segít a számítási célkitűzések, a végrehajtási környezet kezelése és konfigurációk futtatása. Az Azure Machine Learning-munkaterület végrehajtási és futtatási felügyeleti képességek segítségével egyszerűen áthelyezheti különböző környezetek között. 
+Kísérletezési szolgáltatással hoztam létre, amelyek biztosítják az elkülönített, reprodukálható és következetes fut, a kísérletek épül. Ez segít a számítási célokhoz, végrehajtási környezeteket, kezelése és futtatása a konfigurációk. Az Azure Machine Learning Workbench végrehajtási és futtatási felügyeleti képességek segítségével könnyedén áthelyezheti különböző környezetek között. 
 
-Helyileg vagy a felhőben léptékű hajthat végre egy Python vagy PySpark parancsfájl munkaterület projektben. 
+A Workbench-projekt hajthat végre egy Python- vagy PySpark-szkript, helyileg vagy a felhő. 
 
-Futtathatja a parancsfájlokat: 
+Futtathatók a parancsprogramok: 
 
-* A helyi számítógépen telepítve munkaterület Python (3.5.2) környezet
-* Egy Docker-tároló a helyi számítógépen belül Conda Python-környezet
-* A saját és a távoli gépen Linux kezelése Python-környezetben
-* Egy Docker-tároló egy távoli számítógépen Linux belül Conda Python-környezetben. Például egy [Ubuntu-alapú DSVM Azure])https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.linux-data-science-vm-ubuntu)
-* [A Spark on HDInsight](https://azure.microsoft.com/services/hdinsight/apache-spark/) az Azure-on
+* Python (3.5.2-es) környezetet a helyi számítógépen telepítette a Workbenchben
+* Conda Python-környezetet a helyi számítógépen a Docker-tároló belül
+* Egy Python-környezetben, amely a saját és a egy távoli Linux gépen kezelése
+* Conda Python-környezetet egy Docker-tároló egy távoli Linux gépen belül. Ha például egy [Ubuntu-alapú dsvm-hez az Azure-ban])https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.linux-data-science-vm-ubuntu)
+* [A Spark for HDInsight](https://azure.microsoft.com/services/hdinsight/apache-spark/) az Azure-ban
 
 >[!IMPORTANT]
->Az Azure Machine Learning kísérletezhet szolgáltatás jelenleg Python 3.5.2 és Spark 2.1.11 verzióként Python és Spark runtime, illetve. 
+>Az Azure Machine Learning-kísérletezés szolgáltatás jelenleg támogatja a Python 3.5.2-es verzióját és a Spark 2.1.11, Python és a Spark futtatókörnyezet-verzió, jelölik. 
 
 
-### <a name="key-concepts-in-experimentation-service"></a>Alapfogalmak kísérletezhet szolgáltatás
-Fontos tudni, hogy az Azure Machine Learning kísérlet végrehajtása a következő fogalmakat. A következő szakaszokban arról lesz szó ezekről a fogalmakról használata részletesen. 
+### <a name="key-concepts-in-experimentation-service"></a>A Kísérletezési szolgáltatással hoztam létre fő fogalmak
+Fontos tudni, hogy az Azure Machine Learning-kísérlet végrehajtása a következő fogalmak. Az ezt követő szakaszokban tárgyaljuk részletesen ezek a fogalmak használatával. 
 
-#### <a name="compute-target"></a>Számítási cél
-A _cél számítási_ Megadja, hogy a program, például az asztal, távoli Docker végrehajtásának egy virtuális Gépet, vagy egy fürtön. Számítási céljának kell lennie a megcímezhető és elérhető-e meg. Munkaterület lehetővé teszi a számítási célok létrehozását és kezelését a munkaterületet üzemeltető alkalmazás és a parancssori felület használatával. 
+#### <a name="compute-target"></a>Számítási célt
+A _számítási célt_ Megadja, hogy a program, például az asztal, távoli Docker hajthat végre egy virtuális Gépet, vagy a fürt hol. Egy számítási célnak kell lennie a megcímezhető és az Ön által elérhető. Workbench révén a számítási célokhoz létrehozásához és kezeléséhez őket a Workbench alkalmazás és a CLI használatával. 
 
-_Csatlakoztassa az ml computetarget_ parancsot a CLI teszi lehetővé, melyekkel a futtatása a számítási cél létrehozásához.
+_az ml computetarget csatolása_ parancsot a parancssori felület lehetővé teszi, hogy hozzon létre egy számítási célnak, amelyek segítségével használhatja a futtatások.
 
-Támogatott számítási célok a következők:
-* Helyi Python (3.5.2) környezetben munkaterület telepítve a számítógépen.
+Támogatott számításicsomópont-célok a következők:
+* A Workbench által telepített számítógép helyi Python (3.5.2-es) környezetben.
 * A számítógép helyi Docker
-* Felhasználó által felügyelt, Python környezet a távoli Linux-Ubuntu virtuális gépeken. Például egy [DSVM Ubuntu-alapú Azure](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.linux-data-science-vm-ubuntu)
-* Távoli Docker Linux-Ubuntu virtuális gépeken. Például egy [DSVM Ubuntu-alapú Azure](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.linux-data-science-vm-ubuntu)
-* [HDInsight Spark-fürt](https://azure.microsoft.com/services/hdinsight/apache-spark/) az Azure-on
+* Felhasználó által felügyelt, Python-környezetet távoli Linux-Ubuntu virtuális gépeken. Ha például egy [Ubuntu-alapú DSVM az Azure-ban](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.linux-data-science-vm-ubuntu)
+* Távoli Docker Linux-Ubuntu virtuális gépeken. Ha például egy [Ubuntu-alapú DSVM az Azure-ban](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.linux-data-science-vm-ubuntu)
+* [HDInsight Spark-fürt](https://azure.microsoft.com/services/hdinsight/apache-spark/) az Azure-ban
 
-Kísérletezhet szolgáltatás jelenleg támogatja a Python 3.5.2 és 2.1.11 Python, Spark, és futásidejű verzióit, illetve Spark. 
+Kísérletezési szolgáltatás jelenleg támogatja a Python 3.5.2-es verzióját és Spark-, Python 2.1.11, és Spark-futtatókörnyezet-verzió, illetve. 
 
 >[!IMPORTANT]
-> Windows virtuális gépeken futó Docker vannak **nem** távoli számítási célként támogatott.
+> Windows virtuális gépeken futó Docker vannak **nem** támogatott, mert a távoli számítási célokhoz.
 
 #### <a name="execution-environment"></a>Végrehajtási környezet
-A _végrehajtási környezet_ határozza meg a futási idő konfigurációs és a függőségek munkaterület a program futtatásához szükséges.
+A _végrehajtási környezetet_ meghatározása az üzemidőt és a függőségeket, a Workbench a program futtatásához szükséges.
 
-Kezelheti a helyi végrehajtási környezet a kedvenc eszközök és a csomag kezelők használata, ha a munkaterületet üzemeltető alapértelmezett futásidejű futtatja. 
+Kezelheti a helyi végrehajtási környezet a kedvenc eszközeit és csomagkezelők használatával, ha futtatja a Workbench alapértelmezett futtatókörnyezetet. 
 
-Conda Docker helyi és távoli Docker-végrehajtások, valamint a HDInsight-alapú végrehajtások kezelésére szolgál. Ezek a számítási célok, az a végrehajtási környezet konfigurációjának kezeli **Conda_dependencies.yml** és **Spark_dependencies.yml fájlok**. A rendszer ezeket a fájlokat a **aml_config** mappa a projekthez.
+Conda helyi Docker és a távoli Docker-végrehajtások, valamint a HDInsight-alapú végrehajtás kezelésére szolgál. Ezek a tárolók számítási, a végrehajtási környezet konfigurációjának kezelhető **Conda_dependencies.yml** és **Spark_dependencies.yml fájlok**. A rendszer ezeket a fájlokat a **aml_config** mappát a projekt belül.
 
-**A végrehajtási környezetekben támogatott futtatókörnyezetek a következők:**
-* Python 3.5.2
+**A végrehajtási környezetekben támogatott futtatókörnyezet a következők:**
+* Python 3.5.2-es verzióját
 * Spark 2.1.11
 
-### <a name="run-configuration"></a>Futtassa a konfiguráció
-A számítási cél és a végrehajtási környezet, valamint Azure Machine Learning keretrendszerében definiálására, és módosítsa *konfigurációk futtatása*. A kísérlet különböző végrehajtások iteratív kísérletezhet részeként különböző konfigurálásra lehet szükség. Akkor lehet, hogy lehet abszolút eltérő tartományok, különböző forrásokból használatával, és spark paraméterek beállítása. Kísérletezhet szolgáltatás keretrendszert biztosít futtatási konfigurációk kezelése.
+### <a name="run-configuration"></a>Futtatási konfigurációt
+A számítási célt és a végrehajtás környezeten kívül Azure Machine Learning határozza meg, és módosítsa a keretrendszert biztosít *futtatási konfigurációkat*. A kísérlet különböző végrehajtások iteratív kísérletezés részeként különböző konfigurálását teheti szükségessé. Előfordulhat, hogy lehet abszolút különböző paraméter-tartományok, más adatforrások felhasználásával, és Finomhangolás a spark paramétereket. Kísérletezési szolgáltatás keretrendszert biztosít futtatási konfigurációk kezelése.
 
-Futtató _az ml computetarget csatolása_ a két fájlt hoz létre a **aml_config** a projekt mappa: ".compute" és ".runconfig" a következő az egyezmény: _< your_ computetarget_name > .compute_ és _< your_computetarget_name > .runconfig_. A .runconfig fájl automatikusan megtörténik az Ön kényelme számítási cél létrehozásához. Létrehozhat és egyéb futtatási konfiguráció használata _az ml runconfigurations_ CLI parancsot. Is létrehozhat és szerkessze azokat a fájlrendszerben.
+Futó _az ml computetarget csatolása_ parancs két fájlt hoz létre a **aml_config** mappát a projektbe: ".compute" és a egy ".runconfig" egyezmény a következő: _< your_ computetarget_name > .compute_ és _< your_computetarget_name > .runconfig_. Amikor létrehoz egy számítási célnak .runconfig fájl automatikusan létrejön a felhasználók kényelme érdekében. Hozhat létre és más futtatási konfiguráció való kezelése _az ml runconfigurations_ parancs CLI-ben. Is létrehozhat, és szerkessze azokat a fájlrendszerben.
 
-Futtatási konfigurációs munkaterület lehetővé teszi a környezeti változók megadását is. Környezeti változók megadását, és adja hozzá az alábbi szakasz a .runconfig fájlban a kódban használhatja őket. 
+A Workbench futtatási konfigurációs is lehetővé teszi, hogy a környezeti változók megadása. Környezeti változók megadása, és adja hozzá a következő szakasz a .runconfig fájl kódját használni őket. 
 
 ```
 EnvironmentVariables:
@@ -83,29 +83,29 @@ EnvironmentVariables:
     "EXAMPLE_ENV_VAR2": "Example Value2"
 ```
 
-Ezek a környezeti változók a kód érhetők el. Például a phyton kódrészletet kiírja a "EXAMPLE_ENV_VAR1" nevű környezeti változó
+Ezeket a környezeti változókat a kód érhetők el. Például ez a kódrészlet phyton jelenít meg a "EXAMPLE_ENV_VAR1" nevű környezeti változó
 ```
 print(os.environ.get("EXAMPLE_ENV_VAR1"))
 ```
 
-_**Az alábbi ábrán a kezdeti kísérlet futtatása magas szintű folyamata.**_
+_**A következő ábrán az első kísérlet futtatása magas szintű folyamata látható.**_
 ![](media/experimentation-service-configuration/experiment-execution-flow.png)
 
-## <a name="experiment-execution-scenarios"></a>Kísérlet végrehajtási forgatókönyvek
-Ebben a részben azt mélyedjen el végrehajtási forgatókönyvek és további Azure Machine Learning működésével kapcsolatos kísérleteket, kifejezetten a kísérlet helyben fut, a távoli virtuális gép, és a HDInsight-fürtök. Ez a szakasz a forgatókönyv indítása hozzon létre egy számítási cél-és a kísérletek végrehajtása.
+## <a name="experiment-execution-scenarios"></a>Kísérlet-végrehajtás forgatókönyvek
+Ebben a szakaszban azt mélyedjen végrehajtási forgatókönyveket, és ismerje meg az Azure Machine Learning működésével kapcsolatos kísérleteket, kifejezetten kísérlet helyben fut, egy távoli virtuális gépen, és a egy HDInsight-fürtön. Ez a szakasz egy forgatókönyv indítása hozzon létre egy számítási célnak, a kísérletek végrehajtása.
 
 >[!NOTE]
->Ez a cikk a többi használjuk a fogalmakat és a képességek a CLI (parancssori felület) parancsokat. Az itt ismertetett képességek a munkaterületet üzemeltető is használható.
+>Ez a cikk a többi használjuk a fogalmak és a képességek megjelenítése a CLI (parancssori felület) parancsokat. Képességek az itt leírtak szerint a Workbench is használható.
 
-## <a name="launching-the-cli"></a>A parancssori felület megnyitása
-Indítsa el a parancssori felület segítségével egyszerűen projekt megnyitása a munkaterületet, és lépjen az **fájl--> Nyissa meg a parancssort**.
+## <a name="launching-the-cli"></a>A parancssori felület elindítása
+Egyszerűen indítsa el a parancssori felület projekt megnyitása a Workbench, és ellenőrizheti, hogy **fájl--> parancssor megnyitása**.
 
 ![](media/experimentation-service-configuration/opening-cli.png)
 
-Ez a parancs elindítja a jelenlegi projekt mappában található parancsfájlok végrehajtandó, parancsokat adhat meg egy terminálablakot. A Python 3.5.2 környezetet, amelybe a munkaterületet üzemeltető van telepítve ez terminálablakot van konfigurálva.
+Ez a parancs elindítja a szkriptek végrehajtása az aktuális projektmappában-parancsokat adhat meg egy terminálablakot. Ezt a terminálablakot a Python 3.5.2-es verzióját környezetet, amely telepítve van az Workbench van konfigurálva.
 
 >[!NOTE]
-> Ha hajtható végre a _az ml_ parancsot a parancssorablakba Azure hitelesíteni kell. Parancssori felület egy független hitelesítési gyorsítótárat, majd az asztali alkalmazást használja, és így bejelentkezést a munkaterületet üzemeltető nem jelenti azt Ön hitelesítve a CLI-környezetben. A hitelesítéshez használja a következő lépéseket. Hitelesítési jogkivonat a helyi gyorsítótárba helyezi az adott időszakban, csak akkor kell ismételje ezeket a lépéseket, amikor a jogkivonat lejár. Amikor a jogkivonat lejár, vagy ha hitelesítési hibák, hajtsa végre a következő parancsokat:
+> Ha bármelyik végrehajtása _az ml_ parancs Azure hitelesíteni kell a parancsablakból. Parancssori felület használ egy független hitelesítési gyorsítótárat, majd az asztali alkalmazás, és így jelentkezik be a Workbench nem jelenti azt, a hitelesítés a parancssori felület környezetében. Hitelesítést végezni, használja a következő lépéseket. A hitelesítési jogkivonat a helyi gyorsítótárba egy ideig, csak meg kell ismételnie ezeket a lépéseket, ha a jogkivonat lejár. Ha a jogkivonat lejár, vagy ha hitelesítési hibák jelennek meg, hajtsa végre a következő parancsokat:
 
 ```
 # to authenticate 
@@ -122,45 +122,45 @@ $ az account show
 ```
 
 >[!NOTE] 
->Amikor futtatja _az ml_ parancsot egy projekt mappában található, győződjön meg arról, hogy a projekt egy Azure Machine Learning kísérletezhet fiókhoz tartozzon a a _aktuális_ Azure-előfizetés. Ellenkező esetben előfordulhat, hogy hibákba végrehajtása.
+>Futtatásakor _az ml_ parancsot egy projekt mappában található, győződjön meg arról, hogy a projekt tartozik egy Azure Machine Learning-kísérletezés-fiókot a a _aktuális_ Azure-előfizetést. Ellenkező esetben végrehajtási hibák fordulhatnak.
 
 
 ## <a name="running-scripts-and-experiments"></a>Kísérletek-parancsfájlok futtatásakor
-A munkaterület, Ön is végrehajthatja a Python és PySpark parancsfájlok különböző számítási tárolókra a a _az ml kísérlet nyújt_ parancsot. Ehhez a parancshoz egy futtatási konfiguráció definíciója. 
+A Workbench, hajtsa végre a Python és PySpark szkripteket a különböző számítási tárolók használatával a _az gépi tanulási kísérlet elküldése_ parancsot. Ez a parancs egy futtatási konfigurációt definíció igényel. 
 
-Munkaterület fájlt hoz létre a megfelelő runconfig számítási cél létrehozásához, de további futtatási konfigurációk használatával hozhat létre _az ml runconfiguration létrehozása_ parancsot. Manuálisan is szerkesztheti a futtatási konfigurációs fájlokat.
+Workbench egy megfelelő runconfig fájlt hoz létre, amikor létrehoz egy számítási célnak, de további futtatási konfigurációs beállítások használatával is létrehozhat _az ml runconfiguration létrehozása_ parancsot. A futtatási konfigurációs fájlokat manuálisan is szerkesztheti.
 
-Futtassa a konfigurációk megjelenítése kísérlet futtatása élmény munkaterület részeként. 
+Futtatási konfigurációkat jelennek meg, része a kísérlet futtatásával a Workbenchben. 
 
 >[!NOTE]
->Ön talál további információt a futtatási konfigurációs fájlt a [kísérlet végrehajtási hivatkozás](experimentation-service-configuration-reference.md) szakasz.
+>További információ a futtatási konfigurációs fájlt a [végrehajtási kísérlet hivatkozás](experimentation-service-configuration-reference.md) szakaszban.
 
-## <a name="running-a-script-locally-on-workbench-installed-runtime"></a>A parancsfájl helyileg futó futásidejű munkaterület telepítve
-Munkaterület lehetővé teszi, hogy a parancsfájlok futtatását közvetlenül a munkaterület-telepítve Python 3.5.2 futásidejű szemben. Az alapértelmezett futásidejű munkaterület beállításról időpontban telepítve van, és Azure Machine Learning könyvtárai és függőségei tartalmazza. Futtatási eredmények és a helyi végrehajtások összetevők továbbra is menti a előzmények szolgáltatás futtatásához a felhőben.
+## <a name="running-a-script-locally-on-workbench-installed-runtime"></a>Helyileg futó parancsfájl Runtime Workbench telepítése
+Workbench lehetővé teszi a szkriptek futtatása közvetlenül a Workbench-telepített Python 3.5.2-es verzióját futásidejű szemben. Az alapértelmezett futtatókörnyezetet Workbench telepítési időpontban telepítve van, és tartalmazza az Azure Machine Learning könyvtárai és függőségei. Futtatási eredmények és a helyi végrehajtást összetevők továbbra is menteni előzmények szolgáltatás futtatása a felhőben.
 
-Docker-alapú végrehajtások eltérően ez a konfiguráció nincs _nem_ Conda kezeli. Kell manuálisan telepíteni az csomag függőségeinek a helyi munkaterület Python-környezetben.
+Végrehajtás Docker-alapú eltérően ez a konfiguráció van _nem_ Conda kezeli. Manuálisan üzembe helyezése a helyi Workbench Python-környezetében csomagfüggőségek kell.
 
-A következő parancsot a parancsfájl futtatásához helyi a munkaterület-telepítve Python-környezetben hajthat végre. 
+A következő parancsot a szkript futtatásához helyi a Workbench-telepített Python környezetben hajthat végre. 
 
 ```
 $az ml experiment submit -c local myscript.py
 ```
 
-A munkaterület parancssori ablakban a következő parancs beírásával elérési útját az alapértelmezett Python-környezetben található.
+Python-környezetet alapértelmezett elérési útja a következő parancs beírásával a Workbench parancssori felület ablakában találja.
 ```
 $ conda env list
 ```
 
 >[!NOTE]
->Jelenleg futtatott PySpark helyileg közvetlenül helyi Spark környezetek **nem** támogatott. Munkaterület támogatja a helyi Docker futó PySpark parancsfájlokat. Az Azure Machine Learning Docker alapjául szolgáló lemezképhez előtelepített 2.1.11 Spark részeként elérhető. 
+>PySpark helyileg futó közvetlenül a helyi Spark szemben környezetek jelenleg **nem** támogatott. Workbench támogatja a helyi Docker futó PySpark szkripteket. Az Azure Machine Learning alap Docker-rendszerkép tartalmaz Spark 2.1.11 előre telepítve van. 
 
-_**A Python-parancsfájl végrehajtása helyi áttekintése:**_
+_**Egy Python-szkriptet a helyi végrehajtásra áttekintése:**_
 ![](media/experimentation-service-configuration/local-native-run.png)
 
-## <a name="running-a-script-on-local-docker"></a>A helyi Docker parancsprogram futtatása
-Futtathatja a projektek egy Docker-tároló a helyi gépen kísérletezhet szolgáltatáson keresztül. Munkaterület egy alap Docker-lemezkép részeként elérhető az Azure Machine Learning könyvtárakkal és is biztosít, Spark 2.1.11 futásidejű megkönnyítése helyi Spark végrehajtások. Docker pedig már a helyi számítógépen futnia kell.
+## <a name="running-a-script-on-local-docker"></a>Egy szkript futtatása helyi Docker-a
+Is futtathatja a projektek a Docker-tároló a helyi gépen Kísérletezési szolgáltatáson keresztül. Workbench egy alap Docker-rendszerképet, amely az Azure Machine Learning-kódtárakkal és is biztosít, a Spark 2.1.11 futásidejű megkönnyítése helyi Spark végrehajtások. Docker már a helyi számítógépen futnia kell.
 
-A helyi Docker a Python vagy PySpark parancsfájlt futtat, a következő parancsokat hajthat végre a parancssori felület.
+A Python- vagy PySpark-szkript futtatása helyi Docker, hajtsa végre az alábbi parancsokat a parancssori felület.
 
 ```
 $az ml experiment submit -c docker myscript.py
@@ -170,141 +170,141 @@ vagy
 az ml experiment submit --run-configuration docker myscript.py
 ```
 
-A helyi Docker a végrehajtási környezet készen áll a testreszabásra az Azure Machine Learning alap Docker-lemezkép használata. Munkaterület letölti a lemezképet, amikor első alkalommal és átfedések is fut a conda_dependencies.yml fájlban megadott csomagokkal. Ez a művelet lehetővé teszi a kezdeti futtatása lassabban, de utólagosan lényegesen gyorsabban újból felhasználja a gyorsítótárazott rétegek munkaterület környezetnek köszönhetően. 
+A végrehajtási környezetet a helyi Docker készítenek az Azure Machine Learning alap Docker-rendszerkép használatával. Workbench letölti a lemezképet, futtatásakor az első idő-és hangátfedések, a csomagok conda_dependencies.yml fájlban megadott. Ez a művelet lehetővé teszi a kezdeti futtatási lassabb, de későbbi futtatások lényegesen gyorsabban újbóli felhasználása a gyorsítótárazott rétegek Workbench köszönhetően. 
 
 >[!IMPORTANT]
->Futtatásához szükséges _az ml kísérlet készítse elő a - c docker_ parancs először a Docker lemezképének előkészítése az első alkalommal történő futtatásakor. Azt is beállíthatja a **PrepareEnvironment** paraméter igaz értékű a docker.runconfig fájlban. Ez a művelet automatikusan előkészíti a környezetben a futtatási végrehajtásának részeként.  
+>Való futtatásához szükséges _az gépi tanulási kísérletet, készítse elő a docker - c_ először készítse elő a Docker-rendszerkép az első futtatáskor a parancsot. Is beállíthat a **PrepareEnvironment** paraméter igaz értékre a docker.runconfig fájlban. Ez a művelet automatikusan előkészíti a környezet a futtatási végrehajtási részeként.  
 
 >[!NOTE]
->A Spark PySpark parancsprogram futtatása, ha spark_dependencies.yml conda_dependencies.yml mellett is használható.
+>Ha egy PySpark-szkriptet futtat a Spark-spark_dependencies.yml conda_dependencies.yml mellett is használható.
 
-A parancsfájlok futtatását egy Docker-lemezképet a következő a következő előnyöket biztosítja:
+A parancsfájlok futtatását a Docker-rendszerkép kínál fel a következő előnyökkel jár:
 
-1. Biztosítja, hogy a parancsfájl megbízhatóan végrehajthatók más végrehajtási környezetekben. Egy Docker-tároló futó segít felderíteni, és minden helyi hivatkozást, amely hatással lehet a hordozhatóság elkerülése érdekében. 
+1. Biztosítja, hogy a parancsfájl megbízhatóan hajtható végre más végrehajtási környezetben. Docker-tárolóban futó segít felderíteni, és minden helyi hivatkozást, amely hatással lehet a hordozhatóság elkerülése érdekében. 
 
-2. Lehetővé teszi futtatókörnyezetek és, amelyek összetett telepítése és konfigurálása, például az Apache Spark, anélkül, hogy a telepítéshez saját kezűleg a keretrendszereket kód gyors teszteléséhez.
+2. Ez lehetővé teszi, hogy gyorsan tesztelje a kódot a modulok és keretrendszereket, amelyek összetett telepítése és konfigurálása, például az Apache Spark-, anélkül, hogy telepítse őket saját maga.
 
 
-_**A Python-parancsfájl végrehajtása helyi Docker áttekintése:**_
+_**Egy Python-szkript végrehajtása helyi Docker áttekintése:**_
 ![](media/experimentation-service-configuration/local-docker-run.png)
 
-## <a name="running-a-script-on-a-remote-docker"></a>A távoli Docker parancsprogram futtatása
-Bizonyos esetekben a helyi számítógépen elérhető erőforrások nem lehet elegendő a kívánt modell betanításához. Ebben a helyzetben kísérletezhet szolgáltatás lehetővé teszi, hogy egyszerűen a Python vagy PySpark parancsfájlok futtathatók a nagyobb teljesítményű virtuális gépeket Docker távoli végrehajtás. 
+## <a name="running-a-script-on-a-remote-docker"></a>A parancsfájl futtatásához egy távoli Docker
+Bizonyos esetekben a helyi gépen rendelkezésre álló erőforrások nem feltétlenül elegendő a kívánt modell betanításához. Ebben a helyzetben Kísérletezési szolgáltatás lehetővé teszi, hogy könnyedén nagyobb teljesítményű virtuális gépeken a Pythonból vagy a Pysparkból szkriptek futtatása távoli Docker-végrehajtás. 
 
-Távoli VM az alábbi követelményeknek kell megfelelnie:
-* Távoli VM-nek kell futnia a Linux-Ubuntu és SSH-n keresztül érhető el. 
-* Távoli virtuális gép futó Docker rendelkeznie kell.
+Távoli virtuális az alábbi követelményeknek kell megfelelnie:
+* Távoli virtuális Gépen kell futnia a Linux-Ubuntu és ssh-n keresztül érhető el. 
+* Távoli virtuális Gépen futó Docker rendelkeznie kell.
 
 >[!IMPORTANT]
-> Windows virtuális gépeken futó Docker van **nem** távoli számítási célként támogatott
+> A Docker egy Windows virtuális gépeken futó **nem** támogatott, mert a távoli számítási célnak
 
 
-A következő parancs segítségével a számítási cél definíció létrehozása és futtatása a Docker-alapú távoli végrehajtások konfigurációját.
+Az alábbi parancs segítségével a számítási célt definíció létrehozása és futtatása távoli Docker-alapú végrehajtás konfigurációját.
 
 ```
 az ml computetarget attach remotedocker --name "remotevm" --address "remotevm_IP_address" --username "sshuser" --password "sshpassword" 
 ```
 
-Ha a számítási cél megfelelően konfigurált, a következő paranccsal futtassa a parancsfájlt.
+Miután konfigurálta a számítási célnak, használhatja a következő parancsot a szkript futtatásához.
 ```
 $ az ml experiment submit -c remotevm myscript.py
 ```
 >[!NOTE]
->Ne feledje, hogy a végrehajtási környezet konfigurálva van a specifikációk conda_dependencies.yml használatával. spark_dependencies.yml is használatos, ha a PySpark keretrendszer .runconfig fájlban megadott. 
+>Ne feledje, hogy a végrehajtási környezet lett konfigurálva, a leírások segítségével a conda_dependencies.yml. spark_dependencies.yml is használatos, ha a keretrendszer PySpark .runconfig fájlban megadott. 
 
-A Docker konstrukció távoli virtuális gépek pontosan ugyanúgy történik, a helyi Docker folyamat fut, így olyan hasonló végrehajtási környezetet kell látnia.
+A Docker konstrukció távoli virtuális gépek pontosan ugyanúgy történik, a folyamat a helyi Docker fut, így olyan hasonló végrehajtási környezetet kell látnia.
 
 >[!TIP]
->Ha a Tiltás késése a Docker-lemezkép az első futtatáshoz bevezetett elkerülése érdekében inkább a következő paranccsal készítse elő a számítási célja a parancsfájl végrehajtása előtt. az ml kísérlet - c remotedocker előkészítése
+>Ha inkább a késést az első futtatáskor a Docker-rendszerkép létrehozásával elkerülése érdekében, a következő paranccsal készítse elő a számítási célnak a szkript végrehajtása előtt. az ml kísérlet - c remotedocker előkészítése
 
-_**A Python-parancsfájl végrehajtása távoli vm áttekintése:**_
+_**Egy Python-szkriptet a távoli virtuális gép végrehajtási áttekintése:**_
 ![](media/experimentation-service-configuration/remote-vm-run.png)
 
-## <a name="running-a-script-on-a-remote-vm-targeting-user-managed-environments"></a>A felhasználó által felügyelt környezetben célzó távoli virtuális gép parancsprogram futtatása
-Kísérletezhet szolgáltatás is támogatja a parancsprogram futtatása egy távoli Ubuntu virtuális gépen a felhasználó saját Python-környezetben. Ez lehetővé teszi a saját környezet végrehajtásra kezelése, és továbbra is használhatják az Azure Machine Learning képességeit. 
+## <a name="running-a-script-on-a-remote-vm-targeting-user-managed-environments"></a>A szkript futtatása a felhasználó által felügyelt környezetekben célzó távoli virtuális gép
+Kísérletezési szolgáltatás is támogatja, a szkript futtatásakor a felhasználó saját Python-környezetet egy távoli Ubuntu virtuális gépen. Ez lehetővé teszi a saját környezetben a végrehajtása kezelését, és továbbra is használja az Azure Machine Learning lehetőségeit. 
 
-A következő lépések segítségével futtassa a parancsfájlt a saját környezetben.
-* Készítse elő a Python-környezetet egy távoli Ubuntu virtuális gép vagy egy DSVM a függőségek telepítése.
-* Telepítse az Azure Machine Learning követelményeit az alábbi parancs segítségével.
+Kövesse az alábbi lépéseket a saját környezetében a szkript futtatásához.
+* Készítse elő a távoli Ubuntu virtuális gép vagy egy adatelemző virtuális GÉPET, telepíti a függőségeket a Python-környezetében.
+* Azure Machine Learning-követelményeket a következő paranccsal telepítse.
 
 ```
 pip install -I --index-url https://azuremldownloads.azureedge.net/python-repository/preview --extra-index-url https://pypi.python.org/simple azureml-requirements
 ```
 
 >[!TIP]
->Egyes esetekben szükség lehet a parancs futtatásához a sudo módban attól függően, hogy a jogosultságokat. 
+>Bizonyos esetekben szüksége lehet, hogy sudo módban a jogosultságok függően az alábbi paranccsal. 
 ```
 sudo pip install -I --index-url https://azuremldownloads.azureedge.net/python-repository/preview --extra-index-url https://pypi.python.org/simple azureml-requirements
 ```
  
-* A következő parancs segítségével hozza létre a számítási cél meghatározása és a távoli virtuális gép végrehajtások a felhasználó által felügyelt kísérletekhez futtatási konfiguráció.
+* A következő parancs használatával hozza létre a számítási célt definícióját és a virtuális gép távoli végrehajtás a felhasználó által felügyelt futtatások futtatási konfigurációt.
 ```
 az ml computetarget attach remote --name "remotevm" --address "remotevm_IP_address" --username "sshuser" --password "sshpassword" 
 ```
 >[!NOTE]
 >"UserManagedEnvironment" paraméter a .compute konfigurációs fájlban true értékre állítja.
 
-* Állítsa helyre a Python-futtatókörnyezet végrehajtható a .compute fájlban. Olvassa el a python végrehajtható fájl elérési útját. 
+* Állítsa helyre a Python-futtatókörnyezet végrehajtható a .compute fájlban. A python végrehajtható fájl teljes elérési útja hivatkozzon. 
 ```
 pythonLocation: python3
 ```
 
-Ha a számítási cél megfelelően konfigurált, a következő paranccsal futtassa a parancsfájlt.
+Miután konfigurálta a számítási célnak, használhatja a következő parancsot a szkript futtatásához.
 ```
 $ az ml experiment submit -c remotevm myscript.py
 ```
 
 >[!NOTE]
-> Ha egy DSVM használ, használja a következő parancsok
+> Ha egy adatelemző virtuális GÉPET futtat, a következő parancsokat kell használnia
 
-Ha azt szeretné, közvetlenül DSVM meg globális python-környezetben futtatni, futtassa ezt a parancsot.
+Ha szeretné a DSVM globális python-környezetet közvetlenül a következő parancs futtatásával.
 ```
 sudo /anaconda/envs/py35/bin/pip install <package>
 ```
 
 
-## <a name="running-a-script-on-an-hdinsight-cluster"></a>A HDInsight-fürtök parancsprogram futtatása
-HDInsight egy népszerű big data elemzésre szolgáló Apache Spark támogató platform. Munkaterület lehetővé teszi, hogy a big Data típusú adatok használata a HDInsight Spark-fürtjei kísérletezhet. 
+## <a name="running-a-script-on-an-hdinsight-cluster"></a>A szkript futtatása egy HDInsight-fürtön
+HDInsight az Apache Spark támogató big data-elemzés a népszerű platform. Workbench lehetővé teszi, hogy a HDInsight Spark-fürtök használatával a big data Kísérletezési. 
 
 >[!NOTE]
 >A HDInsight-fürtnek az Azure-blobot kell elsődleges tárolóként használnia. Az Azure Data Lake-tároló használata jelenleg nem támogatott.
 
-Számítási cél létrehozásához, és futtassa a konfiguráció a HDInsight Spark-fürtök az alábbi paranccsal:
+Hozzon létre egy számítási célnak, és futtassa a következő parancsot egy HDInsight Spark-fürt konfigurációját:
 
 ```
 $ az ml computetarget attach cluster --name "myhdi" --address "<FQDN or IP address>" --username "sshuser" --password "sshpassword"  
 ```
 
 >[!NOTE]
->Ha a teljes tartománynév használatára egy IP-cím helyett, és a HDI Spark-fürt neve _PEL_, az SSH-végpont esetében az illesztőprogram csomóponton nevű _PEL-ssh.azurehdinsight.net_. Ne feledje a **-ssh** teljes Tartománynevét használata esetén a kiszolgáló nevét az utólagos javítás _--cím_ paraméter.
+>Ha IP-cím helyett a teljes tartománynév használatára, és a HDI Spark-fürt neve _foo_, az SSH-végpont található a vezérlő csomópont nevű _foo-ssh.azurehdinsight.net_. Ne felejtse el a **-ssh** a kiszolgáló nevét utótaggal vannak ellátva, a teljes Tartománynevét használatakor _--cím_ paraméter.
 
 
-Miután a számítási környezet, az alábbi parancsot a PySpark parancsfájlt is futtathatja.
+Miután a számítási környezet, hajtsa végre a PySpark-szkriptet az alábbi parancsot futtathatja.
 
 ```
 $ az ml experiment submit -c myhdi myscript.py
 ```
 
-Munkaterület előkészíti, és a HDInsight-fürtjéhez Conda végrehajtási környezet kezeli. Konfigurációs kezeli _conda_dependencies.yml_ és _spark_dependencies.yml_ konfigurációs fájlok. 
+Workbench előkészít és kezeli a HDInsight-fürtön Conda használatával végrehajtási környezetben. Konfiguráció által kezelt _conda_dependencies.yml_ és _spark_dependencies.yml_ konfigurációs fájlokat. 
 
-A HDInsight-fürthöz az SSH-elérést kell kísérletek végrehajtásához ebben a módban. 
+A HDInsight-fürthöz az SSH-hozzáférést annak érdekében, hogy a kísérleteket ebben a módban kell. 
 
 >[!NOTE]
->A jelenleg támogatott konfiguráció HDInsight Spark-fürtök futó Linux (Python/PySpark 3.5.2 és Spark 2.1.11 Ubuntu).
+>Konfigurációs, HDInsight Spark-fürtön futó Linux (Ubuntu a Python-/ PySpark 3.5.2-es és a Spark 2.1.11).
 
-_**A HDInsight-alapú végrehajtás PySpark parancsfájl áttekintése**_
+_**Egy PySpark-szkriptet a HDInsight-alapú végrehajtási áttekintése**_
 ![](media/experimentation-service-configuration/hdinsight-run.png)
 
 
-## <a name="running-a-script-on-gpu"></a>A GPU parancsprogram futtatása
-Az útmutató követésével GPU a parancsfájlok futtatásához:[GPU használata az Azure gépi tanulás](how-to-use-gpu.md)
+## <a name="running-a-script-on-gpu"></a>A szkript futtatása a GPU-alapú
+A szkriptek futtatása a GPU-alapú, kövesse az ebben a cikkben szereplő útmutatást:[GPU használata az Azure Machine Learningben](how-to-use-gpu.md)
 
-## <a name="using-ssh-key-based-authentication-for-creating-and-using-compute-targets"></a>SSH-kulcs alapú hitelesítés használatával létrehozásával és számítási tárolók használatával
-Az Azure Machine Learning-munkaterület lehetővé teszi létrehozhat és használhat SSH-kulcs alapú hitelesítés mellett a felhasználónév/jelszó alapú séma használatával számítási célokat. Ezt a képességet is használhatja, a számítási célként remotedocker vagy a fürt használata esetén. Ez a séma használata esetén a munkaterület egy nyilvános/titkos kulcspárt hoz létre, és jelentést küld vissza a nyilvános kulcsot. A felhasználónév hozzáfűzése a nyilvános kulcsot az ~/.ssh/authorized_keys a fájlokat. Az Azure Machine Learning-munkaterület majd használ ssh-alapú hitelesítés elérésére, és feldolgozás alatt álló számítási Ez a cél. A titkos kulcsot a számítási cél menti a munkaterület a kulcstároló, mert a munkaterület más felhasználók használhatja a számítási cél ugyanúgy azáltal, hogy a számítási cél létrehozásához a felhasználónevet.  
+## <a name="using-ssh-key-based-authentication-for-creating-and-using-compute-targets"></a>SSH-kulcs alapú hitelesítés használatával létrehozásáról és használatáról a számítási célnak
+Az Azure Machine Learning Workbench alkalmazásban hozhat létre és használhat SSH-kulcs alapú hitelesítés mellett a felhasználónév/jelszó-alapú rendszer használata számítási célnak teszi lehetővé. Ezt a funkciót is használhatja, mint a számítási célnak remotedocker vagy -fürt használata esetén. Ez a séma használata esetén a Workbench egy nyilvános/titkos kulcspárt hoz létre, és jelentést küld vissza a nyilvános kulcsot. A felhasználónév hozzáfűzése a nyilvános kulcsot a ~/.ssh/authorized_keys fájlokhoz. Az Azure Machine Learning Workbench majd használ ssh-alapú hitelesítés elérésére, és a számítási célnak végrehajtása. A számítási célnak titkos kulcsát a kulcstároló, a munkaterület menti a rendszer, mivel a munkaterület más felhasználók használhatja a számítási célnak ugyanúgy, mint a számítási célnak létrehozásához a felhasználónév megadásával.  
 
-Lépések a funkció használatához. 
+Kövesse a leírtakat, ez a funkció használatához. 
 
-- Hozzon létre egy számítási célt a következő parancsok egyikét.
+- Hozzon létre egy számítási célnak, az alábbi parancsok egyikével.
 
 ```
 az ml computetarget attach remotedocker --name "remotevm" --address "remotevm_IP_address" --username "sshuser" --use-azureml-ssh-key
@@ -313,17 +313,17 @@ vagy
 ```
 az ml computetarget attach remotedocker --name "remotevm" --address "remotevm_IP_address" --username "sshuser" -k
 ```
-- A nyilvános kulcsot a ~/.ssh/authorized_keys fájlba a csatolt számítási célszámítógépen munkaterület által generált hozzáfűzése. 
+- Fűzze hozzá a nyilvános kulcsot a csatolt számítási célnak azon ~/.ssh/authorized_keys fájl a Workbench által generált. 
 
 >[!IMPORTANT]
->Jelentkezzen be a számítási célt a számítási tároló létrehozásához használt felhasználónévvel kell. 
+>Jelentkezzen be a felhasználónevet a számítási tároló létrehozásához használt a számítási célt kell. 
 
-- Mostantól előkészítése és a számítási célt SSH-kulcs alapú hitelesítés használata.
+- Most készítse elő, és használja a számítási célnak, SSH-kulcs alapú hitelesítés használatával.
 
 ```
 az ml experiment prepare -c remotevm
 ```
 
 ## <a name="next-steps"></a>További lépések
-* [Hozzon létre és telepítse az Azure gépi tanulás](../service/quickstart-installation.md)
-* [Modell kezelése](model-management-overview.md)
+* [Hozzon létre és telepítse az Azure Machine Learning](../service/quickstart-installation.md)
+* [Modellkezelés](model-management-overview.md)
