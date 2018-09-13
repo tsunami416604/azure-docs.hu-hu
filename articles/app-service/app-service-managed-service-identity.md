@@ -1,6 +1,6 @@
 ---
-title: Felügyeltszolgáltatás-identitás az App Service-ben és az Azure Functions |} A Microsoft Docs
-description: A Felügyeltszolgáltatás-identitás támogatása az Azure App Service és az Azure Functions fogalmi referencia és beállítási útmutató
+title: Felügyelt identitások, az App Service-ben és az Azure Functions |} A Microsoft Docs
+description: Fogalmi referencia és beállítási útmutató a felügyelt identitások az Azure App Service és az Azure Functions
 services: app-service
 author: mattchenderson
 manager: cfowler
@@ -11,22 +11,22 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 06/25/2018
 ms.author: mahender
-ms.openlocfilehash: c7a819f987de41ba7705d21bb6de95475cd3f9c8
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 5d058059f523d3567817cad8ac11e837fb4a0a49
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44027186"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44714248"
 ---
-# <a name="how-to-use-azure-managed-service-identity-in-app-service-and-azure-functions"></a>Az Azure a Felügyeltszolgáltatás-identitást az App Service-ben és az Azure Functions használatával
+# <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Felügyelt identitások használata az App Service-ben és az Azure Functions
 
 > [!NOTE] 
-> A Linux és a Web App for Containers App Service-ben jelenleg nem támogatja a Felügyeltszolgáltatás-identitást.
+> A Linux és a Web App for Containers App Service-ben jelenleg nem támogatja a felügyelt identitások.
 
 > [!Important] 
-> Az App Service-ben és az Azure Functions Felügyeltszolgáltatás-identitás nem várakozásoknak megfelelően működik, ha az alkalmazás előfizetések/bérlők keresztül telepítik át. Az alkalmazás kell szereznie egy új identitás, amely letiltásával és újbóli engedélyezésével végezhető. Lásd: [eltávolítása az identitás](#remove) alatt. Alsóbb rétegbeli erőforrások is kell rendelkeznie a hozzáférési szabályzatok frissítve az új identitás használatára.
+> Az App Service-ben és az Azure Functions felügyelt identitások nem várakozásoknak megfelelően működik, ha az alkalmazás előfizetések/bérlők keresztül telepítik át. Az alkalmazás kell szereznie egy új identitás, amely letiltásával és újbóli engedélyezésével végezhető. Lásd: [eltávolítása az identitás](#remove) alatt. Alsóbb rétegbeli erőforrások is kell rendelkeznie a hozzáférési szabályzatok frissítve az új identitás használatára.
 
-Ez a témakör bemutatja, hogyan hozhat létre egy App Service-ben és az Azure Functions-alkalmazások által kezelt alkalmazás identitás és egyéb erőforrásainak elérésére használatával. A felügyeltszolgáltatás-identitás az Azure Active Directoryból lehetővé teszi az alkalmazás más AAD által védett erőforrások, például az Azure Key Vault könnyen hozzáférhet. Az identitás az Azure platform kezeli, és nem igényli, üzembe helyezése és titkos kulcsok elforgatása. Felügyeltszolgáltatás-identitás kapcsolatos további információkért tekintse meg a [Felügyeltszolgáltatás-identitás – áttekintés](../active-directory/managed-identities-azure-resources/overview.md).
+Ez a témakör bemutatja, hogyan hozhat létre egy felügyelt identitás App Service-ben és az Azure Functions-alkalmazások és egyéb erőforrásainak elérésére használatával. Egy felügyelt identitás, az Azure Active Directoryból lehetővé teszi az alkalmazás más AAD által védett erőforrások, például az Azure Key Vault könnyen hozzáférhet. Az identitás az Azure platform kezeli, és nem igényli, üzembe helyezése és titkos kulcsok elforgatása. Az aad-beli felügyelt identitások kapcsolatos további információkért lásd: [felügyelt identitások az Azure-erőforrások](../active-directory/managed-identities-azure-resources/overview.md).
 
 ## <a name="creating-an-app-with-an-identity"></a>Az identitást tartalmazó alkalmazás létrehozása
 
@@ -34,21 +34,21 @@ Alkalmazás létrehozása egy identitással szükséges állítható be az alkal
 
 ### <a name="using-the-azure-portal"></a>Az Azure Portal használata
 
-A portálon a felügyeltszolgáltatás-identitás beállításához először létrehoz egy alkalmazás a szokásos módon, és ezután engedélyezze a szolgáltatást.
+A portálon egy felügyelt identitás beállításához először létrehoz egy alkalmazás a szokásos módon, és ezután engedélyezze a szolgáltatást.
 
 1. Alkalmazás létrehozása a portálon, ahogy azt szokásosan tenné. Keresse meg azt a portálon.
 
 2. Függvényalkalmazás használata esetén lépjen **platformfunkciók**. Minden olyan alkalmazás esetében, görgessen le a **beállítások** csoportot a bal oldali navigációs.
 
-3. Válassza ki **felügyeltszolgáltatás-identitás**.
+3. Válassza ki **identitás**.
 
 4. Kapcsoló **regisztrálása az Azure Active Directory** való **a**. Kattintson a **Save** (Mentés) gombra.
 
-![Felügyeltszolgáltatás-identitás az App Service-ben](media/app-service-managed-service-identity/msi-blade.png)
+![Az App Service-ben felügyelt identitás](media/app-service-managed-service-identity/msi-blade.png)
 
 ### <a name="using-the-azure-cli"></a>Az Azure parancssori felületének használata
 
-Az Azure CLI-vel felügyeltszolgáltatás-identitás beállításához kell használni a `az webapp identity assign` parancsot a meglévő alkalmazások ellen. A példa futtatásához az ebben a szakaszban három lehetősége van:
+Az Azure CLI használatával felügyelt identitás beállításához kell használni a `az webapp identity assign` parancsot a meglévő alkalmazások ellen. A példa futtatásához az ebben a szakaszban három lehetősége van:
 
 - Használat [Azure Cloud Shell](../cloud-shell/overview.md) az Azure Portalról.
 - Használja a beágyazott Azure Cloud Shell-t a "próbálja" gombra, az alábbi kódmintában jobb felső sarkában található.
@@ -151,13 +151,13 @@ Ahol `<TENANTID>` és `<PRINCIPALID>` cserélése GUID-azonosítói. A tenantId 
 Egy alkalmazás használatával az identitása tokenekhez az aad-ben, például az Azure Key Vault által védett erőforrásokhoz. Ezek a jogkivonatok jelölik az alkalmazás az erőforrást, és nem bármely adott felhasználó az alkalmazás eléréséhez. 
 
 > [!IMPORTANT]
-> Szükség lehet a célként megadott erőforrás, hogy engedélyezze a hozzáférést az alkalmazás konfigurálásához. Például ha egy Key Vault tokent kér, szüksége, hogy hozzáadott egy hozzáférési szabályzatot, amely tartalmazza az alkalmazás azonosítóját. Ellenkező esetben a Key Vault hívásainak rendszer elutasítja, akkor is, ha a jogkivonat tartalmazzák. További erőforrások kapcsolatos tokeny Felügyeltszolgáltatás-identitás kapcsolatban lásd: [Azure-szolgáltatások, hogy a támogatás az Azure AD-hitelesítés](../active-directory/managed-identities-azure-resources/services-support-msi.md#azure-services-that-support-azure-ad-authentication).
+> Szükség lehet a célként megadott erőforrás, hogy engedélyezze a hozzáférést az alkalmazás konfigurálásához. Például ha egy Key Vault tokent kér, szüksége, hogy hozzáadott egy hozzáférési szabályzatot, amely tartalmazza az alkalmazás azonosítóját. Ellenkező esetben a Key Vault hívásainak rendszer elutasítja, akkor is, ha a jogkivonat tartalmazzák. További erőforrások kapcsolatos Azure Active Directory-jogkivonatok támogatási kapcsolatban lásd: [Azure-szolgáltatások, hogy a támogatás az Azure AD-hitelesítés](../active-directory/managed-identities-azure-resources/services-support-msi.md#azure-services-that-support-azure-ad-authentication).
 
 Nincs a beszerzésével egy lexikális elem szerepel az App Service-ben és az Azure Functions egy egyszerű REST-protokollon. A .NET-alkalmazásokban a Microsoft.Azure.Services.AppAuthentication library absztrakciós biztosít a protokoll, és támogatja a helyi fejlesztési környezetet biztosít.
 
 ### <a name="asal"></a>A Microsoft.Azure.Services.AppAuthentication kódtár használatával a .NET-hez
 
-A .NET-alkalmazások és funkciók a legegyszerűbb módja a felügyeltszolgáltatás-identitás használata a a Microsoft.Azure.Services.AppAuthentication csomag keresztül történik. Ebben a könyvtárban is lehetővé teszi, hogy a kód a fejlesztői gépen, a felhasználói fiókkal a Visual Studióban a helyi tesztelése az [Azure CLI 2.0](https://docs.microsoft.com/cli/azure?view=azure-cli-latest), vagy az Active Directory beépített hitelesítést. További információ a helyi fejlesztési lehetőségek az ebben a könyvtárban, tekintse meg a [Microsoft.Azure.Services.AppAuthentication reference]. Ez a szakasz bemutatja, hogyan első lépések a kódtárat a programkódba.
+A .NET-alkalmazások és funkciók az a legegyszerűbb módja egy felügyelt identitás használata a Microsoft.Azure.Services.AppAuthentication csomag keresztül történik. Ebben a könyvtárban is lehetővé teszi, hogy a kód a fejlesztői gépen, a felhasználói fiókkal a Visual Studióban a helyi tesztelése az [Azure CLI 2.0](https://docs.microsoft.com/cli/azure?view=azure-cli-latest), vagy az Active Directory beépített hitelesítést. További információ a helyi fejlesztési lehetőségek az ebben a könyvtárban, tekintse meg a [Microsoft.Azure.Services.AppAuthentication reference]. Ez a szakasz bemutatja, hogyan első lépések a kódtárat a programkódba.
 
 1. Adja hozzá hivatkozásokat az [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) és [Microsoft.Azure.KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) NuGet-csomagok az alkalmazáshoz.
 
@@ -168,7 +168,7 @@ using Microsoft.Azure.Services.AppAuthentication;
 using Microsoft.Azure.KeyVault;
 // ...
 var azureServiceTokenProvider = new AzureServiceTokenProvider();
-string accessToken = await azureServiceTokenProvider.GetAccessTokenAsync("https://management.azure.com/");
+string accessToken = await azureServiceTokenProvider.GetAccessTokenAsync("https://vault.azure.net");
 // OR
 var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(azureServiceTokenProvider.KeyVaultTokenCallback));
 ```
@@ -177,7 +177,7 @@ Microsoft.Azure.Services.AppAuthentication és teszi elérhetővé a műveletek 
 
 ### <a name="using-the-rest-protocol"></a>A REST protokoll használatával
 
-Felügyeltszolgáltatás-identitás az alkalmazás rendelkezik definiált két környezeti változókat:
+Az alkalmazás felügyelt identitással rendelkezik definiált két környezeti változó:
 - MSI_ENDPOINT
 - MSI_SECRET
 
@@ -205,7 +205,7 @@ Sikeres 200 OK válasz tartalmaz egy JSON-törzse a következő tulajdonságokka
 Ez a válasz megegyezik a [válasza az AAD-service-to-service hozzáférési jogkivonat kérése](../active-directory/develop/v1-oauth2-client-creds-grant-flow.md#service-to-service-access-token-response).
 
 > [!NOTE] 
-> A környezeti változók úgy van beállítva a folyamat indításakor először, alkalmazásának Felügyeltszolgáltatás-identitás engedélyezése után szükség lehet az alkalmazás újraindítása, vagy ismételt telepítése előtt a kódok `MSI_ENDPOINT` és `MSI_SECRET` érhetők el a kódhoz.
+> Környezeti változók úgy van beállítva a folyamat indításakor először, miután engedélyezte az alkalmazás egy felügyelt identitás, szükség lehet az alkalmazás újraindítása, vagy ismételt telepítése előtt a kódok `MSI_ENDPOINT` és `MSI_SECRET` érhetők el a kódhoz.
 
 ### <a name="rest-protocol-examples"></a>Példák a REST protokoll
 Egy kérelem (példa) a következőhöz hasonlóan nézhet ki:
@@ -276,11 +276,11 @@ Az identitás távolíthatók el a funkció a portal, PowerShell vagy parancssor
 Ezzel a módszerrel az identitás eltávolításával is törli a rendszerbiztonsági tag az aad-ből. Rendszer által hozzárendelt identitások lesznek automatikusan eltávolítva az aad-ből, ha az alkalmazás-erőforrást törölték.
 
 > [!NOTE] 
-> Nincs alkalmazás beállítást is be lehet állítani, WEBSITE_DISABLE_MSI, amely csak letiltja a jogkivonat-szolgáltatás. Azonban elhagyja az identitás helyen, és az eszközök továbbra is megjeleníti MSI, "on" vagy "engedélyezve". Ennek eredményeképpen a beállítás használata nem ajánlott.
+> Nincs alkalmazás beállítást is be lehet állítani, WEBSITE_DISABLE_MSI, amely csak letiltja a jogkivonat-szolgáltatás. Azonban az identitás elhagyják a helyen, és az eszközök továbbra is megjeleníti a felügyelt identitást, "on" vagy "engedélyezve". Ennek eredményeképpen a beállítás használata nem ajánlott.
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Biztonságos hozzáférés az SQL Database-hez felügyelt szolgáltatásidentitás használatával](app-service-web-tutorial-connect-msi.md)
+> [Hozzáférés az SQL Database egy felügyelt identitás biztonságos használatával](app-service-web-tutorial-connect-msi.md)
 
 [Microsoft.Azure.Services.AppAuthentication reference]: https://go.microsoft.com/fwlink/p/?linkid=862452
