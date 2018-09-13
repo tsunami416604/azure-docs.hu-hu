@@ -1,42 +1,42 @@
 ---
-title: Végrehajtási és az adatok környezetek kombinációját támogatott az Azure Machine Learning adatok előkészített |} Microsoft Docs
-description: Ez a dokumentum különböző futtatókörnyezetek és adatforrások támogatott kombinációi teljes listáját biztosít az Azure Machine Learning adatok elkezdése
+title: Támogatott végrehajtási és környezetek kombinációját az Azure Machine Learning adat előkészített |} A Microsoft Docs
+description: A dokumentum az Azure Machine Learning adat előkészített biztosít támogatott kombinációk különböző modulok és adatforrások teljes listája
 services: machine-learning
 author: euangMS
 ms.author: euang
 manager: lanceo
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.custom: ''
 ms.devlang: ''
 ms.topic: article
 ms.date: 02/01/2018
-ms.openlocfilehash: ee1379995dffd8aebbd71757c06e06ea43561794
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 07b9ac8389a2bf06e0356f65d816d75d49cc0cf5
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34830445"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35646431"
 ---
 # <a name="supported-matrix-for-this-release"></a>Ebben a kiadásban támogatott mátrix 
-Ha a kód adatokat tölt az Azure Machine Learning adatforrások vagy az Azure Machine Learning adatok előkészített, vagy egy Pandas első használatával, vagy a Spark dataframe, kísérlet a következő kombinációk számítási és az adatok helyek támogatottak:
+Ha a kódot az Azure Machine Learning-adatforrások vagy az Azure Machine Learning adat előkészített, vagy egy Pandas első adatokat tölt, vagy Spark dataframe, kísérlet a következő fájlattribútumok számítási környezet és helyek támogatottak:
 
-|     |Helyi fájlok  |Azure Blob Storage  |SQL Server adatbázis x  |
+|     |Helyi fájlok  |Azure Blob Storage  |Az SQL Server adatbázis x  |
 |---------|---------|---------|---------|---------|
 |Helyi Python    |     Támogatott    |Nem támogatott         | Nem támogatott        |         |
-|Python docker (Linux virtuális gép)     |Project fájlok csak a támogatott *         | Nem támogatott        |        Nem támogatott |         |
-|PySpark docker (Linux virtuális gép)     |Project fájlok csak a támogatott *     |Támogatott         | Támogatott**        |         |
-|Az Azure Data tudományos virtuális gép Python     |Project fájlok csak a támogatott *         |Nem támogatott         |Nem támogatott         |         |
-|Az Azure Data tudományos virtuális gép PySPark     | Project fájlok csak a támogatott *        |Nem támogatott         |Nem támogatott         |         |
+|(A Linux rendszerű virtuális gép) docker-Python     |Soubory projektu: csak a támogatott *         | Nem támogatott        |        Nem támogatott |         |
+|Docker (a Linux rendszerű virtuális gép) PySpark     |Soubory projektu: csak a támogatott *     |Támogatott         | Támogatott**        |         |
+|Az Azure Data Science virtuális gép Python     |Soubory projektu: csak a támogatott *         |Nem támogatott         |Nem támogatott         |         |
+|Az Azure Data Science virtuális gép PySPark     | Soubory projektu: csak a támogatott *        |Nem támogatott         |Nem támogatott         |         |
 |Azure HDInsight PySpark     | Nem támogatott        |Támogatott         |Támogatott**         |         |
-|Az Azure HDInsight Python     | Nem támogatott        | Nem támogatott        | Nem támogatott        |         |
+|Az Azure HDInsight – Python     | Nem támogatott        | Nem támogatott        | Nem támogatott        |         |
 
-Azure Data Lake Store jelenleg nem támogatott a számítási cél.
+Az Azure Data Lake Store jelenleg nem támogatott a bármely számítási célnak.
 
-Ha a helyi elérési utat használ, a projekt fájlok átmásolja a számítási környezet, és majd olvasási hiba. A rendszer nem másolja a projekten kívül a fájlokat, és az elérési utak nem megoldja a számítási környezetben. Érdemes lehet Data Source helyettesítés, hogy a kód egy helyi fájl használatával, a helyi futtatás során. Majd átváltása egy Azure Storage-blobot egy másik futtatási konfiguráció. Is használhatja mintavételi támogatási adatforrásokon felhőkörnyezetben csak bizonyos futtatási konfigurációkat nagyméretű adatok kezeléséhez.
+Ha a fájl helyi elérési út szerepel, fájlt a projektben másolni a számítási környezetben, és ezután olvassa el a hiba. A projekt kívül nem másolódnak át, és az elérési utak már nem feloldja a számítási környezetben. Érdemes lehet adatokat forrás behelyettesítési, hogy a kód egy helyi fájlt is használhat, ha helyileg futtatja a. Ezután váltson egy másik futtatási konfigurációt az Azure Storage-blobba. Is használhatja mintavételi támogatási adatforrások fut csak bizonyos futtatási konfigurációt a nagy mennyiségű adat kezelésére.
 
-** Maven JDBC SQL Server-illesztőprogramot 6.2.1 használ. Gondoskodnia kell arról, hogy a csomagban (vagy egy kompatibilis egy) a számítási környezet a spark_dependencies.yml fájl tartalmazza.
+** A Maven JDBC SQL Server-illesztőt 6.2.1 használja. Biztosítania kell, hogy ez a csomag (vagy annak egy kompatibilis) az a számítási környezet spark_dependencies.yml fájl tartalmazza.
 
-Támogatja az Azure SQL Database vagy az SQL Server megadott, az adatbázis elérhető a számítási környezetből. 
+Támogatja az Azure SQL Database vagy SQL Server megadott, az adatbázis elérhető, a számítási környezetben. 

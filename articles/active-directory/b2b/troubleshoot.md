@@ -1,82 +1,82 @@
 ---
-title: Hibaelhárítás az Azure Active Directory B2B együttműködés |} Microsoft Docs
-description: Jogorvoslatok Azure Active Directory B2B együttműködés kapcsolatos általános problémák
+title: Az Azure Active Directory B2B-együttműködés hibaelhárítása |} A Microsoft Docs
+description: Jogorvoslatok az Azure Active Directory B2B együttműködés szolgáltatással kapcsolatos gyakori problémák
 services: active-directory
 ms.service: active-directory
 ms.component: B2B
 ms.topic: article
 ms.date: 05/25/2017
-ms.author: twooley
-author: twooley
+ms.author: mimart
+author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 4347b846b0ff91f606615abc2c94253c0ae70587
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
-ms.translationtype: HT
+ms.openlocfilehash: ca339319a370fd56cf8493418ae311b39f8fa59e
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34267446"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35645404"
 ---
-# <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>Hibaelhárítás az Azure Active Directory B2B együttműködés
+# <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>Az Azure Active Directory B2B-együttműködés hibaelhárítása
 
-Az alábbiakban néhány jogorvoslatok kapcsolatos Azure Active Directory (Azure AD) B2B együttműködés gyakori problémákat.
+Az alábbiakban néhány gyakori problémák az Azure Active Directory (Azure AD) B2B-együttműködés kártérítése.
 
 
-## <a name="ive-added-an-external-user-but-do-not-see-them-in-my-global-address-book-or-in-the-people-picker"></a>Tudom felvételét a külső felhasználó, de ne legyenek láthatóak a globális címlista vagy a személyek kiválasztása
+## <a name="ive-added-an-external-user-but-do-not-see-them-in-my-global-address-book-or-in-the-people-picker"></a>Tudom hozzáadott külső felhasználó, de nem látja ezeket a globális címjegyzékben vagy az a személy kijelölése
 
-Azokban az esetekben, ahol a külső felhasználók nem kerül a listában az objektum percet is igénybe vehet néhány replikálásához.
+Azokban az esetekben, ahol a külső felhasználók nem kerülnek be a listát az objektum replikálása néhány percig is eltarthat.
 
-## <a name="a-b2b-guest-user-is-not-showing-up-in-sharepoint-onlineonedrive-people-picker"></a>A B2B Vendég felhasználó nem látható a SharePoint Online/OneDrive személyek kiválasztása 
+## <a name="a-b2b-guest-user-is-not-showing-up-in-sharepoint-onlineonedrive-people-picker"></a>B2B-Vendég felhasználó nem jelenik meg a SharePoint Online és onedrive vállalati verzió személy kijelölése 
  
-Keresse meg a SharePoint Online (SPO) személyek kiválasztása a meglévő vendégfelhasználók teszi örökölt értéke alapértelmezés szerint értéke OFF.
+Keresse meg a SharePoint online-hoz (SPO) személy kijelölése a meglévő vendégfelhasználókat lehetővé teszi örökölt viselkedés megfelelően alapértelmezés szerint ki.
 
-Ez a funkció a bérlői és a hely gyűjtemény szintjén "ShowPeoplePickerSuggestionsForGuestUsers" beállítás használatával engedélyezheti. Beállíthatja, hogy a funkciót, a Set-SPOTenant és a Set-SPOSite parancsmagok, amelyek lehetővé teszik az összes meglévő vendég felhasználók kereséséhez a könyvtárban tagok használatával. A bérlői hatókört változásai nem befolyásolják a már kiépített SPO helyek.
+Ez a funkció a bérlő és a hely gyűjtemény szintjén "ShowPeoplePickerSuggestionsForGuestUsers" beállítás használatával engedélyezheti. A funkciót, a Set-SPOTenant és Set-SPOSite parancsmagok, amelyek lehetővé teszik a Keresés az összes meglévő vendégfelhasználókat a címtár tagjai használatával állíthatja be. A bérlői hatókörben módosítása nem érinti a már üzembe helyezett SPO-helyek.
 
-## <a name="invitations-have-been-disabled-for-directory"></a>Könyvtár meghívókat le van tiltva
+## <a name="invitations-have-been-disabled-for-directory"></a>Meghívók le vannak tiltva könyvtár
 
-Ha Ön nem jogosult a meghívott felhasználóknak akkor kapnak értesítést, győződjön meg arról, hogy a felhasználói fiók engedélyezve van-e a külső felhasználók a felhasználói beállítások szakasz meghívott:
+Értesítést kap, hogy nincs engedélye felhasználókat meghívni, győződjön meg arról, hogy a felhasználói fiók jogosult külső felhasználók a felhasználói beállítások szakasz meghívása:
 
 ![](media/troubleshoot/external-user-settings.png)
 
-Ha nemrég módosította ezeket a beállításokat, vagy a Vendég meghívó szerepkört a felhasználóhoz rendelt, előfordulhat, a 15-60 perc késleltetéssel a módosítások érvénybe lépéséhez.
+Ha nemrég módosította ezeket a beállításokat, vagy a Vendégmeghívó szerepkörrel egy felhasználóhoz, van egy 15 – 60 perc késleltetéssel a módosítások életbe léptetéséhez.
 
-## <a name="the-user-that-i-invited-is-receiving-an-error-during-redemption"></a>A felhasználót, hogy I meghívott hiba fogad érvényesítési során
+## <a name="the-user-that-i-invited-is-receiving-an-error-during-redemption"></a>A felhasználót, hogy tudom hívni során érvényesítési hiba fogad
 
 Gyakori hibák a következők:
 
-### <a name="invitees-admin-has-disallowed-emailverified-users-from-being-created-in-their-tenant"></a>Meghívott rendszergazda nem engedélyezte a bérlőben jöjjön létre EmailVerified felhasználók
+### <a name="invitees-admin-has-disallowed-emailverified-users-from-being-created-in-their-tenant"></a>Meghívott rendszergazda letiltotta az EmailVerified felhasználókat a bérlőben létrehozása folyamatban
 
-Amikor felhasználókat fióknevet, amelynek a szervezet által használt Azure Active Directory, de ha az adott felhasználói fiók nem létezik (például a felhasználó nem létezik az Azure AD contoso.com). A rendszergazda a contoso.com is tartalmaznak egy házirend meggátolja, hogy a felhasználók létrehozása folyamatban. A felhasználó ellenőriznie kell meghatározni, ha a külső felhasználók számára engedélyezett-e a rendszergazdától. A külső felhasználó rendszergazda is engedélyeznie kell a tartomány felhasználói e-mailek ellenőrzése (Ez [cikk](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0) az e-mailek ellenőrzése felhasználók).
+Amikor a felhasználók figyelmét, amelyek a szervezet az Azure Active Directory, de ha az adott felhasználói fiók nem létezik (például a felhasználó nem létezik az Azure ad-ben a contoso.com). A rendszergazda a contoso.com, előfordulhat, hogy tartalmaznak egy házirend meggátolja, hogy a felhasználók létrehozása folyamatban. A felhasználónak ellenőriznie kell meghatározni, ha a külső felhasználók számára engedélyezett a rendszergazdától. Előfordulhat, hogy a külső felhasználó rendszergazda kell e-mailben ellenőrzött felhasználók a tartományhoz (Ez [cikk](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0) az e-mailben ellenőrzött felhasználók).
 
 ![](media/troubleshoot/allow-email-verified-users.png)
 
 ### <a name="external-user-does-not-exist-already-in-a-federated-domain"></a>Külső felhasználó nem létezik már egy összevont tartományban
 
-Ha a felhasználó már nem létezik az Azure Active Directory összevonási hitelesítést használ, a felhasználót nem hívhat meg.
+Ha a felhasználó még nem létezik az Azure Active Directory összevonási hitelesítést használ, a felhasználó nem hívható meg.
 
 A probléma megoldásához, a külső felhasználó rendszergazda szinkronizálnia kell a felhasználói fiók az Azure Active Directoryhoz.
 
-## <a name="how-does--which-is-not-normally-a-valid-character-sync-with-azure-ad"></a>Hogyan biztosítja a\#", amely nincs általában érvénytelen karakter, és az Azure AD sync?
+## <a name="how-does--which-is-not-normally-a-valid-character-sync-with-azure-ad"></a>Hogyan biztosítja a\#", amely általában nem érvényes karakter, az Azure AD sync?
 
-"\#" nem egy foglalt karakter UPN-EK az Azure AD B2B együttműködés vagy külső felhasználók számára, mert a meghívott fiók user@contoso.com user_contoso.com#EXT# válik@fabrikam.onmicrosoft.com. Ezért \# az UPN-EK a helyszíni érkező nem engedélyezett az Azure-portálon bejelentkezhet. 
+"\#" van egy Azure AD B2B együttműködés vagy a külső felhasználók UPN-EK fenntartott karaktert, mert a meghívott fiókkal user@contoso.com user_contoso.com#EXT# válik@fabrikam.onmicrosoft.com. Ezért \# az egyszerű felhasználónevek helyszíni érkező nem engedélyezett az Azure Portalra való bejelentkezéshez. 
 
-## <a name="i-receive-an-error-when-adding-external-users-to-a-synchronized-group"></a>Ha a külső felhasználók felvétele egy szinkronizált csoportot hibaüzenetet kap
+## <a name="i-receive-an-error-when-adding-external-users-to-a-synchronized-group"></a>Külső felhasználók hozzáadásakor egy szinkronizált csoportot hibaüzenetet kap
 
-Külső felhasználók csak "hozzárendelt" vagy "Biztonság" csoportok és nem a csoportokat, amelyek a helyszíni lemezkép formátumú felveheti.
+A külső felhasználók is hozzáadhatók, csak "hozzárendelt" vagy "Security" csoport és a csoportokat, amelyek a helyszíni lemezkép.
 
-## <a name="my-external-user-did-not-receive-an-email-to-redeem"></a>A külső felhasználó nem kapta meg a beváltani e-mailt
+## <a name="my-external-user-did-not-receive-an-email-to-redeem"></a>A külső felhasználó nem kapott egy e-mailt beváltásához
 
-A meghívott érdemes egyeztetni az internetszolgáltató által biztosított és a levélszemét szűrő annak ellenőrzéséhez, hogy engedélyezett-e a következő címre: Invites@microsoft.com
+A meghívott ellenőrizze azok Internetszolgáltató vagy a levélszemét szűrőt annak biztosítására, hogy engedélyezve van-e a következő címre: Invites@microsoft.com
 
-## <a name="i-notice-that-the-custom-message-does-not-get-included-with-invitation-messages-at-times"></a>I figyelje meg, hogy az egyéni üzenet nem kérdezhető le a meghívó üzeneteket mellékelt néha
+## <a name="i-notice-that-the-custom-message-does-not-get-included-with-invitation-messages-at-times"></a>E figyelje meg, hogy az egyéni üzenet nem kap mellékelt ajánlati üzenetek esetenként
 
-Adatvédelmi törvényekkel ahhoz, hogy az API-k nem tartalmaznak egyéni üzenetek az e-mailek ajánlati során:
+Ahhoz, hogy megfeleljenek adatvédelmi törvények, az API-k nem tartalmaznak személyes üzeneteket az e-mailes meghívót a ha:
 
-- A meghívó hívja fel a bérlő nem rendelkezik egy e-mail címet
-- Amikor egy App Service principal elküldi a meghívó
+- A meghívót küldő személy nem rendelkezik e-mail-címmel a meghívó bérlőben
+- Ha egy App Service egyszerű küldi el a meghívót
 
-Ebben a forgatókönyvben az Ön számára fontosak, ha az API-t meghívó e-mail mellőzése, és küldje el az e-mailek mechanizmus az Ön által választott. Tekintse meg a szervezet védőt való győződjön meg arról, hogy minden e-mailek küldésekor, így is adatvédelmi törvényekkel összhangban.
+Fontos, hogy ez a forgatókönyv esetén az API-t meghívó e-mail le, és küldje el a kiválasztott e-mail mechanizmus segítségével. Tekintse meg a szervezet védőt, hogy minden e-mailt küld, így is megfelel a szigorú adatvédelmi törvényeinek betartásáért.
 
 ## <a name="next-steps"></a>További lépések
 
-- [Segítségre van szüksége a B2B együttműködés](get-support.md)
+- [Támogatás kérése a B2B-együttműködés](get-support.md)

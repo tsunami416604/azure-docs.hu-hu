@@ -1,6 +1,6 @@
 ---
-title: Hálózat az Azure App Service-környezetek megfontolások
-description: Ismerteti a ASE hálózati forgalom és az NSG-ket és a mértékéig udr-EK beállítása
+title: Hálózati megfontolások az Azure App Service environmenttel
+description: Ismerteti az ASE-hálózati forgalom és NSG-ket és az ASE az udr-EK beállítása
 services: app-service
 documentationcenter: na
 author: ccompy
@@ -11,41 +11,42 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2018
+ms.date: 05/29/2018
 ms.author: ccompy
-ms.openlocfilehash: d099163cdc34624afd8f01b8f1978c5ee902d1ff
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: ef2288e2f756db6529f1ec5f7b3a49067b2998aa
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35645566"
 ---
-# <a name="networking-considerations-for-an-app-service-environment"></a>Az App Service-környezetek hálózati szempontjai #
+# <a name="networking-considerations-for-an-app-service-environment"></a>App Service Environment hálózati szempontjai #
 
 ## <a name="overview"></a>Áttekintés ##
 
- Azure [App Service Environment-környezet] [ Intro] egy alhálózatba az Azure virtuális hálózatban (VNet) az Azure App Service üzemelő példány. Nincsenek App Service-környezet (ASE) két központi telepítési típusokat:
+ Azure [App Service Environment-környezet] [ Intro] üzembe helyezése az Azure App Service-ben az Azure virtuális hálózat (VNet) lévő egyik alhálózatában van. Az App Service environment (ASE) két központi telepítési típusa van:
 
-- **Külső ASE**: elérhetővé teszi a ASE által kezelt alkalmazások az internetről elérhető IP-címet. További információkért lásd: [hozzon létre egy külső ASE][MakeExternalASE].
-- **ILB ASE**: IP-címet a virtuális hálózaton belül a ASE által üzemeltetett alkalmazások közzététele. A belső végpont nem a belső terheléselosztók (ILB), ezért azt egy ILB ASE hívják. További információkért lásd: [létrehozása és használata egy ILB ASE][MakeILBASE].
+- **Külső ASE**: tesz közzé az ASE-ban üzemeltetett alkalmazásokat az internetről elérhető IP-címet. További információkért lásd: [külső ASE létrehozása][MakeExternalASE].
+- **ILB ASE**: tesz közzé az ASE-ban üzemeltetett alkalmazásokat, az IP-címet a virtuális hálózaton belül. A belső végpont egy belső terheléselosztó (ILB), ezért az ILB ASE neve. További információkért lásd: [létrehozása és használata az ILB ASE][MakeILBASE].
 
-Most már két verziója van App Service Environment-környezet: ASEv1 és ASEv2. A ASEv1 információkért lásd: [Bevezetés az App Service Environment-környezet v1][ASEv1Intro]. ASEv1 klasszikus vagy erőforrás-kezelő VNet is telepíthető. ASEv2 csak egy erőforrás-kezelő virtuális hálózaton történő telepíthetők.
+Az App Service Environment-környezet két verziója: ASEv1 és ASEv2. Az ASEv1 információkért lásd: [App Service Environment v1 bemutatása][ASEv1Intro]. Az ASEv1 is üzembe helyezhetők a klasszikus vagy Resource Manager. Csak telepíthető, az Resource Manager VNet ASEv2 is.
 
-Egy ASE összes hívásait az interneten keresztül a ASE hozzárendelt virtuális IP-címhez a VNet hagyja. A nyilvános IP-címe a VIP majd a ASE összes hívásait az interneten a forrás IP-címe. Ha az alkalmazásokat a ASE hívások erőforrásokhoz a virtuális hálózat vagy VPN-en keresztül, a forrás IP-címe az az IP-cím az alhálózat, a ASE által használt egyik. Mivel a ASE a Vneten belül, azt is elérhető erőforrások további konfiguráció nélkül a Vneten belül. Ha a virtuális hálózat a helyszíni hálózathoz csatlakozik, a ASE alkalmazások is erőforrásokhoz való hozzáférés van. Nem kell konfigurálni a ASE vagy az alkalmazás minden további.
+Az ASE összes hívásait az interneten keresztül egy hozzárendelt az ASE virtuális IP-CÍMEK a virtuális hálózat hagyja üresen. A nyilvános IP-címét a virtuális IP-cím a forrás IP-címe összes híváshoz az ASE-ről, amely az interneten. Ha az alkalmazások az ASE környezetben hívásokat erőforrások a virtuális hálózat vagy virtuális Magánhálózatok, a forrás IP-címe az az alhálózatot az ASE által használt IP-egyik. Mivel az ASE-t a virtuális hálózaton belül, azt is elérhető erőforrások további konfiguráció nélkül a virtuális hálózaton belül. Ha a virtuális hálózat a helyszíni hálózathoz van csatlakoztatva, az ASE-alkalmazások is erőforrásokhoz további konfiguráció nélkül való hozzáférést.
 
 ![Külső ASE][1] 
 
-Ha egy külső ASE, a nyilvános VIP egyben a végpont a feloldható ASE alkalmazásai:
+Ha rendelkezik külső ASE környezetben, a nyilvános virtuális IP-cím is a végpontot, hogy az ASE-alkalmazások esetében:
 
-* A HTTP/S 
-* FTP/MP. 
+* HTTP/S 
+* FTP/S 
 * A webes telepítése.
 * Távoli hibakeresés.
 
-![ILB ASE][2]
+![ILB ASE KÖRNYEZETBEN][2]
 
-Ha egy ILB ASE, a ILB IP-címe a HTTP/S, az FTP/S, a webes telepítési és a távoli hibakeresés végpontja.
+Az ILB ASE rendelkezik, a cím az ilb-e a végpont HTTP-vagy Https, FTP/S, webes telepítési és távoli hibakeresés.
 
-A normál alkalmazás-hozzáférési portok a következők:
+A szokásos alkalmazások hozzáférési portok a következők:
 
 | Használat | Ettől: | Művelet |
 |----------|---------|-------------|
@@ -53,62 +54,64 @@ A normál alkalmazás-hozzáférési portok a következők:
 |  FTP/FTPS    | Felhasználó által konfigurálható |  21, 990, 10001-10020 |
 |  A Visual Studio távoli hibakeresés  |  Felhasználó által konfigurálható |  4016, 4018, 4020, 4022 |
 
-Ez érvényét veszti, ha egy külső ASE vagy egy ILB ASE. Ha a számítógép egy külső ASE, ezeket a portokat, a nyilvános VIP kattint. Ha a számítógép egy ILB ASE, ezeket a portokat a Példánynak a kattint. Ha zárolását a 443-as porton, néhány funkció, a portálon hatással lehet. További információkért lásd: [Portal függőségek](#portaldep).
+Ez akkor igaz, ha Ön a külső ASE vagy ILB ASE környezetben. Ha Ön a külső ASE környezetben, ezeket a portokat a nyilvános VIP-címet a eléri. Ha Ön az ILB ASE, nyomja le az ILB meg ezeket a portokat. 443-as porton zárolását, ha a portálon elérhető egyes funkciók hatással lehet. További információkért lásd: [portál függőségek](#portaldep).
 
 ## <a name="ase-subnet-size"></a>ASE alhálózat mérete ##
 
-Nem módosítható egy ASE üzemeltetni az alhálózat méretét, a ASE telepítése után.  A ASE egy címet használ az egyes infrastruktúra szerepkörökhöz, valamint minden egyes elkülönített App Service csomag példány esetében.  Emellett nincsenek miden alhálózatában létrehozott Azure-hálózat által használt 5 címek.  Nincsenek App Service-csomagokról és egy ASE minden címeket fogja használni 12-alkalmazás létrehozása előtt.  Ha egy ILB ASE majd fogja használni 13 címek ahhoz, hogy ASE alkalmazást hoz létre. Mivel az alkalmazás állapotát tervek a horizontális azt minden hozzáadott előtér további címeket igényel.  Alapértelmezés szerint minden 15 teljes App Service-csomag példányok előtér-kiszolgáló hozzáadva. 
+Az ASE üzemeltetéséhez használt alhálózat mérete nem módosítható, az ASE üzembe helyezése után.  Az ASE minden infrastruktúra-szerepkör, valamint meghajtóbetűjeleket izolált App Service-csomag mindegyiknek egy címet használ.  Emellett nincsenek igénylő összes alhálózat létrehozott Azure-hálózat által használt 5 címeket.  Nincsenek App Service-csomagok egy ASE minden 12-címeket fogják használni az alkalmazás létrehozása előtt.  Ha az ILB ASE majd fogja használni 13 címek ahhoz, hogy az ASE környezetben létrehoz egy alkalmazást. Horizontális felskálázás az ASE-t, infrastruktúra-szerepkörök kerülnek minden 15 – 20 az App Service-csomag üzemelő példányok többszöröse.
 
    > [!NOTE]
-   > Nincs más lehet az alhálózat, de a ASE. Ne válasszon, amely lehetővé teszi a jövőbeli növekedésre címteret. Később Ez a beállítás nem módosítható. Azt javasoljuk, hogy a méretet `/25` 128-címekkel.
+   > Semmi más lehet az alhálózaton, de az ASE-t. Mindenképp válassza ki a jövőbeli növekedést is lehetővé teszi egy címtér. Ezt a beállítást később nem módosítható. Azt javasoljuk, hogy egy méretű `/24` 256-címekkel.
+
+Kisebbre vagy nagyobbra méretezhetők, ha hozzáadja az új szerepköröket a megfelelő méretű, és ezután a számítási feladatokhoz való migrálásakor a jelenlegi mérete a cél méretét. Csak azt követően az alkalmazások áttelepítése az eredeti virtuális törlődnek. Ez azt jelenti, hogy ha egy 100 ASP-példányok az ASE lenne egy ideig kell double a virtuális gépek száma.  Emiatt, amelyek használatát javasoljuk, hogy van egy (/ 24) befogadásához a szükséges módosításokat.  
 
 ## <a name="ase-dependencies"></a>ASE függőségek ##
 
-Egy ASE befelé függőség:
+Az ASE bejövő hozzáférést függőségei vannak:
 
 | Használat | Ettől: | Művelet |
 |-----|------|----|
-| Kezelés | App Service management címek | ASE alhálózati: 454, 455 |
-|  Belső kommunikációs ASE | ASE alhálózati: minden port | ASE alhálózati: minden port
-|  Engedélyezi az Azure terheléselosztó bejövő | Azure Load Balancer | ASE alhálózati: minden port
-|  IP-címek hozzárendelt alkalmazás | Címek hozzárendelt alkalmazás | ASE alhálózati: minden port
+| Kezelés | App Service felügyeleti címek | ASE-alhálózattal: 454, 455 |
+|  Belső ASE-kommunikáció | ASE-alhálózattal: minden port | ASE-alhálózattal: minden port
+|  Lehetővé teszi az Azure load balancer bejövő | Azure Load Balancer | ASE-alhálózattal: minden port
+|  Az alkalmazás IP-címek | Alkalmazás-címek | ASE-alhálózattal: minden port
 
-A bejövő forgalom biztosít a parancs és a rendszer figyelése mellett ASE irányítását. Az ilyen típusú adatforgalom a forrás IP-címek jelennek meg a [ASE felügyeleti címek] [ ASEManagement] dokumentum. A hálózati biztonsági beállításokat kell engedélyezi a hozzáférést a 454 és a 455 portokat összes IP-címekről.
+A bejövő felügyeleti forgalmak parancs és vezérlés figyelése mellett az ASE biztosít. Ezt a forgalmat a forrás-címek szerepelnek a [ASE felügyeleti címek] [ ASEManagement] dokumentumot. A hálózati biztonsági konfiguráció engedélyezi a hozzáférést a 454 és a 455 portot az összes IP-címekről származó kell. Ha letiltja a hozzáférést a ezt a címet, az ASE nem megfelelő állapotú lesz, és ezután lesz felfüggesztve.
 
-A belső összetevő használt sok port ASE alhálózaton belüli kommunikációhoz és azok módosíthatja.  Ehhez minden port ASE az alhálózaton az ASE alhálózatból elérhetőnek kell lennie. 
+Az ASE-alhálózatra belső összetevő használt számos port belüli kommunikációt, és módosíthatja.  Ehhez szükséges összes port az ASE alhálózat elérni az ASE-alhálózatra. 
 
-Az Azure load balancer és a ASE alhálózati közötti kommunikációhoz a minimális portok nyitva kell lennie a 454, 455 és 16001. A 16001 port használatban van a terheléselosztó és a ASE közötti megtartása életben adatforgalomhoz. Ha egy ILB ASE használ, akkor csak a 454, 455, 16001 le forgalom zárolhatja portok.  Ha egy külső ASE használ akkor kell figyelembe venni a normál alkalmazás-hozzáférési portok.  Hozzárendelt alkalmazás címek használata szüksége nyissa meg az összes porton.  Amikor egy cím hozzá van rendelve egy adott alkalmazást, majd a terheléselosztó nem ismert az előzetesen HTTP és HTTPS-forgalmat küldeni a ASE portok fogja használni.
+Az Azure load balancer és az ASE-alhálózatra közötti kommunikációhoz a minimálisan portokat kell megnyitni a 454, 455 és 16001. Életben tartási forgalom között a terheléselosztó és az ASE a 16001 port szolgál. Ha ILB ASE környezetben használja, akkor le csak a 454, 455, 16001 forgalom zárolhatja portokat.  Ha külső ASE használ, akkor figyelembe kell venni a szokásos alkalmazások hozzáférési portok.  Alkalmazáshoz hozzárendelt címek használatakor meg kell nyitnia azt összes portja.  Amikor egy cím hozzá van rendelve egy adott alkalmazást, a terheléselosztó portok nem ismert, előzetesen HTTP és HTTPS-forgalom küldéséhez az ASE-t fogja használni.
 
-Alkalmazás-kezelési forgalom engedélyezése a az alkalmazások ASE az alhálózathoz hozzárendelt IP-címekről kell IP-címek használata.
+Ha az alkalmazások az ASE-alhálózathoz rendelt IP-címekről érkező forgalom engedélyezésére kell IP-címek alkalmazás használ.
 
-A kimenő hozzáférés érdekében egy ASE több külső rendszer függ. E rendszer függőségek rendelkező DNS-nevek, és nem feleltethetők meg az IP-címek készletét. Ebből kifolyólag a ASE portok számos minden külső IP-címek a ASE alhálózatból kimenő hozzáférésre van szüksége. Egy ASE a következő kimenő függőségekkel rendelkezik:
+A kimenő hozzáféréshez az ASE több külső rendszerek függ. Ezeket a rendszer függőségeket DNS-nevük van definiálva, és nem leképezése az IP-címek készletét. Így az ASE portok többféle minden külső IP-címet az ASE alhálózatról kimenő hozzáférésre van szüksége. Egy ASE Környezethez a következő kimenő függőségekkel rendelkezik:
 
 | Használat | Ettől: | Művelet |
 |-----|------|----|
-| Azure Storage | ASE alhálózati | TABLE.Core.Windows.NET, blob.core.windows.net, queue.core.windows.net, file.core.windows.net: 80-as, a 443-as, a 445-ös (445-ös csak szükséges ASEv1.) |
-| Azure SQL Database | ASE alhálózati | Database.Windows.NET: 1433-as számú 11000-11999, 14000-14999 (további információkért lásd: [SQL Database 12-es port használati](../../sql-database/sql-database-develop-direct-route-ports-adonet-v12.md).)|
-| Azure felügyelet | ASE alhálózati | management.core.windows.net, management.azure.com: 443 
-| SSL-tanúsítvány ellenőrzése |  ASE alhálózati            |  ocsp.msocsp.com, mscrl.microsoft.com, crl.microsoft.com: 443
-| Azure Active Directory        | ASE alhálózati            |  Internet: 443
-| Az alkalmazásszolgáltatási management        | ASE alhálózati            |  Internet: 443
-| Azure DNS                     | ASE alhálózati            |  Internet: 53
-| Belső kommunikációs ASE    | ASE alhálózati: minden port |  ASE alhálózati: minden port
+| Azure Storage | ASE-alhálózattal | TABLE.Core.Windows.NET, blob.core.windows.net, queue.core.windows.net, file.core.windows.net: 80-as, 443, 445-ös (445-ös csak szükség van az ASEv1.) |
+| Azure SQL Database | ASE-alhálózattal | Database.Windows.NET: 1433-as |
+| Az Azure felügyeleti | ASE-alhálózattal | Management.Core.Windows.NET, management.azure.com, admin.core.windows.net: 443 |
+| SSL-tanúsítvány-ellenőrzés |  ASE-alhálózattal            |  ocsp.msocsp.com, mscrl.microsoft.com, crl.microsoft.com: 443 |
+| Azure Active Directory        | ASE-alhálózattal            |  login.Windows.NET: 443 |
+| App Service-kezelése        | ASE-alhálózattal            |  GR – éles -<regionspecific>. cloudapp.net, az-prod.metrics.nsatc .net: 443 |
+| Azure DNS                     | ASE-alhálózattal            |  Internet: 53 |
+| Belső ASE-kommunikáció    | ASE-alhálózattal: minden port |  ASE-alhálózattal: minden port |
 
-Ha a ASE elveszítette a hozzáférését ezeket a függőségeket, a rendszer nem működik. Ebben az esetben elég hosszú a ASE fel van függesztve.
+Ha az ASE elveszíti ezeket a függőségeket a hozzáférést, a rendszer nem működik. Ebben az esetben elég hosszú az ASE fel van függesztve.
 
 ### <a name="customer-dns"></a>Ügyfél DNS ###
 
-Ha a virtuális hálózat DNS-ügyfél által megadott kiszolgáló van konfigurálva, a bérlők munkaterheléseihez használhatja. A ASE továbbra is felügyelet céljából Azure DNS-sel való kommunikációhoz szükséges. 
+Ha egy felhasználó által meghatározott DNS-kiszolgáló a virtuális hálózaton van beállítva, a bérlők munkaterheléseihez használhatja. Az ASE-t továbbra is az Azure DNS használata felügyeleti célokra közötti kommunikációhoz szükséges. 
 
-Ha a virtuális hálózat DNS, a másik oldalon az egy VPN-ügyfél van beállítva, a DNS-kiszolgáló az alhálózatot, amely tartalmazza a ASE elérhetőnek kell lennie.
+Ha a virtuális hálózat úgy van konfigurálva, a DNS, a másik oldalon egy VPN-ügyfél, a DNS-kiszolgáló az ASE Környezetet tartalmazó alhálózat elérhetőnek kell lennie.
 
 <a name="portaldep"></a>
 
 ## <a name="portal-dependencies"></a>Portál függőségek ##
 
-A ASE működési függőségek kívül a portál élmény kapcsolatos néhány további elemek. Néhány olyan funkciója, az Azure-portálon való közvetlen hozzáférés függő _SCM hely_. Minden az Azure App Service-alkalmazást a két URL-címek vannak. Az első URL-címe, az alkalmazás eléréséhez. A második URL-je néven is ismert SCM webhely eléréséhez a _Kudu konzol_. Az SCM helyet használó szolgáltatások a következők:
+Az ASE működési függőségek kívül a portál használatával kapcsolatos néhány további elemek. Az Azure Portalon funkciói függenek közvetlen hozzáférést _SCM helyet_. Minden alkalmazás Azure App Service-ben a két URL-címek vannak. Az első URL-címet, hogy az alkalmazás eléréséhez. A második URL-je eléréséhez az SCM helyet, más néven a _Kudu konzol_. Az SCM helyet használó szolgáltatások a következők:
 
--   Webes feladatok
+-   Webjobs-feladatok
 -   Functions
 -   Naplózási streaming
 -   Kudu
@@ -116,89 +119,95 @@ A ASE működési függőségek kívül a portál élmény kapcsolatos néhány 
 -   Process Explorer
 -   Konzol
 
-Egy ILB ASE használatakor az SCM-hely nem található a virtuális hálózaton kívülről hozzáférhető internet. Ha az alkalmazás egy ILB ASE üzemelteti, bizonyos funkciók nem működnek a portálról.  
+Az ILB ASE használata esetén az SCM helyet nem a virtuális hálózaton kívülről elérhető az internetről. Az alkalmazás az ILB ASE jöhet szóba, ha bizonyos funkciók nem működnek a portálról.  
 
-Ezekre a képességekre, amelyek az SCM hely számos érhető el közvetlenül a Kudu konzolon. A portál használata helyett közvetlenül is elérheti. Ha az app Service-Példánynak környezetben, a közzétételi hitelesítő adatok használatával jelentkezzen be. Egy alkalmazás-Példánynak környezetben üzemeltetett SCM webhely eléréséhez az URL-cím formátuma a következő: 
+Ezen képességek, amelyek az SCM helyet számos is elérhetők közvetlenül a Kudu konzolhoz. A portál használata helyett közvetlenül is csatlakoztathatja. Ha az alkalmazás üzemel az ILB ASE környezetben, jelentkezzen be a közzétételi hitelesítő adatai segítségével. Az SCM helyet az ILB ASE környezetben üzemeltetett alkalmazás elérésére az URL-cím formátuma a következő: 
 
 ```
 <appname>.scm.<domain name the ILB ASE was created with> 
 ```
 
-A tartománynév esetén a ILB ASE *contoso.net* és az alkalmazás neve *testapp*, az alkalmazás elérése *testapp.contoso.net*. Az SCM-helyet, amely vele együtt áthelyeződik éri el a *testapp.scm.contoso.net*.
+Ha az ILB ASE tartománynév *contoso.net* és az alkalmazás neve *testapp*, az alkalmazás elérése a *testapp.contoso.net*. Az SCM helyet, amely vele együtt áthelyeződik elérésekor *testapp.scm.contoso.net*.
 
-## <a name="functions-and-web-jobs"></a>Függvények és a webes feladatok ##
+## <a name="functions-and-web-jobs"></a>Functions és Webjobs-feladatok ##
 
-Függvények és a webes feladatok az SCM hely függ, de akkor is, ha az alkalmazások-Példánynak környezetben, feltéve, hogy a böngésző el lehet-e érni az SCM hely a portál használata támogatott.  Ha önaláírt tanúsítványt használ a ILB mértékéig, szüksége lesz ahhoz, hogy a böngészőt, hogy a tanúsítvány megbízható.  Az Internet Explorer és a peremhálózati, amely azt jelenti, hogy a tanúsítvány-nak kell lennie a számítógép megbízható tárolja.  Ha Chrome használja majd, amely azt jelenti, hogy elfogadott a böngészőben a tanúsítvány korábban által a vélhetően elérés közvetlenül az scm-hely.  A legjobb megoldás, hogy a böngésző lánc megbízhatósági egy kereskedelmi tanúsítványt használja.  
+Funkciók és a webes feladatok az SCM helyet függ, de akkor is, ha alkalmazásait az ILB ASE, mindaddig, amíg a böngésző elérheti az SCM helyet a portál használata támogatott.  Ha önaláírt tanúsítványt használ az ILB ASE környezetnek, szüksége lesz ahhoz, hogy a böngészőben, hogy bízzon meg a tanúsítvány.  Az Internet Explorer és a peremhálózati, amely azt jelenti, hogy a tanúsítvány nem megbízható számítógép tárolójában lehet.  Ha a Chrome böngészőt használ, akkor azt jelenti, hogy Ön elfogadta a tanúsítványt a böngészőben korábban elvileg lenyomásával közvetlenül az scm helyet.  A legjobb megoldás, ha szerepel a böngészője megbízhatósági láncának egyik kereskedelmi tanúsítványát használja.  
 
 ## <a name="ase-ip-addresses"></a>ASE IP-címek ##
 
-Egy ASE ismernie néhány IP-címmel rendelkezik. Ezek a következők:
+Az ASE érdemes figyelembe vennie néhány IP-címmel rendelkezik. Ezek a következők:
 
-- **Nyilvános bejövő IP-cím**: app Service-külső környezetben, és felügyeleti forgalom egy külső ASE és egy ILB ASE is használatos.
-- **Kimenő nyilvános IP-cím**: az "feladó" IP-cím kimenő kapcsolatok a ASE a, amely hagyja, a virtuális hálózat, amely VPN le nem útválasztásos használt.
-- **ILB IP-cím**: Ha egy ILB ASE használja.
-- **Alkalmazás által hozzárendelt IP-alapú SSL-címek**: csak akkor lehetséges, egy külső mértékéig és IP-alapú SSL be van állítva.
+- **Nyilvános bejövő IP-cím**: külső ASE app-forgalom és felügyeleti forgalom külső ASE környezetben és a egy ILB ASE környezetben is használható.
+- **Kimenő nyilvános IP-cím**: a kimenő kapcsolatok számára az ASE-ről, amely a virtuális hálózathoz, hagyja le a VPN nem irányítja, amely a "feladó" IP-címként használja.
+- **ILB IP-cím**: Ha az ILB ASE használata.
+- **Alkalmazáshoz hozzárendelt IP-alapú SSL-címeket**: csak akkor lehetséges, a külső ASE és IP-alapú SSL konfigurálva van.
 
-A következő IP-címek láthatók egyszerűen egy ASEv2 az Azure-portálon a ASE felhasználói felületen. Ha egy ILB ASE, az IP-Címek használhatók a ILB szerepel.
+Ezen IP-címek az Azure Portalon az ASEv2 jól látható, az ASE felhasználói felületen. Ha az ILB ASE rendelkezik, az ILB-hez a IP-cím szerepel a listán.
+
+   > [!NOTE]
+   > Ezen IP-címek mindaddig, amíg az ASE marad, és nem változik.  Ha az ASE lesz felfüggesztve, és visszaállítani, a címeket, az ASE által használt változik. A normál az ASE fel lesz függesztve, oka a Ha a bejövő felügyeleti hozzáférés letiltása, vagy blokkolhatja az ASE függ. 
 
 ![IP-címek][3]
 
-### <a name="app-assigned-ip-addresses"></a>Alkalmazás által hozzárendelt IP-címek ###
+### <a name="app-assigned-ip-addresses"></a>Alkalmazás által kiosztott IP-címek ###
 
-Egy külső mértékéig IP-címek rendelhet az egyes alkalmazásokhoz. Nem hajthatja végre, amely egy ILB mértékéig. Az alkalmazásnak a saját IP-cím konfigurálásával kapcsolatos további információkért lásd: [egy meglévő egyéni SSL-tanúsítvány kötését az Azure-webalkalmazásokban](../app-service-web-tutorial-custom-ssl.md).
+Külső ASE környezetben, az IP-címeket rendelhet az egyes alkalmazások. ILB ASE környezetben, nem tudja megtenni. Az alkalmazás a saját IP-cím konfigurálása a további információkért lásd: [meglévő egyéni SSL-tanúsítvány kötése az Azure web appshez](../app-service-web-tutorial-custom-ssl.md).
 
-Ha egy alkalmazás a saját IP-alapú SSL-címmel rendelkezik, a ASE fenntartja két portok leképezése az IP-címet. Egy port a HTTP-forgalom, és az egyéb portot a HTTPS-hez. Ezeket a portokat a ASE felhasználói felületén, az IP-címek szakaszban találhatók. Forgalom kell elérni ezeket a portokat a a VIP vagy azok nem érhetők el. Ez a követelmény fontos, hogy ne feledje, hogy a hálózati biztonsági csoportokkal (NSG-k) konfigurálásakor.
+Amikor egy alkalmazást a saját IP-alapú SSL-címmel rendelkezik, az ASE fenntartja két port adott IP-címére való leképezéséhez. Egy port a HTTP-forgalom, és a más port HTTPS-hez van. Ezeket a portokat az ASE UI, az IP-címek szakaszban szerepelnek. Forgalom elérhetik ezeket a portokat a virtuális IP-cím a kell lennie, vagy az alkalmazások elérhetetlenné válnak. Ez a követelmény nem szabad elfelejteni, amikor konfigurálja a hálózati biztonsági csoportok (NSG-k).
 
 ## <a name="network-security-groups"></a>Network Security Groups (Hálózati biztonsági csoportok) ##
 
-[Hálózati biztonsági csoportok] [ NSGs] lehetővé teszik a hálózati hozzáférést egy Vneten belül. A portál használata esetén nincs egy implicit Megtagadás szabály minden visszautasítja a legalacsonyabb prioritással. Állít össze vannak a szabályokat.
+[Hálózati biztonsági csoportok] [ NSGs] lehetővé teszi, hogy a virtuális hálózaton belüli hálózati hozzáférést szabályozzák. Ha a portál, az implicit Megtagadás szabály jelenleg a legalacsonyabb prioritású megtagadni minden. Állít össze vannak az engedélyezési szabály.
 
--Környezetben nincs a virtuális gépek üzemeltetni a ASE magát a hozzáférést. Is a Microsoft által kezelt előfizetést. Ha azt szeretné, az alkalmazások a ASE való hozzáférésének korlátozásához, állítsa be az NSG-k ASE az alhálózaton. Ennek során a ASE függőségek alapos figyelmet fordítania. Ha letiltja az összes függőséget, az ASE működése leáll.
+Az ASE környezetben nincs hozzáférése a virtuális gépekhez az ASE-t üzemeltetik. Jelenleg a Microsoft által felügyelt előfizetés. Ha azt szeretné, az ASE az alkalmazásokhoz való hozzáférés korlátozásához, beállítani az NSG-ket az ASE-alhálózatra. Ennek során az ASE függőségek alapos figyelmet fordítania. Ha letiltja a függőségek, akkor az ASE nem működik.
 
-Az NSG-k az Azure portálon keresztül vagy a PowerShell segítségével konfigurálható. Itt tartalmazza az Azure-portálon. Létrehozásához és kezeléséhez az NSG-ket a portálon, a legfelső szintű erőforrásként **hálózati**.
+Az NSG-k konfigurálható az Azure Portalon vagy a Powershellen keresztül. Az adatok itt látható az Azure Portalon. Hozzon létre, és NSG-k kezelése a portálon, a legfelső szintű erőforrásként **hálózatkezelés**.
 
-A bejövő és kimenő követelmények figyelembe kell venni, amikor az NSG-ket az NSG-ket ebben a példában látható módon hasonlóan kell kinéznie. A virtuális hálózat címtartomány _192.168.250.0/23_, és az alhálózatot, amely a ASE _192.168.251.128/25_.
+A bejövő és kimenő követelményeket figyelembe kell venni, amikor az NSG-k az NSG-t az ebben a példában is látható hasonlóan kell kinéznie. A virtuális hálózaton címtartomány _192.168.250.0/23_, és az alhálózatot, amelyet a rendszer az ASE _192.168.251.128/25_.
 
-A függvény ASE első két bejövő követelményei ebben a példában a lista tetején látható. Ezek ASE és felügyeletét teszi lehetővé maga kommunikálni ASE engedélyezése. A többi bejegyzés összes bérlői konfigurálható és képesek felügyelni a hálózati hozzáférést a ASE állomásokon tárolt alkalmazásokhoz. 
+Az első két bejövő követelményei az ASE függvény ebben a példában a lista tetején jelennek meg. Azok ASE felügyeletének engedélyezése, és lehetővé teszi az ASE kommunikálni magát. A többi bejegyzések konfigurálható minden bérlő, és szabályozhatja a hálózati hozzáférés az ASE-ban üzemeltetett alkalmazások számára. 
 
-![Bejövő biztonsági szabályok][4]
+![Bejövő biztonsági szabály][4]
 
-Alapértelmezett szabály lehetővé teszi, hogy az IP-címek a ASE alhálózati felvegye a Vneten belül. Egy másik alapértelmezett szabály lehetővé teszi, hogy a terheléselosztó, más néven a nyilvános VIP, a mértékéig kommunikációhoz. Az alapértelmezett szabályok megtekintéséhez válasszon **alapértelmezett szabályok** mellett a **Hozzáadás** ikonra. Ha a Megtagadás, minden más szabály, miután az NSG-szabályok látható, hogy akadályozza meg a forgalmat a VIP és a ASE között. A virtuális hálózaton belül érkező forgalom elkerülése érdekében adja hozzá a saját szabály, amely engedélyezi a bejövő. A forrás AzureLoadBalancer egyenlőnek használata a cél **bármely** és egy porttartomány **\***. Az NSG-szabály ASE van alkalmazva, mert nem kell a cél adott lehet.
+Alapértelmezett szabály lehetővé teszi, hogy kommunikáljon az ASE-alhálózattal a virtuális hálózaton az IP-címek. Egy másik alapértelmezett szabály lehetővé teszi, hogy a terheléselosztó, más néven a nyilvános VIP az ASE folytatott kommunikációhoz. Az alapértelmezett szabályok megtekintéséhez válasszon **alapértelmezett szabályokkal** mellett a **Hozzáadás** ikonra. Ha minden más szabály, miután az NSG-szabályok megjelenített megtagadási helyezi, megakadályozható, hogy a virtuális IP-cím és az ASE közötti adatforgalmat. A virtuális hálózaton belül érkező forgalom elkerülése érdekében adja hozzá a saját szabályt, amely engedélyezi a bejövő. Egy adatforrás AzureLoadBalancer egyenlő használata a célhelyre **bármely** és a egy porttartományt, **\***. Az ASE-alhálózatra alkalmazott NSG-szabályt, mert nem kell lennie a cél adott.
 
-Ha az alkalmazáshoz rendelt IP-címet, győződjön meg arról, hogy a portok nyitva tartása. A portok megtekintéséhez válasszon **App Service Environment-környezet** > **IP-címek**.  
+Ha az alkalmazáshoz rendelt IP-címet, ellenőrizze, hogy a portok nyitva hagyja. A portok megtekintéséhez válasszon **App Service Environment-környezet** > **IP-címek**.  
 
-A következő kimenő szabályok látható elemeinek van szükség, az utolsó elem kivételével. Az ebben a cikkben észleltek ASE függőségek való hálózati hozzáférés lehetővé teszik. Ha letiltja az e valamelyiket, a ASE működése leáll. A lista utolsó elemének lehetővé teszi, hogy a ASE kommunikálni a Vneten található más erőforrásokat.
+A következő kimenő szabályok látható összes elem van szükség, az utolsó elem kivételével. A cikk korábbi részeiben észleltek ASE függőségek való hálózati hozzáférés lehetővé teszik. Ha ezek közül bármelyik letiltja, az ASE működése leáll. Az utolsó elem a lista lehetővé teszi, hogy az ASE-t a virtuális hálózatában lévő más erőforrásokkal kommunikálni.
 
 ![Kimenő biztonsági szabályok][5]
 
-Az NSG-k meghatározása után rendelje hozzá őket az alhálózatot, amely a ASE a. Ha nem emlékszik a ASE virtuális hálózat vagy az alhálózat, megtekintheti az ASE portál oldalról. Az NSG-t rendel az alhálózat, nyissa meg a felhasználói felület alhálózathoz, és válassza ki az NSG-t.
+Az NSG-k meghatározása után hozzárendelheti azokat az alhálózatot, amelyet a rendszer az ASE-t. Ha nem emlékszik az ASE Vnetben vagy alhálózatban, az ASE portál lapján láthatja. Az NSG hozzárendelése az alhálózat, nyissa meg az alhálózat felhasználói felületén, és válassza az NSG-t.
 
 ## <a name="routes"></a>Útvonalak ##
 
-A kényszerített bújtatás esetén beállítása útvonalak a virtuális hálózat, a kimenő forgalom nem lépjen közvetlenül az internethez, de a fürtnevek máshol, például egy ExpressRoute-átjárót vagy a virtuális készülék.  Ha konfigurálja a ASE oly módon, majd elolvasni a dokumentumot a kell [az App Service-környezet konfigurálása a kényszerített bújtatás][forcedtunnel].  Ez a dokumentum jelzi a beállítások körét az ExpressRoute és a kényszerített bújtatás használatát.
+Kényszerített bújtatás az útvonalakat a virtuális hálózat beállításakor, így a kimenő forgalom nem lépjen közvetlenül az internethez, de valahol máshol, például egy ExpressRoute-átjáróval vagy virtuális berendezésre.  Ha szeretné az ASE konfigurálása oly módon, majd olvassa el a dokumentumot a [az App Service Environment konfigurálása kényszerített bújtatással][forcedtunnel].  Ez a dokumentum jelzi az ExpressRoute és a kényszerített bújtatás használata lehetőségekről.
 
-Amikor létrehoz egy ASE a portálon azt is létrehozhat egy útválasztási táblázatban, amely a mértékéig jön létre az alhálózaton.  Útvonalak egyszerűen tegyük fel például, a kimenő forgalmat küldeni közvetlenül az internethez.  
-Az azonos útvonalak manuális létrehozásához kövesse az alábbi lépéseket:
+Az ASE létrehozásakor a portálon is létrehozunk útvonal táblák egy készlete, amely az ASE-t a rendszer létrehozza az alhálózaton.  Útvonalakat egyszerűen mondja ki a kimenő forgalom küldése közvetlenül az internethez.  
+Az azonos útvonalakat manuális létrehozásához kövesse az alábbi lépéseket:
 
-1. Ugrás az Azure-portálon. Válassza ki **hálózati** > **útvonaltáblát**.
+1. Nyissa meg az Azure Portalt. Válassza ki **hálózatkezelés** > **útválasztási táblázatok**.
 
-2. Hozzon létre egy új útvonaltábla és a virtuális hálózat ugyanabban a régióban.
+2. Hozzon létre egy új útvonaltábla a virtuális hálózat ugyanabban a régióban.
 
-3. Az útvonaltábla felhasználói felületén belül jelölje ki **útvonalak** > **Hozzáadás**.
+3. Az útvonaltábla felhasználói felületén belül válassza **útvonalak** > **Hozzáadás**.
 
-4. Állítsa be a **a következő ugrás típusa** való **Internet** és a **címelőtag** való **0.0.0.0/0**. Kattintson a **Mentés** gombra.
+4. Állítsa be a **következő ugrás típusa** való **Internet** és a **címelőtag** való **0.0.0.0/0**. Kattintson a **Mentés** gombra.
 
-    Ekkor megjelenik egy, a következőhöz hasonló:
+    Ekkor megjelenik a következőhöz hasonló:
 
     ![Funkcionális útvonalak][6]
 
-5. Új útvonaltábla létrehozása után nyissa meg az alhálózatot, amely tartalmazza a ASE. Válassza ki az útválasztási táblázatot a portálon a listából. A módosítás mentése után majd megtekintheti az NSG-ket és ezekkel az alhálózati útvonalakat.
+5. Miután létrehozta az új útvonaltábla, nyissa meg az alhálózatot, amelyet az ASE-t tartalmaz. Válassza ki az útvonaltábla a portálon a listából. Miután a módosítás mentéséhez, majd megtekintheti az NSG-ket és a kéréssel együtt az alhálózati útvonalakat.
 
-    ![Az NSG-k és útvonalak][7]
+    ![NSG-ket és útvonalak][7]
 
 ## <a name="service-endpoints"></a>Service Endpoints – szolgáltatásvégpont ##
 
 A szolgáltatásvégpontokkal Azure-beli virtuális hálózatok és alhálózatok készletére korlátozhatja a több-bérlős szolgáltatásokhoz való hozzáférést. A szolgáltatásvégpontokról bővebben a [virtuális hálózatok szolgáltatásvégpontjaival][serviceendpoints] kapcsolatos dokumentációban olvashat. 
+
+   > [!NOTE]
+   > Az SQL-t használó szolgáltatásvégpontok nem működnek az US Government régiókban. Ez az információ csak érvényes a nyilvános Azure-régióban.
 
 Amikor engedélyezi a szolgáltatásvégpontokat egy erőforráson, az összes többi útvonalhoz képest nagyobb prioritású útvonalak jönnek létre. Ha kényszerítetten bújtatott ASE-vel használ szolgáltatásvégpontokat, az Azure SQL és az Azure Storage felügyeleti forgalma nem kényszerítetten bújtatott. 
 

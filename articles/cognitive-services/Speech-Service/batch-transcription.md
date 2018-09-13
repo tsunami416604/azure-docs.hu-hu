@@ -8,12 +8,12 @@ ms.technology: Speech to Text
 ms.topic: article
 ms.date: 04/26/2018
 ms.author: panosper
-ms.openlocfilehash: b6fb39ef5941157cfe0d18324deeb9d836d7ab09
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 02af95859bcbdc3dd9fdd6d6354cae9cdf99eae8
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44377621"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44717947"
 ---
 # <a name="batch-transcription"></a>Kötegelt átírás
 
@@ -59,36 +59,38 @@ Sztereó audiostreamek lejátszásával, a Batch beszédátírási bontja a bal 
 
 ## <a name="authorization-token"></a>Engedélyezési jogkivonat
 
-Az összes funkciót, az egyesített beszédszolgáltatás, egy előfizetési kulcsot a létrehozásakor a [az Azure portal](https://portal.azure.com). Emellett a Speech-portál az API-kulcs beszerzése: 
+Az összes funkciót, az egyesített beszédszolgáltatás, egy előfizetési kulcsot a létrehozásakor a [az Azure portal](https://portal.azure.com). 6 egyszerű lépések végrehajtásával.
 
-1. Jelentkezzen be a [Custom Speech](https://customspeech.ai).
+1. Létrehozott egy előfizetési kulcsot az Azure a következőket a [első lépések útmutató](get-started.md) 
 
-2. Válassza az **Előfizetések** lehetőséget.
+2. Jelentkezzen be a [Custom Speech](https://customspeech.ai).
 
-3. Válassza ki **API-kulcs létrehozása**.
+3. Válassza az **Előfizetések** lehetőséget.
+
+4. Válassza ki **csatlakozás meglévő előfizetés**.
+
+5. Az előfizetési kulcsot és a egy alias hozzáadása a felugró nézetben
 
     ![Képernyőkép az egyéni beszédfelismerési előfizetések lap](media/stt/Subscriptions.jpg)
 
-4. Másolja és illessze be ezt a kulcsot a következő mintában az Ügyfélkód.
+6. Másolja és illessze be ezt a kulcsot a következő mintában az Ügyfélkód.
 
 > [!NOTE]
-> Ha azt tervezi, a egyéni modell, túl kell, hogy a modell azonosítója. Vegye figyelembe, hogy ez nem látja a végpont részletei nézeten üzembe helyezés vagy a végpont-azonosító. A Modellazonosító lekérhető a modell adatait kiválasztásakor.
+> Ha azt tervezi, a egyéni modell, túl kell, hogy a modell azonosítója. Vegye figyelembe, hogy ez nem talált a végpont részletei nézeten hálózativégpont-azonosító. A Modellazonosító lekérhető a modell adatait kiválasztásakor.
 
 ## <a name="sample-code"></a>Mintakód
 
 Testre szabhatja az alábbi mintakód egy előfizetési kulcsot és a egy API-kulcsot. Ez lehetővé teszi, hogy tulajdonosi jogkivonat beszerzése.
 
 ```cs
-    public static async Task<CrisClient> CreateApiV1ClientAsync(string username, string key, string hostName, int port)
+     public static CrisClient CreateApiV2Client(string key, string hostName, int port)
+
         {
             var client = new HttpClient();
             client.Timeout = TimeSpan.FromMinutes(25);
             client.BaseAddress = new UriBuilder(Uri.UriSchemeHttps, hostName, port).Uri;
-
-            var tokenProviderPath = "/oauth/ctoken";
-            var clientToken = await CreateClientTokenAsync(client, hostName, port, tokenProviderPath, username, key).ConfigureAwait(false);
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", clientToken.AccessToken);
-
+            client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", key);
+         
             return new CrisClient(client);
         }
 ```

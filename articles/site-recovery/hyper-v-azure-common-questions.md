@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.date: 08/15/2018
+ms.date: 09/12/2018
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 42e8f8bd3f921686c3ba13f4c752d52e3067fbbe
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: 16c4ab4601dbe57e014bfcb06ff9b35d02c60cfa
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "40177616"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44721908"
 ---
 # <a name="common-questions---hyper-v-to-azure-replication"></a>Gyakori kérdések – a Hyper-V Azure-bA
 
@@ -64,7 +64,7 @@ Igen, mindkét – az átvitel közbeni titkosítás és [titkosítás az Azure-
 
 ### <a name="what-do-i-need-on-premises"></a>Mire van szükségem helyszíni?
 
-Egy vagy több virtuális gépet kell egy vagy több önálló vagy fürtözött Hyper-V-gazdagépeken futó. A System Center Virtual Machine Manager (VMM) által felügyelt gazdagépeken futó virtuális gépeket is replikálhat. A System Center Virtual Machine Manager (VMM) által felügyelt gazdagépeken futó virtuális gépeket is replikálhat.
+Egy vagy több virtuális gépet kell egy vagy több önálló vagy fürtözött Hyper-V-gazdagépeken futó. A System Center Virtual Machine Manager (VMM) által felügyelt gazdagépeken futó virtuális gépeket is replikálhat.
     - Ha a VMM-ben, a Site Recovery üzembe helyezése során nem futtatja, gyűjtse össze a Hyper-V-gazdagépek és fürtök Hyper-V helyek be. A Site Recovery-ügynökök (az Azure Site Recovery Provider és Recovery Services agent) minden egyes Hyper-V gazdagépen telepítenie.
     - Ha a Hyper-V-gazdagépek VMM-felhőben található, akkor koordinálhatja a replikálást, a VMM-ben. A Site Recovery Providert a VMM-kiszolgáló és a Recovery Services-ügynököt minden Hyper-V gazdagépre telepíti. Képezze le a VMM logikai és Virtuálisgép-hálózatok és az Azure virtuális hálózatok között.
     - 
@@ -166,11 +166,6 @@ A Site Recovery replikálja a virtuális gépeket, jelölje be a Hyper-V gazdag�
 ### <a name="what-does-site-recovery-install-on-hyper-v-vms"></a>Mi a Site Recovery telepíti a Hyper-V virtuális gépeken?
 
 A Site Recovery nem explicit módon telepít semmit a Hyper-V virtuális gépek engedélyezve van a replikáció.
-- A replikáció során virtuális gépek kommunikálnak a Site Recovery a következő:
-    - Virtuális gépek kommunikálnak a konfigurációs kiszolgáló 443-as porton HTTPS kezelése érdekében a replikálást.
-    - Virtuális gépek küldhetnek replikációs adatokat a folyamatkiszolgálónak, a HTTPS 9443-as porton (módosítható).
-    - Ha engedélyezi a virtuális gépre kiterjedő konzisztencia, virtuális gépek kommunikálnak egymással 20004-es porton.
-
 
 
 
@@ -211,7 +206,7 @@ Miután a helyszíni infrastruktúra újra működik, visszaadhatja a. Feladat-v
 5. Követően számítási feladatok biztonsági sikertelenek voltak, engedélyezheti a visszirányú replikálás, hogy a helyszíni virtuális gépek replikálása az Azure-bA újra.
 
 ### <a name="can-i-fail-back-to-a-different-location"></a>E visszaadhatja egy másik helyre?
-Igen, ha az Azure-bA feladatátvétel, visszaadhatja a másik helyet, ha az eredeti kapcsolatot nem érhető el. [További információk](concepts-types-of-failback.md#alternate-location-recovery-alr).
+Igen, ha az Azure-bA feladatátvétel, visszaadhatja a másik helyet, ha az eredeti kapcsolatot nem érhető el. [További információk](hyper-v-azure-failback.md#failback-to-an-alternate-location-in-hyper-v-environment).
 
 
 

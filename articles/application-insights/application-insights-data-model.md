@@ -1,58 +1,60 @@
 ---
-title: Az Azure Application Insights Telemetria adatmodell |} Microsoft Docs
-description: "Application Insights az modell áttekintése"
+title: Az Azure Application Insights Telemetria adatmodellt |} A Microsoft Docs
+description: Az Application Insights data model áttekintése
 services: application-insights
 documentationcenter: .net
-author: SergeyKanzhelev
+author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
 ms.workload: TBD
 ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/25/2017
+ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: b14eea46e773a4b92ba20cd3121cd258f86307c9
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: aaff60e847e0e9908a4cd9c07cb6cd47630c5e3a
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35645237"
 ---
 # <a name="application-insights-telemetry-data-model"></a>Application Insights telemetria adatmodell
 
-[Az Azure Application Insights](app-insights-overview.md) telemetriai küldi, hogy a teljesítmény- és az alkalmazás használati elemezheti a webalkalmazás az Azure-portálon. A telemetriai adatok modell szabványosított, hogy lehet létrehozni a platform és nyelvfüggetlen figyelését. 
+[Az Azure Application Insights](app-insights-overview.md) telemetriai adatokat küld a webalkalmazásból az Azure Portalra, így elemezheti a teljesítményét és használatát az alkalmazás. A telemetriai adatok modell szabványosított, hogy lehet létrehozni a platform és a figyelés nyelvtől független legyen. 
 
-Az Application Insights által gyűjtött adatokat a tipikus végrehajtási alkalmazásminta modellek:
+Az Application Insights által gyűjtött adatokat a jellemző végrehajtási alkalmazásminta modellek:
 
-![Application Insights Alkalmazásmodellt.](./media/application-insights-data-model/application-insights-data-model.png)
+![Application Insights-alkalmazásmodell](./media/application-insights-data-model/application-insights-data-model.png)
 
-A következő típusú telemetriai figyeléséhez a az alkalmazás végrehajtása során használt. A következő három típusa általában automatikusan begyűjti az Application Insights SDK által a webes alkalmazás-keretrendszer:
+A következő típusú telemetriát az alkalmazás végrehajtását figyelésére használható. A következő három típusú általában automatikusan gyűjti össze az Application Insights SDK-t, a webalkalmazás-keretrendszer:
 
-* [**Kérelem** ](application-insights-data-model-request-telemetry.md) – generált való bejelentkezéshez az alkalmazás által fogadott kérelmet. Például az Application Insights webes SDK automatikusan hoz létre, amely megkapja a webes alkalmazás egyes HTTP-kérelem a kérelem telemetriai elem. 
+* [**Kérelem** ](application-insights-data-model-request-telemetry.md) – az alkalmazás által fogadott kérelem bejelentkezni generált. Például az Application Insights webes SDK automatikusan előállít egy kérelemben szereplő telemetriai elem minden HTTP-kérelem, amely megkapja a webalkalmazás. 
 
-    Egy **művelet** szálainak állapotát, amely feldolgozza a kérést végrehajtó van. Emellett [írhat kódot](app-insights-api-custom-events-metrics.md#trackrequest) más típusú műveletet, figyeléséhez, mint például a "ébresztésére" egy a web feladat, vagy nem működik, amely rendszeres időközönként adatokat dolgozza fel.  Egyes műveletek rendelkezik azonosítóval. Ezt az Azonosítót, amely a következőkre használható [csoport](application-insights-correlation.md) összes telemetriai adat jelentkezik, míg az alkalmazás a kérelem feldolgozása. Egyes műveletek vagy sikeres vagy sikertelen lesz, és idő időtartama.
-* [**Kivétel** ](application-insights-data-model-exception-telemetry.md) -általában jelenti. a művelet sikertelen okozó kivételt.
-* [**A függőségi** ](application-insights-data-model-dependency-telemetry.md) -hívás jelenti az alkalmazásból. egy külső szolgáltatás vagy a tárhelyen, többek között a REST API-t vagy az SQL. Az ASP.NET, függőségi hívásokat SQL határozzák `System.Data`. HTTP-végpontokról hívások által meghatározott `System.Net`. 
+    Egy **művelet** végrehajtási, hogy a kérelmet feldolgozó szál van. Emellett [kód írása](app-insights-api-custom-events-metrics.md#trackrequest) más típusú műveletet, figyeléséhez, mint például egy "felébresztéséhez" egy webes feladat, vagy nem működik, amely rendszeres időközönként feldolgozza az adatokat.  Minden művelet-azonosítóval rendelkezik. Ezt az Azonosítót, amely az alábbiakra használhatók [csoport](application-insights-correlation.md) összes telemetriai adat, míg az alkalmazás a kérés feldolgozása folyamatban van. Minden művelet vagy sikeres vagy sikertelen lesz, és idő időtartama.
+* [**Kivétel** ](application-insights-data-model-exception-telemetry.md) – általában a egy művelet meghiúsulását okozó kivételt jelenti.
+* [**Függőségi** ](application-insights-data-model-dependency-telemetry.md) -hívást az alkalmazásból egy külső szolgáltatás vagy a REST API-t vagy az SQL, például jelöli. Az ASP.NET, a következőre irányuló függőséghívás SQL által meghatározott `System.Data`. HTTP-végpontokra irányuló hívásokat által meghatározott `System.Net`. 
 
-Az Application Insights három további adattípusok egyéni telemetriai adatokat ismerteti:
+Az Application Insights további adattípusok egyéni telemetriát biztosít:
 
-* [Nyomkövetési](application-insights-data-model-trace-telemetry.md) - használt vagy közvetlenül, vagy egy diagnosztikai naplózás végrehajtásához adapteren keresztül egy instrumentation keretrendszer, amely ismerős lehet, mint például használatával `Log4Net` vagy `System.Diagnostics`.
-* [Esemény](application-insights-data-model-event-telemetry.md) - általánosan használt rögzítheti a felhasználói beavatkozás a szolgáltatásba, a elemezheti a használati szokásokat.
-* [A metrika](application-insights-data-model-metric-telemetry.md) - jelentés rendszeres skaláris mértékek használt.
+* [Nyomkövetési](application-insights-data-model-trace-telemetry.md) – vagy közvetlenül használni, vagy keresztül az adapter megvalósításához a diagnosztikai naplózás használatával egy rendszerállapot-keretrendszer, amely ismerős lehet, mint például `Log4Net` vagy `System.Diagnostics`.
+* [Esemény](application-insights-data-model-event-telemetry.md) – felhasználói interakció a szolgáltatáshoz, a használati minták elemzése rögzítéséhez használt.
+* [A metrika](application-insights-data-model-metric-telemetry.md) – az időszakos skaláris mérések jelentést.
 
-Minden telemetriai elem határozhatja meg a [kontextusadatok](application-insights-data-model-context.md) például alkalmazás verziója vagy a felhasználói munkamenet-azonosító. A környezetben a mezők halmaza alapján szigorú típusmeghatározású, amely bizonyos forgatókönyvekben feloldja. Alkalmazásverzió megfelelően van inicializálva, az Application Insights képes észlelni új minták szorosan összefügg az újratelepítés alkalmazás viselkedésében. Munkamenet-azonosító a szolgáltatáskimaradás vagy egy problémát okozzon a felhasználóknak kiszámításához használható. Függőség munkamenet-azonosító értékek eltérők száma az egyes kiszámítása nem sikerült, hiba nyomkövetési vagy kritikus kivétel hatással beható ismerete biztosítja.
+Minden telemetriai elem adhatja meg a [környezeti információkat](application-insights-data-model-context.md) például alkalmazás verziója vagy a felhasználói munkamenet-azonosító. Környezet a típusos mezők halmaza, amelyek bizonyos forgatókönyvek feloldja. Alkalmazásverzió megfelelően van inicializálva, az Application Insights képes észlelni a új mintákat korrelált újbóli üzembe helyezés az alkalmazás működésében. A munkamenet-azonosító a szolgáltatáskimaradás elhárítása után vagy egy problémát okozzon a felhasználóknak kiszámításához használható. Függőségi munkamenet-azonosító értékek eltérők száma az egyes kiszámítása nem sikerült, hiba történt a nyomkövetési vagy kritikus kivétel kínál jól ismerik a hatást.
 
-Application Insights telemetria modell módját határozzák meg [összefüggéseket](application-insights-correlation.md) telemetria bekapcsolásával a művelet, amely egy részét képezi. Például egy kérelem egy SQL-adatbázis hívás, és diagnosztikai adatait rögzíti. Beállíthatja a korrelációs környezetben összekötését azt vissza az a – kéréstelemetria telemetriai elemeket.
+Application Insights telemetria modell módját határozzák meg [összekapcsolását](application-insights-correlation.md) telemetriai adatokat a műveletet, amely egy részét képezi. Például egy kérelem egy SQL Database-hívásokat indíthatna és rögzített diagnosztikai adatok. Vissza a kérelmek telemetriai adatai rendelését telemetriai elemeket korrelációs kontextusa állíthatja be.
 
 ## <a name="schema-improvements"></a>Séma fejlesztései
 
-Application Insights adatmodell használata a következő modellre: a telemetriai egyszerű és egyszerű, mégis hatékony módja. A modell egyszerű és alapvető forgatókönyvek támogatása céljából slim és speciális használatra a séma kibővítése lehetővé igyekeztünk.
+Application Insights adatmodell módja egy egyszerű és egyszerű, mégis hatékony modellezésére a telemetriai. Igyekszünk tartani a modell, egyszerű és slim alapvető alkalmazási helyzetet támogatásához, és lehetővé teszi a speciális használható a séma kiterjesztését.
 
-Adatok modell és séma problémák és javaslatokat használja a Githubon jelentésének [ApplicationInsights-Home](https://github.com/Microsoft/ApplicationInsights-Home/labels/schema) tárházba.
+Data modell és séma problémák és javaslatok használata a GitHub jelentéséhez [ApplicationInsights – kezdőlap](https://github.com/Microsoft/ApplicationInsights-Home/labels/schema) tárház.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [Egyéni telemetriai adatok írása](app-insights-api-custom-events-metrics.md)
-- Megtudhatja, hogyan [kiterjesztése és a telemetriai adatok szűrése](app-insights-api-filtering-sampling.md).
-- Használjon [mintavételi](app-insights-sampling.md) minimalizálása érdekében az adatmodellen alapuló telemetriai adatok mennyiségét.
+- [Egyéni telemetriát írhat](app-insights-api-custom-events-metrics.md)
+- Ismerje meg, hogyan [bővítése és szűrőtelemetria](app-insights-api-filtering-sampling.md).
+- Használat [mintavételi](app-insights-sampling.md) mennyiségű telemetriai adat modellen alapuló minimalizálása érdekében.
 - Tekintse meg [platformok](app-insights-platforms.md) Application Insights által támogatott.

@@ -1,6 +1,6 @@
 ---
-title: Azure Media Services-fiók létrehozása a parancssori felület 2.0 |} Microsoft Docs
-description: Hajtsa végre az Azure Media Services-fiók létrehozása a gyors üzembe helyezési lépésein.
+title: Az Azure Media Services-fiók létrehozása az Azure CLI-vel |} A Microsoft Docs
+description: Ezen rövid útmutató lépéseivel egy Azure Media Services-fiókot hozhat létre.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,31 +12,32 @@ ms.topic: article
 ms.custom: ''
 ms.date: 03/27/2018
 ms.author: juliako
-ms.openlocfilehash: a9660ac61bab9f8b9eb9563aab4cc584786b25ae
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: ca01f32709ce7c9fc49629415cd8697a9d9ba43a
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35925377"
 ---
 # <a name="create-an-azure-media-services-account"></a>Azure Media Services-fiók létrehozása
 
-Indítsa el a titkosítása, kódolását, elemzése, kezelése és adatfolyam-hordozó tartalmának az Azure-ban, szüksége Media Services-fiók létrehozásához. A Media Services-fiók létrehozásával egy időben létrejön egy kapcsolódó tárfiók is (illetve egy már meglévőt is használhat) ugyanabban a földrajzi régióban, ahol a Media Services-fiók is található.
+Indítsa el a titkosítása, kódolás, elemzése, kezelése és médiafolyam az Azure-ban, szüksége a Media Services-fiók létrehozása. A Media Services-fiók létrehozásával egy időben létrejön egy kapcsolódó tárfiók is (illetve egy már meglévőt is használhat) ugyanabban a földrajzi régióban, ahol a Media Services-fiók is található.
 
-Ez a témakör CLI 2.0 használatával új Azure Media Services-fiók létrehozásának lépéseit ismerteti.  
+Ez a témakör ismerteti az Azure CLI használatával új Azure Media Services-fiók létrehozásának lépései.  
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
 
-Jelentkezzen be a [Azure-portálon](http://portal.azure.com) , majd indítsa el **CloudShell** végrehajtani parancssori felület parancsait, ahogy az az alábbi lépéseket.
+Jelentkezzen be az [Azure Portalra](http://portal.azure.com), és indítsa el a **CloudShell** szolgáltatást a parancssori felületi parancsok végrehajtásához, ahogy az az alábbi lépésekben látható.
 
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-Ha a CLI helyi telepítését és használatát választja, akkor ehhez a témakörhöz az Azure CLI 2.0-ás vagy újabb verziójára lesz szükség. A rendelkezésére álló verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli). 
+Ha a CLI helyi telepítését és használatát választja, akkor ehhez a témakörhöz az Azure CLI 2.0-ás vagy újabb verziójára lesz szükség. A rendelkezésére álló verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket. 
 
 ## <a name="set-the-azure-subscription"></a>Az Azure-előfizetés beállítása
 
-A következő parancsot adja meg a Media Services-fiókhoz használni kívánt Azure előfizetés-azonosító. Az előfizetést, amely rendelkezik hozzáféréssel való listáját láthatja [előfizetések](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
+Az alábbi parancsban adja meg a Media Services-fiókhoz használni kívánt Azure-előfizetés azonosítóját. Az [Előfizetések](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) lapot megnyitva tekintheti meg az Ön által elérhető előfizetések listáját.
 
 ```azurecli-interactive
 az account set --subscription mySubscriptionId
@@ -47,4 +48,4 @@ az account set --subscription mySubscriptionId
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Egy fájlt](stream-files-dotnet-quickstart.md)
+> [Fájl streamelése](stream-files-dotnet-quickstart.md)

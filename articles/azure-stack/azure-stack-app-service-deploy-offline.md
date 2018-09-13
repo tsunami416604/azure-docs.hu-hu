@@ -12,14 +12,14 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2018
+ms.date: 09/12/2018
 ms.author: anwestg
-ms.openlocfilehash: 9e36e470c3516c55089ce1e44540b6b1eacbb6b2
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 4b6ad2e237d73d5d8ca414bffc3a679ee552105f
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42055105"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44718729"
 ---
 # <a name="add-an-app-service-resource-provider-to-a-disconnected-azure-stack-environment-secured-by-ad-fs"></a>Az App Service erőforrás-szolgáltató hozzáadása az AD FS által védett kapcsolat nélküli Azure Stack-környezet
 
@@ -226,7 +226,7 @@ Miután telepíti és regisztrálja az App Service erőforrás-szolgáltatót, t
 >
 A harmadik technical preview kezdődően létrehozása webes API-t és az Azure Functions az alkalmazások, kell használni a bérlői portálra, és bérlői előfizetéssel rendelkezik.
 
-1. Az Azure Stack-bérlői portálon kattintson a **új** > **Web + mobil** > **webalkalmazás**.
+1. Az Azure Stack-bérlői portálon kattintson a **+ erőforrás létrehozása** > **Web + mobil** > **webalkalmazás**.
 
 2. Az a **webalkalmazás** panelen írja be a nevet a **webalkalmazás** mezőbe.
 

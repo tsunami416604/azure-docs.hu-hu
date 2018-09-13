@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/06/2018
+ms.date: 09/11/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 477bd6047da639dcf21592a7ec0c1b80844e031e
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 5b8ae1d5d3f28c50cbbaedf65c5589fce98d3c68
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43337734"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44715907"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-google-account-using-azure-active-directory-b2c"></a>Regisztráció és bejelentkezés a Google-fiókkal az Azure Active Directory B2C beállítása
 
@@ -25,25 +25,21 @@ Identitás-szolgáltatóként az Azure Active Directory (Azure AD) B2C egy Googl
 
 1. Jelentkezzen be a [Google fejlesztői konzolon](https://console.developers.google.com/) Google-fiókja hitelesítő adataival.
 2. Válassza ki **Create project**, és kattintson a **létrehozás**. Ha projektek előtt létrehozott, válassza ki a projekt listát, és válassza **új projekt**.
-3. Adjon meg egy **projektnév**, és kattintson a **létrehozás**.
+3. Adjon meg egy **projektnév**, kattintson a **létrehozás**, majd győződjön meg arról, hogy az új projekt használ, és.
 3. Válassza ki **hitelesítő adatok** a bal oldali menüben, és válassza ki a **hitelesítő adatok létrehozása** > **Oauth-Ügyfélazonosító**.
 4. Válassza ki **konfigurálása beleegyezést kérő oldalon**.
 5. Válasszon vagy adjon meg egy érvényes **E-mail-cím**, adjon meg egy **a felhasználóknak megjelenített Terméknév**, és kattintson a **mentése**.
 6. A **alkalmazástípus**válassza **webes alkalmazás**.
-7. Adjon meg egy **neve** adja meg az alkalmazás `https://{tenant}.b2clogin.com` a **JavaScript engedélyezett eredetek**, és `https://{tenant}.b2clogin.com/te/{tenant}.onmicrosoft.com/oauth2/authresp` a **jogosult átirányítási URI-k**. Cserélje le **{tenant}** a bérlő nevét (például: contosob2c).
+7. Adjon meg egy **neve** adja meg az alkalmazás `https://your-tenant-name.b2clogin.com` a **JavaScript engedélyezett eredetek**, és `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` a **jogosult átirányítási URI-k**. Cserélje le `your-tenant-name` a bérlő nevével. Kisbetűk használhatók, ha akkor is, ha a bérlő Azure AD B2C-ben nagybetűk van definiálva, írja be a bérlő nevét kell.
 8. Kattintson a **Create** (Létrehozás) gombra.
 9. Másolja le az értékeket a **ügyfél-azonosító** és **titkos Ügyfélkód**. Szüksége lesz mindkettő Google konfigurálása identitás-szolgáltatóként a bérlőben. **Titkos Ügyfélkód** egy fontos biztonsági hitelesítő adat.
 
 ## <a name="configure-a-google-account-as-an-identity-provider"></a>Google-fiók konfigurálása identitás-szolgáltatóként
 
 1. Jelentkezzen be a [az Azure portal](https://portal.azure.com/) az Azure AD B2C-bérlő globális rendszergazdájaként.
-2. Úgy győződhet meg arról, hogy az Azure AD B2C-bérlőt tartalmazó könyvtárt használja, hogy átvált rá az Azure Portal jobb felső sarkában. Jelölje ki előfizetői adatait, majd válassza a **Könyvtárváltás** lehetőséget. 
+2. Győződjön meg arról, hogy használja az Azure AD B2C-bérlő kattintva tartalmazó könyvtárba a **címtár és előfizetés-szűrő** a felső menüben, és a könyvtár, amely tartalmazza a bérlő kiválasztása.  
 
-    ![Átváltás az Azure AD B2C-bérlőre](./media/active-directory-b2c-setup-fb-app/switch-directories.png)
-
-    Válassza ki a bérlőjét tartalmazó könyvtárt.
-
-    ![Könyvtár kijelölése](./media/active-directory-b2c-setup-fb-app/select-directory.png)
+    ![Átváltás az Azure AD B2C-bérlőre](./media/active-directory-b2c-setup-goog-app/switch-directories.png)
 
 3. Válassza az Azure Portal bal felső sarkában található **Minden szolgáltatás** lehetőséget, majd keresse meg és válassza ki az **Azure AD B2C**-t.
 4. Válassza ki **Identitásszolgáltatók**, majd válassza ki **Hozzáadás**.

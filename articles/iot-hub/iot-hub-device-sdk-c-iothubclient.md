@@ -1,6 +1,6 @@
 ---
-title: Az Azure IoT-eszközök SDK c - IoTHubClient |} Microsoft Docs
-description: Hogyan használható a IoTHubClient könyvtár, az Azure IoT eszközben C-hez készült SDK kommunikáló eszközön futó alkalmazások létrehozásához az IoT-központ számára.
+title: Az Azure IoT eszközoldali SDK-t a C – Iothubclientről |} A Microsoft Docs
+description: Hogyan használható az Iothubclientről erőforrástárhoz, az Azure IoT eszközoldali c SDK-t a IoT hub-kommunikációs eszköz alkalmazások létrehozásához.
 author: yzhong94
 manager: arjmands
 ms.service: iot-hub
@@ -9,73 +9,73 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 08/29/2017
 ms.author: yizhon
-ms.openlocfilehash: 15541c8719e89080ba7685781cedf36fb4335e70
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 4ff4e8b9c6121366bf06eb8613b6d53667eeaca9
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34633094"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35756447"
 ---
-# <a name="azure-iot-device-sdk-for-c--more-about-iothubclient"></a>Az Azure IoT-eszközök SDK c – további információ az IoTHubClient
-A [először a következő cikket:](iot-hub-device-sdk-c-intro.md) a sorozat bevezette a **C-hez készült SDK Azure IoT-eszközök**. A cikk alapján, hogy nincsenek-e két architekturális rétegek SDK. Az alap van a **IoTHubClient** könyvtárban, amely közvetlenül kezeli az IoT-központ folytatott kommunikáció. Szerepel továbbá a **szerializáló** könyvtár épülő a szerializálási szolgáltatások biztosításához. Ebben a cikkben a következőkhöz nyújtunk további részletek a a **IoTHubClient** könyvtárban.
+# <a name="azure-iot-device-sdk-for-c--more-about-iothubclient"></a>Az Azure IoT eszközoldali SDK-t a C – további információ az Iothubclientről
+A [először article](iot-hub-device-sdk-c-intro.md) az oktatóanyag-sorozatban bemutatott a **Azure IoT eszközoldali SDK-t a c nyelvhez készült**. A cikk részletesen, hogy nincsenek-e két architekturális réteg az SDK-t. Alap van a **Iothubclientről** könyvtár, amely közvetlenül kezeli a kommunikációt az IoT hubbal. Emellett van a **szerializáló** kódtár, amely összeállítja a szerializálási szolgáltatások biztosításához. Ez a cikk biztosítunk további részleteket a a **Iothubclientről** könyvtár.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-Az előző cikkben leírt használata a **IoTHubClient** könyvtár események küldése az IoT-központ és az üzenetek fogadásához. Ez a cikk e kiterjeszti pontosabban kezelése ismertető *amikor* küldött és fogadott adatok bemutatása, hogy a **alacsonyabb szintű API-k**. Azt is ismertetjük tulajdonságok csatolható események (és üzenetek lekérése őket) szolgáltatások kezelése tulajdonság használatával a **IoTHubClient** könyvtárban. Végül az IoT-központ fogadott üzenetek kezelésének különböző módjai további magyarázata a következőkhöz nyújtunk.
+Az előző cikkben leírt használata a **Iothubclientről** könyvtár eseményeket küld az IoT Hub és az üzenetek fogadásához. Ez a cikk elmagyarázza a pontosabb kezelése terjeszti ki, hogy a hozzászólás *amikor* küldött és fogadott adatok bemutatása, hogy a **alacsonyabb szintű API-k**. Azt is ismertetjük tulajdonságok csatolása események (és kérheti le azokat az üzeneteket) a szolgáltatások a kezelési tulajdonságot az **Iothubclientről** könyvtár. Végül biztosítunk, amellyel többféle módon kezelje az IoT hub felől fogadott üzenetek további magyarázatot.
 
-A cikk arra a következtetésre jut, vegyes témaköreit, beleértve több hitelesítő adatai és működésének módosításához néhány kiterjed a **IoTHubClient** konfigurációs lehetőségek között.
+A cikkben arra a következtetésre jut, vegyes témaköreit, beleértve, hogy az további információ az eszköz hitelesítő adatai, és hogyan változtathatja meg néhány kiterjed a **Iothubclientről** konfigurációs lehetőségek között.
 
-Fogjuk használni a **IoTHubClient** SDK minták az alábbi témakörök ismertetik. Ha azt szeretné, követéséhez, tekintse meg a **IOT hubbal\_ügyfél\_minta\_http** és **IOT hubbal\_ügyfél\_minta\_amqp** , amely az Azure IoT-eszközök SDK meg a c mindent az alábbi szakaszok ismertetik ezeket a mintákat a bemutatott alkalmazások.
+Használjuk a **Iothubclientről** SDK-minták az alábbi témakörök ismertetik. Ha azt szeretné, hogy követni tudja, tekintse meg a **iothub\_ügyfél\_minta\_http** és **iothub\_ügyfél\_minta\_amqp**alkalmazásokat, amelyek az Azure IoT eszközoldali SDK szerepelnek, a c mindent a következő szakaszokban ismertetett mutatják be ezeket a mintákat.
 
-Megtalálhatja az [ **C-hez készült SDK Azure IoT-eszközök** ](https://github.com/Azure/azure-iot-sdk-c) GitHub tárház és nézet adatai az API-nak a [C API-referencia](https://azure.github.io/azure-iot-sdk-c/index.html).
+Annak a [ **a c nyelvhez készült Azure IoT eszközoldali SDK** ](https://github.com/Azure/azure-iot-sdk-c) GitHub-tárházat és a nézet részletei az API-t a [C API-referencia](https://azure.github.io/azure-iot-sdk-c/index.html).
 
 ## <a name="the-lower-level-apis"></a>Az alacsonyabb szintű API-k
-Az előző cikkben leírt alapszintű működését a **IotHubClient** kontextusában a **IOT hubbal\_ügyfél\_minta\_amqp** alkalmazás. Például azt a könyvtárban, a kód használatával inicializálásával ismertetése.
+Az előző cikkben leírt alapszintű működését a **Iothubclientről** kontextusában a **iothub\_ügyfél\_minta\_amqp** alkalmazás. Például azt magyarázza inicializálásával a könyvtárban, a kód használatához.
 
 ```
 IOTHUB_CLIENT_HANDLE iotHubClientHandle;
 iotHubClientHandle = IoTHubClient_CreateFromConnectionString(connectionString, AMQP_Protocol);
 ```
 
-Azt is ismerteti, hogyan küldhet e függvényhívás eseményeket.
+Azt is ismerteti, hogyan küldhet eseményeket, a függvény hívásához szükséges használatával.
 
 ```
 IoTHubClient_SendEventAsync(iotHubClientHandle, message.messageHandle, SendConfirmationCallback, &message);
 ```
 
-A cikk azt is ismerteti, hogyan regisztrálja a visszahívási függvény üzeneteket fogadni.
+A cikk az üzenetek fogadása egy visszahívási függvény regisztrálásával is ismerteti.
 
 ```
 int receiveContext = 0;
 IoTHubClient_SetMessageCallback(iotHubClientHandle, ReceiveMessageCallback, &receiveContext);
 ```
 
-A cikk is bemutatta, hogyan lehet felszabadítani az erőforrásokat, például az alábbi kód használatával.
+A cikk is bemutatta, hogyan ingyenes erőforrások, például a következő kód használatával.
 
 ```
 IoTHubClient_Destroy(iotHubClientHandle);
 ```
 
-Azonban ezen API-k mindegyikének kiegészítő funkciók vannak:
+Vannak azonban az egyes API-k kiegészítő funkciók:
 
 * IoTHubClient\_LL\_CreateFromConnectionString
 * IoTHubClient\_LL\_SendEventAsync
 * IoTHubClient\_LL\_SetMessageCallback
-* IoTHubClient\_inden\_megszüntetése
+* Iothubclientről\_LL\_megszüntetése
 
-Ezek a függvények minden "R" szerepeljenek az API-név. Eltérő ezek a paraméterek megegyeznek mint a nem le. Azonban ezeket a funkciókat a viselkedés eltér egy fontos módon.
+Ezek a függvények minden "LL" Felvétel az API-nevét. Leszámítva ezek közül minden függvény paraméterei megegyeznek nem LL megfelelőik. Azonban ezek a függvények viselkedését különbözik a egyik fontos módja.
 
-A hívás esetén **IoTHubClient\_CreateFromConnectionString**, a mögöttes tárak, amelyek a háttérben fut, új szálat létrehozni. Ebből a szálból küldi az eseményeket, és az IoT-központ fogadja az üzeneteket. Nincs ilyen szál jön létre, az "R" API-k használatakor. A háttérben futó szál létrehozásának a fejlesztők a könnyebb elérhetőség érdekében. Nem rendelkezik explicit módon események üzenetek küldése és fogadása az IoT Hub – automatikusan történik a háttérben foglalkoznia. Ezzel szemben a "r" API-k biztosítanak explicit ellenőrzése alatt tartja a kommunikáció a IoT-központot, ha esetleg szükség lenne rá.
+Meghívásakor **Iothubclientről\_CreateFromConnectionString**, az alapul szolgáló kódtárak, hozzon létre egy új hozzászólásláncot a háttérben futó. Ez a hozzászóláslánc küldi az eseményeket, és fogadja az üzeneteket az IoT hubról. Nincs ilyen szál az az "LL" API-k használatakor jön létre. A háttérben futó szál létrehozása a fejlesztők a könnyebb. Nem kell aggódnia a explicit módon eseményt üzenetek küldése és fogadása az IoT Hub – a háttérben automatikusan megtörténik. Ezzel szemben az "LL" API-k lehetővé teszik, explicit keresztüli kommunikáció az IoT hubbal, ha szüksége lesz rá.
 
-Ez jobb megértéséhez, nézzük például:
+Ez jobb megértéséhez, lássunk erre egy példát:
 
-A hívás esetén **IoTHubClient\_SendEventAsync**, mi ténylegesen végzett helyezi az esemény a pufferben. Létre, ha meghívja a háttérszálon **IoTHubClient\_CreateFromConnectionString** folyamatosan figyeli az adott puffer és a benne található adatokat küld az IoT hubhoz. Ez akkor fordul elő a háttérben, hogy a fő szálnak működik-e más feladatok egy időben.
+Meghívásakor **Iothubclientről\_SendEventAsync**, amit ténylegesen végzett helyezi az esemény a pufferben. Jön létre, amikor hívása a háttérszálból **Iothubclientről\_CreateFromConnectionString** folyamatosan figyeli ezt a puffert, és a benne található adatokat küld az IoT hubnak. Ez a háttérben történik, hogy a fő szálnak van-e más munkát végez egy időben.
 
-Hasonlóképpen, az üzenetek visszahívási függvény regisztrálásakor **IoTHubClient\_SetMessageCallback**, az SDK kell rendelkeznie a visszahívási függvény meghívása, ha egy üzenetet kapott, a fő szálnak független háttérszál most utasítja.
+Ehhez hasonlóan Ha regisztrál egy visszahívási függvény használatával üzeneteket **Iothubclientről\_SetMessageCallback**, hogy ezt az SDK-val rendelkezik, a háttérszálon a visszahívási függvény hívása, amikor egy üzenet fogadott, függetlenül a fő szálnak.
 
-A "r" API-k ne hozzon létre egy háttérszálon. Ehelyett egy új API-t meg kell hívni explicit módon adatokat küldeni és fogadni az IoT-központot. A következő példa ezt mutatják.
+Az "LL" API-k ne hozzon létre egy háttérszálból történik. Ehelyett egy új API-t kell meghívni, explicit módon adatokat küldeni és fogadni az IoT hubról. Ez a következő példa mutatja be.
 
-A **IOT hubbal\_ügyfél\_minta\_http** alkalmazás, amely tartalmazza az SDK az alacsonyabb szintű API-k mutatja be. A minta nem küldeni események IoT-központ a következő kóddal:
+A **iothub\_ügyfél\_minta\_http** alkalmazás, amely tartalmazza az SDK-t az alacsonyabb szintű API-k mutatja be. A minta azt események küldése az IoT hub például a következő kóddal:
 
 ```
 EVENT_INSTANCE message;
@@ -85,23 +85,23 @@ message.messageHandle = IoTHubMessage_CreateFromByteArray((const unsigned char*)
 IoTHubClient_LL_SendEventAsync(iotHubClientHandle, message.messageHandle, SendConfirmationCallback, &message)
 ```
 
-Az első három sort, hozza létre az üzenetet, és az utolsó sort elküldi az esemény. Azonban amint azt korábban említettük, "küldő" az esemény azt jelenti, hogy az adatok egyszerűen kerülnek a pufferben. Nem történik adatátvitel a hálózaton, hívása **IoTHubClient\_inden\_SendEventAsync**. Ahhoz, hogy ténylegesen az adatokat az IoT-központ érkező, meg kell hívnia **IoTHubClient\_inden\_DoWork**, a példában szereplő:
+Az első három sorát, hozzon létre az üzenetet, és az utolsó sort elküldi az eseményt. Azonban amint azt korábban említettük, "küldő" az esemény azt jelenti, hogy az adatok egyszerűen kerülnek, a pufferben. Nem történik adatátvitel a hálózaton, amikor nevezzük **Iothubclientről\_LL\_SendEventAsync**. Az érdekében, hogy ténylegesen bejövő forgalom az adatokat az IoT hubhoz, meg kell hívni **Iothubclientről\_LL\_DoWork**, amint az ebben a példában:
 
 ```
 while (1)
 {
     IoTHubClient_LL_DoWork(iotHubClientHandle);
-    ThreadAPI_Sleep(1000);
+    ThreadAPI_Sleep(100);
 }
 ```
 
-Ez a kód (a a **IOT hubbal\_ügyfél\_minta\_http** alkalmazás) egymás után többször hívja **IoTHubClient\_inden\_DoWork**. Minden alkalommal, amikor **IoTHubClient\_inden\_DoWork** van neve, a puffer az IoT-központ küldené egyes események, és lekérdezi az eszközre küldött aszinkron üzenet. Ez utóbbi esetben azt jelenti, hogy ha a jelenleg regisztrált üzenetek visszahívási függvény, majd a visszahívás meghívták (feltéve, hogy minden üzenet sorba vannak). Azt kellene regisztrált visszahívási függvény a következő kódot:
+Ez a kód (az a **iothub\_ügyfél\_minta\_http** alkalmazás) többször is meghívja **Iothubclientről\_LL\_DoWork**. Minden alkalommal, amikor **Iothubclientről\_LL\_DoWork** van nevű, a buffer szolgáltatásból származó küld néhány esemény az IoT Hub és a egy üzenetsorban található üzenet az eszköznek küldött lekéri. Az utóbbi esetben azt jelenti, hogy ha egy visszahívási függvény üzenetek regisztrált, majd a visszahívás hív (feltéve, hogy bármely üzenetei). Mi lenne regisztrált egy visszahívási függvény például a következő kóddal:
 
 ```
 IoTHubClient_LL_SetMessageCallback(iotHubClientHandle, ReceiveMessageCallback, &receiveContext)
 ```
 
-Az OK, amely **IoTHubClient\_inden\_DoWork** gyakran nevezik hurok, amely minden alkalommal, amikor azt nevezzük, elküldi *néhány* eseményeket az IoT-központ, pufferelt és beolvassa a *a következő* üzenet sorba az eszköz. Minden hívás nem garantált is küldi az összes pufferelt eseményeket, vagy beolvasni az összes várólistára helyezett üzenetek. Ha szeretné a pufferben lévő összes eseményt küldeni, és folytassa a más feldolgozás a lecserélheti Ez a ciklus a következő kódot:
+Az OK, amely **Iothubclientről\_LL\_DoWork** gyakran nevezik hurkot, hogy minden alkalommal, amikor azt nevezzük, küld *néhány* az eseményeket az IoT hubra, valamint lekéri pufferelt*a következő* az eszköz várólistán lévő üzenetek. Minden hívás nem garantált, hogy minden pufferelt eseményeket küldeni, vagy lekérdezheti az összes sorba állított üzenetek. Ha szeretné az összes esemény küldése a pufferben lévő, és folytassa a további feldolgozás a lecserélheti a hurok például a következő kódot:
 
 ```
 IOTHUB_CLIENT_STATUS status;
@@ -109,33 +109,33 @@ IOTHUB_CLIENT_STATUS status;
 while ((IoTHubClient_LL_GetSendStatus(iotHubClientHandle, &status) == IOTHUB_CLIENT_OK) && (status == IOTHUB_CLIENT_SEND_STATUS_BUSY))
 {
     IoTHubClient_LL_DoWork(iotHubClientHandle);
-    ThreadAPI_Sleep(1000);
+    ThreadAPI_Sleep(100);
 }
 ```
 
-Ez a kód **IoTHubClient\_inden\_DoWork** mindaddig, amíg az IoT hubhoz elküldése a pufferben lévő összes eseményt. Megjegyzés: Ez nem feltétlenül is jelenti, hogy az összes várólistára helyezett üzenetek fogadott. Ennek oka részét képezi, hogy "all" üzenetek ellenőrzése a nem a determinisztikus művelet. Mi történik, ha visszaállíthatja az "összes" üzenetet, de majd egy másikat küld az eszköz után azonnal? Jobb módja foglalkozik, amely programozott időkorlát. Például az üzenet visszahívási függvény sikerült alaphelyzetbe állítani egy számlálót minden alkalommal, amikor meghívták. Majd írhat logika folytatódik a feldolgozás, ha például nem érkeztek üzenetek a legutóbbi *X* másodperc.
+Ez a kód meghívja **Iothubclientről\_LL\_DoWork** mindaddig, amíg a pufferben lévő összes eseményt az IoT hubnak küldött. Vegye figyelembe, hogy ez nem is jelenti, hogy az összes várólistán lévő üzenetek megkaptuk. Része ennek az az oka az, hogy "all" üzenetek ellenőrzése nem determinisztikus, egy műveletet. Mi történik, ha, de kérheti le az "összes" üzenetet, majd egy másik küld az eszköz azonnal után? Hatékony megoldást foglalkozik, amely programozott időkorlát. Például az üzenet visszahívást függvény sikerült alaphelyzetbe állítani egy számlálót minden alkalommal, amikor indítva. Folytatódik a feldolgozás, ha a például nem üzenet nem érkezett az utolsó logikai majd írhat *X* másodperc.
 
-Ha végzett ingressing események van, és fogadja az üzeneteket, ügyeljen arra, hogy a megfelelő függvény erőforrások karbantartása.
+Amikor kész ingressing események használ, és fogadja az üzeneteket, ügyeljen arra, hogy a megfelelő függvény az erőforrások törlése.
 
 ```
 IoTHubClient_LL_Destroy(iotHubClientHandle);
 ```
 
-Nincs alapvetően csak egy készletét API-k a háttérszálon és API-k, amelyet az ugyanaz a háttérszálon nélkül egy másik készlet adatokat küldeni és fogadni. Nagy mennyiségű fejlesztők előfordulhat, hogy inkább a nem - inden API-k, de az alacsonyabb szintű API-k akkor hasznos, ha a fejlesztői szeretne rendelni a hálózati átvitelt explicit vezérelheti. Például bizonyos eszközök begyűjtik az adatokat idő és a csak érkező jelzések (például óra egy alkalommal vagy naponta egyszer) meghatározott időközönként. Az alacsonyabb szintű API-k tudatjuk a felhasználókkal, lehetővé teszi, explicit módon vezérlő küld és fogad adatokat az IoT-központot. Mások egyszerűen, főként a az egyszerűség, amelyek az alacsonyabb szintű API-k biztosítanak. Minden egyes munka azonban a háttérben, hanem a fő szálnak történik.
+Nincs alapvetően csak egy API-készlet, küldése és fogadása egy háttérszálból történik, és a egy másik hárompéldányos készletet API-kat a háttérszálon nélkül ugyanezt teszi az adatok. A fejlesztők sok előfordulhat, hogy inkább a nem – z összes API-k, de az alacsonyabb szintű API-k hasznosak, ha a fejlesztő szeretné explicit szabályozhatja a hálózati adatátvitel. Ha például bizonyos eszközök begyűjtik az adatokat idő függvényében, és csak a belépő események megadott időközönként (például egy újabb órájába egyszer vagy naponta egyszer). Az alacsonyabb szintű API-k lehetővé teszik, explicit módon szabályozhatja során küldött és fogadott adatok az IoT hubról. Mások egyszerűen részesíti előnyben, amelyek az alacsonyabb szintű API-k nyújtanak az egyszerűség. Minden egyes munkahelyi azonban a háttérben, hanem a fő szálnak történik.
 
-Bármelyik modellt választja, ne felejtse el konzisztens mely API-kat használ. Ha először meghívásával **IoTHubClient\_inden\_CreateFromConnectionString**, győződjön meg a megfelelő alacsonyabb szintű API-kat csak használ követő munka:
+Bármelyik lehetőséget választja, modell mindenképpen legyen, következetesen melyik API-k használata. Ha meghívásával **Iothubclientről\_LL\_CreateFromConnectionString**, győződjön meg, csak a megfelelő alacsonyabb szintű API-k használatával követő munka:
 
 * IoTHubClient\_LL\_SendEventAsync
 * IoTHubClient\_LL\_SetMessageCallback
-* IoTHubClient\_inden\_megszüntetése
-* IoTHubClient\_inden\_DoWork
+* Iothubclientről\_LL\_megszüntetése
+* Iothubclientről\_LL\_DoWork
 
-Ellenkező is igaz. Ha először **IoTHubClient\_CreateFromConnectionString**, majd használja a nem - inden API-k minden további feldolgozásra.
+Ennek az ellenkezője is igaz. Ha először a **Iothubclientről\_CreateFromConnectionString**, majd a nem – z összes API-k használatával bármilyen további feldolgozást.
 
-Az Azure IoT-eszközök SDK C-hez, olvassa el a **IOT hubbal\_ügyfél\_minta\_http** alkalmazás az alacsonyabb szintű API-k átfogó példát. A **IOT hubbal\_ügyfél\_minta\_amqp** alkalmazás teljes például az a nem - inden API-k lehet hivatkozni.
+Az Azure IoT eszközoldali SDK-t a c nyelvhez készült, tekintse meg a **iothub\_ügyfél\_minta\_http** alkalmazás az alacsonyabb szintű API-k teljes példát. A **iothub\_ügyfél\_minta\_amqp** egy teljes példa a nem – z összes API-alkalmazás lehet hivatkozni.
 
-## <a name="property-handling"></a>Tulajdonság kezelése
-Amennyiben azt korábban leírt adatokat küldő, amikor azt korábban már hivatkozik az üzenet törzsét. Tegyük fel ezt a kódot:
+## <a name="property-handling"></a>Vlastnost kezelése
+Eddig azt korábban leírt adatokat küldő, amikor azt már lett hivatkozik az üzenet törzsében. Vegyük példaként ezt a kódot:
 
 ```
 EVENT_INSTANCE message;
@@ -144,7 +144,7 @@ message.messageHandle = IoTHubMessage_CreateFromByteArray((const unsigned char*)
 IoTHubClient_LL_SendEventAsync(iotHubClientHandle, message.messageHandle, SendConfirmationCallback, &message)
 ```
 
-Ez a példa egy üzenetet küld az IoT-központ szöveget a "Hello World". Azonban az IoT-központ lehetővé teszi tulajdonságok az egyes üzeneteket kell csatolni. A rendszer az üzenethez csatolt név/érték párok tulajdonságokat. Módosíthatja például azt az előző kód csatolni egy tulajdonság az üzenet:
+Ebben a példában egy üzenetet küld az IoT Hub a szöveg a "Hello World." Azonban az IoT Hub lehetővé teszi tulajdonságok minden üzenet van csatlakoztatva. A tulajdonságok akkor az üzenethez csatolt név/érték párok. Például módosíthatja azt a tulajdonságot az üzenethez csatolni az előző kód:
 
 ```
 MAP_HANDLE propMap = IoTHubMessage_Properties(message.messageHandle);
@@ -152,11 +152,11 @@ sprintf_s(propText, sizeof(propText), "%d", i);
 Map_AddOrUpdate(propMap, "SequenceNumber", propText);
 ```
 
-Először meghívásával **IoTHubMessage\_tulajdonságok** , és átadja azt a leíró az üzenet. Mi azt vissza van egy **térkép\_KEZELNI** hivatkozás, amely lehetővé teszi indíthatja el a tulajdonságokat. Meghívásával elvégzéséhez **térkép\_AddOrUpdate**, így tovább is hivatkozni kell a Térképen\_leíró, a tulajdonság nevét és a tulajdonság értéke. Ez az API-t hozzá lehessen adni annyi tulajdonságai, például azt.
+Kezdődik meg meghívásával **IoTHubMessage\_tulajdonságok** majd továbbítani azt a leíró, az üzenet. Amit kapunk vissza a rendszer egy **térkép\_KEZELNI** hivatkozás, amely lehetővé teszi számunkra, hogy kezdje el hozzáadni a tulajdonságai. Meghívásával gazdaplatformként **térkép\_AddOrUpdate**, térkép egy hivatkozást, amely veszi\_leíró, a tulajdonság nevét és a tulajdonság értéke. Ez az API-val azt szeretnénk, annyi tulajdonságokat adhat hozzá.
 
-Ha az esemény olvasni **Event Hubs**, a fogadó a tulajdonságok enumerálása, és a hozzájuk tartozó értékek beolvasása. Például a .NET ez szeretné végezni a fér hozzá a [tulajdonsággyűjteményében a EventData objektum](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.properties.aspx).
+Ha az esemény eseményforrásból történő **az Event Hubs**, a fogadó enumerálása, és a hozzájuk tartozó értékek lekéréséhez. Ha például a .NET-ben Ez azok megvalósítására elérésével a [az EventData objektum tulajdonsággyűjteményében](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.properties.aspx).
 
-Az előző példában azt csatol tulajdonságok nem küldeni az IoT-központ eseményre. Az IoT-központ érkező üzenetek is csatolható tulajdonságok. Tulajdonságok lekérése üzenet szeretnénk, ha azt az üzenet visszahívási függvény a következő kódot használhatja:
+Az előző példában azt Ön csatolása tulajdonságai egy eseményt, amely az IoT Hub küldjük. Tulajdonságok is is csatlakozik az IoT hub felől fogadott üzeneteket. Kívánt tulajdonságok lekérését egy üzenetet, ha az üzenet visszahívási függvény is használja például a következő kódot:
 
 ```
 static IOTHUBMESSAGE_DISPOSITION_RESULT ReceiveMessageCallback(IOTHUB_MESSAGE_HANDLE message, void* userContextCallback)
@@ -188,12 +188,12 @@ static IOTHUBMESSAGE_DISPOSITION_RESULT ReceiveMessageCallback(IOTHUB_MESSAGE_HA
 }
 ```
 
-A hívás **IoTHubMessage\_tulajdonságok** adja vissza a **térkép\_KEZELNI** hivatkozás. Azt, akkor továbbítja a hivatkozó **térkép\_GetInternals** a név/érték párok (valamint a tulajdonságok száma) tömbje mutató hivatkozás beszerzése. Ezen a ponton azt szeretnénk, ha az értékek gombra tulajdonságainak egyszerű kérdése.
+A hívást **IoTHubMessage\_tulajdonságok** adja vissza a **térkép\_KEZELNI** hivatkozást. Azt, akkor továbbítja a hivatkozó **térkép\_GetInternals** , szerezzen be egy hivatkozást egy tömb, a név-érték párok (valamint a tulajdonságok számát). Ezen a ponton célszerű egyszerű pár szeretnénk értékek beolvasásához a tulajdonságok enumerálása.
 
-Tulajdonságok használata az alkalmazás nem rendelkezik. Azonban, ha szeretné-e meg őket a események vagy kérheti le azokat az üzeneteket, a **IoTHubClient** könyvtár megkönnyíti.
+Nem kell tulajdonságok használata az alkalmazásban. Azonban, ha az események állíthat be vagy kérheti le azokat az üzeneteket, a **Iothubclientről** kódtára megkönnyíti.
 
 ## <a name="message-handling"></a>Üzenetkezelés
-Ahogy korábban is hangsúlyoztuk, amikor érkező üzenetek IoT-központ a **IoTHubClient** könyvtár regisztrált visszahívási függvény meghívása válaszol. Ez a funkció, amely további rövid érdemel visszatérési paraméterének van. Ez a visszahívási függvény cikkből a **IOT hubbal\_ügyfél\_minta\_http** mintaalkalmazást:
+Ahogy korábban is hangsúlyoztuk, ha üzenet érkezik az IoT hubról a **Iothubclientről** könyvtár válaszol egy regisztrált visszahívási függvény meghívásával. Nincs visszatérési paraméter a függvény, amely további magyarázatot hozhatja létre. Íme a visszahívási függvény cikkből szerint a **iothub\_ügyfél\_minta\_http** mintaalkalmazást:
 
 ```
 static IOTHUBMESSAGE_DISPOSITION_RESULT ReceiveMessageCallback(IOTHUB_MESSAGE_HANDLE message, void* userContextCallback)
@@ -203,35 +203,35 @@ static IOTHUBMESSAGE_DISPOSITION_RESULT ReceiveMessageCallback(IOTHUB_MESSAGE_HA
 }
 ```
 
-Vegye figyelembe, hogy a visszatérési típus **IOTHUBMESSAGE\_törlése\_eredmény** és az adott esetben a rendszer visszaadja a **IOTHUBMESSAGE\_elfogadott**. Nincsenek más értékek azt adhatja vissza a függvény, amely módosíthatja az **IoTHubClient** könyvtár reagálás az üzenet visszahívási. Az alábbiakban a beállításokat.
+Vegye figyelembe, hogy a typ vrácené hodnoty je **IOTHUBMESSAGE\_DISPOSITION\_eredmény** és az adott esetben értéket adunk vissza **IOTHUBMESSAGE\_ELFOGADVA**. Egyéb értékek azt adhat vissza a függvény, amely módosíthatja a **Iothubclientről** könyvtár reagál az üzenet-visszahívás. Az alábbiakban a beállításokat.
 
-* **IOTHUBMESSAGE\_elfogadott** – az üzenet feldolgozása sikeresen megtörtént. A **IoTHubClient** könyvtár nem indítja el a visszahívási függvény újra ugyanazt az üzenetet.
-* **IOTHUBMESSAGE\_elutasítva** – az üzenet nem lett feldolgozva, és tudni az ehhez a jövőben van. A **IoTHubClient** könyvtár nem kell meghívnia a visszahívási függvény újra ugyanazt az üzenetet.
-* **IOTHUBMESSAGE\_ABANDONED** – az üzenet nem feldolgozása sikeresen megtörtént, de a **IoTHubClient** könyvtárban kell meghívnia a visszahívási függvény újra ugyanazt az üzenetet.
+* **IOTHUBMESSAGE\_ELFOGADVA** – az üzenet feldolgozása sikeresen megtörtént. A **Iothubclientről** könyvtár nem indítja el a visszahívási függvény újra ugyanazt az üzenetet.
+* **IOTHUBMESSAGE\_elutasítva** – az üzenet nem lett feldolgozva, és ott nem ehhez a jövőben nem törekszik. A **Iothubclientről** könyvtár nem kell meghívni a visszahívási függvény újra ugyanazt az üzenetet.
+* **IOTHUBMESSAGE\_ABANDONED** – az üzenet feldolgozása sikeres, nem volt, de a **Iothubclientről** könyvtár kell meghívnia a visszahívási függvény újra ugyanazt az üzenetet.
 
-Az első két visszatérési kódok, a **IoTHubClient** könyvtár üzenetet küld az IoT-központ, amely jelzi, hogy az üzenet törlődik az eszköz üzenetsorból kell-e, és nem kézbesíteni újra. A nettó hatást megegyezik (az üzenet törlődik az eszköz várólista), de e a elfogadta vagy visszautasított továbbra is rögzíti.  Ezt a különbséget rögzítése célszerű az üzenet feladók, akik a visszajelzés figyelésére és megtudhatja, ha egy eszköz elfogadta vagy egy üzenet visszautasította.
+Az első két visszatérési kódok, a **Iothubclientről** könyvtár üzenetet küld az IoT Hub jelzi, hogy az üzenet az eszközön üzenetsorból törölni kell-e, majd újra nem lett kézbesítve. Az eredő hatás (a program törli az eszköz üzenetsorból) azonos, de e az üzenet elfogad vagy elutasít továbbra is rögzíti.  Ezt a különbséget rögzítése hasznos az üzenet küldők, akik visszajelzést figyelését és ismerje meg, ha egy eszköz elfogadta vagy egy adott üzenetet visszautasította.
 
-Az utolsó esetben egy üzenet is lett van küldve IoT-központot, de azt jelzi, hogy az üzenet újból kézbesítve a kell. Általában egy üzenetet fog abandon, ha néhány hibát, de az üzenet feldolgozására újra megpróbálhatja. Ezzel szemben elutasítása üzenet akkor megfelelő ha helyrehozhatatlan hibát észlel (vagy egyszerűen döntenie nem tudja feldolgozni az üzenetet).
+Az utolsó esetben egy üzenetet is küld az IoT hubhoz, de azt jelzi, hogy az üzenet újbóli kézbesítése a kell. Általában egy üzenetet fog abandon, ha valamilyen hiba lép fel, de megpróbálja feldolgozni az üzenetet újra. Ezzel szemben az üzenetet elutasító akkor megfelelő Ha helyreállíthatatlan hibát észlel (vagy ha egyszerűen nem kívánja feldolgozni az üzenetet).
 
-Mindenképpen figyelembe vennie a különböző visszatérési kódokat, hogy a kívánt viselkedés akkor is kér a **IoTHubClient** könyvtárban.
+Mindenképpen vegye figyelembe a különböző visszatérési kódokat, hogy Ön is elhárítja a kívánt viselkedésre a **Iothubclientről** könyvtár.
 
 ## <a name="alternate-device-credentials"></a>Alternatív hitelesítő adatai
-Ahogy korábban, az első lépés az használatakor a **IoTHubClient** könyvtár az beszerzése egy **IOT HUBBAL\_ügyfél\_KEZELNI** például a következő hívással:
+Amint azt korábban, az első teendő használatakor a **Iothubclientről** könyvtár, hogy lekérjük a **IOTHUB\_ügyfél\_KEZELNI** például a következő hívással:
 
 ```
 IOTHUB_CLIENT_HANDLE iotHubClientHandle;
 iotHubClientHandle = IoTHubClient_CreateFromConnectionString(connectionString, AMQP_Protocol);
 ```
 
-Az argumentumok **IoTHubClient\_CreateFromConnectionString** az eszköz kapcsolati karakterláncát, és egy paraméter, amely jelzi a protokoll használatával kommunikáljon az IoT hubbal. Az eszköz kapcsolati karakterlánc formátuma a következőképpen jelenik meg:
+Az argumentumok **Iothubclientről\_CreateFromConnectionString** az eszköz kapcsolati karakterláncának és a egy paramétert, amely azt jelzi, hogy a protokollt az IoT hubbal való kommunikációhoz használjuk. Az eszköz kapcsolati karakterláncának formátuma a következőképpen jelenik meg:
 
 ```
 HostName=IOTHUBNAME.IOTHUBSUFFIX;DeviceId=DEVICEID;SharedAccessKey=SHAREDACCESSKEY
 ```
 
-Ez a karakterlánc a négy adatra van: az IoT-központ nevét, az IoT-központ utótag, Eszközazonosító és megosztott elérési kulcsot. A teljesen minősített tartománynevét (FQDN), az IoT-központ kaphat az Azure-portálon az IoT hub-példány létrehozásakor – ez lehetővé teszi az IoT-központnév (első része a teljes Tartományneve) és az IoT hub utótagot (az FQDN a többi). Kapott az Eszközazonosító és a megosztott elérési kulcsot az eszköz regisztrálása az IoT-központ (lásd: a [előző cikkben](iot-hub-device-sdk-c-intro.md)).
+Nincsenek négy információt a következő karakterláncot: az IoT Hub nevét, az IoT Hub-utótagot, Eszközazonosítót és megosztott elérési kulcsával. A teljesen minősített tartománynevét (FQDN), az IoT hub beszerzett, az Azure Portalon az IoT hub-példány létrehozásakor – ez lehetővé teszi az IoT hub nevére (az FQDN első része) és az IoT hub utótagot (a többi része a teljes tartománynév). Is számíthat az Eszközazonosítót és a közös hozzáférési kulcs regisztrálja az eszközt az IoT Hub (leírtak szerint a [előző cikk](iot-hub-device-sdk-c-intro.md)).
 
-**IoTHubClient\_CreateFromConnectionString** lehetővé teszi az egyik módja a kódtár inicializálása. Ha jobban szeret, hozhat létre egy új **IOT HUBBAL\_ügyfél\_KEZELNI** az eszköz kapcsolati karakterlánc helyett ezen egyéni paraméterek használatával. Ez úgy érhető el, az alábbi kódra:
+**Iothubclientről\_CreateFromConnectionString** egyik módja a kódtár inicializálása. Igény szerint hozhat létre egy új **IOTHUB\_ügyfél\_KEZELNI** az eszköz kapcsolati karakterláncának helyett ezeket az egyes paraméterek használatával. Ez úgy érhető el, a következő kóddal:
 
 ```
 IOTHUB_CLIENT_CONFIG iotHubClientConfig;
@@ -243,31 +243,31 @@ iotHubClientConfig.protocol = HTTP_Protocol;
 IOTHUB_CLIENT_HANDLE iotHubClientHandle = IoTHubClient_LL_Create(&iotHubClientConfig);
 ```
 
-Ezt a feladatot el ugyanaz, mint **IoTHubClient\_CreateFromConnectionString**.
+Ez ugyanaz, mint a feladatot el **Iothubclientről\_CreateFromConnectionString**.
 
-Nyilvánvaló, hogy volna használni kívánt tűnhet **IoTHubClient\_CreateFromConnectionString** ahelyett, hogy ez a részletesebb módszer az inicializálás. Ne feledje, azonban, hogy amikor regisztrál egy eszközt az IoT-központ tartalmával egy Eszközazonosító és eszközkulcs (kapcsolati karakterlánc). A *eszköz explorer* SDK eszköz bevezetett a [előző cikkben](iot-hub-device-sdk-c-intro.md) a-tárakat használ a **Azure IoT szolgáltatás SDK** az eszköz kapcsolati karakterlánc létrehozása a Eszközazonosító eszközkulcs és az IoT-központ állomásnevet. Így hívása **IoTHubClient\_inden\_létrehozása** lehet, hogy előnyösebb egy kapcsolati karakterlánc létrehozása a lépés menti azt. Használja az kényelmes bármelyik módszert.
+Ez nyilvánvalónak tűnhet, hogy szeretne-e használni **Iothubclientről\_CreateFromConnectionString** ahelyett, hogy ez a részletesebb metódus az inicializálás. Vegye figyelembe, azonban, hogy amikor regisztrál egy eszközt az IoT Hub nyújtja a rendszer egy Eszközazonosítót és az eszköz kulcsát (ez nem egy kapcsolati karakterlánc). A *device explorer* eszköz SDK-ben bevezetett a [előző cikk](iot-hub-device-sdk-c-intro.md) a tárakat használ a **Azure IoT szolgáltatás SDK** hozhat létre az eszköz kapcsolati karakterláncát az eszköz azonosítója , eszköz kulcsát, és az IoT Hub-állomásnévvel. Ezért hívása **Iothubclientről\_LL\_létrehozás** előnyösebb lehet, mivel így a kapcsolati karakterlánc létrehozása. lépését. Használja az kényelmes bármelyik módszert.
 
-## <a name="configuration-options"></a>Konfigurációs beállítások
-Amennyiben mindent ismertetett beállításairól a **IoTHubClient** könyvtár works tükrözi az alapértelmezett viselkedés. Van azonban néhány lehetőség, amely lehet módosítani a szalagtár működése. Mindez, ami a **IoTHubClient\_inden\_SetOption** API. Vegye figyelembe az ebben a példában:
+## <a name="configuration-options"></a>Beállítási lehetőségek
+Eddig minden leírt módon kapcsolatban a **Iothubclientről** könyvtár works tükrözi annak alapértelmezett viselkedését. Vannak azonban néhány lehetőség, amely lehet módosítani a szalagtár működése. Mindez kihasználva a **Iothubclientről\_LL\_SetOption** API-t. Ebben a példában, vegye figyelembe:
 
 ```
 unsigned int timeout = 30000;
 IoTHubClient_LL_SetOption(iotHubClientHandle, "timeout", &timeout);
 ```
 
-Van néhány gyakran használt beállításokat:
+Van néhány gyakran használt műveletek közül:
 
-* **SetBatching** (logikai) – Ha **igaz**, majd az IoT-központ küldött adatok küldése kötegek. Ha **hamis**, majd üzenetküldés külön-külön. Az alapértelmezett érték **hamis**. Vegye figyelembe, hogy a **SetBatching** beállítás csak akkor érvényes, a HTTPS protokollt, és nem a MQTT vagy az AMQP protokollt.
-* **Időtúllépés** (előjel nélküli egész) – Ez az érték ezredmásodpercben szerepel. Ha egy HTTPS-kérést vagy kap választ ennél hosszabb ideje tart, akkor a kapcsolat időtúllépés miatt küldi.
+* **SetBatching** (logikai) – Ha **igaz**, majd kötegek küldése az IoT hubnak küldött adatokat. Ha **hamis**, majd külön-külön üzeneteket küld. Az alapértelmezett érték **hamis**. Vegye figyelembe, hogy a **SetBatching** lehetőség csak akkor érvényes, a HTTPS protokollt és nem az MQTT vagy AMQP protokollt.
+* **Időtúllépés** (előjel nélküli int) – Ez az érték jelenik meg az ezredmásodperc. Ha egy HTTPS-kérelem vagy válasz fogadása hosszabb időt vesz igénybe, mint az ideje, majd a kapcsolat időtúllépés miatt küldi.
 
-Fontos a kötegelési lehetőséget. Alapértelmezés szerint a szalagtár ingresses események külön-külön (egy adott eseményhez bármilyen át a **IoTHubClient\_inden\_SendEventAsync**). Ha a kötegelési beállítás **igaz**, a könyvtár (akár a maximális méretét, amely elfogadja az IoT-központ) pufferből használhatja annyi eseményeit gyűjti.  Az esemény kötegelt IoT Hub (az egyes események, egy JSON-tömb be vannak becsomagolva) egyetlen HTTPS hívás érkezik. Általában kötegelés engedélyezését eredményezi nagy teljesítménynövekedéshez óta hálózati üzenetváltások most csökkentése. Mivel egy esemény-es HTTPS fejlécek egy készletét, nem pedig a minden egyes esemény fejléc készlettel küldi is jelentősen csökkenti a sávszélesség. Ha valamiért másképp nincs, általában érdemes engedélyezni a kötegelés.
+A kötegelés beállítás azért fontos. A könyvtár ingresses események alapértelmezés szerint külön-külön (egy adott eseményhez bármilyen adja át a **Iothubclientről\_LL\_SendEventAsync**). Ha a kötegelés beállítás **igaz**, a kódtár annyi eseményeket eltárolni a pufferből (akár a maximális mérete, amely elfogadja az IoT Hub) gyűjti.  Az esemény batch küld az IoT Hub (az egyes események JSON-tömböt be vannak csoportosítva) egy HTTPS-hívással. Engedélyezése a kötegelés általában eredményez, nagy teljesítményre képes, Ön csökkenti a hálózati üzenetváltások óta. Is jelentősen csökkenti a sávszélesség, mivel küldünk egy eseményt a kötegelt HTTPS fejlécek egy készletét helyett a fejléceket minden egyes esemény egy készletét. Ha nincs valamilyen konkrét érv amellett, hogy ne így tegyen, általában érdemes kötegelés engedélyezéséhez.
 
 ## <a name="next-steps"></a>További lépések
-Ez a cikk ismerteti részletesen a működését a **IoTHubClient** függvénytár szerepel a **C-hez készült SDK Azure IoT-eszközök**. Az információ funkcióinak beható ismerete rendelkeznie kell a **IoTHubClient** könyvtárban. A [tovább cikk](iot-hub-device-sdk-c-serializer.md) hasonló részletesen ismerteti a a **szerializáló** könyvtár.
+Ez a cikk ismerteti részletesen viselkedését a **Iothubclientről** könyvtár található a **Azure IoT eszközoldali SDK-t a c nyelvhez készült**. Ezekkel az információkkal kell érteni képességeit a **Iothubclientről** könyvtár. A [következő cikkre](iot-hub-device-sdk-c-serializer.md) a hasonló részletesen a **szerializáló** könyvtár.
 
-Az IoT-központ fejlesztésével kapcsolatos további tudnivalókért tekintse meg a [Azure IoT SDK-k][lnk-sdks].
+Az IoT Hub fejlesztésével kapcsolatos további tudnivalókért tekintse meg a [Azure IoT SDK-k][lnk-sdks].
 
-Az IoT-központ képességeit további megismeréséhez lásd:
+Részletesebb megismerése az IoT Hub képességeit, tekintse meg:
 
 * [Mesterséges intelligencia telepítése peremeszközökön az Azure IoT Edge szolgáltatással][lnk-iotedge]
 

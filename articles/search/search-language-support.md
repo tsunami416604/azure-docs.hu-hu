@@ -1,6 +1,6 @@
 ---
-title: Az Azure Search több nyelv indexelő |} Microsoft Docs
-description: Az Azure Search 56 nyelvet támogat, Lucene és természetes nyelvű feldolgozása technológia a Microsoft a nyelvi elemzőkkel kihasználva.
+title: Az Azure Search több nyelv indexelő |} A Microsoft Docs
+description: Az Azure Search kihasználva a lucene-től és a természetes nyelvi feldolgozás, a Microsoft technológiai nyelvi elemzők 56 nyelvhez támogatja.
 author: yahnoosh
 manager: jlembicz
 services: search
@@ -8,66 +8,66 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: jlembicz
-ms.openlocfilehash: 278539a2451eb15c7148b75497798e81f5370a57
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 38f93f5415282d2f976d9f3acc2b0a7aeead6c3d
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32182764"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35926156"
 ---
-# <a name="create-an-index-for-documents-in-multiple-languages-in-azure-search"></a>Több nyelven is az Azure Search-dokumentumok index létrehozása
+# <a name="create-an-index-for-documents-in-multiple-languages-in-azure-search"></a>Az Azure Search több nyelven elérhető dokumentumok indexének létrehozása
 > [!div class="op_single_selector"]
 >
-> * [Portal](search-language-support.md)
+> * [Portál](search-language-support.md)
 > * [REST](https://msdn.microsoft.com/library/azure/dn879793.aspx)
 > * [.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.search.models.analyzername.aspx)
 >
 >
 
-A nyelvi elemzőkkel hatványa unleashing lehető legkönnyebben beállítás több tulajdonsága az index definícióját kereshető mező. Most ezt a lépést, a portálon teheti meg.
+A naplóelemzésben rejlő nyelvi elemzők az olyan egyszerű, mintha a beállítás egy tulajdonsága az Indexdefiníció egy kereshető mező. Most már teheti meg ezt a lépést, a portálon.
 
-Az Azure Search, amelyek lehetővé teszik a felhasználók a sémát indexeli az alábbiakban az Azure portál paneleken példaként bemutató képernyőképeket láthat. Ezen a panelen a felhasználók létrehozásához minden mezőnek és a analyzer tulajdonsága esetében.
+Az Azure Search, amelyek lehetővé teszik a felhasználók számára az indexséma határozza meg az alábbiakban az Azure Portal paneljeinek pillanatképeiért. Ezen a panelen a felhasználók létrehozásához minden mezőnek és a analyzer tulajdonsága mindegyikük számára.
 
 > [!IMPORTANT]
-> Csak beállíthat egy nyelvi elemzőt során mező definícióját, és a fel az alapoktól új index létrehozásakor, vagy ha új mező hozzáadása egy meglévő indexet. Ellenőrizze, hogy teljesen meg minden attribútumot az elemző eszközt, beleértve a mező létrehozása során. Ön nem fog tudni az attribútumok szerkesztése vagy analyzer típusának módosítása után a módosítások mentéséhez.
+> Csak akkor állíthat egy nyelvi elemzőt során mező definíciót, mint a be egy új index az alapoktól létrehozásakor, vagy ha egy új mezőt ad hozzá egy meglévő index. Ellenőrizze, hogy teljes mértékben adja meg az összes attribútum, az elemző, beleértve a mező létrehozása során. Nem sikerült az attribútumok szerkesztése vagy elemző típusának módosítása után a módosítások mentéséhez.
 >
 >
 
-## <a name="define-a-new-field-definition"></a>Új mező definíció megadása
-1. Jelentkezzen be a [Azure-portálon](https://portal.azure.com) , és nyissa meg a keresési szolgáltatás a szolgáltatás panelre.
-2. Kattintson a **index hozzáadása** parancsra a parancssávon, indítsa el az új index, vagy nyissa meg a létező indexek egy analyzer beállítása a létező indexek visszaigazolása új mezőkre szolgáltatás irányítópultján tetején.
-3. A mezők panel jelenik meg, az index sémájának definiálásához lehetőségeit a Analyzer is ide használt, egy nyelvi elemzőt kiválasztására.
-4. A mezőket indítsa el mező definíciójának megadása, az adatok kiválasztása és attribútum megjelölése a mező teljes szöveges keresési eredmények között, használható értékkorlátozás navigációs szerkezetben lekérhető, kereshető rendezhető és stb.
+## <a name="define-a-new-field-definition"></a>Új mező-definíció megadása
+1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) , és nyissa meg a keresési szolgáltatásnak az szolgáltatás panelje.
+2. Kattintson a **index hozzáadása** a parancssorban a szolgáltatás irányítópultján egy új index indításra, vagy nyisson meg egy elemző beállításához adja hozzá egy meglévő indexhez új mezőket a meglévő index tetején.
+3. A mezők panel jelenik meg, a sémát az index definiálása lehetőségeit többek között az elemző lapon használt nyelvi elemző kiválasztása.
+4. A mezőbe indítsa el mező definícióját egy nevet, az adattípus kiválasztása és megjelölése a mező teljes szöveges kereshető, lekérdezhető a keresési eredmények között, használható értékkorlátozó navigációs struktúrát, rendezhető és egyebekben attribútum.
 5. Mielőtt továbblép a következő mezőre, nyissa meg a **Analyzer** fülre.
 
 ![][1]
-*Egy elemző eszköz kiválasztásához kattintson a mezők panelen a Analyzer lap*
+*Egy elemző kiválasztásához kattintson az elemző lapon, a mezők panelen*
 
-## <a name="choose-an-analyzer"></a>Válasszon egy elemző eszköz
-1. Görgessen a meghatározásakor mező található.
-2. Ha még nem kereshető, a mezőt, és jelölje meg kattintson a jelölőnégyzetbe **kereshető**.
-3. Kattintson a Analyzer területre elérhető elemzőkkel listájának megjelenítéséhez.
-4. Válassza ki a használni kívánt analyzer.
+## <a name="choose-an-analyzer"></a>Válasszon egy elemző
+1. Megadja a mező megtekintéséhez görgessen.
+2. Ha a mező kereshető, még nem jelölt meg, kattintson a jelölőnégyzetre most, és jelölje meg **kereshető**.
+3. Kattintson az elemző területen elérhető elemzők listájának megjelenítéséhez.
+4. Válassza ki a használni kívánt elemzőt.
 
 ![][2]
-*Válassza ki a támogatott elemzőkkel az egyes mezők*
+*Válasszon ki egy minden mező esetében a támogatott elemzők*
 
-Alapértelmezés szerint az összes kereshető mezőt használja a [szabványos Lucene analyzer](http://lucene.apache.org/core/4_10_0/analyzers-common/org/apache/lucene/analysis/standard/StandardAnalyzer.html) Ez az nyelvi független. Támogatott lekérdezések teljes listájának megtekintéséhez lásd: [nyelvi támogatás az Azure Search](https://msdn.microsoft.com/library/azure/dn879793.aspx).
+Alapértelmezés szerint az összes kereshető mezőt használja a [Standard Lucene-elemzőt](http://lucene.apache.org/core/4_10_0/analyzers-common/org/apache/lucene/analysis/standard/StandardAnalyzer.html) azaz nyelvtől. Támogatott elemzők teljes listájának megtekintéséhez: [nyelvi támogatás az Azure Search](https://msdn.microsoft.com/library/azure/dn879793.aspx).
 
-Ha a nyelvi elemzőt mező nincs bejelölve, azt fogja használni minden egyes indexelési és keresési kérelemmel mező. Amikor a lekérdezés különböző lekérdezések használatával több mezőkkel, a lekérdezés által az egyes mezők a jobb oldali elemzőkkel egymástól függetlenül lesz feldolgozva.
+Miután a nyelvi elemző mező van kiválasztva, akkor együtt használható indexelés és keresés kéréseknek erre a mezőre. Egy lekérdezés segítségével különböző elemzők több mező alapján kiadásakor a lekérdezés által a megfelelő elemzők az egyes mezőkhöz tartozó egymástól függetlenül lesz feldolgozva.
 
-Sok webes és mobilalkalmazásokhoz ellenőrizhető, hogy a felhasználók különböző nyelveken használó világ körüli. Is definiálhat ilyen forgatókönyvek index által támogatott egyes nyelvekhez tartozó mező létrehozása.
+Számos webes és mobilalkalmazások kiszolgálni a világ minden pontján, több különböző nyelvet használó felhasználók. Ilyen forgatókönyv esetén index definiálása az által támogatott egyes nyelvekhez tartozó mezők létrehozása, lehetőség.
 
 ![][3]
-*Minden támogatott nyelven Leírás mezőt Indexdefiníció*
+*Index definíciója támogatott egyes nyelvekhez tartozó mező leírása*
 
-Ha az ügynök kiállító lekérdezés nyelvének ismert, keresési kérelem hatóköre beállítható úgy, egy adott mező használatával a **searchFields** lekérdezési paraméter. A következő lekérdezést kap, csak a Lengyel leírását szemben:
+Az ügynök kiállító lekérdezés nyelvének ismert, ha egy keresési kérelmet hatóköre egy adott mezőben az a **searchFields** lekérdezési paraméter. Csak a leírást, a Lengyel szemben állít ki a következő lekérdezést:
 
 `https://[service name].search.windows.net/indexes/[index name]/docs?search=darmowy&searchFields=description_pl&api-version=2017-11-11`
 
-Lekérheti az index a portálról használatával **keresési ablak** illessze be a fenti hasonló lekérdezésben. A parancssávon, a szolgáltatás panelen a keresési ablak érhető el. Lásd: [a portálon az Azure Search-index lekérdezése](search-explorer.md) részleteiről.
+Lekérdezheti az indexet a portál használatával **keresési ablak** hasonló a fenti lekérdezést beilleszteni. A keresési ablak a parancssávon, a szolgáltatási panelen érhető el. Lásd: [a portálon az Azure Search-index lekérdezése](search-explorer.md) részleteiről.
 
-Egyes esetekben az ügynök kiállító lekérdezés nyelvének nem ismert, ebben az esetben a lekérdezés adhatók ki minden mezőkkel egyidejűleg. Ha szükséges, egy bizonyos nyelvi eredményez preferencia definiálható [profilok pontozási](https://msdn.microsoft.com/library/azure/dn798928.aspx). Az alábbi példában angolul a leírásban talált egyező fog pontozni magasabb megegyezik, lengyel és francia képest:
+Időnként az ügynök kiállító lekérdezés nyelve nem ismert, ebben az esetben a lekérdezés adhatók ki mező alapján egyszerre. Ha szükséges, eredményeket egy bizonyos nyelvi beállításait is definiálhatók [pontozási profilok](https://msdn.microsoft.com/library/azure/dn798928.aspx). Az alábbi példában angolul leírásában található egyezés pontszáma lesz újabb egyezés, lengyel és francia viszonyítva:
 
     "scoringProfiles": [
       {
@@ -80,7 +80,7 @@ Egyes esetekben az ügynök kiállító lekérdezés nyelvének nem ismert, ebbe
 
 `https://[service name].search.windows.net/indexes/[index name]/docs?search=Microsoft&scoringProfile=englishFirst&api-version=2017-11-11`
 
-Ha a .NET-fejlesztők, vegye figyelembe, hogy a nyelvi elemzőkkel használatával konfigurálhatja a [Azure Search .NET SDK](http://www.nuget.org/packages/Microsoft.Azure.Search). A legújabb verziót, valamint a Microsoft nyelvi elemzőkkel támogatását is magában foglalja.
+Ha Ön a .NET-fejlesztők, vegye figyelembe, hogy a nyelvi elemzőkkel használatával konfigurálhatja a [Azure Search .NET SDK](http://www.nuget.org/packages/Microsoft.Azure.Search). A legújabb verziót, valamint a Microsoft nyelvi elemzők támogatását tartalmazza.
 
 <!-- Image References -->
 [1]: ./media/search-language-support/AnalyzerTab.png

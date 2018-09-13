@@ -10,15 +10,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: fundamentals
 ms.topic: conceptual
-ms.date: 09/12/2017
+ms.date: 09/11/2018
 ms.author: lizross
 ms.custom: it-pro
-ms.openlocfilehash: bdc8754253ce2567d957b4d6240fe52242aea2ea
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: d84c3b556f27366c249382a37e0a8227726110cf
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37449884"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44714684"
 ---
 # <a name="managing-owners-for-a-group"></a>Egy csoport tulajdonosainak kezelése
 Miután az erőforrás tulajdonosa hozzáférés van rendelve egy erőforrást az Azure AD-csoportok, a csoport tagságának a csoport tulajdonosa kezeli. Az erőforrás tulajdonosa hatékonyan a felhasználók hozzárendelése az erőforrást a csoport tulajdonosa engedélyt ad.
@@ -42,6 +42,6 @@ E cikkekben további információk találhatók az Azure Active Directoryval kap
 
 * [Erőforráshozzáférés-kezelés Azure Active Directory-csoportokkal](active-directory-manage-groups.md)
 * [Azure Active Directory-parancsmagok csoportbeállítások konfigurálásához](../users-groups-roles/groups-settings-cmdlets.md)
-* [Az Azure Active Directory segítségével végzett alkalmazásfelügyeletre vonatkozó cikkek jegyzéke](../active-directory-apps-index.md)
+* [Alkalmazások kezelése az Azure Active Directoryban](../manage-apps/what-is-application-management.md)
 * [Mi az az Azure Active Directory?](active-directory-whatis.md)
 * [Helyszíni identitások integrálása az Azure Active Directoryval](../connect/active-directory-aadconnect.md)

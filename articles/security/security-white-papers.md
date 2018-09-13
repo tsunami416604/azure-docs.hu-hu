@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 9/10/2018
 ms.author: tomsh
-ms.openlocfilehash: b6953cc45305cf0812b185187c01149f0345756d
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 9ecdc0b7d2d21962dbfc7c14e9fff3fd969dd018
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44346067"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44721092"
 ---
 # <a name="azure-security-white-papers"></a>Az Azure Security-tanulmányok
 | | |
@@ -33,7 +33,7 @@ ms.locfileid: "44346067"
 |[Az Azure Functions és a kiszolgáló nélküli platformon biztonság](https://gallery.technet.microsoft.com/Azure-Functions-and-c6449f8d/file/202175/1/Microsoft%20Serverless%20Platform.pdf)|Ez a letölthető tanulmány a művelet során gondoskodik a biztonsági szempontok és a megoldások a környezetében az Azure kiszolgáló nélküli számítástechnika előnyeit ismerteti. |
 |[Tárolóbiztonság Microsoft Azure-ban](abstract-container-security-microsoft-azure.md)|Tárolók, a tárolók üzembe helyezése és a felügyeleti és a natív alkalmazásplatform írja le. Azt is ismerteti modul biztonsági problémák merülnek fel a tárolók használatát az Azure platformon. |
 |[Az Azure működési biztonság](abstract-azure-operational-security.md)|Átfogó tekintse meg a ügyfél felé irányuló operatív biztonsági technológiák és szolgáltatások rendelkezésre álló biztosít az Azure-ral.|
-|[Az Azure biztonságtechnikai képességek](azure-security-technical-capabilities.md)|Megoldásai a biztonsági funkciókat és képességeket támogatja az Azure Storage, Azure SQL Database-adatbázisok, az Azure virtuális gép modell és az eszközök és infrastruktúra, amely minden kezelheti.|
+|[Az Azure biztonságtechnikai képességek](azure-security-technical-capabilities.md)|Megoldásai a biztonsági funkciókat és képességeket támogatja az Azure Storage, Azure SQL Database, az Azure virtuális gép modell és az eszközök és infrastruktúra, amely minden kezelheti.|
 |[Biztonsági útmutató az Azure Storage-hoz](https://docs.microsoft.com/azure/storage/common/storage-security-guide?toc=%2fazure%2fsecurity%2ftoc.json) |Az egyes használható az Azure Storage biztonsági funkcióinak áttekintése Felügyeleti sík biztonsági, adatbiztonság adatsík, inaktív adatok titkosítását, a titkosítás a flight és a storage analytics ismerteti.|
 |[Adatbesorolás a felhőre való előkészületként](https://gallery.technet.microsoft.com/Data-Classification-for-51252f03/file/172083/1/Data%20Classification%20for%20Cloud%20Readiness%20(2017-04-11).pdf)  |Ez a letölthető tanulmány bemutatja a alapjait mutatja be, az adatbesorolás és az értékét a felhőalapú környezetében számítástechnika. Szervezetek felmérése felhőalapú számítástechnika a későbbi használat céljából, vagy a szervezet jelenleg értelmezéséért optimalizálása data management lesz, és a cloud services használatával kiszolgálóterhelések Ez a tanulmány.|
 |[Irányítás az Azure-ban](governance-in-azure.md)|Az Azure beépített biztonsági és cégirányítási szolgáltatásait ismerteti. A fő cégirányítási tárgyalt vannak: házirendek, folyamatok és eljárások végrehajtására a szervezeti célok; biztonság és a szervezeti szabványoknak; folyamatos megfelelőség riasztások kezelése és figyelése.

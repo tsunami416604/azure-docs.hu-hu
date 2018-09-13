@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/09/2018
+ms.date: 09/11/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 11bb5bf132103bed9e154a12c0e628177ca6a57a
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 7abe86d49ec62460f4bfe039cbd935efe21caba8
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43344924"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44716332"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-qq-account-using-azure-active-directory-b2c"></a>Regisztráció és bejelentkezés a az Azure Active Directory B2C fiókkal Gyorsműveletek beállítása
 
@@ -40,7 +40,7 @@ Gyorsműveletek fiók használatára az identitásszolgáltatójaként az Azure 
 1. Nyissa meg a következőt: [https://connect.qq.com/index.html](https://connect.qq.com/index.html).
 2. Válassza ki**应用管理**(felügyeleti).
 5. Válassza ki**创建应用**(alkalmazás létrehozása), és adja meg a szükséges adatokat.
-7. Adja meg `https://{tenant_name}.b2clogin.com/te/{tenant_name}.onmicrosoft.com/oauth2/authresp` a**授权回调域**(visszahívási URL-cím). Például ha a `tenant_name` a contoso, állítsa be az URL-címet kell `https://contoso.b2clogin.com/te/contoso.onmicrosoft.com/oauth2/authresp`.
+7. Adja meg `https://your-tenant-name.b2clogin.com/your-tenant-name}.onmicrosoft.com/oauth2/authresp` a**授权回调域**(visszahívási URL-cím). Például ha a `tenant_name` a contoso, állítsa be az URL-címet kell `https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp`.
 8. Válassza ki**创建应用**(alkalmazás létrehozása).
 9. A megerősítő oldalon válassza ki a**应用管理**(Alkalmazáskezelés) az alkalmazás felügyeleti lapra való visszatéréshez.
 10. Válassza ki**查看**(megtekintése) mellett a létrehozott alkalmazást.
@@ -50,13 +50,9 @@ Gyorsműveletek fiók használatára az identitásszolgáltatójaként az Azure 
 ## <a name="configure-qq-as-an-identity-provider"></a>Gyorsműveletek konfigurálása identitás-szolgáltatóként
 
 1. Jelentkezzen be a [az Azure portal](https://portal.azure.com/) az Azure AD B2C-bérlő globális rendszergazdájaként.
-2. Úgy győződhet meg arról, hogy az Azure AD B2C-bérlőt tartalmazó könyvtárt használja, hogy átvált rá az Azure Portal jobb felső sarkában. Jelölje ki előfizetői adatait, majd válassza a **Könyvtárváltás** lehetőséget. 
+2. Győződjön meg arról, hogy használja az Azure AD B2C-bérlő kattintva tartalmazó könyvtárba a **címtár és előfizetés-szűrő** a felső menüben, és a könyvtár, amely tartalmazza a bérlő kiválasztása.  
 
     ![Átváltás az Azure AD B2C-bérlőre](./media/active-directory-b2c-setup-qq-app/switch-directories.png)
-
-    Válassza ki a bérlőjét tartalmazó könyvtárt.
-
-    ![Könyvtár kijelölése](./media/active-directory-b2c-setup-qq-app/select-directory.png)
 
 3. Válassza az Azure Portal bal felső sarkában található **Minden szolgáltatás** lehetőséget, majd keresse meg és válassza ki az **Azure AD B2C**-t.
 4. Válassza ki **Identitásszolgáltatók**, majd válassza ki **Hozzáadás**.

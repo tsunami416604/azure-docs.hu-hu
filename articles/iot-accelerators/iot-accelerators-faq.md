@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
-ms.openlocfilehash: c5621d5e16e31104ee28cc521386a5c0ca290a8b
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 66494ca6bd9b4d8276469e85f4c6bb435ae245f7
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39187699"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44716400"
 ---
 # <a name="frequently-asked-questions-for-iot-solution-accelerators"></a>Gyakori kérdések az IoT-megoldásgyorsítók
 
@@ -73,10 +73,6 @@ Kettőt. Azure-előfizetésben csak két belső tranzakció szintjét 1 a Bing M
 > A Microsoft Azure for DreamSpark most néven ismert Microsoft Imagine diákoknak.
 
 Jelenleg nem hozható létre a megoldásgyorsítók egy [Microsoft Azure for DreamSpark](https://azure.microsoft.com/pricing/member-offers/imagine/) fiókot. Létrehozhat azonban egy [ingyenes próbafiókot Azure](https://azure.microsoft.com/free/) mindössze néhány perc alatt, amely lehetővé teszi a megoldásgyorsítók létrehozása.
-
-### <a name="can-i-create-a-solution-accelerator-if-i-have-cloud-solution-provider-csp-subscription"></a>Létrehozhatok megoldásgyorsítók, ha a Cloud Solution Provider (CSP) előfizetéssel rendelkezem?
-
-A megoldásgyorsító jelenleg Cloud Solution Provider (CSP) előfizetéssel nem hozható létre. Létrehozhat azonban egy [ingyenes próbafiókot Azure](https://azure.microsoft.com/free/) mindössze néhány perc alatt, amely lehetővé teszi a megoldásgyorsítók létrehozása.
 
 ### <a name="how-do-i-delete-an-aad-tenant"></a>Hogyan törölhetek egy AAD-bérlőt?
 

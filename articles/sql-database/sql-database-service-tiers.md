@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/17/2018
 manager: craigg
 ms.author: carlrab
-ms.openlocfilehash: 5fcdf02fe75905fb3e492671ba44adb65dfd0da7
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: a4bf21f972da1aa92d6f127e8cbabb89a9c31489
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42054725"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44719953"
 ---
 # <a name="azure-sql-database-purchasing-models-and-resources"></a>Az Azure SQL Database vásárlási modellek és erőforrások 
 
@@ -61,7 +61,7 @@ Egy adott szinten belül egyetlen Azure SQL-adatbázishoz egy [szolgáltatásszi
 
 ![határolókeret](./media/sql-database-what-is-a-dtu/bounding-box.png)
 
-Dtu-k leghasznosabbak megértéséhez a relatív, különböző teljesítményszintek az Azure SQL Database és a szolgáltatási szintek közötti erőforrás-mennyiséggel. Ha például a Dtu megduplázása egy adatbázis teljesítményszintjének növelésével-adatbázisnak felel meg az adatbázis számára elérhető erőforrások készletét kétszeresére. Például egy 1750 DTU-val rendelkező Prémium P11 adatbázis 350x több DTU számítási teljesítményt nyújt, mint egy 5 DTU-val rendelkező Alapszintű adatbázis.  
+Dtu-k leghasznosabbak megértéséhez a relatív különböző teljesítmény-szinteket, Azure SQL Database-adatbázisok és a szolgáltatási szintek közötti erőforrás-mennyiséggel. Ha például a Dtu megduplázása egy adatbázis teljesítményszintjének növelésével-adatbázisnak felel meg az adatbázis számára elérhető erőforrások készletét kétszeresére. Például egy 1750 DTU-val rendelkező Prémium P11 adatbázis 350x több DTU számítási teljesítményt nyújt, mint egy 5 DTU-val rendelkező Alapszintű adatbázis.  
 
 Mélyebb betekintést nyerhet a (DTU) erőforrás-használat, a számítási feladat, használja a [Azure SQL Database lekérdezési Terheléselemző](sql-database-query-performance.md) való:
 

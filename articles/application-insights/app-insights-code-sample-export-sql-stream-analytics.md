@@ -1,6 +1,6 @@
 ---
-title: Az Azure Application Insights SQL exportálása |} Microsoft Docs
-description: Application Insights adatainak folyamatos exportálása Stream Analytics használ SQL.
+title: SQL-Exportálás az Azure Application insights |} A Microsoft Docs
+description: Folyamatosan exportálhatja az Application Insights-adatok az SQL-Stream Analytics használatával.
 services: application-insights
 documentationcenter: ''
 author: mrbullwinkle
@@ -11,88 +11,88 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/06/2015
+ms.date: 09/11/2017
 ms.author: mbullwin
-ms.openlocfilehash: 7d4bf0c5beeba22569e0000b28b007fb5b0ff68f
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 70086cdff3ed313d2b6851139ca8c8a937426aab
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35294176"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44716791"
 ---
-# <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>Forgatókönyv: Az Application Insights Stream Analytics használ SQL exportálása
-Ez a cikk bemutatja, hogyan kívánja áthelyezni a telemetriai adatokat a [Azure Application Insights] [ start] használatával az Azure SQL adatbázishoz [a folyamatos exportálás] [ export] és [az Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/). 
+# <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>Útmutatás: SQL-exportálás a Stream Analytics használatával az Application Insights
+Ez a cikk bemutatja, hogyan helyezheti át a küldött telemetriai adatok [Azure Application Insights] [ start] be egy Azure SQL database használatával [folyamatos exportálás] [ export] és [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/). 
 
-A folyamatos exportálás a telemetriai adatok áthelyezése az Azure Storage JSON formátumban. Azt fogja elemezni a JSON-objektumok használatával az Azure Stream Analytics és sorok az adatbázistábla létrehozása.
+A folyamatos exportálás helyezi át, JSON-formátumban a telemetriai adatok Azure Storage-bA. A JSON-objektumok az Azure Stream Analytics elemezni, és sorok létrehozása egy adatbázistábla soraihoz azt fogja.
 
-(Általában a folyamatos exportálás ennek a módja a saját Application Insights küldeni az alkalmazások telemetriai adatok elemzését. Akkor lehetett igazítja más műveleteket az exportált telemetriai adatok, például az adatok összesítő kódmintában.)
+(Általában a folyamatos Exportálás az a módja a saját alkalmazásait posílat do Application Insights telemetria elemzése. Ön sikerült alkalmazkodik a kódminta az exportált telemetriával, például az adatok összesítése szabadon.)
 
-Először foglalkozunk azt feltételezi, hogy már rendelkezik a figyelni kívánt alkalmazást.
+Feltételezzük, hogy már rendelkezik a figyelni kívánt alkalmazás kezdjük.
 
-Ebben a példában a fogjuk a lapmegtekintések adatainak használni, de ugyanilyen mintájú könnyen más adattípusok, például az egyéni események és kivételek kell terjeszteni. 
+Ebben a példában azt fogja használni az adatokat, de ugyanezt a mintát könnyen bővíthető egyéb adattípusok, például az egyéni események és a kivételeket. 
 
 ## <a name="add-application-insights-to-your-application"></a>Az Application Insights hozzáadása az alkalmazáshoz
 Első lépések:
 
-1. [Az Application Insights beállítása a weblapok](app-insights-javascript.md). 
+1. [Application Insights beállítása a weblapok](app-insights-javascript.md). 
    
-    (A példában azt összpontosítson az ügyfélböngészők a lapmegtekintések adatainak feldolgozási, de a kiszolgáló oldalán is beállíthat az Application Insights a [Java](app-insights-java-get-started.md) vagy [ASP.NET](app-insights-asp-net.md) alkalmazás és a folyamat kérelem függőségi és más kiszolgáló telemetriai adat.)
-2. Tegye közzé az alkalmazást, és tekintse meg a "telemetrikus" adatok jelennek meg az Application Insights-erőforrást.
+    (Ebben a példában az adatokat az ügyfelek böngészőin feldolgozása fogunk összpontosítani, de is beállíthat az Application Insights a kiszolgáló oldalán a [Java](app-insights-java-get-started.md) vagy [ASP.NET](app-insights-asp-net.md) alkalmazás és folyamat kérelem függőség és egyéb telemetriát.)
+2. Tegye közzé az alkalmazást, és tekintse meg a telemetriai adatok az Application Insights-erőforrásban jelennek meg.
 
 ## <a name="create-storage-in-azure"></a>Tároló létrehozása az Azure-ban
-A folyamatos exportálás mindig kimenete adatokat egy Azure Storage-fiók, ezért meg kell először hozza létre a tárolót.
+A folyamatos exportálás mindig adatokat egy Azure Storage-fiókot, így Önnek kell először hozza létre a tárolót.
 
-1. Az előfizetésben a storage-fiók létrehozása a [Azure-portálon][portal].
+1. Hozzon létre egy tárfiókot az előfizetésében található a [az Azure portal][portal].
    
-    ![Azure-portálon válassza az új, az adatok, a tároló. Válassza ki a klasszikus, válassza a létrehozása. Adja meg a tároló nevét.](./media/app-insights-code-sample-export-sql-stream-analytics/040-store.png)
+    ![Az Azure Portalon válassza ki az új, adatok, tárolás. Válassza ki a klasszikus, válassza a létrehozás. Adja meg a tároló nevét.](./media/app-insights-code-sample-export-sql-stream-analytics/040-store.png)
 2. Tároló létrehozása
    
-    ![Az új tárterületen található tárolók kiválasztása, kattintson a tárolók csempe, majd a Hozzáadás](./media/app-insights-code-sample-export-sql-stream-analytics/050-container.png)
+    ![Az új tároló válassza ki a tárolók, a tárolókkal csempére, majd a Hozzáadás gombra](./media/app-insights-code-sample-export-sql-stream-analytics/050-container.png)
 3. A tárelérési kulcs másolása
    
-    Kell, hogy hamarosan állítsa be a stream analytics szolgáltatás bemenete.
+    Állítsa be a bemenetet a stream analytics szolgáltatással való hamarosan szüksége.
    
-    ![A tárolóban nyissa meg a beállításokat, a kulcsokat, és az elsődleges elérési kulcsot másolatot](./media/app-insights-code-sample-export-sql-stream-analytics/21-storage-key.png)
+    ![A storage-ban nyissa meg a beállításokat, a kulcsokat, és készítsen róla egy másolatot az elsődleges hozzáférési kulcs](./media/app-insights-code-sample-export-sql-stream-analytics/21-storage-key.png)
 
-## <a name="start-continuous-export-to-azure-storage"></a>Indítsa el az Azure storage a folyamatos exportálás
-1. Az Azure portálon tallózással keresse meg az Application Insights-erőforrást az alkalmazáshoz létrehozott.
+## <a name="start-continuous-export-to-azure-storage"></a>Indítsa el a folyamatos exportálást, és az Azure storage
+1. Az Azure Portalon keresse meg az alkalmazás számára létrehozott Application Insights-erőforrást.
    
-    ![A Tallózás, az Application Insights az alkalmazáshoz](./media/app-insights-code-sample-export-sql-stream-analytics/060-browse.png)
-2. A folyamatos exportálás létrehozása.
+    ![Válassza a Tallózás, Application Insights, az alkalmazás](./media/app-insights-code-sample-export-sql-stream-analytics/060-browse.png)
+2. Hozzon létre egy folyamatos exportálást.
    
-    ![Válassza a beállítások, folyamatos exportálási hozzáadása](./media/app-insights-code-sample-export-sql-stream-analytics/070-export.png)
+    ![Válassza a beállítások, a folyamatos exportálás hozzáadása](./media/app-insights-code-sample-export-sql-stream-analytics/070-export.png)
 
-    Válassza ki a korábban létrehozott tárfiókot:
+    Válassza ki a korábban létrehozott tárfiók:
 
-    ![Exportálás céljának beállítása](./media/app-insights-code-sample-export-sql-stream-analytics/080-add.png)
+    ![Az Exportálás cél beállítása](./media/app-insights-code-sample-export-sql-stream-analytics/080-add.png)
 
-    Állítsa be a megjeleníteni kívánt típusait:
+    Állítsa be az eseménytípusok, szeretne látni:
 
-    ![Válassza ki az esemény típusa](./media/app-insights-code-sample-export-sql-stream-analytics/085-types.png)
+    ![Válassza ki az események típusai](./media/app-insights-code-sample-export-sql-stream-analytics/085-types.png)
 
 
-1. Néhány adat gyűlik össze legyen. Elhelyezkedik vissza, és a felhasználók használhassa az alkalmazást egy ideig. Telemetria határozza meg, és látni fogja, statisztikai diagramok [metrika explorer](app-insights-metrics-explorer.md) és az egyes események [diagnosztikai keresési](app-insights-diagnostic-search.md). 
+1. Néhány adat gyűlik össze legyen. Dőljön hátra, és a felhasználók használják az alkalmazását egy ideig. Telemetriai adatok származnak, és láthatja a statisztikai diagramok a [metrika explorer](app-insights-metrics-explorer.md) és az egyes események [diagnosztikai keresés](app-insights-diagnostic-search.md). 
    
-    És is, exportálja az adatokat a tárhelyre. 
-2. Vizsgálja meg az exportált adatok, vagy a portál - kiválasztása **Tallózás**, válassza ki a tárfiókot, majd **tárolók** - vagy a Visual Studióban. A Visual Studio felületén válassza **megtekintése / Cloud Explorer**, és nyissa meg az Azure / tárolási. (Ha még nem rendelkezik a menüpont, szeretné-e az Azure SDK telepítése: az új projekt párbeszédpanel megnyitásához, és nyissa meg a Visual C# / felhő / Microsoft Azure SDK beolvasása a .NET-hez.)
+    És emellett az adatok a Storage exportálandó. 
+2. Vizsgálja meg az exportált adatok, vagy a portálon – kiválasztása **Tallózás**, válassza ki a tárfiókot, majd **tárolók** - vagy a Visual Studióban. A Visual Studióban válassza **megtekintése / Cloud Explorer**, és nyissa meg az Azure / Storage. (Ha ez a menüpont nem rendelkezik, az Azure SDK-t telepítenie kell: Nyissa meg az új projekt párbeszédpanelen, majd Visual C# / Cloud / .NET-hez készült Microsoft Azure SDK beszerzése.)
    
-    ![Nyissa meg a Visual Studio Server Browser bővítményt, az Azure, a tároló](./media/app-insights-code-sample-export-sql-stream-analytics/087-explorer.png)
+    ![A Visual Studióban nyissa meg a Server Browser bővítményt, az Azure, a Storage](./media/app-insights-code-sample-export-sql-stream-analytics/087-explorer.png)
    
-    Jegyezze fel az elérési út, az alkalmazás nevét és instrumentation kulcsból származtatott közös részét. 
+    Jegyezze fel a közös rész az elérési út neve, amely az alkalmazás neve és a kialakítási kulcs származik. 
 
-Az események a blob-JSON formátumú fájlok kerülnek. Minden fájl tartalmazhat egy vagy több esemény. Ezért szeretnénk az esemény-adatok olvasása, és azt szeretnénk, ha a mezők szűrik. Nincsenek a különböző dolgok, azt megteheti az adatokat, de a terv ma Stream Analytics segítségével az adatok áthelyezése az SQL-adatbázishoz. Amely könnyen nagy mennyiségű érdekes lekérdezések futtatásához.
+Az események írja a blob-fájlok JSON formátumban. Minden fájl tartalmazhat egy vagy több esemény. Ezért szeretnénk az eseményadatokat olvassa el és szűrje ki a kívánt mezőket. Mindenféle dolgot javítanunk kell az adatokat, de a csomag jelenleg a Stream Analytics használatával az adatok áthelyezése egy SQL Database szolgáltatás. Amely fog megkönnyítik nagy mennyiségű érdekesnek talált lekérdezéseket futtatni.
 
-## <a name="create-an-azure-sql-database"></a>Egy Azure SQL-adatbázis létrehozása
-Még egyszer az előfizetés-től kezdődő [Azure-portálon][portal], hozza létre az adatbázist (és az új kiszolgáló kivéve, ha már van egy) amely meg fog írni.
+## <a name="create-an-azure-sql-database"></a>Az Azure SQL-adatbázis létrehozása
+Ismét kezdve előfizetését az [az Azure portal][portal], az adatbázis létrehozásához (és a egy új kiszolgálón, kivéve, ha már rendelkezik egy), amely fog írni az adatokat.
 
-![Új adatok, SQL](./media/app-insights-code-sample-export-sql-stream-analytics/090-sql.png)
+![Új az adatok, az SQL](./media/app-insights-code-sample-export-sql-stream-analytics/090-sql.png)
 
-Győződjön meg arról, hogy az adatbázis-kiszolgáló Azure-szolgáltatásokhoz való hozzáférést:
+Győződjön meg arról, hogy az adatbázis-kiszolgáló lehetővé teszi, hogy az Azure-szolgáltatásokhoz való hozzáférés:
 
-![Tallózással keresse meg, kiszolgálók, a kiszolgáló beállításait, a tűzfal, a hozzáférés engedélyezése az Azure-bA](./media/app-insights-code-sample-export-sql-stream-analytics/100-sqlaccess.png)
+![Tallózással keresse meg, a kiszolgálók, a kiszolgáló beállításait, a tűzfal, a hozzáférés engedélyezése az Azure-bA](./media/app-insights-code-sample-export-sql-stream-analytics/100-sqlaccess.png)
 
-## <a name="create-a-table-in-azure-sql-db"></a>Létrehoz egy táblát az Azure SQL-adatbázis
-Csatlakozás az előnyben részesített felügyeleti eszközzel az előző szakaszban létrehozott adatbázishoz. Ebben a bemutatóban fogjuk használni [az SQL Server felügyeleti eszközei](https://msdn.microsoft.com/ms174173.aspx) (SSMS).
+## <a name="create-a-table-in-azure-sql-db"></a>Hozzon létre egy táblát az Azure SQL DB
+Az adatbázis az előző szakaszban az előnyben részesített felügyeleti eszközzel csatlakozhat. Ez az útmutató fogjuk használni [SQL Server Kezelőeszközeiben](https://msdn.microsoft.com/ms174173.aspx) (SSMS).
 
 ![](./media/app-insights-code-sample-export-sql-stream-analytics/31-sql-table.png)
 
@@ -138,52 +138,52 @@ CREATE CLUSTERED INDEX [pvTblIdx] ON [dbo].[PageViewsTable]
 
 ![](./media/app-insights-code-sample-export-sql-stream-analytics/34-create-table.png)
 
-Ez a példa Lapmegtekintések adatainak használunk. A rendelkezésre álló adatok megtekintéséhez vizsgálhatja meg a JSON-kimenetét, és tekintse meg a [exportálja az adatokat az adatmodellbe](app-insights-export-data-model.md).
+Ebben a példában használunk, oldal-nézetből származó adatokat. Elérhető egyéb adatok megtekintéséhez a JSON-kimeneteket a vizsgálja, és tekintse meg a [adatmodell exportálása](app-insights-export-data-model.md).
 
 ## <a name="create-an-azure-stream-analytics-instance"></a>Hozzon létre egy Azure Stream Analytics-példányt
-Az a [Azure-portálon](https://portal.azure.com/), válassza ki az Azure Stream Analytics szolgáltatás, és hozzon létre egy új Stream Analytics-feladatot:
+Az a [az Azure portal](https://portal.azure.com/), az Azure Stream Analytics szolgáltatás és a egy új Stream Analytics-feladat létrehozása:
 
-![](./media/app-insights-code-sample-export-sql-stream-analytics/SA001.png)
+![Stream analytics-beállítások](./media/app-insights-code-sample-export-sql-stream-analytics/SA001.png)
 
 ![](./media/app-insights-code-sample-export-sql-stream-analytics/SA002.png)
 
-Amikor új feladatot hoz létre, jelölje ki a **forrást**.
+Ha az új feladat jön létre, válassza ki a **erőforrás megnyitása**.
 
-![](./media/app-insights-code-sample-export-sql-stream-analytics/SA003.png)
+![Stream analytics-beállítások](./media/app-insights-code-sample-export-sql-stream-analytics/SA003.png)
 
-#### <a name="add-a-new-input"></a>Egy új bemenet hozzáadása
+#### <a name="add-a-new-input"></a>Új bemenet hozzáadása
 
-![](./media/app-insights-code-sample-export-sql-stream-analytics/SA004.png)
+![Stream analytics-beállítások](./media/app-insights-code-sample-export-sql-stream-analytics/SA004.png)
 
-Állítsa be úgy, hogy a folyamatos exportálás blobból bemeneti:
+Állítsa be, hogy a folyamatos exportálás blobból bemeneti:
 
-![](./media/app-insights-code-sample-export-sql-stream-analytics/SA005.png)
+![Stream analytics-beállítások](./media/app-insights-code-sample-export-sql-stream-analytics/SA0005.png)
 
-Most szüksége lesz az elsődleges elérési kulcsot importáljon a Tárfiókba, amelyet korábban feljegyzett. Állítsa be ezt a Tárfiók kulcsára.
+Most szüksége lesz az elsődleges hozzáférési kulcs az Ön Tárfiókjából, amely a korábban feljegyzett. Állítsa az másként a Tárfiókkulcs.
 
-#### <a name="set-path-prefix-pattern"></a>Set elérési út előtag mintája
+#### <a name="set-path-prefix-pattern"></a>Set elérési út előtagmintája
 
-**Győződjön meg arról, hogy beállítása a Date formátum éééé-hh-nn-(kötőjel).**
+**Győződjön meg arról, az értékre a dátumformátum ÉÉÉÉ-HH-nn (szaggatott).**
 
-Az elérési út előtag mintája határozza meg, hogyan Stream Analytics keresse meg a bemeneti fájlokat a tárolóban. Állítsa be úgy, hogy hogyan tárolja az adatokat folyamatos exportálni kell. Állítsa be ehhez hasonló:
+Az elérésiút-előtag a minta adja meg, hogyan Stream Analytics a bemeneti fájlokat keres a storage-ban. Meg kell azt, hogy hogyan tárolja az adatok folyamatos exportálása. Állítsa be, ehhez hasonló:
 
     webapplication27_12345678123412341234123456789abcdef0/PageViews/{date}/{time}
 
 Ebben a példában:
 
-* `webapplication27` Application Insights-erőforrások, neve **minden a nagybetűs**. 
-* `1234...` az Application Insights-erőforrások instrumentation kulcsa **az eltávolított kötőjelek**. 
-* `PageViews` az adatok elemzéséhez szeretnénk típusa van. A használható típusok a folyamatos exportálás beállítása szűrő függ. Vizsgálja meg az exportált adatok megtekintéséhez a használható típusok, és tekintse meg a [exportálja az adatokat az adatmodellbe](app-insights-export-data-model.md).
-* `/{date}/{time}` a minta írt szó.
+* `webapplication27` az Application Insights-erőforrás neve **kisbetű szerepel az összes**. 
+* `1234...` a rendszerállapotkulcsot az Application Insights-erőforrás van **az eltávolított kötőjelek**. 
+* `PageViews` az adatok szeretnénk elemezni. Az elérhető típusokat a szűrőt, állítsa be a folyamatos exportálás függenek. Vizsgálja meg az exportált adatok megtekintéséhez az elérhető típusokat, és tekintse meg a [adatmodell exportálása](app-insights-export-data-model.md).
+* `/{date}/{time}` szó szerint írt mintát.
 
-Ahhoz, hogy a név és az Application Insights-erőforrás iKey, nyissa meg az Essentials az Áttekintés lap, vagy nyissa meg a beállításokat.
+A név és a Rendszerállapotkulcsot az Application Insights-erőforrás beszerzéséhez, nyissa meg a Essentialst az Áttekintés lapon, vagy nyissa meg a beállításokat.
 
 > [!TIP]
-> A Sample függvény segítségével ellenőrizze, hogy a bemeneti elérési utat helyesen van beállítva. Ha a hiba: Ellenőrizze, hogy van-e adatokat a minta időtartományát úgy döntött, hogy a tároló. A bemeneti definition szerkessze, és ellenőrizze, állítsa be a tárfiók, elérési út előtag és a dátum helyesen formátumban.
+> A mintául szolgáló funkció segítségével ellenőrizze, hogy helyesen van beállítva a bemeneti útvonalat. Ha ez nem sikerül: Ellenőrizze, hogy nincs-e adatokat a tároló a kiválasztott minta időtartományban. A bemeneti definíciójának szerkesztése, és állítsa be a storage-fiók, az elérési út előtagja, és a dátum helyesen formátumban.
 > 
 > 
 ## <a name="set-query"></a>Set-lekérdezés
-Nyissa meg a lekérdezés szakaszt:
+Nyissa meg a lekérdezés szakaszban:
 
 Cserélje le az alapértelmezett lekérdezés:
 
@@ -223,36 +223,36 @@ Cserélje le az alapértelmezett lekérdezés:
 
 ```
 
-Figyelje meg, hogy az első néhány tulajdonságok Lapmegtekintések adatainak vonatkoznak. Más telemetriai típusú kivitel más tulajdonságokkal fog rendelkezni. Tekintse meg a [részletes adatok modell hivatkozást a tulajdonság típusát és értékét.](app-insights-export-data-model.md)
+Figyelje meg, hogy az első néhány tulajdonságok vonatkozó adatokat. Más telemetriatípusok exportálásai lesz különböző tulajdonságai. Tekintse meg a [részletes adatmodell-referencia a tulajdonság típusát és értékét.](app-insights-export-data-model.md)
 
-## <a name="set-up-output-to-database"></a>Kimeneti adatbázis beállítása
-Válassza ki az SQL kimeneteként.
+## <a name="set-up-output-to-database"></a>Kimenet az adatbázis beállítása
+Válassza ki a kimeneti SQL.
 
-![A stream analytics válassza ki a kimenetek](./media/app-insights-code-sample-export-sql-stream-analytics/SA006.png)
+![A stream Analytics szolgáltatásban válassza ki a kimenetek](./media/app-insights-code-sample-export-sql-stream-analytics/SA006.png)
 
 Adja meg az SQL-adatbázis.
 
-![Adja meg az adatbázis részletei](./media/app-insights-code-sample-export-sql-stream-analytics/SA007.png)
+![Adja meg az adatokat az adatbázis](./media/app-insights-code-sample-export-sql-stream-analytics/SA007.png)
 
-Zárja be a varázslót, és várja meg, egy értesítés, hogy a kimeneti be van állítva.
+Zárja be a varázslót, és várja meg, egy értesítés, hogy a kimenet be lett állítva.
 
 ## <a name="start-processing"></a>Indítsa el a feldolgozási
-Indítsa el a feladatot az műveletsávon:
+A művelet sávon, indítsa el a feladatot:
 
-![A stream analytics kattintson a Start](./media/app-insights-code-sample-export-sql-stream-analytics/SA008.png)
+![A stream Analytics szolgáltatásban kattintson a Start gombra](./media/app-insights-code-sample-export-sql-stream-analytics/SA008.png)
 
-Dönthet úgy, hogy-e el most, vagy kezdje korábbi adatok kiindulva adatainak feldolgozása. Az utóbbi akkor hasznos, ha korábban a folyamatos exportálás már fut egy ideig.
+Kiválaszthatja, hogy e elkezdi feldolgozni az adatokat, vagy a a kezdéshez korábbi adatok kezdve. Az utóbbi akkor hasznos, ha már rendelkezik egy ideje már fut a folyamatos exportálás.
 
-Néhány perc elteltével lépjen vissza az SQL Server felügyeleti eszközei, és tekintse meg a áramló adatokat. Például lekérdezéssel ehhez hasonló:
+Néhány perc múlva lépjen vissza az SQL Server felügyeleti eszközeit, és figyelje meg az adatok a tárfiókba. Például használja egy lekérdezést, ehhez hasonló:
 
     SELECT TOP 100 *
     FROM [dbo].[PageViewsTable]
 
 
 ## <a name="related-articles"></a>Kapcsolódó cikkek
-* [A Power bi szolgáltatásba, használja a Stream Analytics exportálása](app-insights-export-power-bi.md)
-* [A részletes adatok modell útmutató a tulajdonság típusát és értékét.](app-insights-export-data-model.md)
-* [A folyamatos Exportálás az Application Insightsban](app-insights-export-telemetry.md)
+* [Exportálás a Stream Analytics használatával Power bi-bA](app-insights-export-power-bi.md)
+* [Részletes adatmodell-referencia a tulajdonság típusát és értékét.](app-insights-export-data-model.md)
+* [A folyamatos Exportálás az Application insights szolgáltatásban](app-insights-export-telemetry.md)
 * [Application Insights](https://azure.microsoft.com/services/application-insights/)
 
 <!--Link references-->

@@ -1,81 +1,81 @@
 ---
-title: Az Azure Data Source varázsló az Azure Machine Learning |} Microsoft Docs
-description: Ismerteti az adatforrás varázsló AML munkaterület
+title: Az Azure Data Source varázslót az Azure Machine Learning |} A Microsoft Docs
+description: Ismerteti az adatforrás varázsló AML-munkaterület
 services: machine-learning
 author: cforbe
 ms.author: cforbe
 manager: mwinkle
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/07/2017
-ms.openlocfilehash: dcf064817f2ad9855cfeef8fec6775d32ee992ec
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: c74229504a43179673cc99ccff321b65e3f6ed4f
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34831139"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35646367"
 ---
 # <a name="data-source-wizard"></a>Adatforrás varázsló #
 
-Az adatforrás varázsló módja a gyorsan és könnyen elvégezhető dataset vonja Azure ML munkaterület kód nélkül. Fontos, ahol igény szerint kiválaszthatja a DataSet adatkészlet és adattípusok, az egyes oszlopok minta stratégiáját. 
+Az adatforrás varázsló egy adatkészlet állapotba Azure ML Workbench kód nélkül szeretne gyorsan és egyszerűen elvégezhető. Fontos, ahol is kiválaszthatja-e az egyes oszlopok az adatkészlet és adattípusok minta stratégiáját. 
 
-## <a name="step-1-trigger-the-data-source-wizard"></a>1. lépés: Az adatforrás varázsló indítás ## 
+## <a name="step-1-trigger-the-data-source-wizard"></a>1. lépés: Az adatforrás varázsló aktiválása ## 
 
-Ahhoz, hogy az adatokat az adatforrás varázsló használatával projektbe. Válassza ki a **+** mellett a keresőmezőbe a adatnézetben gombra, majd válassza ki az adatforrás hozzáadása. 
+Ahhoz, hogy az adatokat egy projektbe az adatforrás varázsló használatával. Válassza ki a **+** mellett a keresőmezőbe az adatnézetben gombra, és válassza ki az adatforrás hozzáadása. 
 
-![Adja hozzá az adatforrást](media/data-source-wizard/add-data-source.png)
+![Adatforrás hozzáadása](media/data-source-wizard/add-data-source.png)
 
-## <a name="step-2-select-where-data-is-stored"></a>2. lépés: Válassza ki az adatokat tároló ##
-Először adja meg, hogyan az adatokat jelenleg. Egybesimított fájl vagy könyvtár, egy parquet fájlt, egy Excel-fájl vagy egy adatbázis tárolható. További információkért lásd: [támogatott adatforrások](data-prep-appendix2-supported-data-sources.md).
+## <a name="step-2-select-where-data-is-stored"></a>2. lépés: Válassza ki az adatok tárolására ##
+Először adja meg, hogy az adatok jelenleg. Az egybesimított fájl vagy könyvtár, a parquet-fájlokba, egy Excel-fájl vagy egy adatbázis tárolhatók. További információkért lásd: [támogatott adatforrások](data-prep-appendix2-supported-data-sources.md).
 
 ![1. lépés](media/data-source-wizard/step1.png)
 
 ## <a name="step-3-select-data-file"></a>3. lépés: Válassza ki az adatfájlt ##
-Fájl vagy könyvtár adja meg a fájl elérési útját. A legördülő listából válassza ki az adatok helye – lehet egy helyi fájl elérési útja vagy az Azure Blob Storage tárolóban. 
+Fájl vagy könyvtár adja meg a fájl elérési útját. A legördülő listából válassza ki az adatok helye – Ez lehet egy helyi fájl elérési útja vagy az Azure Blob Storage. 
 
-Adjon meg az elérési utat beírja azt, vagy kattintson a a **Tallózás...** gombra kattintva tallózással keresse meg azt. Egy könyvtár, vagy egy vagy több fájlt tallózhatja.
+Adja meg az elérési út begépelve, vagy kattintson a **Tallózás...** gombra kattintva keresse meg azt. Egy könyvtár, vagy egy vagy több fájlt tallózhatja.
 
-Kattintson a **Befejezés** fogadja el az alapértelmezett értéket a további lépéseket, vagy tovább a következő lépésben.
+Kattintson a **Befejezés** elfogadhatja az alapértelmezett beállításokat, a hátralevő lépéseket, és ezután folytassa a következő lépéssel.
 
 
 ![4. lépés](media/data-source-wizard/step2.png)
 
-## <a name="step-4-choose-file-parameters"></a>4. lépés: Jelölje ki a fájl paraméterek ##
+## <a name="step-4-choose-file-parameters"></a>4. lépés: Válassza ki a fájl paraméterei ##
 
-Az adatforrás varázsló automatikusan észleli a fájl típusa, elválasztók és kódolást. Azt is látható egy példa hogyan fog megjelenni az adatokat. Később is ezek a paraméterek egyikét manuálisan módosíthatja. 
+Az adatforrás varázsló automatikusan felismeri a fájl típusa, elválasztók és kódolást. Emellett jelenik meg egy példát az adatok fog kinézni. Módosíthatja is ezeket a paramétereket bármelyikét manuálisan. 
 
 ![5. lépés](media/data-source-wizard/step3.png)
 
 ## <a name="step-5-set-data-types-for-columns"></a>5. lépés: Állítsa be az oszlopok adattípusai ##
 
-Az adatforrás varázsló automatikusan észleli a dataset oszlopok adattípusai. Ha azt a gyorsítótárbeli sikertelen keresések egyik, vagy szeretné kényszeríteni adattípust, manuálisan módosíthatja az adattípus. A **kimeneti MINTAADATOK** oszlop bemutatja, hogyan meg az adatok példát.
+Az adatforrás varázsló automatikusan észleli az adatkészlet oszlopok adattípusát. Ha azt a gyorsítótárbeli sikertelen keresések egyet, vagy akinél szeretné kényszeríteni adattípust, manuálisan módosíthatja az adattípust. A **kimeneti MINTAADATOK** oszlop példákat mutat be, hogyan meg az adatokat.
 
-Adatok előkészítő kikövetkezteti dátumokat tartalmazó oszlopok kérheti a dátumformátum jelölje ki a hónap és nap sorrendjét. Például 1/2/2013 jelenthet. január 2. (Ehhez jelölje ki a *nap-hónap*) vagy február 1. (válasszon *hónap és nap*).
+Data Prep kikövetkezteti dátumokat tartalmazó oszlopok előfordulhat, hogy kéri, válassza ki a hónap és nap sorrendje a dátum formátuma. Például 1/2/2013. január 2. lehet helynév (Ehhez jelölje ki a *nap hónapos*) vagy február 1. (válassza ki *hónap és nap*).
 
 ![6. lépés](media/data-source-wizard/step4.png)
 
-## <a name="step-6-choose-sampling-strategy-for-data"></a>6. lépés: Az adatok mintavételi stratégia kiválasztása ##
+## <a name="step-6-choose-sampling-strategy-for-data"></a>6. lépés: Válassza ki a mintavételezési stratégia az adatok ##
 
-Adja meg az adatkészlet egy vagy több mintavételi stratégiák, és válassza ki, mint amit az aktív stratégia. Alapértelmezés szerint a rendszer a felső 10000 sorok betölteni. Ez a minta kattintva szerkesztheti a **szerkesztése** gomb az eszköztáron, vagy adjon hozzá egy új stratégia ehhez kattintson a + új. A jelenleg támogató stratégia a következő
+Adjon meg egy vagy több mintavételezési stratégia az adatkészlet, és válasszon egy, az aktív stratégia. Alapértelmezés szerint a rendszer az első 10 000 sorok betöltésére. Ez a minta kattintva szerkesztheti a **szerkesztése** gombra az eszköztáron, vagy adjon hozzá egy új stratégia szerint kattintson a + új. A stratégiák jelenleg támogató
 
 -     Felső sorok száma
 -     Véletlenszerű sorok száma
--     Sorok véletlenszerűen kiválasztott százaléka
--     Teljes fájl
+-     Sorok véletlenszerű százaléka
+-     A teljes fájl
 
-Megadhatja, hogy annyi mintavételi stratégiák, de csak egy, az adatok előkészítésekor beállítható aktív. Bármely olyan stratégia, amelynek a stratégia kiválasztásával az aktív kell beállítani, és kattintson a beállítás aktív, az eszköztáron.
+Megadhatja, de csak egy, az adatok előkészítésekor beállítható aktív annyi mintavételi stratégiák. Állítsa be az aktív stratégia kiválasztásával is kapcsolódó összes stratégiában, és kattintson a beállítás aktív, az eszköztáron.
 
-Attól függően, hogy az adatok eredetének néhány minta stratégiák nem támogatott. Mintavételi kapcsolatos további információkért tekintse meg a mintavételi részt [Ez a dokumentum](data-prep-user-guide.md) 
+Attól függően, ahol az adatok származnak néhány minta stratégiát nem támogatott. Tudnivalók a mintavételezésről további információkért tekintse meg a mintavétel szakaszában [Ez a dokumentum](data-prep-user-guide.md) 
 
 ![6. lépés](media/data-source-wizard/step5.png)
 
-## <a name="step-7-path-column-handling"></a>7. lépés: Elérési oszlop kezelése ##
+## <a name="step-7-path-column-handling"></a>7. lépés: Elérési út oszlop kezelése ##
 
-Ha a fájl elérési útját a fontos adatokat tartalmaz, ha szeretné, adja hozzá az első adatkészlet oszlopként. Ez a beállítás hasznos, ha több fájlban vannak állapotba hozása lenne. Ellenkező esetben dönthet úgy, hogy nem tartalmazza.
+Ha a fájl elérési útját a fontos adatokat tartalmaz, válassza ki az első oszlop az adatkészletben, adja meg. Ez a beállítás hasznos, ha több fájlt a rendszer állapotba hozása lenne. Ellenkező esetben ha szeretné, nem vonja.
 
 ![7. lépés](media/data-source-wizard/step6.png)
 
-Miután a Befejezés gombra kattint, új adatforrás bekerül a projekthez. Megtalálhatja az adatforrások csoportba tartozó az vagy egy dsource fájlban található, a **fájlnézetéhez**.
+A Befejezés gombra kattintva egy új adatforrást a hozzáadja a projekthez. Megtalálja a adatforrásokhoz tartozó az vagy egy dsource fájlban található, a **Fájlnézetben**.

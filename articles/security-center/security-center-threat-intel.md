@@ -1,6 +1,6 @@
 ---
-title: Fenyegetések felderítése az Azure Security Centerben | Microsoft Docs
-description: Ebben a dokumentumban megismerkedhet az Azure Security Center fenyegetésfelderítési funkcióinak használatával, amelyek segítségével azonosíthatja a potenciális fenyegetéseket a virtuális gépein és számítógépein.
+title: Fenyegetésészlelési intelligencia és a biztonsági riasztás térkép az Azure Security Centerben |} A Microsoft Docs
+description: Ismerje meg, hogyan azonosíthatja a potenciális fenyegetéseket a virtuális gépek és számítógépek használhatja az Azure Security Centerben a biztonsági riasztás térkép és threat intelligence funkció.
 services: security-center
 documentationcenter: na
 author: rkarlin
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/3/2018
 ms.author: rkarlin
-ms.openlocfilehash: a3988575074708a46138b5e550bfc0014ca3bd15
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: d82d52e05d85fbd5197f84f032a55dd9c74f9d1f
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44293932"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44714428"
 ---
-# <a name="security-alerts-map-azure-security-center"></a>Biztonsági riasztások leképezése az Azure Security Centerben
+# <a name="security-alerts-map-and-threat-intelligence"></a>Biztonsági riasztások térkép és threat intelligence
 Ez a cikk segít az Azure Security Center biztonsági riasztások térkép és biztonsági eseményalapú fenyegetésészlelési térkép biztonsággal kapcsolatos problémák elhárításához.
 
 ## <a name="how-the-security-alerts-map-works"></a>Működik, hogy a biztonsági riasztások leképezése
@@ -49,7 +49,8 @@ Megjelenítheti az adott környezet aktuális észlelt fenyegetésekről, nyissa
 A biztonsági riasztások térkép riasztások alapján történik. Ezek a riasztások alapuló tevékenységek mely hálózati kommunikáció lett társítva, amely feloldotta a sikeres, az IP-cím egy ismert kockázatos IP-címet (például egy ismert cryptominer)-e IP-cím vagy IP-címet, amely nem ismerhető fel korábban kockázatos. A térkép riasztásokat biztosít bármely Azure-ban korábban kiválasztott előfizetések között. 
 
 A riasztások a térképen a földrajzi helyét, észlelhetők a származó, és súlyosság szerint színkóddal megfelelően jelennek meg. 
- 
+    ![Fenyegetésfelderítési információk](./media/security-center-threat-intel/security-center-alert-map.png)
+
 ## <a name="viewing-the-event-based-threat-intelligence-dashboard"></a>Az esemény-alapú Fenyegetésészlelési irányítópult megtekintése
 A nyers biztonsági események alapján fenyegetésfelderítési térkép megtekintéséhez kövesse ezt az eljárást. Ezen a térképen jeleníti meg, hogy csak az IP-cím tekintett kockázati, például egy ismert botnet IP-címet érintő események.
 

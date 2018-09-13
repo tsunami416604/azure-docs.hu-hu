@@ -1,30 +1,30 @@
 ---
-title: Fut a legjobb pontosság és a legalacsonyabb időtartama az Azure Machine Learning-munkaterület található |} Microsoft Docs
-description: Egy végpont használati eset legpontosabb parancssori felületen keresztül keresése az Azure Machine Learning-munkaterület segítségével
+title: A legpontosabb és legrövidebb az Azure Machine Learning Workbenchben futtatások keresése |} A Microsoft Docs
+description: Egy teljes körű használati eset keresése legpontosabb CLI-n keresztül az Azure Machine Learning Workbench használatával
 services: machine-learning
 author: totekp
 ms.author: kefzhou
 manager: akannava
 ms.reviewer: akannava, haining, mldocs, jmartens, jasonwhowell
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/29/2017
-ms.openlocfilehash: 077af8b5d3367dd2188cbd6e5d76aaf52512a1e8
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: d2fe951a97b18c95e647b45d799843a982100367
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34830799"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35926164"
 ---
-# <a name="find-runs-with-the-best-accuracy-and-lowest-duration"></a>Keresés fut, a legjobb pontosság és a legalacsonyabb időtartama
-Megadott több fut, a egy használati eset futtatása a legjobb pontossággal kereséséhez. A parancssori felület (CLI) használatával egyik módszer egy [JMESPath](http://jmespath.org/) lekérdezés. Az Azure parancssori felületen JMESPath használatával további információkért lásd: [JMESPath használjon lekérdezések az Azure CLI 2.0](https://docs.microsoft.com/cli/azure/query-azure-cli?view=azure-cli-latest). A következő példában négy futtatása 0, 0,98., 1 és 1 pontossága értékekkel jönnek létre. Futtatja a rendszer a tartományon lévő `[MaxAccuracy-Threshold, MaxAccuracy]` ahol `Threshold = .03`.
+# <a name="find-runs-with-the-best-accuracy-and-lowest-duration"></a>A legpontosabb és legrövidebb futtatások megkeresése
+Adja meg a több futtatás, egy funkcióban a legpontosabb futtatás keresése. Az egyik módszere, a parancssori felület (CLI) használata egy [JMESPath](http://jmespath.org/) lekérdezés. Az Azure CLI JMESPath használatáról további információkért lásd: [használata JMESPath-lekérdezések az Azure CLI-vel](https://docs.microsoft.com/cli/azure/query-azure-cli?view=azure-cli-latest). A következő példában négy futtatások pontosság 0, 0,98., 1 és 1 értékeket jönnek létre. Futtatások szűr a rendszer, ha azok a tartomány `[MaxAccuracy-Threshold, MaxAccuracy]` ahol `Threshold = .03`.
 
 ## <a name="sample-data"></a>Mintaadatok
-Ha még nem rendelkezik a meglévő fut egy `Accuracy` érték, a következő lépéseket készítése fut a lekérdezésre.
+Ha nem rendelkezik meglévő fut egy `Accuracy` értékét, az alábbi lépések futtatásának lekérdezése készítése.
 
-Először hozzon létre egy Python-fájl az Azure Machine Learning-munkaterület, adjon neki nevet `log_accuracy.py`, és illessze be a következő kódot:
+Először is hozzon létre egy Python-fájlt az Azure Machine Learning Workbench, nevezze el `log_accuracy.py`, és illessze be az alábbi kódot:
 ```python
 from azureml.logging import get_azureml_logger
 
@@ -38,7 +38,7 @@ if len(sys.argv) > 1:
 logger.log("Accuracy", accuracy_value)
 ```
 
-Következő lépésként hozzon létre egy fájlt `run.py`, és illessze be a következő kódot:
+Következő lépésként hozzon létre egy fájlt `run.py`, és illessze be az alábbi kódot:
 ```python
 import os
 
@@ -47,22 +47,22 @@ for value in accuracy_values:
     os.system('az ml experiment submit -c local ./log_accuracy.py {}'.format(value))
 ```
 
-Végül nyissa meg a parancssori felületen keresztül munkaterület és a parancs `python run.py` négy kísérletek elküldeni. A parancsfájl befejezése után megjelenik a négy további fut a `Run History` fülre.
+Végül, a Workbench parancssori megnyitásához, és futtassa a parancsot `python run.py` négy kísérletek elküldése. A szkript befejezése után megjelenik a négy további futtatási a `Run History` fülre.
 
-## <a name="query-the-run-history"></a>A lekérdezés a futtatási előzményei
-Az első parancs maximális pontosság talál.
+## <a name="query-the-run-history"></a>Lekérdezés a futtatási előzmények
+Az első parancs megkeresi a maximális pontossága értéket.
 ```powershell
 az ml history list --query '@[?Accuracy != null] | max_by(@, &Accuracy).Accuracy'
 ```
 
-A maximális pontossága értékének felhasználásával `1` és egy küszöbértéket `0.03`, a második parancs szűrők használatával futtat `Accuracy` majd rendezi futtatja által `duration` növekvő.
+Használja a következő maximális pontosság értéke `1` és a egy küszöbértéket `0.03`, a második parancs szűrők használatával futtat `Accuracy` és szerint rendezi futtat `duration` növekvő.
 ```powershell
 az ml history list --query '@[?Accuracy >= sum(`[1, -0.03]`)] | sort_by(@, &duration)'
 ```
 > [!NOTE]
-> Ha azt szeretné, hogy egy szigorú felsőé ellenőrzést, a lekérdezés formátuma ``@[?Accuracy >= sum(`[$max_accuracy_value, -$threshold]`) && Accuracy <= `$max_accuracy_value`]``
+> Ha azt szeretné, hogy egy szigorú felső ellenőrzést, a lekérdezés formátuma ``@[?Accuracy >= sum(`[$max_accuracy_value, -$threshold]`) && Accuracy <= `$max_accuracy_value`]``
 
-PowerShell használatakor a következő kódot helyi változók segítségével tárolja a küszöbérték és a maximális pontosság:
+Ha a PowerShell segítségével, az alábbi kód helyi változók segítségével tárolja a küszöbérték és a maximális pontosság:
 ```powershell
 $threshold = 0.03
 $max_accuracy_value = az ml history list --query '@[?Accuracy != null] | max_by(@, &Accuracy).Accuracy'
@@ -71,4 +71,4 @@ az ml history list --query $find_runs_query
 ```
 
 ## <a name="next-steps"></a>További lépések
-További információt a naplózást, [futtatási előzményei és modell metrikák használata az Azure Machine Learning-munkaterület](how-to-use-run-history-model-metrics.md).    
+A naplózás további információkért lásd: [futtatási előzmények és modell metrikák használata az Azure Machine Learning Workbenchben](how-to-use-run-history-model-metrics.md).    

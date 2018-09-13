@@ -3,19 +3,19 @@ title: 'Gyors útmutató: A QnA Maker API (V4) találhat.'
 titleSuffix: Azure Cognitive Services
 description: Get information és kód minták segítségével gyorsan használatának első lépései a Microsoft Translator Text API a Microsoft Cognitive Services, Azure-ban.
 services: cognitive-services
-author: nitinme
+author: diberry
 manager: cgronlun
 ms.service: cognitive-services
 ms.technology: qna-maker
 ms.topic: article
-ms.date: 05/07/2018
-ms.author: v-jaswel
-ms.openlocfilehash: 5daf4d5e971e840db020e35d1997615723f8e06d
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.date: 09/12/2018
+ms.author: diberry
+ms.openlocfilehash: 320eb7b643d785899482a00bfc0bda1d89e61b3b
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44349041"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44714870"
 ---
 # <a name="quickstart-for-microsoft-qna-maker-api-with-go"></a>Gyors útmutató: a Microsoft a QnA Maker API, a Go 
 <a name="HOLTop"></a>

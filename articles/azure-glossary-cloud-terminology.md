@@ -1,7 +1,7 @@
 ---
-title: Az Azure szószedet - Azure szótár |} Microsoft Docs
-description: Az Azure szószedet használatával megérthetik, hogy a felhő terminológia az Azure platformon. A rövid Azure szótár biztosít jelentésdefiníciókat közös felhő feltételek az Azure-bA.
-keywords: Azure szótár, felhőalapú terminológia, Azure szószedet, terminológiai definíciók, felhőalapú feltételek
+title: Azure szószedet - Azure szótár |} A Microsoft Docs
+description: Az Azure szószedet használatával az Azure platform felhőalapú terminológia ismertetése. A rövid Azure szótár biztosít jelentésdefiníciókat közös felhőalapú feltételek az Azure-hoz.
+keywords: Azure szótár, felhő-terminológia, Azure szószedetét, terminológiai definíciók, felhőalapú feltételek
 services: na
 documentationcenter: na
 author: MonicaRush
@@ -15,148 +15,148 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
-ms.openlocfilehash: 84766ba4cf9e844184752bc44d2e0a471b97db27
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.openlocfilehash: b262f42fffdbfd00f0c57c987e36346957f0f25c
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32159128"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35645535"
 ---
-# <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>A Microsoft Azure szószedet: az Azure platformon felhő terminológia dictionary
+# <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>A Microsoft Azure szószedet: egy szótár, az Azure platform felhőalapú terminológia
 
-A Microsoft Azure szószedete felhő terminológia az Azure platformra rövid dictionary. Lásd még:
+A Microsoft Azure szószedet egy rövid szótárban az Azure platform felhőalapú terminológia. Lásd még:
 
-* [A Microsoft Azure és az Amazon Web Services](https://azure.microsoft.com/campaigns/azure-vs-aws/mapping/) -definíciók az Azure-szolgáltatások és AWS másolataik.<!-- I propose to link to https://azure.microsoft.com/services/ instead of this -->
-* [A felhő számítási feltételek](https://azure.microsoft.com/overview/cloud-computing-dictionary/) -általános iparági felhő feltételeket.
+* [A Microsoft Azure és az Amazon Web Services](https://azure.microsoft.com/campaigns/azure-vs-aws/mapping/) -definíciók az Azure-szolgáltatások és AWS-megfelelőik.<!-- I propose to link to https://azure.microsoft.com/services/ instead of this -->
+* [Felhő-számítástechnikai kifejezések](https://azure.microsoft.com/overview/cloud-computing-dictionary/) – általános szakági felhőalapú kifejezéseket.
 
 ## <a name="account"></a>account
-Eléréséhez és az Azure-előfizetés kezeléséhez használt fiókot. Ez gyakran nevezzük az Azure-fiók bár egy fiók is lehet ezek egyikét sem: egy meglévő munkahelyi, iskolai, vagy személyes Microsoft-fiók, vagy egy Office 365 felhasználói nevét és jelszavát. Azure-előfizetés kezeléséhez, ha regisztrál a fiókot is létrehozhat a [ingyenes próbaverzió](https://azure.microsoft.com).  
-Lásd: [Azure-előfizetéssel az Office 365-fiókkal regisztrálhat](billing/billing-use-existing-office-365-account-azure-subscription.md) és [fiók használatával jelentkezzen be a](active-directory/active-directory-how-subscriptions-associated-directory.md).
+Eléréséhez és egy Azure-előfizetés kezeléséhez használt fiók. Azt gyakran nevezik az Azure-fiók bár egy fiók is lehet ezek egyikét sem: egy meglévő munkahelyi, iskolai vagy személyes Microsoft-fiók, vagy egy Office 365 felhasználónevet és jelszót. Azure-előfizetés kezelésére, ha regisztrál a fiókot is létrehozhat a [az ingyenes próbaidőszak](https://azure.microsoft.com).  
+Lásd: [egy Azure-előfizetést, az Office 365-fiókjával regisztráljon](billing/billing-use-existing-office-365-account-azure-subscription.md) és [segítségével jelentkezzen be a fiókok](active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
 
 ## <a name="api-app"></a>API-alkalmazás
-Egy másik nevet [App Service alkalmazás](#app-service-app).
+Egy másik nevet [App Service-alkalmazás](#app-service-app).
 
 ## <a name="app-service-app"></a>App Service-alkalmazás
-A számítási erőforrásokat, amelyek [Azure App Service](app-service/app-service-web-overview.md) biztosít egy webhelyre vagy webalkalmazásra alkalmazást, a webes API-t vagy [mobil-háttéralkalmazás](app-service-mobile/app-service-mobile-value-prop.md). App Service-alkalmazásokhoz is nevezzük *alkalmazásszolgáltatások*, *webalkalmazások*, *API-alkalmazások*, és *mobilalkalmazások*.
+A számítási erőforrásokat, amelyek [Azure App Service](app-service/app-service-web-overview.md) biztosít egy webhelyre vagy webalkalmazásra alkalmazást, a webes API-t, a üzemeltetési vagy [mobil-háttéralkalmazás](app-service-mobile/app-service-mobile-value-prop.md). App Service-alkalmazások is nevezzük *App Services*, *webes alkalmazások*, *az API apps*, és *mobilalkalmazások*.
 
 ## <a name="availability-set"></a>A rendelkezésre állási csoport
-Virtuális gépek felügyelete együtt, hogy alkalmazás redundanciát és a megbízhatóság gyűjteménye. A rendelkezésre állási csoportok használata biztosítja, hogy tervezett vagy nem tervezett karbantartási esemény során legalább egy virtuális gép elérhető.  
-Lásd: [Windows virtuális gépek rendelkezésre állásának kezelése](virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) és [Linux virtuális gépek rendelkezésre állásának kezelése](virtual-machines/linux/manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+Virtuális gépek, amelyek felügyelete együtt, adja meg az alkalmazás a redundancia és megbízhatóság gyűjteménye. Rendelkezésre állási csoport használata biztosítja, hogy mindkét tervezett vagy nem tervezett karbantartási események legalább egy virtuális gép elérhető.  
+Lásd: [Windows virtuális gépek rendelkezésre állásának kezelése](virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) és [Linux rendszerű virtuális gépek rendelkezésre állásának kezelése](virtual-machines/linux/manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-## <a name="classic-model"></a>Az Azure klasszikus telepítési modell
-Egy két [üzembe helyezési modellel](resource-manager-deployment-model.md) erőforrások az Azure (az új modell az Azure Resource Manager) központi telepítéséhez. Egyes Azure-szolgáltatásokhoz csak a Resource Manager üzembe helyezési modellel támogatja, néhány csak a klasszikus üzembe helyezési modellt támogatja, és néhány támogatja. Minden Azure szolgáltatás dokumentációjában határozza meg, mely a modellek támogatják-e.
+## <a name="classic-model"></a>Klasszikus Azure üzemi modell
+Egy két [üzembe helyezési modellek](resource-manager-deployment-model.md) segítségével helyezheti üzembe az erőforrásokat az Azure-ban (az új modell az Azure Resource Manager). Bizonyos Azure-szolgáltatások csak a Resource Manager üzemi modell támogatja, néhány csak a klasszikus üzemi modell támogatja, és néhány egyaránt támogatja. Az egyes Azure-szolgáltatások dokumentációját Itt adhatja meg, mely támogatja a modellek.
 
-## <a name="cli"></a>Azure parancssori felület (CLI)
-MacOS, Linux és a Windows Azure-szolgáltatások kezeléséhez használható parancssori felület.  Egyes szolgáltatásokat vagy a szolgáltatások csak a PowerShell vagy a parancssori felületen keresztül kezelheti. Lásd: [Azure CLI 2.0](/cli/azure)
+## <a name="cli"></a>Az Azure parancssori felület (CLI)
+Parancssori felület, amely Windows, macOS és Linux rendszerű Azure-szolgáltatások kezelésére is használható.  Néhány szolgáltatás és a szolgáltatások csak a PowerShell vagy a parancssori felület használatával kezelhetők. Lásd: [Azure CLI 2.0 használatával](/cli/azure)
 
 ## <a name="powershell"></a>Azure PowerShell
-Egy parancssori felületet Azure szolgáltatást a parancssor használatával kezelheti a Windows rendszerű számítógépeken. Egyes szolgáltatásokat vagy a szolgáltatások csak a PowerShell vagy a parancssori felületen keresztül kezelheti.
-Lásd: [hogyan Azure PowerShell telepítése és konfigurálása](/powershell/azure/overview)
+Azure-szolgáltatások egy parancssor segítségével kezelheti a Windows rendszerű számítógépek a parancssori felület. Néhány szolgáltatás és a szolgáltatások csak a PowerShell vagy a parancssori felület használatával kezelhetők.
+Lásd: [telepítése és konfigurálása az Azure PowerShell-lel](/powershell/azure/overview)
 
-## <a name="arm-model"></a>Az Azure Resource Manager telepítési modell
-Egy két [üzembe helyezési modellel](resource-manager-deployment-model.md) központi telepítéséhez a Microsoft Azure (a másik pedig a klasszikus üzembe helyezési modellel) erőforrásait. Egyes Azure-szolgáltatásokhoz csak a Resource Manager üzembe helyezési modellel támogatja, néhány csak a klasszikus üzembe helyezési modellt támogatja, és néhány támogatja. Minden Azure szolgáltatás dokumentációjában határozza meg, mely a modellek támogatják-e.
+## <a name="arm-model"></a>Az Azure Resource Manager üzemi modell
+Egy két [üzembe helyezési modellek](resource-manager-deployment-model.md) az (a másik pedig a klasszikus üzemi modellhez) a Microsoft Azure-erőforrások üzembe helyezéséhez használt. Bizonyos Azure-szolgáltatások csak a Resource Manager üzemi modell támogatja, néhány csak a klasszikus üzemi modell támogatja, és néhány egyaránt támogatja. Az egyes Azure-szolgáltatások dokumentációját Itt adhatja meg, mely támogatja a modellek.
 
-## <a name="fault-domain"></a>Hibatartomány
-A gyűjteményben található virtuális gépek rendelkezésre állási csoportok, amelyek valószínűleg egyszerre meghiúsulhat. Példa: gépcsoport szekrényben, amelyek egy közös power forrás- és a hálózati kapcsolóhoz. Az Azure a virtuális gépek rendelkezésre állási csoportba automatikusan egymástól több tartalék tartományokban.  
-Lásd: [Windows virtuális gépek rendelkezésre állásának kezelése](virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) vagy [Linux virtuális gépek rendelkezésre állásának kezelése](virtual-machines/linux/manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)  
+## <a name="fault-domain"></a>Tartalék tartomány
+A gyűjtemény virtuális gépek rendelkezésre állási csoportban, amely egyszerre esetleg sikertelen lehet. Példa olyan rendelkező gépek állványra közös áramforrással és hálózati kapcsolóval. Az Azure-ban egy rendelkezésre állási csoportban lévő virtuális gépek automatikusan egymástól több tartalék tartomány között.  
+Lásd: [Windows virtuális gépek rendelkezésre állásának kezelése](virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) vagy [Linux rendszerű virtuális gépek rendelkezésre állásának kezelése](virtual-machines/linux/manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)  
 
-## <a name="geo"></a>földrajzi
-A két vagy több régió általában tartalmazó adatok rezidens meghatározott határ. A határok belül vagy kívül nemzeti szegélyek, és adó szabályozás befolyásolják. Minden földrajzi legalább egy régió tartozik. Geos példák Ázsia Csendes-óceáni és japán. Más néven *geográfiai*.  
+## <a name="geo"></a>Georedundáns
+Adattárolás általában két vagy több régióban tartalmazó megadott határértékkel. A határok belül vagy országhatáron túl is lehet, és adó rendelet vannak hatással. Minden egyes földrajzi legalább egy régió tartozik. Helyeken példák Ázsia Csendes-óceáni és japán. Más néven *földrajzi*.  
 Lásd: [Azure-régiók](best-practices-availability-paired-regions.md)
 
-## <a name="geo-replication"></a>a georeplikáció
-A folyamat automatikusan replikálása tartalmának, például a blobot, táblát és üzenetsort, egy regionális pár belül.  
-Lásd: [aktív Georeplikáció Azure SQL-adatbázis](sql-database/sql-database-geo-replication-overview.md)
+## <a name="geo-replication"></a>Georeplikáció
+Automatikusan replikálja a tartalmat, például blobok, táblák és üzenetsorok belül egy regionális párokból érdemes folyamata.  
+Lásd: [aktív Georeplikáció az Azure SQL Database-hez](sql-database/sql-database-geo-replication-overview.md)
 <!-- The meaning of "geo" in this term seems to be different than the meaning provided in the "geo" entry -->
 
-## <a name="image"></a>Kép
-A fájl, amely tartalmazza az operációs rendszer és az alkalmazás konfigurációját, tetszőleges számú virtuális gépek létrehozásához használható. Az Azure-ban lemezképek két típusa van: virtuális gép lemezképét és az operációsrendszer-lemezképek. Egy Virtuálisgép-lemezkép az operációs rendszer és a lemezkép létrehozásakor a virtuális géphez csatolt összes lemezt tartalmaz. Az operációsrendszer-lemezképek operációs rendszer nélküli adatok lemezkonfigurációkkal valóüzemeltetése csak egy általánosított tartalmazza.  
-Lásd: [keresse meg és jelölje be a Windows virtuálisgép-rendszerképek a PowerShell vagy a CLI Azure-ban](virtual-machines/windows/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+## <a name="image"></a>image
+Egy fájl, amely tartalmazza az operációs rendszer és alkalmazás-konfigurációs tetszőleges számú virtuális gépek létrehozásához használható. Az Azure-beli lemezképek két típusa van: virtuális gép kép- és operációsrendszer-lemezkép. Virtuálisgép-rendszerkép tartalmazza az operációs rendszer és a rendszerkép létrehozásakor egy virtuális géphez csatlakoztatott összes lemez. Operációsrendszer-lemezkép csak egy általánosított operációs rendszer, amely nincs adatok lemezkonfigurációk tartalmazza.  
+Lásd: [navigálása és kiválasztása Windows virtuálisgép-lemezképek az Azure-ban a PowerShell vagy a parancssori felület](virtual-machines/windows/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 ## <a name="limits"></a>Korlátok
-Erőforrások hozható létre vagy a teljesítmény teljesítményteszt elérhető száma. Korlátok általában társított előfizetéseket, szolgáltatások és ajánlatokat.  
-Lásd: [Azure-előfizetés és szolgáltatási korlátok, kvóták és megkötések](azure-subscription-service-limits.md)
+Erőforrások hozhatók létre, vagy a teljesítmény a teljesítményteszt elérhető száma. Korlátok általában tartoznak előfizetések, szolgáltatások és a is.  
+Lásd: [Azure-előfizetés és a szolgáltatások korlátozásai, kvótái és megkötései](azure-subscription-service-limits.md)
 
 ## <a name="load-balancer"></a>Terheléselosztó
-Ez az erőforrás osztja el a bejövő forgalmat a hálózaton lévő számítógépek között. Az Azure terheléselosztó osztja el a forgalmat a virtuális gépek definiált egy terheléselosztó készlet. A [terheléselosztó](load-balancer/load-balancer-overview.md) internetre is lehetnek, vagy belső lehet.  
+Egy erőforrás, amely elosztja a bejövő forgalmat a hálózaton lévő számítógépek között. Az Azure-ban a terheléselosztó elosztja a forgalmat egy terheléselosztó készlet meghatározott virtuális gépek között. A [terheléselosztó](load-balancer/load-balancer-overview.md) lehet internetkapcsolattal rendelkező vagy belső is lehet.  
 
 ## <a name="mobile-app"></a>mobilalkalmazás
-Egy másik nevet [App Service-alkalmazást](#app-service-app).
+Egy másik nevet [App Service-alkalmazás](#app-service-app).
 
 ## <a name="offer"></a>ajánlat
-A díjszabás kreditek és az Azure-előfizetésre vonatkozó kapcsolódó fogalmak.  
-Tekintse meg a [Azure-ajánlat a Részletek lap](https://azure.microsoft.com/support/legal/offer-details/)
+A díjszabás, kreditek és érvényes Azure-előfizetéshez kapcsolódó feltételeket.  
+Tekintse meg a [Azure-ajánlat részletei lap](https://azure.microsoft.com/support/legal/offer-details/)
 
 ## <a name="portal"></a>portal
-A biztonságos webes portál telepítése és kezelése az Azure-szolgáltatásokhoz használt.
+A biztonságos webes portál üzembe helyezése és kezelése az Azure-szolgáltatások segítségével.
 
 ## <a name="region"></a>régió
-Olyan, amely közötti nemzeti szegélyek, és egy vagy több adatközpontok tartalmaz egy földrajzi területen. Árképzési regionális szolgáltatások és típusú ki vannak téve a régió szinten. A régió általában párosítani egy másik régióban, amely lehet akár több száz miles számítógépnél. Regionális párok alkalmas mechanizmusaként vész-helyreállítási és magas rendelkezésre állás elérésére. Más néven *hely*.  
+Egy adott területre, amely nem közötti nemzeti határok, és a egy vagy több adatközpont tartalmaz egy-egy térségen belül. Díjszabás, regionális szolgáltatások és ajánlattípusokról régió szinten érhetők el. A régiót általában párban áll egy másik régióban, amely lehet akár több száz mérföld távolságban. Regionális párokról a magas rendelkezésre állású és vész-helyreállítási mechanizmusként használható. Más néven *hely*.  
 Lásd: [Azure-régiók](best-practices-availability-paired-regions.md)
 
 ## <a name="resource"></a>erőforrás
-Az Azure-megoldás részét képező cikk. Minden Azure szolgáltatás lehetővé teszi különböző típusú erőforrások, például az adatbázisok és virtuális gépek telepítését.   
+Egy elem, amely az Azure-megoldás része. Minden egyes Azure-szolgáltatás lehetővé teszi a különböző típusú erőforrások, például adatbázisok és virtuális gépek üzembe helyezését.   
 Lásd: [Azure Resource Manager áttekintése](azure-resource-manager/resource-group-overview.md)
 
 ## <a name="resource-group"></a>erőforráscsoport
-A tároló az erőforrás-kezelőben, amely az alkalmazáshoz kapcsolódó erőforrásokat tárol. Az erőforráscsoport tartalmazhatnak valamennyi az erőforrásokat az alkalmazáshoz, és csak azokat az erőforrásokat, amelyek logikailag egy csoportba tartoznak. Eldöntheti, hogyan kívánja kiosztani az erőforrásokat az erőforráscsoportokba a szervezetének legmegfelelőbb módon.  
+A tároló a Resource Managerben, amely alkalmazásokhoz kapcsolódó erőforrásokat tárol. Az erőforráscsoport tartalmazhatja az alkalmazás erőforrását, vagy csak azokat az erőforrásokat, amelyek logikailag mindegyikét. Eldöntheti, hogyan kívánja kiosztani az erőforrásokat az erőforráscsoportokba a szervezetének legmegfelelőbb módon.  
 Lásd: [Azure Resource Manager áttekintése](azure-resource-manager/resource-group-overview.md)
 
 ## <a name="arm-template"></a>Resource Manager-sablon
-A JSON-fájl, amely egy vagy több Azure-erőforrások deklaratív módon definiálja, és, amely meghatározza, hogy a telepített erőforrások közti függőségeket. A sablon erőforrások konzisztens és ismétlődő telepítésére használandó.  
+Egy JSON-fájlt, amely deklaratív meghatározza egy vagy több Azure-erőforrások és, amely meghatározza, hogy a telepített erőforrások közti függőségeket. A sablon erőforrások konzisztens és ismétlődő telepítésére használandó.  
 Lásd: [Azure Resource Manager-sablonok készítése](resource-group-authoring-templates.md)
 
 ## <a name="resource-provider"></a>erőforrás-szolgáltató
-Az erőforrások, telepítheti és kezelheti a Resource Manageren keresztül biztosító szolgáltatás. Mindegyik erőforrás-szolgáltató műveleteket biztosít a telepített erőforrásokkal folytatott munkához. Erőforrás-szolgáltató az Azure portál, Azure PowerShell és több programozási SDK is elérhetőek.  
+Egy szolgáltatás, amely az erőforrásokat, akkor telepítheti és kezelheti a Resource Manageren keresztül. Mindegyik erőforrás-szolgáltató műveleteket biztosít a telepített erőforrásokkal folytatott munkához. Erőforrás-szolgáltatók az Azure Portalon, az Azure PowerShell és a számos programozási SDK-k érhetők el.  
 Lásd: [Azure Resource Manager áttekintése](azure-resource-manager/resource-group-overview.md)
 
 ## <a name="role"></a>szerepkör
-Eszköz hozzárendelheti a felhasználók, csoportok és a szolgáltatások hozzáférés szabályozása. Szerepköröket használják, mint például létrehozása, kezelése, és az Azure-erőforrások olvasási műveleteket végezhet.  
+Hanem a hozzáférés-felhasználók, csoportok és szolgáltatásokat kell hozzárendelni. Ezek tudni elvégezni a műveleteket, mint például létrehozása, kezelése, és olvassa el az Azure-erőforrás.  
 Lásd: [RBAC: beépített szerepkörök](role-based-access-control/built-in-roles.md)
 
-## <a name="sla"></a>Szolgáltatásiszint-szerződéssel (SLA)
-A szerződést, amely leírja a Microsoft felé vállalt kötelezettségeinket hasznos üzemidő és kapcsolatot. Minden Azure szolgáltatásnak van egy adott SLA-t.  
-Lásd: [szolgáltatási szintek](https://azure.microsoft.com/support/legal/sla/)
+## <a name="sla"></a>szolgáltatói szerződés (SLA)
+A szerződést, amely a Microsoft elkötelezettségét a üzemidejével és elérhetőségével. Minden Azure szolgáltatásnak van egy adott SLA-t.  
+Lásd: [szolgáltatói szerződések](https://azure.microsoft.com/support/legal/sla/)
 
-## <a name="sas"></a>Közös hozzáférésű jogosultságkód (SAS)
-Olyan aláírása, amely lehetővé teszi a hozzáférést csak egy erőforráshoz, anélkül, hogy a fiókkulcs. Például [Azure Storage használt SAS](storage/common/storage-dotnet-shared-access-signature-part-1.md) objektumok, például a blobok ügyfél hozzáférést. [Az IoT-központ által használt SAS](iot-hub/iot-hub-devguide-security.md#security-tokens) engedélyt szeretne megadni eszközök telemetriai adatokat küldhet.
+## <a name="sas"></a>közös hozzáférésű jogosultságkód (SAS)
+Aláírás, amely lehetővé teszi, meg kell adnia egy erőforrást, korlátozott hozzáférésű anélkül, hogy a fiókkulcs. Ha például [Azure Storage használ az SAS](storage/common/storage-dotnet-shared-access-signature-part-1.md) ügyfél hozzáférést, mint a blobok objektumok. [IoT Hub ezekkel az SAS](iot-hub/iot-hub-devguide-security.md#security-tokens) eszközök telemetriát küldjön engedélyt adni.
 
 ## <a name="storage-account"></a>tárfiók
-Amely lehetővé teszi az Azure Storage Azure Blob, a várólista, a tábla és a fájl szolgáltatások elérését. A tárfiók nevét határozza meg az egyedi névteret Azure Storage-adatobjektumok.  
+Egy fiókot, amely lehetővé teszi az Azure Blob, üzenetsor, tábla és fájl az Azure Storage szolgáltatásaihoz való hozzáférést. A tárfiók nevét határozza meg az egyedi névteret Azure Storage-adatobjektumaihoz.  
 Lásd: [tudnivalók az Azure storage-fiókok](storage/common/storage-create-storage-account.md)
 
 ## <a name="subscription"></a>előfizetést
-Az ügyfél Microsofttal, amely lehetővé teszi őket Azure-szolgáltatásokhoz. Az előfizetés árak és a kapcsolódó fogalmak az előfizetés a kiválasztott ajánlat szabályozzák.
-Lásd: [Microsoft Online előfizetői szerződés](https://azure.microsoft.com/support/legal/subscription-agreement/) és [kapcsolódnak hogyan Azure-előfizetések az Azure Active Directoryval](active-directory/active-directory-how-subscriptions-associated-directory.md)
+Az ügyfél szerződést a Microsofttal, amely lehetővé teszi, hogy szerezze be az Azure-szolgáltatásokat. Az ajánlatot az előfizetéshez kiválasztott előfizetési díjak és kapcsolódó feltételek vonatkoznak rájuk.
+Lásd: [Microsoft Online előfizetői szerződés](https://azure.microsoft.com/support/legal/subscription-agreement/) és [kapcsolódnak az Azure-előfizetések az Azure Active Directory](active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
 
 ## <a name="tag"></a>címke
-Az indexelő kifejezés, amely lehetővé teszi, hogy a felügyeleti vagy számlázási követelményeinek megfelelően kategorizálhatja az erőforrásokat. Ha rendelkezik olyan összetett erőforrások gyűjteménye, a címkék segítségével vizuálisan megjeleníteni az eszközöket a legtöbb legjobb módja. Például elláthat címkével olyan erőforrásokat, amelyek hasonló szerepet töltenek be a szervezetben, vagy ugyanahhoz a részleghez tartoznak.  
+Az indexelő kifejezés, amely lehetővé teszi, hogy a felügyeleti vagy számlázási követelményeinek megfelelően kategorizálhatja az erőforrásokat. Összetett erőforrások gyűjteménye, ha a címkék használatával vizuálisan megjeleníteni az eszközöket, amelyek a legésszerűbb módon. Például elláthat címkével olyan erőforrásokat, amelyek hasonló szerepet töltenek be a szervezetben, vagy ugyanahhoz a részleghez tartoznak.  
 Lásd: [az Azure-erőforrások rendszerezése címkék használatával](resource-group-using-tags.md)
 
-## <a name="update-domain"></a>Tartomány frissítése
-A gyűjteményben található virtuális gépek rendelkezésre állási csoport, amely egyszerre frissülnek. Az azonos frissítési tartományban lévő virtuális gépek tervezett karbantartás során együtt újraindul. Azure soha nem indít egynél több frissítési tartományt egyszerre. Más néven frissítési tartományokhoz.  
-Lásd: [Windows virtuális gépek rendelkezésre állásának kezelése](virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) és [Linux virtuális gépek rendelkezésre állásának kezelése](virtual-machines/linux/manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+## <a name="update-domain"></a>Frissítési tartomány
+A virtuális gépek rendelkezésre állási csoportban egyszerre frissítendő gyűjtemény. Az azonos frissítési tartományban található virtuális gépek rendszer egyszerre indítja újra a tervezett karbantartás során. Azure egyszerre nem indul újra egynél több frissítési tartományt. Más néven a frissítési tartomány.  
+Lásd: [Windows virtuális gépek rendelkezésre állásának kezelése](virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) és [Linux rendszerű virtuális gépek rendelkezésre állásának kezelése](virtual-machines/linux/manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ## <a name="vm"></a>Virtuális gép
-A szoftver végrehajtásának egy operációs rendszert futtató fizikai számítógépre. Több virtuális gép is futtatható egyidejűleg ugyanazon a hardveren. Az Azure virtuális gépek elérhetők a különböző méretű.  
+A szoftver megvalósítását egy operációs rendszert futtató fizikai számítógépre. Több virtuális gép futtatható egyszerre ugyanazt a hardvert. Az Azure-ban a virtuális gépek különböző méretű érhető el.  
 Lásd: [Virtual Machines – dokumentáció](https://azure.microsoft.com/documentation/services/virtual-machines/)
 
 ## <a name="vm-extension"></a>Virtuálisgép-bővítmény
-Viselkedéshez vagy szolgáltatásokat vagy más programok működik, vagy biztosítson a működésre képes futó számítógép megvalósító erőforrás. A virtuális gép hozzáférési bővítmény segítségével például alaphelyzetbe állítása, vagy módosíthatja a távelérés értékek Azure virtuális géphez.
+Egy erőforrás, amely megvalósítja a viselkedés vagy szolgáltatásokat vagy más programok működik, vagy arra, hogy az, hogy a futó számítógép biztosítson. Használhatja például a Virtuálisgép-hozzáférési bővítmény alaphelyzetbe állítása, vagy módosítsa a távelérési értékeket egy Azure virtuális gépen.
 <!-- This definition seems obscure to me; maybe a list of examples would work better than a conceptual definition? -->
-Lásd: [virtuálisgép-bővítmények és szolgáltatásokról (Windows)](virtual-machines/windows/extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) vagy [virtuálisgép-bővítmények és szolgáltatásokról (Linux)](virtual-machines/linux/extensions-features.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+Lásd: [virtuális gépi bővítmények és szolgáltatások (Windows) kapcsolatos](virtual-machines/windows/extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) vagy [virtuális gépi bővítmények és szolgáltatások (Linux)](virtual-machines/linux/extensions-features.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ## <a name="vnet"></a>Virtuális hálózat
-A hálózat, amely kapcsolatot biztosít az Azure-erőforrások, hogy el van különítve a többi Azure bérlők között. Egy [Azure VPN Gateway](vpn-gateway/vpn-gateway-about-vpngateways.md) lehetővé teszi, hogy a virtuális hálózatok közötti kapcsolatokat létesíteni és [egy virtuális és egy a helyszíni hálózat között](vpn-gateway/vpn-gateway-plan-design.md). Az IP-címblokkok, a DNS-beállítások, a biztonsági házirendek és a útvonaltáblák a virtuális hálózaton belül teljes mértékben irányíthatja.  
+Az Azure-erőforrások, amelyek el van különítve a többi Azure bérlő közötti kapcsolatot biztosít a hálózat. Egy [Azure VPN Gateway](vpn-gateway/vpn-gateway-about-vpngateways.md) lehetővé teszi a virtuális hálózatok közötti kapcsolatokat hozhat létre és [egy virtuális hálózat és a egy helyszíni hálózat között](vpn-gateway/vpn-gateway-plan-design.md). Teljes körűen szabályozhatja az IP-címblokkok, a DNS-beállítások, a biztonsági szabályzatok és a virtuális hálózaton belüli útválasztási táblázatokat.  
 Lásd: [Virtual Network áttekintése](virtual-network/virtual-networks-overview.md)  
 
 ## <a name="web-app"></a>Webalkalmazás
-Egy másik nevet [App Service-alkalmazást](#app-service-app).
+Egy másik nevet [App Service-alkalmazás](#app-service-app).
 
 ## <a name="see-also"></a>Lásd még
 
 * [Bevezetés az Azure használatába](https://azure.microsoft.com/get-started/)
-* [Felhő erőforrás center](https://azure.microsoft.com/resources/)  
-* [Az üzleti alkalmazás az Azure-ral](https://azure.microsoft.com/overview/business-apps-on-azure/)
-* [Az Adatközpont Azure](https://azure.microsoft.com/overview/business-apps-on-azure/)
+* [Felhőerőforrás-központ](https://azure.microsoft.com/resources/)  
+* [Az Azure az üzleti alkalmazás](https://azure.microsoft.com/overview/business-apps-on-azure/)
+* [A helyi adatközpontban Azure](https://azure.microsoft.com/overview/business-apps-on-azure/)
 

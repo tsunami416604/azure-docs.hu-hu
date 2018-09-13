@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: 6643db7b732cc5b01ce7602eb3d679c130c46720
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: eab55f6e2bf909ccdbdb30a8ced34dbc58d3954a
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38972196"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44721330"
 ---
 # <a name="azure-security-technical-capabilities"></a>Az Azure biztonságtechnikai képességek
 
@@ -43,7 +43,7 @@ A Microsoft Azure révén a következőket teheti:
 
 ## <a name="scope"></a>Hatókör
 
-Ebben a tanulmányban folytatásakor vonatkozik, biztonsági szolgáltatásokat és funkciókat, a Microsoft Azure-alapösszetevők, nevezetesen támogató [a Microsoft Azure Storage](https://docs.microsoft.com/azure/storage/storage-introduction), [a Microsoft Azure SQL Database-adatbázisok](https://docs.microsoft.com/azure/sql-database/), [ A Microsoft Azure virtuális gép modell](https://docs.microsoft.com/azure/virtual-machines/), és az eszközök, infrastruktúra, amely minden kezelheti. A Microsoft Azure technikai elérhető lehetőségeket, az ügyfelek biztonsági és adatvédelmi adataik védelmére a szerepkörük teljesítéséhez tanulmány koncentrálhat.
+Ebben a tanulmányban folytatásakor vonatkozik, biztonsági szolgáltatásokat és funkciókat, a Microsoft Azure-alapösszetevők, nevezetesen támogató [a Microsoft Azure Storage](https://docs.microsoft.com/azure/storage/storage-introduction), [Microsoft Azure SQL Database](https://docs.microsoft.com/azure/sql-database/), [ A Microsoft Azure virtuális gép modell](https://docs.microsoft.com/azure/virtual-machines/), és az eszközök, infrastruktúra, amely minden kezelheti. A Microsoft Azure technikai elérhető lehetőségeket, az ügyfelek biztonsági és adatvédelmi adataik védelmére a szerepkörük teljesítéséhez tanulmány koncentrálhat.
 
 A közös felelősség modell ismertetése fontossága alapvető fontosságú ügyfelek esetében, akik a felhőbe áthelyezni. A felhőszolgáltatók biztonság és megfelelőség erőfeszítések jelentős előnyöket kínál, de ezeket az előnyöket nem az ügyfél a felhasználók, alkalmazások és szolgáltatásajánlatok védjék absolve.
 
@@ -63,7 +63,7 @@ Az Azure segít az üzleti és személyes adatok védelme, hogy a felhasználói
 
 ### <a name="azure-active-directory"></a>Azure Active Directory
 
-A Microsoft identitás- és hozzáférés felügyeleti megoldások segítséget nyújt az informatikai való hozzáférés védelme az alkalmazások és erőforrások a vállalati adatközpontok és a felhőben, például a többtényezős hitelesítés és feltételes hozzáférési érvényesítési szintű engedélyezése házirendek. Gyanús tevékenységek figyelése keresztül a speciális biztonsági jelentések, a naplózás és a riasztási segít mérsékelni a potenciális biztonsági problémákat. [Az Azure Active Directory Premium](https://docs.microsoft.com/azure/active-directory/active-directory-editions) biztosít egyszeri bejelentkezés több ezer felhőalapú (SaaS) alkalmazások és webalkalmazások hozzáférést a helyszíni futtatása.
+A Microsoft identitás- és hozzáférés felügyeleti megoldások segítséget nyújt az informatikai való hozzáférés védelme az alkalmazások és erőforrások a vállalati adatközpontok és a felhőben, például a többtényezős hitelesítés és feltételes hozzáférési érvényesítési szintű engedélyezése házirendek. A gyanús tevékenységek monitorozása speciális biztonsági jelentések kiadásán, naplózáson és riasztásokon keresztül valósul meg, így csökkenthető a potenciális biztonsági problémák kockázata. [Az Azure Active Directory Premium](https://docs.microsoft.com/azure/active-directory/active-directory-editions) biztosít egyszeri bejelentkezés több ezer felhőalapú (SaaS) alkalmazások és webalkalmazások hozzáférést a helyszíni futtatása.
 
 Az Azure Active Directory (Azure AD) biztonsági funkcióit is tartalmazzák:
 

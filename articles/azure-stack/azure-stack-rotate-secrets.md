@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 09/06/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: dacfa738a99eb2d580d825957d09b2b1a3111e93
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: b0fe9acc187aab87e8ee0528cf998e2ef923f897
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44051393"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44722010"
 ---
 # <a name="rotate-secrets-in-azure-stack"></a>Azure Stack titkos kulcsainak rotálása
 
@@ -110,6 +110,8 @@ Mind a külső egy belső titkos kulcs rotálása:
     A jelszót az összes létrehozott pfx-tanúsítvány fájlokat egy biztonságos karakterláncot.
 4. Várjon, amíg a titkos kulcsok elforgatása.  
 Titkos kód Elforgatás sikeres befejeződése után a konzol megjeleníti **összesített művelet állapota: sikeres**. 
+    > [!note]  
+    > Ha titkos elforgatás nem sikerül, kövesse a hibaüzenet a, és futtassa újra a start-secretrotation az a **-ismétlés** paraméter. Forduljon az ügyfélszolgálathoz tapasztal titkos Elforgatás hibák ismétlődik. 
 5. Titkos elforgatásának szögét a sikeres telepítést követően távolítsa el a tanúsítványokat az üzem előtti. lépésében létrehozott megosztás, és azok biztonságos biztonsági mentési helyen tárolja őket. 
 
 ## <a name="walkthrough-of-secret-rotation"></a>Titkos kód elforgatásának szögét forgatókönyv
@@ -136,6 +138,10 @@ Csak az Azure Stack belső titkos kulcsok rotálására:
 
 1. Hozzon létre egy PowerShell-munkamenetet a [kiemelt végponthoz](https://docs.microsoft.com/azure/azure-stack/azure-stack-privileged-endpoint).
 2. A kiemelt végponthoz-munkamenetben futtassa **Start-SecretRotation** argumentumok nélkül.
+3. Várjon, amíg a titkos kulcsok elforgatása.  
+Titkos kód Elforgatás sikeres befejeződése után a konzol megjeleníti **összesített művelet állapota: sikeres**. 
+    > [!note]  
+    > Ha titkos elforgatás nem sikerül, kövesse a hibaüzenet a, és futtassa újra a start-secretrotation az a **-futtassa újra a** paraméter. Forduljon az ügyfélszolgálathoz tapasztal titkos Elforgatás hibák ismétlődik. 
 
 ## <a name="start-secretrotation-reference"></a>Start-SecretRotation referencia
 

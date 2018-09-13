@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: abnarain
-ms.openlocfilehash: 7948b54bd6402cf238c5709d270087746ed4fa95
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 7cd5fc965a57052323d4b916f0f2b7dbc0feb7b3
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44380369"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44715414"
 ---
 # <a name="how-to-create-and-configure-self-hosted-integration-runtime"></a>Hogyan hozhat létre, és a helyi integrációs modul konfigurálása
 Az Integration Runtime (IR) a különböző hálózati környezetekben adatintegrációs képességeket biztosít az Azure Data Factory által használt számítási infrastruktúra áll. Integrációs modul kapcsolatos részletekért lásd: [Integration Runtime áttekintése](concepts-integration-runtime.md).
@@ -57,7 +57,7 @@ Amikor a helyszíni és a felhő között helyezi át az adatokat, a tevékenys�
 
 ## <a name="considerations-for-using-self-hosted-ir"></a>Saját üzemeltetésű integrációs modul használatának szempontjai
 
-- Saját üzemeltetésű integrációs több helyszíni adatforrás is használható. Azonban egy **csak egy Azure data Factory egy saját üzemeltetésű integrációs modul kötődik** és a egy másik data factory nem osztható.
+- Saját üzemeltetésű integrációs több helyszíni adatforrás is használható. A **egy saját üzemeltetésű integrációs modult is** oszthatók meg az Azure Active Directory ugyanazon a bérlőn belül egy másik data factoryt. További részletekért lásd: [megosztása egy saját üzemeltetésű integrációs modul](#sharing-the-self-hosted-integration-runtime-ir-with-multiple-data-factories).
 - Rendelkezhet **csak egy példányát a saját üzemeltetésű integrációs modul** egyetlen gépen telepítve van. Tegyük fel, a helyszíni adatforrások elérését igénylő két adat-előállítók rendelkezik, saját üzemeltetésű integrációs modul telepítése a két helyszíni számítógépeken kell. Más szóval vannak kötve egy saját üzemeltetésű integrációs modult egy adott adat-előállítót
 - A **saját üzemeltetésű integrációs modul nem kell ugyanarra a gépre adatforrásként**. Azonban kellene saját üzemeltetésű integrációs modult az adatforrás közelebb csökkenti az idő a saját üzemeltetésű integrációs modul kapcsolódni az adatforráshoz. Javasoljuk, hogy telepítse a saját üzemeltetésű integrációs modul olyan számítógépen, amelyen eltér a gazdagép a helyszíni adatforrás. Ha a saját üzemeltetésű integrációs modul és az adatforrás különböző gépeken vannak, a saját üzemeltetésű integrációs modul nem versengenek adatforrás erőforrás esetén.
 - Rendelkezhet **több saját üzemeltetésű integrációs modulok ugyanazon a helyszíni adatforráshoz csatlakozik, különböző gépeken**. Például előfordulhat, hogy adat-előállítók két kiszolgáló két saját üzemeltetésű integrációs modult, de ugyanazon a helyszíni adatforrás regisztrálva van a mindkét az adat-előállítók.

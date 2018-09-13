@@ -1,51 +1,51 @@
 ---
-title: Példa átalakító adatfolyam-átalakításokat tesz lehetővé Azure Machine Learning adatok előkészítése |} Microsoft Docs
-description: Ez a dokumentum számos példát átalakítási adatok folyamata átalakítások lehetséges az Azure Machine Learning adatok előkészítése
+title: Példa átalakító adatfolyam lehetséges az Azure Machine Learning adat-előkészítési átalakítások |} A Microsoft Docs
+description: Ez a dokumentum számos új példák átalakítási adatok folyamatot átalakítások lehetséges az Azure Machine Learning adat-előkészítés
 services: machine-learning
 author: euangMS
 ms.author: euang
 manager: lanceo
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.custom: ''
 ms.devlang: ''
 ms.topic: article
 ms.date: 02/01/2018
-ms.openlocfilehash: 655e9d41911fbb008470cf58b2538407933787bd
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: ca780b51973a960caec3b9b7a80c8ba5621b5a0b
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34832074"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35646060"
 ---
-# <a name="sample-of-custom-data-flow-transforms-python"></a>Egyéni adatok folyamata átalakítások (Python) minta 
-A menü átalakító neve **átalakítási Adatfolyamblokk (parancsfájl)**. Ahhoz, hogy olvassa el a jelen függelék, olvassa el a [Python bővítési áttekintése](data-prep-python-extensibility-overview.md).
+# <a name="sample-of-custom-data-flow-transforms-python"></a>Egyéni adatok folyamatot átalakítások (Python) minta 
+A menüben megtekintheti az átalakítás neve **adatfolyam átalakítása (szkript)**. Mielőtt, olvassa el a jelen függelék, olvassa el a [Python bővíthetőség áttekintése](data-prep-python-extensibility-overview.md).
 
 ## <a name="transform-frame"></a>Keret átalakítása
-### <a name="create-a-new-column-dynamically"></a>Egy olyan új oszlop létrehozása dinamikusan 
-Egy oszlop dinamikusan jön létre (**city2**) és egy, a meglévő város oszlopból egyezteti a San Francisco több különböző verziói.
+### <a name="create-a-new-column-dynamically"></a>Dinamikusan egy olyan új oszlop létrehozása 
+Oszlop dinamikusan jön létre (**város2**) és egy, a meglévő Város oszlop összehangolja a San Franciscóban több különböző verzióit.
 ```python
     df.loc[(df['city'] == 'San Francisco') | (df['city'] == 'SF') | (df['city'] == 'S.F.') | (df['city'] == 'SAN FRANCISCO'), 'city2'] = 'San Francisco'
 ```
 
 ### <a name="add-new-aggregates"></a>Új összesítések hozzáadása
-Az első és utolsó összesíti a pontszám oszlop számított hoz létre egy új keret. Ezek szerint vannak csoportosítva a **risk_category** oszlop.
+A kiszámított pontszámot oszlop első és utolsó összesítések hoz létre egy új keretet. Ezek csoportosítva a **risk_category** oszlop.
 ```python
     df = df.groupby(['risk_category'])['Score'].agg(['first','last'])
 ```
 ### <a name="winsorize-a-column"></a>Egy oszlop Winsorize 
-Reformulates képlet csökkenti a kiugró egy oszlop felel meg az adatokat.
+Reformulates csökkentése érdekében a kiugró értékek egy oszlopot a képlet az adatokat.
 ```python
     import scipy.stats as stats
     df['Last Order'] = stats.mstats.winsorize(df['Last Order'].values, limits=0.4)
 ```
 
-## <a name="transform-data-flow"></a>Átalakítás adatfolyama
-### <a name="fill-down"></a>Lefelé kitölti 
+## <a name="transform-data-flow"></a>Adatfolyam átalakítása
+### <a name="fill-down"></a>Kitöltés lefelé 
 
-Kitöltés lefelé két átalakítások igényel. Azt feltételezi, hogy a következő táblázat a következőképpen néz adatokat:
+Kitöltés lefelé két átalakítások van szükség. Feltételezi, hogy néz ki a következő táblázat adatainak:
 
 |Állapot         |Város       |
 |--------------|-----------|
@@ -54,39 +54,39 @@ Kitöltés lefelé két átalakítások igényel. Azt feltételezi, hogy a köve
 |              |Issaquahi   |
 |              |Seattle    |
 |Kalifornia    |Los Angeles|
-|              |San Diego  |
+|              |A San Diego  |
 |              |San Jose   |
 |Texas         |Dallas     |
-|              |San Antonio|
+|              |A San Antonio|
 |              |Houston    |
 
-1. Hozzon létre egy "Oszlop (parancsfájl) hozzáadása" átalakító, a következő kódot:
+1. Hozzon létre egy "Hozzáadása (szkript) oszlop" átalakítás az alábbi kód használatával:
 ```python
     row['State'] if len(row['State']) > 0 else None
 ```
 
-2. Hozzon létre egy "Átalakító adatfolyama (parancsfájl)" átalakító, amely tartalmazza a következő kódot:
+2. Hozzon létre egy "Átalakító adatfolyama (szkript)" átalakítás, amely a következő kódot tartalmazza:
 ```python
     df = df.fillna( method='pad')
 ```
 
-Az adatok mostantól néz ki a következő táblázatban:
+Az adatok most már a következő táblázat hasonlóan néz ki:
 
-|Állapot         |newState         |Város       |
+|Állapot         |Új állapot         |Város       |
 |--------------|--------------|-----------|
 |Washington    |Washington    |Redmond    |
 |              |Washington    |Bellevue   |
 |              |Washington    |Issaquahi   |
 |              |Washington    |Seattle    |
 |Kalifornia    |Kalifornia    |Los Angeles|
-|              |Kalifornia    |San Diego  |
+|              |Kalifornia    |A San Diego  |
 |              |Kalifornia    |San Jose   |
 |Texas         |Texas         |Dallas     |
-|              |Texas         |San Antonio|
+|              |Texas         |A San Antonio|
 |              |Texas         |Houston    |
 
 
-### <a name="min-max-normalization"></a>Minimális-maximális értéke
+### <a name="min-max-normalization"></a>Min-max normalizálási
 ```python
     df["NewCol"] = (df["Col1"]-df["Col1"].mean())/df["Col1"].std()
 ```

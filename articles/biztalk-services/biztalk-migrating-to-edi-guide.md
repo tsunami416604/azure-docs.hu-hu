@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 07/31/2018
 ms.reviewer: jonfan, LADocs
 ms.suite: integration
-ms.openlocfilehash: 4ce65f1b5dd22da031ebf6730b5efad2d04f91a0
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 001dc4d5057767191003697c5fb819e53a8658f2
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39365587"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44719936"
 ---
 # <a name="migrate-biztalk-server-edi-solutions-to-biztalk-services-technical-guide"></a>BizTalk Server EDI-megoldások áttelepítése a BizTalk Services: műszaki útmutató
 
@@ -55,7 +55,7 @@ A fő különbségeket, és a egy EDI megoldási folyamat a BizTalk Server és a
   
     A BizTalk Services Miután megkapják az EDI híd feldolgozza az EDI-üzenetet, és egy külső folyamatban az üzenet irányítja. A külső folyamatot a Microsoft Azure és a helyszínen is futhat. A külső folyamat kell továbbítsa az üzenetet az EDI-küldési híd; a Küldés híd természetüknél fogva nem kér az üzenetet. Az üzenet feldolgozása után az EDI-küldési híd irányítja az üzenetet a kereskedelmi partner.
 
-BizTalk Services modullal járulékos egy könnyen használható konfigurációs feladatok gyors létrehozása és üzembe helyezése egy kereskedelmi partnerek nélkül konfigurálás minden Microsoft Azure Compute-példány (webes és feldolgozói szerepkörök), a Microsoft Azure SQL-adatbázisok vagy bármely B2B megállapodást A Microsoft Azure storage-fiókok. Az összetettebb esetekhez szükséges a munkafolyamatok vagy más szolgáltatás feldolgozási összeköthető "szélei" egy kereskedelmi partneri szerződés, előtt, vagy kereskedelmi partneri szerződés EDI híd feldolgozása után. Részletesen a következő eseménysorozat fordulhat elő, az EDI-üzenetet a BizTalk Services feldolgozása során.
+BizTalk Services modullal járulékos egy könnyen használható konfigurációs feladatok gyors létrehozása és üzembe helyezése egy B2B megállapodást a kereskedelmi partnerekkel bármely Microsoft Azure számítási példány (webes és feldolgozói szerepkörök), a bármely Microsoft Azure SQL Database-adatbázishoz vagy a konfigurálás nélkül A Microsoft Azure storage-fiókok. Az összetettebb esetekhez szükséges a munkafolyamatok vagy más szolgáltatás feldolgozási összeköthető "szélei" egy kereskedelmi partneri szerződés, előtt, vagy kereskedelmi partneri szerződés EDI híd feldolgozása után. Részletesen a következő eseménysorozat fordulhat elő, az EDI-üzenetet a BizTalk Services feldolgozása során.
 
 1. EDI-üzenetet kapott kereskedelmi partner, a Fabrikam.  EDI-üzenetek fogadása a kereskedelmi partnerekkel, a BizTalk Services támogatja az átviteli protokollokat, például az FTP, illetve SFTP, AS2 és a HTTP/s
 2. A kereskedelmi partneri szerződés fogadóoldali feldolgozás visszafejti az XML formátumú EDI-üzenetet.  (Az XML-formátumú) szétszerelt EDI-üzenetet a Service Bus-végpontokat, például egy Service Bus Relay-végpontot, a Service Bus-témakör, a Service Bus-üzenetsor vagy a BizTalk Services hidat irányíthatja.

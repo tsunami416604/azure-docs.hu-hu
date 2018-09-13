@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/14/2018
 ms.author: kgremban
-ms.openlocfilehash: 068e9a3379bd2762455aade1761592fa70a09a20
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.openlocfilehash: 3c12e98137f44ac094adaae282b5d56d30061e60
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43144378"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44719851"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>IoT Hub-események reagálnak a műveletek indítása Event Grid használatával
 
@@ -34,12 +34,11 @@ Az IoT Hub közzéteszi a következő esemény típusa:
 | Esemény típusa | Leírás |
 | ---------- | ----------- |
 | Microsoft.Devices.DeviceCreated | Amikor regisztrál egy eszközt egy IoT hubra közzé. |
-| Microsoft.Devices.DeviceDeleted | Ha egy eszköz IoT hubról törlik közzé. | 
-| Microsoft.Devices.DeviceConnected | Ha egy eszköz csatlakozik az IoT hub közzé. | 
-| Microsoft.Devices.DeviceDisconnected | Ha egy eszköz nem kapcsolódik az IoT hub közzé. | 
-Fontos megjegyezni, hogy az eszköz csatlakoztatva, és eszköz választva eseményeinek hamarosan engedélyezve lesz a kelet-Kanada és kelet-USA régióban.
+| Microsoft.Devices.DeviceDeleted | Ha egy eszköz IoT hubról törlik közzé. |
+| Microsoft.Devices.DeviceConnected | Ha egy eszköz csatlakozik az IoT hub közzé. |
+| Microsoft.Devices.DeviceDisconnected | Ha egy eszköz nem kapcsolódik az IoT hub közzé. |
 
-Az Azure Portalon vagy az Azure CLI használatával konfigurálása események közzététele az egyes IoT hubról. Tegyük fel, próbálja meg az oktatóanyag [Logic Apps használata az Azure IoT Hub-események küldése e-mailes értesítést](../event-grid/publish-iot-hub-events-to-logic-apps.md). 
+Az Azure Portalon vagy az Azure CLI használatával konfigurálása események közzététele az egyes IoT hubról. Tegyük fel, próbálja meg az oktatóanyag [Logic Apps használata az Azure IoT Hub-események küldése e-mailes értesítést](../event-grid/publish-iot-hub-events-to-logic-apps.md).
 
 ## <a name="event-schema"></a>Eseményséma
 
@@ -146,7 +145,7 @@ Alkalmazások, amelyek kezelik az IoT Hub-események követendő ajánlott eljá
 ## <a name="next-steps"></a>További lépések
 
 * [Próbálja ki az IoT Hub-események oktatóanyag](../event-grid/publish-iot-hub-events-to-logic-apps.md)
-* [Ismerje meg, hogyan eszköz csatlakoztatva, és kapcsolódik az események sorrendjének](../iot-hub/iot-hub-how-to-order-connection-state-events.md)
+* [Ismerje meg, hogyan rendezheti az eszközhöz csatlakoztatott és nem csatlakoztatott eseményeket](../iot-hub/iot-hub-how-to-order-connection-state-events.md)
 * [További információ az Event Grid][lnk-eg-overview]
 * [Hasonlítsa össze az IoT Hub-események és az üzenetek közötti különbségek][lnk-eg-compare]
 

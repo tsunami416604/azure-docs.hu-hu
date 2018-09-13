@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/20/2018
+ms.date: 09/12/2018
 ms.author: brenduns
 ms.reviewer: thoroet
-ms.openlocfilehash: 02602243bcb4e426ebf4984e387da8e8c148232e
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 0899b1784c796e5f6265dda842ca8955615a1584
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42056895"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44718098"
 ---
 # <a name="add-additional-scale-unit-nodes-in-azure-stack"></a>Kiegészítő skálázási egység csomópontok hozzáadása az Azure Stackben
 
@@ -64,7 +64,7 @@ A felügyeleti portálon vagy a PowerShell használatával új csomópontokat. A
 ### <a name="use-the-admin-portal"></a>A felügyeleti portál
 
 1. Jelentkezzen be az Azure Stack rendszergazdai portál az Azure Stack operátorait szerint.
-2. Navigáljon a **új** > **kapacitás** > **egység csomópont méretezése**.
+2. Navigáljon a **+ erőforrás létrehozása** > **kapacitás** > **skálázási egység csomópont**.
    ![Skálázási egység csomópont](media/azure-stack-add-scale-node/select-node1.png)
 3. Az a **csomópont hozzáadása** panelen válassza a *régió*, majd válassza ki a *skálázási egység* , hogy szeretné-e a csomópont hozzáadása. Is megadhat a *BMC IP-cím* a skálázási egység csomópont ad hozzá. Egyszerre csak egy csomópontot adhat hozzá.
    ![Adja hozzá a csomópont részletei](media/azure-stack-add-scale-node/select-node2.png)

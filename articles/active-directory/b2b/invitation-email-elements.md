@@ -1,78 +1,78 @@
 ---
-title: Az elemek a B2B együttműködés meghívó e-mail - Azure Active Directory |} Microsoft Docs
+title: A B2B együttműködés meghívót tartalmazó e - Azure Active Directory elemeinek |} A Microsoft Docs
 description: Az Azure Active Directory B2B együttműködés meghívó e-mail sablon
 services: active-directory
 ms.service: active-directory
 ms.component: B2B
 ms.topic: article
 ms.date: 05/23/2017
-ms.author: twooley
-author: twooley
+ms.author: mimart
+author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: e8285779154914bd09513c057d8e5ae0b6388831
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
-ms.translationtype: HT
+ms.openlocfilehash: 97015706ec883777deba3398910c0c83b88ecde1
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34260063"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35644687"
 ---
-# <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>A B2B együttműködés meghívó e-mail - Azure Active Directory elemei
+# <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>A B2B együttműködés meghívót tartalmazó e - Azure Active Directory elemei
 
-Meghívót e-mailek a board partnerek átveendő az Azure AD B2B együttműködés felhasználóként kritikus összetevője. A címzett megbízhatósági növeléséhez használhatja őket. hozzáadhat érvényességét, és az e-mailt, győződjön meg arról, hogy a címzett közösségi igazolás érzi, válassza a Feladatkezelő a **Ismerkedés** gombra kattintva fogadja el a meghívást. Ebben a megbízhatósági kapcsolatban a kulcs azt jelenti, hogy megosztási súrlódás csökkentése érdekében. És is szeretne az e-mailt remekül!
+Meghívó e-mailek minősítés kulcsfontosságú ahhoz, hogy a partnerek hajón B2B együttműködés felhasználóként az Azure ad-ben. A címzett megbízhatóság növelése érdekében használhatja őket. jogtisztasága adhat hozzá, és az e-mailt, ellenőrizze, hogy a címzett, a közösségi koncepció kapcsolatcsoporté kijelölése magabiztosan a **Ismerkedés** gombra kattintva fogadja el a meghívást. Ebben a megbízhatósági kapcsolatban egy kulcsot azt jelenti, hogy csökkentse a megosztási fennakadások nélkül használható. És szeretné is, hogy az e-mailben remekül!
 
 ![Az Azure AD B2b meghívó e-mail](media/invitation-email-elements/invitation-email.png)
 
-## <a name="explaining-the-email"></a>Ismertető az e-mailben
-Vizsgáljuk meg az e-mailt néhány elemeinek így megtudhatja, hogyan lehet a legjobban azok képességeinek használatához.
+## <a name="explaining-the-email"></a>Az e-mailben tájékoztatja
+Tekintsünk meg néhány elemét az e-mailt, hogy tudja, hogyan lehet a legjobban a képességeinek használata érdekében.
 
 ### <a name="subject"></a>Tárgy
-Az e-mail tárgyát a következő mintát követi: meghívjuk az &lt;tenantname&gt; szervezet
+Az e-mail tárgyában a következő mintát követi: meghívót kapott a &lt;tenantname&gt; szervezet
 
 ### <a name="from-address"></a>Feladó címe
-A LinkedIn-szerű minta a feladó címe az használjuk.  Legyen törölje a jelet a meghívó, aki és amely a vállalati és is elmagyarázza, hogy az e-mailt származik-e a Microsoft e-mail cím. A formátum: &lt;megjelenített nevével meghívó&gt; a &lt;tenantname&gt; (keresztül Microsoft) <invites@microsoft.com>
+A feladó címe LinkedIn-hez hasonló mintát használjuk.  Legyen egyértelmű a meghívót küldő személy, aki és amely vállalati és is elmagyarázza, hogy az e-mail érkezik egy Microsoft e-mail-címét. A formátum: &lt;megjelenített nevét, a meghívót küldő személy&gt; a &lt;tenantname&gt; (a Microsofton keresztül) <invites@microsoft.com>
 
 ### <a name="reply-to"></a>Válasz címzettje
-A válaszcím e-mailben a meghívó e-mail érhető el, ha van beállítva, hogy a megválaszolása az e-mailt küld egy e-mailt vissza a meghívó.
+A válasz az e-mailben, ha elérhető, a meghívót küldő személy e-mail van beállítva, hogy e-mail-válasz egy e-mailt küld vissza a meghívót küldő személy.
 
-### <a name="branding"></a>Védjegyek
-A meghívó e-maileket a bérlő használatát a vállalati arculat megjelenítése, amikor előfordulhat, hogy állította be a bérlő számára. Ha azt szeretné, hogy ez a funkció előnyeit [Itt](https://docs.microsoft.com/azure/active-directory/active-directory-branding-custom-signon-azure-portal) a konfigurálásának részletes adatai. A szalagcím emblémájának jelenik meg az e-mailben. Hajtsa végre a lemezkép mérete és minőségi utasítások [Itt](https://docs.microsoft.com/azure/active-directory/active-directory-branding-custom-signon-azure-portal) a legjobb eredmények elérése érdekében. Emellett a vállalat nevét is megjelennek a művelet hívása.
+### <a name="branding"></a>Védjegyezés
+A bérlő használja a meghívói e-mailekről a vállalati arculat megjelenítése, amikor lehetséges, hogy beállította a bérlő számára. Ha azt szeretné, ez a funkció kihasználásához [Itt](https://docs.microsoft.com/azure/active-directory/active-directory-branding-custom-signon-azure-portal) konfigurálásának részleteiért vannak. A szalagcímembléma jelenik meg az e-mailben. Hajtsa végre a lemezkép mérete és minőségi utasítások [Itt](https://docs.microsoft.com/azure/active-directory/active-directory-branding-custom-signon-azure-portal) a legjobb eredmények elérése érdekében. Emellett a vállalat nevét is megjelenik-e a művelet meghívásához.
 
-### <a name="call-to-action"></a>A művelet hívása
-A művelet hívása két részből áll: a címzett miért kapott a levelek, és mi a címzett alatt kapcsolatba arról foglalja össze.
-- A "Miért" szakaszt a következő minta használatával lehet megoldani:, hogy meghívott hozzáférés az alkalmazásokhoz a &lt;tenantname&gt; szervezet
+### <a name="call-to-action"></a>Művelet hívása
+A művelet meghívásához két részből áll: Miért érdemes a címzett megkapta az e-mailt, és amit a címzett van a rendszer arról tájékoztatja.
+- A "Miért" szakaszt a következő minta használatával is kezelhetők: az alkalmazás-hozzáférési meghívót kapott a &lt;tenantname&gt; szervezet
 
-- És a "Mi alatt megkérdezi ehhez" szakasz jelenlétét jelzi a **Ismerkedés** gombra. Ha a címzett meghívókat szükségessége nélkül hozzá lett adva, erre a gombra kattintva nem jelenik meg.
+- És a "Mi folyamatban kéri, hogy tegye" szakasz jelenlétét jelzi a **Ismerkedés** gombra. Meghívók nélkül hozzáadása után a címzett, ez a gomb nem jelenik meg.
 
-### <a name="inviters-information"></a>A meghívó a információk
-A meghívó megjelenített név szerepel az e-mailt. És emellett, ha beállította az Azure AD-fiókot a profilkép, hívja fel az e-mailt fogja tartalmazni, valamint, hogy a kép. Mindkét célja, hogy növelje a címzett abban, hogy az e-mailben.
+### <a name="inviters-information"></a>Meghívója tartozó információk
+Az e-mail tartalmazza a meghívót küldő személy megjelenített neve. És emellett, ha beállította az Azure AD-fiókot a profilhoz tartozó fotó, a meghívó e-mailben szerepelni fog is, hogy a kép. Mindkét célja, hogy az e-mailt a címzett bizalom erősítése érdekében.
 
-Ha még nem állított profilkép, a meghívó monogramja a kép helyett egy ikon jelenik meg:
+Ha még állított be a profilképét, a meghívót küldő személy monogramja a kép helyett egy ikon jelenik meg:
 
-  ![a meghívó monogramja megjelenítése](media/invitation-email-elements/inviters-initials.png)
+  ![Megjelenítés a meghívót küldő személy monogramja](media/invitation-email-elements/inviters-initials.png)
 
 ### <a name="body"></a>Törzs
-Az üzenet, amely a meghívó composes, vagy a meghívó API keresztül törzsében. Így azt nem dolgozza fel az HTML-címkék biztonsági okokból egy területre.
+A törzse tartalmazza az üzenetet, amely a meghívót küldő személy composes, vagy a meghívó API keresztülmegy. Egy szövegterület, így nem dolgozza fel biztonsági okokból HTML-címkéket.
 
-### <a name="footer-section"></a>Élőláb szakasz
-A lábléc tartalmazza a Microsoft vállalatának arculatát, és lehetővé teszi, hogy a címzett tudja, ha az e-mailben küldött egy nem figyelt aliast. Bizonyos esetekben:
+### <a name="footer-section"></a>Lábléc szakasz
+A lábléc tartalmazza a Microsoft vállalati márka, és lehetővé teszi, hogy a címzett tudja, ha a rendszer elküldte az e-mail címről küldtük. Különleges eset:
 
-- A meghívó nem rendelkezik e-mail címmel hívja fel a bérlet
+- A meghívót küldő személy nem rendelkezik egy e-mail-címet a meghívó bérlőben
 
-  ![Meghívó képe nem rendelkezik e-mail címmel hívja fel a bérlet](media/invitation-email-elements/inviter-no-email.png)
+  ![képe a meghívót küldő személy nem rendelkezik egy e-mail-címet a meghívó bérlőben](media/invitation-email-elements/inviter-no-email.png)
 
 
-- A címzett nem szükséges a meghívó beváltása
+- A címzett nem kell beváltani a meghívót
 
-  ![Ha a címzett meghívó beváltani nem szükséges](media/invitation-email-elements/when-recipient-doesnt-redeem.png)
+  ![Amikor a címzett nem szüksége van a meghívó beváltása](media/invitation-email-elements/when-recipient-doesnt-redeem.png)
 
 
 ## <a name="next-steps"></a>További lépések
 
-Az Azure AD B2B együttműködés, tekintse meg a következő cikkeket:
+Az Azure AD B2B együttműködés a következő cikkekben talál:
 
-- [Mi az az Azure AD B2B együttműködés](what-is-b2b.md)
-- [Hogyan rendszergazdák Azure Active Directory B2B együttműködés felhasználók hozzá?](add-users-administrator.md)
-- [Hogyan hozzá az információkkal dolgozó szakemberek B2B együttműködés felhasználók?](add-users-information-worker.md)
-- [B2B együttműködés meghívó érvényesítési](redemption-experience.md)
-- [Adja hozzá a B2B együttműködés felhasználók nélkül](add-user-without-invite.md)
+- [Mi az Azure AD B2B együttműködés](what-is-b2b.md)
+- [Hogyan hozzá az Azure Active Directory-rendszergazdák B2B együttműködési felhasználókat?](add-users-administrator.md)
+- [Hogyan hozzá az információkkal dolgozó szakemberek B2B együttműködési felhasználókat?](add-users-information-worker.md)
+- [B2B együttműködés vendégmeghívás beváltása](redemption-experience.md)
+- [Adja hozzá a B2B-együttműködés felhasználók meghívás nélkül](add-user-without-invite.md)

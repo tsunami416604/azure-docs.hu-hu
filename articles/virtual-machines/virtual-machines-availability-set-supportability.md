@@ -1,6 +1,6 @@
 ---
-title: Azure virtuális gépeket ad hozzá egy meglévő rendelkezésre állási támogatásának beállítása |} Microsoft Docs
-description: Támogatás az Azure virtuális gépek hozzáadása egy meglévő rendelkezésre állási csoportot.
+title: Támogatás az Azure virtuális gépeket ad hozzá egy meglévő rendelkezésre állási beállítása |} A Microsoft Docs
+description: Támogatás az Azure virtuális gépeket ad hozzá egy meglévő rendelkezésre állási csoportot.
 services: virtual-machines-linux
 documentationcenter: ''
 author: Deland-Han
@@ -12,30 +12,30 @@ ms.workload: virtual-machines
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 11/03/2017
+ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: 8bf2a55563772e26239445732b2b08df677436ef
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 13448f4b335d84264d4141cb4fb8c3eadcf0303e
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2017
-ms.locfileid: "23987720"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35925999"
 ---
-# <a name="supportability-of-adding-azure-vms-to-an-existing-availability-set"></a>Támogatás az Azure virtuális gépek hozzáadása egy meglévő rendelkezésre állási csoportot
+# <a name="supportability-of-adding-azure-vms-to-an-existing-availability-set"></a>Támogatás az Azure virtuális gépeket ad hozzá egy meglévő rendelkezésre állási csoport
 
-Alkalmanként korlátozások során felmerülő új virtuális gépek (VM) hozzáadása egy meglévő rendelkezésre állási csoportba. Az alábbi táblázat részletezi mely kombinálhatja a rendelkezésre állási ugyanazokat a Virtuálisgép-sorozat.
+Alkalmanként korlátozások során felmerülő új virtuális gépek (VM) hozzáadása egy meglévő rendelkezésre állási csoporthoz. Az alábbi táblázat részletesen melyik kombinálhatja az azonos rendelkezésre állási csoportban lévő Virtuálisgép-sorozatok.
 
-Virtuális gépek különböző típusú kombinálhatók támogatási mátrix itt található:
+Itt látható a virtuális gépek különböző típusú értékek nagyságrendjeit támogatási mátrix:
 
-Adatsorozat & rendelkezésre állási csoport|Második virtuális gép|A|Av2|D|Dv2|Dv3|
+Sorozatok és a rendelkezésre állási csoport|Második virtuális gép|A|Av2|D|A Dv2|Dv3|
 |---|---|---|---|---|---|---|
 |Első virtuális gép|||||||
-|A||OKÉ|OKÉ|OKÉ|OKÉ|OKÉ|
-|Av2||OKÉ|OKÉ|OKÉ|OKÉ|OKÉ|
-|D||OKÉ|OKÉ|OKÉ|OKÉ|OKÉ|
-|Dv2||OKÉ|OKÉ|OKÉ|OKÉ|OKÉ|
-|Dv3||OKÉ|OKÉ|OKÉ|OKÉ|OKÉ|
+|A||OK|OK|OK|OK|OK|
+|Av2||OK|OK|OK|OK|OK|
+|D||OK|OK|OK|OK|OK|
+|A Dv2||OK|OK|OK|OK|OK|
+|Dv3||OK|OK|OK|OK|OK|
 
-Minden adatsorozatban azonos rendelkezésre állási csoportban, mert azok megkövetelik, hogy egy adott hardverekhez nem sikerült.
+Az összes többi sorozat nem sikerült beállítani, mert azok megkövetelik, hogy egy adott hardverekhez, egyazon rendelkezésre állási.
 
-VM a8/A9 csomag mérete miatt requirment RDMA dedikált háttér-hálózat nem keverhetők.
+A8/a9-es virtuális gép mérete miatt a dedikált RDMA-háttérhálózatot requirment nem keveredhet.

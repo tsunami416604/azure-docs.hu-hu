@@ -1,27 +1,28 @@
 ---
-title: Térkép kognitív keresési dúsított Azure Search-indexek kimeneti mező beviteli mezők |} Microsoft Docs
-description: Bontsa ki forrás adatmezők kiegészítése és az Azure Search-index kimeneti mezőinek van leképezve.
+title: Térkép cognitive search bővített bemeneti mezők átalakítása az Azure Search-indexek táblakimeneti mezők |} A Microsoft Docs
+description: Bontsa ki és forrás datová Pole bővítését, és az Azure Search-index táblakimeneti mezők leképezése.
 manager: pablocas
 author: luiscabrer
+services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 67e4798070a73eebb8f61b0b260e3104e9ae6237
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 77e7a1cc725dc56ee20d3c1999cfb7cf0039d67f
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33790950"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35925356"
 ---
-# <a name="how-to-map-enriched-fields-to-a-searchable-index"></a>Hogyan képezheti bővített mezők kereshető index
+# <a name="how-to-map-enriched-fields-to-a-searchable-index"></a>A kereshető indexet hozva képi elemekben gazdag mezők leképezése
 
-Ebből a cikkből megismerheti, hogyan kereshető index kimeneti mezők bővített beviteli mezők hozzárendelése. Ha már [egy skillset definiált](cognitive-search-defining-skillset.md), a kimeneti mezők bármely szakértelem, amely közvetlenül hozzájárul az search-index egy mező értékének meg kell jelölnie. Bővített dokumentumok tartalom áthelyezése az index mező hozzárendelések szükségesek.
+Ebből a cikkből megismerheti, hogyan hidaljuk adatbeviteli mezők leképezése egy kereshető indexet a táblakimeneti mezők. Miután [egy indexmezők definiált](cognitive-search-defining-skillset.md), le kell képeznie a táblakimeneti mezők bármilyen szaktudás értékeket egy adott mezőt a keresési index közvetlenül kidolgozásában. Mezőleképezések is szükséges a tartalmak áthelyezését képi elemekben gazdag dokumentumok az indexbe.
 
 
 ## <a name="use-outputfieldmappings"></a>OutputFieldMappings használata
-Képezze le a mezőket, vegye fel `outputFieldMappings` az indexelő definíciójához alább látható módon:
+Mezők leképezése hozzá `outputFieldMappings` , az indexelő definíciója az alább látható módon:
 
 ```http
 PUT https://[servicename].search.windows.net/indexers/[indexer name]?api-version=2017-11-11-Preview
@@ -29,7 +30,7 @@ api-key: [admin key]
 Content-Type: application/json
 ```
 
-A kérelem törzse a következőképpen épül:
+A kérelem törzsében a következőképpen épül:
 
 ```json
 {
@@ -62,14 +63,14 @@ A kérelem törzse a következőképpen épül:
     ]
 }
 ```
-Minden kimeneti mező leképezés, állítsa be a bővített (sourceFieldName) mező nevét, és a mező nevét a index (targetFieldName) hivatkozott.
+Az egyes kimeneti mezőleképezés állítja be a képi elemekben gazdag (sourceFieldName) mező nevét, és a mező nevét az indexben (targetFieldName) hivatkozott.
 
-Az elérési utat egy sourceFieldName elem egy vagy több elem jelenthet. A példában ```/document/content/sentiment``` jelöli egyetlen numerikus érték, amíg ```/document/content/organizations/*/description``` több szervezet leírások jelöli. Azokban az esetekben, ahol több eleme van, ezek vannak "simítva" elemek beállításait tartalmazó tömb. Több konkrétan az a ```/document/content/organizations/*/description``` példa, az adatokat a *leírások* mező néz leírások strukturálatlan tömbje azt lekérdezi indexelése után:
+Az elérési utat egy sourceFieldName a elem egy vagy több olyan elemet hozhat létre. A fentiek példában ```/document/content/sentiment``` jelöli egyetlen numerikus érték, miközben ```/document/content/organizations/*/description``` számos szervezet leírások jelöli. Azokban az esetekben, ahol több elemből, hogy vannak "simítva" egy tömb, amely tartalmazza a elemek. Több konkrétan az a ```/document/content/organizations/*/description``` például, az adatok a *leírások* mező néznek leírások egybesimított tömbje indexelés előtt:
 
 ```
  ["Microsoft is a company in Seattle","LinkedIn's office is in San Francisco"]
 ```
 ## <a name="next-steps"></a>További lépések
-Miután leképezte a bővített mezők a kereshető mezők, beállíthatja az egyes a kereshető mezők a mező attribútumok [az index definícióját részeként](search-what-is-an-index.md).
+A képi elemekben gazdag mező kereshető mezők leképezése után beállíthatja a kereshető mezők mindegyike a Mezőtulajdonságok [az index definícióját részeként](search-what-is-an-index.md).
 
-Mező leképezési kapcsolatos további információkért lásd: [mezőben az Azure Search indexelők hozzárendelések](search-indexer-field-mappings.md).
+Mezőleképezés kapcsolatos további információkért lásd: [az Azure Search indexelők Mezőleképezéseivel](search-indexer-field-mappings.md).

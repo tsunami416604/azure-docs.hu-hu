@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: raynew
-ms.openlocfilehash: 9a9bcc25a0ab6c50ebce394a43edd7bfcd764bed
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 7c96f362793ca2697eb2c92c07ff38d2fe6caad2
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44304713"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44716876"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-app-on-azure-vms-and-sql-server-alwayson-availability-group"></a>Contoso áttelepítése: az Azure virtuális gépek és az SQL Server AlwaysOn rendelkezésre állási csoport helyi alkalmazás Újratárolása
 
@@ -107,7 +107,7 @@ Contoso kiértékeli a javasolt tervezési által bármik lehetnek, és hátrán
 **Szempontok** | **Részletek**
 --- | ---
 **Szakemberek számára** | WEBVM átkerül az Azure-bA sem kell módosítani, így egyszerű a migrálás.<br/><br/> Az SQL Server szint az SQL Server 2017-ben és a Windows Server 2016 fog futni. Így kikerül a jelenlegi Windows Server 2008 R2 operációs rendszer, és a Contoso technikai követelmények és célok futtató SQL Server 2017-ben támogatja. Informatikai 100 %-os kompatibilitást kínálja az SQL Server 2008 R2 távolabbi áthelyezés közben.<br/><br/> Contoso kihasználhatják a frissítési garanciával rendelkező, az Azure Hybrid Benefit használatával befektetése jelenti.<br/><br/> A magas rendelkezésre állású SQL Server telepítését bevezetésének hibatűrést biztosít az, hogy az alkalmazás adatrétegének már nem feladatátvételi hibaérzékeny pont.
-**Hátrányai** | WEBVM Windows Server 2008 R2 fut. Az operációs rendszer egyes szerepkörök (2018 július) az Azure által támogatott. [További információk](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines).<br/><br/> A webes szint, az alkalmazás feladatátvételt egyetlen pont marad.</br><br/> Contoso kell továbbra is támogató Azure-beli virtuális gépként a webes szint, nem pedig egy felügyelt szolgáltatás, például az Azure App Service-ben való áthelyezése.<br/><br/> A kiválasztott megoldás révén Contoso kell áthelyezni egy felügyelt platformon, például az Azure SQL felügyelt példánya helyett két SQL Server virtuális gépek kezelése a folytatáshoz. Ezenkívül, frissítési garanciával rendelkező, Contoso sikerült exchange kedvezményes díjszabást kínál az Azure SQL felügyelt példánya a meglévő licenceit.
+**Hátrányai** | WEBVM Windows Server 2008 R2 fut. Az operációs rendszer egyes szerepkörök (2018 július) az Azure által támogatott. [További információk](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines).<br/><br/> A webes szint, az alkalmazás feladatátvételt egyetlen pont marad.</br><br/> Contoso kell továbbra is támogató Azure-beli virtuális gépként a webes szint, nem pedig egy felügyelt szolgáltatás, például az Azure App Service-ben való áthelyezése.<br/><br/> A kiválasztott megoldással a Contoso kell továbbra is a két SQL Server virtuális gépek kezelése a felügyelt platform, például az Azure SQL Database felügyelt példányába való helyett. Ezenkívül, frissítési garanciával rendelkező, Contoso sikerült exchange kedvezményes díjszabást kínál az Azure SQL Database felügyelt példánya a meglévő licenceit.
 
 
 ### <a name="azure-services"></a>Azure-szolgáltatások

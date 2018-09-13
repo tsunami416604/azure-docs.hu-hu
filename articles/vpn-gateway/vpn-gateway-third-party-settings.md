@@ -1,6 +1,6 @@
 ---
-title: Közösségi javasolt külső VPN- vagy tűzfal eszközbeállítások Azure VPN Gateway |} Microsoft Docs
-description: További tudnivalók a közösségi javasolt külső VPN- vagy tűzfal eszközbeállítások Azure VPN Gateway.
+title: Közösség által javasolt külső VPN vagy tűzfaleszköz-beállítások az Azure VPN gateway |} A Microsoft Docs
+description: Ismerje meg a Közösség által javasolt külső VPN vagy tűzfaleszköz-beállítások az Azure VPN gateway.
 services: vpn-gateway
 documentationcenter: ''
 author: chadmath
@@ -13,42 +13,42 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/11/2018
+ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: d64830d8664ab65bbd9dbe3bc40eb997007d8910
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 77b1de3a9def525fbffb2a0ae49bbcbaea835c58
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35267237"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35923754"
 ---
-# <a name="community-suggested-third-party-vpn-or-firewall-device-settings-for-azure-vpn-gateway"></a>Közösségi javasolt külső VPN- vagy tűzfal eszközbeállítások Azure VPN Gateway
+# <a name="community-suggested-third-party-vpn-or-firewall-device-settings-for-azure-vpn-gateway"></a>Közösség által javasolt külső VPN vagy tűzfaleszköz-beállítások az Azure VPN gateway
 
-Ez a cikk számos javasolt megoldást nyújt külső VPN- vagy Azure VPN-átjáróval használt tűzfal eszközök.
+Ez a cikk számos ajánlott megoldást nyújt külső felek VPN vagy az Azure VPN-átjáróval használt tűzfal-eszközhöz.
 
 > [!Note]
-> Külső VPN- vagy tűzfal eszközök a technikai támogatási szolgálathoz biztosítja az eszköz gyártója. 
+> Külső gyártótól származó VPN- vagy tűzfaleszköz-eszközök technikai támogatása az eszköz gyártója által biztosított. 
 
 ## <a name="more-information"></a>További információ
 
-Az alábbi táblázat néhány gyakori eszközök és kapcsolódó súgó:
+Az alábbi táblázat néhány gyakori eszközöket és kapcsolódó súgó:
 
 |Product    |Leírások                                                |
 |-----------|-----------------------------------------------------------|
-|Cisco ASA  |[Közösségi Cisco ASA az Azure VPN javasolt megoldás](https://search.cisco.com/search?query=%22Azure%20VPN%22%20ASA&locale=enUS&tab=Cisco)   |
-|Cisco ISR  |[Közösségi Cisco ISR az Azure VPN javasolt megoldás](https://search.cisco.com/search?query=%22Azure%20VPN%22%20ISR&locale=enUS&tab=Cisco)   |
-|Cisco automatikus rendszer-Helyreállítás  |[Közösségi Cisco ASR az Azure VPN javasolt megoldás](https://search.cisco.com/search?query=%22Azure%20VPN%22%20ASR&locale=enUS&tab=Cisco)   |
+|Cisco ASA  |[Közösség által javasolt megoldásokat a Cisco ASA az Azure VPN](https://search.cisco.com/search?query=%22Azure%20VPN%22%20ASA&locale=enUS&tab=Cisco)   |
+|Cisco ISR  |[Az Azure VPN Cisco ISR a Közösség által javasolt megoldásokat](https://search.cisco.com/search?query=%22Azure%20VPN%22%20ISR&locale=enUS&tab=Cisco)   |
+|Cisco ASR  |[Az Azure VPN Cisco ASR a Közösség által javasolt megoldásokat](https://search.cisco.com/search?query=%22Azure%20VPN%22%20ASR&locale=enUS&tab=Cisco)   |
 |SonicWALL |Keresse meg **Azure VPN** a [Sonicwall hely](https://www.sonicwall.com/en-us/support) |
-| Ellenőrzőpont    |Keresse meg **Azure VPN** a [ellenőrzőpont hely](https://supportcenter.checkpoint.com/supportcenter/portal) |
+| Ellenőrzőpont    |Keresse meg **Azure VPN** a [ellenőrzőpont-hely](https://supportcenter.checkpoint.com/supportcenter/portal) |
 |Juniper |Keresse meg **Azure VPN** a [Juniper hely]( http://www.juniper.net/search/public/)|
-|Barracuda  |[Közösségi Barracuda az Azure VPN javasolt megoldás](https://campus.barracuda.com/search/?q=%22Azure+VPN%22&x=0&y=0)   |
-|F5         |[Közösségi megoldások javasolt az F5 billentyűt az Azure VPN](https://support.f5.com/csp/#/federated-search?q=%22Azure%20VPN%22&source=support)          |
-|Palo       |[Közösségi az Azure VPN Palo javasolt megoldás](https://live.paloaltonetworks.com/t5/forums/searchpage/tab/message?q=Azure+VPN)        |
-|Watchguard |[Közösségi az Azure VPN Watchguard javasolt megoldás](http://watchguardsupport.force.com/SupportSearch#q=Azure%20VPN&t=All&sort=relevancy)  |
+|Barracuda  |[Az Azure VPN Barracuda a Közösség által javasolt megoldásokat](https://campus.barracuda.com/search/?q=%22Azure+VPN%22&x=0&y=0)   |
+|F5         |[Az Azure VPN F5 a Közösség által javasolt megoldásokat](https://support.f5.com/csp/#/federated-search?q=%22Azure%20VPN%22&source=support)          |
+|Palo       |[Az Azure VPN Palo a Közösség által javasolt megoldásokat](https://live.paloaltonetworks.com/t5/forums/searchpage/tab/message?q=Azure+VPN)        |
+|Watchguard |[Az Azure VPN Watchguard a Közösség által javasolt megoldásokat](http://watchguardsupport.force.com/SupportSearch#q=Azure%20VPN&t=All&sort=relevancy)  |
 
 ## <a name="next-step"></a>Következő lépés
 
-[Az Azure átjárók beállításai](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-devices#a-nameipsecaipsecike-parameters)
+[Az Azure átjáró beállításai](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-devices#a-nameipsecaipsecike-parameters)
 
 [Ismert kompatibilis eszközök](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-devices#validated-vpn-devices)
 

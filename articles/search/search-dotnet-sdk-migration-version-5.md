@@ -1,88 +1,89 @@
 ---
-title: Az Azure Search .NET SDK 5-ös verzió frissítése |} Microsoft Docs
+title: Az Azure Search .NET SDK 5-ös verzió frissítése |} A Microsoft Docs
 description: Az Azure Search .NET SDK 5-ös verzió frissítése
 author: brjohnstmsft
 manager: jlembicz
+services: search
 ms.service: search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: brjohnst
-ms.openlocfilehash: 88949f4cf0e4408f5d1e4d9c9a5833b041b5a5ab
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: b08507d7685ce87a4c176385f750a72d6ae51ba3
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32778580"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35923400"
 ---
 # <a name="upgrading-to-the-azure-search-net-sdk-version-5"></a>Az Azure Search .NET SDK 5-ös verzió frissítése
-Ha szeretne megtudni a 4.0-preview vagy a régebbi verzióját a [Azure Search .NET SDK](https://aka.ms/search-sdk), ez a cikk segít frissíteni az alkalmazást, 5-ös verzió használatára.
+Ha a 4.0-preview jelű verziót vagy a régebbi verziót használja a [Azure Search .NET SDK](https://aka.ms/search-sdk), ez a cikk segít az alkalmazás használhatja a 5-ös verzió frissítése.
 
-Az SDK, beleértve a példákat általános útmutatást lásd: [használata az Azure Search .NET-alkalmazás](search-howto-dotnet-sdk.md).
+Az SDK-t, beleértve a példákat általános bemutatóért lásd: [használata az Azure Search .NET-alkalmazásból](search-howto-dotnet-sdk.md).
 
-Az Azure Search .NET SDK 5-ös verzióját a korábbi verzióihoz képest végrehajtott egyes módosításokat tartalmazza. Ezek a legtöbbször kisebb, így a kód módosítása elvégzéséhez szükséges csak csatlakozhatnak. Lásd: [frissítésének lépései](#UpgradeSteps) útmutatást a kód módosítása az új SDK-verzió használatára.
+5-ös verzióját az Azure Search .NET SDK tartalmaz néhány módosítást korábbi verzióit. Ezek a leginkább kis, így a kód módosítása csak minimális erőfeszítéssel elvégzéséhez szükséges. Lásd: [frissítésére lépéseket](#UpgradeSteps) útmutatást a kód módosítása az új SDK-verzió használatához.
 
 > [!NOTE]
-> 2.0-preview vagy régebbi verzió használata, inkább 3-as verziójú először frissítsen, és majd frissítenie kell az 5-ös verzióját. Lásd: [frissítsen az Azure Search .NET SDK 3-as verziójú](search-dotnet-sdk-migration.md) utasításokat.
+> 2.0 – előzetes verzió vagy annál régebbi verzióját használja, ha meg kell először frissítse a 3-as verziójú, majd utána frissítse a 5-ös verzió. Lásd: [az Azure Search .NET SDK 3-as verziójú frissítését](search-dotnet-sdk-migration.md) útmutatást.
 >
-> Az Azure Search szolgáltatáspéldány több REST API-verziók, többek között a legújabb egy támogatja. Továbbra is a verzióját használja, ha már nem a legújabb egyet, de azt javasoljuk, hogy az áttelepített a kódot a legújabb verzióját használja. A REST API használata esetén minden kérelemben keresztül az api-version paramétert meg kell adnia az API-verzió. A .NET SDK használatával, az SDK-t használ verziója határozza meg a megfelelő REST API-verzióra. Ha egy régebbi SDK használ, továbbra is futtassa ezt a kódot módosítások nélküli, még akkor is, ha a szolgáltatás frissítése újabb API-verzió támogatja.
+> Az Azure Search-szolgáltatáspéldányhoz több REST API-verziók, többek között a legújabb buildszám támogatja. Továbbra is verzióját használja, amikor már nem a legújabb buildszám, de azt javasoljuk, hogy a legújabb verzió használatához kódok migrálása. A REST API használata esetén az api-version paraméter használatával minden kérésben meg kell adnia az API-verziót. A .NET SDK használatával, az SDK-t használ a verzióját határozza meg a megfelelő REST API-verzió. Ha egy régebbi SDK-t használja, továbbra is futtassa, hogy a kód módosítása nélkül, akkor is, ha a szolgáltatás frissítése egy újabb API-verzió támogatja.
 
 <a name="WhatsNew"></a>
 
 ## <a name="whats-new-in-version-5"></a>5-ös verzió újdonságai
-Az Azure Search .NET SDK 5-ös verzióját célozza a legújabb az Azure Search REST API, kifejezetten 2017-11-11 általánosan elérhető verziójának. Ez lehetővé teszi az Azure Search .NET-alkalmazás, beleértve a következő új szolgáltatások használatához:
+Az Azure Search .NET SDK 5-ös verzióját a legújabb célozza meg benne az Azure Search REST API, kifejezetten 2017-11-11 általánosan elérhető verzióját. Ez lehetővé teszi az Azure Search .NET-alkalmazásból, többek között az alábbi új szolgáltatások használatához:
 
-* [Szinonimák](search-synonyms.md).
-* Programozott módon érheti el az indexelő futtatási előzményei figyelmeztetések (lásd a `Warning` tulajdonsága `IndexerExecutionResult` a a [.NET hivatkozás](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexerexecutionresult?view=azure-dotnet) további részletekért).
-* Támogatja a .NET Core 2.
-* Új csomag struktúra támogatja a csak azon részei, amelyekre szüksége van az SDK-t (lásd: [Megtörje a módosításokat az 5-ös verzió](#ListOfChanges) részletekért).
+* [A szinonimák](search-synonyms.md).
+* Programozott módon érhetők el az indexelő futtatási előzményei figyelmeztetések (lásd a `Warning` tulajdonsága `IndexerExecutionResult` a a [.NET-referencia](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexerexecutionresult?view=azure-dotnet) további részletekért).
+* A .NET Core 2 támogatása.
+* Új csomag struktúra támogatja a szükséges az SDK-t csak azon részei (lásd: [parancsban történt használhatatlanná tévő az 5-ös verzió](#ListOfChanges) részletekért).
 
 <a name="UpgradeSteps"></a>
 
-## <a name="steps-to-upgrade"></a>Frissítésének lépései
-Először frissítse a NuGet referencia `Microsoft.Azure.Search` vagy a NuGet-Csomagkezelő konzol használatával vagy az csomagot jobb gombbal a projekt hivatkozásait, majd válassza a "Kezelése NuGet csomagjainak..." a Visual Studióban.
+## <a name="steps-to-upgrade"></a>Frissítési lépései
+Először frissítse a NuGet referenciája `Microsoft.Azure.Search` vagy a NuGet Package Manager konzol segítségével vagy a jobb gombbal a projekt hivatkozásait a és a Visual Studióban válassza a "Kezelése NuGet Packages …".
 
-Miután NuGet töltött le az új csomagok és a függőségek, a projekt újraépítéséhez. Amely nincs az új GA SDK előzetes verziójú funkciók használata, ha sikeresen kell-e újraépítése (Ha nem, ossza meg velünk a [GitHub](https://github.com/azure/azure-sdk-for-net/issues)). Ha igen, most készen áll!
+Miután NuGet töltött le az új csomagok és azok függőségeit, a projekt újraépítéséhez. Előzetes verziójú funkció, amely nem szerepel az új általánosan elérhető SDK-t használja, hacsak sikeresen kell újraépíteni (Ha nem, akkor mondja el nekünk a [GitHub](https://github.com/azure/azure-sdk-for-net/issues)). Ha igen, akkor készen!
 
-Ne feledje, hogy az Azure Search .NET SDK csomagolásának-módosítások miatt, hogy újból létre kell hoznia az alkalmazás használatához az 5-ös verzióját. Ezek a változások részletes leírást talál [Megtörje a módosításokat az 5-ös verzió](#ListOfChanges).
+Vegye figyelembe, hogy az Azure Search .NET SDK csomagolásának változtatások miatt, 5-ös verzió használatához az alkalmazás újból létre kell hoznia. Ezek a változások részleteit [parancsban történt használhatatlanná tévő az 5-ös verzió](#ListOfChanges).
 
-Elavult metódusokra vagy tulajdonságokra kapcsolatban további build figyelmeztetések jelenhetnek meg. A figyelmeztetésekkel kapcsolatos használata helyett az elavult funkció tartalmazza. Például, ha az alkalmazás által a `IndexingParametersExtensions.DoNotFailOnUnsupportedContentType` módszerrel kell megjelenik egy figyelmeztetés, amely szerint a "Ez a viselkedés most alapértelmezés szerint engedélyezve van, így a metódus hívása már nincs szükség."
+Elavult módszerek és a Tulajdonságok kapcsolatban további build figyelmeztetések jelenhetnek meg. A figyelmeztetésekkel kapcsolatos helyett az elavult funkció tartalmazza. Például, ha az alkalmazás használja a `IndexingParametersExtensions.DoNotFailOnUnsupportedContentType` módszerrel kell egy figyelmeztetés fog megjelenni arról, hogy a "Ez a viselkedés mostantól alapértelmezés szerint engedélyezve van, így a metódus meghívásának hatására már nem szükséges."
 
-Build figyelmeztetéseket megszüntetése után módosíthatja a új funkcióinak kihasználásához, ha az alkalmazáshoz. Az SDK-t az új funkciói részletes leírást talál [5-ös verzió újdonságai](#WhatsNew).
+Miután build figyelmeztetéseket rögzíteni az alkalmazást, hogy új funkciók előnyeinek kihasználása, ha módosításokat végezheti el. Az SDK-t az új funkciók részletes leírásuk [5-ös verzió újdonságai](#WhatsNew).
 
 <a name="ListOfChanges"></a>
 
-## <a name="breaking-changes-in-version-5"></a>5-ös verzió megtörje változásai
-A legtöbb jelentős használhatatlanná tévő változást az 5-ös verzió, hogy a `Microsoft.Azure.Search` szerelvény és annak tartalmát rendelkezik lett osztva négy külön szerelvények most elosztott négy külön NuGet-csomag:
+## <a name="breaking-changes-in-version-5"></a>Az 5-ös verzió használhatatlanná tévő változásai
+A legtöbb jelentős használhatatlanná tévő változást az 5-ös verzió, hogy a `Microsoft.Azure.Search` szerelvény és annak tartalma rendelkezik mint négy külön NuGet-csomagok most elosztott négy külön szerelvények felosztva:
 
- - `Microsoft.Azure.Search`: A csomag egy metaadat-, amely tartalmazza az összes többi Azure Search csomagot szerint függőségeinek. Frissítés egy korábbi SDK, egyszerűen a csomag frissítése és újbóli összeállítása kell elegendő elindítani az új verziót használja.
- - `Microsoft.Azure.Search.Data`: Használja ezt a csomagot, ha egy .NET-alkalmazást az Azure Search kidolgozása, és csak lekérdezni, vagy az indexek dokumentumainak frissíteni kell. Ha is kell létrehozni vagy frissíteni az indexek, szinonima maps, vagy más szolgáltatásiszint-erőforrások, használja a `Microsoft.Azure.Search` csomag helyette.
- - `Microsoft.Azure.Search.Service`: Használja ezt a csomagot, ha az Azure Search-indexek, szinonima maps, indexelők, adatforrások vagy más szolgáltatásiszint-erőforrások kezeléséhez .NET automatikus. Ha csak kell lekérdezés vagy a frissítés dokumentumot az indexben, használja a `Microsoft.Azure.Search.Data` csomag helyette. Ha módosítania kell az Azure Search összes funkcióját, használja a `Microsoft.Azure.Search` csomag helyette.
- - `Microsoft.Azure.Search.Common`: Az Azure Search .NET-kódtárakra igényli általános típusok. Nem kell használni a csomag közvetlenül az alkalmazás; Csak célja, hogy a függőség beállításához használható.
+ - `Microsoft.Azure.Search`: A csomag egy metaadat-, amely tartalmazza az összes többi Azure Search csomagot függőségekként. Az SDK újabb verzióra történő frissítés, csak ez a csomag frissítése, és újra létrehozni kell elegendő az új verzió használatának megkezdéséhez.
+ - `Microsoft.Azure.Search.Data`: Használja ezt a csomagot, ha használja az Azure Search .NET-alkalmazást fejleszt, és csak szeretne lekérdezni vagy frissíteni az indexek a dokumentumokat. Ha is kell létrehozni vagy frissíteni az indexek, szinonimatérképet, vagy más szolgáltatásiszint-erőforrások, használja a `Microsoft.Azure.Search` csomag helyette.
+ - `Microsoft.Azure.Search.Service`: Használja ezt a csomagot, ha a .NET-keretrendszerben Azure Search-indexek, szinonimatérképet, az indexelők, adatforrásokat vagy más szolgáltatásiszint-erőforrások kezelése automation fejleszt. Ha csak kell lekérdezés vagy a frissítés dokumentum az indexben, használja a `Microsoft.Azure.Search.Data` csomag helyette. Ha a funkciókat az Azure Search van szüksége, használja a `Microsoft.Azure.Search` csomag helyette.
+ - `Microsoft.Azure.Search.Common`: Az Azure Search .NET-kódtárakra által igényelt gyakori típust. Nem kell saját alkalmazásában; ez a csomag használatára Csak hivatott függőségként használható.
  
-Ez a változás technikailag feltörésével, mivel számos különböző került szerelvények között. Ezért az alkalmazás újraépítése szükség ahhoz, hogy frissítsen az SDK 5-ös verzióját.
+Ez a változás technikailag megsérti számos különböző szerelvények között lett áthelyezve, mert. Ezért az alkalmazás újraépítését szükség ahhoz, hogy frissítsen az SDK 5-ös verzióját.
 
-Van néhány egyéb jelentős változásokat az 5-ös verzió, amelyre szüksége lehet a kód mellett az alkalmazás újraépítése módosítja.
+Nincs más kompatibilitástörő változásokat az 5-ös verzió, amely lehet szükség a kód kis számú mellett az alkalmazás újraépítését változik.
 
-### <a name="removed-obsolete-members"></a>Eltávolított elavult tagok
+### <a name="removed-obsolete-members"></a>Elavult a tagok eltávolítása
 
-Előfordulhat, hogy látja build metódusokra vagy tulajdonságokra volt korábbi verzióiban elavultként megjelölt ezt követően a és eltávolított 5-ös verzió kapcsolatos hibákat. Ha ilyen hibákba ütközik, ez megoldásával:
+Látni hozhat létre módszerek és a korábbi verziókban elavultként megjelölt, és ezt követően távolítva az 5-ös verzió tulajdonságok kapcsolódó hibák. Ha ilyen hibákat észlel, a következő azok megoldását:
 
 - Ha használta a `IndexingParametersExtensions.IndexStorageMetadataOnly` metódus használata `SetBlobExtractionMode(BlobExtractionMode.StorageMetadata)` helyette.
 - Ha használta a `IndexingParametersExtensions.SkipContent` metódus használata `SetBlobExtractionMode(BlobExtractionMode.AllMetadata)` helyette.
 
-### <a name="removed-preview-features"></a>Az eltávolított előzetes verziójú funkciók
+### <a name="removed-preview-features"></a>Eltávolított előzetes verziójú funkciók
 
-Ha verziója 4.0-Preview 5 verzióra frissíti, vegye figyelembe, hogy JSON-tömb és a fürt megosztott kötetei szolgáltatás támogatja a Blob indexelők elemzése el lett távolítva, mert ezek a funkciók még még csak előzetes verziójúak. Pontosabban, a következő módszerek egyikét a `IndexingParametersExtensions` osztály eltávolításra került:
+Ha frissít a 4.0-s verzióját. dátumú előzetes sémaverzióra 5-ös verzió, vegye figyelembe, hogy JSON-tömböt, és a CSV-elemzési Blob-indexelők támogatása el lett távolítva, mivel ezek a szolgáltatások egyelőre előzetes verzióként. Pontosabban, a következő módszerek egyikét a `IndexingParametersExtensions` osztály el lett távolítva:
 
 - `ParseJsonArrays`
 - `ParseDelimitedTextFiles`
 
-Ha az alkalmazás erős függőség az ezen szolgáltatásoktól, csak akkor térnek át az Azure Search .NET SDK 5-ös verzióját. Továbbra is 4.0-előzetes verzióját használja. Azonban adja a következőket kell figyelembe venni, hogy **megtekintés SDK-k éles környezetben nem javasoljuk**. Előzetes verziójú funkciók csak tesztelési és módosíthatja.
+Ha az alkalmazás egy rögzített függőségi ezekről a funkciókról, nem tudja frissíteni az 5-ös verzióját az Azure Search .NET SDK. Továbbra is használhatja a 4.0-s verzióját. dátumú előzetes sémaverzióra. Ugyanakkor Kérjük vegye figyelembe, hogy **éles üzemi alkalmazások pedig az SDK-k előzetes verzió használata nem ajánlott**. Előzetes verziójú funkciók csak tesztelési és változhat.
 
 ## <a name="conclusion"></a>Összegzés
-Ha további információk az Azure Search .NET SDK van szüksége, tekintse meg a [.NET – útmutató](search-howto-dotnet-sdk.md).
+Ha részletesebb tájékoztatást az Azure Search .NET SDK van szüksége, tekintse meg a [.NET útmutató](search-howto-dotnet-sdk.md).
 
-Az SDK-val szívesen fogadjuk a visszajelzéseket. Ha problémákat tapasztal, nyugodtan megkérdezi a Súgó a [Azure Search MSDN fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azuresearch). Ha a hiba, a problémát fájl is a [Azure .NET SDK GitHub-tárházban](https://github.com/Azure/azure-sdk-for-net/issues). Győződjön meg arról, hogy a probléma címének és a "[az Azure Search]" előtag.
+Szívesen fogadjuk a visszajelzéseket az SDK-val. Ha problémákat tapasztal, nyugodtan megszüntetését a Súgó a [Azure Search MSDN-fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azuresearch). Ha a hiba, a megkereséseit is fájl a [Azure .NET SDK GitHub-adattár](https://github.com/Azure/azure-sdk-for-net/issues). Győződjön meg arról, hogy a probléma címe és az "[az Azure Search]" előtagot.
 
 Köszönjük, hogy az Azure Search használatával!

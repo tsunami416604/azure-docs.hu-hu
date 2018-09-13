@@ -1,6 +1,6 @@
 ---
-title: Felhasználói navigációs minták a felhasználó Azure Application insightsban zajló kommunikációról elemzése |} Microsoft docs
-description: Elemezze a felhasználók hogyan keresse meg a lapokat és a szolgáltatások webalkalmazás között.
+title: A felhasználói folyamatok az Azure Application insights szolgáltatásban felhasználói navigációs mintáinak elemzése |} A Microsoft docs
+description: Elemezheti, hogy a felhasználók hogyan navigálnak a lapjait és szolgáltatásait a webalkalmazás között.
 services: application-insights
 documentationcenter: ''
 author: mrbullwinkle
@@ -9,92 +9,94 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/24/2018
-ms.author: mbullwin; daviste
-ms.openlocfilehash: 5913039d3ab288c2fc8366073b340538989512ee
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.reviewer: daviste
+ms.author: mbullwin
+ms.openlocfilehash: 5c057e4592939dea549c4e50c4ef1bdc5d6367fd
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35645491"
 ---
-# <a name="analyze-user-navigation-patterns-with-user-flows-in-application-insights"></a>A felhasználó zajlik az Application Insightsban felhasználói navigációs minták elemzése
+# <a name="analyze-user-navigation-patterns-with-user-flows-in-application-insights"></a>A felhasználói folyamatok az Application insights szolgáltatásban felhasználói navigációs mintáinak elemzése
 
-![Application Insights felhasználói Forgalomáramlás eszköz](./media/app-insights-usage-flows/00001-flows.png)
+![Application Insights felhasználói folyamatok eszköz](./media/app-insights-usage-flows/00001-flows.png)
 
-A felhasználó Forgalomáramlás eszköz visualizes felhasználók hogyan keresse meg a lapokat és a webhely szolgáltatások között. Fontos nagy hasonló kérdések megválaszolásához:
+A felhasználói folyamatok eszköz megjeleníti, hogy a felhasználók hogyan navigálnak a lapjait és szolgáltatásait a hely között. Itt a remek hasonló kérdések megválaszolásához:
 
-* Hogyan tegye felhasználók elhagyni a lapot a webhely?
-* Mi tegye felhasználók kattintson egy oldalon, a webhely?
-* Hol találhatók a helyek, felhasználók kavarog leginkább a helyről?
-* Vannak-e helyen, ahol a felhasználók ismétlése ugyanaz a művelet újra és újra?
+* Tegye a felhasználók hogyan navigálnak a webhelyen lévő másik lapra?
+* Milyen Igen felhasználók kattintson egy oldalon, a webhelyen?
+* Hol találhatók azok a helyek, felhasználók churn leginkább a helyről?
+* Vannak-e helyeken, ahol a felhasználók ismétlődő ugyanaz a művelet újra és újra?
 
-A felhasználó zajlik az eszköz elindítja egy kezdeti nézet, az egyéni esemény vagy a megadott kivétel. Az első esemény miatt, felhasználói Forgalomáramlás előtt, és ezt követően a felhasználói munkamenet során történt eseményeket jeleníti meg. Különböző vastagsága sornyi hányszor mindegyik elérési út volt követ felhasználók megjelenítése. Különleges **munkamenet kezdete** csomópontok megjelenítése, amelyen a többi csomópont megkezdte a munkamenet. **Munkamenet befejezve** csomópontok megjelenítése, hogy hány felhasználó küldött nincs Lapmegtekintések vagy egyéni események az előző csomópont után kiemelve, ahol felhasználók valószínűleg korábban a helyen.
+A felhasználói folyamatok eszköz elindul egy kezdeti oldalmegtekintést, egyéni esemény vagy megadott kivétel. Adja meg a kezdeti esemény, előtt, és ezt követően a felhasználói munkamenet során történt eseményeket felhasználói folyamatok jeleníti meg. Hány alkalommal mindegyik elérési út lett követni a felhasználók különböző vastagságú vonalak megjelenítése Speciális **munkamenet kezdete** csomópontok megjelenítése, ahol a többi csomópont megkezdte a munkamenet. **Munkamenet állapotig** csomópontok megjelenítése, hogy hány felhasználó küldött nincs Lapmegtekintések vagy egyéni események után az előző csomópont kiemelése, ahol felhasználók valószínűleg left webhelyét.
 
 > [!NOTE]
-> Az Application Insights-erőforrás Lapmegtekintések vagy egyéni események a felhasználó Forgalomáramlás eszközzel kell tartalmaznia. [Ismerje meg, hogyan állíthat be az alkalmazás automatikusan az Application Insights JavaScript SDK a lapmegtekintések gyűjtéséhez](app-insights-javascript.md).
+> Az Application Insights-erőforrást kell tartalmaznia, Lapmegtekintések vagy egyéni események, a felhasználói folyamatok eszköz használata. [Ismerje meg, hogyan állíthat be az alkalmazás gyűjtése az Application Insights JavaScript SDK automatikusan a lapmegtekintések](app-insights-javascript.md).
 >
 >
 
-## <a name="start-by-choosing-an-initial-event"></a>Válassza ki a kezdeti esemény indítása
+## <a name="start-by-choosing-an-initial-event"></a>Kezdésképpen a kezdeti esemény
 
-![A felhasználó Forgalomáramlás kezdeti esemény kiválasztása](./media/app-insights-usage-flows/00002-flows-initial-event.png)
+![Kezdeti esemény, választhatja a felhasználói folyamatok](./media/app-insights-usage-flows/00002-flows-initial-event.png)
 
-A felhasználó Forgalomáramlás eszközzel kérdések megválaszolásával megkezdéséhez válassza ki a kezdeti nézet, egyéni esemény, vagy a képi megjelenítéshez tartozó kiindulási pontként kiszolgálására kivétel:
+Ha szeretné elkezdeni a felhasználói folyamatok eszköz kérdések megválaszolását, válassza ki egy kezdeti oldalmegtekintést, egyéni esemény vagy kivétel a Vizualizáció a kiindulási pontként szolgál:
 
-1. Kattintson a hivatkozásra a **tegye felhasználók mit után...?**  title, vagy kattintson a **szerkesztése** gombra.
-2. Jelöljön ki egy nézet, egyéni esemény vagy kivételnek felelnek meg a **kezdeti esemény** legördülő menüből.
+1. Kattintson a hivatkozásra a **nincs felhasználói tevékenység után...?**  cím, vagy kattintson a **szerkesztése** gombra.
+2. Válasszon egy oldalmegtekintést, egyéni eseményt vagy kivételt a **kezdeti esemény** legördülő listából.
 3. Kattintson a **létrehozás graph**.
 
-A képi megjelenítés "1. lépés" oszlopa jeleníti meg, mi felhasználók nyerte leggyakrabban csak a rendezett felülről lefelé a leginkább a legalább gyakori a kezdeti esemény után. A "2. lépés" és a későbbi oszlopok bemutatják, mi felhasználók az, ami azt követően, az összes a módon felhasználók lépjen a webhely keresztül kép létrehozása.
+Az "1. lépés" oszlopot a Vizualizáció látható, milyen felhasználók tudta leggyakrabban csak a rendezett felülről lefelé a legtöbb legritkább, a kezdeti esemény után. A "2. lépés" és a következő oszlopok megjelenítése, mi felhasználók tette azt követően, az összes módon felhasználók van nyitva a webhelyen keresztül kép létrehozásához.
 
-Alapértelmezés szerint a felhasználói Forgalomáramlás eszköz véletlenszerűen minták csak az elmúlt 24 órában Lapmegtekintések és egyéni esemény a webhelyről. Növelje az időtartományt, és módosítsa a teljesítmény és a pontosság elosztás véletlenszerű mintavételi a Szerkesztés menü.
+Alapértelmezés szerint a felhasználói folyamatok eszköz véletlenszerűen minták csak az elmúlt 24 órában lapmegtekintés és egyéni esemény az webhelyről. Növelje az időtartományt, és módosítsa az egyenleg a teljesítmény és a pontosság véletlenszerű mintavételi a Szerkesztés menü.
 
-Ha, a lapmegtekintések, egyéni események és kivételek nem releváns, kattintson a **X** el szeretné rejteni a csomóponton. A csomópontok elrejtése, kattintson a kívánt kiválasztása után a **létrehozás graph** a képi megjelenítés gombra. Minden csomópont elrejtett megtekintéséhez kattintson a **szerkesztése** gombra, majd tekintse meg a **események kizárt** szakasz.
+Ha az Ön számára nem bizonyos az oldalmegtekintéseket, az egyéni eseményeket és a kivételeket, kattintson a **X** el szeretné rejteni a csomópontokon. Miután kiválasztotta a kívánt csomópontokat is elrejtése, kattintson a **létrehozás graph** gomb alatti a vizualizációt. Összes elrejtett csomópont megtekintéséhez kattintson a **szerkesztése** gombra, majd tekintse meg a **kizárt események** szakaszban.
 
-Lapmegtekintések vagy egyéni események hiányoznak, ha a várt a képi megjelenítés meg:
+Ha a lapmegtekintések vagy egyéni események, amelyek esetében hiányzik a várt a Vizualizáció:
 
-* Ellenőrizze a **események kizárt** szakasz a **szerkesztése** menü.
-* Gombjaival plusz **mások** csomópontok események kevésbé gyakran használják a képi megjelenítés felvenni.
-* Ha a nézet vagy a várt egyéni esemény ritkán által küldött felhasználók, próbálja növelni a képi megjelenítés időtartománya a **szerkesztése** menü.
-* Egyéni esemény vagy kivétel várt be van állítva az Application Insights SDK a webhely a forráskód lehet összegyűjteni, győződjön meg arról, hogy a lap megjelenítése. [További tudnivalók az egyéni események gyűjtése.](app-insights-api-custom-events-metrics.md)
+* Ellenőrizze a **kizárt események** című rész a **szerkesztése** menü.
+* Plusz gombok **mások** többek között a kevésbé gyakran használják események a Vizualizáció-csomópontokat.
+* Ha az oldal nézet vagy egyéni esemény várható ritkán küld a felhasználók, próbálkozzon az időtartomány, a Vizualizációk növelésével a **szerkesztése** menü.
+* Ellenőrizze, hogy a lap megtekintéséhez, egyéni eseményt vagy kivétel várt beállításáról gyűjti össze az Application Insights SDK a webhely a forráskódban. [További információ az egyéni események gyűjtése.](app-insights-api-custom-events-metrics.md)
 
-Ha meg szeretné tekinteni a további lépéseket a képi megjelenítés, használja a **előző lépéseket** és **további lépések** legördülő listák megnyílásának a képi megjelenítés fent.
+Ha meg szeretné tekinteni a további lépéseket a vizualizációban, használja a **előző lépések** és **további lépések** legördülő menük, a Vizualizáció fölött.
 
-## <a name="after-visiting-a-page-or-feature-where-do-users-go-and-what-do-they-click"></a>Egy lapon vagy a szolgáltatás megtekintése, után tegye felhasználók hová, és mi tegye kattintanak?
+## <a name="after-visiting-a-page-or-feature-where-do-users-go-and-what-do-they-click"></a>Weblap vagy szolgáltatás megtekintése, után tegye felhasználók hová, és mi tegye kattintanak?
 
-![Felhasználói Forgalomáramlás segítségével azonosíthatja, ahol a felhasználók kattintanak](./media/app-insights-usage-flows/00003-flows-one-step.png)
+![Ismerje meg, ahol a felhasználók kattintanak a felhasználói folyamatok használatával](./media/app-insights-usage-flows/00003-flows-one-step.png)
 
-A kezdeti esemény nézet egy, az első oszlop ("1. lépés") képi megjelenítés akkor gyorsan megérteni, hogy mi felhasználók közvetlenül a meglátogatása után volt. Próbálja meg megnyitni a webhely egy ablakban, a felhasználó Forgalomáramlás képi megjelenítés mellett. Hasonlítsa össze a felhasználók hogyan használják a lapot az "1. lépés" oszlopban szereplő események elvárásainak. Úgy tűnik, a csapat jelentéktelen lap egy felhasználói felületi elem gyakran, a leggyakrabban használt lapon között lehet. Lehet, hogy a Tervező javításai és a hely számára kiváló kiindulási pontot.
+Ha a kezdeti esemény egy lapmegtekintés, az első oszlop ("1" lépés), a Vizualizáció gyorsan megismerheti, mit felhasználók közvetlenül az oldalra látogat után volt. Próbálja meg megnyitni a hely a felhasználói folyamatok képi megjelenítés mellett ablakban. Hasonlítsa össze az elvárásainak, a felhasználók hogyan használják az oldal az események az "1. lépés" oszlopban. Gyakran előfordul azon az oldalon, úgy tűnik, nem jelentős a csapata számára olyan felhasználói felületi elemek között a leggyakrabban használt a lapon lehet. Arculati fejlesztések a helyhez a remek kiindulási pont lehet.
 
-A kezdeti esemény az egyéni esemény, ha az első oszlopban látható, mi felhasználókat, hogy a művelet végrehajtása után volt. Csakúgy, mint a lapmegtekintések, fontolja meg, ha a felhasználók a megfigyelt viselkedés megfelel-e a csapata célok és az elvárásokról. Ha a kijelölt kezdeti esemény "Hozzáadott elemet a vásárlás bevásárlókocsiból", például nézzük meg, ha a képi megjelenítés röviddel azután "Nyissa meg a kivétel" és "A vásárlás befejezése" jelenik meg. Ha a felhasználói viselkedés eltér az igényeinek, segítségével a képi megjelenítés megérteni, hogyan felhasználók kihozhatják "találkozott" a hely aktuális terv.
+A kezdeti esemény az egyéni esemény, ha az első oszlop mutatja, milyen felhasználók csak az adott művelet végrehajtása után volt. Lapmegtekintések, mint a fontolja meg, ha a felhasználók viselkedését a megfigyelt megfelel-e a csapat céljait és elvárásainak. Ha a kijelölt kezdeti esemény "Hozzáadott elem a vásárlás bevásárlókocsihoz", például nézzük meg, ha a Vizualizáció Röviddel ezután "Ugrás a Checkout" és "Beszerzési befejeződött" jelenik meg. Ha a felhasználói viselkedés eltér az elvárásainak, használja a Vizualizáció megérteni, hogyan felhasználók kihozhatják a hely jelenlegi kialakítás "találkozott".
 
-## <a name="where-are-the-places-that-users-churn-most-from-your-site"></a>Hol találhatók a helyek, felhasználók kavarog leginkább a helyről?
+## <a name="where-are-the-places-that-users-churn-most-from-your-site"></a>Hol találhatók azok a helyek, felhasználók churn leginkább a helyről?
 
-Figyelendő **munkamenet véget ért** csomópontok nagy felfelé megjelenő a képi megjelenítés, különösen akkor korai szakaszában a folyamat egy oszlopban. Ez azt jelenti, hogy a lapok és a felhasználói felület kölcsönhatások a fenti elérési út végrehajtása után a hely valószínűleg churned sok felhasználó. Egyes esetekben várhatóan - végeztével a beszerzési egy kereskedelmi webhelyen például - forgalom, de általában forgalom bejelentkezési tervezési hibát, gyenge teljesítményt, vagy más növelhető a hellyel.
+Tekintse meg a **munkamenet véget ért** csomópontok nagy mentési jelennek meg, a Vizualizáció egy folyamatban korai különösen oszlopban. Ez azt jelenti, hogy hány felhasználó után a következő lapokat és a felhasználói felület kölcsönhatások a fenti elérési út a webhelyek valószínűleg előforduló. Néha adatváltozás - elvégezte a beszerzés, egy e-kereskedelmi webhelyen például - várt, de általában a forgalom a tervezési problémákat, gyenge teljesítményt vagy egyéb problémák a hellyel, amely javítani lehet a jele.
 
-Ne felejtse el, amely **munkamenet véget ért** csomópontok csak az Application Insights-erőforrás által gyűjtött telemetriáját alapulnak. Az Application Insights telemetria az egyes felhasználói kommunikációt nem kap, ha felhasználók sikerült továbbra is kell kezelni a hely ezen a módon után a felhasználó Forgalomáramlás eszköz szerint a munkamenet véget ért.
+Vegye figyelembe, hogy **munkamenet véget ért** csomópontok csak az Application Insights-erőforrás által gyűjtött telemetria alapulnak. Az Application Insights telemetria bizonyos felhasználói interakció érdekében nem kap, ha felhasználók sikerült továbbra is rendelkezik kezelhetők a hely ezen a módon után a felhasználói folyamatok eszköz szerint a munkamenet véget ért.
 
-## <a name="are-there-places-where-users-repeat-the-same-action-over-and-over"></a>Vannak-e helyen, ahol a felhasználók ismétlése ugyanaz a művelet újra és újra?
+## <a name="are-there-places-where-users-repeat-the-same-action-over-and-over"></a>Vannak-e helyeken, ahol a felhasználók ismétlődő ugyanaz a művelet újra és újra?
 
-Keresse meg a nézet vagy egyéni esemény, sok felhasználó által a képi megjelenítés következő lépései közötti ismétlődő. Ez általában azt jelenti, hogy felhasználók ismétlődő műveletek működnek a webhelyen. Ha talál ismétlődő, gondolja át a webhely kialakításának módosítása vagy hozzáadása az új funkció ismétlődés csökkentése érdekében. Tömeges szerkesztés funkció például hozzáadása, ha talál ismétlődő műveletek végrehajtása minden egyes sorára egy elemet a felhasználók.
+Keressen egy oldal nézet vagy egyéni esemény, amelyek sok felhasználó között a vizualizációt a következő lépéseinek ismétlődik. Ez általában azt jelenti, hogy felhasználók ismétlődő műveleteket végez a webhelyen. Ha azt tapasztalja, ismétlődés, gondolja át a webhely kialakításának módosítása vagy hozzáadása ismétlési csökkentése érdekében új funkciókat. Tömeges szerkesztés funkció például hozzáadása, ha a felhasználók ismétlődő műveleteket végez egy elemet minden egyes sorára.
 
 ## <a name="common-questions"></a>Gyakori kérdések
 
-### <a name="does-the-initial-event-represent-the-first-time-the-event-appears-in-a-session-or-any-time-it-appears-in-a-session"></a>Nem a kezdeti esemény jelentik az esemény egy munkamenet jelenik meg először, vagy amikor az megjelenik egy munkamenet?
+### <a name="does-the-initial-event-represent-the-first-time-the-event-appears-in-a-session-or-any-time-it-appears-in-a-session"></a>A kezdeti esemény jelölik az esemény egy munkamenet jelenik meg először nem, vagy minden alkalommal megjelenik egy munkamenetben?
 
-A képi megjelenítés a kezdeti esemény csak az első alkalommal a felhasználó adott lapmegtekintés vagy egyéni esemény egy munkamenet során küldött jelöli. Ha is el lehet küldeni a kezdeti esemény többször a munkamenetben, majd az "1. lépés" oszlopban csak látható felhasználók működése után a *első* kezdeti esemény példányát, nem minden esetben.
+A Vizualizáció a kezdeti esemény csak az első alkalommal egy felhasználó adott oldal nézet vagy egyéni esemény egy munkamenet során küldött jelöli. Ha a felhasználók elküldhetik a kezdeti esemény többször is feldolgozza a munkamenet, majd az "1. lépés" oszlop csak bemutatja, hogyan viselkednek a felhasználók után a *első* kezdeti esemény példányát, nem minden példány.
 
-### <a name="some-of-the-nodes-in-my-visualization-are-too-high-level-for-example-a-node-that-just-says-button-clicked-how-can-i-break-it-down-into-more-detailed-nodes"></a>A képi megjelenítés csomópontján túl magas szintű. Például, ha egy csomópont, amely szerint csak a "Gomb Clicked." Hogyan lehet I felosztása azt részletesebb csomópontok?
+### <a name="some-of-the-nodes-in-my-visualization-are-too-high-level-for-example-a-node-that-just-says-button-clicked-how-can-i-break-it-down-into-more-detailed-nodes"></a>A csomópontok a Vizualizáció némelyike túl magas szintű. Ha például arról, hogy a csak "Gomb gombos. kattintással elérhető" csomópont Hogyan tudok oszthatja azt részletesebb csomópontok be?
 
-Használja a **szerint** beállításai a **szerkesztése** menüben:
+Használja a **felosztás** lehetőségei a a **szerkesztése** menüben:
 
-1. Válassza ki az esemény bontani kívánja a **esemény** menü.
-2. Válassza ki a dimenzió a **dimenzió** menü. Például ha "Gombra kattint" nevű esemény, próbálja meg egyéni tulajdonságot, "Gomb neve."
+1. Válassza ki a kívánt eseményt felosztania az **esemény** menü.
+2. Válasszon egy adott dimenzió a **dimenzió** menü. Ha egy esemény "Gombra kattint" nevű, próbáljon meg például a "Gomb neve." nevű egyéni tulajdonságot
 
 ## <a name="next-steps"></a>További lépések
 
 * [Használat – áttekintés](app-insights-usage-overview.md)
-* [Felhasználók, a munkamenetek és az események](app-insights-usage-segmentation.md)
+* [Felhasználók, munkamenetek és események](app-insights-usage-segmentation.md)
 * [Megőrzés](app-insights-usage-retention.md)
 * [Egyéni események hozzáadása az alkalmazáshoz](app-insights-api-custom-events-metrics.md)

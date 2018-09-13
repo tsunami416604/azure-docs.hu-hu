@@ -1,19 +1,18 @@
 ---
 title: Módosítása és ismételt üzembe helyezése a mikroszolgáltatások |} A Microsoft Docs
 description: Ez az oktatóanyag bemutatja, hogyan módosíthatja, és telepítse újra a távoli figyelési mikroszolgáltatások
-author: giyeh
-manager: hegate
-ms.author: giyeh
+author: dominicbetts
+ms.author: dobett
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 04/19/2018
 ms.topic: conceptual
-ms.openlocfilehash: e15e17a499ad33a270b220fa7483d96c2945f6bb
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 561c5b0f49c36cf15e85e3a334c7a8aa326f70a9
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43338077"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44715057"
 ---
 # <a name="customize-and-redeploy-a-microservice"></a>Mikroszolgáltatás testreszabása és ismételt üzembe helyezése
 
@@ -47,14 +46,15 @@ Ez a rész az alapértelmezett IoT hub manager mikroszolgáltatás API hívható
 2. Keresse meg a letöltött Postman, és nyissa meg.
 3. A Postman adja meg a következő GET: http://localhost:8080/iothubmanager/v1/status.
 4. A visszaadandó megtekintése, és megjelenik, "Állapot": "OK: tartási és jól".
-![Tartási és jól Postman-üzenet](./media/iot-accelerators-microservices-example/postman-alive-well.png)
+
+    ![Tartási és jól Postman-üzenet](./media/iot-accelerators-microservices-example/postman-alive-well.png)
 
 ## <a name="change-the-status-and-build-the-image"></a>Az állapotváltás és a rendszerkép létrehozásához
 
 Módosítsa az "Új módosításokat az itt végzett!" az Iot Hub-kezelőből mikroszolgáltatás állapotüzenet és ezután építse újra az új állapot a docker-rendszerképet. Ha itt problémákat tapasztal, tekintse meg a [hibaelhárítás](#Troubleshoot) szakaszban.
 
 1. Ellenőrizze, hogy meg nyitva a terminált, és váltson arra a könyvtárra, amelybe klónozta van a távoli figyelési megoldás. 
-2. A címtár módosítása ".. azure-iot-pcs-remote-monitoring-dotnet/iothub-manager/WebService/v1/Controllers".
+2. Módosítsa a címtárban "azure-iot-pcs-remote-monitoring-dotnet/services/iothub-manager/WebService/v1/Controllers".
 3. Nyissa meg StatusController.cs bármilyen szövegszerkesztővel, vagy IDE, adja meg. 
 4. Keresse meg a következő kódot:
 
@@ -68,7 +68,7 @@ Módosítsa az "Új módosításokat az itt végzett!" az Iot Hub-kezelőből mi
     return new StatusApiModel(true, "New Edits Made Here!");
     ```
 
-5. Lépjen vissza a terminálban, de módosítsa a következő könyvárra: "… azure-iot-pcs-remote-monitoring-dotnet/iothub-manager/scripts/docker".
+5. Lépjen vissza a terminálban, de módosítsa a következő könyvárra: "azure-iot-pcs-remote-monitoring-dotnet/services/iothub-manager/scripts/docker".
 6. Írja be az új docker-rendszerkép létrehozásához
 
     ```cmd/sh
@@ -113,7 +113,7 @@ Az új docker-rendszerkép leküldése a docker hub, előtt a Docker vár a kép
 ## <a name="update-your-remote-monitoring-solution"></a>A távoli figyelési megoldás frissítése
 Akkor most frissítenie kell a helyi docker-compose.yml lekérni az új docker-rendszerképet a docker hubról. Ha itt problémákat tapasztal, tekintse meg a [hibaelhárítás](#Troubleshoot) szakaszban.
 
-1. Lépjen vissza a terminálon, és módosítsa a következő könyvtárban: ".. Azure-IOT-PCs-Remote-monitoring-DotNet/scripts/Local".
+1. Lépjen vissza a terminálon, és módosítsa a következő könyvtárban: "azure-iot-pcs-remote-monitoring-dotnet/services/scripts/local".
 2. Nyissa meg a docker-compose.yml bármilyen szövegszerkesztővel, vagy IDE, adja meg.
 3. Keresse meg a következő kódot:
 
@@ -130,7 +130,7 @@ Akkor most frissítenie kell a helyi docker-compose.yml lekérni az új docker-r
 ## <a name="view-the-new-response-status"></a>Az új válasz állapotának megtekintése
 Végül újbóli üzembe helyezés a távoli figyelési megoldás helyi példányát, és az új válasz állapotának megtekintése a Postman.
 
-1. Lépjen vissza a terminált, és módosítsa a következő könyvárra: ".. Azure-IOT-PCs-Remote-monitoring-DotNet/scripts/Local".
+1. Lépjen vissza a terminált, és módosítsa a következő könyvárra: "azure-iot-pcs-remote-monitoring-dotnet/scripts/local".
 2. Indítsa el a távoli figyelési megoldás a helyi példányát, írja be a következő parancsot a terminálon:
 
     ```cmd/sh

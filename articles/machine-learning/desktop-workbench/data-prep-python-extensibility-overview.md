@@ -1,38 +1,38 @@
 ---
-title: Python bővítési használata Azure Machine Learning adatok előkészített |} Microsoft Docs
-description: Ez a dokumentum nyújt áttekintését és részletes néhány olyan Python kód segítségével történő bővítése adatok előkészítése
+title: Python-bővíthetőségi használata az Azure Machine Learning adat előkészített |} A Microsoft Docs
+description: Ez a dokumentum nyújt áttekintést, és néhány részletes példa a Python-kód használatát az adat-előkészítési funkcióinak bővítése érdekében
 services: machine-learning
 author: euangMS
 ms.author: euang
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.custom: ''
 ms.devlang: ''
 ms.topic: article
 ms.date: 05/09/2018
-ms.openlocfilehash: e91d3e4bfb1cba6f45b0106b3fabe5bef7e0e079
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: a713f5fcde31e0e25de080a65b71209011ef551d
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34831424"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35645900"
 ---
-# <a name="data-preparations-python-extensions"></a>Előkészített Python adatkiterjesztések
-Beépített szolgáltatásai között a funkció hézagok kitöltése módja Azure Machine Learning adatok előkészített bővítési több szinten tartalmazza. Ebben a dokumentumban a Python-parancsfájl bővíthetőséget szerkezeti azt. 
+# <a name="data-preparations-python-extensions"></a>Adat-Előkészítések Python-bővítmények
+Ehhez adja meg a beépített funkciók között funkciókorlátozásokat módja az Azure Machine Learning adat előkészített magában foglalja a bővíthetőségi több szinten. Ez a dokumentum azt szerkezeti Python-szkriptet a bővíthetőséget. 
 
-## <a name="custom-code-steps"></a>Egyéni kód lépései 
-Adatok előkészített rendelkezik a következő egyéni lépéseket, ahol a felhasználók is írhat kódot:
+## <a name="custom-code-steps"></a>Egyéni kód lépések 
+Adat-Előkészítések rendelkezik, ahol a felhasználók is írhat kódot a következő egyéni lépéseket:
 
 * Oszlop hozzáadása
 * Speciális szűrő
 * Adatfolyam átalakítása
-* Átalakítás partíció
+* Partíció átalakítása
 
-## <a name="code-block-types"></a>Kód blokk típusok 
-Az egyes lépések két kód blokk típus támogatott. Először is támogatott egy operációs rendszer Python kifejezést, mert a végrehajtása. Második, ahol egy ismert aláírás az adott funkciót ezt nevezik a kódot megadnia a Python modul támogatott.
+## <a name="code-block-types"></a>Blokk típusú kód 
+Az egyes lépéseket letiltása a kétféle kódot támogatja. Először is nyújtunk támogatást hajtja végre, mert egy operációs rendszer nélküli helyreállításra Python kifejezés. Másodszor is nyújtunk támogatást egy Python-modult, ahol egy adott függvény ismert aláírással nevezzük a kódban, Önnek kell letöltenie.
 
-Például egy olyan új oszlop, amely kiszámítja a napló egy másik oszlop a következő két módon adhat hozzá:
+Ha például egy olyan új oszlop, amely kiszámítja a napló egy másik oszlop a következő két módon adhat hozzá:
 
 Kifejezés 
 
@@ -48,12 +48,12 @@ def newvalue(row):
 ```
 
 
-Az oszlop hozzáadása átalakító modul módban vár a hívott függvény található `newvalue` , amely fogad egy sor változó, és az oszlop értékét adja vissza. Ez a modul tartalmazhatnak mennyisége Python kódját a más funkciók, importálja, stb.
+Az oszlop hozzáadása átalakítás modul módban vár a hívott függvény található `newvalue` , amely fogad egy sor változót, és az oszlop értékét adja vissza. Ez a modul lehetnek más függvények, importálja, stb-Python-kód mennyisége.
 
-A következő szakaszok minden bővítmény pont részleteit ismerteti. 
+Minden bővítmény pont részleteit az alábbi szakaszok ismertetik. 
 
-## <a name="imports"></a>Importálása 
-Ha a kifejezés blokk típus használata, továbbra is felvehetőek **importálása** utasítást, hogy a kódot. Minden csoportban kell lenniük a kód a felső sorokban.
+## <a name="imports"></a>Import 
+Ha a blokk típusú kifejezés használ, továbbra is felvehetőek **importálása** -utasítások használatával a kód. Minden csoportban kell lenniük a kód a felső sorok.
 
 Javítsa ki 
 
@@ -73,10 +73,10 @@ import numpy
 ```
  
  
-A modul blokktípus használatakor minden normál Python való használatának szabályait követheti a **importálása** utasítást. 
+Ha blokk modultípus használja, minden a szokásos Python való használatának szabályait, kövesse a **importálása** utasítást. 
 
-## <a name="default-imports"></a>Alapértelmezett importálása
-Az alábbi importálásokat a rendszer mindig szerepel, és használható a kódban. Nem kell újra importálja. 
+## <a name="default-imports"></a>Alapértelmezett import
+Az alábbi importálásokat a csomagban foglalt, és használható a kód mindig állnak. Nem kell újra importálja. 
 
 ```python
 import math  
@@ -89,17 +89,17 @@ import scipy as sp
 ```
   
 
-## <a name="install-new-packages"></a>Új csomagok telepítése
-Alapértelmezés szerint nem telepített csomag használatára, először telepítse az adatok előkészített használó környezetekben. A telepítés azért van szükség, mind a helyi számítógépen, és minden számítási célokon futtatni kívánt.
+## <a name="install-new-packages"></a>Új csomag telepítése
+Szeretne használni egy csomagot, amely alapértelmezés szerint nincs telepítve, akkor először telepítheti az adat-Előkészítések használó környezetekben. A telepítéshez kell mind a helyi gépen, és futtatni kívánt számítási céloknak végezni.
 
-Számítási célja a csomagok telepítéséhez kell módosítani a conda_dependencies.yml fájlt a aml_config mappában a projekt gyökerében található.
+Egy számítási célnak a csomagok telepítése, akkor módosítsa a conda_dependencies.yml fájlt a aml_config mappában található a projekt gyökerében.
 
 ### <a name="windows"></a>Windows 
-A Windows helyen található, a Python és a parancsfájlok könyvtárát alkalmazásspecifikus telepítése található. Az alapértelmezett hely a következő:  
+Keresse meg a helyen található Windows, keresse meg a Python és a parancsfájlok könyvtár alkalmazásspecifikus telepítését. Az alapértelmezett hely a következő:  
 
 `C:\Users\<user>\AppData\Local\AmlWorkbench\Python\Scripts` 
 
-Ezután futtassa az alábbi parancsok egyikét: 
+Ezután futtassa a következő parancsok egyikét: 
 
 `conda install <libraryname>` 
 
@@ -108,11 +108,11 @@ vagy
 `pip install <libraryname> `
 
 ### <a name="mac"></a>Mac 
-A Mac helyen található, a Python és a parancsfájlok könyvtárát alkalmazásspecifikus telepítése található. Az alapértelmezett hely a következő: 
+A Mac számítógépen hely megkereséséhez, keresse meg a Python és a parancsfájlok könyvtár alkalmazásspecifikus telepítését. Az alapértelmezett hely a következő: 
 
 `/Users/<user>/Library/Caches/AmlWorkbench/Python/bin` 
 
-Ezután futtassa az alábbi parancsok egyikét: 
+Ezután futtassa a következő parancsok egyikét: 
 
 `./conda install <libraryname>`
 
@@ -120,8 +120,8 @@ vagy
 
 `./pip install <libraryname>`
 
-## <a name="use-custom-modules"></a>Az egyéni modulok használata
-Átalakítás Adatfolyamblokk (parancsfájl) írja be a következő Python kódot
+## <a name="use-custom-modules"></a>Egyéni modulok használata
+Adatfolyam átalakítása (szkript), a írja be a következő Python-kód
 
 ```python
 import sys
@@ -131,7 +131,7 @@ from UserModule import ExtensionFunction1
 df = ExtensionFunction1(df)
 ```
 
-Oszlop hozzáadása (parancsfájl), állítson be kód blokktípus = modul, és írja be az alábbi Python kódot
+Az oszlop hozzáadása (szkript), állítsa be a kódot kódblokk típusa = modul, és a következő Python-kód írása
 
 ```python 
 import sys
@@ -142,11 +142,11 @@ from UserModule import ExtensionFunction2
 def newvalue(row):
     return ExtensionFunction2(row)
 ```
-Különböző végrehajtási abszolút elérési útnak környezetek (helyi, Docker, Spark), a megfelelő helyre mutat. Előfordulhat, hogy használni kívánt "os.getcwd() + relativePath" megkeresését.
+A különböző végrehajtási környezetekben (helyi, Docker, a Spark) jó helyen abszolút elérési út mutasson. Előfordulhat, hogy használni kívánt "os.getcwd() + relativePath" megkeresését.
 
 
-## <a name="column-data"></a>Oszlop adattípusa 
-Oszlop adattípusa sor felépítését, vagy a kulcs-érték jelölés használatával elérhető. Oszlop neve szóközt vagy speciális karaktereket tartalmaz pontjelöléssel nem lehet elérni. A `row` változó mindig meg kell határozni, Python-bővítmények (modul és kifejezés) mindkét üzemmódban. 
+## <a name="column-data"></a>Oszlopok adatainak 
+Oszlop adatok elérhetők egy sor felépítését vagy kulcs-érték jelölés használatával. Oszlop neve szóközt vagy különleges karaktert tartalmaz nem érhető el a felépítését. A `row` változó mindig meg kell határozni, mindkét mód Python-bővítmények (modul és kifejezés). 
 
 Példák 
 
@@ -157,10 +157,10 @@ Példák
 
 ## <a name="add-column"></a>Oszlop hozzáadása 
 ### <a name="purpose"></a>Cél
-Az oszlop hozzáadása bővítmény pont lehetővé teszi egy olyan új oszlop kiszámításához Python írását. Írt kódot hozzáférhet a teljes sor. Minden egyes sorára olyan új oszlop értékét kell. 
+Az oszlop hozzáadása bővítmény pont lehetővé teszi egy olyan új oszlop kiszámításához Python írása. Írt hozzáfér a teljes sort. Egy új oszlop értékét minden egyes sorára szükséges. 
 
 ### <a name="how-to-use"></a>A használat módja
-A bővítmény pont az oszlop hozzáadása (parancsfájl) blokk használatával adhat hozzá. Érhető el a legfelső szintű **átalakítások** , valamint az a menü a **oszlop** helyi menüje. 
+Ez a bővítmény pont az oszlop hozzáadása (szkript)-blokk használatával adhat hozzá. A legfelső szintű elérhető **átalakítások** is, a menüben a **oszlop** helyi menü. 
 
 ### <a name="syntax"></a>Szintaxis
 Kifejezés
@@ -179,10 +179,10 @@ def newvalue(row):
 
 ## <a name="advanced-filter"></a>Speciális szűrő
 ### <a name="purpose"></a>Cél 
-A speciális szűrési bővítmény pont lehetővé teszi egy egyéni szűrő írását. Rendelkezik hozzáféréssel a teljes sort, és a kódot kell visszaadnia igaz (beleértve a sor) vagy False (zárja ki a sor). 
+A speciális szűrési bővítmény pont lehetővé teszik egyéni szűrő írását. Hozzáfér az egész sort, és a kódot kell visszaadnia a True (például a sor) vagy False (kizárás a sor). 
 
 ### <a name="how-to-use"></a>A használat módja
-A bővítmény pont a speciális (parancsfájl) szűrőblokk használatával adhat hozzá. Érhető el a legfelső szintű **átalakítások** menü. 
+Ez a bővítmény pont a speciális szűrőt (szkript)-blokk használatával adhat hozzá. A legfelső szintű elérhető **átalakítások** menü. 
 
 ### <a name="syntax"></a>Szintaxis
 
@@ -202,15 +202,15 @@ def includerow(row):
 
 ## <a name="transform-dataflow"></a>Adatfolyam átalakítása
 ### <a name="purpose"></a>Cél 
-Az adatfolyam átalakítása bővítmény pont lehetővé teszi teljesen átalakítási az adatfolyam. Egy Pandas dataframe, amely tartalmazza az oszlopok és sorok, amelyekre még feldolgozás hozzáférése. A kód egy új adatokkal Pandas dataframe kell visszaadnia. 
+Az adatfolyam átalakítása bővítmény pont lehetővé teszi az adatfolyam teljesen alakíthatja. Rendelkezik, amely tartalmazza az oszlopokat és sorokat, amelyek még feldolgozásra Pandas dataframe való hozzáférést. A kód az új adatokat Pandas dataframe kell visszaadnia. 
 
 >[!NOTE]
->A Python minden van az adatok betöltését a memóriába a Pandas dataframe használata ehhez a kiterjesztéshez. 
+>A Python a memóriába az adatok a Pandas dataframe a Ez a bővítmény használata esetén. 
 >
->A Spark egyetlen munkavégző csomópont alakzatot gyűjtött összes adat. Ha az adatok nagy, egy munkavégző előfordulhat, hogy elfogy a memória. Körültekintően használja.
+>A Spark az alakzatot egyetlen munkavégző csomópont gyűjtött összes adat. Nagyon nagy méretű adatok esetén egy feldolgozó előfordulhat, hogy elfogy a memória. Körültekintően használja.
 
 ### <a name="how-to-use"></a>A használat módja 
-A bővítmény pont az átalakítás (parancsfájl) adatfolyamblokk használatával adhat hozzá. Érhető el a legfelső szintű **átalakítások** menü. 
+Ez a bővítmény pont az adatfolyam átalakítása (szkript)-blokk használatával adhat hozzá. A legfelső szintű elérhető **átalakítások** menü. 
 ### <a name="syntax"></a>Szintaxis 
 
 Kifejezés
@@ -231,16 +231,16 @@ def transform(df):
 ```
   
 
-## <a name="transform-partition"></a>Átalakítás partíció  
+## <a name="transform-partition"></a>Partíció átalakítása  
 ### <a name="purpose"></a>Cél 
-A partíció átalakítási bővítmény pont lehetővé teszi az adatfolyam partíciójának átalakító. Egy Pandas dataframe, amely tartalmazza az oszlopok és sorok adott partíció hozzáférése. A kód egy új adatokkal Pandas dataframe kell visszaadnia. 
+A partíció átalakítása bővítmény pont eloszlása az adatfolyam átalakítása teszi lehetővé. Rendelkezik, amely tartalmazza az összes oszlopot és sort, hogy a partíció Pandas dataframe való hozzáférést. A kód az új adatokat Pandas dataframe kell visszaadnia. 
 
 >[!NOTE]
->A Python akkor előfordulhat, hogy végül egy olyan partíciót, vagy több partíciót, az adatok méretétől függően. A Spark dolgozunk a dataframe, amely tárolja az adatokat a partíciókhoz egy adott munkavégző csomóponton. Mindkét esetben nem biztos, hogy rendelkezik-e hozzáféréssel a teljes adatkészletet. 
+>A Python előfordulhat, hogy végül egy olyan partíciót, vagy több partíciót az adatok méretétől függően. A Spark dolgozik, amely tárolja az adatokat egy partíció egy adott munkavégző csomóponton dataframe. Mindkét esetben nem biztos, hogy a teljes adatkészlet elérését. 
 
 
 ### <a name="how-to-use"></a>A használat módja
-A bővítmény pont az átalakítás partíció (parancsfájl) blokk használatával adhat hozzá. Érhető el a legfelső szintű **átalakítások** menü. 
+Ez a bővítmény pont a partíció átalakítása (szkript) blokk használatával adhat hozzá. A legfelső szintű elérhető **átalakítások** menü. 
 
 ### <a name="syntax"></a>Szintaxis 
 
@@ -265,19 +265,19 @@ def transform(df, index):
 
 
 ## <a name="datapreperror"></a>DataPrepError  
-### <a name="error-values"></a>Hiba értékek  
-Az adatok előkészített hibaértékek fogalma létezik. 
+### <a name="error-values"></a>Hibás értékek  
+Az adat-Előkészítések hibaértékek fogalma létezik. 
 
-Úgy is hibaértékek egyéni Python-kódban előforduló. Nevű Python osztály példányai `DataPrepError`. Ez az osztály egy Python kivétel becsomagolja, és tulajdonságok néhány rendelkezik. A Tulajdonságok tartalmaz információt a következő hiba történt az eredeti érték feldolgozásakor, valamint az eredeti érték. 
+Egyéni Python-kódban hibaértékek hibát lehetőség. Nevű Python osztály példányai `DataPrepError`. Ez az osztály egy Python-kivétel burkolja, és néhány tulajdonságát. A tulajdonságok a következő hiba történt az eredeti érték feldolgozásakor, valamint az eredeti értékre vonatkozó adatokat tartalmaznak. 
 
 
-### <a name="datapreperror-class-definition"></a>DataPrepError osztálydefiníció
+### <a name="datapreperror-class-definition"></a>Az osztálykiterjesztések definíciója DataPrepError
 ```python 
 class DataPrepError(Exception): 
     def __bool__(self): 
         return False 
 ``` 
-Az előkészített Python keretében egy DataPrepError létrehozását általában néz ki: 
+Az adat-Előkészítések Python-keretrendszer egy DataPrepError létrehozása általában néz ki: 
 ```python 
 DataPrepError({ 
    'message':'Cannot convert to numeric value', 
@@ -287,7 +287,7 @@ DataPrepError({
 }) 
 ``` 
 #### <a name="how-to-use"></a>A használat módja 
-Lehetőség létrehozni DataPrepErrors visszatérési értékként az előző létrehozási módszer használatával egy bővítmény ponton Python futtatásakor. Sokkal valószínű, hogy az adatok egy bővítmény ponton feldolgozásakor hibát DataPrepErrors. Ezen a ponton a egyéni Python-kódot kell kezelni egy DataPrepError érvényes adattípusú értékként.
+Ez akkor lehetséges, ha a Python-bővítmény pontján DataPrepErrors létrehozásához visszatérési értékként az előző létrehozási módjának használatával futtatja. Sokkal több valószínű, hogy DataPrepErrors ütközött egy bővítmény pontján adatot dolgoz fel. Ezen a ponton a Python-kódok kezelnie kell a DataPrepError érvényes adattípusú értékként.
 
 #### <a name="syntax"></a>Szintaxis 
 Kifejezés 

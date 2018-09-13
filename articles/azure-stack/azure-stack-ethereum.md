@@ -5,17 +5,17 @@ services: azure-stack
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 07/03/2018
+ms.date: 09/12/2018
 ms.topic: article
 ms.service: azure-stack
 ms.reviewer: coborn
 manager: femila
-ms.openlocfilehash: d3c89e2028986e05d5d3957c9805d22f07a840b3
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: b4c8ff113ff76586cc4a91adfe568b07327a2d94
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44298113"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44721982"
 ---
 # <a name="azure-stack-ethereum-blockchain-solution-templates"></a>Az Azure Stack Ethereum blockchain megoldássablonok
 
@@ -50,7 +50,7 @@ A sablon Ethereum consortium vezető és tag illesztés, számos módon telepít
 A consortium vezető sablon az első tagtól erőforrás-igényű konfigurálja a hálózatban. 
 
 1. Töltse le a [vezető sablont a Githubból](https://raw.githubusercontent.com/Azure/AzureStack-QuickStart-Templates/master/ethereum-consortium-blockchain/marketplace/ConsortiumLeader/mainTemplate.json)
-2. Válassza ki az Azure Stack felügyeleti portálján, **új > sablonalapú telepítés** egy egyéni sablon üzembe helyezéséhez.
+2. Válassza ki az Azure Stack felügyeleti portálján, **+ erőforrás létrehozása > sablonalapú telepítés** egy egyéni sablon üzembe helyezéséhez.
 3. Válassza ki **szerkesztési sablon** szerkesztése az új egyéni sablont.
 4. A szerkesztési ablaktáblán a jobb oldali másolja és illessze be a vezető sablon korábban letöltött JSON.
     
@@ -105,7 +105,7 @@ Vezető üzembe helyezés ellenőrzéséhez keresse meg a vezető felügyeleti w
 ### <a name="joining-consortium-member-deployment"></a>Csatlakozás consortium tag központi telepítés
 
 1. Töltse le a [consortium tag sablont a Githubból](https://raw.githubusercontent.com/Azure/AzureStack-QuickStart-Templates/master/ethereum-consortium-blockchain/marketplace/JoiningMember/mainTemplate.json)
-2. Válassza ki az Azure Stack felügyeleti portálján, **új > sablonalapú telepítés** egy egyéni sablon üzembe helyezéséhez.
+2. Válassza ki az Azure Stack felügyeleti portálján, **+ erőforrás létrehozása > sablonalapú telepítés** egy egyéni sablon üzembe helyezéséhez.
 3. Válassza ki **szerkesztési sablon** szerkesztése az új egyéni sablont.
 4. A szerkesztési ablaktáblán a jobb oldali másolja és illessze be a vezető sablon korábban letöltött JSON.
 5. Kattintson a **Mentés** gombra.
@@ -157,7 +157,7 @@ Amint a képen is látható, tagok csomópontok állapota **nem fut**. Ennek az 
 Ez a sablon létrehoz egy kapcsolatot a vezető távoli tagja. 
 
 1. Töltse le a [tag és vezető sablon csatlakozzon a Githubról](https://raw.githubusercontent.com/Azure/AzureStack-QuickStart-Templates/master/ethereum-consortium-blockchain/marketplace/Connection/mainTemplate.json)
-2. Válassza ki az Azure Stack felügyeleti portálján, **új > sablonalapú telepítés** egy egyéni sablon üzembe helyezéséhez.
+2. Válassza ki az Azure Stack felügyeleti portálján, **+ erőforrás létrehozása > sablonalapú telepítés** egy egyéni sablon üzembe helyezéséhez.
 3. Válassza ki **szerkesztési sablon** szerkesztése az új egyéni sablont.
 4. A szerkesztési ablaktáblán a jobb oldali másolja és illessze be a vezető sablon korábban letöltött JSON.
     

@@ -1,6 +1,6 @@
 ---
-title: Kiterjesztett felhő adatbázisok kezelése |} Microsoft Docs
-description: A rugalmas adatbázis feladat szolgáltatás segítségével hajtható végre a parancsfájl adatbázisok csoportja között.
+title: Horizontálisan felskálázott felhőalapú adatbázisok kezelése |} A Microsoft Docs
+description: A rugalmas feladatokat végző szolgáltatás segítségével egy szkript végrehajtása adatbázisok egy csoportja között.
 metakeywords: azure sql database elastic databases
 services: sql-database
 manager: craigg
@@ -8,130 +8,135 @@ author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: conceptual
-ms.date: 04/01/2018
+ms.date: 06/14/2018
 ms.author: sstein
-ms.openlocfilehash: 5e2c233ec631f6a3e57d2203a9678b42f909a885
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: HT
+ms.openlocfilehash: 3fc9ab0505fda84464ead01b4937756707993cf0
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34646085"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35645644"
 ---
-# <a name="managing-scaled-out-cloud-databases"></a>Kiterjesztett felhő adatbázisok kezelése
-Kiterjesztett szilánkos adatbázisok, kezelheti a **rugalmas adatbázis-feladatok** (előzetes verzió) funkciója lehetővé teszi megbízhatóan között egy csoportot az adatbázisok, beleértve a Transact-SQL (T-SQL) parancsprogram végrehajtása:
+# <a name="managing-scaled-out-cloud-databases"></a>Horizontálisan felskálázott felhőalapú adatbázisok kezelése
 
-* (az alábbiakban ismertetett) adatbázisok egyénileg definiált gyűjteménye
-* az összes adatbázis egy [rugalmas készlet](sql-database-elastic-pool.md)
-* a shard készletének (használatával létrehozott [Elastic Database ügyféloldali kódtárának](sql-database-elastic-database-client-library.md)). 
+[!INCLUDE [elastic-database-jobs-deprecation](../../includes/sql-database-elastic-jobs-deprecate.md)]
+
+**Elastic Database-feladatok** van egy ügyfél által üzemeltetett Azure-Felhőszolgáltatás, amely lehetővé teszi az igény szerinti és ütemezett felügyeleti feladatokat, amelyeket a rendszer meghív végrehajtásának **feladatok**. A feladatok is egyszerűen és megbízhatóan kezelése az Azure SQL Database-adatbázisok nagy mennyiségű felügyeleti műveletek végrehajtása a Transact-SQL-szkriptek futtatásával. 
+
+Horizontálisan felskálázott szilánkokra osztott adatbázisok, kezelheti a **rugalmas adatbázis-feladatok** funkció (előzetes verzió) lehetővé teszi megbízható között adatbáziscsoportok, beleértve a Transact-SQL (T-SQL) parancsprogram végrehajtása:
+
+* adatbázisok (alább részletesen) egyénileg definiált gyűjteménye
+* az összes adatbázis- [rugalmas készlet](sql-database-elastic-pool.md)
+* a szegmens set (használatával létrehozott [Elastic Database-ügyfélkódtár](sql-database-elastic-database-client-library.md)). 
 
 ## <a name="documentation"></a>Dokumentáció
-* [A rugalmas adatbázis-feladat összetevők telepítéséhez](sql-database-elastic-jobs-service-installation.md). 
-* [Ismerkedés a rugalmas feladatok](sql-database-elastic-jobs-getting-started.md).
-* [PowerShell-lel feladatok létrehozásához és kezeléséhez](sql-database-elastic-jobs-powershell.md).
-* [Létrehozásához és kezeléséhez kimenő Azure SQL-adatbázisok méretezése](sql-database-elastic-jobs-getting-started.md)
+* [Az Elastic Database-feladat összetevőinek telepítése](sql-database-elastic-jobs-service-installation.md). 
+* [Ismerkedés a rugalmas adatbázis-feladatok](sql-database-elastic-jobs-getting-started.md).
+* [PowerShell-lel feladatok létrehozása és kezelése](sql-database-elastic-jobs-powershell.md).
+* [Létrehozása és kezelése az Azure SQL Database-bővítő](sql-database-elastic-jobs-getting-started.md)
 
-**Rugalmas adatbázis-feladatok** jelenleg egy ügyfél által szolgáltatott, Azure Cloud Service, amely lehetővé teszi az ad hoc és ütemezett felügyeleti feladatokat, melyekhez nevezzük végrehajtása **feladatok**. A feladatok könnyen, és megbízhatóan kezelése az Azure SQL-adatbázisok nagy mennyiségű felügyeleti műveletek elvégzéséhez Transact-SQL-parancsfájlok futtatásával. 
 
-![Rugalmas feladat szolgáltatás][1]
 
-## <a name="why-use-jobs"></a>Miért érdemes használni a feladatokat?
+![A rugalmas feladatokat végző szolgáltatás][1]
+
+## <a name="why-use-jobs"></a>Miért érdemes használni a feladatok?
 **Kezelés**
 
-Egyszerűen tegye sémamódosítások, hitelesítő adatok kezelése, hivatkozás adatfrissítések, teljesítményadat-gyűjtés vagy bérlő (ügyfél) telemetriai adatok gyűjtése.
+Egyszerűen tegye sémamódosítások, hitelesítő adatok kezelése, referenciaadatok frissítése, teljesítményadat-gyűjtés vagy bérlő (ügyfél) telemetria gyűjtése.
 
 **Jelentések**
 
-Egy Azure SQL-adatbázisok gyűjteményét egyetlen táblát összesített adatokat.
+Összesített adatok gyűjteményből egy Azure SQL Database-adatbázisok egy videóanyagai egyetlen táblába.
 
-**Terhelés csökkentése**
+**Terhelés csökkentése érdekében**
 
-Alapesetben az egyes adatbázis-egymástól függetlenül ahhoz, hogy a Transact-SQL-utasítások futtatása vagy más felügyeleti feladatok kell csatlakoztatni. Egy feladat kezeli a feladat a célcsoportban minden adatbázis történő bejelentkezéshez. Akkor is meghatározását, karbantartása és megőrizni a Transact-SQL-parancsfájlok használatával hajtható végre, az Azure SQL-adatbázisok csoport között.
+Általában mindegyik adatbázist függetlenül kell csatlakoztatnia, hogy Transact-SQL utasításokat futtasson vagy egyéb adminisztratív feladatokat hajtson végre. Egy feladat kezeli a bejelentkezéseket egy célcsoport összes adatbázisába. Meg is definiálása, fenntartására és a Transact-SQL szkriptek hajtható végre, egy Azure SQL Database-adatbázisok csoport közötti megőrzése.
 
-**Nyilvántartás**
+**Számlázás**
 
-Feladatok futtassa a parancsfájlt, és az egyes adatbázisok végrehajtási állapot. Hiba esetén is kap automatikus próbálkozzon újra.
+Feladatok futtassa a szkriptet, és jelentkezzen az egyes adatbázisok végrehajtási állapotát. Hiba esetén a rendszer automatikusan újrapróbálkozik.
 
 **Rugalmasság**
 
-Azure SQL-adatbázisok egyéni csoportot, és fut egy feladat ütemezésének meghatározását.
+Az Azure SQL Database egyéni csoportjait határozzák meg, és a feladat futtatására ütemterveket.
 
 > [!NOTE]
-> Az Azure-portálon SQL Azure rugalmas készletek korlátozott funkciók csak korlátozott készlete áll rendelkezésre. A PowerShell API-k segítségével hozzáférés a teljes aktuális funkciót.
+> Az Azure Portalon az SQL Azure rugalmas készletek korlátozott funkciók csak egy csökkentett készletét érhető el. A PowerShell API-k eléréséhez a jelenlegi funkciók teljes készletét használja.
 > 
 > 
 
 ## <a name="applications"></a>Alkalmazások
-* Felügyeleti feladatok, például egy új séma telepítését.
-* Hivatkozás adatok-termékinformációk közös frissítése összes adatbázis között. Vagy az ütemezések automatikus frissítések minden hétköznap, óra múlva.
-* Lekérdezés teljesítmény javítása érdekében indexek újraépítése. A újraépítése beállítható úgy, hogy hajtható végre közötti ismétlődő módon, adatbázisok gyűjteménye, mint végezze alacsony forgalmú időszakban.
-* Gyűjtése lekérdezés eredményeit az adatbázisok közül egy központi táblába folyamatos jelleggel. Teljesítmény-lekérdezések lehetnek folyamatosan végre és konfigurált eseményindító további feladatokat hajthatnak végre.
-* Hajtsa végre a hosszabb futó adatfeldolgozási lekérdezéseket elvégzése nagyobb az adatbázisok, például a telemetriai ügyfél gyűjteménye. Eredmények további elemzés céljára egyetlen céltáblába történő összegyűjtése.
+* Felügyeleti feladatok végrehajtása, például egy új séma üzembe helyezése.
+* Common data-termék kapcsolódó információk frissítése az összes adatbázis között. Vagy az ütemezések az automatikus frissítés minden hétköznap, óra múlva.
+* Az indexek újraépítésével javíthatja a lekérdezési teljesítményt. Az újraépítési között egy rendszeres, adatbázis-gyűjtemény végrehajtása például csúcsidőn konfigurálható.
+* A lekérdezési adatokat az adatbázis-készletekből folyamatosan egy központi táblába gyűjtheti. A teljesítménylekérdezések folyamatosan végrehajthatók, illetve konfigurálhatók úgy, hogy további végrehajtandó feladatokat indítsanak el.
+* Olyan hosszabban futó adatfeldolgozási lekérdezéseket hajthat végre nagy adatbáziskészleteken, amilyen például az ügyfél-telemetria gyűjtése. A rendszer az eredményeket egyetlen céltáblában gyűjti össze a további elemzéshez.
 
-## <a name="elastic-database-jobs-end-to-end"></a>Rugalmas adatbázis-feladatok: végpont
-1. Telepítse a **rugalmas adatbázis-feladatok** összetevőket. További információkért lásd: [rugalmas adatbázis telepítése feladatok](sql-database-elastic-jobs-service-installation.md). Ha a telepítés sikertelen lesz, lásd: [eltávolítása](sql-database-elastic-jobs-uninstall.md).
-2. A PowerShell API-k használatával további funkciókat, például az adatbázis egyénileg definiált gyűjtemények, ütemezések hozzáadása és/vagy adatgyűjtési eredmények beállítása létrehozásáról hozzáférhetnek. Egyszerű telepítés és a feladatok végrehajtásának korlátozódik létrehozása/figyelésére használni a portált egy **rugalmas készlet**. 
-3. A feladat-végrehajtás titkosított hitelesítő adatok létrehozása és [vegye fel a felhasználó (vagy a szerepkör) a csoportban lévő egyes adatbázisok](sql-database-security-overview.md).
-4. Hozzon létre egy idempotent T-SQL-parancsfájl, amely a csoport minden adatbázison futtatható. 
-5. Kövesse az alábbi lépéseket az Azure portál használatával feladatok létrehozására: [létrehozása és a rugalmas adatbázis-feladatok kezelése](sql-database-elastic-jobs-create-and-manage.md). 
-6. Vagy a PowerShell-parancsfájlok használata: [létrehozása a PowerShell (előzetes verzió) használatával SQL Database rugalmas adatbázis-feladatok kezelése és](sql-database-elastic-jobs-powershell.md).
+## <a name="elastic-database-jobs-end-to-end"></a>Elastic Database-feladatok: teljes körű
+1. Telepítse a **rugalmas adatbázis-feladatok** összetevőket. További információkért lásd: [telepítése rugalmas adatbázis-feladatok](sql-database-elastic-jobs-service-installation.md). Ha a telepítés nem sikerül, tekintse meg [eltávolítása](sql-database-elastic-jobs-uninstall.md).
+2. A PowerShell API-k használatával hozzáférhetnek további funkciókat, például a egyénileg definiált adatbázis-gyűjtemények, ütemezés hozzáadása és/vagy összegyűjtéséhez eredmények csoportok létrehozása. A portál használata egyszerű telepítése és a futtatást a korlátozott feladatok létrehozása/megfigyelés egy **rugalmas készlet**. 
+3. Feladat-végrehajtással kapcsolatos titkosított hitelesítő adatok létrehozása és [a felhasználó (vagy szerepkör) hozzáadása a csoportban lévő minden egyes adatbázishoz](sql-database-security-overview.md).
+4. Hozzon létre egy, a csoport minden adatbázison futtatható T-SQL-szkript idempotens. 
+5. Feladatok létrehozása az Azure portal használatával a következő lépésekkel: [létrehozása és kezelése a rugalmas adatbázis-feladatok](sql-database-elastic-jobs-create-and-manage.md). 
+6. Vagy a PowerShell-parancsfájlok használata: [létrehozása és a egy SQL Database rugalmas adatbázis-feladatok PowerShell (előzetes verzió) használata kezelheti](sql-database-elastic-jobs-powershell.md).
 
-## <a name="idempotent-scripts"></a>Az Idempotent parancsfájlok
-A parancsfájlok kell [idempotent](https://en.wikipedia.org/wiki/Idempotence). Egyszerű fogalmazva "idempotent" azt jelenti, hogy a parancsfájl sikeres, és újra fut, ha ugyanazt az eredményt következik be. Átmeneti hálózati probléma miatt sikertelenek lehetnek a parancsfájl. Ebben az esetben a feladat automatikusan megpróbálja a parancsfájl futtatása előtt desisting előre definiált ennyiszer. Az idempotent parancsfájl ugyanazt az eredményt rendelkezik, akkor is, ha korábban már sikeresen futott kétszer. 
+## <a name="idempotent-scripts"></a>Idempotens szkriptek
+A parancsfájlok kell [idempotens](https://en.wikipedia.org/wiki/Idempotence). Egyszerűen fogalmazva a "idempotens" azt jelenti, hogy ha a parancsfájl sikeres, és újra fut, ugyanaz az eredmény jelenik meg. A szkript végrehajtása átmeneti hálózati problémák következtében meghiúsulhat. Ebben az esetben a feladat automatikusan újrapróbálkozik, és a megadott számú alkalommal ismételten futtatja a szkriptet, mielőtt feladná azt. Egy idempotens szkriptre ugyanaz az eredmény akkor is, ha sikeresen lefutott kétszer. 
 
-Egy egyszerű tactic, hogy azt létrehozása előtt egy objektum létezését teszteléséhez.  
+A legegyszerűbb módszer, ha ellenőrzi az objektum meglétét, mielőtt létrehozná.  
 
     IF NOT EXIST (some_object)
     -- Create the object 
     -- If it exists, drop the object before recreating it.
 
-Ehhez hasonlóan a parancsfájl sikeresen végrehajtható legyen a logikailag teszteléséhez képesnek kell lennie, és azokat a feltételeket elleni talál.
+Ehhez hasonlóan a szkriptnek sikeresen végrehajthatónak kell lennie az észlelt feltételek logikai tesztelése és azokkal ellentétes műveletek révén.
 
-## <a name="failures-and-logs"></a>Hibák és a naplókat
-Ha több próbálkozást követően a parancsfájl futása sikertelen, a feladat naplózza a hibát, és továbbra is fennáll. A feladat befejeződését követően (azaz a csoportban lévő összes adatbázisokhoz futtató), ellenőrizheti a sikertelen bejelentkezési kísérletek listáját. A naplók hibás parancsfájlok hibakeresése részletekkel szolgálnak. 
+## <a name="failures-and-logs"></a>Hibák és a naplók
+Ha a parancsfájl futása sikertelen, több kísérlet után, a feladat naplózza a hibát, és továbbra is. A feladat befejezése után (azaz a Futtatás ellen a csoportban található összes adatbázis), ellenőrizheti a sikertelen bejelentkezési kísérletek listáját. A naplók nyújtanak hibás parancsfájlokban való hibakeresés részleteit. 
 
-## <a name="group-types-and-creation"></a>Csoport típusok és létrehozása
+## <a name="group-types-and-creation"></a>Csoport típusa és létrehozása
 A csoportok két fő típusba sorolhatók: 
 
-1. A shard beállítása
+1. Szilánkleképezés-csoportok
 2. Egyéni csoportok
 
-A shard set csoportok használatával hozhatók létre a [skálázáshoz rugalmas adatbáziseszközöket](sql-database-elastic-scale-introduction.md). A szilánkok set csoport létrehozásakor adatbázisok hozzáadásakor vagy eltávolításakor automatikusan a csoportból. Például egy új shard lesz automatikusan a csoportban található a szilánkcímtárban leképezés hozzáadásakor. Egy feladat futtathatja a csoporton.
+Szilánkleképezés beállítása csoportok használatával jön létre a [rugalmas adatbáziseszközöket](sql-database-elastic-scale-introduction.md). Amikor létrehoz egy szegmens csoport beállítása, adatbázisok hozzáadásakor vagy automatikusan törlődik a csoportból. Például egy új szegmensen lesz automatikusan a csoport a szegmenstérkép való hozzáadásakor. Egy feladat futtathatja a csoporton.
 
-Egyéni, másrészt, szigorúan történik. Meg kell explicit módon adja hozzá, vagy távolítsa el az adatbázisok egyéni csoportokból. Ha egy adatbázist a csoport megszakad, a feladat megpróbálja futtassa a parancsfájlt az adatbázis végleges hibát eredményez. Jelenleg az Azure portál használatával létrehozott csoportok olyan egyéni csoportok. 
+Egyéni csoportok, másrészt mereven határozzák meg. Meg kell explicit módon hozzáadása, vagy távolítsa el az adatbázisok egyéni csoportokból. Ha egy adatbázist a csoport a rendszer eldobja, a feladat megkísérli a parancsfájl futtatásához az adatbázis végleges hibát eredményez. Jelenleg az Azure portal használatával létrehozott csoportok olyan egyéni csoportok. 
 
-## <a name="components-and-pricing"></a>Összetevők és az árképzés terén
-A következő összetevők működnek együtt az Azure felhőalapú szolgáltatás, amely lehetővé teszi az alkalmi felügyeleti feladatok végrehajtásának létrehozásához. Az összetevők telepítése és konfigurálása automatikusan történik az előfizetés a telepítés során. A szolgáltatások összes rendelkeznek az automatikusan létrehozott névvel azonosíthatók. A név egyedi, és az előtag "edj" követően 21 véletlenszerűen létrehozott karaktereket tartalmaz.
+## <a name="components-and-pricing"></a>Összetevők és díjszabás
+A következő összetevők közösen hoz létre egy Azure-felhőszolgáltatáshoz, amely lehetővé teszi az alkalmi felügyeleti feladatok végrehajtását. Az összetevők telepítése és konfigurálása automatikusan az előfizetés a telepítés során. A szolgáltatások összes rendelkeznek az automatikusan létrehozott névvel azonosíthatók. A név egyedi, és az előtag "edj" 21 véletlenszerűen generált karakter követ áll.
 
-* **Azure Cloud Service**: rugalmas adatbázis-feladatok (előzetes verzió) ügyfél-kiszolgálón futó Azure felhő alapú szolgáltatásként végrehajtani a kért feladat végrehajtásának kerül. A portálról a szolgáltatás telepített és megtalálható a Microsoft Azure-előfizetése. Az alapértelmezett telepített szolgáltatás fut, a legalább két feldolgozói szerepkörök magas rendelkezésre állásra. Minden egyes feldolgozói szerepkör (ElasticDatabaseJobWorker) alapértelmezett mérete a A0 példánya fut. Díjszabási, lásd: [árképzési felhőszolgáltatások](https://azure.microsoft.com/pricing/details/cloud-services/). 
-* **Az Azure SQL Database**: A szolgáltatás használja az Azure SQL Database néven a **feladatvezérlő adatbázishoz** az összes feladat metaadatok tárolására. Az alapértelmezett szolgáltatási réteg egy S0. Díjszabási, lásd: [SQL Database – díjszabás](https://azure.microsoft.com/pricing/details/sql-database/).
-* **Az Azure Service Bus**: az Azure Service Bus van az Azure Cloud Service belül a munka összehangolását. Lásd: [Service Bus árképzési](https://azure.microsoft.com/pricing/details/service-bus/).
-* **Az Azure Storage**: az Azure Storage-fiók fogja tárolni a diagnosztikai kimenetet arra az esetre, ha probléma van szükség, további hibakeresési naplózás (lásd: [diagnosztika engedélyezésével az Azure Cloud Services és a virtuális gépek](../cloud-services/cloud-services-dotnet-diagnostics.md)). Díjszabási, lásd: [Azure Storage szolgáltatás díjszabása](https://azure.microsoft.com/pricing/details/storage/).
+* **Az Azure Cloud Service**: rugalmas adatbázis-feladatok (előzetes verzió) van szolgáltatásként tesz elérhetővé ügyfél által üzemeltetett Azure-felhő végrehajtani a kért feladat végrehajtását. A portálról a szolgáltatás telepítése és a Microsoft Azure-előfizetésében lévő üzemeltetett. Az alapértelmezett szolgáltatásának futtatásakor a szolgáltatás magas rendelkezésre állás érdekében két feldolgozói szerepkörrel minimális üzembe helyezve. Az alapértelmezett méret az egyes feldolgozói szerepkörök (ElasticDatabaseJobWorker) A0 példányát futtatja. A díjszabással kapcsolatban lásd: [Cloud services-díjszabás](https://azure.microsoft.com/pricing/details/cloud-services/). 
+* **Az Azure SQL Database**: A szolgáltatás használja az Azure SQL Database, más néven a **adatbázis vezérlése** az összes feladat-metaadatok tárolására. Az alapértelmezett szolgáltatási szinten egy S0. A díjszabással kapcsolatban lásd: [SQL Database – díjszabás](https://azure.microsoft.com/pricing/details/sql-database/).
+* **Az Azure Service Bus**: egy Azure Service Bus van az Azure Felhőszolgáltatáson belül a munka összehangolását. Lásd: [a Service Bus díjszabása](https://azure.microsoft.com/pricing/details/service-bus/).
+* **Az Azure Storage**: egy Azure Storage-fiók segítségével tárolja a diagnosztikai kimenetet abban az esetben, ha egy probléma igényel, további hibakeresési célból történő naplózás (lásd: [Diagnosztikának az Azure Cloud Services és Virtual Machines](../cloud-services/cloud-services-dotnet-diagnostics.md)). A díjszabással kapcsolatban lásd: [Azure Storage szolgáltatás díjszabása](https://azure.microsoft.com/pricing/details/storage/).
 
-## <a name="how-elastic-database-jobs-work"></a>A rugalmas adatbázis-feladatok működése
-1. Egy Azure SQL Database jelöl ki egy **feladatvezérlő adatbázishoz** amely tárolja az összes metaadat-adatainak és állapotának adatokat.
-2. A feladatvezérlő adatbázishoz hozzáfér a **szolgáltatás feladat** indítsa el, és nyomon követéséhez a feladatok végrehajtásához.
-3. Két különböző szerepkörök kommunikálnak a feladatvezérlő adatbázishoz: 
-   * Tartományvezérlő: Meghatározza, hogy milyen típusú feladatok feladatokat végrehajtani a kért feladat, és az ismételt próbálkozás sikertelen feladatok hozzon létre új feladat feladatok kell.
-   * Feladat a feladat a végrehajtás: A feladat feladatokat végzi.
+## <a name="how-elastic-database-jobs-work"></a>Hogyan működik a rugalmas adatbázis-feladatok
+1. Az Azure SQL Database ki van jelölve egy **adatbázis vezérlése** amely minden metaadatok és az állapot adatait tárolja.
+2. Az adatbázis vezérlése hozzáfér a **feladatokat végző szolgáltatás** elindításához, és nyomon követheti a feladatok végrehajtásához.
+3. Két különböző szerepkörök kommunikálnak az adatbázis vezérlése: 
+   * Tartományvezérlő: Meghatározza, hogy mely feladatok feladatok új feladatok létrehozásával a kért feladat, és az újrapróbálkozások sikertelen feladatok végrehajtásához szükséges.
+   * Feladat a feladat a végrehajtás: A feldolgozás feladatokat végez.
 
 ### <a name="job-task-types"></a>Feladattípusok feladat
-Több feladat feladatokat hajthat végre feladatok végrehajtásának típusa van:
+Feladatok végrehajtásának végrehajtott feladatok több típusa is van:
 
-* ShardMapRefresh: Lekérdezi a shard térkép szilánkok használt összes adatbázist meghatározásához
-* ScriptSplit: Felosztja a parancsfájl kötegek "Ugrás" kimutatásait között
-* ExpandJob: Gyermek feladatok létrehozása az egyes adatbázisok a feladatból, amelynek célpontja adatbázisok csoportja
-* ScriptExecution: Végrehajtja a megadott hitelesítő adatok használatával egy adott adatbázison parancsfájl
-* Dacpac: Egy DACPAC vonatkozik egy adott adatbázis adott hitelesítő adatok használatával
+* ShardMapRefresh: Lekérdezi a szegmenstérkép szegmensek használt összes adatbázist meghatározásához
+* ScriptSplit: Bontja a parancsfájl kötegekbe "GO" utasítások között
+* ExpandJob: Hoz létre gyermek feladatokat az egyes adatbázisok egy adatbáziscsoportok célzó feladatot
+* ScriptExecution: A megadott hitelesítő adatok használatával egy adott adatbázison szkriptet hajt végre.
+* Adatrétegbeli alkalmazáscsomag: Egy adatrétegbeli ALKALMAZÁSCSOMAGOT vonatkozik egy adott adatbázishoz adott hitelesítő adatokkal
 
 ## <a name="end-to-end-job-execution-work-flow"></a>Végpontok közötti feladat-végrehajtási-munkafolyamat
-1. A portál vagy a PowerShell API használatával, a feladatok bekerülnek a **feladatvezérlő adatbázishoz**. A feladat a megadott hitelesítő adatok használatával adatbázisok csoportja elleni Transact-SQL parancsfájl végrehajtását kéri.
-2. A vezérlő azonosítja az új projektbe. Feladat feladatok létrehozása és hajtotta végre a parancsfájl felosztása és a csoporthoz tartozó adatbázisok frissítéséhez. Végül egy új feladatot létrehozni és bontsa ki a feladatot, és hozzon létre feladatokat, ahol minden gyermek feladat van megadva, a csoportban lévő egyes adatbázison a Transact-SQL parancsfájl végrehajtása az új gyermek végrehajtani.
-3. A vezérlő azonosítja a létrehozott gyermek feladatok. Minden feladat a vezérlő hoz létre, és elindítja egy feladatot az adatbázis futtassa a parancsfájlt. 
-4. Feladataival feladat befejezése után a vezérlő frissíti a feladat kész állapotba. 
-   Feladat végrehajtása során bármikor a PowerShell API segítségével megtekintheti a feladat végrehajtása aktuális állapotát. Az összes idő a PowerShell API-k által visszaadott UTC formátumban vannak megadva. Ha szükséges, a lemondási kérelmet leállíthat feladatot is kezdeményezhető. 
+1. A portálon vagy a PowerShell API-t használ, egy feladatot a rendszer beszúrta a **adatbázis vezérlése**. A feladat egy meghatározott hitelesítő adatokat használó adatbázisok csoportjain Transact-SQL parancsfájl végrehajtási kérelmeket.
+2. A vezérlő azonosítja az új feladat. Feladatok létrehozása és végrehajtása felosztása a szkriptet, és a csoporthoz tartozó adatbázisok frissítése. Végül egy új feladat létrejött, és bontsa ki a feladatot, és hozzon létre új gyermek ahol mindegyik gyermekfeladat van megadva, az egyes adatbázisok Transact-SQL-szkriptek végrehajtása a csoportban lévő feladatok végrehajtása.
+3. A vezérlő a létrehozott gyermekfeladatok azonosítja. Minden egyes feladathoz a vezérlő hoz létre, és elindít egy feladatot a feladat a szkript egy adatbázison. 
+4. Miután befejeződött a feldolgozás feladatokat, a vezérlő frissíti a feladatok egy befejezett állapotba. 
+   Feladat végrehajtása során bármikor a PowerShell API segítségével megtekintheti a feladat végrehajtása aktuális állapotát. A PowerShell API-k által visszaadott összes hányszor szerepelnek az (UTC). Ha szükséges, egy megszakítási kérelmet leállíthat feladatot kezdeményezhetők. 
 
 ## <a name="next-steps"></a>További lépések
-[Az összetevők telepítéséhez](sql-database-elastic-jobs-service-installation.md), majd [létrehozása és hozzáadása a napló az egyes adatbázis-adatbázisok csoport](sql-database-manage-logins.md). Feladat létrehozása és kezelése további ismertetése: [rugalmas adatbázis-feladatok létrehozását és kezelését](sql-database-elastic-jobs-create-and-manage.md). Lásd még: [Ismerkedés a rugalmas feladatok](sql-database-elastic-jobs-getting-started.md).
+[Az összetevők telepítéséhez](sql-database-elastic-jobs-service-installation.md), majd [létrehozása, és adja hozzá a napló az adatbázisok a csoport minden egyes adatbázishoz](sql-database-manage-logins.md). Így jobban megismerheti a feladat létrehozása és kezelése, tekintse meg a [rugalmas adatbázis-feladatok létrehozását és kezelését](sql-database-elastic-jobs-create-and-manage.md). Lásd még: [Ismerkedés a rugalmas adatbázis-feladatok](sql-database-elastic-jobs-getting-started.md).
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 

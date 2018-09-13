@@ -1,6 +1,6 @@
 ---
-title: Telepítse át a storage-fiókok, a StorSimple Device Manager szolgáltatás előfizetések |} Microsoft Docs
-description: Ismerje meg, hogyan telepítheti át az előfizetést, a StorSimple Device Manager service8000 storage-fiókok.
+title: Storage-fiókok, előfizetések, a StorSimple-Eszközkezelő szolgáltatás migrálása |} A Microsoft Docs
+description: Ismerje meg, hogyan telepítheti át az előfizetések, a StorSimple-Eszközkezelő service8000 storage-fiókot.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -14,37 +14,37 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/08/2018
 ms.author: alkohli
-ms.openlocfilehash: 299029e10ac8f0235bb11876aa00c98a21183c0f
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
-ms.translationtype: HT
+ms.openlocfilehash: 5a0da47b854e625f2f4a2fcf4c95ec566ba63093
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35248792"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35646444"
 ---
-# <a name="migrate-subscriptions-and-storage-accounts-associated-with-storsimple-device-manager-service"></a>Előfizetések és a StorSimple Device Manager szolgáltatással kapcsolatos storage-fiókok áttelepítése
+# <a name="migrate-subscriptions-and-storage-accounts-associated-with-storsimple-device-manager-service"></a>Előfizetések és tárfiókok a StorSimple-Eszközkezelő szolgáltatással kapcsolatos áttelepítése
 
-Helyezze át a StorSimple szolgáltatás egy új regisztrációs vagy egy új előfizetést szeretne. Áttelepítési forgatókönyvekben fiókjának módosításait vagy datacenter módosítások. Az alábbi táblázat segítségével azonosíthatja, ezek a forgatókönyvek közül melyik támogatottak, beleértve a helyezhető át a részletes lépéseket.
+Helyezze át a StorSimple szolgáltatás egy új regisztrációs vagy egy új előfizetést szeretne. Áttelepítési forgatókönyvekben fiókmódosítások vagy datacenter módosítások. Az alábbi táblázat segítségével azonosíthatja, amelyre ezek a forgatókönyvek támogatottak, többek között a részletes lépések végrehajtásával helyezhetők át.
 
-## <a name="account-changes"></a>A fiókok változásai
+## <a name="account-changes"></a>Fiókmódosítások
 
-| Áthelyezheti...| Támogatott| Állásidő| Az Azure támogatási folyamat| Módszer|
+| Áthelyezheti...| Támogatott| Állásidő| Az Azure támogatási folyamat| A módszer|
 |-----|-----|-----|-----|-----|
-| Egy teljes előfizetés (tartalmazza a StorSimple szolgáltatás és a tárolási fiók) egy másik regisztráció? | Igen       | Nem       | **Beléptetési átvitel**<br>Használata:<li>Ha vásárol egy új Azure-előfizetési új szerződések alapján.</li><li>Minden fiókjaihoz és előfizetéseihez át a régi regisztrációtól az új szeretné. Ez magában foglalja az összes Azure-szolgáltatás a régi előfizetésen belül.</li> | **1. lépés: Az Azure vállalati művelet támogatási jegy megnyitása.**<li>Nyissa meg a következőt: [http://aka.ms/AzureEntSupport](http://aka.ms/AzureEntSupport).</li><li> Válassza ki **beléptetési felügyeleti** , és válassza **átvitele egy beléptetési egy új regisztrációs**.<br>**2. lépés: A kért adatok megadása**<br>A következők:<li>Forrás száma</li><li> cél száma</li><li>átviteli életbelépési dátum|
-| A StorSimple szolgáltatás a meglévő fiók egy új regisztrációs?    | Igen       | Nem       | **Fiók átvitel**<br>Használata:<li>Ha nem szeretné, hogy a teljes beléptetési átvitel.</li><li>Szeretné egyedi fiókokat új beléptetési helyezze át.</li>| **1. lépés: Az Azure vállalati művelet támogatási jegy megnyitása.**<li>Nyissa meg a következőt: [http://aka.ms/AzureEntSupport](http://aka.ms/AzureEntSupport).</li><li>Válassza ki **beléptetési felügyeleti** majd **EA fiók átvitele egy új regisztrációs**.<br>**2. lépés: A kért adatok megadása**<br>A következők:<li>Forrás száma</li><li> cél száma</li><li>átviteli életbelépési dátum|
-| A StorSimple szolgáltatás egy előfizetés másik előfizetést?      | Nem        |    Igen         | Nincs, a manuális eljáráshoz|<li>Telepítse át a StorSimple eszköz adatokat.</li><li>Hajtsa végre az eszköz gyári beállításainak visszaállítását, ez a művelet törli az eszköz helyi adatokat.</li><li>Az eszközt regisztrálni kell az új előfizetés, a StorSimple Device Manager szolgáltatás.</li><li>Az adatok áttelepítését vissza az eszközt.|
-  |Azure-előfizetés tulajdonjogának átvihető egy másik címtárhoz? | Igen       | Nem       | Az Azure AD-címtár egy meglévő előfizetés társítása | Tekintse meg a [rendelje hozzá a az Azure AD-címtár egy meglévő előfizetés](../active-directory/active-directory-how-subscriptions-associated-directory.md). Akár 10 percig is eltarthat, amíg minden megfelelően megjelenik.|
-| A StorSimple eszköz egy StorSimple Device Manager szolgáltatásból egy másik régióban egy másik szolgáltatásra?      | Nem        | Igen            | Nincs, a manuális eljáráshoz |Ugyanaz, mint a fentiek közül.|
-| A tárfiók egy új előfizetés vagy az erőforrás-csoporthoz?     | Igen        | Nem             |Helyezze át a tárfiók különböző előfizetés vagy az erőforrás |Az áthelyezés után a fiók tárelérési kulcsok frissítése, ha a felhasználó kell manuálisan a StorSimple Device Manager szolgáltatáson keresztül az áttelepített tárfiók hozzáférési kulcsainak konfigurálása.|
-| Az Azure Resource Manager-tárfiókot a klasszikus tárfiókot      | Igen        | Nem             |Telepítse át a klasszikus Azure Resource Managerbe |<li>A storage-fiók áttelepítése a klasszikus Azure Resource Manager részletes információkra van szüksége, látogasson el [telepítse át a klasszikus tárfiók](../virtual-machines/windows/migration-classic-resource-manager-ps.md#step-62-migrate-a-storage-account).</li><li> Ha a fiók tárelérési kulcsok frissítése az áttelepítés után, a felhasználó kell szinkronizálni a StorSimple Device Manager szolgáltatáson keresztül az áttelepített tárfiók hozzáférési kulcsainak listázása. Ez azért szükséges a StorSimple eszköz továbbra is megfelelően működik, és a rétegben az elsődleges, illetve biztonsági mentési adatokat az Azure-bA. A tárelérési kulcsok szinkronizálása részletes utasításokért lásd [Elforgatás munkafolyamat](storsimple-8000-manage-storage-accounts.md#key-rotation-of-storage-accounts).</li><li> A StorSimple felhő készülék esetében a hagyományos tárolási fiók áttelepítése, de az alapul szolgáló virtuális gép továbbra is marad, a classic, ha a készülék kell működnek majd megfelelően. Ha az alapul szolgáló virtuális gép a felhő készülék áttelepíti, akkor a inaktiválását vagy törlését funkciói nem fognak működni.</li><li> Hozzon létre egy új StorSimple felhő készülékek az Azure portálon kell, és a régebbi felhő készülékek a feladatátvételt. Nem hozható létre a StorSimple felhő készülék a hagyományos tárolási fiók használatával új Azure-portálon, ezek csak az Azure Resource Manager-tárfiókot. További információkért látogasson el [központi telepítése és kezelése a StorSimple felhő készülék](storsimple-8000-cloud-appliance-u2.md).</li>|Ugyanaz, mint a fentiek közül.|
+| Egy teljes-előfizetést (beleértve a StorSimple-szolgáltatás és a storage-fiókok) egy másik regisztráció? | Igen       | Nem       | **Regisztráció átvitel**<br>Használat:<li>Vásárol egy új Azure kötelezettségvállalás mellett új szerződést.</li><li>Az új a régi regisztrációs fiókok és az előfizetések át szeretné. Ez magában foglalja az Azure-szolgáltatásokhoz a régi előfizetéshez tartozik.</li> | **1. lépés: Az Azure Enterprise művelet támogatási jegyet.**<li>Nyissa meg a következőt: [http://aka.ms/AzureEntSupport](http://aka.ms/AzureEntSupport).</li><li> Válassza ki **regisztrációs felügyeleti** majd **átvitele egy beléptetési egy új regisztrációs**.<br>**2. lépés: Adja meg a kért információkat**<br>A következők:<li>adatforrás-regisztrációs szám</li><li> rendeltetési regisztrációs szám</li><li>átviteli hatályba lépés dátuma|
+| A StorSimple szolgáltatás egy meglévő fiókon az új regisztrációs?    | Igen       | Nem       | **Fiók**<br>Használat:<li>Ha nem szeretné, hogy a teljes regisztrációs átvitel.</li><li>Csak szeretné helyezni a konkrét fiókokat való új regisztráció.</li>| **1. lépés: Az Azure Enterprise művelet támogatási jegyet.**<li>Nyissa meg a következőt: [http://aka.ms/AzureEntSupport](http://aka.ms/AzureEntSupport).</li><li>Válassza ki **regisztrációs felügyeleti** majd **nagyvállalati szerződéssel rendelkező fiók át egy új regisztrációs**.<br>**2. lépés: Adja meg a kért információkat**<br>A következők:<li>adatforrás-regisztrációs szám</li><li> rendeltetési regisztrációs szám</li><li>átviteli hatályba lépés dátuma|
+| A StorSimple szolgáltatás egy előfizetésből egy másik előfizetéshez?      | Nem        |    Igen         | Nincs, a manuális eljáráshoz|<li>Telepítse át az adatokat a StorSimple-eszköz ki.</li><li>Az eszköz gyári beállítások visszaállítására, ez a művelet törli az eszköz minden helyi adat.</li><li>Regisztrálja az eszközt a StorSimple-Eszközkezelő szolgáltatás az új előfizetéshez.</li><li>Térjen vissza az eszközt az adatok áttelepítéséhez.|
+  |Átvihető-e egy Azure-előfizetés tulajdonjogának egy másik címtárral? | Igen       | Nem       | Az Azure AD-címtárhoz meglévő előfizetés társítása | Tekintse meg [az Azure AD-címtárhoz meglévő előfizetés társítása](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md). Akár 10 percig is eltarthat, amíg minden megfelelően megjelenik.|
+| A StorSimple eszköz egy StorSimple-Eszközkezelő szolgáltatás és a egy másik régióban egy másik szolgáltatás?      | Nem        | Igen            | Nincs, a manuális eljáráshoz |Ugyanaz, mint a fenti.|
+| Storage-fiók egy új előfizetést vagy az erőforrás-csoporthoz?     | Igen        | Nem             |Storage-fiók áthelyezése másik előfizetést vagy az erőforrás-csoporthoz |Az áthelyezés után a tárfiók hozzáférési kulcsainak frissülnek, ha a felhasználó kell konfigurálja manuálisan a StorSimple-Eszközkezelő szolgáltatással a migrált tárfiók hozzáférési kulcsait.|
+| Egy Azure Resource Manager-tárfiókot klasszikus tárfiókot      | Igen        | Nem             |Áttérés klasszikus Azure Resource Manager |<li>A tárfiók migrálása klasszikusról az Azure Resource Manager részletes utasításokért ugorjon [klasszikus tárfiók Migrálása](../virtual-machines/windows/migration-classic-resource-manager-ps.md#step-62-migrate-a-storage-account).</li><li> A tárfiók hozzáférési kulcsainak az áttelepítés után frissülnek, ha a felhasználó kell szinkronizálni a StorSimple-Eszközkezelő szolgáltatással a migrált tárfiók hozzáférési kulcsait. Ez azért szükséges a StorSimple-eszközök továbbra is megfelelően működnek, és az elsődleges, illetve biztonsági mentési adatok az Azure-bA. A tárelérési kulcsok szinkronizálása részletes utasításokért ugorjon [Elforgatás munkafolyamat](storsimple-8000-manage-storage-accounts.md#key-rotation-of-storage-accounts).</li><li> A StorSimple Cloud Appliance esetén ha a klasszikus tárfiók van migrálva, de a mögöttes virtuális gép továbbra is marad, a klasszikus, a készülék kell megfelelően fog működni. Ha a a felhőalapú berendezés alapjául szolgáló virtuális gépet telepít át, majd az Inaktiválás és törlési funkciót nem fog működni.</li><li> Hozzon létre egy új StorSimple Cloud Appliance az Azure Portalon kell, és a régebbi cloud Appliance a feladatátvételt. StorSimple Cloud Appliance az új Azure Portalon klasszikus tárfiók használatával nem hozható létre, szükségük van egy Azure Resource Manager-tárfiókot. További információért ugorjon [üzembe helyezése és kezelése a StorSimple Cloud Appliance](storsimple-8000-cloud-appliance-u2.md).</li>|Ugyanaz, mint a fenti.|
 
-## <a name="datacenter-changes"></a>Datacenter változások
+## <a name="datacenter-changes"></a>Adatközpont-módosítások
 
-| Áthelyezheti...| Támogatott|Állásidő| Az Azure támogatási folyamat| Módszer|
+| Áthelyezheti...| Támogatott|Állásidő| Az Azure támogatási folyamat| A módszer|
 |-----|-----|-----|-----|-----|
-| A StorSimple szolgáltatás egy Azure-adatközpontban másik? | Nem | Igen |Nincs, a manuális eljáráshoz  |<li>Telepítse át a StorSimple eszköz adatokat.</li><li>Hajtsa végre az eszköz gyári beállításainak visszaállítását, ez a művelet törli az eszköz helyi adatokat.</li><li>Az eszközt regisztrálni kell az új előfizetés egy új StorSimple Device Manager szolgáltatás a.</li><li>Az adatok áttelepítését vissza az eszközt.|
-| A tárfiók egy Azure-adatközpontban a másik? | Nem |Igen  |Nincs, a manuális eljáráshoz  | Ugyanaz, mint a fentiek közül.|
+| A StorSimple szolgáltatás egy Azure adatközpontból a másikba? | Nem | Igen |Nincs, a manuális eljáráshoz  |<li>Telepítse át az adatokat a StorSimple-eszköz ki.</li><li>Az eszköz gyári beállítások visszaállítására, ez a művelet törli az eszköz minden helyi adat.</li><li>Regisztrálja az eszközt az új előfizetéssel egy új StorSimple-Eszközkezelő szolgáltatáshoz.</li><li>Térjen vissza az eszközt az adatok áttelepítéséhez.|
+| Egy storage-fiókot egy Azure adatközpontból a másikba? | Nem |Igen  |Nincs, a manuális eljáráshoz  | Ugyanaz, mint a fenti.|
 
 ## <a name="next-steps"></a>További lépések
 
-* [StorSimple Device Manager szolgáltatás telepítése](storsimple-8000-manage-service.md)
-* [Azure-portálon a StorSimple 8000 series eszköz üzembe helyezése](storsimple-8000-deployment-walkthrough-u2.md)
+* [StorSimple-Eszközkezelő szolgáltatás üzembe helyezése](storsimple-8000-manage-service.md)
+* [Az Azure Portalon a StorSimple 8000 sorozatú eszköz üzembe helyezése](storsimple-8000-deployment-walkthrough-u2.md)

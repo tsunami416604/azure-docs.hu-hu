@@ -1,6 +1,6 @@
 ---
-title: 'Az Azure Data Factory: Gyakori kérdések |} Microsoft Docs'
-description: Azure Data Factory gyakran feltett kérdésekre adott válaszok.
+title: 'Az Azure Data Factory: Gyakori kérdések |} A Microsoft Docs'
+description: Válaszok az Azure Data Factory – gyakori kérdések.
 services: data-factory
 documentationcenter: ''
 author: sharonlo101
@@ -13,171 +13,171 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: shlo
-ms.openlocfilehash: ebe8745db06113d0508d86554bf031a4235c8e44
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 37c2c96ad14741fba2733765640f8d6d9ef3fee2
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37045949"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44716424"
 ---
 # <a name="azure-data-factory-faq"></a>Az Azure Data Factory – gyakori kérdések
-Ez a cikk az Azure Data Factory kapcsolatban gyakran feltett kérdésekre adott válaszokat tartalmazza.  
+Ez a cikk ismerteti az Azure Data Factory kapcsolatos gyakori kérdésekre adott válaszokat.  
 
 ## <a name="what-is-azure-data-factory"></a>Mi az az Azure Data Factory? 
-Adat-előállító egy teljes körűen felügyelt, felhőalapú, adat-integrációs szolgáltatás, amely automatizálja a mozgás és az adatok átalakítása. Például olyan adat-előállítóval, amely a nyers átalakítása termékek berendezések fut az Azure Data Factory koordinálja a nyers adatokat gyűjthet, és irányítópulttá, készen áll a használatra információ meglévő szolgáltatások. 
+Data Factory az egy teljes körűen felügyelt, felhőalapú adatintegrációs szolgáltatás, amely automatizálja az adatáthelyezési és -átalakítási adatok. A gyári, amely átalakítja a nyersanyagokat késztermékekké berendezések, például az Azure Data Factory nyers adatokat gyűjthet, és átalakítja a nyersanyagokat használatra kész adatokat meglévő szolgáltatásokat hangolja össze. 
 
-Azure Data Factory használatával áthelyezni az adatokat a helyszíni és a felhő között az adatvezérelt munkafolyamatokat hozhat létre adattárolókhoz. Tud feldolgozni, és átalakítási adatok segítségével számítási szolgáltatások, például az Azure HDInsight, az Azure Data Lake Analytics és az SQL Server Integration Services (SSIS) integrációs futásidejű. 
+Azure Data Factory használatával az adatok áthelyezése a helyszíni és a felhő között az adatvezérelt munkafolyamatokat hozhat létre adattárakban. És feldolgozására képes, és átalakítási adatok használatával számítási szolgáltatásokkal, például az Azure HDInsight, az Azure Data Lake Analytics és az SQL Server Integration Services (SSIS) az integration runtime. 
 
-A Data Factory az adatok feldolgozása hajthat végre, vagy egy Azure-alapú felhőalapú szolgáltatás, vagy saját önálló üzemeltetett számítási környezetben, például SSIS, SQL Server vagy Oracle. Miután létrehozott egy folyamatot, amely hajt végre a műveletet, amelyekre szüksége van, is az ütemezés futtatása rendszeres időközönként (például óránkénti, napi vagy heti), a idő ablak ütemezése vagy az eseményindító a feldolgozási sor az esemény előfordulása. További információkért lásd: [Az Azure Data Factory bemutatása](introduction.md).
+A Data Factory az adatfeldolgozás hajthat végre, az Azure-alapú felhőszolgáltatás vagy a saját helyi számítási környezetben, például az SQL Server, Oracle vagy az SSIS. Miután létrehozott egy folyamatot, amely a szükséges műveletet hajt végre, ütemezheti, rendszeres időközönként (például óránként, naponta vagy hetente) futtatása, idő ablak ütemezés vagy eseményindítót a folyamatban az esemény előfordulása. További információkért lásd: [Az Azure Data Factory bemutatása](introduction.md).
 
-### <a name="control-flows-and-scale"></a>Vezérlő adatfolyamok és méretezhetőség 
-Különböző integrációs adatfolyamok és minták támogatásához a modern adatraktárban, adat-előállító lehetővé teszi, hogy rugalmas adatok csővezeték modellezési, amely tartalmazza többek között a feltételes végrehajtási mintáknak programozási teljes folyamata adatokat kimenetátirányítási ugorhat és explicit módon paraméterekkel belül, és ezek a folyamatok között. Folyamatábrán is magában foglalja a tevékenység indítási külső végrehajtási motorok és adatok folyamata lehetőségekről, beleértve a adatátvitelt jelölik a másolási tevékenység keresztül léptékű keresztül adatok átalakítása.
+### <a name="control-flows-and-scale"></a>Vezérlő folyamatok és méretezés 
+A modern adattárházak a különféle integrációs folyamatainak és mintáinak támogatásához a Data Factory lehetővé teszi, hogy rugalmas folyamat adatmodellezés, amely tartalmazza a teljes vezérlés folyamata paradigmákat feltételes végrehajtása, beleértve programozási adatfolyamatokat állíthat össze, az elágaztatást, és explicit módon továbbíthat paramétereket belül, és ezek a folyamatok között. Átvitelvezérlés is magában foglalja a tevékenységküldés külső végrehajtási motorok és data flow lehetőségekről, köztük az adatátvitel nagy mennyiségű, a másolási tevékenység használatával – adatok átalakítása.
 
-Adat-előállító időtartamot is egyetlen folyamat stílus, amely szükséges az adatok integráció és az igény szerinti vagy ismételten ütemezés, amely képes továbbítani a modell tartalmaz. Ez a modell lehetővé teszi, hogy néhány gyakori adatfolyamok a következők:   
+A Data Factory modellezheti az összes folyamat stílus, amely szükséges az adatintegrációt, és, amely elirányíthatók, igény szerint vagy ismétlődő ütemezés szerint szabadon biztosít. Néhány általános folyamat, amely lehetővé teszi, hogy ez a modell a következők:   
 
-- Vezérlő adatfolyamok:
-    - Lánc a tevékenységcsoportok szekvenciális adatcsatorna belül.
-    - Egy folyamat fiókirodai tevékenységét.
+- Vezérlő folyamatok:
+    - Egy adott folyamaton belüli sorozatban lánc tevékenységek.
+    - Ág tevékenységek a folyamaton belül.
     - Paraméterek
-        - A feldolgozási sor szinten paramétereit, és adja át argumentumok, amíg a folyamat az igény szerinti vagy egy indít.
+        - A folyamat szintjén paraméterek megadása, és argumentumokat adhat meg, amíg a folyamat igény szerint vagy egy eseményindítóból indít el.
         - A tevékenységek képesek a folyamat számára továbbított argumentumok feldolgozására.
     - Egyéniállapot-átadás
         - A tevékenységkimeneteket (például állapotot) a folyamat soron következő tevékenysége képes feldolgozni.
     - Tárolók hurkolása
         - For-each 
-- Eseményindító-alapú forgalom:
-    - Az igény szerinti vagy valós idő szerint is elindítható a folyamatok.
-- Különbözeti adatfolyamok:
-    - A paraméterekkel, és adja meg a magas vízjel különbözeti másolására dimenzió vagy hivatkozás táblák áthelyezése relációs áruházbeli, vagy a helyszínen vagy a felhőben, az adatokat tölthet be a lake közben. 
+- Eseményindító-alapú folyamatok:
+    - A folyamatok aktiválhatók igény szerint vagy időpont alapján indíthatók időpontig.
+- Változási folyamatok:
+    - Paramétereket használhat és a magas vízjelbe beleszámított a változásadatok másolásához áthelyezés a dimenzió-vagy egy relációs tárolóból, a helyszínen vagy a felhőben, az adatok betöltéséhez az adattárba közben. 
 
-További információkért lásd: [oktatóanyag: szabályozza a forgalom](tutorial-control-flow.md).
+További információkért lásd: [oktatóanyag: folyamatok szabályozhatja](tutorial-control-flow.md).
 
-### <a name="transform-your-data-at-scale-with-code-free-pipelines"></a>A kód szabad kimenetátirányítási mechanizmusát használó műveletekről léptékű adatok átalakítása
-Az új tooling webböngésző-alapú felületet biztosít a kódmentes folyamat létrehozása és telepítése során az a modern, interaktív webes révén.
+### <a name="transform-your-data-at-scale-with-code-free-pipelines"></a>A kód ingyenes rendelkező nagy mennyiségű adatok átalakítása
+Az új, böngészőalapú fejlesztőeszközeit kódmentes folyamatok készítése és üzembe helyezéséhez használható egy modern, interaktív webes felületet biztosít.
 
-A látványelemek adatainak fejlesztők és az adatok mérnökök az ADF webes felhasználói felületén a folyamatok létrehozásához használandó kódmentes tervezési környezetben. Teljesen integrálva van a Visual Studio Online Git, és a CI/CD-integrációval és iteratív fejlesztése a hibakeresési beállításokat biztosít.
+A vizuális adatok fejlesztők és az adattervezők az ADF webes felhasználói felületen a folyamatok létrehozásához használt tervezési kódmentes környezet. Teljesen integrálva van a Visual Studio Online Git és a CI/CD-integráció és iteratív fejlesztés a hibakeresési lehetőségeket biztosít.
 
 ### <a name="rich-cross-platform-sdks-for-advanced-users"></a>Gazdag cross platform SDK-k tapasztalt felhasználók számára
-Ha tapasztalt felhasználók és programozási felület keres, ADF V2, amely pótolhatja hozhatnak létre, kezelheti az SDK-k széles skáláját biztosítja, a kedvenc IDE használatával folyamatok figyelése
+Ha Ön tapasztalt felhasználó, és a egy programozható felületet keres, ADF v2 verzió létrehozásához, kezeléséhez használhatóak SDK-k széles skáláját biztosítja, a kedvenc IDE használatával folyamatok monitorozásához.
 1.  Python SDK
 2.  PowerShell parancssori felület
-3.  C# SDK felhasználók is kihasználhatja a dokumentált REST API-k felületre az ADF 2
+3.  C# SDK-t felhasználók is használhatják a dokumentált REST API-kkal kapcsolat az ADF V2 verziója
 
-### <a name="iterative-development-and-debugging-using-visual-tools"></a>Ismétlődő fejlesztési és eszközökkel visual-hibakeresés
-Az Azure Data Factory (ADF) visual eszközök lehetővé teszik a iteratív fejlesztési és hibakeresés folyamatát. A folyamatok hozhat létre, és tesztelje a hibakeresési funkció használatát a feldolgozási sor vászonra egysoros kód írása nélkül futtatja. A teszt futtatása eredményét megtekintheti a kimeneti ablakában a feldolgozási sor vászonra. A teszt futtatása sikeres, ha további tevékenységek hozzáadása a folyamat, és folytatni a hibakeresés ismétlődő módon. A teszt futtatása is megszakítja, ha folyamatban. Nem szükségesek a változások közzétételére a data factory szolgáltatásnak hibakeresési való kattintás előtt. Ez akkor hasznos, ahol győződjön meg arról, hogy az új módosításokat munkahelyi fejlesztői, gyári adatok munkafolyamatait frissítése előtt várt módon tesztelése, vagy környezetek termék kívánt forgatókönyvek. 
+### <a name="iterative-development-and-debugging-using-visual-tools"></a>Iteratív fejlesztés és hibakeresés vizuális eszközökkel
+Az Azure Data Factory (ADF) vizuális eszközök teszik lehetővé tegye, iteratív fejlesztés és hibakeresés. A folyamatokat hozhat létre, és tesztelje a hibakeresési funkció használatával a folyamatvásznon egyetlen sor kód megírása nélkül futtatja. A tesztelések eredményét megtekintheti a kimeneti ablakban, a folyamat vászon. Ha a teszt futtatása sikeres, további tevékenységek hozzáadása a folyamatban, és továbbra is, folytatható iteratív hibakeresést. A tesztelések is megszakítja, ha van folyamatban. Nem szükségesek a data factory szolgáltatás hibakeresési gombra kattintás előtt a módosítások közzétételére. Ez hasznos forgatókönyvekben, ahol szeretné győződjön meg arról, hogy az új módosításokat munkahelyi elvárt, mielőtt frissíti a data factory munkafolyamatok a fejlesztési, tesztelheti, vagy éles környezetben. 
 
 ### <a name="deploy-ssis-packages-to-azure"></a>SSIS-csomagok üzembe helyezése az Azure-ban 
-Ha szeretné a SSIS-munkaterhelések, adat-előállító létrehozása, és egy Azure-SSIS-integrációs futásidejű kiépítéséhez. Az Azure-SSIS integrációs futásidejű rendszere Azure virtuális gépeken (csomópontok) felhőben való futtatásra a SSIS-csomagok a dedikált teljes körűen felügyelt fürtben. Részletes útmutatásért lásd: a [Azure telepítése SSIS-csomagok](tutorial-create-azure-ssis-runtime-portal.md) oktatóanyag. 
+Ha át szeretné helyezni az SSIS számítási feladatokat, hozzon létre egy adat-előállítót, és az Azure-SSIS integrációs modul üzembe helyezése. Az Azure-SSIS integrációs modul az Azure virtuális gépek (csomópontok), amelyek dedikált az SSIS-csomagok futtatása a felhőben egy teljesen felügyelt fürt. Részletes útmutatásért tekintse meg a [üzembe SSIS-csomagok az Azure-bA](tutorial-create-azure-ssis-runtime-portal.md) oktatóanyag. 
  
 ### <a name="sdks"></a>SDK-k
-Ha a tapasztalt felhasználók és az ADF biztosít programozási felület keres, szerzői, kezelése vagy a kedvenc IDE figyelje az adatcsatornák használható SDK-k széles skáláját. Nyelvi támogatás tartalmazza a .NET, a PowerShell, a többi pedig a Python.
+Ha tapasztalt felhasználóként programozható felületet keres, az ADF használatával hozhat létre, kezelése vagy folyamatok monitorozásához a kedvenc ide-je használatával SDK-k széles skáláját biztosítja. Nyelvi támogatás magában foglalja a .NET, PowerShell, Python és REST.
 
 ### <a name="monitoring"></a>Figyelés
-Az adat-előállítók PowerShell, SDK vagy a Visual figyelőeszközök a böngésző felhasználói felületen keresztül figyelheti. Figyelheti és igény szerint, eseményindító-alapú és egyéni adatfolyamok vezérelt és hatékony módon óra kezelése. Mégse meglévő feladatokat, lásd: hibák egy pillanat alatt is részletekbe menően tárhatják részletes hibaüzenet jelenik meg, és a problémák minden egytáblás, üveghatású a hibakeresési váltás, illetve a képernyők oda-vissza léptetése nélkül. 
+Az adat-előállítók PowerShell, SDK-t vagy a böngésző felhasználói felületéről Visual figyelési eszközök használatával követheti nyomon. Figyelheti, és igény szerint, az eseményindító-alapú és óra alapuló egyéni folyamatok és hatékony módon kezelheti. Mégse meglévő feladatokat, egyetlen pillantással lásd a hibák részletes elemzést részletes hibaüzenet jelenik meg, és a problémák minden tekinthesse egyetlen ablaktábla a hibakeresési környezet közötti váltás vagy oda-vissza képernyők közötti váltás nélkül. 
 
-### <a name="new-features-for-ssis-in-adf"></a>Az ADF SSIS új funkciói
-2017 a kezdeti nyilvános előzetes kiadása óta Data Factory az SSIS hozzáadta a következő szolgáltatásokat:
+### <a name="new-features-for-ssis-in-adf"></a>Új funkciók az ADF-ben SSIS-hez
+2017-ben kezdeti nyilvános előzetes kiadása óta a Data Factory SSIS-hez hozzáadta a következő funkciókat:
 
--   Támogatja az három további konfigurációk/Variant típusú adatok az Azure SQL adatbázis (adatbázis) állomás SSIS-katalógus projektek/csomagok (SSISDB):
--   A virtuális hálózat végpontok Azure SQL-adatbázis
+-   Három további konfigurációk/változatok az Azure SQL Database (DB) gazdagép-projektek/csomagok (SSISDB) az SSIS-katalógushoz támogatják:
+-   A virtuális hálózati Szolgáltatásvégpontok az Azure SQL DB
 -   Felügyelt példány (MI)
 -   Rugalmas készlet
--   Az Azure Resource Manager Virtual Network (VNet) klasszikus virtuális hálózatot, amely a későbbiekben – elavult funkciók mellett kártevőészlelést támogatása Ez lehetővé teszi az Azure-SSIS integrációs futásidejű (IR) egy virtuális hálózat szolgáltatás végpontok/MI az Azure SQL Database beállított virtuális hálózatba szúrjon/join / a helyszíni adatok elérése, lásd: https://docs.microsoft.com/en-us/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network 
--   Támogatás az Azure Active Directory (AAD) hitelesítéshez felett az SSISDB - kapcsolódni az SQL-hitelesítés használatát teszik lehetővé az AAD-hitelesítés a az ADF felügyelt szolgáltatás identitásának (MSI)
--   Hozása a saját helyszíni SQL Server licenccel vett szolgáltatás érvényessége alatt jelentős költségmegtakarítást Azure hibrid juttatás (AHB) beállítás támogatása
--   Enterprise Edition az Azure-SSIS IR, amely lehetővé teszi támogatása speciális/prémium szolgáltatások, telepítse a további összetevők/fájlnévkiterjesztéseket, valamint a 3. fél ökoszisztéma, lásd: egyéni telepítés használja: https://blogs.msdn.microsoft.com/ssis/2018/04/27/enterprise-edition-custom-setup-and-3rd-party-extensibility-for-ssis-in-adf/ 
--   Lásd az ADF, amely lehetővé teszi az első osztályú SSIS-csomag végrehajtása tevékenységek ADF kimenetátirányítási meghívni, eseményindító és keresztül SSMS, ütemezni a SSIS szorosabb integrációt: https://blogs.msdn.microsoft.com/ssis/2018/05/23/modernize-and-extend-your-etlelt-workflows-with-ssis-activities-in-adf-pipelines/ 
+-   Az Azure Resource Managerbeli virtuális hálózat (VNet) épülő klasszikus virtuális hálózat, a jövőben – fognak évülni támogatása Ez lehetővé teszi az Azure-SSIS integrációs modul (IR) egy virtuális hálózathoz virtuális hálózatok közötti szolgáltatás végpontok/MI az Azure SQL DB-hez konfigurált beszúrása/join / a helyszíni adatok elérése, lásd: https://docs.microsoft.com/en-us/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network 
+-   Támogatás az Azure Active Directory (AAD) hitelesítés épülő SQL-hitelesítés szeretne csatlakozni az SSISDB - Ez lehetővé teszi, hogy AAD-hitelesítést használjon az az ADF Felügyeltszolgáltatás-identitás (MSI)
+-   Saját licence a helyszíni SQL Server, az Azure Hybrid Benefit (AHB) beállítás jelentős költségmegtakarítást megszerzésére támogatása
+-   Támogatási Enterprise Edition az Azure-SSIS integrációs, amely lehetővé teszi a speciális/Premium szintű funkciók használata, telepítse a további összetevők/fájlnévkiterjesztéseket, valamint a 3. fél ökoszisztéma, lásd: egyéni telepítés: https://blogs.msdn.microsoft.com/ssis/2018/04/27/enterprise-edition-custom-setup-and-3rd-party-extensibility-for-ssis-in-adf/ 
+-   Lásd az SSIS az ADF, amellyel elsőosztályú SSIS-csomag végrehajtása tevékenységek az ADF-folyamatok meghívásához vagy trigger és ütemezni keresztül ssms-ben, ugyanakkor szorosabb integrációt: https://blogs.msdn.microsoft.com/ssis/2018/05/23/modernize-and-extend-your-etlelt-workflows-with-ssis-activities-in-adf-pipelines/ 
 
 
-## <a name="what-is-integration-runtime"></a>Mi az az integrációs futásidejű?
-Integrációs futásidejű a számítási infrastruktúrától, így különböző hálózati környezetben a következő adatok integrációs képességeket biztosít Azure Data Factory használatával:
+## <a name="what-is-integration-runtime"></a>Mi az integrációs modul?
+Az Integration runtime különböző hálózati környezetekben a következő adatintegrációs képességeket biztosít az Azure Data Factory által használt számítási infrastruktúra áll:
 
-- **Adatátvitel**: az adatátvitel, integrációs futásidejű helyezi át az adatok között a forrás és cél adattárolókhoz, beépített összekötők, konverzióval, oszlopleképezés, és performant és méretezhető adatátvitel során.
-- **Tevékenységek mennyi**: az átalakításhoz, integrációs futásidejű lehetőségét nyújtani az natív módon hajtható végre SSIS-csomagok.
-- **SSIS-csomagok végrehajtása**: natív módon végrehajtja a felügyelt Azure számítási környezetben SSIS-csomagok. Az integrációs modul lehetővé teszi a különböző számítási szolgáltatásokon, például az Azure HDInsighton, az Azure Machine Learningen, az Azure SQL Database-en és az SQL Serveren futó átalakítási tevékenységek szervezését és figyelését.
+- **Adatáthelyezés**: adatáthelyezéskor az integrációs modul helyezi át az adatokat a forrás- és adattárak között, miközben gondoskodik a beépített összekötők, formátumátalakítás, oszlopmegfeleltetésről, és nagy teljesítményű, skálázható adatátvitelről.
+- **Tevékenységek szállítást**: átalakításkor az integrációs modul lehetőséget SSIS csomagok natív végrehajtására.
+- **SSIS-csomagok**: natív módon végrehajtja az SSIS-csomagok Azure-beli felügyelt számítási környezetben. Az integrációs modul lehetővé teszi a különböző számítási szolgáltatásokon, például az Azure HDInsighton, az Azure Machine Learningen, az Azure SQL Database-en és az SQL Serveren futó átalakítási tevékenységek szervezését és figyelését.
 
-Helyezze át, és az adatok átalakítása szükséges integrációs futásidejű egy vagy több példányát telepítheti. Integrációs futásidejű futtathatja az Azure nyilvános hálózaton vagy a privát hálózaton (a helyszínen, Azure virtuális hálózat vagy Amazon Web Services virtuális magánfelhő [VPC]). 
+Integrációs modul egy vagy több példány is üzemeltethető, van szükség az adatok áthelyezéséhez és átalakításához. Az Integration runtime futtathat egy Azure-beli nyilvános hálózaton vagy egy magánhálózaton (helyszíni, Azure Virtual Network vagy Amazon Web Services virtuális magánfelhő [VPC]). 
 
 További információkért lásd: [Integrációs modul az Azure Data Factoryban](concepts-integration-runtime.md).
 
-## <a name="what-is-the-limit-on-the-number-of-integration-runtimes"></a>Mi az az integráció futtatókörnyezetek egyike számára vonatkozó korlátozást?
-Nincs adat-előállítóban lehet integrációs futásidejű példányainak száma nem rögzített korlátját. Van, azonban a virtuális gép mag, az integrációs futásidejű SSIS-csomag végrehajtását előfizetésenként is használhat a számára vonatkozó korlátozást. További információkért lásd: [korlátozza a Data Factory](../azure-subscription-service-limits.md#data-factory-limits).
+## <a name="what-is-the-limit-on-the-number-of-integration-runtimes"></a>Mi az az integrációs modulok számának korlátját?
+Nincs rögzített korlátozva az integration runtime példányok egy adat-előállítót is lehet. Azonban korlátozva van, amely SSIS-csomag végrehajtása előfizetésenként használhatja az integrációs modul virtuális gép magjainak számát. További információkért lásd: [Data Factory korlátai](../azure-subscription-service-limits.md#data-factory-limits).
 
-## <a name="what-are-the-top-level-concepts-of-azure-data-factory"></a>Mik az Azure Data Factory legfelső szintű elveit?
-Az Azure-előfizetések több Azure Data Factory-példányt (más néven adat-előállítókat) is tartalmazhatnak. Az Azure Data Factory működjön együtt, a platform, amelyen létrehozhatja azt az adatvezérelt munkafolyamatok lépésekről, amelyekkel áthelyezése és az adatok átalakítása négy fő összetevőből tartalmazza.
+## <a name="what-are-the-top-level-concepts-of-azure-data-factory"></a>Mik az Azure Data Factory felső szintű alapelvek?
+Az Azure-előfizetések több Azure Data Factory-példányt (más néven adat-előállítókat) is tartalmazhatnak. Az Azure Data Factory négy fő összetevőből, amelyek együtt, amelyen is amelyeknek a lépései áthelyezik és átalakítják az adatokat az adatvezérelt munkafolyamatok platform tartalmazza.
 
 ### <a name="pipelines"></a>Folyamatok
-A data factory egy vagy több folyamattal rendelkezhet. Egy folyamat tevékenységek végrehajtására munkaegység logikai csoportosítása. A folyamatban lévő tevékenységek együtt egy feladatot hajtanak végre. Például egy folyamatot, amely egy Azure blob származó adatok, és futtassa a Hive-lekérdezések HDInsight-fürtök az adatok particionálása tevékenységcsoport tartalmazhat. Az előnye, hogy egy folyamat használatával készletként, az egyes tevékenységek kezelése helyett a tevékenységek kezelése. Akkor is tanúsítványlánc-együtt a folyamat egymás után fog működni a tevékenységek, vagy akkor tudja azokat egymástól függetlenül működnek, párhuzamosan.
+A data factory egy vagy több folyamattal rendelkezhet. Egy folyamat egy adott munkaegység végrehajtásához tevékenységek logikus csoportosításai. A folyamatban lévő tevékenységek együtt egy feladatot hajtanak végre. Például a folyamat tartalmazhat egy csoport tevékenységeket, majd futtassa a Hive-lekérdezést futtathat egy HDInsight-fürtön az adatok particionálásához és gyűjthet adatokat egy Azure-blobból. Az az előnye, hogy egy folyamat használatával kezelheti a tevékenységek egy készletben kellene minden egyes tevékenységet külön-külön. Láncolhatja össze a tevékenységek egy folyamatban, hogy azok egymás után, vagy hogy műveleteket lehessen végezni őket egymástól függetlenül, párhuzamosan.
 
 ### <a name="activity"></a>Tevékenység
-Egy folyamatban a tevékenységek a feldolgozási lépéseket jelentik. Használhat például egy *másolási* tevékenység egy adattárolóban tárolnak adatokat másolni egy másik adattárolóhoz. Hasonlóképpen a Hive tevékenység Hive-lekérdezések futó átalakító, vagy az adatok elemzése Azure HDInsight-fürtök is használhatja. A Data Factory három típusú tevékenységet támogat: az adattovábbítási tevékenységeket, az adat-átalakítási tevékenységeket és a vezérlési tevékenységeket.
+Egy folyamatban a tevékenységek a feldolgozási lépéseket jelentik. Használhat például egy *másolási* tevékenység, amely az adatok másolása az egyik adattárból a másikba. Hasonlóképpen egy Hive-tevékenység Hive-lekérdezést futtathat egy Azure HDInsight-fürtön az adatok átalakításához és elemzéséhez is használhatja. A Data Factory három típusú tevékenységet támogat: az adattovábbítási tevékenységeket, az adat-átalakítási tevékenységeket és a vezérlési tevékenységeket.
 
 ### <a name="datasets"></a>Adathalmazok
 Az adatkészletek adatstruktúrákat jelölnek az adattárakon belül, amelyek egyszerűen rámutatnak vagy meghivatkozzák az adatokat, amelyeket a tevékenységekben be- vagy kimenetként használni szeretne. 
 
 ### <a name="linked-services"></a>Társított szolgáltatások
-A társított szolgáltatások nagyon hasonlóak a kapcsolati sztringekhoz, amelyek meghatározzák azokat a kapcsolati információkat, amelyeket a Data Factory a külső erőforrásokhoz történő csatlakozáshoz igényel. Azt gondolja, hogy így: összekapcsolt szolgáltatás létesítendő kapcsolatot az adatforrás és adatkészlet jelenti. az adatok szerkezete. Például az Azure tárolás társított szolgáltatásának adja meg a kapcsolati karakterlánc csatlakozni az Azure Storage-fiók. És egy Azure-Blob adatkészlet határozza meg, a blob-tároló és az adatokat tartalmazó mappát.
+A társított szolgáltatások nagyon hasonlóak a kapcsolati sztringekhoz, amelyek meghatározzák azokat a kapcsolati információkat, amelyeket a Data Factory a külső erőforrásokhoz történő csatlakozáshoz igényel. Ezzel a módszerrel tekinthetjük: társított szolgáltatás határozza meg a kapcsolat az adatforráshoz, és a egy adatkészlet jelöli az adatok struktúráját. Például egy Azure Storage társított szolgáltatás megadja a kapcsolati karakterláncot az Azure Storage-fiókhoz való csatlakozáshoz. És a egy Azure Blob-adatkészlet meghatározza a blobtárolót és az adatokat tartalmazó mappát.
 
-Társított szolgáltatások adat-előállítóban két célja van:
+Társított szolgáltatások a Data Factory két célja van:
 
-- Képviselő egy *adattár* , amely magában foglalja, de nincs korlátozva, a helyszíni SQL Server-példány, Oracle adatbázis-példány, egy fájlmegosztást vagy egy Azure Blob storage-fiókot. Támogatott adattárolókhoz listájáért lásd: [másolási tevékenység során az Azure Data Factory](copy-activity-overview.md).
-- Olyan *számítási erőforrás* jelölésére, amelyen végrehajtható a tevékenység. Például a HDInsight Hive fut egy HDInsight Hadoop-fürt. Átalakítás tevékenységek és a támogatott számítási környezetek listájáért lásd: [az Azure Data Factoryben az adatok átalakítása](transform-data.md).
+- Képviselő egy *adattár* , amely magában foglalja, de már nem korlátozódik, a helyszíni SQL Server-példány, Oracle database-példány, fájlmegosztás vagy egy Azure Blob storage-fiókot. Támogatott adattárak listáját lásd: [másolási tevékenységgel az Azure Data Factoryban](copy-activity-overview.md).
+- Olyan *számítási erőforrás* jelölésére, amelyen végrehajtható a tevékenység. Például a HDInsight Hive-tevékenység fut egy HDInsight Hadoop-fürtön. Átalakítási tevékenységek és a támogatott számítási környezetek listáját lásd: [átalakítása az Azure Data Factory](transform-data.md).
 
 ### <a name="triggers"></a>Eseményindítók
-Eseményindítók képviselik, amelyek meghatározzák, ha az a feldolgozási sor végrehajtása kezdődött el feldolgozási egység. A különböző típusú eseményekhez eltérő típusú eseményindítók tartoznak. 
+Az eseményindítók olyan, amelyek meghatározzák, hogy ha egy folyamat-végrehajtás megkezdődik a feldolgozási egységek. A különböző típusú eseményekhez eltérő típusú eseményindítók tartoznak. 
 
 ### <a name="pipeline-runs"></a>Folyamatfuttatások
-Egy folyamatot, futtassa a feldolgozási sor végrehajtása példánya. Általában hozható létre egy folyamatot, úgy, hogy a paraméterek az adatcsatorna definiált argumentumok futtatásához. Az argumentumok átadhatók kézzel vagy az eseményindító definícióját.
+Folyamat futásának egy folyamat-végrehajtás egy példányát. Folyamat futásának argumentumoknak a folyamatban meghatározott paraméterekhez általában hozza létre. Manuálisan, vagy az eseményindító meghatározásán az argumentumokat adhat át.
 
 ### <a name="parameters"></a>Paraméterek
-Kulcs-érték párok írásvédett konfigurációban támogatottak. Egy folyamat paramétereit, és adja meg a definiált paraméterek argumentumai végrehajtása során futtatási környezetből. A futtatási környezet létrehozása egy eseményindítót, vagy az egy folyamatot, amely manuálisan hajtható végre. A folyamatok tevékenységei a paraméterértékeket dolgozzák fel.
+Kulcs-érték párok csak olvasható konfiguráció paraméterei a következők. A folyamat paramétereit, és adja át a paraméterekhez tartozó argumentumok végrehajtása során a futtatási környezetből. A futtatási környezetből létrejön egy eseményindító vagy egy folyamatot, amely manuálisan hajtható végre. A folyamatok tevékenységei a paraméterértékeket dolgozzák fel.
 
-Adatkészlet egy szigorú típusmegadású paraméter, és használja fel, vagy hivatkozzon entitás. Egy tevékenység hivatkozhat adatkészletek és lefoglalhatja a tulajdonságokat, amelyeket az adatkészlet definícióban meghatározott.
+Egy adatkészlet, szigorúan típusos paraméterek és a egy entitás, amely akkor újrafelhasználás vagy hivatkozás. Egy tevékenység is referencia-adatkészletek, és lefoglalhatja a az adatkészlet definícióban meghatározott tulajdonságait.
 
-A csatolt "szolgáltatás" is egy szigorú típusmegadású paraméter, amely tartalmazza a kapcsolódási adatokat, hogy a tárolóban vagy számítási környezetekben. Akkor is felhasználhatja, vagy hivatkozzon entitás.
+A társított szolgáltatás nem is egy adattárat vagy számítási környezetek kapcsolatadatait tartalmazó, szigorúan típusos paraméterek. Emellett akkor is olyan entitás, amely akkor újrafelhasználás vagy hivatkozás.
 
-### <a name="control-flows"></a>Vezérlő adatfolyamok
-Vezérlő adatfolyamok levezényelni a feldolgozási sor tevékenységek, amelyek tartalmaznak egy sorozatban lévő tevékenységcsoport, ugorhat, paraméterek, a folyamat szinten meghatározó lánckezelő, és adja meg, ha Ön argumentumokat meghívja a feldolgozási sor az igény szerinti vagy egy. Vezérlő adatfolyamok magába foglalja egyéni-állapot átadásakor, valamint a tárolók (Ez azt jelenti, hogy az egyes Iterátornak) hurkolást.
+### <a name="control-flows"></a>Vezérlő folyamatok
+Vezérlő folyamatok szervezése tevékenységlánc egy feladatütemezési, az elágaztatást, a folyamat szintjén meghatározó paraméterek tartalmazó folyamat tevékenységek és argumentumokat, át kell adnia a folyamat igény szerint vagy egy eseményindítóból meghívását. Vezérlő folyamatok tartalmazzák a egyéni-állapot átadása és (vagyis a for-each iterátorok) tárolók hurkolása.
 
 
 A Data Factory alapelveivel kapcsolatban további információkat a következő cikkekben talál:
 
-- [Adatkészlet és összekapcsolt szolgáltatások](concepts-datasets-linked-services.md)
+- [Adatkészlet és a társított szolgáltatások](concepts-datasets-linked-services.md)
 - [Folyamatok és tevékenységek](concepts-pipelines-activities.md)
 - [Integrációs modul](concepts-integration-runtime.md)
 
-## <a name="what-is-the-pricing-model-for-data-factory"></a>Mi az a Data Factory árképzési modellt?
-Az Azure Data Factory díjszabása, lásd: [díjszabása adat-előállító](https://azure.microsoft.com/pricing/details/data-factory/).
+## <a name="what-is-the-pricing-model-for-data-factory"></a>Mi a Data Factory díjszabási modellje?
+Azure Data Factory díjszabása, lásd: [Data Factory díjszabása](https://azure.microsoft.com/pricing/details/data-factory/).
 
-## <a name="how-can-i-stay-up-to-date-with-information-about-data-factory"></a>Hogyan maradhat naprakész információkkal, adat-előállító?
-Azure Data Factory kapcsolatos legfrissebb információkért nyissa meg a következő helyekre:
+## <a name="how-can-i-stay-up-to-date-with-information-about-data-factory"></a>Hogyan maradhat naprakészen tartása információ a Data Factory?
+A legfrissebb információk az Azure Data Factory szolgáltatásról tanulmányozza a következő helyekre:
 
 - [Blog](https://azure.microsoft.com/blog/tag/azure-data-factory/)
-- [Dokumentációjának kezdőlapján](/azure/data-factory)
-- [A termék kezdőlap](https://azure.microsoft.com/services/data-factory/)
+- [Dokumentációs kezdőlap](/azure/data-factory)
+- [Termék kezdőlapja](https://azure.microsoft.com/services/data-factory/)
 
-## <a name="technical-deep-dive"></a>Műszaki részletes bemutatója 
+## <a name="technical-deep-dive"></a>Részletes technikai bemutatása 
 
-### <a name="how-can-i-schedule-a-pipeline"></a>Egy folyamat ütemezése? 
-Használhatja a Feladatütemező eseményindító vagy idő ablak indítási folyamat ütemezéséhez. Az eseményindító üzenőfal-órája naptár ütemezés használ, és használhatja folyamatok ütemezése, rendszeres időközönként vagy ismétlődő minták naptár-alapú (például hetente a következő 18: 00 hétfőjén és csütörtöki napokon 9 du.) használatával. További információ: [Folyamat-végrehajtás és eseményindítók](concepts-pipeline-execution-triggers.md).
+### <a name="how-can-i-schedule-a-pipeline"></a>Hogyan ütemezhet egy folyamatot? 
+Az ütemező eseményindító vagy idő ablakos eseményindító segítségével ütemezhet egy folyamatot. Az eseményindító naptár időpontalapú ütemezés szerint használ, és használhatja a folyamatok ütemezése, rendszeres időközönként vagy ismétlődő minták naptár-alapú (például hetente a Este 6 Órára hétfőjén és csütörtökönként este 9-kor) használatával. További információ: [Folyamat-végrehajtás és eseményindítók](concepts-pipeline-execution-triggers.md).
 
-### <a name="can-i-pass-parameters-to-a-pipeline-run"></a>Is paraméter is át egy folyamat elindul?
-Igen, első osztályú, legfelső szintű fogalma az ADF támogatottak. Az adatcsatorna szintjén paraméterek megadása, és adja át argumentumok futtatása a feldolgozási sor az igény szerinti vagy eseményindító használatával futtassa.  
+### <a name="can-i-pass-parameters-to-a-pipeline-run"></a>E paramétereket adhat át egy folyamat futásának?
+Igen, a paramétereket egy gyors, elsőosztályú, legfelső szintű fogalom, az ADF-ben is. Argumentumokat adhat, a folyamat futtatása igény szerint vagy egy eseményindítóval végrehajtásakor, és a folyamat szintjén paraméterek megadása.  
 
-### <a name="can-i-define-default-values-for-the-pipeline-parameters"></a>Adhatja meg az adatcsatorna paraméterek alapértelmezett értéke? 
-Igen. A paraméterek alapértelmezett értéke a folyamatok határozhatja meg. 
+### <a name="can-i-define-default-values-for-the-pipeline-parameters"></a>A folyamat paramétereihez tartozó alapértelmezett értékeket adhatja meg? 
+Igen. Meghatározhatja az alapértelmezett értékeket a paraméterek a folyamatokban. 
 
-### <a name="can-an-activity-in-a-pipeline-consume-arguments-that-are-passed-to-a-pipeline-run"></a>Egy folyamat egy tevékenységének felhasználhat egy folyamat futtatása átadott argumentumok? 
-Igen. A folyamat minden tevékenységét felhasználhat a paraméter értéke, amelynek a feldolgozási sor átadott, és futtassa a `@parameter` összeállításához. 
+### <a name="can-an-activity-in-a-pipeline-consume-arguments-that-are-passed-to-a-pipeline-run"></a>A folyamat egyik tevékenységének használhatják egy folyamat számára továbbított argumentumok? 
+Igen. A folyamat minden tevékenységét felhasználhat a paraméter értéke, amely a folyamat számára továbbított és futtathat a `@parameter` hozhatnak létre. 
 
-### <a name="can-an-activity-output-property-be-consumed-in-another-activity"></a>Egy tevékenység kimeneti tulajdonság fogyasztják egy másik tevékenység? 
-Igen. Egy tevékenység kimeneti képes használni a következő tevékenységet a `@activity` összeállításához.
+### <a name="can-an-activity-output-property-be-consumed-in-another-activity"></a>Egy tevékenység kimeneti tulajdonság felhasználhatók egy másik tevékenység? 
+Igen. Egy tevékenység kimenete a soron következő tevékenysége felhasználhatók a `@activity` hozhatnak létre.
  
-### <a name="how-do-i-gracefully-handle-null-values-in-an-activity-output"></a>Hogyan do I problémamentes kezelésére egy tevékenység kimeneti null értéket? 
-Használhatja a `@coalesce` szabályosan kezelni a null érték kifejezésében összeállításához. 
+### <a name="how-do-i-gracefully-handle-null-values-in-an-activity-output"></a>Szabályosan teendőim egy tevékenység kimenete null értéket? 
+Használhatja a `@coalesce` hozhatnak létre a kifejezésekben szabályosan kezelni a null értékeket. 
 
 ## <a name="next-steps"></a>További lépések
-Egy adat-előállító létrehozása lépésenkénti útmutatásért tekintse meg az alábbi oktatóanyagok:
+Részletes útmutatásért az adat-előállító létrehozása a következő oktatóanyagokban talál:
 
-- [Gyors üzembe helyezés: Tartalmazó data factory létrehozása](quickstart-create-data-factory-dot-net.md)
+- [Gyors útmutató: Adat-előállító létrehozása](quickstart-create-data-factory-dot-net.md)
 - [Oktatóanyag: Adatok másolása a felhőben](tutorial-copy-data-dot-net.md)

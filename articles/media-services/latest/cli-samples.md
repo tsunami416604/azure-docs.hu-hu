@@ -1,6 +1,6 @@
 ---
-title: Az Azure CLI példák - Azure Media Services |} Microsoft Docs
-description: Az Azure CLI példák Azure Media Services szolgáltatáshoz
+title: Az Azure CLI-példák – az Azure Media Services |} A Microsoft Docs
+description: Azure CLI-példák az Azure Media Services szolgáltatáshoz
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,31 +12,31 @@ ms.topic: article
 ms.custom: ''
 ms.date: 04/15/2018
 ms.author: juliako
-ms.openlocfilehash: acc92662aa5b727656a8eda368ba6d78a87d9ecd
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 3328403f5366f168f979a14951da938f26e1aee9
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34640889"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35923532"
 ---
-# <a name="azure-cli-examples-for-azure-media-services"></a>Azure Media Services Azure CLI-példák
+# <a name="azure-cli-examples-for-azure-media-services"></a>Az Azure Media Services az Azure CLI-példák
 
-A következő táblázat az Azure Media Services Azure CLI példák hivatkozásokat tartalmaz.
+A következő táblázat az Azure Media Services az Azure CLI-példákra mutató hivatkozásokat tartalmaz.
 
 |  |  |
 |---|---|
 |**Fiók**||
-| [Media Services-fiók létrehozása](./scripts/cli-create-account.md) | Létrehoz egy Azure Media Services-fiókot. Ezenkívül létrehoz egy szolgáltatás egyszerű, amely programozott módon kezelheti a fiók API-k elérésére használható. |
-| [Fiók hitelesítő adatok alaphelyzetbe állítása](./scripts/cli-reset-account-credentials.md)|Alaphelyzetbe állítja a fiók hitelesítő adatait, és megkapja az app.config beállításokat.|
+| [A Media Services-fiók létrehozása](./scripts/cli-create-account.md) | Létrehoz egy Azure Media Services-fiókot. Emellett létrehoz egy egyszerű szolgáltatást, amely API-k programozott módon kezelheti a fiók elérésére használható. |
+| [Fiók hitelesítő adatainak alaphelyzetbe állítása](./scripts/cli-reset-account-credentials.md)|Alaphelyzetbe állítja a fiók hitelesítő adatait, és megkapja az app.config beállításokat.|
 |**Eszközök**||
-| [Eszközök létrehozása](./scripts/cli-create-asset.md)|Tartalom feltöltése a Media Services eszköz hoz létre.|
-| [Fájl feltöltése](./scripts/cli-upload-file-asset.md)|Egy tároló feltölt egy helyi fájlt.|
-| [Az objektum közzététele](./scripts/cli-publish-asset.md)| A Streamelési lokátor hoz létre, és megkapja Streaming URL-címeket. |
-| **Átalakítja az** és **feladatok**||
-| [Átalakítások létrehozása](./scripts/cli-create-transform.md)|Bemutatja, hogyan átalakítások létrehozásához. Az átalakítások feladatokból álló egyszerű munkafolyamatot definiálnak a video- vagy hangfájlok feldolgozásához (ezek „recept” néven is ismertek).<br/> Mindig ellenőrizze, hogy létezik-e már adott nevű és „receptű” Átalakítás. Ha igen, használja fel újra. |
-| [Feladatok létrehozása](./scripts/cli-create-jobs.md)|Egy feladatot, amely egy egyszerű kódolási átalakítási HTTPs URL-Címének használatával küldi el.|
-| [EventGrid létrehozása](./scripts/cli-create-event-grid.md)|Egy fiók szintű esemény rács előfizetést hoz létre a feladat állapotának változását.|
+| [Adategységek létrehozása](./scripts/cli-create-asset.md)|Létrehoz egy Media Services eszköz tartalmat feltölteni.|
+| [Fájl feltöltése](./scripts/cli-upload-file-asset.md)|Feltölt egy helyi fájlt egy storage-tárolóba.|
+| [Az objektum közzététele](./scripts/cli-publish-asset.md)| A Streamelési lokátor hoz létre, és megkapja Streamelési URL-címeket. |
+| **Átalakítások** és **feladatok**||
+| [Átalakítások létrehozása](./scripts/cli-create-transform.md)|Bemutatja, hogyan hozhat létre átalakításokat. Az átalakítások feladatokból álló egyszerű munkafolyamatot definiálnak a video- vagy hangfájlok feldolgozásához (ezek „recept” néven is ismertek).<br/> Mindig ellenőrizze, hogy létezik-e már adott nevű és „receptű” Átalakítás. Ha igen, újra felhasználhatja. |
+| [Feladatok létrehozása](./scripts/cli-create-jobs.md)|Elküld egy feladatot, amely egy egyszerű kódolási átalakító HTTPs URL-cím használatával.|
+| [EventGrid létrehozása](./scripts/cli-create-event-grid.md)|Egy fiók szintű Event Grid-előfizetést hoz létre feladat állapotváltozások.|
 
 ## <a name="see-also"></a>Lásd még
 
-[CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/ams?view=azure-cli-latest)
+[Azure CLI](https://docs.microsoft.com/en-us/cli/azure/ams?view=azure-cli-latest)

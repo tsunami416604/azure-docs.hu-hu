@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: glenga
-ms.openlocfilehash: d43032f854aa37f150945c25515c03ec97277b41
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: a68e7cfe2966592861f3fb58c99327c5849a6004
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44091305"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44721602"
 ---
 # <a name="mobile-apps-bindings-for-azure-functions"></a>Mobile Apps-kötések az Azure Functions szolgáltatáshoz 
 
@@ -74,8 +74,7 @@ Itt van a kötési adatait a *function.json* fájlt:
         "apiKey": "My_MobileApp_Key",
         "direction": "in"
     }
-],
-"disabled": false
+]
 }
 ```
 A [konfigurációs](#input---configuration) szakasz mutatja be ezeket a tulajdonságokat.
@@ -120,8 +119,7 @@ Itt van a kötési adatait a *function.json* fájlt:
         "apiKey": "My_MobileApp_Key",
         "direction": "in"
     }
-],
-"disabled": false
+]
 }
 ```
 A [konfigurációs](#input---configuration) szakasz mutatja be ezeket a tulajdonságokat.
@@ -219,8 +217,7 @@ Itt van a kötési adatait a *function.json* fájlt:
     "apiKey": "My_MobileApp_Key",
     "direction": "out"
     }
-],
-"disabled": false
+]
 }
 ```
 

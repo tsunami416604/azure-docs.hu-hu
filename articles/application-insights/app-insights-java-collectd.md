@@ -1,6 +1,6 @@
 ---
-title: Linux - Azure Java web app teljesítményére figyelése |} Microsoft Docs
-description: Bővített alkalmazásteljesítmény-figyelés a Java-webhely beépülő modul CollectD az Application insights szolgáltatással.
+title: Java-WebApp linuxon – Azure teljesítményének figyelése |} A Microsoft Docs
+description: Kiterjesztett alkalmazásteljesítmény-figyelés Java webhelyét az összegyűjtött beépülő modul az Application Insights.
 services: application-insights
 documentationcenter: java
 author: mrbullwinkle
@@ -10,43 +10,43 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/24/2016
 ms.author: mbullwin
-ms.openlocfilehash: 56e30ff4ee7765cd0950293999d93a9cf1fe5d36
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.openlocfilehash: 61260674639a351a01cfea9dd695ce32795aa8c0
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32152418"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35645587"
 ---
-# <a name="collectd-linux-performance-metrics-in-application-insights"></a>collectd: Linux teljesítménymutatók az Application Insightsban
+# <a name="collectd-linux-performance-metrics-in-application-insights"></a>összegyűjtött: Linux teljesítmény-mérőszámok az Application insights szolgáltatásban
 
 
-Linux rendszer teljesítménymutatók a felfedezése [Application Insights](app-insights-overview.md), telepítse [collectd](http://collectd.org/)együtt az Application Insights beépülő modult,. A nyílt forráskódú megoldás különböző rendszer és a hálózati statisztikákat gyűjt.
+Megismerheti a Linux rendszer teljesítmény-mérőszámokat a [Application Insights](app-insights-overview.md), telepítse [összegyűjtött](http://collectd.org/)együtt az Application Insights beépülő modult,. A nyílt forráskódú megoldás különféle rendszererőforrásokat és hálózati statisztikákat gyűjti össze.
 
-Általában fogja használni collectd, ha már rendelkezik [a Java webes szolgáltatás az Application insights szolgáltatással tagolva][java]. Ez lehetővé teszi több adat segítséget az alkalmazás a teljesítmény növelése és a problémák diagnosztizálásához. 
+Általában fogja használni összegyűjtött, ha már rendelkezik [kialakítva az Application insights segítségével a Javás webszolgáltatások][java]. Biztosít további adatokat annak érdekében, hogy az alkalmazás teljesítményének növelése, vagy a problémák diagnosztizálásához. 
 
-![a minta diagramok](./media/app-insights-java-collectd/sample.png)
+![Mintadiagramok](./media/app-insights-java-collectd/sample.png)
 
-## <a name="get-your-instrumentation-key"></a>A rendszerállapot-kulcs beszerzése
+## <a name="get-your-instrumentation-key"></a>A kialakítási kulcs beszerzése
 Az a [Microsoft Azure-portálon](https://portal.azure.com), nyissa meg a [Application Insights](app-insights-overview.md) erőforrás, ahol azt szeretné, hogy az adatok jelennek meg. (Vagy [hozzon létre egy új erőforrást](app-insights-create-new-resource.md).)
 
-Igénybe vehet a instrumentation kulcs, amely azonosítja az erőforrás egy példányát.
+Készítsen róla egy másolatot a kialakítási kulcs, amely azonosítja az erőforrást.
 
-![Keresse meg az összes, nyissa meg az erőforrást, majd az Essentials legördülő válassza ki, és a Instrumentation kulcs másolása](./media/app-insights-java-collectd/02-props.png)
+![Összes tallózása, nyissa meg az erőforrást, majd az Essentials legördülő válassza ki, és a kialakítási kulcs másolása](./media/app-insights-java-collectd/02-props.png)
 
-## <a name="install-collectd-and-the-plug-in"></a>Collectd és a beépülő modul telepítése
-A Linux server gépeken:
+## <a name="install-collectd-and-the-plug-in"></a>Összegyűjtött és a beépülő modul telepítése
+A Linux rendszerű kiszolgáló gépeken:
 
-1. Telepítés [collectd](http://collectd.org/) 5.4.0 verzió vagy újabb.
-2. Töltse le a [Application Insights collectd író beépülő modul](https://aka.ms/aijavasdk). Megjegyzés: a verziószám.
+1. Telepítés [összegyűjtött](http://collectd.org/) 5.4.0-s vagy újabb.
+2. Töltse le a [Application Insights összegyűjtött író beépülő modul](https://aka.ms/aijavasdk). Megjegyzés: a verziószámot.
 3. A beépülő modul JAR történő másolás `/usr/share/collectd/java`.
 4. Szerkesztés `/etc/collectd/collectd.conf`:
-   * Győződjön meg arról, hogy [a Java beépülő modul](https://collectd.org/wiki/index.php/Plugin:Java) engedélyezve van.
-   * Frissítse a JVMArg a java.class.path számára a következő JAR felvenni. A letöltött egyeznie a verziószám frissítéséhez:
+   * Ügyeljen arra, hogy [a Java-beépülő modul](https://collectd.org/wiki/index.php/Plugin:Java) engedélyezve van.
+   * Frissítse a JVMArg számára a java.class.path tartalmazza a következő JAR. A letöltött egyeznie, a verziószám frissítéséhez:
    * `/usr/share/collectd/java/applicationinsights-collectd-1.0.5.jar`
-   * Adja hozzá ezt a kódrészletet, az erőforrás Instrumentation kulccsal:
+   * Ez a kódrészlet használatával a Rendszerállapotkulcsot az erőforrás hozzáadása:
 
 ```XML
 
@@ -56,7 +56,7 @@ A Linux server gépeken:
      </Plugin>
 ```
 
-Íme egy példa konfigurációs fájl részeként:
+Íme egy minta konfigurációs fájl részeként:
 
 ```XML
 
@@ -89,47 +89,47 @@ A Linux server gépeken:
     ...
 ```
 
-Konfigurálja az egyéb [collectd beépülő modulok](https://collectd.org/wiki/index.php/Table_of_Plugins), amelyek különböző adatokat gyűjthet különböző forrásokból származó.
+Egyéb konfigurálása [összegyűjtött beépülő modulok](https://collectd.org/wiki/index.php/Table_of_Plugins), amely képes különféle forrásból gyűjthet adatokat, különböző.
 
-Indítsa újra a következők szerint collectd a [manuális](https://collectd.org/wiki/index.php/First_steps).
+Indítsa újra a következők szerint összegyűjtött annak [manuális](https://collectd.org/wiki/index.php/First_steps).
 
-## <a name="view-the-data-in-application-insights"></a>Az adatok megtekintése az Application Insightsban
-Nyissa meg az Application Insights-erőforrás [Metrikaböngésző, és adja hozzá a diagramok][metrics], a metrikák meg szeretné tekinteni a egyéni kategóriából kiválasztása.
+## <a name="view-the-data-in-application-insights"></a>Az adatok megtekintése az Application Insights
+Nyissa meg az Application Insights-erőforrás [Metrikaböngésző, és adja hozzá a diagramok][metrics], meg szeretné tekinteni az egyéni kategóriából a metrikák kiválasztásával.
 
 ![](./media/app-insights-java-collectd/result.png)
 
-Alapértelmezés szerint a metrikák összesítése, amelyből a metrikák gyűjtött összes állomás számítógépével. A metrikák állomásonként, a diagram részletei panelen megtekintéséhez kapcsolja be a csoportosítás, és válassza a CollectD-állomás szerint kell csoportosítani.
+Alapértelmezés szerint a metrikák, amelyről a metrikák gyűjtött összes gazdagépeken összesítjük. A diagram részletei panelen gazdagépenként, a metrikák megjelenítéséhez kapcsolja be a csoportosítást, és válassza a csoportosítás az összegyűjtött-gazdagép.
 
-## <a name="to-exclude-upload-of-specific-statistics"></a>Az adott statisztika feltöltése kizárása
-Alapértelmezés szerint az Application Insights beépülő modul elküldi az engedélyezett collectd "read" beépülő modulok által gyűjtött összes adat. 
+## <a name="to-exclude-upload-of-specific-statistics"></a>Az adott statisztika feltöltését kizárása
+Alapértelmezés szerint az Application Insights beépülő modul küld az engedélyezett összegyűjtött "read" beépülő modulok által gyűjtött összes adat. 
 
-Adatok kizárandó konkrét beépülő modulok, illetve az adatforrások:
+Adatok kizárása adott beépülő modulok, illetve az adatforrások:
 
-* Szerkessze a konfigurációs fájlt. 
-* A `<Plugin ApplicationInsightsWriter>`, adja hozzá a direktíva sorokat:
+* A konfigurációs fájl szerkesztésével. 
+* A `<Plugin ApplicationInsightsWriter>`, ehhez hasonló irányelv sorok hozzáadása:
 
-| Irányelv | Következmény |
+| Direktiva | Következmény |
 | --- | --- |
 | `Exclude disk` |Zárja ki által gyűjtött összes adat a `disk` beépülő modul |
-| `Exclude disk:read,write` |Kizárása a nevű `read` és `write` a a `disk` beépülő modul. |
+| `Exclude disk:read,write` |A nevű adatforrások kizárása `read` és `write` származó a `disk` beépülő modult. |
 
-Külön irányelvek és egy új sor.
+Külön irányelvek és a egy új sor.
 
 ## <a name="problems"></a>Problémákat tapasztal?
-*Nem szerepel az adatok a portálon*
+*Nem látható adatok a portálon*
 
-* Nyissa meg [keresési] [ diagnostic] érkezett-e a nyers események megjelenítéséhez. Egyes esetekben tovább tartanak metrikaböngésző jelennek meg.
-* Szükség lehet [tűzfalkivételeket a kimenő adatok beállítása](app-insights-ip-addresses.md)
-* Nyomkövetés engedélyezése a az Application Insights beépülő modult. Adja hozzá a sort belül `<Plugin ApplicationInsightsWriter>`:
+* Nyissa meg [keresési] [ diagnostic] megtekintheti, ha a nyers események menüpontjára. Egyes esetekben tovább tartanak a metrikaböngészőben jelennek meg.
+* Szüksége lehet [tűzfalkivételeket a kimenő adatok beállítása](app-insights-ip-addresses.md)
+* Nyomkövetés engedélyezése a az Application Insights beépülő modullal. Adja hozzá ezt a sort belül `<Plugin ApplicationInsightsWriter>`:
   * `SDKLogger true`
-* Nyissa meg egy terminált, és indítsa el a collectd a kapcsoló ütközik a jelentések megtekintéséhez:
+* Nyisson meg egy terminált, és indítsa el az összegyűjtött részletes módban, minden hibajelentés megtekintéséhez:
   * `sudo collectd -f`
 
-## <a name="known-issue"></a>Ismert hiba
+## <a name="known-issue"></a>Ismert probléma
 
-Az Application Insights írási beépülő modul nem kompatibilis a bizonyos olvasási beépülő modulok. Néhány beépülő modulok néha küldése "NaN", ahol az Application Insights beépülő modul egy lebegőpontos számot vár.
+Az Application Insights írási beépülő modul nem kompatibilis a bizonyos olvasási beépülő modulokat. Néhány beépülő modulok néha küldése "NaN", ahol az Application Insights beépülő modul vár a lebegőpontos számmá.
 
-Jelenség: A collectd napló mutatja, amely tartalmazza az "Eszközintelligencia:... SyntaxError: váratlan lexikális elem N ".
+Jelenség: Az összegyűjtött napló hiányosan beírva hibát okoz, amelyek tartalmazzák az "AI:... SyntaxError: nem várt token N ".
 
 Megkerülő megoldás: A probléma írási beépülő modulok által gyűjtött adatok kihagyása. 
 

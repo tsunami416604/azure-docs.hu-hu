@@ -9,12 +9,12 @@ ms.component: custom-speech
 ms.topic: article
 ms.date: 06/11/2018
 ms.author: panosper
-ms.openlocfilehash: 4e08abedf9b60f229865bf935d50443782bd928c
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 330acf3e1258951f0129a1ba47f03c5140c30adf
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44024465"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44719052"
 ---
 # <a name="text-to-speech-frequently-asked-questions"></a>Szövegfelolvasás – gyakori kérdések
 
@@ -55,6 +55,10 @@ További szolgáltatások segítő szkripteket a rögzítés lehetőséget bizto
 **K: helyezhetem saját modell letöltése és helyileg futtatja az alkalmazást?**
 
 **A**: modellek nem tölthető le és helyben végrehajtott.
+
+**K: a kérelmek szabályozva van?**
+
+**A**: A REST API-25, 5 másodpercenként kérelmek korlátozza. Részletek tekintheti meg az oldalak [szöveg-beszéd átalakítás](text-to-speech.md). 
 
 ## <a name="next-steps"></a>További lépések
 

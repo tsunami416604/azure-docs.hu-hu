@@ -1,7 +1,7 @@
 ---
-title: Az Azure-előfizetések számlázással vagy jóváírás riasztások beállítása |} Microsoft Docs
-description: Ismerteti, hogyan állíthat be riasztásokat a az Azure számlázásának számlázási meglepetések számát elkerülése érdekében.
-keywords: jóváírás riasztást, számlázási riasztás
+title: Az Azure-előfizetések számlázási vagy -kreditemet értesítések beállítása |} A Microsoft Docs
+description: Ismerteti, hogyan állíthat be riasztásokat az Azure-elszámolások a számlázási meglepetések elkerülése érdekében.
+keywords: kredit riasztást, számlázási riasztás
 services: billing
 documentationcenter: ''
 author: adpick
@@ -13,56 +13,56 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/9/2017
+ms.date: 06/15/2018
 ms.author: adpick
-ms.openlocfilehash: 981cb1153e0268e6572207f8d2401edb23485863
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 094bfe041ae04e52b6d998ccfd1d964abf192d6a
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34607803"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35931467"
 ---
-# <a name="set-up-billing-or-credit-alerts-for-your-microsoft-azure-subscriptions"></a>A Microsoft Azure-előfizetések a számlázással vagy jóváírás riasztások beállítása
-Ha a Fiókadminisztrátor az Azure-előfizetésre, az Azure számlázási értesítési szolgáltatás testreszabott létrehozásához használhatja számlázási riasztásokat, amelyek segítenek figyelése és kezelése az Azure-fiókra számlázási tevékenységet.
+# <a name="set-up-billing-or-credit-alerts-for-your-microsoft-azure-subscriptions"></a>A Microsoft Azure-előfizetések számlázási vagy -kreditemet riasztásainak beállítása
+Ha Ön a Fiókadminisztrátor az Azure-előfizetéssel, használja az Azure számlázási értesítési szolgáltatás elkészíthető testre szabott számlázási értesítőkkel figyelése és kezelése az Azure-fiókokhoz kapcsolódó számlázási tevékenység.
 
-Ez a szolgáltatás a helyzet a képen az előzetes verziójú Funkciók lapon engedélyezni kell.
+Ez a szolgáltatás az előzetes verzióban, ezért az előzetes verziójú szolgáltatásainak lapján a engedélyeznie kell.
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
-## <a name="set-the-alert-threshold-and-email-recipients"></a>A riasztási küszöbérték és e-mailek címzettjeinek beállítása
-1. Látogasson el [az előzetes verziójú funkciók oldalon](https://account.windowsazure.com/PreviewFeatures) , és engedélyezze **értesítési szolgáltatás számlázási**.
+## <a name="set-the-alert-threshold-and-email-recipients"></a>Állítsa be a Figyelmeztetési küszöbérték és e-mail címzettek
+1. Látogasson el [az előzetes verziójú szolgáltatásainak lapján](https://account.windowsazure.com/PreviewFeatures) , és engedélyezze **számlázási értesítési szolgáltatás**.
 
-1. Miután megkapta az e-mailes megerősítés, amely a számlázási szolgáltatás be van kapcsolva az előfizetéséhez, látogasson el a [az előfizetések oldalán](https://account.windowsazure.com/Subscriptions) a fiókportálon. Kattintson a figyelheti, és kattintson a kívánt előfizetést **riasztások**.
+1. Miután megkapta a számlázási szolgáltatás be van kapcsolva megerősítő e-mailt az előfizetéshez tartozó, látogasson el a [az előfizetések lap](https://account.windowsazure.com/Subscriptions) a fiókportálon. Kattintson a figyelése, és kattintson a kívánt előfizetésre **riasztások**.
 
-    ![Az előfizetések nézet az Azure Account center riasztások kiemelt – képernyőfelvétel][Image1]
+    ![Az Azure Account center, az előfizetések nézet riasztások kiemelésével – képernyőfelvétel][Image1]
 
-2. Ezután kattintson **riasztási hozzáadása** az elsőt létrehozásához. Összesen előfizetésenként, egy másik küszöbérték és az egyes riasztások két e-mailek címzettjeinek legfeljebb öt számlázási riasztásokat állíthat be.
+2. Ezután kattintson **riasztás hozzáadása** hozhat létre az elsőt. Előfizetésenként legfeljebb két e-mail címzettjei az egyes riasztások és a egy másik küszöbértékkel öt számlázási figyelmeztetéseket összesen beállíthat.
 
-    ![A riasztások nézetben, ahol felveheti a riasztás képernyőképe][Image2]
+    ![A riasztások nézetben, melyben hozzáadhatja a riasztás képernyőképe][Image2]
 
-3. Amikor egy riasztást, adjon neki egy egyedi nevet, választja a költségkeret küszöbértéket, és válassza ki az e-mail címeket, ha elküldi a riasztásokat. A küszöbérték beállításakor, vagy választhat egy **teljes számlázási** vagy egy **pénzügyi kreditet** a a **riasztási a** listája. Számlázási összesen riasztást küldi, amikor az előfizetés költségeik meghaladja a küszöbértéket. A pénzügyi kreditet riasztást küldi, amikor a pénzügyi kreditek meghaladja az vetett. Pénzügyi kreditek általában az ingyenes próbaverzió és a Visual Studio előfizetések vonatkozik.
+3. Amikor hozzáad egy riasztást, adjon meg egy egyedi nevet, válassza ki a költségkeret küszöbértéket, és válassza ki az e-mail-címeket, ahol a rendszer küld-e a riasztásokat. Amikor állítja be a küszöbértéket, vagy választhat egy **számlázás összesen** vagy egy **fizetésre használható Kredit** származó a **riasztási a** listája. Számlázási összesen riasztást küldi, amikor előfizetés-kiadások meghaladja a küszöbértéket. A fizetésre használható kredit riasztást küldi, amikor a fizetésre felhasználható kreditjeinek száma a határérték. Ingyenes próbaverzió és a Visual Studio-előfizetések fizetésre havonta felhasználható kreditek általában vonatkoznak.
 
-    ![A riasztási hozzáadása nézet, ahol konfigurálhatja a címzettek képernyőképe][Image3]
+    ![A riasztás hozzáadása nézet, amelyen konfigurálhatja a címzettek képernyőképe][Image3]
 
-Azure akármilyen e-mail címet támogatja, de nem győződjön meg arról, hogy az e-mail cím működésével úgy exportálást elírás eredménye.
+Az Azure támogatja a bármilyen e-mail-címmel, de nem ellenőrzi, hogy az e-mail cím működik, így gondosan benne elgépelések.
 
 ## <a name="check-on-your-alerts"></a>A riasztások ellenőrzése
-Miután beállította a riasztásokat, a Account Center sorolja fel azokat, és bemutatja, hogy hány több állíthat be. Az egyes riasztások látható, a dátumot és küldési időpontja, hogy egy riasztás teljes számlázási vagy pénzügyi kreditet-e, és a beállított korlátot. A dátum és idő formátuma 24 órás világidő koordinálják (UTC), és a dátum, éééé-hh-nn formátumban. Kattintson a plusz jelre riasztás szerkesztheti a listában, vagy kattintson a Kuka törli-e.
+Riasztások beállítása után az Account Center sorolja fel őket, és megtekintheti, hogy hány több állíthat be. Minden riasztás esetében megjelenik a dátum és idő küldték, legyen szó egy riasztás teljes számlázási és a fizetésre használható Kredit és a beállított korlátot. A dátum és idő formátuma 24 órás világidő koordinálása (UTC), és a dátum formátuma éééé-hh-nn. Kattintson a plusz jelre egy riasztás szerkesztheti a listában, vagy kattintson a Kuka törli-e.
 
-## <a name="delete-alerts-or-email-addresses-from-the-azure-billing-alert-service"></a>Riasztások vagy e-mail címekre törlése az Azure számlázási értesítési szolgáltatás
-Ha valaha is el kell távolítania a semmilyen információt a szolgáltatásból, az e-mail cím, a fájl frissítése, vagy a riasztás teljes törlése.
+## <a name="delete-alerts-or-email-addresses-from-the-azure-billing-alert-service"></a>Riasztások vagy e-mail-címek törlése az Azure számlázási értesítési szolgáltatás
+Minden eddiginél kell eltávolítani az adatokat a szolgáltatásból, ha az e-mail-cím, a fájl frissítése, vagy a riasztás törlésével a teljes egészében.
 
-   ![A riasztási törlés nézet, ahol eltávolíthatja a személyes adatok képernyőképe][Image4]
+   ![Képernyőkép a törlési riasztás nézet, ahol eltávolíthatja a személyes adatok][Image4]
 
-## <a name="billing-alerts-for-enterprise-agreement-ea-customers"></a>A nagyvállalati szerződés (EA) ügyfelek számlázási riasztások
-EA előfizetések nem támogatja ezt a szolgáltatást, ehelyett EA igényelhető a riasztások alapján a beléptetési minden részleg számára úgy, hogy a kvóták kiadásokat. Lásd: [részleg költségeik kvóták](https://ea.azure.com/helpdocs/departmentSpendingQuotas) a kezdéshez EA portálon.
+## <a name="billing-alerts-for-enterprise-agreement-ea-customers"></a>Számlázási értesítések az ügyfelek a nagyvállalati szerződés (EA)
+EA-előfizetések nem támogatja ezt a szolgáltatást, ehelyett nagyvállalati szerződéssel rendelkező ügyfelek is értesítéseket kaphat az egyes részlegek egy Enrollment kvóták kiadások beállításával. Lásd: [részleg költségkeret-beállítási kvóták](https://ea.azure.com/helpdocs/departmentSpendingQuotas) az első lépések az EA-portálon.
 
-## <a name="learn-more-about-azure-cost-management"></a>További információ az Azure költség kezeléséről
-- Becsült költségeit használatával a [árképzési Számológép](https://azure.microsoft.com/pricing/calculator/), [összköltsége tulajdonjoga Számológép](https://aka.ms/azure-tco-calculator), és egy szolgáltatás hozzáadásakor.
-- [Tekintse át a használati és költségek az Azure portálon rendszeresen](billing-getting-started.md#costs).
-- Kapcsolja be a [Azure Advisor költség javaslatok](../advisor/advisor-cost-recommendations.md).
+## <a name="learn-more-about-azure-cost-management"></a>További információ az Azure cost managementbe
+- Becsült költségek használatával a [díjkalkulátor](https://azure.microsoft.com/pricing/calculator/), [összköltsége tulajdonjog Számológép](https://aka.ms/azure-tco-calculator), és a egy szolgáltatás hozzáadásakor.
+- [Tekintse át a használat és költségek az Azure Portalon rendszeresen](billing-getting-started.md#costs).
+- Kapcsolja be a [az Azure Advisor ajánlásait költség](../advisor/advisor-cost-recommendations.md).
 
-További tudnivalókért lásd: [Azure költség felügyeleti útmutató](billing-getting-started.md).
+További tudnivalókért lásd: [Azure cost management útmutatást](billing-getting-started.md).
 
 [Image1]: ./media/azure-billing-set-up-alerts/billingalert1.png 
 [Image2]: ./media/azure-billing-set-up-alerts/billingalert2.png

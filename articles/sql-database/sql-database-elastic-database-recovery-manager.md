@@ -1,6 +1,6 @@
 ---
-title: Helyreállítás-kezelő használatával shard térkép problémák elhárításának |} Microsoft Docs
-description: A RecoveryManager osztály használatával shard maps kapcsolatos problémák megoldásához
+title: Helyreállítás-kezelő segítségével szilánkleképezési problémák javítása |} A Microsoft Docs
+description: A RecoveryManager osztály használatával kapcsolatos problémák megoldásához a szegmenstérképet
 services: sql-database
 manager: craigg
 author: stevestein
@@ -9,41 +9,41 @@ ms.custom: scale out apps
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 6257edbb567be3ebb3151724e7e50ca81905ad40
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 3aeee7cd4c588460a16b93237b08f13d8422a72a
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34646235"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44721302"
 ---
 # <a name="using-the-recoverymanager-class-to-fix-shard-map-problems"></a>Horizontális skálázási térképek javítása a RecoveryManager osztállyal
-A [RecoveryManager](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.aspx) osztály teszi lehetővé az ADO.Net alkalmazások felismerését és javítsa ki a globális shard térkép (GSM) és a helyi shard térkép (LSM) szilánkos adatbázis környezetben közötti inkonzisztenciákat. 
+A [RecoveryManager](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.aspx) osztály teszi lehetővé az ADO.Net-alkalmazások könnyen észlelheti és javíthatja a a globális szegmenstérkép (GSM) és a egy szilánkokra osztott adatbázis-környezetet a helyi szegmenstérkép (LSM) közötti inkonzisztenciákat. 
 
-A globális szolgáltatásfigyelő szolgáltatás és a LSM nyomon követheti az egyes adatbázisok szilánkos környezetben leképezése. Alkalmanként szünet a globális szolgáltatásfigyelő szolgáltatás és a LSM között történik. Ebben az esetben használja a RecoveryManager osztály észlelésére, és javítsa ki a szünet.
+A GSM és LSM nyomon követheti a leképezést a horizontálisan skálázott környezetben az egyes adatbázisok. Alkalmanként szünet következik be, a GSM és a LSM között. Ebben az esetben a RecoveryManager osztály használatával észleli és megjavítja a szünet.
 
-A RecoveryManager osztály része a [Elastic Database ügyféloldali kódtárának](sql-database-elastic-database-client-library.md). 
+A RecoveryManager osztály része a [Elastic Database-ügyfélkódtár](sql-database-elastic-database-client-library.md). 
 
-![A shard térkép][1]
+![Horizontális skálázási térképet][1]
 
-Kifejezés-definíciók, lásd: [rugalmas adatbázis eszközök szószedet](sql-database-elastic-scale-glossary.md). Tudni, hogyan a **ShardMapManager** szolgál a szilánkos megoldás adatok kezelésére, olvassa el [Shard térkép felügyeleti](sql-database-elastic-scale-shard-map-management.md).
+Kifejezés-definíciókat, lásd: [rugalmas adatbáziseszközökkel](sql-database-elastic-scale-glossary.md). Tudni, hogyan a **ShardMapManager** szolgál a horizontálisan skálázott megoldások adatok kezelésére, olvassa el [Szilánkleképezés-kezelés](sql-database-elastic-scale-shard-map-management.md).
 
 ## <a name="why-use-the-recovery-manager"></a>Miért érdemes használni a helyreállítás-kezelő?
-Horizontálisan skálázott adatbázis környezetben nincs adatbázisonként egy bérlői, és számos más adatbázis kiszolgálónként. Lehetnek is kiszolgálók számát a környezetben. Minden egyes adatbázis hozzá van rendelve a shard térkép hívások irányíthassa megfelelő kiszolgálót és adatbázist. Adatbázisok a következők szerint követi nyomon a rendszer egy **horizontális kulcs**, és minden shard hozzá van rendelve egy **értékek tartományán**. "D" az ügyfélnevek a horizontális kulcs képviselhet például, "F" Minden szilánkok (más néven adatbázisok) és a leképezés tartományok leképezése tartalmazza a **globális shard térkép (GSM)**. Az egyes adatbázisok is található a szilánkcímtárban szerint tartományok térképét tartalmazza a **helyi shard térkép (LSM)**. Amikor egy alkalmazás egy shard csatlakozik, a hozzárendelés gyorsítótárazza, és az alkalmazás a gyors beolvasásához. A LSM gyorsítótárazott adatok ellenőrzésére szolgál. 
+Szilánkokra osztott adatbázis környezetben nincs adatbázisonkénti egyetlen bérlőt, és számos adatbázis kiszolgálónként. Emellett lehetnek kiszolgálók számát a környezetben. Minden adatbázis le van képezve a horizontális skálázási térképet, így hívásai átirányíthatók a megfelelő kiszolgálóhoz és adatbázishoz. Adatbázisok nyomon követi a következők szerint egy **horizontális skálázási kulcs**, és minden egyes szegmens hozzá van rendelve egy **értékek tartományán**. Például olyan szegmenskulcsot tüntetheti ügyfél nevét a "D", "F" Található minden szegmensre (más néven adatbázisok) és a hozzárendelés tartományok leképezése a **globális szegmenstérkép (GSM)**. Minden adatbázis is tartalmaz a tartományokat, a szegmens, amely az úgynevezett által tartalmazott térképet a **helyi szegmenstérkép (LSM)**. Amikor egy alkalmazás szegmensek csatlakozik, a hozzárendelés gyorsítótárazza gyors lekérésére az alkalmazással. A LSM gyorsítótárazott adatok ellenőrzésére szolgál. 
 
-A globális szolgáltatásfigyelő szolgáltatás és a LSM válhat nincs szinkronban a következők lehetnek az okai:
+A GSM és LSM válhat nincs szinkronban a következő okok miatt:
 
-1. A shard, amelynek tartomány feltételezhető, hogy már nem használja, vagy átnevezésének a shard törlését. Egy shard törlése eredményezi egy **árván maradt a szilánkok leképezése**. Hasonlóképpen a átnevezett adatbázis egy árva szilánkok leképezése okozhat. Attól függően, hogy a módosítás célját a shard esetleg el kell távolítani, vagy frissíteni kell a shard helyét. A törölt adatbázisok helyreállításához, lásd: [törölt adatbázis visszaállítása](sql-database-recovery-using-backups.md).
-2. A földrajzi-feladatátadási esemény következik be. A folytatáshoz egy kell frissíteni, a kiszolgáló nevét, és a shard térkép Manager az alkalmazás nevét, és frissítse a shard térképen az összes szilánkok szilánkok leképezése részleteit. Földrajzi-feladatátvétel esetén az ilyen helyreállítási logika belül a feladatátvételi munkafolyamat érdemes automatizálni. Helyreállítási műveletek automatizálása lehetővé teszi, hogy a frictionless kezelhetőségi adatbázisok földrajzi engedélyezve van, és ezzel elkerülheti a manuális emberi műveletek. Adatbázis helyreállítása, ha egy adatközpont-meghibásodás után beállításokkal kapcsolatos további tudnivalókért lásd: [az üzletmenet folytonossága](sql-database-business-continuity.md) és [vész-helyreállítási](sql-database-disaster-recovery.md).
-3. A szilánkok vagy a ShardMapManager adatbázis egy korábbi pont az időpontra állítottak vissza. Időpontra történő visszaállítás biztonsági mentések használatával kapcsolatos további tudnivalókért lásd: [biztonsági másolatokból helyreállítási](sql-database-recovery-using-backups.md).
+1. Egy szegmens, amely a címtartomány feltételezhető, hogy már nem használja, vagy a szegmensek átnevezése törlését. Szegmensek törlése eredményezi egy **szegmens leképezés árva**. Ehhez hasonlóan átnevezve adatbázis okozhat egy árva szilánkleképezés-hozzárendelést. Függően a módosítást előfordulhat, hogy a szegmenshez kell őket távolítani, vagy frissíteni kell helyét a szegmensek közt. Tekintse meg a törölt adatbázis helyreállítása [törölt adatbázis visszaállítása](sql-database-recovery-using-backups.md).
+2. A földrajzi feladatátvételt esemény következik be. A folytatáshoz egy kell frissíteni, a kiszolgáló nevét, és a szilánkleképezés-kezelővel, az alkalmazás nevét, és frissítse minden szegmensre horizontálispartíció-térkép a szegmens hozzárendelés részletei. Ha földrajzi feladatátvételt, az ilyen helyreállítási logikai kell automatikus a feladatátvétel munkafolyamaton belül. A helyreállítási műveletek automatizálása lehetővé teszi a zökkenőmentes kezelhetőségét geo-kompatibilis adatbázisokat, és elkerülhető az emberi manuális műveleteket. Adatbázis helyreállítása, ha a tartós adatközponti üzemkimaradások lehetőségekkel kapcsolatos tudnivalókért lásd: [üzletmenet-folytonossági](sql-database-business-continuity.md) és [vész-helyreállítási](sql-database-disaster-recovery.md).
+3. Szegmensek vagy a ShardMapManager adatbázis egy korábbi pont – az adott visszaállítja. Pont az idő helyreállítás biztonsági másolatokkal kapcsolatos további információkért lásd: [helyreállítás biztonsági másolatokkal](sql-database-recovery-using-backups.md).
 
-Azure SQL Database rugalmas adatbáziseszközöket, georeplikáció és visszaállításával kapcsolatban további információkért tekintse meg a következőket: 
+Az Azure SQL Database Elastic Database-eszközök, a georeplikáció és a visszaállítási kapcsolatos további információkért tekintse meg a következőket: 
 
-* [Áttekintése: A felhő üzleti folytonossági és az adatbázis katasztrófa utáni helyreállítás az SQL Database](sql-database-business-continuity.md) 
-* [Ismerkedés a rugalmas adatbázis-eszközök](sql-database-elastic-scale-get-started.md)  
+* [Áttekintés: A felhő üzleti folytonossági és az adatbázis vész-helyreállítási az SQL Database szolgáltatással](sql-database-business-continuity.md) 
+* [Ismerkedés az elastic database-eszközökkel](sql-database-elastic-scale-get-started.md)  
 * [ShardMap kezelése](sql-database-elastic-scale-shard-map-management.md)
 
 ## <a name="retrieving-recoverymanager-from-a-shardmapmanager"></a>Egy ShardMapManager RecoveryManager lekérése
-Az első lépés, ha a RecoveryManager példánya. A [GetRecoveryManager metódus](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.getrecoverymanager.aspx) adja vissza az aktuális helyreállítás-kezelő [ShardMapManager](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.aspx) példány. Kezelje a shard térkép inkonzisztenciákat, az adott shard térkép RecoveryManager először be kell olvasni. 
+Az első lépéseként RecoveryManager példányt hoz létre. A [GetRecoveryManager metódus](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.getrecoverymanager.aspx) adja vissza a helyreállítás-kezelő a jelenlegi [ShardMapManager](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.aspx) példány. Oldja meg a szegmenstérkép mindennemű inkonzisztenciáját, először le kell kérnie a RecoveryManager az adott horizontális skálázási térképet. 
 
    ```
     ShardMapManager smm = ShardMapManagerFactory.GetSqlShardMapManager(smmConnnectionString,  
@@ -51,63 +51,63 @@ Az első lépés, ha a RecoveryManager példánya. A [GetRecoveryManager metódu
              RecoveryManager rm = smm.GetRecoveryManager(); 
    ```
 
-Az ebben a példában a RecoveryManager a ShardMapManager az inicializálása. Egy ShardMap tartalmazó ShardMapManager is már inicializálva van. 
+Ebben a példában a RecoveryManager a ShardMapManager van inicializálva. Az egy ShardMap tartalmazó ShardMapManager is már inicializálva van. 
 
-Az alkalmazás kódjában a shard térkép maga kezeli, mivel a gyári metódusban (a fenti példában smmConnectionString) használt hitelesítő adatok olvasási és írási jogosultságokkal rendelkezik a kapcsolati karakterlánc által hivatkozott GSM adatbázishoz megadott hitelesítő adatokat kell lennie. Ezek a hitelesítő adatok általában eltérnek a nyitott kapcsolatot az adatok függő továbbításához használt hitelesítő adatokat. További információkért lásd: [hitelesítő adatokkal a rugalmas adatbázis-ügyfélben](sql-database-elastic-scale-manage-credentials.md).
+Az alkalmazás kódjában a szegmenstérkép maga kezeli, mivel a gyári metódus (az előző példában smmConnectionString) használt hitelesítő adatokat kell lennie a GSM-adatbázis, a kapcsolat által hivatkozott olvasási és írási engedéllyel rendelkező hitelesítő adatokat karakterlánc. Ezeket a hitelesítő adatokat általában eltérnek a Adatfüggő útválasztás kapcsolat megnyitásához használt hitelesítő adatokat. További információkért lásd: [a rugalmas adatbázis-ügyfél hitelesítő adatok használatával](sql-database-elastic-scale-manage-credentials.md).
 
-## <a name="removing-a-shard-from-the-shardmap-after-a-shard-is-deleted"></a>A szilánkok eltávolítása a ShardMap egy shard törlése után
-A [DetachShard metódus](https://msdn.microsoft.com/library/azure/dn842083.aspx) szervezőről a megadott shard shard leképezés, és törli a shard társított leképezéseket.  
+## <a name="removing-a-shard-from-the-shardmap-after-a-shard-is-deleted"></a>A szegmensek eltávolítása a ShardMap szegmensek törlése után
+A [DetachShard metódus](https://msdn.microsoft.com/library/azure/dn842083.aspx) leválasztja az adott szegmens a horizontális skálázási térképet, és törli a szegmenshez tartozó leképezések.  
 
-* A hely paraméter shard helyét, kifejezetten a kiszolgálónév és a adatbázis nevét, a shard leválasztás alatt áll. 
-* A shardMapName paraméter a shard leképezés neve. Ez csak akkor kötelező, ha több shard maps a ugyanazt a shard térkép manager kezeli. Választható. 
+* A hely paraméter helyét a szegmensek közt, kifejezetten a kiszolgáló nevét és az adatbázis nevét, a szegmensek leválasztása folyamatban. 
+* ShardMapName paraméter a szilánkleképezés-leképezés neve. Ez a tulajdonság csak akkor szükséges, ha több szegmenstérképet az azonos szilánkleképezés-kezelő kezel. Választható. 
 
 
 > [!IMPORTANT]
-> Ez a módszer akkor használja, csak ha biztos abban, hogy a frissített leképezése tartománya üres. A fenti módszerek nem ellenőrzi adatokat át, a tartományhoz, így legjobb ellenőrzések szerepeljenek a kódot.
+> Ezt a módszert használja, csak ha biztos abban, hogy a frissített leképezése tartománya üres. A fenti módszerek nem ellenőrzi a tartomány áthelyezése esetén az adatok, így érdemes ellenőrzéseket tartalmazzák a kódban.
 >
 
-Ebben a példában a shard térkép szilánkok eltávolítja. 
+Ebben a példában a szegmenstérkép szegmensek távolít el. 
 
    ```
    rm.DetachShard(s.Location, customerMap);
    ``` 
 
-A szilánkok térkép tükrözi a shard törlése előtt GSM shard helyét. A szilánkok törölve lett, mert van feltételezi, hogy ez szándékos volt, és a horizontális kulcs tartomány már nem használja. Ha nem, a visszaállítás egy korábbi időpontra pont a hajthat végre. a szilánkok helyreállítása egy korábbi-időpontban. (Ebben az esetben ellenőrizze az alábbi szakaszt észleléséhez shard inkonzisztenciákat.) Kíván helyreállítani, lásd: [időpontra történő visszaállítás](sql-database-recovery-using-backups.md).
+A horizontális skálázási térképet tükrözi a a GSM-ben a szegmensek a törlés előtt helyét a szegmensek közt. A szegmens törölve lett, mert feltételezzük ez szándékos volt, és a horizontális skálázási kulcs tartomány már használatban van. Ha nem, a helyreállítási pont az adott hajthat végre. a szegmens helyreállítása egy korábbi-időponthoz. (Ebben az esetben ellenőrizze az alábbi szakaszt szegmens inkonzisztenciát észleléséhez.) Szeretné használni, lásd: [az idő a helyreállítási pont](sql-database-recovery-using-backups.md).
 
-Feltételezzük, hogy az adatbázisok törlése szándékos volt, mert a végső felügyeleti törlési művelete a shard térkép kezelő shard a bejegyzést törölni. Ez megakadályozza, hogy az alkalmazás véletlenül olyan tartománnyal, amely nem várt adatok írásakor.
+Feltételezzük, hogy az adatbázis-törlési szándékos volt, mert az utolsó felügyeleti karbantartási művelet törli a bejegyzést a szegmenshez a szilánkleképezés-kezelővel a. Ez megakadályozza, hogy az alkalmazás olyan tartományt, amely nem várt adatok véletlenül írásakor.
 
-## <a name="to-detect-mapping-differences"></a>Leképezési különbségek észlelése
-A [DetectMappingDifferences metódus](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.detectmappingdifferences.aspx) kiválasztása és igazság forrásaként a shard maps (helyi vagy globális) egyikét adja vissza, és mindkét shard maps (GSM és LSM) leképezése rendezheti.
+## <a name="to-detect-mapping-differences"></a>Leképezés eltérések észlelését
+A [DetectMappingDifferences metódus](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.detectmappingdifferences.aspx) kiválasztása és hiteles forrásaként a szegmenstérképet (helyi vagy globális) egyikét adja vissza, és összehangolja ezzel leképezése mindkét szegmenstérképet (GSM és LSM).
 
    ```
    rm.DetectMappingDifferences(location, shardMapName);
    ```
 
-* A *hely* határozza meg a kiszolgáló és adatbázis nevét. 
-* A *shardMapName* paramétere a shard leképezés neve. Erre csak akkor van szükség, ha több shard maps a ugyanazt a shard térkép manager kezeli. Választható. 
+* A *hely* adja meg a kiszolgáló nevét és az adatbázis nevét. 
+* A *shardMapName* paraméter értéke a szilánkleképezés-leképezés neve. Ez csak akkor szükséges, ha több szegmenstérképet az azonos szilánkleképezés-kezelő kezel. Választható. 
 
-## <a name="to-resolve-mapping-differences"></a>Leképezési különbségek megoldásához
-A [ResolveMappingDifferences metódus](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.resolvemappingdifferences.aspx) igazság forrásaként kiválaszt egy a shard maps (helyi vagy globális), és mindkét shard maps (GSM és LSM) leképezése összehangolja.
+## <a name="to-resolve-mapping-differences"></a>A leképezés különbségek feloldása
+A [ResolveMappingDifferences metódus](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.resolvemappingdifferences.aspx) kiválaszt közülük egyet a szegmenstérképet (helyi vagy globális) hiteles forrásaként, és összehangolja leképezése mindkét szegmenstérképet (GSM és LSM).
 
    ```
    ResolveMappingDifferences (RecoveryToken, MappingDifferenceResolution.KeepShardMapping);
    ```
 
-* A *RecoveryToken* paraméter enumerálása a leképezéseket a globális szolgáltatásfigyelő szolgáltatás és az adott shard LSM közötti különbségeket. 
-* A [MappingDifferenceResolution számbavételi](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.mappingdifferenceresolution.aspx) jelzi az a különbség a shard leképezések megoldásának módszere. 
-* **MappingDifferenceResolution.KeepShardMapping** ajánlott, ha a LSM tartalmazza a pontos, ezért a a szilánkok leképezése használható. Ez általában az az eset, feladatátvétel esetén: a shard mostantól egy új kiszolgálón található. A szilánkok először el kell távolítani a GSM (a RecoveryManager.DetachShard módszer alkalmazásával), mert a leképezés már nem létezik, a GSM a. Ezért a LSM hozhatók létre újra a szilánkok leképezése.
+* A *RecoveryToken* paraméter enumerálása a leképezéseket a GSM és a LSM számára az adott szegmens közötti különbségeket. 
+* A [MappingDifferenceResolution enumerálás](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.mappingdifferenceresolution.aspx) jelzi az a különbség a szilánkleképezés-leképezések megoldásának módszere. 
+* **MappingDifferenceResolution.KeepShardMapping** ajánlott, ha a LSM tartalmaz a pontos leképezést, és ezért a szegmensben leképezést kell használni. Ez általában az az eset, ha feladatátvitel történik: a szegmens már található egy új kiszolgálón. A szegmens először el kell távolítani a GSM (RecoveryManager.DetachShard mód használatával), mert a leképezés már nem létezik, a GSM a. Ezért a LSM ismételt létrehozása a szilánkleképezés-leképezést kell használható.
 
-## <a name="attach-a-shard-to-the-shardmap-after-a-shard-is-restored"></a>A szilánkok csatolása a ShardMap egy shard történt visszaállítása után
-A [AttachShard metódus](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.attachshard.aspx) az adott shard csatolja a shard leképezés. Ezután shard térkép inkonzisztenciákat észlelt, és frissíti a shard visszaállítását helyén shard kereséséhez. Feltételezzük, hogy az adatbázis is átnevezi az eredeti adatbázis név (előtt a shard vissza lett állítva), mivel az a pont a idő visszaállítás az alapértelmezett hozzáfűzi a Timestamp értékkel rendelkező új adatbázist. 
+## <a name="attach-a-shard-to-the-shardmap-after-a-shard-is-restored"></a>Szilánk csatolása a ShardMap szegmensek visszaállítását követően
+A [AttachShard metódus](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.attachshard.aspx) csatolja az adott szegmens horizontális skálázási térképet. Ezután minden szegmensben térkép észlel, és frissíti az f:\ megfelelően a szegmens a szilánkleképezés-visszaállítás ponton kell megadni. Azt feltételezzük, hogy az adatbázis is átnevezve, hogy az eredeti adatbázis nevét (mielőtt a szegmens vissza lett állítva), mivel az a pont – az adott visszaállítás az alapértelmezett hozzáfűzi az időbélyeg az új adatbázist. 
 
    ```
    rm.AttachShard(location, shardMapName)
    ``` 
 
-* A *hely* paraméter a kiszolgáló nevét és adatbázis nevét, az éppen csatolt szilánkcímtárban. 
-* A *shardMapName* paramétere a shard leképezés neve. Ez csak akkor kötelező, ha több shard maps a ugyanazt a shard térkép manager kezeli. Választható. 
+* A *hely* paraméter a kiszolgáló nevét és az adatbázis neve, a szegmensek csatolni. 
+* A *shardMapName* paraméter értéke a szilánkleképezés-leképezés neve. Ez a tulajdonság csak akkor szükséges, ha több szegmenstérképet az azonos szilánkleképezés-kezelő kezel. Választható. 
 
-Ebben a példában a shard hozzáadja a shard leképezés, amely egy korábbi pont óta nemrég helyreállt. A szilánkok (azaz a leképezést a LSM a szilánkok) vissza lett állítva, mert nem a shard bejegyzése a GSM potenciálisan következetes. A példakódot kívül a shard visszaállítani, és az eredeti nevére, az adatbázis neve. Vissza lett állítva, mivel feltételezzük leképezése a LSM a nem megbízható leképezése. 
+Ebben a példában egy szegmens hozzáadása a szegmenstérképet, amely mostanában helyreállt a pont a korábbi időpontra. A szegmens (azaz a leképezés a szegmens a LSM a) vissza lett állítva, mert ez nem a szilánkleképezés-bejegyzést a GSM potenciálisan konzisztens. Ebben a példában a kódban kívül a szegmens lett visszaállítva, és az eredeti nevére, az adatbázis neve. Vissza lett állítva, mivel feltételezzük a leképezést a LSM a rendszer a megbízható leképezés. 
 
    ```
    rm.AttachShard(s.Location, customerMap); 
@@ -118,24 +118,24 @@ Ebben a példában a shard hozzáadja a shard leképezés, amely egy korábbi po
        } 
    ```
 
-## <a name="updating-shard-locations-after-a-geo-failover-restore-of-the-shards"></a>Egy földrajzi-feladatátvételt követően (visszaállítás) a a szilánkok shard helyek frissítése
-A földrajzi feladatátvétel esetén a másodlagos adatbázis írási elérhető lesz, és válik az új elsődleges adatbázis. Lehet, hogy a kiszolgáló, és potenciálisan (konfigurációtól függően), az adatbázis neve eltér az eredeti elsődleges. Ezért a leképezési bejegyzéseket a GSM és LSM shard javítani kell. Hasonló módon ha az adatbázis helyreállítása egy másik nevet vagy helyet, vagy egy korábbi időpontbeli időben Ez okozhatja inkonzisztenciát a shard leképezésekben. A szilánkok térkép Manager nyitott kapcsolatot annak a megfelelő adatbázis terjesztési kezeli. Terjesztési a shard és az alkalmazások kérelem céljaként a horizontális kulcsnak az értéke az adatokon alapul. Egy földrajzi-feladatátvétel után ezek az információk frissíteni kell a pontos kiszolgáló neve, az adatbázisnév és a helyreállított adatbázis szilánkok leképezése. 
+## <a name="updating-shard-locations-after-a-geo-failover-restore-of-the-shards"></a>Szilánkleképezés-helyek frissítése után földrajzi feladatátvételt (helyreállíthatja) a szegmens
+Ha földrajzi feladatátvételt, a másodlagos adatbázis írási elérhető lesz, és válik az új elsődleges adatbázis. Lehet, hogy a kiszolgáló és potenciálisan (a konfigurációtól függően) az adatbázis neve eltér az eredeti elsődleges. Ezért a leképezés bejegyzéseket a GSM és LSM a szegmenshez kell rögzíteni. Hasonlóképpen ha az adatbázis helyreállítása egy másik nevet vagy helyet, vagy egy korábbi időpontra az idő a szegmenstérképet Emiatt előfordulhat, hogy inkonzisztenciát. A Szilánkleképezés-kezelővel nyissa meg a megfelelő adatbázishoz való csatlakozás eloszlása kezeli. Terjesztési a szegmenstérkép és a horizontális skálázási kulcs, amelyek célja az alkalmazások kérés értékét az adatok alapján. Egy földrajzi feladatátvétel után ezek az információk frissíteni kell a pontos kiszolgáló neve, az adatbázis neve és a szegmens leképezés a helyreállított adatbázis. 
 
 ## <a name="best-practices"></a>Ajánlott eljárások
-Földrajzi-feladatátvételi és helyreállítási műveletek általában kezeli a felhő rendszergazdájának az alkalmazás szándékosan okhoz egy Azure SQL-adatbázisok üzleti folytonosságot biztosító szolgáltatásokat, amelyek. Üzleti folytonossági tervezési folyamatok, eljárások és intézkedéseket, győződjön meg arról, hogy üzleti műveletek megszakítás nélkül továbbra is igényel. A módszer áll rendelkezésre, része a RecoveryManager osztálynak kell használni a munkafolyamat győződjön meg arról, a GSM és LSM mindig naprakészek alapján a helyreállítási műveletről. Nincsenek megfelelően biztosítva a GSM és LSM tükrözik a pontos információk lekérdezésének a feladatátadási esemény után öt alapvető lépéseit. Az alkalmazás kódjának a lépések végrehajtása integrálható a meglévő eszközöket és a munkafolyamat. 
+Földrajzi feladatátvételt és helyreállítási műveletek általában kezeli a felhő rendszergazdájának az alkalmazás szándékosan használatával egy Azure SQL adatbázisok üzletmenet-folytonossági funkciókat, amelyek. Üzleti folytonosság tervezés szükséges folyamatok, eljárásokra és intézkedéseket annak biztosítása érdekében, hogy a üzleti műveletek továbbra is megszakítás nélkül. A következő módszerek, a RecoveryManager osztály része annak biztosítása érdekében a GSM és LSM mindig naprakészek, mert a munkahelyi flow-ban használandó alapján végrehajtott helyreállítási műveletet. Nincsenek megfelelően biztosítva a GSM és LSM tükrözik a feladatátadási esemény után a pontos információkat öt alapvető lépéseket. Hajtsa végre ezeket a lépéseket, az alkalmazás kódja integrálhatók meglévő eszközökkel és a munkafolyamat. 
 
-1. A RecoveryManager lekérése a ShardMapManager. 
-2. Válassza le a régi shard shard leképezés.
-3. Az új shard csatolása a shard térkép, beleértve az új shard helyre.
-4. A globális szolgáltatásfigyelő szolgáltatás és a LSM közötti leképezést inkonzisztenciát észlelését. 
-5. Szüntesse meg a globális szolgáltatásfigyelő szolgáltatás és a LSM, megbízva abban a LSM közötti különbséget. 
+1. A RecoveryManager lekérni a ShardMapManager. 
+2. Válassza le a régi szegmens a horizontális skálázási térképet.
+3. Az új szegmensen csatolása a szegmenstérkép, beleértve a szegmensek új helyét.
+4. Képes észlelni a GSM és LSM közötti inkonzisztenciákat. 
+5. Oldja meg a GSM és a LSM a LSM megbízó közötti különbségeket. 
 
-Ebben a példában a következő lépéseket végzi el:
+Ebben a példában a következő lépéseket hajtja végre:
 
-1. A szilánkok térkép, hogy tükrözze a feladatátvétel megtörténte előtt shard helyek szilánkok eltávolítja.
-2. A szilánkok térkép az új shard helyek (a "Configuration.SecondaryServer" paramétere az új kiszolgáló nevét, de azonos adatbázisnévvel) tükröző szilánkok csatlakozik.
-3. A helyreállítási jogkivonatok lekéri a globális szolgáltatásfigyelő szolgáltatás és az egyes shard LSM leképezési különbségei észlelésével. 
-4. Oldja fel az inkonzisztenciák által az egyes shard LSM a leképezés a megbízó. 
+1. A szegmensek eltávolítása a Szegmenstérkép, amely a feladatátvétel megtörténte előtt szegmens helyek.
+2. A szegmensek csatolja a Szegmenstérkép-hoz továbbítható az új szegmensek helyek (a "Configuration.SecondaryServer" paraméter az új kiszolgáló nevét, de az azonos adatbázis neve).
+3. A GSM és a LSM mindegyik szegmenshez leképezés különbségeit észlelésével kérdezi le a helyreállítási jogkivonatokat. 
+4. Az inkonzisztenciák feloldása által az egyes szegmensek LSM leképezése megbízó. 
    
    ```
    var shards = smm.GetShards(); 

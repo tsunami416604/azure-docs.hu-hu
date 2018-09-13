@@ -1,5 +1,5 @@
 ---
-title: Eszköz információk metaadatait a távoli felügyeleti megoldás |} Microsoft Docs
+title: Eszköz információk metaadatait a távoli figyelési megoldásban |} A Microsoft Docs
 description: Az Azure IoT távoli figyelési előre konfigurált megoldás és architektúrájának leírása.
 services: ''
 suite: iot-suite
@@ -15,51 +15,51 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2017
 ms.author: dobett
-ms.openlocfilehash: 80f03a4cef1d79e819c59ca68a786776a5c4edb7
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 4efea316c05f566add3e175bc5bb18842225ede3
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34636096"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35758161"
 ---
-# <a name="device-information-metadata-in-the-remote-monitoring-preconfigured-solution"></a>Eszköz információk metaadatait a távoli felügyeleti előkonfigurált megoldás
+# <a name="device-information-metadata-in-the-remote-monitoring-preconfigured-solution"></a>A távoli figyelési előre konfigurált megoldásban az eszköz információk metaadatait
 
-A távoli felügyeleti előkonfigurált megoldás Azure IoT Suite egy eszköz metaadatait kezelésére szolgáló módszert mutatja be. Ez a cikk ismerteti az ehhez a megoldáshoz szükséges ahhoz, hogy tisztában módszerrel:
+Az Azure IoT Suite távoli figyelési előre konfigurált megoldás azt mutatja be egy olyan megközelítés eszköz metaadatainak kezelése. Ez a cikk ismerteti az ebben a megoldásban vesz igénybe, hogy jobban megismerhesse módszer:
 
-* Milyen eszköz metaadatait tárolja, a megoldás.
+* Milyen eszköz metaadatait a megoldás tárolja.
 * A megoldás hogyan kezeli a az eszköz metaadatait.
 
 ## <a name="context"></a>Környezet
 
-A távoli megfigyelési előre konfigurált megoldás által használt [Azure IoT Hub] [ lnk-iot-hub] ahhoz, hogy az eszközök szeretnék adatokat küldeni a felhőben. A megoldás három különböző helyeken eszközökkel kapcsolatos információkat tárolja:
+A távoli figyelési előre konfigurált megoldás [Azure IoT Hub] [ lnk-iot-hub] adatokat küldeni a felhőbe az eszközök engedélyezéséhez. A megoldás három különböző helyeken tárolja az eszközökkel kapcsolatos információk:
 
-| Hely | Tárolt információ | Megvalósítás |
+| Hely | Tárolt adatok | Megvalósítás |
 | -------- | ------------------ | -------------- |
-| Identitásjegyzékhez | Eszközazonosító, a hitelesítési kulcsokat, engedélyezett állapota | A beépített IoT-központ |
-| Eszköz twins | Metaadatok: jelentett tulajdonságai, a kívánt tulajdonságokat, a címkék | A beépített IoT-központ |
-| Cosmos DB | A parancs és metódus előzményei | Egyéni megoldás |
+| Eszközidentitás-jegyzék | Eszköz azonosítója, a hitelesítési kulcsokat, engedélyezett állapota | Az IoT hubhoz a beépített |
+| Ikereszközök | Metaadatok: jelentett tulajdonságokat, a kívánt tulajdonságok, a címkék | Az IoT hubhoz a beépített |
+| Cosmos DB | Parancs és mód előzményei | Egyéni megoldás |
 
-Az IoT-központ tartalmazza a [eszközidentitási] [ lnk-identity-registry] az IoT-központ és a hozzáférés kezelésére [eszköz twins] [ lnk-device-twin] kezelése eszköz metaadatait. Is van a távoli felügyeleti megoldás-specifikus *eszközbeállításjegyzékben* , amely tárolja a parancs és metódus előzményeit. A távoli felügyeleti megoldás az olyan [Cosmos DB] [ lnk-docdb] adatbázis parancs és metódus előzményekhez szükséges egyéni tárolót végrehajtásához.
+IoT Hub tartalmaz egy [eszközidentitás-jegyzék] [ lnk-identity-registry] egy IoT hubot, és használja való hozzáférés kezelése [ikereszközök] [ lnk-device-twin] eszköz metaadatainak kezelése. Emellett van egy távoli figyelési megoldás-specifikus *eszközjegyzék* parancs és metódus előzményeinek tárolja. A távoli figyelési megoldás használ egy [Cosmos DB] [ lnk-docdb] adatbázis egy egyéni üzlet parancs és metódus előzményeinek megvalósításához.
 
 > [!NOTE]
-> A távoli felügyeleti előkonfigurált megoldás tartja az eszközidentitási szinkronban vannak az adatokat a Cosmos DB adatbázisban. Mindkettő az ugyanazon eszközazonosítót használja a az IoT hub csatlakoztatott minden eszközhöz egyedi azonosításához.
+> A távoli figyelési előre konfigurált megoldás tartja a Cosmos DB-adatbázis szinkronban tartani az adatokat az eszközidentitás-jegyzékében. Az ugyanazon eszközazonosítót mindkettő használja az IoT hubhoz csatlakoztatott egyes eszközök egyedi azonosításához.
 
 ## <a name="device-metadata"></a>Eszköz metaadatait
 
-Az IoT-központ tart fenn a [eszköz két] [ lnk-device-twin] az egyes szimulált és a fizikai eszközök távoli felügyeleti megoldás csatlakozik. A megoldás eszköz twins eszközök társított metaadatokat kezelésére használ. Egy eszköz iker IoT-központ által kezelt JSON-dokumentum, és a megoldás az IoT Hub API-t használ eszköz twins kommunikál.
+Az IoT Hub fenntart egy [ikereszköz] [ lnk-device-twin] minden szimulált és a fizikai eszköz csatlakozik a távoli figyelési megoldáshoz. A megoldás ikereszközökkel kezelheti az eszközök társított metaadatokat. Az ikereszközök JSON-dokumentumok az IoT Hub által karbantartott, és a megoldás az IoT Hub API az ikereszközök kommunikál.
 
-Egy eszköz iker metaadatok három típusú tárolja:
+Az ikereszközök tárolják a metaadatok három típusa:
 
-- *Tulajdonságok jelentett* az IoT-központ eszköz által küldött. A távoli felügyeleti megoldás, a szimulált eszköz jelentett tulajdonságok küldött, indításkor és a válasz **módosította az eszköz állapotát,** parancsok és módszerek. A jelentésben szereplő tulajdonságok megtekintéséhez a **eszközlista** és **. eszköz részletei** a megoldás portálon. Jelentett tulajdonságok csak olvashatók.
-- *Szükségeskonfiguráció-tulajdonságok* olvassa be az IoT hub-eszközök által. A feladata az eszköz minden szükséges konfigurációs módosítása az eszközön. Az eszközt, hogy a módosítás visszajelzést szeretne az elosztóhoz jelentett tulajdonságként felelőssége egyben. Beállíthatja, hogy a megoldás portálon keresztül kívánt tulajdonság értéke.
-- *Címkék* csak az eszköz iker szerepel, és egy eszköz nem lesznek szinkronizálva. A megoldás portálon beállított előfizetéscímkék értékeit, és az eszközök listájának szűrésekor használja őket. A megoldás is használ egy címkét egy eszköz számára a megoldás portálon megjelenő ikon azonosításához.
+- *Jelentett tulajdonságokként* egy IoT hubra egy eszköz által küldött. A távoli figyelési megoldásban a szimulált eszközök jelentett tulajdonságokkal küld, indításkor és a **Eszközállapot módosítása** parancsok és metódusok. Megtekintheti a jelentett tulajdonságok a **eszközlista** és **eszközadatok** a megoldás portálján. Jelentett tulajdonságokat csak olvashatók.
+- *Kívánt tulajdonságok* lekért IoT hub-eszközök által. A feladata, hogy minden szükséges konfiguráció módosítását az eszköz az eszköz. Feladata is a jelentést a módosítás jelentett tulajdonságként a hub eszközt. Beállíthat egy kívánt tulajdonságot a megoldásportálon keresztül.
+- *A címkék* csak az ikereszközön léteznek, és a egy eszköz nem lesznek szinkronizálva. A megoldásportálon beállított címke értékeket, és használja őket, ha az eszközök listájának szűrése. A megoldás is használ egy címkét egy eszköz a megoldásportálon megjelenő ikon azonosításához.
 
-Példa jelentett, a szimulált eszközök tulajdonságai közé tartozik a gyártó, a modell számának, a szélességi és hosszúsági. Szimulált eszköz támogatott metódusok is jelentett tulajdonságaként adja vissza.
+Példa a jelentett tulajdonságok a szimulált eszközökről olyan gyártó, modellszám, szélesség és hosszúság. A szimulált eszközök a támogatott módszerek listája is jelentett tulajdonságként adja vissza.
 
 > [!NOTE]
-> A szimulált eszközkód csak a **Desired.Config.TemperatureMeanValue** és a **Desired.Config.TelemetryInterval** kívánt tulajdonságot használja az IoT Hubra visszaküldött jelentett tulajdonságok frissítéséhez. Az összes többi kívánt tulajdonság változáskérések figyelmen kívül lesznek hagyva.
+> A szimulált eszközkód csak a **Desired.Config.TemperatureMeanValue** és a **Desired.Config.TelemetryInterval** kívánt tulajdonságot használja az IoT Hubra visszaküldött jelentett tulajdonságok frissítéséhez. Az összes többi kívánt tulajdonságmódosítási kérelmet a rendszer figyelmen kívül hagyja.
 
-Egy eszköz információk metaadatok JSON-dokumentum az eszköz beállításjegyzék Cosmos DB adatbázisban tárolja az alábbi szerkezettel rendelkezik:
+Eszköz információk metaadatok JSON-dokumentumok az eszközök beállításjegyzék Cosmos DB-adatbázisban tárolt struktúrája a következő:
 
 ```json
 {
@@ -81,40 +81,40 @@ Egy eszköz információk metaadatok JSON-dokumentum az eszköz beállításjegy
 ```
 
 > [!NOTE]
-> Eszköz adatai is tartalmazhatnak metaadatokra ahhoz, hogy az eszköz küld az IoT-központ a telemetriai adatok ismertetik. A távoli felügyeleti megoldás a telemetriai adatok metaadatok használja az irányítópult megjelenítésének testreszabása [dinamikus telemetriai][lnk-dynamic-telemetry].
+> Eszköz adatai az eszköz által az IoT hubnak küldött telemetriai adatok leíró metaadatok is tartalmazhatnak. A távoli figyelési megoldás használ a telemetria metaadatok szabhatja testre, hogyan jeleníti meg az irányítópult [dinamikus telemetria][lnk-dynamic-telemetry].
 
 ## <a name="lifecycle"></a>Életciklus
 
-Első létrehozásakor egy eszközt a megoldás portálon, a megoldás a Cosmos DB adatbázisban tárolják a parancs és metódus előzmények létrehoz egy tételt. Ezen a ponton a megoldás is létrehoz az eszköz az eszközidentitási, amely állít elő, a kulcsok az eszköz segítségével hitelesíti az IoT-központ a. Egy eszköz iker is létrehoz.
+Először hozzon létre egy eszközt a megoldás portálján, amikor a megoldás létrehoz egy bejegyzést a Cosmos DB-adatbázis parancs és metódus-előzmények tárolására. Ezen a ponton a megoldás is hoz létre az eszköz egy bejegyzés az eszközidentitás-jegyzék, amely az eszközt az IoT Hub-hitelesítést használ a kulcsokat hoz létre. Az ikereszközök is létrehoz.
 
-Amikor egy eszköz először csatlakozik a megoldás, és küldi el jelentett tulajdonságai egy eszköz tájékoztató üzenetet. A jelentett tulajdonságértékek automatikusan megtörténik az eszköz iker a. A jelentett tulajdonságai közé tartozik az eszköz gyártóját, a modell számának, a sorozatszám és a támogatott módszerek listáját. Az eszköz információs üzenet beleértve bármilyen parancs paraméterei vonatkozó adatokat az eszköz támogatja a parancsok listáját tartalmazza. Ha a megoldás ezt az üzenetet kap, frissíti az eszköz adatait, a Cosmos DB adatbázisban.
+Amikor egy eszköz először csatlakozik a megoldáshoz, elküldi jelentett tulajdonságok és a egy eszközinformációs üzenetet. A jelentett tulajdonságértékeket a rendszer automatikusan menti az ikereszközben. A jelentett tulajdonságok közé tartozik az eszköz gyártója, sorozatszám, és a egy támogatott módszerek listája. Az eszközinformációs üzenetet az eszköz támogatja, beleértve minden parancs paraméterei vonatkozó adatokat a parancsok listáját tartalmazza. Amikor a megoldás ezt az üzenetet kap, frissíti az eszközadatokat a Cosmos DB-adatbázisban.
 
-### <a name="view-and-edit-device-information-in-the-solution-portal"></a>A megoldás portálon eszköz adatainak megtekintése és szerkesztése
+### <a name="view-and-edit-device-information-in-the-solution-portal"></a>A megoldás portálja az eszköz adatainak megtekintése és szerkesztése
 
-Alapértelmezés szerint az eszközök listája a megoldás portál megjeleníti az oszlopok a következő tulajdonságai: **állapot**, **DeviceId**, **gyártó**, **modellszámát**, **sorozatszám**, **belső vezérlőprogram**, **Platform**, **processzor**, és **telepített memória**. Testre szabhatja az oszlopok kattintva **oszlop szerkesztő**. Az eszköz Tulajdonságok **szélesség** és **hosszúság** a helyet, a Bing térképek meghajtó az irányítópulton.
+Alapértelmezés szerint a megoldásportálon az eszközök listája megjeleníti az oszlopként, hogy a következő eszköztulajdonságokat: **állapot**, **DeviceId**, **gyártó**, **modell Szám**, **sorozatszám**, **belső vezérlőprogram**, **Platform**, **processzor**, és  **Telepített RAM**. Az oszlopokat testre szabhatja kattintva **Oszlopszerkesztő**. Az eszköztulajdonságok **szélességi** és **hosszúsági** a hely a Bing térkép a meghajtó az irányítópulton.
 
-![Oszlop-szerkesztőt az eszközök listája][img-device-list]
+![Oszlopszerkesztő az eszközlistában][img-device-list]
 
-Az a **. eszköz részletei** ablaktábla kívánt tulajdonságokkal és címkék szerkesztheti a megoldás portálon (csak olvasható tulajdonságok jelentette).
+Az a **. eszköz részletei** panel a megoldás portálján, szerkesztheti a kívánt tulajdonságok és címkék (amelyek a tulajdonságok írásvédettek).
 
-![Eszköz részletező ablaktábláján][img-device-edit]
+![Eszköz részletei panel][img-device-edit]
 
-A megoldás portál segítségével az eszköz eltávolítása a megoldás. Egy eszköz eltávolításakor a megoldás eltávolítja a identitásjegyzékhez az eszköz bejegyzést, és majd törli az eszköz a két. A megoldás is eltávolítja az eszközt a Cosmos DB adatbázisból kapcsolatos adatokat. Eszköz eltávolítása előtt le kell tiltani.
+A megoldás portálja segítségével az eszköz eltávolítása a megoldás. Egy eszköz eltávolításakor a megoldás a eszközbejegyzés távolít el eszközidentitás-jegyzék, és végül törli az ikereszköz. A megoldás is eltávolítja az eszközt a Cosmos DB-adatbázishoz kapcsolódó adatokat. Eszköz eltávolítása előtt le kell tiltani.
 
 ![Eszköz eltávolítása][img-device-remove]
 
-## <a name="device-information-message-processing"></a>Eszköz információk üzenet feldolgozása
+## <a name="device-information-message-processing"></a>Eszköz információk üzenetfeldolgozás
 
-Eszköz információs üzenetet küldött egy eszköz különbözőek a telemetria-üzeneteket. Eszköz információs üzenetet eszköz válaszolhassanak a parancsokat, és bármely parancselőzmények tartalmazza. Maga az IoT-központ nem ismeri a egy eszköz információs üzenet tárolt metaadatok, és feldolgozza az üzenetet ugyanúgy bármely eszközről a felhőbe üzenetet feldolgozza. A távoli felügyeleti megoldás egy [Azure Stream Analytics] [ lnk-stream-analytics] (ASA) feladat olvassa be az IoT-központ az üzeneteket. A **deviceinfo információja** stream analytics-feladat tartalmazó üzenetek szűrők **"Objektumtípus": "Deviceinfo információja"** , és továbbítja őket a **EventProcessorHost** fut, web feladat, amely. A logikai a **EventProcessorHost** példány található a Cosmos DB rekord az adott eszközt, és frissítse a bejegyzést az Eszközazonosítót használja.
+Egy eszköz által küldött eszközinformációs üzeneteket nem azonos a telemetriai üzeneteket. Eszközinformációs üzeneteket tartalmaznak, az eszköz válaszolhat parancsokat, és bármely eszközparancs-előzmények. Magát az IoT Hub az eszközinformációs üzenetet az tárolt metaadatok nem rendelkezik, és feldolgozza az üzenetet, bármely eszköz – felhő üzeneteket dolgoz megegyező módon. A távoli figyelési megoldásban egy [Azure Stream Analytics] [ lnk-stream-analytics] (ASA) feladat beolvassa az üzeneteket az IoT hubról. A **DeviceInfo** szűrők üzeneteket, amelyek tartalmazzák a stream analytics-feladat **"Objektumtípus": "DeviceInfo"** , és továbbítja őket a **EventProcessorHost** üzemeltető példány futó webjobs-feladat. A logikai a **EventProcessorHost** példányt használ az eszköz azonosítója a Cosmos DB-bejegyzés található az adott eszköz, és frissítse a rekordot.
 
 > [!NOTE]
-> Egy eszköz információs üzenet jelenik meg egy szabványos eszközről a felhőbe üzenet. A megoldás különböztet eszköz információs üzenetet és telemetriai üzenetek ASA lekérdezések használatával.
+> Eszközinformációs üzenetet az egy normál eszközről a felhőbe – az üzenet. A megoldás közötti eszközinformációs üzeneteket és a telemetriai üzeneteket ASA-lekérdezések használatával különbözteti meg.
 
 ## <a name="next-steps"></a>További lépések
 
-Miután befejezte a tanulási, hogyan szabhatja testre az előkonfigurált megoldásokat, ismerje meg egyes egyéb szolgáltatásokat és képességeket az IoT Suite előre konfigurált megoldások:
+Végzett tanulási, hogyan szabhatja testre az előre konfigurált megoldások, most is a egyéb funkcióit és képességeit az IoT Suite előre konfigurált megoldások bemutatása:
 
-* [Előre konfigurált prediktív karbantartási megoldás áttekintése][lnk-predictive-overview]
+* [Prediktív karbantartási előre konfigurált megoldás áttekintése][lnk-predictive-overview]
 * [Gyakran ismételt kérdések az IoT Suite-ról][lnk-faq]
 * [IoT-biztonság létrehozása az alapoktól][lnk-security-groundup]
 
@@ -132,4 +132,4 @@ Miután befejezte a tanulási, hogyan szabhatja testre az előkonfigurált megol
 
 [lnk-predictive-overview]:../iot-accelerators/iot-accelerators-predictive-overview.md
 [lnk-faq]: iot-suite-v1-faq.md
-[lnk-security-groundup]:../iot-accelerators/securing-iot-ground-up.md
+[lnk-security-groundup]:/azure/iot-fundamentals/iot-security-ground-up

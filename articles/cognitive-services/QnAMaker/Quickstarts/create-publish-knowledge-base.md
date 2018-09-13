@@ -2,19 +2,19 @@
 title: 'Rövid útmutató: Létrehozásához egy KB-os – QnA Maker'
 titleSuffix: Azure Cognitive Services
 description: Létrehozhat saját tartalmak, például – gyakori kérdések vagy kézikönyvek QnA Maker Tudásbázis (KB). A QnA Maker KB ebben a példában egy egyszerű – gyakori kérdések weblap kérdésre, a BitLocker-helyreállítás jön létre.
-author: nitinme
+author: diberry
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: article
-ms.date: 05/07/2018
-ms.author: saneppal
-ms.openlocfilehash: 2b8573da6cc87af39a7681fa369940fa7a0b8eb3
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.date: 09/12/2018
+ms.author: diberry
+ms.openlocfilehash: f7af86687a8a61fb7aed028d2868752faaa8045a
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44345233"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44715097"
 ---
 # <a name="create-train-and-publish-your-knowledge-base"></a>Létrehozását, betanítását és közzéteheti a tudásbázist
 

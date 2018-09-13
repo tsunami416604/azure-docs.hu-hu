@@ -1,10 +1,10 @@
 ---
-title: A forgatókönyvnek Azure tartalomkézbesítési optimalizálása
-description: A tartalom az adott forgatókönyveket kézbesítését optimalizálása
+title: Az Azure CDN tartalomkézbesítési típusú optimalizálása
+description: Az Azure CDN tartalomkézbesítési típusú optimalizálása
 services: cdn
 documentationcenter: ''
 author: dksimpson
-manager: ''
+manager: cfowler
 editor: ''
 ms.assetid: ''
 ms.service: cdn
@@ -12,118 +12,120 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2018
-ms.author: rli
-ms.openlocfilehash: de748f7fa33b0250b1572dd5ae55cddf15003a0e
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.date: 06/13/2018
+ms.author: v-deasim
+ms.openlocfilehash: be41678b56fdb57c29d65b6b2a17eccd55e85c74
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35646055"
 ---
-# <a name="optimize-azure-content-delivery-for-your-scenario"></a>A forgatókönyvnek Azure tartalomkézbesítési optimalizálása
+# <a name="optimize-azure-cdn-for-the-type-of-content-delivery"></a>Az Azure CDN tartalomkézbesítési típusú optimalizálása
 
-Amikor tartalmat továbbít hatalmas, globális közönségek számára, fontos annak tartalmaihoz optimalizált kézbesítését érdekében. Az Azure Content Delivery Network (CDN) optimalizálhatja a tartalomtípushoz, hogy a kézbesítési élményt. A tartalom lehet egy webhely, élő adatfolyam, videó, vagy letölthető nagy fájlok. CDN-végpont létrehozása, amikor megadja a esetén a **optimalizálva** lehetőséget. A kiválasztott határozza meg, melyik optimalizálás a tartalmat a CDN-végpont szállított vonatkozik.
+Amikor tartalmat egy nagy globális célközönség számára továbbít, rendkívül fontos a a webtartalmak optimalizált továbbításának biztosítása. [Az Azure Content Delivery Network (CDN)](cdn-overview.md) optimalizálhatja a szállítási élmény rendelkezik a tartalom típusa alapján. A tartalom lehet egy webhely, élő stream, videó vagy egy nagy méretű fájlt töltse le. CDN-végpont létrehozásakor megad egy forgatókönyv a **optimalizált** lehetőséget. A választása határozza meg, melyik optimalizálást alkalmazott a CDN-végpontról kézbesített tartalom.
 
-Optimalizálás választható bevált gyakorlat viselkedések segítségével tartalomkézbesítési teljesítményének javítása és a jobb eredetű-kiszervezés. A forgatókönyvben a választott részleges gyorsítótárazás objektum adattömbösítő és a forrás hiba újrapróbálkozási házirendje konfigurációi módosításával hatása a teljesítményre. 
+Optimalizálási lehetőségek célja, hogy tartalomkézbesítési teljesítmény növelése érdekében ajánlott eljárásokat viselkedések használja, és jobb forrás offload. A forgatókönyv választási lehetőségek részleges gyorsítótárazás objektum darabolás és a sikertelen újrapróbálkozási szabályzat konfigurációi módosításával befolyásolhatja a teljesítményt. 
 
-Ez a cikk áttekintése különböző optimalizálási funkcióját, és ha kell használnia. A szolgáltatások és korlátozások további információkért lásd: a megfelelő cikkek minden egyes optimalizálási típus.
+Ez a cikk áttekinti a különböző optimalizálási funkciók és kell használnia. Funkcióiról és korlátozásairól további információkért tekintse meg a megfelelő cikkek minden egyes optimalizálás típusa.
 
 > [!NOTE]
-> A **optimalizálva** lehetőségek a kiválasztott szolgáltató függően változhat. CDN-szolgáltatók a fejlesztés alkalmazni a helyzettől függően különböző módon. 
+> Amikor létrehoz egy CDN-végpont a **optimalizált** beállítások profil jön létre a végpont típusa alapján változhat. Az Azure CDN-szolgáltató a fejlesztés a forgatókönyvtől függően különböző módon vonatkoznak. 
 
-## <a name="provider-options"></a>Szolgáltatói beállítása
+## <a name="provider-options"></a>Szolgáltatói beállítások
 
-**Az Azure CDN Standard Microsoft** az alábbi optimalizálások támogatja:
+**Az Azure CDN Standard a Microsoft** profilok az alábbi optimalizálások támogatja:
 
-* [Általános webes kézbesítési](#general-web-delivery). Az optimalizálás használják a médiaadatfolyam-továbbítást, és nagy méretű fájlok letöltéséhez.
+* [Általános webes kézbesítés](#general-web-delivery). Az optimalizálás használják a média streamelését, és nagyméretű fájl letöltése.
 
 
-**Az Azure CDN Standard verizon**, és **verizon Azure CDN Premium** az alábbi optimalizálások támogatja:
+**Az Azure CDN Standard verizon** és **verizon Azure CDN Premium** profilok az alábbi optimalizálások támogatják:
 
-* [Általános webes kézbesítési](#general-web-delivery). Az optimalizálás használják a médiaadatfolyam-továbbítást, és nagy méretű fájlok letöltéséhez.
+* [Általános webes kézbesítés](#general-web-delivery). Az optimalizálás használják a média streamelését, és nagyméretű fájl letöltése.
 
 * [Dinamikus helygyorsítás](#dynamic-site-acceleration) 
 
 
-**Az Azure CDN Standard Akamai** az alábbi optimalizálások támogatja:
+**Az Azure CDN Akamai Standard** profilok az alábbi optimalizálások támogatják:
 
 * [Általános webes kézbesítés](#general-web-delivery) 
 
-* [Általános médiaadatfolyam-továbbítást](#general-media-streaming)
+* [Általános médiastreaming](#general-media-streaming)
 
-* [Videotartalom médiaadatfolyam-továbbítást](#video-on-demand-media-streaming)
+* [Igény szerinti videó online médialejátszás](#video-on-demand-media-streaming)
 
-* [Nagy méretű fájl letöltése](#large-file-download)
+* [Nagyméretű fájl letöltése](#large-file-download)
 
 * [Dinamikus helygyorsítás](#dynamic-site-acceleration) 
 
-A Microsoft azt javasolja, hogy tesztelje a teljesítményt változata között jelölje be az optimális a kézbesítési szolgáltató különböző szolgáltatók.
+A Microsoft azt javasolja, hogy a teljesítmény-változatok között jelölje be az optimális a szállítási-szolgáltató különböző szolgáltatók tesztelése.
 
-## <a name="select-and-configure-optimization-types"></a>Válasszon ki és konfiguráljon optimalizálási típusok
+## <a name="select-and-configure-optimization-types"></a>Válassza ki, és optimalizálás-típusokra konfigurálása
 
-Új végpont létrehozásához válassza ki az optimalizálás típusa, amely a legjobban illik a forgatókönyv és a végpont képes biztosítani a kívánt tartalom típusa. **Általános webes kézbesítési** az alapértelmezett beállítás. Meglévő **Azure Content Delivery Network Akamai** végpontok, a beállítást bármikor frissítheti. Ez a változás nem megszakító Azure CDN kézbesítési. 
+A CDN-végpontot hoz létre, válassza ki az optimalizálás típusa, amely a legjobban illik a forgatókönyv és a végponthoz továbbítására kívánt tartalom típusa. **Általános webes kézbesítés** az alapértelmezett beállítás. Meglévő **Azure CDN Akamai Standard** végpontok csak, a beállítást bármikor frissítheti. Ez a változás nem megszakítás kézbesítési az Azure CDN szolgáltatással. 
 
-1. Belül egy **Azure CDN Standard Akamai** profilját, válasszon ki egy végpontot.
+1. Az egy **Azure CDN Akamai Standard** profilt, válassza ki a végpont.
 
     ![Végpont kiválasztása ](./media/cdn-optimization-overview/01_Akamai.png)
 
-2. Válassza a beállítások **optimalizálási**. Ezt követően válassza egy típus a **optimalizálva** legördülő listából.
+2. A beállítások területen válassza ki a **optimalizálási**. Ezt követően válassza ki a típus a **optimalizált** legördülő listából.
 
-    ![Optimalizálási és típus kiválasztása](./media/cdn-optimization-overview/02_Select.png)
+    ![Optimalizálás és típus kiválasztása](./media/cdn-optimization-overview/02_Select.png)
 
-## <a name="optimization-for-specific-scenarios"></a>Az adott forgatókönyveket optimalizálása
+## <a name="optimization-for-specific-scenarios"></a>Optimalizálás bizonyos forgatókönyvek esetén
 
-A CDN-végpont egy forgatókönyvet is optimalizálhatja. 
+A CDN-végpont az egyik ezeket a forgatókönyveket is optimalizálhatja. 
 
 ### <a name="general-web-delivery"></a>Általános webes kézbesítés
 
-Általános webes kézbesítési a leggyakrabban használt optimalizálási beállítás. Általános webes tartalom optimalizálásra, például a weboldalakon és webes alkalmazásokhoz tervezték. Az optimalizálás is használható fájlt, és a videó tölti le.
+Általános webes kézbesítés optimalizálása lehetőség leggyakoribb. Az általános webes tartalom optimalizálás, például a weblapok és webes alkalmazások tervezték. Az optimalizálás is használható fájlt, és a videó tölti le.
 
-Egy tipikus webhely statikus és dinamikus tartalom tartalmazza. Statikus tartalom magában foglalja a lemezképek, a JavaScript szalagtárak és a stíluslapok, amely a gyorsítótárban, és különböző felhasználók beküldeni. Dinamikus tartalom egy adott felhasználóhoz, például a felhasználói profil vannak szabva hírek elemekre személyre szabhatja. Dinamikus tartalom nincs gyorsítótárazva, mert egyedi, például a vásárlási bevásárlókocsiból tartalmát az egyes felhasználók. Általános webes kézbesítési optimalizálhatja a teljes webhelyet. 
+Egy tipikus webhely statikus és dinamikus tartalom tartalmazza. Statikus tartalom magában foglalja a képek, JavaScript-kódtárak és stíluslapok, amely a gyorsítótárba, és kézbesíti a különböző felhasználókhoz. Dinamikus tartalom adott felhasználó, például a news elemek, amelyek igazodnak a felhasználói profil személyre szabhatja. Dinamikus tartalom, például a bevásárlókocsi vásárlási tartalmát, mert mindegyik felhasználóhoz egyedi nincs gyorsítótárazva. Általános webes kézbesítés optimalizálhatja az egész webhely. 
 
 > [!NOTE]
-> Ha **Azure CDN Standard Akamai**, érdemes használnia az optimalizálás, ha a átlagos mérete 10 MB-nál kisebb. Ha a átlagos mérete nagyobb, mint 10 MB, jelölje be **nagy méretű fájlok letöltési** a a **optimalizálva** legördülő listából.
+> Ha használ egy **Azure CDN Akamai Standard** profilt, válassza az optimalizálás típusa, ha az átlagos mérete 10 MB-nál kisebb. Válassza ki a Othewise, ha az átlagos mérete 10 MB-nál nagyobb **nagyméretű fájl letöltése** a a **optimalizált** legördülő listából válassza ki.
 
 ### <a name="general-media-streaming"></a>Általános médiastreaming
 
-Ha használja a végpontot az élő adatfolyam- és videotartalom streaming van szüksége, általános médiaadatfolyam-továbbítást optimalizálási ajánlott.
+Ha szeretné a végpontot használja az élő Stream, és rögzített streamelési, válassza az általános adatfolyam-továbbítási optimalizálás típusa.
 
-Idő-és nagybetűket, médiaadatfolyam azért, mert az ügyfél késői csomagokat csökkent megtekintését, például a video tartalom Gyakori pufferelés okozhat. Médiaadatfolyam-továbbítást optimalizálási media tartalomkézbesítési késését csökkentő és adatfolyam-továbbítási zökkenőmentes élményt nyújt a felhasználók számára. 
+Időérzékeny, médiatartalmak streamelése azért, mert az ügyfélen, például gyakori videópufferelést, késői csomagokat élményt okozhat. Online médialejátszás optimalizálása csökkenti a médiatartalmak késését, és a smooth streaming élményt nyújt a felhasználók. 
 
-Ez a forgatókönyv esetében gyakori, az Azure media service ügyfelek esetén. Az Azure media services használata esetén nem használható élő és igény szerinti adatfolyam egy streamvégpont kap. Ebben az esetben az ügyfelek nem kell váltani egy másik végpont, amikor azok váltson az élő igényalapú streameléshez. Általános media adatfolyam-továbbítási optimalizálási támogatja ezt a forgatókönyvet.
+Ebben a forgatókönyvben az Azure media service ügyfelek gyakori. Az Azure media Services szolgáltatást használja, kap egy egyetlen streamvégponton, az élő és igényalapú streaming használható. Az ebben a forgatókönyvben az ügyfelek váltani egy másik végpont, ha az igény szerinti folyamatos átvitel módosítását az élő nem szükséges. Általános online médialejátszás optimalizálása támogatja ezt a forgatókönyvet.
 
-A **Azure CDN Standard Microsoft**, **Azure CDN Standard verizon**, és **verizon Azure CDN Premium**, az általános webes optimalizálási típusú használata Általános adatfolyam media tartalmat továbbít.
+A **Azure CDN Standard a Microsoft**, **Azure CDN Standard verizon**, és **verizon Azure CDN Premium**, használja az általános webes kézbesítési optimalizálás típusa tartalomközvetítés általános media.
 
-Media adatfolyam-továbbítási optimalizálási kapcsolatos további információkért lásd: [médiaadatfolyam-továbbítást optimalizálási](cdn-media-streaming-optimization.md).
+Online médialejátszás optimalizálása kapcsolatos további információkért lásd: [online médialejátszás optimalizálása](cdn-media-streaming-optimization.md).
 
-### <a name="video-on-demand-media-streaming"></a>Videotartalom médiaadatfolyam-továbbítást
+### <a name="video-on-demand-media-streaming"></a>Igény szerinti videó online médialejátszás
 
-Videotartalom media adatfolyam-továbbítási optimalizálási növeli a videotartalom adatfolyamok tartalmát. A végpont az videotartalom adatfolyamként történő használatakor érdemes ezt a beállítást használja.
+Online médialejátszás optimalizálása video-on-demand streamelési Videólejátszás javítja. Ha rögzített streamelési végpontok használja, akkor használja ezt a beállítást.
 
-A **Azure CDN Standard Microsoft**, **Azure CDN Standard verizon**, és **verizon Azure CDN Premium**, az általános webes optimalizálási típusú használata adatfolyam-továbbítási médiatartalom videotartalom biztosításához.
+A **Azure CDN Standard a Microsoft**, **Azure CDN Standard verizon**, és **verizon Azure CDN Premium** -profilok használatához az általános webes kézbesítés optimalizálása Írja be a tartalomközvetítés videoszolgáltatás a media.
 
-Media adatfolyam-továbbítási optimalizálási kapcsolatos további információkért lásd: [médiaadatfolyam-továbbítást optimalizálási](cdn-media-streaming-optimization.md).
+Online médialejátszás optimalizálása kapcsolatos további információkért lásd: [online médialejátszás optimalizálása](cdn-media-streaming-optimization.md).
 
 > [!NOTE]
-> Ha a CDN-végpont elsősorban videotartalom tartalmat szolgáltat, ez használható optimalizálás. Az optimalizálás és az általános médiaadatfolyam-továbbítást optimalizálása közötti fő különbség a kapcsolat újrapróbálkozási időkorlátja. Az időtúllépés értéke sokkal rövidebb élő adatfolyam-továbbítási forgatókönyv együttműködni.
+> Ha a CDN-végpont elsősorban Videólejátszás szolgál ki, használja az optimalizálás típusa. Az optimalizálás típusa és az általános médiastreaming optimalizálás típusa közötti fő különbség a kapcsolat újrapróbálkozás időkorlátja. Az időtúllépés értéke működjön együtt élő adatfolyam-továbbítási forgatókönyv sokkal rövidebb.
+>
 
 ### <a name="large-file-download"></a>Nagyméretű fájl letöltése
 
-A **Azure CDN Standard Akamai**, nagy fájlok letöltése tartalma 10 MB-nál nagyobb vannak optimalizálva. Ha a átlagos mérete 10 MB-nál kisebb, akkor az általános webes kézbesítését. Ha a fájlok átlagos következetesen 10 MB-nál nagyobb értékek, lehet, hatékonyabb, ha nagy fájlok esetében külön végpont létrehozásához. Például belső vezérlőprogram vagy szoftverfrissítések általában nagy méretű fájlt. 1,8 GB-nál nagyobb fájlokat, hogy a nagy méretű fájlok letöltési optimalizálása szükség.
+A **Azure CDN Akamai Standard** profilokat, a 10 MB-nál nagyobb tartalmak letöltések optimalizált nagy fájlt. Ha az átlagos mérete 10 MB-nál kisebb, akkor az általános webes kézbesítés. Ha az átlagos méretű következetesen 10 MB-nál nagyobb, hatékonyabb, hozzon létre egy külön végpontot a nagy méretű fájlok lehet. Belső vezérlőprogram vagy szoftverfrissítések például általában olyan nagy fájlok. Biztosításához 1,8 GB-nál nagyobb fájlok, a nagyméretű fájlok letöltési optimalizálása szükség.
 
-A **Azure CDN Standard Microsoft**, **Azure CDN Standard verizon**, és **verizon Azure CDN Premium**, az általános webes optimalizálási típusú használata nagy méretű fájlok letöltési tartalmat továbbít. Nincs letöltési fájlméret korlátozása nélkül.
+A **Azure CDN Standard a Microsoft**, **Azure CDN Standard verizon**, és **verizon Azure CDN Premium** -profilok használatához az általános webes kézbesítés optimalizálása Írja be, hogy a tartalom a nagyméretű fájl letöltése. Nincs letöltési fájlméret korlátozása nélkül.
 
-Nagy méretű fájlok optimalizálással kapcsolatos további információkért lásd: [nagy méretű fájlok optimalizálási](cdn-large-file-optimization.md).
+Nagyméretű fájlok optimalizálása kapcsolatos további információkért lásd: [nagyméretű fájlok optimalizálása](cdn-large-file-optimization.md).
 
 ### <a name="dynamic-site-acceleration"></a>Dinamikus helygyorsítás
 
- Dinamikus gyorsítás érhető el **Azure CDN Standard Akamai**, **Azure CDN Standard verizon**, és **verizon Azure CDN Premium** profilok. Az optimalizálás magában foglalja a további díjat kell használni, További információkért lásd: [Content Delivery Network árképzési](https://azure.microsoft.com/pricing/details/cdn/).
+ Dinamikuswebhely-gyorsítás (DSA) érhető el a **Azure CDN Akamai Standard**, **Azure CDN Standard verizon**, és **verizon Azure CDN Premium** profilok. Az optimalizálás magában foglalja a járulékos díjat kell használni, További információkért lásd: [Content Delivery Network díjszabása](https://azure.microsoft.com/pricing/details/cdn/).
 
-Dinamikus gyorsítás magában foglalja a különböző módszereket, amelyek kihasználják a késés és a dinamikus tartalom teljesítménye. Ennek technikái a következők: útvonal és a hálózati optimalizálás, a TCP-optimalizálása és egyebek. 
+DSA magában foglalja a különféle módszereket, amelyek a késés és a dinamikus tartalom teljesítményét. Ennek technikái a következők: útvonal és hálózati optimalizálás, a TCP-optimalizálás és más. 
 
-Az optimalizálás használhatja annak érdekében, a webes alkalmazás, amely tartalmazza a számos olyan válaszok, amelyek nem gyorsítótárazható. Többek között a keresési eredmények között, a kivételt tranzakciók vagy a valós idejű adatokat. Továbbra is az alapképességek CDN gyorsítótárazási használ statikus adatok. 
+Az optimalizálás használatával felgyorsíthatja egy webalkalmazást, amely számos olyan nem gyorsítótárazható válaszokat tartalmazza. Példák a keresési eredmények, a fizetési tranzakciók és a valós idejű adatok. Továbbra is használhatja az alapképességek Azure CDN gyorsítótárazási statikus adatok esetében. 
 
-Dinamikus járó gyorsító kapcsolatos további információkért lásd: [dinamikus acceleration](cdn-dynamic-site-acceleration.md).
+Dinamikus helygyorsítás kapcsolatos további információkért lásd: [dinamikuswebhely-gyorsítás](cdn-dynamic-site-acceleration.md).
 
 
 

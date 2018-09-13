@@ -1,6 +1,6 @@
 ---
-title: Regisztráció az Azure Office 365-fiókkal |} Microsoft Docs
-description: Megtudhatja, hogyan hozhat létre Azure-előfizetés az Office 365-fiók használatával
+title: Az Azure, Office 365-fiókjával regisztráljon |} A Microsoft Docs
+description: Ismerje meg, hogyan hozhat létre Azure-előfizetés az Office 365-fiókja
 services: ''
 documentationcenter: ''
 author: JiangChen79
@@ -13,47 +13,47 @@ ms.workload: na
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/03/2017
+ms.date: 06/15/2018
 ms.author: cjiang
-ms.openlocfilehash: dfb39b809f9a1082682d269d8bd4c180c8a264ce
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
-ms.translationtype: HT
+ms.openlocfilehash: dd7b9609495cacd324ef5509f57db0384775e0a7
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33204564"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35926024"
 ---
-# <a name="sign-up-for-an-azure-subscription-with-your-office-365-account"></a>Előfizetés az Azure-előfizetéssel az Office 365-fiókkal
-Ha olyan Office 365-előfizetéssel rendelkezik, az Office 365-fiók segítségével hozzon létre egy Azure-előfizetés. Jelentkezzen be a [Azure-portálon](https://portal.azure.com/) Office 365-felhasználónevét és jelszavát használva. Ha szeretné beállítani a virtuális gépek, vagy használjon más Azure-szolgáltatásokkal, kell regisztrál az Azure-előfizetésre. Az Azure-előfizetéshez megoszthatja másokkal és [az Azure-előfizetés és az erőforrásokhoz való hozzáférés kezelése szerepköralapú hozzáférés-vezérlés használatával](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
+# <a name="sign-up-for-an-azure-subscription-with-your-office-365-account"></a>Egy Azure-előfizetést, az Office 365-fiókjával regisztráljon
+Ha rendelkezik Office 365-előfizetéssel, az Office 365-fiók használatával Azure-előfizetés létrehozása. Jelentkezzen be a [az Azure portal](https://portal.azure.com/) használatával, az Office 365-felhasználónevét és jelszavát. Ha azt szeretné, állítsa be a virtuális gépek vagy más Azure-szolgáltatások használatára, jelentkezzen Azure-előfizetésre. Az Azure-előfizetés másokkal is megoszthat és [az Azure-előfizetés és erőforrásokhoz való hozzáférés kezelése szerepköralapú hozzáférés-vezérlés használatával](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
 
-Ha már rendelkezik Office 365-fiókkal, mind az Azure-előfizetéssel, lásd: [társítsa Azure-előfizetéshez az Office 365-bérlő](billing-add-office-365-tenant-to-azure-subscription.md).
+Ha már rendelkezik Office 365-fiókja és a egy Azure-előfizetést, [egy Office 365-bérlő Azure-előfizetéshez társítja](billing-add-office-365-tenant-to-azure-subscription.md).
 
-## <a name="get-an-azure-subscription-using-your-office-365-account"></a>Az Office 365-fiókkal Azure-előfizetés igénylése
+## <a name="get-an-azure-subscription-using-your-office-365-account"></a>Office 365-fiók használata Azure-előfizetés beszerzése
 
-Időt takaríthat meg, és a fiók elterjedése elkerülheti, ha regisztrál az Azure-ban, az Office 365-felhasználónevét és jelszavát. 
+Időt, és elkerülheti a számla elterjedése az Office 365-felhasználónevet és jelszót használó Azure-regisztráció. 
 
-1. Feliratkozhat [Azure.com webhelyre](https://account.azure.com/signup?offer=MS-AZR-0044p&appId=docs). 
-2. Jelentkezzen be az Office 365-felhasználónevét és jelszavát. A használt fióknak rendszergazdai jogosultságokkal rendelkezzenek nem szükséges. Ha egynél több Office 365-fiókra, győződjön meg arról, hogy a hitelesítő adatokat használja az Office 365-fiókra, amelyet szeretne társítani az Azure-előfizetéshez. 
+1. Regisztráció: [Azure.com](https://account.azure.com/signup?offer=MS-AZR-0044p&appId=docs). 
+2. Jelentkezzen be az Office 365-felhasználónevét és jelszavát. A használt fióknak nem szükséges rendszergazdai engedélyekkel kell rendelkeznie. Ha egynél több Office 365-fiókkal rendelkezik, győződjön meg a hitelesítő adatokat használja az Office 365-fiókkal, amelyet az Azure-előfizetés társítása szeretne-e. 
 
-   ![Képernyőkép a a bejelentkezési oldal.](./media/billing-use-existing-office-365-account-azure-subscription/billing-sign-in-with-office-365-account.png)
+   ![Képernyőkép a bejelentkezési oldal.](./media/billing-use-existing-office-365-account-azure-subscription/billing-sign-in-with-office-365-account.png)
 
 3. Adja meg a szükséges adatokat, és a bejelentkezési folyamat elvégzése. Egyes adatokat nem lehet szükség, ha már rendelkezik Office 365-fiókkal.
 
-    ![A bejelentkezési űrlap kitöltése képernyőkép.](./media/billing-use-existing-office-365-account-azure-subscription/billing-azure-sign-up-fill-information.png)
+    ![Képernyőkép a bejelentkezési űrlap.](./media/billing-use-existing-office-365-account-azure-subscription/billing-azure-sign-up-fill-information.png)
 
-- Ha a szervezet az Azure-előfizetés hozzáadása a mások van szüksége, tekintse meg [Ismerkedés az Azure-portálon kezelési](../role-based-access-control/overview.md). 
+- Ha más személyek hozzáadása a szervezet az Azure-előfizetésre van szüksége, tekintse meg [hozzáférés-kezelés az Azure portal – első lépések](../role-based-access-control/overview.md). 
 
 ## <a id="more-about-subs">További információ az Azure és az Office 365-előfizetések</a>
-Az Office 365 és Azure az Azure AD szolgáltatás segítségével felhasználók és -előfizetések kezeléséhez. Az Azure-címtár olyan, mint amelyben csoportosíthatja a felhasználók és -előfizetések tárolója. Az Office 365 és az Azure-előfizetések ugyanazoknak a felhasználói fiókoknak használatához győződjön meg arról, hogy az Azure-előfizetések jöttek létre az Office 365-előfizetés ugyanabban a könyvtárban kell. Vegye figyelembe a következő szempontokat:
+Az Office 365 és az Azure-felhasználók és -előfizetések kezelése az Azure AD szolgáltatás használatával. Az Azure címtárban olyan, mintha egy tároló, amelyben csoportosíthatja a felhasználók és előfizetések. Ugyanazoknak a felhasználói fiókoknak az Office 365 és az Azure-előfizetésekre vonatkozó használatához győződjön meg arról, hogy az Azure-előfizetések jönnek létre az Office 365-előfizetések ugyanabban a címtárban kell. Vegye figyelembe a következőket:
 
-* Előfizetés végrehajtásakor létrejön egy könyvtár alá
-* Felhasználók könyvtárak tartozik
-* Előfizetés fájljai, a felhasználó az előfizetést hoz létre a könyvtár. Az Office 365-előfizetéssel, ugyanazt a fiókot, Azure-előfizetése van kötve.
-* Azure-előfizetések a címtárban szereplő egyedi felhasználó tulajdonában
-* Office 365-előfizetéssel a könyvtárat, maga a tulajdonosa. A könyvtárban lévő megfelelő jogosultságokkal rendelkező felhasználók kezelheti ezeket az előfizetéseket.
+* Egy könyvtár alatt előfizetés jön létre
+* Felhasználók tartoznak a címtárakhoz
+* Előfizetés hajtanak végre a felhasználó, akik az előfizetést hoz létre a címtárban. Így az Office 365-előfizetéssel, azzal a fiókkal, az Azure-előfizetésében vannak kötve.
+* Az Azure-előfizetések a címtárban az egyes felhasználók tulajdonában
+* Office 365-előfizetés tulajdonosa a könyvtár magát. A könyvtárból a megfelelő engedélyekkel rendelkező felhasználók kezelheti ezeket az előfizetéseket.
 
-![Képernyőkép a kapcsolat a directory, a felhasználók és az előfizetések.](./media/billing-use-existing-office-365-account-azure-subscription/19-background-information.png)
+![Képernyőkép a kapcsolat a könyvtárat, a felhasználók és az előfizetések.](./media/billing-use-existing-office-365-account-azure-subscription/19-background-information.png)
 
-További információkért lásd: [kapcsolódnak hogyan Azure-előfizetések az Azure Active Directory](../active-directory/active-directory-how-subscriptions-associated-directory.md).
+További információkért lásd: [kapcsolódnak az Azure-előfizetések az Azure Active Directory](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
 
-## <a name="need-help-contact-support"></a>Segítség Forduljon a támogatási szolgálathoz.
-Ha további segítségre van, [forduljon a támogatási szolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma elhárítva gyors eléréséhez. 
+## <a name="need-help-contact-support"></a>Segítség Forduljon az ügyfélszolgálathoz.
+Ha továbbra is segítségre van szüksége, [forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma gyors megoldása érdekében. 

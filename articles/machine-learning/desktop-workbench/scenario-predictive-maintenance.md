@@ -1,142 +1,142 @@
 ---
-title: A valós forgatókönyv prediktív karbantartási |} Microsoft Docs
-description: A PySpark használatával valós forgatókönyv prediktív karbantartás
+title: A valós életből vett prediktív karbantartás |} A Microsoft Docs
+description: A valós életből vett példák segítségével PySpark prediktív karbantartás
 services: machine-learning
 author: ehrlinger
 ms.author: jehrling
 manager: jhubbard
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.custom: mvc
 ms.date: 10/05/2017
-ms.openlocfilehash: f3f24a9b269205dd77ec3301b2650ee7a03f435b
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: a5531ae256a263f1c34496819ac435ce67156b49
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34832696"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35645724"
 ---
-# <a name="predictive-maintenance-for-real-world-scenarios"></a>A valós forgatókönyv prediktív karbantartás
+# <a name="predictive-maintenance-for-real-world-scenarios"></a>A valós életből vett prediktív karbantartás
 
-A berendezések váratlan üzemkimaradása minden cég számára káros lehet. Nagyon fontos a mező berendezések kihasználtságát és a teljesítmény maximalizálása és költséges, nem ütemezett állásidő minimalizálása érdekében hagyja. Korai problémákat azonosítása segíthet korlátozott karbantartási erőforrásokat költséghatékony és minőségének javítása és ellátási lánc folyamatokat. 
+A berendezések váratlan üzemkimaradása minden cég számára káros lehet. Rendkívül fontos, hogy a mező berendezések kihasználtságát és a teljesítmény maximalizálása érdekében, illetve minimálisra csökkentheti a költséges, nem ütemezett üzemszünet futtatása. Problémák korai azonosítása segíthet korlátozott karbantartási erőforrásokat lefoglalni a költséghatékony és minőség javítása és ellátási lánc folyamatokat. 
 
-Ebben a forgatókönyvben felderíti a viszonylag [nagyméretű szimulált adatkészlet](https://github.com/Microsoft/SQL-Server-R-Services-Samples/tree/master/PredictiveMaintanenceModelingGuide/Data) bízná egy prediktív karbantartási adatok tudományos projektet az adatfeldolgozást, funkció a mérnöki csapathoz, a modell létrehozásának és a modell operationalization és központi telepítés. A kód a teljes folyamat a Jupyter Notebook PySpark Azure Machine Learning munkaterület használatával íródott. A végső modell Azure Machine Learning modell Management használatával valós idejű berendezések hiba előrejelzéseket készítsen a rendszer.   
+Ez a forgatókönyv bemutatja egy viszonylag [szimulált nagy méretű adatkészlet](https://github.com/Microsoft/SQL-Server-R-Services-Samples/tree/master/PredictiveMaintanenceModelingGuide/Data) funkció bemutatására egy prediktív karbantartási adatelemzési projektjéhez az adatbetöltés, a mérnöki csapathoz, a modell létrehozásának és a modell operacionalizálás és a központi telepítés. A kód a teljes folyamat PySpark az Azure Machine Learning Workbench használatával a Jupyter Notebook nyelven van megírva. A kész modell Azure Machine Learning Modellkezelés használatával valós idejű berendezések meghibásodása adatelemzésre van telepítve.   
 
 ### <a name="cortana-intelligence-gallery-github-repository"></a>Cortana Intelligence Gallery GitHub-adattár
 
-A Cortana Intelligence Gallery a PM oktatóanyag egy nyilvános GitHub-adattár ([https://github.com/Azure/MachineLearningSamples-PredictiveMaintenance](https://github.com/Azure/MachineLearningSamples-PredictiveMaintenance)) ahol jelenthetem a problémát, és ellenőrizze hozzájárulások.
+A Cortana Intelligence Gallery a PM-oktatóanyaghoz egy nyilvános GitHub-adattárból ([https://github.com/Azure/MachineLearningSamples-PredictiveMaintenance](https://github.com/Azure/MachineLearningSamples-PredictiveMaintenance)), amelyen problémák jelentése és közreműködés.
 
 
-## <a name="use-case-overview"></a>Használja az eset áttekintése
+## <a name="use-case-overview"></a>Használati eset – áttekintés
 
-Eszköz-gyakori iparágakban a vállalatok által tapasztalt az is gépi kapcsolatos problémák miatt késések társított jelentős költségeket. A legtöbb vállalat érdekelt előrejelzésére, ha ezek a problémák léphetnek fel a proaktív módon, hogy mielőtt bekövetkeznének. A cél, hogy a költségek csökkentése állásidő csökkentésével, és esetleg a biztonság fokozása. 
+Üzletekre az eszközintelligencia-(nagy erőforrásigényű) iparágak szerint terhet jelentős probléma az késleltetések miatt vehesse a műszaki problémákat rendelt jelentős költségeit. A legtöbb vállalat szeretne előrejelzésére, ha ezek a problémák merülhetnek fel, amelyek segítségével proaktív módon megelőzheti azokat, mielőtt bekövetkeznének. A célja, hogy a költségek csökkentése az állásidő csökkentésével és felülbírálásáról biztonságát. 
 
-Ebben a forgatókönyvben a ötleteket vesz igénybe a [prediktív karbantartási alkalmazástervezési](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/cortana-analytics-playbook-predictive-maintenance) annak bemutatásához, hogyan hozhat létre prediktív modellek egy szimulált adathalmaz. A példaadatokat származik sok prediktív karbantartási feladatok ellátására megfigyelt szokványos elemeket.
+Ebben a forgatókönyvben az ötleteit vesz igénybe a [prediktív karbantartási forgatókönyveket](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/cortana-analytics-playbook-predictive-maintenance) bemutatni, hogyan hozhat létre egy szimulált adatkészlet egy prediktív modellt. A példaadatokat származik sok prediktív karbantartási használati esetek megfigyelt elemeket.
 
-A szimulált adatok az üzleti probléma összetevő hibák által okozott problémák előre jelezni. Az üzleti kérdést "*mi annak, hogy az összetevő hibája miatt leáll a gépek?*" Ez a probléma több osztály besorolás probléma (több összetevő gépenként) formátuma. A gépi tanulási algoritmus a prediktív modell létrehozásához használt. A modell betanítása előzmény-gépekről összegyűjtött adatokat. Ebben a forgatókönyvben a felhasználó végighalad a modell a Machine Learning-munkaterület környezet megvalósításának számos lépés.
+Ezen szimulált adatok az üzleti problémát az összetevő hibák által okozott problémákat. Az üzleti kérdés "*Mi a valószínűsége annak, hogy a gép leáll egy összetevő hibája miatt?*" Ez a probléma vannak formázva, egy többcsoportos osztályozási probléma (gépenként több összetevő). Gépi tanulási algoritmus segítségével a prediktív modell létrehozásához. A modell tanítása gépekről gyűjtött előzményadatok. Ebben a forgatókönyvben a felhasználó végighalad a modell megvalósításához a Machine Learning Workbench-környezetben különböző lépéseket.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Egy [Azure-fiók](https://azure.microsoft.com/free/) (az ingyenes próbaverzió érhetők el).
-* Egy telepített példánya [Azure Machine Learning-munkaterület](../service/overview-what-is-azure-ml.md). Kövesse a [gyors üzembe helyezés a telepítési útmutató](../service/quickstart-installation.md) telepíteni a programot, és hozzon létre egy munkaterület.
-* Az Azure Machine Learning Operationalization megköveteli egy helyi környezet és egy [Azure Machine Learning modell felügyeleti fiók](model-management-overview.md).
+* Egy [Azure-fiók](https://azure.microsoft.com/free/) (az ingyenes próbaverziók érhető el).
+* Egy telepített példánya [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md). Kövesse a [rövid telepítési útmutatójában](../service/quickstart-installation.md) telepítse a programot, és hozzon létre egy munkaterületet.
+* Az Azure Machine Learning Operacionalizálás megköveteli egy helyi környezet és a egy [Azure Machine Learning Modellkezelés-fiók](model-management-overview.md).
 
-Ebben a példában a Machine Learning-munkaterület számítási környezetben futtatható. Azonban javasoljuk a példa futtatásához legalább 16 GB memóriája. Ebben a forgatókönyvben tervezték és távoli DS4_V2 szabványos futó Windows 10-es gépre tesztelték [adatok tudományos virtuális gép (DSVM) Linux (Ubuntu)](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft-ads.linux-data-science-vm-ubuntu).
+Ebben a példában minden Machine Learning Workbench számítási környezetben futtatja. Azonban azt javasoljuk, hogy a példa Futtatás legalább 16 GB memóriája. Ebben a forgatókönyvben beépített és a egy távoli DS4_V2 standard futó Windows 10-es gépre tesztelt [adatelemzési virtuális gép (DSVM) Linux (Ubuntu)](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft-ads.linux-data-science-vm-ubuntu).
 
-Modell operationalization verzió 0.1.0a22, az Azure Machine Learning parancssori felület használatával végezhető el.
+Modell operacionalizálás verzió 0.1.0a22, az Azure Machine Learning parancssori felület használatával végezhető el.
 
-## <a name="create-a-new-workbench-project"></a>Új munkaterület-projekt létrehozása
+## <a name="create-a-new-workbench-project"></a>Egy új Workbench-projekt létrehozása
 
 Hozzon létre egy új projektet ebben a példában egy sablon segítségével:
 1.  Nyissa meg a Machine Learning Workbenchet.
 2.  Az a **projektek** lapon jelölje be **+**, majd válassza ki **új projekt**.
-3.  Az a **új projekt létrehozása** ablaktáblán, töltse ki az adatokat az új projekt.
-4.  Az a **keresési Projektsablonjai** keresési mezőbe, írja be a "Prediktív karbantartási", és válassza ki a **prediktív karbantartási** sablont.
+3.  Az a **új projekt létrehozása** panelen adja meg az információkat az új projekt.
+4.  Az a **projektsablonok keresése** keresőmezőbe, írja be a "Prediktív karbantartási", és válassza ki a **prediktív karbantartási** sablont.
 5.  Kattintson a **Létrehozás** gombra.
 
-## <a name="prepare-the-notebook-server-computation-target"></a>Készítse elő a notebook server számítási cél
+## <a name="prepare-the-notebook-server-computation-target"></a>A notebook server számítási cél előkészítése
 
-A helyi gépén, futtatását a Machine Learning-munkaterület **fájl** menüben válassza **nyissa meg a parancssort** vagy **nyitott PowerShell parancssori felület**. A parancssori felület lehetővé teszi az Azure-szolgáltatások használatával a `az` parancsok. Első lépésként jelentkezzen be az Azure-fiókjával a parancsot:
+A helyi gépén, a Machine Learning Workbench futtatása **fájl** menüben válassza **parancssor megnyitása** vagy **megnyitott PowerShell parancssori felület**. A parancssori felületen elérheti az Azure-szolgáltatások használatával lehetővé teszi a `az` parancsokat. Első lépésként jelentkezzen be az Azure-fiókjával a paranccsal:
 
 ```
 az login
 ``` 
 
-Ez a parancs biztosítja a https használata egy hitelesítési kulcs:\\aka.ms\devicelogin URL-CÍMÉT. A parancssori felület megvárja, amíg az eszköz bejelentkezési művelet értéket ad vissza, és bizonyos csatlakozási információkat nyújt. Mellett, ha egy helyi [Docker](https://www.docker.com/get-docker) telepítés, a parancs a helyi számítási környezet előkészítése:
+Ez a parancs biztosítja a https használata hitelesítési kulcs:\\aka.ms\devicelogin URL-CÍMÉT. A parancssori felület vár, amíg az eszköz bejelentkezési művelet adja vissza, és néhány kapcsolódási információkat szolgáltat a. Mellett, ha egy helyi [Docker](https://www.docker.com/get-docker) telepítés, a paranccsal a helyi számítási környezet előkészítése:
 
 ```
 az ml experiment prepare --target docker --run-configuration docker
 ```
 
-Érdemes futtatni egy [Linux (Ubuntu) DSVM](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft-ads.linux-data-science-vm-ubuntu) memóriát és lemezterületet követelményeket. A DSVM konfigurálása után készítse elő a távoli Docker környezet az alábbi két parancsot:
+Ezért célszerű futtatni egy [DSVM Linux (Ubuntu)](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft-ads.linux-data-science-vm-ubuntu) a memória-és. A dsvm-hez van konfigurálva, miután előkészítése az alábbi két parancsot a távoli Docker-környezetben:
 
 ```
 az ml computetarget attach remotedocker --name [Connection_Name] --address [VM_IP_Address] --username [VM_Username] --password [VM_UserPassword]
 ```
 
-Miután csatlakozott a távoli Docker-tároló, a parancs DSVM Docker számítási környezet előkészítése: 
+Miután csatlakozott a távoli Docker-tárolót, a parancs DSVM Docker számítási környezet előkészítése: 
 
 ```
 az ml experiment prepare --target [Connection_Name] --run-configuration [Connection_Name]
 ```
 
-A Docker számítási környezet készített, nyissa meg a Jupyter notebook server az Azure Machine Learning-munkaterület **notebookok** lapon, vagy egy webböngésző-alapú kiszolgáló start paranccsal: 
+A Docker számítási környezetet előkészített, nyissa meg a Jupyter notebook server az Azure Machine Learning Workbench **notebookok** lapon, vagy egy webböngésző-alapú kiszolgálón indítsa el a paranccsal: 
 
 ```
 az ml notebook start
 ```
 
-A példa notebookok a kódjának könyvtárában tárolódnak. A notebookok beállítása futtatásához egymás után, az első (Code\1_data_ingestion.ipynb) notebook elindítja. Minden egyes notebook megnyitásakor felkéri válassza ki a számítási kernel. Válassza ki a [projektnév] [Connection_Name] _Template kernel a korábban konfigurált DSVM végrehajtásához.
+A példa notebookok az kódjának könyvtárában tárolódnak. A notebookok beállítása lefutni, az első (Code\1_data_ingestion.ipynb) notebook indítása. Minden egyes notebook megnyitásakor, válassza ki a számítási kernel kéri. Válassza ki a [projektnév] [Connection_Name] _sablon kernel a korábban konfigurált DSVM hajthat végre.
 
 ## <a name="data-description"></a>Adatok leírása
 
-A [adatok szimulált](https://github.com/Microsoft/SQL-Server-R-Services-Samples/tree/master/PredictiveMaintanenceModelingGuide/Data) öt vesszővel tagolt (.csv) fájlt tartalmaz. Az alábbi hivatkozások segítségével adatkészletek részletes leírást beolvasása.
+A [szimulált adatok](https://github.com/Microsoft/SQL-Server-R-Services-Samples/tree/master/PredictiveMaintanenceModelingGuide/Data) öt vesszővel tagolt (.csv) fájlból áll. Az alábbi hivatkozások segítségével első adatkészletek kapcsolatos részletes leírását.
 
-* [Gépek](https://pdmmodelingguide.blob.core.windows.net/pdmdata/machines.csv): különböztetni az egyes gépek, például a korszűrő és a modell funkciókat.
-* [Hiba](https://pdmmodelingguide.blob.core.windows.net/pdmdata/errors.csv): A hiba a napló tartalmazza okozott továbbra is működik. a gép pedig nem törhető hibák. Ezek a hibák nem tekinthetők hibák, bár a jövőbeli hibaeseményt el. A telemetriai adatok gyűjtése egy óradíjat, mert a rendszer a legközelebbi óra kerekítése a dátum-idő érték a hibákat.
-* [Karbantartási](https://pdmmodelingguide.blob.core.windows.net/pdmdata/maint.csv): A karbantartási naplót mindkét ütemezett és nem ütemezett karbantartás rekordokat tartalmaz. Ütemezett karbantartási összetevők rendszeres ellenőrzéssel megfelel. Tervezett karbantartást gépi hibák vagy egyéb teljesítménycsökkenés merülhetnek fel. A telemetriai adatok gyűjtése egy óradíjat, mert a rendszer a legközelebbi óra kerekítése a karbantartás dátum-idő érték.
-* [Telemetria](https://pdmmodelingguide.blob.core.windows.net/pdmdata/telemetry.csv): A telemetriai adatok az egyes gépek belül több érzékelők adatsorozat processzoridővel áll. Az adatok minden egy órával időszakban érzékelő értékek átlaga van bejelentkezve.
-* [Hibák](https://pdmmodelingguide.blob.core.windows.net/pdmdata/failures.csv): hibák összetevő cserékhez belül a karbantartási naplót felel meg. Minden rekordot a gép Azonosítóját, összetevőtípust, és helyettesítő dátumát és idejét tartalmazza. Ezeket a rekordokat a gépi tanulási a címkéket, hogy a modell előrejelzése létrehozásához használt.
+* [Gépek](https://pdmmodelingguide.blob.core.windows.net/pdmdata/machines.csv): jellemzőket, például az életkor és a modell egyes gépek megkülönböztetésére.
+* [Hiba](https://pdmmodelingguide.blob.core.windows.net/pdmdata/errors.csv): A hibanapló vannak lépett fel, miközben továbbra is működik a gép nem törhető hibákat tartalmazza. Ezek a hibák nem tekinthetők hibák, bár prediktív jövőbeli hibák esemény is lehet. Hibák dátum-idő értékek vannak kerekítve a legközelebbi óra, mivel a telemetriai adatok gyűjtése óránkénti.
+* [Karbantartási](https://pdmmodelingguide.blob.core.windows.net/pdmdata/maint.csv): A karbantartási naplót mindkét ütemezett és nem tervezett karbantartás rekordokat tartalmaz. Ütemezett karbantartási megfelel-e a rendszeres időközönkénti összetevők vizsgálata. Nem ütemezett karbantartási gépi hiba vagy más teljesítménycsökkenés merülhetnek fel. A dátum-idő értékek karbantartás vannak kerekítve a legközelebbi óra, mivel a telemetriai adatok gyűjtése óránkénti.
+* [Telemetria](https://pdmmodelingguide.blob.core.windows.net/pdmdata/telemetry.csv): A telemetriai adatokat a processzoridővel sorozat minden gépen több érzékelőadatok áll. Az adatok naplózta érzékelő értékek átlaga egyes egy óra alatt.
+* [Hibák](https://pdmmodelingguide.blob.core.windows.net/pdmdata/failures.csv): hibák összetevő cseréjére belül a karbantartási naplót felelnek meg. Minden rekord tartalmazza a gép azonosítója, összetevőtípus, és a helyettesítő dátuma és időpontja. Ezeket a rekordokat a machine learning-címkék, amelyek a modell előre jelezni próbál létrehozására szolgálnak.
 
-A nyers adatkészletek letölthető a GitHub-tárházban, és hozzon létre ehhez az elemzéshez PySpark adatkészletek, tekintse meg a [adatfeldolgozást](https://github.com/Azure/MachineLearningSamples-PredictiveMaintenance/blob/master/Code/1_data_ingestion.ipynb) Jupyter Notebook forgatókönyv a kód mappában.
+Töltse le a nyers adatok beállítása a GitHub-adattárból, és hozzon létre ehhez az elemzéshez PySpark adatkészletek, tekintse meg a [adatbetöltés](https://github.com/Azure/MachineLearningSamples-PredictiveMaintenance/blob/master/Code/1_data_ingestion.ipynb) Jupyter Notebookot a forgatókönyvben a kód mappában.
 
-## <a name="scenario-structure"></a>A forgatókönyv struktúra
-A forgatókönyv esetében a tartalom érhető el: a [GitHub-tárházban](https://github.com/Azure/MachineLearningSamples-PredictiveMaintenance). 
+## <a name="scenario-structure"></a>A forgatókönyv-struktúra
+A tartalom a forgatókönyvhöz érhető el: a [GitHub-adattár](https://github.com/Azure/MachineLearningSamples-PredictiveMaintenance). 
 
-A [információs](https://github.com/Azure/MachineLearningSamples-PredictiveMaintenance/blob/master/README.md) fájl ismerteti a munkafolyamatot az adatok előkészítése, a modell létrehozása és majd a termelési környezetben egy megoldás telepítésére. A munkafolyamat minden lépés a Jupyter notebook van beágyazva az [kód](https://github.com/Azure/MachineLearningSamples-PredictiveMaintenance/tree/master/Code) a tárház mappában.   
+A [információs](https://github.com/Azure/MachineLearningSamples-PredictiveMaintenance/blob/master/README.md) fájl ismerteti az adatok előkészítése, jön létre a modell és a gyártási megoldás majd telepítése a munkafolyamatot. A munkafolyamat egyes lépések a Jupyter notebook van beágyazva a [kód](https://github.com/Azure/MachineLearningSamples-PredictiveMaintenance/tree/master/Code) mappán belül a tárházban.   
 
-[Code\1_data_ingestion.ipynb](https://github.com/Azure/MachineLearningSamples-PredictiveMaintenance/blob/master/Code/1_data_ingestion.ipynb): A notebook az öt bemeneti .csv fájlokat tölti le, és nem néhány előzetes adatok karbantartása és a képi megjelenítés. A notebook PySpark formátumra alakítja át minden egyes, és azt egy Azure blob-tároló, a szolgáltatás mérnöki Notebook használható tárolja.
+[Code\1_data_ingestion.ipynb](https://github.com/Azure/MachineLearningSamples-PredictiveMaintenance/blob/master/Code/1_data_ingestion.ipynb): Ez a jegyzetfüzet letölti az öt bemeneti .csv-fájlt, és néhány előzetes adatok karbantartása és a Vizualizáció. A notebook PySpark formátumra alakítja át minden egyes adatkészlethez, és tárolja azokat egy Azure blob-tárolóban, a szolgáltatás mérnöki jegyzetfüzet használatra.
 
-[Code\2_feature_engineering.ipynb](https://github.com/Azure/MachineLearningSamples-PredictiveMaintenance/blob/master/Code/2_feature_engineering.ipynb): A modell szolgáltatások össze a nyers adatok beállítása az Azure Blob storage a téli idő adatsorozat megközelítés telemetriai adatokat, a hibák és a karbantartási adatok használatával. Az összetevő hiba kapcsolatos új leíró, hogy melyik összetevő működése sikertelen volt a modell feliratok összeállíthatja szolgálnak. A címkézett funkció mentett adatok az Azure BLOB a modell épület notebook.
+[Code\2_feature_engineering.ipynb](https://github.com/Azure/MachineLearningSamples-PredictiveMaintenance/blob/master/Code/2_feature_engineering.ipynb): megközelítéssel téli idő sorozat telemetriai adatokat, a hibák és a karbantartási adatokat a modell funkciók tevődnek össze a nyers adatok beállítása az Azure Blob storage-ból. Az összetevő hiba kapcsolatos cseréjére segítségével hozza létre a model címkék, amelyek bemutatják, hogy melyik összetevő működése sikertelen volt. A címkézett funkció mentett adatok az Azure-blobba a modell létrehozása notebook.
 
-[Code\3_model_building.ipynb](https://github.com/Azure/MachineLearningSamples-PredictiveMaintenance/blob/master/Code/3_model_building.ipynb): A modell épület Notebook címkézett szolgáltatás adatkészlet használ, és az adatok felosztja a tanítási és fejlesztői adatkészletek a dátum-időbélyeg mentén. A notebook pyspark.ml.classification modellekkel való kísérlet lett beállítva. A betanítási adatok vectorized van. A felhasználó is kísérletezhet vagy egy **DecisionTreeClassifier** vagy **RandomForestClassifier** a legjobb teljesítményt modell található hiperparamétereket módosítására. Teljesítmény kiértékelése a fejlesztői adatkészlet mérési statisztikák határozza meg. A statisztikai információk a Machine Learning-munkaterület futásidejű képernyő nyomon követésére vissza a rendszer naplózza. Minden egyes használatkor a notebook az eredményül kapott modell a helyi lemezre menti, hogy fut a Jupyter notebook kernel. 
+[Code\3_model_building.ipynb](https://github.com/Azure/MachineLearningSamples-PredictiveMaintenance/blob/master/Code/3_model_building.ipynb): modell létrehozása a Notebook a címkézett szolgáltatás adatokat használja, és az adatok felosztja a tanítási és fejlesztési adatkészletek a dátum-idő bélyeg mentén. A notebook pyspark.ml.classification modellel próbaképpen van beállítva. A betanítási adatok vectorized van. A felhasználó is kipróbálhat akár egy **DecisionTreeClassifier** vagy **RandomForestClassifier** , keresse meg a legjobban teljesítő modellt hiperparaméterek módosítására. Teljesítmény kiértékelése mérési statisztikák a fejlesztési adatkészlet határozza meg. A statisztikák nyomon követésére, a Machine Learning Workbench futásidejű képernyő vissza a rendszer naplózza. Mindegyik futtatás során a notebookot az eredményül kapott modell a helyi lemezen, amelyen fut a Jupyter notebook kernel menti. 
 
-[Code\4_operationalization.ipynb](https://github.com/Azure/MachineLearningSamples-PredictiveMaintenance/blob/master/Code/4_operationalization.ipynb): A notebook hozhat létre az összetevők telepítéséhez a modell egy Azure webes szolgáltatás a helyi (Jupyter notebook kernel) lemezre mentett utolsó modellt használ. A teljes működési eszközöket egy másik Azure blob-tárolóban tárolt o16n.zip fájlba vannak tömöríteni. A zip-fájl tartalmazza:
+[Code\4_operationalization.ipynb](https://github.com/Azure/MachineLearningSamples-PredictiveMaintenance/blob/master/Code/4_operationalization.ipynb): Ez a jegyzetfüzet hozhat létre egy Azure-WebApp üzembe a modell üzembe helyezésével összetevői a helyi (Jupyter notebook kernel) lemezre mentett legutóbbi modellt használja. A teljes működési eszközöket egy másik Azure blob-tárolóban tárolt o16n.zip fájlba vannak tömöríteni. A tömörített fájl tartalmazza:
 
-* **service_schema.JSON**: központi telepítésére vonatkozó definíciójának sémafájl. 
-* **pdmscore.PY**: A **init()** és **run()** az Azure által igényelt funkciók webes szolgáltatás.
-* **pdmrfull.Model**: A modell definition könyvtár.
+* **service_schema.JSON**: az üzemelő példány definíciója sémafájl. 
+* **pdmscore.PY**: A **init()** és **run()** , amelyek szükségesek az Azure functions webes szolgáltatás.
+* **pdmrfull.Model**: A modell definícióját könyvtárat.
     
-A notebook teszteli a működik együtt a modell-definíciót, mielőtt a operationalization eszközök központi telepítési csomagban. A telepítési utasításokat a notebook végén érhetők el.
+A notebook teszteli a modell-definíciót, mielőtt csomagolására, üzembe helyezéshez operacionalizálás eszközök együttműködik. A notebook végén található központi telepítési utasításokat is.
 
 ## <a name="conclusion"></a>Összegzés
 
-Ebben a forgatókönyvben egy végpontok közötti prediktív karbantartási megoldás kialakításának PySpark a Machine Learning-munkaterület Jupyter Notebook környezetben áttekintést. Ebben a példaforgatókönyvben a modell központi telepítési hiba előrejelzéseket készítsen a valós idejű berendezések a Machine Learning modell felügyeleti környezet keresztül is részletezi.
+Ebben a forgatókönyvben egy teljes körű prediktív karbantartási megoldás kialakításához PySpark a Jupyter Notebook környezetben, a Machine Learning Workbench használatával áttekintést nyújt. Ebben a példaforgatókönyvben a modell-üzembehelyezés, valós idejű berendezések meghibásodása előrejelzéseket a Machine Learning Modellkezelés környezetben keresztül is részletezi.
 
 ## <a name="references"></a>Referencia
 
-A következő hivatkozásokat adjon meg más prediktív karbantartási példái a különböző platformok használati esetekben:
+A következő hivatkozásokat biztosít, más prediktív karbantartási példák használati esetek különböző platformokhoz:
 
-* [A prediktív karbantartási megoldás sablon](https://docs.microsoft.com/azure/machine-learning/cortana-analytics-playbook-predictive-maintenance)
-* [A prediktív karbantartási Fenyegetésmodellezési útmutatója](https://gallery.cortanaintelligence.com/Collection/Predictive-Maintenance-Modelling-Guide-1)
-* [A prediktív karbantartási modellezési útmutató SQL R Services segítségével](https://gallery.cortanaintelligence.com/Tutorial/Predictive-Maintenance-Modeling-Guide-using-SQL-R-Services-1)
-* [Python kalauz modellezési prediktív karbantartás](https://gallery.cortanaintelligence.com/Notebook/Predictive-Maintenance-Modelling-Guide-Python-Notebook-1)
-* [A prediktív karbantartási PySpark használatával](https://gallery.cortanaintelligence.com/Tutorial/Predictive-Maintenance-using-PySpark)
-* [Learning a prediktív karbantartási mély](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/scenario-deep-learning-for-predictive-maintenance)
+* [A prediktív karbantartási megoldás – sablon](https://docs.microsoft.com/azure/machine-learning/cortana-analytics-playbook-predictive-maintenance)
+* [Prediktív karbantartás Fenyegetésmodellezési útmutatója](https://gallery.cortanaintelligence.com/Collection/Predictive-Maintenance-Modelling-Guide-1)
+* [Prediktív karbantartás modellezési útmutató SQL R Services segítségével](https://gallery.cortanaintelligence.com/Tutorial/Predictive-Maintenance-Modeling-Guide-using-SQL-R-Services-1)
+* [Útmutató Python-jegyzetfüzetet a modellezési prediktív karbantartás](https://gallery.cortanaintelligence.com/Notebook/Predictive-Maintenance-Modelling-Guide-Python-Notebook-1)
+* [PySpark prediktív karbantartás](https://gallery.cortanaintelligence.com/Tutorial/Predictive-Maintenance-using-PySpark)
+* [Mélytanulás a prediktív karbantartás](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/scenario-deep-learning-for-predictive-maintenance)
 
 ## <a name="next-steps"></a>További lépések
 
-A Machine Learning Ezzzel a termék további funkciókat fogunk bemutatni, más példaforgatókönyvek érhetők el. 
+Más példaforgatókönyvek bemutatják a termék további funkciók, a Machine Learning Workbench alkalmazásban érhető el. 

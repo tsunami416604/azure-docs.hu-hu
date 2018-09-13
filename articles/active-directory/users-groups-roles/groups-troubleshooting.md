@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 08/01/2018
+ms.date: 09/11/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 82a5c57ce874e77a7912945a6fca07acee339197
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: c616618df0ef3a7b97a8d90977559889022db232
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39444487"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44718474"
 ---
 # <a name="troubleshooting-dynamic-memberships-for-groups"></a>Dinamikus csoporttagságok hibaelhárítása
 
@@ -42,6 +42,6 @@ ms.locfileid: "39444487"
 E cikkekben további információk találhatók az Azure Active Directoryval kapcsolatban.
 
 * [Erőforráshozzáférés-kezelés Azure Active Directory-csoportokkal](../fundamentals/active-directory-manage-groups.md)
-* [Az Azure Active Directory segítségével végzett alkalmazásfelügyeletre vonatkozó cikkek jegyzéke](../active-directory-apps-index.md)
+* [Alkalmazások kezelése az Azure Active Directoryban](../manage-apps/what-is-application-management.md)
 * [Mi az az Azure Active Directory?](../fundamentals/active-directory-whatis.md)
 * [Helyszíni identitások integrálása az Azure Active Directoryval](../connect/active-directory-aadconnect.md)

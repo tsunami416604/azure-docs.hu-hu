@@ -1,6 +1,6 @@
 ---
-title: Figyelési értesítések az Azure Stream Analytics-feladatok beállítása
-description: A cikkből megtudhatja, hogyan használható az Azure-portálon figyelése és Azure Stream Analytics-feladatok riasztásainak beállítása.
+title: Állítsa be a riasztásokat az Azure Stream Analytics-feladatok figyelése
+description: Ez a cikk ismerteti, hogyan állítsa be a figyelést és riasztásokat az Azure Stream Analytics-feladatok az Azure portal használatával.
 services: stream-analytics
 author: jseb225
 ms.author: jeanb
@@ -9,24 +9,24 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/26/2017
-ms.openlocfilehash: fb69f1b52e5b17dd6794c896969c29003a929c9b
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 4c676ab3039a02a4fda27ab00312133e5de8077a
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31412110"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35931452"
 ---
-# <a name="tutorial-set-up-alerts-for-azure-stream-analytics-jobs"></a>Oktatóanyag: Azure Stream Analytics-feladatok riasztások beállítása
-Figyelmeztetést jelenít meg, ha egy metrika eléri a megadott feltétel riasztásokat állíthat be. Például beállíthat egy feltételt a következőhöz hasonló értesítést:
+# <a name="set-up-alerts-for-azure-stream-analytics-jobs"></a>Állítsa be a riasztásokat az Azure Stream Analytics-feladatok
+Figyelmeztetést jelenít meg, ha egy metrika eléri a megadott feltétel állíthat be riasztásokat. Például előfordulhat, hogy állíthatja be egy adott feltételt, például a következő riasztást:
 
 `If there are zero input events in the last 5 minutes, send email notification to sa-admin@example.com`
 
-Szabályok mérőszámokat a portálon keresztül is beállítható, vagy konfigurálhatók [programozott módon](https://code.msdn.microsoft.com/windowsazure/Receive-Email-Notifications-199e2c9a) műveletnaplók adatok.
+Szabályok a metrikák a portálon keresztül is beállítható, vagy konfigurálhatók [programozott módon](https://code.msdn.microsoft.com/windowsazure/Receive-Email-Notifications-199e2c9a) műveletnaplók adatokon.
 
-## <a name="set-up-alerts-in-the-azure-portal"></a>Az Azure portálon riasztások beállítása
-1. Nyissa meg a Stream Analytics-feladat szeretne létrehozni egy riasztást az Azure-portálon. 
+## <a name="set-up-alerts-in-the-azure-portal"></a>Az Azure Portal értesítések beállítása
+1. Az Azure Portalon nyissa meg a Stream Analytics-feladat szeretne riasztást létrehozni. 
 
-2. Az a **feladat** panelen kattintson a **figyelés** szakasz.  
+2. Az a **feladat** panelen kattintson a **figyelés** szakaszban.  
 
 3. Az a **metrika** panelen kattintson a **riasztás hozzáadása** parancsot.
 
@@ -34,13 +34,13 @@ Szabályok mérőszámokat a portálon keresztül is beállítható, vagy konfig
 
 4. Adjon meg egy nevet és leírást.
 
-5. A választók használatával adja meg a feltétel, amely alatt a riasztást küld.
+5. A választók használatával definiálhatja a feltételt, amely alatt a riasztást küld.
 
-6. A riasztás hová kell ismertetik.
+6. Adja meg a riasztás hová kell adatait.
 
-      ![Egy Azure Streaming Analytics-feladat riasztás beállítása](./media/stream-analytics-set-up-alerts/stream-analytics-add-alert.png)  
+      ![Az Azure Stream Analytics-feladat riasztás beállítása](./media/stream-analytics-set-up-alerts/stream-analytics-add-alert.png)  
 
-Riasztások konfigurálása az Azure-portálon a további részletekért lásd: [riasztási értesítéseket](../monitoring-and-diagnostics/insights-receive-alert-notifications.md).  
+Riasztások konfigurálása az Azure Portalon a további részletekért lásd: [riasztási értesítések fogadása](../monitoring-and-diagnostics/insights-receive-alert-notifications.md).  
 
 
 ## <a name="get-help"></a>Segítségkérés

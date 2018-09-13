@@ -1,6 +1,6 @@
 ---
-title: Az Azure Blockchain munkaterület felhasználók kezelése
-description: Hogyan kezelheti a felhasználók Azure Blockchain munkaterület.
+title: Az Azure Blockchain Workbench használatával a felhasználók kezelése
+description: Hogyan kezelheti a felhasználókat az Azure Blockchain Workbench alkalmazásban.
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
@@ -10,112 +10,112 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: 80f20e438b1d923e688aeef9e6b353642bd74c27
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
-ms.translationtype: HT
+ms.openlocfilehash: ff2c6a2d9b2aec7abc684a4b189ccf31c454aaeb
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34158935"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35644928"
 ---
-# <a name="manage-users-in-azure-blockchain-workbench"></a>Az Azure Blockchain munkaterület felhasználók kezelése
+# <a name="manage-users-in-azure-blockchain-workbench"></a>Az Azure Blockchain Workbench használatával a felhasználók kezelése
 
-Azure Blockchain munkaterület tartalmazza a személyek és a konzorcium részét képező szervezetek felhasználói kezelése.
+Az Azure Blockchain Workbench felhasználókezelés emberek és szervezetek, amelyek részei a consortium tartalmazza.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A munkaterület Blockchain üzembe helyezésre szükség. Lásd: [Azure Blockchain munkaterület központi telepítési](blockchain-workbench-deploy.md) központi telepítés leírását.
+A Blockchain Workbench üzembe helyezésre szükség. Lásd: [Azure Blockchain Workbench üzembe helyezési](blockchain-workbench-deploy.md) üzembe helyezési részleteiért.
 
-## <a name="add-azure-ad-users"></a>Az Azure Active Directory-felhasználók hozzáadása
+## <a name="add-azure-ad-users"></a>Az Azure AD-felhasználók hozzáadása
 
-Az Azure-Blockchain munkaterület hitelesítés, a hozzáférés-vezérlés és a szerepkörök az Azure Active Directory (Azure AD). A Blockchain munkaterület az Azure AD bérlő felhasználók hitelesítéséhez és Blockchain munkaterületet használja. Felhasználók hozzáadása a felügyeleti alkalmazás-szerepkör interakciót és a műveleteket.
+Az Azure Blockchain Workbench az Azure Active Directory (Azure AD-) hitelesítés, hozzáférés-vezérlés és szerepkörök. A Blockchain Workbench az Azure AD-bérlőben található felhasználók hitelesítéséhez és Blockchain Workbench használata. Felhasználók hozzáadása és műveleteket, alkalmazás-rendszergazda szerepköréhez.
 
-Blockchain munkaterület felhasználóknak kell léteznie kell az Azure AD-bérlő az alkalmazásokhoz és szerepkörökhöz rendelheti. Az Azure AD-felhasználók hozzáadásához használja az alábbi lépéseket:
+Blockchain Workbenchet felhasználóknak, azok hozzárendelését is elvégezheti az alkalmazások és a szerepkörök az Azure AD-bérlőjében léteznie kell. Az Azure AD-felhasználók hozzáadásához használja az alábbi lépéseket:
 
 1.  Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2.  Válassza ki a fiókját a jobb felső sarokban, és váltson a Blockchain munkaterület társított Azure AD-bérlő.
-3.  Válassza ki **az Azure Active Directory > felhasználók**. Megjelenik azoknak a felhasználóknak a címtárban.
-4.  Felhasználók hozzáadása a könyvtárat, válassza ki a **új felhasználó**. Válassza ki a külső felhasználók **új Vendég felhasználó**.
+2.  Jelölje ki a fiók jobb felső sarokban, és váltson át a Blockchain Workbenchet társított Azure AD-bérlővel.
+3.  Válassza ki **az Azure Active Directory > felhasználók**. A címtár felhasználók listája látható.
+4.  Felhasználók hozzáadása a címtárhoz, jelölje be **új felhasználó**. A külső felhasználók számára, válassza ki a **új vendégfelhasználó**.
 
     ![Új felhasználó](media/blockchain-workbench-manage-users/add-ad-user.png)
 
 5.  Töltse ki a kötelező mezőket az új felhasználó. Kattintson a **Létrehozás** gombra.
 
-Látogasson el [az Azure AD](../active-directory/add-users-azure-active-directory.md) további részleteket a felhasználók kezelése belül az Azure AD dokumentációjában.
+Látogasson el [Azure ad-ben](../active-directory/fundamentals/add-users-azure-active-directory.md) dokumentációjában olvashat felhasználók kezelése az Azure AD-ben.
 
-## <a name="manage-blockchain-workbench-administrators"></a>Blockchain munkaterület a rendszergazdák kezelése
+## <a name="manage-blockchain-workbench-administrators"></a>Blockchain Workbenchet rendszergazdák kezelése
 
-Miután a könyvtár hozzáadott felhasználók, a következő lépés, hogy válassza körültekintően mely felhasználók Blockchain munkaterület a rendszergazdák. A felhasználók a **rendszergazda** csoportba tartoznak a **rendszergazda alkalmazás-szerepkör** Blockchain munkaterület. Rendszergazdák hozzáadása vagy eltávolítása a, felhasználók hozzárendelése az adott forgatókönyveket, és hozzon létre új alkalmazásokat.
+Miután a felhasználók vannak hozzáadva a könyvtárba, a következő lépés az válassza ki, hogy mely felhasználók tartoznak a Blockchain Workbench használatával a rendszergazdák. A felhasználók a **rendszergazda** csoporthoz társított a **alkalmazás-rendszergazda szerepkör** a Blockchain Workbenchet. Rendszergazdák hozzáadása vagy távolítsa el a felhasználókat, hozzárendelhet felhasználókat az adott forgatókönyveket, és hozzon létre új alkalmazásokat.
 
-Felhasználók hozzáadása a **rendszergazda** az Azure AD-címtár csoporthoz:
+Felhasználók hozzáadása a **rendszergazda** csoportot az Azure AD-címtárban:
 
 1.  Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2.  Ellenőrizze, hogy a fiókja kiválasztja a jobb felső sarokban található Blockchain munkaterület társított Azure AD-bérlő.
+2.  Ellenőrizze, hogy biztosan megfeleljen az a Blockchain Workbenchet a jobb felső sarokban válassza ki a fiók társított Azure AD-bérlővel.
 3.  Válassza ki **Azure Active Directory > Vállalati alkalmazások**.
-4.  Válassza ki az Azure AD ügyfélalkalmazás a Blockchain munkaterület
+4.  Válassza ki az Azure ad-ben ügyfélalkalmazás Blockchain Workbench használatával
     
-    ![Minden vállalati alkalmazás-regisztráció](media/blockchain-workbench-manage-users/select-blockchain-client-app.png)
+    ![Az összes vállalati alkalmazást az alkalmazásregisztrációk](media/blockchain-workbench-manage-users/select-blockchain-client-app.png)
 
 5.  Válassza ki **felhasználók és csoportok > felhasználó hozzáadása**.
-6.  A **hozzáadása hozzárendelés**, jelölje be **felhasználók**. Válassza ki, vagy keresse meg a felhasználó hozzáadása rendszergazdaként szeretné. Kattintson a **válasszon** kiválasztása befejezésekor.
+6.  A **hozzárendelés hozzáadása**válassza **felhasználók**. Válassza ki, vagy keresse meg a felhasználó hozzáadása rendszergazdaként szeretné. Kattintson a **kiválasztása** kiválasztása befejezésekor.
 
     ![Hozzárendelés felvétele](media/blockchain-workbench-manage-users/add-user-assignment.png)
 
-9.  Győződjön meg arról **szerepkör** értéke **rendszergazda**
-10. Válassza a **Hozzárendelés** elemet. A felvett felhasználók jelennek meg a listában hozzárendelt rendszergazdai szerepkörrel.
+9.  Győződjön meg arról **szerepkör** értékre van állítva **rendszergazda**
+10. Válassza a **Hozzárendelés** elemet. A felvett felhasználók jelennek meg a listában a rendszergazdai szerepkörrel.
 
-    ![Blockchain ügyfél alkalmazás felhasználói](media/blockchain-workbench-manage-users/blockchain-admin-list.png)
+    ![Blockchain-ügyfél. alkalmazás felhasználóinak](media/blockchain-workbench-manage-users/blockchain-admin-list.png)
 
-## <a name="managing-blockchain-workbench-members"></a>Blockchain munkaterület tagok kezelése
+## <a name="managing-blockchain-workbench-members"></a>Blockchain Workbenchet tagok kezelése
 
-A Blockchain munkaterület alkalmazás segítségével kezelheti a felhasználók és a szervezetek, amelyek a konzorcium részei. Adja hozzá, vagy távolítsa el az alkalmazások és a szerepkörök a felhasználók számára.
+A Blockchain Workbench alkalmazás használatával kezelheti a felhasználókat és a szervezetek számára, amelyek a consortium részét képezik. Adja hozzá, vagy távolítsa el a felhasználók alkalmazásokat és a szerepköröket.
 
-1. [Nyissa meg a Blockchain munkaterület](blockchain-workbench-deploy.md#blockchain-workbench-web-url) a böngésző és a jelentkezzen be rendszergazdaként.
+1. [Nyissa meg a Blockchain Workbenchet](blockchain-workbench-deploy.md#blockchain-workbench-web-url) a böngészőben, és jelentkezzen be rendszergazdaként.
 
     ![Blockchain Workbench](media/blockchain-workbench-manage-users/blockchain-workbench-applications.png)
 
-    Tagok tagjává válnak az egyes alkalmazásokhoz. Egy vagy több alkalmazás szerepkörök szerződések ill. műveletek is rendelkezik.
+    Minden alkalmazás tagok kerülnek. Szerződések kezdeményezni, vagy műveleteket egy vagy több alkalmazás-szerepkörök is rendelkezik.
 
-2. Kezelheti egy alkalmazás tagok, válassza ki az alkalmazás csempe az a **alkalmazások** ablaktáblán.
+2. Kezelheti egy alkalmazás tagok, válassza ki egy alkalmazás csempét a **alkalmazások** ablaktáblán.
 
-    A kijelölt alkalmazáshoz tartozó tagok száma a tagok csempe is megjelenik.
+    A kijelölt alkalmazáshoz tartozó tagok számát tükrözi a tagok csempét.
 
     ![Alkalmazás kijelölése](media/blockchain-workbench-manage-users/blockchain-workbench-select-application.png)
 
 
-#### <a name="add-member-to-application"></a>Alkalmazás-tag hozzáadása
+#### <a name="add-member-to-application"></a>Tag hozzáadása az alkalmazáshoz
 
-1. Válassza ki a tagot csempe aktuális tagot listájának megjelenítéséhez.
+1. Válassza ki a tag csempére, és a jelenlegi tagok listájának megjelenítéséhez.
 2. Válassza ki **tagok hozzáadása**.
 
     ![Tagok hozzáadása](media/blockchain-workbench-manage-users/application-add-members.png)
 
-3. Keresse meg a felhasználónevet.  Csak a Blockchain munkaterület bérlő szerepel az Azure AD-felhasználók szerepelnek. Ha a felhasználó nem található, akkor [adja hozzá az Azure Active Directory-felhasználók](#add-azure-ad-users).
+3. Keresse meg a felhasználó nevét.  Csak a Blockchain Workbenchet bérlő szerepel az Azure AD-felhasználók jelennek meg. Ha a felhasználó nem található, akkor [adja hozzá az Azure AD-felhasználók](#add-azure-ad-users).
 
     ![Tagok hozzáadása](media/blockchain-workbench-manage-users/find-user.png)
 
-4. Válassza ki a **szerepkör** a a legördülő listán.
+4. Válassza ki a **szerepkör** a legördülő listából.
 
     ![Válassza ki a szerepkör tagjai](media/blockchain-workbench-manage-users/application-select-role.png)
 
-5. Válassza ki **Hozzáadás** a tag a kapcsolódó szerepkör hozzáadása az alkalmazáshoz.
+5. Válassza ki **Hozzáadás** hozzárendelt szerepkörrel rendelkező tag hozzáadása az alkalmazáshoz.
 
-#### <a name="remove-member-from-application"></a>Alkalmazás-tag eltávolítása
+#### <a name="remove-member-from-application"></a>Tag eltávolítása az alkalmazásból
 
-1. Válassza ki a tagot csempe aktuális tagot listájának megjelenítéséhez.
-2. A felhasználó el szeretné távolítani, válassza a **eltávolítása** legördülő szerepkörből.
+1. Válassza ki a tag csempére, és a jelenlegi tagok listájának megjelenítéséhez.
+2. A felhasználó számára el szeretné távolítani, válassza ki a **eltávolítása** legördülő szerepkörből.
 
     ![Tag eltávolítása](media/blockchain-workbench-manage-users/application-remove-member.png)
 
-#### <a name="change-or-add-role"></a>Módosítsa vagy szerepkör hozzáadása
+#### <a name="change-or-add-role"></a>Módosítása vagy hozzáadása szerepkörhöz
 
-1. Válassza ki a tagot csempe aktuális tagot listájának megjelenítéséhez.
-2. A módosítani kívánt felhasználóhoz kattintson a legördülő listán, és válassza ki az új szerepkör.
+1. Válassza ki a tag csempére, és a jelenlegi tagok listájának megjelenítéséhez.
+2. A módosítani kívánt felhasználóhoz kattintson a legördülő, és válassza ki az új szerepkör.
 
     ![Szerepkör módosítása](media/blockchain-workbench-manage-users/application-change-role.png)
 
 ## <a name="next-steps"></a>További lépések
 
-Útmutató cikkben rendelkezik megtudta, hogyan kezelheti a felhasználók Azure Blockchain munkaterületet. Megtudhatja, hogyan hozhat létre egy blockchain alkalmazást, folytassa a következő cikkben található útmutató.
+Útmutató cikkben megtanulhatta, hogyan kezelheti a felhasználók az Azure Blockchain Workbench használatával. Ismerje meg, hogyan hozhat létre a blockchain-alkalmazások, folytassa a következő cikkben található útmutató.
 
 > [!div class="nextstepaction"]
-> [Azure Blockchain munkaterület blockchain-alkalmazás létrehozása](blockchain-workbench-create-app.md)
+> [A blockchain-alkalmazások létrehozása az Azure Blockchain Workbench használatával](blockchain-workbench-create-app.md)

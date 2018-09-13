@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 4dc88abda0f19896b8f1ed6465fe0fc39ac81b72
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: aad6aa788e9d7c7ca2c438bdeb63e77e91e4791a
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44381610"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44714476"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>Az Azure Active Directory B2C-vel egyéni szabályzatok műszaki profilokról
 
@@ -37,7 +37,6 @@ A technikai profil lehetővé teszi, hogy az ilyen típusú forgatókönyvek:
 - [RESTful szolgáltató](restful-technical-profile.md) -hívás a REST API-szolgáltatások, mint például az adatbevitel érvényesítéséhez felhasználói adatok bővítését, vagy – üzletági alkalmazások integrálhatók.
 - [Egy SAML2](saml-technical-profile.md) -összevonási bármely SAML-protokoll identitásszolgáltatóval.
 - [Önálló kiszolgáló által megerősített](self-asserted-technical-profile.md) -interakciót folytatni a felhasználóval. Gyűjtsön például a felhasználó hitelesítő adatait, hogy jelentkezzen be, a regisztrációs oldalon jelennek meg, vagy a jelszó-visszaállítási.
-- [Jogkivonatot kibocsátó](jwt-issuer-technical-profile.md) -hozzáférési jogkivonatokat.
 - **WsFed** -összevonási bármely WsFed protokoll identitásszolgáltatóval. 
 - **Munkamenet-kezelés** -munkamenetek különböző típusú kezelni. 
 - **Felhasználói interakciósorozat környezet szolgáltató**

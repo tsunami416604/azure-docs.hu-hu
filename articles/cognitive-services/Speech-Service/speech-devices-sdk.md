@@ -1,7 +1,7 @@
 ---
 title: A beszéd-eszközökről SDK
-description: Bevezetés a Speech Devices SDK-val.
-titleSuffix: Microsoft Cognitive Services
+description: Ismerkedjen meg a beszédfelismerés Devices SDK-val.
+titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: v-jerkin
 ms.service: cognitive-services
@@ -9,32 +9,35 @@ ms.technology: speech
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 97a5d00d43ac6a9d4b28ba23ca69d9b67e1bdf6f
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: ea1f2248feaa6b96f757b251d293860ad40ff8ce
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43049799"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44715703"
 ---
 # <a name="about-the-speech-devices-sdk-preview"></a>A beszéd-eszközökről SDK-t (előzetes verzió)
 
-A [Microsoft Speech service](overview.md) együttműködik számos különböző hang forrásai és eszközei. Most a következő szintre való megfelelést kiváltó hardver- és beszédfelismerés alkalmazásait is igénybe vehet. A beszédfelismerés Devices SDK-val párosítva célú előre beállított kódtár beépített mikrofon tömb szoftverfejlesztői készletekkel. Így gyorsan tesztelheti az új hangalapú forgatókönyvek segítségével, a beszéd Devices SDK-val megkönnyíti a felhőalapú Microsoft beszédfelismerési szolgáltatás integrálása az eszközt, és hozzon létre egy kivételes felhasználói élmény az ügyfelek számára. 
+A [Microsoft Speech service](overview.md) együttműködik számos különböző hang forrásai és eszközei. Most a következő szintre való megfelelést kiváltó hardver- és beszédfelismerés alkalmazásait is igénybe vehet. A beszédfelismerés Devices SDK-val az régiójával célirányosan fejlesztett, mikrofon tömb szoftverfejlesztői készletekkel pretuned könyvtárból. 
 
-A beszédfelismerési eszköz SDK-t használ a [beszéd SDK](speech-sdk.md), és a Speech SDK segítségével dolgozza fel az eszköz mikrofonját tömbből, a speciális hang feldolgozási algoritmus a hanganyag küldése a [Microsoft Speech Service](overview.md).  Többcsatornás hang pontosabb távolságban mező biztosításához használt [beszédfelismerés](speech-to-text.md) zaj tiltási, echo törlését, beamforming és való reverberation keresztül.
+A beszédfelismerés eszközök SDK segítségével:
+* Gyorsan tesztelheti az új hangalapú forgatókönyvek.
+* A felhő alapú beszédszolgáltatás könnyen integrálható az eszköz.
+* Hozzon létre egy kivételes felhasználói élmény az ügyfelek számára. 
 
-A beszédfelismerés Devices SDK-val is lehetővé teszi a saját környezeti eszközöket hozhat létre [testre szabott ébresztési word](speech-devices-sdk-create-kws.md)– így a köteg kezdeményező felhasználói interakció a márka egyedi. 
+A beszédfelismerési eszköz SDK-t használ a [beszéd SDK](speech-sdk.md). A beszédfelismerés SDK-t használ a hang, a speciális hang feldolgozási algoritmus az eszköz mikrofonját tömbből, která je zpracována küldése a [beszédszolgáltatás](overview.md). Többcsatornás hang pontosabb távolságban mező biztosításához használt [beszédfelismerés](speech-to-text.md) zaj tiltási, echo törlését, beamforming és dereverberation keresztül.
 
-Az SDK-val segíti az voice-kompatibilis forgatókönyvek, például a meghajtó érvényes sorbarendezésre rendszerek, az áruházon belüli vagy in-home asszisztensek és intelligens előadói különböző. Szöveg-, a felhasználók válaszolhat egy rendszergazdára vissza őket egy alapértelmezett vagy [egyéni beszédfelismerési](how-to-customize-voice-font.md), adja meg a keresési eredmények között, [fordítása](speech-translation.md) az más nyelvekre, és egyéb. Kíváncsian várjuk, mit hoz létre!
+A beszédfelismerés eszközök SDK-t hozhat létre környezeti rendelkező eszközök a saját is használhatja [testre szabott ébresztési word](speech-devices-sdk-create-kws.md)– így a köteg kezdeményező felhasználói interakció a márka egyedi. 
 
-
+A beszédfelismerés Devices SDK-val segíti az voice-kompatibilis forgatókönyvek, például a meghajtó érvényes sorbarendezésre rendszerek, az áruházon belüli vagy in-home asszisztensek és intelligens előadói különböző. Vissza a azokat egy alapértelmezett beszél, hogy a felhasználók a szöveges, reagáljon vagy [egyéni beszédfelismerési](how-to-customize-voice-font.md), adja meg a keresési eredmények között, [fordítása](speech-translation.md) az más nyelvekre, és egyéb. Kíváncsian várjuk, mit hoz létre!
 
 ## <a name="development-kit-providers"></a>Development kit szolgáltatók
 
-Teljes, végpontok közötti rendszerek referenciatervek. További hamarosan elérhető!
+Jelenleg ezek teljes, végpontok közötti rendszerek referenciatervek érhetők el: 
 
 |||
 |-|-|
-|[![ROOBO embléma](media/speech-devices-sdk/roobo-logo.png)](http://ddk.roobo.com/)|ROOBO electric háztartási, autók, robotok, a játékok és más iparágak teljes rendszer AI-megoldásokat biztosít. Referenciatervek ROOBO a jelentősen csökkentheti a fejlesztési-piacra keresztül a Microsoft Speech szolgáltatással. [Látogasson el a ROOBO](http://ddk.roobo.com/)|
+|[![ROOBO embléma](media/speech-devices-sdk/roobo-logo.png)](http://ddk.roobo.com/)|ROOBO kész mesterséges intelligencia (AI) rendszer megoldásokat kínál electric háztartási, autók, robotok, a játékok és más iparágak. Referenciatervek ROOBO a jelentősen csökkentheti a fejlesztési-piacra keresztül a Microsoft Speech szolgáltatással. [Látogasson el a ROOBO](http://ddk.roobo.com/).|
 
 ## <a name="next-steps"></a>További lépések
 

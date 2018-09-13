@@ -12,12 +12,12 @@ ms.author: josack
 ms.suite: sql
 ms.prod_service: sql-database
 ms.component: data-movement
-ms.openlocfilehash: 133cba72a93d692851043f1c66d6a4a38e18b324
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: d82cc3ee1074e326c9e4dee7fd65e338cb95e19f
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44379465"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44722231"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-database-in-azure-sql-database"></a>Új adatbázis a felhőben – Azure SQL Database adatbázis
 
@@ -209,7 +209,7 @@ Ez a diagram is konfigurálhatja riasztások erőforrás szerint. Ezek a riaszt�
 
    ![Lekérdezési terheléselemző](./media/sql-database-manage-after-migration/query-performance-insight.png)
 
-- **Az Azure SQL Analytics (előzetes verzió) a Log Analytics**: [Azure Log Analytics](../log-analytics/log-analytics-azure-sql.md) legfeljebb 150 000 SQL-adatbázisok és 5000 SQL rugalmas készletek száma támogatása lehetővé teszi, hogy gyűjtése és az Azure SQL Azure fő teljesítménymutatók, megjelenítése munkaterület. Használhatja figyelésére és az értesítések fogadásához. Képes figyelni az SQL Database és rugalmas készletekkel kapcsolatos metrikák több Azure-előfizetések és a rugalmas készletek, és a egy alkalmazáscsoportokat minden rétegében problémák azonosításához használható.
+- **Az Azure SQL Analytics (előzetes verzió) a Log Analytics**: [Azure Log Analytics](../log-analytics/log-analytics-azure-sql.md) legfeljebb 150 000 SQL-adatbázisok és 5000 rugalmas SQL-készletek száma támogatása lehetővé teszi, hogy gyűjtése és az Azure SQL Azure fő teljesítménymutatók, megjelenítése munkaterület. Használhatja figyelésére és az értesítések fogadásához. Képes figyelni az SQL Database és rugalmas készletekkel kapcsolatos metrikák több Azure-előfizetések és a rugalmas készletek, és a egy alkalmazáscsoportokat minden rétegében problémák azonosításához használható.
 
 ### <a name="i-am-noticing-performance-issues-how-does-my-sql-database-troubleshooting-methodology-differ-from-sql-server"></a>E vagyok észre a teljesítménnyel kapcsolatos problémák: saját SQL Database hibaelhárítás módszertana Miben különbözik az SQL Serverről?
 Az lekérdezési diagnosztizálásakor használja a hibaelhárítási eljárások jelentős részét, és adatbázis teljesítményproblémák változatlan marad. Után minden ugyanazt az SQL Server adatbázismotor működteti a felhőben. Azonban a platform – Azure SQL Database beépített rendelkezik "intelligens". Hibaelhárítása és diagnosztizálhatja a teljesítménybeli problémákat még könnyebben segíthet. Azt is elvégezhetők a javítási műveleteket az Ön nevében, és bizonyos esetekben, proaktív módon javítsa ki őket – automatikusan. 

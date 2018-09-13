@@ -6,14 +6,14 @@ manager: timlt
 ms.author: dobett
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 01/29/2018
+ms.date: 09/12/2018
 ms.topic: conceptual
-ms.openlocfilehash: dd696330c9ee78ef84ac9fcf85946c837ad5b824
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 56f233afed8c403d19c9b668e98ecfec45470b64
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39188014"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44721619"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-using-the-cli"></a>A távoli figyelési megoldásgyorsító a CLI-vel üzembe helyezése
 
@@ -54,7 +54,7 @@ A megoldásgyorsító központi telepítésekor többféle módon, amely a telep
 | SKU    | `basic`, `standard`, `local` | A _alapszintű_ központi telepítés a célja a teszt- és bemutatók, mindegyik mikroszolgáltatás egyetlen virtuális gép üzembe helyezve. A _standard_ központi telepítés a célja az éles környezetben ez üzembe helyezi a mikroszolgáltatásokat több virtuális gép. A _helyi_ telepítési konfigurálja egy Docker-tárolót, a mikroszolgáltatásokat futtathatók a helyi gépen, és használja az Azure-szolgáltatások, például a storage és a Cosmos DB, a felhőben. |
 | Futtatókörnyezet | `dotnet`, `java` | A mikroszolgáltatások nyelvi végrehajtásának választja ki. |
 
-A helyi üzemelő példányának használatával kapcsolatos tudnivalókért lásd: [helyben fut a távoli figyelési megoldás](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Running-the-Remote-Monitoring-Solution-Locally#deploy-azure-services-and-set-environment-variables).
+A helyi üzemelő példányának használatával kapcsolatos tudnivalókért lásd: [helyben fut a távoli figyelési megoldás](iot-accelerators-remote-monitoring-deploy-local.md).
 
 ## <a name="basic-vs-standard-deployments"></a>Alapszintű vs. Normál telepítések
 
@@ -69,9 +69,16 @@ Alapszintű megoldások létrehozásának kiépítése folyamatban az Azure-elő
 |-------|--------------------------------|--------------|----------|
 | 1     | [Linux rendszerű virtuális gép](https://azure.microsoft.com/services/virtual-machines/) | Standard D1 V2  | Mikroszolgáltatás-alapú üzemeltetéséhez |
 | 1     | [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/)                  | S1 – Standard csomag | Kezelés és kommunikáció |
-| 1     | [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)              | Standard        | Konfigurációs adatok és eszközök telemetriai például szabályok, a riasztások és az üzenetek tárolására |  
+| 1     | [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)              | Standard        | Konfigurációs adatok tárolását, szabályok, riasztások és más ritka elérésű tárolási |  
 | 1     | [Az Azure Storage-fiók](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts)  | Standard        | Virtuális gép és a streamelési ellenőrzőpontok |
 | 1     | [Webalkalmazás](https://azure.microsoft.com/services/app-service/web/)        |                 | A webes előtér-alkalmazás üzemeltetése |
+| 1     | [Azure Active Directory](https://azure.microsoft.com/services/active-directory/)        |                 | Felhasználói identitások kezelése és biztonsági |
+| 1     | [Azure Maps](https://azure.microsoft.com/services/azure-maps/)        | Standard                | Az eszközintelligencia helyek megtekintése |
+| 1     | [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/)        |   3 egység              | Valós idejű elemzési engedélyezése |
+| 1     | [Az Azure Device Provisioning Service](https://docs.microsoft.com/azure/iot-dps/)        |       S1          | Üzembe helyezési eszközöket bármilyen méretek |
+| 1     | [Azure Time Series Insights](https://azure.microsoft.com/services/time-series-insights/)        |   S1 – 1 egység              | Tárolási üzenetek adatait, és lehetővé teszi, hogy részletesen telemetriai elemzés céljából |
+
+
 
 ### <a name="standard"></a>Standard
 A normál telepítés az éles használatra kész üzemelő fejlesztői testreszabhatja és kibővítheti a saját igényeihez. A megbízhatóság és a méretezési csoport alkalmazás mikroszolgáltatások Docker-tárolókként épülnek, és egy orchestrator-val telepített ([Kubernetes](https://kubernetes.io/) alapértelmezés szerint). Az orchestrator telepítési, méretezését és felügyeletét, az alkalmazás feladata.
@@ -82,10 +89,15 @@ Standard szintű megoldások létrehozásának kiépítése folyamatban az Azure
 |-------|----------------------------------------------|-----------------|----------|
 | 4     | [Linux rendszerű virtuális gépek](https://azure.microsoft.com/services/virtual-machines/)   | Standard D2 V2  | 1 főkiszolgáló és a mikroszolgáltatásokat üzemeltet a redundancia 3 ügynök |
 | 1     | [Az Azure Container Service-ben](https://azure.microsoft.com/services/container-service/) |                 | [Kubernetes](https://kubernetes.io) orchestrator |
-| 1     | [Az azure IoT Hub] [https://azure.microsoft.com/services/iot-hub/]                     | S2 – Standard csomag | Eszközkezelés, a parancs és vezérlés |
+| 1     | [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/)                     | S2 – Standard csomag | Eszközkezelés, a parancs és vezérlés |
 | 1     | [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)                 | Standard        | Konfigurációs adatok és eszközök telemetriai például szabályok, a riasztások és az üzenetek tárolására |
 | 5     | [Az Azure Storage-fiókok](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts)    | Standard        | 4 – Virtuálisgép-tároló, a streamelési ellenőrzőpontokat 1 |
 | 1     | [APP SERVICE](https://azure.microsoft.com/services/app-service/web/)             | S1 – Standard     | Az Application gateway SSL-en keresztül |
+| 1     | [Azure Active Directory](https://azure.microsoft.com/services/active-directory/)        |                 | Felhasználói identitások kezelése és biztonsági |
+| 1     | [Azure Maps](https://azure.microsoft.com/services/azure-maps/)        | Standard                | Az eszközintelligencia helyek megtekintése |
+| 1     | [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/)        |   3 egység              | Valós idejű elemzési engedélyezése |
+| 1     | [Az Azure Device Provisioning Service](https://docs.microsoft.com/azure/iot-dps/)        |       S1          | Üzembe helyezési eszközöket bármilyen méretek |
+| 1     | [Azure Time Series Insights](https://azure.microsoft.com/services/time-series-insights/)        |   S1 – 1 egység              | Tárolási üzenetek adatait, és lehetővé teszi, hogy részletesen telemetriai elemzés céljából |
 
 > Ezek a szolgáltatások találja a díjszabásról [Itt](https://azure.microsoft.com/pricing). Használati összegek és az előfizetés számlázási adatait tekintheti meg a [az Azure Portal](https://portal.azure.com/).
 

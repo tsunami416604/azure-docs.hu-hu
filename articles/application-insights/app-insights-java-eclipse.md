@@ -1,6 +1,6 @@
 ---
-title: Ismerkedés az Azure Application Insights az eclipse-ben Java |} Microsoft docs
-description: Az Eclipse beépülő modul segítségével adja hozzá a teljesítmény- és használat figyelését a Java-webhelyéhez az Application insights szolgáltatással
+title: Ismerkedés az Azure Application Insights az eclipse-ben javával |} A Microsoft docs
+description: Teljesítmény és használat monitorozása, az Application insights segítségével a Java-webhely hozzáadása az Eclipse beépülő modul használatával
 services: application-insights
 documentationcenter: java
 author: mrbullwinkle
@@ -10,46 +10,46 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/12/2016
 ms.author: mbullwin
-ms.openlocfilehash: 8e8e63b053cb5bd504a41da9b537354a1dd42968
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: ebcfe02eb8d969af26f5121bda85e4610302e838
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34795560"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35645208"
 ---
-# <a name="get-started-with-application-insights-with-java-in-eclipse"></a>Ismerkedés az Application Insights Java az eclipse-ben
-Az Application Insights SDK, hogy elemezheti a használati és teljesítményadatokat küld a Java-webalkalmazások telemetriai adatokat. Az eclipse-ben az Application Insights beépülő modult úgy, hogy be kívül mezőben telemetriai adatok, valamint az API-k, amelyek segítségével egyéni telemetriai adatokat írni automatikusan telepíti az SDK-t a projektben.   
+# <a name="get-started-with-application-insights-with-java-in-eclipse"></a>Ismerkedés az Application insights szolgáltatással Java, az eclipse-ben
+Az Application Insights SDK telemetriát küld a Java-webalkalmazások, hogy használatának és teljesítményének elemzése a. Az Eclipse beépülő modul az Application Insights automatikusan telepíti az SDK-t a projekthez, annak érdekében, hogy a box telemetriát, valamint egy API-t használó egyéni telemetriát írhat ki.   
 
 ## <a name="prerequisites"></a>Előfeltételek
-Jelenleg a beépülő modul működését Maven-projektek és dinamikus webes projektek az eclipse-ben.
-([Application Insights hozzáadása a Java-projektet, más típusú][java].)
+Jelenleg a beépülő modul működését a Maven-projektekhez, és dinamikus webes projekt az eclipse-ben.
+([Application Insights hozzáadása a Java-projekt más típusú][java].)
 
 A következők szükségesek:
 
-* JRE 1.7 vagy 1.8
+* JRE 1.7-es vagy 1.8-as verziója
 * Egy [Microsoft Azure](https://azure.microsoft.com/)-előfizetés.
-* [Java EE-fejlesztőknek IDE Holdas](http://www.eclipse.org/downloads/), Indigo vagy újabb.
+* [Eclipse IDE Java EE-fejlesztőknek készült](http://www.eclipse.org/downloads/), Indigo vagy újabb.
 * Windows 7 vagy újabb, vagy a Windows Server 2008 vagy újabb
 
-Ha a rugó keretrendszer próbálja inkább a [használatára az Application Insights az útmutató egy rugó rendszerindító inicializáló alkalmazás konfigurálása](https://docs.microsoft.com/java/azure/spring-framework/configure-spring-boot-java-applicationinsights)
+Ha a Spring keretrendszert részesíti előnyben, tekintse meg a [Spring Boot inicializáló alkalmazás konfigurálása az Application Insights használatához](https://docs.microsoft.com/java/azure/spring-framework/configure-spring-boot-java-applicationinsights) című útmutatót.
 
-## <a name="install-the-sdk-on-eclipse-one-time"></a>Telepítse az SDK Eclipse (egyszer)
-Csak kell elvégezni a számítógép egy alkalommal. Ez a lépés telepíti egy eszközkészlet, amelyet ezután felvehet az SDK minden dinamikus webes projekt.
+## <a name="install-the-sdk-on-eclipse-one-time"></a>Az SDK telepítése az eclipse-ben (egyszer)
+Csak akkor kell elvégezni a gép egyszer. Ebben a lépésben egy eszközkészlet, amely ezután hozzáadhatja az SDK-t minden egyes dinamikus webes projekt telepítése.
 
-1. Az eclipse-ben kattintson a Súgó, új szoftverek telepítése.
+1. Az eclipse-ben kattintson a Súgó, új szoftver telepítése.
 
-    ![Súgó, új szoftverek telepítése](./media/app-insights-java-eclipse/0-plugin.png)
-2. Az SDK-val van http://dl.microsoft.com/eclipse, Azure eszközkészlet alatt.
-3. Törölje a jelet **lépjen kapcsolatba az összes frissítés hely...**
+    ![Súgó, új szoftver telepítése](./media/app-insights-java-eclipse/0-plugin.png)
+2. Az SDK van http://dl.microsoft.com/eclipse, Azure-eszközkészlet alatt.
+3. Törölje a jelet **lépjen kapcsolatba az összes frissítési hely...**
 
-    ![Application Insights SDK törölje lépjen kapcsolatba az összes frissítés helyek](./media/app-insights-java-eclipse/1-plugin.png)
+    ![Az Application Insights SDK-t törölje a jelet lépjen kapcsolatba az összes frissítési hely](./media/app-insights-java-eclipse/1-plugin.png)
 
-Kövesse a hátralévő minden Java-projektet.
+Kövesse a hátralévő lépéseket minden egyes Java-projekthez.
 
-## <a name="create-an-application-insights-resource-in-azure"></a>Az Application Insights-erőforrás létrehozása az Azure-ban
+## <a name="create-an-application-insights-resource-in-azure"></a>Application Insights-erőforrás létrehozása az Azure-ban
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Hozzon létre egy új Application Insights-erőforrást. Állítsa be a Java webalkalmazás alkalmazástípust.  
 
@@ -60,49 +60,49 @@ Kövesse a hátralévő minden Java-projektet.
     ![Az új erőforrás áttekintésében kattintson a Tulajdonságok gombra, és másolja le a kialakítási kulcsot](./media/app-insights-java-eclipse/03-key.png)  
 
 ## <a name="add-application-insights-to-your-project"></a>Az Application Insights hozzáadása a projekthez
-1. Az Application Insights hozzáadása a Java-webalkalmazás projekt helyi menüjéből.
+1. Az Application Insights hozzáadása a Java-webalkalmazás projekt helyi menüből.
 
     ![Az új erőforrás áttekintésében kattintson a Tulajdonságok gombra, és másolja le a kialakítási kulcsot](./media/app-insights-java-eclipse/02-context-menu.png)
-2. Illessze be a instrumentation kulcs portáltól kapott az Azure-portálon.
+2. Illessze be a az Azure Portalról kapott kialakítási kulcsot.
 
     ![Az új erőforrás áttekintésében kattintson a Tulajdonságok gombra, és másolja le a kialakítási kulcsot](./media/app-insights-java-eclipse/03-ikey.png)
 
-A kulcsot minden telemetriai tétel együtt küldött, és közli az Application Insights meg azt az erőforrás.
+A kulcsot a telemetria minden eleméhez együtt küldött, és az Application Insights, hogy megjelenítse azt az erőforrás közli.
 
-## <a name="run-the-application-and-see-metrics"></a>Futtassa az alkalmazást, és tekintse meg a metrikák
+## <a name="run-the-application-and-see-metrics"></a>Futtassa az alkalmazást, és metrikák
 Futtassa az alkalmazást.
 
-Térjen vissza az Application Insights-erőforrást, a Microsoft Azure-ban.
+Térjen vissza a Microsoft Azure Application Insights-erőforrást.
 
 A HTTP-kérelemadatok az áttekintési panelen jelennek meg. (Ha nincsenek ott, várjon néhány másodpercig, majd kattintson a Frissítés gombra.)
 
-![Kiszolgáló válasza, az ügyfélkérelmek számát és a hibák ](./media/app-insights-java-eclipse/5-results.png)
+![Kiszolgáló válasza, a kérések számát és a hibák ](./media/app-insights-java-eclipse/5-results.png)
 
 Részletesebb mérőszámokért kattintson bármelyik diagramra.
 
-![A kérelmek számát név szerint](./media/app-insights-java-eclipse/6-barchart.png)
+![A kérelmek számát, név szerint](./media/app-insights-java-eclipse/6-barchart.png)
 
 [További információk a metrikákról.][metrics]
 
-És egy kérelem tulajdonságainak megtekintésekor láthatja a telemetriai események például a kérelmek és kivételek társítva.
+És a egy kérelem tulajdonságainak megtekintésekor láthatja a telemetriaeseményeket, például a kérések és kivételek társítva.
 
-![A kérelemhez tartozó összes adat](./media/app-insights-java-eclipse/7-instance.png)
+![Ehhez a kérelemhez tartozó összes híváslánc](./media/app-insights-java-eclipse/7-instance.png)
 
-## <a name="client-side-telemetry"></a>Ügyféloldali telemetriai adat
-Első lépések panelen kattintson a Get-kódot a weblapok figyeléséhez:
+## <a name="client-side-telemetry"></a>Ügyféloldali telemetria
+A rövid útmutató panelen kattintson a Get-kódot a weblapok figyeléséhez elemre:
 
 ![Az alkalmazás áttekintési panelén válassza a Gyors üzembe helyezés, Kód letöltése a weblapok figyeléséhez lehetőséget. Másolja a szkriptet.](./media/app-insights-java-eclipse/02-monitor-web-page.png)
 
 Helyezze be a kódrészletet a HTML-fájlok vezetője.
 
 #### <a name="view-client-side-data"></a>Az ügyféloldali adatok megtekintése
-Nyissa meg a frissített weblapok és használhatják azokat. Várjon egy percet, vagy két, majd térjen vissza az Application Insights, és a használati panel megnyitásához. (Áttekintése panelen görgessen lefelé, és kattintson a használati.)
+Nyissa meg a frissített weblapok, és azok használatát. Várjon egy percet vagy két, majd térjen vissza az Application Insights és a használati panel megnyitásához. (Az Áttekintés panelen görgessen lefelé, és kattintson a felhasználás.)
 
-A használati panelen lap nézet, a felhasználó és a munkamenet metrikák jelennek meg:
+Oldal nézet, felhasználók és munkamenetek metrikák a felhasználás panelen jelenik meg:
 
-![Munkamenetek, a felhasználók és az oldalmegtekintéseket](./media/app-insights-java-eclipse/appinsights-47usage-2.png)
+![Munkamenetek, a felhasználókat és a lapmegtekintés](./media/app-insights-java-eclipse/appinsights-47usage-2.png)
 
-[További információ az ügyféloldali telemetriai beállítása.][usage]
+[További információ az ügyféloldali telemetria beállítása.][usage]
 
 ## <a name="publish-your-application"></a>Az alkalmazás közzététele
 Most tegye közzé az alkalmazást a kiszolgálón, hagyja, hogy mások használják, és nézze, ahogyan a telemetria megjelenik a portálon.
@@ -126,16 +126,16 @@ A rendszer a nem kezelt kivételeket automatikusan begyűjti:
 
 Adatok és más kivételek gyűjtésére két lehetősége van:
 
-* [Helyezze be a kódot TrackException hívások](app-insights-api-custom-events-metrics.md#trackexception).
+* [A kódba szúrja be TrackException](app-insights-api-custom-events-metrics.md#trackexception).
 * [Telepítse a Java ügynököt a kiszolgálón](app-insights-java-agent.md). Válassza ki a megtekinteni kívánt metódusokat.
 
 ## <a name="monitor-method-calls-and-external-dependencies"></a>Metódushívások és külső függőségek megfigyelése
 [Telepítse a Java ügynököt](app-insights-java-agent.md) a megadott belső módszerek és a JDBC-n keresztül végzett hívások naplózásához, időzítési adatokkal.
 
 ## <a name="performance-counters"></a>Teljesítményszámlálók
-Az Áttekintés panelen görgessen lefelé, és kattintson a **kiszolgálók** csempére. Teljesítményszámlálók számos láthatja.
+Az áttekintési panelen görgessen lefelé, és kattintson a **kiszolgálók** csempére. Láthatja a teljesítményszámlálók számos.
 
-![Görgessen le, kattintson a kiszolgálók csempéje](./media/app-insights-java-eclipse/11-perf-counters.png)
+![Görgessen lefelé, kattintson a kiszolgálók csempéje](./media/app-insights-java-eclipse/11-perf-counters.png)
 
 ### <a name="customize-performance-counter-collection"></a>Teljesítményszámláló-gyűjtemény testreszabása
 A teljesítményszámlálók standard készlete gyűjtésének letiltásához adja a következő kódot az ApplicationInsights.xml fájl gyökércsomópontja alatt:
@@ -196,7 +196,7 @@ A teljesítményszámlálói egyéni mérőszámokként láthatók a [Metrikabö
 * [Telepítse a gyűjteményt az Application Insights beépülő modullal](app-insights-java-collectd.md) számos rendszer- és hálózati adat lekéréséhez.
 
 ## <a name="availability-web-tests"></a>Rendelkezésre állási webes tesztek
-Az Application Insights rendszeres időközönként teszteli a webhelyét, hogy működik és jól válaszol-e. [Beállítása][availability], görgessen le a rendelkezésre állási elemre.
+Az Application Insights rendszeres időközönként teszteli a webhelyét, hogy működik és jól válaszol-e. [Állítsa be a][availability], görgessen lefelé a rendelkezésre állás lehetőségre kattintáshoz.
 
 ![Görgessen lefelé, kattintson a Rendelkezésre állás elemre, majd a Webes teszt hozzáadása elemre](./media/app-insights-java-eclipse/31-config-web-test.png)
 
@@ -207,27 +207,27 @@ Megkapja a válaszidők diagramjait, valamint e-mailes értesítéseket kap, ha 
 [További információk a rendelkezésre állási webes tesztekről.][availability]
 
 ## <a name="diagnostic-logs"></a>Diagnosztikai naplók
-Ha a Log4J vagy a Logback használata (1.2-es verzió vagy 2.0-s) a nyomkövetés, akkor a nyomkövetési naplók megtekintése az Application Insights ahol vizsgálatát, és keresse meg őket automatikusan elküldi.
+Ha a Logback vagy Log4J használja (1.2-es verzió vagy 2.0-s verzió) nyomkövetés, az automatikusan elküldi az Application Insights, amelyen ismerje meg, és keresse meg azokat a nyomkövetési naplók rendelkezhet.
 
 [További információ a diagnosztikai naplók][javalogs]
 
 ## <a name="custom-telemetry"></a>Egyéni telemetria
-Néhány sornyi kód beszúrása a Java-webalkalmazás megállapítása a felhasználók tevékenységeit vele, vagy a problémák diagnosztizálásához.
+Helyezze be a Java-webalkalmazás megtudhatja, milyen felhasználók általi használatát, vagy a problémák diagnosztizálásához néhány sornyi kóddal.
 
-Kód weblapon JavaScript- és kiszolgálóoldali Java beszúrásához.
+Kód weblap JavaScript és a kiszolgálóoldali Java is beszúrhat.
 
-[További tudnivalók az egyéni telemetria][track]
+[További információ az egyéni telemetria][track]
 
 ## <a name="next-steps"></a>További lépések
-#### <a name="detect-and-diagnose-issues"></a>Észlelheti és diagnosztizálhatja a problémákat
-* [Adja hozzá a webes ügyfél telemetriai] [ usage] teljesítmény telemetriai adatainak lekérése a webes ügyféllel.
+#### <a name="detect-and-diagnose-issues"></a>Problémák észlelése és diagnosztizálása
+* [Ügyfél-telemetriát adhat hozzá] [ usage] a teljesítményadatok máris a webes ügyfél.
 * [Beállíthat webes teszteket][availability] annak biztosításához, hogy az alkalmazás mindig elérhető és válaszkész legyen.
 * [Eseményeket és naplókat kereshet][diagnostic], amelyek segítenek a problémák diagnosztizálásában.
-* [Log4J vagy a Logback nyomkövetés rögzítése][javalogs]
+* [Log4J, vagy Logback nyomkövetés rögzítése][javalogs]
 
 #### <a name="track-usage"></a>Használat követése
-* [Adja hozzá a webes ügyfél telemetriai] [ usage] figyelő Lapmegtekintések és alapszintű felhasználói metrikákat.
-* [Egyéni események és metrikák nyomon](app-insights-web-track-usage.md) további információt az alkalmazás használatáról, mind az ügyfél és a kiszolgálón.
+* [Ügyfél-telemetriát adhat hozzá] [ usage] figyelő Lapmegtekintések és az alapszintű felhasználói mérőszámok.
+* [Egyéni események és mérőszámok nyomon](app-insights-web-track-usage.md) további információ az alkalmazás használatáról, mind az ügyfél és a kiszolgálón.
 
 <!--Link references-->
 

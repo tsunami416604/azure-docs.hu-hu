@@ -1,11 +1,9 @@
 ---
-title: Véleményeket kognitív keresési szakértelem (Azure Search) |} Microsoft Docs
-description: A szöveg egy Azure Search dúsító folyamat bontsa ki a céggel kapcsolatos véleményeket.
+title: Vélemények cognitive search szakértelem (Azure Search) |} A Microsoft Docs
+description: Azure Search-felderítési bővítést folyamatban szövegből bontsa ki a róluk szóló véleményeket.
 services: search
 manager: pablocas
 author: luiscabrer
-documentationcenter: ''
-ms.assetid: ''
 ms.service: search
 ms.devlang: NA
 ms.workload: search
@@ -13,47 +11,47 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 1ddbba5b881cd05a997cd24a9396d5b722376e6f
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: f6a0214ce9bc1cdf6aefbd9cde86e72b7cf7b0f2
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33790999"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35923377"
 ---
-#   <a name="sentiment-cognitive-skill"></a>Véleményeket kognitív szakértelem
+#   <a name="sentiment-cognitive-skill"></a>Vélemények cognitive szakértelem
 
-A **véleményeket** szakértelem strukturálatlan szöveg egy pozitív-negatív alakíthatnak ki olyan mellett, és az egyes rekordokhoz kiértékeli, adja vissza egy numerikus pontszám 0 és 1 között. Az 1-hez közeli pontszámok pozitív véleményt jeleznek, míg a 0-hoz közeliek negatívat.
+A **vélemények** szakértelem kiértékeli a strukturálatlan szöveg egy pozitív negatív egészében mentén, és az egyes rekordok, 0 és 1 közötti numerikus pontszámot visszaadása. Az 1-hez közeli pontszámok pozitív véleményt jeleznek, míg a 0-hoz közeliek negatívat.
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.SentimentSkill
 
-## <a name="data-limits"></a>Adatok korlátok
-Egy olyan rekordot maximális mérete alapján mért 5000 karakter lehet `String.Length`. Ha szeretné feloszthatja az adatokat, mielőtt elküldené a céggel kapcsolatos véleményeket analyzer, használja a [szöveges szakértelem](cognitive-search-skill-textsplit.md).
+## <a name="data-limits"></a>A Data korlátai
+A maximális mérete egy rekord kell által mért 5000 karakternél `String.Length`. Ha szeretné feloszthatja az adatokat, mielőtt elküldené a róluk szóló véleményeket elemző, használja a [szöveg felosztása szakértelem](cognitive-search-skill-textsplit.md).
 
 
-## <a name="skill-parameters"></a>Szakértelem paraméterek
+## <a name="skill-parameters"></a>Ismeretek paraméterek
 
 A paraméterei a kis-és nagybetűket.
 
 | Paraméter neve |                      |
 |----------------|----------------------|
-| defaultLanguageCode | (választható) Az explicit módon nem ad meg nyelvi alkalmazza nyelvi kódot. <br/> Lásd: [támogatott nyelvek teljes listája](../cognitive-services/text-analytics/text-analytics-supported-languages.md) |
+| defaultLanguageCode | (nem kötelező) A alkalmazni a dokumentumokat, explicit módon nem ad meg nyelvi nyelvkód. <br/> Lásd: [támogatott nyelvek teljes listáját](../cognitive-services/text-analytics/text-analytics-supported-languages.md) |
 
-## <a name="skill-inputs"></a>Szakértelem bemenetek 
+## <a name="skill-inputs"></a>Ismeretek bemenetek 
 
 | Bemeneti név | Leírás |
 |--------------------|-------------|
-| Szöveg | A szöveg elemzése.|
-| languageCode  |  (Választható) Egy karakterlánc, amely a nyelvi bejegyzések. Ha ez a paraméter nincs megadva, akkor az alapértelmezett érték: "hu". <br/>Lásd: [támogatott nyelvek teljes listáját](../cognitive-services/text-analytics/text-analytics-supported-languages.md).|
+| szöveg | Elemezni kívánt szöveget.|
+| languageCode  |  (Nem kötelező) A nyelv, a rekordok jelző karakterlánc. Ha ez a paraméter nincs megadva, alapértelmezett értéke "en". <br/>Lásd: [támogatott nyelvek teljes listáját](../cognitive-services/text-analytics/text-analytics-supported-languages.md).|
 
-## <a name="skill-outputs"></a>Szakértelem kimenetek
+## <a name="skill-outputs"></a>Ismeretek kimenetek
 
-| Kimeneti neve | Leírás |
+| Kimeneti név | Leírás |
 |--------------------|-------------|
-| Pontszám | 0 és 1 a céggel kapcsolatos véleményeket elemzett szöveg jelölő közötti értéket. Megközelíti a 0 érték negatív véleményeket, 0,5 közel van a semleges véleményeket, pedig 1 hamarosan értékek pozitív véleményeket.|
+| pontszám | 0 és 1 jelöli az elemzett szöveg képviselő közötti értéket. Értékek 0 negatívat, 0,5 közel van a semleges vélemények, pedig 1-hez közeli értékek pozitív véleményt.|
 
 
-##  <a name="sample-definition"></a>A minta meghatározása
+##  <a name="sample-definition"></a>Minta-definíció
 
 ```json
 {
@@ -77,7 +75,7 @@ A paraméterei a kis-és nagybetűket.
 }
 ```
 
-##  <a name="sample-input"></a>A minta bemenet
+##  <a name="sample-input"></a>Minta beviteli
 
 ```json
 {
@@ -110,12 +108,12 @@ A paraméterei a kis-és nagybetűket.
 ```
 
 ## <a name="notes"></a>Megjegyzések
-Ha üres, a céggel kapcsolatos véleményeket pontszám nem jelennek meg azokat a rekordokat.
+Ha üres, a véleménypontszám nem azokat a rekordokat adja vissza.
 
 ## <a name="error-cases"></a>Hibák esetén
-A nyelv nem támogatott, ha hiba történik, és nem véleményeket pontszám adja vissza.
+A nyelv nem támogatott, ha hiba történik, és nincs értelmezhetőségi pontszámot ad vissza.
 
 ## <a name="see-also"></a>Lásd még
 
-+ [Előre definiált képességek](cognitive-search-predefined-skills.md)
-+ [Egy skillset definiálása](cognitive-search-defining-skillset.md)
++ [Előre megadott képesség](cognitive-search-predefined-skills.md)
++ [Hogyan képességcsoport megadása](cognitive-search-defining-skillset.md)

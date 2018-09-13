@@ -1,6 +1,6 @@
 ---
-title: Automatikus oszlopszélesség egy Windows Azure-ban a PowerShell használatával |} Microsoft Docs
-description: A Resource Manager üzembe helyezési modellel, az Azure Powershell létrehozott Windows virtuális gépek méretét.
+title: Az Azure-beli Windows virtuális gép átméretezése a PowerShell használatával |} A Microsoft Docs
+description: Az Azure Powershell használatával a Resource Manager üzemi modellben létrehozott Windows virtuális gép átméretezése.
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -13,94 +13,115 @@ ms.workload: na
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 10/19/2016
+ms.date: 05/30/2018
 ms.author: cynthn
-ms.openlocfilehash: d2010ee9017416360069c74118b8ae25e71e1da7
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 6bd41115f586bf2969dacb772f097d84654f0306
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35646132"
 ---
-# <a name="resize-a-windows-vm"></a>A Windows virtuális gép átméretezése
-Ez a cikk bemutatja, hogyan méretezze át egy Windows virtuális Gépet, a Resource Manager üzembe helyezési modellel Azure Powershell használatával létrehozni.
+# <a name="resize-a-windows-vm"></a>Egy Windows virtuális gép átméretezése
 
-Miután létrehozta a virtuális gép (VM), méretezhető a virtuális gép felfelé vagy lefelé a Virtuálisgép-méretet módosításával. Néhány esetben először a virtuális gép kell felszabadítani. Ez akkor fordulhat elő, ha új mérete nem érhető el a virtuális gép jelenleg üzemeltető hardver fürt.
+Ez a cikk bemutatja, hogyan virtuális gép áthelyezése egy másik [Virtuálisgép-méret](sizes.md) Azure Powershell-lel.
 
-## <a name="resize-a-windows-vm-not-in-an-availability-set"></a>Egy Windows virtuális gép nem a rendelkezésre állási csoportok átméretezése
-1. A hardver fürt, ahol a virtuális gép tárolása elérhető Virtuálisgép-méretek listázása. 
+Miután létrehozott egy virtuális gépet (VM), méretezheti a virtuális gép felfelé vagy lefelé a virtuális gép méretének módosításával. Bizonyos esetekben kell először felszabadítja a virtuális Gépet. Ez akkor fordulhat elő, ha az új méret nem érhető el a virtuális gép jelenleg futtató hardver-fürtön.
+
+Ha a virtuális gép Premium szintű tárolást használ, győződjön meg arról, hogy a kiválasztott egy **s** méretét a Premium Storage-támogatás kéréséhez verzióját. Például választhatja, Standard_E4**s**_v3 standard E4 v3 helyett.
+
+## <a name="resize-a-windows-vm-not-in-an-availability-set"></a>Nincs rendelkezésre állási csoportban a Windows virtuális gép átméretezése
+
+Egyes változók értékét. Cserélje le az értékeket a saját adatait.
+
+```powershell
+$resourceGroup = "myResourceGroup"
+$vmName = "myVM"
+```
+
+Virtuálisgép-méretek listájának a virtuális Gépet üzemeltető hardver-fürtön elérhető. 
    
-    ```powershell
-    Get-AzureRmVMSize -ResourceGroupName <resourceGroupName> -VMName <vmName> 
-    ```
-2. Ha a kívánt méretet, a következő parancsokat a virtuális gép átméretezésével. Ha nem jelenik meg a kívánt méretet, folytassa a 3. lépésre.
+```powershell
+Get-AzureRmVMSize -ResourceGroupName $resourceGroup -VMName $vmName 
+```
+
+Ha a kívánt méretre szerepel a listán, a következő parancsokat a virtuális gép átméretezése. Ha a kívánt méret nem szerepel, folytassa a 3. lépés.
    
-    ```powershell
-    $vm = Get-AzureRmVM -ResourceGroupName <resourceGroupName> -Name <vmName>
-    $vm.HardwareProfile.VmSize = "<newVMsize>"
-    Update-AzureRmVM -VM $vm -ResourceGroupName <resourceGroupName>
-    ```
-3. Ha a kívánt méretet nem szerepel, a következő parancsokat a virtuális gép felszabadítása méretezze át, és indítsa újra a virtuális Gépet.
+```powershell
+$vm = Get-AzureRmVM -ResourceGroupName $resourceGroup -VMName $vmName
+$vm.HardwareProfile.VmSize = "<newVMsize>"
+Update-AzureRmVM -VM $vm -ResourceGroupName $resourceGroup
+```
+
+Ha a kívánt méret nem szerepel, futtassa az alábbi parancsokat a virtuális gép felszabadítása méretezze át, és indítsa újra a virtuális Gépet. Cserélje le **<newVMsize>** a kívánt méretre.
    
-    ```powershell
-    $rgname = "<resourceGroupName>"
-    $vmname = "<vmName>"
-    Stop-AzureRmVM -ResourceGroupName $rgname -Name $vmname -Force
-    $vm = Get-AzureRmVM -ResourceGroupName $rgname -Name $vmname
-    $vm.HardwareProfile.VmSize = "<newVMSize>"
-    Update-AzureRmVM -VM $vm -ResourceGroupName $rgname
-    Start-AzureRmVM -ResourceGroupName $rgname -Name $vmname
-    ```
+```powershell
+Stop-AzureRmVM -ResourceGroupName $resourceGroup -Name $vmName -Force
+$vm = Get-AzureRmVM -ResourceGroupName $resourceGroup -VMName $vmName
+$vm.HardwareProfile.VmSize = "<newVMSize>"
+Update-AzureRmVM -VM $vm -ResourceGroupName $resourceGroup
+Start-AzureRmVM -ResourceGroupName $resourceGroup -Name $vmName
+```
 
 > [!WARNING]
-> A virtuális Géphez rendelt dinamikus IP-címek a virtuális gép felszabadítása kiadását. Az operációsrendszer- és adatlemezek, nem érintettek. 
+> Bármely dinamikus a virtuális géphez rendelt IP-címek a virtuális gép felszabadítása kiadások. Az operációs rendszer és az adatlemezek nem érinti. 
 > 
 > 
 
-## <a name="resize-a-windows-vm-in-an-availability-set"></a>Egy Windows virtuális gép rendelkezésre állási csoportba átméretezése
-Ha egy virtuális gép rendelkezésre állási csoportba új mérete nem érhető el a virtuális Gépet tartalmazó hardver fürtön, majd a rendelkezésre állási csoport virtuális gépeinek kell átméretezni a virtuális gép felszabadítása. Is szükség lehet frissíteni a rendelkezésre állási csoportban, miután egy virtuális gép át lett méretezve más virtuális gépek méretét. A virtuális gépek rendelkezésre állási csoportba átméretezéséhez hajtsa végre az alábbi lépéseket.
+## <a name="resize-a-windows-vm-in-an-availability-set"></a>Windows virtuális gép egy rendelkezésre állási csoportban átméretezése
 
-1. A hardver fürt, ahol a virtuális gép tárolása elérhető Virtuálisgép-méretek listázása.
+Ha egy virtuális Gépet egy rendelkezésre állási csoportban új mérete nem érhető el a jelenleg a virtuális Gépet üzemeltető hardver-fürtön, a rendelkezésre állási csoport virtuális gépeinek kell fel kell szabadítani a virtuális gép átméretezése. Emellett előfordulhat, hogy frissíteni szeretné a többi virtuális gép mérete a rendelkezésre állási csoportban, miután egy virtuális gép át lett méretezve. Méretezze át egy virtuális Gépet egy rendelkezésre állási csoportban, hajtsa végre az alábbi lépéseket.
+
+```powershell
+$resourceGroup = "myResourceGroup"
+$vmName = "myVM"
+```
+
+Virtuálisgép-méretek listájának a virtuális Gépet üzemeltető hardver-fürtön elérhető. 
    
-    ```powershell
-    Get-AzureRmVMSize -ResourceGroupName <resourceGroupName> -VMName <vmName>
-    ```
-2. Ha a kívánt méretet, a következő parancsokat a virtuális gép átméretezésével. Ha nem szerepel, folytassa a 3.
+```powershell
+Get-AzureRmVMSize -ResourceGroupName $resourceGroup -VMName $vmName 
+```
+
+Ha a listában a kívánt méretet, a következő parancsokat a virtuális gép átméretezése. Ha nem szerepel, lépjen a következő szakaszban.
    
-    ```powershell
-    $vm = Get-AzureRmVM -ResourceGroupName <resourceGroupName> -Name <vmName>
-    $vm.HardwareProfile.VmSize = "<newVmSize>"
-    Update-AzureRmVM -VM $vm -ResourceGroupName <resourceGroupName>
-    ```
-3. Ha nem jelenik meg a kívánt méretet, folytassa a következő lépéseket a rendelkezésre állási csoport virtuális gépeinek felszabadítani, méretezze át a virtuális gépek és újra kell indítania őket.
-4. Állítsa le a rendelkezésre állási csoportot az összes virtuális gépet.
+```powershell
+$vm = Get-AzureRmVM -ResourceGroupName $resourceGroup -VMName $vmName 
+$vm.HardwareProfile.VmSize = "<newVmSize>"
+Update-AzureRmVM -VM $vm -ResourceGroupName $resourceGroup
+```
+    
+Ha nem találja a kívánt méretre, továbbra is az alábbi lépéseket követve szabadítsa fel a rendelkezésre állási csoportban lévő összes virtuális gép, virtuális gépek átméretezése, és indítsa újra a csomópontokat.
+
+A rendelkezésre állási csoport összes virtuális gép leállítására.
    
-   ```powershell
-   $rg = "<resourceGroupName>"
-   $as = Get-AzureRmAvailabilitySet -ResourceGroupName $rg
-   $vmIds = $as.VirtualMachinesReferences
-   foreach ($vmId in $vmIDs){
-     $string = $vmID.Id.Split("/")
-     $vmName = $string[8]
-     Stop-AzureRmVM -ResourceGroupName $rg -Name $vmName -Force
-   } 
-   ```
-5. Automatikus oszlopszélesség, és indítsa újra a virtuális gépek a rendelkezésre állási csoport.
+```powershell
+$as = Get-AzureRmAvailabilitySet -ResourceGroupName $resourceGroup
+$vmIds = $as.VirtualMachinesReferences
+foreach ($vmId in $vmIDs){
+    $string = $vmID.Id.Split("/")
+    $vmName = $string[8]
+    Stop-AzureRmVM -ResourceGroupName $resourceGroup -Name $vmName -Force
+    } 
+```
+
+Méretezze át, és indítsa újra a virtuális gépek rendelkezésre állási csoportban.
    
-   ```powershell
-   $rg = "<resourceGroupName>"
-   $newSize = "<newVmSize>"
-   $as = Get-AzureRmAvailabilitySet -ResourceGroupName $rg
-   $vmIds = $as.VirtualMachinesReferences
-   foreach ($vmId in $vmIDs){
-     $string = $vmID.Id.Split("/")
-     $vmName = $string[8]
-     $vm = Get-AzureRmVM -ResourceGroupName $rg -Name $vmName
-     $vm.HardwareProfile.VmSize = $newSize
-     Update-AzureRmVM -ResourceGroupName $rg -VM $vm
-     Start-AzureRmVM -ResourceGroupName $rg -Name $vmName
-   }
-   ```
+```powershell
+$newSize = "<newVmSize>"
+$as = Get-AzureRmAvailabilitySet -ResourceGroupName $resourceGroup
+$vmIds = $as.VirtualMachinesReferences
+  foreach ($vmId in $vmIDs){
+    $string = $vmID.Id.Split("/")
+    $vmName = $string[8]
+    $vm = Get-AzureRmVM -ResourceGroupName $resourceGroup -Name $vmName
+    $vm.HardwareProfile.VmSize = $newSize
+    Update-AzureRmVM -ResourceGroupName $resourceGroup -VM $vm
+    Start-AzureRmVM -ResourceGroupName $resourceGroup -Name $vmName
+    }
+```
 
 ## <a name="next-steps"></a>További lépések
-* További méretezhetőséget, a virtuális gép több példányának futtatása, és kiterjesztése. További információkért lásd: [automatikus méretezése a Windows-alapú gépek egy virtuálisgép-méretezési csoportban lévő](../../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md).
+
+A további skálázhatóság érdekében több Virtuálisgép-példány futtatása és a horizontális felskálázás. További információkért lásd: [automatikus méretezése egy virtuálisgép-méretezési csoportban lévő Windows-gépek](../../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md).
 

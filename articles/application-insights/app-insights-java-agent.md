@@ -1,6 +1,6 @@
 ---
-title: Java-webalkalmazások Azure Application Insights az alkalmazásteljesítmény-figyelés |} Microsoft Docs
-description: Kiterjesztett teljesítmény és a Java-webhely, az Application Insights-használat figyelését.
+title: Az Azure Application Insights Java-webalkalmazások alkalmazásteljesítmény-figyelés |} A Microsoft Docs
+description: A kiterjesztett teljesítmény és használat monitorozása az Application insights szolgáltatással Java webhelyét.
 services: application-insights
 documentationcenter: java
 author: mrbullwinkle
@@ -10,33 +10,33 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/24/2016
 ms.author: mbullwin
-ms.openlocfilehash: 3a771da2a1ef0333d49e1d83530b3d3032a550d2
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.openlocfilehash: 366e79e7a58f45f5a5eeb318d3dd08427fbec0b0
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32151630"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35644951"
 ---
-# <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>Függőségek, kifogott kivételeket és metódus végrehajtásának lassúságát a Java-webalkalmazások figyelése
+# <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>Függőségek, kivételek kivétel történt, és metódus végrehajtási időpontok a Java-webalkalmazások monitorozása
 
 
-Ha rendelkezik [a Java-webalkalmazás az Application insights szolgáltatással tagolva][java], a Java-ügynök részleteinek megtekintésével mélyebb betekintést kód módosítások nélkül használható:
+Ha rendelkezik [kialakítva az Application Insights Java-webalkalmazását][java], a Java ügynököt segítségével részletesebb elemzéseket kódváltoztatás nélkül:
 
-* **Függőségek:** hívások, az alkalmazás által az egyéb összetevők, beleértve a vonatkozó adatokat:
-  * **REST-hívások** HttpClient keresztül történik, OkHttp és RestTemplate (forrás) a rendszer rögzíti.
-  * **Redis** keresztül a Jedis ügyfél felé indított hívások a rendszer rögzíti.
-  * **[JDBC-hívások](http://docs.oracle.com/javase/7/docs/technotes/guides/jdbc/)**  -MySQL, SQL Server és Oracle DB parancsot a rendszer automatikusan rögzíti. A MySQL, ha a hívás tovább tart, mint 10 egység, az ügynök jelentéseket küld a lekérdezéstervben.
-* **Kivétel lépett fel:** a kód által kezelt kivételek kapcsolatos információkat.
-* **Módszer végrehajtási ideje:** bizonyos eljárások végrehajtásához szükséges idő kapcsolatos információkat.
+* **Függőségek:** hívások egyéb összetevőivel, például az alkalmazás által adatait:
+  * **REST-hívások** HttpClient keresztül történik, OkHttp és RestTemplate (Spring) rögzítve lesznek.
+  * **Redis Cache** a Jedis ügyfél-n keresztül végzett hívások rögzítve lesznek.
+  * **[JDBC-hívások](http://docs.oracle.com/javase/7/docs/technotes/guides/jdbc/)**  -MySQL, az SQL Server és Oracle DB parancsok automatikusan rögzítve lesznek. A MySQL a hívás hosszabb időt vesz igénybe, mint a 10s, ha az ügynök jelentéseket küld a lekérdezésterv.
+* **Kivétel történt:** a kód által kezelt kivételek kapcsolatos információkat.
+* **Metódus végrehajtási idő:** bizonyos eljárások végrehajtásához szükséges kapcsolatos információkat.
 
-A Java-ügynök használatára, akkor a kiszolgálóra telepítette. A webalkalmazások kell tagolva, és a [Application Insights Java SDK][java]. 
+A Java ügynököt használatához telepítheti a kiszolgálón. A web apps kell lesznek tagolva a [Application Insights Java SDK][java]. 
 
 ## <a name="install-the-application-insights-agent-for-java"></a>A Javához készült Application Insights-ügynök telepítése
-1. A számítógépen a Java Servert futtató [töltse le az ügynököt](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest). Ellenőrizze, hogy az azonos verson Java-ügynök Application Insights Java SDK core és a web csomag letöltéséhez.
-2. Az alkalmazás server indítási parancsfájl szerkesztése, és adja hozzá az alábbi JVM-et:
+1. A gépen, amelyen fut a Java kiszolgáló [töltse le az ügynököt](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest). Ellenőrizze, hogy az azonos verson Java-ügynök az Application Insights Java SDK core és a web csomag letöltéséhez.
+2. Az alkalmazás-kiszolgáló indítási parancsfájl szerkesztése, és adja hozzá az alábbi JVM:
    
     `javaagent:`*az ügynök JAR-fájl teljes elérési útja*
    
@@ -46,9 +46,9 @@ A Java-ügynök használatára, akkor a kiszolgálóra telepítette. A webalkalm
 3. Indítsa újra az alkalmazáskiszolgáló.
 
 ## <a name="configure-the-agent"></a>Az ügynök konfigurálása
-Hozzon létre egy fájlt `AI-Agent.xml` és naplózza azt a mappában, amelyben az ügynök JAR-fájlra.
+Hozzon létre egy fájlt `AI-Agent.xml` és helyezze ugyanabba a mappába, az ügynök JAR-fájlt.
 
-Állítsa be az XML-fájl tartalmát. Szerkessze a következő példa a azt szeretné, vagy hagyja el a szolgáltatásokat.
+Állítsa be az XML-fájl tartalmát. Szerkessze a következő példa a azt szeretné, vagy hagyja ki a szolgáltatásokat.
 
 ```XML
 
@@ -87,19 +87,19 @@ Hozzon létre egy fájlt `AI-Agent.xml` és naplózza azt a mappában, amelyben 
 
 ```
 
-Kell engedélyezni a jelentések kivétel és az egyes módszerek metódus ütemezését.
+Jelentések kivétel- és az egyes módszerek metódus időzítési engedélyeznie kell.
 
-Alapértelmezés szerint `reportExecutionTime` IGAZ és `reportCaughtExceptions` értéke "false".
+Alapértelmezés szerint `reportExecutionTime` IGAZ és `reportCaughtExceptions` false (hamis).
 
-## <a name="view-the-data"></a>Az adatok megjelenítése
-Összesített távoli függőség és metódus végrehajtásának lassúságát jelenik meg az Application Insights-erőforrás [alatt a teljesítmény csempéje][metrics].
+## <a name="view-the-data"></a>Az adatok megtekintése
+Összesített távoli függőség- és metódus végrehajtási időpontok jelenik meg az Application Insights-erőforrást [alatt a teljesítmény csempéje][metrics].
 
-Nyissa meg a keresendő függőségi kivétel és metódus jelentések egyes példányai, [keresési][diagnostic].
+Keresse meg az egyes példányok függőségi, kivételek és módszer jelentéseknek, nyissa meg a [keresési][diagnostic].
 
-[Diagnosztizálás függőségi problémákhoz – további](app-insights-asp-net-dependencies.md#diagnosis).
+[Diagnosztizálás függőségi kapcsolatos problémák – további](app-insights-asp-net-dependencies.md#diagnosis).
 
 ## <a name="questions-problems"></a>Kérdései vannak? Problémákat tapasztal?
-* Nincs adat? [Tűzfalkivételek beállítása](app-insights-ip-addresses.md)
+* Nincs adat? [Végezze el a tűzfalkivételek beállítása](app-insights-ip-addresses.md)
 * [A Java hibaelhárítása](app-insights-java-troubleshoot.md)
 
 <!--Link references-->

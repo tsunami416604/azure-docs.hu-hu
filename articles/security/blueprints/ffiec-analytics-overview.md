@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: meladie
-ms.openlocfilehash: 42fde31851968434eef2983f24b0fd01d5386d7e
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 49c10e928fe321c73ddd2cd5dc2ef529cfa4e854
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37908160"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44722044"
 ---
 # <a name="azure-security-and-compliance-blueprint-analytics-for-ffiec-financial-services"></a>Azure biztonsági és megfelelőségi terv: Analytics FFIEC a pénzügyi szolgáltatások
 
@@ -31,7 +31,7 @@ Az Azure biztonsági és megfelelőségi terv biztosít olyan analitikai platfor
 
 Az Azure különböző jelentéskészítési és elemzési szolgáltatások, az ügyfelek számára kínál. Ez a megoldás magában foglalja az Azure Machine Learning services, Azure SQL Database gyors böngésszen adatokat és gyorsabb eredményeket keresztül okosabb modellezéssel együtt. Az Azure Machine Learning lekérdezés megbízhatóbbak nő adatkészletek között új kapcsolatok felderítése. Miután az adatok révén több statisztikai függvényekkel rendelkezik betanítva, legfeljebb 7 további lekérdezési készletek (beleértve az ügyfél-kiszolgáló teljes 8) szinkronizálhatók az azonos táblázatos modellek eloszthatja a lekérdezést, és a válaszidők csökkentése érdekében.
 
-Bővített analitika és a jelentéskészítés az Azure SQL Database is konfigurálhatók, az oszlopcentrikus indexek. Azure Machine Learning és az Azure SQL Database-adatbázisok lehet horizontálisan fel vagy le vagy kapcsolja ki teljesen ügyfelek általi használatot adott válaszként. SQL forgalmat titkosítja a rendszer SSL-lel azáltal, önaláírt tanúsítványokat. Ajánlott eljárásként az Azure a fokozott biztonság egy megbízható hitelesítésszolgáltatótól használatát javasolja.
+Bővített analitika és a jelentéskészítés az Azure SQL Database-adatbázisok is konfigurálhatók, az oszlopcentrikus indexek. Az Azure Machine Learning és az Azure SQL-adatbázisok fel vagy le horizontálisan, vagy kapcsolja ki teljesen ügyfelek általi használatot válaszul is. SQL forgalmat titkosítja a rendszer SSL-lel azáltal, önaláírt tanúsítványokat. Ajánlott eljárásként az Azure a fokozott biztonság egy megbízható hitelesítésszolgáltatótól használatát javasolja.
 
 Adatok feltöltése az Azure SQL Database-adatbázishoz, és a szerint az Azure Machine Learning betanított, a rendszer kivonatolt működési felhasználói és rendszergazdai SQL-adatok a a Power BI által. A Power BI intuitív jeleníti meg az adatokat, és együttesen kéri le adatokat megrajzolásához nagyobb betekintést több adatkészlet között. A magas fokú alkalmazkodóképesség és könnyen integrálható az Azure SQL Database biztosítja, hogy a felhasználók beállíthatják, hogy kezelni a saját üzleti igényeinek megfelelően által kért forgatókönyvek széles választékának.
 

@@ -3,5 +3,5 @@
 * [Felhasználók hozzárendelése egy alkalmazáshoz](../articles/active-directory/active-directory-applications-guiding-developers-assigning-users.md)
 * [Csoportok hozzárendelése egy alkalmazáshoz](../articles/active-directory/active-directory-applications-guiding-developers-assigning-groups.md)
 * [Alkalmazások integrálása az Azure Active Directoryval](../articles/active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md)
-* [Az Azure Active Directory segítségével végzett alkalmazásfelügyeletre vonatkozó cikkek jegyzéke](../articles/active-directory/active-directory-apps-index.md)
+* [Alkalmazások kezelése az Azure Active Directoryban](../articles/active-directory/manage-apps/what-is-application-management.md)
 

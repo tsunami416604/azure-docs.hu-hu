@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 08/29/2018
 ms.author: vturecek
-ms.openlocfilehash: afd682625d7bb74f9a4b726a534508b805562e7f
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 384d0fa32b64706c9d9d9baa0e2e0bbb2ac3c522
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43701534"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44719596"
 ---
 # <a name="aspnet-core-in-service-fabric-reliable-services"></a>ASP.NET Core a Service Fabric Reliable Services
 
@@ -54,12 +54,12 @@ Annak érdekében, hogy a Service Fabric-szolgáltatás és az ASP.NET, a Vendé
 
 A belépési pontja viszont nem a megfelelő hely az hozzon létre egy Webhostot az egy Reliable Service-ben, mert az alkalmazás belépési pont csak szolgál egy bizonyos szolgáltatástípusként a Service Fabric-futtatókörnyezet, regisztrálja, hogy az adott szolgáltatás típusú példányok létrehozhat. A WebHost létre kell hozni egy Reliable Services magát. A szolgáltatás gazdagép folyamaton belül szolgáltatáspéldányok és/vagy a replikák végigveheti több életciklusának. 
 
-A szolgáltatás osztály kapcsolatból származtatott kapcsolatot képviseli egy Reliable Services-példányt `StatelessService` vagy `StatefulService`. A kommunikációs verem szolgáltatás szerepel egy `ICommunicationListener` megvalósítása a service osztályban. A `Microsoft.ServiceFabric.Services.AspNetCore.*` NuGet-csomagok megvalósítása tartalmaz `ICommunicationListener` , indítsa el, és az ASP.NET Core Webhostot kezelheti a Kestrel vagy a HttpSys Reliable Service-ben.
+A szolgáltatás osztály kapcsolatból származtatott kapcsolatot képviseli egy Reliable Services-példányt `StatelessService` vagy `StatefulService`. A kommunikációs verem szolgáltatás szerepel egy `ICommunicationListener` megvalósítása a service osztályban. A `Microsoft.ServiceFabric.AspNetCore.*` NuGet-csomagok megvalósítása tartalmaz `ICommunicationListener` , indítsa el, és az ASP.NET Core Webhostot kezelheti a Kestrel vagy a HttpSys Reliable Service-ben.
 
 ![Az ASP.NET Core Reliable Service-ben üzemeltető][1]
 
 ## <a name="aspnet-core-icommunicationlisteners"></a>Az ASP.NET Core ICommunicationListeners
-A `ICommunicationListener` Kestrel és a HttpSys megvalósítások az `Microsoft.ServiceFabric.Services.AspNetCore.*` NuGet-csomagok hasonló felhasználási minták rendelkezik, de az adott minden webkiszolgálóhoz némileg eltérő műveletet végrehajtani. 
+A `ICommunicationListener` Kestrel és a HttpSys megvalósítások az `Microsoft.ServiceFabric.AspNetCore.*` NuGet-csomagok hasonló felhasználási minták rendelkezik, de az adott minden webkiszolgálóhoz némileg eltérő műveletet végrehajtani. 
 
 Mindkét kommunikációs figyelőket adjon meg egy konstruktort, amely a következő argumentumot:
  - **`ServiceContext serviceContext`**: A `ServiceContext` objektum, amely a futó szolgáltatással kapcsolatos információkat tartalmazza.
@@ -67,7 +67,7 @@ Mindkét kommunikációs figyelőket adjon meg egy konstruktort, amely a követk
  - **`Func<string, AspNetCoreCommunicationListener, IWebHost> build`**: a lambda, amely hoz létre, és visszatérési megvalósító egy `IWebHost`. Ez lehetővé teszi, hogy konfigurálása `IWebHost` azt szokásosan tenné az ASP.NET Core alkalmazás módja. A lambda biztosít egy URL-címnek, ami akkor jön létre, a lehetőségek, attól függően, a Service Fabric-integráció és a `Endpoint` konfigurációs adnia. URL-cím majd lehet módosítani vagy használt –, hogy a webkiszolgáló elindításához.
 
 ## <a name="service-fabric-integration-middleware"></a>A Service Fabric-integráció közbenső
-A `Microsoft.ServiceFabric.Services.AspNetCore` NuGet-csomag tartalmazza a `UseServiceFabricIntegration` metódust a `IWebHostBuilder` , amely hozzáadja a Service Fabric-kompatibilis közbenső szoftverek. A közbenső szoftver konfigurálja a Kestrel vagy HttpSys `ICommunicationListener` egy egyedi URL-címe Regisztrálás a Service Fabric elnevezési szolgáltatásban, majd összeveti az ügyfélkérelmek annak biztosítása érdekében az ügyfelek csatlakoznak a megfelelő szolgáltatást. Erre azért szükség, például a Service Fabric, ahol több webalkalmazás az azonos fizikai vagy virtuális gépen futtatható, de ne használjon egyedi állomásnevek, hogy megakadályozza a véletlenül a nem megfelelő szolgáltatáshoz való csatlakozás megosztott gazdagép környezetben. Ebben a forgatókönyvben a következő szakaszban részletesen ismertetjük.
+A `Microsoft.ServiceFabric.AspNetCore` NuGet-csomag tartalmazza a `UseServiceFabricIntegration` metódust a `IWebHostBuilder` , amely hozzáadja a Service Fabric-kompatibilis közbenső szoftverek. A közbenső szoftver konfigurálja a Kestrel vagy HttpSys `ICommunicationListener` egy egyedi URL-címe Regisztrálás a Service Fabric elnevezési szolgáltatásban, majd összeveti az ügyfélkérelmek annak biztosítása érdekében az ügyfelek csatlakoznak a megfelelő szolgáltatást. Erre azért szükség, például a Service Fabric, ahol több webalkalmazás az azonos fizikai vagy virtuális gépen futtatható, de ne használjon egyedi állomásnevek, hogy megakadályozza a véletlenül a nem megfelelő szolgáltatáshoz való csatlakozás megosztott gazdagép környezetben. Ebben a forgatókönyvben a következő szakaszban részletesen ismertetjük.
 
 ### <a name="a-case-of-mistaken-identity"></a>Egy esetet, tehát a helytelen identitás
 Szolgáltatás replikákat, függetlenül attól, protokoll, egyedi IP:port együttes figyelése. Replika szolgáltatás megkezdte a figyelést IP:port a végpont, miután a végpont címe és jelentéseket küldeni a Service Fabric elnevezési szolgáltatásban, azt könnyen megtalálhatók legyenek az ügyfelek vagy más szolgáltatások. Szolgáltatások dinamikusan hozzárendelt alkalmazás portok használatára, ha a szolgáltatás replika webkiszolgálóikat felhasználhatja az egyazon IP:port végpont egy másik szolgáltatás, amely korábban az azonos fizikai vagy virtuális gépen. Ez okozhat mistakely ügyfél csatlakozik a megfelelő szolgáltatást. Ez akkor fordulhat elő, ha a következő eseményekre kerül sor:

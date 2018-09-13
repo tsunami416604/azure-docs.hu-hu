@@ -6,17 +6,17 @@ ms.service: azure-dev-spaces
 ms.component: azds-kubernetes
 author: ghogen
 ms.author: ghogen
-ms.date: 05/11/2018
+ms.date: 09/11/2018
 ms.topic: article
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, tárolók
 manager: douge
-ms.openlocfilehash: b66e43c0f40f184bfb2c62327f5742346ff8b187
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: c6ca3003c1338f3e057c76d9e04d8b0cbd2210c7
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43841609"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44721194"
 ---
 # <a name="troubleshooting-guide"></a>Hibaelhárítási útmutató
 
@@ -26,9 +26,13 @@ Ez az útmutató az Azure fejlesztési tárolóhelyek használata esetén előfo
 
 Annak érdekében, hogy a problémák hatékonyabb elhárításához, segíthet, tekintse át a részletes naplók létrehozása.
 
-A Visual Studio-bővítmény, akkor ehhez beállítása a `MS_VS_AZUREDEVSPACES_TOOLS_LOGGING_ENABLED` környezeti változót az 1. Ügyeljen arra, hogy a Visual Studio for a környezeti változó érvénybe léptetéséhez indítsa újra. Az engedélyezés után a részletes naplók lesz írva a `%TEMP%\Microsoft.VisualStudio.Azure.DevSpaces.Tools` könyvtár.
+A Visual Studio-bővítmény beállítása a `MS_VS_AZUREDEVSPACES_TOOLS_LOGGING_ENABLED` környezeti változót az 1. Ügyeljen arra, hogy a Visual Studio for a környezeti változó érvénybe léptetéséhez indítsa újra. Az engedélyezés után a részletes naplók lesz írva a `%TEMP%\Microsoft.VisualStudio.Azure.DevSpaces.Tools` könyvtár.
 
 A parancssori felületen, a további információk a parancs végrehajtása során küldhetnek kimenetet a `--verbose` váltani.
+
+## <a name="debugging-services-with-multiple-instances"></a>Több példányával szolgáltatások hibakeresésekor
+
+Jelenleg az Azure fejlesztési tárolóhelyek támogatja a csak egy példányban (pod) a hibakeresés. A azds.yaml fájl tartalmaz egy beállítást, replicaCount, amely azt jelzi, amely a szolgáltatás-példányok száma. Ha megváltoztatja az adott szolgáltatás több példányának futtatása, az alkalmazás konfigurálása replicaCount, a hibakereső viselkedését nem várt módon.
 
 ## <a name="error-failed-to-create-azure-dev-spaces-controller"></a>"Nem sikerült létrehozni az Azure fejlesztési tárolóhelyek vezérlő" hiba
 
@@ -67,14 +71,14 @@ Használata esetén _azds.exe_, használja a--részletes parancssori beállítá
 
 A Visual Studióban:
 
-1. Nyissa meg **eszközök > Beállítások** és **projektek és megoldások**, válassza ki és **létrehozásához és futtatásához**.
+1. Nyissa meg **eszközök > Beállítások** és **projektek és megoldások**, válassza a **létrehozásához és futtatásához**.
 2. Módosítsa a beállításokat a **MSBuild project build kimeneti részletességi** való **részletes** vagy **diagnosztikai**.
 
     ![Képernyőkép a beállítások panel](media/common/VerbositySetting.PNG)
     
 ## <a name="dns-name-resolution-fails-for-a-public-url-associated-with-a-dev-spaces-service"></a>DNS-névfeloldás nem sikerül, egy fejlesztői tárolóhelyek szolgáltatással társított nyilvános URL-cím
 
-Ha ez történik, előfordulhat, hogy megjelenik egy "A lap nem jeleníthető meg." vagy "ezen a helyen nem érhető el" hiba a böngészőben, amikor egy fejlesztési tárolóhelyek szolgáltatás próbál csatlakozni a nyilvános URL-címhez társított.
+Ha a DNS-névfeloldás nem sikerül, megjelenhet egy "A lap nem jeleníthető meg." vagy "ezen a helyen nem érhető el" hiba a böngészőben, amikor egy fejlesztési tárolóhelyek szolgáltatás próbál csatlakozni a nyilvános URL-címhez társított.
 
 ### <a name="try"></a>Próbálja ki:
 
@@ -84,7 +88,7 @@ Használhatja ki a fejlesztői, szóközök szolgáltatásokkal kapcsolatos öss
 azds list-uris
 ```
 
-Ha egy URL-cím a *függőben lévő* állapot, amely azt jelenti, hogy fejlesztői, szóközök még mindig várakozik DNS-regisztráció végrehajtásához. Egyes esetekben, hogy ez néhány percet vesz igénybe. Fejlesztői szóközöket is megnyílik a localhost alagút minden egyes szolgáltatás, amellyel DNS-regisztráció történő várakozás során.
+Ha egy URL-cím a *függőben lévő* állapot, amely azt jelenti, hogy fejlesztői, szóközök még mindig várakozik DNS-regisztráció végrehajtásához. Egyes esetekben regisztráció befejezése néhány percet vesz igénybe. Fejlesztői szóközöket is megnyílik a localhost alagút minden egyes szolgáltatás, amellyel DNS-regisztráció történő várakozás során.
 
 Ha egy URL-cím marad a *függőben lévő* több mint 5 perc, a külső DNS-pod, amely a nyilvános végpontot hoz létre és/vagy nginx bejövő tartományvezérlő-pod szerez be a nyilvános végponthoz problémájára utalhat. állapotát. A következő parancsokat használhatja ezeket a podok törlése. Ezek létrejönnek, automatikusan.
 
@@ -121,7 +125,7 @@ Az Azure fejlesztési tárolóhelyek C# és Node.js natív támogatást biztosí
 Továbbra is használhatja az Azure fejlesztési tárolóhelyek más nyelven írt kóddal, de hozza létre a docker-fájl futtatása előtt kell *mentése azds* először.
 
 ### <a name="try"></a>Próbálja ki:
-Ha az alkalmazás, hogy az Azure fejlesztési tárolóhelyek nem támogatja natív módon nyelven íródott, adjon meg egy megfelelő docker-fájlban, állítson össze egy tárolórendszerképet a kódja fut. szüksége. Docker biztosít egy [ajánlott eljárások a docker-fájlok írása listája](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/) , valamint egy [Dockerfile referencia](https://docs.docker.com/engine/reference/builder/) , amellyel ehhez.
+Ha az alkalmazás, hogy az Azure fejlesztési tárolóhelyek nem támogatja natív módon nyelven íródott, adjon meg egy megfelelő docker-fájlban, állítson össze egy tárolórendszerképet a kódja fut. szüksége. Docker biztosít egy [ajánlott eljárások a docker-fájlok írása listája](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/) , valamint egy [Dockerfile referencia](https://docs.docker.com/engine/reference/builder/) , amellyel az igényeinek megfelelő, docker-fájlt írni.
 
 Miután már működik a megfelelő docker-fájlban, folytathatja, futtató *mentése azds* az alkalmazás futtatásához az Azure fejlesztési szóközöket.
 
@@ -152,7 +156,7 @@ Kell futtatásakor `azds up` a kód gyökérkönyvtárából szeretné futtatni,
 1. Ha nem rendelkezik egy _azds.yaml_ futtatása kód mappában található fájl `azds prep` Docker, Kubernetes- és Azure-fejlesztési tárolóhelyek eszközök létrehozásához.
 
 ## <a name="error-the-pipe-program-azds-exited-unexpectedly-with-code-126"></a>Hiba: "a függőleges vonal program váratlanul kilépett, hibakód 126 azds."
-A VS Code hibakereső indítása előfordulhat, hogy időnként ezt a hibát eredményez. Ez egy ismert probléma.
+A VS Code hibakereső indítása előfordulhat, hogy időnként ezt a hibát eredményez.
 
 ### <a name="try"></a>Próbálja ki:
 1. Zárja be és nyissa meg újra a VS Code.
@@ -162,7 +166,7 @@ A VS Code hibakereső indítása előfordulhat, hogy időnként ezt a hibát ere
 A VS Code hibakereső futó jelentést a hiba: `Failed to find debugger extension for type:coreclr.`
 
 ### <a name="reason"></a>Ok
-Nem rendelkezik a VS Code-bővítmény használata a C# telepítve van a fejlesztői gépen, amely tartalmazza a hibakeresés támogatása a .net Core (CoreCLR).
+Nem rendelkezik a VS Code-bővítmény használata a C# a fejlesztői gépen telepítve van. A C#-bővítményt tartalmazza a hibakeresés támogatása a .net Core (CoreCLR).
 
 ### <a name="try"></a>Próbálja ki:
 Telepítse a [VS Code-bővítmény használata a C#](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp).

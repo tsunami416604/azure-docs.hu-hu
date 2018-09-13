@@ -3,7 +3,7 @@ title: Az Azure vendég operációs rendszerre alkalmazott frissítések listáj
 description: A vendég operációs rendszer kiadásai alkalmazott frissítések listája
 services: cloud-services
 documentationcenter: na
-author: raiye
+author: RichardScheel
 manager: timlt
 editor: ''
 ms.assetid: d0a272a9-ed01-4f4c-a0b3-bd5e841bdd77
@@ -12,17 +12,40 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 8/3/2018
-ms.author: raiye
-ms.openlocfilehash: aa7ee049177fccbcca7d648ca749eb9fb35a0f53
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.date: 9/12/2018
+ms.author: RichardScheel
+ms.openlocfilehash: 4ef49fe978db5c9b04bf9c8271e192fa60433d4b
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39522305"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44722299"
 ---
 # <a name="azure-guest-os"></a>Azure Guest OS
 Az alábbi táblázatokban a Microsoft Security Response Center (MSRC) az Azure vendég operációs rendszerre alkalmazott frissítések. Ez a cikk meghatározni, ha az adott frissítés alkalmazza a vendég operációs rendszer keresése. Frissítések mindig átviszi az adott [termékcsalád] [ family-explain] azokat a jelentek meg.
+
+## <a name="august-guest-os"></a>Augusztus vendég operációs rendszer
+| Termékkategória | Szülő KB cikk | Biztonsági rés leírása | A vendég operációs rendszer | Először a dátum |
+| --- | --- | --- | --- | --- |
+| 18-08-rel | [4343887] | A Windows 10 biztonsági | 5.22 | 2018. augusztus 14. |
+| 18-08-rel | [4343899] | Csak a Windows biztonsági | 2.77 | 2018. augusztus 14. |
+| 18-08-rel | [4343896] | Csak a Windows biztonsági | 3.64 | 2018. augusztus 14. |
+| 18-08-rel | [4343888] | Csak a Windows biztonsági | 4.57 | 2018. augusztus 14. |
+| 18-08-rel | [4344177], [4344173] | A .NET 3.5, 4.5-ös biztonsági | 2.77 | 2018. augusztus 14. |
+| 18-08-rel | [4344175], [4344172] | A .NET 3.5, 4.x biztonsági | 3.64 | 2018. augusztus 14. |
+| 18-08-rel | [4344178], [4344171] | A .NET 3.5, 4.x biztonsági | 4.57 | 2018. augusztus 14. |
+| 18-08-rel | [4346742], [4346739] | .NET 3.5-ös, 4.x OOB kiadás | 3.64 | 2018. július 30. |
+| 18-08-rel | [4346745], [4346408] | .NET 3.5-ös, 4.x OOB kiadás | 4.57 | 2018. július 30. |
+| 18-08-rel | [4343902] | Flash | 3.64, 4.57, 5.22 | 2018. augusztus 14. |
+| 18-08-rel | [4343205] | Internet Explorer | 2.77, 3.64, 4.57 | 2018. augusztus 14. |
+| – | [4338818] |Július nem – a biztonság összegzése |2.77 | 2018. július 10. |
+| – | [4019990] |D3D fordító frissítést a .NET-hez |2.77 | 2018. július 10. |
+| – | [4338830] |Július nem – a biztonság összegzése |3.64 | 2018. július 10. |
+| – | [4338421] |Július nem biztonsági .NET 3.5-ös összegzése |3.64 | 2018. július 10. |
+| – | [4338416] |Július nem biztonsági .NET 4 x rollup |3.64 | 2018. július 10. |
+| – | [4338815] |Július nem – a biztonság összegzése |4.57 | 2018. július 10. |
+| – | [4338424] |Július nem biztonsági .NET 3.5-ös összegzése |3.64 | 2018. július 10. |
+| – | [4338415] |Július nem biztonsági .NET 4 x rollup |3.64 | 2018. július 10. |
 
 
 ## <a name="july-guest-os"></a>Július vendég operációs rendszer
@@ -696,6 +719,31 @@ Az alábbi táblázatokban a Microsoft Security Response Center (MSRC) az Azure 
 | – |[2896881] |Mennyi ideig a AddPrinterConnection VBScript parancsot használhatja, nyomtatók, felhasználók hozzárendelése a bejelentkezés során a Windows bejelentkezési idő |4.15, 3.22, 2.34 |Jan 13 2015 |
 
 
+[4343887]: http://support.microsoft.com/kb/4343887
+[4343899]: http://support.microsoft.com/kb/4343899
+[4343896]: http://support.microsoft.com/kb/4343896
+[4343888]: http://support.microsoft.com/kb/4343888
+[4344177]: http://support.microsoft.com/kb/4344177
+[4344173]: http://support.microsoft.com/kb/4344173
+[4344175]: http://support.microsoft.com/kb/4344175
+[4344172]: http://support.microsoft.com/kb/4344172
+[4344178]: http://support.microsoft.com/kb/4344178
+[4344171]: http://support.microsoft.com/kb/4344171
+[4346742]: http://support.microsoft.com/kb/4346742
+[4346739]: http://support.microsoft.com/kb/4346739
+[4346745]: http://support.microsoft.com/kb/4346745
+[4346408]: http://support.microsoft.com/kb/4346408
+[4343902]: http://support.microsoft.com/kb/4343902
+[4343205]: http://support.microsoft.com/kb/4343205
+[4338818]: http://support.microsoft.com/kb/4338818
+[4019990]: http://support.microsoft.com/kb/4019990
+[4338830]: http://support.microsoft.com/kb/4338830
+[4338421]: http://support.microsoft.com/kb/4338421
+[4338416]: http://support.microsoft.com/kb/4338416
+[4338815]: http://support.microsoft.com/kb/4338815
+[4338424]: http://support.microsoft.com/kb/4338424
+[4338415]: http://support.microsoft.com/kb/4338415
+
 
 [4338814]: http://support.microsoft.com/kb/4338814
 [4338823]: http://support.microsoft.com/kb/4338823
@@ -1303,7 +1351,6 @@ Az alábbi táblázatokban a Microsoft Security Response Center (MSRC) az Azure 
 [3057839]:http://support.microsoft.com/kb/3057839
 [3062577]:http://support.microsoft.com/kb/3062577
 [3063858]:http://support.microsoft.com/kb/3063858
-
 
 
 [archive]: https://msdn.microsoft.com/library/azure/dn391773.aspx

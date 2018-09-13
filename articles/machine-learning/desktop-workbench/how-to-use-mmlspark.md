@@ -1,51 +1,51 @@
 ---
-title: MMLSpark Machine Learning használatával |} Microsoft Docs
-description: Útmutató az Azure Machine Learning segítségével MMLSpark szalagtár használata.
+title: MMLSpark Machine Learning használatával |} A Microsoft Docs
+description: Útmutató az Azure Machine Learning MMLSpark könyvtár használata.
 services: machine-learning
 author: rastala
 ms.author: roastala
 manager: jhubbard
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 01/12/2018
-ms.openlocfilehash: 3c9bcce67bb802a8596416b55ef61a51ab2900bd
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 654b2559518cd52978153310fbb1e89a91838a8a
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34831530"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35645780"
 ---
-# <a name="how-to-use-microsoft-machine-learning-library-for-apache-spark"></a>Microsoft Machine Learning-könyvtárral az Apache Spark használata
+# <a name="how-to-use-microsoft-machine-learning-library-for-apache-spark"></a>Microsoft Machine Learning Library for Apache Spark használata
 
 ## <a name="introduction"></a>Bevezetés
 
-[Microsoft Machine Learning könyvtár az Apache Spark](https://github.com/Azure/mmlspark) (MMLSpark) biztosítja az eszközöket, amelyek lehetővé teszik, hogy könnyedén létre méretezhető machine learning modellek nagy adatkészletek esetében. Ez magában foglalja az SparkML adatcsatornák az integráció a [Microsoft kognitív eszközkészlet ](https://github.com/Microsoft/CNTK) és [OpenCV](http://www.opencv.org/), amely lehetővé teszi, hogy: 
- * Bemenő és előre folyamatok képének adatai
- * Featurize képek és szövegek előre képzett mély tanulási modellek használata
- * Betanítása és implicit featurization használatával besorolási és regressziós modell pontozása.
+[Microsoft Machine Learning Library for Apache Spark](https://github.com/Azure/mmlspark) (MMLSpark) biztosít az eszközök, amelyekkel könnyedén létre skálázható gépi tanulási modellek nagy adatkészletek esetében. Könnyen használható folyamatok integrációja tartalmazza a [Microsoft Cognitive Toolkit ](https://github.com/Microsoft/CNTK) és [OpenCV](http://www.opencv.org/), ami lehetővé teszi: 
+ * Bejövő és képadatok előzetes feldolgozása
+ * Szabadkézi képek és szöveg előre betanított deep learning-modellek használatával
+ * Betanítása és implicit featurization használatával besorolási és regressziós modellek pontozása.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez az útmutató Útmutató lépéseit, kell:
-- [Telepítse az Azure Machine Learning-munkaterület](../service/quickstart-installation.md)
-- [Azure HDInsight Spark-fürt beállítása](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-jupyter-spark-sql)
+Ez az útmutató elvégezhető, kell tennie:
+- [Az Azure Machine Learning Workbench telepítése](../service/quickstart-installation.md)
+- [Az Azure HDInsight Spark-fürt beállítása](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-jupyter-spark-sql)
 
-## <a name="run-your-experiment-in-docker-container"></a>Futtassa a kísérletet a Docker-tároló
+## <a name="run-your-experiment-in-docker-container"></a>A kísérlet futtatásához a Docker-tárolóban
 
-Az Azure Machine Learning-munkaterület MMLSpark használandó futtatásakor kísérletek Docker-tároló, a helyi vagy távoli virtuális gépre van konfigurálva. Ez a funkció lehetővé teszi, hogy egyszerűen hibakeresését és a PySpark modellek kísérletezhet méretű fürt futtatásához. 
+Az Azure Machine Learning Workbench használata MMLSpark futtatásakor kísérletek a Docker-tárolóban, helyi vagy távoli virtuális gép van konfigurálva. Ezzel a funkcióval egyszerűen hibakeresése és kísérletezzen a PySpark modelljeit, azokat egy fürtön a skálázási futtatása előtt. 
 
-Például az első lépéseiben, hozzon létre egy új projektet, és válassza az example "MMLSpark a felnőtt nyilvántartásba" gyűjteménye. Jelölje ki a számítási környezet a projekt irányítópultján "Docker", és válassza a "Futtatás". Az Azure Machine Learning-munkaterület létrehozza a Docker-tároló a PySpark program futtatásához, és végrehajtja a program.
+Első lépésként egy példát használva hozzon létre egy új projektet, és válassza a "MMLSpark a felnőtt népszámlálási" gyűjtemény példához. Válassza ki a "Docker", a számítási környezetet a projekt irányítópultján, és válassza a "Futtatás". Az Azure Machine Learning Workbench a PySpark program futtatása a Docker-tárolót hoz létre, és a program végrehajtja.
 
-Miután a Futtatás befejeződött, az eredmények megtekinthetők az Azure Machine Learning-munkaterület futtatási előzmények megtekintése.
+A Futtatás befejeződése után megtekintheti az eredményeket az Azure Machine Learning Workbench futtatási előzmények megtekintése.
 
-## <a name="install-mmlspark-on-azure-hdinsight-spark-cluster"></a>Az Azure HDInsight Spark-fürt MMLSpark telepíthető.
+## <a name="install-mmlspark-on-azure-hdinsight-spark-cluster"></a>Telepítse az MMLSpark az Azure HDInsight Spark-fürtön.
 
-Ez és a következő lépés elvégzéséhez szüksége első [hozzon létre egy Azure HDInsight Spark-fürt](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-jupyter-spark-sql).
+Ez és a következő lépés végrehajtásához először szüksége [hozzon létre egy Azure HDInsight Spark-fürt](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-jupyter-spark-sql).
 
-Alapértelmezés szerint Azure Machine Learning-munkaterület telepíti MMLSpark a fürtön való futtatásakor a kísérlet során. Ez a viselkedés szabályozhatja és más külső csomagok telepítése nevű fájl szerkesztésével _aml_config/spark_dependencies.yml_ a projekt mappában.
+Alapértelmezés szerint az Azure Machine Learning Workbench telepíti MMLSpark a fürtön a kísérlet futtatásakor. Ezt a viselkedést vezérlő és a egy nevű fájl szerkesztésével más Spark-csomagok telepítéséhez _aml_config/spark_dependencies.yml_ a projektmappába.
 
 ```
 # Spark configuration properties.
@@ -61,13 +61,13 @@ packages:
     version: "0.9.9"
 ```
 
-Is telepíthető MMLSpark közvetlenül a HDInsight Spark fürt használt [parancsfájlművelet](https://github.com/Azure/mmlspark#hdinsight).
+MMLSpark is telepítheti a közvetlenül a HDInsight Spark-fürtöt hozhat [parancsfájlművelet](https://github.com/Azure/mmlspark#hdinsight).
 
-## <a name="set-up-azure-hdinsight-spark-cluster-as-compute-target"></a>A számítási céljaként Azure HDInsight Spark-fürt beállítása
+## <a name="set-up-azure-hdinsight-spark-cluster-as-compute-target"></a>Compute célként az Azure HDInsight Spark-fürt beállítása
 
-Nyissa meg a parancssori ablakban az Azure Machine Learning-munkaterület a "File" menüben, majd kattintson a "a parancssor megnyitása"
+Nyissa meg a parancssori felület ablakában az Azure Machine Learning Workbench a "File" menüben, majd kattintson az "a parancssor megnyitása"
 
-CLI-ablakban futtassa a következő parancsokat:
+Parancssori felület ablakában futtassa a következő parancsokat:
 
 ```
 az ml computetarget attach cluster --name <myhdi> --address <myhdi-ssh.azurehdinsight.net> --username <sshusername> --password <sshpwd> 
@@ -77,15 +77,15 @@ az ml computetarget attach cluster --name <myhdi> --address <myhdi-ssh.azurehdin
 az ml experiment prepare -c <myhdi>
 ```
 
-Most már a fürt érhető el a célként megadott a projekthez tartozó számítási.
+Most már a fürt érhető el, a számítási célt a projekthez.
 
-## <a name="run-experiment-on-azure-hdinsight-spark-cluster"></a>Futtatási kísérlet az Azure HDInsight Spark-fürt.
+## <a name="run-experiment-on-azure-hdinsight-spark-cluster"></a>Futtatási kísérletet az Azure HDInsight Spark-fürtön.
 
-Lépjen vissza a projekt irányítópultján "MMLSpark a felnőtt nyilvántartásba" példa. Válassza ki a fürtöt a számítási célként, és kattintson a Futtatás gombra.
+Lépjen vissza a projekt irányítópultján, például "MMLSpark a felnőtt népszámlálási". Válassza ki a fürtöt, a számítási célnak, és kattintson az OK gombra.
 
-Az Azure Machine Learning-munkaterület elküldi a spark feladatot a fürthöz. Az előrehaladást, és tekintse meg az eredményeket futtatási előzmények megtekintése.
+Az Azure Machine Learning Workbench küldi el a spark-feladat a fürthöz. Nyomon követheti, és tekintse meg az eredményeket a futtatási előzmények megtekintése.
 
 ## <a name="next-steps"></a>További lépések
-További információ a MMLSpark könyvtár és példák: [MMLSpark GitHub-adattár](https://github.com/Azure/mmlspark)
+MMLSpark könyvtár és példák kapcsolatos információkért lásd: [MMLSpark GitHub-adattár](https://github.com/Azure/mmlspark)
 
-*Apache®, Apache Spark és Spark® bejegyzett védjegye vagy védjegye az Amerikai Egyesült Államokban és/vagy más országokban Apache szoftver alapját.*
+*Apache®, Apache Spark- és Spark® olyan bejegyzett védjegye vagy védjegye az Amerikai Egyesült Államokban és/vagy más országokban, az Apache Software Foundation.*

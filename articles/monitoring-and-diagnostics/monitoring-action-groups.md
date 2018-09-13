@@ -5,15 +5,15 @@ author: dkamstra
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 06/1/2018
+ms.date: 09/12/2018
 ms.author: dukek
 ms.component: alerts
-ms.openlocfilehash: 441469e24de5324fb5bed40c75f9a6b26f85bcc5
-ms.sourcegitcommit: 465ae78cc22eeafb5dfafe4da4b8b2138daf5082
+ms.openlocfilehash: 6163a099894a823614355f71a3e1af4a6a9026ec
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44325056"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44717675"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Az Azure Portalon a műveleti csoportok létrehozása és kezelése
 ## <a name="overview"></a>Áttekintés ##
@@ -33,9 +33,9 @@ Műveletcsoportok konfigurálása Azure Resource Manager-sablonok használatár�
 1. Az a [portál](https://portal.azure.com)válassza **figyelő**. A **figyelő** panel összesíti az összes figyelési beállítást és adatokat egyetlen nézetben.
 
     ![A "Figyelés" szolgáltatás](./media/monitoring-action-groups/home-monitor.png)
-1. Az a **beállítások** szakaszban jelölje be **Műveletcsoportok**.
+1. Válassza ki **riasztások** majd **Műveletcsoportok kezelése**.
 
-    ![Az "Action groups" lap](./media/monitoring-action-groups/action-groups-blade.png)
+    ![Műveletcsoportok gomb kezelése](./media/monitoring-action-groups/manage-action-groups.png)
 1. Válassza ki **műveleti csoport hozzáadása**, és töltse ki a mezőket.
 
     ![A "Csoport hozzáadása művelet" parancs](./media/monitoring-action-groups/add-action-group.png)
@@ -97,6 +97,17 @@ Műveletcsoportok konfigurálása Azure Resource Manager-sablonok használatár�
 <dt>Webhook</dt>
 <dd>Előfordulhat, hogy legfeljebb 10 Webhook-műveletek tartalmaz műveletcsoportot
 <dd>Újrapróbálkozási logika – az időkorlát választ érték 10 másodperc. A webhook hívása lesz újból legfeljebb 2 idők esetén a következő HTTP-állapotkódok adja vissza: 408, 429-es, 503-as, 504 vagy a HTTP-végpont nem válaszol. Az első újrapróbálkozás 10 másodperc után történik. A második és az utolsó újrapróbálkozási 100 másodperc múlva történik.</dd>
+<dd>Forrás IP-címtartományok
+<ul>
+    <li>13.106.57.181</li>
+    <li>13.106.54.3</li>
+    <li>13.106.54.19</li>
+    <li>13.106.38.142</li>
+    <li>13.106.38.148</li>
+    <li>13.106.57.196</li>
+</ul>
+A érintő változásokról ezen IP-címek, javasoljuk, hogy konfigurálja a frissítések fogadásához egy [szolgáltatásállapot-riasztás](./monitoring-service-notifications.md) amely figyeli a Műveletcsoportok szolgáltatással kapcsolatos tájékoztató értesítések.
+</dd>
 </dl>
 
 ## <a name="manage-your-action-groups"></a>A műveleti csoportok kezelése ##

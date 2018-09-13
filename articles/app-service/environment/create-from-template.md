@@ -1,6 +1,6 @@
 ---
-title: Az Azure App Service-környezetek létrehozása egy Resource Manager-sablon használatával
-description: Ismerteti, hogyan egy külső vagy ILB Azure App Service-környezet létrehozása egy Resource Manager-sablon használatával
+title: Azure App Service-környezet létrehozása a Resource Manager-sablon használatával
+description: Azt ismerteti, hogyan hozhat létre a külső vagy ILB Azure App Service environment egy Resource Manager-sablon használatával
 services: app-service
 documentationcenter: na
 author: ccompy
@@ -13,46 +13,47 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
-ms.openlocfilehash: 69ead9e6dae400ce16cb2442c7b1c13e348d1572
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 92422a254bcfd5b31731dda6d1790cc85f467860
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35645951"
 ---
-# <a name="create-an-ase-by-using-an-azure-resource-manager-template"></a>Hozzon létre egy ASE Azure Resource Manager-sablon használatával
+# <a name="create-an-ase-by-using-an-azure-resource-manager-template"></a>Az ASE létrehozása Azure Resource Manager-sablon használatával
 
 ## <a name="overview"></a>Áttekintés
-Az Azure App Service-környezetek (ASEs) az internetről elérhető végpontok vagy egy Azure virtuális hálózatot (VNet) belső cím végpontja hozhatók létre. A belső végpont létrehozásakor adott végpontra kerül az Azure által az összetevő egy belső terheléselosztón (ILB) nevű. A belső IP-cím ASE egy ILB ASE nevezik. Egy nyilvános végponttal ASE egy külső ASE nevezik. 
+Egy internethez csatlakozó végponttal vagy a végpont egy belső címet egy Azure virtuális hálózaton (VNet) az Azure App Service Environment (ASE) hozható létre. Egy belső végpont létrehozásakor, hogy a végpont kerül a Azure által az összetevő a belső terheléselosztó (ILB) nevű. A belső IP-cím az ASE ILB ASE nevezzük. Az ASE egy nyilvános végponttal rendelkező külső ASE nevezzük. 
 
-Egy ASE is létrehozható az Azure-portálon vagy az Azure Resource Manager-sablon használatával. Ez a cikk végigvezeti a lépéseken, és egy külső ASE vagy ILB ASE Resource Manager-sablonok létrehozásához szükséges szintaxist. Egy ASE létrehozása az Azure-portálon a további tudnivalókért lásd: [egy külső ASE ellenőrizze] [ MakeExternalASE] vagy [egy ILB ASE ellenőrizze][MakeILBASE].
+Az ASE az Azure Portalon vagy Azure Resource Manager-sablon segítségével hozható létre. Ez a cikk ismerteti a lépéseket és a egy külső ASE vagy ILB ASE Resource Manager-sablonokkal való létrehozásához szükséges szintaxist. Az ASE létrehozása az Azure Portalon kapcsolatban lásd: [győződjön meg arról, a külső ASE] [ MakeExternalASE] vagy [győződjön meg arról, az ILB ASE][MakeILBASE].
 
-Amikor létrehoz egy ASE az Azure portálon, a virtuális hálózat létrehozása egy időben, vagy válasszon egy már meglévő VNet és üzembe helyezés. Amikor egy ASE sablon alapján hoz létre, meg kell kezdődnie: 
+Az ASE az Azure Portalon hoz létre, amikor a virtuális hálózat létrehozásához egy időben, vagy válasszon egy már létező virtuális hálózathoz való üzembe helyezéséhez. Ha az ASE létrehozása sablonból, a kezdéshez: 
 
-* Egy erőforrás-kezelő virtuális hálózat.
-* A virtuális alhálózat. Azt javasoljuk, hogy egy ASE alhálózat mérete `/25` biztosít a későbbi növekedéshez való 128 címekkel. A ASE létrehozása után nem módosíthatja a mérete.
-* Az erőforrás-azonosítója a vnet. Ezt az információt lekérheti az Azure-portálon, a virtuális hálózati tulajdonságok alapján.
-* Az üzembe helyezés kívánt előfizetést.
-* Üzembe helyezés kívánt helyét.
+* Resource Manager virtuális hálózathoz.
+* Egy alhálózatot az adott virtuális hálózatban. Azt javasoljuk, hogy az ASE alhálózat méretét `/24` 256 címekkel, a későbbi növekedéshez és skálázási igényeihez. Az ASE létrehozását követően a mérete nem módosítható.
+* Az erőforrás-azonosítója a virtuális hálózatról. Ezt az információt az Azure Portalról alatt a virtuális hálózati tulajdonságok beolvasása.
+* Az üzembe helyezése a kívánt előfizetést.
+* A való üzembe helyezése a kívánt helyre.
 
-A ASE létrehozásának automatizálása:
+Automatizálhatja az ASE létrehozása:
 
-1. A ASE létrehozása sablonból. Ha létrehoz egy külső ASE, végzett elvégezte ezt a lépést. Ha létrehoz egy ILB ASE, nincsenek ehhez néhány dolgot.
+1. Az ASE létrehozása sablonból. Külső ASE létrehozása, ha elkészült a lépés után. ILB ASE létrehozása, ha nincsenek ehhez néhány dolgot.
 
-2. A ILB ASE létrehozása után, amely megfelel a ILB ASE tartomány SSL-tanúsítvány feltöltése.
+2. Az ILB ASE létrehozása után, amely megfelel az ILB ASE tartomány SSL-tanúsítvány feltöltése.
 
-3. A feltöltött SSL-tanúsítvány hozzá van rendelve a ILB ASE az "alapértelmezett" SSL-tanúsítványt.  Ez a tanúsítvány használható SSL-forgalom a ILB ASE található alkalmazások a közös gyökértartomány, amely hozzá van rendelve a ASE használata (például https://someapp.mycustomrootdomain.com).
+3. A feltöltött SSL-tanúsítvány hozzá van rendelve az ILB ASE az "alapértelmezett" SSL-tanúsítványt.  Ez a tanúsítvány használható SSL az ILB ASE alkalmazások felé irányuló forgalom a közös gyökértartomány, amely van rendelve az ASE használata esetén (például https://someapp.mycustomrootdomain.com).
 
 
-## <a name="create-the-ase"></a>A ASE létrehozása
-A Resource Manager-sablont, amely létrehoz egy ASE és a kapcsolódó paraméterfájl érhető [egy példa a] [ quickstartasev2create] a Githubon.
+## <a name="create-the-ase"></a>Az ASE létrehozása
+A Resource Manager-sablon, amely létrehoz egy ASE Környezethez és a kapcsolódó paraméterfájl érhető el [egy példa a] [ quickstartasev2create] a Githubon.
 
-Ha engedélyezni szeretné egy ILB ASE, használja a Resource Manager-sablon [példák][quickstartilbasecreate]. Ezek elemeket, amelyek használati eset. A paraméterek a legtöbb a *azuredeploy.parameters.json* fájl megegyeznek az ILB ASEs és külső ASEs létrehozását. Az alábbi lista meghívja a kimenő paraméterek különleges megjegyzés, vagy az egyedi, amikor létrehoz egy ILB ASE:
+Ha azt szeretné, hogy az ILB ASE környezetben, használja a Resource Manager-sablon [példák][quickstartilbasecreate]. Ezek méretformátumok figyelembe vétele, amely a kis-és nagybetűhasználattal. A paraméterek a legtöbb a *azuredeploy.parameters.json* fájl közösek az ILB ASE és a külső ASE létrehozását. Az alábbi lista felhívja paraméterek különösen fontos, vagy az egyedi, az ILB ASE létrehozásakor:
 
-* *internalLoadBalancingMode*: A legtöbb esetben a ASE meg az FTP-szolgáltatás által figyelt 3, ami azt jelenti, hogy a 80/443-as port HTTP/HTTPS-forgalmat, és a/adatok portok a készlet egy ILB lefoglalt virtuális hálózat belső társítani cím. Ha ez a tulajdonság értéke 2, csak az FTP szolgáltatással kapcsolatos portok (vezérlő és az adatokat egyaránt csatornák) ILB címnek vannak kötve. A HTTP/HTTPS-forgalmat a nyilvános VIP marad.
-* *dnsSuffix*: Ez a paraméter határozza meg az alapértelmezett gyökértartomány, amely hozzá van rendelve a ASE. Az Azure App Service nyilvános változata, az alapértelmezett gyökértartomány minden webes alkalmazások nem *azurewebsites.net*. Mivel egy ILB ASE belső, az ügyfél virtuális hálózathoz, azt nem célszerű a használata a nyilvános service alapértelmezett legfelső szintű tartomány. Ehelyett egy ILB ASE kell egy alapértelmezett gyökértartomány legjobb a vállalat belső virtuális hálózaton belüli használatra. Például a Contoso Corporation használhatja az alapértelmezett legfelső szintű tartomány *belső contoso.com* célja, hogy feloldható, és csak a Contoso virtuális hálózaton belülről érhetők el alkalmazások. 
-* *ipSslAddressCount*: Ez a paraméter alapértelmezett értéke automatikusan a 0 értéket a *azuredeploy.json* fájlhoz, mert ILB ASEs csak egyetlen ILB címmel rendelkezik. Nincsenek a egy ILB ASE explicit IP-SSL címek. Emiatt az IP-SSL-címkészletet egy ILB ASE a nulla értékre kell állítani. Ellenkező esetben a létesítési hiba történik. 
+* *internalLoadBalancingMode*: A legtöbb esetben az FTP-szolgáltatás, az ASE által figyelt ezt a 3, ami azt jelenti, hogy a HTTP/HTTPS-forgalmat a 80-as/443-as portokon, és a vezérlő/adatok portok beállítása társítani kívánt az ILB-lefoglalt virtuális hálózat belső cím. Ha ez a tulajdonság értéke 2, csak az FTP szolgáltatással kapcsolatos portok (egyaránt vezérlési és csatornák) ILB-címmel vannak kötve. A HTTP/HTTPS-forgalmat a nyilvános virtuális IP-cím nem marad.
+* *DNS-utótagja*: Ez a paraméter határozza meg az alapértelmezett legfelső szintű tartományt, amely az ASE van rendelve. Az Azure App Service-ben nyilvános változata, az alapértelmezett gyökértartomány esetében az összes webes alkalmazások van *azurewebsites.net*. Mivel az ILB ASE környezetben egy ügyfél virtuális hálózatán belüli, a nyilvános service alapértelmezett legfelső szintű tartományt használja, hogy nincs értelme. Ehelyett az ILB ASE rendelkeznie kell egy alapértelmezett legfelső szintű tartományt, amely logikus a használatra a vállalat belső virtuális hálózaton belül. Contoso Corporation például használhatja az alapértelmezett gyökértartomány *belső contoso.com* az alkalmazásokhoz, melyek nem oldható fel és csak a Contoso virtuális hálózaton belül elérhető. 
+* *ipSslAddressCount*: Ez a paraméter alapértelmezett értéke automatikusan a 0 értéket a *azuredeploy.json* fájlhoz, mert az ILB ASE egy ILB-címmel rendelkezik. Nincsenek explicit IP-SSL címek ILB ASE esetében. Ezért az ILB ASE IP SSL-címkészletet kell beállítani a nulla. Ellenkező esetben egy üzembe helyezési hiba történik. 
 
-Miután a *azuredeploy.parameters.json* fájl ki van töltve, a ASE létrehozása a PowerShell kódrészletet használatával. Módosítsa az elérési utat kell egyeznie a Resource Manager sablon-fájlhelyek a számítógépen. Ne felejtse el az erőforrás-kezelő központi telepítés nevét és az erőforráscsoport neve a saját értéket ad meg:
+Miután a *azuredeploy.parameters.json* fájl ki van töltve, az ASE létrehozása a PowerShell-kódrészlet használatával. A Resource Manager-sablonfájl helyek a gépen megfelelően a elérési útjának módosítása. Ne felejtse adja meg a saját a Resource Manager üzembe helyezési nevét és az erőforráscsoport neve:
 
 ```powershell
 $templatePath="PATH\azuredeploy.json"
@@ -61,28 +62,28 @@ $parameterPath="PATH\azuredeploy.parameters.json"
 New-AzureRmResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-HERE" -TemplateFile $templatePath -TemplateParameterFile $parameterPath
 ```
 
-A létrehozandó ASE egy órát vesz igénybe. Ezután a ASE megjelennek a portálon az előfizetés, a központi telepítés kiváltó ASEs listájában.
+Az ASE létrehozását egy órát vesz igénybe. Ezután az ASE megjelenik-e a listában, az ASE az előfizetés, amely kiváltotta az üzembe helyezés a portálon.
 
 ## <a name="upload-and-configure-the-default-ssl-certificate"></a>Töltse fel, és az "alapértelmezett" SSL-tanúsítvány konfigurálása
-Az SSL-tanúsítvány alkalmazások SSL-kapcsolat létrehozásához használt "alapértelmezett" SSL-tanúsítványt kell rendelni, a mértékéig. Ha a ASE alapértelmezett DNS-utótagja *belső contoso.com*, kapcsolat https://some-random-app.internal-contoso.com érvényes SSL-tanúsítvány szükséges **.internal-contoso.com*. 
+SSL-tanúsítvány az ASE társítva kell lennie az "alapértelmezett" SSL-tanúsítvány, amely alkalmazások SSL-kapcsolat létesítésére szolgál. Ha az ASE alapértelmezett DNS-utótag *belső contoso.com*, kapcsolatot https://some-random-app.internal-contoso.com érvényes SSL-tanúsítvány szükséges **.internal-contoso.com*. 
 
-Szerezzen be egy érvényes SSL-tanúsítvány belső hitelesítésszolgáltatók használatával, egy tanúsítvány beszerzése egy külső kiállítótól érkező, vagy önaláírt tanúsítványt használ. Az SSL-tanúsítvány forrását, függetlenül a következő tanúsítvány attribútumok megfelelően kell konfigurálni:
+Szerezze be egy érvényes SSL-tanúsítvány használatával a belső tanúsítványszolgáltatót, vásárol egy tanúsítványt külső kiállítótól vagy egy önaláírt tanúsítvány használatával. Az SSL-tanúsítvány forrásától függetlenül a következő tanúsítvány attribútumok megfelelően kell konfigurálni:
 
-* **Tulajdonos**: meg kell ezt az attribútumot **.your-gyökér-tartományi-here.com*.
-* **Tulajdonos alternatív neve**: ennek az attribútumnak kell tartalmaznia a **.your-gyökér-tartományi-here.com* és **.scm.your-gyökér-tartományi-here.com*. Minden alkalmazáshoz társított SCM/Kudu webhely SSL-kapcsolatot az űrlap cím használata *your-app-name.scm.your-root-domain-here.com*.
+* **Tulajdonos**: ezt az attribútumot állítsa **.az-gyökér-domain-here.com*.
+* **Tulajdonos alternatív neve**: ennek az attribútumnak tartalmaznia kell mindkét **.az-gyökér-domain-here.com* és **.az-gyökér-domain-here.com*. Az SCM/Kudu helyhez társított SSL-kapcsolatok használata a képernyő címének *your-app-name.scm.your-root-domain-here.com*.
 
-Egy érvényes SSL-tanúsítvánnyal aktuális két további előkészítő lépések szükségesek. Konvertálja/mentse az SSL-tanúsítványt .pfx fájlként. Ne feledje, hogy a .pfx fájl tartalmazza az összes köztes kell, és legfelső szintű tanúsítványok. Jelszóval gondoskodjon a védelméről.
+Az érvényes SSL-tanúsítványt az aktuális két további előkészítő lépések szükségesek. Konvertálja/mentse az SSL-tanúsítványt .pfx fájlként. Ne feledje, hogy a .pfx-fájlt kell összes köztes és főtanúsítványok. Jelszóval gondoskodjon a védelméről.
 
-A .pfx-fájlt kell a Base64 kódolású karakterlánc alakítja át, mivel az SSL-tanúsítvány feltöltése a Resource Manager-sablon használatával. Mivel Resource Manager-sablonok szövegfájlok, a .pfx fájl konvertálni kell egy Base64 kódolású karakterlánc. Ezzel a módszerrel azt is meg lehet adni a sablon paraméterként.
+A .pfx-fájlt kell base64-karakterlánc konvertálva, mert az SSL-tanúsítvány feltöltése egy Resource Manager-sablon használatával. Mivel a Resource Manager-sablonok szöveges fájlok, a .pfx-fájlt Base64 kódolású karakterláncnak kell konvertálni. Ezzel a módszerrel azt is meg lehet adni a sablon paraméterként.
 
-A következő PowerShell-kódrészletet a használja:
+Az alábbi PowerShell kódrészletet használja:
 
-* Önaláírt tanúsítvány jön létre.
+* Létrehozhat egy önaláírt tanúsítványt.
 * Exportálja a tanúsítványt egy .pfx fájlba.
-* A .pfx fájl átalakítása base64 kódolású karakterlánc.
-* A base64 kódolású karakterlánc külön fájlt mentse. 
+* A .pfx-fájl átalakítása base64-kódolású karakterlánc.
+* Mentse a base64-kódolású karakterlánc egy különálló fájlban. 
 
-A PowerShell-kódot az alkalmazás base64 kódolást volt módosítani a a [PowerShell parancsfájlok blog][examplebase64encoding]:
+A PowerShell-kódot a base64 kódolás volt a igazítani a [PowerShell-szkriptek blog][examplebase64encoding]:
 
 ```powershell
 $certificate = New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname "*.internal-contoso.com","*.scm.internal-contoso.com"
@@ -98,18 +99,18 @@ $fileContentEncoded = [System.Convert]::ToBase64String($fileContentBytes)
 $fileContentEncoded | set-content ($fileName + ".b64")
 ```
 
-Miután sikeresen generált és base64-kódolású karakterlánccá alakítja át az SSL-tanúsítvány, a példa a Resource Manager-sablon [az alapértelmezett SSL-tanúsítvány konfigurálása] [ quickstartconfiguressl] a Githubon. 
+Miután az SSL-tanúsítvány sikeresen létrehozott és base64-kódolású karakterlánccá alakítja, a példában a Resource Manager-sablon [az alapértelmezett SSL-tanúsítvány konfigurálása] [ quickstartconfiguressl] a Githubon. 
 
-A paraméterek a *azuredeploy.parameters.json* fájl itt találhatók:
+A paramétereket a *azuredeploy.parameters.json* fájl itt találhatók:
 
-* *appServiceEnvironmentName*: a konfigurálni kívánt ILB ASE nevét.
-* *existingAseLocation*: az Azure-régió, ahol a ILB ASE állított tartalmazó szöveges karakterlánc.  Például: "Déli középső Régiójában".
-* *pfxBlobString*: a .pfx fájl a based64 kódolású karakterlánc-ábrázolása. A korábban bemutatott kódrészletet használja, és másolja át a "exportedcert.pfx.b64" foglalt karakterlánc. Illessze be az értékeként a *pfxBlobString* attribútum.
+* *appServiceEnvironmentName*: az ILB ASE konfigurált nevét.
+* *existingAseLocation*: az Azure-régióban, az ILB ASE környezetben telepített tartalmazó szöveges karakterlánc.  Például: "USA déli középső Régiója".
+* *pfxBlobString*: A based64-kódolású karakterláncos leképezését a .pfx-fájlt. A korábban bemutatott kódrészletet használja, és másolja a "exportedcert.pfx.b64" foglalt karakterlánc. Illessze be az értéket a *pfxBlobString* attribútum.
 * *jelszó*: A jelszót a .pfx-fájlt védi.
-* *certificateThumbprint*: A tanúsítvány ujjlenyomata. Ha ez az érték lekérése PowerShell (például *$certificate. Ujjlenyomat* a korábbi kódrészletet a), használhatja az érték, mert a. Értékének másolása a Windows tanúsítvány párbeszédpanel, ha fontos, hogy a fölösleges szóközök ki. A *certificateThumbprint* AF3143EB61D43F6727842115BB7F17BBCECAECAE hasonlóan kell kinéznie.
-* *certificateName*: identitás a tanúsítvány segítségével A saját rövid karakterlánc-azonosító. A nevét használja egyedi erőforrás-kezelő azonosítója részeként a *Microsoft.Web/certificates* entitás, amely jelöli az SSL-tanúsítvány. A név *kell* végződhet a következő előtagot: \_yourASENameHere_InternalLoadBalancingASE. Az Azure-portálon a utótagot használja, mint azt jelzi, hogy a tanúsítvány használatával biztonságos egy ILB-kompatibilis ASE.
+* *certificateThumbprint*: A tanúsítvány ujjlenyomata. Ha ez az érték lekérése PowerShell (például *$certificate. Ujjlenyomat* a korábbi kódrészlet), az értéket, használhatja. Ha a Windows-tanúsítvány párbeszédpanelről másolja az értéket, ne feledje, távolítsa el a felesleges szóközöket. A *certificateThumbprint* AF3143EB61D43F6727842115BB7F17BBCECAECAE hasonlóan kell kinéznie.
+* *certificateName*: a tanúsítvány identitás használt saját egy rövid karakterlánc-azonosító. A név szolgál az erőforrás-kezelő egyedi azonosítóját részeként a *Microsoft.Web/certificates* entitás, amely az SSL-tanúsítvány jelöli. A név *kell* a következő utótaggal végződik: \_yourASENameHere_InternalLoadBalancingASE. Az Azure Portalon ezt az utótagot használja azt, hogy a tanúsítvány egy ILB-kompatibilis az ASE védelme használható.
 
-Rövidített például *azuredeploy.parameters.json* itt jelenik meg:
+Rövidített például *azuredeploy.parameters.json* itt látható:
 
 ```json
 {
@@ -138,7 +139,7 @@ Rövidített például *azuredeploy.parameters.json* itt jelenik meg:
 }
 ```
 
-Miután a *azuredeploy.parameters.json* fájl ki van töltve, az alapértelmezett SSL-tanúsítvány konfigurálása a PowerShell kódrészletet használatával. Módosítsa a fájlelérési út egyezőre, hol található a Resource Manager sablon fájlokat a számítógépre. Ne felejtse el az erőforrás-kezelő központi telepítés nevét és az erőforráscsoport neve a saját értéket ad meg:
+Miután a *azuredeploy.parameters.json* fájl ki van töltve, az alapértelmezett SSL-tanúsítvány konfigurálása a PowerShell-kódrészlet használatával. Hol található a gépen a Resource Manager-sablonfájlokat megfelelően a elérési útjának módosítása. Ne felejtse adja meg a saját a Resource Manager üzembe helyezési nevét és az erőforráscsoport neve:
 
 ```powershell
 $templatePath="PATH\azuredeploy.json"
@@ -147,20 +148,20 @@ $parameterPath="PATH\azuredeploy.parameters.json"
 New-AzureRmResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-HERE" -TemplateFile $templatePath -TemplateParameterFile $parameterPath
 ```
 
-A módosítás alkalmazására ASE előtér / nagyjából 40 percet vesz igénybe. Például az alapértelmezett méretű ASE, két előtér-webkiszolgálóinak használó, a sablon befejezéséhez körülbelül egy óra és 20 perc. A sablon futása közben a ASE nem lehet méretezni.  
+A módosítás alkalmazása ASE előtér / körülbelül 40 percet vesz igénybe. Például két előtérrendszerek használó alapértelmezett méretű ASE a sablon körülbelül egy óra és 20 percet vesz igénybe végrehajtásához. A sablon futása közben az ASE nem skálázhatja.  
 
-A sablon befejezése után a ILB ASE alkalmazások HTTPS-KAPCSOLATON keresztül érhető el. A kapcsolatok biztonságáról az alapértelmezett SSL-tanúsítvány. Az alapértelmezett SSL-tanúsítvány akkor használatos, ha a az alkalmazás nevét, valamint az alapértelmezett állomásnév együttes használatával a ILB ASE alkalmazások tárgyalja. Például https://mycustomapp.internal-contoso.com használja az alapértelmezett SSL-tanúsítványt **.internal-contoso.com*.
+A sablon befejezését követően az ILB ASE alkalmazások HTTPS-kapcsolaton keresztül érhető el. A kapcsolatok biztonságosak, az alapértelmezett SSL-tanúsítvány használatával. Az alapértelmezett SSL-tanúsítványt használt az ILB ASE alkalmazásokat az alkalmazás nevét, valamint az alapértelmezett állomásnév együttes használatával foglalkozik. Ha például https://mycustomapp.internal-contoso.com használja az alapértelmezett SSL-tanúsítványt **.internal-contoso.com*.
 
-Csakúgy, mint a nyilvános több-bérlős szolgáltatást a futó alkalmazások, azonban fejlesztők konfigurálható egyéni állomásnevek egyes alkalmazásokhoz. Egyedi SNI SSL-tanúsítványok kötései egyes alkalmazások esetében is konfigurálhatja.
+Csakúgy, mint a nyilvános több-bérlős szolgáltatás rendszeren futtatott alkalmazások, azonban a fejlesztők konfigurálhatja az egyes alkalmazások egyéni állomásnevek. Egyedi SNI SSL-tanúsítványok kötései az egyes alkalmazások is konfigurálhatja.
 
 ## <a name="app-service-environment-v1"></a>App Service-környezet v1 ##
 Kétféle verzió érhető el az App Service Environment szolgáltatáshoz: ASEv1 és ASEv2. A fenti információ az ASEv2 verzión alapul. Ebben a szakaszban az ASEv1 és ASEv2 különbségeiről olvashat.
 
-Az ASEv1 kezelhetők a összes erőforrást manuálisan. Ebbe beletartoznak az előtérrendszerek, a feldolgozók, valamint IP-alapú SSL esetén az IP-címek is. Ki lehet terjeszteni a App Service-csomagot, mielőtt a feldolgozókészleten üzemeltetnie kívánt kell kiterjesztése.
+Az asev1-ben kezelheti az összes olyan erőforrást manuálisan. Ebbe beletartoznak az előtérrendszerek, a feldolgozók, valamint IP-alapú SSL esetén az IP-címek is. Ki lehet terjeszteni az App Service-csomag, mielőtt ki kell terjeszteni a az üzemeltetni kívánt feldolgozókészlet.
 
-Az ASEv1 díjszabása eltér az ASEv2-étől. Az ASEv1 esetében minden lefoglalt vCPU után fizet. Az előtér-webkiszolgálóinak vagy bármilyen számítási feladatot nem futtató munkavállalók használt Vcpu, amely tartalmazza. Az ASEv1 esetében egy ASE alapértelmezett maximális skálázhatósága összesen 55 gazdagép. Ez tartalmazza a feldolgozókat és az előtérrendszereket is. Az ASEv1 egyik előnye az, hogy klasszikus, illetve Resource Manager virtuális hálózatokban is üzembe helyezhető. Az ASEv1 verzióról további információt az [App Service Environment v1 bemutatása][ASEv1Intro] témakörben találhat.
+Az ASEv1 díjszabása eltér az ASEv2-étől. Az ASEv1 esetében minden lefoglalt vCPU után fizet. Ez tartalmazza a vcpu-k által használt és a feldolgozókhoz, amelyek nem üzemeltetnek számítási feladatokat. Az ASEv1 esetében egy ASE alapértelmezett maximális skálázhatósága összesen 55 gazdagép. Ez tartalmazza a feldolgozókat és az előtérrendszereket is. Az ASEv1 egyik előnye az, hogy klasszikus, illetve Resource Manager virtuális hálózatokban is üzembe helyezhető. Az ASEv1 verzióról további információt az [App Service Environment v1 bemutatása][ASEv1Intro] témakörben találhat.
 
-Egy ASEv1 létrehozása egy Resource Manager-sablon használatával, lásd: [hozzon létre egy ILB ASE v1 Resource Manager-sablon][ILBASEv1Template].
+Az ASEv1 létrehozása egy Resource Manager-sablon használatával: [egy ILB ASE v1 létrehozása Resource Manager-sablonnal][ILBASEv1Template].
 
 
 <!--Links-->

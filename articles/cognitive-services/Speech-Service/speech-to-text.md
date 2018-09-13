@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-jerkin
-ms.openlocfilehash: ba6710c8b5b8de1c63fa6778ea3853ab52365254
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: efdded28fa4554bf58399d997bf663781a08755e
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39325336"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44714701"
 ---
 # <a name="about-the-speech-to-text-api"></a>Tudnivalók a Speech to Text API
 
@@ -36,7 +36,7 @@ A **Speech to Text** API a következő szolgáltatásokat nyújtja:
 
 ## <a name="api-capabilities"></a>API-funkciók
 
-Bizonyos képességeit a **Speech to Text** API REST-en keresztül nem érhetők el. Az alábbi táblázat foglalja össze az egyes módszerek az API eléréséhez képességeit.
+Nagy mennyiségű képességeit a **Speech to Text** API - különös tekintettel testreszabása – REST-en keresztül érhetők el. Az alábbi táblázat foglalja össze az egyes módszerek az API eléréséhez képességeit. A lehetőségeket és az API teljes listáját meg részletesen consult [Swagger](https://swagger/service/11ed9226-335e-4d08-a623-4547014ba2cc#/)
 
 | Használati eset | REST | SDK-k |
 |-----|-----|-----|----|
@@ -44,6 +44,16 @@ Bizonyos képességeit a **Speech to Text** API REST-en keresztül nem érhetők
 | A hosszabb utterance (> 15 mp) alapuló átírás | Nem | Igen |
 | Streamelési audio-választható köztes eredményeket alapuló átírás | Nem | Igen |
 | Hangszóró leképezések a LUIS-n keresztül ismertetése | nem\* | Igen |
+| Pontossági tesztek létrehozása | Igen | Nem |
+| A modellbetanítás adatkészletek feltöltése | Igen | Nem |
+| Hozzon létre & beszédfelismerési modellek kezelése | Igen | Nem |
+| Modell üzembe helyezett megoldások kezelése & létrehozása | Igen | Nem |
+| Előfizetések kezelése | Igen | Nem |
+| Modell üzembe helyezett megoldások kezelése & létrehozása | Igen | Nem |
+| Modell üzembe helyezett megoldások kezelése & létrehozása | Igen | Nem |
+
+> [!NOTE]
+> A REST API-t valósít meg, amely korlátozza az API-kérelmek 25, 5 másodpercenként szabályozás. Üzenet hearders tájékoztatni fogja korlátját
 
 \* *A LUIS szándékok és entitások egy külön LUIS-előfizetése lehet nyerni. Ennek az előfizetésnek az SDK a LUIS hívja meg, és adja meg az entitás- és leképezés eredményeket, valamint a speech beszédátírás. A LUIS hívása a REST API-val saját magának, hogy szándékokat és entitásokat a LUIS-előfizetéshez.*
 

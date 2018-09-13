@@ -1,6 +1,6 @@
 ---
-title: Azure Application Insights Hockeyappra adatainak felfedezése |} Microsoft Docs
-description: Elemezze a használati és teljesítményadatokat az Azure-alkalmazás az Application insights szolgáltatással.
+title: Az Azure Application Insights a HockeyApp-adatok feltárása |} A Microsoft Docs
+description: Használatát és teljesítményét az Azure-alkalmazáshoz az Application insights segítségével elemezheti.
 services: application-insights
 documentationcenter: windows
 author: mrbullwinkle
@@ -10,63 +10,64 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/30/2017
 ms.author: mbullwin
-ms.openlocfilehash: cd185d799be5051340c2bfea44a1d1e69a1eb002
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: 7586dbc4d7a0b7dbc7756eabbb4a8d5e0e60a731
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35645272"
 ---
-# <a name="exploring-hockeyapp-data-in-application-insights"></a>Az Application Insightsban Hockeyappra adatok
+# <a name="exploring-hockeyapp-data-in-application-insights"></a>Az Application Insights a HockeyApp-adatok feltárása
 
 > [!NOTE]
-> Új alkalmazások Hockeyappra már nem érhető el. Hockeyappra meglévő telepítések továbbra is működni fog. Visual Studio alkalmazás Center mostantól a Microsoft ajánlott szolgáltatás új mobilalkalmazások figyelésre. [Ismerje meg, hogyan állíthat be az alkalmazások App-központ és az Application Insights](app-insights-mobile-center-quickstart.md).
+> Új alkalmazások hockeyapp szolgáltatással már nem érhető el. HockeyApp meglévő telepítések továbbra is működni fog. A Visual Studio App Center mostantól a Microsoft ajánlott szolgáltatása új mobile Apps-alkalmazások figyelésére. [Ismerje meg, hogyan állítható be az alkalmazásokat az App Center és az Application Insights](app-insights-mobile-center-quickstart.md).
 
-[Hockeyappra](https://azure.microsoft.com/services/hockeyapp/) szolgáltatás történő élő az asztali és mobil alkalmazások figyelését. A Hockeyappra egyéni küldhet és nyomkövetési telemetria megfigyeléséhez és annak elősegítéséhez diagnosztikai (mellett első összeomlási adatait). Ez az adatfolyam telemetriai adatot lekérdezhetők, használja a hatékony [Analytics](app-insights-analytics.md) szolgáltatása [Azure Application Insights](app-insights-overview.md). Emellett képes [exportálja az egyéni, és nyomkövetési telemetria](app-insights-export-telemetry.md). Ahhoz, hogy ezeket a szolgáltatásokat, akkor egy híd beállítása, amely a Hockeyappra egyéni adatok az Application Insights részére továbbítja.
+[A HockeyApp](https://azure.microsoft.com/services/hockeyapp/) egy szolgáltatás élő asztali és mobil alkalmazások figyelésére. A HockeyApp-küldhet egyéni és nyomkövetési telemetriai használat monitorozása és diagnosztizálása (mellett összeomlási adatok beolvasása) segítik. Ez az adatfolyam telemetria kérdezhetők a nagy teljesítményű [Analytics](app-insights-analytics.md) funkcióját [Azure Application Insights](app-insights-overview.md). Emellett akkor is [exportálja az egyéni és nyomkövetési telemetriai](app-insights-export-telemetry.md). Ahhoz, hogy ezeket a funkciókat, beállíthatja, hogy az Application Insights a HockeyApp egyéni adatokat közvetítenek hidat.
 
-## <a name="the-hockeyapp-bridge-app"></a>A Hockeyappra híd alkalmazás
-A Hockeyappra híd az alkalmazás nem az alapvető funkciója, amely lehetővé teszi az elemzések és a folyamatos exportálás funkciók révén a Hockeyappra egyéni és az Application Insights – nyomkövetési telemetria elérésére. Egyéni és nyomkövetési eseményeket a Hockeyappra híd alkalmazás létrehozása után a Hockeyappra által gyűjtött fog érhető el ezeket a szolgáltatásokat. Nézzük meg, ezek híd alkalmazások beállításával.
+## <a name="the-hockeyapp-bridge-app"></a>A HockeyApp Bridge alkalmazás
+A HockeyApp Bridge alkalmazás funkciója a core, az egyéni HockeyApp és az Application Insights – híváslánc-telemetria hozzáférhet az elemzési és a folyamatos exportálás funkciók révén. A HockeyApp Bridge alkalmazás létrehozása után a HockeyApp által gyűjtött nyomkövetési és egyéni események ezeket a funkciókat elérhető lesz. Nézzük meg, hogyan állítható be egy híd alkalmazásokat.
 
-A Hockeyappra, nyissa meg a fiók beállításait, [API jogkivonatok](https://rink.hockeyapp.net/manage/auth_tokens). Hozzon létre egy új jogkivonatot, vagy egy meglévő használja fel. A minimális jogosultságokkal szükséges, amelyek "csak olvasható". Az API-t egy példányát jogkivonat érvénybe.
+A HockeyApp, nyissa meg a fiók beállításait, [API-jogkivonatai](https://rink.hockeyapp.net/manage/auth_tokens). Hozzon létre egy új jogkivonatot, vagy újra felhasználhatja egy már meglévőt. A minimális jogosultságok szükséges "csak olvashatók". Készítsen róla egy másolatot az API-token.
 
-![A Hockeyappra API-token beszerzése](./media/app-insights-hockeyapp-bridge-app/01.png)
+![A HockeyApp API token beszerzése](./media/app-insights-hockeyapp-bridge-app/01.png)
 
-A Microsoft Azure portál megnyitásához és [Application Insights-erőforrás létrehozása](app-insights-create-new-resource.md). Alkalmazás típusa "Hockeyappra híd alkalmazás" beállítani:
+A Microsoft Azure portal megnyitásához és [hozzon létre egy Application Insights-erőforrást](app-insights-create-new-resource.md). Az alkalmazástípus állítsa "HockeyApp bridge alkalmazás":
 
 ![Új Application Insights-erőforrás](./media/app-insights-hockeyapp-bridge-app/02.png)
 
-Nem kell állítson be egy nevet, mert ez a program automatikusan állítja a Hockeyappra neve.
+Nem kell beállítani egy nevét – ez lesz automatikusan közötti értékre lehet beállítani a HockeyApp nevét.
 
-A Hockeyappra híd mezők jelennek meg. 
+A HockeyApp bridge mező jelenik meg. 
 
 ![Adja meg a híd mezők](./media/app-insights-hockeyapp-bridge-app/03.png)
 
-Adja meg a Hockeyappra jogkivonatot, amelyet korábban feljegyzett. Ez a művelet feltölti a "Hockeyappra alkalmazás" legördülő menüjében a Hockeyappra alkalmazásokkal. Jelölje ki a használni kívánt, és fejezze be a telepítővarázslót a mezők. 
+Adja meg a korábban feljegyzett HockeyApp-jogkivonatot. Ez a művelet feltölti a "HockeyApp Application" legördülő menüből a HockeyApp-alkalmazásokkal. Válassza ki a használni kívánt, és végezze el a többi mezőjét. 
 
-Nyissa meg az új erőforrást. 
+Nyissa meg az új erőforrás. 
 
 Vegye figyelembe, hogy az adatok eltarthat áramló elindításához.
 
 ![Várakozás az adatok Application Insights-erőforrás](./media/app-insights-hockeyapp-bridge-app/04.png)
 
-Készen is van. Ettől kezdve a Hockeyappra tagolva alkalmazásban gyűjtött egyéni és nyomkövetési adatok jelenleg is az Application Insights elemzés és a folyamatos exportálás funkcióit érhető el.
+Készen is van. Ettől kezdve a HockeyApp-kialakítva alkalmazásban gyűjtött és egyéni nyomkövetési adatok jelenleg is az Application Insights Analytics és a folyamatos exportálás funkcióit érhető el.
 
-Most rövid időre tekintse át az összes ezek a szolgáltatások most már elérhető.
+Röviden vizsgáljuk meg ezeket a funkciókat elérhető.
 
 ## <a name="analytics"></a>Elemzés
-Analytics egy olyan erőteljes eszköz alkalmi lekérdezése az adatok, diagnosztizálása és a telemetriai adatok elemzése és gyorsan Fedezze fel az alapvető okok és a minták.
+Analytics az alkalmi lekérdezéseket, diagnosztizálása és a telemetria elemzését, és gyorsan felderítése kiváltó okokért és minták lehetővé teszi az adatok hatékony eszköz.
 
 ![Elemzés](./media/app-insights-hockeyapp-bridge-app/05.png)
 
-* [További információ az elemzés](app-insights-analytics-tour.md)
+* [További információ Analytics szolgáltatásról](app-insights-analytics-tour.md)
 
 ## <a name="continuous-export"></a>Folyamatos exportálás
-A folyamatos exportálás lehetővé teszi az adatok exportálása az Azure Blob Storage tárolóban. Nagyon hasznos, ha az adatok hosszabb a megőrzési időtartam jelenleg az Application Insights által kínált kell azt. Az adatok megőrzéséhez a blob Storage tárolóban, SQL-adatbázis, vagy az elsődleges adatok tekinthetünk feldolgozni azt.
+A folyamatos exportálás lehetővé teszi az adatok exportálása az Azure Blob Storage-tárolókat. Ez nagyon hasznos, ha az adatok hosszabb a megőrzési időtartam, az Application Insights által jelenleg kínált van szüksége. Is megőrizni az adatokat blob storage-ban, SQL-adatbázis, vagy az előnyben részesített adattárház-megoldás feldolgozni azt.
 
-[További információ a folyamatos exportálás](app-insights-export-telemetry.md)
+[További tudnivalók a folyamatos exportálás](app-insights-export-telemetry.md)
 
 ## <a name="next-steps"></a>További lépések
-* [Az adatok Analytics alkalmazása](app-insights-analytics-tour.md)
+* [Az adatok elemzési vonatkozik](app-insights-analytics-tour.md)
 

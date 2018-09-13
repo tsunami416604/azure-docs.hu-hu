@@ -1,31 +1,31 @@
 ---
-title: Kapcsolódás Azure Cosmos adatforrásként adatbázis Azure Machine Learning-munkaterület |} Microsoft Docs
-description: Ez a dokumentum példaként szolgál a Azure Cosmos DB keresztül Azure Machine Learning-munkaterület összekapcsolása
+title: Csatlakozás az Azure Cosmos DB adatforrásként az Azure Machine Learning Workbench alkalmazásban |} A Microsoft Docs
+description: Ez a dokumentum bemutatja, hogyan csatlakozhat az Azure Cosmos DB az Azure Machine Learning Workbench használatával a
 services: machine-learning
 author: cforbe
 ms.author: cforbe
 manager: mwinkle
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.custom: ''
 ms.devlang: ''
 ms.topic: article
 ms.date: 09/11/2017
-ms.openlocfilehash: 20e23f41310b90c62eacb7279ea3da0eec376683
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 2d9562582a94b7c7aac5b972a7ef57b84eb9aa9e
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34830690"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35646591"
 ---
-# <a name="connecting-to-azure-cosmos-db-as-a-data-source"></a>Csatlakozás Azure Cosmos DB adatforrásként
-Ez a cikk tartalmaz egy python minta lehetővé teszi, hogy csatlakozzon az Azure Machine Learning munkaterület Cosmos-Adatbázishoz.
+# <a name="connecting-to-azure-cosmos-db-as-a-data-source"></a>Csatlakozás az Azure Cosmos DB adatforrásként
+Ez a cikk tartalmaz egy python minta lehetővé teszi, hogy csatlakozzon az Azure Machine Learning Workbench a Cosmos DB-hez.
 
-## <a name="load-azure-cosmos-db-data-into-data-preparation"></a>Azure Cosmos DB adatok betöltése az adatok előkészítése
+## <a name="load-azure-cosmos-db-data-into-data-preparation"></a>Azure Cosmos DB-adatok betöltése az adat-előkészítés
 
-Hozzon létre egy új, parancsprogram-alapú adatfolyam, és a következő parancsfájl segítségével az adatok betöltése az Azure Cosmos DB. 
+Hozzon létre egy új, parancsprogram-alapú adatfolyamot, és ezután használja a következő szkriptet az Azure Cosmos DB az adatok betöltéséhez. 
 
 ```python
 import pydocumentdb
@@ -55,4 +55,4 @@ df = pd.DataFrame(list(docs))
 ```
 
 ## <a name="other-data-source-connections"></a>Más adatforrás-kapcsolatok
-Más minták, olvassa el a [példa további adatok kapcsolatok](data-prep-appendix8-sample-source-connections-python.md)
+Más minták, olvassa el a [például további forráshelyeket adatkapcsolatok](data-prep-appendix8-sample-source-connections-python.md)

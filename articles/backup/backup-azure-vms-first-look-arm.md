@@ -11,16 +11,16 @@ ms.date: 08/01/2018
 ms.author: markgal
 ms.custom: H1Hack27Feb2017
 keywords: biztonsági másolatok virtuális gép biztonsági mentése
-ms.openlocfilehash: c3bb198a65f907080023af707080f60c9c1fccbf
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: fee0e20e232621764ba10d714b7ddfe9c759dafc
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39398889"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44717913"
 ---
 # <a name="back-up-azure-virtual-machines-to-recovery-services-vault"></a>Az Azure virtuális gépek biztonsági mentése Recovery Services-tárolóba
 
-Ez a cikk azt ismerteti, hogy a virtuális gép védelmének beállítása a virtuális gépek műveleti menüben, vagy a Recovery Services-tároló. A Recovery Services-tárolók megvédik:
+Ez a cikk bemutatja, hogyan lehet beállítani a védelmet a virtuális gép virtuális gépek műveletek menüből, vagy a Recovery Services-tároló. A Recovery Services-tárolók megvédik:
 
 * Az Azure Resource Manager által telepített virtuális gépeket
 * A klasszikus virtuális gépeket

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/29/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 48e64f0cc65ade870425f73989209e8bef8ec8d5
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 4c33466af6e57264e02a7d5c298f7f1f9fbf4ed8
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38630286"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44717301"
 ---
 # <a name="overview-of-autoscale-with-azure-virtual-machine-scale-sets"></a>Beállítja az Azure virtuálisgép-méretezési csoport automatikus méretezés áttekintése
 Egy Azure-beli virtuálisgép-méretezési csoportot automatikusan növelheti vagy csökkentheti az alkalmazást futtató Virtuálisgép-példányok számát. Az automatikus és rugalmas viselkedést csökkenti a kezelési megfigyelése és optimalizálása az alkalmazás teljesítményét. Létrehozhat szabályokat, amelyek meghatározzák az elfogadható teljesítményt egy pozitív felhasználói élmény. Teljesülnek a meghatározott küszöbértékeket, az automatikus skálázási szabályok beletelhet művelet a méretezési csoport kapacitásának módosításához. Események automatikusan növelhető vagy csökkenését, a méretezési készlet kapacitásának rögzített többször is ütemezheti. Ez a cikk áttekintést, amelyek metrikák érhetők el, és milyen műveletek automatikus méretezési funkciójával hajthat végre.
@@ -106,7 +106,7 @@ Ha az automatikus skálázási szabály aktiválásakor a méretezési automatik
 | Mennyiség növelése a következővel:   | Hozzon létre Virtuálisgép-példányok rögzített számú. A kisebb számú virtuális gépek méretezési hasznos.                                           |
 | Százalék növelése a következővel: | Virtuálisgép-példányok százalékskálájú növelését. Megfelelő választás a nagyobb léptékben állítja be, ahol egy rögzített növekedése nem észrevehetően javíthatja a teljesítményt. |
 | Mennyiség növelése a következőre:   | Hozzon létre több Virtuálisgép-példányok egy kívánt maximális összeg elérni kötelezőként.                                                            |
-| Mennyiség csökkentése a következőre:   | Az eltávolítandó Virtuálisgép-példányok rögzített számú. A kisebb számú virtuális gépek méretezési hasznos.                                           |
+| Mennyiség csökkentése a következővel:   | Az eltávolítandó Virtuálisgép-példányok rögzített számú. A kisebb számú virtuális gépek méretezési hasznos.                                           |
 | Százalék csökkentése a következővel: | Virtuálisgép-példányok százalékskálájú csökkentheti. Megfelelő választás a nagyobb léptékben állítja be, ahol egy rögzített növekedése nem észrevehetően csökkenthetik erőforrás-használat és költségek. |
 | Mennyiség csökkentése a következőre:   | Távolítsa el a Virtuálisgép-példányok elérni kívánt minimálisan szükséges.                                                            |
 

@@ -1,6 +1,6 @@
 ---
-title: Eszközök és PaaS-szolgáltatásokat a Azure verem |} Microsoft Docs
-description: Ismerkedés az Azure-készletben PaaS services útmutató.
+title: Eszközök és PaaS szolgáltatások az Azure Stackhez |} A Microsoft Docs
+description: Ismerje meg, hogyan kezdheti el a PaaS-szolgáltatások az Azure Stackben.
 services: azure-stack
 documentationcenter: ''
 author: brenduns
@@ -12,26 +12,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 7/10/2017
+ms.date: 6/15/2018
 ms.author: brenduns
 ms.reviewer: ''
-ms.openlocfilehash: 878bbbfe8fafce8c5d7c18bd0ac6f848e4513e03
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: b4294f7b6c1c14a4091a46b65a3830bcf094296f
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29385347"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35937772"
 ---
-# <a name="paas-services-for-azure-stack"></a>Azure verem PaaS-szolgáltatások
+# <a name="paas-services-for-azure-stack"></a>PaaS-szolgáltatások az Azure Stackhez
 
-Telepíthet [Platformszolgáltatást](https://azure.microsoft.com/overview/what-is-paas/) Azure verem a Microsoft és más 3. fél szolgáltatók (PaaS) szolgáltatásokat. Ha szeretne értesítést kapni a új szolgáltatások, kövesse a #AzureStack a Twitteren.
+Telepíthet [szolgáltatásként nyújtott platformon](https://azure.microsoft.com/overview/what-is-paas/) (PaaS) a Microsoft és más 3. külső szolgáltatók az Azure Stack-szolgáltatások. Ha szeretne értesítést kapni a új szolgáltatások, kövesse a #AzureStack a Twitteren.
 
 [App Service erőforrás-szolgáltató hozzáadása az Azure Stackhez](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-overview)
 
-[Egy SQL Server erőforrás-szolgáltató hozzáadása Azure verem](https://docs.microsoft.com/azure/azure-stack/azure-stack-sql-resource-provider-deploy)
+[Az SQL Server erőforrás-szolgáltató hozzáadása az Azure Stackhez](https://docs.microsoft.com/azure/azure-stack/azure-stack-sql-resource-provider-deploy)
 
-[Egy MySQL Server erőforrás-szolgáltató hozzáadása Azure verem](https://docs.microsoft.com/azure/azure-stack/azure-stack-mysql-resource-provider-deploy)
-
-
-
-
+[A MySQL-kiszolgáló erőforrás-szolgáltató hozzáadása az Azure Stackhez](https://docs.microsoft.com/azure/azure-stack/azure-stack-mysql-resource-provider-deploy)

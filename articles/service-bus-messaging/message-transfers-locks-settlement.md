@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/25/2018
 ms.author: spelluru
-ms.openlocfilehash: d4f387d484fe895d8b6c5196c3a5527947ee3925
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: de3f23f58ef34bdd5f9769f820d64ed7e00ca7d8
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43702061"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44715074"
 ---
 # <a name="message-transfers-locks-and-settlement"></a>Üzenetek átvitele, zárolása és elszámolása
 
@@ -62,7 +62,7 @@ for (int i = 0; i < 100; i++)
 {
   tasks.Add(client.SendAsync(…));
 }
-await Task.WhenAll(tasks.ToArray());
+await Task.WhenAll(tasks);
 ```
 
 Fontos megjegyezni, hogy minden aszinkron programozási modellek használata valamilyen memória-alapú, rejtett várólistát, amely tartalmazza a függőben lévő műveletek. Amikor [SendAsync](/dotnet/api/microsoft.azure.servicebus.queueclient.sendasync#Microsoft_Azure_ServiceBus_QueueClient_SendAsync_Microsoft_Azure_ServiceBus_Message_) (C#) vagy **küldése** (Java) lépjen vissza, a küldési feladat az adott várólistát várólistára, de csak a protokoll hitelesítési módok megkezdése után a feladat következik futtatásához. Leküldéses üzenetek, és ahol megbízhatóság fontos adatlöketekkel általában kódot, a gondot kell fordítani, hogy túl sok üzenet kerüljenek "útban" egyszerre, mert az összes elküldött üzenetek is igénybe vehet memória addig, amíg azok ténylegesen megtörtént helyezett poslat.
@@ -79,7 +79,7 @@ for (int i = 0; i < 100; i++)
 
   tasks.Add(client.SendAsync(…).ContinueWith((t)=>semaphore.Release()));
 }
-await Task.WhenAll(tasks.ToArray());
+await Task.WhenAll(tasks);
 ```
 
 Alkalmazások kell **soha nem** kezdeményezzen egy aszinkron küldési művelet "indul el, és felejtse el" módon anélkül, hogy a művelet eredményének beolvasása. Ezzel a elfogyott a memória akár belső, láthatatlan feladat-várólista betöltése, és megakadályozhatja, hogy az alkalmazás a küldési hibáinak észleléséhez:

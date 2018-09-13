@@ -6,12 +6,12 @@ ms.service: multiple
 ms.topic: article
 ms.date: 07/03/2018
 ms.author: raynew
-ms.openlocfilehash: 6eb28ad918f9d95c26d91c05d8ee9556ef768bd3
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: c500a1ecc817e4d95e39ca0ac985e1d90ffc8a78
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43125852"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44721263"
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>Üzleti folytonosság és vészhelyreállítás helyreállítási (BCDR): Azure párosított régiói
 
@@ -73,7 +73,7 @@ Javasoljuk, hogy úgy beállítani, hogy üzleti folytonossági vészhelyreáll�
 
 ![Tárolási](./media/best-practices-availability-paired-regions/2Green.png) **Azure Storage** -Georedundáns tárolás (GRS) alapértelmezés szerint konfigurálva, egy Azure Storage-fiók létrehozásakor. A grs Tárolással az adatok automatikus replikációja háromszor az elsődleges régióban, és három alkalommal a párosított régióban. További információkért lásd: [Azure Storage Redundanciabeállításainál](storage/common/storage-redundancy.md).
 
-![Az Azure SQL](./media/best-practices-availability-paired-regions/3Green.png) **Azure SQL Database-adatbázisok** – az Azure SQL Standard Georeplikáció, konfigurálhatja a tranzakciók egy párosított régióba aszinkron replikáció. A prémium szintű georeplikáció konfigurálhat replikációt bármely régióba a világ; azt javasoljuk azonban, ezeket az erőforrásokat a legtöbb vész-helyreállítási helyzetekben a párosított régióban telepít. További információkért lásd: [Georeplikáció az Azure SQL Database](sql-database/sql-database-geo-replication-overview.md).
+![Az Azure SQL](./media/best-practices-availability-paired-regions/3Green.png) **Azure SQL Database** – az Azure SQL Database Georeplikációja, konfigurálhatja a tranzakciók bármely régióba aszinkron replikációját a világ; azonban javasoljuk, hogy ezeket az erőforrásokat a telepít egy párosított régió legtöbb vész-helyreállítási helyzetekben. További információkért lásd: [Georeplikáció az Azure SQL Database](sql-database/sql-database-geo-replication-overview.md).
 
 ![Erőforrás-kezelő](./media/best-practices-availability-paired-regions/4Green.png) **Azure Resource Manager** – Resource Manager természetüknél fogva biztosítják azok logikai elkülönítését, szolgáltatás-felügyeleti összetevők régiók között elosztva. Ez azt jelenti, hogy egy adott régióban logikai hibák kevésbé valószínű, hogy egy másik hatással.
 

@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/26/2018
+ms.date: 09/12/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: 77dca29b0c60726f0a072dd662aba0d12730502a
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 650fead700afcc1f6d1d18c7356324074fb9365b
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39413688"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44716451"
 ---
 # <a name="create-mysql-databases"></a>MySQL-adatbázisok létrehozása
 
@@ -28,7 +28,7 @@ Hozzon létre, és az adatbázisok önkiszolgáló a felhasználói portálon. A
 ## <a name="test-your-deployment-by-creating-a-mysql-database"></a>Az üzemelő példány teszteléséhez hozzon létre egy MySQL-adatbázis
 
 1. Jelentkezzen be az Azure Stack felhasználói portálon.
-2. Válassza ki **+ új** > **adatok + tárolás** > **MySQL-adatbázis** > **hozzáadása**.
+2. Válassza ki **+ erőforrás létrehozása** > **adatok + tárolás** > **MySQL-adatbázis** > **Hozzáadás**.
 3. A **MySQL-adatbázis létrehozása**, adja meg az adatbázis nevét, és az egyéb beállításokat állítsa be a környezetéhez szükséges.
 
     ![Hozzon létre egy tesztet a MySQL-adatbázis](./media/azure-stack-mysql-rp-deploy/mysql-create-db.png)

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 7/10/2018
 ms.author: sogup
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4b060fc3d273a0243271d2c38f90e81f83857e79
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 3b2f22500a4e557cb89bac7ed114d8c76ca8d9f9
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39420328"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44715550"
 ---
 # <a name="back-up-and-restore-encrypted-virtual-machines-with-azure-backup"></a>Biztonsági mentése és visszaállítása titkosított virtuális gépek az Azure Backup szolgáltatással
 Ez a cikk ismerteti a lépéseket, biztonsági mentése és visszaállítása a virtuális gépek (VM) az Azure Backup használatával. A következő többi hibaeseteket támogatott forgatókönyveket, előfeltételeket és hibaelhárítási lépéseket részletesen is ismerteti.
@@ -130,9 +130,9 @@ Egy titkosított virtuális gép visszaállításához a "Biztonsági másolat l
 * Másik lehetőségként [a visszaállított virtuális gép testreszabása sablonok használatával](backup-azure-arm-restore-vms.md#use-templates-to-customize-a-restored-vm) hozhat létre virtuális gépeket a helyreállított lemezek alapján. Sablonok csak 2017. április 26. után létrehozott helyreállítási pontokat is használható.
 
 ## <a name="troubleshooting-errors"></a>Hibaelhárítás
-| Művelet | Hiba részletei | Megoldás: |
+| Művelet | A hiba részletei | Megoldás: |
 | --- | --- | --- |
-|Backup | Biztonsági mentés nem rendelkezik megfelelő engedélyekkel a key vault a biztonsági mentéshez, a titkosított virtuális gépekhez. | Biztonsági mentés meg kell adni ezeket az engedélyeket az alábbi a [az előző szakaszban szereplő lépések](#provide-permissions-to-azure-backup). Vagy a PowerShell a PowerShell-dokumentáció, a "Védelem engedélyezése" című szakaszának lépéseit kövesse [AzureRM.RecoveryServices.Backup parancsmagok segítségével a virtuális gépek biztonsági mentése](backup-azure-vms-automation.md#back-up-azure-vms). |  
+|Backup | Biztonsági mentés nem rendelkezik megfelelő engedélyekkel a key vault a biztonsági mentéshez, a titkosított virtuális gépekhez. | Biztonsági mentés meg kell adni ezeket az engedélyeket az alábbi a [az előző szakaszban szereplő lépések](#provide-permissions-to-azure-backup). Vagy a PowerShell a cikk a "Védelem engedélyezése" című szakaszának lépéseit kövesse [PowerShell-lel történő biztonsági mentése és visszaállítása a virtuális gépek](backup-azure-vms-automation.md#enable-protection). |  
 | Visszaállítás |A titkosított virtuális gép nem állítható vissza, mert a virtuális Géphez társított kulcstartó nem létezik. |Hozzon létre egy kulcstartót használatával [első lépései az Azure Key Vault](../key-vault/key-vault-get-started.md). Lásd: [a key vault-kulcs és titkos kulcs visszaállítása az Azure Backup használatával](backup-azure-restore-key-secret.md) egy kulcsot és titkos kulcs visszaállítása, ha azok nincsenek jelen. |
 | Visszaállítás |A titkosított virtuális gép nem állítható vissza, mert a kulcs és a virtuális Géphez társított titkos kulcs nem létezik. |Lásd: [a key vault-kulcs és titkos kulcs visszaállítása az Azure Backup használatával](backup-azure-restore-key-secret.md) egy kulcsot és titkos kulcs visszaállítása, ha azok nincsenek jelen. |
 | Visszaállítás |Biztonsági mentés nem rendelkezik az előfizetésében erőforrások eléréséhez az engedélyt. |Ahogy korábban említettük a lemezek visszaállítása először a "Biztonsági másolat lemezek visszaállítása" című szakaszának lépéseit követve [válasszon egy Virtuálisgép-konfiguráció visszaállítása](backup-azure-arm-restore-vms.md#choose-a-vm-restore-configuration). Ezt követően használja a PowerShell-lel [hozzon létre egy virtuális gép helyreállított lemezekből](backup-azure-vms-automation.md#create-a-vm-from-restored-disks). |

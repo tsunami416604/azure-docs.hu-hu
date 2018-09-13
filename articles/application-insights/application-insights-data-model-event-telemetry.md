@@ -1,6 +1,6 @@
 ---
-title: Azure Application Insights Telemetria-adatmodell - esemény Telemetriai |} Microsoft Docs
-description: Application Insights adatmodell esemény telemetriai adat
+title: Az Azure Application Insights Telemetria adatmodell - esemény Telemetriát |} A Microsoft Docs
+description: Application Insights-adatmodell az esemény telemetriát
 services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
@@ -9,24 +9,26 @@ ms.service: application-insights
 ms.workload: TBD
 ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/25/2017
-ms.author: mbullwin; sergkanz
-ms.openlocfilehash: 4f6b5c35b65b4aff2dbe8dafbb2eb07d75c2382a
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.reviewer: sergkanz
+ms.author: mbullwin
+ms.openlocfilehash: 777c52276ca767ee1fb4d05666850350c02c1e00
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35644988"
 ---
-# <a name="event-telemetry-application-insights-data-model"></a>Esemény telemetriai: Application Insights adatmodell
+# <a name="event-telemetry-application-insights-data-model"></a>Esemény telemetriát: Application Insights adatmodell
 
-Esemény telemetriai elemek is létrehozhat (a [Application Insights](app-insights-overview.md)) képviselő esemény történt az alkalmazásban. Az általában egy felhasználói beavatkozást például kattintson vagy sorrend kivételt. Például az inicializálási vagy a konfiguráció módosítása alkalmazás életciklusa esemény is lehet. 
+Létrehozhat event telemetriai elem (a [Application Insights](app-insights-overview.md)) jelölésére, hogy az alkalmazás a következő esemény. Ez általában egy felhasználói beavatkozás például gombra kattintson, vagy a order checkout. Az inicializálás vagy a konfiguráció módosítása alkalmazás életciklusa eseményt is lehet. 
 
-Események szemantikailag, előfordulhat, hogy, vagy a kérelmekre nem feleltethető. Azonban ha megfelelően használják, esemény telemetriai fontosabb, mint a kéréseket, és a nyomkövetési adatokat. Események üzleti telemetriai jelöl, és külön, a tulajdonos kevesebb agresszív [mintavételi](app-insights-api-filtering-sampling.md).
+Események szemantikailag, előfordulhat, hogy, vagy nem feleltethető kérelmekre. Viszont ha megfelelően használja, esemény telemetriát, fontosabb, mint a kérések vagy a nyomkövetéseket. Események üzleti telemetriát, és a kevésbé agresszív lehet egy külön, tulajdonos [mintavételi](app-insights-api-filtering-sampling.md).
 
 ## <a name="name"></a>Name (Név)
 
-Az esemény neve. Ahhoz, hogy a megfelelő csoportosítás és hasznos metrikákat, korlátozhatja az alkalmazás így külön esemény nevek kis számú generál. Például ne használja az esemény minden egyes létrehozott példány külön nevét.
+Esemény neve. Ahhoz, hogy a megfelelő csoportosítási és hasznos metrikákat, korlátozza az alkalmazás, hogy létrejöjjön egy kis számú külön esemény nevét. Például ne használja az esemény minden egyes létrehozott példány külön nevét.
 
 Maximális hossz: 512 karakter
 
@@ -34,12 +36,12 @@ Maximális hossz: 512 karakter
 
 [!INCLUDE [application-insights-data-model-properties](../../includes/application-insights-data-model-properties.md)]
 
-## <a name="custom-measurements"></a>Egyéni mértékek
+## <a name="custom-measurements"></a>Egyéni mérések
 
 [!INCLUDE [application-insights-data-model-measurements](../../includes/application-insights-data-model-measurements.md)]
 
 ## <a name="next-steps"></a>További lépések
 
-- Lásd: [adatmodell](application-insights-data-model.md) Application Insights-típusok és az adatok modell.
-- [Egyéni esemény telemetriai adatok írása](app-insights-api-custom-events-metrics.md#trackevent)
+- Lásd: [adatmodell](application-insights-data-model.md) Application Insights és modellhez.
+- [Egyéni esemény telemetriát írhat](app-insights-api-custom-events-metrics.md#trackevent)
 - Tekintse meg [platformok](app-insights-platforms.md) Application Insights által támogatott.

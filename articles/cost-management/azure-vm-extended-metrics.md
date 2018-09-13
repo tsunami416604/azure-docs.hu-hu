@@ -1,80 +1,85 @@
 ---
-title: Adja hozzá az Azure virtuális gépek kiterjesztett metrikák |} Microsoft Docs
-description: Ez a cikk segít engedélyezheti és konfigurálhatja az Azure virtuális gépek bővített diagnosztikai metrikákat.
+title: Azure-beli virtuális gépek kiterjesztett metrikák hozzáadása |} A Microsoft Docs
+description: Ez a cikk segít engedélyezze és konfigurálja a bővített diagnosztikai metrikák az Azure virtuális gépeknél.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 06/07/2018
+ms.date: 06/12/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 58245478cf49c030c435b487e233bbc893a2b9a3
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: b7e4665dc3579f357ce1e28bf34be35c931736bd
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35296356"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35645228"
 ---
-# <a name="add-extended-metrics-for-azure-virtual-machines"></a>Az Azure virtuális gépek kiterjesztett metrikák hozzáadása
+# <a name="add-extended-metrics-for-azure-virtual-machines"></a>Azure-beli virtuális gépek kiterjesztett metrikák hozzáadása
 
-Költség felügyeleti részletes az erőforrásokra vonatkozó információk megjelenítése az Azure virtuális gépek Azure metrika adatait használja. Metrika értékét, más néven a teljesítményszámlálókat, a költség felügyeleti használja a jelentések készítéséhez. Azonban költség felügyeleti nem automatikusan minden Azure metrika adatokat gyűjt a Vendég virtuális gépek – engedélyeznie kell a metrika gyűjtemény. Ez a cikk segít engedélyezheti és konfigurálhatja a további diagnosztikához metrikák Azure virtuális gépeken.
+A Cost Management az Azure-beli virtuális gépekről származó Azure metrikaadatok részletes saját erőforrásaival kapcsolatos információk megjelenítéséhez használ. Teljesítményszámlálók, más néven metrikaadatok jelentések Cost Management használják. Azonban Cost Management nem automatikusan gyűjtse össze az összes Azure metrikaadatok Vendég virtuális gépek – engedélyeznie kell a metrika gyűjtemény. Ez a cikk segít engedélyezze és konfigurálja a további diagnosztikai metrikák az Azure virtuális gépeknél.
 
-Miután engedélyezte a metrika gyűjtemény, teheti:
+Miután engedélyezte a metrika gyűjtemény, akkor a következőket teheti:
 
-- Tudja meg, amikor elérni próbált a virtuális gépek a memória, a lemez és a CPU-korlátok.
-- Használati trendeket és a rendellenességek észlelését.
-- Szabályozhatja költségeit méretezési használati megfelelően.
-- Költség hatékony méretezésével optimalizálási javaslatok költség felügyeletből beolvasása.
+- Tudnia kell, ha a virtuális gépek vannak éri el a memória, lemez és a CPU-korlátok.
+- Használati trendek és rendellenességek észlelése.
+- Méretezési használat alapján szabályozhatja a költségeket.
+- Költség hatékony méretezése a Cost Management optimalizálási javaslatainak beolvasása.
 
-Például érdemes figyelni a CPU és memória % Azure virtuális gépeken. Az Azure virtuális gép mérőszámok vannak rendelve _[állomás] százalékos CPU_ és _[Vendég] memóriaszázaléka_.
+Például előfordulhat, hogy szeretné figyelni a CPU-memória %-át az Azure-beli virtuális. Az Azure-beli Virtuálisgép-metrikák megfelelnek _[gazdagép] százalékos Processzorhasználat_ és _[Vendég] memóriahasználat (%)_.
 
-## <a name="verify-that-metrics-are-enabled-on-vms"></a>Győződjön meg arról, hogy metrikák engedélyezve vannak-e a virtuális gépeken
+> [!NOTE]
+> Kiterjesztett metrikaadatok gyűjtemény csak az Azure vendégszintű figyelést is támogatja. A Cost Management, ezért nem kompatibilis az a Log Analytics Virtuálisgép-bővítményt.
+
+## <a name="verify-that-metrics-are-enabled-on-vms"></a>Győződjön meg arról, hogy a metrikák engedélyezve vannak a virtuális gépeken
 
 1. Jelentkezzen be az Azure Portalra a http://portal.azure.com webhelyen.
-2. A **virtuális gépek**, jelöljön ki egy virtuális Gépet majd a **figyelés**, jelölje be **metrikák**. Elérhető listája látható.
-3. Válassza ki az egyes metrikákat, és egy grafikonon jeleníti meg a számukra.  
-    ![Példa a Metrika – állomás százalékos Processzor](./media/azure-vm-extended-metrics/metric01.png)
+2. A **virtuális gépek**, válasszon ki egy virtuális Gépet, majd a **figyelés**válassza **metrikák**. Elérhető mérőszámok listája látható.
+3. Bizonyos metrikák, és a egy graph adatait jeleníti meg őket.  
+    ![A példában a metrika – gazdagép százalékos Processzorhasználat](./media/azure-vm-extended-metrics/metric01.png)
 
-Az előző példában a szabványos metrikák korlátozott számú érhetők el a gazdagépeket, de memória metrikák nem. Memória metrikák kiterjesztett metrikák részét képezik. Ahhoz, hogy kiterjesztett metrikák néhány további lépést kell végrehajtani. Az alábbi információk végigvezeti Önt engedélyezésük.
+Az előző példában korlátozott számú standard metrikák érhetők el a gazdagépeket, de memória metrikák nem. Memória metrikák kiterjesztett metrikák részét képezik. Kiterjesztett metrikák engedélyezése néhány további lépést kell végrehajtania. A következő információkat végigvezeti őket engedélyezése.
 
-## <a name="enable-extended-metrics-in-the-azure-portal"></a>Az Azure-portálon a kiterjesztett metrikák engedélyezése
+## <a name="enable-extended-metrics-in-the-azure-portal"></a>Az Azure Portalon kiterjesztett metrikák engedélyezése
 
-Standard metrikák gazdagép számítógép metrikák. A _[állomás] százalékos CPU_ metrika csak egy példa. Vannak olyan Vendég virtuális gépek alapvető metrikákat, és azok még más néven bővített metrikák. Kiterjesztett mérőszámok közé _[Vendég] memóriaszázaléka_ és _[Vendég] memória_.
+Standard mérőszámok gazdagépmetrikák számítógépen. A _[gazdagép] százalékos Processzorhasználat_ metrika egy példa. Is vannak a Vendég virtuális gépek alapvető metrikákat, és azok használ kiterjesztett metrikák is nevezik. Kiterjesztett metrikák közé _[Vendég] memóriahasználat (%)_ és _[Vendég] rendelkezésre álló memória_.
 
-Kiterjesztett metrikák engedélyezése egy egyszerű. Az egyes virtuális gépek Vendég szint a figyelés bekapcsolható. Vendég szint figyelés engedélyezésekor a virtuális Gépet az Azure diagnostics-ügynök van telepítve. A következő érték azonos klasszikus és rendszeres virtuális gépek és a Windows és Linux virtuális gépek azonos.
+Kiterjesztett metrikák engedélyezése rendkívül egyszerű. Minden virtuális gép vendégszintű figyelés engedélyezése. Ha engedélyezi a vendégszintű figyelést, az Azure diagnostics-ügynök telepítve van a virtuális gépen. Az alábbi eljárás megegyezik a klasszikus és a normál virtuális gépek és a Windows és Linux rendszerű virtuális gépek azonos.
 
-### <a name="enable-guest-level-monitoring-on-existing-vms"></a>Vendég szint meglévő virtuális gépeken figyelésének engedélyezése
+Ne feledje, hogy a tárfiók Azure és a Linux vendégszintű monitorozás szükséges. Ha engedélyezi a vendégszintű figyelést, ha nem adja meg egy meglévő tárfiókot, majd egy jön létre az Ön számára.
 
-1. A **virtuális gépek**, tekintse meg a virtuális gépek a listáját, és válassza ki a virtuális gépek.
-2. A **figyelés**, jelölje be **metrikák**.
+### <a name="enable-guest-level-monitoring-on-existing-vms"></a>A meglévő virtuális gépeken vendégszintű figyelés engedélyezése
+
+1. A **virtuális gépek**, a virtuális gépek listájának megtekintése, és válassza ki a virtuális Gépet.
+2. A **figyelés**válassza **metrikák**.
 3. Kattintson a **diagnosztikai beállítások**.
-4. A diagnosztikai beállítások lapján kattintson a **vendégszintű a figyelés bekapcsolható**. Linux virtuális gépek egy meglévő tárfiók szükséges. Ha a Windows virtuális gépek ne válasszon tárfiókot, majd egy létrejön.  
-    ![Vendég szinten figyelésének engedélyezése](./media/azure-vm-extended-metrics/enable-guest-monitoring.png)
-5. Néhány perc elteltével az Azure diagnostics-ügynök telepítve van a virtuális gép. Frissítse az oldalt, és az elérhető mérőszámok listája frissült Vendég metrikákat.  
+4. A diagnosztikai beállítások oldalon kattintson a **vendégszintű figyelés engedélyezése**.  
+    ![Vendég szinten figyelés engedélyezése](./media/azure-vm-extended-metrics/enable-guest-monitoring.png)
+5. Néhány perc elteltével az Azure diagnostics-ügynök telepítve van a virtuális gépen. Frissítse az oldalt, és a Vendég mérőszámok rendelkezésre álló metrikák listája frissül.  
     ![Kiterjesztett metrikák](./media/azure-vm-extended-metrics/extended-metrics.png)
 
-### <a name="enable-guest-level-monitoring-on-new-vms"></a>Vendég szint az új virtuális gépeken futó figyelésének engedélyezése
+### <a name="enable-guest-level-monitoring-on-new-vms"></a>Vendégszintű figyelés új virtuális gépeken
 
-Ha létrehozott egy új virtuális gépet, győződjön meg arról, hogy válassza **vendég operációs rendszer diagnosztika**. Linux virtuális gépek egy meglévő tárfiók szükséges. Ha a Windows virtuális gépek ne válasszon tárfiókot, majd egy létrejön.
+Amikor új virtuális gépeket hoz létre, győződjön meg arról, hogy kiválasztotta **vendég operációs rendszer diagnosztikája**.
 
-![Vendég operációs rendszer diagnosztika engedélyezése](./media/azure-vm-extended-metrics/new-enable-diag.png)
+![A vendég operációs rendszer diagnosztika engedélyezése](./media/azure-vm-extended-metrics/new-enable-diag.png)
 
 ## <a name="resource-manager-credentials"></a>Erőforrás-kezelő hitelesítő adatai
 
-Kiterjesztett metrikák engedélyezése után győződjön meg arról, hogy költség felügyeleti hozzáférési joga van a [erőforrás-kezelő hitelesítő adatai](activate-subs-accounts.md). A hitelesítő adatokra szükség a felügyeleti költségek gyűjtése és teljesítményadatát megjeleníti a virtuális géphez. Azok a most is használja, költség optimalizálási javaslatok létrehozásához. Költség-felügyeleti követelményeket legalább három napon egy példányt határozzák meg, ha egy downsizing javaslat jelöltségét ellenőrző teljesítményadatait.
+Miután engedélyezte a kiterjesztett metrikák, győződjön meg arról, hogy Cost Management hozzáfér a [erőforrás-kezelő hitelesítő adatai](activate-subs-accounts.md). Cost Management segítségével begyűjtheti és megjelenítheti a teljesítményadatokat a virtuális gépek számára a hitelesítő adatok szükségesek. Is használhatók, a költségek optimalizálása javaslatok létrehozása. A Cost Management kell meghatározni, hogy egy adott downsizing javaslat jelölt-példányból származó teljesítményadatok legalább három nap.
 
-## <a name="enable-vm-metrics-with-a-script"></a>Egy parancsfájl VM mértékek engedélyezése
+## <a name="enable-vm-metrics-with-a-script"></a>A parancsfájl a VM-metrikák engedélyezése
 
-VM metrikák Azure PowerShell-parancsfájlok használatával engedélyezheti. Ha sok virtuális gép, engedélyezheti a metrikák a kívánt, egy parancsfájl segítségével automatizálható a folyamat. A Githubon, amelyek parancsfájlpéldákat [Azure engedélyezése diagnosztikai](https://github.com/Cloudyn/azure-enable-diagnostics).
+Engedélyezheti a VM-metrikák az Azure PowerShell-parancsfájlokkal. Ha azt szeretné, hogy engedélyezze a mérőszámok a több virtuális gépet, a parancsfájl segítségével automatizálja a folyamatot. Példa a Githubon érhetők el: [Azure engedélyezése diagnosztikai](https://github.com/Cloudyn/azure-enable-diagnostics).
 
-## <a name="view-azure-performance-metrics"></a>Az Azure teljesítménymutatók megtekintése
+## <a name="view-azure-performance-metrics"></a>Az Azure teljesítménymetrikák megjelenítése
 
-Az Azure-példányokon a Cloudyn portálon teljesítménymutatók megtekintéséhez navigáljon **eszközök** > **számítási** > **példány Explorer**. A Virtuálisgép-példányok listáját bontsa ki a példány, és ezután bontsa ki egy erőforrást, a részletek megtekintéséhez.
+A Cloudyn portálon az Azure-példányokon futó teljesítmény-mérőszámok megtekintéséhez lépjen **eszközök** > **számítási** > **példány Explorer**. A Virtuálisgép-példányok listáját bontsa ki a példány, és ezután bontsa ki az erőforrást, a részletek megtekintéséhez.
 
 ![Példány Explorer](./media/azure-vm-extended-metrics/instance-explorer.png)
 
 ## <a name="next-steps"></a>További lépések
 
-- Ha a fiók még nem engedélyezte a Azure Resource Manager API-hozzáférést, lépjen [aktiválása Azure-előfizetések és fiókok](activate-subs-accounts.md)
+- Ha az Azure Resource Manager API-hozzáférés még nem engedélyezte a fiókokhoz, folytassa [Activate Azure-előfizetések és fiókok](activate-subs-accounts.md).

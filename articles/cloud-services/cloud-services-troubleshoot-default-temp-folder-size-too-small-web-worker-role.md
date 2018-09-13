@@ -1,6 +1,6 @@
 ---
-title: Alapértelmezett ideiglenes mappa mérete túl kicsi a szerepkör |} Microsoft Docs
-description: Egy felhőalapú szolgáltatás szerepkör egy korlátozott az ideiglenes mappa lemezterülettel rendelkezik. Ez a cikk megjelöl néhány hogyan kerülheti fut, nincs elég lemezterület.
+title: Alapértelmezett TEMP mappa mérete túl kicsi a szerepkörhöz |} A Microsoft Docs
+description: A felhőszolgáltatási szerepkör egy korlátozott a TEMP mappa lemezterülettel rendelkezik. Ez a cikk néhány javaslatot hogyan kerülheti el a futó lemezterületét.
 services: cloud-services
 documentationcenter: ''
 author: simonxjx
@@ -13,30 +13,30 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 11/03/2017
+ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: 177438c4d6b416584f1797ec1ce744fc484ef688
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 5d60c5f2d759f3329997762270e9a0335ebbe1e9
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32154528"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35923743"
 ---
-# <a name="default-temp-folder-size-is-too-small-on-a-cloud-service-webworker-role"></a>Alapértelmezett TEMP mappa mérete túl kicsi a felhőalapú szolgáltatás webes/munkavégző szerepkör
-Az alapértelmezett ideiglenes könyvtár egy felhőalapú szolgáltatás munkavégző vagy webes szerepkör van 100 MB-os, amelyek egy bizonyos ponton teljes mérete. Ez a cikk ismerteti, hogyan kevés a hely az ideiglenes könyvtár elkerülése érdekében.
+# <a name="default-temp-folder-size-is-too-small-on-a-cloud-service-webworker-role"></a>Alapértelmezett TEMP mappa mérete túl kicsi egy felhőalapú szolgáltatás webes/feldolgozói szerepkör
+Egy cloud service feldolgozó vagy webes szerepkör alapértelmezett ideiglenes könyvtár maximális mérete 100 MB, amely teljes körű valamikor válhat rendelkezik. Ez a cikk bemutatja, hogyan kevés a hely az ideiglenes könyvtár elkerülése érdekében.
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
-## <a name="why-do-i-run-out-of-space"></a>Miért futtatásához nincs elegendő lemezterület?
-A szabványos Windows környezeti változók TEMP és TMP elérhetők, hogy az alkalmazás a kód. A TEMP és TMP, mely legfeljebb 100 MB-os egyetlen könyvtárra mutat. Ebben a könyvtárban tárolt adatokat nem őrzi meg a felhőalapú szolgáltatás; életciklus között a szerepkörpéldányok felhőszolgáltatásban lehetőség, ha a könyvtár karbantartása.
+## <a name="why-do-i-run-out-of-space"></a>Miért futtassa lemezterületét?
+A szabványos Windows környezeti változók TEMP és TMP érhetők el a kódot, amely az alkalmazás fut-e. A TEMP és TMP egyetlen címtárban legfeljebb 100 MB méretű rendelkező mutasson. Ebben a könyvtárban tárolt adatokat a felhőszolgáltatás; fázisban nincs megőrizve a szerepkörpéldányok egy felhőalapú szolgáltatásban lehetőség, ha a könyvtár törlődik.
 
-## <a name="suggestion-to-fix-the-problem"></a>A probléma megoldása érdekében javaslat
-Valósítja meg az alábbi megoldások egyikét:
+## <a name="suggestion-to-fix-the-problem"></a>A probléma megoldása érdekében
+A következő alternatív megoldások egyikét valósítják:
 
-* A helyi tároló egyik erőforrásához konfigurálja, és közvetlenül a TEMP és TMP használata helyett-e érni. A helyi tároló egyik erőforrásához elérje az alkalmazáson belül futó kód, hívja meg a [RoleEnvironment.GetLocalResource](https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleenvironment.getlocalresource.aspx) metódust.
-* A helyi tároló egyik erőforrásához konfigurálja, és mutasson a TEMP és TMP könyvtárak, hogy az erőforrás elérési útja a helyi tároló mutasson. Ez a módosítás belül kell végrehajtani a [RoleEntryPoint.OnStart](https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.onstart.aspx) metódust.
+* Konfigurálja a helyi tároló egyik erőforrásához, és közvetlenül a TEMP és TMP használata helyett férni. Helyi tároló erőforrások eléréséhez az alkalmazáson belül futó kódból, hívja meg a [RoleEnvironment.GetLocalResource](https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleenvironment.getlocalresource.aspx) metódust.
+* Konfigurálja a helyi tároló egyik erőforrásához, és mutasson a TEMP és TMP könyvtárak átirányítása a helyi tárolási erőforrás elérési útja. Ez a módosítás belül kell végrehajtani a [RoleEntryPoint.OnStart](https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.onstart.aspx) metódust.
 
-Az alábbi példakód bemutatja, hogyan módosíthatja a cél könyvtárak TEMP és TMP az OnStart metódus belül:
+Az alábbi példakód bemutatja, hogyan módosíthatja a cél-könyvtárak a TEMP és TMP a belül az OnStart metódus:
 
 ```csharp
 using System;
@@ -71,8 +71,8 @@ namespace WorkerRole1
 ```
 
 ## <a name="next-steps"></a>További lépések
-Ismerteti, bloghoz [Azure webes szerepkör ASP.NET ideiglenes mappa méretének növelése](http://blogs.msdn.com/b/kwill/archive/2011/07/18/how-to-increase-the-size-of-the-windows-azure-web-role-asp-net-temporary-folder.aspx).
+Olvassa el a blogot, amely leírja [az Azure webes szerepkör ASP.NET ideiglenes mappa méretének növelése](http://blogs.msdn.com/b/kwill/archive/2011/07/18/how-to-increase-the-size-of-the-windows-azure-web-role-asp-net-temporary-folder.aspx).
 
-További [cikkek hibaelhárítási](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/vs-azure-tools-debugging-cloud-services-overview.md) felhőszolgáltatásai számára.
+Továbbiak megtekintése [hibaelhárítási cikkek](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/vs-azure-tools-debugging-cloud-services-overview.md) a cloud services.
 
-Felhőalapú szolgáltatás szerepkör kapcsolatos problémák elhárítása az Azure PaaS diagnosztikai adatainak használatával további tudnivalókért tekintse meg [Kevin Williamson blog adatsorozat](http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx).
+Ismerje meg a felhőalapú szolgáltatás szerepkör kapcsolatos problémák elhárítása Azure PaaS számítógép-diagnosztikai adatok használatával, tekintse meg [Kevin Williamson blogsorozatot](http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx).

@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 08/06/2018
 ms.topic: conceptual
-ms.openlocfilehash: 956cb80ddbf96f23585dd52f3dc1013c7a665113
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: fccdc4ac40878060b94d495b8895e2a128c9477c
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42886310"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44716111"
 ---
 # <a name="configure-role-based-access-controls-in-the-remote-monitoring-solution-accelerator"></a>A távoli figyelési megoldásgyorsító a szerepköralapú hozzáférés-vezérlés konfigurálása
 
@@ -134,11 +134,11 @@ A következő lépések bemutatják, hogyan szerepkör hozzáadása az Azure Act
 
 ### <a name="define-a-policy-for-the-new-role"></a>Meghatározhat egy olyan szabályzatot, az új szerepkör
 
-Miután a szerepkör hozzáadása az alkalmazáshoz az Azure Portalon, meg kell határoznia egy szabályzatot a [roles.json](https://github.com/Azure/remote-monitoring-services-dotnet/blob/master/pcs-auth/Services/data/policies/roles.json) a szerepkör, amely hozzárendeli az eszközök kezeléséhez szükséges engedélyekkel.
+Miután a szerepkör hozzáadása az alkalmazáshoz az Azure Portalon, meg kell határoznia egy szabályzatot a [roles.json](https://github.com/Azure/remote-monitoring-services-dotnet/blob/master/auth/Services/data/policies/roles.json) a szerepkör, amely hozzárendeli az eszközök kezeléséhez szükséges engedélyekkel.
 
-1. Klónozás a [hitelesítési és engedélyezési mikroszolgáltatás](https://github.com/Azure/pcs-auth-dotnet) GitHub-adattár helyi számítógépre.
+1. Klónozás a [távoli figyelés Mikroszolgáltatások](https://github.com/Azure/remote-monitoring-services-dotnet) GitHub-adattár helyi számítógépre.
 
-1. Szerkessze a **Services/data/policies/roles.json** fájlját, hogy a szabályzat a **ManageDevices** szerepkör az alábbi kódrészletben látható módon. A **azonosító** és **szerepkör** értékeknek egyezniük kell a szerepkör-definíció az előző szakaszban az alkalmazásjegyzékben. Engedélyezett műveletek listája lehetővé teszi, hogy valaki van a **ManageDevices** szerepkör létrehozása, frissítése és törlése a megoldáshoz csatlakoztatott eszközökre:
+1. Szerkessze a **auth/Services/data/policies/roles.json** fájlját, hogy a szabályzat a **ManageDevices** szerepkör az alábbi kódrészletben látható módon. A **azonosító** és **szerepkör** értékeknek egyezniük kell a szerepkör-definíció az előző szakaszban az alkalmazásjegyzékben. Engedélyezett műveletek listája lehetővé teszi, hogy valaki van a **ManageDevices** szerepkör létrehozása, frissítése és törlése a megoldáshoz csatlakoztatott eszközökre:
 
     ```json
     {
@@ -184,7 +184,7 @@ Miután a szerepkör hozzáadása az alkalmazáshoz az Azure Portalon, meg kell 
 
 ### <a name="how-the-web-ui-enforces-permissions"></a>Hogyan érvénybe lépteti a webes felhasználói felületen az engedélyek
 
-A webes felhasználói Felületet használja a [hitelesítési és engedélyezési mikroszolgáltatás](https://github.com/Azure/pcs-auth-dotnet) együttműködve meghatározza milyen műveleteket egy felhasználó számára engedélyezett időt vesz igénybe, és milyen vezérlők láthatók-e a felhasználói felületen. Például, ha a megoldás neve **contoso-rm4**, a webes felhasználói felületen kéri le az aktuális felhasználó számára engedélyezett műveletek listáját az alábbi kérelem küldésével:
+A webes felhasználói Felületet használja a [hitelesítési és engedélyezési mikroszolgáltatás](https://github.com/Azure/remote-monitoring-services-dotnet/tree/master/auth) együttműködve meghatározza milyen műveleteket egy felhasználó számára engedélyezett időt vesz igénybe, és milyen vezérlők láthatók-e a felhasználói felületen. Például, ha a megoldás neve **contoso-rm4**, a webes felhasználói felületen kéri le az aktuális felhasználó számára engedélyezett műveletek listáját az alábbi kérelem küldésével:
 
 ```http
 http://contoso-rm4.azurewebsites.net/v1/users/current
@@ -226,7 +226,7 @@ További információkért lásd: [védett összetevők](https://github.com/Azur
 
 A mikroszolgáltatások engedélyek jogosulatlan API-kérelmek ellen is ellenőrizheti. Amikor egy mikroszolgáltatás-API-kérést kap, dekódol, és érvényesíti a JWT jogkivonatot beolvasni a felhasználói Azonosítót és a felhasználói szerephez tartozó engedélyeket.
 
-A következő kódrészlet a a [DevicesController.cs](https://github.com/Azure/iothub-manager-dotnet/blob/master/WebService/v1/Controllers/DevicesController.cs) fájlt a [IoTHub Manager mikroszolgáltatás](https://github.com/Azure/iothub-manager-dotnet), bemutatja, hogyan tartatja be az engedélyeket:
+A következő kódrészlet a a [DevicesController.cs](https://github.com/Azure/remote-monitoring-services-dotnet/blob/master/iothub-manager/WebService/v1/Controllers/DevicesController.cs) fájlt a [IoTHub Manager mikroszolgáltatás](https://github.com/Azure/remote-monitoring-services-dotnet/tree/master/iothub-manager), bemutatja, hogyan tartatja be az engedélyeket:
 
 ```csharp
 [HttpDelete("{id}")]

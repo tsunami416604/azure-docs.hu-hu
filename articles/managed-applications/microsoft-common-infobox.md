@@ -1,6 +1,6 @@
 ---
-title: Az Azure InfoBox felhasználói felületi elem |} Microsoft Docs
-description: Azure-portálon a Microsoft.Common.TextBlock felhasználói felületi elem ismerteti.
+title: Az Azure InfoBox felhasználói felületi elemben |} A Microsoft Docs
+description: Az Azure portal a Microsoft.Common.TextBlock felhasználói felületi elem ismerteti.
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -11,17 +11,21 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/30/2018
+ms.date: 06/15/2018
 ms.author: tomfitz
-ms.openlocfilehash: 9507280bf5df1e63c81f0b2488b9676784c69812
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: abd1329f2ebac90bf846dfd5fc5b307ddb5e52bd
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34260874"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35927566"
 ---
-# <a name="microsoftcommoninfobox-ui-element"></a>Microsoft.Common.InfoBox felhasználói felületi elem
-Az információk mező vezérlő.
+# <a name="microsoftcommoninfobox-ui-element"></a>Microsoft.Common.InfoBox felhasználói felületi elemben
+Egy olyan vezérlőelem, amely hozzáad egy információs mező. A box fontos szöveget tartalmaz, vagy figyelmeztetések, amelyek segítségével a felhasználók a tartalmat értékek ismertetése. Azt is kapcsolat egy URI-t további információt.
+
+## <a name="ui-sample"></a>Felhasználói felület minta
+![Microsoft.Common.InfoBox](./media/managed-application-elements/microsoft.common.infobox.png)
+
 
 ## <a name="schema"></a>Séma
 ```json
@@ -40,7 +44,7 @@ Az információk mező vezérlő.
 ## <a name="remarks"></a>Megjegyzések
 
 * A `icon`, használjon **nincs**, **Info**, **figyelmeztetés**, vagy **hiba**.
-* A `uri` tulajdonság nem kötelező megadni.
+* A `uri` tulajdonság nem kötelező.
 
 ## <a name="sample-output"></a>Példa kimenet
 
@@ -49,5 +53,5 @@ Az információk mező vezérlő.
 ```
 
 ## <a name="next-steps"></a>További lépések
-* A bevezetést UI-definíciók létrehozásáról lásd: [Ismerkedés a CreateUiDefinition](create-uidefinition-overview.md).
-* Általános tulajdonságok felhasználói felületi elemei ismertetését lásd: [CreateUiDefinition elemek](create-uidefinition-elements.md).
+* Felhasználóifelület-definíciók létrehozása bevezetésért lásd: [CreateUiDefinition használatának első lépései](create-uidefinition-overview.md).
+* Egy felhasználói felületi elemeket általános tulajdonságok leírásáért lásd: [CreateUiDefinition elemek](create-uidefinition-elements.md).

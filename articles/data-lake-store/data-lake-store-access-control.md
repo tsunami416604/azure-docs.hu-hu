@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: 114413d65bb8b1d70bad21badb9508c5f942845c
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: 72bc0408ed1eba2d959d246a55677ee9964ef106
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391113"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44718814"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen1"></a>Hozzáférés-vezérlés az Azure Data Lake Storage Gen1
 
@@ -69,10 +69,10 @@ A fájlrendszer objektumaira vonatkozó engedélyek a következők: **Olvasás**
 
 | Numerikus alak | Rövid alak |      Jelentés     |
 |--------------|------------|------------------------|
-| 7            | RWX        | Olvasás + Írás + Végrehajtás |
-| 5            | R-X        | Olvasás + Végrehajtás         |
-| 4            | R--        | Olvasás                   |
-| 0            | ---        | Nincs engedély         |
+| 7            | `RWX`        | Olvasás + Írás + Végrehajtás |
+| 5            | `R-X`        | Olvasás + Végrehajtás         |
+| 4            | `R--`        | Olvasás                   |
+| 0            | `---`        | Nincs engedély         |
 
 
 ### <a name="permissions-do-not-inherit"></a>Az engedélyek nem öröklődnek
@@ -85,13 +85,13 @@ Az alábbiakban néhány gyakori helyzet segítenek megérteni, milyen engedély
 
 |    Művelet             |    /    | Seattle / | Portland / | Data.txt     |
 |--------------------------|---------|----------|-----------|--------------|
-| Olvassa el a Data.txt            |   – X   |   – X    |  – X      | R--          |
-| Data.txt hozzáfűzése       |   – X   |   – X    |  – X      | RW-          |
-| Data.txt törlése          |   – X   |   – X    |  -WX      | ---          |
-| Data.txt létrehozása          |   – X   |   – X    |  -WX      | ---          |
-| Listája /                   |   R-X   |   ---    |  ---      | ---          |
-| Lista /Seattle/           |   – X   |   R-X    |  ---      | ---          |
-| Lista /Seattle/Portland /  |   – X   |   – X    |  R-X      | ---          |
+| Olvassa el a Data.txt            |   `--X`   |   `--X`    |  `--X`      | `R--`          |
+| Data.txt hozzáfűzése       |   `--X`   |   `--X`    |  `--X`      | `RW-`          |
+| Data.txt törlése          |   `--X`   |   `--X`    |  `-WX`      | `---`          |
+| Data.txt létrehozása          |   `--X`   |   `--X`    |  `-WX`      | `---`          |
+| Listája /                   |   `R-X`   |   `---`    |  `---`      | `---`          |
+| Lista /Seattle/           |   `--X`   |   `R-X`    |  `---`      | `---`          |
+| Lista /Seattle/Portland /  |   `--X`   |   `--X`    |  `R-X`      | `---`          |
 
 
 > [!NOTE]
@@ -99,25 +99,6 @@ Az alábbiakban néhány gyakori helyzet segítenek megérteni, milyen engedély
 >
 >
 
-### <a name="permissions-needed-to-enumerate-a-folder"></a>Mappa felsorolásához szükséges engedélyek
-
-![Data Lake Storage Gen1 ACL-EK](./media/data-lake-store-access-control/data-lake-store-acls-6.png)
-
-* A hívónak a felsorolandó mappához **Olvasás + Végrehajtás** engedéllyel kell rendelkeznie.
-* A hívónak az összes elődmappához **Végrehajtás** engedéllyel kell rendelkeznie.
-
-
-Az a **adatkezelő** a Data Lake Storage Gen1-fiók paneljén kattintson **hozzáférés** a fájl vagy mappa az adatkezelőben megtekintett ACL-ek megtekintéséhez. Kattintson a **hozzáférés** ACL-ek megtekintéséhez a **katalógus** mappát a **mydatastorage** fiókot.
-
-![Data Lake Storage Gen1 ACL-EK](./media/data-lake-store-access-control/data-lake-store-show-acls-1.png)
-
-E panel felső részén a tulajdonos engedélyei láthatók. (A képernyőképen a tulajdonos felhasználó Bob.) Alatta a hozzárendelt hozzáférési ACL-ek láthatók. 
-
-![Data Lake Storage Gen1 ACL-EK](./media/data-lake-store-access-control/data-lake-store-show-acls-simple-view.png)
-
-Kattintson a **Speciális nézet** elemre egy részletesebb nézet megtekintéséhez, ahol az alapértelmezett ACL-ek, a maszk és a felügyelők leírása látható.  A panel ezen kívül lehetőséget biztosít a gyermekfájlokhoz és mappákhoz tartozó hozzáférési és alapértelmezett ACL-ek rekurzív módon történő beállításához az aktuális mappa engedélyei alapján.
-
-![Data Lake Storage Gen1 ACL-EK](./media/data-lake-store-access-control/data-lake-store-show-acls-advance-view.png)
 
 ## <a name="the-super-user"></a>A felügyelő
 
@@ -127,13 +108,8 @@ A felügyelő rendelkezik a felhasználók a legtöbb joggal a Data Lake Storage
 * Bármely fájl vagy mappa engedélyeit megváltoztathatja.
 * Bármely fájl vagy mappa tulajdonosát vagy tulajdonoscsoportját megváltoztathatja.
 
-Az Azure-ban egy Data Lake Storage Gen1 fiók több Azure-szerepkörök, beleértve a rendelkezik:
+Minden felhasználó részét képező a **tulajdonosok** szerepkört egy Data Lake Storage Gen1 a fiókhoz a program automatikusan a felügyelők sem.
 
-* Tulajdonosok
-* Közreműködők
-* Olvasók
-
-Mindenki a **tulajdonosok** szerepkör egy Data Lake Storage Gen1 fiók automatikusan, a fiók felügyelője. További tudnivalókért lásd a [szerepköralapú hozzáférés-vezérlést](../role-based-access-control/role-assignments-portal.md) bemutató szakaszt.
 Ha létre szeretne hozni egy egyéni, szerepköralapú hozzáférés-vezérlési (RBAC) szerepkört, amely felügyelői engedélyekkel rendelkezik, akkor annak a következő engedélyekkel kell rendelkeznie:
 - Microsoft.DataLakeStore/accounts/Superuser/action
 - Microsoft.Authorization/roleAssignments/write
@@ -153,11 +129,16 @@ Automatikusan az elem tulajdonosa lesz az a felhasználó, aki létrehozta az el
 
 ## <a name="the-owning-group"></a>A tulajdonoscsoport
 
+**Háttér**
+
 A POSIX ACL-ekben minden felhasználó társítva van egy „elsődleges csoporttal”. Például az „alice” nevű felhasználó a „finance” csoportba tartozhat. Alice több csoporthoz is tartozhat, de egy csoport mindig ki van jelölve elsődleges csoportjaként. A POSIX-ben ha Alice létrehoz egy fájlt, a fájl tulajdonoscsoportja Alice elsődleges csoportja lesz, ami ebben az esetben a „finance”. A tulajdonos csoport egyéb esetben egyéb felhasználókhoz/csoportokhoz hozzárendelt engedélyekhez hasonlóan viselkedik.
 
-Egy új fájl vagy mappa esetében a tulajdonoscsoport Assiging:
+**Egy új fájl vagy mappa esetében a tulajdonoscsoport Assiging**
+
 * **1. eset**: A gyökérmappa „/”. Ez a mappa a Data Lake Storage Gen1 fiók létrehozásakor jön létre. Ebben az esetben a tulajdonoscsoport azon felhasználó szerint lesz beállítva, aki létrehozta a fiókot.
 * **2. eset** (minden egyéb eset): Egy új elem létrehozásakor a tulajdonoscsoport a szülőmappából másolódik át.
+
+**A tulajdonoscsoport módosítása**
 
 A tulajdonoscsoportot megváltoztathatja:
 * Bármely felügyelő.
@@ -179,30 +160,32 @@ def access_check( user, desired_perms, path ) :
   # path is the file or folder
   # Note: the "sticky bit" is not illustrated in this algorithm
   
-# Handle super users
-    if (is_superuser(user)) :
-      return True
+# Handle super users.
+  if (is_superuser(user)) :
+    return True
 
-  # Handle the owning user. Note that mask is not used.
-    if (is_owning_user(path, user))
-      perms = get_perms_for_owning_user(path)
-      return ( (desired_perms & perms) == desired_perms )
+  # Handle the owning user. Note that mask IS NOT used.
+  entry = get_acl_entry( path, OWNER )
+  if (user == entry.identity)
+      return ( (desired_perms & e.permissions) == desired_perms )
 
-  # Handle the named user. Note that mask is used.
-  if (user in get_named_users( path )) :
-      perms = get_perms_for_named_user(path, user)
-      mask = get_mask( path )
-      return ( (desired_perms & perms & mask ) == desired_perms)
+  # Handle the named users. Note that mask IS used.
+  entries = get_acl_entries( path, NAMED_USERS )
+  for entry in entries:
+      if (user == entry.identity ) :
+          mask = get_mask( path )
+          return ( (desired_perms & entry.permmissions & mask) == desired_perms)
 
   # Handle groups (named groups and owning group)
-  belongs_to_groups = [g for g in get_groups(path) if is_member_of(user, g) ]
-  if (len(belongs_to_groups)>0) :
-    group_perms = [get_perms_for_group(path,g) for g in belongs_to_groups]
-    perms = 0
-    for p in group_perms : perms = perms | p # bitwise OR all the perms together
-    mask = get_mask( path )
-    return ( (desired_perms & perms & mask ) == desired_perms)
-
+  member_count = 0
+  perms = 0
+  for g in get_groups(path) :
+    if (user_is_member_of_group(user, g)) :
+      member_count += 1
+      perms | =  get_perms_for_group(path,g)
+  if (member_count>0) :
+    return ((desired_perms & perms & mask ) == desired_perms)
+ 
   # Handle other
   perms = get_perms_for_other(path)
   mask = get_mask( path )
@@ -218,7 +201,7 @@ A maszk, ahogyan a hozzáférés-ellenőrzési algoritmus, korlátozza a hozzáf
 >
 >
 
-#### <a name="the-sticky-bit"></a>Ragadós bit
+### <a name="the-sticky-bit"></a>Ragadós bit
 
 A ragadós (sticky) bit a POSIX-fájlrendszer egy speciális funkciója. Data Lake Storage Gen1 összefüggésben nem valószínű, hogy a ragadós bit lesz szükség. Összefoglalva Ha a ragadós bit engedélyezve van egy mappába, a gyermekelem is csak kell törölték vagy átnevezték a gyermek-konfigurációelem tulajdonosa felhasználó által.
 
@@ -239,9 +222,9 @@ Az Azure Data Lake Storage Gen1 állandó érték, amely az umask 007 beállít�
 
 | umask összetevő     | Numerikus alak | Rövid alak | Jelentés |
 |---------------------|--------------|------------|---------|
-| umask.owning_user   |    0         |   ---      | A tulajdonos felhasználó, másolja a szülő alapértelmezett ACL-je a gyermek hozzáférési ACL-je | 
-| umask.owning_group  |    0         |   ---      | A tulajdonoscsoport, másolja a szülő alapértelmezett ACL-je a gyermek hozzáférési ACL-je | 
-| umask.Other         |    7         |   RWX      | Más a gyermek hozzáférési ACL-je a minden engedély eltávolítása |
+| umask.owning_user   |    0         |   `---`      | A tulajdonos felhasználó, másolja a szülő alapértelmezett ACL-je a gyermek hozzáférési ACL-je | 
+| umask.owning_group  |    0         |   `---`      | A tulajdonoscsoport, másolja a szülő alapértelmezett ACL-je a gyermek hozzáférési ACL-je | 
+| umask.Other         |    7         |   `RWX`      | Más a gyermek hozzáférési ACL-je a minden engedély eltávolítása |
 
 Az Azure Data Lake Storage Gen1 hatékonyan használható umask érték azt jelenti, hogy az érték más soha nem továbbított alapértelmezés szerint az új gyermek - függetlenül az alapértelmezett ACL-t jelzi. 
 

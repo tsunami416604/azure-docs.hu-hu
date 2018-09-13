@@ -15,14 +15,14 @@ ms.topic: conceptual
 ms.date: 05/03/2018
 ms.author: v-daljep
 ms.component: na
-ms.openlocfilehash: 82845f475857f9a911febd496e86eb2a60f69c25
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: b8d8acda4ff1dee0643227c3fa2375c634c1b4a4
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43782243"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44717420"
 ---
-# <a name="monitor-azure-sql-databases-using-azure-sql-analytics-preview"></a>A figyelő Azure SQL Database-adatbázisok Azure SQL Analytics (előzetes verzió) használatával
+# <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Az Azure SQL Database megfigyelése az Azure SQL Analytics (előzetes verzió)
 
 ![Az Azure SQL Analytics szimbólum](./media/log-analytics-azure-sql/azure-sql-symbol.png)
 
@@ -30,7 +30,7 @@ Az Azure SQL Analytics egy felhőalapú megoldást kínál a teljesítmény figy
 
 A megoldással gyűjtött metrikák használatával létrehozhat egyéni figyelési szabályokkal és riasztásokkal. A megoldás segítségével azonosíthatja a problémákat az alkalmazáscsoportokat az egyes rétegben. Adatokat az összes az Azure SQL adatbázisok, rugalmas készletek és adatbázisok szerepelnek a felügyelt példányok egyetlen Log Analytics-munkaterületet a Log Analytics nézeteivel együtt az Azure diagnosztikai metrikák használ. A log Analytics segítségével összegyűjtését, összekapcsolását és megjelenítését a strukturált és strukturálatlan adatok.
 
-Jelenleg ez a minta megoldás legfeljebb 200 000 Azure SQL Database-adatbázisok és 5000 rugalmas SQL-készletek Munkaállomásonként.
+Jelenleg ez a minta megoldás legfeljebb 200 000 Azure SQL-adatbázisok és 5000 rugalmas SQL-készletek Munkaállomásonként.
 
 A gyakorlati áttekintése az Azure SQL Analytics megoldás használatával és a jellemző használati forgatókönyvei: a beágyazott videót:
 
@@ -39,7 +39,7 @@ A gyakorlati áttekintése az Azure SQL Analytics megoldás használatával és 
 
 ## <a name="connected-sources"></a>Összekapcsolt források
 
-Az Azure SQL Analytics egy felhőben csak a megoldást támogató streamelési diagnostics telemetriai adatainak az Azure SQL Database-adatbázisok, rugalmas készletek és a felügyelt példányok figyelése. A Log Analytics szolgáltatáshoz való csatlakozáshoz ügynökök nem használ, a megoldás nem támogatja a helyszíni SQL Server-kiszolgálók vagy virtuális gépek figyelése, az alábbi tábla a kompatibilitási.
+Az Azure SQL Analytics egy felhőben csak a megoldást támogató adatfolyamként diagnostics telemetriai adatainak az Azure SQL Database-adatbázisok, rugalmas készletek és a felügyelt példányok figyelése. A Log Analytics szolgáltatáshoz való csatlakozáshoz ügynökök nem használ, a megoldás nem támogatja a helyszíni SQL Server-kiszolgálók vagy virtuális gépek figyelése, az alábbi tábla a kompatibilitási.
 
 | Összekapcsolt forrás | Támogatott | Leírás |
 | --- | --- | --- |
@@ -62,9 +62,9 @@ A következő lépésekkel adhat hozzá az Azure SQL Analytics megoldás a munka
 5. Az a **új megoldás létrehozása** területen létrehozhat új, vagy válasszon ki egy meglévő munkaterületet, adja hozzá a megoldást, és kattintson a kívánt **létrehozás**.  
     ![munkaterület hozzáadása](./media/log-analytics-azure-sql/add-to-workspace.png)
 
-### <a name="configure-azure-sql-databases-and-elastic-pools-to-stream-diagnostics-telemetry"></a>Stream diagnostics telemetriai adatainak az Azure SQL Database-adatbázisok és rugalmas készletek konfigurálása
+### <a name="configure-azure-sql-databases-and-elastic-pools-to-stream-diagnostics-telemetry"></a>Az Azure SQL Database-adatbázisok és rugalmas készletek az adatfolyam diagnostics telemetriai adatainak konfigurálása
 
-Ha létrehozta az Azure SQL Analytics megoldás a munkaterületen, annak érdekében, hogy az Azure SQL Database és/vagy rugalmas készletek teljesítményének figyelése kell **konfigurálja** Azure SQL Database és a rugalmas készlet egyenlő erőforrás szeretné a diagnostics telemetriai adatainak a megoldáshoz streamelésére figyelésére.
+Ha létrehozta az Azure SQL Analytics megoldás a munkaterületen, annak érdekében, hogy az Azure SQL Database-adatbázisok és/vagy rugalmas készletek teljesítményének figyelése kell **konfigurálja** Azure SQL Database és a rugalmas készlet egyenlő erőforrás szeretné a diagnostics telemetriai adatainak a megoldáshoz streamelésére figyelésére.
 
 - Az Azure-diagnosztika engedélyezése az Azure SQL Database-adatbázisok és rugalmas készletek és [konfigurálhatók úgy, hogy küldik az adatokat a Log Analytics](../sql-database/sql-database-metrics-diag-logging.md).
 
@@ -123,7 +123,7 @@ Rugalmas készletek és adatbázisok is rendelkezik a saját konkrét jelentése
 
 ![Az Azure SQL Analytics adatbázis](./media/log-analytics-azure-sql/azure-sql-sol-database.png)
 
-![Az Azure SQL Analytics rugalmas készlet](./media/log-analytics-azure-sql/azure-sql-sol-pool.png)
+![Az Azure SQL rugalmas készlet](./media/log-analytics-azure-sql/azure-sql-sol-pool.png)
 
 ### <a name="query-reports"></a>Lekérdezés jelentések
 
@@ -150,7 +150,7 @@ AzureMetrics
 > - Ez a riasztás létrehozása előtti követelmény, a figyelt adatbázisok stream diagnosztikai metrikák ("Összes metrikák" lehetőség) a megoldáshoz.
 > - Cserélje le a MetricName érték cpu_percent dtu_consumption_percent inkább juthat magas DTU-eredményeket.
 
-*Az Azure SQL Database rugalmas készletei a magas CPU*
+*Az Azure SQL Database rugalmas készletei magas CPU*
 
 ```
 AzureMetrics 

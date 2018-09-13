@@ -1,6 +1,6 @@
 ---
-title: Az Azure Application Insightsban észlelési intelligens |} Microsoft Docs
-description: Az Application Insights az alkalmazás telemetriai adatot automatikus mélyreható elemzésével és figyelmezteti, potenciális problémákat.
+title: Intelligens detektálás az Azure Application Insights |} A Microsoft Docs
+description: Application Insights az alkalmazás telemetriai adatainak automatikus mélyreható elemzésével, és figyelmezteti a potenciális problémákról.
 services: application-insights
 documentationcenter: windows
 author: mrbullwinkle
@@ -10,56 +10,57 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/31/2016
 ms.author: mbullwin
-ms.openlocfilehash: 38a7c5be98440a717eb54092bf7ce0d412619017
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: f2261334c25de4429060ed502e70aae50f3b707f
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35645751"
 ---
-# <a name="smart-detection-in-application-insights"></a>Az Application Insightsban intelligens észlelése
- Intelligens észlelési automatikusan figyelmezteti, mert ez teljesítményproblémákat okozhat a webalkalmazásban. Proaktív, amelyet az alkalmazás küld a telemetriai adatok elemzését végez [Application Insights](app-insights-overview.md). Ha nincs, hirtelen megnövekedhet a meghibásodás arányának vagy rendellenes minták ügyfél vagy kiszolgáló teljesítményét, akkor figyelmeztetést kap. Ez a funkció nincs konfiguráció szükséges. Ha az alkalmazás küld elég mérési adat működik.
+# <a name="smart-detection-in-application-insights"></a>Az Application Insights intelligens detektálás
+ Intelligens észlelés automatikusan figyelmezteti, az esetleges teljesítményproblémákat okozhat a webalkalmazásban. Proaktív elemzése a telemetriát, amely elküldi az alkalmazás végrehajt [Application Insights](app-insights-overview.md). Ha hirtelen megnövekedhet a hibaarányok, vagy a rendellenes mintákat ügyfél vagy kiszolgáló teljesítményét, riasztást kap. Ez a funkció nincs konfigurációs van szüksége. Ha az alkalmazása elég telemetriát küld működik.
 
-Intelligens észlelési riasztásokat érheti el az e-maileket kapni a, mind az intelligens észlelési paneljén.
+Az intelligens észlelési riasztásokkal is elérheti, mind az e-mailt kap, és az intelligens detektálási panelen.
 
-## <a name="review-your-smart-detections"></a>Tekintse át az intelligens észlelések
-Két módon észlelések fel tud deríteni:
+## <a name="review-your-smart-detections"></a>Tekintse át az intelligens észlelés
+Észlelések kétféleképpen deríthet fel:
 
-* **E-mailt kapni** az Application Insights. Például a következő:
+* **E-mailt kap** az Application Insights szolgáltatásból. Íme egy tipikus példát:
   
-    ![E-mail értesítés](./media/app-insights-proactive-diagnostics/03.png)
+    ![Értesítő e-mail](./media/app-insights-proactive-diagnostics/03.png)
   
-    A nagy gombra kattintva nyissa meg a további információkhoz juthat a portálon.
-* **Az intelligens észlelési csempe** a az alkalmazás áttekintése panel a legújabb riasztások számát jeleníti meg. Kattintson a csempére kattintva megtekintheti a legújabb riasztások listáját.
+    A big Data típusú gombra kattintva nyissa meg a további részleteket a portálon.
+* **Az intelligens detektálási csempe** az alkalmazás áttekintése panel megjeleníti a legutóbbi riasztások száma. Kattintson a csempére, és a egy új figyelmeztetések listájának megtekintéséhez.
 
-![Legutóbbi nézetet észlelések](./media/app-insights-proactive-diagnostics/04.png)
+![Legutóbbi észlelés megtekintése](./media/app-insights-proactive-diagnostics/04.png)
 
 Válasszon ki egy riasztást, a részletek megtekintéséhez.
 
 ## <a name="what-problems-are-detected"></a>Milyen problémákat észlelt?
-Észlelési három fő típusba sorolhatók:
+Észlelés három fő típusba sorolhatók:
 
-* [Észlelési - hiba rendellenességeket intelligens](app-insights-proactive-failure-diagnostics.md). Gépi tanulási a sikertelen kérelmek az alkalmazás várható sebesség beállításához használjuk, betöltés és más tényezők használatával történik. Ha a hibaaránya kerül, a várt boríték kívül, riasztást kapni.
-* [Észlelési - Teljesítményanomáliákat intelligens](app-insights-proactive-performance-diagnostics.md). Ha egy művelet vagy függőségi időtartamot válaszideje az lassítja kiinduló képest, vagy ha azt azonosítani a rendellenes mintát válaszidő vagy a lapbetöltési idő értesítéseket kap.   
-* [Észlelési - Azure Cloud Service problémák intelligens](https://azure.microsoft.com/blog/proactive-notifications-on-cloud-service-issues-with-azure-diagnostics-and-application-insights/). Riasztásokat kaphat, ha az alkalmazás üzemel Azure Cloud Services és a szerepkör példánya van indítási hibák, gyakori újrahasznosítása vagy futásidejű összeomlik.
+* [Intelligens detektálás – rendellenes hibák](app-insights-proactive-failure-diagnostics.md). A machine learning sikertelen kérelmek az alkalmazás a várt arány beállításához használjuk, a terhelés és egyéb tényezők használatával történik. Ha a Hibaarány megfelelően a várt boríték kívül, küldünk egy riasztást.
+* [Intelligens detektálás – teljesítménnyel kapcsolatos anomáliák](app-insights-proactive-performance-diagnostics.md). Ha egy művelet és a függőségi időtartam válaszideje rendszer lelassul kiinduló alapkonfigurációt képest, vagy ha azt azonosítható a rendellenes minta válaszidejének vagy a lapbetöltési idő értesítéseket kap.   
+* [Intelligens detektálás – Azure-Felhőszolgáltatás problémák](https://azure.microsoft.com/blog/proactive-notifications-on-cloud-service-issues-with-azure-diagnostics-and-application-insights/). Riasztásokat kaphat, ha az alkalmazás üzemel az Azure Cloud Services és a egy szerepkörpéldány rendelkezik a hibák, gyakori újrahasznosítás vagy futásidejű összeomlások.
 
-(A súgó minden értesítés hivatkozásokra kattintva a kapcsolódó cikkekben.)
+(A Súgó az egyes értesítések hivatkozások az ide tartozó cikkekre.)
 
 ## <a name="video"></a>Videó
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
 
 ## <a name="next-steps"></a>További lépések
-A diagnosztikai eszközök segítségével vizsgálja meg az alkalmazás a telemetriai adatok:
+Ezek a diagnosztikai eszközök segítséget nyújt az alkalmazásából származó telemetriai adatok vizsgálata:
 
 * [Metrika explorer](app-insights-metrics-explorer.md)
-* [Keresési ablak](app-insights-diagnostic-search.md)
-* [Elemzés - hatékony lekérdezési nyelv](app-insights-analytics-tour.md)
+* [A keresési ablak](app-insights-diagnostic-search.md)
+* [Analytics – erőteljes lekérdezési nyelv](app-insights-analytics-tour.md)
 
-Intelligens észlelési teljesen automatikus. De lehet, hogy milyen néhány további riasztások beállítása?
+Az intelligens észlelés a teljesen automatikus. De esetleg szeretné néhány további riasztásokat állíthat be?
 
-* [Manuálisan konfigurált metrika riasztások](app-insights-alerts.md)
-* [A webteszt rendelkezésre állása](app-insights-monitor-web-app-availability.md) 
+* [Manuálisan konfigurált metrikákhoz kapcsolódó riasztások](app-insights-alerts.md)
+* [Rendelkezésre állási webes tesztek](app-insights-monitor-web-app-availability.md) 
 

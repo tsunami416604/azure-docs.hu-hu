@@ -1,6 +1,6 @@
 ---
-title: Azure Kubernetes fürt - Sysdig figyelése
-description: Figyelési Kubernetes Sysdig használata az Azure Tárolószolgáltatás-fürt
+title: Azure-beli Kubernetes-fürt – Sysdig figyelése
+description: Az Azure Container Service a Sysdig segítségével Kubernetes-fürt figyelése
 services: container-service
 author: bburns
 manager: jeconnoc
@@ -9,30 +9,31 @@ ms.topic: article
 ms.date: 12/09/2016
 ms.author: bburns
 ms.custom: mvc
-ms.openlocfilehash: 275e71ce054b83c16b9f9cbfe621c6a7e31f79c6
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: bbf59a35f420b5bbf292fbdaa5a8bbc173e4ee24
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35645783"
 ---
-# <a name="monitor-an-azure-container-service-kubernetes-cluster-using-sysdig"></a>Egy Azure-tároló szolgáltatás Kubernetes fürtjéhez Sysdig figyelése
+# <a name="monitor-an-azure-container-service-kubernetes-cluster-using-sysdig"></a>Egy Azure Container Service Kubernetes-fürtön Sysdig figyelése
 
 [!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ez az útmutató feltételezi, hogy rendelkezik [a Kubernetes Azure Tárolószolgáltatási fürt létrehozott](container-service-kubernetes-walkthrough.md).
+Az útmutató feltételezi, hogy [egy Kubernetes-fürtöt az Azure Container Service használatával létrehozott](container-service-kubernetes-walkthrough.md).
 
-Azt is feltételezi, hogy rendelkezik-e az azure cli és kubectl eszközök vannak telepítve.
+Azt is feltételezi, hogy a telepített azure CLI-t és a kubectl eszközök.
 
-Ha tesztelheti a `az` eszköz futtatásával telepítve:
+Ha rendelkezik tesztelheti a `az` futtatásával telepített eszköz:
 
 ```console
 $ az --version
 ```
 
-Ha nem rendelkezik a `az` eszköz telepítve, az e-mail utasításokat is [Itt](https://github.com/azure/azure-cli#installation).
+Ha nem rendelkezik a `az` eszközt telepítette, az e-mail utasításokat is [Itt](https://github.com/azure/azure-cli#installation).
 
-Ha tesztelheti a `kubectl` eszköz futtatásával telepítve:
+Ha rendelkezik tesztelheti a `kubectl` futtatásával telepített eszköz:
 
 ```console
 $ kubectl version
@@ -45,41 +46,41 @@ $ az acs kubernetes install-cli
 ```
 
 ## <a name="sysdig"></a>Sysdig
-Sysdig egy külső "figyelés" a szolgáltatás vállalat, amely képes figyelni az Azure-beli Kubernetes fürt tárolók. Aktív Sysdig fiók Sysdig a használatához.
-Iratkozzon fel a fiókot saját [hely](https://app.sysdigcloud.com).
+A Sysdig egy-egy szolgáltatás vállalat, amely képes figyelni a tárolók az Azure-ban futtatott Kubernetes-fürt külső monitorozásra. A Sysdig segítségével egy aktív Sysdig-fiókra van szükség.
+Iratkozzon fel a fiók saját [hely](https://app.sysdigcloud.com).
 
 Miután bejelentkezett a Sysdig felhő webhelyére, kattintson a felhasználónevére, és az oldalon meg kell jelennie a hívóbetűjének („Access Key”). 
 
 ![Sysdig API-kulcs](./media/container-service-kubernetes-sysdig/sysdig2.png)
 
-## <a name="installing-the-sysdig-agents-to-kubernetes"></a>A Kubernetes a Sysdig ügynökök telepítése
-A tárolók figyeléséhez Sysdig minden gép, egy Kubernetes használatával futtat egy folyamatot `DaemonSet`.
-DaemonSets olyan gépenként tárolója egyetlen példányát futtató Kubernetes API-objektumok.
-Fontosságúak tökéletes megoldás az eszközök, például a Sysdig figyelési ügynök telepítése.
+## <a name="installing-the-sysdig-agents-to-kubernetes"></a>A Sysdig-ügynökök telepítése kubernetes
+Tárolók monitorozásához Sysdig egy folyamat fut az összes olyan számítógépen, a Kubernetes használatával `DaemonSet`.
+DaemonSets objektumai Kubernetes API-t, amely egy tároló gépenként egyetlen példánya.
+Azok a tökéletes olyan eszközökkel, mint például a Sysdig monitorozási ügynök telepítése.
 
-A Sysdig daemonset telepítéséhez kell előbb az [a sablon](https://raw.githubusercontent.com/draios/sysdig-cloud-scripts/master/agent_deploy/kubernetes/sysdig-daemonset.yaml) a sysdig. Mentse a fájlt `sysdig-daemonset.yaml`.
+A Sysdig daemonset telepítéséhez meg kell töltenie [a sablon](https://github.com/draios/sysdig-cloud-scripts/tree/master/agent_deploy/kubernetes) a sysdig segítségével. Mentse a fájlt az `sysdig-daemonset.yaml`.
 
-Linux-és OS X futtathatja:
+Linux- és OS X rendszeren futtathatja:
 
 ```console
 $ curl -O https://raw.githubusercontent.com/draios/sysdig-cloud-scripts/master/agent_deploy/kubernetes/sysdig-daemonset.yaml
 ```
 
-A PowerShell:
+A PowerShellben:
 
 ```console
 $ Invoke-WebRequest -Uri https://raw.githubusercontent.com/draios/sysdig-cloud-scripts/master/agent_deploy/kubernetes/sysdig-daemonset.yaml | Select-Object -ExpandProperty Content > sysdig-daemonset.yaml
 ```
 
-A hozzáférési kulcsot, Sysdig fiókjából beszerzett fájl mellett szerkesztése.
+Ezután módosítsa ezt a fájlt a hozzáférési kulcsot, a Sysdig-fiókjából beszerzett.
 
-Végezetül hozza létre a DaemonSet:
+Végül hozza létre a DaemonSet:
 
 ```console
 $ kubectl create -f sysdig-daemonset.yaml
 ```
 
-## <a name="view-your-monitoring"></a>A figyelést megtekintése
-Miután telepített és futó, az ügynökök adatokat vissza Sysdig kell szivattyú.  Lépjen vissza a [sysdig irányítópult](https://app.sysdigcloud.com) és megjelenítheti a tárolók kapcsolatos információkat.
+## <a name="view-your-monitoring"></a>A figyelés megtekintése
+Miután telepített és futó, az ügynökök adatokat küld vissza a sysdig segítségével kell pump.  Lépjen vissza a [sysdig irányítópult](https://app.sysdigcloud.com) és a tárolókkal kapcsolatos információkat kell látnunk.
 
-Kubernetes-specifikus irányítópultok keresztül is telepíthet a [új irányítópult varázsló](https://app.sysdigcloud.com/#/dashboards/new).
+Kubernetes-specifikus irányítópultokat is telepítheti a [új irányítópult varázsló](https://app.sysdigcloud.com/#/dashboards/new).

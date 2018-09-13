@@ -1,37 +1,37 @@
 ---
-title: Ismert problémák és hibaelhárítási útmutató |} Microsoft Docs
-description: Ismert problémák listája és a hibaelhárítás elősegítése érdekében az útmutató
+title: Ismert problémák és hibaelhárítási útmutató |} A Microsoft Docs
+description: Ismert problémák listája és a egy útmutató, amellyel hibaelhárításához
 services: machine-learning
 author: svankam
 ms.author: svankam
 manager: mwinkle
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: studio
+ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 01/12/2018
-ms.openlocfilehash: 05db4e47e5b2931a101a323a0210c080b87c1c42
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: dc57509475634b6a8038179dbb205533c3ea9d99
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34832941"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35923401"
 ---
-# <a name="azure-machine-learning-workbench---known-issues-and-troubleshooting-guide"></a>Az Azure Machine Learning munkaterület - ismert problémák és hibaelhárítási útmutatója 
-Ez a cikk segít keresés és javítsa ki a hibákat, vagy sikertelen műveletek használata az Azure Machine Learning-munkaterület alkalmazás részeként. 
+# <a name="azure-machine-learning-workbench---known-issues-and-troubleshooting-guide"></a>Az Azure Machine Learning Workbench – ismert problémák és hibaelhárítási útmutató 
+Ez a cikk segít keresse meg és javítsa ki a hibákat vagy hibákat észlelt az Azure Machine Learning Workbench alkalmazás használatával részeként. 
 
-## <a name="find-the-workbench-build-number"></a>A munkaterület buildszáma keresése
-Ha a támogatási csoport kommunikál, fontos közé tartozik a munkaterületet üzemeltető app build száma. A Windows rendszeren talál a buildszám kattintva a **súgó** menü válassza **kapcsolatos Azure ML munkaterület**. A macOS, kattintson a **Azure ML munkaterület** menü válassza **kapcsolatos Azure ML munkaterület**.
+## <a name="find-the-workbench-build-number"></a>Keresse meg a Workbench buildszám
+A támogatási csoporthoz való kommunikáció során, esetén fontos, hogy a buildszám, a Workbench alkalmazás. A Windows, talál a buildszám kattintva a **súgó** menüben, és válassza **kapcsolatos Azure ML Workbench**. MacOS-gépeken, kattintson a a **Azure ML Workbench** menüben, és válassza a **kapcsolatos Azure ML Workbench**.
 
-## <a name="machine-learning-msdn-forum"></a>Machine Learning MSDN fórum
-Az MSDN fórumon, hogy kérdéseit felteheti is van. A termékért felelős csoport a Fórum aktívan figyeli. Az URL-cím fórumra [ https://aka.ms/azureml-forum ](https://aka.ms/azureml-forum). 
+## <a name="machine-learning-msdn-forum"></a>A Machine Learning MSDN-fórum
+Összeállítottunk egy MSDN-fórum, hogy Ön felteheti kérdéseit. A termékcsoport aktívan figyeli a fórumot. Az URL-cím fórum [ https://aka.ms/azureml-forum ](https://aka.ms/azureml-forum). 
 
 ## <a name="gather-diagnostics-information"></a>Diagnosztikai adatainak összegyűjtése
-Egyes esetekben hasznos lehet ha diagnosztikai adatokat is biztosít, ha a segítségkérés. Ez a naplófájlok lakhelyétől:
+Egyes esetekben hasznos lehet, ha a diagnosztikai adatok segítség kérése során megadhatja. Itt látható, ahol a naplófájlok élő:
 
-### <a name="installer-log"></a>Telepítő napló
-Ha problémát tapasztal telepítése során, a telepítő naplófájlok itt:
+### <a name="installer-log"></a>Telepítési napló
+Ha a probléma a telepítés során, a telepítő naplófájlok jelenleg itt tart:
 
 ```
 # Windows:
@@ -40,10 +40,10 @@ Ha problémát tapasztal telepítése során, a telepítő naplófájlok itt:
 # macOS:
 /tmp/amlinstaller/logs/*
 ```
-A zip-be ezeket a könyvtárakat tartalmát, és elküldi a számunkra a diagnosztikai.
+Zip-fel ezeket a könyvtárakat a tartalmát, és a mobilszolgáltatásokba diagnosztikai velünk a kapcsolatot.
 
-### <a name="workbench-desktop-app-log"></a>Munkaterület egy asztali alkalmazás napló
-Ha problémája van bejelentkezve, vagy ha a munkaterületet üzemeltető asztali összeomlik, a naplófájlok itt található:
+### <a name="workbench-desktop-app-log"></a>Workbench asztali alkalmazás log
+Ha nem jelentkezik be, vagy ha összeomlik a Workbenchben desktop, a naplófájlok itt találja:
 ```
 # Windows
 %APPDATA%\AmlWorkbench
@@ -51,65 +51,65 @@ Ha problémája van bejelentkezve, vagy ha a munkaterületet üzemeltető asztal
 # macOS
 ~/Library/Application Support/AmlWorkbench
 ``` 
-A zip-be ezeket a könyvtárakat tartalmát, és elküldi a számunkra a diagnosztikai.
+Zip-fel ezeket a könyvtárakat a tartalmát, és a mobilszolgáltatásokba diagnosztikai velünk a kapcsolatot.
 
 ### <a name="experiment-execution-log"></a>Kísérlet végrehajtási napló
-Ha egy adott parancsfájl megszakad, miközben az asztali alkalmazásból beküldése, próbálja meg újra elküldeni az keresztül parancssori felület használatával `az ml experiment submit` parancsot. Ez adjon meg teljes hibaüzenet JSON formátumú, és a legfontosabb tartalmaz egy **Műveletazonosító** érték. Küldjön nekünk a JSON fájl többek között a **Műveletazonosító** és könnyebb diagnosztizálásához. 
+Ha egy adott szkript az asztali alkalmazásból elküldése közben. sikertelen, próbálja meg újra elküldeni, parancssori felületén keresztül `az ml experiment submit` parancsot. Ez adjon meg teljes hibaüzenet JSON formátumban, és a legfontosabb tartalmaz egy **Műveletazonosító** értéket. Küldjön nekünk, például JSON-fájlt a **Műveletazonosító** és diagnosztizálása, forduljon hozzánk bizalommal. 
 
-Ha egy adott parancsfájl elküldése a sikeres, de végrehajtása sikertelen, kell-e nyomtassa ki a **futtatásához Azonosítóját** rendszert adott futtató azonosításához. Csomagot be a megfelelő naplófájlok helyét a következő parancsot:
+Ha egy adott szkript a beküldés sikeres volt, de a végrehajtás sikertelen, kell-e nyomtassa ki a **futtatás azonosítója** adott Futtatás azonosításához. Csomagot készíthet másolatot a megfelelő naplófájlok helyét, a következő paranccsal:
 
 ```azurecli
 # Create a ZIP file that contains all the diagnostics information
 $ az ml experiment diagnostics -r <run_id> -t <target_name>
 ```
 
-A `az ml experiment diagnostics` parancs létrehoz egy `diagnostics.zip` fájlt a projekt gyökérmappájában. A ZIP-csomagját állapotban teljes projektmappában került végrehajtásra, és a naplózási információk időben tartalmazza. Úgy, hogy elküldi a diagnosztikai fájl előtt érdemes bizalmas adatai.
+A `az ml experiment diagnostics` a parancs létrehoz egy `diagnostics.zip` fájlt a projektmappa gyökérkönyvtárába. A ZIP-csomagját a teljes projektmappáról állapotú, a rendszer hajtott végre, ezen kívül a naplózási információk időben tartalmazza. Mindenképpen távolítsa el a bizalmas adatokat nem szeretné, mielőtt elküldi nekünk a diagnosztikai fájl tartalmazza.
 
-## <a name="send-us-a-frown-or-a-smile"></a>Küldjön egy rosszallás (vagy egy mosolynál)
+## <a name="send-us-a-frown-or-a-smile"></a>Küldjön nekünk rosszallás (vagy mosoly)
 
-Azure ML munkaterület dolgozik, amikor is küldhet nekünk a rosszallás (vagy egy mosolynál), az alkalmazás rendszerhéj bal alsó sarkába arc arcfelismerési ikonra kattint. Is lehetősége van a e-mail címet (így azt is visszaszerezheti), és/vagy egy Képernyőkép az aktuális állapot. 
+Az Azure ML Workbenchben működik, is elküldheti nekünk rosszallás (vagy mosoly) az alkalmazás shell bal alsó sarkában található mosolygós arccal ikonra kattint. Lehetősége van tüntesse fel az e-mail címét (így kapunk vissza is), és/vagy a jelenlegi állapot képernyőképe. 
 
 ## <a name="known-service-limits"></a>Ismert szolgáltatásra vonatkozó korlátozások
-- Maximálisan engedélyezett projektet tartalmazó mappa mérete: 25 MB.
+- Maximális engedélyezett projekt mappa mérete: 25 MB.
     >[!NOTE]
-    >Ez a korlátozás nem vonatkozik `.git`, `docs` és `outputs` mappák. Ezek a mappanevek-és nagybetűk. Ha nagy fájlok dolgozik, tekintse meg a [megőrzése módosításokat, és nagy fájlok üzlet](../desktop-workbench/how-to-read-write-files.md).
+    >Ez a korlátozás nem vonatkozik a `.git`, `docs` és `outputs` mappákat. Ezek a mappanevek-és nagybetűk. Ha nagy méretű fájlok dolgozik, [megőrzése módosítások és a nagy fájlok üzlet](../desktop-workbench/how-to-read-write-files.md).
 
-- Maximálisan megengedett kísérlet végrehajtási ideje: hét napja
+- Maximális engedélyezett kísérlet végrehajtási idő: hét napja
 
-- A nyomon követett fájl maximális méretét `outputs` mappa Futtatás után: 512 MB
-  - Ez azt jelenti, hogy a parancsfájlt a kimeneti mappában 512 MB-nál nagyobb fájlt hoz létre, ha azt nem gyűjtenek van. Ha nagy fájlok dolgozik, tekintse meg a [megőrzése módosításokat, és nagy fájlok üzlet](../desktop-workbench/how-to-read-write-files.md).
+- A nyomon követett fájl maximális mérete `outputs` mappát egy Futtatás után: 512 MB
+  - Ez azt jelenti, hogy ha a szkript létrehoz egy fájlt, a kimeneti mappában 512 MB-nál nagyobb, akkor nem lesznek begyűjtve van. Ha nagy méretű fájlok dolgozik, [megőrzése módosítások és a nagy fájlok üzlet](../desktop-workbench/how-to-read-write-files.md).
 
-- SSH-kulcsok használata nem támogatott, amikor SSH-n keresztül csatlakozik egy távoli gép vagy a Spark-fürt. Csak a felhasználónév/jelszó mód jelenleg támogatott.
+- Az SSH-kulcsok nem támogatottak, amikor ssh-n keresztül csatlakozik egy távoli gép vagy a Spark-fürt. Csak a felhasználónév/jelszó mód jelenleg támogatott.
 
-- A cél számítási HDInsight-fürt használata esetén azt kell használni az Azure blob elsődleges tárolóként. Azure Data Lake Storage használata nem támogatott.
+- HDInsight-fürtöt számítási célt használatakor kell használnia, az Azure blob elsődleges tárként. Azure Data Lake Storage használata nem támogatott.
 
-- Szöveg fürtözési átalakítások nem támogatottak a Mac.
+- Szöveges fürtözési átalakítások nem támogatottak a Mac rendszerre.
 
-- RevoScalePy könyvtár csak Windows és Linux (a Docker-tároló) támogatott. MacOS a nem támogatott.
+- RevoScalePy könyvtár csak Windows és Linux rendszereken, (a Docker-tárolók) támogatott. MacOS rendszeren nem támogatott.
 
-- Jupyter notebookok rendelkezik 5 MB maximális méretkorlátot, amikor megnyitja őket a munkaterületet üzemeltető alkalmazást. A parancssori felületen 'az ml notebook start' parancs használatával nyithatja meg nagy notebookok, és a fájlméret csökkentéséhez kiírja tiszta cella.
+- A Jupyter Notebooks 5 MB-os maximális méretkorlátot rendelkezik, amikor megnyitja őket a Workbench alkalmazásból. Nagy notebookok megnyithatja a parancssori felület 'az ml notebook start' parancs használatával, és csökkentse a fájlméretet, outputs tiszta cella.
 
-## <a name="cant-update-workbench"></a>Nem lehet frissíteni a munkaterület
-Egy új frissítés érhető el, ha a munkaterületet üzemeltető alkalmazás kezdőlap egy üzenetet fog látni az új frissítésről jeleníti meg. Meg kell jelennie egy frissítés jelvény jelenik meg a bal alsó sarkába a alkalmazást a harang ikonra. Kattintson a jelvény, és kövesse a telepítővarázsló a frissítés telepítéséhez. 
+## <a name="cant-update-workbench"></a>Nem sikerült frissíteni a Workbenchben
+Új frissítés érhető el, amikor a Workbench alkalmazás kezdőlapjára arról értesíti, az új frissítésről üzenetet jelenít meg. Megjelenik egy frissítés jelvény jelenik meg a bal alsó sarkában az alkalmazás a harang ikonra. A jelvény kattintson, és kövesse a telepítővarázsló a frissítés telepítéséhez. 
 
-![frissítésének képe](./media/known-issues-and-troubleshooting-guide/update.png)
+![lemezkép frissítése](./media/known-issues-and-troubleshooting-guide/update.png)
 
-Ha nem látja az értesítési, indítsa újra az alkalmazást. Ha még nem látja a frissítési értesítés újraindítás után, előfordulhat, hogy néhány okainak lehet.
+Ha nem látja az értesítési, próbálja meg újraindítani az alkalmazást. Ha továbbra sem látja az újraindítás után a frissítési értesítés, néhány oka lehet.
 
-### <a name="you-are-launching-workbench-from-a-pinned-shortcut-on-the-task-bar"></a>A tálcán rögzített parancsikon vannak fókusza munkaterület
-Előfordulhat, hogy már telepítette a frissítést. De a rögzített helyi továbbra is a régi bits lemezen mutat. Ez megkeresésével ellenőrizheti a `%localappdata%/AmlWorkbench` mappa, és ellenőrizze, hogy ha legújabb verziója van telepítve, és vizsgálja meg azon tulajdonságát, tekintse meg, ahol mutató rögzített hivatkozás. Ha ellenőrizte, egyszerűen távolítsa el a régi helyi Start menüből indítsa el a munkaterületet üzemeltető és opcionálisan hozzon létre egy új rögzített parancsikont a tálcán.
+### <a name="you-are-launching-workbench-from-a-pinned-shortcut-on-the-task-bar"></a>A tálcán rögzített parancsikont a Workbench indította el
+Előfordulhat, hogy már telepítette a frissítést. De a gyors helyi továbbra is a régi bits lemezen mutat. Ez megkeresve ellenőrizheti a `%localappdata%/AmlWorkbench` mappát, és tekintse meg, ha legújabb verziója van telepítve, és vizsgálja meg a gyors helyi megtekintéséhez, hogy mutató tulajdonságát. Ha ellenőrizve, egyszerűen törölje a régi helyi, Workbench indítsa el a Start menüből, és szükség esetén hozzon létre egy új rögzített parancsikont a tálcán.
 
-### <a name="you-installed-workbench-using-the-install-azure-ml-workbench-link-on-a-windows-dsvm"></a>"Az Azure ML munkaterület telepítés" hivatkozás segítségével a Windows-DSVM munkaterület telepítése
-Sajnos van nem egyszerű ezen a projekten. Akkor kell távolítania a telepített bits, és töltse le a legfrissebb telepítő friss-telepítésre a munkaterület a következő lépésekkel: 
-   - a következő mappa eltávolítása `C:\Users\<Username>\AppData\Local\amlworkbench`
+### <a name="you-installed-workbench-using-the-install-azure-ml-workbench-link-on-a-windows-dsvm"></a>"Az Azure Machine Learning Workbench telepítése" hivatkozást használva egy Windows adatelemző virtuális GÉPET a Workbench telepítése
+Sajnos nincs nincs egyszerű a megoldás ezen a projekten. Akkor kell végrehajtani, távolítsa el a telepített bit, és töltse le a legújabb friss-telepítésre a Workbench a következő lépéseket: 
+   - a mappa eltávolítása `C:\Users\<Username>\AppData\Local\amlworkbench`
    - Távolítsa el a parancsfájl `C:\dsvm\tools\setup\InstallAMLFromLocal.ps1`
-   - a fenti szkript indító parancsikon eltávolítása
-   - a telepítő letöltési https://aka.ms/azureml-wb-msi , majd telepítse újra.
+   - Távolítsa el az asztali parancsikonjára, amely elindítja a fenti szkript
+   - Töltse le a telepítőt https://aka.ms/azureml-wb-msi , majd telepítse újra.
 
-## <a name="stuck-at-checking-experimentation-account-screen-after-logging-in"></a>A bejelentkezés után "Kísérletezhet fiók ellenőrzése" képernyő Beragadt
-A bejelentkezés után a munkaterületet üzemeltető alkalmazás előfordulhat, hogy elakadnak a üres képernyőt ábrázoló "Ellenőrzése kísérletezhet fiók" egy forgó rájuk üzenetet. A probléma megoldásához tegye a következőket:
+## <a name="stuck-at-checking-experimentation-account-screen-after-logging-in"></a>"A Kísérletezési fiók ellenőrzése" képernyő megakad a bejelentkezés után
+A bejelentkezés után a Workbench alkalmazás előfordulhat, hogy elakadnak üres képernyőt a megjelenítő tartalomfogyasztás görgetőkerék az "ellenőrzés Kísérletezési fiók" üzenettel. A probléma megoldásához hajtsa végre az alábbi lépéseket:
 1. Az alkalmazás leállítása
-2. Törölje a következő fájlt:
+2. Az alábbi fájl törlendő:
   ```
   # on Windows
   %appdata%\AmlWorkbench\AmlWb.settings
@@ -119,39 +119,39 @@ A bejelentkezés után a munkaterületet üzemeltető alkalmazás előfordulhat,
   ```
 3. Indítsa újra az alkalmazást.
 
-## <a name="cant-delete-experimentation-account"></a>Kísérletezhet fiók nem törölhető.
-Parancssori felület használatával kísérletezhet-fiók törlése, de törölnie kell az alárendelt munkaterületekkel és a gyermek projektek belül e gyermek munkaterületek először. Egyéb esetben lásd a hiba a "nem lehet törölni erőforrás beágyazott erőforrások törlése előtt."
+## <a name="cant-delete-experimentation-account"></a>Kísérletezési fiók nem törölhető
+Parancssori felület segítségével-Kísérletezési fiók törlése, de törölni kell ezeket gyermek munkaterületeken gyermek projektek és a gyermek munkaterületek először. Jelenik meg a hiba "nem lehet törölni erőforrás beágyazott erőforrások törlése előtti."
 
 ```azure-cli
 # delete a project
-$ az ml project delete -g <resource group name> -a <experimentation account name> -w <worksapce name> -n <project name>
+$ az ml project delete -g <resource group name> -a <experimentation account name> -w <workspace name> -n <project name>
 
 # delete a workspace 
-$ az ml workspace delete -g <resource group name> -a <experimentation account name> -n <worksapce name>
+$ az ml workspace delete -g <resource group name> -a <experimentation account name> -n <workspace name>
 
 # delete an experimentation account
 $ az ml account experimentation delete -g <resource group name> -n <experimentation account name>
 ```
 
-A projektek és a munkaterületet üzemeltető alkalmazásból származó munkaterületek is törli.
+A projektek és a-munkaterületek a Workbench alkalmazásban is törölheti.
 
 ## <a name="cant-open-file-if-project-is-in-onedrive"></a>Fájl nem nyitható meg, ha a projekt a onedrive-on
-Ha Windows 10 alá esik Creators frissítést, és a projekt egy, a onedrive vállalati verzió leképezett helyi mappában jön létre, előfordulhat, hogy nem nyitható meg minden olyan fájlt a munkaterületre. Node.js kód sikertelen lesz, a onedrive vállalati verzió mappában a alá esik Creators frissítés által bevezetett programhiba okozza. A hiba lesz kijavítva, amint a Windows Update, de addig, nem hozzon létre projekteket a onedrive vállalati verzió mappában.
+Ha Windows 10 Fall Creators Update rendelkezik, és a projekt létrehozása a onedrive vállalati verzió leképezett egy helyi mappába, előfordulhat, hogy minden olyan fájlt, nem tudja megnyitni a workbenchben. A node.js-kódot egy OneDrive-mappában sikertelen okozó Fall Creators Update bevezetett egy hiba miatt nem lehetséges. A bejelentett hiba lesz kijavítva, hamarosan Windows Update, de addig, meg nem hozható létre a OneDrive-mappában.
 
-## <a name="file-name-too-long-on-windows"></a>A fájlnév túl hosszú a Windows rendszeren
-Ha Windows munkaterületet használja, mutatjuk be a alapértelmezett maximális 260 karakteres fájl neve maximális hossz, amely "a rendszer nem találja a megadott elérési út" hibaként surface sikerült. Egy beállításkulcs-érték engedélyezi sokkal hosszabb fájl elérési útja módosítható. Felülvizsgálati [Ez a cikk](https://msdn.microsoft.com/library/windows/desktop/aa365247%28v=vs.85%29.aspx?#maxpath) beállításával kapcsolatos további részletekért a _MAX_PATH_ beállításkulcsot.
+## <a name="file-name-too-long-on-windows"></a>A fájlnév túl hosszú. a Windows
+Ha a Workbench Windows használ, mutatjuk be a alapértelmezett legfeljebb 260 karakterből álló fájl neve hosszra vonatkozó korlátot, amelyek – egy "a rendszer nem találja a megadott elérési út" hiba surface sikerült. Módosíthatja a beállításkulcsot, hogy sokkal hosszabb elérési útja és neve. Felülvizsgálat [Ez a cikk](https://msdn.microsoft.com/library/windows/desktop/aa365247%28v=vs.85%29.aspx?#maxpath) beállításával kapcsolatos további részletekért a _MAX_PATH_ beállításkulcsot.
 
-## <a name="interrupt-cli-execution-output"></a>Parancssori végrehajtás kimenetének megszakítási
-Ha egy kísérletezés, futtatni használatával indítsa el `az ml experiment submit` vagy `az ml notebook start` és a kimeneti megszakítási szeretné: 
-- A Windows használja a Ctrl + Break billentyűkombinációt a billentyűzet
-- A macOS használja a Ctrl-c kiszolgálóra.
+## <a name="interrupt-cli-execution-output"></a>Parancssori végrehajtás kimenetének megszakítás
+Ha elindít egy Kísérletezési Futtatás használatával `az ml experiment submit` vagy `az ml notebook start` és a kimeneti megszakítási szeretné: 
+- A Windows használja a Ctrl-Break billentyűkombinációt a billentyűzet
+- MacOS rendszeren használja a Ctrl-c-hez
 
-Vegye figyelembe, hogy ez csak megzavarja a kimeneti adatfolyamba, a parancssori ablakban. Azt nem ténylegesen leállíthat feladatot végrehajtott. Ha meg kívánja szakítani a folyamatban lévő feladat, `az ml experiment cancel -r <run_id> -t <target name>` parancsot.
+Vegye figyelembe, hogy ez csak megzavarja a kimeneti adatfolyamba, a parancssori felület ablakában. Ez nem ténylegesen állítja le egy feladatot, amely folyamatban van. Ha szeretné megszakítani egy folyamatban lévő feladatot, használja a `az ml experiment cancel -r <run_id> -t <target name>` parancsot.
 
-A Windows rendszerű számítógépek, amelyeken nincs szünet kulcs billentyűzetek a lehetséges ilyen például a Fn-B, Ctrl-Fn-B vagy Fn + ESC billentyűkombinációt. A hardver gyártójának dokumentációjából tájékozódhat meghatározott billentyűkombináció.
+Lehetséges alternatívák Windows a számítógépeken, amelyeken nincs telepítve/csere típusú kulcs billentyűzetek, például a Fn-B, a Ctrl-Fn-B vagy a Fn + Esc billentyűkombinációt. A hardver gyártójának dokumentációjában talál egy adott billentyűkombinációt.
 
-## <a name="docker-error-read-connection-refused"></a>Docker hiba "olvasható: Kapcsolat elutasítva"
-Végrehajtása egy helyi Docker-tároló, időnként megjelenhet a következő hibával: 
+## <a name="docker-error-read-connection-refused"></a>Docker hiba "olvasása: Kapcsolat elutasítva"
+Amikor végrehajtása helyi Docker-tárolóban, néha jelenhetnek meg a következő hibát: 
 ```
 Get https://registry-1.docker.io/v2/: 
 dial tcp: 
@@ -159,50 +159,50 @@ lookup registry-1.docker.io on [::1]:53: read udp [::1]:49385->[::1]:53:
 read: connection refused
 ```
 
-A Docker DNS-kiszolgáló módosítása megoldhatja `automatic` rögzített értékre `8.8.8.8`.
+A Docker a DNS-kiszolgáló módosításával javíthassuk azt `automatic` rögzített értékre `8.8.8.8`.
 
 ## <a name="remove-vm-execution-error-no-tty-present"></a>Távolítsa el a virtuális gép végrehajtási hiba "nincs jelen tty"
-Egy Docker-tároló egy távoli számítógépen Linux elleni végrehajtásakor léphetnek fel a következő hibaüzenet:
+Docker-tárolóban egy távoli Linux gépen elleni végrehajtásakor akkor léphetnek fel a következő hibaüzenetet kapja:
 ```
 sudo: no tty present and no askpass program specified.
 ``` 
-Ez akkor fordulhat elő, ha az Azure portál segítségével módosíthatja az Ubuntu Linux virtuális gép gyökér szintű jelszavát. 
+Ez akkor fordulhat elő, ha az Azure portal használatával egy Ubuntu Linux virtuális gép gyökérszintű jelszavát módosítani. 
 
-Az Azure Machine Learning-munkaterület a távoli állomáson futtatásához jelszó nélküli sudoers hozzáférésre van szüksége. Ez a legegyszerűbb módja, hogy használjon _visudo_ (Előfordulhat, hogy a fájl esetén létrehozhat nem létezik) a következő fájl szerkesztése:
+Az Azure Machine Learning Workbench működéséhez szükséges jelszó nélküli sudoers távoli gazdagépeken futnak. Ennek legegyszerűbb módja az, hogy használja _visudo_ (Előfordulhat, hogy létrehozza a fájlt, ha még nem létezik) a következő fájl szerkesztése:
 
 ```
 $ sudo visudo -f /etc/sudoers
 ```
 
 >[!IMPORTANT]
->Fontos, hogy a fájl szerkesztése _visudo_ és nem egy másik parancsba is. _visudo_ automatikusan ellenőrzi az szintaxis a összes sudo olyan konfigurációs fájlt, és szintaktikailag helyes sudoers fájl létrehozásához hiba is kizárhatja sudo.
+>Fontos, hogy a fájl szerkesztése _visudo_ , és nem egy másik parancsba. _visudo_ automatikusan szintaxis ellenőrzi, minden sudo konfigurációs fájlok, és a egy szintaktikailag helyes sudoers fájlban elmulasztása is kizárhatja a sudo.
 
-Szúrja be a következő sort a fájl végén:
+Illessze be a következő sort a fájl végén:
 
 ```
 username ALL=(ALL) NOPASSWD:ALL
 ```
 
-Ha _felhasználónév_ Azure Machine Learning-munkaterület nevét a távoli állomás bejelentkezni fogja használni.
+Ahol _felhasználónév_ Azure Machine Learning Workbench nevét fogja használni, jelentkezzen be a távoli gazdagépen.
 
-A sor #includedir után kell következnie "/ etc/sudoers.d", ellenkező esetben azt felülbírálható egy másik szabálynak.
+A sor #includedir után kell következnie "/ etc/sudoers.d", ellenkező esetben azt felülírható egy másik szabállyal.
 
-Ha egy bonyolultabb sudo-konfigurációt, érdemes lehet dokumentációjában sudo Ubuntu érhető el itt: https://help.ubuntu.com/community/Sudoers
+Ha rendelkezik egy összetettebb sudo konfigurációját, érdemes dokumentációjában sudo Ubuntu elérhető itt: https://help.ubuntu.com/community/Sudoers
 
-A fenti hiba is előfordulhat, ha nem használja az Ubuntu-alapú Linux virtuális gép az Azure-ban egy végrehajtási célként. Távoli végrehajtás Ubuntu alapú Linux virtuális gép csak támogatott. 
+A fenti hiba is történhet meg, ha nem használ egy Ubuntu-alapú Linux rendszerű virtuális gép az Azure-ban egy végrehajtási célként. Csak támogatott Ubuntu-alapú Linux rendszerű virtuális gép távoli végrehajtás céljából. 
 
-## <a name="vm-disk-is-full"></a>Virtuálisgép-lemez megtelt
-Alapértelmezés szerint új Linux virtuális gép létrehozása az Azure nyílik meg a 30-GB lemezterület az operációs rendszerhez. Alapértelmezés szerint a docker-motorhoz húzza lefelé képek és futó tárolók ugyanazt a lemezt használ. Ez töltheti fel az operációsrendszer-lemezképet, és a "Virtuális gép lemez van teljes" hibát látja, ha ez történik.
+## <a name="vm-disk-is-full"></a>Virtuálisgép-lemez megtelt.
+Alapértelmezés szerint az Azure-ban, egy új Linux rendszerű virtuális gép létrehozásakor kap egy 30 GB-os lemezt az operációs rendszer. Alapértelmezés szerint a docker-motor le rendszerképek lekérése és a futó tárolók ugyanazt a lemezt használja. Ez töltheti fel az operációsrendszer-lemez és a egy "Virtuális gép lemez van teljes" hibaüzenetet látja, ha ez történik.
 
-A gyorsjavítást, hogy távolítsa el az összes Docker-lemezképek, már nem használja. A következő Docker parancs éppen ez hajtja végre. (Természetesen kell SSH-ból a virtuális gép egy bash rendszerhéj a Docker parancs végrehajtásához.)
+A gyorsjavítás, hogy távolítsa el az összes Docker-rendszerképeket, már nem használhatók. A következő parancsot a Docker hajtja végre ezt. (Természetesen kell SSH-t a virtuális Gépet annak érdekében, hogy hajtsa végre a Docker parancsot egy bash rendszerhéjból.)
 
 ```
 $ docker system prune -a
 ```
 
-Is hozzá adatlemezt, majd konfigurálja a adatlemez lemezképek tárolásához használandó Docker-motorhoz. Itt [adatlemez hozzáadása](https://docs.microsoft.com/azure/virtual-machines/linux/add-disk). Követően [módosítása, ahol a Docker tárolja a képek](https://forums.docker.com/t/how-do-i-change-the-docker-image-installation-directory/1169).
+Adatlemez hozzáadása is, és konfigurálja a Docker-motor az adatlemezt a rendszerképek tárolására használandó. Íme [adatlemez hozzáadása](https://docs.microsoft.com/azure/virtual-machines/linux/add-disk). Ezután [módosítása, ahol a Docker tárolja a lemezképeket](https://forums.docker.com/t/how-do-i-change-the-docker-image-installation-directory/1169).
 
-Vagy, bővítheti az operációsrendszer-lemezképet, és nem kell touch Docker motor konfigurációját. Itt [hogyan bővítheti az operációsrendszer-lemezképet](https://docs.microsoft.com/azure/virtual-machines/linux/expand-disks).
+Vagy bővítheti az operációsrendszer-lemez, és nem kell touch Docker engine-konfigurációját. Íme [operációsrendszer-lemez kibontása hogyan](https://docs.microsoft.com/azure/virtual-machines/linux/expand-disks).
 
 ```azure-cli
 # Deallocate VM (stopping will not work)
@@ -219,40 +219,40 @@ $ az vm start --resource-group myResourceGroup  --name myVM
 ```
 
 ## <a name="sharing-c-drive-on-windows"></a>A Windows a C meghajtó megosztása
-Ha végrehajtás alatt álló helyi Docker-tároló a Windows, a beállítás `sharedVolumes` való `true` a a `docker.compute` a fájl `aml_config` végrehajtási teljesítményének. Azonban ehhez a C meghajtó megosztja a _Docker a Windows eszköz_. Ha nem tudja megosztani a C meghajtó, próbáljon a következő tippek:
+Ha futtatja a Windows helyi Docker-tárolóban, a beállítás `sharedVolumes` való `true` a a `docker.compute` fájlt `aml_config` végrehajtási teljesítményének. Azonban ez igényli a C meghajtó megoszt a _Docker a Windows-eszköz_. Ha nem tudja megosztani a C meghajtó, próbálja meg a következő tippeket:
 
-* Ellenőrizze a osztozik a C meghajtó használata a Fájlkezelőből
-* Nyissa meg a hálózati adapterre vonatkozó beállításai és eltávolítása/újratelepítése "Fájl és nyomtatómegosztás Microsoft Networkshöz" vEthernet a
-* Nyissa meg a docker-beállítások és a docker beállítások belül a C meghajtó
-* A Windows-jelszó módosítása hatással a megosztást. Nyissa meg a Fájlkezelőt, ossza meg újra a C meghajtó, és adja meg az új jelszót.
-* Tűzfallal kapcsolatos probléma esetleg felmerülő is, a C meghajtó megosztása Docker tett kísérlet során. Ez [Stack Overflow post](http://stackoverflow.com/questions/42203488/settings-to-windows-firewall-to-allow-docker-for-windows-to-share-drive/43904051) hasznos lehet.
-* Tartományi hitelesítő adatok használatával, a C meghajtó megosztásakor a megosztás működése leáll a hálózatokon, ahol a tartományvezérlő nem érhető el (például otthoni hálózathoz, a nyilvános Wi-Fi stb.) a. További információkért lásd: [a feladás egy vagy több](https://blogs.msdn.microsoft.com/stevelasker/2016/06/14/configuring-docker-for-windows-volumes/).
+* Ellenőrizze a fájlkezelő használata a C meghajtó megosztása
+* Nyissa meg a hálózati adapter beállításai, és távolítsa el/telepítse újra a "Fájl és a nyomtató Microsoft Networkshöz" vEthernet a
+* Nyissa meg a docker-beállításait, és megoszthatja a C meghajtó a docker-beállítások
+* A Windows-jelszó módosítása hatással a megosztást. Nyissa meg a Fájlkezelőt, és újra megoszthatja a C meghajtó adja meg az új jelszót.
+* Előfordulhat, hogy is tűzfal problémával találkozik a C meghajtó megosztásához a docker használatával tett kísérlet közben. Ez [Stack Overflow post](http://stackoverflow.com/questions/42203488/settings-to-windows-firewall-to-allow-docker-for-windows-to-share-drive/43904051) hasznos lehet.
+* Tartományi hitelesítő adatok használata a C meghajtó megosztásakor a megosztás működése leáll, a tartományvezérlő nem érhető el (például otthoni hálózathoz, a nyilvános Wi-Fi stb.) a hálózatokon. További információkért lásd: [ebben a bejegyzésben](https://blogs.msdn.microsoft.com/stevelasker/2016/06/14/configuring-docker-for-windows-volumes/).
 
-A megosztási problémát, a kis teljesítményt, úgy, hogy a is elkerülheti `sharedVolumne` való `false` a a `docker.compute` fájl.
+Elvégezve is elkerülheti a megosztási problémát, kisebb teljesítményt, beállításával `sharedVolumne` való `false` a a `docker.compute` fájlt.
 
-## <a name="wipe-clean-workbench-installation"></a>Tisztán munkaterület törlése
-Általában nem kell ehhez. De ha Ön kitakarítása tiszta telepítés, a lépések a következők:
+## <a name="wipe-clean-workbench-installation"></a>Workbench tiszta telepítés törlése
+Általában nem kell ehhez. Azonban abban az esetben, akkor törölnie kell tiszta telepítés, a lépések a következők:
 
 - Windows rendszeren:
-  - Először ellenőrizze, hogy használja _programok telepítése és törlése_ kisalkalmazást a _Vezérlőpult_ eltávolítása a _Azure Machine Learning-munkaterület_ alkalmazás bejegyzést.  
+  - Először győződjön meg arról, hogy használja-e _programok telepítése és_ kisalkalmazást a _Vezérlőpult_ eltávolítása a _Azure Machine Learning Workbench_ kérelmet-bejegyzés.  
   - Ezután töltse le és futtassa az alábbi parancsfájlok egyikét:
-    - [Windows parancssori parancsfájl](https://github.com/Azure/MachineLearning-Scripts/blob/master/cleanup/cleanup_win.cmd).
-    - [A Windows PowerShell-parancsfájl](https://github.com/Azure/MachineLearning-Scripts/blob/master/cleanup/cleanup_win.ps1). (Futtatásához szükséges `Set-ExecutionPolicy Unrestricted` egy emelt jogosultsági szintű PowerShell ablakban, a parancsfájl futtatása előtt.)
-- A macOS:
-  - Most töltse le és futtassa a [macOS bash héjparancsfájlt](https://github.com/Azure/MachineLearning-Scripts/blob/master/cleanup/cleanup_mac.sh).
+    - [Windows parancssori parancsprogram](https://github.com/Azure/MachineLearning-Scripts/blob/master/cleanup/cleanup_win.cmd).
+    - [Windows PowerShell-parancsprogram](https://github.com/Azure/MachineLearning-Scripts/blob/master/cleanup/cleanup_win.ps1). (Előfordulhat, hogy futtatni kell `Set-ExecutionPolicy Unrestricted` emelt szintű jogosultságokkal a PowerShell ablakban a parancsfájl futtatása előtt.)
+- MacOS rendszeren:
+  - Csak töltse le és futtassa a [macOS bash héjparancsfájlt](https://github.com/Azure/MachineLearning-Scripts/blob/master/cleanup/cleanup_mac.sh).
 
-## <a name="azure-ml-using-a-different-python-location-than-the-azure-ml-installed-python-environment"></a>Egy másik python hely, mint az Azure ML használata az Azure ML telepítve python-környezetben
-Azure Machine Learning munkaterület legutóbbi módosítása miatt a felhasználók tapasztalhatja, hogy helyi futtatása a python-környezetben telepítette az Azure ML-munkaterület többé nem mutat. Ez akkor fordulhat elő, ha a felhasználó rendelkezik a számítógépen egy másik python-környezetben, és a "Python" elérési út értéke környezet mutassanak. Azure ML munkaterület használatához telepítve a Python-környezetben, kövesse az alábbi lépéseket:
-- Keresse meg a aml_config mappában a projekt legfelső szintű local.compute fájlját.
-- Módosítsa a "pythonLocation" változó, úgy, hogy a fizikai elérési út Azure ML-munkaterület mutasson telepítve python-környezetben. Az elérési út kétféleképpen szerezheti be:
-    - Az Azure ML python hely található a %localappdata%\AmlWorkbench\python\python.exe
-    - Nyissa meg a következő parancsot az Azure ML munkaterület, a parancssorba írja be a python, sys.exe importálása, sys.executable futtatásához és az elérési út beolvasása innen. 
+## <a name="azure-ml-using-a-different-python-location-than-the-azure-ml-installed-python-environment"></a>Azure gépi tanulás, egy másik python helyen található, mint az Azure ML segítségével telepítve van a python-környezetet
+Felhasználók miatt egy friss változás az Azure Machine Learning Workbenchben, Észreveheti, hogy helyi futtatása nem mutat az Azure ML Workbench már telepítette a python-környezetet. Ez akkor fordulhat elő, ha a felhasználó rendelkezik a számítógépen telepítve van egy másik python-környezetet, és a "Python" elérési út, mutasson a környezethez van beállítva. Az Azure ML Workbench használatához telepítve a Python-környezetet, kövesse az alábbi lépéseket:
+- Nyissa meg a mappát a projekt gyökérkönyvtárában aml_config local.compute fájlt.
+- Módosítsa a "pythonLocation" változó fizikai elérési útját az Azure ML workbench átirányítása telepített python-környezetet. Ezt az elérési utat kétféleképpen kaphat:
+    - Az Azure Machine Learning python-hely található %localappdata%\AmlWorkbench\python\python.exe
+    - az Azure Machine Learning Workbench alkalmazásban nyissa meg a cmd, a parancssorba írja be a python, sys.exe importálása, sys.executable futtatása és onnan az elérési út lekérése. 
 
 
 
 ## <a name="some-useful-docker-commands"></a>Néhány hasznos Docker-parancsok
 
-Íme néhány hasznos Docker parancsokat:
+Íme néhány hasznos Docker-parancsokat:
 
 ```sh
 # display all running containers

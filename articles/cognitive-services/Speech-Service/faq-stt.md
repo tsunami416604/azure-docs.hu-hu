@@ -9,12 +9,12 @@ ms.component: custom-speech
 ms.topic: article
 ms.date: 06/11/2018
 ms.author: panosper
-ms.openlocfilehash: 31515d6867fc5524df1b081932dd2a28b0cf989c
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 0a30cce92de4b96b7dc0d29ce12f409df3e895df
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44022158"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44721880"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Beszédfelismerés – gyakori kérdések
 
@@ -71,6 +71,10 @@ Lépjen kapcsolatba velünk, ha szüksége van egy nagyobb méreteket.
 **K: van saját naplózott kérések?**
 
 **A**: választhat, hogy egy nyomkövetést kikapcsolhatják a központi telepítés létrehozásakor. Ezen a ponton nincs hang- vagy beszédátírás bekerülnek a naplóba. Ellenkező esetben kérelmek általában jelentkezett be az Azure-ban biztonságos tárolására. 
+
+**K: a kérelmek szabályozva van?**
+
+**A**: A REST API-25, 5 másodpercenként kérelmek korlátozza. Részletek tekintheti meg az oldalak [beszédfelismerés](speech-to-text.md). 
 
 Ha további adatvédelmi megfontolások, amelyek nem engedik a custom Speech service használatával, lépjen kapcsolatba a támogatási csatornáit egyikét.
 

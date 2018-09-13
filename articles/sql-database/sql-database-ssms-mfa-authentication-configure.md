@@ -1,67 +1,70 @@
 ---
-title: A többtényezős hitelesítést - Azure SQL |} Microsoft Docs
-description: Útmutató az SQL-adatbázis és az SQL Data Warehouse szolgáltatáshoz az SSMS Multi-Factored-hitelesítés használatára.
+title: Konfigurálja a multi-factor authentication – Azure SQL |} A Microsoft Docs
+description: Útmutató az ssms-ben az SQL Database és az SQL Data Warehouse Multi-Factored hitelesítést használ.
 services: sql-database
 author: GithubMirek
 manager: craigg
 ms.service: sql-database
+ms.prod_service: sql-database, sql-data-warehouse
 ms.custom: security
 ms.topic: conceptual
-ms.date: 04/01/2018
+ms.date: 06/13/2018
 ms.author: mireks
-ms.openlocfilehash: 93c1548bfbb229140db8bbfc22c3fd198402dd5d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.reviewer: vanto
+ms.openlocfilehash: 504b20dfddb5984c17bba9842fbc1a08671c4175
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34650281"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44719035"
 ---
-# <a name="configure-multi-factor-authentication-for-sql-server-management-studio-and-azure-ad"></a>Az SQL Server Management Studio és az Azure AD többtényezős hitelesítés beállítása
+# <a name="configure-multi-factor-authentication-for-sql-server-management-studio-and-azure-ad"></a>Az SQL Server Management Studio és az Azure AD multi-factor authentication konfigurálása
 
-Ez a témakör bemutatja, hogyan használható az Azure Active Directory többtényezős hitelesítés (MFA) az SQL Server Management Studio. Az Azure AD MFA használható SSMS vagy SqlPackage.exe Azure SQL Database és az Azure SQL Data warehouse-ba történő csatlakozás során.
+Ez a témakör bemutatja, hogyan használható az Azure Active Directory többtényezős hitelesítés (MFA) az SQL Server Management Studióval. Az Azure AD MFA használható, amikor ssms-ben vagy az SqlPackage.exe csatlakozik Azure [SQL Database](sql-database-technical-overview.md) és [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md). Azure SQL Database a multi-factor authentication szolgáltatás áttekintését lásd: [univerzális hitelesítés az SQL Database és az SQL Data warehouse-ba (többtényezős hitelesítés támogatása SSMS)](sql-database-ssms-mfa-authentication.md).
 
-Többtényezős hitelesítés az Azure SQL Database áttekintését lásd: [univerzális hitelesítés használata az SQL-adatbázis és az SQL Data Warehouse (többtényezős hitelesítés támogatása SSMS)](sql-database-ssms-mfa-authentication.md).
+> [!NOTE]
+> Ez a témakör az Azure SQL Server-kiszolgálókra, valamint az Azure SQL Serveren létrehozott SQL Database- és SQL Data Warehouse-adatbázisokra vonatkozik. Az egyszerűség kedvéért a jelen témakörben az SQL Database és az SQL Data Warehouse megnevezése egyaránt SQL Database.
 
 ## <a name="configuration-steps"></a>Konfigurációs lépések
 
-1. **Egy Azure Active Directory konfigurálása** – további információért lásd: [az Azure AD-címtár felügyelete](https://msdn.microsoft.com/library/azure/hh967611.aspx), [a helyszíni identitások integrálása az Azure Active Directoryval](../active-directory/active-directory-aadconnect.md), [ Saját tartománynév hozzáadása az Azure AD](https://azure.microsoft.com/blog/2012/11/28/windows-azure-now-supports-federation-with-windows-server-active-directory/), [Microsoft Azure mostantól támogatja a Windows Server Active Directory összevonási](https://azure.microsoft.com/blog/2012/11/28/windows-azure-now-supports-federation-with-windows-server-active-directory/), és [kezelése Windows PowerShell használatával az Azure AD](https://msdn.microsoft.com/library/azure/jj151815.aspx).
-2. **Többtényezős hitelesítés beállítása** – részletes ismertetését lásd: [Mi az Azure multi-factor Authentication?](../active-directory/authentication/multi-factor-authentication.md), [feltételes hozzáférést (többtényezős hitelesítés) az Azure SQL adatbázishoz és Adatraktárhoz](sql-database-conditional-access.md). (Teljes feltételes hozzáférés szükséges egy prémium szintű Azure Active Directory (Azure AD). Korlátozott MFA érhető el a szabványos Azure AD-val.)
-3. **Konfigurálja az SQL Database vagy az SQL Data Warehouse az Azure AD-alapú hitelesítés** – részletes ismertetését lásd: [csatlakozás az SQL Database vagy az SQL Data Warehouse által használata Azure Active Directory-hitelesítéssel](sql-database-aad-authentication.md).
-4. **Töltse le a szolgáltatáshoz az SSMS** – az ügyfélszámítógépen, a legújabb SSMS letöltését [töltse le az SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx). Az összes funkcióját ebben a témakörben használhat legalább július 2017, 17.2 verziója.  
+1. **Egy Azure Active Directory konfigurálása** – további információkért lásd: [az Azure AD-címtár felügyelete](https://msdn.microsoft.com/library/azure/hh967611.aspx), [a helyszíni identitások integrálása az Azure Active Directory](../active-directory/active-directory-aadconnect.md), [ A saját tartománynév hozzáadása az Azure ad-ben](https://azure.microsoft.com/blog/2012/11/28/windows-azure-now-supports-federation-with-windows-server-active-directory/), [Microsoft Azure mostantól támogatja a Windows Server Active Directoryval való összevonás](https://azure.microsoft.com/blog/2012/11/28/windows-azure-now-supports-federation-with-windows-server-active-directory/), és [kezelése Windows PowerShell-lel az Azure AD](https://msdn.microsoft.com/library/azure/jj151815.aspx).
+2. **Multi-factor Authentication** – részletes útmutatásért lásd: [Mi az Azure multi-factor Authentication?](../active-directory/authentication/multi-factor-authentication.md), [feltételes hozzáférés (többtényezős hitelesítés) az Azure SQL Database és az adatraktár](sql-database-conditional-access.md). (Teljes feltételes hozzáférés szükséges egy prémium szintű Azure Active Directory (Azure AD). Korlátozott MFA érhető el egy standard szintű Azure AD-vel.)
+3. **Az SQL Database vagy az SQL Data Warehouse az Azure AD-hitelesítés konfigurálása** – részletes útmutatásért lásd: [SQL Database vagy az SQL Data Warehouse által használatával az Azure Active Directory-hitelesítéssel csatlakozik](sql-database-aad-authentication.md).
+4. **Töltse le az SSMS** – az ügyfélszámítógépen, az ssms legújabb verziójának letöltése [töltse le az SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx). Az összes funkciót ebben a témakörben használja legalább 17.2 verziója 2017. július.  
 
-## <a name="connecting-by-using-universal-authentication-with-ssms"></a>Csatlakozás univerzális hitelesítési szolgáltatáshoz az SSMS
+## <a name="connecting-by-using-universal-authentication-with-ssms"></a>Csatlakozás szolgáltatáshoz az ssms-ben univerzális hitelesítéssel
 
-A következő lépések bemutatják, hogyan csatlakozás az SQL Database vagy az SQL Data Warehouse a legújabb szolgáltatáshoz az SSMS használatával.
+A következő lépések bemutatják, hogyan csatlakozhat az SQL Database vagy az SQL Data Warehouse az ssms legújabb verziójának használatával.
 
-1. Univerzális hitelesítés használatát, a csatlakozás a **kapcsolódás a kiszolgálóhoz** párbeszédpanelen jelölje ki **Active Directory - MFA-támogatással rendelkező univerzális**. (Ha megjelenik **Active Directory univerzális hitelesítési** SSMS legújabb verzióját a rendszer nem.)  
+1. Univerzális hitelesítéssel, érdemesebb a a **kapcsolódás a kiszolgálóhoz** párbeszédpanelen jelölje ki **Active Directory - MFA-támogatással rendelkező univerzális**. (Ha **Active Directory univerzális hitelesítéssel** Ön nem az SSMS legújabb verziója található.)  
    ![1mfa-universal-connect][1]  
-2. Fejezze be a **felhasználónév** be az Azure Active Directory hitelesítő adatokkal, formátumú `user_name@domain.com`.  
+2. Végezze el a **felhasználónév** be az Azure Active Directory hitelesítő adatokkal, a következő formátumban `user_name@domain.com`.  
    ![1mfa-universal-connect-user](./media/sql-database-ssms-mfa-auth/1mfa-universal-connect-user.png)   
-3. Ha a Vendég felhasználóként csatlakozik, akkor a **beállítások**, és a a **Connection tulajdonság** párbeszédpanelen adja a **AD tartomány neve vagy a bérlői azonosító** mezőbe. További információkért lásd: [univerzális hitelesítés használata az SQL-adatbázis és az SQL Data Warehouse (többtényezős hitelesítés támogatása SSMS)](sql-database-ssms-mfa-authentication.md).
+3. Ha meg vendégként kapcsolódik, akkor a **beállítások**, majd a a **kapcsolati tulajdonság** párbeszédpanelen adja a **AD tartomány felhasználónév vagy a bérlői azonosító** mezőbe. További információkért lásd: [univerzális hitelesítés az SQL Database és az SQL Data warehouse-ba (többtényezős hitelesítés támogatása SSMS)](sql-database-ssms-mfa-authentication.md).
    ![mfa-tenant-ssms](./media/sql-database-ssms-mfa-auth/mfa-tenant-ssms.png)   
-4. A szokásos módon SQL Database és az SQL Data Warehouse, meg kell nyomnia **beállítások** , és adja meg az adatbázis a **beállítások** párbeszédpanel megnyitásához. (Ha a kapcsolódó felhasználó a Vendég felhasználói (azaz joe@outlook.com), kell jelölje be a jelölőnégyzetet, és adja hozzá az aktuális Active Directory-tartomány nevét, vagy bérlői azonosító beállítások részeként. Lásd: [univerzális hitelesítés használata az SQL-adatbázis és az SQL Data Warehouse (többtényezős hitelesítés támogatása SSMS)]()(sql-adatbázis-ssms-mfa-authentication.md. Ezután kattintson a **Csatlakozás** gombra.  
-5. Ha a **jelentkezzen be a fiókba** párbeszédpanel jelenik meg, a fiók és az Azure Active Directory-identitás jelszavát. Nem kell jelszót szükség, ha egy felhasználó egy Azure AD-val összevont tartomány része.  
+4. A szokásos módon az SQL Database és SQL Data warehouse-ba, kattintson **beállítások** és adja meg az adatbázis a **beállítások** párbeszédpanel bezárásához. (Ha a csatlakoztatott felhasználó vendégfelhasználó (azaz joe@outlook.com), kell jelölje be a jelölőnégyzetet, és adja hozzá a jelenlegi AD-tartomány nevét, vagy bérlőazonosító beállítások részeként. Lásd: [univerzális hitelesítés az SQL Database és az SQL Data warehouse-ba (többtényezős hitelesítés támogatása SSMS)](sql-database-ssms-mfa-authentication.md). Ezután kattintson a **Csatlakozás** gombra.  
+5. Ha a **bejelentkezni a fiókjába** párbeszédpanel jelenik meg, adja meg a fiók és jelszó az Azure Active Directory-identitás. Jelszó nélküli nem szükséges, ha egy felhasználó része az Azure ad-vel összevont tartománynak.  
    ![2mfa-sign-in][2]  
 
    > [!NOTE]
-   > Egy olyan fiókkal, többtényezős Hitelesítést nem igénylő univerzális hitelesítéshez csatlakozás ezen a ponton. A felhasználók számára a többtényezős hitelesítés megkövetelése folytassa a következő lépésekkel:
+   > Egy olyan fiókkal, amely nem szükséges az MFA univerzális hitelesítéssel, a csatlakozás ezen a ponton. A felhasználóknak a többtényezős hitelesítés megkövetelése folytassa a következő lépéseket:
    >  
    
-6. Két többtényezős hitelesítés beállítása párbeszédpanel jelenhet meg. Egyetlen most művelet MFA rendszergazda függ, és ezért nem kötelező. Egy engedélyezve van az MFA-tartomány ezt a lépést néha nem előre definiált (például a tartomány megköveteli a felhasználóktól egy intelligens kártyák és PIN-kód használatára).  
-   ![3mfa-telepítő][3]  
-7. A második lehetséges párbeszédpanelen jelölje be a hitelesítési módszer adatait teszi egy alkalommal. A lehetséges beállításokat a rendszergazda által.  
+6. Két MFA beállítása párbeszédpanel jelenhet meg. Ezúttal egy művelet függ, hogy a beállítás az MFA-rendszergazda, és ezért előfordulhat, hogy ne legyen kötelező. Tartomány MFA engedélyezve van ez a lépés néha nem előre meghatározott (például a tartomány felhasználóinak egy intelligens kártyák és PIN-kód szükséges).  
+   ![3mfa-telepítés][3]  
+7. A második lehetséges párbeszédpanel részletei a hitelesítési módszer kiválasztását teszi egy alkalommal. A lehetőségeket vannak konfigurálva, a rendszergazda által.  
    ![4mfa-verify-1][4]  
-8. Az Azure Active Directory a információkkal küld Önnek. Ha megkapta az ellenőrzőkódot, írja be azokat a **adja meg a megerősítési kódot** mezőbe, majd kattintson **jelentkezzen be a**.  
+8. Az Azure Active Directory, a jóváhagyási adatokat küld. Ha megkapta az ellenőrzőkódot, írja be azt a **adja meg az ellenőrző kód** mezőbe, majd kattintson a **jelentkezzen be a**.  
    ![5mfa-verify-2][5]  
 
-Ha ellenőrzés befejeződött, az SSMS csatlakozik, általában feltéve, hogy érvényes hitelesítő adatokat és a tűzfalon a hozzáférést.
+Ellenőrzési befejeződése után az SSMS kapcsolódik, általában feltéve, hogy érvényes hitelesítő adatokat és a tűzfal hozzáférés.
 
 ## <a name="next-steps"></a>További lépések
 
-- Többtényezős hitelesítés az Azure SQL Database áttekintését lásd: az univerzális hitelesítési [SQL-adatbázis és az SQL Data Warehouse (többtényezős hitelesítés támogatása SSMS)](sql-database-ssms-mfa-authentication.md).  
-- Az adatbázishoz való hozzáférés engedélyezése mások: [SQL adatbázis-hitelesítés és engedélyezés: hozzáférés biztosítása](sql-database-manage-logins.md)  
-- Győződjön meg arról, hogy mások a tűzfalon keresztül csatlakozhassanak: [az Azure portál használata az Azure SQL Database kiszolgálószintű tűzfal szabály konfigurálása](sql-database-configure-firewall-settings.md)  
-- Használata esetén **Active Directory - univerzális többtényezős hitelesítéssel** hitelesítés ADAL nyomkövetés elérhető kezdődő [SSMS 17.3](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms). Ki alapértelmezés szerint, ha bekapcsolja a ADAL nyomkövetési használatával a **eszközök**, **beállítások** menüben, a **Azure Services**, **Azure felhőbe**,  **ADAL kimeneti ablak nyomkövetési szint**, utána pedig engedélyezése **kimeneti** a a **nézet** menü. A nyomkövetési adatokat érhetők el a kimeneti ablakban lehetőséget választva **Azure Active Directory lehetőséget**.   
+- Azure SQL Database a multi-factor authentication szolgáltatás áttekintését lásd: univerzális hitelesítéssel rendelkező [SQL Database és az SQL Data warehouse-ba (többtényezős hitelesítés támogatása SSMS)](sql-database-ssms-mfa-authentication.md).  
+- Az adatbázishoz való hozzáférés biztosítása más: [SQL Database hitelesítése és engedélyezése: hozzáférés biztosítása](sql-database-manage-logins.md)  
+- Ellenőrizze, hogy mások csatlakozhatnak a tűzfalon: [konfigurálni egy Azure SQL Database kiszolgálószintű tűzfalszabályt az Azure portal használatával](sql-database-configure-firewall-settings.md)  
+- Használata esetén **Active Directory - univerzális az MFA** hitelesítés ADAL nyomkövetés kiadásától kezdve érhetőek el [SSMS 17.3](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms). Ki alapértelmezés szerint bekapcsolása ADAL nyomkövetésének használatával az **eszközök**, **beállítások** menü alatt **Azure-szolgáltatások**, **Azure felhő**,  **Nyomkövetési szint ADAL kimeneti ablak**, amely lehetővé teszi majd **kimeneti** a a **nézet** menü. A nyomkövetések érhetők el a kimeneti ablakban kiválasztásakor **Azure Active Directoryval opciót**.   
 
 
 [1]: ./media/sql-database-ssms-mfa-auth/1mfa-universal-connect.png

@@ -1,51 +1,51 @@
 ---
-title: Az Azure Machine Learning kísérletezhet szolgáltatás konfigurációs fájlok
-description: Ez a dokumentum az Azure ML kísérletezhet szolgáltatás konfigurációs beállításait részletezi.
+title: Az Azure Machine Learning-kísérletezés szolgáltatás konfigurációs fájlok
+description: Ez a dokumentum ismerteti az Azure Machine Learning-Kísérletezési szolgáltatás beállításai.
 services: machine-learning
 author: gokhanuluderya-msft
 ms.author: gokhanu
 manager: haining
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/28/2017
-ms.openlocfilehash: 1a4b6b803687b2c433ad94a54f076f23fe63c350
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 43bee297b917143c9014b28049c6dfa28727b757
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34831312"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35646416"
 ---
-# <a name="azure-machine-learning-experimentation-service-configuration-files"></a>Az Azure Machine Learning kísérletezhet szolgáltatás konfigurációs fájlok
+# <a name="azure-machine-learning-experimentation-service-configuration-files"></a>Az Azure Machine Learning-kísérletezés szolgáltatás konfigurációs fájlok
 
-A parancsfájl az Azure Machine Learning (Azure ML) munkaterület futtatásakor a végrehajtási viselkedése vezérli a fájlok a **aml_config** mappa. Ez a mappa a project mappa gyökere alatt áll. Fontos tudni, ezek a fájlok tartalmát optimálisan a végrehajtásra a kívánt eredmény elérése érdekében.
+Az Azure Machine Learning (az Azure ML) Workbench alkalmazásban egy szkript futtatásakor a végrehajtását viselkedését vezérli a fájlok a **aml_config** mappát. Ezt a mappát a projekt mappa gyökérkönyvtárában alatt áll. Fontos tudni, ezek a fájlok tartalmát optimálisan a végrehajtásához a kívánt eredmények elérése érdekében.
 
-Az alábbiakban a megfelelő fájlokat ebben a mappában:
+Az alábbiakban a kapcsolódó fájlokat ebben a mappában:
 - conda_dependencies.yml
 - spark_dependencies.yml
-- számítási fájljaira
+- COMPUTE fájljaira
     - \<számítási cél neve > .compute
 - Futtassa a konfigurációs fájlok
     - \<Futtassa a konfiguráció neve > .runconfig
 
 >[!NOTE]
->Általában egy számítási célfájl rendelkezik, és futtassa a konfigurációs fájl minden számítási cél hoz létre. Azonban létrehozhat egymástól függetlenül ezeket a fájlokat és számítási egyazon célobjektum mutató több futtatási konfigurációs fájlt.
+>Általában egy számítási tároló fájlt, és futtassa a konfigurációs fájlt az egyes számítási célnak hoz létre. Azonban hozzon létre külön ezeket a fájlokat, és több futtatási konfigurációs fájlt az azonos számítási célnak mutat.
 
 ## <a name="condadependenciesyml"></a>conda_dependencies.yml
-Ez a fájl egy [conda környezet fájl](https://conda.io/docs/using/envs.html#create-environment-file-by-hand) , amely megadja, hogy a Python-futtatókörnyezet verziója és a csomagok, amelyek elengedhetetlenek a kódot. Azure ML munkaterület parancsfájl egy Docker-tároló vagy a HDInsight-fürt hajt végre, amikor létrehoz egy [conda környezet](https://conda.io/docs/using/envs.html) a parancsfájl futtatásához. 
+Ez a fájl egy [conda-környezet fájl](https://conda.io/docs/using/envs.html#create-environment-file-by-hand) , amely meghatározza, hogy a Python-futtatókörnyezet verziója és a csomagok, amelyek a kód függ. Az Azure ML Workbench szkriptet egy Docker-tároló vagy a HDInsight-fürtön hajt végre, amikor létrehoz egy [conda-környezet](https://conda.io/docs/using/envs.html) a parancsfájl futtatását. 
 
-Ebben a fájlban adja meg, amelyet a parancsfájl végrehajtása a Python-csomagokat. Az Azure ML kísérletezhet szolgáltatás függőségek a listájának megfelelően conda környezete hoz létre. Az itt felsorolt csomagok elérhetőnek kell lennie a végrehajtó motorja csatornákon keresztül, mint:
+Ebben a fájlban adja meg a szkript végrehajtása van szüksége a Python-csomagokat. Az Azure Machine Learning-Kísérletezési szolgáltatás függőségek a listájának megfelelően conda-környezetet hoz létre. Az itt felsorolt csomagok elérhetőnek kell lennie a végrehajtó motor csatornákon keresztül például:
 
 * [continuum.io](https://anaconda.org/conda-forge/repo)
 * [PyPI](https://pypi.python.org/pypi)
-* a nyilvánosan elérhető végponton (URL)
-* vagy egy helyi fájl elérési útját
-* mások számára elérhető-e a végrehajtási motor
+* a nyilvánosan elérhető végpontot (URL)
+* vagy egy helyi fájlelérési út
+* mások a végrehajtó motor számára elérhető
 
 >[!NOTE]
->A HDInsight-fürtök futtatásakor Azure ML munkaterület környezetet hoz létre conda az adott futtatáshoz. Ez lehetővé teszi a különböző felhasználók különböző python-környezetek ugyanazon a fürtön futtatni.  
+>HDInsight-fürtön futó, az Azure Machine Learning Workbench az adott Futtatás olyan conda környezetet hoz létre. Ez lehetővé teszi a különböző felhasználóknak különböző python-környezetek ugyanazon a fürtön futnak.  
 
 Íme egy példa egy tipikus **conda_dependencies.yml** fájlt.
 ```yaml
@@ -70,13 +70,13 @@ dependencies:
      - C:\temp\my_private_python_pkg.whl
 ```
 
-Az Azure ML munkaterület a azonos conda környezetet használ újból összeállítani a lehető leghosszabbak nélkül a **conda_dependencies.yml** változatlan marad. Ha módosítja a függőségek azt fogja újraépítése a környezetben.
+Az Azure Machine Learning Workbench használja ugyanabban a conda-környezetben nélkül a lehető leghosszabbak újraépítése a **conda_dependencies.yml** változatlan marad. A környezet azt fogja újraépítése, ha módosítja a függőségek.
 
 >[!NOTE]
->Ha célozhat meg végrehajtásának _helyi_ számítási környezet **conda_dependencies.yml** fájl **nem** használt. A helyi Azure ML munkaterület Python környezetnek csomagfüggőségek kell manuálisan kell telepíteni.
+>Ha a futtatást a megcélzott _helyi_ számítási környezetet, **conda_dependencies.yml** fájl **nem** használt. Manuálisan telepíteni kell a helyi Azure ML Workbench Python-környezet csomagfüggőségek.
 
 ## <a name="sparkdependenciesyml"></a>spark_dependencies.yml
-Ez a fájl neve a Spark alkalmazás PySpark parancsfájlt és a külső csomagok, amelyek telepítve kell lennie. Egy nyilvános Maven-tárházat, valamint az adott Maven tárházak találhatók Spark csomagokat is megadható.
+Ezt a fájlt a Spark-alkalmazás nevét adja meg, egy PySpark-szkriptet és a Spark-csomagokat kell telepíteni. Megadhat egy nyilvános Maven tárházból, valamint az ilyen Maven tárházak tekintheti meg a Spark-csomagokat is.
 
 Például:
 
@@ -105,13 +105,13 @@ packages:
 ```
 
 >[!NOTE]
->Fürt paraméterek például munkavégző méret és -magok hangolása kell kísérhet "konfiguráció" című szakaszában a spark_dependecies.yml fájl 
+>Fürt paraméterek, például a feldolgozó mérete és a magok hangolása "konfiguráció" szakasz a spark_dependecies.yml fájlban kell belépni 
 
 >[!NOTE]
->Ha a parancsfájl Python-környezetben, amelyek végrehajtása *spark_dependencies.yml* fájlt a rendszer figyelmen kívül hagyja. Csak akkor, ha futtatja elleni Spark (vagy a Docker vagy HDInsight-fürtök) használható.
+>Ha a Python-környezetet, futtatja a szkriptet *spark_dependencies.yml* fájlt a rendszer figyelmen kívül hagyja. Csak akkor, ha a Spark (akár a Docker vagy a HDInsight-fürt) futtat szolgál.
 
-## <a name="run-configuration"></a>Futtassa a konfiguráció
-Adja meg az adott futtatási konfigurációját, a .compute fájlt és egy .runconfig kell. Ezek általában jönnek létre CLI parancs használatával. Klónozza a Kilépés azokat, nevezze át őket, és szerkeszthetők.
+## <a name="run-configuration"></a>Futtatási konfigurációt
+Adjon meg egy adott futtatási konfigurációt, szüksége van egy .compute fájlt és egy .runconfig. Ezek általában jönnek létre a CLI-parancsok használatával. Klónozza a kiépítettektől kilép, nevezze át őket, és szerkeszthetők.
 
 ```azurecli
 # create a compute target pointing to a VM via SSH
@@ -121,43 +121,43 @@ $ az ml computetarget attach remotedocker -n <compute target name> -a <IP addres
 $ az ml computetarget attach cluster -n <compute target name> -a <IP address or FQDN of HDI cluster> -u <username> -w <password> 
 ```
 
-Ezzel a paranccsal létrejön egy meghatározott számítási cél alapuló pár. Tegyük fel, a számítási célként elnevezett _PEL_. A parancs létrehozza _foo.compute_ és _foo.runconfig_ a a **aml_config** mappa.
+Ez a parancs két fájlt a megadott számítási célnak alapján hoz létre. Tegyük fel, a számítási célnak elnevezett _foo_. Ez a parancs létrehoz _foo.compute_ és _foo.runconfig_ a a **aml_config** mappát.
 
 >[!NOTE]
-> _helyi_ vagy _docker_ a futtatási konfigurációs fájlokat a következők tetszőleges nevet. Az Azure ML munkaterület ad hozzá, ez a két konfigurációk futtatását, amikor a felhasználók kényelme érdekében hozzon létre egy üres projektet. Átnevezheti "<run configuration name>.runconfig" projektsablon rendelkeznek, vagy hozzon létre újakat tetszőleges nevet a fájlok.
+> _helyi_ vagy _docker_ a futtatási konfigurációs fájljait tetszőleges nevet. Az Azure ML Workbench hozzáadja, ez a két futtatási konfigurációkat, a felhasználók kényelme érdekében üres projekt létrehozásakor. Átnevezheti "<run configuration name>.runconfig" fájlok, amelyek a projektsablon jár, vagy hozzon létre egy nevet, az újakat.
 
 ### <a name="compute-target-namecompute"></a>\<számítási cél neve > .compute
-_\<számítási cél neve > .compute_ fájl határozza meg a számítási cél a kapcsolat és konfigurációs információt. A név-érték párok listáját is. Az alábbiakban a támogatott beállítások:
+_\<számítási cél neve > .compute_ fájl kapcsolat és a konfigurációs adatait a számítási célnak adja meg. Ez a név-érték párok listáját. A támogatott beállítások a következők:
 
-**típus**: a számítási környezet típusú. Támogatott értékek a következők:
+**típus**: a számítási környezet típusát. Támogatott értékei a következők:
   - helyi
-  - Távoli
+  - távoli
   - Docker
   - remotedocker
   - fürt
 
-**baseDockerImage**: a Python/PySpark parancsfájl futtatásához használt a Docker-lemezképet. Az alapértelmezett érték _microsoft/mmlspark:plus-0.7.91_. Egy másik lemezképet is támogatja: _microsoft/mmlspark:plus-gpu-0.7.91_, amely hozzáférést biztosít a GPU gazdaszámítógépen (ha jelen a GPU).
+**baseDockerImage**: A Docker-rendszerképet használja a Python-/ PySpark-szkript futtatásához. Az alapértelmezett érték _microsoft/mmlspark:plus-0.7.91_. Egy kép is támogatja: _microsoft/mmlspark:plus-gpu-0.7.91_, amely hozzáférést biztosít a GPU gazdaszámítógépen (ha GPU található).
 
-**cím**: IP-cím vagy a teljes Tartománynevet (teljesen minősített tartománynevét) a virtuális gép vagy a HDInsight fürt átjárócsomópontjához.
+**cím**: IP-cím, vagy teljes tartománynév (teljesen minősített tartománynevét) a virtuális gép vagy HDInsight-fürt fő csomópontot.
 
-**felhasználónév**: az SSH felhasználónév a virtuális gép vagy a HDInsight-átjárócsomópont eléréséhez.
+**felhasználónév**: az SSH-felhasználónév a virtuális gép vagy a HDInsight fő csomópont eléréséhez.
 
-**jelszó**: az SSH-kapcsolat a titkosított jelszót.
+**jelszó**: A titkosított jelszót az SSH-kapcsolat számára.
 
-**sharedVolumes**: jelezze, hogy végrehajtó motorja kell használnia a Docker jelző megosztott kötet szolgáltatást, hogy küldje el a projektfájlok oda-vissza. Ez a jelző engedélyezve van a rendelkező felgyorsíthatja a végrehajtási óta Docker férhetnek hozzá projektek közvetlenül nélkül másolja őket. Célszerű beállítani _hamis_ hogy a Docker-motorhoz fut a Windows mennyiségi megosztása lehet, hogy a Windows a Docker flaky óta. Állítsa az értékét _igaz_ macOS vagy Linux rendszeren fut. Ha.
+**sharedVolumes**: jelzőjét, hogy jelezze, hogy végrehajtóprogramja kell használnia a Docker megosztott kötet funkció soubory projektu oda-vissza szállításra. Ez a jelző van kapcsolva kellene meggyorsíthatja a végrehajtási óta Docker férhet hozzá közvetlenül anélkül, hogy másolja őket kellene projektek. Célszerű beállítani _hamis_ hogy a Docker-motor fut-e a Windows mennyiségi megosztása a Docker a Windows lehet flaky óta. Állítsa be _igaz_ Ha macOS vagy Linux rendszeren fut.
 
-**nvidiaDocker**: ezt a jelzőt, ha beállítása _igaz_, ismerteti az Azure ML kísérletezhet szolgáltatás használatára _nvidia-docker_ parancsot, szemben a normál _docker_parancs, a Docker lemezkép elindításához. A _nvidia-docker_ motor lehetővé teszi, hogy a Docker-tároló hozzáférés GPU hardverre. A beállításra akkor szükség, ha azt szeretné, hogy a Docker-tároló GPU végrehajtási futtatásához. Csak a Linux-állomáshoz támogatja _nvidia-docker_. Például az Azure Linux-alapú DSVM részét képező _nvidia-docker_. _NVIDIA-docker_ mostantól nem támogatott a Windows.
+**nvidiaDocker**: ezt a jelzőt, ha a beállítása _igaz_, az Azure Machine Learning Kísérletezési szolgáltatás használatára utasítja _nvidia-docker_ parancsot, ellentétben a normál _docker_paranccsal, indítsa el a Docker-rendszerképet. A _nvidia-docker_ motor lehetővé teszi, hogy a hozzáférés GPU-hardveres a Docker-tárolót. A beállításra akkor szükség, ha szeretné futtatni a GPU-végrehajtás a Docker-tárolóban. Csak a Linux rendszerű gazdagép támogatja _nvidia-docker_. Ha például az Azure-ban a Linux-alapú DSVM tartalmaz _nvidia-docker_. _NVIDIA-docker_ jelen pillanatban nem támogatott a Windows.
 
-**nativeSharedDirectory**: Ez a tulajdonság meghatározza a alapkönyvtárának (például: _~/.azureml/share/_) számítási egyazon célobjektum futó fájlok is menteni ahhoz, hogy oszthatók meg. Ha ezt a beállítást használják egy Docker-tároló használatakor _sharedVolumes_ , meg kell igaz értékre. Ellenkező esetben végrehajtása meghiúsul.
+**nativeSharedDirectory**: Ez a tulajdonság határozza meg a alapkönyvtárának (például: _~/.azureml/share/_) szeretné fájlokat is menteni ahhoz, hogy kell-e osztva az azonos számítási célnak futtat. Ha ezt a beállítást használja a Docker-tároló az _sharedVolumes_ állítsa igaz értékre. Ellenkező esetben a végrehajtás sikertelen lesz.
 
-**userManagedEnvironment**: Ez a tulajdonság meghatározza, hogy a számítási cél közvetlenül kezeli a felhasználó vagy kísérleti szolgáltatáson keresztül felügyelt.  
+**userManagedEnvironment**: A tulajdonság határozza meg, hogy a számítási célnak közvetlenül a felhasználó által felügyelt vagy Kísérletezési szolgáltatás kezeli.  
 
-**pythonLocation**: Ez a tulajdonság meghatározza a python-futtatókörnyezet használatát a számítási célszámítógépen felhasználó program végrehajtásához helyét. 
+**pythonLocation**: Ez a tulajdonság esetében a számítási célnak felhasználó program végrehajtásához használható a python-futtatókörnyezet helyét adja meg. 
 
 ### <a name="run-configuration-namerunconfig"></a>\<Futtassa a konfiguráció neve > .runconfig
-_\<Futtassa a konfiguráció neve > .runconfig_ határozza meg, az Azure ML végrehajtási viselkedésének kipróbálásához. Konfigurálhatja a végrehajtási működését, például a nyomon követési futtatási előzményei, vagy mi számítási cél-és sok más használhatja. A végrehajtási környezet legördülő lista az Azure ML munkaterület asztali alkalmazás feltöltésére használatos olyan futtatási konfigurációs fájl nevét.
+_\<Futtassa a konfiguráció neve > .runconfig_ adja meg az Azure ML-kísérletezés végrehajtási viselkedése. Konfigurálhatja a végrehajtási működését, például a futtatási előzmények követési, vagy milyen számítási célként használandó sok más mellett. A futtatási konfigurációs fájlok nevét a végrehajtási környezet legördülő menüben, az Azure Machine Learning Workbench asztali alkalmazás feltöltésére szolgálnak.
 
-**ArgumentVector**: Ebben a szakaszban adja meg a parancsfájl futtatásához a végrehajtása és a parancsfájl paramétereit részeként. Például, ha vannak a következő példában a "<run configuration name>.runconfig" fájl 
+**ArgumentVector**: Ez a szakasz meghatározza a parancsfájl futtatásához a végrehajtási és a parancsfájl paramétereit részeként. Ha rendelkezik az alábbi kódrészlet például a "<run configuration name>.runconfig" fájl 
 
 ```
  "ArgumentVector":[
@@ -166,35 +166,35 @@ _\<Futtassa a konfiguráció neve > .runconfig_ határozza meg, az Azure ML vég
   - "-v" 
  ] 
 ```
-_"az ml kísérlet submit foo.runconfig"_ automatikusan futtatja a parancsot _myscript.py_ paraméter és a készletek 234 benyújtása fájl a--részletes jelzőt.
+_"az gépi tanulási kísérlet elküldése foo.runconfig"_ automatikusan futtatja a parancsot a _myscript.py_ fájl egy paraméterként és a csoportok 234 ad át a--részletes jelző.
 
-**Cél**: A paraméter nevét a _.compute_ fájlt, amely a _runconfig_ fájl hivatkozik. Általában mutat a _foo.compute_ fájlt, de szerkesztheti úgy, hogy egy másik számítási cél mutasson.
+**Cél**: ezt a paramétert annak a neve, a _.compute_ fájlt, amely a _runconfig_ fájl hivatkozik. Általában mutat a _foo.compute_ fájl, de szerkesztheti azt, hogy a különböző számítási céloknak mutasson.
 
-**Környezeti változók**: Ez a szakasz lehetővé teszi a felhasználók a környezeti változókat beállítani, azok futtatása. Felhasználó megadhatja a környezeti változók név-érték párok használatával a következő formátumban:
+**A környezeti változók**: Ez a szakasz lehetővé teszi a felhasználók környezeti változók beállítása a futtatások részeként. Felhasználói környezeti változók használatával név-érték párokat a következő formátumban adhatja meg:
 ```
 EnvironmentVariables:
   "EXAMPLE_ENV_VAR1": "Example Value1"
   "EXAMPLE_ENV_VAR2": "Example Value2"
 ```
 
-Ezek a környezeti változók felhasználói kód érhetők el. Például a Python kódját kiírja a "EXAMPLE_ENV_VAR" nevű környezeti változó
+Ezeket a környezeti változókat a felhasználó-code-ban elérhető lesz. Ha például a Python-kód jelenít meg a "EXAMPLE_ENV_VAR" nevű környezeti változó
 ```
 print(os.environ.get("EXAMPLE_ENV_VAR1"))
 ```
 
-**Keretrendszer**: Ez a tulajdonság határozza meg, ha Azure ML munkaterület kell nyissa meg a parancsfájl futtatása Spark munkamenetet. Az alapértelmezett érték _PySpark_. Állítsa az értékét _Python_ Ha nem futtatja a PySpark kód, amely segíthet a gyorsabb kisebb terhelés a feladat elindítása.
+**Keretrendszer**: Ez a tulajdonság határozza meg, ha az Azure ML Workbench indítsa el a szkript futtatásához egy Spark-munkamenetet. Az alapértelmezett érték _PySpark_. Állítsa be _Python_ nem futtatásakor PySpark-kód, amely megkönnyíti a gyorsabb, kisebb terhelés a feladat elindítása.
 
-**CondaDependenciesFile**: Ez a tulajdonság a fájlra mutat, amely meghatározza a conda környezet függőségeit a *aml_config* mappa. Ha beállítása _null_, az alapértelmezett mutat **conda_dependencies.yml** fájlt.
+**CondaDependenciesFile**: Ez a tulajdonság a fájlra mutat, amely meghatározza a conda környezet függőségeket a *aml_config* mappát. Ha beállítása _null_, az alapértelmezett mutat **conda_dependencies.yml** fájlt.
 
-**SparkDependenciesFile**: Ez a tulajdonság a fájlra mutat, amely meghatározza a külső függőségeit a **aml_config** mappa. Érték _null_ alapértelmezett és mutat, az alapértelmezett **spark_dependencies.yml** fájlt.
+**SparkDependenciesFile**: Ez a tulajdonság a fájlra mutat, amely meghatározza a Spark függőségeket a **aml_config** mappát. Értékre van állítva _null_ alapértelmezés szerint és azt az alapértelmezett mutat **spark_dependencies.yml** fájlt.
 
-**PrepareEnvironment**: ezt a tulajdonságot, ha beállítása _igaz_, közli az alapján, az első végrehajtása megadott conda függőségek conda környezet előkészítése a kísérleti szolgáltatást. Ez a tulajdonság csak egy Docker-környezet ellen végrehajtása esetén hatékony. Ez a beállítás nincs hatása, ha elleni futtat egy _helyi_ környezetben. 
+**PrepareEnvironment**: ezt a tulajdonságot, ha a beállítása _igaz_, arra utasítja a conda-függőségeket, a kezdeti futtatása részeként megadott alapján a conda-környezet előkészítése a Kísérletezési szolgáltatással. Ez a tulajdonság csak egy Docker-környezetben hajtja végre esetén érvényes. Ez a beállítás nem lesz hatása, ha futtat egy _helyi_ környezetben. 
 
-**TrackedRun**: Ez a jelző jelzi a kísérleti szolgáltatás Azure ML munkaterület előzmények infrastruktúra futtassa a Futtatás nyomon kell-e. Az alapértelmezett érték _igaz_. 
+**TrackedRun**: Ez a jelölő jelzi a Kísérletezési szolgáltatással hoztam létre e nyomon követni a Futtatás az Azure ML Workbenchben előzmények infrastruktúra futtatásához. Az alapértelmezett érték _igaz_. 
 
-**UseSampling**: _UseSampling_ meghatározza, hogy használja-e az aktív mintaként használható adathalmazt adatforrások futtatáshoz. Ha beállítása _hamis_, adatforrások betöltési, és használja a teljes adatokat olvasni az adattárból. Ha beállítása _igaz_, aktív minták szolgálnak. A felhasználók használhatják a **DataSourceSettings** adhatja meg, mely adott mintaként használható adathalmazt Ha bírálja felül az aktív minta szeretnék használni. 
+**UseSampling**: _UseSampling_ Megadja, hogy használja-e az aktív mintaadatkészletek adatforrásokhoz tartozó a futtatáshoz. Ha beállítása _hamis_, adatforrások fogadni, és használja a teljes adatokat olvasni az adatokat az adattárból. Ha beállítása _igaz_, aktív mintát használják. A felhasználók használhatják a **DataSourceSettings** mely adott mintaadatkészletek használhat, ha az aktív minta felülbírálása szeretnének megadásához. 
 
-**DataSourceSettings**: Ez a konfigurációs szakasz megadja az adatforrás-beállítások. Ebben a szakaszban a felhasználó határozza meg, melyik meglévő adatok mintát eredményez, amely egy adott adatforrást a Futtatás részeként használatos. 
+**DataSourceSettings**: Ez a konfiguráció szakasz meghatározza az adatforrás-beállítások. Ebben a szakaszban a felhasználó adja meg, melyik meglévő adatok minta egy adott adatforrást a Futtatás részeként használatos. 
 
 A következő konfigurációs beállítás megadja, hogy "MySample" nevű minta "MyDataSource" nevű adatforrás
 ```
@@ -204,18 +204,18 @@ DataSourceSettings:
     Sample: MySample
 ```
 
-**DataSourceSubstitutions**: adatok forrás helyettesítések is használható, ha a felhasználó szeretne váltani egy adatforrás másik a programkód módosítása nélkül. Például felhasználók átválthatnak mintát le, a helyi fájlból az Azure Blob tárolja az adatforrás-hivatkozás módosításával eredeti, nagyobb adatkészletet. Helyettesítés használata esetén Azure ML munkaterület fut. az adatforrások és az adatok előkészítése csomagok helyettesítő adatforrás Vezérlőpultjának
+**DataSourceSubstitutions**: Data source helyettesítések is használható, amikor a felhasználó szeretne egy adatforrásból egy másik eszközre váltva a programkód módosítása nélkül. Például felhasználók is válthat egy mintát válassza ki, a helyi fájl az eredeti, nagyobb adatkészletet úgy módosítja az adatforrás-hivatkozás az Azure Blobban tárolt. Helyettesítés használata esetén az Azure ML Workbench futtathatja az adatforrások és az adatelőkészítési csomagok hivatkozik az helyére írja be az adatforrás.
 
-Az alábbi példában a "mylocal.datasource" hivatkozást, az Azure ML adatforrások és az adatok előkészítése csomagok cseréli "myremote.dsource". 
+Az alábbi példa kicseréli "myremote.dsource" a "mylocal.datasource" hivatkozásokat az Azure ML-adatforrások és adatelőkészítési csomagok. 
  
 ```
 DataSourceSubstitutions:
     mylocal.dsource: myremote.dsource
 ```
 
-A fenti helyettesítés alapján, a következő példakód most olvassa be az "myremote.dsource" helyett "mylocal.dsource" a felhasználók a programkód módosítása nélkül.
+A fenti helyettesítés alapján, az alábbi kódmintában most beolvassa a "myremote.dsource" helyett "mylocal.dsource" felhasználók a programkód módosítása nélkül.
 ```
 df = datasource.load_datasource('mylocal.dsource')
 ```
 ## <a name="next-steps"></a>További lépések
-További információ [kísérletezhet szolgáltatáskonfiguráció](experimentation-service-configuration.md).
+Tudjon meg többet [Kísérletezési szolgáltatás konfigurációja](experimentation-service-configuration.md).

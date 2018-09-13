@@ -1,46 +1,46 @@
 ---
-title: Az Azure gépi tanulási modell felügyeleti beállítás és konfiguráció |} Microsoft Docs
-description: Ez a dokumentum ismerteti a lépéseket és fogalmak beállításáról és konfigurálásáról a modell kezelése az Azure Machine Learning részt.
+title: Az Azure Machine Learning-modell felügyeleti beállítás és konfiguráció |} A Microsoft Docs
+description: Ez a dokumentum ismerteti a lépéseket és fogalmak vesz részt az Azure Machine Learning Modellkezelés telepítési és beállítási folyamatán.
 services: machine-learning
 author: raymondlaghaeian
 ms.author: raymondl
 manager: hjerez
 ms.reviewer: jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 08/29/2017
-ms.openlocfilehash: 6802d1dfc360a48d8085ff07a8d4488ee1751e33
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 883e3d2c5945a38c8fbca5c9f0f5e8a1e4093be1
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34832101"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35646079"
 ---
-# <a name="model-management-setup"></a>Modell kezelésének beállítása
+# <a name="model-management-setup"></a>Modell-kezelés beállítása
 
 ## <a name="overview"></a>Áttekintés
-Ez a dokumentum megismerteti Azure ML-modell felügyeleti használatával történő telepítéséhez és kezeléséhez a gépi tanulási modellek webszolgáltatásként. 
+Ez a dokumentum megkönnyíti az Azure Machine Learning modellkezelés használatával helyezheti üzembe és felügyelheti a gépi tanulási modellek webszolgáltatásként. 
 
-Azure ML-modell eszköz használatával hatékonyan telepítheti és kezelheti a Machine Learning modellek, amelyek többek között a SparkML Keras, TensorFlow, a Microsoft kognitív eszközkészlet vagy a Python keretrendszerek számos használatával készített. 
+Azure Machine Learning modellkezelés használatával, hogy hatékonyan telepítheti és kezelheti beépített több különféle keretrendszereket, beleértve a könnyen használható, a Keras, TensorFlow, a Microsoft Cognitive Toolkit vagy a Python Machine Learning-modellek. 
 
-Ez a dokumentum végéig a modell felügyeleti környezet beállítása és készen áll a központi telepítése a gépi tanulási modellek képesnek kell lennie.
+Ez a dokumentum végén a modell felügyeleti környezetének beállítása és a gépi tanulási modellek üzembe helyezésére kész eseményhalmazt kell lennie.
 
 ## <a name="what-you-need-to-get-started"></a>Mi szükséges a kezdéshez
-Ahhoz, hogy minél hatékonyabb működtetését Ez az útmutató, Azure-előfizetéshez, amely központilag telepíthető a modellek a tulajdonosi hozzáférés kell rendelkeznie.
-A parancssori felület előre előre telepített, az Azure Machine Learning-munkaterület és a [Azure DSVMs](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-virtual-machine-overview).
+A lehető leghatékonyabban Ez az útmutató, az Azure-előfizetéssel, amely központilag telepíthető a modellek tulajdonosi hozzáféréssel kell.
+A parancssori felület előre telepítve áll rendelkezésre az Azure Machine Learning Workbench, majd a [Azure Dsvm](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-virtual-machine-overview).
 
-## <a name="using-the-cli"></a>A parancssori felület használatával
-A parancssori felületen (CLIs) az a munkaterület használatához kattintson **fájl** -] **megnyitott parancssori felület**. 
+## <a name="using-the-cli"></a>A parancssori felületről
+A parancssori felületen (CLI-k) a Workbench használatához kattintson **fájl** -] **nyílt forráskódú parancssori felületének**. 
 
-Az adatok tudományos virtuális gép, csatlakozzon, és nyissa meg a parancssort. Típus `az ml -h` a beállítások megtekintéséhez. További részletek a parancsok, használja a--Súgó jelzőt.
+Egy Data Science virtuális gépen, csatlakozzon, és nyissa meg a parancssort. Típus `az ml -h` beállításainak megjelenítéséhez. A parancsokkal kapcsolatos további részletekért használja a--help jelző.
 
-Az összes többi rendszeren akkor kell telepíteni a CLIs.
+Az összes többi rendszeren kellene telepíteni a felületekre.
 
 ### <a name="installing-or-updating-on-windows"></a>A Windows telepítése (vagy frissítése)
 
-Telepítse a Python https://www.python.org/. Győződjön meg arról, hogy megadta a pip telepítése.
+Telepítse a Pythont a https://www.python.org/. Győződjön meg arról, hogy instalace pip kiválasztott.
 
 Nyisson meg egy parancssort, használja a Futtatás rendszergazdaként, és futtassa a következő parancsokat:
 
@@ -50,15 +50,15 @@ pip install azure-cli-ml
 ```
  
 >[!NOTE]
->Ha egy korábbi verziója van, távolítsa el azt először a következő paranccsal:
+>Ha egy korábbi verziója van, távolítsa el először a következő paranccsal:
 >
 
 ```cmd
 pip uninstall azure-cli-ml
 ```
 
-### <a name="installing-or-updating-on-linux"></a>Linux telepítése (vagy frissítése)
-A következő parancsot a parancssorból, és kövesse az utasításokat:
+### <a name="installing-or-updating-on-linux"></a>Linux rendszeren telepíti (vagy frissítése)
+Futtassa a következő parancsot a parancssorból, és kövesse az utasításokat:
 
 ```bash
 sudo -i
@@ -73,83 +73,83 @@ sudo /opt/microsoft/azureml/initial_setup.sh
 ```
 
 >[!NOTE]
->Jelentkezzen ki, majd jelentkezzen be ismét az SSH-munkamenetet a módosítások életbe léptetéséhez.
->Az előző parancs segítségével a DSVM a CLIs a korábbi verzióit frissíteni.
+>Jelentkezzen ki, majd jelentkezzen be újra, az SSH-munkamenet a módosítások érvénybe léptetéséhez.
+>Az előző parancs segítségével frissítse a CLI-k a dsvm-hez a korábbi verzióját.
 >
 
-## <a name="deploying-your-model"></a>A modell központi telepítése
-Használja a CLIs modellek webszolgáltatásként. A webszolgáltatások telepíthető a helyi számítógépre vagy egy fürtöt.
+## <a name="deploying-your-model"></a>A modell üzembe helyezése
+A CLI-k használatával helyezhet üzembe modelleket webszolgáltatásként. A webes szolgáltatások telepíthetők helyileg vagy a fürthöz.
 
-Indítsa el a helyi telepítés, ellenőrizze, hogy a modell és kód működik, majd telepítése egy fürt méretezési használható.
+Indítsa el a helyi telepítés, ellenőrizze, hogy a modell és a kód működik, majd üzembe helyezése egy fürtön méretezési éles környezetben való használatra.
 
-Elindítani, akkor be kell állítania a telepítési környezet. A környezetet, adott ideje feladat. A telepítés befejezése után újra felhasználhatja a környezetben a következő központi telepítések elvégzéséhez. A következő részben részletesebben.
+Először szüksége az üzembe helyezési környezetet. A környezet beállítása, adott ideje feladat. A telepítés befejezése után újból felhasználhatja a környezetet a későbbi üzembe helyezéséhez. A következő részben további részleteket talál.
 
-Ha a környezetben a telepítés befejezése:
-- Jelentkezzen be Azure kéri. Jelentkezzen be, egy webböngésző segítségével nyissa meg a lap https://aka.ms/devicelogin , és írja be a megadott kód hitelesítéséhez.
-- A hitelesítési folyamat során kéri egy olyan fiók való hitelesítéshez szükséges. Fontos: Válasszon egy érvényes Azure-előfizetés és a fiókban. az erőforrások létrehozásához szükséges engedélyekkel rendelkező fiók - napló a befejeződése után az előfizetési adatai számára jelenik meg, és a rendszer megkérdezi, hogy folytatni szeretné a kiválasztott fiókot.
+Ha a környezet a telepítés befejezése:
+- Jelentkezzen be Azure kéri. Jelentkezzen be, használja egy webböngészőben nyissa meg a https://aka.ms/devicelogin , és adja meg a megadott kódot a hitelesítéshez.
+- A hitelesítési folyamat során kell megadnia egy olyan fiók való hitelesítéshez. Fontos: Válasszon egy érvényes Azure-előfizetést és -erőforrások létrehozása a fiókban. megfelelő engedélyekkel rendelkező fiók – a bejelentkezési befejeződése után az előfizetési adatai jelennek meg, és a rendszer megkérdezi, hogy folytatni szeretné a kiválasztott fiók.
 
 ### <a name="environment-setup"></a>Környezet beállítása
-A telepítés megkezdéséhez szüksége a környezet szolgáltató regisztrálásához a következő parancs beírásával:
+A telepítés megkezdéséhez szüksége a környezet-szolgáltató regisztrálásához a következő parancs beírásával:
 
 ```azurecli
 az provider register -n Microsoft.MachineLearningCompute
 ```
 
-#### <a name="local-deployment"></a>Helyi telepítés
-A webes szolgáltatás a helyi számítógép telepítéséhez és teszteléséhez a következő paranccsal helyi környezet beállítása:
+#### <a name="local-deployment"></a>Helyi üzembe helyezés
+A helyi gépen a webszolgáltatás üzembe helyezése és teszteléséhez a következő paranccsal helyi környezet beállítása:
 
 ```azurecli
 az ml env setup -l [location of Azure Region, e.g. eastus2] -n [your environment name] [-g [existing resource group]]
 ```
 >[!NOTE] 
->Helyi webkiszolgáló szolgáltatás telepítése szükséges a Docker telepítéséhez a helyi számítógépen. 
+>Helyi webszolgáltatás üzembe van szükség a helyi gépen telepítheti a Dockert. 
 >
 
-A helyi környezet setup parancs az előfizetésében hoz létre a következőket:
-- Erőforráscsoport (Ha nincs megadva)
-- a storage-fiók
-- Egy Azure-tárolót beállításjegyzék (ACR)
+A helyi környezetben setup parancs az előfizetésben hoz létre az alábbi forrásanyagokat:
+- Egy erőforráscsoport (Ha nincs megadva)
+- Storage-fiók
+- Egy Azure Container Registryt (ACR)
 - Application Insights
 
-Telepítés sikeres befejezése után állítsa be a környezet használható a következő parancsot:
+Miután a telepítés sikeresen befejeződött, állítsa be a környezetben a következő parancs használható:
 
 ```azurecli
 az ml env set -n [environment name] -g [resource group]
 ```
 
-#### <a name="cluster-deployment"></a>Fürttelepítés
-Fürttelepítés nagy léptékű termelési helyzetekben használhatja. Az orchestrator, létrehozza a Kubernetes egy ACS-fürthöz. Az ACS-fürthöz kiterjeszthető a webszolgáltatás-hívás a nagyobb átviteli sebesség kezelésére.
+#### <a name="cluster-deployment"></a>Fürt üzembe helyezése
+A nagy léptékű termelési forgatókönyvekhez használja a fürt üzembe helyezése. Az orchestrator, beállít egy ACS-fürtben Kubernetes-szel. Az ACS-fürt kiterjeszthető a webszolgáltatás-hívás nagyobb átviteli sebesség kezelésére.
 
-A webszolgáltatás éles környezetben történő központi telepítéséhez először készítse elő a környezetben a következő parancsot:
+Éles környezetben üzembe helyezni webszolgáltatását, először állítsa be a környezetet, a következő paranccsal:
 
 ```azurecli
 az ml env setup -c --name [your environment name] --location [Azure region e.g. eastus2] [-g [resource group]]
 ```
 
-A fürt környezet setup parancs az előfizetésében hoz létre a következőket:
-- Erőforráscsoport (Ha nincs megadva)
-- a storage-fiók
-- Egy Azure-tárolót beállításjegyzék (ACR)
-- Egy Azure tároló szolgáltatás (ACS) fürt Kubernetes központi telepítés
+A fürt környezet setup parancs az előfizetésben hoz létre az alábbi forrásanyagokat:
+- Egy erőforráscsoport (Ha nincs megadva)
+- Storage-fiók
+- Egy Azure Container Registryt (ACR)
+- Egy üzemelő Kubernetes-példányt az Azure Container Service (ACS) fürtön
 - Application Insights
 
-Az erőforráscsoport, a tárfiók, valamint a ACR gyorsan hoz létre. Az ACS telepítési akár 20 percig is tarthat. 
+Az erőforráscsoport, a storage-fiók és az ACR gyorsan jönnek létre. Az ACS telepítési akár 20 percet is igénybe vehet. 
 
-A telepítő befejezése után a környezetben a központi telepítéshez használt be kell. Használja az alábbi parancsot:
+A telepítő befejezése után állítsa be a környezetet a telepítéshez használandó kell. Használja az alábbi parancsot:
 
 ```azurecli
 az ml env set -n [environment name] -g [resource group]
 ```
 
 >[!NOTE] 
-> További telepítések esetén a környezet létrehozása után csak kell újra felhasználhatja a fenti set parancs használatával.
+> További telepítések esetén a környezet létrehozása után csak szeretné használni a fenti set parancsban az ismételt használatát.
 >
 
 >[!NOTE] 
->HTTPS-végpontnak létrehozásához adja meg az SSL-tanúsítványt, a fürt létrehozásakor a – tanúsítvány-nevét és – tanúsítvány-pem beállítások az ml env beállítása. A fürt kérelem kiszolgálására a HTTPS-t, a megadott tanúsítvány használatával biztonságossá állít be. Telepítés befejezése után hozzon létre egy CNAME DNS-rekordot, amely a fürt FQDN mutat.
+>HTTPS-végpont létrehozásához adja meg az SSL-tanúsítványt, a fürt létrehozásakor a – tanúsítvány-nevét és – tanúsítvány-pem lehetőségek az ml env beállításában. Ez beállítja a fürt https, a megadott tanúsítvány védi a kérések kiszolgálására. A telepítő befejeződése után hozzon létre egy CNAME DNS-rekordot, amely a fürt teljes Tartományneve.
 
 ### <a name="create-an-account"></a>Fiók létrehozása
-Olyan fiókot kell megadni a modellek telepítéséről. Meg kell megtennie egyszer fiókonként, és ugyanazt a fiókot, több telepítések esetén is felhasználhatja.
+Modellek üzembe helyezéséhez szükség egy fiókra. Kell tennie egyszer fiókonként, és felhasználhatja ugyanazt a fiókot több üzemelő példányban.
 
 Hozzon létre egy új fiókot, használja a következő parancsot:
 
@@ -157,17 +157,17 @@ Hozzon létre egy új fiókot, használja a következő parancsot:
 az ml account modelmanagement create -l [Azure region, e.g. eastus2] -n [your account name] -g [resource group name] --sku-instances [number of instances, e.g. 1] --sku-name [Pricing tier for example S1]
 ```
 
-Egy meglévő fiókot használja, használja a következő parancsot:
+Egy meglévő fiókot használ, használja a következő parancsot:
 ```azurecli
 az ml account modelmanagement set -n [your account name] -g [resource group it was created in]
 ```
 
-### <a name="deploy-your-model"></a>A modell rendszerbe állítása
-Most már készen áll a mentett modell webszolgáltatásként központi telepítése. 
+### <a name="deploy-your-model"></a>A modell üzembe helyezése
+Most már készen áll a mentett modellt webszolgáltatásként üzembe helyezéséhez. 
 
 ```azurecli
 az ml service create realtime --model-file [model file/folder path] -f [scoring file e.g. score.py] -n [your service name] -s [schema file e.g. service_schema.json] -r [runtime for the Docker container e.g. spark-py or python] -c [conda dependencies file for additional python packages]
 ```
 
 ### <a name="next-steps"></a>További lépések
-Tekintse meg a gyűjteményben sok minták.
+Próbálja ki a katalógus számos minták egyikét.

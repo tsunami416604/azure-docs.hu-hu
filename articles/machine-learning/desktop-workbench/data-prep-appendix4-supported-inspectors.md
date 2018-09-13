@@ -1,36 +1,36 @@
 ---
-title: Támogatott ellenőrök érhető el az Azure Machine Learning adatok előkészítése |} Microsoft Docs
-description: Ez a dokumentum érhető el az Azure Machine Learning adatok előkészítése ellenőrök teljes listáját tartalmazza.
+title: Támogatott vizsgálók elérhető az Azure Machine Learning adat-előkészítési |} A Microsoft Docs
+description: Ez a dokumentum elérhető az Azure Machine Learning adat-előkészítési vizsgálók teljes listáját tartalmazza.
 services: machine-learning
 author: euangMS
 ms.author: euang
 manager: lanceo
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.custom: ''
 ms.devlang: ''
 ms.topic: article
 ms.date: 02/01/2018
-ms.openlocfilehash: ca9b46335105e62b023e7db16e0ead4061fbfd00
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: ef5f6f3dc7ae0c555b2afe000b54c443313800f1
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34830714"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35645735"
 ---
-# <a name="supported-inspectors-for-the-azure-machine-learning-data-preparation-preview"></a>Az Azure Machine Learning data előkészítése Preview ellenőrök támogatott
-Ez a dokumentum ismerteti az előzetes verzióban elérhető ellenőrök készletét.
+# <a name="supported-inspectors-for-the-azure-machine-learning-data-preparation-preview"></a>Támogatott vizsgálók előkészítése az Azure Machine Learning adatelőnézet
+Ez a dokumentum ismerteti az ebben az előzetes verzióban elérhető vizsgálók készletét.
 
 ## <a name="the-halo-effect"></a>A hatás effektus 
-Néhány ellenőrök halo hatásának támogatja. Erre két különböző színek használatával mutatja azonnal a módosítást vizuálisan átalakító. A szürke a legújabb átalakítás előtti értékét jelöli, és a kék jeleníti meg az aktuális értékét. Ez a hatás engedélyezve, és le van tiltva, a beállítások menüben.
+Néhány vizsgálók a hatás effektus támogatja. Ennek a hatásnak két különböző színekkel jelennek meg azonnal a módosítást vizuálisan átalakító használ. A szürke jelenti. a legújabb átalakítás előtti értéke, és a kék megjeleníti az aktuális értéket. Erről is engedélyezve van, és a beállítások menüben le van tiltva.
 
 ## <a name="graphical-filtering"></a>Grafikus szűrése 
-Az ellenőrök egyesek adatok szűrését a inspector használatával szerkesztésére. Magában foglalja a inspector használatával szerkesztésére, grafikus elemek kijelölése, és a inspector ablak jobb felső részén eszköztár segítségével szűrni a bejövő vagy kimenő kiválasztott értékét. 
+Néhány a vizsgálók támogatja a szűrést az adatok a vizsgáló-szerkesztő használatával. A vizsgáló az-t egy szerkesztőben magában foglalja a grafikus elemek kiválasztását és az eszköztáron a vizsgáló ablak jobb felső részében segítségével szűrheti és leskálázása a kiválasztott értékek. 
 
-## <a name="column-statistics"></a>Oszlop statisztikai adatainak
-Numerikus oszlopoknál a inspector számos különböző statisztikák az oszlop kapcsolatban. Statisztika a következő mérési tartalmazza: 
+## <a name="column-statistics"></a>Oszlopstatisztika
+A numerikus oszlopok a vizsgáló számos különböző stats kapcsolatos oszlop. Statisztikák a következő mérési tartalmazza: 
 - Minimális
 - Alacsonyabb KVARTILIS
 - Középérték
@@ -44,91 +44,91 @@ Numerikus oszlopoknál a inspector számos különböző statisztikák az oszlop
 - None
 
 ## <a name="histogram"></a>Hisztogram 
-Kiszámítja, és egyetlen numerikus oszlopban hisztogram jeleníti meg. Az alapértelmezett számú gyűjtőbe Scott szabály használatával történik. Azonban a szabály a beállítások segítségével felülbírálható.
+Kiszámítja, és csak egy numerikus oszlop hisztogramja jeleníti meg. Az alapértelmezett gyűjtők száma Scott szabály használatával történik. Azonban a szabály felülbírálható beállításain keresztül.
 
-Ez Inspector halo hatásának támogatja.
+A vizsgáló a hatás effektus támogatja.
 
 
 ### <a name="options"></a>Beállítások
 - Gyűjtők minimális száma (vonatkozik, még ha alapértelmezett bucketing be van jelölve)
 - Alapértelmezett számú gyűjtőbe (Scott szabály) 
-- Halo megjelenítése
-- Kernel sűrűség rajzot átfedő (Gauss kernel) 
-- A Logaritmikus skála használata
+- Hatás megjelenítése
+- Kernel sűrűségű diagram területre (Gauss kernel) 
+- Logaritmikus skála használata
 
 
 ### <a name="actions"></a>Műveletek
-Ez inspector támogatja a szűrést, gyűjtők, amelyek magukban foglalhatják egyetlen vagy többszörös kiválasztási gyűjtők keresztül. Az előzőleg bemutatott szűrőket alkalmazhat.
+A vizsgáló támogatja a szűrést, gyűjtők, amelyek magukban foglalhatják az egyszeres vagy többszörös kiválasztási gyűjtők keresztül. Az előzőleg bemutatott szűrőket alkalmazhat.
 
-## <a name="value-counts"></a>Érték száma
-Ez inspector jeleníti a jelenleg kiválasztott oszlop értékeinek gyakoriságát. Alapértelmezés szerint megjelenik a felső hat értékekre van. A korlát bármennyi, azonban módosíthatja. Beállíthatja a képernyőt a felső helyett a lista aljáról száma is. Ez inspector halo hatásának támogatja.
+## <a name="value-counts"></a>Értékek száma lehetőségre
+A vizsgáló megadja a jelenleg kijelölt oszlop értékeit tábláját gyakorisága. Az alapértelmezett megjelenítést a felső hat értékekre van. A korlát bármilyen számot azonban módosíthatja. Beállíthatja a megjelenítendő felső helyett a lista aljáról számát is. A vizsgáló a hatás effektus támogatja.
 
 ### <a name="options"></a>Beállítások 
-- A felső érték
+- Felső értékek száma
 - Csökkenő
-- Null vagy hibaértéket tartalmazza
-- Halo megjelenítése
-- A Logaritmikus skála használata
+- Null vagy hibaértéket belefoglalása
+- Hatás megjelenítése
+- Logaritmikus skála használata
 
 
 ### <a name="actions"></a>Műveletek 
-Ez inspector támogatja a szűrést, sávok, amelyek magukban foglalhatják egyetlen vagy többszörös kiválasztási sávok keresztül. Az előzőleg bemutatott szűrőket alkalmazhat.
+A vizsgáló támogatja a szűrést, sávok, amelyek magukban foglalhatják az egyszeres vagy többszörös kiválasztási sávok keresztül. Az előzőleg bemutatott szűrőket alkalmazhat.
 
-## <a name="box-plot"></a>Dobozdiagram 
-Egy bajusz Dobozdiagram egy numerikus oszlopot.
+## <a name="box-plot"></a>Box-diagram 
+Numerikus oszlop box kanóc rajzot.
 
 ### <a name="options"></a>Beállítások 
 - Oszlop szerint
 
-## <a name="scatter-plot"></a>Pontdiagram rajzot
-Két numerikus oszlopoknál pont rajzot. Az adatok a teljesítményre vonatkozó megfontolásból lefelé-mintát. A beállítások felülbírálhatók a minta mérete.
+## <a name="scatter-plot"></a>Pont
+Pontdiagram két numerikus oszlopokhoz. Az adatok a lefelé mintavételezés a teljesítmény szempontjából. A beállítások felülbírálhatók a mintanagyság.
 
 ### <a name="options"></a>Beállítások  
-- Az x tengely oszlop
+- X tengely oszlop
 - Y tengely oszlop
-- Minta mérete
+- Mintavételi méret
 - Oszlop szerint
 
 
 ## <a name="time-series"></a>A Time series
-Egy vonaldiagramot idő tájékoztatáshoz az x tengelyen.
+Egy vonaldiagramot idő tudatosság az x tengelyen.
 
 ### <a name="options"></a>Beállítások
-- Oszlop dátuma
-- Numerikus oszlopot
-- Minta mérete
+- Dátum oszlop
+- Numerikus oszlop
+- Mintavételi méret
 
 
 ### <a name="actions"></a>Műveletek
-Ez inspector támogatja a szűrést, egy kattintással és húzással jelölje be a módszerrel a válasszon ki egy tartományt a grafikonon. Kijelölés befejezése után alkalmazza az előzőekben leírt szűrők.
+A vizsgáló támogatja a szűrést, egy kattintással és húzással jelölje be metódus a grafikonon tartományt keresztül. Miután elvégezte a kijelölést, a korábban leírt szűrőket alkalmazhat.
 
 
 ## <a name="map"></a>Térkép 
-Olyan térképet pontokkal ábrázolt, feltéve, hogy a szélességi és hosszúsági van megadva. A földrajzi hosszúság először meg kell adni.
+Egy térkép a pontokat, amelyeket ábrázolási, feltéve, hogy a szélességi és hosszúsági lett megadva. Szélesség először ki kell választani.
 
 ### <a name="options"></a>Beállítások
-- A földrajzi hosszúság oszlop
-- A földrajzi hosszúság értéke oszlop
-- Csoportosítás
+- Szélesség oszlop
+- Hosszúsági oszlop
+- A fürtszolgáltatás
 - Oszlop szerint
 
 
 ### <a name="actions"></a>Műveletek
-Ez inspector támogatja a szűrést, pont kiválasztása a térképen keresztül. Nyomja meg a **Ctrl** billentyűt, majd és az egérrel a pontok körül négyzet kialakításához. Ezután alkalmazza az előzőekben leírt szűrők.
+A vizsgáló támogatja a szűrést, keresztül pont kiválasztása a térképen. Nyomja le az **Ctrl** key, majd kattintson a és a pontok körüli négyzet kialakításához az egérrel húzza. Ezután alkalmazza a szűrőket az előzőleg ismertetett módon.
 
-A leképezés csak a lehetséges pontok megjelenítése billentyűkombináció lenyomásával gyorsan méretét a **E** a térkép bal oldalán.
+Gyorsan méretét a térkép a lehetséges pontok billentyű lenyomásával megjeleníthető az **E** a térkép bal oldalán.
 
 
-## <a name="pattern-frequency"></a>Minta gyakorisága 
+## <a name="pattern-frequency"></a>A minta gyakorisága 
 
-Ez inspector a kijelölt oszlopban karakterlánc minták listáját tartalmazza. A minta egy reguláris kifejezés szintaxisa például értékét. A minta rámutató a példákat mutat a minta értékeiből. A mintákat, valamint a hozzávetőleges coverages százalékos tekintetében is látható.
+A vizsgáló a kijelölt oszlopban karakterlánc minták listáját tartalmazza. A minták szerepelnek, például a szintaxis egy reguláris kifejezést használ. A mintát viszi példát láthat a minta értékeiből. A minták, valamint a hozzávetőleges coverages százalékos tekintetében is látható.
 
-![A minta inspector képe](media/data-prep-appendix4-supported-inspectors/PatternInspectorProductNumber.png)
+![A minta vizsgáló képe](media/data-prep-appendix4-supported-inspectors/PatternInspectorProductNumber.png)
 
 ### <a name="options"></a>Beállítások
-- A felső érték
+- Felső értékek száma
 - Csökkenő
-- Halo megjelenítése
+- Hatás megjelenítése
 
 ### <a name="actions"></a>Műveletek
-Ez inspector támogatja a szűrést, a megjelenő minták alapján. Nyomja meg a **Ctrl** billentyűt, majd válassza ki a kitöltött sávok mintát inspector. Ezután alkalmazza az előzőekben leírt szűrők. A felhasználó acion eredményeként egy speciális szűrési lépés jelenik meg. Tekintse meg, és módosíthatja a Python kódgenerálás meghívása a speciális szűrési lépés szerkesztése lehetőséget.
+A vizsgáló támogatja a szűrést, megjelenített mintáknak megfelelően. Nyomja le az **Ctrl** kulcsát, és válassza ki a tematikus sávok minta vizsgáló. Ezután alkalmazza a szűrőket az előzőleg ismertetett módon. A felhasználó acion eredményeként egy speciális szűrési lépés megjelenik. Megtekintheti és módosíthatja a generált Python-kód szerkesztése lehetőséget a speciális szűrő lépéssel meghívásával.

@@ -11,12 +11,12 @@ ms.date: 08/01/2018
 ms.author: ninarn
 ms.topic: conceptual
 ms.reviewer: carlrab
-ms.openlocfilehash: cbfbe02926907ca3ca5b6c13932c8b67862c8456
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: 4c5bb0ab3431fa951871e64d7bdd8a3a313f480f
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43842023"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44721500"
 ---
 # <a name="create-and-manage-elastic-pools-in-azure-sql-database"></a>Az Azure SQL Database rugalmas készletek létrehozása és kezelése
 
@@ -102,7 +102,7 @@ Hozhat létre és kezelheti az SQL Database rugalmas készletek és a készletez
 |[Rugalmas készletek – létrehozása vagy frissítése](/rest/api/sql/elasticpools/createorupdate)|Új rugalmas készlet létrehozása vagy meglévő rugalmas készlet frissítése.|
 |[Rugalmas készletek – törlés](/rest/api/sql/elasticpools/delete)|A rugalmas készlet törlése.|
 |[Rugalmas készletek – Get](/rest/api/sql/elasticpools/get)|Rugalmas készlet beolvasása.|
-|[Rugalmas készletek – kiszolgáló listája](/rest/api/sql/elasticpools/listbyserver)|Rugalmas készletek listáját adja vissza a kiszolgálón.|
+|[Rugalmas készletek – a lista a kiszolgálón](/rest/api/sql/elasticpools/listbyserver)|Rugalmas készletek listáját adja vissza a kiszolgálón.|
 |[Rugalmas készletek – frissítés](/rest/api/sql/elasticpools/update)|Frissíti egy meglévő rugalmas készlet.|
 |[Rugalmas készlet, tevékenységek](/rest/api/sql/elasticpoolactivities)|Rugalmas készlet, tevékenységek adja vissza.|
 |[Rugalmas készlet adatbázis-tevékenységek](/rest/api/sql/elasticpooldatabaseactivities)|Az adatbázisok rugalmas készlet belül adja vissza a tevékenység.|

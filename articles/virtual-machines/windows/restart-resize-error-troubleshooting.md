@@ -1,6 +1,6 @@
 ---
-title: Virtuális gép újraindításával és átméretezésével állít ki az Azure-ban |} Microsoft Docs
-description: A újraindításával és átméretezésével egy meglévő Windows rendszerű virtuális gép az Azure Resource Manager telepítési problémák elhárításához
+title: Virtuális gép újraindításával vagy átméretezésével kapcsolatos problémák az Azure-ban |} A Microsoft Docs
+description: Újraindításával vagy átméretezésével, meglévő Windows virtuális gépként az Azure Resource Manager üzembe helyezés hibáinak elhárítása
 services: virtual-machines-windows, azure-resource-manager
 documentationcenter: ''
 author: Deland-Han
@@ -13,57 +13,57 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.workload: required
-ms.date: 11/03/2017
+ms.date: 06/15/2018
 ms.author: delhan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 482a194535cba8715b70ecff4679691515b206a9
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: f4e0c77c03856b4851ee5fe49bd6ae54d47f6c31
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2018
-ms.locfileid: "27581396"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35923536"
 ---
-# <a name="troubleshoot-deployment-issues-with-restarting-or-resizing-an-existing-windows-vm-in-azure"></a>Központi telepítés elhárítása újraindításával és átméretezésével egy meglévő Windows Azure-ban
-Indítsa el a leállított Azure virtuális gép (VM), vagy egy meglévő Azure virtuális gép átméretezése megkísérlésekor előforduló gyakori hiba: egy memóriafoglalási hiba. Ez a hiba eredménye, ha a fürt vagy a régió nincs rendelkezésre álló erőforrások vagy nem támogatja a kért Virtuálisgép-méretet.
+# <a name="troubleshoot-deployment-issues-with-restarting-or-resizing-an-existing-windows-vm-in-azure"></a>Újraindítása vagy átméretezése egy meglévő Windows Azure-beli virtuális gép üzembe helyezés hibáinak elhárítása
+Próbálja meg elindítani egy leállított Azure virtuális gép (VM) vagy egy meglévő Azure virtuális gép átméretezése, tapasztal a gyakori hiba esetén egy foglalási hiba. Ez a hiba eredményeként, ha a fürt vagy a régió nem rendelkezik elérhető erőforrások vagy nem támogatja a kért Virtuálisgép-méretet.
 
 [!INCLUDE [support-disclaimer](../../../includes/support-disclaimer.md)]
 
-## <a name="collect-activity-logs"></a>A gyűjtés tevékenység naplói
-Hibaelhárítás indítása gyűjtünk azonosítsa a hibát a probléma társított a tevékenység-naplókat. Az alábbi hivatkozások folyamat részletes információkat tartalmazza:
+## <a name="collect-activity-logs"></a>Collect-Tevékenységnaplók
+Hibaelhárítás indítása, hogy azonosítsa a hibát a probléma társított a vizsgálati naplók összegyűjtése. Az alábbi hivatkozások a folyamat részletes információt tartalmaznak:
 
 [Üzembe helyezési műveletek megtekintése](../../azure-resource-manager/resource-manager-deployment-operations.md)
 
-[Az Azure-erőforrások kezeléséhez tevékenység naplók megtekintése](../../resource-group-audit.md)
+[Tevékenységnaplók megtekintése az Azure-erőforrások kezelése](../../resource-group-audit.md)
 
-## <a name="issue-error-when-starting-a-stopped-vm"></a>Hiba: Hiba a leállított virtuális gép indításakor
-A leállt virtuális gépek elindul, de az beszerzése egy memóriafoglalási hiba próbál.
+## <a name="issue-error-when-starting-a-stopped-vm"></a>Probléma: Hiba a leállított virtuális gép indítása
+A leállított virtuális gép elindítása, de a foglalási hiba fordul elő, próbálja meg.
 
 ### <a name="cause"></a>Ok
-A leállt virtuális gépek indítására vonatkozó kérelem rendelkezik kísérli meg a következő az eredeti fürt, amelyen a felhőalapú szolgáltatás. A fürt azonban nem rendelkezik szabad lemezterület a kérelem teljesítéséhez.
+A kérelem a leállított virtuális gép elindításához, lehetséges, az eredeti fürthöz, amelyen a felhőszolgáltatás rendelkezik. A fürt azonban nem rendelkezik szabad terület lesz elérhető a kérés teljesítéséhez.
 
 ### <a name="resolution"></a>Megoldás:
-* Állítsa le a rendelkezésre állási csoport összes virtuális gépet, és indítsa újra az összes virtuális Géphez.
+* Állítsa le a rendelkezésre állási csoport összes virtuális gépen, és indítsa újra az egyes virtuális gépekre.
   
-  1. Kattintson a **erőforráscsoportok** > *az erőforráscsoport* > **erőforrások** > *a rendelkezésre állási csoport* > **virtuális gépek** > *a virtuális gép* > **leállítása**.
-  2. Után állítsa le a virtuális gépeket, jelölje ki a leállított virtuális gépeken, és válassza az Indítás parancsot.
-* Újraindítási kérés újra később.
+  1. Kattintson a **erőforráscsoportok** > *az erőforráscsoport* > **erőforrások** > *a rendelkezésre állási csoport*  >  **Virtuális gépek** > *a virtuális gép* > **leállítása**.
+  2. Után minden virtuális gép leállításához válassza ki a leállított virtuális gépek mindegyike, és kattintson a Start gombra.
+* Ismételje meg az újraindítást kér egy későbbi időpontban.
 
-## <a name="issue-error-when-resizing-an-existing-vm"></a>Hiba: Hiba a meglévő virtuális átméretezése
-Meglévő virtuális átméretezése, de egy foglalási hiba próbál.
+## <a name="issue-error-when-resizing-an-existing-vm"></a>Probléma: Hibaüzenet, ha egy meglévő virtuális gép átméretezése
+Próbálja ki egy meglévő virtuális gép átméretezése, de a foglalási hiba fordul elő.
 
 ### <a name="cause"></a>Ok
-A kérelem átméretezni a virtuális gép ki lehet megkísérelni, az eredeti fürt, amelyen a felhőalapú szolgáltatás. A fürt azonban nem támogatja a kért Virtuálisgép-méretet.
+A kérelem a virtuális gép átméretezése, lehetséges, az eredeti fürthöz, amelyen a felhőszolgáltatás rendelkezik. A fürt azonban nem támogatja a kért Virtuálisgép-méretet.
 
 ### <a name="resolution"></a>Megoldás:
-* Próbálja megismételni a kérelmet kisebb Virtuálisgép-méretet.
+* Próbálja megismételni a kérést kisebb Virtuálisgép-mérettel.
 * Ha a kért virtuális gép mérete nem lehet módosítani:
   
-  1. Állítsa le a rendelkezésre állási csoport összes virtuális gépet.
+  1. Állítsa le a rendelkezésre állási csoport összes virtuális gépen.
      
-     * Kattintson a **erőforráscsoportok** > *az erőforráscsoport* > **erőforrások** > *a rendelkezésre állási csoport* > **virtuális gépek** > *a virtuális gép* > **leállítása**.
-  2. Után állítsa le a virtuális gépeket, a nagyobb méretű a kívánt virtuális gép átméretezésével.
-  3. Jelöljön ki az átméretezett virtuális Gépet, és kattintson a **Start**, majd indítsa el a leállított virtuális gépek mindegyikének.
+     * Kattintson a **erőforráscsoportok** > *az erőforráscsoport* > **erőforrások** > *a rendelkezésre állási csoport*  >  **Virtuális gépek** > *a virtuális gép* > **leállítása**.
+  2. Miután az összes virtuális gép leállítása, méretezze át a kívánt virtuális Gépre, és a egy nagyobb méretű.
+  3. Válassza ki az átméretezett virtuális Gépet, és kattintson a **Start**, majd indítsa el a leállított virtuális gépek mindegyike.
 
 ## <a name="next-steps"></a>További lépések
-Ha tapasztal, amikor új Windows virtuális gép létrehozása az Azure-ban, tekintse meg [egy új Windows virtuális gép létrehozása az Azure-ban a telepítési problémák elhárításához](troubleshoot-deployment-new-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Ha problémái vannak az Azure-ban új Windows virtuális gép létrehozásakor, [egy új Windows virtuális gép létrehozása az Azure-ban üzembe helyezés hibáinak elhárítása](troubleshoot-deployment-new-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 

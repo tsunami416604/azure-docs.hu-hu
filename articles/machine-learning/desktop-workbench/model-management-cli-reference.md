@@ -1,27 +1,27 @@
 ---
-title: Az Azure Machine Learning modell kezelése parancssori felület referencia |} Microsoft Docs
-description: Az Azure Machine Learning modell kezelése parancssori felület hivatkozás.
+title: Az Azure Machine Learning Modellkezelési parancssori felület leírása |} A Microsoft Docs
+description: Az Azure Machine Learning Modellkezelési parancssori felület hivatkozás.
 services: machine-learning
 author: aashishb
 ms.author: aashishb
 manager: hjerez
 ms.reviewer: jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 11/08/2017
-ms.openlocfilehash: 540f22e38201ec488d8e2c1d7494bc83d7b83a7e
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 9e69f2e71cce6d689669838785ce992fbbcfa940
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34831921"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35646607"
 ---
-# <a name="model-management-command-line-interface-reference"></a>Modell felügyeleti parancssori felület referenciája
+# <a name="model-management-command-line-interface-reference"></a>Modell felügyeleti parancssori felületének dokumentációja
 
-## <a name="base-cli-concepts"></a>Alap CLI fogalmak:
+## <a name="base-cli-concepts"></a>Parancssori felület fogalmait alap:
 
     account : Manage model management accounts. 
     env     : Manage compute environments.
@@ -30,8 +30,8 @@ ms.locfileid: "34831921"
     model   : Manage operationalization models.
     service : Manage operationalized services.
 
-## <a name="account-commands"></a>Fiók parancsok
-A modell felügyeleti fiók a szolgáltatásokat, amelyek lehetővé teszik, telepítéséhez és kezeléséhez modellek használatához szükséges. Használjon `az ml account modelmanagement -h` megtekintéséhez a következő:
+## <a name="account-commands"></a>Fiókregisztrálási parancsok
+Egy modellkezelési fiókot kell használnia a szolgáltatások, amelyek üzembe helyezése és kezelése a modellek segítségével. Használat `az ml account modelmanagement -h` a következők megtekintéséhez:
 
     create: Create a Model Management Account.
     delete: Delete a specified Model Management Account.
@@ -40,13 +40,13 @@ A modell felügyeleti fiók a szolgáltatásokat, amelyek lehetővé teszik, tel
     show  : Show a Model Management Account.
     update: Update an existing Model Management Account.
 
-**Modell felügyeleti fiók létrehozása**
+**Modellkezelési fiók létrehozása**
 
-Hozzon létre egy modell felügyeleti fiókot a számlázási a következő paranccsal:
+Hozzon létre egy modellkezelési fiókot a számlázási a következő paranccsal:
 
 `az ml account modelmanagement create --location [Azure region e.g. eastus2] --name [new account name] --resource-group [resource group name to store the account in]`
 
-Helyi argumentumai:
+Helyi argumentumok:
 
     --location -l       [Required]: Resource location.
     --name -n           [Required]: Name of the model management account.
@@ -70,15 +70,15 @@ Helyi argumentumai:
     show           : Show an MLC resource; if resource_group or cluster_name are not provided, shows
                      the active MLC env.
 
-**A telepítési környezet beállítása**
+**Az üzembe helyezési környezet beállítása**
 
-A setup parancs szükséges hozzá közreműködői hozzáférése az előfizetéshez. Ha ezzel nem rendelkezik, akkor ahhoz az erőforráscsoporthoz szükséges Közreműködői hozzáférés, ahová a telepítést végzi. Utóbbi esetben meg kell adnia az erőforráscsoport nevét a telepítési parancs részeként a `-g` jelző használatával. 
+A setup parancs használatához közreműködői hozzáférés az előfizetéshez. Ha ezzel nem rendelkezik, akkor ahhoz az erőforráscsoporthoz szükséges Közreműködői hozzáférés, ahová a telepítést végzi. Utóbbi esetben meg kell adnia az erőforráscsoport nevét a telepítési parancs részeként a `-g` jelző használatával. 
 
-Központi telepítés esetén két lehetőség áll rendelkezésre: *helyi* és *fürt*. Beállítás a `--cluster` (vagy `-c`) jelző lehetővé teszi, hogy a fürtöt tartalmazó környezetben, amely látja el az ACS-fürthöz. A telepítő alapvető szintaxisa a következő:
+Telepítés két lehetőség van: *helyi* és *fürt*. Beállítás a `--cluster` (vagy `-c`) jelző lehetővé teszi, hogy a fürt üzembe helyezése kiosztja az ACS-fürt. Az alapszintű beállítás szintaxisa a következő:
 
 `az ml env setup [-c] --location [location of environment resources] --name[name of environment]`
 
-Ez a parancs inicializálja az Azure gépi tanulási a környezet egy tárfiókot, ACR beállításjegyzék és App Insights szolgáltatás létrehozása az előfizetésben. Alapértelmezés szerint a környezet inicializálását helyi telepítés esetén csak (nincs ACS) Ha nem jelző van megadva. Ha a szolgáltatás méretezésére van szüksége, adja meg a `--cluster` (vagy `-c`) jelzőjét, hogy az ACS-fürtöt létrehozni.
+Ez a parancs az Azure machine learning-környezet és a egy tárfiókot, az ACR-beállításjegyzékbe és az App Insights szolgáltatás az előfizetésben létrehozott inicializálja. Alapértelmezés szerint a környezet inicializálása helyi telepítés esetén csak (egyetlen ACS) Ha nem jelző van megadva. Ha a szolgáltatás skálázható van szüksége, adja meg a `--cluster` (vagy `-c`) jelző ACS-fürt létrehozásához.
 
 Parancs részletei:
 
@@ -106,15 +106,15 @@ Globális argumentumok
     --query                        : JMESPath query string. See http://jmespath.org/ for more information and examples.
     --verbose                      : Increase logging verbosity. Use --debug for full debug logs.
 ```
-## <a name="model-commands"></a>Modell parancsok
+## <a name="model-commands"></a>Modell-parancsok
 
     list
     register
     show
 
-**A modell regisztrálása**
+**Regisztrálja a modellt**
 
-A modell parancsot.
+Regisztrálja a modellt parancsot.
 
 `az ml model register --model [path to model file] --name [model name]`
 
@@ -135,7 +135,7 @@ Globális argumentumok
                            examples.
     --verbose            : Increase logging verbosity. Use --debug for full debug logs.
 
-## <a name="manifest-commands"></a>Manifest parancsok
+## <a name="manifest-commands"></a>Jegyzékfájl parancsok
 
     create: Create an Operationalization Manifest. This command has two different
             sets of required arguments, depending on if you want to use previously registered
@@ -143,9 +143,9 @@ Globális argumentumok
     list
     show
 
-**Jegyzékfájl létrehozása**
+**Hozzon létre egy jegyzéket**
 
-A következő parancs létrehoz egy jegyzékfájl modell. 
+A következő parancs létrehoz egy jegyzékfájl a modellhez. 
 
 `az ml manifest create --manifest-name [your new manifest name] -f [path to code file] -r [runtime for the image, e.g. spark-py]`
 
@@ -162,7 +162,7 @@ Parancs részletei:
     -p                           : A pip requirements.txt file needed by the code file.
     -v                           : Verbosity flag.
 
-Regisztrált modellhez argumentumok
+Regisztrált modell argumentumok
 
     --model-id -i                : [Required] Id of previously registered model to add to manifest.
                                    Multiple models can be specified with additional -i arguments.
@@ -191,13 +191,13 @@ Globális argumentumok
     show
     usage
 
-**Lemezkép létrehozása**
+**Rendszerkép létrehozása**
 
-A képfájl beállítással, a jegyzék előtt hozunk létre hozhat létre. 
+Beállítással, miután létrehozta a jegyzékfájlt, mielőtt rendszerképet hozhat létre. 
 
 `az ml image create -n [image name] --manifest-id [the manifest ID]`
 
-Vagy a jegyzékfájl létrehozása, és egyetlen paranccsal lemezképet. 
+Vagy hozzon létre a jegyzéket, és egyetlen paranccsal kép. 
 
 `az ml image create -n [image name] --model-file [model file or folder path] -f [code file, e.g. the score.py file] -r [the runtime eg.g. spark-py which is the Docker container image base]`
 
@@ -208,11 +208,11 @@ Parancs részletei:
     --image-type              : The image type to create. Defaults to "Docker".
     -v                        : Verbosity flag.
 
-Regisztrált jegyzék argumentumok
+Regisztrált jegyzékfájl argumentumok
 
     --manifest-id             : [Required] Id of previously registered manifest to use in image creation.
 
-Nem regisztrált jegyzék argumentumok
+Nem regisztrált jegyzékfájl argumentumok
 
     --conda-file -c           : Path to Conda Environment file.
     --dependency -d           : Files and directories required by the service. Multiple dependencies can
@@ -224,8 +224,8 @@ Nem regisztrált jegyzék argumentumok
     -r                        : [Required] Runtime of the web service. Valid runtimes are python|spark-py.
 
 
-## <a name="service-commands"></a>Szolgáltatás-parancsok
-Az alábbi parancsokat a szolgáltatás esetében támogatottak. Minden parancs paramétereinek megtekintéséhez használja a -h lehetőséget. Tegyük fel például, `az ml service create realtime -h` megjelenítéséhez létrehozása parancs részleteinek megadása.
+## <a name="service-commands"></a>Szolgáltatás parancsaihoz
+Az alábbi parancsokat a szolgáltatás használata támogatott. Az egyes parancsok a paraméterek megjelenítéséhez használja a -h lehetőséget. Például `az ml service create realtime -h` megtekintéséhez hozzon létre parancs részleteinek megadása.
 
     create
     delete
@@ -239,11 +239,11 @@ Az alábbi parancsokat a szolgáltatás esetében támogatottak. Minden parancs 
 
 **Szolgáltatás létrehozása**
 
-Szolgáltatás létrehozása a korábban létrehozott lemezképet, a következő paranccsal:
+Szolgáltatás létrehozása a korábban létrehozott lemezképpel, használja a következő parancsot:
 
 `az ml service create realtime --image-id [image to deploy] -n [service name]`
 
-Szolgáltatás létrehozása jegyzékfájl és lemezképet, egyetlen parancs, a következő paranccsal:
+Szolgáltatás létrehozása a jegyzékfájlt és lemezképet, egyetlen paranccsal, a következő parancsot használja:
 
 `az ml service create realtime --model-file [path to model file(s)] -f [path to model scoring file, e.g. score.py] -n [service name] -r [run time included in the image, e.g. spark-py]`
 
@@ -289,13 +289,13 @@ Globális argumentumok
     --verbose                         : Increase logging verbosity. Use --debug for full debug logs.
 
 
-Vegye figyelembe a a `-d` jelző kapcsolódó függőségek: Ha a nevét adja meg egy könyvtárat, amely még nincs kötegelt (zip, bont stb.), könyvtárhoz automatikusan tar'ed lekérdezi és a másik végpont nem kombinált jelszavat, majd automatikusan átadása. 
+Vegye figyelembe a a `-d` jelző csatolása függőségek: Ha a felhasználó nevét, amely még nem könyvtár kötegelve (zip, tar stb.), automatikusan tar'ed lekérdezi és átadása másik végének átengedett jelszavat, majd automatikusan könyvtárban. 
 
-Már kötegelt könyvtár át, ha a címtár-fájlként kezelni és átadott mentén, mert a. Átengedett automatikusan; az várhatóan kezelni, a kódban.
+Ha egy könyvtárban, amely már részét képezi, a címtár-fájlként kezelni és továbbít, mert. Átengedett automatikusan; a kódban, hogy kezeljék várhatóan.
 
-**Szolgáltatás-részletek**
+**Szolgáltatás részleteinek beolvasása**
 
-A szolgáltatás részletes adatai, beleértve az URL-cím használata (mintaadatok Ha létrehozott egy séma) beolvasása.
+Szolgáltatás adatait, például az URL-CÍMÉT, a használat (beleértve a mintaadatokat Ha sémát lett létrehozva) beolvasása.
 
 `az ml service show realtime --name [service name]`
 
@@ -335,9 +335,9 @@ Parancs
 
     az ml service run realtime
 
-Argumentumok--azonosító -i: [szükséges] elleni pontozása céljából felügyeletiszolgáltatás-azonosító.
--d: a webes szolgáltatás hívása a használni kívánt adatokat.
--v: részletességi jelzőt.
+Argumenty--azonosító -i: [kötelező] a szolgáltatás azonosítója alapján pontszámot rendelni.
+-d: a webszolgáltatás meghívására szolgáló használni kívánt adatokat.
+-v: részletességi jelző.
 
 Globális argumentumok
 

@@ -1,6 +1,6 @@
 ---
-title: A költséghatékony, alacsony prioritású virtuális gépek Azure Batch feladatokat futtató |} Microsoft Docs
-description: Ismerje meg, alacsony prioritású virtuális gépeket az Azure Batch-munkaterhelések költségek csökkentése a kiépítése.
+title: Költséghatékony, kis prioritású virtuális gépek az Azure Batch számítási feladatok futtatása |} A Microsoft Docs
+description: Megtudhatja, hogyan helyezhet üzembe az alacsony prioritású virtuális gépeket az Azure Batch számítási feladatait a költségek csökkentése érdekében.
 services: batch
 author: mscurrell
 manager: jeconnoc
@@ -11,73 +11,73 @@ ms.topic: article
 ms.workload: na
 ms.date: 03/19/2018
 ms.author: markscu
-ms.openlocfilehash: 954616e8fbf9e3c3be35fc219d15e3fb36260e1f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: d42cef944c3b971804ef1417a3877bf919784a02
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34608916"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35927551"
 ---
-# <a name="use-low-priority-vms-with-batch"></a>Kis prioritású virtuális gépek használata a kötegelt
+# <a name="use-low-priority-vms-with-batch"></a>A Batch alacsony prioritású virtuális gépek használata
 
-Az Azure Batch biztosít alacsony prioritású virtuális gépek (VM) kötegelt munkaterhelések költségeinek csökkentése érdekében. Alacsony prioritású virtuális gépek új munkaterhelések lehetséges, mivel lehetővé teszi nagy mennyiségű számítási teljesítményt, nagyon alacsony költséggel használt kötegelt teszik.
+Az Azure Batch alacsony prioritású virtuális gépek (VM) a Batch számítási feladatok költségek csökkentése érdekében kínál. Alacsony prioritású virtuális gépek győződjön meg arról, a Batch számítási feladatok lehetséges, hogy lehetővé teszi nagy mennyiségű számítási teljesítményt használandó nagyon alacsony költség új típusú.
  
-Kis prioritású virtuális gépek előnyeit felesleges kapacitás az Azure-ban. Kis prioritású virtuális gépek a készletek megadásakor Azure Batch használhatja az eredmény, ha elérhető.
+Alacsony prioritású virtuális gépek az Azure többletkapacitását előnyeinek kihasználása. Alacsony prioritású virtuális gépek a készletekben található ad meg, az Azure Batch segítségével a többletet, ha elérhető.
  
-Mi a fontosabb: az alacsony prioritású virtuális gépeket, hogy a virtuális gépek nem állnak rendelkezésre kiosztani, vagy előfordulhat, hogy tetszőleges időpontban, attól függően, hogy a rendelkezésre álló kapacitásból foglalható. Emiatt alacsony prioritású virtuális gépek legmegfelelőbb bizonyos munkaterhelések esetében. Alacsony prioritású virtuális gépek használata kötegelt és aszinkron feldolgozási terheléshez, ahol a feladat befejezési idő rugalmas, és a munka sok virtuális gép között van elosztva.
+Alacsony prioritású virtuális gépek használatával ára azonban, hogy azokon a virtuális gépeken nem érhető el, amelyet ki kell, vagy bármikor rendelkezésre álló kapacitás függően előfordulhat, hogy háttérbe. Ebből kifolyólag alacsony prioritású virtuális gépek kiválóan alkalmasak legtöbb bizonyos típusú számítási feladatokat. Alacsony prioritású virtuális gépek használata a batch- és az aszinkron feldolgozás számítási feladatokhoz, ahol a feladat végrehajtási ideje rugalmas, és a munka legyen elosztva a több virtuális gépet.
  
-Kis prioritású virtuális gépek dedikált virtuális gépek képest jelentősen csökkentett áron érhető el. Díjszabása, lásd: [kötegelt árképzési](https://azure.microsoft.com/pricing/details/batch/).
+Alacsony prioritású virtuális gépek dedikált virtuális gépek képest jelentősen kedvezményes áron érhető el. A díjszabás részleteiért lásd: [Batch díjszabása](https://azure.microsoft.com/pricing/details/batch/).
 
-## <a name="use-cases-for-low-priority-vms"></a>Kis prioritású virtuális gépek alkalmazási helyzetei
+## <a name="use-cases-for-low-priority-vms"></a>Alacsony prioritású virtuális gépek alkalmazási helyzetei
 
-Alacsony prioritású virtuális gépeket, mi munkaterhelések is, és nem használja őket figyelembe véve? Általában kötegelt feldolgozási terheléshez amelyeket remekül beválik, feladatok számos párhuzamos feladat van felosztva, vagy sok feladat horizontálisan és sok virtuális gép pontjain.
+Figyelembe véve az alacsony prioritású virtuális gépeket, milyen számítási feladatokat is, és nem használja őket? Általánosságban elmondható kötegelt feldolgozási számítási feladatok áll a jó megoldás, feladatok párhuzamos feladatok vannak osztva, vagy számos feladat, horizontálisan felskálázott és elosztott több virtuális gépen.
 
--   Használja az Azure-ban felesleges kapacitás maximalizálása érdekében megfelelő feladatok lehet terjeszteni.
+-   Használja az Azure többletkapacitását maximalizálása horizontálisan megfelelő feladatokat.
 
--   Alkalmanként virtuális gépek nem érhető el vagy leállított, ennek eredményeképpen a feladatok korlátozott kapacitás és a feladat megszakítása és ismétlések vezethet. Feladatok ezért rugalmas a futtatásához érvénybe belül kell lennie.
+-   Alkalmanként virtuális gépek nem érhető el vagy leállított, aminek eredményeképpen feladatok korlátozott kapacitás és a feladat megszakítása és ismétlések vezethet. Feladatok ezért kell azok futtatása eltarthat az idő rugalmas.
 
--   Feladatok hosszabb ideig feladatok több érintheti, ha megszakad. Ha hosszú ideig futó feladatok végrehajtása ellenőrzőpontok mentése folyamatban van, akkor hajtható végre, a megszakítás hatását csökken. Rövidebb végrehajtási idővel rendelkező tevékenységek általában a legmegfelelőbb alacsony prioritású virtuális gépeket, mert a megszakítás hatását sokkal kevesebb.
+-   Feladatok a hosszabb feladatok több érintheti, ha megszakad. Ha hosszú ideig futó feladatok megvalósítása mentése folyamatban van, akkor hajtsa végre az ellenőrzőpontok használata, majd megszakadásának hatását csökken. Rövidebb a végrehajtási időpontok a feladatok általában működnek a legjobban az alacsony prioritású virtuális gépeket, mert megszakadásának hatását jóval kevesebb.
 
--   Hosszan futó MPI-feladatok, amelyek ténylegesen használják több virtuális gép nem nincsenek kiválóan alkalmas a alacsony prioritású virtuális gép használja, mert egy leállított virtuális gép vezethet a teljes feladat újrafuttatása kellene.
+-   Mivel egy leállított virtuális gép nem kell újra futtatni a teljes feladat vezethet, amelyek hosszú ideig futó MPI-feladatok, amelyek ténylegesen használják több virtuális gép nem jól használható alacsony prioritású virtuális gépek.
 
-Néhány példa a kötegelt feldolgozásra használati esetek jól, alacsony prioritású virtuális gépek használatára alkalmas a következők:
+Néhány példa a kötegelt feldolgozási használati esetek jól, alacsony prioritású virtuális gépek használatára alkalmas a következők:
 
--   **Fejlesztéshez és teszteléshez**: különösen akkor, ha a felügyeleti teendők központjaként megoldások fejlesztenek, jelentős megtakarítást is kell megvalósítani. Tesztelési minden típusú kihasználhassa, de nagy terhelés tesztelése és regressziós tesztelés kiváló használ.
+-   **Fejlesztési és tesztelési**: különösen, ha nagy méretű megoldásokat fejlesztenek, jelentős megtakarítást megvalósíthatók. Minden típusú tesztelés előnyeit, de nagy méretű terheléses tesztelés és regressziós tesztelési nagyszerű használja.
 
--   **Igény szerinti kapacitás kiegészítése**: alacsony prioritású virtuális gépek regular dedikált virtuális gépek - kiegészítésére használható, ha elérhető, a feladatok méretezése, és ezért alacsonyabb költségek gyorsabb befejezéséhez; nem érhető el, ha az alapkonfiguráció dedikált virtuális gépek továbbra is elérhető .
+-   **Igény szerinti kapacitás kiegészítése**: alacsony prioritású virtuális gépek segítségével kiegészítik regular dedikált virtuális gépek – Ha elérhető, a feladatok méretezhetők, és így gyorsabb befejezéséhez alacsonyabb költségek mellett; nem érhető el, ha az alapkonfiguráció dedikált virtuális gépek továbbra is elérhető marad .
 
--   **Rugalmas feladat végrehajtási ideje**: esetén az idő-feladatok rugalmasságot kell végrehajtania, akkor lehetséges elhagyta a kapacitás is elfogadhatók, azonban alacsony prioritású virtuális gépek hozzáadásával feladatok gyakran futtatását gyorsabb és az alacsonyabb költségek.
+-   **Rugalmas feladat-végrehajtási idő**: Ha nincs ideje feladatok rugalmasságot kell végrehajtania, majd a kapacitás lehetséges csepp tolerálható; azonban alacsony prioritású virtuális gépek igény szerinti hozzáadásával feladatok gyakran futtatása gyorsabban és alacsony költségek mellett.
 
-Kötegelt készletek beállítható úgy, hogy számos módja, attól függően, hogy a feladat végrehajtási ideje rugalmasságot alacsony prioritású virtuális gépek használata:
+Batch-készletek konfigurálhatók, alacsony prioritású virtuális gépek használata több módon is, attól függően, a rugalmasságot, a feladat-végrehajtási idő:
 
--   Kis prioritású virtuális gépek kizárólag a készletben használható. Kötegelt ebben az esetben, ha elérhető bármely preempted kapacitás állítja helyre. Ez a konfiguráció módja a legolcsóbb feladatok végrehajtásához csak alacsony prioritású virtuális gép használja.
+-   Alacsony prioritású virtuális gépek kizárólag a készletben használható. Ebben az esetben kötegelt helyreállítja valamelyik preempted kapacitáshoz, ha elérhető. Ez a konfiguráció módja a legolcsóbb futtathatnak feladatokat, csak az alacsony prioritású virtuális gépeket használ.
 
--   Kis prioritású virtuális gépek dedikált virtuális gépek rögzített alapterv együtt használható. A dedikált virtuális gépek rögzített száma biztosítja, hogy mindig van néhány kapacitás tartani a feladat halad.
+-   Alacsony prioritású virtuális gépek dedikált virtuális gépek rögzített alapterv együtt használható. A rögzített dedikált virtuális gépek száma biztosítja, hogy mindig van valamilyen formában, hogy a feladat halad előre.
 
--   Lehet dedikált és alacsony prioritású virtuális gépeket, a dinamikus kombinációját, hogy az olcsóbb alacsony prioritású virtuális gépek kizárólag akkor használatosak, ha elérhető, de a teljes árú dedikált virtuális gépek méretezhető, szükség esetén. Ez a konfiguráció tartja a minimális kapacitás elérhető, a feladatok halad.
+-   Lehet dedikált és alacsony prioritású virtuális gépek, a dinamikus arányát, hogy az olcsóbb alacsony prioritású virtuális gépek kizárólag használni, ha elérhető, de a teljes árú dedikált virtuális gépek skálázható fel, ha szükséges. Ez a konfiguráció biztosítja, hogy minimális kapacitás elérhető, a feladatok halad előre.
 
-## <a name="batch-support-for-low-priority-vms"></a>Kis prioritású virtuális gépek kötegelt támogatása
+## <a name="batch-support-for-low-priority-vms"></a>Alacsony prioritású virtuális gépek Batch támogatása
 
-Az Azure Batch szolgáltatás különböző képességeket, amelyek megkönnyítik az használnak, és igénybe vehesse az alacsony prioritású virtuális gépek:
+Azure Batch lehetőséget biztosít a különböző képességeket, amelyek megkönnyítik a és a alacsony prioritású virtuális gépeket felhasználására:
 
--   Kötegelt készletek dedikált virtuális gépek és az alacsonyabb prioritású virtuális gépek is tartalmazhat. A virtuális gép típusonkénti számát a készlet létrehozásakor, vagy megváltozott a meglévő készletek, az explicit átméretezés vagy automatikus skálázása használatával bármikor adható meg. Feladat- és küldésének változatlan marad, függetlenül a tárolókészlet a Virtuálisgép-típusokon maradjanak. Beállíthatja úgy is egy alkalmazáskészlet a teljesen alacsony prioritású virtuális gépek is, de dedikált virtuális gépeinek léptetéses olcsón futtathat feladatokat, ha a kapacitás, futó feladatok tartani a minimális küszöbérték alá csökken.
+-   Batch-készletekben dedikált virtuális gépek és az alacsony prioritású virtuális gépek is tartalmazhat. A virtuális gép különböző típusú száma adható meg a készlet létrehozásakor, vagy egy meglévő készlet, az explicit átméretezés vagy automatikus skálázás használatával bármikor módosítható. Feladatok és tevékenységek küldésének változatlan marad, függetlenül a virtuális gépek típusai a készletben marad. Beállíthatja, hogy a készlet teljes mértékben az alacsony prioritású virtuális gépek használatával, de dedikált virtuális gépek elindítása olcsón futtathat feladatokat, ha a kapacitás csökkenése miatt növekedhet, hogy a futó feladatokat, minimális küszöbérték alá.
 
--   Kötegelt készletek automatikusan keresni a cél alacsony prioritású virtuális gépek számát. Ha a leállított virtuális gépeken, kötegelt megpróbálja cserélje ki az elveszett kapacitás, és térjen vissza a cél.
+-   Batch-készletek automatikusan az alacsony prioritású virtuális gépek célszáma keresik. Ha a leállított virtuális gépeket, majd a Batch megkísérli a kimaradt kapacitást, és térjen vissza a cél.
 
--   Feladatok megszakadnak, amikor a kötegelt észleli, és futtassa újra a feladatok automatikusan requeues.
+-   Feladatok megszakadnak, amikor a Batch észleli, és futtassa újra a feladatok automatikusan requeues.
 
--   Kis prioritású virtuális gépek rendelkezik, amely eltér a dedikált virtuális gépek egy külön vCPU kvóta. 
-    Alacsony prioritású virtuális gép esetében a kvóta nem nagyobb, mint dedikált virtuális gépek, a kvóta, mert alacsony prioritású virtuális gépek költséget. További információkért lásd: [a Batch szolgáltatás kvótái és korlátai](batch-quota-limit.md#resource-quotas).    
+-   Alacsony prioritású virtuális gépek rendelkeznek egy külön vCPU-kvóta, amely eltér a dedikált virtuális gépek esetében. 
+    Alacsony prioritású virtuális gépekre vonatkozó kvóta azért magasabb, mint a kvóta a dedikált virtuális gépek esetében, mert alacsony prioritású virtuális gépek kevesebb költséggel jár. További információkért lásd: [Batch szolgáltatás kvótái és korlátai](batch-quota-limit.md#resource-quotas).    
 
 > [!NOTE]
-> Alacsony prioritású virtuális gép jelenleg nem támogatottak a Batch-fiókok létrehozása [felhasználói előfizetési mód](batch-api-basics.md#account).
+> Alacsony prioritású virtuális gépek jelenleg nem támogatottak a Batch-fiókokkal létrehozott [felhasználói előfizetési módban](batch-api-basics.md#account).
 >
 
 ## <a name="create-and-update-pools"></a>Hozzon létre, és a készletek frissítése
 
-A Batch-készlet dedikált és alacsony prioritású virtuális gép (más néven a a számítási csomópontokkal) tartalmazhat. Beállíthatja a számítási csomópontok száma cél dedikált és alacsony prioritású virtuális gép esetében. A tároló csomópontok száma azt a van a tárolókészletben kívánt virtuális gépeket.
+Batch-készlet dedikált és alacsony prioritású virtuális gépek (is hivatkoznak, a számítási csomópontok) is tartalmazhat. Beállíthatja a számítási csomópontok célszámát a dedikált vagy alacsony prioritású virtuális gépeket. Csomópontok célszáma tartozik a készlethez kívánt virtuális gépek számát adja meg.
 
-Például készlet létrehozása a virtuális gépek Azure-felhőszolgáltatásban egy target 5 dedikált virtuális gépek és 20 alacsony prioritású virtuális gép:
+Például hoz létre egy készletet használó virtuális gépek Azure-felhőszolgáltatásban 5. cél dedikált virtuális gépek és a 20 alacsony prioritású virtuális gépek:
 
 ```csharp
 CloudPool pool = batchClient.PoolOperations.CreatePool(
@@ -85,11 +85,11 @@ CloudPool pool = batchClient.PoolOperations.CreatePool(
     targetDedicatedComputeNodes: 5,
     targetLowPriorityComputeNodes: 20,
     virtualMachineSize: "Standard_D2_v2",
-    cloudServiceConfiguration: new CloudServiceConfiguration(osFamily: "4") // WS 2012 R2
+    cloudServiceConfiguration: new CloudServiceConfiguration(osFamily: "5") // WS 2016
 );
 ```
 
-Készlet létrehozása az Azure virtuális gépek (ebben az esetben Linux virtuális gépek) 5 cél dedikált használó virtuális gépek és 20 alacsony prioritású virtuális gép:
+Készlet létrehozása (ebben az esetben Linux rendszerű virtuális gépek) az Azure virtual machines használatával, 5. cél dedikált virtuális gépek és a 20 alacsony prioritású virtuális gépek:
 
 ```csharp
 ImageReference imageRef = new ImageReference(
@@ -110,74 +110,74 @@ pool = batchClient.PoolOperations.CreatePool(
     virtualMachineConfiguration: virtualMachineConfiguration);
 ```
 
-Dedikált és alacsony prioritású virtuális gépek kaphat a csomópontok száma:
+Dedikált vagy alacsony prioritású virtuális gépeket is igénybe csomópontok jelenlegi száma:
 
 ```csharp
 int? numDedicated = pool1.CurrentDedicatedComputeNodes;
 int? numLowPri = pool1.CurrentLowPriorityComputeNodes;
 ```
 
-Készlet csomópontjain van-e a tulajdonság azt jelzi, ha a csomópont egy alacsony prioritású vagy dedikált virtuális Gépet:
+Készlet csomópontjain a tulajdonság azt jelzi, ha a csomópont egy dedikált vagy alacsony prioritású virtuális gép rendelkezik:
 
 ```csharp
 bool? isNodeDedicated = poolNode.IsDedicated;
 ```
 
-Amikor egy alkalmazáskészlet egy vagy több csomópontja részesítés, egy lista csomópontok a készlet továbbra is visszaadja azokat a csomópontokat. Alacsony prioritású csomópontok száma változatlan marad, de azokat a csomópontokat, hogy az állapot értéke a **Prioritás miatt kihagyva** állapotát. Kötegelt megpróbálja megkeresni a csere virtuális gépeket, és ha sikeres, a csomópontok halad át **létrehozása** , majd **indítása** állapotok ahhoz, hogy elérhető-e a feladat végrehajtásához, ugyanúgy, mint az új csomópontok.
+A leállított egy vagy több csomópont a készletben, egy lista csomópontok a készlet műveletet továbbra is visszaadja azokat a csomópontokat. Alacsony prioritású csomópontok jelenlegi száma változatlan marad, de azokat a csomópontokat kell azok állapot értéke a **Prioritás miatt kihagyva** állapota. Batch megpróbálja megkeresni a virtuális gépek helyettesítő, és ha sikeres, a csomópontok áthaladnia **létrehozása** , majd **kezdő** állapotok, mielőtt Gopher lett érhető el, illetve a feladatok végrehajtásához, ugyanúgy, mint az új csomópontok.
 
-## <a name="scale-a-pool-containing-low-priority-vms"></a>Kis prioritású virtuális gépeket tartalmazó készlet méretezése
+## <a name="scale-a-pool-containing-low-priority-vms"></a>Alacsony prioritású virtuális gépeket tartalmazó készlet méretezése
 
-Mint készletek kizárólag álló dedikált virtuális gépek, lehetősége egy alacsony prioritású virtuális gépeket tartalmazó az átméretezési metódus hívása vagy automatikus skálázási készlet méretezése.
+Mint dedikált virtuális gépek, kizárólag álló készletek lehetősége egy tartalmazó alacsony prioritású virtuális gépek átméretezése metódus meghívásának vagy az automatikus skálázási készlet méretezésére.
 
-Az alkalmazáskészlet átméretezés egy második választható-paramétert fogad, amely frissíti a **targetLowPriorityNodes**:
+A készlet átméretezés vesz igénybe egy második nem kötelező paraméter, amely frissíti a **targetLowPriorityNodes**:
 
 ```csharp
 pool.Resize(targetDedicatedComputeNodes: 0, targetLowPriorityComputeNodes: 25);
 ```
 
-A készlet automatikus skálázás képlet az alábbiak szerint támogatja az alacsony prioritású virtuális gépek:
+A készlet automatikus skálázási képletet módon támogatja az alacsony prioritású virtuális gépek:
 
--   Futtasson, vagy a szolgáltatás által definiált változó értékét állíthatja be **$TargetLowPriorityNodes**.
+-   Get, vagy a szolgáltatás által definiált változó értékét állíthatja be **$TargetLowPriorityNodes**.
 
--   A szolgáltatás által definiált változó értékének kaphat **$CurrentLowPriorityNodes**.
+-   A szolgáltatás által definiált változó értékét kap **$CurrentLowPriorityNodes**.
 
--   A szolgáltatás által definiált változó értékének kaphat **$PreemptedNodeCount**. 
-    Ez a változó preempted állapotban csomópontok számát adja vissza, és lehetővé teszi a méretezési felfelé vagy lefelé a dedikált csomópontok, attól függően, hogy nem használható a leállított csomópontok száma száma.
+-   A szolgáltatás által definiált változó értékét kap **$PreemptedNodeCount**. 
+    Ezzel a változóval preempted állapotú csomópontok számát adja vissza, és lehetővé teszi, hogy növeljék vagy csökkentsék a dedikált csomópontok háttérbe csomópontot, amely nem érhető el számától függően.
 
-## <a name="jobs-and-tasks"></a>Feladatok és feladatok
+## <a name="jobs-and-tasks"></a>Feladatok és tevékenységek
 
-Feladatok és a feladatok kevés további beállításokra van szükség az alacsony prioritású csomópont; a csak támogatása a következőképpen történik:
+Feladatok és tevékenységek szükséges további konfigurációs kis alacsony prioritású csomópontok; az egyetlen támogatási a következőképpen történik:
 
 -   Egy feladat JobManagerTask tulajdonságnak egy új tulajdonság **AllowLowPriorityNode**. 
-    Ez a tulajdonság értéke igaz, ha a kezelő feladat egy dedikált vagy alacsony prioritású csomópont is ütemezhető. Ez a tulajdonság értéke HAMIS, ha a feladat manager feladat csak a kijelölt csomópont ütemezett.
+    Ez a tulajdonság értéke igaz, ha a Feladatkezelő tevékenység egy dedikált vagy alacsony prioritású csomópontot is ütemezhető. Ha ez a tulajdonság értéke HAMIS, a Feladatkezelő tevékenység csak a dedikált csomópont van ütemezve.
 
--   Egy [környezeti változó](batch-compute-node-environment-variables.md) érhető el egy feladat alkalmazást, hogy megállapíthassa, hogy egy alacsony prioritású vagy dedikált csomóponton futó. A környezeti változó AZ_BATCH_NODE_IS_DEDICATED.
+-   Egy [környezeti változó](batch-compute-node-environment-variables.md) érhető el a tevékenységhez tartozó alkalmazást úgy, hogy megállapíthatja, hogy az alacsony prioritású és dedikált csomóponton futó. A környezeti változó AZ_BATCH_NODE_IS_DEDICATED.
 
 ## <a name="handling-preemption"></a>A megelőlegezés kezelése
 
-Virtuális gépek alkalmanként foglalható; a megelőlegezés esetben kötegelt hajtja végre a következő:
+Virtuális gép időnként háttérbe; Ha a megelőlegezés történik, a Batch a következőket teszi:
 
--   A preempted virtuális gépek rendelkezik a frissített állapotukra **Prioritás miatt kihagyva**.
--   Ha a csomópont a leállított virtuális gépeken futó feladatokat, majd ezeket a feladatokat helyezte és futtassa újból.
--   A virtuális gép hatékonyan törölték, ami a virtuális Gépre helyileg tárolt adatok elvesztését.
--   A készlet folyamatosan kísérletet tesz az alacsony prioritású csomópontok elérhető cél számát. Csere kapacitás található, a csomópontok azonosítók tartani, de újrainicializálni, keresztül haladó **létrehozása** és **indítása** előtt a feladat ütemezés szerint.
--   A megelőlegezés számát, az Azure portálon metrika érhetők el.
+-   A preempted virtuális gépek rendelkeznek az állapotuk a frissített **Prioritás miatt kihagyva**.
+-   Ha a csomópont a leállított virtuális gépeken futó feladatokat, majd ezeket a feladatokat várólistára és futtassa újból.
+-   A virtuális gép hatékonyan törlése, ami a virtuális Gépen található helyileg tárolt adatok elvesztését.
+-   A készlet folyamatosan próbál elérni elérhető alacsony prioritású csomópontok célszáma. Ha helyettesítő kapacitás található, a csomópontok tartsa a hozzájuk tartozó azonosítóik, de a újrainicializálni, keresztül **létrehozása** és **kezdő** még nem érhető el a feladat ütemezés szerint.
+-   A megelőlegezés counts metrikaként az Azure Portalon érhetők el.
 
 ## <a name="metrics"></a>Mérőszámok
 
-Új mérőszámok érhetők el a [Azure-portálon](https://portal.azure.com) az alacsony prioritású csomópont. Ezen adatok gyűjtése le van:
+Új metrikák érhetők el a [az Azure portal](https://portal.azure.com) alacsony prioritású csomópontok számára. Ezeket a metrikákat a következők:
 
 - Alacsony prioritású csomópontok száma
 - Alacsony prioritású magok száma 
-- Csomópont Count részesítés
+- A leállított csomópontok száma
 
-Metrikák megtekintése az Azure-portálon:
+Metrikák megtekintése az Azure Portalon:
 
-1. Keresse meg a Batch-fiók a portálon, és a Batch-fiók beállításainak megtekintéséhez.
-2. Válassza ki **metrikák** a a **figyelés** szakasz.
-3. Válassza ki a vár a metrikák a **elérhető** listája.
+1. Keresse meg a portálon a Batch-fiókjába, és a Batch-fiók beállításainak megtekintéséhez.
+2. Válassza ki **metrikák** származó a **figyelés** szakaszban.
+3. Válassza ki a vár a metrikák a **rendelkezésre álló metrikák** listája.
 
-![Alacsony prioritású csomópontok metrikák](media/batch-low-pri-vms/low-pri-metrics.png)
+![Alacsony prioritású csomópontok metrikái](media/batch-low-pri-vms/low-pri-metrics.png)
 
 ## <a name="next-steps"></a>További lépések
 

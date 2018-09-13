@@ -1,5 +1,5 @@
 ---
-title: Az Azure IoT Suite – gyakori kérdések |} Microsoft Docs
+title: Az Azure IoT Suite – gyakori kérdések |} A Microsoft Docs
 description: Gyakran ismételt kérdések az IoT Suite-ról
 services: ''
 suite: iot-suite
@@ -15,101 +15,101 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2017
 ms.author: corywink
-ms.openlocfilehash: 77b9fab68b66fe8998733a8f890acb9dd6b97899
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 7e7c4affee64a945900c02b6375ba4df5d085183
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34702365"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35757804"
 ---
 # <a name="frequently-asked-questions-for-iot-suite"></a>Gyakran ismételt kérdések az IoT Suite-ról
 
-További információ, a csatlakoztatott gyári specifikus [gyakran ismételt kérdések](../iot-accelerators/iot-accelerators-faq-cf.md).
+Lásd még a csatlakoztatott gyár konkrét [– gyakori kérdések](../iot-accelerators/iot-accelerators-faq-cf.md).
 
-### <a name="where-can-i-find-the-source-code-for-the-preconfigured-solutions"></a>Hol található az előkonfigurált megoldásokat a kódot?
+### <a name="where-can-i-find-the-source-code-for-the-preconfigured-solutions"></a>Hol található a forráskódban előre konfigurált megoldások?
 
-A forráskód a következő GitHub-adattárak tárolja:
-* [Távoli figyelési előkonfigurált megoldás][lnk-remote-monitoring-github]
-* [Előre konfigurált prediktív karbantartási megoldás][lnk-predictive-maintenance-github]
-* [Előre konfigurált csatlakoztatott gyári megoldás](https://github.com/Azure/azure-iot-connected-factory)
+A forráskód következő GitHub-adattárában tárolja:
+* [Előre konfigurált távoli figyelési megoldás][lnk-remote-monitoring-github]
+* [Prediktív karbantartási előre konfigurált megoldás][lnk-predictive-maintenance-github]
+* [Előre konfigurált csatlakoztatott gyár](https://github.com/Azure/azure-iot-connected-factory)
 
-### <a name="how-do-i-update-to-the-latest-version-of-the-remote-monitoring-preconfigured-solution-that-uses-the-iot-hub-device-management-features"></a>Hogyan frissíthetők a legújabb verzióra a távoli figyelési előkonfigurált megoldás, amely az IoT Hub eszköz felügyeleti funkciókat használ?
+### <a name="how-do-i-update-to-the-latest-version-of-the-remote-monitoring-preconfigured-solution-that-uses-the-iot-hub-device-management-features"></a>Hogyan frissíthetem a legújabb verzióra, a távoli figyelési előre konfigurált megoldásban az IoT Hub eszközfelügyeleti szolgáltatásaival használó?
 
-* Ha telepít egy előre konfigurált megoldást a https://www.azureiotsuite.com/ hely, mindig a legújabb verzióját a megoldás egy új példányát telepíti.
-* Ha telepít egy parancssor segítségével előre beállított megoldás, frissítheti egy meglévő központi telepítési új kóddal. Lásd: [felhőalapú üzemelő példány] [ lnk-cloud-deployment] a github [tárház][lnk-remote-monitoring-github].
+* Az előre konfigurált megoldás telepítésekor a https://www.azureiotsuite.com/ hely, minden esetben üzembe helyez egy új példányát a megoldás a legújabb verzióra.
+* A parancssor használatával egy előre konfigurált megoldás üzembe helyezésekor, ha egy meglévő üzemelő példány új kóddal frissítheti. Lásd: [Felhőbeli telepítés] [ lnk-cloud-deployment] a github [tárház][lnk-remote-monitoring-github].
 
-### <a name="how-can-i-add-support-for-a-new-device-method-to-the-remote-monitoring-preconfigured-solution"></a>Hogyan vehetek fel egy új eszköz metódus támogatja a távoli felügyeleti előre konfigurált megoldáshoz?
+### <a name="how-can-i-add-support-for-a-new-device-method-to-the-remote-monitoring-preconfigured-solution"></a>Hogyan adhatom hozzá egy új eszköz módszer támogatja a távoli figyelési előre konfigurált megoldáshoz?
 
-Című témakör [támogatása egy új módszer hozzáadása a szimulátor] [ lnk-add-method] a a [előkonfigurált megoldás testreszabása] [ lnk-customize] cikk.
+Című témakör [hozzáadása egy új módszer támogatása a szimulátor] [ lnk-add-method] a a [előkonfigurált megoldások testreszabása] [ lnk-customize] cikk.
 
-### <a name="the-simulated-device-is-ignoring-my-desired-property-changes-why"></a>A szimulált eszköz figyelmen kívül hagyja a kívánt tulajdonságok módosítását, miért?
-A távoli felügyeleti előkonfigurált megoldás, a szimulált eszköz kódban csak a **Desired.Config.TemperatureMeanValue** és **Desired.Config.TelemetryInterval** a jelentett tulajdonságainak frissítésére való tulajdonságok szükséges. Az összes többi kívánt tulajdonság változáskérések figyelmen kívül lesznek hagyva.
+### <a name="the-simulated-device-is-ignoring-my-desired-property-changes-why"></a>A szimulált eszköz figyelmen kívül hagyja a kívánt tulajdonság módosításokat, hogy miért?
+A távoli figyelési előre konfigurált megoldásban a szimulált eszköz kód csak használja a **Desired.Config.TemperatureMeanValue** és **Desired.Config.TelemetryInterval** kívánt tulajdonságot a jelentett tulajdonságok frissítésére. Az összes többi kívánt tulajdonságmódosítási kérelmet a rendszer figyelmen kívül hagyja.
 
-### <a name="my-device-does-not-appear-in-the-list-of-devices-in-the-solution-dashboard-why"></a>Az eszköz nem szerepel a listán szereplő eszközök a megoldás irányítópultjának miért?
+### <a name="my-device-does-not-appear-in-the-list-of-devices-in-the-solution-dashboard-why"></a>Az eszköz nem jelenik meg a megoldás irányítópultján eszközök miért?
 
-A megoldás irányítópultjának eszközök listája egy lekérdezést az eszközök listájának használja. Jelenleg a lekérdezés nem adhat vissza több mint 10 KB-os eszközök. Próbálja meg a keresési feltételeknek, a lekérdezés szigorúbb elvégzése.
+Eszközök a megoldás irányítópultján egy lekérdezést használ az eszközök listájának visszaadása. Jelenleg egy lekérdezés legfeljebb 10 ezer eszközök nem tud visszaadni. Próbálja ki, így a keresési feltételeknek, a lekérdezés szigorúbb.
 
 ### <a name="whats-the-difference-between-deleting-a-resource-group-in-the-azure-portal-and-clicking-delete-on-a-preconfigured-solution-in-azureiotsuitecom"></a>Mi a különbség egy erőforráscsoport Azure Portalról való törlése és azureiotsuite.com webhelyen egy előre konfigurált megoldásban a törlés gombra való kattintás között?
 
-* Ha törli az előkonfigurált megoldás [azureiotsuite.com][lnk-azureiotsuite], az előkonfigurált megoldás létrehozása után kiépített összes erőforrást törli. Ha további erőforrások az erőforráscsoportot, ezeket az erőforrásokat is törlődnek. 
-* Ha törli az erőforráscsoportja a [Azure-portálon][lnk-azure-portal], csak törli az erőforrásokat, az erőforráscsoport. Az Azure Active Directory-alkalmazás az előkonfigurált megoldás társított törölnie kell a [Azure-portálon][lnk-azure-portal].
+* Ha törli az előre konfigurált megoldást [azureiotsuite.com][lnk-azureiotsuite], az előre konfigurált megoldás létrehozásakor megkapott összes erőforrást törli. Ha további erőforrásokat adott az erőforráscsoporthoz, ezeket az erőforrásokat is törli. 
+* Ha törli az erőforráscsoportot a [az Azure portal][lnk-azure-portal], csak az adott erőforráscsoportban lévő erőforrásokat törli. Törli a társított az előre konfigurált megoldás az Azure Active Directory-alkalmazás is van szükség a [az Azure portal][lnk-azure-portal].
 
-### <a name="how-many-iot-hub-instances-can-i-provision-in-a-subscription"></a>Az IoT-központ hány példányban hozhat létre az előfizetést?
+### <a name="how-many-iot-hub-instances-can-i-provision-in-a-subscription"></a>Hány az IoT Hub-példányt adhatok meg egy előfizetést?
 
-Alapértelmezés szerint oszthat [10 IoT-központok előfizetésenként][link-azuresublimits]. Létrehozhat egy [az Azure támogatási jegy] [ link-azuresupportticket] szolgálattól a korlát növelését. Ennek eredményeképpen minden előkonfigurált megoldás látja el egy új IoT Hub, mert csak megadhat egy adott előfizetésben legfeljebb 10 előkonfigurált megoldásokat. 
+Alapértelmezés szerint helyezheti üzembe a [előfizetésenként 10 IoT-központok][link-azuresublimits]. Létrehozhat egy [Azure támogatási jegyet] [ link-azuresupportticket] szolgálattól a korlát növelését. Ennek eredményeképpen minden előre konfigurált megoldás látja el egy új IoT hubot, mivel csak telepíthet egy adott előfizetésben legfeljebb 10 előre konfigurált megoldásokat. 
 
-### <a name="how-many-azure-cosmos-db-instances-can-i-provision-in-a-subscription"></a>Azure Cosmos DB hány példányban lehet kiépíteni egy előfizetésben?
+### <a name="how-many-azure-cosmos-db-instances-can-i-provision-in-a-subscription"></a>Hány Azure Cosmos DB-példányt adhatok meg egy előfizetést?
 
-Ötven. Létrehozhat egy [az Azure támogatási jegy] [ link-azuresupportticket] szolgálattól a korlát növelését, de alapértelmezés szerint csak oszthat előfizetésenként legfeljebb 50 Cosmos DB példányt. 
+Ötven. Létrehozhat egy [Azure támogatási jegyet] [ link-azuresupportticket] szolgálattól a korlát növelését, de alapértelmezés szerint csak kiépíthetők előfizetésenként 50 Cosmos DB-példány. 
 
 ### <a name="how-many-free-bing-maps-apis-can-i-provision-in-a-subscription"></a>Hány ingyenes Bing Térképek API-t adhatok meg egy előfizetésben?
 
-Kettőt. Az Azure-előfizetéssel csak két belső tranzakciók szintjét 1 a Bing Maps vállalati terveket hozhat létre. A távoli figyelési megoldást igényelnek a belső tranzakció szintjét 1 csomaggal alapértelmezett lett kiépítve. Ezért csak legfeljebb két távoli figyelő megoldást adhat meg a nem módosított előfizetésekben.
+Kettőt. Azure-előfizetésben csak két belső tranzakció szintjét 1 a Bing Maps Enterprise-csomagok is létrehozhat. A távoli figyelési megoldásban a belső tranzakció Level 1 csomag alapértelmezés szerint ki van építve. Ezért csak legfeljebb két távoli figyelő megoldást adhat meg a nem módosított előfizetésekben.
 
 ### <a name="i-have-a-remote-monitoring-solution-deployment-with-a-static-map-how-do-i-add-an-interactive-bing-map"></a>Statikus térképpel rendelkező távoli figyelő megoldásom van, hogyan adhatok hozzá interaktív Bing-térképet?
 
-1. A Bing térképek API beszerzése a vállalati QueryKey [Azure-portálon][lnk-azure-portal]: 
+1. A Bing térképek API beszerzése a vállalati querykey értékét a [az Azure portal][lnk-azure-portal]: 
    
-   1. Keresse meg az erőforráscsoportot, ahol a Bing térképek API-t a vállalati van a [Azure-portálon][lnk-azure-portal].
-   2. Kattintson a **összes beállítás**, majd **kulcskezelés**. 
-   3. Két kulcsokat: **főkulcsos** és **QueryKey**. Másolja a következő **QueryKey**.
+   1. Keresse meg az erőforráscsoport, amelyben szerepel a vállalati Bing térképek API a [az Azure portal][lnk-azure-portal].
+   2. Kattintson a **minden beállítás**, majd **kulcskezelés**. 
+   3. Láthatja, hogy két kulccsal: **MasterKey** és **QueryKey**. Másolja az értéket a **QueryKey**.
       
       > [!NOTE]
-      > Nem rendelkezik Vállalati Bing Térképek API-fiókkal? Hozzon létre egyet-egyet a [Azure-portálon] [ lnk-azure-portal] az kattintva + új, a Bing térképek API-t a vállalati, és az útmutatást követve hozzon létre, hogy.
+      > Nem rendelkezik Vállalati Bing Térképek API-fiókkal? Hozzon létre egyet a [az Azure portal] [ lnk-azure-portal] szerint kattintva + új, a Bing Maps API for Enterprise keresése és útmutatást követve hozzon létre.
       > 
       > 
-2. Húzza le a legfrissebb kódot a [Azure IoT-távoli-ellenőrző][lnk-remote-monitoring-github].
-3. Futtassa a helyi vagy felhőalapú üzemelő példány parancssori telepítési útmutatása a tárházban /docs/ mappában. 
+2. Kérje le a legújabb kódot az a [Azure-IoT-Remote-Monitoring][lnk-remote-monitoring-github].
+3. Futtasson helyi vagy felhőbeli telepítést a tárház /docs/ mappájában található parancssori telepítési útmutatást. 
 4. Helyi vagy felhőbeli telepítés futtatása után keresse meg a gyökérmappában az üzembe helyezés alatt létrehozott *.user.config fájlt. Nyissa meg ezt a fájlt egy szövegszerkesztőben. 
-5. Az érték, amelyből másolta felvenni a következő sorban módosítsa a **QueryKey**: 
+5. Módosítsa a következő sort, hogy tartalmazza, amelyet másolt a **QueryKey**: 
    
    `<setting name="MapApiQueryKey" value="" />`
 
 ### <a name="can-i-create-a-preconfigured-solution-if-i-have-microsoft-azure-for-dreamspark"></a>Létrehozhatok előre konfigurált megoldást, ha Microsoft Azure for DreamSpark-fiókom van?
 
 > [!NOTE]
-> Dreamspark révén a Microsoft Azure mostantól a diákok a Microsoft Imagine néven.
+> A Microsoft Azure for DreamSpark most néven ismert Microsoft Imagine diákoknak.
 
-Jelenleg nem hozható létre egy előre konfigurált megoldást egy [dreamspark révén a Microsoft Azure](https://azure.microsoft.com/pricing/member-offers/imagine/) fiók. Azonban létrehozhat egy [ingyenes próba-fiókot az Azure-](https://azure.microsoft.com/free/) mindössze néhány percet, amely lehetővé teszi az előkonfigurált megoldás létrehozása.
+Jelenleg nem hozható létre egy előre konfigurált megoldás egy [Microsoft Azure for DreamSpark](https://azure.microsoft.com/pricing/member-offers/imagine/) fiókot. Létrehozhat azonban egy [ingyenes próbafiókot Azure](https://azure.microsoft.com/free/) mindössze néhány perc alatt, amely lehetővé teszi, hogy hozzon létre egy előre konfigurált megoldás.
 
-### <a name="can-i-create-a-preconfigured-solution-if-i-have-cloud-solution-provider-csp-subscription"></a>Létrehozhatók előkonfigurált megoldás, ha a Cloud Solution Provider (CSP) előfizetés van?
+### <a name="can-i-create-a-preconfigured-solution-if-i-have-cloud-solution-provider-csp-subscription"></a>Létrehozhatok előre konfigurált megoldást, ha a Cloud Solution Provider (CSP) előfizetésem van?
 
-A Cloud Solution Provider (CSP) előfizetést jelenleg nem hozható létre előre konfigurált megoldást. Azonban létrehozhat egy [ingyenes próba-fiókot az Azure-] [ lnk-30daytrial] mindössze néhány percet, amely lehetővé teszi az előkonfigurált megoldás létrehozása.
+Cloud Solution Provider (CSP) előfizetéssel jelenleg nem hozható létre előre konfigurált megoldást. Létrehozhat azonban egy [ingyenes próbafiókot Azure] [ lnk-30daytrial] mindössze néhány perc alatt, amely lehetővé teszi, hogy hozzon létre egy előre konfigurált megoldás.
 
-### <a name="how-do-i-delete-an-azure-ad-tenant"></a>Hogyan törli a Azure AD-bérlő?
+### <a name="how-do-i-delete-an-azure-ad-tenant"></a>Hogyan törölhetek Azure AD-bérlő?
 
-Eric Golpe blogbejegyzésből [bemutató az Azure AD-bérlő törlésével][lnk-delete-aad-tennant].
+Lásd Eric Golpe blogbejegyzését [bemutatója az Azure AD-bérlő törlése][lnk-delete-aad-tennant].
 
 ### <a name="next-steps"></a>További lépések
 
 Megismerheti az IoT Suite előre konfigurált megoldásának egyéb szolgáltatásait és funkcióit is:
 
-* [Előre konfigurált prediktív karbantartási megoldás áttekintése][lnk-predictive-overview]
-* [Előre konfigurált csatlakoztatott gyári megoldási áttekintés](../iot-accelerators/iot-accelerators-connected-factory-overview.md)
+* [Prediktív karbantartási előre konfigurált megoldás áttekintése][lnk-predictive-overview]
+* [Előre konfigurált csatlakoztatott gyár megoldás – áttekintés](../iot-accelerators/iot-accelerators-connected-factory-overview.md)
 * [IoT-biztonság létrehozása az alapoktól][lnk-security-groundup]
 
 [lnk-predictive-overview]:../iot-accelerators/iot-accelerators-predictive-overview.md
-[lnk-security-groundup]:../iot-accelerators/securing-iot-ground-up.md
+[lnk-security-groundup]:/azure/iot-fundamentals/iot-security-ground-up
 
 [link-azuresupportticket]: https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade 
 [link-azuresublimits]: https://azure.microsoft.com/documentation/articles/azure-subscription-service-limits/#iot-hub-limits

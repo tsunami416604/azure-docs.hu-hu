@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/09/2018
+ms.date: 09/11/2018
 ms.author: barbkess
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 17e9616b39491aac01427ee34fb23db556c5c9b9
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: b62679332a45127d7c1a45593c162182886a7150
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44357163"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44719358"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>Attribútum-alapú alkalmazások üzembe helyezése és hatókörének beállítása szűrőket
 Ez a cikk célja, hogy azt ismertetik, hogyan hatókörszűrők használata, amelyek meghatározzák, hogy mely felhasználók lesznek kiépítve, egy alkalmazás Attribútumalapú szabályok meghatározásához.
@@ -111,7 +111,6 @@ Hatókörszűrő vannak konfigurálva, az egyes Azure AD-felhasználó kiépít�
 
 
 ## <a name="related-articles"></a>Kapcsolódó cikkek
-* [Alkalmazások kezelése az Azure Active Directoryban vonatkozó cikkek jegyzéke](../active-directory-apps-index.md)
 * [Felhasználói kiépítésének és megszüntetésének biztosítása az SaaS-alkalmazások automatizálása](user-provisioning.md)
 * [A felhasználók átadásának attribútumleképezések testreszabása](customize-application-attributes.md)
 * [Kifejezések írása attribútumleképezésekhez](functions-for-customizing-application-data.md)

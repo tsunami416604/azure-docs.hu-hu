@@ -1,6 +1,6 @@
 ---
-title: Észlelési - hiba rendellenességek észlelését, és az Application Insightsban intelligens |} Microsoft Docs
-description: Riasztást küld, azt a webalkalmazást a sikertelen kérelmek számát szokatlan változásairól, és diagnosztikai elemzés biztosít. Nincs a konfigurációra nincs szükség.
+title: Intelligens detektálás – rendellenes hibák, az Application Insightsban |} A Microsoft Docs
+description: Riasztást küld a sikertelen kérelmek a webalkalmazás hibaarányának szokatlan módosításokat, és diagnosztikai elemzését nyújtja. Nincsenek konfigurációs van szükség.
 services: application-insights
 documentationcenter: ''
 author: mrbullwinkle
@@ -10,144 +10,146 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/09/2017
-ms.author: mbullwin; yossiy
-ms.openlocfilehash: 29ae81551d4bd4be4123c8e7780b8b5ecc259f09
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.reviewer: yossiy
+ms.author: mbullwin
+ms.openlocfilehash: 1987ebf76f06cb60e8ce1fb5c8215b6520d44d52
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35645723"
 ---
-# <a name="smart-detection---failure-anomalies"></a>Intelligens észlelési - hiba rendellenességek észlelését
-[Az Application Insights](app-insights-overview.md) automatikusan értesíti a felhasználót közel valós idejű Ha a webalkalmazás szokatlan mértékben megnőtt a sikertelen kérelmek számát. Azt észleli, hogy egy szokatlan megnövekedhet a HTTP-kérelmek vagy sikertelenként jelentett függőségi hívások gyakorisága. A kéréseket a sikertelen kérelmek rendszerint rendelkező válaszkódot 400 vagy magasabb. Segítséget osztályozhatja és diagnosztizálhatja a problémát, a hibák és a kapcsolódó telemetriai adatok elemzését az értesítés valósul meg. Az Application Insights portáljáról további elemzés céljából mutató hivatkozásokat is vannak. A szolgáltatás nem beállításról, sem a konfigurációban kell, mert gépi tanulási algoritmusok a normál hibaaránya előre jelezni.
+# <a name="smart-detection---failure-anomalies"></a>Intelligens detektálás – rendellenes hibák
+[Az Application Insights](app-insights-overview.md) automatikus értesítést küld közel valós időben Ha a webalkalmazás a sikertelen kérelmek arányának rendellenes növekedése. Azt észleli, hogy egy szokatlan megnövekedhet a HTTP-kérések vagy sikertelenként jelentett függőségi hívások sebessége. A kéréseket, a sikertelen kérések esetében általában a válaszkódot 400 vagy magasabb. Könnyebben osztályozhatja és diagnosztizálhatja a problémát, jellemzőit, a hibák és a kapcsolódó telemetriai adatok elemzése az értesítés megtalálható. Emellett mutató hivatkozások találhatók az Application Insights portálon további elemzés céljából. A szolgáltatás nincs beállítás és konfiguráció, nem kell, gépi tanulási algoritmusok használatával előrejelezheti a normál hibaszázalék.
 
-Ez a szolgáltatás működik, Java és az ASP.NET web Apps, a felhőben, vagy az Ön saját kiszolgálóin. Azt is működik, bármely alkalmazás, amely hoz létre a kérelem vagy függőségi telemetria - például, ha a feldolgozói szerepkör, amely behívja [TrackRequest()](app-insights-api-custom-events-metrics.md#trackrequest) vagy [TrackDependency()](app-insights-api-custom-events-metrics.md#trackdependency).
+Ez a funkció működik, a Java és az ASP.NET web apps, a felhőben vagy a saját kiszolgálókon. Is működik minden olyan alkalmazás, amely létrehozza a kérés és a függőségi telemetria – például ha egy feldolgozói szerepkör, amely meghívja ezt [TrackRequest()](app-insights-api-custom-events-metrics.md#trackrequest) vagy [TrackDependency()](app-insights-api-custom-events-metrics.md#trackdependency).
 
-Beállítása után [a projekthez az Application Insights](app-insights-overview.md), és az alkalmazás egyes minimális telemetriai adatokat állít elő, ha intelligens tegye a hiba rendellenességek észlelését tart, az alkalmazás normál viselkedése további előtt be kell kapcsolni, és küldhet riasztások 24 óra.
+Miután beállította [a projekt Application Insights](app-insights-overview.md), és az alkalmazása a telemetria bizonyos minimális mennyiségű hoz létre, a megadott rendellenes hibák az intelligens detektálási ismerje meg az alkalmazás normál viselkedését, még mielőtt 24 óráig tart be van kapcsolva, és riasztásokat küldhet.
 
-Íme egy minta riasztás.
+Íme egy példa a riasztás.
 
-![A minta intelligens észleléséről szóló figyelmeztetés a fürt elemzési hiba körül megjelenítő](./media/app-insights-proactive-failure-diagnostics/013.png)
+![Minta intelligens észleléséről szóló figyelmeztetés a fürt elemzési hiba körül megjelenítése](./media/app-insights-proactive-failure-diagnostics/013.png)
 
 > [!NOTE]
-> Alapértelmezés szerint egy rövidebb, mint ebben a példában formátum mail kap. Azonban úgy is [részletes formátuma kapcsoló](#configure-alerts).
+> Alapértelmezés szerint, mint ebben a példában egy rövidebb formátum levelet kap. De [váltson át a részletes formátumban](#configure-alerts).
 >
 >
 
-Figyelje meg, amely jelzi, hogy:
+Figyelje meg, amely megadja, hogy:
 
-* A hibaaránya normál alkalmazása működését képest.
-* Érintett felhasználók számát – így megtudhatja, mennyire foglalkoznia.
-* A hibák társított jellemző mintát. Ebben a példában van egy adott válaszkód, kérés neve (művelet) és az alkalmazás verziója. Amely azonnal megtudhatja, hol keressen a kódban. Egyéb lehetőségek egy megadott böngésző vagy az ügyfél operációs rendszer lehet.
-* A kivétel naplókivonatokat és függőségi hiba (adatbázisok vagy más külső összetevő), amely a megadott hibák társítandó jelennek meg.
-* Az Application Insights telemetria vonatkozó keresés közvetlen hivatkozást.
+* Az os Hibaarány, szemben a alkalmazás normál viselkedését.
+* Hány felhasználó érintett –, hogy tudja, milyen mértékben miatt.
+* A hibák társított jellemző mintát. Az ebben a példában van egy adott válaszkód, a kérés nevét (művelet) és az Alkalmazásverzió. Amely azonnal bemutatja, hol kell elkezdeni keresi a kódban. Egyéb lehetőségek lehet az adott böngésző vagy az ügyfél operációs rendszerrel.
+* A kivétel, naplókivonatok és függőségi hiba (adatbázisok vagy más külső összetevők), amely a megadott hibák társítani kell jelennek meg.
+* Az Application Insights telemetria a megfelelő keresések közvetlen hivatkozást.
 
-## <a name="benefits-of-smart-detection"></a>Intelligens észlelési előnyei
-A szokványos [metrika riasztások](app-insights-alerts.md) jelzi, hogy probléma lehet. De intelligens észlelési elindítja a diagnosztikai megfelelőek Önnek az elemzés, amelyeket egyébként külön saját kezűleg elvégzendő számos végrehajtása. A eredményt el szépen csomagolása, segít a probléma a legfelső szintű gyors eléréséhez.
+## <a name="benefits-of-smart-detection"></a>Intelligens detektálás előnyei
+Szokásos [metrikákhoz kapcsolódó riasztások](app-insights-alerts.md) jelzi, hogy probléma lehet. De intelligens detektálás elindítja a diagnosztikai munka, nagy mennyiségű, egyébként külön kellene Ön megteheti az elemzés végrehajtásához. Az eredmények eligazíthatja csomagolva, kap, annak megakadályozása, hogy gyorsan, a probléma okát.
 
 ## <a name="how-it-works"></a>Működés
-Intelligens észlelési figyeli a telemetriai adatokat kapott az alkalmazásból, és különösen a sikertelen sebességet. Ez a szabály megjeleníti az kérések számát, amelynek a `Successful request` tulajdonság értéke HAMIS, és amelynek hívások függőségi száma a `Successful call` tulajdonság értéke "false". A kéréseket, alapértelmezés szerint `Successful request == (resultCode < 400)` (kivéve, ha egyéni kód írt [szűrő](app-insights-api-filtering-sampling.md#filtering) , vagy a saját [TrackRequest](app-insights-api-custom-events-metrics.md#trackrequest) hívások). 
+Intelligens detektálás figyeli az alkalmazásból, és különösen fogadott telemetriát a hibaarányok. Ez a szabály a kérések száma számolja, amelynek a `Successful request` tulajdonság értéke FALSE (hamis), és az függőségi hívások száma, amelynek a `Successful call` tulajdonság értéke FALSE (hamis). A kéréseket, alapértelmezés szerint `Successful request == (resultCode < 400)` (kivéve, ha egyéni kódot írt [szűrő](app-insights-api-filtering-sampling.md#filtering) vagy létrehozását a saját [TrackRequest](app-insights-api-custom-events-metrics.md#trackrequest) hívások). 
 
-Az alkalmazás teljesítményének rendelkezik egy tipikus mintája működését. Néhány kérelmek vagy függőségi hívások esetében lesz gyakrabban hiba esetén, mint a többire; és a teljes hibaaránya lépjen a terhelés növekedése. Intelligens észlelési gépi tanulási ezek rendellenességeket kereséséhez használja.
+Az alkalmazás teljesítményének működés jellegzetes rendelkezik. Bizonyos kérelmek vagy függőségi hívások lesz jobban a hibák, mint a többi; és a hibák összesített száma a terhelés növekedése előfordulhat, hogy lépjen. Intelligens detektálás gépi tanulási ezek előforduló rendellenességek felderítéséhez.
 
-Telemetriai adatok az Application Insightsban való tartalmazza a webalkalmazás, intelligens észlelési jelenlegi viselkedése összehasonlítja a minta az elmúlt néhány napban látható. Ha egy szokatlan mértékben megnőtt a sikertelen korábbi teljesítmény összehasonlítva, elemzés működésbe lép.
+Telemetria az Application Insightsba származik a webalkalmazás, mivel az intelligens detektálás jelenlegi viselkedése összehasonlítja az elmúlt néhány napban látható minta. Ha a hibák arányának rendellenes növekedése összehasonlítva korábbi teljesítményét, akkor aktiválódik, elemzését.
 
-Elemzés kiváltásakor a szolgáltatás egy fürt analysis végzi, a sikertelen kérelmek, próbálkozzon egy mintát, amely jellemző a hibák azonosításához. A fenti példában az elemzés észlelte, hogy a legtöbb hibák készül-e egy adott eredménykódja, a kérelem neve, a kiszolgáló URL-címe gazdagépet és a szerepkör példánya. Ezzel szemben az elemzés észlelte, hogy az ügyfél operációs rendszer tulajdonsághoz több érték van elosztva, és ezért nem szerepel.
+Elemzés akkor aktiválódik, amikor a szolgáltatás egy fürt analysis végzi, a sikertelen kérelmek használatával próbál mintát értékek írhatók le a hibák azonosításához. A fenti példában az elemzés észlelte, hogy a legtöbb hiba egy adott eredménykód, a kérés nevét, a kiszolgáló URL-címe gazdagépet és a szerepkörpéldány készül. Az elemzés ezzel szemben az észlelte, hogy az ügyfél operációs rendszer tulajdonság több érték van elosztva, és ezért nem jelenik.
 
-Ha a szolgáltatás a telemetriai adatok hívások van tagolva, a a elemző megkeresi kivételt, és az észlelt, és minden nyomkövetési napló társított ezeket a kérelmeket, például a fürt kérelmek társított függőségi hiba.
+A szolgáltatás a hívásokat a telemetriai adatok van kialakítva, az elemző jelenik meg a kivételek és a kapcsolódó kérések a fürtben, azonosította, és minden olyan nyomkövetési naplókat, az ezen kérésekkel kapcsolatos példát függőségi hiba.
 
-Az eredményül kapott elemzés küldött riasztás esetében, kivéve, ha nem konfigurálta.
+Az eredményül kapott elemzés kap, a riasztás, kivéve, ha nem konfigurálta.
 
-Például a [riasztást manuálisan állítsa](app-insights-alerts.md), vizsgálja meg a riasztás állapota, és konfigurálja az Application Insights-erőforrás a riasztások panelen. De egyéb értesítések eltérően nem kell beállítása, vagy intelligens észlelés konfigurálásához. Ha azt szeretné, tiltsa le, vagy módosítsa a cél e-mail címe.
+Például a [riasztások a manuálisan beállított](app-insights-alerts.md), vizsgálja meg a riasztás állapotát, és konfigurálja az Application Insights-erőforrást a riasztások panelén. Azonban más riasztások eltérően nem kell beállítása, vagy intelligens észlelés konfigurálásához. Ha azt szeretné, tiltsa le, vagy módosítsa a cél e-mail-címeket.
 
 ## <a name="configure-alerts"></a>Riasztások konfigurálása
-Intelligens észlelési letiltása, az e-mailek címzettjeinek módosítása, a webhook létrehozása vagy engedélyezve a részletesebb figyelmeztető üzenetek.
+Tiltsa le az intelligens detektálás, módosítsa az e-mail címzettjeit, hozzon létre egy webhookot vagy engedélyezve a részletesebb figyelmeztető üzeneteket.
 
-Nyissa meg a riasztások lapon. Hiba rendellenességeket megtalálható együtt minden riasztást, manuálisan van beállítva, és láthatja, hogy jelenleg a riasztás állapota.
+Nyissa meg a riasztások oldaláról. Rendellenes hibák részét képezi minden riasztást, manuálisan állította, és láthatja, hogy jelenleg a riasztás állapota mellett.
 
-![A áttekintése lapon kattintson a riasztások csempén. Vagy bármely metrikák lapján kattintson a riasztások gombra.](./media/app-insights-proactive-failure-diagnostics/021.png)
+![Az Áttekintés oldalon kattintson a riasztások csempén. Vagy bármely metrikák lapján kattintson a riasztások gombra.](./media/app-insights-proactive-failure-diagnostics/021.png)
 
-Kattintson a riasztásra, konfigurálja.
+Kattintson a riasztás konfigurálásához.
 
 ![Konfiguráció](./media/app-insights-proactive-failure-diagnostics/032.png)
 
-Figyelje meg, hogy az intelligens észlelési letilthatja, de nem törli (vagy hozzon létre egy újat).
+Figyelje meg, hogy az intelligens detektálás letilthatja, de nem törölhető (vagy hozzon létre egy újat).
 
-#### <a name="detailed-alerts"></a>Részletes riasztások
-Ha bejelöli a "Get részletesebb diagnosztikai" az e-mailt további diagnosztikai adatokat fogja tartalmazni. Egyes esetekben képes lesz csak az e-mailben az adatokból a probléma diagnosztizálása érdekében.
+#### <a name="detailed-alerts"></a>Részletes értesítések
+Ha a "Get részletesebb diagnosztikai" lehetőséget választja az e-mailben további diagnosztikai adatokat fogja tartalmazni. Egyes esetekben lesz csak az e-mailben az adatokból a probléma diagnosztizálása érdekében.
 
-Fennáll enyhe, hogy a részletesebb riasztás tartalmazhatnak bizalmas adatokat, mert a kivétel- és nyomkövetési üzeneteket tartalmaz. Azonban ez csak történne a kód lehetővé teheti a bizalmas információk be azokat az üzeneteket.
+Annak a enyhe kockázata, hogy a részletesebb riasztás tartalmazhatnak bizalmas adatokat, mert a kivétel- és nyomkövetési üzeneteket tartalmaz. Azonban ez csak történne a kód teheti lehetővé a bizalmas adatokat, azokat az üzeneteket.
 
-## <a name="triaging-and-diagnosing-an-alert"></a>Triaging és figyelmeztetés diagnosztizálásával
-Egy riasztás azt jelzi, hogy szokatlan mértékben megnőtt a sikertelen kérelmek aránya az észlelt. Valószínű, hogy nincs-e az alkalmazás vagy a környezet kapcsolatos problémára.
+## <a name="triaging-and-diagnosing-an-alert"></a>Osztályozása és diagnosztizálása a riasztást
+Riasztás azt jelzi, hogy a rendszer észlelte a meghiúsult kérelmek arányának rendellenes növekedése. Valószínű, hogy nincs-e az alkalmazás vagy a környezettel kapcsolatos problémára.
 
-Abból a kérelmek és az érintett felhasználók számát mutatja eldöntheti, hogyan sürgős a probléma van. A fenti példában 22,5 % sikertelenségének arányát 1 % a normál értéket összehasonlítja, azt jelzi, hogy valami rossz van folyamatban. Másrészről csak 11 felhasználók is hatással volt. Amennyiben az alkalmazást, akkor tudná annak ellenőrzéséhez, hogy ez.
+A kérelmek és az érintett felhasználók számának százalékos aránya eldöntheti, hogyan sürgős a probléma van. A fenti példában hibásodik meg 22,5 % 1 % normál arány hasonlítja össze, azt jelzi, hogy rossz hiba történik. Másrészről csak 11 felhasználót érintett. Az alkalmazás azt is, ha tudná, annak ellenőrzéséhez, hogy komoly ez.
 
-Sok esetben lesz gyorsan a a kérés nevét, a kivétel megadott függőségi hiba és nyomkövetési adatok a probléma diagnosztizálása érdekében.
+Sok esetben lesz gyorsan a a kérés nevét, a kivétel, a megadott függőségi hiba- és nyomkövetési adatok a probléma diagnosztizálása érdekében.
 
-Léteznek bizonyos más keresik. Például ebben a példában a függőségi hibaaránya megegyezik a kivétel gyakorisága (89.3 %). Ez azt sugallja, hogy a kivétel ered közvetlenül a függőségi hiba - felkínálva egy tiszta meghatározni, hogy hol keressen a kódban.
+Vannak bizonyos a keresőmotorok. Ha például a függőségi hibák száma ebben a példában ugyanaz, mint a kivételek sebessége (89.3 %). Ez azt sugallja, hogy a kivétel ered közvetlenül a függőséghibák – így világos képet arról, hol kell elkezdeni keresi a kódban.
 
-Vizsgálja meg a további, az egyes szakaszokban szereplő hivatkozásokkal azonnal egy [keresőoldalt](app-insights-diagnostic-search.md) a vonatkozó kérések, a kivételt, a függőségekkel vagy a nyomkövetési adatokat szűrve. Vagy megnyithatja a [Azure-portálon](https://portal.azure.com), keresse meg az Application Insights-erőforrást az alkalmazáshoz, és a hibák panel megnyitásához.
+További vizsgálathoz a az egyes szakaszokban hivatkozásokkal közvetlenül, egy [keresőoldalán](app-insights-diagnostic-search.md) vonatkozó kérelmek, kivételek, függőségi vagy nyomkövetések szűrve. Vagy megnyithatja a [az Azure portal](https://portal.azure.com), keresse meg az Application Insights-erőforrást az alkalmazáshoz, és a hibák panel megnyitásához.
 
-Ebben a példában az "Függőség hibák részleteinek megtekintése" hivatkozásra kattintva megnyílik az Application Insights search paneljét. Azt mutatja, hogy az SQL-utasítást, amely rendelkezik az alapvető ok példát: NULL érték lett megadva a kötelező mezőket, és nem felelt meg a mentés során érvényesítési műveletet.
+Ebben a példában az "A függőségi hibák részleteinek megtekintése" hivatkozásra kattintva megnyílik az Application Insights keresés panelen. Azt mutatja, hogy az SQL-utasítást, amely egy példa az alapvető ok: NULL érték lett megadva a kötelező mezők, és nem felelt meg az ellenőrzés során a mentési művelet.
 
 ![Diagnosztikai keresés](./media/app-insights-proactive-failure-diagnostics/051.png)
 
-## <a name="review-recent-alerts"></a>Tekintse át a legújabb riasztások
+## <a name="review-recent-alerts"></a>Tekintse át a legutóbbi riasztások
 
-Kattintson a **intelligens észlelési** a legutóbbi riasztás eléréséhez:
+Kattintson a **intelligens detektálás** a legutolsó riasztás beolvasásához:
 
 ![Riasztások szerint](./media/app-insights-proactive-failure-diagnostics/070.png)
 
 
-## <a name="whats-the-difference-"></a>Mi a különbség a...
-Intelligens tegye a hiba rendellenességek észlelését más hasonló kiegészíti az Application Insights de különböző funkcióit.
+## <a name="whats-the-difference-"></a>Mi a különbség...
+Rendellenes hibák az intelligens detektálási más hasonló kiegészíti az Application Insights azonban különböző funkcióit.
 
-* [Metrika riasztások](app-insights-alerts.md) -beállításokat, és figyelheti azokat a metrikák például CPU Foglaltság kérelem díjszabás, lapbetöltési idők vagy stb. Figyelmezteti, például, ha szeretné-e rendeljen több erőforrást használhatja őket. Intelligens tegye a hiba rendellenességek észlelését ellentétben kritikus metrikák (jelenleg csak a sikertelen kérelmek aránya), kis számos értesítése közel valós idejű módon, ha a webalkalmazás nem felelt meg a kérelmek aránya növeli a webes alkalmazás ezek normál viselkedése képest jelentősen ismerteti.
+* [Metrikákhoz kapcsolódó riasztások](app-insights-alerts.md) -beállításokat, és figyelheti a mérőszámokat, például a CPU-os foglaltságnál tart, kérelemarányok, lapbetöltési idők és így tovább széles skáláját. Figyelmezteti, például, ha szeretné-e további erőforrások hozzáadásához használhatja őket. Ezzel szemben az intelligens észlelés a rendellenes hibák ismerteti a kritikus metrikák (jelenleg csak meghiúsult kérelmek arányának), kis számos, a közel valós idejű módon, ha a webalkalmazás nem sikerült a kérelem aránya nő, a web app képest jelentősen értesítése Normál viselkedése.
 
-    Intelligens észlelési automatikusan beállítja az adott válasz érvényes feltételek küszöböt.
+    Intelligens észlelés automatikusan igazodik az uralkodó feltételekre válaszul küszöböt.
 
-    Intelligens észlelési elindítja a diagnosztikai megfelelőek Önnek.
-* [A teljesítményanomáliákat észlelése intelligens](app-insights-proactive-performance-diagnostics.md) is által használt számítógép felderítése szokatlan minták a metrikákat, az eszközintelligencia, és Ön beállításokra nincs is szükség. De intelligens tegye a hiba rendellenességek észlelését, ellentétben a teljesítményanomáliákat intelligens kimutatása célja, hogy a használati gyűjtőcső, előfordulhat, hogy rosszul szolgáltatott – például adott lap szegmensek található böngésző adott típusú. Az elemzés naponta történik, és ha eredményt, valószínűleg kevesebb sokkal sürgetőbb, mint a riasztást. Ezzel szemben az elemzést, a hiba rendellenességeket a bejövő telemetria folyamatosan történik, és értesítést fog kapni percen belül a vártnál nagyobb server hiba sebesség esetén.
+    Intelligens detektálás elindítja a diagnosztikai megfelelő az Ön számára.
+* [Intelligens detektálás a rendellenes teljesítményről](app-insights-proactive-performance-diagnostics.md) is a használja gépi intelligencia a metrikákat a szokatlan minták felderítését, és Ön konfiguráció nélkül nem szükséges. De eltérően az intelligens rendellenes hibák észlelése, a rendellenes teljesítményről intelligens detektálás célja a használat gyűjtőcső, előfordulhat, hogy a program rosszul kiszolgálása az internetszolgáltatójuk – például az oldalakat a szegmensek megtalálja a böngészőben egy adott típusú. Az elemzés naponta történik, és ha minden eredmény található, valószínű, hogy sokkal kevésbé sürgős, mint a riasztást. Ezzel szemben az elemzést, a rendellenes hibák folyamatosan történik a bejövő telemetriát, és értesíteni fogjuk percen belül a vártnál nagyobb kiszolgáló hibaarányok esetén.
 
-## <a name="if-you-receive-a-smart-detection-alert"></a>Ha egy intelligens észleléséről szóló figyelmeztetés jelenik meg
-*Miért megkapta a riasztást?*
+## <a name="if-you-receive-a-smart-detection-alert"></a>Ha egy intelligens detektálási riasztás
+*Miért kapott ezt a riasztást?*
 
-* Szokatlan mértékben megnőtt a sikertelen kérelmek aránya az előző időszak normál alaptervhez képest észleltük. A hibák és a kapcsolódó telemetriai elemzést követően úgy tűnik, hogy probléma merül fel, hogy be kell keresnie.
+* Azt észleltük, hogy a megelőző időszak normál alapkonfigurációhoz viszonyított sikertelen kérelmek arányának rendellenes növekedése. A hibák és a kapcsolódó telemetria az elemzést úgy tűnik, hogy probléma merül fel, hogy be kell keresnie.
 
-*Az értesítés jelent problémát mindenképpen rendelkezik?*
+*Az értesítés jelenti egyértelműen fennáll a probléma?*
 
-* A Microsoft app megszakítása vagy teljesítménycsökkenése riasztás próbálkoznak, hanem csak is teljes mértékben tisztában a szemantikáját, és az alkalmazás vagy a felhasználók gyakorolt hatás.
+* Megpróbáljuk riasztás alkalmazás megszakítása vagy teljesítményromlását tapasztalja, de csak is megértette a szemantika és a az alkalmazás vagy a felhasználók gyakorolt hatást.
 
-*Igen guys megnézzük adataimat?*
+*Tehát fedjen fel meg, így az adataimat?*
 
-* Nem. A szolgáltatás nem teljesen automatikus. Csak az értesítéseket kap. Az adatok [titkos](app-insights-data-retention-privacy.md).
+* Nem. A szolgáltatás nem teljesen automatikus. Csak az értesítéseket kap. Az adatok [privát](app-insights-data-retention-privacy.md).
 
-*Ezt a riasztást fizessen elő kell?*
+*Ez a riasztás feliratkozás kell?*
 
-* Nem. Minden, hogy a küld telemetriai kérelem alkalmazásnak az intelligens észlelési riasztási szabály.
+* Nem. Minden alkalmazáshoz, hogy a küld telemetriai kérelem az intelligens detektálási riasztási szabály tartozik.
 
-*Leiratkozhat vagy a saját munkatársak helyette küldött értesítéseket?*
+*Előfizetés lemondása vagy a saját munkatársak inkább küldött értesítések?*
 
-* Igen, a riasztási szabályok, kattintson az intelligens észlelési szabály konfigurálását. A riasztás letiltása, vagy módosítsa az értesítés címzettjeit.
+* Igen, a riasztási szabályok, kattintson az intelligens detektálási szabályra konfigurálásához. A riasztás letiltása, vagy módosítható a címzettek a riasztás.
 
-*Az e-mailt elvész. Hol található az értesítéseket a portálon?*
+*Megszakadt az e-mailt. Hol található az értesítéseket a portálon?*
 
-* A tevékenység naplózva. Az Azure nyissa meg az Application Insights-erőforrást az alkalmazáshoz, majd válassza a tevékenységi naplóit.
+* A Tevékenységnaplókban. Az Azure-ban nyissa meg az Application Insights-erőforrást az alkalmazáshoz, majd válassza a vizsgálati naplók.
 
-*A riasztások vannak ismert problémákról, és nem kívánom a fogadásukra.*
+*A riasztások néhány ismert problémákról, és nem kívánom a fogadásukra.*
 
-* A várakozó fájlok számát a riasztás letiltását van.
+* A várakozó fájlok számát a riasztás letiltása van.
 
 ## <a name="next-steps"></a>További lépések
-A diagnosztikai eszközök segítségével vizsgálja meg az alkalmazás a telemetriai adatok:
+Ezek a diagnosztikai eszközök segítséget nyújt az alkalmazásából származó telemetriai adatok vizsgálata:
 
 * [Metrika explorer](app-insights-metrics-explorer.md)
-* [Keresési ablak](app-insights-diagnostic-search.md)
-* [Elemzés - hatékony lekérdezési nyelv](app-insights-analytics-tour.md)
+* [A keresési ablak](app-insights-diagnostic-search.md)
+* [Analytics – erőteljes lekérdezési nyelv](app-insights-analytics-tour.md)
 
-Intelligens észlelések rendszer teljesen automatikus. De lehet, hogy milyen néhány további riasztások beállítása?
+Az intelligens észlelés teljesen automatikus. De esetleg szeretné néhány további riasztásokat állíthat be?
 
-* [Manuálisan konfigurált metrika riasztások](app-insights-alerts.md)
-* [A webteszt rendelkezésre állása](app-insights-monitor-web-app-availability.md)
+* [Manuálisan konfigurált metrikákhoz kapcsolódó riasztások](app-insights-alerts.md)
+* [Rendelkezésre állási webes tesztek](app-insights-monitor-web-app-availability.md)

@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/28/2018
+ms.date: 09/11/2018
 ms.author: jingwang
-ms.openlocfilehash: 1afd64fbd7019164f0e1f5c850f2dcd8250cdbfc
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: eb290dffd7bdd86b9776d4f30b6fd09a2a952a46
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39600336"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44720021"
 ---
 # <a name="copy-data-to-or-from-azure-cosmos-db-using-azure-data-factory"></a>Adatok másolása, vagy az Azure Cosmos DB az Azure Data Factory használatával
 
@@ -34,10 +34,14 @@ Adatok másolása az Azure Cosmos DB az összes támogatott fogadó adattárba, 
 
 Pontosabban az Azure Cosmos DB-összekötő támogatja:
 
-- A cosmos DB [SQL API](https://docs.microsoft.com/azure/cosmos-db/documentdb-introduction).
+- Adatok másolása Azure blobból vagy az, Cosmos DB [SQL API](https://docs.microsoft.com/azure/cosmos-db/documentdb-introduction).
+- Írja be a Cosmos DB INSERT vagy UPSERT.
 - Mint a JSON-dokumentumok importálása/exportálása –, vagy adatok másolása Azure blobból vagy az tabulált adatkészlet például az SQL database, a CSV-fájlok, stb. Másolja ki a dokumentumok-van és- tárolókról JSON-fájlokat, vagy egy másik Cosmos DB-gyűjtemények, lásd: [Import/Export JSON-dokumentumok](#importexport-json-documents).
 
 A Data Factory integrálható [Cosmos DB tömeges végrehajtó könyvtár](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started) írása az Cosmos DB-be a legjobb teljesítményt biztosítja.
+
+>[!TIP]
+>Tekintse meg [ebben a videóban](https://www.youtube.com/watch?v=5-SRNiC_qOU&t=760s) amely végigvezeti az adatok másolása az Azure Blob storage-ból a Cosmos DB-hez és teljesítmény-finomhangolási szempontjai általában tölt be adatot az Cosmos DB-be.
 
 ## <a name="getting-started"></a>Első lépések
 
@@ -123,7 +127,7 @@ Adatok másolása az Azure Cosmos DB, állítsa be a forrás típusaként a más
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység forrása type tulajdonsága értékre kell állítani: **DocumentDbCollectionSource** |Igen |
-| lekérdezés |Adja meg a Cosmos DB-lekérdezés adatokat olvasni.<br/><br/>Példa: `SELECT c.BusinessEntityID, c.Name.First AS FirstName, c.Name.Middle AS MiddleName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |Nem <br/><br/>Ha nincs megadva, az SQL-utasítást, amely hajtja végre: `select <columns defined in structure> from mycollection` |
+| lekérdezés |Adja meg a Cosmos DB-lekérdezés adatokat olvasni.<br/><br/>Például: `SELECT c.BusinessEntityID, c.Name.First AS FirstName, c.Name.Middle AS MiddleName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |Nem <br/><br/>Ha nincs megadva, az SQL-utasítást, amely hajtja végre: `select <columns defined in structure> from mycollection` |
 | nestingSeparator |Speciális karakter jelzi, hogy a dokumentum van beágyazva, és hogyan flattern az eredményt állítsa.<br/><br/>Például, ha a Cosmos DB-lekérdezés beágyazott eredményt ad vissza `"Name": {"First": "John"}`, a másolási tevékenység azonosítsa oszlop neve "Name.First", "János" értékkel a nestedSeparator pont. |Nem (alapértelmezett érték a pont `.`) |
 
 **Példa**

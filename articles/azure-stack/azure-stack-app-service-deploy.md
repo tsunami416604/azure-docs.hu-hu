@@ -12,14 +12,14 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2018
+ms.date: 09/12/2018
 ms.author: anwestg
-ms.openlocfilehash: 9e868788d0cf3b3c0f2f30095388046f64ced71c
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: ae742bbe1e5b751a8a8cabf378afd049728c3b8a
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44378540"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44717505"
 ---
 # <a name="add-an-app-service-resource-provider-to-azure-stack"></a>Az App Service erőforrás-szolgáltató hozzáadása az Azure Stackhez
 
@@ -228,7 +228,7 @@ Miután telepíti és regisztrálja az App Service erőforrás-szolgáltatót, t
 
 Hozzon létre egy webes tesztalkalmazás, kövesse az alábbi lépéseket:
 
-1. Válassza ki az Azure Stack-bérlői portálon **új** > **Web + mobil** > **webalkalmazás**.
+1. Az Azure Stack felhasználói portálon, válassza ki a **+ erőforrás létrehozása** > **Web + mobil** > **webalkalmazás**.
 
 2. A **webalkalmazás**, adjon meg egy nevet a **webalkalmazás**.
 

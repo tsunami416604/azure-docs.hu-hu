@@ -1,6 +1,6 @@
 ---
-title: Az Azure SQL adatbázis Azure esettanulmány - Snelstart |} Microsoft Docs
-description: Hogyan SnelStart SQL adatbázist használ az üzleti szolgáltatások 1000 új Azure SQL-adatbázisok havi gyakorisággal gyorsan kibontva megismerése
+title: Az Azure SQL Database Azure esettanulmány - Snelstart |} A Microsoft Docs
+description: Ismerje meg hogyan SnelStart az SQL Database használatával gyorsan kibontva szolgáltatásait 1000 új Azure SQL-adatbázis havi díj
 services: sql-database
 author: CarlRabeler
 manager: craigg
@@ -9,96 +9,96 @@ ms.custom: reference
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: carlrab
-ms.openlocfilehash: 6a82c57f3540aaf160a61fd5fe3b01919dd9109e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: c919a3cb47017d2f65b141e358ab318f4b764627
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34649125"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44713714"
 ---
-# <a name="with-azure-snelstart-has-rapidly-expanded-its-business-services-at-a-rate-of-1000-new-azure-sql-databases-per-month"></a>Az Azure-SnelStart gyorsan bővített 1000 új Azure SQL-adatbázisok havi gyakorisággal az üzleti szolgáltatás
+# <a name="with-azure-snelstart-has-rapidly-expanded-its-business-services-at-a-rate-of-1000-new-azure-sql-databases-per-month"></a>Az Azure-ban rendelkezik a snelstart szolgáltatásait 1000 új Azure SQL-adatbázis havi díj
 ![SnelStartLogo](./media/sql-database-implementation-snelstart/snelstartlogo.png)
 
-SnelStart Hollandia népszerű pénzügyi - és üzleti-kezelési szoftver a kis - és közepes méretű vállalkozások számára (SMB) hoz. A személyzet 110 alkalmazottak, beleértve az informatikai részleg 35 által kiszolgált 55,000 ügyfeleinek. Asztali szoftverek áthelyezése egy szoftver,--szolgáltatás (SaaS) épülő Azure ajánlat, által az SnelStart végrehajtott beépített szolgáltatások többsége megszokott környezetben a C# segítségével, és a teljesítmény és méretezhetőség optimalizálása sem felett vagy alatt-átadásának rugalmas készleteket használó vállalatok által felügyeletének automatizálására. SnelStart Azure segítségével biztosítja a helyszíni és a felhő közötti áthelyezése ügyfelek rugalmasság.
+Hollandia SnelStart teszi népszerű pénzügyi - és a business-kezelési szoftver a kis - és közepes méretű vállalkozások számára (SMB). A személyzet 110 alkalmazottai, beleértve az informatikai részleg 35 55,000 ügyfeleinek szolgált. Asztali szoftverek áthelyezését egy Azure-alapú szoftver--szolgáltatásként (SaaS-) ajánlat, amelyet SnelStart készült a legtöbb beépített szolgáltatásokat, ismerős környezetben használata a C#-ban, és a teljesítmény és méretezhetőség optimalizálása által sem over - felügyelet automatizálása vagy rugalmas készleteket használó, kiépítés alatt vállalkozások. SnelStart használja az Azure biztosít a helyszíni és a felhő között mozgó ügyfelek a rugalmasság.
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-SQL-Database-Case-Study-SnelStart/player]
 > 
 > 
 
-## <a name="why-snelstart-extended-services-from-the-desktop-to-the-cloud"></a>Miért SnelStart kibővített szolgáltatások az asztalról a felhőbe
-> "Az Azure-ral működő azt jelenti, hogy azt is kézbesíti szoftver gyorsabb, gyorsan reagálni az ügyfél terhelésekig és méretezhető megoldás, amikor iránti igények kielégítése érdekében."
+## <a name="why-snelstart-extended-services-from-the-desktop-to-the-cloud"></a>Miért SnelStart kiegészítő szolgáltatások az asztalról a felhőbe
+> "Az Azure-ral működő azt jelenti, hogy még gyorsabban szállíthat szoftvereket, gyorsan reagálni az ügyféligényekre, és méretezni a megoldásokat, amikor az igények növekedésével párhuzamosan."
 > 
-> – Henry lett, a szoftver felelős mérnök
-> 
-> 
-
-SnelStart lefutott egy sikeres szoftver üzleti évig, egy hagyományos fejlesztési modellel: code csomagot, küldje el, majd ismételje meg. Adott idő alatt, a módosítás következményeivel tempójában nőtt, gyorsabb és gyorsabb. Szabályzat gyakran változó, és ügyfelek pénzügyi rekordok feldolgozásához, és együttműködik a könyvelők és kormányzati tartani ezeket a módosításokat a könnyebb módja szükséges.
-
-"Vevők szállítási szoftver volt költséges és korlátozó," Henry lett, a szoftver felelős mérnök megfelelően. "Éles csomagolás és szállítási költségek korlátozott azt sikerült a gyakoriságát kibocsátási szoftver. Le kellett rendszeres szállítására csomag frissítéseinek, de, amely teszik a felhasználók változó igényeihez rögzített. Azt sikerült soha nem biztos lehet benne, hogy ügyfeleink a termék a legújabb verzióra frissíteni. Ezért le kellett támogatja több verzióit, így nagyon nehéz lenne, valamint a támogatási feladat."
-
-Nincs ad hozzá, "program és a kiadás frissítéseket egy gyorsított, hogy meg akartunk lépést, így azt nem sikerült innovációját gyorsabb és az ügyfelek érdekében új szolgáltatások létrehozására. Is meg akartunk egy módszerre, amellyel a felhasználók üzleti-címfelügyeleti szükségletek egyszerűsítése érdekében további folyamatok automatizálása."
-
-A SnelStart az volt a megoldás számára a szolgáltatások egy felhőalapú Szolgáltatottszoftver-szolgáltató váljon. Az Azure SQL Database platform segített SnelStart érheti el a fő az informatikai részleg terhelését, amely egy infrastruktúra--a-szolgáltatásként (IaaS) megoldás lenne szükség nélkül.
-
-A felhő-modell azt is lehetővé teszi, hogy a SnelStart javítsa ki a hibákat, és új lehetőségeket biztosítanak, gyorsan, anélkül, hogy az ügyfelek letöltése és szoftverfrissítésre kellene. A következők szerint van, a "Using Azure cloud services csomag lehetővé teszi, hogy gyorsan a változó követelmények harmadik felek által kezelhető. Küldje el az új verzió ügyfelek több ezer ahelyett, hogy módosíthatja harmadik felek által igényelt új formátumok az asztali alkalmazás által küldött adatokat."
-
-## <a name="a-modern-company-with-traditional-roots"></a>A hagyományos gyökérrel rendelkező modern vállalati
-SnelStart szerény gyökerek 1964, amikor a is indítja el a vállalati zenei szolgáltatás részek a gyártó a elrendeli a modern, a gyors, a csúcstechnológiai üzleti. A szív SnelStart szoftver üzleti valóban lépések során a személyi számítógép elterjedése 1980-as években, a zúzása. A vállalat jobb megoldás, mint a nyilvántartási szoftverrel időpontjában, szükségesek, így a saját kezébe kérdések által. A vállalat 1982, mi végül válna SnelStart nyilvántartási szoftver építkezve hozott létre. A Start és a szoftver az egyszerűség és sebesség lett admired –, hogy a vállalati végül fókusz megváltozott, és magát a szoftver vállalatba reinvented túl nagy.
-
-SnelStart 1995-ben jelent meg az első könyvelés alkalmazás Windows. Az alkalmazás, a Microsoft Visual Basic 1.0-s és a Microsoft Access-adatbázisok épül segített nő az ügyfél több mint 5000 felhasználója alap.
-
-Napjainkban SnelStart egy fő szolgáltató holland SMB és az önálló dinamikus irányuló üzleti-felügyeleti alkalmazás és az üzletági (LOB). Carlo Kuip, informatikai rendszerfejlesztők szerint, mert "célunk 100 %-os automation üzleti-felügyeleti szolgáltatások adhatunk ügyfeleink számára."
-
-## <a name="optimizing-performance-and-cost-with-elastic-pools"></a>Teljesítmény és a rugalmas készletek költséget optimalizálása
-SnelStart rugalmas készletek nagyméretű korai alkalmazó volt. Rugalmas készletek segít a vállalat költségek korlátozására és a teljesítményre vonatkozó követelmények hatékonyabban kezelheti. A következők szerint van "rugalmas készletek használatával azt is optimalizálhatja teljesítményét a túlzott kiosztása nélkül a felhasználók igényeit. Ha le kellett kiépítése csúcsterhelés alapján, elég költséges lenne. Ehelyett megoszthatók az erőforrások között, több alacsony kihasználtságú adatbázisok lehetővé teszi, hogy is végez, és költséghatékony megoldás létrehozása. "
-
-## <a name="azure-sql-databases-help-containerize-data-for-isolation-and-security"></a>Az Azure SQL-adatbázisok súgó containerize elkülönítési és biztonsági adatait
-Az Azure SQL Database lehetővé teszi, hogy a SnelStart egyszerűen és könnyen áthelyezése ügyfelek helyszíni üzleti-felügyeleti adatokat az Azure-bA. Az Azure SQL Database egy kényelmes tároló, amely elszigetelésére, a határ hitelesítési, engedélyezési és egyszerű biztonsági mentési és visszaállítási képességeket biztosítja. Adatbázisok jól alkalmazható fogalmi modell üzleti felügyeleti adja meg. Megfelelően Carlo Kuip, informatikai rendszerfejlesztők "tartalmazhatnak bizalmas adatokat, amelyek a kritikus fontosságú üzleti a tároló határon belül, és egy elkülönített adatbázis tárolási elemeket biztosít védelme. Azt is fiókonkénti az adatbázis szintjén, és anélkül, hogy az adatbázis-rendszergazdák (DBAs) személyzeti még automatikus kezelését és ezeknek az adatbázisoknak a kibővített."
-
-Az SQL Data Warehouse is szerepet játszik a SnelStart biztonságot és felügyeletet szövegegység hogy segítséget nyújt a vállalati gyűjt telemetrikus adatokat, például a behatolás-észlelés, a felhasználó naplózása és a kapcsolatokat.
-
-## <a name="azure-removes-overhead-so-that-developers-can-spend-more-time-delivering-value"></a>Azure terhet eltávolítja az, hogy a fejlesztők is időt több érték továbbítása
-Az Azure platformon modell infrastruktúra terhelés eltávolítva, és C# kezelési kódtárakat telepítések automatizálásához SnelStart engedélyezve. Kuip szerint, mert "sikerült és egyidejűleg növelni a méretezhetőséget, a sebesség és a vész helyreállítási beállítások érhetők el az ügyfelek az aktuális műveletek nagyon kis személyzet nő. A shift erőforrások új szolgáltatások és funkciók helyett csak a meglévő kódot tartani az új szabályoknak vagy kódokat frissítése felszabadulnak szolgáltatások fejlesztéséhez." Hozzáad, "Ha felügyeletének automatizálására, ezzel az ajánlat lehet több érték képes biztosítani az ügyfelek számára anélkül, hogy a műveleti személyzet nagy beruházásokat SaaS." Például az Azure és a rugalmas készletek használatával SnelStart tudta felvenni új szolgáltatások, például bankokhoz, sokkal hatékonyabban ügyféladatok integrációja számos új számlázási szolgáltatások kisvállalati átvilágítást és e-mailek szolgáltatások.
-
-> "Csak az első néhány hónappal 2016, azt az Azure SQL Database telepítések körülbelül 5,500 legfeljebb 12 000 kibontva, és azt jelenleg visszaigazolása havonta körülbelül 1000 adatbázisok."
-> 
-> – Henry lett, a szoftver felelős mérnök
+> – Henry Been, Szoftvertervező
 > 
 > 
 
-Adatbázis-felügyeleti további automatizálható, ha a rugalmas feladatok szolgáltatással. Kuip szerint, mert "magas Köszönjük adatbázisok az SQL DB [kiszolgáló] példányán automatikus felderítését." Ez lehetővé teszi a felügyeleti műveletek végrehajtása a dinamikusan növekvő vásárlói bázisunk nélkül többletterhelést között SnelStart.
+SnelStart futott sikeres szoftvervállalkozások életébe éve, a hagyományos fejlesztési modell használatával: code csomag, terjesztésére, majd ismételje meg. Az idő múlásával a változtatás ütemben nőtt, gyorsabb és gyorsabb. Szabályzat gyakran módosulnak, és az ügyfelek szükség könnyebben módon dolgozza fel a pénzügyi rekordok, és együttműködni a accountants és kormányzati tartani ezeket a módosításokat.
 
-SnelStart is fejleszti az API-k, amelyek a felhasználói adatok és a harmadik féltől származó szoftverek partnerek által létrehozott alkalmazások közötti közvetítőként működik. Kuip állapotok, mint "Ez az API lehetővé teszi más gyártók funkció hozzáadása szoftvereket, például az adatbevitel számlák és egyéb dokumentumokat kiküszöbölése." Az ügyfelek már nem kell manuálisan írja be a számlák azok kisvállalati nyilvántartási szoftver; a SnelStart szoftver közvetlenül cserélnek a szükséges információkat. Ez lehetővé teszi az ügyfelek az üzleti-felügyeleti feladatok és az ökoszisztéma, amely az iparág digitális átalakítása az egyre inkább csatlakozni.  
+"Az ügyfelek számára a szállítási címhez tartozó szoftver volt költséges és korlátozó," Henry Been, szoftvertervező megfelelően. "Éles, csomagolási és kézbesítési költségek korlátozva lehetett milyen gyakran kiadunk szoftverfrissítési. A csomag frissítéseinek rendszeres szállítmányok kellett, de, amely tette rögzített ügyfeleinknél változó igényeknek. A Microsoft sikerült soha nem biztos lehet abban, hogy ügyfeleink a termék a legújabb verzióra frissíteni. Ezért becsületessége támogatja több verzió, így a támogatási feladat nagyon nehéz jól."
 
-## <a name="how-azure-services-enable-saas-for-snelstart"></a>Hogyan Azure-szolgáltatások engedélyezése SaaS SnelStart
-Azure használatával SnelStart ki tud szolgálni az ügyfelek és a könyvelők többet zökkenőmentesen a felhőben. Például az ügyfelek és a könyvelők információkat oszthat meg az Azure-on tárolt SnelStart tartozó ügyfél API közvetlen elérésével. Kuip állapota "újrafelhasználható szolgáltatásokról az ügyfélkapcsolati web apps, és adja meg a közös infrastruktúrát és hozzáférhet a vállalati felügyeleti az ügyfelek és a harmadik felek szoftvereivel, az ügyfelek által használt funkciók. Például a termék-konfiguráció képességek biztosítása, tűzfal-szabályok kezelése és a hosszú futású folyamatokat, például biztonsági másolatok kezelése. "
+Lett ad hozzá, "kívántuk program és -kiadási frissítések: egy gyorsított lépést, így azt sikerült gyorsabban végezhet innovációt, és hozzon létre új szolgáltatásokat ügyfeleink számára. Is kívántuk ügyfeleink üzleti-címfelügyeleti szükségletek egyszerűsítése érdekében további folyamatok automatizálásához."
 
-> Célunk 100 %-os automation üzleti-felügyeleti szolgáltatások adhatunk ügyfeleink számára." 
+A SnelStart a szolgáltatások kiterjesztésére egy felhőalapú SaaS-szolgáltató válva volt a megoldás. Az Azure SQL Database platform segítségével érheti el anélkül, hogy lenne szükség egy infrastruktúra--szolgáltatásként (IaaS) megoldás fő IT-részlegre SnelStart.
+
+A felhőalapú modell azt is lehetővé teszi, hogy a SnelStart hibajavítás és új funkciók gyorsan, anélkül, hogy töltse le és szoftverfrissítésre ügyfeleket. A következők szerint lett, "Using Azure cloud services lehetővé teszi számunkra, hogy a gyors reagáláshoz harmadik felektől származó követelményeinek megváltoztatása. Ahelyett, hogy küldje el az új verzió a több ezer ügyfelünk, hogy tesztkörnyezetéhez harmadik felek által igényelt új formátumba az asztali alkalmazás által küldött adatokat."
+
+## <a name="a-modern-company-with-traditional-roots"></a>A hagyományos gyökerek modern vállalati
+SnelStart rajongóiból gyökerek elrendeli 1964, amikor alapítóival indítja el a vállalat egy gyártó zenei eszköz részek a modern, Agilis, csúcskategóriás műszaki cége. A SnelStart szoftvervállalkozások életébe küldetése valóban lépések során a személyi számítógép elterjedésével a 1980-as években a zúzása. A vállalat ideig tartott-e a saját kezébe kérdések jobb megoldás, mint az időben, a könyvelési szoftverek szükség. A vállalat 1982 létrehozott alapját a mi SnelStart nyilvántartási szoftver idővel válnak. A kezdetektől a szoftver esetében az egyszerű és gyors módon lett admired – ennél jóval, hogy a vállalat végül fókusz megváltozott, és reinvented magát egy szoftvercég be.
+
+SnelStart 1995-ben, amely az első Windows-nyilvántartási alkalmazás. Az alkalmazás a Microsoft Visual Basic 1.0-s és a Microsoft Access-adatbázisok, épülő segítségével növelje az ügyfél több mint 5000 felhasználója alap.
+
+Még ma SnelStart egy üzletági (LOB) és a business-felügyeleti alkalmazás holland SMB és az önálló szakgyártók fő szolgáltató. Carlo Kuip, IT-mérnök, feliratú, mint "az a célunk, hogy 100 %-os automation ügyfeleink üzleti-felügyeleti szolgáltatásokat biztosít."
+
+## <a name="optimizing-performance-and-cost-with-elastic-pools"></a>Teljesítmény és a rugalmas készletekkel költség optimalizálása
+SnelStart egy rugalmas készletek nagy méretű korai felhasználója volt. Rugalmas készletek segítségével a vállalat korlátozza a költségeket, és hatékonyabban kezelheti a teljesítményre vonatkozó követelmények. A következők szerint lett "rugalmas készletek használatával azt is teljesítmény optimalizálása túlzott kiosztása nélkül az ügyfelek igényeinek megfelelően. Ha lenne kiépítése csúcsterhelés alapján, Igen költséges lenne. Ehelyett megoszthatók az erőforrások között több, alacsony kihasználtságú adatbázisok lehetővé teszi számunkra, hogy hozzon létre egy jól végzi, és költséghatékony megoldást. "
+
+## <a name="azure-sql-databases-help-containerize-data-for-isolation-and-security"></a>Az Azure SQL Database segítségével elkülönítési és biztonsági adatok tárolóba
+Az Azure SQL Database lehetővé teszi, hogy a SnelStart egyszerűen és könnyen ügyfelei a helyszíni üzleti-felügyeleti adatok az Azure-bA áthelyezni. Az Azure SQL Database egy kényelmes tároló által biztosított elszigetelésére, a határ hitelesítési, engedélyezési és egyszerű biztonsági mentési és visszaállítási képességekre. Adatbázisok kiválóan fogalmi modell üzleti felügyeleti adja meg. Carlo Kuip, IT-mérnök, megfelelően "elemeket a tároló határán belül elengedhetetlen egy vállalat bizalmas adatokat tartalmaznak, és azok az elemek egy elkülönített adatbázis tárolási tartja őket a megfelelő védelmet biztosít. Hogy kezelheti az adatbázis szintjén engedélyezési, és még automatizálhatja a felügyeleti és az adatbázisok horizontális felskálázás anélkül, hogy az adatbázis-rendszergazdák (adatbázisok) a személyzet."
+
+Az Azure SQL Data Warehouse emellett szerepet játszik a SnelStart biztonsági és felügyeleti történetet segít a vállalat gyűjtsön telemetriai adatokat, például a behatolás felderítése, a felhasználói tevékenység naplózásának és a kapcsolatokat.
+
+## <a name="azure-removes-overhead-so-that-developers-can-spend-more-time-delivering-value"></a>Azure eltávolítja többletterhelést okoz, hogy a fejlesztők idejüket több érték továbbítása
+Az Azure-platform-modell infrastruktúra terhelést eltávolítva, és engedélyezve van a C# kezelési kódtárak használatával üzembe helyezések automatizálását a SnelStart. Kuip-állapotokat, "sikerült nő a jelenlegi műveletek a nagyon kicsi személyzet közben egyszerre növeli a méretezhetőséget, a sebesség és a vész helyreállítási lehetőségek az ügyfelek számára. A SHIFT billentyűt a szolgáltatások fejlesztését, új szolgáltatásokkal és funkciókkal tartani az új szabályzat a meglévő kód vagy kódokat módosítása helyett az erőforrások felszabadulnak." Hozzáad, "a kezelés automatizálása, és az SaaS kínál, és üzleti értéket képviselnek az ügyfelek számára anélkül, hogy nagyméretű, befektetés a kezelőszemélyzet sikerült használatával." Például az Azure és a rugalmas készletek használatával SnelStart volt számos új funkciót, beleértve a bankok, ügyféladatok integráció robusztusabb adhat hozzá új számlázási szolgáltatások kisvállalati háttér-ellenőrzéseket és e-mail-szolgáltatások.
+
+> "Csak az első néhány hónapjában 2016, hogy az Azure SQL Database telepítések körülbelül 5,500 több mint 12 000 kibontva, és jelenleg körülbelül 1000-adatbázis havi adunk hozzá."
 > 
-> – Carlo Kuip, informatikai felelős mérnök
+> – Henry Been, Szoftvertervező
 > 
 > 
 
-Emellett SnelStart webszolgáltatások engedélyezése az ügyfelek és a könyvelők könnyen hozzáférés az Azure SQL Database rugalmas készletek adatokhoz. A Szolgáltatottszoftver modell, adatbázis a rugalmasság és az Azure Resource Manager alapján kialakulhat SnelStart biztosít minden Azure-telepítés kiegészítő méretezhetőség szolgáltatásokkal. A megvalósítás teljesen automatizált kezelési kódtárakat C# használatával.
+Adatbázis-kezelés további automatikus, a rugalmas feladatok funkció használatával. Kuip államok, mert "nagyon Köszönjük a automatikus felderítés [kiszolgáló] példányára, az SQL DB-adatbázisok." Ez lehetővé teszi a SnelStart nélkül további erőforrásokra a dinamikusan növekvő vásárlói különböző felügyeleti műveletek végrehajtásához.
+
+SnelStart is fejleszti egy API, amely közvetítőként vásárlói adatokat és a harmadik féltől származó szoftverek partnereink által készített alkalmazások között. Kuip államok, mint "az API lehetővé teszi más funkciók felvétele a szoftverek, például a számlák és egyéb dokumentumokat adatbevitel kiküszöbölése megoldás." Ügyfelek már nem kell kézzel írja be a számlákat azok kisvállalati nyilvántartási szoftver; a SnelStart szoftver közvetlenül cserélnek a szükséges információkat. Ez lehetővé teszi az ügyfelek számára, hogy azok üzleti-felügyeleti feladatok és az ökoszisztéma, amely a digitális átalakulást az iparágban egyre inkább csatlakozás.  
+
+## <a name="how-azure-services-enable-saas-for-snelstart"></a>Azure-szolgáltatások engedélyezése SaaS SnelStart hogyan
+Az Azure használatával a SnelStart ügyfeleinek és azok a felhőben zökkenőmentesen több accountants szolgálhat. Például ügyfelek és a accountants használatával információkat oszthat meg a SnelStart ügyfél API-t, az Azure-ban üzemeltetett közvetlen elérésével. Az államok Kuip, "újrafelhasználható szolgáltatások érhetők el az ügyfelek által használt web Apps, és adja meg a közös infrastruktúrát és a functions az ügyfelek által használt külső szoftvert és az ügyfelek üzleti felügyeleti való hozzáférés engedélyezéséhez. Például a termék-konfigurációs lehetőségeket biztosít, a tűzfalszabályok kezelése és hosszú futású folyamatok, például a biztonsági másolatok kezelése."
+
+> Célunk, hogy 100 %-os automation ügyfeleink üzleti-felügyeleti szolgáltatásokat biztosít." 
+> 
+> – Carlo Kuip, informatikai mérnök
+> 
+> 
+
+Emellett SnelStart webes szolgáltatások lehetővé teszik, ügyfelek és a accountants segítségével könnyen hozzáférhet az adatok Azure SQL Database rugalmas készletei. Az SaaS-modell, adatbázis a rugalmasság és Azure Resource Manager szolgáltatással párosítva SnelStart fürtméretezési szolgáltatások kiegészítő minden Azure-telepítés biztosít. A megvalósítás teljesen automatizált kezelési kódtárak C# használatával.
 
 ![SnelStart architektúra](./media/sql-database-implementation-snelstart/figure1.png)
 
-1. ábra. 2016. június SnelStart rendelkezik, több mint 11 000 adatbázisok és több mint 50 rugalmas készletek
+1. ábra. 2016. június SnelStart rendelkezik több mint 11 000 adatbázisok és rugalmas készletek több mint 50
 
 ## <a name="simplicity-from-the-cloud"></a>Egyszerűség a felhőből
-Egy Azure felhőalapú megoldás áthelyezését, SnelStart óta támogatja a gyors felhasználói növekedési kínálja a új szolgáltatások és szolgáltatások. A következők szerint van, "az Azure-ral, azt biztosíthat közelében folyamatos frissítések adhatunk ügyfeleink, a műveleti személyzet kiterjesztése nélkül. És azt minden más kiváló Azure szolgáltatás – például a méretezhetőséget és katasztrófa-helyreállítás – kötegelve. "
+Áthelyezése az Azure felhőalapú megoldásokhoz, SnelStart óta módosíthatják a gyors ügyfékökrének növekedése, miközben innovatív funkciókat és szolgáltatásokat kínál. A következők szerint lett, "az Azure-ban is tudunk közel folyamatos frissítések a vásárlókat, a műveleti személyzet bővítése nélkül. Az összes többi nagyszerű Azure-funkciókat kapunk, és – például a méretezhetőséget és a vészhelyreállítással – kötegelve. "
 
-> "Ha a rendszer ténylegesen keresztül Redmondban található irodájába... Hívás érkezett hívnia kérek a megadott problémáról újra Hollandia, a fejlesztőtől származó. Sikerült megszerezni a Microsoft képes biztosítani a változás az éles környezetben a probléma megoldására 48 órán belül."
+> "Ha a rendszer ténylegesen keresztül redmondban... Hívás érkezett hívnia me egy meghatározott problémára vonatkozó újra Hollandia, a fejlesztők Sikerült beolvasni a Microsoft, hogy a módosítás saját éles környezetben a problémának a megoldásához 48 órán belül."
 > 
-> – Henry lett, a szoftver felelős mérnök
+> – Henry Been, Szoftvertervező
 > 
 > 
 
-SnelStart is figyelemreméltónak tartja az erős partnerség azokat már a Microsoft Azure SQL Database-csapattal fejlesztett. Mint Kuip állapota "beszélgetéseket van a szolgáltatások, és mindkét oldalon értékeljük technológia, amely valami használata."
-A közvetlen SnelStart a célja egyre több adatra meg ügyfelének alap. Mivel állapotai "Nélkül a műszaki és erőforrás-korlátozások, mint egy ISV volt korlátozva van milyen távolságban azt is növekszik."
+SnelStart is figyelemreméltónak tartja az erős partnerség, létrehoztuk a Microsoft Azure SQL DB csapatával. Mint Kuip állapota "hozzászólások funkciókra van, és mindkét oldalon értékeljük technológiát, amit használata."
+A SnelStart azonnali célja, hogy egyre több elégedett ügyfelének alap. Ahogy már állapotai "A műszaki és erőforrás-korlátozások független szoftverszolgáltatóként szolgáltatástípusban nélkül nincs korlátozva, hogy milyen növelhető."
 
 ## <a name="more-information"></a>További információ
 * Az Azure rugalmas készletek kapcsolatos további információkért lásd: [rugalmas készletek](sql-database-elastic-pool.md).
-* Azure SQL Data Warehouse kapcsolatos további információkért lásd: [SQL Data Warehouse](https://azure.microsoft.com/documentation/services/sql-data-warehouse/)
-* SnelStart kapcsolatos további információkért lásd: [SnelStart](http://www.snelstart.nl).
+* Azure SQL Data Warehouse kapcsolatos további információkért lásd: [SQL Data warehouse-bA](https://azure.microsoft.com/documentation/services/sql-data-warehouse/)
+* A SnelStart kapcsolatos további információkért lásd: [SnelStart](http://www.snelstart.nl).
 

@@ -1,6 +1,6 @@
 ---
-title: Az Application Insights Java webes alkalmazásokhoz, amelyek még élő
-description: A kiszolgálón már futó webalkalmazás figyelése
+title: Application Insights Java-webalkalmazások, amelyek már az élő
+description: Már fut a kiszolgálón webalkalmazás monitorozásának indítása
 services: application-insights
 documentationcenter: java
 author: mrbullwinkle
@@ -10,47 +10,47 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/10/2016
 ms.author: mbullwin
-ms.openlocfilehash: edefb6637dae2ff00144f0b7c07ad974430d096b
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: e0c2eca1e776f8dac34810dcbc306f5f2c7b9c8d
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34794547"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35645558"
 ---
-# <a name="application-insights-for-java-web-apps-that-are-already-live"></a>Az Application Insights Java webes alkalmazásokhoz, amelyek még élő
+# <a name="application-insights-for-java-web-apps-that-are-already-live"></a>Application Insights Java-webalkalmazások, amelyek már az élő
 
-Ha már a J2EE kiszolgálón futó webalkalmazás, figyelés megkezdése a [Application Insights](app-insights-overview.md) kód módosításokat, vagy a projekt újrafordítása szükségessége nélkül. Ezzel a kapcsolóval akkor a kiszolgáló, a nem kezelt kivételek és a teljesítményszámlálók elküldött HTTP-kérelmek adatainak beolvasása.
+Ha egy webalkalmazást, amely a j2ee-alapú kiszolgálón már fut, megkezdheti a figyelést az [Application Insights](app-insights-overview.md) anélkül, hogy módosítsa a kódokat, vagy a projekthez újrafordítottuk kellene. Ezzel a lehetőséggel, a kiszolgáló nem kezelt kivételek és teljesítményszámlálók küldött HTTP-kérések adatainak beolvasása.
 
 Ehhez egy [Microsoft Azure](https://azure.com)-előfizetésre van szüksége.
 
 > [!NOTE]
-> Az eljárás ezen az oldalon az SDK hozzáadása a webes alkalmazás futásidőben. A futásidejű instrumentation akkor hasznos, ha nem szeretné frissíteni, vagy építse újra a forráskódot. De ha lehetséges, javasoljuk, hogy [adja hozzá az SDK forráskódja](app-insights-java-get-started.md) helyette. Amely több lehetőséget biztosít kódot ír, például felhasználói tevékenységek nyomon követésére.
+> Ezen az oldalon az eljárás ad hozzá az SDK-t a webes alkalmazás futásidőben. Ez a modul rendszerállapot akkor hasznos, ha nem szeretné frissíteni, vagy a forrás kód ismételt felépítésére. Ha lehetséges, azt javasoljuk, de [az SDK hozzáadása a forráskódja](app-insights-java-get-started.md) helyette. Amely további lehetőségeket kínál például kódírás felhasználói tevékenységek követése érdekében.
 > 
 > 
 
 ## <a name="1-get-an-application-insights-instrumentation-key"></a>1. Application Insights-kialakítási kulcs beszerzése
 1. Jelentkezzen be a [Microsoft Azure-portálon](https://portal.azure.com)
-2. Hozzon létre egy új Application Insights-erőforrást, és állítsa be az alkalmazás típusának Java-webalkalmazáshoz.
+2. Hozzon létre egy új Application Insights-erőforrást, és állítsa be a Java webalkalmazás alkalmazástípust.
    
     ![Adjon meg egy nevet, válassza ki a Java webalkalmazást, és kattintson a Létrehozás gombra.](./media/app-insights-java-live/02-create.png)
 
-    Az erőforrás néhány másodpercen belül jön létre.
+    Az erőforrás néhány másodperc alatt létrejön.
 
-4. Nyissa meg az új erőforrást, és a rendszerállapot-kulcs beszerzése. Ezt a kulcsot nemsokára a kódprojektbe kell illesztenie.
+4. Nyissa meg az új erőforrást, és a kialakítási kulcs beszerzése. Ezt a kulcsot nemsokára a kódprojektbe kell illesztenie.
    
     ![Az új erőforrás áttekintésében kattintson a Tulajdonságok gombra, és másolja le a kialakítási kulcsot](./media/app-insights-java-live/03-key.png)
 
 ## <a name="2-download-the-sdk"></a>2. Az SDK letöltése
 1. Töltse le a [Javához készült Application Insights SDK-t](https://aka.ms/aijavasdk). 
-2. A kiszolgálón bontsa ki az SDK tartalma, amelyből be vannak töltve a projekt bináris fájlokat a könyvtárba. Ha Tomcat használata esetén ez a könyvtár általában kell a `webapps/<your_app_name>/WEB-INF/lib`
+2. A kiszolgálón bontsa ki a könyvtárban, amelyből a projekt bináris fájljait a rendszer betölti az SDK tartalma. Tomcat használja, ha ez a könyvtár általában lenne alatt `webapps/<your_app_name>/WEB-INF/lib`
 
-Vegye figyelembe, hogy meg kell ismételni ezt összes server-példányt, és az egyes alkalmazásokhoz.
+Vegye figyelembe, hogy meg kell ismételni ezt az egyes kiszolgáló-példányokon, és minden alkalmazáshoz.
 
 ## <a name="3-add-an-application-insights-xml-file"></a>3. Az Application Insights XML-fájl hozzáadása
-Hozzon létre a mappában, az SDK hozzá ApplicationInsights.xml. Helyezze be a következő XML.
+Hozzon létre ApplicationInsights.xml a mappában, amelyben hozzá az SDK-t. Helyezze bele a következő XML-kódot.
 
 Helyettesítse be az Azure Portalról kapott kialakítási kulcsot.
 
@@ -89,10 +89,10 @@ Helyettesítse be az Azure Portalról kapott kialakítási kulcsot.
 
 * A kialakítási kulcsot a telemetria minden elemével megkapja, és ez közli az Application Insights eszközzel, hogy megjelenítse azt az erőforrásban.
 * A HTTP-kérelemösszetevő nem kötelező. Automatikusan telemetriát küld a kérelmekkel és válaszidőkkel kapcsolatban a portálra.
-* Az eseménykorreláció a HTTP-kérelemösszetevő további eleme. Azonosítót rendel a kiszolgáló által fogadott összes kérelemhez, és az azonosítót „Operation.Id” tulajdonságként hozzáadja a telemetria minden eleméhez. Ez lehetővé teszi, hogy minden kérelemhez társított úgy, hogy egy szűrőt telemetriai adatok összefüggéseket [diagnosztikai keresési](app-insights-diagnostic-search.md).
+* Az eseménykorreláció a HTTP-kérelemösszetevő további eleme. Azonosítót rendel a kiszolgáló által fogadott összes kérelemhez, és az azonosítót „Operation.Id” tulajdonságként hozzáadja a telemetria minden eleméhez. Ez lehetővé teszi, hogy beállít egy szűrőt a az egyes kérelmekkel társított telemetria korrelációját, ha [diagnosztikai keresés](app-insights-diagnostic-search.md).
 
 ## <a name="4-add-an-http-filter"></a>4. HTTP-szűrő hozzáadása
-Keresse meg és nyissa meg a web.xml fájlt a projektben, és a webalkalmazás csomópont alatt, ahol az alkalmazás szűrők vannak konfigurálva a következő kódrészletét egyesíteni.
+Keresse meg és nyissa meg a web.xml fájlt a projektben, és egyesítse a következő kódrészletet a webalkalmazás-csomópont alatt, ahol az alkalmazás szűrői konfigurálva vannak.
 
 A legpontosabb eredmények érdekében le kell képezni a szűrőt az összes többi szűrő előtt.
 
@@ -110,14 +110,14 @@ A legpontosabb eredmények érdekében le kell képezni a szűrőt az összes t�
     </filter-mapping>
 ```
 
-## <a name="5-check-firewall-exceptions"></a>5. Ellenőrizze a tűzfal kivételei közé
-Szükség lehet [kimenő adatküldés kivételeket](app-insights-ip-addresses.md).
+## <a name="5-check-firewall-exceptions"></a>5. Ellenőrizze a tűzfal kivételei
+Szüksége lehet [állítsa be a kivételeket úgy, hogy a kimenő adatok küldése](app-insights-ip-addresses.md).
 
-## <a name="6-restart-your-web-app"></a>6. A webalkalmazás újraindítása
+## <a name="6-restart-your-web-app"></a>6. Indítsa újra a webalkalmazást
 ## <a name="7-view-your-telemetry-in-application-insights"></a>7. A telemetria megtekintése az Application Insights szolgáltatásban
 Térjen vissza az Application Insights-erőforráshoz a [Microsoft Azure Portalon](https://portal.azure.com).
 
-Telemetriai adatainak HTTP-kérelmek az Áttekintés panel jelenik meg. (Ha nincsenek ott, várjon néhány másodpercig, majd kattintson a Frissítés gombra.)
+HTTP-kérésekkel kapcsolatos telemetriai adatokat az Áttekintés panelen jelenik meg. (Ha nincsenek ott, várjon néhány másodpercig, majd kattintson a Frissítés gombra.)
 
 ![mintaadatok](./media/app-insights-java-live/5-results.png)
 
@@ -125,15 +125,15 @@ Részletesebb mérőszámokért kattintson bármelyik diagramra.
 
 ![](./media/app-insights-java-live/6-barchart.png)
 
-És egy kérelem tulajdonságainak megtekintésekor láthatja a telemetriai események például a kérelmek és kivételek társítva.
+És a egy kérelem tulajdonságainak megtekintésekor láthatja a telemetriaeseményeket, például a kérések és kivételek társítva.
 
 ![](./media/app-insights-java-live/7-instance.png)
 
 [További információk a metrikákról.](app-insights-metrics-explorer.md)
 
 ## <a name="next-steps"></a>További lépések
-* [Telemetriai adatok felvétele a weblapok](app-insights-javascript.md) figyelő Lapmegtekintések és felhasználói metrikákat.
-* [Webalkalmazás-tesztek beállítása](app-insights-monitor-web-app-availability.md) győződjön meg arról, az alkalmazás marad élő és rugalmas.
-* [Naplózási nyomkövetés rögzítése](app-insights-java-trace-logs.md)
-* [Keresést az események és a naplók](app-insights-diagnostic-search.md) problémák diagnosztizálásához.
-* [A rugó rendszerindító inicializáló alkalmazás konfigurálása](https://docs.microsoft.com/java/azure/spring-framework/configure-spring-boot-java-applicationinsights)
+* [Adjon telemetriát a weblapokhoz](app-insights-javascript.md) figyelő Lapmegtekintések és felhasználói mérőszámok.
+* [Beállíthat webes teszteket](app-insights-monitor-web-app-availability.md) , győződjön meg arról, hogy az alkalmazás mindig elérhető és válaszkész legyen.
+* [Naplókivonatok rögzítése](app-insights-java-trace-logs.md)
+* [Eseményeket és naplókat kereshet](app-insights-diagnostic-search.md) problémák diagnosztizálásához.
+* [A Spring Boot inicializáló alkalmazás konfigurálása](https://docs.microsoft.com/java/azure/spring-framework/configure-spring-boot-java-applicationinsights)

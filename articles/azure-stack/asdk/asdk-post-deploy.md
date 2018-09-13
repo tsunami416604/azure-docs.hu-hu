@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/05/2018
+ms.date: 09/11/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 24f237a04d19d03ab7357db6fb9c7ab60036f3d2
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: 4eadbe38eede505a3339d4b6090d0a34c12a5fc2
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44390993"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44721959"
 ---
 # <a name="post-asdk-installation-configuration-tasks"></a>ASDK telepítés utáni konfigurációs feladatok
 
@@ -162,6 +162,11 @@ Set-ADDefaultDomainPasswordPolicy -MaxPasswordAge 180.00:00:00 -Identity azurest
 
 ![Csoportházirend kezelése konzol](media/asdk-post-deploy/gpmc.png)
 
+## <a name="enable-multi-tenancy"></a>A több-bérlős üzemmód engedélyezése
+Az Azure AD-vel telepítések esetén kell [több bérlős üzemmód engedélyezése](.\.\azure-stack-enable-multitenancy.md#enable-multi-tenancy) a ASDK telepítésekor.
+
+> [!NOTE]
+> Ha eltérő Azure Stack regisztrálásához használt rendszergazda vagy a felhasználói fiók segítségével jelentkezzen be az Azure Stack Portalra, a tartománynév regisztrálása az Azure Stack segítségével kell hozzáfűzi a portál URL-címét. Például, ha a fabrikam.onmicrosoft.com Azure Stack regisztrálva van, és a bejelentkezett felhasználói fiók van admin@contoso.com, a használatával jelentkezzen be a felhasználói portál URL-cím: https://portal.local.azurestack.external/fabrikam.onmicrosoft.com.
 
 ## <a name="next-steps"></a>További lépések
 [A ASDK regisztrálása az Azure-ral](asdk-register.md)

@@ -1,26 +1,26 @@
 ---
-title: Az Azure ML-naplózás API-referencia |} Microsoft Docs
-description: A naplózás API-hivatkozás.
+title: Az Azure Machine Learning-naplózás API-referencia |} A Microsoft Docs
+description: API-referencia a naplózás.
 services: machine-learning
 author: akshaya-a
 ms.author: akannava
 manager: mwinkle
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/25/2017
-ms.openlocfilehash: b9ea51139fded3d55f0a73024163b7fa943c0ebb
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 101c47f4916ca3fab56800eaf012c55150769302
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34834692"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35646243"
 ---
-# <a name="logging-api-reference"></a>Naplózás API-referencia
+# <a name="logging-api-reference"></a>Naplózás az API-referencia
 
-Az Azure ML naplózási könyvtár lehetővé teszi, hogy a program létrehozza a metrikák és újabb analysis előzmények szolgáltatás által nyomon követett fájlokat. Jelenleg néhány alapvető típusú metrikák és a fájlok támogatottak, és a jövőbeni kiadásokban a Python-csomag nő a támogatott típusok készlete.
+Az Azure ML-naplózási könyvtár lehetővé teszi, hogy a program a metrikák és újabb analysis előzmények szolgáltatás által nyomon követett fájlok gridre bocsáthatja ki. Jelenleg a metrikák és a fájlok néhány alapvető típusok támogatottak, és a támogatott típusok készlete növekszik a jövőbeni kiadásokban a Python-csomag.
 
 ## <a name="uploading-metrics"></a>Metrikák feltöltése
 
@@ -41,7 +41,7 @@ logger.log("simple string value", "this is a string metric")
 logger.log("chart data points", [1, 3, 5, 10, 6, 4])
 ```
 
-Alapértelmezés szerint minden metrikák elküldi aszinkron módon, hogy a küldése nem akadályozzák a program végrehajtásával. Rendezési problémákat okozhatnak, amikor több metrikák küldött peremhálózati esetekben. Példa erre egy időben, de a felhasználó inkább megőrzi a pontos rendelési valamilyen okból naplózott két metrikák lenne. Egy másik helyzet akkor, ha a mérték előtt esetleg sikertelen lesz a gyors néhány kódot futtató ismert nyomon követését. Mindkét esetben a megoldás, hogy _Várjon, amíg_ mindaddig, amíg a metrika teljes mértékben naplózza a folytatás előtt:
+Alapértelmezés szerint minden metrika elküldése aszinkron módon, hogy a küldés nem akadályozzák a program végrehajtását. Ez rendelési problémákat okozhat, ha több mérőszámok küldése a szélsőséges esetek. Ilyen például a naplózott egyszerre, de valamilyen okból a felhasználó kapni pontos rendezése őrzi két mérőszám lenne. Egy másik esetben akkor, ha a előtt bizonyos kód futtatásával ismert, hogy potenciálisan hiúsuljon folyamatmodellje a metrikát. A megoldás az mindkét esetben, ha _várjon_ mindaddig, amíg a mérőszám a rendszer teljes mértékben naplózza a folytatás előtt:
 
 ```python
 # blocking call
@@ -51,7 +51,7 @@ logger.log("my metric 2", 2).wait()
 
 ## <a name="consuming-metrics"></a>Metrikák felhasználása
 
-A metrikák az Előzmények szolgáltatás által tárolt, és a Futtatás előállított őket kötve. A Futtatás Előzmények lapon és a parancssori felület parancs az alábbi teszik lekérdezéséhez őket (vagy az alábbi összetevők) futtató befejeződése után.
+A metrikák az Előzmények szolgáltatás által tárolt és előállított őket Futtatás kötve. A futtatási Előzmények lapon és a CLI-parancsot az alábbi engedélyezése őket (és az alábbi összetevők) lekérheti a Futtatás befejeződése után.
 
 ```azurecli
 # show the last run
@@ -64,9 +64,9 @@ $ az ml history list
 $ az ml history info -r <runid>
 ```
 
-## <a name="artifacts-files"></a>Az összetevők (fájlok)
+## <a name="artifacts-files"></a>Összetevők (fájlok)
 
-Metrikák, valamint az AzureML a felhasználó nyomon követéséhez a fájlokat is. Alapértelmezés szerint minden fájl bekerül a `outputs` viszonyítva (a projektmappa a számítási környezetben). a program munkakönyvtár mappa az Előzmények szolgáltatás fel van töltve, és újabb analysis követi nyomon. Szerint, hogy az egyes fájlméret 512 MB-nál kisebbnek kell lennie.
+Metrikák, mellett AzureML lehetővé teszi, hogy a felhasználót, hogy a fájlokat is nyomon követheti. Minden fájl kerülnek alapértelmezés szerint a `outputs` mappát (a projekt mappa a számítási környezet). a program munkakönyvtárhoz képest relatív az előzmények szolgáltatásba feltöltött, és nyomon követett későbbi elemzés céljából. Csoportosítani, hogy az egyes mérete 512 MB-nál kisebb kell lennie.
 
 
 ```Python
@@ -74,9 +74,9 @@ Metrikák, valamint az AzureML a felhasználó nyomon követéséhez a fájlokat
 logger.upload("artifact/path", "This should be the contents of artifact/path in the service")
 ```
 
-## <a name="consuming-artifacts"></a>Az összetevők felhasználása
+## <a name="consuming-artifacts"></a>Fogyasztó összetevők
 
-Követett összetevő tartalmának nyomtatása felhasználó használja a Futtatás Előzmények lapon a megadott futtató **letöltése** vagy **előléptetés** összetevő, vagy használja az alábbi ugyanaz az eredmény elérése érdekében a parancssori felület parancsait.
+Egy követett szerelvényösszetevő tartalmának nyomtatása, a felhasználó a futtatási Előzmények lapon használhatja, az adott Futtatás **letöltése** vagy **előléptetés** összetevő, vagy használja az alábbi CLI-parancsok használatával ugyanaz a hatása elérése.
 
 ```azurecli
 # show all artifacts generated by a run
@@ -86,5 +86,5 @@ $ az ml history info -r <runid> -a <artifact/path>
 $ az ml history promote -r <runid> -ap <artifact/prefix> -n <name of asset to create>
 ```
 ## <a name="next-steps"></a>További lépések
-- Végezze el a [zárolásának iris tutoria, 2. rész](tutorial-classifying-iris-part-2.md) naplózási API-t működés közben megjelenítéséhez.
-- Felülvizsgálati [használata futtatása előzmények és az Azure Machine Learning-munkaterület modell metrikák](how-to-use-run-history-model-metrics.md) megértéséhez mélyebb hogyan API-k naplózása használható futtassa az előzményekben.
+- Végig a [Írisz osztályozása tutoria, 2. rész](tutorial-classifying-iris-part-2.md) API naplózása a működés megtekintéséhez.
+- Felülvizsgálat [használatát a futtatási előzmények és modell mérőszámok az Azure Machine Learning Workbench](how-to-use-run-history-model-metrics.md) részletesebb naplózás API-k segítségével hogyan biztosítható a futtatási előzmények megértéséhez.

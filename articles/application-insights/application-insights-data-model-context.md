@@ -1,6 +1,6 @@
 ---
-title: Azure Application Insights Telemetria adatmodell - Telemetria környezetben |} Microsoft Docs
-description: Application Insights telemetria környezetben adatmodell
+title: Az Azure Application Insights Telemetria adatmodell - Telemetria környezet |} A Microsoft Docs
+description: Application Insights telemetria környezet adatmodell
 services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
@@ -9,111 +9,113 @@ ms.service: application-insights
 ms.workload: TBD
 ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/15/2017
-ms.author: sergkanz; mbullwin
-ms.openlocfilehash: f6654dc869b6c1a3f91ee8dee44dcdbf4bdfc5fd
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.reviewer: sergkanz
+ms.author: mbullwin
+ms.openlocfilehash: b6cfae20f09b19a57cf411777e78abb1dbbf0484
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35645932"
 ---
-# <a name="telemetry-context-application-insights-data-model"></a>Telemetria a környezetben: Application Insights adatmodell
+# <a name="telemetry-context-application-insights-data-model"></a>Telemetriai adatok környezeti: Application Insights adatmodell
 
-Minden telemetriai elem lehet egy szigorú típusmegadású környezet mezőket. Minden mező lehetővé teszi, hogy egy adott figyelési forgatókönyvhöz. Az egyéni tulajdonságok gyűjteményén segítségével egyéni vagy az alkalmazás-specifikus környezetfüggő információk tárolására.
+Előfordulhat, hogy minden szereplő telemetriai elem egy szigorú típusmegadású környezet mezőket. Minden mező lehetővé teszi, hogy egy adott figyelési forgatókönyv. Az egyéni tulajdonságok gyűjteményén használatával egyéni vagy alkalmazásspecifikus környezetfüggő adatok tárolására.
 
 
 ## <a name="application-version"></a>Alkalmazás verziószáma
 
-Amely a telemetriai adatokat küld az alkalmazással kapcsolatos információkat az alkalmazás helyi mezőket mindig van. Alkalmazásverzió segítségével elemezheti az alkalmazás viselkedését, és a központi telepítésekre a korrelációs trend változásai.
+Az alkalmazás helyi mező adatait, mindig az alkalmazás, amely a telemetriai adatokat küldenek. Alkalmazás verziója szolgál az alkalmazás viselkedése, és a központi telepítéseket, a korrelációs trend változások elemzéséhez.
 
 Maximális hossz: 1024
 
 
 ## <a name="client-ip-address"></a>Ügyfél IP-címe
 
-Az ügyféleszköz IP-címét. IPv4 és IPv6 használata támogatott. Telemetriai adatokat küldött a szolgáltatás, a hely környezetben tárgya a felhasználót, hogy a szolgáltatási műveletet kezdeményezett. Az Application Insights csomagolja ki a földrajzihely-információ az ügyfél IP-cím, és majd csonkolja. Ezért ügyfél IP-önmagában nem használható azonosításra alkalmas adatokat. 
+Az ügyféleszköz IP-címét. IPv4 és IPv6 használata támogatott. Telemetriai adatokat a szolgáltatásból küldött, a hely környezet tárgya a felhasználó által kezdeményezett a műveletet a szolgáltatásban. Application Insights a földrajzi helymeghatározás információ kinyerését az ügyfél IP-Címét, és ezután csonkolja azt. Így önmagában ügyfél IP-címe nem használható végfelhasználói azonosításra alkalmas adatokat. 
 
 Maximális hossz: 46
 
 
 ## <a name="device-type"></a>Eszköztípus
 
-Ez a mező eredetileg jelzi a felhasználó az alkalmazás által használt eszköz típusának lett megadva. Ma használt elsősorban különböztetheti meg egymástól a JavaScript telemetriai eszköz típusú "Browser" kiszolgálóoldali a telemetriai adatok az eszköz nem írja be a "PC".
+Ez a mező eredetileg használták a a végfelhasználó számára az alkalmazás által használt eszköz típusának jelöléséhez. Elsősorban az JavaScript telemetriai megkülönböztethetők az eszköztípus-ma használt kiszolgálóoldali telemetria az eszközzel a "böngésző" írja be a "PC".
 
 Maximális hossz: 64
 
 
-## <a name="operation-id"></a>A művelet azonosítója
+## <a name="operation-id"></a>Műveletazonosító
 
-A legfelső szintű tevékenység egyedi azonosítója. Ez az azonosító lehetővé teszi, hogy a csoport telemetriai több összetevői között. Lásd: [telemetriai korrelációs](application-insights-correlation.md) részleteiről. A művelet azonosítója vagy egy kérelem, vagy egy nézet hozta létre. Minden egyéb telemetriai adat ebben a mezőben a tartalmazó kérelem vagy a lap nézet értéket állítja be. 
+A legfelső szintű művelet egyedi azonosítója. Ez az azonosító több összetevőből csoport telemetriai lehetővé teszi. Lásd: [telemetriai korreláció](application-insights-correlation.md) részleteiről. A művelet azonosítója vagy egy kérelmet, vagy egy oldal nézet hozható létre. Minden egyéb telemetriai adat ebben a mezőben a tartalmazó kérelem vagy oldalmegtekintés nézet értékét állítja be. 
 
 Maximális hossz: 128
 
 
-## <a name="parent-operation-id"></a>Szülő művelet azonosítója
+## <a name="parent-operation-id"></a>A művelet Szülőazonosító
 
-A telemetriai adatok elem azonnali szülő egyedi azonosítója. Lásd: [telemetriai korrelációs](application-insights-correlation.md) részleteiről.
+A telemetriai elem azonnali szülő egyedi azonosítója. Lásd: [telemetriai korreláció](application-insights-correlation.md) részleteiről.
 
 Maximális hossz: 128
 
 
 ## <a name="operation-name"></a>Művelet neve
 
-A (csoport) a művelet neve. A művelet neve vagy a kérelmet, vagy a lap nézet hozta létre. Minden egyéb telemetriai elem ebben a mezőben a tartalmazó kérelem vagy a lap nézet értékre állítva. Műveletek (például "GET otthoni/Index") egy csoportja számára a telemetriai adatok elemek kereséséhez használt művelet neve. A context tulajdonság segítségével fogadja a hívást kérdéseket, például "Mik a tipikus kivételek, ezen az oldalon."
+A (csoport) a művelet neve. A művelet nevét vagy egy kérelmet, vagy egy oldal nézet hozható létre. Minden egyéb telemetriai elem értékét az a kérelem vagy oldalmegtekintés tartalmazó nézetet adja meg a mezőben. Název operace műveletek (például "GET Home/Index") egy csoport összes telemetriai elem keresése szolgál. Ez a környezeti tulajdonság használható választ kérdéseire "Mik azok a jellemző kivételek, ezen az oldalon."
 
 Maximális hossz: 1024
 
 
-## <a name="synthetic-source-of-the-operation"></a>A művelet szintetikus forrása
+## <a name="synthetic-source-of-the-operation"></a>A művelet szintetikus forrás
 
-Szintetikus forrás nevére. Az alkalmazás egyes telemetriai szintetikus forgalom jelöl. A webhely, a webhely rendelkezésreállás figyelésére szolgáló tesztek vagy a nyomkövetések az Application Insights SDK maga például diagnosztikai szalagtárak indexelő webbejáró lehet.
+Szintetikus forrás nevére. Az alkalmazás egyes telemetriáját tüntetheti szintetikus forgalom. A webhely, a webhely rendelkezésre állási tesztek vagy a diagnosztikai kódtárakat, mint maga az Application Insights SDK hívásláncait indexelő webbejáró lehet.
 
 Maximális hossz: 1024
 
 
-## <a name="session-id"></a>munkamenet-azonosító
+## <a name="session-id"></a>Munkamenet-azonosító
 
-Munkamenet-azonosító – a felhasználó és az alkalmazás közötti interakció példányát. Információk a munkamenet-környezet mezőket a végfelhasználó mindig tárgya. Telemetriai adatokat küldött a szolgáltatás, a munkamenet környezetében tárgya a felhasználót, hogy a szolgáltatási műveletet kezdeményezett.
+Munkamenet-azonosító – a felhasználó és az alkalmazás közötti interakció példányát. A munkamenet-környezet mező adatait, mindig a végfelhasználó kapcsolatban. Telemetriai adatokat a szolgáltatásból küldött, a munkamenet környezetében tárgya a felhasználó által kezdeményezett a műveletet a szolgáltatásban.
 
 Maximális hossz: 64
 
 
-## <a name="anonymous-user-id"></a>A névtelen felhasználói azonosító
+## <a name="anonymous-user-id"></a>Névtelen felhasználó azonosítója
 
-A névtelen felhasználói azonosító. Az alkalmazás a végfelhasználó jelenti. Telemetriai adatokat küldött a szolgáltatás, a felhasználói környezet tárgya a felhasználót, hogy a szolgáltatási műveletet kezdeményezett.
+Névtelen felhasználó azonosítója. A végfelhasználó számára az alkalmazás jelöli. Telemetriai adatokat a szolgáltatásból küldött, a felhasználói környezet tárgya a felhasználó által kezdeményezett a műveletet a szolgáltatásban.
 
-[A mintavételi](app-insights-sampling.md) csökkentése érdekében az összegyűjtött telemetrikus módszerek egyike. Mintavételi algoritmus megkísérli a bejövő vagy kimenő a kapcsolódó telemetriai vagy minta. A névtelen felhasználói azonosítót használja a pontszám generációs mintavétel. Így a névtelen felhasználói azonosító elég véletlenszerű értéknek kell lennie. 
+[Mintavételi](app-insights-sampling.md) minimalizálására gyűjtött telemetria módszerek egyike. Bármelyik mintát és leskálázása a korrelált telemetria megkísérli mintavételezési algoritmus használhatóvá válik. Névtelen felhasználói azonosítót használja a pontszám generációs mintavétel. Így a névtelen felhasználói azonosító elég véletlenszerű értéknek kell lennie. 
 
-Névtelen felhasználói azonosítóját tárolja a felhasználónév használata a visszaélés miatt, a mező. Hitelesített felhasználói azonosítóját használnia.
+Névtelen felhasználó azonosítója használja a felhasználónév tárolására, a mező egy való visszaélés. Használja a hitelesített felhasználó azonosítója.
 
 Maximális hossz: 128
 
 
 ## <a name="authenticated-user-id"></a>Hitelesített felhasználó azonosítója
 
-Hitelesített felhasználó azonosítója. A névtelen felhasználói azonosító ellentéte, ez a mező képviseli a felhasználót egy rövid nevet. Óta a PII adatok akkor van alapértelmezés szerint nem gyűjt a legtöbb SDK-ban.
+Hitelesített felhasználó azonosítója. Névtelen felhasználó azonosítója, ellenkező esetben ez a mező képviseli a felhasználót egy rövid nevet. A PII adatok óta, nem lesznek begyűjtve alapértelmezés szerint a legtöbb SDK-t.
 
 Maximális hossz: 1024
 
 
 ## <a name="account-id"></a>Fiókazonosító
 
-A több-bérlős alkalmazásokhoz Ez a futtatófiók-Azonosítóvá vagy nevét, amely a felhasználó működhet együtt. Példák az Azure portál vagy blog neve bloggolás platform előfizetés-azonosító lehet.
+Több-bérlős alkalmazásokban Ez az a fiók azonosítója vagy nevét, amely a felhasználó a jár el. Példák az Azure portal vagy a blogba neve blogplatform, amely az előfizetés-azonosító lehet.
 
 Maximális hossz: 1024
 
 
-## <a name="cloud-role"></a>Felhő szerepkör
+## <a name="cloud-role"></a>Felhőalapú munkakör
 
-A szerepkör az alkalmazás nevének egy részét képezi. A szerepkör nevét, az azure-ban közvetlenül leképezve. Is segítségével különböztetheti meg egymástól micro szolgáltatásokat, amelyek egyetlen alkalmazás részét képezik.
+A szerepkör az alkalmazás neve egy részét képezi. Leképezések közvetlenül a szerepkör nevét, az Azure-ban. Is használható különbséget tenni a mikroszolgáltatásokhoz, amely egyetlen alkalmazás részét képezik.
 
 Maximális hossz: 256
 
 
-## <a name="cloud-role-instance"></a>Felhő szerepkör példánya
+## <a name="cloud-role-instance"></a>Felhőalapú szerepkörpéldány
 
-Az alkalmazást futtató-példány nevét. Számítógép neve a helyszíni, az Azure-példány nevét.
+Az alkalmazás hol fut.-példány nevét. Számítógép neve a helyszínen, az Azure-példány nevét.
 
 Maximális hossz: 256
 
@@ -125,15 +127,15 @@ SDK-verzió. Lásd: https://github.com/Microsoft/ApplicationInsights-Home/blob/m
 Maximális hossz: 64
 
 
-## <a name="internal-node-name"></a>Belső: A csomópont neve
+## <a name="internal-node-name"></a>Belső: Csomópont nevét a
 
-Ez a mező számlázási célokra csomópont nevét jelöli. Akkor bírálja felül a csomópontok szabványos észlelését.
+Ez a mező képviseli a csomópont nevét a számlázási célokra. Akkor bírálja felül a standard szintű csomópontok felismerése.
 
 Maximális hossz: 256
 
 
 ## <a name="next-steps"></a>További lépések
 
-- Megtudhatja, hogyan [kiterjesztése és a telemetriai adatok szűrése](app-insights-api-filtering-sampling.md).
-- Lásd: [adatmodell](application-insights-data-model.md) Application Insights-típusok és az adatok modell.
-- Tekintse meg a standard környezetben tulajdonsággyűjteményében [konfigurációs](app-insights-configuration-with-applicationinsights-config.md#telemetry-initializers-aspnet).
+- Ismerje meg, hogyan [bővítése és szűrőtelemetria](app-insights-api-filtering-sampling.md).
+- Lásd: [adatmodell](application-insights-data-model.md) Application Insights és modellhez.
+- Tekintse meg a standard szintű környezeti tulajdonságok gyűjteményén [konfigurációs](app-insights-configuration-with-applicationinsights-config.md#telemetry-initializers-aspnet).

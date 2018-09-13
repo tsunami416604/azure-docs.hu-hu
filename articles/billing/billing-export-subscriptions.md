@@ -1,6 +1,6 @@
 ---
-title: Az Azure-előfizetés felső szintű adatainak exportálása |} Microsoft Docs
-description: Bemutatja, hogyan tekintheti meg az összes Azure-előfizetés a fiókjához társított azonosítók.
+title: Az Azure-előfizetés felső szintű adatainak exportálása |} A Microsoft Docs
+description: Bemutatja, hogyan tekintheti meg az összes Azure-előfizetés azonosítókat a fiókjához társított.
 keywords: ''
 services: billing
 documentationcenter: ''
@@ -13,24 +13,24 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/9/2017
+ms.date: 06/15/2018
 ms.author: adpick
-ms.openlocfilehash: b995b0c7154faab66a44bef1a7d74eeb8404e5c1
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 7bc9f4df6e98dd86283c4389466b13b8f6bb4d15
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34655116"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35921701"
 ---
 # <a name="export-and-view-your-top-level-subscription-information"></a>Exportálás és a legfelső szintű előfizetés adatainak megtekintése
-Ha szeretné tekintse meg az előfizetés a felhasználó hitelesítő adataival, társított azonosítókra [az előfizetési adatok .JSON kiterjesztésű fájl letöltését az Azure Account Center](http://account.azure.com/subscriptions/download).
+Ha szeretne az előfizetés azonosítókat a felhasználói hitelesítő adatokhoz tartozó megtekintése [töltse le egy .JSON kiterjesztésű fájlt, amely az előfizetés adatait az Azure Account Center](http://account.azure.com/subscriptions/download).
 
 [!INCLUDE [gdpr-dsr-and-stp-note](../../includes/gdpr-dsr-and-stp-note.md)]
 
-A letöltött .JSON kiterjesztésű fájlt a következő adatokat tartalmazza:
-- E-mailek: A fiókjához társított e-mail címe.
-- PUID: A rendelt egyedi azonosítóként folyószámlájára.
-- SubscriptionIds: A fiókjához, előfizetés-azonosító. által számba tartozó előfizetések listája
+A letöltött .JSON kiterjesztésű fájlt a következő információkat biztosítja:
+- E-mail cím: Az a fiókjához társított e-mail-cím.
+- PUID: Egyedi azonosítója a számlázási fiókjához.
+- SubscriptionIds: Az előfizetések listája, amely számba veszi az előfizetés-azonosító. a fiók tartozik
 
 ### <a name="subscriptionsjson-sample"></a>Subscriptions.JSON minta
 ~~~~

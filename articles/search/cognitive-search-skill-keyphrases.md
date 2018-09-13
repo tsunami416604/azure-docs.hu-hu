@@ -1,6 +1,6 @@
 ---
-title: Kulcs kifejezés kibontási kognitív keresési szakértelem (Azure Search) |} Microsoft Docs
-description: Strukturálatlan szöveg kiértékeli, és az egyes rekordokhoz, olyan listát ad vissza a legfontosabb kifejezések egy Azure Search dúsító folyamat.
+title: Key kifejezés kinyerése kognitív keresés szakértelem (Azure Search) |} A Microsoft Docs
+description: Kiértékeli a strukturálatlan szöveg, és az egyes rekordok listáját adja vissza a kulcskifejezéseket Azure Search-felderítési bővítést folyamatban.
 services: search
 manager: pablocas
 author: luiscabrer
@@ -10,40 +10,40 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: a12efaa020e626e4a10a0708c9b84d8fe125588c
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: b1da16269a1cbe83c6c0c625aba13026b6a462d6
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33791034"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35927532"
 ---
-#   <a name="key-phrase-extraction-cognitive-skill"></a>Kulcs kifejezés kibontási kognitív szakértelem
+#   <a name="key-phrase-extraction-cognitive-skill"></a>Kulcs kifejezések kinyerése kognitív szakértelem
 
-A **kulcs kifejezés kibontási** szakértelem strukturálatlan szöveg kiértékeli, és az egyes rekordokhoz, a legfontosabb kifejezések listáját adja vissza.
+A **kulcs kulcsszókeresés** szakértelem strukturálatlan szöveges kiértékeli, és az egyes rekordok listáját adja vissza, kulcskifejezéseket.
 
-Ez a funkció akkor hasznos, ha szüksége gyorsan azonosíthatja a fő beszélő pontok a rekordban. Például adott bemeneti szöveg "az étele delicious volt, és nem találhatók a csodálatos személyzet", a szolgáltatás "étele" és "csodálatos személyzet" adja vissza.
+Ez a funkció akkor hasznos, ha az a rekord található fő beszédtémákat gyorsan azonosítani kell. Ha például adott bemeneti szöveg "az élelmiszer delicious volt, és izgalommal személyzet történt", a szolgáltatás a "food" és "izgalommal személyzetet" adja vissza.
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.KeyPhraseExtractionSkill 
 
-## <a name="data-limits"></a>Adatok korlátok
-A maximális mérete egy olyan rekordot kell mért 50 000 karakternél `String.Length`. Ha feloszthatja az adatokat, mielőtt elküldené a kulcs kifejezés kivonatoló van szüksége, fontolja meg a [szöveges szakértelem](cognitive-search-skill-textsplit.md).
+## <a name="data-limits"></a>A Data korlátai
+Egy rekord maximális mérete 50 000 karakter által mért kell lennie `String.Length`. Ha az adatok tördelésével, mielőtt elküldené a kulcskifejezések információkinyerő van szüksége, fontolja meg a [szöveg felosztása szakértelem](cognitive-search-skill-textsplit.md).
 
-## <a name="skill-parameters"></a>Szakértelem paraméterek
+## <a name="skill-parameters"></a>Ismeretek paraméterek
 
 A paraméterei a kis-és nagybetűket.
 | Bemenetek                | Leírás |
 |---------------------|-------------|
-| defaultLanguageCode | (Választható) Az explicit módon nem ad meg nyelvi alkalmazza nyelvi kódot.  Ha az alapértelmezett nyelvi kód nem megadott, az angol (en) lesz az alapértelmezett nyelvi kódot. <br/> Lásd: [támogatott nyelvek teljes listáját](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages). |
-| maxKeyPhraseCount   | (Választható) A legfontosabb kifejezések eredményezett maximális száma. |
+| defaultLanguageCode | (Nem kötelező) A alkalmazni a dokumentumokat, explicit módon nem ad meg nyelvi nyelvkód.  Ha az alapértelmezett nyelvi kód nem megadott, az angol (en) lesz az alapértelmezett nyelvi kódot. <br/> Lásd: [támogatott nyelvek teljes listáját](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages). |
+| maxKeyPhraseCount   | (Nem kötelező) A kulcskifejezések előállításához maximális számát. |
 
-## <a name="skill-inputs"></a>Szakértelem bemenetek
+## <a name="skill-inputs"></a>Ismeretek bemenetek
 | Bemenetek     | Leírás |
 |--------------------|-------------|
-| Szöveg | A szöveg elemzése.|
-| languageCode  |  Egy karakterlánc, amely a nyelvi bejegyzések. Ha ez a paraméter nincs megadva, az alapértelmezett nyelv kódja használandó elemzése a rekordok. <br/>Lásd: [támogatott nyelvek teljes listája](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)|
+| szöveg | Elemezni kívánt szöveget.|
+| languageCode  |  A nyelv, a rekordok jelző karakterlánc. Ha ez a paraméter nincs megadva, az alapértelmezett nyelvi kód a rekordok elemzésére használható. <br/>Lásd: [támogatott nyelvek teljes listáját](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)|
 
-##  <a name="sample-definition"></a>A minta meghatározása
+##  <a name="sample-definition"></a>Minta-definíció
 
 ```json
  {
@@ -67,7 +67,7 @@ A paraméterei a kis-és nagybetűket.
   }
 ```
 
-##  <a name="sample-input"></a>A minta bemenet
+##  <a name="sample-input"></a>Minta beviteli
 
 ```json
 {
@@ -110,11 +110,11 @@ A paraméterei a kis-és nagybetűket.
 
 
 ## <a name="errors-and-warnings"></a>Hibák és figyelmeztetések
-Egy nem támogatott nyelvi kódot adja meg, ha hiba történik, és a legfontosabb kifejezések nem ki kell olvasni.
-Ha a szöveg üres, a rendszer figyelmeztetést gyűjtenek.
-Ha a szöveg mérete nagyobb, mint 50 000 karakter, csak az első 50 000 karakternél elemzik, és megjelenik egy figyelmeztetés.
+Egy nem támogatott nyelvi kódot ad meg, ha hiba történik, és a kulcskifejezéseket nem ki kell olvasni.
+Ha a szöveg üres, figyelmeztetés előállított.
+Ha a szöveg mérete nagyobb, mint 50 000 karakter, csak az első 50 000 karakter elemzik, és megjelenik egy figyelmeztetés.
 
 ## <a name="see-also"></a>Lásd még
 
-+ [Előre definiált képességek](cognitive-search-predefined-skills.md)
-+ [Egy skillset definiálása](cognitive-search-defining-skillset.md)
++ [Előre megadott képesség](cognitive-search-predefined-skills.md)
++ [Hogyan képességcsoport megadása](cognitive-search-defining-skillset.md)

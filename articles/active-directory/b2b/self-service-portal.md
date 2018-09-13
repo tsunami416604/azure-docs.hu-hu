@@ -1,36 +1,36 @@
 ---
-title: Önkiszolgáló regisztrációs portálon az Azure Active Directory B2B együttműködés |} Microsoft Docs
+title: Önkiszolgáló regisztrációs portál az Azure Active Directory B2B együttműködés |} A Microsoft Docs
 description: Az Azure Active Directory B2B együttműködés a vállalatokon átívelő kapcsolatok támogatása érdekében lehetővé teszi, hogy az üzleti partnerek szelektíven érhessék el a vállalati alkalmazásokat
 services: active-directory
 ms.service: active-directory
 ms.component: B2B
 ms.topic: article
 ms.date: 05/08/2018
-ms.author: twooley
-author: twooley
+ms.author: mimart
+author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 5ee55034e84fe09484a2f7613cc2224be70fdebb
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
-ms.translationtype: HT
+ms.openlocfilehash: 94001b005a883c172cab279029b47ac1ad0c0de5
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34260072"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35645048"
 ---
-# <a name="self-service-portal-for-azure-ad-b2b-collaboration-sign-up"></a>Az Azure AD B2B együttműködés előfizetési önkiszolgáló portál
+# <a name="self-service-portal-for-azure-ad-b2b-collaboration-sign-up"></a>Az Azure AD B2B együttműködés regisztráció, önkiszolgáló portál
 
-Az ügyfelek a beépített szolgáltatásokkal keresztül közzétett sokkal teheti a [Azure-portálon](https://portal.azure.com) és a [alkalmazás hozzáférési Panel](https://myapps.microsoft.com) a végfelhasználók számára. Azonban szükség lehet a bevezetési munkafolyamat B2B számára, hogy a szervezet igényeihez testreszabása. Ehhez a [a meghívó API](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation).
+Ügyfelek a beépített funkciókkal keresztül elérhetővé tett sokkal teheti a [az Azure portal](https://portal.azure.com) és a [alkalmazás-hozzáférési Panel](https://myapps.microsoft.com) a végfelhasználók számára. Azonban szüksége lehet a regisztrációs munkafolyamat a B2B-felhasználók a szervezet igényeinek megfelelően testre szabhatja. Az elvégezhető [a meghívó API](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation).
 
-Hívja fel a szervezeten, előfordulhat, hogy nem tudja időben az egyes külső együttműködők számára az erőforrások elérését igénylő. A felhasználók partnervállalatokból regisztrálni magát, amely a Ön mint hívja fel a szervezet házirendjei szükségük van egy módszerre. Ebben a forgatókönyvben lehetőség az API-k segítségével. Van egy [mintaprojektet a Githubon](https://github.com/Azure/active-directory-dotnet-graphapi-b2bportal-web) does, amely éppen ez.
+A meghívó szervezetet, talán nem tudja időben az egyes külső közreműködők számára, akiknek szükség van az erőforrásokhoz való hozzáférés. Le kell a felhasználókat a partnervállalatokból regisztráció magukat, mint a meghívó szervezetet szabályozott házirendekről vannak beállítva. Ez a forgatókönyv akkor lehetséges, az API-kon keresztül. Van egy [mintaprojektet a Githubon](https://github.com/Azure/active-directory-dotnet-graphapi-b2bportal-web) does, amely éppen ezt.
 
-Ez a GitHub-projekt jeleníti meg, hogyan szervezetek használatával az API-k adjon meg egy csoportházirend-alapú, az önkiszolgáló bejelentkezési képesség a megbízható partnerek számára, a szabályokat, amelyekkel meghatározhatja, hogy az alkalmazások eléréséhez. Partner felhasználók is kapnak erőforrások elérését, amikor szükségük van rá. Ehhez biztonságos, anélkül, hogy a manuális előkészítésére hívja fel szervezet őket. A projekt az Azure-előfizetés tetszés szerinti könnyen telepíthető.
+A GitHub-projekt bemutatja a szervezetek használatát az API-k csoportházirend-alapú, önkiszolgáló regisztrációs képességet biztosít a megbízható partnerekkel, a szabályok, amelyek meghatározzák az alkalmazások eléréséhez. Partner felhasználók erőforrásokhoz való hozzáférést kaphat, amikor szükségük van rájuk. Ehhez biztonságos, anélkül, hogy a meghívó szervezetet, hogy manuálisan előkészítheti őket. A projektet egyszerűen üzembe helyezhető az Ön által választott Azure-előfizetéssel.
 
-## <a name="as-is-code"></a>Mint-kód
+## <a name="as-is-code"></a>As-kód
 
-Ez a kód bemutatása az Azure Active Directory B2B meghívó API használatát egy minta elérhetővé tegyen. A fejlesztői csapat vagy egy partner által kell szabható testre, és csak egy éles telepítési forgatókönyvhöz telepítheti azt javasoljuk.
+Ez a kód lehetőségként elérhetővé tegyen egy minta használatát az Azure Active Directory B2B meghívó API bemutatása. A fejlesztői csapat vagy egy partner által testre kell, és a egy éles helyzetben való telepítése előtt kell vizsgálni.
 
 ## <a name="next-steps"></a>További lépések
 
 * [Mi az az Azure AD B2B együttműködés?](what-is-b2b.md)
-* [Az Azure AD B2B együttműködés licencelés](licensing-guidance.md)
-* [Az Azure Active Directory B2B együttműködés gyakori kérdések (GYIK)](faq.md)
+* [Az Azure AD B2B-együttműködés licencelése](licensing-guidance.md)
+* [Az Azure Active Directory B2B-együttműködés – gyakori kérdések (GYIK)](faq.md)

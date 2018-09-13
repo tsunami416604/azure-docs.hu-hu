@@ -8,14 +8,14 @@ manager: jeconnoc
 ms.service: azure-functions
 ms.custom: vs-azure
 ms.topic: conceptual
-ms.date: 05/23/2018
+ms.date: 09/12/2018
 ms.author: glenga
-ms.openlocfilehash: 39745991f7ab3b181f892bbaa59283d92737ecf3
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 63213e38dab5ef2edd5150fe0adb620fecb2041c
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44093873"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44714445"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Fejlesztés az Azure Functions Visual Studio használatával  
 
@@ -96,7 +96,7 @@ A tárfiók kapcsolati sztringje beállítása:
 
 3. Ismételje meg az előző lépésben az egyedi kulcs hozzáadása a **értékek** bármilyen más kapcsolatot, a functions által igényelt az tömb.
 
-## <a name="create-a-function"></a>Függvény létrehozása
+## <a name="add-a-function-to-your-project"></a>Függvény hozzáadása a projekthez
 
 Az előre lefordított függvények a függvény által használt kötéseket határozzák meg a kódban attribútumok alkalmazása. Az Azure Functions Tools használatával a függvények létrehozása a megadott sablonokból, ha ezek az attribútumok érvényesek az Ön számára. 
 

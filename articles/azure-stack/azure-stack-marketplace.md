@@ -1,6 +1,6 @@
 ---
-title: Egy egyéni Piactéri elemet közzététele az Azure-vermet (felhő üzemeltetője) |} Microsoft Docs
-description: Azure verem kezelőként útmutató egy egyéni Piactéri elemet közzététele az Azure-készletben.
+title: Egyéni Piactéri elem közzététele az Azure Stackben (felhőüzemeltető) |} A Microsoft Docs
+description: Az Azure Stack operátorait szerint megtudhatja, hogyan egyéni Piactéri elem közzététele az Azure Stackben.
 services: azure-stack
 documentationcenter: ''
 author: brenduns
@@ -12,45 +12,45 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/23/2018
+ms.date: 09/12/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: 4ea23ed01e6432f24024d7e8cc07c2dfe42ac639
-ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
+ms.openlocfilehash: c16d8a282d489e7a2b5ee9908f52224aea6118d6
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34605569"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44713391"
 ---
-# <a name="the-azure-stack-marketplace-overview"></a>Az Azure verem piactér – áttekintés
+# <a name="the-azure-stack-marketplace-overview"></a>Az Azure Stack piactéren – áttekintés
 
-*A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
+*A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
 
-A piactéren olyan szolgáltatások, alkalmazások és erőforrások Azure verem testreszabott gyűjteménye. Erőforrások közé tartoznak a hálózatok, virtuális gépek, tárolási és így tovább. Felhasználók itt új erőforrások létrehozása és telepítése az új alkalmazások származnak. Úgy is, mint egy vásárlásra szolgáló katalógust, ahol a felhasználók keresse meg és válassza ki a használni kívánt elemeket. A Piactéri elemet használatához felhasználók elő kell fizetnie az ajánlat, amely a cikk hozzáférést biztosít.
+A piactér olyan szolgáltatások, alkalmazások és testre szabott Azure stack-erőforrások gyűjteménye. Erőforrások közé tartoznak a hálózatok, virtuális gépek, tárolási és így tovább. Felhasználók itt új erőforrásokat hozhat létre és helyezzen üzembe új alkalmazásokat jár. Tekintsen rá úgy mint a vásárlási katalógus, ahol a felhasználók tallózással keresse meg és válassza ki a használni kívánt elemeket. Piactéri elem használandó felhasználók kell előfizetés egy ajánlatra, amely hozzáférést biztosít számukra az elemet.
 
-Azure verem kezelőként hozzáadni kívánt elemek mellett dönt a piactér (közzététel). Beállíthatja például adatbázisok, alkalmazásszolgáltatások és így tovább is. Közzététel a felhasználók számára láthatóvá válnak. Közzéteheti az Ön által létrehozott egyéni elemet. Egy növekvő szereplő elemeket is közzéteheti [Azure piactéren elemek listáját](azure-stack-marketplace-azure-items.md). Ha közzéteszi a Piactéri elemet, a felhasználók láthatják az öt percen belül.
+Az Azure Stack operátorait szerint dönt, hogy a hozzáadni kívánt elemek (közzététel) a piactéren. Közzéteheti, például adatbázisok, alkalmazásszolgáltatások, és így tovább. Közzététel őket a felhasználók számára láthatóvá teszi. Teheti közzé egyéni elemeket. Is közzéteheti az egyre növekvő elemek [Azure Marketplace-elemek listáját](azure-stack-marketplace-azure-items.md). A piactéren tesz közzé egy elemet, ha a felhasználók láthatják őket öt percen belül.
 
 > [!Caution]  
-> Minden gyűjtemény elem összetevők lemezképek és a json-fájlok után, így elérhetővé válnak a verem Azure piactéren hitelesítés nélkül érhetők el. Egyéni Piactéri elemek közzétételekor további szempontokat lásd: [létrehozása és közzététele a Piactéri elemet](azure-stack-create-and-publish-marketplace-item.md).
+> Minden gyűjtemény elem összetevők képek és a json-fájlokat más néven őket az Azure Stack piactéren elérhető elvégzése után hitelesítés nélkül érhetők el. Egyéni Piactéri elemek közzétételekor további szempontokért lásd: [létrehozása és a Piactéri elem közzététele](azure-stack-create-and-publish-marketplace-item.md).
 
-Nyissa meg a piactéren, hogy a felügyeleti konzolban válassza **új**.
+Nyissa meg a Marketplace-en, hogy a felügyeleti konzolban válassza **+ erőforrás létrehozása**.
 
 ![](media/azure-stack-publish-custom-marketplace-item/image1.png)
 
 ## <a name="marketplace-items"></a>Marketplace-elemek
-Egy Azure verem piactér elem egy szolgáltatás, alkalmazás vagy erőforrás, a felhasználók által töltse le és használja. Minden Azure verem Piactéri elemek minden felhasználó számára, beleértve a felügyeleti elemekhez, például a csomagok és ajánlatok láthatók. Ezek az elemek nem feltétlenül szükséges-előfizetés megtekintése, de azok nem működőképes a felhasználók számára.
+Az Azure Stack piactéren elem egy szolgáltatás, alkalmazás vagy erőforrás, amely a felhasználók letöltheti és használhatja. Az összes Azure Stack piactéren elemek láthatók minden felhasználó számára, beleértve a felügyeleti elemek, például a csomagokat és ajánlatokat. Ezek az elemek nincs szükség egy előfizetési nézet, de azok nem működik a felhasználók számára.
 
-Minden piactér elemnek:
+Minden Marketplace-en elemnek:
 
-* Az Azure Resource Manager sablon erőforrás üzembe helyezéséhez
-* Metaadatok, például karakterláncok, ikonok és egyéb marketing biztosíték
+* Az Azure Resource Manager-sablonok, az erőforrás-kiépítés
+* Metaadatok, mint például a karakterláncokat, az ikonok és az egyéb marketinganyag
 * A cikk a portálon megjelenítendő adatok formázása
 
-Minden elem a piactér közzétett Azure Katalóguscsomagban (.azpkg) formátumot használja. Központi telepítés, illetve runtime jelöléssel erőforrások hozzáadása (például a kódot, a szoftver- vagy virtuálisgép-rendszerképek zip-fájlok) Azure verem külön-külön, ne a Piactéri elemet részeként. 
+A piactéren közzétett minden eleme az Azure Gallery-csomag (.azpkg) formátumot használja. Üzembe helyezés vagy a futásidejű erőforrások hozzáadása (például a kód, a szoftver vagy a virtuális gépek lemezképeit tartalmazó zip-fájlok) az Azure Stackhez külön-külön, a Piactéri elem nem részeként. 
 
-1803 és újabb verziójával Azure verem alakítja képek ritka fájlok letöltése Azure vagy az egyéni lemezképek feltöltése. Ez a folyamat egyre több idő lemezkép való hozzáadásakor, de helyet takarít meg, és felgyorsítja a képek telepítését. Új lemezképek csak érvényes átalakítás.  Meglévő lemezképet, nem módosulnak. 
+Az 1803 és az újabb Azure Stack alakítja lemezképek ritka fájlokat, amikor letöltik az Azure-ban, vagy ha egyéni lemezképeket tölthetnek fel. Ez a folyamat hozzáadja az idő kép hozzáadásakor viszont helyet takarít, és lerövidíti az üzembe helyezés ilyen rendszerképpel. Új képek csak érvényes átalakítás.  Meglévő lemezképek nem változnak. 
 
 ## <a name="next-steps"></a>További lépések
-[Töltse le a Piactéri elemek](azure-stack-download-azure-marketplace-item.md)  
-[Hozzon létre, és tegye közzé a Piactéri elemet](azure-stack-create-and-publish-marketplace-item.md)
+[Piactéri termékek letöltése](azure-stack-download-azure-marketplace-item.md)  
+[Hozzon létre, és a Piactéri elem közzététele](azure-stack-create-and-publish-marketplace-item.md)
 

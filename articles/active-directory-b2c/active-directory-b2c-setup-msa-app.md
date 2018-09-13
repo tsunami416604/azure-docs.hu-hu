@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/05/2018
+ms.date: 09/11/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 338c2a197cb50091c3b272e0ce590341ffda1d7f
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 911f8df6aa513a289cd15ea7fc96d7fc8806bb4a
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43341083"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44719511"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-microsoft-account-using-azure-active-directory-b2c"></a>Regisztráció és bejelentkezés a Microsoft-fiókkal az Azure Active Directory B2C beállítása
 
@@ -25,22 +25,18 @@ Microsoft-fiókot használni Identitásszolgáltatóként az Azure Active Direct
 
 1. Jelentkezzen be a [Microsoft alkalmazásregisztrációs portálon](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) Microsoft-fiókja hitelesítő adataival.
 2. A jobb felső sarokban válassza **alkalmazás hozzáadása**.
-3. Adjon meg egy **neve** az alkalmazásra, majd a **létrehozás**.
-4. A regisztrációs oldalon másolja az értékét **alkalmazásazonosító**. Használhatja a Microsoft-fiók konfigurálása identitás-szolgáltatóként a bérlőben.
+3. Adjon meg egy **neve** az alkalmazáshoz. Ha például *MSAapp1*.
+4. Válassza ki **új jelszó készítése** , és győződjön meg arról, hogy másolja az identitásszolgáltató konfigurálásakor használt jelszót. Emellett másolja a **alkalmazásazonosító**. 
 5. Válassza ki **Hozzáadás platform**, majd válassza ki, és **webes**.
-6. Adja meg `https://{tenant}.b2clogin.com/te/{tenant}.onmicrosoft.com/oauth2/authresp` a **átirányítási URL-ek**. Cserélje le **{tenant}** a bérlő nevét (például: contosob2c).
-7. Válassza ki **új jelszót létrehozni** alatt **titkos Alkalmazáskulcsok**. Másolja a képernyőn megjelenő új jelszót. Szüksége lesz rá a Microsoft-fiók konfigurálása identitás-szolgáltatóként a bérlőben. Ez a jelszó, egy fontos biztonsági hitelesítő adat.
+4. Adja meg `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` a **átirányítási URL-ek**. Cserélje le `your-tenant-name` a bérlő nevével.
+5. Kattintson a **Mentés** gombra.
 
 ## <a name="configure-a-microsoft-account-as-an-identity-provider"></a>Identitás-szolgáltatóként a Microsoft-fiók konfigurálása
 
 1. Jelentkezzen be a [az Azure portal](https://portal.azure.com/) az Azure AD B2C-bérlő globális rendszergazdájaként.
-2. Úgy győződhet meg arról, hogy az Azure AD B2C-bérlőt tartalmazó könyvtárt használja, hogy átvált rá az Azure Portal jobb felső sarkában. Jelölje ki előfizetői adatait, majd válassza a **Könyvtárváltás** lehetőséget. 
+2. Győződjön meg arról, hogy használja az Azure AD B2C-bérlő kattintva tartalmazó könyvtárba a **címtár és előfizetés-szűrő** a felső menüben, és a könyvtár, amely tartalmazza a bérlő kiválasztása.  
 
     ![Átváltás az Azure AD B2C-bérlőre](./media/active-directory-b2c-setup-msa-app/switch-directories.png)
-
-    Válassza ki a bérlőjét tartalmazó könyvtárt.
-
-    ![Könyvtár kijelölése](./media/active-directory-b2c-setup-msa-app/select-directory.png)
 
 3. Válassza az Azure Portal bal felső sarkában található **Minden szolgáltatás** lehetőséget, majd keresse meg és válassza ki az **Azure AD B2C**-t.
 4. Válassza ki **Identitásszolgáltatók**, majd válassza ki **Hozzáadás**.

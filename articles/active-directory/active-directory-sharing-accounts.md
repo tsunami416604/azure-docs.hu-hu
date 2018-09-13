@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 11/13/2017
+ms.date: 09/11/2018
 ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro
-ms.openlocfilehash: c8d7f1f5b793fcb684e9896bb93213a23d489860
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 163972329161f90ad364b25e7e60e9e5a04324d5
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37448543"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44720004"
 ---
 # <a name="sharing-accounts-with-azure-ad"></a>Az Azure AD-fiókok megosztása
 ## <a name="overview"></a>Áttekintés
@@ -71,7 +71,7 @@ Az Azure AD-fiók használata, kell tennie:
 Is teheti a megosztott fiókkal biztonságosabb a multi-factor Authentication (MFA) (További információ [az Azure AD-alkalmazások védelme](authentication/concept-mfa-whichversion.md)), és képes kezelni, ki férhet hozzá az alkalmazás használatával delegálhat[ Az Azure AD önkiszolgáló](users-groups-roles/groups-self-service-management.md) felügyeleti csoportban.
 
 ## <a name="related-articles"></a>Kapcsolódó cikkek
-* [Az Azure Active Directory segítségével végzett alkalmazásfelügyeletre vonatkozó cikkek jegyzéke](active-directory-apps-index.md)
+* [Alkalmazások kezelése az Azure Active Directoryban](manage-apps/what-is-application-management.md)
 * [Feltételes hozzáféréssel rendelkező alkalmazások védelme](active-directory-conditional-access-azure-portal.md)
 * [Önkiszolgáló csoport felügyeleti/SSAA](users-groups-roles/groups-self-service-management.md)
 

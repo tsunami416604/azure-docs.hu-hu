@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 09/12/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: fb820d124fd9b5e882cad538ad436532d7865fbc
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: f1899817ee2d0efec4ab561a64f24e49cb173c29
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37921541"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44720769"
 ---
 # <a name="prepare-on-premises-hyper-v-servers-for-disaster-recovery-to-azure"></a>Vészhelyreállítás az Azure-bA a helyszíni Hyper-V kiszolgálók előkészítése
 
@@ -60,13 +60,15 @@ Hálózatleképezés módon előkészítése a VMM-ben:
 ## <a name="verify-internet-access"></a>Internet-hozzáférés ellenőrzése
 
 1. Az oktatóanyag az alkalmazásában a legegyszerűbb konfiguráció van, a Hyper-V-gazdagépek és a VMM-kiszolgáló közvetlen internet-hozzáféréssel rendelkezik egy proxykiszolgáló használata nélkül. 
-2. Győződjön meg arról, hogy a Hyper-V-gazdagépek és a VMM-kiszolgálón, ha szükséges, hozzáférhet az URL-címek: 
-
-    [!INCLUDE [site-recovery-URLS](../../includes/site-recovery-URLS.md)]
-    
+2. Győződjön meg arról, hogy a Hyper-V-gazdagépek, és ha szükséges, a VMM-kiszolgáló férhet hozzá a szükséges URL-címek az alábbi.   
 3. Ha IP-cím alapján szabályozására van, ellenőrizze, hogy:
     - Csatlakozhat IP-cím-alapú tűzfalszabályainak [Azure Datacenter IP-címtartományok](https://www.microsoft.com/download/confirmation.aspx?id=41653), és a HTTPS (443) portot.
     - Lehetővé teszik az IP-címtartományok esetében az előfizetés Azure-régió.
+    
+### <a name="required-urls"></a>Kötelező URL-címek
+
+
+[!INCLUDE [site-recovery-URLS](../../includes/site-recovery-URLS.md)]
 
 
 ## <a name="prepare-to-connect-to-azure-vms-after-failover"></a>Felkészülés az Azure virtuális gépekhez való kapcsolódásra a feladatátvételt követően

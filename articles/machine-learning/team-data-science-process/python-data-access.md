@@ -1,6 +1,6 @@
 ---
-title: A Machine Learning Python ügyféloldali kódtár adatkészletek eléréséhez |} Microsoft Docs
-description: Telepítheti és használhatja a Python ügyféloldali kódtár férhessen hozzá és felügyelhesse Azure Machine Learning adatok biztonságos helyen a helyi Python-környezetben.
+title: A Machine Learning Python ügyfélkönyvtárat adatkészletek elérése |} A Microsoft Docs
+description: Telepítheti és használhatja a Python ügyféloldali kódtár eléréséhez, és az Azure Machine Learning adatok biztonságos kezelésére egy helyi Python-környezetet.
 services: machine-learning
 documentationcenter: python
 author: deguhath
@@ -15,98 +15,98 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: deguhath
-ms.openlocfilehash: 9f84686f8689a40cf002035053236b415481488f
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 496ffdcb5cc2e7b208a53dc8c1d8ba4c0818945f
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34838350"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44719970"
 ---
 # <a name="access-datasets-with-python-using-the-azure-machine-learning-python-client-library"></a>Hozzáférés az adathalmazokhoz Python segítségével, az Azure Machine Learning Python ügyfélkönyvtárat használva
-A Microsoft Azure Machine Learning Python ügyféloldali kódtár preview engedélyezheti a helyi Python-környezetben az Azure Machine Learning adatkészletekhez a biztonságos hozzáférést, és lehetővé teszi, hogy a létrehozását és kezelését egy munkaterület adathalmazok.
+Az előzetes verzióját a Microsoft Azure Machine Learning Python ügyfélkönyvtárat engedélyezheti a helyi Python-környezetben az Azure Machine Learning-adatkészletek biztonságos hozzáférést, és lehetővé teszi a létrehozását és kezelését, az adatkészletek a munkaterületen.
 
-Ez a témakör a kapcsolatos utasításokat tartalmazza:
+Ez a témakör nyújt útmutatást:
 
-* Telepítse a Machine Learning Python ügyféloldali kódtár 
-* hozzáférés, és töltse fel az adatkészleteket, beleértve az beszerzése a helyi Python környezetből Azure Machine Learning adatkészletek hozzáférési útmutatást
-* köztes adatkészletek elérje kísérletek
-* használjon, Python adatkészletek számbavétele, metaadatok elérheti, olvassa el a dataset tartalmát, hozzon létre új adatkészletek és frissítheti a meglévő adatkészletek
+* a Machine Learning Python ügyfélkönyvtárat telepítése 
+* eléréséhez, és töltse fel az adatkészletek, többek között a útmutatást találhat a helyi Python-környezetből az Azure Machine Learning adatkészletek hozzáférési beszerzése
+* a kísérletek köztes adatkészletek elérése
+* a Python ügyféloldali kódtár használatával adatkészletek számbavétele, hozzáfér, olvassa el a tartalmát egy adatkészletet, új adatkészleteket hoz létre és frissítheti a meglévő adatkészletek
 
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
-A Python ügyféloldali kódtára a tesztek alapján a következő környezetekben:
+A Python ügyféloldali kódtár tesztelve lett a következő környezetekben alatt:
 
-* Windows, Mac és Linux
-* Python 2.7, 3.3 és 3.4
+* Windows, Mac és Linux rendszereken
+* Python 2.7-es, 3.3 és 3.4
 
-A következő csomag rendelkezik egy függőséget:
+Ez maga a következő csomagok:
 
 * kérelem
 * Python-dateutil
 * pandas
 
-Javasoljuk, használjon, mint a rendelkező Python elosztási [Anaconda](http://continuum.io/downloads#all) vagy [lombkoronaszint](https://store.enthought.com/downloads/), amelyek a Python, IPython származnak, és a fenti három csomagot telepítve. Bár IPython nem feltétlenül szükséges, kezelésére és adatok interaktív megjelenítése egy nagyszerű környezetet is.
+Javasoljuk a Python elosztási például [Anaconda](http://continuum.io/downloads#all) vagy [lombkoronaszint](https://store.enthought.com/downloads/), amelyek származnak, a Python, az IPython, és a fent felsorolt három csomagokat telepíti. Bár IPython nem szigorúan kötelezőek, kezelésére és az adatok interaktív megjelenítése egy kiváló környezetet fontos.
 
-### <a name="installation"></a>Az Azure Machine Learning Python ügyféloldali kódtár telepítése
-Az Azure Machine Learning Python ügyféloldali kódtár is telepíteni kell a témakörben ismertetett feladatok végrehajtásához. Az elérhető a [Python-Csomagindexet](https://pypi.python.org/pypi/azureml). A telepítéshez a Python-környezetben a következő parancsot a a helyi Python-környezetben:
+### <a name="installation"></a>Az Azure Machine Learning Python ügyfélkönyvtárat telepítése
+Az Azure Machine Learning Python ügyfélkönyvtárat is telepíteni kell a témakörben ismertetett feladatok végrehajtásához. Érhető el a [Python-Csomagindexet](https://pypi.python.org/pypi/azureml). Telepítheti a Python-környezetében, futtassa a következő parancsot a helyi Python-környezetben:
 
     pip install azureml
 
-Azt is megteheti, töltse le és telepítse a forrásból származó [github](https://github.com/Azure/Azure-MachineLearning-ClientLibrary-Python).
+Másik lehetőségként töltse le és telepítse a forrásokból származó [github](https://github.com/Azure/Azure-MachineLearning-ClientLibrary-Python).
 
     python setup.py install
 
-Git a gépen telepítve van, a pip használatával közvetlenül telepítse a git-tárházba:
+Ha a git telepítve van a gépén, pip használatával közvetlenül a git-adattárból telepítése:
 
     pip install git+https://github.com/Azure/Azure-MachineLearning-ClientLibrary-Python.git
 
 
-## <a name="datasetAccess"></a>Studio kódtöredékek adatkészletek eléréséhez használja
+## <a name="datasetAccess"></a>Studio-kódtöredékek használata adatkészletek eléréséhez
 A Python ügyféloldali kódtár programozott hozzáférést biztosít a meglévő adatkészletek az adott időpontig futtatott kísérletek.
 
-A Studio webes felhasználói felületen keresztüli kódrészletek, amelyek tartalmazzák a szükséges információkat, töltse le és adatkészletek deszerializálni a hely számítógépén Pandas DataFrame objektumként is létrehozhat.
+A Studio webes felületén a kódrészletek, amelyek tartalmazzák a szükséges információkat, töltse le és adatkészletek deszerializálni pandas DataFrame objektumok a hely gépén, is létrehozhat.
 
-### <a name="security"></a>Az adatelérési biztonsági
-A Python ügyféloldali kódtár használható tartalmazza a munkaterület azonosítója és engedélyezési Studio által előírt kódrészletek token. Ezek a munkaterület teljes hozzáférést biztosítanak, és védeni kell, például a jelszót.
+### <a name="security"></a>Adatok hozzáférés biztonsága
+A kódtöredékek Studio által biztosított, a Python ügyféloldali kódtár segítségével tartalmazza a munkaterület azonosítójára és engedélyezési jogkivonat. Ezek biztosítson teljes hozzáférést a munkaterületét, és védeni kell, például a jelszó.
 
-Biztonsági okokból a kód részlet szolgáltatás működik, csak a felhasználók számára, amelyek rendelkeznek a szerepkörük állítja be **tulajdonos** a munkaterülethez. A szerepkör az Azure Machine Learning Studióban jelenik meg a **felhasználók** lapon az **beállítások**.
+Biztonsági okokból kód kódrészlet funkciója csak azok állítja be a szerepkörrel rendelkező felhasználók számára elérhető **tulajdonos** a munkaterület számára. A szerepkör megjelenik az Azure Machine Learning Studióban az **felhasználók** lap **beállítások**.
 
 ![Biztonság][security]
 
-Ha nincs beállítva az a szerepkör **tulajdonos**, vagy kérelem tulajdonos következőre, vagy kérje meg a munkaterület biztosítja, hogy a kódrészletet a tulajdonosa használhatja.
+Ha nincs beállítva az Ön szerepköréhez **tulajdonosa**, vagy lehet újból meghívni tulajdonosként, vagy kérje meg a munkaterület tulajdonosa tudja biztosítani a kódtöredék irányuló kérelem is.
 
-A hitelesítési jogkivonat beszerzése, tegye a következők egyikét:
+Az engedélyezési jogkivonat beszerzéséhez a következők egyikét teheti:
 
-* Kérje meg a jogkivonat a tulajdonosa. Tulajdonosok érhetik el a hitelesítési tokenek saját munkaterület Studio a beállítások lapon. Válassza ki **beállítások** a bal oldali ablaktáblán, majd kattintson a **engedélyezési JOGKIVONATOK** az elsődleges és másodlagos jogkivonatok megjelenítéséhez.  Bár az elsődleges vagy a másodlagos engedélyezési jogkivonatok használható a kódrészletet, azt javasoljuk, hogy a tulajdonosok csak használ-e a másodlagos engedélyezési jogkivonatokat.
+* Kérje meg a jogkivonat-tulajdonosától. Tulajdonosok saját hitelesítési jogkivonatok hozzáférhet a beállítások lapról a Studio-munkaterület. Válassza ki **beállítások** a bal oldali panelen, majd kattintson a **hitelesítési JOGKIVONATOK** megtekintéséhez az elsődleges és másodlagos jogkivonatokat.  Bár az elsődleges vagy másodlagos hitelesítési jogkivonatok kódrészlet is használható, javasoljuk, hogy a tulajdonosok csak megosztani a másodlagos hitelesítési jogkivonatokat.
 
-![Engedélyezési jogkivonatok](./media/python-data-access/ml-python-access-settings-tokens.png)
+![Hitelesítési jogkivonatok](./media/python-data-access/ml-python-access-settings-tokens.png)
 
-* Kérje meg, hogy a szerepkör tulajdonosa előléptetni.  Ehhez a munkaterület aktuális tulajdonosának kell először távolítsa el azt a munkaterületet, majd újra hívni Önt, tulajdonos.
+* Kérje meg a tulajdonosi szerepkörhöz, hogy támogatni.  Ehhez a munkaterülethez jelenlegi tulajdonosának kell először távolítsa el, a munkaterülethez, majd újból meghívni, azt tulajdonosai.
 
-Miután a fejlesztők beszerezte a munkaterület azonosítója és engedélyezési jogkivonat, képesek hozzáférni a munkaterület használatával a kódrészletet, függetlenül azok szerepét.
+Miután fejlesztők beszerezte a munkaterület-azonosítót és engedélyezési jogkivonat, azok érhetik el a munkaterületet, függetlenül azok szerepét a kódrészlet használatával.
 
-A hitelesítési tokenek kezelt a **engedélyezési JOGKIVONATOK** lapon az **beállítások**. Újragenerálás őket, de ez az eljárás visszavonja az előző lexikális elem a hozzáférést.
+A hitelesítési tokenek felügyelt a **hitelesítési JOGKIVONATOK** lap **beállítások**. Létrehozhatja őket, de ezt az eljárást az előző jogkivonat való hozzáférés visszavonása.
 
-### <a name="accessingDatasets"></a>Hozzáférés adatkészletek helyi Python-alkalmazás
-1. A Machine Learning Studióban, kattintson a **ADATKÉSZLETEK** a bal oldali navigációs sávon.
-2. Válassza ki a szeretne hozzáférni adathalmaz. Az adathalmaz bármelyikét kiválaszthatja a **saját ADATKÉSZLETEK** lista vagy a **minták** listája.
-3. Kattintson az alsó eszköztár **adatok hozzáférési kód generálása**. Ha az adatok formátuma nem kompatibilis a Python ügyféloldali kódtár, ez a gomb le van tiltva.
+### <a name="accessingDatasets"></a>Hozzáférés az adathalmazokhoz Python-alkalmazás helyi
+1. A Machine Learning Studióban, kattintson a **ADATKÉSZLETEK** a bal oldali navigációs sávban.
+2. Válassza ki az elérni kívánt adatkészlethez. Kiválaszthatja az adatkészletekhez a **saját ADATKÉSZLETEK** lista vagy a **minták** listája.
+3. Kattintson az alsó eszköztáron **adat-hozzáférési kód előállítása**. Ha az adatok formátuma nem kompatibilis a Python ügyféloldali kódtár, ez a gomb le van tiltva.
    
     ![Adathalmazok][datasets]
-4. Válassza ki a kódrészletet a ablakban jelenik meg, és másolja a vágólapra.
+4. Válassza ki a kódtöredék a ablakban jelenik meg, és másolja a vágólapra.
    
     ![Hozzáférési kód][dataset-access-code]
-5. Illessze be a notebook a helyi Python-alkalmazás.
+5. Illessze be a kódot a notebookot a helyi Python-alkalmazás.
    
     ![Notebook][ipython-dataset]
 
-## <a name="accessingIntermediateDatasets"></a>A Machine Learning kísérleteket a hozzáférés köztes adatkészletek
-Egy kísérletben a Machine Learning Studio futtatása után is lehet a modulok kimeneti csomópontról hozzáférhetnek a köztes adathalmazokat. Köztes adatkészletek olyan adatok, amelyek a létrehozott és használt köztes lépések egy modell eszköz futtatásakor.
+## <a name="accessingIntermediateDatasets"></a>A Machine Learning-kísérletek köztes adatkészletek elérése
+Kísérlet a Machine Learning Studio futtatása után is lehet a köztes adatkészletek elérése a modulok kimeneti csomópontjából. Az adatkészletek köztes olyan adatok, amelyek által létrehozott és használt köztes lépések egy modell eszköz futtatásakor.
 
-Mindaddig, amíg a adatok formátuma nem kompatibilis a Python ügyféloldali kódtára a köztes adatkészletek érhető el.
+Az adatkészletek köztes mindaddig, amíg az adatok formátuma kompatibilis a Python ügyféloldali kódtár érhető el.
 
-A következő formátum támogatott (Ezek állandók szerepelnek a `azureml.DataTypeIds` osztály):
+A következő formátumok támogatottak (Ezek állandók szerepelnek a `azureml.DataTypeIds` osztály):
 
 * Egyszerű szöveg
 * GenericCSV
@@ -114,113 +114,113 @@ A következő formátum támogatott (Ezek állandók szerepelnek a `azureml.Data
 * GenericCSVNoHeader
 * GenericTSVNoHeader
 
-A formátum azt is meghatározhatja, hogy egy modul kimeneti csomópont fölött. A csomópont neve eszközleírásként együtt jelenik meg.
+Megadhatja, hogy a formátum az egérmutatót egy modul kimeneti csomópontot. A csomópont nevét, elemleírásokban együtt jelenik meg.
 
-Néhány a modulok, mint a [vegyes] [ split] modul nevű formátumra kimeneti `Dataset`, amely nem támogatja a Python ügyféloldali kódtár.
+Egyes modulok, például a [Split] [ split] modul kimeneti nevű formátumra `Dataset`, amely nem támogatja a Python ügyféloldali kódtár.
 
-![A DataSet formátumban][dataset-format]
+![Adatkészlet-formátum][dataset-format]
 
-Kell használnia, mint a konverziós modul [CSV átalakítása][convert-to-csv], a kimenetnek feltölti egy támogatott formátumra.
+Például használja egy átalakítás modult kell [átalakítás fürt megosztott Kötetévé][convert-to-csv]beolvasásához a kimenetet egy támogatott formátumra.
 
-![GenericCSV formátum][csv-format]
+![GenericCSV formátuma][csv-format]
 
-A következő lépések bemutatják egy példa, amely hoz létre a kísérlet, futtatja, és a köztes dataset fér hozzá.
+A következő lépések bemutatják egy példa, amely létrehoz egy kísérletet, futtatja és a köztes adatkészlethez hozzáfér.
 
-1. Hozzon létre egy új kísérlet.
-2. Helyezze be egy **bináris osztályozási felnőtt nyilvántartásba bevétel dataset** modul.
-3. Helyezze be a [vegyes] [ split] modul, és csatlakoztassa a bemeneti adatkészlet modul kimenetével.
-4. Helyezze be a [CSV átalakítása] [ convert-to-csv] modul, és csatlakoztassa a bemeneti egy a [vegyes] [ split] modul kimenete.
-5. A kísérlet mentéséhez, majd futtassa és várja meg, amíg a futása befejeződik.
-6. A kimeneti csomóponton kattintson a a [CSV átalakítása] [ convert-to-csv] modul.
-7. Ha a helyi menü megjelenik, válassza ki a **adatok hozzáférési kód generálása**.
+1. Új kísérlet létrehozásához.
+2. Helyezze be egy **bináris osztályozási felnőtt népszámlálási jövedelem adatkészlet** modul.
+3. Helyezze be egy [Split] [ split] modult, és csatlakoztassa a bemeneti adatkészlet modul kimenetével.
+4. Helyezze be a [átalakítás fürt megosztott Kötetévé] [ convert-to-csv] modul, és csatlakozzon az egyik a bemeneti a [Split] [ split] modul kimenete.
+5. Mentse a kísérletet, futtassa, és várjon, amíg a futása befejeződik.
+6. Kattintson a kimeneti csomópont a a [átalakítás fürt megosztott Kötetévé] [ convert-to-csv] modul.
+7. Amikor a helyi menü megjelenik, válassza ki a **adat-hozzáférési kód előállítása**.
    
     ![Helyi menü][experiment]
 8. Válassza ki a kódrészletet, és a megjelenő ablakban másolja a vágólapra.
    
     ![Hozzáférési kód][intermediate-dataset-access-code]
-9. Illessze be a kódját a notebook.
+9. Illessze be a kódot a notebookot.
    
     ![Notebook][ipython-intermediate-dataset]
-10. Az adatok matplotlib használatával jelenítheti meg. Ez a kor oszlop hisztogram jelenik meg:
+10. Az adatok matplotlib használatával jelenítheti meg. Ez az életkor oszlop hisztogramja jeleníti meg:
     
     ![Hisztogram][ipython-histogram]
 
-## <a name="clientApis"></a>A Machine Learning Python ügyféloldali kódtár segítségével hozzáférni, olvasását, létrehozását és adatkészletek kezelése
+## <a name="clientApis"></a>A Machine Learning Python ügyféloldali kódtár használatával eléréséhez, olvassa el, hozzon létre és adatkészletek kezelése
 ### <a name="workspace"></a>Munkaterület
-A munkaterületen a belépési pont, a Python ügyféloldali kódtára a rendszer. Adja meg a `Workspace` osztály a munkaterület azonosítója és engedélyezési jogkivonatot példány létrehozásához:
+A munkaterület a Python ügyféloldali kódtár a belépési pont. Adja meg a `Workspace` osztály a munkaterület azonosítójára és engedélyezési jogkivonat-példányt létrehozni:
 
     ws = Workspace(workspace_id='4c29e1adeba2e5a7cbeb0e4f4adfb4df',
                    authorization_token='f4f3ade2c6aefdb1afb043cd8bcf3daf')
 
 
-### <a name="enumerate-datasets"></a>Adatkészletek számbavétele
-Operációs rendszer egy adott munkaterület minden adathalmazok:
+### <a name="enumerate-datasets"></a>Az adatkészletek számbavétele
+Egy adott munkaterület összes adatkészlete enumerálása:
 
     for ds in ws.datasets:
         print(ds.name)
 
-Operációs rendszer csak a felhasználó által létrehozott adatkészletek:
+Csak a felhasználó által létrehozott adatkészletek enumerálása:
 
     for ds in ws.user_datasets:
         print(ds.name)
 
-Operációs rendszer csak a például adatkészleteket:
+Csupán a példa adatkészletek enumerálása:
 
     for ds in ws.example_datasets:
         print(ds.name)
 
-A DataSet adatkészlet neve (kis-és nagybetűket) érhető el:
+Adatkészlet neve (amely a kis-és nagybetűket) érhető el:
 
     ds = ws.datasets['my dataset name']
 
-Vagy hozzá tud férni az index szerinti:
+És az index által érhessék el:
 
     ds = ws.datasets[0]
 
 
 ### <a name="metadata"></a>Metaadatok
-Adatkészletek metaadatok mellett tartalom van. (Köztes adatkészletek Ez a szabály alól kivételt, és minden metaadatot.)
+Az adathalmazban metaadatok, a tartalom mellett. (Az adatkészletek köztes-e szabály alól, és nem rendelkezik az összes metaadat.)
 
-Néhány metaadatok értéket rendeli hozzá a felhasználó a létrehozás időpontjában:
+Néhány metaadatértékeket a felhasználó által hozzárendelt létrehozáskor:
 
     print(ds.name)
     print(ds.description)
     print(ds.family_id)
     print(ds.data_type_id)
 
-Azure ML által hozzárendelt értékek:
+Mások az Azure gépi tanulás által hozzárendelt értékek a következők:
 
     print(ds.id)
     print(ds.created_date)
     print(ds.size)
 
-Tekintse meg a `SourceDataset` tudhat meg a rendelkezésre álló metaadatok osztály.
+Tekintse meg a `SourceDataset` további információk a rendelkezésre álló metaadatok osztály.
 
-### <a name="read-contents"></a>Tartalmának olvasása
-A Machine Learning Studio által biztosított automatikusan kódtöredékek töltse le, és az adatkészlet egy Pandas DataFrame objektum deszerializálása. Ez a lépés a `to_dataframe` módszert:
+### <a name="read-contents"></a>Tartalom olvasása
+A Machine Learning Studio által biztosított automatikusan kódtöredékek töltse le, és az adatkészlet egy pandas DataFrame objektum deszerializálása. Ez a lépés a `to_dataframe` módszer:
 
     frame = ds.to_dataframe()
 
-Töltse le a nyers adatokat, és hajtsa végre a deszerializálás, saját kezűleg szeretné, ha ez egy lehetőséget. A jelenleg ez a lehetőség csak formátum például "ARFF", amely a Python ügyféloldali kódtár nem deszerializálható.
+Ha inkább a nyers adatok letöltése, és hajtsa végre a deszerializálás, saját magának, lehetőség, amely. Jelenleg ez a lehetőség csak formátumokhoz, például a "ARFF", amelyek deszerializálása nem lehetséges, a Python ügyféloldali kódtárral.
 
-Tartalmának olvasása szövegként:
+A tartalom olvasása szövegként:
 
     text_data = ds.read_as_text()
 
-Tartalmának olvasása bináris:
+A bináris típusúként, olvassa el a tartalmat:
 
     binary_data = ds.read_as_binary()
 
-Nyissa meg a tartalmát egy stream csak is:
+Nyissa meg a stream tartalmát is:
 
     with ds.open() as file:
         binary_data_chunk = file.read(1000)
 
 
 ### <a name="create-a-new-dataset"></a>Hozzon létre egy új adatkészlet
-A Python ügyféloldali kódtár lehetővé teszi, hogy adatkészletek a Python-programból feltölthetők. Ezek az adatkészletek állnak majd a munkaterületen.
+A Python ügyféloldali kódtár lehetővé teszi, hogy a Python program származó adatkészletek feltöltése. Ezek az adatkészletek majd érhetők el használatra a munkaterületén.
 
-Ha az adatok egy Pandas DataFrame van, használja a következő kódot:
+Ha az adatok egy pandas DataFrame rendelkezik, használja a következő kódot:
 
     from azureml import DataTypeIds
 
@@ -231,7 +231,7 @@ Ha az adatok egy Pandas DataFrame van, használja a következő kódot:
         description='my description'
     )
 
-Ha az adatok már tartozik, akkor használhatja:
+Ha az adatok már szerializált, akkor használhatja:
 
     from azureml import DataTypeIds
 
@@ -242,7 +242,7 @@ Ha az adatok már tartozik, akkor használhatja:
         description='my description'
     )
 
-A Python ügyféloldali kódtár képes szerializálni a Pandas DataFrame a következő formátumban (Ezek állandók szerepelnek a `azureml.DataTypeIds` osztály):
+A Python ügyféloldali kódtár tudja szerializálni az alábbi formátumok pandas DataFrame (Ezek állandók szerepelnek a `azureml.DataTypeIds` osztály):
 
 * Egyszerű szöveg
 * GenericCSV
@@ -251,9 +251,9 @@ A Python ügyféloldali kódtár képes szerializálni a Pandas DataFrame a köv
 * GenericTSVNoHeader
 
 ### <a name="update-an-existing-dataset"></a>Egy meglévő adatkészlet frissítése
-Ha megpróbálja feltölteni egy meglévő adatkészlet egyező nevű új adatkészlet, egy ütközés hiba szerezheti be.
+Töltse fel egy új adatkészletet, amelynek neve megegyezik egy meglévő adatkészlet meg, ha egy ütköző hiba szerezheti be.
 
-Egy meglévő adatkészlet frissítéséhez először kell a meglévő adatkészletet hivatkozás:
+Egy meglévő adatkészlet frissítéséhez először kell beolvasni a meglévő adathalmazt hivatkozást:
 
     dataset = ws.datasets['existing dataset']
 
@@ -261,7 +261,7 @@ Egy meglévő adatkészlet frissítéséhez először kell a meglévő adatkész
     print(dataset.name)         # 'existing dataset'
     print(dataset.description)  # 'data up to jan 2015'
 
-Ezután `update_from_dataframe` szerializálni, és cserélje ki annak tartalmát a DataSet adatkészlet Azure:
+Ezután `update_from_dataframe` szerializálható, és cserélje ki annak tartalmát az Azure-beli adatkészlet:
 
     dataset = ws.datasets['existing dataset']
 
@@ -271,7 +271,7 @@ Ezután `update_from_dataframe` szerializálni, és cserélje ki annak tartalmá
     print(dataset.name)         # 'existing dataset'
     print(dataset.description)  # 'data up to jan 2015'
 
-Ha szeretné szerializálni az adatokat, más formátumba, adjon meg egy értéket a választható `data_type_id` paraméter.
+Ha meg szeretné szerializálni az adatokat egy másik formátumba, adjon meg egy értéket, a választható `data_type_id` paraméter.
 
     from azureml import DataTypeIds
 
@@ -286,7 +286,7 @@ Ha szeretné szerializálni az adatokat, más formátumba, adjon meg egy érték
     print(dataset.name)         # 'existing dataset'
     print(dataset.description)  # 'data up to jan 2015'
 
-Meg nem kötelezően leírást adhat meg új értéket ad a `description` paraméter.
+Igény szerint beállíthatja az új leírást adjon meg egy értéket a `description` paraméter.
 
     dataset = ws.datasets['existing dataset']
 
@@ -299,7 +299,7 @@ Meg nem kötelezően leírást adhat meg új értéket ad a `description` param�
     print(dataset.name)         # 'existing dataset'
     print(dataset.description)  # 'data up to feb 2015'
 
-Opcionálisan megadhatja egy új nevet értéket ad a `name` paraméter. Ettől kezdve a fogja lekérni az adatkészlet csak az új névre. Az alábbi kód frissíti az adatokat, nevét és leírását.
+Igény szerint beállíthatja az új nevet adjon meg egy értéket a `name` paraméter. Mostantól fogja beolvasni a az adatkészlet csak az új név használatával. Az alábbi kód frissíti az adatokat, nevét és leírását.
 
     dataset = ws.datasets['existing dataset']
 
@@ -316,9 +316,9 @@ Opcionálisan megadhatja egy új nevet értéket ad a `name` paraméter. Ettől 
     print(ws.datasets['existing dataset v2'].name) # 'existing dataset v2'
     print(ws.datasets['existing dataset'].name)    # IndexError
 
-A `data_type_id`, `name` és `description` paraméterek megadása nem kötelező, és alapértelmezés szerint az előző értéket. A `dataframe` paraméter megadása mindig kötelező.
+A `data_type_id`, `name` és `description` paraméterek megadása nem kötelező, és alapértelmezés szerint a korábbi értéküket. A `dataframe` paraméter mindig szükség.
 
-Ha az adatok már szerializált, `update_from_raw_data` helyett `update_from_dataframe`. Ha a átadni `raw_data` helyett `dataframe`, hasonló módon működik.
+Ha az adatok már szerializált, `update_from_raw_data` helyett `update_from_dataframe`. Ha csak át kell adnia a `raw_data` helyett `dataframe`, hasonló módon működik.
 
 <!-- Images -->
 [security]:./media/python-data-access/security.png

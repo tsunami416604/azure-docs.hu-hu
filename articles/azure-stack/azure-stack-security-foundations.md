@@ -3,23 +3,22 @@ title: Megismerheti az Azure Stack biztonsági vezérlők |} A Microsoft Docs
 description: Szolgáltatás-rendszergazdaként a alkalmazni az Azure Stack biztonsági ellenőrzések ismertetése
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: PatAltimore
 manager: femila
 editor: ''
-ms.assetid: cccac19a-e1bf-4e36-8ac8-2228e8487646
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2018
-ms.author: mabrigg
-ms.openlocfilehash: a3bd314a1df3c45c76b2e3a5acb31c1474d0fdf5
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.date: 09/12/2018
+ms.author: patricka
+ms.openlocfilehash: 048a2e8204b3b8776b5a7e0e425dbc5fdf3d504c
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39008831"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44719018"
 ---
 # <a name="azure-stack-infrastructure-security-posture"></a>Az Azure Stack infrastruktúrájának biztonsági rendszer kialakításához
 
@@ -87,3 +86,5 @@ Hálózati hozzáférés-vezérlési listák érvényben vannak, a három réteg
 ## <a name="next-steps"></a>További lépések
 
 - [Ismerje meg, az Azure Stack titkos kulcsainak rotálása](azure-stack-rotate-secrets.md)
+- [PCI-DSS és a CSA-CCM dokumentumokat az Azure Stackhez](https://servicetrust.microsoft.com/ViewPage/TrustDocuments)
+- [Az Azure Stack és védelmi Minisztérium a NIST dokumentumok](https://servicetrust.microsoft.com/ViewPage/Blueprint)

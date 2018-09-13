@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/14/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: bb2dc0d5500778372de674c749b44267fb512a2e
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 406d5965c02ceddc617c8729bad95ac7819af30e
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43701153"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44722061"
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>Elérhető az Azure Stackhez az Azure piactéren elemek
 
@@ -101,6 +101,7 @@ A Microsoft Azure Stackhez az Azure piactér következő virtuális gépek és a
 
 |  | Konfigurációelem neve | Leírás | Közzétevő |
 | --- | --- | --- | --- |
+| ![Útválasztó arista vEOS](media/azure-stack-marketplace-azure-items/arista.png) | [Útválasztó arista vEOS](https://azuremarketplace.microsoft.com/marketplace/apps/arista-networks.veos-router) | Az Arista vEOS útválasztó, a szolgáltatás gazdag több felhőalapú és több hipervizorral rendelkező virtuális útválasztó, amellyel a nagyvállalatok és felhőszolgáltatók hozhat létre egységes, rendkívül biztonságos és skálázható hibrid hálózatok. | Arista hálózatok |
 | ![AbanteCart](media/azure-stack-marketplace-azure-items/abantecart.png) | [AbanteCart](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.abantecart) | Nyílt forráskódú e-kereskedelmi bevásárlókocsi. | Bitnami |
 | ![ActiveMQ](media/azure-stack-marketplace-azure-items/activemq.png) | [ActiveMQ](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.activemq) | Nyílt forráskódú üzenettovábbítóról Java-környezetben. | Bitnami |
 | ![Akeneo](media/azure-stack-marketplace-azure-items/akeneo.png) | [Akeneo](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.akeneo) | A PIM hatékony amely leegyszerűsíti a felügyeleti folyamatok. | Bitnami |
@@ -156,6 +157,7 @@ A Microsoft Azure Stackhez az Azure piactér következő virtuális gépek és a
 | ![Több Memcached-példányok](media/azure-stack-marketplace-azure-items/memcached.png) | [Több Memcached-példányok](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.memcached-multipleinstances) | Memcached egy nagy teljesítményű, elosztott memóriabeli objektum rendszer. Ez a megoldás több Memcached csomópont hozhat létre nagy teljesítményű, az alkalmazás hiba ellenálló elosztott gyorsítótáras látja el. **Ez a megoldássablon Debian 8 és egyéni parancsfájl is Linux 2.0-s verziója igényel.** | Bitnami |
 | ![MODX](media/azure-stack-marketplace-azure-items/modx.png) | [MODX](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.modx) | Intuitív webes tartalomkezelő rendszer. | Bitnami |
 | ![MongoDB](media/azure-stack-marketplace-azure-items/mongodb.png) | [MongoDB](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.mongodb) | Nagyteljesítményű nyílt forráskódú NoSQL-adatbázis C++ nyelven írt. | Bitnami |
+| ![MongoDB-replikáció](media/azure-stack-marketplace-azure-items/mongodb.png) | [MongoDB-replikáció](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.production-mongodb) | Nagyteljesítményű nyílt forráskódú NoSQL-adatbázis C++ nyelven írt. **Ez a megoldássablon 1807 vagy újabb verzióját kell az Azure Stack igényel, és a Linux 2.0-s verziója is szükséges Debian 8 és egyéni parancsfájl.** | Bitnami |
 | ![Moodle](media/azure-stack-marketplace-azure-items/moodle.png) | [Moodle-alapú](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.moodle) | Hatékony CMS online tanulási Közösségek számára terveztek. | Bitnami |
 | ![Multicraft](media/azure-stack-marketplace-azure-items/multicraft.png) | [Multicraft](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.multicraft) | Megoldás és a Vezérlés panel üzemeltető Minecraft-kiszolgálón. | Bitnami |
 | ![MyBB](media/azure-stack-marketplace-azure-items/mybb.png) | [MyBB](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.mybb) | Ingyenes és nyílt forráskódú fórum szoftver. | Bitnami |
@@ -194,6 +196,7 @@ A Microsoft Azure Stackhez az Azure piactér következő virtuális gépek és a
 | ![RabbitMQ fürt](media/azure-stack-marketplace-azure-items/rabbitmq.png) | [RabbitMQ fürt](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.rabbitmq-cluster) | RabbitMQ egy üzenetközvetítő az alkalmazások egy common platform küldhet és fogadhat üzeneteket és a egy biztonságos helyen élő mindaddig, amíg kap üzeneteket. Ez a megoldás kialakításához arra az egy egyetlen logikai közvetítő RabbitMQ fürtben több csomóponton üzembe több virtuális gép használja. **Ez a megoldássablon Debian 8 és egyéni parancsfájl is Linux 2.0-s verziója igényel.** | Bitnami |
 | ![Helyreállítási környezet: dash](media/azure-stack-marketplace-azure-items/redash.png) | [Helyreállítási környezet: dash](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.redash) | Nyílt forráskódú Adatvizualizációk és együttműködési platformot. | Bitnami |
 | ![Redis](media/azure-stack-marketplace-azure-items/redis.png) | [Redis](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.redis) | Hatékony nyílt forráskódú kulcs-érték tároló. | Bitnami |
+| ![Redis Cache a magas rendelkezésre állás](media/azure-stack-marketplace-azure-items/redis.png) | [Redis Cache a magas rendelkezésre állás](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.production-redis) | Hatékony nyílt forráskódú kulcs-érték tároló. **Ez a megoldássablon 1807 vagy újabb verzióját kell az Azure Stack igényel, és a Linux 2.0-s verziója is szükséges Debian 8 és egyéni parancsfájl.** | Bitnami |
 | ![Redmine](media/azure-stack-marketplace-azure-items/redmine.png) | [Redmine](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.redmine) | Hatékony project management webalkalmazás | Bitnami |
 | ![Redmine + Agilis](media/azure-stack-marketplace-azure-items/redmineagile.png) | [Redmine+Agile](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.redmineplusagile) | Előre konfigurált Agilis beépülő modullal projektmenedzsment-alkalmazás. | Bitnami |
 | ![ReportServer Közösség](media/azure-stack-marketplace-azure-items/reportserver.png) | [ReportServer Közösség](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.reportserver) | Nyílt forráskódú üzleti adatelemzési platform. | Bitnami |

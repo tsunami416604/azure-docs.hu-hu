@@ -1,297 +1,300 @@
 ---
-title: Alapvető metrikákat megtekintéséhez az Azure költség felügyeleti irányítópultokon |} Microsoft Docs
-description: Ez a cikk ismerteti, hogyan Azure költség felügyeleti tekintse meg az irányítópultok metrikáit.
+title: Fontos metrikákat jeleníthet meg az Azure Cost Management irányítópultokon |} A Microsoft Docs
+description: Ez a cikk azt ismerteti, hogyan irányítópultokkal fontos metrikákat jeleníthet meg az Azure Cost Managementben.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 06/05/2018
+ms.date: 06/12/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: b1dc2e2eca900ca0ae72329c3c373b2d24f1b2e0
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 4f51598dd2b026f1c3a4b0d763b1547a44eedc7b
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35303706"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35644944"
 ---
-# <a name="view-key-cost-metrics-with-dashboards"></a>Nézet kulcs irányítópultok metrikák költsége
+# <a name="view-key-cost-metrics-with-dashboards"></a>Költségeket az irányítópultok metrikák nézet kulcs
 
-Irányítópultok Cloudyn a jelentések magas szintű áttekintést adjon meg. Irányítópultok engedélyezi, hogy a kulcs költség metrikák tekintse meg egyetlen nézetben. Ezenkívül tartalmaznak az üzleti trend kiemeli a fontos üzleti döntéseket nyújt segítséget.
+A Cloudyn irányítópultjain jelentések magas szintű áttekintést nyújt. Az irányítópultok lehetővé teszi kulcs költség metrikákat tekinthet meg egyetlen nézetben. Ezenkívül tartalmaznak üzleti trend kiemeli annak érdekében, hogy fontos üzleti döntéseket hozhasson.
 
-Irányítópultok nézeteket hozhat létre különböző feladatokat, többek között lehet, hogy a szervezet számára is használhatók:
+Az irányítópultok is használják nézeteket hozhat létre a különböző személyek a szervezetben, többek között előfordulhat, hogy:
 
 - Pénzügyi vezérlő
-- Alkalmazás vagy a projekt tulajdonosa
-- DevOps visszafejtés
-- Azok a vezetők
+- Alkalmazás- vagy projekt tulajdonosa
+- DevOps-mérnök
+- A vezetők
 
-Irányítópultok widgeteket épülnek fel, és minden widget lényegében egy jelentés miniatűr. Kattintson a jelentés megnyitásához widgetet. Jelentések testreszabásakor mentheti azokat a jelentések és azok van-e adva az irányítópulton.
+Az irányítópultok widgetek épülnek fel, és minden widget lényegében egy jelentés miniatűr. Kattintson egy widget nyissa meg a jelentést. Jelentések testreszabása, mentse azokat a jelentések mappa, és a rendszer hozzáadja az irányítópultot.
 
-Irányítópult-verziók kezelése (MSP), a vállalati és a prémium szintű Cloudyn felhasználók térnek el egymástól. A különbségek entitás hozzáférési szintek határozzák meg. Hozzáférési szintekkel kapcsolatos további információkért lásd: [entitás hozzáférési szintek](tutorial-user-access.md#entity-access-levels).
+Irányítópult-verziók kezelése (MSP), Enterprise és prémium szintű Cloudyn felhasználók esetében eltérőek. A különbségek entitások hozzáférési szintjeit határozzák meg. Hozzáférési szintekkel kapcsolatos további információkért lásd: [entitások hozzáférési szintjeit](tutorial-user-access.md#entity-access-levels).
 
-Irányítópult rendelkezésre állási függ a felhőbeli szolgáltató szolgáltatásfiók irányítópultok megjelenítésekor használt. Rendelkezésre álló és Cloudyn által összegyűjtött információ típusát irányítópultok jelentései hatással van. Például ha egy AWS fiók nem rendelkezik majd nem látja a S3 követő irányítópult. Hasonlóképpen ha nem engedélyezi az Azure Resource Manager hozzáférést Cloudyn majd nem látja optimalizáló widgetjeihez bármely Azure-specifikus adatait.
+Irányítópult rendelkezésre állási attól függ, hogy a cloud service provider használt fiók irányítópultok megtekintésekor típusát. Elérhető és a Cloudyn által összegyűjtött információ típusa hatással van a jelentések az irányítópultokkal. Például ha AWS-fiók nem rendelkezik majd meg nem jelenik meg az S3-követő irányítópultot. Ehhez hasonlóan ha nem engedélyezi az Azure Resource Manager hozzáférhetnek, majd meg nem jelenik meg az irányítópult widgetek optimalizáló bármely Azure-ra vonatkozó információkat.
 
-A kész irányítópultok bármelyikét használhatja, vagy a saját Irányítópult testre szabott jelentéseket hozhat létre. Ha nem ismeri a Cloudyn jelentések, lásd: [használata költség felügyeleti jelentések](use-reports.md).
+Az előzetesen irányítópultok bármelyikét használhatja, vagy testre szabott jelentéseket hozhat létre saját irányítópultját. Ha még nem ismeri a Cloudyn-jelentések, [használata Cost Management jelentések](use-reports.md).
 
 ## <a name="create-a-custom-dashboard"></a>Egyéni irányítópult létrehozása
 
-Ha gyorsan az egyéni irányítópult, másolatot készít egy meglévő tulajdonságát használatára. Ezután úgy, hogy a saját igényeinek megfelelően módosíthatja. A másolni kívánt irányítópultján kattintson **Mentés másként**. Csak másolatot készít személyre szabott irányítópultokat – az irányítópultok Cloudyn mellékelt nem lehet ugyanaz.
+A használatának gyors megkezdése egy egyéni irányítópult, duplikálhatja tulajdonságainak használata egy meglévő. Majd módosíthatja azt, hogy illeszkedjen az igényeihez. A másolni kívánt irányítópultján kattintson **Mentés másként**. Személyre szabott irányítópultok csak duplikálhatja – az irányítópultok, a Cloudyn, nem ismétlődő.
 
 Egyéni irányítópult létrehozása:
 
-1. A kezdőlapon, kattintson a **új hozzáadása +**. Saját irányítópult-oldalon jelenik meg.  
+1. A kezdőlapon kattintson **új hozzáadása +**. Saját irányítópult-oldalon jelenik meg.  
     ![Saját irányítópult](./media/dashboards/my-dashboard.png)
-2. Kattintson a **adja hozzá az új jelentés**. A jelentés hozzáadása a megjelenő.
-3. Jelölje ki az irányítópult-widgethez hozzáadni kívánt jelentést. A widget hozzáadódik az irányítópulton.
-4. Ismételje meg a fenti lépéseket, amíg be nem fejeződik az irányítópulton.
-5. Az irányítópult nevének módosításához kattintson a nevére az irányítópult az irányítópult kezdőlapján, és írja be az új nevet.
+2. Kattintson a **adja hozzá az új jelentés**. A jelentés hozzáadása jelenik meg.
+3. Válassza ki a jelentést, az irányítópult-widgethez hozzáadni kívánt. A widget hozzá van adva az irányítópulthoz.
+4. Ismételje meg a fenti lépéseket, mindaddig, amíg befejeződik az irányítópulton.
+5. Ha módosítani szeretné az irányítópult nevét, az az irányítópult nevét, az irányítópult kezdőlapján kattintson, és írja be az új nevet.
 
-## <a name="modify-a-custom-dashboard"></a>Egy egyéni irányítópult
+## <a name="modify-a-custom-dashboard"></a>Egyéni irányítópult módosítása
 
-Létrehoz egy egyéni irányítópultot, például az irányítópultok Cloudyn mellékelt nem módosíthatja. Egy egyéni irányítópult jelentés módosítása:
+Egyéni irányítópult létrehozása, például a cloudyn foglalt irányítópultokon nem módosíthatja. Egyéni irányítópult jelentés módosítása:
 
-1. Az irányítópulton található a jelentés módosítása, és kattintson a kívánt **szerkesztése**. Megjeleníteni a jelentést.
-2. A beállítások módosításait, amely a jelentést szeretne készíteni, és kattintson a **mentése**. A jelentés frissül, és megjeleníti a módosítását.
+1. Az irányítópulton, keresse meg a jelentés módosítása, és kattintson a kívánt **szerkesztése**. A jelentés jelenik meg.
+2. Végezze el a jelentést szeretne készíteni, és kattintson a módosításokat **mentése**. A jelentés frissül, és megjeleníti a módosításokat.
 
-## <a name="share-a-custom-dashboard"></a>Egy egyéni irányítópult megosztása
+## <a name="share-a-custom-dashboard"></a>Egyéni irányítópult megosztása
 
-Egy egyéni irányítópultot megoszthatja másokkal történő _nyilvános_ vagy _saját entitás_. Nyilvános megosztásakor minden felhasználók megtekinthetik az irányítópulton. Csak az aktuális entitás hozzáféréssel rendelkező felhasználók megtekinthetik az irányítópulton, saját entitásra megosztásakor. Az egyéni irányítópult megosztása a nyilvános és a saját entitás lépések hasonlóak.
+Egyéni irányítópult megoszthatja másokkal, _nyilvános_ vagy _saját entitás_. Nyilvánosan megosztott a minden felhasználó megtekintheti az irányítópulton. Csak az aktuális entitás hozzáféréssel rendelkező felhasználók megtekinthetik az irányítópultot saját entitáshoz megosztásakor. Egyéni irányítópult megosztása a nyilvános és a saját entitás lépései hasonlóak.
 
-Nyilvános egyéni irányítópult megosztása:
+A nyilvános egyéni irányítópult megosztása:
 
-1. Kattintson az irányítópulton, **irányítópultjának beállításai**. Az irányítópult beállítások mezőben jelenik meg.  
-    ![Irányítópult-beállítások](./media/dashboards/dashboard-options.png)
-2. A irányítópult beállítások párbeszédpanelen kattintson a nyíl szimbólum majd **nyilvános**. A nyilvános irányítópult megerősítést kérő párbeszédpanel jelenik meg.
-3. Kattintson a **Igen**. Az irányítópult már mások számára elérhető.
+1. Az irányítópulton kattintson **irányítópult beállításai**. Az irányítópult beállításai jelenik meg.  
+    ![Irányítópult beállításai](./media/dashboards/dashboard-options.png)
+2. Az irányítópult beállításai a boxban, kattintson a nyílra, és kattintson a **nyilvános**. A nyilvános irányítópult megerősítő párbeszédpanel jelenik meg.
+3. Kattintson a **Igen**. Az irányítópult már másoknak is elérhető.
 
-## <a name="delete-a-custom-dashboard-report"></a>Egy egyéni irányítópult jelentés törlése
+## <a name="delete-a-custom-dashboard-report"></a>Egyéni irányítópult jelentés törlése
 
-Egy egyéni jelentés összetevő törölheti az irányítópultról. A jelentés az irányítópulton nem törlése a jelentés a jelentések listából. Ehelyett a jelentés törlésével eltávolítja a csak az irányítópulton.
+Egy egyéni jelentés összetevő törölheti az irányítópultról. A jelentés az irányítópulton nem törlése a jelentés a jelentések listából. Ehelyett a jelentés törlésével eltávolítja azt az csak az irányítópulton.
 
-Kattintson az irányítópult az összetevők, az irányítópult-összetevőjének törlése **törlése**. Kattintson a **törlése** azonnal törli az irányítópult-összetevő.
+Egy irányítópult-összetevő, az irányítópult összetevőre törléséhez kattintson **törlése**. Kattintson a **törlése** azonnal törli az irányítópult összetevő.
 
-## <a name="share-a-dashboard-enterprise"></a>A (vállalati) irányítópult megosztása
+## <a name="share-a-dashboard-enterprise"></a>(Enterprise) irányítópult megosztása
 
-Az összes felhasználóra szabott irányítópultokat a szervezetben, vagy az aktuális entitás felhasználókkal is megoszthatja. Irányítópult megosztása biztosíthat mások egy gyors áttekintést nyújt arról a KPI-t. Irányítópult megosztása esetén automatikusan replikált az irányítópult minden Cloudyn entitások/ügyfeleinek. A megosztott irányítópult módosításai automatikusan frissülnek.
+Minden felhasználó egyéni irányítópultokat megoszthatja a munkahelyén vagy az aktuális entitás felhasználóival. Irányítópult megosztásának teheti másoknak a KPI gyors magas szintű áttekintést. Ha megoszt egy irányítópultot, azt automatikusan replikálja az irányítópult összes Cloudyn entitásokat és ügyfeleinek. A megosztott irányítópultra mutató változtatások automatikusan frissülnek.
 
-Irányítópult megosztása minden felhasználó alentitások is:
+Irányítópult megosztása minden felhasználó subentities is:
 
 1. Az irányítópult kezdőlapján kattintson **szerkesztése**.
 2. Kattintson a **megosztás** majd **nyilvános**.
-3. A globális nyilvános irányítópult megerősítése mezőben jelenik meg.
-4. Kattintson a **Igen** az irányítópult globális nyilvános irányítópultként beállítani.
+3. A globális nyilvános irányítópult a megerősítést kérő párbeszédpanelen jelenik meg.
+4. Kattintson a **Igen** beállítása az irányítópult egy globális nyilvános irányítópultként.
 
-Irányítópult megosztása aktuális entitás összes felhasználója számára:
+Aktuális entitás minden felhasználó megosztani Önnel egy irányítópultot:
 
 1. Az irányítópult kezdőlapján kattintson **szerkesztése**.
 2. Kattintson a **megosztás** majd **saját entitás**.
-3. Kattintson a **Igen** az irányítópult nyilvános irányítópultként beállítani.
+3. Kattintson a **Igen** nyilvános irányítópultként beállítani a az irányítópulton.
 
-## <a name="duplicate-a-custom-dashboard"></a>Duplikált egyéni irányítópult
+## <a name="duplicate-a-custom-dashboard"></a>Egyéni irányítópult megkettőzése
 
-Amikor létrehoz egy új irányítópult, előfordulhat, hogy használni kívánt egy meglévő irányítópultot hasonló tulajdonságait. Másolhatja az irányítópultot hozzon létre egy újat.
+Amikor létrehoz egy új irányítópultot, érdemes használni egy meglévő irányítópultot hasonló tulajdonságait. Másolhatja az irányítópulton, hozzon létre egy újat.
 
-Egyéni irányítópultok is csak másolatot készít. Standard irányítópultok nem lehet ugyanaz.
+Csak egyéni irányítópultokat készíthet másolatot. Standard szintű irányítópultok nem ismétlődő.
 
-A duplikált (Klónozás) egy egyéni irányítópult:
+A (Klónozás) egyéni irányítópult megkettőzése:
 
-1. Az ismétlődő kívánt irányítópultján kattintson **Mentés másként**. Új irányítópult nyílik meg ugyanazt a nevet és egy számot.
-2. A duplikált irányítópult átnevezése, és módosítsa azt kedve szerint elrendezheti.
+1. Az ismétlődő kívánt irányítópultján kattintson **Mentés másként**. Ugyanazzal a névvel és a egy szám megnyílik egy új irányítópultot.
+2. Az ismétlődő irányítópult átnevezése, és tetszés szerint módosíthatja azt.
 
 – Vagy –
 
-1. Az irányítópult-beállítások kattintson **Mentés másként** ismétlődő kívánt irányítópult a sorban.
-2. A duplikált irányítópult megnyitása.
-3. Az irányítópult átnevezése, és módosítsa azt kedve szerint elrendezheti.
+1. Kattintson az irányítópult-beállítások **Mentés másként** az irányítópult megkettőzése kívánt sorában.
+2. Az ismétlődő irányítópult nyílik meg.
+3. Átnevezheti az irányítópultot, és tetszés szerint módosíthatja azt.
 
-## <a name="set-a-default-dashboard"></a>Állítsa be az alapértelmezett irányítópult
+## <a name="set-a-default-dashboard"></a>Alapértelmezett irányítópult beállítása
 
-Az alapértelmezett beállíthat bármelyik irányítópult. Az alapértelmezett beállítás lehetővé teszi a bal szélső lapon, az irányítópult lapon listában jelennek meg. Az alapértelmezett irányítópulton jeleníti meg, ha a Cloudyn portál megnyitásához.
+Az alapértelmezett állítható bármelyik irányítópult. Az alapértelmezett értékre állítaná teszi, hogy az irányítópult-lapok listája a bal szélső lapján jelennek meg. Az alapértelmezett irányítópulton jeleníti meg, ha a Cloudyn portál megnyitása.
 
 - Kattintson az alapértelmezett, majd kattintson a kívánt irányítópult fület **alapértelmezett** a jobb oldalon.
 
 – Vagy –
 
-1. Kattintson a **irányítópultjának beállításai** elérhető irányítópultok listáját, és válassza ki a kívánt az alapértelmezett irányítópultot.  
-    ![Irányítópult-beállítások](./media/dashboards/dashboard-options.png)
-2. Kattintson a **alapértelmezett** sorában az irányítópulton. Az alapértelmezett irányítópult megerősítése mezőben jelenik meg.
-3. Kattintson a **Yes** (Igen) gombra. Az irányítópult az alapértelmezett érték.
+1. Kattintson a **irányítópult beállításai** elérhető irányítópultok listáját, és válassza ki az alapértelmezettként használni kívánt irányítópultot.  
+    ![Irányítópult beállításai](./media/dashboards/dashboard-options.png)
+2. Kattintson a **alapértelmezett** az irányítópult a sorban. Az alapértelmezett irányítópult a megerősítést kérő párbeszédpanelen jelenik meg.
+3. Kattintson a **Yes** (Igen) gombra. Az Irányítópult alapértelmezett értéke.
 
 ## <a name="management-dashboard"></a>Kezelési irányítópult
-A Management (vagy MSP irányítópult MSP felhasználók) irányítópult magában foglalja a főjelentés típusú emeli ki.  
+A Management (vagy MSP-irányítópult MSP-felhasználók) irányítópultot tartalmazza a fő típusú emeli ki.  
 ![Kezelési irányítópult](./media/dashboards/management-dash.png)
 
-### <a name="cost-entity-summary-enterprise-only"></a>(Csak Enterprise) költség entitás összegzése
-Ez a widget foglalja össze a felügyelt költség entitások, beleértve az ügyfelek száma és entitások száma.
-- Kattintson a widget a vállalati részletei jelentés megnyitásához.
+### <a name="cost-entity-summary-enterprise-only"></a>Költségelem összegzése (csak Enterprise)
+A widget a felügyelt költség entitásokkal, többek között, az entitások és fiókok számát foglalja össze.
+- Kattintson a widget nyissa meg a vállalati részletei jelentést.
 
-### <a name="cost-over-time"></a>Idővel költsége
-Ez a widget segítségével költség tendenciákat. Kiemeli a költségeket a legutóbbi napon, az elmúlt 30 napban trendjét alapján.
-- Kattintson a tényleges költség keresztül idő a jelentés megtekintéséhez nyissa meg a widget és további részleteket szűréséhez.
+### <a name="cost-over-time"></a>Költségek időbeli alakulása
+A widget segíthetnek a költségek trendek felismerése. Kiemeli a költségek az utolsó napjára, a trend az elmúlt 30 nap alapján.
+- Kattintson a widget nyissa meg a tényleges időalapú költségeket tartalmazó jelentést megtekintéséhez és szűrheti a további részleteket.
 
-### <a name="asset-controller"></a>Eszköz-vezérlő
-Ezt a widgetet az előző nap, a használati trendje az elmúlt 30 napban felett futó példányait számát mutatja be.
-- Kattintson a widgetet az eszköz vezérlő irányítópult megnyitásához.
+### <a name="asset-controller"></a>Adategység-vezérlő
+A widget kiemeli a futó példányok az előző nap, a használati trend az elmúlt 30 napban fent száma.
+- Kattintson a widget az adategység-vezérlő irányítópult megnyitásához.
 
-### <a name="unused-ri-detector"></a>Nem használt RI érzékelő
-Ez a widget kiemeli a Amazon EC2 száma nem használt foglalásokat.
-- Kattintson a nyissa meg a jelenleg nem használt foglalások jelentést, ahol megtekintheti a nem használt widget foglalások módosíthatja.
+### <a name="unused-ri-detector"></a>A fel nem használt fenntartott példányok detector használatával
+A widget kiemeli az Amazon EC2-é száma nem használt foglalások.
+- Kattintson a widget nyissa meg a jelenleg nem használt foglalások jelentést, ahol megtekintheti a fel nem használt foglalások módosíthatja.
 
-### <a name="cost-by-service"></a>Szolgáltatás költsége
-Ez a widget amortized költségek kiemeli a szolgáltatás az elmúlt 30 napban. A tortadiagram a költségek szolgáltatásonként megtekintéséhez mutasson.
-- Kattintson a widget a tényleges költség elemző jelentés megnyitásához.
+### <a name="cost-by-service"></a>Díj szolgáltatás szerint
+A widget amortizált költségek kiemeli a szolgáltatás az elmúlt 30 napra vonatkozóan. A tortadiagram a költségeket a szolgáltatás megtekintéséhez mutasson.
+- Kattintson a widget nyissa meg a tényleges költségek elemzése jelentést.
 
-### <a name="potential-savings"></a>Lehetséges megtakarítások
-Ezt a widgetet jeleníti meg az árképzési Amazon EC2 és Amazon RDS javaslatok sablonpéldány típusúvá
-- Kattintson a widget nyissa meg a megtakarítások elemző jelentés. Felsorolja az esetleges megtakarítás példány típusok költségeit.
+### <a name="potential-savings"></a>Lehetséges megtakarítás
+A widget díjszabása az Amazon EC2-é és az Amazon RDS javaslatok példány típusát jeleníti meg.
+- Kattintson a widget nyissa meg a megtakarítások elemző jelentés. Felsorolja a példányok típusai lehetséges megtakarítás a költségeket.
 
-### <a name="compute-instances---daily-trend"></a>-Példányok számítási napokra bontott tendenciáit
-Ez a widget alapján jeleníti meg az aktív példány típusa, az elmúlt 30 napban.
-- Kattintson a widgetet való nyissa meg a példányok keresztül idő jelentést, ahol megtekintheti az elmúlt 30 napban futó összes példányát részletes információkat.
+### <a name="compute-instances---daily-trend"></a>Számítási példányok – napi Trend
+A widget jeleníti meg az aktív példány típusát, az elmúlt 30 napra vonatkozóan.
+- Kattintson a widget nyissa meg a példányok időalapú jelentést, ahol megtekintheti az elmúlt 30 napban példányai egy bontása.
 
-### <a name="storage-by-department"></a>Tárolási részleg
-Ez a widget osztályok által használt tárolószolgáltatások jeleníti meg. A kördiagram részleg tárhelyhasználati megtekintéséhez mutasson.
-- Kattintson a widgetet az S3 követő irányítópult megnyitásához.
+### <a name="storage-by-department"></a>Tárterület részlegenként
+A widget részlegek által használt tárolási szolgáltatások jeleníti meg. A tortadiagram tekintse meg a tárhelyhasználat részleg fölé.
+- Kattintson a widget az S3-követő irányítópult megnyitásához.
 
-## <a name="cost-controller-dashboard"></a>A tartományvezérlő irányítópult költsége
-A vezérlő költség irányítópult jeleníti meg előre beállított költség foglalási emeli ki.  
-![A tartományvezérlő irányítópult költsége](./media/dashboards/cost-controller-dashboard.png)
+## <a name="cost-controller-dashboard"></a>Vezérlő irányítópultja költség
+A költségek vezérlő irányítópult jeleníti meg előre beállított költségek felosztási emeli ki.  
+![Vezérlő irányítópultja költség](./media/dashboards/cost-controller-dashboard.png)
 
-### <a name="cost-over-time"></a>Idővel költsége
-Ez a widget költség tendenciákat nyújt segítséget. Kiemeli a költségeket a legutóbbi napon, az elmúlt 30 napban trendjét alapján.
-- Kattintson a tényleges költség keresztül idő a jelentés megtekintéséhez nyissa meg a widget és további részleteket szűréséhez.
+### <a name="cost-over-time"></a>Költségek időbeli alakulása
+A widget segít a költségek trendek felismerése. Kiemeli a költségek az utolsó napjára, a trend az elmúlt 30 nap alapján.
+- Kattintson a widget nyissa meg a tényleges időalapú költségeket tartalmazó jelentést megtekintéséhez és szűrheti a további részleteket.
 
 ### <a name="monthly-cost-trends"></a>Havi költség trendek
-Ezt a widgetet kiemeli a tervezett amortized kiadásokat, és a tényleges töltött hónap kezdete óta.
-- Kattintson a widgetet megnyitása az aktuális hónap tervezett költség jelentést, amely garantálja a hónap dátumig összefoglaló.
+A widget kiemeli a tervezett amortizált összegű költségkeretet, és a tényleges csak a hónap kezdete óta.
+- Kattintson a widget megnyitása az aktuális havi előre jelzett költségről szóló jelentés, amelyet összefoglaló hónap elejétől számított költséget biztosít.
 
-Ez a jelentés tartalmazza a költség, a hónap, az előző hónap költségét és az aktuális hónap tervezett költség kezdetén. Az aktuális hónap tervezett a számítás a naprakész havi költségét és a leképezés hozzáadásával. A leképezés a költség, az elmúlt 30 napban figyelt alapul.
+Ez a jelentés tartalmazza a költség, hónap, a költség az előző hónap és az aktuális havi előre jelzett költség kezdetétől fogva. Az aktuális havi előre jelzett költséget a naprakész havi költség és leképezés hozzáadása számolható ki. A leképezés a költségek figyelemmel kísérni az elmúlt 30 napban alapul.
 
 ### <a name="12-month-planner"></a>12 hónapos Planner
-Ez a widget költségeit a következő 12 hónap és az esetleges megtakarítás keresztül mutatja be.
-- Kattintson a widgetet az éves tervezett költség jelentés megnyitásához.
+A widget a következő 12 hónapban, és a lehetséges megtakarítás kiemeli a a tervezett költségeket.
+- Kattintson a widget az éves előre jelzett költségről szóló jelentés megnyitásához.
 
-### <a name="cost-by-service"></a>Szolgáltatás költsége
-Ez a widget amortized költségek kiemeli a szolgáltatás az elmúlt 30 napban.
-- A tortadiagram a költségek szolgáltatásonként megtekintéséhez mutasson.
-- Kattintson a widget a tényleges költség elemző jelentés megnyitásához.
+### <a name="cost-by-service"></a>Díj szolgáltatás szerint
+A widget amortizált költségek kiemeli a szolgáltatás az elmúlt 30 napra vonatkozóan.
+- A tortadiagram a költségeket a szolgáltatás megtekintéséhez mutasson.
+- Kattintson a widget nyissa meg a tényleges költségek elemzése jelentést.
 
-### <a name="cost-by-account"></a>Fiók költsége
-Ez a widget mutatja be, az elmúlt 30 napban amortized költségek fiókkal.
+### <a name="cost-by-account"></a>Költség-fiók használatával
+A widget emeli ki, az elmúlt 30 napban az amortizált költségek fiók használatával.
 - A tortadiagram a költségek fiókonként megtekintéséhez mutasson.
-- Kattintson a widget a tényleges költség elemző jelentés megnyitásához.
+- Kattintson a widget nyissa meg a tényleges költségek elemzése jelentést.
 
-### <a name="cost-trend-by-day"></a>Napi költség Trend
-A widget az elmúlt 30 napban töltött emeli ki.
-- Az oszlopdiagramot napi költségek megtekintéséhez mutasson.
-- Kattintson a widget a tényleges költség keresztül idő jelentés megnyitásához.
+### <a name="cost-trend-by-day"></a>Költségtrend naponta
+A widget az elmúlt 30 napban költségek emeli ki.
+- Az oszlopdiagram megtekintéséhez költség / nap fölé.
+- Kattintson a widget nyissa meg a tényleges időalapú költségeket tartalmazó jelentést.
 
-### <a name="cost-trend-by-month---last-6-months"></a>Havonta - elmúlt 6 hónapban költség Trend
+### <a name="cost-trend-by-month---last-6-months"></a>Költségtrend hónap – elmúlt 6 hónap szerint
 
-A widget keresztül az elmúlt hat hónapban töltött emeli ki.
-- Az oszlopdiagramot a havi költségeket megtekintéséhez mutasson.
-- Kattintson a widget a tényleges költség keresztül idő jelentés megnyitásához.
+A widget az elmúlt hat hónapban költségek emeli ki.
+- A kurzort az oszlopdiagramot, tekintse meg a havi költségeket.
+- Kattintson a widget nyissa meg a tényleges időalapú költségeket tartalmazó jelentést.
 
-## <a name="asset-controller-dashboard"></a>Eszköz vezérlő irányítópult
+## <a name="asset-controller-dashboard"></a>Adategység-vezérlő irányítópultja
 
-Ezt az irányítópultot a futó példányok, elérhető és a használatban lévő lemezek, terjesztési példány típusok és tárolással kapcsolatos számát jeleníti meg.  
-![Eszköz vezérlő irányítópult](./media/dashboards/asset-controller-dashboard.png)
+Ez az irányítópult futó példányok, elérhető és a használatban lévő lemezek, a példányok típusai és a tároló terjesztési számát jeleníti meg.  
+![Adategység-vezérlő irányítópultja](./media/dashboards/asset-controller-dashboard.png)
 
 ### <a name="compute-instances"></a>Számítási példányok
-Ez a widget futó példányait a használati trendje alapján az elmúlt 30 napban számát jeleníti meg.
-- Kattintson a widget a példányok keresztül idő jelentés megnyitásához.
+A widget az elmúlt 30 napban a használati trendek alapján futó számát jeleníti meg.
+- Kattintson a widget nyissa meg a példányok időalapú jelentést.
 
 ### <a name="disks"></a>Lemezek
-Ez a widget mutatja be, a teljes számát és a lemezek használatban és elérhető kötet.
-- Kattintson a widgetet az aktív lemezek jelentés megnyitásához.
+A widget emeli ki, a teljes számát és a lemezek használatban és elérhető kötet.
+- Kattintson a widget az aktív lemezek jelentés megnyitásához.
 
-### <a name="instance-type-distribution"></a>Példány típus terjesztési
-Ez a widget a példány típusok tortadiagram mutatja be.
-- Kattintson a widget a példány terjesztési jelentés, amely az aktív példányok részletes információkat biztosít a kijelölt összesítési való megnyitásához.
+### <a name="instance-type-distribution"></a>Példány információtípus terjesztése
+A widget a tortadiagram a példányok típusai emeli ki.
+- Kattintson a widgeten nyissa meg a példány terjesztési jelentést, amely az aktív üzemelő példányok bontásban a kiválasztott összesítési.
 
-### <a name="compute-instances---daily-trend"></a>-Példányok számítási napokra bontott tendenciáit
-Ez a widget kiemeli a számítási példányokért (direkt, fenntartott, és igény szerinti) naponta az elmúlt 30 napban.
-- Mutasson a diagramot úgy, hogy számítási példányokért naponta típusonkénti számát.
-- Kattintson a widget a példányok keresztül idő jelentés megnyitásához.
+### <a name="compute-instances---daily-trend"></a>Számítási példányok – napi Trend
+A widget kiemeli a számítási példányok (helyszíni, fenntartott, és igény szerinti) naponta az elmúlt 30 napra vonatkozóan.
+- A kurzort a diagram a napi típus szerint a számítási példányok számának megtekintéséhez.
+- Kattintson a widget nyissa meg a példányok időalapú jelentést.
 
-### <a name="all-buckets-s3"></a>Minden gyűjtők (S3)
-Ez a widget mutatja be, a teljes S3 tárolás és a tárolt objektumok száma.
-- Kattintson a widgetet az S3 követő irányítópult megnyitásához. Az Irányítópult segítségével megkeresheti, elemzése, és megjeleníti az aktuális tárhely-használat és a trendeket.
+### <a name="all-buckets-s3"></a>Az összes gyűjtők (S3 esetén)
+A widget emeli ki, az S3 szintű tárterület teljes és a tárolt objektumok száma.
+- Kattintson a widget az S3-követő irányítópult megnyitásához. Az Irányítópult segítségével keresse meg, elemzése és megjelenítése az aktuális storage használati és a trendeket.
 
-### <a name="sql-db-instances-rds"></a>SQL Server adatbázis-példányok (RDS)
-Ez a widget kiemeli a futó alakulása az elmúlt 30 napban a Amazon távoli asztali szolgáltatások példányainak száma.
-- Kattintson a widget a távoli asztali szolgáltatások példány keresztül idő jelentés megnyitásához.
+### <a name="sql-db-instances-rds"></a>SQL DB-példányok (RDS)
+A widget kiemeli a futó a trend az elmúlt 30 nap alapján Amazon RDS-példányok számát.
+- Kattintson a widget nyissa meg a távoli asztali szolgáltatások példány időalapú jelentést.
 
 ## <a name="optimizer-dashboard"></a>Optimalizáló irányítópult
-Ez az irányítópult downsizing javaslatokat, a nem használt erőforrások és a potenciális megtakarítások jeleníti meg.  
+Ez az irányítópult downsizing javaslatokat, a fel nem használt erőforrások és a lehetséges megtakarítás jeleníti meg.  
 ![Optimalizáló irányítópult](./media/dashboards/optimizer-dashboard.png)
 
-### <a name="ri-calculator"></a>RI Számológép
-Ez a widget RI vásárlásának javaslatok számát jeleníti meg, és kiemeli a potenciális éves megtakarítások.
-- Kattintson a fenntartott, ahol meghatározhatja, mikor érdemes használni, és igény példány Számológép megnyitásához widget díjszabások fenntartva.
+### <a name="ri-calculator"></a>A fenntartott példányok Kalkulátor
+A widget fenntartott példány vásárlására vonatkozó javaslat számát jeleníti meg, és kiemeli az éves szinten lehetséges megtakarításokat.
+- Kattintson a widget, nyissa meg a fenntartott példány Számológép, ahol megadhatja, hogy mikor érdemes használni az igény szerinti és fenntartott díjszabási csomagokat.
 
 ### <a name="sizing"></a>Méretezés
-Ezt a widgetet ajánlott méretezési és esetleges megtakarítás emeli ki, ha megvalósítva.
-- Kattintson a widget a EC2 költség hatályos méretezési javaslatok jelentés megnyitásához.
+A widget az ajánlott méretezése és a lehetséges megtakarítás emeli ki, ha implementálva.
+- Kattintson a widget az EC2-é költséghatékony méretezési javaslatokat tartalmazó jelentés megnyitásához.
 
-### <a name="unused-ri-detector"></a>Nem használt RI érzékelő
-Ez a widget kiemeli a Amazon EC2 száma nem használt foglalásokat.
-- Kattintson a widget a jelenleg nem használt foglalások jelentés, ahol megtekintheti a nem használt lefoglalását, amelyek még módosíthatók való megnyitásához.
+### <a name="unused-ri-detector"></a>A fel nem használt fenntartott példányok detector használatával
+A widget kiemeli az Amazon EC2-é száma nem használt foglalások.
+- Kattintson a widget nyissa meg a jelenleg nem használt foglalások jelentést, ahol megtekintheti a nem használt foglalások, amelyek módosíthatók.
 
 ###  <a name="available-disks"></a>Rendelkezésre álló lemezek
-Ez a widget a környezetben nem csatlakoztatott lemezek számát mutatja be.
-- Kattintson a nem csatlakoztatott lemezek jelentés megnyitása a widgetet.
+A widget rávilágít arra, hogy a telepítés nem csatlakoztatott lemezek számát.
+- Kattintson a widget nyissa meg a leválasztott lemezeket jelentést.
 
-### <a name="rds-ri-calculator"></a>Távoli asztali szolgáltatások RI Számológép
-Ez a widget az Amazon RDS-példányok és az esetleges megtakarítás foglalás javaslatok számát mutatja be.
-- Kattintson a widgetet megnyitása a távoli asztali szolgáltatások RI vásárlás javaslatok jelentés, ahol fenntartott példányok használata helyett igény példányok Cloudyn javaslatok láthatók.
+### <a name="rds-ri-calculator"></a>A távoli asztali szolgáltatások a fenntartott példányok Kalkulátor
+A widget kiemeli az Amazon RDS-példány és a lehetséges megtakarítás foglalás javaslatok száma.
+- Kattintson a widget nyissa meg a távoli asztali szolgáltatások fenntartott példány vásárlására vonatkozó javaslatok jelentést, ahol megtekintheti a Cloudyn javaslatok a fenntartott példányok használata helyett az igény szerinti példányok.
 
-### <a name="rds-sizing"></a>Távoli asztali szolgáltatások méretezése
-Ez a widget méretezési javaslatok és az esetleges megtakarítás számát mutatja.
-- Kattintson a widget a távoli asztali szolgáltatások méretezése javaslatok jelentés, mely ajánlások méretezése Amazon távoli asztali szolgáltatások részletes való megnyitásához.
+### <a name="rds-sizing"></a>A távoli asztali szolgáltatások méretezése
+A widget méretezési javaslatok és a lehetséges megtakarítás számát jeleníti meg.
+- Kattintson a widget nyissa meg a távoli asztali szolgáltatások méretezési javaslatok jelentést, részletes méretezési javaslatok Amazon RDS melyik jeleníti meg.
 
-Az optimalizálás javaslatokat a használati és teljesítményadatokat adatokat az utolsó hónapban alapulnak.
+Az optimalizálási javaslatokat vannak adatok alapján történő használatának és teljesítményének figyelemmel kísérni az elmúlt hónapban.
 
-## <a name="s3-tracker-dashboard"></a>S3 követő irányítópult
-A S3 követő Irányítópult segítségével megkeresheti, elemzése és az aktuális tárhely-használat és a trendeket.  
-![S3 követő irányítópult](./media/dashboards/s3-tracker-dashboard.png)
+## <a name="s3-tracker-dashboard"></a>S3-követő irányítópult
+Az S3-követő Irányítópult segítségével keresse meg, elemzése és megjelenítése az aktuális storage használati és a trendek.  
+![S3-követő irányítópult](./media/dashboards/s3-tracker-dashboard.png)
 
-### <a name="all-buckets"></a>Minden gyűjtők
-Ezt a widgetet emel ki, hogy minden a gyűjtők, GB, és a gyűjtők objektumok teljes száma a teljes mérete.
-- Kattintson a widget a S3 mérete terjesztési jelentés megnyitásához. A jelentés segítségével elemezheti a S3 gyűjtő, a legfelső szintű mappát, a tárolási osztály és a verziószámozási állapotát méretet.
+### <a name="all-buckets"></a>Az összes gyűjtők
+A widget rávilágít arra, hogy minden a gyűjtők GB-ban, és a gyűjtők lévő objektumok teljes száma a teljes méretét.
+- Kattintson a widget az S3 mérete terjesztési jelentés megnyitásához. A jelentés segítségével elemezheti az S3 méretet gyűjtőbe, a legfelső szintű mappát, a tárolási osztály és a verziószámozási állapotát.
 
 ### <a name="bucket-properties"></a>Gyűjtő tulajdonságai
-Ez a widget kiemeli a tárolási gyűjtők száma.
-- Kattintson a widget a S3 gyűjtő tulajdonságok jelentést szeretne megtekinteni.
+A widget kiemeli a storage gyűjtők száma összesen.
+- A widget az S3 gyűjtő tulajdonságairól szóló jelentés megtekintése gombra.
 
-### <a name="scan-status"></a>Ellenőrzési állapota
-Ez a widget mutatja be, a legutóbbi S3 vizsgálat befejezése és a következő indításakor fogja.
-- Kattintson a widget a S3 vizsgálata állapotáról készült jelentés megnyitásához.
+### <a name="scan-status"></a>Vizsgálat állapota
+A widget emeli ki, amikor az utolsó S3 vizsgálat megtörtént, és elindítja a következő.
+- Kattintson a widget az S3 vizsgálat állapota jelentés megnyitásához.
 
-### <a name="storage-by-bucket"></a>Tárolási gyűjtő által
-Ez a widget minden gyűjtő tárolási osztály által használt százalékos mutatja be.
-- Kattintson a widget a S3 mérete terjesztési jelentés megnyitásához. A jelentés segítségével elemezheti a S3 gyűjtő, a legfelső szintű mappát, a tárolási osztály és a verziószámozási állapotát méretet.
+### <a name="storage-by-bucket"></a>Storage-gyűjtő által
+A widget egyes gyűjtőbe tárolási osztály által használt százalékos emeli ki.
+- Kattintson a widget az S3 mérete terjesztési jelentés megnyitásához. A jelentés segítségével elemezheti az S3 méretet gyűjtőbe, a legfelső szintű mappát, a tárolási osztály és a verziószámozási állapotát.
 
-### <a name="number-of-objects-by-bucket"></a>Gyűjtő által objektumok száma
-Ez a widget / tényleges számát és százalékát gyűjtő objektumok számát mutatja be. A gyűjtő a teljes objektumok megtekintéséhez mutasson.
-- Kattintson a widgetet S3 mérete terjesztési jelentés (vizsgálat alapján) történő megnyitásához.
+### <a name="number-of-objects-by-bucket"></a>A gyűjtő objektumok száma
+A widget kiemeli a gyűjtőhöz a tényleges száma és százalékos aránya szerint objektumok száma. A kurzort a gyűjtőhöz, a teljes objektumok megtekintéséhez.
+- Kattintson a widget nyissa meg a S3 mérete terjesztési jelentést (vizsgálat alapján).
 
-## <a name="cloud-comparison-dashboard"></a>Felhő összehasonlítás irányítópult
-A felhő összehasonlítás Irányítópult segítségével költségek a díjszabás, a Processzor típusa és a RAM mérete alapján különböző szolgáltatók összehasonlíthatja.  
-![Felhő összehasonlítás irányítópult](./media/dashboards/cloud-comparison-dashboard.png)
+## <a name="cloud-comparison-dashboard"></a>A cloud összehasonlító irányítópultja
+A felhő összehasonlító Irányítópult segítségével összehasonlíthatja a költségek a különböző felhőszolgáltatók, díjszabás, a Processzor típusa és a RAM mérete alapján.  
+![A cloud összehasonlító irányítópultja](./media/dashboards/cloud-comparison-dashboard.png)
 
-### <a name="ec2-cost-in-azure-by-instance-type"></a>EC2 Az Azure példánytípus költség
-Ez a widget az elmúlt 30 napban az igény szerinti díjszabás használati mutatja be. Az comares a költséget az aktuális Amazon EC2 költségeket, és a költségeket, az Azure-ban a lehetséges.
-- Az összehasonlítandó költségek egy sablonpéldány típusúvá sávok mutasson.
-- Kattintson a widgetet az eljárás a központi telepítés – költség elemző jelentés megnyitásához.
+### <a name="ec2-cost-in-azure-by-instance-type"></a>EC2 Az Azure-ban, a példány típusának költség
+A widget kiemeli az elmúlt 30 nap használati az igény szerinti díjszabás. Összehasonlítja a költségek és a jelenlegi Amazon EC2-é cost vs az esetleges költségeket az Azure-ban.
+- Költség / példánytípus összehasonlítani a sávok fölé.
+- Kattintson a widget az portolása az üzembe helyezés – költségek elemzése – jelentés megnyitásához.
 
 ### <a name="ec2-cost-in-azure"></a>EC2 Az Azure-ban költség
-Ez a widget jeleníti meg az aktuális Amazon EC2 költségeit, és összehasonlítja azokat az Azure-bA. Az összehasonlítás az elmúlt 30 napban az igény szerinti díjszabás használati alapul.
-- Kattintson a widgetet az eljárás a központi telepítés – költség elemző jelentés megnyitásához.
+A widget jeleníti meg az aktuális Amazon EC2-é költségekkel, és összehasonlítja azokat az Azure-bA. Az összehasonlítás az elmúlt 30 nap használati az igény szerinti díjszabás alapján történik.
+- Kattintson a widget az portolása az üzembe helyezés – költségek elemzése – jelentés megnyitásához.
 
-### <a name="ec2azure-instance-type-mapping"></a>EC2 vagy az Azure-példány hozzárendelése
-Ez a widget rugalmas számítási egység Amazon EC2 és az Azure közötti legjobb leképezése mutatja be.
-- Kattintson a widget a példányok adattípus-hozzárendelése jelentés megnyitásához.
+### <a name="ec2azure-instance-type-mapping"></a>Adattípus-leképezés EC2-vagy az Azure-példány
+A widget rávilágít arra, hogy a legjobb leképezést, rugalmas számítási egységek Amazon EC2-é és az Azure között.
+- Kattintson a widget nyissa meg a példányok adattípus-hozzárendelése jelentést.
+
+## <a name="next-steps"></a>További lépések
+- Olvassa el a [használata Cost Management jelentések](use-reports.md) jelentésekkel kapcsolatos további cikk.

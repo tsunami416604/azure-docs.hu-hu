@@ -1,54 +1,54 @@
 ---
-title: Az Azure Active Directory B2B együttműködés meghívókat delegálása |} Microsoft Docs
-description: Az Azure Active Directory B2B együttműködés felhasználó tulajdonságainak konfigurálható
+title: Az Azure Active Directory B2B együttműködés meghívók delegálása |} A Microsoft Docs
+description: Az Azure Active Directory B2B együttműködés felhasználói tulajdonságok konfigurálható
 services: active-directory
 ms.service: active-directory
 ms.component: B2B
 ms.topic: article
 ms.date: 05/23/2017
-ms.author: twooley
-author: twooley
+ms.author: mimart
+author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 0c7b0e3dd4d2ab98bc0f0bedc06424b7838fcf9e
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
-ms.translationtype: HT
+ms.openlocfilehash: 40f6d3cdd3ab8926e48463beaae15b2580458cc1
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34267449"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35644912"
 ---
-# <a name="delegate-invitations-for-azure-active-directory-b2b-collaboration"></a>Az Azure Active Directory B2B együttműködés meghívókat delegálása
+# <a name="delegate-invitations-for-azure-active-directory-b2b-collaboration"></a>Az Azure Active Directory B2B együttműködés meghívók delegálása
 
-Az Azure Active Directory (Azure AD) üzleti vállalatközi (B2B) együttműködés nincs-e a globális rendszergazda az meghívókat. Ehelyett házirendekkel, és delegálja a felhasználók számára, akiknek szerepkörök engedélyezése meghívókat meghívókat. Új módja a Vendég felhasználói meghívókat delegálása van a Vendég meghívó szerepkörével.
+Az Azure Active Directory (Azure AD) vállalatközi (B2B) együttműködés nem rendelkezik a globális rendszergazda meghívót küldhet. Ehelyett házirendekkel és a felhasználók számára, akiknek szerepkörök lehetővé számukra, hogy meghívók küldése meghívók delegálása. Vendégfelhasználói meghívókat delegálására egy fontos új lehetőség van a Vendég meghívója szerepkörön keresztül.
 
-## <a name="guest-inviter-role"></a>Vendég meghívó szerepkör
-A felhasználó hozzárendelése azt a Vendég meghívó szerepkör meghívókat. Ne kelljen meghívókat küldhet a globális rendszergazdai szerepkör tagja lehet. Alapértelmezés szerint rendszeres felhasználók is hívhat meg a meghívás API egy globális rendszergazdai tiltja le a rendszeres felhasználók meghívókat. A felhasználó is hívhat meg az API-t az Azure-portálon vagy a PowerShell használatával.
+## <a name="guest-inviter-role"></a>A Vendégmeghívó szerepkörrel
+A felhasználó a Vendégmeghívó szerepkörrel meghívók küldése hozzárendelheti azt. Nem lehet meghívók küldése a globális rendszergazdai szerepkör tagjává kell. Alapértelmezés szerint rendszeres felhasználók is hívhat meg a meghívás API-t, ha egy globális rendszergazdai le van tiltva a meghívót a normál felhasználók számára. A felhasználó is hívhat meg az API-t az Azure portal vagy a PowerShell használatával.
 
-Íme egy példa, amely bemutatja, hogyan lehet hozzáadni egy felhasználót a Vendég meghívó szerepkör a PowerShell használatával:
+A következő példa bemutatja, hogyan használhatja a Powershellt a felhasználó hozzáadása a Vendégmeghívó szerepkörrel:
 
 ```
 Add-MsolRoleMember -RoleObjectId 95e79109-95c0-4d8e-aee3-d01accf2d47b -RoleMemberEmailAddress <RoleMemberEmailAddress>
 ```
 
-## <a name="control-who-can-invite"></a>Személyek kérhetnek
+## <a name="control-who-can-invite"></a>Szabályozza, ki küldhetnek meghívót
 
-![Szabályozza, hogyan hívhat meg](media/delegate-invitations/control-who-to-invite.png)
+![Vezérelheti, hogyan hívhat meg](media/delegate-invitations/control-who-to-invite.png)
 
-Az Azure AD B2B együttműködés egy Bérlői rendszergazda állíthatja be a következő meghívó házirendek:
+Az Azure AD B2B együttműködés Bérlői rendszergazda állíthatja be a következő meghívó házirendek:
 
-- Kapcsolja ki a meghívókat
-- Csak rendszergazdák és a Vendég meghívó a szerepkörben levő felhasználók kérhetnek
-- Rendszergazdák, a Vendég meghívó szerepkör és a tagjainak meghívása
-- Minden felhasználó, beleértve a Vendégek, hívhat
+- Meghívók kikapcsolása
+- Csak rendszergazdák és a Vendégmeghívó szerepkörű felhasználók küldhetnek meghívót
+- A rendszergazdák, a Vendégmeghívó szerepkörrel és tagok küldhetnek meghívót
+- Minden felhasználó,-Vendégek esetén is küldhetnek meghívót
 
-Alapértelmezés szerint a bérlők #4 vannak állítva. (Az összes olyan felhasználót, beleértve a Vendégek, B2B felhasználók kérhetnek.)
+Alapértelmezés szerint a bérlők # 4 vannak beállítva. (Minden felhasználó, beleértve a vendégeket, meghívhatja a B2B-felhasználók.)
 
 ## <a name="next-steps"></a>További lépések
 
-Az Azure AD B2B együttműködés, tekintse meg a következő cikkeket:
+Az Azure AD B2B együttműködés a következő cikkekben talál:
 
 - [Mi az az Azure AD B2B együttműködés?](what-is-b2b.md)
-- [Adja hozzá a B2B együttműködés vendégfelhasználók nélkül](add-user-without-invite.md)
-- [Egy szerepkör B2B együttműködés felhasználók hozzáadása](add-guest-to-role.md)
+- [B2B együttműködés meghívó nélküli vendégfelhasználók hozzáadása](add-user-without-invite.md)
+- [B2B-együttműködés felhasználó hozzáadása szerepkörhöz](add-guest-to-role.md)
 
 

@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 11/10/2017
 ms.author: dobett
-ms.openlocfilehash: 097eba4f5bcbb74d4158cc8d4135255d31e03ebd
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 4e1456064e35b55871638e9eeb34859194cb869b
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44027010"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44714904"
 ---
 # <a name="remote-monitoring-solution-accelerator-overview"></a>Távoli figyelés megoldásgyorsító áttekintése
 
@@ -50,7 +50,7 @@ Telepíthet fizikai eszközökön a megoldásportál az irányítópultról.
 
 ### <a name="device-simulation-microservice"></a>Eszköz szimulálása mikroszolgáltatások
 
-A megoldás magában foglalja a [eszköz szimulálása mikroszolgáltatás](https://github.com/Azure/remote-monitoring-services-dotnet/tree/master/device-simulation) , amely lehetővé teszi a megoldás irányítópultján a végpontok közötti folyamat teszteléséhez a megoldásban a szimulált eszközök készletét alakítja kezelését. A szimulált eszközök:
+A megoldás magában foglalja a [eszköz szimulálása mikroszolgáltatás](https://github.com/Azure/remote-monitoring-services-dotnet/tree/master/device-simulation) , amely lehetővé teszi a végpontok közötti folyamat teszteléséhez a megoldásban a megoldásportál egy szimulált eszközök készletét kezelését. A szimulált eszközök:
 
 * Hozzon létre az eszköz – felhő telemetriát.
 * Az IoT hubról válaszolni a felhőből az eszközre metódust hívja.
@@ -87,9 +87,9 @@ Ez a szolgáltatás is fut, az IoT Hub lekérdezések felhasználói csoportokho
 
 A mikroszolgáltatás egy RESTful végpontot kezelheti az eszközöket és ikereszközök, metódusokat hívhat meg, és az IoT Hub-lekérdezések futtatásához biztosít.
 
-### <a name="telemetry-microservice"></a>Telemetria mikroszolgáltatások
+### <a name="device-telemetry-microservice"></a>Eszköz telemetriai mikroszolgáltatások
 
-A [telemetriai mikroszolgáltatás](https://github.com/Azure/remote-monitoring-services-dotnet/tree/master/device-telemetry) RESTful végpontot biztosít olvasási hozzáférésének eszköztelemetria, szabályok és olvasási/írási hozzáférést riasztás definíciók CRUD-műveletek storage-ból.
+A [eszköz telemetriai mikroszolgáltatás](https://github.com/Azure/remote-monitoring-services-dotnet/tree/master/device-telemetry) olvasási hozzáférésének eszköztelemetria tárolódik a Time Series Insights egy RESTful végpontot biztosít. A RESTful-végpont azt is lehetővé teszi, hogy a CRUD-műveletek szabályok és a storage-ból riasztás definíciók olvasási/írási hozzáférést.
 
 ### <a name="storage-adapter-microservice"></a>Tárolási adapter mikroszolgáltatások
 
@@ -99,21 +99,27 @@ A [tárolási adapter mikroszolgáltatás](https://github.com/Azure/remote-monit
 
 A szolgáltatás egy RESTful végpontot biztosít a kulcs-érték párok CRUD-műveletek. Értékek
 
-### <a name="cosmos-db"></a>Cosmos DB
+### <a name="azure-cosmos-db"></a>Azure Cosmos DB
 
-Használja a normál a megoldásgyorsító központi [Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/) a fő tárolási szolgáltatásként.
+Megoldás gyorsító telepítések esetén használja [Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/) szabályok, riasztások, konfigurációs beállításokat és az összes többi ritka elérésű tárolási tárolásához.
 
 ### <a name="azure-stream-analytics-manager-microservice"></a>Az Azure Stream Analytics manager mikroszolgáltatások
 
 A [Azure Stream Analytics manager mikroszolgáltatás](https://github.com/Azure/remote-monitoring-services-dotnet/tree/master/asa-manager) kezeli az Azure Stream Analytics (ASA) feladatokat, beleértve a beállítás a konfigurációt, indítása és leállítása őket, és azok állapotának figyelése.
 
-Az ASA-feladat két referencia-adathalmaz támogatja. Egy adatkészlet meghatározza a szabályok, és a egy meghatározza, hogy az eszközcsoportok. A szabályok referenciaadatokat a telemetriai adatok mikroszolgáltatás által kezelt adatok alapján jön létre. Az Azure Stream Analytics manager mikroszolgáltatás streamfeldolgozó logikákat telemetriai szabályok alakítja át.
+Az ASA-feladat két referencia-adathalmaz támogatja. Egy adatkészlet meghatározza a szabályok, és a egy meghatározza, hogy az eszközcsoportok. A szabályok referenciaadatok jön létre az eszköz telemetriai mikroszolgáltatás által kezelt adatok alapján. Az Azure Stream Analytics manager mikroszolgáltatás streamfeldolgozó logikákat telemetriai szabályok alakítja át.
 
 Az eszköz csoportok referenciaadatok melyik csoporthoz a alkalmazni a bejövő telemetriát üzenet szabályok azonosítására szolgál. Az eszközcsoportok a konfigurációs mikroszolgáltatás által felügyelt, és az Azure IoT Hub ikereszköz-lekérdezések használata.
+
+Az ASA-feladatok továbbítására a telemetriát a csatlakoztatott eszközökből Time Series Insights tárolására és elemzésére.
 
 ### <a name="azure-stream-analytics"></a>Azure Stream Analytics
 
 [Az Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/) egy eseményfeldolgozó motor, amely lehetővé teszi, hogy az adatokat az eszközökről streamelt nagy mennyiségű van.
+
+### <a name="azure-time-series-insights"></a>Azure Time Series Insights
+
+[Az Azure Time Series Insights](https://docs.microsoft.com/azure/time-series-insights/) szolgáltatásokkal a megoldásgyorsító csatlakoztatott a telemetriát az eszközökről. Azt is lehetővé teszi a jelenítenek meg, és eszközök telemetriai megoldás webes felhasználói felület lekérdezéséhez.
 
 ### <a name="configuration-microservice"></a>Konfigurációs mikroszolgáltatások
 
@@ -125,7 +131,7 @@ A [hitelesítési és engedélyezési mikroszolgáltatás](https://github.com/Az
 
 ### <a name="azure-active-directory"></a>Azure Active Directory
 
-Használja a normál a megoldásgyorsító központi [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/) , az OpenID Connect-szolgáltató. Az Azure Active Directory tárolja a felhasználói adatok és tanúsítványok ellenőrzése a JWT jogkivonat-aláírás biztosítja. 
+Megoldás gyorsító telepítések esetén használja [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/) , az OpenID Connect-szolgáltató. Az Azure Active Directory tárolja a felhasználói adatok és tanúsítványok ellenőrzése a JWT jogkivonat-aláírás biztosítja.
 
 ## <a name="presentation"></a>Bemutató
 
@@ -142,13 +148,15 @@ A felhasználói felület a megoldás gyorsító funkciókat mutat be, és kommu
 * A hitelesítési és engedélyezési mikroszolgáltatás felhasználói adatok védelme érdekében.
 * Az IoT Hub manager mikroszolgáltatás listázása és az IoT-eszközök felügyeletére.
 
+A felhasználói felület integrálható az Azure Time Series Insights explorer lekérdezését és elemzését eszköztelemetria engedélyezéséhez.
+
 A konfigurációs mikroszolgáltatás lehetővé teszi, hogy a felhasználói felület, tárolására és beolvasására a konfigurációs beállításokat.
 
 ## <a name="next-steps"></a>További lépések
 
 Ha szeretné a forrás-kód és a fejlesztői dokumentáció, a kezdéshez válasszon egyet a két GitHub-adattárak:
 
-* [A távoli megfigyelés az Azure IoT (.NET) megoldásgyorsító](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/).
+* [A távoli megfigyelés az Azure IoT (.NET) megoldásgyorsító](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet).
 * [Az Azure IoT (Java) a távoli figyelési megoldásgyorsító](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java).
 
 Architektúra-diagramok megoldás részletes:

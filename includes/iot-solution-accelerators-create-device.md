@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/16/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: c6e57d5094f455983b8b474b6930f628d654e457
-ms.sourcegitcommit: e45b2aa85063d33853560ec4bc867f230c1c18ce
+ms.openlocfilehash: 9196648d7e3d2ea717b1a61cbca959805649ed2f
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43371208"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44754456"
 ---
 Az első esetben hozzáadhat egy új telemetriatípus contoso meglévő **hűtő** típusú eszközt.
 
@@ -73,6 +73,7 @@ Ez az útmutató követéséhez lesz szüksége:
 
 * Visual Studio Code. Is [Visual Studio Code letöltése Windows, Mac és Linux](https://code.visualstudio.com/download).
 * A .NET core. Letöltheti a [.NET Core for Mac, Linux és Windows](https://www.microsoft.com/net/download).
+* [A Visual Studio Code-C#](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)
 * Postman. Letöltheti a [Mac, Windows vagy Linux rendszerű Postman](https://www.getpostman.com/apps).
 * Egy [üzembe helyezve az Azure-előfizetéshez az IoT hub](../articles/iot-hub/iot-hub-create-through-portal.md). A jelen útmutató lépéseit az IoT hub kapcsolati karakterláncra van szüksége. A kapcsolati karakterlánc kaphat az Azure Portalról.
 * Cosmos DB-adatbázis, amely az SQL API-t használ, és megfelelően van konfigurálva a [erős konzisztencia](../articles/cosmos-db/manage-account.md). A jelen útmutató lépéseit a Cosmos DB-adatbázis kapcsolati karakterláncra van szüksége. A kapcsolati karakterlánc kaphat az Azure Portalról.
@@ -89,13 +90,11 @@ A jelen cikkben lévő utasítások feltételezik, hogy Windows használata eset
 
 ### <a name="download-the-microservices"></a>Töltse le a mikroszolgáltatások
 
-Töltse le és csomagolja ki a [tárolási adapter mikroszolgáltatás](https://github.com/Azure/pcs-storage-adapter-dotnet/archive/master.zip) egy megfelelő helyre a helyi gépen a githubról.
-
-Töltse le és csomagolja ki a [eszköz szimulálása mikroszolgáltatás](https://github.com/Azure/device-simulation-dotnet/archive/master.zip) egy megfelelő helyre a helyi gépen a githubról.
+Töltse le és csomagolja ki a [távoli mikroszolgáltatás-alapú figyelési](https://github.com/Azure/remote-monitoring-services-dotnet/archive/master.zip) egy megfelelő helyre a helyi gépen a githubról.
 
 ### <a name="run-the-storage-adapter-microservice"></a>A tárolási adapter mikroszolgáltatás futtatása
 
-Nyissa meg a **számítógépek-storage-adapter-dotnet-master** mappát a Visual Studio Code-ban. Kattintson bármelyik **visszaállítása** kijavításához gombok feloldatlan függőségek.
+Nyissa meg a **remote-monitoring-services-dotnet-master\storage-adapter** mappát a Visual Studio Code-ban. Kattintson bármelyik **visszaállítása** kijavításához gombok feloldatlan függőségek.
 
 Nyissa meg a **.vscode/launch.json** fájlt, és rendelje hozzá a Cosmos DB kapcsolati karakterláncot a **PCS_STORAGEADAPTER_DOCUMENTDB_CONNSTRING** környezeti változót.
 
@@ -420,7 +419,7 @@ Ebben a szakaszban tesztelni az eszköztípusok helyileg a korábbi szakaszokban
 
 ### <a name="run-the-device-simulation-microservice"></a>Az eszköz szimulálása mikroszolgáltatás futtatása
 
-Nyissa meg a **eszköz-szimuláció-dotnet-master** mappát a Visual Studio Code egy új példányát a Githubról letöltötte. Kattintson bármelyik **visszaállítása** kijavításához gombok feloldatlan függőségek.
+Nyissa meg a **remote-monitoring-services-dotnet-master\device-simulation** mappát a Visual Studio Code egy új példányát a Githubról letöltötte. Kattintson bármelyik **visszaállítása** kijavításához gombok feloldatlan függőségek.
 
 Nyissa meg a **.vscode/launch.json** fájlt, és rendelje hozzá az IoT Hub kapcsolati karakterláncot a **PCS_IOTHUB_CONNSTRING** környezeti változót.
 

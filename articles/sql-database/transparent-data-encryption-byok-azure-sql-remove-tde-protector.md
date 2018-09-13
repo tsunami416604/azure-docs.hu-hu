@@ -17,12 +17,12 @@ ms.topic: conceptual
 ms.date: 08/07/2017
 ms.author: rebeccaz
 monikerRange: = azuresqldb-current || = azure-sqldw-latest || = sqlallproducts-allversions
-ms.openlocfilehash: feb187101ec02d6e765d6b025f518dc416f55b8b
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: cc52b9ee290ca362c51f7a30cc09056e66df3c55
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "40043847"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44719817"
 ---
 # <a name="remove-a-transparent-data-encryption-tde-protector-using-powershell"></a>Távolítsa el a transzparens adattitkosítás (TDE) védőelem a PowerShell használatával
 ## <a name="prerequisites"></a>Előfeltételek
@@ -41,7 +41,7 @@ Ne feledje, hogy egyszer a TDE-védőhöz törlődik a Key vaultban **titkosíto
 
 Ez az útmutató két módszer attól függően, a kívánt eredményt keresztül haladnak, az incidensek megoldásához után:
 - Az Azure SQL adatbázisokat / Data Warehouses **érhető el**
-- Hogy az Azure SQL Database adatbázisok / Data Warehouses **nem érhető el**
+- Hogy az Azure SQL-adatbázisok / Data Warehouses **nem érhető el**
 
 ## <a name="to-keep-the-encrypted-resources-accessible"></a>Elérhető-e tartani a titkosított erőforrások
 1. Hozzon létre egy [új kulcsot a Key Vaultban](https://docs.microsoft.com/powershell/module/azurerm.keyvault/add-azurekeyvaultkey?view=azurermps-4.1.0). Ellenőrizze, hogy ez az új kulcs a potenciálisan veszélyeztetett TDE-védőhöz, a különálló a kulcstartóban található jön létre, mivel hozzáférés-vezérlés a tároló szinten van kiépítve. 

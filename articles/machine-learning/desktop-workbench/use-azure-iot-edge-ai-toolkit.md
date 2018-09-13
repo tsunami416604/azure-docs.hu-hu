@@ -1,30 +1,30 @@
 ---
-title: Az Eszközintelligencia eszközkészlet használata Azure IoT peremhálózati |} Microsoft Docs
-description: Ez a cikk ismerteti a AI eszközkészlet használata Azure IoT szegély.
+title: Az AI-eszközkészlet használata az Azure IoT Edge |} A Microsoft Docs
+description: Ez a cikk ismerteti az Azure IoT Edge AI-eszközkészlet használatával.
 services: machine-learning
 author: tedway
 ms.author: tedway
 manager: mwinkle
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 2/1/2018
-ms.openlocfilehash: b4d0d50f8fd90dfbe15b00246831da248cfff104
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: f5905f9f5e8524e4ae1d330c501d08d774955202
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34832550"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35644656"
 ---
-# <a name="use-the-ai-toolkit-for-azure-iot-edge"></a>Az Eszközintelligencia eszközkészlet használata Azure IoT él
+# <a name="use-the-ai-toolkit-for-azure-iot-edge"></a>Az Azure IoT Edge AI-eszközkészlet használata
 
-Az él mesterséges eszközintelligencia, a gépi tanulás és a speciális elemzés kerüljön. Az Azure IoT peremhálózati AI eszköztára AI és gépi tanulási, ahol az adatok él telepítheti. Üzembe helyezheti modelljét, egy Docker-tároló egy REST API-t, és a modell majd leküldése Azure IoT Hub a peremhálózati eszköz. AI eszköztára Azure IoT peremhálózati során az eszközintelligencia, a rugalmas számítási és a helyek a korlátozott, időszakos, vagy nem jött létre a felhő teljesítményét.
+Ruházhatja fel mesterséges intelligencia, a machine learning és a bővített analitika az Edge-ben. Az Azure IoT Edge AI eszközkészlet üzembe helyezheti mesterséges Intelligencia és gépi tanulási, ahol az adattárolás helyén. A modell üzembe helyezése, Docker-tároló, egy REST API-val, és majd továbbítsa a modell az edge-eszköz, az Azure IoT Hub szolgáltatással. AI-eszközkészlet az Azure IoT Edge számos lehetőséget kínál, intelligencia, rugalmas számítási és a felhő hatékonyságát az időszakos, korlátozott helyek vagy elérhetetlen.
 
-Azure IoT peremhálózati AI eszköztára olyan parancsfájlok, a kód és a központilag telepíthető tárolók gyűjteménye. Például prediktív karbantartási, kép besorolást, és beszéd feldolgozása, valamint egyéni modell telepítési Azure Machine Learning és Azure IoT Hub keresztül. Az eszközkészlet mellékelt modellek használható-van, de az összes forrásport, kód és adatok érhetők el a fejlesztők számára a testre szabhatja a igényeiknek.
+Az Azure IoT Edge AI-eszközkészlet olyan parancsfájlok, a kód és a tárolók üzembe helyezhető gyűjteménye. Ilyenek például a prediktív karbantartás, képbesorolás, és a beszédfeldolgozáshoz, valamint egyéni modell-üzembehelyezés az Azure Machine Learning és az Azure IoT Hub segítségével. Az eszközkészlet részét képező modellek használható – van, de összes forráskódját, és adatok érhetők el, amellyel a fejlesztők testre szabhatja saját igényeik szerint.
 
-Azure IoT peremhálózati nyilvános GitHub-tárházban található AI eszköztára [aka.ms/AI-eszközkészlet](http://aka.ms/AI-toolkit).
+Az AI-eszközkészlet az Azure IoT Edge nyilvános GitHub-adattárban található [aka.ms/AI-eszközkészlet](http://aka.ms/AI-toolkit).
 
 
 

@@ -1,6 +1,6 @@
 ---
-title: Gyorsítótár az ASP.NET kimeneti gyorsítótár-szolgáltató
-description: 'Útmutató: Azure Redis Cache használatának ASP.NET lap kimeneti gyorsítótár'
+title: Cache ASP.NET kimenetigyorsítótár-szolgáltatója
+description: Ismerje meg, hogyan gyorsítótárazása az ASP.NET-lap kimenete Azure Redis Cache használatával
 services: redis-cache
 documentationcenter: na
 author: wesmc7777
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
 ms.date: 02/14/2017
 ms.author: wesmc
-ms.openlocfilehash: 81c95949971d54833ca7a15ec5148116c94767f7
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 3cf906830965959709a8c7e8dc7d2acc3f3a6f32
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
-ms.locfileid: "27909822"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35931438"
 ---
-# <a name="aspnet-output-cache-provider-for-azure-redis-cache"></a>Az ASP.NET kimeneti gyorsítótár-szolgáltató az Azure Redis gyorsítótár
-A Redis kimeneti gyorsítótár-szolgáltató egy olyan folyamaton-tárolási mechanizmus a kimeneti gyorsítótár adatokhoz. Ezek az adatok kifejezetten a teljes HTTP-válaszok van (a kimeneti gyorsítótár oldalon). A szolgáltató csatlakozik az új kimeneti gyorsítótár szolgáltató bővítési pontot, az ASP.NET 4 lett bevezetve.
+# <a name="aspnet-output-cache-provider-for-azure-redis-cache"></a>A Redis Cache ASP.NET kimenetigyorsítótár-szolgáltatója az Azure-hoz
+A redis Cache kimeneti gyorsítótár-szolgáltatóját egy folyamaton tárolási mechanizmus kimeneti gyorsítótár adatainak. Ezeket az adatokat a kifejezetten a teljes HTTP-válaszok (kimeneti gyorsítótár oldalon). A szolgáltató rendkívüli az új kimeneti gyorsítótár szolgáltató indításkiterjesztési pont az ASP.NET 4 verzióban jelent meg.
 
-A kimeneti gyorsítótár Redis szolgáltatót használja, először konfigurálja a gyorsítótárhoz, és konfigurálja az ASP.NET-alkalmazás a Redis kimeneti gyorsítótár szolgáltató NuGet csomag segítségével. Ez a témakör az alkalmazás használhatja a Redis kimeneti gyorsítótár-szolgáltató konfigurálása nyújt útmutatást. Létrehozásával és az Azure Redis Cache példány konfigurálásával kapcsolatos további információkért lásd: [gyorsítótár létrehozásához](cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache).
+A redis Cache kimeneti gyorsítótár-szolgáltató használatához először konfigurálja a gyorsítótárat, és konfigurálja az ASP.NET-alkalmazást, a redis Cache kimeneti gyorsítótár szolgáltató NuGet-csomag használatával. Ez a témakör útmutatást nyújt az alkalmazás használhatja a redis Cache kimeneti gyorsítótár-szolgáltató konfigurálásáról. Létrehozásával és az Azure Redis Cache-példány konfigurálásával kapcsolatos további információkért lásd: [hozzon létre egy gyorsítótárat](cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache).
 
-## <a name="store-aspnet-page-output-in-the-cache"></a>ASP.NET lap kimenete tárolja a gyorsítótárban
-Ügyfélalkalmazás konfigurálása a Visual Studio használatával a Redis gyorsítótár munkamenet állapota NuGet-csomagot, kattintson a **NuGet-Csomagkezelő**, **Csomagkezelő konzol** a a **eszközök** menü.
+## <a name="store-aspnet-page-output-in-the-cache"></a>Store ASP.NET lap kimenete a gyorsítótárban
+Ügyfélalkalmazás konfigurálása a Redis Cache munkamenet állapota NuGet-csomag használatával a Visual studióban, kattintson a **NuGet-Csomagkezelő**, **Package Manager Console** származó a **eszközök**menüben.
 
 Futtassa az alábbi parancsot a `Package Manager Console` ablakából.
     
@@ -35,21 +35,24 @@ Futtassa az alábbi parancsot a `Package Manager Console` ablakából.
 Install-Package Microsoft.Web.RedisOutputCacheProvider
 ```
 
-A Redis kimeneti gyorsítótár szolgáltató NuGet-csomagot a StackExchange.Redis.StrongName csomag függőség rendelkezik. Ha a StackExchange.Redis.StrongName csomag nincs jelen a projektben, telepíti a rendszer. A Redis kimeneti gyorsítótár szolgáltató NuGet-csomag kapcsolatos további információkért tekintse meg a [RedisOutputCacheProvider](https://www.nuget.org/packages/Microsoft.Web.RedisOutputCacheProvider/) NuGet lap.
+A redis Cache kimeneti gyorsítótár szolgáltató NuGet-csomag maga a StackExchange.Redis.StrongName csomagot. Ha a StackExchange.Redis.StrongName csomag nem található a projekt, telepíti a rendszer. A redis Cache kimeneti gyorsítótár szolgáltató NuGet-csomaggal kapcsolatos további információkért lásd: a [RedisOutputCacheProvider](https://www.nuget.org/packages/Microsoft.Web.RedisOutputCacheProvider/) NuGet-oldalon.
 
 >[!NOTE]
->Az erős névvel ellátott StackExchange.Redis.StrongName csomag mellett is van a StackExchange.Redis nem-erős névvel ellátott verzióra. A projekt távolítsa el a nem-erős névvel ellátott StackExchange.Redis verzióját használja, ha más módon meg beolvasása ütközése a projektben. Ezeket a csomagokat kapcsolatos további információkért lásd: [konfigurálása .NET-gyorsítótárazási ügyfelek számára](cache-dotnet-how-to-use-azure-redis-cache.md#configure-the-cache-clients).
+>Az erős elnevezésű StackExchange.Redis.StrongName csomagon kívül van a StackExchange.Redis nem – erős elnevezésű verzióját. A projekt távolítsa el a nem – erős elnevezésű StackExchange.Redis verzióját használja, ha egyébként, lekérése az elnevezések ütközésének a projektben. Ezek a csomagok kapcsolatos további információkért lásd: [gyorsítótárügyfelek konfigurálása .NET](cache-dotnet-how-to-use-azure-redis-cache.md#configure-the-cache-clients).
 >
 >
 
-A NuGet-csomagot tölti le, és hozzáadja a szükséges összeállítási referenciát, és hozzáadja az alábbi szakasz a web.config fájlt. Ez a szakasz a kötelező beállítani az ASP.NET-alkalmazás a Redis kimeneti gyorsítótár-szolgáltató használatára.
+A NuGet-csomag letölti és hozzáadja a szükséges szerelvényhivatkozásokat, és hozzáadja az alábbi szakasz a web.config fájl. Ez a szakasz tartalmazza a szükséges konfigurációval, hogy az ASP.NET alkalmazás a redis Cache kimeneti gyorsítótár-szolgáltatóját használja.
 
 ```xml
 <caching>
   <outputCachedefault Provider="MyRedisOutputCache">
     <providers>
+      <!-- For more details check https://github.com/Azure/aspnet-redis-providers/wiki -->
+      <!-- Either use 'connectionString' OR 'settingsClassName' and 'settingsMethodName' OR use 'host','port','accessKey','ssl','connectionTimeoutInMilliseconds' and 'operationTimeoutInMilliseconds'. -->
+      <!-- 'databaseId' and 'applicationName' can be used with both options. -->
       <!--
-      <add name="MyRedisOutputCache"
+      <add name="MyRedisOutputCache" 
         host = "127.0.0.1" [String]
         port = "" [number]
         accessKey = "" [String]
@@ -57,39 +60,47 @@ A NuGet-csomagot tölti le, és hozzáadja a szükséges összeállítási refer
         databaseId = "0" [number]
         applicationName = "" [String]
         connectionTimeoutInMilliseconds = "5000" [number]
-        operationTimeoutInMilliseconds = "5000" [number]
+        operationTimeoutInMilliseconds = "1000" [number]
+        connectionString = "<Valid StackExchange.Redis connection string>" [String]
+        settingsClassName = "<Assembly qualified class name that contains settings method specified below. Which basically return 'connectionString' value>" [String]
+        settingsMethodName = "<Settings method should be defined in settingsClass. It should be public, static, does not take any parameters and should have a return type of 'String', which is basically 'connectionString' value.>" [String]
+        loggingClassName = "<Assembly qualified class name that contains logging method specified below>" [String]
+        loggingMethodName = "<Logging method should be defined in loggingClass. It should be public, static, does not take any parameters and should have a return type of System.IO.TextWriter.>" [String]
+        redisSerializerType = "<Assembly qualified class name that implements Microsoft.Web.Redis.ISerializer>" [String]
       />
       -->
-      <add name="MyRedisOutputCache" type="Microsoft.Web.Redis.RedisOutputCacheProvider" host="127.0.0.1" accessKey="" ssl="false"/>
-    </providers>
+      <add name="MyRedisOutputCache" type="Microsoft.Web.Redis.RedisOutputCacheProvider"
+           host=""
+           accessKey=""
+           ssl="true" />
   </outputCache>
 </caching>
 ```
 
-A megjegyzésként szakasz és a minta-beállítások minden attribútum példaként szolgál.
+A megjegyzésekkel szakasz mutatja be az attribútumokat és a minta beállítások minden attribútum.
 
-Az attribútumok konfigurálása a Microsoft Azure-portálon a gyorsítótár paneljét értékeivel, és konfigurálja a többi érték tetszés szerint. A gyorsítótár tulajdonságai elérése, lásd: [konfigurálása Redis gyorsítótár beállításainak](cache-configure.md#configure-redis-cache-settings).
+Az attribútumok konfigurálása a Microsoft Azure Portalon a gyorsítótár panelről az értékekkel, és igény szerint állítsa be a más értékeket. Utasítások a fér hozzá a gyorsítótár tulajdonságai: [a redis Cache-gyorsítótár beállításai](cache-configure.md#configure-redis-cache-settings).
 
-* **állomás** – adja meg a gyorsítótár végpontjához.
-* **port** – használja a nem SSL port vagy az SSL-port, attól függően, hogy az ssl-beállítások.
-* **accessKey** – az elsődleges vagy másodlagos kulcsot használja a gyorsítótárhoz.
-* **SSL** – igaz, ha azt szeretné, hogy biztonságos SSL/gyorsítótárügyfél kommunikációhoz; ellenkező esetben hamis. Mindenképp adja meg a megfelelő porthoz.
-  * A nem SSL port az új gyorsítótárakhoz alapértelmezés szerint le van tiltva. Adja meg az IGAZ állítja ezt a beállítást, az SSL-port használatára. A nem SSL port engedélyezésével kapcsolatos további információkért lásd: a [hozzáférési portok](cache-configure.md#access-ports) szakasz a [gyorsítótár konfigurálása](cache-configure.md) témakör.
-* **databaseId** – megadott gyorsítótár használandó adatbázis kimeneti adatokat. Ha nincs megadva, az alapértelmezett érték a 0 szolgál.
-* **applicationName** – kulcsok vannak tárolva, a redis `<AppName>_<SessionId>_Data`. Az elnevezési sémát lehetővé teszi, hogy több alkalmazás közösen ugyanazzal a kulccsal. Ez a paraméter nem kötelező, és ha nem ad meg, egy alapértelmezett értéket használja.
-* **connectionTimeoutInMilliseconds** – Ez a beállítás lehetővé teszi a StackExchange.Redis-ügyfélben connectTimeout-beállításának felülbírálása. Ha nincs megadva, az alapértelmezett connectTimeout 5000 beállítással. További információkért lásd: [StackExchange.Redis konfigurációs modell](http://go.microsoft.com/fwlink/?LinkId=398705).
-* **operationTimeoutInMilliseconds** – Ez a beállítás lehetővé teszi a StackExchange.Redis-ügyfélben syncTimeout-beállításának felülbírálása. Ha nincs megadva, az alapértelmezett syncTimeout 1000 beállítással. További információkért lásd: [StackExchange.Redis konfigurációs modell](http://go.microsoft.com/fwlink/?LinkId=398705).
+* **gazdagép** – adja meg a gyorsítótár végpontját.
+* **port** – a nem SSL port vagy az SSL-port, attól függően, az ssl-beállítások használatára.
+* **accessKey** – az elsődleges vagy másodlagos kulcsot használja a gyorsítótárat.
+* **az SSL** – igaz, ha biztonságos gyorsítótárügyfél/kommunikáció ssl-lel szeretne; ellenkező esetben hamis. Mindenképpen adja meg a megfelelő portot.
+  * A nem SSL port az új gyorsítótárakhoz alapértelmezés szerint le van tiltva. Adja meg az igaz értékre állítja ezt a beállítást, az SSL-port használatára. A nem SSL port engedélyezésével kapcsolatos további információkért lásd: a [hozzáférési portok](cache-configure.md#access-ports) című rész a [gyorsítótár konfigurálása](cache-configure.md) témakör.
+* **adatbázis-azonosítóhoz** – megadott gyorsítótár használandó adatbázis kimeneti adatokat. Ha nincs megadva, az alapértelmezett érték a 0 használatos.
+* **applicationName** – kulcsok vannak tárolva, a redis `<AppName>_<SessionId>_Data`. Az elnevezési sémája lehetővé teszi több alkalmazás ugyanazt a kulcsot használják. Ez a paraméter nem kötelező, és ha nem rendelkeznek egy alapértelmezett értéket használja.
+* **connectionTimeoutInMilliseconds** – Ez a beállítás lehetővé teszi, hogy a StackExchange.Redis ügyfél connectTimeout-beállításának felülbírálása. Ha nincs megadva, az alapértelmezett connectTimeout beállítás 5000-es szolgál. További információkért lásd: [StackExchange.Redis konfigurációs modell](http://go.microsoft.com/fwlink/?LinkId=398705).
+* **operationTimeoutInMilliseconds** – Ez a beállítás lehetővé teszi, hogy a StackExchange.Redis ügyfél syncTimeout-beállításának felülbírálása. Ha nincs megadva, az alapértelmezett syncTimeout beállítás 1000 szolgál. További információkért lásd: [StackExchange.Redis konfigurációs modell](http://go.microsoft.com/fwlink/?LinkId=398705).
 
-Minden oldalon, amelynek a kimeneti gyorsítótár kívánja hozzáadása az OutputCache direktívában.
+Adjon hozzá egy OutputCache irányelv minden olyan oldalhoz, amelyhez szeretné, a kimeneti gyorsítótárban.
 
 ```
 <%@ OutputCache Duration="60" VaryByParam="*" %>
 ```
 
-A korábbi példában a gyorsítótárazott oldaladatokat a gyorsítótárban marad 60 másodpercen keresztül, és minden egyes paraméter kombináció gyorsítótárazza a lap egy másik verziója. Az OutputCache direktívában kapcsolatos további információkért lásd: [ @OutputCache ](http://go.microsoft.com/fwlink/?linkid=320837).
+Az előző példában az oldal gyorsítótárazott adatokat a gyorsítótárban marad 60 másodpercig, és a egy másik verziót az oldal az egyes paraméterkombináció van gyorsítótárazva. Direktiva OutputCache kapcsolatos további információkért lásd: [ @OutputCache ](http://go.microsoft.com/fwlink/?linkid=320837).
 
-A lépések elvégzése után az alkalmazás a Redis kimeneti gyorsítótár-szolgáltató használatára van konfigurálva.
+Ezek a lépések elvégzése után az alkalmazás a redis Cache kimeneti gyorsítótár-szolgáltató használatára van konfigurálva.
 
 ## <a name="next-steps"></a>További lépések
-Tekintse meg a [ASP.NET munkamenetállapot-szolgáltatóját az Azure Redis Cache](cache-aspnet-session-state-provider.md).
+Tekintse meg a [ASP.NET munkamenetállapot-szolgáltatóját Azure Redis Cache](cache-aspnet-session-state-provider.md).
 

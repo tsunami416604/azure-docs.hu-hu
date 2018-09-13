@@ -1,6 +1,6 @@
 ---
-title: "Ismerkedés az Azure - modellezési eszköz Microsoft fenyegetés - |} Microsoft Docs"
-description: "Ez a működés közben a fenyegetés modellezési eszköz Kiemelés a mélyebb áttekintését."
+title: Első lépések – Microsoft Threat Modeling Tool – Azure |} A Microsoft Docs
+description: Ez a működés a Threat Modeling Tool kiemelése részletesebb áttekintése.
 services: security
 documentationcenter: na
 author: RodSan
@@ -14,132 +14,133 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 73d6b42e7a97d6041f6213a1f7d060806734d763
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 340c92d2830069a9d957f4ece79416a707062629
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35645417"
 ---
-# <a name="getting-started-with-the-threat-modeling-tool"></a>Első lépések a fenyegetések modellezése eszközzel
+# <a name="getting-started-with-the-threat-modeling-tool"></a>A Threat Modeling Tool – első lépések
 
-A felhő- és eszközök a vállalati biztonsági csoport, amely a fenyegetések modellezése eszköz Preview a korábban az év egy szabadként  **[kattintson-letöltési](https://aka.ms/tmtpreview)**. Az mechanizmus módosítása lehetővé teszi küldje le a legújabb javítások és hibajavításokat tartalmaz az ügyfelek minden alkalommal, amikor megnyitják az eszközt, így könnyebben karbantartásáról és használatáról.
-Ez a cikk végigvezeti az első lépések a Microsoft SDL fenyegetés megközelítés modellezési, és bemutatja, hogyan számára a nagy fenyegetés egy gerincét a biztonsági folyamatot, az eszköz használatához.
+A felhő- és vállalati eszközök a biztonsági csapat, amely a fenyegetések modellezése eszköz előzetes év korábbi részében egy szabad  **[kattintson-letöltési](https://aka.ms/tmtpreview)**. A kézbesítési mechanizmus a változás lehetővé teszi számunkra az küldje le a legújabb javítások és hibajavítások az ügyfelek számára minden alkalommal, amikor megnyitják az eszközt, így könnyebben karbantartásáról és használatáról.
+Ez a cikk végigvezeti az első lépései a Microsoft SDL fenyegetés megközelítés modellezés, és bemutatja, hogyan fejleszthet nagyszerű modelljei a biztonsági folyamat egy vázaként eszközének használata.
 
-Ez a cikk az SDL fenyegetés megközelítés modellezési meglévő ismerete épül. A gyors áttekintését lásd  **[fenyegetések modellezése webalkalmazások](https://msdn.microsoft.com/library/ms978516.aspx)**  és archivált verziója  **[felderíthesse biztonsági hiányosságokat STRIDE módszert használva](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxzZWN1cmVwcm9ncmFtbWluZ3xneDo0MTY1MmM0ZDI0ZjQ4ZDMy)**  MSDN-cikk 2006 közzétéve.
+Ez a cikk a meglévő ismeretek a modellezés megközelítés SDL fenyegetés épül. Tekintse át, a **[Threat Modeling webalkalmazások](https://msdn.microsoft.com/library/ms978516.aspx)** és a egy archivált verzióját **[tárhat fel biztonsági hibára derült megközelítéssel a STRIDE](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxzZWN1cmVwcm9ncmFtbWluZ3xneDo0MTY1MmM0ZDI0ZjQ4ZDMy)** Az MSDN-cikkben 2006 közzé.
 
-Gyorsan összefoglalva, a megközelítés diagram létrehozása, fenyegetések azonosítására, őket kiküszöböléséhez és ellenőrzése minden megoldás. Ez a diagram, amely kiemeli ezt a folyamatot:
+Gyorsan összegzéséhez megközelítés magában foglalja a diagram létrehozása, fenyegetések azonosítása, csökkentése őket, és egyes kockázatcsökkentéseket ellenőrzése. Íme egy diagram, amely kiemeli a folyamat:
 
 ![SDL-folyamat](./media/azure-security-threat-modeling-tool-feature-overview/sdlapproach.png)
 
-## <a name="starting-the-threat-modeling-process"></a>A fenyegetés modellezési folyamatának indítása
+## <a name="starting-the-threat-modeling-process"></a>A fenyegetés a modellezési folyamat indítása
 
-Ha a fenyegetések modellezése eszköz elindításához néhány dolog, láthatja, a képen látható módon:
+Ha elindítja a Threat Modeling Tool, néhány dolgot, láthatja, ahogyan az a képen látható:
 
 ![Üres Start lap](./media/azure-security-threat-modeling-tool-feature-overview/tmtstart.png)
 
-### <a name="threat-model-section"></a>Fenyegetés modell szakasz
+### <a name="threat-model-section"></a>Veszélyforrások elleni modell szakasz
 
 | Összetevő                                   | Részletek                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | ------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Visszajelzés, a javaslatok és a problémák gomb** | Megjelenik a  **[MSDN fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=sdlprocess)**  összes dolgot SDL. Ez lehetővé teszi elolvasandó más felhasználók tevékenységeit, és a lehetséges megoldások és javaslatokat. Ha még mindig nem talál meg, amit keres, e-mailben tmtextsupport@microsoft.com segítséget a támogatási csapat számára                                                                                                                            |
-| **A modell létrehozása**                          | Ahhoz, hogy a diagram rajzolása üres vászonból megnyitása. Ügyeljen arra, hogy melyik sablont szeretné használni a modell kiválasztása                                                                                                                                                                                                                                                                                                                                                                       |
-| **Új modell sablon**                 | Ki kell választania egy modell létrehozása előtt használandó sablont. A fő sablont az Azure fenyegetés folyamatmodell-sablont, amely tartalmazza az Azure-rajzsablonok, fenyegetések és azok mérséklési. Általános esetében válassza ki a legördülő menüből a SDL TM Tudásbázis. Létrehozhat saját sablont, vagy küldje el az összes felhasználó számára egy új? Tekintse meg a  **[sablon tárház](https://github.com/Microsoft/threat-modeling-templates)**  további GitHub-oldalon                              |
-| **Nyissa meg a modell**                            | <p>Megnyílik a fenyegetés modellek korábban mentett. A modellek nemrég megnyitott nagyszerű, ha meg kell nyitnia a legutóbbi fájlok. Ha a kijelölt mutat, nyissa meg a modellek 2 módjai találhat:</p><p><ul><li>Nyissa meg a számítógépről – klasszikus mód a helyi tárhelyet használ a fájlok megnyitása</li><li>Nyissa meg a onedrive-ról – csoportok segítségével a onedrive-on mappák mentése és megosztása növelheti a hatékonyságot és együttműködés egyetlen helyen a fenyegetés modellek</li></ul></p> |
-| **Első lépések útmutató**                   | Megnyitja a  **[Microsoft fenyegetések modellezése eszköz](./azure-security-threat-modeling-tool.md)**  főoldala                                                                                                                                                                                                                                                                                                                                                                                            |
+| **Visszajelzések, a javaslatokat és a problémák gomb** | Megnyílik a **[MSDN-fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=sdlprocess)** összes dolgot SDL keretében. Ez lehetővé teszi, olvassa el, mivel foglalkoznak az egyéb felhasználói, megkerülő megoldások és javaslatok együtt. Ha még mindig nem találja amit keres, e-mailt tmtextsupport@microsoft.com segítséget nyújtanak az ügyfélszolgálati csapatunkhoz a                                                                                                                            |
+| **Modell létrehozása**                          | Ekkor megnyílik egy üres vászonból, hogy a diagram megrajzolásához. Győződjön meg arról, hogy melyik sablont szeretné használni a modell                                                                                                                                                                                                                                                                                                                                                                       |
+| **A sablon új modell**                 | Ki kell választania, melyik sablont szeretnék használni a modell létrehozása előtt. Fő sablont az Azure veszélyforrások elleni modell-sablon, Azure-ra vonatkozó rajzsablonokhoz, fenyegetések és megoldást tartalmaz. Általános modellek esetében válassza ki a legördülő menüből az SDL TM Tudásbázis. Saját sablon létrehozása, vagy küldje el az összes felhasználó számára egy új? Tekintse meg a **[sablontár](https://github.com/Microsoft/threat-modeling-templates)** további GitHub-oldalon                              |
+| **Nyissa meg a modell**                            | <p>Megnyílik a modelljei korábban mentett. A legutóbb megnyitott modellek használata nagyszerű, ha meg kell nyitnia a legutóbbi fájlok. Ha az egérmutatót a kijelölést, nyissa meg a modellek 2 módjai találja:</p><p><ul><li>Nyissa meg a számítógépről – klasszikus módját a helyi tároló használata a fájl megnyitása</li><li>Nyissa meg a OneDrive – csapatok mappákat a onedrive vállalati verzióban használható, mentése és megosztása az összes saját modelljei növelheti a teljesítményt és együttműködés segítségével egy helyen</li></ul></p> |
+| **Első lépések útmutató**                   | Megnyílik a **[Microsoft Threat Modeling Tool](./azure-security-threat-modeling-tool.md)** főoldala                                                                                                                                                                                                                                                                                                                                                                                            |
 
 ### <a name="template-section"></a>Sablon szakasz
 
 | Összetevő               | Részletek                                                                                                                                                          |
 | ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Új sablon létrehozása** | Megnyílik az Ön létrehozásához, egy üres sablont. Ha nincs teljesen új sablonok létrehozásakor a széles körű Tudásbázis, azt javasoljuk, hogy a meglévőket felépíteni |
-| **Nyissa meg sablon**       | Megnyitja a meglévő sablonok meg a szükséges módosításokat                                                                                                              |
+| **Új sablon létrehozása** | Megnyílik egy üres sablonnal, hogy épülnek. Kivéve, ha az alapoktól sablonok készítésekor alapos ismeretek, azt javasoljuk, hogy hozhat létre meglévő állók közül. |
+| **Sablon megnyitása**       | Megnyílik a meglévő hajthat végre a sablonok                                                                                                              |
 
-A fenyegetések modellezése eszköz team javítása eszköz funkcióit, és megtapasztalhatja folyamatosan működik. Néhány másodlagos változtatások előfordulhat, hogy elvégezze az év folyamán, de minden fontosabb változását igénylő újraírások az útmutatóban. Hivatkozik rá gyakran biztosításához a legújabb közlemények kap.
+A Threat Modeling Tool csapata folyamatosan javíthatja az eszköz funkcióinak és tapasztalatok dolgozik. Néhány kisebb módosításokat az év folyamán lehet, hogy kerül sor, de minden fontosabb változását foglalja össze az útmutató a újraírások igényelnek. Tekintse meg, milyen gyakran annak érdekében hogy a legújabb bejelentésekről.
 
-## <a name="building-a-model"></a>A modell létrehozása
+## <a name="building-a-model"></a>Modell létrehozása
 
-Ez a szakasz azt kövesse:
+Ebben a szakaszban azt kövesse:
 
-- Cristina (egy fejlesztő)
-- Richárd (Programvezető) és
-- Szerzője Ashish (tester)
+- Cristina (fejlesztői)
+- Ricardo (egyik programmenedzsere) és a
+- Szerzője Ashish (tesztelés)
 
-A folyamatot, az első fenyegetések modellezése fejlődő a rendszer hamarosan.
+Amelyben a folyamatot az első fenyegetések modellezése fejlesztéséhez.
 
-> Richárd: Nagy Cristina, I munkaidő fenyegetés modell diagram, és győződjön meg arról, hogy azt a kapott a következő részleteit jobb. Is segítséget kérek, tekintse át?
-> Cristina: elengedhetetlen. Ismerkedjen meg.
-> Richárd az eszköz megnyitása, és a képernyő Cristina megosztja.
+> Ricardo: Üdv mindenkinek Cristina, dolgoztam a fenyegetés modell diagramon, és győződjön meg arról, hogy kaptunk részleteit megfelelő. Segíthet nekem, tekintse át?
+> Cristina: feltétlenül. Tekintsük át.
+> Ricardo megnyitja az eszközt, és megosztja a képernyő Cristina.
 
 ![Alapszintű fenyegetések modellezése](./media/azure-security-threat-modeling-tool-feature-overview/basictmt.png)
 
-> Cristina: Ok, egyszerű, keres, de az is, bízná me azt?
-> Richárd: meg arról, hogy! A részletes információkat a következő:
-> - Az emberi felhasználói megrajzolása egy külső egységként – négyzet
-> - Azok parancsok küldjük a webkiszolgálóhoz – a kör
-> - A webalkalmazás-kiszolgáló van tanácsadás egy adatbázist (két párhuzamos sorok)
+> Cristina: Ok, könnyen érthető megjegyzésblokkok írására, úgy tűnik, de az is vezeti végig me azt?
+> Ricardo: róla! A következő táblázat összefoglalja:
+> - Az emberi felhasználói megjelenítése egy külső entitásként – négyzet
+> - Ezek használt parancsok küldését ezen a webalkalmazás-kiszolgáló – a kör
+> - A webalkalmazás-kiszolgáló (két párhuzamos vonalak) adatbázis van tanácsadás
 
-Mi Richárd csak bemutatta Cristina DFD, rövid a  **[adatfolyam-Diagram](https://en.wikipedia.org/wiki/Data_flow_diagram)**. A fenyegetések modellezése eszköz lehetővé teszi, hogy a felhasználók meghatározhatják a bizalmi kapcsolat határain mutatja, hogy hol különféle entitásokat az irányítást a piros pontozott vonalak jelölik. Például a rendszergazdák megkövetelése az Active Directory rendszer hitelesítési célokra, az Active Directory hozzáférésének szabályozására kívül esik.
+Milyen Ricardo mutatott Cristina egy rövid a DFD  **[adatfolyam-Diagram](https://en.wikipedia.org/wiki/Data_flow_diagram)**. A Threat Modeling Tool lehetővé teszi, hogy a felhasználók számára a bizalmi kapcsolat határain mutatja, hogy hol különböző entitások vezérlőelem a piros pontozott vonal jelzi. Például a rendszergazdák igényelnek az Active Directory rendszer hitelesítés céljára, ezért az Active Directory a hatókörükön kívüli.
 
-> Cristina: Nekem jobb keres. Mi a helyzet a fenyegetések?
-> Richárd: Én is láthat.
+> Cristina: Nekem megfelelő néz ki. Mi a helyzet a fenyegetések?
+> Ricardo: Én választom, megjelenítése.
 
-## <a name="analyzing-threats"></a>Fenyegetések elemzése
+## <a name="analyzing-threats"></a>Fenyegetések elemzésével
 
-Amennyiben az elemre kattint a ikon a menüpont kiválasztásának (fájl nagyítóüveg), az alapértelmezett sablon alapján létrehozott fenyegetések a fenyegetések modellezése eszköz található listájára vették, az úgynevezett SDL módszerrel használó a nézet  **[ STRIDE (IP-hamisítás, illetéktelen módosítás, információ felfedése, szolgáltatásmegtagadás és jogok kiterjesztése)](https://en.wikipedia.org/wiki/STRIDE_(security))**. A lényege, hogy a szoftver a fenyegetéseket, amely 6 kategóriákkal is található egy előre jelezhető készletét származik.
+Miután a nézet az ikon menü kijelölésből (fájl nagyítóüveg), az alapértelmezett sablon alapján létrehozott fenyegetéseket a Threat Modeling Tool található listájára vették, amely használja az SDL néven ismert megközelítés kattint  **[ STRIDE (hamisítást, illetéktelen módosítás, adatok kiadásáról, Letagadhatóság, szolgáltatásmegtagadás és jogok kiterjesztése)](https://en.wikipedia.org/wiki/STRIDE_(security))**. A cél pedig az, hogy a szoftver a fenyegetéseket, amely 6 kategóriákban is található egy előre jelezhető készletét származik.
 
-Erre akkor van például biztonságossá tétele a ház minden ajtók és biztosításával rendelkezik zárolási mechanizmus az riasztó rendszerek hozzáadása vagy a tolvaj után követésnek előtt.
+Ez a módszer van, a ház biztosítása úgy, hogy minden egyes ajtó- és zárolási mechanizmussal rendelkezik helyben riasztórendszerként hozzáadása vagy rekord feloldása után a tolvaj előtt.
 
 ![Alapszintű fenyegetések](./media/azure-security-threat-modeling-tool-feature-overview/basicthreats.png)
 
-Richárd megkezdi a listán az első elem kiválasztásával. Ez történik:
+Ricardo megkezdi a lista első elemének kiválasztásával. Ez történik:
 
-A két rajzsablonok közötti interakció továbbfejlesztett először
+Először a a két rajzsablonokhoz közötti interakció továbbfejlesztett
 
 ![Interakció](./media/azure-security-threat-modeling-tool-feature-overview/interaction.png)
 
 A fenyegetés második, további információkat a fenyegetés tulajdonságai ablakban jelenik meg
 
-![Interakció adatai](./media/azure-security-threat-modeling-tool-feature-overview/interactioninfo.png)
+![Kapcsolati adatai](./media/azure-security-threat-modeling-tool-feature-overview/interactioninfo.png)
 
-A generált fenyegetés segít neki a lehetséges tervezési hibái ismertetése. A STRIDE kategorizálási ad neki egy a potenciális támadási, amíg a további leírás amelyből megtudja, pontosan milyen nem megfelelő, a lehetséges módjai a csökkentése, valamint. Szerkeszthető mezők megjegyzéseket fűzni indoklás részleteit, vagy attól függően, hogy a szervezet hiba sáv minősítés módosításához használhat.
+A létrehozott fenyegetés segít neki a lehetséges tervezési hibái ismertetése. A STRIDE kategorizálási ad neki egy a potenciális támadási vektorok, bár a további leírás jelzi neki pontosan mi okozza, lehetséges módjai a veszélyt együtt. Szerkeszthető mezők írhat jegyzeteket az indoklás adatokat, vagy módosítsa cége bug sáv függően minősítés használhat.
 
-Azure-sablonok további részleteket a felhasználók nem csak mi, hanem miként lehet elhárítani leírásokat, példák és hivatkozások hozzá Azure-specifikus dokumentáció megérthetik rendelkezik.
+Az Azure-sablonok leírásában, nem csak mi okozza, hanem hogyan háríthatja el a leírások, példák és a hivatkozásokat hozzá Azure-ra vonatkozó dokumentáció segítségével további részleteket rendelkezik.
 
-A leírás miatt a fontosnak tartja megakadályozhatja, hogy a felhasználók hamisíthatók, a hitelesítési módszer hozzáadása az első fenyegetést lehessen felfedése. Néhány percig, amíg a Cristina, ugyanis az azok megértettem a végrehajtási hozzáférés-vezérléshez és a szerepkörök fontosságát. Richárd néhány gyors megjegyzések az győződjön meg arról, hogy ezek bevezetett kitöltve.
+A leírás miatt a fontosnak tartja meg, hogy a felhasználók hamisíthatók, hitelesítési módszer hozzáadása az első fenyegetés dolgozni rajta illesztőprogramban. Cristina, megbeszélést be néhány percet, végrehajtási hozzáférés-vezérléshez és a szerepkörök fontosságáról értelmezni. Ricardo kitöltött néhány gyorsjegyzetek, hogy ezek lett megvalósítva.
 
-Richárd került, a fenyegetések az információk felfedése, mivel azt is tudjuk a hozzáférés-vezérlési tervek egyes írásvédett fiókok szükséges naplózási és jelentéskészítés céljából. Ezután már azon, hogy e új fenyegetést legyen, de a megoldást azonos volt, hogy külön jelezve a fenyegetés.
-Ezután is-re vonatkozó információk felfedése további műveletek, és a is tudjuk, hogy a biztonsági mentési szalagot kell a titkosítást, egy feladatot az a műveleti csapata volt fog.
+Ricardo került, a fenyegetések Információfelfedés alatt, mivel ő is felismerte, hogy a hozzáférés-vezérlési tervet a naplózás és jelentéskészítés céljából egyes csak olvasható-fiókok szükséges. Phil testreszabásakor nem tudta, hogy ez legyen az új fenyegetéseket, de kockázatcsökkentő is azonos, így ő külön jelezve a fenyegetés.
+Ő is egy kicsit részletesebben kapcsolatos információk felfedése úgy Gondoltuk, és a adatmegfelelőség, a biztonsági mentési szalagot a titkosítás, az üzemeltetési csapat egy feladatot kell is mellett.
 
-Nem alkalmazható a tervezési miatt a meglévő megoldást vagy a biztonsági fenyegetések biztosítja, hogy módosítani lehet a "Nem alkalmazható" az az állapot legördülő. Három lehetősége van: kell vizsgálat – alapértelmezett használt nem indult el – Miután teljesen folyamatban lévő cikkek és Mitigated – nyomon követéséhez.
+Nem alkalmazható a kialakítás miatt a meglévő megoldásokkal kapcsolatban, vagy a biztonsági fenyegetések garantálja, hogy módosítani lehet a "Nem alkalmazható" állapot legördülő listából. Nincsenek három egyéb lehetőségek: nem indult el – alapértelmezett kijelölést, kell vizsgálat – használt követéséhez elemek és Mitigated – után a rendszer teljes mértékben dolgozott.
 
 ## <a name="reports--sharing"></a>Jelentések és megosztása
 
-Miután Richárd végighalad Cristina a listát, és hozzáadja a fontos megjegyzések, azok mérséklési/indokok, prioritás és állapotmódosítások, he választja ki Jelentések -> teljes jelentés mentése jelentést, amely számára, hogy halad át munkatársaival töltött jelentést kiírja -> létrehozása Ahhoz, hogy a megfelelő biztonsági munkahelyi van megvalósítva.
+Ricardo halad végig a listát Cristina, és a fontos megjegyzések, megoldások és a indoklások, prioritás és állapot módosul, he kijelölt jelentések -> -> Mentés jelentést, amely kiírja a neki haladhat végig a munkatársaival a már jól néz kis jelentést teljes jelentés létrehozása annak biztosítása érdekében a megfelelő biztonsági munkahelyi van megvalósítva.
 
-![Interakció adatai](./media/azure-security-threat-modeling-tool-feature-overview/report.png)
+![Kapcsolati adatai](./media/azure-security-threat-modeling-tool-feature-overview/report.png)
 
-Ha Richárd kíván inkább megosztani a fájlt, hogy egyszerűen megteheti mentése a OneDrive-fiókja a szervezet által. Amennyiben az általa Igen, ezután másolja a dokumentum hivatkozását, és ossza meg a munkatársaival. 
+Ricardo szeretné a fájlt ossza meg helyette, ha ő egyszerűen ehhez a cége OneDrive-fiók mentése. Után úgy használható, ő a dokumentum hivatkozás másolása, és ossza meg a munkatársaival. 
 
-## <a name="threat-modeling-meetings"></a>Fenyegetés modellezési értekezletek
+## <a name="threat-modeling-meetings"></a>Veszélyforrások elleni modellezési értekezletek
 
-Ha Richárd a fenyegetések modellezése a onedrive-on, Ashish, a tesztelés használatával munkatársát, underwhelmed volt. Úgy tűnik, például Richárd és Cristina számos fontos esetekben, amelyek könnyen sérülhet kimaradt. A skepticism fenyegetés modellek egészíti ki.
+Ricardo a fenyegetések modellezése munkatársával, onedrive vállalati verzió, Ashish, a tester használatával küldi el, amikor underwhelmed volt. Ricardo és Cristina kihagyott több fontos sarokban esetekről, melyek könnyen feltörhető, tűnt. Saját skepticism modelljei egészíti ki.
 
-Ebben a forgatókönyvben után Ashish átvette a fenyegetések modellezése őt hívni a két fenyegetés modellezési értekezletek esetén: egy értekezlet folyamat szinkronizálását, és végezze el a diagramok és egy második értekezlet esetében fenyegetések tekintse át és kijelentkezési.
+Ebben a forgatókönyvben után Ashish átvette a fenyegetések modellezése, ő nevű két threat modellezési értekezletek esetén: egy értekezlet, a folyamat szinkronizálását, és haladjon végig a diagramok és egy második értekezletet hoz threat tekintse át és a sign-off.
 
-Az első értekezlet Ashish töltött mindenki keresztül az SDL fenyegetés modellezési folyamatban érdekében 10 perc. Ezután fenyegetés modell diagram lekért és részletesen elmagyarázza az elindult. Öt percen belül egy fontos hiányzik egy összetevő azonosították.
+Az első értekezlet Ashish töltött walking mindenki keresztül a modellezési folyamat SDL fenyegetés 10 perc. Phil threat modell diagram lekért és lépései részletesen elmagyarázza. Öt percen belül egy fontos hiányzik összetevő azonosították.
 
-Néhány perc múlva újabb Ashish és Richárd került egy bővített leírását a módját a webalkalmazás-kiszolgáló lett létrehozva. Nem volt folytatható értekezlet ideális, de mindenki végül elfogadott, hogy az eltérés korai felderítéséhez lett fog menti ideje a jövőben.
+Pár perc alatt később Ashish és Ricardo került egy kiterjesztett tárgyalja, hogyan lett létrehozva a webkiszolgáló. Nem volt a folytatáshoz értekezlet ideális konfigurálási módjának, de mindenki végül elfogadott, hogy idő takaríthat meg őket a későbbiekben folyamatban korai felderítése eltérést volt.
 
-A második értekezlet a team telefonon keresztül a fenyegetések, bizonyos értelemben hozzájuk tárgyalt és bejelentkezett a fenyegetések modellezése. Ezeket a dokumentum beadja a verziókövetési rendszerrel, és folytatni a fejlesztési.
+A második konferencián, a csapat a fenyegetések telefont, és azok leküzdési néhány módszer tárgyalt és jóváhagyta a fenyegetések modellezése. Ezeket be van jelölve a dokumentum forrásvezérlőben és folyamatos fejlesztési.
 
-## <a name="thinking-about-assets"></a>Eszközök számbavétele
+## <a name="thinking-about-assets"></a>Szem előtt tartva eszközök
 
-Bizonyos fenyegetések modellezése rendelkező olvasók tapasztalhatja, hogy még nem megtartásról vonatkozó minden. Megismerte, azt, hogy sok szoftverfejlesztő ismerniük eszközök fogalmát, milyen eszközöket egy támadó el iránt érdeklődik jobb megértése-e a szoftvereket.
+Olyan olvasók, akik rendelkeznek a fenyegetések modellezése Észreveheti, hogy még nem beszéltünk eszközök egyáltalán. Tudjuk, hogy sok szoftverfejlesztő jobban megérthessék, a szoftverfrissítési objektumok fogalma értik, és milyen eszközöket egy támadó érdekelheti talált.
 
-Ha fog fenyegetések modellezése egy házat, előfordulhat, hogy elindíthatja a családja, pótolhatatlan fényképeket vagy értékes alkotást számbavétele. Például előfordulhat, hogy megkezdéséhez ki lehet, hogy feltörhessék és az aktuális biztonsági rendszer továbbléphetnek. Vagy előfordulhat, hogy indítsa el a fizikai funkciók, például a készlet vagy az első porch figyelembe véve. Ezek a hasonló eszközök, a támadók vagy a szoftver tervezési számbavétele. Ezek a módszerek bármelyikét működik.
+Ha a fenyegetések modellezése a ház, előfordulhat, hogy lépésként szem előtt tartva a család, pótolhatatlan fényképek és műalkotások értékes. Talán, előfordulhat, hogy első lépésként ki meghiúsulhat és a jelenlegi biztonsági rendszer terhelése. Vagy előfordulhat, hogy indítsa el a fizikai funkciókat, például a készlet vagy az elülső porch figyelembe véve. Ezek a hasonló eszközök, a támadók vagy a szoftver kialakítása előtt tartva. Ezek a módszerek bármelyikét működik.
 
-A fenyegetés azt korábban itt bemutatott modellezési megközelítése jóval egyszerűbb, mint mi a Microsoft által elvégzett a múltban. Észleltünk, hogy a szoftver tervezett módszert alkalmaz sok csoportok esetén működik-e. Reméljük, amelyek tartalmazzák a saját.
+A fenyegetés modellezés, hogy már itt bemutatott megközelítés lényegesen egyszerűbb, mint amit a Microsoft végzett az elmúlt. Úgy találtuk, hogy a szoftver tervezési megközelítés számos csapatok számára is működik-e. Reméljük, hogy az Öné, amelyek tartalmaznak.
 
 ## <a name="next-steps"></a>További lépések
 
-A kérdéseit, megjegyzéseit és kapcsolatos kérdéseket küldése tmtextsupport@microsoft.com. **[Töltse le](https://aka.ms/tmtpreview)**  a fenyegetés modellezési eszköz a kezdéshez.
+Küldés a kérdéseit, megjegyzéseit, és problémákat tmtextsupport@microsoft.com. **[Töltse le](https://aka.ms/tmtpreview)**  a Threat Modeling Tool a kezdéshez.

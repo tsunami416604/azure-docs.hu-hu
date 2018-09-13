@@ -10,13 +10,13 @@ ms.custom: security
 ms.topic: conceptual
 ms.date: 03/07/2018
 ms.author: mireks
-ms.reviewer: carlrab
-ms.openlocfilehash: a648071d4d98f500e70557b330d5c79dba747a1f
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.reviewer: vanto
+ms.openlocfilehash: d123cb2d272f1c360d12e9d71eec6dc5ca508ebd
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43345143"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44718746"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql-database-managed-instance-or-sql-data-warehouse"></a>Konfigurálhatja és kezelheti az Azure Active Directory-hitelesítés az SQL Database felügyelt példányába vagy az SQL Data warehouse-bA
 
@@ -189,7 +189,7 @@ A következő példa eltávolítja az Azure AD-rendszergazda:
 Remove-AzureRmSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -ServerName "demo_server"
 ```
 
-Azure Active Directory-rendszergazda a REST API-k használatával is kiépíthetők. További információkért lásd: [műveletek az Azure SQL-adatbázisok műveleteket az Azure SQL Database és Service Management REST API-referencia](https://msdn.microsoft.com/library/azure/dn505719.aspx)
+Azure Active Directory-rendszergazda a REST API-k használatával is kiépíthetők. További információkért lásd: [műveletek az Azure SQL adatbázis-műveletek az Azure SQL Database és Service Management REST API-referencia](https://msdn.microsoft.com/library/azure/dn505719.aspx)
 
 ### <a name="cli"></a>parancssori felület  
 Azure AD-rendszergazdát a következő CLI-parancsok meghívásával is kiépíthetők:

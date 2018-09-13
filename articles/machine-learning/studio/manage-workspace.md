@@ -1,6 +1,6 @@
 ---
-title: A Machine Learning-munkaterület kezelése |} Microsoft Docs
-description: Azure Machine Learning munkaterületekhez való hozzáférés kezelése és szolgáltatások telepítésére és kezelésére ML API webkiszolgáló
+title: Machine Learning-munkaterület kezelése |} A Microsoft Docs
+description: Az Azure Machine Learning-munkaterületek, való hozzáférés kezelése és üzembe helyezése és gépi Tanulási API-webszolgáltatások kezelése
 services: machine-learning
 documentationcenter: ''
 author: heatherbshapiro
@@ -15,43 +15,43 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/27/2017
-ms.openlocfilehash: 8c8e65d5fd7efd1f9212b76e1a72b91a0ea07272
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 6e1febfff211dd92f8990d1880562e64382de5f0
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34835066"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35645683"
 ---
 # <a name="manage-an-azure-machine-learning-workspace"></a>Azure Machine Learning-munkaterület kezelése
 
 > [!NOTE]
-> A Machine Learning webszolgáltatások portálon webszolgáltatások kezeléséről további információért lásd: [kezelése az Azure Machine Learning webszolgáltatások portál használatával egy webszolgáltatás-bővítmény](manage-new-webservice.md).
+> A Machine Learning Web Services portálon webszolgáltatások kezelésével kapcsolatban további információkért lásd: [egy webszolgáltatás, az Azure Machine Learning Web Services portál használata kezelheti](manage-new-webservice.md).
 > 
 > 
 
-Gépi tanulás munkaterületek az Azure-portálon kezelheti.
+Machine Learning-munkaterületek az Azure Portalon kezelheti.
 
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 
 ## <a name="use-the-azure-portal"></a>Az Azure Portal használata
 
-A munkaterület az Azure-portálon kezelheti:
+A munkaterület az Azure Portalon kezelheti:
 
-1. Jelentkezzen be a [Azure-portálon](https://portal.azure.com/) Azure-előfizetéshez rendszergazdai fiók használatával.
-2. Az oldal tetején a keresési mezőbe, írja be a "számítógép tanulási munkaterületek", és válassza ki **Machine Learning munkaterületek**.
-3. Kattintson a kezelni kívánt munkaterületre.
+1. Jelentkezzen be a [az Azure portal](https://portal.azure.com/) egy Azure-előfizetéshez rendszergazdai fiókkal.
+2. A keresőmezőbe, a lap tetején adja meg a "machine learning-munkaterületek", majd **Machine Learning-munkaterületek**.
+3. Kattintson a kezelni kívánt munkaterülethez.
 
-A szabványos erőforrás-kezelési információkat és a rendelkezésre álló lehetőségek mellett a következő műveletek végezhetők el:
+Standard erőforrásadatok felügyeleti és a rendelkezésre álló lehetőségek mellett a következő műveletek végezhetők el:
 
-- Nézet **tulajdonságok** – ezen a lapon a munkaterületet, és az erőforrás-információkat jeleníti meg, és módosíthatja a előfizetésbe és erőforráscsoportba csoport, a munkaterület kapcsolódnak.
-- **Tárolási kulcsok újraszinkronizálásra** -a munkaterület fenntartja a tárfiók kulcsait. Ha a tárfiók kulcsait megváltozik, ezt követően kattinthat **kulcsok újraszinkronizálásra** a kulcsok szinkronizálása a munkaterületen.
+- Nézet **tulajdonságok** – ezen a lapon látható a munkaterület és az erőforrás adatait, és módosíthatja az előfizetésben és erőforráscsoportban csoport, amely ehhez a munkaterülethez van csatlakoztatva.
+- **Tárkulcsok újraszinkronizálása** – a munkaterület fenntart a tárfiókhoz kulcsot. A storage-fiók kulcsok megváltozik, akkor kattintson **kulcsok újraszinkronizálása** a kulcsok szinkronizálása a munkaterületen.
 
-A munkaterület társított webszolgáltatások kezeléséhez használja a Machine Learning webszolgáltatások portálon. Lásd: [kezelése az Azure Machine Learning webszolgáltatások portál használatával egy webszolgáltatás-bővítmény](manage-new-webservice.md) kapcsolatos részletes információkért.
+A webes szolgáltatások a munkaterülethez társított kezeléséhez használja a Machine Learning webszolgáltatások portálján. Lásd: [egy webszolgáltatás, az Azure Machine Learning Web Services portál használata kezelheti](manage-new-webservice.md) teljes körű információkat.
 
 > [!NOTE]
-> Központi telepítése, illetve új webszolgáltatások kezelése az előfizetést, amelyhez a webszolgáltatások telepítése egy közreműködő vagy a rendszergazda szerepkört kell hozzárendelni. Ha meghívni egy másik felhasználót egy machine learning munkaterülettel, hozzá kell rendelnie azokat egy közreműködő vagy a rendszergazda szerepkört az előfizetés ahhoz, azok központilag telepíthetne vagy kezelhetne webszolgáltatások. 
+> Telepítenie és felügyelnie az új webszolgáltatások, hozzá kell rendelni egy közreműködőjének vagy rendszergazdájának szerepkört az előfizetésre, amelyre a web service telepítve van. A machine learning-munkaterület egy másik felhasználó meghívása akkor, ha kell rendelnie őket az előfizetés közreműködőjének vagy rendszergazdájának szerepkörhöz üzembe helyezése vagy webszolgáltatások kezelése előtt. 
 > 
->A hozzáférési engedélyek beállítása további információkért lásd: [access-hozzárendelések megtekintése a felhasználók és csoportok az Azure portálon](../../role-based-access-control/role-assignments-users.md).
+>Hozzáférési engedélyek beállítása a további információkért lásd: [rbac-RÓL és az Azure portal-hozzáférés kezelése](../../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="next-steps"></a>További lépések
-* További információ [telepítése Azure Resource Manager-sablonok a Machine Learning](deploy-with-resource-manager-template.md). 
+* Tudjon meg többet [Machine Learning az Azure Resource Manager-sablonok üzembe helyezése](deploy-with-resource-manager-template.md). 

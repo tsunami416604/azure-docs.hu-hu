@@ -1,6 +1,6 @@
 ---
-title: Azure Cloud Services használata az Azure Diagnostics integráció az Azure Application insights szolgáltatással kapcsolatos riasztás |} Microsoft Docs
-description: A figyelő kapcsolatos problémák, mint az indítási hibák, az összeomlásokat és a szerepkör Lomtár hurkok az Azure Application insights szolgáltatással Azure Cloud Services
+title: Az Azure Cloud Services használata az Azure Diagnostics-integráció az Azure Application insights szolgáltatással kapcsolatos problémák a riasztás |} A Microsoft Docs
+description: Figyelő a problémák, mint az indítási hibák, a szoftverleállások és a szerepkör újraindítása hurkok az Azure Cloud Services az Azure Application insights segítségével
 services: application-insights
 documentationcenter: ''
 author: mrbullwinkle
@@ -10,29 +10,30 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/07/2018
-ms.author: harelbr; mbullwin
-ms.openlocfilehash: 18817fd84a86a72d379f96973b71658f2cdf4afd
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.reviewer: harelbr
+ms.author: mbullwin
+ms.openlocfilehash: cdb395a590fb200a24c68e56728a270b968e53b5
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34851269"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35645431"
 ---
-# <a name="alert-on-issues-in-azure-cloud-services-using-the-azure-diagnostics-integration-with-azure-application-insights"></a>Azure Cloud Services használata az Azure diagnostics integráció az Azure Application insights szolgáltatással kapcsolatos riasztás
+# <a name="alert-on-issues-in-azure-cloud-services-using-the-azure-diagnostics-integration-with-azure-application-insights"></a>Problémák az Azure Cloud Services használata az Azure diagnostics-integráció az Azure Application Insights-riasztás
 
-Ebben a cikkben azt azt ismerteti, hogyan állíthat be riasztási szabályok figyelő kapcsolatos problémák, például indítási hibák, az összeomlásokat és a szerepkör Lomtár hurkok Azure Cloud Services (webes és feldolgozói szerepkörök).
+Ebben a cikkben azt azt ismerteti, hogyan állíthatja be a riasztási szabályok, amelyek problémáinak figyelése, az indítási hibák, a szoftverleállások és a szerepkör újraindítása hurkok az Azure Cloud Services (webes és feldolgozói szerepkörök).
 
-Ebben a cikkben leírt módszer alapján a [Azure Diagnostics integráció az Application insights szolgáltatással](https://azure.microsoft.com/blog/azure-diagnostics-integration-with-application-insights/), és a legutóbb kiadott [Application Insights riasztásainak naplózási](https://azure.microsoft.com/blog/log-alerts-for-application-insights-preview/) funkció.
+Ebben a cikkben leírt módszer alapján az [az Application insights szolgáltatással az Azure Diagnostics-integráció](https://azure.microsoft.com/blog/azure-diagnostics-integration-with-application-insights/), és a legutóbb kiadott [Naplóriasztások az Application Insights](https://azure.microsoft.com/blog/log-alerts-for-application-insights-preview/) képesség.
 
-## <a name="define-a-base-query"></a>Alap lekérdezés megadása
+## <a name="define-a-base-query"></a>Alap lekérdezés definiálása
 
-A kezdéshez azt határozza meg, amely a Windows Eseménynapló eseményeinek átveszi a Windows Azure csatorna alap lekérdezés, amely az Application Insights nyomkövetési rekord, a rendszer rögzíti.
-Ezeket a rekordokat is használható számos különböző probléma az Azure Felhőszolgáltatások, például Indítás meghibásodása, futásidejű hibák, és hasznosítsa újra a hurkok.
+Első lépésként meghatározunk egy alap lekérdezést, amely a Windows Eseménynapló eseményeinek átveszi a Windows Azure csatorna, amelyek rögzítve lesznek a nyomkövetési bejegyzésként az Application insightsba.
+Ezeket a rekordokat számos különböző probléma észlelése az Azure Cloud Servicesben, például a hibák, futásidejű hibák is használható, és újrahasznosítását a hurkok.
 
 > [!NOTE]
-> Az alábbi alapszintű lekérdezést egy olyan időkeretet, 30 perc kapcsolatos hibákat keres, és azt feltételezi, hogy egy 10 perc várakozási ideje a választásával dolgozhat fel a telemetriai adatokat rögzíti. Ezeket az alapértelmezett értékeket konfigurálhatja, ahogyan szeretné.
+> Az alábbi alapszintű lekérdezést ellenőrzi a problémákat a 30 perces egy olyan időkeretet, és feltételezi, hogy a telemetria rekordok feldolgozására 10 perc késése. Ezeket az alapértelmezett értékeket is konfigurálható, ahogyan szeretné.
 
 ```
 let window = 30m;
@@ -45,13 +46,13 @@ let EventLogs = traces
 | project timestamp, channel, eventId, message, cloud_RoleInstance, cloud_RoleName, itemCount;
 ```
 
-## <a name="check-for-specific-event-ids"></a>Bizonyos eseményazonosítókat ellenőrzése
+## <a name="check-for-specific-event-ids"></a>Adott eseményazonosító-ellenőrzés
 
-A Windows Eseménynapló eseményeinek beolvasása, után konkrét problémák azzal, azok megfelelő esemény azonosítója és az üzenet tulajdonságait (lásd az alábbi példákat) észlelhető.
-A kiinduló lekérdezés fent valamelyik, a lekérdezések alábbi és használt lekérdezés együttesen, a napló riasztási szabály definiálásakor egyszerűen össze.
+A Windows Eseménynapló eseményeinek beolvasása, után konkrét problémák ellenőrzésével azok megfelelő esemény Azonosítóját és az üzenet tulajdonságait (lásd az alábbi példákat) észlelhető.
+Egyszerűen össze egy, a lekérdezések az alábbi, és a használt összevont lekérdezést, a riasztási szabály meghatározásakor a alap lekérdezés felett.
 
 > [!NOTE]
-> A következő példa egy probléma észlelni fogja Ha több mint három események az elemzett időszak alatt találhatók. Ez az alapértelmezett beállítható úgy, hogy a riasztási szabály érzékenységének módosítása.
+> Az alábbi példákban a probléma érzékeli, ha több mint három eseménynek az elemzett időszakon találhatók. Ez az alapértelmezett beállítható úgy, hogy a riasztási szabály az érzékenység módosítása.
 
 ```
 // Detect failures in the OnStart method
@@ -89,38 +90,38 @@ EventLogs
 
 ## <a name="create-an-alert"></a>Riasztás létrehozása
 
-A navigációs menü belül az Application Insights-erőforrást, Ugrás **riasztások**, majd válassza ki **Új riasztási szabály**.
+A navigációs menü belül az Application Insights-erőforrást, lépjen a **riasztások**, majd válassza ki **Új riasztási szabály**.
 
 ![Szabály létrehozása képernyőképe](./media/app-insights-proactive-cloud-services/001.png)
 
-A a **létrehozás szabály** ablakban, a a **riasztási feltétel megadása** területen kattintson a **adja meg a feltételeket**, majd válassza ki **egyéni napló keresés**.
+Az a **szabály létrehozása** ablak alatt a **riasztási feltétel megadása** területén kattintson a **adja meg a feltételeket**, majd válassza ki **egyéni naplóbeli keresés**.
 
 ![Képernyőkép a riasztás feltétele feltételek megadása](./media/app-insights-proactive-cloud-services/002.png)
 
-Az a **keresési lekérdezés** mezőbe illessze be a kombinált előkészített lekérdezés az előző lépésben.
+Az a **keresési lekérdezés** mezőbe illessze be az egyesített lekérdezés előkészített az előző lépésben.
 
-Ezt követően a **küszöbérték** mezőbe, majd állítsa be az értékét 0-ra. Előfordulhat, hogy finomhangolására a **időszak** és gyakoriságát **mezők**.
+Ezt követően a **küszöbérték** mezőbe, majd állítsa az értékét 0-ra. Előfordulhat, hogy igény szerint módosíthatja a **időszak** és a gyakoriság **mezők**.
 Kattintson a **Done** (Kész) gombra.
 
-![Képernyőkép a jel logika lekérdezés konfigurálása](./media/app-insights-proactive-cloud-services/003.png)
+![Képernyőkép a jel logikájának lekérdezés konfigurálása](./media/app-insights-proactive-cloud-services/003.png)
 
-A a **határozza meg a riasztás részleteinek** területen adjon meg egy **neve** és **leírása** a riasztási szabályt, és állítsa a **súlyossági**.
-Emellett győződjön meg arról, hogy a **engedélyezése a szabály létrehozásakor** beállított **Igen**.
+Alatt a **riasztás részleteinek megadása** területén adjon meg egy **neve** és **leírás** a riasztási szabályt, és a set annak **súlyossági**.
+Emellett győződjön meg arról, hogy a **engedélyezése a szabály létrehozásakor** gomb értékre van állítva **Igen**.
 
-![Képernyőfelvétel a riasztás részletei](./media/app-insights-proactive-cloud-services/004.png)
+![Képernyőfelvétel: a riasztás részletei](./media/app-insights-proactive-cloud-services/004.png)
 
-Alatt a **Define művelet csoport** területen válasszon egy meglévő **művelet csoport** vagy hozzon létre egy újat.
-Választhatja a művelet csoport több, különféle műveleteket tartalmaz.
+Alatt a **műveleti csoport megadása** szakaszban kiválaszthatja, hogy egy meglévő **műveletcsoport** , vagy hozzon létre egy újat.
+A művelet csoportot tartalmazhat több művelet a különféle fenyegetési típusokat választhatja.
 
-![Képernyőfelvétel a művelet csoport](./media/app-insights-proactive-cloud-services/005.png)
+![Műveletcsoport képernyőképe](./media/app-insights-proactive-cloud-services/005.png)
 
-Miután meghatározta a művelet csoport, ellenőrizze a módosításokat, majd kattintson **riasztási szabály létrehozása**.
+Miután meghatározta a műveletcsoport, hagyja jóvá a módosításokat, és kattintson a **riasztási szabály létrehozása**.
 
 ## <a name="next-steps"></a>További lépések
 
-További tudnivalók automatikusan észlelni:
+További információk automatikus észlelése:
 
-[Hiba rendellenességeket](app-insights-proactive-failure-diagnostics.md)
+[Rendellenes hibák](app-insights-proactive-failure-diagnostics.md)
 [memóriavesztés](app-insights-proactive-potential-memory-leak.md)
-[teljesítményanomáliákat](app-insights-proactive-performance-diagnostics.md)
+[teljesítmény-anomáliák](app-insights-proactive-performance-diagnostics.md)
 

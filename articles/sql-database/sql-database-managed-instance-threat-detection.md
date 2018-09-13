@@ -1,6 +1,6 @@
 ---
-title: Veszélyforrások Detektálása - Azure SQL adatbázis felügyelt példány |} Microsoft Docs
-description: A Fenyegetésészlelés az adatbázist érintő rendellenes tevékenységeket, amelyek esetleges biztonsági fenyegetéseket jelezhetnek a észleli.
+title: Fenyegetések észlelése – az Azure SQL Database felügyelt példány |} A Microsoft Docs
+description: Fenyegetésészlelés észleli a rendellenes adatbázis-tevékenységek utaló esetleges biztonsági fenyegetések az adatbázishoz.
 services: sql-database
 author: rmatchoro
 manager: craigg
@@ -9,70 +9,70 @@ ms.custom: security, managed instance
 ms.topic: conceptual
 ms.date: 03/07/2018
 ms.author: ronmat
-ms.reviewer: carlrab
-ms.openlocfilehash: 14ef907717045e2e0cf297694d92468a65e57e4d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.reviewer: vanto
+ms.openlocfilehash: 76033438ad785412aa97358d80b5e4fdbf4c2bfb
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34650077"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44716995"
 ---
-# <a name="azure-sql-database-managed-instance-threat-detection"></a>Az Azure SQL adatbázis felügyelt példány fenyegetések észlelése
+# <a name="azure-sql-database-managed-instance-threat-detection"></a>Az Azure SQL Database felügyelt példány Fenyegetésészlelési
 
-A Fenyegetésészlelés SQL észleli, hogy szokatlan és potenciálisan káros rendellenes tevékenységek próbál hozzáférni, vagy egy Azure SQL adatbázis felügyelt példány adatbázisának (előzetes verzió) a biztonsági rések elleni.
+Az SQL Fenyegetésészlelés észleli a szokatlan és vélhetően kárt okozó jelző rendellenes tevékenységek próbál egy Azure SQL Database felügyelt példány (előzetes verzió) az adatbázisokat elérni vagy kiaknázni.
 
 ## <a name="overview"></a>Áttekintés
 
-A Fenyegetésészlelés az adatbázist érintő rendellenes tevékenységeket utaló esetleges biztonsági fenyegetéseket jelezhetnek felügyelt példány észleli. A Fenyegetésészlelés preview felügyelt példány van.
+Fenyegetésészlelés észleli a rendellenes adatbázis-tevékenységek utaló esetleges biztonsági fenyegetések felügyelt példányon. A Fenyegetésészlelés már felügyelt példány előzetes verzióban érhető el.
 
-A Fenyegetésészlelés biztonsági, amelyek segítségével a felhasználók észlelése és azok bekövetkezésekor, adja meg a biztonsági riasztások az adatbázist érintő rendellenes tevékenységeket reagáljon a lehetséges veszélyforrásokra egy új réteget biztosít. A Fenyegetésészlelés egyszerűen potenciális fenyegetések ellen felügyelt példány nincs szükség szakértői biztonsági vagy speciális biztonsági rendszerek figyelése kezelése. A teljes vizsgálat használhatóság érdekében ajánlott naplózásának Azure felügyelt példánya, amely írja a naplózási események adatbázis jelentkezzen be az Azure storage-fiók. 
+A fenyegetésészlelés egy új réteget jelent, amely lehetővé teszi az ügyfelek és azok felmerülésekor, rendellenes adatbázis-tevékenységek a biztonsági riasztások révén reagáljon a lehetséges veszélyforrásokra. A Fenyegetésészlelés egyszerűen a lehetséges veszélyforrásokra cím a felügyelt példánynak nincs szükség a szakértői biztonsági szakértelem vagy fejlett biztonsági. Teljes vizsgálat biztosítása érdekében ajánlott az Azure által felügyelt példány a naplózás engedélyezéséhez, amely adatbázissal kapcsolatos események egy naplófájlba, jelentkezzen be az Azure storage-fiókjába ír. 
 
-SQL Fenyegetésészlelés integrálja riasztások [az Azure Security Center](https://azure.microsoft.com/services/security-center/), és minden egyes védett felügyelt példányhoz lesz számlázva, Azure Security Center szabványos rétegként $15/csomópont/hónappal, ahol minden egyes védett felügyelt példány ugyanazon az áron egy csomópont számítanak.  
+Az SQL Fenyegetésészlelési riasztásokat az integrálható [az Azure Security Center](https://azure.microsoft.com/services/security-center/), és minden védett felügyelt példány díját ugyanaz, mint az Azure Security Center Standard csomagja, $15/csomópont/hó, ahol minden egyes védett felügyelt példányt: egyetlen csomópontnak számítanak.  
 
-## <a name="set-up-threat-detection-for-your-managed-instance-in-the-azure-portal"></a>A Fenyegetésészlelés beállítása a felügyelt példányát az Azure-portálon
-1. Indítsa el az Azure portálon, a [ https://portal.azure.com ](https://portal.azure.com).
-2. Keresse meg a védeni kívánt felügyelt példány lap. Az a **beállítások** lapon jelölje be **Fenyegetésészlelés**. 
-3. A Fenyegetésészlelés konfigurálása lapon 
-   - Kapcsolja be **ON** veszélyforrások detektálása.
-   - Konfigurálja a **e-mailek listája** szeretné megkapni a biztonsági riasztásokat adatbázist érintő rendellenes tevékenységeket észlelése.
-   - Válassza ki a **Azure storage-fiók** rendellenes fenyegetés auditálási rekordok menteni. 
-4.  Kattintson a **mentése** menteni az új vagy frissített fenyegetések észlelése házirendet.
+## <a name="set-up-threat-detection-for-your-managed-instance-in-the-azure-portal"></a>Az Azure Portalon a felügyelt példány Fenyegetésészlelési beállítása
+1. Indítsa el az Azure Portalra a [ https://portal.azure.com ](https://portal.azure.com).
+2. Keresse meg a felügyelt példány számára védelmet kíván konfiguráció lapján. Az a **beállítások** lapon jelölje be **Fenyegetésészlelés**. 
+3. A Fenyegetésészlelés konfigurációs lapja 
+   - Kapcsolja be **ON** fenyegetések észlelése.
+   - Konfigurálja a **e-mailek listájának** a rendellenes adatbázis-tevékenységek észlelésekor biztonsági riasztást küld.
+   - Válassza ki a **Azure storage-fiók** rendellenes threat naplózási bejegyzések mentési helye. 
+4.  Kattintson a **mentése** menteni az új vagy frissített fenyegetésészlelési szabályzatát.
 
-   ![A fenyegetésészlelés](./media/sql-database-managed-instance-threat-detection/threat-detection.png)
+   ![Fenyegetések észlelése](./media/sql-database-managed-instance-threat-detection/threat-detection.png)
 
-## <a name="explore-anomalous-managed-instance-activities-upon-detection-of-a-suspicious-event"></a>Megismerkedhet a rendellenes felügyelt példány tevékenységek egy gyanús esemény észlelése
+## <a name="explore-anomalous-managed-instance-activities-upon-detection-of-a-suspicious-event"></a>Fedezze fel a gyanús esemény észlelése rendellenes Felügyeltpéldány-tevékenységek
 
-1. A adatbázist érintő rendellenes tevékenységeket észlelésekor e-mailben értesítést kapni. 
+1. Rendellenes adatbázis-tevékenységek észlelésekor e-mail-értesítést kap. 
 
-   Az e-mailben tájékoztatást ad azokról a gyanús biztonsági esemény, például a rendellenes tevékenységek, az adatbázis neve, a kiszolgáló nevét és a az esemény időpontja jellegét. Ezenkívül információkat nyújt a lehetséges okok, és javasolt műveletek vizsgálatához és a felügyelt példányhoz potenciális fenyegetések csökkentésében.
+   Az e-mailt a gyanús biztonsági eseményről, beleértve az esetleges rendellenes tevékenységekről, adatbázisnevet, kiszolgáló nevét és az esemény időpontját jellege információkat biztosít. Ezenkívül információkat biztosít a lehetséges okokat, és javasolt műveletek vizsgálata és enyhítése érdekében a felügyelt példánynak a potenciális fenyegetést.
 
-   ![fenyegetések észlelése e-mail címe](./media/sql-database-managed-instance-threat-detection/threat-detection-email.png)
+   ![fenyegetések észlelése – e-mail](./media/sql-database-managed-instance-threat-detection/threat-detection-email.png)
 
-2. Kattintson a **legújabb SQL-riasztások megtekintése** az e-mailben, indítsa el az Azure-portálon, és az Azure Security Center riasztások lapon, amely aktív SQL fenyegetéseket észlelt áttekintést nyújt a felügyelt példány adatbázis megjelenítése hivatkozásra.
+2. Kattintson a **SQL legutóbbi riasztás megtekintése** hivatkozásra az e-mailben, megnyílik az Azure portal és a az Azure Security Center riasztások oldal, amely aktív SQL fenyegetéseket észlel áttekintést nyújt a felügyelt példány adatbázison megjelenítése.
 
    ![aktív fenyegetések](./media/sql-database-managed-instance-threat-detection/active-threats.png)
 
-3. Kattintson a további részletek és a műveletek lekérése vizsgálja az ilyen veszélyek kockázatát, és a jövőbeli fenyegetések szervizelés egy meghatározott riasztásra.
+3. Kattintson egy adott riasztás kivizsgálása a fenyegetés és a jövőbeli fenyegetésekkel szembeni szervizelését további részletek és műveletek beolvasásához.
 
-   Például SQL-injektálás az egyik a közös webes alkalmazás biztonsági problémák az interneten. SQL-injektálás az adatvezérelt alkalmazások támadásokkal szolgál. A támadók előnyeit alkalmazás biztonsági rések rosszindulatú SQL-utasítások alkalmazás mezőkbe szúrjon megsértése vagy módosítása az adatbázis adatai. Az SQL-injektálás riasztásokat a riasztás részletei tartalmazza azokat az sebezhető SQL-utasítás kihasználni.
+   Ha például SQL-injektálás az egyik a gyakori webes biztonsági probléma az interneten. SQL-injektálás számára a támadásokkal szemben az adatvezérelt alkalmazások szolgál. A támadók előnyeit alkalmazások biztonsági réseinek rosszindulatú SQL-utasításokat injektálhatnak alkalmazás beviteli mezőibe visszaéléshez vagy azok az adatbázisban található adatok módosításához. SQL-injektálás riasztások a riasztás részleteit tartalmazza a sebezhető kihasználni SQL-utasítás.
 
    ![SQL-injektálás](./media/sql-database-managed-instance-threat-detection/sql-injection.png)
 
-## <a name="managed-instance-threat-detection-alerts"></a>Felügyelt példány Fenyegetésészlelés riasztások 
+## <a name="managed-instance-threat-detection-alerts"></a>Felügyelt példány Fenyegetésészlelési riasztásokat 
 
-Felügyelt példány Fenyegetésészlelés észleli a rendellenes tevékenységek szokatlan és potenciálisan káros kísérletek eléréséhez, vagy a biztonsági rések elleni adatbázisok jelző, és azt is elindíthatja az alábbi riasztások:
+Felügyelt példány Fenyegetésészlelési észleli az adatbázisokat elérni vagy kiaknázni a szokatlan és vélhetően kárt okozó kísérleteket jelző rendellenes tevékenységek, és azt is aktiválhatja a következő riasztásokat:
 - **Biztonsági rés az SQL-injektálás számára**: Ez a riasztás akkor aktiválódik, ha egy alkalmazás egy hibás SQL-utasítást hoz létre az adatbázisban. Ez az SQL-injektálási támadásokkal kihasználható biztonsági rést jelezhet. A hibás utasításokat két dolog okozhatja:
  - Egy hiba a hibás SQL-utasítást létrehozó alkalmazáskódban
  - Az alkalmazáskódok és tárolt eljárások nem ellenőrzik a felhasználói adatbevitelt a hibás SQL-utasítás létrehozásakor, amelyeket így SQL-injektálással ki lehet használni.
-- **Potenciális SQL-injektálás**: Ez a riasztás akkor aktiválódik, ha egy alkalmazás SQL-injektálással szembeni ismert sebezhetőségét aktívan kihasználják. Azt jelenti, hogy a támadó megpróbálja szúrjon rosszindulatú SQL-utasításokat az sebezhető alkalmazáskód vagy tárolt eljárásokat.
-- **Hozzáférés a szokatlan helyről**: Ez a riasztás lesz kiváltva, ha egy felügyelt példányához, ha valaki bejelentkezett felügyelt példány szokatlan földrajzi helyről hozzáférési mintázatát módosult. Bizonyos esetekben a riasztás észleli a jogos művelet (egy új alkalmazást vagy fejlesztői karbantartási műveletet.). Más esetekben a riasztás észlel egy rosszindulatú műveletet (korábbi alkalmazott, külső támadó, és így tovább).
-- **A hozzáférést a szokatlan Azure-adatközpont**: Ez a riasztás lesz kiváltva, ha egy felügyelt példányához, ha valaki bejelentkezett felügyelt példány egy Azure-adatközpont, amely nem fér hozzá a felügyelt fordult elő a hozzáférési mintázatát módosult A legutóbbi időszakban példány. Bizonyos esetekben a riasztás észleli a jogos művelet (az új alkalmazást az Azure, a Power BI, Azure SQL lekérdezés-szerkesztő, és így tovább). Más esetekben a riasztás kártékony műveleteket észlel egy Azure-erőforrás vagy -szolgáltatás felől (egy korábbi alkalmazott vagy egy külső támadó részéről).
-- **Ismeretlen egyszerű hozzáférést**: Ez a riasztás lesz kiváltva, ha egy felügyelt server-példány, ha valaki bejelentkezett a felügyelt példányhoz egy szokatlan egyszerű (SQL-felhasználó) használatával történő hozzáférési mintázatát módosult. Bizonyos esetekben a riasztás észleli a jogos művelet (új alkalmazás fejlesztője karbantartási műveletet.). Más esetekben a riasztás kártékony műveleteket észlel (egy korábbi alkalmazott vagy egy külső támadó részéről).
+- **Potenciális SQL-injektálás**: Ez a riasztás akkor aktiválódik, ha egy alkalmazás SQL-injektálással szembeni ismert sebezhetőségét aktívan kihasználják. Ez azt jelenti, hogy a támadó megpróbálja beszúrása rosszindulatú SQL-utasításokat a sebezhető alkalmazáskód vagy tárolt eljárásokat.
+- **Hozzáférés szokatlan helyről**: Ez a riasztás akkor aktiválódik, amikor megváltozik a hozzáférési mintájában, egy felügyelt példányra, amikor valaki jelentkezett be a felügyelt példánynak egy szokatlan földrajzi helyről. Bizonyos esetekben a riasztás jogszerű műveleteket (egy új alkalmazást vagy fejlesztői karbantartási művelet) észlel. Más esetekben a Riasztás kártékony műveleteket (korábbi alkalmazott, külső támadó és így tovább) észlel.
+- **Hozzáférés szokatlan Azure-beli adat központból**: Ez a riasztás akkor aktiválódik, ha módosítják a felügyelt példány, amikor valaki jelentkezett be a felügyelt példánynak nem látott fér hozzá a felügyelt Azure-adatközpontok a hozzáférési mintájában A példány a legutóbbi időszakban. Bizonyos esetekben a riasztás jogszerű műveleteket (az új alkalmazás az Azure, a Power BI, az Azure SQL-Lekérdezésszerkesztő és így tovább) észlel. Más esetekben a riasztás kártékony műveleteket észlel egy Azure-erőforrás vagy -szolgáltatás felől (egy korábbi alkalmazott vagy egy külső támadó részéről).
+- **Hozzáférés résztvevő részéről**: Ez a riasztás akkor aktiválódik, ha a változás a hozzáférési mintájában felügyelt kiszolgálópéldányt, amikor valaki jelentkezett be a felügyelt példánynak egy szokatlan résztvevő (SQL-felhasználó) használatával történik. Bizonyos esetekben a riasztás jogszerű műveleteket (új alkalmazás fejlesztője karbantartási művelet) észlel. Más esetekben a riasztás kártékony műveleteket észlel (egy korábbi alkalmazott vagy egy külső támadó részéről).
 - **Hozzáférés potenciálisan kártékony alkalmazással**: Ez a riasztás akkor aktiválódik, ha valaki egy potenciálisan káros alkalmazást használ az adatbázis eléréséhez. Bizonyos esetekben a riasztás behatolási teszteket észlel működés közben. Más esetekben a riasztás egy gyakori támadóeszközökkel végrehajtott támadást észlel.
-- **Találgatásos támadás SQL hitelesítő adatokkal**: Ez a riasztás akkor aktiválódik, ha rendellenesen magas a különböző hitelesítő adatok használatával történő sikertelen bejelentkezések száma. Bizonyos esetekben a riasztás behatolási teszteket észlel működés közben. Más esetekben a riasztás találgatásos támadással észleli.
+- **Találgatásos támadás SQL hitelesítő adatokkal**: Ez a riasztás akkor aktiválódik, ha rendellenesen magas a különböző hitelesítő adatok használatával történő sikertelen bejelentkezések száma. Bizonyos esetekben a riasztás behatolási teszteket észlel működés közben. Más esetekben a riasztás egy találgatásos támadást észlel.
 
 ## <a name="next-steps"></a>További lépések
 
-- Tudnivalók a Managed példány című [Mi az, hogy a felügyelt példánya](sql-database-managed-instance.md)
-- További információ [példány naplózás kezelése](https://go.microsoft.com/fwlink/?linkid=869430) 
-- További információ [Azure Security Centerben](https://docs.microsoft.com/azure/security-center/security-center-intro)
+- Felügyelt példánnyal kapcsolatos további tudnivalókat a [mit jelent a felügyelt példány](sql-database-managed-instance.md)
+- Tudjon meg többet [felügyelt példány naplózása](https://go.microsoft.com/fwlink/?linkid=869430) 
+- Tudjon meg többet [Azure Security Centerben](https://docs.microsoft.com/azure/security-center/security-center-intro)

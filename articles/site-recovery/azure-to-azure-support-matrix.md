@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: sujayt
-ms.openlocfilehash: 43955cd516e9779200b66608270797a66565f53b
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 105c1d97a812841e82a0c364ec7dda097c0dd399
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44378465"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44717369"
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Egy Azure-régióból a másikba történő replikálásához támogatási mátrix
 
@@ -38,7 +38,7 @@ Ez a cikk összefoglalja a támogatott konfigurációk és replikálásakor öss
 --- | --- | ---
 **Tároló áthelyezése erőforráscsoportok közt** | Nem támogatott<br/><br/> Recovery services-tároló nem helyezhetők át erőforráscsoportok közt.
 **Számítási és tárolási és hálózati erőforrások áthelyezése erőforráscsoportok közt** | Nem támogatott.<br/><br/> Ha egy virtuális gép vagy a kapcsolódó összetevők, például a tárolási és hálózati után végez, replikáció letiltása és a virtuális gép újraengedélyezni szüksége.
-**Azure virtuális gépek replikálása egy előfizetésből egy másikba vész-helyreállítási** | Támogatott a "Resource manager üzemi modelljét" virtuális gépek azonos Azure Active Directory-bérlőben. Nem, "A klasszikus üzemi modellt" virtuális gépek esetében támogatott.
+**Azure virtuális gépek replikálása egy előfizetésből egy másikba vész-helyreállítási** | Támogatott azonos Azure Active Directory-bérlőben. Klasszikus virtuális gépek nem támogatják.
 **Virtuális gépek áttelepítése a támogatott földrajzi fürtökben (belül és több előfizetés)-régiók között** | Támogatott a "Resource manager üzemi modelljét" virtuális gépek azonos Azure Active Directory-bérlőben. Nem, "A klasszikus üzemi modellt" virtuális gépek esetében támogatott.
 **Az azonos régión belüli virtuális gépek áttelepítése** | Nem támogatott.
 
@@ -207,7 +207,7 @@ Hitelesített proxyt | Nem támogatott | Ha a virtuális gép egy hitelesített 
 A helyszíni (vagy anélkül ExpressRoute) a helyek közötti VPN| Támogatott | Győződjön meg arról, hogy úgy, hogy a Site recovery nem adatforgalmat helyszíni az udr-EK és NSG-k vannak konfigurálva. Tekintse meg [hálózati dokumentum.](site-recovery-azure-to-azure-networking-guidance.md)  
 Virtuális hálózatok közötti kapcsolat | Támogatott | Tekintse meg [hálózati dokumentum.](site-recovery-azure-to-azure-networking-guidance.md)  
 Virtuális hálózati szolgáltatásvégpontok | Támogatott | Az Azure Storage-tűzfalak, virtuális hálózatok esetében nem támogatottak. Engedélyezi a hozzáférést az adott Azure virtuális hálózatokhoz a replikált adatok tárolására szolgáló gyorsítótár tárfiókokhoz nem támogatott.
-Gyorsított hálózatkezelés | Nem támogatott | Gyorsított hálózatkezelés engedélyezett a virtuális gép replikálható, de a feladatátvételi virtuális gép nem lesz engedélyezve a gyorsított hálózatkezelés. Gyorsított hálózatkezeléssel is letiltja a rendszer a forrás virtuális gép feladat-visszavételi.
+Gyorsított hálózatkezelés | Támogatott | A forrásoldali virtuális gép gyorsított hálózatkezelés engedélyezni kell. [További információk](azure-vm-disaster-recovery-with-accelerated-networking.md).
 
 
 ## <a name="next-steps"></a>További lépések

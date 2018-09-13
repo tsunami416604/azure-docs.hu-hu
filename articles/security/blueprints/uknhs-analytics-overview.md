@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 06/15/2018
 ms.author: jomolesk
-ms.openlocfilehash: 8885eba0d69c869ad5d298094b835f0351d8d94d
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: d05be48da296b0d088e38b4c7474103b02e6d5cd
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37342943"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44721075"
 ---
 # <a name="azure-security-and-compliance-blueprint-data-analytics-for-uk-nhs"></a>Azure biztonsági és megfelelőségi terv: az Egyesült Királyság számos adatelemzés
 
@@ -29,7 +29,7 @@ A megoldás olyan analitikai platformhoz, amelyre ügyfelek hozhat létre saját
 
 Az Azure kínál a különböző jelentéskészítési és elemzési szolgáltatások, az ügyfél; Ez a megoldás azonban együtt az Azure SQL Database keresztül adatokat gyorsan megkeresheti, és gyorsabban eredményeket keresztül ügyféladatok okosabb modellezéssel tartalmazza az Azure Analysis Services. Az Azure elemzési szolgáltatások az egy képernyő, a gépi tanulás lekérdezés megbízhatóbbak növelő adatkészletek között új kapcsolatok derítse fel. Miután az adatok révén több statisztikai függvényekkel rendelkezik betanítva, legfeljebb 7 további lekérdezési készletek (beleértve az ügyfél-kiszolgáló teljes 8) szinkronizálhatók az azonos táblázatos modellek futó számítási feladatok, és a válaszidők csökkentése érdekében.
 
-Bővített analitika és a jelentéskészítés az Azure SQL Database is konfigurálhatók, az oszlopcentrikus indexek. Azure elemzési szolgáltatások és az Azure SQL Database-adatbázisok lehet horizontálisan fel vagy le vagy kapcsolja ki teljesen ügyfelek általi használatot adott válaszként. SQL forgalmat titkosítja a rendszer SSL-lel azáltal, önaláírt tanúsítványokat. Ajánlott eljárásként az Azure a fokozott biztonság egy megbízható hitelesítésszolgáltatótól használatát javasolja.
+Bővített analitika és a jelentéskészítés az Azure SQL Database-adatbázisok is konfigurálhatók, az oszlopcentrikus indexek. Az Azure elemzési szolgáltatások és az Azure SQL-adatbázisok fel vagy le horizontálisan, vagy kapcsolja ki teljesen ügyfelek általi használatot adott válaszként is. SQL forgalmat titkosítja a rendszer SSL-lel azáltal, önaláírt tanúsítványokat. Ajánlott eljárásként az Azure a fokozott biztonság egy megbízható hitelesítésszolgáltatótól használatát javasolja.
 
 Adatok feltöltése az Azure SQL Database és az Azure Analysis Services betanított, miután a van kivonatolt a működési felhasználói és a Power BI-jal SQL-adatok rendszergazda. A Power BI intuitív jeleníti meg az adatokat, és együttesen kéri le adatokat megrajzolásához nagyobb betekintést több adatkészlet között. A magas fokú alkalmazkodóképesség és könnyen integrálható az Azure SQL Database biztosítja, hogy a felhasználók beállíthatják, hogy kezelni a saját üzleti igényeinek megfelelően által kért forgatókönyvek széles választékának.
 

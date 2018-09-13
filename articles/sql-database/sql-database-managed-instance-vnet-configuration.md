@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-database
 ms.custom: managed instance
 ms.topic: conceptual
-ms.date: 08/21/2018
+ms.date: 09/12/2018
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
-ms.openlocfilehash: 748489785241c0eab6022e3585164974f330d6f9
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 1ec4a6033fad643c75cdf9f7ebc5cdb1f4bab9c3
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44049673"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44717148"
 ---
 # <a name="configure-a-vnet-for-azure-sql-database-managed-instance"></a>Virtuális hálózat konfigurálása az Azure SQL Database felügyelt példány
 
@@ -38,31 +38,31 @@ Tervezze meg, hogyan kívánja üzembe helyezni egy virtuális hálózat, az al�
 
 ## <a name="requirements"></a>Követelmények
 
-A felügyelt példány létrehozásához kell rendelnie egy alhálózaton belül a virtuális hálózat, amely megfelel az alábbi követelményeknek:
-- **Alhálózat dedikált**: az alhálózat nem tartalmazhat más felhőalapú szolgáltatás társítva van hozzá, és nem lehet átjáró-alhálózatot. Nem felügyelt példány létrehozása felügyelt példány naplóátvitelen kívüli egyéb erőforrásokra tartalmazó alhálózathoz, vagy később az alhálózaton belüli más erőforrások hozzáadásához.
-- **Nincs hálózati biztonsági csoport**: az alhálózathoz társított hálózati biztonsági csoport nem lehet. 
-- **Rendelkezik az adott útválasztási táblázat**: az alhálózat rendelkeznie kell egy felhasználó útválasztási tábla (UDR) 0.0.0.0/0 következő ugrási típusú internettel, az egyetlen útvonal rendelve. További információkért lásd: [hozzon létre a szükséges útválasztási táblázatot, és társítsa azt](#create-the-required-route-table-and-associate-it)
-3. **Nem kötelező egyéni DNS**: Ha egyéni DNS a virtuális hálózaton van megadva, az Azure rekurzív feloldók IP-címet (például a 168.63.129.16) hozzá kell adni a listához. További információkért lásd: [egyéni DNS konfigurálása](sql-database-managed-instance-custom-dns.md).
-4. **Nincsenek Szolgáltatásvégpontok**: az alhálózat nem rendelkeznie kell egy hozzá társított végpontot. Győződjön meg arról, hogy szolgáltatás végpontok lehetőség nem érhető el virtuális hálózat létrehozásakor.
-5. **Elegendő IP-címek**: az alhálózaton kell rendelkeznie a legalább 16 IP-címek (javasolt a minimális érték 32 IP-címek). További információkért lásd: [alhálózat méretét határozza meg a felügyelt példány](#determine-the-size-of-subnet-for-managed-instances)
+Felügyelt példány létrehozásához (a felügyelt példány alhálózatára) dedikált alhálózatán belül a virtuális hálózat, amely megfelel az alábbi követelményeknek:
+- **Alhálózat dedikált**: A felügyelt példány alhálózatára nem tartalmazhat bármilyen hozzá társított más felhőalapú szolgáltatás, és nem lehet egy átjáró-alhálózatot. Nem lesz képes a felügyelt példány létrehozása egy felügyelt példányra naplóátvitelen kívüli egyéb erőforrásokra tartalmazó alhálózathoz, és nem adhatja később hozzá más erőforrásokhoz az alhálózat.
+- **Kompatibilis hálózati biztonsági csoport (NSG)**: egy NSG-t a felügyelt példány alhálózatára társított tartalmaznia kell a szabályok az alábbi táblázatban (kötelező bejövő biztonsági szabályokat és kötelező kimenő biztonsági szabályok) található egyéb szabályok előtt látható. Hálózati biztonsági csoportok segítségével teljes mértékben ki férhet hozzá a felügyelt példány adatok végpont 1433-as porton a kimenő forgalmának szűrésével. 
+- **Kompatibilis a felhasználó által definiált útvonaltábla (UDR)**: A felügyelt példány alhálózatára rendelkeznie kell egy felhasználó útválasztási táblázatot az **0.0.0.0/0 Internet következő ugrási típusú** , a hozzárendelt kötelező udr-t. Emellett egy udr-t, hogy irányítja a forgalmat, amely rendelkezik a cél virtuális hálózati átjáró vagy virtuális hálózati berendezésre (NVA) keresztül a helyszíni privát IP-címtartományok is hozzáadhat. 
+- **Nem kötelező egyéni DNS**: Ha egy egyéni DNS Virtual netword van megadva, az Azure rekurzív feloldó IP-címet (például a 168.63.129.16) hozzá kell adni a listához. További információkért lásd: [egyéni DNS konfigurálása](sql-database-managed-instance-custom-dns.md). Az egyéni DNS-kiszolgáló a következő tartományok és az altartományokra feloldásához képesnek kell lennie: *microsoft.com*, *windows.net*, *windows.com*, *msocsp.com*, *digicert.com*, *live.com*, *microsoftonline.com*, és *microsoftonline-p.com*. 
+- **Nincsenek Szolgáltatásvégpontok**: A felügyelt példány alhálózatára nem rendelkeznie kell egy hozzá társított végpontot. Győződjön meg arról, hogy szolgáltatás végpontok lehetőség le van tiltva a virtuális hálózat létrehozásakor.
+- **Elegendő IP-címek**: A felügyelt példány alhálózatára rendelkeznie kell a legalább 16 IP-címek (javasolt a minimális érték 32 IP-címek). További információkért lásd: [alhálózat méretét határozza meg a felügyelt példány](#determine-the-size-of-subnet-for-managed-instances)
 
 > [!IMPORTANT]
-> Meg nem fog tudni új felügyelt példány üzembe helyezése, ha a cél alhálózat nem kompatibilis az összes fenti követelményt. A cél virtuális hálózat és az alhálózathoz kell tartani a felügyelt példány követelményeknek megfelelően (előtt és üzembe helyezés után), bármilyen megsértése oka lehet, hogy a példány hibás állapotba, és már nem érhető el. Utáni helyreállítás állapot megköveteli, hogy hozzon létre új példányt a megfelelő hálózati szabályzatok rendelkező virtuális hálózaton, hozza létre újra a példányok szintű adatait, és az adatbázisok visszaállítása. Ez vezet be, jelentős állásidő alkalmazásai számára.
+> Nem helyezhet üzembe egy új felügyelt példány, ha a cél alhálózat nem kompatibilis az összes követelménynek. Felügyelt példány létrejön, amikor egy *hálózati házirend-leképezés* hálózati konfiguráció nem megfelelő módosítható az alhálózaton van alkalmazva. Az alhálózatról, az utolsó példány eltávolítása után a *hálózati házirend-leképezés* is el lesz távolítva
 
-A bevezetése _hálózati házirend-leképezés_, egy hálózati biztonsági csoport (NSG) adhat hozzá egy felügyelt példány alhálózatán, a felügyelt példány létrehozása után.
-
-Mostantól használhatja az NSG-KET az IP-címtartományok, amelyről alkalmazások és felhasználók is lekérdezését és kezelését az adatok szűrésével a hálózati forgalom, 1433-as portra szűkítéséhez. 
-
-> [!IMPORTANT]
-> Az 1433-as port elérését fog évében NSG-szabályokat konfigurál, amikor is a legmagasabb prioritású bejövő szabályok jelenik meg az alábbi táblázat beillesztése kell. Egyéb hálózati szándékot szabályzat letiltja a módosítás nem megfelelő.
+### <a name="mandatory-inbound-security-rules"></a>Kötelező bejövő biztonsági szabályok 
 
 | NÉV       |PORT                        |PROTOKOLL|FORRÁS           |CÉL|A MŰVELET|
 |------------|----------------------------|--------|-----------------|-----------|------|
-|felügyelet  |9000, 9003, 1438, 1440, 1452|Bármelyik     |Bármelyik              |Bármelyik        |Engedélyezés |
+|felügyelet  |9000, 9003, 1438, 1440, 1452|TCP     |Bármelyik              |Bármelyik        |Engedélyezés |
 |mi_subnet   |Bármelyik                         |Bármelyik     |MI ALHÁLÓZAT        |Bármelyik        |Engedélyezés |
 |health_probe|Bármelyik                         |Bármelyik     |AzureLoadBalancer|Bármelyik        |Engedélyezés |
 
-Az útválasztási élmény is úgy lett továbbfejlesztve, hogy mellett a 0.0.0.0/0 következő ugrási típus internetes útvonal, most adja hozzá a udr-t, irányíthatja a forgalmat a helyszíni privát IP-címtartományai virtuális hálózati átjáró vagy virtuális hálózati berendezésre (NVA) keresztül felé.
+### <a name="mandatory-outbound-security-rules"></a>Kötelező kimenő biztonsági szabályok 
+
+| NÉV       |PORT          |PROTOKOLL|FORRÁS           |CÉL|A MŰVELET|
+|------------|--------------|--------|-----------------|-----------|------|
+|felügyelet  |80-as, 443-as, 12000|TCP     |Bármelyik              |Bármelyik        |Engedélyezés |
+|mi_subnet   |Bármelyik           |Bármelyik     |Bármelyik              |MI ALHÁLÓZAT  |Engedélyezés |
 
 ##  <a name="determine-the-size-of-subnet-for-managed-instances"></a>Alhálózat méretét határozza meg a felügyelt példány
 

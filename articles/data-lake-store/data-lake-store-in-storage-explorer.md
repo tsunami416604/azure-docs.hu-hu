@@ -8,19 +8,18 @@ author: jejiang
 manager: DJ
 editor: Jenny Jiang
 ms.assetid: ''
-ms.service: Data Lake Store
+ms.service: data-lake-store
 ms.custom: Azure Data Lake Store
-ms.workload: ''
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
-ms.topic: hero-article
+ms.topic: article
 ms.date: 02/05/2018
 ms.author: jejiang
-ms.openlocfilehash: 396452faf36bc43a185fd6492f952b7bfd9511cc
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.openlocfilehash: f44518bd6167bc1da207e3c301eabefc014a5749
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35646152"
 ---
 # <a name="manage-azure-data-lake-store-resources-by-using-storage-explorer"></a>Azure Data Lake Store-erőforrások kezelése a Storage Explorerrel
 
@@ -94,7 +93,7 @@ A következő lépések bemutatják, hogyan tekinthető meg egy Data Lake Store-
 
 Az Azure Data Lake Store-erőforrásokat a következő műveletekkel kezelheti:
 *   Data Lake Store-erőforrások tallózása, több Azure Data Lake-fiókon keresztül.  
-*   Kapcsolati karakterlánc használata a Data Lake Store-hoz való csatlakozáshoz és annak közvetlen kezeléséhez. 
+*   Kapcsolati sztring használata a Data Lake Store-hoz való csatlakozáshoz és annak közvetlen kezeléséhez. 
 *   A mások által az ACL-lel megosztott Data Lake Store-erőforrások megtekintése a **Helyi és csatolt** területen.
 *   CRUD-műveletek végrehajtása fájlokon vagy mappákon: rekurzív mappák és több kijelölt fájl támogatása. 
 *   Mappák húzása és hozzáadása a legutóbbi helyek gyors eléréséhez. Ez a művelet ugyanúgy működik, mint az asztali gépek fájlkezelőjében. 
