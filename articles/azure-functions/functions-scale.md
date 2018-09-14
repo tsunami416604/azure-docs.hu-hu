@@ -13,12 +13,12 @@ ms.topic: reference
 ms.date: 08/09/2018
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b562b10be8add02d0a3c6eb95e8df8eb0711a208
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 7168db80593426977e238fa2b8a5f09638cf0fdf
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44093532"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45542159"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Az Azure Functions méretezése és üzemeltetése
 
@@ -124,7 +124,7 @@ A skálázási egység a függvényalkalmazáshoz. Amikor a függvényalkalmazá
 
 Skálázás tényezők és az eseményindító és a kiválasztott nyelvvel eltérően szerint méretezhető, több eltérőek lehetnek. Vannak azonban olyan néhány szempontja a méretezés, amely létezik a rendszerben még ma:
 
-* Egy függvényalkalmazás csak felskálázással egy legfeljebb 200 példányra. Egyetlen példány előfordulhat, hogy egynél több üzenet vagy a kérelem egyszerre feldolgozni, ezért nincs párhuzamos végrehajtások száma beállított korlátot.
+* Egy függvényalkalmazás csak felskálázással maximális 100 példányszámot. Egyetlen példány előfordulhat, hogy egynél több üzenet vagy a kérelem egyszerre feldolgozni, ezért nincs párhuzamos végrehajtások száma beállított korlátot.
 * Új példányok csak lefoglalt 10 másodpercenként legfeljebb egyszer.
 
 Különböző triggereket is rendelkezhetnek, különböző méretezési korlátok, valamint a dokumentált alatt:

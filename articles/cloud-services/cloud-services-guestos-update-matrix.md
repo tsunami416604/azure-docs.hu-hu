@@ -3,7 +3,7 @@ title: Ismerje meg a legújabb Azure Vendégoperációsrendszer-kiadásainak lis
 description: A legújabb kiadás híreket és SDK-kompatibilitási az Azure Cloud Services vendég operációs rendszer.
 services: cloud-services
 documentationcenter: na
-author: raiye
+author: RichardScheel
 manager: timlt
 editor: ''
 ms.assetid: 6306cafe-1153-44c7-8554-623b03d59a34
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 8/3/2018
-ms.author: raiye
-ms.openlocfilehash: 2ee31e0a2d563ddf2aa63498b4ca280e4da26754
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.date: 9/12/2018
+ms.author: RichardScheel
+ms.openlocfilehash: 8d49742e90e09a8836309db165b07074645df00a
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39524858"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45576170"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Az Azure vendég operációs rendszerek kiadásai és SDK-kompatibilitási mátrixot
 Itt, a legújabb Azure vendég operációs rendszer naprakész információkat és a Cloud Services-kiadások. Ez az információ segít a frissítési útvonal megtervezéséhez, mielőtt egy vendég operációs rendszer le van tiltva. Ha a szerepkörök használatára konfigurálja *automatikus* vendég operációs rendszer frissítése leírtak szerint [Azure vendég operációs rendszer frissítési beállítások][Azure Guest OS Update Settings], már nem létfontosságú, hogy elolvasta-e ezen a lapon.
@@ -36,13 +36,16 @@ Itt, a legújabb Azure vendég operációs rendszer naprakész információkat �
 >
 
 > [!IMPORTANT]
-> A November bevezetés kezdve csak a 2 legújabb a vendég operációs rendszer lesz támogatott és az Azure Portalon érhető el.
+> Csak a 2 legújabb a vendég operációs rendszer támogatott és az Azure Portalon elérhető lesz.
 >
 >
 
 A vendég operációs rendszer frissítése tesztadatkészletén? Ellenőrizze [ez] [ cloud updates] ki.
 
 ## <a name="news-updates"></a>Hírek
+
+###### <a name="september-12-2018"></a>**2018. szeptember 12.**
+Az augusztusi vendég operációs rendszer jelent meg.
 
 ###### <a name="august-3-2018"></a>**2018. augusztus 3.**
 A július vendég operációs rendszer jelent meg.
@@ -86,23 +89,22 @@ Október vendég operációs rendszer jelent meg.
 .NET-keretrendszer telepítése: 4.0-s, 4.5-ös, 4.5.1, 4.5.2-es, 4.6, 4.6.1, 4.6.2-es
 
 > [!NOTE]
-> A dátumok egy * azok változhatnak.
->
 > Az operációsrendszer-család 5 RDP-jelszónak legalább 10 karakterből kell lennie.
 >
 
-| Konfigurációs karakterlánc | Kiadási dátum | Tiltsa le a dátum | A lejárt dátum |
-| --- | --- | --- | --- |
-| WA-VENDÉG-OPERÁCIÓSRENDSZER-5.21_201807-02 |2018. augusztus 3. |POST 5.23 |TBD |
-| WA-VENDÉG-OPERÁCIÓSRENDSZER-5.20_201806-01 |2018. július 3. |POST 5.22 |TBD |
-|~~WA-VENDÉG-OPERÁCIÓSRENDSZER-5.19_201805-01~~ |2018. június 1. |2018. augusztus 3. |TBD |
-|~~WA-VENDÉG-OPERÁCIÓSRENDSZER-5.18_201804-01~~ |2018. május 4. |2018. július 3. |TBD |
-|~~WA-VENDÉG-OPERÁCIÓSRENDSZER-5.17_201803-01~~ |2018. április 6. |2018. június 1.|TBD |
-|~~WA-VENDÉG-OPERÁCIÓSRENDSZER-5.16_201802-01~~ |2018. március 12. |2018. május 4. |TBD |
-|~~WA-GUEST-OS-5.15_201801-01~~ |2018. január 4. |2018. április 6. |TBD |
-|~~WA-GUEST-OS-5.14_201712-01~~ |2018. január 4. |2018. március 12. |TBD |
-|~~WA-GUEST-OS-5.13_201711-01~~ |2017. december 14. |2018. január 4.|TBD |
-|~~WA-GUEST-OS-5.12_201710-02~~ |2017. november 8. |2018. január 4. |TBD |
+| Konfigurációs karakterlánc | Kiadási dátum | Tiltsa le a dátum |
+| --- | --- | --- |
+| WA-VENDÉG-OPERÁCIÓSRENDSZER-5.22_201808-01 |2018. szeptember 12. |POST 5,24 |
+| WA-VENDÉG-OPERÁCIÓSRENDSZER-5.21_201807-02 |2018. augusztus 3. |POST 5.23 |
+|~~WA-VENDÉG-OPERÁCIÓSRENDSZER-5.20_201806-01~~ |2018. július 3. |2018. szeptember 12. |
+|~~WA-VENDÉG-OPERÁCIÓSRENDSZER-5.19_201805-01~~ |2018. június 1. |2018. augusztus 3. |
+|~~WA-VENDÉG-OPERÁCIÓSRENDSZER-5.18_201804-01~~ |2018. május 4. |2018. július 3. |
+|~~WA-VENDÉG-OPERÁCIÓSRENDSZER-5.17_201803-01~~ |2018. április 6. |2018. június 1.|
+|~~WA-VENDÉG-OPERÁCIÓSRENDSZER-5.16_201802-01~~ |2018. március 12. |2018. május 4. |
+|~~WA-GUEST-OS-5.15_201801-01~~ |2018. január 4. |2018. április 6. |
+|~~WA-GUEST-OS-5.14_201712-01~~ |2018. január 4. |2018. március 12. |
+|~~WA-GUEST-OS-5.13_201711-01~~ |2017. december 14. |2018. január 4.|
+|~~WA-GUEST-OS-5.12_201710-02~~ |2017. november 8. |2018. január 4. |
 
 
 ## <a name="family-4-releases"></a>Család 4-kiadások
@@ -110,23 +112,19 @@ Október vendég operációs rendszer jelent meg.
 
 .NET-keretrendszer telepítése: 4.0-s, 4.5-ös, 4.5.1, 4.5.2
 
-> [!NOTE]
-> A dátumok egy * azok változhatnak
->
->
-
-| Konfigurációs karakterlánc | Kiadási dátum | Tiltsa le a dátum | A lejárt dátum |
-| --- | --- | --- | --- |
-| WA-VENDÉG-OPERÁCIÓSRENDSZER-4.56_201807-02 |2018. augusztus 3. |POST 4.58 |TBD |
-| WA-VENDÉG-OPERÁCIÓSRENDSZER-4.55_201806-01 |2018. július 3. |POST 4.57 |TBD |
-|~~WA-VENDÉG-OPERÁCIÓSRENDSZER-4.54_201805-01~~ |2018. június 1. |2018. augusztus 3. |TBD |
-|~~WA-VENDÉG-OPERÁCIÓSRENDSZER-4.53_201804-01~~ |2018. május 4. |2018. július 3. |TBD |
-|~~WA-VENDÉG-OPERÁCIÓSRENDSZER-4.52_201803-01~~ |2018. április 6. |2018. június 1. |TBD |
-|~~WA-VENDÉG-OPERÁCIÓSRENDSZER-4.51_201802-01~~ |2018. március 12. |2018. május 4. |TBD |
-|~~WA-GUEST-OS-4.50_201801-01~~ |2018. január 4. |2018. április 6. |TBD |
-|~~WA-GUEST-OS-4.49_201712-01~~ |2018. január 4. |2018. március 12. |TBD |
-|~~WA-GUEST-OS-4.48_201711-01~~ |2017. december 14. |2018. január 4. |TBD |
-|~~WA-GUEST-OS-4.47_201710-02~~ |2017. november 8. |2018. január 4. |TBD |
+| Konfigurációs karakterlánc | Kiadási dátum | Tiltsa le a dátum |
+| --- | --- | --- |
+| WA-VENDÉG-OPERÁCIÓSRENDSZER-4.57_201808-01 |2018. szeptember 12. |POST 4.59 |
+| WA-VENDÉG-OPERÁCIÓSRENDSZER-4.56_201807-02 |2018. augusztus 3. |POST 4.58 |
+|~~WA-VENDÉG-OPERÁCIÓSRENDSZER-4.55_201806-01~~ |2018. július 3. |2018. szeptember 12. |
+|~~WA-VENDÉG-OPERÁCIÓSRENDSZER-4.54_201805-01~~ |2018. június 1. |2018. augusztus 3. |
+|~~WA-VENDÉG-OPERÁCIÓSRENDSZER-4.53_201804-01~~ |2018. május 4. |2018. július 3. |
+|~~WA-VENDÉG-OPERÁCIÓSRENDSZER-4.52_201803-01~~ |2018. április 6. |2018. június 1. |
+|~~WA-VENDÉG-OPERÁCIÓSRENDSZER-4.51_201802-01~~ |2018. március 12. |2018. május 4. |
+|~~WA-GUEST-OS-4.50_201801-01~~ |2018. január 4. |2018. április 6. |
+|~~WA-GUEST-OS-4.49_201712-01~~ |2018. január 4. |2018. március 12. |
+|~~WA-GUEST-OS-4.48_201711-01~~ |2017. december 14. |2018. január 4. |
+|~~WA-GUEST-OS-4.47_201710-02~~ |2017. november 8. |2018. január 4. |
 
 
 ## <a name="family-3-releases"></a>3-as család kiadások
@@ -134,23 +132,19 @@ Október vendég operációs rendszer jelent meg.
 
 .NET-keretrendszer telepítése: 4.0-s, 4.5-ös, 4.5.1, 4.5.2
 
-> [!NOTE]
-> A dátumok egy * azok változhatnak
->
->
-
-| Konfigurációs karakterlánc | Kiadási dátum | Tiltsa le a dátum | A lejárt dátum |
-| --- | --- | --- | --- |
-| WA-VENDÉG-OPERÁCIÓSRENDSZER-3.63_201807-02 |2018. augusztus 3. |POST 3.65 |TBD |
-| WA-VENDÉG-OPERÁCIÓSRENDSZER-3.62_201806-01 |2018. július 3. |POST 3.64 |TBD |
-|~~WA-VENDÉG-OPERÁCIÓSRENDSZER-3.61_201805-01~~ |2018. június 1. |2018. augusztus 3. |TBD |
-|~~WA-VENDÉG-OPERÁCIÓSRENDSZER-3.60_201804-01~~ |2018. május 4. |2018. július 3. |TBD |
-|~~WA-VENDÉG-OPERÁCIÓSRENDSZER-3.59_201803-01~~ |2018. április 6. |2018. június 1. |TBD |
-|~~WA-VENDÉG-OPERÁCIÓSRENDSZER-3.58_201802-01~~ |2018. március 19. |2018. május 4. |TBD |
-|~~WA-GUEST-OS-3.57_201801-01~~ |2018. január 29. |2018. április 6. |TBD |
-|~~WA-GUEST-OS-3.56_201712-01~~ |2018. január 4. |2018. március 19. |TBD |
-|~~WA-GUEST-OS-3.55_201711-01~~ |2017. december 14. |2018. január 29. |TBD |
-|~~WA-GUEST-OS-3.54_201710-02~~ |2017. november 8. |2018. január 4. |TBD |
+| Konfigurációs karakterlánc | Kiadási dátum | Tiltsa le a dátum |
+| --- | --- | --- |
+| WA-VENDÉG-OPERÁCIÓSRENDSZER-3.64_201808-01 |2018. szeptember 12. |POST 3.66 |
+| WA-VENDÉG-OPERÁCIÓSRENDSZER-3.63_201807-02 |2018. augusztus 3. |POST 3.65 |
+|~~WA-VENDÉG-OPERÁCIÓSRENDSZER-3.62_201806-01~~ |2018. július 3. |2018. szeptember 12. |
+|~~WA-VENDÉG-OPERÁCIÓSRENDSZER-3.61_201805-01~~ |2018. június 1. |2018. augusztus 3. |
+|~~WA-VENDÉG-OPERÁCIÓSRENDSZER-3.60_201804-01~~ |2018. május 4. |2018. július 3. |
+|~~WA-VENDÉG-OPERÁCIÓSRENDSZER-3.59_201803-01~~ |2018. április 6. |2018. június 1. |
+|~~WA-VENDÉG-OPERÁCIÓSRENDSZER-3.58_201802-01~~ |2018. március 19. |2018. május 4. |
+|~~WA-GUEST-OS-3.57_201801-01~~ |2018. január 29. |2018. április 6. |
+|~~WA-GUEST-OS-3.56_201712-01~~ |2018. január 4. |2018. március 19. |
+|~~WA-GUEST-OS-3.55_201711-01~~ |2017. december 14. |2018. január 29. |
+|~~WA-GUEST-OS-3.54_201710-02~~ |2017. november 8. |2018. január 4. |
 
 
 ## <a name="family-2-releases"></a>2 család kiadások
@@ -158,25 +152,21 @@ Október vendég operációs rendszer jelent meg.
 
 .NET-keretrendszer telepítése: 3.5, 4.0-s, 4.5-ös, 4.5.1, 4.5.2-es
 
-> [!NOTE]
-> A dátumok egy * azok változhatnak
->
->
-
-| Konfigurációs karakterlánc | Kiadási dátum | Tiltsa le a dátum | A lejárt dátum |
-| --- | --- | --- | --- |
-| WA-VENDÉG-OPERÁCIÓSRENDSZER-2.76_201807-02 |2018. augusztus 3. |POST 2.78 |TBD |
-| WA-VENDÉG-OPERÁCIÓSRENDSZER-2.75_201806-01 |2018. július 3. |POST 2.77 |TBD |
-|~~WA-VENDÉG-OPERÁCIÓSRENDSZER-2.74_201805-01~~ |2018. június 1. |2018. augusztus 3.|TBD |
-|~~WA-VENDÉG-OPERÁCIÓSRENDSZER-2.73_201804-01~~ |2018. május 4. |2018. július 3. |TBD |
-|~~WA-VENDÉG-OPERÁCIÓSRENDSZER-2.72_201803-01~~ |2018. április 6. |2018. június 1. |TBD |
-|~~WA-VENDÉG-OPERÁCIÓSRENDSZER-2.71_201802-01~~ |2018. március 12. |2018. május 4. |TBD |
-|~~WA-GUEST-OS-2.70_201801-01~~ |2018. január 29. |2018. április 6. |TBD |
-|~~WA-GUEST-OS-2.69_201712-01~~ |2018. január 4. |2018. március 12. |TBD |
-|~~WA-GUEST-OS-2.68_201711-01~~ |2017. december 14. |2018. január 29. |TBD |
-|~~WA-GUEST-OS-2.67_201710-02~~ |2017. november 8. |2018. január 4. |TBD |
-|~~WA-GUEST-OS-2.66_201709-01~~ |2017. október 6 |2017. december 14. |TBD |
-|~~WA-GUEST-OS-2.65_201708-01~~ |2017. augusztus 24. |2017. december 14. |TBD |
+| Konfigurációs karakterlánc | Kiadási dátum | Tiltsa le a dátum |
+| --- | --- | --- |
+| WA-VENDÉG-OPERÁCIÓSRENDSZER-2.77_201808-01 |2018. szeptember 12. |POST 2.79 |
+| WA-VENDÉG-OPERÁCIÓSRENDSZER-2.76_201807-02 |2018. augusztus 3. |POST 2.78 |
+|~~WA-VENDÉG-OPERÁCIÓSRENDSZER-2.75_201806-01~~ |2018. július 3. |2018. szeptember 12. |
+|~~WA-VENDÉG-OPERÁCIÓSRENDSZER-2.74_201805-01~~ |2018. június 1. |2018. augusztus 3.|
+|~~WA-VENDÉG-OPERÁCIÓSRENDSZER-2.73_201804-01~~ |2018. május 4. |2018. július 3. |
+|~~WA-VENDÉG-OPERÁCIÓSRENDSZER-2.72_201803-01~~ |2018. április 6. |2018. június 1. |
+|~~WA-VENDÉG-OPERÁCIÓSRENDSZER-2.71_201802-01~~ |2018. március 12. |2018. május 4. |
+|~~WA-GUEST-OS-2.70_201801-01~~ |2018. január 29. |2018. április 6. |
+|~~WA-GUEST-OS-2.69_201712-01~~ |2018. január 4. |2018. március 12. |
+|~~WA-GUEST-OS-2.68_201711-01~~ |2017. december 14. |2018. január 29. |
+|~~WA-GUEST-OS-2.67_201710-02~~ |2017. november 8. |2018. január 4. |
+|~~WA-GUEST-OS-2.66_201709-01~~ |2017. október 6 |2017. december 14. |
+|~~WA-GUEST-OS-2.65_201708-01~~ |2017. augusztus 24. |2017. december 14. |
 
 
 ## <a name="msrc-patch-updates"></a>MSRC-javítás frissítések
@@ -221,7 +211,7 @@ Az alábbi példában a 2 a család, 12 az verziója pedig "rel2" kiadása.
 A vendég operációs rendszer konfigurációs karakterláncában együtt egy bemutató, mely MSRC javítások lettek figyelembe véve, kiadás dátuma, a beágyazott ugyanezeket az adatokat. Ebben a példában akár előállítása a Windows Server 2008 R2 és a köztük a 2012. augusztus MSRC javítások is venni. Csak a kifejezetten a Windows Server adott verziójával alkalmazása javításait is. Például egy MSRC javítás vonatkozik a Microsoft Office, ha azt nem lehet foglalt mert a termék már nem része a Windows Server alaplemezkép.
 
 ## <a name="guest-os-system-update-process"></a>Vendég operációs rendszer frissítési folyamat
-Ezen a lapon a közelgő Vendégoperációsrendszer-kiadásainak listáját információkat biztosít. Ügyfelek azt jelezte, hogy szeretné-e tudja, mert azok a felhőszolgáltatásokhoz tartozó szerepkörök újraindul, ha a beállítás a "Automatikus" frissítési kiadási bekövetkezésekor. A vendég operációs rendszer kiadásai általában legalább öt (5) nappal a MSRC kiadás, amely minden hónap második keddjén frissítése után fordulhat elő. Új verziók tartalmazzák a megfelelő MSRC javításokat az egyes vendég operációsrendszer-család.
+Ezen a lapon a közelgő Vendégoperációsrendszer-kiadásainak listáját információkat biztosít. Ügyfelek azt jelezte, hogy szeretné-e tudja, mert azok a felhőszolgáltatásokhoz tartozó szerepkörök újraindul, ha a beállítás a "Automatikus" frissítési kiadási bekövetkezésekor. Kiadások a vendég operációs rendszer általában 2-3 hét a MSRC kiadás, amely minden hónap második keddjén frissítése után fordulhat elő. Új verziók tartalmazzák a megfelelő MSRC javításokat az egyes vendég operációsrendszer-család.
 
 A Microsoft Azure folyamatosan frissítéseket ad ki. A vendég operációs rendszer csak egy ilyen frissítés folyamatban. A kiadás számos tényezőtől hatással lehet az itt felsorolt túl sok. Az Azure emellett több ezer gépet szó szerint több száz futtat. Ez azt jelenti, hogy nem lehetséges a pontos dátumot és időt, amikor a szerepkör újraindul. Dolgozunk a csomag korlátozható vagy újraindítások idő.
 

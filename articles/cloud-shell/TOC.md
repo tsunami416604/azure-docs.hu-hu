@@ -7,16 +7,19 @@
 # Funkciók és eszközök
 ## [Funkciók és eszközök](features.md)
 
-# Használati útmutató
+# Oktatóanyagok
+## Ansible
+### [Ansible-forgatókönyv futtatása](/azure/ansible/ansible-run-playbook-in-cloudshell?toc=/azure/cloud-shell/toc.json&bc=/azure/bread/toc.json)
+### [Az Azure-beli dinamikus leltárak kezelése](/azure/ansible/ansible-manage-azure-dynamic-inventories?toc=/azure/cloud-shell/toc.json&bc=/azure/bread/toc.json)
+## Terraform
+### [Végrehajtási terv létrehozása](example-terraform-bash.md)
+
+# Útmutatók
 ## [PowerShell Cloud Shell Windows-felhasználóknak](cloud-shell-windows-users.md)
 ## [Fájlok megőrzése tárolóban](persisting-shell-storage.md)
 ## [Az ablak használata](using-the-shell-window.md)
 ## [MSI használata a Cloud Shellben](msi-authorization.md)
 ## [Cloud Shell beágyazása](embed-cloud-shell.md)
-
-# Példák
-## [Bash – Erőforrások létrehozása a Terraformmal](example-terraform-bash.md)
-## [Bash – Ansible-forgatókönyvek futtatása](../ansible/ansible-run-playbook-in-cloudshell.md)
 
 # [A Cloud Shell-szerkesztő használata](using-cloud-shell-editor.md)
 

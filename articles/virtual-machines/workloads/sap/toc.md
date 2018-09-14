@@ -54,6 +54,19 @@
 ## [SAP IDES Windows rendszeren/SQL Server SAP CAL üzembehelyezési útmutatója](cal-ides-erp6-erp7-sp3-sql.md)
 ## [SAP NetWeaver a Linux rendszerű, Azure-beli virtuális gépeken](suse-quickstart.md)
 ## [SAP NetWeaver tervezése és megvalósítása Azure-ban](planning-guide.md)
+## [SAP NetWeaver üzembehelyezési útmutató](deployment-guide.md)
+## [Az Azure SAP LaMa összekötője](lama-installation.md)
+## DBMS üzembehelyezési útmutatók SAP számítási feladatokhoz
+### [Általános Azure-beli virtuális gépek DBMS üzembe helyezése SAP számítási feladatokhoz](dbms_guide_general.md)
+### [SQL Server Azure-beli virtuális gépek DBMS üzembe helyezése SAP számítási feladatokhoz](dbms_guide_sqlserver.md)
+### [Oracle Azure-beli virtuális gépek DBMS üzembe helyezése SAP számítási feladatokhoz](dbms_guide_oracle.md)
+### [IBM DB2 Azure-beli virtuális gépek DBMS üzembe helyezése SAP számítási feladatokhoz](dbms_guide_ibm.md)
+### [SAP ASE Azure-beli virtuális gépek DBMS üzembe helyezése SAP számítási feladatokhoz](dbms_guide_sapase.md)
+### [SAP MaxDB, liveCache és tartalomkiszolgáló üzembe helyezése az Azure-ban](dbms_guide_maxdb.md)
+### Az SAP HANA rendelkezésre állása az Azure-beli virtuális gépeken
+### [Azure rendelkezésre állási csoportokon futó SAP HANA – Áttekintés](sap-hana-availability-overview.md)
+### [Egy Azure-régión belüli Azure rendelkezésre állási csoportokon futó SAP HANA](sap-hana-availability-one-region.md)
+### [Több Azure-régión belüli Azure rendelkezésre állási csoportokon futó SAP HANA](sap-hana-availability-across-regions.md)
 ## Magas rendelkezésre állás (HA) Windowson és Linuxon
 ### [Áttekintés](sap-high-availability-guide-start.md)
 ### Magas rendelkezésre állású architektúra
@@ -74,21 +87,7 @@
 ### SAP több biztonsági azonosítóval
 #### [Windows közös lemezzel (A)SCS példányhoz](sap-ascs-ha-multi-sid-wsfc-shared-disk.md)
 #### [Windows SOFS fájlmegosztással (A)SCS példányhoz](sap-ascs-ha-multi-sid-wsfc-file-share.md)
-## [SAP NetWeaver üzembehelyezési útmutató](deployment-guide.md)
-## DBMS üzembehelyezési útmutatók SAP számítási feladatokhoz
-### [Általános Azure-beli virtuális gépek DBMS üzembe helyezése SAP számítási feladatokhoz](dbms_guide_general.md)
-### [SQL Server Azure-beli virtuális gépek DBMS üzembe helyezése SAP számítási feladatokhoz](dbms_guide_sqlserver.md)
-### [Oracle Azure-beli virtuális gépek DBMS üzembe helyezése SAP számítási feladatokhoz](dbms_guide_oracle.md)
-### [IBM DB2 Azure-beli virtuális gépek DBMS üzembe helyezése SAP számítási feladatokhoz](dbms_guide_ibm.md)
-### [SAP ASE Azure-beli virtuális gépek DBMS üzembe helyezése SAP számítási feladatokhoz](dbms_guide_sapase.md)
-### [SAP MaxDB, liveCache és tartalomkiszolgáló üzembe helyezése az Azure-ban](dbms_guide_maxdb.md)
-### [SAP HANA az Azure-műveletek útmutatójában](hana-vm-operations.md)
-#### Az SAP HANA rendelkezésre állása az Azure-beli virtuális gépeken
-##### [Azure rendelkezésre állási csoportokon futó SAP HANA – Áttekintés](sap-hana-availability-overview.md)
-##### [Egy Azure-régión belüli Azure rendelkezésre állási csoportokon futó SAP HANA](sap-hana-availability-one-region.md)
-##### [Több Azure-régión belüli Azure rendelkezésre állási csoportokon futó SAP HANA](sap-hana-availability-across-regions.md)
-## [Azure Site Recovery az SAP-vészhelyreállításhoz](../../../site-recovery/site-recovery-workload.md#protect-sap)
-## [Az Azure SAP LaMa összekötője](lama-installation.md)
+##  [Azure Site Recovery az SAP-vészhelyreállításhoz](../../../site-recovery/site-recovery-workload.md#protect-sap)
 # AAD SAP-identitásintegráció és egyszeri bejelentkezés
 ## [Integráció az SAP-felhővel](../../../active-directory/saas-apps/sap-customer-cloud-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
 ## [AAD-integráció az SAP-felhőplatform identitáshitelesítésével](../../../active-directory/saas-apps/sap-hana-cloud-platform-identity-authentication-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
@@ -97,5 +96,10 @@
 ## [AAD-integráció az SAP Business ByDesignnal](../../../active-directory/saas-apps/sapbusinessbydesign-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
 ## [AAD-integráció az SAP HANA DBMS-sel](../../../active-directory/saas-apps/saphana-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
 ##[SAML egyszeri bejelentkezés az SAP Fiori-kezdőpanelen az Azure AD-val](https://blogs.sap.com/2017/02/20/your-s4hana-environment-part-7-fiori-launchpad-saml-single-sing-on-with-azure-ad)
+# Azure-szolgáltatások integrálása az SAP-be
+## [Az SAP HANA használata a Power BI Desktopban](https://docs.microsoft.com/power-bi/desktop-sap-hana)
+## [DirectQuery és SAP HANA](https://docs.microsoft.com/power-bi/desktop-directquery-sap-hana)
+## [Az SAP BW Connector használata a Power BI Desktopban](https://docs.microsoft.com/power-bi/desktop-sap-bw-connector)
+## [Az Azure Data Factory SAP HANA- és Business Warehouse-adatok integrációját nyújtja](https://azure.microsoft.com/blog/azure-data-factory-offer-sap-hana-and-business-warehouse-data-integration)
 # További források
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)

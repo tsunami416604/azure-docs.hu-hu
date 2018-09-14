@@ -83,6 +83,7 @@
 
 ## [Csoportok és tagok kezelése](fundamentals/active-directory-manage-groups.md)
 ### [Csoportok kezelése](fundamentals/active-directory-groups-create-azure-portal.md)
+### [Csoport törlése a tagjaival együtt](fundamentals/active-directory-groups-delete-group.md)
 ### [Csoportbeállítások kezelése](fundamentals/active-directory-groups-settings-azure-portal.md)
 ## [Jelentések kezelése](reports-monitoring/overview-reports.md)
 ### [Bejelentkezési tevékenység](reports-monitoring/concept-sign-ins.md)
@@ -346,6 +347,7 @@
 #### [Bejelentkezési felület](identity-protection/flows.md)
 #### [Kockázati események szimulálása](identity-protection/playbook.md)
 #### [Felhasználók tiltásának feloldása](identity-protection/howto-unblock-user.md)
+#### [Hozzáférés letiltása munkameneti kockázat észlelésekor](identity-protection/quickstart-sign-in-risk-policy.md)
 #### [Gyakori kérdések](identity-protection/faqs.md)
 #### [Szószedet](identity-protection/glossary.md)
 #### [Microsoft Graph](identity-protection/graph-get-started.md)
