@@ -11,12 +11,12 @@ ms.reviewer: daviste
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: fd594e65de79844720462996a89477e0a6237ceb
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: e69cf8753fb0cc9326e047ec97cbe08ee6f26610
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38988925"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43668461"
 ---
 # <a name="start-analyzing-your-mobile-app-with-app-center-and-application-insights"></a>A mobilalkalmazás elemzésének első lépései az App Center és az Application Insights használatával
 
@@ -68,9 +68,9 @@ Ha meg szeretne győződni arról, hogy az App Center fogadja az egyéni esemén
 Ha az alkalmazás egyéni eseményeket küld, és az App Center fogadja ezeket az eseményeket, létre kell hoznia egy App Center-típusú Application Insights-erőforrást az Azure Portalon:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-2. Válassza az **Erőforrás létrehozása** > **Monitoring és felügyelet** > **Application Insights** elemet.
+2. Válassza az **Erőforrás létrehozása** > **Kezelőeszközök** > **Application Insights** elemet.
 
-    ![Application Insights-erőforrások hozzáadása](./media/app-insights-mobile-center-quickstart/add.png)
+    ![Application Insights-erőforrások hozzáadása](./media/app-insights-mobile-center-quickstart/add-b.png)
 
     Megjelenik egy konfigurációs képernyő. Az adatbeviteli mezők kitöltéséhez használja az alábbi táblázatot.
 

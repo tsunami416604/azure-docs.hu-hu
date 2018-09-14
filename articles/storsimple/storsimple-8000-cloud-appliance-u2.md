@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/08/2017
 ms.author: alkohli
-ms.openlocfilehash: 4d47b5426da5d857085991767faa5fb227476408
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 77154d596eb9202c4f9d1063ba7f4e1ec4855181
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
-ms.locfileid: "29852336"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43665005"
 ---
 # <a name="deploy-and-manage-a-storsimple-cloud-appliance-in-azure-update-3-and-later"></a>A StorSimple Cloud Appliance üzembe helyezése és kezelése az Azure-ban (3. frissítés és újabb)
 
@@ -265,7 +265,7 @@ Az összes költség megszüntetéséhez törölnie kell a felhőalapú berendez
 ## <a name="troubleshoot-internet-connectivity-errors"></a>Az internetkapcsolat hibáinak elhárítása
 Ha nincs internetkapcsolat a felhőalapú berendezés létrehozása közben, a létrehozási lépés sikertelen lesz. Az internetes kapcsolat hibáinak elhárítása érdekében hajtsa végre a következő lépéseket az Azure Portalon:
 
-1. [Hozzon létre egy Windows Server 2012-alapú virtuális gépet az Azure-ban](/articles/virtual-machines/windows/quick-create-portal.md). A virtuális gépnek ugyanazt a tárfiókot, virtuális hálózatot és alhálózatot kell használnia, mint a felhőalapú berendezés. Ha már létezik Windows Server-gazdagép az Azure-ban, amely ugyanazt a tárfiókot, virtuális hálózatot és alhálózatot használja, azt is használhatja az internetkapcsolat hibáinak elhárítására.
+1. [Windows rendszerű virtuális gép létrehozása az Azure Portalon](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/quick-create-portal) A virtuális gépnek ugyanazt a tárfiókot, virtuális hálózatot és alhálózatot kell használnia, mint a felhőalapú berendezés. Ha már létezik Windows Server-gazdagép az Azure-ban, amely ugyanazt a tárfiókot, virtuális hálózatot és alhálózatot használja, azt is használhatja az internetkapcsolat hibáinak elhárítására.
 2. Jelentkezzen be távolról az előző lépésben létrehozott virtuális gépbe.
 3. Nyisson meg egy parancsablakot a virtuális gépen (Win+R, majd írja be a `cmd` kifejezést).
 4. Futtassa az alábbi parancsot a parancssorban.

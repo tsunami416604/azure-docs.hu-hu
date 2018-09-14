@@ -1,39 +1,39 @@
 ---
-title: A Virtuálisgép-fürt létrehozása az Azure Terraform modulok segítségével
-description: Terraform modulok használata a Windows virtuális gép fürt létrehozása az Azure-ban
-keywords: terraform, a devops, a virtuális gépet, a hálózati, a modulok
-author: rloutlaw
-ms.service: virtual-machines-linux
-ms.topic: article
-ms.workload: infrastructure
+title: Virtuálisgép-fürt létrehozása az Azure-ban Terraform-modulokkal
+description: Megtudhatja, hogyan használhatók a Terraform-modulok Windows rendszerű virtuálisgép-fürtök létrehozásra az Azure-ban
+services: terraform
+ms.service: terraform
+keywords: terraform, devops, virtuális gép, hálózat, modulok
+author: tomarcher
+manager: jeconnoc
+ms.author: tarcher
+ms.topic: tutorial
 ms.date: 10/19/2017
-ms.custom: devops
-ms.author: routlaw
-ms.openlocfilehash: e33aef252413eeb243b03543f171d5f1e2385b48
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
-ms.translationtype: MT
+ms.openlocfilehash: 03c09e190fce9cbbd98cea3565dd2437f79dadf1
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
-ms.locfileid: "29952217"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43666633"
 ---
-# <a name="create-a-vm-cluster-with-terraform-using-the-module-registry"></a>A modul beállításjegyzékkel Terraform hozzon létre egy Virtuálisgép-fürt
+# <a name="create-a-vm-cluster-with-terraform-using-the-module-registry"></a>Virtuálisgép-fürt létrehozása a Terraformmal a Modul Registryvel
 
-Ez a cikk végigvezeti egy kis Virtuálisgép-fürt létrehozása a Terraform [Azure számítási modul](https://registry.terraform.io/modules/Azure/compute/azurerm/1.0.2). Ezen oktatóanyag segítségével megtanulhatja a következőket: 
+Ez a cikk lépésről lépésre bemutatja, hogyan hozható létre kisméretű virtuálisgép-fürt a Terraform [Azure Compute-moduljával](https://registry.terraform.io/modules/Azure/compute/azurerm/1.0.2). Ezen oktatóanyag segítségével megtanulhatja a következőket: 
 
 > [!div class="checklist"]
-> * Az Azure-ral hitelesítés beállítása
-> * A Terraform sablon létrehozása
-> * A módosítások tervvel megjelenítése
-> * A Virtuálisgép-fürt létrehozása a konfiguráció alkalmazásához
+> * Hitelesítés beállítása az Azure-ral
+> * Terraform-sablon létrehozása
+> * A módosítások vizualizációja egy tervben
+> * A konfiguráció alkalmazása a virtuálisgép-fürt létrehozásához
 
-Terraform további információkért tekintse meg a [Terraform dokumentáció](https://www.terraform.io/docs/index.html).
+A Terraformról a [Terraform dokumentációjában](https://www.terraform.io/docs/index.html) talál további információt.
 
-## <a name="set-up-authentication-with-azure"></a>Az Azure-ral hitelesítés beállítása
+## <a name="set-up-authentication-with-azure"></a>Hitelesítés beállítása az Azure-ral
 
 > [!TIP]
-> Ha Ön [Terraform környezeti változókkal](/azure/virtual-machines/linux/terraform-install-configure#set-environment-variables) , vagy futtassa az oktatóanyag a [Azure Cloud rendszerhéj](/azure/cloud-shell/overview), kihagyhatja ezt a lépést.
+> Ha [Terraform környezeti változókat használ](/azure/virtual-machines/linux/terraform-install-configure#set-environment-variables) vagy az [Azure Cloud Shellben](/azure/cloud-shell/overview) futtatja ezt az oktatóanyagot, hagyja ki ezt a lépést.
 
- Felülvizsgálati [Terraform telepítése és konfigurálása az Azure-hozzáférést](/azure/virtual-machines/linux/terraform-install-configure) hozzon létre egy Azure szolgáltatás egyszerű. A szolgáltatás egyszerű használata egy új fájl feltöltéséhez `azureProviderAndCreds.tf` egy üres Directory, az alábbi kódra:
+ Tekintse át a [Terraform telepítésével és az Azure-hoz való hozzáféréssel](/azure/virtual-machines/linux/terraform-install-configure) foglalkozó cikket az Azure-szolgáltatásnév létrehozásához. Használja ezt a szolgáltatásnevet egy új `azureProviderAndCreds.tf` fájl kitöltéséhez egy üres könyvtárban az alábbi kóddal:
 
 ```tf
 variable subscription_id {}
@@ -51,7 +51,7 @@ provider "azurerm" {
 
 ## <a name="create-the-template"></a>A sablon létrehozása
 
-Hozzon létre egy új Terraform sablont nevű `main.tf` az alábbi kódra:
+Hozzon létre egy új, `main.tf` nevű Terraform-sablont az alábbi paranccsal:
 
 ```tf
 module mycompute {
@@ -85,24 +85,24 @@ output "vm_private_ips" {
 }
 ```
 
-Futtatás `terraform init` a konfigurációs könyvtárban. Legalább 0.10.6 Terraform verzióját használja a következő eredményét mutatja:
+Futtassa a `terraform init` parancsot a konfiguráció könyvtárában. Ha a Terraform legalább 0.10.6-os verzióját használja, az alábbi kimenet jelenik meg:
 
 ![Terraform Init](media/terraformInitWithModules.png)
 
-## <a name="visualize-the-changes-with-plan"></a>A módosítások tervvel megjelenítése
+## <a name="visualize-the-changes-with-plan"></a>A módosítások vizualizációja egy tervben
 
-Futtatás `terraform plan` előzetes a virtuális gép infrastruktúra, a sablon által létrehozott.
+Futtassa a `terraform plan` parancsot a sablon által létrehozott virtuálisgép-infrastruktúra előnézetéhez.
 
-![Terraform terv](media/terraform-create-vm-cluster-with-infrastructure/terraform-plan.png)
+![Terraform-terv](media/terraform-create-vm-cluster-with-infrastructure/terraform-plan.png)
 
 
-## <a name="create-the-virtual-machines-with-apply"></a>Az alkalmazás a virtuális gépek létrehozása
+## <a name="create-the-virtual-machines-with-apply"></a>Virtuális gépek létrehozása a sablon alkalmazásával
 
-Futtatás `terraform apply` az Azure virtuális gépek telepítéséhez.
+Futtassa a `terraform apply` parancsot a virtuális gépek kiépítéséhez az Azure-on.
 
 ![Terraform alkalmazása](media/terraform-create-vm-cluster-with-infrastructure/terraform-apply.png)
 
 ## <a name="next-steps"></a>További lépések
 
-- Keresse meg a listában a [Azure Terraform modulok](https://registry.terraform.io/modules/Azure)
-- Hozzon létre egy [virtuálisgép-méretezési rendelkező Terraform](terraform-create-vm-scaleset-network-disks-hcl.md)
+- Az [Azure Terraform-modulok](https://registry.terraform.io/modules/Azure) listájának áttekintése
+- Hozzon létre egy [virtuálisgép-méretezési csoportot a Terraformmal](terraform-create-vm-scaleset-network-disks-hcl.md)

@@ -11,18 +11,27 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 03/26/2018
 ms.author: lbosq
-ms.openlocfilehash: ac9d0291b38e7a8679e9c6e7707e13a90554b914
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 0c174b6979e1601d992b0e19d216d1b7211e51d3
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38582518"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43701031"
 ---
 # <a name="azure-cosmos-db-create-a-graph-database-using-java-and-the-azure-portal"></a>Azure Cosmos DB: Gráfadatbázis létrehozása a Java és az Azure Portal használatával
 
+> [!div class="op_single_selector"]
+> * [Gremlin-konzol](create-graph-gremlin-console.md)
+> * [.NET](create-graph-dotnet.md)
+> * [Java](create-graph-java.md)
+> * [Node.js](create-graph-nodejs.md)
+> * [Python](create-graph-python.md)
+> * [PHP](create-graph-php.md)
+>  
+
 Az Azure Cosmos DB a Microsoft globálisan elosztott, többmodelles adatbázis-szolgáltatása. Az Azure Cosmos DB segítségével gyorsan létrehozhat és lekérdezhet felügyelt dokumentum, tábla, kulcs-érték és gráf típusú adatbázisokat. 
 
-Ez a rövid útmutató létrehoz egy egyszerű gráfadatbázist az Azure Cosmos DB-hez készült Azure Portal-eszközök használatával. A rövid útmutató emellett bemutatja, hogyan hozhat létre gyorsan egy Java-konzolalkalmazást az OSS [Apache TinkerPop](http://tinkerpop.apache.org/)-illesztőt használó [Graph API](graph-introduction.md)-adatbázissal. A rövid útmutatóban lévő utasítások bármilyen, Java-programok futtatására alkalmas operációs rendszeren végrehajthatók. Ez a rövid útmutató ismerteti a gráfok létrehozását és módosítását a felhasználói felületen vagy programozás útján. 
+Ez a rövid útmutató létrehoz egy egyszerű gráfadatbázist az Azure Cosmos DB-hez készült Azure Portal-eszközök használatával. A rövid útmutató emellett bemutatja, hogyan hozhat létre gyorsan egy Java-konzolalkalmazást az OSS [Apache TinkerPop](http://tinkerpop.apache.org/)-illesztőt használó [Gremlin API](graph-introduction.md)-adatbázissal. A rövid útmutatóban lévő utasítások bármilyen, Java-programok futtatására alkalmas operációs rendszeren végrehajthatók. Ez a rövid útmutató ismerteti a gráfok létrehozását és módosítását a felhasználói felületen vagy programozás útján. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
@@ -49,7 +58,7 @@ A gráfadatbázis létrehozásához először létre kell hoznia egy Gremlin- (G
 
 ## <a name="clone-the-sample-application"></a>A mintaalkalmazás klónozása
 
-Most pedig váltsunk át kódok használatára. A következő lépésekben elvégezheti a Graph API-alkalmazás klónozását a GitHubról, beállíthatja a kapcsolati sztringet, és futtathatja az alkalmazást. Látni fogja, milyen egyszerű az adatokkal programozott módon dolgozni.  
+Most pedig váltsunk át kódok használatára. A következő lépésekben elvégezheti a Gremlin API-alkalmazás klónozását a GitHubról, beállíthatja a kapcsolati sztringet, és futtathatja az alkalmazást. Látni fogja, milyen egyszerű az adatokkal programozott módon dolgozni.  
 
 1. Nyisson meg egy parancssort, hozzon létre egy git-samples nevű új mappát, majd zárja be a parancssort.
 

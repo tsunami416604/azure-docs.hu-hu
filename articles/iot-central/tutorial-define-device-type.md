@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 4c850cd98280940c53a07c70c9c478f9e20e2963
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: a2601f55bbc7e99321689afdafcab3135b94bd5b
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41917567"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43702544"
 ---
 # <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application"></a>Oktatóanyag: Új eszköztípus definiálása az Azure IoT Central-alkalmazásban
 
@@ -280,22 +280,22 @@ A beállítások, a tulajdonságok és az eszköztulajdonságok, valamint a para
 
 ## <a name="use-properties--device-properties"></a>Tulajdonságok/eszköztulajdonságok használata
 
-*Tulajdonságok* használatával tárolhatja az eszközzel kapcsolatos információkat az alkalmazásban. Ebben a szakaszban eszköztulajdonságokat adhat hozzá a **Csatlakoztatott légkondicionáló** eszközsablonhoz az egyes eszközökhöz tartozó sorozatszám és a belső vezérlőprogram verziójának tárolásához. Vegye figyelembe, hogy az eszköz által küldött mindkét tulajdonság csak olvasható – értékeket tehát nem rendelhet hozzájuk. A következők olyan felhasználható tulajdonságok, amelyekhez értékeket rendelhet hozzá: az eszköz helye, a tulajdonosi információ és az eszköz utolsó szervizelésének dátuma/ideje.
+*Tulajdonságok* használatával tárolhatja az eszközzel kapcsolatos információkat az alkalmazásban. Ebben a szakaszban felhőtulajdonságokat adhat hozzá a **Csatlakoztatott légkondicionáló** eszközsablonhoz az eszköz helyének és az utolsó szervizelés dátumának tárolásához. Vegye figyelembe, hogy mindkettő az eszköz szerkeszthető tulajdonsága. Az eszköz írásvédett tulajdonságokat is jelent, amelyek nem módosíthatók (például az eszköz sorozatszámát és a belső vezérlőprogram verzióját).
  
 1. Navigáljon a **Csatlakoztatott légkondicionáló** eszközsablon **Tulajdonságok** lapjára:
 
     ![Felkészülés tulajdonság hozzáadására](./media/tutorial-define-device-type/deviceaddproperty.png)
 
-    Különböző típusú eszköztulajdonságokat hozhat létre, például számokat vagy szöveget. Ha sorozatszám tulajdonságot szeretne adni az eszközsablonhoz, válassza a **Szöveg** lehetőséget.
+    Különböző típusú eszköztulajdonságokat hozhat létre, például számokat vagy szöveget. Ha hely tulajdonságot szeretne adni az eszközsablonhoz, válassza a **Hely** lehetőséget.
 
-2. A sorozatszám tulajdonság konfigurálásához használja a következő táblázatban lévő információkat:
+2. A hely tulajdonság konfigurálásához használja a következő táblázatban lévő információkat:
 
     | Mező                | Érték                |
     | -------------------- | -------------------- |
-    | Megjelenítendő név         | Sorozatszám        |
-    | Mezőnév           | serialNumber         |
-    | Kezdeti érték        | cac00001             |
-    | Leírás          | Eszköz sorozatszáma |
+    | Megjelenítendő név         | Hely             |
+    | Mezőnév           | location             |
+    | Kezdeti érték        | Seattle, WA          |
+    | Leírás          | Eszközhely      |
 
     A többi mező alapértelmezett értékeit ne módosítsa.
 
@@ -303,16 +303,16 @@ A beállítások, a tulajdonságok és az eszköztulajdonságok, valamint a para
 
     Válassza a **Mentés** elemet.
 
-3. Ha a belső vezérlőprogram verzióját szeretné hozzáadni az eszközsablon eszköztulajdonságaihoz, válassza a **Szöveg** lehetőséget.
+3. Ha az utolsó szervizelés dátuma tulajdonságot szeretne adni az eszközsablonhoz, válassza a **Dátum** lehetőséget.
 
-4. A belső vezérlőprogram verziója eszköztulajdonság konfigurálásához használja a következő táblázatban lévő információkat:
+4. Az utolsó szervizelés dátuma tulajdonság konfigurálásához használja a következő táblázatban lévő információkat:
 
     | Mező                | Érték                   |
     | -------------------- | ----------------------- |
-    | Megjelenítendő név         | Belső vezérlőprogram verziója        |
-    | Mezőnév           | firmwareVersion         |
-    | Kezdeti érték        | 0,1                     |
-    | Leírás          | Eszköz belső vezérlőprogramjának verziója |
+    | Megjelenítendő név         | Utolsó szervizelés dátuma       |
+    | Mezőnév           | serviceDate             |
+    | Kezdeti érték        | 2018.01.01.                |
+    | Leírás          | Utolsó szervizelés           |
 
     ![Az eszköztulajdonságok konfigurálása](./media/tutorial-define-device-type/configureproperties2.png)
 

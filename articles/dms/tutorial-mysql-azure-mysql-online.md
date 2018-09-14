@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 08/27/2018
-ms.openlocfilehash: 88cd390e37273c95304dab5ba3153e8a63270ab1
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.date: 08/31/2018
+ms.openlocfilehash: 2df3f19759229e017ab934082cef46d18816934b
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43042686"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43338966"
 ---
 # <a name="migrate-mysql-to-azure-database-for-mysql-online-using-dms"></a>MySQL online migrálása az Azure Database for MySQL-be a DMS használatával
 Az Azure Database Migration Service használatával minimális szolgáltatáskieséssel migrálhatja egy helyszíni MySQL-példány adatbázisait az [Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/)-be. Ez azt jelenti, hogy a migrálás az alkalmazás minimális ideig tartó leállásával végezhető el. Ebben az oktatóanyagban az **Employees** mintaadatbázist fogja migrálni a MySQL 5.7 egy helyszíni példányáról az Azure Database for MySQL-be az Azure Database Migration Service online migrálási tevékenységének használatával.
@@ -28,6 +28,9 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Migrálási projekt létrehozása az Azure Database Migration Service használatával.
 > * A migrálás futtatása.
 > * A migrálás monitorozása.
+
+> [!IMPORTANT]
+> A Microsoft azt javasolja, hogy a migrálási folyamat optimalizálása érdekében ugyanabban az Azure-régióban hozza létre az Azure Database Migration Service-példányt, mint amelyikben a céladatbázis is található. Az adatok különböző régiók és földrajzi helyek közötti áthelyezése lelassíthatja a migrálási folyamatot, és hibákat eredményezhet.
 
 ## <a name="prerequisites"></a>Előfeltételek
 Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:

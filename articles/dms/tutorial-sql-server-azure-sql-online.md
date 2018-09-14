@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 08/27/2018
-ms.openlocfilehash: 90d5ce098241dfc207356a8594a3c8c2d268ad83
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.date: 08/31/2018
+ms.openlocfilehash: b4cbc7fc7e031fcbd25229792488dbb4002ea23e
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43049080"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43340211"
 ---
 # <a name="migrate-sql-server-to-azure-sql-database-online-using-dms"></a>SQL Server online migrálása az Azure SQL Database-be a DMS használatával
 Az Azure Database Migration Service segítségével minimális állásidővel migrálhatja egy helyszíni SQL Server-példány adatbázisait az [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/)-be. Ebben az oktatóanyagban az SQL Server 2016 (vagy újabb) helyi példányára visszaállított **Adventureworks2012** adatbázist migrálhatja egy Azure SQL Database-példányba az Azure Database Migration Service használatával.
@@ -30,6 +30,9 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * A migrálás futtatása.
 > * A migrálás monitorozása.
 > * Migrálási jelentés letöltése.
+
+> [!IMPORTANT]
+> A Microsoft azt javasolja, hogy a migrálási folyamat optimalizálása érdekében ugyanabban az Azure-régióban hozza létre az Azure Database Migration Service-példányt, mint amelyikben a céladatbázis is található. Az adatok különböző régiók és földrajzi helyek közötti áthelyezése lelassíthatja a migrálási folyamatot, és hibákat eredményezhet.
 
 ## <a name="prerequisites"></a>Előfeltételek
 Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:

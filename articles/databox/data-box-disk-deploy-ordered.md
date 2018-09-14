@@ -12,19 +12,19 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/17/2018
+ms.date: 09/04/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: f46a3ecb3c4ef6ace31b7010ba9068ab04a43315
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 37130e946aad00ef4eca14b7ce7942a8e435e6cd
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39126541"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782328"
 ---
 # <a name="tutorial-order-an-azure-data-box-disk-preview"></a>Oktatóanyag: A Microsoft Azure Data Box Disk megrendelése (előzetes verzió)
 
-Az Azure Data Box Disk egy felhőalapú megoldás, amelynek segítségével gyorsan, könnyen és megbízhatóan importálhat helyszíni adatokat az Azure-ba. Ön letölti az adatokat a Microsoft által SSD-lemezekre, majd visszaküldi azokat a Microsoftnak. Az adatok ezt követően fel lesznek töltve az Azure-ba. 
+Az Azure Data Box Disk egy hibrid felhőalapú megoldás, amellyel gyorsan, könnyen és megbízhatóan importálhat helyszíni adatokat az Azure-ba. Ön letölti az adatokat a Microsoft által SSD-lemezekre, majd visszaküldi azokat a Microsoftnak. Az adatok ezt követően fel lesznek töltve az Azure-ba. 
 
 Ez az oktatóanyag leírja, hogyan rendelheti meg az Azure Data Box Disk szolgáltatást. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -38,7 +38,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 > [!IMPORTANT]
 > - A Data Box Disk előzetes verzióban érhető el. A megoldás megrendelése és üzembe helyezése előtt tekintse át az [Azure előzetes verziókra vonatkozó szolgáltatási feltételeit](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
-> - Az előzetes verzió ideje alatt a Data Box Disk az USA és az Európai Unió területére szállítható ki. További információt a [Regionális elérhetőség](data-box-disk-overview.md#region-availability) témakörben talál.
+> - Az előzetes verzió ideje alatt a Data Box Disk az USA, Észak- és Nyugat-Európa, Kanada és Ausztrália területén lévő ügyfeleink számára érhető el. További információt a [Regionális elérhetőség](data-box-disk-overview.md#region-availability) témakörben talál.
 
 ## <a name="sign-up"></a>Regisztráció 
 
@@ -80,7 +80,7 @@ A Data Box Disk megrendeléséhez a következő lépéseket kell végrehajtania 
     |---|---|
     |Name (Név)|Adjon meg egy rövid nevet a megrendelés nyomon követéséhez.<br> A névnek 3-24 karakter hosszúságúnak kell lennie, és csak betűket, számokat és kötőjelet tartalmazhat. <br> A névnek betűvel vagy számmal kell kezdődnie és végződnie. |
     |Erőforráscsoport| Használjon egy már létezőt, vagy hozzon létre újat. <br> Az erőforráscsoport az együtt kezelhető vagy üzembe helyezhető erőforrások logikai tárolója. |
-    |Azure-beli célrégió| Válasszon ki egy régiót a tárfiókhoz.<br> Jelenleg minden Egyesült Államokbeli, valamint Észak- és Nyugat-Európai régió tárfiókjai támogatottak. |
+    |Azure-beli célrégió| Válasszon ki egy régiót a tárfiókhoz.<br> Jelenleg csak az USA régióiban, Nyugat-és Észak-Európában, Kanadában és Ausztráliában működő tárfiókok támogatottak. |
     |Tárfiók(ok)|A megadott Azure-régió alapján válasszon ki egy meglévő tárfiókot a szűrt listából. <br>Létre is hozhat egy új Általános célú v1 vagy Általános célú v2 fiókot. |
     |Adatok becsült mérete (TB)| Adjon meg egy becsült mennyiséget TB-ban. <br>Az adatmennyiség alapján a Microsoft kiküldi Önnek a megfelelő számú 8 TB-os SSD-t (7 TB felhasználható kapacitás). <br>5 lemez maximális felhasználható kapacitása 35 TB. |
 

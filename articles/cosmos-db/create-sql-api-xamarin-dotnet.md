@@ -11,14 +11,23 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/30/2018
 ms.author: masoucou
-ms.openlocfilehash: 2be4ab0b65827c3d6a906b31e063d8618e12ca0c
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 36236f8f8a7122369f5888ef21d8f69b719b45aa
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42022990"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43700463"
 ---
 # <a name="azure-cosmos-db-build-a-todo-app-with-xamarin"></a>Azure Cosmos DB: Teendőkezelő alkalmazás fejlesztése Xamarin használatával
+
+> [!div class="op_single_selector"]
+> * [.NET](create-sql-api-dotnet.md)
+> * [Java](create-sql-api-java.md)
+> * [Node.js](create-sql-api-nodejs.md)
+> * [Node.js – v2](create-sql-api-nodejs-preview.md)
+> * [Python](create-sql-api-python.md)
+> * [Xamarin](create-sql-api-xamarin-dotnet.md)
+>  
 
 Az Azure Cosmos DB a Microsoft globálisan elosztott, többmodelles adatbázis-szolgáltatása. Segítségével gyorsan létrehozhat és lekérdezhet dokumentum, kulcs/érték és gráf típusú adatbázisokat, amelyek mindegyike felhasználja az Azure Cosmos DB középpontjában álló globális elosztási és horizontális skálázhatósági képességeket.
 

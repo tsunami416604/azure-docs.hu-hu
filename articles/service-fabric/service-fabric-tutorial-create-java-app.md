@@ -12,15 +12,15 @@ ms.devlang: java
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/26/2018
+ms.date: 09/01/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: a8522dbe20f302a1819b89eaea92562a2dcf43a5
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: e4552157cab846356c57a135d4e273f5a545bce9
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37114125"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43667217"
 ---
 # <a name="tutorial-create-an-application-with-a-java-web-api-front-end-service-and-a-stateful-back-end-service-on-service-fabric"></a>Oktatóanyag: Alkalmazás létrehozása egy Java Web API kezelőfelületi szolgáltatás és egy állapotalapú háttérszolgáltatás segítségével a Service Fabricben
 
@@ -55,13 +55,13 @@ Az oktatóanyag elkezdése előtt:
 
 Először hozza létre a szavazóalkalmazás webes kezelőfelületét. Az állapotmentes Java-szolgáltatás kiépít egy, az AngularJS által működtetett webes felhasználói felületet üzemeltető egyszerűsített HTTP-kiszolgálót. A felhasználók kéréseit ez az állapotmentes szolgáltatás dolgozza fel, és távoli eljáráshívásként küldi tovább az állapotmentes szolgáltatásnak, hogy az tárolja a szavazatokat. 
 
-1. Az Eclipse indítása
+1. Indítsa el az Eclipse-t.
 
-2. Hozzon létre egy projektet a **File**->**New**->**Other**->**Service Fabric**->**Service Fabric Project** (Fájl/Új/Egyéb/Service Fabric/Service Fabric-projekt) paranccsal.
+2. Hozzon létre egy projektet a **File (Fájl)**->**New (Új)**->**Other (Egyéb)**->**Service Fabric (Service Fabric)**->**Service Fabric Project (Service Fabric-project)** használatával.
 
     ![Az Eclipse Új projekt párbeszédpanelje](./media/service-fabric-tutorial-create-java-app/create-sf-proj-wizard.png)
 
-3. A **ServiceFabric Project Wizard** (ServiceFabric-projekt varázsló) párbeszédpanelén adja a projektnek a **Voting** nevet, és nyomja meg a **Next** (Tovább) gombot.
+3. A **ServiceFabric Project Wizard** (ServiceFabric-projekt varázsló) párbeszédpanelén adja a projektnek a **Voting** nevet, és kattintson a **Next** (Tovább) gombra.
 
     ![Az állapotmentes Java-szolgáltatás kiválasztása az Új szolgáltatás párbeszédpanelen](./media/service-fabric-tutorial-create-java-app/name-sf-proj-wizard.png) 
 
@@ -89,9 +89,9 @@ Az állapotmentes szolgáltatás által renderelhető felhasználói felület ho
 
 1. A *VotingApplication/VotingWebPkg/Code* eléréséhez bontsa ki a *VotingApplication* könyvtárat.
 
-2. Kattintson a jobb gombbal a *Code* könyvtárra, majd kattintson a **New**->**Other** (Új/Egyéb) elemre
+2. Kattintson a jobb gombbal a *Code* könyvtárra, majd kattintson a **New (Új)**->**Other (Egyéb)** elemre.
 
-3. Hozzon létre egy *wwwroot* nevű mappát, és kattintson a **Finish** (Befejezés) elemre.
+3. A mappának adja a *wwwroot* nevet, majd kattintson a **Finish (Befejezés)** gombra.
 
     ![Az Eclipse wwwroot mappája](./media/service-fabric-tutorial-create-java-app/create-wwwroot-folder.png)
 
@@ -205,9 +205,9 @@ app.controller("VotingAppController", ['$rootScope', '$scope', '$http', '$timeou
 </html>
 ```
 
-### <a name="update-the-votingwebservicejava-file"></a>A VotingWebService.java fájl frissítése
+### <a name="update-the-votingwebjava-file"></a>A VotingWeb.java fájl frissítése
 
-A **VotingWeb** alprojektben nyissa meg a *VotingWeb/src/statelessservice/VotingWebService.java* fájlt. A **VotingWebService** az átjáró az állapotmentes szolgáltatásba, és ez felelős az előtérbeli API kommunikációs figyelőjének beállításáért.
+A **VotingWeb** alprojektben nyissa meg a *VotingWeb/src/statelessservice/VotingWeb.java* fájlt. A **VotingWeb** szolgáltatás az átjáró az állapotmentes szolgáltatásba, és ez felelős az előtérbeli API kommunikációs figyelőjének beállításáért.
 
 Cserélje le a fájl **createServiceInstanceListeners** metódusának tartalmát a következőre, majd mentse a módosításokat.
 
@@ -226,7 +226,7 @@ protected List<ServiceInstanceListener> createServiceInstanceListeners() {
 
 ### <a name="add-the-httpcommunicationlistenerjava-file"></a>A HTTPCommunicationListener.java fájl hozzáadása
 
-A HTTP-kommunikáció figyelője úgy működik, mint egy vezérlő, amely beállítja a HTTP-kiszolgálót, és elérhetővé teszi a szavazási műveleteket meghatározó API-kat. A *VotingWeb/src/statelessservice* mappában kattintson a jobb gombbal a *statelessservice* mappára, majd válassza a **New->Other…->General->File** (Új->Egyéb…->Általános->Fájl) lehetőséget, és kattintson a **Next** (Tovább) gombra.  A fájlnak adja a *HttpCommunicationListener.java* nevet, majd kattintson a **Finish** (Befejezés) gombra.
+A HTTP-kommunikáció figyelője úgy működik, mint egy vezérlő, amely beállítja a HTTP-kiszolgálót, és elérhetővé teszi a szavazási műveleteket meghatározó API-kat. A *VotingWeb/src/statelessservice* mappában kattintson a jobb gombbal a *statelessservice* mappára, majd válassza a **New->File (Új->Fájl)** lehetőséget.  A fájlnak adja a *HttpCommunicationListener.java* nevet, majd kattintson a **Finish** (Befejezés) gombra.
 
 Cserélje le a fájl tartalmát a következőkkel, majd mentse a módosításokat.  A későbbiekben, [a HttpCommunicationListener.java fájl frissítését](#updatelistener_anchor) ismertető szakaszban ez a fájl úgy módosul, hogy a háttérszolgáltatásból a szavazás adatait renderelni, olvasni és írni is tudja.  Egyelőre a figyelő egyszerűen a szavazóalkalmazás statikus HTML-jét adja vissza.
 
@@ -387,7 +387,7 @@ public class HttpCommunicationListener implements CommunicationListener {
 
 ### <a name="configure-the-listening-port"></a>A figyelőport konfigurálása
 
-A VotingWebService kezelőfelületi szolgáltatás létrehozásakor a Service Fabric véletlenszerűen kiválaszt egy portot, amelyen a szolgáltatás a figyelést végzi.  A VotingWebService az alkalmazás kezelőfelületeként működik, és fogadja a külső forgalmat, úgyhogy rendeljük ezt a szolgáltatást egy rögzített, jól ismert porthoz. A Package Explorerben nyissa meg a *VotingWebService/VotingWebServicePkg/ServiceManifest.xml* fájlt.  Keresse meg az **Endpoint** (Végpont) erőforrást a **Resources** (Erőforrások) szakaszban, és módosítsa a **Port** értékét 8080-ra, vagy egy másik portra. Az alkalmazás helyi üzembe helyezéséhez és futtatásához az alkalmazásfigyelő-portnak a számítógépen megnyitva és elérhető állapotban kell lennie. A **ServiceManifest** címke alá illessze be az alábbi kódrészletet.
+A VotingWeb szolgáltatás kezelőfelületi szolgáltatás létrehozásakor a Service Fabric véletlenszerűen kiválaszt egy portot, amelyen a szolgáltatás a figyelést végzi.  A VotingWeb szolgáltatás az alkalmazás kezelőfelületeként működik, és fogadja a külső forgalmat, úgyhogy rendeljük ezt a szolgáltatást egy rögzített, jól ismert porthoz. A Package Explorerben nyissa meg a *VotingApplication/VotingWebPkg/ServiceManifest.xml* fájlt.  Keresse meg az **Endpoint** (Végpont) erőforrást a **Resources** (Erőforrások) szakaszban, és módosítsa a **Port** értékét 8080-ra, vagy egy másik portra. Az alkalmazás helyi üzembe helyezéséhez és futtatásához az alkalmazásfigyelő-portnak a számítógépen megnyitva és elérhető állapotban kell lennie. A **ServiceManifest** elemen belül illessze be az alábbi kódrészletet (közvetlenül az ```<DataPackage>``` elem alá).
 
 ```xml
 <Resources>
@@ -408,9 +408,7 @@ A Service Fabric megbízható gyűjtemények használatával konzisztens módon 
 
 1. A Package Explorerben kattintson a jobb gombbal a **Voting** elemre az alkalmazásprojektben, és válassza a **Service Fabric > Add Service Fabric Service** (Service Fabric > Service Fabric-szolgáltatás hozzáadása) lehetőséget.
 
-2. Az **Add Service** (Szolgáltatás hozzáadása) párbeszédpanelen válassza a **Stateful Service** (Állapotalapú szolgáltatás) lehetőséget, nevezze el a szolgáltatást (**VotingData**), majd kattintson az **Add Service** (Szolgáltatás hozzáadása) elemre.
-
-    ![Új szolgáltatás hozzáadása egy meglévő alkalmazáshoz](./media/service-fabric-tutorial-create-java-app/addstatefuljava.png)
+2. Az **Add Service** (Szolgáltatás hozzáadása) párbeszédpanelen válassza a **Stateful Service** (Állapotalapú szolgáltatás) lehetőséget, nevezze el a szolgáltatást (**VotingDataService**), majd kattintson az **Add Service** (Szolgáltatás hozzáadása) elemre.
 
     A szolgáltatásprojekt létrehozása után az alkalmazás két szolgáltatást fog tartalmazni. Miközben létrehozza az alkalmazást, hasonlóképpen adhat hozzá további szolgáltatásokat. Mindegyik – a többitől függetlenül – verziószámmal ellátható és frissíthető.
 
@@ -420,7 +418,7 @@ A Service Fabric megbízható gyűjtemények használatával konzisztens módon 
 
 ### <a name="add-the-votingdataservicejava-file"></a>A VotingDataService.java fájl hozzáadása
 
-A *VotingDataService.java* fájl tartalmazza a szavazatok lekérésének, hozzáadásának és a megbízható gyűjteményekből való törlésének logikáját tartalmazó metódusokat. Adja hozzá az alábbi metódusokat a **VotingDataService** osztályhoz a létrehozott *VotingDataService/src/statefulservice/VotingDataService.java* fájlban.
+A *VotingDataService.java* fájl tartalmazza a szavazatok lekérésének, hozzáadásának és a megbízható gyűjteményekből való törlésének logikáját tartalmazó metódusokat. Adja hozzá az alábbi **VotingDataService** osztálymetódusokat a *VotingDataService/src/statefulservice/VotingDataService.java* fájlhoz.
 
 ```java
 package statefulservice;
@@ -553,9 +551,7 @@ class VotingDataService extends StatefulService implements VotingRPC {
 
 Elkészült a kezelőfelületi állapotmentes szolgáltatás és a háttérszolgáltatás váza. A következő lépés a két szolgáltatás összekapcsolása. A kezelőfelületi és a háttérszolgáltatás is használ egy VotingRPC nevű interfészt, amely meghatározza a szavazóalkalmazás műveleteit. Ezt az interfészt a kezelőfelület és a háttérszolgáltatás is implementálja, hogy lehetővé váljanak a távoli eljáráshívások (RPC) a két szolgáltatás között. Minthogy az Eclipse nem támogatja Gradle-alprojektek felvételét, az interfészt tartalmazó csomagot manuálisan kell felvenni.
 
-1. Kattintson a Package Explorerben a jobb gombbal a **Voting** projektre, és kattintson a **New -> Other …** (Új -> Egyéb…) elemre.
-
-2. A varázslóban kattintson a **General -> Folder** (Általános -> Mappa) elemre, és adja a mappának a **VotingRPC/src/rpcmethods** nevet. 
+1. Kattintson a Package Explorerben a jobb gombbal a **Voting** projektre, és kattintson a **New -> Folder** (Új -> Mappa) elemre. A mappának adja a **VotingRPC/src/rpcmethods** nevet.
 
     ![VotingRPC csomag létrehozása](./media/service-fabric-tutorial-create-java-app/createvotingrpcpackage.png)
 
@@ -632,7 +628,7 @@ Elkészült a kezelőfelületi állapotmentes szolgáltatás és a háttérszolg
     include ':VotingRPC'
     ```
 
-6. A *Voting/VotingWebService/src/statelessservice/HttpCommunicationListener.java* fájlban a megjegyzésblokkot cserélje a következőre.  
+6. A *Voting/VotingWeb/src/statelessservice/HttpCommunicationListener.java* fájlban a megjegyzésblokkot cserélje a következőre.  
 
     ```java
     server.createContext("/getStatelessList", new HttpHandler() {
@@ -746,7 +742,7 @@ Ebben a szakaszban a projekthez tartozó Gradle-szkriptek konfigurálása tört�
     defaultTasks 'clean', 'jar', 'copyDeps'
     ```
 
-2. Cserélje le a *Voting/VotingWeb/build.gradle* fájl tartalmát.
+2. Cserélje le a *Voting/VotingWeb/build.gradle* fájl tartalmát az alábbiakra.
 
     ```gradle
     apply plugin: 'java'
@@ -816,7 +812,7 @@ Ebben a szakaszban a projekthez tartozó Gradle-szkriptek konfigurálása tört�
     defaultTasks 'clean', 'jar', 'copyDeps'
     ``` 
 
-3. Cserélje le a *Voting/VotingData/build.gradle* fájl tartalmát. 
+3. Cserélje le a *Voting/VotingDataService/build.gradle* fájl tartalmát. 
 
     ```gradle
     apply plugin: 'java'

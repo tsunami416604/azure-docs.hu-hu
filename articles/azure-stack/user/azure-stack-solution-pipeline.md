@@ -11,17 +11,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/04/2018
+ms.date: 09/12/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 773acd3a22244403548ef4ce35164291f5c0be7d
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: ad40f3efc123d313b2fd759889b0aa2621b3d7aa
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44300835"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45542501"
 ---
-# <a name="tutorial-deploy-apps-to-azure-and-azure-stack"></a>Oktatóanyag: alkalmazások telepítése az Azure és az Azure Stackben
+# <a name="tutorial-deploy-apps-to-azure-and-azure-stack"></a>Oktatóanyag: Alkalmazások telepítése az Azure és az Azure Stackben
 
 *A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
 
@@ -81,7 +81,7 @@ Ez az oktatóanyag feltételezi, hogy néhány alapvető ismeretek az Azure és 
  * Hozzon létre [csomag/ajánlatok](https://docs.microsoft.com/azure/azure-stack/azure-stack-plan-offer-quota-overview) az Azure Stackben.
  * Hozzon létre egy [bérlői előfizetéshez](https://docs.microsoft.com/azure/azure-stack/azure-stack-subscribe-plan-provision-vm) az Azure Stackben.
  * Webalkalmazás létrehozása a bérlői előfizetéshez. Jegyezze fel az új webes alkalmazás URL-CÍMÉT a későbbi használatra.
- * A bérlő előfizetés Azure fejlesztési és üzemeltetési szolgáltatások virtuális gép üzembe helyezése.
+ * Telepítse a Windows Server 2012 virtuális gépet a bérlő az előfizetésben. Ez a kiszolgáló a lemezképfájl-kiszolgálóján, és futtassa az Azure fejlesztési és üzemeltetési szolgáltatásokat fogja használni.
 * Adja meg a .NET 3.5 a Windows Server 2016 rendszerképet a virtuális gép (VM). Ez a virtuális gép, egy privát fordító-ügynökhöz az Azure Stack lesz felépítve.
 
 ### <a name="developer-tool-requirements"></a>Fejlesztői eszköz követelményei

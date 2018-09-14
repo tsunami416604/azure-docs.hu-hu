@@ -11,18 +11,27 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 01/08/2018
 ms.author: lbosq
-ms.openlocfilehash: 5a6e80a65ea1ac5a5d4dbc7e422131da2a464a6a
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: dff675fc64d9ee7e01a7e050a42a2724d00ec3ef
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43186953"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43696540"
 ---
-# <a name="azure-cosmos-db-build-a-net-framework-or-core-application-using-the-graph-api"></a>Azure Cosmos DB: .NET-keretrendszer vagy Core-alkalmazás létrehozása a Graph API használatával
+# <a name="azure-cosmos-db-build-a-net-framework-or-core-application-using-the-gremlin-api"></a>Azure Cosmos DB: .NET-keretrendszer vagy Core-alkalmazás létrehozása a Gremlin API használatával
+
+> [!div class="op_single_selector"]
+> * [Gremlin-konzol](create-graph-gremlin-console.md)
+> * [.NET](create-graph-dotnet.md)
+> * [Java](create-graph-java.md)
+> * [Node.js](create-graph-nodejs.md)
+> * [Python](create-graph-python.md)
+> * [PHP](create-graph-php.md)
+>  
 
 Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-szolgáltatása. Segítségével gyorsan létrehozhat és lekérdezhet dokumentum, kulcs/érték és gráf típusú adatbázisokat, amelyek mindegyike felhasználja az Azure Cosmos DB középpontjában álló globális elosztási és horizontális skálázhatósági képességeket. 
 
-Ez a rövid útmutató bemutatja, hogyan hozhat létre az Azure Portal segítségével Azure Cosmos DB [Graph API](graph-introduction.md)-fiókot, adatbázist és gráfot (tárolót). Ezután a nyílt forráskódú [Gremlin Net](http://tinkerpop.apache.org/docs/3.2.7/reference/#gremlin-DotNet)-illesztőprogram segítségével létrehozhat és futtathat egy konzolalkalmazást.  
+Ez a rövid útmutató bemutatja, hogyan hozhat létre az Azure Portal segítségével Azure Cosmos DB [Gremlin API](graph-introduction.md)-fiókot, adatbázist és gráfot (tárolót). Ezután a nyílt forráskódú [Gremlin Net](http://tinkerpop.apache.org/docs/3.2.7/reference/#gremlin-DotNet)-illesztőprogram segítségével létrehozhat és futtathat egy konzolalkalmazást.  
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -42,7 +51,7 @@ Ha a Visual Studio 2017 már telepítve van, győződjön meg arról, hogy minde
 
 ## <a name="clone-the-sample-application"></a>A mintaalkalmazás klónozása
 
-A következő lépésekben elvégezheti a Graph API-alkalmazás klónozását a GitHubról, beállíthatja a kapcsolati sztringet, és futtathatja az alkalmazást. Látni fogja, milyen egyszerű az adatokkal programozott módon dolgozni. 
+Most pedig klónozunk egy Gremlin API-alkalmazást a GitHubról, beállítjuk a kapcsolati sztringet, majd futtatni fogjuk az alkalmazást. Látni fogja, milyen egyszerű az adatokkal programozott módon dolgozni. 
 
 1. Nyisson meg egy parancssort, hozzon létre egy git-samples nevű új mappát, majd zárja be a parancssort.
 

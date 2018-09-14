@@ -12,14 +12,24 @@ ms.topic: quickstart
 ms.date: 04/10/2018
 ms.author: sngun
 clicktale: true
-ms.openlocfilehash: 19da0591d61e55cc34a7a0cc17ed13b197cdabab
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 672156d6c301fc26f8e4da5f78523f1fe30bac6f
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38652056"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43698128"
 ---
 # <a name="quickstart-build-a-net-web-app-with-azure-cosmos-db-using-the-sql-api-and-the-azure-portal"></a>Rövid útmutató: .NET-webalkalmazás létrehozása Azure Cosmos DB-vel, az SQL API és az Azure Portal használatával
+
+> [!div class="op_single_selector"]
+> * [.NET](create-sql-api-dotnet.md)
+> * [Java](create-sql-api-java.md)
+> * [Node.js](create-sql-api-nodejs.md)
+> * [Node.js – v2](create-sql-api-nodejs-preview.md)
+> * [Python](create-sql-api-python.md)
+> * [Xamarin](create-sql-api-xamarin-dotnet.md)
+>  
+> 
 
 Az Azure Cosmos DB a Microsoft globálisan elosztott, többmodelles adatbázis-szolgáltatása. Segítségével gyorsan létrehozhat és lekérdezhet dokumentum, kulcs/érték és gráf típusú adatbázisokat, amelyek mindegyike felhasználja az Azure Cosmos DB középpontjában álló globális elosztási és horizontális skálázhatósági képességeket. 
 
@@ -121,9 +131,13 @@ Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja 
 
     `<add key="endpoint" value="FILLME" />`
 
-4. Ezután másolja ki az ELSŐDLEGES KULCS értékét a Portalról, és azt adja meg az authKey értékeként a web.config fájlban. Az alkalmazás frissítve lett minden olyan információval, amely az Azure Cosmos DB-vel való kommunikációhoz szükséges. 
+4. Ezután másolja ki az ELSŐDLEGES KULCS értékét a Portalról, és azt adja meg az authKey értékeként a web.config fájlban. 
 
     `<add key="authKey" value="FILLME" />`
+    
+5. Ezután frissítse az adatbázis értékét, hogy megegyezzen a korábban létrehozott adatbázis nevével. Az alkalmazás frissítve lett minden olyan információval, amely az Azure Cosmos DB-vel való kommunikációhoz szükséges. 
+
+    `<add key="database" value="Tasks" />`    
     
 ## <a name="run-the-web-app"></a>A webalkalmazás futtatása
 1. A Visual Studióban kattintson a jobb gombbal a projektre a **Megoldáskezelőben**, majd kattintson a **NuGet-csomagok kezelése** elemre. 

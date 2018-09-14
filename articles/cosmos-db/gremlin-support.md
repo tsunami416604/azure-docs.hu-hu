@@ -10,19 +10,19 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 01/02/2018
 ms.author: lbosq
-ms.openlocfilehash: c675f37e50f5b8a259048d9a92fcdbe5b947068c
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 593b7ac636b92db5c72cfad8f73fc2c418639358
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34797617"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43700212"
 ---
 # <a name="azure-cosmos-db-gremlin-graph-support"></a>A Gremlin-gráfok Azure Cosmos DB általi támogatása
-Az Azure Cosmos DB támogatja az [Apache TinkerPop](http://tinkerpop.apache.org) gráfbejárási nyelvét, a [Gremlint](http://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps), amely egy Graph API gráfentitások létrehozásához és gráflekérdezési műveletetek végrehajtásához. A Gremlin nyelv segítségével létrehozhat gráfentitásokat (csúcspontokat és éleket), módosíthatja ezen entitások tulajdonságait, végrehajthat lekérdezéseket és bejárásokat, és törölhet entitásokat. 
+Az Azure Cosmos DB támogatja az [Apache TinkerPop](http://tinkerpop.apache.org) gráfbejárási nyelvét, a [Gremlint](http://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps), amely egy Gremlin API a gráfentitások létrehozásához és gráflekérdezési műveletek végrehajtásához. A Gremlin nyelv segítségével létrehozhat gráfentitásokat (csúcspontokat és éleket), módosíthatja ezen entitások tulajdonságait, végrehajthat lekérdezéseket és bejárásokat, és törölhet entitásokat. 
 
 Az Azure Cosmos DB nagyvállalati szintű funkciókat biztosít a gráfadatbázisokhoz. Ezek közé tartozik a globális terjesztési, a tárolási és átviteli megoldások független méretezése, az előre jelezhető, egyjegyű ezredmásodperces késések, az automatikus indexelés, az SLA-k, és az olvasási rendelkezésre állás a két vagy több Azure-régióra kiterjedő adatbázisfiókokhoz. Mivel az Azure Cosmos DB támogatja a TinkerPop/Gremlin nyelvet, egyszerűen, a kód módosításának szükségessége nélkül migrálhatók a más gráfadatbázisokkal írt alkalmazások. Emellett a Gremlin-támogatásnak köszönhetően az Azure Cosmos DB zökkenőmentesen integrálható a TinkerPop-kompatibilis elemzési keretrendszerekkel, például az [Apache Spark GraphX](http://spark.apache.org/graphx/)-szel. 
 
-Ez a cikk gyors útmutatót nyújt a Gremlin használatához, valamint bemutatja a Gremlin azon funkcióit és lépéseit, amelyeket a Graph API támogat.
+Ez a cikk egy rövid útmutatót nyújt a Gremlin használatához, valamint bemutatja a Gremlin azon funkcióit és lépéseit, amelyeket a Gremlin API támogat.
 
 ## <a name="gremlin-by-example"></a>Példa a Gremlin használatára
 Használjunk egy mintagráfot annak megismeréséhez, hogyan adhatók meg lekérdezések a Gremlinben. Az alábbi ábrán egy üzleti alkalmazás látható, amely felhasználókkal, érdeklődési körökkel és eszközökkel kapcsolatos adatokat kezel egy gráf formájában.  

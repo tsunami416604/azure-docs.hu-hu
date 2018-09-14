@@ -1,76 +1,78 @@
 ---
-title: Az Azure Kubernetes szolgáltatás (AKS) és Terraform Kubernetes fürt létrehozása
-description: Az oktatóanyag egy Kubernetes fürt létrehozása az Azure Kubernetes szolgáltatás és Terraform ábrázoló
-keywords: terraform, a devops, a virtuális gépet, az azure, a kubernetes
+title: Kubernetes-fürt létrehozása az Azure Kubernetes Service-szel (AKS) és a Terraformmal
+description: Oktatóanyag, amely bemutatja, hogyan hozhat létre egy Kubernetes-fürtöt az Azure Kubernetes Service-szel és a Terraformmal
+services: terraform
+ms.service: terraform
+keywords: terraform, devops, virtuális gép, azure, kubernetes
 author: tomarcher
 manager: jeconnoc
 ms.author: tarcher
+ms.topic: tutorial
 ms.date: 06/11/2018
-ms.topic: article
-ms.openlocfilehash: bd00a0cc8446802a03570edd58949a46c0769101
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
-ms.translationtype: MT
+ms.openlocfilehash: 8a997c88943b0273d3136dbf02a784fbdb982527
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35303750"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43666807"
 ---
-# <a name="create-a-kubernetes-cluster-with-azure-kubernetes-service-and-terraform"></a>Az Azure Kubernetes szolgáltatás és Terraform Kubernetes fürt létrehozása
-[Az Azure Kubernetes szolgáltatás (AKS)](/azure/aks/) kezeli az üzemeltetett Kubernetes-környezethez, így gyorsan és egyszerűen telepítéséhez és kezeléséhez indexelése alkalmazások tároló vezénylési szakértői nélkül. Ezenkívül a folyamatban lévő műveletek és karbantartás terhét is megszünteti az erőforrások igény szerinti kiépítésével, frissítésével és méretezésével anélkül, hogy offline állapotba kellene helyezni az alkalmazásait.
+# <a name="create-a-kubernetes-cluster-with-azure-kubernetes-service-and-terraform"></a>Kubernetes-fürt létrehozása az Azure Kubernetes Service és a Terraform segítségével
+Az [Azure Kubernetes Service (AKS)](/azure/aks/) felügyeli az üzemeltetett Kubernetes környezetet, lehetővé téve a tárolóalapú alkalmazások gyors és egyszerű üzembe helyezését és felügyeletét tárolóvezénylési szakértelem nélkül is. Ezenkívül a folyamatban lévő műveletek és karbantartás terhét is megszünteti az erőforrások igény szerinti kiépítésével, frissítésével és méretezésével anélkül, hogy offline állapotba kellene helyezni az alkalmazásait.
 
-Ebben az oktatóanyagban elsajátíthatja, hogyan létrehozásakor a következő feladatok végezhetők el a [Kubernetes](https://www.redhat.com/en/topics/containers/what-is-kubernetes) fürt használatával [Terraform](http://terraform.io) és AKS:
+Ebben az oktatóanyagban megtudhatja, hogyan végezheti el az alábbi feladatokat a [Kubernetes-fürt](https://www.redhat.com/en/topics/containers/what-is-kubernetes) [Terraformmal](http://terraform.io) és AKS-sel történő létrehozása során:
 
 > [!div class="checklist"]
-> * Hardverkompatibilitási (HashiCorp Language) segítségével Kubernetes fürt meghatározása
-> * Használja a Terraform és AKS Kubernetes fürt létrehozása
-> * A kubectl eszközzel ellenőrizze az Kubernetes fürt
+> * Kubernetes-fürt meghatározása HCL (HashiCorp Language) használatával
+> * Kubernetes-fürt létrehozása Terraformmal és AKS-sel
+> * Kubernetes-fürt rendelkezésre állásának tesztelése a kubectl eszközzel
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - **Azure-előfizetés**: Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-- **Terraform konfigurálása**: a cikk utasításait követve [Terraform és Azure való hozzáférés konfigurálása](/azure/virtual-machines/linux/terraform-install-configure)
+- **A Terraform konfigurálása**: Kövesse a [Terraform telepítését és az Azure-hozzáférés konfigurálását ismertető cikkben](/azure/virtual-machines/linux/terraform-install-configure) található utasításokat
 
-- **Az Azure szolgáltatás egyszerű**: szakaszának útmutatásait a **a szolgáltatásnevet létrehozni** című cikk, [hozzon létre egy Azure szolgáltatás egyszerű Azure CLI 2.0](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest#create-the-service-principal). Jegyezze fel az appId, displayName, jelszót és bérlői értékeit.
+- **Azure-beli szolgáltatásnév**: Kövesse az [Azure-beli szolgáltatásnév létrehozása az Azure CLI 2.0-val](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest#create-the-service-principal) című cikk **a szolgáltatásnév létrehozását** ismertető szakaszában foglaltakat. Jegyezze fel az appId, a displayName, a password és a tenant értékét.
 
-## <a name="create-the-directory-structure"></a>A directory-struktúra létrehozása
-Az első lépés, amely tárolja a Terraform konfigurációs fájljait a gyakorlatban a következő könyvtár létrehozásakor.
+## <a name="create-the-directory-structure"></a>A könyvtárstruktúra létrehozása
+Az első lépés a könyvtár létrehozása, amely a feladathoz tartozó Terraform konfigurációs fájlokat tárolja.
 
-1. Keresse meg a [Azure-portálon](http://portal.azure.com).
+1. Keresse fel az [Azure Portalt](http://portal.azure.com).
 
-1. Nyissa meg [Azure felhőben rendszerhéj](/azure/cloud-shell/overview). Ha korábban nem jelölt ki egy olyan környezetben, válassza ki a **Bash** , a környezetben.
+1. Nyissa meg az [Azure Cloud Shellt](/azure/cloud-shell/overview). Ha még nem választott ki környezetet, válassza a **Bash** környezetet.
 
-    ![Felhő rendszerhéj kérdés](./media/terraform-create-k8s-cluster-with-tf-and-aks/azure-portal-cloud-shell-button-min.png)
+    ![Cloud Shell-parancssor](./media/terraform-create-k8s-cluster-with-tf-and-aks/azure-portal-cloud-shell-button-min.png)
 
-1. Lépjen a `clouddrive` könyvtár.
+1. Lépjen be a `clouddrive` könyvtárba.
 
     ```bash
     cd clouddrive
     ```
 
-1. Hozzon létre egy könyvtárat nevű `terraform-aks-k8s`.
+1. Hozzon létre egy `terraform-aks-k8s` nevű könyvtárat.
 
     ```bash
     mkdir terraform-aks-k8s
     ```
 
-1. Váltson át az új könyvtár:
+1. Lépjen be az új könyvtárba:
 
     ```bash
     cd terraform-aks-k8s
     ```
 
-## <a name="declare-the-azure-provider"></a>Deklarálja az Azure-szolgáltató
-Az Azure-szolgáltató a Terraform konfigurációs fájl létrehozása.
+## <a name="declare-the-azure-provider"></a>Az Azure-szolgáltató deklarálása
+Hozza létre az Azure-szolgáltatót deklaráló Terraform konfigurációs fájlt.
 
-1. A felhő rendszerhéj, hozzon létre egy fájlt `main.tf`.
+1. Hozzon létre egy `main.tf` nevű fájlt a Cloud Shellben.
 
     ```bash
     vi main.tf
     ```
 
-1. Adja meg a beszúrási módban kiválasztásával a kulcsot.
+1. Az I billentyű lenyomásával lépjen beszúrási módba.
 
-1. Az alábbi kód beillesztése a szerkesztőbe:
+1. Másolja az alábbi kódot a szerkesztőbe:
 
     ```JSON
     provider "azurerm" {
@@ -83,26 +85,26 @@ Az Azure-szolgáltató a Terraform konfigurációs fájl létrehozása.
 
     ```
 
-1. Kilépés beszúrási módban kiválasztásával a **Esc** kulcs.
+1. A beszúrás módból az **Esc** billentyűvel léphet ki.
 
-1. Mentse a fájlt, és zárja be a vi szerkesztőt a következő parancs beírásával:
+1. Mentse a fájlt, és lépjen ki a VI-szerkesztőből a következő parancs megadásával:
 
     ```bash
     :wq
     ```
 
-## <a name="define-a-kubernetes-cluster"></a>Adja meg a Kubernetes fürt
-Deklarálja az erőforrásokat a Kubernetes fürt Terraform konfigurációs fájl létrehozása.
+## <a name="define-a-kubernetes-cluster"></a>Kubernetes-fürt meghatározása
+Hozza létre a Kubernetes-fürt erőforrásait deklaráló Terraform konfigurációs fájlt.
 
-1. A felhő rendszerhéj, hozzon létre egy fájlt `k8s.tf`.
+1. Hozzon létre egy `k8s.tf` nevű fájlt a Cloud Shellben.
 
     ```bash
     vi k8s.tf
     ```
 
-1. Adja meg a beszúrási módban kiválasztásával a kulcsot.
+1. Az I billentyű lenyomásával lépjen beszúrási módba.
 
-1. Az alábbi kód beillesztése a szerkesztőbe:
+1. Másolja az alábbi kódot a szerkesztőbe:
 
     ```JSON
     resource "azurerm_resource_group" "k8s" {
@@ -143,31 +145,31 @@ Deklarálja az erőforrásokat a Kubernetes fürt Terraform konfigurációs fáj
     }
     ```
 
-    Az előzőekben látható kód állítja be a fürtöt, helyét és a resource_group_name nevét. Emellett a dns_prefix - a teljesen minősített tartománynevét (FQDN), amellyel elérhető a fürt részét képező - értéke.
+    Az előző kód megadja a fürt nevét, helyét és az erőforráscsoport nevét. Emellett a dns_prefix érték is be lesz állítva. (Ez a fürt eléréséhez használt teljes tartománynév egy része.)
 
-    A **linux_profile** rekord lehetővé teszi a beállítások, amelyek lehetővé teszik a feldolgozó csomópontok SSH használatával bejelentkezni.
+    A **linux_profile** rekord lehetővé teszi, hogy konfigurálja azokat a beállításokat, amelyek engedélyezik az SSH-bejelentkezést a munkavégző csomópontokra.
 
-    A AKS csak fizetnie a munkavégző csomópontokhoz. A **agent_pool_profile** rekord konfigurálja a feldolgozó csomópontok részleteit. A **agent_pool_profile rekord** létrehozásához a feldolgozó csomópontok száma és a feldolgozó csomópontok típusú tartalmaz. Növelheti vagy csökkentheti a jövőben a fürthöz kell, ha módosítja a **száma** értékét az rekordban.
+    Az AKS-sel csak a munkavégző csomópontokért kell fizetnie. Az **agent_pool_profile** rekord ezen munkavégző csomópontok részleteit konfigurálja. Az **agent_pool_profile record** tartalmazza a létrehozandó munkavégző csomópontok számát és a munkavégző csomópontok típusát. Ha a jövőben a fürt vertikális felskálázásra vagy leskálázásra lesz szükség, módosítsa a rekord **count** (darabszám) értékét.
 
-1. Kilépés beszúrási módban kiválasztásával a **Esc** kulcs.
+1. A beszúrás módból az **Esc** billentyűvel léphet ki.
 
-1. Mentse a fájlt, és zárja be a vi szerkesztőt a következő parancs beírásával:
+1. Mentse a fájlt, és lépjen ki a VI-szerkesztőből a következő parancs megadásával:
 
     ```bash
     :wq
     ```
 
-## <a name="declare-the-variables"></a>Deklarálja a változókat
+## <a name="declare-the-variables"></a>Változók deklarálása
 
-1. A felhő rendszerhéj, hozzon létre egy fájlt `variables.tf`.
+1. Hozzon létre egy `variables.tf` nevű fájlt a Cloud Shellben.
 
     ```bash
     vi variables.tf
     ```
 
-1. Adja meg a beszúrási módban kiválasztásával a kulcsot.
+1. Az I billentyű lenyomásával lépjen beszúrási módba.
 
-1. Az alábbi kód beillesztése a szerkesztőbe:
+1. Másolja az alábbi kódot a szerkesztőbe:
 
     ```JSON
     variable "client_id" {}
@@ -198,26 +200,26 @@ Deklarálja az erőforrásokat a Kubernetes fürt Terraform konfigurációs fáj
     }
     ```
 
-1. Kilépés beszúrási módban kiválasztásával a **Esc** kulcs.
+1. A beszúrás módból az **Esc** billentyűvel léphet ki.
 
-1. Mentse a fájlt, és zárja be a vi szerkesztőt a következő parancs beírásával:
+1. Mentse a fájlt, és lépjen ki a VI-szerkesztőből a következő parancs megadásával:
 
     ```bash
     :wq
     ```
 
-## <a name="create-a-terraform-output-file"></a>Egy Terraform a kimeneti fájl létrehozása
-[Terraform kimenete](https://www.terraform.io/docs/configuration/outputs.html) határozhatja meg a értékeket, amelyeket a program kiemeli a felhasználó Terraform terv vonatkozik, és segítségével lehet lekérdezni a `terraform output` parancsot. Ebben a szakaszban egy kimeneti fájl, amely lehetővé teszi a hozzáférést a fürt létrehozása [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/).
+## <a name="create-a-terraform-output-file"></a>Terraform kimeneti fájl létrehozása
+A [Terraform-kimenetek](https://www.terraform.io/docs/configuration/outputs.html) lehetővé teszik, hogy megadja azokat az értékeket, amelyek ki lesznek emelve a felhasználó számára a Terraform-tervek alkalmazásakor, és lekérdezhetők a `terraform output` paranccsal. Ebben a szakaszban létrehozza a kimeneti fájlt, amellyel hozzáférhet a fürthöz a [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/) használatával.
 
-1. A felhő rendszerhéj, hozzon létre egy fájlt `output.tf`.
+1. Hozzon létre egy `output.tf` nevű fájlt a Cloud Shellben.
 
     ```bash
     vi output.tf
     ```
 
-1. Adja meg a beszúrási módban kiválasztásával a kulcsot.
+1. Az I billentyű lenyomásával lépjen beszúrási módba.
 
-1. Az alábbi kód beillesztése a szerkesztőbe:
+1. Másolja az alábbi kódot a szerkesztőbe:
 
     ```JSON
     output "client_key" {
@@ -249,80 +251,80 @@ Deklarálja az erőforrásokat a Kubernetes fürt Terraform konfigurációs fáj
     }
     ```
 
-1. Kilépés beszúrási módban kiválasztásával a **Esc** kulcs.
+1. A beszúrás módból az **Esc** billentyűvel léphet ki.
 
-1. Mentse a fájlt, és zárja be a vi szerkesztőt a következő parancs beírásával:
+1. Mentse a fájlt, és lépjen ki a VI-szerkesztőből a következő parancs megadásával:
 
     ```bash
     :wq
     ```
 
-## <a name="set-up-azure-storage-to-store-terraform-state"></a>Állítsa be az Azure storage Terraform állapot tárolásához
-Keresztül helyileg állapot Terraform nyomon követi a `terraform.tfstate` fájlt. Ebben a mintában remekül működik egy egyszeri-személy környezetben. Azonban több gyakorlati több résztvevős környezetben kell nyomon követnie állapota a kiszolgáló használ a [az Azure storage](/azure/storage/). Ebben a szakaszban beolvasni a szükséges tárfiók adatait (a fióknevet és a fiókkulcsot), és hozzon létre egy tárolót, amelyben a Terraform állapot adatait tárolja majd.
+## <a name="set-up-azure-storage-to-store-terraform-state"></a>Az Azure Storage beállítása Terraform-állapot tárolásához
+A Terraform helyileg követi nyomon az állapotot a `terraform.tfstate` fájlon keresztül. Ez a minta jól működik egy egyszemélyes környezetben. A gyakorlatban is használható többszemélyes környezetben az [Azure Storage tárfiókot](/azure/storage/) használó kiszolgálón kell nyomon követni az állapotot. Ebben a szakaszban a Storage-fiók szükséges információit (a fióknevet és fiókkulcsot) kéri le, és létrehoz egy Storage-tárolót amelyben a Terraform állapotinformációit tárolja a rendszer.
 
-1. Válassza ki az Azure-portálon **minden szolgáltatás** a bal oldali menüben.
+1. Az Azure Portalon a bal oldali menüben válassza a **Minden szolgáltatás** elemet.
 
-1. Válassza ki **tárfiókok**.
+1. Válassza a **Tárfiókok** lehetőséget.
 
-1. Az a **tárfiókok** lapra, válassza ki a tárfiók, amelybe Terraform állapot tárolására neve. Például a tárolási fiók jön létre, amikor első alkalommal megnyitott felhő rendszerhéj is használhatja.  A tárfiók nevéhez létrehozott felhőalapú rendszerhéj általában kezdődik `cs` számok és betűk véletlenszerű karakterlánc követ. **Ne feledje választja, a tárfiók nevét, később igény szerint.**
+1. A **Tárfiókok** lapon válassza ki annak a tárfióknak nevét, amelyben a Terraform fogja tárolni az állapotot. Használhatja például azt a tárfiókot is, amely a Cloud Shell első megnyitásakor jött létre.  A Cloud Shell által létrehozott tárfiók neve általában `cs` értékkel kezdődik, amelyet számok és betűk véletlenszerű sorozata követ. **Jegyezze meg a kiválasztott tárfiók nevét, mert később szükség lesz rá.**
 
-1. Válassza ki a tárolási fiók lapon **hívóbetűk**.
+1. A tárfiók lapon válassza a **Hozzáférési kulcsok** lehetőséget.
 
-    ![Tárolási felhasználóifiók-menüjéből](./media/terraform-create-k8s-cluster-with-tf-and-aks/storage-account.png)
+    ![Tárfiók menüje](./media/terraform-create-k8s-cluster-with-tf-and-aks/storage-account.png)
 
-1. Jegyezze fel a **key1** **kulcs** érték. (A kulcs jobbra látható ikonra az érték a vágólapra másolja.)
+1. Jegyezze fel a **key1** **key** értékét. (A kulcs jobb oldalán található ikonra kattintva a vágólapra másolhatja az értéket.)
 
-    ![Fiók tárelérési kulcsok](./media/terraform-create-k8s-cluster-with-tf-and-aks/storage-account-access-key.png)
+    ![Tárfiók hozzáférési kulcsa](./media/terraform-create-k8s-cluster-with-tf-and-aks/storage-account-access-key.png)
 
-1. Felhő rendszerhéj, hozzon létre egy tároló az Azure-tárfiókja (cserélje le a &lt;YourAzureStorageAccountName > és &lt;YourAzureStorageAccountAccessKey > helyőrzőt a megfelelő értékeket az Azure storage-fiók ).
+1. A Cloud Shellben hozzon létre egy tárolót az Azure Storage-tárfiókban (cserélje le a &lt;YourAzureStorageAccountName> és a &lt;YourAzureStorageAccountAccessKey> helyőrzőket az Azure Storage-tárfiók megfelelő értékeire).
 
     ```bash
     az storage container create -n tfstate --account-name <YourAzureStorageAccountName> --account-key <YourAzureStorageAccountKey>
     ```
 
-## <a name="create-the-kubernetes-cluster"></a>A Kubernetes fürt létrehozása
-Ebben a szakaszban látható használata a `terraform init` definiált a konfigurációs fájlokat, a korábbi szakaszokban létrehozott parancs az erőforrások létrehozásához.
+## <a name="create-the-kubernetes-cluster"></a>Kubernetes-fürt létrehozása
+Ez a szakasz ismerteti, hogyan használható a `terraform init` parancs az előző szakaszokban létrehozott konfigurációs fájlokat meghatározó erőforrások létrehozásához.
 
-1. A felhő rendszerhéj inicializálása Terraform (cserélje le a &lt;YourAzureStorageAccountName > és &lt;YourAzureStorageAccountAccessKey > helyőrzőt a megfelelő értékeket az Azure storage-fiókok).
+1. A Cloud Shellben inicializálja a Terraformot (cserélje le a &lt;YourAzureStorageAccountName> és a &lt;YourAzureStorageAccountAccessKey> helyőrzőket az Azure Storage-tárfiók megfelelő értékeire).
 
     ```bash
     terraform init -backend-config="storage_account_name=<YourAzureStorageAccountName>" -backend-config="container_name=tfstate" -backend-config="access_key=<YourStorageAccountAccessKey>" -backend-config="key=codelab.microsoft.tfstate" 
     ```
     
-    A `terraform init` parancs megjeleníti a háttér és a szolgáltató beépülő modul inicializálása sikeres:
+    A `terraform init` parancs megjeleníti a háttérrendszer és a szolgáltató beépülő modul sikeres inicializálását:
 
-    !["Terraform init" eredmények – példa](./media/terraform-create-k8s-cluster-with-tf-and-aks/terraform-init-complete.png)
+    ![A „terraform init” eredményeit mutató példa](./media/terraform-create-k8s-cluster-with-tf-and-aks/terraform-init-complete.png)
 
-1. Futtassa a `terraform plan` parancsot a Terraform terv, amely meghatározza az infrastruktúra elemeinek létrehozásához. A parancs fog igényelni a két érték: **var.client_id** és **var.client_secret**. Az a **var.client_id** változó, adja meg a **appId** rendelt érték, amely a szolgáltatás egyszerű. Az a **var.client_secret** változó, adja meg a **jelszó** rendelt érték, amely a szolgáltatás egyszerű.
+1. Futtassa a `terraform plan` parancsot az infrastruktúra elemeit meghatározó Terraform-terv létrehozásához. A parancs két értéket fog kérni: **var.client_id** és **var.client_secret**. A **var.client_id** változónál adja meg a szolgáltatásnévhez tartozó **addIp** (alkalmazásazonosító) értéket. A **var.client_secret** változónál, adja meg a szolgáltatásnévhez tartozó **password** (jelszó) értéket.
 
     ```bash
     terraform plan -out out.plan
     ```
 
-    A `terraform plan` parancs megjeleníti az erőforrásokat, amelyek fog létrejönni, ha futtatja a `terraform apply` parancs:
+    A `terraform plan` parancs megjeleníti azokat az erőforrásokat, amelyek a `terraform apply` parancs futtatásakor jönnek létre:
 
-    !["Terraform terv" eredmények – példa](./media/terraform-create-k8s-cluster-with-tf-and-aks/terraform-plan-complete.png)
+    ![A „terraform plan” eredményeit mutató példa](./media/terraform-create-k8s-cluster-with-tf-and-aks/terraform-plan-complete.png)
 
-1. Futtassa a `terraform apply` parancsot a terv a Kubernetes fürt létrehozásához. A folyamat Kubernetes fürt létrehozása eltarthat néhány percig, ami azt eredményezi, hogy a felhő rendszerhéj munkamenet időtúllépés. Ha a felhő rendszerhéj munkamenet időkorlátja lejár, az a szakaszban található lépéseket követheti ["Felhő rendszerhéj időtúllépés helyreállíthatók"](#recover-from-a-dloud-shell-timeout) ahhoz, hogy az oktatóanyag elvégzéséhez.
+1. Futtassa a `terraform apply` parancsot a Kubernetes-fürtöt létrehozó terv alkalmazásához. A Kubernetes-fürt létrehozásának folyamata néhány percet igénybe vehet, ez a Cloud Shell-munkamenet időtúllépését eredményezi. Ha a Cloud Shell-munkamenet túllépi az időkorlátot, kövesse a [„Helyreállítás a Cloud Shell időtúllépéséből”](#recover-from-a-dloud-shell-timeout) szakaszban leírt lépéseket, amelyek lehetővé teszik az oktatóanyag befejezését.
 
     ```bash
     terraform apply out.plan
     ```
 
-    A `terraform apply` parancsot a konfigurációs fájlokban definiálva az erőforrások létrehozásának eredményeit jeleníti meg:
+    A `terraform apply` parancs megjeleníti a konfigurációs fájlokban meghatározott erőforrások létrehozásának eredményét:
 
-    ![Az eredmények "terraform alkalmazni" – példa](./media/terraform-create-k8s-cluster-with-tf-and-aks/terraform-apply-complete.png)
+    ![A „terraform apply” eredményeit mutató példa](./media/terraform-create-k8s-cluster-with-tf-and-aks/terraform-apply-complete.png)
 
-1. Válassza ki az Azure-portálon **minden szolgáltatás** a bal oldali menü az új Kubernetese fürthöz létrehozott cikkekben találhat.
+1. Az Azure Portalon a bal oldali menüben válassza a **Minden szolgáltatás** elemet az új Kubernetes-fürthöz létrehozott erőforrások megjelenítéséhez.
 
-    ![Felhő rendszerhéj kérdés](./media/terraform-create-k8s-cluster-with-tf-and-aks/k8s-resources-created.png)
+    ![Cloud Shell-parancssor](./media/terraform-create-k8s-cluster-with-tf-and-aks/k8s-resources-created.png)
 
-## <a name="recover-from-a-cloud-shell-timeout"></a>Felhő rendszerhéj időtúllépés helyreállítása
-Ha a felhő rendszerhéj munkamenet időkorlátja lejár, a következő lépésekkel helyreállíthat végezheti el:
+## <a name="recover-from-a-cloud-shell-timeout"></a>Helyreállítás a Cloud Shell időtúllépéséből
+Ha a Cloud Shell-munkamenet túllépi az időkorlátot, az alábbi lépéseket hajthatja végre a helyreállításhoz:
 
-1. Felhő rendszerhéj munkamenet indításához.
+1. Indítson egy Cloud Shell-munkamenetet.
 
-1. Módosítsa a Terraform konfigurációs fájlokat tartalmazó könyvtárat.
+1. Lépjen a Terraform konfigurációs fájljait tartalmazó könyvtárra.
 
     ```bash
     cd /clouddrive/terraform-aks-k8s
@@ -334,35 +336,35 @@ Ha a felhő rendszerhéj munkamenet időkorlátja lejár, a következő lépése
     export KUBECONFIG=./azurek8s
     ```
     
-## <a name="test-the-kubernetes-cluster"></a>A Kubernetes fürt tesztelése
-A Kubernetes eszközök segítségével ellenőrizze az újonnan létrehozott fürt.
+## <a name="test-the-kubernetes-cluster"></a>A Kubernetes-fürt tesztelése
+A Kubernetes-eszközök használhatók az újonnan létrehozott fürt teszteléséhez.
 
-1. A Kubernetes konfigurációs beszerezni Terraform állapotát és azt egy fájlban tárolhatja, hogy kubectl olvashatja.
+1. Kérje le a Kubernetes-konfigurációt a Terraform állapotából, és tárolja el egy fájlban, amelyet a kubectl olvashat.
 
     ```bash
     echo "$(terraform output kube_config)" > ./azurek8s
     ```
 
-1. Így kubectl szerzi be a megfelelő konfigurációs környezeti változó értéke.
+1. Állítson be egy környezeti változót, így a kubectl a helyes konfigurációt veszi fel.
 
     ```bash
     export KUBECONFIG=./azurek8s
     ```
 
-1. A fürt állapotának ellenőrzése.
+1. Ellenőrizze a fürt állapotát.
 
     ```bash
     kubectl get nodes
     ```
 
-    A feldolgozó csomópontok részletével kell megjelennie, és a összes állapot **készen**, a következő ábrán látható módon:
+    Megjelenik a munkavégző csomópontok állapota, és minden csomópont **Ready** (Kész) állapotú, az alábbi képen láthatóhoz hasonlóan:
 
-    ![A kubectl eszköz lehetővé teszi a Kubernetes fürt állapotának ellenőrzése](./media/terraform-create-k8s-cluster-with-tf-and-aks/kubectl-get-nodes.png)
+    ![A kubectl eszközzel ellenőrizheti a Kubernetes-fürt állapotát](./media/terraform-create-k8s-cluster-with-tf-and-aks/kubectl-get-nodes.png)
 
 ## <a name="next-steps"></a>További lépések
-Ebben a cikkben megtanulta, Terraform és AKS használata Kubernetes fürt létrehozásához. Az alábbiakban néhány további források további tudnivalók az Azure-on Terraform: 
+Ebben a cikkben megismerte, hogyan használható a Terraform és az AKS egy Kubernetes-fürt létrehozásához. Íme néhány további segédlet, amelyek segítségével többet tudhat meg a Terraform az Azure-on történő használatáról: 
 
- [A Microsoft.com Terraform Hub](https://docs.microsoft.com/azure/terraform/)  
- [Terraform Azure-szolgáltató dokumentáció](http://aka.ms/terraform)  
- [Terraform Azure szolgáltató forrás](http://aka.ms/tfgit)  
- [Terraform Azure modulok](http://aka.ms/tfmodules)
+ [Terraform Hub a Microsoft.com webhelyen](https://docs.microsoft.com/azure/terraform/)  
+ [Terraform: Azure szolgáltatói dokumentáció](http://aka.ms/terraform)  
+ [Terraform: Azure-szolgáltatói forrás](http://aka.ms/tfgit)  
+ [Terraform: Azure-modulok](http://aka.ms/tfmodules)

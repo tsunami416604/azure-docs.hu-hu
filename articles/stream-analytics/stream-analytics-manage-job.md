@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/04/2018
-ms.openlocfilehash: 39b39a1d00c91e0ff114a28c13da0d4b6920ec13
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 6b924e0555ea7a57f8d5e5309a266b6d2fb44f44
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39186230"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43702527"
 ---
 # <a name="create-a-stream-analytics-job-to-analyze-phone-call-data-and-visualize-results-in-a-power-bi-dashboard"></a>Stream Analytics-feladat létrehozása telefonhívás-adatok elemzésére és az eredmények Power BI-irányítópulton való vizualizációjára
  
@@ -61,7 +61,7 @@ Mielőtt a Stream Analytics elemezni tudná a csaló hívások adatstreamjét, e
    ![Eseményközpont-névtér létrehozása](media/stream-analytics-manage-job/create-ehns.png)
 
 5. Ha a névtér telepítése befejeződött, lépjen a **Minden erőforrás** területre > keresse meg a myEventHubNS elemet az Azure-erőforrások listájában > majd válassza ki a megnyitásához.  
-6. Ezután válassza a **+Event Hub** > **Név** elemet, és adja a MyEventHub nevet az eseményközpontnak. Más nevet is használhat. A többi beállításnál használja az alapértelmezett értékeket, majd válassza a **Létrehozás** parancsot, és várja meg, amíg az üzembe helyezés befejeződik.
+6. Ezután válassza az **+Eseményközpont** > **Név** elemet, és adja a „MyEventHub” nevet az eseményközpontnak. Más nevet is használhat. A többi beállításnál használja az alapértelmezett értékeket, majd válassza a **Létrehozás** parancsot, és várja meg, amíg az üzembe helyezés befejeződik.
 
    ![Eseményközpont létrehozása](media/stream-analytics-manage-job/create-eh.png)
 
@@ -69,7 +69,7 @@ Mielőtt a Stream Analytics elemezni tudná a csaló hívások adatstreamjét, e
 
 Mielőtt egy alkalmazás adatokat küldhet az Azure Event Hubsnak, az eseményközpontnak szüksége van egy szabályzatra megfelelő hozzáférést biztosít. A hozzáférési szabályzat egy kapcsolati sztringet hoz létre, amelyben megtalálhatók az engedélyezési információk.
 
-1. Lépjen az előző lépésben létrehozott **Event Hubs**-elemre, amelynek a MyEventHub nevet adta > válassza a **Megosztott elérési házirendek** elemet az eseményközpont ablaktábláján > válassza a **+Hozzáadás** lehetőséget.  
+1. Lépjen az előző lépésben létrehozott **Event Hubs**-elemre, amelynek a „MyEventHub” nevet adta > válassza a **Megosztott elérési szabályzatok** elemet az eseményközpont ablaktábláján > válassza a **+Hozzáadás** lehetőséget.  
 2. Állítsa a szabályzat nevét **Mypolicy** értékre > válassza a **Kezelés** elemet > válassza a **Létrehozás** lehetőséget.  
 
    ![Eseményközpont megosztott elérési házirendjének létrehozása](media/stream-analytics-manage-job/create-ehpolicy.png)
@@ -240,7 +240,7 @@ A lekérdezésszerkesztőben létrehozott lekérdezéseket tesztelheti, amihez m
 
 2. Válassza a **Most** beállítást a feladatkimenet kezdési idejeként, majd válassza az **Indítás** lehetőséget. A feladat pár perc múlva elindul, és megtekintheti az állapotát az értesítési sávban.  
 
-3. Miután a feladat sikeresen lezajlott, nyissa meg a [Powerbi.com](https://powerbi.com/) webhelyet, és lépjen be a munkahelyi vagy iskolai fiókjával. Ha a Stream Analytics-feladatlekérdezés eredményeket ad, akkor láthatja, hogy már létre is jött az adatkészlete. Az **Adatkészletek** lapra lépve láthat egy ASAdataset nevű adatkészletet.  
+3. Miután a feladat sikeresen lezajlott, nyissa meg a [Powerbi.com](https://powerbi.com/) webhelyet, és lépjen be a munkahelyi vagy iskolai fiókjával. Ha a Stream Analytics-feladatlekérdezés eredményeket ad, akkor láthatja, hogy már létre is jött az adatkészlete. Az **Adatkészletek** lapra lépve láthat egy „ASAdataset” nevű adatkészletet.  
 
 4. Válassza a **+Létrehozás** lehetőséget a munkaterületén. Hozzon létre egy új irányítópultot, és adja neki a Csaló hívások nevet. Két csempét fog hozzáadni ehhez az irányítópulthoz, amelyekből az egyik a csaló hívások előfordulását fogja számolni, a másik pedig egy vonaldiagramos vizualizációt fog megjeleníteni.  
 

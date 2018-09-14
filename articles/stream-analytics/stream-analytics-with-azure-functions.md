@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.date: 04/09/2018
 ms.author: jasonh
 ms.reviewer: jasonh
-ms.openlocfilehash: 1d33c3f0a4c36dc681aaa42bc68ae56eec234401
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 0408ea6ead1ddf482ce0a07c21859af80ab6ca43
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31416023"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43697815"
 ---
 # <a name="run-azure-functions-from-azure-stream-analytics-jobs"></a>Az Azure Functions futtatása Azure Stream Analytics-feladatokból 
 
@@ -54,9 +54,9 @@ A feladat megvalósításához az alábbi lépéseket kell végrehajtani:
 
 1. Hozzon létre egy gyorsítótárat az Azure Redis Cache-ben a [Gyorsítótár létrehozása](../redis-cache/cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache) című szakaszban ismertetett lépéseket követve.  
 
-2. Miután létrehozta a gyorsítótárat, a **Beállítások** területen válassza a **Hozzáférési kulcsok** elemet. Jegyezze fel az **Elsődleges kapcsolati karakterlánc** értékét.
+2. Miután létrehozta a gyorsítótárat, a **Beállítások** területen válassza a **Hozzáférési kulcsok** elemet. Jegyezze fel az **Elsődleges kapcsolati sztring** értékét.
 
-   ![Az Azure Redis Cache kapcsolati karakterláncának képernyőképe](./media/stream-analytics-with-azure-functions/image2.png)
+   ![Az Azure Redis Cache kapcsolati sztringjének képernyőképe](./media/stream-analytics-with-azure-functions/image2.png)
 
 ## <a name="create-a-function-in-azure-functions-that-can-write-data-to-azure-redis-cache"></a>Adatokat az Azure Redis Cache-be írni képes függvény létrehozása az Azure Functions szolgáltatásban
 

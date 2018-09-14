@@ -8,14 +8,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: quickstart
-ms.date: 08/13/2018
+ms.date: 08/31/2018
 ms.author: jovanpop-msft
-ms.openlocfilehash: cb378c2d2773096992ef688653fd77b2625f8754
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 4271f0cef31b0e028ed1f9408166c37d4cbbe109
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42023079"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43381998"
 ---
 # <a name="create-an-azure-sql-managed-instance"></a>Felügyelt Azure SQL-példány létrehozása
 
@@ -60,7 +60,7 @@ A következő lépések azt mutatják be, hogyan hozhatja létre a felügyelt p�
 2. Keresse meg a **Felügyelt példány** lehetőséget, és válassza a **Felügyelt Azure SQL Database-példány (előzetes verzió)** elemet.
 3. Kattintson a **Create** (Létrehozás) gombra.
 
-   ![Felügyelt példány létrehozása](./media/sql-database-managed-instance-tutorial/managed-instance-create.png)
+   ![Felügyelt példány létrehozása](./media/sql-database-managed-instance-get-started/managed-instance-create.png)
 
 4. Válassza ki előfizetését, és ellenőrizze, hogy az előzetes verzió feltételeinél az **Elfogadva** állapot látható-e.
 
@@ -77,26 +77,21 @@ A következő lépések azt mutatják be, hogyan hozhatja létre a felügyelt p�
    |**Hely**|Az előzőleg kiválasztott hely|A régiókkal kapcsolatos információkért lásd [az Azure régióit](https://azure.microsoft.com/regions/) ismertető cikket.|
    |**Virtuális hálózat**|A korábban létrehozott virtuális hálózat| Ha az előző lépésben nem módosította a neveket, akkor válassza a **MyNewVNet/ManagedInstances** elemet. Ha módosította, akkor válassza ki az előző szakaszban megadott VNet-nevet és a felügyelt példány alhálózatát. **Ne használja az alapértelmezett alhálózatot, mert az nem a felügyelt példányok üzemeltetésére lett konfigurálva**. |
 
-   ![felügyelt példány létrehozásának űrlapja](./media/sql-database-managed-instance-tutorial/managed-instance-create-form.png)
+   ![felügyelt példány létrehozásának űrlapja](./media/sql-database-managed-instance-get-started/managed-instance-create-form.png)
 
 6. Kattintson a **Tarifacsomag** elemre a számítási és tárolási erőforrások méretezéséhez, valamint a lehetséges tarifacsomagok áttekintéséhez. Alapértelmezés szerint a példány 32 GB ingyenes tárterülettel rendelkezik, **amely nem feltétlenül elegendő az alkalmazásai számára**.
 7. A csúszkák vagy a szövegmezők segítségével adja meg a tárterület méretét és a virtuális magok számát. 
-   ![felügyelt példány tarifacsomagja](./media/sql-database-managed-instance-tutorial/managed-instance-pricing-tier.png)
+   ![felügyelt példány tarifacsomagja](./media/sql-database-managed-instance-get-started/managed-instance-pricing-tier.png)
 
 8. Ha végzett, a beállítások mentéséhez kattintson az **Alkalmaz** gombra.  
 9. Kattintson a **Létrehozás** elemre a felügyelt példány üzembe helyezéséhez.
 10. Kattintson az **Értesítések** ikonra az üzembe helyezés állapotának megtekintéséhez.
- 
-   ![üzembe helyezés folyamatban](./media/sql-database-managed-instance-tutorial/deployment-progress.png)
-
 11. Kattintson az **Üzembe helyezés folyamatban** értesítésre a felügyelt példány ablakának megnyitásához, amelyben részletesebben nyomon követheti az üzembehelyezési folyamatot.
- 
-   ![üzembe helyezés folyamatban 2](./media/sql-database-managed-instance-tutorial/managed-instance.png)
 
 Amíg tart az üzembe helyezés, folytassa a következő eljárással.
 
 > [!IMPORTANT]
-> Az alhálózat első példánya esetében az üzembe helyezés általában jóval több időt (akár 24 óránál többet is) vesz igénybe, mint a további példányok esetében. Ne szakítsa meg az üzembehelyezési műveletet, ha az a vártnál tovább tart. Az első példány üzembe helyezéséhez csak átmenetileg szükséges ilyen hosszú idő. A nyilvános előzetes verzió használatának megkezdése után jelentős mértékben csökken majd az üzembehelyezési idő. Eltarthat néhány percig, amíg létrejön az alhálózatban a második felügyelt példány.
+> Az alhálózat első példánya esetében az üzembe helyezés általában jóval több időt vesz igénybe, mint a további példányok esetében. Ne szakítsa meg az üzembehelyezési műveletet, ha az a vártnál tovább tart. Eltarthat néhány percig, amíg létrejön az alhálózatban a második felügyelt példány.
 
 ## <a name="prepare-client-machine"></a>Az ügyfélszámítógép előkészítése
 

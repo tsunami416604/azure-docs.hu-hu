@@ -1,83 +1,85 @@
 ---
-title: Egy Azure-beli virtuálisgép-méretezési csoport létrehozásához használja a Terraform beállítása
-description: A Terraform konfigurálása és a egy Azure-beli virtuálisgép-méretezési csoport beállítása befejeződött egy virtuális hálózathoz, és felügyelt verzió használatával kapcsolatos oktatóanyagot csatlakoztatott lemezeket
-keywords: a terraform, fejlesztés és üzemeltetés, a virtuális gépek, Azure, méretezhető beállítása, hálózati, tárolási, modulok
+title: Azure-beli virtuálisgép-méretezési csoport létrehozása a Terraformmal
+description: Oktatóanyag a Terraform használatáról egy virtuális hálózattal és felügyelt csatolt lemezekkel rendelkező Azure-beli virtuális gép méretezési csoportjának konfigurálásához és veziószámozásához
+services: terraform
+ms.service: terraform
+keywords: terraform, devops, virtuális gép, Azure, méretezési csoport, hálózat, tárterület, modulok
 author: tomarcher
 manager: jeconnoc
 ms.author: tarcher
+ms.topic: tutorial
 ms.date: 06/04/2018
-ms.topic: article
-ms.openlocfilehash: 5922bad24c50a9d315aae42ce11a33801b9dbcaf
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
-ms.translationtype: MT
+ms.openlocfilehash: 9b6a7187827622443c3cb29566dfb5eef840d595
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38971833"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43666195"
 ---
-# <a name="use-terraform-to-create-an-azure-virtual-machine-scale-set"></a>Egy Azure-beli virtuálisgép-méretezési csoport létrehozásához használja a Terraform beállítása
+# <a name="use-terraform-to-create-an-azure-virtual-machine-scale-set"></a>Azure-beli virtuálisgép-méretezési csoport létrehozása a Terraformmal
 
-[Azure-beli virtuálisgép-méretezési csoportok](/azure/virtual-machine-scale-sets) lehetővé hozhat létre és kezelhet egy csoportot az azonos, elosztott terhelésű virtuális gépek, ahol a virtuálisgép-példányok száma automatikusan növelheti, vagy csökkenthető a pillanatnyi igényeknek megfelelően vagy egy meghatározott ütemezés betöltése. 
+Az [Azure-beli virtuálisgép-méretezési csoportok](/azure/virtual-machine-scale-sets) segítségével létrehozhatja és kezelheti az azonos, elosztott terhelésű virtuális gépek csoportját, amelyekben a virtuálisgép-példányok száma automatikusan növekedhet vagy csökkenhet az igények vagy megadott ütemezés szerint. 
 
-Ebben az oktatóanyagban megismerheti, hogyan használható [Azure Cloud Shell](/azure/cloud-shell/overview) a következő feladatok elvégzéséhez:
+Ebben az oktatóanyagban megismerheti, hogyan használható az [Azure Cloud Shell](/azure/cloud-shell/overview) az alábbi feladatok elvégzésére:
 
 > [!div class="checklist"]
-> * A Terraform üzembe helyezés beállítása
-> * A Terraform központi telepítéshez használni változók és kimenetek 
-> * Hozzon létre és hálózati infrastruktúra üzembe helyezése
-> * Létrehozása és üzembe helyezése virtuálisgép-méretezési csoportot és csatlakoztat a hálózathoz
-> * Létrehozni és üzembe helyezni a virtuális gépek SSH-n keresztül kapcsolódni a jumpbox
+> * Terraform üzemelő példányának beállítása
+> * Változók és kimenetek használata egy Terraform-környezethez 
+> * Hálózati infrastruktúra létrehozása és üzembe helyezése
+> * Virtuálisgép-méretezési csoport létrehozása és csatolása a hálózathoz
+> * Jumpbox létrehozása és üzembe helyezése, amely SSH-n keresztül csatlakozik a virtuális géphez
 
 > [!NOTE]
-> A Terraform ebben a cikkben használt konfigurációs fájlok a legújabb verziójában a [Soft Terraform tárházban a Githubon](https://github.com/Azure/awesome-terraform/tree/master/codelab-vmss).
+> A Terraform ebben a cikkben használt konfigurációs fájljainak legújabb verziója a [GitHubon található nagyszerű Terraform-adattárban található](https://github.com/Azure/awesome-terraform/tree/master/codelab-vmss).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - **Azure-előfizetés**: Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-- **A Terraform telepítése**: a cikk utasításait követve [Terraform hozzáférési szabályzatokat az Azure-bA](/azure/virtual-machines/linux/terraform-install-configure)
+- **A Terraform telepítése**: Kövesse a [Terraform telepítését és az Azure-hozzáférés konfigurálását ismertető cikkben](/azure/virtual-machines/linux/terraform-install-configure) található utasításokat
 
-- **Hozzon létre SSH-kulcspárok**: Ha még nem rendelkezik egy SSH kulcspárok, kövesse a cikk a [létrehozása és a nyilvános és titkos ssh-kulcs használata Linux rendszerű virtuális gépekhez az Azure-ban](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/mac-create-ssh-keys).
+- **SSH-kulcspár létrehozása**: Ha még nem rendelkezik SSH-kulcspárral, kövesse a [Nyilvános és titkos SSH-kulcspár létrehozása és használata az Azure-ban Linux rendszerű virtuális gépekhez](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/mac-create-ssh-keys) című cikkben található utasításokat.
 
-## <a name="create-the-directory-structure"></a>A directory-struktúra létrehozása
+## <a name="create-the-directory-structure"></a>A könyvtárstruktúra létrehozása
 
-1. Keresse meg a [az Azure portal](http://portal.azure.com).
+1. Keresse fel az [Azure Portalt](http://portal.azure.com).
 
-1. Nyissa meg [az Azure Cloud Shell](/azure/cloud-shell/overview). Ha korábban nem jelölt ki egy környezetet, válassza ki a **Bash** a környezet.
+1. Nyissa meg az [Azure Cloud Shellt](/azure/cloud-shell/overview). Ha még nem választott ki környezetet, válassza a **Bash** környezetet.
 
-    ![Cloud Shell kérése](./media/terraform-create-vm-scaleset-network-disks-hcl/azure-portal-cloud-shell-button-min.png)
+    ![Cloud Shell-parancssor](./media/terraform-create-vm-scaleset-network-disks-hcl/azure-portal-cloud-shell-button-min.png)
 
-1. Lépjen a `clouddrive` könyvtár.
+1. Lépjen be a `clouddrive` könyvtárba.
 
     ```bash
     cd clouddrive
     ```
 
-1. Hozzon létre egy könyvtárat nevű `vmss`.
+1. Hozzon létre egy `vmss` nevű könyvtárat.
 
     ```bash
     mkdir vmss
     ```
 
-1. Módosítsa a könyvtárakat az új könyvtár:
+1. Lépjen be az új könyvtárba:
 
     ```bash
     cd vmss
     ```
 
-## <a name="create-the-variables-definitions-file"></a>A változók definíciók fájl létrehozása
-Ebben a szakaszban adja meg a változókat, amelyek testre szabhatja a Terraform által létrehozott erőforrásokat.
+## <a name="create-the-variables-definitions-file"></a>A változódefiníciós fájl létrehozása
+Ebben a szakaszban a Terraform által létrehozott erőforrások testre szabását végző változókat adhatja meg.
 
-Az Azure Cloud Shell belül hajtsa végre az alábbi lépéseket:
+Hajtsa végre a következő lépéseket az Azure Cloud Shellben:
 
-1. Hozzon létre egy fájlt `variables.tf`.
+1. Hozzon létre egy `variables.tf` nevű fájlt.
 
     ```bash
     vi variables.tf
     ```
 
-1. Insert üzemmódba kiválasztásával a kulcsot.
+1. Az I billentyű lenyomásával lépjen beszúrási módba.
 
-1. Illessze be a következő kódot a szerkesztőbe:
+1. Másolja az alábbi kódot a szerkesztőbe:
 
   ```JSON
   variable "location" {
@@ -99,28 +101,28 @@ Az Azure Cloud Shell belül hajtsa végre az alábbi lépéseket:
   }
   ```
 
-1. Kilépés beszúrása módot az Esc billentyű kiválasztásával.
+1. A beszúrás módból az Esc billentyűvel léphet ki.
 
-1. Mentse a fájlt, és zárja be a vi szerkesztőt a következő parancs beírásával:
+1. Mentse a fájlt, és lépjen ki a VI-szerkesztőből a következő parancs megadásával:
 
     ```bash
     :wq
     ```
 
-## <a name="create-the-output-definitions-file"></a>A definíciók kimeneti fájl létrehozása
-Ebben a szakaszban létrehozza a fájlt, amely leírja a kimeneti üzembe helyezés után.
+## <a name="create-the-output-definitions-file"></a>A kimenetdefiníciós fájl létrehozása
+Ebben a szakaszban az üzembe helyezés utáni kimenetet leíró fájlt hozza létre.
 
-Az Azure Cloud Shell belül hajtsa végre az alábbi lépéseket:
+Hajtsa végre a következő lépéseket az Azure Cloud Shellben:
 
-1. Hozzon létre egy fájlt `output.tf`.
+1. Hozzon létre egy `output.tf` nevű fájlt.
 
     ```bash
     vi output.tf
     ```
 
-1. Insert üzemmódba kiválasztásával a kulcsot.
+1. Az I billentyű lenyomásával lépjen beszúrási módba.
 
-1. Illessze be a következő kódot a szerkesztő a teljesen minősített tartománynevét (FQDN) a virtuális gépek számára elérhetővé tenni. :
+1. Másolja az alábbi kódot a szerkesztőbe, hogy közzétegye a virtuális gépek teljes tartománynevét (FQDN). :
 
   ```JSON
     output "vmss_public_ip" {
@@ -128,32 +130,32 @@ Az Azure Cloud Shell belül hajtsa végre az alábbi lépéseket:
     }
   ```
 
-1. Kilépés beszúrása módot az Esc billentyű kiválasztásával.
+1. A beszúrás módból az Esc billentyűvel léphet ki.
 
-1. Mentse a fájlt, és zárja be a vi szerkesztőt a következő parancs beírásával:
+1. Mentse a fájlt, és lépjen ki a VI-szerkesztőből a következő parancs megadásával:
 
     ```bash
     :wq
     ```
 
-## <a name="define-the-network-infrastructure-in-a-template"></a>A hálózati infrastruktúra meghatározása sablonban
-Ebben a szakaszban található egy új Azure-erőforráscsoportot a következő hálózati infrastruktúra létrehozása: 
+## <a name="define-the-network-infrastructure-in-a-template"></a>A hálózati infrastruktúra meghatározása egy sablonban
+Ebben a szakaszban az alábbi hálózati infrastruktúrát hozza létre egy új Azure-erőforráscsoportban: 
 
-  - A 10.0.0.0/16 címterében egy virtuális hálózat (VNET) 
-  - Egy alhálózat címtartománya a 10.0.2.0/24
-  - Két nyilvános IP-címeket. Egy virtuális gép méretezési csoport terheléselosztó által, a másik az SSH jumpbox eléréséhez használt.
+  - Egy virtuális hálózat (VNET) a következő címtérrel: 10.0.0.0/16 
+  - Egy alhálózat a következő címtérrel: 10.0.2.0/24
+  - Két nyilvános IP-cím. Az egyiket a virtuálisgép-méretezési csoport terheléselosztója használja, a másik az SSH jumpboxhoz való csatlakozáshoz szükséges.
 
-Az Azure Cloud Shell belül hajtsa végre az alábbi lépéseket:
+Hajtsa végre a következő lépéseket az Azure Cloud Shellben:
 
-1. Hozzon létre egy fájlt `vmss.tf` írja le a virtuálisgép-méretezési csoport infrastruktúra beállítása.
+1. Hozzon létre egy `vmss.tf` nevű fájlt a virtuálisgép-méretezési csoport infrastruktúrájának leírásához.
 
     ```bash
     vi vmss.tf
     ```
 
-1. Insert üzemmódba kiválasztásával a kulcsot.
+1. Az I billentyű lenyomásával lépjen beszúrási módba.
 
-1. Illessze be a következő kódot a teljesen minősített tartománynevét (FQDN) a virtuális gépek számára elérhetővé a fájl végéhez. 
+1. Másolja az alábbi kódot a fájl végére, hogy közzétegye a virtuális gépek teljes tartománynevét (FQDN). 
 
   ```JSON
   resource "azurerm_resource_group" "vmss" {
@@ -194,51 +196,51 @@ Az Azure Cloud Shell belül hajtsa végre az alábbi lépéseket:
   }
   ```
 
-1. Kilépés beszúrása módot az Esc billentyű kiválasztásával.
+1. A beszúrás módból az Esc billentyűvel léphet ki.
 
-1. Mentse a fájlt, és zárja be a vi szerkesztőt a következő parancs beírásával:
+1. Mentse a fájlt, és lépjen ki a VI-szerkesztőből a következő parancs megadásával:
 
   ```bash
   :wq
   ```
 
-## <a name="provision-the-network-infrastructure"></a>A hálózati infrastruktúra kiépítése
-Használja az Azure Cloud Shell a címtárból, ahol létrehozta a konfigurációs fájlok (.tf) a következő lépésekkel:
+## <a name="provision-the-network-infrastructure"></a>Hálózati infrastruktúra kiépítése
+Az Azure Cloud Shell használatával végezze el az alábbi lépéseket abból a könyvtárból, amelyben létrehozta a konfigurációs fájlokat (.tf):
 
-1. A Terraform inicializálása.
+1. Inicializálja a Terraformot.
 
   ```bash
   terraform init 
   ```
 
-1. Futtassa a következő parancsot az Azure-ban a definiált infrastruktúra üzembe helyezését.
+1. Futtassa az alábbi parancsot a megadott infrastruktúra üzembe helyezéséhez az Azure-ban.
 
   ```bash
   terraform apply
   ```
 
-  Terraform, "hely" értéket kéri a **hely** a változót `variables.tf`, de soha ne állítson be. Bármely érvényes helyet – például az "West US" Enter kiválasztása után adhat meg. (Bármilyen érték zárójelek használja a tárolóhelyek.)
+  A Terraform kéri, hogy adjon meg „location” (hely) értéket, mivel a **location** változó meg van határozva a `variables.tf` fájlban, de nincs beállítva. Bármely érvényes helyet megadhat, például a „West US” értéket, majd nyomja le az Enter billentyűt. (Használjon zárójelet a szóközt tartalmazó értékekhez.)
 
-1. A Terraform jelenít meg a kimenetet a `output.tf` fájlt. Ahogy az az alábbi képernyőfelvételen is látható, a teljes tartománynév formájában adható meg &lt;azonosítója >.&lt; Hely >. cloudapp.Azure.com formát követi. Az azonosító értéke a kiszámított érték, és a hely a Terraform futtatásakor adja meg az értéket.
+1. A Terraform a `output.tf` fájlban megadottak szerint jeleníti meg a kimenetet. Az FQDN az &lt;id>.&lt;location>.cloudapp.azure.com formát veszi fel, az alábbi képernyőképen látható módon. Az azonosító értéke egy számított érték, a hely a Terraform futtatásakor megadott érték.
 
-  ![Virtuálisgép-méretezési csoport nyilvános IP-cím teljes tartománynév beállítása](./media/terraform-create-vm-scaleset-network-disks-hcl/fqdn.png)
+  ![Virtuálisgép-méretezési csoport nyilvános IP-címének teljes tartományneve](./media/terraform-create-vm-scaleset-network-disks-hcl/fqdn.png)
 
-1. Az Azure portál menüjében válassza **erőforráscsoportok** elemre.
+1. Az Azure Portal menüjében válassza az **Erőforráscsoportok** elemet a főmenüből.
 
-1. Az a **erőforráscsoportok** lapon jelölje be **myResourceGroup** Terraform által létrehozott erőforrások megtekintéséhez.
-  ![Virtuálisgép-méretezési csoport hálózati erőforrások](./media/terraform-create-vm-scaleset-network-disks-hcl/resource-group-resources.png)
+1. Az **Erőforráscsoportok** lapon válassza **myResourceGroup** elemet a Terraform által létrehozott erőforrások megtekintéséhez.
+  ![Virtuálisgép-méretezési csoport hálózati erőforrásai](./media/terraform-create-vm-scaleset-network-disks-hcl/resource-group-resources.png)
 
-## <a name="add-a-virtual-machine-scale-set"></a>Adjon hozzá egy virtuálisgép-méretezési csoportot
+## <a name="add-a-virtual-machine-scale-set"></a>Virtuálisgép-méretezési csoport hozzáadása
 
-Ez a szakasz bemutatja a következő erőforrások hozzáadása a sablonhoz:
+Ebben a szakaszban azt ismertetjük, hogyan adhatja hozzá az alábbi erőforrásokat a sablonhoz:
 
-- Az Azure load balancer és szolgálja ki az alkalmazást, és mellékelje a nyilvános IP-címet, a cikkben korábban konfigurált szabályok
-- Az Azure háttér-címkészletet, és rendelje hozzá a load balancer 
-- Az alkalmazás által használt, és konfigurálta a terheléselosztó állapotát a mintavételi port 
-- Állítsa be úgy a terheléselosztóhoz, amely a jelen cikkben korábban üzembe helyezett VNET futtat egy virtuálisgép-méretezési csoport
-- [Az Nginx](http://nginx.org/) a virtuális gép méretezési használatával csomópontjaira [a cloud-init](http://cloudinit.readthedocs.io/en/latest/).
+- Egy Azure Load Balancer és az alkalmazást kiszolgáló szabályok, és ezek csatolása az ebben a cikkben korábban konfigurált nyilvános IP-címhez
+- Azure háttércímkészlet és hozzárendelése a terheléselosztóhoz 
+- A terheléselosztón konfigurált és az alkalmazás által használt állapotminta portja 
+- A cikkben korábban üzembe helyezett virtuális gépen futó terheléselosztó mögött lévő virtuálisgép-méretezési csoport
+- [Nginx](http://nginx.org/) a virtuálisgép-méretezési csoport csomópontjain a [clud-init](http://cloudinit.readthedocs.io/en/latest/) használatával.
 
-A Cloud Shellben hajtsa végre az alábbi lépéseket:
+Hajtsa végre a következő lépéseket a Cloud Shellben:
 
 1. Nyissa meg a `vmss.tf` konfigurációs fájlt.
 
@@ -246,9 +248,9 @@ A Cloud Shellben hajtsa végre az alábbi lépéseket:
   vi vmss.tf
   ```
 
-1. Nyissa meg a fájl végéhez, és adja meg a A kulcs kiválasztásával hozzáfűzéssel.
+1. Lépjen a fájl végéhez, és az A billentyű lenyomásával lépjen hozzáfűzési módba.
 
-1. Illessze be a következő kódot a fájl végén:
+1. Illessze be az alábbi kódot a fájl végére:
 
   ```JSON
   resource "azurerm_lb" "vmss" {
@@ -348,23 +350,23 @@ A Cloud Shellben hajtsa végre az alábbi lépéseket:
 }
   ```
 
-1. Kilépés beszúrása módot az Esc billentyű kiválasztásával.
+1. A beszúrás módból az Esc billentyűvel léphet ki.
 
-1. Mentse a fájlt, és zárja be a vi szerkesztőt a következő parancs beírásával:
+1. Mentse a fájlt, és lépjen ki a VI-szerkesztőből a következő parancs megadásával:
 
     ```bash
     :wq
     ```
 
-1. Hozzon létre egy fájlt `web.conf` , a cloud-init konfiguráció a méretezési csoportba tartozó virtuális gépek kiszolgálása érdekében. 
+1. Hozzon létre egy `web.conf` nevű fájlt, amely a méretezési csoportban szereplő virtuális gép clud-init konfigurációjaként szolgál. 
 
     ```bash
     vi web.conf
     ```
 
-1. Insert üzemmódba kiválasztásával a kulcsot.
+1. Az I billentyű lenyomásával lépjen beszúrási módba.
 
-1. Illessze be a következő kódot a szerkesztőbe:
+1. Másolja az alábbi kódot a szerkesztőbe:
 
   ```JSON
   #cloud-config
@@ -372,9 +374,9 @@ A Cloud Shellben hajtsa végre az alábbi lépéseket:
     - nginx
   ```
 
-1. Kilépés beszúrása módot az Esc billentyű kiválasztásával.
+1. A beszúrás módból az Esc billentyűvel léphet ki.
 
-1. Mentse a fájlt, és zárja be a vi szerkesztőt a következő parancs beírásával:
+1. Mentse a fájlt, és lépjen ki a VI-szerkesztőből a következő parancs megadásával:
 
     ```bash
     :wq
@@ -386,9 +388,9 @@ A Cloud Shellben hajtsa végre az alábbi lépéseket:
   vi variables.tf
   ```
 
-1. Nyissa meg a fájl végéhez, és adja meg a A kulcs kiválasztásával hozzáfűzéssel.
+1. Lépjen a fájl végéhez, és az A billentyű lenyomásával lépjen hozzáfűzési módba.
 
-1. A telepítés testreszabható illessze be a következő kódot a fájl végéhez:
+1. Testreszabhatja az üzemelő példányt, ha az alábbi kódot beilleszti a fájl végére:
 
   ```JSON
   variable "application_port" {
@@ -406,44 +408,44 @@ A Cloud Shellben hajtsa végre az alábbi lépéseket:
   }
   ``` 
 
-1. Kilépés beszúrása módot az Esc billentyű kiválasztásával.
+1. A beszúrás módból az Esc billentyűvel léphet ki.
 
-1. Mentse a fájlt, és zárja be a vi szerkesztőt a következő parancs beírásával:
+1. Mentse a fájlt, és lépjen ki a VI-szerkesztőből a következő parancs megadásával:
 
     ```bash
     :wq
     ```
 
-1. Hozzon létre egy Terraform tervet jelenítheti meg a virtuális gép méretezési csoport üzembe helyezését. (Kell adnia egy jelszót a kiválasztása, valamint az erőforrások helyét.)
+1. Hozzon létre egy Terraform-tervet a virtuálisgép-méretezési csoport üzembe helyezésének megjelenítéséhez. (Meg kell adnia egy tetszőleges jelszót, valamint az erőforrások helyét is.)
 
   ```bash
   terraform plan
   ```
 
-  A parancs kimenete az alábbi képernyőfelvételhez hasonló lesz:
+  A parancs kimenetének az alábbi képernyőképhez hasonlóan kell kinéznie:
 
-  ![A virtuálisgép-méretezési készlet létrehozása kimenete](./media/terraform-create-vm-scaleset-network-disks-hcl/add-mvss-plan.png)
+  ![Virtuálisgép-méretezési csoport létrehozásának kimenete](./media/terraform-create-vm-scaleset-network-disks-hcl/add-mvss-plan.png)
 
-1. Az Azure-ban az új erőforrások üzembe helyezése.
+1. Helyezze üzembe az új erőforrásokat az Azure-ban.
 
   ```bash
   terraform apply 
   ```
 
-  A parancs kimenete az alábbi képernyőfelvételhez hasonló lesz:
+  A parancs kimenetének az alábbi képernyőképhez hasonlóan kell kinéznie:
 
-  ![A Terraform virtuális gép méretezési erőforráscsoport](./media/terraform-create-vm-scaleset-network-disks-hcl/resource-group-contents.png)
+  ![A Terraform virtuálisgép-méretezési csoportjának erőforráscsoportja](./media/terraform-create-vm-scaleset-network-disks-hcl/resource-group-contents.png)
 
-1. Nyisson meg egy böngészőt, és csatlakozzon a parancs által visszaadott teljes Tartománynevét. 
+1. Nyisson meg egy böngészőt, és kapcsolódjon a parancs által visszaadott FQDN-hez. 
 
-  ![Keresse meg a teljes tartománynév eredményei](./media/terraform-create-vm-scaleset-network-disks-hcl/browser-fqdn.png)
+  ![Az FQDN keresésének eredménye](./media/terraform-create-vm-scaleset-network-disks-hcl/browser-fqdn.png)
 
-## <a name="add-an-ssh-jumpbox"></a>Egy SSH-jumpbox hozzáadása
-Ssh-t *jumpbox* egyetlen kiszolgáló, amely a "átlépünk" keresztül férhet hozzá a hálózaton lévő más kiszolgálókra. Ebben a lépésben konfigurálja a következőket:
+## <a name="add-an-ssh-jumpbox"></a>SSH-jumpbox hozzáadása
+Az SSH-*jumpbox* egy olyan kiszolgáló, amelyet „átugrik” a hálózaton található további kiszolgálók eléréséhez. Ebben a lépésben az alábbi erőforrásokat konfigurálja:
 
-- A hálózati adapter (vagy a jumpbox) csatlakozik a virtuálisgép-méretezési csoportot az azonos alhálózatban.
+- Hálózati adapter (vagy jumpbox), amely ugyanahhoz az alhálózathoz csatlakozik, mint a virtuálisgép-méretezési csoport.
 
-- A virtuális gép csatlakoztatva hálózati illesztőhöz. A jumpbox érhető el távolról. A csatlakozás után bármely, a méretezési csoportban lévő virtuális gépek ssh-n is.
+- Ezzel a hálózati adapterrel csatlakoztatott virtuális gép. Ez a jumpbox elérhető távolról is. A csatlakozás után SSH-n be tud jelentkezni a méretezési csoportban található bármely virtuális gépre.
 
 1. Nyissa meg a `vmss.tf` konfigurációs fájlt.
 
@@ -451,9 +453,9 @@ Ssh-t *jumpbox* egyetlen kiszolgáló, amely a "átlépünk" keresztül férhet 
   vi vmss.tf
   ```
 
-1. Nyissa meg a fájl végéhez, és adja meg a A kulcs kiválasztásával hozzáfűzéssel.
+1. Lépjen a fájl végéhez, és az A billentyű lenyomásával lépjen hozzáfűzési módba.
 
-1. Illessze be a következő kódot a fájl végén:
+1. Illessze be az alábbi kódot a fájl végére:
 
   ```JSON
   resource "azurerm_public_ip" "jumpbox" {
@@ -521,9 +523,9 @@ Ssh-t *jumpbox* egyetlen kiszolgáló, amely a "átlépünk" keresztül férhet 
   vi output.tf
   ```
 
-1. Nyissa meg a fájl végéhez, és adja meg a A kulcs kiválasztásával hozzáfűzéssel.
+1. Lépjen a fájl végéhez, és az A billentyű lenyomásával lépjen hozzáfűzési módba.
 
-1. Illessze be a következő kódot a jumpbox állomásnevét megjelenítéséhez, ha az üzembe helyezés kész a fájl végén:
+1. Illessze be az alábbi kódot a fájl végére a jumpbox gazdanevének megjelenítéséhez, miután az üzembe helyezés befejeződött:
 
   ```
   output "jumpbox_public_ip" {
@@ -531,41 +533,41 @@ Ssh-t *jumpbox* egyetlen kiszolgáló, amely a "átlépünk" keresztül férhet 
   }
   ```
 
-1. Kilépés beszúrása módot az Esc billentyű kiválasztásával.
+1. A beszúrás módból az Esc billentyűvel léphet ki.
 
-1. Mentse a fájlt, és zárja be a vi szerkesztőt a következő parancs beírásával:
+1. Mentse a fájlt, és lépjen ki a VI-szerkesztőből a következő parancs megadásával:
 
     ```bash
     :wq
     ```
 
-1. A jumpbox üzembe.
+1. Helyezze üzembe a jumpboxot.
 
   ```bash
   terraform apply 
   ```
 
-Az üzembe helyezés befejezése után a tartalom az erőforráscsoport hasonlít, amely az alábbi képernyőképen látható:
+Miután az üzembe helyezés befejeződött, az erőforráscsoport tartalma az alábbi képernyőképen láthatóhoz fog hasonlítani:
 
-![A Terraform virtuális gép méretezési erőforráscsoport](./media/terraform-create-vm-scaleset-network-disks-hcl/resource-group-contents-final.png)
+![A Terraform virtuálisgép-méretezési csoportjának erőforráscsoportja](./media/terraform-create-vm-scaleset-network-disks-hcl/resource-group-contents-final.png)
 
 > [!NOTE]
-> Jelentkezzen be a jelszót lehetővé teszi a jumpboxot az le van tiltva, és a virtuális gép méretezési telepített. Jelentkezzen be ssh-KAPCSOLATOT a virtuális gép eléréséhez.
+> A jelszóval történő bejelentkezés le van tiltva az üzembe helyezett jumpboxon és virtuálisgép-méretezési csoporton. A virtuális gép(ek) eléréséhez jelentkezzen be SSH-val.
 
-## <a name="environment-cleanup"></a>Környezet törlése 
+## <a name="environment-cleanup"></a>Környezet tisztítása 
 
-A Terraform ebben az oktatóanyagban létrehozott erőforrások törléséhez adja meg a következő parancsot Cloud shellbe:
+Az ebben az oktatóanyagban létrehozott Terraform-erőforrások törléséhez írja be az alábbi parancsot a Cloud Shellbe:
 
 ```bash
 terraform destroy
 ```
 
-A megsemmisítését folyamat több percet is igénybe vehet.
+Az eltávolítási folyamat több percig is eltarthat.
 
 ## <a name="next-steps"></a>További lépések
-Ebben a cikkben megtanulta, hogyan hozzon létre egy Azure-beli virtuálisgép-méretezési csoportot a Terraform használatával. Az alábbiakban néhány további erőforrást többet szeretne megtudni az Azure-ban a Terraform segítségével: 
+Ebben a cikkben megismerte az Azure virtuálisgép-méretezési csoport Terraformmal történő létrehozását. Íme néhány további segédlet, amelyek segítségével többet tudhat meg a Terraform az Azure-on történő használatáról: 
 
- [A Terraform Hub a Microsoft.com](https://docs.microsoft.com/azure/terraform/)  
- [Terraform az Azure-konfigurációszolgáltató dokumentációját](http://aka.ms/terraform)  
- [Terraform az Azure szolgáltatói forrás](http://aka.ms/tfgit)  
- [Terraform az Azure-modulok](http://aka.ms/tfmodules)
+ [Terraform Hub a Microsoft.com webhelyen](https://docs.microsoft.com/azure/terraform/)  
+ [Terraform: Azure szolgáltatói dokumentáció](http://aka.ms/terraform)  
+ [Terraform: Azure-szolgáltatói forrás](http://aka.ms/tfgit)  
+ [Terraform: Azure-modulok](http://aka.ms/tfmodules)

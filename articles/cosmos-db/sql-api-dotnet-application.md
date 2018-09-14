@@ -13,21 +13,22 @@ ms.topic: tutorial
 ms.date: 08/03/2017
 ms.author: sngun
 ms.custom: devcenter, vs-azure
-ms.openlocfilehash: f62388c649d576cc4b52ebea0af1e9c8743f3127
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 6fbe043e0232701d2aabcbc09606864b5cc27450
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42440289"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43702510"
 ---
 # <a name="_Toc395809351"></a>ASP.NET MVC oktatóprogram: webalkalmazás fejlesztése az Azure Cosmos DB szolgáltatással
+
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-dotnet-application.md)
-> * [Node.js](sql-api-nodejs-application.md)
-> * [Node.js – 2.0-s verzió (előzetes verzió)](sql-api-nodejs-application-preview.md)
 > * [Java](sql-api-java-application.md)
+> * [Node.js](sql-api-nodejs-application.md)
+> * [Node.js – v2](sql-api-nodejs-application-preview.md)
 > * [Python](sql-api-python-application.md)
-> 
+> * [Xamarin](mobile-apps-with-xamarin.md)
 > 
 
 Ez a cikk teljes körűen bemutatja, hogyan építhet teendőkezelő alkalmazást az Azure Cosmos DB eszközzel, és ezáltal hogyan használhatja hatékonyan az Azure Cosmos DB-t a JSON-dokumentumok tárolására és lekérdezésére. A feladatok JSON-dokumentumokként lesznek tárolva az Azure Cosmos DB-ben.

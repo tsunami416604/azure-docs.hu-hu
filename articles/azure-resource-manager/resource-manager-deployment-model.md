@@ -13,14 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
 ms.author: tomfitz
-ms.openlocfilehash: 2fd128ce04ac883396948e6114582dd15288390a
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 704bbe5cc566833ef1279e84f0fab9f363dfaa11
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34359740"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43841627"
 ---
 # <a name="azure-resource-manager-vs-classic-deployment-understand-deployment-models-and-the-state-of-your-resources"></a>Az Azure Resource Manager-alapú és a klasszikus üzemelő példányok: Az üzemi modellek és az erőforrások állapotának ismertetése
+
+> [!NOTE]
+> A cikkben ismertetett információ arra vonatkozik, ha a klasszikusból az Azure Resource Manager-alapú üzemi modellbe migrál.
+
 Ebben a cikkben az Azure Resource Manager-alapú és a klasszikus üzemi modellel ismerkedhet meg. A Resource Manager-alapú és a klasszikus üzemi modell két eltérő módost kínál az Azure-megoldások üzembe helyezésére és felügyeletére. Két eltérő API-készleten keresztül használhatja őket, és az üzembe helyezett erőforrásokban is lehetnek lényeges különbségek. A két modell nem kompatibilis egymással. Ez a cikk röviden ismerteti ezeket az eltéréseket.
 
 Az erőforrások egyszerűbb üzembe helyezése és felügyelete érdekében a Microsoft a Resource Manager használatát javasolja az összes új erőforráshoz. Amennyiben lehetséges, a Microsoft javasolja, hogy a meglévő erőforrásokat is helyezze újra üzembe a Resource Manager használatával.

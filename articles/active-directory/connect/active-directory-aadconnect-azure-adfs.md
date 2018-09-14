@@ -17,12 +17,12 @@ ms.date: 07/17/2017
 ms.component: hybrid
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f2ebe6c7a70e4e574ea4953ca9ed01801190f80e
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 924269e16ab09cfd144955d3bd462cab7b37aaaf
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37917135"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43381754"
 ---
 # <a name="deploying-active-directory-federation-services-in-azure"></a>Az Active Directory összevonási szolgáltatások üzembe helyezése az Azure-ban
 Az AD FS egyszerű, mégis biztonságos identitás-összevonást, valamint webes egyszeri bejelentkezési (SSO) funkciókat biztosít. Az Azure AD vagy O365 segítségével megvalósított összevonás lehetővé teszi a felhasználóknak a helyszíni bejelentkezési adatok segítségével történő hitelesítést, valamint a felhőben futó erőforrások elérését. Ezért fontos, hogy magas rendelkezésre állást biztosító AD FS-infrastruktúrát alkalmazzon, amely garantálja a helyszíni és a felhőben lévő erőforrások elérhetőségét. Az AD FS Azure-ban történő üzembe helyezésével minimális erőfeszítéssel kialakíthatja a magas rendelkezésre állást.
@@ -187,12 +187,14 @@ Válassza ki az újonnan létrehozott ILB-t a Terheléselosztók panelen. Megny�
 
 **6.3. A mintavétel konfigurálása**
 
-Az ILB beállítási paneljén válassza a Mintavételek lehetőséget.
+Az ILB beállítási paneljén válassza az Állapotadat-mintavételek lehetőséget.
 
 1. Kattintson a Hozzáadás gombra.
-2. Adja meg a mintavétel adatait. a. **Név**: a mintavétel neve. b. **Protokoll**: TCP. c. **Port**: 443 (HTTPS). d. **Időköz**: 5 (alapértelmezett érték) – ez az az időköz, amelynek elteltével az ILB mintavételt végez a gépeken, az „e” háttérkészletben. **Nem kifogástalan állapot küszöbértéke**: 2 (alapértelmezett érték) – ez az a küszöbérték, amely meghatározza, hogy az ILB hány egymást követő mintavételi hiba után deklarálja, hogy a gép nem válaszol. A nem válaszoló gépre a rendszer nem irányít forgalmat.
+2. Adja meg a mintavétel adatait. a. **Név**: a mintavétel neve. b. **Protokoll**: HTTP c. **Port**: 80-as (HTTP) d. **Elérési út**: /adfs/probe e. **Időköz**: 5 (alapértelmezett érték) – ez az az időköz, amelynek elteltével az ILB mintavételt végez a számítógépeken, az „f” háttérkészletben. **Nem kifogástalan állapot küszöbértéke**: 2 (alapértelmezett érték) – ez az a küszöbérték, amely meghatározza, hogy az ILB hány egymást követő mintavételi hiba után deklarálja, hogy a gép nem válaszol. A nem válaszoló gépre a rendszer nem irányít forgalmat.
 
 ![Az ILB-mintavétel konfigurálása](./media/active-directory-aadconnect-azure-adfs/ilbdeployment4.png)
+
+Az /adfs/probe végpontot használjuk, amely kifejezetten az olyan AD FS-környezetben végzett állapotellenőrzéshez lett létrehozva, amelyben teljes HTTPS-útvonalellenőrzés nem hajtható végre.  Ez lényegesen jobb, mint a 443-as port alapszintű ellenőrzése, amely nem tükrözi pontosan a modern AD FS üzemelő példány állapotát.  További információ erről a következő helyen található: https://blogs.technet.microsoft.com/applicationproxyblog/2014/10/17/hardware-load-balancer-health-checks-and-web-application-proxy-ad-fs-2012-r2/.
 
 **6.4. Terheléselosztási szabályok létrehozása**
 

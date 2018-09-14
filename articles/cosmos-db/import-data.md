@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 03/30/2018
 ms.author: dech
 ms.custom: mvc
-ms.openlocfilehash: ea8bb1db53deaa546f4174ddc04d9a270aa96d9a
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 771c4a33603ddf262df3b35992d318d34de6c2dc
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43187783"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43698111"
 ---
 # <a name="use-data-migration-tool-to-migrate-your-data-to-azure-cosmos-db"></a>Használja az adatok migrálása eszközt az adatok Azure Cosmos DB-be történő migrálásához 
 
@@ -28,7 +28,7 @@ Melyik API-t szeretné használni az Azure Cosmos DB-vel?
 * **[SQL API](documentdb-introduction.md)** – Az adatáttelepítési eszközben elérhető bármelyik forráslehetőséggel importálhat adatokat.
 * **[Table API](table-introduction.md)** – Az adatok importálásához használhatja az adatáttelepítési eszközt vagy az AzCopy segédprogramot. További információért olvassa el az [Adatok importálása az Azure Cosmos DB Table API-val való használathoz](table-import.md) című témakört.
 * **[MongoDB API](mongodb-introduction.md)** – Az adatáttelepítési eszköz jelenleg nem támogatja az Azure Cosmos DB MongoDB API-t sem forrásként, sem célként. Ha MongoDB API-gyűjteményekbe vagy azokból máshova szeretne adatokat áttelepíteni az Azure Cosmos DB-ben, ehhez utasításokat az [Azure Cosmos DB: Adatok áttelepítése a MongoDB API-val](mongodb-migrate.md) című cikkben találhat. Az adatáttelepítési eszközzel azonban exportálhat adatokat MongoDB-ből Azure Cosmos DB SQL API-gyűjteményekbe az SQL API-val való használathoz. 
-* **[Graph API](graph-introduction.md)** – Az adatáttelepítési eszköz importálási eszközként való használata jelenleg nem támogatott a Graph API-fiókok esetében. 
+* **[Gremlin API](graph-introduction.md)** – Az adatáttelepítési eszköz importálási eszközként való használata jelenleg nem támogatott a Gremlin API-fiókok esetében. 
 
 Ez az oktatóanyag a következő feladatokat mutatja be:
 

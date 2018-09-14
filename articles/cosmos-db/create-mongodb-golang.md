@@ -11,16 +11,25 @@ ms.topic: quickstart
 ms.date: 07/21/2017
 ms.author: sclyon
 ms.custom: mvc
-ms.openlocfilehash: 52565edb797118234284e9204026774cbecba34e
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 68049b9c0b9186a433ddf3c92be12487cfd3c13b
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42023132"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43700280"
 ---
 # <a name="azure-cosmos-db-build-a-mongodb-api-console-app-with-golang-and-the-azure-portal"></a>Azure Cosmos DB: MongoDB API konzolalkalmazás létrehozása a Golang és az Azure Portal használatával
 
-Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-szolgáltatása. Segítségével gyorsan létrehozhat és lekérdezhet dokumentum, kulcs/érték és gráf típusú adatbázisokat, amelyek mindegyike felhasználja az Azure Cosmos DB középpontjában álló globális elosztási és horizontális skálázhatósági képességeket.
+> [!div class="op_single_selector"]
+> * [.NET](create-mongodb-dotnet.md)
+> * [Java](create-mongodb-java.md)
+> * [Node.js](create-mongodb-nodejs.md)
+> * [Python](create-mongodb-flask.md)
+> * [Xamarin](create-mongodb-xamarin.md)
+> * [Golang](create-mongodb-golang.md)
+>  
+
+Az Azure Cosmos DB a Microsoft globálisan elosztott, többmodelles adatbázis-szolgáltatása. Segítségével gyorsan létrehozhat és lekérdezhet dokumentum, kulcs/érték és gráf típusú adatbázisokat, amelyek mindegyike felhasználja az Azure Cosmos DB középpontjában álló globális elosztási és horizontális skálázhatósági képességeket.
 
 Ez a rövid útmutató ismerteti a [Golang](https://golang.org/) nyelven írt, meglévő MongoDB-alkalmazások használatát, valamint azok [MongoDB API](mongodb-introduction.md)-val való összekapcsolásának menetét a MongoDB-ügyfélkapcsolatokat támogató Azure Cosmos DB-adatbázissal.
 

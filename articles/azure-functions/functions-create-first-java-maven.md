@@ -14,12 +14,12 @@ ms.workload: na
 ms.date: 08/10/2018
 ms.author: routlaw, glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: aeb00bf55c578f61e5e1edbaab11c7773b9eab94
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: 3840d8d1e18e73c1f08c450859032c07e441cff2
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "42023439"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43699175"
 ---
 # <a name="create-your-first-function-with-java-and-maven-preview"></a>Az első függvény létrehozása a Java és a Maven használatával (előzetes verzió)
 
@@ -175,11 +175,37 @@ curl -w '\n' -d AzureFunctionsTest https://fabrikam-functions-20170920120101928.
 Hello, AzureFunctionsTest
 ```
 
+## <a name="make-changes-and-redeploy"></a>Módosítások elvégzése és ismételt üzembe helyezés
+
+Szerkessze a létrehozott projektben az `src/main.../Function.java` forrásfájlt a függvényalkalmazás által visszaadott szöveg módosításához. Módosítsa ezt a sort:
+
+```java
+return request.createResponse(200, "Hello, " + name);
+```
+
+A következőre:
+
+```java
+return request.createResponse(200, "Hi, " + name);
+```
+
+Mentse a módosításokat, és helyezze ismét üzembe a terminálon az `azure-functions:deploy` parancs futtatásával, ahogy korábban tette. A függvényalkalmazás frissül, és ez a kérés:
+
+```bash
+curl -w '\n' -d AzureFunctionsTest https://fabrikam-functions-20170920120101928.azurewebsites.net/api/HttpTrigger-Java
+```
+
+Frissített kimenettel rendelkezik:
+
+```Output
+Hi, AzureFunctionsTest
+```
+
 ## <a name="next-steps"></a>További lépések
 
 Létrehozott egy Java-függvényalkalmazást egy egyszerű HTTP-triggerrel, és üzembe helyezte azt az Azure Functionsben.
 
 - Ha további információra van szüksége a Java-függvények létrehozásával kapcsolatban, tekintse át a [Java-függvények fejlesztői útmutatóját](functions-reference-java.md).
 - Adjon hozzá különböző triggereket használó további funkciókat a projekthez az `azure-functions:add` Maven-cél használatával.
-- Végezze el a függvények helyi hibakeresését a Visual Studio Code-dal. Ha elkészült a [Java-bővítménycsomag](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack) telepítésével, és a Functions-projekt meg van nyitva a Visual Studio Code-ban, [társítsa a hibakeresőt](https://code.visualstudio.com/Docs/editor/debugging#_launch-configurations) az 5005-ös számú porthoz. Ezt követően állítson be egy töréspontot a szerkesztőben, és aktiválja a függvényt, miközben az helyileg fut: ![Függvények hibakeresése a Visual Studio Code-ban](media/functions-create-java-maven/vscode-debug.png)
-- Végezze el a függvények távoli hibakeresését a Visual Studio Code-dal. Tekintse meg az utasításokat a [kiszolgáló nélküli Java-alkalmazások írásáról](https://code.visualstudio.com/docs/java/java-serverless#_remote-debug-functions-running-in-the-cloud) szóló dokumentációban.
+- Helyileg írjon függvényeket, és végezze el azok hibakeresését a [Visual Studio Code](https://code.visualstudio.com/docs/java/java-azurefunctions), az [IntelliJ](functions-create-maven-intellij.md) és az [Eclipse](functions-create-maven-eclipse.md) használatával. 
+- Végezze el az Azure-ban üzembe helyezett függvények hibakeresését a Visual Studio Code-dal. Utasításokért tekintse meg a Visual Studio Code [kiszolgáló nélküli Java-alkalmazásokat](https://code.visualstudio.com/docs/java/java-serverless#_remote-debug-functions-running-in-the-cloud) ismertető dokumentációját.

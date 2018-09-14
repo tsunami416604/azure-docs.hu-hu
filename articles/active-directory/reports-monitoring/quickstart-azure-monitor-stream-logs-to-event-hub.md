@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 07/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: f6f3d9625e5469823a9c0c6eb6b549a6eaaeb0e9
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 1a7f91a0d15dd67d86f83485b4aad01a3bae37b3
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "41918665"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43699069"
 ---
 # <a name="tutorial-stream-azure-ad-logs-to-an-azure-event-hub-preview"></a>Oktatóanyag: Azure AD-naplók streamelése Azure-eseményközpontba (előzetes verzió)
 
@@ -34,7 +34,7 @@ A szolgáltatás használatához a következőkre lesz szüksége:
 * Azure-előfizetés. Ha nincs Azure-előfizetése, [regisztráljon egy ingyenes próbaverzióra](https://azure.microsoft.com/free/).
 * Egy Azure AD-bérlő.
 * Egy felhasználó, aki az adott Azure AD-bérlő *globális* vagy *biztonsági rendszergazdája*.
-* Egy Event Hubs-névtér és -eseményközpont az Azure-előfizetésében. Megismerkedhet az [eseményközpont létrehozásának](https://docs.microsoft.com/azure/event-hubs/event-hubs-create.md) menetével.
+* Egy Event Hubs-névtér és -eseményközpont az Azure-előfizetésében. Megismerkedhet az [eseményközpont létrehozásának](https://docs.microsoft.com/azure/event-hubs/event-hubs-create) menetével.
 
 ## <a name="archive-logs-to-an-event-hub"></a>Naplók archiválása egy eseményközpontba
 
@@ -87,6 +87,6 @@ Miután az adatok megjelentek az eseményközpontban, kétféleképpen érheti e
 ## <a name="next-steps"></a>További lépések
 
 * [Azure AD-naplók integrálása a Splunkkal az Azure Monitor használatával](tutorial-integrate-activity-logs-with-splunk.md)
-* [Az Azure AD Sumo Logic alkalmazás telepítése és az irányítópultok megtekintése](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory/Install_the_Azure_Active_Directory_App_and_View_the_Dashboards)
+* [Azure AD-naplók integrálása a SumoLogickal az Azure Monitor használatával](howto-integrate-activity-logs-with-sumologic.md)
 * [Az auditnaplók sémájának értelmezése az Azure Monitorban](reference-azure-monitor-audit-log-schema.md)
 * [A bejelentkezési naplók sémájának értelmezése az Azure Monitorban](reference-azure-monitor-sign-ins-log-schema.md)

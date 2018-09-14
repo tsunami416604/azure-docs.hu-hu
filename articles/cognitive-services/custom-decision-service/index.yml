@@ -1,0 +1,54 @@
+### YamlMime:YamlDocument
+ms.openlocfilehash: 3314df7dc932553f56e0c937c8065f55f9dc50a3
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35624188"
+documentType: LandingData
+title: A Custom Decision Service dokumentációja
+metadata:
+  title: A Custom Decision Service dokumentációja – oktatóanyagok és API-referencia – Azure Cognitive Services | Microsoft Docs
+  meta.description: Learn how to create a contextual, decision-making API that improves with experience
+  services: cognitive-services
+  author: noellelacharite
+  manager: nolachar
+  ms.service: cognitive-services
+  ms.component: custom-decision-service
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 05/01/2018
+  ms.author: nolachar
+abstract:
+  description: Az Azure Custom Decision Service segítségével a tapasztalatok felhasználásával egyre pontosabbá váló, felhőalapú, környezetfüggő döntéshozó API-val rendelkező intelligens rendszereket hozhat létre. A Custom Decision Service a megerősítő tanulásban rejlő lehetőségeket használja ki, és az alkalmazás tartalmait úgy módosítja, hogy azzal maximalizálja a felhasználók általános bevonását. A rendszer a valós idejű döntéseibe építi a felhasználói visszajelzéseket, és perceken belül reagál a megjelenő trendekre és a legfrissebb történésekre. Az alábbi rövid útmutatókból megtudhatja, hogyan regisztrálhatja az alkalmazását, és hívhatja meg az API-t egy böngészőből vagy alkalmazásból. Az oktatóanyagok segítségével utána személyre szabhatja a cikkeit, a tartalmait pedig a gépi tanulásra készen álló „szolgáltatásként” mutathatja be.
+sections:
+- title: 5 perces gyors útmutatók
+  items:
+  - type: paragraph
+    text: 'Az alkalmazás regisztrálása, és az Azure Custom Decision Service API meghívása közvetlenül a böngészőből vagy okostelefonos alkalmazásból:'
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="/azure/cognitive-services/custom-decision-service/custom-decision-service-get-started-register">Alkalmazás regisztrálása</a>
+    - html: <a href="/azure/cognitive-services/custom-decision-service/custom-decision-service-get-started-browser">API hívása egy böngészőből</a>
+    - html: <a href="/azure/cognitive-services/custom-decision-service/custom-decision-service-get-started-app">API hívása egy alkalmazásból</a>
+- title: Részletes útmutatók
+  items:
+  - type: paragraph
+    text: 'A webhely nyitóoldalán található cikkek személyre szabása, és a tartalmak gépi tanulásra kész „szolgáltatásként” való megadása a Custom Decision Service API-k használatával:'
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="/azure/cognitive-services/custom-decision-service/custom-decision-service-tutorial-news">Cikk személyre szabása</a>
+    - html: <a href="/azure/cognitive-services/custom-decision-service/custom-decision-service-tutorial-ml">Machine Learning</a>
+- title: Referencia
+  items:
+  - type: paragraph
+    text: Ezek az API-k együttműködnek. Az API-referenciában három olyan API található, amely hozzájárul az egyéni döntéshozatalhoz. Az Experimentation API a LogDownloader API által létrehozott naplófájlokat hasznosítja. A részletes forgatókönyveket a cikkek ismertetik.
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: API-k
+      html: <p><a href="/azure/cognitive-services/custom-decision-service/custom-decision-service-api-reference">API</a></p><p><a href="/azure/cognitive-services/custom-decision-service/custom-decision-service-experimentation-reference">Experimentation</a></p><p><a href="/azure/cognitive-services/custom-decision-service/custom-decision-service-log-downloader-reference">LogDownloader</a><p>

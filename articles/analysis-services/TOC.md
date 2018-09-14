@@ -82,6 +82,7 @@
 ## [Power Query M](https://msdn.microsoft.com/library/mt211003.aspx)
 ## [Táblázatos modell parancsnyelve (TMSL)](https://docs.microsoft.com/sql/analysis-services/tabular-model-scripting-language-tmsl-reference)
 ## [Táblázatos objektummodell (TOM)](https://docs.microsoft.com/sql/analysis-services/tabular-model-programming-compatibility-level-1200/introduction-to-the-tabular-object-model-tom-in-analysis-services-amo)
+## [Erőforrás- és objektumkorlátok](analysis-services-capacity-limits.md)
 
 # További források
 

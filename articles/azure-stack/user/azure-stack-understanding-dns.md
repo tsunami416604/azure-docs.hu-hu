@@ -1,6 +1,6 @@
 ---
-title: Azure-készletben ismertetése IDN |} Microsoft Docs
-description: Az IDN-szolgáltatásokat és képességeket Azure verem ismertetése
+title: Understanding IDN formátumú tartománynevek az Azure Stackben |} A Microsoft Docs
+description: IDN formátumú tartománynevek funkciók és képességek az Azure Stack ismertetése
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -14,46 +14,46 @@ ms.topic: get-started-article
 ms.date: 05/21/2018
 ms.author: mabrigg
 ms.reviewer: scottnap
-ms.openlocfilehash: 9123160f42adea57c28dff265bd5b5dbbcbb7918
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 100c444fb5b3109c197fff69062586f9facb0932
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34724258"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45580582"
 ---
-# <a name="introducing-idns-for-azure-stack"></a>Azure verem IDN bemutatása
+# <a name="introducing-idns-for-azure-stack"></a>IDN formátumú tartománynevek az Azure Stack bemutatása
 
-*A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
+*A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
 
-IDN az Azure verem hálózati szolgáltatása: lehetővé teszi a külső DNS-nevek feloldására (például http://www.bing.com.) is lehetővé teszi a belső virtuális hálózati nevek regisztrálni. Ennek végrehajtásával oldhatja meg virtuális gépek azonos virtuális hálózaton IP-címet, hanem nevét. Ez a megközelítés eltávolítja a kell megadnia az egyéni DNS-kiszolgálóbejegyzéseik. DNS szolgáltatással kapcsolatos további információkért lásd: a [Azure DNS áttekintése](https://docs.microsoft.com/en-us/azure/dns/dns-overview).
+iDNS az Azure Stack hálózati szolgáltatása, amely lehetővé teszi, hogy külső DNS-neveket (például http://www.bing.com.) azt is lehetővé teszi, hogy kell regisztrálni a belső virtuális hálózat nevét. Ezzel a módszerrel oldhatja meg virtuális gépek ugyanazon a virtuális hálózaton lévő IP-címet, hanem nevét. Ez a megközelítés hogy meg kell adni az egyéni DNS-kiszolgálói bejegyzésekkel eltávolítja. a DNS szolgáltatással kapcsolatos további információkért lásd: a [Azure DNS áttekintését](https://docs.microsoft.com/azure/dns/dns-overview).
 
-## <a name="what-does-idns-do"></a>Mire IDN?
+## <a name="what-does-idns-do"></a>Mire IDN formátumú tartománynevek?
 
-IDN Azure-készletben akkor az alábbi képességeket egyéni DNS-kiszolgálóbejegyzéseik megadása nélkül beolvasása:
+Az IDN formátumú tartománynevek az Azure Stack az alábbi képességeket egyéni DNS-kiszolgálói bejegyzésekkel megadása nélkül szolgáltatás:
 
-- Megosztott DNS névfeloldási szolgáltatást bérlői munkaterheléseket.
-- A névfeloldás és a DNS-regisztráció a bérlői virtuális hálózaton belül mérvadó DNS-szolgáltatás.
-- A rekurzív DNS-szolgáltatás a bérlői virtuális gépek Internet-nevek feloldását. Bérlők már nem kell adnia az egyéni DNS-bejegyzések Internet névfeloldás (például www.bing.com.)
+- Megosztott DNS névfeloldási szolgáltatást bérlői számítási feladatok esetében.
+- A névfeloldás és a bérlői virtuális hálózat DNS-regisztráció mérvadó DNS-szolgáltatás.
+- A rekurzív DNS szolgáltatás a bérlő virtuális gépek Internet-nevek feloldását. Bérlők számára már nem kell megadnia az egyéni DNS-bejegyzéseket Internet névfeloldás (például www.bing.com.)
 
-Továbbra is a saját DNS állapotba, és egyéni DNS-kiszolgálók használata. Azonban IDN formátumú tartománynevek használatával oldható fel internetes DNS-nevek, és az azonos virtuális hálózatban lévő más virtuális gépek csatlakozni, nem kell egyéni DNS-bejegyzéseket létrehozni.
+Továbbra is a saját DNS használata, és használja az egyéni DNS-kiszolgálókat. Azonban IDN formátumú tartománynevek használatával internetes DNS-nevek és a más virtuális gépekhez az azonos virtuális hálózatba, nem kell egyéni DNS-bejegyzéseket létrehozni.
 
-## <a name="what-doesnt-idns-do"></a>Mit nem IDN?
+## <a name="what-doesnt-idns-do"></a>Mire nem IDN formátumú tartománynevek?
 
-A rendszer milyen IDN nem teszi lehetővé a teendő, hozzon létre egy DNS-rekordot a nevet, amely a virtuális hálózaton kívül feloldhatók legyenek.
+Milyen IDN formátumú tartománynevek nem teszi lehetővé tesz, nem egy nevet, amely a virtuális hálózaton kívül feloldható legyen a DNS-rekord létrehozása.
 
-Az Azure lehetősége van egy DNS-névcímke társított egy nyilvános IP-cím megadásával. Választhat, hogy a címke (előtag), de Azure úgy dönt, az a régió, ahol a nyilvános IP-cím létrehozása alapuló előtagot.
+Az Azure-ban lehetősége van egy nyilvános IP-címmel társított DNS-név címke megadásával. Kiválaszthatja, hogy a címke (előtag), de az Azure úgy dönt, az utótag, a régiót, amelyben a nyilvános IP-cím létrehozása alapuló.
 
-![A DNS-névcímke – példa](media/azure-stack-understanding-dns-in-tp2/image3.png)
+![Példa egy DNS-névcímke](media/azure-stack-understanding-dns-in-tp2/image3.png)
 
-Ahogy az előző ábrán látható, Azure létrehoz egy "A" rekord a DNS-ben a DNS-névcímke, a zóna alatt megadott **westus.cloudapp.azure.com**. Az előtag és az utótag együttes írása egy [teljesen minősített tartománynevét](https://en.wikipedia.org/wiki/Fully_qualified_domain_name) (FQDN), amely feloldható a bárhol a nyilvános interneten.
+Ahogy az előző képen látható, az Azure hoz létre az "A" rekord a DNS-ben a zóna alatt megadott DNS-névcímke **westus.cloudapp.azure.com**. Az előtag és az utótag együttes írása egy [teljesen minősített tartománynevét](https://en.wikipedia.org/wiki/Fully_qualified_domain_name) (FQDN), amely feloldható a bárhol a nyilvános interneten.
 
-Az Azure verem csak támogatja belső névregisztráció, IDN, így nem tegye a következőket:
+Az Azure Stack csak támogatja belső névregisztráció, IDN formátumú tartományneveket, így nem tegye a következőket:
 
-- Egy meglévő üzemeltetett DNS-zóna (például local.azurestack.external.) a DNS-rekord létrehozása
-- Hozzon létre egy DNS-zóna (például Contoso.com.)
-- A saját egyéni DNS-zóna rekordot kell létrehozni.
+- Hozzon létre egy DNS-rekordot a meglévő üzemeltetett DNS-zóna (például local.azurestack.external.)
+- (Például Contoso.com.) a DNS-zóna létrehozása
+- Hozzon létre egy rekordot a saját egyéni DNS-zóna szerint.
 - A tartománynevek vásárlásának támogatja.
 
 ## <a name="next-steps"></a>További lépések
 
-[Az Azure-készletben a DNS-sel](azure-stack-dns.md)
+[DNS-sel az Azure Stackben](azure-stack-dns.md)

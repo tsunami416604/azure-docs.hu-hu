@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 06/18/2018
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 5c0aa042f97e10f90787b1cdf8e03cd6d849441e
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 30199005db93f9a43a37d2c72bb34dd772265419
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38461639"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43664887"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-web-apps"></a>Oktatóanyag: Meglévő egyéni DNS-név leképezése az Azure Web Appsra
 
@@ -37,8 +37,6 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Helyettesítő karaktert tartalmazó tartomány hozzárendelése (például `*.contoso.com`) CNAME rekorddal
 > * Alapértelmezett URL-cím átirányítása egyéni könyvtárra
 > * A tartományleképezés automatizálása szkriptekkel
-
-Élő webhely és hozzá tartozó DNS-tartománynév migrálása az App Service-be: [Aktív DNS-név migrálása az Azure App Service-be](app-service-custom-domain-name-migrate.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -304,6 +302,10 @@ Ha HTTP 404-es (nem található) hiba történik az egyéni tartomány URL-cím�
 - A böngészőügyfél gyorsítótárazta a tartomány régi IP-címét. Ürítse ki a gyorsítótárat, és tesztelje ismét a DNS-feloldást. Windows-gépen az `ipconfig /flushdns` paranccsal törölheti a gyorsítótárat.
 
 <a name="virtualdir"></a>
+
+## <a name="migrate-an-active-domain"></a>Aktív tartomány migrálása
+
+Élő webhely és hozzá tartozó DNS-tartománynév migrálása leállás nélkül az App Service-be: [Aktív DNS-név migrálása az Azure App Service-be](app-service-custom-domain-name-migrate.md).
 
 ## <a name="redirect-to-a-custom-directory"></a>Átirányítás egyéni könyvtárra
 

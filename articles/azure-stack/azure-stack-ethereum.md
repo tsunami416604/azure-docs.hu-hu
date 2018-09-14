@@ -1,27 +1,34 @@
 ---
 title: Az Azure Stack Ethereum blockchain megoldássablon
-description: Egyéni megoldás a sablonok segítségével telepítheti és konfigurálhatja a consortium Ethereum hálózati blockchain az Azure Stackben
+description: Az oktatóanyag egy egyéni megoldás-sablonok használatával telepítheti és konfigurálhatja a consortium Ethereum hálózati blockchain az Azure Stackben
 services: azure-stack
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 09/12/2018
-ms.topic: article
+ms.date: 09/13/2018
+ms.topic: tutorial
 ms.service: azure-stack
-ms.reviewer: coborn
+ms.reviewer: seyadava
+ms.custom: mvc
 manager: femila
-ms.openlocfilehash: b4c8ff113ff76586cc4a91adfe568b07327a2d94
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: b21a9ca58fc29a3da62ea08e81e628368fe5385f
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44721982"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45580769"
 ---
-# <a name="azure-stack-ethereum-blockchain-solution-templates"></a>Az Azure Stack Ethereum blockchain megoldássablonok
+# <a name="tutorial-use-the-azure-stack-ethereum-blockchain-solution-template"></a>Oktatóanyag: Az Azure Stack Ethereum blockchain megoldás sablon használata
 
 Az Ethereum-megoldássablon célja, hogy egyszerűbb és gyorsabb üzembe helyezése és konfigurálása egy többtagú consortium Ethereum blockchain hálózati minimális Azure-ban és az Ethereum ismeretekkel.
 
 Felhasználói adatok és a egy kattintással üzembe helyezést, az Azure Stack-bérlői portál néhány minden tagja a hálózati erőforrás-igényű helyezhet üzembe. Minden tag hálózati erőforrás-igényű tranzakciós kiegyenlített terhelésű csomópontok egy készletét áll rendelkező, amelyeket egy alkalmazás vagy felhasználó használhatja elküldeni a tranzakciók, a tranzakciókat. adatbányászati csomópontok egy készletét és a egy hálózati virtuális készüléket (NVA). A későbbi csatlakozási lépés kapcsolódik az nva-k teljes konfigurációjú többtagú blockchain-hálózat létrehozása.
+
+Állítsa, a következőket fogja végrehajtani:
+
+> [!div class="checklist"]
+> * Válasszon egy üzembe helyezési architektúrája
+> * Önálló, consortium vezető vagy consortium tag hálózati üzembe helyezése
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -198,5 +205,13 @@ Ez a sablon létrehoz egy kapcsolatot a vezető távoli tagja.
 
 ## <a name="next-steps"></a>További lépések
 
-- Ethereum- és Azure kapcsolatos további tudnivalókért lásd: [Blockchain-technológia és az alkalmazások |} A Microsoft Azure](https://azure.microsoft.com/solutions/blockchain/).
-- Az Azure blockchain-forgatókönyvekkel kapcsolatos további információkért lásd: [Ethereum proof of work consortium megoldássablon](../blockchain-workbench/ethereum-deployment-guide.md).
+Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
+
+> [!div class="checklist"]
+> * Válasszon egy üzembe helyezési architektúrája
+> * Önálló, consortium vezető vagy consortium tag hálózati üzembe helyezése
+
+Az Azure és az Ethereum kapcsolatos további információkért lásd:
+
+> [!div class="nextstepaction"]
+> [Blockchain-technológia és alkalmazások](https://azure.microsoft.com/solutions/blockchain/)

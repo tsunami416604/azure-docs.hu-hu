@@ -5,16 +5,16 @@ services: iot-edge
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 08/22/2018
+ms.date: 08/30/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 7e02caf9706a5127d3729256fcc238f467eb2991
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.openlocfilehash: 2b393a5b60ba534fba8115ab3ef0f35a26ad3ed4
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43143500"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43300353"
 ---
 # <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>Oktatóanyag: Adatok tárolása a peremhálózaton SQL Server-adatbázisokkal
 
@@ -176,7 +176,11 @@ Az IoT Edge-futtatókörnyezet által az IoT Edge-eszközön telepítendő modul
 
 1. A Visual Studio Code Explorerben nyissa meg a **deployment.template.json** fájlt. 
 2. Keresse meg a **moduleContent.$edgeAgent.properties.desired.modules** szakaszt. A listában a következő két modulnak kell szerepelnie: a szimulált adatokat előállító **tempSensor** modulnak és a saját **sqlFunction** moduljának.
-3. Adja hozzá a következő kódot a harmadik modul deklarálásához:
+3. Ha Windows-tárolókat használ, módosítsa az **sqlFunction.settings.image** szakaszt.
+    ```json
+    "image": "${MODULES.sqlFunction.windows-amd64}"
+    ```
+4. Adja hozzá a következő kódot egy harmadik modul deklarálásához. Adjon hozzá egy vesszőt az sqlFunction szakasz után, és szúrja be a következőt:
 
    ```json
    "sql": {
@@ -191,16 +195,18 @@ Az IoT Edge-futtatókörnyezet által az IoT Edge-eszközön telepítendő modul
    }
    ```
 
-4. Az IoT Edge-eszköz operációs rendszerétől függően az alábbi kóddal frissítse az **sql.settings** paramétereit:
+   Ha nem lenne egyértelmű a JSON-elem hozzáadása, itt láthat egy példát. ![SQL Server-tároló hozzáadása](./media/tutorial-store-data-sql-server/view_json_sql.png)
 
-   * Windows:
+5. Az IoT Edge-eszközön lévő Docker-tárolók típusától függően az alábbi kóddal frissítse az **sql.settings** paramétereit:
+
+   * Windows-tárolók:
 
       ```json
       "image": "microsoft/mssql-server-windows-developer",
-      "createOptions": "{\"Env\": [\"ACCEPT_EULA=Y\",\"MSSQL_SA_PASSWORD=Strong!Passw0rd\"],\"HostConfig\": {\"Mounts\": [{\"Target\": \"C:\\\\mssql\",\"Source\": \"sqlVolume\",\"Type\": \"volume\"}],\"PortBindings\": {\"1433/tcp\": [{\"HostPort\": \"1401\"}]}}}"
+      "createOptions": "{\"Env\": [\"ACCEPT_EULA=Y\",\"SA_PASSWORD=Strong!Passw0rd\"],\"HostConfig\": {\"Mounts\": [{\"Target\": \"C:\\\\mssql\",\"Source\": \"sqlVolume\",\"Type\": \"volume\"}],\"PortBindings\": {\"1433/tcp\": [{\"HostPort\": \"1401\"}]}}}"
       ```
 
-   * Linux:
+   * Linux-tárolók:
 
       ```json
       "image": "microsoft/mssql-server-linux:2017-latest",
@@ -210,28 +216,20 @@ Az IoT Edge-futtatókörnyezet által az IoT Edge-eszközön telepítendő modul
    >[!Tip]
    >Ha éles környezetben hoz létre SQL Server-tárolót, minden esetben [módosítsa az alapértelmezett rendszergazdai jelszót](https://docs.microsoft.com/sql/linux/quickstart-install-connect-docker#change-the-sa-password).
 
-5. Mentse a **deployment.template.json** fájlt. 
+6. Mentse a **deployment.template.json** fájlt.
 
 ## <a name="build-your-iot-edge-solution"></a>Az IoT Edge-megoldás összeállítása
 
 Az előző szakaszokban egyetlen modullal hozott létre megoldást, majd hozzáadott egy másik modult az üzembehelyezési jegyzéksablonfájlhoz. Most létre kell hoznia a megoldást és a modulok tárolórendszerképeit, majd le kell küldenie a rendszerképeket a tárolóregisztrációs adatbázisba. 
 
-1. A deployment.template.json fájlban adja meg az IoT Edge-futtatókörnyezet számára a regisztrációs adatbázis hitelesítő adatait, hogy az hozzáférhessen a modulrendszerképekhez. Keresse meg a **moduleContent.$edgeAgent.properties.desired.runtime.settings** szakaszt. 
-2. Szúrja be a következő JSON-kódot a **loggingOptions** szakasz után:
+1. Az .env fájlban adja meg az IoT Edge-futtatókörnyezet számára a regisztrációs adatbázis hitelesítő adatait, hogy az hozzáférhessen a modulrendszerképekhez. Keresse meg a **CONTAINER_REGISTRY_USERNAME** és a **CONTAINER_REGISTRY_PASSWORD** szakaszt, és szúrja be a hitelesítő adatait az egyenlőségjel után: 
 
-   ```JSON
-   "registryCredentials": {
-       "myRegistry": {
-           "username": "",
-           "password": "",
-           "address": ""
-       }
-   }
+   ```env
+   CONTAINER_REGISTRY_USERNAME_yourContainerReg=<username>
+   CONTAINER_REGISTRY_PASSWORD_yourContainerReg=<password>
    ```
-
-3. Írja be a regisztrációs adatbázis hitelesítő adatait a **username**, **password** és **address** mezőbe. Használja azokat az értékeket, amelyeket az Azure-beli tárolóregisztrációs adatbázis létrehozásakor másolt ki, az oktatóanyag első lépésében.
-4. Mentse a **deployment.template.json** fájlt.
-5. Jelentkezzen be a tárolóregisztrációs adatbázisba a Visual Studio Code felületén, így le tudja küldeni a rendszerképeket a regisztrációs adatbázisba. Használja az üzembehelyezési jegyzékfájlhoz az imént hozzáadott hitelesítő adatokat. Az integrált terminálon írja be a következő parancsot: 
+2. Mentse az .env fájlt.
+3. Jelentkezzen be a tárolóregisztrációs adatbázisba a Visual Studio Code felületén, hogy le tudja küldeni a rendszerképeket a regisztrációs adatbázisba. Használja ugyanazokat a hitelesítő adatokat, mint amelyeket az .env fájlhoz hozzáadott. Az integrált terminálon írja be a következő parancsot:
 
     ```csh/sh
     docker login -u <ACR username> <ACR login server>
@@ -243,7 +241,7 @@ Az előző szakaszokban egyetlen modullal hozott létre megoldást, majd hozzáa
     Login Succeeded
     ```
 
-6. A VS Code Explorerben kattintson a jobb gombbal a **deployment.template.json** fájlra, és válassza a **Build IoT Edge solution** (IoT Edge-megoldás összeállítása) lehetőséget. 
+4. A VS Code Explorerben kattintson a jobb gombbal a **deployment.template.json** fájlra, és válassza a **Build and Push IoT Edge solution** (IoT Edge-megoldás összeállítása és leküldése) lehetőséget. 
 
 ## <a name="deploy-the-solution-to-a-device"></a>A megoldás üzembe helyezése egy eszközön
 
@@ -287,7 +285,7 @@ Ez a szakasz az SQL-adatbázis beállítását mutatja be a hőmérsékletadatok
    * Windows-tárolók:
 
       ```cmd
-      sqlcmd -S localhost -U SA -P 'Strong!Passw0rd'
+      sqlcmd -S localhost -U SA -P "Strong!Passw0rd"
       ```
 
    * Linux-tárolók: 

@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 09/05/2018
 ms.author: mabrigg
 ms.reviewer: kivenkat
-ms.openlocfilehash: ba4c53f03350995544eb95917102bd7123a077d2
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 7a5c6875f080655e69f549e45ec474958128754f
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44022764"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45575813"
 ---
 # <a name="make-a-virtual-machine-image-available-in-azure-stack"></a>Egy virtuális gép rendszerképének elérhetővé az Azure Stackben
 
@@ -75,7 +75,7 @@ Lemezképek által blobtárolók URI azonosítójához használandó képesnek k
 ## <a name="add-a-vm-image-to-the-marketplace-by-using-powershell"></a>Egy Virtuálisgép-lemezkép hozzáadása a Marketplace-en a PowerShell-lel
 
 > [!Note]  
-> Amikor hozzáadja a lemezkép csak akkor lesz elérhető az Azure Resource Manager-alapú sablonok és PowerShell központi telepítések. A lemezkép számára elérhetővé tenni a Piactéri elem, mint a felhasználók a cikkben ismertetett lépések Piactéri elem közzététele [létrehozása és a Piactéri elem közzététele](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-create-and-publish-marketplace-item)
+> Amikor hozzáadja a lemezkép csak akkor lesz elérhető az Azure Resource Manager-alapú sablonok és PowerShell központi telepítések. A lemezkép számára elérhetővé tenni a Piactéri elem, mint a felhasználók a cikkben ismertetett lépések Piactéri elem közzététele [létrehozása és a Piactéri elem közzététele](https://docs.microsoft.com/azure/azure-stack/azure-stack-create-and-publish-marketplace-item)
 
 1. [Az Azure Stack PowerShell telepítése](azure-stack-powershell-install.md).  
 

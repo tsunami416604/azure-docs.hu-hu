@@ -1,5 +1,5 @@
 ---
-title: Bevezetés az Azure Cosmos DB Graph API-k használatába | Microsoft Docs
+title: 'Bevezetés az Azure Cosmos DB használatába: Gremlin API | Microsoft Docs'
 description: Ez a cikk azt ismerteti, hogy miként használható az Azure Cosmos DB közel valós idejű adateléréssel nagy méretű gráfok tárolására, lekérdezésére és bejárására az Apache TinkerPop gráflekérdezési nyelve, a Gremlin használatával.
 services: cosmos-db
 author: LuisBosquez
@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 01/05/2017
 ms.author: lbosq
-ms.openlocfilehash: 333bb4074ac741e854ff56c7c397b0e3be247f1b
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: a0eec8aec315eefcbcc859828fa68ea0ccee6190
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37857150"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43695350"
 ---
-# <a name="introduction-to-azure-cosmos-db-graph-api"></a>Bevezetés az Azure Cosmos DB használatába: a Graph API
+# <a name="introduction-to-azure-cosmos-db-gremlin-api"></a>Bevezetés az Azure Cosmos DB használatába: Gremlin API
 
 Az [Azure Cosmos DB](introduction.md) a Microsoft globálisan elosztott többmodelles adatbázis-szolgáltatása kritikus fontosságú alkalmazások számára. Az Azure Cosmos DB az alábbi funkciókat biztosítja [az iparág legjobb](https://azure.microsoft.com/support/legal/sla/cosmos-db/) szolgáltatásiszint-szerződéseivel támogatva:
 
@@ -29,13 +29,7 @@ Az [Azure Cosmos DB](introduction.md) a Microsoft globálisan elosztott többmod
 
 Az Azure Cosmos DB [automatikusan indexeli az adatokat](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf) anélkül, hogy a felhasználónak sémákat és indexeket kellene kezelnie. Többmodelles szolgáltatás, amely támogatja a dokumentumokat, a kulcsértékeket, a diagramokat és az oszlopos adatmodelleket.
 
-Javasoljuk, hogy tekintse meg a következő videót, amelyben Kirill Gavrylyuk a gráfok Azure Cosmos DB-ben való használatának első lépéseit ismerteti:
-
-> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Graphs-with-Azure-Cosmos-DB-Gremlin-API/player]
-> 
-> 
-
-Az Azure Cosmos DB Graph API a következőket biztosítja:
+Az Azure Cosmos DB Gremlin API a következőket biztosítja:
 
 - Gráfmodellezés.
 - Bejárási API-k.
@@ -47,7 +41,7 @@ Az Azure Cosmos DB Graph API a következőket biztosítja:
 
 Az Azure Cosmos DB lekérdezéséhez használhatja az [Apache TinkerPop](http://tinkerpop.apache.org) gráfbejárási nyelvet vagy a [Gremlint](http://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps).
 
-A cikk áttekintést nyújt az Azure Cosmos DB Graph API-járól, és elmagyarázza, hogyan használhatja a nagyméretű, több milliárd csúcsot és élet tartalmazó gráfok tárolására. A gráfokat ezredmásodperces késéssel kérdezheti le, és könnyen fejlesztheti a gráfok struktúráját és sémáját.
+A cikk áttekintést nyújt az Azure Cosmos DB Gremlin API-járól, és elmagyarázza, hogyan használhatja a nagyméretű, több milliárd csúcsot és élet tartalmazó gráfok tárolására. A gráfokat ezredmásodperces késéssel kérdezheti le, és könnyen fejlesztheti a gráfok struktúráját és sémáját.
 
 ## <a name="graph-database"></a>Gráfadatbázis
 Az adatok a való világban természetes módon kapcsolódnak egymáshoz. A hagyományos adatmodellezés az entitásokra fókuszál. Számos alkalmazás esetében szükséges az entitások és a kapcsolatok természetes modellezése is.
@@ -102,7 +96,7 @@ Az Azure Cosmos DB a következő megkülönböztetett képességeket biztosítja
 Az Azure Cosmos DB emellett képes többféle modellt (például dokumentumokat és gráfokat) alkalmazni egyazon tárolón/adatbázison belül. Dokumentumtárolók használatával a gráfadatokat a dokumentumokkal együtt tárolhatja. JSON-alapú SQL-lekérdezések és Gremlin-lekérdezések használatával egyaránt lekérdezheti a gráffal egyező adatokat.
 
 ## <a name="get-started"></a>Bevezetés
-Azure Cosmos DB-fiókokat a Graph API-t támogató Azure parancssori felület (CLI), Azure PowerShell vagy Azure Portal használatával hozhat létre. A fiókok létrehozását követően az Azure Portal szolgáltatásvégpontot biztosít (például `https://<youraccount>.gremlin.cosmosdb.azure.com`), amely egy WebSocket-előtér a Gremlin számára. TinkerPop-kompatibilis eszközeit, például a [Gremlin konzolt](http://tinkerpop.apache.org/docs/current/reference/#gremlin-console) beállíthatja, hogy ehhez a végponthoz kapcsolódjanak, és az alkalmazásokat a Java, a Node.js vagy bármely Gremlin ügyfél-illesztőprogram használatával hozzák létre.
+Azure Cosmos DB-fiókokat a Gremlin API-t támogató Azure parancssori felület (CLI), Azure PowerShell vagy Azure Portal használatával hozhat létre. A fiókok létrehozását követően az Azure Portal szolgáltatásvégpontot biztosít (például `https://<youraccount>.gremlin.cosmosdb.azure.com`), amely egy WebSocket-előtér a Gremlin számára. TinkerPop-kompatibilis eszközeit, például a [Gremlin konzolt](http://tinkerpop.apache.org/docs/current/reference/#gremlin-console) beállíthatja, hogy ehhez a végponthoz kapcsolódjanak, és az alkalmazásokat a Java, a Node.js vagy bármely Gremlin ügyfél-illesztőprogram használatával hozzák létre.
 
 Az alábbi táblázat az Azure Cosmos DB-n használható népszerű Gremlin-illesztőprogramokat foglalja össze:
 

@@ -11,14 +11,23 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 03/26/2018
 ms.author: sngun
-ms.openlocfilehash: 0535f956e0a7a981bee441c0eb4ae103ca5d0cec
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: e218dccee322b6e387e78c04dba5afb9677c1b4b
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38612797"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43702020"
 ---
 # <a name="azure-cosmos-db-create-a-document-database-using-java-and-the-azure-portal"></a>Azure Cosmos DB: Dokumentum-adatbázis létrehozása a Java és az Azure Portal használatával
+
+> [!div class="op_single_selector"]
+> * [.NET](create-sql-api-dotnet.md)
+> * [Java](create-sql-api-java.md)
+> * [Node.js](create-sql-api-nodejs.md)
+> * [Node.js – v2](create-sql-api-nodejs-preview.md)
+> * [Python](create-sql-api-python.md)
+> * [Xamarin](create-sql-api-xamarin-dotnet.md)
+>  
 
 Az Azure Cosmos DB a Microsoft globálisan elosztott, többmodelles adatbázis-szolgáltatása. Az Azure Cosmos DB segítségével gyorsan létrehozhat és lekérdezhet felügyelt dokumentum, tábla, kulcs-érték és gráf típusú adatbázisokat.
 

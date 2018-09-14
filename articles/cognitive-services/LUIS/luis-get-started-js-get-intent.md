@@ -1,79 +1,65 @@
 ---
-title: 'Oktatóanyag: Language Understanding- (LUIS-) alkalmazás meghívása a Node.js használatával | Microsoft Docs'
-description: Ez az oktatóanyag bemutatja, hogyan hívhat meg egy LUIS-alkalmazást a Node.js használatával.
+title: Természetes nyelvű szöveg elemzése a Language Understanding (LUIS) szolgáltatásban Javascript használatával – Cognitive Services – Azure Cognitive Services | Microsoft Docs
+description: Ebben a rövid útmutatóban elérhető nyilvános LUIS-alkalmazással határozza meg egy felhasználó szándékát egy beszélgetés szövegéből. JavaScript nyelven küldje el szövegként a felhasználó szándékát a nyilvános alkalmazás HTTP-előrejelzési végpontjára. A LUIS a végpontnál a nyilvános alkalmazás modelljét alkalmazza a természetes nyelvű szövegen a jelentés elemzése érdekében, amellyel meghatározza az általános szándékot, valamint kinyeri az alkalmazás témájában releváns adatokat.
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
-ms.topic: tutorial
-ms.date: 12/13/2017
-ms.author: v-geberr
-ms.openlocfilehash: 62c6816e753ee2c29aee0b8f68dec0ebd9f4be44
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.topic: quickstart
+ms.date: 08/23/2018
+ms.author: diberry
+ms.openlocfilehash: 10210c3759611a77c4430a97896a19a6b97b9fa9
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36265404"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "43769978"
 ---
-# <a name="tutorial-call-a-luis-endpoint-using-javascript"></a>Oktatóanyag: LUIS-végpont meghívása JavaScript használatával
-Átadhat kimondott szövegeket egy LUIS-végpontnak, majd visszakaphatja a szándékot és az entitásokat.
+# <a name="quickstart-analyze-text-using-javascript"></a>Rövid útmutató: Szövegelemzés Javascript használatával
 
-<!-- green checkmark -->
-> [!div class="checklist"]
-> * LUIS-előfizetés létrehozása és kulcsérték másolása későbbi használathoz
-> * A LUIS-végpont által visszaadott eredmények megtekintése a böngészőben egy IoT-mintaalkalmazás közzétételéhez
-> * Visual Studio C#-konzolalkalmazás létrehozása LUIS-végpontok HTTPS-hívásához
+[!include[Quickstart introduction for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-intro-para.md)]
 
-Ehhez a cikkhez egy ingyenes [LUIS][LUIS]-fiókra van szüksége a LUIS-alkalmazás létrehozásához.
+<a name="create-luis-subscription-key"></a>
 
-## <a name="create-luis-subscription-key"></a>LUIS előfizetési kulcs létrehozása
-Az ebben a bemutatóban használt LUIS-mintaalkalmazások hívásához egy Cognitive Services API-kulcsra lesz szüksége. 
+[!include[Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-luis-repo-note.md)]
 
-Az API-kulcs beszerzéséhez kövesse az alábbi lépéseket: 
+## <a name="prerequisites"></a>Előfeltételek
 
-1. Először létre kell hoznia egy [Cognitive Services API-fiókot](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) az Azure Portalon. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
-
-2. Jelentkezzen be az Azure Portalra a https://portal.azure.com címen. 
-
-3. Kövesse az [előfizetési kulcsok Azure-ral történő létrehozását](./luis-how-to-azure-subscription.md) ismertető cikkben leírt lépéseket a kulcs beszerzéséhez.
-
-4. Lépjen vissza a [LUIS](luis-reference-regions.md) webhelyére, és jelentkezzen be az Azure-fiókjával. 
-
-    [![](media/luis-get-started-node-get-intent/app-list.png "Alkalmazáslista létrehozásának képernyőképe")](media/luis-get-started-node-get-intent/app-list.png)
-
-## <a name="understand-what-luis-returns"></a>A LUIS által visszaadott eredmények értelmezése
-
-Annak megismeréséhez, hogy mit ad vissza egy LUIS-alkalmazás, beillesztheti a LUIS-mintaalkalmazás URL-címét egy böngészőablakba. A mintaalkalmazás egy IoT-alkalmazás, amely észleli, hogy a felhasználó fel- vagy lekapcsolni szeretné-e a világítást.
-
-1. A mintaalkalmazás végpontja a következő formátumban van: `https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2?subscription-key=<YOUR_API_KEY>&verbose=false&q=turn%20on%20the%20bedroom%20light`. Másolja az URL-címet, és cserélje le az előfizetési kulcsot a `subscription-key` mezőben található értékre.
-
-2. Illessze be az URL-címet egy böngészőablakba, és nyomja le az Enter billentyűt. A böngészőben megjelenik egy JSON-eredmény, amely jelzi, hogy a LUIS észleli a `HomeAutomation.TurnOn` szándékot és a `bedroom` értékű `HomeAutomation.Room` entitást.
-
-    ![A TurnOn szándékot észlelő JSON-eredmény](./media/luis-get-started-node-get-intent/turn-on-bedroom.png)
-
-3. Módosítsa az URL-címben található `q=` paraméter értékét `turn off the living room light` értékre, majd nyomja le az Enter billentyűt. Az eredmény most jelzi, hogy a LUIS észleli a `HomeAutomation.TurnOff` szándékot és a `living room` értékű `HomeAutomation.Room` entitást. 
-
-    ![A TurnOff szándékot észlelő JSON-eredmény](./media/luis-get-started-node-get-intent/turn-off-living-room.png)
+* [Visual Studio Code](https://code.visualstudio.com/)
+* A df67dcdb-c37d-46af-88e1-8b97951ca1c2 azonosítójú nyilvános alkalmazás
 
 
-## <a name="consume-a-luis-result-using-the-endpoint-api-with-javascript"></a>LUIS-eredmény feldolgozása a végponti API JavaScripttel való használatával 
+## <a name="get-luis-key"></a>LUIS-kulcs lekérése
 
-A JavaScripttel hozzáférhet ugyanazokhoz az eredményekhez, amelyeket a böngészőablakban látott az előző lépésben. 
+[!include[Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-get-key-para.md)]
+
+## <a name="analyze-text-with-browser"></a>Elemzés böngészővel
+
+[!include[Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-browser-para.md)]
+
+## <a name="analyze-text-with-javascript"></a>Szövegelemzés Javascript használatával 
+
+A Javascripttel hozzáférhet ugyanazokhoz az eredményekhez, amelyeket a böngészőablakban látott az előző lépésben. 
+
 1. Másolja ki az alábbi kódot, és mentse egy HTML-fájlba:
 
-   [!code-javascript[Console app code that calls a LUIS endpoint](~/samples-luis/documentation-samples/endpoint-api-samples/javascript/call-endpoint.html)]
-2. Cserélje le a `"YOUR SUBSCRIPTION KEY"` értéket a következő kódsorban az előfizetési kulcsra: `xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","YOUR SUBSCRIPTION KEY");`
+   [!code-html[Console app code that calls a LUIS endpoint](~/samples-luis/documentation-samples/quickstarts/analyze-text/javascript/call-endpoint.html)]
 
-3. Nyissa meg a mentett fájlt egy webböngészőben.  Megjelenik egy figyelmeztető ablak, amely a következőről tájékoztatja: `Detected the following intent: TurnOn`.
+2. Nyissa meg a fájlt egy böngészőben. Írja be a LUIS-végpont kulcsát az űrlapon, és válassza a **Submit** (Küldés) gombot.
 
-![Előugró ablak a TurnOn üzenettel](./media/luis-get-started-node-get-intent/popup-turn-on.png)
+    ![A böngészőben megjelenő HTML-minta a Home Automation alkalmazás LUIS-eredményeivel](./media/luis-get-started-js-get-intent/html-results.png)
+
+    Az eredmény az űrlap alatt jelenik meg. 
+
+## <a name="luis-keys"></a>LUIS-kulcsok
+
+[!include[Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-key-usage-para.md)]
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-Az oktatóanyagban létrehozott két erőforrás a LUIS előfizetési kulcsa és a C#-projekt volt. Törölje a LUIS előfizetési kulcsot az Azure Portalról. Zárja be a Visual Studio-projektet, és távolítsa el a könyvtárat a fájlrendszerből. 
+
+Törölje a Javascript-fájlt.
 
 ## <a name="next-steps"></a>További lépések
 > [!div class="nextstepaction"]
 > [Beszédmódok hozzáadása](luis-get-started-javascript-add-utterance.md)
-
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website

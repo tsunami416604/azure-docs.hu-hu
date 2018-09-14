@@ -11,14 +11,23 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 06/20/2018
 ms.author: masoucou
-ms.openlocfilehash: 42e2a7f57cbe40dbef8469e4e9ca020f4346a897
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 255f23906bc93ce78b28f4f0806d7076a97b0ef2
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38309895"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43698689"
 ---
 # <a name="quickstart-build-a-mongodb-api-xamarinforms-app-with-net-and-the-azure-portal"></a>Rövid útmutató: MongoDB API Xamarin.Forms-alkalmazás létrehozása a .NET-tel az Azure Portalon
+
+> [!div class="op_single_selector"]
+> * [.NET](create-mongodb-dotnet.md)
+> * [Java](create-mongodb-java.md)
+> * [Node.js](create-mongodb-nodejs.md)
+> * [Python](create-mongodb-flask.md)
+> * [Xamarin](create-mongodb-xamarin.md)
+> * [Golang](create-mongodb-golang.md)
+>  
 
 Az Azure Cosmos DB a Microsoft globálisan elosztott, többmodelles adatbázis-szolgáltatása. Segítségével gyorsan létrehozhat és lekérdezhet dokumentum, kulcs/érték és gráf típusú adatbázisokat, amelyek mindegyike felhasználja az Azure Cosmos DB középpontjában álló globális elosztási és horizontális skálázhatósági képességeket.
 

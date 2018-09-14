@@ -12,22 +12,23 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 08/14/2017
 ms.author: sngun
-ms.openlocfilehash: 8eba0f70141fe28a478e842523023a22c2db50fe
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 16225e666df59da654e993c4d0618a97288471ac
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39628749"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43698264"
 ---
 # <a name="nodejs-tutorial-use-the-sql-api-in-azure-cosmos-db-to-create-a-nodejs-console-application"></a>Node.js-oktatóanyag: Node.js-konzolalkalmazás létrehozása az Azure Cosmos DB-hez készült SQL API-val
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-get-started.md)
 > * [.NET Core](sql-api-dotnetcore-get-started.md)
-> * [Node.js MongoDB-hez](mongodb-samples.md)
-> * [Node.js](sql-api-nodejs-get-started.md)
-> * [Node.js – 2.0-s verzió (előzetes verzió)](sql-api-nodejs-get-started-preview.md)
 > * [Java](sql-api-java-get-started.md)
+> * [Aszinkron Java](sql-api-async-java-get-started.md)
+> * [Node.js](sql-api-nodejs-get-started.md)
+> * [Node.js – v2](sql-api-nodejs-get-started-preview.md) 
+> 
 
 
 Üdvözöljük az Azure Cosmos DB Node.js SDK-hoz készült Node.js-oktatóanyagban! Az oktatóanyag lépéseinek követésével egy olyan konzolalkalmazást készít, amely Azure Cosmos DB-erőforrásokat hoz létre és kérdez le.

@@ -11,21 +11,22 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 03/23/2018
 ms.author: sngun
-ms.openlocfilehash: cdf3edf5bfd8d13f71c25b8bf0bbf0ea3d992a5d
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: f7f41e9d77e0687c6c8b25a4163348a7310aa40c
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39628154"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43697323"
 ---
 # <a name="_Toc395783175"></a>Node.js-webalkalmazás létrehozása az Azure Cosmos DB használatával
+
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-dotnet-application.md)
-> * [Node.js](sql-api-nodejs-application.md)
-> * [Node.js – 2.0-s verzió (előzetes verzió)](sql-api-nodejs-application-preview.md)
 > * [Java](sql-api-java-application.md)
+> * [Node.js](sql-api-nodejs-application.md)
+> * [Node.js – v2](sql-api-nodejs-application-preview.md)
 > * [Python](sql-api-python-application.md)
-> 
+> * [Xamarin](mobile-apps-with-xamarin.md)
 > 
 
 Ez a Node.js-oktatóanyag bemutatja, miként tárolhatja és érheti el az Azure Websitesban tárolt Node.js Express-alkalmazás adatait az Azure Cosmos DB és az SQL API segítségével. Olyan egyszerű webalapú teendőkezelő alkalmazást, todo appot fog létrehozni, amellyel feladatokat készíthet, kérhet le, és végezhet el. A feladatokat JSON-dokumentumok formájában tárolja az Azure Cosmos DB. Ez az oktatóanyag bemutatja az alkalmazás létrehozásának és üzembe helyezésének lépéseit, valamint hogy mi történik az egyes kódrészletekben.

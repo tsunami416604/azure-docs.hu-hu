@@ -1,50 +1,50 @@
 ---
-title: Hozzon létre egy Virtuálisgép-fürt Terraform és Hardverkompatibilitási
-description: Terraform és HashiCorp konfigurációs nyelvi (Hardverkompatibilitási) segítségével hozzon létre egy Linux virtuális gép fürtöt egy terhelés-kiegyenlítő az Azure-ban
-keywords: terraform, a devops, a virtuális gépet, a hálózati, a modulok
+title: Virtuálisgép-fürt létrehozása Terraformmal és HCL-lel
+description: Linux rendszerű virtuális gép létrehozása egy terheléselosztóval az Azure-ban a Terraform és a HashiCorp konfigurációs nyelv (HCL) használatával
+services: terraform
+ms.service: terraform
+keywords: terraform, devops, virtuális gép, hálózat, modulok
 author: tomarcher
-manager: routlaw
-ms.service: virtual-machines-linux
-ms.custom: devops
-ms.topic: article
-ms.date: 11/13/2017
+manager: jeconnoc
 ms.author: tarcher
-ms.openlocfilehash: 2435d694e6a1671a234d02f90860e5cafe98c2df
-ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
-ms.translationtype: MT
+ms.topic: tutorial
+ms.date: 11/13/2017
+ms.openlocfilehash: fffaf275a98791885b87ee8ffdc275e911b26341
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2017
-ms.locfileid: "24518800"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43667600"
 ---
-# <a name="create-a-vm-cluster-with-terraform-and-hcl"></a>Hozzon létre egy Virtuálisgép-fürt Terraform és Hardverkompatibilitási
+# <a name="create-a-vm-cluster-with-terraform-and-hcl"></a>Virtuálisgép-fürt létrehozása Terraformmal és HCL-lel
 
-Ez az oktatóanyag azt mutatja be, létrehozása egy kis számítási fürt használata a [HashiCorp konfigurációs nyelvi](https://www.terraform.io/docs/configuration/syntax.html) (Hardverkompatibilitási). A konfigurációs létrehoz egy terhelés-kiegyenlítő, két Linux virtuális gépek által egy [rendelkezésre állási csoport](/azure/virtual-machines/windows/manage-availability#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy), és az összes szükséges hálózati erőforrásokhoz.
+Ez az oktatóanyag egy kisméretű számítási fürt létrehozását mutatja be a [HashiCorp konfigurációs nyelv](https://www.terraform.io/docs/configuration/syntax.html) (HCL) használatával. A konfiguráció egy terheléselosztót és két Linux rendszerű virtuális gépet hoz létre egy [rendelkezésre állási csoportban](/azure/virtual-machines/windows/manage-availability#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy), valamint az összes szükséges hálózati erőforrást.
 
-Ebben az oktatóanyagban az alábbiakat végezte el:
+Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
 > [!div class="checklist"]
-> * Az Azure authentication beállítása
-> * Egy Terraform konfigurációs fájl létrehozása
-> * Terraform inicializálása
+> * Azure-beli hitelesítés beállítása
+> * Terraform konfigurációs fájl létrehozása
+> * A Terraform inicializálása
 > * Terraform végrehajtási terv létrehozása
 > * A Terraform végrehajtási terv alkalmazása
 
-## <a name="1-set-up-azure-authentication"></a>1. Az Azure authentication beállítása
+## <a name="1-set-up-azure-authentication"></a>1. Azure-beli hitelesítés beállítása
 
 > [!NOTE]
-> Ha meg [Terraform környezeti változókkal](/azure/virtual-machines/linux/terraform-install-configure#set-environment-variables), vagy futtassa az oktatóanyag a [Azure Cloud rendszerhéj](terraform-cloud-shell.md), hagyja ki ezt a szakaszt.
+> Ha [Terraform környezeti változókat használ](/azure/virtual-machines/linux/terraform-install-configure#set-environment-variables), vagy az [Azure Cloud Shellben](terraform-cloud-shell.md) futtatja ezt az oktatóanyagot, ugorja át ezt a szakaszt.
 
-Ebben a szakaszban létrehozhat egy egyszerű Azure szolgáltatás, és két Terraform konfigurációs fájlokat tartalmazó a hitelesítő adatait a rendszerbiztonsági tag.
+Ebben a szakaszban egy Azure-szolgáltatásnevet hozunk létre, valamint két Terraform konfigurációs fájlt, amelyek a rendszerbiztonsági tag hitelesítő adatait tárolják.
 
-1. [Állítsa be az Azure AD szolgáltatás egyszerű](/azure/virtual-machines/linux/terraform-install-configure#set-up-terraform-access-to-azure) Terraform az Azure erőforrások kiépítése lehetővé teszi, hogy. A rendszerbiztonsági tag létrehozásakor jegyezze fel az értékek az előfizetés-azonosító, a bérlői, az appId és a jelszót.
+1. [Állítson be egy Azure AD-szolgáltatásnevet](/azure/virtual-machines/linux/terraform-install-configure#set-up-terraform-access-to-azure), amelynek használatával a Terraform erőforrásokat foglalhat le az Azure-ban. A szolgáltatásnév létrehozása során jegyezze fel a subscription ID (előfizetés-azonosító), a tenant (bérlő), az appId (alkalmazásazonosító) és a password (jelszó) értékét.
 
 2. Nyisson meg egy parancssort.
 
-3. Hozzon létre egy üres könyvtárat a Terraform fájlok tárolására.
+3. Hozzon létre egy üres könyvtárat a Terraform-fájlok tárolására.
 
-4. Hozzon létre egy új fájlt, amely tárolja a változók deklarációja. Ezt a fájlt a tetszés bármilyen is nevet egy `.tf` bővítmény.
+4. Hozzon létre egy új fájlt, amelyben a változókat deklarálja majd. A fájlnak bármilyen nevet adhat a `.tf` kiterjesztéssel.
 
-5. Másolja az alábbi kódot a táblaváltozó deklarációjából fájlba:
+5. Másolja az alábbi kódot a változódeklarációs fájlba:
 
   ```tf
   variable subscription_id {}
@@ -60,9 +60,9 @@ Ebben a szakaszban létrehozhat egy egyszerű Azure szolgáltatás, és két Ter
   }
   ```
 
-6. Hozzon létre egy új fájlt, amely tartalmazza a Terraform változók értékeit. Általános nevezze el a Terraform változó fájlt a `terraform.tfvars` Terraform automatikusan betöltése nevű `terraform.tfvars` (vagy egy mintát a következő `*.auto.tfvars`) Ha az aktuális könyvtárban található. 
+6. Hozzon létre egy új fájlt a Terraform-változók értékeinek tárolására. A Terraform-változók fájlját szokás a `terraform.tfvars` néven elnevezni, mivel a Terraform automatikusan betölti a `terraform.tfvars` (vagy a `*.auto.tfvars` mintát követő) nevű fájlt, ha az aktuális könyvtárban található ilyen fájl. 
 
-7. Másolja az alábbi kódot a változók fájlba. Cserélje le a helyőrzőket az alábbiak szerint: A `subscription_id`, használja az Azure-előfizetése Azonosítóját futtatásakor megadott `az account set`. A `tenant_id`, használja a `tenant` által visszaadott érték `az ad sp create-for-rbac`. A `client_id`, használja a `appId` által visszaadott érték `az ad sp create-for-rbac`. A `client_secret`, használja a `password` által visszaadott érték `az ad sp create-for-rbac`.
+7. Másolja az alábbi kódot a változók fájljába. Ne felejtse lecserélni a helyőrzőket az alábbiak szerint: A `subscription_id` helyett használja az Azure-előfizetés az `az account set` parancs futtatásakor megadott azonosítóját. A `tenant_id` helyett használja az `az ad sp create-for-rbac` által visszaadott `tenant` értéket. A `client_id` helyett használja az `az ad sp create-for-rbac` által visszaadott `appId` értéket. A `client_secret` helyett használja az `az ad sp create-for-rbac` által visszaadott `password` értéket.
 
   ```tf
   subscription_id = "<azure-subscription-id>"
@@ -71,13 +71,13 @@ Ebben a szakaszban létrehozhat egy egyszerű Azure szolgáltatás, és két Ter
   client_secret = "<password-returned-from-creating-a-service-principal>"
   ```
 
-## <a name="2-create-a-terraform-configuration-file"></a>2. Egy Terraform konfigurációs fájl létrehozása
+## <a name="2-create-a-terraform-configuration-file"></a>2. Terraform konfigurációs fájl létrehozása
 
-Ebben a szakaszban egy erőforrás-definíciókban a infrastruktúra tartalmazó fájlt hoz létre.
+Ebben a szakaszban egy fájlt hozunk létre az infrastruktúra erőforrás-definícióinak tárolására.
 
-1. Hozzon létre egy új fájlt `main.tf`. 
+1. Hozzon létre egy új fájlt `main.tf` néven. 
 
-2. Erőforrás-definíciókban minta az újonnan létrehozott be a következő másolási `main.tf` fájlt: 
+2. Másolja az alábbi erőforrás-definíció mintákat az újonnan létrehozott `main.tf` fájlba: 
 
   ```tf
   resource "azurerm_resource_group" "test" {
@@ -218,14 +218,14 @@ Ebben a szakaszban egy erőforrás-definíciókban a infrastruktúra tartalmazó
   }
   ```
 
-## <a name="3-initialize-terraform"></a>3. Terraform inicializálása 
+## <a name="3-initialize-terraform"></a>3. A Terraform inicializálása 
 
-A [terraform init parancs](https://www.terraform.io/docs/commands/init.html) inicializáló Terraform konfigurációs fájlokat – a segítségével a korábbi szakaszokban létrehozott fájlokat tartalmazó könyvtár. Mindig fusson a `terraform init` parancsot egy új Terraform konfigurációs írását követően. 
+A [terraform init parancs](https://www.terraform.io/docs/commands/init.html) egy könyvtárat inicializál, amely a Terraform konfigurációs fájljait tartalmazza – azaz az előző szakaszokban létrehozott fájlokat. Az új Terraform-konfigurációk összeállítása után mindig érdemes futtatni a `terraform init` parancsot. 
 
 > [!TIP]
-> A `terraform init` parancs az idempotent, ami azt jelenti, hogy hívhatják ismételten ugyanazt az eredményt elkészítése közben. Ezért együttműködve dolgozik, és úgy gondolja, hogy előfordulhat, hogy a konfigurációs fájlok megváltoztak, esetén mindig célszerű hívni a `terraform init` parancs végrehajtása vagy a terv alkalmazása előtt.
+> A `terraform init` parancs idempotens, tehát többször is meghívható, és mindig ugyanazt az eredményt adja. Tehát ha együttműködési környezetben dolgozik, és úgy gondolja, hogy a konfigurációs fájlok esetleg módosultak, célszerű minden esetben meghívni a `terraform init` parancsot a tervek végrehajtása vagy alkalmazása előtt.
 
-Terraform inicializálni a következő parancsot:
+A Terraform inicializálásához futtassa az alábbi parancsot:
 
   ```cmd
   terraform init
@@ -235,21 +235,21 @@ Terraform inicializálni a következő parancsot:
 
 ## <a name="4-create-a-terraform-execution-plan"></a>4. Terraform végrehajtási terv létrehozása
 
-A [terraform terv parancs](https://www.terraform.io/docs/commands/plan.html) egy végrehajtási terv létrehozására szolgál. Egy végrehajtási terv létrehozásához Terraform összesíti az összes a `.tf` az aktuális könyvtárban található fájlokat. 
+A [terraform plan parancs](https://www.terraform.io/docs/commands/plan.html) egy végrehajtási tervet hoz létre. A végrehajtási terv összeállításához a Terraform összesíti az összes `.tf` fájlt az aktuális könyvtárban. 
 
-Ha egy együttműködési környezetben, ahol a konfigurációt a végrehajtási terv létrehozásához és az idő között változhat dolgozik a végrehajtási terv alkalmaz, használja a [terraform terv parancs-kimeneti paraméter](https://www.terraform.io/docs/commands/plan.html#out-path)a végrehajtási terv egy fájlba menti. Ellenkező esetben ha egyetlen-személy környezetben dolgozik, akkor kihagyhatja a `-out` paraméter.
+Ha együttműködési környezetben dolgozik, ahol a konfiguráció a végrehajtási terv létrehozásának és alkalmazásának időpontja között módosulhat, a [terraform plan parancs -out paraméterével](https://www.terraform.io/docs/commands/plan.html#out-path) egy fájlba mentheti a végrehajtási tervet. Amennyiben azonban csak egyszemélyes környezetben dolgozik, ki is hagyhatja az `-out` paramétert.
 
-Ha a Terraform változók fájl neve nincs `terraform.tfvars` és azt nem követi a `*.auto.tfvars` mintát, meg kell adnia a fájl nevét használja a [terraform terv parancs - var-fájl paraméter](https://www.terraform.io/docs/commands/plan.html#var-file-foo) a jelentés futtatásakor a `terraform plan`parancsot.
+Ha a Terraform-változók fájljának neve nem `terraform.tfvars`, és nem követi az `*.auto.tfvars` mintát sem, a fájlnevet is meg kell adnia a [-var-file paraméter](https://www.terraform.io/docs/commands/plan.html#var-file-foo) használatával a `terraform plan` parancs futtatásakor.
 
-Feldolgozásakor a `terraform plan` parancs Terraform hajtja végre a frissítést, és határozza meg, milyen műveletek szükségesek a kívánt állapot konfigurációs fájljainak megadott eléréséhez.
+A `terraform plan` parancs feldolgozásakor a Terraform végrehajt egy frissítést, és meghatározza a konfigurációs fájlokban megadott célállapot eléréséhez szükséges műveleteket.
 
-Ha nem szeretné menteni a végrehajtási terv, futtassa a következő parancsot:
+Ha a végrehajtási tervet nem szükséges mentenie, futtassa a következő parancsot:
 
   ```cmd
   terraform plan
   ```
 
-Ha mentenie kell a végrehajtási terv, futtassa a következő parancsot (cseréje a &lt;elérési útja > helyőrzőt a kívánt kimeneti elérési út):
+Ha a végrehajtási tervet menteni kell, a következő parancsot futtassa (és cserélje le a &lt;path> helyőrzőt a kívánt mentési hely elérési útjára):
 
   ```cmd
   terraform plan -out=<path>
@@ -259,23 +259,23 @@ Ha mentenie kell a végrehajtási terv, futtassa a következő parancsot (cseré
 
 ## <a name="5-apply-the-terraform-execution-plan"></a>5. A Terraform végrehajtási terv alkalmazása
 
-Ez az oktatóanyag utolsó lépésében, hogy használja a [terraform alkalmazása parancs](https://www.terraform.io/docs/commands/apply.html) alkalmazza a által generált műveletek a `terraform plan` parancsot.
+A jelen oktatóanyag utolsó lépéseként a [terraform apply parancs](https://www.terraform.io/docs/commands/apply.html) használatával alkalmazzuk a `terraform plan` paranccsal összeállított műveleteket.
 
-Ha szeretné alkalmazni a legújabb végrehajtási terv, futtassa a következő parancsot:
+Ha a legfrissebb végrehajtási tervet szeretné alkalmazni, futtassa a következő parancsot:
 
   ```cmd
   terraform apply
   ```
 
-Ha egy korábban mentett végrehajtási terv alkalmazni kívánt, futtassa a következő parancsot (cseréje a &lt;elérési útja > elérési útvonalának a mentett végrehajtási terv helyőrzőt):
+Ha egy korábban mentett végrehajtási tervet szeretne alkalmazni, a következő parancsot futtassa (és cserélje le a &lt;path> helyőrzőt a mentett végrehajtási terv elérési útjára):
 
   ```cmd
   terraform apply <path>
   ```
 
-![Egy Terraform végrehajtási terv alkalmazása](media/terraform-create-vm-cluster-with-infrastructure/terraform-apply.png)
+![Terraform végrehajtási terv alkalmazása](media/terraform-create-vm-cluster-with-infrastructure/terraform-apply.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- Keresse meg a listában a [Azure Terraform modulok](https://registry.terraform.io/modules/Azure)
-- Hozzon létre egy [virtuálisgép-méretezési rendelkező Terraform](terraform-create-vm-scaleset-network-disks-hcl.md)
+- Az [Azure Terraform-modulok](https://registry.terraform.io/modules/Azure) listájának áttekintése
+- Hozzon létre egy [virtuálisgép-méretezési csoportot a Terraformmal](terraform-create-vm-scaleset-network-disks-hcl.md)

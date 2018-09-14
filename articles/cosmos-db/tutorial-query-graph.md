@@ -13,16 +13,16 @@ ms.topic: tutorial
 ms.date: 01/02/2018
 ms.author: lbosq
 ms.custom: mvc
-ms.openlocfilehash: ad38976f439c399d839d6c5ee9dcd6ade7726c71
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: e3ed90d0b706e742588a5a0966d9ac3bda44ecbd
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37081907"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43697442"
 ---
-# <a name="tutorial-query-azure-cosmos-db-graph-api-by-using-gremlin"></a>Oktatóanyag: Azure Cosmos DB Graph API lekérdezése a Gremlin használatával
+# <a name="tutorial-query-azure-cosmos-db-gremlin-api-by-using-gremlin"></a>Oktatóanyag: Azure Cosmos DB Gremlin API lekérdezése a Gremlin használatával
 
-Az Azure Cosmos DB [Graph API](graph-introduction.md) támogatja a [Gremlin](https://github.com/tinkerpop/gremlin/wiki)-lekérdezéseket. Ez a cikk mintadokumentumokat és -lekérdezéseket tartalmaz a kezdéshez. A [Gremlin-támogatási](gremlin-support.md) cikkben talál részletes Gremlin-referenciát.
+Az Azure Cosmos DB [Gremlin API](graph-introduction.md) támogatja a [Gremlin](https://github.com/tinkerpop/gremlin/wiki)-lekérdezéseket. Ez a cikk mintadokumentumokat és -lekérdezéseket tartalmaz a kezdéshez. A [Gremlin-támogatási](gremlin-support.md) cikkben talál részletes Gremlin-referenciát.
 
 Ez a cikk a következő feladatokat mutatja be: 
 

@@ -1,6 +1,6 @@
 ---
 title: 'Oktatóanyag az Azure Cosmos DB használatához: Elemek létrehozása, lekérdezése és gráfbejárás az Apache TinkerPops Gremlin-konzolban | Microsoft Docs'
-description: Az Azure Cosmos DB bevezetője csúcsok, élek és lekérdezések létrehozásához az Azure Cosmos DB Graph API-val
+description: Az Azure Cosmos DB rövid útmutatója csúcsok, élek és lekérdezések az Azure Cosmos DB Gremlin API-val történő létrehozásához.
 services: cosmos-db
 author: luisbosquez
 manager: kfile
@@ -10,18 +10,27 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 01/08/2018
 ms.author: lbosq
-ms.openlocfilehash: 6f6a622c2b9faf6117a8212000e1e632df3526b2
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 905873a695635ba80de258cbf458c8dd3e18d443
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38634130"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43700338"
 ---
 # <a name="azure-cosmos-db-create-query-and-traverse-a-graph-in-the-gremlin-console"></a>Azure Cosmos DB: Elemek létrehozása, lekérdezése és a gráfok bejárása a Gremlin konzolban
 
+> [!div class="op_single_selector"]
+> * [Gremlin-konzol](create-graph-gremlin-console.md)
+> * [.NET](create-graph-dotnet.md)
+> * [Java](create-graph-java.md)
+> * [Node.js](create-graph-nodejs.md)
+> * [Python](create-graph-python.md)
+> * [PHP](create-graph-php.md)
+>  
+
 Az Azure Cosmos DB a Microsoft globálisan elosztott, többmodelles adatbázis-szolgáltatása. Segítségével gyorsan létrehozhat és lekérdezhet dokumentum, kulcs/érték és gráf típusú adatbázisokat, amelyek mindegyike felhasználja az Azure Cosmos DB középpontjában álló globális elosztási és horizontális skálázhatósági képességeket. 
 
-Ez a rövid útmutató bemutatja egy Azure Cosmos DB [Graph API](graph-introduction.md)-fiók, egy adatbázis és egy gráf (tároló) Azure Portal segítségével való létrehozását, majd az [Apache TinkerPop](http://tinkerpop.apache.org) [Gremlin-konzoljának](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console) használatát a Graph API adataival végzett munkához. Ebben az oktatóanyagban éleket és csúcspontokat hoz létre és kérdez le, csúcsponttulajdonságokat frissít, csúcspontokat kérdez le, bejárja a gráfot és elvet csúcspontokat.
+Ez a rövid útmutató bemutatja egy Azure Cosmos DB [Gremlin API](graph-introduction.md)-fiók, egy adatbázis és egy gráf (tároló) Azure Portal segítségével való létrehozását, majd az [Apache TinkerPop](http://tinkerpop.apache.org) [Gremlin-konzoljának](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console) használatát a Gremlin API adataival végzett munkához. Ebben az oktatóanyagban éleket és csúcspontokat hoz létre és kérdez le, csúcsponttulajdonságokat frissít, csúcspontokat kérdez le, bejárja a gráfot és elvet csúcspontokat.
 
 ![Azure Cosmos DB az Apache Gremlin-konzolból](./media/create-graph-gremlin-console/gremlin-console.png)
 
@@ -299,7 +308,7 @@ Bemenet:
 :> g.V().drop()
 ```
 
-Gratulálunk! Az Azure Cosmos DB: Graph API-oktatóanyag végére ért.
+Gratulálunk! Az Azure Cosmos DB: Gremlin API-oktatóanyag végére ért.
 
 ## <a name="review-slas-in-the-azure-portal"></a>Az SLA-k áttekintése az Azure Portalon
 

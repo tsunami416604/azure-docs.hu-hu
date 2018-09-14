@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 04/08/2018
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: 488ec66eb485761d484e305c298dfb9117745a42
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: b9c4c2595bb7d5347397bff95c90fbdc91902bcd
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39145281"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43696448"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Üdvözli az Azure Cosmos DB
 
@@ -40,7 +40,7 @@ Globálisan elosztott adatbázis-szolgáltatásként az Azure Cosmos DB segíts�
         * [SQL API](sql-api-introduction.md): Egy séma nélküli JSON-adatbázismotor részletes SQL-lekérdezési képességekkel.
         * [MongoDB API](mongodb-introduction.md): Nagymértékben méretezhető, *szolgáltatásként elérhető MongoDB*, amely az Azure Cosmos DB platformra épül. Kompatibilis a meglévő MongoDB-kódtárakkal, -illesztőkkel, -eszközökkel és -alkalmazásokkal.
         * [Cassandra API](cassandra-introduction.md): Globálisan elosztott, szolgáltatásként elérhető Cassandra, amely az Azure Cosmos DB platformra épül. Kompatibilis a meglévő [Apache Cassandra](https://cassandra.apache.org/)-kódtárakkal, -illesztőkkel, -eszközökkel és -alkalmazásokkal.
-        * [Gremlin API](graph-introduction.md): Teljes mértékben felügyelt, vízszintesen méretezhető gráfadatbázis-szolgáltatás, amellyel egyszerűen készíthet és futtathat olyan alkalmazásokat, amelyek az Open Graph API-kat támogató (az Apache Gremlin [Apache TinkerPop-specifikáció](http://tinkerpop.apache.org/) alapján), magas szinten csatlakoztatott adatkészletekkel működnek együtt.
+        * [Gremlin API](graph-introduction.md): Teljes mértékben felügyelt, vízszintesen méretezhető gráfadatbázis-szolgáltatás, amellyel egyszerűen készíthet és futtathat olyan alkalmazásokat, amelyek az Open Gremlin API-kat támogató (az Apache Gremlin [Apache TinkerPop-specifikáció](http://tinkerpop.apache.org/) alapján), magas szinten csatlakoztatott adatkészletekkel működnek együtt.
         * [Table API](table-introduction.md): Egy kulcs/érték adatbázis-szolgáltatás, amely prémium szintű képességeket (például automatikus indexelést, garantáltan alacsony késést és globális terjesztést) biztosít a meglévő Azure Table Storage-alkalmazások számára anélkül, hogy az alkalmazásokat módosítani kellene.
         * Hamarosan további adatmodellek és API-k is elérhetővé válnak!
 

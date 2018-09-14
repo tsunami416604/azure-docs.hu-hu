@@ -1,6 +1,6 @@
 ---
-title: 'Rövid útmutató: Graph API PHP-vel – Azure Cosmos DB | Microsoft Docs'
-description: Ez a rövid útmutató azt ismerteti, hogy hogyan használható az Azure Cosmos DB Graph API konzolalkalmazások létrehozására az Azure Portal és a PHP használatával
+title: 'Rövid útmutató: Gremlin API a PHP-val – Azure Cosmos DB | Microsoft Docs'
+description: Ez a rövid útmutató azt ismerteti, hogy miként használható az Azure Cosmos DB Gremlin API konzolalkalmazások az Azure Portal és a PHP használatával történő létrehozására.
 services: cosmos-db
 author: luisbosquez
 manager: kfile
@@ -11,16 +11,25 @@ ms.devlang: php
 ms.topic: quickstart
 ms.date: 01/05/2018
 ms.author: lbosq
-ms.openlocfilehash: 2dabaf5650619ed2ec8d73c88deec136c25e544e
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 06f54429957a84de81e3dfaae00c6126b5340b74
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38310271"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43702493"
 ---
 # <a name="azure-cosmos-db-create-a-graph-database-using-php-and-the-azure-portal"></a>Azure Cosmos DB: Gráfadatbázis létrehozása a PHP és az Azure Portal használatával
 
-Ez a rövid útmutató azt ismerteti, hogy hogyan használható a PHP és az Azure Cosmos DB [Graph API](graph-introduction.md) egy konzolalkalmazás létrehozására egy GitHubról származó példa klónozásával. A rövid útmutató emellett azt is bemutatja, hogyan hozható létre egy Azure Cosmos DB-fiók a webes alapú Azure Portal használatával.   
+> [!div class="op_single_selector"]
+> * [Gremlin-konzol](create-graph-gremlin-console.md)
+> * [.NET](create-graph-dotnet.md)
+> * [Java](create-graph-java.md)
+> * [Node.js](create-graph-nodejs.md)
+> * [Python](create-graph-python.md)
+> * [PHP](create-graph-php.md)
+>  
+
+Ez a rövid útmutató azt ismerteti, hogy miként használható a PHP és az Azure Cosmos DB [Gremlin API](graph-introduction.md) egy konzolalkalmazás egy GitHubról származó példa klónozásával történő létrehozására. A rövid útmutató emellett azt is bemutatja, hogyan hozható létre egy Azure Cosmos DB-fiók a webes alapú Azure Portal használatával.   
 
 Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-szolgáltatása. Segítségével gyorsan létrehozhat és lekérdezhet dokumentum, tábla, kulcs-érték és gráf típusú adatbázisokat, amelyek mindegyike felhasználja az Azure Cosmos DB középpontjában álló globális elosztási és horizontális skálázhatósági képességeket.  
 
@@ -44,7 +53,7 @@ A gráfadatbázis létrehozásához először létre kell hoznia egy Gremlin- (G
 
 ## <a name="clone-the-sample-application"></a>A mintaalkalmazás klónozása
 
-Most pedig váltsunk át kódok használatára. A következő lépésekben elvégezheti a Graph API-alkalmazás klónozását a GitHubról, beállíthatja a kapcsolati sztringet, és futtathatja az alkalmazást. Látni fogja, milyen egyszerű az adatokkal programozott módon dolgozni.  
+Most pedig váltsunk át kódok használatára. A következő lépésekben elvégezheti a Gremlin API-alkalmazás klónozását a GitHubról, beállíthatja a kapcsolati sztringet, és futtathatja az alkalmazást. Látni fogja, milyen egyszerű az adatokkal programozott módon dolgozni.  
 
 1. Nyisson meg egy parancssort, hozzon létre egy git-samples nevű új mappát, majd zárja be a parancssort.
 

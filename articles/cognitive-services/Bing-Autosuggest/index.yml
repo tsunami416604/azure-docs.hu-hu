@@ -1,0 +1,70 @@
+### YamlMime:YamlDocument
+ms.openlocfilehash: 88413db5556e20632112444e3779bb5eee0ecf8e
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35624250"
+documentType: LandingData
+title: A Bing Autosuggest dokumentációja
+metadata:
+  document_id: ce69fd12-adf8-11e7-abc4-cec278b6b50a
+  title: A Bing Autosuggest dokumentációja – oktatóanyagok, rövid útmutatók és API-referencia | Microsoft Docs
+  description: Útmutató a Bing Autosuggest API használatához, amellyel javasolt lekérdezéseket jeleníthet meg egy részleges lekérdezés alapján. Az oktatóanyagok bemutatják, hogyan hozhat létre a szolgáltatást használó alkalmazásokat.
+  services: cognitive-services
+  author: v-jaswel
+  manager: kamrani
+  ms.service: autosuggest
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 10/10/2017
+  ms.author: v-jaswel
+abstract:
+  description: A Bing Autosuggest API-val egy részleges keresési lekérdezéskifejezést küldhet el a Bingnek, és visszakaphatja azon javasolt lekérdezések listáját, amelyekre más felhasználók rákerestek.  Amikor például a felhasználó megadja a keresési kifejezés egyes karaktereit, meghívhatja ezt az API-t, és a keresőmező legördülő listáját feltöltheti a javasolt lekérdezési sztringekkel. Ismerje meg rövid útmutatóink, oktatóanyagaink és példáink segítségével az Autosuggest API használatának módját.
+sections:
+- title: 5 perces gyors útmutatók
+  items:
+  - type: paragraph
+    text: 'Bevezetés a Bing Autosuggest API használatába egy lekérdezés végrehajtásával és a JSON-válasz megtekintésével:'
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: media/index/logo_csharp.svg
+      href: quickstarts/csharp
+      text: C&#35;
+    - image:
+        src: media/index/logo_java.svg
+      href: quickstarts/java
+      text: Java
+    - image:
+        src: media/index/logo_nodejs.svg
+      href: quickstarts/nodejs
+      text: Node.js
+    - image:
+        src: media/index/logo_php.svg
+      href: quickstarts/php
+      text: PHP
+    - image:
+        src: media/index/logo_python.svg
+      href: quickstarts/python
+      text: Python
+    - image:
+        src: media/index/logo_ruby.svg
+      href: quickstarts/ruby
+      text: Ruby
+- title: Részletes útmutatók
+  items:
+  - type: paragraph
+    text: 'További információ a Bing Autosuggest API-t használó alkalmazások fejlesztéséről:'
+  - type: paragraph
+    text: <a href="tutorials/autosuggest.md">Egyoldalas webalkalmazás</a> | <a href="tutorials/autosuggest-source.md">Forráskód</a>
+- title: Referencia
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: API-k
+      html: <p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v7-reference">Bing Autosuggest API 7-es verzió</a></p><p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference">Bing Autosuggest API 5-ös verzió</p>

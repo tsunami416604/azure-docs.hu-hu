@@ -1,0 +1,64 @@
+### YamlMime:YamlDocument
+ms.openlocfilehash: 85613f24d7bfed03a94733509aa5cb91e59f4333
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35624259"
+documentType: LandingData
+title: A Bing Custom Search dokumentációja
+metadata:
+  title: A Bing Custom Search dokumentációja – oktatóanyagok és API-referencia – Microsoft Cognitive Services | Microsoft Docs
+  description: Útmutató a Bing Custom Search portál egyéni keresések létrehozásához való használatához
+  services: cognitive-services
+  author: v-deken
+  manager: cgronlun
+  layout: LandingPage
+  ms.service: cognitive-services
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 05/07/2018
+  ms.author: v-deken
+abstract:
+  description: Megtudhatja, hogyan hozhat létre a Bing Custom Search szolgáltatással személyre szabott keresési funkciókat olyan témakörökhöz kapcsolódóan, amelyek fontosak az Ön számára. Ha például egy keresési funkciót is biztosító kerékpáros webhellyel rendelkezik, megadhatja azokat a tartományokat, alwebhelyeket és weblapokat, amelyeken a Bingnek keresnie kell. A rövid útmutatók, az oktatóanyagok és az API-referencia ennek módját ismerteti.
+sections:
+- title: 5 perces gyors útmutatók
+  items:
+  - type: paragraph
+    text: 'Egyéni kívánalmaknak megfelelő keresés a weben az alábbiakkal:'
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: media/logo_Csharp.svg
+      href: call-endpoint-csharp
+      text: C&#35;
+    - image:
+        src: media/logo_java.svg
+      href: call-endpoint-java
+      text: Java
+    - image:
+        src: media/logo_nodejs.svg
+      href: call-endpoint-nodejs
+      text: Node.js
+    - image:
+        src: media/logo_python.svg
+      href: call-endpoint-python
+      text: Python
+- title: Részletes oktatóanyag
+  items:
+  - type: paragraph
+    text: 'További információ a Bing Custom Search API-t használó alkalmazások fejlesztéséről:'
+  - type: paragraph
+    text: <a href="tutorials/custom-search-web-page">Custom Search-webhely létrehozása</a>
+- title: Referencia
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: API-k
+      html: <p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference">Bing Custom Search API 7-es verzió</a></p><p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-autosuggest-api-v7-reference">Bing Custom Autosuggest API 7-es verzió</a></p><p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-images-api-v7-reference">Bing Custom Image Search API 7-es verzió</a></p>
+    - title: SDK-k
+      html: <p><a href="sdk.md">Bing keresési SDK</a></p>

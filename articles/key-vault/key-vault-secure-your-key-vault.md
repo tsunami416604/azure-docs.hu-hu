@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 05/10/2017
+ms.date: 08/31/2018
 ms.author: ambapat
-ms.openlocfilehash: df577222fb8f9d13bd33c5705e6234362519d351
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 9b8b0da6e1572ab79ffb369497f64aad2cd249b9
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41920554"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43343462"
 ---
 # <a name="secure-your-key-vault"></a>Kulcstartó védelme
 Az Azure Key Vault egy felhőszolgáltatás, mely a titkosítási kulcsokat és titkos kulcsokat (pl. tanúsítványok, kapcsolati sztringek, jelszavak) védi az Ön felhőalkalmazásainál. Mivel ezek érzékeny és üzleti szempontból kritikus jellegű adatok, fontos, hogy Ön csak jogosult alkalmazások és felhasználók számára engedélyezzen kulcstartó-hozzáférést. Ez a cikk áttekintést ad a kulcstartó-hozzáférési modellről, elmagyarázza, mi a hitelesítés és az engedélyezés, és egy példával szemlélteti, hogyan biztosíthat kulcstartó-hozzáférést felhőalkalmazásai számára.
@@ -94,8 +94,8 @@ A kulcstartó-hozzáférési házirendekkel külön-külön engedélyezheti a ku
 
 > [!IMPORTANT]
 > Vegye figyelembe, hogy a kulcstartó-hozzáférési házirendek tárolószinten érvényesek. Például, ha egy felhasználó engedélyt kap kulcsok létrehozására és törlésére, az adott kulcstartó összes kulcsa esetén végrehajthatja ezeket a műveleteket.
-> 
-> 
+
+Az adatsík elérése hozzáférési szabályzatok használatán kívül [az Azure Key Vault virtuális hálózati szolgáltatásvégpontjaival](key-vault-overview-vnet-service-endpoints.md) is korlátozható [tűzfalak és virtuális hálózati szabályok](key-vault-network-security.md) konfigurálásával, amely egy további biztonsági réteget biztosít.
 
 ## <a name="example"></a>Példa
 Tegyük fel, hogy Ön egy olyan alkalmazást fejleszt, amely az SSL-hez tanúsítványt használ, adattárolásra Azure-tárolást, az aláírási műveletekhez pedig RSA 2048 bites kulcsot. Tegyük fel azt is, hogy ez az alkalmazás virtuális gépen fut (vagy virtuálisgép-méretezési csoportban). Kulcstartót használhat az összes titkos alkalmazáskulcs tárolására, valamint azon rendszerindítási tanúsítvány tárolására, amelyet az alkalmazás az Azure Active Directoryval történő hitelesítéshez használ.
@@ -201,8 +201,8 @@ Ez a példa egy egyszerű forgatókönyvet mutat be. Előfordulhat, hogy a való
 
 > [!NOTE]
 > Megjegyzés: Ez a példa bemutatja, hogyan lesz zárolva a kulcstartó-hozzáférés üzemi környezetben. A fejlesztőknek saját előfizetéssel vagy erőforráscsoporttal kell rendelkezniük, ahol teljes körű engedélyekkel rendelkeznek kulcstartóik, virtuális gépeik és a tárfiókjuk kezelésére az alkalmazás fejlesztésének helyén.
-> 
-> 
+
+A Key Vaulthoz való hozzáférés biztonságosabbá tételéhez kifejezetten ajánlott a [Key Vault-tűzfalak és virtuális hálózatok konfigurálása](key-vault-network-security.md).
 
 ## <a name="resources"></a>További források
 * [Azure Active Directory szerepköralapú hozzáférés-vezérlése](../role-based-access-control/role-assignments-portal.md)
@@ -243,6 +243,8 @@ Ez a példa egy egyszerű forgatókönyvet mutat be. Előfordulhat, hogy a való
   PowerShell-parancsmagok kulcstartó-hozzáférési házirend kezeléséhez szükséges referenciadokumentációjára mutató hivatkozások.
 
 ## <a name="next-steps"></a>További lépések
+[Key Vault-tűzfalak és virtuális hálózatok konfigurálása](key-vault-network-security.md)
+
 A rendszergazdáknak szóló bevezető oktatóanyag a [Bevezetés az Azure Key Vault használatába](key-vault-get-started.md) című cikkben érhető el.
 
 A kulcstartó használatának naplózásával kapcsolatos további információkért tekintse meg [Az Azure Key Vault naplózása](key-vault-logging.md) című cikket.

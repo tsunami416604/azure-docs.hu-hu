@@ -13,14 +13,14 @@ ms.topic: overview
 ms.custom: mvc
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 08/28/2018
+ms.date: 09/04/2018
 ms.author: alkohli
-ms.openlocfilehash: 931b3fd4730ed9ca3a901b423d6c804dfa7e5305
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.openlocfilehash: 26f8f59d940c1e4a25e24229c2a3df75052e63e4
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43143542"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43783290"
 ---
 # <a name="what-is-azure-data-box-disk-preview"></a>Mi az az Azure Data Box Disk-lemez? (Előzetes verzió)
 
@@ -48,7 +48,7 @@ A. Az Azure Data Box-lemezek több terabájtnyi adat gyors, költséghatékony �
 A lemezek a Microsoft BitLocker meghajtótitkosítással vannak titkosítva, amelynek titkosítási kulcsait az Azure Portalon kezelheti. Ezt követően átmásolhatja az adatokat az ügyfél kiszolgálóiról. Az adatközpontban a Microsoft egy gyors és privát hálózati feltöltési kapcsolaton keresztül a lemezről a felhőbe telepíti az adatait, majd feltölti őket az Azure-ba.
 
 ### <a name="q-when-should-i-use-data-box-disks"></a>K. Mikor érdemes Data Box Disk-lemezeket használnom?
-A. Ha 35 TB-nyi (vagy kevesebb) adata van, amelyet szeretne átvinni az Azure-ba, akkor hasznos lehet a Data Box Disk-lemezek használata.
+A. Ha 40 TB-nyi (vagy kevesebb) adata van, amelyet szeretne átvinni az Azure-ba, akkor hasznos lehet a Data Box Disk-lemezek használata.
 
 ### <a name="q-what-is-the-price-of-data-box-disks"></a>K. Mennyibe kerülnek a Data Box Disk-lemezek?
 A. Az előzetes verzió ideje alatt a Data Box Disk-lemezek díjmentesen érhetők el. A szállítás is ingyenes, az Azure-tárhely azonban költségekkel jár.
@@ -60,10 +60,10 @@ A.  Ahhoz, hogy Azure Data Box Disk-lemezeket kaphasson, előbb regisztráljon a
 A. 5 darab egyenként 8 TB-os lemez (7 TB-os felhasználható kapacitással) esetén a felhasználható kapacitás legfeljebb 35 TB. Így egyszerre legfeljebb 35 TB-nyi adat vihető át.  Több adat átviteléhez több lemez megrendelése szükséges.
 
 ### <a name="q-how-can-i-check-if-data-box-disks-are-available-in-my-region"></a>K. Honnan tudhatom meg, hogy a Data Box Disk-lemezek elérhetők-e a régiómban? 
-A.  A Data Box Disk az előzetes időszakban elérhető az USA-ban, Kanadában és az Európai Unió minden országában.  
+A.  A Data Box Disk az előzetes időszakban elérhető az USA-ban, Kanadában, Ausztráliában és az Európai Unió minden országában.  
 
 ### <a name="q-which-regions-can-i-store-data-in-with-data-box-disks"></a>K. Mely régiókban tárolhatok adatokat a Data Box Disk-lemezekkel?
-A. A Data Box Disk előzetes verziója támogatott az USA minden régiójában, Kanadában és Nyugat-, valamint Észak-Európában. Csak a nyilvános Azure-felhőrégiók támogatottak. Az Azure Government és más független felhők nem támogatottak.
+A. A Data Box Disk előzetes verziója támogatott az USA minden régiójában, Kanadában, Ausztráliában és Nyugat-, valamint Észak-Európában. Csak a nyilvános Azure-felhőrégiók támogatottak. Az Azure Government és más független felhők nem támogatottak.
 
 ### <a name="q-whom-should-i-contact-if-i-encounter-any-issues--with-data-box-disks"></a>K. Kihez fordulhatok, ha probléma merülne fel a Data Box Disk-lemezekkel kapcsolatban?
 A. Ha bármilyen probléma merülne fel a Data Box Disk-lemezekkel kapcsolatban, kérjük, forduljon a [Data Box Disk támogatásához](mailto:expresspodsupport@microsoft.com).

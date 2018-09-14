@@ -1,62 +1,108 @@
 ---
-title: Hívás-válasz - Ruby gyors üzembe helyezés az Azure kognitív szolgáltatások, a Bing webes keresés API |} Microsoft Docs
-description: Get információkat és a kód minták segítségével gyorsan használatának megkezdésében a webes Bing keresési API a Microsoft Azure kognitív Services.
+title: 'Rövid útmutató: A Bing Web Search API meghívása a Ruby segítségével'
+description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhatja létre első Bing Web Search API-hívását a Ruby használatával, majd hogyan fogadhatja a JSON-választ.
 services: cognitive-services
-documentationcenter: ''
-author: v-jerkin
+author: erhopf
 ms.service: cognitive-services
 ms.component: bing-web-search
-ms.topic: article
-ms.date: 9/18/2017
-ms.author: v-jerkin
-ms.openlocfilehash: b0f5c395fcdf043f4111f63ef16f0d33d5257e74
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.topic: quickstart
+ms.date: 8/16/2018
+ms.author: erhopf
+ms.openlocfilehash: a60bf0ef12272be3b224fdbf9f9819057fe4aa55
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347538"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42888705"
 ---
-# <a name="call-and-response-your-first-bing-web-search-query-in-ruby"></a>Hívás-válasz: a Ruby első Bing keresést a lekérdezés
+# <a name="quickstart-use-ruby-to-call-the-bing-web-search-api"></a>Rövid útmutató: A Bing Web Search API meghívása a Ruby segítségével  
 
-A webes Bing keresési API vissza a találatok között, amely meghatározza a Bing kapcsolódik a lekérdezés a felhasználó Bing.com/Search hasonló élményt nyújt. Az eredmények lehet, hogy tartalmazzák a weblapok, képek, videók, híreket és entitások, kapcsolódó keresési lekérdezések, helyesen adta-e javításokat, időzónák, egység átalakítás, fordítások és számítások együtt. A kapott eredmények típusú azok relevanciájának és a réteg a Bing keresési API-k riasztásról alapulnak.
+Ebből a rövid útmutatóból megtudhatja, hogyan hozhatja létre 10 perc alatt az első Bing Web Search API-hívását, majd hogyan fogadhatja a JSON-választ.  
 
-A cikk tartalmaz egy egyszerű konzolalkalmazást, amely a Bing webes API-t keresési lekérdezést hajt végre, és a visszaadott nyers keresési eredmények között, amelyek JSON formátumban jeleníti meg. Az alkalmazás íródott Ruby, amíg az API-t olyan kompatibilis bármely programozási nyelv, amely HTTP-kérelmeket, és elemezni a JSON a RESTful webes szolgáltatás. 
+[!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Szüksége lesz [Ruby 2.4-es vagy újabb](https://www.ruby-lang.org/en/downloads/) a példakódot futtatásához.
+Az alábbi dolgokra szüksége lesz a rövid útmutató futtatásához:
 
-Rendelkeznie kell egy [kognitív szolgáltatások API-fiók](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) rendelkező **Bing keresési API-k**. A [ingyenes próbaverzió](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) elegendő-e a gyors üzembe helyezés. Az elérési kulcsot, ha aktiválja az ingyenes próbaverzió, vagy egy fizetős kulcsot használhatja az Azure irányítópultról van szüksége.
+* A [Ruby 2.4-es vagy újabb verziója](https://www.ruby-lang.org/en/downloads/)
+* Egy előfizetői azonosító
 
-## <a name="running-the-application"></a>Az alkalmazás futtatása
+## <a name="create-a-project-and-declare-required-modules"></a>Projekt létrehozása és a szükséges modulok deklarálása
 
-Az alkalmazás futtatásához kövesse az alábbi lépéseket.
+Hozzon létre egy új Ruby-projektet a kedvenc IDE-környezetében vagy szerkesztőjében. Ezután a `net/https` a kérésekhez, az `uri` az URI-kezeléshez és a `json` a válasz elemzéséhez történő igénylésére van szükség.
 
-1. Hozzon létre egy új Ruby-projektet a kedvenc IDE vagy szerkesztő.
-2. Adja hozzá a megadott kódot.
-3. Cserélje le a `accessKey` hívóbetű érvényes az előfizetéshez tartozó értéket.
-4. Futtassa a programot.
+```ruby
+require 'net/https'
+require 'uri'
+require 'json'
+```
+
+## <a name="define-variables"></a>Változók meghatározása
+
+Mielőtt folytatnánk, meg kell adni néhány változót. Ellenőrizze, hogy a `$uri` és a `path` értéke érvényes-e, és cserélje le a `accessKey` értékét egy érvényes előfizetői azonosítóra az Azure-fiókjából. Nyugodtan testreszabhatja a keresési lekérdezést a `term` értékének lecserélésével.
+
+```ruby
+accessKey = "YOUR_SUBSCRIPTION_KEY"
+uri  = "https://api.cognitive.microsoft.com"
+path = "/bing/v7.0/search"
+term = "Microsoft Cognitive Services"
+
+if accessKey.length != 32 then
+    puts "Invalid Bing Search API subscription key!"
+    puts "Please paste yours into the source code."
+    abort
+end
+```
+
+## <a name="make-a-request"></a>Kérés indítása
+
+Ezzel a kóddal indíthat kérést és kezelheti a választ.
+
+```ruby
+# Construct the endpoint uri.
+uri = URI(uri + path + "?q=" + URI.escape(term))
+puts "Searching the Web for: " + term
+
+# Create the request.
+request = Net::HTTP::Get.new(uri)
+request['Ocp-Apim-Subscription-Key'] = accessKey
+
+# Get the response.
+response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
+    http.request(request)
+end
+```
+
+## <a name="print-the-response"></a>A válasz megjelenítése
+
+Ellenőrizze a fejléceket, formázza a válaszadatokat JSON formátumban, és jelenítse meg az eredményeket.
+
+```ruby
+puts "\nRelevant Headers:\n\n"
+response.each_header do |key, value|
+    # Header names are lower-cased.
+    if key.start_with?("bingapis-") or key.start_with?("x-msedge-") then
+        puts key + ": " + value
+    end
+end
+
+puts "\nJSON Response:\n\n"
+puts JSON::pretty_generate(JSON(response.body))
+```
+
+## <a name="put-it-all-together"></a>Az alkalmazás összeállítása
+
+Az utolsó lépés a kód érvényesítése és futtatása. Ha szeretné összevetni a saját kódját a miénkkel, íme az egész program:
 
 ```ruby
 require 'net/https'
 require 'uri'
 require 'json'
 
-# **********************************************
-# *** Update or verify the following values. ***
-# **********************************************
-
-# Replace the accessKey string value with your valid access key.
 accessKey = "enter key here"
-
-# Verify the endpoint URI.  At this writing, only one endpoint is used for Bing
-# search APIs.  In the future, regional endpoints may be available.  If you
-# encounter unexpected authorization errors, double-check this value against
-# the endpoint for your Bing Web search instance in your Azure dashboard.
-
 uri  = "https://api.cognitive.microsoft.com"
 path = "/bing/v7.0/search"
-
 term = "Microsoft Cognitive Services"
 
 if accessKey.length != 32 then
@@ -66,7 +112,6 @@ if accessKey.length != 32 then
 end
 
 uri = URI(uri + path + "?q=" + URI.escape(term))
-
 puts "Searching the Web for: " + term
 
 request = Net::HTTP::Get.new(uri)
@@ -78,7 +123,6 @@ end
 
 puts "\nRelevant Headers:\n\n"
 response.each_header do |key, value|
-    # header names are coerced to lowercase
     if key.start_with?("bingapis-") or key.start_with?("x-msedge-") then
         puts key + ": " + value
     end
@@ -88,9 +132,9 @@ puts "\nJSON Response:\n\n"
 puts JSON::pretty_generate(JSON(response.body))
 ```
 
-## <a name="json-response"></a>JSON-válasz
+## <a name="sample-response"></a>Mintaválasz
 
-A következő mintát választ. A JSON hosszát korlátozásához csak egyetlen eredmény látható, és a választ más részei le lettek rövidítve. 
+A Bing Web Search API válaszai JSON formátumban érkeznek vissza. A mintaválasz egyetlen eredményre van csonkolva.
 
 ```json
 {
@@ -217,11 +261,6 @@ A következő mintát választ. A JSON hosszát korlátozásához csak egyetlen 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Bing webes keresés alkalmazás oktatóanyag](../tutorial-bing-web-search-single-page-app.md)
+> [Egyoldalas alkalmazás-oktatóanyag a Bing Web Search használatához](../tutorial-bing-web-search-single-page-app.md)
 
-## <a name="see-also"></a>Lásd még 
-
-[Bing webes keresés – áttekintés](../overview.md)  
-[Próbálja ki](https://azure.microsoft.com/services/cognitive-services/bing-web-search-api/)  
-[Egy ingyenes próba hozzáférési kulcs beszerzése](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)  
-[Bing webes keresési API-referencia](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference)
+[!INCLUDE [bing-web-search-quickstart-see-also](../../../../includes/bing-web-search-quickstart-see-also.md)]

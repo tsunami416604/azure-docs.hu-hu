@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/12/2018
+ms.date: 09/13/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: ddb1fcd91ff0c0018bcab9988a5ab063b882cf36
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
-ms.translationtype: HT
+ms.openlocfilehash: e396fc82754188ea655c70b44d4bf937a3c3163c
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44714667"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45544211"
 ---
 # <a name="download-marketplace-items-from-azure-to-azure-stack"></a>Az Azure marketplace-elemek letöltése az Azure Stackhez
 
@@ -148,9 +148,9 @@ Ebben a forgatókönyvben két részből áll:
 ### <a name="import-the-download-and-publish-to-azure-stack-marketplace"></a>A letöltés importálása és közzététele az Azure Stack piactéren
 1. A virtuálisgép-lemezképek vagy megoldássablonokkal, amely rendelkezik a fájlok [korábban letöltött](#use-the-marketplace-syndication-tool-to-download-marketplace-items) az Azure Stack környezettel való helyben elérhetővé kell tenni.  
 
-2. A felügyeleti portál használatával töltse fel a Piactéri elem csomag (.azpkg fájlt) az Azure Stack Blob storage. A csomag feltöltése lehetővé teszi az Azure Stack később közzétételéhez a cikk az Azure Stack piactéren.
+2. A felügyeleti portál használatával a Piactéri elem csomag (.azpkg fájlt) és a virtuális merevlemez (.vhd fájl) Rendszerkép feltöltése az Azure Stack Blob storage. A csomag feltöltése és tartalmazó fájlokat elérhetővé válnak az Azure Stackhez az elem később az Azure Stack piactéren való közzétételéhez.
 
-   Feltöltés szükséges hozzá egy nyilvánosan elérhető tárolót egy tárfiókot, (tekintse meg a forgatókönyv előfeltételei)   
+   Feltöltés szükséges hozzá egy nyilvánosan elérhető tárolót egy tárfiókot, (tekintse meg a forgatókönyv előfeltételei).  
    1. Az Azure Stack felügyeleti portálon, lépjen a **minden szolgáltatás** , majd a a **adatok + tárolás** kategória, jelölje be **tárfiókok**.  
    
    2. Válassza ki a tárfiókot az előfizetéséből, majd a **BLOB SERVICE**válassza **tárolók**.  
@@ -159,7 +159,7 @@ Ebben a forgatókönyvben két részből áll:
    3. Válassza ki a tárolót használja, és válassza ki a kívánt **feltöltése** megnyitásához a **blob feltöltése** ablaktáblán.  
       ![Tároló](media/azure-stack-download-azure-marketplace-item/container.png)  
    
-   4. A blob feltöltése panelen keresse meg, amelyet szeretne betölteni a storage-ba, és válassza ki a fájlokat **feltöltése**.  
+   4. A blob feltöltése panelen keresse meg a csomag és a lemez fájlokat betölteni a storage-ba, és jelölje ki **feltöltése**.  
       ![upload](media/azure-stack-download-azure-marketplace-item/upload.png)  
 
    5. Feltöltött fájlok a tároló panelen jelennek meg. Válasszon ki egy fájlt, és másolja az URL-címet a **Blob tulajdonságai** ablaktáblán. Amikor importálja a Piactéri elem az Azure Stack a következő lépésben fogja használni az URL-címet.  Az alábbi ábrán a tároló-e *test-blobtároló* , és a fájl *Microsoft.WindowsServer2016DatacenterServerCore-ARM.1.0.801.azpkg*.  A fájl URL-cím *https://testblobstorage1.blob.local.azurestack.external/blob-test-storage/Microsoft.WindowsServer2016DatacenterServerCore-ARM.1.0.801.azpkg*.  
@@ -169,7 +169,7 @@ Ebben a forgatókönyvben két részből áll:
 
    Beszerezheti a *közzétevő*, *ajánlat*, és *termékváltozat* a szövegfájl, amely letölti a AZPKG fájl a lemezkép értékét. A szöveges fájlt tárolja a célhelyen. A *verzió* értéke a verziót, ha az elem letöltése az Azure-ból az előző eljárásban feljegyzett. 
  
-   A következő példa parancsfájlt a Windows Server 2016 Datacenter - Server Core virtuális gép értékeit kell használni. Cserélje le *URI_path* az a blob tárolási helye az elem elérési útját.
+   A következő példa parancsfájlt a Windows Server 2016 Datacenter - Server Core virtuális gép értékeit kell használni. Az érték *- Osuri* van egy példa az elem a blob storage helyének elérési útját.
 
    ```PowerShell  
    Add-AzsPlatformimage `
@@ -178,7 +178,7 @@ Ebben a forgatókönyvben két részből áll:
     -sku "2016-Datacenter-Server-Core" `
     -osType Windows `
     -Version "2016.127.20171215" `
-    -OsUri "URI_path"  
+    -OsUri "https://mystorageaccount.blob.local.azurestack.external/cont1/Microsoft.WindowsServer2016DatacenterServerCore-ARM.1.0.801.vhd"  
    ```
    **Megoldássablonok kapcsolatos:** bizonyos sablonok lehetnek egy kis 3 MB. VHD-fájl nevű **fixed3.vhd**. Nem kell ezt a fájlt importálja az Azure Stackhez. Fixed3.vhd.  Ez a fájl megtalálható néhány megoldássablonokkal, az Azure Marketplace közzétételi igényeinek megfelelően.
 
@@ -198,7 +198,7 @@ Ebben a forgatókönyvben két részből áll:
      -GalleryItemUri "https://mystorageaccount.blob.local.azurestack.external/cont1/Microsoft.WindowsServer2016DatacenterServerCore-ARM.1.0.801.azpkg" `
      –Verbose
     ```
-5. A katalógus egy elemét, akkor a közzététel után **minden szolgáltatás**. A következő a **általános** kategória, jelölje be **Marketplace**.  Ha a letöltés megoldássablon, mindenképpen adja hozzá bármelyik függő VHD-lemezképet a megoldássablon.  
+5. A katalógus egy elemét a közzététel után már használhatja. Ellenőrizze, hogy a gyűjteményelem közzé van téve, lépjen a **minden szolgáltatás**, majd a a **általános** kategória, jelölje be **Marketplace**.  Ha a letöltés megoldássablon, mindenképpen adja hozzá bármelyik függő VHD-lemezképet a megoldássablon.  
   ![Nézet Marketplace-en](media/azure-stack-download-azure-marketplace-item/view-marketplace.png)  
 
 > [!NOTE]

@@ -1,35 +1,37 @@
 ---
-title: Azure-felhőbe rendszerhéj Terraform használata
-description: Az Azure felhőalapú rendszerhéj Terraform használatával egyszerűsíthető a hitelesítés és a konfigurációt.
-keywords: terraform, devops, állítsa be, a virtuális gép, hálózati, tárolási, modulok méretezése
-ms.service: virtual-machines-linux
-author: dcaro
-ms.author: dcaro
+title: A Terraform használata az Azure Cloud Shell-lel
+description: A Terraform Azure Cloud Shell-lel való használatával egyszerűsíthető a hitelesítés és a sablonok konfigurációja.
+services: terraform
+ms.service: terraform
+keywords: terraform, devops, méretezési csoport, virtuális gép, hálózat, tároló, modulok
+author: tomarcher
+manager: jeconnoc
+ms.author: tarcher
+ms.topic: tutorial
 ms.date: 10/19/2017
-ms.topic: article
-ms.openlocfilehash: 5157066086f1bdfa580c1946942bda4505e48935
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
-ms.translationtype: MT
+ms.openlocfilehash: 107a6dd82465ce1455a3c2922c8f9cba6b73dd64
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
-ms.locfileid: "29121525"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43667962"
 ---
-# <a name="terraform-cloud-shell-development"></a>Fejlesztési Terraform felhő rendszerhéj 
+# <a name="terraform-cloud-shell-development"></a>Cloud Shell-alapú Terraform-fejlesztések 
 
-Terraform Windows vagy Linux nagyszerű például a Terminálszolgáltatások vagy a Bash macOS Bash parancssori. A Terraform fut a Bash konfigurációja élménye a [Azure Cloud rendszerhéj](/azure/cloud-shell/overview) néhány egyedi előnyökkel jár a fejlesztési ciklus felgyorsítása érdekében.
+A Terraform nagyszerűen használható a Bash-parancssorból, például a macOS Terminal vagy a Bash on Windows vagy Linux felületekről. A Terraform-konfigurációk [Azure Cloud Shell](/azure/cloud-shell/overview) Bash-felületéről való futtatása néhány egyedi előnyt biztosít a fejlesztési ciklus felgyorsításához.
 
-Fogalmak cikkben funkciókat, amelyek segítenek Terraform parancsfájlokat írhat, amelyek telepítse az Azure felhőalapú rendszerhéj ismerteti.
+Ez a fogalmakat ismertető cikk azokat a Cloud Shell-funkciókat ismerteti, amelyekkel Terraform-szkriptek írhatók az Azure-ban való üzembe helyezéshez.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="automatic-credential-configuration"></a>Automatikus hitelesítő adatok konfigurálása
+## <a name="automatic-credential-configuration"></a>Hitelesítő adatok automatikus konfigurálása
 
-Terraform telepítve, és azonnal elérhető a felhő rendszerhéj. Terraform parancsfájlok hitelesítéséhez az Azure-ral, ha jelentkezett be a felhő rendszerhéj további konfiguráció nélkül infrastruktúra kezelése érdekében. Automatikus hitelesítési megkerüli kell manuálisan hozzon létre egy Active Directory szolgáltatás egyszerű, és az Azure Terraform szolgáltató változók konfigurálását.
+A Terraform telepítve van, és azonnal elérhető a Cloud Shellben. A Cloud Shellbe bejelentkezve a Terraform-szkriptek az Azure-ban hitelesítenek, így további konfiguráció nélkül felügyelhető az infrastruktúra. Az automatikus hitelesítésnek köszönhetően nem kell manuálisan létrehozni egy Active Directory-szolgáltatásnevet, illetve konfigurálni az Azure Terraform szolgáltatói változóit.
 
 
-## <a name="using-modules-and-providers"></a>Modulok és szolgáltatók használatával
+## <a name="using-modules-and-providers"></a>Modulok és szolgáltatók használata
 
-Azure Terraform modulok adatokkal eléréséhez és módosításához szükséges lévő erőforrásokat az Azure-előfizetéssel kell rendelkeznie. A felhő rendszerhéj használatakor Azure Terraform modulok használata a felhő rendszerhéj a parancsfájlok adja hozzá a következő kódot:
+Az Azure Terraform-moduloknak hitelesítő adatokra van szükségük az Azure-előfizetésben lévő erőforrások eléréséhez és módosításához. A Cloud Shell használata esetén az Azure Terraform-modulok Cloud Shellben való használatához egészítse ki a szkripteket a következő kóddal:
 
 ```tf
 # Configure the Microsoft Azure Provider
@@ -37,16 +39,16 @@ provider "azurerm" {
 }
 ```
 
-A felhő rendszerhéj szükséges értékeket adja át a `azurerm` környezeti változók esetén-szolgáltató a `terraform` parancssori felület parancsait.
+A Cloud Shell az `azurerm` szükséges értékeit környezeti változókon keresztül adja be a `terraform` parancssori parancsok használata során.
 
-## <a name="other-cloud-shell-developer-tools"></a>Más felhőalapú rendszerhéj fejlesztői eszközök
+## <a name="other-cloud-shell-developer-tools"></a>Egyéb Cloud Shell fejlesztői eszközök
 
-Fájlok és a rendszerhéj állapotok megőrizni az Azure Storage felhőalapú rendszerhéj-munkamenetek között. Használjon [Azure Tártallózó](/azure/vs-azure-tools-storage-manage-with-storage-explorer) másolása és fájlok feltöltése a felhőalapú rendszerhéj a helyi számítógépről.
+A fájlok és a rendszerhéj-állapotok megmaradnak az Azure Storage-ben a Cloud Shell-munkamenetek között. Az [Azure Storage Explorer](/azure/vs-azure-tools-storage-manage-with-storage-explorer) használatával másolhatja és töltheti fel a fájlokat a helyi számítógépről a Cloud Shellbe.
 
-Az Azure CLI 2.0 érhető el a felhő rendszerhéj, és kiváló eszköz a konfiguráció tesztelése és ellenőrzése után a munkáját a `terraform apply` vagy `terraform destroy` befejeződik.
+Az Azure CLI 2.0 elérhető a Cloud Shellben, és igen jól használható a konfigurációk tesztelésére és az elvégzett munka ellenőrzésére a `terraform apply` és `terraform destroy` parancsok végrehajtása után.
 
 
 ## <a name="next-steps"></a>További lépések
 
-[Hozzon létre egy kis méretű fürtöt, a modul beállításjegyzékkel](terraform-create-vm-cluster-module.md)
-[használatával egyéni Hardverkompatibilitási kis méretű fürt létrehozása](terraform-create-vm-cluster-with-infrastructure.md)
+[Kisméretű virtuálisgép-fürt létrehozása a modul-beállításjegyzék használatával](terraform-create-vm-cluster-module.md)
+[Kisméretű virtuálisgép-fürt létrehozása egyéni HCL használatával](terraform-create-vm-cluster-with-infrastructure.md)

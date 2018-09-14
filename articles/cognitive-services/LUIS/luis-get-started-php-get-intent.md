@@ -1,75 +1,65 @@
 ---
-title: Language Understanding- (LUIS-) alkalmazás meghívása PHP használatával | Microsoft Docs
-description: Ez az oktatóanyag bemutatja, hogyan hívhat meg egy LUIS-alkalmazást a PHP használatával.
+title: Rövid útmutató – Természetes nyelvű szöveg elemzése a Language Understanding (LUIS) szolgáltatásban PHP nyelven – Cognitive Services – Azure Cognitive Services | Microsoft Docs
+description: Ebben a rövid útmutatóban elérhető nyilvános LUIS-alkalmazással határozza meg egy felhasználó szándékát egy beszélgetés szövegéből. PHP nyelven küldje el szövegként a felhasználó szándékát a nyilvános alkalmazás HTTP-előrejelzési végpontjára. A LUIS a végpontnál a nyilvános alkalmazás modelljét alkalmazza a természetes nyelvű szövegen a jelentés elemzése érdekében, amellyel meghatározza az általános szándékot, valamint kinyeri az alkalmazás témájában releváns adatokat.
 services: cognitive-services
-author: v-geberr
-manager: kamran.iqbal
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
-ms.topic: tutorial
-ms.date: 12/13/2017
-ms.author: v-geberr
-ms.openlocfilehash: 90aa1fc9d458484bbbaf54d4d838064ced03b257
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.topic: quickstart
+ms.date: 08/23/2018
+ms.author: diberry
+ms.openlocfilehash: 14ac32ffc0f4332d0cbc0da59a55ccc500e216d7
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36265126"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "43769969"
 ---
-# <a name="tutorial-call-a-luis-endpoint-using-php"></a>Oktatóanyag: LUIS-végpont meghívása PHP használatával
-Átadhat kimondott szövegeket egy LUIS-végpontnak, majd visszakaphatja a szándékot és az entitásokat.
+# <a name="quickstart-analyze-text-using-php"></a>Rövid útmutató: Szövegelemzés PHP használatával
 
-<!-- green checkmark -->
-> [!div class="checklist"]
-> * LUIS-előfizetés létrehozása és kulcsérték másolása későbbi használathoz
-> * A LUIS-végpont által visszaadott eredmények megtekintése a böngészőben egy IoT-mintaalkalmazás közzétételéhez
-> * Visual Studio C#-konzolalkalmazás létrehozása LUIS-végpontok HTTPS-hívásához
+[!include[Quickstart introduction for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-intro-para.md)]
 
-Ehhez a cikkhez egy ingyenes [LUIS][LUIS]-fiókra van szüksége a LUIS-alkalmazás létrehozásához.
+<a name="create-luis-subscription-key"></a>
 
-## <a name="create-luis-subscription-key"></a>LUIS előfizetési kulcs létrehozása
-Az ebben a bemutatóban használt LUIS-mintaalkalmazások hívásához egy Cognitive Services API-kulcsra lesz szüksége. 
+## <a name="prerequisites"></a>Előfeltételek
 
-Az API-kulcs beszerzéséhez kövesse az alábbi lépéseket: 
+* [PHP](http://php.net/) programozási nyelv
+* [Visual Studio Code](https://code.visualstudio.com/)
+* A df67dcdb-c37d-46af-88e1-8b97951ca1c2 azonosítójú nyilvános alkalmazás
 
-1. Először létre kell hoznia egy [Cognitive Services API-fiókot](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) az Azure Portalon. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
-2. Jelentkezzen be az Azure Portalra a https://portal.azure.com címen. 
+[!include[Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-luis-repo-note.md)]
 
-3. Kövesse az [előfizetési kulcsok Azure-ral történő létrehozását](./luis-how-to-azure-subscription.md) ismertető cikkben leírt lépéseket a kulcs beszerzéséhez.
+## <a name="get-luis-key"></a>LUIS-kulcs lekérése
 
-4. Lépjen vissza a [LUIS](luis-reference-regions.md) webhelyére, és jelentkezzen be az Azure-fiókjával. 
+[!include[Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-get-key-para.md)]
 
-    [![](media/luis-get-started-node-get-intent/app-list.png "Alkalmazáslista képernyőképe")](media/luis-get-started-node-get-intent/app-list.png)
+## <a name="analyze-text-with-browser"></a>Elemzés böngészővel
 
-## <a name="understand-what-luis-returns"></a>A LUIS által visszaadott eredmények értelmezése
+[!include[Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-browser-para.md)]
 
-Annak megismeréséhez, hogy mit ad vissza egy LUIS-alkalmazás, beillesztheti a LUIS-mintaalkalmazás URL-címét egy böngészőablakba. A mintaalkalmazás egy IoT-alkalmazás, amely észleli, hogy a felhasználó fel- vagy lekapcsolni szeretné-e a világítást.
-
-1. A mintaalkalmazás végpontja a következő formátumban van: `https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2?subscription-key=<YOUR_API_KEY>&verbose=false&q=turn%20on%20the%20bedroom%20light` Másolja az URL-címet, és cserélje le az előfizetési kulcsot a `subscription-key` mezőben található értékre.
-2. Illessze be az URL-címet egy böngészőablakba, és nyomja le az Enter billentyűt. A böngészőben megjelenik egy JSON-eredmény, amely jelzi, hogy a LUIS észleli a `HomeAutomation.TurnOn` szándékot és a `bedroom` értékű `HomeAutomation.Room` entitást.
-
-    ![A TurnOn szándékot észlelő JSON-eredmény](./media/luis-get-started-node-get-intent/turn-on-bedroom.png)
-3. Módosítsa az URL-címben található `q=` paraméter értékét `turn off the living room light` értékre, majd nyomja le az Enter billentyűt. Az eredmény most jelzi, hogy a LUIS észleli a `HomeAutomation.TurnOff` szándékot és a `living room` értékű `HomeAutomation.Room` entitást. 
-
-    ![A TurnOff szándékot észlelő JSON-eredmény](./media/luis-get-started-node-get-intent/turn-off-living-room.png)
-
-## <a name="consume-a-luis-result-using-the-endpoint-api-with-php"></a>LUIS-eredmény felhasználása a végponti API és PHP használatával 
+## <a name="analyze-text-with-php"></a>Szövegelemzés PHP használatával 
 
 A PHP-vel hozzáférhet ugyanazokhoz az eredményekhez, amelyeket a böngészőablakban látott az előző lépésben. 
-1. Másolja ki az alábbi kódot, és mentse egy HTML-fájlba:
 
-   [!code-php[PHP code that calls a LUIS endpoint](~/samples-luis/documentation-samples/endpoint-api-samples/php/endpoint-call.php)]
-2. Cserélje le a `"YOUR-SUBSCRIPTION-KEY"` értéket a következő kódsorban az előfizetési kulcsra: `$subscriptionKey = "YOUR-SUBSCRIPTION-KEY";`
+1. Másolja ki az alábbi kódot, és mentse `endpoint-call.php` fájlnéven:
 
-3. Futtassa a PHP-alkalmazást. Megjelenik a korábban a böngészőablakban látott JSON.
+   [!code-php[PHP code that calls a LUIS endpoint](~/samples-luis/documentation-samples/quickstarts/analyze-text/php/endpoint-call.php)]
+
+2. A `"YOUR-KEY"` helyére írja be a végpont kulcsát.
+
+3. Futtassa a PHP-alkalmazást a(z) `php endpoint-call.php` használatával. Megjelenik a korábban a böngészőablakban látott JSON.
+
+## <a name="luis-keys"></a>LUIS-kulcsok
+
+[!include[Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-key-usage-para.md)]
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-Az oktatóanyagban létrehozott két erőforrás a LUIS előfizetési kulcsa és a C#-projekt volt. Törölje a LUIS előfizetési kulcsot az Azure Portalról. Zárja be a Visual Studio-projektet, és távolítsa el a könyvtárat a fájlrendszerből. 
+
+Törölje a PHP-fájlt.
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Beszédmódok hozzáadása](luis-get-started-php-add-utterance.md)
-
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website

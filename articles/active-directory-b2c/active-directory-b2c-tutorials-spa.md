@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.component: B2C
-ms.openlocfilehash: fffffbf7ce654c263976378da01f032599145a94
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 4953cb0db428de19268cdd90661f7818b06b6945
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39591567"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43343862"
 ---
 # <a name="tutorial-enable-single-page-app-authentication-with-accounts-using-azure-active-directory-b2c"></a>Oktatóanyag: Egyoldalas alkalmazáson belüli, fiókokkal történő hitelesítés engedélyezése az Azure Active Directory B2C használatával
 
@@ -24,24 +24,24 @@ Az oktatóanyag azt mutatja be, hogyan használhatja az Azure Active Directory (
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Egy mintául szolgáló egyoldalas alkalmazás regisztrálása az Azure AD B2C-bérlőben.
+> * Egy mintául szolgáló egyoldalas alkalmazás regisztrálása az Azure AD B2C-címtárban.
 > * A felhasználói regisztrációra, bejelentkezésre, profil szerkesztésére és új jelszó kérésére vonatkozó szabályzatok létrehozása.
-> * A mintaalkalmazás konfigurálása az Azure AD B2C-bérlő használatára.
+> * A mintaalkalmazás konfigurálása az Azure AD B2C-címtár használatára.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Saját [Azure AD B2C-bérlő](active-directory-b2c-get-started.md) létrehozása.
+* Saját [Azure AD B2C-címtár](active-directory-b2c-get-started.md) létrehozása
 * [Visual Studio 2017](https://www.visualstudio.com/downloads/) telepítése **ASP.NET és webfejlesztési** számítási feladattal.
 * [.NET Core 2.0.0 SDK](https://www.microsoft.com/net/core) vagy újabb
 * [Node.js](https://nodejs.org/en/download/) telepítése
 
 ## <a name="register-single-page-app"></a>Az egyoldalas alkalmazás regisztrálása
 
-Az alkalmazásoknak [regisztrálva](../active-directory/develop/developer-glossary.md#application-registration) kell lenniük a bérlőben, hogy [hozzáférési jogkivonatokat](../active-directory/develop/developer-glossary.md#access-token) kaphassanak az Azure Active Directoryból. Az alkalmazásregisztráció létrehozza a bérlőben található alkalmazás [alkalmazásazonosítóját](../active-directory/develop/developer-glossary.md#application-id-client-id). 
+Az alkalmazásoknak [regisztrálva](../active-directory/develop/developer-glossary.md#application-registration) kell lenniük a címtárban, hogy [hozzáférési jogkivonatokat](../active-directory/develop/developer-glossary.md#access-token) kaphassanak az Azure Active Directoryból. Az alkalmazásregisztráció létrehozza a címtárban található alkalmazás [alkalmazásazonosítóját](../active-directory/develop/developer-glossary.md#application-id-client-id). 
 
-Jelentkezzen be az [Azure Portalra](https://portal.azure.com/) az Azure AD B2C-bérlő globális rendszergazdájaként.
+Jelentkezzen be az [Azure Portalra](https://portal.azure.com/) az Azure AD B2C-címtár globális rendszergazdájaként.
 
 [!INCLUDE [active-directory-b2c-switch-b2c-tenant](../../includes/active-directory-b2c-switch-b2c-tenant.md)]
 
@@ -49,7 +49,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/) az Azure AD B2C-b
 
 2. A B2C beállításaiban kattintson az **Alkalmazások**, majd a **Hozzáadás** lehetőségre. 
 
-    A mintául szolgáló webalkalmazás bérlőben történő regisztrálásához használja a következő beállításokat:
+    A mintául szolgáló webalkalmazás címtárban történő regisztrálásához használja a következő beállításokat:
     
     ![Új alkalmazás hozzáadása](media/active-directory-b2c-tutorials-spa/spa-registration.png)
     
@@ -63,7 +63,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/) az Azure AD B2C-b
     
 3. Kattintson a **Létrehozás** gombra az alkalmazás regisztrálásához.
 
-A regisztrált alkalmazások az Azure AD B2C-bérlő alkalmazásainak listájában jelennek meg. Válassza ki az egyoldalas alkalmazást a listáról. Megjelenik a regisztrált egyoldalas alkalmazás tulajdonságpanelje.
+A regisztrált alkalmazások az Azure AD B2C-címtár alkalmazásainak listájában jelennek meg. Válassza ki az egyoldalas alkalmazást a listáról. Megjelenik a regisztrált egyoldalas alkalmazás tulajdonságpanelje.
 
 ![Az egyoldalas alkalmazás tulajdonságai](./media/active-directory-b2c-tutorials-spa/b2c-spa-properties.png)
 
@@ -127,25 +127,25 @@ Ha engedélyezni szeretné az új jelszavak kérését az alkalmazásban, létre
 
 ## <a name="update-single-page-app-code"></a>Az egyoldalas alkalmazás kódjának frissítése
 
-Most, hogy regisztrálta az alkalmazást és létrehozta a szabályzatokat, konfigurálnia kell az alkalmazást az Azure AD B2C-bérlő használatához. Ebben az oktatóanyagban egy, a GitHubról letölthető SPA JavaScript-mintaalkalmazást fog konfigurálni. 
+Most, hogy regisztrálta az alkalmazást és létrehozta a szabályzatokat, konfigurálnia kell az alkalmazást az Azure AD B2C-címtár használatához. Ebben az oktatóanyagban egy, a GitHubról letölthető SPA JavaScript-mintaalkalmazást fog konfigurálni. 
 
 [Töltse le a zip-fájlt](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp/archive/master.zip), vagy a klónozza a mintául szolgáló webalkalmazást a GitHubról.
 
 ```
 git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp.git
 ```
-A mintaalkalmazás bemutatja, hogyan használhatja egy egyoldalas alkalmazás az Azure AD B2C-t felhasználók regisztrációjához és bejelentkeztetéséhez, illetve egy védett webes API meghívásához. Ahhoz, hogy használni tudja az alkalmazás regisztrációját a saját bérlőjében, és konfigurálni tudja a létrehozott szabályzatokat, módosítania kell az alkalmazást. 
+A mintaalkalmazás bemutatja, hogyan használhatja egy egyoldalas alkalmazás az Azure AD B2C-t felhasználók regisztrációjához és bejelentkeztetéséhez, illetve egy védett webes API meghívásához. Ahhoz, hogy használni tudja az alkalmazás regisztrációját a saját címtárában, és konfigurálni tudja a létrehozott szabályzatokat, módosítania kell az alkalmazást. 
 
 Az alkalmazás beállításainak módosításához:
 
 1. Nyissa meg az `index.html` fájlt az egyoldalas Node.js-mintaalkalmazásban.
-2. Konfigurálja a mintát az Azure AD B2C-bérlő regisztrációs információival. Módosítsa a következő kódsorokat:
+2. Konfigurálja a mintát az Azure AD B2C-címtár regisztrációs információival. Módosítsa a következő kódsorokat (ne felejtse el az értékeket lecserélni a címtár és az API-k nevére):
 
     ```javascript
-    // The current application coordinates were pre-registered in a B2C tenant.
+    // The current application coordinates were pre-registered in a B2C directory.
     var applicationConfig = {
         clientID: '<Application ID for your SPA obtained from portal app registration>',
-        authority: "https://login.microsoftonline.com/tfp/<your-tenant-name>.onmicrosoft.com/B2C_1_SiUpIn",
+        authority: "https://fabrikamb2c.b2clogin.com/tfp/fabrikamb2c.onmicrosoft.com/B2C_1_SiUpIn",
         b2cScopes: ["https://fabrikamb2c.onmicrosoft.com/demoapi/demo.read"],
         webApi: 'https://fabrikamb2chello.azurewebsites.net/hello',
     };
@@ -185,20 +185,20 @@ A mintaalkalmazás támogatja a regisztrációt, a bejelentkezést, a profil sze
 
     ![Regisztrációs munkafolyamat](media/active-directory-b2c-tutorials-desktop-app/sign-up-workflow.png)
 
-4. Kattintson a **Létrehozás** gombra egy helyi fiók létrehozására az Azure AD B2C-bérlőben.
+4. Kattintson a **Létrehozás** gombra egy helyi fiók létrehozására az Azure AD B2C-címtárban.
 
 Mostantól a felhasználók bejelentkezhetnek az e-mail-címükkel, és használhatják az SPA-alkalmazást.
 
 > [!NOTE]
-> Bejelentkezés után az alkalmazás egy „nem megfelelő engedélyek” hibaüzenetet jelenít meg. Ezt a hibaüzenetet azért kapja, mert a bemutató bérlő egyik erőforrásához próbál meg hozzáférni. Mivel a hozzáférési jogkivonat csak az Ön Azure AD-bérlőjéhez érvényes, az API-hívás nincs engedélyezve. Lépjen tovább a következő oktatóanyagra, amelyben egy védett webes API-t hozhat létre a bérlője számára. 
+> Bejelentkezés után az alkalmazás egy „nem megfelelő engedélyek” hibaüzenetet jelenít meg. Ezt a hibaüzenetet azért kapja, mert a bemutató címtár egyik erőforrásához próbál meg hozzáférni. Mivel a hozzáférési jogkivonat csak az Ön Azure AD-címtárához érvényes, az API-hívás nincs engedélyezve. Lépjen tovább a következő oktatóanyagra, amelyben egy védett webes API-t hozhat létre a címtár számára. 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Az Azure AD B2C-bérlőt ahhoz is használhatja, ha más Azure AD B2C-oktatóanyagokat is ki szeretne próbálni. Ha már nincs szüksége rá, akkor [törölheti az Azure AD B2C-bérlőt](active-directory-b2c-faqs.md#how-do-i-delete-my-azure-ad-b2c-tenant).
+Az Azure AD B2C-címtárat ahhoz is használhatja, ha más Azure AD B2C-oktatóanyagokat is ki szeretne próbálni. Ha már nincs szüksége rá, akkor [törölheti az Azure AD B2C-címtárat](active-directory-b2c-faqs.md#how-do-i-delete-my-azure-ad-b2c-tenant).
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban megismerte az Azure AD B2C-bérlő és a szabályzatok létrehozásának folyamatát, valamint azt, hogyan frissítheti a mintául szolgáló egyoldalas alkalmazást az Azure AD B2C-bérlő használatához. Folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan lehet regisztrálni, konfigurálni és meghívni egy védett webes API-t egy asztali alkalmazásból.
+Ebben az oktatóanyagban megismerte az Azure AD B2C-címtár és a szabályzatok létrehozásának folyamatát, valamint azt, hogyan frissítheti a mintául szolgáló egyoldalas alkalmazást az Azure AD B2C-címtár használatához. Folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan lehet regisztrálni, konfigurálni és meghívni egy védett webes API-t egy asztali alkalmazásból.
 
 > [!div class="nextstepaction"]
 > 

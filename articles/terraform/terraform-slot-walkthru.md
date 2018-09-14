@@ -1,76 +1,78 @@
 ---
-title: Az Azure szolgáltató üzembe helyezési Terraform
-description: Terraform használata Azure szolgáltató üzembe helyezési oktatóanyag
-keywords: terraform, devops, virtuális gép Azure, üzembe helyezési
+title: A Terraform és az Azure-szolgáltatók üzembehelyezési pontjai
+description: Oktatóanyag a Terraform az Azure-szolgáltatók üzembehelyezési pontjaival való használatáról
+services: terraform
+ms.service: terraform
+keywords: terraform, devops, virtuális gép, Azure, üzembehelyezési pontok
 author: tomarcher
 manager: jeconnoc
 ms.author: tarcher
+ms.topic: tutorial
 ms.date: 4/05/2018
-ms.topic: article
-ms.openlocfilehash: 3a018dbaf90801604b13efcf8bd7afb6dbc68659
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: bbd06ae8927e6c21607ac1c997f1e5cf37f092bf
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31416863"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43667236"
 ---
-# <a name="use-terraform-to-provision-infrastructure-with-azure-deployment-slots"></a>Kiépítés infrastruktúra és az Azure üzembe helyezési Terraform segítségével
+# <a name="use-terraform-to-provision-infrastructure-with-azure-deployment-slots"></a>A Terraform használata infrastruktúra kiépítésére az Azure üzembehelyezési pontjaival
 
-Használhat [Azure üzembe helyezési](/azure/app-service/web-sites-staged-publishing) felcserélni az alkalmazás különböző verziói között. Hibás központi telepítésének hatás minimalizálása érdekében, hogy képes segítségével. 
+Az [Azure üzembehelyezési pontjainak](/azure/app-service/web-sites-staged-publishing) használatával válthat az alkalmazások különböző verziói között. Ennek köszönhetően minimalizálhatja a nem működő üzemelő példányok okozta hatásokat. 
 
-Ez a cikk egy példa az üzembe helyezési érdekében keresztül GitHub és az Azure két alkalmazások központi telepítését mutatja be. Egy alkalmazás az éles tárhely tárolja. A második alkalmazást az előkészítési pont tárolja. (A nevek "éles" és "átmeneti" tetszőleges, és azt szeretné, amely jelzi, hogy adott esetben bármilyen.) Miután konfigurálta az üzembe helyezési, Terraform segítségével igény szerint a két tárhelyek felcserélése.
+Ez a cikk egy példát mutat be az üzembehelyezési pontok használatára, és végigvezeti két alkalmazás a GitHub és az Azure segítségével való üzembe helyezésére. Az egyik alkalmazás egy éles üzemi, a másik pedig egy előkészítési ponton fut. (Az „éles üzemi” és az „előkészítési” elnevezések használata tetszőleges, és az adott forgatókönyvnek megfelelően bármilyen elnevezés használható.) Az üzembehelyezési pontok konfigurálását követően a Terraform használatával igény szerint válthat a két pont között.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - **Azure-előfizetés**: Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-- **GitHub-fiók**: van szüksége egy [GitHub](http://www.github.com) elágaztatásáról és GitHub-tárház próba fiókkal.
+- **GitHub-fiók**: A tesztelési GitHub-adattár leágaztatásához és használatához szüksége lesz egy [GitHub](http://www.github.com)-fiókra.
 
-## <a name="create-and-apply-the-terraform-plan"></a>Létrehozása és alkalmazása a Terraform terv
+## <a name="create-and-apply-the-terraform-plan"></a>A Terraform-terv létrehozása és alkalmazása
 
-1. Keresse meg a [Azure-portálon](http://portal.azure.com).
+1. Keresse fel az [Azure Portalt](http://portal.azure.com).
 
-1. Nyissa meg [Azure felhőben rendszerhéj](/azure/cloud-shell/overview). Ha korábban nem jelölt ki egy olyan környezetben, válassza ki a **Bash** , a környezetben.
+1. Nyissa meg az [Azure Cloud Shellt](/azure/cloud-shell/overview). Ha még nem választott ki környezetet, válassza a **Bash** környezetet.
 
-    ![Felhő rendszerhéj kérdés](./media/terraform-slot-walkthru/azure-portal-cloud-shell-button-min.png)
+    ![Cloud Shell-parancssor](./media/terraform-slot-walkthru/azure-portal-cloud-shell-button-min.png)
 
-1. Lépjen a `clouddrive` könyvtár.
+1. Lépjen be a `clouddrive` könyvtárba.
 
     ```bash
     cd clouddrive
     ```
 
-1. Hozzon létre egy könyvtárat nevű `deploy`.
+1. Hozzon létre egy `deploy` nevű könyvtárat.
 
     ```bash
     mkdir deploy
     ```
 
-1. Hozzon létre egy könyvtárat nevű `swap`.
+1. Hozzon létre egy `swap` nevű könyvtárat.
 
     ```bash
     mkdir swap
     ```
 
-1. Használja a `ls` parancs futtatásával ellenőrizze, hogy sikeresen létrehozta a két címtárszolgáltatás bash.
+1. Az `ls` Bash-paranccsal ellenőrizheti, hogy mindkét könyvtár sikeresen létrejött-e.
 
-    ![Könyvtárak létrehozása után felhő rendszerhéj](./media/terraform-slot-walkthru/cloud-shell-after-creating-dirs.png)
+    ![A Cloud Shell a könyvtárak létrehozása után](./media/terraform-slot-walkthru/cloud-shell-after-creating-dirs.png)
 
-1. Lépjen a `deploy` könyvtár.
+1. Lépjen be a `deploy` könyvtárba.
 
     ```bash
     cd deploy
     ```
 
-1. Használatával a [vi szerkesztő](https://www.debian.org/doc/manuals/debian-tutorial/ch-editor.html), hozzon létre egy fájlt `deploy.tf`. Ez a fájl tartalmazza a [Terraform konfigurációs](https://www.terraform.io/docs/configuration/index.html).
+1. A [VI-szerkesztő](https://www.debian.org/doc/manuals/debian-tutorial/ch-editor.html) használatával hozzon létre egy fájlt `deploy.tf` néven. Ez a fájl tartalmazza majd a [Terraform-konfigurációt](https://www.terraform.io/docs/configuration/index.html).
 
     ```bash
     vi deploy.tf
     ```
 
-1. Adja meg a beszúrási módban kiválasztásával a kulcsot.
+1. Az I billentyű lenyomásával lépjen beszúrási módba.
 
-1. Az alábbi kód beillesztése a szerkesztőbe:
+1. Másolja az alábbi kódot a szerkesztőbe:
 
     ```JSON
     # Configure the Azure provider
@@ -107,162 +109,162 @@ Ez a cikk egy példa az üzembe helyezési érdekében keresztül GitHub és az 
     }
     ```
 
-1. Válassza ki az Esc billentyűt az insert módjából való kilépéshez.
+1. Az Esc billentyűvel lépjen ki a beszúrás módból.
 
-1. Mentse a fájlt, és zárja be a vi szerkesztőt a következő parancs beírásával:
+1. Mentse a fájlt, és lépjen ki a VI-szerkesztőből a következő parancs megadásával:
 
     ```bash
     :wq
     ```
 
-1. Most, hogy a fájl létrehozott, ellenőrizze annak tartalmát.
+1. A fájl létrehozását követően ellenőrizze annak tartalmát.
 
     ```bash
     cat deploy.tf
     ```
 
-1. Terraform inicializálni.
+1. Inicializálja a Terraformot.
 
     ```bash
     terraform init
     ```
 
-1. A Terraform terv létrehozásához.
+1. Hozza létre a Terraform-tervet.
 
     ```bash
     terraform plan
     ```
 
-1. A megadott erőforrások biztosításához a `deploy.tf` konfigurációs fájlt. (A művelet megerősítéséhez írja be `yes` a parancssorba.)
+1. Foglalja le a `deploy.tf` konfigurációs fájlban definiált erőforrásokat. (A művelet megerősítéséhez írja be a parancssorba a `yes` parancsot.)
 
     ```bash
     terraform apply
     ```
 
-1. Zárja be a felhő rendszerhéj ablakát.
+1. Zárja be a Cloud Shell-ablakot.
 
-1. A főmenü az Azure portál, válassza ki a **erőforráscsoportok**.
+1. Az Azure Portalon főmenüjében válassza az **Erőforráscsoportok** lehetőséget.
 
-    !["Erőforráscsoportok" kiválasztása a portálon](./media/terraform-slot-walkthru/resource-groups-menu-option.png)
+    ![„Erőforráscsoportok” kiválasztva a portálon](./media/terraform-slot-walkthru/resource-groups-menu-option.png)
 
-1. Az a **erőforráscsoportok** lapon jelölje be **slotDemoResourceGroup**.
+1. Az **Erőforráscsoportok** lapon válassza a **slotDemoResourceGroup** lehetőséget.
 
-    ![Terraform által létrehozott erőforráscsoport](./media/terraform-slot-walkthru/resource-group.png)
+    ![A Terraform által létrehozott erőforráscsoport](./media/terraform-slot-walkthru/resource-group.png)
 
-Ekkor megjelenik az erőforrások Terraform létrehozva.
+Ekkor látható a Terraform által létrehozott összes erőforrás.
 
-![Terraform által létrehozott erőforrások](./media/terraform-slot-walkthru/resources.png)
+![A Terraform által létrehozott erőforrások](./media/terraform-slot-walkthru/resources.png)
 
-## <a name="fork-the-test-project"></a>Elágazás a test-projekt
+## <a name="fork-the-test-project"></a>A tesztprojekt leágaztatása
 
-Mielőtt a létrehozása és az üzembe helyezési mindkét lecserélés teszteléséhez szüksége oszthatja ketté a teszt projektet a Githubról.
+Az üzembehelyezési pontok létrehozásának és használatának teszteléséhez először le kell ágaztatnia a tesztprojektet a GitHubról.
 
-1. Keresse meg a [Soft terraform tárház a Githubon](https://github.com/Azure/awesome-terraform).
+1. Lépjen az [awesome-terraform adattárra a GitHubon](https://github.com/Azure/awesome-terraform).
 
-1. Elágazás a **Soft terraform** tárházban.
+1. Ágaztassa le az **awesome-terraform** adattárat.
 
-    ![Elágazás a GitHub-tárház Soft terraform](./media/terraform-slot-walkthru/fork-repo.png)
+    ![Az awesome-terraform GitHub-adattár leágaztatása](./media/terraform-slot-walkthru/fork-repo.png)
 
-1. A környezet oszthatja ketté bármely útmutatást követve.
+1. A környezet leágaztatásához kövesse a megjelenő utasításokat.
 
-## <a name="deploy-from-github-to-your-deployment-slots"></a>Az üzembe helyezési pontok telepítése a Githubból
+## <a name="deploy-from-github-to-your-deployment-slots"></a>Üzembe helyezés a GitHubról az üzembehelyezési pontokra
 
-Követően a teszt projekt tárház oszthatja ketté, adja meg az üzembe helyezési keresztül az alábbi lépéseket:
+A tesztprojektadattár leágaztatását követően az üzembehelyezési pontokat a következő lépések végrehajtásával konfigurálhatja:
 
-1. A főmenü az Azure portál, válassza ki a **erőforráscsoportok**.
+1. Az Azure Portalon főmenüjében válassza az **Erőforráscsoportok** lehetőséget.
 
-1. Válassza ki **slotDemoResourceGroup**.
+1. Válassza a **slotDemoResourceGroup** lehetőséget.
 
-1. Válassza ki **slotAppService**.
+1. Válassza a **slotAppService** lehetőséget.
 
-1. Válassza ki **központi telepítési beállítások**.
+1. Válassza az **Üzembehelyezési beállítások** lehetőséget.
 
-    ![App Service erőforrás telepítési lehetőségek](./media/terraform-slot-walkthru/deployment-options.png)
+    ![App Service-erőforrás üzembehelyezési beállításai](./media/terraform-slot-walkthru/deployment-options.png)
 
-1. Az a **rendszerbe állítási beállításának** lapon jelölje be **forrás választása**, majd válassza ki **GitHub**.
+1. Az **Üzembehelyezési beállítás** lapon kattintson a **Forrás kiválasztása**, majd a **GitHub** elemre.
 
-    ![Válassza ki a központi telepítés forrása](./media/terraform-slot-walkthru/select-source.png)
+    ![Üzembehelyezési forrás kiválasztása](./media/terraform-slot-walkthru/select-source.png)
 
-1. Miután Azure a kapcsolatot, és megjeleníti a beállításokat, válassza ki **engedélyezési**.
+1. Miután az Azure létrehozza a kapcsolatot, és megjeleníti az összes lehetőséget, válassza az **Engedélyezés** lehetőséget.
 
-1. Az a **engedélyezési** lapon jelölje be **engedélyezés**, és az Azure a GitHub-fiók hozzáférésre van szüksége a hitelesítő adatokat. 
+1. Az **Engedélyezés** lapon kattintson az **Engedélyezés** gombra, és adja meg az Azure által a GitHub-fiók eléréséhez igényelt hitelesítő adatokat. 
 
-1. Miután Azure ellenőrzi a Githubon hitelesítő adatait, egy üzenet jelenik meg, és azt jelzi, hogy az engedélyezési folyamat befejeződött. Válassza ki **OK** bezárásához a **engedélyezési** fülre.
+1. Miután az Azure ellenőrizte a GitHub hitelesítő adatait, egy üzenet tájékoztatja, hogy az engedélyezési folyamat befejeződött. Az **OK** gombra kattintva zárja be az **Engedélyezés** lapot.
 
-1. Válassza ki **válassza ki a szervezet** , és jelölje ki a szervezetét.
+1. Kattintson a **Szervezet kiválasztása** elemre, és válassza ki a szervezetet.
 
-1. Válassza ki **válasszon projekt**.
+1. Kattintson a **Projekt kiválasztása** elemre.
 
-1. Az a **válasszon projekt** lapon jelölje be a **Soft terraform** projekt.
+1. A **Projekt kiválasztása** lapon válassza ki az **awesome-terraform** projektet.
 
-    ![Válassza ki a Soft terraform projekt](./media/terraform-slot-walkthru/choose-project.png)
+    ![Az awesome-terraform projekt kiválasztva](./media/terraform-slot-walkthru/choose-project.png)
 
-1. Válassza ki **válasszon fiókirodai**.
+1. Kattintson az **Ág kiválasztása** elemre.
 
-1. Az a **válasszon fiókirodai** lapon jelölje be **fő**.
+1. Az **Ág kiválasztása** lapon válassza a **fő** elemet.
 
-    ![Válassza ki a főágba](./media/terraform-slot-walkthru/choose-branch-master.png)
+    ![A főág kiválasztva](./media/terraform-slot-walkthru/choose-branch-master.png)
 
-1. Az a **rendszerbe állítási beállításának** lapon jelölje be **OK**.
+1. Az **Üzembehelyezési beállítás** lapon kattintson az **OK** gombra.
 
-Ezen a ponton telepítette az éles webalkalmazásra. Az előkészítési pont telepítéséhez hajtsa végre az előző lépéseket ebben a szakaszban a következő módosításokkal:
+Ezen a ponton üzembe helyezte az éles üzemi pontot. Az előkészítési pont üzembe helyezéséhez hajtsa végre az ebben a szakaszban eddig ismertetett lépéseket a következő módosításokkal:
 
-- A 3. lépésben válassza ki a **slotAppServiceSlotOne** erőforrás.
+- A 3. lépésben válassza a **slotAppServiceSlotOne** erőforrást.
 
-- 13. lépést válassza ki a munkaágat a főágba helyett.
+- A 13. lépésben a főág helyett válassza a munkaágat.
 
-    ![Válassza ki a munkaágat](./media/terraform-slot-walkthru/choose-branch-working.png)
+    ![A munkaág kiválasztva](./media/terraform-slot-walkthru/choose-branch-working.png)
 
-## <a name="test-the-app-deployments"></a>Az alkalmazások telepítésének tesztelése
+## <a name="test-the-app-deployments"></a>Az alkalmazás üzemelő példányainak tesztelése
 
-A korábbi szakaszokban, állítsa be két üzembe helyezési ponti--**slotAppService** és **slotAppServiceSlotOne**--ággal a Githubon történő központi telepítéséhez. Most tekintse meg a webes alkalmazások ellenőrzése, hogy azok sikeresen telepített.
+Az előző szakaszokban két pontot (**slotAppService** és **slotAppServiceSlotOne**) hoztunk létre a különböző GitHub-ágakról való üzembe helyezéshez. Lássuk a webalkalmazások előnézetét, hogy ellenőrizhessük, sikeresen települtek-e.
 
-A következő lépésekkel kétszer. A 3. lépésben válassza ki **slotAppService** először, és válassza **slotAppServiceSlotOne** a második alkalommal.
+A következő lépéseket kétszer hajtsa végre. A 3. lépésben első alkalommal a **slotAppService**, második alkalommal a **slotAppServiceSlotOne** lehetőséget válassza.
 
-1. A főmenü az Azure portál, válassza ki a **erőforráscsoportok**.
+1. Az Azure Portalon főmenüjében válassza az **Erőforráscsoportok** lehetőséget.
 
-1. Válassza ki **slotDemoResourceGroup**.
+1. Válassza a **slotDemoResourceGroup** lehetőséget.
 
-1. Válassza ki vagy **slotAppService** vagy **slotAppServiceSlotOne**.
+1. Kattintson a **slotAppService** vagy a **slotAppServiceSlotOne** elemre.
 
-1. A – Áttekintés lapon válassza az **URL-cím**.
+1. Az áttekintő oldalon kattintson az **URL** elemre.
 
-    ![Válassza ki az URL-cím – Áttekintés lapon lehet megjeleníteni az alkalmazás](./media/terraform-slot-walkthru/resource-url.png)
+    ![Az alkalmazás megjelenítése az áttekintő oldal URL elemére kattintva](./media/terraform-slot-walkthru/resource-url.png)
 
 > [!NOTE]
-> Azure-beli létrehozásához és telepítéséhez a Githubból a hely több percet is igénybe vehet.
+> Néhány percet igénybe vehet, amíg az Azure a GitHubról összeállítja és üzembe helyezi a webhelyet.
 >
 >
 
-Az a **slotAppService** web app alkalmazásban egy kék oldal rendelkező az oldal akkor jelenik meg **tárolóhely bemutató alkalmazás 1**. Az a **slotAppServiceSlotOne** webalkalmazás, megjelenik egy zöld lapon a lap címe **tárolóhely bemutató alkalmazás 2**.
+A **slotAppService** webalkalmazás esetében egy kék oldal jelenik meg a **Slot Demo App 1** (1. pontbemutató alkalmazás) oldalcímmel. A **slotAppServiceSlotOne** webalkalmazás esetében egy zöld oldal jelenik meg a **Slot Demo App 2** (2. pontbemutató alkalmazás) oldalcímmel.
 
-![Tekintse meg az alkalmazások teszteléséhez, hogy azok lettek a megfelelő telepítést](./media/terraform-slot-walkthru/app-preview.png)
+![Az alkalmazások megfelelő üzembe helyezésének ellenőrzése az előnézeteik megtekintésével](./media/terraform-slot-walkthru/app-preview.png)
 
-## <a name="swap-the-two-deployment-slots"></a>A két üzembe helyezési felcserélése
+## <a name="swap-the-two-deployment-slots"></a>Váltás a két üzembehelyezési pont között
 
-Csere a két üzembe helyezési tárhely, hajtsa végre az alábbi lépéseket:
+A kér üzembehelyezési pont közti váltás teszteléséhez hajtsa végre a következő lépéseket:
  
-1. Váltás a böngészőlapon futtató **slotAppService** (az alkalmazás és a kék lap). 
+1. Váltson a böngésző **slotAppService** alkalmazást (a kék oldalt) megjelenítő lapjára. 
 
-1. Térjen vissza az Azure portál egy külön lapján.
+1. Egy új lapon lépjen vissza az Azure Portalra.
 
-1. Nyissa meg a felhő rendszerhéjat.
+1. Nyissa meg a Cloud Shellt.
 
-1. Lépjen a **clouddrive/csere** könyvtár.
+1. Váltson a **clouddrive/swap** könyvtárra.
 
     ```bash
     cd clouddrive/swap
     ```
 
-1. A vi szerkesztő használatával hozzon létre egy fájlt `swap.tf`.
+1. A VI-szerkesztő használatával hozzon létre egy fájlt `swap.tf` néven.
 
     ```bash
     vi swap.tf
     ```
 
-1. Adja meg a beszúrási módban kiválasztásával a kulcsot.
+1. Az I billentyű lenyomásával lépjen beszúrási módba.
 
-1. Az alábbi kód beillesztése a szerkesztőbe:
+1. Másolja az alábbi kódot a szerkesztőbe:
 
     ```JSON
     # Configure the Azure provider
@@ -276,42 +278,42 @@ Csere a két üzembe helyezési tárhely, hajtsa végre az alábbi lépéseket:
     }
     ```
 
-1. Válassza ki az Esc billentyűt az insert módjából való kilépéshez.
+1. Az Esc billentyűvel lépjen ki a beszúrás módból.
 
-1. Mentse a fájlt, és zárja be a vi szerkesztőt a következő parancs beírásával:
+1. Mentse a fájlt, és lépjen ki a VI-szerkesztőből a következő parancs megadásával:
 
     ```bash
     :wq
     ```
 
-1. Terraform inicializálni.
+1. Inicializálja a Terraformot.
 
     ```bash
     terraform init
     ```
 
-1. A Terraform terv létrehozásához.
+1. Hozza létre a Terraform-tervet.
 
     ```bash
     terraform plan
     ```
 
-1. A megadott erőforrások biztosításához a `swap.tf` konfigurációs fájlt. (A művelet megerősítéséhez írja be `yes` a parancssorba.)
+1. Foglalja le a `swap.tf` konfigurációs fájlban definiált erőforrásokat. (A művelet megerősítéséhez írja be a parancssorba a `yes` parancsot.)
 
     ```bash
     terraform apply
     ```
 
-1. Terraform befejezése után áttelepíteni a forráskörnyezetból a tárhelyek, a böngészőben lépjen vissza, amely megjeleníti a **slotAppService** webalkalmazás, és frissítse az oldalt. 
+1. Miután a Terraform befejezte a pontok felcserélését, lépjen vissza a böngésző **slotAppService** webalkalmazást megjelenítő lapjára, és frissítse az oldalt. 
 
-A webalkalmazás a **slotAppServiceSlotOne** tárolóhely átmeneti rendelkezik az éles tárolóhelyre lett cserél, és most zöld megjelenítése. 
+A **slotAppServiceSlotOne** előkészítési ponton lévő webalkalmazás le lett cserélve az éles üzembehelyezési pontra, és most zöld színnel jelenik meg. 
 
-![Az üzembe helyezési rendelkezik lett cserélve.](./media/terraform-slot-walkthru/slots-swapped.png)
+![Az üzembehelyezési pontok felcserélve](./media/terraform-slot-walkthru/slots-swapped.png)
 
-Az alkalmazás eredeti éles verzióját visszaállításához alkalmazza újra a létrehozott Terraform tervet a `swap.tf` konfigurációs fájlt.
+Az alkalmazás eredeti éles üzemi verziójára való visszaálláshoz alkalmazza újra a `swap.tf` konfigurációs fájlból létrehozott Terraform-tervet.
 
 ```bash
 terraform apply
 ```
 
-Miután az alkalmazás van cserélve, tekintse meg az eredeti konfigurációt.
+Az alkalmazás cseréjét követően az eredeti konfiguráció látható.
