@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 07/25/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: 9d4d7633428cd174a31214db2db6b6d9928230bd
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: dde8881fc446eef0dd6ca0735e5e23a5a19328fa
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39627916"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45578362"
 ---
 # <a name="stream-azure-diagnostic-logs-to-an-event-hub"></a>Stream Azure diagnosztikai naplók egy eseményközpontba
-**[Az Azure diagnosztikai naplók](monitoring-overview-of-diagnostic-logs.md) ** továbbítható bármely alkalmazás a beépített "Exportálás az Event Hubs" lehetőség használatával, a portálon, vagy az Event Hub engedélyezési szabály azonosítója a diagnosztikai beállítást az Azure-on keresztül engedélyezésével közel valós időben PowerShell-parancsmagok vagy az Azure CLI 2.0 használatával.
+**[Az Azure diagnosztikai naplók](monitoring-overview-of-diagnostic-logs.md)**  továbbítható bármely alkalmazás a beépített "Exportálás az Event Hubs" lehetőség használatával, a portálon, vagy az Event Hub engedélyezési szabály azonosítója a diagnosztikai beállítást az Azure-on keresztül engedélyezésével közel valós időben PowerShell-parancsmagok vagy az Azure CLI 2.0 használatával.
 
 ## <a name="what-you-can-do-with-diagnostics-logs-and-event-hubs"></a>Mire képes a diagnosztikai naplók és az Event Hubs
 Az alábbiakban néhány olyan módon, a streamelési funkciót használhat a diagnosztikai naplókhoz:
@@ -41,7 +41,7 @@ Az alábbiakban néhány olyan módon, a streamelési funkciót használhat a di
 
 ## <a name="enable-streaming-of-diagnostic-logs"></a>Diagnosztikai naplók streamelésének engedélyezéséhez
 
-Streamelési diagnosztikai naplók a portálon keresztül programozás útján vagy a használatával engedélyezheti a [Azure Monitor REST API-k](https://docs.microsoft.com/en-us/rest/api/monitor/diagnosticsettings). Mindkét esetben hoz létre egy diagnosztikai beállítás található, amely megadott Event Hubs-névtér és naplókategóriák és metrikák is szeretne küldeni névtérhez. Egy eseményközpont engedélyezi a napló kategóriákhoz tartozó névtér jön létre. A diagnosztika **naplókategória** napló, amely egy erőforrás gyűjthet olyan típusú.
+Streamelési diagnosztikai naplók a portálon keresztül programozás útján vagy a használatával engedélyezheti a [Azure Monitor REST API-k](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings). Mindkét esetben hoz létre egy diagnosztikai beállítás található, amely megadott Event Hubs-névtér és naplókategóriák és metrikák is szeretne küldeni névtérhez. Egy eseményközpont engedélyezi a napló kategóriákhoz tartozó névtér jön létre. A diagnosztika **naplókategória** napló, amely egy erőforrás gyűjthet olyan típusú.
 
 > [!WARNING]
 > Engedélyezése és számítási erőforrások (például a virtuális gépek vagy a Service Fabric) diagnosztikai naplóinak streamelési [szükséges lépések külön készletét](../event-hubs/event-hubs-streaming-azure-diags-data.md).
@@ -93,7 +93,7 @@ Az Event Hub engedélyezési szabály azonosítója egy karakterláncérték, eb
 
 ### <a name="via-azure-cli-20"></a>Via Azure CLI 2.0
 
-Keresztül streamelésének engedélyezéséhez a [Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/monitor?view=azure-cli-latest), használhatja a [az monitor diagnostic-settings létrehozása](https://docs.microsoft.com/en-us/cli/azure/monitor/diagnostic-settings?view=azure-cli-latest#az-monitor-diagnostic-settings-create) parancsot.
+Keresztül streamelésének engedélyezéséhez a [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/monitor?view=azure-cli-latest), használhatja a [az monitor diagnostic-settings létrehozása](https://docs.microsoft.com/cli/azure/monitor/diagnostic-settings?view=azure-cli-latest#az-monitor-diagnostic-settings-create) parancsot.
 
 ```azurecli
 az monitor diagnostic-settings create --name <diagnostic name> \

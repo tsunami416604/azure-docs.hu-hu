@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/24/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: b4fda38834782be502e2581b7b3d1097000b07bb
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 0ac9b98a9dfe06492775481cd590bfb4d0db4b55
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37440663"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45542582"
 ---
 # <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-on-user-input"></a>Forgatókönyv: A felhasználói bevitel auditáló integrálása a REST API-val jogcím cseréje az Azure AD B2C felhasználói interakciósorozatban szereplő
 
@@ -118,7 +118,7 @@ Az önellenőrzött technikai profilban jogcímcsere hozzáadása:
 
 1. Nyissa meg a TrustFrameworkBase.xml fájlt, és keressen rá a `<TechnicalProfile Id="SelfAsserted-ProfileUpdate">`.
 2. Tekintse át a konfigurációt, a technikai profil. Figyelje meg, hogy a felhasználó exchange számít, ha jogcímeket meg kell adnia annak a felhasználónak (a bemeneti jogcímek), és visszaküldi az önellenőrzött szolgáltató (kimeneti jogcímek) vár jogcímeket.
-3. Keresse meg `TechnicalProfileReferenceId="SelfAsserted-ProfileUpdate`, és figyelje meg, hogy ez a profil hívja meg, a vezénylési lépés 4 `<UserJourney Id="ProfileEdit">`.
+3. Keresse meg `TechnicalProfileReferenceId="SelfAsserted-ProfileUpdate`, és figyelje meg, hogy ez a profil hívja meg, a vezénylési lépés 5 `<UserJourney Id="ProfileEdit">`.
 
 ## <a name="step-4-upload-and-test-the-profile-edit-rp-policy-file"></a>4. lépés: Töltse fel, és a profil szerkesztése RP házirend fájl tesztelése
 

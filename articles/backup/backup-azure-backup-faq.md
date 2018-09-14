@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/2/2018
 ms.author: markgal
-ms.openlocfilehash: 5fd0cb92bd35b1f238e4080d2c9e8caf781b8131
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: aa26106460f305568fcb2dd1b84fbc54370e5f39
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39493868"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45543577"
 ---
 # <a name="questions-about-the-azure-backup-service"></a>Kérdések az Azure Backup szolgáltatással kapcsolatban
 Ez a cikk az Azure Backup-összetevővel kapcsolatos gyakori kérdésekre ad választ. Egyes válaszokban részletes információkat tartalmazó cikkekre mutató hivatkozások találhatók. Ha kérdést szeretne feltenni az Azure Backup szolgáltatással kapcsolatban, kattintson a jobb oldalon található **Megjegyzések** gombra. A megjegyzések a cikk alján jelennek meg. Megjegyzések írásához Livefyre-fiók szükséges. Emellett egy fórumbejegyzésben is feltehet kérdéseket az Azure Backup szolgáltatással kapcsolatban a [vitafórumon](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
@@ -41,6 +41,9 @@ Nem. A tároló előfizetési szinten jön létre, és nem lehet hozzárendelni 
 
 ### <a name="can-i-migrate-backup-data-to-another-vault-br"></a>Áttelepíthetek biztonsági mentési adatokat egy másik tárban? <br/>
 Nem. A tárolókban tárolt biztonsági mentési adatok nem helyezhető át egy másik tárban.
+
+### <a name="can-i-change-from-grs-to-lrs-after-a-backup-br"></a>Módosíthatom a GRS az LRS egy biztonsági mentés után? <br/>
+Nem. Recovery Services-tárolót is csak tárolási beállításainak módosítása előtt minden biztonsági eltárolta 
 
 ### <a name="recovery-services-vaults-are-resource-manager-based-are-backup-vaults-still-supported-br"></a>A helyreállítási tárak a Resource Manageren alapulnak. Biztonsági mentési tárak továbbra is támogatottak? <br/>
 A Backup-tárolók Recovery Services-tárolók lett konvertálva. Ha Ön nem konvertálható a Backup-tároló Recovery Services-tárolót, majd a Backup-tároló lett konvertálva Recovery Services-tároló az Ön számára. 

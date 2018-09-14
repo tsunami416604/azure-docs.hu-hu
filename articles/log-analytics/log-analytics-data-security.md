@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: 4cf04ceeb8650b2978389cefb561ae31e88bc853
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: af8c0b6a4aa0c3b6e25f92dc450faa22a01ee374
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39282437"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45579172"
 ---
 # <a name="log-analytics-data-security"></a>Log Analytics és adatbiztonság
 Az információ kiegészítésére az Azure Log Analytics információkat biztosít a dokumentum célközönsége [Azure adatvédelmi központ](../security/security-microsoft-trust-center.md).  
@@ -51,9 +51,9 @@ Nem javasoljuk, hogy az ügynök csak a TLS 1.2 használatára, ha feltétlenül
 |Platformon és nyelven | Támogatás | További információ |
 | --- | --- | --- |
 |Linux | Linux-disztribúciók általában támaszkodhat [OpenSSL](https://www.openssl.org) a TLS 1.2 támogatása.  | Ellenőrizze a [OpenSSL változásnaplójában](https://www.openssl.org/news/changelog.html) annak ellenőrzéséhez, hogy az OpenSSL-verziót támogatja.|
-| Windows 8.0-s és 10 | Támogatott, és alapértelmezés szerint engedélyezve van. | Ellenőrizze, hogy továbbra is használja a [alapértelmezett beállítások](https://docs.microsoft.com/en-us/windows-server/security/tls/tls-registry-settings).  |
-| A Windows Server 2012-2016-ban | Támogatott, és alapértelmezés szerint engedélyezve van. | Ellenőrizze, hogy továbbra is használja a [alapértelmezett beállításai](https://docs.microsoft.com/en-us/windows-server/security/tls/tls-registry-settings) |
-| Windows 7 SP1 és a Windows Server 2008 R2 SP1 | Támogatott, de alapértelmezés szerint nincs engedélyezve. | Tekintse meg a [Transport Layer Security (TLS) beállításjegyzék-beállítások](https://docs.microsoft.com/en-us/windows-server/security/tls/tls-registry-settings) lap engedélyezése részleteiért.  |
+| Windows 8.0-s és 10 | Támogatott, és alapértelmezés szerint engedélyezve van. | Ellenőrizze, hogy továbbra is használja a [alapértelmezett beállítások](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings).  |
+| A Windows Server 2012-2016-ban | Támogatott, és alapértelmezés szerint engedélyezve van. | Ellenőrizze, hogy továbbra is használja a [alapértelmezett beállításai](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) |
+| Windows 7 SP1 és a Windows Server 2008 R2 SP1 | Támogatott, de alapértelmezés szerint nincs engedélyezve. | Tekintse meg a [Transport Layer Security (TLS) beállításjegyzék-beállítások](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) lap engedélyezése részleteiért.  |
 | Windows Server 2008 SP2 | A TLS 1.2 támogatásához szükséges frissítést. | Lásd: [frissítést a TLS 1.2 támogatása](https://support.microsoft.com/help/4019276/update-to-add-support-for-tls-1-1-and-tls-1-2-in-windows-server-2008-s) a Windows Server 2008 SP2. |
 
 ## <a name="data-segregation"></a>az adatok elkülönítése
@@ -86,7 +86,7 @@ Az alábbi táblázat az adattípusok példái láthatók:
 | Állapot |StateChangeEventId, StateId, NewHealthState, OldHealthState, környezet, TimeGenerated, TimeAdded, StateId2, BaseManagedEntityId, monitorid attribútumként, HealthState, LastModified, LastGreenAlertGenerated, DatabaseTimeModified |
 
 ## <a name="physical-security"></a>Fizikai biztonság
-A Log Analytics szolgáltatás kezeli a Microsoft ezért felelős munkatársai, és az összes tevékenység naplózása, és ellenőrizhető. A log Analytics egy Azure-szolgáltatásként működik, és megfelel-e az összes Azure-megfelelőségi és biztonsági követelményeknek. A 18 lapján tekintheti meg a fizikai biztonság az Azure-objektumok részleteit a [a Microsoft Azure biztonsági szolgáltatásainak áttekintése](http://download.microsoft.com/download/6/0/2/6028B1AE-4AEE-46CE-9187-641DA97FC1EE/Windows%20Azure%20Security%20Overview%20v1.01.pdf). Fizikai hozzáférési jogosultsága ahhoz, hogy biztonságos területek bárki, aki már nem rendelkezik a Log Analytics szolgáltatással, beleértve az átvitel és a megszűnés felelősséget módosítja egy munkanapon belül. Itt olvashat a globális fizikai infrastruktúra használjuk, [Microsoft Datacenters](https://azure.microsoft.com/en-us/global-infrastructure/).
+A Log Analytics szolgáltatás kezeli a Microsoft ezért felelős munkatársai, és az összes tevékenység naplózása, és ellenőrizhető. A log Analytics egy Azure-szolgáltatásként működik, és megfelel-e az összes Azure-megfelelőségi és biztonsági követelményeknek. A 18 lapján tekintheti meg a fizikai biztonság az Azure-objektumok részleteit a [a Microsoft Azure biztonsági szolgáltatásainak áttekintése](http://download.microsoft.com/download/6/0/2/6028B1AE-4AEE-46CE-9187-641DA97FC1EE/Windows%20Azure%20Security%20Overview%20v1.01.pdf). Fizikai hozzáférési jogosultsága ahhoz, hogy biztonságos területek bárki, aki már nem rendelkezik a Log Analytics szolgáltatással, beleértve az átvitel és a megszűnés felelősséget módosítja egy munkanapon belül. Itt olvashat a globális fizikai infrastruktúra használjuk, [Microsoft Datacenters](https://azure.microsoft.com/global-infrastructure/).
 
 ## <a name="incident-management"></a>incidenskezelés
 A log Analytics egy incidenskezelési folyamatának, amelyek az összes Microsoft-szolgáltatásokkal rendelkezik. Összefoglalva, hogy:

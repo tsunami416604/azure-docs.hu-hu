@@ -1,58 +1,58 @@
 ---
-title: Kulcskezelés - Microsoft kognitív szolgáltatások |} Microsoft Docs
-titleSuffix: Azure
-description: A kérdések és válaszok készítő kulcsok kezelése
+title: Erőforrás és kulcskezelési – QnA Maker
+titleSuffix: Azure Cognitive Services
+description: A QnA Maker szolgáltatást, előfizetési kulcsok és végpont kulcsokat kétféle foglalkozik.
 services: cognitive-services
 author: nstulasi
-manager: sangitap
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: QnAMaker
+ms.component: qna-maker
 ms.topic: article
-ms.date: 05/07/2018
+ms.date: 09/12/2018
 ms.author: saneppal
-ms.openlocfilehash: b402187f4949dac34fa476648c81b980ba3efc96
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 9134819fc4610daadb617e123d861673e8cbfd32
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348670"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45543438"
 ---
 # <a name="key-management"></a>Kulcsok kezelése
 
-A kérdések és válaszok készítő szolgáltatás foglalkozik kulcsok, kétféle **előfizetés kulcsok** és **végpont kulcsok**.
+A QnA Maker szolgáltatás kezelje a kulcs, kétféle **előfizetési kulcsok** és **végpont kulcsok**.
 
-![kulcskezelés](../media/qnamaker-how-to-key-management/key-management.png)
+![Kulcskezelés](../media/qnamaker-how-to-key-management/key-management.png)
 
-1. **Előfizetés kulcsok**: ezek a kulcsok használhatók hozzáférés a [kérdések és válaszok készítő felügyeleti szolgáltatás API-k](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff). Ezen API-k lehetővé teszik, hogy különböző CRUD műveletek végzése a Tudásbázis.  
+1. **Előfizetői azonosítók**: ezekkel a kulcsokkal való hozzáférést a [QnA Maker management szolgáltatás API-k](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff). Ezen API-k lehetővé teszik a Tudásbázis különböző CRUD-műveletek elvégzését.  
 
-2. **Végpont kulcsok**: ezek a kulcsok a Tudásbázis végpont kapott választ egy felhasználói kérdéshez eléréséhez használt. Ezt a végpontot a kódban Csevegés botot/alkalmazás, amely a kérdések és válaszok készítő szolgáltatás akkor általában használna.
+2. **Végpont kulcsok**: ezekkel a kulcsokkal kapott választ a felhasználó kérdés Tudásbázis-végpontot. Ezt a végpontot, amely a QnA Maker szolgáltatást használ fel Csevegés robot vagy alkalmazás kódját általában akkor érdemes használnia.
  
-## <a name="subscription-keys"></a>Előfizetés kulcsok
-Megtekintheti és az Azure-portálról, amelyben létrehozta a kérdések és válaszok készítő erőforrás előfizetés-kulcsok alaphelyzetbe állítása. 
-1. Ugrás a kérdések és válaszok készítő erőforrást az Azure portálon.
+## <a name="subscription-keys"></a>Előfizetői azonosítók
+Megtekintheti, és az előfizetési kulcsok az Azure Portalon, ahol létrehozta a QnA Maker erőforrás alaphelyzetbe állítása. 
+1. Nyissa meg a QnA Maker erőforrás az Azure Portalon.
 
-    ![Kérdések és válaszok készítő erőforrások listája](../media/qnamaker-how-to-key-management/qnamaker-resource-list.png)
+    ![Rendszererőforrás-lista a QnA Maker](../media/qnamaker-how-to-key-management/qnamaker-resource-list.png)
 
-2. Ugrás a **kulcsok**.
+2. Lépjen a **kulcsok**.
 
-    ![Előfizetés kulcs](../media/qnamaker-how-to-key-management/subscription-key.PNG)
+    ![Előfizetői azonosító](../media/qnamaker-how-to-key-management/subscription-key.PNG)
 
 ## <a name="endpoint-keys"></a>Végpont kulcsok
 
-Végpont kulcsok kezelheti a [kérdések és válaszok készítő portal](https://qnamaker.ai).
+Végpont kulcsok kezelhető a [QnA Maker portal](https://qnamaker.ai).
 
-1. Jelentkezzen be a [kérdések és válaszok készítő portal](https://qnamaker.ai), majd a **kulcsok kezelése**.
+1. Jelentkezzen be a [QnA Maker portal](https://qnamaker.ai), és nyissa meg **kulcsok kezelése**.
 
-    ![végpontkulcs](../media/qnamaker-how-to-key-management/Endpoint-keys.png)
+    ![Végponti kulcs](../media/qnamaker-how-to-key-management/Endpoint-keys.png)
 
-2. Megtekintheti, és a kulcsok alaphelyzetbe állítása.
+2. Megtekintheti, vagy visszaállíthatja a kulcsokat.
 
     ![Endpoint-kezelő](../media/qnamaker-how-to-key-management/Endpoint-keys1.png)
 
     >[!NOTE]
-    >Ha úgy érzi, hogy azok biztonsága sérült, frissítse a kulcsokat. Ez lehet szükség az alkalmazás/Botot megfelelő módosítását.
+    >Frissítse a kulcsokat, ha úgy érzi, hogy sérült a biztonsága. Ez lehet szükség az alkalmazás vagy robot kód megfelelő módosításokat.
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Hozzon létre egy Tudásbázis más nyelven](./language-knowledge-base.md)
+> [Tudásbázis létrehozása egy másik nyelven](./language-knowledge-base.md)

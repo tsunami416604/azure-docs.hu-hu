@@ -8,12 +8,12 @@ ms.date: 07/3/2018
 ms.topic: article
 ms.prod: azure-iot-central
 manager: peterpr
-ms.openlocfilehash: 3ca2bc56c03e5bbabbd9b2f17edc621bdd94b02f
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 5defbf7021936e3cc77250ccc453cb3887c77617
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39622483"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45576442"
 ---
 # <a name="export-your-data-in-azure-iot-central"></a>Exportálhatja az adatokat az Azure IoT Central
 
@@ -33,7 +33,7 @@ Ez a cikk ismerteti a folyamatos exportálási szolgáltatás segítségével az
 
 ### <a name="measurements"></a>Mérések
 
-A mértékeket, az eszközök elküldik percenként egyszer a tárfiókba exportálja. Az adatok az új üzenetek IoT-központ által fogadott összes eszközről idő alatt van. Az exportált AVRO-fájlok ugyanazt a formátumot használja az exportált fájlokat [IoT Hub üzenet-útválasztása](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-csharp-csharp-process-d2c) a Blob storage.
+A mértékeket, az eszközök elküldik percenként egyszer a tárfiókba exportálja. Az adatok az új üzenetek IoT-központ által fogadott összes eszközről idő alatt van. Az exportált AVRO-fájlok ugyanazt a formátumot használja az exportált fájlokat [IoT Hub üzenet-útválasztása](https://docs.microsoft.com/azure/iot-hub/iot-hub-csharp-csharp-process-d2c) a Blob storage.
 
 > [!NOTE]
 > Az eszközöket, amelyek a mérések küldése (lásd a következő szakaszok) eszköz azonosítóját képviseli. Az eszközök nevei lekéréséhez exportálja az eszköz pillanatképeket. Vesse össze az egyes üzenetrekordok használatával a **connectionDeviceId** , amely megfelel az eszköz azonosítójával.

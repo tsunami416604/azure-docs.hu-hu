@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/31/2017
+ms.date: 09/12/2018
 ms.author: barbkess
-ms.reviewer: harshja
+ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: 7f9d74ce60d2a433f6bb63be4f131ac430452036
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: e67428116c66c05d83efbb217d7ec81f75124051
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39363414"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45540842"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>Meglévő helyszíni proxykiszolgálók használata
 
@@ -77,7 +77,7 @@ Miatt kellene csak a kimenő forgalmat, nincs szükség a tűzfalon keresztül b
 
 Ha WPAD engedélyezve van a környezetben, és megfelelően konfigurálta, az összekötő automatikusan felderíti a kimenő proxy server és a használata azt. Azonban explicit módon konfigurálhatja az összekötő haladhat végig egy kimenő proxy.
 
-Ehhez módosítsa a C:\Program Files\Microsoft AAD alkalmazás Proxy Connector\ApplicationProxyConnectorService.exe.config fájlt, és adja hozzá a *system.net* szakasz ebben a kódmintában látható. Változás *proxyserver:8080* , hogy a helyi proxykiszolgáló nevét vagy IP-címet, és a portot, amelyet figyel a következőn:.
+Ehhez módosítsa a C:\Program Files\Microsoft AAD alkalmazás Proxy Connector\ApplicationProxyConnectorService.exe.config fájlt, és adja hozzá a *system.net* szakasz ebben a kódmintában látható. Változás *proxyserver:8080* , hogy a helyi proxykiszolgáló nevét vagy IP-címet, és a portot, amelyet figyel a következőn:. Az érték a előtag http:// kell rendelkeznie, még akkor is, ha egy IP-címet használ.
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>

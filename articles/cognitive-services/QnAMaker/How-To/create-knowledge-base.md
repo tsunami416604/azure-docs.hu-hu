@@ -1,56 +1,57 @@
 ---
-title: A Tudásbázis - kérdések és válaszok készítő - kognitív Azure-szolgáltatások létrehozása |} Microsoft Docs
-description: A Tudásbázis létrehozása
+title: Hozzon létre egy Tudásbázis – QnA Maker
+titleSuffix: Azure Cognitive Services
+description: A robot chit csevegési hozzáadása megkönnyíti több természetes nyelvi és vonzóbbá tehetik. A QnA Maker egyszerűen adja hozzá a felső chit csevegési, előre megadott készlete a KB-os teszi lehetővé. Ez a robot chit csevegési a kiindulási pont lehet, és időt takaríthat meg a teljesen új rögzíti őket költsége.
 services: cognitive-services
 author: nstulasi
-manager: sangitap
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: QnAMaker
+ms.component: qna-maker
 ms.topic: article
-ms.date: 05/07/2018
+ms.date: 09/12/2018
 ms.author: saneppal
-ms.openlocfilehash: 93b64948ecc52feeb0f862f2b76ea898dce2333a
-ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
+ms.openlocfilehash: 66705a0afdcdb04fe49bea0bfc03286df3611071
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "35349905"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45543358"
 ---
 # <a name="create-a-knowledge-base"></a>Tudásbázis létrehozása
 
-Kérdések és válaszok készítő teszi az olyan nagyon egyszerű bevezetni a Tudásbázis létrehozása meglévő adatforrásaiból. Hozzon létre egy új kérdések és válaszok készítő Tudásbázis gyakran ismételt kérdések lap, a termékek laborútmutatókkal, a strukturált dokumentumok, vagy vegye fel őket besorolást.
+QnA Maker segítségével nagyon egyszerű üzembe helyezni a Tudásbázis létrehozása meglévő adatforrásokat. Hozzon létre egy új QnA Maker Tudásbázis a gyakori kérdéseket tartalmazó oldalak, a termékek kézikönyvek strukturált dokumentumok, vagy adja hozzá őket besorolást.
 
 ## <a name="steps"></a>Lépések
 
-1. Első lépésként jelentkezzen be a [kérdések és válaszok készítő portal](https://qnamaker.ai) , az azure hitelesítő adatait, és kattintson a **hozzon létre új szolgáltatást**.
+1. Első lépésként jelentkezzen be a [QnA Maker portal](https://qnamaker.ai) az azure hitelesítő adatait, és kattintson a **hozzon létre új szolgáltatást**.
 
-    ![Hozzon létre KB ](../media/qnamaker-how-to-create-kb/create-new-service.png)
+    ![Tudásbázis létrehozása ](../media/qnamaker-how-to-create-kb/create-new-service.png)
 
-2. Ha még nem hozott létre a kérdések és válaszok készítő szolgáltatás, válassza ki a **kérdések és válaszok szolgáltatás létrehozása**. Ellenkező esetben a kérdések és válaszok készítő szolgáltatás választhat legördülő listákat a 2. Válassza ki a kérdések és válaszok készítő szolgáltatást futtató kiszolgálón a Tudásbázis.
+2. Ha még nem hozott létre a QnA Maker szolgáltatást, válassza ki a **hozzon létre egy kérdés-válasz szolgáltatás**. Ellenkező esetben a QnA Maker szolgáltatást választhat a legördülő listákból a 2. lépésben. Válassza ki a QnA Maker szolgáltatást, amely a Tudásbázis fogja futtatni.
 
     ![Kérdések és válaszok szolgáltatás beállítása](../media/qnamaker-how-to-create-kb/setup-qna-resource.png)
 
-3. Adja meg a következő adatokat a Tudásbázis létrehozásához.
+3. Adja meg a következő információkat a Tudásbázis létrehozásához.
 
-    ![Set adatforrások](../media/qnamaker-how-to-create-kb/set-data-sources.png)
+    ![Set-adatforrások](../media/qnamaker-how-to-create-kb/set-data-sources.png)
 
-    - A szolgáltatás adjon egy **nevét.** Duplikált nevek használata támogatott, és speciális karaktereket is támogatott.
-    - Illessze be a kibontani a URL-címmel. További információ a támogatott adatforrások típusai [Itt](../Concepts/data-sources-supported.md).
-    - Alternatív megoldásként tölt fel, amelyek adatokat ki kell olvasni. Tekintse meg a [árakról](https://aka.ms/qnamaker-pricing
-) megtekintéséhez, hogy hány dokumentumokat is hozzáadhat.
-    - Ha szeretné manuálisan adja hozzá a QnAs, kihagyhatja a fájlok csatolása.
+    - Adja meg a szolgáltatás egy **nevét.** Duplikált nevek használata támogatott, és speciális karaktereket is támogatottak.
+    - Illessze be az URL-címek, amelyek kinyerése. További információ a támogatott adatforrásokról típusú [Itt](../Concepts/data-sources-supported.md).
+    - Azt is megteheti töltse fel a fájlokat, amelyek az adatok ki kell olvasni. Tekintse meg a [díjszabási információk](https://aka.ms/qnamaker-pricing
+) megtekintéséhez, hogy hány dokumentumok adhat hozzá.
+    - Ha szeretné manuálisan adja hozzá a QnA-tudásbázisok, kihagyhatja a fájlok csatolása.
 
 4. Kattintson a **Létrehozás** gombra.
 
-    ![Hozzon létre KB](../media/qnamaker-how-to-create-kb/create-kb.png)
+    ![Tudásbázis létrehozása](../media/qnamaker-how-to-create-kb/create-kb.png)
 
-5. Adatok kinyerni néhány percet vesz igénybe.
+5. Az adatok kinyerhetők néhány percet vesz igénybe.
 
     ![Kinyerés](../media/qnamaker-how-to-create-kb/hang-tight-extraction.png)
 
-6. Ha a Tudásbázis sikeresen létrejött, a rendszer átirányítja a a **Tudásbázis** lap.
+6. Ha a Tudásbázis sikeresen létrejött, a rendszer átirányítja a **Tudásbázis** lapot.
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [A Tudásbázis importálása](../Tutorials/migrate-knowledge-base.md)
+> [Tudásbázis importálása](../Tutorials/migrate-knowledge-base.md)

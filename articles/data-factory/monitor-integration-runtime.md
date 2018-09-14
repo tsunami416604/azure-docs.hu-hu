@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/25/2018
 ms.author: douglasl
-ms.openlocfilehash: 8ca7ce2586513373c58552bb1f56b94715f15076
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 59c2f865ae5e056b0fabb360712f6eb622943145
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43128449"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45574623"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Az Azure Data Factory integrációs modul monitorozása  
 **Az Integration runtime** különböző adatintegrációs képességeket biztosít a különböző hálózati környezetekben az Azure Data Factory által használt számítási infrastruktúra áll. Integrációs modulok a Data Factory által kínált három típusa van:
@@ -87,7 +87,7 @@ Az alapértelmezett érték az egyidejű feladatok határérték van beállítva
 
 A horizontális felskálázáshoz csomópontok számának növelése. Ha növeli a csomópontok számát, az egyidejű feladatok határértéke az összes elérhető csomópont egyidejű feladat korlát értékeinek összegét.  Például ha egy csomópont engedélyezi, hogy legfeljebb 12 egyidejű feladatok futtatásához, majd a három több hasonló csomópontok hozzáadása lehetővé teszi, hogy legfeljebb 48 egyidejű feladatok (4 x 12) futtatása. Azt javasoljuk, hogy egyidejű feladatok korlátjának növelését, csak akkor, ha kevés az erőforrás-használat az alapértelmezett értékekre láthatja minden egyes csomóponton.
 
-A számított alapértelmezett érték az Azure Portalon felül lehet bírálni. Válassza ki a szerző > kapcsolatok > integrációs modulok > szerkesztése > csomópont > / csomópont egyidejű feladat érték módosítása. A PowerShell is használható [update-azurermdatafactoryv2integrationruntimenode](https://docs.microsoft.com/en-us/powershell/module/azurerm.datafactoryv2/update-azurermdatafactoryv2integrationruntimenode?view=azurermps-6.4.0#examples) parancsot.
+A számított alapértelmezett érték az Azure Portalon felül lehet bírálni. Válassza ki a szerző > kapcsolatok > integrációs modulok > szerkesztése > csomópont > / csomópont egyidejű feladat érték módosítása. A PowerShell is használható [update-azurermdatafactoryv2integrationruntimenode](https://docs.microsoft.com/powershell/module/azurerm.datafactoryv2/update-azurermdatafactoryv2integrationruntimenode?view=azurermps-6.4.0#examples) parancsot.
   
 ### <a name="status-per-node"></a>Állapot (csomópontonkénti)
 Az alábbi táblázatban egy saját üzemeltetésű integration runtime csomópontját a lehetséges állapotok:

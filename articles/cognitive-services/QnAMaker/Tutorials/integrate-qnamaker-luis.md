@@ -10,12 +10,12 @@ ms.component: QnAMaker
 ms.topic: article
 ms.date: 04/21/2018
 ms.author: saneppal
-ms.openlocfilehash: 18eae69867dc9774f63b11c762b22df4595bdce6
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: b923e7c39ccd96bd9b158c98507f961ea2dc3e02
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43781747"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45576765"
 ---
 # <a name="integrate-qna-maker-and-luis-to-distribute-your-knowledge-base"></a>A QnA Maker és terjeszteni a Tudásbázis LUIS integrálása
 A QnA Maker Tudásbázis növekedésével nagy válik nehezen fenntartható, monolitikus egységes és a egy kell a Tudásbázis ossza fel kisebb logikai adattömböket.
@@ -29,14 +29,14 @@ Bár a QnA Maker több tudásbázisok létrehozása egyszerű, szüksége lesz e
 Ebben az esetben QnA Maker először a bejövő kérdés szándéka olvas be egy LUIS-modellnek, és használja a QnA Maker megfelelő Tudásbázis irányítja.
 
 ## <a name="prerequisites"></a>Előfeltételek
-- Jelentkezzen be a [LUIS](https://www.luis.ai/) portál és [hozzon létre egy alkalmazást](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/create-new-app).
-- [Leképezések hozzáadása](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/add-intents) forgatókönyvnek megfelelően.
-- [Train](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/luis-how-to-train) és [közzététele](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/publishapp) a LUIS-alkalmazás.
+- Jelentkezzen be a [LUIS](https://www.luis.ai/) portál és [hozzon létre egy alkalmazást](https://docs.microsoft.com/azure/cognitive-services/luis/create-new-app).
+- [Leképezések hozzáadása](https://docs.microsoft.com/azure/cognitive-services/luis/add-intents) forgatókönyvnek megfelelően.
+- [Train](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-train) és [közzététele](https://docs.microsoft.com/azure/cognitive-services/luis/publishapp) a LUIS-alkalmazás.
 - Jelentkezzen be [QnA Maker](https://qnamaker.ai) és [létrehozása](https://www.qnamaker.ai/Create) tudásbázisok forgatókönyvnek megfelelően.
 - Tesztelje, és tegye közzé a tudásbázisok.
 
 ## <a name="qna-maker--luis-bot"></a>A QnA Maker + robot a LUIS
-1. Először hozzon létre egy Web App-robot a LUIS-sablonnal, a fent létrehozott LUIS alkalmazás Összekapcsoláshoz, majd módosítsa a szándék fog vonatkozni. Részletes lépések a [Itt](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/luis-csharp-tutorial-build-bot-framework-sample).
+1. Először hozzon létre egy Web App-robot a LUIS-sablonnal, a fent létrehozott LUIS alkalmazás Összekapcsoláshoz, majd módosítsa a szándék fog vonatkozni. Részletes lépések a [Itt](https://docs.microsoft.com/azure/cognitive-services/luis/luis-csharp-tutorial-build-bot-framework-sample).
 
 2. Adja a függőségeket, a más függőségekkel a fájl elejéhez:
 

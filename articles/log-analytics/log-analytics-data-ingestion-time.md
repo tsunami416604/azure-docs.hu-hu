@@ -11,20 +11,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/10/2018
+ms.date: 09/12/2018
 ms.author: bwren
-ms.openlocfilehash: 0e513cc4f6a7d5d030ded807870de9eb0fdc0ed8
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 97cf5c06372d416037b875078809aebb7e633456
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38972641"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45542837"
 ---
 # <a name="data-ingestion-time-in-log-analytics"></a>A Log Analytics Data betöltési idő
 Azure Log Analytics az egy nagy méretű szolgáltatás, amely több ezer ügyfelünk egyre bővülő ütemben havonta terabájtnyi adatot küldő szolgál. Gyakran előfordulnak az adatokat a begyűjtésük után válnak elérhetővé a Log Analytics szükséges idő kapcsolatos kérdésekre. Ez a cikk ismerteti a különböző tényező befolyásolja, a késés.
 
 ## <a name="typical-latency"></a>Átlagos késés
-Késés a létrehozott adatok a figyelt rendszeren és az idő, elemezhetők a Log Analytics előre hivatkozik. A tipikus késés betölteni az adatokat a Log Analytics az 3 – 10 percig, 95 %-a kevesebb mint 7 perc alatt betöltött adatok között van. A megadott késése az adott adatok számos tényezőtől alábbi leírásban függően változhat.
+Késés a létrehozott adatok a figyelt rendszeren és az idő, elemezhetők a Log Analytics előre hivatkozik. A tipikus késés betölteni az adatokat a Log Analytics az 2 és 5 perc között van. A megadott késése az adott adatok számos tényezőtől alábbi leírásban függően változhat.
 
 ## <a name="sla-for-log-analytics"></a>A Log Analytics SLA
 A [Log Analytics szolgáltatói szerződés (SLA)](https://azure.microsoft.com/support/legal/sla/log-analytics/v1_1/) egy jogi kötés megállapodás, amely meghatározza, mikor-Microsoft visszatérítések ügyfelek, ha a szolgáltatás nem felel meg a céljait. Ez nem jellemző teljesítményét a rendszer, de a legrosszabb esetben, amelyek potenciális katasztrofális helyzetekben fiókok alapján.
@@ -60,7 +60,7 @@ Egyes megoldások ne gyűjtsön adataikat az ügynök, és előfordulhat, hogy a
 Tekintse meg az egyes megoldások annak gyűjtési gyakoriságát dokumentációját.
 
 ### <a name="pipeline-process-time"></a>Pipeline-feldolgozási idő
-Ha a rekordok naplózása a Log Analytics-folyamat be vannak töltve, íródtak egy ideiglenes tárolóra annak biztosítása érdekében a bérlők elszigetelésére, és győződjön meg arról, hogy az adatok nem vesznek el. Ez a folyamat általában 5 – 15 másodperc hozzáadja. Egyes felügyeleti megoldások megvalósítása nehezebb algoritmusokat összesített adatokat, és hozzájut, az adatok a streamelés a. Például a hálózati teljesítmény figyelése összesíti a bejövő adatok keresztül 3 perces időközönként, hatékonyan hozzáadása a 3 perces késéssel.
+Ha a rekordok naplózása a Log Analytics-folyamat be vannak töltve, íródtak egy ideiglenes tárolóra annak biztosítása érdekében a bérlők elszigetelésére, és győződjön meg arról, hogy az adatok nem vesznek el. Ez a folyamat általában 5 – 15 másodperc hozzáadja. Egyes felügyeleti megoldások megvalósítása nehezebb algoritmusokat összesített adatokat, és hozzájut, az adatok a streamelés a. Például a hálózati teljesítmény figyelése összesíti a bejövő adatok keresztül 3 perces időközönként, hatékonyan hozzáadása a 3 perces késéssel. Egy másik folyamat, amely hozzáadja a késés az a, amely kezeli az egyéni naplókat. Bizonyos esetekben ez a folyamat néhány percet a késés előfordulhat, hogy hozzá-fájlokból az ügynök által gyűjtött naplók.
 
 ### <a name="new-custom-data-types-provisioning"></a>Kiépítés új egyéni adattípusok
 Az egyéni adatokat egy új típusú létrehozásakor egy [egyéni napló](../log-analytics/log-analytics-data-sources-custom-logs.md) vagy a [adatgyűjtő API](../log-analytics/log-analytics-data-collector-api.md), a rendszer létrehoz egy dedikált storage-tárolóba. Ez az egy egyszeri terhelést, amely csak az első megjelenítési módja, ez az adattípus megy végbe.

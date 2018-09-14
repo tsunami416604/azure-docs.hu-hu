@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: e1964b7f46259e54c65aeb46aa795713922c3504
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 129d02bea6fe3668a308da0ab2a46ca8b59928e7
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39114612"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45542244"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Megismerheti a szerkezetének és szintaxisának az Azure Resource Manager-sablonok
 Ez a cikk ismerteti az Azure Resource Manager-sablonok szerkezetének. Egy sablon és az elérhető tulajdonságok köre szakaszt az eltérő szakaszok tükrözze. A sablon JSON-t és kifejezések, amelyek segítségével kialakíthatja az üzemelő példány értékeit áll. Sablonok létrehozásának részletes útmutató: [az első Azure Resource Manager-sablon létrehozása](resource-manager-create-first-template.md).
@@ -33,7 +33,7 @@ A legegyszerűbb szerkezetét, a sablon a következő elemekből áll:
     "contentVersion": "",
     "parameters": {  },
     "variables": {  },
-    "functions": {  },
+    "functions": [  ],
     "resources": [  ],
     "outputs": {  }
 }
@@ -313,4 +313,4 @@ Néhány sablon korlát beágyazott sablonok segítségével is lehet. További 
 * A különböző megoldástípusokhoz használható teljes sablonok megtekintéséhez lásd: [Azure gyorsindítási sablonok](https://azure.microsoft.com/documentation/templates/).
 * A sablonon belül használhatja függvényeivel kapcsolatos részletekért lásd: [Azure Resource Manager-Sablonfüggvények](resource-group-template-functions.md).
 * Úgy, hogy több sablon üzembe helyezése során, tekintse meg a [kapcsolt sablonok használata az Azure Resource Manager](resource-group-linked-templates.md).
-* Használhatja a globális Azure, a független felhőkben az Azure és az Azure Stack Resource Manager-sablonok létrehozásával kapcsolatos ajánlások, lásd: [felhőalapú konzisztencia fejlesztése az Azure Resource Manager-sablonokkal](templates-cloud-consistency.md).
+* Az [Azure Resource Manager-sablonok létrehozása felhőkonzisztenciához](templates-cloud-consistency.md) című témakörben javaslatokat talál olyan Resource Manager-sablonok létrehozásához, amelyek használhatóak a globális Azure-ban, az Azure szuverén felhőben és az Azure Stackben is.

@@ -1,41 +1,41 @@
 ---
-title: A Tudásbázis - Microsoft kognitív szolgáltatások közzététele |} Microsoft Docs
-titleSuffix: Azure
-description: A Tudásbázis közzététele
+title: Tudásbázis – QnA Maker közzététele
+titleSuffix: Azure Cognitive Services
+description: Az utolsó lépés a kérdés megválaszolásával-végpontként elérhetővé a Tudásbázis közzététele. Tudásbázis közzététele, amikor a kérdések és válaszok tartalmát a Tudásbázis áthelyezi a teszt indexből egy éles indexet az Azure Search szolgáltatásban.
 services: cognitive-services
 author: nstulasi
-manager: sangitap
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: QnAMaker
+ms.component: qna-maker
 ms.topic: article
-ms.date: 04/21/2018
+ms.date: 09/12/2018
 ms.author: saneppal
-ms.openlocfilehash: e9dbeacfb0df98c6b8f084c263690c05fe966cdc
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 0a43c54db7af61b72a8e8e6188fd13ad1159271e
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348587"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45540930"
 ---
 # <a name="publish-a-knowledge-base"></a>Tudásbázis közzététele
 
-Utolsó lépésként elérhetővé teszi a Tudásbázis kérdés megválaszolásával végpontként közzététele a Tudásbázis. 
+Az utolsó lépés a kérdés megválaszolásával-végpontként elérhetővé a Tudásbázis közzététele. 
 
-A Tudásbázis közzétételekor a Tudásbázis kérdések és válaszok tartalmát a teszt indexből egy éles index az Azure search helyezi.
+Tudásbázis közzététele, amikor a kérdések és válaszok tartalmát a Tudásbázis áthelyezi a teszt indexből egy éles indexet az Azure Search szolgáltatásban.
 
-![Termék indexe közzététele](../media/qnamaker-how-to-publish-kb/publish-prod-test.png)
+![Éles indexe közzététele](../media/qnamaker-how-to-publish-kb/publish-prod-test.png)
 
 ## <a name="publish-a-knowledge-base"></a>Tudásbázis közzététele
 
-1. Ha végzett a KB-ban a változtatásokat, válassza ki a **közzététel** a felső navigációs sávban. Az Azure Search közzéteheti a meghatározott időn belül Tudásbázis körrel pótolni. 
+1. Ha végzett a módosítással a KB-ban, válassza ki a **közzététel** a felső navigációs sávban. Az Azure Search a meghatározott időn belül számú tudásbázisok közzétehet. 
 
     ![Tudásbázis közzététele](../media/qnamaker-how-to-publish-kb/publish.png)
 
-2. Válassza ki **közzététel** ismételt használatával ellenőrizheti a végpont adatait az alkalmazás vagy a kód használható.
+2. Válassza ki **közzététel** ismételt használatával ellenőrizheti a végpont adatait az alkalmazás vagy robot kódjában használható.
 
     ![Tudásbázis közzététele](../media/qnamaker-how-to-publish-kb/publish-success.png)
     
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [A Tudásbázis analytics letöltése](./get-analytics-knowledge-base.md)
+> [A Tudásbázis analytics beszerzése](./get-analytics-knowledge-base.md)

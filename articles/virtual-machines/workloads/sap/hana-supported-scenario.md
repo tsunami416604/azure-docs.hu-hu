@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 07/06/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 412872e607f62f710e013d88822cddc59255992e
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 0e9d57c224150454677a03462368038ed8c63edf
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37859952"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45576493"
 ---
 # <a name="supported-scenarios-for-hana-large-instances"></a>Nagyméretű HANA-példányokhoz tartozó támogatott esetek
 Ez a dokumentum ismerteti a támogatott forgatókönyveket az architektúra részleteivel együtt a HANA nagyméretű példányok (HLI) számára.
@@ -198,7 +198,7 @@ A következő csatlakozási pontok le előre:
 
 ### <a name="key-considerations"></a>Fő szempontok
 - /usr/SAP/SID /hana/shared/SID mutató szimbolikus hivatkozást.
-- Az adatbázis mérete, a memória mennyiségi eloszlás alapul. Tekintse meg a [áttekintése és architektúrája](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-architecture) részből megtudhatja, milyen adatbázist a memóriában méretezi multisid környezet használata támogatott.
+- Az adatbázis mérete, a memória mennyiségi eloszlás alapul. Tekintse meg a [áttekintése és architektúrája](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) részből megtudhatja, milyen adatbázist a memóriában méretezi multisid környezet használata támogatott.
 
 ## <a name="3-single-node-with-dr-normal"></a>3. A DR (normál) egyetlen csomópont
  
@@ -235,9 +235,9 @@ A következő csatlakozási pontok le előre:
 
 ### <a name="key-considerations"></a>Fő szempontok
 - /usr/SAP/SID /hana/shared/SID mutató szimbolikus hivatkozást.
-- MCOS: a kötet mérete terjesztési adatbázis méretét a memóriában alapul. Tekintse meg a [áttekintése és architektúrája](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-architecture) részből megtudhatja, milyen adatbázist a memóriában méretezi multisid környezet használata támogatott.
+- MCOS: a kötet mérete terjesztési adatbázis méretét a memóriában alapul. Tekintse meg a [áttekintése és architektúrája](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) részből megtudhatja, milyen adatbázist a memóriában méretezi multisid környezet használata támogatott.
 - : A DR: A kötetek és a csatlakozási pontok le vannak konfigurálva, (megjelölve "HANA telepítéshez szükséges") az éles környezetben a DR HLI egység HANA-példány telepítését. 
-- : A DR: az adatok, logbackups és megosztott kötetek ("Tárreplikáció" megjelölve) lesznek replikálva az élesben használt helyet a pillanatkép-n keresztül. Ezek a kötetek csatlakoztatva vannak, csak a feladatátvételi idő alatt. További információkért olvassa el a dokumentumot [vészhelyreállítási feladatátvétel eljárást](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure) további részletekért.
+- : A DR: az adatok, logbackups és megosztott kötetek ("Tárreplikáció" megjelölve) lesznek replikálva az élesben használt helyet a pillanatkép-n keresztül. Ezek a kötetek csatlakoztatva vannak, csak a feladatátvételi idő alatt. További információkért olvassa el a dokumentumot [vészhelyreállítási feladatátvétel eljárást](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure) további részletekért.
 - Rendszerindító kötet a **I osztály Termékváltozatának típusa** DR csomópont replikálja.
 
 
@@ -284,9 +284,9 @@ A következő csatlakozási pontok le előre:
 
 ### <a name="key-considerations"></a>Fő szempontok
 - /usr/SAP/SID /hana/shared/SID mutató szimbolikus hivatkozást.
-- MCOS: a kötet mérete terjesztési adatbázis méretét a memóriában alapul. Tekintse meg a [áttekintése és architektúrája](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-architecture) részből megtudhatja, milyen adatbázist a memóriában méretezi multisid környezet használata támogatott.
+- MCOS: a kötet mérete terjesztési adatbázis méretét a memóriában alapul. Tekintse meg a [áttekintése és architektúrája](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) részből megtudhatja, milyen adatbázist a memóriában méretezi multisid környezet használata támogatott.
 - : A DR: A kötetek és a csatlakozási pontok le vannak konfigurálva, (megjelölve "HANA telepítéshez szükséges") az éles környezetben a DR HLI egység HANA-példány telepítését. 
-- : A DR: az adatok, logbackups és megosztott kötetek ("Tárreplikáció" megjelölve) lesznek replikálva az élesben használt helyet a pillanatkép-n keresztül. Ezek a kötetek csatlakoztatva vannak, csak a feladatátvételi idő alatt. További információkért olvassa el a dokumentumot [vészhelyreállítási feladatátvétel eljárást](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure) további részletekért. 
+- : A DR: az adatok, logbackups és megosztott kötetek ("Tárreplikáció" megjelölve) lesznek replikálva az élesben használt helyet a pillanatkép-n keresztül. Ezek a kötetek csatlakoztatva vannak, csak a feladatátvételi idő alatt. További információkért olvassa el a dokumentumot [vészhelyreállítási feladatátvétel eljárást](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure) további részletekért. 
 - : A DR: az adatok, logbackups, log, QA (a "QA-példány telepítése" megjelölve) megosztott kötetek vannak konfigurálva a QA példány telepítéséhez.
 - Rendszerindító kötet a **I osztály Termékváltozatának típusa** DR csomópont replikálja.
 
@@ -335,7 +335,7 @@ A következő csatlakozási pontok le előre:
 
 ### <a name="key-considerations"></a>Fő szempontok
 - /usr/SAP/SID /hana/shared/SID mutató szimbolikus hivatkozást.
-- MCOS: a kötet mérete terjesztési adatbázis méretét a memóriában alapul. Tekintse meg a [áttekintése és architektúrája](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-architecture) részből megtudhatja, milyen adatbázist a memóriában méretezi multisid környezet használata támogatott.
+- MCOS: a kötet mérete terjesztési adatbázis méretét a memóriában alapul. Tekintse meg a [áttekintése és architektúrája](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) részből megtudhatja, milyen adatbázist a memóriában méretezi multisid környezet használata támogatott.
 - STONITH: A STONITH beállítása egy SBD van konfigurálva. STONITH használata azonban nem kötelező.
 
 
@@ -391,11 +391,11 @@ A következő csatlakozási pontok le előre:
 
 ### <a name="key-considerations"></a>Fő szempontok
 - /usr/SAP/SID /hana/shared/SID mutató szimbolikus hivatkozást.
-- MCOS: a kötet mérete terjesztési adatbázis méretét a memóriában alapul. Tekintse meg a [áttekintése és architektúrája](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-architecture) részből megtudhatja, milyen adatbázist a memóriában méretezi multisid környezet használata támogatott.
+- MCOS: a kötet mérete terjesztési adatbázis méretét a memóriában alapul. Tekintse meg a [áttekintése és architektúrája](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) részből megtudhatja, milyen adatbázist a memóriában méretezi multisid környezet használata támogatott.
 - STONITH: A STONITH beállítása egy SBD van konfigurálva. STONITH használata azonban nem kötelező.
 - : A DR: **tárolóköteteket két csoportjára szükség** elsődleges és másodlagos csomópont-replikációhoz.
 - : A DR: A kötetek és a csatlakozási pontok le vannak konfigurálva, (megjelölve "HANA telepítéshez szükséges") az éles környezetben a DR HLI egység HANA-példány telepítését. 
-- : A DR: az adatok, logbackups és megosztott kötetek ("Tárreplikáció" megjelölve) lesznek replikálva az élesben használt helyet a pillanatkép-n keresztül. Ezek a kötetek csatlakoztatva vannak, csak a feladatátvételi idő alatt. További információkért olvassa el a dokumentumot [vészhelyreállítási feladatátvétel eljárást](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure) további részletekért. 
+- : A DR: az adatok, logbackups és megosztott kötetek ("Tárreplikáció" megjelölve) lesznek replikálva az élesben használt helyet a pillanatkép-n keresztül. Ezek a kötetek csatlakoztatva vannak, csak a feladatátvételi idő alatt. További információkért olvassa el a dokumentumot [vészhelyreállítási feladatátvétel eljárást](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure) további részletekért. 
 - : A DR: az adatok, logbackups, log, QA (a "QA-példány telepítése" megjelölve) megosztott kötetek vannak konfigurálva a QA példány telepítéséhez.
 - Rendszerindító kötet a **I osztály Termékváltozatának típusa** DR csomópont replikálja.
 
@@ -559,10 +559,10 @@ A következő csatlakozási pontok le előre:
 ### <a name="key-considerations"></a>Fő szempontok
 - /usr/SAP/SID /hana/shared/SID mutató szimbolikus hivatkozást.
 -  : A DR: A kötetek és a csatlakozási pontok le vannak konfigurálva, (megjelölve "HANA telepítéshez szükséges") az éles környezetben a DR HLI egység HANA-példány telepítését. 
-- : A DR: az adatok, logbackups és megosztott kötetek ("Tárreplikáció" megjelölve) lesznek replikálva az élesben használt helyet a pillanatkép-n keresztül. Ezek a kötetek csatlakoztatva vannak, csak a feladatátvételi idő alatt. További információkért olvassa el a dokumentumot [vészhelyreállítási feladatátvétel eljárást](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure) további részletekért. 
+- : A DR: az adatok, logbackups és megosztott kötetek ("Tárreplikáció" megjelölve) lesznek replikálva az élesben használt helyet a pillanatkép-n keresztül. Ezek a kötetek csatlakoztatva vannak, csak a feladatátvételi idő alatt. További információkért olvassa el a dokumentumot [vészhelyreállítási feladatátvétel eljárást](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure) további részletekért. 
 - Rendszerindító kötet a **I osztály Termékváltozatának típusa** DR csomópont replikálja.
 
 
 ## <a name="next-steps"></a>További lépések
-- Tekintse meg [infrastruktúra és kapcsolódás](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-infrastructure-connectivity) HLI számára
-- Tekintse meg [magas rendelkezésre állás és vészhelyreállítás helyreállítási](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery) HLI számára
+- Tekintse meg [infrastruktúra és kapcsolódás](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-infrastructure-connectivity) HLI számára
+- Tekintse meg [magas rendelkezésre állás és vészhelyreállítás helyreállítási](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery) HLI számára

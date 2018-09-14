@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/05/2018
 ms.author: gwallace
 ms.custom: include file
-ms.openlocfilehash: e0ab3476713b1fc491c7c8f2e02263c283d42440
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: 34cae9172d9b024bd6866742d39d82ad496bfc52
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "43435629"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45570428"
 ---
 | Erőforrás | Felső korlát |Megjegyzések|
 | --- | --- |---|
@@ -29,6 +29,7 @@ ms.locfileid: "43435629"
 | Maximális száma az Automation-fiókok egy előfizetésben |Korlátlan ||
 |Maximális számú párhuzamosan futó feladatok száma, amelyek futtathat egy egyszeri hibrid Runbook-feldolgozón|50 ||
 | Runbook-feladat maximális paraméterek mérete   | 512 kb||
+| Maximális Runbook-paraméterek   | 50|JSON vagy XML-karakterlánc át a paramétert, és elemezni kell azt a runbookot, ha eléri a 50 paraméter korlát|
 | Maximális száma a webhook hasznos adatainak mérete |  512 kb|
 
 **<sup>1</sup>**  egy tesztkörnyezet több feladat által használt megosztott környezetben, a feladatokat az ugyanazon a védőfal által az erőforrás-korlátozások, a védőfal vannak kötve.

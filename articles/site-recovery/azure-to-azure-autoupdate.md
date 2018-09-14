@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: rajanaki
-ms.openlocfilehash: 81dbb61d696da84febc89563f946581315fdf527
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 9f0a299fb8221554a3b0c9a19a616d5ba7613a67
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37921436"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45574403"
 ---
 # <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>Az Azure-bA replikálása a mobilitási szolgáltatás automatikus frissítése
 
@@ -79,8 +79,8 @@ Amennyiben a javítás gomb nem érhető el, tekintse meg a bővítmény beáll�
 
  - **Hiba**: A futtató fiók nincs engedélye a recovery services-erőforrás eléréséhez.
 
-    **Javasolt művelet**: törölje, majd [hozza létre újból a futtató fiók](https://docs.microsoft.com/en-us/azure/automation/automation-create-runas-account) vagy győződjön meg róla, hogy az Automation futtató fiókot az Azure Active Directory-alkalmazás hozzáfér a recovery services-erőforrás.
+    **Javasolt művelet**: törölje, majd [hozza létre újból a futtató fiók](https://docs.microsoft.com/azure/automation/automation-create-runas-account) vagy győződjön meg róla, hogy az Automation futtató fiókot az Azure Active Directory-alkalmazás hozzáfér a recovery services-erőforrás.
 
 - **Hiba**: Futtatás mint fiók nem található. Vagy ezek egyikét törölték, vagy nem lett létrehozva: Azure Active Directory-alkalmazás, szolgáltatásnév, szerepkör, Automation-tanúsítvány, Automation-kapcsolatobjektum - vagy az ujjlenyomat nem azonos a tanúsítvány és a kapcsolat. 
 
-    **Javasolt művelet**: törölje és [hozza létre újra a futtató fiókot](https://docs.microsoft.com/en-us/azure/automation/automation-create-runas-account).
+    **Javasolt művelet**: törölje és [hozza létre újra a futtató fiókot](https://docs.microsoft.com/azure/automation/automation-create-runas-account).

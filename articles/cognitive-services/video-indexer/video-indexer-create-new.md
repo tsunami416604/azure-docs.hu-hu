@@ -7,20 +7,20 @@ author: juliako
 manager: erikre
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 07/25/2018
+ms.date: 09/09/2018
 ms.author: juliako
-ms.openlocfilehash: 161a47f72a0f8038a515c09f25ec2a8e8a520547
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: a713a85a3301b211f922268d6afc4d047bd12023
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39390840"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45541701"
 ---
 # <a name="create-highlights-from-existing-videos"></a>Kiemelt létrehozása meglévő videókból
 
 Ez a témakör bemutatja, hogyan hozhat létre, és néhány egyéb videó alapján feltárását közzététele.
 
-1. Jelentkezzen be a [Video Indexer](https://api-portal.videoindexer.ai/) fiókot.
+1. Keresse meg a [Video Indexer](https://www.videoindexer.ai/) webhelyet, és jelentkezzen be.
 2. Keresse meg egy videót, amelyből hozzá szeretne létrehozni a feltárását.
 3. Nyomja meg **lejátszása**.
 
@@ -52,8 +52,8 @@ Ez a témakör bemutatja, hogyan hozhat létre, és néhány egyéb videó alapj
 
 Miután létrehozta az új listát, továbbra is feldolgozása, ezek a témakörök leírtak szerint: 
 
-- [Video Indexer – REST API-val feldolgozása tartalom](video-indexer-use-apis.md)
-- [Vizuális widgetek beágyazása az alkalmazásba](video-indexer-embed-widgets.md)
+- [Tartalomfeldolgozás a Video Indexer REST API-val](video-indexer-use-apis.md)
+- [Vizuális widgetek beágyazása egy saját alkalmazásba](video-indexer-embed-widgets.md)
 
 ## <a name="see-also"></a>Lásd még
 

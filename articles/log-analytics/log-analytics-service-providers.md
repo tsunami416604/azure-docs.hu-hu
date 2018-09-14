@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: meirm
 ms.component: na
-ms.openlocfilehash: 7898af1a8d516fa74deef5614b5373f1dbd22f5a
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: ec35cece8da8eaaa89b11a35b0fc1e55d0cdfee8
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44378602"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45573491"
 ---
 # <a name="log-analytics-for-service-providers"></a>A log Analytics, a szolgáltatók számára
 A log Analytics segítségével a felügyelt szolgáltatóknak (MSP), a nagyobb vállalatok, független szoftverszállítók (ISV-k) és üzemeltetési szolgáltatók az ügyfél helyszíni vagy felhőalapú infrastruktúrában lévő kiszolgálók kezelése és figyelése. 
@@ -31,16 +31,16 @@ A partnerek és szolgáltatók, akik részei, a [Cloud Solution Provider (CSP)](
 
 ## <a name="architectures-for-service-providers"></a>A szolgáltatók számára architektúrák
 
-Log Analytics-munkaterületek biztosít módszert a rendszergazda szabályozhatja a flow és a naplók elkülönítése, és hozzon létre egy log architektúra, amely az adott üzleti igényeire. [Ez a cikk](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-manage-access) körül munkaterület-felügyelet kapcsolatos általános szempontokról ismerteti. Szolgáltatók további szempontokat kell.
+Log Analytics-munkaterületek biztosít módszert a rendszergazda szabályozhatja a flow és a naplók elkülönítése, és hozzon létre egy log architektúra, amely az adott üzleti igényeire. [Ez a cikk](https://docs.microsoft.com/azure/log-analytics/log-analytics-manage-access) körül munkaterület-felügyelet kapcsolatos általános szempontokról ismerteti. Szolgáltatók további szempontokat kell.
 
 Nincsenek három lehetséges architektúrák szolgáltatók Log Analytics-munkaterületek vonatkozásában:
 
 ### <a name="1-distributed---logs-are-stored-in-workspaces-located-in-the-customers-tenant"></a>1. Elosztott - naplók vannak tárolva az ügyfél-bérlőben található munkaterületek 
 
-Ebben az architektúrában a munkaterület az ügyfél-bérlőben, hogy az ügyfél a naplókhoz használt van telepítve. A service provider rendszergazdái hozzáférhetnek a munkaterület használatával [Azure Active Directory vendégfelhasználók (B2B)](https://docs.microsoft.com/en-us/azure/active-directory/b2b/what-is-b2b). A service provider rendszergazdák kell váltania, az ügyfél Directory férhetnek hozzá ezekhez a munkaterületekhez, az Azure Portalon.
+Ebben az architektúrában a munkaterület az ügyfél-bérlőben, hogy az ügyfél a naplókhoz használt van telepítve. A service provider rendszergazdái hozzáférhetnek a munkaterület használatával [Azure Active Directory vendégfelhasználók (B2B)](https://docs.microsoft.com/azure/active-directory/b2b/what-is-b2b). A service provider rendszergazdák kell váltania, az ügyfél Directory férhetnek hozzá ezekhez a munkaterületekhez, az Azure Portalon.
 
 Ez az architektúra előnyei a következők:
-* Az ügyfél a naplók használata a saját hozzáférését kezelheti [szerepköralapú hozzáférés-](https://docs.microsoft.com/en-us/azure/role-based-access-control/overview).
+* Az ügyfél a naplók használata a saját hozzáférését kezelheti [szerepköralapú hozzáférés-](https://docs.microsoft.com/azure/role-based-access-control/overview).
 * Minden ügyfél saját munkaterület megőrzésére és az adatok kapacitástól különböző beállítással is rendelkezhetnek.
 * Az ügyfelek közötti elkülönítés szabályozási és a megfelelőség érdekében.
 * Minden munkaterülethez a díja az ügyfél-előfizetés be lesz állítva.
@@ -74,7 +74,7 @@ A harmadik architektúra vegyesen a két lehetőség között. A naplók esetén
 
 A központi hely megvalósításához a Log Analytics két lehetőség van:
 
-1. Központi munkaterület: A szolgáltató hozzon létre egy munkaterületet a bérlőben, és a egy parancsfájlt, amelyik a használni a [Query API](https://dev.loganalytics.io/) az a [adatok gyűjtési API](log-analytics-data-collector-api.md) életre az adatokat a különböző munkaterületekhez, ez a központi hely. Egy másik lehetőség, a parancsfájl nem [Azure Logic Apps](https://docs.microsoft.com/en-us/azure/logic-apps/logic-apps-overview).
+1. Központi munkaterület: A szolgáltató hozzon létre egy munkaterületet a bérlőben, és a egy parancsfájlt, amelyik a használni a [Query API](https://dev.loganalytics.io/) az a [adatok gyűjtési API](log-analytics-data-collector-api.md) életre az adatokat a különböző munkaterületekhez, ez a központi hely. Egy másik lehetőség, a parancsfájl nem [Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview).
 
 2. Power bi-ban egy központi helyet: Ha a különböző munkaterületekhez rájuk a Log Analytics integrációjával adatok exportálása Power BI működhet a központi helyet és [Power BI](log-analytics-powerbi.md). 
 

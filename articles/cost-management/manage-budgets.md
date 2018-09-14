@@ -1,6 +1,6 @@
 ---
-title: Azure költség felügyeleti költségvetések kezeléséhez |} Microsoft Docs
-description: Ez a cikk segít hozhat létre és kezelhet költség felügyeleti költségek teszik ki.
+title: Az Azure Cost Management költségvetések kezeléséhez |} A Microsoft Docs
+description: Ez a cikk segít hozhat létre és kezelhet a Cost Management költségvetése.
 services: cost-management
 keywords: ''
 author: bandersmsft
@@ -10,78 +10,78 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 9d6bf29909393846ec17a1bcc210fb989efd7f99
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: 106e8f082d148ed9a8c58313177be81ee074a2c3
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36938406"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45578463"
 ---
-# <a name="manage-budgets"></a>Költségvetések kezeléséhez
+# <a name="manage-budgets"></a>Költségvetések kezelése
 
-Költségvetések létrehozása és a keret-alapú súgó a felhő irányítás és elszámolási kötelezettségéről szóló javításához riasztást küld. Ez a cikk segít gyorsan hozzon létre költségvetések, és azokat a felügyeleti költségek kezelésének megkezdéséhez.
+Költségvetés létrehozása és a költségvetés-alapú súgó a felhő cégirányítási és felelősségre vonhatóság riasztást küld. Ez a cikk segít gyorsan költségvetéshez létrehozása és kezelése őket a Cost Management – első lépések.
 
-Ha egy vállalati vagy MSP fiókkal rendelkezik, használhatja a hierarchikus költség entitás struktúra havi költségvetési kvóták hozzárendelése a különböző üzleti egységek, szervezeti egységek vagy bármely más költség entitás. Prémium szintű fiókkal rendelkezik, ha alkalmazva lesz a teljes körű felhőalapú kiadások költségvetési felügyeleti funkciót is használhatja. Minden költségvetések manuálisan hozzá vannak rendelve.
+Ha egy vállalati vagy MSP-fiókkal rendelkezik, használhatja a hierarchikus költség entitásstruktúrát havi költségvetés kvótákat rendelhet hozzá a különböző üzleti egységek, részlegek vagy bármely más költségentitás. Ha egy prémium szintű fiókkal rendelkezik, használhatja a költségvetés management szolgáltatásra, a rendszer ezután alkalmazza a teljes felhőalapú kiadások. Az összes költségvetés manuálisan hozzá vannak rendelve.
 
-Hozzárendelt költségvetések alapján, a felhasznált költségvetést százaléka alapján küszöbérték riasztások beállítását, és adja meg a küszöbértékek súlyossága.
+Hozzárendelt költségvetése alapján, a költségvetés felhasznált aránya alapján küszöbérték riasztásokat állíthat be, és minden egyes küszöbérték súlyosságát határozza meg.
 
-Jelentésekben a hozzárendelt keret megjelenítése. Felhasználók megtekinthetik, ha a kiadásokat keresztül, vagy a saját használat idővel rendelkező névértéken. Ha bejelöli **megjelenítése mezők** költségvetési jelentés tetején, megtekintheti a költség, a költségvetési, a halmozott költség vagy a teljes költségvetést.
+Költségvetés szóló jelentésekben megtekintheti a hozzárendelt költségvetést. Felhasználók megtekinthetik, ha a költségkeret-beállítási keresztül, alatt, vagy a használat idővel rendelkező névértéken. Ha bejelöli **mezők megjelenítése/elrejtése** költség, a költségvetés, a összesített költségeit vagy a teljes fennmaradó is megtekintheti a költségvetés jelentés tetején.
 
-## <a name="create-budgets"></a>Költségvetések létrehozása
+## <a name="create-budgets"></a>Hozzon létre költségvetése
 
-Költségvetés létrehozása, amikor a pénzügyi év meg, és egy adott entitás vonatkozik.
+Költségvetési létrehozásakor állítja be, a pénzügyi évben, és a egy adott entitásra vonatkozik.
 
-A keret létrehozása, és rendelje hozzá egy entitás:
+Költségvetés létrehozása, és rendelje hozzá egy entitás:
 
-1. Navigáljon a **költségek** &gt; **Költségkezelésére** &gt; **költségvetési**.
-2. A keret kezelése lap alatt **entitások**, válassza ki az entitást, ha szeretne létrehozni a keret.
-3. Válassza ki az év, ha szeretne létrehozni a költségvetési keret év.
-4. Havonta a költségvetési érték beállítása. Amikor elkészült, kattintson a **mentése**.
-Ebben a példában a havi keretét. június 2018 $135,000 van beállítva. A teljes költségvetést, az évre $1,615,000.00.
+1. Navigáljon a **költségek** &gt; **Cost Management** &gt; **költségvetés**.
+2. A költségvetés felügyelet lapon alatt **entitások**, válassza ki az entitást, ahol szeretné létrehozni a költségvetést.
+3. A költségvetési évben válassza ki az év, ahol szeretné létrehozni a költségvetést.
+4. Minden hónapban a költségvetés érték beállítása. Ha elkészült, kattintson a **mentése**.
+Ebben a példában a 2018 június havi költségvetését $135,000 értéke. A teljes költségvetés az év $1,615,000.00.
 ![Költségvetés létrehozása](./media/manage-budgets/set-budget.png)
 
 
-Az éves költségvetés fájl importálása:
+Az éves költségvetés-fájl importálása:
 
-1. A **műveletek**, jelölje be **exportálása** egy üres, a költségvetési a alapjául használandó CSV sablon letöltése.
-2. Adja meg a CSV-fájl, a költségvetési megadásával, és mentse helyileg.
-3. A **műveletek**, jelölje be **importálási**.
+1. Alatt **műveletek**válassza **exportálása** letölteni egy üres CSV-sablont a költségvetés a alapjaként használni.
+2. Töltse ki a költségvetés és a CSV-fájlt, és mentse helyileg.
+3. A **műveletek**válassza **importálás**.
 4. Válassza ki a mentett fájlt, és kattintson a **OK**.
 
-A befejezett költségvetési exportálása CSV-fájlként, a **műveletek**, jelölje be **exportálása** letölteni a fájlt.
+Az elkészült költségvetés alatt exportálhatja egy CSV-fájl **műveletek**válassza **exportálása** letölteni a fájlt.
 
-## <a name="view-budget-in-reports"></a>A jelentések költségvetés megtekintése
+## <a name="view-budget-in-reports"></a>Költségvetés-jelentések megtekintése
 
-Befejezése után a költségvetést a legtöbb költség jelentésekben látható a **költségek** &gt; **költség Analysis** és a költségek vs. Keret felett idő jelentés. Azt is beállíthatja a jelentések használatával költségvetési küszöbértékek alapján **műveletek**.
+Amikor elkészült, a költségvetés alapján a legtöbb költségjelentésben látható **költségek** &gt; **költségelemzés** és a Cost vs. Költségvetés időalapú jelentést. Jelentések használata költségvetési küszöbértékek alapján is ütemezheti **műveletek**.
 
-Íme egy példa az költség elemzést. Azt illusztrálja, a teljes költségvetést és munkaterhelés-és használati által az év kezdete óta.
+Íme egy példa a Költségelemzési jelentést. A teljes költségvetés és a számítási feladatok és a használati típusok költséget mutatja az év kezdete óta.
 
-![Példa költség elemző jelentés költségvetés](./media/manage-budgets/cost-analysis-budget-example.png)
+![Példa Költségelemzési jelentést a költségvetés](./media/manage-budgets/cost-analysis-budget-example.png)
 
-Ebben a példában fel, hogy az aktuális dátum: június 22. 2018. június költsége $71,611.28 $135,000 a havi költségvetési képest. A költség nem sokkal alacsonyabb, mint a havi költségvetést, mert még vannak nyolc követő hónap végéig kiadásokat.
+Ebben a példában feltételeztük az aktuális dátum későbbi, június 22. 2018 június költsége $71,611.28 $135,000 havi költségvetését képest. A költségek továbbra is vannak a hónap végéig kiadások követő nyolc azért sokkal alacsonyabb, mint a havi költségvetést.
 
-A jelentés megtekintéséhez egy másik módja, ha halmozott költség vs tekintse meg a költségvetést. Összesített költségek a megjelenítéséhez **megjelenítése mezők**, jelölje be **halmozott költség** és **teljes keret**. Itt látható egy példa a halmozott költség megjelenítő év kezdete óta.
+A jelentés megtekintéséhez másik módja, és összesített költségeit és tekintse meg a költségvetést. Összesített költségek alatt megtekintéséhez **mezők megjelenítése/elrejtése**válassza **összesített költségeit** és **teljes költségvetés**. Íme egy példa az összesített költségeit az év kezdete óta.
 
 ![Halmozott költségvetés](./media/manage-budgets/accumulated-budget.png)
 
-Némi várakozás a jövőben a halmozott költség meghaladhatja a költségvetést. Könnyebben láthatja, hogy a diagram nézet módosításakor a _sor_ típusa.
+Valamikor a jövőben az összesített költségeit meghaladhatja a költségvetést. Könnyebben láthatja, hogy ha módosítja a diagram nézet a _sor_ típusa.
 
-![A keret vonaldiagram látható](./media/manage-budgets/budget-line.png)
+![Vonaldiagram látható költségvetés](./media/manage-budgets/budget-line.png)
 
-## <a name="create-budget-alerts-for-a-filter"></a>Hozzon létre egy szűrő költségvetési riasztásokat
+## <a name="create-budget-alerts-for-a-filter"></a>Szűrő költségvetés riasztások létrehozása
 
-Az előző példában láthatja, hogy a halmozott költség válaszadásra a keret. Automatikus költségvetési riasztásokat hozhat létre, így még értesíti, ha a kiadásokat megközelítések, vagy meghaladja a költségvetést. A riasztás alapvetően, amelyek küszöbértéke ütemezett jelentés. Keret riasztási küszöbérték mérőszámok közé tartozik:
+Az előző példában láthatja, hogy a összesített költségeit a költségvetés válaszadásra. Automatikus költségvetés riasztásokat hozhat létre, hogy Ön értesítést megközelítések költségeit, vagy meghaladja a költségvetést. Alapvetően a riasztás az ütemezett jelentések egy küszöbértékkel. Költségvetés riasztási küszöbérték metrikák a következők:
 
-- Fennmaradó költség és költségvetés – a pénznem értékének küszöbérték megadása
-- Költség százalékos és költségvetés – a százalékos érték küszöbérték megadása
+- Fennmaradó költség és költségvetés – a pénznem érték küszöbértéket megadása
+- Költségszázalék vagy költségvetési – egy érték arányának küszöbértéke megadása
 
-Nézzük például.
+Lássunk erre egy példát.
 
-A költségek vs. Idő jelentés keresztül költségvetési, kattintson a **műveletek** majd **ütemezni a jelentést**. A küszöbérték lapján jelöljön ki egy küszöbértéket metrikát. Például **százalékos vs költségvetés**. Válasszon egy riasztási típus, és írja be a költségvetés százalékos érték. Ha csak egyszer tájékoztatást kaphat, jelölje be **egymást követő riasztások száma** és írja be _1_. Kattintson a **Save** (Mentés) gombra.
+A a Cost VS-ben. Idő a jelentés felett költségvetési, kattintson a **műveletek** majd **jelentés ütemezése**. A küszöbérték lapon válassza ki egy küszöbértéket metrikát. Ha például **költségvetés százalékos vs**. Válassza ki a riasztási típusát, és adja meg a költségvetés százalékos érték. Ha szeretne kaphat, csak egyszer, válassza ki a **egymást követő riasztások számát** és írja be _1_. Kattintson a **Save** (Mentés) gombra.
 
-![Keret riasztás](./media/manage-budgets/budget-alert.png)
+![Költségvetési figyelmeztetés](./media/manage-budgets/budget-alert.png)
 
 ## <a name="next-steps"></a>További lépések
 
-- Ha még nem fejezte első oktatóanyaga, amely költség-kezelésre, olvassa el a [tekintse át a használati és költségek](https://docs.microsoft.com/en-us/azure/cost-management/tutorial-review-usage).
-- További információ a [költség felügyeleti-ban rendelkezésre álló](use-reports.md).
+- Cost Management már az első oktatóanyag még nem végezte el, ha olvasni a [tekintse át a használat és költségek](https://docs.microsoft.com/azure/cost-management/tutorial-review-usage).
+- Tudjon meg többet a [a Cost Management elérhető jelentések](use-reports.md).

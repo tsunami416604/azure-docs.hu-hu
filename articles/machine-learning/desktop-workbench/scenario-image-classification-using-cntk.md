@@ -12,12 +12,12 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 10/17/2017
-ms.openlocfilehash: 48c21638fe5756e6527288ed0fdc73dd9e331afd
-ms.sourcegitcommit: baed5a8884cb998138787a6ecfff46de07b8473d
+ms.openlocfilehash: 667636aac49d2622ba1a6b45d7c8af61b9609c55
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "35622216"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45579196"
 ---
 # <a name="image-classification-using-azure-machine-learning-workbench"></a>Képek besorolása Azure Machine Learning Workbench használatával
 
@@ -95,7 +95,7 @@ Az alább látható projektstruktúra elvégezhesse ezeket a lépéseket hoz lé
 
 ## <a name="data-description"></a>Adatok leírása
 
-Ebben az oktatóanyagban használja a következő példa egy felső törzs ruházati mintázat adatkészlet akár 428 lemezképek álló futtatása. Minden egyes képe egy három különböző textúrákhoz (pontozott, csíkozott, leopard) leképezésként van feliratozva. Azt tartani lemezképek száma kisebb, hogy ez az oktatóanyag gyorsan hajthatók végre. Azonban a kód tesztelt és képek vagy több tízezer együttműködik. Az összes rendszerkép lett lekaparták a Bing Image Search használatával, és az aktuális-leképezésként ismertetése [3. rész](#using-a-custom-dataset). A kép URL-címet a megfelelő attribútumaik szerepelnek a */resources/fashionTextureUrls.tsv* fájlt.
+Ebben az oktatóanyagban használja a következő példa egy felső törzs ruházati mintázat adatkészlet akár 428 lemezképek álló futtatása. Minden egyes képe egy három különböző textúrákhoz (pontozott, csíkozott, leopard) leképezésként van feliratozva. Azt tartani lemezképek száma kisebb, hogy ez az oktatóanyag gyorsan hajthatók végre. Azonban a kód tesztelt és képek vagy több tízezer együttműködik. Az összes rendszerkép lett az aktuális-leképezésként ismertetése [3. rész](#using-a-custom-dataset). A kép URL-címet a megfelelő attribútumaik szerepelnek a */resources/fashionTextureUrls.tsv* fájlt.
 
 A parancsfájl `0_downloadData.py` letölti az összes rendszerkép a *DATA_DIR/képek/fashionTexture/* könyvtár. A 428 URL-címek valószínűleg sérült. Ez nem probléma, és csak azt jelenti, hogy van-e valamivel kisebb lesz lemezképek betanítására és tesztelésére. Ebben a példában a megadott összes parancsfájl kell helyileg, hajtható végre, nem pedig például a docker távoli környezetben.
 
@@ -263,11 +263,11 @@ A legígéretesebb javításai rések leggyakoribb okai a következők:
 
 ## <a name="part-3---custom-dataset"></a>3. rész - egyéni adatkészlet
 
-1. és 2 rész hozunk betanított és egy kép osztályozási modell a megadott felső törzs ruházati textúrákhoz lemezképek használatával értékeli ki. Most már bemutatjuk, hogyan használhatja egy egyéni felhasználó által megadott adatkészlet is. Vagy, ha nem érhető el, hogyan hozhat létre és jegyzettel láthatja el például egy adatkészletet, a Bing használatával rendszerkép keresése.
+1. és 2 rész hozunk betanított és egy kép osztályozási modell a megadott felső törzs ruházati textúrákhoz lemezképek használatával értékeli ki. Most már bemutatjuk, hogyan használhatja egy egyéni felhasználó által megadott adatkészlet is. 
 
 ### <a name="using-a-custom-dataset"></a>Egyéni adatkészlet használata
 
-Először nézzük meg, a mappastruktúra a ruházati mintázat adatok címen. Vegye figyelembe, hogyan összes képeket a különböző attribútumokat a következők a megfelelő almappák *pontozott*, * leopard, és *csíkozott* , *DATA_DIR/képek/fashionTexture/*. Ügyeljen arra is, hogyan a lemezképnév mappát is történik a `PARAMETERS.py` fájlt:
+Először nézzük meg, a mappastruktúra a ruházati mintázat adatok címen. Vegye figyelembe, hogyan összes képeket a különböző attribútumokat a következők a megfelelő almappák *pontozott*, *leopard*, és *csíkozott* , *DATA_DIR/képek / fashionTexture /*. Ügyeljen arra is, hogyan a lemezképnév mappát is történik a `PARAMETERS.py` fájlt:
 ```python
 datasetName = "fashionTexture"
 ```
@@ -280,14 +280,23 @@ Fontos, hogy egyes rendszerképek pontosan egy attribútummal is hozzárendelhet
 
 ### <a name="image-scraping-and-annotation"></a>Automatizované získávání dat és jegyzet
 
-Jegyzettel ellátott képek és tesztelésre elég nagy számú gyűjtése nehézkes lehet. A probléma megoldásához az egyik lehetőség, hogy scrape képek az internetről. Például, tekintse meg alább a lekérdezés a Bing Képkeresés eredmények *feliratú pólóban csíkozott*. Megfelelően működik, a legtöbb lemezképek valóban csíkozott pólók. Néhány nem megfelelő vagy nem egyértelmű képet (például az 1. oszlop, 1; sor vagy oszlop 3, sor 2) lehet azonosítani és egyszerűen eltávolítani:
+Jegyzettel ellátott képek és tesztelésre elég nagy számú gyűjtése nehézkes lehet. A probléma megoldásához az egyik lehetőség, hogy scrape képek az internetről.
+
+> [!IMPORTANT] 
+> Képeket használ, győződjön meg arról, akkor nem megsérti a szerzői. 
+
+<!--
+For example, see below the Bing Image Search results for the query *t-shirt striped*. As expected, most images indeed are striped t-shirts. The few incorrect or ambiguous images (such as column 1, row 1; or column 3, row 2) can be identified and removed easily:
 <p align="center">
 <img src="media/scenario-image-classification-using-cntk/bing_search_striped.jpg" alt="alt text" width="600"/>
 </p>
+-->
 
 A nagy és változatos adatkészletet létrehozása több lekérdezést kell használni. Ha például 7\*lekérdezések használatával automatikusan {blouse, hoodie, pulóver, sweater, ing, feliratú pólóban, alsóing} ruházati elemek és attribútumok {csíkozott, pontozott, leopard} minden kombinációja lehet synthesized 3 = 21. Lekérdezés az 50 legfontosabb kép letöltése 21 * 50 = 1050 legfeljebb majd vezetne lemezképek.
 
-Ahelyett, hogy képeket le kézzel a Bing Képkeresés, ehelyett sokkal egyszerűbb legyen a [Cognitive Services a Bing Image Search API](https://www.microsoft.com/cognitive-services/bing-image-search-api) egy lekérdezési karakterláncban megadott kép URL-címek készletét adja vissza, amely.
+<!--
+Rather than manually downloading images from Bing Image Search, it is much easier to instead use the [Cognitive Services Bing Image Search API](https://www.microsoft.com/cognitive-services/bing-image-search-api) which returns a set of image URLs given a query string.
+-->
 
 A letöltött lemezképek némelyike pontos vagy ismétlődő (csak a lemezkép megoldás vagy jpg-összetevők által például eltérőek). Ezeket az ismétlődéseket, hogy a tanítási és tesztelési felosztás az azonos lemezképek nem tartalmaznak el kell távolítani. Ismétlődő képek eltávolítása tehető egy ujjlenyomat-alapú módszer, amely két lépésben használható: (i) először az összes rendszerkép; a Jelszókivonat-karakterlánc jön létre (ii) a második fázis a képek csak az adott képeket őrzi meg, amely még nem lett találkozott kivonat karakterláncot. Az összes rendszerkép elvesznek. Találtunk a `dhash` megközelítés a Python-kódtár az `imagehash` és a leírt [blog](http://www.hackerfactor.com/blog/index.php?/archives/529-Kind-of-Like-That.html) , végezze el a paramétert `hash_size` 16 értékre. Azt az OK nem megfelelően távolítsa el az egyes egyszer előforduló képek mindaddig, amíg a legtöbb valós ismétlődések törlődnek.
 

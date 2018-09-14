@@ -7,14 +7,14 @@ author: juliako
 manager: erikre
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 07/25/2018
+ms.date: 09/09/2018
 ms.author: juliako
-ms.openlocfilehash: 73359955861b88f2bc5ca297c32fa78c2632148c
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: bd0f9e01257bec2d39ef0c8e13b68c4a7a13637d
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39449479"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45542926"
 ---
 # <a name="use-azure-video-indexer-api"></a>Az Azure Video Indexer API használata
 
@@ -23,23 +23,20 @@ ms.locfileid: "39449479"
 
 Video Indexer – összesíti egy integrált szolgáltatás, a Microsoft által kínált különböző audio- és mesterséges intelligencia (AI) technológiákat, így egyszerűbb fejlesztés. Az API-k engedélyezése összpontosítani, nem kell bajlódnunk méretezhető, globális Media AI technológiákat használó fejlesztők számára érhető el, a rendelkezésre állás és a felhőalapú platform megbízhatóságát lett tervezve. Az API használatával a fájlok feltöltése, a videó részletes elemzések lekérése, annak érdekében, hogy a beágyazása az alkalmazás és más feladatok insight és a játékosok widgetek URL-címek lekérése.
 
-A Video Indexer-fiók létrehozásakor kiválaszthatja a (, ahol megkapja ingyenes indexelési perc bizonyos számú) egy ingyenes próbafiókot vagy egy fizetős lehetőség (Ha nem korlátozza a kvóta). Az ingyenes próbaverziót a Video Indexer legfeljebb 600 perc ingyenes indexeli a webhely számára biztosít, és akár 2400 percnyi ingyenes indexelő API számára. A fizetős lehetőség a Video Indexer-fiókot, amely létrehozhat [csatlakozik az Azure-előfizetés és az Azure Media Services-fiók](connect-to-azure.md). Indexelt perc, valamint a kapcsolódó adathordozó-fiók fizet díjak. 
+A Video Indexer-fiók létrehozásakor kiválaszthatja a (, ahol megkapja ingyenes indexelési perc bizonyos számú) egy ingyenes próbafiókot vagy egy fizetős lehetőség (Ha nem korlátozza a kvóta). Az ingyenes próbaverziót a Video Indexer legfeljebb 600 perc ingyenes indexeli a webhely számára biztosít, és akár 2400 percnyi ingyenes indexelő API számára. A fizetős lehetőség a Video Indexer-fiókot, amely létrehozhat [csatlakozik az Azure-előfizetés és az Azure Media Services-fiók](connect-to-azure.md). Perc, valamint az Azure Media Services-fiók kapcsolódó költségek indexelve kell fizetnie. 
 
-Ez a cikk bemutatja, hogy a fejlesztők kihasználhatják a [Video Indexer API](https://api-portal.videoindexer.ai/). Részletesebb ismertetőt a Video Indexer szolgáltatás további talál a [áttekintése](video-indexer-overview.md) cikk.
+Ez a cikk bemutatja, hogy a fejlesztők kihasználhatják a [Video Indexer API](https://api-portal.videoindexer.ai/).
 
 ## <a name="subscribe-to-the-api"></a>Fizessen elő az API-hoz
 
-1. bejelentkezés.
-
-    Fejlesztés a Video Indexer indításához kell első bejelentkezés, a [Video Indexer](https://api-portal.videoindexer.ai/) portálon. 
+1. Jelentkezzen be a [Video Indexer – fejlesztői portál](https://api-portal.videoindexer.ai/).
     
-    ![Regisztráció](./media/video-indexer-use-apis/video-indexer-api01.png)
+    ![Bejelentkezés](./media/video-indexer-use-apis/video-indexer-api01.png)
 
     > [!Important]
     > * A Video Indexer felhasználóihoz való regisztráció során használt ugyanazt a szolgáltatót kell használnia.
     > * Személyes Google és a Microsoft (outlook vagy élő) fiókok csak a próbafiókokon használható. Fiókok kapcsolódik az Azure az Azure AD szükséges.
     > * E-mailenként csak egy aktív fiók is lehet. Ha egy felhasználó megpróbál jelentkezzen be user@gmail.com linkedinre és után, hogy a user@gmail.com a Google később a hibalap fogja megjeleníteni, arról tájékoztatja a felhasználó már létezik.
-
 
 2. Az előfizetés.
 
@@ -91,15 +88,15 @@ Az értékek a következő táblázat ismerteti a alkalmazni. A **Param érték*
 
 Az összes műveleti API-hívások a Fiókazonosító paraméter megadása kötelező. Fiókazonosító egy GUID Azonosítót, amely szerezhető be a következő módszerek valamelyikével:
 
-* A Video Indexer-portál használatával kérje le a fiók Azonosítóját:
+* Használja a **Video Indexer webhely** beolvasni a Fiókazonosító:
 
-    1. Jelentkezzen be a [videoindexer](https://www.videoindexer.ai/).
+    1. Keresse meg a [Video Indexer](https://www.videoindexer.ai/) webhelyet, és jelentkezzen be.
     2. Keresse meg a **beállítások** lapot.
     3. Másolja az azonosítót.
 
         ![Fiókazonosító](./media/video-indexer-use-apis/account-id.png)
 
-* Az API-val programozott módon lekérése a fiók azonosítóját.
+* Használat **Video Indexer fejlesztői portál** programozott módon beolvasni a fiók azonosítóját.
 
     Használja a [fiókok](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Accounts?) API-t.
     
@@ -225,7 +222,5 @@ Debug.WriteLine(playerWidgetLink);
 ## <a name="next-steps"></a>További lépések
 
 [Vizsgálja meg a részleteket a kimenet JSON](video-indexer-output-json.md).
-
-## <a name="see-also"></a>Lásd még
 
 [Video Indexer – áttekintés](video-indexer-overview.md)

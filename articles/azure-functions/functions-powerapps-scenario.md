@@ -12,12 +12,12 @@ ms.date: 12/14/2017
 ms.author: glenga
 ms.reviewer: sunayv
 ms.custom: ''
-ms.openlocfilehash: 55de3cd8830834a2af512661d5389952d927ef9f
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 49000d4fd61e7cd061b415d50545a7f5ee56f3fb
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44094315"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45579123"
 ---
 # <a name="call-a-function-from-powerapps"></a>Függvény hívása a PowerAppsből
 A [PowerApps](https://powerapps.microsoft.com) platform benne hagyományos alkalmazáskódot nélküli alkalmazásokat hozhat létre üzleti szakértők lett tervezve. Professzionális fejlesztők számára az Azure Functions használatával kiterjesztheti a PowerApps képességeit a technikai részleteket a PowerApps alkalmazáskészítők sikerei védelme során.
@@ -41,7 +41,7 @@ Ebben a témakörben megtudhatja, hogyan lehet:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-+ Az aktív [PowerApps-fiók](https://docs.microsoft.com/en-us/powerapps/maker/signup-for-powerapps) az Azure-fiók azonos bejelentkezési hitelesítő adatait. 
++ Az aktív [PowerApps-fiók](https://docs.microsoft.com/powerapps/maker/signup-for-powerapps) az Azure-fiók azonos bejelentkezési hitelesítő adatait. 
 + Az Excel és a [minta Excel-fájl](https://procsi.blob.core.windows.net/docs/turbine-data.xlsx) , amely az alkalmazás adatforrásaként használandó.
 + Az oktatóanyag elvégzéséhez [függvény OpenAPI definíció létrehozása](functions-openapi-definition.md).
 

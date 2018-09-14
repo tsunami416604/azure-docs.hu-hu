@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 07a5c378ddf73f245104f64e1dae945525a1e01a
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: f08d5732939e853785e2cce1d1e9ed8eea7f9ad7
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44381261"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45543139"
 ---
 # <a name="define-a-validation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Egyéni Azure Active Directory B2C-házirendek egy érvényesítési technikai profil meghatározása
 
@@ -53,8 +53,8 @@ A **ValidationTechnicalProfile** elem tartalmazza a következő attribútumot:
 | Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
 | a referenceid megadása | Igen | Egy már definiált vagy a szülő házirend technikai profil azonosítója. |
-|ContinueOnError|Nem| Jelzi, hogy bármely ezt követő érvényesítési technikai profilok érvényesítése továbbra is ha ez validaiton technikai profil hibát jelez. Rétegbe értékek: `ture` vagy `false` (alapértelmezés szerint a további ellenőrzési profilok feldolgozása leáll, és hibát adott vissza). 
-|ContinueOnSuccess | Nem | Jelzi, hogy bármely ezt követő érvényesítési profilok érvényesítése továbbra is ha az érvényesítés technikai profil sikeres. Rétegbe értékek: `ture` vagy `false`. Az alapértelmezett érték `true`, tehát továbbra is a további ellenőrzési profilok feldolgozására. |
+|ContinueOnError|Nem| Jelzi, hogy bármely ezt követő érvényesítési technikai profilok érvényesítése továbbra is ha ez validaiton technikai profil hibát jelez. Rétegbe értékek: `true` vagy `false` (alapértelmezés szerint a további ellenőrzési profilok feldolgozása leáll, és hibát adott vissza). 
+|ContinueOnSuccess | Nem | Jelzi, hogy bármely ezt követő érvényesítési profilok érvényesítése továbbra is ha az érvényesítés technikai profil sikeres. Rétegbe értékek: `true` vagy `false`. Az alapértelmezett érték `true`, tehát továbbra is a további ellenőrzési profilok feldolgozására. |
 
 A **ValidationTechnicalProfile** elem tartalmazza a következő elemet:
 

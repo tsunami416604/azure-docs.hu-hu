@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 1bfc70680ecef2ee4fe162f81aac71430c773740
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: c5f251f2de938d4441672c8aa1a6dbc6bd616155
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40005078"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45575491"
 ---
 # <a name="azure-active-directory-identity-protection---how-to-unblock-users"></a>Az Azure Active Directory Identity Protection - hogyan felhasználók tiltásának feloldása
 Az Azure Active Directory Identity Protection a házirendek felhasználók letiltását, a konfigurált feltételek teljesülése esetén konfigurálhatja. Általában egy letiltott felhasználó névjegyek segélyszolgálat lesz feloldva. Ez a cikk ismerteti a lépéseket egy letiltott felhasználó feloldásának is végezhet.
@@ -52,8 +52,8 @@ A gyanús bejelentkezési feloldásához a következő lehetőségek állnak ren
 ## <a name="unblocking-accounts-at-risk"></a>Veszélyben blokkolásának feloldása fiókok
 Érintett fiók zárolásának feloldásához a következő lehetőségek állnak rendelkezésére:
 
-1. **Jelszó alaphelyzetbe állítása** -visszaállíthatja a jelszót. További információkért lásd: [manuális biztonságos jelszó-visszaállítási](overview.md#manual-secure-password-reset).
-2. **Az összes kockázati esemény elvetését** – a felhasználó kockázati szabályzat akkor tiltja a felhasználó, ha a beállított felhasználói kockázati szint blokkolja a hozzáférést a rendszer elérte. Csökkentheti a felhasználó kockázati események jelentett kockázati szint kézzel zárja be. További információkért lásd: [kockázati események manuális lezárása](overview.md#closing-risk-events-manually).
+1. **Jelszó alaphelyzetbe állítása** -visszaállíthatja a jelszót. 
+2. **Az összes kockázati esemény elvetését** – a felhasználó kockázati szabályzat akkor tiltja a felhasználó, ha a beállított felhasználói kockázati szint blokkolja a hozzáférést a rendszer elérte. Csökkentheti a felhasználó kockázati események jelentett kockázati szint kézzel zárja be. 
 3. **A házirend kizárása** – Ha úgy véli, hogy a bejelentkezési szabályzat aktuális konfigurációja megadott felhasználók számára problémákat okoz, kizárhatja azokat a felhasználókat belőle. További információkért lásd: [Azure Active Directory Identity Protection](../active-directory-identityprotection.md).
 4. **Szabályzat letiltása** – Ha úgy véli, hogy a házirend-konfiguráció okozza-e problémák a felhasználók számára, hogy letilthatja a szabályzatot. További információkért lásd: [Azure Active Directory Identity Protection](../active-directory-identityprotection.md).
 

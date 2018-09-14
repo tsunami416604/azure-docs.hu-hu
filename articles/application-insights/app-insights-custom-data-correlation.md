@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/08/2018
 ms.reviewer: mbullwin
 ms.author: Evgeny.Ternovsky
-ms.openlocfilehash: 31e37efc1aad3d355bdd8391535f317ec137f5d7
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 6d19c64c74a01a012bac3d867e2d65393ae21cd3
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "40162040"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45577771"
 ---
 # <a name="correlating-application-insights-data-with-custom-data-sources"></a>Vlastní zdroje dat az Application Insights-adatok korrelálásához
 
@@ -51,7 +51,7 @@ Hogy adatokat küldjön a Log analyticsbe. Több lehetőség is létezik:
 
 ## <a name="correlating-data"></a>Az adatok korrelálása
 
-Az Application Insights a Log Analytics data platform alapul. Ezért használhatunk [erőforrások közötti illesztések](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-cross-workspace-search) korrelációját, hogy betöltődnek a Log Analytics az Application Insights-adatok az adatokat.
+Az Application Insights a Log Analytics data platform alapul. Ezért használhatunk [erőforrások közötti illesztések](https://docs.microsoft.com/azure/log-analytics/log-analytics-cross-workspace-search) korrelációját, hogy betöltődnek a Log Analytics az Application Insights-adatok az adatokat.
 
 Például hogy betöltheti az a labor-készlet és a helyek "LabLocations_CL" nevű "myLA" nevű Log Analytics-munkaterületet a táblába. Ha ezután tekintse át a kérelmek nyomon követése "myAI" nevű Application Insights-alkalmazás, és vesse össze a számítógépek nevével, amely a kérelmeket a helyekre, ezek a gépek a korábban említett egyéni táblában tárolt kiszolgált szerettünk volna, futtassa a következő lekérdezést a az Application Insights vagy a Log Analytics-kontextus:
 
@@ -66,4 +66,4 @@ app('myAI').requests
 ## <a name="next-steps"></a>További lépések
 
 - Tekintse meg a [adatgyűjtő API](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-collector-api) hivatkozást.
-- További információ a [erőforrások közötti illesztések](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-cross-workspace-search).
+- További információ a [erőforrások közötti illesztések](https://docs.microsoft.com/azure/log-analytics/log-analytics-cross-workspace-search).

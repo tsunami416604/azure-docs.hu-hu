@@ -1,6 +1,6 @@
 ---
-title: Az Azure nyilvános Felhőjében elszigeteléséről |} Microsoft Docs
-description: További információk a felhőalapú számítási szolgáltatás, amely tartalmazza a számítási példányokért széles kijelölt & szolgáltatások, amely is fel-le automatikusan az alkalmazás vagy a vállalat igényeinek.
+title: Elkülönítés az Azure nyilvános felhő |} A Microsoft Docs
+description: Ismerje meg a felhőalapú számítástechnikai szolgáltatások széles választékával számítási példányokat tartalmazó & szolgáltatások, amelyek méretezhető felfelé és lefelé automatikusan az alkalmazás vagy a vállalat igényeinek.
 services: security
 documentationcenter: na
 author: UnifyCloud
@@ -14,351 +14,351 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: b112eee0e33654657bc6a57eec528c8a93bb077a
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: 5710ebc1c52737e27aafa88eef5e9ae402f8e53f
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37018412"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45579845"
 ---
-# <a name="isolation-in-the-azure-public-cloud"></a>Az Azure nyilvános Felhőjében elszigeteléséről
+# <a name="isolation-in-the-azure-public-cloud"></a>Elkülönítés az Azure nyilvános felhő
 ##  <a name="introduction"></a>Bevezetés
 ### <a name="overview"></a>Áttekintés
-Segít a jelenlegi és jövőbeli Azure ügyfelek ismertetése és használják a különböző biztonsági lehetőségeinek és körülvevő az Azure platformon, Microsoft kifejlesztette egy sorozatát tanulmányok, biztonsági áttekintése, ajánlott eljárások és Ellenőrzőlisták.
-A témakörök között körének és mélysége, és rendszeresen frissülnek. Ez a dokumentum a sorozat része az alábbiakban absztrakt szakaszban foglaltak szerint.
+Segít a jelenlegi és jövőbeli Azure ügyfelek ismertetése, és felhasználja az elérhető különböző biztonsági funkciókat és körülvevő az Azure platform, Microsoft kifejlesztett egy sorozatát tanulmányok, biztonsági áttekintéseket, ajánlott eljárások és Ellenőrzőlistákat.
+A témakörök tartomány és teljes mértékű tekintetében, és rendszeresen frissül. Ez a dokumentum a sorozat része, a következő absztrakt szakaszban foglaltak szerint.
 
-### <a name="azure-platform"></a>Az Azure Platform
-Azure olyan nyitott és rugalmas felhőszolgáltatási platform, amely támogatja a operációs rendszerek, programozási nyelvek, keretrendszerek, eszközök, adatbázisok és eszközök legszélesebb kiválasztása. Megteheti például a következőt:
-- Futtassa a Linux-tárolók Docker integrációs;
-- Alkalmazások, JavaScript, Python, .NET, PHP, Java és Node.js; és
-- Build vissza-végpontok iOS, Android és Windows eszközökhöz.
+### <a name="azure-platform"></a>Azure-Platform
+Az Azure egy nyílt és rugalmas felhőszolgáltatás-platform, amely a platform támogatja az operációs rendszerek, programozási nyelvek, keretrendszerek, eszközök, adatbázisok és eszközök. Megteheti például a következőt:
+- Linux-tárolókat futtathat Docker-integrációval;
+- A JavaScript, Python, .NET, PHP, Java és Node.js-alkalmazások készítéséhez és
+- Háttérrendszereket készíthet iOS, Android és Windows eszközökhöz.
 
-Microsoft Azure támogatja a fejlesztők milliói technológiát és informatikai szakemberek számára már alapulnak, és megbízható.
+A Microsoft Azure-fejlesztők milliói technológiákat támogatja, és informatikai szakemberek számára már elnyerték.
 
-Létrehozása vagy áttelepítése informatikai eszközök, a nyilvános felhőbeli szolgáltatás szolgáltatója, akkor vannak támaszkodva az alkalmazások és a szolgáltatások és a biztonsági a felhő alapú eszközök kezelésére adathordozóira vezérlők adatok védelme érdekében, hogy szervezete képességek.
+Amikor épülnek, vagy át az IT-eszközeivel, nyilvános felhőszolgáltató, hagyatkoznia a annak a szervezetnek képességek az alkalmazások és a szolgáltatások és a vezérlőket, kezelheti a felhőalapú eszközeinek biztonságát biztosítanak az adatok védelme érdekében.
 
-Az Azure infrastruktúráját úgy tervezték, hogy képes legyen ügyfelek millióit egyidejűleg kiszolgáló alkalmazásokat üzemeltetni, és olyan megbízható alapot nyújtson, amely megfelel a vállalatok biztonsági igényeinek. Számos konfigurálható biztonsági beállítással is rendelkezik, amelyek testreszabásával a különböző környezetek egyedi követelményeinek megfelelő biztonsági megoldások alakíthatók ki. Ez a dokumentum segít az elvárásoknak.
+Az Azure infrastruktúráját úgy tervezték, hogy képes legyen ügyfelek millióit egyidejűleg kiszolgáló alkalmazásokat üzemeltetni, és olyan megbízható alapot nyújtson, amely megfelel a vállalatok biztonsági igényeinek. Számos konfigurálható biztonsági beállítással is rendelkezik, amelyek testreszabásával a különböző környezetek egyedi követelményeinek megfelelő biztonsági megoldások alakíthatók ki. Ez a dokumentum segít a fenti követelményeknek megfelelő.
 
 ### <a name="abstract"></a>Absztrakt
 
-A Microsoft Azure lehetővé teszi, hogy a megosztott fizikai infrastruktúra alkalmazások és a virtuális gépek (VM) futtathatja. Az elsődleges gazdasági igénybevételéről fontosságú egy felhőalapú környezetben futó alkalmazások közül azt a képességet terjesztheti a több felhasználó között megosztott erőforrások költségét. Ez az eljárás a több-bérlős multiplex erőforrások közötti kis költségek különböző ügyfelek révén növeli a hatékonyságot. Sajnos egyben bevezeti a fizikai kiszolgálók és a bizalmas alkalmazások és a virtuális gépek, előfordulhat, hogy egy tetszőleges és az esetlegesen kártékony felhasználóhoz tartozó futtatásához más infrastruktúrához kapcsolódó erőforrások megosztása kockázatát.
+A Microsoft Azure segítségével az alkalmazások és a virtuális gépek (VM) futtatását a megosztott fizikai infrastruktúrán. A felhőalapú környezetben futó alkalmazások elsődleges gazdasági eleve egyik képes elosztani a több ügyfél között megosztott erőforrások költségét. Ez az eljárás a több-bérlős alacsony költségek különböző ügyfelek körében multiplex erőforrások révén növeli a hatékonyságot. Sajnos ez azzal a kockázattal is megosztási fizikai kiszolgálók és egyéb infrastrukturális erőforrásokat a bizalmas alkalmazások és a egy olyan tetszőleges és potenciálisan rosszindulatú felhasználó tartozó virtuális gépek futtatásához.
 
-Ez a cikk ismerteti, hogyan Microsoft Azure el vannak különítve a rosszindulatú és nem rosszindulatú felhasználók ellen, és a megoldások különböző elkülönítési döntések kínál a fejlesztők által újratervezni útmutatóként szolgál. Ez a dokumentum elsősorban az Azure platform és ügyfélkapcsolati biztonsági vezérlők technológia, és nem kísérli meg cím SLA-k, árképzési modellt és DevOps eljárásokkal kapcsolatos szempontok.
+Ez a cikk ismerteti, hogyan a Microsoft Azure el vannak különítve kártékony és a nem rosszindulatú felhasználókkal szemben, és a felhőalapú megoldások kiépítése különböző elkülönítési lehetőségek felajánlásával, tervezők útmutatóként szolgál. Ez a tanulmány az Azure-platform és az ügyfelek által használt biztonsági vezérlők technológia összpontosít, és nem próbál meg címet SLA-k, díjszabási modelleket és DevOps-eljárásokkal kapcsolatos szempontok.
 
 ## <a name="tenant-level-isolation"></a>Bérlő szintű elkülönítés
-Az egyik elsődleges előny a felhőalapú informatika egy megosztott, közös infrastruktúra fogalma egyszerre egy között számos olyan ügyfél, ami méretgazdaságossági. Ez a több bérlős nevezik. Microsoft folyamatosan működik, győződjön meg arról, hogy a több-bérlős architektúrák a Microsoft felhőalapú Azure biztonsági, titkosítás, adatvédelmi, integritás és rendelkezésre állás szabványok támogatja-e.
+Az egyik a elsődleges felhő-számítástechnika egy megosztott, közös infrastruktúra fogalma között számos olyan ügyfél egyszerre vezető méretgazdaságossági előnyeit. A fogalom a több-bérlős nevezzük. A Microsoft folyamatosan együttműködik annak érdekében, hogy a több-bérlős architektúra a Microsoft Cloud Azure biztonsági, bizalmas, adatvédelmi, integritás és rendelkezésre állási szabványok támogatja-e.
 
-Felhőalapú munkahelyek esetén a bérlő olyan ügyfelet vagy szervezetet jelent, amely a felhőszolgáltatás adott példányát birtokolja és kezeli. A Microsoft Azure által biztosított identitásplatformok a bérlő egyszerűen egy Azure Active Directory (Azure AD), amely a szervezet megkap és a tulajdonában áll, amikor regisztrálnak egy Microsoft felhőszolgáltatásra dedikált példánya esetén.
+Felhőalapú munkahelyek esetén a bérlő olyan ügyfelet vagy szervezetet jelent, amely a felhőszolgáltatás adott példányát birtokolja és kezeli. A Microsoft Azure által biztosított identitásplatformok egy bérlő Azure Active Directory (Azure AD), amely a szervezet megkap és a tulajdonukban áll, amikor regisztrál egy Microsoft felhőszolgáltatásra egyszerűen egy dedikált példánya.
 
 Mindegyik Azure AD-címtár önálló, és el van választva a többi Azure AD-címtártól. Ahogy a vállalat irodaépülete is egy vállalatspecifikus biztonsági vagyontárgynak tekinthető, az Azure AD-címtár is egy, kizárólag az adott szervezet általi használatra kialakított biztonságos eszköz. Az Azure AD architektúrájával megakadályozható az ügyfél- és identitásadatok keveredése. Ez azt jelenti, hogy az adott Azure AD-címtár felhasználói és rendszergazdái véletlenül vagy kártételi szándékkal nem férhetnek hozzá más címtárak adataihoz.
 
-### <a name="azure-tenancy"></a>Az Azure-Bérlőhöz
-Az Azure-bérlőhöz (Azure-előfizetéshez) hivatkozik a "felhasználói/billing" kapcsolat és egy egyedi [bérlői](https://docs.microsoft.com/azure/active-directory/develop/active-directory-howto-tenant) a [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis). Bérlő szintű elkülönítés a Microsoft Azure-ban érhető el, az Azure Active Directoryval és [szerepköralapú vezérlők](https://docs.microsoft.com/azure/role-based-access-control/overview) által kínált. Minden Azure-előfizetés tartozik egy Azure Active Directory (AD) címtárban.
+### <a name="azure-tenancy"></a>Az Azure Bérlős
+Az Azure bérleti (az Azure-előfizetés) hivatkozik egy "customer/billing" kapcsolat és a egy egyedi [bérlői](https://docs.microsoft.com/azure/active-directory/develop/active-directory-howto-tenant) a [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis). Bérlő szintű elkülönítés, Microsoft Azure-ban érhető el az Azure Active Directoryval és [szerepköralapú vezérlőkkel](https://docs.microsoft.com/azure/role-based-access-control/overview) azt ajánlja. Minden Azure-előfizetés társítva egy Azure Active Directory (AD) címtárban.
 
-Felhasználók, csoportok és alkalmazások tartalmazza a kezelhetik az erőforrásokat az Azure-előfizetésben. Az Azure portál, az Azure parancssori eszközök és az Azure szolgáltatásfelügyeleti API használatával a következő hozzáférési jogokat rendelhet hozzá. Az Azure AD-bérlő elkülönül logikailag biztonsági határokat használja, így nem az ügyfél hozzáférési vagy veszélyeztetheti a közös bérlők szándékosan vagy véletlenül. Az Azure AD fut egy elkülönített hálózati szegmensen elkülönített "operációs rendszer nélküli" kiszolgálókon, ahol gazdaszintű hálózaticsomag-szűrés és a Windows tűzfal blokkolja kéretlen kapcsolatokat és a forgalom.
+Felhasználók, csoportok és alkalmazások adott címtárból az Azure-előfizetésében lévő erőforrások is kezelhetők. Hozzárendelheti a hozzáférési jogosultságok az Azure portal, az Azure parancssori eszközeivel és az Azure felügyeleti API-k használatával. Az Azure AD-bérlő logikailag el különítve a biztonsági határoknak köszönhetően, hogy az ügyfél nem férhetnek hozzá, vagy veszélyeztetheti a közös bérlők véletlenül vagy kártételi. Az Azure AD egy elkülönített hálózati szegmensen elszigetelt "operációs rendszer nélküli" kiszolgálóján fut, ahol gazdagépszintű hálózaticsomag-szűrés és a Windows tűzfal blokkolja kéretlen kapcsolatokat és a forgalom.
 
-- Az Azure AD-adatokhoz való hozzáférés csak a felhasználó hitelesítése biztonságijogkivonat-szolgáltatás (STS) keresztül. A felhasználó fenntartása, engedélyezett állapotát, és a szerepkör az engedélyezési rendszert használják annak meghatározásához, hogy a kért cél bérlő van engedélyezve a felhasználó ebben a munkamenetben.
+- Az Azure AD-adatokhoz való hozzáférést a biztonsági jogkivonatokkal kapcsolatos szolgáltatás (STS) keresztül felhasználóhitelesítést igényel. Információ a felhasználó létezik-e, a engedélyezett állapotát és a szerepkör segítségével az engedélyezési rendszer határozza meg, hogy a kért cél bérlőhöz való hozzáférés jogosult-e a felhasználó ebben a munkamenetben.
 
-![Az Azure-Bérlőhöz](./media/azure-isolation/azure-isolation-fig1.png)
+![Az Azure Bérlős](./media/azure-isolation/azure-isolation-fig1.png)
 
 
-- Bérlők diszkrét tárolói, és ezek között nincs kapcsolat van.
+- Bérlők különálló tárolókat, és nincs ezek között kapcsolat.
 
-- Nem lehet hozzáférni között bérlők csak a bérlői rendszergazda összevonási vagy a többi bérlőtől felhasználói fiókok létesítését keresztül biztosít.
+- Nincs hozzáférés között bérlők, kivéve, ha a bérlői rendszergazda összevonási vagy más bérlőktől származó felhasználói fiókok kiépítése keresztül biztosít.
 
-- Fizikai hozzáférés az Azure AD szolgáltatás alkotó kiszolgálók és az Azure AD háttér-rendszereket, a közvetlen hozzáférést korlátozódik.
+- Fizikai hozzáférés az Azure AD szolgáltatás alkotó kiszolgálók és az Azure AD háttérrendszerekhez, közvetlen hozzáférést a rendszer korlátozott.
 
-- Az Azure Active Directory-felhasználók hozzáférése nincs fizikai eszközök és helyét, és ezért nincs lehetőség, hogy a logikai RBAC házirend ellenőrzések is olvasható a következő megkerülése.
+- Az Azure AD-felhasználók nem férhetnek fizikai eszközök vagy a helyek, és ezért már nem lehetséges, hogy a logikai RBAC szabályzat ellenőrzéseibe conditions stated above következő megkerülése.
 
-A diagnosztika és karbantartási igényeire az operatív modell just-in-time jogosultság jogosultságszint-emelés rendszer által szükséges, és használja. Az Azure AD Privileged Identity Management (PIM) jelenik meg az egy jogosult rendszergazdának. [Jogosult rendszergazdák](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure) szükséges jogosultsággal rendelkező felhasználók férhetnek hozzá a most majd, de nem minden nap lehet. A szerepkör nem aktív, amíg a felhasználó kell elérnie, akkor az aktiválási folyamat befejezéséhez, és egy előre meghatározott időn egy aktív felügyeleti válik.
+Diagnosztika és a karbantartási igényeket az operatív modell, amely egy jogosultság igény jogosultságszint-emelési rendszert használ szükséges, és használja. Az Azure AD Privileged Identity Management (PIM) bevezeti a jogosult rendszergazda fogalmát [Jogosult rendszergazdák](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure) kell lennie, amely a szükséges jogosultsággal rendelkező felhasználók eléréséhez most majd, de nem minden nap. A szerepkör inaktív, amíg a felhasználónak nincs szüksége a hozzáférésre, majd szükség esetén a felhasználó egy aktiválási folyamat teljesítésével válhat aktív rendszergazdává egy előre meghatározott időtartamra.
 
 ![Azure AD Privileged Identity Management](./media/azure-isolation/azure-isolation-fig2.png)
 
-Az Azure Active Directory mindegyik bérlő saját védett tárolóban, szabályzatokat és engedélyeket a, és kizárólag által birtokolt vagy kezelt a bérlő tárolóban levő üzemelteti.
+Az Azure Active Directory minden bérlő saját védett tárolót, szabályzatokat és engedélyeket, és a tárolóban, kizárólag a tulajdonosa, és a bérlő által felügyelt üzemelteti.
 
-A bérlői tárolók fogalmát mélyen ingrained összes rétegek, egészen az állandó tároló portálok: a címtárszolgáltatásban.
+A tárolókkal. bérlő fogalmát mélyen ingrained, a címtárszolgáltatás portálok egészen az állandó tárolóba érkező minden rétegen.
 
-Akkor is, ha több Azure Active Directory-bérlő metaadatok ugyanazon a fizikai lemezen tárolja, nincs kapcsolat a tárolók a címtárszolgáltatás, amely viszont határozza meg a bérlői rendszergazda által meghatározott eltérő között.
+Akkor is, ha több Azure Active Directory-bérlő metaadataiból ugyanazon a fizikai lemezen tárolja, nincs kapcsolat a címtárszolgáltatás, amely viszont szabja meg a bérlői rendszergazda által meghatározott eltérő a tárolók között.
 
 ### <a name="azure-role-based-access-control-rbac"></a>Azure szerepköralapú hozzáférés-vezérlés (RBAC)
-[Azure szerepköralapú hozzáférés-vezérlés (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) segítséget nyújt az Azure-előfizetés belül elérhető különböző összetevőket fájlmegosztás, adja meg a részletes hozzáféréskezelést az Azure. Az Azure RBAC lehetővé teszi, hogy elkülönítse a feladatokat a szervezeten belül, és hozzáférést biztosíthat a felhasználóknak kell elvégezni a munkájukat alapján. Jogosultságot ad a Mindenki helyett korlátlan engedélyeket a Azure-előfizetés vagy erőforrásokhoz, engedélyezheti a csak bizonyos műveleteket.
+[Az Azure szerepköralapú hozzáférés-vezérlés (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) a különböző összetevők elérhető az Azure-előfizetésen belül megoszthatók azáltal, hogy hozzáféréskezelést az Azure segítségével. Az Azure RBAC lehetővé teszi, hogy elkülönítse a szervezeten belül, és hozzáférést biztosít a felhasználóknak kell feladataik elvégzéséhez alapján. Helyett, így mindenki korlátozás nélküli engedélyeket az Azure-előfizetés vagy erőforrásokhoz, engedélyezheti csak bizonyos műveleteket.
 
 Az Azure RBAC rendelkezik, amelyek érvényesek az összes erőforrástípus három alapvető szerepkörök:
 
-- **Tulajdonos** minden erőforrást, beleértve a jogot, hogy mások számára delegálása teljes hozzáféréssel rendelkezik.
+- **Tulajdonos** az összes olyan erőforrásokhoz, beleértve a jogot arra, hogy mások való hozzáférés delegálására teljes hozzáféréssel rendelkezik.
 
-- **A közreműködői** is létrehozása és kezelése az Azure-erőforrások minden típusú, de nem tud hozzáférést biztosítani, mások számára.
+- **Közreműködői** is létrehozása és kezelése minden típusú Azure-erőforrások, de nem adhat hozzáférést másoknak.
 
 - **Olvasó** megtekintheti a meglévő Azure-erőforrások.
 
 ![Azure szerepköralapú hozzáférés-vezérlés](./media/azure-isolation/azure-isolation-fig3.png)
 
-A többi Azure RBAC szerepkört az adott Azure-erőforrások felügyelet lehetővé tételéhez. Például a virtuális gép közreműködői szerepkör lehetővé teszi, hogy a felhasználó számára a virtuális gépek létrehozására és kezelésére. Azt nem betekintést biztosít az Azure virtuális hálózat vagy az alhálózatot, amely a virtuális géphez csatlakozik.
+A többi Azure-beli RBAC-szerepkörök lehetővé teszik az adott Azure-erőforrások kezelése. A virtuális gépek Közreműködője szerepkör például lehetővé teszi, hogy a felhasználó számára a virtuális gépek létrehozása és kezelése. Ez nem ad neki hozzáférést az Azure virtuális hálózat vagy az alhálózatot, amelyet a virtuális gép csatlakozik.
 
-[Beépített RBAC-szerepkörök](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) össze az Azure-ban érhető el a szerepkörök listáját. Azt adja meg az operatív és hatókörhöz, amely minden beépített szerepkörök a felhasználók számára. Ha még nagyobb mértékben vezérelheti a saját szerepköröket definiál, lásd: hogyan hozhat létre [egyéni szerepkörök az Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/custom-roles).
+[Beépített RBAC-szerepkörök](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) listázása az Azure-ban elérhető szerepköröket. Azt adja meg az operatív és a hatókör, amely minden egyes beépített szerepkört biztosít a felhasználók számára. Ha még több vezérlő saját szerepköröket definiál, megtudhatja, hogyan hozhat létre [egyéni szerepkörök az Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/custom-roles).
 
-Az Azure Active Directory néhány más képességet a következők:
-- Az Azure AD lehetővé teszi, hogy egyszeri bejelentkezés az SaaS-alkalmazásokhoz, függetlenül attól, hogy a rendszer hol tárolja. Egyes alkalmazások az Azure AD-vel összevontan működnek, mások jelszavas egyszeri bejelentkezést használnak. Összevont alkalmazásokat is képes támogatni a felhasználók átadása és [jelszótárolást](https://www.techopedia.com/definition/31415/password-vault).
+Azure Active Directory egyéb funkciói a következők:
+- Az Azure AD egyszeri bejelentkezés SaaS-alkalmazásokhoz, helyüktől függetlenül lehetővé teszi. Egyes alkalmazások az Azure AD-vel összevontan működnek, mások jelszavas egyszeri bejelentkezést használnak. Összevont alkalmazás is képes támogatni a felhasználókiépítés és [jelszótárolást](https://www.techopedia.com/definition/31415/password-vault).
 
-- Az [Azure Storage](https://azure.microsoft.com/services/storage/)-ban tárolt adatokhoz való hozzáférést hitelesítés védi. Minden tárfiók elsődleges kulccsal rendelkezik ([tárfiók kulcsa](https://docs.microsoft.com/azure/storage/storage-create-storage-account), vagy SAK) és egy másodlagos titkos kulcs (a közös hozzáférésű jogosultságkódot, vagy SAS).
+- Az [Azure Storage](https://azure.microsoft.com/services/storage/)-ban tárolt adatokhoz való hozzáférést hitelesítés védi. Minden tárfióknak van egy elsődleges kulcs ([tárfiókkulcs](https://docs.microsoft.com/azure/storage/storage-create-storage-account), vagy SAK) és a egy másodlagos titkos kulcsot (a közös hozzáférésű jogosultságkód vagy SAS).
 
-- Az Azure AD Identity keresztül összevonási szolgáltatás segítségével biztosítja [Active Directory összevonási szolgáltatások](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-azure-adfs), szinkronizáláshoz és a replikáció a helyszíni címtárakban.
+- Az Azure AD biztosítja az identitáskezelési keresztül összevonási szolgáltatás használatával [Active Directory összevonási szolgáltatások](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-azure-adfs), szinkronizáláshoz és a helyszíni címtárak replikációjával.
 
-- [Az Azure multi-factor Authentication](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication) a többtényezős hitelesítési szolgáltatás, amely megköveteli a felhasználóktól bejelentkezések ellenőrizheti a mobilalkalmazás, telefonhívással vagy szöveges üzenetben. Használat és az Azure AD segítségével biztonságos a helyszíni erőforrások az Azure multi-factor Authentication kiszolgálóval és az egyéni alkalmazások és könyvtárak a SDK használatával.
+- [Az Azure multi-factor Authentication](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication) a multi-factor authentication szolgáltatás, amely megköveteli a felhasználóktól bejelentkezések ellenőrzése egy mobilalkalmazás, telefonhívás vagy SMS-üzenet használatával. Használat az Azure ad-vel biztonságos helyszíni erőforrásait az Azure multi-factor Authentication-kiszolgálóval és az egyéni alkalmazások és az SDK-val könyvtárak segítségével.
 
-- [Azure AD tartományi szolgáltatások](https://azure.microsoft.com/services/active-directory-ds/) lehetővé teszi, hogy az Azure virtuális gépek csatlakoztatása egy Active Directory-tartomány tartományvezérlők üzembe helyezésének nélkül. Ezek a virtuális gépek jelentkezzen be a vállalati Active Directory hitelesítő adataival, és a tartományhoz csatlakozó virtuális gépek felügyelete az Azure virtuális gépeken futó biztonsági alapterveket kényszerítéséhez csoportházirend használatával.
+- [Az Azure AD Domain Services](https://azure.microsoft.com/services/active-directory-ds/) Azure-beli virtuális gépek csatlakoztatása az Active Directory tartományhoz tartományvezérlők üzembe helyezése nélkül teszi lehetővé. Ezek a virtuális gépek jelentkezzen be a vállalati Active Directory hitelesítő adataival, és a tartományhoz csatlakoztatott virtuális gépek felügyelete az Azure-beli virtuális gépek a biztonsági előírások kényszerítéséhez csoportházirend használatával.
 
-- [Az Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory-b2c/) egy magas rendelkezésre állású globális identitás szolgáltatást biztosít a felhasználók felé néző alkalmazások száz millió identitások alkalmazkodnak. Mobil- és webes platformokba is integrálható. A felhasználók bejelentkezhetnek, testre szabható felhasználói élmény mellett az alkalmazások hitelesítő adatok létrehozásával vagy meglévő közösségi fiókjaik használatával.
+- [Az Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory-b2c/) magas rendelkezésre állású globális identity management-szolgáltatás felé néző alkalmazások esetén, amely több százmillió identitás kezelésére méretezhető. Mobil- és webes platformokba is integrálható. A felhasználók jelentkezhetnek be minden a testreszabható felületeken, meglévő közösségi hálózati fiókjaikkal vagy hitelesítő adatok létrehozásával.
 
-### <a name="isolation-from-microsoft-administrators--data-deletion"></a>A Microsoft rendszergazdák & Adattörlés elkülönítési
-Microsoft erős intézkedések megóvhatja adatait egy nem megfelelő hozzáférési vagy illetéktelen személyek általi vesz igénybe. Ezeket a működési folyamatok és vezérlőelemek üzemelnek a [Online szolgáltatási feltételek](http://aka.ms/Online-Services-Terms), melyik ajánlattal szerződéses kötelezettségek adataihoz való hozzáférés szabályozásához.
+### <a name="isolation-from-microsoft-administrators--data-deletion"></a>Elkülönítés a Microsoft a rendszergazdák & adatok törlése
+A Microsoft védi adatait az illetéktelen hozzáférés, vagy illetéktelen személyek általi használata erős mértékek vesz igénybe. Ezek üzemeltetési folyamatokat és élvezik a [Online szolgáltatások használati feltételeit](http://aka.ms/Online-Services-Terms), amely szerződéses kötelezettségvállalás ad az adatok elérését szabályozó kínálnak.
 
--   A Microsoft szakemberei nincs alapértelmezett hozzáférési az adatok a felhőben. Ehelyett kapnak hozzáférést, csak akkor, ha szükséges, a felügyeleti felügyelet alatt. Elérheti gondosan ellenőrzött és naplózott, és visszavonva, amikor már nincs szükség.
+-   A Microsoft szakemberei nem rendelkezik alapértelmezett hozzáférést az adataihoz a felhőben. Ehelyett kaptak hozzáférést, a felügyeleti felügyeletet, csak szükség esetén. A hozzáférés alaposan ellenőrzött és naplózott, és visszavonja, amikor már nincs rá szükség.
 
--   Microsoft felvételi előfordulhat, hogy más vállalatokkal, hogy a nevében korlátozott szolgáltatásokat nyújtsanak. Alvállalkozók elérhessék az ügyféladatok csak biztosítanak, amelynek a szolgáltatások em bíztunk azokat, és nem használhatják más célra használja azt. Továbbá azok szerződésben kötött bizalmasan kezeljék a felhasználók információkat.
+-   A Microsoft megbízhat más cégeket azzal, hogy korlátozott szolgáltatást nyújtsanak a nevében. Alvállalkozók el az ügyféladatokat csak, hogy a szolgáltatások, amelynek em megbíztuk őket biztosít, és azokat nem használhatják más célra használja. További azok szerződésben kötött bizalmasan ügyféladatokat.
 
-Üzleti szolgáltatásokat, például az ISO/IEC 27001 ellenőrzött minősítései közül rendszeresen ellenőrizni Microsoft és akkreditált naplózási cégek, amelyek minta naplózás igazolják, hogy hozzáférést, csak a valódi üzleti célok végrehajtására. A saját felhasználói adatok bármikor, bármilyen okból mindig elérhető.
+Például az ISO/IEC 27001 rendszervizsgálati módban levő minősítések az üzleti szolgáltatás rendszeresen ellenőrzi a Microsoft és akkreditált auditáló cégekkel, amely auditorai emellett mintavételi auditokkal, hogy a hozzáférés csak jogszerű üzleti célokra. Saját ügyféladataihoz bármikor és bármilyen okból mindig elérheti.
 
-Ha törli az adatokat, a Microsoft Azure törli az adatokat, beleértve a gyorsítótárazott vagy biztonsági másolatok. A hatókör szolgáltatások esetén törlése a megőrzési időszak lejárta után 90 napon belül esedékes. (Az adatok feldolgozása feltételek részében meghatározott hatókör szolgáltatások a [Online szolgáltatási feltételek](http://aka.ms/Online-Services-Terms).)
+Ha törli az adatokat, a Microsoft Azure törli az adatokat, beleértve a gyorsítótárazott vagy a biztonsági másolatok. A releváns szolgáltatások esetében, amelyek törlése a megőrzési időszak vége után 90 napon belül történik. (A releváns szolgáltatások adatfeldolgozási feltételek szakaszában meghatározott a [Online szolgáltatások használati feltételeit](http://aka.ms/Online-Services-Terms).)
 
-Ha a meghajtó tárolására használt hardver meghibásodása esetén a rendszer biztonságosan [törlik vagy megsemmisítik](https://microsoft.com/en-us/trustcenter/privacy/you-own-your-data) előtt Microsoft visszaadja a gyártó cseréje vagy a javítás. Győződjön meg arról, hogy az adatok nem állítható helyre bármilyen módon történő felülírja a meghajtón található adatokat.
+Ha a meghajtó tárolására használt romlik egy hardverhiba, biztonságosan van-e [törölve lesz, vagy megsemmisül](https://microsoft.com/en-us/trustcenter/privacy/you-own-your-data) Microsoft visszaadja a gyártó cseréje vagy javítása előtt. A meghajtón található adatokat a rendszer felülírja annak érdekében, hogy az adatok semmilyen módon nem lehet helyreállítani.
 
-## <a name="compute-isolation"></a>Számítási elkülönítési
-Microsoft Azure biztosít a különböző felhőalapú számítási szolgáltatás, amely tartalmazza az számítási példányokért széles köre és a szolgáltatások, amely is fel-le automatikusan az alkalmazás vagy a vállalat igényeinek. A számítási példány és a szolgáltatás kínál az elkülönítési biztosítani az adatokat a konfigurációs rugalmasságot feláldozása nélkül, hogy az ügyfelek igény szerint több szinten.
+## <a name="compute-isolation"></a>Elkülönítés COMPUTE
+Microsoft Azure lehetőséget kínál a különböző felhőalapú számítástechnikai szolgáltatások széles választékával számítási példányokat tartalmazó és a szolgáltatások, amelyek méretezhető felfelé és lefelé automatikusan az alkalmazás vagy a vállalat igényeinek. Ezek számítási példány és a szolgáltatás kínálnak az elkülönítési adatok védelmét a rugalmasságot, a konfiguráció feláldozása nélkül a felhasználók igény szerint több szinten.
 
-### <a name="isolated-virtual-machine-sizes"></a>Elszigetelt virtuálisgép-méretek
-Az Azure Compute kínál a virtuális gép méretét, amely a adott hardverekhez típusra, és egyetlen ügyfél számára kijelölt elszigetelt vannak.  A virtuális gép használata esetén például a megfelelőségi és szabályozási követelmények elemek munkaterhelések nagyfokú elkülönítési más felhasználóktól igénylő munkaterhelések legmegfelelőbb értékek.  Az ügyfelek is beállíthatja a további fel az erőforrások ezek elszigetelt virtuális gépek használatával [beágyazott virtuális gépek az Azure támogatási](https://azure.microsoft.com/en-us/blog/nested-virtualization-in-azure/).
+### <a name="isolated-virtual-machine-sizes"></a>Elkülönített virtuálisgép-méretek
+Az Azure Compute olyan virtuálisgép-méreteket kínál, amelyek egy meghatározott hardvertípusban vannak elkülönítve, és egyetlen ügyfél számára vannak fenntartva.  Ezek a virtuálisgép-méretek olyan számítási feladatokhoz megfelelőek, amelyeket magas szintű izolációval szükséges elkülöníteni más ügyfelek számítási feladataitól, beleértve olyan elemeket is mint a megfelelőség vagy a jogszabályi előírások betartása.  Ügyfelek is kiválaszthatják a ezek elkülönített virtuálisgép-erőforrások vertikálisan tovább particionálhatja a [beágyazott virtuális gépek Azure-támogatás](https://azure.microsoft.com/blog/nested-virtualization-in-azure/).
 
-Egy elkülönített mérete használata biztosítja, hogy az, hogy a virtuális gépet, hogy adott server-példány csak egy futó lesz.  Az aktuális elszigetelt virtuális gép ajánlatokat a következők:
+Kész üzletifolyamat-elkülönített mérete garantálja, hogy a virtuális gép lesz a megadott kiszolgálópéldány csak egy futó.  Az aktuális elkülönített virtuálisgép-ajánlatok a következők:
 * Standard_E64is_v3
 * Standard_E64i_v3
-* Standard_M128ms
-* Standard_GS5
-* Standard szintű, G5
+* Standard m 128 MS
+* Például a Standard_GS5
+* Standard G5
 * Standard_DS15_v2
 * Standard_D15_v2
 
-Minden elérhető elkülönített méretére vonatkozó részletesebb [Itt](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes-memory).
+További információ érhető el minden egyes elkülönített mérete [Itt](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory).
 
-### <a name="hyper-v--root-os-isolation-between-root-vm--guest-vms"></a>A Hyper-V & legfelső szintű OS elkülönítési legfelső szintű VM & Vendég virtuális gépek között
-Azure compute platform gép virtualizálási alapul – tehát az összes felhasználói kód végrehajtása a Hyper-V virtuális gépen. Minden Azure csomópont (vagy a hálózati végpont) nincs olyan Hipervizorra, amely közvetlenül a hardver felett fut, és egy csomópont felosztja a változó a Vendég virtuális gépek (VM) számát.
-
-
-![A Hyper-V & legfelső szintű OS elkülönítési legfelső szintű VM & Vendég virtuális gépek között](./media/azure-isolation/azure-isolation-fig4.jpg)
+### <a name="hyper-v--root-os-isolation-between-root-vm--guest-vms"></a>Legfelső szintű virtuális gép és a Vendég virtuális gépek közötti elkülönítés a Hyper-V és a legfelső szintű operációs rendszer
+Az Azure számítási platformra alapuló gép virtualizációs – jelentése, amely végrehajtja az összes felhasználói kód a Hyper-V virtuális gépen. Minden olyan Azure-csomópont (vagy a hálózati végpont) nincs, amely közvetlenül a hardver felett fut, és a egy csomópontra osztja a Vendég virtuális gépek (VM) változó számú Hipervizoron.
 
 
-Minden csomópont is rendelkezik egy különleges legfelső szintű virtuális gép, az állomás operációs rendszer futtató. A kritikus határ elkülönítését a legfelső szintű a Vendég virtuális gépek és a Vendég virtuális gépeket egy másik, a hipervizor és a gyökér operációs rendszer kezeli a virtuális gép. A hipervizor/root az operációs rendszer jelenlegi párosítását a Microsoft évtizedekben operációs rendszer biztonsági élményt, és a Microsoft Hyper-V, a Vendég virtuális gépek erős elkülönítést biztosítani újabb tanulva kihasználja.
+![Legfelső szintű virtuális gép és a Vendég virtuális gépek közötti elkülönítés a Hyper-V és a legfelső szintű operációs rendszer](./media/azure-isolation/azure-isolation-fig4.jpg)
 
-Az Azure platform virtualizált környezetet használ. A felhasználói példányok működhetnek önálló virtuális gépek, amelyek nem rendelkeznek hozzáféréssel a fizikai kiszolgáló, és az elkülönítési kikényszeríti a fizikai processzor (ring-0/ring-3) a jogosultsági szintek segítségével.
 
-A „Ring 0” a legmagasabb, a „Ring 3” a legalacsonyabb jogosultsági szint. A vendég operációs rendszer fut egy alacsonyabb szintű jogosultságokat igénylő Ring 1, és alkalmazások futnak, a minimális jogosultságokkal rendelkező Ring 3. A fizikai erőforrások ilyen módszerrel történő virtualizálása következtében egyértelműen elkülönül a vendég operációs rendszer és a hipervizor, ez pedig a két rendszer további biztonsági elkülönülését eredményezi.
+Minden egyes csomópontot egy speciális legfelső szintű virtuális gép, amely a gazda operációs rendszer fut is tartalmaz. Kritikus fontosságú a határok elkülönítése a legfelső szintű a Vendég virtuális gépek és a Vendég virtuális gépeket egy másik, a hipervizor és a gyökér operációs rendszer kezeli a virtuális gép. Az operációs rendszer hipervizor/root párosítás használ az operációs rendszer felhasználói élmény és a Microsoft Hyper-v, a Vendég virtuális gépek erős elkülönítést biztosító újabb tanulás a Microsoft évtizedes.
 
-Az Azure hipervizor úgy viselkedik, mint egy micro kernel és átadja az összes hardver hozzáférési kérelmek a Vendég virtuális gépek feldolgozásra a fogadó egy VMBus nevű megosztott memória felület használatával. Ez megakadályozza, hogy a felhasználók nyers olvasási, írási és végrehajtási hozzáférést szerezzenek a rendszerhez, és csökkenti a rendszererőforrások megosztásának kockázatát.
+Az Azure platform virtualizált környezetet használ. A felhasználói példányok működnek, önálló virtuális gépekről, amelyek nem rendelkeznek fizikai gazdagép-kiszolgálóhoz való hozzáférést, és ez az elkülönítés kikényszeríti a fizikai processzor (kör-0/ring-3) jogosultsági szintek használatával.
 
-### <a name="advanced-vm-placement-algorithm--protection-from-side-channel-attacks"></a>Speciális virtuális gép elhelyezési algoritmus & ügyféloldali csatorna támadások elleni védelem
-A kereszt-VM támadás két lépésből áll: az ellenfél által felügyelt virtuális gép ugyanazon a gazdagépen rendelkezésre álló az áldozat virtuális gépek elhelyezése, és az elkülönítési határt alkotnak áldozata bizalmas információk ellopására vagy befolyásolja a teljesítményt greed vagy vandalizmus majd megsértése. Microsoft Azure két lépést védelmet biztosít egy speciális virtuális gép elhelyezési algoritmus és az összes ismert ügyféloldali csatorna támadások beleértve zajos szomszédos virtuális gépek védelmi használatával.
+A „Ring 0” a legmagasabb, a „Ring 3” a legalacsonyabb jogosultsági szint. A vendég operációs rendszer egy alacsonyabb jogosultsági szintű Ring 1 fut, és a legalacsonyabb jogosultsági szintű Ring 3 alkalmazások futnak. A fizikai erőforrások ilyen módszerrel történő virtualizálása következtében egyértelműen elkülönül a vendég operációs rendszer és a hipervizor, ez pedig a két rendszer további biztonsági elkülönülését eredményezi.
+
+Az Azure hipervizor úgy viselkedik, mint a micro-kernel és az összes hardver hozzáférési kéréseket továbbít a Vendég virtuális gépek a gazdagépnek feldolgozásra a VMBus nevű megosztottmemória-felületen. Ez megakadályozza, hogy a felhasználók nyers olvasási, írási és végrehajtási hozzáférést szerezzenek a rendszerhez, és csökkenti a rendszererőforrások megosztásának kockázatát.
+
+### <a name="advanced-vm-placement-algorithm--protection-from-side-channel-attacks"></a>Speciális Virtuálisgép-elhelyezési algoritmus & oldalsó csatorna támadások elleni védelem
+Kereszt-VM támadás két lépésből áll: egy támadó által felügyelt virtuális gép elhelyezése egy, az áldozat virtuális gépek ugyanazon a gazdagépen, és az elkülönítési határt kártevők victim bizalmas adatokat lophatnak el, vagy befolyásolja a teljesítményt greed vagy vandalizmus majd megsértése. A Microsoft Azure, mindkét lépést védelmet biztosít egy speciális Virtuálisgép-elhelyezési algoritmus és az összes ismert ügyféloldali csatorna támadásoktól, többek között a zajos szomszédok virtuális gépek védelmét.
 
 ### <a name="the-azure-fabric-controller"></a>Az Azure Fabric Controller
-Az Azure Fabric Controller bérlői munkaterheléseket infrastruktúrához kapcsolódó erőforrások lefoglalása felelős, és a gazdagép és virtuális gépek egyirányú kommunikációt kezeli. A virtuális gép az Azure fabric controller forgalomba hozatalára algoritmusa magas kifinomult és majdnem lehetetlen – fizikai állomás szint.
+Az Azure-Hálóvezérlő felelős az infrastruktúra-erőforrások bérlői számítási feladatok, és a gazdagép és virtuális gépek egyirányú kommunikációt kezeli. A virtuális gép az Azure fabric controller forgalomba hozatalára algoritmusa rendkívül kifinomult és szinte lehetetlen előre, mint a fizikai gazdagép szintjén.
 
 ![Az Azure Fabric Controller](./media/azure-isolation/azure-isolation-fig5.png)
 
-Az Azure hipervizor kikényszeríti a memória és a folyamat elkülönítése virtuális gépeket, és biztonságosan irányítja a hálózati forgalmat a vendég operációs rendszer bérlők számára. Ezzel a megoldással lehetőségét, és az ügyféloldali csatorna támadás VM szinten.
+Az Azure hipervizor előírja a memóriák és a folyamatok elkülönítését virtuális gépek között, és biztonságosan irányítja a hálózati forgalmat a vendég operációs rendszerek bérlőihez. Ezzel elkerülhető a lehetőségét, és a kiszolgálóoldali csatorna támadás VM-szintjén.
 
-Az Azure, a legfelső szintű virtuális gép működése speciális: az a megerősített operációs rendszert futtat a gyökér operációs rendszer neve, amelyen a háló ügynök (be). Eszközök segítségével pedig vendégügynökök (GA) kezelése belül a vendég operációs rendszer a felhasználói virtuális gépeket. Eszközök kezelésére is tárhely csomópontot.
+Az Azure-ban, a legfelső szintű virtuális gép különleges: azt a megerősített operációs rendszert futtat a gyökér operációs rendszer neve, amelyen a háló ügynök (be). FAs viszont kezelésére használhatók vendégügynökeit (elérhetővé tétel GA) belül az ügyfél virtuális gépek vendég operációs rendszerek. FAs tárolási csomópontok is kezelheti.
 
-Azure hipervizor gyűjteménye a gyökérkönyvtár OS/be, és az ügyfél virtuális gépek/gáz magában foglalja a számítási csomópont. A háló vezérlő (FC), mely kívül (számítási és tárolófürtöket kezeli külön FCs) számítási és tárolási csomópont már eszközök felügyeletét. Az ügyfél frissíti a az alkalmazás konfigurációs fájljának futtatása, ha az FC kommunikál a be, amely ezután csatlakozik a gáz, amely értesíti, hogy a konfigurációs módosítás alkalmazása. A hardver meghibásodása esetén a FC automatikusan található rendelkezésre álló hardver és indítsa újra a virtuális gép van.
+Az Azure hipervizor gyűjteménye gyökér operációs rendszer/be, és az ügyfél virtuális gépek/gáz magában foglalja a számítási csomópontok. FAs kezeli a hálóvezérlő (FC), amely kívül esik (számítási és tárolási fürtöket különálló FCs felügyelik) számítási és tárolási csomópontok létezik. Ha egy ügyfél-frissítéseket az alkalmazás konfigurációs fájljának futás közben, az FC kommunikál be, amely ezután csatlakozik a gáz, amely értesíti, hogy a konfigurációs módosítás alkalmazása. Hardverhiba esetén az FC automatikusan keresse meg a rendelkezésre álló hardverek és indítsa újra a virtuális gép létezik.
 
 ![Az Azure Fabric Controller](./media/azure-isolation/azure-isolation-fig6.jpg)
 
-Az ügynök és a Fabric Controller közötti kommunikáció egyirányú. Az ügynök valósítja meg az SSL-védelemmel ellátott szolgáltatás, amely csak válaszol a kérelmekre a tartományvezérlőről. A vezérlő vagy más kiemelt belső csomópontok kapcsolatok nem indítható el. Az FC kezeli az összes, mintha nem megbízható.
+A Hálóvezérlő ügynök a kommunikációt az egyirányú. Az ügynök valósítja meg az SSL-védelemmel ellátott szolgáltatása, amely csak válaszol a kérelmekre a vezérlőről. Ez nem kezdeményeznek kapcsolatokat a vezérlő vagy más kiemelt jogosultságú belső csomópontok. Az FC minden válasz kezeli, mintha nem megbízható.
 
 
-![Fabric-vezérlő](./media/azure-isolation/azure-isolation-fig7.png)
+![Hálóvezérlő](./media/azure-isolation/azure-isolation-fig7.png)
 
-Elkülönítési bővíti a Vendég virtuális gépek és a Vendég virtuális gépek egymástól a legfelső szintű virtuális gépről. A számítási csomópontok is el különítve a nagyobb védelme tárolócsomópontok.
-
-
-A hipervizor és a gazdagép operációs rendszer adja meg a hálózati csomag - szűrők érdekében, hogy biztosítsa, hogy a nem megbízható virtuális gépek nem hamisított adatforgalmat generálnak vagy forgalom nem fogadását, végpontok védett infrastruktúra-forgalom közvetlen vagy küldés/fogadás nem megfelelő szórási forgalmat.
+Elkülönítés a legfelső szintű virtuális gépről a Vendég virtuális gépek és a Vendég virtuális gépeket egy másik terjeszti ki. A számítási csomópontok is el különítve a nagyobb védelme tárolási csomópontok.
 
 
-### <a name="additional-rules-configured-by-fabric-controller-agent-to-isolate-vm"></a>További Fabric Controller ügynök elkülöníteni a virtuális gép által beállított szabályok
-Alapértelmezés szerint minden forgalmat blokkol, amikor létrejön egy virtuális gép, és ezután a fabric controller ügynök konfigurálja a csomag-szűrő hozzáadása a szabályok és kivételek engedélyezett forgalom engedélyezésére.
+A hipervizor és az operációs rendszer hálózati csomag - szűrőket, hogy biztosítsa, hogy a nem megbízható virtuális gépek nem identitáshamisításos forgalom létrehozása vagy őket, nem címzett forgalom fogadása érdekében adja meg a gazdagép védett infrastruktúra-végpontokra irányuló adatforgalmat, vagy küldése/fogadása nem megfelelő szórásos forgalom.
 
-Szabályok, amelyek program két kategóriába sorolhatók:
 
--   **Számítógép-konfiguráció vagy infrastruktúra szabályok:** alapértelmezés szerint minden kommunikációja blokkolva van. A virtuális gép DHCP és DNS- adatforgalmat engedélyezi kivételek vannak. Virtuális gépek is forgalmat küldeni a "nyilvános" internet és más virtuális gépek belül az azonos Azure virtuális hálózat és az operációs rendszer aktiválási kiszolgálói forgalmat küldeni. Engedélyezett kimenő célja a virtuális gépek listája nem tartalmazza az Azure útválasztó alhálózatok, az Azure felügyeleti és más Microsoft tulajdonságai.
+### <a name="additional-rules-configured-by-fabric-controller-agent-to-isolate-vm"></a>További szabályok elkülöníteni a virtuális gép Hálóvezérlő ügynök által konfigurált
+Alapértelmezés szerint minden forgalmat blokkol, amikor egy virtuális gépet hoz létre, és ezután a a hálóvezérlő ügynök a csomagszűrőt szabályok és kivételek engedélyezett forgalom engedélyezésére konfigurálja.
 
--   **Szerepkör konfigurációs fájl:** Ez határozza meg, hogy a bejövő hozzáférés-vezérlési listái (ACL) alapján a bérlő szolgáltatásmodellt.
+Programozott szabályok két kategóriába sorolhatók:
+
+-   **A gép konfigurációs vagy infrastrukturális szabályok:** alapértelmezés szerint minden kommunikáció blokkolva van. Nincsenek a kivételeket úgy, hogy engedélyezi egy virtuális gép DHCP és DNS-forgalmat küldjön és fogadjon. Virtuális gépek küldhetnek forgalmat a "nyilvános" internetre és az azonos Azure Virtual Network és az operációs rendszer aktiválási kiszolgáló belüli más virtuális gépek küldhetnek forgalmat is. Engedélyezett kimenő célok a virtuális gépek listája nem tartalmazza az Azure útválasztó-alhálózatok, az Azure felügyeleti és más Microsoft-tulajdonságok.
+
+-   **Szerepkör-konfigurációs fájl:** a bejövő hozzáférés-vezérlési listák (ACL) a bérlő szolgáltatási modell alapján határozza meg.
 
 ### <a name="vlan-isolation"></a>VLAN elkülönítése
-Az egyes csoportokban vannak a három VLAN-ok:
+Minden egyes fürt három VLAN-OK szerepelnek:
 
 ![VLAN elkülönítése](./media/azure-isolation/azure-isolation-fig8.jpg)
 
 
--   A fő VLAN – összeköttetések használatára a nem megbízható felhasználói csomópontok
+-   A fő VLAN – amellyel az ügyfél nem megbízható csomópontokon
 
 -   Az FC VLAN – tartalmazza a megbízható FCs és a támogató rendszerek
 
--   Az eszköz VLAN – tartalmazza a megbízható hálózatok és egyéb eszközök
+-   Az eszköz VLAN – tartalmazza a megbízható hálózatok és egyéb infrastrukturális eszközök
 
-Kommunikáció a fő VLAN-hoz az FC VLAN engedélyezett, de nem indítható el a fő VLAN az FC VLAN-hoz. Kommunikációs is blokkolva lett a fő VLAN az eszközre VLAN. Ez biztosítja, hogy akkor is, ha egy felhasználói kód futtatásával csomópont biztonsága sérül, akkor nem támadás csomópontok az FC vagy a VLAN-OK eszköz.
+Kommunikáció engedélyezett a Szálcsatornás VLAN a fő VLAN-hoz, de nem kezdeményezhető, a fő VLAN az FC-VLAN-hoz. Kommunikáció is blokkolva van a fő VLAN az eszközre VLAN. Ez biztosítja, hogy akkor is, ha egy ügyfél kódot futtató csomópont biztonsága sérül, akkor nem támadási FC vagy VLAN-OK eszköz lévő csomópontok.
 
-## <a name="storage-isolation"></a>Tárolási elkülönítési
-### <a name="logical-isolation-between-compute-and-storage"></a>Számítási és tárolási közötti logikai elkülönítés
-Az alapvető tervezési részeként a Microsoft Azure elválasztja a Virtuálisgép-alapú számítási tárolóból. Ez az elkülönítés lehetővé teszi, hogy számítási és tárolási méretezését, így könnyebben adja meg a több-bérlős és elkülönítés.
+## <a name="storage-isolation"></a>Tárolási elkülönítés
+### <a name="logical-isolation-between-compute-and-storage"></a>Számítási és tárolási logikai elkülönítését
+Az alapvető tervezési részeként a Microsoft Azure storage-ból Virtuálisgép-alapú számítási osztja szét. Ez a fajta elkülönítés lehetővé teszi a számítási és tárolási skálázását, ami megkönnyíti a több-bérlős és elszigeteltséget biztosít.
 
-Ezért Azure Storage futtatásával külön hardverre nincs hálózati kapcsolattal rendelkező Azure számítási kivéve logikailag. [Ez](https://msenterprise.global.ssl.fastly.net/vnext/PDFs/A01_AzureSecurityWhitepaper20160415c.pdf) azt jelenti, hogy a virtuális lemez létrehozása, amikor lemez ne legyen lefoglalva terület esetében a teljes kapacitás. Ehelyett egy táblát hoz létre, amely a címek a virtuális lemezre van leképezve a fizikai lemezen területek és a tábla kezdetben üres. **Az ügyfél írja az adatokat a virtuális lemezen, először legyen lefoglalva terület a fizikai lemezen, és a rá mutató el van helyezve a táblázatban.**
-### <a name="isolation-using-storage-access-control"></a>Elkülönítés használatával tároló hozzáférés-vezérlés
-**Hozzáférés-vezérlés az Azure Storage** egy egyszerű hozzáférés-vezérlési modell tartalmaz. Minden Azure-előfizetés egy vagy több Storage-fiókokat hozhat létre. Minden Tárfiók, amellyel szabályozhatja, hogy a Tárfiókban lévő adatokat egy titkos kulccsal rendelkezik.
+Ezért Azure Storage futtat külön hardvert nem hálózati kapcsolattal rendelkező, kivéve az Azure Compute logikailag. [Ez](https://msenterprise.global.ssl.fastly.net/vnext/PDFs/A01_AzureSecurityWhitepaper20160415c.pdf) azt jelenti, hogy a virtuális lemez létrehozásakor a lemezterület nincs lefoglalva a teljes kapacitás. Ehelyett egy tábla jön létre, amely címek a virtuális lemezen területek a fizikai lemezen van leképezve, és, hogy a táblázat kezdetben üres. **Először egy ügyfél a virtuális lemezen, írja az adatokat a fizikai lemezen lefoglalt, és egy rá mutató kerül a táblázatban.**
+### <a name="isolation-using-storage-access-control"></a>Elkülönítés használatával tárolási hozzáférés-vezérlés
+**Hozzáférés-vezérlés az Azure Storage-ban** rendelkezik egy egyszerű hozzáférés-vezérlési modellből. Minden Azure-előfizetés egy vagy több Tárfiókot is létrehozhat. Minden Tárfióknak van egy egyetlen titkos kulcsot, amellyel kezelheti a Storage-fiókban lévő összes adatokhoz való hozzáférést.
 
-![Elkülönítés használatával tároló hozzáférés-vezérlés](./media/azure-isolation/azure-isolation-fig9.png)
+![Elkülönítés használatával tárolási hozzáférés-vezérlés](./media/azure-isolation/azure-isolation-fig9.png)
 
-**Azure Storage-adatokkal (ideértve a táblák) való hozzáférés** szabályozható a [SAS (közös hozzáférésű Jogosultságkód)](https://docs.microsoft.com/azure/storage/storage-dotnet-shared-access-signature-part-1) jogkivonatot, amely hatókörű hozzáférést. A SAS létrehozása révén aláírva lekérdezés sablon (URL), a [SAK (Tárfiók kulcsa)](https://msdn.microsoft.com/library/azure/ee460785.aspx). Amely [URL-cím aláírt](https://docs.microsoft.com/azure/storage/storage-dotnet-shared-access-signature-part-1) adható meg egy másik folyamat (, van meghatalmazva), amely ezután töltse ki a lekérdezés részleteit és a tárolás szolgáltatás kérés. SAS-kód lehetővé teszi a hozzáférést időalapú az ügyfelek számára anélkül hogy felfedné titkos kulcsot a tárfiók.
+**(Beleértve a táblák) Azure Storage-adatokkal való hozzáférés** szabályozható a [SAS (közös hozzáférésű Jogosultságkód)](https://docs.microsoft.com/azure/storage/storage-dotnet-shared-access-signature-part-1) jogkivonatot, amely hozzáférési hatókörrel rendelkező. SAS létrehozása révén aláírt lekérdezés sablon (URL), a [SAK (Tárfiókkulcs)](https://msdn.microsoft.com/library/azure/ee460785.aspx). Amely [URL-cím aláírt](https://docs.microsoft.com/azure/storage/storage-dotnet-shared-access-signature-part-1) adható meg egy másik folyamat (amely van, vagy delegálás útján), amely ezután adja meg az adatokat a lekérdezés és a kérés, a storage szolgáltatás. SAS Időalapú hozzáférés biztosítása az ügyfeleknek nem fedi fel a tárfiók a titkos kulcs teszi lehetővé.
 
-A biztonsági Társítások azt jelenti, hogy azt is adja meg egy ügyfél korlátozott engedélyekkel, az egy adott időszakban, és meghatározott engedélyekkel vannak beállítva a tárfiókban lévő objektumokhoz. Azt is ezen engedélyek korlátozott anélkül, hogy a fiók hozzáférési kulcsait megosztásához.
+Az SAS, az azt jelenti, hogy mi is az ügyfeleknek, a storage-fiókját egy megadott időszakban, és az engedélyek bizonyos készletét lévő objektumokra vonatkozó. Ezekkel a korlátozott engedélyekkel a hozzáférési kulcsainak megosztása nélkül is kínálunk.
 
-### <a name="ip-level-storage-isolation"></a>IP-szintű tárolási elkülönítési
-Állítson be tűzfalak, és az IP-címtartományok definiálása a megbízható ügyfeleket. Az IP-címtartományok, csak a definiált tartományon belüli IP-cím ügyfelek csatlakozhatnak [Azure Storage](https://docs.microsoft.com/azure/storage/storage-security-guide).
+### <a name="ip-level-storage-isolation"></a>IP-szintű tárolási elkülönítés
+Tűzfalak létrehozása és a egy IP-címtartományt definiálása a megbízható ügyfeleket. IP-címtartomány csak a definiált tartományon belüli IP-cím rendelkező ügyfelek csatlakozhat [Azure Storage](https://docs.microsoft.com/azure/storage/storage-security-guide).
 
-IP-tárolási adatok védelme a jogosulatlan felhasználók egy hálózati mechanizmus, amellyel lefoglalni egy dedikált vagy dedikált IP-tárolási forgalom-alagúton keresztül.
+IP-storage-adatok védelme biztosítható legyen a jogosulatlan felhasználóktól egy hálózati mechanizmust, amely foglal le egy dedikált vagy dedikált IP-tárolási forgalom-alagúton keresztül.
 
 ### <a name="encryption"></a>Titkosítás
 Az Azure a következő típusú adatok védelme érdekében titkosítási kínál:
--   Az átvitel során titkosítás
+-   Titkosítás az átvitel során
 
 -   Titkosítás inaktív állapotban
 
-#### <a name="encryption-in-transit"></a>Az átvitel során titkosítás
-Titkosítás az átvitel során, akkor egy eszköz adatok védelmének hálózatok közötti átvitelekor. Az Azure Storage segítségével védetté tehet adatokat:
+#### <a name="encryption-in-transit"></a>Titkosítás az átvitel során
+Titkosítás az átvitel során egy mechanizmust, az adatok védelme, amikor azok elküldése hálózatokon keresztül. Az Azure Storage segítségével gondoskodhat adatok használatával:
 
--   [Átviteli szintű titkosítást](https://docs.microsoft.com/azure/storage/storage-security-guide#encryption-in-transit), például a HTTPS vagy abból az Azure Storage-adatok átvitel során.
+-   [Átviteli szintű titkosítást](https://docs.microsoft.com/azure/storage/storage-security-guide#encryption-in-transit), például a HTTPS vagy onnan máshová az Azure Storage-adatok átvitel során.
 
--   [Hozzá kell fűznie titkosítási](../storage/common/storage-security-guide.md#using-encryption-during-transit-with-azure-file-shares), például az Azure fájlmegosztások SMB 3.0 titkosítást.
+-   [Vezetékes titkosítás](../storage/common/storage-security-guide.md#using-encryption-during-transit-with-azure-file-shares), például az Azure-fájlmegosztások az SMB 3.0 titkosítás.
 
--   [Ügyféloldali titkosítás](https://docs.microsoft.com/azure/storage/storage-security-guide#using-client-side-encryption-to-secure-data-that-you-send-to-storage), az adatok titkosítása a tároló előtt, és az adatok visszafejtéséhez után tárolási kivitt.
+-   [Ügyféloldali titkosítás](https://docs.microsoft.com/azure/storage/storage-security-guide#using-client-side-encryption-to-secure-data-that-you-send-to-storage), a storage-bA továbbított előtt titkosíthatja az adatokat, és az adatok visszafejtéséhez követően elfogyott a tárterület.
 
-#### <a name="encryption-at-rest"></a>Aktívan titkosítása
-A legtöbb szervezet számára [adatok titkosítását](https://blogs.microsoft.com/cybertrust/2015/09/10/cloud-security-controls-series-encrypting-data-at-rest/) kötelező lépés adatvédelmi, megfelelőségi és az adatok közös joghatóság alá felé. Nincsenek adatok, amelyek "Inaktív" titkosítás három Azure funkciókat:
+#### <a name="encryption-at-rest"></a>Titkosítás inaktív állapotban
+A legtöbb szervezet számára [adattitkosítás inaktív](https://blogs.microsoft.com/cybertrust/2015/09/10/cloud-security-controls-series-encrypting-data-at-rest/) kötelező lépés az adatok adatvédelmi, megfelelőségi és az adatok elkülönítése felé. Nincsenek három Azure-funkciók adja meg az "Inaktív" adatok titkosítása:
 
--   [Storage szolgáltatás titkosítási](https://docs.microsoft.com/azure/storage/storage-security-guide#encryption-at-rest) lehetővé teszi, hogy a társzolgáltatás automatikusan adatok titkosítása az Azure Storage írásakor.
+-   [A Storage Service Encryption](https://docs.microsoft.com/azure/storage/storage-security-guide#encryption-at-rest) lehetővé teszi, hogy a storage szolgáltatás automatikusan adatok titkosításához, az Azure Storage írásakor.
 
--   [Ügyféloldali titkosítás](https://docs.microsoft.com/azure/storage/storage-security-guide#client-side-encryption) aktívan titkosítási funkcióval is rendelkezik.
+-   [Ügyféloldali titkosítás](https://docs.microsoft.com/azure/storage/storage-security-guide#client-side-encryption) az inaktív adatok titkosítását a szolgáltatást is nyújt.
 
--   [Az Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) lehetővé teszi az operációs rendszer és az infrastruktúra-szolgáltatási virtuális gép által használt adatok lemezek titkosításához.
+-   [Az Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) lehetővé teszi, hogy az operációsrendszer-lemezek és a egy IaaS virtuális gép által használt adatlemezek titkosítása.
 
 #### <a name="azure-disk-encryption"></a>Azure Disk Encryption
-[Az Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) a virtuális gépek (VM) segít cím szervezeti biztonsági és megfelelőségi követelményeknek a Virtuálisgép-lemezek (beleértve a rendszerindító és adatlemezek) titkosítja a kulcsokat és szabályozhatja a házirendek [Azure Key Tároló](https://azure.microsoft.com/services/key-vault/).
+[Az Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) virtuális gépek (VM) segítségével szervezeti biztonsági és megfelelőségi követelmények (beleértve a rendszerindító és az adatlemezek) a Virtuálisgép-lemezek titkosítása a kulcsok és szabályzatok, hogy [Azure Key Tároló](https://azure.microsoft.com/services/key-vault/).
 
-A lemez titkosítása megoldást a Windows alapuló [Microsoft BitLocker meghajtótitkosítás](https://technet.microsoft.com/library/cc732774.aspx), és a Linux-megoldás alapul [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt).
+A Disk Encryption megoldás a Windows alapján [Microsoft BitLocker Meghajtótitkosításon](https://technet.microsoft.com/library/cc732774.aspx), és a Linux-megoldás alapján [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt).
 
-A megoldás a következő szituációkat IaaS virtuális gépek Microsoft Azure-ban engedélyezésekor:
--   Az Azure Key Vault integrációja
+A megoldás a következő esetekben ha engedélyezve vannak a Microsoft Azure IaaS virtuális gépeket támogatja:
+-   Az Azure Key Vault-integráció
 
--   Standard szint virtuális gépek: A, D, DS, G, GS és így tovább, adatsorozat IaaS virtuális gépeket
+-   Standard szintű virtuális gépek: A, D, DS, G, GS és egyebektől sorozat IaaS virtuális gépek
 
--   A Windows és Linux IaaS virtuális gépeket titkosítás engedélyezése
+-   A Windows és Linux rendszerű IaaS virtuális gépek titkosításának engedélyezése
 
--   Az operációs rendszer és az adatok titkosításának letiltása Windows IaaS virtuális meghajtók
+-   A Windows IaaS virtuális gépek operációsrendszer- és a titkosítás letiltása meghajtók
 
--   Linux IaaS virtuális gépeket az adatmeghajtók titkosításának letiltása
+-   Linux rendszerű IaaS virtuális gépek adatmeghajtók titkosításának letiltása
 
--   Az infrastruktúra-szolgáltatási virtuális gépeken futó Windows-ügyfél operációs rendszert futtató titkosítás engedélyezése
+-   A Windows ügyfél operációs rendszer futtató IaaS virtuális gépek titkosításának engedélyezése
 
--   Csatlakoztatási elérési utakat tartalmazó kötetek titkosítás engedélyezése
+-   Csatlakoztatási elérési úttal köteteken titkosításának engedélyezése
 
--   A Linux virtuális gépeken (RAID) szétosztott lemezzel konfigurált titkosítás engedélyezése használatával [mdadm](https://en.wikipedia.org/wiki/Mdadm)
+-   Linux rendszerű virtuális gépek, amelyeken a lemez összevonása (RAID) titkosításának engedélyezése használatával [mdadm](https://en.wikipedia.org/wiki/Mdadm)
 
--   A Linux virtuális gépeken titkosítás engedélyezése [LVM (logikai kötetkezelő)](https://msdn.microsoft.com/library/windows/desktop/bb540532) adatlemezek
+-   A Linux rendszerű virtuális gépek titkosításának engedélyezése [LVM (a Logical Volume Manager)](https://msdn.microsoft.com/library/windows/desktop/bb540532) adatlemezek
 
--   A Windows virtuális gépeken, a tárolóhelyek használatával konfigurált titkosítás engedélyezése
+-   A tárolóhelyek segítségével konfigurált Windows virtuális gépek titkosításának engedélyezése
 
--   Minden Azure-nyilvános régió támogatottak.
+-   Minden nyilvános Azure-régióban támogatott
 
-A megoldás nem támogatja a következő forgatókönyvek, szolgáltatások és technológia a kiadásban:
+A megoldás nem támogatja a következő forgatókönyvek, szolgáltatások és technológiák a kiadásban:
 
--   Az alapszintű csomag IaaS virtuális gépeket
+-   Alapszintű csomag IaaS virtuális gépek
 
--   Linux IaaS virtuális gépeket egy operációs rendszer meghajtóján titkosításának letiltása
+-   Linux rendszerű IaaS virtuális gépek egy operációs rendszer meghajtójának titkosításának letiltása
 
--   Infrastruktúra-szolgáltatási virtuális gépeket, a klasszikus virtuális gép létrehozási módszer használatával létrehozott
+-   A klasszikus virtuális gép létrehozási módszer használatával létrehozott IaaS virtuális gépeken
 
 -   Integráció a helyszíni kulcskezelő szolgáltatás
 
--   Az Azure Files (megosztott fájlrendszer), a hálózati fájlrendszer (NFS), a dinamikus köteteket és a Windows alapú szoftveres RAID-rendszerek használatára konfigurált virtuális gépek
+-   Az Azure Files (megosztott fájlrendszert), a hálózati fájlrendszer (NFS), a dinamikus köteteket és a Windows virtuális gépek, amelyeken a szoftveres RAID-rendszerek
 
-## <a name="sql-azure-database-isolation"></a>Az SQL Azure Database elkülönítési
-Az SQL Database a Microsoft Cloud egy, a piacvezető Microsoft SQL Server motoron alapuló relációs adatbázis-szolgáltatása, amely képes a kritikus fontosságú számítási feladatok kezelésére. SQL-adatbázis kínál előre jelezhető adatok elkülönítési szinten fiók geográfiai / régió alapján, és a hálózat alapján – mindezt felügyelet.
+## <a name="sql-azure-database-isolation"></a>SQL Azure adatbázis-elkülönítés
+Az SQL Database a Microsoft Cloud egy, a piacvezető Microsoft SQL Server motoron alapuló relációs adatbázis-szolgáltatása, amely képes a kritikus fontosságú számítási feladatok kezelésére. SQL Database által nyújtott előre jelezhető adatok elkülönítése a fiók szintjén a földrajzi régióban és a hálózat alapú / – mindezt szinte Adminisztráció.
 
-### <a name="sql-azure-application-model"></a>Az SQL Azure-alkalmazásokban modell
+### <a name="sql-azure-application-model"></a>SQL Azure alkalmazásmodell
 
-[Microsoft SQL Azure](https://docs.microsoft.com/azure/sql-database/sql-database-get-started) adatbázis az SQL Server technológiáira felhőalapú relációs adatbázis-szolgáltatás. Egy magas rendelkezésre állású, méretezhető, több-bérlős dokumentumadatbázis-szolgáltatás, a felhő Microsoft által üzemeltetett biztosít.
+[A Microsoft SQL Azure](https://docs.microsoft.com/azure/sql-database/sql-database-get-started) adatbázis az SQL Server-technológiákra épülő felhőalapú relációsadatbázis-szolgáltatás. Egy magas rendelkezésre állású, méretezhető, több-bérlős adatbázis-szolgáltatás a felhőben a Microsoft által üzemeltetett biztosít.
 
-Az alkalmazás szempontjából SQL Azure biztosít a következő hierarchia: minden szinthez tartozik egy-a-többhöz elszigetelési szintek az alábbi.
+Az alkalmazás szempontjából SQL Azure biztosít a következő hierarchia: minden szinthez tartozik egy-a-többhöz tartalmazottsági szintek az alábbi.
 
-![Az SQL Azure-alkalmazásokban modell](./media/azure-isolation/azure-isolation-fig10.png)
+![SQL Azure alkalmazásmodell](./media/azure-isolation/azure-isolation-fig10.png)
 
-A fiókja és -előfizetése a Microsoft Azure platform fogalmak rendelje hozzá a számlázási és kezelése.
+A fiók és -előfizetés a Microsoft Azure platform fogalmak felügyeleti és számlázási társítása.
 
-Logikai kiszolgálók és adatbázisok SQL Azure-specifikus fogalmak és kezelt SQL Azure-ban megadott OData és TSQL-felületek használatával vagy az SQL Azure-portál, Azure-portál integrálva.
+Logikai kiszolgálóiról és adatbázisairól SQL Azure-specifikus fogalmakat és SQL Azure, a megadott OData- és TSQL-felületek használatával vagy az Azure portal integrálva SQL Azure-portálon keresztül történik.
 
-SQL Azure-kiszolgálók nem fizikai gép vagy Virtuálisgép-példányok, ehelyett olyan adatbázisok, felügyeleti és biztonsági szabályzataival, az úgynevezett "logikai master" tárolt megosztása gyűjteményei adatbázis.
+SQL Azure-kiszolgálók nem fizikai gép vagy Virtuálisgép-példányok, ehelyett azok az adatbázisok, felügyeleti és biztonsági szabályzataival, amelyeket a rendszer az úgynevezett "a logikai master" megosztás gyűjtemények adatbázis.
 
 ![SQL Azure](./media/azure-isolation/azure-isolation-fig11.png)
 
-Logikai fő adatbázisok a következők:
+Logikai master adatbázis a következők:
 
--   A kiszolgálóhoz való csatlakozáshoz használt SQL-bejelentkezésekben
+-   A kiszolgálóhoz való csatlakozáshoz használt SQL-bejelentkezésekben.
 
 -   Tűzfalszabályok
 
-Számlázási és használati adatokat az SQL Azure az azonos logikai kiszolgáló-adatbázisok nem garantált, hogy az SQL Azure fürt egyazon fizikai példányán kell helyette alkalmazások kapcsolódáskor biztosítania kell a célként megadott adatbázis nevét.
+Számlázási és használati adatokat az SQL Azure az egyazon logikai kiszolgálón adatbázisok nem biztos, hogy az SQL Azure-fürt ugyanazon a fizikai példányon kell helyette alkalmazások kell adnia a céladatbázis neve, ha kapcsolódik.
 
-Az ügyfél szempontjából, egy logikai kiszolgáló akkor jön létre egy földrajzi grafikus régióban, míg a tényleges kiszolgáló létrehozása történik, a fürtök régióban egyikében.
+Az ügyfél szempontjából, egy logikai kiszolgáló létrehozása egy földrajzi grafikus régióban, amíg a kiszolgáló tényleges létrehozása történik az egyik a fürtök a régióban.
 
 ### <a name="isolation-through-network-topology"></a>Hálózati topológia elkülönítését
 
-Egy logikai kiszolgáló akkor jön létre, és a DNS-névvel regisztrálva van, a DNS-beli név pontok az úgynevezett "átjáró" címéhez az adott adatközpontban, ahol a kiszolgáló lett helyezve.
+Ha egy logikai kiszolgáló létrehozása, és a DNS-név regisztrálva van, a DNS-név az adott adatközpont, ahol a kiszolgáló alatt állnak az úgynevezett "Átjáró VIP" cím mutat.
 
-(Virtuális IP-cím) VIP mögött átjáró állapotmentes szolgáltatások gyűjteménye van. Általánosságban elmondható átjárók beolvasása érintett koordinációs több adatforrást (master adatbázis, felhasználói adatbázis stb.) között szükség esetén. Átjáró szolgáltatások valósítja meg a következő:
--   **TDS kapcsolat proxy használatát az ügynökökön.** Ez magában foglalja a háttér-fürt felhasználói adatbázis keresése. a bejelentkezési folyamat végrehajtása, majd továbbítja a a TDS-csomagokat a háttér és vissza.
+A virtuális IP-cím (virtuális IP-cím), mögött van egy átjáró állapotmentes szolgáltatások gyűjteménye. Nincs szükség több adatforráson (master adatbázishoz, felhasználói adatbázist, stb.) közötti koordinációt általában átjárók vesz első részt. Átjárószolgáltatásokat megvalósításához a következők:
+-   **TDS-kapcsolati proxyhasználat.** Ez magában foglalja a felhasználói adatbázis megkeresése a háttér-fürtben. a bejelentkezési folyamat végrehajtására, majd továbbítása a TDS-csomagok a háttérbeli és vissza.
 
--   **Adatbázis-kezelő.** Ez magában foglalja a CREATE/ALTER/DROP database műveletek elvégzéséhez munkafolyamatok gyűjteményét végrehajtási. A Helyadatbázis-műveletekhez elemzés TDS-csomagokat, vagy explicit OData API-kat is elindítható.
+-   **Adatbázis-kezelés.** Ide tartoznak a gyűjteménye, munkafolyamatok, hajtsa végre a CREATE/ALTER/DROP database műveletek végrehajtására. Az adatbázis-műveletek vagy elemzés TDS-csomagokat, vagy explicit OData API-k is hivatkozhat.
 
--   CREATE/ALTER/DROP bejelentkezési vagy felhasználói műveletek
+-   CREATE/ALTER/DROP login/felhasználói műveletek
 
--   Logikai kiszolgáló felügyeleti műveletei OData API-n keresztül
+-   A logikai kiszolgáló felügyeleti műveletek OData API-n keresztül
 
 ![Hálózati topológia elkülönítését](./media/azure-isolation/azure-isolation-fig12.png)
 
-A réteg mögött az átjárók "Háttér" nevezik. Ez az összes adat tárolására egy magas rendelkezésre állású módon. Minden adat, különállónak tartozik egy "partíció" vagy "failover unit", azok legalább három replikák rendelkezik. Replikák tárolása és replikálása SQL Server-motor és gyakran nevezik "fabric" feladatátvevő rendszer által felügyelt.
+A réteg mögött az átjárók "háttérbeli" nevezzük. Ez a magas rendelkezésre állású módon összes adat tárolására. Minden adat van szólt tartozik egy "partíció" vagy "feladatátvételi egység", azok legalább három replika kellene. Replikák tárolja és replikálja az SQL Server-motor és egy feladatátvételi rendszer, más néven "fabric" kezeli.
 
-Általában a háttér-rendszer nem kommunikál a más rendszerekkel kimenő biztonsági okokból. Ez a rendszer az előtér-(átjáró) tartozó van fenntartva. Az átjáró réteg gépein korlátozott jogosultságokkal védelemmel az olyan jellegű mechanizmusaként támadási felületének minimalizálása érdekében a háttér-gépeken.
+Általában a háttér-rendszer nem képes kimenő kommunikációra más rendszerek biztonsági okokból. Ez a rendszerek az előtér (átjáró) szinten van fenntartva. Az átjáró réteg gépei korlátozott jogosultságokkal jellegű defense mechanizmusként a támadási felület minimalizálása érdekében a háttér-gépeken.
 
-### <a name="isolation-by-machine-function-and-access"></a>Elkülönítési funkcióval és hozzáférés
-Az SQL Azure (áll másik gépre funkciók futó szolgáltatásokat. SQL Azure oszlik "Háttér" felhő adatbázis és az "előtér" (átjáró vagy felügyeleti) környezetek, a forgalom csak folyamatos háttér-be és ki nem általános elvet. Az előtér-környezet képes kommunikálni a külvilág egyéb szolgáltatások, és általában csak korlátozott mértékben engedélyeket a háttér-(elegendő hívni a belépési pontok meghívásához szükséges).
+### <a name="isolation-by-machine-function-and-access"></a>Elkülönítés funkcióval és hozzáférés
+SQL Azure (szintből áll, a másik gépet funkciók futó szolgáltatásokat. SQL Azure oszlik "Háttér" felhőalapú adatbázis és a "előtérbeli" (átjáró/felügyelet), az általános elvet forgalmat csak folyamatos háttér-be és ki nem rendelkező környezetek. Az előtér-környezet kommunikálhatnak a külvilág más szolgáltatások számára, és általában csak korlátozott engedélyekkel a háttér-(elegendő hívja a belépési pontok meghívásához szükséges).
 
-## <a name="networking-isolation"></a>Hálózati elkülönítési
-Az Azure-telepítés hálózati elkülönítési rétege rendelkezik. Az alábbi ábrán látható Azure biztosít az ügyfelek hálózati elkülönítési különböző rétegek. Ezek a rétegek az Azure platformon, maga a natív és a felhasználó által meghatározott funkciókat. Bejövő az internetről, Azure DDoS el vannak különítve a nagyméretű támadások elleni Azure. A következő elkülönítési réteg az ügyfél által megadott nyilvános IP-címek (végpont), amelyek segítségével meghatározhatja, melyik forgalmat is továbbítása a felhőszolgáltatás a virtuális hálózathoz. Natív Azure virtuális hálózatelkülönítés biztosítja minden más hálózati teljes elkülönítést, valamint, hogy csak a forgalom metódusok és konfigurált felhasználói elérési útját. Ezek elérési útja és módszerek a következő rétege, NSG-ket, UDR és virtuális hálózati berendezések helyének elkülönítési határokat védelme érdekében az alkalmazások központi telepítéseit a védett hálózat létrehozásához.
+## <a name="networking-isolation"></a>Hálózati elkülönítés
+Azure-beli hálózati elkülönítési több réteget tartalmaz. Az alábbi ábrán látható a különböző rétegeket, a hálózatok elkülönítéséhez az Azure biztosít az ügyfelek számára. Ezek a rétegek, mind a natív az Azure platformon, magát, és a felhasználó által meghatározott szolgáltatások. Bejövő az internetről, Azure DDoS biztosít a nagy méretű támadások ellen az Azure-elkülönítést. A következő elkülönítési réteg a felhasználó által meghatározott nyilvános IP-címek (végpontok), amelyek segítségével meghatározhatja, mely forgalom tevékenységeken keresztül a felhőalapú szolgáltatás, a virtuális hálózathoz. Natív Azure-beli virtuális hálózatok elkülönítését biztosítja a többi teljes elkülönítés és, hogy csak a forgalom, aki elérési utak és módszerek segítségével. Ezen elérési utakat és módszerek a következő réteg, ahol az NSG-k, az udr-t és a hálózati virtuális berendezések használható védelme érdekében az alkalmazások központi telepítésének a védett hálózati elkülönítési határokat kíván létrehozni.
 
-![Hálózati elkülönítési](./media/azure-isolation/azure-isolation-fig13.png)
+![Hálózati elkülönítés](./media/azure-isolation/azure-isolation-fig13.png)
 
-**A forgalom elkülönítése:** A [virtuális hálózati](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) van a forgalom elkülönítési határt alkotnak, az Azure platformon. Virtuális gépek (VM) több virtuális hálózat nem kommunikálnak közvetlenül a másik virtuális hálózatot, virtuális gépek akkor is, ha mindkét virtuális hálózat az azonos ügyfél jönnek létre. Elkülönítési kritikus tulajdonság, amely biztosítja a felhasználói virtuális gépeket, kommunikációs titkos virtuális hálózaton belül marad.
+**Forgalom elkülönítése:** A [virtuális hálózat](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) van a forgalomelkülönítési határok az Azure platformon. Virtuális gépek (VM) egy virtuális hálózat nem útján kommunikálnak közvetlenül egy másik virtuális hálózatot, virtuális gépek akkor is, ha az adott ügyfél által létrehozott két virtuális hálózatnak. Elkülönítés kritikus tulajdonság, amely biztosítja az ügyfél virtuális gépei, kommunikációs privát virtuális hálózaton belül marad.
 
-[Alhálózati](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview#subnets) elkülönítési a virtuális hálózat IP-címtartomány alapján további réteget biztosít. IP-címtartomány a virtuális hálózaton, a virtuális hálózatot lehet osztani érdekében több alhálózatra a szervezet és a biztonság. Egy VNeten belül az alhálózatokra üzembe helyezett virtuális gépek és a PaaS szerepkörpéldányok (ugyanaz vagy különböző) további konfigurálás nélkül is tudnak egymással kommunikálni. Beállíthatja úgy is [hálózati biztonsági csoport (NSG-k)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview#network-security-groups-nsg) a hozzáférési lista (ACL) a NSG beállított szabályok alapján Virtuálisgép-példány a hálózati adatforgalom engedélyezéséhez vagy letiltásához. Az NSG-ket alhálózatokhoz vagy az alhálózaton belüli virtuálisgép-példányokhoz lehet hozzárendelni. Ha az NSG-t hozzárendelik egy alhálózathoz, az ACL-szabályok érvényesek lesznek az alhálózatban lévő összes virtuálisgép-példányra.
+[Alhálózat](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview#subnets) további, a virtuális hálózati IP-címtartomány alapján az elkülönítési réteget biztosít. IP-címek a virtuális hálózatban, és biztonsági több alhálózatra is eloszthatja egy virtuális hálózatot. Egy VNeten belül az alhálózatokra üzembe helyezett virtuális gépek és a PaaS szerepkörpéldányok (ugyanaz vagy különböző) további konfigurálás nélkül is tudnak egymással kommunikálni. Beállíthatja úgy is [hálózati biztonsági csoport (NSG-k)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview#network-security-groups-nsg) engedélyezéséhez vagy letiltásához a hálózati forgalmat a Virtuálisgép-példányhoz NSG hozzáférés-vezérlési lista (ACL) a konfigurált szabályok alapján. Az NSG-ket alhálózatokhoz vagy az alhálózaton belüli virtuálisgép-példányokhoz lehet hozzárendelni. Ha az NSG-t hozzárendelik egy alhálózathoz, az ACL-szabályok érvényesek lesznek az alhálózatban lévő összes virtuálisgép-példányra.
 
 ## <a name="next-steps"></a>További lépések
 
-- [Hálózati elkülönítési beállítások gépek vannak a Windows Azure virtuális hálózatok](https://azure.microsoft.com/blog/network-isolation-options-for-machines-in-windows-azure-virtual-networks/)
+- [Gépek, a Windows Azure virtuális hálózatok hálózati elkülönítési beállításai](https://azure.microsoft.com/blog/network-isolation-options-for-machines-in-windows-azure-virtual-networks/)
 
-Ez magában foglalja a klasszikus előtér- és a forgatókönyvben egy adott háttér-hálózat vagy az alhálózat gépek ahol csak engedélyezhetik bizonyos ügyfelek vagy más számítógépek egy adott végpont is egy IP-címek engedélyezési listája alapján való kapcsolódáshoz.
+Ez magában foglalja a klasszikus előtérbeli és háttérbeli forgatókönyv ahol egy adott háttér-hálózat vagy alhálózat gépek előfordulhat, hogy engedélyezése csak egyes ügyfelek vagy más számítógépek engedélyezett IP-cím alapján egy adott végponthoz csatlakozik.
 
-- [Számítási elkülönítési](https://msenterprise.global.ssl.fastly.net/vnext/PDFs/A01_AzureSecurityWhitepaper20160415c.pdf)
+- [Elkülönítés COMPUTE](https://msenterprise.global.ssl.fastly.net/vnext/PDFs/A01_AzureSecurityWhitepaper20160415c.pdf)
 
-A Microsoft Azure biztosít a különböző számítási felhőszolgáltatásokhoz, amelyek tartalmazzák a számítási példányokért széles kijelölt & szolgáltatások, amely is fel-le automatikusan az alkalmazás vagy a vállalat igényeinek.
+A Microsoft Azure biztosít a különböző számítástechnikai felhőszolgáltatásokhoz, amely tartalmazza a számítási példányok széles választékával & méretezhetők felfelé és lefelé automatikusan, ha az alkalmazás vagy a vállalati szolgáltatások.
 
-- [Tárolási elkülönítési](https://msenterprise.global.ssl.fastly.net/vnext/PDFs/A01_AzureSecurityWhitepaper20160415c.pdf)
+- [Tárolási elkülönítés](https://msenterprise.global.ssl.fastly.net/vnext/PDFs/A01_AzureSecurityWhitepaper20160415c.pdf)
 
-A Microsoft Azure elválasztja az ügyfél Virtuálisgép-alapú számítási tárolóból. Ez az elkülönítés lehetővé teszi, hogy számítási és tárolási méretezését, így könnyebben adja meg a több-bérlős és elkülönítés. Ezért Azure Storage futtatásával külön hardverre nincs hálózati kapcsolattal rendelkező Azure számítási kivéve logikailag. Összes kérelem futtatása, HTTP vagy HTTPS ügyfél beállítása alapján.
+A Microsoft Azure storage-ból felhasználói Virtuálisgép-alapú számítási osztja szét. Ez a fajta elkülönítés lehetővé teszi a számítási és tárolási skálázását, ami megkönnyíti a több-bérlős és elszigeteltséget biztosít. Ezért Azure Storage futtat külön hardvert nem hálózati kapcsolattal rendelkező, kivéve az Azure Compute logikailag. Összes kérelem futtatása HTTP vagy HTTPS, az ügyfél által választott alapján.
 

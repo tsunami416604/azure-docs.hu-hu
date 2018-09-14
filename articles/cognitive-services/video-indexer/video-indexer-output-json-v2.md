@@ -7,14 +7,14 @@ author: juliako
 manager: cfowler
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 07/25/2018
+ms.date: 09/09/2018
 ms.author: juliako
-ms.openlocfilehash: 43cc02417fad8a2fa46bd309235951393cd55b8a
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: 14e308f04450999fcec91a7882a22868c8c824ce
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41987625"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45579004"
 ---
 # <a name="examine-the-video-indexer-output-produced-by-v2-api"></a>A v2 API által előállított Videóindexelő kimenetének vizsgálata
 
@@ -23,7 +23,7 @@ ms.locfileid: "41987625"
 
 Meghívásakor a **első videó Index** API és a válasz állapota OK, a részletes JSON-kimenet, a válasz tartalma kapunk. A JSON-tartalmak a megadott feltárását részleteit tartalmazza. Az insights közé tartozik például a dimenziók: szövegekben felismerése, arcok, témakörök, blokkok, stb. A dimenziók időtartományok azt mutatják be, amikor a videó minden dimenzió jelentek meg a példányban.  
 
-Vizuálisan is megvizsgálhatja a videó összefoglaló insights billentyűkombináció lenyomásával a **lejátszása** a videó a Video Indexer portálon gombjára. További információkért lásd: [megtekintés és Szerkesztés feltárását](video-indexer-view-edit.md).
+Vizuálisan is megvizsgálhatja a videó összefoglaló insights billentyűkombináció lenyomásával a **lejátszása** videó gombot a [Video Indexer](https://www.videoindexer.ai/) webhelyén. További információkért lásd: [megtekintés és Szerkesztés feltárását](video-indexer-view-edit.md).
 
 ![Insights](./media/video-indexer-output-json/video-indexer-summarized-insights.png)
 
@@ -82,7 +82,7 @@ Ez a szakasz az insights összegzését jeleníti meg.
 |privacyMode|A részletezése a következő módok egyike lehet: **privát**, **nyilvános**. **Nyilvános** – a videót a fiókját, és bárki, amely rendelkezik a videóra mutató hivatkozást mindenki számára látható-e. **Privát** – a videót a fiókjában mindenki számára látható-e.|
 |időtartam|Egy időtartam, amely leírja a időpontja egy elemzést tartalmaz. Időtartam másodpercen belül van.|
 |thumbnailVideoId|A videót, amelyből a miniatűr hibaállapota azonosítója.
-|thumbnailId|A videó miniatűrje azonosítóját. A tényleges miniatűr hívás Get-miniatűr beolvasásához (https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-thumbnail) és thumbnailVideoId és thumbnailId adja át.|
+|thumbnailId|A videó miniatűrje azonosítóját. A tényleges miniatűr lekéréséhez hívja a Get-miniatűr (https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-thumbnail) és thumbnailVideoId és thumbnailId adja át.|
 |arcok|Nulla vagy több arcokat is tartalmazhat. Részletesebb információkért lásd: [arcok](#faces).|
 |a kulcsszavak|Nulla vagy több kulcsszavak tartalmazhat. Részletesebb információkért lásd: [kulcsszavak](#keywords).|
 |hangulati|Nulla vagy több hangulati tartalmazhat. Részletesebb információkért lásd: [hangulati](#sentiments).|
@@ -90,6 +90,8 @@ Ez a szakasz az insights összegzését jeleníti meg.
 |címkék| Nulla vagy több címkéket tartalmazhat. További információ részletes: [címkék](#labels).|
 |márka| Nulla vagy több márkái tartalmazhat. Részletesebb információkért lásd: [márkái](#brands).|
 |statisztika | Részletesebb információkért lásd: [statisztika](#statistics).|
+|Érzelmek| Nulla vagy több érzelmek tartalmazhat. Részletesebb információkért lásd: [érzelmek](#emotions).|
+|kapcsolatos témakörök|Nulla vagy több témakörök is tartalmazhat. A [témakörök](#topics) dimenzió.|
 
 ## <a name="videos"></a>videók
 
@@ -165,6 +167,8 @@ Előfordulhat, hogy egy ARC Azonosítóját, nevét, a miniatűr, más metaadato
 |hangulati|A [hangulati](#sentiments) dimenzió.|
 |visualContentModeration|A [visualContentModeration](#visualcontentmoderation) dimenzió.|
 |textualConentModeration|A [textualConentModeration](#textualconentmoderation) dimenzió.|
+|Érzelmek| A [érzelmek](#emotions) dimenzió.|
+|kapcsolatos témakörök|A [témakörök](#topics) dimenzió.|
 
 Példa:
 
@@ -320,7 +324,6 @@ Példa:
     ]
 }
 ] 
-
 ```
 
 #### <a name="faces"></a>arcok
@@ -444,7 +447,7 @@ Példa:
           "id": 0,
           "instances": [
             {
-          "thumbnailId": "00000000-0000-0000-0000-000000000000",
+                "thumbnailId": "00000000-0000-0000-0000-000000000000",
               "start": "00: 00: 00.1670000",
               "end": "00: 00: 00.2000000"
             }
@@ -453,7 +456,7 @@ Példa:
       ],
       "instances": [
         {
-       "thumbnailId": "00000000-0000-0000-0000-000000000000",   
+            "thumbnailId": "00000000-0000-0000-0000-000000000000",  
           "start": "00: 00: 00.2000000",
           "end": "00: 00: 05.0330000"
         }
@@ -466,7 +469,7 @@ Példa:
           "id": 1,
           "instances": [
             {
-          "thumbnailId": "00000000-0000-0000-0000-000000000000",        
+                "thumbnailId": "00000000-0000-0000-0000-000000000000",      
               "start": "00: 00: 05.2670000",
               "end": "00: 00: 05.3000000"
             }
@@ -667,10 +670,144 @@ Lehet, hogy videókat, amelyek tartalmazzák a felnőtt vagy pikáns tartalmak c
 |bannedWordsCount |A kitiltott szavak számát.|
 |bannedWordsRatio |A aránya az összes szó.|
 
+#### <a name="emotions"></a>Érzelmek
+
+Video Indexer – érzelmek beszéd- és audio jelek alapján azonosítja. Az azonosított emotion lehet: tudatjuk, szomorúság, düh vagy lehetőségének.
+
+|Name (Név)|Leírás|
+|---|---|
+|id|Az emotion azonosítója.|
+|type|Az emotion videórészletet azonosított beszéd- és audiotartalmak jelek alapján. Az emotion lehet: tudatjuk, szomorúság, düh vagy lehetőségének.|
+|példányok|Amikor jelent meg az emotion időtartományok listája.|
+
+```json
+"emotions": [{
+    "id": 0,
+    "type": "Fear",
+    "instances": [{
+      "adjustedStart": "0:00:39.47",
+      "adjustedEnd": "0:00:45.56",
+      "start": "0:00:39.47",
+      "end": "0:00:45.56"
+    },
+    {
+      "adjustedStart": "0:07:19.57",
+      "adjustedEnd": "0:07:23.25",
+      "start": "0:07:19.57",
+      "end": "0:07:23.25"
+    }]
+  },
+  {
+    "id": 1,
+    "type": "Anger",
+    "instances": [{
+      "adjustedStart": "0:03:55.99",
+      "adjustedEnd": "0:04:05.06",
+      "start": "0:03:55.99",
+      "end": "0:04:05.06"
+    },
+    {
+      "adjustedStart": "0:04:56.5",
+      "adjustedEnd": "0:05:04.35",
+      "start": "0:04:56.5",
+      "end": "0:05:04.35"
+    }]
+  },
+  {
+    "id": 2,
+    "type": "Joy",
+    "instances": [{
+      "adjustedStart": "0:12:23.68",
+      "adjustedEnd": "0:12:34.76",
+      "start": "0:12:23.68",
+      "end": "0:12:34.76"
+    },
+    {
+      "adjustedStart": "0:12:46.73",
+      "adjustedEnd": "0:12:52.8",
+      "start": "0:12:46.73",
+      "end": "0:12:52.8"
+    },
+    {
+      "adjustedStart": "0:30:11.29",
+      "adjustedEnd": "0:30:16.43",
+      "start": "0:30:11.29",
+      "end": "0:30:16.43"
+    },
+    {
+      "adjustedStart": "0:41:37.23",
+      "adjustedEnd": "0:41:39.85",
+      "start": "0:41:37.23",
+      "end": "0:41:39.85"
+    }]
+  },
+  {
+    "id": 3,
+    "type": "Sad",
+    "instances": [{
+      "adjustedStart": "0:13:38.67",
+      "adjustedEnd": "0:13:41.3",
+      "start": "0:13:38.67",
+      "end": "0:13:41.3"
+    },
+    {
+      "adjustedStart": "0:28:08.88",
+      "adjustedEnd": "0:28:18.16",
+      "start": "0:28:08.88",
+      "end": "0:28:18.16"
+    }]
+  }
+],
+```
+
+#### <a name="topics"></a>kapcsolatos témakörök
+
+Video Indexer – lehetővé teszi a legfontosabb témakörök az átiratok következtetésekhez. Ha lehetséges, az 1. szintű [IPTC](https://iptc.org/standards/media-topics/) besorolás részét képezi. 
+
+|Name (Név)|Leírás|
+|---|---|
+|id|A témakör azonosítóját.|
+|név|A témakör nevét, például: "Pharmaceuticals".|
+|a referenceid megadása|A témakörök hierarchia tükröző útkövetés. Például: "állapotát és jólétének / orvosi és egészségügyi / Pharmaceuticals".|
+|magabiztosan|A [0,1] tartományban konfidencia-pontszám. Újabb sokkal magabiztosabb a munkában.|
+|Nyelv|A témakörben használt nyelv.|
+|iptcName|A IPTC adathordozó-neve, kód észlelésekor.|
+|példányok |Video Indexer jelenleg nem indexeli témakörre való időintervallumok, így a teljes videó szolgál az időközt.|
+
+```json
+"topics": [{
+    "id": 0,
+    "name": "INTERNATIONAL RELATIONS",
+    "referenceId": "POLITICS AND GOVERNMENT/FOREIGN POLICY/INTERNATIONAL RELATIONS",
+    "referenceType": "VideoIndexer",
+    "confidence": 1,
+    "language": "en-US",
+    "instances": [{
+        "adjustedStart": "0:00:00",
+        "adjustedEnd": "0:03:36.25",
+        "start": "0:00:00",
+        "end": "0:03:36.25"
+    }]
+}, {
+    "id": 1,
+    "name": "Politics and Government",
+    "referenceType": "VideoIndexer",
+    "iptcName": "Politics",
+    "confidence": 0.9041,
+    "language": "en-US",
+    "instances": [{
+        "adjustedStart": "0:00:00",
+        "adjustedEnd": "0:03:36.25",
+        "start": "0:00:00",
+        "end": "0:03:36.25"
+    }]
+}]
+. . .
+```
 
 ## <a name="next-steps"></a>További lépések
 
-[A video Indexer API](https://api-portal.videoindexer.ai)
+[Video Indexer – fejlesztői portálon](https://api-portal.videoindexer.ai)
 
 Widgetek beágyazása az alkalmazásba kapcsolatos információkért lásd: [az alkalmazásokba történő beágyazása a Video Indexer widgetek](video-indexer-embed-widgets.md). 
 

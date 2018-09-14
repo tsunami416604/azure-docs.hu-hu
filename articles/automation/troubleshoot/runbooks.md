@@ -8,12 +8,12 @@ ms.date: 07/13/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 78f9ba817008a28e63ec167c4e2ccc7f3859be16
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 1954393c9fe544c33919c8f9fb8ee04e430e7639
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42059500"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45542565"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Runbookokkal kapcsolatos hibák elhárítása
 
@@ -216,17 +216,19 @@ Ez a hiba oka lehet a következő okok miatt:
 
 1. Memória felső korlátja. A védőfal számára lefoglalt memória a dokumentált korlátozva van [Automation Szolgáltatáskorlátok](../../azure-subscription-service-limits.md#automation-limits) , egy feladat sikertelen lehet, ha több mint 400 MB memóriát használ.
 
-2. A modul inkompatibilis. Ez akkor fordulhat elő, ha a modul függőségek nem megfelelőek, és ha nem, a runbook általában adja vissza egy "parancs nem található" vagy "Nem köthető a paraméter" üzenet.
+1. Hálózati szoftvercsatorna. Azure próbakörnyezetbe lefordítja a rendszer legfeljebb 1000 egyidejű hálózati szoftvercsatorna ismertetett módon [Automation Szolgáltatáskorlátok](../../azure-subscription-service-limits.md#automation-limits).
+
+1. A modul inkompatibilis. Ez akkor fordulhat elő, ha a modul függőségek nem megfelelőek, és ha nem, a runbook általában adja vissza egy "parancs nem található" vagy "Nem köthető a paraméter" üzenet.
 
 #### <a name="resolution"></a>Megoldás:
 
 A probléma elhárításához a következő megoldások valamelyikét:
 
-* A memória felső korlátja belül működik javasolt módszerek a következők felosztása több runbook között, nem processzormagonkénti memória, nem a szükségtelen kimeneti írási a runbookok az adatok feldolgozása vagy fontolja meg, hány ellenőrzőpontot ír be a PowerShell-munkafolyamat runbookok.  
+* A memória felső korlátja belül működik javasolt módszerek a következők felosztása több runbook között, nem processzormagonkénti memória, nem a szükségtelen kimeneti írási a runbookok az adatok feldolgozása vagy fontolja meg, hány ellenőrzőpontot ír be a PowerShell-munkafolyamat runbookok. Használhatja például a Törlés metódust `$myVar.clear()` tisztítsa meg a változót és a `[GC]::Collect()` szemétgyűjtés futtatása azonnal, ez csökkenti a runbook memóriaigénye futásidőben.
 
 * A lépéseket követve az Azure-modulok frissítése [frissítése az Azure PowerShell-modulok az Azure Automationben](../automation-update-azure-modules.md).  
 
-* Egy másik megoldás, ha a runbook futtatása egy [hibrid Runbook-feldolgozó](../automation-hrw-run-runbooks.md). Hibrid feldolgozók nem korlátozza a [igazságos elosztás](../automation-runbook-execution.md#fair-share) korlátozza, hogy az Azure próbakörnyezetbe lefordítja a vannak-e.
+* Egy másik megoldás, ha a runbook futtatása egy [hibrid Runbook-feldolgozó](../automation-hrw-run-runbooks.md). Hibrid feldolgozók a hozzáférésüket nem korlátozza, amelyek az Azure próbakörnyezetbe lefordítja a memória és a hálózati korlátok.
 
 ### <a name="fails-deserialized-object"></a>Forgatókönyv: A Runbook nem deszerializált objektum miatt
 

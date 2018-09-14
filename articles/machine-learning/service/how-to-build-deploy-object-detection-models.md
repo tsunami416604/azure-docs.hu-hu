@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: netahw
 author: nhaiby
 ms.date: 06/01/2018
-ms.openlocfilehash: 44059de5a0ef0667b4268d9cdc2997162bab474a
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 65bcb92b8e97b09ca961aa02cd5891419c2cddb2
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39285804"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45580650"
 ---
 # <a name="build-and-deploy-object-detection-models-with-azure-machine-learning"></a>Hozhat létre, és az Azure Machine Learning objektumot észlelési modellek üzembe helyezése
 
@@ -126,7 +126,7 @@ _ = data_train.images[2].visualize_bounding_boxes(image_size = (10,10))
 
 ## <a name="define-a-model"></a>A modellek meghatározásához
 
-Ebben a példában a gyorsabb R-CNN-modellt használja. Különböző paramétereket meghatározásakor az ebben a modellben adható meg. Ezeket a paramétereket, valamint oktatási (lásd a következő szakaszban) használt paraméterek szerinti található bármelyik CVTK API-dokumentumok, illetve a a [Tensorflow objektum észlelési webhely](https://github.com/tensorflow/models/tree/master/research/object_detection). További információ a gyorsabb R-CNN modell található [ezt a hivatkozást](https://docs.microsoft.com/en-us/cognitive-toolkit/Object-Detection-using-Faster-R-CNN#technical-details). Ez a modell a gyors R-CNN-alapú, és további információ található [Itt](https://docs.microsoft.com/en-us/cognitive-toolkit/Object-Detection-using-Fast-R-CNN#algorithm-details).
+Ebben a példában a gyorsabb R-CNN-modellt használja. Különböző paramétereket meghatározásakor az ebben a modellben adható meg. Ezeket a paramétereket, valamint oktatási (lásd a következő szakaszban) használt paraméterek szerinti található bármelyik CVTK API-dokumentumok, illetve a a [Tensorflow objektum észlelési webhely](https://github.com/tensorflow/models/tree/master/research/object_detection). További információ a gyorsabb R-CNN modell található [ezt a hivatkozást](https://docs.microsoft.com/cognitive-toolkit/Object-Detection-using-Faster-R-CNN#technical-details). Ez a modell a gyors R-CNN-alapú, és további információ található [Itt](https://docs.microsoft.com/cognitive-toolkit/Object-Detection-using-Fast-R-CNN#algorithm-details).
 
 
 ```python

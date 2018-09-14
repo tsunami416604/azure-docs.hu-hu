@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/02/2018
 ms.author: jingwang
-ms.openlocfilehash: e4ebddc35b402d7a8997d899ce97577e93a27b84
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: e8e106bc71b87af8cd36f7edb0fe64fcddd6133e
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42444860"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45574674"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Adatok másolása (Common Data Service) Dynamics 365 vagy Dynamics CRM-hez és az Azure Data Factory használatával
 
@@ -279,7 +279,7 @@ Adatok másolása a Dynamics, állítsa a fogadó típusa a másolási tevékeny
 >[!NOTE]
 >Az alapértelmezett érték a fogadó "**writeBatchSize**"és a másolási tevékenység"**[parallelCopies](copy-activity-performance.md#parallel-copy)**", a Dynamics-fogadó le mindkét 10. Tehát 100 rekordig elküldi Dynamics egyidejűleg.
 
-A Dynamics 365 online, nincs korlát [2 egyidejű batch hívások szervezetenként](https://msdn.microsoft.com/en-us/library/jj863631.aspx#Run-time%20limitations). Ha túllépi ezt a korlátot, az első kérelem minden eddiginél végrehajtása előtt egy "Foglalt kiszolgáló" hiba lépett fel. "WriteBatchSize" tartja, legfeljebb 10 ne volna az ilyen egyidejű hívás szabályozás.
+A Dynamics 365 online, nincs korlát [2 egyidejű batch hívások szervezetenként](https://msdn.microsoft.com/library/jj863631.aspx#Run-time%20limitations). Ha túllépi ezt a korlátot, az első kérelem minden eddiginél végrehajtása előtt egy "Foglalt kiszolgáló" hiba lépett fel. "WriteBatchSize" tartja, legfeljebb 10 ne volna az ilyen egyidejű hívás szabályozás.
 
 Az optimális kombinációja "**writeBatchSize**"és"**parallelCopies**" függ az entitás sémájának például oszlopok, a sor mérete, a beépülő modulok/munkafolyamatok/munkafolyamat-tevékenység csatolja száma száma az e hívásokat, és így tovább. A beállítás alapértelmezett értékét 10 writeBatchSize * 10 parallelCopies a javaslat Dynamics-szolgáltatás, amely a legtöbb Dynamics-entitások azonban nem feltétlenül meg a legjobb teljesítmény akkor működik megfelelően. A teljesítmény hangolhassa a másolási tevékenység beállításainál együttes módosításával.
 

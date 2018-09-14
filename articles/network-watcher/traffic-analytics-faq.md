@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: jdial
-ms.openlocfilehash: 9f7fb5009468dccae50190ee40a53d11040d0348
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: debefb329304235818b7b441122b90ae9a2834a9
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37903747"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45578310"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>A TRAFFIC analytics – gyakori kérdések
 
@@ -58,7 +58,7 @@ A felhasználó előfizetéshez hozzárendelt szerepkörök ellenőrzése:
 
 3. Az adott felhasználóhoz rendelt szerepkörök listájában, használja a **Get-AzureRmRoleAssignment - SignInName [felhasználó e-mail címe] - IncludeClassicAdministrators**. 
 
-Kimenetet nem jelennek meg, ha lépjen kapcsolatba a megfelelő előfizetés rendszergazdája hozzáférhet a parancsok futtatásához. További részletekért lásd: [szerepköralapú hozzáférés-vezérlés kezelése az Azure PowerShell-lel](https://docs.microsoft.com/en-us/azure/role-based-access-control/role-assignments-powershell).
+Kimenetet nem jelennek meg, ha lépjen kapcsolatba a megfelelő előfizetés rendszergazdája hozzáférhet a parancsok futtatásához. További részletekért lásd: [szerepköralapú hozzáférés-vezérlés kezelése az Azure PowerShell-lel](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell).
 
 
 ## <a name="in-which-azure-regions-are-traffic-analytics-available"></a>Melyik Azure-ban régiók érhetők el a traffic analytics?
@@ -196,7 +196,7 @@ armclient post "https://management.azure.com/subscriptions/<NSG subscription id>
 
 A TRAFFIC analytics forgalmi díjas. A mérési alapján flow naplózási adatok feldolgozása a szolgáltatás által, és a Log Analytics-munkaterület-naplók tárolásához, a létrejövő fokozott. 
 
-Ha például forgalomért a [tarifacsomagjának](https://azure.microsoft.com/en-us/pricing/details/network-watcher/), USA nyugati középső régiójában, figyelembe véve, ha a Folyamatnaplók a Traffic Analytics által feldolgozott storage-fiókban tárolt adatok 10 GB-ot pedig a Log Analytics-munkaterület betöltött továbbfejlesztett naplók 1 GB-os, majd a alkalmazható díjak társulnak: 10 x 2.3$ + 1 x 2.76$ = 25.76$
+Ha például forgalomért a [tarifacsomagjának](https://azure.microsoft.com/pricing/details/network-watcher/), USA nyugati középső régiójában, figyelembe véve, ha a Folyamatnaplók a Traffic Analytics által feldolgozott storage-fiókban tárolt adatok 10 GB-ot pedig a Log Analytics-munkaterület betöltött továbbfejlesztett naplók 1 GB-os, majd a alkalmazható díjak társulnak: 10 x 2.3$ + 1 x 2.76$ = 25.76$
 
 ## <a name="how-can-i-navigate-by-using-the-keyboard-in-the-geo-map-view"></a>Hogyan navigálhat a földrajzi nézet a billentyűzet használatával?
 

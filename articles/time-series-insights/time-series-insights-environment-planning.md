@@ -11,12 +11,12 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/15/2017
-ms.openlocfilehash: 2c06463d95467543a426079addf981aa42d53eb6
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: c98a90aa44166d6453612f9b73287966851df6ce
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39630636"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45578157"
 ---
 # <a name="plan-your-azure-time-series-insights-environment"></a>Az Azure Time Series Insights-környezet megtervezése
 
@@ -101,11 +101,11 @@ Azure-szolgáltatások, mint a Time Series Insights biztosít magas rendelkezés
 
 A Time Series Insights nem rendelkezik beépített üzleti vészhelyreállítás (BCDR).  BCDR igénylő felhasználók azonban továbbra is valósíthat meg a helyreállítási stratégia. Hozzon létre egy második Time Series Insights-környezet biztonsági mentési Azure-régióban, és események küldése a másodlagos környezetbe történő elsődleges, a második dedikált fogyasztói csoportot és az adott eseményforrás BCDR-irányelvek.  
 
-1.  Környezet létrehozása a második régióban.  Egy Time Series Insights-környezet létrehozásával kapcsolatos további [Itt](https://docs.microsoft.com/en-us/azure/time-series-insights/time-series-insights-get-started).
-2.  Hozzon létre az eseményforrás második dedikált fogyasztói csoportot, és az esemény-adatforráshoz csatlakozhat az új környezet.  Győződjön meg arról, hogy a második, dedikált fogyasztói csoportot kijelölje.  További információt a következő vagy [az IoT Hub dokumentációja](https://docs.microsoft.com/en-us/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-iothub) vagy [dokumentáció](https://docs.microsoft.com/en-us/azure/time-series-insights/time-series-insights-data-access).
+1.  Környezet létrehozása a második régióban.  Egy Time Series Insights-környezet létrehozásával kapcsolatos további [Itt](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-get-started).
+2.  Hozzon létre az eseményforrás második dedikált fogyasztói csoportot, és az esemény-adatforráshoz csatlakozhat az új környezet.  Győződjön meg arról, hogy a második, dedikált fogyasztói csoportot kijelölje.  További információt a következő vagy [az IoT Hub dokumentációja](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-iothub) vagy [dokumentáció](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-data-access).
 3.  Ha az elsődleges régióban egy vészhelyreállítási incidens során leáll, váltson át a biztonsági mentési Time Series Insights-környezet műveletek.  
 
-Az IoT Hub BCDR-szabályzatokkal kapcsolatos további tudnivalókért látogasson [Itt](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-ha-dr).  Az eseményközpont BCDR-szabályzatokkal kapcsolatos további tudnivalókért látogasson [Itt](https://docs.microsoft.com/en-us/azure/event-hubs/event-hubs-geo-dr).  
+Az IoT Hub BCDR-szabályzatokkal kapcsolatos további tudnivalókért látogasson [Itt](https://docs.microsoft.com/azure/iot-hub/iot-hub-ha-dr).  Az eseményközpont BCDR-szabályzatokkal kapcsolatos további tudnivalókért látogasson [Itt](https://docs.microsoft.com/azure/event-hubs/event-hubs-geo-dr).  
 
 ## <a name="next-steps"></a>További lépések
 - [Event Hub-eseményforrás hozzáadása](time-series-insights-how-to-add-an-event-source-eventhub.md)

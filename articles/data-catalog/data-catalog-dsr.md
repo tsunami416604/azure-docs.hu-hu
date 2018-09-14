@@ -8,12 +8,12 @@ ms.assetid: fd4345ca-2ed8-4c5e-9c4b-f954be2fc9f9
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: 0f7ee285e77b9e54e2ff720f10f0d24c5b764014
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 7b3f403ac479e0a6a8a4ae46c2a5ab448bd8ecc2
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43042939"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45544130"
 ---
 # <a name="supported-data-sources-in-azure-data-catalog"></a>Az Azure Data Catalog támogatott adatforrások
 
@@ -369,7 +369,7 @@ Nyilvános API-t és a egy kattintással közzéteheti metaadat-egyszer regisztr
       <td>✓</td>
       <td>✓</td>
       <td></td>
-      <td></td>
+      <td>Csak az örökölt gyűjteményeket az Azure DocumentDB és az Azure Cosmos DB SQL API-gyűjtemények kompatibilisek. Újabb Cosmos DB API-k még nem támogatott. Az adatforrás listában válassza ki az Azure DocumentDB.</td>
     </tr>
     <tr>
       <td>Általános ODBC-tábla</td>
@@ -534,32 +534,6 @@ Ha szeretne egy adott adatforrás támogatott lásd, javasolja azt (vagy a támo
             <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; domain
             <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; account
             <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; name
-        
-      </td>
-    </tr>
-    <tr>
-      <td>Cosmos</td>
-      <td>Container</td>
-      <td>Virtual cluster</td>
-      <td>
-        
-            Protocol: cosmos
-            <br>Authentication: {basic, windows}
-            <br>Address:
-            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url
-        
-      </td>
-    </tr>
-    <tr>
-      <td>Cosmos</td>
-      <td>Table</td>
-      <td>Stream, stream set, view</td>
-      <td>
-        
-            Protocol: cosmos
-            <br>Authentication: {basic, windows}
-            <br>Address:
-            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url
         
       </td>
     </tr>

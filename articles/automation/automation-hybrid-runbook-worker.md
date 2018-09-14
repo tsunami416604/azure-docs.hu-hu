@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 04/25/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: e834a1cfa7eba3c1ff12523982e6704c73ef8078
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 92ebd399cea88440e0f76ee1f34cb5930d3121d9
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38488508"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45578684"
 ---
 # <a name="automate-resources-in-your-datacenter-or-cloud-by-using-hybrid-runbook-worker"></a>Automatizálhatja az erőforrások az adatközpontban vagy a felhőben a hibrid Runbook-feldolgozó
 
@@ -97,7 +97,7 @@ Eltávolítja a csoportot, akkor először távolítsa el a hibrid Runbook-feldo
 
 A hibrid Runbook-feldolgozó kapcsolódni és regisztrálni a Log Analytics-szel, az azt a portszámot és az ebben a szakaszban leírt URL-hozzáféréssel kell rendelkeznie. A hozzáférés kiegészítésként szolgál a [portokat és a Microsoft Monitoring Agent számára a szükséges URL-címek](../log-analytics/log-analytics-agent-windows.md) szeretne csatlakozni a Log Analytics. 
 
-Ha az ügynök és a Log Analytics szolgáltatás közötti kommunikációhoz proxykiszolgálót használ, győződjön meg arról, hogy elérhetők-e a megfelelő erőforrásokat. Ha tűzfal használatával korlátozza az internethez való hozzáférést, konfigurálnia kell a tűzfalat, hogy engedélyezze a hozzáférést. Ha a proxyként az OMS-átjárót használ, győződjön meg arról, hibrid feldolgozók van konfigurálva. Ehhez az utasításokért lásd: [az OMS-átjáró konfigurálása az Automation hibrid feldolgozók](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-oms-gateway#configure-for-automation-hybrid-workers).
+Ha az ügynök és a Log Analytics szolgáltatás közötti kommunikációhoz proxykiszolgálót használ, győződjön meg arról, hogy elérhetők-e a megfelelő erőforrásokat. Ha tűzfal használatával korlátozza az internethez való hozzáférést, konfigurálnia kell a tűzfalat, hogy engedélyezze a hozzáférést. Ha a proxyként az OMS-átjárót használ, győződjön meg arról, hibrid feldolgozók van konfigurálva. Ehhez az utasításokért lásd: [az OMS-átjáró konfigurálása az Automation hibrid feldolgozók](https://docs.microsoft.com/azure/log-analytics/log-analytics-oms-gateway#configure-for-automation-hybrid-workers).
 
 A következő portot és az URL-címek a hibrid Runbook-feldolgozó szerepkör, Automation folytatott kommunikációhoz szükségesek:
 

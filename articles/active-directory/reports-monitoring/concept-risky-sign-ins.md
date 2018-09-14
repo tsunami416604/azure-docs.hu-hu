@@ -14,12 +14,12 @@ ms.component: report-monitor
 ms.date: 11/14/2017
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 4546734cd1b5bf2f4aaddc6477310128c9e62d51
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: 3fab0648a2ad0e0a4c193d37875913dd27bf9af4
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42061354"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45574276"
 ---
 # <a name="risky-sign-ins-report-in-the-azure-active-directory-portal"></a>Kockázatos bejelentkezésekre vonatkozó jelentések az Azure Active Directory portálon
 
@@ -29,9 +29,9 @@ Az Azure AD észleli a felhasználói fiókokhoz kapcsolódó gyanús tevékenys
 
 A rendszer az észlelt kockázati eseményeket a következők kiszámítására használja:
 
-- **Kockázatos bejelentkezések** – A kockázatos bejelentkezés egy olyan bejelentkezési kísérletet jelöl, amelyet elképzelhető, hogy olyan személy hajtott végre, aki nem a felhasználói fiók jogos tulajdonosa. További részletek: [Kockázatos bejelentkezések](../identity-protection/overview.md#risky-sign-ins). 
+- **Kockázatos bejelentkezések** – A kockázatos bejelentkezés egy olyan bejelentkezési kísérletet jelöl, amelyet elképzelhető, hogy olyan személy hajtott végre, aki nem a felhasználói fiók jogos tulajdonosa. További részletekért lásd: [a bejelentkezési kockázati szabályzat konfigurálásának](../identity-protection/howto-sign-in-risk-policy.md). 
 
-- **Kockázatosként megjelölt felhasználók** – A kockázatos felhasználó egy olyan felhasználói fiókot jelöl, amelynek elképzelhető, hogy sérült a biztonsága. További részletek: [Kockázatosként megjelölt felhasználók](../identity-protection/overview.md#users-flagged-for-risk).  
+- **Kockázatosként megjelölt felhasználók** – A kockázatos felhasználó egy olyan felhasználói fiókot jelöl, amelynek elképzelhető, hogy sérült a biztonsága. További részletekért lásd: [konfigurálása a felhasználói kockázati házirend](../identity-protection/howto-user-risk-policy.md).  
 
 Az [Azure Portalon](https://portal.azure.com) a biztonsági jelentések az **Azure Active Directory** panel **Biztonság** szakaszában találhatók. 
 
@@ -73,7 +73,7 @@ A kockázatos bejelentkezéssel kapcsolatos vizsgálata alapján visszajelzést 
 
 ![Kockázatos bejelentkezések](./media/concept-risky-sign-ins/21.png)
 
-További részletek: [Kockázati események manuális lezárása](../identity-protection/overview.md#closing-risk-events-manually).
+
 
 Ez a jelentés a következő lehetőségeket kínálja:
 
@@ -98,13 +98,13 @@ Az Azure Active Directory prémium szintű kiadásaiban a kockázatos bejelentke
 
 Egy kockázati esemény kiválasztásakor megkapja az esemény részletes jelentési nézetét, amely a következőket teszi lehetővé:
 
-- Egy [felhasználóikockázat-csökkentési szabályzat](../identity-protection/overview.md#user-risk-security-policy) konfigurálását  
+- Egy [felhasználóikockázat-csökkentési szabályzat](../identity-protection/howto-user-risk-policy.md) konfigurálását  
 
 - A kockázati esemény észlelési idővonalának áttekintését  
 
 - Azon felhasználók listájának áttekintését, amelyeknél a rendszer kockázati esemény észlelt
 
-- [A kockázati események manuális bezárását](../identity-protection/overview.md#closing-risk-events-manually) és a manuálisan bezárt kockázati események újbóli aktiválását. 
+- Kockázati események manuális bezárását. 
 
 
 ![Kockázatos bejelentkezések](./media/concept-risky-sign-ins/457.png)
@@ -124,7 +124,7 @@ Egy felhasználó kiválasztásakor megkapja a felhasználó részletes jelenté
 
 
 Egy kockázati esemény vizsgálatához válassza ki azt a listából.  
-Ekkor megnyílik az eseményre vonatkozó **Részletek** panel. A **Részletek** panelen [manuálisan bezárhatja a kockázati eseményeket](../identity-protection/overview.md#closing-risk-events-manually) vagy újra aktiválhatja a manuálisan bezárt kockázati eseményeket. 
+Ekkor megnyílik az eseményre vonatkozó **Részletek** panel. Az a **részletek** panelen, vagy manuálisan bezárhatja a kockázati eseményeket, vagy egy manuálisan bezárt kockázati esemény újraaktiválása lehetősége van. 
 
 
 ![Kockázatos bejelentkezések](./media/concept-risky-sign-ins/325.png)

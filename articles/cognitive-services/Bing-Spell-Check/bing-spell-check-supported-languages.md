@@ -1,6 +1,6 @@
 ---
-title: Bing helyesírás ellenőrizze az API-ban (Microsoft Azure kognitív szolgáltatások) támogatott nyelv |} Microsoft Docs
-description: Általánosan elérhető listája és preview nyelvi támogatása a Bing helyesírás ellenőrizze API-műveleteket.
+title: A Bing Spell Check API (Microsoft vonatkozó Cognitive Services az Azure-ban) támogatott nyelvek |} A Microsoft Docs
+description: Általánosan elérhető listáját és az előzetes verzió nyelvi támogatása a Bing Spell Check API-műveleteket.
 services: cognitive-services
 author: noellelacharite
 manager: nolachar
@@ -9,24 +9,24 @@ ms.component: bing-spell-check
 ms.topic: conceptual
 ms.date: 05/08/2018
 ms.author: nolachar
-ms.openlocfilehash: 7cab8e0471151cd2ae7c2e31406f2460fdff6a0b
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: a62980f563c8fad525696aca73f8c036382fa820
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37050386"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45573790"
 ---
 # <a name="supported-language-list-and-status"></a>Támogatott nyelvek listája és állapota
 
-Ezeken a nyelveken a Bing helyesírás-ellenőrzése API által támogatott (csak a `spell` módot). 
+A Bing Spell Check API által támogatott nyelvek (kizárólag a `spell` módban). 
 
-Ne feledje, mint bármely más nyelven használható `en-US`, a `mkt` kell állítani és vagy `Accept-Language` vagy `setLang` kell beállítani a már leírt [helyesírás ellenőrizze API v7 referencia](https://docs.microsoft.com/en-us/rest/api/cognitiveservices/bing-spell-check-api-v7-reference)
+Vegye figyelembe, hogy, mint bármely más nyelvvel való `en-US`, a `mkt` kell beállítani, és mindkét `Accept-Language` vagy `setLang` kell beállítani a már leírtak szerint [Spell Check API 7-es referencia](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference)
 
 | Nyelv    | Nyelvkód |
 |:----------- |:-------------:|
 | arab      | `ar`          |
 | kínai (Kínai Népköztársaság)     | `zh-CN`          |
-| Kínai (Hongkong (KKT)    | `zh-HK`          |
+| Kínai (Hongkong (KKT))    | `zh-HK`          |
 | kínai (tajvani)     | `zh-TW`          |
 | dán      | `da`          |
 | holland (Belgium)       | `nl-BE`          |
@@ -60,12 +60,12 @@ Ne feledje, mint bármely más nyelven használható `en-US`, a `mkt` kell áll�
 | spanyol (Argentína)    | `es-AR`          |
 | spanyol (Chile)     | `es-CL`          |
 | spanyol (Mexikó)    | `es-MX`          |
-| spanyol (spanyolországi)    | `es-ES`          |
+| Spanyol (Spanyolország)    | `es-ES`          |
 | spanyol (Egyesült Államok)    | `es-US`          |
 | svéd     | `sv`          |
 | török     | `tr`          |
 
 ## <a name="see-also"></a>Lásd még
 
-- [Kognitív szolgáltatások dokumentációja lap](https://docs.microsoft.com/azure/cognitive-services/)
-- [Kognitív Services termék oldalát](https://azure.microsoft.com/services/cognitive-services/)
+- [A Cognitive Services dokumentációjának oldala](https://docs.microsoft.com/azure/cognitive-services/)
+- [A Cognitive Services termékoldala](https://azure.microsoft.com/services/cognitive-services/)

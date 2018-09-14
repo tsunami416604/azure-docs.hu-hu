@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/11/2017
 ms.author: kuhussai
 ms.component: blobs
-ms.openlocfilehash: b3279006d1ff947b76dd8fbba1438972e5f3ad8b
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: d7d7a6d67efd5ed230750be87450760498f9b877
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39630962"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45576239"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-storage-tiers"></a>Azure Blob Storage: A gyakori és ritka elérésű, valamint az archív tárolási szintek
 
@@ -73,7 +73,7 @@ Egy adott fiók tartalmazhat blobokat egyszerre akár mindhárom szinten is. Azo
 > Az archív tárolás és a blobszintű rétegezés csak a blokkblobokat támogatja. A pillanatképeket tartalmazó blokkblob szintje sem módosítható.
 
 ### <a name="blob-lifecycle-management"></a>BLOB életciklus-felügyelete
-A BLOB Storage életciklus-felügyelet (előzetes verzió) egy olyan interaktív és szabályalapú szabályzatot, amely való áttérés a legjobb hozzáférési szintet az adatok és a életciklus végén található adatok lejárnak kínál. Lásd: [kezelése az Azure Blob storage életciklus](https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts) további.  
+A BLOB Storage életciklus-felügyelet (előzetes verzió) egy olyan interaktív és szabályalapú szabályzatot, amely való áttérés a legjobb hozzáférési szintet az adatok és a életciklus végén található adatok lejárnak kínál. Lásd: [kezelése az Azure Blob storage életciklus](https://docs.microsoft.com/azure/storage/common/storage-lifecycle-managment-concepts) további.  
 
 ### <a name="blob-level-tiering-billing"></a>Blobszintű rétegezési számlázás
 
@@ -191,7 +191,7 @@ Az adattárolási és egyéb korlátok a fiókok szintjén vannak meghatározva,
 
 [A gyakori és ritka elérésű, valamint az archív tárolási szint rendelkezésre állásának ellenőrzése régiónként](https://azure.microsoft.com/regions/#services)
 
-[Az Azure Blob storage életciklus kezelése](https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts)
+[Az Azure Blob storage életciklus kezelése](https://docs.microsoft.com/azure/storage/common/storage-lifecycle-managment-concepts)
 
 [Aktuális tárfiókjai használatának értékelése az Azure Storage mérőszámainak engedélyezésével](../common/storage-enable-and-view-metrics.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 

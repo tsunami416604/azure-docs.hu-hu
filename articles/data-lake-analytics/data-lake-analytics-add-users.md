@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: db35f16e-1565-4873-a851-bd987accdc58
 ms.topic: conceptual
 ms.date: 05/24/2018
-ms.openlocfilehash: 0386406f5fc81a007d55bd5358e7a6b333f63b04
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: f48dc07e27c6cb01a842f1f6d720ed6476028ef7
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43048333"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45542312"
 ---
 # <a name="adding-a-user-in-the-azure-portal"></a>Felhasználók hozzáadása az Azure Portalon
 
@@ -31,12 +31,12 @@ ms.locfileid: "43048333"
 "Az R-X" vagy "RWX", adja meg a bemeneti adatokat tartalmazó mappák igény szerint, és a kimeneti adatokat.
 
 
-## <a name="optionally-add-the-user-to-the-azure-data-lake-store-role-reader-role"></a>Opcionálisan adja hozzá a felhasználót az Azure Data Lake Store szerepkör **olvasó** szerepkör.
-1.  Az Azure Data Lake Store-fiók található.
+## <a name="optionally-add-the-user-to-the-azure-data-lake-storage-gen1-role-reader-role"></a>Opcionálisan adja hozzá a felhasználót az Azure Data Lake Storage Gen1 szerepkör **olvasó** szerepkör.
+1.  Az Azure Data Lake Storage Gen1 fiók található.
 2.  Kattintson a **felhasználók**.
 3. Kattintson a **Hozzáadás** parancsra.
 4.  Válassza ki az Azure RBAC szerepkör hozzárendelése ehhez a csoporthoz.
-5.  Olvasó szerepkört rendelni. Ez a szerepkör rendelkezik a minimális ADLS-ban tárolt adatok tallózással keresse meg és kezeléséhez szükséges engedélyeket. Rendelje hozzá ehhez a szerepkörhöz, ha a csoport nem alkalmas az Azure-szolgáltatások kezeléséhez.
+5.  Olvasó szerepkört rendelni. Ez a szerepkör rendelkezik a minimális ADLSGen1 tárolt adatok tallózással keresse meg és kezeléséhez szükséges engedélyeket. Rendelje hozzá ehhez a szerepkörhöz, ha a csoport nem alkalmas az Azure-szolgáltatások kezeléséhez.
 6.  Írja be a csoport nevét.
 7.  Kattintson az **OK** gombra.
 

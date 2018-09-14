@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/04/2017
 ms.author: hascipio
-ms.openlocfilehash: 642e4a2d11ef5a92f5ab46bc4872414966b04c0d
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 24dc50a6c78769877bdc07b9521a9d2e33837937
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39715658"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45579615"
 ---
 # <a name="create-a-microsoft-developer-account"></a>A Microsoft Developer-fiók létrehozása
 Ez a cikk végigvezeti a szükséges fiók létrehozása és a egy engedélyezett Microsoft Developer válnak az Azure Marketplace-en való regisztrációs folyamatot.
@@ -38,7 +38,7 @@ A felhasználó nevét a cím a tartományban kell lennie, és az informatikai c
 Céges fiók létrehozásakor kövesse ezeket az irányelveket, ha egynél több személynek kell a Microsoft-fiókjával, amely a fiók megnyitva a fiókja eléréséhez.
 
 > [!Important]
-> Fontos, hogy lehetővé teszi több felhasználó hozzáférjen a fejlesztői központ-fiókjához, javasoljuk, hogy az Azure Active Directory használata egyéni felhasználók számára, ki férhet hozzá a fiók bejelentkezés után az egyéni szerepkörök hozzárendelése az Azure AD hitelesítő adatait. További információ: [fiókfelhasználók kezelése](https://msdn.microsoft.com/en-us/windows/uwp/publish/manage-account-users).
+> Fontos, hogy lehetővé teszi több felhasználó hozzáférjen a fejlesztői központ-fiókjához, javasoljuk, hogy az Azure Active Directory használata egyéni felhasználók számára, ki férhet hozzá a fiók bejelentkezés után az egyéni szerepkörök hozzárendelése az Azure AD hitelesítő adatait. További információ: [fiókfelhasználók kezelése](https://msdn.microsoft.com/windows/uwp/publish/manage-account-users).
 
 * Az e-mail-cím, amelyhez tartozik, a vállalati tartományhoz, de egyetlen személy, nem Microsoft-fiók létrehozása – például windowsapps@fabrikam.com.
 * A Microsoft-fiókot a lehető legkevesebb fejlesztők való hozzáférés korlátozásához.
@@ -50,7 +50,7 @@ Céges fiók létrehozásakor kövesse ezeket az irányelveket, ha egynél több
 
 Fejlesztői fiók nyitása elsősorban megbízható számítógépeket kell elérhető. Ez azért fontos, mert létrehozott hetente fiókonkénti kódok száma korlátozva van. Azt is lehetővé teszi, hogy a legtöbb zökkenőmentes bejelentkezési élmény.
 
-További információt a további fejlesztői fiók irányelvek és a biztonsággal, [Itt](https://msdn.microsoft.com/en-us/windows/uwp/publish/opening-a-developer-account#additional-guidelines-for-company-accounts).
+További információt a további fejlesztői fiók irányelvek és a biztonsággal, [Itt](https://msdn.microsoft.com/windows/uwp/publish/opening-a-developer-account#additional-guidelines-for-company-accounts).
 
 ### <a name="instructions"></a>Utasítások
 1. Nyisson meg egy új Inkognitó Chrome vagy Internet Explorer InPrivate-böngészési munkamenet, győződjön meg arról, hogy Ön nincs bejelentkezve a meglévő fiók.

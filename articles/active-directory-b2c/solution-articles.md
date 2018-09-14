@@ -8,12 +8,12 @@ ms.date: 09/07/2018
 ms.topic: conceptual
 ms.service: active-directory
 ms.component: b2c
-ms.openlocfilehash: a9faece909bba89714deef9d229ab86bd351b445
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: bdacbe425aa3140f8a3d60fdf121712d1e6eda3e
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44347137"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45541602"
 ---
 # <a name="solutions-and-training-for-azure-active-directory-b2c"></a>Megoldások és az Azure Active Directory B2C-oktatás
 
@@ -25,7 +25,4 @@ Az Azure Active Directory (Azure AD) B2C lehetővé teszi a szervezetek számár
 | [Azonosítsa a szakértelmet Azure AD B2C-ben: a fejlesztők tanfolyam](https://aka.ms/learnAADB2C) | A teljes körű tanfolyam a fejlesztők számára az alkalmazások fejlesztése az Azure AD B2C a hitelesítési módszerként a teljes útnak vesz igénybe. A labs tíz részletes modulok szolgálatunk beállítása az Azure-előfizetéssel, amelyek meghatározzák, hogy az ügyfelek megszólítása útvonalról egyedi szabályzatok létrehozásakor. |
 | [Partnerek, a szállítók és az ügyfelek számára, hogy alkalmazásokat az Azure active Directory engedélyezése](https://aka.ms/aadexternalidentities) | Minden szervezet sikeres, függetlenül a méret, iparág, vagy a megfelelőségi és biztonsági állapotáról, szervezeti lehetővé teszi más vállalatokkal működnek együtt, és ügyfelekkel támaszkodik.<br><br>Összevonhatja az Azure Active Directory, Azure AD B2C-vel, és az Azure AD B2B együttműködés, ez az útmutató részletesen az üzleti értéket és az alkalmazás vagy webhely élményt összevont hitelesítési élményt nyújt a környezetében, személyre szabott épület mechanics a az alkalmazottak, üzleti partnerek és szállítók, és ügyfelek. |
 | [Hibrid környezetben az Azure AD B2C áttelepítése alkalmazás hitelesítése](https://aka.ms/MigratetoAADB2C) | A mai modern szervezetek digitális átalakítást, és a felhőbe való áthelyezés történik, fázisában, hibrid identitás környezetben legalább ideiglenesen működik a legtöbb szervezet igénylő.<br><br>Ez az útmutató elsősorban a migrálási tervet, az Azure AD B2C-vel az első alkalmazás létrehozása, és ennek az egy hibrid identitáskezelési környezetet a szempontokat ismerteti. |
-
-<!-- 
-| [General Data protection Regulation (GDPR) Considerations for Customer Facing Applications](https://aka.ms/AADB2CandGDPR) | For any customer facing applications, GDPR must be taken into consideration by all organizations that embark on projects that hold personal data and serve EU citizens.<br><br>This solution Guide focuses on how Azure AD B2C can be used as a flexible component of your overall GDPR compliance approach, including how AAD B2C components support each of the key GDPR rights for individuals. | 
--->
+| [Általános adatvédelmi rendelet (GDPR) rendelkező ügyfélalkalmazások kapcsolatos szempontok](https://aka.ms/AADB2CandGDPR) | Minden ügyfél alkalmazásokat üzemeltethetnek GDPR kell figyelembe kell venni szerint minden olyan szervezetnek, amely a személyes adatok tárolásához, és az EU állampolgárok szolgálnak, projektek folyamatokról.<br><br>Ez a megoldási útmutató foglalkozik az Azure AD B2C segítségével hogyan biztosítható a teljes GDPR megfelelőségi megközelítéssel, beleértve a hogyan Azure AD B2C-összetevők támogatják a kulcs GDPR jogokat minden egyes egyéni felhasználók számára egy rugalmas összetevőjeként. |

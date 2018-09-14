@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/14/2018
-ms.openlocfilehash: 4fd85135ea16a5183b1b0d5220d1c160044e8841
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: d717737bc2b15e57ae32faffaece96f78a7cc013
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43701014"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45577820"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Kimenő adatait az Azure Stream Analytics ismertetése
 Ez a cikk bemutatja a kimenetek elérhető az Azure Stream Analytics-feladat különböző típusú. Kimenetek segítségével tárolhatja, és a Stream Analytics-feladat eredményének mentése. A kimeneti adatokat használja, végezhet további üzleti elemzés és az adattárház az adatokat. 
@@ -299,7 +299,7 @@ A következő táblázat összefoglalja a partíció-támogatás és a kimeneti 
 | Azure Data Lake Store | Igen | Használja {a date} és {time} az elérési út előtagmintája tokeneket. Válassza ki a dátum formátuma éééé/hh/nn például, nn/hh/éééé-hh-nn-éééé. Az időformátum ÓÓ használható. | A bemeneti particionálási követi [teljes párhuzamosítható lekérdezések](stream-analytics-scale-jobs.md). | 
 | Azure SQL Database | Nem | None | Nem alkalmazható. | 
 | Azure Blob Storage | Igen | Használja {a date} és {time} token az esemény mezőiből az elérésiút-minta. Válassza ki a dátum formátuma éééé/hh/nn például, nn/hh/éééé-hh-nn-éééé. Az időformátum ÓÓ használható. Részeként a [előzetes](https://aka.ms/ASAPreview), blob kimeneti lehet particionálni egy egyéni esemény egyetlen attribútum {fieldname} vagy {dátum és idő:\<specifikátor >}. | A bemeneti particionálási követi [teljes párhuzamosítható lekérdezések](stream-analytics-scale-jobs.md). | 
-| Azure-eseményközpont | Igen | Igen | Partíció igazítás függően változik.</br> Ha a kimeneti partíciós kulccsal egyaránt igazodik a felsőbb rétegbeli (korábbi) lekérdezési lépésre, írók száma az Eseményközpont megegyezik a számát kimeneti Event Hubs-partíciók. Minden egyes író használja az EventHub [EventHubSender osztály](/dotnet/api/microsoft.servicebus.messaging.eventhubsender?view=azure-dotnet) eseményeket küldhet az adott partíció. </br> Ha a partíciókulcs felsőbb rétegbeli (korábbi) lekérdezési lépésre, írók száma nem igazodik az Eseményközpont kimenete ugyanaz, mint a korábbi lépésben partíciók száma. Minden egyes író használ EventHubClient [SendBatchAsync osztály](https://docs.microsoft.com/en-us/dotnet/api/microsoft.servicebus.messaging.eventhubclient.sendasync?view=azure-dotnet) az események küldése az összes kimeneti partíciót. |
+| Azure-eseményközpont | Igen | Igen | Partíció igazítás függően változik.</br> Ha a kimeneti partíciós kulccsal egyaránt igazodik a felsőbb rétegbeli (korábbi) lekérdezési lépésre, írók száma az Eseményközpont megegyezik a számát kimeneti Event Hubs-partíciók. Minden egyes író használja az EventHub [EventHubSender osztály](/dotnet/api/microsoft.servicebus.messaging.eventhubsender?view=azure-dotnet) eseményeket küldhet az adott partíció. </br> Ha a partíciókulcs felsőbb rétegbeli (korábbi) lekérdezési lépésre, írók száma nem igazodik az Eseményközpont kimenete ugyanaz, mint a korábbi lépésben partíciók száma. Minden egyes író használ EventHubClient [SendBatchAsync osztály](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventhubclient.sendasync?view=azure-dotnet) az események küldése az összes kimeneti partíciót. |
 | Power BI | Nem | None | Nem alkalmazható. | 
 | Azure Table Storage | Igen | Minden olyan kimeneti oszlop.  | A bemeneti particionálási követi [teljes mértékben a lekérdezések párhuzamosíthatók](stream-analytics-scale-jobs.md). | 
 | Az Azure Service Bus-témakörbe | Igen | Automatikusan kiválasztja. A partíciók száma alapján a [Service Bus-Termékváltozat és a méret](../service-bus-messaging/service-bus-partitioning.md). Partíciókulcs egyedi egész szám érték minden egyes partícióhoz.| Ugyanaz, mint a kimenet a témakör a partíciók száma.  |

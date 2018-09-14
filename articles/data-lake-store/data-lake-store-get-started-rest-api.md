@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 5b31188eb5618d0ec5ac1f89c590913e4e284d9f
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 1b8b680736c49c0036600bf4337da6952cf38afb
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36337834"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45573639"
 ---
 # <a name="account-management-operations-on-azure-data-lake-store-using-rest-api"></a>Fiókkezelési műveletek az Azure Data Lake Store-ban a REST API használatával
 > [!div class="op_single_selector"]
@@ -42,7 +42,7 @@ Az Azure Active Directory használatával történő hitelesítést két módon 
 
 
 ## <a name="create-a-data-lake-store-account"></a>Data Lake Store-fiók létrehozása
-Ez a művelet az [itt](https://docs.microsoft.com/en-us/rest/api/datalakestore/accounts/create) definiált REST API-híváson alapul.
+Ez a művelet az [itt](https://docs.microsoft.com/rest/api/datalakestore/accounts/create) definiált REST API-híváson alapul.
 
 Használja a következő cURL-parancsot. Cserélje le a **\<yourstorename>** elemet saját Data Lake Store-nevére.
 
@@ -59,7 +59,7 @@ A fenti parancsban cserélje le a(z) \<`REDACTED`\> részt a korábban kapott en
     }    
 
 ## <a name="delete-a-data-lake-store-account"></a>Data Lake Store-fiók törlése
-Ez a művelet az [itt](https://docs.microsoft.com/en-us/rest/api/datalakestore/accounts/delete) definiált REST API-híváson alapul.
+Ez a művelet az [itt](https://docs.microsoft.com/rest/api/datalakestore/accounts/delete) definiált REST API-híváson alapul.
 
 Az alábbi cURL-parancs segítségével törölheti a Data Lake Store-fiókot. Cserélje le a **\<yourstorename>** elemet saját Data Lake Store-nevére.
 

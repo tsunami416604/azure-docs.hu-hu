@@ -1,65 +1,65 @@
 ---
-title: Tudnivalók a kérdések és válaszok készítő szolgáltatás – Microsoft kognitív szolgáltatások telepítéséről |} Microsoft Docs
-titleSuffix: Azure
-description: Útmutató a kérdések és válaszok készítő szolgáltatás beállítása
+title: A QnA Maker szolgáltatás – QnA Maker beállítása
+titleSuffix: Azure Cognitive Services
+description: Mielőtt bármilyen QnA Maker tudásbázisok hozhat létre, először be kell állítania a QnA Maker szolgáltatást az Azure-ban. Az új erőforrásokat hozhatnak létre egy előfizetésben engedélyezésével bárki is beállíthatja a QnA Maker szolgáltatást.
 services: cognitive-services
 author: nstulasi
-manager: sangitap
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: QnAMaker
+ms.component: qna-maker
 ms.topic: article
-ms.date: 04/21/2018
+ms.date: 09/12/2018
 ms.author: saneppal
-ms.openlocfilehash: ce452dd686529e017b4eae4717eadb044b389409
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 70bab81f89486f865e6a1a97aace1914be231713
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348663"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45542295"
 ---
-# <a name="create-a-qna-maker-service"></a>Kérdések és válaszok készítő szolgáltatás létrehozása
+# <a name="create-a-qna-maker-service"></a>A QnA Maker szolgáltatás létrehozása
 
-A kérdések és válaszok készítő Tudásbázis körrel létrehozása előtt először be kell állítania egy kérdés-válasz készítő szolgáltatás az Azure-ban. Bárki, aki létrehozni az új erőforrásokat egy előfizetésben engedélyezési állíthat be egy készítő kérdések és válaszok szolgáltatás.
+Mielőtt bármilyen QnA Maker tudásbázisok hozhat létre, először be kell állítania a QnA Maker szolgáltatást az Azure-ban. Az új erőforrásokat hozhatnak létre egy előfizetésben engedélyezésével bárki is beállíthatja a QnA Maker szolgáltatást.
 
-A telepítő telepít néhány Azure-erőforrások. Ezekkel az erőforrásokkal együtt, a Tudásbázis tartalom kezelése és kérdés megválaszolásával lehetőségeket nyújtson, mintha a végpont.
+A telepítő néhány Azure-erőforrások üzembe helyezése. Ezeket az erőforrásokat együtt kezelheti a Tudásbázis-tartalmat, és kérdés-válasz képességeket biztosít, mintha a végpont.
 
-1. Jelentkezzen be az [Azure portálra](<https://portal.azure.com>).
+1. Jelentkezzen be az [Azure Portalra](<https://portal.azure.com>).
 
-2.  Kattintson a **új erőforrás hozzáadása**, és írja be a "kérdés-válasz készítő" keresési, és válassza ki a kérdések és válaszok készítő erőforrás
+2.  Kattintson a **az új erőforrás hozzáadása**, és írja be a "qna maker" kifejezést a keresőmezőbe, és válassza ki a QnA Maker erőforrást
 
-    ![Hozzon létre egy új kérdések és válaszok készítő](../media/qnamaker-how-to-setup-service/create-new-resource.png)
+    ![Hozzon létre egy új QnA Maker szolgáltatást](../media/qnamaker-how-to-setup-service/create-new-resource.png)
 
-3.  Kattintson a **létrehozása** a használati feltételek elolvasása után.
+3.  Kattintson a **létrehozás** a feltételek és kikötések elolvasása után.
 
-    ![Hozzon létre egy új kérdések és válaszok készítő](../media/qnamaker-how-to-setup-service/create-new-resource-button.png)
+    ![Hozzon létre egy új QnA Maker szolgáltatást](../media/qnamaker-how-to-setup-service/create-new-resource-button.png)
 
-4. A **kérdések és válaszok készítő**, válassza ki a megfelelő szinteket, és régiókban.
+4. A **QnA Maker**, válassza ki a megfelelő szintek és régiók.
 
-    ![Hozzon létre egy új kérdések és válaszok készítő](../media/qnamaker-how-to-setup-service/enter-qnamaker-info.png)
+    ![Hozzon létre egy új QnA Maker szolgáltatást](../media/qnamaker-how-to-setup-service/enter-qnamaker-info.png)
 
-    * Töltse ki a **neve** egyedi névvel kell a kérdések és válaszok készítő szolgáltatás azonosítására. Ez a név is azonosítja a kérdések és válaszok készítő végpontot, amelyhez a Tudásbázis körrel lesz társítva.
-    * Válassza ki a **előfizetés** a kérdések és válaszok készítő erőforrás meg lesznek telepítve.
-    * Válassza ki a **tarifacsomag felügyeleti** a kérdések és válaszok készítő szolgáltatásokhoz (portál és API-k kezelése). Lásd: [Itt](https://aka.ms/qnamaker-pricing) a termékváltozatok árakkal kapcsolatos részletekért.
-    * Hozzon létre egy új **erőforráscsoport** (ajánlott), vagy használjon egy meglévőt, amelyben a kérdések és válaszok készítő erőforrás telepítéséhez.
-    * Válassza ki a **tarifacsomag keresési** az Azure Search szolgáltatás. Ha látja az ingyenes szint beállítás szürkén jelenik meg, az azt jelenti, már van egy ingyenes Azure Search réteg az előfizetés telepítve. Ebben az esetben szüksége lesz az alapszintű Azure Search réteg kezdődhet. Az Azure search árazási részletek [Itt](https://azure.microsoft.com/en-us/pricing/details/search/).
-    * Válassza ki a **keresési helyet** ahová Azure Search adatokat is be kell állítani. Korlátozások a ügyféladatokat kell tárolásához tájékoztatja az Azure Search a kiválasztott hely.
-    * Adjon nevet az App service a **alkalmazásnév**.
-    * Alapértelmezés szerint az App service alapértelmezés szerint használt érték (S1) standard csomagra. A terv létrehozása után módosíthatja. További részletek az App Service szolgáltatás díjszabása [Itt](https://azure.microsoft.com/en-in/pricing/details/app-service/).
-    * Válassza ki a **webhely hely** hova szeretné telepíteni az App Service.
+    * Töltse ki a **neve** a QnA Maker szolgáltatás azonosítására, egyedi névvel. Ez a név is azonosítja a QnA Maker végpontot, amelyhez a tudásbázisok lesz társítva.
+    * Válassza ki a **előfizetés** a QnA Maker erőforrás meg lesz telepítve.
+    * Válassza ki a **felügyeleti tarifacsomag** a QnA Maker szolgáltatásokhoz (a portál és a felügyeleti API-k). Lásd: [Itt](https://aka.ms/qnamaker-pricing) az SKU-k, a díjszabással kapcsolatos információkért.
+    * Hozzon létre egy új **erőforráscsoport** (ajánlott), vagy használjon egy meglévőt, melyben szeretné üzembe helyezni a QnA Maker erőforrás.
+    * Válassza ki a **tarifacsomag keresési** az Azure Search szolgáltatás. Ha látja az ingyenes szint lehetőség szürkén jelenik meg, az azt jelenti, már rendelkezik egy ingyenes Azure Search szolgáltatásréteg, az előfizetésében üzembe helyezve. Ebben az esetben szüksége lesz az alapszintű Azure Search szolgáltatásréteg kezdődhet. Részletek megtekintése az Azure search díjszabása [Itt](https://azure.microsoft.com/en-us/pricing/details/search/).
+    * Válassza ki a **hely keresése** hol szeretné üzembe helyezni az Azure Search-adatok. Ahol a vásárlói adatokat tárolni kell a korlátozások tájékoztatja a helyet úgy dönt, az Azure search.
+    * Nevezze el az App Service- **alkalmazásnév**.
+    * Alapértelmezés szerint az App Service-ben alapértelmezés szerint a standard (S1) szintre. Létrehozása után módosíthatja a tervet. További részleteket az App service díjszabását [Itt](https://azure.microsoft.com/en-in/pricing/details/app-service/).
+    * Válassza ki a **webhely helye** ahol az App Service üzembe helyezve.
 
         > [!NOTE]
         > A keresés helyét a webhely helye eltérő lehet.
 
-    * Válassza ki, hogy engedélyezni szeretné **Application Insights** vagy sem. Ha **Application Insights** van engedélyezve, kérdések és válaszok készítő gyűjti telemetriai forgalom, csevegési naplók és a hibák.
-    * Válassza ki a **App insights hely** hova szeretné telepíteni az Application Insights-erőforrást.
+    * Válassza ki, hogy engedélyezni szeretné **Application Insights** vagy sem. Ha **Application Insights** van engedélyezve, QnA Maker telemetriát gyűjt a forgalom, a csevegési naplók és a hibákat.
+    * Válassza ki a **alkalmazáselemzések helye** ahol Application Insights-erőforrás üzembe helyezve.
 
-5. Miután az összes mező érvényesíti, rákattinthat a **létrehozása** ezek a szolgáltatások központi telepítésének elindítása az előfizetésben. Eltarthat néhány percig.
+5. Miután az összes mező érvényesítése után kattintson a **létrehozás** ezek a szolgáltatások központi telepítésének elindítása az előfizetésében. Néhány percet vesz igénybe.
 
-6.  Miután az üzembe helyezés, megjelenik a következő források létrehozni az előfizetésben.
+6.  Ha végzett az üzembe helyezés, látni fogja az alábbi, az előfizetésben létrehozott erőforrásokat.
 
-    ![Hozzon létre egy új kérdések és válaszok készítő](../media/qnamaker-how-to-setup-service/resources-created.png)
+    ![Hozzon létre egy új QnA Maker szolgáltatást](../media/qnamaker-how-to-setup-service/resources-created.png)
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Hozzon létre, és tegye közzé a Tudásbázis](../Quickstarts/create-publish-knowledge-base.md)
+> [Hozzon létre és Tudásbázis közzététele](../Quickstarts/create-publish-knowledge-base.md)

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 588a0686eda1966582b82a4673a8b6805453c94c
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 6096833381db7ef0d2f011d517aaad4ae63ce4d6
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39441442"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45576867"
 ---
 # <a name="create-a-log-alert-with-a-resource-manager-template"></a>Naplóriasztás létrehozása Resource Manager-sablonnal
 Ez a cikk bemutatja, hogyan kezelheti [naplóriasztások](monitor-alerts-unified-log.md) programozott módon ipari méretekben, az Azure-ban [Azure Resource Manager-sablon](..//azure-resource-manager/resource-group-authoring-templates.md) keresztül [Azure PowerShell-lel](../azure-resource-manager/resource-group-template-deploy.md) és [Az azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md). Jelenleg az Azure-riasztások, támogatja a naplóriasztások a lekérdezések [Azure Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) és [Azure Application Insights](../application-insights/app-insights-analytics-tour.md).
@@ -35,12 +35,12 @@ A Log Analytics Alert REST API RESTful és az Azure Resource Manager REST API-n 
 Tudjon meg többet [létrehozása és kezelése a REST API-val a Log Analytics riasztási szabályai](../log-analytics/log-analytics-api-alerts.md)köztük az API-t a Powershell elérése példái.
 
 ## <a name="managing-log-alert-on-application-insights"></a>Az Application Insights riasztás kezelése
-Naplóriasztások az Azure Application Insights része alatt az Azure Monitor az új Azure-riasztások jelentek meg. Ezért futása alatt az Azure Monitor API-t szolgáltatásként [ütemezett lekérdezési szabály](https://docs.microsoft.com/en-us/rest/api/monitor/scheduledqueryrules/) REST művelet csoport.
+Naplóriasztások az Azure Application Insights része alatt az Azure Monitor az új Azure-riasztások jelentek meg. Ezért futása alatt az Azure Monitor API-t szolgáltatásként [ütemezett lekérdezési szabály](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) REST művelet csoport.
 
 ### <a name="using-azure-resource-manager-template"></a>Az Azure Resource Manager-sablon használatával
-Az Application Insights-erőforrások riasztás van valamilyen `Microsoft.Insights/scheduledQueryRules/`. Az erőforrástípus további információkért lásd: [Azure Monitor - ütemezett lekérdezési szabály API-referencia](https://docs.microsoft.com/en-us/rest/api/monitor/scheduledqueryrules/).
+Az Application Insights-erőforrások riasztás van valamilyen `Microsoft.Insights/scheduledQueryRules/`. Az erőforrástípus további információkért lásd: [Azure Monitor - ütemezett lekérdezési szabály API-referencia](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/).
 
-Az alábbiakban található az struktúráját [ütemezett lekérdezési szabály létrehozása](https://docs.microsoft.com/en-us/rest/api/monitor/scheduledqueryrules/createorupdate) erőforrás-sablont változókként minta adatkészlet alapján.
+Az alábbiakban található az struktúráját [ütemezett lekérdezési szabály létrehozása](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/createorupdate) erőforrás-sablont változókként minta adatkészlet alapján.
 
 ```json
 {
@@ -113,7 +113,7 @@ Az alábbiakban található az struktúráját [ütemezett lekérdezési szabál
 }
 ```
 > [!IMPORTANT]
-> És rejtett hivatkozás a célként megadott erőforrás címke mezőt kötelező kitölteni, igénybe veszik a [ütemezett lekérdezési szabály ](https://docs.microsoft.com/en-us/rest/api/monitor/scheduledqueryrules/) API-hívás vagy az erőforrás-sablon. 
+> És rejtett hivatkozás a célként megadott erőforrás címke mezőt kötelező kitölteni, igénybe veszik a [ütemezett lekérdezési szabály ](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) API-hívás vagy az erőforrás-sablon. 
 
 A fenti json-mintaadatok menthető, ez a bemutató céljából (például:) sampleScheduledQueryRule.json és telepíthetők [Azure Resource Manager az Azure Portalon](../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template).
 

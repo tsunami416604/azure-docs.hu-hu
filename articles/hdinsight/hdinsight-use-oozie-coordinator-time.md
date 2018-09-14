@@ -10,12 +10,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/04/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 783857b9ca1d3e3a5aef13c24f9a3633533a2050
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 7f10990d2e4531be42f0553875bf3a01f0a23f58
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43048475"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45575660"
 ---
 # <a name="use-time-based-oozie-coordinator-with-hadoop-in-hdinsight-to-define-workflows-and-coordinate-jobs"></a>Időalapú Oozie-koordinátor használata a HDInsight Hadoop-keretrendszerrel definiálja munkafolyamatait, és a feladatok koordinálása
 Ebből a cikkből megtudhatja, hogy hogyan munkafolyamatok és koordinátorok meghatározásához, és hogy miként indítható el a koordinátor feladatok, ideje alapján. Hasznos lehet haladhat végig [az Oozie használata a HDInsight] [ hdinsight-use-oozie] Ez a cikk elolvasása előtt. Oozie, mellett is ütemezhet feladatokat az Azure Data Factory. Azure Data Factory kapcsolatban lásd: [Hive és a Data Factory és a Pig használata a](../data-factory/transform-data.md).
@@ -747,7 +747,7 @@ Ebben az oktatóanyagban megtudhatta, hogyan adhat meg, az Oozie-munkafolyamatok
 [powershell-download]: http://azure.microsoft.com/downloads/
 [powershell-about-profiles]: http://go.microsoft.com/fwlink/?LinkID=113729
 [powershell-install-configure]: /powershell/azureps-cmdlets-docs
-[powershell-start]: https://docs.microsoft.com/en-us/powershell/scripting/setup/starting-windows-powershell?view=powershell-6
+[powershell-start]: https://docs.microsoft.com/powershell/scripting/setup/starting-windows-powershell?view=powershell-6
 [powershell-script]: http://technet.microsoft.com/library/ee176949.aspx
 
 [cindygross-hive-tables]: http://blogs.msdn.com/b/cindygross/archive/2013/02/06/hdinsight-hive-internal-and-external-tables-intro.aspx

@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 52582a6fe3f6c8ccc22c57268e20a94139be9e6f
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 669a436293ddf6f13760db5e6802aaae82ddd74b
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44094858"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45577513"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Teljesítmény és méretezhetőség a tartós függvények (az Azure Functions)
 
@@ -27,13 +27,13 @@ Szeretné megtudni, a skálázási viselkedés, kell megérteni az alapul szolg�
 
 A **előzmények** táblában egy Azure Storage-táblába, amely tartalmazza az előzmények események feladat hubon belüli összes orchestration-példánya számára. Ez a táblázat neve szerepel az űrlap *TaskHubName*előzményei. Példányok futtatásakor új sorok hozzáadódnak ebben a táblában. A partíciókulcs a táblázat a vezénylési Példányazonosítója származik. Példányazonosítót véletlenszerű a legtöbb esetben ez biztosítja, hogy az Azure Storage szolgáltatásban belső partíciók optimális eloszlása.
 
-Vezénylési példányát kell futtatni, ha a korábbi tábla megfelelő sorait töltődnek be a memóriába. Ezek *előzmények események* vannak majd játssza vissza az orchestrator függvény kódjába nyerheti vissza a korábban létrehozott ellenőrzőpont állapotba kerülnek. Futtatási előzményei, így állapot újraépítése használatát befolyásolja a [Event Sourcing mintát](https://docs.microsoft.com/en-us/azure/architecture/patterns/event-sourcing).
+Vezénylési példányát kell futtatni, ha a korábbi tábla megfelelő sorait töltődnek be a memóriába. Ezek *előzmények események* vannak majd játssza vissza az orchestrator függvény kódjába nyerheti vissza a korábban létrehozott ellenőrzőpont állapotba kerülnek. Futtatási előzményei, így állapot újraépítése használatát befolyásolja a [Event Sourcing mintát](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing).
 
 ## <a name="instances-table"></a>Példányok tábla
 
 A **példányok** táblában egy másik Azure Storage-táblába, amely tartalmaz egy feladat központ összes vezénylési példányok válik. Példányok létrehozásakor új sorok hozzáadódnak ebben a táblában. Ezt a táblázatot a partíciókulcs a vezénylési-példány Azonosítóját, a sorkulcs pedig egy rögzített konstans. Vezénylési példányonként egy sor van.
 
-Ez a tábla szolgál a példány a lekérdezésekre vonatkozó kérelmek teljesítéséhez a [GetStatusAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_GetStatusAsync_System_String_) API-t, valamint a [vonatkozó lekérdezés HTTP API](https://docs.microsoft.com/en-us/azure/azure-functions/durable-functions-http-api#get-instance-status). Folyamatosan idővel konzisztenssé váljanak a tartalmát a **előzmények** azt korábban említettük a táblában. Egy külön Azure Storage-táblába példány lekérdezési műveletek ily módon való hatékony felhasználása befolyásolja a [Command and Query Responsibility Segregation (CQRS) minta](https://docs.microsoft.com/en-us/azure/architecture/patterns/cqrs).
+Ez a tábla szolgál a példány a lekérdezésekre vonatkozó kérelmek teljesítéséhez a [GetStatusAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_GetStatusAsync_System_String_) API-t, valamint a [vonatkozó lekérdezés HTTP API](https://docs.microsoft.com/azure/azure-functions/durable-functions-http-api#get-instance-status). Folyamatosan idővel konzisztenssé váljanak a tartalmát a **előzmények** azt korábban említettük a táblában. Egy külön Azure Storage-táblába példány lekérdezési műveletek ily módon való hatékony felhasználása befolyásolja a [Command and Query Responsibility Segregation (CQRS) minta](https://docs.microsoft.com/azure/architecture/patterns/cqrs).
 
 ## <a name="internal-queue-triggers"></a>Belső eseményindítók
 

@@ -1,27 +1,28 @@
 ---
-title: A QnA Maker korlátok – az Azure Cognitive Services |} A Microsoft Docs
-description: A QnA Maker korlátok
+title: Korlátozások és határok – QnA Maker
+titleSuffix: Azure Cognitive Services
+description: A QnA Maker között korlátok átfogó listáját.
 services: cognitive-services
 author: nstulasi
-manager: sangitap
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: QnAMaker
+ms.component: qna-maker
 ms.topic: article
-ms.date: 05/07/2018
-ms.author: saneppal
-ms.openlocfilehash: 93471faab9aac94616c770cbee21fb0364f73639
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.date: 09/12/2018
+ms.author: nstulasi
+ms.openlocfilehash: da1de0c36033823bd8f615411eed183ffe9701b6
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39501860"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45574548"
 ---
 # <a name="qna-maker-limits"></a>A QnA Maker korlátok
 A QnA Maker között korlátok átfogó listáját.
 
 ## <a name="knowledge-bases"></a>Tudásbázisok
 
-* Tudásbázisok maximális száma alapján [Azure Search szint korlátok](https://docs.microsoft.com/en-us/azure/search/search-limits-quotas-capacity)
+* Tudásbázisok maximális száma alapján [Azure Search szint korlátok](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity)
 
 |**Az Azure Search szolgáltatásréteg** | **Ingyenes** | **Basic** |**S1** | **S2**| **S3** |**S3 HD**|
 |---|---|---|---|---|---|----|
@@ -32,7 +33,7 @@ A QnA Maker között korlátok átfogó listáját.
 * – Gyakori kérdések HTML-lapok a a kivonási QnA-tudásbázisok bejárható részletes hivatkozások maximális száma: 20
 
 ## <a name="metadata-limits"></a>Metaadat-korlátok
-* Metaadatokat tartalmazó mezőket egy Tudásbázis, maximális száma alapján [Azure Search szint korlátok](https://docs.microsoft.com/en-us/azure/search/search-limits-quotas-capacity)
+* Metaadatokat tartalmazó mezőket egy Tudásbázis, maximális száma alapján [Azure Search szint korlátok](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity)
 
 |**Az Azure Search szolgáltatásréteg** | **Ingyenes** | **Basic** |**S1** | **S2**| **S3** |**S3 HD**|
 |---|---|---|---|---|---|----|

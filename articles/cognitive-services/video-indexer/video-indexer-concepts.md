@@ -9,28 +9,20 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 07/31/2018
 ms.author: juliako
-ms.openlocfilehash: 224c8b05027f51fb99c8d58be34c3604032c0f77
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 67bbb7046d71b904dfdcaad0e44024e8f30ac288
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39399495"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45543707"
 ---
 # <a name="video-indexer-concepts"></a>Video Indexer-fogalmak
  
-Ez a témakör néhány olyan fogalmat, a Video Indexer szolgáltatás.
+Ez a cikk néhány olyan fogalmat, a Video Indexer szolgáltatás ismerteti.
     
 ## <a name="summarized-insights"></a>Összesített insights
 
-Összesített insights tartalmaznia egy összesített nézetét az adatok: arcok, kulcsszavakat, hangulati. Helyett kapcsolaton át, mindegyik időtartományok több ezer, és győződjön meg róla melyik arcok, például az összesített insights tartalmazza az összes az arcok, és mindegyik, a megjelenő időtartományok és a %-os látható.
-
-## <a name="topicskeywords"></a>A témakörök/kulcsszavak
-
-Témakörök/kulcsszavak olyan listájában, a Video Indexer kiolvassa a szöveget a kulcskifejezéseket. Például a Scott Guthrie videó tartalmazhatja a következő témakörök kulcsszavakat: biztonság, az Azure, a Microsoft Cloud, a bevétel.
-
-## <a name="sentiments"></a>hangulati
-
-A Video Indexer elemzi az átiratok, amikor azt észleli, valamint hangulati. "Ez az esemény nagyon izgalmas" például egy pozitív véleményeket.
+Összesített insights tartalmaznia egy összesített nézetét az adatok: arcok, témakörök, érzelmeket. Helyett kapcsolaton át, mindegyik időtartományok több ezer, és győződjön meg róla melyik arcok, például az összesített insights tartalmazza az összes az arcok, és mindegyik, a megjelenő időtartományok és a %-os látható.
 
 ## <a name="time-range-vs-adjusted-time-range"></a>időtartomány és a módosított időtartomány
 

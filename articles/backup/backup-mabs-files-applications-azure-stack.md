@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 6/5/2018
 ms.author: adigan
-ms.openlocfilehash: a9eca3c3aeaa8d9d0d3d7728f8aebd63543cb604
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: acbd1bb98fd9a3eb24b7b3262c3fe9fe47200385
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39617115"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45579200"
 ---
 # <a name="back-up-files-on-azure-stack"></a>Az Azure Stacken fájlok biztonsági mentése
 Az Azure Backup segítségével védelme (vagy felhatolásra) fájlok és alkalmazások az Azure Stack. Fájlok és alkalmazások biztonsági mentése, telepítse a Microsoft Azure Backup Server az Azure Stacken futó virtuális gépként. Bármely Azure Stack-kiszolgálón az azonos virtuális hálózatba a fájlok védelmét. Miután telepítette az Azure Backup Server, a rövid távú biztonsági mentési adatok érhető el helyi tárhely bővítése érdekében az Azure lemezeket ad hozzá. Az Azure Backup Server az Azure storage hosszú távú megőrzésének használ.
@@ -49,7 +49,7 @@ Az Azure Backup Server számára a fájlok védelméhez az Azure Stack virtuáli
 
     ![Új védelmi csoport varázsló megnyitása](./media/backup-mabs-files-applications-azure-stack/5-select-group-members.png)
 
-    A Microsoft azt javasolja, és a egy alkalmazásvédelmi szabályzatot, fog osztani egy védelmi csoport összes adatot. Hamarosan tervezésével és telepítésével a védelmi csoportok, tekintse meg a System Center DPM cikket, teljes körű tájékoztatásért [védelmi csoportok üzembe helyezése](https://docs.microsoft.com/en-us/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-1801).
+    A Microsoft azt javasolja, és a egy alkalmazásvédelmi szabályzatot, fog osztani egy védelmi csoport összes adatot. Hamarosan tervezésével és telepítésével a védelmi csoportok, tekintse meg a System Center DPM cikket, teljes körű tájékoztatásért [védelmi csoportok üzembe helyezése](https://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-1801).
 
 4. Az a **adatvédelmi módszer kiválasztása** írja be a védelmi csoport nevét. Jelölje be a **használatával rövid távú védelmet szeretnék:** és **online védelmet szeretnék**. Kattintson a **Tovább** gombra.
 
@@ -135,5 +135,5 @@ Az Azure Portalon az Azure Backup Server entitások megtekintéséhez kövesse a
 
 ## <a name="see-also"></a>Lásd még
 Egyéb munkaterhelések védelme érdekében az Azure Backup Server használatával kapcsolatos információkért lásd: a következő cikkeket:
-- [A SharePoint-farm biztonsági mentése](https://docs.microsoft.com/en-us/azure/backup/backup-mabs-sharepoint-azure-stack)
-- [SQL server biztonsági mentése](https://docs.microsoft.com/en-us/azure/backup/backup-mabs-sql-azure-stack)
+- [A SharePoint-farm biztonsági mentése](https://docs.microsoft.com/azure/backup/backup-mabs-sharepoint-azure-stack)
+- [SQL server biztonsági mentése](https://docs.microsoft.com/azure/backup/backup-mabs-sql-azure-stack)

@@ -1,6 +1,6 @@
 ---
-title: Az Azure BizTalk szolgáltatások kibocsátási megjegyzései |} Microsoft Docs
-description: Az ismert problémák listája Azure BizTalk szolgáltatások
+title: Az Azure BizTalk Services kibocsátási megjegyzései |} A Microsoft Docs
+description: Az ismert hibákat tartalmazza az Azure BizTalk Services
 services: biztalk-services
 documentationcenter: ''
 author: msftman
@@ -14,114 +14,114 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2016
 ms.author: deonhe
-ms.openlocfilehash: 5c05c7c4c0f8f0b3619b36390c8a0224a03c900a
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: db79ee85c19e5f3cdced9b894aca48de4d7d1c42
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37063542"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45576470"
 ---
-# <a name="release-notes-for-azure-biztalk-services"></a>Kibocsátási megjegyzések a Azure BizTalk szolgáltatások
+# <a name="release-notes-for-azure-biztalk-services"></a>Az Azure BizTalk Services – kibocsátási megjegyzések
 
 > [!INCLUDE [BizTalk Services is being retired, and replaced with Azure Logic Apps](../../includes/biztalk-services-retirement.md)]
 
 > [!INCLUDE [Use APIs to manage MABS](../../includes/biztalk-services-retirement-azure-classic-portal.md)]
 
-A kibocsátási megjegyzések a Microsoft Azure BizTalk szolgáltatások ebben a kiadásban az ismert problémákról tartalmaznak.
+A Microsoft Azure BizTalk Services – kibocsátási megjegyzések az ebben a kiadásban az ismert hibákat tartalmaznak.
 
-## <a name="whats-new-in-the-november-update-of-biztalk-services"></a>BizTalk szolgáltatások November frissítés újdonságai
-* A BizTalk szolgáltatások portálja titkosítását is engedélyezhető. Lásd: [engedélyezheti a titkosítást a BizTalk szolgáltatások portál aktívan](https://msdn.microsoft.com/library/azure/dn874052.aspx).
+## <a name="whats-new-in-the-november-update-of-biztalk-services"></a>A BizTalk Services novemberi frissítés újdonságai
+* Titkosítás inaktív állapotban is engedélyezhető a BizTalk Services Portáljára. Lásd: [titkosítás inaktív állapotban a BizTalk Services portáljának engedélyezése](https://msdn.microsoft.com/library/azure/dn874052.aspx).
 
 ## <a name="update-history"></a>Frissítési előzmények
 ### <a name="october-update"></a>. Októberi frissítés
-* Munkahelyi és iskolai fiókok támogatottak:  
-  * **A forgatókönyv**: regisztrálta a BizTalk szolgáltatás központi telepítése a Microsoft-fiókkal (például user@live.com). Ebben a forgatókönyvben csak Microsoft Account kezelése a BizTalk szolgáltatás a BizTalk szolgáltatások portál használatával. Egy szervezeti fiók nem használható.  
-  * **A forgatókönyv**: regisztrálta a BizTalk szolgáltatás központi telepítése egy Azure Active Directory szervezeti fiókkal (például user@fabrikam.com vagy user@contoso.com). Ebben a forgatókönyvben csak Azure Active Directory-felhasználók a szervezeten belül kezelheti a BizTalk szolgáltatás a BizTalk szolgáltatások portál használatával. A Microsoft-fiók nem használható.  
-* BizTalk szolgáltatás létrehozása, amikor Ön automatikusan regisztrálva van a BizTalk szolgáltatások portálon.
-  * **A forgatókönyv**: BizTalk szolgáltatás létrehozása Azure-ba, és válassza **kezelése** a legelső alkalommal. Amikor megnyílik a BizTalk Services portálra, a BizTalk szolgáltatás automatikusan regisztrálja, és készen áll a központi telepítések a.  
-    Lásd: [regisztrálása és a BizTalk a BizTalk szolgáltatás központi telepítés frissítése Services portál](https://msdn.microsoft.com/library/azure/hh689837.aspx).  
+* A szervezeti fiókokat támogatja:  
+  * **A forgatókönyv**: egy BizTalk-szolgáltatás telepítését, Microsoft-fiókkal regisztrált (például user@live.com). Ebben a forgatókönyvben a Microsoft Account felhasználók csak a BizTalk Service a BizTalk Services portáljának használata kezelheti. Szervezeti fiók nem használható.  
+  * **A forgatókönyv**: BizTalk-szolgáltatások üzembe helyezéséhez egy Azure Active Directory szervezeti fiókkal regisztrált (például user@fabrikam.com vagy user@contoso.com). Ebben a forgatókönyvben a csak az Azure Active Directory-felhasználók a szervezeten belül a BizTalk Service a BizTalk Services portáljának használata kezelheti. Microsoft-fiók nem használható.  
+* BizTalk-szolgáltatás létrehozása, amikor Ön automatikusan regisztrálva van a BizTalk Services portálon.
+  * **A forgatókönyv**: jelentkezik be, az Azure BizTalk-szolgáltatás létrehozása, és válassza **kezelés** Ez az első alkalommal. Amikor megnyílik a BizTalk Services portáljára, a BizTalk Service automatikusan regisztrálja, és készen áll a központi telepítések a.  
+    Lásd: [Regisztrálásán, illetve frissítésén BizTalk-szolgáltatások üzembe helyezéséhez a BizTalk Services portál](https://msdn.microsoft.com/library/azure/hh689837.aspx).  
 
-### <a name="august-14-update"></a>Augusztus 14 frissítés
-* A szerződés és híd leválasztásával – Kereskedelmipartner-egyezmények és hidak most le a BizTalk Services portálra. Mostantól létrehozhat szerződések és a hidak külön-külön, és futásidőben hidak feloldani egy szerződést a EDI-üzenetben levő értékek alapján. Lásd: [megállapodások létrehozása az Azure BizTalk szolgáltatások](https://msdn.microsoft.com/library/azure/hh689908.aspx), [hozzon létre egy BizTalk szolgáltatások portálon EDI híd](https://msdn.microsoft.com/library/azure/dn793986.aspx), [hozzon létre egy BizTalk szolgáltatások portálon AS2 híd](https://msdn.microsoft.com/library/azure/dn793993.aspx), és [ Hogyan tegye megoldásához hidak futásidőben szerződéseket?](https://msdn.microsoft.com/library/azure/dn794001.aspx)  
-* Az egyszeri jelszóhoz tartozó szerződéseket létrehozhat megszakad.  
-* A küldő-oldalon szerződés megadhat különböző elválasztó mindegyik séma-készletet. Ez a konfiguráció a küldési oldal megállapodás protokoll beállításai szakaszban megadott. További információkért lásd: [egy X12 létrehozása az Azure BizTalk szolgáltatások megállapodás](https://msdn.microsoft.com/library/azure/hh689847.aspx) és [egy EDIFACT-egyezmény létrehozása az Azure BizTalk szolgáltatások](https://msdn.microsoft.com/library/azure/dn606267.aspx). Két új entitásokat is bekerülnek a TPM OM API ugyanerre a célra. Lásd: [X12DelimiterOverrides](https://msdn.microsoft.com/library/azure/dn798749.aspx) és [EDIFACTDelimiterOverride](https://msdn.microsoft.com/library/azure/dn798748.aspx).  
-* Standard XSD szerkezetek, beleértve a származtatott típusok támogatása. Lásd: [a a maps szerkezeteket használjon szokásos XSD](https://msdn.microsoft.com/library/azure/dn793987.aspx) és [használati származtatott típusok Leképezési forgatókönyvek és példák](https://msdn.microsoft.com/library/azure/dn793997.aspx).  
-* AS2 új MIC üzenet az aláíráshoz és új titkosítási algoritmusok támogatja. Lásd: [az AS2-egyezmény létrehozása az Azure BizTalk szolgáltatások](https://msdn.microsoft.com/library/azure/hh689890.aspx).  
+### <a name="august-14-update"></a>Augusztus 14-frissítés
+* Szerződés és a híd elválasztás – kereskedelmi partneri szerződéseket és hidak most leválasztott a BizTalk Services Portáljára. Most már szerződések és a hidak külön létrehozott, és futásidőben hidak feloldani egy szerződést az EDI-üzenetben értékei alapján. Lásd: [szerződések létrehozása az Azure BizTalk Services](https://msdn.microsoft.com/library/azure/hh689908.aspx), [hozzon létre egy BizTalk Services portáljának használata EDI híd](https://msdn.microsoft.com/library/azure/dn793986.aspx), [hozzon létre egy AS2-hidat, BizTalk Services portáljának használata](https://msdn.microsoft.com/library/azure/dn793993.aspx), és [ Hogyan megoldja hidak futásidőben szerződéseket?](https://msdn.microsoft.com/library/azure/dn794001.aspx)  
+* A szerződések sablonok létrehozásának lehetőségét megszakad.  
+* A küldési-oldalon szerződés mostantól megadhatja az egyes séma csoportjainak különböző elválasztó karakter. Ez a konfiguráció a küldési oldalon szerződés protokoll beállításaiban van megadva. További információkért lásd: [egy X12 létrehozása az Azure BizTalk Services szerződés](https://msdn.microsoft.com/library/azure/hh689847.aspx) és [az EDIFACT-egyezmény létrehozása az Azure BizTalk Services](https://msdn.microsoft.com/library/azure/dn606267.aspx). Két új entitásokat is bekerülnek a TPM OM API ugyanazt a célt. Lásd: [X12DelimiterOverrides](https://msdn.microsoft.com/library/azure/dn798749.aspx) és [EDIFACTDelimiterOverride](https://msdn.microsoft.com/library/azure/dn798748.aspx).  
+* Standard XSD szerkezeteket, beleértve a származtatott típusok, mostantól támogatottak. Lásd: [használjon standard XSD hoz létre, a maps-](https://msdn.microsoft.com/library/azure/dn793987.aspx) és [használata származtatott típusok Leképezési forgatókönyvek és példák a](https://msdn.microsoft.com/library/azure/dn793997.aspx).  
+* AS2 új MIC üzenet az aláíráshoz és új titkosítási algoritmusok támogatja. Lásd: [egy AS2-egyezmény létrehozása az Azure BizTalk Services](https://msdn.microsoft.com/library/azure/hh689890.aspx).  
   ## <a name="know-issues"></a>Ismert problémák
 
-### <a name="connectivity-issues-after-biztalk-services-portal-update"></a>BizTalk szolgáltatások portál frissítése után csatlakozási problémák
-  Ha a BizTalk szolgáltatások portálja nyissa meg a BizTalk szolgáltatások szeretné visszaállítani a módosításokat a szolgáltatás frissítése közben, akkor előfordulhat, hogy szembesülhetnek csatlakozási hibák léptek fel a BizTalk Services portálra.  
-  A probléma megoldásához előfordulhat, hogy indítsa újra a böngészőt, törli a gyorsítótárban, illetve a portálon a saját módjában indul el.  
+### <a name="connectivity-issues-after-biztalk-services-portal-update"></a>Kapcsolódási problémák, miután a BizTalk Services portál frissítése
+  Ha a BizTalk Services portáljának megnyitásához, amíg a BizTalk Services szeretné visszaállítani a módosításokat a szolgáltatás frissítése, között előfordulhat, hogy kapcsolati problémák a BizTalk Services Portáljára.  
+  Áthidaló megoldásként, előfordulhat, hogy indítsa újra a böngészőt, törölje a böngésző gyorsítótárát, vagy privát módban indítsa el a portálon.  
 
-### <a name="visual-studio-ide-cannot-locate-the-artifact-if-you-click-an-error-or-warning-in-a-biztalk-services-project"></a>Visual Studio IDE környezetben nem található az összetevő, ha egy hiba vagy figyelmeztetés BizTalk szolgáltatások projektben kattintson
-Telepítse a Visual Studio 2012 3 RC 1 kijavítani a problémát.  
+### <a name="visual-studio-ide-cannot-locate-the-artifact-if-you-click-an-error-or-warning-in-a-biztalk-services-project"></a>Visual Studio IDE nem található az összetevő, kattintson egy hiba vagy figyelmeztetés a BizTalk Services-projektben
+Telepítse a Visual Studio 2012 Update 3 RC 1 a probléma megoldásához.  
 
-### <a name="custom-binding-project-reference"></a>Egyéni kötésben projektbe egy hivatkozást a
-Vegye figyelembe a BizTalk szolgáltatások projekt egy Visual Studio megoldás a következő esetekben:  
+### <a name="custom-binding-project-reference"></a>Egyéni kötés projekt leírása
+Vegye figyelembe a BizTalk Services a projekt egy Visual Studio-megoldás a következő helyzetekben:  
 
-* Visual Studio megoldáskezelőben nincs BizTalk szolgáltatások projekt és az egyéni kötésben projekt. A BizTalk szolgáltatás projektet az egyéni kötésben projektfájlt hivatkozás van.
-* A BizTalk szolgáltatás projekt egy egyéni kötési/viselkedését DLL hivatkozás van.
+* Ugyanabban a Visual Studio-megoldásban nincs a BizTalk Services-projekt és a egy egyéni kötés projekt. A BizTalk Service-projektet az egyéni kötés soubor projektu vonatkozó hivatkozás van.
+* A BizTalk Service-projektet egy egyéni kötés/működés DLL vonatkozó hivatkozás van.
 
-Ön "" a megoldás felépítéséhez a Visual Studio sikeresen megtörtént. Ezt követően "Rebuild" vagy "Tiszta" a megoldás. Ezt követően tiszta újra, vagy építse újra a következő hiba történt:  
-  Nem sikerült a másolás, <Path to DLL> "bin\Debug\FileName.dll" számára. A folyamat nem éri a "bin\Debug\FileName.dll" fájlt, mert egy másik folyamat használja.  
+"Fejleszt" a megoldást a Visual Studióban sikeresen megtörtént. Ezután "Újraépítése" vagy "Tiszta" a megoldás. Ezt követően építse újra, vagy újra, tisztítsa meg a következő hiba jelenik meg:  
+  Nem sikerült a Másolás <Path to DLL> a "bin\Debug\FileName.dll". A folyamat nem tud hozzáférni a "bin\Debug\FileName.dll" fájlt, mert egy másik folyamat használja.  
 
 #### <a name="workaround"></a>Áthidaló megoldás
-* Ha [Visual Studio 2012 Update 3](https://docs.microsoft.com/en-us/visualstudio/releasenotes/vs2012-update3-vs) van telepítve, a következő lehetőségei vannak:
+* Ha [Visual Studio 2012 Update 3](https://docs.microsoft.com/visualstudio/releasenotes/vs2012-update3-vs) van telepítve, a következő két lehetősége van:
   
-  * Indítsa újra a Visual Studio vagy
-  * Indítsa újra a megoldás. Ezután hajtson végre Build csak a megoldásban.  
-* Ha [Visual Studio 2012 Update 3](https://docs.microsoft.com/en-us/visualstudio/releasenotes/vs2012-update3-vs) nincs telepítve, nyissa meg a Feladatkezelő, kattintson a folyamatok lapon, kattintson a MSBuild.exe folyamat, majd a folyamat leállítása gombra.  
+  * Indítsa újra a Visual Studióban, vagy
+  * Indítsa újra a megoldást. Csak egy Build, majd hajtsa végre a megoldást.  
+* Ha [Visual Studio 2012 Update 3](https://docs.microsoft.com/visualstudio/releasenotes/vs2012-update3-vs) nem telepített, nyissa meg a Feladatkezelőben kattintson a folyamatok lapon, kattintson a MSBuild.exe folyamat, és kattintson a folyamat leállítása gombra.  
 
-### <a name="routing-to-basichttprelay-endpoints-is-not-supported-from-bridges-and-biztalk-services-portal-if-non-printable-characters-are-promoted-as-http-headers"></a>Útválasztás BasicHttpRelay végpontokhoz nem támogatott hidak és a BizTalk szolgáltatások portálja nem nyomtatható karakterek van előléptetve, mint a HTTP-fejlécek Ha
-Használatakor nem nyomtatható karakterek előléptetett tulajdonságainak üzenetek azokat az üzeneteket nem lehet továbbküldeni BasicHttpRelay kötésének használó továbbítási célhelyre. Az előléptetett tulajdonságok, amely is elérhető részét követési URL-kódolású a blobok és megbízhatatlan kódolt célhoz vannak.  
+### <a name="routing-to-basichttprelay-endpoints-is-not-supported-from-bridges-and-biztalk-services-portal-if-non-printable-characters-are-promoted-as-http-headers"></a>BasicHttpRelay végpontok az Útválasztás nem támogatott a hidak és a BizTalk Services portáljának nem nyomtatható karakterek is támogatni a HTTP-fejléceket, ha
+Használatakor nem nyomtatható karakterek Előléptetett tulajdonságok részeként üzenetek ezeket az üzeneteket nem irányítható a BasicHttpRelay kötést használó relay célhelyre. Előléptetett tulajdonságait, amely is elérhető részeként nyomkövetési URL-kódolású blobok és a célhelyek nem kódolt vannak.  
 
-### <a name="mdn-is-sent-asynchronously-even-if-the-send-asynchronous-mdn-option-is-unchecked"></a>MDN aszinkron módon legyen elküldve, még akkor is, ha a küldési aszinkron MDN beállítás nincs bejelölve
-Ebben a forgatókönyvben – vegye figyelembe, ha a **aszinkron MDN küldése** jelölőnégyzetet, és adjon meg egy URL-címet a MDN aszinkron küldés, és törölje a **aszinkron MDN küldése** jelölőnégyzet újra, a MDN továbbra is küld a annak ellenére, hogy a küldött aszinkron MDNs beállítás nincs bejelölve a megadott URL-CÍMÉT.  
-A probléma megoldásához törölje a jelölést a megadott URL-cím jelölésének törlése előtt a **aszinkron MDN küldése** jelölőnégyzetet, majd telepítse az AS2-szerződés.  
+### <a name="mdn-is-sent-asynchronously-even-if-the-send-asynchronous-mdn-option-is-unchecked"></a>MDN aszinkron módon van elküldve, még akkor is, ha a Küldés aszinkron MDN-beállítás nincs bejelölve
+Ebben a forgatókönyvben – vegye figyelembe, ha a **aszinkron MDN küldésének cél** jelölőnégyzetet, és adjon meg egy URL-címet az aszinkron MDN küldése, és ezután törölje a jelet a **aszinkron MDN küldésének cél** jelölőnégyzet újra, az MDN továbbra is küld a annak ellenére, hogy az aszinkron visszaigazolással küldött beállítás nincs bejelölve a megadott URL-CÍMÉT.  
+Áthidaló megoldásként törölnie kell a megadott URL-cím jelölésének törlése előtt az **aszinkron MDN küldésének cél** jelölőnégyzetet, illetve telepítheti az AS2-megállapodás.  
 
-### <a name="whitespace-characters-beyond-a-valid-interchange-cause-an-empty-message-to-be-sent-to-the-suspend-endpoint"></a>Érvényes interchange túl szóköz karakterből okozhat a suspend-végpont küldendő egy üres üzenet
-Ha egy IEA szegmens túl szóközöket, a kicsomagoló kezeli a jelenlegi interchange végét, és ellenőrzi, hogy az a következő készlete szóközöket a következő üzenetben. Mivel ez nem érvényes interchange, azt láthatja, hogy az útvonal cél egy sikeres üzenetet kap, és egy üres üzenetet küld a suspend-végpont.  
+### <a name="whitespace-characters-beyond-a-valid-interchange-cause-an-empty-message-to-be-sent-to-the-suspend-endpoint"></a>Az elválasztó karakterek nem egy érvényes adatcsere okozhat, üres üzenetet kell küldeni a suspend-végpont
+Ha nem állhat kizárólag szóközökből túl egy IEA szegmenst, a kicsomagoló ezt tekinti az aktuális adatcsere végén, és megvizsgálja a következő set nem állhat kizárólag szóközökből következő üzenetnek számít. Mivel ez a lehetőség nem érvényes adatcsere, előfordulhat, hogy figyelje meg, hogy egy sikeres üzenetet küld az útvonal cél és a egy üres üzenetet küld a suspend-végpont.  
 
-### <a name="tracking-in-biztalk-services-portal"></a>BizTalk szolgáltatások portálon nyomon követése
-Nyomkövetési események kerülnek rögzítésre a EDI-üzenet feldolgozása és bármely korrelációs. Ha egy üzenetet a protokoll szakasz kívül nem sikerül, nyomkövetési sikeres jeleníti meg. Ebben a helyzetben tekintse meg a napló szakaszában a **részletek** oszlopa **követési** a hiba részletei.
-A X12 beállítások küldhet és fogadhat ([hozzon létre egy X12 Azure BizTalk Services szerződés](https://msdn.microsoft.com/library/azure/hh689847.aspx)) kapcsolatban nyújtanak információkat a protokoll szakasszal.  
+### <a name="tracking-in-biztalk-services-portal"></a>A BizTalk Services portáljának nyomon követése
+Akár az EDI-üzenetfeldolgozást, és bármely korrelációs rögzítve lesznek a követési események. Ha egy üzenetet a protokoll szakaszban kívül nem sikerül, nyomkövetési sikeres jelennek meg. Ebben a helyzetben, tekintse meg a szakasz alatt a **részletek** oszlopa **követési** a hiba részletei.
+A X12 beállítások küldhet és fogadhat ([hozzon létre egy X12 szerződés az Azure BizTalk Services](https://msdn.microsoft.com/library/azure/hh689847.aspx)) a protokoll szakasz információkat tartalmaz.  
 
-### <a name="update-agreement"></a>Frissítés megállapodás
-A BizTalk szolgáltatások portál lehetővé teszi, hogy a minősítő identitás módosíthatja, ha szerződés úgy van konfigurálva. Ez a eredményezhet inconsistence tulajdonságait. Például ZZ:1234567 és ZZ:7654321 a minősítő megállapodás van. BizTalk szolgáltatások portál beállításai ZZ:1234567 01:ChangedValue kell módosítani. Megnyitja a szerződést, és 01:ChangedValue helyett ZZ:1234567 jelenik meg.
-A minősítő identitás, a szerződés törlése módosításához frissíteni **identitások** a partner profilba, majd hozza létre újra a szerződést.  
+### <a name="update-agreement"></a>Szerződés frissítése
+A BizTalk Services portáljának lehetővé teszi a identitás minősítője módosíthatja, amikor egy van konfigurálva. Emiatt a inconsistence tulajdonságai. Például nincs ZZ:1234567 és ZZ:7654321 a minősítő egy szerződést. A BizTalk Services portáljának-profiljának beállításainál ZZ:1234567 01:ChangedValue kell módosítania. Megnyitja a szerződést, és 01:ChangedValue ZZ:1234567 helyett jelenik meg.
+A minősítő identitás módosítása, a szerződés törlése, frissíteni **identitások** a partner profilba, majd hozza létre újra a szerződést.  
 
-> AZURE. Ez a viselkedés figyelmeztetés X12 és AS2 hatással van.  
+> AZURE-T. Ez a viselkedés figyelmeztetés hatással van a X12 és az AS2.  
 > 
 > 
 
 ### <a name="as2-attachments"></a>AS2-mellékletek
-Üzenetek nem támogatottak az AS2-mellékletek elküldeni vagy fogadni. Pontosabban mellékletek csendes figyelmen kívül hagyja, és az üzenettörzs rendszeres AS2-üzenetet dolgoz fel.  
+Az AS2-üzenetek nem támogatottak a mellékletek küldeni vagy fogadni. Pontosabban a mellékletek csendes figyelmen kívül hagyja, és mint egy normál AS2-üzenet feldolgozása az üzenet törzse.  
 
-### <a name="resources-remembering-path"></a>Erőforrások: Jelszóelőzmények elérési útja
-Hozzáadásakor **erőforrások**, a párbeszédpanelen nem lehetséges, hogy tárolja az erőforrás hozzáadása korábban használt elérési utat. Jegyezze meg a korábban használt elérési utat, próbálja meg a hozzáadni a BizTalk szolgáltatások Portal webhelyet **megbízható helyek** az Internet Explorerben.  
+### <a name="resources-remembering-path"></a>Erőforrások: Elérési útját Megjegyezné
+Hozzáadásakor **erőforrások**, a párbeszédablak előfordulhat, hogy ne felejtse el az erőforrás hozzáadása a korábban használt elérési út. Ne feledje az előzőleg használt elérési utat, próbáljon meg a BizTalk Services portáljának webhely **megbízható helyek** az Internet Explorerben.  
 
-### <a name="if-you-rename-the-entity-name-of-a-bridge-and-close-the-project-without-saving-changes-opening-the-entity-again-results-in-an-error"></a>Nevezze át az entitás egy híd, és a módosítások mentése nélkül zárja be, ha az entitás újra megnyitni a hibát eredményez
-Vegye figyelembe a forgatókönyv a következő sorrendben:  
+### <a name="if-you-rename-the-entity-name-of-a-bridge-and-close-the-project-without-saving-changes-opening-the-entity-again-results-in-an-error"></a>Nevezze át az entitás egy híd, és a projekt bezárása a módosítások mentése nélkül, ha az entitás újra megnyitni a hibát eredményez
+Példaként vegyünk egy forgatókönyvet, a következő sorrendben:  
 
-* Adjon hozzá egy híd (például egy XML One-Way híd) egy BizTalk szolgáltatás projekthez  
-* Nevezze át a híd az entitás neve tulajdonság értékének megadásával. Ez átnevezi, a társított .bridgeconfig fájlt a megadott név.  
-* A módosítások mentése nélkül zárja be a a .bcs fájlt (a Visual Studio lapján bezárásával).  
-* .Bcs újból megnyitni a megoldáskezelőjében.  
-  Megfigyelheti, hogy míg a társított .bridgeconfig fájl a megadott új nevet, a entitás neve a Tervező felületére, továbbra is a régi név. Ha megpróbálja megnyitni az kattintson duplán a híd összetevő, akkor a következő hibaüzenet:  
-  `‘<old name>’ Entity’s associated file ‘<old name>.bridgeconfig’ does not exist` Ebben a forgatókönyvben elkerülje, győződjön meg arról, hogy az entitások BizTalk szolgáltatás projekt átnevezése után a módosítások mentése.  
+* BizTalk Service-projektet ad hozzá a híd (például egy XML-One-Way-híd)  
+* Nevezze át a híd az entitás neve tulajdonsághoz megadott érték megadásával. Ez a a megadott nevű társított .bridgeconfig fájlt nevez át.  
+* Zárja be a .bcs fájlt (a Visual Studióban a lapon bezárásával) a módosítások mentése nélkül.  
+* Nyissa meg a .bcs fájlt újra a Megoldáskezelőben.  
+  Láthatja majd, míg a társított .bridgeconfig fájl a megadott új néven, az entitás neve a tervezőfelületre, továbbra is a régi nevére. Ha megpróbálja megnyitni a híd konfigurációjához ehhez kattintson duplán a híd összetevő, a következő hibaüzenetet kap:  
+  `‘<old name>’ Entity’s associated file ‘<old name>.bridgeconfig’ does not exist` Ebben a forgatókönyvben való futtatásának elkerüléséhez ellenőrizze a BizTalk Service-projektet az entitások átnevezése után a módosítások mentéséhez.  
   
-### <a name="biztalk-service-project-builds-successfully-even-if-an-artifact-has-been-excluded-from-a-visual-studio-project"></a>BizTalk szolgáltatás projekt sikeresen hoz létre, akkor is, ha egy közbülső ki lett zárva a Visual Studio-projekt
-Fontolja meg egy olyan forgatókönyvet, ahol hozzáadhat egy összetevő (például egy XSD-fájlt) BizTalk szolgáltatás projektbe, (például megadásával, egy kérelem üzenet típusa) az adott összetevő bevonni és kizárni a Visual Studio-projekt. Ebben az esetben a projekt nem küld olyan hiba, amíg a törölt összetevő ugyanazon a helyen, ahol ezt a Visual Studio-projekt tartalmazzák-e a rendszer a lemezen.
+### <a name="biztalk-service-project-builds-successfully-even-if-an-artifact-has-been-excluded-from-a-visual-studio-project"></a>BizTalk-szolgáltatás projekt sikeresen létrejön, még akkor is, ha egy összetevő ki van zárva a Visual Studio-projekt
+Példaként vegyünk egy forgatókönyvet, ahol hozzáadhat egy összetevő (például XSD-fájl) BizTalk-szolgáltatás-projektbe, adott összetevő bevonni a híd konfigurációjához (például megadásával, a kérelem üzenet típusa) és kizárása a Visual Studio-projekt. Ebben az esetben elkészítése nem biztosít semmilyen hiba mindaddig, amíg a törölt összetevő érhető el a lemezen, ahol a Visual Studio-projekt méretéből ugyanazon a helyen.
   
-### <a name="the-biztalk-service-project-does-not-check-for-schema-availability-while-configuring-the-bridges"></a>A BizTalk szolgáltatás projekt nem ellenőrzi a séma rendelkezésre állás érdekében a hidak konfigurálása közben
-BizTalk szolgáltatás projektben a projekt hozzáadott séma importálhatja egy másik séma, ha a BizTalk szolgáltatás projekt nem ellenőrzi, hogy az importált séma hozzáadódik a projektet. A projekt felépítéséhez kísérli meg, ha nem jelenik meg összeállítási hiba.
+### <a name="the-biztalk-service-project-does-not-check-for-schema-availability-while-configuring-the-bridges"></a>A BizTalk-szolgáltatás projekt nem ellenőrzi a séma rendelkezésre állás érdekében a hidak konfigurálása során
+A BizTalk Service-projektet Ha egy sémát, amely adnak hozzá a projekthez egy másik sémát, importálja a BizTalk-szolgáltatás projekt nem ellenőrzi-e az importált séma bekerül a projekt. Próbál az ilyen a projekt buildjének elkészítéséhez, ha bármely fordítási hibákat nem kap.
   
-### <a name="the-response-message-for-a-xml-request-reply-bridge-is-always-of-charset-utf-8"></a>A válasz egy XML-kérelem-válasz híd üzenet mindig a charset UTF-8
-Ebben a kiadásban a válaszüzenet egy XML-kérelem-válasz híd charset értéke mindig UTF-8.
+### <a name="the-response-message-for-a-xml-request-reply-bridge-is-always-of-charset-utf-8"></a>A válaszüzenet egy XML-kérés-válasz híd mindig az UTF-8 karakterkészlet
+Ebben a kiadásban a válaszüzenet egy XML-kérés-válasz hídról karakterkódolás mindig értéke UTF-8.
   
 ### <a name="user-defined-datatypes"></a>Felhasználó által definiált adattípusok
-A BizTalk Adapter Pack adapterek belül a BizTalk Adapter szolgáltatás nyújthatnak a felhasználó által definiált adattípusok adapter műveletekhez.
-Felhasználó által definiált adattípusok használata esetén a meghajtó: \Program Files\Microsoft BizTalk Adapter Service\BAServiceRuntime\bin\ vagy számára a globális szerelvény gyorsítótárban (GAC) a BizTalk Adapter Service szolgáltatást futtató kiszolgálón másolja a fájlok (.dll). Ellenkező esetben a következő hiba fordulhat elő az ügyfélen:  
+A BizTalk Adapter Pack-adapterek belül a BizTalk Adapter Service szolgáltatás képes használni a felhasználó által definiált adattípusok adapter műveletekhez.
+Felhasználó által definiált adattípusok használatakor a meghajtó: \Program Files\Microsoft BizTalk Adapter Service\BAServiceRuntime\bin\ vagy, a globális szerelvény gyorsítótárban (GAC) a BizTalk Adapter Service szolgáltatást futtató kiszolgálón másolja a fájlok (.dll). Ellenkező esetben a következő hiba fordulhat elő, az ügyfélen:  
 ```
 <s:Fault xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
 <faultcode>s:Client</faultcode>
@@ -135,92 +135,92 @@ Felhasználó által definiált adattípusok használata esetén a meghajtó: \P
 ```  
   
 > [!IMPORTANT]
-> Javasoljuk, hogy GACUtil.exe segítségével telepítse a fájlt a globális szerelvény-gyorsítótárban. GACUtil.exe dokumentumokat az eszköz és a Visual Studio parancssori kapcsolók használata.  
+> Javasoljuk, hogy GACUtil.exe használatával telepíti, a globális szerelvény-gyorsítótárba. Ez az eszköz és a Visual Studio parancssori kapcsolók használata GACUtil.exe-dokumentumok.  
 > 
 > 
 
-### <a name="restarting-the-biztalk-adapter-service-web-site"></a>A BizTalk Adapter szolgáltatás webhely újraindítása
-Telepíti a **BizTalk Adapter szolgáltatás futásideje*** hoz létre a **BizTalk szolgáltatás** webhely az IIS-ben, amely tartalmazza a **BAService** alkalmazás. **BAService** alkalmazás belső módon használja a továbbítási kötés kiterjesztése a felhőbe a helyszíni végpont nem hozzáférhető. Egy üzemeltetett szolgáltatást helyi a megfelelő továbbítási végpont regisztrálva lesz a Service buson csak akkor, ha a helyszíni szolgáltatás elindul.  
+### <a name="restarting-the-biztalk-adapter-service-web-site"></a>A BizTalk Adapter Service webhely újraindítása
+Telepíti a **BizTalk Adapter Service futtatókörnyezeti*** hoz létre a **BizTalk Adapter Service** webhelyet az IIS-ben, amely tartalmazza a **BAService** alkalmazás. **BAService** alkalmazás belső használ továbbítási kötés kielégítése, a helyszíni service-végpont a felhőbe. Egy üzemeltetett szolgáltatás a helyszíni a megfelelő relay-végpontot fog regisztrálható a Service Bus csak akkor, amikor a helyszíni szolgáltatás elindul.  
 
-Állítsa le és indítsa el a kérelmet, ha egy alkalmazás automatikus indítása a konfiguráció nem vehető figyelembe. Így ha **BAService** van leállítja, hogy mindig újra kell indítani a **BizTalk szolgáltatás** webhely helyett. Nem elindulni, vagy állítsa le a **BAService** alkalmazás.
+Állítsa le és indítsa el az alkalmazást, ha egy alkalmazás automatikus indítása a konfiguráció nem figyelembe véve. Így amikor **BAService** van leállítva, hogy mindig újra kell indítani a **BizTalk Adapter Service** webhely helyette. Nem indítása és leállítása a **BAService** alkalmazás.
 
-### <a name="special-characters-should-not-be-used-for-address-and-entity-names-of-lob-components"></a>Különleges karakterek nem használható a cím és egyéb entitások nevekkel LOB-összetevők
-Ne használjon speciális karaktereket a cím és egyéb entitások nevekkel LOB-összetevők. Ha így tesz, a BizTalk szolgáltatás projekt telepítése során hiba lép fel. Bizonyos karaktereket, mint például a "%", a BizTalk szolgáltatás webhely mehet leállított állapotba, és később kell manuálisan indítsa el.
+### <a name="special-characters-should-not-be-used-for-address-and-entity-names-of-lob-components"></a>Különleges karakterek nem használható a LOB-összetevők címet és az entitás neve
+Ne használjon speciális karakterek a LOB-összetevők címet és az entitás nevét. Ha így tesz, a BizTalk-szolgáltatás projekt üzembe helyezése során megjelenik egy hibaüzenet. Az egyes karaktereket, például: "%", a BizTalk Adapter Service webhely előfordulhat, hogy lépjen egy leállított állapotba kerül, és indítsa el manuálisan kell.
 
-### <a name="test-map-with-get-context-property"></a>A Context tulajdonság Get térkép tesztelése
-Ha egy átalakítási tartalmaz egy **Context tulajdonság beolvasása** térkép művelet **teszt térkép** sikertelen lesz. Ideiglenes megoldásként, cserélje le a **Context tulajdonság Get** egy karakterlánc összefűzésére térkép művelet típusú adatokat tartalmazó térkép műveletet. Ez a cél séma feltöltéséhez, és tesztelése más átalakítási-funkciók engedélyezése.
+### <a name="test-map-with-get-context-property"></a>Vizsgálati térkép a Get-környezeti tulajdonsága
+Ha egy-egy átalakítási tartalmaz egy **környezeti tulajdonság lekérése** térkép művelet, **vizsgálati térkép** sikertelen lesz. Ideiglenes Áthidaló megoldásként cserélje le a **környezeti tulajdonság lekérése** térkép műveletet egy karakterlánc összefűzésére térkép művelettel tartalmazó adattartalom. Ezzel a célséma feltöltése és engedélyezése az egyéb átalakító funkciók tesztelése.
 
-### <a name="test-map-property-does-not-display"></a>Teszt térkép tulajdonság nem jelenik meg
-A **teszt térkép** tulajdonságok nem jelennek meg a Visual Studióban. Ez akkor fordulhat elő, ha a **tulajdonságok** ablak és a **Megoldáskezelőben** ablak egyidejűleg nincs rögzítve. A probléma megoldásához, rögzítése a **tulajdonságok** és a **Megoldáskezelőben** windows.  
+### <a name="test-map-property-does-not-display"></a>Vizsgálati térkép tulajdonság nem jelenik meg
+A **vizsgálati térkép** tulajdonságai nem jelennek meg a Visual Studióban. Ez akkor fordulhat elő, ha a **tulajdonságok** ablakot, és a **Megoldáskezelőben** ablak nem egyszerre dokkolt vezérlőelem. Ennek megoldásához dock a **tulajdonságok** és a **Megoldáskezelőben** windows.  
 
-### <a name="datetime-reformat-drop-down-is-grayed-out"></a>Dátum és idő formázza újra legördülő szürkén jelenik meg
-Amikor egy dátum/idő formázza újra térkép művelet fel a tervezési felülethez és konfigurálva van, a Formátum legördülő lista lehet, hogy jelenítette meg. Ez akkor fordulhat elő, ha a számítógép megjelenítési **Közepes – 125 %** vagy **nagyobb – 150 %**. Megoldása érdekében adja meg a megjelenített **Smaller – 100 %-os (alapértelmezett)** az alábbi lépéseket követve:  
+### <a name="datetime-reformat-drop-down-is-grayed-out"></a>Dátum és idő újraformázása legördülő szürkén jelenik meg
+Amikor egy dátum és idő újraformázása térkép művelet hozzáadva a Tervező felületére és konfigurálva van, a formátuma legördülő lista – előfordulhat, hogy szürkén jelennek meg. Ez akkor fordulhat elő, ha a számítógép megjelenítési **Közepes – 125 %** vagy **nagyobb – 150 %**. Oldja meg, állítsa a megjelenített **Smaller – 100 %-os (alapértelmezett)** az alábbi lépéseket követve:  
 
-1. Nyissa meg a **Vezérlőpult** kattintson **Megjelenés és személyre szabása**.
+1. Nyissa meg a **Vezérlőpult** kattintson **Megjelenés és a személyre szabott**.
 2. Kattintson a **megjelenített**.
 3. Kattintson a **Smaller – 100 %-os (alapértelmezett)** kattintson **alkalmaz**.
 
-A **formátum** legördülő lista most már a várt módon működik a kell.
+A **formátum** legördülő lista – most már a várt módon működik a kell.
 
-### <a name="duplicate-agreements-in-the-biztalk-services-portal"></a>A BizTalk szolgáltatások portálon ismétlődő megállapodások
-Vegye figyelembe a következő forgatókönyvet:
+### <a name="duplicate-agreements-in-the-biztalk-services-portal"></a>A BizTalk Services Portáljára a duplikált szerződések
+Vegye figyelembe az alábbi forgatókönyvet:
 
-1. Hozzon létre egy szerződést a kereskedelmi Partner OM API használatával.
-2. Nyissa meg a szerződés a BizTalk szolgáltatások portálon két különböző lapokon.
-3. Telepítse a megállapodás mindkét a lapról.
-4. Ennek eredményeképpen mindkét szerződések telepítve, a BizTalk szolgáltatások portálja ismétlődő bejegyzést eredményez
+1. Hozzon létre egy szerződést a Trading Partner Management OM API segítségével.
+2. Nyissa meg a megállapodás a két különböző lapokon a BizTalk Services Portáljára.
+3. Helyezze üzembe a megállapodás a két lap.
+4. Ennek eredményeképpen a szerződéseket is üzembe lesznek helyezve a BizTalk Services portáljának ismétlődő bejegyzést eredményez
 
-**Megkerülő megoldás**. Nyissa meg az ismétlődő szerződések egyikét sem a BizTalk Services portálra, és eltávolítása.  
+**Megkerülő megoldás**. Nyissa meg az ismétlődő szerződések közül bármelyik a BizTalk Services Portáljára, és visszavonhatja annak üzembe helyezését.  
 
-### <a name="bridges-do-not-use-updated-certificate-even-after-a-certificate-has-been-updated-in-the-artifact-store"></a>Hidak ne használja a frissített tanúsítvány még a tanúsítvány összetevő tárolójában frissítése után
+### <a name="bridges-do-not-use-updated-certificate-even-after-a-certificate-has-been-updated-in-the-artifact-store"></a>Hidak ne használja a frissített tanúsítvány tanúsítvány frissült az összetevő tároló után is
 Vegye figyelembe a következő esetekben:  
 
-**1. forgatókönyv: Ujjlenyomat-alapú tanúsítványok használatával biztonságossá tételéhez üzenet átvitelét hidat szolgáltatásvégpont**  
-Fontolja meg egy olyan forgatókönyvet, ahol a BizTalk szolgáltatás projekt ujjlenyomat-alapú tanúsítványokat használ. Frissítse a tanúsítványt a BizTalk szolgáltatások portálon azonos nevű, de egy másik ujjlenyomatot, de nem a BizTalk szolgáltatás projekt ennek megfelelően frissülnek. Ilyen esetben a híd továbbra is az üzenetek feldolgozásához, mert a csatorna gyorsítótár továbbra is lehetséges, hogy a régebbi adatok nem. Ezt követően üzenet feldolgozása sikertelen.  
+**1. forgatókönyv: Ujjlenyomat-alapú tanúsítványok használatával biztonságossá tételéhez egy végpontot egy hídról üzenetküldés**  
+Példaként vegyünk egy forgatókönyvet, ahol ujjlenyomat-alapú tanúsítványokat használ a BizTalk-szolgáltatás-projektben. A BizTalk Services Portáljára a tanúsítvány frissítése ugyanazzal a névvel, de egy másik ujjlenyomatot, de ennek megfelelően nem frissítik a BizTalk Service-projektet. Ilyen esetben a híd előfordulhat, hogy továbbra is az üzeneteket feldolgozni, mert a régebbi adatok továbbra is lehet a csatorna gyorsítótárban. Ezt követően a következő üzenet feldolgozása sikertelen lesz.  
 
-**Megkerülő megoldás**: a tanúsítvány a BizTalk szolgáltatás projekt frissítése, és telepítse újra a projektet.  
+**Megkerülő megoldás**: a tanúsítvány a BizTalk-szolgáltatás projekt frissítése és ismételt üzembe helyezése a projekt.  
 
-**2. forgatókönyv: Parancsfájlokkal-névalapú tanúsítványok védelmét biztosító üzenet átvitelét hidat szolgáltatásvégpont azonosítása**
+**2. forgatókönyv:-Névalapú viselkedések segítségével egy végpontot egy hídról üzenetküldés biztonságossá tétele tanúsítványok azonosítása**
 
-Fontolja meg egy olyan forgatókönyvet, ahol-névalapú viselkedések azonosítására használt tanúsítványok a BizTalk szolgáltatás projektben. Frissítse a tanúsítványt a BizTalk szolgáltatások portálon, de nem frissíti a BizTalk szolgáltatás projektet ennek megfelelően. Ilyen esetben a híd továbbra is az üzenetek feldolgozásához, mert a csatorna gyorsítótár továbbra is lehetséges, hogy a régebbi adatok nem. Ezt követően üzenet feldolgozása sikertelen.  
+Példaként vegyünk egy forgatókönyvet, ahol-névalapú viselkedések azonosítására használt tanúsítványok a BizTalk-szolgáltatás-projektben. A BizTalk Services Portáljára a tanúsítvány frissítése, de ennek megfelelően nem frissítik a BizTalk Service-projektet. Ilyen esetben a híd előfordulhat, hogy továbbra is az üzeneteket feldolgozni, mert a régebbi adatok továbbra is lehet a csatorna gyorsítótárban. Ezt követően a következő üzenet feldolgozása sikertelen lesz.  
 
-**Megkerülő megoldás**: a tanúsítvány a BizTalk szolgáltatás projekt frissítése, és telepítse újra a projektet.  
+**Megkerülő megoldás**: a tanúsítvány a BizTalk-szolgáltatás projekt frissítése és ismételt üzembe helyezése a projekt.  
 
-### <a name="bridges-continue-to-process-messages-even-when-the-sql-database-is-offline"></a>Hidak folytatja az üzenetek feldolgozásához, akkor is, ha az SQL-adatbázis offline állapotban.
-A BizTalk szolgáltatások hidak folytatja a üzenetek egy ideig, még akkor is, ha a Microsoft Azure SQL Database (amely tárolja a futó adatok, például a telepített összetevők és folyamatok), offline állapotban. Ennek az az oka BizTalk szolgáltatások gyorsítótárazott összetevők és konfigurációs híd használja.
-Ha nem szeretné, hogy a hidak bármely üzenetek feldolgozásához, amikor az SQL-adatbázis offline állapotban, a BizTalk szolgáltatások PowerShell-parancsmagok segítségével vagy felfüggesztheti a BizTalk szolgáltatás. Lásd: [Azure BizTalk szolgáltatás felügyeleti minta](http://go.microsoft.com/fwlink/p/?LinkID=329019) műveleteinek a felügyeletét a Windows PowerShell parancsmagok.  
+### <a name="bridges-continue-to-process-messages-even-when-the-sql-database-is-offline"></a>Hidak folytatja az üzenetek feldolgozásához, még akkor is, ha az SQL-adatbázis offline állapotban
+A BizTalk Services hidak továbbra is üzenetek feldolgozása egy ideig, még akkor is, ha a Microsoft Azure SQL Database (amely tárolja a futó további információkat, például a telepített összetevőket és folyamatokat), offline állapotban van. Ennek az az oka a BizTalk Services használja a gyorsítótárazott összetevők és a híd konfigurációjához.
+Ha nem szeretné, hogy a hidak olyan üzeneteket feldolgoznia, ha az SQL-adatbázis offline állapotban, a BizTalk Services PowerShell-parancsmagok segítségével vagy felfüggesztheti a BizTalk-szolgáltatás. Lásd: [Azure BizTalk Service Management példa](http://go.microsoft.com/fwlink/p/?LinkID=329019) műveleteinek kezelésére szolgáló Windows PowerShell-parancsmagok számára.  
 
-### <a name="reading-the-xml-message-within-a-bridges-custom-code-component-includes-an-extra-bom-character"></a>Az XML-üzenet egy híd egyéni kód összetevőn belüli olvasásakor tartalmaz egy extra AJ karakter
-Fontolja meg egy olyan forgatókönyvet, ahol szeretné olvasni az XML-üzeneteket egy híd egyéni kód. Ha a .NET API System.Text.Encoding.UTF8.GetString(bytes) egy extra AJ karakter a kimenet az üzenet elején szerepel. Ezért, ha nem szeretné, hogy a kimenet tartalmazza a felesleges AJ karaktert, használnia kell ```System.IO.StreamReader().ReadToEnd()```.
+### <a name="reading-the-xml-message-within-a-bridges-custom-code-component-includes-an-extra-bom-character"></a>Egy extra Anyagjegyzék-karaktert tartalmaz belüli egy híd egyéni kód XML-üzenet olvasása
+Példaként vegyünk egy forgatókönyvet, ahol szeretné olvasni a híd egyéni kód egy XML-üzenet. Ha a .NET API System.Text.Encoding.UTF8.GetString(bytes) egy extra AJ karakter a kimenet az üzenet elején szerepel. Ezért, ha nem szeretné, hogy a kimenet tartalmazza az extra AJ karaktert, kell használnia ```System.IO.StreamReader().ReadToEnd()```.
 
-### <a name="sending-messages-to-a-bridge-using-wcf-does-not-scale"></a>Üzenetek küldése egy WCF használatával híd nem méretezhető
-WCF használatával hálózati hidat küldött üzenetek nem méretezhető. Ha azt szeretné, hogy méretezhető ügyfél HttpWebRequest helyette használjon.
+### <a name="sending-messages-to-a-bridge-using-wcf-does-not-scale"></a>Üzenetek küldése egy a WCF-fel híd nem méretezhető
+A WCF-fel hidat küldött üzenetek nem méretezhető. Ha azt szeretné, hogy egy méretezhető ügyfél HttpWebRequest Ehelyett használjon.
 
-### <a name="upgrade-token-provider-error-after-upgrading-from-biztalk-services-preview-to-general-availability-ga"></a>FRISSÍTÉS: Jogkivonat-szolgáltató által jelzett hibát BizTalk szolgáltatások Preview verzióról az általános rendelkezésre állási (GA)
-A program egy EDI vagy AS2 megállapodás aktív kötegek. Ha a BizTalk szolgáltatás GA Preview legyen frissítve, a következő fordulhat elő:
+### <a name="upgrade-token-provider-error-after-upgrading-from-biztalk-services-preview-to-general-availability-ga"></a>FRISSÍTÉS: Jogkivonat-szolgáltató hibát az általánosan elérhető (GA) a BizTalk Services előzetes verzióról
+Nincs az EDI- vagy AS2-egyezményt aktív kötegek. Ha a BizTalk-szolgáltatás előzetes verzióról a végleges verzió frissítve van, a következő fordulhat elő:
 
-* Hiba: A jogkivonat-szolgáltató nem tudta adjon meg egy biztonsági jogkivonatot. Jogkivonat-szolgáltató küldött: A távoli név nem sikerült feloldani.
-* Kötegelt feladatok törölve lesznek.
+* Hiba: A jogkivonat-szolgáltató nem tudta meg egy biztonsági jogkivonatot. Jogkivonat-szolgáltató következő üzenetet adta vissza: A távoli név nem oldható fel.
+* Batch-feladatok törölve lesznek.
 
-**Megkerülő megoldás**: után a BizTalk szolgáltatás frissítve lett az általános rendelkezésre állási (GA), telepítse újra a szerződést.  
+**Megkerülő megoldás**: után a BizTalk szolgáltatás frissítve lett az általánosan elérhető (GA), telepítse újra a szerződést.  
 
-### <a name="upgrade-toolbox-shows-the-old-bridge-icons-after-upgrading-the-biztalk-services-sdk"></a>FRISSÍTÉS: Eszközkészlet jeleníti meg a régi híd ikonok a BizTalk SDK-t a frissítés után
-A BizTalk szolgáltatások SDK, melyből régi ikonjai a hidak, egy korábbi frissítés után az eszközkészlet továbbra is a régi a hidak ikonok megjelenítése. Azonban hidat BizTalk szolgáltatás projekt Tervező felületére való hozzáadásakor a felület mutatja az új ikonra.  
+### <a name="upgrade-toolbox-shows-the-old-bridge-icons-after-upgrading-the-biztalk-services-sdk"></a>FRISSÍTÉS: Eszközkészlet megjeleníti a régi híd ikonok a BizTalk Services SDK frissítése után
+Amikor frissít egy korábbi verzióját a BizTalk Services SDK, amelynek régi ikonjai a hidak volt, az eszközkészlet továbbra is a régi ikonokat találhat a hidak. Azonban BizTalk-szolgáltatás projekt tervezőfelületére hidat hozzá, ha a surface bemutatja az új ikonra.  
 
-**Megkerülő megoldás**. A probléma megoldásához használhat az .tbd fájlokat a <system drive>: \Users\<felhasználó > \AppData\Local\Microsoft\VisualStudio\11.0.  
+**Megkerülő megoldás**. A probléma megoldásához használhatja az .tbd fájlokat alatt <system drive>: \Users\<felhasználó > \AppData\Local\Microsoft\VisualStudio\11.0.  
 
-### <a name="upgrade-biztalk-portal-update-from-preview-to-ga-might-show-an-error-indicating-that-the-edi-capability-is-not-available"></a>FRISSÍTÉS: A BizTalk portál frissítése Preview GA arról, hogy a EDI funkció nem érhető el hiba előfordulhat, hogy megjelenítése
-Ha van bejelentkezve a BizTalk szolgáltatások portált, a BizTalk szolgáltatások Preview GA frissítése közben, a következő hiba kaphat a portál:  
+### <a name="upgrade-biztalk-portal-update-from-preview-to-ga-might-show-an-error-indicating-that-the-edi-capability-is-not-available"></a>FRISSÍTÉS: BizTalk-portál frissítése előzetes verzióról a végleges verzió hibát jelzi, hogy a EDI funkció nem érhető el jeleníthet
+Ha van bejelentkezve a BizTalk Services Portáljára, amíg a BizTalk Services általánosan frissítése az előzetes verzió, kaphat a következő hibát a portálon:  
 
-Ez a funkció nem érhető el a Microsoft Azure BizTalk Services jelen kiadása részeként. Használni ezen képességek megfelelő kiadás váltani.  
+Ez a funkció nem érhető el a Microsoft Azure BizTalk Services jelen kiadásában részeként. Használja ezeket a képességeket váltson megfelelő kiadás.  
 
-**Megoldási**: a portálon, zárja be és nyissa meg a böngészőt, majd jelentkezzen be a portálra a kimenő napló.  
+**Feloldási**: a portálon, zárja be és nyissa meg a böngészőt, majd jelentkezzen be a portálra a kijelentkezési.  
 
-### <a name="upgrade-new-tracking-data-does-not-show-up-after-biztalk-services-is-upgraded-to-ga"></a>FRISSÍTÉS: Új követési adatok nem jelenik meg a BizTalk szolgáltatások GA történő frissítése után
-Tegyük fel, a helyzetet, amelyben egy XML híd BizTalk szolgáltatás előzetes előfizetés telepítve vannak-e. Üzenetek küldése a híd, és a hozzá tartozó nyomkövetési adatok a BizTalk szolgáltatások portálja elérhető-e. Mostantól Ha a BizTalk Services portál és a BizTalk szolgáltatások futásidejű bits GA verzióra frissíti, és egy üzenetet küld a korábban telepített azonos híd végpont, a nyomon követési adatok nem jelenik meg a frissítés után küldött üzenetek.  
+### <a name="upgrade-new-tracking-data-does-not-show-up-after-biztalk-services-is-upgraded-to-ga"></a>FRISSÍTÉS: Új címkövetési adatokat nem jelenik meg a BizTalk Services általánosan frissítése után
+Tegyük fel, a forgatókönyv, amelyben egy XML-hidat, a BizTalk Services előzetes előfizetésben üzembe helyezett. Üzeneteket küld a híd, és a kapcsolódó követési adatokat érhető el a BizTalk Services Portáljára. Mostantól a BizTalk Services Portáljára, és a BizTalk Services modul a bits általánosan elérhető verzióra frissíti, és a egy üzenet küldéséhez az azonos híd végpont korábban telepített, a nyomon követési adatok nem jelenik a frissítés után küldött üzeneteket.  
 
-### <a name="pipelines-versus-bridges"></a>És a hidak csővezeték
-Ez a dokumentum a kifejezés "folyamatok" és "hidak" van megegyezik. Mindkét lényegében ugyanazt, amely, egy üzenet feldolgozása egysége BizTalk szolgáltatások telepíthetők jelenti.  
+### <a name="pipelines-versus-bridges"></a>Folyamatok és a hidak
+Ebben a dokumentumban a kifejezés "folyamatok" és "hidak" kifejezés ugyanazt jelenti. Mindkét lényegében amely, a BizTalk Services telepített üzenet feldolgozóegység ugyanazt jelenti.  
 
 ### <a name="concepts"></a>Alapelvek
 [BizTalk Services](https://msdn.microsoft.com/library/azure/hh689864.aspx)   

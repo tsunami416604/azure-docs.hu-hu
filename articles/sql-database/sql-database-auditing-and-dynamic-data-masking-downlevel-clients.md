@@ -1,6 +1,6 @@
 ---
-title: Naplózás, TDS átirányítás miatt a táblázat és az Azure SQL Database IP-végpontok |} Microsoft Docs
-description: További tudnivalók naplózását, TDS-átirányítási és IP-végpont módosításokat az Azure SQL Database naplózási táblázat végrehajtása során.
+title: Tábla, naplózás és TDS-átirányítást, és az Azure SQL Database IP-végpontok |} A Microsoft Docs
+description: Ismerje meg naplózás, a TDS-átirányítást és az IP-végpont módosításokat az Azure SQL Database táblanaplózás implementálásakor.
 services: sql-database
 author: giladm
 manager: craigg
@@ -9,45 +9,46 @@ ms.custom: security
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: giladm
-ms.openlocfilehash: b615e9ff67788c2f02c2fa0c33e0de3331e77885
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.reviewer: vanto
+ms.openlocfilehash: 9fcb070f41d699cef3ef11ba9b8feb6cdfd83ae5
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34645629"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45541216"
 ---
-# <a name="sql-database----downlevel-clients-support-and-ip-endpoint-changes-for-table-auditing"></a>SQL adatbázis - a régebbi típusú ügyfeleknek támogatja, és IP-végponton megváltoztatja a táblázat naplózás
+# <a name="sql-database----downlevel-clients-support-and-ip-endpoint-changes-for-table-auditing"></a>SQL Database - alacsonyabb szintű ügyfelek támogatása és a Táblanaplózás IP-végpontjainak módosítása
 
 > [!IMPORTANT]
-> Ez a dokumentum csak érvényes tábla naplózás, amely **elavult**.<br>
-> Használja az új [Blobnaplózási funkció](sql-database-auditing.md) metódus, amely **nem** szükséges korábbi verziójú ügyfél kapcsolati karakterlánc módosítani. További információ a Blobnaplózási funkció található [Ismerkedés az SQL-adatbázis naplózásának](sql-database-auditing.md).
+> Ez a dokumentum csak érvényes Táblanaplózás, amely **elavultak**.<br>
+> Használja az új [Blobnaplózás](sql-database-auditing.md) módszer, amely **nem** szükséges korábbi verziójú ügyfél kapcsolati karakterlánc módosítani. További információ a Blobnaplózás található [első lépései az SQL database naplózási szolgáltatásával](sql-database-auditing.md).
 
-[Adatbázis naplózási](sql-database-auditing.md) TDS átirányítást támogató SQL-ügyfelek automatikusan működik. Vegye figyelembe, hogy az átirányítási nem vonatkozik a Blobnaplózási funkció módszer használata esetén.
+[Adatbázis-naplózás](sql-database-auditing.md) TDS-átirányítást támogató SQL-ügyfelek szolgáltatással automatikusan együttműködve. Vegye figyelembe, hogy az átirányítási nem vonatkozik, amikor Blobnaplózás mód használatával.
 
 ## <a id="subheading-1"></a>Alacsonyabb szintű ügyfelek támogatása
-Bármely olyan ügyfél, amely TDS 7.4 kell is támogatja az átirányítást. A kivételek közé tartozik a JDBC 4.0-s verzióját, amelyben az átirányítás nem teljes mértékben támogatja, és a Node.JS mely funkcióhoz Tedious nem lett megvalósítva.
+Bármely ügyfél, amely megvalósítja a TDS 7.4 is támogatnia kell a átirányítást. A kivételek közé tartozik a JDBC 4.0, amelyben az átirányító szolgáltatás nem támogatja teljes mértékben, és mely átirányítása a node.js-hez készült Tedious nem lett megvalósítva.
 
-Az "Alsószintű ügyfelek" azaz mely támogatási TDS verzió 7.3 és az alacsonyabb – a kiszolgáló teljes Tartománynevét a kapcsolat-karakterlánc kell módosítani:
+"Régebbi ügyfelek" azaz melyik támogatási TDS verzió 7.3-as és az alacsonyabb – a kiszolgáló teljes Tartománynevét a kapcsolat karakterláncot kell módosítani:
 
-A kapcsolódási karakterláncban eredeti kiszolgálójának teljes Tartományneve: <*kiszolgálónév*>. database.windows.net
+A kapcsolati karakterláncban eredeti kiszolgálójának teljes Tartományneve: <*kiszolgálónév*>. database.windows.net
 
-A kapcsolati karakterláncban a módosított kiszolgálójának teljes Tartományneve: <*kiszolgálónév*> .database. **biztonságos**. windows.net
+A kapcsolati karakterláncban a módosított kiszolgálói FQDN: <*kiszolgálónév*> .database. **biztonságos**. windows.net
 
-"A régebbi típusú ügyfeleknek" részleges listáját tartalmazza:
+"Régebbi típusú ügyfelek" részleges listáját tartalmazza:
 
-* A .NET 4.0-s vagy régebbi verzió,
+* .NET 4.0-s vagy régebbi verzió,
 * ODBC 10.0-s vagy régebbi verzió.
-* JDBC (JDBC támogatja a TDS 7.4, a TDS-átirányítási funkció még nem teljes mértékben támogatott)
-* (A Node.JS) fárasztó
+* JDBC (JDBC támogatja a TDS 7.4, míg a TDS-átirányítási funkció nem teljes mértékben támogatott)
+* Fárasztó (a node.js-ben)
 
-**Megjegyzés:** lehet, hogy a fenti kiszolgáló FQDN módosítását is hasznos egy SQL Server szint naplózási házirend alkalmazása nélkül konfiguráció szükséges lépést az egyes adatbázisok (ideiglenes megoldás).
+**Megjegyzés:** a fenti kiszolgáló FQDN módosítása egy SQL Server szint naplózási házirend alkalmazása nélkül szükséges konfiguráció. lépés: az egyes adatbázisokban (ideiglenes megoldás) számára is hasznos lehet.
 
-## <a id="subheading-2"></a>IP-végponton vált, ha engedélyezve van a naplózás
-Vegye figyelembe, hogy ha a tábla a naplózás engedélyezése az IP-végpontot az adatbázis változik. Ha szigorú tűzfal beállításait, frissítse ezeket a tűzfal beállításainak megfelelően.
+## <a id="subheading-2"></a>IP-végpontjainak módosítása a naplózás engedélyezése
+Vegye figyelembe, hogy engedélyezte a Táblanaplózás, az IP-végpontból az adatbázis is megváltoznak. Ha szigorú tűzfal beállításait, frissítse ezeket a tűzfal beállításainak megfelelően.
 
-Az új adatbázis IP-végpontot az adatbázis-terület függ:
+Az új adatbázis IP végpont függ az adatbázis-terület:
 
-| Adatbázis-terület | Lehetséges IP-végpontok |
+| Az adatbázis-terület | Lehetséges IP-végpontok |
 | --- | --- |
 | Észak-Kína |139.217.29.176, 139.217.28.254 |
 | Kelet-Kína |42.159.245.65, 42.159.246.245 |

@@ -7,20 +7,20 @@ author: juliako
 manager: erikre
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 07/31/2018
+ms.date: 09/09/2018
 ms.author: juliako
-ms.openlocfilehash: 1cffa067d8028adab4dbcc82c529f77d980ce6be
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 72f110c0c98e6fb6ee5fca684fdc74c6986e032c
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39397543"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45541407"
 ---
 # <a name="find-exact-moments-within-videos"></a>Pontos időpontok keresése videókban
 
 Ez a témakör bemutatja, hogy a keresési lehetőségeket, amelyek lehetővé teszik, hogy a videókban pontos időpontok keresése.
 
-1. Jelentkezzen be a [Video Indexer](https://api-portal.videoindexer.ai/) fiókot.
+1. Keresse meg a [Video Indexer](https://www.videoindexer.ai/) webhelyet, és jelentkezzen be.
 2. Keressen rá a fiókban lévő összes videó között.
 
     A következő példában azt keres az összes videó channel9-on, Scott Hanselman videosorozatának e által létrehozott is.
@@ -49,8 +49,8 @@ Ez a témakör bemutatja, hogy a keresési lehetőségeket, amelyek lehetővé t
 Miután megtalálta a videót, amelyben dolgozni szeretne, továbbra is a videó feldolgozása ezek témakörökben ismertetett módon: 
 
 - [A meglévő videóhoz alapján új videóelemzések létrehozása](video-indexer-create-new.md)
-- [Video Indexer – REST API-val feldolgozása tartalom](video-indexer-use-apis.md)
-- [Vizuális widgetek beágyazása az alkalmazásba](video-indexer-embed-widgets.md)
+- [Tartalomfeldolgozás a Video Indexer REST API-val](video-indexer-use-apis.md)
+- [Vizuális widgetek beágyazása egy saját alkalmazásba](video-indexer-embed-widgets.md)
 
 ## <a name="see-also"></a>Lásd még
 

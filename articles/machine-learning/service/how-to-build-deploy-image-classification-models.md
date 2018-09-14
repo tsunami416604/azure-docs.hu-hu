@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: netahw
 author: nhaiby
 ms.date: 04/23/2018
-ms.openlocfilehash: 6b7f73573cb1465b89e54e30894b3549153e4acb
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: 1188ff040c12fd431cfcef5eea982647df6b9a71
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37888432"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45576391"
 ---
 # <a name="build-and-deploy-image-classification-models-with-azure-machine-learning"></a>Létrehozása és üzembe helyezése az Azure Machine Learning képbesorolási modellek
 
@@ -174,7 +174,7 @@ display(annotation_ui.ui)
 
 ## <a name="augment-images"></a>Képek bővítésével
 
-A [ `augmentation` modul](https://docs.microsoft.com/en-us/python/api/cvtk.augmentation) , mivel megvédi a leírt átalakításokat használja egy adatkészlet-objektum funkciókat biztosít a [imgaug](https://github.com/aleju/imgaug) könyvtár. Kép átalakítások csoportosíthatók az egy folyamatot, ebben az esetben a folyamat minden átalakítások alkalmazott egyszerre minden egyes képe. 
+A [ `augmentation` modul](https://docs.microsoft.com/python/api/cvtk.augmentation) , mivel megvédi a leírt átalakításokat használja egy adatkészlet-objektum funkciókat biztosít a [imgaug](https://github.com/aleju/imgaug) könyvtár. Kép átalakítások csoportosíthatók az egy folyamatot, ebben az esetben a folyamat minden átalakítások alkalmazott egyszerre minden egyes képe. 
 
 Ha másik kiegészítését lépéseket hajtjuk végre külön-külön szeretné, vagy másik oly módon, több folyamatot meghatározása és továbbítja őket a *augment_dataset* függvény. További információk és példák a lemezkép kiegészítését, tekintse meg a [imgaug dokumentáció](https://github.com/aleju/imgaug).
 

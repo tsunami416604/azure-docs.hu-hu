@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: mattcon
 author: matthewconners
 ms.date: 07/13/2018
-ms.openlocfilehash: 60eecf134f067d68326fc23ade8ed2a5a7ae7ac4
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 9bdda67f08b9fbee20bdcc11186b97a3d942b778
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39070338"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45580667"
 ---
 # <a name="build-and-deploy-forecasting-models-with-azure-machine-learning"></a>Hozhat létre, és az Azure Machine Learning előrejelzési modellek üzembe helyezése
 
@@ -106,7 +106,7 @@ print('imports done')
 
 ## <a name="load-data-and-explore"></a>Adatok betöltése és megismerése
 
-Ez a kódrészlet ebben az esetben egy nyers adatkészlet kezdve tipikus folyamatát mutatja be a [Dominick a kifinomultabb élelmiszerek származó adatok](https://research.chicagobooth.edu/kilts/marketing-databases/dominicks).  A kényelmi funkciót is használhatja [load_dominicks_oj_data](https://docs.microsoft.com/en-us/python/api/ftk.data.dominicks_oj.load_dominicks_oj_data).
+Ez a kódrészlet ebben az esetben egy nyers adatkészlet kezdve tipikus folyamatát mutatja be a [Dominick a kifinomultabb élelmiszerek származó adatok](https://research.chicagobooth.edu/kilts/marketing-databases/dominicks).  A kényelmi funkciót is használhatja [load_dominicks_oj_data](https://docs.microsoft.com/python/api/ftk.data.dominicks_oj.load_dominicks_oj_data).
 
 
 ```python
@@ -123,7 +123,7 @@ whole_df.head()
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>tároló</th>
+      <th>Store</th>
       <th>márka</th>
       <th>hét</th>
       <th>logmove</th>
@@ -279,7 +279,7 @@ whole_df[['store','brand','WeekLastDay','Quantity']].head()
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>tároló</th>
+      <th>Store</th>
       <th>márka</th>
       <th>WeekLastDay</th>
       <th>Mennyiség</th>
@@ -337,7 +337,7 @@ print('{} time series in the data frame.'.format(nseries))
 
 Az adatok körülbelül 250 különböző kombinációit tároló és a egy adatkeretben márka tartalmazza. Minden kombinációja határozza meg a saját idősorozat, az értékesítés. 
 
-Használhatja a [TimeSeriesDataFrame](https://docs.microsoft.com/en-us/python/api/ftk.dataframe_ts.timeseriesdataframe?view=azure-ml-py-latest) osztály egyetlen struktúra használata több sorozat kényelmesen modellezésére a _időfelbontási szint_. A időfelbontási szint szerint van megadva a `store` és `brand` oszlopokat.
+Használhatja a [TimeSeriesDataFrame](https://docs.microsoft.com/python/api/ftk.dataframe_ts.timeseriesdataframe?view=azure-ml-py-latest) osztály egyetlen struktúra használata több sorozat kényelmesen modellezésére a _időfelbontási szint_. A időfelbontási szint szerint van megadva a `store` és `brand` oszlopokat.
 
 A különbség a között _időfelbontási szint_ és _csoport_ , hogy időfelbontási szint mindig fizikailag kifejező, a való világból bármit, amíg a csoport nem kell lennie. A csomag belső függvények csoport használatával az idősorozatban egyetlen modell létrehozása, ha a felhasználó úgy véli, hogy ez a csoportosítás javítja a modell teljesítményét. Alapértelmezés szerint tulajdonoscsoportja időfelbontási szint egyenlőnek kell lennie, és egyetlen modellben minden egyes időfelbontási szint lett tervezve. 
 
@@ -369,7 +369,7 @@ whole_tsdf[['Quantity']].head()
     </tr>
     <tr>
       <th>WeekLastDay</th>
-      <th>tároló</th>
+      <th>Store</th>
       <th>márka</th>
       <th></th>
     </tr>
@@ -434,7 +434,7 @@ whole_tsdf.loc[pd.IndexSlice['1990-06':'1990-09', 2, 'dominicks'], ['Quantity']]
     </tr>
     <tr>
       <th>WeekLastDay</th>
-      <th>tároló</th>
+      <th>Store</th>
       <th>márka</th>
       <th></th>
     </tr>
@@ -499,7 +499,7 @@ whole_tsdf.loc[pd.IndexSlice['1990-06':'1990-09', 2, 'dominicks'], ['Quantity']]
 
 
 
-A [TimeSeriesDataFrame.ts_report](https://docs.microsoft.com/en-us/python/api/ftk.dataframe_ts.timeseriesdataframe?view=azure-ml-py-latest#ts-report) függvény a time series adatok keret átfogó jelentést hoz létre. A jelentés egy általános leírása és is idősorozat-adatok az adott statisztika tartalmazza. 
+A [TimeSeriesDataFrame.ts_report](https://docs.microsoft.com/python/api/ftk.dataframe_ts.timeseriesdataframe?view=azure-ml-py-latest#ts-report) függvény a time series adatok keret átfogó jelentést hoz létre. A jelentés egy általános leírása és is idősorozat-adatok az adott statisztika tartalmazza. 
 
 
 ```python
@@ -731,7 +731,7 @@ whole_tsdf.head()
     </tr>
     <tr>
       <th>WeekLastDay</th>
-      <th>tároló</th>
+      <th>Store</th>
       <th>márka</th>
       <th></th>
       <th></th>
@@ -886,14 +886,14 @@ whole_tsdf.head()
 
 ## <a name="preprocess-data-and-impute-missing-values"></a>Az adatok előfeldolgozása és a hiányzó értékeket imputálására
 
-Indítsa el az adatok gyakorlókészlethez és a egy csoportot az tesztelési halmazra a [last_n_periods_split](https://docs.microsoft.com/en-us/python/api/ftk.ts_utils?view=azure-ml-py-latest) segédprogram függvény. A létrejövő set tesztelés tartalmazza minden egyes utolsó 40 észrevételeit. 
+Indítsa el az adatok gyakorlókészlethez és a egy csoportot az tesztelési halmazra a [last_n_periods_split](https://docs.microsoft.com/python/api/ftk.ts_utils?view=azure-ml-py-latest) segédprogram függvény. A létrejövő set tesztelés tartalmazza minden egyes utolsó 40 észrevételeit. 
 
 
 ```python
 train_tsdf, test_tsdf = last_n_periods_split(whole_tsdf, 40)
 ```
 
-Alapszintű time series modellek összefüggő idősorozat van szükség. Ellenőrizze, hogy rendszeres, ami azt jelenti, hogy rendelkeznek-e egy rendszeres időközönként, használja a mintavétel ideje index az adatsorozat-a [check_regularity_by_grain](https://docs.microsoft.com/en-us/python/api/ftk.dataframe_ts.timeseriesdataframe?view=azure-ml-py-latest#check-regularity-by-grain) függvény.
+Alapszintű time series modellek összefüggő idősorozat van szükség. Ellenőrizze, hogy rendszeres, ami azt jelenti, hogy rendelkeznek-e egy rendszeres időközönként, használja a mintavétel ideje index az adatsorozat-a [check_regularity_by_grain](https://docs.microsoft.com/python/api/ftk.dataframe_ts.timeseriesdataframe?view=azure-ml-py-latest#check-regularity-by-grain) függvény.
 
 
 ```python
@@ -968,7 +968,7 @@ print(ts_regularity[ts_regularity['regular'] == False])
     [213 rows x 2 columns]
     
 
-Láthatja, hogy a sorozat (213 kívüli 249) többsége szabálytalan. Egy [imputálási átalakító](https://docs.microsoft.com/en-us/python/api/ftk.transforms.ts_imputer.timeseriesimputer?view=azure-ml-py-latest) értékesítési mennyiség értékek a hiányzó szükséges. Többféleképpen imputálási, amíg az az alábbi mintakód egy lineáris interpolációs használ.
+Láthatja, hogy a sorozat (213 kívüli 249) többsége szabálytalan. Egy [imputálási átalakító](https://docs.microsoft.com/python/api/ftk.transforms.ts_imputer.timeseriesimputer?view=azure-ml-py-latest) értékesítési mennyiség értékek a hiányzó szükséges. Többféleképpen imputálási, amíg az az alábbi mintakód egy lineáris interpolációs használ.
 
 
 ```python
@@ -1034,7 +1034,7 @@ arima_model = Arima(oj_series_freq, arima_order)
 
 ### <a name="combine-multiple-models"></a>Több modell egyesítése
 
-A [ForecasterUnion](https://docs.microsoft.com/en-us/python/api/ftk.models.forecaster_union?view=azure-ml-py-latest) estimator lehetővé teszi, hogy több estimators egyesítése, és ezeket egyetlen sor kód segítségével a laphoz/előrejelzésével.
+A [ForecasterUnion](https://docs.microsoft.com/python/api/ftk.models.forecaster_union?view=azure-ml-py-latest) estimator lehetővé teszi, hogy több estimators egyesítése, és ezeket egyetlen sor kód segítségével a laphoz/előrejelzésével.
 
 
 ```python
@@ -1107,7 +1107,7 @@ univariate_model_errors
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>ModelName</th>
+      <th>modelName</th>
       <th>MAPE</th>
       <th>MedianAPE</th>
     </tr>
@@ -1248,7 +1248,7 @@ print(train_feature_tsdf.head())
 
  **RegressionForecaster**
 
-A [RegressionForecaster](https://docs.microsoft.com/en-us/python/api/ftk.models.regression_forecaster.regressionforecaster?view=azure-ml-py-latest) függvény sklearn regressziós estimators burkolja, így azok a TimeSeriesDataFrame kell képezni. A burkolt forecaster is beteszi mindegyik csoportnál a case tárolóban levő ugyanannak a modellnek. A forecaster tudhat meg egy modellt a sorozat, amely hasonló tekintik, és együtt összevonhatják egy csoportjánál. Adatsorozat-csoport egy modellt gyakran hosszabb adatsorozat adatainak fejlesztésére használja rövid adatsorozathoz előrejelzéseket. Ezek bármely más modellek az erőforrástárban, amelyek támogatják a regressziós modellek helyettesítheti. 
+A [RegressionForecaster](https://docs.microsoft.com/python/api/ftk.models.regression_forecaster.regressionforecaster?view=azure-ml-py-latest) függvény sklearn regressziós estimators burkolja, így azok a TimeSeriesDataFrame kell képezni. A burkolt forecaster is beteszi mindegyik csoportnál a case tárolóban levő ugyanannak a modellnek. A forecaster tudhat meg egy modellt a sorozat, amely hasonló tekintik, és együtt összevonhatják egy csoportjánál. Adatsorozat-csoport egy modellt gyakran hosszabb adatsorozat adatainak fejlesztésére használja rövid adatsorozathoz előrejelzéseket. Ezek bármely más modellek az erőforrástárban, amelyek támogatják a regressziós modellek helyettesítheti. 
 
 
 ```python
@@ -1297,7 +1297,7 @@ all_errors.sort_values('MedianAPE')
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>ModelName</th>
+      <th>modelName</th>
       <th>MAPE</th>
       <th>MedianAPE</th>
     </tr>
@@ -1372,7 +1372,7 @@ Az alábbi ábra az egyes szögletes egy idő pontról adatokat jelöli. A kék 
 ![PNG](./media/how-to-build-deploy-forecast-models/cv_figure.PNG)
 
 **A paraméter kezdik**  
-A [TSGridSearchCV](https://docs.microsoft.com/en-us/python/api/ftk.model_selection.search.tsgridsearchcv?view=azure-ml-py-latest) osztály teljes körűen keresztül megadott paraméterértékek keres, és használja `RollingOriginValidator` paraméter teljesítmény kiértékelése a legmegfelelőbb paraméterek megtalálása érdekében.
+A [TSGridSearchCV](https://docs.microsoft.com/python/api/ftk.model_selection.search.tsgridsearchcv?view=azure-ml-py-latest) osztály teljes körűen keresztül megadott paraméterértékek keres, és használja `RollingOriginValidator` paraméter teljesítmény kiértékelése a legmegfelelőbb paraméterek megtalálása érdekében.
 
 
 ```python
@@ -1424,10 +1424,10 @@ best_of_forecaster_prediction.head()
     </tr>
     <tr>
       <th>WeekLastDay</th>
-      <th>tároló</th>
+      <th>Store</th>
       <th>márka</th>
       <th>ForecastOriginTime</th>
-      <th>ModelName</th>
+      <th>modelName</th>
       <th></th>
       <th></th>
       <th></th>

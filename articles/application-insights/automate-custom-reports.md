@@ -1,6 +1,6 @@
 ---
-title: Azure Application Insights-adatokat tartalmazó egyéni jelentéseket automatizálásához
-description: Egyéni napi vagy heti vagy havi jelentéseket Azure Application Insights adatokkal automatizálásához
+title: Az Azure Application Insights-adatokat tartalmazó egyéni jelentések automatizálása
+description: Az Azure Application Insights-adatok egyéni napi/heti/havi jelentések automatizálása
 services: application-insights
 documentationcenter: ''
 author: mrbullwinkle
@@ -13,41 +13,41 @@ ms.topic: conceptual
 ms.date: 06/25/2018
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: c8cff54c67ab2c9c3d09f9261617b6312cc4434a
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: a3f2021a1a1e0a0ff97c5966e151894fd7b6743b
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37025819"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45574641"
 ---
-# <a name="automate-custom-reports-with-azure-application-insights-data"></a>Azure Application Insights-adatokat tartalmazó egyéni jelentéseket automatizálásához
+# <a name="automate-custom-reports-with-azure-application-insights-data"></a>Az Azure Application Insights-adatokat tartalmazó egyéni jelentések automatizálása
 
-Rendszeres jelentés védheti, hogy egy csoport, hogyan történt a kritikus fontosságú üzleti szolgáltatásaik tájékoztatást. A fejlesztők, DevOps/SRE csoportok és a vezetőik produktív munkavégzést megbízhatóan továbbítása anélkül, hogy bárki bejelentkezhet a portál insights automatizált jelentéseket. Ezek a jelentések segítségével is azonosítható, fokozatos növekszik késések fordulnak elő, a betöltés vagy sikertelen díjszabás, amely nem indíthatnak bármely riasztási szabályok.
+Rendszeres jelentés gondoskodnak a csapat hogyan teljesítenek a kritikus fontosságú üzleti szolgáltatásaik információkat. A fejlesztők, fejlesztési és üzemeltetési/SRE csoportokat és a vezetőik számára hatékony munkavégzést megbízhatóan továbbítása anélkül, hogy mindenki számára a portál bejelentkezés insights automatizált jelentésekkel. Ezek a jelentések is segít azonosítani a fokozatosan növeli a kis késleltetésű, vagy meghibásodik, díjszabás, amely nem indíthat bármelyik riasztási szabályok.
 
-Minden vállalati a jelentéskészítési olyan egyedi igényekkel rendelkezik, mint például: 
+Minden egyes vállalat a jelentéskészítési olyan egyedi igényekkel rendelkezik, mint például: 
 
-* Adott PERCENTILIS összesítések metrikákat, vagy a jelentés egyéni metrikák.
-* Napi, heti és havi-összesítésben adatok különböző jelentések különböző rendelkezik.
-* Szegmentálás egyéni attribútumok például régió, illetve a környezetben. 
-* Egyes AI erőforrásokat egy csoportba az egyetlen jelentést, még akkor is, ha azok lehet különböző előfizetésekhez vagy erőforrás csoportok stb.
-* Különálló jelentéseket tartalmazó szelektív célközönség küldött bizalmas metrikákat.
-* Jelentések érdekelt felek, akik nem rendelkeznek a portál erőforrásokhoz való hozzáférést.
+* Adott PERCENTILIS összesítések metrikákat, vagy egy jelentést az egyéni metrikákat.
+* Napi, heti és havi-összesítésben az adatok több jelentés rendelkezik a különböző célközönségek számára.
+* Például a régiót, vagy a környezet egyéni attribútumok szerint Szegmentálás. 
+* Bizonyos AI-erőforrások egy csoportba egyetlen jelentésben, még akkor is, ha azok lehet különböző előfizetésekhez vagy erőforrás csoportok stb.
+* Szelektív közönség számára küldött bizalmas mérőszámokat tartalmazó különálló jelentéseket.
+* Jelentések az érdekelt felekkel, akik nem rendelkeznek a portálon erőforrások eléréséhez.
 
 > [!NOTE] 
-> A heti Application Insights kivonatoló e-mailek nem engedélyezte a testreszabás, és megszűnik az alább felsorolt egyéni beállítások helyett. Az utolsó heti kivonatoló e-mailt küldünk a 2018. június 11. Állítsa be a következők egyikére szerezhetők be hasonló egyéni jelentések (használja a lekérdezés alább javasolt).
+> Az Application Insights Heti összefoglaló e-mail nem engedélyezte a testreszabás, és ezt megszüntetjük az alábbi egyéni lehetőségek értéke. 2018. június 11. az elmúlt Heti összefoglaló e-mailben küldi el. Állítsa be a hasonló egyéni jelentések (használja az alábbi javasolt lekérdezés) az alábbi lehetőségek közül.
 
-## <a name="to-automate-custom-report-emails"></a>Egyéni jelentések e-mailek automatizálásához
+## <a name="to-automate-custom-report-emails"></a>Egyéni jelentések e-mailek automatizálása
 
-Is [programozott módon lekérdezni az Application Insights](https://dev.applicationinsights.io/) adatok ütemezés szerint egyéni jelentések készítéséhez. A következő beállítások segítségével gyorsan:
+Is [programozott módon lekérdezheti az Application Insights](https://dev.applicationinsights.io/) ütemezés szerint egyéni jelentések készítése az adatokat. A következő beállítások segítségével gyorsan használatba vehető:
 
-* [Jelentéskészítés a Microsoft Flow automatizálásához](app-insights-automate-with-flow.md)
-* [Automatizálása a Logic Apps jelentések](automate-with-logic-apps.md)
-* Használja az "Application Insights ütemezett kivonatoló" [Azure függvény](https://docs.microsoft.com/azure/azure-functions/functions-create-first-azure-function) sablon figyelés forgatókönyvben. Ez a funkció SendGrid kézbesíti az e-mailt. 
+* [Jelentéskészítés a Microsoft Flow automatizálása](app-insights-automate-with-flow.md)
+* [A Logic Apps jelentések automatizálása](automate-with-logic-apps.md)
+* Használja az "Application Insights ütemezett összefoglaló" [Azure-függvény](https://docs.microsoft.com/azure/azure-functions/functions-create-first-azure-function) sablon a figyelés forgatókönyvben. Ez a funkció a SendGrid használatával az e-mailben kézbesítéséhez. 
 
-    ![Az Azure-függvény sablon](./media/automate-custom-reports/azure-function-template.png)
+    ![Azure-függvény sablon](./media/automate-custom-reports/azure-function-template.png)
 
-## <a name="sample-query-for-a-weekly-digest-email"></a>Heti kivonatoló e-mailek mintalekérdezés
-A következő lekérdezés jeleníti meg, a heti kivonatoló e-mailek például a jelentés több adatkészletet keresztül csatlakozni. Testre szabhatja, szükség szerint, és a heti jelentés automatizálhatja a fent felsorolt beállításokkal együtt használja azt.   
+## <a name="sample-query-for-a-weekly-digest-email"></a>Heti összefoglaló e-mailek mintalekérdezés
+A következő lekérdezés látható csatlakoztatása egy heti kivonat e-mailt a jelentés a több adatkészlet között. Szükség szerint testre szabni, és használhatja a heti jelentés automatizálhatja a fent felsorolt lehetőségek közül.   
 
 ```AIQL
 let period=7d;
@@ -77,90 +77,90 @@ availabilityResults
 | project TotalRequests, FailedRequests, RequestsDuration, TotalDependencies, FailedDependencies, DependenciesDuration, TotalViews, TotalExceptions, OverallAvailability, AvailabilityDuration
 ```
 
-## <a name="application-insights-scheduled-digest-report"></a>Application Insights ütemezett kivonatoló jelentés
+## <a name="application-insights-scheduled-digest-report"></a>Application Insights ütemezett összefoglaló jelentés
 
-1. Válassza ki az Azure-portálon **hozzon létre egy erőforrást** > **számítási** > **függvény App**.
+1. Az Azure Portalon, válassza ki a **erőforrás létrehozása** > **számítási** > **Függvényalkalmazás**.
 
-   ![Hozzon létre egy Azure-erőforrás függvény alkalmazás képernyőképe](./media/automate-custom-reports/function-app-01.png)
+   ![Hozzon létre egy Azure-erőforrás Függvényalkalmazás képernyőképe](./media/automate-custom-reports/function-app-01.png)
 
-2. Adja meg a megfelelő adatokat az alkalmazáshoz, és válassza ki _létrehozása_. (Az application Insights _a_ szükség, csak akkor, ha az új függvény-alkalmazás az Application insights szolgáltatással figyelni kívánt)
+2. Adja meg a megfelelő adatokat az alkalmazást, és válassza a _létrehozás_. (Az application Insights _a_ kötelező, csak akkor, ha figyelemmel szeretné követni az új Függvényalkalmazást az Application insights segítségével)
 
-   ![Hozzon létre egy Azure-erőforrás függvény Alkalmazásbeállítások képernyőképe](./media/automate-custom-reports/function-app-02.png)
+   ![Hozzon létre egy Azure Resource Függvényalkalmazás beállításai képernyőkép](./media/automate-custom-reports/function-app-02.png)
 
-3. Az új függvény alkalmazás központi telepítés befejezése után válassza ki a **forrást**.
+3. Az új Függvényalkalmazás üzembe helyezés befejezése után jelölje ki a **erőforrás megnyitása**.
 
 4. Válassza ki **új függvény**.
 
    ![Hozzon létre egy új funkció képernyőképe](./media/automate-custom-reports/function-app-03.png)
 
-5. Válassza ki a  **_Application Insights ütemezett kivonatoló sablon_**.
+5. Válassza ki a  **_Application Insights ütemezett összefoglaló sablon_**.
 
-   ![Új függvény Application Insights sablon képernyőképe](./media/automate-custom-reports/function-app-04.png)
+   ![Új Application Insights Függvénysablon képernyőképe](./media/automate-custom-reports/function-app-04.png)
 
-6. Adjon meg egy megfelelő címzett e-mail címet a jelentést, és válassza ki a **létrehozása**.
+6. Adjon meg egy megfelelő címzett e-mail címet a jelentést, majd válassza a **létrehozás**.
 
-   ![Függvény beállítások képernyőképe](./media/automate-custom-reports/function-app-05.png)
+   ![A funkció beállításai képernyőkép](./media/automate-custom-reports/function-app-05.png)
 
-7. Válassza ki a **függvény App** > **Platform funkciói** > **Alkalmazásbeállítások**.
+7. Válassza ki a **Függvényalkalmazás** > **platformfunkciók** > **Alkalmazásbeállítások**.
 
-    ![Az Azure függvény alkalmazás beállítások képernyőképe](./media/automate-custom-reports/function-app-07.png)
+    ![Az Azure Függvényalkalmazást beállításai képernyőkép](./media/automate-custom-reports/function-app-07.png)
 
-8. Három új Alkalmazásbeállítások létrehozása a megfelelő megfelelő értékekkel ``AI_APP_ID``, ``AI_APP_KEY``, és ``SendGridAPI``. Kattintson a **Mentés** gombra.
+8. Három új Alkalmazásbeállítások létrehozása a megfelelő megfelelő értékekre ``AI_APP_ID``, ``AI_APP_KEY``, és ``SendGridAPI``. Kattintson a **Mentés** gombra.
 
-     ![Függvény integrációs felületének képernyőképe](./media/automate-custom-reports/function-app-08.png)
+     ![A funkció integrációt felületének képernyőképe](./media/automate-custom-reports/function-app-08.png)
     
-    (A AI_ értékek található szeretne jelentést készíteni az Application Insights-erőforrás API-hozzáférést. Ha nincs Application Insights API-kulcs, nincs lehetőség **API-kulcs létrehozása**.)
+    (A AI_ értékek területen találhatók az Application Insights-erőforrás, amelyekről jelentést szeretne készíteni az API-hozzáférés. Egy Application Insights API-kulcs nem rendelkezik, van-e lehetőség **API-kulcs létrehozása**.)
     
-    * AI_APP_ID azonosítója =
+    * AI_APP_ID = az alkalmazás azonosítója
     * AI_APP_KEY API-kulcs =
     * SendGridAPI SendGrid API-kulcs =
 
     > [!NOTE]
-    > Ha nincs a SendGrid-fiókja, létrehozhat egyet. A SendGrid tartozó dokumentáció az Azure Functions [Itt](https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-sendgrid). Ha csak szeretné, hogy a minimális magyarázatát, hogy hogyan kell beállítania a SendGrid, és ez a cikk végén elérhető API-kulcs létrehozása. 
+    > Ha a SendGrid-fiók nem rendelkezik, hozzon létre egyet. SendGrid-dokumentáció az Azure Functions [Itt](https://docs.microsoft.com/azure/azure-functions/functions-bindings-sendgrid). Ha csak szeretné, amely minimális elmagyarázza, és a SendGrid beállítása, és ez a cikk végén található elérhető API-kulcs létrehozása. 
 
-9. Válassza ki **integráció** és a kimeneti kattintson **SendGrid ($return)**.
+9. Válassza ki **integráció** és a kimenetek kattintson **SendGrid ($return)**.
 
-     ![Kimeneti képernyőképe](./media/automate-custom-reports/function-app-09.png)
+     ![Kimenet képernyőképe](./media/automate-custom-reports/function-app-09.png)
 
-10. Az a **SendGridAPI kulcs Alkalmazásbeállítás**, válassza ki az újonnan létrehozott alkalmazás-beállítás a **SendGridAPI**.
+10. Alatt a **SendGridAPI kulcs Alkalmazásbeállítása**, válassza ki az újonnan létrehozott tartozó alkalmazásbeállítást **SendGridAPI**.
 
-     ![Futtassa a függvény alkalmazás képernyőképe](./media/automate-custom-reports/function-app-010.png)
+     ![Futtassa a Függvényalkalmazás képernyőképe](./media/automate-custom-reports/function-app-010.png)
 
-11. Futtassa, és a alkalmazás tesztelése a függvény.
+11. Futtassa, és tesztelje a Függvényalkalmazást.
 
      ![Teszt képernyőképe](./media/automate-custom-reports/function-app-11.png)
 
-12. Ellenőrizze az e-mailt arról, hogy az üzenet nem küldhető/fogadható sikeresen.
+12. Ellenőrizze az e-mailek, győződjön meg arról, hogy az üzenet sikeresen küldött/fogadott.
 
      ![E-mail tárgya sor képernyőképe](./media/automate-custom-reports/function-app-12.png)
 
-## <a name="sendgrid-with-azure"></a>Az Azure-ral SendGrid
+## <a name="sendgrid-with-azure"></a>A SendGrid az Azure-ral
 
-Ezeket a lépéseket csak akkor alkalmazza, ha már a SendGrid konfigurált fiók nem rendelkezik.
+Ezeket a lépéseket csak akkor érvényesek, ha még nem rendelkezik konfigurált SendGrid-fiókjából.
 
-1. Az Azure portálon válassza **hozzon létre egy erőforrást** keressen **SendGrid e-mailben kézbesítésre** > kattintson **létrehozása** >, és töltse ki a SendGrid-specifikus kimenő utasításokat létrehozása. 
+1. Az Azure portálon válassza az **erőforrás létrehozása** keressen **SendGrid Email Delivery** > kattintson **létrehozás** >, és töltse ki a SendGrid-specifikus utasításokat létrehozása. 
 
-     ![Hozzon létre a SendGrid erőforrás képernyőképe](./media/automate-custom-reports/function-app-13.png)
+     ![Képernyőkép a SendGrid-erőforrás létrehozása](./media/automate-custom-reports/function-app-13.png)
 
-2. A SendGrid-fiókok létrehozását követően válassza ki a **kezelése**.
+2. A SendGrid-fiókok létrehozása után válassza ki a **kezelés**.
 
      ![Képernyőkép a beállítások az API-kulcs](./media/automate-custom-reports/function-app-14.png)
 
-3. A SendGrid tartozó hely fog elindulni. Válassza ki **beállítások** > **API-kulcsokat**.
+3. Ez elindítja a SendGrid-helyhez. Válassza ki **beállítások** > **API-kulcsok**.
 
-     ![Hozzon létre, és tekintse meg az API-kulcs alkalmazás képernyőképe](./media/automate-custom-reports/function-app-15.png)
+     ![Létrehozhat és megjeleníthet a API-kulcs alkalmazás képernyőképe](./media/automate-custom-reports/function-app-15.png)
 
-4. API-kulcs létrehozása > Válasszon **Létrehozás & nézet** (olvassa el a SendGrid meg a korlátozott hozzáférésű határozhatja meg, milyen szintű engedélyek az API-kulcs megfelelő. Teljes hozzáférés elemet itt példa jelleggel.)
+4. API-kulcs létrehozása > Válasszon **Létrehozás & nézet** (tekintse át annak megállapításához, hogy milyen szintű engedélyekkel a megfelelő API-kulcs korlátozott hozzáférés a SendGrid-dokumentációt. Teljes hozzáférés ki van jelölve itt kizárólag példa céljából.)
 
    ![Teljes hozzáférés képernyőképe](./media/automate-custom-reports/function-app-16.png)
 
-5. A teljes kulcsot másolja, az értéke, mire van szüksége az függvény alkalmazás beállításaiban értékeként a SendGridAPI
+5. A teljes kulcsot másolja, az értéke, mire van szüksége a Függvényalkalmazások között értékeként SendGridAPI
 
-   ![Másolja az API-kulcs képernyőképe](./media/automate-custom-reports/function-app-17.png)
+   ![Másolja ki az API-kulcs képernyőképe](./media/automate-custom-reports/function-app-17.png)
 
 ## <a name="next-steps"></a>További lépések
 
-* További tudnivalók: létrehozása [elemzési lekérdezések](app-insights-analytics-using.md).
-* További információ [programozott módon az Application Insights adatainak lekérdezése](https://dev.applicationinsights.io/)
+* További információ a létrehozásával [elemzési lekérdezések](app-insights-analytics-using.md).
+* Tudjon meg többet [programozott módon az Application Insights-adatok lekérdezése](https://dev.applicationinsights.io/)
 * További tudnivalók a [Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-what-are-logic-apps) szolgáltatásról
-* További információ [Microsoft Flow](https://ms.flow.microsoft.com).
+* Tudjon meg többet [Microsoft Flow](https://ms.flow.microsoft.com).

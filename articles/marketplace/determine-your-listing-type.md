@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/13/2018
 ms.author: ellacroi
-ms.openlocfilehash: a85cd5287f6947ec17dc19291a70d6dd081e1827
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: b64a35f6b7422b1e24812c1041305dab2ebad6c0
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39035860"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45578497"
 ---
 # <a name="determine-your-publishing-option"></a>A közzétételi lehetőség meghatározása
 Az Ön által választott az ajánlat közzétételi lehetőség közvetlenül kapcsolódik a jogosultsági követelményeknek és a piactér GTM előnyeit. Ami még fontosabb a közzététel lehetőséget és ajánlat írja be a Cloud Partner portálra a választott határozza meg, hogyan működjön együtt a marketplace-ajánlat felhasználók.
@@ -80,7 +80,7 @@ Mielőtt létrehozhatna egy ajánlatot, ki kell választania egy ajánlat típus
 
 Egyetlen ajánlattípusra konfigurálható eltérően a Cloud Partner portálra ahhoz, hogy különböző közzétételi beállítások, a hívások műveletet, a kiépítés, vagy díjszabása. A közzétételi beállítások és az ajánlat típusú konfigurációs is igazítása az ajánlat jogosult-e és technikai követelményeket. 
 
-Ügyeljen arra, hogy tekintse át a kirakat és típusának megfelelőségi feltételek ezen ajánlat [útmutató Közzétevőknek](https://docs.microsoft.com/en-us/azure/marketplace/marketplace-publishers-guide) és a műszaki követelményeket közzététele az ajánlat létrehozása előtt.
+Ügyeljen arra, hogy tekintse át a kirakat és típusának megfelelőségi feltételek ezen ajánlat [útmutató Közzétevőknek](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide) és a műszaki követelményeket közzététele az ajánlat létrehozása előtt.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -10,12 +10,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 01/02/2018
 ms.author: sngun
-ms.openlocfilehash: 0a2bd840c4e93755988cf1638a6c0bdcb6b6207d
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: d8d05335b62d292bf61dbd3f3d565093b21f9253
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43696380"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45574844"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-java"></a>Az Azure Cosmos DB és a javát a teljesítménnyel kapcsolatos tippek
 
@@ -36,8 +36,8 @@ Az Azure Cosmos DB egy gyors és rugalmas elosztott adatbázis, teljesítmény �
 
     Hogyan ügyfél csatlakozik-e az Azure Cosmos DB következményeket vonhat fontos a teljesítmény, különösen a megfigyelt ügyféloldali késés szempontjából. Van egy fő konfigurációs beállítás érhető el, az ügyfél beállításával kapcsolatos [ConnectionPolicy](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._connection_policy) – a [ConnectionMode](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._connection_mode).  A két rendelkezésre álló ConnectionModes a következők:
 
-   1. [Átjáró (alapértelmezett)](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.documentdb._connection_mode)
-   2. [DirectHttps](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.documentdb._connection_mode)
+   1. [Átjáró (alapértelmezett)](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._connection_mode)
+   2. [DirectHttps](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._connection_mode)
 
     Átjáró mód az összes SDK-platformon támogatott, és a konfigurált alapértelmezett.  Ha az alkalmazás fut a vállalati hálózaton belül szigorú tűzfal korlátozásokkal, az átjáró az a legjobb választás, mivel a szabványos HTTPS-port és a egy végpontot használja. A teljesítményre vonatkozóan kompromisszumot jelent, azonban nem, hogy az átjáró mód érint egy további hálózati Ugrás minden alkalommal, amikor adatokat olvasni vagy írni az Azure Cosmos DB. Emiatt DirectHttps mód miatt kevesebb hálózati útválasztók ugrásainak jobb teljesítményt nyújt. 
 

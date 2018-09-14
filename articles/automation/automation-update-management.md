@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 08/29/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 62a7bb9bf63e8ebf97f9aeb5b08bf08ef06da43b
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: ddc27d9f5124000601a57b4ecd72c3d6021c109f
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43782790"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45542633"
 ---
 # <a name="update-management-solution-in-azure"></a>Frissítéskezelési megoldás az Azure-ban
 
@@ -88,9 +88,9 @@ Windows-ügynökök egy WSUS-kiszolgálóval való kommunikációhoz kell konfig
 
 #### <a name="linux"></a>Linux
 
-A Linux rendszerre a gép hozzáféréssel kell rendelkeznie valamely frissítési tárházhoz. A frissítés tárház lehet nyilvános vagy privát. A TLS 1.1 és TLS 1.2 használatával kommunikálhat az Update Management szükséges. Az Operations Management Suite (OMS) ügynök Linux rendszerekre, amely több Log Analytics-munkaterületnek való jelentésre van konfigurálva a megoldás nem támogatott.
+A Linux rendszerre a gép hozzáféréssel kell rendelkeznie valamely frissítési tárházhoz. A frissítés tárház lehet nyilvános vagy privát. A TLS 1.1 és TLS 1.2 használatával kommunikálhat az Update Management szükséges. Ez a megoldás nem támogatott Linux rendszeren, amely több Log Analytics-munkaterületnek való jelentésre van konfigurálva a Log Analytics-ügynököket.
 
-A Linuxhoz készült OMS-ügynök telepítése és a legújabb verzió letöltéséhez kapcsolatos információkért lásd: [Operations Management Suite Linux-ügynök](https://github.com/microsoft/oms-agent-for-linux). A Windows OMS ügynök telepítésével kapcsolatos információkért lásd: [Operations Management Suite ügynök a Windows](../log-analytics/log-analytics-windows-agent.md).
+A Log Analytics-ügynök telepítése Linux- és a legújabb verzió letöltéséhez kapcsolatos információkért lásd: [Operations Management Suite Linux-ügynök](https://github.com/microsoft/oms-agent-for-linux). A Log Analytics az ügynök a Windows telepítésével kapcsolatos információkért lásd: [Operations Management Suite ügynök a Windows](../log-analytics/log-analytics-windows-agent.md).
 
 ## <a name="permissions"></a>Engedélyek
 
@@ -147,7 +147,7 @@ A Windows-számítógépen tekintse át, ellenőrizze az ügynök kapcsolatot a 
 Ha az ügynök nem tud kommunikálni a Log Analytics és az ügynök kommunikáljon az internettel egy tűzfalon vagy proxykiszolgálón keresztül van konfigurálva, győződjön meg arról, hogy a tűzfal vagy proxy server megfelelően van-e konfigurálva. Győződjön meg arról, hogy megfelelően van-e konfigurálva a tűzfal vagy proxy-kiszolgáló kezelésével kapcsolatos információkért lásd: [Windows ügynök hálózati konfigurációja](../log-analytics/log-analytics-agent-windows.md) vagy [Linux-ügynök hálózati konfigurációja](../log-analytics/log-analytics-agent-linux.md).
 
 > [!NOTE]
-> Ha Linux rendszerei való kommunikációhoz proxykiszolgáló beállítva vagy az OMS-átjárót, és máris bevezetése a megoldást, frissítse a *proxy.conf* engedélyeket biztosítson az omiuser csoportnak olvasási engedélyt a fájlhoz a következő használatával parancsok:
+> Ha Linux rendszerei való kommunikációhoz proxykiszolgáló beállítva, vagy a Log Analytics-átjáró, és máris bevezetési a megoldást, frissítse a *proxy.conf* engedélyeket biztosítson az omiuser csoportnak olvasási engedélyt a fájlhoz használatával a a következő parancsokat:
 >
 > `sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/proxy.conf`
 > `sudo chmod 644 /etc/opt/microsoft/omsagent/proxy.conf`

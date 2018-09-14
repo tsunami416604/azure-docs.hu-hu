@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 9/10/2018
 ms.author: markgal
-ms.openlocfilehash: dc9d7b924f51fb3a4e9662dfa7ad4b9557b481bc
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 80987408e65785afba1df2d2f6b6fc9981fd2dbf
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44347001"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45542820"
 ---
 # <a name="prepare-your-environment-to-back-up-resource-manager-deployed-virtual-machines"></a>A környezet előkészítése a Resource Managerrel üzembe helyezett virtuális gépek biztonsági mentéséhez
 
@@ -215,8 +215,8 @@ Az alábbi videó végigvezeti a részletes eljárást szolgáltatáscímkék ko
 
 >[!VIDEO https://www.youtube.com/embed/1EjLQtbKm1M]
 
-> [!WARNING]
-> Tárolási szolgáltatáscímkék csak bizonyos régiókban érhető el, és előzetes verzióként érhetők el. Régiók listáját lásd: [Szolgáltatáscímkéket Storage](../virtual-network/security-overview.md#service-tags).
+> [!NOTE]
+> Tárolási szolgáltatáscímkék és régiók listáját lásd: [Szolgáltatáscímkéket Storage](../virtual-network/security-overview.md#service-tags).
 
 ### <a name="use-an-http-proxy-for-vm-backups"></a>A virtuális gép biztonsági mentéseinek HTTP proxyk használatára
 Ha biztonsági másolatot egy virtuális Gépet, a biztonsági mentési bővítményt a virtuális gépen az Azure Storage a pillanatkép-kezelési parancsok küld egy HTTPS-API-val. A biztonsági mentési bővítményt a HTTP-proxy forgalmat útvonal, a konfigurált nyilvános internet-hozzáférés csak összetevőt, mert.

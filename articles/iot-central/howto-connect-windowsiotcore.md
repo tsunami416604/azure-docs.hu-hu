@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 73a23ace23d2373e238c6887c4a41c6037d233de
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 517de578e2a3c6350bbb18d756a8740ceb6f1d23
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43189004"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45576374"
 ---
 # <a name="connect-a-windows-iot-core-device-to-your-azure-iot-central-application"></a>A Windows IoT Core-eszköz csatlakoztatása az Azure IoT Central alkalmazáshoz
 
@@ -66,7 +66,7 @@ Az ügyfélalkalmazás az előző lépésben a Windows 10 IoT-eszközök annak �
 * Az asztalon mentse a kapcsolati karakterlánc connection.string.iothub nevű szövegfájlba.
 * A szöveges fájlt másolja az eszköz dokumentum mappába: `[device-IP-address]\C$\Data\Users\DefaultAccount\Documents\connection.string.iothub`
 
-Miután ezt megtette, meg kell nyitnia a [Windows Device Portal](https://docs.microsoft.com/en-us/windows/iot-core/manage-your-device/deviceportal) bármely böngészőben http://[device-IP-address]:8080 beírásával.
+Miután ezt megtette, meg kell nyitnia a [Windows Device Portal](https://docs.microsoft.com/windows/iot-core/manage-your-device/deviceportal) bármely böngészőben http://[device-IP-address]:8080 beírásával.
 
 Vannak, és a ha alább is látható, a szeretné:
 1. Bontsa ki az "Alkalmazások" csomópontot a bal oldalon.

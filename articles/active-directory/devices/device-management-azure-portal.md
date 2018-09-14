@@ -16,17 +16,17 @@ ms.topic: article
 ms.date: 08/25/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: ff1d51021038909c132bef4cb680589b9951f218
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 7aa7cd2e5b1cf1346a5a7b1f82ec9c7933dd1112
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43041425"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45542480"
 ---
 # <a name="how-to-manage-devices-using-the-azure-portal"></a>Eszközkezelés az Azure portal használatával
 
 
-Az Eszközfelügyelet az Azure Active Directory (Azure AD) biztosíthatja, hogy a felhasználók az erőforrásokhoz hozzáférő eszközei megfeleljenek a biztonsági és megfelelőségi szabványoknak. 
+Az Azure Active Directory (Azure AD) eszközfelügyeletével biztosítható, hogy a felhasználók csak olyan eszközökről férjenek hozzá a vállalat erőforrásaihoz, amelyek megfelelnek a biztonsági és megfelelőségi szabványoknak. 
 
 A cikk tartalma:
 
@@ -123,7 +123,7 @@ A rendszergazdák a regisztrált vagy a csatlakoztatott eszközöket kezelheti. 
 
 ### <a name="manage-an-intune-device"></a>Az Intune-eszközök kezelése
 
-Ha az Intune-rendszergazdák, jelölésű eszközök kezeléséhez **a Microsoft Intune**. A rendszergazda láthatja a további eszközök 
+Ha az Intune-rendszergazdák, jelölésű eszközök kezeléséhez **a Microsoft Intune**. 
 
 ![Az Intune-eszközök kezelése](./media/device-management-azure-portal/31.png)
 
@@ -251,7 +251,7 @@ A szűrők mellett bejegyzéseit konkrét bejegyzések kereshet.
 
 ## <a name="next-steps"></a>További lépések
 
-* [Az Eszközfelügyelet az Azure Active Directory bemutatása](overview.md)
+* [Az Azure Active Directory eszközkezelésének alapjai](overview.md)
 
 
 

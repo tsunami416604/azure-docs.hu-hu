@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 83e1fbfeee75534757dcb3c0275ca881e1eea517
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 0bcb6262201b3399ca4d759bb306a570bea33b00
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44297995"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45578769"
 ---
 # <a name="how-to-deploy-a-conversation-learner-bot"></a>Beszélgetéstanuló robotprogramok üzembe helyezése
 
@@ -94,7 +94,7 @@ A robot mostantól helyileg fut.  Hozzá tud férni a Bot Framework emulátort.
 
 Tegye közzé a ugyanúgy, mint bármilyen más robot közzé kívánja tenni a hasonló Beszélgetéstanuló robotjait. Magas szinten töltse fel a kódot egy üzemeltetett webhelyre, állítsa be a megfelelő konfigurációs értékeket, és regisztrálja a robot a különböző csatornákon. A videó közzététele a robot, az Azure Bot Service használatával történő bemutató részletes utasítások találhatók.
 
-A robot üzemel, és a futtató csatlakozhat más csatornákat, például az Azure Bot Csatornaregisztráció használatával Facebook, a Teams, a Skype stb. A folyamat lásd: dokumentáció: https://docs.microsoft.com/en-us/bot-framework/bot-service-quickstart-registration
+A robot üzemel, és a futtató csatlakozhat más csatornákat, például az Azure Bot Csatornaregisztráció használatával Facebook, a Teams, a Skype stb. A folyamat lásd: dokumentáció: https://docs.microsoft.com/bot-framework/bot-service-quickstart-registration
 
 Az alábbiakban lépésről lépésre ismerteti, hogyan telepíthető egy beszélgetés Learner Bot az Azure-bA.  Ezek az utasítások feltételezik, hogy a robot forrás, például az Azure DevOps-szolgáltatásokkal, GitHub, BitBucket vagy onedrive vállalati verzió egy felhőalapú adatforrás érhető el, és konfigurálja a robot a folyamatos üzembe helyezéshez.
 

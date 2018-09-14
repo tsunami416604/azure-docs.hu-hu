@@ -1,62 +1,62 @@
 ---
-title: A Tudásbázis - Microsoft kognitív szolgáltatások szerkesztése |} Microsoft Docs
-titleSuffix: Azure
-description: A Tudásbázis szerkesztése
+title: Tudásbázis – QnA Maker szerkesztése
+titleSuffix: Azure Cognitive Services
+description: A QnA Maker lehetővé teszi a Tudásbázis tartalmát kezelését azáltal, hogy egy könnyen használható szerkesztési funkciót.
 services: cognitive-services
 author: nstulasi
-manager: sangitap
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: QnAMaker
+ms.component: qna-maker
 ms.topic: article
-ms.date: 04/21/2018
+ms.date: 09/12/2018
 ms.author: saneppal
-ms.openlocfilehash: eaa65bf3d257399fceadaa42f0d9ddbbf8afe234
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 919a7dbcb3ea898182e19e4cd0de793e7a80dea9
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348679"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45543292"
 ---
-# <a name="edit-a-knowledge-base"></a>A Tudásbázis szerkesztése
+# <a name="edit-a-knowledge-base"></a>Tudásbázis szerkesztése
 
-Kérdések és válaszok Maker lehetővé teszi a Tudásbázis tartalmának kezelését, adja meg a könnyen használható szerkesztési élményt.
+A QnA Maker lehetővé teszi a Tudásbázis tartalmát kezelését azáltal, hogy egy könnyen használható szerkesztési funkciót.
 
-## <a name="edit-your-knowledge-base-content"></a>A Tudásbázis tartalom szerkesztése
+## <a name="edit-your-knowledge-base-content"></a>A Tudásbázis-tartalmat szerkesztése
 
-1.  Válassza ki **a Tudásbázis körrel** a felső navigációs sávban. 
+1.  Válassza ki **saját tudásbázisok** a felső navigációs sávban. 
 
-    Létrehozott vagy csökkenő sorrendben rendezve Önnel megosztott összes szolgáltatását láthatja a **utolsó módosítás** dátum.
+    Megtekintheti a létrehozott vagy a csökkenő sorrendben rendezi az Önnel megosztott összes szolgáltatást a **utolsó módosítás** dátum.
 
-    ![A Tudásbázis körrel](../media/qnamaker-how-to-edit-kb/my-kbs.png)
+    ![Saját tudásbázisok](../media/qnamaker-how-to-edit-kb/my-kbs.png)
 
-2. Válasszon egy adott Tudásbázis szerkesztenie azt.
+2. Válassza ki az adott Tudásbázis szerkesztenie azt.
 
-3. Miután a módosítások a Tudásbázisban, kattintson a **mentéséhez és a vonat** ahhoz, hogy a változtatások megőrzéséhez a lap jobb felső sarkában található.    
+3. Ha elkészült a Tudásbázis módosítását, kattintson a **mentéséhez és a vonat** annak érdekében, hogy a változtatások megőrzéséhez az oldal jobb felső sarkában található.    
 
-    ![Mentse és betanítás](../media/qnamaker-how-to-edit-kb/save-and-train.png)
+    ![Mentse és tanítása](../media/qnamaker-how-to-edit-kb/save-and-train.png)
 
     >[!NOTE]
-    Kilépés a való kattintás előtt a lap mentésekor és vonat nem a változtatások megőrzéséhez.
+    A Mentés előtt kattintson az oldal elhagyása és train nem menti a módosításokat.
 
-## <a name="add-a-qna-pair"></a>Egy kérdés-válasz pár hozzáadása
+## <a name="add-a-qna-pair"></a>A QnA pár hozzáadása
 
-Válassza ki **hozzáadása kérdés-válasz pár** használatával adhat hozzá új sort a Tudásbázis táblázathoz.
+Válassza ki **hozzáadása kérdés-válasz párt** hozzáadása egy új sort a Tudásbázis tábla.
 
-![Kérdés-válasz pár hozzáadása](../media/qnamaker-how-to-edit-kb/add-qnapair.png)
+![A QnA pár hozzáadása](../media/qnamaker-how-to-edit-kb/add-qnapair.png)
 
-## <a name="delete-a-qna-pair"></a>Egy kérdés-válasz pár törlése
+## <a name="delete-a-qna-pair"></a>Egy kérdés-válasz párt törlése
 
-A kérdések és válaszok törléséhez kattintson a **törlése** ikonra a képernyő jobb szélén a kérdések és válaszok sor.
+A QnA törléséhez kattintson a **törlése** ikonra a jobb szélen a QnA sor.
 
-![Kérdés-válasz pár törlése](../media/qnamaker-how-to-edit-kb/delete-qnapair.png)
+![Kérdés-válasz párt törlése](../media/qnamaker-how-to-edit-kb/delete-qnapair.png)
 
 ## <a name="add-alternate-questions"></a>Alternatív kérdések hozzáadása
 
-Alternatív kérdések hozzáadása egy meglévő kérdés-válasz pár egy felhasználó lekérdezésnek megfelelő valószínűségét javítása érdekében.
+Alternatív kérdések hozzáadása egy meglévő QnA pár annak lehetőségét, hogy egy felhasználó lekérdezésnek megfelelő javítása érdekében.
 
 ![Alternatív kérdések hozzáadása](../media/qnamaker-how-to-edit-kb/add-alternate-question.png)
 
-## <a name="add-metadata"></a>Metaadatok hozzáadása
+## <a name="add-metadata"></a>metaadatok hozzáadása
 
 
 A szűrő ikon kiválasztásával metaadatok pár hozzáadása
@@ -64,17 +64,17 @@ A szűrő ikon kiválasztásával metaadatok pár hozzáadása
 ![Metaadatok hozzáadása](../media/qnamaker-how-to-edit-kb/add-metadata.png)
 
 > [!TIP]
-> Ügyeljen arra, hogy megadott időközönként és módosítások elvesztésének elkerülése érdekében módosítások elvégzése után a Tudásbázis betanításához.
+> Ellenőrizze, hogy rendszeres időközönként mentéséhez és a módosításokat az adatvesztés elkerülése érdekében a módosítások elvégzése után a Tudásbázis betanításához.
 
-## <a name="manage-large-knowledge-bases"></a>Nagy Tudásbázis körrel kezelése
+## <a name="manage-large-knowledge-bases"></a>Nagy tudásbázisok kezelése
 
-1. A QnAs vannak **csoportosítva** által az adatforrást, amelyből könyvtárban találhatók. Bontsa ki, vagy az adatforrás csukja össze.
-2. Is **keresési** a Tudásbázis tábla tetején a szövegmezőbe írja be a Tudásbázis. Kattintson a kérdést, válasz vagy metaadatok tartalom kereséséhez írja be. Kattintson a keresési szűrő eltávolítása X ikonra.
-3. **Tördelési** nagy Tudásbázis körrel kezelése
+1. A QnA-tudásbázisok vannak **csoportosítva** az adatforrás, amelyből könyvtárban találhatók. Bontsa ki, vagy az adatforrás összecsukása.
+2. Is **keresési** a Tudásbázis tábla tetején a szövegmezőbe írja be a Tudásbázis. Kattintson a kérdés válasz metaadat-tartalom, vagy a kereséshez adja meg. Kattintson az X ikont a keresési szűrő eltávolításához.
+3. **Tördelés** lehetővé teszi, hogy nagy tudásbázisok kezelése
 
-    ![Keresés, megjelenítheti a csoport](../media/qnamaker-how-to-edit-kb/search-paginate-group.png)
+    ![Keresés, oldalakra bontása csoport](../media/qnamaker-how-to-edit-kb/search-paginate-group.png)
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [A Tudásbázis együttműködéshez](./collaborate-knowledge-base.md)
+> [Tudásbázis szerkesztésében](./collaborate-knowledge-base.md)

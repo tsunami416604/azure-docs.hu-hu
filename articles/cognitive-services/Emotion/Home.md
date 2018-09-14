@@ -1,6 +1,6 @@
 ---
-title: Érzelemfelismerési API áttekintése |} Microsoft Docs
-description: A Microsoft a legmodernebb, felhőalapú érzelemfelismerési felismerés algoritmus segítségével több személyre szabott alkalmazások kognitív szolgáltatásokban Érzelemfelismerési API-val.
+title: Az Emotion API – áttekintés |} A Microsoft Docs
+description: A Microsoft legmodernebb, felhőalapú érzelemfelismerési felismerés algoritmus használatával személyre szabottabb alkalmazásokat készíthet, a Cognitive Services Emotion API-val.
 services: cognitive-services
 author: anrothMSFT
 manager: corncar
@@ -9,30 +9,30 @@ ms.component: emotion-api
 ms.topic: article
 ms.date: 02/06/2017
 ms.author: anroth
-ms.openlocfilehash: 8383370cba3f78060e809f444f4ad3dab7380f4e
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 210990b0f436fd75cb36e71ea28928c457a5232e
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347659"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45573554"
 ---
-# <a name="what-is-emotion-api"></a>Mi az a Érzelemfelismerési API-t?
+# <a name="what-is-emotion-api"></a>Mi az Emotion API?
 
 > [!IMPORTANT]
-> Érzelemfelismerési API elavulttá vált a 2017. október 30. A funkció most részét képezi [Arcfelismerési API](https://docs.microsoft.com/en-us/azure/cognitive-services/face/).
+> Az Emotion API 2017. október 30 kivezettük. A funkció egyelőre részét képezi [Face API](https://docs.microsoft.com/azure/cognitive-services/face/).
 
-Üdvözli a Microsoft Érzelemfelismerési API, amely lehetővé teszi a Microsoft felhőalapú érzelemfelismerési felismerés algoritmussal több személyre szabott alkalmazásokat lehet készíteni.
+Üdvözli a Microsoft Emotion API, amellyel személyre szabottabb alkalmazásokat készíthet a Microsoft felhőalapú érzelemfelismerési felismerés algoritmus.
 
-### <a name="emotion-recognition"></a>Érzelemfelismerési felismerés
+### <a name="emotion-recognition"></a>Érzelemfelismerés
 
-Érzelemfelismerési API bétaverzió veszi a lemezkép bemenetként, és adja vissza az vetett bizalmat érzelmek minden lap, a lemezkép, valamint a felülethez határolókeret csoportja között a Arcfelismerési API-t. A érzelmek észlelte: Boldogsága, sadness, jelzés nélküli, utasítás, félelem, contempt, Undort, vagy a semleges. Ezek érzelmek közli cross-culturally és egységesen keresztül az ugyanazon alapvető arcfelismerést kifejezések, ahol Érzelemfelismerési API azonosítja. 
+Az Emotion API béta bemenetként kép fogadja, és magabiztosan illenek különböző érzelmek minden lap a képen, valamint a face határolókeret a Face API adja vissza. Az észlelt érzelmek boldogság, szomorúság, meglepetés, düh, félelem, megvetés, undor vagy semleges. Ezek az érzelmek kommunikálja kultúrában és egységesen keresztül ugyanazon alapvető arckifejezések, ahol az Emotion API azonosítja. 
 
-**Eredmények értelmezéséhez:** 
+**Eredmények értelmezése során:** 
 
-A Érzelemfelismerési API származó eredmények értelmezése során, az észlelt érzelemfelismerési úgy kell értelmezni a legmagasabb pontszámmal rendelkező érzelemfelismerési, pontszámokat normalizálják egy összegével. Előfordulhat, hogy a felhasználók eldönthetik abban, hogy az alkalmazásban, attól függően, hogy igényeiknek magasabb küszöbértéket beállítani. 
+Az Emotion API eredményeinek értelmezése során, az észlelt emotion úgy kell értelmezni, az a legnagyobb pontszámot, az emotion pontszámok van normalizálva, az összeg egy. Előfordulhat, hogy a felhasználók megadhatják való saját alkalmazásukba, attól függően, saját igényeinek megfelelő magasabb megbízhatósági küszöbértéket állíthat be. 
 
-Érzelemfelismerés kapcsolatos további információkért tekintse meg az API-referencia: 
-  * Alapszintű: Ha egy felhasználó hívása már a Arcfelismerési API-t, hogy küldje el a tapasztalt téglalap bemenetként, és az alapszintű rétegben. [API-referencia](https://westus.dev.cognitive.microsoft.com/docs/services/5639d931ca73072154c1ce89/operations/56f23eb019845524ec61c4d7)
-  * Standard: Ha a felhasználó nem küldenek egy oldallal téglalap, azok módot kell használniuk normál.  [API-referencia](https://westus.dev.cognitive.microsoft.com/docs/services/5639d931ca73072154c1ce89/operations/563b31ea778daf121cc3a5fa)
+Érzelemfelismerő kapcsolatos további információkért tekintse meg az API-referencia: 
+  * Alapszintű: Egy felhasználó már meghívta a Face API, ha azok elküldheti a bemenetként négyszög meghatározása és az alapszintű csomagot használja. [API-referencia](https://westus.dev.cognitive.microsoft.com/docs/services/5639d931ca73072154c1ce89/operations/56f23eb019845524ec61c4d7)
+  * Standard: Ha a felhasználó nem küldenek egy négyszög meghatározása, használjon standard üzemeltetési módra.  [API-referencia](https://westus.dev.cognitive.microsoft.com/docs/services/5639d931ca73072154c1ce89/operations/563b31ea778daf121cc3a5fa)
 
-Egy minta elemzéséhez adatfolyam videó Érzelemfelismerési API-t, tekintse meg [valós idejű elemzése videók hogyan](https://docs.microsoft.com/azure/cognitive-services/emotion/emotion-api-how-to-topics/howtoanalyzevideo_emotion).
+Az Emotion API streamelt videók elemzéséhez egy minta: [videók valós idejű elemzése hogyan](https://docs.microsoft.com/azure/cognitive-services/emotion/emotion-api-how-to-topics/howtoanalyzevideo_emotion).

@@ -1,6 +1,6 @@
 ---
-title: Elosztott hangolása a Hiperparamétereket Azure Machine Learning-munkaterület használatával |} Microsoft Docs
-description: Ez a forgatókönyv bemutatja, hogyan hajtsa végre az Azure Machine Learning-munkaterület használatával hiperparamétereket elosztott hangolása
+title: Elosztott hangolása az Hiperparaméterek Azure Machine Learning Workbench használatával |} A Microsoft Docs
+description: Ebből a forgatókönyvből megtudhatja, hogyan teheti az Azure Machine Learning Workbench használatával hiperparaméterek elosztott hangolása
 services: machine-learning
 author: pechyony
 ms.service: machine-learning
@@ -11,61 +11,61 @@ ms.author: dmpechyo
 manager: mwinkle
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.date: 09/20/2017
-ms.openlocfilehash: 6347500b8968394a922969dd3dd2f00dd51cb6dd
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 920b019640df9d2da174101e2b1b90dfd4da6f56
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37036093"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45578735"
 ---
-# <a name="distributed-tuning-of-hyperparameters-using-azure-machine-learning-workbench"></a>Elosztott, az Azure Machine Learning-munkaterület használatával hiperparaméterek beállítása
+# <a name="distributed-tuning-of-hyperparameters-using-azure-machine-learning-workbench"></a>Az Azure Machine Learning Workbench használatával hiperparaméterek elosztott hangolása
 
-Ez a forgatókönyv bemutatja, hogyan Azure Machine Learning munkaterület használandó réteget, a gépi tanulási algoritmusok scikit megvalósító hiperparaméterek beállítása – ismerje meg az API-t. Megmutatjuk, hogyan lehet konfigurálni és használata a távoli Docker-tároló és a Spark-fürt egy végrehajtási háttér hiperparaméterek beállítása.
+Ebből a forgatókönyvből megtudhatja, hogyan használhatja az Azure Machine Learning Workbench horizontális felskálázás, gépi tanulási algoritmusok scikit megvalósító hiperparaméterek beállítása – ismerje meg az API-t. Bemutatjuk, hogyan konfigurálhatja és használhatja egy távoli Docker-tárolóban és a Spark-fürtöt, egy végrehajtási háttérrendszer hiperparaméterek finomhangoláshoz.
 
-## <a name="link-of-the-gallery-github-repository"></a>A gyűjtemény GitHub-tárház hivatkozás
-Az alábbiakban látható a nyilvános GitHub-tárházban hivatkozásra: 
+## <a name="link-of-the-gallery-github-repository"></a>Hivatkozás katalógus GitHub-adattár
+Következő pedig a hivatkozás a nyilvános GitHub-adattárhoz: 
 
 [https://github.com/Azure/MachineLearningSamples-DistributedHyperParameterTuning](https://github.com/Azure/MachineLearningSamples-DistributedHyperParameterTuning)
 
-## <a name="use-case-overview"></a>Használja az eset áttekintése
+## <a name="use-case-overview"></a>Használati eset – áttekintés
 
-Sok gépi tanulási algoritmusok rendelkezik egy vagy több forgatógombját hiperparamétereket nevezik. Ezek forgatógombját engedélyezése a jövőbeli adatokat, a felhasználó által megadott metrikák mérések való algoritmusok hangolása (például pontossága AUC, Gyökátlagos). Adatok tudósok kell megadni. hiperparamétereket értékének létrehozásakor egy modell betanítási adatok, valamint a jövőbeli vizsgálati adatok megtekintése előtt. A ismert betanítási adatok használatával hogyan alapján beállítjuk hiperparamétereket értékeit, hogy a modell a megfelelő teljesítmény rendelkezik-e az ismeretlen Tesztadatok keresztül? 
+Számos gépi tanulási algoritmusok hiperparaméterek nevű egy vagy több belül van. Ezek belül engedélyezése algoritmusok teljesítményének optimalizálásához jövőbeli adatokon, felhasználó által megadott metrikák alapján mérjük a finomhangolási (például a pontosság AUC, Gyökátlagos). Adattudós hiperparaméterek értékének megadására, amikor létre a modell a betanítási adatokon, és a jövőbeli Tesztadatok frissíteniük kell. Hogyan alapján az ismert betanítási adatok is beállítjuk hiperparaméterek értékeit, hogy a modellnek van egy jó teljesítményt az ismeretlen teszt adatai felett? 
     
-Egy népszerű módszer a finomhangoláshoz hiperparamétereket egy *rács keresési* együtt *kereszt-ellenőrzési*. Kereszt-ellenőrzési olyan módszer, amely értékeli a mennyire egy modell betanítása képzési megfelelő, a teszt készleten előrejelzi. Ezzel a technikával használ, azt először felosztani a dataset K modellrészt és a ciklikus multiplexelés algoritmus K alkalommal majd betanításához. Hajtanak végre az összes, de a modellrészt egyik hívása a "tárolt kibővített modellrészek". Azt számítási K modellek metrikáinak átlagértéket K tárolt kibővített modellrészt keresztül. Ez átlagérték nevű *határokon érvényesített teljesítmény becsült*, K modellek létrehozásakor használt hiperparamétereket értékének függ. Amikor hiperparaméterek beállítása, azt jelölt hyperparameter értékek található, a kereszt-ellenőrzési teljesítményének optimalizálásához gazdarendszerhez becsült lemezterület keresést. Rács keresést a keresési közös technika. A rács keresési a több hiperparamétereket jelölt értékei közül olyan-készlet keresztszorzatát egyedi hiperparamétereket jelölt értékei közül. 
+Egy, a finomhangoláshoz hiperparaméterek népszerű módszer egy *rács keresési* kombinálva *kereszt-ellenőrzési*. Kereszt-ellenőrzés olyan módszer, amely felméri arról, hogy egy modell a betanítási készlet tanított előrejelzi a teszt csoport keresztül. Ezt a módszert használja, azt először az adatkészlet felosztása K modellrész és az algoritmus ezer alkalommal ciklikus multiplexelés majd betanításához. Ez az összes végzünk, de a modellrész egyik nevű, "tárolt kibővített modellrészek". Azt a számítási modellek K metrikáinak átlagos értékét K tárolt kibővített modellrész keresztül. Az átlagérték nevű *közötti érvényesített teljesítmény becsült*, attól függ, az értékek hiperparaméterek K modellek létrehozásakor használt. Hiperparaméterek beállítása, ha azt a területet jelölt hiperparaméter érték megkereséséhez, amelyekre a kereszt-ellenőrzés a teljesítmény optimalizálása-becslésére keresést. Rács keresése a gyakori keresési technika. A hely több hiperparaméterek jelölt értékek rács keresési, egy-készlet keresztszorzatát jelölt értékek egyes hiperparaméterek. 
 
-Kereszt-ellenőrzési használatával rács keresési időigényes lehet. Ha egy algoritmus öt hiperparamétereket minden öt jelölt értékekkel, K = 5 modellrészt használjuk. Azt fejezze be a rács keresés 5 betanítása<sup>6</sup>= 15625 modellek. Szerencsére rács keresési kereszt-ellenőrzési használata egy embarrassingly párhuzamos eljárást, és ezek a modellek párhuzamosan is szükség.
+Rács search használatával a kereszt-ellenőrzés időigényes lehet. Ha egy olyan algoritmust öt hiperparaméterek egyes öt jelölt értékekkel, K = 5 modellrész használjuk. Hogy végezze el a rács keresés alapján 5 képzési<sup>6</sup>= 15625 modellek. Szerencsére a rács keresési kereszt-ellenőrzés használata egy zavaróan párhuzamos eljárást, és ezek a modellek képes tartani a párhuzamosan.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Egy [Azure-fiók](https://azure.microsoft.com/free/) (az ingyenes próbaverzió érhetők el).
-* Egy telepített példánya [Azure Machine Learning-munkaterület](../service/overview-what-is-azure-ml.md) következő a [telepítése és gyors üzembe helyezés létrehozása](../service/quickstart-installation.md) telepíteni a munkaterületet üzemeltető és fiókokat létrehozni.
-* Ez a forgatókönyv azt feltételezi, hogy futtatja Azure ML munkaterület a Windows 10 vagy MacOS a helyileg telepített Docker-motorhoz. 
-* A forgatókönyv olyan távoli Docker-tároló futtatni, kiépítése Ubuntu adatok tudományos virtuális gép (DSVM) követve a [utasításokat](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-provision-vm). Legalább 8 maggal és 28 Gb memóriát a virtuális gép használatát javasoljuk. Virtuális gépek példányait D4 rendelkezik ilyen kapacitással. 
-* Ebben a forgatókönyvben egy Spark-fürt futtatja, a Spark HDInsight-fürt kiépítése követve ezek [utasításokat](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters). Azt javasoljuk, hogy a fürt a következő beállításokkal rendelkező fejléc és a feldolgozó csomópontok:
-    - négy munkavégző csomópontokhoz
+* Egy [Azure-fiók](https://azure.microsoft.com/free/) (az ingyenes próbaverziók érhető el).
+* Egy telepített példánya [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) következő a [telepítési és létrehozási rövid útmutató](../service/quickstart-installation.md) a Workbench telepítése és-fiókok létrehozásához.
+* Ebben a forgatókönyvben azt feltételezi, hogy futtatja az Azure Machine Learning Workbench Windows 10-es vagy MacOS rendszeren a helyileg telepített Docker-motor. 
+* A forgatókönyv egy távoli Docker-tárolót futtathat, üzembe helyezése az Ubuntu adatelemzési virtuális gép (DSVM) a következő a [utasításokat](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-provision-vm). Legalább 8 maggal és 28 Gb memóriával rendelkező virtuális gép használatát javasoljuk. Virtuális gépek példányainak D4 rendelkezik ilyen kapacitással. 
+* Ebben a forgatókönyvben a Spark-fürt futtatásához a Spark HDInsight-fürt üzembe helyezése a következő [utasításokat](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters). Javasoljuk, hogy a fürt a következő beállításokkal rendelkező fejlécet és a feldolgozó csomópontok:
+    - négy munkavégző csomópontok
     - nyolc processzormaggal
     - 28 Gb memória  
       
-  Virtuális gépek példányait D4 rendelkezik ilyen kapacitással. 
+  Virtuális gépek példányainak D4 rendelkezik ilyen kapacitással. 
 
-     **Hibaelhárítási**: az Azure-előfizetés előfordulhat, hogy rendelkezik a kvóta az használható magok száma. Az Azure-portál nem teszi lehetővé a fürt létrehozása a kvóta túllépését magok teljes száma. Kvóta található, nyissa meg az Azure-portálon az előfizetések szakaszhoz, kattintson a fürt telepítéséhez használt előfizetés, majd kattintson a **használati + kvóták**. Általában kvóták meghatározott / Azure-régiót, és egy régióban, ahol elegendő szabad mag van a Spark-fürt telepítése választható. 
+     **Hibaelhárítási**: az Azure-előfizetésre lehet kvóta felhasználható magok számát. Az Azure Portalon nem engedélyezi a fürt létrehozása és a kvóta túllépése magok teljes száma. Kvóta találja, keresse fel az Azure Portalon, az előfizetések szakaszhoz, kattintson arra az előfizetésre, a fürt üzembe helyezéséhez használt, és kattintson a **használat + kvóták**. Általában a kvóták az Azure-régió-nként vannak meghatározva, és Ön kiválaszthatja, egy régióban, ahol van elég szabad magja a Spark-fürt üzembe helyezéséhez. 
 
-* Hozzon létre egy Azure storage-fiók, amely a dataset tárolására szolgál. Kövesse a [utasításokat](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account) tárfiók létrehozásához.
+* Hozzon létre egy Azure storage-fiókot, amely az adatkészlet tárolására szolgál. Kövesse a [utasításokat](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account) , hozzon létre egy tárfiókot.
 
 ## <a name="data-description"></a>Adatok leírása
 
-Használjuk [TalkingData dataset](https://www.kaggle.com/c/talkingdata-mobile-user-demographics/data). Ehhez az adatkészlethez az alkalmazásokból események mobiltelefonok van. A cél, hogy előre jelezni a mobiltelefon felhasználó által megadott típusát a figyelmet, hogy a felhasználó nemrég létrehozott és a telefon nem és életkor kategóriáját.  
+Használjuk a [TalkingData adatkészlet](https://www.kaggle.com/c/talkingdata-mobile-user-demographics/data). Ez az adatkészlet mobiltelefonok az alkalmazásokból eseményeket tartalmaz. A cél, hogy előre jelezni a mobiltelefon felhasználó által megadott típusát a telefonszám és az eseményeket, a felhasználó legutóbb létrehozott nemek és a korszűrő kategóriáját.  
 
-## <a name="scenario-structure"></a>A forgatókönyv struktúra
-Ebben a forgatókönyvben a GitHub-tárházban több mappát tartalmaz. Kód és a konfigurációs fájlok **kód** mappa összes dokumentáció áll a **Docs** mappa és az összes lemezkép **képek** mappát. A gyökérmappában található információs fájl, amely tartalmazza az ebben a forgatókönyvben rövid összefoglalása rendelkezik.
+## <a name="scenario-structure"></a>A forgatókönyv-struktúra
+Ebben a forgatókönyvben rendelkezik több mappát a GitHub-adattárban. Kód és a konfigurációs fájlok **kód** mappában van az összes dokumentáció **Docs** mappa és az összes rendszerkép **lemezképek** mappát. A gyökérmappa rendelkezik információs fájl, amely tartalmazza az ebben a forgatókönyvben rövid összefoglalása.
 
 ### <a name="getting-started"></a>Első lépések
-Kattintson az Azure Machine Learning-munkaterület futtatásához, és az "Elosztott hangolása a Hiperparamétereket" sablonból-projekt létrehozása az Azure Machine Learning-munkaterület ikonra. Az új projekt létrehozása a részletes utasításokat talál [telepítse, és hozzon létre a gyors üzembe helyezés](quickstart-installation.md).   
+Kattintson az Azure Machine Learning Workbench futtatása, és hozzon létre egy projektet az "Elosztott hangolása az Hiperparaméterek" sablon az Azure Machine Learning Workbench ikonra. Az új projekt létrehozásával is találhat részletes tájékoztatást [telepítése és létrehozási rövid útmutató](quickstart-installation.md).   
 
-### <a name="configuration-of-execution-environments"></a>Végrehajtási környezet konfigurálása
-Megmutatjuk, hogyan futtathatók a kód egy távoli Docker-tároló és a Spark-fürt. Először a beállítások, amelyek közösek mindkét környezetben leírása. 
+### <a name="configuration-of-execution-environments"></a>A végrehajtási környezetek konfigurálása
+Bemutatjuk, hogyan kód futtatása távoli Docker-tárolóban és a egy Spark-fürtön. A beállítást, akkor mindkét környezetben leírással kezdődik. 
 
-Használjuk [scikit-további](https://anaconda.org/conda-forge/scikit-learn), [xgboost](https://anaconda.org/conda-forge/xgboost), és [azure-tároló](https://pypi.python.org/pypi/azure-storage) csomagok, amelyek nem szerepelnek az alapértelmezett Azure Machine Learning-munkaterület Docker-tároló. Azure-tároló csomag telepítése szükséges [titkosítás](https://pypi.python.org/pypi/cryptography) és [azure](https://pypi.python.org/pypi/azure) csomagok. A csomagok telepítéséhez a Docker-tároló és a Spark-fürt csomópontja, azt conda_dependencies.yml fájl módosításához:
+Használjuk [scikit-további](https://anaconda.org/conda-forge/scikit-learn), [xgboost](https://anaconda.org/conda-forge/xgboost), és [azure-storage](https://pypi.python.org/pypi/azure-storage) csomagok, amelyek nem szerepelnek az alapértelmezett Docker-tárolót az Azure Machine Learning Workbench alkalmazásban. Azure-storage csomag telepítése szükséges [titkosítás](https://pypi.python.org/pypi/cryptography) és [azure](https://pypi.python.org/pypi/azure) csomagokat. A csomagok telepítéséhez, a Docker-tároló és a Spark-fürt csomópontjai, módosítjuk conda_dependencies.yml fájlt:
 
     name: project_environment
     channels:
@@ -81,7 +81,7 @@ Használjuk [scikit-további](https://anaconda.org/conda-forge/scikit-learn), [x
 
 A módosított conda\_dependencies.yml fájl oktatóanyag aml_config könyvtárban tárolja. 
 
-A következő lépésben nem csatlakozni végrehajtási környezet Azure-fiók. Fájl menü kattintson a bal felső sarokból AML munkaterület. És kattintson a "nyissa meg a parancssort". Futtassa a parancssori felület
+A következő lépésben a végrehajtási környezet Azure-fiókjába csatlakozunk. Kattintson a Fájl menü AML Workbench bal felső sarkában. És válassza a "nyissa meg a parancssort". Ezután futtassa a CLI-ben
 
     az login
 
@@ -89,39 +89,39 @@ Egy üzenetet kap
 
     To sign in, use a web browser to open the page https://aka.ms/devicelogin and enter the code <code> to authenticate.
 
-Nyissa meg a weblap, írja be a kódot, és jelentkezzen be az Azure-fiókjával. Ez a lépés után futtassa a parancssori felület
+Nyissa meg a weblapot, adja meg a kódot, és jelentkezzen be az Azure-fiókjával. Ebben a lépésben után futtassa a CLI-ben
 
     az account list -o table
 
-és az Azure-előfizetés-azonosító, amely rendelkezik a AML munkaterület munkaterület fiók található. Végül futtassa a parancssori felület
+és az Azure-előfizetés-azonosító, amely már AML Workbench munkaterület fiókja található. Végezetül futtassa a CLI-ben
 
     az account set -s <subscription ID>
 
 a kapcsolat az Azure-előfizetéshez befejezéséhez.
 
-A következő két szakasz megmutatjuk, hogyan hajthatja végre a távoli docker és Spark-fürt konfigurálását.
+A következő két szakasz bemutatjuk, hogyan végezheti el a távoli docker- és Spark-fürt konfigurációját.
 
-#### <a name="configuration-of-remote-docker-container"></a>Távoli Docker-tároló konfigurálása
+#### <a name="configuration-of-remote-docker-container"></a>Távoli Docker-tároló konfigurációja
 
- Egy távoli Docker-tároló beállításához futtassa a parancssori felület
+ Egy távoli Docker-tároló beállításához futtassa a CLI-ben
 
     az ml computetarget attach remotedocker --name dsvm --address <IP address> --username <username> --password <password> 
 
-az IP-cím, felhasználónevet és DSVM jelszót. IP-címe DSVM Azure-portálon az a DSVM lap-áttekintés szakaszban talál:
+az IP címe, felhasználónév és jelszó a dsvm-hez. DSVM IP-címét az Azure Portalon található áttekintés szakasz a DSVM-lap:
 
 ![Virtuális gép IP-címe](media/scenario-distributed-tuning-of-hyperparameters/vm_ip.png)
 
 #### <a name="configuration-of-spark-cluster"></a>Spark-fürt konfigurálása
 
-A parancssori felület futtatása Spark környezet beállítása
+A Spark környezet beállítását, futtassa a CLI-ben
 
     az ml computetarget attach cluster --name spark --address <cluster name>-ssh.azurehdinsight.net  --username <username> --password <password> 
 
-a fürt, a fürt SSH-felhasználónév és jelszó nevével. Az alapértelmezett érték az SSH-felhasználónév `sshuser`, kivéve, ha megváltozott a fürt kiépítése során. A fürt neve az Azure portálon található a fürt lap Tulajdonságok részében:
+a fürt, a fürt SSH-felhasználónév és jelszó nevére. Az alapértelmezett érték az SSH-felhasználónév `sshuser`, kivéve, ha megváltozott a fürt üzembe helyezésekor. A fürt nevét az Azure Portalon található tulajdonságok szakaszában a fürt lapján:
 
 ![Fürt neve](media/scenario-distributed-tuning-of-hyperparameters/cluster_name.png)
 
-Spark-sklearn csomag használatával lehet a Spark on az hiperparamétereket elosztott hangolása végrehajtási környezetet. Azt a módosított spark_dependencies.yml fájlt kell telepítenie a csomagot, Spark végrehajtási környezet használata esetén:
+Spark-sklearn csomag Spark rendelkezik, mint az hiperparaméterek elosztott hangolása végrehajtási környezetet használjuk. A csomag telepítéséhez, ha Spark-végrehajtási környezetben történik a spark_dependencies.yml fájl módosítását:
 
     configuration: 
       #"spark.driver.cores": "8"
@@ -144,24 +144,24 @@ Spark-sklearn csomag használatával lehet a Spark on az hiperparamétereket elo
 A módosított spark\_dependencies.yml fájl oktatóanyag aml_config könyvtárban tárolja. 
 
 ### <a name="data-ingestion"></a>Adatfeldolgozás
-Ebben a forgatókönyvben a kód azt feltételezi, hogy az adatok tárolását az Azure blob storage. Azt szemléltetik kezdetben Kaggle helyről származó adatok letöltése a számítógépre, és töltse fel a blob Storage tárolóban. Ezután megmutatjuk, hogyan beolvasni az adatokat a blob storage. 
+Ebben a forgatókönyvben a kód azt feltételezi, hogy az adatok Azure blob storage-ban tárolja. Bemutatjuk, először töltse le az adatok Kaggle helyről a számítógépre, és töltse fel a blob Storage. Ezután bemutatjuk, hogyan olvashatja be az adatokat blob storage-ból. 
 
-Adatok Kaggle letöltéséhez keresse fel [dataset lap](https://www.kaggle.com/c/talkingdata-mobile-user-demographics/data) , és kattintson a Letöltés gombra. Jelentkezzen be Kaggle fog kérni. A bejelentkezés után irányítja a dataset oldalra. Ezután töltse le a hét első fájlokat a bal oldali oszlopban jelölje ki őket, kattintson a Letöltés gombra. A letöltött fájlok összesített mérete 289 Mb. Töltse fel ezeket a fájlokat a blob-tároló, hozzon létre blob storage tárolót "adatkészlet" a tárfiók. Nyissa meg a storage-fiókot, kattintson a Blobok majd + tároló Azure oldalán, amely teheti meg. Adja meg a "adatkészlet" néven, és kattintson az OK gombra. Az alábbi képek ezeket a lépéseket mutatja be:
+Adatokat letölteni a Kaggle, lépjen a [adatkészlet lap](https://www.kaggle.com/c/talkingdata-mobile-user-demographics/data) , és kattintson a Letöltés gombra. Jelentkezzen be Kaggle kell adnia. A bejelentkezés után irányítja vissza az adatkészlet lapra. Ezután töltse le az első hét fájlt a bal oldali oszlopban jelölje ki őket, és a Letöltés gombra kattintva. A letöltött fájlok összesített mérete 289 Mb. Töltse fel ezeket a fájlokat a blob storage-ba, hozzon létre blob storage-tároló 'dataset' a tárfiókban található. Nyissa meg a storage-fiókot, kattintson a Blobok és kattintson + tároló oldala az Azure, amely teheti meg. Adja meg a 'dataset' neveként, és kattintson az OK gombra. A következő képernyőfelvételek bemutatják, ezeket a lépéseket:
 
 ![Nyissa meg a blob](media/scenario-distributed-tuning-of-hyperparameters/open_blob.png)
-![tároló megnyitása](media/scenario-distributed-tuning-of-hyperparameters/open_container.png)
+![Open container](media/scenario-distributed-tuning-of-hyperparameters/open_container.png)
 
-Ezt követően tároló adatkészlet válasszon a listából, majd kattintson a Feltöltés gombra. Azure-portál lehetővé teszi, hogy egyszerre több fájl feltöltése. "Feltöltése a blob" szakaszban mappa gombra, válassza ki az összes fájlt a dataset adatkészletből, kattintson a Megnyitás gombra, és kattintson feltöltése. Az alábbi képernyőfelvételen ezeket a lépéseket mutatja be:
+Ezt követően adatkészlet tároló kiválasztása a listából, majd kattintson a Feltöltés gombra. Az Azure portal segítségével egyszerre több fájl tölthető fel. "Blob feltöltése" szakaszban kattintson a mappa gombra, az összes fájl kijelölése az adatkészletből, kattintson a Megnyitás gombra, és kattintson feltöltése. A következő képernyőkép ezeket a lépéseket mutatja be:
 
 ![Blob feltöltése](media/scenario-distributed-tuning-of-hyperparameters/upload_blob.png) 
 
-A fájlok feltöltése néhány percig, attól függően, hogy az internetkapcsolat. 
+A fájlok feltöltése az internetkapcsolat sebességétől függően néhány percet vesz igénybe. 
 
-A kódban, használjuk [Azure Storage szolgáltatás SDK](https://docs.microsoft.com/en-us/python/azure/) töltheti le a dataset blob-tároló az aktuális végrehajtási környezetnek. A letöltés megtörténik a terhelés\_data() függvény load_data.py fájlból. Ez a kód használatához ki kell cserélni < fióknév > és < ACCOUNT_KEY > nevű és a tároló adatkészlet tárfiók elsődleges kulcs. A fiók nevét a a tárfiók Azure lap bal felső sarokban látható. Fiók lekérése a kulcs, jelölje be a tárolási Azure oldalán elérési kulcsok fiók (lásd az első képernyőfelvételen adatfeldolgozást szakaszban), és másolja a hosszú karakterlánc kulcsként megadott oszlop első sorában:
+A kódban, használjuk [Azure Storage SDK](https://docs.microsoft.com/python/azure/) letöltési blob storage-ból az adatkészletet az aktuális végrehajtási környezetnek megfelelően. A letöltés megtörténik a terhelés\_data() függvény load_data.py fájlból. Ez a kód használatához ki kell cserélni < fióknév > és < ACCOUNT_KEY > nevére, illetve a storage-fiókot, amelyen az adatkészlet az elsődleges kulcsa. A fiók nevét, a storage-fiók oldala az Azure bal felső sarokban látható. -Fiók létrehozása kulcs, jelölje be Tárelérési kulcsok oldala az Azure Storage-fiók (lásd az első képernyőképen adatbetöltés szakaszban), és majd másolja ki a hosszú karakterlánc elsődlegeskulcs-oszlop első sorában:
  
-![a hozzáférési kulcsot](media/scenario-distributed-tuning-of-hyperparameters/access_key.png)
+![Hozzáférési kulcs](media/scenario-distributed-tuning-of-hyperparameters/access_key.png)
 
-Load_data() függvény a következő kód egy fájl tölti le:
+Load_data() függvény a következő kód letölti az egyetlen fájl:
 
     from azure.storage.blob import BlockBlobService
 
@@ -176,35 +176,35 @@ Load_data() függvény a következő kód egy fájl tölti le:
     # Load blob
     my_service.get_blob_to_path(CONTAINER_NAME, 'app_events.csv.zip', 'app_events.csv.zip')
 
-Figyelje meg, hogy nem kell manuálisan load_data.py fájl futtatásához. Neve az egyéb fájlok később.
+Figyelje meg, hogy nem kell manuálisan futtassa load_data.py fájlt. Neve a más fájlokból később.
 
 ### <a name="feature-engineering"></a>Jellemzőkiemelés
-Szolgáltatás összes funkciójának számítástechnikai kódjának van\_engineering.py fájlt. Nem kell manuálisan futtassa a feature_engineering.py fájlt. Később az neve más fájlokból.
+Minden funkció számítástechnika a kódja: a szolgáltatás\_engineering.py fájlt. Nem kell manuálisan futtassa feature_engineering.py fájlt. Később, neve lesz más fájlokból.
 
-Több szolgáltatáskészletek létrehozhatunk:
-* Egy közbeni kódolását, a márka és a mobiltelefon típusú (egy\_forró\_brand_model függvény)
-* Azon részét, felhasználó által előállított, a munkanapokhoz (hét napja\_hour_features függvény)
-* Azon részét, felhasználó által előállított, minden órában (hét napja\_hour_features függvény)
-* Azon részét, az egyes kombinációkban hétköznap és óra felhasználó által létrehozott eseményeket (hét napja\_hour_features függvény)
-* Egyes alkalmazások a felhasználó által létrehozott eseményeket hányada (egy\_forró\_app_labels függvény)
-* Minden alkalmazás címke felhasználó által létrehozott eseményeket hányada (egy\_forró\_app_labels függvény)
-* Azon részét, alkalmazás kategóriánkénti felhasználó által létrehozott eseményeket (szöveges\_category_features függvény)
-* Kijelző szolgáltatások volt használt alkalmazások kategóriákban események létrehozása (egy\_hot_category függvény)
+Több szolgáltatáskészleteket hozunk létre:
+* Egy gyakori márka és a modell a mobiltelefon-kódolás (egy\_gyakori elérésű\_brand_model függvény)
+* Az első név a felhasználó által létrehozott események töredék (hét napja\_hour_features függvény)
+* Minden egyes óráért a felhasználó által létrehozott eseményeket hányada (hét napja\_hour_features függvény)
+* Hét napja és az óra, az egyes kombinációkban szereplő felhasználó által létrehozott eseményeket hányada (hét napja\_hour_features függvény)
+* Minden alkalmazás a felhasználó által létrehozott eseményeket hányada (egy\_gyakori elérésű\_app_labels függvény)
+* Minden alkalmazás címke a felhasználó által létrehozott eseményeket hányada (egy\_gyakori elérésű\_app_labels függvény)
+* Az egyes alkalmazás a felhasználó által létrehozott eseményeket hányada (szöveges\_category_features függvény)
+* Kijelző funkciók kategóriákba tartozó alkalmazásokat, amelyek korábban használt generált események (egy\_hot_category függvény)
 
-Ezek a funkciók volt ösztönző Kaggle kernel [alkalmazások és a feliratok lineáris modell](https://www.kaggle.com/dvasyukova/a-linear-model-on-apps-and-labels).
+Ezek a funkciók inspirációt Kaggle kernel [lineáris modellt az alkalmazások és a címkék](https://www.kaggle.com/dvasyukova/a-linear-model-on-apps-and-labels).
 
-Ezeket a szolgáltatásokat a számítási jelentős mennyiségű memóriát igényel. Kezdetben megpróbáltuk számítási 16 GB RAM memóriával rendelkező helyi környezetben. Rendszer volt a szolgáltatásai első négy különböző számítási, de a "nincs elegendő szabad memória" hibaüzenetet kapta, a ötödik szolgáltatáskészlete számításakor. Az első négy szolgáltatás készlet számítási singleVMsmall.py fájl és végrehajtható legyen a helyi környezet futtatásával 
+A számítás, ezeket a szolgáltatásokat jelentős mennyiségű memóriát igényel. Kezdetben megpróbáltuk számítási szolgáltatások a helyi környezetben, 16 GB RAM memóriával rendelkező. Sikerült a szolgáltatások első négy különböző számítási egyelőre "kevés a memória" hibaüzenetet kapta, az ötödik szolgáltatáskészlet kiszámításakor. Az első négy szolgáltatáskészleteket belül a számításnak singleVMsmall.py fájlt, és végrehajtható legyen a helyi környezetben futtatja 
 
      az ml experiment submit -c local .\singleVMsmall.py   
 
-a parancssori ablakban.
+parancssori felület ablakába.
 
-Mivel a helyi környezet túl kicsi az összes szolgáltatáskészletek a számítástechnikai, azt, amely nagyobb memóriával rendelkezik távoli DSVM vált. A végrehajtás DSVM belül AML munkaterület által kezelt Docker-tároló belül történik. A DSVM használatával azt is összes funkciójának számítási és modellek betanítása és hangolására hiperparamétereket (lásd a következő szakaszt). singleVM.py fájl szolgáltatások teljes számítási és a kód modellezési rendelkezik. A következő szakaszban bemutatjuk a távoli DSVM singleVM.py futtatása. 
+Mivel helyi környezetben túl kicsi a számítástechnika összes szolgáltatáskészletek, hogy váltson távoli dsvm-hez, amely rendelkezik a nagyobb memória. A végrehajtás belül DSVM AML Workbench által felügyelt Docker-tárolón belül történik. A DSVM használata tudjuk összes számítási és modelleket taníthat be és finomhangolása hiperparaméterek (lásd a következő szakaszban). singleVM.py fájl rendelkezik, a szolgáltatások teljes kiszámításához és a modellezés kódot. A következő szakaszban bemutatjuk a távoli DSVM singleVM.py futtatása. 
 
-### <a name="tuning-hyperparameters-using-remote-dsvm"></a>Távoli DSVM használatával hiperparaméterek beállítása
-Használjuk [xgboost](https://anaconda.org/conda-forge/xgboost) végrehajtása [1] átmenetes fa kiemelése. Is [scikit-további](http://scikit-learn.org/) csomag hangolására hiperparamétereket, xgboost. Bár xgboost nem scikit része-ismerje meg a csomag, végrehajtja az scikit-API ismerje meg, és ezért hyperparameter hangolása scikit feladatai együtt használható-ismerje meg. 
+### <a name="tuning-hyperparameters-using-remote-dsvm"></a>Hangolási hiperparaméterek távoli DSVM használata
+Használjuk a [xgboost](https://anaconda.org/conda-forge/xgboost) végrehajtása [1] átmenetes fa kiemelése. Is [scikit-további](http://scikit-learn.org/) csomag hangolására vonatkozó xgboost hiperparaméterek. Bár xgboost nem része a scikit-ismerje meg a csomag, scikit valósítja meg – ismerje meg az API-t, és ezért együtt is használhatók a hiperparaméter finomhangolása scikit funkcióit – ismerje meg. 
 
-Xgboost rendelkezik nyolc hiperparamétereket, leírt [Itt](https://github.com/dmlc/xgboost/blob/master/doc/parameter.md):
+Xgboost rendelkezik nyolc hiperparaméterek leírt [Itt](https://github.com/dmlc/xgboost/blob/master/doc/parameter.md):
 * n_estimators
 * max_depth
 * reg_alpha
@@ -213,13 +213,13 @@ Xgboost rendelkezik nyolc hiperparamétereket, leírt [Itt](https://github.com/d
 * learning_rate
 * colsample\_by_level
 * részminta
-* cél  
+* Cél  
  
-Kezdetben távoli DSVM felhasználása és hangolására jelölt értékek kis rácsban hiperparamétereket:
+Kezdetben hogy távoli DSVM használata, és finomhangolási feladat hiperparaméterek egy kis rács jelölt értékek a:
 
     tuned_parameters = [{'n_estimators': [300,400], 'max_depth': [3,4], 'objective': ['multi:softprob'], 'reg_alpha': [1], 'reg_lambda': [1], 'colsample_bytree': [1],'learning_rate': [0.1], 'colsample_bylevel': [0.1,], 'subsample': [0.5]}]  
 
-A rács hiperparamétereket értékei közül négy kombinációk rendelkezik. 5-fold keresztellenőrzési használjuk a xgboost 4 x 5 = 20 eredményezve futtatja. A modellek teljesítményének méréséhez, negatív napló adatvesztés metrika használjuk. A következő kódot a rácsban hiperparamétereket, amely maximalizálja a negatív napló közötti érvényesített adatvesztés értékének megkeresése. A kódot is használja ezeket az értékeket a végső modell betanításához a teljes gyakorlókészlethez keresztül:
+A rács négy kombinációit hiperparaméterek értékeket tartalmaz. Használjuk a keresztellenőrzési 5-fold, 4 x 5 = 20 eredményez, xgboost futtatja. A modellek teljesítményének mérésére, negatív log adatveszteség metrika használjuk. A következő kódot az értékeket a rácsból hiperparaméterek, amely maximalizálja a negatív napló közötti érvényesített adatveszteség talál. A kód is használja ezeket az értékeket a kész modell betanításához a teljes gyakorlókészlethez keresztül:
 
     clf = XGBClassifier(seed=0)
     metric = 'neg_log_loss'
@@ -227,7 +227,7 @@ A rács hiperparamétereket értékei közül négy kombinációk rendelkezik. 5
     clf_cv = GridSearchCV(clf, tuned_parameters, scoring=metric, cv=5, n_jobs=8)
     model = clf_cv.fit(X_train,y_train)
 
-Miután létrehozta a modell, elmentjük a hyperparameter hangolása eredményeit. Használjuk a AML munkaterület API-naplózás a legjobb hiperparamétereket és a negatív napló adatvesztés megfelelő határokon érvényesített becslése mentéséhez:
+Miután létrehozta a modellt, hogy a hiperparaméter finomhangolása eredményeinek mentésére. Használjuk a naplózás API AML Workbench hiperparaméterek ajánlott értékeit és a negatív log veszteség megfelelő közötti érvényesített becslés mentéséhez:
 
     from azureml.logging import get_azureml_logger
 
@@ -241,7 +241,7 @@ Miután létrehozta a modell, elmentjük a hyperparameter hangolása eredményei
     for key in clf_cv.best_params_.keys():
         run_logger.log(key, clf_cv.best_params_[key]) 
 
-Nem is a rácsban hyperparameter értékek összes kombinációinak határokon érvényesített, negatív napló veszteségek sweeping_results.txt fájlt létrehozni.
+Azt is létrehozhat sweeping_results.txt fájlt a határokon érvényesítve, negatív log veszteségeinek hiperparaméter érték a rács minden kombinációja.
 
     if not path.exists('./outputs'):
         makedirs('./outputs')
@@ -252,27 +252,27 @@ Nem is a rácsban hyperparameter értékek összes kombinációinak határokon �
         print(model.grid_scores_[i], file=outfile)
     outfile.close()
 
-Ez a fájl egy speciális van tárolva. / kimeneti könyvtár. Később a megmutatjuk, hogyan lehet letölteni.  
+Ez a fájl tárolva van egy speciális. / directory adja vissza. Később bemutatjuk, hogyan töltheti le.  
 
- SingleVM.py először távoli DSVM fut, mielőtt futtatásával létrehozhatunk egy Docker-tároló létezik 
+ Mielőtt futtatná singleVM.py távoli DSVM az első alkalommal, hozunk létre van egy Docker-tároló futtatásával 
 
     az ml experiment prepare -c dsvm
 
-a parancssori felület windows. Létrehozása a Docker-tároló több percet vesz igénybe. Ezt követően DSVM singleVM.py futtassa azt:
+a parancssori felület windows. Létrehozás a Docker-tároló több percig tart. Ezt követően DSVM singleVM.py futtassa azt:
 
     az ml experiment submit -c dsvm .\singleVM.py
 
-Ez a parancs 1 óra 38 perc ha DSVM 8 maggal és 28 Gb memóriával rendelkezik-e a befejezését. A naplózott értékek futtatása előzmények ablak AML munkaterület tekintheti meg:
+Ez a parancs befejeződik, 1 óra 38 perc múlva Ha DSVM 8 magos, 28 Gb memóriával rendelkezik-e. Futtatási előzmények ablakában az AML-munkaterület az a naplózott értékek tekinthet meg:
 
-![futtatási előzményei](media/scenario-distributed-tuning-of-hyperparameters/run_history.png)
+![Futtatási előzmények](media/scenario-distributed-tuning-of-hyperparameters/run_history.png)
 
-Alapértelmezés szerint futtatni előzmények ablak értékek és diagramokat az első 1-2 naplózott értékeket mutatja. A kiválasztott hiperparamétereket közül teljes lista megtekintéséhez kattintson az előző képernyőképen látható piros kör jelölésű beállítások ikonra. Válassza ki a táblázatban megjelenítendő hiperparamétereket. Is jelölje be a diagramokon a Futtatás előzmények ablak felső részén látható, kattintson a kék kör jelölésű beállítás ikonra, és válassza ki a diagramokon a listából. 
+Alapértelmezés szerint futtatási előzmények ablak értékeket és a gráfok az első 1-2 naplózott értékeket mutatja. A kiválasztott értékek hiperparaméterek teljes listájának megtekintéséhez, kattintson a jelölése piros körben az előző képernyőképen a beállítások ikonra. Ezután válassza ki a hiperparaméterek jelennek meg a táblázatban. Ezenkívül válassza ki a futtatási előzmények ablak felső részén látható grafikonok, kattintson a világoskék körre jelölt beállítás ikonra, és a gráfok válasszon a listából. 
 
-Hiperparamétereket választott értékeit is megvizsgálhatók futtató tulajdonságai ablakban: 
+A kiválasztott értékek hiperparaméterek is megvizsgálhatók Futtatás tulajdonságai ablakban: 
 
-![Futtassa a Tulajdonságok](media/scenario-distributed-tuning-of-hyperparameters/run_properties.png)
+![futtatási tulajdonságok](media/scenario-distributed-tuning-of-hyperparameters/run_properties.png)
 
-A futtató tulajdonságai ablak jobb felső sarkában esetében szakasz kimeneti fájlok listáját tartalmazó létrehozott fájlok '. \output "mappa. abszolút\_eredmény.txt letölthető innen jelölje ki azt, kattintson a Letöltés gombra. sweeping_results.txt rendelkeznie kell a következő az alábbiakat:
+Futtatás tulajdonságai ablak jobb felső sarkában lévő nincs egy szakasz kimeneti fájlok a listát az összes fájl, a létrehozott '. \output "mappában. abszolút\_eredmény.txt innen tölthető ki, és kattintson a Letöltés gombra. sweeping_results.txt rendelkeznie kell a következő kimenet:
 
     metric =  neg_log_loss
     mean: -2.29096, std: 0.03748, params: {'colsample_bytree': 1, 'learning_rate': 0.1, 'subsample': 0.5, 'n_estimators': 300, 'reg_alpha': 1, 'objective': 'multi:softprob', 'colsample_bylevel': 0.1, 'reg_lambda': 1, 'max_depth': 3}
@@ -280,19 +280,19 @@ A futtató tulajdonságai ablak jobb felső sarkában esetében szakasz kimeneti
     mean: -2.28706, std: 0.03863, params: {'colsample_bytree': 1, 'learning_rate': 0.1, 'subsample': 0.5, 'n_estimators': 300, 'reg_alpha': 1, 'objective': 'multi:softprob', 'colsample_bylevel': 0.1, 'reg_lambda': 1, 'max_depth': 4}
     mean: -2.28530, std: 0.03927, params: {'colsample_bytree': 1, 'learning_rate': 0.1, 'subsample': 0.5, 'n_estimators': 400, 'reg_alpha': 1, 'objective': 'multi:softprob', 'colsample_bylevel': 0.1, 'reg_lambda': 1, 'max_depth': 4}
 
-### <a name="tuning-hyperparameters-using-spark-cluster"></a>Spark-fürt használatával hiperparaméterek beállítása
-Horizontális felskálázás hiperparaméterek beállítása, és nagyobb rács használata Spark-fürt használjuk. Az új rács
+### <a name="tuning-hyperparameters-using-spark-cluster"></a>A Spark használatával hiperparaméterek hangolása
+Spark-fürt horizontális felskálázása hiperparaméterek beállítása, és használhatja a nagyobb rács használjuk. Az új rács
 
     tuned_parameters = [{'n_estimators': [300,400], 'max_depth': [3,4], 'objective': ['multi:softprob'], 'reg_alpha': [1], 'reg_lambda': [1], 'colsample_bytree': [1], 'learning_rate': [0.1], 'colsample_bylevel': [0.01, 0.1], 'subsample': [0.5, 0.7]}]
 
-A rács hiperparamétereket értékének 16 kombinációi rendelkezik. Mivel 5-fold keresztellenőrzési használjuk, xgboost 16 x 5 = 80 Futtatás alkalommal.
+A rács hiperparaméterek értékek 16 kombinációit rendelkezik. 5-fold keresztellenőrzési használjuk, mivel a futtatott xgboost 16 x 5 = 80 alkalommal.
 
-scikit – ismerje meg a csomag nem rendelkezik egy natív támogatás a Spark-fürt használatával hiperparaméterek beállítása. Szerencsére [spark-sklearn](https://spark-packages.org/package/databricks/spark-sklearn) Databricks csomagot tölti ki a térközét. Ez a csomag biztosít, amely rendelkezik majdnem azonos GridSearchCV függvényében API scikit GridSearchCV függvény – ismerje meg. Spark-sklearn használja, és hangolja használata Spark hiperparamétereket kell a Spark-környezet létrehozása
+scikit-ismerje meg a csomag nem rendelkezik egy natív támogatását hangolása hiperparaméterek Spark-fürt használatával. Szerencsére a [spark-sklearn](https://spark-packages.org/package/databricks/spark-sklearn) Databricks-csomagot a gap tölti ki. Ez a csomag biztosít GridSearchCV-függvény, amely GridSearchCV funkciót, majdnem a azonos API van a scikit-megtudhatja. Spark-sklearn használhatja, és létre kell hozni egy Spark-környezet Spark használatával hiperparaméterek hangolása
 
     from pyspark import SparkContext
     sc = SparkContext.getOrCreate()
 
-Ezután azt cseréje 
+Ezután lecseréljük 
 
     from sklearn.model_selection import GridSearchCV
 
@@ -300,33 +300,33 @@ a következővel:
 
     from spark_sklearn import GridSearchCV
 
-Azt a scikit GridSearchCV hívása cserélni-megismerheti, hogyan kell helyreállítani a spark-sklearn:
+Továbbá azt cserélje le a scikit-GridSearchCV hívás – ismerje meg, a spark-sklearn egy:
 
     clf_cv = GridSearchCV(sc = sc, param_grid = tuned_parameters, estimator = clf, scoring=metric, cv=5)
 
-A Spark használatával hiperparaméterek beállítása végleges kódját van szétosztva\_sweep.py fájlt. SingleVM.py és distributed_sweep.py közötti különbség a rács meghatározását és további négy sornyi kód. Figyelje meg is, hogy AML munkaterület szolgáltatások miatt, a naplózás kódja nem változik a végrehajtási környezet módosítása az távoli DSVM Spark-fürt.
+A Spark használatával hiperparaméterek beállítása végleges kódját az elosztott\_sweep.py fájlt. Az singleVM.py és distributed_sweep.py közötti különbség a rács definíció- és további négy kódsort. Figyelje meg, amely miatt a AML Workbench-szolgáltatások, a naplózás kódot nem változik, amikor a végrehajtási környezetben történő távoli DSVM módosítása a Spark-fürthöz.
 
-Először futtatása Spark-fürt distributed_sweep.py, előtt nincs Python-csomagok telepítése szükséges. Ez a futtatásával érhető el 
+Distributed_sweep.py futó Spark-fürt első alkalommal, mielőtt szükségünk van a Python-csomagok telepítéséhez. Ez a futtatásával érhető el 
 
     az ml experiment prepare -c spark
 
-a parancssori felület windows. A telepítés több percet vesz igénybe. Ezt követően Spark-fürt distributed_sweep.py futtassa azt:
+a parancssori felület windows. Ez a telepítés néhány percet vesz igénybe. Ezt követően Spark-fürt distributed_sweep.py futtassa azt:
 
     az ml experiment submit -c spark .\distributed_sweep.py
 
-Ez a parancs percben 1 óra 6 Ha Spark-fürt rendelkezik a 6 munkavégző csomópontokhoz 28 Gb memóriával rendelkező befejeződik. Hyperparameter hangolása eredményeit elérhető Azure Machine Learning munkaterület DSVM távoli végrehajtás azonos módon. (azaz naplózza, ajánlott értékek, a hiperparamétereket és sweeping_results.txt fájl)
+Ezzel a paranccsal az 1 óra 6 perc ha Spark-fürt rendelkezik a 6 feldolgozó csomópontokat, 28 Gb memóriával rendelkező befejeződik. A hiperparaméter finomhangolása eredményeit elérhetők az Azure Machine Learning Workbenchben ugyanúgy, mint a távoli DSVM végrehajtás. (azaz naplók, ajánlott értékek hiperparaméterek és sweeping_results.txt fájl)
 
 ### <a name="architecture-diagram"></a>Architektúradiagram
 
-Az alábbi ábrán látható, az általános munkafolyamat: ![architektúrája](media/scenario-distributed-tuning-of-hyperparameters/architecture.png) 
+Az alábbi ábrán látható a teljes munkafolyamat: ![architektúra](media/scenario-distributed-tuning-of-hyperparameters/architecture.png) 
 
 ## <a name="conclusion"></a>Összegzés 
 
-Ebben a forgatókönyvben azt bemutatta Azure Machine Learning-munkaterület használata a távoli virtuális gépek és a Spark-fürtök hiperparamétereket hangolására. Látott végrehajtási környezetnek könnyű konfigurálása Azure Machine Learning-munkaterület eszközöket is biztosít. Azt is lehetővé teszi, hogy könnyen váltás. 
+Ebben a forgatókönyvben megmutattuk hangolására hiperparaméterek távoli virtuális gépek és a Spark-fürtök az Azure Machine Learning Workbench használata. Azt láttuk, hogy az Azure Machine Learning Workbench eszközöket biztosít a végrehajtási környezetek egyszerű konfigurációval. Azt is lehetővé teszi, hogy könnyen váltás. 
 
 ## <a name="references"></a>Referencia
 
-[1] T. Chen és c Guestrin. [XGBoost: Méretezhető fát rendszer kiemelése](https://arxiv.org/abs/1603.02754). KDD 2016.
+[1] T. Chen és c Guestrin. [XGBoost: Méretezhető fa rendszer kiemelési](https://arxiv.org/abs/1603.02754). KDD 2016.
 
 
 

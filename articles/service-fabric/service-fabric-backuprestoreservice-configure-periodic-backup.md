@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/01/2018
 ms.author: hrushib
-ms.openlocfilehash: 8cfa0e2a5aa1d7f560fe84f4eda18349f5d1d8b4
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: 4aeb37d656dcb5ebca1a48253c418186dfca0a7a
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38991365"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45575419"
 ---
 # <a name="understanding-periodic-backup-configuration-in-azure-service-fabric"></a>Az Azure Service Fabric rendszeres biztonsági mentési konfiguráció ismertetése
 
@@ -182,19 +182,19 @@ Biztonsági mentési szabályzatok letiltható, ha nem kell adatainak biztonság
 ## <a name="suspend--resume-backup"></a>Felfüggeszteni és folytatni a biztonsági mentés
 Bizonyos helyzet kérhetik rendszeres biztonsági mentési adatok ideiglenes felfüggesztése. Ilyen esetben a követelmény függően felfüggesztése API is használható, biztonsági mentés egy _alkalmazás_, _szolgáltatás_, vagy _partíció_. Rendszeres biztonsági mentési felfüggesztése tranzitív az alkalmazás-hierarchia a pontról alkalmazásának részfa keresztül. 
 
-* Amikor felfüggesztés alkalmaz egy _alkalmazás_ használatával [felfüggesztése alkalmazás biztonsági mentési](https://docs.microsoft.com/en-us/rest/api/servicefabric/sfclient-api-suspendapplicationbackup) API-t, majd a szolgáltatások és az alkalmazás partíciók fel vannak függesztve, az adatok rendszeres biztonsági mentés minden.
+* Amikor felfüggesztés alkalmaz egy _alkalmazás_ használatával [felfüggesztése alkalmazás biztonsági mentési](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-suspendapplicationbackup) API-t, majd a szolgáltatások és az alkalmazás partíciók fel vannak függesztve, az adatok rendszeres biztonsági mentés minden.
 
-* Amikor felfüggesztés alkalmaz egy _szolgáltatás_ használatával [felfüggesztése szolgáltatás biztonsági mentési](https://docs.microsoft.com/en-us/rest/api/servicefabric/sfclient-api-suspendservicebackup) API-t, majd az összes a partíciók alatt ez a szolgáltatás fel vannak függesztve, az adatok rendszeres biztonsági mentés.
+* Amikor felfüggesztés alkalmaz egy _szolgáltatás_ használatával [felfüggesztése szolgáltatás biztonsági mentési](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-suspendservicebackup) API-t, majd az összes a partíciók alatt ez a szolgáltatás fel vannak függesztve, az adatok rendszeres biztonsági mentés.
 
-* Amikor felfüggesztés alkalmaz egy _partíció_ használatával [felfüggesztése partíció biztonsági mentési](https://docs.microsoft.com/en-us/rest/api/servicefabric/sfclient-api-suspendpartitionbackup) API-t, akkor azt felfüggeszti a partíciók alatt ez a szolgáltatás fel vannak függesztve, az adatok rendszeres biztonsági mentés.
+* Amikor felfüggesztés alkalmaz egy _partíció_ használatával [felfüggesztése partíció biztonsági mentési](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-suspendpartitionbackup) API-t, akkor azt felfüggeszti a partíciók alatt ez a szolgáltatás fel vannak függesztve, az adatok rendszeres biztonsági mentés.
 
 Ha a felfüggesztés szükségességét, majd a rendszeres biztonsági mentését tudja állítani megfelelő folytatása biztonsági mentési API használatával. Rendszeres biztonsági mentés kell folytatni, azonos _alkalmazás_, _szolgáltatás_, vagy _partíció_ ahol felfüggesztették.
 
-* Felfüggesztés lett alkalmazva Ha egy _alkalmazás_, akkor érdemes lehet folytatni, használatával [alkalmazás biztonsági mentés folytatása](https://docs.microsoft.com/en-us/rest/api/servicefabric/sfclient-api-resumeapplicationbackup) API-t. 
+* Felfüggesztés lett alkalmazva Ha egy _alkalmazás_, akkor érdemes lehet folytatni, használatával [alkalmazás biztonsági mentés folytatása](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-resumeapplicationbackup) API-t. 
 
-* Felfüggesztés lett alkalmazva Ha egy _szolgáltatás_, akkor érdemes lehet folytatni, használatával [szolgáltatás biztonsági mentés folytatása](https://docs.microsoft.com/en-us/rest/api/servicefabric/sfclient-api-resumeservicebackup) API-t.
+* Felfüggesztés lett alkalmazva Ha egy _szolgáltatás_, akkor érdemes lehet folytatni, használatával [szolgáltatás biztonsági mentés folytatása](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-resumeservicebackup) API-t.
 
-* Felfüggesztés lett alkalmazva Ha egy _partíció_, akkor érdemes lehet folytatni, használatával [partíció biztonsági mentés folytatása](https://docs.microsoft.com/en-us/rest/api/servicefabric/sfclient-api-resumepartitionbackup) API-t.
+* Felfüggesztés lett alkalmazva Ha egy _partíció_, akkor érdemes lehet folytatni, használatával [partíció biztonsági mentés folytatása](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-resumepartitionbackup) API-t.
 
 ## <a name="auto-restore-on-data-loss"></a>Adatvesztés automatikus visszaállítását
 A szolgáltatás partíció adatvesztést okozhat váratlan hibák miatt. Például a lemez ki, a három replikák egy partícióhoz (többek között az elsődleges replika) lekérdezi sérült, vagy tartalmának végleges törléséig.
@@ -202,7 +202,7 @@ A szolgáltatás partíció adatvesztést okozhat váratlan hibák miatt. Péld�
 A Service Fabric azt észleli, hogy a partíció adatvesztést, ha meghívja `OnDataLossAsync` metódus a partíción felületet, és a partíció adatvesztés nem lesz szükség beavatkozásra vár. Ebben a helyzetben, ha a hatékony biztonsági mentési házirend, a partíció `AutoRestoreOnDataLoss` jelző értékre `true` és a visszaállítás aktivált lekérdezi a legújabb elérhető biztonsági másolat használatával a partíció automatikusan.
 
 ## <a name="get-backup-configuration"></a>Biztonsági mentési konfiguráció beolvasása
-Különálló API-k elérhetővé válnak a biztonsági mentés konfigurációs adatokat beolvasni egy _alkalmazás_, _szolgáltatás_, és _partíció_ hatókör. [Alkalmazás biztonsági mentés konfigurációs adatainak beolvasása](https://docs.microsoft.com/en-us/rest/api/servicefabric/sfclient-api-getapplicationbackupconfigurationinfo), [első szolgáltatás biztonsági mentési konfiguráció adatainak](https://docs.microsoft.com/en-us/rest/api/servicefabric/sfclient-api-getservicebackupconfigurationinfo), és [partíció biztonsági mentés konfigurációs adatainak lekérése](https://docs.microsoft.com/en-us/rest/api/servicefabric/sfclient-api-getpartitionbackupconfigurationinfo) is ezek rendre API-k. Ezen API-k elsősorban, a megfelelő biztonsági mentési szabályzat, hatókör, amikor a biztonsági mentési szabályzat nem alkalmazott és biztonsági mentési felfüggesztés részleteit adja vissza. Következő a következő API-k visszaadott eredmények rövid leírását.
+Különálló API-k elérhetővé válnak a biztonsági mentés konfigurációs adatokat beolvasni egy _alkalmazás_, _szolgáltatás_, és _partíció_ hatókör. [Alkalmazás biztonsági mentés konfigurációs adatainak beolvasása](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getapplicationbackupconfigurationinfo), [első szolgáltatás biztonsági mentési konfiguráció adatainak](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getservicebackupconfigurationinfo), és [partíció biztonsági mentés konfigurációs adatainak lekérése](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getpartitionbackupconfigurationinfo) is ezek rendre API-k. Ezen API-k elsősorban, a megfelelő biztonsági mentési szabályzat, hatókör, amikor a biztonsági mentési szabályzat nem alkalmazott és biztonsági mentési felfüggesztés részleteit adja vissza. Következő a következő API-k visszaadott eredmények rövid leírását.
 
 - Biztonsági mentési konfiguráció informace aplikace: biztonsági mentési szabályzat alkalmazások és szolgáltatások és a partíciók az alkalmazáshoz tartozó összes továbbíthassanak házirend alkalmazva részleteit. Az alkalmazás a felfüggesztés információkat is tartalmaz, és a szolgáltatásokat, és partíciók.
 
@@ -218,11 +218,11 @@ Ezen API-k is támogatja az eredmények tördelés, amikor _MaxResults_ paramét
 
 Alábbiakban a támogatott variantní hodnoty rövid ismertetését.
 
-- [Alkalmazás biztonsági mentés listájának lekérése](https://docs.microsoft.com/en-us/rest/api/servicefabric/sfclient-api-getapplicationbackuplist): Service Fabric-alkalmazás a megadott tartozó minden partíció esetében elérhető biztonsági másolatok listáját adja vissza.
+- [Alkalmazás biztonsági mentés listájának lekérése](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getapplicationbackuplist): Service Fabric-alkalmazás a megadott tartozó minden partíció esetében elérhető biztonsági másolatok listáját adja vissza.
 
-- [Szolgáltatás biztonsági mentési listájának lekérése](https://docs.microsoft.com/en-us/rest/api/servicefabric/sfclient-api-getservicebackuplist): Service Fabric-szolgáltatást a megadott tartozó minden partíció esetében elérhető biztonsági másolatok listáját adja vissza.
+- [Szolgáltatás biztonsági mentési listájának lekérése](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getservicebackuplist): Service Fabric-szolgáltatást a megadott tartozó minden partíció esetében elérhető biztonsági másolatok listáját adja vissza.
  
-- [Első biztonsági mentés Partíciólista](https://docs.microsoft.com/en-us/rest/api/servicefabric/sfclient-api-getpartitionbackuplist): a megadott partíció számára elérhető biztonsági másolatok listáját adja vissza.
+- [Első biztonsági mentés Partíciólista](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getpartitionbackuplist): a megadott partíció számára elérhető biztonsági másolatok listáját adja vissza.
 
 ## <a name="next-steps"></a>További lépések
 - [Biztonsági másolat visszaállítása – REST API-referencia](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-backuprestore)

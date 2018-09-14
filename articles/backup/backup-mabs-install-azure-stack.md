@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 6/5/2018
 ms.author: markgal
-ms.openlocfilehash: eda3e95c1bd8fb7eef97ee9db10c217c2885198f
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 5092a677bcbeac179e26fa0591b6a1cfbc3263d4
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38970883"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45576697"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>Azure Backup Server telepítése az Azure Stacken
 
@@ -122,19 +122,19 @@ A tárreplikációs beállítás szerkesztése:
 Töltse le az Azure Backup Server kétféleképpen történhet. Az Azure Backup Server telepítőt a letöltheti a [Microsoft Download Center](https://www.microsoft.com/en-us/download/details.aspx?id=55269). Az Azure Backup Server telepítő, konfigurál egy Recovery Services-tárolót is letöltheti. A következő lépések végigvezetik a telepítő letöltése az Azure Portalról a Recovery Services-tároló konfigurálása közben.
 
 1. Az Azure Stack virtuális gépről [jelentkezzen be az Azure-előfizetéshez az Azure Portalon](https://portal.azure.com/).
-2. Az SQL-példányhoz az önálló adatbázisok megtekintéséhez kattintson a sávnyílra a példány nevét, az adatbázisok megtekintése mellett.
+2. A bal oldali menüben válassza ki a **minden szolgáltatás**.
 
-    ![Az alábbi képeken példák egy különálló példány és a egy Always On rendelkezésre állási csoportban.](./media/backup-mabs-install-azure-stack/click-all-services.png)
+    ![Az összes szolgáltatás lehetőséget a főmenü](./media/backup-mabs-install-azure-stack/click-all-services.png)
 
-3. Az a **minden szolgáltatás** párbeszédpanel, írja be *Recovery Services*. De SQL platformkorlátozásai miatt teljes és különbségi biztonsági másolatok kell az elsődleges csomópontról történik. Naplóalapú biztonsági mentés a biztonsági mentési preferenciáját akkor fordulhat elő a rendszer.
+3. Az a **minden szolgáltatás** párbeszédpanel, írja be *Recovery Services*. Ahogy elkezd gépelni, a bemeneti szűri az erőforrások listájában. Ha azt látja, válassza ki a **Recovery Services-tárolók**.
 
-    ![Ez a korlátozás miatt a rendelkezésre állási csoportokra vonatkozó mindig az elsődleges csomópont kell regisztrálni.](./media/backup-mabs-install-azure-stack/all-services.png)
+    ![Az összes szolgáltatások párbeszédpanelen írja be a Recovery Services](./media/backup-mabs-install-azure-stack/all-services.png)
 
-    SQL-példány szereplő adatbázisok listája
+    Az előfizetés Recovery Services-tárolók listája megjelenik.
 
 4. Recovery Services-tárolók listájából válassza ki a tárolót az irányítópult megnyitásához.
 
-    ![Ez a korlátozás miatt a rendelkezésre állási csoportokra vonatkozó mindig az elsődleges csomópont kell regisztrálni.](./media/backup-mabs-install-azure-stack/rs-vault-dashboard.png)
+    ![Az összes szolgáltatások párbeszédpanelen írja be a Recovery Services](./media/backup-mabs-install-azure-stack/rs-vault-dashboard.png)
 
 5. Első lépések a tároló menüjében kattintson **Backup** az első lépések varázsló megnyitásához.
 
@@ -310,7 +310,7 @@ Az Azure Backup Server a Data Protection Managerrel oszt meg a kódot. Látni fo
 
 ## <a name="add-backup-storage"></a>Backup storage hozzáadása
 
-Az első biztonsági másolat az Azure Backup Server géphez csatolt storage másolatok. Lemezek hozzáadásával kapcsolatos további információkért lásd: [adja hozzá a Modern Backup storage](https://docs.microsoft.com/en-us/system-center/dpm/add-storage?view=sc-dpm-1801).
+Az első biztonsági másolat az Azure Backup Server géphez csatolt storage másolatok. Lemezek hozzáadásával kapcsolatos további információkért lásd: [adja hozzá a Modern Backup storage](https://docs.microsoft.com/system-center/dpm/add-storage?view=sc-dpm-1801).
 
 > [!NOTE]
 > Adja hozzá a biztonsági mentési tár, még akkor is, ha azt tervezi, hogy adatokat küldjön az Azure-bA kell. Az Azure Backup Server architektúra a Recovery Services-tároló tartalmaz a *második* közben a helyi tárhely az adatok másolatát tárolja az első (és kötelező) a biztonsági másolat.
@@ -360,10 +360,10 @@ Emellett olvassa el [Azure Backup kapcsolatos gyakori kérdések](backup-azure-b
 
 ## <a name="next-steps"></a>További lépések
 
-A cikk [a környezet előkészítése a DPM](https://docs.microsoft.com/en-us/system-center/dpm/prepare-environment-for-dpm?view=sc-dpm-1801), támogatott az Azure Backup Server beállításokkal kapcsolatos információkat tartalmazza.
+A cikk [a környezet előkészítése a DPM](https://docs.microsoft.com/system-center/dpm/prepare-environment-for-dpm?view=sc-dpm-1801), támogatott az Azure Backup Server beállításokkal kapcsolatos információkat tartalmazza.
 
 A következő cikkek segítségével mélyebb betekintést nyerni a munkaterhelések védelme a Microsoft Azure Backup Server használatával.
 
-- [Az SQL Server biztonsági másolat](https://docs.microsoft.com/en-us/azure/backup/backup-mabs-sql-azure-stack)
-- [A SharePoint server biztonsági másolat](https://docs.microsoft.com/en-us/azure/backup/backup-mabs-sharepoint-azure-stack)
+- [Az SQL Server biztonsági másolat](https://docs.microsoft.com/azure/backup/backup-mabs-sql-azure-stack)
+- [A SharePoint server biztonsági másolat](https://docs.microsoft.com/azure/backup/backup-mabs-sharepoint-azure-stack)
 - [Másodlagos kiszolgáló biztonsági mentése](backup-azure-alternate-dpm-server.md)

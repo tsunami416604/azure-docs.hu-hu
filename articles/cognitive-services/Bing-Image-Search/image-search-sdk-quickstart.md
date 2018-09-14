@@ -1,409 +1,99 @@
 ---
-title: 'Gyors útmutató: A kérés és az SDK-t C# használatával rendszerképek szűrése'
-description: Ebben a rövid útmutatóban a kérelem, és szűrheti a képeket, a Bing Képkeresés, C# használatával által visszaadott.
-titleSuffix: Azure cognitive services setup Image search SDK C# console application
+title: 'Gyors útmutató: Keresse meg a képeket, a Bing kép Search SDK és a C# használatával'
+description: Ez a rövid útmutató segítségével keresse meg és -rendszerképek keresése a weben a Bing kép Search SDK és a C# segítségével.
+titleSuffix: Azure Cognitive Services
 services: cognitive-services
-author: mikedodaro
-manager: rosh
+author: aahill
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-image-search
 ms.topic: article
-ms.date: 01/29/2018
-ms.author: v-gedod
-ms.openlocfilehash: 81375019e53b49b531fde1f81fbcb9a061cc5562
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.date: 08/28/2018
+ms.author: aahi
+ms.openlocfilehash: 9e0decb29224b5ad684e1242b8f93e091e08e6b6
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "41988471"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45579250"
 ---
-# <a name="quickstart-request-and-filter-images-using-the-sdk-and-c"></a>Gyors útmutató: A kérés és az SDK-t és a C# használatával rendszerképek szűrése
+# <a name="quickstart-search-for-images-with-the-bing-image-search-sdk-and-c"></a>Gyors útmutató: Keresse meg a Bing kép Search SDK és a C#-lemezképek
 
-Kép a Bing Search SDK tartalmazza a REST API vonatkozó kérelmek és elemzési eredmények funkcióit. 
+Ez a rövid útmutató segítségével győződjön meg arról, az első képkeresési Bing kép Search SDK használatával, amely egy burkoló a API-hoz, és ugyanazokat a szolgáltatásokat tartalmazza. Az egyszerű C# alkalmazás-lemezkép keresési lekérdezést küld, elemzi a JSON-válasz és URL-címét adja vissza az első képet jeleníti meg.
 
-A [forráskódját a C# Bing kép Search SDK-minták](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingImageSearch) Github érhető el.
+Az ehhez a mintához forráskódja elérhető [a Githubon](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingImageSearch) további hibakezelést és jegyzetek.
 
-## <a name="application-dependencies"></a>Alkalmazásfüggőségek
+## <a name="prerequisites"></a>Előfeltételek
 
-Szeretne beállítani egy konzolalkalmazást, kép Bing Search SDK használatával, keresse meg a `Manage NuGet Packages` lehetőség a Visual Studio Megoldáskezelőjében.  Adja hozzá a `Microsoft.Azure.CognitiveServices.Search.ImageSearch` csomagot.
+* Bármely kiadása [Visual Studio 2017](https://visualstudio.microsoft.com/vs/whatsnew/).
+* A [Cognitive kép keresési NuGet-csomag](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.ImageSearch/1.2.0).
 
-Telepíti a [Képkeresés NuGet csomag](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.ImageSearch/1.2.0) is telepíti a függőségeket, többek között:
-* Microsoft.Rest.ClientRuntime
-* Microsoft.Rest.ClientRuntime.Azure
-* Newtonsoft.Json
+A visual studióban a kép a Bing Search SDK telepítéséhez használja a `Manage NuGet Packages` lehetőség a Visual Studio Megoldáskezelőjében.
 
-## <a name="image-search-client"></a>Kép keresési ügyfél
-Hozzon létre egy példányt, a `ImageSearchAPI` ügyfél, Hozzáadás irányelvekkel:
-```
-using Microsoft.Azure.CognitiveServices.Search.ImageSearch;
-using Microsoft.Azure.CognitiveServices.Search.ImageSearch.Models;
-
-```
-Ezután hozza létre az ügyfél:
-```
-var client = new ImageSearchAPI(new ApiKeyServiceClientCredentials("YOUR-ACCESS-KEY"));
+[!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
 
-```
-Az ügyfél használja a keresést a lekérdezés szövege:
-```
-// Search for "Yosemite National Park"
-var imageResults = client.Images.SearchAsync(query: "Canadian Rockies").Result;
-Console.WriteLine("Search images for query \"canadian rockies\"");
+## <a name="create-and-initialize-the-application"></a>Hozzon létre, és az alkalmazás inicializálása
 
-```
-A kép eredményeket a korábbi lekérdezés által visszaadott elemzése:
+Először hozzon létre egy új C# konzolalkalmazást a Visual Studióban. Ezután adja hozzá a következő csomagokat a projekthez.
 
-```
-if (imageResults.Value.Count > 0)
-{
-    var firstImageResult = imageResults.Value.First();
-
-    Console.WriteLine($"\r\nImage result count: {imageResults.Value.Count}");
-    Console.WriteLine($"First image insights token: {firstImageResult.ImageInsightsToken}");
-    Console.WriteLine($"First image thumbnail url: {firstImageResult.ThumbnailUrl}");
-    Console.WriteLine($"First image content url: {firstImageResult.ContentUrl}");
-}
-else
-{
-    Console.WriteLine("Couldn't find image results!");
-}
-
-Console.WriteLine($"\r\nImage result total estimated matches: {imageResults.TotalEstimatedMatches}");
-
-```
-
-## <a name="complete-console-application"></a>Teljes Konzolalkalmazás
-
-A következő Konzolalkalmazás végrehajtja a korábban meghatározott lekérdezés "Kanadai Rockies" keresse meg az eredményeket, majd nyomtassa ki az első insights token, a Miniatűr URL-címe, és a tartalom URL-címe:
-
-```
+```csharp
 using System;
-using System.Collections.Generic;
+using System.Linq;
 using Microsoft.Azure.CognitiveServices.Search.ImageSearch;
 using Microsoft.Azure.CognitiveServices.Search.ImageSearch.Models;
-using System.Linq;
+```
 
-namespace ImageSrchSDK
+A projekt fő metódusban hozzon létre változókat az érvényes előfizetési kulcs, a kép a Bing és a egy keresési kifejezés által visszaadott eredményeket. Ezután hozza létre a lemezkép keresési ügyfél, a kulcs használatával.
+
+```csharp
+//IMPORTANT: replace this variable with your Cognitive Services subscription key
+string subscriptionKey = "ENTER YOUR KEY HERE";
+//stores the image results returned by Bing
+Images imageResults = null;
+// the image search term to be used in the query
+string searchTerm = "canadian rockies";
+//initialize the client
+var client = new ImageSearchAPI(new ApiKeyServiceClientCredentials(subscriptionKey));
+```
+
+## <a name="send-a-search-query-using-the-client"></a>Az ügyfél keresési lekérdezés küldése
+
+Az ügyfél használja a keresést a lekérdezés szövege:
+
+```csharp
+// make the search request to the Bing Image API, and get the results"
+imageResults = client.Images.SearchAsync(query: searchTerm).Result; //search query
+```
+
+## <a name="parse-and-view-the-first-image-result"></a>Elemezheti és az első rendszerkép-eredmény megtekintése
+
+A kép eredményeket, a válasz elemzése.
+A válasz tartalmazza a keresési eredmények, ha az első eredmény tárolja, és nyomtassa ki a részleteket, például a Miniatűr URL-cím, az eredeti URL-CÍMÉT, teljes számával együtt adja vissza a lemezképeket.  
+
+```csharp
+if (imageResults != null)
 {
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            var client = new ImageSearchAPI(new ApiKeyServiceClientCredentials("YOUR-ACCESS-KEY"));
-            ImageResults(client);
-            ImageDetail(client);
-            ImageTrending(client);
-            ImageSearchWithFilters(client);
-
-            Console.WriteLine("Any key to exit...");
-            Console.ReadKey();
-        }
-
-        // Searches for results on query (Canadian Rockies) and prints first image insights token, thumbnail url, and image content url.
-        static void ImageResults(ImageSearchAPI client)
-        {
-            try
-            {
-                var imageResults = client.Images.SearchAsync(query: "canadian rockies").Result;
-                Console.WriteLine("Search images for query \"canadian rockies\"");
-
-                if (imageResults == null)
-                {
-                    Console.WriteLine("No image result data.");
-                }
-                else
-                {
-                    // Image results
-                    if (imageResults.Value.Count > 0)
-                    {
-                        var firstImageResult = imageResults.Value.First();
-
-                        Console.WriteLine($"\r\nImage result count: {imageResults.Value.Count}");
-                        Console.WriteLine($"First image insights token: {firstImageResult.ImageInsightsToken}");
-                        Console.WriteLine($"First image thumbnail url: {firstImageResult.ThumbnailUrl}");
-                        Console.WriteLine($"First image content url: {firstImageResult.ContentUrl}");
-                    }
-                    else
-                    {
-                        Console.WriteLine("Couldn't find image results!");
-                    }
-
-                    Console.WriteLine($"\r\nImage result total estimated matches: {imageResults.TotalEstimatedMatches}");
-                    Console.WriteLine($"Image result next offset: {imageResults.NextOffset}");
-
-                    // Pivot suggestions
-                    if (imageResults.PivotSuggestions.Count > 0)
-                    {
-                        var firstPivot = imageResults.PivotSuggestions.First();
-
-                        Console.WriteLine($"\r\nPivot suggestion count: {imageResults.PivotSuggestions.Count}");
-                        Console.WriteLine($"First pivot: {firstPivot.Pivot}");
-
-                        if (firstPivot.Suggestions.Count > 0)
-                        {
-                            var firstSuggestion = firstPivot.Suggestions.First();
-
-                            Console.WriteLine($"\r\nSuggestion count: {firstPivot.Suggestions.Count}");
-                            Console.WriteLine($"First suggestion text: {firstSuggestion.Text}");
-                            Console.WriteLine($"First suggestion web search url: {firstSuggestion.WebSearchUrl}");
-                        }
-                        else
-                        {
-                            Console.WriteLine("Couldn't find suggestions!");
-                        }
-                    }
-                    else
-                    {
-                        Console.WriteLine("Couldn't find pivot suggestions!");
-                    }
-
-                    // Query expansions
-                    if (imageResults.QueryExpansions.Count > 0)
-                    {
-                        var firstQueryExpansion = imageResults.QueryExpansions.First();
-
-                        Console.WriteLine($"\r\nQuery expansion count: {imageResults.QueryExpansions.Count}");
-                        Console.WriteLine($"First query expansion text: {firstQueryExpansion.Text}");
-                        Console.WriteLine($"First query expansion search link: {firstQueryExpansion.SearchLink}");
-                    }
-                    else
-                    {
-                        Console.WriteLine("Couldn't find query expansions!");
-                    }
-                }
-            }
-
-            catch (Exception ex)
-            {
-                Console.WriteLine("\r\nEncountered exception. " + ex.Message);
-            }
-        }
-    }
+    //display the details for the first image result.
+    var firstImageResult = imageResults.Value.First();
+    Console.WriteLine($"\nTotal number of returned images: {imageResults.Value.Count}\n");
+    Console.WriteLine($"Copy the following URLs to view these images on your browser.\n");
+    Console.WriteLine($"URL to the first image:\n\n {firstImageResult.ContentUrl}\n");
+    Console.WriteLine($"Thumbnail URL for the first image:\n\n {firstImageResult.ThumbnailUrl}");
+    Console.ReadKey();
 }
-
-```
-
-## <a name="search-options"></a>Keresési beállítások
-
-A Bing search-minták az SDK különböző funkcióit mutatják be.  A következő funkciók hozzáadása a korábban meghatározott `ImageSrchSDK` osztály.
-
-### <a name="search-using-a-filter"></a>Keresési szűrő használata
-
-"Studio ghibli", GIF, és számos szempont, szűrve rendszerképek keresése, majd ellenőrizze az eredmények száma, és nyomtassa ki az insightsToken Miniatűr URL-cím és az első eredmény URL-címe.
-
-```
-        public static void ImageSearchWithFilters(ImageSearchAPI client)
-        {
-            try
-            {
-                var imageResults = client.Images.SearchAsync(query: "studio ghibli", imageType: ImageType.AnimatedGif, aspect: ImageAspect.Wide).Result;
-                Console.WriteLine("Search images for \"studio ghibli\" results that are animated gifs and wide aspect");
-
-                if (imageResults == null)
-                {
-                    Console.WriteLine("Didn't see any image result data.");
-                }
-                else
-                {
-                    // First image result
-                    if (imageResults.Value.Count > 0)
-                    {
-                        var firstImageResult = imageResults.Value.First();
-
-                        Console.WriteLine($"\r\nImage result count: {imageResults.Value.Count}");
-                        Console.WriteLine($"First image insightsToken: {firstImageResult.ImageInsightsToken}");
-                        Console.WriteLine($"First image thumbnail url: {firstImageResult.ThumbnailUrl}");
-                        Console.WriteLine($"First image web search url: {firstImageResult.WebSearchUrl}");
-                    }
-                    else
-                    {
-                        Console.WriteLine("Couldn't find image results!");
-                    }
-                }
-            }
-
-            catch (Exception ex)
-            {
-                Console.WriteLine("Encountered exception. " + ex.Message);
-            }
-
-        }
-
-```
-
-### <a name="trending-images"></a>A világ legnépszerűbb képei
-
-Keresse meg a felkapott képek, és ellenőrizze a kategóriák és a csempék.
-
-```
-        public static void ImageTrending(ImageSearchAPI client)
-        {
-            try
-            {
-                var trendingResults = client.Images.TrendingAsync().Result;
-                Console.WriteLine("Search trending images");
-
-                if (trendingResults == null)
-                {
-                    Console.WriteLine("Didn't see any trending image data.");
-                }
-                else
-                {
-                    // Categories
-                    if (trendingResults.Categories?.Count > 0)
-                    {
-                        var firstCategory = trendingResults.Categories[0];
-                        Console.WriteLine($"\r\nCategory count: {trendingResults.Categories.Count}");
-                        Console.WriteLine($"First category title: {firstCategory.Title}");
-
-                        // Tiles
-                        if (firstCategory.Tiles?.Count > 0)
-                        {
-                            var firstTile = firstCategory.Tiles[0];
-                            Console.WriteLine($"\r\nTile count: {firstCategory.Tiles.Count}");
-                            Console.WriteLine($"First tile text: {firstTile.Query.Text}");
-                            Console.WriteLine($"First tile url: {firstTile.Query.WebSearchUrl}");
-                        }
-                        else
-                        {
-                            Console.WriteLine("Couldn't find tiles!");
-                        }
-                    }
-                    else
-                    {
-                        Console.WriteLine("Couldn't find categories!");
-                    }
-                }
-            }
-
-            catch (Exception ex)
-            {
-                Console.WriteLine("Encountered exception. " + ex.Message);
-            }
-
-        }
-
-```
-
-### <a name="image-details"></a>Lemezkép adatait
-
-Lemezképek keresése "Degas", és keressen rá az első képen kép adatait.
-```
-        public static void ImageDetail(ImageSearchAPI client)
-        {
-
-            try
-            {
-                var imageResults = client.Images.SearchAsync(query: "degas").Result;
-
-                var firstImage = imageResults?.Value?.FirstOrDefault();
-
-                if (firstImage != null)
-                {
-                    var modules = new List<string>() { ImageInsightModule.All };
-                    var imageDetail = client.Images.DetailsAsync(query: "degas", insightsToken: firstImage.ImageInsightsToken, modules: modules).Result;
-                    Console.WriteLine($"\r\nSearch detail for image insightsToken={firstImage.ImageInsightsToken}");
-
-                    if (imageDetail != null)
-                    {
-                        // Insights token
-                        Console.WriteLine($"Expected image insights token: {imageDetail.ImageInsightsToken}");
-
-                        // Best representative query
-                        if (imageDetail.BestRepresentativeQuery != null)
-                        {
-                            Console.WriteLine($"\r\nBest representative query text: {imageDetail.BestRepresentativeQuery.Text}");
-                            Console.WriteLine($"Best representative query web search url: {imageDetail.BestRepresentativeQuery.WebSearchUrl}");
-                        }
-                        else
-                        {
-                            Console.WriteLine("Couldn't find best representative query!");
-                        }
-
-                        // Caption 
-                        if (imageDetail.ImageCaption != null)
-                        {
-                            Console.WriteLine($"\r\nImage caption: {imageDetail.ImageCaption.Caption}");
-                            Console.WriteLine($"Image caption data source url: {imageDetail.ImageCaption.DataSourceUrl}");
-                        }
-                        else
-                        {
-                            Console.WriteLine("Couldn't find image caption!");
-                        }
-
-                        // Pages including the image
-                        if (imageDetail.PagesIncluding?.Value?.Count > 0)
-                        {
-                            var firstPage = imageDetail.PagesIncluding.Value[0];
-                            Console.WriteLine($"\r\nPages including count: {imageDetail.PagesIncluding.Value.Count}");
-                            Console.WriteLine($"First page content url: {firstPage.ContentUrl}");
-                            Console.WriteLine($"First page name: {firstPage.Name}");
-                            Console.WriteLine($"First page date published: {firstPage.DatePublished}");
-                        }
-                        else
-                        {
-                            Console.WriteLine("Couldn't find any pages including this image!");
-                        }
-
-                        // Related searches 
-                        if (imageDetail.RelatedSearches?.Value?.Count > 0)
-                        {
-                            var firstRelatedSearch = imageDetail.RelatedSearches.Value[0];
-                            Console.WriteLine($"\r\nRelated searches count: {imageDetail.RelatedSearches.Value.Count}");
-                            Console.WriteLine($"First related search text: {firstRelatedSearch.Text}");
-                            Console.WriteLine($"First related search web search url: {firstRelatedSearch.WebSearchUrl}");
-                        }
-                        else
-                        {
-                            Console.WriteLine("Couldn't find any related searches!");
-                        }
-
-                        // Visually similar images
-                        if (imageDetail.VisuallySimilarImages?.Value?.Count > 0)
-                        {
-                            var firstVisuallySimilarImage = imageDetail.VisuallySimilarImages.Value[0];
-                            Console.WriteLine($"\r\nVisually similar images count: {imageDetail.RelatedSearches.Value.Count}");
-                            Console.WriteLine($"First visually similar image name: {firstVisuallySimilarImage.Name}");
-                            Console.WriteLine($"First visually similar image content url: {firstVisuallySimilarImage.ContentUrl}");
-                            Console.WriteLine($"First visually similar image size: {firstVisuallySimilarImage.ContentSize}");
-                        }
-                        else
-                        {
-                            Console.WriteLine("Couldn't find any related searches!");
-                        }
-
-                        // Image tags
-                        if (imageDetail.ImageTags?.Value?.Count > 0)
-                        {
-                            var firstTag = imageDetail.ImageTags.Value[0];
-                            Console.WriteLine($"\r\nImage tags count: {imageDetail.ImageTags.Value.Count}");
-                            Console.WriteLine($"First tag name: {firstTag.Name}");
-                        }
-                        else
-                        {
-                            Console.WriteLine("\r\nCouldn't find any related searches!");
-                        }
-                    }
-                    else
-                    {
-                        Console.WriteLine("\r\nCouldn't find detail about the image!");
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("\r\nCouldn't find image results!");
-                }
-            }
-
-            catch (Exception ex)
-            {
-                Console.WriteLine("\r\nEncountered exception. " + ex.Message);
-            }
-        }
-
 ```
 
 ## <a name="next-steps"></a>További lépések
 
-[A cognitive services .NET SDK-minták](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)
+> [!div class="nextstepaction"]
+> [Bing – Képkeresés egyoldalas alkalmazás oktatóanyag](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/tutorial-bing-image-search-single-page-app)
+
+## <a name="see-also"></a>Lásd még 
+
+* [Mi az a Bing Képkeresés?](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
+* [Próbálja ki az online interaktív bemutatót](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)  
+* [Ingyenesen a Cognitive Services hozzáférési kulcs lekérése](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
+* [Az Azure Cognitive Services SDK for .NET-minták](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)
+* [Az Azure Cognitive Services – dokumentáció](https://docs.microsoft.com/azure/cognitive-services)
+* [A Bing Image Search API-referencia](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)

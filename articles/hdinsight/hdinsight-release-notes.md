@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 07/01/2018
 ms.author: jasonh
-ms.openlocfilehash: 5078ee68e559959390d439ed1ef9f8e199d2f083
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 898feee916168792c155190064200555b8331c0f
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43090150"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45577241"
 ---
 # <a name="release-notes-for-azure-hdinsight"></a>Az Azure HDInsight kibocsátási megjegyzései
 
@@ -41,7 +41,7 @@ Az új frissítések és funkciók esik, a következő kategóriákban:
 
 3.  ***Az Azure Data Lake Storage Gen2 támogatása*** – HDInsight támogatja az Azure Data Lake Storage Gen2 előzetes kiadását. Az elérhető régiók, az ügyfelek fogja tudni ADLS Gen2 fiók kiválasztása a HDInsight-fürtök elsődleges vagy másodlagos tárolóként.
 
-4.  ***HDInsight vállalati biztonsági csomag frissítések (előzetes verzió)*** – (előzetes verzió) [virtuális hálózati Szolgáltatásvégpontok](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-service-endpoints-overview) támogatása az Azure Blob Storage, az ADLS Gen1, Cosmos DB és az Azure-adatbázis.
+4.  ***HDInsight vállalati biztonsági csomag frissítések (előzetes verzió)*** – (előzetes verzió) [virtuális hálózati Szolgáltatásvégpontok](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) támogatása az Azure Blob Storage, az ADLS Gen1, Cosmos DB és az Azure-adatbázis.
 
 ## <a name="component-versions"></a>Összetevő-verziók
 
@@ -1420,6 +1420,6 @@ Rögzített problémák kiválasztott problémák, forduljon az ügyfélszolgál
 
 ## <a name="upgrading"></a>Frissítés
 
-Ezek a funkciók érhetők el a HDInsight 3.6-ot. Válassza ki a Spark, Kafka, Machine Learning Services verziója a Spark, Kafka és az R Server (Machine Learning-szolgáltatások) legújabb verziójának beszerzéséhez, amikor, [hozzon létre egy HDInsight 3.6-fürt](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters). Az ADLS segítségre van szüksége, kiválaszthatja az ADLS tárolótípus beállítás. Meglévő fürtök nem frissül ezen verziója automatikusan.
+Ezek a funkciók érhetők el a HDInsight 3.6-ot. Válassza ki a Spark, Kafka, Machine Learning Services verziója a Spark, Kafka és az R Server (Machine Learning-szolgáltatások) legújabb verziójának beszerzéséhez, amikor, [hozzon létre egy HDInsight 3.6-fürt](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters). Az ADLS segítségre van szüksége, kiválaszthatja az ADLS tárolótípus beállítás. Meglévő fürtök nem frissül ezen verziója automatikusan.
 
-2018 június után létrehozott összes új fürt automatikusan megkapja az 1000 + hibajavításokat tartalmaz minden nyílt forráskódú projekt. Kövesse az [ez](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-upgrade-cluster) körül HDInsight újabb verzióra való frissítés ajánlott eljárások útmutatója.
+2018 június után létrehozott összes új fürt automatikusan megkapja az 1000 + hibajavításokat tartalmaz minden nyílt forráskódú projekt. Kövesse az [ez](https://docs.microsoft.com/azure/hdinsight/hdinsight-upgrade-cluster) körül HDInsight újabb verzióra való frissítés ajánlott eljárások útmutatója.

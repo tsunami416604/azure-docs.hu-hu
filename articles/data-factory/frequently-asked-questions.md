@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: shlo
-ms.openlocfilehash: 37c2c96ad14741fba2733765640f8d6d9ef3fee2
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 73bc8b6954470d11d6369bc733bb7c6f794ce892
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44716424"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45577132"
 ---
 # <a name="azure-data-factory-faq"></a>Az Azure Data Factory – gyakori kérdések
 Ez a cikk ismerteti az Azure Data Factory kapcsolatos gyakori kérdésekre adott válaszokat.  
@@ -82,7 +82,7 @@ Az adat-előállítók PowerShell, SDK-t vagy a böngésző felhasználói felü
 -   A virtuális hálózati Szolgáltatásvégpontok az Azure SQL DB
 -   Felügyelt példány (MI)
 -   Rugalmas készlet
--   Az Azure Resource Managerbeli virtuális hálózat (VNet) épülő klasszikus virtuális hálózat, a jövőben – fognak évülni támogatása Ez lehetővé teszi az Azure-SSIS integrációs modul (IR) egy virtuális hálózathoz virtuális hálózatok közötti szolgáltatás végpontok/MI az Azure SQL DB-hez konfigurált beszúrása/join / a helyszíni adatok elérése, lásd: https://docs.microsoft.com/en-us/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network 
+-   Az Azure Resource Managerbeli virtuális hálózat (VNet) épülő klasszikus virtuális hálózat, a jövőben – fognak évülni támogatása Ez lehetővé teszi az Azure-SSIS integrációs modul (IR) egy virtuális hálózathoz virtuális hálózatok közötti szolgáltatás végpontok/MI az Azure SQL DB-hez konfigurált beszúrása/join / a helyszíni adatok elérése, lásd: https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network 
 -   Támogatás az Azure Active Directory (AAD) hitelesítés épülő SQL-hitelesítés szeretne csatlakozni az SSISDB - Ez lehetővé teszi, hogy AAD-hitelesítést használjon az az ADF Felügyeltszolgáltatás-identitás (MSI)
 -   Saját licence a helyszíni SQL Server, az Azure Hybrid Benefit (AHB) beállítás jelentős költségmegtakarítást megszerzésére támogatása
 -   Támogatási Enterprise Edition az Azure-SSIS integrációs, amely lehetővé teszi a speciális/Premium szintű funkciók használata, telepítse a további összetevők/fájlnévkiterjesztéseket, valamint a 3. fél ökoszisztéma, lásd: egyéni telepítés: https://blogs.msdn.microsoft.com/ssis/2018/04/27/enterprise-edition-custom-setup-and-3rd-party-extensibility-for-ssis-in-adf/ 

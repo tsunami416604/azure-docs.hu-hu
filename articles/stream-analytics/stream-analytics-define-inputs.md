@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/27/2018
-ms.openlocfilehash: 9fa71c221b276e2173694e2c1e86673e52677e63
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: 2da388ef2fc0df8b08658900fe91ecc9d440fd3a
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39389823"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45579292"
 ---
 # <a name="stream-data-as-input-into-stream-analytics"></a>Stream data bemeneti Stream analyticsbe
 
@@ -29,7 +29,7 @@ Ezen a bemeneti források is élő Azure-előfizetéshez, a Stream Analytics-fel
 Stream Analytics támogatja a tömörítést minden stream bemeneti adatforrás esetében. Jelenleg támogatott referencia típusok a következők: None, GZip, és a Deflate tömörítést. A tömörítés támogatása nem érhető el a referenciaadatoknál. Ha a bemeneti formátum az Avro-adatok tömörített, azt transzparens módon történik. Adja meg a tömörítési típus szerializálása az Avro-nincs szükségünk. 
 
 ## <a name="create-edit-or-test-inputs"></a>Létrehozásához, szerkesztéséhez vagy bemenet tesztelése
-Használhatja a [az Azure portal](https://portal.azure.com) való [hozzon létre új bemenetei között meg](https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-quick-create-portal#configure-input-to-the-job) és megtekintése vagy szerkesztése a folyamatos átviteli feladat a meglévő bemenetei között. A bemeneti kapcsolatok is tesztelheti és [tesztlekérdezések](https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-manage-job#test-your-query) a mintaadatokat. Ha egy lekérdezést ír, a FROM záradékban található a bemeneti listázza. Megtekintheti az elérhető bemenetek listája a **lekérdezés** lapot a portálon. Ha több bemenet használni kívánt, `JOIN` őket vagy több írási `SELECT` lekérdezéseket.
+Használhatja a [az Azure portal](https://portal.azure.com) való [hozzon létre új bemenetei között meg](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-quick-create-portal#configure-input-to-the-job) és megtekintése vagy szerkesztése a folyamatos átviteli feladat a meglévő bemenetei között. A bemeneti kapcsolatok is tesztelheti és [tesztlekérdezések](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-manage-job#test-your-query) a mintaadatokat. Ha egy lekérdezést ír, a FROM záradékban található a bemeneti listázza. Megtekintheti az elérhető bemenetek listája a **lekérdezés** lapot a portálon. Ha több bemenet használni kívánt, `JOIN` őket vagy több írási `SELECT` lekérdezéseket.
 
 
 ## <a name="stream-data-from-event-hubs"></a>Adatok streamelése az Event Hubsból
@@ -145,7 +145,7 @@ A következő táblázat ismerteti az egyes tulajdonságait a **új bemenet** ol
 | **Tárfiók kulcsa** | A storage-fiókhoz társított titkos kulcs. Ez a beállítás automatikusan kitölti, kivéve, ha azt választja, adja meg a Blob storage beállításainak manuális. |
 | **Tároló** | A tárolót a bemeneti BLOB. Tárolók biztosítják a Microsoft Azure Blob service-ben tárolt blobok logikai jellegű csoportosítását. Az Azure Blob storage szolgáltatáshoz feltölt egy blobot, ha meg kell adnia egy adott blob-tárolót. Választhat **meglévő használata** tároló vagy **új létrehozása** szeretné, hogy létrehozott egy új tárolót.|
 | **Elérésiút-minta** (nem kötelező) | A fájl elérési útja, az a megadott tárolóban található blobok helyének azonosításához használt. Az elérési útban a következő három változó egy vagy több példányát adhatja: `{date}`, `{time}`, vagy `{partition}`<br/><br/>1. példa: `cluster1/logs/{date}/{time}/{partition}`<br/><br/>2. példa: `cluster1/logs/{date}`<br/><br/>A `*` karakter nem megengedett érték az az elérési út előtagja. Csak érvényes <a HREF="https://msdn.microsoft.com/library/azure/dd135715.aspx">az Azure blob-karakterek</a> engedélyezettek. Nem tartalmazza a tároló nevének vagy fájlneveket. |
-| **Dátumformátum** (nem kötelező) | Ha a dátum változó az útvonalban, a dátumformátum, amelyben a fájlok vannak rendszerezve. Példa: `YYYY/MM/DD` |
+| **Dátumformátum** (nem kötelező) | Ha a dátum változó az útvonalban, a dátumformátum, amelyben a fájlok vannak rendszerezve. Például: `YYYY/MM/DD` |
 | **Időformátum** (nem kötelező) |  Ha a idő változó az elérési út, az időformátum, amelyben a fájlok vannak rendszerezve. Jelenleg az egyetlen támogatott érték `HH` órán keresztül. |
 | **Eseményszerializációs formátum** | A szerializálási formátum (JSON, CSV- vagy Avro) a bejövő adatfolyam.  Győződjön meg arról, a JSON-formátumban a Specification igazítja, és nem tartalmazza a tizedes vezető 0. |
 | **Kódolás** | A fürt megosztott kötetei szolgáltatás és a JSON az UTF-8 jelenleg az egyetlen támogatott kódolási formátum. |

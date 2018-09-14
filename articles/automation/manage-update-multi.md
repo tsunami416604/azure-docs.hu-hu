@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 08/29/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 231a9876c7a84953a7d9a88b761a1da9475d1f48
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: 9cb2b0bdb036b26fbd355ff4bd84885b7e15507d
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43248141"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45541973"
 ---
 # <a name="manage-updates-for-multiple-machines"></a>Frissítések kezelése több gép esetén
 
@@ -50,7 +50,7 @@ Az Update Management a következő operációs rendszereken támogatott:
 
 A Linux-ügynököknek hozzáféréssel kell rendelkezniük valamely frissítési tárházhoz.
 
-Ez a megoldás nem támogatja az Operations Management Suite (OMS) ügynök Linux rendszerekre, amely több Azure Log Analytics-munkaterületnek való jelentésre van konfigurálva.
+Ez a megoldás nem támogatja egy Log Analytics-ügynök Linux rendszerekre, amely több Azure Log Analytics-munkaterületnek való jelentésre van konfigurálva.
 
 ## <a name="enable-update-management-for-azure-virtual-machines"></a>Az Update Management engedélyezése az Azure-beli virtuális gépek
 
@@ -127,7 +127,7 @@ Az a **új frissítéstelepítés** panelen adja meg a következő információk
 
 - **Név**: Adjon meg egy egyedi nevet a frissítéstelepítés azonosításához.
 - **Operációs rendszer**: válasszon **Windows** vagy **Linux**.
-- **Frissítendő gépek**: válassza ki, mentett keresést, importált csoporthoz, vagy válassza ki a gépeket, válassza ki a frissíteni kívánt gépeket. Ha úgy dönt, **gépek**, jelenik meg a gép készen áll-e a **frissítési ÜGYNÖK KÉSZÜLTSÉGE** oszlop. A frissítéstelepítés ütemezése előtt látható a gép állapotát. Számítógépcsoportok létrehozását a Log Analytics különböző módszereivel kapcsolatos további információkért lásd: [Log Analytics számítógépcsoportjaival](../log-analytics/log-analytics-computer-groups.md)
+- **Frissítendő gépek**: válassza ki, mentett keresést, importált csoporthoz, vagy válassza ki a gépeket, válassza ki a frissíteni kívánt gépeket. Ha a **Gépek** lehetőséget választotta, a gép állapota az **ÜGYNÖK KÉSZÜLTSÉGÉNEK FRISSÍTÉSE** oszlopban látható. A frissítéstelepítés ütemezése előtt látható a gép állapotát. A számítógépcsoportok Log Analyticsben lévő létrehozásának különböző módszereivel kapcsolatos további információkért tekintse meg a [Log Analytics számítógépcsoportjait](../log-analytics/log-analytics-computer-groups.md) ismertető részt
 
   ![Új frissítés üzembe helyezési panel](./media/manage-update-multi/update-select-computers.png)
 

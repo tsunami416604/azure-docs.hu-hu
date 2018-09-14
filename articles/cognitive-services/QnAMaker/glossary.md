@@ -1,44 +1,44 @@
 ---
-title: Szószedet - Microsoft kognitív szolgáltatások |} Microsoft Docs
-titleSuffix: Azure
+title: Szószedet – QnA Maker
+titleSuffix: Azure Cognitive Services
 description: Szószedet
 services: cognitive-services
 author: nstulasi
-manager: sangitap
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: QnAMaker
+ms.component: qna-maker
 ms.topic: article
-ms.date: 04/21/2018
-ms.author: saneppal
-ms.openlocfilehash: e28cddec005cb6ba99b9f60d8b03a11f1bc97062
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.date: 09/12/2018
+ms.author: nstulasi
+ms.openlocfilehash: e4c0af68911ed25d4c07ef2050d0b74c435488ab
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348690"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45540797"
 ---
 # <a name="glossary"></a>Szószedet
 
-## <a name="qna-maker-service"></a>Kérdések és válaszok készítő szolgáltatás
-A kérdések és válaszok készítő "szolgáltatás" előfeltételként kérdések és válaszok készítő elindítására. A kérdések és válaszok készítő réteghez megvásárlásáról beállítja az erőforrások létrehozására és kezelésére a Tudásbázis Azure-előfizetése. Kérdések és válaszok Maker felhasználói fiókokat hozhat létre az Azure-előfizetés több készítő kérdések és válaszok szolgáltatás.
+## <a name="qna-maker-service"></a>A QnA Maker szolgáltatás
+A QnA Maker szolgáltatás olyan olyan előfeltételt, QnA Maker használatához. A QnA Maker csomag vásárlása beállítja az erőforrások létrehozására és kezelésére a Tudásbázis Azure-előfizetésében. A QnA Maker felhasználói fiókokat hozhat létre több QnA Maker szolgáltatás Azure-előfizetésében.
 
 ## <a name="knowledge-base"></a>Tudásbázis
-A Tudásbázis a tárház kérdések, és felveszi a létrehozott, kezelt és kérdések és válaszok készítő használt. Minden kérdés-válasz készítő réteg több Tudásbázis esetében használható.
+Tudásbázis az adattár kérdések, valamint választ ad a, karbantartani, és a QnA Maker keresztül használt. Az egyes QnA Maker szintek több tudásbázisok használható.
 
 ## <a name="endpoint"></a>Végpont
-A REST-alapú HTTP-végpont a Tudásbázis tartalmat, amely integrálható az alkalmazásba, általában Csevegés bot karbantartása. 
+A REST-alapú HTTP-végpontot a Tudásbázis-tartalmat, amely integrálható az alkalmazásba, általában egy csevegőrobot karbantartás. 
 
 ## <a name="test-knowledge-base"></a>Tudásbázis tesztelése
-A Tudásbázis két állapota - teszt van, és közzé. A teszt Tudásbázis verziója szerkesztéséhez, mentett és tesztelt, a pontosság és a válaszok teljességéről folyamatban van. A teszt Tudásbázis végzett módosítások nem befolyásolják a végfelhasználó az alkalmazást vagy csevegés botot.
+Tudásbázis kétállapotú - teszt rendelkezik, és közzé. A teszt Tudásbázis verziója szerkesztett mentett és tesztelt, a pontosság és a válaszok teljességéről folyamatban van. A teszt Tudásbázisban végzett módosítások nem érintik a végfelhasználó számára az alkalmazás-/ csevegőrobot.
 
 ## <a name="published-knowledge-base"></a>Közzétett Tudásbázis
-A Tudásbázis két állapota - a vizsgálati és egy közzétett van.  A közzétett Tudásbázis verziója, amely a Csevegés botot/alkalmazásban szereplő szolgál. A művelet a Tudásbázis közzétételének a teszt Tudásbázis tartalmát a Tudásbázis közzétett verziójának helyezi. Mivel a közzétett Tudásbázis a verziója, az alkalmazás által használt keresztül a végpont, annak érdekében, hogy a tartalom-e a megfelelő és tesztelt figyelmet kell fordítani.
+Tudásbázis kétállapotú - vizsgálat és egy közzétett rendelkezik.  A közzétett Tudásbázis verziója, amely a csevegési robot vagy alkalmazás használatban van. Tudásbázis közzététele művelet a teszt Tudásbázis tartalmát a Tudásbázis közzétett verziójának helyezi. Mivel a közzétett Tudásbázis a verzió, az alkalmazás által használt a végponton keresztül, annak érdekében, hogy a tartalom-e a megfelelő és tesztelt gondot kell fordítani.
 
 ## <a name="query"></a>Lekérdezés
-A felhasználó lekérdezése a Tudásbázis kérő a végfelhasználói vagy tester kérdése. A lekérdezés legtöbbször a természetes nyelvű formátumban vagy néhány kulcsszót, amelyek megfelelnek a kérdést.
+Felhasználói lekérdezés, amely rákérdez, a végfelhasználói vagy tesztelőként a kérdést, a Tudásbázis. A lekérdezés gyakran egy természetes nyelvi formátumban vagy a kérdés képviselő néhány kulcsszavak nem.
 
 ## <a name="response"></a>Válasz
-A rendszer a választ, a válasz veszi át a Tudásbázis következő, a legmegfelelőbb egy adott felhasználóhoz lekérdezés alapján.
+A válasz a válasz veszi át a Tudásbázis következő, a legmegfelelőbb az adott felhasználó lekérdezés alapján.
 
 ## <a name="confidence-score"></a>Megbízhatósági pontszám
-A válasz az vetett bizalmat pontszám egy numerikus értéket 0 és 100, 100 alatt egy felhasználói lekérdezés és válasz szolgáltatott Tudásbázis fel kérdést pontos lekérdezés egyezését között egy adott felhasználóhoz lekérdezés helyes, a megfelelő választ. Válaszok általában rangsora az vetett bizalmat pontszám szerint, és a másikat a magasabb abban, hogy pontszám kiszolgált az alapértelmezett válaszként.
+A megbízhatósági pontszám a választ, akkor egy numerikus értéket 0 és 100, folyamatban van egy pontos lekérdezés egyeznek felhasználói lekérdezés és a egy Tudásbázis, amely a válasz kiszolgált kérdést 100 között a helyes, a megfelelő választ az egy adott felhasználó lekérdezés. Válaszok általában a megbízhatósági pontszám szerinti sorrendben, és a magasabb megbízhatósági pontszám rendelkezőt biztosítja az alapértelmezett válaszként.

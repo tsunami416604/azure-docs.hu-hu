@@ -1,49 +1,50 @@
 ---
-title: Támogatott nyelvek – kérdések és válaszok készítő - Azure kognitív szolgáltatások |} Microsoft Docs
-description: Ismerje meg, milyen nyelveket támogatja a kérdések és válaszok készítő.
+title: Támogatott nyelvek – QnA Maker
+titlesuffix: Azure Cognitive Services
+description: Tudásbázis nyelvének hatással van a QnA Maker válaszokat automatikusan kinyerni kérdések és válaszok forrásokból, valamint a QnA Maker felhasználói lekérdezések maximális kézbesítésszáma biztosít az eredmények relevancia alapján végzett.
 services: cognitive-services
 author: nstulasi
-manager: sangitap
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: QnAMaker
+ms.component: qna-maker
 ms.topic: article
-ms.date: 05/07/2018
+ms.date: 09/12/2018
 ms.author: saneppal
-ms.openlocfilehash: b210f59129a962046787b27d003c2872a54f6c8e
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: ee04733064ec4e3d131b800fe1f18b27e5127fe8
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35349243"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45572940"
 ---
 # <a name="supported-languages"></a>Támogatott nyelvek
 
-A Tudásbázis nyelvének hatással van kérdések és válaszok Maker automatikus-kivonat kérdéseket, és a válaszok [források](../Concepts/data-sources-supported.md), valamint az a kérdés-válasz készítő biztosít a felhasználó lekérdezéseire eredmények.
+Tudásbázis nyelvének hatással van a QnA Maker válaszokat automatikusan kinyerni kérdések, valamint választ ad a [források](../Concepts/data-sources-supported.md), valamint az a felhasználói lekérdezések maximális kézbesítésszáma biztosít a QnA Maker eredmények.
 
 ## <a name="auto-extraction"></a>Automatikus kivonása
-Kérdések és válaszok készítő kérdés-válasz kibontási támogatja tetszőleges nyelv lapon, de a kibontási hatékonyságát sokkal nagyobb a következő nyelvekhez, a kérdések és válaszok készítő kulcsszavak segítségével azonosíthatja a kérdések.
+A QnA Maker kérdés-válasz kinyerési támogatja a tetszőleges nyelven lapon, de a kivonás hatékonyságát sokkal magasabb, a következő nyelvekhez, QnA Maker kulcsszavak segítségével azonosítja a kérdések.
 
 |Támogatott nyelvek| Területi beállítás|
 |-----|----|
 |Angol|en-*|
 |francia|FR-*|
 |olasz|IT-*|
-|német|de-*|
+|német|Németország – *|
 |spanyol|es-*|
 
-## <a name="query-matching-and-relevance"></a>Megfelelő és relevanciájának lekérdezése
-Kérdések és válaszok készítő függ [nyelvi elemzőkkel](https://docs.microsoft.com/en-us/rest/api/searchservice/language-support) az Azure search biztosítani azt az eredményt. Különleges újra rangsoroló funkciók érhetők el En-* nyelveket, amelyek lehetővé teszik a jobb relevanciájának.
+## <a name="query-matching-and-relevance"></a>A lekérdezésnek megfelelő, és a relevancia alapján végzett
+A QnA Maker függ [nyelvi elemzők](https://docs.microsoft.com/rest/api/searchservice/language-support) az eredmények, amelyek biztosítják az Azure Search szolgáltatásban. Speciális újra rangsorértékét funkciók érhetők el az En-* nyelveket, amelyek lehetővé teszik a jobb relevancia alapján.
 
-Kérdések és válaszok készítő automatikus-észleli a Tudásbázis nyelvének létrehozása során, és ennek megfelelően állítja be az elemző eszközt. A következő nyelveken Tudásbázis körrel hozhat létre. Olvasási [ez](../How-To/language-knowledge-base.md) nyelvű kérdések és válaszok készítő kezelésének további információt.
+A QnA Maker automatikusan észleli a nyelvet, a Tudásbázis létrehozása során, és ennek megfelelően állítja be az elemző. Az alábbi nyelveken tudásbázisok hozhat létre. Olvasási [ez](../How-To/language-knowledge-base.md) hogyan kezeli a QnA Maker a nyelvek kapcsolatos további részletekért.
 
 
 > [!Tip]
-> Nyelvi elemzőkkel beállítása után, nem módosítható. Emellett a nyelvi elemzőt vonatkozik-e a Tudásbázis körrel egy [Maker kérdések és válaszok szolgáltatás](../How-To/set-up-qnamaker-service-azure.md). Tervezett Tudásbázis körrel másik nyelven, érdemes létrehozni külön kérdések és válaszok készítő szolgáltatások alapján.
+> Nyelvi elemzők, beállítása után, nem módosítható. Emellett a nyelvi elemző vonatkozik-e az összes tudásbázisok egy [QnA Maker szolgáltatást](../How-To/set-up-qnamaker-service-azure.md). Tervezett tudásbázisok különböző nyelven, kell létrehoznia a különálló QnA Maker szolgáltatások.
 
 |Támogatott nyelvek|
 |-----|
 |arab|
-|örmény|,
+|örmény|; 
 bengáli|
 |baszk|
 |bolgár|

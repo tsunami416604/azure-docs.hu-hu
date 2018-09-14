@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: shared-capabilities
 author: georgewallace
 ms.author: gwallace
-ms.date: 08/16/2018
+ms.date: 09/12/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2d6b58c95b918d820e207e801e62e7897c2ee366
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 32a7b7026df1522abe2ca3dc7b212b06e08ff905
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "40246132"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45544277"
 ---
 # <a name="manage-azure-automation-run-as-accounts"></a>Azure Automation futtató fiókok kezelése
 
@@ -349,9 +349,8 @@ A tanúsítvány megújításához tegye a következőket:
 
     ![Futtató fiók tanúsítványának megújítása](media/manage-runas-account/automation-account-renew-runas-certificate.png)
 
-1. A tanúsítvány megújítása során a menü **Értesítések** részén nyomon követheti a folyamat állapotát.
+1. A tanúsítvány megújítása során a menü **Értesítések** részén nyomon követheti a folyamat állapotát. 
 
-Ha nem tudja a Futtatás mint tanúsítványának megújítása
 ## <a name="limiting-run-as-account-permissions"></a>Futtató fiók vonatkozó engedélyek korlátozása
 
 Szabályozhatja, hogy az automation-erőforrásokon, az Azure Automationben célzó, a Futtatás mint fiók alapértelmezés szerint az előfizetés közreműködői jogokat kapnak. Mi a Futtatás mint szolgáltatásnév mindent korlátozni kell, ha távolítsa el a fiókot a közreműködő szerepkört az előfizetés, és közreműködője hozzáadása az erőforráscsoportok szeretne megadni.

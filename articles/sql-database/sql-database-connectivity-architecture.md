@@ -9,12 +9,12 @@ ms.custom: DBs & servers
 ms.topic: conceptual
 ms.date: 01/24/2018
 ms.author: carlrab
-ms.openlocfilehash: afc82ea666fdbef89348e7453df92b8d8e1adc86
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 6f160965f11f94c39e823724b192169c3712974d
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39493672"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45575378"
 ---
 # <a name="azure-sql-database-connectivity-architecture"></a>Az Azure SQL Database kapcsolati architektúra 
 
@@ -51,7 +51,7 @@ Ha Azure-on kívülről csatlakozik, a kapcsolatok rendelkezik-e a kapcsolódás
 ![az architektúra áttekintése](./media/sql-database-connectivity-architecture/connectivity-from-outside-azure.png)
 
 > [!IMPORTANT]
-> A Szolgáltatásvégpontok az Azure SQL Database használatakor a szabályzat van **Proxy** alapértelmezés szerint. Ahhoz, hogy a kapcsolat a virtuális hálózaton belül, engedélyezze a kimenő kapcsolatokat az alábbi listán megadott Azure SQL Database átjáró IP-címeket. A Szolgáltatásvégpontok használatakor erősen javasoljuk, hogy váltson a kapcsolódási szabályzat a **átirányítási** engedélyezéséhez a jobb teljesítmény érdekében. Ha módosítja a kapcsolódási szabályzat a **átirányítási** nem lesz elegendő ahhoz, hogy az NSG-t, az alább felsorolt IP-címek Azure SQLDB átjáró kimenő engedélyezése, engedélyeznie kell a kimenő célja: minden Azure SQLDB IP-címet. Ez az NSG-t (a hálózati biztonsági csoportok) Szolgáltatáscímkék segítségével valósítható meg. További információkért lásd: [Szolgáltatáscímkék](https://docs.microsoft.com/en-us/azure/virtual-network/security-overview#service-tags).
+> A Szolgáltatásvégpontok az Azure SQL Database használatakor a szabályzat van **Proxy** alapértelmezés szerint. Ahhoz, hogy a kapcsolat a virtuális hálózaton belül, engedélyezze a kimenő kapcsolatokat az alábbi listán megadott Azure SQL Database átjáró IP-címeket. A Szolgáltatásvégpontok használatakor erősen javasoljuk, hogy váltson a kapcsolódási szabályzat a **átirányítási** engedélyezéséhez a jobb teljesítmény érdekében. Ha módosítja a kapcsolódási szabályzat a **átirányítási** nem lesz elegendő ahhoz, hogy az NSG-t, az alább felsorolt IP-címek Azure SQLDB átjáró kimenő engedélyezése, engedélyeznie kell a kimenő célja: minden Azure SQLDB IP-címet. Ez az NSG-t (a hálózati biztonsági csoportok) Szolgáltatáscímkék segítségével valósítható meg. További információkért lásd: [Szolgáltatáscímkék](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags).
 
 ## <a name="azure-sql-database-gateway-ip-addresses"></a>Az Azure SQL Database átjárója IP-címek
 

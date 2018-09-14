@@ -1,6 +1,6 @@
 ---
-title: Bevezetés az alkalmazás szolgáltatási környezet 1-es verzió
-description: További tudnivalók az App Service Environment-környezet v1 szolgáltatás, hogy a biztonságos, virtuális hálózatot csatlakoztatott, dedikált méretezési egységek összes, az alkalmazások futtatásához.
+title: Bevezetés az App Service környezet v1
+description: Ismerje meg az App Service Environment v1 funkció, amely biztonságos, VNet-csatlakozású, dedikált skálázási egységek biztosít a futó összes alkalmazását.
 services: app-service
 documentationcenter: ''
 author: stefsch
@@ -14,73 +14,73 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
-ms.openlocfilehash: ca30818b015e95594d3b2c9861d98f24174c0aea
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: a2efb3177a97aa362a269ab3a00239a0d391f026
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36318163"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45574691"
 ---
-# <a name="introduction-to-app-service-environment-v1"></a>Bevezetés az alkalmazás szolgáltatási környezet 1-es verzió
+# <a name="introduction-to-app-service-environment-v1"></a>Bevezetés az App Service környezet v1
 
 > [!NOTE]
-> Ez a cikk az App Service Environment-környezet v1 tárgya.  Az App Service-környezet, amely könnyebben használható, és nagyobb teljesítményű infrastruktúra fut egy újabb verziója van telepítve. További információt az új verzió útmutató a [az App Service Environment bemutatása](intro.md).
+> Ez a cikk az App Service Environment-környezet v1 szól.  Nincs az App Service-környezet, amely egyszerűbb és nagyobb teljesítményű infrastruktúra fut egy újabb verziója. További információ az új verzió elindítása a [az App Service Environment bemutatása](intro.md).
 > 
 
 ## <a name="overview"></a>Áttekintés
-Az App Service Environment-környezet egy [prémium] [ PremiumTier] terv lehetőség a szolgáltatás [Azure App Service](../app-service-web-overview.md) biztosít egy teljesen elkülönített és dedikált környezetben történő biztonságos futtatására Az Azure App Service apps használhat nagy méretezéssel, beleértve a Web Apps, a Mobile Apps és az API-alkalmazások.  
+App Service-környezet van egy [prémium] [ PremiumTier] csomag lehetőséget a szolgáltatás [Azure App Service](../app-service-web-overview.md) biztonságos futtatása teljesen elkülönített és dedikált környezetet biztosít, amely Az Azure App Service-alkalmazások nagy méretben, beleértve a Web Apps, Mobile Apps és API-alkalmazások  
 
-App Service-környezetek ideálisak igénylő alkalmazások és szolgáltatások:
+App Service Environment-környezetek ideálisak igénylő alkalmazások és szolgáltatások:
 
-* Nagyon nagy méretű
-* Elkülönítés és a biztonságos hálózati hozzáférést
+* Nagyon nagy skálázhatóság
+* Elkülönítés és biztonságos hálózati hozzáférést
 
-Az ügyfelek több App Service Environment-környezetek belül egyetlen Azure-régió, valamint több Azure-régiók közötti hozhatnak létre.  Így az App Service Environment-környezetek magas RPS munkaterhelések támogatásához állapot nélküli alkalmazások szintek vízszintesen méretezéshez ideális.
+Ügyfeleinknek létrehozhatnak több App Service Environment-környezetek egy adott Azure-régión belül, valamint több Azure-régiók között.  Így App Service Environment-környezetek ideális a horizontális skálázás az állapot nélküli alkalmazásrétegek magas RPS-munkaterhelések támogatásához.
 
-App Service-környezetek csak az egyetlen ügyfél-alkalmazások futtatása érdekében elkülönített, és mindig telepített virtuális hálózatba.  Ügyfelek mindkét bejövő és kimenő hálózati forgalom részletes szabályozhatják, és alkalmazások képes kapcsolatot létrehozni a nagy sebességű biztonságos helyszíni vállalati erőforrások virtuális hálózatokon keresztül.
+App Service Environment-környezetek elkülönített futnak, ha csak egy egyetlen ügyfél alkalmazásait, és mindig egy virtuális hálózatban üzemelnek.  Mindkét alkalmazás bejövő és kimenő hálózati forgalom részletesen szabályozhatja az ügyfél rendelkezik, és az alkalmazások nagy sebességű, biztonságos kapcsolatot létesíthet virtuális hálózatokon keresztül kapcsolódjanak a helyi vállalati erőforrásokhoz.
 
-Megtudhatja, hogyan App Service Environment-környezetek engedélyezése a nagy méretű és a biztonságos hálózati hozzáférés, tekintse meg a [AzureCon mélyreható] [ AzureConDeepDive] az App Service Environment-környezetek!
+Áttekintését, hogyan App Service Environment-környezetek nagy méretű és biztonságos hálózati hozzáférés, tekintse meg a [AzureCon Deep Dive] [ AzureConDeepDive] az App Service Environment-környezetek!
 
-Több App Service Environment-környezetek részletesen a vízszintes méretezést a cikk tekintse meg a telepítő hogyan egy [földrajzilag elosztott alkalmazás erőforrásigényét][GeodistributedAppFootprint].
+Részletesen a horizontális skálázás használatával több App Service Environment-környezetek tekintse meg a cikk beállítása egy [földrajzilag elosztott alkalmazás üzembe helyezésének előkészítése][GeodistributedAppFootprint].
 
-Hogyan lett konfigurálva a biztonsági architektúrája a AzureCon mélyreható látható, olvassa el a cikk végrehajtási egy [biztonsági architektúrája réteges](app-service-app-service-environment-layered-security.md) az App Service Environment-környezetek.
+Hogyan lett konfigurálva az AzureCon Deep Dive látható biztonsági architektúra, olvassa el a cikk a végrehajtási egy [szintekre épülő biztonsági architektúra](app-service-app-service-environment-layered-security.md) App Service Environment-környezetekkel.
 
-App Service Environment-környezetek futó alkalmazásokra is hozzáférhet a saját felsőbb rétegbeli eszközök, például a webalkalmazási tűzfalak (WAF) által kezdeményezett.  A cikk a [egy WAF konfigurálása az App Service Environment-környezetek](app-service-app-service-environment-web-application-firewall.md) ebben a forgatókönyvben ismerteti. 
+App Service-környezetekben futó alkalmazások elérhetik a felsőbb rétegbeli eszközök, például webalkalmazás-tűzfalak (WAF) engedi át.  A cikk a [a WAF konfigurálása az App Service Environment-környezetek](app-service-app-service-environment-web-application-firewall.md) ebben a forgatókönyvben ismerteti. 
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../../includes/app-service-web-to-api-and-mobile.md)]
 
-## <a name="dedicated-compute-resources"></a>Dedikált számítási erőforrásokat
-A számítási erőforrásokat egy App Service Environment-környezetben a kizárólag egyetlen előfizetés számára vannak fenntartva, és az egyetlen alkalmazást az App Service-környezetek konfigurálható legfeljebb ötven (50) számítási erőforrással kizárólagos használatra.
+## <a name="dedicated-compute-resources"></a>Dedikált számítási erőforrások
+Kizárólag egyetlen előfizetéshez az dedikált App Service Environment-környezetben a számítási erőforrásokat, és a egy bizonyos alkalmazás az App Service Environment is konfigurálhatók, legfeljebb ötven (50) számítási erőforrások kizárólagos használatára.
 
-Az App Service-környezetek előtér-számítási erőforráskészlet, valamint egy-három feldolgozókészletek számítási erőforrás áll. 
+App Service-környezet egy előtér-számítási erőforráskészlethez, valamint egy, három feldolgozókészletek számítási erőforrás áll. 
 
-Az előtér-készlet számítási erőforrásokat is automatikus terheléselosztást app kérelmek belül az App Service-környezetek, SSL-lezárást felelős tartalmaz. 
+Az előtérkészlet felelős alkalmazás kérelmek App Service-környezetben is automatikus terheléselosztást, SSL-lezárást számítási erőforrásokat tartalmaz. 
 
-Minden egyes munkavégző készletét tartalmazza a számítási erőforrások vannak rendelve [App Service-csomagok][AppServicePlan], viszont tartalmazó egy vagy több Azure App Service-alkalmazásokhoz.  Az App Service-környezetek legfeljebb három különböző feldolgozókészletek lehet, mivel így rugalmasan kiválaszthatja a különböző számítási erőforrásokat az egyes munkavégző készletét.  
+Minden feldolgozói készlethez hozzárendelt számítási erőforrások tartalmaz [App Service-csomagok][AppServicePlan], amelyek viszont egy vagy több Azure App Service-alkalmazások tartalmaznak.  Mivel az App Service-környezet legfeljebb három különböző feldolgozókészletek lehetnek, rugalmasan választhatja ki a különböző számítási erőforrásokhoz minden feldolgozói készlethez rendelkezik.  
 
-Például így kevésbé hatékony számítási erőforrással egy munkavégző-készlet létrehozása az App Service-csomagok fejlesztési vagy tesztelési alkalmazásokhoz készült.  A második (vagy akár harmadik) feldolgozókészletek használhatja az App Service-csomagok futó termelési alkalmazások szánt nagyobb teljesítményű számítási erőforrásokat.
+Például ez lehetővé teszi, hogy hozzon létre egy feldolgozókészlet kevésbé hatékony számítási erőforrásokat az App Service-csomagok fejlesztési-tesztelési alkalmazások számára készült.  Egy második (vagy akár harmadik) feldolgozókészlet használhatja az App Service-csomagok éles alkalmazások futtatását szánt nagyobb teljesítményű számítási erőforrásokat.
 
-Az előtér- és a feldolgozói készletek elérhető számítási erőforrások mennyisége további részletekért lásd: [az App Service-környezetek konfigurálása][HowToConfigureanAppServiceEnvironment].  
+Az előtér- és a feldolgozói készleteiben elérhető számítási erőforrások mennyisége a további részletekért lásd: [App Service Environment konfigurálása][HowToConfigureanAppServiceEnvironment].  
 
-A rendelkezésre álló számítási erőforrás mérete egy App Service Environment-környezet támogatja a részletekért tekintse meg a [App Service szolgáltatás díjszabása] [ AppServicePricing] lapon, és tekintse át az App Service Environment-környezetek az elérhető lehetőségek a Prémium szintű tarifacsomagban használható.
+Az elérhető számítási erőforrás méretek támogatott az App Service-környezet részletes ismertetéséért tekintse meg a [App Service díjszabását] [ AppServicePricing] lapon, és tekintse át az App Service Environment-környezetek az elérhető lehetőségek a Prémium szintű tarifacsomag.
 
-## <a name="virtual-network-support"></a>Virtuális hálózati támogatása
-Az App Service-környezetek hozhatók létre **vagy** az Azure Resource Manager virtuális hálózati **vagy** klasszikus telepítési modell virtuális hálózat ([további információ a virtuális hálózatok] [MoreInfoOnVirtualNetworks]).  Mivel az App Service-környezetek mindig szerepel egy virtuális hálózatot, és pontosan egy virtuális hálózati alhálózat, belül kihasználható a biztonsági mindkét bejövő és kimenő hálózati kommunikáció vezérlésére virtuális hálózatok.  
+## <a name="virtual-network-support"></a>Virtuálishálózat-támogatást
+Az App Service-környezet hozható létre **vagy** egy Azure Resource Managerbeli virtuális hálózat **vagy** a klasszikus üzemi modellt használó virtuális hálózatokhoz ([további információ a virtuális hálózatok] [MoreInfoOnVirtualNetworks]).  Mivel az App Service-környezet mindig létezik a virtuális hálózatban, és pontosan egy virtuális hálózat alhálózatához belül, kihasználhatja mind a bejövő és kimenő hálózati kommunikáció szabályozhatja a virtuális hálózatok biztonsági funkciói.  
 
-Az App Service Environment-környezet vagy nyilvános IP-címmel, vagy a belső csak Azure belső Load Balancer (ILB) címmel rendelkező irányuló internetes lehet.
+App Service-környezet vagy az internetre irányuló nyilvános IP-címmel, vagy csak az Azure belső Load Balancer (ILB) címmel rendelkező belső is lehet.
 
-Használhat [hálózati biztonsági csoportok] [ NetworkSecurityGroups] korlátozni a bejövő hálózati kommunikáció az alhálózathoz, ahol az App Service-környezetek található.  Ez lehetővé teszi a felsőbb rétegbeli eszközöket és szolgáltatásokat, például a webalkalmazási tűzfalak és a hálózati Szolgáltatottszoftver-szolgáltatók mögött alkalmazásainak futtatásához.
+Használhat [hálózati biztonsági csoportok] [ NetworkSecurityGroups] korlátozni a beérkező hálózati kommunikációt az alhálózaton, ahol az App Service-környezet található.  Ez lehetővé teszi, hogy alkalmazásokat rétegbeli eszközök és szolgáltatások, például a webalkalmazás-tűzfalak és hálózati SaaS-szolgáltatók mögött.
 
-Az alkalmazásoknak gyakran kell hozzáférniük vállalati erőforrásokhoz, például belső adatbázisokhoz vagy webes szolgáltatásokhoz.  Egy gyakori megoldás, hogy elérhetővé tegye ezeket a végpontokat csak a belső hálózati forgalom továbbítására egy Azure virtuális hálózaton belül.  A belső szolgáltatásként az azonos virtuális hálózatban egy App Service Environment-környezet része, ha a környezetben futó alkalmazások érhetik el azokat, többek között a végpontok segítségével elérhető [pont-pont] [ SiteToSite] és [Azure ExpressRoute] [ ExpressRoute] kapcsolatok.
+Az alkalmazásoknak gyakran kell hozzáférniük vállalati erőforrásokhoz, például belső adatbázisokhoz vagy webes szolgáltatásokhoz.  Általánosan használt megközelítés, hogy elérhetővé tegye ezeket a végpontokat csak a belső hálózati forgalmat egy Azure virtuális hálózatban lévő tárfiókba.  Után az App Service-környezet csatlakozik a belső szolgáltatások ugyanazon a virtuális hálózaton, akkor a környezetben futó alkalmazások elérheti őket, beleértve a végpontok segítségével elérhető [Site-to-Site] [ SiteToSite] és [Azure ExpressRoute] [ ExpressRoute] kapcsolatok.
 
-Az App Service Environment-környezetek virtuális hálózatok és a helyszíni hálózatokban működése vonatkozó részletes információért tekintse meg a következő cikkeket a [hálózati architektúra][NetworkArchitectureOverview], [bejövő vezérlése Forgalom][ControllingInboundTraffic], és [háttérkiszolgálókon való biztonságos kapcsolódás során][SecurelyConnectingToBackends]. 
+Az App Service Environment-környezetek virtuális hálózatok és a helyszíni hálózatok működéséről további részleteiért tekintse meg a következő cikkeket a [hálózati architektúra][NetworkArchitectureOverview], [bejövő szabályozása Forgalom][ControllingInboundTraffic], és [biztonságosan kapcsolódó háttérkomponenseinek][SecurelyConnectingToBackends]. 
 
 ## <a name="getting-started"></a>Első lépések
-App Service Environment-környezetek megkezdéséhez, lásd: [hogyan számára hozzon létre egy App Service-környezet][HowToCreateAnAppServiceEnvironment]
+Első lépések az App Service Environment-környezetek, lásd: [hogyan, hozzon létre egy App Service-környezet][HowToCreateAnAppServiceEnvironment]
 
-Az App Service Environment-környezet hálózati architektúra áttekintése, tekintse meg a [hálózati architektúra áttekintése] [ NetworkArchitectureOverview] cikk.
+Az App Service Environment-környezet hálózati architektúra áttekintését lásd: a [a hálózati architektúra áttekintése] [ NetworkArchitectureOverview] cikk.
 
-További információ az App Service-környezetek használatáról az ExpressRoute, a következő cikkben: a [Expressroute és az App Service Environment-környezetek][NetworkConfigDetailsForExpressRoute].
+Az App Service-környezet használata az expressroute-tal, részletek: a következő cikkben található [Express Route- és App Service Environment-környezetek][NetworkConfigDetailsForExpressRoute].
 
 [!INCLUDE [app-service-web-try-app-service](../../../includes/app-service-web-try-app-service.md)]
 
@@ -93,7 +93,7 @@ További információ az App Service-környezetek használatáról az ExpressRou
 [AzureConDeepDive]:  https://azure.microsoft.com/documentation/videos/azurecon-2015-deploying-highly-scalable-and-secure-web-and-mobile-apps/
 [GeodistributedAppFootprint]:  app-service-app-service-environment-geo-distributed-scale.md
 [NetworkSecurityGroups]: https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/
-[SiteToSite]: https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-multi-site
+[SiteToSite]: https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-multi-site
 [ExpressRoute]: http://azure.microsoft.com/services/expressroute/
 [HowToConfigureanAppServiceEnvironment]:  app-service-web-configure-an-app-service-environment.md
 [ControllingInboundTraffic]:  app-service-app-service-environment-control-inbound-traffic.md

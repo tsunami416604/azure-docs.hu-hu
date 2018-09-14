@@ -6,20 +6,20 @@ documentationcenter: ''
 author: juliako
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 07/31/2018
+ms.date: 09/09/2018
 ms.author: juliako
-ms.openlocfilehash: 797c09d72402cfc1ee2524e7792cc1310a53fb1e
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 11bd61387bfe6fe07cd41806f165eed9575622b4
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39399477"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45540905"
 ---
 # <a name="view-and-edit-video-indexer-insights"></a>Video Indexer-elemzések megtekintése és szerkesztése
 
 Ez a témakör bemutatja, hogyan szeretné áttekinteni vagy módosítani a videó a Video Indexer insights.
 
-1. Jelentkezzen be a [Video Indexer](https://api-portal.videoindexer.ai/) fiókot.
+1. Keresse meg a [Video Indexer](https://www.videoindexer.ai/) webhelyet, és jelentkezzen be.
 2. Keresse meg egy videót, amelyből hozzá szeretne létrehozni a Video Indexer insights. További információkért lásd: [videókban pontos időpontok keresése](video-indexer-search.md).
 3. Nyomja meg **lejátszása**.
 

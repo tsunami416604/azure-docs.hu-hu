@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: 361905b4c1e0c9e596cb7cf1cd5a730268d81bd0
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 706e946e61f7d5f48ce5071e90d724af717449d9
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39413409"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45575218"
 ---
 # <a name="azure-operational-security-overview"></a>Az Azure működési biztonság – áttekintés
 [Az Azure operational security](https://docs.microsoft.com/azure/security/azure-operational-security) hivatkozik a szolgáltatások, a vezérlők és a felhasználók számára elérhető szolgáltatások védelme érdekében az adatokat, alkalmazásokat és egyéb eszközök, Microsoft Azure-ban. Olyan keretrendszer, amely magában foglalja a különböző képességeket, amelyek a Microsoft egyedülálló szerzett ismeretek. Ezek közé tartozik a Microsoft biztonsági fejlesztési életciklus (SDL), a Microsoft Security Response Center programhoz és a kiberbiztonsági fenyegetések világának.
@@ -68,7 +68,7 @@ Azure ad-ben is magában foglalja a teljes körű [identitáskezelési képessé
 Az Azure Active Directoryval a partnerek és ügyfelek (üzleti és fogyasztói) közzétett összes alkalmazás legyen ugyanaz az identitásuk, és hozzáférés-kezelési képességeket. Ez lehetővé teszi, hogy jelentősen csökkentheti a működési költségeket.
 
 ## <a name="azure-security-center"></a>Azure Security Center
-[Az Azure Security Center](https://docs.microsoft.com/en-us/azure/security-center/security-center-intro) megelőzése, észlelése, és háríthatja el a fenyegetéseket átláthatóbbá és (és szabályozhatóbbá) segít az Azure-erőforrások biztonságát. Integrált biztonsági monitorozást és felügyeletet biztosít az előfizetésekben. Ez segít egyébként észrevétlenül maradó fenyegetések észlelésére, és a biztonsági megoldások átfogó ökoszisztémájának működik.
+[Az Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro) megelőzése, észlelése, és háríthatja el a fenyegetéseket átláthatóbbá és (és szabályozhatóbbá) segít az Azure-erőforrások biztonságát. Integrált biztonsági monitorozást és felügyeletet biztosít az előfizetésekben. Ez segít egyébként észrevétlenül maradó fenyegetések észlelésére, és a biztonsági megoldások átfogó ökoszisztémájának működik.
 
 [A virtuális gépek (VM) adatainak védelme érdekében](https://docs.microsoft.com/azure/security-center/security-center-linux-virtual-machine) az Azure-ban azáltal, hogy a virtuális gép biztonsági beállításaiba betekintést és a fenyegetéseket. A Security Center a következőket tudja megfigyelés alatt tartani a virtuális gépeken:
 

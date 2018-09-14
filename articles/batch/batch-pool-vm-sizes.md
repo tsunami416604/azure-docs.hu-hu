@@ -12,14 +12,14 @@ ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/09/2018
+ms.date: 09/12/2018
 ms.author: danlep
-ms.openlocfilehash: 1669d5a2237322f72dce3b172c32e7199900a4e0
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 987cbcc642152a4077cc895ad06e43ac56113497
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42056650"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45544064"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>Az Azure Batch-készlet számítási csomópontok Virtuálisgép-méretének kiválasztása
 
@@ -41,8 +41,8 @@ A virtuális gép konfigurációja a Batch-készleteket támogatja a Virtuálisg
 | Alapszintű A sorozat | Basic_A0 (A0) |
 | A-sorozat | Standard_A0 |
 | B sorozat | Összes |
-| M sorozat | Összes |
 
+M sorozatú virtuális gépek csak az alacsony prioritású csomópontok használata támogatott.
 
 
 ### <a name="pools-in-cloud-service-configuration"></a>A Felhőszolgáltatás konfigurációs készletek

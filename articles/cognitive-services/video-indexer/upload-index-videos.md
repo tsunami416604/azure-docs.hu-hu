@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 08/17/2018
 ms.author: juliako
-ms.openlocfilehash: ac9d3f8fd10a3b65a2af2999b8c7ade7965de912
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 3cf5a32d95b028664f29b82b14e2294d58ae9925
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43664445"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45579999"
 ---
 # <a name="upload-and-index-your-videos"></a>A videók feltöltése és az  
 
@@ -33,7 +33,7 @@ A cikk ismerteti, hogy megadhatja azt az API-t a folyamat és a kimeneti API-par
 ## <a name="uploading-considerations"></a>Feltöltésével kapcsolatos szempontok
     
 - Ha a videó feltöltése a (javasolt) URL-cím alapján a végpont védeni kell a TLS 1.2-es (vagy annál újabb)
-- A bájt tömb beállítás korlátozva, 4GB, és 30 perc után időtúllépés
+- A bájt tömb beállítás 2 GB-ra korlátozott, és 30 perc után időtúllépés
 - A megadott URL-CÍMÉT a `videoURL` param kódolni kell
 
 ## <a name="configurations-and-params"></a>Konfigurációk és paraméterek

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/12/2018
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
-ms.openlocfilehash: 1ec4a6033fad643c75cdf9f7ebc5cdb1f4bab9c3
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 559859e1f844cae37b0baaf48b0ad7c5cc2d4b0a
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44717148"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45542452"
 ---
 # <a name="configure-a-vnet-for-azure-sql-database-managed-instance"></a>Virtuális hálózat konfigurálása az Azure SQL Database felügyelt példány
 
@@ -101,7 +101,7 @@ A létrehozása és konfigurálása virtuális hálózat legegyszerűbben az Azu
 
 3. Konfigurálja a hálózati környezet. A következő képernyőn konfigurálhatja a hálózati környezet paraméterei:
 
-![Azure-hálózat konfigurálása](./media/sql-database-managed-instance-get-started/create-mi-network-arm.png)
+![Azure-hálózat konfigurálása](./media/sql-database-managed-instance-vnet-configuration/create-mi-network-arm.png)
 
 Előfordulhat, hogy módosítsa a virtuális hálózatok és alhálózatok nevét, és állítsa be a hálózati erőforrásokhoz tartozó IP-címtartományok. Után a "Vásárlás" gombra az űrlap létrehozása, és konfigurálja a környezetet. Ha már nincs szüksége a két alhálózat törölheti az alapértelmezettet. 
 

@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 08/1/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: f272ac7ee6432b43d0c9a72daf620a46e52366f8
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 99329dd812ad47cf98845ba794bc108d26d85352
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39399049"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45543700"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Virtuális gépek indítása/leállítása munkaidőn kívül megoldás az Azure Automationben
 
@@ -53,14 +53,14 @@ Virtuális gépek indítása/leállítása munkaidőn kívül megoldás az Autom
 
    ![Virtuális gép felügyelet – megoldás hozzáadása lap](media/automation-solution-vm-management/azure-portal-add-solution-01.png)
 
-1. Az a **megoldás hozzáadása** lapon jelölje be **munkaterület**. Válassza ki a Log Analytics-munkaterület, amely kapcsolódik az Azure-előfizetéshez, amely az Automation-fiókot. Ha nem rendelkezik egy munkaterületet, válassza ki a **új munkaterület létrehozása**. Az a **OMS-munkaterület** lapon, a következő lépésekkel:
-   - Adja meg az új **OMS-munkaterület** nevét.
+1. Az a **megoldás hozzáadása** lapon jelölje be **munkaterület**. Válassza ki a Log Analytics-munkaterület, amely kapcsolódik az Azure-előfizetéshez, amely az Automation-fiókot. Ha nem rendelkezik egy munkaterületet, válassza ki a **új munkaterület létrehozása**. Az a **Log Analytics-munkaterület** lapon, a következő lépésekkel:
+   - Adjon meg egy nevet az új **Log Analytics-munkaterület**.
    - Válassza ki a **előfizetés** összekapcsolása a legördülő listában válassza ki, ha az alapértelmezett kiválasztás nem megfelelő.
    - A **erőforráscsoport**, hozzon létre egy új erőforráscsoportot, vagy válasszon ki egy meglévőt.
    - Válasszon ki egy **helyet**. Csak a következő helyek elérhető jelenleg **Délkelet-Ausztrália**, **közép-Kanada**, **közép-India**, **USA keleti Régiójában**, **Kelet-japán**, **Délkelet-Ázsia**, **Egyesült Királyság déli régiója**, és **Nyugat-Európa**.
    - Válasszon egy tarifacsomagot a **Tarifacsomag** területen. Válassza ki a **Gigabájtonkénti (különálló)** lehetőséget. A log Analytics frissített [díjszabás](https://azure.microsoft.com/pricing/details/log-analytics/) , és a GB szinten az egyetlen lehetőség.
 
-1. Miután megadta a szükséges adatokat a **OMS-munkaterület** kattintson **létrehozás**. Nyomon követheti a folyamat állapotát **értesítések** a menüben, amely adja vissza, hogy a **megoldás hozzáadása** lapon, ha ezzel elkészült.
+1. Miután megadta a szükséges adatokat a **Log Analytics-munkaterület** kattintson **létrehozás**. Nyomon követheti a folyamat állapotát **értesítések** a menüben, amely adja vissza, hogy a **megoldás hozzáadása** lapon, ha ezzel elkészült.
 1. Az a **megoldás hozzáadása** lapon jelölje be **Automation-fiók**. Ha egy új Log Analytics-munkaterületet hoz létre, hozzon létre egy új Automation-fiókot társítja, vagy válasszon egy meglévő Automation-fiók nem a napló az elemzés munkaterülethez már kapcsolódó. Válassza ki a meglévő Automation-fiókot, vagy kattintson a **Automation-fiók létrehozása**, majd a a **Automation-fiók hozzáadása** lap, adja meg a következő információkat:
    - A **Név** mezőbe írja be az Automation-fiók nevét.
 

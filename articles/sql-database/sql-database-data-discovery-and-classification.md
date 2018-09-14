@@ -8,18 +8,18 @@ ms.reviewer: vanto
 ms.service: sql-database
 ms.custom: security
 ms.topic: conceptual
-ms.date: 07/10/2018
+ms.date: 09/10/2018
 ms.author: giladm
-ms.openlocfilehash: a69142ebabc4af8b8543dc5dd276b99130620470
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: aca01e67339d5f6d003021cb17f1787093b79eda
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44714972"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45543962"
 ---
 # <a name="azure-sql-database-data-discovery-and-classification"></a>Az Azure SQL-adatbázis adatainak felderítése és besorolása
 Adatfelderítés és besorolás (jelenleg előzetes verzióban érhető el) biztosít az Azure SQL Database-be épített fejlettebb képességek **felderítése**, **Írisz**, **címkézés**  &  **védelme** a bizalmas adatokat az adatbázisban.
-Felderítése és besorolása a leginkább bizalmas adatok (üzleti, pénzügyi, egészségügyi, személyazonosításra alkalmas adatok, stb.) is kulcsszerepet játszik a szervezeti adatok védelme helyzetében. Az infrastruktúra szolgálhasson:
+Felderítése és besorolása a leginkább bizalmas adatok (üzleti, pénzügyi, egészségügyi, személyazonosításra alkalmas adatok (PII), és így tovább.) a szervezeti adatok védelme helyzetében kulcsfontosságú szerepet játszhatnak. Az infrastruktúra szolgálhasson:
 * Lehetővé teszi, hogy megfeleljen az adatok adatvédelmi szabványok és az előírt megfelelőségi követelmények teljesítését.
 * Különféle biztonsági forgatókönyvek, például a (naplózás) figyelési és riasztási a bizalmas adatokhoz való rendellenes hozzáférést.
 * Való hozzáférés szabályozása és a bizalmas adatokat tartalmazó adatbázisok biztonságának megerősítése.
@@ -42,6 +42,17 @@ A következő szakasz a felderítése, besorolását és címkézését az adatb
 A besorolás két metaadat-attribútum tartalmazza:
 * Feliratok – a fő besorolási attribútumok segítségével határozhatók meg az oszlopban tárolt adatok az érzékenységi szint.  
 * Adatok típusai – adja meg az oszlopban tárolt adatok be további granularitási.
+
+## <a name="define-and-customize-your-classification-taxonomy"></a>Meghatározása és testre szabása a besorolási besorolás
+
+Az SQL Adatfelderítés és besorolás tartalmaz egy beépített érzékenységi címkék és a beépített adattípusok és a felderítési logikát. Most már testre szabhatja a besorolás és a egy készlet és a kifejezetten a környezet a besorolási szerkezeteket rangsorolását megadása.
+
+Meghatározása és testre szabhatja a besorolási besorolás az egész Azure-bérlőhöz egy központi helyen történik. Hogy a hely található a [az Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro), a biztonsági szabályzat részeként. Csak a személy a bérlő legfelső szintű felügyeleti csoport rendszergazdai jogosultságai a feladat végrehajtásához használhatja.
+
+Az Information Protection-házirend felügyelet részeként egyéni címkék megadása, rangsor őket, és rendelje azokat a kiválasztott adatok típusai vannak beállítva. Adja hozzá a saját egyéni adatok típusai is, és konfigurálja őket karakterlánc mintákat, amelyek az ilyen típusú adatok az adatbázisokban azonosítására szolgáló felderítési logika kerülnek.
+További tudnivalók a Testreszabás és kezelése a szabályzat a [Information Protection-házirend gyakorlati útmutató](https://go.microsoft.com/fwlink/?linkid=2009845&clcid=0x409).
+
+Miután az összes bérlőre vonatkozó házirend lett meghatározva, továbbra is az egyéni szabályzat használata az egyes adatbázisok besorolású.
 
 ## <a name="classify-your-sql-database"></a>Az SQL Database besorolása
 

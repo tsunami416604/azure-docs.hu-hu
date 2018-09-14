@@ -5,34 +5,34 @@ services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 03/09/2018
+ms.date: 09/12/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 7b5bc37be660ea3958bf224d2911c5c2d4577524
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 07dafc323ac89b836779ca8ad4d0470b3c786f93
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38942118"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45580786"
 ---
-## <a name="use-the-portal-to-move-a-vm-to-a-different-subscription"></a>A portál használatával a virtuális gép áthelyezése egy másik előfizetésbe
-Áthelyezheti egy virtuális Gépet, és a hozzá társított erőforrások a portál használatával egy másik előfizetésbe.
+## <a name="use-the-azure-portal-to-move-a-vm-to-a-different-subscription"></a>Virtuális gép áthelyezése egy másik előfizetésben az Azure portal használatával
+Az Azure portal használatával áthelyezheti egy virtuális Gépet, és az összes kapcsolódó erőforrás egy másik előfizetést.
 
 1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
 2. Kattintson a **Tallózás** > **virtuális gépek** , és válassza ki a virtuális Gépet szeretne áthelyezni a listából.
-3. A virtuális gép a lap tetején válassza a &#8594; **áthelyezése** gombra, majd válassza ki **Áttérés másik előfizetésre**. A **erőforrások áthelyezése** lap megnyitásakor.
+3. Válassza ki a virtuális gép az oldal tetején lévő **áthelyezése** , majd **Áttérés másik előfizetésre**. A **erőforrások áthelyezése** lap megnyitásakor.
 4. Válassza ki az erőforrások áthelyezése. A legtöbb esetben helyezze át az összes felsorolt kapcsolódó erőforrások.
 5. Válassza ki a **előfizetés** ahol azt szeretné, hogy a virtuális gép lesz áthelyezve.
-6. Válasszon egy meglévő **erőforráscsoport** vagy adjon meg egy nevet, hogy létrehozott egy új erőforráscsoportot.
-7. Amikor elkészült, válassza ki, hogy megértette, hogy új erőforrás-azonosítók jönnek létre, és miután helyezték át, a virtuális géppel használandó kell kattintson **OK**.
+6. Válasszon egy meglévő **erőforráscsoport**, vagy adjon meg egy nevet, hogy létrehozott egy új erőforráscsoportot.
+7. Amikor végzett, válassza ki, hogy megértette, hogy új erőforrás-azonosítók jön létre, és, hogy az új azonosítók kell használni a virtuális gép áthelyezése után, és adja meg áll **OK**.
 
-## <a name="use-the-portal-to-move-a-vm-to-another-resource-group"></a>A portál használatával a virtuális gép áthelyezése másik erőforráscsoportba
-Áthelyezheti egy virtuális Gépet, és a hozzá társított erőforrások másik erőforráscsoportba, a portál használatával.
+## <a name="use-the-azure-portal-to-move-a-vm-to-another-resource-group"></a>Virtuális gép áthelyezése egy másik erőforráscsoportot az Azure portal használatával
+Az Azure portal használatával áthelyezheti egy virtuális Gépet, és az összes kapcsolódó erőforrás egy másik erőforráscsoportot.
 
 1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
 2. Kattintson a **Tallózás** > **virtuális gépek** , és válassza ki a virtuális Gépet szeretne áthelyezni a listából.
-3. A virtuális gép a lap tetején válassza a &#8594; **áthelyezése** gombra, majd válassza ki **áthelyezése másik erőforráscsoportba**. A **erőforrások áthelyezése** lap megnyitásakor.
+3. Válassza ki a virtuális gép az oldal tetején lévő **áthelyezése** majd **áthelyezése másik erőforráscsoportba**. A **erőforrások áthelyezése** lap megnyitásakor.
 4. Válassza ki az erőforrások áthelyezése. A legtöbb esetben helyezze át az összes felsorolt kapcsolódó erőforrások.
-5. Válasszon egy meglévő **erőforráscsoport** vagy adjon meg egy nevet, hogy létrehozott egy új erőforráscsoportot.
-6. Amikor elkészült, válassza ki, hogy megértette, hogy új erőforrás-azonosítók jönnek létre, és miután helyezték át, a virtuális géppel használandó kell kattintson **OK**.
+5. Válasszon egy meglévő **erőforráscsoport**, vagy adjon meg egy nevet, hogy létrehozott egy új erőforráscsoportot.
+6. Amikor végzett, válassza ki, hogy megértette, hogy új erőforrás-azonosítók jön létre, és, hogy az új azonosítók kell használni a virtuális gép áthelyezése után, és adja meg áll **OK**.
 

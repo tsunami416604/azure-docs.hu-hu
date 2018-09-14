@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: 21ad417b9b3b8d0354333962c4e811d0eebba4e9
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: efab734cc7d6facf82f622b95c12a1a27e99c5f7
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44159333"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45575932"
 ---
 # <a name="security-management-in-azure"></a>Biztonságkezelés az Azure-ban
 Az Azure-előfizetők több eszközről kezelhetik felhőkörnyezeteiket, például felügyeleti munkaállomásokról, fejlesztői PC-kről, és olyan jogosult végfelhasználói eszközökről is, amelyek feladatspecifikus engedélyekkel rendelkeznek. Egyes esetekben a felügyeleti feladatkörök ellátását olyan webalapú konzolok használatával végzik, mint például az [Azure Portal](https://azure.microsoft.com/features/azure-portal/). Más esetekben az Azure-hoz való közvetlen kapcsolat létesíthető virtuális magánhálózatokon (VPN), terminálszolgáltatásokon, ügyfél-alkalmazásprotokollokon, vagy (szoftveresen) az Azure Service Management API-n (SMAPI) keresztül. Továbbá az ügyfél-végpontok lehetnek vagy tartományhoz csatlakoztatottak, vagy pedig elkülönítettek és felügyelet nélküliek, mint például a táblagépek vagy az okostelefonok.
@@ -225,7 +225,7 @@ A következő források általánosabb információkat kínálnak az Azure-ról 
 
 * [Az emelt szintű hozzáférés biztonságossá tétele](https://technet.microsoft.com/library/mt631194.aspx) – itt technikai részleteket olvashat az Azure-felügyelethez használt biztonságos felügyeleti munkaállomás tervezéséről és kiépítéséről.
 * [Microsoft biztonsági és adatkezelési központ](https://microsoft.com/en-us/trustcenter/cloudservices/azure) – ismerje meg az Azure platform olyan képességeit, amelyek megvédik az Azure-hálót és az Azure-on futó számítási feladatokat.
-* [Microsoft Security Response Center](https://technet.microsoft.com/en-us/security/dn440717.aspx) – itt lehet bejelentést tenni a Microsoft biztonsági réseiről, beleértve az Azure-ral kapcsolatos problémákat (vagy pedig e-mailben, a [secure@microsoft.com](mailto:secure@microsoft.com) címen)
+* [Microsoft Security Response Center](https://technet.microsoft.com/security/dn440717.aspx) – itt lehet bejelentést tenni a Microsoft biztonsági réseiről, beleértve az Azure-ral kapcsolatos problémákat (vagy pedig e-mailben, a [secure@microsoft.com](mailto:secure@microsoft.com) címen)
 * [Azure Security blog](http://blogs.msdn.com/b/azuresecurity/) – kövesse nyomon az Azure biztonsági csapatának legújabb híreit.
 
 <!--Image references-->

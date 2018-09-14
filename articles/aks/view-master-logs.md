@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 07/26/2018
 ms.author: iainfou
-ms.openlocfilehash: 04afd71183bcb8001d017b0027f29338b8d67ddb
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 50de43fd6f9ca579b501c47514c9f8fca4f53ae8
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42442367"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45540968"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>Engedélyezze, és tekintse át a Kubernetes Azure Kubernetes Service (AKS) naplózza a fő csomópont
 
@@ -75,8 +75,7 @@ Eltarthat néhány percig, a diagnosztikai naplók engedélyezni kell, és megje
 A bal oldalon válassza ki a **naplóbeli keresés**. Megtekintéséhez a *kube-apiserver*, a szövegmezőbe írja be a következő lekérdezést:
 
 ```
-search *
-| where Type == "AzureDiagnostics"
+AzureDiagnostics
 | where Category == "kube-apiserver"
 | project log_s
 ```
@@ -84,8 +83,7 @@ search *
 Rengeteg valószínűleg vissza az API-kiszolgálóhoz. Hatókörét le a lekérdezés a naplók megtekintéséhez a NGINX-pod az előző lépésben létrehozott kapcsolatban, vegye fel egy további *ahol* utasítással keresse meg *podok/nginx* , ahogyan a következő példalekérdezés:
 
 ```
-search *
-| where Type == "AzureDiagnostics"
+AzureDiagnostics
 | where Category == "kube-apiserver"
 | where log_s contains "pods/nginx"
 | project log_s

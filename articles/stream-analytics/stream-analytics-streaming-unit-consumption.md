@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/12/2018
-ms.openlocfilehash: 482f0403cfd4bbd6587ba7e3e936cdac7f82b54a
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: b7abbd486e9c357a5bdba093214a3801f88c39ab
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39228048"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45575898"
 ---
 # <a name="understand-and-adjust-streaming-units"></a>Ismertetése és módosítása a folyamatos átviteli egységek
 
@@ -46,7 +46,7 @@ A várt átviteli sebességet a számítási feladatok számítja ki. Ha az átv
 
 Kiválasztása szükséges SUS-t egy adott feladat száma attól függ, hogy a bemeneti és a lekérdezés a feladaton belül definiált partíció konfigurációját. A **méretezési** lap lehetővé teszi a megfelelő számú SUS-t állítsa be. Ajánlott eljárás a szükségesnél több SUs lefoglalása. A Stream Analytics optimalizálja a késést és átviteli sebességet, illetve további memória cserébe.
 
-Az ajánlott eljárás szerint általában a lekérdezések, amelyek nem használják 6 SUs történő indításához **PARTITION BY**. Majd vizsgálja meg a édes helyszíni egy próbálkozással, amelyben módosítása SUs száma után át mennyiségű adat, és vizsgálja meg az SU % Utilization metrika használatával. Egy Stream Analytics-feladat által használt streamelési egységek maximális száma attól függ, hogy a lekérdezésben, a feladat, illetve az egyes lépések a partíciók számának megadott lépéseket. További információ a korlátairól [Itt](https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-parallelization#calculate-the-maximum-streaming-units-of-a-job).
+Az ajánlott eljárás szerint általában a lekérdezések, amelyek nem használják 6 SUs történő indításához **PARTITION BY**. Majd vizsgálja meg a édes helyszíni egy próbálkozással, amelyben módosítása SUs száma után át mennyiségű adat, és vizsgálja meg az SU % Utilization metrika használatával. Egy Stream Analytics-feladat által használt streamelési egységek maximális száma attól függ, hogy a lekérdezésben, a feladat, illetve az egyes lépések a partíciók számának megadott lépéseket. További információ a korlátairól [Itt](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#calculate-the-maximum-streaming-units-of-a-job).
 
 SUS-t a megfelelő számú kiválasztásával kapcsolatban további információkért tekintse meg ezt oldal: [Scale Azure Stream Analytics-feladatok az átviteli sebesség növelése](stream-analytics-scale-jobs.md)
 
@@ -85,7 +85,7 @@ Annak érdekében, hogy az előző lekérdezést a magas Számosság által okoz
 
    ```sql
    SELECT count(*) 
-   FROM PARTITION BY PartitionId
+   FROM input PARTITION BY PartitionId
    GROUP BY PartitionId, clusterid, tumblingwindow (minutes, 5)
    ```
 

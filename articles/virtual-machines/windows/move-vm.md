@@ -13,22 +13,22 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/06/2017
+ms.date: 09/12/2018
 ms.author: cynthn
-ms.openlocfilehash: 168ba57399b2649af29820f7321dd0151618346e
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 1daf04e3f878d0748bfa0904259c7b7187481843
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37436480"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45580486"
 ---
 # <a name="move-a-windows-vm-to-another-azure-subscription-or-resource-group"></a>Windows virtuális gép áthelyezése egy másik Azure előfizetés vagy a resource group
-Ez a cikk végigvezeti egy Windows virtuális gép áthelyezése erőforráscsoportok vagy előfizetések között. Az előfizetések közötti áthelyezése lehet hasznos, ha egy személyes előfizetés egy virtuális Gépet eredetileg létrehozták, és most át kívánja helyezni a vállalati előfizetésre, és folytatni a munkáját.
+Ez a cikk végigvezeti egy Windows virtuális gép (VM) áthelyezése erőforráscsoportok vagy előfizetések között. Az előfizetések közötti áthelyezése lehet hasznos, ha egy személyes előfizetés egy virtuális Gépet eredetileg létrehozták, és most át kívánja helyezni a vállalati előfizetésre, és folytatni a munkáját.
 
 > [!IMPORTANT]
->Managed Disks jelenleg nem lehet áthelyezni. 
+>Jelenleg nem helyezhetők át az Azure Managed Disks. 
 >
->Új erőforrás-azonosítók az áthelyezés során jönnek létre. Miután a virtuális gép át lett helyezve, az eszközök és parancsfájlok használata az új erőforrás-azonosítók frissíteni szeretné. 
+>Új erőforrás-azonosítók az áthelyezés során jönnek létre. Után a virtuális gép át lett helyezve, az eszközök és parancsfájlok használata az új erőforrás-azonosítók frissíteni kell. 
 > 
 > 
 
@@ -36,16 +36,15 @@ Ez a cikk végigvezeti egy Windows virtuális gép áthelyezése erőforráscsop
 
 ## <a name="use-powershell-to-move-a-vm"></a>Virtuális gép áthelyezése a Powershell használatával
 
-Virtuális gép áthelyezése másik erőforráscsoportba, győződjön meg arról, hogy akkor is helyezze át az összes függő erőforrást kell. Használja a Move-AzureRMResource parancsmagot, az erőforrás-azonosító, az egyes erőforrásokat kell. Az erőforrás-azonosító használatával listát kap a [Get-AzureRMResource](/powershell/module/azurerm.resources/get-azurermresource) parancsmagot.
+Virtuális gép áthelyezése másik erőforráscsoportba, győződjön meg arról, hogy akkor is helyezze át az összes függő erőforrást kell. Egy listát az egyes ezeket az erőforrásokat az erőforrás-azonosító lekéréséhez használja a [Get-AzureRMResource](/powershell/module/azurerm.resources/get-azurermresource) parancsmagot.
 
 ```azurepowershell-interactive
  Get-AzureRMResource -ResourceGroupName <sourceResourceGroupName> | Format-table -Property ResourceId 
 ```
 
-A virtuális gép áthelyezése kell áthelyezni több erőforrást. A Get-AzureRMResource kimenetét használatával hozzon létre egy vesszővel elválasztott listáját a ResourceId és el kell küldenie a [Move-AzureRMResource](/powershell/module/azurerm.resources/move-azurermresource) áthelyezi őket a célhelyre. 
+Az erőforrás-azonosítók vesszővel elválasztott listáját is használhatja az előző parancs kimenetéből [Move-AzureRMResource](/powershell/module/azurerm.resources/move-azurermresource) az egyes erőforrások áthelyezése a célhelyre. 
 
 ```azurepowershell-interactive
-
 Move-AzureRmResource -DestinationResourceGroupName "<myDestinationResourceGroup>" `
     -ResourceId <myResourceId,myResourceId,myResourceId>
 ```
@@ -59,8 +58,8 @@ Move-AzureRmResource -DestinationSubscriptionId "<myDestinationSubscriptionID>" 
 ```
 
 
-Annak ellenőrzéséhez, hogy szeretné-e a megadott erőforrások helyezhetők át kell adnia. 
+Amikor a rendszer felkéri, hogy szeretné-e a megadott erőforrások áthelyezése, adja meg, ellenőrizze **Y** megerősítéséhez.
 
 ## <a name="next-steps"></a>További lépések
-Számos különböző típusú erőforrások helyezheti át erőforráscsoportok és előfizetések között. További információ: [Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe](../../resource-group-move-resources.md).    
+Számos különböző típusú erőforrások helyezheti át erőforráscsoportok és előfizetések között. További információkért lásd: [erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe](../../resource-group-move-resources.md).    
 

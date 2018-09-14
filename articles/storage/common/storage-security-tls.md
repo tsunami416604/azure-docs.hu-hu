@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/25/2018
 ms.author: fryu
 ms.component: common
-ms.openlocfilehash: 47cc38226799c5fd3afa2e13e7731a7683b736ba
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 86331f60e1be7d55c39e5d59f85b0f090a322587
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39527517"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45573858"
 ---
 # <a name="enable-secure-tls-for-azure-storage-client"></a>Biztonságos TLS engedélyezése az Azure Storage-ügyfélnek
 
@@ -25,7 +25,7 @@ Az Azure Storage biztonságos és megfelelő kapcsolat biztosítása érdekében
 
 ## <a name="enable-tls-12-in-net-client"></a>A TLS 1.2 engedélyezze a .NET-ügyfél
 
-Az ügyfél egyeztetni a TLS 1.2-es, az operációs rendszer és a .NET-keretrendszer verziója is támogatnia kell a TLS 1.2. További részletek az [a TLS 1.2 támogatása](https://docs.microsoft.com/en-us/dotnet/framework/network-programming/tls#support-for-tls-12).
+Az ügyfél egyeztetni a TLS 1.2-es, az operációs rendszer és a .NET-keretrendszer verziója is támogatnia kell a TLS 1.2. További részletek az [a TLS 1.2 támogatása](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12).
 
 A következő minta bemutatja, hogyan engedélyezze a TLS 1.2 a .NET-ügyfél.
 

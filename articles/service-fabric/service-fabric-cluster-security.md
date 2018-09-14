@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/14/2018
 ms.author: aljo
-ms.openlocfilehash: 52730ae24f4917ab593914c390df798f7f58dbde
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: e791ddd3ade2ff486f1c3ec123695ecc155353d6
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42060841"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45541904"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Service Fabric-fürtök biztonsági forgatókönyveit
 Azure Service Fabric-fürt saját erőforrás. A feladata biztonságossá tétele a-fürtök segítségével megakadályozhatja a jogosulatlan felhasználókat csatlakozik hozzájuk. Biztonságos fürt különösen fontos, ha a fürtön futtatnak éles számítási feladatokat. Bár lehetséges hozhat létre nem biztonságos fürtöt, ha a fürt elérhetővé teszi a nyilvános internetre felügyeleti végpontok, névtelen felhasználók csatlakozhatnak hozzá. Nem biztonságos fürtökhöz nem támogatottak a termelési számítási feladatokhoz. 
@@ -92,6 +92,7 @@ Fontos szempontokat kell figyelembe venni:
 * Éles számítási feladatokat futtató fürtök tanúsítványai létrehozásához használja egy megfelelően konfigurált Windows Server tanúsítvánnyal, illetve egy jóváhagyott közül [hitelesítésszolgáltatói (CA)](https://en.wikipedia.org/wiki/Certificate_authority).
 * Soha ne használja a bármely ideiglenes, vagy tesztelje éles környezetben a MakeCert.exe más eszközök használatával létrehozott tanúsítványokat.
 * Használhatja egy önaláírt tanúsítványt, de csak egy teszt fürtben. Éles környezetben ne használjon önaláírt tanúsítványt.
+* A tanúsítvány ujjlenyomatát létrehozásakor ügyeljen arra, hozzon létre egy SHA1-ujjlenyomatot. SHA1 a rendszer ezt használja az ügyfél és a fürt tanúsítvány-ujjlenyomatok konfigurálásakor.
 
 ### <a name="cluster-and-server-certificate-required"></a>Fürt és a kiszolgálói tanúsítványt (kötelező)
 Fürt biztonságossá tétele és a jogosulatlan hozzáférés elkerülése érdekében, hogy ezeket a tanúsítványokat (egy elsődleges és opcionálisan egy másodlagos) szükségesek. Ezek a tanúsítványok fürt- és hitelesítést biztosítanak.

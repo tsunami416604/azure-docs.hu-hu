@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: c6f074b84b099f6ea5023967fdae7e44d5e9d545
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 7aadb7b89cf1b338a257846882e34ff796df74b2
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43666384"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45580718"
 ---
 # <a name="become-a-cloud-marketplace-publisher"></a>Felhőbeli piactér kiadói válik
 
@@ -28,11 +28,11 @@ Ez a cikk ismerteti a felhőbeli piactér kiadói regisztrálása. A kiválaszto
 
 |  | Regisztrációs lépés | Időtartam | Részletek |  
 |:--- |:--- |:--- |:--- |  
-| 1 | A Microsoft Partner Network regisztrálása | 15 perc | [A Microsoft Partner Network regisztrálása](https://docs.microsoft.com/en-us/azure/marketplace/become-publisher#1-register-in-microsoft-partner-network) |  
-| 2 | Microsoft-fiók létrehozása <ul>(az Azure Marketplace-en transact ajánlatok szükséges; mások számára ajánlott)</ul> | 15 perc | [A Microsoft azonosító létrehozása](https://docs.microsoft.com/en-us/azure/marketplace/become-publisher#2-create-a-microsoft-account) |  
-| 3 | A Marketplace-en regisztrációs űrlap beküldése | 15 perc | [Küldje el a piactér-jelölési űrlapot](https://docs.microsoft.com/en-us/azure/marketplace/become-publisher#3-submit-the-marketplace-registration-form) |  
-| 4 |  Jelentkezzen be a Cloud Partner portálra | 1 – 3 nap | [Jelentkezzen be a Cloud Partner portálra](https://docs.microsoft.com/en-us/azure/marketplace/become-publisher#4-sign-into-cloud-partner-portal) |  
-| 5 | Regisztráljon a Microsoft Developer Centerben (Dev Center) (az Azure Marketplace-en ajánlatok transact) | 5 – 10 nap | [Regisztrálás a fejlesztői központban](https://docs.microsoft.com/en-us/azure/marketplace/become-publisher#5-register-in-dev-center-for-transact-publishing-option-only) |  
+| 1 | A Microsoft Partner Network regisztrálása | 15 perc | [A Microsoft Partner Network regisztrálása](https://docs.microsoft.com/azure/marketplace/become-publisher#1-register-in-microsoft-partner-network) |  
+| 2 | Microsoft-fiók létrehozása <ul>(az Azure Marketplace-en transact ajánlatok szükséges; mások számára ajánlott)</ul> | 15 perc | [A Microsoft azonosító létrehozása](https://docs.microsoft.com/azure/marketplace/become-publisher#2-create-a-microsoft-account) |  
+| 3 | A Marketplace-en regisztrációs űrlap beküldése | 15 perc | [Küldje el a piactér-jelölési űrlapot](https://docs.microsoft.com/azure/marketplace/become-publisher#3-submit-the-marketplace-registration-form) |  
+| 4 |  Jelentkezzen be a Cloud Partner portálra | 1 – 3 nap | [Jelentkezzen be a Cloud Partner portálra](https://docs.microsoft.com/azure/marketplace/become-publisher#4-sign-into-cloud-partner-portal) |  
+| 5 | Regisztráljon a Microsoft Developer Centerben (Dev Center) (az Azure Marketplace-en ajánlatok transact) | 5 – 10 nap | [Regisztrálás a fejlesztői központban](https://docs.microsoft.com/azure/marketplace/become-publisher#5-register-in-dev-center-for-transact-publishing-option-only) |  
 
 
 ## <a name="1-register-in-microsoft-partner-network"></a>1. A Microsoft Partner Network regisztrálása  
@@ -54,9 +54,9 @@ A Microsoft-fiók, pl. *@outlook.com vagy @live.com*, használható számos Micr
 [! [Fontos a] megjegyezni, hogy a munkahelyi e-mail-címmel társított Microsoft-fiók nem teszi lehetővé, hogy a portál eléréséhez.
 
 >[!Note]
->Ha már rendelkezik Microsoft-fiókkal, tekintse át a [irányelvek létrehozásához a marketplace-fiók kezelése a Microsoft ID](https://review.docs.microsoft.com/en-us/azure/marketplace/guidelines#guidelines-for-creating-a-microsoft-id-to-manage-a-marketplace-account) meghatározni, ha akkor is használható a piactér közzétételre. 
+>Ha már rendelkezik Microsoft-fiókkal, tekintse át a [irányelvek létrehozásához a marketplace-fiók kezelése a Microsoft ID](https://review.docs.microsoft.com/azure/marketplace/guidelines#guidelines-for-creating-a-microsoft-id-to-manage-a-marketplace-account) meghatározni, ha akkor is használható a piactér közzétételre. 
 
->Olvassa el az Azure Active Directory összevont céges fiókkal rendelkező felhasználók [Ez a cikk](https://review.docs.microsoft.com/en-us/azure/marketplace/guidelines#issue-microsoft-id-in-an-azure-ad-federated-domain) létrehozása vagy meglévő Microsoft-Account megkísérlése előtt.
+>Olvassa el az Azure Active Directory összevont céges fiókkal rendelkező felhasználók [Ez a cikk](https://review.docs.microsoft.com/azure/marketplace/guidelines#issue-microsoft-id-in-an-azure-ad-federated-domain) létrehozása vagy meglévő Microsoft-Account megkísérlése előtt.
 
 *   Segítségre van szüksége vagy kezeléséről a Microsoft-fiókját, látogasson el a [Microsoft fiók támogatási súgóoldalak](https://support.microsoft.com/en-us/products/microsoft-account?category=manage-account).
 
@@ -100,12 +100,12 @@ Befejezése után a [Dev Center](https://developer.microsoft.com/en-us/store/reg
 >Elengedni az $99 fejlesztői központ regisztrációs díj, a Marketplace-en regisztrációs űrlap kitöltése és kapni fog egy e-mailt a promóciós kódot. 
 
 >[!Important]
->Mielőtt létrehozna egy Dev Center a Microsoft-fiókot, győződjön meg arról, hogy a szervezete még nem rendelkezik a fejlesztői központban lévő fiókjához ismétlődő fiókok elkerülése érdekében. További információért látogasson el a [a fejlesztői központban regisztrálása](https://docs.microsoft.com/en-us/azure/marketplace/register-dev-center) szakaszban.
+>Mielőtt létrehozna egy Dev Center a Microsoft-fiókot, győződjön meg arról, hogy a szervezete még nem rendelkezik a fejlesztői központban lévő fiókjához ismétlődő fiókok elkerülése érdekében. További információért látogasson el a [a fejlesztői központban regisztrálása](https://docs.microsoft.com/azure/marketplace/register-dev-center) szakaszban.
 
 
 ## <a name="next-steps"></a>További lépések
-* Ismerje meg a Marketplace-en kirakattípus: [összehasonlítása appsource-ban és az Azure Marketplace-en](https://docs.microsoft.com/en-us/azure/marketplace/comparing-appsource-azure-marketplace)
-*   [A megoldás lista típusának meghatározása](https://docs.microsoft.com/en-us/azure/marketplace/determine-your-listing-type)
+* Ismerje meg a Marketplace-en kirakattípus: [összehasonlítása appsource-ban és az Azure Marketplace-en](https://docs.microsoft.com/azure/marketplace/comparing-appsource-azure-marketplace)
+*   [A megoldás lista típusának meghatározása](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type)
 
  
 ---  

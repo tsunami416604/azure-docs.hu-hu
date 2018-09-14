@@ -10,12 +10,12 @@ ms.service: billing
 ms.topic: article
 ms.date: 09/11/2018
 ms.author: byvinyal
-ms.openlocfilehash: 6a514abf9c34335e1665ca0fd221d2399fddd039
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: d179acae2053b2365c010c33cc061d29559be0cf
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44390826"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45577683"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Az Azure-előfizetésekre és -szolgáltatásokra vonatkozó korlátozások, kvóták és megkötések
 Ez a dokumentum felsorolja az egyes a leggyakrabban használt Microsoft Azure korlátok, kvóták néven is ismert. Ez a dokumentum jelenleg nem vonatkozik Azure-szolgáltatásokhoz. Az idő múlásával a lista fog kibontható vagy frissítve, hogy biztosítsák a platform további.
@@ -52,6 +52,7 @@ Az alábbi korlátok egy új táblát bővült, hogy minden korlátokat különb
 * [Azure Database for PostgreSQL](#azure-database-for-postgresql)
 * [Azure Event Grid](#azure-event-grid-limits)
 * [Azure Maps](#azure-maps-limits)
+* [Azure Monitor](#monitor-limits)
 * [Azure Policy](#azure-policy-limits)
 * [Azure Redis Cache](#azure-redis-cache-limits)
 * [Biztonsági mentés](#backup-limits)
@@ -78,7 +79,6 @@ Az alábbi korlátok egy új táblát bővült, hogy minden korlátokat különb
 * [Médiaszolgáltatások](#media-services-limits)
 * [Mobilmarketing](#mobile-engagement-limits)
 * [Mobile Services](#mobile-services-limits)
-* [Figyelés](#monitor-limits)
 * [Multi-Factor Authentication](#multi-factor-authentication)
 * [Hálózat](#networking-limits)
 * [A Network Watcher](#network-watcher-limits)

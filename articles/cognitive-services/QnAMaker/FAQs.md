@@ -1,92 +1,92 @@
 ---
-title: Gyakori kérdések – Microsoft kognitív szolgáltatások |} Microsoft Docs
-titleSuffix: Azure
-description: Gyakori kérdések
+title: Gyakori kérdések – QnA Maker
+titleSuffix: Azure Cognitive Services
+description: A QnA Maker szolgáltatás kapcsolatos gyakori kérdések listája
 services: cognitive-services
 author: nstulasi
-manager: sangitap
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: QnAMaker
+ms.component: qna-maker
 ms.topic: article
-ms.date: 04/21/2018
-ms.author: saneppal
-ms.openlocfilehash: a6bf32549715d0357771b3f3b0ff72f64788ec20
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.date: 09/12/2018
+ms.author: nstulasi
+ms.openlocfilehash: 0af93682c4a1be4de4d92e9c44e10586f740d8bf
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348671"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45576680"
 ---
 # <a name="frequently-asked-questions"></a>Gyakori kérdések
 
-## <a name="why-is-my-urlsfiles-is-not-extracting-question-answer-pairs"></a>Miért van a URL-jét (oka) t nem van kibontása kérdés-válasz pár /?
+## <a name="why-is-my-urlsfiles-is-not-extracting-question-answer-pairs"></a>Miért van a saját URL-címe / fájl(ok) nem van kibontása kérdés-válasz párt?
 
-Akkor lehet, hogy kérdések és válaszok készítő nem automatikus-kivonat néhány kérdést és választ (kérdés-válasz) tartalmat érvényes gyakran ismételt kérdések URL-címeket. Ilyen esetben a kérdések és válaszok tartalom illessze be egy .txt fájlt, és tekintse meg, ha az eszköz fogadására képes, akkor. Alternatív megoldásként Ön besorolást hozzáadhat tartalmat a Tudásbázis.
+Akkor lehet, hogy a QnA Maker nem válaszokat automatikusan kinyerni néhány kérdést és választ (kérdés-válasz) tartalom érvényes GYIK URL-címekről. Ezekben az esetekben egy .txt fájlban illessze be a szövegét, és tekintse meg, ha az eszköz betöltheti azt. Azt is megteheti hogy tudásbázishoz hozzáadhat tartalmat a a Tudásbázis.
 
 ## <a name="how-large-a-knowledge-base-can-i-create"></a>Milyen méretű lehet a létrehozott tudásbázis?
 
-A Tudásbázis méretétől függ a Termékváltozat az Azure search úgy dönt, hogy a kérdések és válaszok készítő szolgáltatás létrehozásakor. Olvasási [Itt](./Tutorials/choosing-capacity-qnamaker-deployment.md) további részleteket.
+A Tudásbázis mérete attól függ, hogy a Termékváltozat az Azure search úgy dönt, hogy a QnA Maker szolgáltatás létrehozásakor. Olvasási [Itt](./Tutorials/choosing-capacity-qnamaker-deployment.md) további részletekért.
 
-## <a name="why-do-i-not-see-anything-in-the-drop-down-for-when-i-try-to-create-a-new-knowledge-base"></a>Miért nem látom semmit a legördülő hozzon létre egy új Tudásbázis közben?
+## <a name="why-do-i-not-see-anything-in-the-drop-down-for-when-i-try-to-create-a-new-knowledge-base"></a>Miért nem látok semmit a legördülő jelenik meg, hozzon létre egy új Tudásbázis?
 
-Kérdések és válaszok készítő szolgáltatások még nem hozott létre az Azure-ban még. Olvasási [Itt](./How-To/set-up-qnamaker-service-azure.md) módjáról.
+Még nem hozott létre egyetlen QnA Maker szolgáltatást az Azure-ban még. Olvasási [Itt](./How-To/set-up-qnamaker-service-azure.md) hogyan valósítható meg.
 
-## <a name="how-do-i-share-a-knowledge-base-with-other"></a>A Tudásbázis megosztása más
+## <a name="how-do-i-share-a-knowledge-base-with-other"></a>Hogyan oszthatom meg a Tudásbázis más?
 
-Működik a kérdések és válaszok készítő szolgáltatás szintű megosztás, azaz összes Tudásbázis körrel szolgáltatások lesz megosztva. Olvasási [Itt](./How-To/collaborate-knowledge-base.md) hogyan kell a Tudásbázis másokkal közösen szerkeszthet.
+Megosztás a QnA Maker szolgáltatás szintjén működik, azaz az összes tudásbázisok a szolgáltatások meg lesz osztva. Olvasási [Itt](./How-To/collaborate-knowledge-base.md) hogyan működhet a Tudásbázis.
 
-## <a name="how-can-i-change-the-default-message-when-no-good-match-is-found"></a>Hogyan módosítható az alapértelmezett üzenet, amikor nincs helyes megfelelő?
+## <a name="how-can-i-change-the-default-message-when-no-good-match-is-found"></a>Hogyan válthatok az alapértelmezett üzenetet, ha nem jó talál egyezést?
 
-Az alapértelmezett üzenet a beállítások az App service-ben részét képezi.
-- Lépjen a az alkalmazás szolgáltatás-erőforrást az Azure portálon
+Az alapértelmezett üzenetet a beállításokat az App service része.
+- Nyissa meg a az Azure Portalon, az App service erőforrás
 
-![qnamaker App Service](./media/qnamaker-faq/qnamaker-resource-list-appservice.png)
-- Kattintson a **beállítások** beállítás
+![az App Service qnamaker](./media/qnamaker-faq/qnamaker-resource-list-appservice.png)
+- Kattintson a **beállítások** lehetőség
 
-![qnamaker App Service-beállítások](./media/qnamaker-faq/qnamaker-appservice-settings.png)
+![qnamaker az App Service-beállítások](./media/qnamaker-faq/qnamaker-appservice-settings.png)
 - Módosítsa a **DefaultAnswer** beállítás
 - Indítsa újra az App service
 
-![qnamaker App Service-újraindítás](./media/qnamaker-faq/qnamaker-appservice-restart.png)
+![qnamaker az App Service-újraindítás](./media/qnamaker-faq/qnamaker-appservice-restart.png)
 
-## <a name="why-is-my-sharepoint-link-not-getting-extracted"></a>Miért van a SharePoint-hivatkozás nem első kibontott?
+## <a name="why-is-my-sharepoint-link-not-getting-extracted"></a>Miért érdemes a SharePoint-hivatkozás nem első ki kell olvasni?
 
-Az eszköz csak nyilvános URL-címek elemez, és jelenleg nem támogatja a hitelesített adatforrások. Alternatív megoldásként töltse le a fájlt, és bontsa ki a kérdések és válaszok a fájlfeltöltés kapcsoló használatával.
+Az eszköz elemzi csak nyilvános URL-címeket, és jelenleg nem támogatja a hitelesített adatforrások. Azt is megteheti töltse le a fájlt, és a kérdések és válaszok kinyerése a fájlfeltöltés beállítás használatával.
 
 
-## <a name="the-updates-that-i-made-to-my-knowledge-base-are-not-reflected-on-publish-why-not"></a>A Tudásbázis végzett frissítések nem jelennek meg közzététele. Mi ennek az oka?
+## <a name="the-updates-that-i-made-to-my-knowledge-base-are-not-reflected-on-publish-why-not"></a>A Tudásbázisban végzett frissítések nem fognak megjelenni közzététele. Mi ennek az oka?
 
-Minden alkalmazásszerkesztési művelet a táblázat frissítése a, a teszt vagy a beállítások, meg kell megnyitása előtt tehetők közzé. Győződjön meg arról, kattintson a Mentés és gomb betanítása minden alkalmazásszerkesztési művelet után.
+Minden szerkesztési művelet az egy táblázat frissítése, tesztelési vagy beállítások, kell menteni kell a közzétételhez. Győződjön meg arról, kattintson a Mentés és a gomb betanításához minden szerkesztési művelet után.
 
-## <a name="when-should-i-refresh-my-endpoint-keys"></a>Ha frissítse a végpont kulcsok?
+## <a name="when-should-i-refresh-my-endpoint-keys"></a>Mikor kell frissíteni a végpont kulcsaim?
 
-A végpont kulcsok kell frissítse, ha azt gyanítja, hogy azok sérültek.
+A végpont kulcsok frissítenie kell, ha azt gyanítja, hogy azok biztonsága sérült.
 
-## <a name="does-the-knowledge-base-support-rich-data-or-multimedia"></a>A Tudásbázis támogatási részletes adatok vagy a multimédia használ?
+## <a name="does-the-knowledge-base-support-rich-data-or-multimedia"></a>A Tudásbázis támogatja a részletes adattartalmat vagy multimédiás nem?
 
-A tudásbázis támogatja a Markdown-formátumot. Azonban az URL-címek automatikus – kibontási HTML-Markdown átalakítás funkció korlátozott. Ha azt szeretné, teljes körű Markdown-szintaxissal, közvetlenül a táblázat a tartalmának módosítása, vagy töltse fel a Tudásbázis a gazdag tartalommal.
+A tudásbázis támogatja a Markdown-formátumot. Azonban az URL-címek automatikus – kibontási korlátozott HTML-Markdown átalakítási képességek. Ha azt szeretné, teljes értékű Markdown használata, a tartalmat közvetlenül a tábla módosítása, vagy töltse fel a Tudásbázis a részletes tartalommal.
 
-Multimédia, például a lemezképeket és videók, jelenleg nem támogatott.
+Multimédia, például a képek és videók, jelenleg nem támogatott.
 
-## <a name="does-qna-maker-support-non-english-languages"></a>Támogatja a kérdések és válaszok készítő nem angol nyelvű?
+## <a name="does-qna-maker-support-non-english-languages"></a>A QnA Maker támogatja a nem angol nyelvű?
 
-További részleteket tudhat meg [támogatott nyelv](./Overview/languages-supported.md).
+További részletekre kíváncsi [támogatott nyelvek](./Overview/languages-supported.md).
 
-Ha több nyelvet a tartalom, ügyeljen arra, hogy hozzon létre egy külön szolgáltatást, az egyes nyelvekhez.
+Ha több nyelven elérhető tartalmait, mindenképpen hozzon létre egy külön szolgáltatás, az egyes nyelvekhez.
 
 ## <a name="do-i-need-to-use-bot-framework-in-order-to-use-qna-maker"></a>Szükséges a Bot Framework használata a QnA Maker használatához?
 
-Nem, nem kell a Botot keretrendszer használata a kérdések és válaszok készítő. Azonban kérdések és válaszok készítő érhető el az Azure Botot Service több sablonok egyikét. Botot szolgáltatás lehetővé teszi, hogy a gyors intelligens botot fejlesztési Microsoft Botot keretrendszeren keresztül, és fusson a kiszolgáló kevesebb környezetben.
+Nem, nem kell a Bot Framework használata a QnA Maker. A QnA Maker azonban az Azure Bot Service számos sablon egyik érhető el. Bot Service lehetővé teszi, hogy a gyors intelligens robotfejlesztést keresztül a Microsoft Bot Framework, és fut a kiszolgáló a kevésbé környezetben.
 
-## <a name="how-can-i-create-a-bot-with-qna-maker"></a>Hogyan hozhat létre a kérdések és válaszok készítő bot?
+## <a name="how-can-i-create-a-bot-with-qna-maker"></a>Hogyan hozhatnak létre a QnA Maker egy robot?
 
-Kövesse az utasításokat a [ez](./Tutorials/create-qna-bot.md) a Botot létrehozása a Azure Botot dokumentációját.
+Kövesse a [ez](./Tutorials/create-qna-bot.md) Robotjait létrehozása az Azure Bot dokumentáció.
 
 ## <a name="how-do-i-embed-the-qna-maker-service-in-my-website"></a>Hogyan ágyazhatom be a QnA Maker szolgáltatást a honlapomba?
 
-Kövesse az alábbi lépéseket a kérdések és válaszok készítő szolgáltatás a webalkalmazás-Csevegés vezérlő beágyazása a webhely:
+Kövesse az alábbi lépéseket a QnA Maker szolgáltatást webes csevegési vezérlőként beágyazása a webhely:
 
-1. Hozzon létre a gyakran ismételt kérdések botot cikk utasításait követve [Itt](./Tutorials/create-qna-bot.md).
-2. A webes Csevegés engedélyezése a következő lépések [Itt](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-channel-connect-webchat)
+1. Hozzon létre a gyakori kérdések robot utasításait követve [Itt](./Tutorials/create-qna-bot.md).
+2. A webes csevegési engedélyezése a lépéseket követve [Itt](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-webchat)
 
 
