@@ -9,29 +9,29 @@ ms.component: language-understanding
 ms.topic: quickstart
 ms.date: 08/24/2018
 ms.author: diberry
-ms.openlocfilehash: fee0f9009e7ce6cef839010f68ae3487067152b9
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 0c631fe281587c86f26643367aead14683b699df
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43770065"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44160915"
 ---
 # <a name="quickstart-change-model-using-c"></a>Rövid útmutató: Modell módosítása a C# használatával
 
-[!include[Quickstart introduction for change model](../../../includes/cognitive-services-luis-qs-change-model-intro-para.md)]
+[!INCLUDE [Quickstart introduction for change model](../../../includes/cognitive-services-luis-qs-change-model-intro-para.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-[!include[Quickstart prerequisites for changing model](../../../includes/cognitive-services-luis-qs-change-model-prereq.md)]
+[!INCLUDE [Quickstart prerequisites for changing model](../../../includes/cognitive-services-luis-qs-change-model-prereq.md)]
 * Legújabb [**Visual Studio Community kiadás**](https://www.visualstudio.com/downloads/).
 * Telepített C# programozási nyelv.
 * [JsonFormatterPlus](https://www.nuget.org/packages/JsonFormatterPlus) és [CommandLine](https://www.nuget.org/packages/CommandLineParser/) NuGet-csomagok
 
-[!include[Code is available in LUIS-Samples Github repo](../../../includes/cognitive-services-luis-qs-change-model-luis-repo-note.md)]
+[!INCLUDE [Code is available in LUIS-Samples Github repo](../../../includes/cognitive-services-luis-qs-change-model-luis-repo-note.md)]
 
 ## <a name="example-utterances-json-file"></a>Kimondott példaszövegek JSON-fájlja
 
-[!include[Quickstart explanation of example utterance JSON file](../../../includes/cognitive-services-luis-qs-change-model-json-ex-utt.md)]
+[!INCLUDE [Quickstart explanation of example utterance JSON file](../../../includes/cognitive-services-luis-qs-change-model-json-ex-utt.md)]
 
 ## <a name="create-quickstart-code"></a>A rövid útmutató kódjának létrehozása 
 
@@ -133,7 +133,7 @@ ConsoleApp\bin\Debug> ConsoleApp1.exe --add utterances.json --train --status
 
 A parancssor megjeleníti a kimondott szövegek hozzáadása API meghívásának eredményét. 
 
-[!include[Quickstart response from API calls](../../../includes/cognitive-services-luis-qs-change-model-json-results.md)]
+[!INCLUDE [Quickstart response from API calls](../../../includes/cognitive-services-luis-qs-change-model-json-results.md)]
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 Miután végzett a rövid útmutatóval, távolítsa el a rövid útmutatóban létrehozott összes fájlt. 
