@@ -1,5 +1,5 @@
 ---
-title: Adatok lapjával fogalmait a LUIS - Kifejezéstár nyelveinek ismertetése
+title: A LUIS - Language Understanding Data lapjával fogalmak
 titleSuffix: Azure Cognitive Services
 description: Ismerje meg, hogyan adatokat is módosítható előtt előrejelzések a Language Understanding (LUIS)
 services: cognitive-services
@@ -8,17 +8,17 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 03/26/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 2949f7afa5d04d9f7ea738ad6f7b9333bfaf958f
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: f3caac697bad0bdb1401e85ac032fe167c25e112
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44023017"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45631259"
 ---
 # <a name="data-alterations"></a>Adatok átalakítások
-A LUIS segítségével kezelheti az utterance (kifejezés) előtt vagy közben az előrejelzési módszert biztosít. 
+A LUIS segítségével kezelheti az utterance (kifejezés) előtt vagy közben az előrejelzési módszert biztosít. Ezek közé tartozik a helyesírás-ellenőrzés és kijavítása prebuild datetimeV2 időzóna problémák kijavítása. 
 
 ## <a name="correct-spelling-errors-in-utterance"></a>Helyesírási hibák az utterance (kifejezés)
 Használja a LUIS [a Bing Spell ellenőrzés API 7-es](https://azure.microsoft.com/services/cognitive-services/spell-check/) az utterance (kifejezés) a helyesírási hibákat. A LUIS kell a szolgáltatáshoz tartozó kulcsot. Hozza létre a kulcsot, majd adja hozzá a kulcsot a lekérdezési karakterlánc paraméterként a [végpont](https://aka.ms/luis-endpoint-apis). 
@@ -48,6 +48,9 @@ Amikor [a Bing Spell ellenőrzés API 7-es](https://azure.microsoft.com/services
 }
 ```
  
+### <a name="whitelist-words"></a>Engedélyezési lista szavakat
+A Bing spell check API-val a LUIS nem támogatja a fehér-szavak listáját a spell során figyelmen kívül ellenőrizze a módosításokat. Ha engedélyezési listára szavakat vagy betűszavakat van szüksége, dolgozza fel az ügyfélalkalmazásban, engedélyezési listáját, mielőtt elküldené az utterance (kifejezés) LUIS szándék előrejelzéshez utterance (kifejezés).
+
 ## <a name="change-time-zone-of-prebuilt-datetimev2-entity"></a>Előre összeállított datetimeV2 entitás időzóna módosítása
 A LUIS-alkalmazás az előre összeállított datetimeV2 entitást használja, amikor egy datetime értéket a előrejelzési válaszban adhatók vissza. A kérelem az időzóna visszaadandó megfelelő datetime meghatározására szolgál. Ha a kérelem érkezik egy robot vagy egy másik központi alkalmazás LUIS való elérése előtt, javítsa ki az időzóna, LUIS használja. 
 

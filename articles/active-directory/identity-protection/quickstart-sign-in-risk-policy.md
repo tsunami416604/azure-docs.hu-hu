@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 09/13/2018
 ms.author: markvi
 ms.reviewer: raluthra
-ms.openlocfilehash: cadcc806b9aaeea4f2fc68c911e09c7e35926623
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: 6879822e8451e6170bf17fff4ab66b672f711a93
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45552406"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45632387"
 ---
 # <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-identity-protection"></a>Gyors útmutató: Letiltja a hozzáférést, az Azure Active Directory Identity Protection egy munkamenet kockázati észlelésekor  
 
@@ -29,7 +29,7 @@ A védett környezet megtartásához érdemes gyanús felhasználó bejelentkez�
 
 Ez a rövid útmutató bemutatja, hogyan konfigurálhatja a bejelentkezési kockázat feltételes hozzáférési szabályzatot, amely blokkolja a bejelentkezés során egy közepes méretű, és a fenti bejelentkezési kockázati szint észlelhető. 
 
-![Szabályzat létrehozása](./media/quickstart-sign-in-risk-policy/1003.png)
+![Szabályzat létrehozása](./media/quickstart-sign-in-risk-policy/1004.png)
 
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
@@ -46,7 +46,7 @@ Ebben az oktatóanyagban a forgatókönyv végrehajtásához szükséges:
 
 - **Tor böngésző** – a [Tor böngésző](https://www.torproject.org/projects/torbrowser.html.en) célja, hogy segít megőrizni az adatvédelemmel kapcsolatban. Identity Protection észleli a bejelentkezési, Tor böngészőből **névtelen IP-címekről történő bejelentkezések**, amely rendelkezik egy közepes méretű kockázati szintű. További információkért tekintse át [Az Azure Active Directory kockázati eseményeivel](../reports-monitoring/concept-risk-events.md) foglalkozó cikket.  
 
-- **Tesztfiók nevű Alain Charon** – Ha nem tudja, hogyan hozzon létre egy olyan fiókot, lásd: [adja hozzá a felhőalapú felhasználók](../fundamentals/add-users-azure-active-directory.md#add-cloud-based-users).
+- **Tesztfiók nevű Alain Charon** – Ha nem tudja, hogyan hozzon létre egy olyan fiókot, lásd: [új felhasználó hozzáadása](../fundamentals/add-users-azure-active-directory.md#add-a-new-user).
 
 
 ## <a name="test-your-sign-in"></a>A bejelentkezés tesztelése 
@@ -82,35 +82,31 @@ Ez a szakasz bemutatja, hogyan hozhat létre a szükséges bejelentkezési kock�
 
 1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) globális rendszergazdaként.
 
-2. Az Azure Portalon, a bal oldali navigációs sávon kattintson **minden szolgáltatás**. 
-
-4. Az a **szűrő** szövegmezőbe írja be **identity protection**.
-
-5. Kattintson a **az Azure AD Identity Protection**.   
+2. Nyissa meg a [Azure AD Identity Protection lapról](https://portal.azure.com/#blade/Microsoft_AAD_ProtectionCenter/IdentitySecurityDashboardMenuBlade/Overview).
  
-6. Az a **Azure AD Identity Protection** lap a **konfigurálása** területén kattintson **bejelentkezési kockázati házirend**.
+3. Az a **Azure AD Identity Protection** lap a **konfigurálása** területén kattintson **bejelentkezési kockázati házirend**.
  
-5. A szabályzat lapján az a **hozzárendelések** területén kattintson **felhasználók**.
+4. A szabályzat lapján az a **hozzárendelések** területén kattintson **felhasználók**.
 
-6. Az a **felhasználók** kattintson **válassza ki a felhasználók**.
+5. Az a **felhasználók** kattintson **válassza ki a felhasználók**.
 
-7. Az a **válassza ki a felhasználók** lapra, jelölje be **Alain Charon**, és kattintson a **kiválasztása**.
+6. Az a **válassza ki a felhasználók** lapra, jelölje be **Alain Charon**, és kattintson a **kiválasztása**.
 
-8. Az a **felhasználók** kattintson **kész**. 
+7. Az a **felhasználók** kattintson **kész**. 
 
-9. A szabályzat lapján az a **hozzárendelések** területén kattintson **feltételek**.
+8. A szabályzat lapján az a **hozzárendelések** területén kattintson **feltételek**.
 
-10. Az a **feltételek** kattintson **bejelentkezési kockázat**.
+9. Az a **feltételek** kattintson **bejelentkezési kockázat**.
 
-11. A a **bejelentkezési kockázat** lapon jelölje be **közepes és a fenti**, és kattintson a **válassza**. 
+10. A a **bejelentkezési kockázat** lapon jelölje be **közepes és a fenti**, és kattintson a **válassza**. 
 
-12. Az a **feltételek** kattintson **kész**.
+11. Az a **feltételek** kattintson **kész**.
 
-13. A szabályzat lapján az a **vezérlők** területén kattintson **hozzáférés**.
+12. A szabályzat lapján az a **vezérlők** területén kattintson **hozzáférés**.
 
-14. A a **hozzáférés** kattintson **engedélyezi a hozzáférést**, jelölje be **többtényezős hitelesítés megkövetelése**, és kattintson a **válassza**.
+13. A a **hozzáférés** kattintson **engedélyezi a hozzáférést**, jelölje be **többtényezős hitelesítés megkövetelése**, és kattintson a **válassza**.
 
-15. A szabályzat lapján kattintson a **mentése**.  
+14. A szabályzat lapján kattintson a **mentése**.  
 
 
 ## <a name="test-your-conditional-access-policy"></a>A feltételes hozzáférési házirend tesztelése
@@ -124,7 +120,7 @@ Ha tesztelni szeretné a szabályzatot, próbálja meg, jelentkezzen be a [az Az
 
 Ha már nincs rá szükség, törölje a tesztfelhasználó számára, a Tor böngészőben, és tiltsa le a bejelentkezési kockázat feltételes hozzáférési szabályzatot:
 
-- Ha nem ismeri az Azure AD-felhasználó törlése, lásd: [felhasználók törlése az Azure ad-ből](../fundamentals/add-users-azure-active-directory.md#delete-users-from-azure-ad).
+- Ha nem ismeri az Azure AD-felhasználó törlése, lásd: [hozzáadása vagy törlése a felhasználók](../fundamentals/add-users-azure-active-directory.md#delete-a-user).
 
 - Eltávolítja a Tor böngésző útmutatásért lásd: [eltávolítása](https://tb-manual.torproject.org/en-US/uninstalling.html).
 

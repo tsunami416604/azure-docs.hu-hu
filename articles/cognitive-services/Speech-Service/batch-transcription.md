@@ -8,12 +8,12 @@ ms.technology: Speech to Text
 ms.topic: article
 ms.date: 04/26/2018
 ms.author: panosper
-ms.openlocfilehash: 02af95859bcbdc3dd9fdd6d6354cae9cdf99eae8
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: fcc57ea7729f8a907fd39fe346270cc52c148f07
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44717947"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45605587"
 ---
 # <a name="batch-transcription"></a>Kötegelt átírás
 
@@ -59,21 +59,21 @@ Sztereó audiostreamek lejátszásával, a Batch beszédátírási bontja a bal 
 
 ## <a name="authorization-token"></a>Engedélyezési jogkivonat
 
-Az összes funkciót, az egyesített beszédszolgáltatás, egy előfizetési kulcsot a létrehozásakor a [az Azure portal](https://portal.azure.com). 6 egyszerű lépések végrehajtásával.
+Az egyesített beszédszolgáltatás minden szolgáltatását, létrehozhat egy előfizetési kulcsot, a a [az Azure portal](https://portal.azure.com) következő a [első lépések útmutató](get-started.md). Ha azt tervezi, hogy beszédátírás kérhet az eredeti modellt akkor kell tennie. 
 
-1. Létrehozott egy előfizetési kulcsot az Azure a következőket a [első lépések útmutató](get-started.md) 
+Ha azt tervezi, hogy a testreszabás, és a egy egyéni modell használatával majd hozzá kell subscritpion ezt a kulcsot a custom speech-portál a következőképpen:
 
-2. Jelentkezzen be a [Custom Speech](https://customspeech.ai).
+1. Jelentkezzen be a [Custom Speech](https://customspeech.ai).
 
-3. Válassza az **Előfizetések** lehetőséget.
+2. Válassza az **Előfizetések** lehetőséget.
 
-4. Válassza ki **csatlakozás meglévő előfizetés**.
+3. Válassza ki **csatlakozás meglévő előfizetés**.
 
-5. Az előfizetési kulcsot és a egy alias hozzáadása a felugró nézetben
+4. Az előfizetési kulcsot és a egy alias hozzáadása a felugró nézetben
 
     ![Képernyőkép az egyéni beszédfelismerési előfizetések lap](media/stt/Subscriptions.jpg)
 
-6. Másolja és illessze be ezt a kulcsot a következő mintában az Ügyfélkód.
+5. Másolja és illessze be ezt a kulcsot a következő mintában az Ügyfélkód.
 
 > [!NOTE]
 > Ha azt tervezi, a egyéni modell, túl kell, hogy a modell azonosítója. Vegye figyelembe, hogy ez nem talált a végpont részletei nézeten hálózativégpont-azonosító. A Modellazonosító lekérhető a modell adatait kiválasztásakor.
@@ -101,7 +101,7 @@ Miután beszerezte a jogkivonatot, meg kell adnia a SAS URI-t igénylő beszéd�
    static async Task TranscribeAsync()
         { 
             private const string SubscriptionKey = "<your Speech[Preview] subscription key>";
-            private const string HostName = "cris.ai";
+            private const string HostName = "westus.cris.ai";
             private const int Port = 443;
     
             // Creating a Batch transcription API Client

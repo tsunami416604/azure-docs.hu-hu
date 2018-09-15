@@ -1,10 +1,10 @@
 ---
-title: Azure kívánt állapot konfigurációs kiterjesztés kezelőjének |} Microsoft Docs
-description: Töltse fel, és a PowerShell DSC-konfiguráció alkalmazása a DSC-bővítményt használ, egy Azure virtuális gépen
+title: Azure Desired State Configuration bővítmény kezelő |} A Microsoft Docs
+description: Töltse fel, és a egy PowerShell DSC-konfiguráció alkalmazása a DSC-bővítmény használata Azure virtuális gép
 services: virtual-machines-windows
 documentationcenter: ''
-author: eshaparmar
-manager: jeconnoc
+author: bobbytreed
+manager: carmonm
 editor: ''
 ms.assetid: ''
 ms.service: virtual-machines-windows
@@ -13,35 +13,35 @@ ms.topic: article
 ms.tgt_pltfrm: windows
 ms.workload: ''
 ms.date: 03/26/2018
-ms.author: esparmar
-ms.openlocfilehash: b34314951980f7dbe2269119883dec52a90a0587
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.author: robreed
+ms.openlocfilehash: b9e96473a6f66dcbc675da1553deaed4ad61b249
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33942703"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45630931"
 ---
-# <a name="powershell-dsc-extension"></a>PowerShell DSC-bővítményt
+# <a name="powershell-dsc-extension"></a>PowerShell DSC bővítmény
 
 ## <a name="overview"></a>Áttekintés
 
-A Windows PowerShell DSC-bővítményt közzétett és a Microsoft támogatja. A bővítmény feltölti, és alkalmazza a PowerShell DSC-konfiguráció egy Azure virtuális gépen. A DSC-bővítményt meghívja a PowerShell DSC életbe léptetni a fogadott DSC-konfiguráció a virtuális Gépen. Ez a dokumentum a támogatott platformok, a konfigurációkat és a Windows DSC virtuálisgép-bővítmény telepítési lehetőségei részletes.
+A Windows PowerShell DSC bővítmény közzétett és a Microsoft támogatja. A bővítmény tölt fel, és a egy Azure-beli virtuális gépen a PowerShell DSC-konfiguráció vonatkozik. A DSC-bővítmény életbe léptetni a fogadott DSC-konfiguráció a virtuális gépen a PowerShell DSC beérkező hívások. Ez a dokumentum részletesen, a támogatott platformok, a konfigurációk és a Windows DSC virtuálisgép-bővítmény az üzembe helyezési lehetőségeit.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 ### <a name="operating-system"></a>Operációs rendszer
 
-A DSC-bővítményt támogatja a következő operációs rendszer
+A DSC-bővítmény támogatja a következő operációs rendszer
 
-Windows Server 2016-, Windows Server 2012 R2 rendszerben, a Windows Server 2012, Windows Server 2008 R2 SP1, Windows-ügyfél 7/8.1
+A Windows Server 2016, Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2 SP1, Windows ügyfél 7/8.1
 
 ### <a name="internet-connectivity"></a>Internetkapcsolat
 
-A DSC-bővítményt, a Windows megköveteli, hogy a cél virtuális gép csatlakozik az internethez. 
+A Windows a DSC-bővítmény szükséges, hogy a céloldali virtuális gép csatlakozik az internethez. 
 
 ## <a name="extension-schema"></a>Bővítményséma
 
-A következő JSON Azure Resource Manager-sablonok a sémát a DSC-bővítményt beállítási részén látható. 
+A következő JSON Azure Resource Manager-sablon a DSC-bővítmény beállítási részén sémáját jeleníti meg. 
 
 ```json
 {
@@ -96,50 +96,50 @@ A következő JSON Azure Resource Manager-sablonok a sémát a DSC-bővítményt
 }
 ```
 
-### <a name="property-values"></a>A tulajdonság értékek
+### <a name="property-values"></a>Tulajdonságok értékei
 
-| Name (Név) | Érték / – példa | Adattípus |
+| Name (Név) | Érték és példa | Adattípus |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | dátum |
-| publisher | Microsoft.Powershell.DSC | karakterlánc |
-| type | A DSC-BŐL | karakterlánc |
+| publisher | Microsoft.Powershell.DSC | sztring |
+| type | DSC | sztring |
 | typeHandlerVersion | 2,73 | int |
 
 ### <a name="settings-property-values"></a>Beállítási tulajdonság értékei
 
 | Name (Név) | Adattípus | Leírás
 | ---- | ---- | ---- |
-| settings.wmfVersion | karakterlánc | Adja meg a Windows Management Framework, amelyet telepíteni kell a virtuális gép verziója. A "legújabb" tulajdonság beállítása esetén a WMF legfrissebb verzióját telepíti. Ez a tulajdonság csak az aktuális lehetséges értékei "4.0", "5.0" és "legújabb". A lehetséges értékek a frissítések vonatkoznak. Az alapértelmezett érték: "legújabb". |
-| settings.configuration.url | karakterlánc | Meghatározza a URL-címét, amelyről letöltheti a DSC konfigurációs zip-fájl. Ha az URL-cím egy SAS-jogkivonat hozzáférést igényel, szüksége lesz a protectedSettings.configurationUrlSasToken tulajdonsága az SAS-token értékét. E tulajdonság megadása kötelező, ha settings.configuration.script és/vagy settings.configuration.function vannak meghatározva.
-| settings.configuration.script | karakterlánc | Adja meg a parancsfájl a DSC-konfiguráció definícióját tartalmazó fájl neve. Ez a parancsfájl configuration.url tulajdonság által megadott URL-címről letöltött zip-fájl a gyökérmappában kell lennie. E tulajdonság megadása kötelező, ha settings.configuration.url és/vagy settings.configuration.script vannak meghatározva.
-| settings.configuration.function | karakterlánc | Megadja a DSC-konfiguráció nevét. A konfiguráció a parancsfájl configuration.script által meghatározott kell tartoznia. E tulajdonság megadása kötelező, ha settings.configuration.url és/vagy settings.configuration.function vannak meghatározva.
-| settings.configurationArguments | Gyűjtemény | Meghatározza bármely továbbítani szeretné a DSC-konfiguráció. Ez a tulajdonság nem lesznek titkosítva.
-| settings.configurationData.url | karakterlánc | Meghatározza a URL-címet, amelyről letöltheti a konfigurációs adatfájlt (.pds1) használandó bemenetként a DSC-konfiguráció. Ha az URL-cím egy SAS-jogkivonat hozzáférést igényel, szüksége lesz a protectedSettings.configurationDataUrlSasToken tulajdonsága az SAS-token értékét.
-| settings.privacy.dataEnabled | karakterlánc | Engedélyezheti vagy letilthatja a telemetriai adatok gyűjtése. Ez a tulajdonság csak lehetséges értékei "Engedélyezés", "Letiltás", ", vagy $null. Így ez a tulajdonság üres vagy null értékű engedélyezi telemetriai adat
-| settings.advancedOptions.forcePullAndApply | logikai érték | Lehetővé teszi, hogy a frissítés és a DSC-konfigurációk kihirdeti, ha a frissítési mód lekéréses DSC-bővítményt.
-| settings.advancedOptions.downloadMappings | Gyűjtemény | Határozza meg a másodlagos helyek például WMF és .NET függőségek letöltése
+| settings.wmfVersion | sztring | Határozza meg a Windows Management Framework a virtuális gépre telepítendő verzióját. Ez a tulajdonság "legújabb" beállítás telepíti a WMF legtöbb frissített verzióját. Ez a tulajdonság csak az aktuális lehetséges értékei: 4.0', "5.0" és "legújabb". Ezek lehetséges értékek a következők vonatkoznak a frissítéseket. Az alapértelmezett érték: "legújabb". |
+| settings.configuration.url | sztring | Itt adhatja meg, ahonnan letölthető a DSC konfigurációs zip-fájl URL-címét. Ha a megadott URL-cím egy SAS-token hozzáférést igényel, szüksége lesz a protectedSettings.configurationUrlSasToken tulajdonsága az SAS-token értékét. A tulajdonságot kötelező megadni, ha settings.configuration.script és/vagy settings.configuration.function van definiálva.
+| settings.configuration.script | sztring | Megadja a fájl nevét, a parancsfájl, amely tartalmazza a DSC-konfiguráció definíciójának. Ez a szkript a gyökérmappában található azon a configuration.url tulajdonság által megadott URL-címéről letöltött zip-fájlt kell lennie. A tulajdonságot kötelező megadni, ha settings.configuration.url és/vagy settings.configuration.script van definiálva.
+| settings.configuration.function | sztring | Megadja a DSC-konfiguráció nevét. A parancsfájl configuration.script által meghatározott tartalmaznia kell a nevű-konfigurációt. A tulajdonságot kötelező megadni, ha settings.configuration.url és/vagy settings.configuration.function van definiálva.
+| settings.configurationArguments | Gyűjtemény | Határozza meg a paramétereket, adja át szeretné a DSC-konfiguráció. Ez a tulajdonság nem lesznek titkosítva.
+| settings.configurationData.url | sztring | Adja meg az URL-cím, ahonnan letölthető a konfigurációs adatfájl (.pds1) való használatra a DSC-konfiguráció bemenetként. Ha a megadott URL-cím egy SAS-token hozzáférést igényel, szüksége lesz a protectedSettings.configurationDataUrlSasToken tulajdonsága az SAS-token értékét.
+| settings.privacy.dataEnabled | sztring | Engedélyezheti vagy letilthatja a telemetriai adatok gyűjtése. Ez a tulajdonság csak lehetséges értékei a következők "Engedélyezése", "Letiltás", ", vagy $null. És ez a tulajdonság üres vagy null értékű lesz telemetria engedélyezése
+| settings.advancedOptions.forcePullAndApply | Logikai | Lehetővé teszi a DSC-bővítmény frissítése és a DSC-konfigurációk kihirdeti, amikor a frissítési mód lekéréses.
+| settings.advancedOptions.downloadMappings | Gyűjtemény | Határozza meg a másodlagos helyek függőségeit, például a .NET és a WMF letöltése
 
-### <a name="protected-settings-property-values"></a>Védett beállítások tulajdonságértékek
+### <a name="protected-settings-property-values"></a>Védett beállításainak Vlastnost értékek
 
 | Name (Név) | Adattípus | Leírás
 | ---- | ---- | ---- |
-| protectedSettings.configurationArguments | karakterlánc | Meghatározza bármely továbbítani szeretné a DSC-konfiguráció. Ez a tulajdonság lesz titkosítva. |
-| protectedSettings.configurationUrlSasToken | karakterlánc | Megadja a SAS-jogkivonat a configuration.url által megadott URL-cím elérésére. Ez a tulajdonság lesz titkosítva. |
-| protectedSettings.configurationDataUrlSasToken | karakterlánc | Megadja a SAS-jogkivonat a configurationData.url által megadott URL-cím elérésére. Ez a tulajdonság lesz titkosítva. |
+| protectedSettings.configurationArguments | sztring | Határozza meg a paramétereket, adja át szeretné a DSC-konfiguráció. Ez a tulajdonság lesznek titkosítva. |
+| protectedSettings.configurationUrlSasToken | sztring | Adja meg a SAS-jogkivonat a configuration.url által meghatározott URL-címet. Ez a tulajdonság lesznek titkosítva. |
+| protectedSettings.configurationDataUrlSasToken | sztring | Adja meg a SAS-jogkivonat a configurationData.url által meghatározott URL-címet. Ez a tulajdonság lesznek titkosítva. |
 
 
 ## <a name="template-deployment"></a>Sablonalapú telepítés
 
-Az Azure Virtuálisgép-bővítmények az Azure Resource Manager-sablonok is telepíthető. Sablonok is épp ezért tökéletes választás, ha a feladás egy vagy több központi telepítési beállításokra van szükség egy vagy több virtuális gépek telepítése. Az OMS-ügynök Virtuálisgép-bővítmény tartalmazó minta Resource Manager sablon megtalálható a [Azure Quick Start gyűjtemény](https://github.com/Azure/azure-quickstart-templates/tree/052db5feeba11f85d57f170d8202123511f72044/dsc-extension-iis-server-windows-vm). 
+Az Azure Virtuálisgép-bővítmények is üzembe helyezhetők az Azure Resource Manager-sablonok. Sablonok ideálisak, egy vagy több üzembe helyezés utáni konfigurálásra igénylő virtuális gépek üzembe helyezésekor. Egy mintául szolgáló Resource Manager-sablon, amely tartalmazza az OMS-ügynök Virtuálisgép-bővítmény találhatók a [Azure gyors üzembe helyezési katalógus](https://github.com/Azure/azure-quickstart-templates/tree/052db5feeba11f85d57f170d8202123511f72044/dsc-extension-iis-server-windows-vm). 
 
-A JSON-konfiguráció a virtuálisgép-bővítmény a virtuálisgép-erőforrás ágyazhatók egymásba, vagy elhelyezve, a gyökér vagy a legfelső szintű erőforrás-kezelő JSON-sablon. A JSON-konfiguráció elhelyezési erőforrás nevét és típusát. értéke befolyásolja. 
+Virtuálisgép-bővítmények JSON konfigurációjának a virtuális gép típusú erőforrást belülre, vagy elhelyezve, a legfelső szintű vagy a legfelső szintű Resource Managerből származó JSON-sablon. A JSON konfigurációs elhelyezését hatással van az erőforrás nevét, és írja be az értékét. 
 
-A bővítmény erőforrás beágyazási, amikor bekerül a JSON a `"resources": []` objektum a virtuális gép. A bővítmény JSON elhelyezésekor a sablon gyökerében, az erőforrás nevét a szülő virtuális gép egy hivatkozást tartalmaz, és a típus beágyazott konfigurációját tükrözi.  
+A bővítmény erőforrás beágyazása, ha a JSON az kerül a `"resources": []` objektum a virtuális gép. Helyezi el a JSON-bővítmény a sablonban gyökérmappájában, amikor az erőforrás neve a szülő virtuális gép egy hivatkozást tartalmaz, és a típus a beágyazott konfigurációját tükrözi.  
 
 
 ## <a name="azure-cli-deployment"></a>Az Azure CLI-telepítés
 
-Az Azure CLI segítségével az OMS-ügynök Virtuálisgép-bővítmény telepítése egy meglévő virtuális gépre. Cserélje le az OMS-kulcsot és az OMS-azonosító az OMS-munkaterület szerintiek. 
+Az Azure CLI segítségével az OMS-ügynök Virtuálisgép-bővítmény egy meglévő virtuális gépek üzembe helyezéséhez. Cserélje le az OMS kulcs és az OMS-azonosítója együtt származik az OMS-munkaterülethez. 
 
 ```azurecli
 az vm extension set \
@@ -155,23 +155,23 @@ az vm extension set \
 
 ### <a name="troubleshoot"></a>Hibaelhárítás
 
-Bővítmény központi telepítések állapotára vonatkozó lehet adatokat beolvasni az Azure-portálon, és az Azure parancssori felület használatával. A megadott virtuális gépek bővítmények központi telepítési állapotának megtekintéséhez a következő parancsot az Azure parancssori felület használatával.
+Bővítmény központi telepítések állapotát lehet adatokat beolvasni az Azure Portalról, és az Azure parancssori felület használatával. Adott Virtuálisgép-bővítmények központi telepítési állapotának megtekintéséhez futtassa a következő parancsot az Azure CLI használatával.
 
 ```azurecli
 az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 ```
 
-Kiterjesztési csomag letöltésére és telepíteni ezen a helyen, az Azure virtuális gépen
+Kiterjesztési csomag letöltése és ezen a helyen, az Azure virtuális gépen telepített
 ```
 C:\Packages\Plugins\{Extension_Name}\{Extension_Version}
 ```
 
-A bővítményfájl állapot sub állapota és állapota sikeres/hibakódokat és a hibával kapcsolatos részletes és a egyes kiterjesztések futtatása leírása tartalmazza.
+A bővítményfájl állapot sub állapota és sikeres/meghiúsult állapotkódok együtt a részletes hibaüzeneteket és a leírása a egyes kiterjesztések, futtassa tartalmazza.
 ```
 C:\Packages\Plugins\{Extension_Name}\{Extension_Version}\Status\{0}.Status  -> {0} being the sequence number
 ```
 
-Bővítmény kimeneti naplókat a rendszer naplózza a következő könyvtárra:
+Bővítmény kimeneti naplóit a rendszer naplózza a következő könyvtárban:
 
 ```
 C:\WindowsAzure\Logs\Plugins\{Extension_Name}\{Extension_Version}
@@ -179,15 +179,15 @@ C:\WindowsAzure\Logs\Plugins\{Extension_Name}\{Extension_Version}
 
 ### <a name="error-codes-and-their-meanings"></a>Hibakódok és azok jelentését
 
-| Hibakód | Jelentés | Lehetséges művelet |
+| Hibakód | Jelentés | A művelet lehetséges |
 | :---: | --- | --- |
-| 1000 | Általános hiba | A bővítmény naplók egyedi kivételt biztosítja ezt a hibát az üzenet |
-| 52 | Bővítmény telepítési hiba | Ez a hiba az üzenet az adott kivétel által biztosított |
-| 1002 | WMF telepítési hiba | Hiba történt a WMF telepítése. |
-| 1004 | Érvénytelen Zip-csomagját | Érvénytelen zip; Hiba történt a zip kicsomagolása |
-| 1100 | Argumentum hiba | A felhasználó által megadott bemenetet kapcsolatos problémát jelez. A hiba az üzenet az adott kivétel által biztosított|
+| 1000 | Általános hiba | Az üzenet a hiba a bővítmény naplók az adott kivétel által biztosított |
+| 52 | Bővítmény telepítési hiba | Ennek a hibának az üzenet az adott kivétel által biztosított |
+| 1002 | A WMF-telepítési hiba | Hiba történt a WMF telepítése. |
+| 1004 | Érvénytelen Zip-csomagját | Érvénytelen tömörített; Hiba történt a zip-fájl kicsomagolása |
+| 1100 | Argument hiba | A bemeneti adatok, a felhasználó által megadott problémát jelez. A hiba az üzenet az adott kivétel által biztosított|
 
 
 ### <a name="support"></a>Támogatás
 
-Ha ez a cikk bármely pontján további segítségre van szüksége, forduljon az Azure-szakértők a a [MSDN Azure és a Stack Overflow fórumok](https://azure.microsoft.com/support/forums/). Másik lehetőségként is fájl az Azure támogatási incidens. Lépjen a [az Azure támogatási webhelyén](https://azure.microsoft.com/support/options/) válassza ki a Get-támogatási szolgálathoz. Támogatja az Azure használatával kapcsolatos információkért olvassa el a [Microsoft Azure-támogatás – gyakori kérdések](https://azure.microsoft.com/support/faq/).
+Ha ebben a cikkben bármikor további segítségre van szüksége, forduljon az Azure-szakértőket a a [MSDN Azure-ban és a Stack Overflow-fórumok](https://azure.microsoft.com/support/forums/). Másik lehetőségként a egy Azure-támogatási esemény is fájl. Nyissa meg a [Azure támogatási webhelyén](https://azure.microsoft.com/support/options/) , és válassza ki a Get-támogatást. Azure-támogatási használatával kapcsolatos információkért olvassa el a [Microsoft Azure-támogatás – gyakori kérdések](https://azure.microsoft.com/support/faq/).

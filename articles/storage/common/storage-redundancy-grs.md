@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/20/2018
 ms.author: jeking
 ms.component: common
-ms.openlocfilehash: be3d0d32e60e23b2b2d7d414d2297b86dec62f1d
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: eee9998280f2105fee5144b520bc8000b086f941
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/14/2018
-ms.locfileid: "45576833"
+ms.locfileid: "45603929"
 ---
 # <a name="geo-redundant-storage-grs-cross-regional-replication-for-azure-storage"></a>Georedundáns tárolás (GRS): az Azure Storage-régiók közti replikáció
 [!INCLUDE [storage-common-redundancy-GRS](../../../includes/storage-common-redundancy-grs.md)]
@@ -41,7 +41,7 @@ Néhány szempontot, vegye figyelembe, amikor, RA-GRS használatával:
    * Az idő a Microsoft van szükség az adatok helyreállíthatók legyenek, az elsődleges helyen, vagy ha szükség egy feladatátvevő.
    * Az az idő módosításával, hogy a másodlagos helyre mutasson az elsődleges DNS-bejegyzéseket a tárfiók a feladatátvétel végrehajtásához.
 
-   A Microsoft felelőssége komolyan megőrzi az adatok vesz igénybe. Ha az elsődleges régióban lévő adatok helyreállítása bármilyen esélyét, a Microsoft a feladatátvétel késleltetés, és összpontosítson az adatok helyreállítása. Egy jövőbeli verziójában a szolgáltatás lehetővé teszi, hogy a fiók szintjén a feladatátvétel aktiválása, így szabályozható az RTO saját maga.
+   A Microsoft felelőssége komolyan megőrzi az adatok vesz igénybe. Ha az elsődleges régióban lévő adatok helyreállítása bármilyen esélyét, a Microsoft a feladatátvétel késleltetés, és összpontosítson az adatok helyreállítása. 
 
 ## <a name="paired-regions"></a>Párosított régiók 
 Amikor létrehoz egy tárfiókot, válassza ki az elsődleges régió a fiókhoz. A párosított másodlagos régió az elsődleges régió alapján határozza meg, és nem módosítható. Az Azure által támogatott régiók naprakész kapcsolatban lásd: [üzleti folytonossági és vészhelyreállítási helyreállítási (BCDR): Azure párosított régiói](../../best-practices-availability-paired-regions.md).

@@ -1,38 +1,56 @@
 ---
-title: Együttműködhet más közreműködőkkel párhozamosan LUIS-alkalmazások az Azure-ban |} A Microsoft Docs
-description: Ismerje meg, hogyan lehet másokkal együttműködve segítségével más közreműködőkkel párhozamosan Language Understanding (LUIS) alkalmazások.
+title: Együttműködhet más közreműködőkkel párhozamosan LUIS-alkalmazások
+titleSuffix: Azure Cognitive Services
+description: Az alkalmazások tulajdonosai közreműködők adhat hozzá az alkalmazást. A közreműködők módosíthatja a modell betanítását és tegye közzé az alkalmazást.
 services: cognitive-services
 author: diberry
 manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 07/31/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 99f37cb6dc5e05fc5eb4bde09685435ee57fecc6
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 3ae31aaea76e5f4a34614088728269f69ac4a5cf
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39397788"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45632602"
 ---
 # <a name="how-to-manage-authors-and-collaborators"></a>Szerzők és a közreműködők kezelése 
 
-Akkor is működhet együtt másokkal a LUIS-alkalmazás a együtt. 
+Az alkalmazások tulajdonosai közreműködők adhat hozzá az alkalmazást. A közreműködők módosíthatja a modell betanítását és tegye közzé az alkalmazást. 
 
-## <a name="owner-and-collaborators"></a>Tulajdonos és közreműködő
-
-Egy alkalmazás egyetlen Szerző, a tulajdonos, rendelkezik, de sok közreműködők is. 
+<a name="owner-and-collaborators"></a>
 
 ## <a name="add-collaborator"></a>Adja hozzá a közreműködő
 
-Hogy a LUIS-alkalmazás szerkesztése a közreműködők a **beállítások** lapon adja meg az e-mailt, a közreműködő, majd kattintson a LUIS-alkalmazás **Hozzáadás közreműködő**. Közreműködők bejelentkezhet és a LUIS-alkalmazás szerkesztése az alkalmazás éppen dolgozik egy időben.
+Egy alkalmazás egyetlen Szerző, a tulajdonos, rendelkezik, de sok közreműködők is. Ahhoz, hogy a LUIS-alkalmazás szerkesztéséhez közreműködő, hozzá kell adnia az e-mailt a közreműködők listája a LUIS-portál eléréséhez használnak. Hozzáadás után az alkalmazás pedig a LUIS-portálon jeleníti meg.
 
-![Adja hozzá a közreműködő](./media/luis-how-to-collaborate/add-collaborator.png)
+1. Válassza ki **kezelés** jobb felső menüben, majd válassza **közreműködők** a bal oldali menüben.
+
+2. Válassza ki **adja hozzá a közreműködő** az eszköztáron.
+
+    [![](./media/luis-how-to-collaborate/add-collaborator.png "Adja hozzá a közreműködő")](./media/luis-how-to-collaborate/add-collaborator.png#lightbox)
+
+3. Adja meg az e-mail-cím, a közreműködő segítségével jelentkezzen be a LUIS-portálon.
+
+    ![Adja meg a közreműködő e-mail-címet](./media/luis-how-to-collaborate/add-collaborator-pop-up.png)
 
 ## <a name="transfer-of-ownership"></a>A tulajdonjog átruházása
 
 Közben a LUIS jelenleg nem támogatja a tulajdonjog átruházása, exportálhatja az alkalmazás, és a egy másik LUIS felhasználó importálhatja az alkalmazás. Előfordulhat, hogy a két alkalmazás közötti LUIS pontszámok kisebb különbségek. 
+
+## <a name="azure-active-directory-resources"></a>Az Azure Active Directory-erőforrások
+
+Ha a szervezete Azure Active Directory (Azure AD) használja, a LUIS a LUIS használni szeretne a felhasználókra vonatkozó az adatok eléréséhez engedélyre van szüksége. A LUIS igénylő erőforrások minimálisak. 
+
+Amikor egy olyan fiókkal, amely rendelkezik rendszergazdai jóváhagyás, vagy nincs szükség rendszergazdai jóváhagyás, például a rendszergazdai jóváhagyást bejelentkezés jelenik meg a részletes leírása:
+
+* Lehetővé teszi, hogy jelentkezzen be az alkalmazásba a szervezeti fiókjával, és hogy az alkalmazás olvassa a profilját. Azt is lehetővé teszi, hogy az alkalmazásnak a főbb munkahelyi adatai olvasását.
+* Itt engedélyezheti az alkalmazásnak, és frissítheti az adatokat, akkor is, ha jelenleg nem használja az alkalmazást.
+
+Az első engedély lehetővé teszi a LUIS alapvető profiladatok, például a felhasználói azonosító, az e-mailt, a név olvasási joga. A második engedély szükséges a felhasználó a hozzáférési jogkivonat frissítéséhez.
 
 ## <a name="azure-active-directory-tenant-user"></a>Az Azure Active Directory-bérlői felhasználó
 
@@ -46,10 +64,11 @@ A bérlői rendszergazda második, LUIS bejelentkezik, és egy hozzájárulási 
 
 Ha a bérlői rendszergazda nem fog bejelentkezni a LUIS, a rendszergazda hozzáférhet [hozzájárulás](https://account.activedirectory.windowsazure.com/r#/applications) a LUIS. 
 
-![Alkalmazás webhelye által az Azure active directory-engedély](./media/luis-how-to-account-settings/tenant-permissions.png)
+![Alkalmazás webhelye által az Azure active directory-engedély](./media/luis-how-to-collaborate/tenant-permissions.png)
 
 Ha a bérlői rendszergazda csak meghatározott felhasználóknak, hogy a LUIS használatát szeretné, tekintse meg a [identity blog](https://blogs.technet.microsoft.com/tfg/2017/10/15/english-tips-to-manage-azure-ad-users-consent-to-applications-using-azure-ad-graph-api/).
 
 ### <a name="user-accounts-with-multiple-emails-for-collaborators"></a>A közreműködők több e-mailt a felhasználói fiókok
 
 Ha közreműködők ad hozzá egy LUIS-alkalmazásokon, adja meg a pontos e-mail-cím, LUIS közreműködőként használandó kell közreműködő. Az Azure Active Directory (Azure AD) lehetővé teszi, hogy egyetlen felhasználó felcserélhetők egynél több e-mail-fiókot, amíg a LUIS a felhasználót, hogy jelentkezzen be a közreműködő listában megadott e-mail-cím szükséges.
+

@@ -6,22 +6,24 @@ manager: timlt
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 03/12/2018
+ms.date: 09/14/2018
 ms.author: dobett
-ms.openlocfilehash: b57a448459101150363d595910cefcde991f1f92
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: f5d493628df68e0afbe05137b0d7386d6c40f7d4
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44721812"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45605742"
 ---
 # <a name="understand-and-use-azure-iot-hub-sdks"></a>Elsajátítása és használata az Azure IoT Hub SDK-k
 
-Szoftverfejlesztői készletek (SDK-k) az IoT Hub használata a két kategóriába sorolhatók:
+Szoftverfejlesztői készletek (SDK-k) használatához az IoT Hub három kategóriába sorolhatók:
 
 * **Eszköz SDK-k** lehetővé teszi olyan alkalmazások fordítása, futtassa az ügyfél vagy a modul ügyfél IoT-eszközökön. Ezek az alkalmazások telemetriát küldjön az IoT hubhoz, és igény szerint üzeneteket, a feladat, a metódus vagy az ikereszköz-frissítések fogadása az IoT hub.  Hozzon létre is használhatja a modul ügyfél [modulok](https://docs.microsoft.com/azure/iot-edge/iot-edge-modules) a [Azure IoT Edge-futtatókörnyezet](https://docs.microsoft.com/en-us/azure/iot-edge/about-iot-edge).
 
 * **Szolgáltatási SDK-k** lehetővé teszi az IoT hub kezelése és igény szerint üzenetküldés, feladatok ütemezése, közvetlen metódusok meghívása vagy kívánt tulajdonság frissítéseket küld az IoT-eszközök vagy modulokat.
+
+* **Eszköz kiépítése SDK-k** lehetővé teszi az IoT hubon az eszközön a [Device Provisioning Service](../iot-dps/about-iot-dps.md).
 
 Megismerheti az előnyeit az Azure IoT SDK-k használatával történő fejlesztéséhez [Itt][lnk-benefits-blog].
 
@@ -107,7 +109,29 @@ IOS-hez készült Azure IoT Hub Szolgáltatásoldali SDK-val:
 > [!NOTE]
 > Tekintse meg a GitHub-adattárában információk nyelv és platform-specifikus csomagkezelők bináris fájljait és függőségeinek telepítéséhez a fejlesztői gépen információs fájljaiban.
 
+## <a name="device-provisioning-sdks"></a>Eszközkiépítési SDK-k
 
+A **a Microsoft Azure-kiépítés SDK-k** lehetővé teszi az IoT hubon az eszközön a [Device Provisioning Service](../iot-dps/about-iot-dps.md).
+
+Az Azure kiépítési eszköz- és szolgáltatásspecifikus SDK-k használata a C#:
+* [Eszköz ügyfél-SDK kiépítése](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/provisioning/device)
+* [Eszközkiépítési szolgáltatás ügyfél-SDK](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/provisioning/service)
+
+Az Azure kiépítési eszköz- és szolgáltatásspecifikus SDK-k a Javához készült:
+* [Eszköz ügyfél-SDK kiépítése](https://github.com/Azure/azure-iot-sdk-java/blob/master/provisioning-device-client)
+* [Eszközkiépítési szolgáltatás ügyfél-SDK](https://github.com/Azure/azure-iot-sdk-java/blob/master/provisioning/provisioning-service-client)
+
+Az Azure kiépítési eszköz- és szolgáltatásspecifikus SDK-k Node.js-hez:
+* [Eszköz ügyfél-SDK kiépítése](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/device)
+* [Eszközkiépítési szolgáltatás ügyfél-SDK](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/service)
+
+Az Azure kiépítési eszköz- és szolgáltatásspecifikus SDK-k a Python:
+* [Eszköz ügyfél-SDK kiépítése](https://github.com/Azure/azure-iot-sdk-python/blob/master/provisioning_device_client)
+* [Eszközkiépítési szolgáltatás ügyfél-SDK](https://github.com/Azure/azure-iot-sdk-python/tree/master/provisioning_service_client)
+
+Az Azure kiépítési eszköz- és szolgáltatásspecifikus SDK-k a C:
+* [Eszköz ügyfél-SDK kiépítése](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client)
+* [Eszközkiépítési szolgáltatás ügyfél-SDK](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning/service)
 
 ## <a name="next-steps"></a>További lépések
 

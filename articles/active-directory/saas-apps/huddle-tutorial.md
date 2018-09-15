@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/05/2018
+ms.date: 09/13/2018
 ms.author: jeedes
-ms.openlocfilehash: 08114fc52665eb336844a1072df8bd3f2591dd07
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: fc4ea2538ebe5876e8f3572ab8ad76c4b3b44b8c
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44093464"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45634336"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-huddle"></a>Oktatóanyag: Azure Active Directory-integráció az Huddle
 
@@ -56,6 +56,7 @@ Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy teszt
 2. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
 
 ## <a name="adding-huddle-from-the-gallery"></a>Huddle hozzáadása a katalógusból
+
 Az Azure ad-ben Huddle integráció konfigurálásához, hozzá kell Huddle a galériából a felügyelt SaaS-alkalmazások listájára.
 
 **Huddle hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
@@ -67,7 +68,7 @@ Az Azure ad-ben Huddle integráció konfigurálásához, hozzá kell Huddle a ga
 2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
     ![Alkalmazások][2]
-    
+
 3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
     ![Alkalmazások][3]
@@ -80,24 +81,18 @@ Az Azure ad-ben Huddle integráció konfigurálásához, hozzá kell Huddle a ga
 
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/huddle-tutorial/tutorial_huddle_addfromgallery.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
+## <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
 
 Ebben a szakaszban konfigurálja, és a teszt "Britta Simon." nevű felhasználó Huddle az Azure AD egyszeri bejelentkezés tesztelése
 
 Egyszeri bejelentkezés működjön, az Azure ad-ben tudnia kell, a partner felhasználó Huddle mi egy felhasználó számára az Azure ad-ben. Más szóval egy Azure AD-felhasználót és a kapcsolódó felhasználó Huddle hivatkozás kapcsolata kell létrehozni.
 
-Huddle, rendelje hozzá az értékét a **felhasználónév** értékeként az Azure AD-ben a **felhasználónév** a hivatkozás kapcsolat létrehozására.
-
 Az Azure AD egyszeri bejelentkezés az Huddle tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-
 2. **[Az Azure ad-ben tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-
 3. **[Huddle tesztfelhasználó létrehozása](#creating-a-huddle-test-user)**  – egy megfelelője a Britta Simon Huddle, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
-
 4. **[Az Azure ad-ben tesztfelhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-
 5. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
@@ -111,10 +106,13 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     ![Egyszeri bejelentkezés konfigurálása][4]
 
 2. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
- 
+
     ![Egyszeri bejelentkezés konfigurálása](./media/huddle-tutorial/tutorial_huddle_samlbase.png)
 
 3. Az a **Huddle tartomány és URL-címek** területén kövesse az alábbi lépéseket, ha az alkalmazás a konfigurálni kívánt **Identitásszolgáltató** kezdeményezett mód:
+
+    > [!NOTE]
+    > A huddle példány fogja automatikusan észlelni a tartományból, alatt adja meg.
 
     ![Huddle tartomány és URL-címeket egyetlen bejelentkezési adatait](./media/huddle-tutorial/tutorial_huddle_url.png)
 
@@ -122,16 +120,16 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     | | |
     |--|--|
-    | `https://<customsubdomain>.huddle.com`|
-    | `https://us.huddle.com` |
+    | `https://<customsubdomain>.huddle.net`|
+    | `https://my.huddle.net` |
     | |
 
     b. Az a **válasz URL-cím** szövegmezőbe írja be az URL-cím a következő minta használatával bármelyike:
 
     | | |
     |--|--|
-    | `https://<customsubdomain>.huddle.com/saml/idp-initiated-sso`|
-    | `https://us.huddle.com/saml/idp-initiated-sso`|
+    | `https://<customsubdomain>.huddle.net/saml/idp-initiated-sso`|
+    | `https://my.huddle.net/saml/idp-initiated-sso`|
     | |
 
 4. Ellenőrizze **speciális URL-beállítások megjelenítése** , és hajtsa végre a következő lépést, ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett mód:
@@ -139,15 +137,14 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     ![Huddle tartomány és URL-címeket egyetlen bejelentkezési adatait](./media/huddle-tutorial/tutorial_huddle_url1.png)
 
     Az a **bejelentkezési URL-** szövegmezőbe írja be az URL-cím a következő minta használatával bármelyike:
-    
+
     | | |
     |--|--|
-    | `https://<customsubdomain>.huddle.com`|
-    | `https://us.huddle.com`|
+    | `https://<customsubdomain>.huddle.net`|
     | |
 
-    > [!NOTE] 
-    > Ezek a értékei nem valódi. Frissítse a tényleges azonosítója, válasz URL-cím és a bejelentkezési URL-ezeket az értékeket. Kapcsolattartó [Huddle ügyfél-támogatási csapatának](https://huddle.zendesk.com) beolvasni ezeket az értékeket. 
+    > [!NOTE]
+    > Ezek a értékei nem valódi. Frissítse a tényleges azonosítója, válasz URL-cím és a bejelentkezési URL-ezeket az értékeket. Kapcsolattartó [Huddle ügyfél-támogatási csapatának](https://huddle.zendesk.com) beolvasni ezeket az értékeket.
 
 5. Az a **SAML-aláíró tanúsítvány** területén kattintson **Certificate(Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
 
@@ -157,15 +154,15 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     ![Egyszeri bejelentkezés konfigurálása](./media/huddle-tutorial/tutorial_general_400.png)
 
-7. Az a **Huddle konfigurációs** területén kattintson **konfigurálása Huddle** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **SAML Entitásazonosító és SAML egyszeri bejelentkezési szolgáltatás URL-cím** származó a **gyors útmutató szakaszban.** 
+7. Az a **Huddle konfigurációs** területén kattintson **konfigurálása Huddle** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **SAML Entitásazonosító és SAML egyszeri bejelentkezési szolgáltatás URL-cím** származó a **gyors útmutató szakaszban.**
 
     ![Egyszeri bejelentkezés konfigurálása](./media/huddle-tutorial/tutorial_huddle_configure.png) 
-    
+
 8. Huddle oldalán konfigurálása egyszeri bejelentkezéshez, kell küldenie a letöltött **tanúsítvány**, **SAML egyszeri bejelentkezési szolgáltatás URL-cím**, és **SAML Entitásazonosító** való [ Ügyfél-támogatási csapatának huddle](https://huddle.zendesk.com). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.  
-   
+
     >[!NOTE]
-    > Egyszeri bejelentkezés az Huddle ügyfélszolgálathoz engedélyeznie kell. A konfiguráció befejezése után értesítést kap. 
-    > 
+    > Egyszeri bejelentkezés az Huddle ügyfélszolgálathoz engedélyeznie kell. A konfiguráció befejezése után értesítést kap.
+    >
 
 ### <a name="creating-an-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó létrehozása
 

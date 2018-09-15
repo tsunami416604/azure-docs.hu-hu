@@ -8,21 +8,21 @@ ms.date: 09/12/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: 6d41b4347eac29144743a22cb83e508cdab9b164
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: ba6d79661a2c07ba3eef1f16a117992a858830b5
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45552397"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45605929"
 ---
-# <a name="integrate-azure-time-series-insights-with-remote-monitoring"></a>Távoli megfigyelés az Azure Time Series Insights integrálása
+# <a name="integrate-azure-time-series-insights-with-remote-monitoring"></a>Az Azure Time Series Insights integrálása a távoli monitorozással
 
 Az Azure Time Series Insights egy teljes körűen felügyelt elemzési, tárolási és vizualizációs szolgáltatás, amellyel IoT-méretű idősoros adatok felhőbeli kezelését végezheti el. A Time Series Insights tárolására és idősorozat-adatok kezelése, Fedezze fel és események megjelenítése egyszerre, egyetlen elvégezheti az alapvető okok elemzése, és összehasonlíthat több helyet és eszközöket használhatja.
 
 A távoli figyelési megoldásgyorsító az automatikus központi telepítési és a Time Series Insights-integráció mostantól biztosít. Ebben az útmutatóban megismerheti, hogyan konfigurálhatja a Time Series Insights, amely már nem tartalmazza a Time Series Insights távoli figyelési megoldás.
 
 > [!NOTE]
-> A Time Series Insights még nem érhető el az Azure China Cloud. Új telepítések esetén az Azure China Cloud továbbra is használhatja a Cosmos DB az összes tárolót.
+> A Time Series Insights jelenleg nem áll rendelkezésre az Azure China felhőben. Új távoli figyelési megoldás gyorsító üzemelő példányok az Azure China felhőben Cosmos DB összes tárolót használja.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

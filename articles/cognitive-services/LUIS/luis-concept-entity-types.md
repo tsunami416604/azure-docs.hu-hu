@@ -8,14 +8,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 06/28/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: d6d68842b5e519201f7990a9c361710115de7fea
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: ec149b0f100ae3e170f39911eafc399f24509dfa
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44022950"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45630392"
 ---
 # <a name="entities-in-luis"></a>A LUIS entitások
 
@@ -46,10 +46,10 @@ Ha a választott word vagy a word megállapodás azonos, de nem ugyanazt jelenti
 
 A következő utterances, a word `fair` egy homográfokat van. Akkor helyesírása megegyezik, de eltérő jelentéssel rendelkezik:
 
-```
-What kind of county fairs are happening in the Seattle area this summer?
-Is the current rating for the Seattle review fair?
-```
+|Kimondott szöveg|
+|--|
+|Milyen típusú megye vásárokon Seattle környékén lévő történik az Ez évi riói nyári?|
+|Az a jelenlegi besorolása a Seattle felülvizsgálatra valós?|
 
 Ha egy esemény entitás összes esemény az adatok keresésére, a word címke `fair` az első utterance (kifejezés), de nem a második.
 

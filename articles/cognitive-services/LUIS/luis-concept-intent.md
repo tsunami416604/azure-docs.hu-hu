@@ -1,20 +1,21 @@
 ---
-title: Understanding leképezések a LUIS-alkalmazások az Azure-ban |} A Microsoft Docs
-description: Ismerteti a leképezések Mik a Language Understanding Intelligent Service (LUIS) alkalmazások.
+title: Understanding leképezések a LUIS-alkalmazások
+titleSuffix: Azure Cognitive Services
+description: Megjelölésű jelöli egy feladatot vagy műveletet a felhasználó szeretné végrehajtani. Egy célra vagy a cél-ben a felhasználó utterance (kifejezés) fejezzük ki. Meghatározhatja egy adott szándékot megfelelő műveleteket hajthat végre felhasználókat szeretné állítani az alkalmazásban.
 services: cognitive-services
 author: diberry
 manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 06/04/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 456f28191161c9a2fac223bf2a31e62e54ae28ae
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: fcc14d2a7273a586386dc4da1f218d50d8aa9aef
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39225788"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45629712"
 ---
 # <a name="intents-in-luis"></a>A LUIS leképezések
 
@@ -24,7 +25,7 @@ Meghatározhatja egy adott szándékot megfelelő műveleteket hajthat végre fe
 
 Utazás alkalmazásszándékkal   |   Példák kimondott szövegekre   | 
 ------|------|
- BookFlight     |   Például "book nekem, Rio repülőjegyet következő hét" <br/> "Repülési nekem, Rio a 24th a" <br/> "Van szükségem egy adatsík jegyet Río de Janeiro tovább vasárnap"    |
+ RepülőjegyFoglalás     |   Például "book nekem, Rio repülőjegyet következő hét" <br/> "Repülési nekem, Rio a 24th a" <br/> "Van szükségem egy adatsík jegyet Río de Janeiro tovább vasárnap"    |
  Üdvözlés     |   "Hi" <br/>"Hello" <br/>"Jó reggeli"  |
  CheckWeather | "Mi az az időjárás, például Bostonban?" <br/> "Show me a hétvégi vonatkozó előrejelzést" |
  None         | "Get me egy cookie-k recept"<br>"Volt a Lakers win?" |

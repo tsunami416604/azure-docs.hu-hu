@@ -8,14 +8,15 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 160752cd0467ef307f7a45b1e0d703c7ddd5d773
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 9122a349fd81cf723e21cd17e09e15d1d9f64503
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44720803"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45634761"
 ---
 # <a name="choose-a-map-style-in-azure-maps"></a>Azure Maps-térkép stílus kiválasztása
+
 Az Azure Maps rendelkezik négy külön térképeken stílusok közül választhat. Térkép stílusok kapcsolatos további információkért lásd: [térkép stílusok támogatott az Azure Maps](./supported-map-styles.md). Ez a cikk bemutatja, hogyan stílus a térkép betöltéskor, egy új stílusának beállítása, ha a stílus Dátumválasztó vezérlőelem a stílus kapcsolatos funkciók használatára.
 
 ## <a name="setting-style-on-map-load"></a>Térkép betöltése stílus beállítása
@@ -47,14 +48,17 @@ A stílus kiválasztása lehetővé teszi, hogy a térkép stílus kiválasztás
 
 ## <a name="next-steps"></a>További lépések
 
-További információ az osztályok és módszerek a cikk ezt használja: 
-* [Térkép](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
-    * [setStyle](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setstyle)
-    * [addControl](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addcontrol)
+További információ az osztályok és módszerek a cikk ezt használja:
 
-* [Atlas](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas?view=azure-iot-typescript-latest)
-    * [StyleControl](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.control.stylecontrol?view=azure-iot-typescript-latest#stylecontrol)
-    
-A maps hozzá további kódot példák a következő cikkekben talál:
-* [Térkép vezérlők hozzáadása](./map-add-controls.md)
-* [A PIN-kód hozzáadása](./map-add-pin.md)
+> [!div class="nextstepaction"]
+> [Térkép](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
+
+Vezérlő hozzáadása a maps:
+
+> [!div class="nextstepaction"]
+> [Térkép vezérlők hozzáadása](./map-add-controls.md)
+
+Adja hozzá a térkép PIN-kódot:
+
+> [!div class="nextstepaction"]
+> [A PIN-kód hozzáadása](./map-add-pin.md)

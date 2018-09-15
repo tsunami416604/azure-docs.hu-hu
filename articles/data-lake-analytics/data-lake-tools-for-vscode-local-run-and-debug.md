@@ -9,15 +9,17 @@ ms.reviewer: jasonwhowell
 ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.topic: conceptual
 ms.date: 07/14/2017
-ms.openlocfilehash: bf98562224c2da770541f731ba93ec2e5dc1718d
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 42982e3fa0a854109a6b887640604498ac68847c
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43041320"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45632259"
 ---
 # <a name="run-u-sql-and-debug-locally-in-visual-studio-code"></a>Futtassa a U-SQL és a helyi hibakeresése a Visual Studio Code-ban
-Ez a cikk ismerteti, hogyan futtathat U-SQL-feladatok kódolási korai szakaszában felgyorsítása érdekében vagy a Visual Studio Code helyi kódok hibakeresése egy helyi fejlesztői gépen. A Visual Studio Code az Azure Data Lake eszköz utasításokért lásd: [használata Azure Data Lake Tools for Visual Studio Code](data-lake-analytics-data-lake-tools-for-vscode.md). 
+Ez a cikk ismerteti, hogyan futtathat U-SQL-feladatok kódolási korai szakaszában felgyorsítása érdekében vagy a Visual Studio Code helyi kódok hibakeresése egy helyi fejlesztői gépen. A Visual Studio Code az Azure Data Lake eszköz utasításokért lásd: [használata Azure Data Lake Tools for Visual Studio Code](data-lake-analytics-data-lake-tools-for-vscode.md).
+
+Csak Windows telepítését az Azure Data Lake Tools for Visual Studio támogatja a műveletet az U-SQL helyi futtatása és a U-SQL helyi hibakereséséhez. Telepítés macOS és Linux-alapú operációs rendszerek nem támogatják ezt a szolgáltatást.
 
 ## <a name="set-up-the-u-sql-local-run-environment"></a>A U-SQL helyi futtatási környezet beállítása
 

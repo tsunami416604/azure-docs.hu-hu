@@ -1,20 +1,21 @@
 ---
-title: A LUIS-alkalmazások az Azure-ban utterances |} A Microsoft Docs
-description: Beszédmódok hozzáadása a Language Understanding Intelligent Service (LUIS) alkalmazások.
+title: A LUIS-alkalmazások kimondott szöveg
+titleSuffix: Azure Cognitive Services
+description: Beszédmódok vannak adjon meg a felhasználó az alkalmazás által igényelt értelmezése. Kifejezések, amelyek úgy gondolja, hogy a felhasználók be fogja gyűjteni. Vegye fel ugyanazt jelenti, de tevődnek utterances eltérően word hossza és a word elhelyezési.
 services: cognitive-services
 author: diberry
 manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 02/13/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 6f962d0aaf631051c841be29d2854a89bf58ac25
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: c455296348e3b4378a2912fa5388098b206b3ea4
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224415"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45632313"
 ---
 # <a name="utterances-in-luis"></a>A LUIS kimondott szöveg
 
@@ -35,12 +36,14 @@ Beszédmódok kiválasztásakor vegye figyelembe, hogy mit gondol gyakori kifeje
 Akkor is, ha változatos mondat minták létrehozása erőfeszítést van szüksége, fog továbbra is ugyanezt az egyes szókincsből eredőket találja.
 
 Hajtsa végre az alábbi példa kimondott szöveg:
-```
-how do I get a computer?
-Where do I get a computer?
-I want to get a computer, how do I go about it?
-When can I have a computer? 
-```
+
+|Példák kimondott szövegekre|
+|--|
+|Hogyan szerezhetem be a számítógépet?|
+|Hol találom ezt a számítógépet?|
+|Szeretnék beolvasni egy olyan számítógépen, hogyan tájékozódhatom arról?|
+|Mikor lehet egy számítógép?| 
+
 Itt, a core kifejezés a "számítógép", nem változott. Asztali számítógép, hordozható számítógép, munkaállomás vagy akár csak gépen sikerült mondják. A LUIS intelligensen kikövetkezteti a szinonimák környezetből, de képzéshez utterances létrehozásakor még jobb eltérő őket.
 
 ## <a name="example-utterances-in-each-intent"></a>Példa utterances az egyes leképezés

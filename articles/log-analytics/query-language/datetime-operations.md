@@ -15,17 +15,19 @@ ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 833548a4bfca83a8ee6971f05a4f308cc54d5b5d
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 3a0e2b78de8cea3929ac457bab3d5e07a2b85401
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "40190284"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45603379"
 ---
 # <a name="working-with-date-time-values-in-log-analytics-queries"></a>Dátum-idő értékek a Log Analytics-lekérdezések használata
 
 > [!NOTE]
 > Hajtsa végre [az Analytics-portál – első lépések](get-started-analytics-portal.md) és [Ismerkedés a lekérdezések](get-started-queries.md) ebben a leckében befejezése előtt.
+
+[!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
 Ez a cikk ismerteti a dátum és idő adatok használata a Log Analytics-lekérdezéseket.
 
@@ -47,33 +49,33 @@ Mérföldkövei időegységet követ tizedes fejezik ki:
 
 Időpontok leadó egy karakterlánc használatával hozható létre a `todatetime` operátor. Például, tekintse át a virtuális gép szívveréseket küld egy adott időkereten, akkor is győződjön meg arról, használja a [közötti operátor](https://docs.loganalytics.io/docs/Language-Reference/Scalar-operators/between-operator) vagyis a adjon meg egy időtartományt...
 
-```OQL
+```KQL
 Heartbeat
 | where TimeGenerated between(datetime("2018-06-30 22:46:42") .. datetime("2018-07-01 00:57:27"))
 ```
 
 Egy másik gyakori forgatókönyv hasonlít össze, az aktuális dátumból/időből. Ha például az elmúlt két perc minden szívverések megtekintéséhez használhatja a `now` operátor két perc képviselő timespan együtt:
 
-```OQL
+```KQL
 Heartbeat
 | where TimeGenerated > now() - 2m
 ```
 
 Ez a függvény egy helyi is érhető el:
-```OQL
+```KQL
 Heartbeat
 | where TimeGenerated > now(-2m)
 ```
 
 A legrövidebb, és a legtöbb olvasható módszer használata, ha a `ago` operátor:
-```OQL
+```KQL
 Heartbeat
 | where TimeGenerated > ago(2m)
 ```
 
 Tegyük fel, hogy ahelyett, hogy a kezdő és záró idő, tudja, a kezdési idő és az időtartamot. Akkor is írja újra a lekérdezést a következő:
 
-```OQL
+```KQL
 let startDatetime = todatetime("2018-06-30 20:12:42.9");
 let duration = totimespan(25m);
 Heartbeat
@@ -84,7 +86,7 @@ Heartbeat
 ## <a name="converting-time-units"></a>Időegységek alakítása
 Egy dátum és idő vagy az alapértelmezett értéktől eltérő idő egységben timespan Express hasznos lehet. Például tegyük fel, hogy az elmúlt 30 percben hibaesemények lehetőséggel megtekintheti, és a egy számított oszlopot, amely bemutatja, hogyan olyan régen az esemény történt kell:
 
-```OQL
+```KQL
 Event
 | where TimeGenerated > ago(30m)
 | where EventLevelName == "Error"
@@ -93,7 +95,7 @@ Event
 
 Megtekintheti a _timeAgo_ oszlop értékei például: "00:09:31.5118992", ami azt jelenti, azok hh:mm:ss.fffffff formázott. Ha ezekre az értékekre, formázhatja a _numver_ perc alatt a kezdési időpont óta, egyszerűen el kell osztani ezt az értéket "1 perces":
 
-```OQL
+```KQL
 Event
 | where TimeGenerated > ago(30m)
 | where EventLevelName == "Error"
@@ -107,7 +109,7 @@ Egy másik nagyon gyakori forgatókönyv esetén a kell lekérni a statisztikát
 
 A számot 5 percenként az elmúlt fél óra során bekövetkezett események beolvasásához használja a következő lekérdezést:
 
-```OQL
+```KQL
 Event
 | where TimeGenerated > ago(30m)
 | summarize events_count=count() by bin(TimeGenerated, 5m) 
@@ -125,7 +127,7 @@ Ez létrehozza a következő táblázat:
 
 Egy másik gyűjtők eredmények létrehozása módja a Funkciók, például a használandó `startofday`:
 
-```OQL
+```KQL
 Event
 | where TimeGenerated > ago(4d)
 | summarize events_count=count() by startofday(TimeGenerated) 
@@ -145,7 +147,7 @@ Ez a következő eredményt adja:
 ## <a name="time-zones"></a>Időzónák
 Mivel minden dátum/idő érték (UTC) van kifejezve, legtöbbször hasznos, ha szeretné átalakítani ezek a helyi időzónában. Például a számítás használatával konvertálja PST idő (UTC):
 
-```OQL
+```KQL
 Event
 | extend localTimestamp = TimeGenerated - 8h
 ```
@@ -154,7 +156,7 @@ Event
 
 | Kategória | Függvény |
 |:---|:---|
-| Az adattípusok konvertálása | [ToDateTime](https://docs.loganalytics.io/docs/Language-Reference/Scalar-functions/todatetime())[totimespan  ](https://docs.loganalytics.io/docs/Language-Reference/Scalar-functions/totimespan())  |
+| Az adattípusok konvertálása | [ToDateTime](https://docs.loganalytics.io/docs/Language-Reference/Scalar-functions/todatetime())[totimespan](https://docs.loganalytics.io/docs/Language-Reference/Scalar-functions/totimespan())  |
 | A dobozméretet kerek érték | [doboz](https://docs.loganalytics.io/docs/Language-Reference/Scalar-functions/bin()) |
 | Adott dátum és idő lekérése | [ezelőtt](https://docs.loganalytics.io/docs/Language-Reference/Scalar-functions/ago()) [most](https://docs.loganalytics.io/docs/Language-Reference/Scalar-functions/now())   |
 | Érték részének lekérése | [datetime_part](https://docs.loganalytics.io/docs/Language-Reference/Scalar-functions/datetime_part()) [getmonth](https://docs.loganalytics.io/docs/Language-Reference/Scalar-functions/getmonth()) [év hónapja](https://docs.loganalytics.io/docs/Language-Reference/Scalar-functions/monthofyear()) [getyear](https://docs.loganalytics.io/docs/Language-Reference/Scalar-functions/getyear()) [dayofmonth](https://docs.loganalytics.io/docs/Language-Reference/Scalar-functions/dayofmonth()) [dayofweek](https://docs.loganalytics.io/docs/Language-Reference/Scalar-functions/dayofweek()) [dayofyear](https://docs.loganalytics.io/docs/Language-Reference/Scalar-functions/dayofyear()) [weekofyear](https://docs.loganalytics.io/docs/Language-Reference/Scalar-functions/weekofyear()) |

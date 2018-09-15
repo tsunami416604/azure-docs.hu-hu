@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 0813/2018
 ms.author: jovanpop
 manager: craigg
-ms.openlocfilehash: 57c6b52df3e8f6c47eb794cda4b47bfa2d7de374
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: c35fdb391f3ec3f0af3a7c916cb22cb58c90dd64
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44051238"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45604662"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Az SQL Serverről Azure SQL Database felügyelt példány T-SQL különbségek 
 
@@ -267,7 +267,7 @@ A HDFS- vagy Azure blob Storage-fájlok hivatkozó külső táblák nem támogat
 
 ### <a name="replication"></a>Replikáció 
  
-Felügyelt példány replikáció esetén támogatott. A replikációval kapcsolatos további információkért lásd: [SQL Server-replikáció](http://docs.microsoft.com/sql/relational-databases/replication/replication-with-sql-database-managed-instance).
+Replikáció a felügyelt példány nyilvános előzetes verzióban érhető el. A replikációval kapcsolatos további információkért lásd: [SQL Server-replikáció](http://docs.microsoft.com/sql/relational-databases/replication/replication-with-sql-database-managed-instance).
  
 ### <a name="restore-statement"></a>Utasítás VISSZAÁLLÍTÁSA 
  
@@ -335,23 +335,24 @@ Restore utasítások kapcsolatos információkért lásd: [VISSZAÁLLÍTÁSA uta
 - `sp_attach_db`, `sp_attach_single_file_db`, és `sp_detach_db` nem támogatottak. Lásd: [sp_attach_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-attach-db-transact-sql), [sp_attach_single_file_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-attach-single-file-db-transact-sql), és [sp_detach_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-detach-db-transact-sql).
 - `sp_renamedb` nem támogatott. Lásd: [sp_renamedb](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-renamedb-transact-sql).
 
-### <a name="sql-server-agent"></a>SQL Server Agent 
- 
+### <a name="sql-server-agent"></a>SQL Server Agent
+
 - SQL-Ügyfélügynök-beállítások csak olvashatók. Az eljárás `sp_set_agent_properties` nem támogatja a felügyelt példányhoz.  
-- Feladatok – csak a T-SQL feladatok lépései jelenleg támogatott (további lépéseket a hozzáadja a nyilvános előzetes verzióban).
- - SSIS még nem támogatott. 
- - Replikáció jelenleg nem támogatott  
-  - Replikálásitranzakciónapló-olvasó még nem támogatott.  
-  - Pillanatkép még nem támogatott.  
-  - Terjesztő még nem támogatott.  
-  - Nem támogatott a merge.  
+- Feladatok – T-SQL-feladat lépései jelenleg támogatottak.
+- Más típusú feladat lépéseket jelenleg nem támogatott (további lépés típus felkerül a nyilvános előzetes verzióban).
+  - Replikációs feladatok nem támogatja többek között:
+    - Replikálásitranzakciónapló-olvasó.  
+    - Pillanatkép.
+    - A terjesztőn.  
+    - Az egyesítési.  
+  - SSIS még nem támogatott. 
   - Üzenetsor-olvasó nem támogatott.  
- - Parancs-rendszerhéj még nem támogatott. 
+  - Parancs-rendszerhéj még nem támogatott. 
   - Felügyelt példány nem fér hozzá a külső erőforrások (például a hálózati megosztások robocopy keresztül).  
- - PowerShell még nem támogatott.
- - Analysis Services nem támogatja.  
+  - PowerShell még nem támogatott.
+  - Analysis Services nem támogatja.  
 - Értesítések részlegesen támogatott.
- - E-mail értesítés használata támogatott, kell konfigurálni az adatbázisbeli levelezés profil. Csak egy adatbázisbeli levelezési profil lehet és kell meghívni `AzureManagedInstance_dbmail_profile` (átmeneti korlátozás) nyilvános előzetes verzióban érhető el.  
+- E-mail értesítés használata támogatott, kell konfigurálni az adatbázisbeli levelezés profil. Csak egy adatbázisbeli levelezési profil lehet és kell meghívni `AzureManagedInstance_dbmail_profile` (átmeneti korlátozás) nyilvános előzetes verzióban érhető el.  
  - Személyi hívó nem támogatott.  
  - NetSend nem támogatott. 
  - Riasztások nem még nem támogatottak.

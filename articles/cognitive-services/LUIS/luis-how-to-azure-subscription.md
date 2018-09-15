@@ -1,5 +1,6 @@
 ---
-title: Azure-végpont előfizetés kezelése |} A Microsoft Docs
+title: A LUIS előfizetés-kezelési végpont
+titleSuffix: Azure Cognitive Services
 description: Ebben a cikkben a LUIS-fiókját, hogy adja meg a végponthoz a következő fizetési terv korlátlan adatforgalom mért végponthoz kulcsot hoz létre.
 services: cognitive-services
 author: diberry
@@ -7,14 +8,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 03/21/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 0b735499ae589e44c2ce5076fce38ec47ddd69c7
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: dcee5ce7ce103db734cf4b63c26944945efed0ea
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39223279"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45630902"
 ---
 # <a name="manage-azure-endpoint-subscription-keys"></a>Azure-végpont előfizetési kulcsok kezelése
 
@@ -24,9 +25,9 @@ Teszteléshez és prototípus csak az ingyenes (F0) csomagot használja. Éles r
 > Ne használja a [kulcs létrehozási](luis-concept-keys.md#authoring-key) végpont lekérdezések éles környezetben.
 
 <a name="create-luis-service"></a>
-## <a name="create-luis-endpoint-key"></a>A LUIS végponti kulcs létrehozása
+## <a name="create-luis-endpoint-key"></a>LUIS-végpont kulcsának létrehozása
 
-1. Jelentkezzen be a  **[Microsoft Azure](https://ms.portal.azure.com/)** 
+1. Jelentkezzen be a  **[Microsoft Azure](https://ms.portal.azure.com/)**. 
 2. Kattintson a zöld **+** jelentkezzen be a bal oldali panel felső, és keressen a "LUIS" a Marketplace-en, majd kattintson a **Language Understanding** , és kövesse a **élmény**  LUIS előfizetés fiók létrehozásához. 
 
     ![Azure Search](./media/luis-azure-subscription/azure-search.png) 
@@ -40,8 +41,7 @@ Teszteléshez és prototípus csak az ingyenes (F0) csomagot használja. Éles r
     ![Az Azure-kulcsok](./media/luis-azure-subscription/azure-keys.png)
 
     > [!Note] 
-    > * Jelentkezzen be az Ön régiójában [LUIS](luis-reference-regions.md) webhely és [adja meg az új LUIS végponthoz kulcsot](luis-how-to-manage-keys.md#assign-endpoint-key). 
-    > * Meg kell jegyeznie a név az Azure szolgáltatás hozott létre annak érdekében, hogy válassza ki azt a régióban lévő [LUIS](luis-reference-regions.md) közzéteszi a lapot.  
+    > Jelentkezzen be a saját régiójában [LUIS](luis-reference-regions.md) webhely és [rendelje hozzá az új LUIS végponti kulcs](luis-how-to-manage-keys.md#assign-endpoint-key). 3. lépésében a LUIS-előfizetés nevének kell.
 
 ## <a name="change-luis-pricing-tier"></a>Módosítsa a LUIS-tarifacsomag
 

@@ -3,7 +3,7 @@ title: Az Azure Stack 1807 frissítés |} A Microsoft Docs
 description: További tudnivalók what's new in 1807 frissítés az Azure Stack integrált rendszerek, beleértve az ismert problémákat és hová töltse le a frissítést.
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/06/2018
-ms.author: brenduns
+ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: eabd6fdd643f7f8e1795f791e8a66e612651dee2
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: c55667e61e35186f63f49082db0c3adadd66ff68
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44159503"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45633381"
 ---
 # <a name="azure-stack-1807-update"></a>Azure Stack 1807 frissítése
 
@@ -82,7 +82,7 @@ Ez a frissítés az Azure Stack a következő fejlesztéseket tartalmazza.
 - <!-- TBD | IS, ASDK -->  **Az Azure Stack Capacity Planner használhatóságuk**. Az Azure Stack [Capacity Planner](http://aka.ms/azstackcapacityplanner) kínál egy egyszerűsített élmény bevitelével S2D gyorsítótár és az S2D-kapacitás SKU-k megoldás meghatározásakor. Az 1000 virtuális gép korlátja el lett távolítva.
 
 
-### <a name="fixed-issues"></a>Rögzített kapcsolatos problémák
+### <a name="fixed-issues"></a>Hibák kijavítva:
 
 - <!-- TBD | ASDK, IS --> Különböző fejlesztések történtek a frissítési folyamat megbízhatóbbá tétele. Emellett javítások történtek-e az alapul szolgáló infrastruktúra, amely lehetséges közbeni állásidő minimálisra csökkentése a számítási feladatok a frissítés.
 

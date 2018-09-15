@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 09/05/2018
 ms.author: bryanla
-ms.openlocfilehash: b8b51ed8cbaaaaaa463dd1ed841e6d5193fec40a
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 3dc80c97a43c35295deacefc37a76471912c9b42
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44301915"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45603991"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Az Azure Key Vault fejlesztői útmutató
 
@@ -129,7 +129,7 @@ A következő cikkek és forgatókönyvek adja meg a feladat jellemző útmutat�
 - [Tanúsítványok központi telepítése virtuális gépekre a Key Vaultból](https://blogs.technet.microsoft.com/kv/2015/07/14/deploy-certificates-to-vms-from-customer-managed-key-vault/) – egy felhőalkalmazás-ben futó virtuális gép Azure kell egy tanúsítványt. Hogyan, be ezt a tanúsítványt a virtuális gépen még ma?
 - [A Key Vault beállítása végpontok közötti kulcsforgatással és vizsgálattal együtt](key-vault-key-rotation-log-monitoring.md) – ez végigvezeti azon, hogyan állítható be a kulcsforgatás és az Azure Key Vault naplózását.
 - [Üzembe helyezése az Azure webalkalmazás-tanúsítvány Key Vault segítségével]( https://blogs.msdn.microsoft.com/appserviceteam/2016/05/24/deploying-azure-web-app-certificate-through-key-vault/) témakörből üzembe helyezésének részeként a Key Vaultban tárolt tanúsítványok [App Service-tanúsítvány](https://azure.microsoft.com/blog/internals-of-app-service-certificate/) ajánlat.
-- [Biztosítson engedélyt számú alkalmazás részére egy kulcstartó eléréséhez](key-vault-group-permissions-for-apps.md) Key Vault hozzáférés-vezérlési szabályzat csak a 16 bejegyzések támogatja. Ugyanakkor létrehozhat egy Azure Active Directory biztonsági csoportot is. A társított szolgáltatás rendszerbiztonsági tagok hozzáadása a biztonsági csoport, és ezután a Key Vault a biztonsági csoport hozzáférési jogot.
+- [Biztosítson engedélyt számú alkalmazás részére egy kulcstartó eléréséhez](key-vault-group-permissions-for-apps.md) Key Vault hozzáférés-vezérlési szabályzat legfeljebb 1024 bejegyzések támogatja. Ugyanakkor létrehozhat egy Azure Active Directory biztonsági csoportot is. A társított szolgáltatás rendszerbiztonsági tagok hozzáadása a biztonsági csoport, és ezután a Key Vault a biztonsági csoport hozzáférési jogot.
 - További feladatspecifikus integrálása és és az Azure Key vault-Kulcstartók használatával, tekintse át [Ryan Jones Azure Resource Manager sablon példákat a Key vault](https://github.com/rjmax/ArmExamples/tree/master/keyvaultexamples).
 - [A Key Vault helyreállítható törlés használata a parancssori felület](key-vault-soft-delete-cli.md) végigvezeti Önt a használatát, és a key vault és a key vault-objektumokon életciklusát a helyreállítható törlés funkciójának engedélyezése.
 - [A Key Vault helyreállítható törlés használata a PowerShell-lel](key-vault-soft-delete-powershell.md) végigvezeti Önt a használatát, és a key vault és a key vault-objektumokon életciklusát a helyreállítható törlés funkciójának engedélyezése.

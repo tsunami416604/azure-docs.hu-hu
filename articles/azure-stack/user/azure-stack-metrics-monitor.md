@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/05/2018
+ms.date: 09/14/2018
 ms.author: mabrigg
-ms.openlocfilehash: 3d856f4fad845dfdd4d9a30fa176a4c0bfbc875b
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: b6196ec434d00a6fbc6714095fa4182ede98ce91
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44024342"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45633435"
 ---
 # <a name="how-to-consume-monitoring-data-from-azure-stack"></a>Hogyan lehet az Azure Stack származó megfigyelési adatokat
 
@@ -35,7 +35,7 @@ Az Azure Monitor folyamattal, csak egyetlen helyen történő monitorozási adat
 | Storage-mérőszámok | Mérőszámok | Azure Storage | Storage-táblához:<br>Storage Analytics |
 | Tevékenységnapló | Események | Azure-szolgáltatásokhoz | REST API:<br>Az Azure Monitor Event API |
 | Vendég operációs rendszer naplóit (például az IIS, az ETW, rendszerbejegyzéseket) számítási | Események | Windows és Linux rendszerű virtuális gépek | - Vagy blob Storage-táblába:<br>Windows vagy Linux rendszerű Azure-diagnosztika <br>Event Hubs:<br>Windows Azure Diagnostics |
-| Storage-naplók | Események | Azure Storage | Storage-táblához:<br>Storage Analytics<br>`Vita: how about hybrid OMS/AppInsights, shall we mention?` |
+| Storage-naplók | Események | Azure Storage | Storage-táblához:<br>Storage Analytics |
 
 ## <a name="next-steps"></a>További lépések
 

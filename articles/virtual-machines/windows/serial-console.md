@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/07/2018
 ms.author: harijay
-ms.openlocfilehash: 1bb6e464b748f2558cec35a95554bb3e08b667f0
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 785b0137624cc6d940f4944e0357d0a5774561df
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44378329"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45634710"
 ---
-# <a name="virtual-machine-serial-console-preview"></a>Virtuális gépek soros konzolja (előzetes verzió) 
+# <a name="virtual-machine-serial-console"></a>Virtuális gépek soros konzolja
 
 
 Az Azure-beli virtuális gépek soros konzolja egy szöveges alapú konzol Windows virtuális gépek számára hozzáférést biztosít. A soros kapcsolat, hogy a virtuális gép, a virtuális gép, amely független a virtuális gépek hálózati vagy operációs rendszer állapotának való hozzáférés biztosítása a COM1 soros port. A soros konzol elérhető virtuális gépet is jelenleg csak az Azure Portalon keresztül történik, és csak azok számára, akik rendelkeznek a virtuális gép közreműködő vagy újabb a virtuális géphez való hozzáférés engedélyezett. 
@@ -29,7 +29,7 @@ Az Azure-beli virtuális gépek soros konzolja egy szöveges alapú konzol Windo
 A soros konzol dokumentáció Linux rendszerű virtuális gépekhez [ide](../linux/serial-console.md).
 
 > [!Note] 
-> Előzetes verziók által elérhető, a feltétellel, hogy elfogadja a használati feltételeket. További információkért lásd: [Microsoft Azure kiegészítő használati feltételek a Microsoft Azure Előzetesekre vonatkozó.] (https://azure.microsoft.com/support/legal/preview-supplemental-terms/) Ez a szolgáltatás jelenleg a **nyilvános előzetes verzióban** és a soros konzoljához való hozzáférés a virtuális gépek globális Azure-régióban érhető el. Ezen a ponton soros konzol nem érhető el az Azure Government, Azure Germany és Azure China cloud.
+> Globális Azure-régiókban található virtuális gépek soros konzol szolgáltatás általánosan elérhető. Ezen a ponton soros konzol még nem áll rendelkezésre az Azure Government vagy Azure China cloud.
 
  
 
@@ -51,7 +51,7 @@ A virtuális gépek soros konzolon keresztül csak érhető el [az Azure portal]
   1. Nyissa meg az Azure Portalon
   2. A bal oldali menüben válassza ki a virtuális gépeket.
   3. Kattintson a listában a virtuális gépen. A virtuális gép áttekintő oldala nyílik meg.
-  4. Görgessen le a támogatás és hibaelhárítás szakaszhoz, és kattintson a soros konzol (előzetes verzió) lehetőséget. A soros konzol segítségével egy új panel megnyitja és indítsa el a kapcsolatot.
+  4. Görgessen le a támogatás és hibaelhárítás szakaszhoz, és kattintson a "Soros konzol" lehetőséget. A soros konzol segítségével egy új panel megnyitja és indítsa el a kapcsolatot.
 
 ![](../media/virtual-machines-serial-console/virtual-machine-windows-serial-console-connect.gif)
 
@@ -187,18 +187,18 @@ Nem rendelkezik a virtuális gép soros konzol használatához a szükséges eng
 Nem sikerült meghatározni a rendszerindítási diagnosztika tárfiókja erőforráscsoportjának "<STORAGEACCOUNTNAME>". Győződjön meg arról, hogy a rendszerindítási diagnosztika engedélyezve van a virtuális gép, és rendelkezik a tárfiókhoz való hozzáférést. | Soros konzol eléréséhez az egyes hozzáférési engedélyt kell. Lásd: [a hozzáférési követelmények](#prerequisites) részletekért
 Egy "Tiltott" válasz fordult elő a virtuális gép rendszerindítás-diagnosztikai tárfiók elérésekor. | Győződjön meg arról, hogy a rendszerindítási diagnosztika nincs egy fiók tűzfal. Egy elérhető rendszerindítás-diagnosztikai tárfiók a soros konzol működéséhez szükséges.
 Web socket le van zárva, vagy nem nyitható meg. | Szükség lehet az engedélyezési listára `*.console.azure.com`. Egy részletesebb, de hosszabb megközelítés az engedélyezési listára a [a Microsoft Azure adatközpont IP-tartományai](https://www.microsoft.com/en-us/download/details.aspx?id=41653), amelyek viszonylag sűrűn változnak.
+Csak az egészségügyi információk Windows virtuális Géphez való csatlakozáskor jelenik meg| Ez fog megjelenni Ha a speciális felügyeleti konzol nincs engedélyezve a Windows-lemezkép számára. Lásd: [hozzáférés soros konzol a Windows](#access-serial-console-for-windows) manuálisan engedélyezni a virtuális Gépen Windows SAC létrehozásával kapcsolatos útmutatást. További részleteket tekinthet meg [Windows egészségügyi jelek](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Windows_Health_Info.md).
 
 ## <a name="known-issues"></a>Ismert problémák 
-Sok továbbra is szakaszaiban az előzetes verzió a soros hozzáféréshez, hogy bizonyos ismert problémák keresztül dolgozik, alább látható ezen a lehetséges megoldások listája 
+A soros konzol problémák ismerjük. Ezekről a problémákról és kockázatcsökkentési lépések listáját itt látható.
 
 Probléma                             |   Kezelés 
 :---------------------------------|:--------------------------------------------|
 Szerezze meg, miután a kapcsolaton transzparens nem jeleníti meg a napló-parancssorban | Tekintse át ezt oldal: [Hitting adja meg a hatástalan](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md). Ez előfordulhat, hogy fordulhat elő, ha egy egyéni virtuális Gépet futtat, megerősített készülék, vagy a config LÁRVAJÁRAT adott causers Windows megfelelően csatlakozni a soros port sikertelen lesz.
-Csak az egészségügyi információk Windows virtuális Géphez való csatlakozáskor jelenik meg| Ez fog megjelenni Ha a speciális felügyeleti konzol nincs engedélyezve a Windows-lemezkép számára. Lásd: [hozzáférés soros konzol a Windows](#access-serial-console-for-windows) manuálisan engedélyezni a virtuális Gépen Windows SAC létrehozásával kapcsolatos útmutatást. További részleteket tekinthet meg [Windows egészségügyi jelek](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Windows_Health_Info.md).
 Írja be a SAC kérdezzen rá Ha engedélyezve van a kernel hibakeresés nem sikerült | A virtuális gép, és futtassa az RDP `bcdedit /debug {current} off` egy rendszergazda jogú parancssorból. Ha Ön nem használhatja az RDP lehet helyette az operációsrendszer-lemez csatolása egy másik Azure virtuális géphez és módosítani, amíg csatlakoztatva, egy lemezt a `bcdedit /store <drive letter of data disk>:\boot\bcd /debug <identifier> off`, majd felcserélheti a lemez vissza.
 Ha az eredeti ismétlődő jellegű rendelkezett SAC eredményez olyan harmadik karaktert a PowerShell történő beillesztéskor | A probléma megoldásához, hogy a PSReadLine modul az aktuális munkamenetből el. Futtatás `Remove-Module PSReadLine` való eltávolítása a PSReadLine modul az aktuális munkamenet - ezzel nem törli vagy a modul eltávolítása.
 Bizonyos billentyűzetet bemenetek állít elő kimenetet. SAC furcsa. (pl. `[A`, `[3~`) | [VT100](https://aka.ms/vtsequences) escape-karaktersorozatokat nem támogatja a SAC használatával.
-Egy "Tiltott" válasz fordult elő a virtuális gép rendszerindítás-diagnosztikai tárfiók elérésekor. | Győződjön meg arról, hogy a rendszerindítási diagnosztika nincs egy fiók tűzfal. Egy elérhető rendszerindítás-diagnosztikai tárfiók a soros konzol működéséhez szükséges.
+Illessze be a nagyon hosszú karakterláncok nem működik | Soros konzol illeszthetők be a terminál 2048 karakter karakterláncok hossza korlátozza. Ez az a soros port sávszélesség túlterhelésének elkerülése érdekében.
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések 
 **Q. Hogyan küldhetek visszajelzést?**

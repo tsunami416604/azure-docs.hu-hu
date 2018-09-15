@@ -1,25 +1,26 @@
 ---
-title: Leképezések hozzáadása a LUIS-alkalmazások |} A Microsoft Docs
-description: Language Understanding (LUIS) használatával, így megismerheti a felhasználói kérések, és megfelelően reagálhat rájuk alkalmazásokat leképezések hozzáadása.
+title: Leképezések hozzáadása a LUIS-alkalmazások
+titleSuffix: Azure Cognitive Services
+description: Leképezések hozzáadása a LUIS-alkalmazás olyan kérdésekre, vagy ugyanazon céljaira rendelkező parancsok azonosítására.
 services: cognitive-services
 author: diberry
 manager: cjgronlund
 ms.component: language-understanding
 ms.topic: article
-ms.date: 05/07/2018
+ms.date: 09/10/2018
 ms.author: diberry
 ms.service: cognitive-services
-ms.openlocfilehash: 0ebf15ea49467674ab3c56aa7983131593cf5c9a
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 687cbad9d1e493e07fc5f813fdd7c52dee3b97d4
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39225886"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45634625"
 ---
 # <a name="manage-intents"></a>Leképezések kezelése 
 Adjon hozzá [leképezések](luis-concept-intent.md) az olyan kérdések vagy ugyanazon céljaira rendelkező parancsok azonosítására a LUIS-alkalmazás. 
 
-Adhat hozzá és kezelhet, a leképezések a **leképezések** lapon elérhető **leképezések** a LUIS a bal oldali panelen. 
+A felügyelt leképezések a **hozhat létre** felső eszköztárának szakasz. Adhat hozzá és kezelhet, a leképezések a **leképezések** oldalon, a bal oldali panelen érhető el. 
 
 Az alábbi eljárás bemutatja, hogyan hozzáadása "Bookflight" célja az TravelAgent alkalmazásban.
 
@@ -28,7 +29,6 @@ Az alábbi eljárás bemutatja, hogyan hozzáadása "Bookflight" célja az Trave
 1. Nyissa meg az alkalmazás (például TravelAgent) nevére kattintva **saját alkalmazások** lapon, és kattintson a **leképezések** a bal oldali panelen. 
 2. Az a **leképezések** kattintson **új leképezésének létrehozása**.
 
-    ![Leképezések listája](./media/luis-how-to-add-intents/IntentsList.png)
 3. Az a **új leképezésének létrehozása** párbeszédpanelen írja be a leképezés "BookFlight" nevet, és kattintson a **kész**.
 
     ![Leképezés hozzáadása](./media/luis-how-to-add-intents/Addintent-dialogbox.png)
@@ -105,7 +105,7 @@ Több kimondott szöveg törléséhez:
 2. Válassza ki **kész** a a **utterances törlése?** felugró párbeszédpanel.
 
 ## <a name="search-in-utterances-on-intent-page"></a>Keresés a szándék oldalon kimondott szöveg
-Egy szándékkal, a kimondott szöveg (szavak vagy kifejezések) szöveget tartalmazó kereshet. Például Észreveheti, hogy egy hiba, amely magában foglalja egy adott szó, és meg szeretne keresni, hogy adott szó tartalmazó összes példákat. 
+Beszédmódok (szavak vagy kifejezések) szöveget tartalmazó kereshet a leképezés utterance (kifejezés) listában. Például Észreveheti, hogy egy hiba, amely magában foglalja egy adott szó, és meg szeretne keresni, hogy adott szó tartalmazó összes példákat. 
 
 1. Az eszköztáron válassza ki a Nagyító ikont.
 

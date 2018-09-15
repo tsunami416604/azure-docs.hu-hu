@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 09/12/2018
 ms.topic: conceptual
-ms.openlocfilehash: 709886e77819adca961a44f65fe6402dd7d20d53
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 09c5981701ffdee5f2e5dba47cc98c91d5df7526
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44716299"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45603906"
 ---
 # <a name="remote-monitoring-architectural-choices"></a>Távoli Monitorozási architektúra lehetőségei
 
@@ -43,7 +43,7 @@ A stream feldolgozása a távoli figyelési megoldást használ az Azure Stream 
 Tárolás a távoli figyelési megoldásgyorsító használja az Azure Time Series Insights és az Azure Cosmos DB-hez. Az Azure Time Series Insights tárolja a csatlakoztatott eszközökről az IoT Hub beérkező üzeneteket. A megoldásgyorsító az Azure Cosmos DB az összes többi tárhelyen, például a ritka elérésű tárolási, a szabályok definíciók, a riasztások és a konfigurációs beállításokat. Az Azure Cosmos DB az IoT-alkalmazások ajánlott általános célú meleg tárolási megoldás, bár a megoldások, például az Azure Time Series Insights és az Azure Data Lake esetében számos alkalmazási megfelelőek. Az Azure Time Series Insights által gyorsabban trendeket és rendellenességeket, amely lehetővé teszi, hogy egyetlen elvégezheti az alapvető okok elemzését, és elkerülheti a költséges mélyebb betekintést az idősorozat-is kaphat. 
 
 > [!NOTE]
-> A távoli figyelési megoldásgyorsító Azure Time Series Insights jelenleg előzetes verzióban és csak [régiók kiválasztása](https://azure.microsoft.com/global-infrastructure/services/). Ha telepíti a távoli figyelési megoldásgyorsító kívül ezekben a régiókban, Cosmos DB beállítás az alapértelmezett tároló.
+> A Time Series Insights jelenleg nem áll rendelkezésre az Azure China felhőben. Új távoli figyelési megoldás gyorsító üzemelő példányok az Azure China felhőben Cosmos DB összes tárolót használja.
 
 ### <a name="business-integration"></a>Vállalati integráció
 Integráció a távoli figyelési megoldásban riasztásokat, amelyek kerüljenek a meleg tárolási generációja korlátozódik. További úgy, hogy integrálja a megoldás az Azure Logic Apps vállalati integrációja végezhető el.

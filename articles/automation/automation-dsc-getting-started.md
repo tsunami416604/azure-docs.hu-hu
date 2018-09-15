@@ -4,17 +4,17 @@ description: MAGYARÁZAT és példák a legáltalánosabb feladatokat az Azure A
 services: automation
 ms.service: automation
 ms.component: dsc
-author: DCtheGeek
-ms.author: dacoulte
+author: bobbytreed
+ms.author: robreed
 ms.date: 08/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9a18855d11c0b367b7d58ffb0f4c62e752c05b89
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: fc1c870d06d6bf4a0db941b261e9aebd317fdcb1
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40004232"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45634359"
 ---
 # <a name="getting-started-with-azure-automation-state-configuration"></a>Ismerkedés az Azure Automation Állapotkonfiguráció
 
@@ -123,7 +123,7 @@ Után elindítja a fordítás, megtekintheti a a **fordítási feladatok** csemp
 
 ## <a name="viewing-node-configurations"></a>Csomópont-konfigurációk megtekintése
 
-A fordítási feladat sikeres végrehajtása egy vagy több új csomópont-konfigurációkat hoz létre. Csomópont-konfiguráció, amelyet a lekéréses kiszolgálóra, és készen áll a lekért és a egy vagy több csomópont által alkalmazott MOF dokumentum. A csomópont-konfigurációkat tekintheti meg az Automation-fiókját a **State configuration (DSC)** lapot. Csomópont-konfiguráció az űrlap-névvel rendelkezik *ConfigurationName*.* NodeName*.
+A fordítási feladat sikeres végrehajtása egy vagy több új csomópont-konfigurációkat hoz létre. Csomópont-konfiguráció, amelyet a lekéréses kiszolgálóra, és készen áll a lekért és a egy vagy több csomópont által alkalmazott MOF dokumentum. A csomópont-konfigurációkat tekintheti meg az Automation-fiókját a **State configuration (DSC)** lapot. Csomópont-konfiguráció az űrlap-névvel rendelkezik *ConfigurationName*. *NodeName*.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Kattintson a bal oldali **összes erőforrás** és majd az Automation-fiók nevét.

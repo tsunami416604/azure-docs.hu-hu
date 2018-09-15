@@ -15,18 +15,19 @@ ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: f027754f26a9063aa5faa548fd01576624811005
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 1b9a8e4a8706dea43e33331cd196fbe2ad877a3a
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "40190209"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45605555"
 ---
 # <a name="working-with-json-and-data-structures-in-log-analytics-queries"></a>A JSON és használatához adatok struktúrák a Log Analytics-lekérdezések
 
 > [!NOTE]
 > Hajtsa végre [az Analytics-portál – első lépések](get-started-analytics-portal.md) és [Ismerkedés a lekérdezések](get-started-queries.md) ebben a leckében befejezése előtt.
 
+[!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
 Beágyazott objektumok olyan objektumok, amelyek tartalmaznak egy tömb, vagy egy térképet, kulcs-érték párokat az objektumokat. Ezek az objektumok JSON karakterláncként vannak megadva. Ez a cikk bemutatja, hogyan JSON adatok lekéréséhez és a beágyazott objektumok elemzésére szolgál.
 
@@ -39,7 +40,7 @@ Használat `extractjson` egy adott JSON-elemeiről ismert elérési út elérés
 
 Elemek elválasztásához használjon szögletes indexek és pontra:
 
-```OQL
+```KQL
 let hosts_report='{"hosts": [{"location":"North_DC", "status":"running", "rate":5},{"location":"South_DC", "status":"stopped", "rate":3}]}';
 print hosts_report
 | extend status = extractjson("$.hosts[0].status", hosts_report)
@@ -47,7 +48,7 @@ print hosts_report
 
 Ez a ugyanaz az eredmény csak zárójelek jelölés használatával:
 
-```OQL
+```KQL
 let hosts_report='{"hosts": [{"location":"North_DC", "status":"running", "rate":5},{"location":"South_DC", "status":"stopped", "rate":3}]}';
 print hosts_report 
 | extend status = extractjson("$['hosts'][0]['status']", hosts_report)
@@ -55,7 +56,7 @@ print hosts_report
 
 Ha csak egy elem, csak pont jelölés is használhatja:
 
-```OQL
+```KQL
 let hosts_report='{"location":"North_DC", "status":"running", "rate":5}';
 print hosts_report 
 | extend status = hosts_report.status
@@ -67,7 +68,7 @@ print hosts_report
 ### <a name="parsejson"></a>parsejson
 A json struktúrában több elemek eléréséhez egyszerűbb legyen a dinamikus objektumként férni. Használat `parsejson` szöveges adatot dinamikus-objektumba. Ha egy dinamikus típus konvertálva, további funkciók segítségével elemezheti az adatokat.
 
-```OQL
+```KQL
 let hosts_object = parsejson('{"hosts": [{"location":"North_DC", "status":"running", "rate":5},{"location":"South_DC", "status":"stopped", "rate":3}]}');
 print hosts_object 
 | extend status0=hosts_object.hosts[0].status, rate1=hosts_object.hosts[1].rate
@@ -78,7 +79,7 @@ print hosts_object
 ### <a name="arraylength"></a>arraylength
 Használat `arraylength` tömbben szereplő elemek számát:
 
-```OQL
+```KQL
 let hosts_object = parsejson('{"hosts": [{"location":"North_DC", "status":"running", "rate":5},{"location":"South_DC", "status":"stopped", "rate":3}]}');
 print hosts_object 
 | extend hosts_num=arraylength(hosts_object.hosts)
@@ -87,7 +88,7 @@ print hosts_object
 ### <a name="mvexpand"></a>mvexpand
 Használat `mvexpand` az objektum tulajdonságainak felosztása külön sorokat.
 
-```OQL
+```KQL
 let hosts_object = parsejson('{"hosts": [{"location":"North_DC", "status":"running", "rate":5},{"location":"South_DC", "status":"stopped", "rate":3}]}');
 print hosts_object 
 | mvexpand hosts_object.hosts[0]
@@ -98,7 +99,7 @@ print hosts_object
 ### <a name="buildschema"></a>buildschema
 Használat `buildschema` beolvasni a sémát, amely elismeri az objektum összes értéket:
 
-```OQL
+```KQL
 let hosts_object = parsejson('{"hosts": [{"location":"North_DC", "status":"running", "rate":5},{"location":"South_DC", "status":"stopped", "rate":3}]}');
 print hosts_object 
 | summarize buildschema(hosts_object)
@@ -122,7 +123,7 @@ Ez a kimenet a objektum mezőket és azok egyező adattípusok nevét írja le.
 
 Beágyazott objektumok különböző sémákkal például előfordulhat, hogy rendelkezik az alábbi példában:
 
-```OQL
+```KQL
 let hosts_object = parsejson('{"hosts": [{"location":"North_DC", "status":"running", "rate":5},{"status":"stopped", "rate":"3", "range":100}]}');
 print hosts_object 
 | summarize buildschema(hosts_object)

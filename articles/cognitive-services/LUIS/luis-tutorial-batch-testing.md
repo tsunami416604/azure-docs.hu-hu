@@ -1,51 +1,27 @@
 ---
-title: Batch tesztelés használatával javíthatja a LUIS-előrejelzés |} A Microsoft Docs
-titleSuffix: Azure
-description: Batch terhelésteszt eredmények áttekintése és módosítása a LUIS-előrejelzések javítása.
+title: '2. oktatóanyag: A Batch teszt együtt 1000 kimondott szöveg '
+titleSuffix: Azure Cognitive Services
+description: Ez az oktatóanyag bemutatja, hogyan használja a batch tesztelése az alkalmazásban az előrejelzési problémák utterance (kifejezés) megkeresheti és kijavíthatja azokat.
 services: cognitive-services
 author: diberry
 manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 08/02/2018
+ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 5abaeaee87d54e82df29e75b89c83522b8746730
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 1f1055b84a83d71931ebd0ca11b5bcd1bd16ad02
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44158245"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45630984"
 ---
-# <a name="improve-app-with-batch-test"></a>A batch-teszt alkalmazás fejlesztéséhez
+# <a name="tutorial--2-batch-test-data-sets"></a>Oktatóanyag: 2. Batch-teszt adatkészletek
 
-Ez az oktatóanyag bemutatja, hogyan utterance (kifejezés) előrejelzési problémák kereséséhez használja a batch-tesztelés.  
-
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
-
-<!-- green checkmark -->
-> [!div class="checklist"]
-* Hozzon létre egy kötegfájlt teszt 
-* Egy batch-teszt futtatása
-* Vizsgálati eredmények áttekintése
-* Hibák javítása 
-* A batch ellenőrzése hosszadalmas
-
-[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
-
-## <a name="before-you-begin"></a>Előkészületek
-
-Ha nem rendelkezik az emberi erőforrások alkalmazásból a [tekintse át a végpont utterances](luis-tutorial-review-endpoint-utterances.md) az oktatóanyagban [importálása](luis-how-to-start-new-app.md#import-new-app) a JSON-kódot egy új alkalmazást a [LUIS](luis-reference-regions.md#luis-website) webhely. Az importálandó alkalmazás a [LUIS-minták](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-review-HumanResources.json) GitHub-adattárban található.
-
-Ha meg szeretné tartani az eredeti Emberi erőforrások alkalmazást, klónozza a [Settings](luis-how-to-manage-versions.md#clone-a-version) (Beállítások) lapon a verziót, és adja neki a következő nevet: `batchtest`. A klónozás nagyszerű mód, hogy kísérletezhessen a különböző LUIS-funkciókkal anélkül, hogy az az eredeti verzióra hatással lenne. 
-
-Az alkalmazás betanításához.
-
-## <a name="purpose-of-batch-testing"></a>A batch tesztelési célra
+Ez az oktatóanyag bemutatja, hogyan használja a batch tesztelése az alkalmazásban az előrejelzési problémák utterance (kifejezés) megkeresheti és kijavíthatja azokat.  
 
 Batch tesztelés lehetővé teszi, hogy ellenőrizze az aktív, betanított modell állapotának ismert vannak beállítva címkézett utterances és entitásokat. A JSON-formátumú parancsfájlba a beszédmódok hozzáadása, és állítsa be az entitás címkék van szüksége, előre meghatározott az utterance (kifejezés) belül. 
-
-<!--The recommended test strategy for LUIS uses three separate sets of data: example utterances provided to the model, batch test utterances, and endpoint utterances. --> Ebben az oktatóanyagban nem alkalmazás használatakor, Ön *nem* példa megcímkézzen már hozzá van adva egy leképezés használatával. Ellenőrizze a kötegelt teszt utterances elleni példa megcímkézzen [exportálása](luis-how-to-start-new-app.md#export-app) az alkalmazást. Hasonlítsa össze az alkalmazás például utterance (kifejezés) a, a batch-teszt kimondott szöveg. 
 
 Batch-tesztelés vonatkozó követelmények:
 
@@ -53,13 +29,42 @@ Batch-tesztelés vonatkozó követelmények:
 * Nincsenek ismétlődések. 
 * Engedélyezett entitástípusra: egyszerű, hierarchikus csak megmunkált megismert entitások (szülő csak), és összetett. Batch-tesztelés hasznos csak megmunkált megtanult szándékokat és entitásokat.
 
-## <a name="create-a-batch-file-with-utterances"></a>Hozzon létre egy kötegfájlt a kimondott szöveg
+Amikor egy alkalmazást, ez az oktatóanyag nem használ, *nem* már hozzá van adva egy leképezés példa megcímkézzen használja. 
 
-1. Hozzon létre `HumanResources-jobs-batch.json` egy szövegszerkesztőben, például [VSCode](https://code.visualstudio.com/). 
+**Ebből az oktatóanyagból megtudhatja, hogyan lehet:**
+
+<!-- green checkmark -->
+> [!div class="checklist"]
+> * Használja meglévő oktatóanyag alkalmazása
+> * Hozzon létre egy kötegfájlt teszt 
+> * Egy batch-teszt futtatása
+> * Vizsgálati eredmények áttekintése
+> * Hibák javítása 
+> * A batch ellenőrzése hosszadalmas
+
+[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+
+## <a name="use-existing-app"></a>Meglévő alkalmazás használata
+
+Folytassa az alkalmazás nevű az előző oktatóanyagban létrehozott **emberi**. 
+
+Ha az előző oktatóanyagban az emberi alkalmazás nem rendelkezik, használja az alábbi lépéseket:
+
+1.  Töltse le és mentse [alkalmazás JSON-fájlt](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-review-HumanResources.json).
+
+2. A JSON importálja egy új alkalmazást.
+
+3. Az a **kezelés** részben, a a **verziók** lapon klónozza a verziót, és adja neki `batchtest`. A klónozás nagyszerű mód, hogy kísérletezhessen a különböző LUIS-funkciókkal anélkül, hogy az az eredeti verzióra hatással lenne. A verzió nevét az URL-útvonal részeként használja, mert a név nem tartalmazhat, amelyek nem érvényes URL-karaktereket. 
+
+4. Az alkalmazás betanításához.
+
+## <a name="batch-file"></a>Batch-fájl
+
+1. Hozzon létre `HumanResources-jobs-batch.json` egy szövegszerkesztő vagy [letöltése](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/HumanResources-jobs-batch.json) azt. 
 
 2. A JSON-formátumú parancsfájlba, az beszédmódok hozzáadása a **szándékot** azt szeretné, a teszt előre jelzett. 
 
-   [!code-json[Add the intents to the batch test file](~/samples-luis/documentation-samples/tutorial-batch-testing/HumanResources-jobs-batch.json "Add the intents to the batch test file")]
+   [!code-json[Add the intents to the batch test file](~/samples-luis/documentation-samples/tutorials/HumanResources-jobs-batch.json "Add the intents to the batch test file")]
 
 ## <a name="run-the-batch"></a>Futtassa a köteget
 
@@ -73,13 +78,13 @@ Batch-tesztelés vonatkozó követelmények:
 
     [![Képernyőkép a LUIS alkalmazás importálása adatkészlettel kiemelésével](./media/luis-tutorial-batch-testing/hr-import-dataset-button.png)](./media/luis-tutorial-batch-testing/hr-import-dataset-button.png#lightbox)
 
-4. Válassza ki a fájl rendszer helyét a `HumanResources-jobs-batch.json` fájlt.
+4. Válassza ki a fájl helyét a `HumanResources-jobs-batch.json` fájlt.
 
 5. Nevezze el az adatkészlet `intents only` válassza **kész**.
 
     ![Fájl kiválasztása](./media/luis-tutorial-batch-testing/hr-import-new-dataset-ddl.png)
 
-6. Kattintson a **Futtatás** gombra. Várjon, amíg a teszt történik.
+6. Kattintson a **Futtatás** gombra. 
 
 7. Válassza ki **eredmények megtekintéséhez**.
 
@@ -109,7 +114,7 @@ Figyelje meg, hogy mindkét leképezések rendelkezik-e hibák azonos száma. Az
 
 A megfelelő felső utterances időponthoz a **vakriasztás** szakaszban vannak `Can I apply for any database jobs with this resume?` és `Can I apply for any database jobs with this resume?`. Az első utterance (kifejezés), a word a `resume` csak a felhasznált **ApplyForJob**. A második utterance (kifejezés), a word a `apply` még csak használták a **ApplyForJob** szándékot.
 
-## <a name="fix-the-app-based-on-batch-results"></a>Javítsa ki az alkalmazást, a batch eredményei alapján
+## <a name="fix-the-app"></a>Javítsa ki az alkalmazást
 
 Ez a szakasz célja, hogy megcímkézzen megfelelően az előre jelzett összes **GetJobInformation** azzal, hogy az alkalmazást. 
 
@@ -119,7 +124,7 @@ A kimondott szöveg eltávolításával kapcsolatos is vezetőnév **ApplyForJob
 
 Az első javítást, hogy a további beszédmódok hozzáadása **GetJobInformation**. A második javítás szavakkal is, mint a súlyozást csökkentése érdekében egy `resume` és `apply` felé a **ApplyForJob** szándékot. 
 
-### <a name="add-more-utterances-to-getjobinformation"></a>A további beszédmódok hozzáadása **GetJobInformation**
+### <a name="add-more-utterances"></a>További beszédmódok hozzáadása
 
 1. Zárja be a batch-teszt panelen válassza a **tesztelése** gombot a felső navigációs panelen. 
 
@@ -149,7 +154,7 @@ Az első javítást, hogy a további beszédmódok hozzáadása **GetJobInformat
 
 4. Az alkalmazás betanításához kiválasztásával **Train** a jobb felső navigációs.
 
-## <a name="verify-the-fix-worked"></a>Ellenőrizze, hogy a javítás működött
+## <a name="verify-the-new-model"></a>Ellenőrizze az új modell
 
 Annak érdekében, hogy ellenőrizze, hogy a batch-teszt megcímkézzen megfelelően előre jelzett, futtassa újra a batch-vizsgálat.
 
@@ -171,12 +176,12 @@ Amikor először és a tesztelésre kötegfájlok, érdemes néhány utterances 
 
 Az érték egy **feladat** entitás, a teszt utterances megadott, általában egy vagy két szavak, néhány példa alatt további szavakat. Ha _saját_ emberi erőforrások alkalmazáson általában számos szavak feladat nevét, a példában megcímkézzen címkézte **feladat** entitás ebben az alkalmazásban nem működne.
 
-1. Hozzon létre `HumanResources-entities-batch.json` egy szövegszerkesztőben, például [VSCode](https://code.visualstudio.com/). Töltse le vagy [a fájl](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorial-batch-testing/HumanResources-entities-batch.json) a LUIS-minták Github-adattárból.
+1. Hozzon létre `HumanResources-entities-batch.json` egy szövegszerkesztőben, például [VSCode](https://code.visualstudio.com/) vagy [letöltése](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/HumanResources-entities-batch.json) azt.
 
 
 2. A JSON-formátumú batch fájlban adja hozzá a kimondott szöveg objektumok egy tömbjét a **szándékot** szeretné a tesztelési, valamint a helyek az utterance (kifejezés) bármely entitáslistájában előre jelzett. Mivel egy entitás jogkivonat-alapú, ügyeljen arra, hogy elindíthatja és leállíthatja a minden entitás az a karakter. Ne kezdő vagy záró szóközt az utterance (kifejezés). Ez hibát okoz a batch-fájl importálása során.  
 
-   [!code-json[Add the intents and entities to the batch test file](~/samples-luis/documentation-samples/tutorial-batch-testing/HumanResources-entities-batch.json "Add the intents and entities to the batch test file")]
+   [!code-json[Add the intents and entities to the batch test file](~/samples-luis/documentation-samples/tutorials/HumanResources-entities-batch.json "Add the intents and entities to the batch test file")]
 
 
 ## <a name="run-the-batch-with-entities"></a>Futtassa a köteget az entitások
@@ -222,15 +227,13 @@ Ezek a feladatok elvégzéséhez van hátra.
 
 Hozzáadás egy [minta](luis-concept-patterns.md) előtt az entitás megfelelően előre jelzett, nem történik a probléma megoldása érdekében. Ez azért, mert a minta nem egyeznek, amíg a rendszer észleli a minta összes entitást. 
 
-## <a name="what-has-this-tutorial-accomplished"></a>Mi valósult meg ebben az oktatóanyagban?
-
-Hibák keresése a Batch és a modell javításának nőtt az alkalmazás előrejelzés pontosságát. 
-
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>További lépések
+
+Az oktatóanyag egy batch-teszt segítségével keresse meg a problémákat a jelenlegi modellel. A modell volt rögzített, és ellenőrizze a módosítás megfelelő volt-e a batch-fájllal vizsgálni.
 
 > [!div class="nextstepaction"]
 > [További információ a minták](luis-tutorial-pattern.md)

@@ -1,21 +1,21 @@
 ---
-title: A LUIS iteratív Alkalmazástervezés – beszédfelismerés ismertetése
-description: LUIS legjobb megtanulja az iteratív ciklusának adatmodell változásainak, utterance (kifejezés) példákat, közzététel és adatok összegyűjtése a végpont lekérdezések.  A LUIS-alkalmazások tervezési ismétlések beolvasni a legjobb adatkinyerés LUIS betanításához szükséges.
+title: Iteratív Alkalmazástervezés a Language Understanding (LUIS)
 titleSuffix: Azure Cognitive Services
+description: LUIS legjobb megtanulja az iteratív ciklusának adatmodell változásainak, utterance (kifejezés) példákat, közzététel és adatok összegyűjtése a végpont lekérdezések.  A LUIS-alkalmazások tervezési ismétlések beolvasni a legjobb adatkinyerés LUIS betanításához szükséges.
 services: cognitive-services
 author: diberry
 manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 02/12/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 7c267d53c9057ac05427ff14a7e3c25d56ab1f62
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 5eba6867bdf6ca6ca362bcd6bb3ab747780d1a5e
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44025427"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45634225"
 ---
 # <a name="authoring-cycle"></a>Tartalomkészítési ciklus
 LUIS legjobb megtanulja az iteratív ciklusának adatmodell változásainak, utterance (kifejezés) példákat, közzététel és adatok összegyűjtése a végpont lekérdezések. 
@@ -33,15 +33,12 @@ A modell szándékkal, entitásokat is tartalmaz.
 A LUIS példa utterances a szándék fog vonatkozni a kell. A példák kell elegendő változata, a word választási lehetőség és a szórendjét meg tudja határozni, melyik a cél az utterance (kifejezés) tervezték. Valamennyi példa utterance (kifejezés) rendelkeznie kell címkével ellátott entitásokként szükséges adatokat. 
 
 A LUIS figyelmen kívül hagyja, hogy nem vonatkoznak az alkalmazás tartományhoz az utterance (kifejezés) való hozzárendelésével megcímkézzen utasította a **nincs** szándékot. Minden olyan szavak vagy kifejezések nem kell az utterance (kifejezés) kihúzott nem kell lesz. Nincs címke szót vagy kifejezést figyelmen kívül van. 
-<!--
-## Not just yet
-Do not add features such as a [phrase list](luis-concept-feature.md) feature in your first cycle. Phrase lists are phrases that would be specific to your app's subject area.  
--->
+
 ## <a name="train-and-publish-the-app"></a>Az alkalmazás betanítása és közzététele
-Miután 10 – 15 különböző utterances az egyes szándékkal, a szükséges entitásokkal címkével ellátott, LUIS betanítását, majd beolvasni a végpontok közzététele. Ügyeljen arra, hogy az alkalmazás létrehozása, és tegye közzé az alkalmazást, hogy elérhető legyen a [végpont régiók](luis-reference-regions.md) van szüksége. 
+Miután 10 – 15 különböző utterances az egyes szándékot, a címkével ellátott szükséges entitásokkal, betanítását és tegye közzé. A közzététel sikeres értesítésből a hivatkozás segítségével a végpontok beolvasása. Ügyeljen arra, hogy az alkalmazás létrehozása, és tegye közzé az alkalmazást, hogy elérhető legyen a [végpont régiók](luis-reference-regions.md) van szüksége. 
 
 ## <a name="https-endpoint-testing"></a>HTTPS-végpont tesztelése
-A HTTPS-végpont található, a LUIS-alkalmazás teszteléséhez a **[közzététel](luis-how-to-publish-app.md)** lapot. A végpont a tesztelés lehetővé teszi, hogy a LUIS felülvizsgálatra alacsony – magabiztosan megszólalásokat kiválasztása.  
+A LUIS-alkalmazás a HTTPS-végpont tesztelheti. A végpont a tesztelés lehetővé teszi, hogy a LUIS felülvizsgálatra alacsony – magabiztosan megszólalásokat kiválasztása.  
 
 ## <a name="recycle"></a>Lomtár
 Amikor elkészült, a szerzői műveletek a ciklust, elkezdheti újra. Indítsa el a LUIS megjelölve alacsony magabiztosan végpont utterances áttekintése. Ellenőrizze ezeket mind a szándék entitás kimondott szöveg. Miután utterances tekintse át, a felülvizsgálat lista üresnek kell lennie.  

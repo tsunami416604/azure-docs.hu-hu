@@ -1,75 +1,84 @@
 ---
-title: További tudnivalók az Azure Media Services által ajánlott kódolók |} Microsoft Docs
-description: További információk a media services által ajánlott kódolók
+title: További tudnivalók az Azure Media Services által javasolt kódolók |} A Microsoft Docs
+description: További tudnivalók a media services által ajánlott kódolók
 services: media-services
 keywords: kódolás; kódolók; adathordozó
 author: dbgeorge
-manager: jasonsue
-ms.author: dwgeo
-ms.date: 11/10/2017
+manager: johndeu
+ms.author: johndeu
+ms.date: 09/13/2018
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: d0c5536d2339470eac058250cc14e1f250b86d90
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: c90d6a5784fe9d80df4fab304b6122d3fa24d0b5
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33790271"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45605164"
 ---
-# <a name="recommended-on-premises-encoders"></a>Ajánlott a helyszíni kódolókkal
-Amikor élő adatfolyam-az Azure Media Services, megadhatja, hogyan történjen a csatorna a bemeneti adatfolyam fogadására. Ha egy helyszíni kódoló egy élő kódolás Channel használatát választja, a kódoló leküldéses egy kiváló minőségű egyféle sávszélességű adatfolyamokat output típusúként. Ha a csatorna továbbítása helyszíni kódoló használatát választja, a kódoló leküldéses többféle sávszélességűvé minden kívánt kimeneti minőségű kimenetként. További információkért lásd: [élő Stream továbbítása helyszíni kódolókkal](media-services-live-streaming-with-onprem-encoders.md).
+# <a name="recommended-on-premises-encoders"></a>Ajánlott helyszíni kódolók
+Amikor az élő adások online közvetítése az Azure Media Services, megadhatja, hogyan történjen a csatorna a bemeneti streamet. Ha egy helyszíni kódolót használata élő kódolás csatornát választja, a kódoló leküldéses egy kiváló minőségű egyszeres átviteli sebességű streamet kimenetként. Ha egy helyszíni kódolót használata a pass-csatornán keresztül, a kódoló leküldéses egy többszörös sávszélességű streamet az összes kívánt kimeneti minőség kimenetként. További információkért lásd: [élő adások online közvetítése helyszíni kódolókkal](media-services-live-streaming-with-onprem-encoders.md).
 
-Az Azure Media Services azt javasolja, hogy a következő élő kódolók kimenetként RTMP rendelkező egyikének használatával:
-- Az Adobe Flash Media élő kódoló 3.2.
+Az Azure Media Services javasolja, hogy valamelyik a következő élő kódolók képesek kimenetként RTMP rendelkezik:
+- Az Adobe Flash Media Live Encoder 3.2-es verzióját
 - Haivision Makito X HEVC
-- Telestream Wirecast 8.1
+- Haivision KB
+- Telestream Wirecast 8.1 +
+- Telestream Wirecast S
 - Teradek szelet 756
-- TriCaster 8000
+- A 8000-es TriCaster
 - Tricaster Mini HD-4
+- OBS-Studio
+- VMIX
+- xStream
+- Környezetválasztó Studio (iOS)
 
-Az Azure Media Services azt javasolja, hogy a következő élő kódolók képesek többféle sávszélességű Smooth Streaming kimenetként rendelkező egyikének használatával:
+Az Azure Media Services a következő élő kódolók többféle sávszélességű töredezett-MP4 (Smooth Streaming) kimenetként rendelkező egyikének használatát javasolja:
+- Media Excel élő Hero és a Hero 4 KB-os (UHD/HEVC)
 - Élő TITAN Ateme
 - Cisco digitális Media Encoder 2200
-- Élő elemi
-- Envivo 4Caster C4 generációs III.
-- Képzelje el kommunikációs Selenio MCP3
-- Media Excel Hero élő
+- Elemental Live
+- Envivio 4Caster C4 csomag általános III.
+- Az Imagine Communications Selenio MCP3
 
 > [!NOTE]
-> Az élő kódolók egy egyféle sávszélességű adatfolyamot küldeni a csatorna továbbítása, de ez a konfiguráció nem ajánlott, mert nem teszi lehetővé az adaptív sávszélességű streamelés az ügyfélnek.
+> Az élő kódolók olyan egy egyféle sávszélességű adatfolyamot küldeni a csatorna továbbítása, de ez a konfiguráció nem ajánlott, mert nem teszi lehetővé az adaptív sávszélességű streamelés az ügyfélnek.
 
 ## <a name="how-to-become-an-on-prem-encoder-partner"></a>Hogyan válhat egy helyszíni kódolót partner
-Partnerként Azure Media Services helyszíni kódolót a Media Services a termék elősegíti a vállalati ügyfelek a kódoló ajánlja. Egy helyszíni kódolót partner válnak, ellenőriznie kell a helyszíni kódolót kompatibilisek a Media Services. Ehhez hajtsa végre a következő ellenőrzések:
+Egy Azure Media Services – helyszíni kódolót partnerként a Media Services a termék elősegíti a vállalati ügyfelek számára a kódoló javaslatot. Egy helyszíni kódolót partner szeretne lenni, ellenőriznie kell a helyszíni kódolót kompatibilitását a Media Services használatával. Ehhez hajtsa végre a következő ellenőrzések:
 
 Csatorna ellenőrzési továbbítása
 1. Hozzon létre, vagy keresse fel az Azure Media Services-fiók
-2. Hozzon létre, és indítsa el a **áteresztő** csatorna
-3. Konfigurálja a kódoló leküldéses egy többszörös sávszélességű élő streamet.
-4. Közzétett élő esemény létrehozása
-5. Futtassa az élő kódoló körülbelül 10 percig
+2. Hozzon létre, és indítsa el a **átmenő** csatorna
+3. Konfigurálja a kódoló leküldése egy többszörös sávszélességű élő streamet.
+4. A közzétett élő esemény létrehozása
+5. Futtassa az élő kódoló körülbelül 10 percre
 6. Állítsa le az élő esemény
-7. Jegyezze fel az eszköz azonosítója közzé a streamelési URL-cím, az élő archívum, és a beállítások és az élő kódoló a használt verzió
-8. A csatorna visszaállítása után minden egyes minta létrehozása
-9. Ismételje meg a 3-8 az összes konfiguráció támogatja a kódoló (rendelkező és anélküli ad jelzés/feliratok/különböző sebességű kódolás)
+7. Hozzon létre, a Streaming endpoint start, például egy lejátszóval [Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html) tekintse meg az adott lejátszási ne legyen az összes minőségi szinthez nem látható hipervizorgazdákat archivált objektumot (vagy másik megoldásként nézze meg, és ellenőrizze az előnézeti URL-CÍMEN keresztül a 6. lépés előtt élő munkamenetben)
+8. Jegyezze fel az eszköz azonosítója, közzétett streamelési URL-cím, az élő archívumot, és a beállítások és az élő kódoló a használt verziója.
+9. Mindegyik minta létrehozása után a csatorna állapot alaphelyzetbe állítása
+10. Ismételje meg a 3 – 9 a konfigurációk a kódoló (rendelkező és anélküli ad jelzés/akadálymentes feliratok/különböző sebességek kódolás) által támogatott
 
-Élő kódolás csatorna ellenőrzése
+Élő csatorna kódolási ellenőrzése
 1. Hozzon létre, vagy keresse fel az Azure Media Services-fiók
-2. Hozzon létre, és indítsa el a **élő kódolás** csatorna
-3. Konfigurálja a kódoló leküldéses egy egyszeres sávszélességű élő streamet.
-4. Közzétett élő esemény létrehozása
-5. Futtassa az élő kódoló körülbelül 10 percig
+2. Hozzon létre, és indítsa el a **valós idejű kódolás** csatorna
+3. Konfigurálja a kódoló leküldése egy egyféle sávszélességű élő streamet.
+4. A közzétett élő esemény létrehozása
+5. Futtassa az élő kódoló körülbelül 10 percre
 6. Állítsa le az élő esemény
-7. Jegyezze fel az eszköz azonosítója közzé a streamelési URL-cím, az élő archívum, és a beállítások és az élő kódoló a használt verzió
-8. A csatorna visszaállítása után minden egyes minta létrehozása
-9. Ismételje meg a 3-8 az összes konfiguráció támogatja a kódoló (rendelkező és anélküli ad jelzés/feliratok/különböző sebességű kódolás)
+7. Hozzon létre, a Streaming endpoint start, például egy lejátszóval [Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html) tekintse meg az adott lejátszási ne legyen az összes minőségi szinthez nem látható hipervizorgazdákat archivált objektumot (vagy másik megoldásként nézze meg, és ellenőrizze az előnézeti URL-CÍMEN keresztül a 6. lépés előtt élő munkamenetben)
+8. Jegyezze fel az eszköz azonosítója, közzétett streamelési URL-cím, az élő archívumot, és a beállítások és az élő kódoló a használt verziója.
+9. Mindegyik minta létrehozása után a csatorna állapot alaphelyzetbe állítása
+10. Ismételje meg a 3 – 9 a konfigurációk a kódoló (rendelkező és anélküli ad jelzés/akadálymentes feliratok/különböző sebességek kódolás) által támogatott
 
 Az érvényességi ideje ellenőrzése
 1. Hozzon létre, vagy keresse fel az Azure Media Services-fiók
-2. Hozzon létre, és indítsa el a **áteresztő** csatorna
-3. Konfigurálja a kódoló leküldéses egy többszörös sávszélességű élő streamet.
-4. Közzétett élő esemény létrehozása
+2. Hozzon létre, és indítsa el a **átmenő** csatorna
+3. Konfigurálja a kódoló leküldése egy többszörös sávszélességű élő streamet.
+4. A közzétett élő esemény létrehozása
 5. Futtassa az élő kódoló egy hét vagy hosszabb ideig
-6. Állítsa le az élő esemény
-7. Jegyezze fel az eszköz azonosítója közzé a streamelési URL-cím, az élő archívum, és a beállítások és az élő kódoló a használt verzió
+6. Például egy lejátszóval [Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html) tekintse meg az élő streamelés időpontból lejátszás ne legyen semmilyen látható hipervizorgazdákat idő (vagy archivált objektumot)
+7. Állítsa le az élő esemény
+8. Jegyezze fel az eszköz azonosítója, közzétett streamelési URL-cím, az élő archívumot, és a beállítások és az élő kódoló a használt verziója.
 
-Végül a rögzített beállítások küldése és archív paraméterek Media Services segítségével élő amsstreaming@microsoft.com. Fogadásakor a Media Services az élő kódoló a minták ellenőrző teszteket hajt végre. Ez a folyamat kapcsolatos kérdéseivel a Media Services felveheti a kapcsolatot.
+Végül a rögzített beállítások küldése és archív paraméterek a Media Services élő e-mail amsstreaming@microsoft.com. Kap a Media Services az élő kódoló a minták ellenőrző teszteket hajt végre. Ez a folyamat kapcsolatos kérdéseivel a Media Services fordulnia.

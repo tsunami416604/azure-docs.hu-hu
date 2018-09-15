@@ -2,19 +2,19 @@
 title: Használja az Azure Data Lake Tools for Visual Studio Code
 description: Ismerje meg, hogyan használhatja az Azure Data Lake Tools for Visual Studio Code létrehozása, tesztelése és futtatása a U-SQL-parancsfájlok.
 services: data-lake-analytics
+ms.service: data-lake-analytics
 author: Jejiang
 ms.author: jejiang
 ms.reviewer: jasonwhowell
 ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
-ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 02/09/2018
-ms.openlocfilehash: b06b4c4484e3f41b64ff2d60ce558726c555a2e3
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: e470d27ccfea68f628b793f9afd695bb363e295a
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43047911"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45630835"
 ---
 # <a name="use-azure-data-lake-tools-for-visual-studio-code"></a>Használja az Azure Data Lake Tools for Visual Studio Code
 
@@ -24,7 +24,7 @@ Ebből a cikkből megtudhatja, hogyan használja az Azure Data Lake Tools for Vi
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure Data Lake Tools for VS Code támogatja a Windows, Linux és MacOS rendszeren.  
+Az Azure Data Lake Tools for VS Code támogatja a Windows, Linux és MacOS rendszeren. U-SQL helyi futtatási és helyi hibakeresési csak Windows működik.
 
 - [Visual Studio Code](https://www.visualstudio.com/products/code-vs.aspx)
 
@@ -220,6 +220,8 @@ U-SQL helyi futtatásakor a helyi adatok teszteli, és a szkriptet helyileg elle
 - Hibakeresés a C# háttérkód. 
 - Végighaladhat a kódot. 
 - Ellenőrizze a parancsfájl helyi.
+
+A helyi Futtatás és helyi hibakeresési funkció csak Windows-környezetben működik, és a macOS és Linux-alapú operációs rendszerek nem támogatott.
 
 Helyi Futtatás és hibakeresés kapcsolatos utasításokért lásd: [U-SQL helyi futtatása és a hibakeresés a Visual Studio Code-dal](data-lake-tools-for-vscode-local-run-and-debug.md).
 

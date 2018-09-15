@@ -3,7 +3,7 @@ title: Az Azure piactéren elemek elérhető az Azure Stackhez |} A Microsoft Do
 description: Ezeket az Azure Marketplace-elemek is használható az Azure Stackben.
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/14/2018
-ms.author: brenduns
+ms.author: sethm
 ms.reviewer: jeffgo
-ms.openlocfilehash: 406d5965c02ceddc617c8729bad95ac7819af30e
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 16590fe5b27c85fdb5e1fa52ec3b835eaccbb2de
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44722061"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45630976"
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>Elérhető az Azure Stackhez az Azure piactéren elemek
 

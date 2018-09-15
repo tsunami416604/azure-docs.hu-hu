@@ -15,17 +15,19 @@ ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 562fdc82e0b814fc759bda7b853492b47d073925
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: f72fb6f654b4699214a22a7f96431c605af52f2d
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "40190220"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45603673"
 ---
 # <a name="aggregations-in-log-analytics-queries"></a>Összesítések a Log Analytics-lekérdezések
 
 > [!NOTE]
 > Hajtsa végre [az Analytics-portál – első lépések](get-started-analytics-portal.md) és [Ismerkedés a lekérdezések](get-started-queries.md) ebben a leckében befejezése előtt.
+
+[!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
 Ez a cikk ismerteti az összesítő függvények a Log Analytics-lekérdezéseket, amelyek kínálnak hasznos módszer az adatok elemzéséhez. Ezek a függvények minden dolgozni a `summarize` operátort, amelynek összesített eredmények a bemeneti tábla egy táblát hoz létre.
 
@@ -35,13 +37,13 @@ Ez a cikk ismerteti az összesítő függvények a Log Analytics-lekérdezéseke
 Szűrők alkalmazása után az eredményhalmazban sorok számát. Az alábbi példa adja vissza a sorok száma a _Teljesítményoptimalizált_ táblát az elmúlt 30 percben. Az eredményt adja vissza egy adott nevű oszlopban *count_* , kivéve, ha egy adott nevét rendelje hozzá:
 
 
-```OQL
+```KQL
 Perf
 | where TimeGenerated > ago(30m) 
 | summarize count()
 ```
 
-```OQL
+```KQL
 Perf
 | where TimeGenerated > ago(30m) 
 | summarize num_of_records=count() 
@@ -49,7 +51,7 @@ Perf
 
 Lehet, hogy idővel a trendek kíváncsi idődiagramját Vizualizációk:
 
-```OQL
+```KQL
 Perf 
 | where TimeGenerated > ago(30m) 
 | summarize count() by bin(TimeGenerated, 5m)
@@ -64,7 +66,7 @@ A jelen példa kimenetében teljesítményoptimalizált rekordszám trendvonalat
 ### <a name="dcount-dcountif"></a>DCount, dcountif
 Használat `dcount` és `dcountif` külön értékek egy adott oszlopban. A következő lekérdezés kiértékeli, hogy hány egyedi számítógépek számlálása az elmúlt órában:
 
-```OQL
+```KQL
 Heartbeat 
 | where TimeGenerated > ago(1h) 
 | summarize dcount(Computer)
@@ -72,7 +74,7 @@ Heartbeat
 
 Csak a Linux rendszerű számítógépek számlálása használjuk `dcountif`:
 
-```OQL
+```KQL
 Heartbeat 
 | where TimeGenerated > ago(1h) 
 | summarize dcountif(Computer, OSType=="Linux")
@@ -81,7 +83,7 @@ Heartbeat
 ### <a name="evaluating-subgroups"></a>Alcsoportok kiértékelése
 Egy szám vagy más összesítéseket végre az adatok az alcsoportok, használja a `by` kulcsszót. Például különböző Linux rendszerű számítógépek számlálása az egyes országok számát:
 
-```OQL
+```KQL
 Heartbeat 
 | where TimeGenerated > ago(1h) 
 | summarize distinct_computers=dcountif(Computer, OSType=="Linux") by RemoteIPCountry
@@ -98,7 +100,7 @@ Heartbeat
 
 Elemezheti az adatokat még kisebb alcsoportok, adjon hozzá további oszlopok az `by` szakaszban. Például előfordulhat, hogy szeretné az egyes országból / OSType különböző számítógépek száma:
 
-```OQL
+```KQL
 Heartbeat 
 | where TimeGenerated > ago(1h) 
 | summarize distinct_computers=dcountif(Computer, OSType=="Linux") by RemoteIPCountry, OSType
@@ -110,7 +112,7 @@ Numerikus értékek kiértékelésekor általános gyakorlat, hogy azok átlagos
 ### <a name="percentile"></a>Percentilis
 A középérték megkereséséhez használja a `percentile` függvény megadása a PERCENTILIS értékkel:
 
-```OQL
+```KQL
 Perf
 | where TimeGenerated > ago(30m) 
 | where CounterName == "% Processor Time" and InstanceName == "_Total" 
@@ -119,7 +121,7 @@ Perf
 
 Megadhat egy összesített eredményre beolvasni az egyes különböző percentilisei is:
 
-```OQL
+```KQL
 Perf
 | where TimeGenerated > ago(30m) 
 | where CounterName == "% Processor Time" and InstanceName == "_Total" 
@@ -131,7 +133,7 @@ Ez előfordulhat, hogy mutatja, hogy néhány számítógépen processzorok ért
 ### <a name="variance"></a>Variancia
 Érték varianciáját közvetlenül kiértékelni, használja a szórás és eltérés módszerek:
 
-```OQL
+```KQL
 Perf
 | where TimeGenerated > ago(30m) 
 | where CounterName == "% Processor Time" and InstanceName == "_Total" 
@@ -140,7 +142,7 @@ Perf
 
 Egy jó stabilitását, a CPU-használat elemzése módja stdev kombinálva a középérték számítás:
 
-```OQL
+```KQL
 Perf
 | where TimeGenerated > ago(130m) 
 | where CounterName == "% Processor Time" and InstanceName == "_Total" 

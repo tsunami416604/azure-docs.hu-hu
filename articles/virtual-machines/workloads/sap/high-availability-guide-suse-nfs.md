@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: 6ad943d2ae98093f7e5b94df59757ff603083cfe
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 99b7b83ca2d7f6f19df137e6ecf5deaf411e9a5e
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43668955"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45634744"
 ---
 # <a name="high-availability-for-nfs-on-azure-vms-on-suse-linux-enterprise-server"></a>Magas rendelkezésre állás NFS, a SUSE Linux Enterprise Server Azure virtuális gépeken
 
@@ -119,7 +119,7 @@ Használhatja a gyorsindítási sablonok egyikét a Githubon üzembe helyezésé
    4. Rendszergazdai felhasználónév és a rendszergazdai jelszó  
       Egy új felhasználót hoz létre, amely segítségével jelentkezzen be a számítógépen.
    5. Alhálózati azonosító  
-      Az alhálózat, amelyhez a virtuális gépek kapcsolódnia kell a azonosítója. Hagyja üresen, ha azt szeretné, hozzon létre egy új virtuális hálózatot, vagy válassza ki az alhálózatot a virtuális gép csatlakozni a helyszíni hálózathoz a VPN vagy Express Route virtuális hálózat. Az azonosító általában néz ki: /subscriptions/**&lt;előfizetés-azonosító&gt;**/resourceGroups/**&lt;erőforráscsoport-név&gt;**/szolgáltatók/ Microsoft.Network/virtualNetworks/**&lt;virtuálishálózat-nevet&gt;**/subnets/**&lt;alhálózat neve&gt;**
+      Ha azt szeretné, helyezheti üzembe a virtuális gép egy meglévő Vnetet, amelyekben egy meghatározott alhálózatot a virtuális gép hozzá kell rendelni, nevezze el a kívánt alhálózatot. Az azonosító általában néz ki: /subscriptions/**&lt;előfizetés-azonosító&gt;**/resourceGroups/**&lt;erőforráscsoport-név&gt;**/szolgáltatók/ Microsoft.Network/virtualNetworks/**&lt;virtuálishálózat-nevet&gt;**/subnets/**&lt;alhálózat neve&gt;**
 
 ### <a name="deploy-linux-manually-via-azure-portal"></a>Manuálisan üzembe helyezése Linux rendszerű Azure-portálon
 

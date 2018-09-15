@@ -8,17 +8,17 @@ ms.topic: include
 ms.date: 06/12/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: c681e5f68299c03685dd7722f8dc671e49026f78
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: ad75b333fc7d5d37a4ac074727e4d54b67bd0321
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43305083"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45636961"
 ---
 #### <a name="expressroute-limits"></a>Az ExpressRoute-korlátok
 Az alábbi korlátok vonatkoznak, az ExpressRoute-erőforrásokra előfizetésenként.
 
-| Erőforrás | Alapértelmezett korlát |
+| Erőforrás | Alapértelmezett/maximális száma |
 | --- | --- |
 | Előfizetésenként az ExpressRoute-Kapcsolatcsoportok |10 |
 | Az ExpressRoute-Kapcsolatcsoportok régiónként és előfizetésenként (Azure Resource Manager) |10 |

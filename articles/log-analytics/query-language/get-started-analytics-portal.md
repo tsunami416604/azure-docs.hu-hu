@@ -1,6 +1,6 @@
 ---
-title: Ismerkedés a Log Analytics-oldal az Azure Portalon |} A Microsoft Docs
-description: Ez a cikk egy oktatóanyag az a Log Analytics lapot kell lekérdezéseket írni.
+title: Ismerkedés a Log Analytics használatával az Azure Portalon |} A Microsoft Docs
+description: Ez a cikk egy oktatóanyag, a Log Analytics szolgáltatást az Azure Portalon kell lekérdezéseket írni.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -15,14 +15,16 @@ ms.topic: conceptual
 ms.date: 08/20/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 493497476fdfe7d96d6f2dde735bab0147e547a7
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 2c35d71d127903a67dce2280b2d0ab335079b480
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42055758"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45604467"
 ---
-# <a name="get-started-with-the-log-analytics-page-in-the-azure-portal"></a>Ismerkedés a Log Analytics-oldal az Azure Portalon
+# <a name="get-started-with-log-analytics-in-the-azure-portal"></a>Ismerkedés a Log Analytics használatával az Azure Portalon
+
+[!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
 Ebben az oktatóanyagban megtudhatja hogyan Log Analytics-lekérdezések a Log Analytics lapot (jelenleg előzetes verzióban érhető el) az Azure portal használatával. Mely arról szól, hogyan való:
 
@@ -45,7 +47,7 @@ A Log Analytics-lap egy olyan webes eszköz, írható és az Azure Log Analytics
 ## <a name="basic-queries"></a>Alapszintű lekérdezéseket
 Lekérdezések keresési feltételek, azonosíthatja a trendeket, mintáinak elemzése és sok más összefüggéseket az adatok alapján az használható. Kezdje egy egyszerű lekérdezést:
 
-```OQL
+```KQL
 Event | search "error"
 ```
 
@@ -55,7 +57,7 @@ Lekérdezések megkezdheti a következők egyikével táblanév vagy egy **keres
 
 Egy másik módja, hogy ugyanabból a lekérdezés írása a következő lesz:
 
-```OQL
+```KQL
 search in (Event) "error"
 ```
 
@@ -79,7 +81,7 @@ Minden tábla adatok felépítéséről oszlopok különböző adattípusokkal, 
 ## <a name="filter-the-results"></a>Az eredmények szűréséhez
 Első lépésként előkészítés véglegesítése a _esemény_ tábla.
 
-```OQL
+```KQL
 Event
 ```
 
@@ -133,7 +135,7 @@ Ha a lekérdezés kifejezetten egy szűrőt tartalmaz _TimeGenerated_választó 
 ## <a name="charts"></a>Diagramok
 Mellett eredményt adnak vissza egy táblázat, lekérdezési eredmények vizuális formátumban is megjeleníthetők. Például használja a következő lekérdezést:
 
-```OQL
+```KQL
 Event 
 | where EventLevelName == "Error" 
 | where TimeGenerated > ago(1d) 

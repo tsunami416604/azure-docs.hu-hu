@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 09/12/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: c9429f5909e5ba3fd66681fa62cf16125922d075
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: ded2aa17fe9b8de2d8c8f662f5d99b1ce33a2b25
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44721772"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45634202"
 ---
 # <a name="add-a-kubernetes-cluster-to-the-azure-stack-marketplace"></a>Adjon hozzá egy Kubernetes-fürtöt az Azure Stack piactéren
 
@@ -70,7 +70,7 @@ Adja hozzá a következő Ubuntu Server-lemezképet a Marketplace-en:
 
 1. Válassza ki **+ hozzáadása az Azure-ból**.
 
-1. Adja meg `UbuntuServer`.
+1. Írja be a `UbuntuServer` (igen) kifejezést.
 
 1. Válassza ki a kiszolgálót, az ehhez a profilhoz:
     - **Közzétevő**: Canonical
@@ -93,7 +93,7 @@ A Kubernetes-fürt hozzáadása a Marketplace-ről:
 
 1. Válassza ki **+ hozzáadása az Azure-ból**.
 
-1. Adja meg `Custom Script for Linux`.
+1. Írja be a `Custom Script for Linux` (igen) kifejezést.
 
 1. Válassza ki a parancsprogramot, a következő profilhoz:
     - **Ajánlat**: 2.0 Linuxhoz készült egyéni parancsfájl
@@ -110,11 +110,11 @@ A Kubernetes-fürt hozzáadása a Marketplace-ről:
 
 1. Nyissa meg a [felügyeleti portálján](https://adminportal.local.azurestack.external).
 
-1. Válassza ki **A; szolgáltatások** , majd a a **felügyeleti** kategória, jelölje be **Marketplace felügyeleti**.
+1. Válassza ki **szolgáltatások hozzáadása** , majd a a **felügyeleti** kategória, jelölje be **Marketplace felügyeleti**.
 
 1. Válassza ki **+ hozzáadása az Azure-ból**.
 
-1. Adja meg `Kubernetes Cluster`.
+1. Írja be a `Kubernetes Cluster` (igen) kifejezést.
 
 1. Válassza a(z) `Kubernetes Cluster` lehetőséget.
 

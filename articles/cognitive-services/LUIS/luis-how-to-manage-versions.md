@@ -1,108 +1,66 @@
 ---
-title: A LUIS-alkalmazások az Azure-ban verziók kezelése |} A Microsoft Docs
-description: Ismerje meg, hogyan kezelheti a verziók a Language Understanding (LUIS) alkalmazások.
+title: A LUIS-alkalmazások verziók kezelése
+titleSuffix: Azure Cognitive Services
+description: Verzió létrehozása és közzététele a különböző modellek lehetővé teszik. Bevált gyakorlat, hogy az alkalmazás más verzióra az aktuális aktív modell klónozza a modell módosítása előtt.
 services: cognitive-services
 author: diberry
 manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 03/29/2017
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 4941cf533f1b860ead07a416d5af6f62a1978305
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: dcb7f47ae7ade4ee0a18801934f36576fc75f4ae
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39226594"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45629474"
 ---
 # <a name="manage-versions"></a>Verziók kezelése
 
-Minden alkalommal, amikor a modell végzett munka hozzon létre egy másik [verzió](luis-concept-version.md) az alkalmazás. 
+Verzió létrehozása és közzététele a különböző modellek lehetővé teszik. Bevált gyakorlat, hogy a jelenlegi active modell egy másik klónozza [verzió](luis-concept-version.md) az alkalmazás a modell módosítása előtt. 
 
-## <a name="set-active-version"></a>Aktív verzió beállítása
-Verzióival működnek, nyissa meg az alkalmazás nevére a kiválasztásával **saját alkalmazások** oldalra, és kattintson **beállítások** a lap tetején található.
+Verzióival működnek, nyissa meg az alkalmazás nevére a kiválasztásával **saját alkalmazások** oldalra, és kattintson **kezelés** a felső sávon, majd válassza ki **verziók** a bal oldali navigációs. 
 
-![Verziók lap](./media/luis-how-to-manage-versions/settings.png)
+Verziók listáját bemutatják, hogy melyik verzió közzététele, ahol azok közzététele megtörténik, és melyik verziója jelenleg aktív. 
 
-A **beállítások** lap lehetővé teszi a teljes alkalmazás, beleértve a verziója, és a közreműködők beállításainak konfigurálása. 
+[![](./media/luis-how-to-manage-versions/versions-import.png "Verziók lap szakaszban kezelése")](./media/luis-how-to-manage-versions/versions-import.png#lightbox)
 
 ## <a name="clone-a-version"></a>Klónozza a verzió
-1. Az a **beállítások** lapon az alkalmazásbeállítások és a közreműködők szakaszok után megkeresi a klónozni kívánt verziójával. Kattintson a három pontra (***...*** ) gombra a jobb sarkában. 
 
-    ![Verzió sor tulajdonságai](./media/luis-how-to-manage-versions/version-section.png)
+1. Válassza ki a klónozásához, majd válassza ki a kívánt verziót **Klónozás** az eszköztáron. 
 
-2. Válassza ki **Klónozás** a listából.
-
-    ![Verzió sor tulajdonságok kiválasztása](./media/luis-how-to-manage-versions/version-three-dots-modal.png)
-
-3. Az a **Klónozás verzió** párbeszédpanelen írjon be egy nevet az új verziót, például a "0.2-es".
+2. Az a **Klónozás verzió** párbeszédpanelen írjon be egy nevet az új verziót, például a "0.2-es".
 
    ![Klónozás verziójára párbeszédpanel](./media/luis-how-to-manage-versions/version-clone-version-dialog.png)
  
- > [!NOTE]
- > Verzió azonosítója csak karakterek, számjegyek állhat vagy '.', és nem lehet hosszabb 10 karakter hosszúságú.
+     > [!NOTE]
+     > Verzió azonosítója csak karakterek, számjegyek állhat vagy '.', és nem lehet hosszabb 10 karakter hosszúságú.
  
  A megadott nevű új verzióját, és a állítja be aktív verziója.
- 
-  ![Verzió létrehozása és hozzáadása a listához](./media/luis-how-to-manage-versions/new-version.png)
-
- > [!NOTE]
- > Amint az előző képen látható, közzétett verziót társítva a színes be van jelölve, ahol közzétette tárhely típusának: éles (zöld), átmeneti (vörös), és mindkettő (fekete). A képzés és a dátumok megjelenik az egyes közzétett verziót.
 
 ## <a name="set-active-version"></a>Aktív verzió beállítása
-1. Az a **beállítások** lap a **verziók** listájához, válassza ki a három pontra (***...*** ) gomb jobb szélén.
 
-2. A legördülő listából válassza ki a **aktív**.
+Jelöljön ki egy verziót a listából, majd **aktív győződjön meg arról,** az eszköztáron. 
 
-    ![Aktív verzió beállítása](./media/luis-how-to-manage-versions/set-active-version.png)
-
-    Az aktív verzió kiemelten egy világos kék, az alábbi képernyőképen látható módon:
-
-    ![Az aktív-verzió](./media/luis-how-to-manage-versions/set-active-version-done.png) 
-
+[![](./media/luis-how-to-manage-versions/versions-other.png "Verziók lap szakaszban kezelése")](./media/luis-how-to-manage-versions/versions-other.png#lightbox)
 
 ## <a name="import-version"></a>Importálás verzió
-A verzió importálhat egy JSON-fájlt. -Verziót importált, miután az új verzió válik az aktív verziót.
 
-**A verzió importálása:**
+1. Válassza ki **importálás verzió** az eszköztáron. 
 
-1. A a **beállítások** lapon jelölje be **importálása új verzió** gombra.
+2. Az a **importálása új verzió** előugró ablak, írja be az új tíz karakter verzió neve. Csak egy beállítani, ha a verzió a JSON-fájl már létezik az alkalmazásban kell.
 
-    ![Importálás gomb](./media/luis-how-to-manage-versions/import-version.png)
+    ![Verziók lap szakaszban kezelése](./media/luis-how-to-manage-versions/versions-import-pop-up.png)
 
-2. Válassza ki **Tallózás** , és válassza ki a JSON-fájlt.
+    -Verziót importált, miután az új verzió válik az aktív verziót.
 
-    ![Importálás verzió párbeszédpanel](./media/luis-how-to-manage-versions/import-version-dialog.png)
+<a name = "export-version"></a>
 
-Csak egy beállítani, ha a verzió a JSON-fájl már létezik az alkalmazásban kell.
+## <a name="other-actions"></a>Egyéb műveletek
 
-## <a name="export-version"></a>Verzió exportálása
-A verzió egy JSON-fájlba exportálhatja.
+* A **törlése** egy verzió-verzió kiválasztása a listából, majd jelölje ki **törlése** az eszköztáron. Kattintson az **OK** gombra. 
+* A **átnevezése** egy verzió-verzió kiválasztása a listából, majd jelölje ki **átnevezése** az eszköztáron. Adjon meg új nevet, és válassza ki **kész**. 
+* A **exportálása** egy verzió-verzió kiválasztása a listából, majd jelölje ki **exportálási alkalmazás** az eszköztáron. A fájl letöltése a helyi gépen. 
 
-**A verzió exportálása:**
-
-1. Az a **beállítások** lap a **verziók** listájához, válassza ki a három pontra (***...*** ) gomb jobb szélén.
-
-2. Válassza ki **exportálása** műveleteket, és válassza ki, ahol a fájlt menteni szeretné az előugró listájában.
-
-## <a name="delete-a-version"></a>A verzió törlése
-Verziók törölheti, de rendelkezik, így az alkalmazás legalább egy verziója. Az aktív verzió kivételével minden verzió törlése 
-
-1. Az a **beállítások** lap a **verziók** listájához, válassza ki a három pontra (***...*** ) gomb jobb szélén.
-
-2. Válassza ki **törlése** műveleteket, és válassza ki, ahol a fájlt menteni szeretné az előugró listájában.
-
-    ![Törlés megerősítése verzió](./media/luis-how-to-manage-versions/delete-menu.png) 
-
-
-## <a name="rename-a-version"></a>Nevezze át a verzió
-Verziók átnevezheti mindaddig, amíg a verzió neve nem már használatban van.  
-
-1. Az a **beállítások** lap a **verziók** listájához, válassza ki a három pontra (***...*** ) gomb jobb szélén.
-
-2. Válassza ki **átnevezése** műveletek legördülő listájában.
-
-3. Adja meg az új verzió nevét, és válassza ki **kész**.
-
-    ![Nevezze át a verzió megerősítése](./media/luis-how-to-manage-versions/rename-popup.png) 

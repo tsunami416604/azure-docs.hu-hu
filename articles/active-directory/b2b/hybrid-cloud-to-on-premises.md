@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: b7b1279dbb1256269705da3f8be6f6d2c1151368
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 9b04f6bc2158f88b54bb4ed086c2f74b5a28eedd
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44346338"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45605215"
 ---
 # <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>Támogatás B2B-felhasználók Azure AD-ben a hozzáférést a helyszíni alkalmazások
 
@@ -63,7 +63,7 @@ A következő ábra biztosít magas szintű áttekintését az Azure AD-alkalmaz
 A helyszíni B2B felhasználói objektumok életciklus-kezelési házirendek használatával kezelhetők. Példa:
 
 - Beállíthatja a vendégfelhasználót a többtényezős hitelesítés (MFA) szabályzatokat, hogy a többtényezős hitelesítés a Application Proxy hitelesítése során használatos. További információkért lásd: [feltételes hozzáférés B2B-együttműködés felhasználók](conditional-access.md).
-- Bármely sponsorship, a hozzáférési felülvizsgálatok, a fiók számán és az egyéb végzett felhasználói vonatkozik, a helyszíni felhasználók felhőbeli B2B. Például az életciklus-kezelési házirendek segítségével a felhőbeli felhasználó törlésekor, helyi felhasználó is törlődik az MIM Sync vagy az Azure AD Connect sync. További információkért lásd: [vendég-hozzáférés kezelése az Azure AD hozzáférési felülvizsgálatok](../active-directory-azure-ad-controls-manage-guest-access-with-access-reviews.md).
+- Bármely sponsorship, a hozzáférési felülvizsgálatok, a fiók számán és az egyéb végzett felhasználói vonatkozik, a helyszíni felhasználók felhőbeli B2B. Például az életciklus-kezelési házirendek segítségével a felhőbeli felhasználó törlésekor, helyi felhasználó is törlődik az MIM Sync vagy az Azure AD Connect sync. További információkért lásd: [vendég-hozzáférés kezelése az Azure AD hozzáférési felülvizsgálatok](../governance/manage-guest-access-with-access-reviews.md).
 
 ### <a name="create-b2b-guest-user-objects-through-mim-preview"></a>Hozzon létre B2B Vendég felhasználói objektumok keresztül MIM (előzetes verzió)
 

@@ -1,22 +1,23 @@
 ---
-title: Regisztráció a Text Analytics API-ra (Azure-beli Microsoft Cognitive Services) | Microsoft Docs
+title: Iratkozzon fel a szövegelemzési API
+titleSuffix: Azure Cognitive Services
 description: Regisztrációs útmutató a szövegelemzés használatához és a korlátozásokon belüli működéshez.
 services: cognitive-services
 author: HeidiSteen
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: text-analytics
-ms.topic: get-started-article
-ms.date: 3/07/2018
+ms.topic: conceptual
+ms.date: 09/12/2018
 ms.author: heidist
-ms.openlocfilehash: dfa5ba138a2e0db75dfc097ca2430fe9c82e826f
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
-ms.translationtype: HT
+ms.openlocfilehash: a369d6028cc2957113de01dab0371ad5305a0c68
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39623250"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45605529"
 ---
-# <a name="how-to-sign-up-for-text-analytics-api"></a>Hogyan regisztrálhatok a Text Analytics API-ra?
+# <a name="how-to-sign-up-for-the-text-analytics-api"></a>Regisztráció a szövegelemzési API
 
 A Text Analytics erőforrásai folyamatosan elérhetők a felhőben. Tartalmainak elemzésre való feltöltése előtt regisztrálnia kell a hozzáférési kulcs beszerzéséhez. Az API minden egyes hívásához hozzáférési kulcsot kell csatolni a kéréshez.
 

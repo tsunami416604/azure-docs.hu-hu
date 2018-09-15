@@ -11,14 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/09/2018
+ms.date: 09/13/2018
 ms.author: jeedes
-ms.openlocfilehash: 3600e83d18f8cabd03c46af2ef47445c588cbdb5
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 7f24dad3cfefd5ecb0b1c78f4a2b242c99a01239
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38548278"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45605827"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-appdynamics"></a>Oktatóanyag: Azure Active Directory-integráció az appdynamics segítségével
 
@@ -36,7 +36,7 @@ Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsol
 
 Az Azure AD-integráció konfigurálása az appdynamics segítségével, a következőkre van szükség:
 
-- Az Azure AD-előfizetéshez
+- Azure AD-előfizetés
 - Az AppDynamics egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
@@ -59,7 +59,7 @@ Az AppDynamics integrálása az Azure AD beállítása, hozzá kell AppDynamics 
 
 **AppDynamics hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Active Directory][1]
 
@@ -112,7 +112,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     ![Egyszeri bejelentkezés konfigurálása](./media/appdynamics-tutorial/tutorial_appdynamics_url.png)
 
-    a. Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<companyname>.saas.appdynamics.com`
+    a. Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<companyname>.saas.appdynamics.com?accountName=<companyname>`
 
     b. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<companyname>.saas.appdynamics.com/controller`
 
@@ -189,6 +189,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 ### <a name="creating-an-appdynamics-test-user"></a>Az AppDynamics tesztfelhasználó létrehozása
 
 Ez a szakasz célja az AppDynamics Britta Simon nevű felhasználó létrehozásához. AppDynamics támogatja a just-in-time-kiépítés, amely alapértelmezésben engedélyezve van. Nincs meg ebben a szakaszban a művelet elem. Az AppDynamics elérésére, ha még nem létezik tett kísérlet során jön létre egy új felhasználót.
+
 >[!Note]
 >Ha manuálisan hozzon létre egy felhasználót van szüksége, forduljon a [AppDynamics ügyfél-támogatási csapatának](https://www.appdynamics.com/support/).
 
@@ -231,7 +232,7 @@ Ha a hozzáférési panelen az AppDynamics csempére kattint, akkor kell lekér�
 ## <a name="additional-resources"></a>További források
 
 * [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

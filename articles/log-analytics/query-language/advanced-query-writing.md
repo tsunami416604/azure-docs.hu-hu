@@ -15,22 +15,24 @@ ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 72c151fec0637822411f8cac44f4e13a8df96445
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: f7594b7d1eb7d41508be435cdd0a6203433727c1
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "40190236"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45603056"
 ---
 # <a name="writing-advanced-queries-in-log-analytics"></a>Lekérdezések a Log Analytics speciális írása
 
 > [!NOTE]
 > Hajtsa végre [az Analytics-portál – első lépések](get-started-analytics-portal.md) és [Ismerkedés a lekérdezések](get-started-queries.md) ebben a leckében befejezése előtt.
 
+[!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
+
 ## <a name="reusing-code-with-let"></a>Újbóli felhasználása az lehetővé teszik a kódot
 Használat `let` eredmények hozzárendelése egy változóhoz, és később a lekérdezésben hivatkoznak rá:
 
-```OQL
+```KQL
 // get all events that have level 2 (indicates warning level)
 let warning_events=
 Event
@@ -42,7 +44,7 @@ warning_events
 
 Állandó értékek változókat is rendelhet. Ez támogat egy metódust, amely minden alkalommal, amikor a lekérdezés végrehajtása módosítani kell a mezők paramétereinek beállítása. Szükség szerint módosítsa ezeket a paramétereket. Ha például kiszámítása a szabad lemezterület és a szabad memória (a százalékos érték), egy adott időtartományban:
 
-```OQL
+```KQL
 let startDate = datetime(2018-08-01T12:55:02);
 let endDate = datetime(2018-08-02T13:21:35);
 let FreeDiskSpace =
@@ -63,7 +65,7 @@ Ez megkönnyíti a befejezési idő a lekérdezés a következő futtatásakor k
 ### <a name="local-functions-and-parameters"></a>Helyi funkciók és paraméterek
 Használat `let` használható függvények létrehozása az ugyanabból a lekérdezés utasításokat. Például adja meg a függvény, amely egy dátum/idő mezőt (az UTC-formátum) tart, és a egy Egyesült Államokbeli szabványos formátumra konvertálja. 
 
-```OQL
+```KQL
 let utc_to_us_date_format = (t:datetime)
 {
   strcat(getmonth(t), "/", dayofmonth(t),"/", getyear(t), " ",
@@ -78,7 +80,7 @@ Event
 ## <a name="functions"></a>Functions
 Egy függvény aliasa a lekérdezés mentheti, így más lekérdezések által hivatkozott. Például a következő standard lekérdezés visszaadja az elmúlt egy napon belül jelentett összes hiányzó biztonsági frissítések:
 
-```OQL
+```KQL
 Update
 | where TimeGenerated > ago(1d) 
 | where Classification == "Security Updates" 
@@ -87,7 +89,7 @@ Update
 
 Lekérdezés mentése függvényében, és adjon meg egy aliast például _security_updates_last_day_. Ezután használhatja azt egy másik lekérdezésbe SQL kapcsolódó szükséges frissítések kereséséhez:
 
-```OQL
+```KQL
 security_updates_last_day | where Title contains "SQL"
 ```
 
@@ -100,7 +102,7 @@ Függvényében, egy lekérdezés mentéséhez válassza a **mentése** a portá
 ## <a name="print"></a>Nyomtatás
 `print` csak egy oszlop, és a egy számítás eredménye megjelenítése egyetlen sor tartalmazó táblát adja vissza. Ez azokban az esetekben, ahol meg kell egy egyszerű calcuation gyakran használják. Ha például az aktuális idő PST megkereséséhez, és adjon hozzá egy oszlopot a keleti téli idő:
 
-```OQL
+```KQL
 print nowPst = now()-8h
 | extend nowEst = nowPst+3h
 ```
@@ -108,7 +110,7 @@ print nowPst = now()-8h
 ## <a name="datatable"></a>A DataTable
 `datatable` lehetővé teszi, hogy meghatározza az adatok egy készletét. Adjon meg egy séma- és a egy értékhalmazt, és majd irányítsa a táblázat bármely más lekérdezés elemek be. Hozzon létre egy táblát a memóriahasználatot és azok óránkénti átlagos érték kiszámításához, például:
 
-```OQL
+```KQL
 datatable (TimeGenerated: datetime, usage_percent: double)
 [
   "2018-06-02T15:15:46.3418323Z", 15.5,
@@ -125,7 +127,7 @@ datatable (TimeGenerated: datetime, usage_percent: double)
 
 DataTable szerkezeteket akkor is hasznos, ha egy keresési táblázat létrehozása. Például képezze le táblaadatok eseményazonosítók, például a _SecurityEvent_ tábla, eseménytípusok felsorolt máshol, hozzon létre egy keresési táblázat használatával eseménytípusokat `datatable` , és ez a datatable  _SecurityEvent_ adatokat:
 
-```OQL
+```KQL
 let eventCodes = datatable (EventID: int, EventType:string)
 [
     4625, "Account activity",

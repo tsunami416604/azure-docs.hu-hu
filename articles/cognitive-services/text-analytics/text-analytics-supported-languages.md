@@ -1,36 +1,37 @@
 ---
-title: Támogatott nyelvek szöveg Analytics API - Azure kognitív szolgáltatások |} Microsoft Docs
-description: Általánosan elérhető listája és preview nyelvi támogatása a szöveg Analytics API-műveleteket. Véleményeket elemzés, a kulcs kifejezés kinyerési és a nyelvi észlelési vonatkozik.
+title: Támogatott nyelvek a szövegelemzési API
+titleSuffix: Azure Cognitive Services
+description: Általánosan elérhető listáját és az előzetes verzió nyelvi támogatása a Text Analytics API-műveleteket. Érvényes hangulatelemzést, kulcsszókeresést és nyelvfelismerést.
 services: cognitive-services
 author: ashmaka
 manager: cgronlun
 ms.service: cognitive-services
 ms.technology: text-analytics
 ms.topic: conceptual
-ms.date: 05/02/2018
+ms.date: 09/12/2018
 ms.author: ashmaka
-ms.openlocfilehash: 2d341cfaf261bea6367bb55dd5d322f419e22d34
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 984947903a91837910493618bd7abc2cdfe0da71
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35349407"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45603243"
 ---
-# <a name="supported-languages-in-the-text-analytics-api"></a>A szöveg Analytics API támogatott nyelvek
+# <a name="supported-languages-in-the-text-analytics-cognitive-service"></a>A Text Analytics Cognitive szolgáltatásban támogatott nyelvek
 
-Ez a cikk ismerteti az egyes műveletek támogatott nyelvek: céggel kapcsolatos véleményeket elemzés, a kulcs kifejezés kivonása és a nyelvi észlelése.
+Ez a cikk ismerteti az egyes műveletek támogatott nyelvek: hangulatelemzést, kulcsszókeresést és nyelvfelismerést.
 
 ## <a name="language-detection"></a>Nyelvfelismerés
 
-A szöveg Analytics API legfeljebb 120 különböző nyelveken képes észlelni. Nyelvi észlelés a "script" nyelvének adja vissza. Például az a kifejezés "Van egy kutya" ad vissza `en` helyett `en-US`. A csak különleges esetben kínai, ahol a nyelvi észlelési funkció visszaadható `zh_CHS` vagy `zh_CHT` Ha megállapíthatja, hogy a parancsfájl a megadott szöveg megadott. Ha a parancsfájl nem azonosíthatók, kínai dokumentum helyzetekben, ad vissza egyszerűen `zh`.
+A Text Analytics API felismeri a legfeljebb 120 különböző nyelvekhez. Nyelv észlelése "parancsfájl" egy nyelv adja vissza. Például a kifejezés a "Javaslatom van egy kutya", a rendszer visszaadja `en` helyett `en-US`. A csak speciális funkcióban kínai, ahol a language detection funkció visszalép `zh_CHS` vagy `zh_CHT` Ha képes meghatározni a parancsfájl a megadott szöveg megadott. Olyan esetekben, ahol egy adott parancsfájl nem lehet azonosítani az egy kínai dokumentumot, hogy vissza fogja küldeni egyszerűen `zh`.
 
-## <a name="sentiment-analysis-key-phrase-extraction-and-entity-linking"></a>Véleményeket elemzés, kulcs kifejezés kivonása és entitás csatolása
+## <a name="sentiment-analysis-key-phrase-extraction-and-entity-linking"></a>Hangulatelemzést, Kulcsszókeresést és Entitáskapcsolás
 
-Véleményeket elemzés, kulcs kifejezés kivonása és entitás csatolása támogatott nyelvek listáját esetén több szelektív, mivel a lekérdezések kifinomultabb további nyelvek nyelvi szabályainak megfelelően.
+A hangulatelemzést, kulcsszókeresést és entitáskapcsolás támogatott nyelvek listája a következő több szelektív, mivel az elemzők számát finomított további nyelveket nyelvi szabályainak megfelelően.
 
 ## <a name="language-list-and-status"></a>Nyelvek listája és állapota
 
-Nyelvi támogatás kezdetben eldöntése Preview diplomaosztás általánosan elérhető (GA) állapotát, és a teljes szöveges Analytics szolgáltatás egymástól függetlenül. Akkor lehet szöveg Analytics API tér át általánosan elérhető, noha az előzetesben maradjon nyelvekhez.
+Nyelvi támogatás kezdetben integráljuk általánosan elérhető (GA) állapotra, egymástól, és a teljes Text Analytics szolgáltatás előzetes verzióban elérhető jelennek meg. Továbbra is általánosan elérhető a szövegelemzési API átmenetek során még előzetes verzióként elérhető nyelvek lehetőség.
 
 | Nyelv    | Nyelvkód | Hangulat | Kulcskifejezések | Entitáskapcsolás |   Megjegyzések  |
 |:----------- |:-------------:|:---------:|:-----------:|:-----------:|:-----------:
@@ -44,18 +45,18 @@ Nyelvi támogatás kezdetben eldöntése Preview diplomaosztás általánosan el
 | olasz     | `it`          | ✔ \*     | ✔           |             |     |
 | japán    | `ja`          |          | ✔           |            |     |
 | koreai      | `ko`          |          | ✔           |            |     |
-| Norvég (Bokmål) | `no`          | ✔ \*     |  ✔          |             |     |
+| Norvég (bokmal) | `no`          | ✔ \*     |  ✔          |             |     |
 | lengyel      | `pl`          | ✔ \*     |  ✔          |             |     |
-| portugál (általános) | `pt-PT`| ✔        |  ✔          |       |`pt` is elfogadva|
+| portugál (általános) | `pt-PT`| ✔        |  ✔          |       |`pt` Emellett elfogadva|
 | portugál (brazíliai)   | `pt-BR`|          |  ✔   |         |     |
 | orosz     | `ru`          | ✔ \*     | ✔           |             |     |
 | spanyol     | `es`          | ✔        | ✔           |     |     |
 | svéd     | `sv`          | ✔ \*     | ✔           |             |     |
 | török     | `tr`          | ✔ \*     |             |             |     |
 
-\* azt jelzi, Preview nyelvi támogatás
+\* azt jelzi, hogy a nyelvi támogatás az előzetes verzió
 
 ## <a name="see-also"></a>Lásd még
 
-[Kognitív szolgáltatások dokumentációja lap](https://docs.microsoft.com/azure/cognitive-services/)   
-[Kognitív Services termék oldalát](https://azure.microsoft.com/services/cognitive-services/)
+[Cognitive Services – dokumentáció lap](https://docs.microsoft.com/azure/cognitive-services/)   
+[A Cognitive Services termékoldala](https://azure.microsoft.com/services/cognitive-services/)

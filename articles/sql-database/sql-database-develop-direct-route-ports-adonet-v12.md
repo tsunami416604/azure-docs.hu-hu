@@ -1,6 +1,6 @@
 ---
-title: Port túl az 1433-as számú SQL-adatbázis |} Microsoft Docs
-description: Az Azure SQL Database ADO.NET érkező ügyfélkapcsolatokat megkerülje a proxyt, és közvetlenül az adatbázist az eltérő 1433-as port használatával kommunikálni.
+title: Az SQL Database 1433-ason túli |} A Microsoft Docs
+description: Ügyfélkapcsolatok ADO.NET-ből az Azure SQL Database is a proxyt, és közvetlenül az adatbázis 1433-astól különböző portokon keresztül kommunikál.
 services: sql-database
 author: MightyPen
 manager: craigg
@@ -9,58 +9,70 @@ ms.custom: develop apps
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: a8c9eef968465ecf9c8a29df471955b89f3585a0
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: e01de4e25285bfac533ae35380b4264fd422906b
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34645089"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45631803"
 ---
-# <a name="ports-beyond-1433-for-adonet-45"></a>Port túl az 1433-as ADO.NET 4.5
-Ez a témakör ismerteti az Azure SQL Database kapcsolat viselkedését ADO.NET 4.5 vagy újabb verzióját használó ügyfelek számára. 
+# <a name="ports-beyond-1433-for-adonet-45"></a>Az ADO.NET 4.5 szoftverrel 1433-ason túli
+Ez a témakör ismerteti az Azure SQL Database-kapcsolatok viselkedését az ADO.NET 4.5 vagy újabb verzióját használó ügyfelek számára. 
 
 > [!IMPORTANT]
-> Kapcsolat architektúra kapcsolatos információkért lásd: [Azure SQL adatbázis-kapcsolat architektúra](sql-database-connectivity-architecture.md).
+> Kapcsolati architektúra kapcsolatos információkért lásd: [Azure SQL Database kapcsolati architektúra](sql-database-connectivity-architecture.md).
 >
 
 ## <a name="outside-vs-inside"></a>Kívül és belül
-Az Azure SQL Database-kapcsolatok esetén kell először megkérjük hogy fut-e az ügyfélprogram *kívül* vagy *belül* az Azure-felhőbe határ. A alszakaszokat két gyakori helyzetek tárgyalja.
+Az Azure SQL Database-kapcsolatok esetén kell először megkérjük fut-e az ügyfélprogram *kívül* vagy *belül* az Azure-felhő határain. Az alszakaszok két gyakori forgatókönyv tárgyalják.
 
 #### <a name="outside-client-runs-on-your-desktop-computer"></a>*Külső:* ügyfél futtatja az asztali számítógépen
-1433-as port csak a portot, amely az asztali számítógép, amelyen az SQL-adatbázis ügyfélalkalmazást nyitva kell lennie.
+1433-as porton csak a portot kell megnyitni az asztali számítógépen, amelyen az SQL Database-ügyfélalkalmazást.
 
-#### <a name="inside-client-runs-on-azure"></a>*Belső:* ügyfél futtatja az Azure-on
-Amikor az ügyfél az Azure-felhőbe határán belül fut, az úgynevezett is egy *közvetlen útvonal* kommunikál az SQL Database-kiszolgálóhoz. A kapcsolat létrejötte után további az ügyfél és az adatbázis közötti kapcsolat nem Azure SQL adatbázis átjáró vonatkozhat.
+#### <a name="inside-client-runs-on-azure"></a>*Belső:* ügyfél futtatja az Azure-ban
+Amikor az ügyfél az Azure-felhő határain belül fut, akkor használja, mi meghívhatjuk egy *közvetlen útvonal* kommunikál az SQL Database-kiszolgálóhoz. A kapcsolat létrejötte után további az ügyfél és az adatbázis közötti kapcsolat nem Azure SQL Database átjárója között.
 
-A feladatütemezési a következőképpen történik:
+A feladatütemezés a következőképpen történik:
 
-1. Az ADO.NET 4.5 (vagy újabb) indít el az Azure felhőalapú rövid interakció, és dinamikusan azonosított portszámot kap.
+1. Az ADO.NET 4.5 (vagy újabb verzió) kezdeményez az Azure-felhő rövid interakció, és dinamikusan azonosított portszám kap.
    
-   * A dinamikusan meghatározott portszám 11000-11999 vagy 14000-14999 a tartományban van.
-2. ADO.NET ezután csatlakozik az SQL-adatbáziskiszolgáló közvetlenül, és nincs köztes a kettő között.
-3. Lekérdezések adatbázissal, illetve az eredményeinek közvetlenül az ügyfél számára.
+   * A dinamikusan azonosított portszám a 11000-11999 vagy 14000-14999 tartományán van.
+2. ADO.NET majd csatlakozik az SQL Database-kiszolgálóhoz, közvetlenül nem közbenső a kettő között.
+3. Adatbázissal küldi el, és közvetlenül az ügyfél az eredményt.
 
-Győződjön meg arról, hogy a port, ADO.NET 4.5 ügyfél interakció SQL-adatbázis 11000-11999 és az Azure ügyfélgépre 14000-14999 tartományok pedig megmarad.
+Győződjön meg arról, hogy a port 11000-11999 és az Azure-ügyfél gépen 14000-14999 tartományok ADO.NET 4.5 ügyfél interakciók az SQL Database elérhető marad.
 
-* A tartomány portokat különösen, bármilyen más kimenő blockers ingyenes kell megadni.
-* Az Azure virtuális gépen a **fokozott biztonságú Windows tűzfal** portbeállítások szabályozza.
+* A tartomány portokat, ingyenes, bármely más kimenő blockers kell megadni.
+* Az Azure virtuális gépen a **fokozott biztonságú Windows tűzfal** szabályozza a portbeállításokat.
   
-  * Használhatja a [tűzfal felhasználói felület](http://msdn.microsoft.com/library/cc646023.aspx) egy szabályt, amelynek meg hozzáadni a **TCP** porttartomány szintaxissal együtt protokoll, például **11000-11999**.
+  * Használhatja a [tűzfal a felhasználói felület](http://msdn.microsoft.com/library/cc646023.aspx) hozzáadása egy szabályt, amelynek meg a **TCP** protokoll egy porttartományt szintaxissal együtt, például **11000-11999**.
 
-## <a name="version-clarifications"></a>Verzió pontosítások
-Ez a szakasz tisztázza a monikerek, amely termékváltozatokra vonatkozik. Emellett néhány párosítása a verziók közötti termékeket sorolja fel.
+## <a name="version-clarifications"></a>Verzió magyarázata
+Ez a szakasz a termékváltozatokra hivatkozó monikerek értelmezi. Emellett egyes párok termékek közötti verziójú sorolja fel.
 
 #### <a name="adonet"></a>ADO.NET
-* Az ADO.NET 4.0-s verzióját támogatja a TDS 7.3 protokollt, de nem 7.4.
-* Az ADO.NET 4.5-ös vagy újabb verzióját támogatja a TDS 7.4-protokollt.
+* ADO.NET 4.0-s verzióját támogatja a TDS 7.3 protokoll, de nem 7.4.
+* Az ADO.NET 4.5-ös és újabb verziók támogatja a TDS 7.4-protokollt.
+
+#### <a name="odbc"></a>ODBC
+* A Microsoft SQL Server ODBC 11 vagy újabb
+
+#### <a name="jdbc"></a>JDBC
+* A Microsoft SQL Server JDBC 4.2 vagy újabb (JDBC 4.0 ténylegesen támogatja a TDS 7.4, de nem valósít meg "átirányítás")
+
 
 ## <a name="related-links"></a>Kapcsolódó hivatkozások
-* 2015. július 20 ADO.NET 4.6 lett szabadítva. Egy a .NET-csapat blogja közlemény érhető [Itt](http://blogs.msdn.com/b/dotnet/archive/2015/07/20/announcing-net-framework-4-6.aspx).
-* Az ADO.NET 4.5 2012 augusztus 15 lett szabadítva. Egy a .NET-csapat blogja közlemény érhető [Itt](http://blogs.msdn.com/b/dotnet/archive/2012/08/15/announcing-the-release-of-net-framework-4-5-rtm-product-and-source-code.aspx).
-  
-  * Az ADO.NET 4.5.1 kapcsolatos blogbejegyzést érhető [Itt](http://blogs.msdn.com/b/dotnet/archive/2013/06/26/announcing-the-net-framework-4-5-1-preview.aspx).
-* [TDS protokoll verzió lista](http://www.freetds.org/userguide/tdshistory.htm)
-* [SQL adatbázis-fejlesztői áttekintés](sql-database-develop-overview.md)
+* Az ADO.NET 4.6 fel lett oldva, 2015. július 20. Érhető el a bejelentést a blogon a .NET-csapattól [Itt](http://blogs.msdn.com/b/dotnet/archive/2015/07/20/announcing-net-framework-4-6.aspx).
+* Az ADO.NET 4.5-ös verziója a 2012. augusztus 15 jelent meg. Érhető el a bejelentést a blogon a .NET-csapattól [Itt](http://blogs.msdn.com/b/dotnet/archive/2012/08/15/announcing-the-release-of-net-framework-4-5-rtm-product-and-source-code.aspx). 
+  * Érhető el egy ADO.NET 4.5.1 szóló blogbejegyzést [Itt](http://blogs.msdn.com/b/dotnet/archive/2013/06/26/announcing-the-net-framework-4-5-1-preview.aspx).
+
+* Microsoft® ODBC illesztőprogram 17 SQL Server® – Windows, Linux és macOS https://www.microsoft.com/en-us/download/details.aspx?id=56567
+
+* Csatlakozás az Azure SQL Database V12 átirányítás https://blogs.msdn.microsoft.com/sqlcat/2016/09/08/connect-to-azure-sql-database-v12-via-redirection/
+
+* [TDS protokollverziók listája](http://www.freetds.org/userguide/tdshistory.htm)
+* [Az SQL Database fejlesztési áttekintése](sql-database-develop-overview.md)
 * [Az Azure SQL Database-tűzfal](sql-database-firewall-configure.md)
 * [Útmutató: az SQL Database tűzfalbeállításainak konfigurálása](sql-database-configure-firewall-settings.md)
+
 

@@ -8,14 +8,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 06/05/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 010efdf0fbfabb92b7465e37cb678a64810c8979
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 80d73620d11312a386a406d9a49d9223295b42f3
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44025248"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45631378"
 ---
 # <a name="enterprise-strategies-for-a-luis-app"></a>Vállalati stratégiák a LUIS-alkalmazások
 Tekintse át ezeket a vállalati alkalmazások tervezési stratégiák.
@@ -51,9 +51,7 @@ Használja a [Dispatch] [ dispatch-tool] parancssori eszköz, található [BotBu
 
 ![Küldési architektúra fogalmi képe](./media/luis-concept-enterprise/dispatch-architecture.png)
 
-A szülőtartományban, LUIS megadó egy **V Dispatch** alkalmazást. 
-
-![Képernyőkép a LUIS alkalmazások listája a küldő eszköz által létrehozott LUIS-alkalmazás](./media/luis-concept-enterprise/dispatch.png)
+A szülőtartomány LUIS nevű verzióját megadó `Dispatch` az alkalmazáslistában. 
 
 A csevegőrobot kap az utterance (kifejezés), majd elküldi a szülő előrejelzéshez LUIS-alkalmazás. A szülő alkalmazásból felső előre jelzett célja határozza meg, melyik gyermek LUIS-alkalmazás neve mellett. A csevegőrobot küld az alárendelt alkalmazás pontosabb előrejelzéshez az utterance (kifejezés).
 
@@ -67,4 +65,4 @@ A küldő alkalmazás 500 dispatch forrásokból, egyenértékű 500 szándékot
 * Ismerje meg, hogyan [kötegelt tesztelése](luis-how-to-batch-test.md)
 
 [dispatcher-application-tutorial]: https://aka.ms/bot-dispatch
-[dispatch-tool]: https://github.com/Microsoft/botbuilder-tools/tree/master/Dispatch
+[dispatch-tool]: https://aka.ms/dispatch-tool

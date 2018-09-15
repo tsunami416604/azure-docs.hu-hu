@@ -1,20 +1,21 @@
 ---
-title: Megismerheti a LUIS-kulcsok – Azure |} A Microsoft Docs
-description: Language Understanding (LUIS) kulcsok használatával hozhat létre az alkalmazást, és a endpoing lekérdezése.
+title: A LUIS kulcsok ismertetése
+titleSuffix: Azure Cognitive Services
+description: LUIS két kulcsot, a szerzői és a végpontot használja. Az Authoring Tool kulcs az Ön számára automatikusan létrejön a LUIS-fiók létrehozásakor. Amikor elkészült, a LUIS-alkalmazás közzététele, kell a végpont kulcs létrehozásához rendelje hozzá a LUIS-alkalmazás, és használhatja a végpont lekérdezés.
 services: cognitive-services
 author: diberry
 manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 03/23/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: b40ca74999be1821ffa329224ff419646591960e
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 3049d073c691fca69844f68e8d70234c331ae152
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39225176"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45629165"
 ---
 # <a name="keys-in-luis"></a>A LUIS kulcsok
 A LUIS használ két kulcsot: [szerzői](#programmatic-key) és [végpont](#endpoint-key). Az Authoring Tool kulcs az Ön számára automatikusan létrejön a LUIS-fiók létrehozásakor. Amikor készen áll a LUIS-alkalmazás közzététele, meg kell [a végpont kulcs létrehozása](luis-how-to-azure-subscription.md#create-luis-endpoint-key), [rendelje hozzá](luis-how-to-manage-keys.md#assign-endpoint-key) , a LUIS-alkalmazás és [használhatja a végpont lekérdezés](#use-endpoint-key-in-query). 
@@ -22,7 +23,7 @@ A LUIS használ két kulcsot: [szerzői](#programmatic-key) és [végpont](#endp
 |Kulcs|Cél|
 |--|--|
 |[Kulcs létrehozási](#programmatic-key)|Szerzői műveletek, a kezelése közreműködők, a közzététel verziószámozás|
-|[Végponti kulcs](#endpoint-key)| Lekérdezése|
+|[Végponti kulcs](#endpoint-key)| Lekérdezés|
 
 Fontos, hogy a LUIS-alkalmazások készítése [régiók](luis-reference-regions.md#publishing-regions) ahol is szeretné közzétenni, és lekérdezéseket.
 
@@ -35,15 +36,15 @@ Az Authoring Tool kulcs megkereséséhez jelentkezzen be [LUIS](luis-reference-r
 
 ![Kulcs létrehozási](./media/luis-concept-keys/programatic-key.png)
 
-Ha szeretné, hogy **éles végpontot lekérdezések**, hozzon létre egy Azure [LUIS előfizetés](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/). 
+Ha szeretné, hogy **éles végpontot lekérdezések**, hozzon létre az Azure [LUIS előfizetés](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/). 
 
 > [!CAUTION]
 > Az egyszerűség kedvéért a minták számos szerzői műveletek kulcs használata óta biztosít néhány végpont hívások annak [kvóta](luis-boundaries.md#key-limits).  
 
 ## <a name="endpoint-key"></a>Végponti kulcs
- Amikor kell **éles végpontot lekérdezések**, hozzon létre egy [LUIS kulcs](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/) az Azure Portalon. Ne felejtse el a kulcs létrehozásához használt név, szüksége lesz rá az alkalmazás hozzáadásakor a kulcsot...
+ Amikor kell **éles végpontot lekérdezések**, hozzon létre egy [LUIS kulcs](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/) az Azure Portalon. Ne feledje, a kulcs létrehozásához használt név, szüksége lesz rá a kulcsot az alkalmazáshoz való hozzáadásakor.
 
-A LUIS-előfizetés folyamat befejezésekor [adja hozzá a kulcsot](luis-how-to-manage-keys.md#assign-endpoint-key) az alkalmazás a **közzététel** lapot. 
+A LUIS-előfizetés folyamat befejezésekor [rendelje hozzá a kulcs](luis-how-to-manage-keys.md#assign-endpoint-key) az alkalmazáshoz. 
 
 A végpont kulcs lehetővé teszi egy végpont a találatok alapján a használati terv a kulcs létrehozásakor megadott kvótát. Lásd: [a Cognitive Services díjszabása](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/?v=17.23h) a díjszabásról.
 
@@ -73,6 +74,10 @@ Közzétételi régiója nem ugyanaz a létrehozási régiók. Ellenőrizze, hog
 
 ## <a name="key-limit-errors"></a>Korlát hibák
 Ha túllépi a második kvótája per HTTP 429-es hibaüzenetet kap. Ha túllépi a havi kvóta, egy HTTP 403-as hibaüzenetet kap. Javítsa ki a hibákat a LUIS lekérésével [végpont](#endpoint-key) kulcs [hozzárendelése](luis-how-to-manage-keys.md#assign-endpoint-key) a kulcsot az alkalmazás a **közzététel** lapján a [LUIS](luis-reference-regions.md#luis-website) webhely.
+
+## <a name="automating-assignment-of-the-endpoint-key"></a>A végpont kulcs hozzárendelés automatizálása
+
+Annak érdekében, hogy a végpont kulcs rendel a LUIS-alkalmazások, a megfelelő szerzői és a közzététel a LUIS webhelyet kell használnia [régiók](luis-reference-regions.md). Nincs **nincs** automatikus módszer ezzel, függetlenül attól, mechanizmust, például egy Azure resource manager, parancsfájl Azure CLI-vel, programozott SDK-t, vagy az API-khoz.
 
 ## <a name="next-steps"></a>További lépések
 

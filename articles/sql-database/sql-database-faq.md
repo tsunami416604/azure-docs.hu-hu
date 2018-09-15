@@ -9,12 +9,12 @@ ms.custom: reference
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: carlrab
-ms.openlocfilehash: a7837ac6af82b5c67ea5779340aedc16cb78d156
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 218bd9031193d4987fdc1e0ae2bf302bdb028673
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43286332"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45604501"
 ---
 # <a name="sql-database-faq"></a>SQL Database GYIK
 
@@ -71,7 +71,7 @@ Az SQL Database ügyfelei az Azure Hybrid benefittel az SQL Server társított a
 A számítási költségeket tükrözi az összes számítási kapacitás, amely ki van építve az alkalmazás. Az üzletileg kritikus szolgáltatási rétegben hogy automatikusan lefoglalni a legalább 3 Alwayson-replika. A számítási erőforrások a további lefoglalási megfelelően, a 2.7 x magasabb a kritikus fontosságú üzleti szolgáltatás virtuális mag díja. Ugyanezen okból, magasabb tárolási ár GB-onként az üzletileg kritikus tartalmazza a nagy i/o és alacsony késést az SSD-tárhelyet. Egy időben a költség, a biztonsági mentési tár nem tér mindkét esetben a standard szintű tárterülettel osztály használatának.
 
 ## <a name="how-am-i-charged-for-storage---based-on-what-i-configure-upfront-or-on-what-the-database-uses"></a>Hogyan fizetnem tárolás – mi konfigurálható előre vagy az adatbázis használja a alapján?
-Különböző típusú tárolóhelyek eltérően számítjuk fel. Az adattárolás díjkötelesek a felhasznált tárterület alapján választja maximális adatbázis vagy készlet méretét. Díja nem változik, kivéve, ha csökkentse vagy növelje a legnagyobb. A biztonsági mentési tár a példány automatizált biztonsági mentéseihez tartozik. A biztonsági másolatok megőrzési időszakának kiterjesztésével a példány által felhasznált biztonsági mentési tárterület is nő. A kiszolgáló kiépített tárolója 100%-ának megfelelő biztonsági mentési tár díjmentesen használható. További használati a biztonsági mentési tár díjszabásának GB / hó. Ha például az adatbázistárhelye 100 GB, 100 GB biztonsági mentési tárhelyet kap díjmentesen. De ha a biztonsági mentés mérete 110 GB, 10 GB Többletméretért fizetnie.
+Különböző típusú tárolóhelyek eltérően számítjuk fel. Az adattárolás díjkötelesek a felhasznált tárterület alapján választja maximális adatbázis vagy készlet méretét. Díja nem változik, kivéve, ha csökkentse vagy növelje a legnagyobb. Biztonsági mentési tár a példány automatizált biztonsági mentések társított, és dinamikusan le van foglalva. A biztonsági másolatok megőrzési időszakának kiterjesztésével a példány által felhasznált biztonsági mentési tárterület is nő. A kiszolgáló kiépített tárolója 100%-ának megfelelő biztonsági mentési tár díjmentesen használható. További használati a biztonsági mentési tár díjszabásának GB / hó. Ha például az adatbázistárhelye 100 GB, 100 GB biztonsági mentési tárhelyet kap díjmentesen. De ha a biztonsági mentés mérete 110 GB, 10 GB Többletméretért fizetnie. 
 
 Biztonságimásolat-tároláshoz egyetlen adatbázis a számlázás a tárolóhoz az adatbázis biztonsági mentéséhez az adatbázis mérete csökkentve lett lefoglalva arányos alapon. A biztonsági mentési tár egy rugalmas készlet a számlázás a arányos alapon, az adatbázis biztonsági másolatait a rugalmas készlet adatok maximális mérete csökkentve a készletben található összes adatbázishoz lefoglalt tárolására. Azokat az adatbázis mérete vagy a rugalmas készlet növekedése, illetve a tranzakciós sebesség növekedése több tárhelyet igényel, és így növeli a biztonsági mentési tár számlázási.  Ha növeli a maximális adatméret, ez a mennyiség vonni számlázott biztonsági másolati tárhely méretét.
 

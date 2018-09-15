@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
 ms.date: 06/30/2018
-ms.openlocfilehash: 1fd5905b8ea3f87fe6cfc2a830b73b8120a717dd
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: c18faa94f207b98400fece366a23a68c3d7bc58c
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37341477"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45633180"
 ---
 # <a name="limitations-in-azure-database-for-mysql"></a>Azure Database for MySQL-hez korlátozásai
 A következő szakaszok ismertetik a kapacitást, motor támogatása, jogosultság támogatja, adatok adatkezelési utasítást, és az adatbázis-szolgáltatás működési korlátai. További tájékoztatás [általános korlátozások](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.6/en/limits.html) a MySQL-adatbázismotor alkalmazható.
@@ -72,7 +72,7 @@ Amikor kapcsolatokat meghaladják a korlátot, a következő hiba jelenhet meg:
 - Kiszolgáló-tároló méretének csökkentése nem támogatott.
 
 ### <a name="server-version-upgrades"></a>Kiszolgáló verziófrissítések
-- Fő database engine verziói között az automatikus migrálási jelenleg nem támogatott.
+- Fő database engine verziói között az automatikus migrálási jelenleg nem támogatott. Ha szeretné, a következő fő verzióra való frissítéshez, egy [memóriakép és visszaállítás](./concepts-migrate-dump-restore.md) , hogy egy kiszolgálót, amely az új motor verziójával lett létrehozva.
 
 ### <a name="point-in-time-restore"></a>Időponthoz kötött visszaállítás
 - A PITR a funkció használatakor az ugyanezzel a konfigurációval, mint a kiszolgáló-alapú, az új kiszolgáló jön létre.

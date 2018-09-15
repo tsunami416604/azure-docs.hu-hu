@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 06/19/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: cc48cd3eb40d93c26a68caf843a89f7bbfb46c6c
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: d5831d868bec940c4e38f62e70e456ae84903ada
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39236893"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45604910"
 ---
 # <a name="tutorial-create-an-azure-active-directory-b2c-tenant"></a>Oktatóanyag: Azure Active Directory B2C-bérlő létrehozása
 
@@ -49,17 +49,13 @@ Az új bérlő kezelésének megkezdéséhez, kattintson a word **Itt** , ugyana
 
 Az összes funkció engedélyezéséhez és a használati díjak kifizetéséhez össze kell kapcsolnia Azure-előfizetését az Azure AD B2C-bérlőjével. Ha nem a bérlő az előfizetéshez, az alkalmazások nem fog megfelelően működni.
 
-1. Győződjön meg arról, hogy a könyvtár között az Azure Portal jobb felső sarokban az új bérlőhöz társítani kívánt előfizetést tartalmazó könyvtárat használja.
+Győződjön meg arról, hogy használja az Azure AD B2C-bérlő kattintva tartalmazó könyvtárba a **címtár és előfizetés-szűrő** a felső menüben, és a könyvtár, amely tartalmazza a bérlő kiválasztása. 
 
-    ![Könyvtárváltás](./media/tutorial-create-tenant/switch-directories.png)
+![Átváltás az Azure AD B2C-bérlőre](./media/tutorial-create-tenant/switch-directories.png)
 
-    És válassza a könyvtár, amely tartalmazza az előfizetés.
-
-    ![Könyvtár kijelölése](./media/tutorial-create-tenant/select-directory.png)
-
-2. Válasszon **erőforrás létrehozása** az Azure portal felső bal felső sarkában.
-3. A keresőmezőbe az eszközlista feletti Azure Marketplace-erőforrások, keresése és kiválasztása **Active Directory B2C**, és kattintson a **létrehozás**.
-4. Válasszon **hivatkozásra egy meglévő Azure AD B2C-bérlőt szeretne aktiválni az Azure-előfizetésem**, válassza ki az Ön által létrehozott bérlőt, válassza ki az előfizetését, adja meg *myContosoTenantRG* az erőforráscsoport nevét, fogadja el a helyre, és kattintson **létrehozás**.
+1. Válasszon **erőforrás létrehozása** az Azure portal felső bal felső sarkában.
+2. A keresőmezőbe az eszközlista feletti Azure Marketplace-erőforrások, keresése és kiválasztása **Active Directory B2C**, és kattintson a **létrehozás**.
+3. Válasszon **hivatkozásra egy meglévő Azure AD B2C-bérlőt szeretne aktiválni az Azure-előfizetésem**, válassza ki az Ön által létrehozott bérlőt, válassza ki az előfizetését, adja meg *myContosoTenantRG* az erőforráscsoport nevét, fogadja el a helyre, és kattintson **létrehozás**.
 
 ## <a name="next-steps"></a>További lépések
 

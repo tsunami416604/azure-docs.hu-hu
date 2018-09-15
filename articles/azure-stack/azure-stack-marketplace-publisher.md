@@ -1,9 +1,9 @@
 ---
-title: A piactér eszközkészlet segítségével létrehozása és közzététele a Piactéri elemek |} Microsoft Docs
-description: 'Útmutató: a közzétételi eszközkészlet létrehozhat Piactéri elemek'
+title: A piactér eszközkészlet használatával létrehozása és közzététele a marketplace-elemek |} A Microsoft Docs
+description: Ismerje meg, hogyan hozhat létre gyorsan marketplace-elemek a közzétételi eszközkészlet
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -13,87 +13,87 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 7/14/2017
-ms.author: brenduns
+ms.author: sethm
 ms.reviewer: jeffgo
-ms.openlocfilehash: 61ee3296429f9641643f1c9268ae89e3691fcfa1
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 0ade78dd992e8d1d2eda2cf27d44e52c4030563f
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29386877"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45630925"
 ---
-#  <a name="add-marketplace-items-using-publishing-tool"></a>Adja hozzá a közzétételi eszközzel Piactéri elemek
-Tartalom hozzáadása a [Azure verem piactér](azure-stack-marketplace.md) elérhetővé teszi a megoldás az Ön és a központi telepítés a bérlők számára.  A piactér eszközkészlet Azure piactér csomagok (.azpkg) fájlok, az infrastruktúra-szolgáltatási Azure Resource Manager-sablonok vagy Virtuálisgép-bővítmények alapján hoz létre.  Használhatja a piactér eszközkészlet .azpkg fájlok, akár a eszközzel létrehozott segítségével közzétételét [manuális](azure-stack-create-and-publish-marketplace-item.md) lépéseket.  Ez a témakör végigvezeti Önt az eszköz letöltése, a Virtuálisgép-sablonok alapján piactér elem létrehozása és közzététele majd, hogy az elem a veremben Azure piactér.     
+#  <a name="add-marketplace-items-using-publishing-tool"></a>Közzétételi eszköz használatával marketplace-elemek hozzáadása
+A tartalom hozzáadása a [Azure Stack piactéren](azure-stack-marketplace.md) elérhetővé teszi a megoldások az Ön és a központi telepítés a bérlők számára.  A Marketplace-eszközkészlet az Azure Marketplace-en csomagok (.azpkg) fájlok az IaaS Azure Resource Manager-sablonok vagy Virtuálisgép-bővítmények alapján hoz létre.  Használhatja a Marketplace-en eszközkészlet .azpkg fájlokat, akár az eszközzel létrehozott segítségével közzététele [manuális](azure-stack-create-and-publish-marketplace-item.md) lépéseket.  Ez a témakör végigvezeti a felhasználót az eszköz letöltése, a Virtuálisgép-sablonok alapján Piactéri elem létrehozása és majd tegye közzé a cikk az Azure Stack piactéren.     
 
 
 ## <a name="prerequisites"></a>Előfeltételek
- - Futtassa az eszközkészlet Azure verem gazdagépen vagy rendelkeznie kell [VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn) kapcsolat a gépen, amelyen az eszközt futtatja.
+ - Az eszközkészlet futtatása az Azure Stack gazdagépen vagy rendelkeznie kell [VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn) kapcsolat a gépen, ahol futtatja az eszközt.
 
- - Töltse le a [Azure verem gyorsindítási sablonok](https://github.com/Azure/AzureStack-QuickStart-Templates/archive/master.zip) és kibontásához.
+ - Töltse le a [Azure Stack-gyorssablonok](https://github.com/Azure/AzureStack-QuickStart-Templates/archive/master.zip) és csomagolja ki.
 
- - Töltse le a [Azure gyűjtemény csomagolás eszköz](http://aka.ms/azurestackmarketplaceitem) (AzureGalleryPackage.exe). 
+ - Töltse le a [Azure Gallery csomagolás eszköz](http://aka.ms/azurestackmarketplaceitem) (AzureGalleryPackage.exe). 
 
- - A piactéren közzétételhez az ikonok és a miniatűr fájlt.  Használhatja a saját, vagy mentse a [minta](azure-stack-marketplace-publisher.md#support-files) helyileg ebben a példában a fájlokat.
+ - A Marketplace-en való közzététel szükséges ikonok és a egy miniatűr fájlt.  Használhatja a saját, vagy mentse a [minta](azure-stack-marketplace-publisher.md#support-files) helyileg ebben a példában a fájlokat.
 
-## <a name="download-the-tool"></a>Töltse le az eszközt
-A piactér eszközkészlet lehet [letöltötte az Azure verem eszközök tárházból](azure-stack-powershell-download.md).
+## <a name="download-the-tool"></a>Az eszköz letöltéséhez
+A piactér eszközkészlet lehet [letöltött az Azure Stack-Tools-adattárból](azure-stack-powershell-download.md).
 
 
-##  <a name="create-marketplace-items"></a>Hozzon létre Piactéri elemek
-Ebben a szakaszban a piactér eszközkészlet létrehozására használhatja a Piactéri elemet csomag .azpkg formátumban.  
+##  <a name="create-marketplace-items"></a>Marketplace-elemek létrehozása
+Ebben a szakaszban a Marketplace-en eszközkészlet használhatja .azpkg formátumban Piactéri elem csomagot hozhat létre.  
 
-### <a name="provide-marketplace-information-with-wizard"></a>Adja meg a varázsló piactér adatokat
-1. Futtassa a piactér eszközkészlet egy PowerShell-munkamenetben:
+### <a name="provide-marketplace-information-with-wizard"></a>Adja meg a Piactérrel kapcsolatos információkat a varázslóval
+1. A Marketplace-en eszközkészlet futtatni egy PowerShell-munkamenetből:
 ```PowerShell
     .\MarketplaceToolkit.ps1
 ```
 
-2. Kattintson a **megoldás** fülre.  Ezen a képernyőn fogadja el a Piactéri elemet kapcsolatos információkat. Adja meg az elemre vonatkozó információkat, ahogyan szeretné megjeleníteni a piactéren.  Azt is megadhatja a [paraméterfájl](azure-stack-marketplace-publisher.md#use-a-parameters-file) hogy feltöltse az űrlapot.  
+2. Kattintson a **megoldás** fülre.  Ezen a képernyőn fogadja el a piactér elem adatait. Adja meg az elem adatait, ahogyan szeretné megjeleníteni a Marketplace-en.  Azt is megadhatja a [paraméterfájl](azure-stack-marketplace-publisher.md#use-a-parameters-file) hogy feltöltse az űrlapot.  
     
-    ![Képernyőkép a piactér eszközkészlet képernyője](./media/azure-stack-marketplace-publisher/image7.png)
-3. Kattintson a **Tallózás** és jelöljön ki egy lemezképfájlt, ikon és a képernyőkép mezők.  Használhatja a saját ikonok vagy a minta ikonok a [támogatófájljait](azure-stack-marketplace-publisher.md#support-files) szakasz.
-4. Ha minden mező fel van töltve, válassza a "Előzetes megoldás" megtekintheti a megoldás a piactér belül.  Módosítása, és a szöveg, képek és képernyőkép szerkesztése való kattintás előtt **következő**.  
+    ![Képernyőkép a Marketplace-en eszközkészlet első képernyő](./media/azure-stack-marketplace-publisher/image7.png)
+3. Kattintson a **Tallózás** , és jelöljön ki egy lemezképfájlt, ikon és a képernyőkép mezők.  Használhatja saját ikonok, vagy a minta ikonjai a [támogatófájljait](azure-stack-marketplace-publisher.md#support-files) szakaszban.
+4. Ha minden mező fel van töltve, válassza ki a "Előzetes megoldás" a megoldás a Marketplace-en belül megtekintheti.  Vizsgálja felül, és a szöveg, képek és képernyőkép szerkesztése gombra kattintás előtt **tovább**.  
 
 ### <a name="import-template-and-create-package"></a>Sablon importálása és a csomag létrehozása
-Ebben a szakaszban importálja a sablont, és a megoldás bemeneti használata.
+Ebben a szakaszban a sablon importálása, és a megoldás a bemeneti használata.
 
-1.  Kattintson a **Tallózás** válassza ki a *azuredeploy.json* a letöltött sablonok a 101-egyszerű-Windows-alapú virtuális gép mappájából.
+1.  Kattintson a **Tallózás** , és válassza ki a *azuredeploy.json* a letöltött sablonok a 101-egyszerű-Windows-VM mappájából.
 
-    ![Képernyőkép a piactér eszközkészlet második képernyő](./media/azure-stack-marketplace-publisher/image8.png)
-2.  A telepítési varázsló a telepítéskor a *alapvető* lépés és a bemeneti elemek a sablonban megadott mindegyik paraméterhez.  Adjon hozzá további lépéseket, és helyezze át a bemeneti adatok között lépéseket.  Tegyük fel érdemes lehet az "Előtér-konfiguráció" és "A háttér konfiguráció" lépés a megoldás.
-3.  Adja meg a AzureGalleryPackager.exe elérési útja.  
-4.  Kattintson a **létrehozása** és a piactér eszközkészlet a megoldás csomagolja .azpkg fájlba.  Művelet befejeződése után a varázsló a megoldást fájl elérési útja, és folytatja a csomag közzététele az Azure-verem lehetőséget ad.
+    ![Képernyőkép a Marketplace-en eszközkészlet második képernyő](./media/azure-stack-marketplace-publisher/image8.png)
+2.  A telepítési varázsló a rendszer kitölti a *alapszintű* lépést és a bemeneti elemek a sablonban megadott paraméterek.  További lépéseket adhat hozzá, és helyezze át a bemenetek lépések között.  Tegyük fel célszerű lehet az "Előtér-konfiguráció" és "Háttér-konfiguráció" lépés a megoldáshoz.
+3.  Adja meg a AzureGalleryPackager.exe elérési útját.  
+4.  Kattintson a **létrehozás** és a piactér eszközkészlet csomagokat a megoldás egy .azpkg fájlt.  Ha elkészült, a varázsló a megoldás fájl elérési útja, és lehetővé teszi az folytatja, a csomag közzététele az Azure Stackhez.
 
 
-## <a name="publish-marketplace-items"></a>Piactéri elemek közzététele
-Ebben a szakaszban közzéteszi a Piactéri elemet az Azure-verem piactéren.
+## <a name="publish-marketplace-items"></a>Piactéri elem közzététele
+Ebben a szakaszban a Piactéri elem az Azure Stack piactéren való közzétételéhez.
 
-![Képernyőkép a piactér eszközkészlet képernyője](./media/azure-stack-marketplace-publisher/image9.png)
+![Képernyőkép a Marketplace-en eszközkészlet első képernyő](./media/azure-stack-marketplace-publisher/image9.png)
 
-1.  A varázsló a megoldás közzététele információra van szüksége:
+1.  A varázsló közzététele a megoldás információt igényel:
     
     |Mező|Leírás|
     |-----|-----|
     | Szolgáltatás-rendszergazda neve | Szolgáltatás-rendszergazdai fiókjával.  Példa:  ServiceAdmin@mydomain.onmicrosoft.com |
     | Jelszó | Szolgáltatás-rendszergazdai fiók jelszavát. |
-    | API-végpont | Azure verem Azure Resource Manager-végpont.  Példa: management.local.azurestack.external |
-2.  Kattintson a **közzététel** és a közzétételi napló jelenik meg.
-3.  A verem Azure-portálon a közzétett cikk telepíthet áll.
+    | API-végpont | Az Azure Stack az Azure Resource Manager-végpontot.  Példa: management.local.azurestack.external |
+2.  Kattintson a **közzététel** , és a közzétételi napló jelenik meg.
+3.  A közzétett cikk az Azure Stack portálon keresztül telepíteni tud olyan áll.
 
 
 ## <a name="use-a-parameters-file"></a>A paraméterfájl használata
-A paraméterfájl segítségével végezze el a piactér konfigurációelem-információk.  
+Használhatja egy paraméterfájl adja meg a piactér elem adatokat.  
 
-A piactér Toolkit tartalmaz egy *solution.parameters.ps1* segítségével hozzon létre egy saját paraméterek fájlt.
+A piactér Toolkit tartalmaz egy *solution.parameters.ps1* használhatja a saját paraméterfájl létrehozásához.
 
 
-## <a name="support-files"></a>Támogatási fájlok
+## <a name="support-files"></a>Fájlok támogatása
 | Leírás | Sample |
 | ----- | ----- |
 | 40x40 .png icon | ![](./media/azure-stack-marketplace-publisher/image1.png) |
 | 90x90 .png icon | ![](./media/azure-stack-marketplace-publisher/image2.png) |
-| 115x115 .png icon | ![](./media/azure-stack-marketplace-publisher/image3.png) |
+| 115 x 115 .png ikon | ![](./media/azure-stack-marketplace-publisher/image3.png) |
 | 255x115 .png icon | ![](./media/azure-stack-marketplace-publisher/image4.png) |
-| 533 x 324 .png miniatűr | ![](./media/azure-stack-marketplace-publisher/image5.png) |
+| 533 x 324 .png miniatűrje | ![](./media/azure-stack-marketplace-publisher/image5.png) |
 
 

@@ -3,7 +3,7 @@ title: A Microsoft Azure Stack Development Kit kibocsátási megjegyzései |} A 
 description: Fejlesztések, javításokat és az Azure Stack Development Kit kapcsolatos ismert problémák.
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 ms.assetid: ''
 ms.service: azure-stack
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/12/2018
-git ms.author: brenduns
+git ms.author: sethm
 ms.reviewer: misainat
-ms.openlocfilehash: 9c9b93b5e7877d853a2f27678af61774171c01cb
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: ad596e2f63d3ef5fb82fe52699fef3a79e835274
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45543328"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45634812"
 ---
 # <a name="azure-stack-development-kit-release-notes"></a>Az Azure Stack Development Kit kibocsátási megjegyzései  
 Ez a cikk fejlesztései, javításokat és ismert problémák az Azure Stack Development Kit ismerteti. Ha nem biztos abban, hogy melyik verziót futtatja, akkor az [ellenőrizhető a portál használatával](.\.\azure-stack-updates.md#determine-the-current-version).

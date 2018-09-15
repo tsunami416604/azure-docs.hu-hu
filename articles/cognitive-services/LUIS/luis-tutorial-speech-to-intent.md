@@ -1,30 +1,28 @@
 ---
-title: C# SDK-t beszéd használata az intelligens hangfelismerési szolgáltatással – Azure |} A Microsoft Docs
-titleSuffix: Azure
-description: A beszédfelismerés C# SDK-minta használatával beszéljen a mikrofon és visszaadott LUIS szándékot és entitások előrejelzés beolvasása.
+title: C# SDK-t beszéd használata az intelligens hangfelismerési szolgáltatással
+titleSuffix: Azure Cognitive Services
+description: A Speech service lehetővé teszi, hogy egyetlen kérés fogadásához hang, és a LUIS-előrejelzési JSON objektumokat adjanak vissza. Ebben a cikkben töltse le, és a Visual Studióban egy C#-projektben használatával az utterance (kifejezés) mikrofon beszél, és a LUIS előrejelzési információkat kapni. A projekt használja, a beszéd NuGet-csomagot, referenciaként már tartalmazza.
 services: cognitive-services
 author: diberry
 manager: cjgronlund
 ms.service: cognitive-services
-ms.technology: luis
+ms.technology: language-understanding
 ms.topic: article
-ms.date: 06/26/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: aadca428fa076d697cc0f893673672850ddc27d4
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 8eff6ff3d0263708158f2fea82380e88ba4638ad
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43124396"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45633627"
 ---
 # <a name="integrate-speech-service"></a>Beszédszolgáltatás integrálása
-A [beszédszolgáltatás](https://docs.microsoft.com/azure/cognitive-services/Speech-Service/) lehetővé teszi, hogy egyetlen kérés fogadásához hang, és a LUIS-előrejelzési JSON objektumokat adjanak vissza.
-
-Ebben a cikkben töltse le, és a Visual Studióban egy C#-projektben használatával az utterance (kifejezés) mikrofon beszél, és a LUIS előrejelzési információkat kapni. A projekt használja, a beszéd [NuGet](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech/) csomag már szerepel a hivatkozásként van listázva. 
+A [beszédszolgáltatás](https://docs.microsoft.com/azure/cognitive-services/Speech-Service/) lehetővé teszi, hogy egyetlen kérés fogadásához hang, és a LUIS-előrejelzési JSON objektumokat adjanak vissza. Ebben a cikkben töltse le, és a Visual Studióban egy C#-projektben használatával az utterance (kifejezés) mikrofon beszél, és a LUIS előrejelzési információkat kapni. A projekt használja, a beszéd [NuGet](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech/) csomag már szerepel a hivatkozásként van listázva. 
 
 Ez a cikk szüksége lesz egy ingyenes [LUIS] [ LUIS] webhely fiók annak érdekében, hogy az alkalmazás importálása.
 
-## <a name="create-luis-endpoint-key"></a>A LUIS végponti kulcs létrehozása
+## <a name="create-luis-endpoint-key"></a>LUIS-végpont kulcsának létrehozása
 Az Azure Portalon [létrehozása](luis-how-to-azure-subscription.md#create-luis-endpoint-key) egy **Language Understanding** (LUIS) kulcsa. 
 
 ## <a name="import-human-resources-luis-app"></a>Importálja az emberi erőforrások LUIS alkalmazás
@@ -32,12 +30,13 @@ A leképezések és a kimondott szöveg ebben a cikkben vannak az emberi erőfor
 
 Az alkalmazás van, szándék fog vonatkozni, az entitások és az emberi erőforrások tartományhoz kapcsolódó kimondott szöveg. Példa utterances a következők:
 
-```
-Who is John Smith's manager?
-Who does John Smith manage?
-Where is Form 123456?
-Do I have any paid time off?
-```
+|Példák kimondott szövegekre|
+|--|
+|Akik a John Smith manager?|
+|Akik Kovács János kezelni?|
+|Ha az űrlap 123456?|
+|Kell fizetős bármikor?|
+
 
 ## <a name="add-keyphrase-prebuilt-entity"></a>Adja hozzá a KeyPhrase előre összeállított entitások
 Válassza ki az alkalmazást az importálás után **entitások**, majd **előre összeállított entitások kezelése**. Adja hozzá a **KeyPhrase** entitás. A KeyPhrase entitás kulcs tárgyára kigyűjti az utterance (kifejezés).
@@ -45,19 +44,18 @@ Válassza ki az alkalmazást az importálás után **entitások**, majd **előre
 ## <a name="train-and-publish-the-app"></a>Az alkalmazás betanítása és közzététele
 1. A felső, jobb oldali navigációs sávon válassza ki a **betanításához** gomb a LUIS alkalmazás betanításához.
 
-2. Válassza ki **közzététel** , nyissa meg a közzétételi oldalon. 
+2. Válassza ki **kezelés** sáv jobb felső sarokban, majd válassza **kulcsokat és a végpontok** a bal oldali navigációs menüben. 
 
-3. Alsó részén a **közzététel** lap, adja hozzá a létrehozott LUIS-kulcsot a [létrehozása LUIS végponti kulcs](#create-luis-endpoint-key) szakaszban.
+3. Az a **kulcsokat és a végpontok** lapon, a LUIS kulcsnak hozzárendelése a [létrehozása LUIS végponti kulcs](#create-luis-endpoint-key) szakaszban.
 
-4. Kijelölésével a LUIS alkalmazás közzététele a **közzététel** a közzététel bővítőhely jobbra látható gombra. 
-
-  Az a **közzététel** lapon gyűjtése az Alkalmazásazonosító, régió és előfizetés-azonosítója a LUIS kulcsnak közzé a [létrehozása LUIS végponti kulcs](#create-luis-endpoint-key) szakaszban. Meg kell módosítania a kódot, ezeket az értékeket a cikk későbbi részében. 
-
-  Ezeket az értékeket minden szerepelnek a végponti URL-cím alján a **közzététel** lap a létrehozott kulcs. 
+  Ezen a lapon gyűjtése az Alkalmazásazonosító, régió közzétételét és előfizetés-azonosító a LUIS kulcs létrehozott a [létrehozása LUIS végponti kulcs](#create-luis-endpoint-key) szakaszban. Meg kell módosítania a kódot, ezeket az értékeket a cikk későbbi részében. 
   
   Tegye **nem** ebben a gyakorlatban az ingyenes alapszintű kulcs használatára. Csak egy **Language Understanding** ebben a gyakorlatban az Azure Portalon létrehozott kulcsot fog működni. 
 
   https://**régió**.api.cognitive.microsoft.com/luis/v2.0/apps/**APPID**? előfizetés-kulcs =**LUISKEY**& q =
+
+
+4. Kijelölésével a LUIS alkalmazás közzététele a **közzététel** sáv jobb felső sarokban található gombra. 
 
 ## <a name="audio-device"></a>Hangeszköz
 Ebben a cikkben az eszköz a számítógépen. Lehet, amely a mikrofon vagy egy beépített hangeszköz mikrofonos. Ellenőrizze a megtekintéséhez, ha hangosabb általában, mintha a beszéd, az eszköz által észlelt rendelkeznie kell beszélt hang bemeneti szintek. 

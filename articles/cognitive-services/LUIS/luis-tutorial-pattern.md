@@ -1,76 +1,56 @@
 ---
-title: Az oktatóanyag minták segítségével javíthatja a LUIS-előrejelzés – Azure |} A Microsoft Docs
-titleSuffix: Cognitive Services
-description: Ebben az oktatóanyagban a leképezések mintájának használatával javíthatja a LUIS szándékot és egyéb entitások előrejelzéseket.
+title: '3. oktatóanyag: Minták LUIS előrejelzéseket javítása érdekében'
+titleSuffix: Azure Cognitive Services
+description: Minták használatával növelheti a leképezés és egyéb entitások előrejelzési művelet során gondoskodik a kevesebb példa kimondott szöveg. A minta példaképpen egy sablon utterance (kifejezés), beleértve a szintaxist, entitások és figyelmen kívül hagyható, szöveg van megadva.
 services: cognitive-services
 author: diberry
 manager: cjgronlund
 ms.service: cognitive-services
-ms.technology: luis
+ms.technology: language-understanding
 ms.topic: article
-ms.date: 07/30/2018
+ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 9c14f2121cd83cec802f4fd4a92661d58eb7efb3
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 3b41105a20b765abd084fc387370a49b657d1cba
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44159572"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45634727"
 ---
-# <a name="tutorial-improve-app-with-patterns"></a>Oktatóanyag: Alkalmazás minták és javítása
+# <a name="tutorial-3-add-common-utterance-formats"></a>Oktatóanyag: 3. Adja hozzá a közös utterance (kifejezés) formátumok
 
-Ebben az oktatóanyagban minták használatával növelheti a leképezés és egyéb entitások előrejelzési.  
+Ebben az oktatóanyagban minták használatával növelheti a leképezés és egyéb entitások előrejelzési művelet során gondoskodik a kevesebb példa kimondott szöveg. A minta példaképpen egy sablon utterance (kifejezés), beleértve a szintaxist, entitások és figyelmen kívül hagyható, szöveg van megadva. A minta akkor kifejezések egyeztetésének és a gépi tanulás.  Az utterance (kifejezés) példasablonban szándék megcímkézzen, valamint egy jobb megértéséhez, hogy milyen kimondott szöveg igazítása a célt adjon meg a LUIS. 
+
+**Ebből az oktatóanyagból megtudhatja, hogyan lehet:**
 
 > [!div class="checklist"]
-* Hogyan azonosíthatja, hogy egy minta segíthet az alkalmazás
-* A minta létrehozása
-* Azt, hogyan ellenőrizheti, mintát előrejelzési fejlesztései
+> * Használja meglévő oktatóanyag alkalmazása 
+> * Leképezésének létrehozása
+> * Betanítás
+> * Közzététel
+> * Végpont szándékok és entitások beolvasása
+> * Hozzon létre egy minta
+> * Ellenőrizze a minta előrejelzési fejlesztései
+> * Szöveg nyelve figyelmen kívül hagyható és minta belül beágyazása
+> * Teszt panel segítségével minta sikerességének ellenőrzése
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="use-existing-app"></a>Meglévő alkalmazás használata
 
-Ha nem rendelkezik az emberi erőforrások alkalmazásból a [batch teszt](luis-tutorial-batch-testing.md) az oktatóanyagban [importálása](luis-how-to-start-new-app.md#import-new-app) a JSON-kódot egy új alkalmazást a [LUIS](luis-reference-regions.md#luis-website) webhely. Az alkalmazás importálása megtalálható a [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-batchtest-HumanResources.json) GitHub-adattárban.
+Folytassa az alkalmazás nevű az előző oktatóanyagban létrehozott **emberi**. 
 
-Ha meg szeretné tartani az eredeti Emberi erőforrások alkalmazást, klónozza a [Settings](luis-how-to-manage-versions.md#clone-a-version) (Beállítások) lapon a verziót, és adja neki a következő nevet: `patterns`. A klónozás nagyszerű mód, hogy kísérletezhessen a különböző LUIS-funkciókkal anélkül, hogy az az eredeti verzióra hatással lenne. 
+Ha az előző oktatóanyagban az emberi alkalmazás nem rendelkezik, használja az alábbi lépéseket:
 
-## <a name="patterns-teach-luis-common-utterances-with-fewer-examples"></a>Minták tanít LUIS kevesebb példákkal közös kimondott szöveg
+1.  Töltse le és mentse [alkalmazás JSON-fájlt](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-batchtest-HumanResources.json).
 
-Az emberi erőforrás-tartomány jellege miatt a szervezetben alkalmazott kapcsolatok kapcsolatos néhány gyakori módon is. Példa:
+2. A JSON importálja egy új alkalmazást.
 
-|Beszédmódok|
-|--|
-|Ki nem Jill Jones jelentést?|
-|Akik jelentéseket Jill Jones?|
-
-Ezek a kimondott szöveg szorosan határozzák meg az egyes nélkül számos utterance (kifejezés) példákkal környezetfüggő egyediségét. Ad hozzá egy minta megjelölésű, LUIS megtanulja megjelölésű közös utterance (kifejezés) minta számos utterance (kifejezés) Példák megadása nélkül. 
-
-Példa a sablon utterances ezt szándék a következők:
-
-|A példában a sablon kimondott szöveg|
-|--|
-|Ki {alkalmazott} tesz jelentést?|
-|Akik jelentéseket {alkalmazott}?|
-
-A minta példaképpen egy sablon utterance (kifejezés), beleértve a szintaxist, entitások és figyelmen kívül hagyható, szöveg van megadva. A reguláris kifejezések egyeztetésének és a machine learning egyik.  Az utterance (kifejezés) példasablonban szándék megcímkézzen, valamint egy jobb megértéséhez, hogy milyen kimondott szöveg igazítása a célt adjon meg a LUIS.
-
-Ahhoz, hogy egy mintát egyeztetni kell az utterance (kifejezés) az entitások az utterance (kifejezés) kell először felel meg a sablon utterance (kifejezés) entitást. Azonban a sablon nem segít előre jelezni az entitásokat, csak a szándék fog vonatkozni. 
-
-**Minták lehetővé teszik, hogy kevesebb példa kimondott szöveg, ha az entitások nem észlelt, miközben a mintázat nem felel meg.**
-
-Ne feledje, hogy az alkalmazottak létrejöttek a [lista entitás oktatóanyag](luis-quickstart-intent-and-list-entity.md).
+3. Az a **kezelés** részben, a a **verziók** lapon klónozza a verziót, és adja neki `patterns`. A klónozás nagyszerű mód, hogy kísérletezhessen a különböző LUIS-funkciókkal anélkül, hogy az az eredeti verzióra hatással lenne. A verzió nevét az URL-útvonal részeként használja, mert a név nem tartalmazhat, amelyek nem érvényes URL-karaktereket.
 
 ## <a name="create-new-intents-and-their-utterances"></a>Hozzon létre új leképezések és a kimondott szöveg
 
-Két új leképezések hozzáadása: `OrgChart-Manager` és `OrgChart-Reports`. Miután a LUIS-előrejelzés az ügyfélalkalmazásnak a leképezés neve lehet használni a függvény nevét az ügyfélalkalmazásban, és, hogy a függvény paramétereként használható-e az alkalmazott entitás adja vissza.
-
-```Javascript
-OrgChart-Manager(employee){
-    ///
-}
-```
-
-1. Győződjön meg arról, hogy az Emberi erőforrások alkalmazás a LUIS **Build** (Létrehozás) szakaszában van. Ha erre a szakaszra szeretne lépni, válassza a jobb felső menüsávon a **Build** (Létrehozás) elemet. 
+1. [!include[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. Az **Intents** (Szándékok) lapon válassza a **Create new intent** (Új szándék létrehozása) lehetőséget. 
 
@@ -110,17 +90,17 @@ OrgChart-Manager(employee){
 
 ## <a name="caution-about-example-utterance-quantity"></a>Példa utterance (kifejezés) mennyiségére vonatkozó figyelmeztetés
 
-Ezeket a leképezéseket a példa utterances mennyiségét már nem elég a LUIS megfelelően betanításához. Egy valós alkalmazásban minden egyes szándékot legalább 15 utterances számos választási lehetőség és az utterance (kifejezés) hossza a word kell rendelkeznie. Ezek néhány utterances ki van jelölve, kifejezetten a jelölje ki a mintákat. 
+[!include[Too few examples](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]
 
-## <a name="train-the-luis-app"></a>A LUIS-alkalmazás betanítása
+## <a name="train"></a>Betanítás
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
-## <a name="publish-the-app-to-get-the-endpoint-url"></a>Az alkalmazás közzététele a végpont URL-címének lekéréshez
+## <a name="publish"></a>Közzététel
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
-## <a name="query-the-endpoint-with-a-different-utterance"></a>A végpont lekérdezése egy másik kimondott szöveggel
+## <a name="get-intent-and-entities-from-endpoint"></a>Leképezés és entitások kaphat végpont
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
@@ -215,13 +195,53 @@ Minták a megfelelő leképezés pontszám jelentősen nagyobb százalékban és
 
 Hagyja nyitva a második böngészőablakot. Később az oktatóanyagban használja. 
 
-## <a name="add-the-template-utterances"></a>A sablon beszédmódok hozzáadása
+## <a name="template-utterances"></a>Sablon kimondott szöveg
+Az emberi erőforrás-tartomány jellege miatt a szervezetben alkalmazott kapcsolatok kapcsolatos néhány gyakori módon is. Példa:
+
+|Beszédmódok|
+|--|
+|Ki nem Jill Jones jelentést?|
+|Akik jelentéseket Jill Jones?|
+
+Ezek a kimondott szöveg szorosan határozzák meg az egyes nélkül számos utterance (kifejezés) példákkal környezetfüggő egyediségét. Ad hozzá egy minta megjelölésű, LUIS megtanulja megjelölésű közös utterance (kifejezés) minta számos utterance (kifejezés) Példák megadása nélkül. 
+
+Sablon utterance (kifejezés) Példák a szándék a következők lehetnek:
+
+|Sablon utterances példák|Szintaxis-jelentése|
+|--|--|
+|Ki {alkalmazott} tesz jelentést [?]|cserélhető {alkalmazott}, figyelmen kívül hagyása [?]}|
+|Akik jelentéseket {alkalmazott} [?]|cserélhető {alkalmazott}, figyelmen kívül hagyása [?]}|
+
+A `{Employee}` szintaxis jelöli meg a sablon utterance (kifejezés), valamint entitáshoz van az entitás helyére. A választható szintaxist `[?]`, feldolgozottként jelöli meg a szavakat vagy absztrakt, amelyek nem kötelező. LUIS megegyezik az utterance (kifejezés), a rendszer figyelmen kívül hagyja a nem kötelező szöveg a zárójelek között lévő.
+
+Reguláris kifejezések néz ki a szintaxist, amíg nem reguláris kifejezéseket. Csak a kapcsos zárójelet `{}`, és a szögletes zárójelet, `[]`, szintaxis támogatott. Legfeljebb két szinten ágyazhatók.
+
+Ahhoz, hogy egy mintát egyeztetni kell az utterance (kifejezés) az entitások az utterance (kifejezés) kell először felel meg a sablon utterance (kifejezés) entitást. Azonban a sablon nem segít előre jelezni az entitásokat, csak a szándék fog vonatkozni. 
+
+**Minták lehetővé teszik, hogy kevesebb példa kimondott szöveg, ha az entitások nem észlelt, miközben a mintázat nem felel meg.**
+
+Ebben az oktatóanyagban két új leképezések hozzáadása: `OrgChart-Manager` és `OrgChart-Reports`. 
+
+|Szándék|Kimondott szöveg|
+|--|--|
+|Szervezeti diagram – vezető|Ki nem Jill Jones jelentést?|
+|Szervezeti diagram – jelentések|Akik jelentéseket Jill Jones?|
+
+Miután a LUIS-előrejelzés az ügyfélalkalmazásnak a leképezés neve lehet használni a függvény nevét az ügyfélalkalmazásban, és, hogy a függvény paramétereként használható-e az alkalmazott entitás adja vissza.
+
+```Javascript
+OrgChartManager(employee){
+    ///
+}
+```
+
+Ne feledje, hogy az alkalmazottak létrejöttek a [lista entitás oktatóanyag](luis-quickstart-intent-and-list-entity.md).
 
 1. Válassza ki **összeállítása** a felső menüben.
 
 2. A bal oldali navigációs területen **megnövelheti az alkalmazások teljesítményét**, jelölje be **minták** a bal oldali navigációs sávon.
 
-3. Válassza ki a **szervezeti diagram – vezető** szándékot, majd adja meg a következő sablon megcímkézzen, egyenként meg kiválasztása után minden sablon utterance (kifejezés):
+3. Válassza ki a **szervezeti diagram – vezető** szándékot, majd adja meg a következő sablon kimondott szöveg:
 
     |Sablon kimondott szöveg|
     |:--|
@@ -232,17 +252,13 @@ Hagyja nyitva a második böngészőablakot. Később az oktatóanyagban haszná
     |Akik az [?] [a] {alkalmazott} felügyelő|
     |Akik az, hogy a főnök {alkalmazott} [?]|
 
-    A `{Employee}` szintaxis jelöli meg a sablon utterance (kifejezés), valamint entitáshoz van az entitás helyére. 
-
     Szerepkörök rendelkező entitások szintaxist használja, amely tartalmazza a szerepkör nevét, és fedi le egy [szerepkörök külön oktatóanyag](luis-tutorial-pattern-roles.md). 
-
-    A választható szintaxist `[]`, feldolgozottként jelöli meg a szavakat vagy absztrakt, amelyek nem kötelező. LUIS megegyezik az utterance (kifejezés), a rendszer figyelmen kívül hagyja a nem kötelező szöveg a zárójelek között lévő.
 
     Ha a sablon utterance (kifejezés), a LUIS segítségével, töltse ki az entitás a bal oldali kapcsos zárójel megadásakor `{`.
 
     [![Képernyőkép a leképezés a sablon utterances megadása](./media/luis-tutorial-pattern/hr-pattern-missing-entity.png)](./media/luis-tutorial-pattern/hr-pattern-missing-entity.png#lightbox)
 
-4. Válassza ki a **szervezeti diagram – jelentések** szándékot, majd adja meg a következő sablon megcímkézzen, egyenként meg kiválasztása után minden sablon utterance (kifejezés):
+4. Válassza ki a **szervezeti diagram – jelentések** szándékot, majd adja meg a következő sablon kimondott szöveg:
 
     |Sablon kimondott szöveg|
     |:--|
@@ -427,6 +443,8 @@ Az összes alábbi kimondott szöveg található az entitások belül, így azok
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>További lépések
+
+Ebben az oktatóanyagban hozzáadja a két szándék, hogy sok példa utterances nélkül nagy pontosságú-előrejelzés nehéz volt megcímkézzen számára. Ezek engedélyezett LUIS jobb hozzáadása mintákat előre jelezni a leképezést, és jelentősen magasabb pontszámot. A minta alkalmazásához utterances választéka LUIS entitásokat és figyelmen kívül hagyható, szöveges jelölés engedélyezett.
 
 > [!div class="nextstepaction"]
 > [Ismerje meg, hogyan használja a szerepkörök mintával](luis-tutorial-pattern-roles.md)

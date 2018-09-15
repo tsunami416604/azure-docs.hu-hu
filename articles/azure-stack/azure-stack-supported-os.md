@@ -3,7 +3,7 @@ title: Támogatott vendég operációs rendszereket az Azure Stackhez |} A Micro
 description: Ezek a vendég operációs rendszerek az Azure Stacken használható.
 services: azure-stack
 documentationcenter: ''
-author: Brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2018
-ms.author: Brenduns
+ms.author: sethm
 ms.reviewer: JeffGoldner
-ms.openlocfilehash: d6e9531edf8915e4b6c2636372b756002fca10fd
-ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
+ms.openlocfilehash: 65e9b4371eab4e4e4978e91184ab9712b9ecc9eb
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2018
-ms.locfileid: "43382399"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45629375"
 ---
 # <a name="guest-operating-systems-supported-on-azure-stack"></a>Vendég operációs rendszereket támogatják az Azure Stackben
 

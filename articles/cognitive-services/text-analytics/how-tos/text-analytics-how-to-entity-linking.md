@@ -1,43 +1,44 @@
 ---
-title: Útmutató használható entitás Linking szöveg Analytics REST API-t (Microsoft Azure kognitív szolgáltatások) |} Microsoft Docs
-description: Megtudhatja, hogyan azonosítani és megoldani a szöveg Analytics REST API használatával a Microsoft Azure kognitív Services bemutató oktatóanyag entitásokat.
+title: A Text Analytics API-val entitáskapcsolás használata
+titleSuffix: Azure Cognitive Services
+description: Ismerje meg, hogyan azonosítani és megoldani a Text Analytics REST API használatával.
 services: cognitive-services
 author: ashmaka
 manager: cgronlun
 ms.service: cognitive-services
-ms.technology: text-analytics
+ms.component: text-analytics
 ms.topic: article
-ms.date: 5/02/2018
+ms.date: 09/12/2018
 ms.author: ashmaka
-ms.openlocfilehash: 55bec1a0223b70749a97a30e2da92ef15128038c
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: ad2168806f9ddd124faf66cdb5a0f51ed13dfadc
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347759"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45604739"
 ---
-# <a name="how-to-identify-linked-entities-in-text-analytics-preview"></a>Szövegelemzések (előzetes verzió) a csatolt entitások azonosítása
+# <a name="how-to-identify-linked-entities-in-text-analytics-preview"></a>A Text Analytics (előzetes verzió) kapcsolt entitások azonosítása
 
-A [entitás Linking API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634) strukturálatlan szöveg vesz igénybe, és minden JSON-dokumentumában, a(z) álló listát ad vissza entitásokat használatát mutató hivatkozásokat tartalmaz további információkat a weben (Wikipedia és a Bing). 
+A [Entitáskapcsolási API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634) strukturálatlan szöveges vesz igénybe, és egyes JSON-dokumentumok listáját adja vissza használatát entitásokat is tartalmaz, hivatkozásokkal további információhoz a weben (Wikipédia és a Bing). 
 
-## <a name="entity-linking-vs-named-entity-recognition"></a>A Linking vs entitás. Megnevezett entitások felismerése
+## <a name="entity-linking-vs-named-entity-recognition"></a>Entitás Linking vs. Megnevezett entitások felismerése
 
-A természetes nyelvű feldolgozása az entitás csatolása és névvel rendelkező entitás felismerési (NER) könnyen összetéveszthetők is. A szöveg Analytics előzetes verziójában `entities` végpont, csak az entitás linking esetén támogatott.
+A természetes nyelvi feldolgozás, az entitáskapcsolás és a nevesített entitások felismerése (NER) könnyen összetéveszthetők is. A Text Analytics előzetes verziójának `entities` csak entitáskapcsolás-végpont támogatott.
 
-Linking azonosítása és identitása (pl. meghatározása e a "Mars" használatban van a bolygónk vagy háborús a latin Isten) szövegben található entitás értelmezni. Ez a folyamat szükséges a alap, amely a kapcsolódó entitás - Wikipedia használatos a Tudásbázisban felismerés ismerete a `entities` végpont Szövegelemzések.
+Entitáskapcsolás rendszer azon képessége, azonosíthatja és a egy entitás (pl. meghatározása-e a "Mars" globális vagy a latin god háború használja) szöveg található az identitás megkülönböztetéséhez. Ez a folyamat, amely felismeri a kapcsolódó entitások – Wikipedia szolgál a Tudásbázisban alapszintű ismerete szükséges a `entities` végpontot Text Analytics.
 
 ### <a name="language-support"></a>Nyelvi támogatás
 
-Különböző nyelveken linking entitás használatához egy megfelelő Tudásbázis segítségével mindkét nyelven. Összekapcsolásáról Szövegelemzések az entitás, ez azt jelenti, hogy minden által támogatott nyelvi a `entities` végpont a megfelelő Wikipedia corpus ezen a nyelven fogja csatolni. Mivel nyelvek között corpora méretétől függően változik, várható, hogy a funkció a visszaírási linking entitás is eltérőek lehetnek.
+Entitáskapcsolás különféle nyelveken használatához az egyes nyelvekhez tartozó Tudásbázis használatával. A Text Analytics entitáskapcsolás, ez azt jelenti, hogy minden nyelv által támogatott a `entities` végpont kapcsolja a megfelelő Wikipedia forrásgyűjteményébe az adott nyelveken. Korpuszok mérete nyelvek közé esik, mivel várható, hogy a funkció a visszaírási entitáskapcsolás is változnak.
 
 
-## <a name="preparation"></a>Előkészítése
+## <a name="preparation"></a>Előkészítés
 
-JSON-dokumentumok rendelkeznie kell a következő formátumban: azonosító, a szöveg, a nyelvi
+JSON-dokumentumok rendelkeznie kell a következő formátumban: azonosító, a szöveg, a nyelv
 
-A jelenleg támogatott nyelvek, lásd: [ebben a listában](../text-analytics-supported-languages.md).
+Jelenleg támogatott nyelveket, tekintse meg [ebben a listában](../text-analytics-supported-languages.md).
 
-Dokumentum mérete dokumentumonként a 5000 karakterből állhat, illetve azt, hogy legfeljebb 1000 gyűjteményenként (azonosítók) elemet. A gyűjtemény elküldve a kérelem törzsében. A következő példa olyan bemutatásáért, előfordulhat, hogy küldje el az entitás hivatkozási célból tartalom.
+Dokumentum mérete kell lennie a 5000 karakter / dokumentum, és legfeljebb 1000 rendelkezhet gyűjteményenként (azonosítók) elemet. A gyűjtemény elküldésekor a kérelem törzsében. A következő példa olyan bemutatásáért, előfordulhat, hogy küldje el az entitás hivatkozási célból tartalom.
 
 ```
 {"documents": [{"id": "1",
@@ -54,32 +55,32 @@ Dokumentum mérete dokumentumonként a 5000 karakterből állhat, illetve azt, h
     
 ## <a name="step-1-structure-the-request"></a>1. lépés: A kérés struktúra
 
-A kérelem definíciója részletek megtalálhatók a [hogyan hívhatja meg a szöveg Analytics API](text-analytics-how-to-call-api.md). Kényelmi vannak megfelelően a következő szempontokat:
+Kérelem definíciója a részletek megtalálhatók a [a szövegelemzési API hívása](text-analytics-how-to-call-api.md). Kényelmi vannak megfelelően a következő szempontokat:
 
-+ Hozzon létre egy **POST** kérelmet. Tekintse át a kérelem az API dokumentációjának: [entitás Linking API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634)
++ Hozzon létre egy **POST** kérelmet. A kérelem API-dokumentációban: [Entitáskapcsolási API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634)
 
-+ Állítsa be a HTTP-végpont kulcs kifejezés kiolvasásához. Tartalmaznia kell a `/entities` erőforrás: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/entities`
++ Állítsa a kulcskifejezések kinyerése a HTTP-végpontot. Tartalmaznia kell a `/entities` erőforrás: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/entities`
 
-+ Állítsa be a hozzáférési kulcsot a következő Szövegelemzések műveletek közé tartozik a fejléc. További információkért lásd: [végpontok kereséséhez, és hozzáférési kulcsokkal](text-analytics-how-to-access-key.md).
++ Állítsa be a hívóbetűt a Text Analytics műveletek közé tartozik a fejléc. További információkért lásd: [végpontok keresése és hozzáférési kulcsokkal](text-analytics-how-to-access-key.md).
 
-+ A kérelem törzsében szereplő adja meg az elemzés az Felkészülés JSON documents gyűjtemény
++ A kérelem törzsében szereplő adja meg a JSON-dokumentumok ehhez az elemzéshez előkészített gyűjtemény
 
 > [!Tip]
-> Használja [Postman](text-analytics-how-to-call-api.md) vagy nyissa meg a **API-tesztelési konzol** a a [dokumentáció](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634) struktúra egy kérelmet, és KÖZZÉTEHETI a szolgáltatás.
+> Használata [Postman](text-analytics-how-to-call-api.md) , vagy nyissa meg a **API tesztelési konzollal** a a [dokumentáció](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634) struktúra egy kérelmet, és KÖZZÉTESZI azokat a szolgáltatást.
 
-## <a name="step-2-post-the-request"></a>2. lépés: Küldje a kérelmet
+## <a name="step-2-post-the-request"></a>2. lépés: A kérés küldése
 
-Elemzés a kérelem történik. A szolgáltatás fogadja a legfeljebb 100 kérelmek / perc. Minden egyes kérelem legfeljebb 1 MB méretű is lehet.
+Elemzés a kérelem történik. A szolgáltatás percenként legfeljebb 100 kéréseket fogad. Minden egyes kérés legfeljebb 1 MB lehet.
 
-A visszaírási, hogy állapot nélküli-e a szolgáltatás. Adatot nem tárolja a fiókját. Eredményeinek azonnal a válaszban.
+Ne felejtse el, hogy az állapot nélküli-e a szolgáltatás. A fiókban tárolt adatok nem. Eredmény akkor azonnal a válaszban.
 
 ## <a name="step-3-view-results"></a>3. lépés: Az eredmények megtekintése
 
-Minden POST kérelemhez vissza JSON formátumú válasz azonosítókkal és Tulajdonságok észlelhetők.
+Minden POST kérelemhez egy JSON formátumú válasz azonosítókkal és észlelt tulajdonságokat adja vissza.
 
-Kimeneti azonnal adja vissza. Az eredmények JSON elfogadó alkalmazás adatfolyamként vagy kimenetét mentse fájlba a helyi rendszer, és importálja azt az alkalmazást, amely lehetővé teszi rendezni, keresése és az adatok kezelését.
+Kimeneti azonnal adja vissza. Az eredményeket JSON elfogadó alkalmazás adatfolyam vagy kimenetét mentse el egy fájlt a helyi rendszer, és importálja azt egy alkalmazás, amely lehetővé teszi, hogy rendezni, keresése és az adatok kezelésére.
 
-A kimeneti linking entitás példa tovább:
+Egy példa a kimenetre entitáskapcsolás a következő látható:
 
 ```
 {
@@ -141,25 +142,25 @@ A kimeneti linking entitás példa tovább:
 }
 ```
 
-Ha elérhető, akkor a válasz minden észlelt entitás tartalmaz a Wikipedia Azonosítót, a Wikipedia URL-cím és a Bing azonosítója. Ezek segítségével tovább javíthatja a csatolt entitás vonatkozó információkat az alkalmazásba.
+Ha elérhető, akkor a válasz az egyes észlelt entitásokhoz tartalmaz a Wikipédia-azonosító, a Wikipedia URL-cím és a Bing azonosító. Ezek segítségével tovább javíthatja az alkalmazás a hivatkozott entitáson kapcsolatos információkat.
 
 
 ## <a name="summary"></a>Összegzés
 
-Ebben a cikkben megtanulta, fogalmak és a munkafolyamat entitás kapcsolásához Szövegelemzések kognitív szolgáltatások használatával. Összefoglalva:
+Ebben a cikkben megtanulta, fogalmak és a Cognitive Services Text Analytics használatával entitáskapcsolás munkafolyamatokat. Az Összegzés:
 
-+ [Entitás Linking API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634) kiválasztott nyelveken érhető el.
-+ A kérelem törzsében szereplő JSON-dokumentumok közé tartozik egy azonosítót, a szöveg és a nyelvi kódot.
-+ POST-kérelmet, hogy egy `/entities` végpont, egy személyre szabott [hozzáférési kulcs és egy végpontot](text-analytics-how-to-access-key.md) érvényes az előfizetéséhez.
-+ Válasz kimenete, amely csatolt entitások (beleértve a várható, pontszámokat eltolások és webes hivatkozásokat az egyes dokumentum azonosítója) áll használható bármely alkalmazásban
++ [Entitáskapcsolási API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634) érhető el a kiválasztott nyelveken.
++ A kérelem törzsében szereplő JSON-dokumentumok közé tartozik egy azonosító, a szöveg és a nyelvi kódot.
++ POST-kérelmet, hogy egy `/entities` végpontra, a személyre szabott [kulcs és a egy végpont elérésére](text-analytics-how-to-access-key.md) Ez érvényes az előfizetéshez.
++ Válasz kimenete, amely entitáskészlet (beleértve a megbízhatósági pontszámok eltolások és webes hivatkozások, minden egyes dokumentum-azonosító) áll használható bármely alkalmazásban
 
 ## <a name="see-also"></a>Lásd még 
 
- [Szöveg elemzés áttekintése](../overview.md)  
+ [A Text Analytics áttekintése](../overview.md)  
  [Gyakori kérdések (GYIK)](../text-analytics-resource-faq.md)</br>
- [Szöveg Analytics termék oldalát](//go.microsoft.com/fwlink/?LinkID=759712) 
+ [Text Analytics termékoldala](//go.microsoft.com/fwlink/?LinkID=759712) 
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Szövegelemzések API](//westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6)
+> [Szövegelemzési API-val](//westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6)

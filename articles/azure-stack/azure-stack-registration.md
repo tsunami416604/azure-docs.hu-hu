@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/10/2018
 ms.author: jeffgilb
 ms.reviewer: brbartle
-ms.openlocfilehash: 6f406f63f4ae7518b93153db30c9ca51564b848c
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 92c0ad6dfde4fc83a912b4a3387d8b586e72809c
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44720140"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45630443"
 ---
 # <a name="register-azure-stack-with-azure"></a>Regisztráljon az Azure Stack az Azure-ral
 
@@ -52,7 +52,7 @@ Mielőtt regisztrálná az Azure Stack az Azure-ral, a következőkkel kell rend
 
 - A felhasználónevet és jelszót, amely az előfizetés tulajdonosa (MSA/2FA fiókok támogatottak).
 
-- A felhasználói fióknak kell lennie az Azure AD-bérlővel, amely az Azure Stack regisztrálva van, például a rendszergazda `yourazurestacktenant.onmicrosoft.com`.
+- A felhasználói fiók rendelkezik hozzáféréssel az Azure-előfizetés, és rendelkezik a címtárban, az adott előfizetéshez tartozó identitást használó alkalmazások és az egyszerű szolgáltatások létrehozásához szükséges engedélyek kell.
 
 - Az Azure Stack erőforrás-szolgáltató regisztrálva (lásd a regisztrálása az Azure Stack erőforrás-szolgáltató szakaszt alább részletekért).
 
@@ -106,7 +106,7 @@ Csatlakoztatott környezetek hozzáférhet az interneten és az Azure. Ilyen kö
 
 1. Az Azure-ral az Azure Stack erőforrás-szolgáltató regisztrálásához indítsa el a PowerShell ISE-t rendszergazdaként, és a következő PowerShell-parancsmag használatával a **EnvironmentName** (lásd a megfelelő Azure előfizetés-típus paraméter beállítása Paraméterek).
 
-2. Adja hozzá az Azure-fiók, amely az Azure Stack regisztrálhat. A fiók hozzáadásához futtassa a **Add-AzureRmAccount** parancsmagot. Az Azure globális rendszergazdai fiók hitelesítő adatait kéri, és előfordulhat, hogy a fiók konfigurációja alapján 2 többtényezős hitelesítés használatára.
+2. Adja hozzá az Azure-fiók, amely az Azure Stack regisztrálhat. A fiók hozzáadásához futtassa a **Add-AzureRmAccount** parancsmagot. Az Azure-fiók hitelesítő adatainak megadását kéri, és előfordulhat, hogy a fiók konfigurációja alapján 2 többtényezős hitelesítés használatára.
 
    ```PowerShell  
       Add-AzureRmAccount -EnvironmentName "<AzureCloud, AzureChinaCloud, or AzureUSGovernment>"
@@ -166,7 +166,7 @@ Csatlakoztatott környezetek hozzáférhet az interneten és az Azure. Ilyen kö
 
 1. Az Azure-ral az Azure Stack erőforrás-szolgáltató regisztrálásához indítsa el a PowerShell ISE-t rendszergazdaként, és a következő PowerShell-parancsmag használatával a **EnvironmentName** (lásd a megfelelő Azure előfizetés-típus paraméter beállítása Paraméterek).
 
-2. Adja hozzá az Azure-fiók, amely az Azure Stack regisztrálhat. A fiók hozzáadásához futtassa a **Add-AzureRmAccount** parancsmagot. Az Azure globális rendszergazdai fiók hitelesítő adatait kéri, és előfordulhat, hogy a fiók konfigurációja alapján 2 többtényezős hitelesítés használatára.
+2. Adja hozzá az Azure-fiók, amely az Azure Stack regisztrálhat. A fiók hozzáadásához futtassa a **Add-AzureRmAccount** parancsmagot. Az Azure-fiók hitelesítő adatainak megadását kéri, és előfordulhat, hogy a fiók konfigurációja alapján 2 többtényezős hitelesítés használatára.
 
    ```PowerShell  
       Add-AzureRmAccount -EnvironmentName "<AzureCloud, AzureChinaCloud, or AzureUSGovernment>"

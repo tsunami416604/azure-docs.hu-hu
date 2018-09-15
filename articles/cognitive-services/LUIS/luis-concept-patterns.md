@@ -1,24 +1,24 @@
 ---
-title: Ismerje meg, hogyan a minták előrejelzési pontosság növeléséhez |} A Microsoft Docs
-titleSuffix: Azure
-description: Útmutató a tervezési minták szándék előrejelzési pontszámok növelését, majd keresse meg az entitásokat.
+title: Ismerje meg, hogyan a minták előrejelzési pontosság növeléséhez
+titleSuffix: Azure Cognitive Services
+description: Pontosság javításához, ha több utterances nagyon hasonló minták lettek kialakítva. Egy minta segítségével megjelölésű a nagyobb pontosság számos további kimondott szöveg megadása nélkül.
 services: cognitive-services
 author: diberry
 manager: cjgronlund
 ms.service: cognitive-services
-ms.technology: luis
+ms.component: language-understanding
 ms.topic: article
-ms.date: 06/08/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: c08419e3fb5b25284121a0eac30c38c8ba7570f1
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 0a61ec4407a23e8cc515c2343a92bd77460d424b
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39225217"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45631412"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>Minták előrejelzési pontosság növeléséhez.
-Pontosság javításához, ha több utterances nagyon hasonló minták lettek kialakítva. Az utterance (kifejezés) megadásával mintát, LUIS rendelkezhet egy megbízható az előrejelzéshez. 
+Pontosság javításához, ha több utterances nagyon hasonló minták lettek kialakítva.  Egy minta segítségével megjelölésű a nagyobb pontosság számos további kimondott szöveg megadása nélkül. 
 
 ## <a name="patterns-solve-low-intent-confidence"></a>Minták szándék alacsony megbízhatósági megoldása
 Fontolja meg egy emberi erőforrások alkalmazáson, amely a szervezeti diagram viszonyítva egy alkalmazott a jelentést. Az alkalmazottak és a kapcsolat, LUIS ad vissza, az alkalmazottak érint. Fontolja meg egy alkalmazott Tom, egy alkalmazott felettesétől az Alice nevét, és a beosztottak nevű csapat: Michael Rebecca és Carl.
@@ -60,25 +60,25 @@ Entitások minták a kapcsos zárójeleket veszi körül `{}`. Minták lehetnek,
 ### <a name="syntax-to-add-an-entity-to-a-pattern-template"></a>Entitás hozzáadása egy minta sablon szintaxisát
 Entitás hozzáadása a minta-sablonba, körülvevő az entitás neve a kapcsos zárójelek között, mint például `Who does {Employee} manage?`. 
 
-```
-Who does {Employee} manage?
-```
+|Az entitás minta|
+|--|
+|`Who does {Employee} manage?`|
 
 ### <a name="syntax-to-add-an-entity-and-role-to-a-pattern-template"></a>Az entitásokhoz és a szerepkör hozzáadása egy minta sablon szintaxisát
 Egy entitás szerepkör jelölése `{entity:role}` kettősponttal, akkor a szerepkör neve követ entitás nevét. A szerepkörrel rendelkező entitás hozzáadása a minta-sablonba, körülvevő az entitás neve és a szerepkör nevét a kapcsos zárójelek között, mint például `Book a ticket from {Location:Origin} to {Location:Destination}`. 
 
-```
-Book a ticket from {Location:Origin} to {Location:Destination}
-```
+|Az entitás szerepkörök minta|
+|--|
+|`Book a ticket from {Location:Origin} to {Location:Destination}`|
 
 ### <a name="syntax-to-add-a-patternany-to-pattern-template"></a>Egy pattern.any hozzáadása minta sablon szintaxisát
 A Pattern.any entitás lehetővé teszi, hogy a minta egy entitás különböző hosszúságú. Mindaddig, amíg a minta sablon követik, a pattern.any lehet bármely olyan. 
 
 Hozzáadása egy **Pattern.any** a minta sablonba entitás körülvevő Pattern.any egyed kapcsos zárójeleket kell használni, mint például `How much does {Booktitle} cost and what format is it available in?`.  
 
-```
-How much does {Booktitle} cost and what format is it available in?
-```
+|Az entitás Pattern.any minta|
+|--|
+|`How much does {Booktitle} cost and what format is it available in?`|
 
 |A mintában a könyv címek|
 |--|
@@ -107,9 +107,9 @@ Javítsa ki a kivételt a minta, adjon hozzá `the man from la mancha` egy expli
 ### <a name="syntax-to-mark-optional-text-in-a-template-utterance"></a>Egy sablon utterance (kifejezés) a nem kötelező szöveg megjelölésére szintaxis
 A reguláris kifejezés szögletes zárójel szintaxis használatával az utterance (kifejezés) a nem kötelező szöveg `[]`. A nem kötelező szöveg ágyazhatja szögletes zárójelek között legfeljebb csak két zárójelek közé.
 
-```
-[find] email about {subject} [from {person}]
-```
+|Nem kötelező szöveg minta|
+|--|
+|`[find] email about {subject} [from {person}]`|
 
 Például írásjelek `.`, `!`, és `?` figyelmen kívül hagyhatja a szögletes zárójelek segítségével. Annak érdekében, hogy figyelmen kívül hagyja ezeket a jeleket, minden be van jelölve egy külön mintának kell lennie. A választható szintaxist jelenleg nem támogatja a rendszer figyelmen kívül hagyja a több elem a lista egy elemének.
 

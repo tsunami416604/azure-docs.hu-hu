@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 09/07/2018
-ms.openlocfilehash: f209aa201dafb3383ae71dd4ebff3d2ab76a9020
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: f337679279f4a3eb6d01808f15a59fee4c8f3cd1
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44345064"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45630585"
 ---
 # <a name="supported-postgresql-database-versions"></a>PostgreSQL-adatbázishoz a támogatott verziók
 A Microsoft célja, hogy a PostgreSQL-motor n-2 verzióit támogatja az Azure Database for PostgreSQL szolgáltatás, azaz a jelenleg kiadott főverzió (n), és a két előző főbb verzió (-2).
@@ -31,7 +31,7 @@ Tekintse meg a [PostgreSQL dokumentációja](https://www.postgresql.org/docs/9.6
 Tekintse meg a [PostgreSQL dokumentációja](https://www.postgresql.org/docs/9.5/static/release-9-5-13.html) kapcsolatos fejlesztések és javítások kisebb ebben a verzióban.
 
 ## <a name="managing-updates-and-upgrades"></a>Frissítések kezelése
-Azure Database for postgresql-hez automatikusan kezeli a javítása az alverzió frissítéseket. Főverzió frissítés jelenleg nem támogatott. Például PostgreSQL 9,5 PostgreSQL 9.6 rendszerről történő frissítés nem támogatott.
+Azure Database for postgresql-hez automatikusan kezeli a javítása az alverzió frissítéseket. Főverzió frissítés jelenleg nem támogatott. Például PostgreSQL 9,5 PostgreSQL 9.6 rendszerről történő frissítés nem támogatott. Ha szeretné, a következő fő verzióra való frissítéshez, egy [memóriakép és visszaállítás](./howto-migrate-using-dump-and-restore.md) , hogy egy kiszolgálót, amely az új motor verziójával lett létrehozva.
 
 ## <a name="next-steps"></a>További lépések
 A különböző PostgreSQL-bővítmények a támogatásával kapcsolatos információkat lásd: [PostgreSQL-bővítmények](concepts-extensions.md).

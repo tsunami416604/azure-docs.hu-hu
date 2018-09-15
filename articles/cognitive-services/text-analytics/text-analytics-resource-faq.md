@@ -1,56 +1,57 @@
 ---
-title: A Szövegelemzések API - kognitív Azure-szolgáltatásokkal kapcsolatos gyakori kérdések |} Microsoft Docs
-description: Válaszok Microsoft kognitív szolgáltatások szöveg Analytics API kapcsolatos gyakori kérdéseket az Azure-on.
+title: A szövegelemzési API-val kapcsolatos gyakori kérdések
+titleSuffix: Azure Cognitive Services
+description: A Text Analytics API kapcsolatos gyakori kérdésekre adott válaszok.
 services: cognitive-services
 author: HeidiSteen
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: text-analytics
 ms.topic: conceptual
-ms.date: 3/07/2018
+ms.date: 09/12/2018
 ms.author: heidist
-ms.openlocfilehash: bf82899b4317f0f5ce0f6ca5096dccef7cddd931
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: aa1c5b048c3ef339d01a3a63fd1d565b888ffbbb
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35349399"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45603396"
 ---
-# <a name="frequently-asked-questions-faq-about-the-text-analytics-api"></a>A Szövegelemzések API kapcsolatos gyakori kérdések (GYIK)
+# <a name="frequently-asked-questions-faq-about-the-text-analytics-cognitive-service"></a>A Text Analytics Cognitive szolgáltatással kapcsolatos gyakori kérdések (GYIK)
 
- Válaszok a fogalmakat, kód és a szöveg Analytics API a Microsoft Azure kognitív Services kapcsolatos forgatókönyvek gyakran feltett kérdésekre.
+ Kapcsolatos fogalmakat, a kód és a forgatókönyvek a Microsoft Cognitive Services, Azure-ban a szövegelemzési API kapcsolatos gyakori kérdésekre adott válaszok.
 
-## <a name="can-text-analytics-identify-sarcasm"></a>Szövegelemzések azonosíthatja sarcasm?
+## <a name="can-text-analytics-identify-sarcasm"></a>Azonosíthatja a Text Analytics viccelődni?
 
-Elemzésre van kedve észlelési helyett negatív pozitív véleményeket.
+Elemzés van hangulatának észlelése helyett pozitív negatív véleményeket.
 
-Mindig a céggel kapcsolatos véleményeket elemzési hiba bizonyos fokú, de a modell akkor hasznos, ha nincs rejtett jelentéssel vagy alatta szöveggel a tartalomhoz. Irony, sarcasm, humor és hasonló módon nuanced tartalom kulturális környezet és a leképezés közvetíteni normák támaszkodnak. Ez a tartalom típus közül a legnagyobb kihívást jelentő elemzéséhez. A legnagyobb eltérés van a analyzer és a szubjektív értékelése a HR-részleg által megadott pontszámot között általában a tartalom nuanced jelentéssel.
+Mindig van bizonyos fokú hangulatelemzés a hiba, de a modell akkor a leghasznosabb, ha nem rejtett jelentése vagy a tartalom alatta szöveggel. Kulturális környezet és normák, szándék átadására alapulnak irony, viccelődni, humorral és hasonlóképpen komplikáltabb tartalmat. Ez a tartalom típus közül a legnagyobb kihívást jelentő elemzéséhez. A legnagyobb eltérést az elemző és a egy szubjektív felmérést egy ember által egy adott pontszám között általában jelentéssel komplikáltabb tartalom.
 
-## <a name="can-i-add-my-own-training-data-or-models"></a>Saját betanítási adatok, vagy a modellek adhat hozzá?
+## <a name="can-i-add-my-own-training-data-or-models"></a>Saját betanítási adatok és modelleket adhat hozzá?
 
-Nem, a modellek pretrained vannak. Az egyetlen elérhető műveleteinek feltöltött adatok pontozása vannak, kulcs kifejezés kinyerésére, és a nyelvi észlelése. Nem kezdeményezünk egyéni modellek. Ha szeretné-e létrehozni és egyéni machine learning modellek tárolására, vegye figyelembe a [gépi tanulási Microsoft R Server képességei](https://docs.microsoft.com/r-server/r/concept-what-is-the-microsoftml-package).
+Nem, a modellek imagenet vannak. Az egyetlen elérhető műveleteinek feltöltött adatok pontozásához vannak, kulcsszókeresést és nyelvfelismerést. Egyéni modellek nem mi üzemeltetjük. Ha szeretné-e létre és egyedi gépi tanulási modellek üzemeltetésére, fontolja meg a [gépi tanulási funkciókat a Microsoft R Server](https://docs.microsoft.com/r-server/r/concept-what-is-the-microsoftml-package).
 
-## <a name="can-i-request-additional-languages"></a>Kérjen további nyelveket is?
+## <a name="can-i-request-additional-languages"></a>Kérelem további nyelveken is?
 
-Véleményeket elemzést, a kulcs kifejezés kibontási érhetők el egy [válassza ki azon nyelvek számának](text-analytics-supported-languages.md). Természetes nyelvű feldolgozási bonyolult, és jelentős tesztelése, mielőtt az új funkció is megjelent igényel. Ezért azt ne előzetes bejelentése támogatása, így senki időt vesz igénybe egy függőséget az funkció, amely számos több időre van szüksége. 
+Hangulatelemzés és kulcsszókeresés érhetők el egy [válassza ki azon nyelvek számának](text-analytics-supported-languages.md). Természetes nyelvi feldolgozás összetett, és jelentős tesztelése, mielőtt új funkciókat is kell szabadítani igényel. Ezért azt ne előre bejelentése támogatása, így senki függőséget vesz fel funkciók, amelyek részletes több időre van szüksége. 
 
-Működéséhez a következő nyelveket sorrendjének meghatározásához szavazni bizonyos nyelveken [User Voice](https://cognitive.uservoice.com/forums/555922-text-analytics). 
+Annak érdekében, fontossági sorrendjének megállapításában működéséhez a következő nyelveket, szavazhat a bizonyos nyelveken [User Voice](https://cognitive.uservoice.com/forums/555922-text-analytics). 
 
-## <a name="why-does-key-phrase-extraction-return-some-words-but-not-others"></a>Miért nem kulcs kifejezés kibontási térjen vissza néhány szót, de nem mások?
+## <a name="why-does-key-phrase-extraction-return-some-words-but-not-others"></a>Miért nem adja a kulcsszókeresés egyes szavak, de nem más?
 
-Kulcs kifejezés kibontási megszünteti az nélkülözhető szavak és a különálló melléknevek. Melléknév-főnév kombinációit, például "látványosan nézetek" vagy "foggy időjárási" együtt is megjelennek.
+Kulcskifejezések kinyerése kiküszöböli nélkülözhető szavakat és a különálló melléknevek. Melléknév-főnév kombináció, például "látványosan nézetek" vagy "nincs teljesen tisztában időjárási" együtt a rendszer adja vissza.
 
-Általában kimeneti parancsokat és a mondat objektumok áll. Kimeneti fontosság, a legfontosabbak az első kifejezés szerepel. Fontos a szám, ahányszor egy adott fogalom említett, vagy az, hogy a szöveg egyéb elemeinek elem kapcsolathoz mérése történik.
+Általában a kimeneti főneveket és a mondat objektumához áll. Kimenet a legfontosabbak első része, fontossági sorrendben szerepel. Fontos, hogy hányszor említett, egy adott fogalom, vagy az adott elem más elemeket a szövegben való kapcsolat mérjük.
 
-## <a name="why-does-output-vary-given-identical-inputs"></a>Miért kimeneti változik, azonos bemeneti adatokat a megadott?
+## <a name="why-does-output-vary-given-identical-inputs"></a>Miért kimeneti változik, azonos bemenetei között megadott?
 
-Modellek és algoritmusok fejlesztések történik bejelentés, ha a módosítás fő, és csendes integrált a szolgáltatásba, ha a frissítés kisebb. Idővel előfordulhat, hogy ugyanazokat a bemeneti szöveg az eredményeket egy másik véleményeket pontszám vagy kulcs kifejezés kimeneti. Ez a normál és szándékos következtében a felhőben felügyelt machine learning erőforrások használatával.
+Modelleket és algoritmusokat fejlesztései már bejelentettünk, ha a módosítás nagyobb vagy csendben integrált, a szolgáltatásba, ha a frissítés akkor kisebb. Idővel előfordulhat, hogy ugyanazt a bemeneti szöveg az eredményt egy másik véleménypontszámot vagy kulcskifejezések kimeneti. Ez a felügyelt machine learning-erőforrások használatára a felhőben a normál és szándékos következménye.
 
 ## <a name="next-steps"></a>További lépések
 
-Egy hiányzó szolgáltatást és funkciót a kérdése van? A kért, vagy szavazott a [UserVoice webhelyén](https://cognitive.uservoice.com/forums/555922-text-analytics).
+Egy hiányzó szolgáltatás vagy funkció a kérdése van? Kérő vagy szavaz, fontolja meg a [UserVoice webhelyen](https://cognitive.uservoice.com/forums/555922-text-analytics).
 
 ## <a name="see-also"></a>Lásd még
 
- [StackOverflow: Szövegelemzések API](https://stackoverflow.com/questions/tagged/text-analytics-api)   
- [StackOverflow: Kognitív szolgáltatások](http://stackoverflow.com/questions/tagged/microsoft-cognitive)
+ [A StackOverflow: Text Analytics API](https://stackoverflow.com/questions/tagged/text-analytics-api)   
+ [StackOverflow: A Cognitive Services](http://stackoverflow.com/questions/tagged/microsoft-cognitive)

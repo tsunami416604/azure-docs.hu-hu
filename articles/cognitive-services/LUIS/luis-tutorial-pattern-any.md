@@ -1,42 +1,29 @@
 ---
-title: Az oktatóanyag pattern.any entitást használó javítása a LUIS-előrejelzés – Azure |} A Microsoft Docs
-titleSuffix: Cognitive Services
-description: Ebben az oktatóanyagban a pattern.any entitás használatával javíthatja a LUIS-leképezés és entitás előrejelzéseket.
+title: '5. oktatóanyag: Pattern.any entitás szabad formátumú szöveg'
+titleSuffix: Azure Cognitive Services
+description: Használja a pattern.any entitás adatok kinyerését utterances ahol megcímkézzen helyes formátumú, és ahol az adatok végéig lehet, hogy könnyen keverendő össze a az utterance (kifejezés), a fennmaradó szavakat.
 services: cognitive-services
 author: diberry
 manager: cjgronlund
 ms.service: cognitive-services
-ms.technology: luis
+ms.technology: language-understanding
 ms.topic: article
-ms.date: 08/02/2018
+ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 43f169ae11191c2e98c4538189bce781821de980
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: dce75710137f4d4160cb2f55f856066c7c93ac78
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44157854"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45628983"
 ---
-# <a name="tutorial-improve-app-with-patternany-entity"></a>Oktatóanyag: Az entitás pattern.any alkalmazás fejlesztéséhez
+# <a name="tutorial-5-extract-free-form-data"></a>Oktatóanyag: 5. Szabad formátumú adatokat nyerhet ki
 
-Ebben az oktatóanyagban használja a pattern.any entitás szándékot és egyéb entitások előrejelzési növelése érdekében.  
+Ebben az oktatóanyagban a pattern.any entitás használatával adatok kinyerése kimondott szöveg, amelyben megcímkézzen helyes formátumú, és ahol az adatok végéig lehet, hogy könnyen keverendő össze a az utterance (kifejezés), a fennmaradó szavakat. 
 
-> [!div class="checklist"]
-* Ismerje meg, mikor és hogyan pattern.any használata
-* Pattern.any használó minta létrehozása
-* Előrejelzési fejlesztései ellenőrzése
-
-[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
-
-## <a name="before-you-begin"></a>Előkészületek
-Ha nem rendelkezik az emberi erőforrások alkalmazásból a [szerepkörök mintát](luis-tutorial-pattern-roles.md) az oktatóanyagban [importálása](luis-how-to-start-new-app.md#import-new-app) a JSON-kódot egy új alkalmazást a [LUIS](luis-reference-regions.md#luis-website) webhely. Az alkalmazás importálása megtalálható a [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-roles-HumanResources.json) GitHub-adattárban.
-
-Ha meg szeretné tartani az eredeti Emberi erőforrások alkalmazást, klónozza a [Settings](luis-how-to-manage-versions.md#clone-a-version) (Beállítások) lapon a verziót, és adja neki a következő nevet: `patt-any`. A klónozás nagyszerű mód, hogy kísérletezhessen a különböző LUIS-funkciókkal anélkül, hogy az az eredeti verzióra hatással lenne. 
-
-## <a name="the-purpose-of-patternany"></a>Pattern.any célját
 A pattern.any entitás szabad formátumú adatok kereséséhez, ahol az entitás parancsmagtól, így nehéz határozza meg a végén a vállalat, a többi az utterance (kifejezés) teszi lehetővé. 
 
-Az emberi erőforrások alkalmazás segítségével az alkalmazottak céges képernyők. Űrlapok verzióban lettek hozzáadva a [reguláris kifejezés az oktatóanyagban](luis-quickstart-intents-regex-entity.md). A képernyő nevét az oktatóanyag a használt reguláris kifejezés kinyerése egy űrlap neve, amely volt helyes formátumú, például a képernyő nevét a félkövér az alábbi táblázatban utterance (kifejezés):
+Az emberi erőforrások alkalmazás segítségével az alkalmazottak céges képernyők. 
 
 |Kimondott szöveg|
 |--|
@@ -54,11 +41,38 @@ A rövid űrlapot nevű kimondott szöveg a következőhöz hasonló:
 |Ki lett létrehozva **"Adatáthelyezési kérhet a 2018-as vállalati 5-ös verzió újdonságai alkalmazott"**?|
 |**Az adatáthelyezési kérhet alkalmazott a vállalati 2018 5-ös verzió újdonságai** közzé van téve a francia?|
 
-A változó hosszúságú tartalmazza a kifejezéseket, előfordulhat, hogy összekeveri a LUIS kapcsolatos, ahol az entitás véget ér. A mintában egy Pattern.any entitást használó lehetővé teszi, LUIS megfelelően kinyeri az űrlap neve elején és végén, a képernyő nevét adja meg.
+A változó hosszúságú magában foglalja a szavak, előfordulhat, hogy összekeveri a LUIS kapcsolatos, ahol az entitás véget ér. A mintában egy Pattern.any entitást használó lehetővé teszi, LUIS megfelelően kinyeri az űrlap neve elején és végén, a képernyő nevét adja meg.
 
-**Minták lehetővé teszik, hogy kevesebb példa kimondott szöveg, ha az entitások nem észlelt, miközben a mintázat nem felel meg.**
+|A példasablonban utterance (kifejezés)|
+|--|
+|Ahol a {űrlapnév} [?]|
+|{Űrlapnév} [?] számára készített|
+|Francia [?] {űrlapnév} van közzétéve|
 
-## <a name="add-example-utterances-to-the-existing-intent-findform"></a>A meglévő beszédszándék FindForm példa beszédmódok hozzáadása 
+**Ebből az oktatóanyagból megtudhatja, hogyan lehet:**
+
+> [!div class="checklist"]
+> * Használja meglévő oktatóanyag alkalmazása
+> * Példa beszédmódok hozzáadása létező entitásba
+> * Pattern.any entitás létrehozása
+> * A minta létrehozása
+> * Betanítás
+> * Új minta
+
+[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+
+## <a name="use-existing-app"></a>Meglévő alkalmazás használata
+Folytassa az alkalmazás nevű az előző oktatóanyagban létrehozott **emberi**. 
+
+Ha az előző oktatóanyagban az emberi alkalmazás nem rendelkezik, használja az alábbi lépéseket:
+
+1.  Töltse le és mentse [alkalmazás JSON-fájlt](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-roles-HumanResources.json).
+
+2. A JSON importálja egy új alkalmazást.
+
+3. Az a **kezelés** részben, a a **verziók** lapon klónozza a verziót, és adja neki `patt-any`. A klónozás nagyszerű mód, hogy kísérletezhessen a különböző LUIS-funkciókkal anélkül, hogy az az eredeti verzióra hatással lenne. A verzió nevét az URL-útvonal részeként használja, mert a név nem tartalmazhat, amelyek nem érvényes URL-karaktereket.
+
+## <a name="add-example-utterances"></a>Példa beszédmódok hozzáadása 
 Távolítsa el az előre összeállított keyPhrase entitás, nehezen létrehozható és címke az Űrlapnév entitás esetén. 
 
 1. Válassza ki **összeállítása** a felső navigációs sávon, majd válassza ki **leképezések** bal oldali navigációs sávon.
@@ -128,6 +142,8 @@ A Pattern.any entitás változó hosszúságú entitásokat ad eredményül. Csa
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>További lépések
+
+Ebben az oktatóanyagban példa utterances hozzáadni egy meglévő szándékot, majd létrehozott egy új Pattern.any képernyő nevét. Az oktatóanyag majd mintaként a meglévő leképezést a létrehozott új példa utterances és entitás. Interaktív vizsgálati kimutatta, hogy a minta és annak szándékát voltak előre jelzett, mert az entitás található. 
 
 > [!div class="nextstepaction"]
 > [Ismerje meg, hogyan használja a szerepkörök mintával](luis-tutorial-pattern-roles.md)

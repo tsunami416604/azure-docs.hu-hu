@@ -15,17 +15,19 @@ ms.topic: conceptual
 ms.date: 08/06/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 6a375da3c97790bd6a7a6fa505de82b2fc298385
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 2ccef960378190f10e64318f91039871657a1a46
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42054902"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45603753"
 ---
 # <a name="search-queries-in-log-analytics"></a>A Log Analytics keresési lekérdezések
 
 > [!NOTE]
-> Hajtsa végre [Ismerkedés a Log Analytics lekérdezéseinek](get-started-queries.md) Ez az oktatóanyag elvégzése előtt.
+> Hajtsa végre [Ismerkedés a Log Analytics lekérdezéseinek](get-started-queries.md) ebben a leckében befejezése előtt.
+
+[!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
 Az Azure Log Analytics-lekérdezések egy Táblanév vagy a keresési parancs indítható. Ez az oktatóanyag bemutatja a search-alapú lekérdezések. Nincsenek előnye az, hogy az egyes módszerek.
 
@@ -34,7 +36,7 @@ Tábla-alapú lekérdezések első lépésként hatókörének beállítása a l
 ## <a name="search-a-term"></a>Kifejezés keresése
 A **keresési** parancs általában szolgál adott kifejezés keresése. A következő példában az összes tábla összes oszlopa tartalomvizsgálatnak kifejezés "error":
 
-```OQL
+```KQL
 search "error"
 | take 100
 ```
@@ -44,13 +46,13 @@ Míg az egyszerűen használható, szerint a fent egy hasonló szűkített leké
 ### <a name="table-scoping"></a>Tábla hatókörének beállítása
 A megadott tábla kifejezés keresése, adjon hozzá `in (table-name)` után csak a **keresési** operátor:
 
-```OQL
+```KQL
 search in (Event) "error"
 | take 100
 ```
 
 vagy több tábla:
-```OQL
+```KQL
 search in (Event, SecurityEvent) "error"
 | take 100
 ```
@@ -58,7 +60,7 @@ search in (Event, SecurityEvent) "error"
 ### <a name="table-and-column-scoping"></a>Tábla és oszlop hatókörének beállítása
 Alapértelmezés szerint **keresési** kiértékelik az adatkészlet összes oszlopa. Keresés csak egy adott oszlop, használja ezt a szintaxist:
 
-```OQL
+```KQL
 search in (Event) Source:"error"
 | take 100
 ```
@@ -69,7 +71,7 @@ search in (Event) Source:"error"
 ## <a name="case-sensitivity"></a>Kisbetű/nagybetű megkülönböztetése
 Alapértelmezés szerint kifejezés keresése a kis-és nagybetűket, így a "dns" keresése például a "DNS", "dns" vagy "Dns" eredményeket sikerült adnak. Ahhoz, hogy a keresés kis-és nagybetűket, használja a `kind` lehetőséget:
 
-```OQL
+```KQL
 search kind=case_sensitive in (Event) "DNS"
 | take 100
 ```
@@ -78,26 +80,26 @@ search kind=case_sensitive in (Event) "DNS"
 A **keresési** parancs támogatja a helyettesítő karakterek használata az elején, teljes vagy közel egy kifejezés.
 
 A keresési feltételek "win" kezdetű:
-```OQL
+```KQL
 search in (Event) "win*"
 | take 100
 ```
 
 A keresési feltételek, amelyek a ".com" végződik:
-```OQL
+```KQL
 search in (Event) "*.com"
 | take 100
 ```
 
 Keresés a feltételeket, amelyek tartalmazzák a "www":
-```OQL
+```KQL
 search in (Event) "*www*"
 | take 100
 ```
 
 A keresési kifejezéseket, amely "corp" karakterlánccal kezdődik és ér véget, a ".com", például a "corp.mydomain.com" "
 
-```OQL
+```KQL
 search in (Event) "corp*.com"
 | take 100
 ```
@@ -110,21 +112,21 @@ Is kaphat minden egy tábla csak egy helyettesítő karakter használatával: `s
 ## <a name="add-and--or-to-search-queries"></a>Adjon hozzá *és* / *vagy* keresés lekérdezése
 Használat **és** rekord, amely több használati kereséséhez:
 
-```OQL
+```KQL
 search in (Event) "error" and "register"
 | take 100
 ```
 
 Használat **vagy** beolvasni a rekordokat, amelyek tartalmazzák a feltételek legalább egyikének:
 
-```OQL
+```KQL
 search in (Event) "error" or "register"
 | take 100
 ```
 
 Ha több keresési feltétel, hogy kombinálhatja azokat zárójelek használatával ugyanabból a lekérdezés:
 
-```OQL
+```KQL
 search in (Event) "error" and ("register" or "marshal*")
 | take 100
 ```
@@ -134,7 +136,7 @@ Az ebben a példában az eredmények lenne, amely tartalmazza a kisbetűs "error
 ## <a name="pipe-search-queries"></a>Függőleges vonal keresési lekérdezések
 Hasonlóan a többi parancs **keresési** átadható olyan parancsoknak, a keresési eredmények is szűrhetők, rendezve, és összesítve. Például számú *esemény* "win" tartalmazó rekordok:
 
-```OQL
+```KQL
 search in (Event) "win"
 | count
 ```

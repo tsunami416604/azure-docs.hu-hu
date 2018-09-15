@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 09/06/2018
+ms.date: 09/13/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: ecf56f3172ebeab54757d7cbd164b92ca1470ce5
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: e494c2bc90f6db1f3a850fccff88efdf26f43012
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44051170"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45604237"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Az Azure Analysis Services horizontális felskálázás
 
@@ -30,6 +30,8 @@ Rendelkezik az adott lekérdezési készletben lekérdezési replikák számát�
 Horizontális felskálázás, ha új lekérdezési replikák növekményes hozzáadódik a lekérdezési készletből. Új lekérdezés replika erőforrások szerepelnie a lekérdezési készletből; akár öt percet is igénybe vehet készen állnak a kapcsolatok és lekérdezések fogadására. Ha minden új lekérdezési replikák fel, és fut, az új ügyfélkapcsolatokat is lekérdezési készlet összes erőforrást kell osztani. Meglévő ügyfélkapcsolatok nem változnak, jelenleg csatlakoznak-erőforrásból.  Skálázás az, ha bármely meglévő ügyfélkapcsolatok éppen eltávolítják a lekérdezési készlet lekérdezési készlet erőforrás megszűnik. Ezek újracsatlakoztatását a fennmaradó lekérdezési készlet erőforrás befejeződésekor a horizontális leskálázási művelet, amely akár öt percet is igénybe vehet.
 
 Modellek feldolgozásakor a feldolgozási műveletek után, a feldolgozó kiszolgáló és a lekérdezési replikák közötti szinkronizálás kell elvégezni. Feldolgozási műveletek automatizálása, esetén fontos, hogy konfigurálja a szinkronizálási művelet feldolgozási műveletek sikeres befejezése után. Szinkronizálás manuálisan hajtható végre a portálon, vagy a PowerShell vagy REST API használatával. 
+
+### <a name="separate-processing-from-query-pool"></a>A lekérdezési készletből külön feldolgozása
 
 Maximális teljesítményt az feldolgozási és lekérdezési műveleteket is beállíthatja a lekérdezési készletből a feldolgozó kiszolgáló külön. Során elválasztott, csak a lekérdezési készlet lekérdezési replikák meglévő és új kapcsolatok vannak hozzárendelve. Ha feldolgozási műveletek csak igénybe vehetnek egy rövid idő alatt, választhat, a feldolgozó kiszolgáló csak ennyi ideig tart feldolgozás és a szinkronizálási műveletek végrehajtására, majd adja hozzá újra üzembe a lekérdezési készletből, a lekérdezési készletből külön. 
 
@@ -53,7 +55,7 @@ Az a régió, a kiszolgáló konfigurálható lekérdezési replikák száma kor
 
 1. Kattintson a portál **kibővített**. A csúszka segítségével válassza ki a lekérdezés replika kiszolgálók számát. Replikák úgy dönt, az a szám, a meglévő kiszolgáló mellett.
 
-2. A **a lekérdezési készlettől a feldolgozó kiszolgáló elkülönítése**, jelölje be a feldolgozó kiszolgáló kizárása lekérdezés kiszolgálók igen.
+2. A **a lekérdezési készlettől a feldolgozó kiszolgáló elkülönítése**, jelölje be a feldolgozó kiszolgáló kizárása lekérdezés kiszolgálók igen. Az alapértelmezett kapcsolati karakterlánc használatával Ügyfélkapcsolatok (nélkül: rw) a lekérdezési készletből a replikákat a rendszer átirányítja. 
 
    ![Horizontális felskálázás csúszka](media/analysis-services-scale-out/aas-scale-out-slider.png)
 
@@ -99,6 +101,13 @@ Például a Power BI Desktop, Excel és egyéni alkalmazások használatát a v�
 Az ssms-ben, az SSDT és kapcsolati karakterláncokat a PowerShell, Azure-függvényalkalmazás és az AMO, használjon **felügyeleti kiszolgáló neve**. A felügyeleti kiszolgáló nevét tartalmazza, egy speciális `:rw` (olvasás / írás) minősítője. Az összes feldolgozási műveletei fordulhat elő, a felügyeleti kiszolgálón.
 
 ![Kiszolgáló neve](media/analysis-services-scale-out/aas-scale-out-name.png)
+
+## <a name="troubleshoot"></a>Hibaelhárítás
+
+**Probléma:** felhasználók hibaüzenet **-kiszolgáló nem található "\<a kiszolgáló nevét >" példány "ReadOnly" kapcsolati módban.**
+
+**Megoldás:** kiválasztásakor a **a lekérdezési készlettől a feldolgozó kiszolgáló elkülönítése** beállítás, az alapértelmezett kapcsolati karakterlánc használatával Ügyfélkapcsolatok (nélkül: rw) lekérdezési készlet replikákat a rendszer átirányítja. A lekérdezési készlet replikák vannak nem még online hogy a szinkronizálás még nem fejeződtek be, ha az átirányított ügyfélkapcsolatok sikertelen lehet. Sikertelen csatlakozás tiltása, hogy nem szeretné a feldolgozó kiszolgáló, a lekérdezési készlettől külön addig, amíg a horizontális felskálázást és a szinkronizálási művelet befejeződött. A memória és a QPU mérőszámok segítségével szinkronizálási állapotának figyelése.
+
 
 ## <a name="related-information"></a>Kapcsolódó információk
 

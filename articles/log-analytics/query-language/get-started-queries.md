@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 08/06/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 71d50a55d9c584b61a1412bb03a03ad99f1bb96c
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 548c94ce502da8c6a8d208daafb5b0fb624de1e1
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39634646"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45603937"
 ---
 # <a name="get-started-with-queries-in-log-analytics"></a>A Log Analytics lekérdezések használatának első lépései
 
@@ -28,6 +28,7 @@ ms.locfileid: "39634646"
 > [!NOTE]
 > Hajtsa végre [az Analytics-portál – első lépések](get-started-analytics-portal.md) Ez az oktatóanyag elvégzése előtt.
 
+[!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
 Ebben az oktatóanyagban elsajátíthatja az Azure Log Analytics-lekérdezések írása. Mely arról szól, hogyan való:
 
@@ -49,7 +50,7 @@ Lekérdezések megkezdheti a következők egyikével táblanév vagy a *keresés
 ### <a name="table-based-queries"></a>Tábla-alapú lekérdezések futtatása
 Az Azure Log Analytics rendezik az adatokat táblákban, minden egyes tevődik össze több oszlopot. A séma ablaktáblán az analitika portálon minden táblák és oszlopok jelennek meg. Határozza meg, hogy érdeklő, és ezután tekintse meg az adatok egy kis, tábla:
 
-```OQL
+```KQL
 SecurityEvent
 | take 10
 ```
@@ -65,7 +66,7 @@ Hogy ténylegesen futhat a lekérdezés hozzáadása nélkül is `| take 10` –
 ### <a name="search-queries"></a>Keresési lekérdezések
 Keresési lekérdezések a következők: kisebb strukturált, és általában több olyan bármely, az oszlopok egy adott értéket tartalmazó rekordok keresése:
 
-```OQL
+```KQL
 search in (SecurityEvent) "Cryptographic"
 | take 10
 ```
@@ -87,7 +88,7 @@ Amely túl sok eredményt, ha vissza, és időbe is telhet. A fenti lekérdezés
 
 Csak a legújabb 10 rekord lekérése a legjobb módszer az, hogy használja **felső**, amely a kiszolgálói oldalon az egész tábla rendezi, és a felső rekordjait adja majd vissza:
 
-```OQL
+```KQL
 SecurityEvent
 | top 10 by TimeGenerated
 ```
@@ -102,7 +103,7 @@ Szűrők, a nevük, aszinkronitást szűrje az adatokat egy adott feltétel. Ez 
 
 Szűrő hozzáadása egy lekérdezés, használja a **ahol** operátor egy vagy több feltételt követ. Például a következő lekérdezés visszaadja az csak *SecurityEvent* rekordokat, ahol _szint_ egyenlő _8_:
 
-```OQL
+```KQL
 SecurityEvent
 | where Level == 8
 ```
@@ -118,14 +119,14 @@ Szűrési feltételek írásakor, használhatja az alábbi kifejezések:
 
 Szűrés több feltétel alapján, hogy használhatja **és**:
 
-```OQL
+```KQL
 SecurityEvent
 | where Level == 8 and EventID == 4672
 ```
 
 vagy több kanálu **ahol** elemek egy egymás után:
 
-```OQL
+```KQL
 SecurityEvent
 | where Level == 8 
 | where EventID == 4672
@@ -145,7 +146,7 @@ A bal felső sarokban, ami azt jelzi, hogy csak az elmúlt 24 órában a rekordo
 ### <a name="time-filter-in-query"></a>A lekérdezés Időszűrő
 A saját időtartomány megadhatók a lekérdezést ad hozzá egy Időszűrő is. Célszerű elhelyezni az Időszűrő közvetlenül után a táblázat neve: 
 
-```OQL
+```KQL
 SecurityEvent
 | where TimeGenerated > ago(30m) 
 | where toint(Level) >= 10
@@ -157,7 +158,7 @@ Az a fenti Időszűrő `ago(30m)` "30 perccel ezelőtt" azt jelenti, hogy ez a l
 ## <a name="project-and-extend-select-and-compute-columns"></a>Projekt és bővítés: válassza ki, és a számítási oszlopok
 Használat **projekt** a keresési eredmények között szerepeljen az egyes oszlopok kiválasztásához:
 
-```OQL
+```KQL
 SecurityEvent 
 | top 10 by TimeGenerated 
 | project TimeGenerated, Computer, Activity
@@ -174,7 +175,7 @@ Is **projekt** oszlopok átnevezése, illetve újakat megadása. A következő p
 * Hozzon létre egy olyan új oszlop neve *EventCode*. A **substring()** függvény csak az első négy karaktert beszerezni a tevékenység mező szolgál.
 
 
-```OQL
+```KQL
 SecurityEvent
 | top 10 by TimeGenerated 
 | project Computer, TimeGenerated, EventDetails=Activity, EventCode=substring(Activity, 0, 4)
@@ -182,7 +183,7 @@ SecurityEvent
 
 **kiterjesztheti** összes eredeti oszlopot tartja az eredményhalmaz és újak határozza meg. Az alábbi lekérdezés használ **kiterjesztése** hozzáadása egy *konvertálásának* oszlopot, amely honosított TimeGenerated értéket tartalmaz.
 
-```OQL
+```KQL
 SecurityEvent
 | top 10 by TimeGenerated
 | extend localtime = TimeGenerated-8h
@@ -192,7 +193,7 @@ SecurityEvent
 Használat **összefoglalója** azonosíthatja a csoportok a rekordok, egy vagy több oszlop szerint, és összesítések vonatkoznak rájuk. A leggyakoribb használja az operációs rendszer **összefoglalója** van *száma*, amely eredmények számát adja vissza az egyes csoportokban.
 
 A következő lekérdezés az összes felülvizsgálati *Teljesítményoptimalizált* az elmúlt órában származó rekordokat csoportok szerint *ObjectName*, és az egyes csoportokban a rekordok száma: 
-```OQL
+```KQL
 Perf
 | where TimeGenerated > ago(1h)
 | summarize count() by ObjectName
@@ -200,7 +201,7 @@ Perf
 
 Néha logikus csoportjait több szempontok alapján határozzák meg. Ezeket az értékeket minden egyéni kombinációja külön csoportot határozza meg:
 
-```OQL
+```KQL
 Perf
 | where TimeGenerated > ago(1h)
 | summarize count() by ObjectName, CounterName
@@ -208,7 +209,7 @@ Perf
 
 Egy másik általában az egyes csoportok matematikai és statisztikai számításokhoz. Például az a következő kiszámítja az átlagos *AVG* az egyes számítógépekhez:
 
-```OQL
+```KQL
 Perf
 | where TimeGenerated > ago(1h)
 | summarize avg(CounterValue) by Computer
@@ -216,7 +217,7 @@ Perf
 
 Sajnos ez a lekérdezés eredményeit, mivel azt összekeverni különböző teljesítményszámlálók, összegnek nincs valós jelentése. Ahhoz, hogy ez jobban leírja, külön-külön az egyes kombinációja átlagos számítható ki *CounterName* és *számítógép*:
 
-```OQL
+```KQL
 Perf
 | where TimeGenerated > ago(1h)
 | summarize avg(CounterValue) by Computer, CounterName
@@ -227,7 +228,7 @@ Eredmények csoportosítása is alapulhat-idő típusú oszlop, vagy egy másik 
 
 Folyamatos értékek alapján csoportok létrehozásához, célszerű a tartomány megszüntetése használatával kezelhető egységekbe **bin**. A következő lekérdezés elemzi *Teljesítményoptimalizált* rekordokat, amelyek a szabad memória (*rendelkezésre álló memória*) egy adott számítógépen. Mindig kiszámítja az átlagos érték minden egyes időtartam Ha 1 óra, az elmúlt 2 napban:
 
-```OQL
+```KQL
 Perf 
 | where TimeGenerated > ago(2d)
 | where Computer == "ContosoAzADDS2" 

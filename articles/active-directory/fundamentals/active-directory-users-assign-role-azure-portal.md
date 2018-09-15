@@ -1,44 +1,68 @@
 ---
-title: Felhasználó hozzárendelése rendszergazdai szerepkörökhöz az Azure Active Directory-ban | Microsoft Docs
-description: Felhasználói rendszergazda-információk módosítása az Azure Active Directoryban
+title: Címtárbeli szerepkörök hozzárendelése az Azure Active Directory felhasználók |} A Microsoft Docs
+description: Címtárbeli szerepkörök hozzárendelése az Azure Active Directoryval a felhasználók hogyan.
 services: active-directory
-documentationcenter: ''
 author: eross-msft
 manager: mtillman
-editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.component: fundamentals
-ms.topic: quickstart
-ms.date: 06/25/2018
+ms.topic: conceptual
+ms.date: 09/06/2018
 ms.author: lizross
 ms.reviewer: jeffsta
-ms.openlocfilehash: ec30f1507bfa45c29709a7f4b7dc1e91aa25ca57
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
-ms.translationtype: HT
+ms.openlocfilehash: 02eb55509a3708517dff4c14640826a3a21f1df0
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37440748"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45603719"
 ---
-# <a name="assign-a-user-to-administrator-roles-in-azure-active-directory"></a>Felhasználó hozzárendelése rendszergazdai szerepkörökhöz az Azure Active Directory-ban
-Ez a cikk azt ismerteti, hogyan rendelhető hozzá egy rendszergazdai szerepkör egy felhasználóhoz az Azure Active Directoryban (Azure AD). További információ új vállalati felhasználók hozzáadásáról: [Új felhasználók felvétele az Azure Active Directoryba](../add-users-azure-active-directory.md). A hozzáadott felhasználók alapértelmezés szerint nem rendelkeznek rendszergazdai engedélyekkel, de bármikor hozzájuk rendelhet szerepköröket.
+# <a name="how-to-assign-roles-and-administrators-to-users-with-azure-active-directory"></a>Hogyan: szerepkörök és a Rendszergazdák hozzárendelése a felhasználókhoz az Azure Active Directoryval
+Ha egy felhasználó a szervezet Azure Active Directory (Azure AD) erőforrásainak kezelésére szóló engedélyre van szüksége, hozzá kell rendelnie a felhasználó egy megfelelő szerepkört az Azure AD-ben a felhasználó beleegyezését kéri az hajtsa végre a műveleteket alapján.
 
-## <a name="assign-a-role-to-a-user"></a>Szerepkör hozzárendelése felhasználóhoz
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com) egy olyan fiókkal, amely a címtár globális rendszergazdája vagy kiemelt szerepkörű rendszergazdája.
+Az elérhető szerepkörök kapcsolatos további információkért lásd: [rendszergazdai szerepkörök hozzárendelése az Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md). Felhasználók hozzáadásával kapcsolatos további információkért lásd: [új felhasználók hozzáadása az Azure Active Directory](add-users-azure-active-directory.md).
 
-2. Válassza az **Azure Active Directory** lehetőséget, a **Felhasználók** elemet, majd válasszon ki egy felhasználót.
+## <a name="assign-roles"></a>Szerepkörök hozzárendelése
+Egy gyakori módja az Azure AD-szerepköröket hozzárendelni egy felhasználóhoz a **címtárbeli szerepkör** oldal a felhasználó számára.
 
-    ![Felhasználókezelés megnyitása](./media/active-directory-users-assign-role-azure-portal/create-users-user-management.png)
+Privileged Identity Management (PIM) használatával szerepköröket is rendelhet. További részletes információ a PIM használatát tervezi, tekintse meg a [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management).
 
-3. A kijelölt felhasználónál válassza a **Címtárbeli szerepkör**, majd a **Szerepkör hozzáadása** elemet, és válassza ki a megfelelő rendszergazdai szerepköröket (például **Feltételes hozzáférésű rendszergazda**) a **Címtárbeli szerepkörök** listából. A rendszergazdai szerepkörökről további információt a [Rendszergazdai szerepkörök hozzárendelése az Azure AD-ben](../users-groups-roles/directory-assign-admin-roles.md) című témakörben talál. 
+### <a name="to-assign-a-role-to-a-user"></a>Szerepkör hozzárendelése felhasználóhoz
+1. Jelentkezzen be a [az Azure portal](https://portal.azure.com/) a címtár egy globális rendszergazdai fiók használatával.
 
-    ![Felhasználó hozzárendelése egy szerepkörhöz](./media/active-directory-users-assign-role-azure-portal/create-users-assign-role.png)
+2. Válassza ki **Azure Active Directory**válassza **felhasználók**, és keressen rá, és válassza ki a felhasználót a szerepkör-hozzárendelés beolvasása. Ha például _Alain Charon_.
 
-1. A mentéshez válassza a **Kiválasztás** lehetőséget.
+3. Az a **Alain Charon - profil** lapon jelölje be **címtárbeli szerepkör**.
+
+    A **Alain Charon - címtárszerepkör** lap jelenik meg.
+
+4. Válassza ki **szerepkör hozzáadása**, válassza ki a szerepkört Alain hozzárendelése (például _alkalmazás-rendszergazda_), majd **kiválasztása**.
+
+    ![Címtár szerepkörök lapot, amely a kijelölt szerepkör](media/active-directory-users-assign-role-azure-portal/directory-role-select-role.png)
+
+    Az alkalmazás-rendszergazda szerepkör van rendelve a Alain Charon, és megjelenik a **Alain Charon - címtárszerepkör** lapot.
+
+## <a name="remove-a-role-assignment"></a>Szerepkör-hozzárendelés eltávolítása
+Ha a szerepkör-hozzárendelés eltávolítása egy felhasználótól van szüksége, műveletek végezhetők, amelyek a a **Alain Charon - címtárbeli szerepkör** lap.
+
+### <a name="to-remove-a-role-assignment-from-a-user"></a>A felhasználó szerepkör-hozzárendelés eltávolítása
+
+1. Válassza ki **Azure Active Directory**válassza **felhasználók**, és keressen rá, és válassza ki a felhasználót az eltávolított szerepkör-hozzárendelés beolvasása. Ha például _Alain Charon_.
+
+2. Válassza ki **címtárbeli szerepkör**válassza **alkalmazás-rendszergazda**, majd válassza ki **Remove szerepkör**.
+
+    ![Szerepkörök könyvtárlap, amelyen a kijelölt szerepkört és az Eltávolítás lehetőség](media/active-directory-users-assign-role-azure-portal/directory-role-remove-role.png)
+
+    Az alkalmazás-rendszergazda szerepkör Alain Charon törlődik, és már nem jelenik meg a **Alain Charon - címtárszerepkör** lapot.
 
 ## <a name="next-steps"></a>További lépések
-* [Rövid útmutató: Felhasználók hozzáadása vagy törlése az Azure Active Directoryban](add-users-azure-active-directory.md)
-* [Felhasználói profilok kezelése](active-directory-users-profile-azure-portal.md)
-* [Vendégfelhasználók hozzáadása másik címtárból](../b2b/what-is-b2b.md) 
-* [Felhasználó hozzárendelése egy szerepkörhöz az Azure AD-ben](active-directory-users-assign-role-azure-portal.md)
-* [Törölt felhasználó visszaállítása](active-directory-users-restore.md)
+- [Adja hozzá, vagy a felhasználók törlése](add-users-azure-active-directory.md)
+
+- [Profil adatok hozzáadása vagy módosítása](active-directory-users-profile-azure-portal.md)
+
+- [Vendégfelhasználók hozzáadása másik címtárból](../b2b/what-is-b2b.md)
+
+Vagy más felhasználói felügyeleti feladatokat, például a Microsoftra hozzárendelése, házirendekkel és megosztása, felhasználói fiókok is végezhet. Egyéb elérhető műveletekkel kapcsolatos további információkért lásd: [Azure Active Directory felhasználói felügyeleti dokumentáció](../users-groups-roles/index.yml).
+
+

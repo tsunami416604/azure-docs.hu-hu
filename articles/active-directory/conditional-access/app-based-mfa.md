@@ -2,7 +2,7 @@
 title: Rövid útmutató – megkövetelése a többtényezős hitelesítés (MFA) az Azure Active Directory feltételes hozzáférés konkrét alkalmazások esetén |} A Microsoft Docs
 description: Ebben a rövid útmutatóban megismerheti, hogyan köthet a hitelesítési követelményeknek, az Azure Active Directory (Azure AD) feltételes hozzáférés használatával elért felhőalapú alkalmazás típusát.
 services: active-directory
-keywords: feltételes hozzáférés az alkalmazásokhoz, az Azure AD feltételes hozzáférés, biztonságos hozzáférés a vállalati erőforrásokhoz, a feltételes hozzáférési szabályzatok
+keywords: feltételes hozzáférés az alkalmazásokhoz, feltételes hozzáférés az Azure AD-vel, biztonságos hozzáférés a vállalati erőforrásokhoz, feltételes hozzáférési szabályzatok
 documentationcenter: ''
 author: MarkusVi
 manager: mtillman
@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 06/13/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: eee4d73042232aabd995a749b7848306be0ef655
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: f27ced5c67c5124d0792c5ce3884c88473fba056
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39628256"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45604195"
 ---
 # <a name="quickstart-require-mfa-for-specific-apps-with-azure-active-directory-conditional-access"></a>Gyors útmutató: Többtényezős hitelesítés az Azure Active Directory feltételes hozzáférés konkrét alkalmazások esetén 
 
@@ -42,7 +42,7 @@ Ebben a rövid útmutatóban a forgatókönyv végrehajtásához szükséges:
 
 - **Hozzáférés az Azure AD Premium Edition** – Azure AD feltételes hozzáférés egy Azure AD Premium-funkció. 
 
-- **Tesztfiók nevű Isabella Simonsen** – Ha nem tudja, hogyan hozzon létre egy olyan fiókot, lásd: [adja hozzá a felhőalapú felhasználók](../fundamentals/add-users-azure-active-directory.md#add-cloud-based-users).
+- **Tesztfiók nevű Isabella Simonsen** – Ha nem tudja, hogyan hozzon létre egy olyan fiókot, lásd: [adja hozzá a felhőalapú felhasználók](../fundamentals/add-users-azure-active-directory.md#add-a-new-user).
 
 
 ## <a name="test-your-sign-in"></a>A bejelentkezés tesztelése
@@ -209,7 +209,7 @@ Ha tesztelni szeretné a szabályzatot, próbálja meg, jelentkezzen be a [az Az
 
 Ha már nincs rá szükség, törölje a tesztfelhasználó számára, és a feltételes hozzáférési szabályzatot:
 
-- Ha nem ismeri az Azure AD-felhasználó törlése, lásd: [felhasználók törlése az Azure ad-ből](../fundamentals/add-users-azure-active-directory.md#delete-users-from-azure-ad).
+- Ha nem ismeri az Azure AD-felhasználó törlése, lásd: [felhasználók törlése az Azure ad-ből](../fundamentals/add-users-azure-active-directory.md#delete-a-user).
 
 - Törli a szabályzatot, válassza ki a szabályzatot, és kattintson **törlése** a gyorselérési eszköztáron.
 

@@ -1,6 +1,6 @@
 ---
-title: Adatok másolása az Azure Data Factory használatával QuickBooks |} Microsoft Docs
-description: 'Útmutató: adatok másolása QuickBooks támogatott fogadó adattárolókhoz egy Azure Data Factory-folyamat a másolási tevékenység használatával.'
+title: Adatok másolása az Azure Data Factory (előzetes verzió) használatával QuickBooks |} A Microsoft Docs
+description: Megtudhatja, hogyan másolhat adatokat a QuickBooks támogatott fogadó adattárakba az Azure Data Factory-folyamatot egy másolási tevékenység használatával.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,48 +13,48 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: jingwang
-ms.openlocfilehash: 4e73b444335fe0e96ff453570ee0092f38ab9a4d
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 763e992f10bfad3550a35c1f9cc125b5865cc82f
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37053799"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45633129"
 ---
 # <a name="copy-data-from-quickbooks-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával QuickBooks
 
-Ez a cikk ismerteti, hogyan használható a másolási tevékenység során az Azure Data Factory adatokat másolni a QuickBooks. Buildekről nyújtanak a [másolása tevékenység áttekintése](copy-activity-overview.md) cikket, amely megadja a másolási tevékenység általános áttekintést.
+Ez a cikk az Azure Data Factory a másolási tevékenység használatával adatokat másol a QuickBooks módját ismerteti. Épül a [másolási tevékenység áttekintése](copy-activity-overview.md) cikket, amely megadja a másolási tevékenység általános áttekintést.
 
 > [!IMPORTANT]
-> Ez az összekötő jelenleg előzetes verzió. Próbálja ki, és küldjön visszajelzést. Ha függőséget szeretne felvenni a megoldásában található előzetes verziójú összekötőkre, lépjen kapcsolatba az [Azure-támogatással](https://azure.microsoft.com/support/).
+> Ez az összekötő jelenleg előzetes verzióban érhető el. Próbálja ki, és küldjön visszajelzést. Ha függőséget szeretne felvenni a megoldásában található előzetes verziójú összekötőkre, lépjen kapcsolatba az [Azure-támogatással](https://azure.microsoft.com/support/).
 
-## <a name="supported-capabilities"></a>Támogatott képességei
+## <a name="supported-capabilities"></a>Támogatott képességek
 
-Adatok bármely támogatott fogadó adattárolóhoz QuickBooks másolhatja. Adattároló források/mosdók, a másolási tevékenység által támogatott listájáért lásd: a [adattárolókhoz támogatott](copy-activity-overview.md#supported-data-stores-and-formats) tábla.
+Másolhat adatokat QuickBooks bármely támogatott fogadó adattárba. A másolási tevékenység által, források és fogadóként támogatott adattárak listáját lásd: a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) tábla.
 
-Az Azure Data Factory kapcsolódásának engedélyezése beépített illesztőprogramot tartalmaz, ezért nem szükséges manuálisan kell telepítenie minden olyan illesztőprogram ezt az összekötőt használja.
+Az Azure Data Factory kapcsolat beépített illesztőprogramot tartalmaz, ezért nem kell manuálisan telepítenie az összes illesztőprogram ezzel az összekötővel.
 
-Jelenleg ez az összekötő csak az 1.0a, ami azt jelenti, hogy szüksége van egy fejlesztői fiókjába az alkalmazásokkal 2017. július 17. előtt létrehozott támogatják.
+Ez az összekötő jelenleg csak 1.0a, ami azt jelenti, szüksége lesz egy fejlesztői fiók a 2017. július 17. előtt létrehozott alkalmazások támogatják.
 
 ## <a name="getting-started"></a>Első lépések
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-A következő szakaszok részletesen bemutatják való QuickBooks összekötő adat-előállító tartozó entitások meghatározásához használt tulajdonságokat.
+A következő szakaszok segítségével határozhatók meg a Data Factory-entitások adott QuickBooks összekötő-tulajdonságokkal kapcsolatos részletekért.
 
-## <a name="linked-service-properties"></a>A kapcsolódószolgáltatás-tulajdonságok
+## <a name="linked-service-properties"></a>Társított szolgáltatás tulajdonságai
 
-A következő tulajdonságok QuickBooks kapcsolódó szolgáltatás támogatottak:
+QuickBooks társított szolgáltatás a következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonságot kell beállítani: **QuickBooks** | Igen |
-| endpoint | A végpont a QuickBooks kiszolgáló. (Ez azt jelenti, hogy quickbooks.api.intuit.com)  | Igen |
+| type | A type tulajdonság értékre kell állítani: **QuickBooks** | Igen |
+| endpoint | A végpont a QuickBooks kiszolgáló. (azaz quickbooks.api.intuit.com)  | Igen |
 | companyId | A QuickBooks vállalati engedélyezésére vállalat azonosítója.  | Igen |
-| consumerKey | A fogyasztó kulcs OAuth 1.0 hitelesítéshez. | Igen |
-| consumerSecret | A felhasználói titok OAuth 1.0-hitelesítéshez. Ez a mező megjelölése a SecureString tárolja biztonságos helyen, a Data factoryban vagy [hivatkozik az Azure Key Vault tárolt titkos kulcs](store-credentials-in-key-vault.md). | Igen |
-| accessToken | Az OAuth 1.0 hitelesítési jogkivonat. Ez a mező megjelölése a SecureString tárolja biztonságos helyen, a Data factoryban vagy [hivatkozik az Azure Key Vault tárolt titkos kulcs](store-credentials-in-key-vault.md). | Igen |
-| accessTokenSecret | A hozzáférési jogkivonat titkos kulcs OAuth 1.0-hitelesítéshez. Ez a mező megjelölése a SecureString tárolja biztonságos helyen, a Data factoryban vagy [hivatkozik az Azure Key Vault tárolt titkos kulcs](store-credentials-in-key-vault.md). | Igen |
-| useEncryptedEndpoints | Meghatározza, hogy a data source végpontok titkosítása HTTPS használatával. Az alapértelmezett érték: igaz.  | Nem |
+| consumerKey | Az OAuth 1.0-s hitelesítési fogyasztói kulcs. | Igen |
+| consumerSecret | A fogyasztói titkos OAuth 1.0-hitelesítéshez. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen |
+| hozzáférési tokent | Az OAuth 1.0-s hitelesítési jogkivonat. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen |
+| accessTokenSecret | A hozzáférési jogkivonat titkos kulcs OAuth 1.0-hitelesítéshez. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen |
+| useEncryptedEndpoints | Megadja, hogy a data source végpontok HTTPS segítségével titkosítja. Az alapértelmezett érték: igaz.  | Nem |
 
 **Példa**
 
@@ -87,9 +87,9 @@ A következő tulajdonságok QuickBooks kapcsolódó szolgáltatás támogatotta
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 
-Szakaszok és meghatározása adatkészletek esetében elérhető tulajdonságok teljes listáját lásd: a [adatkészletek](concepts-datasets-linked-services.md) cikk. Ez a szakasz a QuickBooks dataset által támogatott tulajdonságokról listáját tartalmazza.
+Szakaszok és adatkészletek definiálását tulajdonságainak teljes listáját lásd: a [adatkészletek](concepts-datasets-linked-services.md) cikk. Ez a szakasz a QuickBooks adatkészlet által támogatott tulajdonságok listáját tartalmazza.
 
-Adatok másolása QuickBooks, állítsa be a adatkészlet type tulajdonsága **QuickBooksObject**. Nincs ilyen típusú dataset további típusra vonatkozó tulajdonság.
+Adatokat másol a QuickBooks, állítsa be a type tulajdonság, az adatkészlet **QuickBooksObject**. Egy adatkészlet ilyen további típus-specifikus tulajdonság nincs.
 
 **Példa**
 
@@ -108,16 +108,16 @@ Adatok másolása QuickBooks, állítsa be a adatkészlet type tulajdonsága **Q
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
 
-Szakaszok és a rendelkezésre álló tevékenységek meghatározó tulajdonságok teljes listáját lásd: a [folyamatok](concepts-pipelines-activities.md) cikk. Ez a szakasz a QuickBooks forrás által támogatott tulajdonságok listáját tartalmazza.
+Szakaszok és tulajdonságok definiálását tevékenységek teljes listáját lásd: a [folyamatok](concepts-pipelines-activities.md) cikk. Ez a szakasz a QuickBooks forrás által támogatott tulajdonságok listáját tartalmazza.
 
-### <a name="quickbookssource-as-source"></a>QuickBooksSource forrásaként
+### <a name="quickbookssource-as-source"></a>QuickBooksSource forrásként
 
-Adatok másolása QuickBooks, állítsa be a forrás típusa a másolási tevékenység **QuickBooksSource**. A következő tulajdonságok támogatottak a másolási tevékenység **forrás** szakasz:
+Adatok másolása a QuickBooks, állítsa be a forrás típusaként a másolási tevékenység **QuickBooksSource**. A következő tulajdonságok támogatottak a másolási tevékenység **forrás** szakaszban:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonságot a másolási tevékenység forrás értékre kell állítani: **QuickBooksSource** | Igen |
-| lekérdezés | Az egyéni SQL-lekérdezés segítségével adatokat olvasni. Például: `"SELECT * FROM "Bill" WHERE Id = '123'"`. | Igen |
+| type | A másolási tevékenység forrása type tulajdonsága értékre kell állítani: **QuickBooksSource** | Igen |
+| lekérdezés | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM "Bill" WHERE Id = '123'"`. | Igen |
 
 **Példa**
 
@@ -152,4 +152,4 @@ Adatok másolása QuickBooks, állítsa be a forrás típusa a másolási tevék
 ```
 
 ## <a name="next-steps"></a>További lépések
-Támogatott források és mosdók által a másolási tevékenység során az Azure Data Factory adattárolókhoz listájáért lásd: [adattárolókhoz támogatott](copy-activity-overview.md#supported-data-stores-and-formats).
+A másolási tevékenység az Azure Data Factory által forrásként és fogadóként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).

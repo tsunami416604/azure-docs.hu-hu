@@ -11,21 +11,21 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/20/2018
+ms.date: 09/13/2018
 ms.author: magoedte; bwren
 ms.component: na
-ms.openlocfilehash: 386aad94461fa3f2ceafb7564342797eefa2f086
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 996502ffe5a31fcfa1b73dab9a041c336c4ea98f
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42058141"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45602631"
 ---
 # <a name="viewing-and-analyzing-data-in-log-analytics"></a>A Log Analytics adatok megtekintésére és elemzésére
 Két lehetőség van a Log analytics szolgáltatásban tárolt adatok elemzése és az alkalmi elemzési lekérdezések létrehozásához az Azure Portalon érhető el. A lekérdezések létrehozásakor használja a fenti portálokhoz más funkciók, például a riasztások és az irányítópultok is használható.
 
-## <a name="log-analytics-page-preview"></a>Log Analytics-lap (előzetes verzió)
-Nyissa meg a Log Analytics lapot **naplók (előzetes verzió)** a Log Analytics menüben. Ez az új felülettel jelentkezik a naplóadatok használatának és lekérdezések létrehozásáról. Ismerkedjen meg ezen a portálon, és vizsgálja meg a szolgáltatásokat [Ismerkedés a Log Analytics-oldal az Azure Portalon](query-language/get-started-analytics-portal.md).
+## <a name="log-analytics-page"></a>Log Analytics-lap
+Nyissa meg a Log Analytics lapot **naplók** a Log Analytics menüben. Ez az új felülettel jelentkezik a naplóadatok használatának és lekérdezések létrehozásáról. Ismerkedjen meg ezen a portálon, és vizsgálja meg a szolgáltatásokat [Ismerkedés a Log Analytics-oldal az Azure Portalon](query-language/get-started-analytics-portal.md).
 
 A Log Analytics lapot a következő fejlesztéseket kínálja keresztül a [naplóbeli keresés](#log-search) tapasztalható.
 
@@ -48,15 +48,15 @@ A Log Analytics lapot a következő fejlesztéseket kínálja keresztül a [napl
 ### <a name="firewall-requirements"></a>Tűzfalra vonatkozó követelmények
 A böngészőben a Log Analytics lapot, és a bővített analitika portál eléréséhez a következő címek hozzáférésre van szüksége.  Ha a böngésző tűzfalon keresztül fér hozzá az Azure Portalon, engedélyeznie kell ezeket a címeket a hozzáférést.
 
-| URI-t | IP | Portok |
+| URI | IP | Portok |
 |:---|:---|:---|
 | portal.loganalytics.io | Dinamikus | 80,443 |
 | api.loganalytics.io    | Dinamikus | 80,443 |
 | docs.loganalytics.io   | Dinamikus | 80,443 |
 
 
-## <a name="log-search"></a>Naplókeresés
-Nyissa meg a keresési oldalon a **naplók** a Log Analytics menüben, vagy a **Log Analytics** az Azure figyelő menü. Ez a alapvető lekérdezések segítségével naplóadatokat elemzésére alkalmas. Szerkesztési lekérdezések több funkciókat biztosít a lekérdezési nyelv a teljes ismerete nélkül.  Megtekintheti ezeket a funkciókat az összegzését [naplókeresések létrehozása az Azure Log Analytics naplóbeli keresés](log-analytics-log-search-log-search-portal.md). 
+## <a name="log-search-classic"></a>Naplókeresés (klasszikus)
+Nyissa meg a keresési oldalon a **naplók (klasszikus)** a Log Analytics menüben, vagy a **Log Analytics** az Azure figyelő menü. Ez a alapvető lekérdezések segítségével naplóadatokat elemzésére alkalmas. Szerkesztési lekérdezések több funkciókat biztosít a lekérdezési nyelv a teljes ismerete nélkül.  Megtekintheti ezeket a funkciókat az összegzését [naplókeresések létrehozása az Azure Log Analytics naplóbeli keresés](log-analytics-log-search-log-search-portal.md). 
 
 
 ![Log Search lap](media/log-analytics-log-search-portals/log-search-portal.png)

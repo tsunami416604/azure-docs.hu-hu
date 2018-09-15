@@ -1,6 +1,6 @@
 ---
-title: Entitások hozzáadása a LUIS-alkalmazások |} A Microsoft Docs
-titleSuffix: Azure
+title: Entitások hozzáadása a LUIS-alkalmazások
+titleSuffix: Azure Cognitive Services
 description: A Language Understanding (LUIS) alkalmazások hozzáadása a entitások (a tartomány az alkalmazás legfontosabb adatok).
 services: cognitive-services
 author: diberry
@@ -8,14 +8,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 05/07/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: e97f9a5391799849983bd98db5400e0a842627b7
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 3fe76afca2eb8b14641589e4e29fc20b5d3de7fa
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224126"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45632285"
 ---
 # <a name="manage-entities"></a>Entitások kezelése
 Keresse meg az alkalmazás [leképezések](luis-concept-intent.md), kell [példa utterances címke](luis-concept-utterance.md) a [entitások](luis-concept-entity-types.md). Entitások a fontos darabokat egy parancs vagy a kérdés, és lehet, hogy az ügyfélalkalmazás a feladatok végrehajtásához nélkülözhetetlen. 
@@ -31,9 +31,7 @@ Előre összeállított entitások vannak meghatározva a [felismerő szöveges]
  
 2. Az a **entitások** lapon jelölje be **előre összeállított entitások kezelése**.
 
-    ![Képernyőkép az entitások oldalon előre összeállított entitások hozzáadása](./media/add-entities/manage-prebuilt-entities-button.png)
-
-3. A **hozzáadása, vagy távolítsa el az előre összeállított entitások** párbeszédpanelen válassza ki a **szám** és **datetimeV2** előre összeállított entitások. Válassza ki **kész**.
+3. A **hozzáadása, vagy távolítsa el az előre összeállított entitások** párbeszédpanelen válassza ki a **szám** és **datetimeV2** előre összeállított entitások. Ezután válassza a **Done** (Kész) elemet.
 
     ![Előre összeállított entitások párbeszédpanel képernyőképe az hozzáadása](./media/add-entities/list-of-prebuilt-entities.png)
 
@@ -43,8 +41,6 @@ Előre összeállított entitások vannak meghatározva a [felismerő szöveges]
 Egy egyszerű entitás egy általános entitás, amely leírja egy egyetlen fogalom. 
 
 1. Az alkalmazásba a a **összeállítása** szakaszt, és kattintson a **entitások** a bal oldali panelen, és válassza ki a **új entitás létrehozása**.
-
-    ![Képernyőkép az entitások lapja, hozzon létre új entitás gomb](./media/add-entities/create-new-entity-button.png)
 
 2. Az előugró párbeszédpanelen írja be a `Airline` a a **entitás neve** jelölje ki **egyszerű** származó a **entitástípus** listában, és válassza ki **kész**.
 
@@ -57,7 +53,7 @@ A reguláris kifejezésnek entitás is, az utterance (kifejezés), adja meg a re
 
 1. Jelölje be az alkalmazásba, **entitások** a bal oldali navigációs, és válassza ki a **új entitás létrehozása**.
 
-2. Az előugró párbeszédpanelen, írja be `AirFrance Flight` a a **entitásnév** jelölje ki **reguláris kifejezés** a a **entitástípus** listában, adja meg a reguláris kifejezés `AFR[0-9]{3,4}`, majd válassza ki **kész**. 
+2. A megjelenő párbeszédpanelen adja meg `AirFrance Flight` a a **entitás neve** jelölje ki **reguláris kifejezés** származó a **entitástípus** listában, adja meg a reguláris kifejezés `AFR[0-9]{3,4}`, majd válassza ki **kész**. 
 
     A AirFrance Flight reguláris kifejezést vár három karaktert szó szerint `AFR`, majd a 3 vagy 4 számjegy. A számjegyek tetszőleges szám 0 és 9 közötti lehet. Reguláris kifejezésnek megfelelő AirFrance repülési számok például: "AFR101", "ARF1302" és "AFR5006". Lásd: [Adatkinyerés](luis-concept-data-extraction.md) tudhat meg többet az entitás kinyerését a végpont JSON lekérdezési válasz.
 

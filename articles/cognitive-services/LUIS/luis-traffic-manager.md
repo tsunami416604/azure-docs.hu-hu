@@ -1,20 +1,21 @@
 ---
-title: A Language Understanding (LUIS) – az Azure endpoint kvóta növeléséhez használja a Microsoft Azure Traffic Manager |} A Microsoft Docs
-description: Végpont kvóta helyezkednek el a Language Understanding (LUIS) végpont kvóta növeléséhez több előfizetés a Microsoft Azure Traffic Manager használatával
+title: A Language Understanding (LUIS) végpont kvóta növeléséhez a Microsoft Azure Traffic Manager használatával
+titleSuffix: Azure Cognitive Services
+description: Language Understanding (LUIS) lehetővé teszi, hogy a végpont kérelmi kvótát egy kulcs kvóta túl kínál. További kulcsokat hoz létre a LUIS, és hozzáadni azokat a LUIS-alkalmazás az ehhez a **közzététel** lapját a **erőforrások és a kulcsok** szakaszban.
 author: diberry
 manager: cjgronlund
 services: cognitive-services
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 06/07/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 909c32452db216f79633b94c31f39350b7a6ee20
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: 69e9ad14dd2efaecd587140f6d49550e6daf5e5c
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39248628"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45634951"
 ---
 # <a name="use-microsoft-azure-traffic-manager-to-manage-endpoint-quota-across-keys"></a>A Microsoft Azure Traffic Manager használatával kezelheti a végpont kvóta kulcsok
 Language Understanding (LUIS) lehetővé teszi, hogy a végpont kérelmi kvótát egy kulcs kvóta túl kínál. További kulcsokat hoz létre a LUIS, és hozzáadni azokat a LUIS-alkalmazás az ehhez a **közzététel** lapját a **erőforrások és a kulcsok** szakaszban. 
@@ -44,9 +45,7 @@ New-AzureRmResourceGroup -Name luis-traffic-manager -Location "West US"
 
     ![Képernyőkép az Azure portal két LUIS kulcsokkal a luis-traffic-manager erőforráscsoportban](./media/traffic-manager/luis-keys.png)
 
-2. Az a [LUIS] [ LUIS] webhelyén, a a **közzététel** lapon kulcsok hozzáadása az alkalmazáshoz, és tegye közzé újra az alkalmazást. 
-
-    ![Képernyőkép a LUIS-portálra a közzétételi oldalon két LUIS kulcsait](./media/traffic-manager/luis-keys-in-luis.png)
+2. Az a [LUIS] [ LUIS] webhelyén, a a **kezelés** részben, a a **kulcsokat és a végpontok** lapon kulcsok rendelni az alkalmazást, és tegye közzé újra az alkalmazás által Válassza a **közzététel** gombra a jobb felső menüben. 
 
     Példa URL-cím a **végpont** oszlop egy GET kéréssel használ a végpont kulcs lekérdezési paramétert. Másolja a két új kulcsok végponti URL-címek. A Traffic Manager konfigurálásakor a cikk későbbi részében használják.
 
@@ -76,7 +75,7 @@ Az USA keleti Régiójában Traffic Manager-profil létrehozásához több lép�
     
     Ez a táblázat azt ismerteti, hogy a parancsmag minden változót:
     
-    |Konfigurációs paraméter|Változó neve vagy értéke|Rendeltetés|
+    |Konfigurációs paraméter|Változó neve vagy értéke|Cél|
     |--|--|--|
     |-Név|a Luis-profil – USA keleti régiója|A TRAFFIC Manager neve az Azure Portalon|
     |-ResourceGroupName|a Luis-traffic-manager|Az előző szakaszban létrehozott|
@@ -95,7 +94,7 @@ Az USA keleti Régiójában Traffic Manager-profil létrehozásához több lép�
     ```
     Ez a táblázat azt ismerteti, hogy a parancsmag minden változót:
 
-    |Konfigurációs paraméter|Változó neve vagy értéke|Rendeltetés|
+    |Konfigurációs paraméter|Változó neve vagy értéke|Cél|
     |--|--|--|
     |-Végpontneve|a Luis-kelet-végpont|A profil alatt jelenik meg a végpont neve|
     |-TrafficManagerProfile|$eastprofile|1. lépésben létrehozott profil objektummal|
@@ -144,7 +143,7 @@ Az USA nyugati RÉGIÓJA Traffic Manager-profil létrehozásához kövesse az al
     
     Ez a táblázat azt ismerteti, hogy a parancsmag minden változót:
     
-    |Konfigurációs paraméter|Változó neve vagy értéke|Rendeltetés|
+    |Konfigurációs paraméter|Változó neve vagy értéke|Cél|
     |--|--|--|
     |-Név|a Luis-profil-westus|A TRAFFIC Manager neve az Azure Portalon|
     |-ResourceGroupName|a Luis-traffic-manager|Az előző szakaszban létrehozott|
@@ -164,7 +163,7 @@ Az USA nyugati RÉGIÓJA Traffic Manager-profil létrehozásához kövesse az al
 
     Ez a táblázat azt ismerteti, hogy a parancsmag minden változót:
 
-    |Konfigurációs paraméter|Változó neve vagy értéke|Rendeltetés|
+    |Konfigurációs paraméter|Változó neve vagy értéke|Cél|
     |--|--|--|
     |-Végpontneve|a Luis-Nyugat-végpont|A profil alatt jelenik meg a végpont neve|
     |-TrafficManagerProfile|$westprofile|1. lépésben létrehozott profil objektummal|
@@ -211,7 +210,7 @@ A szülő Traffic Manager-profil létrehozása, és két gyermek Traffic Manager
 
     Ez a táblázat azt ismerteti, hogy a parancsmag minden változót:
 
-    |Konfigurációs paraméter|Változó neve vagy értéke|Rendeltetés|
+    |Konfigurációs paraméter|Változó neve vagy értéke|Cél|
     |--|--|--|
     |-Név|szülő-Luis-profil|A TRAFFIC Manager neve az Azure Portalon|
     |-ResourceGroupName|a Luis-traffic-manager|Az előző szakaszban létrehozott|
@@ -231,7 +230,7 @@ A szülő Traffic Manager-profil létrehozása, és két gyermek Traffic Manager
 
     Ez a táblázat azt ismerteti, hogy a parancsmag minden változót:
 
-    |Konfigurációs paraméter|Változó neve vagy értéke|Rendeltetés|
+    |Konfigurációs paraméter|Változó neve vagy értéke|Cél|
     |--|--|--|
     |-Végpontneve|gyermek-endpoint-useast|Kelet-profil|
     |-TrafficManagerProfile|$parentprofile|Ennek a végpontnak a hozzárendelt profil|
@@ -268,7 +267,7 @@ A szülő Traffic Manager-profil létrehozása, és két gyermek Traffic Manager
 
     Ez a táblázat azt ismerteti, hogy a parancsmag minden változót:
 
-    |Konfigurációs paraméter|Változó neve vagy értéke|Rendeltetés|
+    |Konfigurációs paraméter|Változó neve vagy értéke|Cél|
     |--|--|--|
     |-Végpontneve|gyermek-endpoint-uswest|Nyugat-profil|
     |-TrafficManagerProfile|$parentprofile|Ennek a végpontnak a hozzárendelt profil|
@@ -350,7 +349,7 @@ dns.resolveAny('luis-dns-parent.trafficmanager.net', (err, ret) => {
 
 A LUIS-végponttal a sikeres válasz a következő:
 
-```cmd
+```json
 [
     {
         value: 'westus.api.cognitive.microsoft.com', 

@@ -1,20 +1,21 @@
 ---
-title: Language Understanding (LUIS) az Azure-ban – gyakori kérdések |} A Microsoft Docs
-description: Language Understanding (LUIS) kapcsolatos gyakori kérdésekre adott válaszok
+title: Gyakori kérdések – Language Understanding (LUIS)
+titleSuffix: Azure Cognitive Services
+description: Ez a cikk a Language Understanding (LUIS) kapcsolatos gyakori kérdésekre adott válaszokat tartalmazza.
 author: diberry
 manager: cjgronlund
 services: cognitive-services
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 07/26/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: a266055c7685dca87d985775584a9ea7a4bda883
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: c338f874f426eef047f29e958877368c61db7e62
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43128520"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45630257"
 ---
 # <a name="language-understanding-faq"></a>Language Understanding – gyakori kérdések
 
@@ -63,7 +64,7 @@ A Cortana előre elkészített alkalmazásokat is elavult 2017-ben. Már nem tá
 A LUIS [tokenizes](luis-glossary.md#token) az utterance (kifejezés) alapján a [kulturális környezet](luis-supported-languages.md#tokenization). Az eredeti és tokenekre értéke is érhetők el [adatkinyerés](luis-concept-data-extraction.md#tokenized-entity-returned).
 
 ### <a name="how-do-i-create-and-assign-a-luis-endpoint-key"></a>Hogyan létrehozása és hozzárendelése egy LUIS végponti kulcs?
-[A végpont kulcs létrehozása](luis-how-to-azure-subscription.md#create-luis-endpoint-key) az Azure-ban a [szolgáltatás](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/) szintjét. [A kulcs hozzárendelése](luis-how-to-manage-keys.md#assign-endpoint-key) a a **[közzététel](luis-how-to-publish-app.md)** lapot. Nincs a művelet nem megfelelő API-t. Ezután a végpontot kell módosítania a HTTP-kérelem [használja az új végpont kulcs](luis-concept-keys.md#use-endpoint-key-in-query).
+[A végpont kulcs létrehozása](luis-how-to-azure-subscription.md#create-luis-endpoint-key) az Azure-ban a [szolgáltatás](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/) szintjét. [A kulcs hozzárendelése](luis-how-to-manage-keys.md#assign-endpoint-key) a a **[kulcsokat és a végpontok](luis-how-to-manage-keys.md)** lapot. Nincs a művelet nem megfelelő API-t. Ezután a végpontot kell módosítania a HTTP-kérelem [használja az új végpont kulcs](luis-concept-keys.md#use-endpoint-key-in-query).
 
 ### <a name="how-do-i-interpret-luis-scores"></a>Mi a LUIS pontszámok? 
 A rendszer függetlenül annak értéke a legmagasabb pontozási leképezést kell használnia. Ha például 0.5-ös (kevesebb mint 50 %) alatti nem feltétlenül jelenti, hogy a LUIS alacsony megbízhatósági rendelkezik. További betanítási adatok biztosítása révén növelheti a pontszám a legvalószínűbb leképezés.
@@ -120,8 +121,13 @@ Az Azure-ban a bérlő az ügyfél vagy a szervezet, amely a társított szolgá
 ![Az Azure Portalon a bérlő azonosítója](./media/luis-manage-keys/luis-assign-key-tenant-id.png)
 
 <a name="why-are-there-more-subscription-keys-on-my-apps-publish-page-than-i-assigned-to-the-app"></a>
-### <a name="why-are-there-more-endpoint-keys-on-my-apps-publish-page-than-i-assigned-to-the-app"></a>Miért vannak további végpont kulcsok saját alkalmazás közzétételi oldalon, mint az alkalmazáshoz hozzárendel? 
-Minden egyes LUIS-alkalmazás a szerzői/alapszintű kulccsal rendelkezik. A LUIS végpont a végleges verzió időtartam alatt létrehozott kulcsai a közzétételi oldalon látható, függetlenül attól, ha az alkalmazás hozzá őket. Ez megtörtént, a végleges verzió áttelepítés egyszerűbbé. Minden olyan új LUIS végpont kulcsok nem jelennek meg a közzétételi oldalon. 
+<a name="why-are-there-more-endpoint-keys-on-my-apps-publish-page-than-i-assigned-to-the-app"></a>
+
+
+### <a name="why-are-there-more-endpoint-keys-assigned-to-my-app-than-i-assigned"></a>Miért vannak-e további végpont kulcsok kiosztott, mint az alkalmazás hozzárendelve? 
+Minden LUIS alkalmazás a szerzői műveletek/alapszintű kulcs rendelkezik a végpont listájában a kényelem. Ezt a kulcsot csak néhány végpont találatok lehetővé teszi, így kipróbálhatja a LUIS.  
+
+Ha az alkalmazás korábban létezett, előtt a LUIS általánosan elérhető (GA), automatikusan hozzárendelve LUIS végpont kulcsok az előfizetésében. Ez megtörtént, a végleges verzió áttelepítés egyszerűbbé. Minden olyan új LUIS végpont kulcsok az Azure Portalon _nem_ automatikusan hozzárendelve a LUIS. 
 
 ## <a name="app-management"></a>Alkalmazáskezelés
 

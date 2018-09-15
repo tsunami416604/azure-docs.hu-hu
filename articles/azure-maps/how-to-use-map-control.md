@@ -8,21 +8,22 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 5b8703c218790549a0cf5a319345132a0eca66ce
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 45890b4bd474c010b2b086be0405b79d340aeebd
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44025189"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45603159"
 ---
-# <a name="how-to-use-the-azure-maps-map-control"></a>Az Azure Maps térkép vezérlőelem használata
-A térkép vezérlőelem ügyféloldali Javascript-kódtár térképeket és beágyazott Azure Maps-funkciók jelennek meg a webes vagy mobilalkalmazás segítségével. 
+# <a name="use-the-azure-maps-map-control"></a>Az Azure Maps térkép vezérlőelem használata
+
+A térkép vezérlőelem ügyféloldali Javascript-kódtár térképeket és beágyazott Azure Maps-funkciók jelennek meg a webes vagy mobilalkalmazás segítségével.
 
 ## <a name="create-a-new-map-in-a-web-page"></a>Egy weblapon egy új térkép létrehozása
 
 A térkép vezérlőelem ügyféloldali Javascript-kódtár használatával egy térkép is beágyazható egy weblapon.
 
-1. Hozzon létre egy új fájlt, és nevezze el MapSearch.html.
+1. Hozzon létre egy új fájlt, és adja neki **MapSearch.html**.
 
 2. Adja hozzá az Azure Maps stíluslap és parancsfájl forrás hivatkozásokat a `<head>` elem a fájl:
 
@@ -30,17 +31,19 @@ A térkép vezérlőelem ügyféloldali Javascript-kódtár használatával egy 
     <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/css/atlas.min.css?api-version=1" type="text/css" />
     <script src="https://atlas.microsoft.com/sdk/js/atlas.min.js?api-version=1"></script>
     ```
-    
-3. Annak érdekében, hogy a render egy új térkép a böngészőben, adjon hozzá egy **#map** hivatkozzon a `<style>` elemet.
+
+3. Annak érdekében, hogy a render egy új térkép a böngészőben, adjon hozzá egy **#map** hivatkozzon a `<style>` elem:
 
     ```html
-    #map {
-                width: 100%;
-                height: 100%;
-            }
-    ``` 
-    
-4. A térkép vezérlőelem inicializálásához a html törzsében új definiálására, és hozzon létre egy parancsfájlt. A parancsfájl a saját az Azure Maps-fiók kulcsot használni. Ha hozzon létre egy fiókot, vagy keresse meg a, tekintse meg kell [az Azure Maps-fiók és kulcsok kezelése](how-to-manage-account-keys.md)
+    <style>
+        #map {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+    ```
+
+4. A térkép vezérlőelem inicializálásához a html törzsében új definiálására, és hozzon létre egy parancsfájlt. A parancsfájl a saját az Azure Maps-fiók kulcsot használni. Ha hozzon létre egy fiókot, vagy keresse meg a, tekintse meg kell [az Azure Maps-fiók és kulcsok kezelése](how-to-manage-account-keys.md).
 
     ```html
     <div id="map">
@@ -54,12 +57,17 @@ A térkép vezérlőelem ügyféloldali Javascript-kódtár használatával egy 
         </script>
     </div>
     ```
-    
+
 5. A böngészőben nyissa meg a fájlt, és megtekintheti a megjelenített térképen.
 
 ## <a name="next-steps"></a>További lépések
 
-Ez a cikk láthatta, hogyan hozhat létre egy egyszerű térképet az Azure Maps-kulcs. A maps hozzá további kódot példák a következő cikkekben talál: 
+Ismerje meg, hogyan hozhat létre egy térképet, egy teljes példa:
 
-* [Térkép létrehozása](map-create.md)
-* [Térkép stílus kiválasztása](choose-map-style.md)
+> [!div class="nextstepaction"]
+> [Térkép létrehozása](map-create.md)
+
+Ismerje meg, hogyan térkép stílus:
+
+> [!div class="nextstepaction"]
+> [Térkép stílus kiválasztása](choose-map-style.md)

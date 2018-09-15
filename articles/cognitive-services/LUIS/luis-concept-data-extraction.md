@@ -8,19 +8,19 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 05/07/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 40c7e0744825697779e6bd19a78d8d3512b5d63e
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: d857767e5d94daa0a32997474722cec608e513b0
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44023460"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45630545"
 ---
 # <a name="data-extraction"></a>Adatok kinyerése
-A LUIS teszi lehetővé a felhasználó a természetes nyelvű utterances lekérni adatait. Az adatokat oly módon, hogy használat szerint a program, alkalmazás vagy csevegőrobot műveletet ki kell olvasni.
+A LUIS teszi lehetővé a felhasználó a természetes nyelvű utterances lekérni adatait. Az adatokat oly módon, hogy használat szerint a program, alkalmazás vagy csevegőrobot műveletet ki kell olvasni. A következő szakaszban megtudhatja, milyen adatokat küld vissza, a szándékok és entitások példákkal a JSON. 
 
-A következő szakaszban megtudhatja, milyen adatokat küld vissza, a szándékok és entitások példákkal a JSON. A kinyerni kívánt nagyon nehéz adatok átadott gép megtanult adatot, mivel nem egy pontos egyezés egyeztetése. Adatok kinyerése, a gép megtanult [entitások](luis-concept-entity-types.md) részét kell a [ciklus szerzői](luis-concept-app-iteration.md) amíg nem biztos benne, hogy a várt adatokat kap. 
+A kinyerni kívánt nagyon nehéz adatok átadott gép megtanult adatot, mivel nem egy pontos egyezés egyeztetése. Adatok kinyerése, a gép megtanult [entitások](luis-concept-entity-types.md) részét kell a [ciklus szerzői](luis-concept-app-iteration.md) amíg nem biztos benne, hogy a várt adatokat kap. 
 
 ## <a name="data-location-and-key-usage"></a>Adatok helye és a kulcsot használat
 A LUIS biztosít a közzétett adatait [végpont](luis-glossary.md#endpoint). A **HTTPS-kérést** (POST vagy GET) tartalmazza az utterance (kifejezés), valamint az egyes választható konfigurációk, például átmeneti és éles környezetekben. 
@@ -29,7 +29,7 @@ A LUIS biztosít a közzétett adatait [végpont](luis-glossary.md#endpoint). A 
 
 A `appID` érhető el a **beállítások** lapján a LUIS-alkalmazásokon, valamint az URL-cím (után `/apps/`), amelyet a LUIS az alkalmazás szerkesztésekor. A `subscription-key` a végpont kulcs az alkalmazás lekérdezésekhez használja fel. Bár használhatja az ingyenes szerzői/alapszintű kulcsot, LUIS tanulás közben, fontos, hogy módosítsa a végpont kulcs, amely támogatja a kulcs a [várható LUIS használati](luis-boundaries.md#key-limits). A `timezoneOffset` egység érték perc.
 
-A **HTTPS válaszokat** tartalmazza az összes, vagy az aktuális közzétett modell alapján a leképezés és entitás adatait, LUIS megadhatja, hogy az átmeneti és éles végpontot. A végpont URL-cím található a [LUIS](luis-reference-regions.md) webhely **közzététel** lapot. 
+A **HTTPS válaszokat** tartalmazza az összes, vagy az aktuális közzétett modell alapján a leképezés és entitás adatait, LUIS megadhatja, hogy az átmeneti és éles végpontot. A végpont URL-cím található a [LUIS](luis-reference-regions.md) webhelyén, a a **kezelés** részben, a a **kulcsokat és a végpontok** lap. 
 
 ## <a name="data-from-intents"></a>Leképezések adatait
 Az elsődleges adatokat a felső pontozási **leképezés neve**. Használatával a `MyStore` [rövid](luis-quickstart-intents-only.md), a végpont válasz:
@@ -568,13 +568,37 @@ Minden más országban a válasz a következő:
 ### <a name="key-phrase-extraction-entity-data"></a>A kulcsfontosságú kifejezések kinyerése Entitásadatok
 A kulcsfontosságú kifejezések kinyerése entitás kulcskifejezéseket adja vissza az utterance (kifejezés), által biztosított [Szövegelemzés](https://docs.microsoft.com/azure/cognitive-services/text-analytics/).
 
-<!-- TBD: verify JSON-->
 ```JSON
-"keyPhrases": [
-    "places",
-    "beautiful views",
-    "favorite trail"
-]
+{
+  "query": "Is there a map of places with beautiful views on a favorite trail?",
+  "topScoringIntent": {
+    "intent": "GetJobInformation",
+    "score": 0.764368951
+  },
+  "intents": [
+    ...
+  ],
+  "entities": [
+    {
+      "entity": "beautiful views",
+      "type": "builtin.keyPhrase",
+      "startIndex": 30,
+      "endIndex": 44
+    },
+    {
+      "entity": "map of places",
+      "type": "builtin.keyPhrase",
+      "startIndex": 11,
+      "endIndex": 23
+    },
+    {
+      "entity": "favorite trail",
+      "type": "builtin.keyPhrase",
+      "startIndex": 51,
+      "endIndex": 64
+    }
+  ]
+}
 ```
 
 ## <a name="data-matching-multiple-entities"></a>Az adatokat több entitás megfelelő

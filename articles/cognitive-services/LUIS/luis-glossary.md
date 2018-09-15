@@ -1,5 +1,6 @@
 ---
-title: A Language Understanding (LUIS) API Service szószedete |} A Microsoft Docs
+title: A Language Understanding (LUIS) API Service szószedete
+titleSuffix: Azure Cognitive Services
 description: A szószedet kifejezések magyarázatát tartalmazza, amelyek akkor fordulhatnak végzett munka során az intelligens HANGFELISMERÉSI API-szolgáltatást.
 services: cognitive-services
 author: diberry
@@ -7,16 +8,17 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 05/07/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 3f99e58a38bbe9ecc87165b5e6fa24a5a49e5e4a
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: a66eb42ac03b96757a0363c9dd442adc5ca75023
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39390058"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45634366"
 ---
 # <a name="glossary"></a>Szószedet
+A Language Understanding (LUIS) szószedet ismerteti feltételeit, amelyek találkozhat végzett munka során az intelligens HANGFELISMERÉSI API-szolgáltatást.
 
 ## <a name="active-version"></a>Aktív verziója
 
@@ -72,7 +74,7 @@ A LUIS a környezetben egy **tartomány** olyan terület, az ismeretek. A tartom
 
 ## <a name="endpoint"></a>Végpont
 
-A [LUIS végpont](https://aka.ms/luis-endpoint-apis) URL-címe, ahol elküldése után a LUIS-lekérdezéseket a [LUIS-alkalmazásokon](#luis-app) létrehozott és közzétett. A végpont URL-címe tartalmazza a régió, a közzétett alkalmazás, valamint az alkalmazás azonosítóját. A végpont található a **[közzététel](luis-how-to-publish-app.md)** oldalon az alkalmazás az erőforrásokat és a kulcsok tábla vagy, beszerezheti a végpont URL-CÍMÉT a [alkalmazásadatok lekérése](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c37) API.
+A [LUIS végpont](https://aka.ms/luis-endpoint-apis) URL-címe, ahol elküldése után a LUIS-lekérdezéseket a [LUIS-alkalmazásokon](#luis-app) létrehozott és közzétett. A végpont URL-címe tartalmazza a régió, a közzétett alkalmazás, valamint az alkalmazás azonosítóját. A végpont található a **[kulcsokat és a végpontok](/luis-how-to-manage-keys.md)** lapja az alkalmazás, vagy beszerezheti a végpont URL-CÍMÉT a [alkalmazásadatok lekérése](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c37) API.
 
 A példában a végpont hasonlóan néz ki:
 
@@ -167,7 +169,7 @@ Beszéd betanítási művelet lehetővé teszi a beszédfelismerési szolgáltat
 
 ## <a name="spelling-correction"></a>Javításra
 
-Az a közzétételi oldalon engedélyezze [Bing helyesírás-ellenőrzővel](luis-how-to-publish-app.md#enable-bing-spell-checker) , az előrejelzési előtt megcímkézzen kijavítsa a hibásan leírt szavakat. 
+Engedélyezze a Bing helyesírás-ellenőrzőjének használatát, az előrejelzési előtt megcímkézzen kijavítsa a hibásan leírt szavakat. 
 
 ## <a name="starter-key"></a>Alapszintű kulcs
 
@@ -175,7 +177,7 @@ Ugyanaz, mint a [programozott kulcs](#programmatic-key), átnevezett szerzői m�
 
 ## <a name="subscription-key"></a>Előfizetői azonosító
 
-Az előfizetési kulcs a **végpont** az intelligens HANGFELISMERÉSI szolgáltatás társított kulcs [Azure-ban létrehozott](luis-how-to-azure-subscription.md). Ezt a kulcsot nem kötelező a [kulcs létrehozási](#programmatic-key). Ha egy végpont kulccsal rendelkezik, azt az Authoring Tool kulcs helyett végpont kérelmeket használandó. Láthatja, hogy az aktuális végponti kulcs a végponti URL-cím végén található [ **App közzététele** oldal](luis-how-to-publish-app.md) a [LUIS](luis-reference-regions.md) webhelyén. Az értéke, **előfizetési-kulcsa** név-érték pár. 
+Az előfizetési kulcs a **végpont** az intelligens HANGFELISMERÉSI szolgáltatás társított kulcs [Azure-ban létrehozott](luis-how-to-azure-subscription.md). Ezt a kulcsot nem kötelező a [kulcs létrehozási](#programmatic-key). Ha egy végpont kulccsal rendelkezik, azt az Authoring Tool kulcs helyett végpont kérelmeket használandó. Láthatja, hogy az aktuális végponti kulcs a végponti URL-cím végén található [ **kulcsokat és a végpontok** oldal](luis-how-to-manage-keys.md) a [LUIS](luis-reference-regions.md) webhelyén. Az értéke, **előfizetési-kulcsa** név-érték pár. 
 
 ## <a name="test"></a>Teszt
 

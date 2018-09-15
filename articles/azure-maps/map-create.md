@@ -3,18 +3,18 @@ title: Térkép létrehozása az Azure Maps |} A Microsoft Docs
 description: A Javascript-térkép létrehozása
 author: jingjing-z
 ms.author: jinzh
-ms.date: 05/07/2018
+ms.date: 09/14/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: c5d48e2e7316f33a565fc61a769a29c00834eed5
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 0e292bfd38402d5a36be217746fd352ce4627177
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43343369"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45633316"
 ---
 # <a name="create-a-map"></a>Térkép létrehozása
 
@@ -42,21 +42,23 @@ A fenti kód egy [térkép objektum](https://docs.microsoft.com/javascript/api/a
 
 A fenti kód egy [térkép objektum](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) használatával összeállított `new atlas.Map()`. Térkép tulajdonságai, például a határolókeret részét képező [CameraBoundsOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/models.cameraboundsoptions?view=azure-iot-typescript-latest). CameraBoundsOptions keresztül lehet definiálni [setCameraBounds](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamerabounds) függvény a térkép osztály.
 
-## <a name="try-out-the-code"></a>Próbálja ki a kódot 
+## <a name="try-out-the-code"></a>Próbálja ki a kódot
 
-Vessen egy pillantást a fenti mintakód. Szerkesztheti a JavaScript-kódot, a bal oldali JS lapján, és tekintse meg a változások térképen megtekintése az eredmény lapon a jobb oldalon. Kattintson a "CodePen a Szerkesztés" gombra is, és a CodePen kód szerkesztése. 
+Vessen egy pillantást a fenti mintakód. Szerkesztheti a JavaScript-kódot, a bal oldali JS lapján, és tekintse meg a változások térképen megtekintése az eredmény lapon a jobb oldalon. Kattintson a "CodePen a Szerkesztés" gombra is, és a CodePen kód szerkesztése.
 
 <a id="relatedReference"></a>
 
 ## <a name="next-steps"></a>További lépések
 
-További információ az osztályok és módszerek a cikk ezt használja: 
-* [Térkép](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
-    * [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamera)
-    * [setCameraBounds](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamerabounds)
-    
-A maps hozzá további kódot példák a következő cikkekben talál: 
-* [Térkép stílus kiválasztása](choose-map-style.md)
-* [Térkép vezérlők hozzáadása](map-add-controls.md)
-    
+További információ az osztályok és módszerek a cikk ezt használja:
 
+> [!div class="nextstepaction"]
+> [Térkép](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
+
+Funkciók hozzáadása az alkalmazáshoz való kód példa látható:
+
+> [!div class="nextstepaction"]
+> [Térkép stílus kiválasztása](choose-map-style.md)
+
+> [!div class="nextstepaction"]
+> [Térkép vezérlők hozzáadása](map-add-controls.md)

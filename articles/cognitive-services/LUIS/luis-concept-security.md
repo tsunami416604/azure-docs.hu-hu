@@ -1,20 +1,21 @@
 ---
-title: Megismerheti a hozzáférést a LUIS-alkalmazások – Azure |} A Microsoft Docs
-description: Útmutató a szerzői LUIS eléréséhez.
+title: A LUIS-alkalmazásokhoz való hozzáférés ismertetése
+titleSuffix: Azure Cognitive Services
+description: Authoring hozzáférés tulajdonosok és a közreműködők érhető el. Saját alkalmazások esetén végponti hozzáférés tulajdonosai és a közreműködők érhető el. Egy nyilvános alkalmazás végponti hozzáférés érhető el mindenki számára, amelyek a saját LUIS-fiókkal rendelkezik, és a nyilvános alkalmazás-azonosítóval rendelkezik.
 services: cognitive-services
 author: diberry
 manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 05/07/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: fddffbcabba753e9ef214f924d5ff2cee38427a5
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: ca179dc845930bd0cbc89f8bf700bd1650ecf7fc
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43301693"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45633096"
 ---
 # <a name="authoring-and-endpoint-user-access"></a>Létrehozási és -végpont felhasználói hozzáférés
 Authoring hozzáférés tulajdonosok és a közreműködők érhető el. Saját alkalmazások esetén végponti hozzáférés tulajdonosai és a közreműködők érhető el. Egy nyilvános alkalmazás végponti hozzáférés érhető el mindenki számára, amelyek a saját LUIS-fiókkal rendelkezik, és a nyilvános alkalmazás-azonosítóval rendelkezik. 
@@ -37,11 +38,13 @@ A tulajdonos és az összes közreműködők hozzáférése ahhoz, hogy az alkal
 |Betanítás|
 
 ## <a name="access-to-endpoint"></a>Access-végponthoz
-A végpont a LUIS-lekérdezéshez való hozzáférést vezérlik a **nyilvános** beállítása az alkalmazás a **beállítások** lapot. Egy privát alkalmazás végpont lekérdezés be van jelölve, egy arra jogosult kulcs a hátralévő kvóta találatok. Egy nyilvános alkalmazás-végpont lekérdezésben található az is biztosít egy végponti kulcs (a személy, aki a lekérdezést, hogy így) amely is be van jelölve, a hátralévő kvóta találatok. 
-
-A végpont kulcs vagy a lekérdezési karakterláncban a kijelentkezési a GET-kérés átadódik, vagy kérje meg a fejléc a bejegyzés.
+Hozzáférés lekérdezni a végpont egy beállítást vezérli a **alkalmazással kapcsolatos adatok** lapját a **kezelés** szakaszban. 
 
 ![Nyilvános csoport alkalmazás](./media/luis-concept-security/set-application-as-public.png)
+
+|[Privát végpontjaikat](#private-app-endpoint-security)|[Nyilvános végponthoz](#public-app-endpoint-access)|
+|:--|:--|
+|Tulajdonos és a közreműködők számára elérhető|Tulajdonos, közreműködő és mindenki számára elérhető más, hogy tudja, hogy alkalmazás azonosítója|
 
 ### <a name="private-app-endpoint-security"></a>Saját alkalmazás endpoint securityhez
 A magánhálózati alkalmazáshoz végpont csak a következő számára érhető el:
@@ -50,14 +53,19 @@ A magánhálózati alkalmazáshoz végpont csak a következő számára érhető
 |--|--|--|
 |A tulajdonos szerzői kulcs| Legfeljebb 1000 végpont találatok|
 |A közreműködők Authoring Tool kulcsok| Legfeljebb 1000 végpont találatok|
-|Hozzáadva a végpont kulcsok **[közzététel](luis-how-to-publish-app.md)** lap|Tulajdonos és közreműködő végpont kulcsokat adhat hozzá|
+|A LUIS-szerző vagy közreműködő által rendelt bármelyik billentyűt|Kulcshasználat réteg alapján|
 
-Egyéb szerzői vagy a végpont kulcsok **nincs** hozzáférést.
+#### <a name="microsoft-user-accounts"></a>A Microsoft felhasználói fiókok
+Szerzők és a közreműködők kulcsok rendelhet egy privát LUIS-alkalmazás. A LUIS kulcsot az Azure Portalon hoz létre a Microsoft felhasználói fióknak kell lennie, vagy az alkalmazás tulajdonosa, vagy egy alkalmazás közreműködő. Nem rendelhet egy kulcsot a magánhálózati alkalmazáshoz egy másik Azure-fiókjából.
+
+Lásd: [Azure Active Directory-bérlő felhasználói](luis-how-to-collaborate.md#azure-active-directory-tenant-user) további információ az Active Directory felhasználói fiókokat. 
 
 ### <a name="public-app-endpoint-access"></a>Nyilvános alkalmazás-végpont hozzáférés
-Konfigurálja az alkalmazást **nyilvános** a a **beállítások** az alkalmazás oldalán. Ha egy alkalmazás van konfigurálva, nyilvános, _bármely_ szerzői vagy LUIS végponti kulcs érvényes LUIS lekérdezheti az alkalmazás mindaddig, amíg a kulcsot nem használta a teljes endpoint kvótát.
+Ha egy alkalmazás van konfigurálva, nyilvános, _bármely_ szerzői vagy LUIS végponti kulcs érvényes LUIS lekérdezheti az alkalmazás mindaddig, amíg a kulcsot nem használta a teljes endpoint kvótát.
 
 A felhasználó, aki nem tulajdonosa vagy közreműködő, csak hozzáférhet a nyilvános app Ha adja meg az alkalmazás azonosítóját. A LUIS nincs nyilvános _piaci_ vagy egyéb módon, egy nyilvános alkalmazás kereséséhez.  
+
+A nyilvános alkalmazás közzé van téve az összes régióban, hogy egy felhasználó egy LUIS-erőforrás régió-alapú kulccsal hozzáférhet az alkalmazás bármelyik régióban az erőforrás-kulcs társítva.
 
 ## <a name="microsoft-user-accounts"></a>A Microsoft felhasználói fiókok
 Szerzők és a közreműködők adhat hozzá kulcsok LUIS a közzétételi oldalon. A LUIS kulcsot az Azure Portalon hoz létre a Microsoft felhasználói fióknak kell lennie, vagy az alkalmazás tulajdonosa, vagy egy alkalmazás közreműködő. 
@@ -71,11 +79,13 @@ If the Microsoft user account is part of an Azure Active Directory (AAD), and th
 ### Administrator consent
 If the Microsoft user account is part of an Azure Active Directory (AAD), and the active directory doesn't allow users to give consent, then the administrator can give individual consent via the method discussed in this [blog](https://blogs.technet.microsoft.com/tfg/2017/10/15/english-tips-to-manage-azure-ad-users-consent-to-applications-using-azure-ad-graph-api/). 
 -->
+
 ## <a name="securing-the-endpoint"></a>A végpont védelme 
 Szabályozhatja, hogy ki láthatja a LUIS végpontkulcsának kiszolgálók-környezetben meghívásával. Ha egy robot a LUIS használ, a robot és a LUIS közötti kapcsolat már biztonságos. Ha közvetlenül, hogy a LUIS-végpontot hív, érdemes létrehoznia egy kiszolgálóoldali API-t (például az Azure-beli [függvény](https://azure.microsoft.com/services/functions/)) szabályozott hozzáféréssel rendelkező (például [AAD](https://azure.microsoft.com/services/active-directory/)). Ha a kiszolgálói oldalon az API és a hitelesítési és engedélyezési ellenőrzése, továbbítja a LUIS-be. Amíg ez a stratégia nem man-in-the-middle támadások megelőzése, access, nyomon követheti a felhasználók számára, a végpont obfuscates, és lehetővé teszi, hogy a végpont válasz naplózás hozzáadása (például [Application Insights](https://azure.microsoft.com/services/application-insights/)).  
 
 ## <a name="security-compliance"></a>Biztonsági megfelelőségi
-A LUIS sikeresen befejeződött, az ISO 27001:2013 és 27018:2014 ISO auditálás hatálya a nulla szabálytalanságokat (eredmények) a naplózási jelentésben. Ezenkívül a LUIS is a legmagasabb lehetséges Gold Awards-elismerést kapott a lejárat képesség értékelése a CSA STAR minősítést kapott. Az Azure az egyedüli fő nyilvános felhőszolgáltatót a minősítés megszerzésére el. További részleteket talál a LUIS tartalmazza a frissített scope utasításnak a az Azure fő [megfelelőség áttekintése](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) dokumentum a hivatkozott [biztonsági és adatkezelési központ](https://www.microsoft.com/en-us/trustcenter/compliance/iso-iec-27001) ISO oldalakat.  
+ 
+[!include[LUIS Free account](../../../includes/cognitive-services-luis-security-compliance.md)]
 
 ## <a name="next-steps"></a>További lépések
 

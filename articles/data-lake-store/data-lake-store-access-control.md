@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: 0810aff364f8a015e93d7513b13ac7dcb5379556
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: 335c3fe4e27ce6025ad889cc7958a32223dc85f8
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45544098"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45629931"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen1"></a>Hozzáférés-vezérlés az Azure Data Lake Storage Gen1
 
@@ -40,18 +40,6 @@ A hozzáférési ACL-ek és alapértelmezett ACL-ek ugyanazzal a struktúrával 
 > Ha megváltoztatja az alapértelmezett ACL-eket egy szülő objektumon, akkor az nem módosítja a már létező gyermekelemek hozzáférési ACL-jeit és alapértelmezett ACL-jeit.
 >
 >
-
-## <a name="users-and-identities"></a>Felhasználók és identitások
-
-Minden fájl és mappa külön engedélyekkel rendelkezik az alábbi identitásokhoz:
-
-* A tulajdonos felhasználó
-* A tulajdonoscsoport
-* Nevesített felhasználók
-* Nevesített csoportok
-* Minden egyéb felhasználó
-
-A felhasználók és csoportok identitása Azure Active Directory- (Azure AD-) indentitás. Így ha nincs másképp jelölve, a "felhasználó" Data Lake Storage Gen1 környezetében is jelenthet egy Azure AD-felhasználó vagy az Azure AD biztonsági csoportot.
 
 ## <a name="permissions"></a>Engedélyek
 
@@ -100,7 +88,19 @@ Az alábbiakban néhány gyakori helyzet segítenek megérteni, milyen engedély
 >
 
 
-## <a name="the-super-user"></a>A felügyelő
+## <a name="users-and-identities"></a>Felhasználók és identitások
+
+Minden fájl és mappa külön engedélyekkel rendelkezik az alábbi identitásokhoz:
+
+* A tulajdonos felhasználó
+* A tulajdonoscsoport
+* Nevesített felhasználók
+* Nevesített csoportok
+* Minden egyéb felhasználó
+
+A felhasználók és csoportok identitása Azure Active Directory- (Azure AD-) indentitás. Így ha nincs másképp jelölve, a "felhasználó" Data Lake Storage Gen1 környezetében is jelenthet egy Azure AD-felhasználó vagy az Azure AD biztonsági csoportot.
+
+### <a name="the-super-user"></a>A felügyelő
 
 A felügyelő rendelkezik a felhasználók a legtöbb joggal a Data Lake Storage Gen1 fiókban. A felügyelő:
 
@@ -115,7 +115,7 @@ Ha létre szeretne hozni egy egyéni, szerepköralapú hozzáférés-vezérlési
 - Microsoft.Authorization/roleAssignments/write
 
 
-## <a name="the-owning-user"></a>A tulajdonos felhasználó
+### <a name="the-owning-user"></a>A tulajdonos felhasználó
 
 Automatikusan az elem tulajdonosa lesz az a felhasználó, aki létrehozta az elemet. A tulajdonos felhasználó:
 
@@ -127,7 +127,7 @@ Automatikusan az elem tulajdonosa lesz az a felhasználó, aki létrehozta az el
 >
 >
 
-## <a name="the-owning-group"></a>A tulajdonoscsoport
+### <a name="the-owning-group"></a>A tulajdonoscsoport
 
 **Háttér**
 
@@ -234,7 +234,7 @@ A következő pseudocode bemutatja, hogyan kell alkalmazni az umask a hozzáfér
 ```
 def set_default_acls_for_new_child(parent, child):
     child.acls = []
-    foreach entry in parent.acls :
+    for entry in parent.acls :
         new_entry = None
         if (entry.type == OWNING_USER) :
             new_entry = entry.clone(perms = entry.perms & (~umask.owning_user))

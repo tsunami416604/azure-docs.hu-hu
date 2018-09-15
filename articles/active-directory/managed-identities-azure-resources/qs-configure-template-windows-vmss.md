@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/20/2018
 ms.author: daveba
-ms.openlocfilehash: 8d897e9948a241f39d06968c3438ce2d3b0c6940
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 259e22607887d4aae43c46a410edb6efa8a5e497
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44347823"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45637659"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-azure-virtual-machine-scale-using-a-template"></a>Az Azure-erőforrások felügyelt identitások konfigurálása a sablon használatával az Azure virtuálisgép-méretezési csoportot
 
@@ -36,8 +36,10 @@ Ebből a cikkből megismerheti, hogyan hajthat végre a következő felügyelt i
 - Ha még nem ismeri a felügyelt identitások Azure-erőforrások számára, tekintse meg a [áttekintés szakaszban](overview.md). **Ne feledje el áttekinteni a [különbség a rendszer által hozzárendelt, és a felhasználó által hozzárendelt felügyelt identitás](overview.md#how-does-it-work)**.
 - Ha még nincs Azure-fiókja, a folytatás előtt [regisztráljon egy ingyenes fiókra](https://azure.microsoft.com/free/).
 - Ez a cikk a felügyeleti műveleteket hajt végre, a fiók az alábbi Azure szerepkör-alapú access control-hozzárendelések van szüksége:
+
     > [!NOTE]
     > Nincsenek további Azure AD directory szerepkör-hozzárendelések megadása kötelező.
+
     - [Virtuális gépek Közreműködője](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) egy virtuálisgép-méretezési csoport létrehozása és engedélyezése és rendszer-és/vagy felhasználó által hozzárendelt felügyelt identitás eltávolítása egy virtuálisgép-méretezési csoportot.
     - [Felügyelt identitások Közreműködője](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) hozhat létre felhasználó által hozzárendelt szerepkör felügyelt identitás.
     - [Felügyelt identitások üzemeltetője](/azure/role-based-access-control/built-in-roles#managed-identity-operator) szerepkör hozzárendelése és eltávolítása, felhasználó által hozzárendelt felügyelt identitás, a kezdő és a egy virtuálisgép-méretezési csoportot.
@@ -61,7 +63,7 @@ Ebben a szakaszban engedélyezze, majd tiltsa le a felügyelt rendszer által ho
 
 1. Bejelentkezik az Azure-bA helyileg vagy az Azure Portalon, hogy az Azure-előfizetést, amely tartalmazza a virtuálisgép-méretezési csoportba tartozó fiókot kell használnia.
    
-2. Ahhoz, hogy a rendszer által hozzárendelt felügyelt identitás, a sablon betöltése a szerkesztő, keresse meg a `Microsoft.Compute/virtualMachinesScaleSets` erőforrás az erőforrások házirendsablonokkal szakaszt, és adja hozzá a `identity` tulajdonság azonos szinten, a `"type": "Microsoft.Compute/virtualMachines"` tulajdonság. Az alábbi szintaxissal:
+2. Ahhoz, hogy a rendszer által hozzárendelt felügyelt identitás, a sablon betöltése a szerkesztő, keresse meg a `Microsoft.Compute/virtualMachinesScaleSets` erőforrás az erőforrások házirendsablonokkal szakaszt, és adja hozzá a `identity` tulajdonság azonos szinten, a `"type": "Microsoft.Compute/virtualMachinesScaleSets"` tulajdonság. Az alábbi szintaxissal:
 
    ```JSON
    "identity": { 

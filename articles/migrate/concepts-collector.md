@@ -4,15 +4,15 @@ description: A gyűjtőberendezés és konfigurálásának áttekintése.
 author: ruturaj
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 09/10/2018
+ms.date: 09/14/2018
 ms.author: ruturajd
 services: azure-migrate
-ms.openlocfilehash: dae6cc9a55049e2b44291eb105288b33a1db9e7b
-ms.sourcegitcommit: 465ae78cc22eeafb5dfafe4da4b8b2138daf5082
+ms.openlocfilehash: 6822bd149d5542d577fa18db3c9f50007ae48d35
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44325532"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45605062"
 ---
 # <a name="collector-appliance"></a>Gyűjtőberendezés
 
@@ -30,12 +30,17 @@ A gyűjtő a lépéseket követve hozhat létre ide - [a gyűjtő virtuális gé
 
 Ahol a helyszíni környezet felderítéséhez két módszer van:
 
-a. **Felderítés egyszeri felderítés:** ehhez a modellhez, a gyűjtő kommunikál a vCenter-kiszolgáló kérdezze le a virtuális gépek metaadatait. Teljesítményadatok gyűjtése a virtuális gépek, a vCenter-kiszolgáló tárolja a korábbi teljesítményadatok alapul, és gyűjti az utolsó egy hónap teljesítményelőzményeinek. Ebben a modellben az Azure Migrate gyűjti átlagos számláló (vagy maximális számláló) minden egyes metrika, [További információ] (https://docs.microsoft.com/azure/migrate/concepts-collector#what-data-is-collected) tudnivalók az Azure Migrate által gyűjtött teljesítményszámlálók. Mivel a felderítés egyszeri felderítés, a készülék ebben az esetben nem folyamatosan csatlakozik a projektet. Ezért a helyszíni környezet változásai nem jelennek meg az Azure Migrate a felderítés befejeződése után. Ha azt szeretné, hogy a módosításokat, akkor hajtsa végre az ugyanazon a projekten azonos környezetben az újbóli felderítést.
+a. **Felderítés egyszeri felderítés:** ehhez a modellhez, a gyűjtő kommunikál a vCenter-kiszolgáló kérdezze le a virtuális gépek metaadatait. Teljesítményadatok gyűjtése a virtuális gépek, a vCenter-kiszolgáló tárolja a korábbi teljesítményadatok alapul, és gyűjti az utolsó egy hónap teljesítményelőzményeinek. Ebben a modellben az Azure Migrate gyűjt mindegyik metrikát (vagy maximális számláló) átlagos számlálója. Mivel a felderítés egyszeri felderítés, a készülék ebben az esetben nem folyamatosan csatlakozik a projektet. Ezért a helyszíni környezet változásai nem jelennek meg az Azure Migrate a felderítés befejeződése után. Ha azt szeretné, hogy a módosításokat, akkor hajtsa végre az ugyanazon a projekten azonos környezetben az újbóli felderítést.
+
+> [!NOTE]
+> Ennél a módszernél a statisztikai beállítások megadása a vCenter Server 3. szintre, és várjon, amíg legalább egy napot előtt indítsa el a felderítés a szükséges teljesítményadatok gyűjtéséhez.
 
 b. **Folyamatos felderítési:** a gyűjtőberendezés ehhez a modellhez folyamatosan csatlakozik az Azure Migrate-projekt. A helyszíni környezetben, valós idejű használati adatok gyűjtéséhez, 20 másodpercenként folyamatosan profilokat. A berendezés majd tekercsben felfelé a 20 másodperces mintákat és létrehoz egy adatpont 15 percenként kiválasztásával a a maximális érték, amelyet a rendszer elküld az Azure-bA. Ez a modell nem függ a vCenter Server a teljesítményadat-gyűjtés statisztikai beállításait. A készülék a a folyamatos profilkészítés bármikor leállíthatja.
 
 > [!NOTE]
-> A folyamatos felderítési funkciója előzetes verzióban érhető el.
+> A folyamatos felderítési funkciója előzetes verzióban érhető el. Ha nem rendelkezik a vCenter Server statisztikai beállításait konfigurálni a 3. szintre, azt javasoljuk, hogy ezt a módszert használja.
+
+[További információ] (https://docs.microsoft.com/azure/migrate/concepts-collector#what-data-is-collected) tudnivalók az Azure Migrate által gyűjtött teljesítményszámlálók.
 
 ## <a name="collector-communication-diagram"></a>Gyűjtő kommunikációs diagramja
 

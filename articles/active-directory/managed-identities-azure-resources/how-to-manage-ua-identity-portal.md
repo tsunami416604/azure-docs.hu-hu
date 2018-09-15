@@ -1,6 +1,6 @@
 ---
 title: Egy az Azure portal használatával felügyelt felhasználó által hozzárendelt identitások kezelése
-description: Részletes útmutatást létrehozása, listázása és törlése a felhasználó által hozzárendelt felügyelt identitás.
+description: Lépésről lépésre való létrehozásához, listázásához, törlése és szerepkör hozzárendelése felhasználóhoz felügyelt identitásnak.
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/16/2018
 ms.author: daveba
-ms.openlocfilehash: 6729bee9bfebd8e80ae3b791dc2a8a480ac8b525
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 180d4092a2570b719e77d98319ab9b329f2e48c5
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44158722"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45637428"
 ---
-# <a name="create-list-or-delete-a-user-assigned-managed-identity-using-the-azure-portal"></a>Lista létrehozása vagy törlése az Azure portal használatával felügyelt felhasználó által hozzárendelt identitás
+# <a name="create-list-delete-or-assign-a-role-to-a-user-assigned-managed-identity-using-the-azure-portal"></a>Lista létrehozása, törlése vagy szerepkör hozzárendelése a felügyelt felhasználó által hozzárendelt identitás az Azure portal használatával
 
 [!INCLUDE [preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)]
 
 Felügyelt identitások az Azure-erőforrások egy felügyelt identitás, az Azure Active Directory Azure-szolgáltatásokat biztosít. Ez az identitás használatával, amelyek támogatják az Azure AD-hitelesítés, anélkül, hogy hitelesítő adatok a kód a szolgáltatásokhoz való hitelesítéséhez. 
 
-Ebből a cikkből megismerheti, hogyan hozhat létre, listázása és törlése az Azure Portal használatával felügyelt felhasználó által hozzárendelt identitás.
+Ebből a cikkből megismerheti, hogyan hozhat létre, listázása, törlése vagy a szerepkör hozzárendelése egy felhasználó által hozzárendelt felügyelt identitás, az Azure Portal használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -65,3 +65,19 @@ Ebből a cikkből megismerheti, hogyan hozhat létre, listázása és törlése 
 3. Válassza a jóváhagyás mező alatt **Igen**.
 
 ![Felhasználó által hozzárendelt felügyelt identitás törlése](./media/how-to-manage-ua-identity-portal/delete-user-assigned-managed-identity-portal.png)
+
+## <a name="assign-a-role-to-a-user-assigned-managed-identity"></a>Szerepkör hozzárendelése felhasználóhoz felügyelt identitásnak 
+
+1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) egy olyan fiókkal az Azure-előfizetéshez társított felügyelt felhasználó által hozzárendelt identitások listázásához.
+2. A Keresés mezőbe írja be a *felügyelt identitások*, és a szolgáltatások területen kattintson a **felügyelt identitások**.
+3. A felhasználó által hozzárendelt felügyelt az előfizetéshez tartozó azonosítók listáját adja vissza.  Válassza ki a felhasználó által hozzárendelt felügyelt identitás, amelyet szeretne rendelhet egy szerepkört.
+4. Válassza ki **hozzáférés-vezérlés (IAM)** majd **Hozzáadás**.
+
+   ![Felhasználó által hozzárendelt felügyelt identitás indítása](./media/how-to-manage-ua-identity-portal/assign-role-screenshot1.png)
+
+5. Az engedélyek hozzáadása panelen konfigurálja a következő értékeket, és kattintson a **mentése**:
+   - **Szerepkör** -a szerepkör hozzárendelése
+   - **Hozzáférés hozzárendelése** – az erőforrás hozzárendelni a felhasználó által hozzárendelt felügyelt identitás
+   - **Válassza ki** – a tag hozzáférés hozzárendelése
+   
+   ![Felhasználó által hozzárendelt felügyelt identitás IAM](./media/how-to-manage-ua-identity-portal/assign-role-screenshot2.png)  

@@ -15,24 +15,26 @@ ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 4f2d49233a6eb92f567d4265210fcab394aa6461
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 661ff7c07ba2bb17eb5830b38bb39e1c3e80bb55
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "40190221"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45602908"
 ---
 # <a name="advanced-aggregations-in-log-analytics-queries"></a>A Log Analytics-lekérdezések speciális összesítések
 
 > [!NOTE]
 > Hajtsa végre [Log Analytics-lekérdezések összesítések](./aggregations.md) ebben a leckében befejezése előtt.
 
+[!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
+
 Ez a cikk ismerteti az egyes Log Analytics-lekérdezések számára elérhető speciális összesítési lehetőségeket.
 
 ## <a name="generating-lists-and-sets"></a>Listák és a csoportok létrehozása
 Használhat `makelist` pivot adatok egy adott oszlopban lévő értékek sorrendje. Például előfordulhat, hogy szeretné a leggyakrabban használt sorrend események kerül sor a gépeken. Az adatok sorrendje EventIDs az összes olyan számítógépen forgáspont lényegében azt is. 
 
-```OQL
+```KQL
 Event
 | where TimeGenerated > ago(12h)
 | order by TimeGenerated desc
@@ -48,7 +50,7 @@ Event
 
 Emellett hasznos csak egyedi értékek listájának létrehozásához. Ezt nevezzük a _beállítása_ és készíthet `makeset`:
 
-```OQL
+```KQL
 Event
 | where TimeGenerated > ago(12h)
 | order by TimeGenerated desc
@@ -65,7 +67,7 @@ Például `makelist`, `makeset` is együttműködik rendezett adatok, és a diag
 ## <a name="expanding-lists"></a>Listák kibontása
 Más néven inverz működésének `makelist` vagy `makeset` van `mvexpand`, amely kibővíti a sorok értékek listáját. Kibővítheti, hogy a dinamikus oszlopok, mind a JSON-t, és a tömb bármennyi. Például, hogy sikerült ellenőrizni a *szívverés* tábla adatokat küldő számítógépek szívverés az elmúlt egy órában küldött megoldásokhoz:
 
-```OQL
+```KQL
 Heartbeat
 | where TimeGenerated > ago(1h)
 | project Computer, Solutions
@@ -95,7 +97,7 @@ Szívverés |} ahol TimeGenerated > ago(1h) |} Projekt számítógép, split (me
 
 Ezt követően az `makelist` újra elemek csoportosítása együtt, és ezúttal megoldásonként számítógépek listájának megtekintéséhez:
 
-```OQL
+```KQL
 Heartbeat
 | where TimeGenerated > ago(1h)
 | project Computer, split(Solutions, ",")
@@ -113,7 +115,7 @@ Heartbeat
 ## <a name="handling-missing-bins"></a>Hiányzik a bins kezelése
 Egy hasznos alkalmazásának `mvexpand` van szükség a hiányzó bins töltse ki alapértelmezett értékeket. Tegyük fel, hogy egy adott gép üzemideje szívverésével áttekintésével keres. Meg is át szeretné tekinteni a forrás, amely szívverés a _kategória_ oszlop. Normális esetben használjuk lenne egy egyszerű foglalják össze a következő utasítást:
 
-```OQL
+```KQL
 Heartbeat
 | where TimeGenerated > ago(12h)
 | summarize count() by Category, bin(TimeGenerated, 1h)
@@ -129,7 +131,7 @@ Heartbeat
 
 Ezeket az eredményeket, ha a gyűjtő társított "2017-06-06T19:00:00Z" hiányzik, mert nincs minden Szívveréses adatokat az adott órában. Használja a `make-series` függvény üres gyűjtők egy alapértelmezett értéket rendelni. A művelet létrehoz egy extra tömb két oszlopot tartalmazó kategóriákhoz, egy az értékek és a egy megfelelő idő gyűjtők a sort:
 
-```OQL
+```KQL
 Heartbeat
 | make-series count() default=0 on TimeGenerated in range(ago(1d), now(), 1h) by Category 
 ```
@@ -141,7 +143,7 @@ Heartbeat
 
 A harmadik eleme a *count_* tömbben 0 várt módon, és a megfelelő időbélyeg "2017-06-06T19:00:00.0000000Z" az a _TimeGenerated_ tömb. A tömb formátuma nehezen olvasható, ha. Használat `mvexpand` bontsa ki a tömbök és állítja elő a kimeneti által generált, ugyanazt a formátumot `summarize`:
 
-```OQL
+```KQL
 Heartbeat
 | make-series count() default=0 on TimeGenerated in range(ago(1d), now(), 1h) by Category 
 | mvexpand TimeGenerated, count_
@@ -163,7 +165,7 @@ Heartbeat
 Gyakran előfordul, hogy válassza ki a különböző kritériumok alapján néhány egyedi entitások neve, és szűrjön rá, hogy entitáshalmazt le másik adatkészletet. Például előfordulhat, hogy ismert, hogy a hiányzó frissítések számítógépek keresése és azonosítása, amelyek ezeket a számítógépeket emelte ki az IP-címek:
 
 
-```OQL
+```KQL
 let ComputersNeedingUpdate = toscalar(
     Update
     | summarize makeset(Computer)

@@ -15,24 +15,26 @@ ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 359e5e671287c4d330deeb2d3573877d9ee5d1c5
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: acf51056a084abc08bda2d7f73b561f442f57784
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "40190213"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45605528"
 ---
 # <a name="creating-charts-and-diagrams-from-log-analytics-queries"></a>Diagramok és ábrák hoz létre a Log Analytics-lekérdezések
 
 > [!NOTE]
 > Hajtsa végre [speciális összesítések a Log Analytics-lekérdezések](advanced-aggregations.md) ebben a leckében befejezése előtt.
 
+[!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
+
 Ez a cikk ismerteti az Azure Log Analytics az adatokat különböző módon megjeleníthető különféle vizualizációkat.
 
 ## <a name="charting-the-results"></a>Az eredmények diagramkészítési
 Indítsa el vannak egy operációs rendszer, az elmúlt órában hány számítógép áttekintésével:
 
-```OQL
+```KQL
 Heartbeat
 | where TimeGenerated > ago(1h)
 | summarize count(Computer) by OSType  
@@ -50,7 +52,7 @@ Jobb képet kaphat, jelölje be **diagram**, és válassza ki a **torta** beáll
 ## <a name="timecharts"></a>Timecharts
 Az átlag, a processzor kihasználtsága az 50, és a 95. percentilisei megjelenítése bins 1 óra. A lekérdezés több sorozat állít elő, és ezután kiválaszthatja, melyik sorozat a diagram megjelenítése:
 
-```OQL
+```KQL
 Perf
 | where TimeGenerated > ago(1d) 
 | where CounterName == "% Processor Time" 
@@ -65,7 +67,7 @@ Válassza ki a **sor** diagram megjelenítési beállítás:
 
 Referenciavonalak segítségével egyszerűbb azonosításához, ha a metrika túllépte az egy adott küszöbértéket. Adjon hozzá egy sort egy diagramra, hogy az adatkészlet egy állandó oszloppal kiterjesztése:
 
-```OQL
+```KQL
 Perf
 | where TimeGenerated > ago(1d) 
 | where CounterName == "% Processor Time" 
@@ -78,7 +80,7 @@ Perf
 ## <a name="multiple-dimensions"></a>Több dimenzióban
 Több kifejezésének a `by` záradékában `summarize` hozzon létre több sort az eredmények között, egy az egyes kombinaci hodnot.
 
-```OQL
+```KQL
 SecurityEvent
 | where TimeGenerated > ago(1d)
 | summarize count() by tostring(EventID), AccountType, bin(TimeGenerated, 1h)

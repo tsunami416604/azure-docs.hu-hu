@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/08/2016
 ms.author: sedusch
-ms.openlocfilehash: eb2b26333647d464a3a18cd07bf1576251fb3830
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: a2daf75e5a75a4fb0be06986903a2f4f9be8adf0
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39715403"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45634846"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>Az SAP NetWeaver számára az Azure virtuális gépek üzembe helyezése
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -483,7 +483,7 @@ Az Azure Portalon adja meg a sablon a következő paraméterekkel:
   * **Rendszergazdai felhasználónév** és **rendszergazdai jelszó**: felhasználónévvel és jelszóval.
     Új felhasználó létrehozása a virtuális géphez való bejelentkezéshez.
   * **Új vagy meglévő alhálózaton**: azt határozza meg, hogy létrehozott egy új virtuális hálózatot és alhálózatot, vagy egy létező alhálózatot. Ha a helyszíni hálózatához csatlakoztatott virtuális hálózat már rendelkezik, válassza ki a **meglévő**.
-  * **Alhálózati azonosító**: az azonosító az alhálózat a virtuális gépek csatlakozni fognak. Válassza ki az alhálózatot a virtuális magánhálózati (VPN) vagy a virtuális hálózat Azure ExpressRoute használatával csatlakozni a virtuális gép a helyszíni hálózathoz. Az azonosító általában néz ki: /subscriptions/&lt;előfizetés-azonosító > /resourceGroups/&lt;erőforráscsoport-név > /providers/Microsoft.Network/virtualNetworks/&lt;virtuális hálózat neve > /subnets/&lt;alhálózat neve >
+  * **Alhálózati azonosító**: Ha azt szeretné, helyezheti üzembe a virtuális gép egy meglévő Vnetet, amelyekben egy meghatározott alhálózatot a virtuális gép hozzá kell rendelni, nevezze el a kívánt alhálózatot. Az azonosító általában néz ki: /subscriptions/&lt;előfizetés-azonosító > /resourceGroups/&lt;erőforráscsoport-név > /providers/Microsoft.Network/virtualNetworks/&lt;virtuális hálózat neve > /subnets/&lt;alhálózat neve >
 
 1. **Feltételek és kikötések**:  
     Tekintse át és fogadja el a jogi feltételeket.
@@ -614,9 +614,7 @@ Az Azure Portalon adja meg a sablon a következő paraméterekkel:
 
     Új felhasználó létrehozása a virtuális géphez való bejelentkezéshez.
   * **Új vagy meglévő alhálózaton**: azt határozza meg, hogy létrejön egy új virtuális hálózatot és alhálózatot, vagy egy létező alhálózatot. Ha a helyszíni hálózatához csatlakoztatott virtuális hálózat már rendelkezik, válassza ki a **meglévő**.
-  * **Alhálózati azonosító**: az azonosító az alhálózat, amelyhez a virtuális gépek csatlakozni fog. Válassza ki a virtuális gép kapcsolódni a helyszíni hálózathoz a VPN vagy az ExpressRoute virtuális hálózat alhálózatának. Az azonosító általában néz ki:
-
-    /Subscriptions/&lt;előfizetés-azonosító > /resourceGroups/&lt;erőforráscsoport-név > /providers/Microsoft.Network/virtualNetworks/&lt;virtuális hálózat neve > /subnets/&lt;alhálózat neve >
+  * **Alhálózati azonosító**: Ha azt szeretné, helyezheti üzembe a virtuális gép egy meglévő Vnetet, amelyekben egy meghatározott alhálózatot a virtuális gép hozzá kell rendelni, nevezze el a kívánt alhálózatot. Az azonosító általában néz ki: /subscriptions/&lt;előfizetés-azonosító > /resourceGroups/&lt;erőforráscsoport-név > /providers/Microsoft.Network/virtualNetworks/&lt;virtuális hálózat neve > /subnets/&lt;alhálózat neve >
 
 1. **Feltételek és kikötések**:  
     Tekintse át és fogadja el a jogi feltételeket.
@@ -697,9 +695,7 @@ Az Azure Portalon adja meg a sablon a következő paraméterekkel:
   * **Az operációs rendszer lemez VHD URI** (csak a sablon nem felügyelt lemez): az URI a saját operációsrendszer-lemezről, például a https://&lt;accountname >.blob.core.windows.net/vhds/osdisk.vhd.
   * **Felügyelt lemez azonosítója az operációs rendszer lemezén** (csak felügyelt lemez sablon): a felügyelt lemez operációsrendszer-lemezről, az azonosító /subscriptions/92d102f7-81a5-4df7-9877-54987ba97dd9/resourceGroups/group/providers/Microsoft.Compute/disks/WIN
   * **Új vagy meglévő alhálózaton**: azt határozza meg, hogy létrehozott egy új virtuális hálózatot és alhálózatot, vagy egy létező alhálózatot. Ha a helyszíni hálózatához csatlakoztatott virtuális hálózat már rendelkezik, válassza ki a **meglévő**.
-  * **Alhálózati azonosító**: az azonosító az alhálózat, amelyhez a virtuális gépek csatlakozni fog. Válassza ki a virtuális gép kapcsolódni a helyszíni hálózathoz a VPN- vagy Azure ExpressRoute virtuális hálózat alhálózatának. Az azonosító általában néz ki:
-
-    /Subscriptions/&lt;előfizetés-azonosító > /resourceGroups/&lt;erőforráscsoport-név > /providers/Microsoft.Network/virtualNetworks/&lt;virtuális hálózat neve > /subnets/&lt;alhálózat neve >
+  * **Alhálózati azonosító**: Ha azt szeretné, helyezheti üzembe a virtuális gép egy meglévő Vnetet, amelyekben egy meghatározott alhálózatot a virtuális gép hozzá kell rendelni, nevezze el a kívánt alhálózatot. Az azonosító általában néz ki: /subscriptions/&lt;előfizetés-azonosító > /resourceGroups/&lt;erőforráscsoport-név > /providers/Microsoft.Network/virtualNetworks/&lt;virtuális hálózat neve > /subnets/&lt;alhálózat neve >
 
 1. **Feltételek és kikötések**:  
     Tekintse át és fogadja el a jogi feltételeket.
@@ -835,7 +831,7 @@ A lépéseket, a proxy konfigurálása a Windows nem azonosak a úgy kell konfig
 Proxybeállítások megfelelően a helyi rendszerfiók interneteléréssel kell állítani. Ha a proxybeállításokat nem a csoportházirend-beállításokat, konfigurálhatja a helyi rendszer fiók beállításait.
 
 1. Lépjen a **Start**, adja meg **gpedit.msc**, majd válassza ki **Enter**.
-1. Válassza ki **számítógép konfigurációja** > **felügyeleti sablonok** > **Windows-összetevők**  >  ** Az Internet Explorer**. Győződjön meg arról, hogy a beállítás **győződjön meg arról, proxy beállításainak a gépenkénti (helyett felhasználónkénti)** le van tiltva vagy nincs konfigurálva.
+1. Válassza ki **számítógép konfigurációja** > **felügyeleti sablonok** > **Windows-összetevők**  >   **Az Internet Explorer**. Győződjön meg arról, hogy a beállítás **győződjön meg arról, proxy beállításainak a gépenkénti (helyett felhasználónkénti)** le van tiltva vagy nincs konfigurálva.
 1. A **Vezérlőpult**, lépjen a **hálózati és megosztási központ** > **Internetbeállítások**.
 1. Az a **kapcsolatok** lapon jelölje be a **LAN-beállítások** gombra.
 1. Törölje a **beállítások automatikus észlelése** jelölőnégyzetet.

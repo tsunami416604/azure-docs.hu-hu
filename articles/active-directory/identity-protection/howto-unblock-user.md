@@ -1,5 +1,5 @@
 ---
-title: Az Azure Active Directory Identity Protection - letiltásának feloldására felhasználók |} A Microsoft Docs
+title: Hogyan lehet az Azure Active Directory Identity Protection felhasználók tiltásának feloldása |} A Microsoft Docs
 description: Ismerje meg, hogyan feloldása, amely egy Azure Active Directory Identity Protection-szabályzat által letiltott felhasználók.
 services: active-directory
 keywords: az Azure active directory identity protection a következőket felhasználó blokkolásának feloldása
@@ -13,17 +13,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/15/2018
+ms.date: 09/13/2018
 ms.author: markvi
-ms.reviewer: nigu
-ms.openlocfilehash: c5f251f2de938d4441672c8aa1a6dbc6bd616155
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.reviewer: raluthra
+ms.openlocfilehash: f8bf983033407bbf597af15f18f28ecf33b7558f
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45575491"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45631684"
 ---
-# <a name="azure-active-directory-identity-protection---how-to-unblock-users"></a>Az Azure Active Directory Identity Protection - hogyan felhasználók tiltásának feloldása
+# <a name="how-to-unblock-users"></a>Útmutató: A felhasználók tiltásának feloldása
+
 Az Azure Active Directory Identity Protection a házirendek felhasználók letiltását, a konfigurált feltételek teljesülése esetén konfigurálhatja. Általában egy letiltott felhasználó névjegyek segélyszolgálat lesz feloldva. Ez a cikk ismerteti a lépéseket egy letiltott felhasználó feloldásának is végezhet.
 
 ## <a name="determine-the-reason-for-blocking"></a>Blokkolás okának megállapításához

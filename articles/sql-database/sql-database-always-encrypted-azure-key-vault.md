@@ -10,12 +10,12 @@ ms.custom: security
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: vanto
-ms.openlocfilehash: d8f8a823f19ff233d05d09c126cf2524a0aa532e
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: 5149b4cbd1e86bfca3ad7d628d129a08aff60a98
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45542193"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45604305"
 ---
 # <a name="always-encrypted-protect-sensitive-data-in-sql-database-and-store-your-encryption-keys-in-azure-key-vault"></a>Always Encrypted: SQL Database-ben a bizalmas adatok védelme és tárolni a titkosítási kulcsokat az Azure Key Vaultban
 
@@ -595,7 +595,9 @@ Láthatja, hogy a titkosított oszlopokban nem tartalmaz egyszerű szöveges ada
 
    ![Új Konzolalkalmazás](./media/sql-database-always-encrypted-azure-key-vault/ssms-encrypted.png)
 
-Az SSMS használatához az egyszerű szöveges adatok is hozzáadhat a *oszlop titkosítási beállítás = engedélyezve* paramétert annak a kapcsolatnak.
+Használható az SSMS az egyszerű szöveges adatok eléréséhez, akkor először győződjön meg arról, hogy a felhasználó rendelkezik-e megfelelő engedélyekkel az Azure Key Vault: *első*, *unwrapKey*, és *ellenőrzése*. Részletes információkért lásd: [létrehozása és Store (Always Encrypted) oszlop főkulcsok](https://docs.microsoft.com/en-us/sql/relational-databases/security/encryption/create-and-store-column-master-keys-always-encrypted?view=sql-server-2017).
+
+Majd adja hozzá a *oszlop titkosítási beállítás = engedélyezve* paraméter a kapcsolódás során.
 
 1. Az ssms-ben, kattintson a jobb gombbal a kiszolgáló **Object Explorer** válassza **Disconnect**.
 2. Kattintson a **Connect** > **adatbázismotor** megnyitásához a **kapcsolódás a kiszolgálóhoz** ablakot, és kattintson **beállítások**.

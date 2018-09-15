@@ -1,6 +1,6 @@
 ---
-title: Támogatott verziók a MySQL az Azure-adatbázis
-description: A témakör ismerteti a támogatott verziók Azure adatbázis MySQL.
+title: Azure Database for MySQL-hez a támogatott verziók
+description: Ismerteti a támogatott verziók az Azure Database for MySQL-hez.
 services: mysql
 author: ajlam
 ms.author: andrela
@@ -9,28 +9,28 @@ editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
 ms.date: 05/23/2018
-ms.openlocfilehash: c9a533ed9b9eb9ac53a02439b98a78954c7aaa11
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 1b6dded1521489353e65b630ef5432ba6ff8f3e8
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35265248"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45631565"
 ---
-# <a name="supported-azure-database-for-mysql-server-versions"></a>Támogatott Azure-adatbázis a MySQL server-verziók
-A MySQL adatbázis Azure identitáskezelési [MySQL Community Edition](https://www.mysql.com/products/community/), a InnoDB használata.  Azure MySQL-adatbázis jelenleg az alábbi verzióit támogatja:
+# <a name="supported-azure-database-for-mysql-server-versions"></a>Támogatott, Azure Database for MySQL server-verziók
+Azure Database for MySQL-hez az identitáskezelési [MySQL Community Edition](https://www.mysql.com/products/community/), az InnoDB motor használatával.  Azure Database for MySQL jelenleg az alábbi verzióit támogatja:
 
-## <a name="mysql-version-5639"></a>MySQL-verzió 5.6.39
-Tekintse meg a MySQL [dokumentáció](https://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-39.html) további fejlesztések és MySQL 5.6.39 javításaival kapcsolatos.
+## <a name="mysql-version-5639"></a>MySQL verziója 5.6.39
+Tekintse meg a MySQL [dokumentáció](https://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-39.html) további fejlesztések és javítások MySQL 5.6.39-ben.
 
-## <a name="mysql-version-5721"></a>MySQL-verzió 5.7.21
-Tekintse meg a MySQL [dokumentáció](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-21.html) fejlesztései és javításaival kapcsolatos további a MySQL 5.7.21.
+## <a name="mysql-version-5721"></a>MySQL verziója 5.7.21
+Tekintse meg a MySQL [dokumentáció](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-21.html) kapcsolatos fejlesztések és javítások MySQL 5.7.21-ben.
 
 > [!NOTE]
-> A szolgáltatás egy átjáró használatával a kapcsolatok átirányítása server-példányokat. A kapcsolat létrejötte után a MySQL-ügyfél verziószáma MySQL állítsa be az átjáró, a tényleges verzió a MySQL server-példányon futnak. A MySQL kiszolgálópéldány verziójának meghatározásához használja a `SELECT VERSION();` parancsot a MySQL-parancssorba. 
+> A szolgáltatásban az átjáró segítségével kiszolgálópéldányok irányítsa át a kapcsolatokat. A kapcsolat létrejötte után a MySQL-ügyfél az átjáró nem futó verzió az MySQL server-példányon állítsa be a MySQL verzióját jeleníti meg. A MySQL server-példány verziója meghatározásához használja a `SELECT VERSION();` parancsot a MySQL-parancssorban.
 
-## <a name="managing-updates-and-upgrades"></a>Kezelése frissítések és verziófrissítések
-A szolgáltatás automatikusan kezeli a alverzió frissítések javítását. Főverzió frissítések nem támogatottak (például) MySQL 5.6 verzióra történő frissítése MySQL 5.7).
+## <a name="managing-updates-and-upgrades"></a>Frissítések kezelése
+A szolgáltatás automatikusan kezeli a javítása az alverzió frissítéseket. Főverzió frissítés jelenleg nem támogatott. Ha például a MySQL 5.6-os MySQL 5.7-es verzióra nem támogatott. Ha szeretné, a következő fő verzióra való frissítéshez, egy [memóriakép és visszaállítás](./concepts-migrate-dump-restore.md) , hogy egy kiszolgálót, amely az új motor verziójával lett létrehozva.
 
 ## <a name="next-steps"></a>További lépések
 
-Adott erőforrásokra vonatkozó információkból tájékoódhat kvótái és korlátai alapján a **szolgáltatásréteg**, lásd: [Szolgáltatásszinteken](./concepts-pricing-tiers.md)
+További információ az adott erőforrás kvótái és korlátai alapján a **szolgáltatásszint**, lásd: [szolgáltatásszintek](./concepts-pricing-tiers.md)
