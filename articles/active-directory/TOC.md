@@ -323,37 +323,8 @@
 
 ### [A jogkivonatok élettartamának beállítása](active-directory-configurable-token-lifetimes.md)
 
-## Hozzáférési felülvizsgálatok
-### [Hozzáférési felülvizsgálatok áttekintése](active-directory-azure-ad-controls-access-reviews-overview.md)
-### [Hozzáférési felülvizsgálat befejezése](active-directory-azure-ad-controls-complete-access-review.md)
-### [Hozzáférési felülvizsgálat létrehozása](active-directory-azure-ad-controls-create-access-review.md)
-### [Hozzáférési felülvizsgálat végrehajtása](active-directory-azure-ad-controls-perform-access-review.md)
-### [A hozzáférés felülvizsgálata](active-directory-azure-ad-controls-how-to-review-your-access.md)
-### [Vendéghozzáférés hozzáférési felülvizsgálatokkal](active-directory-azure-ad-controls-manage-guest-access-with-access-reviews.md)
-### [Felhasználói hozzáférések kezelése felülvizsgálatokkal](active-directory-azure-ad-controls-manage-user-access-with-access-reviews.md)
-### [Programok és vezérlők kezelése](active-directory-azure-ad-controls-manage-programs-controls.md)
-### [Hozzáférési felülvizsgálatok eredményeinek lekérése](active-directory-azure-ad-controls-retrieve-access-review.md)
-
-## [Használati feltételek](active-directory-tou.md)
-
 ## Identitások védelme
 
-### Azure AD Identity Protection
-#### [Áttekintés](identity-protection/overview.md)
-#### [Bekapcsolás](identity-protection/enable.md)
-#### [Biztonsági rések keresése](identity-protection/vulnerabilities.md)
-#### [Kockázati események](active-directory-identity-protection-risk-events.md)
-#### [Értesítések](identity-protection/notifications.md)
-#### [Bejelentkezési felület](identity-protection/flows.md)
-#### [Kockázati események szimulálása](identity-protection/playbook.md)
-#### [Felhasználók tiltásának feloldása](identity-protection/howto-unblock-user.md)
-#### [A Multi-Factor Authentication regisztrációs szabályzatának konfigurálása](identity-protection/howto-mfa-policy.md)
-#### [A bejelentkezési kockázati szabályzat konfigurálása](identity-protection/howto-sign-in-risk-policy.md)
-#### [A felhasználói kockázati szabályzat konfigurálása](identity-protection/howto-user-risk-policy.md)
-#### [Hozzáférés letiltása munkameneti kockázat észlelésekor](identity-protection/quickstart-sign-in-risk-policy.md)
-#### [Gyakori kérdések](identity-protection/faqs.md)
-#### [Szószedet](identity-protection/glossary.md)
-#### [Microsoft Graph](identity-protection/graph-get-started.md)
 ### [Privileged Identity Management](privileged-identity-management/pim-configure.md?toc=%2fazure%2factive-directory%2ftoc.json)
 
 ## [Az AD FS üzembe helyezése az Azure-ban](active-directory-aadconnect-azure-adfs.md)
