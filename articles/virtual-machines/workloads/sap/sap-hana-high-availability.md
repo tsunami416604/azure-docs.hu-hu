@@ -1,6 +1,6 @@
 ---
-title: Az Azure-beli virtuális gépek (VM) SAP HANA-Rendszerreplikálást beállítása |} A Microsoft Docs
-description: Magas rendelkezésre állás az SAP Hana az Azure-beli virtuális gépek (VM) hoz létre.
+title: A SUSE Linux Enterprise Server Azure virtuális gépeken SAP Hana magas rendelkezésre állású |} A Microsoft Docs
+description: A SUSE Linux Enterprise Server Azure virtuális gépeken SAP Hana magas rendelkezésre állás
 services: virtual-machines-linux
 documentationcenter: ''
 author: MSSedusch
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: 7a0797d79da95db77174a3e067a1e84276f286a5
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: dfcb5c7c0b487b8379d89a9b285bae1ca1a9c774
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42061385"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45634523"
 ---
-# <a name="high-availability-of-sap-hana-on-azure-virtual-machines"></a>Azure virtuális gépeken futó SAP Hana magas rendelkezésre állás
+# <a name="high-availability-of-sap-hana-on-azure-vms-on-suse-linux-enterprise-server"></a>A SUSE Linux Enterprise Server Azure virtuális gépeken SAP Hana magas rendelkezésre állás
 
 [dbms-guide]:dbms-guide.md
 [deployment-guide]:deployment-guide.md
@@ -110,7 +110,7 @@ A sablon üzembe helyezéséhez kövesse az alábbi lépéseket:
     - **Rendszer rendelkezésre állását**: válasszon **magas rendelkezésre ÁLLÁSÚ**.
     - **Rendszergazdai felhasználónév és jelszó rendszergazdai**: egy új felhasználót hoz létre, amely segítségével jelentkezzen be a számítógépen.
     - **Új vagy meglévő alhálózat**: azt határozza meg, hogy egy új virtuális hálózatot és alhálózatot kell létrehozni, vagy egy meglévő alhálózatot használja. Ha a helyszíni hálózatához csatlakoztatott virtuális hálózat már rendelkezik, válassza ki a **meglévő**.
-    - **Alhálózati azonosító**: az azonosító az alhálózat, amelyhez a virtuális gépeket kell csatlakoztatni. A virtuális gép csatlakoztatása a helyszíni hálózathoz, jelölje be a VPN- vagy Azure ExpressRoute virtuális hálózat alhálózatának. Az azonosító általában tűnik **/subscriptions/\<előfizetés-azonosító > /resourceGroups/\<erőforráscsoport-név > /providers/Microsoft.Network/virtualNetworks/\<virtuális hálózat neve > /subnets/ \<alhálózat neve >**.
+    - **Alhálózati azonosító**: Ha azt szeretné, helyezheti üzembe a virtuális gép egy meglévő Vnetet, amelyekben egy meghatározott alhálózatot a virtuális gép hozzá kell rendelni, nevezze el a kívánt alhálózatot. Az azonosító általában tűnik **/subscriptions/\<előfizetés-azonosító > /resourceGroups/\<erőforráscsoport-név > /providers/Microsoft.Network/virtualNetworks/\<virtuális hálózat neve > /subnets/ \<alhálózat neve >**.
 
 ### <a name="manual-deployment"></a>Manuális telepítés
 
@@ -969,7 +969,7 @@ Megjegyzés: A következő ellenőrzés tervezték, hogy a feladatütemezés fut
    <pre><code>hn1adm@hn1-db-1:/usr/sap/HN1/HDB03> HDB stop
    </code></pre>
 
-   Támasztja felismeri a leállított HANA-példány és az erőforrás az hn1-adatbázis – 1. csomóponton sikertelenként megjelölni. Futtassa a következő parancsot a meghiúsult állapotú karbantartása. Támasztja majd indítsa újra automatikusan a HANA-példány.
+   Támasztja felismeri a leállított HANA-példány és az erőforrás az hn1-adatbázis – 1. csomóponton sikertelenként megjelölni. Támasztja automatikusan újra kell indítani a HANA-példány. Futtassa a következő parancsot a meghiúsult állapotú karbantartása.
 
    <pre><code># run as root
    hn1-db-1:~ # crm resource cleanup msl_SAPHana_HN1_HDB03 hn1-db-1
