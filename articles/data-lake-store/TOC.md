@@ -3,14 +3,14 @@
 
 # Áttekintés
 ## [Az 1. generációs Data Lake Storage áttekintése](data-lake-store-overview.md)
-## [1. generációs Data Lake Storage összehasonlítása az Azure Storage szolgáltatással](data-lake-store-comparison-with-blob-storage.md)
-## [Big Data-feldolgozás 1. generációs Data Lake Storage szolgáltatással](data-lake-store-data-scenarios.md)
-## [Az 1. generációs Azure Data Lake Storage szolgáltatással működő nyílt forráskódú alkalmazások](data-lake-store-compatible-oss-other-applications.md)
+## [Összehasonlítás az Azure Storage szolgáltatással](data-lake-store-comparison-with-blob-storage.md)
+## [Big Data feldolgozása](data-lake-store-data-scenarios.md)
+## [Nyílt forráskódú alkalmazások használata](data-lake-store-compatible-oss-other-applications.md)
 ## [Ajánlott eljárások](data-lake-store-best-practices.md)
 
 # Bevezetés
-## [A Portal használata](data-lake-store-get-started-portal.md)
-## [A PowerShell-lel](data-lake-store-get-started-powershell.md)
+## [Az Azure Portal használata](data-lake-store-get-started-portal.md)
+## [Az Azure PowerShell használata](data-lake-store-get-started-powershell.md)
 ## [Az Azure CLI 2.0 használata](data-lake-store-get-started-cli-2.0.md)
 
 
