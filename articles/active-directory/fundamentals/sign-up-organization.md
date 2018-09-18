@@ -1,38 +1,40 @@
 ---
-title: Iratkozzon fel az Azure AD-bA szervezetként |} Microsoft Docs
-description: Ismerje meg, hogyan használhatja a munkahelyi vagy iskolai fiókkal, hogy kihasználja a meglévő felhasználói fiókok, házirendek, beállítások vagy a helyi kiszolgálói konfigurációk mellett, akkor már rendelkezik, és növelheti a hatékonyságot, a szervezet helyszíni identitás-infrastruktúra és az Azure AD között.
+title: Az Azure Active Directory szervezetként regisztráció |} A Microsoft Docs
+description: Ismerje meg, hogyan iratkozzon fel a szervezet az Azure és az Azure Active Directory használatára.
 services: active-directory
-documentationcenter: ''
 author: eross-msft
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.component: fundamentals
 ms.topic: conceptual
-ms.date: 08/28/2017
+ms.date: 09/14/2018
 ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro
-ms.openlocfilehash: a8d4781af0320f86eb5dd0b4b5e71c0ca7db5a18
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 77b49a050724cbf4666ca5253cc1fa518c441e62
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37063937"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45732532"
 ---
-# <a name="how-to-sign-up-for-azure-ad-as-an-organization"></a>Hogyan: regisztráljon az Azure AD-bA szervezetként
-Amíg nemrég sikerült csak regisztrál egy új Microsoft Azure-előfizetés a Microsoft-fiókjával (Windows Live ID). Azure mostantól támogatja a regisztrációt a következő két fiók módszerek valamelyikével:
+# <a name="how-to-sign-up-for-azure-active-directory-as-an-organization"></a>Útmutató: Azure Active Directory szervezetként regisztrál
+Regisztráljon az Azure Active Directory (Azure AD) egy új Microsoft Azure-előfizetés használatával:
 
-* **Microsoft-fiókok** (létre Ön által személyes használatra) - kereskedelmi célú Microsoft-termékeket valamennyi eléréséhez és a felhőalapú szolgáltatások, például az Outlook (Hotmail), Messenger, OneDrive, az MSN, Xbox LIVE, vagy az Office 365. A Microsoft-fiók regisztrál egy Outlook.com-os postaláda automatikusan hoz létre. A Microsoft-fiók létrehozása után használat fogyasztói kapcsolatos Microsoft felhőszolgáltatások vagy Azure eléréséhez. [További információ](https://account.microsoft.com/account)
-* **Munkahelyi vagy iskolai fiókok** (üzleti vagy oktatási használatra rendszergazdája által kibocsátott) – összes kis, közepes és nagyvállalati hozzáférést biztosítanak a vállalati szintű Microsoft felhőszolgáltatások, például Azure, a Microsoft Intune vagy az Office 365. Ha ezek a szolgáltatások egyik szervezeti jelentkezik, egy felhőalapú directory automatikusan létrehozza a rendszer képviselő a szervezet Azure Active Directoryban. [További információ](active-directory-administer.md)
-  
-    Ez a könyvtár létrehozása után egy rendszergazda is létrehozhat felhasználók és azok alapján licencek hozzárendelése a mely felhőszolgáltatási előfizetésein hozzáférésre van szükségük, például az Azure.
+- **A Microsoft-fiók.** A személyes Microsoft-fiók használatával hozzáférés az Azure és a végfelhasználóra irányuló Microsoft-termékek minden és felhőszolgáltatásokhoz, például Outlook (Hotmail), Messenger, OneDrive, MSN, Xbox LIVE- vagy Office 365-höz. Microsoft-fiókkal regisztrál egy Outlook.com-os postaláda automatikusan hoz létre. További információkért lásd: [Microsoft-fiók áttekintése](https://account.microsoft.com/account).
 
-Regisztráció az Azure-bA szervezetként szeretné? [**Feliratkozás most**](https://azure.microsoft.com/pricing/purchase-options/)
+- **Munkahelyi vagy iskolai fiókjával.** Használja a munkahelyi vagy iskolai fiókkal hozzáférhet a kis, közepes és nagyvállalati a cloud services a Microsoft, például Azure, Microsoft Intune vagy Office 365-höz. A regisztrációt követően az egyik szolgáltatásba szervezetként, az Azure AD automatikusan látja el egy felhőalapú címtár, amely a szervezet jelöli. További információkért lásd: [kezelése az Azure AD-címtár](active-directory-administer.md).
 
-**További források**
+## <a name="next-steps"></a>További lépések
 
-* [A Microsoft Azure blog](https://azure.microsoft.com/blog/)
-* [Mi az Azure AD?](active-directory-whatis.md)
-* [A helyszíni identitás-infrastruktúra használata a felhőben](../connect/active-directory-aadconnect.md)
+- [Szervezetként regisztráció](https://azure.microsoft.com/pricing/purchase-options/)
+
+- [Regisztráljon az Azure Active Directory Premium-kiadások](active-directory-get-started-premium.md)
+
+- [További információ az Azure ad-ben](active-directory-whatis.md)
+
+- [A helyszíni identitás-infrastruktúrát használhat a felhőben](../connect/active-directory-aadconnect.md)
+
+- [A Microsoft Azure blog](https://azure.microsoft.com/blog/)
 

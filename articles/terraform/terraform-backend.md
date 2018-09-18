@@ -1,18 +1,18 @@
 ---
 title: A Terraform háttérmoduljaként Azure Storage használata
-description: Bevezetés az Azure Storage tárolóban végzett tárolása Terrafom állapota.
+description: Bevezetés az Azure Storage-ban a Terraform állapot tárolásához.
 services: terraform
 author: neilpeterson
 ms.service: terraform
 ms.topic: article
 ms.date: 09/13/2018
 ms.author: nepeters
-ms.openlocfilehash: c27c6bc5f2071203c9a9dd5a94e73c0cb4626598
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 2bee9f73f430e18fe159eed142b265cc1934860e
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45608304"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45984973"
 ---
 # <a name="store-terraform-state-in-azure-storage"></a>A Terraform állapot Store az Azure Storage-ban
 
@@ -26,7 +26,7 @@ A Terraform beletartoznak a egy állam háttér, azaz a Terraform állapothoz t�
 
 ## <a name="configure-storage-account"></a>Storage-fiók konfigurálása
 
-Az Azure Storage háttérmoduljaként, mielőtt egy storage-fiókot kell létrehoznia. A storage-fiókot az Azure portal, PowerShell, az Azure CLI-vel vagy maga a Terraform hozhatja létre. A következő minta használatával konfigurálhatja a store-fiókot az Azure CLI használatával.
+Az Azure Storage háttérmoduljaként, mielőtt egy storage-fiókot kell létrehoznia. A storage-fiókot az Azure portal, PowerShell, az Azure CLI-vel vagy maga a Terraform hozhatja létre. A következő minta használatával konfigurálja a storage-fiókot az Azure CLI használatával.
 
 ```azurecli-interactive
 #!/bin/bash
@@ -35,7 +35,7 @@ RESOURCE_GROUP_NAME=tfstatestorage
 STORAGE_ACCOUNT_NAME=tfstatestorage$RANDOM
 CONTAINER_NAME=tfstatestorage
 
-# Ceeate resoruce group
+# Create resource group
 az group create --name $RESOURCE_GROUP_NAME --location eastus
 
 # Create storage account
@@ -49,7 +49,7 @@ az storage container create --name $CONTAINER_NAME --account-name $STORAGE_ACCOU
 
 echo "storage_account_name: $STORAGE_ACCOUNT_NAME"
 echo "container_name: $CONTAINER_NAME"
-echo "ARM_ACCESS_KEY: $ACCOUNT_KEY"
+echo "access_key: $ACCOUNT_KEY"
 ```
 
 Jegyezze fel a tárfiók neve, a tároló neve és a tárfiók hozzáférési kulcsát. Ezekre az értékekre van szükség, a távoli állapot konfigurálásakor.
@@ -79,7 +79,7 @@ export ARM_ACCESS_KEY=$(az keyvault secret show --name terraform-backend-key --v
 
 A háttéralkalmazás használatára a Terraform konfigurálása, adjon meg egy *háttérrendszer* típusú konfigurációs *azurerm* belül a Terraform konfigurálása. Adja hozzá a *tárfiók_neve*, *container_name*, és *kulcs* a konfigurációs blokk értékeket.
 
-Az alábbi példa a Terraform háttérrendszer konfigurálja, és létrehozza és az Azure-erőforráscsoportot.
+Az alábbi példa a háttérrendszernek a Terraform konfigurálása és hoz létre, és Azure-erőforráscsoportot.
 
 ```json
 terraform {
@@ -91,7 +91,7 @@ terraform {
 }
 
 resource "azurerm_resource_group" "state-demo-secure" {
-  name     = "state-demoe"
+  name     = "state-demo"
   location = "eastus"
 }
 ```
@@ -102,7 +102,7 @@ Most, inicializálja a konfigurációját a *Terraform init* , majd futtassa a k
 
 Állapot tárolásához az Azure Storage Blob használja, ha a blob automatikus zárolása előtt írja az állapota. Ez a beállítás megakadályozza, hogy több egyidejű állapottal kapcsolatos műveletek, amely sérülést okozhat. További információkért lásd: [zárolási állapot] [ terraform-state-lock] a Terraform dokumentáció tartalmaz.
 
-A zárolás lásd: lehet, ha vizsgálata folyamatban van a blobot, ha az Azure portal vagy más Azure felügyeleti eszközök.
+A zárolás vizsgálatakor a blobot, ha az Azure portal vagy más Azure eszközök láthatók.
 
 ![Az Azure blob-zárolással](media/terraform-backend/lock.png)
 

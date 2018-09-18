@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/28/2017
-ms.openlocfilehash: bc1f1dd577231f5b22474f6cd3dc622480209dd9
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 1a7fcc11bf1b98d5feaeae07264e556acce2b14b
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43042918"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45736080"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-debug-spark-applications-remotely-in-hdinsight-through-vpn"></a>A VPN-kapcsolaton keresztül a HDInsight Spark-alkalmazások hibakeresése az IntelliJ-hez készült Azure eszközkészlet használata
 
@@ -132,7 +132,7 @@ Javasoljuk, hogy is hozzon létre egy Apache Spark-fürt az Azure HDInsight, ame
     Ezek a fájlok hozzáadása a projekthez, másolja át azokat a **/src** mappát a projekt fán, például `<your project directory>\src`.
 1. Frissítés a `core-site.xml` fájlt a következő módosításokat:
 
-   a. Cserélje le a titkosított kulcsot. A `core-site.xml` fájl tartalmazza a titkosított kulcsot a fürthöz társított tárfiókba. Az a `core-site.xml` hozzáadott fájlra a projekthez, a titkosított kulcsot cserélje le az alapértelmezett tárfiók társított tényleges tárterület kulcsot. További információkért lásd: [a tárelérési kulcsok kezelése](../../storage/common/storage-create-storage-account.md#manage-your-storage-account).
+   a. Cserélje le a titkosított kulcsot. A `core-site.xml` fájl tartalmazza a titkosított kulcsot a fürthöz társított tárfiókba. Az a `core-site.xml` hozzáadott fájlra a projekthez, a titkosított kulcsot cserélje le az alapértelmezett tárfiók társított tényleges tárterület kulcsot. További információkért lásd: [a tárelérési kulcsok kezelése](../../storage/common/storage-account-manage.md#access-keys).
 
            <property>
                  <name>fs.azure.account.key.hdistoragecentral.blob.core.windows.net</name>

@@ -6,14 +6,14 @@ manager: timlt
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: conceptual
-ms.date: 03/14/2018
+ms.date: 09/17/2018
 ms.author: dobett
-ms.openlocfilehash: 23e84a8d577bb1c4950de3acd76b0f8528551ae0
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: add49aaf96190f782d2133e2a5f620a340f05eaf
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38611441"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45733831"
 ---
 # <a name="connect-your-raspberry-pi-device-to-the-remote-monitoring-solution-accelerator-c"></a>A Raspberry Pi-eszköz csatlakoztatása a távoli figyelési megoldásgyorsító (C)
 
@@ -53,137 +53,29 @@ A következő lépések bemutatják, hogyan készíti elő a Raspberry Pi a C al
     sudo apt-get update
     ```
 
-1. A következő parancs használatával adja hozzá a szükséges fejlesztői eszközök és kódtárak a Raspberry Pi:
+1. Végezze el ez az Útmutató lépéseit kövesse a [a Linux fejlesztési környezet beállítása](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md#linux) a szükséges fejlesztői eszközök és kódtárak hozzáadása a Raspberry Pi.
 
-    ```sh
-    sudo apt-get install g++ make cmake gcc git libssl1.0-dev build-essential curl libcurl4-openssl-dev uuid-dev
-    ```
+## <a name="view-the-code"></a>A kód megtekintéséhez
 
-1. A következő parancsok használatával töltse le, hozhat létre és telepítse az IoT Hub-ügyfélkönyvtárak a Raspberry Pi-on:
+A [mintakód](https://github.com/Azure/azure-iot-sdk-c/tree/master/samples/solutions/remote_monitoring) használja a jelen útmutató az Azure IoT C SDK-k GitHub-tárházban érhető el.
 
-    ```sh
-    cd ~
-    git clone --recursive https://github.com/azure/azure-iot-sdk-c.git
-    mkdir cmake
-    cd cmake
-    cmake ..
-    make
-    sudo make install
-    ```
+### <a name="download-the-source-code-and-prepare-the-project"></a>Letöltheti a forráskódot, és készítse elő a projekt
 
-## <a name="create-a-project"></a>Projekt létrehozása
+A projekt elkészítéséhez Klónozás vagy letöltés a [Azure IoT C SDK-k tárház](https://github.com/Azure/azure-iot-sdk-c) a Githubról.
 
-Hajtsa végre a következő lépések segítségével a **ssh** a Raspberry Pi kapcsolatot:
+A mintában található a **samples/megoldások/remote_monitoring** mappát.
 
-1. Hozzon létre egy nevű `remote_monitoring` a kezdőmappát a Raspberry Pi-on. Keresse meg a mappa az felületen:
+Nyissa meg a **remote_monitoring.c** fájlt a **samples/megoldások/remote_monitoring** mappát egy szövegszerkesztőben.
 
-    ```sh
-    cd ~
-    mkdir remote_monitoring
-    cd remote_monitoring
-    ```
-
-1. Hozza létre a négy fájlokat **main.c**, **remote_monitoring.c**, **remote_monitoring.h**, és **CMakeLists.txt** a a `remote_monitoring` a mappa.
-
-1. Egy szövegszerkesztőben nyissa meg a **remote_monitoring.c** fájlt. A Raspberry Pi-on is használhatja a **nano** vagy **vi** szövegszerkesztőben. Adja hozzá a következő `#include`-utasításokat:
-
-    ```c
-    #include "iothubtransportmqtt.h"
-    #include "schemalib.h"
-    #include "iothub_client.h"
-    #include "serializer_devicetwin.h"
-    #include "schemaserializer.h"
-    #include "azure_c_shared_utility/threadapi.h"
-    #include "azure_c_shared_utility/platform.h"
-    #include <string.h>
-    ```
-
-[!INCLUDE [iot-suite-connecting-code](../../includes/iot-suite-connecting-code.md)]
-
-Mentse a **remote_monitoring.c** fájlt, és zárja be a szerkesztőt.
-
-## <a name="add-code-to-run-the-app"></a>Adja hozzá az alkalmazás futtatásához szükséges kódot
-
-Egy szövegszerkesztőben nyissa meg a **remote_monitoring.h** fájlt. Adja hozzá a következő kódot:
-
-```c
-void remote_monitoring_run(void);
-```
-
-Mentse a **remote_monitoring.h** fájlt, és zárja be a szerkesztőt.
-
-Egy szövegszerkesztőben nyissa meg a **main.c** fájlt. Adja hozzá a következő kódot:
-
-```c
-#include "remote_monitoring.h"
-
-int main(void)
-{
-  remote_monitoring_run();
-
-  return 0;
-}
-```
-
-Mentse a **main.c** fájlt, és zárja be a szerkesztőt.
+[!INCLUDE [iot-accelerators-connecting-code](../../includes/iot-accelerators-connecting-code.md)]
 
 ## <a name="build-and-run-the-application"></a>Az alkalmazás fordítása és futtatása
 
-Az alábbi lépések bemutatják, hogyan használható *CMake* ügyfélalkalmazás hozhat létre.
+Az alábbi lépések bemutatják, hogyan használható *CMake* ügyfélalkalmazás hozhat létre. A távoli figyelési ügyfélalkalmazás az SDK-val készült a buildelési folyamat részeként.
 
-1. Egy szövegszerkesztőben nyissa meg a **CMakeLists.txt** fájlt a `remote_monitoring` mappát.
+1. Szerkessze a **remote_monitoring.c** fájlban cserélje le `<connectionstring>` az eszköz kapcsolati karakterlánccal feljegyzett elején. Ez az útmutató egy eszközt a megoldásgyorsító való felvételekor.
 
-1. Adja hozzá az alábbi utasítások segítségével meghatározhatja, hogyan hozhat létre az ügyfélalkalmazás:
-
-    ```cmake
-    macro(compileAsC99)
-      if (CMAKE_VERSION VERSION_LESS "3.1")
-        if (CMAKE_C_COMPILER_ID STREQUAL "GNU")
-          set (CMAKE_C_FLAGS "--std=c99 ${CMAKE_C_FLAGS}")
-          set (CMAKE_CXX_FLAGS "--std=c++11 ${CMAKE_CXX_FLAGS}")
-        endif()
-      else()
-        set (CMAKE_C_STANDARD 99)
-        set (CMAKE_CXX_STANDARD 11)
-      endif()
-    endmacro(compileAsC99)
-
-    cmake_minimum_required(VERSION 2.8.11)
-    compileAsC99()
-
-    set(AZUREIOT_INC_FOLDER "${CMAKE_SOURCE_DIR}" "/usr/local/include/azureiot")
-
-    include_directories(${AZUREIOT_INC_FOLDER})
-
-    set(sample_application_c_files
-        ./remote_monitoring.c
-        ./main.c
-    )
-
-    set(sample_application_h_files
-        ./remote_monitoring.h
-    )
-
-    add_executable(sample_app ${sample_application_c_files} ${sample_application_h_files})
-
-    target_link_libraries(sample_app
-      serializer
-      iothub_client_mqtt_transport
-      umqtt
-      iothub_client
-      aziotsharedutil
-      parson
-      pthread
-      curl
-      ssl
-      crypto
-      m
-    )
-    ```
-
-1. Mentse a **CMakeLists.txt** fájlt, és zárja be a szerkesztőt.
-
-1. Az a `remote_monitoring` mappában hozzon létre egy mappát tárolásához a *győződjön meg arról,* CMake által létrehozott fájlokat. Ezután futtassa a **cmake** és **győződjön meg arról,** parancsok az alábbiak szerint:
+1. Klónozott másolatának gyökérkönyvtárában nyissa meg a [Azure IoT C SDK-k tárház](https://github.com/Azure/azure-iot-sdk-c) tárházat, és futtassa a következő parancsokat az ügyfél-alkalmazás létrehozásához:
 
     ```sh
     mkdir cmake
@@ -195,7 +87,12 @@ Az alábbi lépések bemutatják, hogyan használható *CMake* ügyfélalkalmaz�
 1. Futtassa az ügyfélalkalmazást és telemetriát küldjön az IoT hubnak:
 
     ```sh
-    ./sample_app
+    ./samples/solutions/remote_monitoring/remote_monitoring_client
     ```
+
+    A konzolon, üzeneteket jelenít meg:
+
+    - Az alkalmazás minta telemetriai adatokat küld a megoldásgyorsító.
+    - A megoldás irányítópultjáról indított metódusokra válaszol.
 
 [!INCLUDE [iot-suite-visualize-connecting](../../includes/iot-suite-visualize-connecting.md)]

@@ -1,20 +1,21 @@
 ---
-title: Vizsgálja meg az Azure Video Indexer kimeneti v2 API által előállított |} A Microsoft Docs
+title: A v2 API által előállított Videóindexelő kimenetének vizsgálata
+titlesuffix: Azure Cognitive Services
 description: Ez a témakör a Video Indexer kimeneti v2 API által előállított megvizsgálja.
 services: cognitive services
-documentationcenter: ''
 author: juliako
-manager: cfowler
+manager: cgronlun
 ms.service: cognitive-services
-ms.topic: article
-ms.date: 09/09/2018
+ms.component: video-indexer
+ms.topic: conceptual
+ms.date: 09/15/2018
 ms.author: juliako
-ms.openlocfilehash: 14e308f04450999fcec91a7882a22868c8c824ce
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 76f83e7ad70e3e1906bc1aa90c74d600053aeb6f
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45579004"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45985644"
 ---
 # <a name="examine-the-video-indexer-output-produced-by-v2-api"></a>A v2 API által előállított Videóindexelő kimenetének vizsgálata
 

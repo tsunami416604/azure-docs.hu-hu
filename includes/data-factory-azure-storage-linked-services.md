@@ -6,7 +6,7 @@ A **Azure Storage társított szolgáltatás** lehetővé teszi, hogy az Azure s
 | type |A type tulajdonság értékre kell állítani: **AzureStorage** |Igen |
 | kapcsolati Sztringje |Adja meg a connectionString tulajdonság az Azure storage való kapcsolódáshoz szükséges adatokat. |Igen |
 
-Egy Azure Storage megtekintése és másolása a fiókkulcs lépéseit a következő cikkben talál: [megtekintése, másolása és újragenerálása storage hozzáférési kulcsok](../articles/storage/common/storage-create-storage-account.md#manage-your-storage-account).
+Lépések megtekintése és másolása a fiókkulcs egy Azure Storage a következő szakaszban: [hozzáférési kulcsok](../articles/storage/common/storage-account-manage.md#access-keys).
 
 **Példa**  
 

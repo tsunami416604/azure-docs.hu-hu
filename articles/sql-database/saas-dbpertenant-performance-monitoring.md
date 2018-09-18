@@ -1,6 +1,6 @@
 ---
-title: Sok Azure SQL-adatbázisoknál a több-bérlős SaaS-alkalmazás teljesítményének figyelése |} Microsoft Docs
-description: 'Megfigyelés és kezelés Azure SQL-adatbázisok és tárolókészletekben: a több-bérlős SaaS-alkalmazás teljesítménye'
+title: Sok Azure SQL-adatbázisok egy több-bérlős SaaS-alkalmazás teljesítményének figyelése |} A Microsoft Docs
+description: Az Azure SQL Database-adatbázisok és a készletek a több-bérlős SaaS-alkalmazás teljesítményének figyelése és kezelése
 keywords: sql database-oktatóanyag
 services: sql-database
 author: stevestein
@@ -8,20 +8,20 @@ manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: conceptual
-ms.date: 04/01/2018
+ms.date: 09/14/2018
 ms.author: sstein
-ms.openlocfilehash: d8e260b8dabb4c6823d59374a7b8661e024f1b3d
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: a9fe557eec1585b2d80c9e82c2ca17414b9d4487
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36752271"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45733014"
 ---
-# <a name="monitor-and-manage-performance-of-azure-sql-databases-and-pools-in-a-multi-tenant-saas-app"></a>Megfigyelés és kezelés Azure SQL-adatbázisok és tárolókészletekben: a több-bérlős SaaS-alkalmazás teljesítménye
+# <a name="monitor-and-manage-performance-of-azure-sql-databases-and-pools-in-a-multi-tenant-saas-app"></a>Az Azure SQL Database-adatbázisok és a készletek a több-bérlős SaaS-alkalmazás teljesítményének figyelése és kezelése
 
-Ebben az oktatóanyagban használt SaaS-alkalmazásokhoz több alapvető teljesítményt felügyeleti lehetőségeket írja. A betöltési generátor segítségével szimulálása tevékenység közötti összes bérlői, beépített figyelési és riasztási szolgáltatásokat az SQL Database és a rugalmas készletek egy.
+Ebben az oktatóanyagban használt SaaS-alkalmazásokban több fő felügyeleti forgatókönyvek teljesítménykezelési. Használja a terhelésgenerátor tevékenység szimulálása az összes bérlői adatbázison, a beépített figyelési és riasztási funkcióit az SQL Database és a rugalmas készletek találja meg.
 
-A Wingtip jegyek SaaS adatbázis / bérlői alkalmazás egyetlen-bérlő adatok modellt használ, ahol az egyes helyszínekkel (bérlői) rendelkezik a saját adatbázis. Sok más SaaS-alkalmazáshoz hasonlóan a bérlői számítási feladatok várt mintája kiszámíthatatlan és szórványos. Ez a gyakorlatban azt jelenti, hogy a jegyeladásokra bármikor sor kerülhet. Ezen tipikus adatbázis-felhasználási minta előnyei úgy használhatók ki, hogy a bérlői adatbázisokat rugalmas adatbáziskészletekben helyezik üzembe. A rugalmas készletek optimalizálják a megoldások költségeit azáltal, hogy számos adatbázis között osztják meg az erőforrásokat. Ennél a típusú mintánál fontos az adatbázis és a készleterőforrások felhasználásának figyelése annak biztosítása érdekében, hogy a terhelések egyenletesen oszoljanak meg a készletek közt. Emellett azt is biztosítani kell, hogy az egyes adatbázisok elengedő mennyiségű erőforrással rendelkezzenek, és hogy a készletek ne érjék el a maximális [eDTU](sql-database-service-tiers.md#what-are-database-transaction-units-dtus)-korlátot. Ez az oktatóanyag különböző módszereket ismertet az adatbázisok és készletek figyelésére és kezelésére, valamint a számítási feladatok változásaira adott korrekciós műveletek elvégzésére.
+A Wingtip Tickets SaaS adatbázis Per bérlői alkalmazás egy egybérlős adatmodellt, használ, ahol minden egyes helyszín (bérlő) saját adatbázissal rendelkezik. Sok más SaaS-alkalmazáshoz hasonlóan a bérlői számítási feladatok várt mintája kiszámíthatatlan és szórványos. Ez a gyakorlatban azt jelenti, hogy a jegyeladásokra bármikor sor kerülhet. Ezen tipikus adatbázis-felhasználási minta előnyei úgy használhatók ki, hogy a bérlői adatbázisokat rugalmas adatbáziskészletekben helyezik üzembe. A rugalmas készletek optimalizálják a megoldások költségeit azáltal, hogy számos adatbázis között osztják meg az erőforrásokat. Ennél a típusú mintánál fontos az adatbázis és a készleterőforrások felhasználásának figyelése annak biztosítása érdekében, hogy a terhelések egyenletesen oszoljanak meg a készletek közt. Emellett azt is biztosítani kell, hogy az egyes adatbázisok elengedő mennyiségű erőforrással rendelkezzenek, és hogy a készletek ne érjék el a maximális [eDTU](sql-database-service-tiers.md#what-are-database-transaction-units-dtus)-korlátot. Ez az oktatóanyag különböző módszereket ismertet az adatbázisok és készletek figyelésére és kezelésére, valamint a számítási feladatok változásaira adott korrekciós műveletek elvégzésére.
 
 Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
@@ -35,49 +35,49 @@ Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 Az oktatóanyag teljesítéséhez meg kell felelnie az alábbi előfeltételeknek:
 
-* A Wingtip jegyek SaaS adatbázis / bérlői alkalmazás telepítve van. Kevesebb mint öt perc alatt telepítéséhez lásd: [központi telepítése és vizsgálja meg a Wingtip jegyek SaaS adatbázis / bérlői alkalmazás](saas-dbpertenant-get-started-deploy.md)
+* A Wingtip Tickets SaaS adatbázis Per bérlői alkalmazás telepítve van. Kevesebb mint öt perc alatt üzembe helyezéséhez lásd: [üzembe helyezés a Wingtip Tickets SaaS adatbázis Per bérlői alkalmazás és megismerése](saas-dbpertenant-get-started-deploy.md)
 * Az Azure PowerShell telepítve van. A részletekért lásd: [Ismerkedés az Azure PowerShell-lel](https://docs.microsoft.com/powershell/azure/get-started-azureps)
 
-## <a name="introduction-to-saas-performance-management-patterns"></a>Bevezetés a Szolgáltatottszoftver-teljesítmény felügyeleti minták
+## <a name="introduction-to-saas-performance-management-patterns"></a>Teljesítménykezelési minták SaaS bemutatása
 
 Az adatbázisteljesítmény-kezelés a teljesítményadatok fordításából és elemzéséből, majd az adatokra való reagálásból áll. Ez tulajdonképpen a paraméterek módosítását jelenti, miáltal az alkalmazás válaszideje elfogadható szinten marad. Több bérlő üzemeltetésekor a rugalmas adatbáziskészletekkel költséghatékonyan oldható meg a kiszámíthatatlan számítási feladatokkal szembesülő adatbáziscsoportok erőforrásainak biztosítása és kezelése. Bizonyos számításifeladat-mintáknál már akár két S3-adatbázist is előnyös lehet készletben kezelni.
 
-![alkalmazásdiagram](./media/saas-dbpertenant-performance-monitoring/app-diagram.png)
+![Alkalmazásdiagram](./media/saas-dbpertenant-performance-monitoring/app-diagram.png)
 
-Annak érdekében, hogy a teljesítmény elfogadható tartományait belül maradnak címkészletekkel és IP-készletek, az adatbázisokat kell figyelni. A tárolókészlet konfigurációját, és annak biztosítására, hogy a készlet edtu-k a teljes munkaterhelés megfelelő összes adatbázis összesített munkaterhelés igényeihez hangolását. Állítsa be az adatbázisonkénti minimális és maximális eDTU-értékeket az alkalmazás specifikus igényei szerint.
+Készletek és a készletekben található adatbázisokat figyelendő teljesítmény teljesítményük elfogadható tartományon belül tartása. Finomhangolja a készlet konfigurációját az összesített számítási feladat összes adatbázis meggyőződött arról, hogy a készlet edtu-k a teljes számítási feladatnak megfelelő igényeinek. Állítsa be az adatbázisonkénti minimális és maximális eDTU-értékeket az alkalmazás specifikus igényei szerint.
 
 ### <a name="performance-management-strategies"></a>Teljesítménykezelési stratégiák
 
-* Ne kelljen manuálisan figyelemmel kísérni a teljesítményét, hogy a leghatékonyabb **riasztások beállítását, amelyek indul el, ha az adatbázisok és a készletek kóbor kívül normál tartományok**.
-* A készletek összesített teljesítményszintjének rövidtávú ingadozásaira válaszul **a készletek eDTU-szintje vertikálisan fel- vagy leskálázható**. Ha az ingadozás rendszeres vagy kiszámítható, akkor **a készlet beállítható úgy, hogy a skálázás automatikusan ütemezve legyen**. Beállítható például a vertikális leskálázás, amikor előre láthatóan kevés lesz a számítási feladat, például éjjelente vagy a hétvégi napokon.
+* Ne kelljen manuálisan a teljesítmény figyelésére, a leghatékonyabb **riasztások beállítását, melyek indítható el, ha az adatbázisok vagy készletek kilépnek az engedélyezett tartományból teljesítményfigyelésnél**.
+* Rövidtávú ingadozásaira válaszolni az összesítésben egy készlet számítási mérete a **készletek eDTU-szintje vertikálisan fel-felfelé vagy lefelé**. Ha az ingadozás rendszeres vagy kiszámítható, akkor **a készlet beállítható úgy, hogy a skálázás automatikusan ütemezve legyen**. Beállítható például a vertikális leskálázás, amikor előre láthatóan kevés lesz a számítási feladat, például éjjelente vagy a hétvégi napokon.
 * A hosszabb távú ingadozásokra vagy az adatbázisok számának változására válaszul **az egyes adatbázisok áthelyezhetők másik készletekbe**.
-* A rövid távú növekedése válaszolni *egyedi* adatbázis-terhelésnek **egyes adatbázisok készlet veszi, és az egyes teljesítményszintet hozzárendelt**. A terhelés csökkenésével az adatbázis visszahelyezhető a készletbe. Ha ez ismert előre, adatbázisok áthelyezhető pre-emptively ellenőrizze az adatbázis mindig van a szükséges erőforrásokat, és a készlet más adatbázisok gyakorolt hatás elkerülése érdekében. Ha ez a szükséglet előre kiszámítható, például ha egy helyszín nagy mennyiségű növekedésre számít a jegyeladásokban egy népszerű esemény miatt, akkor ez a kezelési viselkedés integrálható az alkalmazásba.
+* A rövid távú növekedése válaszolni *egyes* adatbázisok terhelésének **egyes adatbázisok kivehetők a készletből, és egy adott számítási méret hozzárendelt**. A terhelés csökkenésével az adatbázis visszahelyezhető a készletbe. Ha ez az előzetesen ismert, adatbázisok áthelyezhetők jegyértékesítésről, az adatbázis mindig rendelkezzen a szükséges erőforrásokat, és a készlet egyéb adatbázisainak gyakorolt hatás elkerülése érdekében. Ha ez a szükséglet előre kiszámítható, például ha egy helyszín nagy mennyiségű növekedésre számít a jegyeladásokban egy népszerű esemény miatt, akkor ez a kezelési viselkedés integrálható az alkalmazásba.
 
-Az [Azure Portal](https://portal.azure.com) a legtöbb erőforráshoz beépített figyelési és riasztási lehetőségeket biztosít. Az SQL Database esetében a figyelés és riasztás rendelkezésre áll az adatbázisokhoz és a készletekhez. A beépített figyelés és riasztás érték erőforrás-specifikus, ezért célszerű a kis mennyiségű erőforrást használ, de nem nem nagyon hasznos, ha sok erőforrást.
+Az [Azure Portal](https://portal.azure.com) a legtöbb erőforráshoz beépített figyelési és riasztási lehetőségeket biztosít. Az SQL Database esetében a figyelés és riasztás rendelkezésre áll az adatbázisokhoz és a készletekhez. A beépített figyelés és riasztás erőforrás-specifikus, így azt kényelmes megoldás az erőforrás használatára, de nem nagyon hasznos, sok erőforrás használatakor.
 
-Nagy mennyiségű forgatókönyvek, ahol sok erőforrással rendelkező dolgozunk, [Naplóelemzési](saas-dbpertenant-log-analytics.md) is használható. Ez a külön Azure szolgáltatás, amely analytics kibocsátott diagnosztikai naplók és a naplóelemzési munkaterület összegyűjtött telemetrikus keresztül. A Naplóelemzési sok szolgáltatásokból telemetriai adatokat gyűjthet, és lekérdezése, és állítson be riasztásokat használható.
+Nagy mennyiségű forgatókönyvekhez, ahol sok erőforrásokkal dolgozik, [Log Analytics](saas-dbpertenant-log-analytics.md) is használható. Ez az egy külön Azure-szolgáltatás, amely biztosít elemzési kibocsátott diagnosztikai naplók és a egy log analytics-munkaterület-munkahelyen gyűjtött telemetria. Log Analytics számos szolgáltatásból képes telemetriai adatok gyűjtésére, és lekérdezheti, és riasztásokat állíthat be.
 
-## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>A Wingtip jegyek SaaS adatbázis / bérlői alkalmazás parancsfájlok beolvasása
+## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>A Wingtip Tickets SaaS adatbázis Per bérlői alkalmazásszkriptek beolvasása
 
-A Wingtip jegyek SaaS több-bérlős adatbázis parancsfájlok és az alkalmazás forráskódjához érhetők el a [WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant) GitHub-tárház. Tekintse meg a [általános útmutatást](saas-tenancy-wingtip-app-guidance-tips.md) töltse le és feloldása a Wingtip jegyek Szolgáltatottszoftver-parancsfájlok lépéseit.
+A Wingtip Tickets SaaS több-bérlős adatbázis parancsfájlok és az alkalmazás forráskódjának érhető el a [WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant) GitHub-adattárban. Tekintse meg a [általános útmutatást](saas-tenancy-wingtip-app-guidance-tips.md) töltse le és a Wingtip Tickets SaaS-parancsfájlok feloldása.
 
 ## <a name="provision-additional-tenants"></a>További bérlők kiépítése
 
 Noha a készletek használata már két S3-adatbázis esetén is költséghatékony lehet, minél több adatbázis található egy készletben, a költséghatékonyság mértéke annál jobban nő. Annak érdekében, hogy a teljesítményfigyelés és -kezelés nagy léptékben való használatát kellőképpen szemléltetni lehessen, jelen oktatóanyaghoz legalább 20 üzembe helyezett adatbázis szükséges.
 
-Ha már megtörtént egy kötegelt bérlő előzetes oktatóanyag, ugorjon a [szimulálás használati összes bérlői adatbázisok](#simulate-usage-on-all-tenant-databases) szakasz.
+Ha egy korábbi oktatóanyagban már kiépített bérlők egy kötegét, ugorjon a [összes bérlői adatbázis használatának szimulálása](#simulate-usage-on-all-tenant-databases) szakaszban.
 
-1. Az a **PowerShell ISE**, nyissa meg... \\Tanulási modulok\\Teljesítményfigyelő és felügyeleti\\*bemutató-PerformanceMonitoringAndManagement.ps1*. Tartsa ezt a szkriptet nyitva, mivel az oktatóanyag során több különböző forgatókönyvet is futtatnia kell majd.
+1. Az a **PowerShell ISE-ben**, nyissa meg... \\Tanulási modulok\\alkalmazásteljesítmény-figyelési és felügyeleti\\*Demo-PerformanceMonitoringAndManagement.ps1*. Tartsa ezt a szkriptet nyitva, mivel az oktatóanyag során több különböző forgatókönyvet is futtatnia kell majd.
 1. Válassza a **$DemoScenario** = **1**, **Bérlők kötegelt kiépítése** lehetőséget.
 1. A szkript futtatásához nyomja le az **F5** billentyűt.
 
 A szkript kevesebb mint öt perc alatt 17 bérlőt helyez üzembe.
 
-A *New-TenantBatch* parancsfájl használ egy beágyazott vagy csatolt [erőforrás-kezelő](../azure-resource-manager/index.md) sablonokat, hozzon létre egy kötegelt bérlő, amely alapértelmezés szerint másolja az adatbázist **basetenantdb**adatbázisok létrehozására az új tenanthoz katalóguskiszolgálóhoz, majd regisztrálja ezeket a katalógusban, és végül a bérlő neve és helyszínére típusú inicializálja. Ez a módszer az alkalmazás látja el egy új bérlőt összhangban. Milyen módosítások történtek *basetenantdb* bármely új bérlők számára kiosztott azt követően is vonatkozik. Tekintse meg a [séma felügyeleti oktatóanyag](saas-tenancy-schema-management.md) , hogyan lehet módosítani séma *meglévő* adatbázisok bérlői (beleértve a *basetenantdb* adatbázis).
+A *New-TenantBatch* a szkript egy beágyazott vagy hivatkozott készletét [Resource Manager](../azure-resource-manager/index.md) sablonokat, hozzon létre egy batch-bérlőkkel, amely alapértelmezés szerint az adatbázis másolja **basetenantdb**a katalóguskiszolgálón adatbázisok létrehozására az új bérlőhöz, majd regisztrálja ezeket a katalógusban, és végül pedig inicializálja őket a bérlő nevével és a helyszíntípussal típusát. Ez az alkalmazás kiosztja az új bérlő módja összhangban. Végzett módosítások *basetenantdb* kiépített bérlőre érvényesek. Tekintse meg a [Sémakezeléssel foglalkozó oktatóanyag](saas-tenancy-schema-management.md) a séma módosításával kapcsolatos *meglévő* bérlői adatbázisok (beleértve a *basetenantdb* adatbázis).
 
 ## <a name="simulate-usage-on-all-tenant-databases"></a>Az összes bérlői adatbázis használatának szimulálása
 
-A *bemutató-PerformanceMonitoringAndManagement.ps1* parancsfájl, feltéve, hogy a munkaterhelés futtatott összes bérlői adatbázis szimulálja. A terhelés jön létre a rendelkezésre álló terheléselosztási forgatókönyveket egyikének használatával:
+A *Demo-PerformanceMonitoringAndManagement.ps1* parancsfájl van, feltéve, hogy szimulálja egy számítási feladatot futtat az összes bérlői adatbázison. A terhelés a véleménypontszámok generálásáról az egyik rendelkezésre álló betöltése:
 
 | Bemutató | Forgatókönyv |
 |:--|:--|
@@ -89,38 +89,38 @@ A *bemutató-PerformanceMonitoringAndManagement.ps1* parancsfájl, feltéve, hog
 
 A terhelésgenerátor egy *szintetikus* CPU-terhelést alkalmaz az összes bérlői adatbázison. A generátor minden bérlői adatbázis számára elindít egy feladatot, amely időközönként meghív egy, a terhelést létrehozó tárolt eljárást. A terhelések szintje (eDTU-ban mérve), időtartama és időköze minden adatbázis esetén más és más, ezzel szimulálva a kiszámíthatatlan bérlői aktivitást.
 
-1. Az a **PowerShell ISE**, nyissa meg... \\Tanulási modulok\\Teljesítményfigyelő és felügyeleti\\*bemutató-PerformanceMonitoringAndManagement.ps1*. Tartsa ezt a szkriptet nyitva, mivel az oktatóanyag során több különböző forgatókönyvet is futtatnia kell majd.
-1. Állítsa be **$DemoScenario** = **2**, *Generate normál intenzitásának terhelés*.
+1. Az a **PowerShell ISE-ben**, nyissa meg... \\Tanulási modulok\\alkalmazásteljesítmény-figyelési és felügyeleti\\*Demo-PerformanceMonitoringAndManagement.ps1*. Tartsa ezt a szkriptet nyitva, mivel az oktatóanyag során több különböző forgatókönyvet is futtatnia kell majd.
+1. Állítsa be **$DemoScenario** = **2**, *normál intenzitású terhelés*.
 1. Nyomja le az **F5** billentyűt, hogy az összes bérlői adatbázist érje terhelés.
 
-Wingtip jegyek SaaS adatbázis egy bérlő az SaaS-alkalmazás, és a Szolgáltatottszoftver-alkalmazás valós terhelése jellemzően szórványos és előre nem látható. Ennek szimulálására a terhelésgenerátor az összes bérlő között elosztott, véletlenszerű terhelést hoz létre. Több percig merülnek fel, a betöltés minta van szükség, ezért futtassa a terhelés generátor 3-5 percet, mielőtt megpróbálja a terhelés, az alábbi szakaszok a figyelheti.
+A Wingtip Tickets SaaS adatbázis Per bérlő SaaS-alkalmazás, pedig a való életből vett terhelés egy SaaS-alkalmazás általában szórványosak és kiszámíthatatlanok. Ennek szimulálására a terhelésgenerátor az összes bérlő között elosztott, véletlenszerű terhelést hoz létre. Több perc szükséges a terhelés minta bontakozik ki, ezért futtassa a terhelésgenerátort 3 – 5 percet, mielőtt megkísérelné a következő szakaszok a terheléseket figyelni.
 
 > [!IMPORTANT]
-> A terhelésgenerátor feladatok sorozataként fut a helyi PowerShell-munkamenetben. Hagyja nyitva a *Demo-PerformanceMonitoringAndManagement.ps1* lapot! Ha bezárja a lapot vagy felfüggeszti a gép működését, a terhelésgenerátor leáll. A betöltési generátor marad a *feladat meghívása* állapotba, ahol hoz létre a kódgenerátor végrehajtásának megkezdése után törlődnek új tenantokat terhelése. Használjon *Ctrl-C* leállítására, hívja az új feladatokat, és lépjen ki a parancsfájl. A betöltési generátor továbbra is fut, de csak a meglévő bérlők számára.
+> A terhelésgenerátor feladatok sorozataként fut a helyi PowerShell-munkamenetben. Hagyja nyitva a *Demo-PerformanceMonitoringAndManagement.ps1* lapot! Ha bezárja a lapot vagy felfüggeszti a gép működését, a terhelésgenerátor leáll. A terhelésgenerátor marad egy *feladat meghívása* állapot, ahol minden olyan új bérlők számára, miután elindult a generátor felhasznált terhelése állít elő. Használat *Ctrl-C* meghívása új feladatok leállítása és lépjen ki a parancsprogramot. A terhelésgenerátor továbbra is futtatja, de csak a meglévő bérlők számára.
 
-## <a name="monitor-resource-usage-using-the-azure-portal"></a>A figyelő erőforrás-használata az Azure portál használatával
+## <a name="monitor-resource-usage-using-the-azure-portal"></a>Az Azure portal használatával erőforrás-használat figyelése
 
-A figyelheti az erőforrás-felhasználás által alkalmazott a terhelés, nyissa meg a portálra, ahol a bérlői adatbázisokat tartalmazó készlet:
+A terhelések eredményei erőforrás-használat figyeléséhez nyissa meg a bérlői adatbázisokat tartalmazó készletet a portálon:
 
-1. Nyissa meg a [Azure-portálon](https://portal.azure.com) , és keresse meg a *tenants1-dpt -&lt;felhasználói&gt;*  kiszolgáló.
+1. Nyissa meg a [az Azure portal](https://portal.azure.com) , és keresse meg a *tenants1-dpt -&lt;felhasználói&gt;*  kiszolgáló.
 1. Görgessen lefelé, keresse meg a rugalmas készleteket, és kattintson a **Pool1** készletre. Ez a készlet tartalmazza az összes eddig létrehozott bérlői adatbázist.
 
-Figyelje meg a **rugalmas készlet figyelése** és **rugalmas adatbázis-figyelési** diagramokat.
+Figyelje meg a **rugalmas készlet figyelése** és **rugalmas adatbázis figyelése** diagramok.
 
-A készlet erőforrás-használat a összesített adatbázis-felhasználást a készletben lévő összes adatbázisok. Az adatbázis-diagram bemutatja az öt hottest adatbázisok:
+A készlet erőforrás-használat a készletben található adatbázisok összesített kihasználtságának. Az adatbázis diagram az 5 legtöbbet használt adatbázisokat mutatja:
 
 ![Adatbázis-diagram](./media/saas-dbpertenant-performance-monitoring/pool1.png)
 
-Mivel a készlet túl a legjobb öt további adatbázisok, a készlet kihasználtságát, amelyek nem kerülnek a felső öt adatbázisok diagram tevékenység műveleteit jeleníti meg. További információért kattintson **adatbázis erőforrás-használat**:
+Mivel az első öt túl a készletben található további adatbázisok, a készlet kihasználtsági tevékenység, a felső diagramon öt adatbázis diagramjában nem jeleníti meg. További részletekért kattintson **Adabáziserőforrás-felhasználás**:
 
-![adatbázis erőforrás-használat](./media/saas-dbpertenant-performance-monitoring/database-utilization.png)
+![adabáziserőforrás-felhasználás](./media/saas-dbpertenant-performance-monitoring/database-utilization.png)
 
 
 ## <a name="set-performance-alerts-on-the-pool"></a>Teljesítményriasztások beállítása a készletben
 
-A készlet, amely elindítja a riasztást állíthat be \>75 %-os kihasználtsága az alábbiak szerint:
+A készlethez, amely elindítja riasztások beállítása \>75 %-os kihasználtságot, az alábbiak szerint:
 
-1. Nyissa meg *Pool1* (a a *tenants1-dpt -\<felhasználói\>*  kiszolgáló) a a [Azure-portálon](https://portal.azure.com).
+1. Nyissa meg *Pool1* (a a *tenants1-dpt -\<felhasználói\>*  kiszolgáló) a a [az Azure portal](https://portal.azure.com).
 1. Kattintson a **Riasztási szabályok** elemre, majd a **+ Riasztás hozzáadása** gombra:
 
    ![riasztás hozzáadása](media/saas-dbpertenant-performance-monitoring/add-alert.png)
@@ -130,8 +130,8 @@ A készlet, amely elindítja a riasztást állíthat be \>75 %-os kihasználtsá
    * **Metrika = eDTU százalékos értéke**
    * **Feltétel = nagyobb, mint**
    * **Küszöbérték = 75**
-   * **Az elmúlt 30 perc idő =**
-1. E-mail cím hozzáadása a *további rendszergazda email(s)* mezőbe, majd kattintson a **OK**.
+   * **Időtartam = az elmúlt 30 percben**
+1. Az e-mail cím hozzáadása a *további rendszergazdai email(s)* mezőbe, majd kattintson a **OK**.
 
    ![riasztás beállítása](media/saas-dbpertenant-performance-monitoring/alert-rule.png)
 
@@ -140,24 +140,24 @@ A készlet, amely elindítja a riasztást állíthat be \>75 %-os kihasználtsá
 
 Ha egy készlet összesített terhelési szintje addig növekszik, hogy teljesen lefoglalja a készletet és 100%-os eDTU-használatot ér el, az hatással van az adatbázisok egyéni teljesítményére, és lelassíthatja a lekérdezések válaszidejét a készletben található összes adatbázisban.
 
-**Rövid távú**, a készlet további erőforrások vertikális felskálázásával, vagy távolítsa el adatbázisokat a készletből (helyezni őket más tárolókészletekben, vagy abból a készlet egy önálló szolgáltatási réteg).
+**Rövid távú**, fontolja meg meg további erőforrások biztosítását a készlet vertikális felskálázásával, vagy adatbázisok eltávolítását a készletből (más készletekbe, vagy a készletből történő áthelyezése különálló szolgáltatásszintre).
 
-**Hosszabb távon**, a lekérdezések optimalizálja, vagy index használati adatbázis teljesítményének javítása érdekében. Az alkalmazás teljesítményingadozásokra való érzékenységétől függően az ajánlott eljárás a készlet vertikális felskálázása még a 100%-os eDTU-használat elérése előtt. Használjon olyan riasztást, amely előre figyelmezteti Önt.
+**Hosszabb távon**, fontolja meg a lekérdezések optimalizálását vagy index használatát az adatbázis-teljesítmény javítása. Az alkalmazás teljesítményingadozásokra való érzékenységétől függően az ajánlott eljárás a készlet vertikális felskálázása még a 100%-os eDTU-használat elérése előtt. Használjon olyan riasztást, amely előre figyelmezteti Önt.
 
-Foglalt készletet a generátor által létrehozott terhelés növelésével szimulálhat. Ez a kapacitásnövelés gyakrabban, valamint a továbbiakban, az adatbázisokat a készlet összesített terhelésének növekedése a követelmények az egyes adatbázisok megváltoztatása nélkül. A készlet vertikális felskálázása könnyedén elvégezhető a portálon vagy a PowerShellben. A gyakorlat során a Portalt használjuk.
+Foglalt készletet a generátor által létrehozott terhelés növelésével szimulálhat. Az adatbázisok már, folyamatosan gyakrabban, valamint az okozza, növelje a készlet összesített terhelését az egyes adatbázisok követelményeinek megváltoztatása nélkül. A készlet vertikális felskálázása könnyedén elvégezhető a portálon vagy a PowerShellben. A gyakorlat során a Portalt használjuk.
 
 1. Állítsa be a *$DemoScenario* = **3**, _Terhelés létrehozása adatbázisonkénti hosszabb és gyakoribb adatlöketekkel_ értéket, hogy megnövelje a készlet összesített terhelési intenzitását az egyes adatbázisok csúcsterhelési követelményeinek megváltoztatása nélkül.
 1. Nyomja le az **F5** billentyűt, hogy az összes bérlői adatbázist érje terhelés.
 
-1. Ugrás a **Pool1** az Azure portálon.
+1. Lépjen a **Pool1** az Azure Portalon.
 
-A nagyobb készlet edtu-k a felső diagram figyelése. Az új magasabb terhelés, indítsa néhány percet vesz igénybe, de gyorsan megtekintheti az a készlet elérte maximális használat megkezdése, és a betöltés steadies be az új mintát, mivel gyorsan tömbparaméter-típust használ a készlet.
+Figyelheti a készlet megnövekedett eDTU-használatát a felső diagramon. Az új magasabb terhelés, néhány percig tart, de gyorsan megtekintheti az a készlet elkezdi maximális kihasználtságát, és a terhelés stabilan be az új minta, ahogy azt beáll a készlet.
 
-1. Kattintson a készlet növelheti, **készlet beállítása** tetején a **Pool1** lap.
-1. Módosítsa a **készlet edtu értékének** beállítást **100**. A készlet eDTU-értékének módosítása nem módosítja az adatbázisonkénti beállításokat (ami továbbra is adatbázisonként legfeljebb 50 eDTU). Az adatbázis-beállítások jobb oldalán láthatja a **készlet beállítása** lap.
-1. Kattintson a **mentése** küldeni a készlethez méretezésére irányuló kérés.
+1. A készlet vertikális felskálázásához kattintson **készlet beállítása** felső részén a **Pool1** lapot.
+1. Módosítsa a **készlet eDTU** beállítást **100**. A készlet eDTU-értékének módosítása nem módosítja az adatbázisonkénti beállításokat (ami továbbra is adatbázisonként legfeljebb 50 eDTU). Az adatbázis-beállítások a jobb oldalon látható a **készlet beállítása** lapot.
+1. Kattintson a **mentése** a készlet méretezésére irányuló kérelem elküldéséhez.
 
-Lépjen vissza a **Pool1** > **áttekintése** a figyelési diagramok megtekintéséhez. Figyeli a hatását, hogy a készlet biztosítson több erőforrást (bár néhány adatbázisok és a véletlenszerű betöltése nem mindig könnyen kétséget látható, amíg nem futtat egy kis ideig). A diagramok megtekintése közben vegye figyelembe, hogy a felső diagramon látható 100% most 100 eDTU-t jelent, míg az alsó diagramon látható 100% továbbra is 50 eDTU-t, mivel az adatbázisonkénti maximum változatlanul 50 eDTU.
+Lépjen vissza a **Pool1** > **áttekintése** megtekintése a figyelési diagramjait. Figyelje meg, hogy a készlet több erőforrást (noha kevés adatbázis és véletlenszerű terhelés nem mindig könnyen von látható, amíg nem futtat egy kis ideig). A diagramok megtekintése közben vegye figyelembe, hogy a felső diagramon látható 100% most 100 eDTU-t jelent, míg az alsó diagramon látható 100% továbbra is 50 eDTU-t, mivel az adatbázisonkénti maximum változatlanul 50 eDTU.
 
 Az adatbázisok a folyamat során végig online állapotban maradnak, és teljes mértékben rendelkezésre állnak. Abban a pillanatban, hogy minden adatbázis készen áll a készlet új eDTU-értékével való engedélyezésre, minden aktív kapcsolat megszakad. Az alkalmazás kódját mindig úgy kell megírni, hogy újrapróbálja a megszakított kapcsolatokat, így újra csatlakozni fog az adatbázishoz a felskálázott készletben.
 
@@ -165,63 +165,63 @@ Az adatbázisok a folyamat során végig online állapotban maradnak, és teljes
 
 A készlet felskálázása mellett másik lehetőségként létrehozhat egy második készletet és áthelyezhet abba adatbázisokat, hogy kiegyenlítse a két készlet terhelését. Ehhez az új készletet ugyanazon a kiszolgálón kell létrehozni, amelyen az első is megtalálható.
 
-1. Az a [Azure-portálon](https://portal.azure.com), nyissa meg a **tenants1-dpt -&lt;felhasználói&gt;**  kiszolgáló.
-1. Kattintson a **+ új készletet** készlet létrehozása az aktuális kiszolgálón.
-1. Az a **rugalmas adatbáziskészlet** sablont:
+1. Az a [az Azure portal](https://portal.azure.com), nyissa meg a **tenants1-dpt -&lt;felhasználói&gt;**  kiszolgáló.
+1. Kattintson a **+ új készlet** -készlet létrehozása az aktuális kiszolgálón.
+1. Az a **rugalmas adatbáziskészlet** sablon:
 
     1. Állítsa be **neve** való *Pool2*.
     1. A tarifacsomagnál hagyja meg a **Standard készlet** beállítást.
     1. Kattintson a **Készlet beállítása** elemre.
-    1. Állítsa be **készlet edtu értékének** való *50 eDTU*.
-    1. Kattintson a **adatbázisok hozzáadása** adatbázisok listájának megtekintéséhez azon a kiszolgálón, hozzáadható *Pool2*.
-    1. Ezek az új készletbe helyezhető át, és kattintson a bármely 10 adatbázisok kijelölése **válasszon**. Ha már futott a terhelés generátor, a szolgáltatás már tudja, hogy a teljesítmény profil az alapértelmezett 50 eDTU méreténél nagyobb készlet igényel, és azt javasolja, hogy egy 100 eDTU-beállítás kezdve.
+    1. Állítsa be **készlet eDTU** való *50 edtu méretű*.
+    1. Kattintson a **adatbázisok hozzáadása** azon a kiszolgálón, lehet hozzáadni az adatbázisok listájának megtekintéséhez *Pool2*.
+    1. Válassza ki, helyezze át ezeket az új készletbe, majd 10 adatbázisokhoz **kiválasztása**. Futtatja, a terhelésgenerátor, ha a szolgáltatás már tudja, hogy a teljesítmény profil nagyobb, mint az alapértelmezett 50 eDTU méretű készlet igényel, és javasolja, hogy egy 100 eDTU-beállítás kezdve.
 
     ![ajánlás](media/saas-dbpertenant-performance-monitoring/configure-pool.png)
 
-    1. Ebben az oktatóanyagban hagyja meg az alapértelmezett 50 edtu-k, és kattintson a **válasszon** újra.
-    1. Válassza ki **OK** az új készlet létrehozása és a kijelölt adatbázisok áthelyezése bele.
+    1. Ebben az oktatóanyagban hagyja meg az alapértelmezett 50 edtu-t, és kattintson a **kiválasztása** újra.
+    1. Válassza ki **OK** hoz létre az új készletet és áthelyezhet abba a kiválasztott adatbázisokat.
 
-A készlet létrehozása és az adatbázisok áthelyezése néhány percet vesz igénybe. Adatbázisok áthelyezése maradjanak az online és elérhető-e teljes mértékben csak a legutóbbi néhány percet, mivel ekkor a nyitott kapcsolatokat be van zárva. Mindaddig, amíg még néhány újrapróbálkozási logika, az ügyfelek majd fognak kapcsolódni az adatbázis az új készletben.
+A készlet létrehozása és az adatbázisok áthelyezése néhány percet vesz igénybe. Adatbázisok kerülnek, online és teljes mértékben elérhetők maradjanak egészen az nagyon utolsó pillanatig, mivel ekkor minden megnyitott kapcsolatuk bezáródik. Mindaddig, amíg az egyes újrapróbálkozási algoritmussal rendelkezik, az ügyfelek ezután fognak kapcsolódni az adatbázis az új készletben.
 
-Keresse meg a **Pool2** (a a *tenants1-dpt -\<felhasználói\>*  kiszolgáló) megnyitása a címkészletet, és figyelemmel kísérni a teljesítményét. Ha nem látja, várja meg a kiépítés befejezéséhez új készlet.
+Keresse meg a **Pool2** (a a *tenants1-dpt -\<felhasználói\>*  kiszolgáló), nyissa meg a készletet, és figyelemmel kísérni a teljesítményét. Ha nem látja, várja meg, végezze el az új készlet kiépítése.
 
-Most már megtekintheti, hogy az erőforrás-használat *Pool1* csökkent, és hogy *Pool2* hasonlóan most betöltve.
+A most látható, hogy az erőforrás-használat *Pool1* csökkent, és hogy *Pool2* hasonlóan most betöltve.
 
-## <a name="manage-performance-of-a-single-database"></a>Egy önálló adatbázis teljesítményének kezelése
+## <a name="manage-performance-of-a-single-database"></a>Önálló adatbázis teljesítményének kezelése
 
-Ha a készletben egy önálló adatbázist tartósan magas terhelés ér, akkor a készlet beállításaitól függően előfordulhat, hogy uralni fogja a készlet erőforrásainak használatát, ami hatással lehet a többi adatbázisra. A tevékenység valószínű, hogy egy kis ideig továbbra is, ha az adatbázis átmenetileg áthelyezhető kívül a készletet. Ez lehetővé teszi, hogy az adatbázis számára a további erőforrások van szüksége, és korlátozása, hogy az adatbázisból.
+Ha a készletben egy önálló adatbázist tartósan magas terhelés ér, akkor a készlet beállításaitól függően előfordulhat, hogy uralni fogja a készlet erőforrásainak használatát, ami hatással lehet a többi adatbázisra. Ha a tevékenység várhatóan huzamosabb ideig, az adatbázis ideiglenesen kivehető a készlet. Ez lehetővé teszi az adatbázis számára a további erőforrások van szüksége, és elszigetelődjön tőlük a más adatbázisok.
 
 Ez a gyakorlat a Contoso Concert Hall magas terhelésének a hatását szimulálja, amikor megkezdődik a jegyek árusítása egy népszerű koncertre.
 
-1. Az a **PowerShell ISE**, nyissa meg a... \\ *Bemutató-PerformanceMonitoringAndManagement.ps1* parancsfájl.
+1. Az a **PowerShell ISE-ben**, nyissa meg a... \\ *Demo-PerformanceMonitoringAndManagement.ps1* parancsfájlt.
 1. Állítsa be a **$DemoScenario = 5, Normál terhelés létrehozása, valamint magasabb terhelés létrehozása egyetlen bérlő számára (kb. 95 DTU)** értéket.
 1. Állítsa be a **$SingleTenantDatabaseName = contosoconcerthall**értéket.
 1. Futtassa a szkriptet az **F5** billentyűvel.
 
 
-1. Az a [Azure-portálon](https://portal.azure.com), az adatbázisok listájának tallózással keresse meg a *tenants1-dpt -\<felhasználói\>*  kiszolgáló. 
+1. Az a [az Azure portal](https://portal.azure.com), keresse meg az adatbázisok listája a *tenants1-dpt -\<felhasználói\>*  kiszolgáló. 
 1. Kattintson a **contosoconcerthall** adatbázis.
-1. Kattintson a készlet, amely **contosoconcerthall** van. Keresse meg a készlet a **rugalmas adatbáziskészlet** szakasz.
+1. Kattintson a készlet, amely **contosoconcerthall** szerepel. Keresse meg a készlet az a **rugalmas adatbáziskészlet** szakaszban.
 
-1. Vizsgálja meg a **rugalmas készlet figyelése** diagram, és keresse meg a megnövekedett készlet edtu-k. Egy-két perc után jelentkezik a magas terhelés, aminek következtében a készlet eléri a 100%-os kihasználtságot.
-2. Vizsgálja meg a **rugalmas adatbázis-figyelési** megjeleníteni, amelyek az elmúlt egy órában az hottest adatbázisokat jeleníti meg. A *contosoconcerthall* adatbázis hamarosan meg kell jelennie az öt hottest adatbázisok egyikét.
-3. **Kattintson a rugalmas adatbázis-figyelési** **diagram** és nyílik meg a **adatbázis erőforrás-használat** lap, ahol figyelheti az adatbázisok bármelyikét. Ez lehetővé teszi a megjelenítési elkülönítése a *contosoconcerthall* adatbázis.
-4. Adatbázisok listájának megtekintéséhez kattintson **contosoconcerthall**.
-5. Kattintson a **(skála dtu-k) Tarifacsomagot** megnyitásához a **konfigurálása a** lap, amelyen beállíthatja az adatbázis egy önálló teljesítményszint szükséges.
+1. Vizsgálja meg a **rugalmas készlet figyelése** diagram, és keresse meg a készlet megnövekedett eDTU kihasználtsága. Egy-két perc után jelentkezik a magas terhelés, aminek következtében a készlet eléri a 100%-os kihasználtságot.
+2. Vizsgálja meg a **rugalmas adatbázis figyelése** megjeleníteni, amelyek az elmúlt órában legtöbbet használt adatbázisokat jeleníti meg. A *contosoconcerthall* adatbázis hamarosan megjelenik az 5 legtöbbet használt adatbázisokat egyikét.
+3. **Kattintson a rugalmas adatbázis figyelése** **diagram** , megnyílik a **Adabáziserőforrás-felhasználás** oldal, ahol nyomon követheti az adatbázisok bármelyikét. Ez lehetővé teszi, hogy jelenítse meg a *contosoconcerthall* adatbázis.
+4. Az adatbázisok listájában kattintson **contosoconcerthall**.
+5. Kattintson a **Tarifacsomag (dtu)** megnyitásához a **teljesítmény konfigurálása** lap, amelyen beállíthatja az adatbázis egy különálló számítási méret.
 6. Kattintson a **Standard** lapra a Standard csomag skálázási beállításainak megnyitásához.
-7. Húzza a **DTU csúszkát** kiválasztásához jobbra **100** dtu-inak száma. Megjegyzés: Ez megfelel a szolgáltatási cél **S3**.
-8. Kattintson a **alkalmaz** az adatbázis kilépni a készletet, és lehetővé teszi egy *Standard S3* adatbázis.
-9. Skálázás végrehajtása után a contosoconcerthall adatbázis gyakorolt hatás és a rugalmas készlet és az adatbázis panelen Pool1 figyelése.
+7. Húzza az ujját a **DTU csúszkát** jobbra válassza ki a **100** dtu-k. Megjegyzés: Ez a szolgáltatási cél megfelel **S3**.
+8. Kattintson a **alkalmaz** helyezze át az adatbázist a készletből, és lehetővé teszi egy *Standard S3 szintű* adatbázis.
+9. Méretezés befejezése után a hatása a contosoconcerthall adatbázis és a rugalmas készlet és az adatbázis paneleket a Pool1 figyelése.
 
-Miután a nagy terhelés a contosoconcerthall adatbázis enyhül juttassa vissza a azt a költségek csökkentése a készlethez. Ha nem egyértelmű, hogy mikor, amely akkor van végrehajtva beállíthat egy riasztást az adatbázis, amely akkor indul el, amikor az adatbázis-alá csökken a DTU-használatát a készlet maximális. Egy adatbázis készletbe történő áthelyezésének menetét az 5. gyakorlat írja le.
+Ha a magas terhelés a contosoconcerthall adatbázis megszokottnál, helyezze vissza, a készletbe a költségek csökkentése érdekében. Ha nem egyértelmű, amikor, amely akkor történik meg, beállíthat egy riasztást az adatbázison, amely aktiválódik az adatbázisonkénti alá csökken a DTU-használatát a készletben a maximális. Egy adatbázis készletbe történő áthelyezésének menetét az 5. gyakorlat írja le.
 
-## <a name="other-performance-management-patterns"></a>Más teljesítmény felügyeleti minták
+## <a name="other-performance-management-patterns"></a>Egyéb teljesítménykezelési minták
 
-**Preemptív skálázás** a gyakorlatban a fenti ahol megismerte az elkülönített adatbázis méretezése tudtak melyik adatbázis, amelyet meg kíván keresni. Contoso energiaoptimalizálást egyszerre Hall kezelését a közelgő jegy értékesítési Wingtips közölte, ha az adatbázis sikerült kikerült a készlet pre-emptively. Máskülönben valószínűleg egy riasztást kellett volna beállítani a készleten vagy az adatbázison ahhoz, hogy észre lehessen venni, mi történik. Nem jó, ha az ilyen eseményekről úgy szerez tudomást, hogy a készletben található többi bérlő csökkenő teljesítményről panaszkodik. Ha a bérlő meg tudja jósolni, hogy milyen hosszan lesz szüksége további erőforrásokra, beállítható egy Azure Automation-runbook, amely pontosan ütemezi az adatbázis kivételét, majd visszahelyezését a készletbe.
+**Preemptív méretezés** a gyakorlatban a fenti, ahol megismerte egy elkülönített adatbázis méretezését, melyik adatbázist kell keresni dolgozott. Ha a Contoso Concert hall felügyeleti kellett wingtips közelgő jegy értékesítés, az adatbázis sikerült átkerült a készletből jegyértékesítésről. Máskülönben valószínűleg egy riasztást kellett volna beállítani a készleten vagy az adatbázison ahhoz, hogy észre lehessen venni, mi történik. Nem jó, ha az ilyen eseményekről úgy szerez tudomást, hogy a készletben található többi bérlő csökkenő teljesítményről panaszkodik. Ha a bérlő meg tudja jósolni, hogy milyen hosszan lesz szüksége további erőforrásokra, beállítható egy Azure Automation-runbook, amely pontosan ütemezi az adatbázis kivételét, majd visszahelyezését a készletbe.
 
 **Bérlők általi önkiszolgáló skálázás** Mivel a skálázási feladat könnyen meghívható a felügyeleti API-n keresztül, így a bérlői adatbázisok méretezésének lehetősége könnyen beépíthető a bérlőoldali alkalmazásba, és felkínálható az SaaS-szolgáltatás egy funkciójaként. Például a bérlők saját maguk adminisztrálhatják a vertikális fel- és leskálázást, ami előfordulhat, hogy közvetlen kapcsolatban áll a számlázásukkal.
 
-**Egy készlet felfelé és lefelé skálázás használati minták megfelelő ütemezés szerint**
+**Egy készlet felfelé és lefelé skálázás használati mintákhoz ütemezés szerint**
 
 Ha az összesített bérlői használat kiszámítható mintákat követ, az Azure Automationnel ütemezni tudja a készletek vertikális fel- és leskálázását. Például egy készletet hétköznapokon este 6 után leskálázhat, reggel 6 előtt pedig felskálázhat, ha tudja, hogy a két időpont között csökken az erőforrásigény.
 
@@ -242,7 +242,7 @@ Ezen oktatóanyag segítségével megtanulhatja a következőket:
 
 ## <a name="additional-resources"></a>További források
 
-* További [oktatóprogramot kínál, amelyek a Wingtip jegyek SaaS adatbázis / bérlői alkalmazástelepítés épül](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
+* További [a Wingtip Tickets SaaS adatbázis Per bérlői alkalmazástelepítés útmutatóra oktatóanyagok](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
 * [Rugalmas SQL-készletek](sql-database-elastic-pool.md)
 * [Azure Automation](../automation/automation-intro.md)
 * [Log Analytics](saas-dbpertenant-log-analytics.md) – A Log Analytics beállítását és használatát ismertető oktatóanyag

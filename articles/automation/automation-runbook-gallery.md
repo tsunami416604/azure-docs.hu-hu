@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 07/13/2018
+ms.date: 09/11/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 489d9c430db000710368a65f3100bb175ad00eae
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 988f77dd0f8f31f6e31e5371ed263d4c4195c105
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39041178"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45984873"
 ---
 # <a name="runbook-and-module-galleries-for-azure-automation"></a>Azure Automation forgatókönyv- és katalógusok
 Ahelyett, hogy a saját forgatókönyveit és moduljait létrehozása az Azure Automationben, számos forgatókönyv esetében, amely már a Microsoft és a Közösség által készített érheti el.  Ezekben a forgatókönyvekben, módosítás nélkül használhatja, vagy kiindulási pontként használhatja őket, és az adott igények szerint szerkesztheti őket.
@@ -94,6 +94,10 @@ PowerShell-modulok a runbookokban használható parancsmagokat tartalmaznak, és
 
 > [!NOTE]
 > A PowerShell core támogató modulok nem támogatottak az Azure Automationben, és nem lehet importálni az Azure Portalon, vagy közvetlenül a PowerShell-galériából helyezik üzembe.
+
+## <a name="python-runbooks"></a>Python-Runbookok
+
+Python-Runbookok érhetők el a [Script Center-galéria](https://gallery.technet.microsoft.com/scriptcenter/site/search?f%5B0%5D.Type=RootCategory&f%5B0%5D.Value=WindowsAzure&f%5B1%5D.Type=ProgrammingLanguage&f%5B1%5D.Value=Python&f%5B1%5D.Text=Python&sortBy=Date&username=). A Script Center-galéria Python runbookok közreműködhet. Ha Ön, győződjön meg arról, hogy a címke hozzáadása **Python** főágra feltöltésekor.
 
 ## <a name="requesting-a-runbook-or-module"></a>Egy runbook vagy a modul kérése
 Kérelmek küldése [User Voice](https://feedback.azure.com/forums/246290-azure-automation/).  Súgó írása egy runbook van szüksége, vagy PowerShell kérdése van, ha új kérdést tenne fel, hogy [fórum](http://social.msdn.microsoft.com/Forums/windowsazure/en-US/home?forum=azureautomation&filter=alltypes&sort=lastpostdesc).

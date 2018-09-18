@@ -1,6 +1,6 @@
 ---
-title: A több-bérlős SaaS-alkalmazás egy szilánkos több-bérlős Azure SQL adatbázis teljesítményének figyelése |} Microsoft Docs
-description: Megfigyelés és kezelés szilánkos több-bérlős egy több-bérlős SaaS-alkalmazás az Azure SQL adatbázis teljesítménye
+title: Szilánkokra osztott több-bérlős Azure SQL-adatbázis egy több-bérlős SaaS-alkalmazás teljesítményének figyelése |} A Microsoft Docs
+description: Szilánkokra osztott több-bérlős egy több-bérlős SaaS-alkalmazás az Azure SQL adatbázis teljesítményének figyelése és kezelése
 keywords: sql database-oktatóanyag
 services: sql-database
 author: stevestein
@@ -8,189 +8,189 @@ manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: conceptual
-ms.date: 04/01/2018
+ms.date: 09/14/2018
 ms.author: sstein
-ms.openlocfilehash: 75431715b5948525e92c99b778842d26a684da82
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: d04fd4202a0544a8549f1729dbba9a829482c2f0
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36753445"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45730681"
 ---
-# <a name="monitor-and-manage-performance-of-sharded-multi-tenant-azure-sql-database-in-a-multi-tenant-saas-app"></a>Megfigyelés és kezelés szilánkos több-bérlős egy több-bérlős SaaS-alkalmazás az Azure SQL adatbázis teljesítménye
+# <a name="monitor-and-manage-performance-of-sharded-multi-tenant-azure-sql-database-in-a-multi-tenant-saas-app"></a>Szilánkokra osztott több-bérlős egy több-bérlős SaaS-alkalmazás az Azure SQL adatbázis teljesítményének figyelése és kezelése
 
-Ebben az oktatóanyagban használt SaaS-alkalmazásokhoz több alapvető teljesítményt felügyeleti lehetőségeket írja. A betöltési generátor használatával tevékenység szimulálása szilánkos több-bérlős az adatbázisok közötti, beépített figyelési és riasztási szolgáltatásokat az SQL-adatbázis egy.
+Ebben az oktatóanyagban használt SaaS-alkalmazásokban több fő felügyeleti forgatókönyvek teljesítménykezelési. A terhelésgenerátor tevékenység szimulálása között több-bérlős szilánkokra osztott adatbázisok használatával, a beépített figyelési és riasztási funkcióit az SQL Database találja meg.
 
-A Wingtip jegyek SaaS több-bérlős adatbázis alkalmazás több-bérlős horizontálisan skálázott adatok modellt használ, ahol helyszínére (bérlői) adatok között van elosztva Bérlőazonosító által esetlegesen több adatbázis. Sok más SaaS-alkalmazáshoz hasonlóan a bérlői számítási feladatok várt mintája kiszámíthatatlan és szórványos. Ez a gyakorlatban azt jelenti, hogy a jegyeladásokra bármikor sor kerülhet. Az adatbázisok tipikus használati szokásokkal előnyeit, adatbázisok is méretezhető felfelé és lefelé optimalizálhatja a költség, a megoldás. Az ilyen típusú mintát fontos annak érdekében, hogy a terhelés ésszerűen kiegyensúlyozott potenciálisan több adatbázis közötti adatbázis-erőforrás felhasználásának figyelésére. Is biztosítania kell, hogy az egyes adatbázisok rendelkezik megfelelő erőforrásokkal, és nem elérte-e a [DTU](sql-database-service-tiers.md#what-are-database-transaction-units-dtus) korlátok. Ez az oktatóanyag ismerteti, felügyelhetik és kezelhetik az adatbázisok és a változások a terhelési válaszul intézkedéseket módon.
+A Wingtip Tickets SaaS több-bérlős adatbázis app egy több-bérlős horizontálisan skálázott adatok modellt használ, ahol helyszín (bérlő) adatok van-e terjesztve Bérlőazonosító potenciálisan több adatbázis között. Sok más SaaS-alkalmazáshoz hasonlóan a bérlői számítási feladatok várt mintája kiszámíthatatlan és szórványos. Ez a gyakorlatban azt jelenti, hogy a jegyeladásokra bármikor sor kerülhet. Ezen tipikus adatbázis-felhasználási minta kihasználásához adatbázisok méretezhetők felfelé és lefelé optimalizálhatja a megoldások költségeit. Az ebben a típusú mintánál fontos győződjön meg arról, hogy terhelések egyenletesen oszoljanak esetleg több adatbázisban az adatbázis erőforrás-használat figyelése. Győződjön meg arról, hogy az egyes adatbázisok erőforrással rendelkezzenek, és nem találkozik kell azok [DTU](sql-database-service-tiers.md#what-are-database-transaction-units-dtus) korlátok. Ez az oktatóanyag bemutatja, figyelése és felügyelete az adatbázisokat, és hogyan lehet a számítási feladatok változásaira adott korrekciós művelet végrehajtása módjai.
 
 Ezen oktatóanyag segítségével megtanulhatja a következőket:
 
 > [!div class="checklist"]
 
-> * A megadott terheléselosztási generátor futtatásával szilánkos több-bérlős adatbázis-használata szimulálása
-> * Az adatbázis figyelésére, reagáljon a megnövekedett terhelés
-> * A nagyobb adatbázis-terhelésnek válaszul adatbázis méretezése
-> * A bérlő kiépíteni egy bérlői adatbázis
+> * Egy több-bérlős szilánkokra osztott adatbázis használatának szimulálása egy adott terhelésgenerátor futtatásával
+> * Reagáljon a megnövekedett az adatbázis figyelése
+> * Vertikális felskálázása az adatbázis az adatbázis megnövekedett terhelésére adott válaszul
+> * Új bérlő kiépítéséhez egy egybérlős adatbázisba
 
 Az oktatóanyag teljesítéséhez meg kell felelnie az alábbi előfeltételeknek:
 
-* A Wingtip jegyek SaaS több-bérlős adatbázis alkalmazás telepítve van. Kevesebb mint öt perc alatt telepítéséhez lásd: [központi telepítése és vizsgálja meg a Wingtip jegyek SaaS több-bérlős adatbázis-alkalmazás](saas-multitenantdb-get-started-deploy.md)
+* A Wingtip Tickets SaaS több-bérlős adatbázis-alkalmazás telepítve van. Kevesebb mint öt perc alatt üzembe helyezéséhez lásd: [üzembe helyezés a Wingtip Tickets SaaS több-bérlős adatbázis-alkalmazás és megismerése](saas-multitenantdb-get-started-deploy.md)
 * Az Azure PowerShell telepítve van. A részletekért lásd: [Ismerkedés az Azure PowerShell-lel](https://docs.microsoft.com/powershell/azure/get-started-azureps)
 
-## <a name="introduction-to-saas-performance-management-patterns"></a>Bevezetés a Szolgáltatottszoftver-teljesítmény felügyeleti minták
+## <a name="introduction-to-saas-performance-management-patterns"></a>Teljesítménykezelési minták SaaS bemutatása
 
 Az adatbázisteljesítmény-kezelés a teljesítményadatok fordításából és elemzéséből, majd az adatokra való reagálásból áll. Ez tulajdonképpen a paraméterek módosítását jelenti, miáltal az alkalmazás válaszideje elfogadható szinten marad. 
 
 ### <a name="performance-management-strategies"></a>Teljesítménykezelési stratégiák
 
-* Ne kelljen manuálisan figyelemmel kísérni a teljesítményét, hogy a leghatékonyabb **riasztások beállítását, amelyek indul el, ha az adatbázisok kóbor kívül normál tartományok**.
-* Egy adatbázis teljesítményszintjét a rövid távú ingadozását válaszolni a **DTU szint is méretezhető felfelé vagy lefelé**. Rendszeres vagy előre jelezhető alapon történik a értékingadozásait **automatikus ütemezése az adatbázis skálázás**. Beállítható például a vertikális leskálázás, amikor előre láthatóan kevés lesz a számítási feladat, például éjjelente vagy a hétvégi napokon.
-* Válaszoljon a hosszabb távú ingadozását, vagy a bérlők a **az egyes bérlők anélkül áthelyezhetők más adatbázisba**.
-* A rövid távú növekedése válaszolni *egyedi* bérlős terheléselosztóra, **az egyes bérlők adatbázis veszi, és az egyes teljesítményszintet hozzárendelt**. Csökken a terhelés, ha a bérlő majd adhatók vissza a több-bérlős adatbázishoz. Ha ez ismert előre, bérlők áthelyezhető pre-emptively ellenőrizze az adatbázis mindig rendelkezik-e a szükséges erőforrásokat, és a több-bérlős adatbázis más bérlők gyakorolt hatás elkerülése érdekében. Ha ez a szükséglet előre kiszámítható, például ha egy helyszín nagy mennyiségű növekedésre számít a jegyeladásokban egy népszerű esemény miatt, akkor ez a kezelési viselkedés integrálható az alkalmazásba.
+* Ne kelljen manuálisan a teljesítmény figyelésére, a leghatékonyabb **riasztások beállítását, melyek indítható el, ha az adatbázisok kilépnek az engedélyezett tartományból teljesítményfigyelésnél**.
+* Az adatbázis, a számítási méret rövidtávú ingadozásaira a **DTU-szintje vertikálisan fel, felfelé vagy lefelé**. Ha az ingadozás rendszeres vagy Kiszámítható alapon **automatikus skálázás az adatbázis ütemezhető**. Beállítható például a vertikális leskálázás, amikor előre láthatóan kevés lesz a számítási feladat, például éjjelente vagy a hétvégi napokon.
+* Válaszoljon ingadozásokra vagy a bérlők változásai **az egyes bérlők is áthelyezhetők, másik adatbázisba**.
+* A rövid távú növekedése válaszolni *egyes* bérlői terhelés, **az egyes bérlők kívül egy adatbázist, és egy adott számítási méret hozzárendelt**. Ha a terhelés csökkenésével a bérlő majd adhatók vissza a több-bérlős adatbázishoz. Ha ez az előzetesen ismert, bérlők áthelyezhetők jegyértékesítésről az adatbázis mindig legyen az ehhez szükséges erőforrásokat, és a több bérlős adatbázisban található többi bérlő gyakorolt hatás elkerülése érdekében. Ha ez a szükséglet előre kiszámítható, például ha egy helyszín nagy mennyiségű növekedésre számít a jegyeladásokban egy népszerű esemény miatt, akkor ez a kezelési viselkedés integrálható az alkalmazásba.
 
-Az [Azure Portal](https://portal.azure.com) a legtöbb erőforráshoz beépített figyelési és riasztási lehetőségeket biztosít. SQL-adatbázis figyelés és riasztás érhető el az adatbázisok. A beépített figyelés és riasztás érték erőforrás-specifikus, ezért célszerű a kis mennyiségű erőforrást használ, de nem nem megfelelő, ha sok erőforrást.
+Az [Azure Portal](https://portal.azure.com) a legtöbb erőforráshoz beépített figyelési és riasztási lehetőségeket biztosít. SQL-adatbázis monitorozási és riasztási érhető el az adatbázisok. A beépített figyelés és riasztás erőforrás-specifikus, így azt a kis számú használni, de nem kényelmes, sok erőforrás használatakor.
 
-Nagy mennyiségű forgatókönyvek, ahol sok erőforrással rendelkező dolgozunk, [Naplóelemzési](https://azure.microsoft.com/services/log-analytics/) is használható. Ez a külön Azure szolgáltatás, amely analytics kibocsátott diagnosztikai naplók és a naplóelemzési munkaterület összegyűjtött telemetrikus keresztül. A Naplóelemzési sok szolgáltatásokból telemetriai adatokat gyűjthet, és lekérdezése, és állítson be riasztásokat használható.
+Nagy mennyiségű forgatókönyvekhez, ahol sok erőforrásokkal dolgozik, [Log Analytics](https://azure.microsoft.com/services/log-analytics/) is használható. Ez az egy külön Azure-szolgáltatás, amely biztosít elemzési kibocsátott diagnosztikai naplók és a egy log analytics-munkaterület-munkahelyen gyűjtött telemetria. Log Analytics számos szolgáltatásból képes telemetriai adatok gyűjtésére, és lekérdezheti, és riasztásokat állíthat be.
 
-## <a name="get-the-wingtip-tickets-saas-multi-tenant-database-application-source-code-and-scripts"></a>Az alkalmazás forráskódjához Wingtip jegyek SaaS több-bérlős adatbázis és a parancsfájlok
+## <a name="get-the-wingtip-tickets-saas-multi-tenant-database-application-source-code-and-scripts"></a>A Wingtip Tickets SaaS több-bérlős adatbázis forráskódjához és parancsfájlok
 
-A Wingtip jegyek SaaS több-bérlős adatbázis parancsfájlok és az alkalmazás forráskódjához érhetők el a [WingtipTicketsSaaS-MultitenantDB](https://github.com/microsoft/WingtipTicketsSaaS-MultiTenantDB) GitHub-tárház. Tekintse meg a [általános útmutatást](saas-tenancy-wingtip-app-guidance-tips.md) töltse le és feloldása a Wingtip jegyek Szolgáltatottszoftver-parancsfájlok lépéseit.
+A Wingtip Tickets SaaS több-bérlős adatbázis parancsfájlok és az alkalmazás forráskódjának érhető el a [WingtipTicketsSaaS-MultitenantDB](https://github.com/microsoft/WingtipTicketsSaaS-MultiTenantDB) GitHub-adattárban. Tekintse meg a [általános útmutatást](saas-tenancy-wingtip-app-guidance-tips.md) töltse le és a Wingtip Tickets SaaS-parancsfájlok feloldása.
 
 ## <a name="provision-additional-tenants"></a>További bérlők kiépítése
 
-Ez az oktatóanyag beható ismerete léptékű Teljesítményfigyelő és felügyeleti működése, megköveteli, hogy a több bérlő több-bérlős szilánkos adatbázisban.
+Az alkalmazásteljesítmény-figyelés és kezelés működését ipari méretekben kellőképpen szemléltetni lehessen, az oktatóanyaghoz, hogy egy több-bérlős szilánkokra osztott adatbázis több bérlővel rendelkezik.
 
-Ha egy korábbi oktatóanyag már ellátta a bérlő köteg, ugorjon a [szimulálás használati összes bérlői adatbázisok](#simulate-usage-on-all-tenant-databases) szakasz.
+Ha egy korábbi oktatóanyagban már kiépített bérlők egy kötegét, ugorjon a [összes bérlői adatbázis használatának szimulálása](#simulate-usage-on-all-tenant-databases) szakaszban.
 
-1. Az a **PowerShell ISE**, nyissa meg... \\Tanulási modulok\\Teljesítményfigyelő és felügyeleti\\*bemutató-PerformanceMonitoringAndManagement.ps1*. Tartsa ezt a szkriptet nyitva, mivel az oktatóanyag során több különböző forgatókönyvet is futtatnia kell majd.
+1. Az a **PowerShell ISE-ben**, nyissa meg... \\Tanulási modulok\\alkalmazásteljesítmény-figyelési és felügyeleti\\*Demo-PerformanceMonitoringAndManagement.ps1*. Tartsa ezt a szkriptet nyitva, mivel az oktatóanyag során több különböző forgatókönyvet is futtatnia kell majd.
 1. Válassza a **$DemoScenario** = **1**, _Bérlők kötegelt kiépítése_ lehetőséget.
 1. A szkriptek futtatásához nyomja le az **F5** billentyűt.
 
-A parancsfájl a több-bérlős adatbázisba 17 bérlők telepít néhány perc múlva. 
+A szkript üzembe helyezi, néhány perc alatt 17 bérlőt a több-bérlős adatbázisba. 
 
-A *New-TenantBatch* parancsfájl új bérlők hoz létre egyedi bérlői kulcsok a szilánkos több-bérlős adatbázison belül, és azokat a bérlő neve és helyszínére típusú inicializál. Ez a módszer az alkalmazás látja el egy új bérlőt összhangban. 
+A *New-TenantBatch* parancsfájl új bérlők egyedi bérlővel-kulcsokat hoz létre a horizontálisan skálázott több-bérlős adatbázisban és inicializálja őket a bérlő nevével és a helyszíntípussal típusát. Ez az alkalmazás kiosztja az új bérlő módja összhangban. 
 
 ## <a name="simulate-usage-on-all-tenant-databases"></a>Az összes bérlői adatbázis használatának szimulálása
 
-A *bemutató-PerformanceMonitoringAndManagement.ps1* parancsfájl, feltéve, hogy egy több-bérlős rajta futó munkaterhelések szimulálja. A terhelés jön létre a rendelkezésre álló terheléselosztási forgatókönyveket egyikének használatával:
+A *Demo-PerformanceMonitoringAndManagement.ps1* parancsfájl, amely kiható terhelési a több-bérlős adatbázisban kerül. A terhelés a véleménypontszámok generálásáról az egyik rendelkezésre álló betöltése:
 
 | Bemutató | Forgatókönyv |
 |:--|:--|
-| 2 | Normál intenzitásának terhelés készítése (körülbelül 30 DTU) |
-| 3 | Bérlőnként hosszabb felszakadásáig terheléssel készítése|
-| 4 | Bérlőnként magasabb DTU felszakadásáig terheléssel készítése (hozzávetőleges 70 DTU)|
-| 5 | Egy magas intenzitásának készítése (körülbelül 90 DTU) a többi bérlő terhelése egyetlen bérlő és a normál intenzitásának |
+| 2 | Normál intenzitású terhelés létrehozása (körülbelül 30 DTU) |
+| 3 | Bérlőnként hosszabb adatlöketekkel terhelés létrehozása|
+| 4 | Magasabb DTU-löketekkel bérlőnként terhelés létrehozása (hozzávetőleges 70 DTU)|
+| 5 | Hozzon létre egy magas intenzitása (körülbelül 90 dtu-k) létrehozása egyetlen bérlő és a egy normál intenzitású terhelés a minden más bérlők |
 
-A terhelésgenerátor egy *szintetikus* CPU-terhelést alkalmaz az összes bérlői adatbázison. A generátor minden bérlői adatbázis számára elindít egy feladatot, amely időközönként meghív egy, a terhelést létrehozó tárolt eljárást. A terhelési szintben (a dtu-k) időtartama és intervallumok változnak, előre nem látható bérlői tevékenységeket szimulálva összes adatbázis között.
+A terhelésgenerátor egy *szintetikus* CPU-terhelést alkalmaz az összes bérlői adatbázison. A generátor minden bérlői adatbázis számára elindít egy feladatot, amely időközönként meghív egy, a terhelést létrehozó tárolt eljárást. A terhelések szintje (a dtu-k), időtartama és időközönként sokfélék minden adatbázis szimulálva a kiszámíthatatlan bérlői aktivitást.
 
-1. Az a **PowerShell ISE**, nyissa meg... \\Tanulási modulok\\Teljesítményfigyelő és felügyeleti\\*bemutató-PerformanceMonitoringAndManagement.ps1*. Tartsa ezt a szkriptet nyitva, mivel az oktatóanyag során több különböző forgatókönyvet is futtatnia kell majd.
-1. Állítsa be **$DemoScenario** = **2**, _Generate normál intenzitásának betöltése_
-1. Nyomja le az **F5** alkalmazni a terhelést a bérlők számára.
+1. Az a **PowerShell ISE-ben**, nyissa meg... \\Tanulási modulok\\alkalmazásteljesítmény-figyelési és felügyeleti\\*Demo-PerformanceMonitoringAndManagement.ps1*. Tartsa ezt a szkriptet nyitva, mivel az oktatóanyag során több különböző forgatókönyvet is futtatnia kell majd.
+1. Állítsa be **$DemoScenario** = **2**, _normál intenzitású terhelés létrehozása_
+1. Nyomja meg **F5** betöltés alkalmazni a bérlők számára.
 
-Wingtip jegyek SaaS több-bérlős adatbázis egy SaaS-alkalmazás, pedig egy SaaS-alkalmazás valós terhelése jellemzően szórványos és előre nem látható. Ennek szimulálására a terhelésgenerátor az összes bérlő között elosztott, véletlenszerű terhelést hoz létre. Több percig merülnek fel, a betöltés minta van szükség, ezért futtassa a terhelés generátor 3-5 percet, mielőtt megpróbálja a terhelés, az alábbi szakaszok a figyelheti.
+A Wingtip Tickets SaaS több bérlős adatbázisban egy SaaS-alkalmazás, és a való életből vett terhelés egy SaaS-alkalmazás általában szórványosak és kiszámíthatatlanok. Ennek szimulálására a terhelésgenerátor az összes bérlő között elosztott, véletlenszerű terhelést hoz létre. Több perc szükséges a terhelés minta bontakozik ki, ezért futtassa a terhelésgenerátort 3 – 5 percet, mielőtt megkísérelné a következő szakaszok a terheléseket figyelni.
 
 > [!IMPORTANT]
-> A betöltési generátor fut egy új PowerShell-ablakban feladatok sorozataként. Ha bezárja a munkamenetet, a betöltés generátor leáll. A betöltési generátor marad a *feladat meghívása* állapotba, ahol hoz létre a kódgenerátor végrehajtásának megkezdése után törlődnek új tenantokat terhelése. Használjon *Ctrl-C* leállítására, hívja az új feladatokat, és lépjen ki a parancsfájl. A betöltési generátor továbbra is fut, de csak a meglévő bérlők számára.
+> A terhelésgenerátor egy új PowerShell-ablakban feladatok sorozataként fut. Ha bezárja a munkamenetet, a terhelésgenerátor leáll. A terhelésgenerátor marad egy *feladat meghívása* állapot, ahol minden olyan új bérlők számára, miután elindult a generátor felhasznált terhelése állít elő. Használat *Ctrl-C* meghívása új feladatok leállítása és lépjen ki a parancsprogramot. A terhelésgenerátor továbbra is futtatja, de csak a meglévő bérlők számára.
 
-## <a name="monitor-resource-usage-using-the-azure-portal"></a>A figyelő erőforrás-használata az Azure portál használatával
+## <a name="monitor-resource-usage-using-the-azure-portal"></a>Az Azure portal használatával erőforrás-használat figyelése
 
-Figyelheti az erőforrás-felhasználás által alkalmazott a terhelés, nyissa meg a több-bérlős adatbázisba, a portál **tenants1**, amely tartalmazza a bérlők:
+Az eredmények közül a terhelések erőforrás-használat figyeléséhez, nyissa meg a portálon a több-bérlős adatbázissal **tenants1**, amely tartalmazza a bérlők számára:
 
-1. Nyissa meg a [Azure-portálon](https://portal.azure.com) , és keresse meg a kiszolgáló *tenants1-mt -&lt;felhasználói&gt;*.
-1. Görgessen lefelé, és keresse meg az adatbázisok, és kattintson a **tenants1**. A szilánkos több-bérlős adatbázis eddig létrehozott összes bérlők tartalmazza.
+1. Nyissa meg a [az Azure portal](https://portal.azure.com) , és keresse meg a kiszolgáló *tenants1-mt -&lt;felhasználói&gt;*.
+1. Görgessen lefelé, és keresse meg az adatbázisok, és kattintson a **tenants1**. A több-bérlős szilánkokra osztott adatbázis eddig létrehozott összes bérlőre vonatkozóan tartalmazza.
 
 ![Adatbázis-diagram](./media/saas-multitenantdb-performance-monitoring/multitenantdb.png)
 
 Figyelje meg a **DTU** diagram.
 
-## <a name="set-performance-alerts-on-the-database"></a>Az adatbázis teljesítményével kapcsolatos riasztások beállítása
+## <a name="set-performance-alerts-on-the-database"></a>Teljesítményriasztások beállítása az adatbázis
 
-Az adatbázis, amely elindítja a riasztást állíthat be \>75 %-os kihasználtsága az alábbiak szerint:
+Riasztások beállítása az adatbázis, amely elindítja a \>75 %-os kihasználtságot, az alábbiak szerint:
 
-1. Nyissa meg a *tenants1* adatbázis (a a *tenants1-mt -&lt;felhasználói&gt;*  kiszolgáló) a a [Azure-portálon](https://portal.azure.com).
+1. Nyissa meg a *tenants1* database (a a *tenants1-mt -&lt;felhasználói&gt;*  kiszolgáló) a a [az Azure portal](https://portal.azure.com).
 1. Kattintson a **Riasztási szabályok** elemre, majd a **+ Riasztás hozzáadása** gombra:
 
    ![riasztás hozzáadása](media/saas-multitenantdb-performance-monitoring/add-alert.png)
 
 1. Adjon meg egy nevet, például: **Magas DTU**.
 1. Állítsa be a következő értékeket:
-   * **A metrika = DTU százalékos aránya**
+   * **Metrika = DTU százalékos értéke**
    * **Feltétel = nagyobb, mint**
    * **Küszöbérték = 75**.
-   * **Az elmúlt 30 perc idő =**
-1. E-mail cím hozzáadása a *további rendszergazda email(s)* mezőbe, majd kattintson a **OK**.
+   * **Időtartam = az elmúlt 30 percben**
+1. Az e-mail cím hozzáadása a *további rendszergazdai email(s)* mezőbe, majd kattintson a **OK**.
 
    ![riasztás beállítása](media/saas-multitenantdb-performance-monitoring/set-alert.png)
 
-## <a name="scale-up-a-busy-database"></a>Egy foglalt adatbázis méretezése
+## <a name="scale-up-a-busy-database"></a>Vertikális felskálázás foglalt adatbázis
 
-Ha a terhelés növekszik a ponthoz, hogy az adatbázis kimenő maxes, és eléri a 100 %-os DTU-használatát egy adatbázison, majd adatbázis teljesítménye érintett, potenciálisan lelassulnak, ami lekérdezési válaszidőt.
+Ha a terhelés szintje nő, a pont, hogy ki az adatbázis lefoglalja és eléri a 100 %-os DTU-használatát egy adatbázison, majd adatbázis teljesítménye érintett, lelassíthatja a lekérdezések válaszidejét.
 
-**Rövid távú**, amennyiben további erőforrás az adatbázis vertikális felskálázásával, vagy a bérlők távolítsa el a több-bérlős adatbázisból (a több-bérlős adatbázisból történő áthelyezése egy önálló adatbázis).
+**Rövid távon**, amennyiben további erőforrás az adatbázis vertikális felskálázásával, vagy távolítsa el a bérlők a több-bérlős adatbázisból (a több-bérlős adatbázisból történő áthelyezése egy önálló adatbázis).
 
-**Hosszabb távon**, a lekérdezések optimalizálja, vagy index használati adatbázis teljesítményének javítása érdekében. Attól függően, hogy az alkalmazás érzékenységi teljesítmény állít ki az ajánlott eljárás egy adatbázis növelheti előtt 100 %-os DTU-használatát. Használjon olyan riasztást, amely előre figyelmezteti Önt.
+**Hosszabb távon**, fontolja meg a lekérdezések optimalizálását vagy index használatát az adatbázis-teljesítmény javítása. Az alkalmazás teljesítményingadozásokra való függően problémák az ajánlott eljárás egy adatbázis vertikális felskálázás, mielőtt az eléri a 100 %-os DTU-használatát. Használjon olyan riasztást, amely előre figyelmezteti Önt.
 
-A terhelés a készítő által előállított növelésével szimulálhatja foglalt adatbázis. Ez a bérlők számára kapacitásnövelés gyakrabban, valamint a továbbiakban, a több-bérlős adatbázis terhelését növelése az egyes bérlők követelményeinek módosítása nélkül. Az adatbázis vertikális felskálázásával könnyen történik, a portál vagy a PowerShell. A gyakorlat során a Portalt használjuk.
+Foglalt adatbázis a generátor által létrehozott terhelés növelésével szimulálhat. Okozza a bérlők gyakrabban, valamint a továbbiakban, folyamatosan növekvő a több-bérlős adatbázis terhelését az egyes bérlők követelményeinek megváltoztatása nélkül. Az adatbázis vertikális felskálázása könnyedén elvégezhető a portálon vagy a PowerShell használatával. A gyakorlat során a Portalt használjuk.
 
-1. Állítsa be *$DemoScenario* = **3**, _hosszabb és gyakoribb felszakadásáig adatbázisonként Generate terheléssel_ összesített terhelést intenzitásának növelik a az adatbázis az egyes bérlők által igényelt csúcsterhelés módosítása nélkül.
+1. Állítsa be *$DemoScenario* = **3**, _terhelés létrehozása adatbázisonkénti hosszabb és gyakoribb adatlöketekkel_ összesített terhelési intenzitását növelik a az adatbázis minden bérlő csúcsterhelési módosítása nélkül.
 1. Nyomja le az **F5** billentyűt, hogy az összes bérlői adatbázist érje terhelés.
-1. Lépjen a **tenants1** adatbázis az Azure portálon.
+1. Nyissa meg a **tenants1** adatbázis az Azure Portalon.
 
-Figyeli a megnövekedett adatbázis DTU-használatát a felső diagramra. Az új magasabb terhelés, indítsa néhány percet vesz igénybe, de gyorsan megtekintheti az az adatbázis elérte a maximális használat megkezdése, és a betöltés steadies be az új mintát, mivel gyorsan tömbparaméter-típust használ az adatbázis.
+Figyelheti az adatbázis megnövekedett DTU-használatát a felső diagramon. Az új magasabb terhelés, néhány percig tart, de hamarosan látni az adatbázis maximális kihasználtsága elkezdi, és a terhelés stabilan be az új minta, ahogy azt beáll az adatbázis.
 
-1. Az adatbázis növelheti, kattintson a **tarifacsomag (skála dtu-k)** a beállítások panelen.
+1. Az adatbázis vertikális felskálázásához kattintson **tarifacsomag (dtu-k)** a beállítások panelen.
 1. Módosítsa a **DTU** beállítást **100**. 
-1. Kattintson a **alkalmaz** az adatbázis méretezése a kérelmet.
+1. Kattintson a **alkalmaz** az adatbázis méretezése a kérelem elküldéséhez.
 
-Lépjen vissza a **tenants1** > **áttekintése** a figyelési diagramok megtekintéséhez. Figyeli a hatását, hogy az adatbázis biztosítson több erőforrást (bár néhány bérlők és a véletlenszerű betöltése nem mindig könnyen kétséget látható, amíg nem futtat egy kis ideig). Amíg nézi, szem előtt a diagramokon szerepel a 100 %-os a felső diagram most pedig 100 dtu-k, a pedig a kisebb diagram 100 %-os továbbra is 50 dtu-inak száma.
+Lépjen vissza a **tenants1** > **áttekintése** megtekintése a figyelési diagramjait. Figyelje meg, így az adatbázis több erőforrást (habár néhány bérlők és véletlenszerű terhelés nem mindig könnyen von látható, amíg nem futtat egy kis ideig). Közben diagramok megtekintése vegye figyelembe, hogy 100 % felső diagramon most már jelöli 100 dtu-k, a pedig az alsó diagramon látható 100 % továbbra is 50 dtu-k.
 
-Az adatbázisok a folyamat során végig online állapotban maradnak, és teljes mértékben rendelkezésre állnak. Alkalmazáskód mindig írható, majd ismételje meg a kapcsolatok megszakadnak, és úgy fog újra az adatbázishoz.
+Az adatbázisok a folyamat során végig online állapotban maradnak, és teljes mértékben rendelkezésre állnak. Alkalmazáskód kell mindig írni újrapróbálja a megszakított kapcsolatokat, és így újra csatlakozni fog az adatbázishoz.
 
-## <a name="provision-a-new-tenant-in-its-own-database"></a>Egy új bérlőt a saját adatbázis kiépítése 
+## <a name="provision-a-new-tenant-in-its-own-database"></a>A saját adatbázisát egy új bérlő kiépítése 
 
-A szilánkos több-bérlős modell lehetővé teszi annak meghatározását, hogy egy több-bérlős adatbázis mellett más bérlők egy új bérlő kiépítésének, vagy saját adatbázisban a bérlő kiépítésének. Által használt dinamikus kiosztásnál a bérlők a saját adatbázis előnyeivel szerves része a másik adatbázist, így mások függetlenül bérlőre teljesítményének kezeléséhez, állítsa vissza a bérlőre, függetlenül a elkülönítési stb. Például előfordulhat, hogy válasszon egy több-bérlős adatbázisban ingyenes vagy rendszeres ügyfeleket és a prémium szintű ügyfelek be az egyes adatbázisokat.  Elkülönített bérlői egyetlen adatbázisok jönnek létre, ha ezek továbbra is kezelhetők együttesen egy rugalmas készletben erőforrás költségek optimalizálása érdekében.
+A horizontálisan skálázott több-bérlős modell lehetővé teszi, hogy válassza ki, hogy egy több-bérlős adatbázisban mellett más bérlők új bérlő kiépítése, vagy saját egy adatbázisban az új bérlő kiépítéséhez. A saját adatbázisát egy bérlő kiépítésével előnyös az önálló adatbázis, így kezelheti a bérlőt, mások függetlenül teljesítményét, illetve mások számára, függetlenül a bérlő visszaállítása rejlő elkülönítési stb. Például választhatja a különálló adatbázisok ingyenes próbaidőszakot, vagy rendszeres ügyfelek egy több-bérlős adatbázisban, és a prémium szintű ügyfelek helyezi.  Egybérlős elszigetelt adatbázisok jönnek létre, ha azok továbbra is kezelhető együttesen egy rugalmas készletben erőforrás a költségek optimalizálása érdekében.
 
-Ha már megtörtént egy új bérlőt a saját adatbázisában, ugorjon a következő néhány lépést.
+Ha már kiépített egy új bérlőt a saját adatbázis, a következő néhány lépés kihagyható.
 
-1. Az a **PowerShell ISE**, nyissa meg... \\Tanulási modulok\\ProvisionTenants\\*bemutató-ProvisionTenants.ps1*. 
-1. Módosítsa **$TenantName = "Fűzfa milyen"** és **$VenueType = "dance"**
-1. Állítsa be **$Scenario** = **2**, _kiépíteni a bérlő az egyetlen-bérlő adatbázis_
+1. Az a **PowerShell ISE-ben**, nyissa meg... \\Tanulási modulok\\ProvisionTenants\\*Demo-ProvisionTenants.ps1*. 
+1. Módosítsa **$TenantName = "Fűzfa milyen"** és **$VenueType = "helyettünk"**
+1. Állítsa be **$Scenario** = **2**, _az egybérlős adatbázis új bérlő kiépítéséhez_
 1. A szkriptek futtatásához nyomja le az **F5** billentyűt.
 
-A parancsfájl kiépíteni a bérlő külön adatbázisban, regisztrálja az adatbázis és a bérlői a katalógusban, és a bérlői események lapot a böngészőben nyissa meg. Frissítse az események Hub oldalt, és látni fogja, mint egy helyszínére "Fűzfa milyen" hozzá lett adva.
+A parancsfájl egy önálló adatbázisban az új bérlő kiépítéséhez, az adatbázis és a bérlő regisztrálásához a katalógusban, és nyissa meg a bérlő események lapot a böngészőben. Frissítse az Eseményközpontot oldalt, és látni fogja a hozzáadott "Fűzfa milyen" egy helyszín.
 
-## <a name="manage-performance-of-a-single-database"></a>Egy önálló adatbázis teljesítményének kezelése
+## <a name="manage-performance-of-a-single-database"></a>Önálló adatbázis teljesítményének kezelése
 
-Ha egy több-bérlős adatbázisban lévő egyetlen bérlő a tartós nagy terhelés, akkor előfordulhat, hogy az egyes dominálja az adatbázis-erőforrásokat, és hatással lehet más bérlők ugyanabban az adatbázisban. Ha a tevékenység valószínű, hogy továbbra is egy kis ideig, a bérlő ideiglenesen áthelyezhetők a adatbázisból, és a saját single-bérlő adatbázisba. Ez lehetővé teszi, hogy a bérlő számára a további erőforrások van szüksége, és teljesen elkülöníti a a többi bérlőtől.
+Ha egy több-bérlős adatbázison belül egyetlen bérlő tartósan magas terhelés, akkor előfordulhat, hogy általában uralja az adatbázis-erőforrások és befolyásolja a többi bérlő ugyanabban az adatbázisban. A tevékenység várhatóan huzamosabb ideig, a bérlő ideiglenesen áthelyezhető-e saját egybérlős adatbázis és az adatbázisból. Ez lehetővé teszi a bérlő számára a további erőforrások van szüksége, és teljes mértékben elkülöníti a többi bérlőtől.
 
-Ebben a gyakorlatban a nagy terhelés tapasztal, amikor jegyek keresse fel a népszerű esemény pénztári fűzfa milyen hatása szimulálja.
+Ebben a gyakorlatban a fűzfa milyen magasabb terhelés tapasztal, amikor a jegyek árusítása egy népszerű esemény hatását szimulálja.
 
-1. Nyissa meg a... \\ *Bemutató-PerformanceMonitoringAndManagement.ps1* parancsfájl.
-1. Állítsa be **$DemoScenario = 5**, _szokásos terhelés és a nagy terhelés egyetlen bérlő létrehozása (körülbelül 90 DTU)._
+1. Nyissa meg a... \\ *Demo-PerformanceMonitoringAndManagement.ps1* parancsfájlt.
+1. Állítsa be **$DemoScenario = 5**, _normál terhelés, valamint magasabb terhelés létrehozása egyetlen bérlő létrehozása (körülbelül 90 dtu-k)._
 1. Állítsa be **$SingleTenantName fűzfa milyen =**
 1. Futtassa a szkriptet az **F5** billentyűvel.
 
-Navigáljon a portálon, és keresse meg **salixsalsa** > **áttekintése** a figyelési diagramok megtekintéséhez. 
+Ugrás a portálra, és navigáljon a **salixsalsa** > **áttekintése** megtekintése a figyelési diagramjait. 
 
-## <a name="other-performance-management-patterns"></a>Más teljesítmény felügyeleti minták
+## <a name="other-performance-management-patterns"></a>Egyéb teljesítménykezelési minták
 
 **Bérlői önkiszolgáló skálázás**
 
-Mert skálázás feladat könnyen az API management szolgáltatáson keresztül nevű könnyen létrehozhatja a bérlő számára is elérhető alkalmazásba a bérlő adatbázisok szolgáltatás, és a Szolgáltatottszoftver-szolgáltatásban szolgáltatásként ajánlja. Például a bérlők saját maguk adminisztrálhatják a vertikális fel- és leskálázást, ami előfordulhat, hogy közvetlen kapcsolatban áll a számlázásukkal.
+Mivel a skálázási feladat könnyen nevű a felügyeleti API-n keresztül, egyszerűen a bérlőoldali alkalmazásba bérlői adatbázisok méretezésének lehetősége, és felkínálható az SaaS-szolgáltatás egy funkciójaként. Például a bérlők saját maguk adminisztrálhatják a vertikális fel- és leskálázást, ami előfordulhat, hogy közvetlen kapcsolatban áll a számlázásukkal.
 
-**Egy adatbázis felfelé és lefelé skálázás használati minták megfelelő ütemezés szerint**
+**Egy adatbázis felfelé és lefelé skálázás használati mintákhoz ütemezés szerint**
 
-Összesített bérlők követi, kiszámítható használati minták, ahol használhatja Azure Automation adatbázis felfelé és lefelé méretezési ütemezés szerint. Például csökkentheti adatbázis 18: 00 után, és nincs erőforrásigények csökkenését létrehozását, ha ismeri a reggel 6 óra, mielőtt újra fel.
+Összesített bérlői használat kiszámítható mintákat követ, ahol használhatja az Azure Automation vertikális felfelé és lefelé ütemezés szerint. Például méretezése Este 6 után egy adatbázist, és nincs az erőforrásigény legördülő hétköznapokon, ha ismeri reggel 6 előtt fel.
 
 ## <a name="next-steps"></a>További lépések
 
 Ezen oktatóanyag segítségével megtanulhatja a következőket:
 
 > [!div class="checklist"]
-> * A megadott terheléselosztási generátor futtatásával szilánkos több-bérlős adatbázis-használata szimulálása
-> * Az adatbázis figyelésére, reagáljon a megnövekedett terhelés
-> * A nagyobb adatbázis-terhelésnek válaszul adatbázis méretezése
-> * A bérlő kiépíteni egy bérlői adatbázis
+> * Egy több-bérlős szilánkokra osztott adatbázis használatának szimulálása egy adott terhelésgenerátor futtatásával
+> * Reagáljon a megnövekedett az adatbázis figyelése
+> * Vertikális felskálázása az adatbázis az adatbázis megnövekedett terhelésére adott válaszul
+> * Új bérlő kiépítéséhez egy egybérlős adatbázisba
 
 ## <a name="additional-resources"></a>További források
 

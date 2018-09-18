@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: babanisa
-ms.openlocfilehash: 48fd43a315735ec8ba70f1a399462b65930fe069
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: fc8233b21ad662c6e595a04408bde75df46f97d6
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45574113"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45982935"
 ---
 # <a name="receive-events-to-an-http-endpoint"></a>Események fogadása HTTP-végponton
 
@@ -24,7 +24,7 @@ Ez a cikk azt ismerteti, hogyan [érvényesíteni egy HTTP-végpontot](security-
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A függvényalkalmazás kell egy [HTTP által aktivált függvény](../azure-functions/functions-create-generic-webhook-triggered-function.md)
+Szüksége lesz egy függvényalkalmazást egy HTTP által aktivált függvényt.
 
 ## <a name="add-dependencies"></a>Függőségek hozzáadása
 

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 06/02/2017
 ms.author: rogarana
 ms.component: common
-ms.openlocfilehash: d09505e4738243576dbde64fa6daba22d054bc8e
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 10b0d475113e5fcd413c7e62f88dcd434fc72a52
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44053267"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45732771"
 ---
 # <a name="using-the-azure-cli-20-with-azure-storage"></a>Az Azure Storage az Azure CLI 2.0 használatával
 
@@ -31,7 +31,7 @@ Ez az útmutató feltételezi, hogy ismeri az Azure Storage az alapvető fogalma
 
 ### <a name="accounts"></a>Fiókok
 * **Azure-fiók**: Ha még nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes Azure-fiókkal](https://azure.microsoft.com/free/).
-* **Tárfiók**: Lásd a [Tudnivalók az Azure Storage-fiókokról](storage-create-storage-account.md) cikk [Tárfiók létrehozása](storage-create-storage-account.md#create-a-storage-account) szakaszát.
+* **Tárfiók**: Lásd a [Tudnivalók az Azure Storage-fiókokról](storage-create-storage-account.md) cikk [Tárfiók létrehozása](storage-quickstart-create-account.md) szakaszát.
 
 ### <a name="install-the-azure-cli-20"></a>Az Azure CLI 2.0 telepítése
 

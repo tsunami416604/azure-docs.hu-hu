@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: mabrigg
-ms.openlocfilehash: 975c5c2c5f0da7a6db946c6d1032b485947134d2
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 058e1f9abbf094fb49a21191f60195df53615451
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44717706"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45985294"
 ---
 # <a name="using-the-administrator-portal-in-azure-stack"></a>A felügyeleti portál használatával az Azure Stackben
 
@@ -71,6 +71,8 @@ A rendszergazda és a felhasználói portált különálló példány az Azure R
 ### <a name="customize-the-dashboard"></a>Az irányítópult testreszabásával
 
 Az irányítópult tartalmaz az alapértelmezett csempék jelennek meg. Választhat **irányítópult szerkesztése** módosítsa az alapértelmezett irányítópult, vagy válasszon **új irányítópult** egyéni irányítópult hozzáadása. Egyszerűen hozzáadhatja csempét az irányítópulton. Kiválaszthatja például **+ erőforrás létrehozása**, kattintson a jobb gombbal **ajánlatok és csomagok**, majd válassza ki **rögzítés az irányítópulton**.
+
+Egyes esetekben jelenhet meg egy üres irányítópult, a portálon. Az irányítópult helyreállítani, kattintson **irányítópult szerkesztése**, majd kattintson a jobb gombbal, és válassza ki **visszaállítja az alapértelmezett állapotba**.
 
 ### <a name="quick-access-to-online-documentation"></a>Online dokumentáció gyors elérése
 

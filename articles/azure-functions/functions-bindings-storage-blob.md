@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/03/2018
 ms.author: glenga
-ms.openlocfilehash: 9efe3c3d65dc1d809285eb760ca373c648ad66c0
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: aaa18e5bc4a95ed0c7334232417f68064fd26ca7
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44094570"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45734907"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Az Azure Blob storage-kötések az Azure Functions szolgáltatáshoz
 
@@ -29,7 +29,7 @@ Ez a cikk bemutatja, hogyan használható az Azure Blob storage-kötések az Azu
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
 > [!NOTE]
-> Az Event Grid eseményindító használata helyett a Blob storage-eseményindító csak a blob storage-fiókok, nagy méretű, vagy hidegindítási késések elkerülése érdekében. További információkért lásd: a [eseményindító](#trigger) szakaszban. 
+> Az Event Grid eseményindító használata helyett a Blob storage-eseményindító a Blob storage-fiókok, az nagy skálázást, vagy hidegindítási késések elkerülése érdekében. További információkért lásd: a [eseményindító](#trigger) szakaszban. 
 
 ## <a name="packages---functions-1x"></a>Csomagok – 1.x függvények
 
@@ -53,13 +53,13 @@ A [Event Grid-trigger](functions-bindings-event-grid.md) beépített támogatás
 
 Event Grid a Blob storage-eseményindító helyett használja a következő esetekben:
 
-* Csak a BLOB storage-fiókok
+* Blob Storage-fiókok
 * Nagy méretű
 * Hidegindítási Késleltetés minimalizálása
 
-### <a name="blob-only-storage-accounts"></a>Csak a BLOB storage-fiókok
+### <a name="blob-storage-accounts"></a>Blob Storage-fiókok
 
-[Csak a BLOB storage-fiókok](../storage/common/storage-create-storage-account.md#blob-storage-accounts) támogatottak a blob bemeneti és kimeneti kötések blob eseményindító esetében nem. Blobtároló eseményindítóiról egy általános célú tárfiók szükséges.
+[BLOB storage-fiókok](../storage/common/storage-account-overview.md#types-of-storage-accounts) támogatottak a blob bemeneti és kimeneti kötések blob eseményindító esetében nem. Blobtároló eseményindítóiról egy általános célú tárfiók szükséges.
 
 ### <a name="high-scale"></a>Nagy méretű
 
@@ -284,7 +284,7 @@ A következő táblázat ismerteti a megadott kötés konfigurációs tulajdons�
 |**direction** | n/a | Meg kell `in`. Ez a tulajdonság beállítása automatikusan történik, ha az eseményindítót fog létrehozni az Azure Portalon. A kivételeket jeleztük a [használati](#trigger---usage) szakaszban. |
 |**name** | n/a | A változó, amely a függvény kódját a blob neve. | 
 |**path** | **BlobPath** |A tároló figyelése.  Előfordulhat, hogy egy [blob minta](#trigger-blob-name-patterns). | 
-|**kapcsolat** | **kapcsolat** | A tárolási kapcsolati karakterlánc használata ehhez a kötéshez tartalmazó alkalmazásbeállítás neve. Azon alkalmazásbeállítás neve "AzureWebJobs" kezdődik, ha csak a maradékot Itt a neve is megadhat. Például, ha a beállított `connection` a "MyStorage", a Functions futtatókörnyezete úgy tűnik, a beállítás, amely alkalmazás neve "AzureWebJobsMyStorage." Ha meghagyja a `connection` üres, a Functions futtatókörnyezete használja az alapértelmezett tárolási kapcsolati karakterlánc nevű Alkalmazásbeállítás `AzureWebJobsStorage`.<br><br>A kapcsolati karakterlánc nem lehet egy általános célú tárfiók olyan [csak blob storage-fiók](../storage/common/storage-create-storage-account.md#blob-storage-accounts).|
+|**kapcsolat** | **kapcsolat** | A tárolási kapcsolati karakterlánc használata ehhez a kötéshez tartalmazó alkalmazásbeállítás neve. Azon alkalmazásbeállítás neve "AzureWebJobs" kezdődik, ha csak a maradékot Itt a neve is megadhat. Például, ha a beállított `connection` a "MyStorage", a Functions futtatókörnyezete úgy tűnik, a beállítás, amely alkalmazás neve "AzureWebJobsMyStorage." Ha meghagyja a `connection` üres, a Functions futtatókörnyezete használja az alapértelmezett tárolási kapcsolati karakterlánc nevű Alkalmazásbeállítás `AzureWebJobsStorage`.<br><br>A kapcsolati karakterlánc nem lehet egy általános célú tárfiók olyan [Blob storage-fiók](../storage/common/storage-account-overview.md#types-of-storage-accounts).|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -602,7 +602,7 @@ A következő táblázat ismerteti a megadott kötés konfigurációs tulajdons�
 |**direction** | n/a | Meg kell `in`. A kivételeket jeleztük a [használati](#input---usage) szakaszban. |
 |**name** | n/a | A változó, amely a függvény kódját a blob neve.|
 |**path** |**BlobPath** | A blob elérési útja. | 
-|**kapcsolat** |**kapcsolat**| A tárolási kapcsolati karakterlánc használata ehhez a kötéshez tartalmazó alkalmazásbeállítás neve. Azon alkalmazásbeállítás neve "AzureWebJobs" kezdődik, ha csak a maradékot Itt a neve is megadhat. Például, ha a beállított `connection` a "MyStorage", a Functions futtatókörnyezete úgy tűnik, a beállítás, amely alkalmazás neve "AzureWebJobsMyStorage." Ha meghagyja a `connection` üres, a Functions futtatókörnyezete használja az alapértelmezett tárolási kapcsolati karakterlánc nevű Alkalmazásbeállítás `AzureWebJobsStorage`.<br><br>A kapcsolati karakterlánc nem lehet egy általános célú tárfiók olyan [csak blob storage-fiók](../storage/common/storage-create-storage-account.md#blob-storage-accounts).|
+|**kapcsolat** |**kapcsolat**| A tárolási kapcsolati karakterlánc használata ehhez a kötéshez tartalmazó alkalmazásbeállítás neve. Azon alkalmazásbeállítás neve "AzureWebJobs" kezdődik, ha csak a maradékot Itt a neve is megadhat. Például, ha a beállított `connection` a "MyStorage", a Functions futtatókörnyezete úgy tűnik, a beállítás, amely alkalmazás neve "AzureWebJobsMyStorage." Ha meghagyja a `connection` üres, a Functions futtatókörnyezete használja az alapértelmezett tárolási kapcsolati karakterlánc nevű Alkalmazásbeállítás `AzureWebJobsStorage`.<br><br>A kapcsolati karakterlánc nem lehet egy általános célú tárfiók olyan [Blob storage-fiók](../storage/common/storage-account-overview.md#types-of-storage-accounts).|
 |n/a | **Access (Hozzáférés)** | Azt jelzi, hogy meg fog kell olvasása vagy írása. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
@@ -834,7 +834,7 @@ A következő táblázat ismerteti a megadott kötés konfigurációs tulajdons�
 |**direction** | n/a | Meg kell `out` a kimeneti kötés. A kivételeket jeleztük a [használati](#output---usage) szakaszban. |
 |**name** | n/a | A változó, amely a függvény kódját a blob neve.  Állítsa be `$return` való hivatkozáshoz függvény visszatérési értéke.|
 |**path** |**BlobPath** | A blob elérési útja. | 
-|**kapcsolat** |**kapcsolat**| A tárolási kapcsolati karakterlánc használata ehhez a kötéshez tartalmazó alkalmazásbeállítás neve. Azon alkalmazásbeállítás neve "AzureWebJobs" kezdődik, ha csak a maradékot Itt a neve is megadhat. Például, ha a beállított `connection` a "MyStorage", a Functions futtatókörnyezete úgy tűnik, a beállítás, amely alkalmazás neve "AzureWebJobsMyStorage." Ha meghagyja a `connection` üres, a Functions futtatókörnyezete használja az alapértelmezett tárolási kapcsolati karakterlánc nevű Alkalmazásbeállítás `AzureWebJobsStorage`.<br><br>A kapcsolati karakterlánc nem lehet egy általános célú tárfiók olyan [csak blob storage-fiók](../storage/common/storage-create-storage-account.md#blob-storage-accounts).|
+|**kapcsolat** |**kapcsolat**| A tárolási kapcsolati karakterlánc használata ehhez a kötéshez tartalmazó alkalmazásbeállítás neve. Azon alkalmazásbeállítás neve "AzureWebJobs" kezdődik, ha csak a maradékot Itt a neve is megadhat. Például, ha a beállított `connection` a "MyStorage", a Functions futtatókörnyezete úgy tűnik, a beállítás, amely alkalmazás neve "AzureWebJobsMyStorage." Ha meghagyja a `connection` üres, a Functions futtatókörnyezete használja az alapértelmezett tárolási kapcsolati karakterlánc nevű Alkalmazásbeállítás `AzureWebJobsStorage`.<br><br>A kapcsolati karakterlánc nem lehet egy általános célú tárfiók olyan [Blob storage-fiók](../storage/common/storage-account-overview.md#types-of-storage-accounts).|
 |n/a | **Access (Hozzáférés)** | Azt jelzi, hogy meg fog kell olvasása vagy írása. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]

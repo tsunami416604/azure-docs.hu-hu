@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 09/17/2018
 git ms.author: sethm
 ms.reviewer: misainat
-ms.openlocfilehash: ad596e2f63d3ef5fb82fe52699fef3a79e835274
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 7770f4c45d974e8ce5750dbd3aee0d8393281151
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45634812"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45984441"
 ---
 # <a name="azure-stack-development-kit-release-notes"></a>Az Azure Stack Development Kit kibocsátási megjegyzései  
 Ez a cikk fejlesztései, javításokat és ismert problémák az Azure Stack Development Kit ismerteti. Ha nem biztos abban, hogy melyik verziót futtatja, akkor az [ellenőrizhető a portál használatával](.\.\azure-stack-updates.md#determine-the-current-version).
@@ -46,6 +46,8 @@ A build tartalmaz a következő fejlesztések és javítások az Azure Stackhez.
 - <!-- | IS ASDK--> **Kubernetes Piactéri elem**. Kubernetes-fürtök használatával most már telepítheti a [Kubernetes Piactéri elem](/azure/azure-stack/azure-stack-solution-template-kubernetes-cluster-add). Felhasználók válassza ki a Kubernetes-elemet, és töltse ki a Kubernetes-fürt üzembe helyezése az Azure Stackhez néhány paramétert. A sablonok az a célja, hogy egyszerűsítsen felhasználóknak, hogy a telepítő fejlesztési-tesztelési Kubernetes-üzembehelyezés néhány lépésben.
 
 - <!-- | IS ASDK--> **Blockchain-sablonok**. Most már futtathat [Ethereum consortium központi telepítések](/azure/azure-stack/azure-stack-ethereum) az Azure Stacken. A három új sablonokat is megtalálhatja a [Azure Stack gyors üzembe helyezési sablonokat](https://github.com/Azure/AzureStack-QuickStart-Templates). A felhasználó telepítheti és konfigurálhatja egy többtagú consortium Ethereum hálózati minimális Azure-ban és az Ethereum ismeretekkel lehetővé teszik. A sablonok az a célja, hogy egyszerűsítsen felhasználóknak, hogy a telepítő fejlesztési-tesztelési Blockchain telepítések néhány lépésben.
+
+- <!-- | IS ASDK--> **Az API verzió profil 2017-03-09-profile frissítve lett, hogy a 2018-03-01-hibrid**. API-profilok adja meg, az Azure erőforrás-szolgáltató és az Azure REST-végpontokat az API-verzió. Profilokkal kapcsolatos további információkért lásd: [kezelése API-verzióprofilok az Azure Stackben](/azure/azure-stack/user/azure-stack-version-profiles).
 
 
 ### <a name="fixed-issues"></a>Hibák kijavítva:

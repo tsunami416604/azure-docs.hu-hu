@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 614375c95f4af3a5fbeeb4368ff8c577372e6381
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 1ce03c55a346adf846619c50f09eb063e6b6f639
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37934555"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45734624"
 ---
 # <a name="log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Jelentkezzen be egy Linux rendszerű virtuális gép az Azure-ban az Azure Active Directory-hitelesítés (előzetes verzió)
 
@@ -179,4 +179,4 @@ Ossza meg velünk véleményét a használja a előzetes funkciót vagy a jelent
 
 ## <a name="next-steps"></a>További lépések
 
-További információ az Azure Active Directory: [Mi az Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md) és [hogyan kezdheti el az Azure Active Directoryval](../../active-directory/fundamentals/get-started-azure-ad.md)
+További információ az Azure Active Directory: [Mi az Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md)

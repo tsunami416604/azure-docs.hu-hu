@@ -4,50 +4,54 @@ description: Értékelési számítások az Azure Migrate szolgáltatás átteki
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 09/14/2018
+ms.date: 09/17/2018
 ms.author: raynew
-ms.openlocfilehash: 5880c98b0f77b75dfb10969311408307b0c4afbd
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 84ce20186b882bf07177305291a6f7512ed9ac62
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45603362"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45732023"
 ---
 # <a name="dependency-visualization"></a>Függőségek vizualizációja
 
-A [Azure Migrate](migrate-overview.md) szolgáltatások felméri a helyszíni gépek áttelepítése az Azure-bA a csoportjait. Gépek csoportosíthatja, használhatja a függőségek képi megjelenítéséről. Ez a cikk a szolgáltatásról.
+A [Azure Migrate](migrate-overview.md) szolgáltatások felméri a helyszíni gépek áttelepítése az Azure-bA a csoportjait. A függőségek képi megjelenítésének funkcióival az Azure Migrate segítségével hozzon létre csoportokat. Ez a cikk a szolgáltatásról.
 
 
 ## <a name="overview"></a>Áttekintés
 
-Az Azure Migrate függőségmegjelenítés csoportok létrehozása a migrálás értékeléséhez megnövekedett magabiztosan teszi lehetővé. Függőségek képi megjelenítésének használatával megtekintheti az adott gép vagy gépek csoportjának hálózati függőségeket. Ez a funkció sem ahhoz, hogy hasznos vagy elveszett (vagy elfelejtett gépeket) a migrálási folyamat, amikor az alkalmazások és számítási feladatok futtatása a fájlrendszerek több gépen.  
+Az Azure Migrate függőségmegjelenítés nagy megbízhatóságú csoportokat az áttelepítési felmérések létrehozását teszi lehetővé. Függőségek képi megjelenítésének megtekintheti a hálózati gépek függőségeit, és együtt kell áttelepíteni az Azure-hoz szükséges kapcsolódó gépek azonosítására szolgáló használatával. Ez a funkció akkor hasznos, forgatókönyvekben, ahol Ön nem teljesen tisztában a gépek, amelyek az alkalmazás jelent, és együtt kell áttelepíteni az Azure-bA.
 
 ## <a name="how-does-it-work"></a>Hogyan működik?
 
 Azure Migrate az a [Service Map](../operations-management-suite/operations-management-suite-service-map.md) megoldás [Log Analytics](../log-analytics/log-analytics-overview.md) a függőségek képi megjelenítéséről.
-- Az Azure Migrálási projekt létrehozásakor a Log Analytics-munkaterület jön létre az előfizetésében.
-- A munkaterület nevét kötelező a migrálási projekt, előtaggal van ellátva a megadott név **áttelepítése –**, és igény szerint toldalékokkal számmal.
-- Keresse meg a Log Analytics-munkaterületet a **Essentials** projekt **áttekintése** lapot.
-- A létrehozott munkaterület a kulccsal van megjelölve **Migrálási projekt**, és értéket **projektnév**. Az Azure Portalon a keresés azt is használhatja.  
+- Kihasználhatja a függőségek képi megjelenítésével, hozzá kell rendelni egy Log Analytics-munkaterületet, vagy új vagy meglévő, az Azure Migrate-projektet.
+- Csak létrehozása vagy csatolása ugyanahhoz az előfizetéshez egy munkaterületet, ahol a migrálási projekt létrejön.
+- Log Analytics-munkaterület csatolása a projekthez, lépjen a **Essentials** projekt **áttekintése** lapot, és kattintson **konfigurálást igényel**
 
-    ![Azure-beli monitorozási munkaterület](./media/concepts-dependency-visualization/oms-workspace.png)
+    ![Log Analytics-munkaterület társítása](./media/concepts-dependency-visualization/associate-workspace.png)
+
+- Amikor létrehoz egy új munkaterületet, adja meg a munkaterület nevét kell. A munkaterületen létrejön ugyanabban a régióban [Azure földrajzi](https://azure.microsoft.com/global-infrastructure/geographies/) a migrálási projektet.
+- A kapcsolódó munkaterület a kulccsal van megjelölve **Migrálási projekt**, és értéket ** projekt nevét, amely segítségével az Azure Portalon keresse.
+- Nyissa meg a munkaterületet a projekthez kapcsolódó, nyissa meg a **Essentials** projekt **áttekintése** lapon és a munkaterület eléréséhez
+
+    ![Keresse meg a Log Analytics-munkaterület](./media/concepts-dependency-visualization/oms-workspace.png)
 
 Függőségmegjelenítést használ, meg kell töltse le és telepítse az ügynököt minden olyan elemezni szeretné a helyszíni gépen.  
 
 ## <a name="do-i-need-to-pay-for-it"></a>Kell fizetni?
 
-Az Azure Migrate díjmentesen érhető el. Az Azure Migrate a függőségek képi megjelenítés funkciók használatát a Service Mapre van szükség. Az Azure Migrate-projektet hoz létre az Azure Migrate automatikusan létrehoz egy új Log Analytics-munkaterületet az Ön nevében.
+Az Azure Migrate díjmentesen érhető el. A függőségmegjelenítési funkciót az Azure Migrate használata szükséges a Szolgáltatástérkép, és elő kell társítani egy Log Analytics-munkaterületet, vagy új vagy meglévő, az Azure Migrate-projektben. A függőségek képi megjelenítésének funkcióival az Azure Migrate az Azure Migrate az első 180 nap díjmentes.
 
-> [!NOTE]
-> A függőségmegjelenítési funkciót használja a Service Map Log Analytics-munkaterület-n keresztül. 2018. február 28 óta az Azure Migrate általános rendelkezésre állást, a közlemény a funkció már elérhető külön díjfizetés nélkül. Hozzon létre egy új projektet, győződjön meg arról, hogy kell használni az ingyenes használat munkaterület. Meglévő munkaterületek előtt általános availaibility chargable továbbra is, ezért azt javasoljuk, hogy helyezze át egy új projektet.
+1. A Log Analytics-munkaterületen a Service Map kívül bármely megoldások használatát díjat [standard Log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/) díjak.
+2. További költségek nélkül áttelepítési forgatókönyvek támogatása érdekében a Service Map megoldás nem számítunk fel díjakat a nap, a Log Analytics-munkaterület társítása az Azure Migrate-projekt első 180 napig. 180 nap elteltével a Log Analytics standard díjszabás vonatkozik.
 
-1. A Log Analytics-munkaterületen a Service Map kívül bármely megoldások használatát standard Log Analytics-díjat számolunk.
-2. További költségek nélkül áttelepítési forgatókönyvek támogatása érdekében a Service Map megoldás nem számítunk fel díjakat a az Azure Migrate-projekt, amely után szabványos díjszabást alkalmazunk létrehozásától számított első 180 napban.
-3. Csak a projekt létrehozásának részeként létrehozott munkaterület használható ingyenes lesz.
-
-Ha regisztrálja az ügynököket a munkaterülethez, használja az Azonosítót és a kulcsot adja meg a projekt telepítése az ügynök lépések lapján. Nem lehet egy meglévő munkaterületet használja, és társíthatja azt az Azure Migrate-projekt.
+Ha regisztrálja az ügynököket a munkaterülethez, használja az Azonosítót és a kulcsot adja meg a projekt telepítése az ügynök lépések lapján.
 
 Az Azure Migrate-projekt törlése esetén a munkaterület nem törlődik, együtt. Közzététel a projekt törlése, a Service Map használata nem ingyenes lesz, és minden egyes csomópont díját a fizetős szint a Log Analytics-munkaterület.
+
+> [!NOTE]
+> A függőségmegjelenítési funkciót használja a Service Map Log Analytics-munkaterület-n keresztül. 2018. február 28 óta az Azure Migrate általános rendelkezésre állást, a közlemény a funkció már elérhető külön díjfizetés nélkül. Hozzon létre egy új projektet, győződjön meg arról, hogy kell használni az ingyenes használat munkaterület. Általános rendelkezésre állás előtti meglévő munkaterületek felszámítható továbbra is, ezért azt javasoljuk, hogy helyezze át egy új projektet.
 
 További tudnivalókat az Azure Migrate díjszabásáról [itt](https://azure.microsoft.com/pricing/details/azure-migrate/) talál.
 
@@ -55,7 +59,7 @@ További tudnivalókat az Azure Migrate díjszabásáról [itt](https://azure.mi
 
 A Log Analytics-munkaterületet az Azure Migrate kívül is használhatja. Ha törli a migrálási projektben, ahol létrehozták nem törlődik. Ha már nincs szüksége a munkaterületen [törölné](../log-analytics/log-analytics-manage-access.md) manuálisan.
 
-Ne törölje az Azure Migrate, által létrehozott munkaterület, hacsak nem törli a migrálási projektet. Ha így tesz, függőségek a nem várt módon működik.
+Ne törölje az Azure Migrate, által létrehozott munkaterület, hacsak nem törli a migrálási projektet. Ha így tesz, a függőségek képi megjelenítésének funkcióival nem működnek megfelelően.
 
 ## <a name="next-steps"></a>További lépések
 

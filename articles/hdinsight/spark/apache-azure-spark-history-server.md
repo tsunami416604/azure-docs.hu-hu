@@ -8,30 +8,30 @@ ms.author: jejiang
 ms.reviewer: jasonh
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 07/12/2018
-ms.openlocfilehash: b514f23f2e8a43f99fd5bf5c3afb5ed625ad4472
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.date: 09/14/2018
+ms.openlocfilehash: 65617aa87ec8f28b13951f1a2196eb2ccedf5c85
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43046575"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45729756"
 ---
 # <a name="use-extended-spark-history-server-to-debug-and-diagnose-spark-applications"></a>Kiterjesztett Spark-Előzménykiszolgáló használatával hibakeresése és diagnosztizálása a Spark-alkalmazások
 
-Ez a cikk ismerteti, hogyan használja bővített Spark-Előzménykiszolgáló hibakeresése és diagnosztizálása a befejezett és futó Spark-alkalmazások. A bővítmény jelenleg magában foglalja az adatok és graph-lapon. Az adatok lapot a felhasználók ellenőrizheti a bemeneti és kimeneti adatokat a Spark-feladat. A felhasználók graph lapon ellenőrizze az adatok az adatfolyam és a feladatgrafikon visszajátszani.
+Ez a cikk ismerteti, hogyan használja bővített Spark-Előzménykiszolgáló hibakeresése és diagnosztizálása a befejezett és futó Spark-alkalmazások. A bővítmény magában foglalja az adatok lapon és a graph és diagnosztikai lapon. Az a **adatok** lapon felhasználók ellenőrizheti a bemeneti és kimeneti adatokat a Spark-feladat. Az a **Graph** lapon felhasználók ellenőrizheti, flow és a feladat ábra visszajátszani az adatokat. Az a **diagnosztikai** lap felhasználói az itt található **adatok tevékenységdiagramon**, **Időeltérési** és **végrehajtó Használatelemzést**.
 
-## <a name="open-the-spark-history-server"></a>Nyissa meg a Spark-Előzménykiszolgáló
+## <a name="get-access-to-spark-history-server"></a>Hozzáférhet a Spark-Előzménykiszolgáló
 
 Spark-Előzménykiszolgáló a webes felhasználói felület a befejezett és futó Spark-alkalmazások. 
 
-### <a name="to-open-the-spark-history-server-web-ui-from-azure-portal"></a>A Spark előzmények kiszolgáló webes felhasználói felület megnyitása az Azure Portalon
+### <a name="open-the-spark-history-server-web-ui-from-azure-portal"></a>Nyissa meg a Spark előzmények kiszolgáló webes felhasználói felület az Azure Portalról
 
 1. Az a [az Azure portal](https://portal.azure.com/), nyissa meg a Spark-fürtön. További információkért lásd: [fürtök listázása és megjelenítése](../hdinsight-administer-use-portal-linux.md#list-and-show-clusters).
 2. A **Gyorshivatkozások**, kattintson a **fürt irányítópultja**, és kattintson a **Spark-Előzménykiszolgáló**. Amikor a rendszer kéri, adja meg a rendszergazdai hitelesítő adatokat a Spark-fürtön. 
 
     ![Spark-Előzménykiszolgáló](./media/apache-azure-spark-history-server/launch-history-server.png "Spark-Előzménykiszolgáló")
 
-### <a name="to-open-the-spark-history-server-web-ui-by-url"></a>A Spark előzmények kiszolgáló webes felhasználói felületének megnyitásához URL-cím szerint
+### <a name="open-the-spark-history-server-web-ui-by-url"></a>Nyissa meg a Spark előzmények kiszolgáló webes felhasználói felületének URL-cím szerint
 Nyissa meg a Spark-Előzménykiszolgáló keresse a következő URL-címet, cserélje le <ClusterName> az ügyfél a Spark-fürt neve.
 
    ```
@@ -43,7 +43,7 @@ A Spark-Előzménykiszolgáló webes felhasználói felület hasonlóan néz ki:
 ![HDInsight Spark-Előzménykiszolgáló](./media/apache-azure-spark-history-server/hdinsight-spark-history-server.png)
 
 
-## <a name="open-the-data-tab-from-spark-history-server"></a>Nyissa meg az adatok lapot a Spark-Előzménykiszolgáló
+## <a name="data-tab-in-spark-history-server"></a>Az adatok lapon, a Spark-Előzménykiszolgáló
 Válassza ki a feladat azonosítója, majd kattintson a **adatok** beolvasni az adatnézet az Eszközök menü.
 
 + Ellenőrizze a **bemenetek**, **kimenetek**, és **Table műveletek** lapok külön-külön kiválasztásával.
@@ -87,7 +87,7 @@ Válassza ki a feladat azonosítója, majd kattintson a **adatok** beolvasni az 
     ![Graph-visszajelzés](./media/apache-azure-spark-history-server/sparkui-graph-feedback.png)
 
 
-## <a name="open-the-graph-tab-from-spark-history-server"></a>Nyissa meg a gráf lapot a Spark-Előzménykiszolgáló
+## <a name="graph-tab-in-spark-history-server"></a>A Spark-Előzménykiszolgáló Graph lap
 Válassza ki a feladat azonosítója, majd kattintson a **Graph** beolvasni a feladat Grafikonnézet az Eszközök menü.
 
 + A feladat áttekintése a generált feladatgrafikon ellenőrzéséhez. 
@@ -108,16 +108,19 @@ Válassza ki a feladat azonosítója, majd kattintson a **Graph** beolvasni a fe
 
     + Zöld, a sikeres: A feladat sikeresen befejeződött.
     + Narancssárga, a rendszer megpróbálja újból végrehajtani: nem sikerült, de nincsenek hatással a feladat végső eredményt feladatok példányait. Ezek a feladatok rendelkezett ismétlődő, vagy próbálkozzon újra, amelyek később valószínűleg sikeres lesz.
-    + Piros, sikertelen: A feladat sikertelen volt.
     + Kék futtatásához: A feladat fut-e.
-    + Fehér, a rendszer kihagyja vagy Várakozás: vár a feladat futtatásához, vagy a fázis rendelkezik kihagyása.
+    + Várakozás a fehér vagy a rendszer kihagyta: vár a feladat futtatásához, vagy a fázis rendelkezik kihagyása.
+    + Piros, sikertelen: A feladat sikertelen volt.
 
     ![Graph színminta fut](./media/apache-azure-spark-history-server/sparkui-graph-color-running.png)
  
+    A fehér kihagyott fázis megjelenítését.
+    ![színminta Graph, hagyja ki](./media/apache-azure-spark-history-server/sparkui-graph-color-skip.png)
+
     ![sikertelen Graph színminta](./media/apache-azure-spark-history-server/sparkui-graph-color-failed.png)
  
     > [!NOTE]
-    > Lejátszás feladatonként engedélyezett. Amikor egy feladat nem rendelkezik bármelyik szakaszában, vagy még nem teljes, a lejátszás nem támogatott.
+    > Lejátszás feladatonként engedélyezett. A lejátszás hiányos feladat, nem támogatott.
 
 
 + Nagyítás/kimenő a feladatábra csúcsaira, vagy kattintson a jobbra görget egér **igazítás nagyítás** legyen a képernyőhöz igazítás.
@@ -127,6 +130,12 @@ Válassza ki a feladat azonosítója, majd kattintson a **Graph** beolvasni a fe
 + Vigye a mutatót az elemleírás, ha a meghiúsult feladatok megtekintéséhez graph-csomópont, majd kattintson a fázis fázis lap megnyitásához.
 
     ![Graph-elemleírás](./media/apache-azure-spark-history-server/sparkui-graph-tooltip.png)
+
++ Feladat graph lap szakaszban fog rendelkezni, elemleírás és kis ikon jelenik meg, ha rendelkeznek feladatok felel meg az alábbi feltételek:
+    + Adateltérés: az olvasási adatok mérete > átlagos olvasási méret az ebben a szakaszban található összes feladat * 2 és a beolvasott > 10 MB méretre
+    + Időeltérés: végrehajtási idő > ebben a szakaszban található összes tevékenység átlagos végrehajtási idő * 2 és a végrehajtási idő > 2 perc
+
+    ![diagram torzulása ikonnal](./media/apache-azure-spark-history-server/sparkui-graph-skew-icon.png)
 
 + A feladat graph csomópont megjeleníti minden egyes szakasza a következő információkat:
     + AZONOSÍTÓ.
@@ -147,6 +156,47 @@ Válassza ki a feladat azonosítója, majd kattintson a **Graph** beolvasni a fe
 + Küldjön visszajelzést problémákkal rendelkező kattintva **várjuk visszajelzéseit**.
 
     ![Graph-visszajelzés](./media/apache-azure-spark-history-server/sparkui-graph-feedback.png)
+
+
+## <a name="diagnosis-tab-in-spark-history-server"></a>A Spark-Előzménykiszolgáló Diagnosztika lap
+Válassza ki a feladat azonosítója, majd kattintson a **diagnosztikai** az Eszközök menü a nézet diagnosztikai feladatot. A Diagnosztika lapot tartalmaz **adatok tevékenységdiagramon**, **Időeltérési**, és **végrehajtó Használatelemzést**.
+    
++ Ellenőrizze a **adatok tevékenységdiagramon**, **Időeltérési**, és **végrehajtó Használatelemzést** lapok rendre kiválasztásával.
+
+    ![Diagnosztika lap](./media/apache-azure-spark-history-server/sparkui-diagnosis-tabs.png)
+
+### <a name="data-skew"></a>Adateltérés
+Kattintson a **adatok tevékenységdiagramon** lapon, a megfelelő magokon feladatok jelennek meg a megadott paraméterek alapján. 
+
++ **Adja meg a paramétereket** – az első szakaszban megjeleníti a paramétereket, amelyeknek a döntés adatok észlelésére használatosak. A beépített szabály: a feladat az olvasott érték nagyobb, mint 3 alkalommal az átlagos feladat beolvasott adatok, és beolvasott adatok feladat 10MB-nál több. Ha azt szeretné, a saját magokon feladatok szabály meghatározásához, a paraméterek, kiválaszthatja a **torzítja fázis**, és **tevékenységdiagramon Char** szakasz ennek megfelelően frissülnek.
+
++ **Fázis torzítja** – a második szakasz szakaszai, amelyek megfelelnek a feltételeknek, a fentiekben ismertetett feladatok rendelkezik torzítja jeleníti meg. Ha egynél több magokon feladat egy lépésben hajtaná, az egyenetlen szakasz tábla csak megjeleníti a legtöbb magokon feladat (például az adatok legnagyobb adatok tevékenységdiagramon).
+
+    ![Adatok tevékenységdiagramon section2](./media/apache-azure-spark-history-server/sparkui-diagnosis-dataskew-section2.png)
+
++ **Diagram tevékenységdiagramon** – Ha a torzulása fázis táblában egy sor van kijelölve, az torzulása diagramot jelenít meg a feladat disztribúciók további részleteket a beolvasott adatok és a végrehajtási idő alapján. Az egyenetlen feladatok piros vannak megjelölve, és a szokásos tevékenységek lesznek megjelölve kék színnel. Teljesítmény megfontolás a diagram csak legfeljebb 100 mintatevékenységeket jeleníti meg. A feladat részletes adatait a jobb alsó panelen jelennek meg.
+
+    ![Adatok tevékenységdiagramon section3](./media/apache-azure-spark-history-server/sparkui-diagnosis-dataskew-section3.png)
+
+### <a name="time-skew"></a>Idő döntés
+A **Időeltérési** lap magokon feladatokat, a feladat végrehajtási ideje alapján jeleníti meg. 
+
++ **Adja meg a paramétereket** – az első szakaszban megjeleníti a paramétereket, amelyeknek Időeltérési észlelésére használatosak. Az alapértelmezett feltételekhez időeltérés észleléséhez van: a feladat-végrehajtási idő értéke nagyobb, mint 3 alkalommal az átlagos végrehajtási idő és a feladat-végrehajtási idő értéke nagyobb, mint 30 másodperc. A paraméterek az igényei szerint módosíthatja. A **torzítja fázis** és **tevékenységdiagramon diagram** megfelelő fázisok és feladatok adatainak megjelenítéséhez, ugyanúgy, mint a **adatok tevékenységdiagramon** fenti fülre.
+
++ Kattintson a **Időeltérési**, szűrt eredmény jelenik meg, majd **torzítja fázis** szakasz szerint a paraméterek szakaszában állítjuk be **paraméterek megadása**. Kattintson egy elemre **torzítja fázis** szakaszban, akkor a megfelelő diagram a section3 van elkészíteni, és a jobb alsó panelen jelennek meg a feladat részletes adatait.
+
+    ![Idő torzulása section2](./media/apache-azure-spark-history-server/sparkui-diagnosis-timeskew-section2.png)
+
+### <a name="executor-usage-analysis"></a>Végrehajtó használati elemzés
+A végrehajtó használati diagramot a Spark feladat tényleges végrehajtó költséglefoglalási és futó állapotát megjeleníti.  
+
++ Kattintson a **végrehajtó Használatelemzést**, akkor négy különböző görbék végrehajtó használatáról elkészíteni, beleértve a **lefoglalt végrehajtóval**, **futó végrehajtóval**, **üresjárati végrehajtóval**, és **végrehajtó példányok maximális száma**. Lefoglalt végrehajtóval kapcsolatos minden "Végrehajtó hozzáadott" vagy "Végrehajtó eltávolítva" esemény növeli vagy csökkenti a lefoglalt végrehajtóval, a "Esemény ütemterv" a "Jobs" lapon további összehasonlítási ellenőrizheti.
+
+    ![Végrehajtóval lap](./media/apache-azure-spark-history-server/sparkui-diagnosis-executors.png)
+
++ Kattintson a szín jelölje be és törölje a megfelelő tartalmat a összes Piszkozatok ikonra.
+
+    ![Válassza a diagram](./media/apache-azure-spark-history-server/sparkui-diagnosis-select-chart.png)
 
 
 ## <a name="faq"></a>GYIK
@@ -268,7 +318,7 @@ Ha szeretné frissíteni, hogy a gyorsjavítás, használja a parancsfájlt, ami
     ![napló feltöltése vagy a gyorsjavítás frissítése](./media/apache-azure-spark-history-server/sparkui-upload2.png)
 
 
-## <a name="known-issue"></a>Ismert probléma
+## <a name="known-issues"></a>Ismert problémák
 
 1.  Jelenleg csak működik Spark 2.3-fürt.
 

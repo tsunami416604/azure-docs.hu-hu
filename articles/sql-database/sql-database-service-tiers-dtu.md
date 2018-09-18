@@ -1,24 +1,24 @@
 ---
 title: Az Azure SQL Database szolgáltatási szinteken - DTU |} A Microsoft Docs
-description: Ismerje meg egyetlen szolgáltatásszintek és teljesítményszintek és tárolási méretek készlethez adatbázisok.
+description: Ismerje meg egyetlen szolgáltatási szintek és a készlethez adatbázisok méretű számítási és tárolási méretek biztosítása érdekében.
 services: sql-database
 author: sachinpMSFT
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 08/01/2018
+ms.date: 09/14/2018
 manager: craigg
 ms.author: carlrab
-ms.openlocfilehash: d0250d508ca6d21ee09c9402e10d2fdb025529ac
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 27e6e12efc28bb8ee1cdaa9ec62d7ca8c4c68f38
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42054929"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45729739"
 ---
-# <a name="choosing-a-dtu-based-service-tier-performance-level-and-storage-resources"></a>DTU-alapú szolgáltatásszint, a teljesítményszint és a tárolási erőforrások kiválasztása 
+# <a name="choosing-a-dtu-based-service-tier-compute-size-and-storage-resources"></a>DTU-alapú szolgáltatásszint kiválasztása a számítási méret és a storage-erőforrások 
 
-Szolgáltatásszintek által meghatározott memóriamennyiséggel rendelkeznek a csomagban foglalt tárhely, a megőrzési időszak a biztonsági mentések és a rögzített ár rögzített teljesítményszintek számos különbözteti meg. Összes szolgáltatási szint, leállás nélkül a teljesítményszint módosítása rugalmasságot biztosítanak. Önálló adatbázisok és rugalmas készletek számlázása óraszám alapján, szolgáltatásszintet és teljesítményét.
+Szolgáltatásszintek különbözteti meg a belefoglalt tárterület, a megőrzési időszak a biztonsági mentések és a rögzített ár rögzített rögzített méretű számítási méretű által. Összes szolgáltatási szint módosításának számítási méretek állásidő nélkül rugalmasságot biztosítanak. Önálló adatbázisok és rugalmas készletek számlázása óraszám alapján, a szolgáltatási szint és a számítási méret.
 
 > [!IMPORTANT]
 > SQL Database felügyelt példányába, jelenleg nyilvános előzetes verziója nem támogatja a DTU-alapú vásárlási modell. További információkért lásd: [Azure SQL Database felügyelt példányába](sql-database-managed-instance.md). 
@@ -40,7 +40,7 @@ Szolgáltatásszint kiválasztása elsődlegesen az üzleti folytonosság, táro
 
 ## <a name="single-database-dtu-and-storage-limits"></a>Önálló adatbázis DTU- és tárterületi korlátozásai
 
-A teljesítményszintek különálló adatbázisok esetében DTU-k (adatbázis-tranzakciós egységek), rugalmas készletek esetében pedig rugalmas DTU-k formájában vannak meghatározva. További információ a dtu-król és Edtu-: [Mik a dtu-król és edtu-k](sql-database-service-tiers.md#what-are-database-transaction-units-dtus)?
+A számítási méret az önálló adatbázisok adatbázis-tranzakciós egységek (dtu-k) és a rugalmas Database Transaction Unitok (Edtu) rugalmas készletek vannak kifejezve. További információ a dtu-król és Edtu-: [Mik a dtu-król és edtu-k](sql-database-service-tiers.md#what-are-database-transaction-units-dtus)?
 
 ||Alapszintű|Standard|Prémium|
 | :-- | --: | --: | --: | --: |
@@ -73,7 +73,7 @@ A teljesítményszintek különálló adatbázisok esetében DTU-k (adatbázis-t
 Fizikai tulajdonságait (Processzor, memória, IO) társított minden egyes DTU mérték, amely szimulálja a valós számítási feladatokkal a teljesítményteszt használatával vannak korlátokon belül.
 
 ### <a name="correlating-benchmark-results-to-real-world-database-performance"></a>Számításiteljesítmény-mérési eredmények naplókezelője valós adatbázis teljesítménye
-Fontos megérteni, hogy minden a referenciaértékek reprezentatív és tájékoztató csak. A tranzakciós díjakat biztosítanak a teljesítményteszt alkalmazással elért nem ugyanazok, mint, előfordulhat, hogy más alkalmazásokkal érhető el. A teljesítményteszt típusok futtatásához egy sémát tartalmazó táblák és adattípusok számos különböző tranzakció gyűjteményét foglalja magában. A teljesítményteszt gyakorol az ugyanazon alapvető műveleteket, amelyek közösek az összes OLTP-munkaterhelések, amíg nem tartozik adatbázis vagy az alkalmazás bármely adott osztály. A teljesítményteszt az a célja, hogy adjon meg egy ésszerű útmutató, amellyel egy adatbázis, amely a várható vertikális felfelé vagy lefelé teljesítményszintek között egymáshoz viszonyított teljesítményébe. A valóságban ez adatbázisok különböző méretekre és összetettséget, számítási feladatok különböző keverékei észlel, és különböző módokon válaszol. Például i/o-igényes alkalmazások i/o-küszöbértékek hamarabb ütközhet, vagy a CPU-igényes alkalmazások CPU korlátok hamarabb tapasztalhat. Nem biztos, hogy bármely adott adatbázis lesz skálázva a ugyanúgy, mint a teljesítményteszt növekvő terhelés alatt van.
+Fontos megérteni, hogy minden a referenciaértékek reprezentatív és tájékoztató csak. A tranzakciós díjakat biztosítanak a teljesítményteszt alkalmazással elért nem ugyanazok, mint, előfordulhat, hogy más alkalmazásokkal érhető el. A teljesítményteszt típusok futtatásához egy sémát tartalmazó táblák és adattípusok számos különböző tranzakció gyűjteményét foglalja magában. A teljesítményteszt gyakorol az ugyanazon alapvető műveleteket, amelyek közösek az összes OLTP-munkaterhelések, amíg nem tartozik adatbázis vagy az alkalmazás bármely adott osztály. A teljesítményteszt az a célja, hogy adjon meg egy ésszerű útmutató, amellyel egy adatbázist, amikor a számítási méret között felfelé és lefelé skálázás várható egymáshoz viszonyított teljesítményébe. A valóságban ez adatbázisok különböző méretekre és összetettséget, számítási feladatok különböző keverékei észlel, és különböző módokon válaszol. Például i/o-igényes alkalmazások i/o-küszöbértékek hamarabb ütközhet, vagy a CPU-igényes alkalmazások CPU korlátok hamarabb tapasztalhat. Nem biztos, hogy bármely adott adatbázis lesz skálázva a ugyanúgy, mint a teljesítményteszt növekvő terhelés alatt van.
 
 A teljesítményteszt és a módszereket ismerteti részletesebben az alábbi.
 
@@ -155,5 +155,5 @@ A legfontosabb metrikákat, a teljesítményteszt átviteli sebességet és vál
 
 ## <a name="next-steps"></a>További lépések
 
-- További információ a meghatározott teljesítményszintet és az önálló adatbázisok számára elérhető tárolási mérete lehetőségeket: [SQL adatbázis DTU-alapú erőforráskorlátok az önálló adatbázisok](sql-database-dtu-resource-limits-single-databases.md#single-database-storage-sizes-and-performance-levels).
-- További információ a meghatározott teljesítményszintet és a tároló mérete választható rugalmas készletek számára elérhető: [SQL Database DTU-alapú erőforráskorlátok](sql-database-dtu-resource-limits-elastic-pools.md#elastic-pool-storage-sizes-and-performance-levels).
+- Részletek az adott számítási méretek és a tároló mérete lehetőségek az önálló adatbázisok számára elérhető, lásd: [SQL adatbázis DTU-alapú erőforráskorlátok az önálló adatbázisok](sql-database-dtu-resource-limits-single-databases.md#single-database-storage-sizes-and-compute-sizes).
+- Részletek az adott számítási méretek és a tároló mérete választható rugalmas készletek számára elérhető, lásd: [SQL Database DTU-alapú erőforráskorlátok](sql-database-dtu-resource-limits-elastic-pools.md#elastic-pool-storage-sizes-and-compute-sizes).

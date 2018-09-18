@@ -7,17 +7,17 @@ manager: craigg
 ms.service: sql-database
 ms.custom: migrate
 ms.topic: conceptual
-ms.date: 06/20/2018
+ms.date: 09/14/2018
 ms.author: josack
 ms.suite: sql
 ms.prod_service: sql-database
 ms.component: data-movement
-ms.openlocfilehash: d82cc3ee1074e326c9e4dee7fd65e338cb95e19f
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 4b48f360c95170a36d1e79b075403d541c8b66ed
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44722231"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45983933"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-database-in-azure-sql-database"></a>Új adatbázis a felhőben – Azure SQL Database adatbázis
 
@@ -36,9 +36,9 @@ Ez a cikk ismerteti az alapvető előrejelzéséhez, az Azure SQL DB platform, a
 Üzleti folytonossági és vészhelyreállítási helyreállítási képességek lehetővé teszik az üzleti szokásos módon folytatja egy esetleges vészhelyzet esetén. A vészhelyreállítási lehet egy adatbázis-szintű esemény (Ha például valaki véletlenül csökken kulcsfontosságú tábla) vagy egy adat-központ szintű esemény (regionális katasztrófa, például egy tsunami). 
 
 ### <a name="how-do-i-create-and-manage-backups-on-sql-database"></a>Hogyan hozzon létre és kezelhető a biztonsági mentés az SQL Database?
-Az Azure SQL Database biztonsági mentések nem hoz létre, és nem kell azért van, mert. Az SQL Database automatikusan adatbázisok biztonsági mentését, így Ön már nem kell aggódnia ütemezés, véve, és a biztonsági másolatok kezelése. A platform egy teljes biztonsági mentés hetente, különbözeti biztonsági mentési néhány óránként és a egy napló biztonsági mentését, hogy a vész-helyreállítási e hatékony, 5 percenként, és minimális az adatvesztés vesz igénybe. Az első teljes biztonsági mentés akkor történik meg, amint egy adatbázist hoz létre. Ezeket a biztonsági másolatokat lesznek elérhetők a "megőrzési időtartam" nevű bizonyos ideig, és úgy dönt, a teljesítményszint függvénye.  Az SQL Database lehetővé teszi a belül a megőrzési időszak segítségével bármely időpontra visszaállítása [mutasson az idő Recovery (PITR)](sql-database-recovery-using-backups.md#point-in-time-restore).
+Az Azure SQL Database biztonsági mentések nem hoz létre, és nem kell azért van, mert. Az SQL Database automatikusan adatbázisok biztonsági mentését, így Ön már nem kell aggódnia ütemezés, véve, és a biztonsági másolatok kezelése. A platform egy teljes biztonsági mentés hetente, különbözeti biztonsági mentési néhány óránként és a egy napló biztonsági mentését, hogy a vész-helyreállítási e hatékony, 5 percenként, és minimális az adatvesztés vesz igénybe. Az első teljes biztonsági mentés akkor történik meg, amint egy adatbázist hoz létre. Ezeket a biztonsági másolatokat lesznek elérhetők a "megőrzési időtartam" nevű bizonyos ideig, és úgy dönt, a szolgáltatásréteg függvénye. Az SQL Database lehetővé teszi a belül a megőrzési időszak segítségével bármely időpontra visszaállítása [mutasson az idő Recovery (PITR)](sql-database-recovery-using-backups.md#point-in-time-restore).
 
-|Teljesítményszint|Megőrzési időszak napban|
+|Szolgáltatásszint|Megőrzési időszak napban|
 |---|:---:|
 |Alapszintű|7|
 |Standard|35|
@@ -202,7 +202,7 @@ SQL Database-ben kihasználhatja az intelligens elemzéseket a platform teljesí
 
    ![2. diagram csoportosítási figyelése](./media/sql-database-manage-after-migration/chart.png)
 
-Ez a diagram is konfigurálhatja riasztások erőforrás szerint. Ezek a riasztások lehetővé teszik az e-mailt ügyfélerőforrás-feltételek válaszolni, HTTPS vagy HTTP-végponton írási vagy egy műveletet. Tekintse meg a [SQL Database adatbázis teljesítményének figyelése](sql-database-single-database-monitor.md) részletes útmutatást.
+Ez a diagram is konfigurálhatja riasztások erőforrás szerint. Ezek a riasztások lehetővé teszik az e-mailt ügyfélerőforrás-feltételek válaszolni, HTTPS vagy HTTP-végponton írási vagy egy műveletet. További információkért lásd: [riasztásokat hozhat létre](sql-database-insights-alerts-portal.md).
 
 - **Dinamikus felügyeleti nézetek**: lekérdezheti a [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) dinamikus felügyeleti nézet erőforrás használati statisztikák előzmények visszaadása az elmúlt egy óra és a [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) rendszer katalógusnézet előzmények az elmúlt 14 napban esetében visszaadandó.
 - **Lekérdezési Terheléselemző**: [lekérdezési Terheléselemző](sql-database-query-performance.md) lehetővé teszi, hogy a felső erőforrás-igényes lekérdezéseket és a egy adott adatbázis sokáig futó lekérdezések előzményeit. Gyorsan azonosíthatja a LEGGYAKORIBB lekérdezések erőforrás-használatot, időtartama és a végrehajtás gyakoriságát. Nyomon követheti a lekérdezéseket, és regressziós észlelése. A szolgáltatás használatához [Query Store](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) , hogy engedélyezve van és aktív az adatbázis.
@@ -218,21 +218,21 @@ Teljesítménnyel kapcsolatos problémák elhárítása a megközelítését, p�
 
 A teljesítménnyel kapcsolatos hibaelhárítás, fontos annak megállapítására, hogy csak az alkalmazással, vagy hogy biztonsági másolatot készít az adatbázis, amely negatív hatással van az alkalmazás teljesítményét. A teljesítményprobléma okára gyakran az alkalmazásrétegre rejlik. Annak oka az lehet, az architektúra vagy adathozzáférési mintájának. Vegyük példaként egy forgalmas alkalmazás, amely a hálózati késés-és nagybetűket. Ebben az esetben az alkalmazás szenved, mert sok rövid küldött kérelmeket oda-vissza lenne ("forgalmas") az alkalmazás és a kiszolgáló közötti és a egy túlterhelt hálózaton, ezek életű könyvtárgyorsítótárból hozzáadása gyorsan. Ebben az esetben a teljesítmény javítása érdekében használhatja [kötegelt](sql-database-performance-guidance.md#batch-queries). Használatával a kötegekben segít visszaesés mivel most egy kötegbe; a kérelmek feldolgozása így segít a körbejárási késéssel kivágása és hozzájárulhat az alkalmazás teljesítményéhez. 
 
-Emellett, ha azt tapasztalja, hogy a az adatbázis az általános teljesítménye, figyelemmel kísérheti a [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) és [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) dinamikus felügyeleti nézetek annak érdekében, hogy Ismerje meg, CPU, IO és memória-felhasználás. A teljesítmény lehetséges akkor működik, mert az adatbázis-erőforrások fogy van ki. Annak oka az lehet, hogy szükség lehet a teljesítményszint és/vagy a növekvő és terheléshez zsugorítását alapján szolgáltatásszintet. 
+Emellett, ha azt tapasztalja, hogy a az adatbázis az általános teljesítménye, figyelemmel kísérheti a [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) és [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) dinamikus felügyeleti nézetek annak érdekében, hogy Ismerje meg, CPU, IO és memória-felhasználás. A teljesítmény lehetséges akkor működik, mert az adatbázis-erőforrások fogy van ki. Annak oka az lehet, hogy szükség lehet a számítási méret módosítása és/vagy a növekvő és terheléshez zsugorítását alapján szolgáltatásszintet. 
 
 Teljesítményproblémák hangolási ajánlásokat átfogó készletét, lásd: [az adatbázis hangolása](sql-database-performance-guidance.md#tune-your-database).
 
-### <a name="how-do-i-ensure-i-am-using-the-appropriate-service-tier-and-performance-level"></a>Hogyan biztosítja, a megfelelő szolgáltatási csomagot és teljesítményszintet szintű használok?
-Az SQL Database a Basic, Standard és prémium szintű különböző szolgáltatásszinttel rendelkezik. Minden szolgáltatási szint kap egy garantált kiszámítható teljesítményt biztosítanak a szolgáltatási szint kötve. A számítási feladatok függően előfordulhat, adatlöketekkel tevékenység, nyomja le az erőforrások kihasználtságát előfordulhat, hogy a felső határa, amely a jelenlegi teljesítményszint. Ezekben az esetekben hasznos, első lépésként kiértékelésével e bármely finomhangolása segítségével (például hozzáadása vagy módosítása egy index stb.). Ha továbbra is problémák merülnek fel korlátot, fontolja meg egy magasabb teljesítményi szinthez, vagy a szolgáltatási szint. 
+### <a name="how-do-i-ensure-i-am-using-the-appropriate-service-tier-and-compute-size"></a>Hogyan biztosítja e használom a megfelelő szolgáltatási szint és a számítási méret?
+Az SQL Database a Basic, Standard és prémium szintű különböző szolgáltatásszinttel rendelkezik. Minden szolgáltatási szint kap egy garantált kiszámítható teljesítményt biztosítanak, az adott szolgáltatásszinten kötve. A számítási feladatok, attól függően szükség lehet adatlöketekkel tevékenység, nyomja le az erőforrások kihasználtságát előfordulhat, hogy a felső határa, hogy biztosan megfeleljen az aktuális számítási mérete. Ezekben az esetekben hasznos, első lépésként kiértékelésével e bármely finomhangolása segítségével (például hozzáadása vagy módosítása egy index stb.). Ha továbbra is problémák merülnek fel korlátot, érdemes megfontolni a magasabb szintű szolgáltatás, vagy méretű számítási. 
 
-|**Szolgáltatási szint**|**Gyakori használati esetek**|
+|**Szolgáltatásszint**|**Gyakori használati esetek**|
 |---|---|
 |**Basic**|Alkalmazások egy néhány felhasználók és a egy adatbázis, amely nem rendelkezik magas egyidejűségi, a méretezési csoport és a teljesítményre vonatkozó követelményeknek. |
 |**Standard**|Így jelentős feldolgozási, méretezést és teljesítményt követelményekkel rendelkező alkalmazások alacsony és közepes i/o-igényeknek. |
 |**Prémium**|Az igénylést i/o-alkalmazásokat az egyidejű felhasználók, a magas CPU/memória és a magas. A prémium szint nagy feldolgozási, nagy átviteli sebességű és késés bizalmas adatokat kezelő alkalmazásokhoz használhatja. |
 |||
 
-A gondoskodik róla, hogy a megfelelő teljesítményszintet használ, a lekérdezés és az adatbázis erőforrás-használat a fent említett módon, a "Hogyan követhetem figyelemmel az SQL Database a teljesítmény- és erőforrás-kihasználtság" egyikével tanulják követheti nyomon. Látnia, hogy a lekérdezések és adatbázisok folyamatosan fut CPU/memória stb. érdemes lehet egy magasabb teljesítményi szinthez vertikális felskálázása a gyakran használt adatok. Ehhez hasonlóan, vegye figyelembe, hogy a csúcsidőszakon során is, ha nem úgy tűnik, hogy az erőforrások használatára annyi; Vegye figyelembe, hogy a jelenlegi teljesítményszint a vertikális leskálázást. 
+A gondoskodik róla, hogy a megfelelő számítási méret használ, a lekérdezés és az adatbázis erőforrás-használat a fent említett módon, a "Hogyan követhetem figyelemmel az SQL Database a teljesítmény- és erőforrás-kihasználtság" egyikével tanulják követheti nyomon. Látnia, hogy a lekérdezések és adatbázisok folyamatosan fut CPU/memória stb. érdemes lehet a nagyobb számítási méret vertikális felskálázása a gyakran használt adatok. Ehhez hasonlóan, vegye figyelembe, hogy a csúcsidőszakon során is, ha nem úgy tűnik, hogy az erőforrások használatára annyi; Vegye figyelembe, hogy a jelenlegi számítási mérete a vertikális leskálázást. 
 
 Ha egy SaaS-alkalmazás minta vagy egy adatbázis összevonási forgatókönyvben, fontolja meg egy rugalmas készlet használatát a költségek optimalizálása. Rugalmas készlet kiválóan alkalmas adatbázis összevonása és a költség-optimalizálás érhető el. További használó rugalmas készletek több adatbázis-kezelés, lásd: [készletek és adatbázisok kezelése](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases). 
 

@@ -1,6 +1,6 @@
 ---
-title: Az Azure IoT központi alkalmazás lévő mobileszközök felügyelete |} Microsoft Docs
-description: Kezelőként megtudhatja, hogyan kezelheti az Azure IoT központi alkalmazás eszközöket.
+title: Az Azure IoT Central-alkalmazást az eszközök felügyeletére |} A Microsoft Docs
+description: Kezelőként megtudhatja, hogyan kezelheti eszközeit az Azure IoT Central alkalmazáshoz.
 author: ellenfosborne
 ms.author: elfarber
 ms.date: 01/21/2018
@@ -8,171 +8,170 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: cf803c03d266f2a400e47fc551dea62936456177
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: 4b4ded86075e49277bca84f5261b6762b0f4fcae
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36937618"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45737311"
 ---
-# <a name="manage-devices-in-your-azure-iot-central-application"></a>Az Azure IoT központi alkalmazásban eszközök kezelése
+# <a name="manage-devices-in-your-azure-iot-central-application"></a>Eszközök kezelése az Azure IoT Central alkalmazáshoz a
 
-Ez a cikk ismerteti, hogyan kezelőként, a Microsoft Azure IoT központi alkalmazás lévő eszközök kezeléséhez. Kezelőként a következő műveletek végezhetők el:
+Ez a cikk azt ismerteti, hogyan kezelheti eszközeit a Microsoft Azure IoT Central alkalmazáshoz kezelőként. Kezelőként a következőket teheti:
 
-- Használja a **Explorer** lapon lehet megtekinteni, adja hozzá, és az Azure IoT központi alkalmazáshoz kapcsolódó eszközök törlése.
-- Az eszközök naprakészen készletnyilvántartás.
-- Telepítheti az eszköz metaadatait a eszköztulajdonságok tárolt értékek módosításával.
-- Felügyeli az eszközöket az azáltal, hogy egy adott eszközről beállítást frissíti a **beállítások** lap.
+- Használja a **Explorer** megtekintése, hozzáadása és törlése az Azure IoT Central alkalmazásnak csatlakoztatott eszközök lap.
+- Az eszköz naprakész készletnyilvántartás.
+- Az eszköz metaadatait az eszköztulajdonságok tárolt értékek módosításával tartsa naprakészen a.
+- Az eszközök viselkedését vezérlő egy beállítást egy adott eszköz frissítésével a **beállítások** lapot.
 
-## <a name="view-your-devices"></a>Az eszközök megtekintése
+## <a name="view-your-devices"></a>Eszközök megtekintése
 
-Az egyes eszközök megtekintése:
+Egy adott eszköz megtekintése:
 
-1. Válasszon **Explorer** a bal oldali navigációs menü. Itt láthatja listáját a [eszköz sablonok](howto-set-up-template.md).
+1. Válasszon **Explorer** a bal oldali navigációs menüben. Itt láthatja az listáját a [eszközsablonok](howto-set-up-template.md).
 
 1. Válasszon egy **eszköz sablon** a bal oldali ablaktáblán.
 
-1. A jobb oldali ablaktáblában tekintse meg az adott eszköz a sablonból létrehozott eszközök listáját. Válassza ki az egyes eszközt, és ellenőrizze a **eszközadatok** lap az eszköznek:
+1. A jobb oldali ablaktáblában tekintse meg az adott eszköz a sablonból létrehozott eszköz listáját. Egy adott eszköz megtekintéséhez válassza ki a **eszközadatok** lap az eszközön:
 
-    [![Eszköz részleteit megjelenítő oldalra](./media/howto-manage-devices/image1.png)](./media/howto-manage-devices/image1.png#lightbox)
+    [![Eszköz részleteit tartalmazó oldalra](./media/howto-manage-devices/image1.png)](./media/howto-manage-devices/image1.png#lightbox)
 
 ## <a name="add-a-device"></a>Eszköz hozzáadása
 
-Eszköz hozzáadása az Azure IoT központi alkalmazáshoz:
+Eszköz hozzáadása az Azure IoT Central alkalmazáshoz:
 
-1. Válasszon **Explorer** a bal oldali navigációs menü.
+1. Válasszon **Explorer** a bal oldali navigációs menüben.
 
-1. Válassza ki az eszköz sablon, amelyből el kívánja létrehozni egy eszközt.
+1. Válassza ki, amelyről szeretne létrehozni egy eszközt a device sablont.
 
-1. Válasszon + **új**.
+1. Válassza a + **új**.
 
-1. Válasszon **valós** vagy **szimulált**. Egy valódi eszköz van egy fizikai eszköz számára, hogy az Azure IoT központi alkalmazás kapcsolódni. A szimulált eszköz állítja elő az Ön Azure IoT központi minta adatokat tartalmaz. A példa egy valós eszközt. Válasszon **valós** lehetőségre, és navigáljon a **eszközadatok** lap az új eszközhöz.
+1. Válasszon **valós** vagy **szimulált**. Egy igazi eszközön van egy fizikai eszköz, az Azure IoT Central alkalmazáshoz csatlakozik. Szimulált eszköz által az Azure IoT Central az Ön számára létrehozott mintaadatokat tartalmazza. Ez a példa egy igazi eszközön használja. Válassza a **valós** navigálhat a **eszközadatok** lap az új eszköz.
 
 
 ## <a name="import-devices"></a>Eszközök importálása
 
-Nagy számú eszköz kapcsolódni az alkalmazáshoz, Azure IoT központi ajánlatok tömeges importálását eszközök keresztüli CSV-fájl. 
-
-CSV-fájl követelmények:
-1. A CSV-fájl csak egy oszlop, amely tartalmazza az eszköz azonosítóját kell rendelkeznie.
-
-1. A fájl nem rendelkezhet minden fejléc.
+A nagy mennyiségű eszköz csatlakoztatása az Azure IoT Central alkalmazásnak ajánlatok tömeges importáló eszközöket egy CSV-fájlt. A CSV-fájlt a következő oszlopokat (és a fejlécek) kell rendelkeznie.
+1.  IOTC_DeviceID  **<span style="color:Red">(a kis kell lennie)</span>**
+1.  IOTC_DeviceName (nem kötelező)
 
 
-A tömeges-regisztráció eszközök az alkalmazásban:
+Az alkalmazás eszközök tömeges-regisztrálni:
 
-1. Válasszon **Explorer** a bal oldali navigációs menü.
+1. Válasszon **Explorer** a bal oldali navigációs menüben.
 
-1. A bal oldali panelen válassza ki a tömeges kívánt eszköz sablon létrehozása az eszközök.
+1. A bal oldali panelen válassza az eszköz sablon, amely a tömeges szeretné létrehozni az eszközök.
 
  >   [!NOTE] 
-    Ha egy eszköz sablon nem rendelkezik, még akkor importálhatja az eszközök **nincs társítva eszközök** és regisztrálja őket a sablon nélkül. Eszközök importálása után majd társíthatja azokat egy sablon, egy következő lépésben.
+    Ha egy eszköz sablon nem rendelkezik még importálhatja az eszközök területen **nincs társítva eszközök** , és regisztrálja őket minden olyan sablon nélkül. Eszközök importálása után majd társíthatja őket egy sablont egy későbbi lépésben.
 
 1. Kattintson az **Importálás** gombra.
 
     [![Importálási művelet](./media/howto-manage-devices/BulkImport1.png)](./media/howto-manage-devices/BulkImport1.png#lightbox)
 
-1. Válassza ki a CSV-fájlt, amely rendelkezik a eszközazonosítókat, importálandók listáját.
+1. Válassza ki a CSV-fájl, amely az importálni kívánt eszközazonosítókat listája szerepel.
 
-1. Eszköz importálási követően a fájl fel lett töltve indul. Követheti, hogy az importálás állapotát az eszköz rács tetején.
+1. Eszközök importálása akkor indul, amikor a fájl fel lett töltve. Az importálás állapotát az eszköz rács tetején követheti nyomon.
 
-1. Az importálás után egy üzenetet az eszköz rács látható.
+1. Az importálás befejezése után az eszköz rács sikert jelző üzenet jelenik meg.
 
-    [![Importálás sikeres](./media/howto-manage-devices/BulkImport3.png)](./media/howto-manage-devices/BulkImport3.png#lightbox)
+    [![Sikeres importálás](./media/howto-manage-devices/BulkImport3.png)](./media/howto-manage-devices/BulkImport3.png#lightbox)
 
-Ha az eszköz importálja a művelet sikertelen lesz, látni fogja hibaüzenet jelenik meg az eszköz rács. A naplófájl a hibákat a rögzítés jön létre, és a hibaüzenet a következő kattintva tölthető le.
+Ha az eszköz importálja a művelet sikertelen lesz, látni fogja hibaüzenet jelenik meg az eszköz rács. A hibákat a rögzítés naplófájl jön létre, és a hibaüzenet kattintva tölthető le.
 
 
 **A sablon eszközök társítása**
 
-Eszközök regisztrálása az importálás alatt által **nincs társítva eszközök**, akkor az eszközök bármilyen eszköz sablon társítása nélkül jönnek létre. Eszköz egy sablon felfedezése, mely az adatokat és egyéb adatait az eszköz társítva kell lennie. Kövesse az alábbi lépéseket eszközök társítandó sablont:
-1. Válasszon **Explorer** a bal oldali navigációs menü.
-1. A bal oldali panelen válassza ki a **nincs társítva eszközök**.
+Eszközök regisztrálása az importálás alatt elindításával **nincs társítva eszközök**, akkor az eszközök bármilyen eszköztársítás sablon nélkül jön létre. Eszköz egy sablont az adatokat és egyéb adatait az eszköz társítva kell lennie. Kövesse az alábbi lépéseket eszközök társítása egy sablont:
+1. Válasszon **Explorer** a bal oldali navigációs menüben.
+1. Válassza a bal oldali panelen, **nincs társítva eszközök**.
     [![Társítatlan eszközök](./media/howto-manage-devices/UnassociatedDevices1.png)](./media/howto-manage-devices/UnassociatedDevices1.png#lightbox)
-1. Jelölje ki a sablon társítani kívánt eszközöket.
+1. Válassza ki a sablon társítani kívánt eszközöket.
 1. Kattintson a **társítása** lehetőséget.
     [![Eszközök hozzárendelése](./media/howto-manage-devices/UnassociatedDevices2.png)](./media/howto-manage-devices/UnassociatedDevices2.png#lightbox)
-1. Válassza ki a sablont a rendelkezésre álló sablonok közül, és kattintson a **társítása** gombra.
-1. A kiválasztott eszközök átkerülnek a megfelelő eszköz sablon alapján.
+1. Válassza ki a sablont a listából a rendelkezésre álló sablonok, és kattintson a **társítása** gombra.
+1. A kiválasztott eszközök átkerül a megfelelő eszköz sablon alapján.
 
  >   [!NOTE] 
-    Ha egy eszköz társítva egy sablont nem lehet nincs társítva vagy amelyekkel társítva van egy másik sablonba.
+    Ha egy eszköz társítva egy sablont nem lehet nincs társítva vagy egy másik sablonnal társított.
 
 ## <a name="export-devices"></a>Eszközök exportálása
 
-Eszközök csatlakoztatása az IoT központi telepítéséhez, szüksége lesz az eszköz IoT központi által generált kapcsolati karakterlánca. Az Exportálás funkció segítségével a kapcsolati karakterláncokat, és az eszközök más tulajdonságainak beolvasása tömeges az alkalmazásból. Exportálás hoz létre egy CSV-fájlt az Eszközidentitás, az eszköz nevét és az elsődleges kapcsolódási karakterlánc a kiválasztott eszközökhöz.
+Üzembe helyezi az eszközök csatlakoztatása IoT-központ, szüksége lesz az eszköz IoT-központ által létrehozott a kapcsolati karakterláncot. Az exportálási szolgáltatás segítségével a kapcsolati karakterláncokkal és egyéb tulajdonságok, az eszközök tömeges lekérése az alkalmazásból. Exportálás hoz létre egy CSV-fájlt az Eszközidentitás, az eszköz neve és az elsődleges kapcsolati karakterlánc a kiválasztott eszközökhöz.
 
-Az alkalmazásból exportálási eszközök tömeges:
-1. Válasszon **Explorer** a bal oldali navigációs menü.
+Tömeges exportálása eszközök az alkalmazásból:
+1. Válasszon **Explorer** a bal oldali navigációs menüben.
 
-1. A bal oldali panelen válassza ki az eszköz sablon, amelynek az eszközök exportálni szeretné.
+1. A bal oldali panelen válassza ki, amelyhez az eszköz exportálása kívánt eszköz sablont.
 
-1. Jelölje ki az exportálni, és kattintson a kívánt eszközöket a **exportálása** művelet.
+1. Jelölje ki az eszközöket, amelyeket szeretne exportálni, majd kattintson a **exportálása** művelet.
 
     [![Exportálás](./media/howto-manage-devices/Export1.png)](./media/howto-manage-devices/Export1.png#lightbox)
 
 1. Exportálási folyamat elindul, és nyomon követheti a rács tetején állapotát. 
 
-1. Az exportálás után egy üzenetet látható valamint egy hivatkozást a létrehozott fájl letöltéséhez.
+1. Az exportálás befejezése után a sikert jelző üzenet jelenik meg együtt egy hivatkozás a létrehozott fájl letöltéséhez.
 
-1. Kattintson a **üzenetet** letölteni a fájlt egy helyi mappába a lemezen.
+1. Kattintson a **sikert jelző üzenettel** letölteni a fájlt egy helyi mappába a lemezen.
 
     [![Sikeres exportálása](./media/howto-manage-devices/Export2.png)](./media/howto-manage-devices/Export2.png#lightbox)
 
-1. Az exportált CSV-fájl lesz a következő információkat:
-    1. Name (Név)
-    1. Eszközazonosító
-    1. Elsődleges kapcsolati karakterlánc
-
+1. Az exportált CSV-fájlt a következő oszlopok adatokat fog rendelkezni: **eszköz azonosítója, eszköz, eszköz Priamry és másodlagos kulcsok és az elsődleges és másodlagos tanúsítvány thumbrpints**
+    *   IOTC_DEVICEID
+    *   IOTC_DEVICENAME
+    *   IOTC_SASKEY_PRIMARY
+    *   IOTC_SASKEY_SECONDARY
+    *   IOTC_X509THUMBPRINT_PRIMARY 
+    *   IOTC_X509THUMBPRINT_SECONDARY
 
 ## <a name="delete-a-device"></a>Eszköz törlése
 
-Akár egy valós vagy szimulált eszköz törlése az Azure IoT központi alkalmazásból:
+Akár egy valós vagy szimulált eszköz törlése az Azure IoT Central alkalmazásból:
 
-1. Válasszon **Explorer** a navigációs menü.
+1. Válasszon **Explorer** a navigációs menüben.
 
-1. Válassza ki a eszköz sablont törli az eszköz.
+1. Válassza ki a törölni kívánt eszköz eszköz sablont.
 
-1. Törli az eszköz melletti négyzetet.
+1. Törli az eszköz melletti jelölőnégyzetet.
 
 1. Válasszon **törlése**.
 
 ## <a name="change-a-device-setting"></a>Egy eszköz beállításának módosítása
 
-Beállítások egy eszköz felügyeli. Más szóval lehetővé teszik, hogy adja meg a bemeneti adatok az eszközön. Megtekintheti és az eszköz beállítások frissítése a **eszközadatok** lap.
+Beállítások az eszközök viselkedését vezérli. Más szóval lehetővé teszik, hogy az eszköz a forráson. Megtekintheti, és az eszköz beállításait frissíteni a **eszközadatok** lapot.
 
-1. Válasszon **Explorer** a navigációs menü.
+1. Válasszon **Explorer** a navigációs menüben.
 
-1. Válassza ki az eszköz, amelynek beállításait módosítani szeretné az eszköz sablont.
+1. Válassza ki az eszközt, amelynek beállításait módosítani szeretné az eszköz sablonját.
 
-1. Válassza ki a **beállítások** fülre. Itt láthatja az eszköz rendelkezik az összes beállítás és a jelenlegi értékeit. Az egyes beállítások, láthatja, ha az eszköz továbbra is szinkronizál.
+1. Válassza ki a **beállítások** fülre. Itt láthatja az eszköz rendelkezik az összes beállítás és azok aktuális értékével. Mindegyik beállításnál láthatja, ha az eszköz továbbra is szinkronizálása folyamatban van.
 
-1. Módosítsa a beállításokat a kívánt értékeket. Egyszerre több beállításainak módosítása, és frissítse azokat ugyanabban az időpontban.
+1. Módosítsa a beállításait, és a kívánt értékeket. Egyszerre több beállításainak módosítása, és frissítse azokat az összes egyszerre.
 
-1. Válasszon **frissítés**. Az eszköz az értékeket kell küldeni. Ha az eszköz elfogadja a beállítás módosítása, a beállítási állapot visszatér **szinkronizált**.
+1. Válasszon **frissítés**. Az eszköz az értékeket érkeznek. Az eszközön beállítás változása tudomásul veszi, ha a beállítás állapota visszatér arra **szinkronizált**.
 
-## <a name="change-a-property"></a>A tulajdonság módosítása
+## <a name="change-a-property"></a>Egy tulajdonság módosítása
 
-A rendszer az eszköz metaadatait az eszköz, például a város és sorozatszám társított tulajdonságokat. Megtekintheti és a tulajdonságok frissítése a **eszközadatok** lap.
+A tulajdonságok akkor, az eszköz metaadatait, például az városa és sorozatszám az eszközhöz társított. Megtekintheti és tulajdonságainak frissítése az a **eszközadatok** lapot.
 
-1. Válasszon **Explorer** navigációs menü.
+1. Válasszon **Explorer** navigációs menüben.
 
-1. Válassza ki az eszköz, amelynek a tulajdonságait módosítani szeretné az eszköz sablont.
+1. Válassza ki az eszközt, amelynek tulajdonságait meg szeretné változtatni az eszköz sablonját.
 
-1. Válassza ki a **tulajdonságok** válaszoknál láthatja a Tulajdonságok lapon.
+1. Válassza ki a **tulajdonságok** lapra, ahol láthatja az összes tulajdonság.
 
-1. Módosítsa a tulajdonságait és a kívánt értékeket. Több tulajdonságra egyszerre módosíthatja és frissítheti az összes egyszerre.
+1. Módosítsa a tulajdonságokat a kívánt értékeket. Egyszerre több tulajdonságainak módosítása, és frissítse azokat az összes egyszerre.
 
 1. Válasszon **frissítés**.
 
 > [!NOTE]
-> Az érték nem módosítható _eszköztulajdonságok_. Eszköztulajdonságok az eszköz-beállításokat, és az Azure IoT központi alkalmazásban csak olvashatók.
+> Az érték nem módosítható _eszköztulajdonságok_. Eszköztulajdonságok által az eszközön, és az Azure IoT Central alkalmazáshoz csak olvashatók.
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy rendelkezik megismerte az Azure IoT központi alkalmazásban eszközkezelés, ez a javasolt következő lépésre:
+Most, hogy rendelkezik megtanulta, hogyan kezelheti az Azure IoT Central alkalmazáshoz eszközeit, Íme a javasolt következő lépésre:
 
 > [!div class="nextstepaction"]
-> [Eszköz készlet használata](howto-use-device-sets.md)
+> [Eszköz-csoportok használata](howto-use-device-sets.md)
 
 <!-- Next how-tos in the sequence -->

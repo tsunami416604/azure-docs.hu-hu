@@ -1,90 +1,91 @@
 ---
-title: Kérdések és válaszok bot létrehozása az Azure szolgáltatással Botot - Azure kognitív szolgáltatások |} Microsoft Docs
+title: Az Azure Bot Service – QnA Maker QnA robotot
+titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: nstulasi
-manager: sangitap
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: QnAMaker
+ms.component: qna-maker
 ms.topic: article
-ms.date: 05/07/2018
-ms.author: saneppal
-ms.openlocfilehash: fc430bf3aa7cad279d7a93bb6892aa19abee3378
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.date: 09/12/2018
+ms.author: nstulasi
+ms.openlocfilehash: 0c6feb67b273ec30afba89f2d4d9b59a8a9f5acf
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37109269"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45731416"
 ---
-# <a name="create-a-qna-bot-with-azure-bot-service"></a>Hozzon létre egy kérdés-válasz Botot Azure Botot szolgáltatással
-Ez az oktatóanyag végigvezeti Azure Botot szolgáltatással kérdések és válaszok bot felépítése az Azure portálon.
+# <a name="create-a-qna-bot-with-azure-bot-service"></a>A QnA robotot létrehozása az Azure Bot Service-szel
+Ez az oktatóanyag végigvezeti a QnA robotot az Azure Bot service az Azure Portalon való létrehozásakor.
 
 ## <a name="prerequisite"></a>Előfeltétel
-Mielőtt, kövesse a [hozzon létre egy Tudásbázis](../How-To/create-knowledge-base.md) Maker kérdések és válaszok szolgáltatás létrehozása a kérdések és válaszok.
+Mielőtt hoz létre, kövesse a [Tudásbázis létrehozása](../How-To/create-knowledge-base.md) QnA Maker szolgáltatás létrehozása a kérdések és válaszok.
 
-A botot válaszol a Tudásbázis létrehozott, a QnAMakerDialog keresztül érkező kérdéseket.
+A robot a Tudásbázis hozta létre, a QnAMakerDialog keresztül érkező kérdéseket válaszol.
 
-## <a name="create-a-qna-bot"></a>Kérdések és válaszok Bot létrehozása
-1. Az a [Azure-portálon](https://portal.azure.com), jelölje be **létrehozása** a menü panelt, és válassza ki az új erőforrás **láthatja az összes**.
+## <a name="create-a-qna-bot"></a>Hozzon létre egy QnA robotot
+1. Az a [az Azure portal](https://portal.azure.com), jelölje be **létrehozás** menü panelen, és válassza ki az új erőforrás **összes**.
 
-    ![botot szolgáltatás létrehozása](../media/qnamaker-tutorials-create-bot/bot-service-creation.png)
+    ![a robot szolgáltatás létrehozása](../media/qnamaker-tutorials-create-bot/bot-service-creation.png)
 
-2. A keresőmezőbe, keresse meg a **Web App Botot**.
+2. A keresőmezőbe keresése **Web App Bot**.
 
-    ![botot szolgáltatás kiválasztása](../media/qnamaker-tutorials-create-bot/bot-service-selection.png)
+    ![bot service kiválasztása](../media/qnamaker-tutorials-create-bot/bot-service-selection.png)
 
-3. Az a **Botot szolgáltatás panelre**, adja meg a szükséges információkat, és válassza ki **létrehozása**. Ez létrehozza, és QnAMakerDialog botot szolgáltatást telepíti az Azure-bA.
+3. Az a **Bot Service panel**, adja meg a szükséges információkat, és válassza ki **létrehozás**. Ez létrehozza és telepíti az QnAMakerDialog a bot service az Azure-bA.
 
-    - Állítsa be **alkalmazásnév** a botot névre. A név lesz a altartomány a botot a felhőbe (például mynotesbot.azurewebsites.net) telepítésekor.
-    - Válassza ki az előfizetés, az erőforráscsoportot, a App service-csomag és a helyet.
-    - Válassza ki a **kérdés és válasz** Botot sablon mező (Node.js vagy C#) sablont.
-    - Jelölje be a megerősítő a jogi nyilatkozatot. A jogi nyilatkozat feltételeit. a rendszer alatt a jelölőnégyzet jelölését.
+    - Állítsa be **alkalmazásnév** a robot neve. A robot a felhőben (például mynotesbot.azurewebsites.net) történő telepítése során az altartomány neve lesz.
+    - Válassza ki az előfizetést, erőforráscsoportot, App service-csomag és helyét.
+    - Válassza ki a **kérdést és választ** (Node.js vagy a C#) sablont a robot sablon mező.
+    - Jelölje be a megerősítő a jogi nyilatkozat. A jogi nyilatkozat feltételeit az alábbiakban olvashatják be a jelölőnégyzetet.
 
-        ![botot szolgáltatás kiválasztása](../media/qnamaker-tutorials-create-bot/bot-service-qna-template.PNG)
+        ![bot service kiválasztása](../media/qnamaker-tutorials-create-bot/bot-service-qna-template.PNG)
 
-4. Győződjön meg arról, hogy a botot szolgáltatás már alkalmazva van.
+4. Győződjön meg arról, hogy a bot service van telepítve.
 
-    - Válassza ki **értesítések** (a harang ikonra, amely mentén a felső szegélyéhez, hogy az Azure portálon található). Az értesítés állapotúról **telepítése megkezdődött** való **KözpontiTelepítés sikerült**.
-    - Után vált, az értesítés **KözpontiTelepítés sikerült**, jelölje be **forrást** adott értesítésre kattinthat.
+    - Válassza ki **értesítések** (Harang ikon, amely mentén felső szegélyéhez, hogy az Azure Portalon található). Az értesítés módosul **központi telepítés elindítva** való **üzembe helyezés sikeres**.
+    - Miután az értesítés megváltozik, és **üzembe helyezés sikeres**, jelölje be **erőforrás megnyitása** adott értesítésre.
 
-## <a name="chat-with-the-bot"></a>A Botot hívni
-Kiválasztása **forrást** a botot erőforráspanelre viszi.
+## <a name="chat-with-the-bot"></a>A robot cseveghet
+Kiválasztásával **erőforrás megnyitása** a robot erőforrás panel megnyílik.
 
-Amikor a botot regisztrálva van, kattintson a **vizsgálati a webes Csevegés** a webes Csevegés ablaktábla megnyitása. Írja be a "Hello" szövegrészt webes Csevegés.
+A robot regisztrálása után kattintson a **vizsgálat a webes csevegési** a webes csevegési ablak megnyitásához. Írja be a "hello", a webes csevegési.
 
-![Kérdések és válaszok botot webes Csevegés](../media/qnamaker-tutorials-create-bot/qna-bot-web-chat.PNG)
+![A QnA robotot webes csevegési](../media/qnamaker-tutorials-create-bot/qna-bot-web-chat.PNG)
 
-A botot válaszol, "állítsa QnAKnowledgebaseId és QnASubscriptionKey alkalmazás beállításaiban. Megtudhatja, hogyan azokat a https://aka.ms/qnaabssetup". Ez a válasz megerősíti, hogy a kérdések és válaszok Botot a üzenetet kapott, de nincs társítva még nincs kérdések és válaszok készítő Tudásbázis. Ehhez a következő lépésben.
+A robot válaszol "állítsa be QnAKnowledgebaseId és QnASubscriptionKey az alkalmazásbeállítások. Ismerje meg, azok a https://aka.ms/qnaabssetup". Ez a válasz megerősíti, hogy a QnA robotot az üzenetet kapott, de nem tartozik még a QnA Maker Tudásbázis van. Ehhez a következő lépésben.
 
-## <a name="connect-your-qna-maker-knowledge-base-to-the-bot"></a>A kérdések és válaszok készítő Tudásbázis csatlakozni a botot
+## <a name="connect-your-qna-maker-knowledge-base-to-the-bot"></a>A QnA Maker Tudásbázis csatlakozni a robotot
 
-1. Nyissa meg **Alkalmazásbeállítások** és szerkesztése a **QnAKnowledgebaseId**, **QnAAuthKey**, és a **QnAEndpointHostName** mezőket kell tartalmaznia a kérdések és válaszok készítő Tudásbázis értékeit.
+1. Nyissa meg **Alkalmazásbeállítások** és szerkesztheti a **QnAKnowledgebaseId**, **QnAAuthKey**, és a **QnAEndpointHostName** mezőket tartalmaz a QnA Maker Tudásbázis értékeit.
 
     ![Alkalmazásbeállítások](../media/qnamaker-tutorials-create-bot/application-settings.PNG)
 
-2. A Tudásbázis Azonosítóját, gazdagépre URL-cím és a végpont kulcs beszerzése a Tudásbázis a beállítások lapján https://qnamaker.ai.
-    - Jelentkezzen be [kérdések és válaszok készítő](https://qnamaker.ai)
+2. A Tudásbázis Azonosítóját, gazdagép URL-cím és a végpont kulcs lekérése a Tudásbázis a beállítások lapján https://qnamaker.ai.
+    - Jelentkezzen be [a QnA Maker](https://qnamaker.ai)
     - Nyissa meg a Tudásbázis
     - Kattintson a **beállítások** lap
-    - **Közzététel** a Tudásbázis, ha még nem tette meg
+    - **Közzététel** a Tudásbázis, ha még nem tette
 
-    ![Kérdések és válaszok készítő értékek](../media/qnamaker-tutorials-create-bot/qnamaker-settings-kbid-key.PNG)
+    ![A QnA Maker értékek](../media/qnamaker-tutorials-create-bot/qnamaker-settings-kbid-key.PNG)
 
 > [!NOTE]
-> Ha azt szeretné, a kérdések és válaszok botot előzetes verzióját, a Tudásbázis kapcsolódni, állítsa be a **Ocp-Apim-előfizetés-kulcs** való **QnAAuthKey**. Hagyja a **QnAEndpointHostName** üres.
+> Ha azt szeretné, a QnA robotot előzetes verzióját, a Tudásbázis kapcsolódni, az értékét állítsa be **Ocp-Apim-Subscription-Key** való **QnAAuthKey**. Hagyja a **QnAEndpointHostName** üres.
 
-## <a name="test-the-bot"></a>A botot tesztelése
-Az Azure-portálon kattintson a **webes Csevegés tesztelése** a botot teszteléséhez. 
+## <a name="test-the-bot"></a>A robot tesztelése
+Az Azure Portalon kattintson a **tesztelni, webes csevegési** a robot teszteléséhez. 
 
-![Kérdések és válaszok készítő botot](../media/qnamaker-tutorials-create-bot/qna-bot-web-chat-response.PNG)
+![A QnA Maker robotot](../media/qnamaker-tutorials-create-bot/qna-bot-web-chat-response.PNG)
 
-A kérdések és válaszok Botot most érkező válaszolja meg a Tudásbázis.
+A QnA robotot most már a Tudásbázis a választ.
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Kérdések és válaszok Maker és LUIS integrálása](./integrate-qnamaker-luis.md)
+> [A QnA Maker és a LUIS integrálása](./integrate-qnamaker-luis.md)
 
 ## <a name="see-also"></a>Lásd még
 
 - [A Tudásbázis kezelése](https://qnamaker.ai)
-- [A különböző csatornákhoz a botot engedélyezése](https://docs.microsoft.com/azure/bot-service/bot-service-manage-channels)
+- [Az emberekéhez különböző csatornákon keresztül](https://docs.microsoft.com/azure/bot-service/bot-service-manage-channels)

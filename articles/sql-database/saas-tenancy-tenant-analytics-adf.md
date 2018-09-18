@@ -1,6 +1,6 @@
 ---
-title: Bérlői analytics lekérdezéseinek futtatásához adatbázisokat az Azure SQL Data Warehouse |} Microsoft Docs
-description: Több-bérlős elemzési lekérdezések kibontani a több Azure SQL Database adatbázist adatokkal.
+title: Analytics-lekérdezések futtatásához bérlői adatbázisok az Azure SQL Data Warehouse |} A Microsoft Docs
+description: Több-bérlős elemzési lekérdezések több Azure SQL Database-adatbázis kinyert adatok segítségével.
 keywords: sql database-oktatóanyag
 services: sql-database
 documentationcenter: ''
@@ -13,241 +13,241 @@ ms.workload: Inactive
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 11/08/2017
+ms.date: 09/14/2018
 ms.author: anjangsh
-ms.openlocfilehash: c7580e5481288695d3b5dea8fd0547f5f2c4c2b0
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 9dad675188782f3feb769e47230aa7b0cb42b10e
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34644001"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45737209"
 ---
-# <a name="explore-saas-analytics-with-azure-sql-database-sql-data-warehouse-data-factory-and-power-bi"></a>Fedezze fel az Azure SQL Database, az SQL Data Warehouse, adat-előállító és a Power BI Szolgáltatottszoftver-elemzés
+# <a name="explore-saas-analytics-with-azure-sql-database-sql-data-warehouse-data-factory-and-power-bi"></a>Az Azure SQL Database, az SQL Data Warehouse, a Data Factory és a Power BI SaaS-analytics megismerése
 
-Ebben az oktatóanyagban akkor végezze el egy végpontok közötti analytics forgatókönyvet. A forgatókönyv bemutatja, hogyan analytics bérlői adatok is ellenőrizniük a szoftvergyártók intelligens vonatkozó döntések meghozatalában. Minden bérlő adatbázisból beolvasott adatok felhasználásával, segítségével analytics betekintést nyerhet bérlői viselkedése, beleértve a minta Wingtip jegyek SaaS-alkalmazás használatát. Ebben a forgatókönyvben a három lépést foglal magában: 
+Ebben az oktatóanyagban vezeti végig egy teljes körű elemzési forgatókönyvet is. A forgatókönyv bemutatja, hogyan bérlői adatok elemzési teheti hatékonyabbá a szoftvergyártók intelligens döntéseket hozhat. Minden bérlői adatbázis kinyert adatok segítségével, használhatja analytics betekintést bérlő viselkedése, beleértve azok a Wingtip Tickets SaaS-mintaalkalmazás használatát. Ebben a forgatókönyvben három lépésből áll: 
 
-1.  **Adatok kinyerése** tőlük adatbázis analytics tárolóba, ebben az esetben egy SQL Data Warehouse.
-2.  **A kibontott adatok optimalizálása** analytics feldolgozásra.
-3.  Használjon **üzleti intelligencia** kimenő hasznos insights, amelyek révén is ismerteti. megrajzolásához eszközök. 
+1.  **Adatok kinyerése** egyes bérlőkhöz adatbázis-analytics tárolójába, ebben az esetben egy SQL Data Warehouse.
+2.  **A kibontott adatok optimalizálása** analytics feldolgozás céljából.
+3.  Használat **üzleti intelligencia** rajzolja meg a döntéshozatalhoz is útmutató hasznos insights eszközök. 
 
 Ezen oktatóanyag segítségével megtanulhatja a következőket:
 
 > [!div class="checklist"]
-> - Hozza létre a bérlőt, elemzés betöltése tárolja.
-> - Ha adatokat szeretne kinyerni az egyes bérlői adatbázisok az analytics adatraktárba használja az Azure Data Factory (ADF).
-> - A kibontott adatok (csillag sémába átszervez) optimalizálásához.
-> - Az elemzés adatraktár lekérdezésére.
-> - Használja a Power BI az adatok vizuális jelölje ki a bérlői adatforgalom trendeket, és lehetővé teszi a javításai javaslat.
+> - Hozzon létre a bérlő analytics betöltése tárolni.
+> - Az Azure Data Factory (ADF) használatával az adatok kinyerése az egyes bérlői adatbázisok az analytics data warehouse-bA.
+> - Optimalizálhatja a kinyert adatok (reorganize csillagséma be).
+> - Az analytics data warehouse lekérdezéséhez.
+> - Használja a Power BI-adatvizualizáció javaslat javításai, és jelölje ki a bérlő adatainak trendeket.
 
 ![architectureOverView](media/saas-tenancy-tenant-analytics/adf_overview.png)
 
-## <a name="analytics-over-extracted-tenant-data"></a>Kibontott bérlői adatok elemzés
+## <a name="analytics-over-extracted-tenant-data"></a>Elemzési adatok kinyert bérlő
 
-SaaS-alkalmazásokhoz potenciálisan hatalmas mennyiségű bérlői adatok tárolásához a felhőben. Ezeket az adatokat a művelet észrevételeket gazdag forrását és az alkalmazás használatát és viselkedését a bérlők számára biztosít. Ezek insights szolgáltatás fejlesztési használhatóság fejlesztések és egyéb befektetések az alkalmazások és a platform is ismerteti.
+SaaS-alkalmazásokat a felhőben egy potenciálisan nagy mennyiségű bérlői tartsa. Ezeket az adatokat biztosít a művelet insights gazdag forrását és az alkalmazás használatának és a bérlők viselkedését. Ezen elemzési funkcióinak fejlesztését, használhatóságuk javítását és más befektetéseket az alkalmazások és a platform képes útmutató.
 
-Az adatok elérése az összes bérlőre vonatkozó használata egyszerű, amikor az adatok csak egy több-bérlős adatbázisban. De hozzáférés összetettebb, ha akár több ezer adatbázis léptékű pontjain. Egy összetettségét tame módja az analytics adatbázisba vagy egy lekérdezés adatraktár adatok kinyerése érdekében.
+Az adatokhoz hozzáférő összes bérlőre vonatkozó akkor egyszerű, ha minden adat egyetlen több bérlős adatbázisban. Hozzáférés azonban összetettebb, ha méretezve akár több ezer adatbázis között elosztva. Egy összetettsége eláraszt módja elemzési adatbázis vagy egy lekérdezés data warehouse az adatok kinyerése érdekében.
 
-Ez az oktatóanyag a Wingtip jegyek alkalmazás egy végpont analytics forgatókönyvet mutat. Első, [Azure Data Factory (ADF)](../data-factory/introduction.md) jegyek értékesítési és kapcsolódó Ha adatokat szeretne kinyerni az egyes bérlői adatbázisok a vezénylési eszköz szolgál. Ezek az adatok átmeneti tárolási táblákba analytics tárolóban be van töltve. Az analytics-tároló egy SQL-adatbázis vagy egy SQL Data Warehouse sikerült lennie. Ez az oktatóanyag használja [SQL Data Warehouse](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-overview-what-is) , az analytics tárolja.
+Ez az oktatóanyag a Wingtip Tickets alkalmazás egy teljes körű elemzési forgatókönyvet mutat be. Először [Azure Data Factory (ADF)](../data-factory/introduction.md) jegyek értékesítési és a kapcsolódó adatok kinyerése az egyes bérlői adatbázisok a vezénylési eszközt használja. Ezeket az adatokat analytics tárolóban előkészítési táblába tölti. Az analytics-tároló vagy egy SQL Database vagy az SQL Data Warehouse lehet. Ebben az oktatóanyagban [SQL Data Warehouse](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-overview-what-is) azokat az elemzéseket, tárolásához.
 
-Ezután a kibontott adatok át legyenek-e, és egy betöltött [csillag-séma](https://www.wikipedia.org/wiki/Star_schema) táblákat. A táblák egy központi ténytábla és a kapcsolódó dimenziótáblák foglalják magukban:
+Ezután a kibontott adatok átalakíthatók és egy betöltött [csillagséma-](https://www.wikipedia.org/wiki/Star_schema) táblákat. A táblák egy központi ténytáblát és a kapcsolódó dimenziótábla áll:
 
-- A csillag-séma a központi ténytábla jegy adatokat tartalmaz.
-- A dimenziótáblák helyszínek, események, az ügyfelek adatait tartalmazza, és dátumokat vásároljon.
+- A központi ténytáblájából a csillagséma-jegy adatokat tartalmaz.
+- A dimenziótáblák adatainak helyszínek, események, a vásárlók tartalmaz, és a dátumok vásárolhat.
 
-Együtt a központi és táblák engedélyezése hatékony analitikai dimenziófeldolgozás. Ebben az oktatóanyagban használt csillag-séma a következő kép jelenik meg:
+Együtt a közép- és táblák engedélyezése hatékony elemzési dimenziófeldolgozás. A jelen oktatóanyagban használt csillagséma jelenik meg a következő képen:
  
 ![architectureOverView](media/saas-tenancy-tenant-analytics/starschematables.JPG)
 
-Végezetül a csillag-séma táblák megkérdezi a. Lekérdezés eredményei jelennek meg vizuálisan jelölje ki a bérlő viselkedést és az alkalmazás használatát a Power BI használatával. A csillag-sémát teszi közzé lekérdezések futtatása:
+A csillagséma-táblákat, a rendszer megkérdezi. Lekérdezési eredmények jelennek meg vizuálisan jelölje ki a bérlő viselkedése és használata során az alkalmazás elemzések a Power BI használatával. A csillagséma az elérhetővé lekérdezések futtatása:
 
-- Ki van vásárlás jegyek és mely helyszínére.
-- Mintákat és trendeket a jegyektől értékesítése.
-- Az egyes helyszínekkel relatív népszerűségét.
+- Akik van vásárlása jegyek és melyik helyszín.
+- Minták és trendek felismerése, a jegyek értékesítésére.
+- Minden egyes helyszín relatív népszerűsége.
 
-Ez az oktatóanyag példákat alapvető insights, amely a Wingtip jegyek adatokból adatokat is. Az ismertetése, hogyan használja az egyes helyszínekkel a szolgáltatást, előfordulhat, hogy a Wingtip jegyek szállító gondolniuk irányuló több vagy kevesebb aktív helyszínek, például különböző service-csomagokról. 
+Ebben az oktatóanyagban példákat alapszintű, amelyek segítségével adatokat a Wingtip Tickets adatokból. Ismertetése, hogyan minden egyes helyszín szolgáltatását használja, előfordulhat, hogy a Wingtip Tickets szállító kell vennie, például több vagy kevesebb aktív helyszínek megcélzó különböző szolgáltatáscsomaggal. 
 
 ## <a name="setup"></a>Beállítás
 
 ### <a name="prerequisites"></a>Előfeltételek
 
 > [!NOTE]
-> Ez az oktatóanyag az Azure Data Factory, amelyek jelenleg egy korlátozott előzetes (társított szolgáltatás (egyszerű) paraméterezéssel) funkcióit használja. Ha ez az oktatóanyag elvégzéséhez, adja meg az előfizetés-Azonosítóval [Itt](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxrVywox1_tHk9wgd5P8SVJUNlFINjNEOElTVFdMUEREMjVVUlJCUDdIRyQlQCN0PWcu). Kapni fog egy megerősítő üzenet, amint az előfizetés engedélyezve van.
+> Ez az oktatóanyag az Azure Data Factory jelenleg korlátozott előzetes verzió (társított szolgáltatás paraméterezés) funkcióit használja. Ha szeretné elvégezni ezt az oktatóanyagot, adja meg az előfizetés-azonosító [Itt](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxrVywox1_tHk9wgd5P8SVJUNlFINjNEOElTVFdMUEREMjVVUlJCUDdIRyQlQCN0PWcu). Küldünk egy megerősítő, amint az előfizetés engedélyezve van.
 
 Az oktatóanyag teljesítéséhez meg kell felelnie az alábbi előfeltételeknek:
-- A Wingtip jegyek SaaS adatbázis / bérlői alkalmazás központi telepítése. Kevesebb mint öt perc alatt telepítéséhez lásd: [központi telepítése és vizsgálja meg a Wingtip SaaS-alkalmazás](saas-dbpertenant-get-started-deploy.md).
-- A Wingtip jegyek SaaS adatbázis / bérlői parancsfájlok és az alkalmazás [forráskód](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant/) letöltődnek a Githubról. Lásd: Töltse le az utasításokat. Ügyeljen arra, hogy *feloldása a zip-fájl* tartalmának kibontása előtt.
+- A Wingtip Tickets SaaS adatbázis Per bérlői alkalmazás van telepítve. Kevesebb mint öt perc alatt üzembe helyezéséhez lásd: [üzembe helyezése és megismerése a Wingtip SaaS-alkalmazás](saas-dbpertenant-get-started-deploy.md).
+- A Wingtip Tickets SaaS adatbázis Per bérlői parancsfájlok és az alkalmazás [forráskódját](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant/) letöltődnek a Githubról. Lásd: Töltse le az utasításokat. Ügyeljen arra, hogy *feloldása a zip-fájl* tartalmának beolvasása előtt.
 - A Power BI Desktop telepítve van. [A Power BI Desktop letöltése](https://powerbi.microsoft.com/downloads/).
-- A köteg további bérlő van kiépítve, tekintse meg a [ **rendelkezés bérlők oktatóanyag**](saas-dbpertenant-provision-and-catalog.md).
+- További bérlők kötegét kiépítését, tekintse meg a [ **kiépítése katalogizálása oktatóanyag**](saas-dbpertenant-provision-and-catalog.md).
 
-### <a name="create-data-for-the-demo"></a>A bemutató-adatok létrehozása
+### <a name="create-data-for-the-demo"></a>A bemutató adatok létrehozása
 
-Ez az oktatóanyag analytics felderíti a jegy értékesítési adatok. Ebben a lépésben a bérlőknek hozhat létre jegy adatokat. Ezek az adatok elemzéséhez egy későbbi lépésben ki kell olvasni. _Győződjön meg arról, a bérlő kötegelt létesített_ (leírtak korábban), hogy kevés az adat teszi közzé a különböző számos jegyet beszerzési kombinációját.
+Ez az oktatóanyag bemutatja a analytics jegy értékesítési adatok. Ebben a lépésben a bérlőknek hozhat létre jegyet adatokat. Egy későbbi lépésben az adatok elemzéshez ki kell olvasni. _Győződjön meg arról, a bérlők kötegelt kiépítése_ (leírt módon korábban), hogy elég adat elérhetővé különböző számos jegyet vásárlási mintákat.
 
-1. Nyissa meg a PowerShell ISE *...\Learning Modules\Operational Analytics\Tenant Analytics DW\Demo-TenantAnalyticsDW.ps1*, és a következő értéket:
-    - **$DemoScenario** = **1** beszerzési jegyek összes helyszínek, események
-2. Nyomja le az **F5** futtassa a parancsfájlt, és hozzon létre jegy megvásárlásáról a helyszínek előzményeit. A 20 bérlőkkel a parancsfájl hoz létre a jegyektől tízezreit, és 10 percig vagy tovább eltarthat.
+1. A PowerShell ISE-ben nyissa meg a *...\Learning Modules\Operational Analytics\Tenant Analytics DW\Demo-TenantAnalyticsDW.ps1*, és állítsa be a következő értéket:
+    - **$DemoScenario** = **1** jegyek beszerzése minden helyszínen
+2. Nyomja meg **F5** futtassa a szkriptet, és hozzon létre a jegyvásárlások naplóját a beszerzése minden helyszínen. Minden 20-bérlőre, az a parancsfájl tickets tízezer állít elő, és akár 10 percet is igénybe vehet.
 
-### <a name="deploy-sql-data-warehouse-data-factory-and-blob-storage"></a>Központi telepítése az SQL Data Warehouse, adat-előállítót, és a Blob-tároló 
-A Wingtip jegyek alkalmazásban a bérlők tranzakciós adatok sok adatbázis van elosztva. Az Azure Data Factory (ADF) segítségével levezényelni a kinyerési, betöltés és átalakítás (ELT) az adatok az adatraktárba. Adatok betöltése az SQL Data Warehouse leghatékonyabban, ADF adatok kibontása köztes blob-fájlok, és ezután [PolyBase](https://docs.microsoft.com/azure/sql-data-warehouse/design-elt-data-loading) az adatok betöltése az adatraktárba.   
+### <a name="deploy-sql-data-warehouse-data-factory-and-blob-storage"></a>Az SQL Data Warehouse, adat-előállító üzembe helyezése és a Blob Storage-ban 
+A Wingtip Tickets alkalmazás tranzakciós adatokat a bérlők számára sok adatbázis van elosztva. Az Azure Data Factory (ADF) segítségével előkészíthető a kinyerési, betöltési és átalakítási (ELT), ezeket az adatokat a data warehouse-bA. Adatok betöltése az SQL Data Warehouse leghatékonyabban, az ADF köztes blob fájlokba kinyeri az adatokat, majd [PolyBase](https://docs.microsoft.com/azure/sql-data-warehouse/design-elt-data-loading) az adatok betöltésére az adattárházba.   
 
-Ebben a lépésben az oktatóanyagban használt további erőforrások telepítése: egy SQL Data Warehouse nevű _tenantanalytics_, az Azure Data Factory nevű _dbtodwload -\<felhasználói\>_  , és az Azure-tárfiók hívása _wingtipstaging\<felhasználói\>_. A storage-fiók segítségével átmeneti tárolására kibontott adatfájlok blobként, mielőtt betöltve az adatraktárba. Ez a lépés is telepíti az adatraktár sémájának és az ADF folyamatok, amelyek levezényelni a ELT folyamat meghatározása.
-1. Nyissa meg a PowerShell ISE *...\Learning Modules\Operational Analytics\Tenant Analytics DW\Demo-TenantAnalyticsDW.ps1* és állítsa be:
-    - **$DemoScenario** = **2** bérlői analytics data warehouse-ba, a blob storage és adat-előállító központi telepítése 
-1. Nyomja le az **F5** a bemutató-parancsfájl futtatása, és az Azure-erőforrások telepítése. 
+Ebben a lépésben üzembe helyezi a további erőforrások, a jelen oktatóanyagban használt: egy SQL Data Warehouse nevű _tenantanalytics_, egy Azure Data Factory nevű _dbtodwload -\<felhasználói\>_  , és a egy Azure storage-fiók _wingtipstaging\<felhasználói\>_. A storage-fiók segítségével kinyert adatok fájlok átmeneti tárolására blobként előtt be töltve a data warehouse-bA. Ez a lépés is üzembe helyezi az adatraktár sémájának és koordinálhatja az ELT folyamatok ADF folyamatok meghatározása.
+1. A PowerShell ISE-ben nyissa meg a *...\Learning Modules\Operational Analytics\Tenant Analytics DW\Demo-TenantAnalyticsDW.ps1* és állítsa be:
+    - **$DemoScenario** = **2** bérlői analitikai adattárház, a blob storage és az adat-előállító üzembe helyezése 
+1. Nyomja meg **F5** a bemutató-parancsfájl futtatásához, és az Azure-erőforrások üzembe helyezése. 
 
 Most, tekintse át a telepített Azure-erőforrások:
-#### <a name="tenant-databases-and-analytics-store"></a>Bérlői adatbázisok és az elemzések tároló
-Használjon [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) való kapcsolódáshoz **tenants1-dpt -&lt;felhasználói&gt;**  és **katalógus-dpt -&lt;felhasználói&gt;**  kiszolgálók. Cserélje le &lt;felhasználói&gt; az alkalmazás telepítésekor használt értékkel. Használja a bejelentkezési = *fejlesztői* és a jelszó = *P@ssword1*. Tekintse meg a [bevezető oktatóanyag](saas-dbpertenant-wingtip-app-overview.md) további útmutatást.
+#### <a name="tenant-databases-and-analytics-store"></a>Bérlői adatbázisok és az analytics-tároló
+Használat [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) való csatlakozáshoz **tenants1-dpt -&lt;felhasználói&gt;**  és **katalógus-dpt -&lt;felhasználói&gt;**  kiszolgálók. Cserélje le &lt;felhasználói&gt; az alkalmazás üzembe helyezésekor használt értékkel. -Bejelentkezés használatához = *fejlesztői* és a jelszó = *P@ssword1*. Tekintse meg a [bevezető oktatóanyag](saas-dbpertenant-wingtip-app-overview.md) további útmutatást.
 
-![SQL Database-kiszolgálóhoz csatlakozni a szolgáltatáshoz az SSMS](media/saas-tenancy-tenant-analytics/ssmsSignIn.JPG)
+![Csatlakozás SQL Database-kiszolgáló a ssms használatával](media/saas-tenancy-tenant-analytics/ssmsSignIn.JPG)
 
 Az Object Explorer:
 
 1. Bontsa ki a *tenants1-dpt -&lt;felhasználói&gt;*  kiszolgáló.
 1. Bontsa ki az adatbázisok csomópontot, és a bérlői adatbázisok listájának megtekintéséhez.
 1. Bontsa ki a *katalógus-dpt -&lt;felhasználói&gt;*  kiszolgáló.
-1. Győződjön meg arról, hogy megjelenik-e a analytics tárolja, amely tartalmazza a következő objektumok:
-    1. Táblák **raw_Tickets**, **raw_Customers**, **raw_Events** és **raw_Venues** a tenant adatbázisból származó nyers kinyert adat tárolására.
-    1. A csillag-séma táblák **fact_Tickets**, **dim_Customers**, **dim_Venues**, **dim_Events**, és **dim_Dates** .
-    1. A tárolt eljárás **sp_transformExtractedData** átalakíthatja az adatokat, és töltse be a csillag-séma táblákba szolgál.
+1. Győződjön meg arról, hogy megjelenik-e a elemzési tárolja, amely tartalmazza a következő objektumok:
+    1. Táblák **raw_Tickets**, **raw_Customers**, **raw_Events** és **raw_Venues** a bérlői adatbázisok származó nyers kinyert adatok tárolásához.
+    1. A csillagséma-táblák **fact_Tickets**, **dim_Customers**, **dim_Venues**, **dim_Events**, és **dim_Dates** .
+    1. A tárolt eljárás **sp_transformExtractedData** átalakítja az adatokat, és töltse be a csillagséma-táblákat.
 
 ![DWtables](media/saas-tenancy-tenant-analytics/DWtables.JPG)
 
 #### <a name="blob-storage"></a>Blob Storage
-1. Az a [Azure Portal](https://ms.portal.azure.com), keresse meg az erőforráscsoport, amelyet az alkalmazás telepítéséhez használt. Győződjön meg arról, hogy a tárfiók neve **wingtipstaging\<felhasználói\>**  hozzá lett adva.
+1. Az a [az Azure Portal](https://ms.portal.azure.com), keresse meg az erőforráscsoportot, amelyet az alkalmazás üzembe helyezéséhez használt. Győződjön meg arról, hogy a tárfiók neve **wingtipstaging\<felhasználói\>**  hozzá lett adva.
 
   ![DWtables](media/saas-tenancy-tenant-analytics/adf-staging-storage.PNG)
 
-1. Kattintson a **wingtipstaging\<felhasználói\>**  található objektumok megismerkedhet a tárfiókot.
-1. Kattintson a **Blobok** csempéje
+1. Kattintson a **wingtipstaging\<felhasználói\>**  tárfiókban található objektumok megismerése.
+1. Kattintson a **Blobok** csempe
 1. Kattintson a tároló **configfile**
-1. Ellenőrizze, hogy **configfile** nevezett JSON-fájlt tartalmaz **TableConfig.json**. Ez a fájl tartalmazza a forrás és cél táblanevek, az oszlopneveket és a követő oszlop neve.
+1. Ellenőrizze, hogy **configfile** nevű JSON-fájlt tartalmaz **TableConfig.json**. Ez a fájl tartalmazza a forrás és cél táblanevek, az oszlopnevek és tracker oszlop neve.
 
 #### <a name="azure-data-factory-adf"></a>Az Azure Data Factory (ADF)
-Az a [Azure Portal](https://ms.portal.azure.com) az erőforráscsoportban, győződjön meg arról, hogy az Azure Data Factory neve _dbtodwload -\<felhasználói\>_  hozzá lett adva. 
+Az a [az Azure Portal](https://ms.portal.azure.com) az erőforráscsoportban, győződjön meg arról, hogy az Azure Data Factory neve _dbtodwload -\<felhasználói\>_  hozzá lett adva. 
 
  ![adf_portal](media/saas-tenancy-tenant-analytics/adf-data-factory-portal.png)
 
-Ez a szakasz ismerteti az adat-előállító létrehozása. Hajtsa végre az adat-előállítóban indítsa el az alábbi lépéseket:
+Ez a szakasz ismerteti az adat-előállító létrehozása. Indítsa el a data factory az alábbi lépésekkel:
 1. A portálon kattintson a data factory nevű **dbtodwload -\<felhasználói\>**.
-2. Kattintson a **Szerző & figyelő** csempére indítsa el a Data Factory-Tervező egy külön lapján. 
+2. Kattintson a **létrehozás és Monitorozás** csempére kattintva indítsa el a Data Factory-Tervező egy új lapon. 
 
-## <a name="extract-load-and-transform-data"></a>Extract, Load, és az adatok átalakítása
-Az Azure Data Factory koordinálása a kinyerés, betöltés és adatok átalakítása szolgál. Ebben az oktatóanyagban adatok kinyerése négy különböző SQL nézeteket a bérlő-adatbázisok mindegyike esetében: **rawTickets**, **rawCustomers**, **rawEvents**, és  **rawVenues**. Ezek a nézetek helyszínére azonosítója, tartalmazza, így a is különbséget tenni az adatraktár egyes helyszínekkel adatait. Az adatok betöltése az adatraktár megfelelő átmeneti tárolási táblákba: **raw_Tickets**, **raw_customers**, **raw_Events** és **raw_Venue**. A tárolt eljárás majd átalakítja a nyers adatok tölti fel a csillag-séma táblák: **fact_Tickets**, **dim_Customers**, **dim_Venues**, **dim_Events** , és **dim_Dates**.
+## <a name="extract-load-and-transform-data"></a>Kinyerési, betöltési, és az adatok átalakítása
+Az Azure Data Factory a kinyerés, betöltés és adatok átalakítása vezénylésre szolgál. Ebben az oktatóanyagban az adatok kinyerése négy különböző SQL-nézetek az egyes bérlői adatbázisok: **rawTickets**, **rawCustomers**, **rawEvents**, és  **rawVenues**. Ezek a nézetek helyszín azonosítója, tartalmazza, így a, is minden egyes helyszín az adatraktárban adatokat különbséget. Az adatok betöltése az adatraktárban lévő adatok megfelelő átmeneti tárolási táblákba: **raw_Tickets**, **raw_customers**, **raw_Events** és **raw_Venue**. Tárolt eljárás majd alakítja át a nyers adatokat, és feltölti a csillagséma-táblák: **fact_Tickets**, **dim_Customers**, **dim_Venues**, **dim_Events** , és **dim_Dates**.
 
-Az előző szakaszban telepíti, és a szükséges Azure-erőforrások, például a data factory inicializálva. Telepített adat-előállító tartalmazza, a folyamatok, a adatkészleteket, a társított szolgáltatások, a stb., bontsa ki, betölteni, és a bérlői adatok átalakítása szükséges. Megismeréséhez vizsgálja a további objektumokat, és a eseményindító a tenant adatbázisból származó adatok áthelyezése az adatraktár-feldolgozási folyamat.
+Az előző szakaszban üzembe helyezett, és a szükséges Azure-erőforrást, beleértve az adat-előállító inicializálni. Az üzembe helyezett adat-előállító folyamatok, a társított szolgáltatások, adatkészletek stb kinyerése, betöltése és a bérlői adatok átalakításához szükséges tartalmazza. Vizsgáljuk meg ezeket további objektumokat, és a bérlői adatbázisok adatok áthelyezése a data warehouse-bA a folyamatot az eseményindító.
 
-### <a name="data-factory-pipeline-overview"></a>Az adatok gyári folyamat áttekintése
-Ez a szakasz ismerteti az adat-előállító létrehozott objektumokat. Az alábbi ábra az ADF-feldolgozási folyamat ebben az oktatóanyagban használt a teljes munkafolyamatot ismerteti. Ha a folyamat későbbi vizsgálatát, és az eredmények megtekintéséhez először szeretne használni, ugorjon a következő szakaszban **indul el, futtassa a csővezeték**.
+### <a name="data-factory-pipeline-overview"></a>Data factory-folyamat áttekintése
+Ez a szakasz ismerteti az adat-előállítóban létrehozott objektumok. Az alábbi ábra a teljes munkafolyamatba, a jelen oktatóanyagban használt ADF-folyamatot ismerteti. Ha inkább a folyamat későbbi vizsgálata, és először megjelenítjük az eredményeket, ugorjon a következő szakaszra **a folyamat futásának aktiválásához**.
 
 ![adf_overview](media/saas-tenancy-tenant-analytics/adf-data-factory.PNG)
 
-Az Áttekintés lap váltani **Szerző** fülre, a bal oldali panelen, és figyelje meg, hogy nincsenek három [folyamatok](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities) és három [adatkészletek](https://docs.microsoft.com/azure/data-factory/concepts-datasets-linked-services) létrehozott.
+Az Áttekintés lapon váltson **Szerző** lapra a bal oldali panelen, és figyelje meg, hogy háromféle [folyamatok](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities) és három [adatkészletek](https://docs.microsoft.com/azure/data-factory/concepts-datasets-linked-services) létrehozott.
 ![adf_author](media/saas-tenancy-tenant-analytics/adf_author_tab.JPG)
 
 A három beágyazott folyamatok vannak: SQLDBToDW DBCopy és TableCopy.
 
-**Adatcsatorna 1 - SQLDBToDW** keres a katalógus adatbázisban tárolt bérlői adatbázisok neveit (táblanév: [__ShardManagement]. [ ShardsGlobal]) és az egyes bérlői adatbázisok végrehajtja a **DBCopy** folyamat. Létrehozása után a megadott **sp_TransformExtractedData** tárolt eljárás séma, végrehajtja a rendszer. Ez a tárolt eljárás átalakítja az átmeneti tárolási táblázatokban betöltött adatokról, és feltölti a csillag-séma táblák.
+**1 – SQLDBToDW folyamat** kikeresi a bérlői adatbázisokat, a katalógus-adatbázisban tárolt nevét (táblanév: [__ShardManagement]. [ ShardsGlobal]), és minden bérlői adatbázis végrehajtja a **DBCopy** folyamat. A művelet befejezését követően a megadott **sp_TransformExtractedData** tárolt eljárás séma, hajtja végre. Ez a tárolt eljárás alakítja át a betöltött adatokra az átmeneti tárolási táblázatokban, és feltölti a csillagséma-táblákat.
 
-**Feldolgozási sor 2 - DBCopy** keresi a táblák és az oszlopok nevét a blob storage-ban tárolt konfigurációs fájlból.  A **TableCopy** folyamat futtatja az négy a táblákat: TicketFacts, CustomerFacts, EventFacts és VenueFacts. A **[Foreach](https://docs.microsoft.com/azure/data-factory/control-flow-for-each-activity)** tevékenység 20 adatbázisok párhuzamos végrehajtása. ADF lehetővé teszi, hogy legfeljebb 20 hurok a közelítés a párhuzamosan futtatható. Érdemes lehet további adatbázisok több folyamatok létrehozni.    
+**2 – DBCopy folyamat** megkeresi a forrás-táblák és oszlopok nevei a blob storage-ban tárolt konfigurációs fájlból.  A **TableCopy** mind a négy tábla majd futtassa a folyamatot: TicketFacts, CustomerFacts, EventFacts és VenueFacts. A **[Foreach](https://docs.microsoft.com/azure/data-factory/control-flow-for-each-activity)** tevékenység végrehajtása párhuzamosan történik mind a 20 adatbázisra vonatkozó. Az ADF lehetővé teszi, hogy egy legfeljebb 20 ciklus ismétléseinek párhuzamosan futtatni. Érdemes lehet további adatbázisok több folyamatot létrehozni.    
 
-**Feldolgozási sor 3 - TableCopy** egy sor verziószámok által használt SQL-adatbázis (_rowversion_) megváltozott, vagy frissített sorok azonosításához. Ez a tevékenység a kezdő és záró sor verzióját sorok beolvasása a forrástáblákból a keres. A **CopyTracker** minden bérlő adatbázisban tárolt tábla minden egyes futtatása forrástábla kinyert utolsó sorának követi nyomon. Új vagy módosított sorokat a rendszer a megfelelő átmeneti tárolási táblák az adatraktár másolja: **raw_Tickets**, **raw_Customers**, **raw_Venues**, és **raw_ Események**. Végül az utolsó sort verzió menti a **CopyTracker** tábla a következő kiolvasásához kezdeti sor verzióval használható. 
+**3 – TableCopy folyamat** használ sorszintű verziószámok SQL Database-ben (_rowversion_) megváltozott, vagy frissített sorainak azonosításához. A kezdő és a teljes sor verziójú a sorok beolvasása a forrástáblákból a megkeresi ezt a tevékenységet. A **CopyTracker** tábla összes bérlői adatbázisban tárolt nyomon követi az egyes forrás tábla minden egyes Futtatás kinyert utolsó sora. Új vagy módosított sorok másolja az adatraktárban lévő adatok megfelelő előkészítési táblák: **raw_Tickets**, **raw_Customers**, **raw_Venues**, és **raw_ Események**. Végül az utolsó sort verzióját a rendszer menti a **CopyTracker** tábla a következő kivonás kezdeti sor verzióval használható. 
 
-A forrás-SQL-adatbázisok adat-előállító hivatkozást, a cél az SQL Data Warehouse és a köztes Blob-tároló, nincsenek is három paraméteres társított szolgáltatások. Az a **Szerző** lapra, majd a **kapcsolatok** alapján megismerheti a társított szolgáltatások, a következő ábrán látható módon:
+Hivatkozás az adat-előállító, a forrás SQL-adatbázisok, a cél SQL Data Warehouse és a köztes Blob storage, nincsenek is három paraméteres társított szolgáltatást. Az a **Szerző** fülre, kattintson a **kapcsolatok** fedezheti fel a társított szolgáltatások, az alábbi képen látható módon:
 
 ![adf_linkedservices](media/saas-tenancy-tenant-analytics/linkedservices.JPG)
 
-A három társított szolgáltatások megfelelő, az adatokat, használja a feldolgozási sor tevékenység bemeneti vagy kimeneti hivatkozó három adatkészletek vannak. Fedezze fel az adatkészletek és figyelje meg a kapcsolatokat és a használt paraméterek mindegyikét. _AzureBlob_ a forrás és cél táblák és oszlopok, valamint az egyes követő oszlop tartalmazó konfigurációs fájlt mutat.
+A három társított szolgáltatások megfelelő, tekintse meg az adatokat, használja a folyamat tevékenységek bemeneti vagy kimeneti adatkészletek három vannak. Fedezze fel az egyes kapcsolatok és a használt paraméterek megfigyelése az adatkészletek. _Azure BLOB_ a forrás- és táblákat és oszlopokat, valamint a tracker oszlopban adatvédelmiszint tartalmazó konfigurációs fájlt mutat.
   
-### <a name="data-warehouse-pattern-overview"></a>Az adatraktár mintát áttekintése
-Az SQL Data Warehouse összesítési végre a bérlői adatforgalom az analytics tárolóként szolgál. Ez a példa a PolyBase segítségével adatok betöltése az SQL Data warehouse-bA. Nyers adatok azon sorait, amelyek a csillag-séma táblákba átalakítása nyomon követéséhez azonosító oszlopot átmeneti tárolási táblákba be van töltve. A következő kép bemutatja a betöltés mintát: ![loadingpattern](media/saas-tenancy-tenant-analytics/loadingpattern.JPG)
+### <a name="data-warehouse-pattern-overview"></a>Az adatraktár-minta áttekintése
+Az SQL Data Warehouse segítségével az analytics tárolóként végez összesítést a bérlői adatok. Ebben a példában a PolyBase segítségével adatok betöltése az SQL Data warehouse-bA. Nyers adatok betöltése, amelyek egy identitásoszlop sorokat, amelyek a csillagséma-táblákba átalakítása nyomon követheti, hogy átmeneti tárolási táblákba. Az alábbi képen látható a betöltés minta: ![loadingpattern](media/saas-tenancy-tenant-analytics/loadingpattern.JPG)
 
-Ebben a példában lassan dimenzió módosításával (SCD) típusú 1 dimenziótáblák használhatók. Minden dimenzió egy helyettesítő kulcs van definiálva az azonosító oszlop használatával. Ajánlott eljárásként a dátum dimenzió tábla előre megadott időmegtakarítás. A másik dimenzió táblák a létrehozás, válassza ki táblázat... (CTAS) utasítást használja a meglévő módosított, és nem módosított sorok, a helyettesítő kulcsokkal együtt tartalmazó ideiglenes tábla létrehozásához. Ez a lépés IDENTITY_INSERT = ON. Új sorok majd szúrja be a táblába való IDENTITY_INSERT = off BEÁLLÍTÁST. Az egyszerű visszaállítási a meglévő dimenzió tábla neve, és az ideiglenes tábla neve legyen, az új dimenziótáblában. Minden egyes futtatása előtt a rendszer törli a régi dimenziótáblában.
+Ebben a példában lassan módosítása dimenzió (. SCD) típusú 1 dimenziótáblák használhatók. Minden egyes dimenziónak van egy identitásoszlop segítségével meghatározott helyettes kulcs. Ajánlott eljárásként a dátum dimenzió tábla előre összeállított időt takaríthat meg. A többi dimenziótábla, a CREATE TABLE a SELECT... (CTAS) utasítás segítségével hozzon létre egy ideiglenes táblát tartalmazó a meglévő módosított, és nem módosított sorok együtt a helyettes kulcs. Ez a lépés IDENTITY_INSERT = ON. Új sorok majd beszúrja a táblázat az IDENTITY_INSERT = off BEÁLLÍTÁST. A meglévő dimenzió-tábla neve egyszerűen alkalmazásfrissítéseket, és az ideiglenes tábla neve lesz az új táblát. Mindegyik futtatás előtt a régi dimenziótábla törlődik.
 
-A ténytábla előtt dimenziótáblák töltődnek be. Ez az alkalmazás-előkészítés biztosítja, hogy minden érkező tény minden hivatkozott dimenziók már létezik. A tények be vannak töltve, a rendszer megkeres minden megfelelő dimenzió üzleti kulcsa és a megfelelő helyettesítő kulcsok minden egyes tény hozzáadódnak.
+A ténytábla előtt dimenziótáblák töltődnek be. Ez az alkalmazás-előkészítés biztosítja, hogy az egyes beérkező egyedkapcsolat minden hivatkozott dimenziók már létezik. Ahogy a tények töltődnek be, a kapcsolódó dimenzióknál üzleti kulcs egyezik, és az egyes (tény) hozzáadja a hozzá tartozó helyettes kulcs.
 
-Az utolsó lépést az átalakítás készen áll a feldolgozási folyamat következő végrehajtásának átmeneti adatokat törli.
+Az utolsó lépés az átalakítás készen áll a folyamat a következő végrehajtásra az átmeneti adatok törlése.
    
-### <a name="trigger-the-pipeline-run"></a>A Futtatás futószalag indítás
-Kövesse az alábbi lépéseket a futtassa az összes kibontása, betöltés és átalakítás a következő feldolgozási sorban az összes bérlői adatbázisról:
-1. Az a **Szerző** az ADF felhasználói felületén kattintson a lap **SQLDBToDW** folyamat a bal oldali ablaktáblán.
-1. Kattintson a **eseményindító** pedig a lekért menüre kattintson **eseményindító most**. Ez a művelet azonnal futtatja a folyamatot. Éles forgatókönyv esetében a folyamat az adatfrissítési ütemezés szerint fut ütemtervét határozzák meg.
+### <a name="trigger-the-pipeline-run"></a>A folyamatfuttatás aktiválása
+Kövesse a teljes futtassa az alábbi lépések csomagolja ki, betöltési és átalakítási folyamat az összes bérlői adatbázist:
+1. Az a **Szerző** az ADF felhasználói felületén kattintson a lap **SQLDBToDW** folyamatot a bal oldali ablaktáblán.
+1. Kattintson a **eseményindító** és onnan a lekért kattintson a menüre **Aktiválás most**. Ez a művelet azonnal futtatja a folyamatot. Egy éles forgatókönyvet szeretné határoz meg egy ütemterv futtatja a folyamatot az adatok ütemezett frissítésére.
   ![adf_trigger](media/saas-tenancy-tenant-analytics/adf_trigger.JPG)
-1. A **folyamat futtatása** kattintson **Befejezés**.
+1. A **Folyamatfuttatás** kattintson **Befejezés**.
  
 ### <a name="monitor-the-pipeline-run"></a>A folyamat futásának monitorozása
-1. Váltás az ADF felhasználói felületén, a **figyelő** lapon a bal oldali menüből.
-1. Kattintson a **frissítése** amíg SQLDBToDW folyamat állapota **sikeres**.
+1. ADF-felhasználói felületén váltson a **figyelő** fülre a bal oldali menüben.
+1. Kattintson a **frissítése** mindaddig, amíg SQLDBToDW folyamat állapota **sikeres**.
   ![adf_monitoring](media/saas-tenancy-tenant-analytics/adf_monitoring.JPG)
-1. A data warehouse szolgáltatáshoz az SSMS csatlakozhat, és győződjön meg arról, hogy ezek a táblázatok adatok lett betöltve a csillag-séma táblázatokat lekérdezése.
+1. Csatlakozás az adattárházhoz az ssms-ben, és győződjön meg arról, hogy ezek a táblák adatait lett betöltve a csillagséma-táblák lekérdezése.
 
-A folyamat befejezése után a ténytábla összes helyszínek jegy értékesítési adatokat tároló és a dimenziótáblák a rendszer feltölti a megfelelő helyszínek, eseményeket és ügyfelek.
+A folyamat befejezése után a ténytábla jegyek beszerzése minden helyszínen értékesítési adatait tartalmazza, és a dimenziótáblák fel van töltve a megfelelő helyszínek, események és ügyfelek.
 
 ## <a name="data-exploration"></a>Az adatok feltárása
 
 ### <a name="visualize-tenant-data"></a>Bérlői adatok megjelenítése
 
-A csillag-sémában található adatok összes a jegy értékesítési adatokat biztosít a elemzése szükséges. Megjeleníteni az adatokat grafikusan megkönnyíti nagy adatkészletek trendeket megjelenítéséhez. Ebben a szakaszban használhatja **Power BI** módosíthatók, és az adatraktár bérlői adatok megjelenítéséhez.
+A csillagséma-lévő adatokat biztosít minden a jegy értékesítési adatokat az elemzéshez szükséges. Vizualizációja grafikusan megkönnyíti a nagy méretű adatkészleteket trendeket megtekintéséhez. Ebben a szakaszban használhatja **Power BI** feldolgozására, és a bérlői adatok az adattárház megjelenítése.
 
-A Power bi-ba, és importálhatja a korábban létrehozott nézeteket, tegye a következőket:
+Csatlakozás a Power bi-ba, illetve importálhatja a korábban létrehozott nézetek, kövesse az alábbi lépéseket:
 
 1. Indítsa el a Power BI desktopban.
-2. Válassza ki az otthoni szalagon **adatok beolvasása**, és válassza ki **több...** a menüből.
-3. Az a **adatok beolvasása** ablakban válassza ki **Azure SQL Database**.
-4. Az adatbázis-bejelentkezési ablakban adja meg a kiszolgálónév (**katalógus-dpt -&lt;felhasználói&gt;. database.windows.net**). Válassza ki **importálási** a **adatok csatlakozási mód**, és kattintson a **OK**. 
+2. A kezdőlap menüszalagon válassza **adatok lekérése**, és válassza ki **több...** a menüből.
+3. Az a **adatok lekérése** ablakban válassza **Azure SQL Database**.
+4. Az adatbázis bejelentkezési ablakban írja be a kiszolgáló nevét (**katalógus-dpt -&lt;felhasználói&gt;. database.windows.net**). Válassza ki **importálás** a **adatkapcsolati mód**, és kattintson a **OK**. 
 
-    ![bejelentkezési-az-a-power-bi-ban](./media/saas-tenancy-tenant-analytics/powerBISignIn.PNG)
+    ![bejelentkezési-az-a-power-bi](./media/saas-tenancy-tenant-analytics/powerBISignIn.PNG)
 
-5. Válassza ki **adatbázis** a bal oldali ablaktáblán, majd adjon meg felhasználónevet = *fejlesztői*, és írja be a jelszó = *P@ssword1*. Kattintson a **Connect** (Csatlakozás) gombra.  
+5. Válassza ki **adatbázis** a bal oldali panelen, majd adjon meg felhasználónevet = *fejlesztői*, és adja meg a jelszó = *P@ssword1*. Kattintson a **Connect** (Csatlakozás) gombra.  
 
-    ![adatbázis-bejelentkezés](./media/saas-tenancy-tenant-analytics/databaseSignIn.PNG)
+    ![adatbázis-be](./media/saas-tenancy-tenant-analytics/databaseSignIn.PNG)
 
-6. Az a **Navigator** analytics adatbázis ablaktábla, válassza ki a csillag-séma táblákat: **fact_Tickets**, **dim_Events**, **dim_Venues**, **dim_Customers** és **dim_Dates**. Válassza ki **terhelés**. 
+6. Az a **kezelő** az analitikai adatbázis oldali ablaktábla, válassza ki a csillagséma-táblákat: **fact_Tickets**, **dim_Events**, **dim_Venues**, **dim_Customers** és **dim_Dates**. Válassza ki **terhelés**. 
 
-Gratulálunk! Sikeresen betöltötte az adatokat a Power bi-bA. Most megismerkedhet az érdekes képi megjelenítéseket betekintést nyerhet a bérlők számára. Bemutatjuk, hogyan analytics biztosíthat a Wingtip jegyek üzleti csoport adatvezérelt ajánlásokat tartalmaz keresztül. A javaslatok segítségével az üzleti modell és a felhasználói élmény optimalizálása érdekében.
+Gratulálunk! Sikeresen betöltötte az adatokat a Power BI-bA. Most vizsgálja meg az érdekes vizualizációkat követésével fontos információkhoz juthat a bérlők számára. Nézzük végig, hogyan analytics a Wingtip Tickets üzleti csapatnak adatvezérelt ajánlásokat tud biztosítani. A javaslatok segíthetnek az üzleti modell és a felhasználói élmény optimalizálása.
 
-Első lépésként jegy értékesítési adatok megtekintéséhez használatának változása a helyszínek között elemzése. Válassza ki a Power BI-ban a sávdiagram az egyes helyszínekkel által jegyek teljes száma ábrázolásához látható lehetőségeket. (A jegy generátor véletlenszerű variációjának, mert az eredmények lehetnek.)
+Indítsa el a használati változat megtekintéséhez a helyszínek között a jegy értékesítési adatok elemzése. Válassza a Power BI-ban minden egyes helyszín által értékesített jegyek száma a sáv diagram megrajzolásához jelenik meg. (A jegy generátor véletlenszerű változat, mert a találatok eltérő lehet.)
  
 ![TotalTicketsByVenues](./media/saas-tenancy-tenant-analytics/TotalTicketsByVenues-DW.PNG)
 
-A fenti ábra megerősíti, hogy a jegyektől által az egyes helyszínekkel száma függ. A jegyektől több értékesítő helyszínek, amely kevesebb a jegyektől eladásra helyszínek-nál több fokozottan használ a szolgáltatás. Előfordulhat, hogy az erőforrás-elosztás különböző bérlői igények szerint testre szabni itt lehetőséget.
+A fenti diagram megerősíti, hogy minden egyes helyszín által értékesített jegyek száma változhat. Helyszínek, amely további jegyek értékesítésére, amelyek kevesebb jegyek értékesítésére helyszínek részletesebben használja a szolgáltatást. Előfordulhat, hogy az erőforrás-elosztás másik bérlőben igényeinek megfelelően testre szabni itt lehetőséget.
 
-További elemezheti pontozásával megállapíthatjuk, hogyan jegy értékesítési időbeli eltérők lehetnek. Válassza a minden nap 60 napon eladott jegyek száma ábrázolásához Power BI-ban az alábbi ábrán látható.
+Elemezheti az adatait, hogy lássa, hogyan jegyeladásokkal változnak idővel további. Válassza ki a beállításokat, az alábbi képen a Power bi-ban nyomtatandó 60 nappal minden nap értékesített jegyek száma látható.
  
 ![SaleVersusDate](./media/saas-tenancy-tenant-analytics/SaleVersusDate-DW.PNG)
 
-A fenti diagram bemutatja, hogy az egyes helyszínek jegy értékesítési csúcs. Ezek a teljesítményt a képet, hogy egyes helyszínek előfordulhat, hogy lehet fel rendszererőforrásokat aránytalanul megerősítése. Eddig nincs nincs nyilvánvaló minta esetén fordulhat elő, a teljesítményt.
+A fenti diagram mutatja, hogy az egyes helyszínek jegy értékesítési kiugrás. Kedvez a cél, hogy egyes helyszínek lehet, hogy lehet felhasználása rendszererőforrások aránytalanul megerősítése. Amennyiben nem áll sem nyilvánvaló minta esetén fordulhat elő, az adatforgalmi csúcsokhoz.
 
-Következő most vizsgálja meg a maximális pénztári napjainkban jelentőségét. Ha tegye ezeket csúcsait után kerül sor jegyek keresse fel a pénztári? A jegyektől naponta értékesített megrajzolásához, válassza a Power BI-ban az alábbi ábrán látható.
+Tovább most vizsgálja meg ezek csúcsnapok értékesítés jelentőségét. Amikor hajtsa végre ezeket a csúcsok azt követően merülhet fel jegyek árusítása? Jeleníti meg napi értékesített jegyeket, jelölje be a Power BI-ban az alábbi képen látható beállításokat.
 
 ![SaleDayDistribution](./media/saas-tenancy-tenant-analytics/SaleDistributionPerDay-DW.PNG)
 
-A rajzolási jeleníti meg, hogy egyes helyszínek pénztári első napján nagyszámú jegyek el. Amint jegyek keresse fel a pénztári, ezek helyszínek, úgy tűnik, hogy egy mad sürgős. A tevékenység által néhány helyszínek kapacitásnövelés hatással lehet a szolgáltatás más bérlők számára.
+Ez a diagram bemutatja, hogy egyes helyszínek értékesítési első napján nagyszámú jegyek értékesítésére. Amint a jegyek árusítása, ezek helyszínek, úgy tűnik, hogy mad sürgős. Ez a tevékenység által néhány helyszínek adatlöketek hatással lehet a szolgáltatás más bérlők számára.
 
-Tovább részletezhető az adatok ismételt használatával ellenőrizheti a mad sürgős teljesül-e az összes esemény ezek helyszínek üzemelteti. Az előző előkészítésére, látta, hogy a Contoso energiaoptimalizálást egyszerre Hall sok jegyek értékesít, és hogy a Contoso is van egy csúcs jegy Sales egyes napokon. A Power BI beállításokkal a Contoso energiaoptimalizálást egyszerre Hall, értékesítési trendeket a eseményeinek minden egyes előtérbe összegző jegy értékesítési megrajzolásához lejátszása. Hajtsa végre az összes esemény ugyanezt a pénztári mintát követik? Próbálja például alább rajzot létrehozásához.
+Az adatok ismételt használatával ellenőrizheti a mad sürgős teljesül-e az összes esemény ezek helyszínek által üzemeltetett részletesen is. Az előző grafikon láthatta, hogy a Contoso Concert Hall értékesít számos jegyeket, és hogy Contoso is ugrásszerű jegyeladásokkal az egyes napokon. A Contoso Concert Hall, az események mindegyike értékesítési trendek összpontosító összegző jegyeladásokkal nyomtatandó Power BI beállítások módosításával. Hajtsa végre az összes esemény hajtsa végre az értékesítési minta? Próbálja ki az alábbihoz hasonlóan egy diagram előállításához.
 
 ![ContosoSales](media/saas-tenancy-tenant-analytics/EventSaleTrends.PNG)
 
-Ez az összegző jegy értékesítési minden esemény Contoso energiaoptimalizálást egyszerre Hall időbeli rajzot jeleníti meg, hogy a mad sürgős történik meg az összes esemény. A szűrő beállításokkal pénztári trendekről a licencekkel kapcsolatos egyéb helyszínek felfedezése lejátszása.
+Ez minden esemény esetén a Contoso Concert Hall idővel összegző jegyeladásokkal ábrázolása a jeleníti meg, hogy a mad sürgős sem történik az összes esemény. A szűrőbeállítások, a többi helyszínek értékesítés trendekkel módosításával.
 
-Minták értékesítési jegy betekintést vezethet Wingtip jegyek üzleti modelljüknek optimalizálása érdekében. Helyett egyaránt díjszabási egyetlen bérlő számára, lehet, hogy a Wingtip kell vezetnie más-más teljesítménybeli szintű szolgáltatási szinteket. Nagyobb helyszínek, amely naponta több jegyek el kell egy magasabb szolgáltatásiszint-szerződéssel (SLA) és magasabb szintű használható sikerült választhatják. E helyszínek rendelkezhetnek a hozzájuk tartozó adatbázisok címkészlet, amely nagyobb adatbázis-erőforrás korlátok helyezve. Egyes szolgáltatásszinteken sikerült óránkénti értékesítési kiosztását, rendelkező haladja meg a lemezfoglalási kiszabott további díjakat. Nagyobb helyszínek, amelyek az értékesítési rendszeres felszakadásáig előnyös az magasabb szinteket, és Wingtip jegyek is hatékonyabbá pénzt a szolgáltatás.
+Minták jegyárusító betekintést az üzleti modell optimalizálása érdekében a Wingtip Tickets vezethet. Helyett az összes bérlőre vonatkozóan egyaránt díjszabási, például a Wingtip be kell vezetnie a szolgáltatási szintek a különböző számítási méretekre. Nagyobb helyszínek, amely naponta több jegyek értékesítésére kell egy magasabb szintű szolgáltatói szerződést (SLA) a magasabb szintű sikerült kínáljuk. Ezek a helyszínek lehet adatbázisaikat, adatbázis-erőforrás magasabb korlátokkal rendelkező készlet helyezi el. Minden szolgáltatási szint sikerült óránkénti értékesítési adatkeret, további díjakat számítanak fel díjat a meghaladja a lefoglalt rendelkezik. Nagyobb helyszínek, amelyek rendszeres adatlöketekkel értékesítési előnyös a magasabb szintű, és a Wingtip Tickets hatékonyabb szolgáltatást is értékesítheti.
 
-Egyes Wingtip jegyek ügyfelek panaszkodnak mert ugyanakkor, hogy kihívást jelent eladásra elég a jegyektől szolgáltatás költségeinek igazolására. Lehet, hogy az ezen insights van a helyszínek underperforming jegy értékesítés növelése lehetőséget. Magasabb értékesítési volna növelje észlelt a szolgáltatást. Fact_Tickets kattintson jobb gombbal, majd válassza ki **új mérték**. Adja meg az alábbi kifejezés a következő új néven mértékhez **AverageTicketsSold**:
+Ugyanakkor az egyes Wingtip Tickets ügyfeleink panaszok, hogy azok kihívást jelent, hogy adja meg a szolgáltatás költsége elegendő jegyek értékesítésére. Például ilyen elemzést van lehetőség az alulteljesítő helyszínek jegyeladásokkal növelése érdekében. Magasabb értékesítési lenne növelje mintavételezéskor a szolgáltatás. Kattintson a jobb gombbal a fact_Tickets, és válassza ki **új mérték**. Adja meg az új mérték neve a következő kifejezést **AverageTicketsSold**:
 
 ```
 AverageTicketsSold = DIVIDE(DIVIDE(COUNTROWS(fact_Tickets),DISTINCT(dim_Venues[VenueCapacity]))*100, COUNTROWS(dim_Events))
 ```
 
-Válassza ki a következő képi megjelenítések beállításai az egyes helyszínekkel azok relatív sikerességének meghatározásához által százalékos jegyek megrajzolásához.
+Válassza ki az alábbi Vizualizáció lehetőségek a relatív sikerük meghatározásához minden egyes helyszín által értékesített százalékos jegyek ábrázolásához.
 
 ![AvgTicketsByVenues](media/saas-tenancy-tenant-analytics/AvgTicketsByVenues-DW.PNG)
 
-A fenti ábra bemutatja, hogy annak ellenére, hogy a legtöbb helyszínek több mint 80 %-a jegyek eladásra, néhány vannak tud lépést töltse ki a több mint fele a munkaállomásokat. Az értékek is jelölje be a jegyektől egyes helyszínekkel eladott maximális és minimális aránya az lejátszása.
+A fenti diagram bemutatja, hogy annak ellenére, hogy a legtöbb helyszínek több mint 80 %-a jegyek értékesítésére, néhány elterjedtek már több mint fele a munkaállomások adja meg. Játsszon egy kicsit az értékeket is minden egyes helyszín értékesített jegyek maximális és minimális aránya kiválasztásához.
 
-## <a name="embedding-analytics-in-your-apps"></a>Az alkalmazások analytics beágyazása 
-Ez az oktatóanyag fordította a több-bérlős analytics segítségével a bérlők a szoftver gyártója által biztosított megértése. Elemzés is összefüggések, megadhatja a _bérlők_, üzleti hatékonyabban kezelését megkönnyítő magukat. 
+## <a name="embedding-analytics-in-your-apps"></a>Szeretne elemzéseket beágyazni az alkalmazások 
+Ebben az oktatóanyagban a több-bérlős analytics növelhető a bérlők a szoftver gyártójához ismeretekkel rendelkezik összpontosít. Analytics elemzéseket is megadhatja a _bérlők_, amelyekkel hatékonyabban kezelheti üzleti magukat. 
 
-A Wingtip jegyek példában meg korábban felderített, hogy a jegy értékesítési általában a kiszámítható minták kövesse. Ez insight helyszínek program jegy értékesítési underperforming segítségével használhatók. Lehet, hogy nincs tervezni a machine learning technikák előre jelezni jegy értékesítési események lehetőséget. A hatásairól sikerült is modellezni, engedmények meghatározható az ajánlat hatását engedélyezéséhez. A Power BI Embedded sikerült integrálni kell egy esemény felügyeleti alkalmazás számsort, beleértve engedmények értékesített teljes munkaállomásokat és események alacsony értékesítési bevétel hatásának megjelenítéséhez. Power BI Embedded még akkor is is integrálhatja a kedvezményeket ténylegesen alkalmazása a jegy árak, jobb gombbal a képi megjelenítés élményt nyújt.
+A Wingtip Tickets példában, korábban felderített, hogy jegyeladásokkal általában a kiszámítható mintázatú kövesse. Az ilyen elemzések érdekében alulteljesítő helyszínek boost jegyeladásokkal használhatók. Talán nincs ilyen módon támaszkodhatnak a machine learning-módszerekkel előre jelezni az események jegyeladásokkal lehetőséget. Az ár módosítások hatásainak sikerült is modellezni, hogy az ajánlat kedvezményesen kell elvégezni, ha a hatását. Power BI Embedded sikerült integrálni kell egy esemény felügyeleti alkalmazás megjelenítése az előre jelzett értékesítési, beleértve a teljes munkaállomások értékesített díjára és a bevétel alacsony értékesítése események hatását. A Power BI Embedded még akkor is is integrálhatók a ténylegesen alkalmazza a kedvezményt a jegy árak, jobb gombbal a Vizualizáció felületen.
 
 
 ## <a name="next-steps"></a>További lépések
@@ -255,14 +255,14 @@ A Wingtip jegyek példában meg korábban felderített, hogy a jegy értékesít
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
-> * Telepítse a bérlői analytics csillagséma töltődik SQL Data Warehouse.
-> * Azure Data Factory használatával kinyeri az adatokat az egyes bérlői adatbázisok az analytics adatraktárba.
-> * A kibontott adatok (csillag sémába átszervez) optimalizálásához.
-> * Az elemzés adatraktár lekérdezésére. 
-> * A bérlők között adatok a trendek megjelenítése a Power BI használatával.
+> * A bérlői analitikák csillagsémával feltöltve SQL Data Warehouse üzembe helyezése.
+> * Azure Data Factory használatával az adatok kinyerése az egyes bérlői adatbázisok az analytics data warehouse-bA.
+> * Optimalizálhatja a kinyert adatok (reorganize csillagséma be).
+> * Az analytics data warehouse lekérdezéséhez. 
+> * A Power BI használatával az adatok trendek megjelenítése az összes bérlőre kiterjedő.
 
 Gratulálunk!
 
 ## <a name="additional-resources"></a>További források
 
-- További [oktatóprogramot kínál, amelyek a Wingtip SaaS-alkalmazás épül](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials).
+- További [oktatóanyagok, amely a Wingtip SaaS-alkalmazás útmutatóra](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials).

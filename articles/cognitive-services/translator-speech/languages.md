@@ -1,27 +1,28 @@
 ---
-title: A Microsoft Translator Diktálásfelismerési API támogatott nyelv |} Microsoft Docs
-description: A Microsoft Translator Diktálásfelismerési API által támogatott nyelvek megtekintése.
+title: Támogatott nyelvek – Translator Speech API
+titlesuffix: Azure Cognitive Services
+description: Tekintse meg a Translator Speech API által támogatott nyelveket.
 services: cognitive-services
 author: Jann-Skotdal
-manager: chriswendt1
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-speech
-ms.topic: article
+ms.topic: conceptual
 ms.date: 3/5/2018
 ms.author: v-jansko
-ms.openlocfilehash: 0d33033442a012290baa78d80f1b8bde0499b3f1
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 216a3caf9b4e6f3f512ba13361de9f3933f83b13
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35349723"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45985145"
 ---
-# <a name="languages-supported-by-the-microsoft-translator-speech-api"></a>A Microsoft Translator Diktálásfelismerési API által támogatott nyelvek
-A következő nyelveket támogatja beszéd fordításhoz. Ha mindkét nyelveket támogatja beszéd fordításhoz beszéd-beszéd átalakítás, vagy szöveges beszédfelismerés érhető el. Ha a megadott nyelv nem támogatott a beszédfelismerés fordítás, csak a szöveg fordítási beszéd érhető el. 
+# <a name="languages-supported-by-the-translator-speech-api"></a>A Translator Speech API által támogatott nyelvek
+A következő nyelvek támogatottak beszédalapú fordítási. Ha mindkét nyelveket támogatja a tolmácsolás, beszédfelismerés, beszédfelismerési vagy Diktálás érhető el. Ha a célként megadott nyelv nem támogatott beszédalapú fordítási, szövegfordítás csak beszédfelismerés érhető el. 
 
-| Beszéd nyelv    |
+| Beszédfelismerési nyelvet    |
 |:----------- |
-| Arab (Modern szabványos)      |
+| Arab (Modern Standard)      |
 | Kínai (Mandarin)      |
 | Angol      |
 | francia      |
@@ -32,9 +33,9 @@ A következő nyelveket támogatja beszéd fordításhoz. Ha mindkét nyelveket 
 | orosz      |
 | spanyol      | 
 
-A Microsoft Translator Diktálásfelismerési API a következő nyelveket támogatja a beszédfelismerés szöveg fordítási cél nyelveként. 
+A Translator Speech API a következő nyelveket támogatja mint szövegfordítás beszédfelismerés cél nyelvét. 
 
-| SMS-nyelvét    | Nyelvkód |
+| Szöveg nyelvét    | Nyelvkód |
 |:----------- |:-------------:|
 | afrikaans      | `af`          |
 | arab       | `ar`          |
@@ -98,18 +99,18 @@ A Microsoft Translator Diktálásfelismerési API a következő nyelveket támog
 | urdu      | `ur`          |
 | vietnami      | `vi`          |
 | walesi      | `cy`          |
-| Yucatec Maya      | `yua`          |
+| A Maya alkalmazáshoz Yucatec      | `yua`          |
 
-## <a name="access-the-list-programmatically"></a>Programozott hozzáférés a lista
+## <a name="access-the-list-programmatically"></a>A lista programozott elérése
 
-Programozott módon, a nyelvek erőforrás támogatott nyelvek listáját érheti el. A lista ismerteti a nyelvi kódját, valamint a nyelv nevének angol, vagy bármely más támogatott nyelven. Amint elérhetővé válnak az új nyelvek a lista automatikusan frissíti a Microsoft Translator szolgáltatás.
+Programozott módon használja a nyelvek erőforrás támogatott nyelvek listáját is elérheti. A lista ismerteti a nyelvkódot, valamint a nyelv nevének az angol, és minden más támogatott nyelven. Ez a lista automatikusan frissül a Translator Speech szolgáltatással, amint elérhetővé válnak az új nyelvek.
 
-A nyelvek erőforrás beszéd átalakítás, a szöveg és a szöveg-beszéd átalakítás, támogatott nyelvek listáját adja vissza. A nyelvek erőforrás nem igényel hitelesítést.
+A nyelvek erőforrás beszéd, a szöveg és a szöveg-beszéd átalakítás, támogatott nyelvek listáját adja vissza. A nyelvek erőforrás nem igényel hitelesítést.
 
-[Látogasson el a nyelvek módszer kipróbálásához API-referencia](languages-reference.md)
+[Látogasson el az API-referencia, és próbálja ki a nyelvet metódus](languages-reference.md)
 
-## <a name="access-the-list-on-the-microsoft-translator-website"></a>Hozzáférés a Microsoft Translator webhelyen listája
+## <a name="access-the-list-on-the-microsoft-translator-website"></a>Hozzáférés a listában, a Microsoft Translator webhelyen
 
-A Microsoft Translator webhely nyelvek gyorsan át, a fordító szöveg és Diktálásfelismerési API-k által támogatott összes nyelvet jeleníti meg. Ez a lista nem tartalmaz például nyelvkódjait developer-specifikus adatait.
+A Microsoft Translator webhely a nyelvek egy gyors pillantást mutatja be, a Translator Text és a Speech API-k által támogatott összes nyelv. Ez a lista nem tartalmaz fejlesztői jellemző információkat, például nyelvi kódot.
 
 [Nyelvek listáját lásd:](https://www.microsoft.com/translator/languages.aspx) 

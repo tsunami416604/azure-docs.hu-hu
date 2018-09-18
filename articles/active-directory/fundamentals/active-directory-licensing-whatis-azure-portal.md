@@ -1,28 +1,26 @@
 ---
-title: Az Azure AD csoportalapú licencelésének ismertetése | Microsoft Docs
-description: Az Azure Active Directory csoportalapú licencelésének ismertetése, a licencelés működése és ajánlott eljárások
+title: Mit jelent a Csoportalapú licencelés az Azure Active Directoryban? | Microsoft Docs
+description: További információ az Azure Active Directory Csoportalapú licencelést, beleértve annak működését és ajánlott eljárásokat.
 services: active-directory
 keywords: Az Azure AD licencelése
-documentationcenter: ''
 author: eross-msft
 manager: mtillman
-editor: ''
 ms.service: active-directory
 ms.component: fundamentals
-ms.topic: overview
+ms.topic: conceptual
 ms.workload: identity
 ms.date: 06/13/2018
 ms.author: lizross
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 5f5aab6a8514636e8be09deb773748080871b9d4
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
-ms.translationtype: HT
+ms.openlocfilehash: 7848b52bcf5204a871920cbfab8a0e95223654d4
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39005231"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45735901"
 ---
-# <a name="group-based-licensing-basics-in-azure-active-directory"></a>Az Azure Active Directory csoportalapú licencelésének alapjai
+# <a name="what-is-group-based-licensing-in-azure-active-directory"></a>Mit jelent a Csoportalapú licencelés az Azure Active Directoryban?
 
 A Microsoft fizetős felhőszolgáltatásainak, például az Office 365, az Enterprise Mobility + Security, a Dynamics 365 és más hasonló termékek használatához licencre van szükség. A licenceket olyan felhasználókhoz kell rendelni, akiknek hozzáférésre van szükségük ezekhez a szolgáltatásokhoz. A licencek kezeléséhez a felügyeleti portálok (Office vagy Azure) valamelyikét vagy PowerShell-parancsmagokat használhatnak a rendszergazdák. Az Azure Active Directory (Azure AD) a Microsoft felhőszolgáltatásainak identitáskezelését támogató, alapul szolgál infrastruktúra. Az Azure AD tárolja a felhasználók licenc-hozzárendelési állapotával kapcsolatos információkat.
 

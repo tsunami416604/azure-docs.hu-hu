@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: 3cc38e7ede9882e78e509738351696a64c938c40
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: d24a268cf389dfe9dec914b2d27bbe8e466ea675
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391416"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45737192"
 ---
 # <a name="comparing-azure-data-lake-storage-gen1-and-azure-blob-storage"></a>Az Azure Data Lake Storage Gen1 és az Azure Blob Storage összehasonlítása
 Ebben a cikkben a táblázat néhány fontos szempontjai big data-feldolgozáshoz mentén az Azure Data Lake Storage Gen1 és az Azure Blob Storage közötti különbségeket foglalja össze. Az Azure Blob Storage egy általános célú, skálázható objektumtárolását, amely számos különböző adattárolási forgatókönyvekhez készült. Az Azure Data Lake Storage Gen1 egy nagy kapacitású adattár, amely a big data-elemzési számítási feladatokhoz van optimalizálva.
@@ -31,9 +31,9 @@ Ebben a cikkben a táblázat néhány fontos szempontjai big data-feldolgozásho
 | API |HTTPS-kapcsolaton keresztül a REST API |REST API HTTP/HTTPS-kapcsolaton keresztül |
 | Kiszolgálóoldali API |[WebHDFS-kompatibilis REST API-val](https://msdn.microsoft.com/library/azure/mt693424.aspx) |[Az Azure Blob Storage REST API-val](https://msdn.microsoft.com/library/azure/dd135733.aspx) |
 | Hadoop-fájl rendszer ügyfél |Igen |Igen |
-| Adatműveletek – hitelesítés |Alapján [az Azure Active Directory-identitásokkal](../active-directory/develop/authentication-scenarios.md) |A közös titkos kulcsot – alapján [hozzáférési kulcsainak](../storage/common/storage-create-storage-account.md#manage-your-storage-account) és [megosztott hozzáférési aláírást kulcsok](../storage/common/storage-dotnet-shared-access-signature-part-1.md). |
+| Adatműveletek – hitelesítés |Alapján [az Azure Active Directory-identitásokkal](../active-directory/develop/authentication-scenarios.md) |A közös titkos kulcsot – alapján [hozzáférési kulcsainak](../storage/common/storage-account-manage.md#access-keys) és [megosztott hozzáférési aláírást kulcsok](../storage/common/storage-dotnet-shared-access-signature-part-1.md). |
 | Adatműveletek – hitelesítési protokoll |OAuth 2.0. Hívások tartalmaznia kell egy érvényes JWT (JSON Web Token) Azure Active Directory által kiadott |Üzenet kivonat-alapú hitelesítési kód (HMAC). Hívások a Base64-kódolású SHA-256 kivonatoló tartalmaznia kell a HTTP-kérelem egy része felett. |
-| Adatműveletek – engedélyezés |A POSIX hozzáférés-vezérlési listák (ACL).  Az Azure Active Directory-identitásokkal alapuló hozzáférés-vezérlési listák a fájl- és szintjén állítható. |A fiókszintű engedélyezése – használja [Tárelérési kulcsok](../storage/common/storage-create-storage-account.md#manage-your-storage-account)<br>A fiók, tároló vagy a blob engedélyezési - használja [megosztott hozzáférési aláírást kulcsok](../storage/common/storage-dotnet-shared-access-signature-part-1.md) |
+| Adatműveletek – engedélyezés |A POSIX hozzáférés-vezérlési listák (ACL).  Az Azure Active Directory-identitásokkal alapuló hozzáférés-vezérlési listák a fájl- és szintjén állítható. |A fiókszintű engedélyezése – használja [Tárelérési kulcsok](../storage/common/storage-account-manage.md#access-keys)<br>A fiók, tároló vagy a blob engedélyezési - használja [megosztott hozzáférési aláírást kulcsok](../storage/common/storage-dotnet-shared-access-signature-part-1.md) |
 | Adatműveletek – naplózás |Érhető el. Lásd: [Itt](data-lake-store-diagnostic-logs.md) információt. |Elérhető |
 | Az inaktív adatok titkosítása |<ul><li>Transzparens, kiszolgálóoldali</li> <ul><li>A szolgáltatás által kezelt kulcsok</li><li>Az ügyfél által felügyelt kulcsok az Azure-Kulcstartóban</li></ul></ul> |<ul><li>Transzparens, kiszolgálóoldali</li> <ul><li>A szolgáltatás által kezelt kulcsok</li><li>Az ügyfél által felügyelt kulcsok az Azure KeyVault (előzetes verzió)</li></ul><li>Ügyféloldali titkosítás</li></ul> |
 | Felügyeleti műveletek (például fiók létrehozása) |[Szerepköralapú hozzáférés-vezérlés](../role-based-access-control/overview.md) fiókok kezelése az Azure által biztosított (RBAC) |[Szerepköralapú hozzáférés-vezérlés](../role-based-access-control/overview.md) fiókok kezelése az Azure által biztosított (RBAC) |

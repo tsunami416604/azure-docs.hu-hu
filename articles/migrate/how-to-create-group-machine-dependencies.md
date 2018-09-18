@@ -4,24 +4,39 @@ description: Ismerteti, hogyan hozhat létre értékeléseket függőségeivel a
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 07/05/2018
+ms.date: 09/17/2018
 ms.author: raynew
-ms.openlocfilehash: 4b83380558c10bc4f96d56f89a5cc2b7b53edc2e
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 31cbec8eab499fac116eac6fa2addac4ec2a340b
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39621079"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45737097"
 ---
 # <a name="group-machines-using-machine-dependency-mapping"></a>Gépek csoportosítása a gépek függőségi leképezés használatával
 
 Ez a cikk bemutatja, hogyan hozhat létre egy csoportot a gépek [Azure Migrate](migrate-overview.md) értékelés gépek függőségek vizualizációjával. Ez a módszer általában esetén annak ellenőrzéséhez, virtuális gépek magasabb megbízhatósági szintű csoportok szerint kereszt-ellenőrzés gépek függőségeit, az értékelés futtatása előtt célszerű használni. Függőségek képi megjelenítésének segítségével hatékonyan tervezheti a migrálást az Azure-bA. Ez segít győződjön meg arról, hogy semmi sem marad, és meglepetés valamilyen okból kimaradás lép fordul elő, ha az Azure-bA áttelepítésekor. Felfedezheti, hogy az összes saját rendszerek esetében, amelyek együtt áttelepíti, és adja meg, hogy a futó rendszerek továbbra is szolgálja ki felhasználók, illetve egy jelölt helyett áttelepítési leszerelése.
 
 
-## <a name="prepare-machines-for-dependency-mapping"></a>Gépek függőségeinek feltérképezése előkészítése
-Gépek függőségeinek megtekintése, meg kell töltse le és telepítse az ügynököt minden olyan szeretne értékelni a helyszíni gépen. Ezenkívül, ha internetkapcsolat nélküli gépek, kell letölteni és telepíteni [OMS-átjáró](../log-analytics/log-analytics-oms-gateway.md) rajtuk.
+## <a name="prepare-for-dependency-visualization"></a>Előkészítéséhez a függőségek képi megjelenítése
+Az Azure Migrate a Log Analytics engedélyezése a függőségek vizualizációjához a Service Map megoldást használja.
+
+### <a name="associate-a-log-analytics-workspace"></a>Log Analytics-munkaterület társítása
+Kihasználhatja a függőségek képi megjelenítésével, hozzá kell rendelni egy Log Analytics-munkaterületet, vagy új vagy meglévő, az Azure Migrate-projektet. Csak létrehozása vagy csatolása ugyanahhoz az előfizetéshez egy munkaterületet, ahol a migrálási projekt létrejön.
+
+- Egy projektet a Log Analytics-munkaterület csatlakoztatni kívánt **áttekintése**, lépjen a **Essentials** projekt kattintson **konfigurálást igényel**
+
+    ![Log Analytics-munkaterület társítása](./media/concepts-dependency-visualization/associate-workspace.png)
+
+- Amikor létrehoz egy új munkaterületet, adja meg a munkaterület nevét kell. A migrálási projekt ugyanabban az előfizetésben, és ugyanabban a régióban a munkaterület létrehozását majd [Azure földrajzi](https://azure.microsoft.com/global-infrastructure/geographies/) a migrálási projektet.
+- A **meglévő** a beállítás csak a régióban, ahol a Service Map elérhető létrehozott munkaterületek listája. Ha egy munkaterületet egy régióban, ahol a Service Map nem érhető el, az nem lehet jelenik meg a listában.
+
+> [!NOTE]
+> A migrálási projekthez tartozó munkaterület nem módosítható.
 
 ### <a name="download-and-install-the-vm-agents"></a>A virtuálisgép-ügynökök letöltése és telepítése
+Miután konfigurál egy munkaterületet, akkor kell töltse le és telepítse az ügynököt minden olyan szeretne értékelni a helyszíni gépen. Ezenkívül, ha internetkapcsolat nélküli gépek, kell letölteni és telepíteni [OMS-átjáró](../log-analytics/log-analytics-oms-gateway.md) rajtuk.
+
 1. A **áttekintése**, kattintson a **kezelés** > **gépek**, és válassza ki a szükséges gépet.
 2. Az a **függőségek** oszlopot, kattintson a **ügynökök telepítése**.
 3. Az a **függőségek** lapon, töltse le és telepítse a Microsoft Monitoring Agent (MMA) és a függőségi ügynök minden virtuális Géphez szeretne értékelni.

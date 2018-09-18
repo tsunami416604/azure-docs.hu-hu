@@ -10,18 +10,18 @@ ms.custom: saas apps
 ms.topic: conceptual
 ms.date: 04/09/2018
 ms.author: ayolubek
-ms.openlocfilehash: f2ad92118c00f08e5dcdd4a8a12f007308b3fbd1
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 1af13857bdde06b70cb8d01db8d9668cc6ce99e6
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "34645793"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45983967"
 ---
 # <a name="disaster-recovery-for-a-multi-tenant-saas-application-using-database-geo-replication"></a>Egy több-bérlős SaaS-alkalmazás, adatbázis-replikációval geo-vészhelyreállítás
 
 Ebben az oktatóanyagban egy több-bérlős SaaS-alkalmazás a bérlőnkénti adatbázis modellt használó megvalósítva a teljes vészhelyreállítás megismerése. Az alkalmazás védelme a kimaradás utáni érdekében használja [ _georeplikációs_ ](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-overview) az alkalmazáskatalógus és a bérlői adatbázis-replika létrehozásához egy másik helyreállítási régióban. Egy kimaradás során, gyorsan átadja a feladatokat ezekre a replikákra normál üzleti műveletek folytatásához. Feladatátvétel esetén az adatbázisokat az eredeti régióban lesznek az adatbázisokat a helyreállítási régióban másodlagos replikáin. Ha ezek a replikák ismét online elérhető lesz, automatikusan olvasásra az adatbázisokat a helyreállítási régióban állapotát. Miután a szolgáltatáskiesés megszüntetése után a rendszer feloldott, visszaadja a feladatokat az adatbázisokat az eredeti éles régióban.
 
-Ez az oktatóanyag bemutatja, feladatátvételének és feladat-visszavétel munkafolyamatokat. Megtudhatja, hogyan lehet:
+Ez az oktatóanyag bemutatja, feladatátvételének és feladat-visszavétel munkafolyamatokat. A következőket fogja megtanulni:
 > [!div classs="checklist"]
 
 >* Sync-adatbázis és rugalmas tárolókészlet konfigurációs adatait a bérlő-katalógusba
@@ -51,9 +51,9 @@ A Vészhelyreállítási terv alapján a georeplikáció három különálló r�
 Minden részét kell alaposan megfontolni különösen akkor, ha nagy mennyiségű működési. A csomag teljes, több célok kell elvégezni:
 
 * Beállítás
-    * Hozzon létre, és biztosítja a tükör-image környezetet a helyreállítási régióban. A rugalmas készletek létrehozása és a helyreállítási környezetet önálló adatbázisokhoz replikálása fenntartja a kapacitás a helyreállítási régióban. Ebben a környezetben karbantartása új bérlői adatbázisok replikálása, kiépítésüket tartalmazza.  
+    * Hozzon létre, és biztosítja a tükör-image környezetet a helyreállítási régióban. A rugalmas készletek létrehozása és a helyreállítási környezet bármelyik önálló adatbázisok replikálása fenntartja a kapacitás a helyreállítási régióban. Ebben a környezetben karbantartása új bérlői adatbázisok replikálása, kiépítésüket tartalmazza.  
 * Helyreállítás
-    * Ha napi költségek minimalizálása érdekében horizontálisan le-helyreállítási környezet használnak, készletek és önálló adatbázisokat kell vertikálisan fel beszerezni a teljes működési kapacitását a helyreállítási régióban
+    * Ha napi költségek minimalizálása érdekében horizontálisan le-helyreállítási környezet használnak, készletek és az önálló adatbázisok kell vertikálisan fel beszerezni a teljes működési kapacitását a helyreállítási régióban
     * Új bérlő kiépítése a helyreállítási régióban minél hamarabb engedélyezése  
     * Bérlők prioritási sorrendben visszaállítása optimalizálva
     * Bérlők online lehető legnagyobb első párhuzamosan lépések végrehajtásával, ahol gyakorlati optimalizálva
@@ -90,8 +90,8 @@ Később egy különálló hazatelepítési lépésben átadja a feladatokat az 
 A helyreállítási folyamat megkezdése előtt tekintse át az alkalmazás normál kifogástalan állapotát.
 1. A böngészőben nyissa meg a Wingtip Tickets Eseményközpontot (http://events.wingtip-dpt.&lt; felhasználó&gt;. trafficmanager.net - cserélje le &lt;felhasználói&gt; az üzemelő példány felhasználói értékkel).
     * Görgessen a lap aljára, és figyelje meg, hogy a katalógus-kiszolgáló nevét és helyét a láblécben. A hely az a régió, amelyben az alkalmazás üzembe helyezésekor.
-    *Tipp: Vigye az egérmutatót megjelenítéséhez nagyítsa fel a helyet.*
-    ![Események központ megfelelő állapotba eredeti régióban](media/saas-dbpertenant-dr-geo-replication/events-hub-original-region.png)
+    *Tipp: Vigye az egérmutatót megjelenítéséhez nagyítsa fel a helyet. * 
+     ![Események központ megfelelő állapotba eredeti régióban](media/saas-dbpertenant-dr-geo-replication/events-hub-original-region.png)
 
 2. Kattintson a Contoso Concert Hall a bérlőhöz, és nyissa meg az események lapján.
     * A láblécben figyelje meg a bérlő kiszolgáló nevét. A hely ugyanaz, mint a katalóguskiszolgálón helye lesz.
@@ -185,7 +185,7 @@ Most már az imagine-beli szolgáltatáskimaradás van a régióban, amelyben az
     * A helyreállítási régióban van a _párosított régióra_ társított Azure-régió, amelyben az alkalmazást telepítette. További információkért lásd: [Azure párosított régióiról](https://docs.microsoft.com/azure/best-practices-availability-paired-regions). 
 
 3. A PowerShell-ablakban a helyreállítási folyamat állapotának monitorozásához.
-    ![feladatátvételi folyamatot](media/saas-dbpertenant-dr-geo-replication/failover-process.png)
+    ![Feladatátvételi folyamatot](media/saas-dbpertenant-dr-geo-replication/failover-process.png)
 
 > [!Note]
 > Ismerje meg a helyreállítási feladatok kódja, tekintse át a PowerShell-parancsprogramok a ...\Learning Modules\Business üzletmenet-folytonossági és vészhelyreállítási Recovery\DR-FailoverToReplica\RecoveryJobs mappában.

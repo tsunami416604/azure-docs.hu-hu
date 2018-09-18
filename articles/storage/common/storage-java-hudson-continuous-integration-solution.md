@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 02/28/2017
 ms.author: seguler
 ms.component: common
-ms.openlocfilehash: c076ae96f8aba648196dc5222db3da3da68673ff
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 86a14d12f6621524ef26e2a869d4be532105dc77
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39528391"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45732346"
 ---
 # <a name="using-azure-storage-with-a-hudson-continuous-integration-solution"></a>Az Azure Storage szolgáltatás használata Hudson folyamatos integrációs megoldással
 ## <a name="overview"></a>Áttekintés
@@ -53,7 +53,7 @@ A Blob service használata a Hudson CI-megoldás a következő lesz szüksége:
      
       Bár egy tipikus Hudson CI-megoldást szeretne úgy, hogy a szolgáltatás, a Hudson war futtatása a parancssorból futtassa a jelen oktatóanyag elegendő lesz.
 * Egy Azure-fiók. Iratkozzon fel a következő Azure-fiókot <http://www.azure.com>.
-* Egy Azure-tárfiók. Ha a tárfiók már nem rendelkezik, létrehozhat egyet a következő lépések használatával [hozzon létre egy Tárfiókot](../common/storage-create-storage-account.md#create-a-storage-account).
+* Egy Azure-tárfiók. Ha a tárfiók már nem rendelkezik, létrehozhat egyet a következő lépések használatával [hozzon létre egy Tárfiókot](../common/storage-quickstart-create-account.md).
 * A Hudson CI megoldás ismeretét ajánlott, de nem szükséges, az alábbi tartalommal fogja használni egy alapszintű példa mutatni, ha a Blob service használata Hudson CI vagy a szükséges lépéseket build-összetevőket.
 
 ## <a name="how-to-use-the-blob-service-with-hudson-ci"></a>A Blob szolgáltatás használata Hudson CI-vel

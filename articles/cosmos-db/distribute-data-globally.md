@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: sngun
-ms.openlocfilehash: 19e47e0dba1a89ea32f42ef0bafc26f8c59b4ad7
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 4defdabde19b2dcf7f9872fd6da1b63b0d244913
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43288302"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45983818"
 ---
 # <a name="how-to-distribute-data-globally-with-azure-cosmos-db"></a>Globális adatterjesztés az Azure Cosmos DB útmutató
 Az Azure széles körben használt – Ez egy globális lefedettséggel rendelkezik több mint 50 földrajzi régióban, és folyamatosan bővülnek. A globális jelenlét, a elkészítheti, telepítheti és globálisan elosztott alkalmazások egyszerű kezelés lehetővé teszi a fejlesztők számára kínál az Azure egyedi képességeit egyik célja. 
@@ -28,7 +28,7 @@ Az [Azure Cosmos DB](../cosmos-db/introduction.md) a Microsoft globálisan elosz
 
 Ahogy megtudtuk rendelkezik Azure Cosmos DB létrehozása közben, globális terjesztés hozzáadása nem másodrangú ügyként kezelni. Nem lehet "menetes az" egy "egyszeri" adatbázis helyrendszer interaktív irányítópultunkat. A globálisan elosztott adatbázis által kínált funkciók kiterjednek túl, hogy a hagyományos földrajzi vész helyreállítási (Geo-DR) által kínált "egyhelyes" adatbázisok. Egyetlen hely adatbázisok Geo-DR-funkciót kínál a egy szigorú alkészletéből állnak a globálisan elosztott adatbázisok. 
 
-Az Azure Cosmos DB kulcsrakész globális disztribúciót, a fejlesztők nem kell saját replikációs szerkezetkialakító build alkalmazásával vagy a Lambda minta (például [AWS DynamoDB replikációs](https://github.com/awslabs/dynamodb-cross-region-library/blob/master/README.md)), vagy az adatbázis naplója keresztül "dupla írások" végrehajtása több régióban. Végzünk *nem* ezek a módszerek ajánljuk, mivel nem lehetséges, az ilyen megközelítés majd eredményes SLA-kat biztosít. 
+Az Azure Cosmos DB kulcsrakész globális disztribúciót a fejlesztők nem rendelkezik a saját replikációs szerkezetkialakító hozhat létre, az adatbázis naplója keresztül Lambda minta alkalmazó, vagy "dupla írások" végrehajtása több régióban. Végzünk *nem* ezek a módszerek ajánljuk, mivel nem lehetséges, az ilyen megközelítés majd eredményes SLA-kat biztosít. 
 
 Ebben a cikkben biztosítunk egy Azure Cosmos DB globális terjesztésének képességek áttekintése. Azt is leírják az Azure Cosmos DB egyedi megközelítés a szolgáltató átfogó SLA-k. 
 

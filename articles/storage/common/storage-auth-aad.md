@@ -1,6 +1,6 @@
 ---
-title: Hitelesíti a hozzáférést az Azure Storage az Azure Active Directoryval (előzetes verzió) |} A Microsoft Docs
-description: Hitelesíti a hozzáférést az Azure Storage, Azure Active Directory (előzetes verzió) használatával.
+title: Hitelesíti a hozzáférést az Azure-blobok és üzenetsorok az Azure Active Directoryval (előzetes verzió) |} A Microsoft Docs
+description: Hitelesíti a hozzáférést az Azure-blobok és üzenetsorok az Azure Active Directoryval (előzetes verzió).
 services: storage
 author: tamram
 ms.service: storage
@@ -8,18 +8,18 @@ ms.topic: article
 ms.date: 09/07/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 802eefb7ed8191525a8a4a6601b620ca5dfd5faa
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: d48eee711e5d43c2113c3a21d87386b350c6b01f
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44300613"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45731900"
 ---
-# <a name="authenticate-access-to-azure-storage-using-azure-active-directory-preview"></a>Hitelesíti a hozzáférést az Azure Storage az Azure Active Directoryval (előzetes verzió)
+# <a name="authenticate-access-to-azure-blobs-and-queues-using-azure-active-directory-preview"></a>Hitelesíti a hozzáférést az Azure-blobok és üzenetsorok az Azure Active Directoryval (előzetes verzió)
 
 Az Azure Storage támogatja a hitelesítés és engedélyezés az Azure Active Directory (AD) a Blob és üzenetsor-szolgáltatások. Az Azure ad-vel szerepköralapú hozzáférés-vezérlés (RBAC) használhatja hozzáférést a felhasználók, csoportok és alkalmazások szolgáltatásnevének. 
 
-Azure Storage, Azure AD-vel hozzáférő alkalmazások kulcshasználatának engedélyezése készít felső szintű biztonság és a könnyű használat más engedélyezési beállítások. Miközben továbbra is megosztott kulcsos engedélyezési használata az alkalmazások, Azure AD-vel megkerüli ügyféladataik tárolásának a kód a hozzáférési kulcsára. Ehhez hasonlóan továbbra is használja a közös hozzáférésű jogosultságkódok (SAS) részletes hozzáférést biztosítani a tárfiókban található erőforrásokhoz, de az Azure AD kezelése SAS-tokeneket vagy sérült biztonságú SAS visszavonása foglalkoznia kellene hasonló funkciókat kínál.
+Felhasználók vagy az Azure AD hitelesítő adatait használó alkalmazások hitelesítése készít felső szintű biztonság és a könnyű használat más engedélyezési módot. Miközben továbbra is megosztott kulcsos engedélyezési használata az alkalmazások, Azure AD-vel megkerüli ügyféladataik tárolásának a kód a hozzáférési kulcsára. Közös hozzáférésű jogosultságkódok (SAS) használata a minden részletre kiterjedő hozzáférést biztosítani a tárfiókban lévő erőforrásokhoz folytathatja, de az Azure AD kezelése SAS-tokeneket vagy sérült biztonságú SAS visszavonása foglalkoznia kellene hasonló funkciókat kínál. A Microsoft javasolja, hogy az Azure AD-hitelesítés használata az Azure Storage-alkalmazásokhoz, amikor csak lehetséges.
 
 ## <a name="about-the-preview"></a>Tudnivalók az előzetes verzió
 

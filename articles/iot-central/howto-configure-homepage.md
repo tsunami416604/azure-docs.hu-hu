@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 1b4d97c1e8c4360028cb249b7e1a61f9fc26e9f2
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 609dc8aa1305833fb3677de6fbe95cf490237a4a
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44300528"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45731121"
 ---
 ## <a name="configuring-homepage"></a>Kezdőlap konfigurálása
 
@@ -27,7 +27,7 @@ Kiválasztásával **szerkesztése**, ekkor megnyílik az irányítópult-könyv
 
 ![Irányítópult-könyvtár](media\howto-configure-homepage\image2.png)
 
-Hozzáadhat például egy **beállításait és tulajdonságait** csempére, hogy az aktuális értékek beállításait és tulajdonságait, a választott megjelenítés. Ehhez először válassza ki a **eszköz sablon** válassza ki a **eszközpéldány**. Miután egy cím, és kattintson a csempére, adjon egy **beállítás** vagy egy **tulajdonság** megjelenítéséhez. Ebben az esetben kiválasztottuk **ventilátor sebesség**. Kattintson a **kész** miatt ez a csempe jelenik meg a kezdőlapon.
+Hozzáadhat például egy **beállításait és tulajdonságait** csempére, hogy az aktuális értékek beállításait és tulajdonságait, a választott megjelenítés. Ehhez először válassza ki a **eszköz sablon** válassza ki a **eszközpéldány**. Miután egy cím, és kattintson a csempére, adjon egy **beállítás** vagy egy **tulajdonság** megjelenítéséhez. Ebben az esetben kiválasztottuk **beállítása hőmérséklet**. Kattintson a **kész** miatt ez a csempe jelenik meg a kezdőlapon.
 
 ![Részletes beállítások és tulajdonságok "Konfigurálása eszköz részletei" képernyő](media\howto-configure-homepage\image3.png)
 

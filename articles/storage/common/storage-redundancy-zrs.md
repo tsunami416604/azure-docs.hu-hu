@@ -8,18 +8,20 @@ ms.topic: article
 ms.date: 03/20/2018
 ms.author: jeking
 ms.component: common
-ms.openlocfilehash: dfd5058b17a211adf97eb8729158b2b65d7b6975
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 0a4ebefd89414fa62ca69f2f9cc726f471694bee
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45579513"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45733616"
 ---
 # <a name="zone-redundant-storage-zrs-highly-available-azure-storage-applications"></a>Zónaredundáns tárolás (ZRS): az Azure Storage magas rendelkezésre állású alkalmazások
 [!INCLUDE [storage-common-redundancy-ZRS](../../../includes/storage-common-redundancy-zrs.md)]
 
 ## <a name="support-coverage-and-regional-availability"></a>Támogatást és a régiónkénti rendelkezésre állás
-A ZRS jelenleg támogatja a standard [általános célú v2 (GPv2)](storage-account-options.md#general-purpose-v2-accounts) fióktípus. A ZRS blokkblobok, lapblobok nem lemez, fájlok, táblák és üzenetsorok érhető el. Ezenkívül az összes, a [Storage Analytics](storage-analytics.md) naplók és [Storage Metrics](storage-enable-and-view-metrics.md)
+A ZRS jelenleg a standard szintű, általános célú v2 fiókok típusai támogatja. A tárfiókok típusairól további információkért lásd: [az Azure storage-fiók áttekintése](storage-account-overview.md).
+
+A ZRS blokkblobok, lapblobok nem lemez, fájlok, táblák és üzenetsorok érhető el.
 
 A ZRS az alábbi régiókban általában érhető el:
 
@@ -80,7 +82,9 @@ A támogatási szolgálatnak lesz felvesszük Önnel a kapcsolatot. Adott szemé
 >
 > A ZRS válik [általánosan elérhető](#support-coverage-and-regional-availability) egy régióban ügyfelek már nem tudja a klasszikus ZRS-fiókok létrehozása a portálról, az adott régióban. A Microsoft PowerShell és az Azure CLI használatával a klasszikus ZRS-fiókok létrehozásához támogatott mindaddig, amíg a klasszikus ZRS-elavult.
 
-A klasszikus ZRS-aszinkron módon replikálja az adatközpontokon belül egy vagy két régió. Lehetséges, hogy a replika nem lesz elérhető, hacsak a Microsoft nem kezdeményezi a másodlagos példány feladatátvételét. A klasszikus ZRS-áll rendelkezésre, csak a **blokkblobok** a [általános célú V1 (GPv1)](storage-account-options.md#general-purpose-v1-accounts) storage-fiókok. A klasszikus ZRS-fiókokat nem lehet átalakítani LRS- vagy GRS-fiókokká vagy fiókokból, és nem rendelkeznek metrikákkal vagy naplózási képességgel.
+A klasszikus ZRS-aszinkron módon replikálja az adatközpontokon belül egy vagy két régió. Lehetséges, hogy a replika nem lesz elérhető, hacsak a Microsoft nem kezdeményezi a másodlagos példány feladatátvételét. A klasszikus ZRS-fiókokat nem lehet átalakítani LRS- vagy GRS-fiókokká vagy fiókokból, és nem rendelkeznek metrikákkal vagy naplózási képességgel.
+
+A klasszikus ZRS-áll rendelkezésre, csak a **blokkblobok** az általános célú V1 (GPv1) tárfiókok. Storage-fiókokkal kapcsolatos további információkért lásd: [az Azure storage-fiók áttekintése](storage-account-overview.md).
 
 A klasszikus ZRS-fiókok nem lehet konvertálni, vagy onnan LRS, GRS vagy RA-GRS. A klasszikus ZRS-fiókok is nem támogatják a metrikákkal vagy naplózási.
 

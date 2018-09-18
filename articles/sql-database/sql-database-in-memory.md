@@ -9,12 +9,12 @@ ms.custom: develop databases
 ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: jodebrui
-ms.openlocfilehash: f4e056e9f8461085df6ae447672e2c9ec91aa3ca
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 5fd0d487371acdf8d0b3301cc881aa2f059a9f41
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39092403"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45984152"
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-sql-database"></a>Teljesítmény optimalizálása, memóriabeli technológiákat az SQL Database használatával
 
@@ -72,7 +72,7 @@ A technológiák részletes szolgáltatásról:
 
 In-Memory OLTP magában foglalja a memóriaoptimalizált táblákhoz, amelyeken a felhasználói adatok tárolására szolgálnak. Ezek a táblák férnek el a memóriában van szükség. Mivel Ön kezeli az SQL Database szolgáltatás közvetlenül a memória, kell, hogy a felhasználói adatok kvóta fogalmát. Ezt az elképzelést nevezzük *In-Memory OLTP storage*.
 
-Mindegyik tarifacsomag és minden rugalmas készletet tarifacsomag támogatott önálló adatbázis bizonyos mennyiségű In-Memory OLTP-tár tartalmazza. Lásd: [DTU-alapú erőforráskorlátok – önálló adatbázis](sql-database-dtu-resource-limits-single-databases.md), [DTU-alapú erőforráskorlátok – rugalmas készletek](sql-database-dtu-resource-limits-elastic-pools.md),[Virtuálismag-alapú erőforráskorlátok – önálló adatbázisok](sql-database-vcore-resource-limits-single-databases.md) és [Virtuálismag-alapú erőforráskorlátok – rugalmas készletek](sql-database-vcore-resource-limits-elastic-pools.md).
+Tarifacsomag és minden egyes tarifacsomagja a rugalmas készlet minden egyes támogatott egyetlen adatbázis bizonyos mennyiségű In-Memory OLTP-tár tartalmazza. Lásd: [DTU-alapú erőforráskorlátok – önálló adatbázis](sql-database-dtu-resource-limits-single-databases.md), [DTU-alapú erőforráskorlátok – rugalmas készletek](sql-database-dtu-resource-limits-elastic-pools.md),[Virtuálismag-alapú erőforráskorlátok – önálló adatbázisok](sql-database-vcore-resource-limits-single-databases.md) és [Virtuálismag-alapú erőforráskorlátok – rugalmas készletek](sql-database-vcore-resource-limits-elastic-pools.md).
 
 A következő elemek beleszámítanak az In-Memory OLTP Tárhelykorlát:
 

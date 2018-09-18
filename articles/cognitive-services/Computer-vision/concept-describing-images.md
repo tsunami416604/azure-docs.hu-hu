@@ -1,25 +1,25 @@
 ---
-title: Bemutató kép
-titleSuffix: Computer Vision - Cognitive Services - Azure
-description: Computer Vision segítségével az Azure Cognitive Servicesben lemezképek leíró kapcsolatos fogalmakat.
+title: Ismertető a rendszerképek – Computer Vision
+titleSuffix: Azure Cognitive Services
+description: Ismertető a képek a Computer Vision API használatával kapcsolatos fogalmakat.
 services: cognitive-services
 author: deken
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: v-deken
-ms.openlocfilehash: be59055a2c6cd1366c8c52370fa97158ab8d6c88
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: a65e3ea2fb28ca8a2250fb3e39860eb5e08c18f4
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44725397"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45981984"
 ---
-# <a name="describing-images"></a>Bemutató kép
+# <a name="describing-images"></a>Képek leírása
 
-Számítógépes Látástechnológiai algoritmus elemezheti a tartalmat a képet. Ez az elemzés egy "leírás" teljes mondatokban emberek számára olvasható nyelveként megjelenik a alapját képezi. A leírás összefoglalja, hogy mi az a képen található. Számítógépes Látástechnológiai algoritmus alapuló a vizuális jellemzőket azonosítja a kép különböző leírások létrehozásához. A leírásokat a rendszer kiértékeli, majd megbízhatósági pontszámot hoz létre hozzájuk. A megbízhatósági pontszámok listája csökkenő sorrendbe rendezve érkezik vissza.
+Számítógépes Látástechnológiai algoritmus elemezheti a tartalmat a képet. Ez az elemzés egy "leírás" teljes mondatokban emberek számára olvasható nyelveként megjelenik a alapját képezi. A leírás összefoglalja, hogy mi az a képen található. Számítógépes Látástechnológiai algoritmus alapuló a vizuális jellemzőket azonosítja a kép különböző leírások létrehozásához. Leírás ki lesz értékelve, és a egy megbízhatósági pontszám jönnek létre. A megbízhatósági pontszámok listája csökkenő sorrendbe rendezve érkezik vissza.
 
 ## <a name="image-description-example"></a>Kép leírását bemutató példa
 

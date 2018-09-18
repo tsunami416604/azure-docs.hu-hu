@@ -10,20 +10,20 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/17/2017
+ms.date: 09/17/2018
 ms.author: mbullwin
-ms.openlocfilehash: 191913500daf7f1ab20f92c7e951f58598d5d14e
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: bf247748415822d5ba1a0e652fdeff384d8e8db1
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35645240"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45982051"
 ---
 # <a name="monitor-multi-component-applications-with-application-insights-preview"></a>Az Application Insights (előzetes verzió) több összetevőből álló alkalmazások figyelése
 
 Követheti az alkalmazások, amelyek több kiszolgáló-összetevők, szerepkörök vagy szolgáltatások állnak [Azure Application Insights](app-insights-overview.md). Az összetevők és a közöttük a kapcsolatok állapotát az egyetlen alkalmazás-hozzárendelés jelennek meg. Egyes műveletek automatikus HTTP korrelációkereséssel több összetevőből keresztül is nyomon követése. Tárolódiagnosztika is integrálva és Alkalmazáshasználati is vonatkozhatnak. Az alkalmazás összetevőit egyetlen Application Insights-erőforrást használja. 
 
-![Több összetevőből álló alkalmazás-hozzárendelés](./media/app-insights-monitor-multi-role-apps/app-map.png)
+![Több összetevőből álló alkalmazás-hozzárendelés](./media/app-insights-monitor-multi-role-apps/application-map-001.png)
 
 Használjuk "összetevő" ide: minden olyan nagyméretű alkalmazások működőképes része. Például egy tipikus üzleti alkalmazás futó böngészők, az egyik legtöbbet beszélgető Ügyfélkód állhat, vagy több alkalmazás webszolgáltatásokhoz, amelyek a szerződéskötés után használhatják vissza háttérszolgáltatáshoz. Kiszolgáló-összetevők lehetnek a felhőben, egy üzemeltethető a helyszínen vagy lehet, hogy az Azure webes és feldolgozói szerepkörök, vagy futhat például a Dockert vagy a Service Fabric-tárolókban. 
 
@@ -33,7 +33,7 @@ A fő módszer küldött telemetriai adatokra minden összetevő ugyanarra az Ap
 
 További információ a felülbírálás a `cloud_RoleName` tulajdonság lásd [tulajdonságok hozzáadása: ITelemetryInitializer](app-insights-api-filtering-sampling.md#add-properties-itelemetryinitializer).  
 
-Bizonyos esetekben ez nem lehet megfelelő, és előfordulhat, hogy inkább a különböző erőforrások különböző csoportjaihoz, összetevők. Szüksége lehet például a különböző erőforrások felügyeleti vagy számlázási célból. Külön erőforrásokat használó azt jelenti, hogy egyetlen alkalmazás-hozzárendelés; megjelenített összes összetevő nem jelenik meg és hogy Ön nem lehet lekérdezni az összetevőben [Analytics](app-insights-analytics.md). Akkor is, a különböző erőforrások beállítása.
+Bizonyos esetekben ez nem lehet megfelelő, és előfordulhat, hogy inkább a különböző erőforrások különböző csoportjaihoz, összetevők. Szüksége lehet például a különböző erőforrások felügyeleti vagy számlázási célból.
 
 Az adott ismeret fog feltételezzük, hogy ez a dokumentum több összetevőből származó adatokat egy Application Insights-erőforrást küldeni kívánt további részében található.
 

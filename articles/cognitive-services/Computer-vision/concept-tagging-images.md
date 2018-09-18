@@ -1,23 +1,23 @@
 ---
-title: Rendszerképek címkézése
-titleSuffix: Computer Vision - Cognitive Services - Azure
-description: Computer Vision segítségével az Azure Cognitive Servicesben rendszerképek címkézése kapcsolatos fogalmakat.
+title: Címkézés rendszerképek – Computer Vision
+titleSuffix: Azure Cognitive Services
+description: Címkézés képek a Computer Vision API használatával kapcsolatos fogalmakat.
 services: cognitive-services
 author: deken
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: v-deken
-ms.openlocfilehash: b06265bbdd5ba642c5395823e98a6a76171baff4
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 159a1b9404f6ce635dcc8bb6007e52b7346ef98d
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44725421"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45982965"
 ---
-# <a name="tagging-images"></a>Rendszerképek címkézése
+# <a name="tagging-images"></a>Képek címkézése
 
 Számítógépes Látástechnológia alapján ad vissza címkéket több mint 2000 felismerhető objektumok, tárgy, táj és műveleteket. Ha a címkék olyan nem egyértelmű vagy nem közismert, az API-válasz biztosít "tippek" ismert beállítását a környezetben a címke jelentésének értelmezéséhez. Címkék nem egy besorolás szerint vannak rendezve, és nincs öröklési hierarchiát létezik. Tartalom címkék gyűjteménye a lemezkép teljes mondatokban formázott emberi olvasható nyelveként megjelenik a "leírás" alapját képezi. Vegye figyelembe, hogy ezen a ponton angol Képleírás az egyetlen támogatott nyelv.
 

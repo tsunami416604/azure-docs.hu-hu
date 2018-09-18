@@ -7,14 +7,14 @@ author: MladjoA
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: conceptual
-ms.date: 07/03/2018
+ms.date: 09/14/2018
 ms.author: mlandzic
-ms.openlocfilehash: 52fce1cf1acb5e084c629c9cad6486d6a599b4fd
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: a57e354651255e2d3ff723e978222d1a5a9fa002
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37435771"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45733346"
 ---
 # <a name="azure-sql-database-elastic-query-overview-preview"></a>Az Azure SQL Database rugalmas lekérdezésének áttekintése (előzetes verzió)
 
@@ -28,7 +28,7 @@ T-SQL teljes egészében az Azure SQL-adatbázisok lekérdezésére. Ez lehetőv
 
 ### <a name="available-on-standard-tier"></a>A standard szinten elérhető
 
-Rugalmas lekérdezés mind a Standard és a prémium teljesítményszint esetén támogatott. Című az előzetes verzió korlátozásai alá a teljesítményszintek alacsonyabb teljesítményt korlátozásai.
+Rugalmas lekérdezés mind a Standard és prémium szolgáltatási szinteken támogatott. Lásd az alábbi előzetes verzió korlátozásai teljesítmény korlátozásai alacsonyabb szolgáltatási szinteken.
 
 ### <a name="push-parameters-to-remote-databases"></a>Küldési paraméterek a távoli adatbázisokhoz
 
@@ -101,7 +101,7 @@ Rugalmas lekérdezés használatával jelentéskészítési feladatok elvégzés
 
 > [!NOTE]
 > Rugalmas adatbázis lekérdezése (átjárócsomópont) lehet különálló adatbázis, vagy ugyanazt az adatbázist, amelyen a szegmenstérkép lehet.
-> Bármilyen konfigurációs lehetőséget választja, győződjön meg arról, hogy, hogy az adatbázis szolgáltatás és a teljesítmény szintjének értéke elég nagy ahhoz, a bejelentkezési és a lekérdezésekre vonatkozó kérelmek várható mennyisége kezelésére.
+> Válassza ki, győződjön meg arról, hogy a szolgáltatási szint és az adott adatbázis méretétől számítási bármilyen konfigurációs értéke elég nagy ahhoz, a bejelentkezési és a lekérdezésekre vonatkozó kérelmek várható mennyisége kezelésére.
 
 Az alábbi lépéseket a rugalmas adatbázis-lekérdezések horizontális particionálási forgatókönyvek esetén (általában) több távoli SQL-adatbázis található táblázatok halmazát hozzáférést igénylő konfigurálása:
 
@@ -133,7 +133,7 @@ Rugalmas lekérdezés az Azure SQL Database-adatbázisok költségeinek tartalma
 
 ## <a name="preview-limitations"></a>Előzetes verzió korlátozásai
 
-* Az első rugalmas lekérdezés futtatása akár is igénybe vehet néhány percet az Standard teljesítménnyel szinten. Most szükség, a rugalmas lekérdezés funkció; betöltése a magasabb teljesítményszintek javítja a teljesítményt betöltése.
+* Az első rugalmas lekérdezés futtatása akár is igénybe vehet néhány percet a Standard szolgáltatási rétegben található. Most szükség, a rugalmas lekérdezés funkció; betöltése a magasabb szintű szolgáltatási szintek és a számítási méret javítja a teljesítmény betöltése.
 * Külső adatforrások vagy külső táblák az ssms-ben vagy az SSDT Scripting még nem támogatott.
 * Az SQL DB Import/Export még nem támogatja a külső és a külső táblák. Ha szeretné használni az Import/Export, dobja el ezek az objektumok exportálása előtt, és hozza létre újra őket az importálás után.
 * Rugalmas lekérdezés jelenleg csak támogatja a külső táblák csak olvasási hozzáféréssel. Azonban használhatja teljes T-SQL-funkciók az adatbázison, a külső tábla van definiálva. Ez lehet hasznos, például használja, például ideiglenes eredmények megőrzése KIVÁLASZTANI < column_list > és < local_table >, vagy a külső táblákra hivatkozó rugalmas lekérdezés adatbázisban tárolt eljárások meghatározásához.

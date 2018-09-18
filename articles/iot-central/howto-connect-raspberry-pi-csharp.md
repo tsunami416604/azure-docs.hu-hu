@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: 63843797cca7fe84cdb9ce91d2282b1c0c288f0c
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: a9390ac9046ad1e0ec5a1689052ee99bf76ec6f4
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39205136"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45734235"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-c"></a>Raspberry Pi csatlakoztatása az Azure IoT Central alkalmazáshoz (C#)
 
@@ -263,6 +263,9 @@ A következő lépéseket, használhatja a Visual Studio Code-ot. További infor
 
 Adja hozzá a kódot az eszköz hitelesítéséhez az Azure IoT Central eszközspecifikus kapcsolati karakterláncra. Az Azure IoT Central alkalmazásnak a valódi eszköz hozzáadásakor végzett jegyezze fel ezt a kapcsolati karakterláncot.
 
+  > [!NOTE]
+   > Az Azure IoT Central átváltott használatával az Azure IoT Hub Device Provisioning service (DPS) az összes eszköz kapcsolat, kövesse az alábbi instrustions [az eszköz kapcsolati karakterláncának lekérése](concepts-connectivity.md#getting-device-connection-string) és az oktatóanyag további részeinek folytatásához.
+
 1. Cserélje le `{your device connection string}` a a **Program.cs** fájlt a korábban feljegyzett kapcsolati karakterláncra.
 
 1. Futtassa a következő parancsot a parancssori környezetben:
@@ -314,7 +317,7 @@ A létrehozott alkalmazáshoz a **minta Devkits** alkalmazást sablon tartalmaz 
 
 ### <a name="telemetry-measurements"></a>Telemetria mérések
 
-| Mezőnév     | Mértékegységek  | Minimum | Maximum | Tizedeshelyek |
+| Mező neve     | Egység  | Minimális | Maximum | Tizedeshelyek |
 | -------------- | ------ | ------- | ------- | -------------- |
 | páratartalom       | %      | 0       | 100     | 0              |
 | TEMP           | ° C     | tartsuk ott -40     | 120     | 0              |
@@ -333,7 +336,7 @@ A létrehozott alkalmazáshoz a **minta Devkits** alkalmazást sablon tartalmaz 
 
 Numerikus beállításai
 
-| Megjelenített név | Mezőnév | Mértékegységek | Tizedeshelyek | Minimum | Maximum | Kezdeti |
+| Megjelenített név | Mező neve | Egység | Tizedeshelyek | Minimális | Maximum | Kezdeti |
 | ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
 | Feszültségérzékelő      | setVoltage | V | 0              | 0       | 240     | 0       |
 | Aktuális      | setCurrent | Teljesítménytényező  | 0              | 0       | 100     | 0       |
@@ -341,16 +344,16 @@ Numerikus beállításai
 
 A beállítások ki-/ bekapcsolása
 
-| Megjelenített név | Mezőnév | A szöveg | Ki a szöveg | Kezdeti |
+| Megjelenített név | Mező neve | A szöveg | Ki a szöveg | Kezdeti |
 | ------------ | ---------- | ------- | -------- | ------- |
-| INTEGRÁCIÓS MODUL           | activateIR | BE      | KI      | Ki     |
+| INTEGRÁCIÓS MODUL           | activateIR | ON      | KI      | Ki     |
 
 ### <a name="properties"></a>Tulajdonságok
 
-| Típus            | Megjelenített név | Mezőnév | Adattípus |
+| Típus            | Megjelenített név | Mező neve | Adattípus |
 | --------------- | ------------ | ---------- | --------- |
 | Eszköztulajdonság | Die száma   | dieNumber  | szám    |
-| SMS            | Tartózkodási hely     | hely   | -       |
+| Szöveg            | Hely     | location   | –       |
 
 ## <a name="next-steps"></a>További lépések
 

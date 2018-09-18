@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 09/17/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 921e9df11cd79e9d2558d9ca6a490a8da064deb8
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 877ea4c143d74414c3d733c446da57060322b11d
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45630341"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45982123"
 ---
 # <a name="azure-stack-1808-update"></a>Azure Stack 1808 frissítése
 
@@ -57,7 +57,7 @@ Ez a frissítés az Azure Stack a következő fejlesztéseket tartalmazza.
 
 - <!-- | IS ASDK--> **Blockchain-sablonok**. Most már futtathat [Ethereum consortium központi telepítések](azure-stack-ethereum.md) az Azure Stacken. A három új sablonokat is megtalálhatja a [Azure Stack gyors üzembe helyezési sablonokat](https://github.com/Azure/AzureStack-QuickStart-Templates). A felhasználó telepítheti és konfigurálhatja egy többtagú consortium Ethereum hálózati minimális Azure-ban és az Ethereum ismeretekkel lehetővé teszik. A sablonok az a célja, hogy egyszerűsítsen felhasználóknak, hogy a telepítő fejlesztési-tesztelési Blockchain telepítések néhány lépésben.
 
-
+- <!-- | IS ASDK--> **Az API verzió profil 2017-03-09-profile frissítve lett, hogy a 2018-03-01-hibrid**. API-profilok adja meg, az Azure erőforrás-szolgáltató és az Azure REST-végpontokat az API-verzió. Profilokkal kapcsolatos további információkért lásd: [kezelése API-verzióprofilok az Azure Stackben](/azure/azure-stack/user/azure-stack-version-profiles).
 
  ### <a name="fixed-issues"></a>Hibák kijavítva:
 - <!-- IS ASDK--> Azt javítva a rendelkezésre állási csoportot a portálon, amely eredményezett a egy tartalék tartomány és a frissítési tartomány 1 csoport létrehozásához. 
@@ -142,6 +142,17 @@ Emellett tartalmazza a kockázatcsökkentési spekulatív végrehajtás kockáza
 Az alábbiakban a telepítés utáni ismert hibáit a build-verziószáma.
 
 ### <a name="portal"></a>Portál
+
+- <!-- TBD - IS ASDK --> Előfordulhat, hogy megjelenik egy üres irányítópult, a portálon. Az irányítópult helyreállítani, kattintson **irányítópult szerkesztése**, majd kattintson a jobb gombbal, és válassza ki **visszaállítja az alapértelmezett állapotba**.
+
+- <!-- 2930718 - IS ASDK --> A felügyeleti portálon, minden felhasználói előfizetés részleteinek elérésekor után bezárja a panelt, és kattintson a **legutóbbi**, a felhasználói előfizetés neve nem jelenik meg.
+
+- <!-- 3060156 - IS ASDK --> A rendszergazda és a felhasználói portált, kattintson a portál beállításait, és válassza a **törli az összes beállítás és saját irányítópult** nem a várt módon működik. Egy hiba értesítés jelenik meg. 
+
+- <!-- 2930799 - IS ASDK --> A rendszergazda és a felhasználói portálon a **minden szolgáltatás**, az eszköz **DDoS potection-tervek** nem megfelelően szerepel. Ez nem érhető valójában az Azure Stackben. Ha megpróbálja létrehozni, hibaüzenet jelenik meg arról, hogy a portál nem tudta létrehozni a Piactéri elemet. 
+
+- <!-- 2930820 - IS ASDK --> A rendszergazda és a felhasználói portálon Ha a "Docker," a cikk helytelenül adja vissza. Ez nem érhető valójában az Azure Stackben. Ha megpróbálja létrehozni, megjelenik egy panel, hibát jelezve. 
+
 - <!-- 2967387 – IS, ASDK --> A fiók használatával jelentkezzen be az Azure Stack rendszergazdai vagy a felhasználói portálon jelenik meg **azonosítatlan felhasználó**. Ez akkor fordul elő, ha a fiók nem rendelkezik vagy egy *első* vagy *utolsó* megadott név. A probléma megkerüléséhez az első vagy utolsó nevét adja meg a felhasználói fiók szerkesztésével. Meg kell majd jelentkezzen ki, majd majd jelentkezzen be újra a portálra. 
 
 -  <!--  2873083 - IS ASDK --> Amikor a portal használatával hozzon létre egy virtuálisgép-méretezési csoport beállítása (VMSS), a *példány mérete* legördülő továbbra sem töltődik be megfelelően az Internet Explorer használata esetén. Ez a probléma megkerüléséhez használja egy másik böngészőben egy VMSS létrehozása a portál használata során.  
@@ -151,8 +162,6 @@ Az alábbiakban a telepítés utáni ismert hibáit a build-verziószáma.
 - <!--2760466 – IS  ASDK --> Amikor telepít egy új Azure Stack-környezet, amely ebben a verzióban fut, a riasztás azt jelzi, *aktiválás szükséges* nem jelenítik meg. [Az aktiválás](azure-stack-registration.md) marketplace szindikálási használatához szükség.  
 
 - <!-- TBD - IS ASDK --> A két felügyeleti előfizetés adattípusokat [verziójú 1804-es verzióban bevezetett](azure-stack-update-1804.md#new-features) nem használható. Az előfizetés-típusok a következők **előfizetés mérési**, és **Használatalapú előfizetés**. Ezek a típusok előfizetés új Azure Stack-környezetek verziójától kezdve az 1804 láthatók, de még nem használatra kész. Ön továbbra is használja a **alapértelmezett szolgáltató** előfizetés-típus.
-
-- <!-- TBD - IS --> Előfordulhat, hogy megjelenik egy üres irányítópult, a portálon. Szeretné használni az irányítópultot, kattintson a fogaskerék ikonra a portál jobb felső sarokban, és válassza **alapértelmezett beállítások visszaállítása**.
 
 - <!-- TBD - IS ASDK --> Felhasználói előfizetések eredmények az árva erőforrások törlése. Áthidaló megoldásként először törölje a felhasználó vagy a teljes erőforráscsoportot, és törölje a felhasználói előfizetések.
 

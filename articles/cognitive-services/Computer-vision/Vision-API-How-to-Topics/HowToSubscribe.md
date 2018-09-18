@@ -1,20 +1,21 @@
 ---
-title: Előfizetői azonosítók beszerzése a Computer Vision API |} A Microsoft Docs
-description: 'Útmutató: a Computer Vision API-hívások az előfizetési kulcsok beolvasása a Cognitive Services.'
+title: Előfizetői azonosítók beszerzése a Computer Vision API
+titlesuffix: Azure Cognitive Services
+description: További tudnivalók a Computer Vision API-hívások előfizetési kulcsainak beszerzése az Azure Cognitive Servicesben.
 services: cognitive-services
 author: KellyDF
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: article
 ms.date: 05/19/2017
 ms.author: kefre
-ms.openlocfilehash: 682266df9e1a1f8209904697358d10bbaa633cf1
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: db4d589bb0c7611e632a90f2174ad8e9c415bf6a
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35760228"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45985422"
 ---
 # <a name="how-to-obtain-subscription-keys"></a>Előfizetői azonosítók beszerzése
 
@@ -41,4 +42,4 @@ A régió esetében az előfizetési kulcs, Miután beszerezte a Próbakulcs elf
 
 ### <a name="related-links"></a>Kapcsolódó hivatkozások:
 
-* [A Microsoft Cognitive API-k – díjszabás](https://azure.microsoft.com/pricing/details/cognitive-services/)
+* [Az Azure Cognitive Services API-k – díjszabás](https://azure.microsoft.com/pricing/details/cognitive-services/)

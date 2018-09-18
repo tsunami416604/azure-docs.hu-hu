@@ -6,15 +6,15 @@ author: CarlRabeler
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 08/30/2018
+ms.date: 09/14/2018
 manager: craigg
 ms.author: carlrab
-ms.openlocfilehash: 8266d9e3530969154ac9c8c877badda9f8b4fed3
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 93b017482006507d616d9125cd17fd2f14389d59
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43307272"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45983046"
 ---
 # <a name="choosing-a-vcore-service-tier-compute-memory-storage-and-io-resources"></a>Virtuális mag szolgáltatásszint kiválasztása, számítási, memória, tárolási és i/o-erőforrások
 
@@ -26,7 +26,7 @@ Virtuálismag-modell azt is lehetővé teszi, hogy [Azure Hybrid Use Benefitet a
 
 ## <a name="service-tier-characteristics"></a>Szolgáltatási szint tulajdonságok
 
-A Virtuálismag-modell általános célú és a kritikus fontosságú üzleti szolgáltatáscsomagban biztosítja. Szolgáltatásszintek teljesítményszintjei, a magas rendelkezésre állás kialakítása, a hibák elszigetelését, a tárolási típust kínál számos és i/o-tartomány különbözteti meg. Az ügyfél külön-külön kell konfigurálnia a szükséges tárolási és a megőrzési időszak a biztonsági mentésekhez.
+A Virtuálismag-modell általános célú és a kritikus fontosságú üzleti szolgáltatáscsomagban biztosítja. Szolgáltatásszintek számítási méretű, a magas rendelkezésre állás kialakítása, a hibák elszigetelését, a tárolási típust kínál számos és i/o-tartomány különbözteti meg. Az ügyfél külön-külön kell konfigurálnia a szükséges tárolási és a megőrzési időszak a biztonsági mentésekhez.
 
 Az alábbi táblázat segít a két szintek közötti különbségeket:
 
@@ -53,10 +53,10 @@ Lásd: [SQL Database: gyakori kérdések](sql-database-faq.md) kapcsolatos gyako
 
 A következőket ajánljuk figyelmébe:
 - A lefoglalt tárolót adatfájlok (MDF) és a naplófájlok fájlok (LDF) használja.
-- Minden egyes egyetlen adatbázishoz tartozó teljesítményszintre támogatja az adatbázis maximális méretét, egy alapértelmezett 32 GB maximális mérettel.
+- Minden önálló adatbázis az adatbázis maximális méretét, egy alapértelmezett 32 GB maximális mérettel számítási mérete támogatja.
 - Amikor konfigurálja a szükséges egyetlen adatbázis mérete (MDF mérete), 30 %-a további tárhely automatikusan hozzáadott LDF támogatása
 - A felügyelt példány tároló mérete 32 GB többszörösének kell adni.
-- Kiválaszthatja, hogy bármely egyedülálló adatbázis mérete 10 GB-os és a támogatott maximális érték között
+- Kiválaszthatja, hogy minden önálló adatbázis mérete 10 GB-os és a támogatott maximális érték között
  - Standard szintű tárolóra vonatkozó növelése, vagy 10 GB-os lépésekben méretének csökkentése
  - A Premium storage növelheti, vagy 250 GB-os lépésekben méretének csökkentése
 - Az általános célú szolgáltatásszinten lévő `tempdb` használ egy csatlakoztatott SSD és a tárolási költségek a virtuális mag díja tartalmazza.
@@ -113,13 +113,13 @@ Több adatbázis feladatátvételi csoportok áttelepítése az elsődleges és 
 
 ### <a name="creation-of-a-geo-replication-secondary"></a>A georeplikáció másodlagos létrehozása
 
-Csak a geo-secondary elsődlegesként ugyanazon a szolgáltatásszinten használatával hozhat létre. Adatbázis magas log sebességet javasolt, hogy a másodlagos az elsődleges teljesítményszint jön létre. Geo-secondary egyetlen elsődleges adatbázishoz a rugalmas készlet létrehozásakor, ezért javasoljuk, hogy rendelkezik-e a készlet a `maxVCore` beállítása, amely megfelel az elsődleges adatbázishoz tartozó teljesítményszintre. Geo-secondary a egy elsődleges egy másik rugalmas készletben található rugalmas készlet létrehozásakor, ezért javasoljuk, hogy a címkészleteknek azonos `maxVCore` beállításai
+Csak a geo-secondary elsődlegesként ugyanazon a szolgáltatásszinten használatával hozhat létre. Adatbázis magas log sebességet javasolt, hogy a másodlagos számítási mérete megegyezik az elsődleges jön létre. Geo-secondary egyetlen elsődleges adatbázishoz a rugalmas készlet létrehozásakor, ezért javasoljuk, hogy rendelkezik-e a készlet a `maxVCore` beállítása, amely megfelel az elsődleges adatbázis számítási mérete. Geo-secondary a egy elsődleges egy másik rugalmas készletben található rugalmas készlet létrehozásakor, ezért javasoljuk, hogy a címkészleteknek azonos `maxVCore` beállításai
 
 ### <a name="using-database-copy-to-convert-a-dtu-based-database-to-a-vcore-based-database"></a>Adatbázis másolatának használata a Virtuálismag-alapú adatbázis DTU-alapú adatbázis konvertálása.
 
-A Virtuálismag-alapú teljesítményű szintű korlátozások nélkül, vagy speciális alkalmazás-előkészítés, amennyiben a cél teljesítményszintjét támogatja az adatbázis maximális mérete a forrásadatbázis egy adatbázis bármilyen adatbázis DTU-alapú teljesítményszinttel másolhatja. Ez azért, mert az adatbázis-másolat a másolási művelet kezdési időpontja adatokat pillanatképet készít, és nem hajt végre a forrás- és a cél közötti adatszinkronizálás. 
+Minden adatbázis DTU-alapú számítási méretű másolhatja vagy speciális alkalmazás-előkészítés, amennyiben a cél számítási méret támogatja a forrásadatbázis adatbázis maximális mérete korlátozások nélkül Virtuálismag-alapú számítási méretű adatbázishoz. Ez azért, mert az adatbázis-másolat a másolási művelet kezdési időpontja adatokat pillanatképet készít, és nem hajt végre a forrás- és a cél közötti adatszinkronizálás. 
 
 ## <a name="next-steps"></a>További lépések
 
-- További információ a meghatározott teljesítményszintet és a tároló mérete lehetőségek önálló adatbázis elérhető: [SQL Database Virtuálismag-alapú erőforráskorlátok az önálló adatbázisok](sql-database-vcore-resource-limits-single-databases.md#single-database-storage-sizes-and-performance-levels)
-- További tudnivalók az adott teljesítményszintjei és tárolási mérete választható rugalmas készletek számára elérhető: [SQL Database Virtuálismag-alapú erőforráskorlátok a rugalmas készletek](sql-database-vcore-resource-limits-elastic-pools.md#elastic-pool-storage-sizes-and-performance-levels).
+- Részletek az adott számítási méretek és a tároló mérete lehetőségek önálló adatbázis elérhető, lásd: [SQL Database Virtuálismag-alapú erőforráskorlátok az önálló adatbázisok](sql-database-vcore-resource-limits-single-databases.md#single-database-storage-sizes-and-compute-sizes)
+- Részletek az adott méretű számítási és tárolási mérete választható rugalmas készletek számára elérhető, lásd: [SQL Database Virtuálismag-alapú erőforráskorlátok a rugalmas készletek](sql-database-vcore-resource-limits-elastic-pools.md#elastic-pool-storage-sizes-and-compute-sizes).

@@ -8,14 +8,14 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 08/22/2018
+ms.date: 09/16/2018
 ms.author: glenga
-ms.openlocfilehash: 9f6746f1bf8fb65e39933afa00b74a2b8266a1a9
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: f7299b9193c5ab24431feb9c73a0a3cf97596da3
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44095436"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45734941"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Az Azure Functions – alkalmazásbeállítási referencia
 
@@ -152,18 +152,15 @@ Az alapértelmezett érték "6.5.0".
 |---|------------|
 |WEBHELY\_CSOMÓPONT\_DEFAULT_VERSION|6.5.0|
 
-## <a name="websiterunfromzip"></a>WEBHELY\_FUTTATÁSA\_FROM\_ZIP
+## <a name="websiterunfrompackage"></a>WEBHELY\_FUTTATÁSA\_FROM\_CSOMAG
 
 A függvényalkalmazás egy csatlakoztatott alkalmazáscsomag-fájl futtatását engedélyezi.
 
-> [!NOTE]
-> Ez a beállítás olyan előzetes verziójú funkció.
-
 |Kulcs|Mintaérték|
 |---|------------|
-|WEBHELY\_FUTTATÁSA\_FROM\_ZIP|1|
+|WEBHELY\_FUTTATÁSA\_FROM\_CSOMAG|1|
 
-Érvényes értékek a következők vagy egy URL-címet, amelyet a központi telepítési csomag fájl helyét, vagy `1`. Ha beállítása `1`, a csomagot kell lennie a `d:\home\data\SitePackages` mappát. Ezzel a beállítással telepítési zip használatakor a csomag automatikusan fel a rendszer ezen a helyen.  További információkért lásd: [a functions futtatása egy csomagfájlt](run-functions-from-deployment-package.md).
+Érvényes értékek a következők vagy egy URL-címet, amelyet a központi telepítési csomag fájl helyét, vagy `1`. Ha beállítása `1`, a csomagot kell lennie a `d:\home\data\SitePackages` mappát. Ezzel a beállítással telepítési zip használatakor a csomag automatikusan fel a rendszer ezen a helyen. Előzetes verzióban ez a beállítás neve volt `WEBSITE_RUN_FROM_ZIP`. További információkért lásd: [a functions futtatása egy csomagfájlt](run-functions-from-deployment-package.md).
 
 ## <a name="next-steps"></a>További lépések
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/10/2018
 ms.author: alkohli
 ms.component: common
-ms.openlocfilehash: 6cbaaeed75f160a2281fdce0949397b9a14bf981
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 1be7dd9ce537d0999ace01eafa46318e42df9f20
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44347919"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45732447"
 ---
 # <a name="use-azure-importexport-service-to-import-data-to-azure-files"></a>Adatok importálása az Azure Files Azure Import/Export szolgáltatás használata
 
@@ -26,7 +26,7 @@ Az Import/Export szolgáltatás támogatja az importálás kizárólag az Azure 
 Adatok átviteléhez az Azure Files importálási feladat létrehozása, előtt gondosan tekintse át, és hajtsa végre az alábbi listában szereplő előfeltételek. Tegye a következőket:
 
 - Import/Export szolgáltatás használata egy aktív Azure-előfizetéssel rendelkezik.
-- Legalább egy Azure Storage-fiók rendelkezik. Listájának megtekintéséhez [az Import/Export szolgáltatás által támogatott storage-fiókok és a tárolási típusok](storage-import-export-requirements.md). Új tárfiók létrehozásával kapcsolatos információkért lásd: [Storage-fiók létrehozása](storage-create-storage-account.md#create-a-storage-account).
+- Legalább egy Azure Storage-fiók rendelkezik. Listájának megtekintéséhez [az Import/Export szolgáltatás által támogatott storage-fiókok és a tárolási típusok](storage-import-export-requirements.md). Új tárfiók létrehozásával kapcsolatos információkért lásd: [Storage-fiók létrehozása](storage-quickstart-create-account.md).
 - A lemezek elegendő számú [támogatott típusok](storage-import-export-requirements.md#supported-disks). 
 - A Windows rendszert futtató egy [támogatott operációsrendszer-verzió](storage-import-export-requirements.md#supported-operating-systems).
 - [Töltse le a 2. verzió WAImportExport](https://www.microsoft.com/download/details.aspx?id=55280) a Windows rendszeren. Csomagolja ki az alapértelmezett mappába kívánja `waimportexport`. Például: `C:\WaImportExport`.

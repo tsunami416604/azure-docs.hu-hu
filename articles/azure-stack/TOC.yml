@@ -28,6 +28,8 @@ items:
     href: azure-stack-tutorial-sql-server.md
   - name: Webalkalmazások biztosítása
     href: azure-stack-tutorial-app-service.md
+  - name: Ethereum üzembe helyezése
+    href: azure-stack-ethereum.md
 - name: Alapelvek
   items:
   - name: Adatközpont integrációja
@@ -99,18 +101,28 @@ items:
     href: azure-stack-manage-basics.md
 - name: Útmutatók
   items:
-  - name: Telemetriai adatok gyűjtésének konfigurálása
-    href: azure-stack-telemetry.md
-  - name: Az Azure Stack regisztrálása
-    href: azure-stack-registration.md
-  - name: Kezelés
+  - name: Az Azure Stack kezelése
     items:
+    - name: Telemetriai adatok gyűjtésének konfigurálása
+      href: azure-stack-telemetry.md
+    - name: Az Azure Stack regisztrálása
+      href: azure-stack-registration.md
     - name: Régiók kezelése
       href: azure-stack-region-management.md
     - name: A rendszergazdai portál használata
       href: azure-stack-manage-portals.md
     - name: Csatlakozás az Azure Stackhez
       href: azure-stack-connect-azure-stack.md
+    - name: Csatlakozás az Azure szolgáltatáshoz
+      items:
+      - name: Csatlakozás VPN használatával
+        href: azure-stack-connect-vpn.md
+      - name: Tudnivalók a VPN gatewayről
+        href: azure-stack-vpn-gateway-about-vpn-gateways.md
+      - name: A VPN gateway beállításairól
+        href: azure-stack-vpn-gateway-settings.md
+      - name: Csatlakozás ExpressRoute használatával
+        href: azure-stack-connect-expressroute.md
     - name: Parancssori felület engedélyezése a felhasználók számára
       href: azure-stack-cli-admin.md
     - name: Felügyeleti környezet beállítása
@@ -149,6 +161,8 @@ items:
         href: azure-stack-manage-storage-physical-memory-capacity.md
       - name: Skálázási egység csomópontok hozzáadása
         href: azure-stack-add-scale-node.md
+      - name: Nyilvános IP-címek hozzáadása
+        href: azure-stack-add-ips.md
     - name: A hardver cseréje
       items:
       - name: Csomópont-műveletek
@@ -159,25 +173,6 @@ items:
         href: azure-stack-replace-disk.md
       - name: Cserélje le az összetevő
         href: azure-stack-replace-component.md
-    - name: Készítsen biztonsági másolatot az Azure Stackben
-      href: azure-stack-backup-infrastructure-backup.md
-      items:
-      - name: A felügyeleti konzolról az Azure Stack biztonsági mentés engedélyezése
-        href: azure-stack-backup-enable-backup-console.md
-      - name: A PowerShell-lel az Azure Stack biztonsági mentés engedélyezése
-        href: azure-stack-backup-enable-backup-powershell.md
-      - name: Készítsen biztonsági másolatot az Azure Stackben
-        href: azure-stack-backup-back-up-azure-stack.md
-      - name: Fájlok és alkalmazások biztonsági mentése az Azure Stackben
-        href: ../backup/backup-mabs-files-applications-azure-stack.md?toc=/azure/azure-stack/toc.json&bc=/azure/azure-stack/breadcrumb/toc.json
-      - name: Az Azure Stack-alapú virtuális gépek replikálása az Azure-bA
-        href: ../site-recovery/azure-stack-site-recovery.md?toc=/azure/azure-stack/toc.json&bc=/azure/azure-stack/breadcrumb/toc.json
-      - name: Végzetes adatvesztés utáni helyreállítás
-        href: azure-stack-backup-recover-data.md
-      - name: Ajánlott biztonsági eljárások
-        href: azure-stack-backup-best-practices.md
-      - name: Biztonsági mentési referencia
-        href: azure-stack-backup-reference.md
   - name: Biztonság, megfelelőség és identitás
     items:
     - name: Biztonsági áttekintés
@@ -202,144 +197,150 @@ items:
       href: azure-stack-rotate-secrets.md
     - name: A víruskereső frissítése
       href: azure-stack-security-av.md
-  - name: Szolgáltatások ajánlása
+  - name: A Marketplace feltöltése
     items:
-    - name: Szolgáltatásajánlások áttekintése
-      href: azure-stack-offer-services-overview.md
-    - name: Csomagok, ajánlatok és kvóták létrehozása
+    - name: Piactér áttekintése
+      href: azure-stack-marketplace.md
+    - name: Marketplace-elemek letöltése
+      href: azure-stack-download-azure-marketplace-item.md
+    - name: Az Azure Stackhez az Azure Marketplace-elemek
+      href: azure-stack-marketplace-azure-items.md
+    - name: Marketplace-elem létrehozása és közzététele
+      href: azure-stack-create-and-publish-marketplace-item.md
+    - name: A Piactéri közzétételi eszköz használata
+      href: azure-stack-marketplace-publisher.md
+    - name: Támogatott vendég operációs rendszerek az Azure Stackhez
+      href: azure-stack-supported-os.md
+    - name: Egyéni virtuálisgép-rendszerkép hozzáadása
+      href: azure-stack-add-vm-image.md
+    - name: Egy virtuálisgép-méretezési csoportot ajánlat
+      href: azure-stack-compute-add-scalesets.md
+    - name: Linux rendszerű virtuális gépek biztosítása
+      href: azure-stack-linux.md
+    - name: Red Hat virtuális gép hozzáadása
+      href: azure-stack-redhat-create-upload-vhd.md
+    - name: Kubernetes-fürt ajánlat
+      href: azure-stack-solution-template-kubernetes-cluster-add.md
+  - name: Szolgáltatások ajánlása
+    href: azure-stack-offer-services-overview.md
+  - name: PaaS szolgáltatások áttekintése
+    href: azure-stack-tools-paas-services.md
+  - name: SQL kínál PaaS-ként
+    href: azure-stack-sql-resource-provider.md
+    items:
+    - name: Az SQL Server erőforrás-szolgáltató üzembe helyezése
+      href: azure-stack-sql-resource-provider-deploy.md
+    - name: Az SQL futtató kiszolgálók hozzáadása
+      href: azure-stack-sql-resource-provider-hosting-servers.md
+    - name: SQL-adatbázisok létrehozása
+      href: azure-stack-sql-resource-provider-databases.md
+    - name: Az SQL Server erőforrás-szolgáltató frissítése
+      href: azure-stack-sql-resource-provider-update.md
+    - name: Az SQL Server erőforrás-szolgáltató kezelése
+      href: azure-stack-sql-resource-provider-maintain.md
+    - name: Az SQL Server erőforrás-szolgáltató eltávolítása
+      href: azure-stack-sql-resource-provider-remove.md
+  - name: Az ajánlat MySQL PaaS-ként
+    href: azure-stack-mysql-resource-provider.md
+    items:
+    - name: A MySQL-kiszolgáló erőforrás-szolgáltató üzembe helyezése
+      href: azure-stack-mysql-resource-provider-deploy.md
+    - name: A MySQL üzemeltető kiszolgálók hozzáadása
+      href: azure-stack-mysql-resource-provider-hosting-servers.md
+    - name: MySQL-adatbázisok létrehozása
+      href: azure-stack-mysql-resource-provider-databases.md
+    - name: A MySQL-kiszolgáló erőforrás-szolgáltató frissítése
+      href: azure-stack-mysql-resource-provider-update.md
+    - name: A MySQL-kiszolgáló erőforrás-szolgáltató kezelése
+      href: azure-stack-mysql-resource-provider-maintain.md
+    - name: A MySQL-kiszolgáló erőforrás-szolgáltató eltávolítása
+      href: azure-stack-mysql-resource-provider-remove.md
+  - name: App Service ajánlása PaaS-ként
+    href: azure-stack-app-service-overview.md
+    items:
+    - name: Az App Service-kapacitásának megtervezése
+      href: azure-stack-app-service-capacity-planning.md
+    - name: A kezdés előtt
+      href: azure-stack-app-service-before-you-get-started.md
+    - name: Hogyan lehet Azure App Service az Azure Stacken újraterjeszteni a tartalék tartományok között
+      href: azure-stack-app-service-fault-domain-update.md
+    - name: Az App Service erőforrás-szolgáltató üzembe helyezése
+      href: azure-stack-app-service-deploy.md
+    - name: App Service-szolgáltatások offline üzembe helyezése
+      href: azure-stack-app-service-deploy-offline.md
+    - name: Az App Service frissítése
+      href: azure-stack-app-service-update.md
+    - name: Kapcsolat nélküli frissítése az App Service-ben
+      href: azure-stack-app-service-update-offline.md
+    - name: További webes feldolgozói szerepkörök hozzáadása
+      href: azure-stack-app-service-add-worker-roles.md
+    - name: Központi telepítés forrásának konfigurálása
+      href: azure-stack-app-service-configure-deployment-sources.md
+    - name: App Service-ben az Azure Stack kibocsátási megjegyzései
       items:
-      - name: Csomag, ajánlat, kvóta és előfizetés áttekintése
-        href: azure-stack-plan-offer-quota-overview.md
-      - name: Csomag létrehozása
-        href: azure-stack-create-plan.md
-      - name: Hozzon létre egy kiegészítő csomag
-        href: create-add-on-plan.md
-      - name: Ajánlat létrehozása
-        href: azure-stack-create-offer.md
-      - name: Előfizetés egy ajánlatra
-        href: azure-stack-subscribe-plan-provision-vm.md
-      - name: Ajánlat delegálása az Azure Stackben
-        href: azure-stack-delegated-provider.md
-      - name: Kvótatípusok
-        href: azure-stack-quota-types.md
-    - name: PaaS szolgáltatások áttekintése
-      href: azure-stack-tools-paas-services.md
-    - name: SQL kínál PaaS-ként
-      href: azure-stack-sql-resource-provider.md
-      items:
-      - name: Az SQL Server erőforrás-szolgáltató üzembe helyezése
-        href: azure-stack-sql-resource-provider-deploy.md
-      - name: Az SQL futtató kiszolgálók hozzáadása
-        href: azure-stack-sql-resource-provider-hosting-servers.md
-      - name: SQL-adatbázisok létrehozása
-        href: azure-stack-sql-resource-provider-databases.md
-      - name: Az SQL Server erőforrás-szolgáltató frissítése
-        href: azure-stack-sql-resource-provider-update.md
-      - name: Az SQL Server erőforrás-szolgáltató kezelése
-        href: azure-stack-sql-resource-provider-maintain.md
-      - name: Az SQL Server erőforrás-szolgáltató eltávolítása
-        href: azure-stack-sql-resource-provider-remove.md
-    - name: Az ajánlat MySQL PaaS-ként
-      href: azure-stack-mysql-resource-provider.md
-      items:
-      - name: A MySQL-kiszolgáló erőforrás-szolgáltató üzembe helyezése
-        href: azure-stack-mysql-resource-provider-deploy.md
-      - name: A MySQL üzemeltető kiszolgálók hozzáadása
-        href: azure-stack-mysql-resource-provider-hosting-servers.md
-      - name: MySQL-adatbázisok létrehozása
-        href: azure-stack-mysql-resource-provider-databases.md
-      - name: A MySQL-kiszolgáló erőforrás-szolgáltató frissítése
-        href: azure-stack-mysql-resource-provider-update.md
-      - name: A MySQL-kiszolgáló erőforrás-szolgáltató kezelése
-        href: azure-stack-mysql-resource-provider-maintain.md
-      - name: A MySQL-kiszolgáló erőforrás-szolgáltató eltávolítása
-        href: azure-stack-mysql-resource-provider-remove.md
-    - name: App Service ajánlása PaaS-ként
-      items:
-      - name: Az Azure Stack App Service szolgáltatásának áttekintése
-        href: azure-stack-app-service-overview.md
-      - name: Kapacitástervezés
-        href: azure-stack-app-service-capacity-planning.md
-      - name: A kezdés előtt
-        href: azure-stack-app-service-before-you-get-started.md
-      - name: Hogyan lehet Azure App Service az Azure Stacken újraterjeszteni a tartalék tartományok között
-        href: azure-stack-app-service-fault-domain-update.md
-      - name: Az App Service erőforrás-szolgáltató üzembe helyezése
-        href: azure-stack-app-service-deploy.md
-      - name: App Service-szolgáltatások offline üzembe helyezése
-        href: azure-stack-app-service-deploy-offline.md
-      - name: Az App Service frissítése
-        href: azure-stack-app-service-update.md
-      - name: Kapcsolat nélküli frissítése az App Service-ben
-        href: azure-stack-app-service-update-offline.md
-      - name: További webes feldolgozói szerepkörök hozzáadása
-        href: azure-stack-app-service-add-worker-roles.md
-      - name: Központi telepítés forrásának konfigurálása
-        href: azure-stack-app-service-configure-deployment-sources.md
       - name: App Service-ben az Azure Stack update 1 kibocsátási megjegyzései
         href: azure-stack-app-service-release-notes-update-one.md
       - name: App Service-ben az Azure Stack 2-es frissítés – kibocsátási megjegyzések
         href: azure-stack-app-service-release-notes-update-two.md
       - name: App Service-ben az Azure Stack 3-as frissítés – kibocsátási megjegyzések
         href: azure-stack-app-service-release-notes-update-three.md
-    - name: Ethereum üzembe helyezése
-      href: azure-stack-ethereum.md
-    - name: A Marketplace feltöltése
+  - name: Csomagok, ajánlatok és kvóták létrehozása
+    items:
+    - name: Csomag, ajánlat, kvóta és előfizetés áttekintése
+      href: azure-stack-plan-offer-quota-overview.md
+    - name: Csomag létrehozása
+      href: azure-stack-create-plan.md
+    - name: Hozzon létre egy kiegészítő csomag
+      href: create-add-on-plan.md
+    - name: Ajánlat létrehozása
+      href: azure-stack-create-offer.md
+    - name: Előfizetés egy ajánlatra
+      href: azure-stack-subscribe-plan-provision-vm.md
+    - name: Ajánlat delegálása az Azure Stackben
+      href: azure-stack-delegated-provider.md
+    - name: Kvótatípusok
+      href: azure-stack-quota-types.md
+  - name: Használat és számlázás
+    href: azure-stack-billing-and-chargeback.md
+    items:
+    - name: Kezelése a használati és számlázási információkkal egy CSP-hez
+      href: azure-stack-add-manage-billing-as-a-csp.md
       items:
-      - name: Piactér áttekintése
-        href: azure-stack-marketplace.md
-      - name: Marketplace-elemek letöltése
-        href: azure-stack-download-azure-marketplace-item.md
-      - name: Az Azure Stackhez az Azure Marketplace-elemek
-        href: azure-stack-marketplace-azure-items.md
-      - name: Marketplace-elem létrehozása és közzététele
-        href: azure-stack-create-and-publish-marketplace-item.md
-      - name: A Piactéri közzétételi eszköz használata
-        href: azure-stack-marketplace-publisher.md
-      - name: Támogatott vendég operációs rendszerek az Azure Stackhez
-        href: azure-stack-supported-os.md
-      - name: Egyéni virtuálisgép-rendszerkép hozzáadása
-        href: azure-stack-add-vm-image.md
-      - name: Egy virtuálisgép-méretezési csoportot ajánlat
-        href: azure-stack-compute-add-scalesets.md
-      - name: Linux rendszerű virtuális gépek biztosítása
-        href: azure-stack-linux.md
-      - name: Red Hat virtuális gép hozzáadása
-        href: azure-stack-redhat-create-upload-vhd.md
-      - name: Kubernetes-fürt ajánlat
-        href: azure-stack-solution-template-kubernetes-cluster-add.md
-    - name: Használat és számlázás
-      href: azure-stack-billing-and-chargeback.md
+      - name: Használat és számlázás a bérlők felvétele
+        href: azure-stack-csp-howto-register-tenants.md
+      - name: Bérlői regisztráció kezelése
+        href: azure-stack-csp-ref-operations.md
+    - name: Használati és számlázási referencia
       items:
-      - name: Kezelése a használati és számlázási információkkal egy CSP-hez
-        href: azure-stack-add-manage-billing-as-a-csp.md
-        items:
-        - name: Használat és számlázás a bérlők felvétele
-          href: azure-stack-csp-howto-register-tenants.md
-        - name: Bérlői regisztráció kezelése
-          href: azure-stack-csp-ref-operations.md
-      - name: Használati és számlázási referencia
-        items:
-        - name: Jelentéskészítés a használati adatokról
-          href: azure-stack-usage-reporting.md
-        - name: Jelentéskészítési infrastruktúra felhőszolgáltatók használat
-          href: azure-stack-csp-ref-infrastructure.md
-        - name: Szolgáltatói használati API
-          href: azure-stack-provider-resource-api.md
-        - name: Bérlői használati API
-          href: azure-stack-tenant-resource-usage-api.md
-        - name: Használat – gyakori kérdések
-          href: azure-stack-usage-related-faq.md
-    - name: Csatlakozás az Azure szolgáltatáshoz
-      items:
-      - name: Csatlakozás VPN használatával
-        href: azure-stack-connect-vpn.md
-      - name: Tudnivalók a VPN gatewayről
-        href: azure-stack-vpn-gateway-about-vpn-gateways.md
-      - name: A VPN gateway beállításairól
-        href: azure-stack-vpn-gateway-settings.md
-      - name: Csatlakozás ExpressRoute használatával
-        href: azure-stack-connect-expressroute.md
+      - name: Jelentéskészítés a használati adatokról
+        href: azure-stack-usage-reporting.md
+      - name: Jelentéskészítési infrastruktúra felhőszolgáltatók használat
+        href: azure-stack-csp-ref-infrastructure.md
+      - name: Szolgáltatói használati API
+        href: azure-stack-provider-resource-api.md
+      - name: Bérlői használati API
+        href: azure-stack-tenant-resource-usage-api.md
+      - name: Használat – gyakori kérdések
+        href: azure-stack-usage-related-faq.md
+  - name: Készítsen biztonsági másolatot az Azure Stackben
+    href: azure-stack-backup-infrastructure-backup.md
+    items:
+    - name: A felügyeleti konzolról az Azure Stack biztonsági mentés engedélyezése
+      href: azure-stack-backup-enable-backup-console.md
+    - name: A PowerShell-lel az Azure Stack biztonsági mentés engedélyezése
+      href: azure-stack-backup-enable-backup-powershell.md
+    - name: Készítsen biztonsági másolatot az Azure Stackben
+      href: azure-stack-backup-back-up-azure-stack.md
+    - name: Fájlok és alkalmazások biztonsági mentése az Azure Stackben
+      href: ../backup/backup-mabs-files-applications-azure-stack.md?toc=/azure/azure-stack/toc.json&bc=/azure/azure-stack/breadcrumb/toc.json
+    - name: Az Azure Stack-alapú virtuális gépek replikálása az Azure-bA
+      href: ../site-recovery/azure-stack-site-recovery.md?toc=/azure/azure-stack/toc.json&bc=/azure/azure-stack/breadcrumb/toc.json
+    - name: Végzetes adatvesztés utáni helyreállítás
+      href: azure-stack-backup-recover-data.md
+    - name: Ajánlott biztonsági eljárások
+      href: azure-stack-backup-best-practices.md
+    - name: Biztonsági mentési referencia
+      href: azure-stack-backup-reference.md
   - name: Hibaelhárítás
     items:
     - name: Ismert problémák
@@ -372,9 +373,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-stack
   - name: Képzés és tanúsítványok
     href: https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert
-ms.openlocfilehash: 2334accb56409bf77b52153a9e0d279cddd1d352
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: c6032eb4482dafaebcc376f3f22102a15f6f4cf4
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44026664"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45985613"

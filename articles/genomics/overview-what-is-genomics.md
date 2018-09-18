@@ -1,41 +1,39 @@
 ---
 title: Mi az a Microsoft Genomics? | Microsoft Docs
 titleSuffix: Azure
-description: Ismerje meg, hogyan Microsoft Genomics is power genom az alkalmazás-Előkészítés most kínál a másodlagos elemzéshez BWA-GATK felhőalapú megvalósítása.
-services: microsoft-genomics
+description: Ismerje meg, hogyan a Microsoft Genomics segítségével genomszekvenálás, most kínál a felhőalapú megvalósítása a Burrows-Wheeler Aligner (BWA) és a Genome Analysis Toolkit (GATK) másodlagos elemzéshez. Fontos, hogy ISO-minősítéssel rendelkezik, és megfelel a HIPAA előírásainak.
+services: genomics
 author: grhuynh
-manager: jhubbard
-editor: jasonwhowell
+manager: cgronlun
 ms.author: grhuynh
-ms.service: microsoft-genomics
-ms.workload: genomics
+ms.service: genomics
 ms.topic: article
 ms.date: 12/07/2017
-ms.openlocfilehash: 8743905d6e415049a563bcd6b4736d6569f59b7f
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 4b4510a02c4212724f8a592c7318aecab3d06275
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36333257"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45733261"
 ---
 # <a name="what-is-microsoft-genomics"></a>Mi az a Microsoft Genomics?
-Microsoft Genomics nyújt egy felhőalapú megvalósítása a Burrows-Wheeler Aligner (BWA) és a genom elemzés Toolkit (GATK) másodlagos elemzés céljából. A szolgáltatás ISO hitelesített és megfelel a HIPAA szabályokkal, és az alkalmazás-előkészítés genom igényeinek ár kiszámíthatóságot kínál. Megtudhatja, hogyan használhatja a Microsoft Genomics szolgáltatást, és integrálhatja az API felületen a quickstarts, oktatóanyagok és dokumentáció olvasása.
+A Microsoft Genomics kínál felhőalapú megvalósítása a Burrows-Wheeler Aligner (BWA) és a Genome Analysis Toolkit (GATK) másodlagos elemzéshez. A szolgáltatás ISO-minősítéssel rendelkezik, és megfelel a HIPAA előírásainak, és az alkalmazás-előkészítés genom igényeinek árkiszámíthatóságot kínál. Megtudhatja, hogyan használja a Microsoft Genomics szolgáltatásba, és integrálhatja az API a rövid útmutatók, oktatóanyagok és dokumentáció olvasásakor.
 
 ## <a name="support-your-most-demanding-sequencing-needs"></a>A legmagasabb szekvenálási igények támogatása
-Saját adatközpontok kezelése helyett élvezze azokat az előnyöket, amelyeket a Microsoft mérete és exabájtos méretű számítási feladatok terén szerzett tapasztalata nyújt. A felhő megvalósítással kapcsolatos, a BWA GATK magas concordant és a széles körű Intézet ajánlott eljárásokat.
+Saját adatközpontok kezelése helyett élvezze azokat az előnyöket, amelyeket a Microsoft mérete és exabájtos méretű számítási feladatok terén szerzett tapasztalata nyújt. A felhő megvalósítással kapcsolatos, a BWA GATK magas concordant folyamatokkal a széles körű Institute ajánlott eljárásokat.
 
 
-## <a name="keep-your-business-running"></a>A folyamatos üzletmenet megtartása
-Microsoft Genomics kínál a rendelkezésre állás 99,99 % szolgáltatásiszint-szerződés (SLA) munkafolyamat kérelmek fogadására. További tudnivalók a Microsoft Genomics [SLA](https://azure.microsoft.com/support/legal/sla/genomics/v1_0/).
+## <a name="keep-your-business-running"></a>Az üzletmenet megtartása
+A Microsoft Genomics egy 99,99 %-os rendelkezésre állási szolgáltatásiszint-szerződés (SLA) munkafolyamat kérések fogadása kínál. További információ a Microsoft Genomics [SLA](https://azure.microsoft.com/support/legal/sla/genomics/v1_0/).
 
 
 ## <a name="secure-your-data"></a>Az adatok védelme
-A Microsoft Genomics szolgáltatás ISO 27001, ISO 27018, de ISO 9001 hitelesített és megfelel a HIPAA szabályokkal. Az Azure platform biztonságáról az [Azure biztonsági és adatkezelési központban](https://www.microsoft.com/en-us/trustcenter/security) talál információkat.
+A Microsoft Genomics szolgáltatásba az ISO 27001, ISO 27018 és ISO 9001 hitelesített és megfelel a HIPAA előírásainak. Az Azure platform biztonságáról az [Azure biztonsági és adatkezelési központban](https://www.microsoft.com/en-us/trustcenter/security) talál információkat.
 
 
 ## <a name="next-steps"></a>További lépések
-Most, hogy elolvasta a Microsoft Genomics bemutatása, hogy készen áll:
-- Tekintse meg a költségeinek összehasonlításáért és árkalkulációjáért árképzést ismertető oldalra. [Díjszabás](https://azure.microsoft.com/pricing/details/genomics/)
-- Ismerkedés a Microsoft Genomics szolgáltatáson keresztül az első munkafolyamat futtatásával. [Egy munkafolyamat futtatásához a Microsoft Genomics szolgáltatáson keresztül ](quickstart-run-genomics-workflow-portal.md)
-- A saját adatok feldolgozásra küldése a Microsoft Genomics szolgáltatás: [FASTQ párosítva](quickstart-input-pair-FASTQ.md) | [BAM](quickstart-input-BAM.md) | [több FASTQ vagy BAM](quickstart-input-multiple.md) 
+Most, hogy elolvasta a Microsoft Genomics bemutatása, készen áll:
+- További információt a díjszabási lapon az költségeinek összehasonlításáért és árkalkulációjáért. [Díjszabás](https://azure.microsoft.com/pricing/details/genomics/)
+- Első lépésként az első munkafolyamat futtatása a Microsoft Genomics szolgáltatással. [Munkafolyamat futtatása a Microsoft Genomics szolgáltatással ](quickstart-run-genomics-workflow-portal.md)
+- Küldje el a Microsoft Genomics szolgáltatásba az a saját adatokat a feldolgozáshoz: [párosított FASTQ](quickstart-input-pair-FASTQ.md) | [BAM](quickstart-input-BAM.md) | [több FASTQ vagy BAM](quickstart-input-multiple.md) 
 

@@ -12,12 +12,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 03/04/2018
 ms.author: glenga
-ms.openlocfilehash: d80914fcd1f667924b52122b39f95871c1e21532
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: a8ee92d117a416d638f62b573dfb155f67bf66e0
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44298012"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45983153"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Az Azure Functions JavaScript-fejlesztői útmutató
 
@@ -94,6 +94,13 @@ context.bindings.myOutput = {
 ```
 
 Vegye figyelembe, hogy ha szeretné, adja meg a kimeneti kötés használatával a `context.done` metódus helyett a `context.binding` objektum (lásd alább).
+
+### <a name="contextbindingdata-property"></a>context.bindingData tulajdonság
+
+```
+context.bindingData
+```
+Egy eseményindító metaadatok és a függvény meghívási adatokat tartalmazó nevű objektumot ad vissza (`invocationId`, `sys.methodName`, `sys.utcNow`, `sys.randGuid`). Az eseményindító metaadatok egy példa: Ez [event hubs példa](functions-bindings-event-hubs.md#trigger---javascript-example).
 
 ### <a name="contextdone-method"></a>Context.Done metódus
 ```
@@ -262,8 +269,9 @@ Ha HTTP-eseményindítók használata során a HTTP kérés- és objektumokat sz
     ```javascript
     context.bindings.response = { status: 201, body: "Insert succeeded." };
     ```
++ _[Csak válasz]_  Meghívásával `context.res.send(body?: any)`. HTTP-választ jön létre a bemeneti `body` , a válasz törzse. `context.done()` implicit módon nevezzük.
 
-+ [Csak válasz] Meghívásával `context.done()`. HTTP-kötést egy különleges visszaadja a választ, az átadott a `context.done()` metódust. A következő HTTP-kimeneti kötés határozza meg a `$return` kimeneti paraméterként:
++ _[Csak válasz]_  Meghívásával `context.done()`. HTTP-kötést egy különleges visszaadja a választ, az átadott a `context.done()` metódust. A következő HTTP-kimeneti kötés határozza meg a `$return` kimeneti paraméterként:
 
     ```json
     {

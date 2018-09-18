@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/31/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 1bf20ebec5792fc01c62966a0454c37c3c950182
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: 554434e57c5c67809f79aab21054e6ad60fe8491
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35923549"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45729387"
 ---
 # <a name="azure-ad-connect-user-sign-in-options"></a>Az Azure AD Connect felhasználói bejelentkezési lehetőségek
 Az Azure Active Directory (Azure AD) Connect lehetővé teszi, hogy a felhasználókat, hogy jelentkezzen be a felhő- és a helyszíni erőforrásokhoz ugyanazt a jelszót. Ez a cikk azokat a fogalmakat minden identitás-modell segítségével válassza ki az Azure ad-ben való bejelentkezéshez használni kívánt identitást.
@@ -114,7 +114,7 @@ A felhasználó egyszerű Felhasználónevét formátuma a username@domain. Pél
 ### <a name="user-principal-name-in-azure-ad"></a>Az Azure ad-ben a felhasználó egyszerű neve
 Az Azure AD Connect varázsló a userPrincipalName attribútum használ, vagy megadhatja a attribútumot (egyéni telepítés) használható a helyszíni, egyszerű felhasználónév az Azure ad-ben. Ez az Azure ad-ben való bejelentkezéshez használt értéket. Ha a userPrincipalName attribútum értéke nem felel meg egy ellenőrzött tartomány Azure AD-ben, majd az Azure AD felülírja az alapértelmezett. onmicrosoft.com értéket.
 
-Minden címtárat az Azure Active Directoryban tartalmaz egy beépített tartomány nevét, a következő formátumban: contoso.onmicrosoft.com, amely lehetővé teszi Azure-ban vagy más Microsoft-szolgáltatások használatának megkezdésében. Javítása, és a bejelentkezési élmény egyszerűsítése érdekében egyéni tartományok használatával. Információ az egyéni tartománynevek az Azure ad-ben és a egy tartomány ellenőrzéséhez: [az egyéni tartománynév hozzáadása az Azure Active Directory](../fundamentals/add-custom-domain.md#add-the-custom-domain-name-to-your-directory).
+Minden címtárat az Azure Active Directoryban tartalmaz egy beépített tartomány nevét, a következő formátumban: contoso.onmicrosoft.com, amely lehetővé teszi Azure-ban vagy más Microsoft-szolgáltatások használatának megkezdésében. Javítása, és a bejelentkezési élmény egyszerűsítése érdekében egyéni tartományok használatával. Információ az egyéni tartománynevek az Azure ad-ben és a egy tartomány ellenőrzéséhez: [az egyéni tartománynév hozzáadása az Azure Active Directory](../fundamentals/add-custom-domain.md#add-a-custom-domain-name).
 
 ## <a name="azure-ad-sign-in-configuration"></a>Azure AD-bejelentkezés konfigurálása
 ### <a name="azure-ad-sign-in-configuration-with-azure-ad-connect"></a>Az Azure AD bejelentkezés konfigurálása az Azure AD Connecttel
@@ -126,7 +126,7 @@ Az Azure AD bejelentkezési oldal az UPN-utótagot, amely a helyszíni Active Di
 | Állapot | Leírás | Beavatkozás szükséges |
 |:--- |:--- |:--- |
 | Ellenőrizve |Az Azure AD Connect található egy egyező ellenőrzött tartomány Azure AD-ben. Ebben a tartományban az összes felhasználó által a helyszíni hitelesítő adataikkal jelentkezhetnek be. |Nem kell módosítania. |
-| Nincs ellenőrizve |Az Azure AD Connect talált egyező egyéni tartományt az Azure ad-ben, de nem ellenőrzi, hogy. Ez a tartomány felhasználói UPN-utótagját változnak az alapértelmezett. onmicrosoft.com utótag fog szerepelni, ha a tartomány nem ellenőrzött szinkronizálás után. | [Az egyéni tartomány ellenőrzése az Azure ad-ben.](../fundamentals/add-custom-domain.md#verify-the-custom-domain-name-in-azure-ad) |
+| Nincs ellenőrizve |Az Azure AD Connect talált egyező egyéni tartományt az Azure ad-ben, de nem ellenőrzi, hogy. Ez a tartomány felhasználói UPN-utótagját változnak az alapértelmezett. onmicrosoft.com utótag fog szerepelni, ha a tartomány nem ellenőrzött szinkronizálás után. | [Az egyéni tartomány ellenőrzése az Azure ad-ben.](../fundamentals/add-custom-domain.md#verify-your-custom-domain-name) |
 | Nincs hozzáadva |Az Azure AD Connect nem talált egy egyéni tartományt, amely megfelelt annak az UPN-utótagot. Ez a tartomány felhasználói UPN-utótagját változnak az alapértelmezett. onmicrosoft.com utótag, ha a tartomány nem hozzáadva, és ellenőrizte az Azure-ban. | [Adja hozzá, és ellenőrizze az egyéni tartományt, amely megfelel az UPN-utótagot.](../fundamentals/add-custom-domain.md) |
 
 Az Azure AD bejelentkezési oldal sorolja fel a helyszíni Active Directory és a kapcsolódó egyéni tartomány ellenőrzési aktuális állapotát az Azure AD-ben definiált UPN-utótagot. Egyéni telepítés, mostantól kiválaszthatja az egyszerű felhasználónév attribútum az a **az Azure AD-be** lapot.

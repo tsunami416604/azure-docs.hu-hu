@@ -1,6 +1,6 @@
 ---
-title: API-sablonok az Azure API Management |} Microsoft Docs
-description: Ismerje meg, hogyan szabhatja testre a fejlesztői portálra az Azure API Management az API-lapok tartalmát.
+title: Az Azure API Management API-sablonokkal |} A Microsoft Docs
+description: Ismerje meg, hogyan szabhatja testre a fejlesztői portálon az Azure API Management API oldalainak tartalmát.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -14,37 +14,37 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: 9abbdda2300fd8d51bec372624f0349455cf2b01
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 74f7956a0b705748228216b3f1aa52607ff55614
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33937044"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45983495"
 ---
-# <a name="api-templates-in-azure-api-management"></a>API-sablonok az Azure API Management
-Az Azure API Management lehetővé teszi a tartalom developer portálon lapok használatával konfigurálhatja a tartalom-sablonok testreszabása. Használatával [DotLiquid](http://dotliquidmarkup.org/) szintaxisát és az Ön által választott szerkesztőben, mint [tervezőknek DotLiquid](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), és a megadott készlete honosított [karakterlánc-erőforrások](api-management-template-resources.md#strings), [betűkép-erőforrások](api-management-template-resources.md#glyphs), és [vezérlők lapon](api-management-page-controls.md), konfigurálja a tartalmat, a lapok, ahogyan szeretné ezeket a sablonokat használ nagy rugalmasságot biztosítanak.  
+# <a name="api-templates-in-azure-api-management"></a>Az Azure API Management API-sablonok
+Az Azure API Management lehetővé teszi a fejlesztői portál oldalainak konfigurálása a tartalom-sablonok használatával tartalmának testreszabása. Használatával [DotLiquid](http://dotliquidmarkup.org/) szintaxist és a szerkesztő szerkesztőprogramban, például [DotLiquid tervezők számára](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), és a egy megadott készlete honosított [karakterlánc-erőforrások](api-management-template-resources.md#strings), [szimbóluma erőforrások](api-management-template-resources.md#glyphs), és [vezérlők lapon](api-management-page-controls.md), konfigurálhatja a lapok tartalmát, igény szerint ezek a sablonok használatával nagy rugalmasságot biztosít.  
   
-Ebben a szakaszban a sablonok lehetővé teszi a tartalom a fejlesztői portálra API oldalak testreszabásához.  
+Ebben a szakaszban a sablonok lehetővé teszik az API a fejlesztői portál oldalainak tartalmát testreszabása.  
   
--   [API-lista](#APIList)  
+-   [API-k listájából](#APIList)  
 -   [Művelet](#Product)  
 -   [Kódminták](#CodeSamples)  
-    -   [Curl](#Curl)  
+    -   [A curl](#Curl)  
     -   [C#](#CSharp)  
     -   [Java](#Stub)  
     -   [JavaScript](#JavaScript)  
-    -   [Az Objective C](#ObjectiveC)  
+    -   [Objective C](#ObjectiveC)  
     -   [PHP](#PHP)  
     -   [Python](#Python)  
     -   [Ruby](#Ruby)  
 
 > [!NOTE]
->  Minta alapértelmezett sablonok az alábbi dokumentáció szerepelnek, de folyamatos fejlesztéseket miatt változhat. Megtekintheti az élő alapértelmezett sablonok a fejlesztői portálra nyissa meg a kívánt egyéni sablonokat. A sablonok használatának kapcsolatos további információkért lásd: [hogyan szabhatja testre a sablonok segítségével az API Management fejlesztői portálján](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
+>  Alapértelmezett mintasablonokat a következő dokumentációban szerepelnek, de módosulhatnak, folyamatos fejlesztései miatt. A fejlesztői portálon az élő alapértelmezett sablont a kívánt egyéni sablonokat lépve tekintheti meg. Sablonok használatának ismertetését lásd: [testreszabása sablonok használatával, az API Management fejlesztői portálon](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
   
-##  <a name="APIList"></a> API-lista  
- A **API lista** sablon lehetővé teszi az API-lista lap a fejlesztői portálra törzsében testreszabását.  
+##  <a name="APIList"></a> API-k listájából  
+ A **API-k listájából** a sablon lehetővé teszi, hogy a szervezet az API listában oldal a fejlesztői portál testreszabása.  
   
- ![Fejlesztői portál API lista](./media/api-management-api-templates/APIM-Developer-Portal-Templates-API-List.png "APIM fejlesztői portál API sablonlista")  
+ ![Fejlesztői portál API-k listájából](./media/api-management-api-templates/APIM-Developer-Portal-Templates-API-List.png "APIM fejlesztői portál sablonjainak API-k listájából")  
   
 ### <a name="default-template"></a>Alapértelmezett sablon  
   
@@ -81,15 +81,15 @@ Ebben a szakaszban a sablonok lehetővé teszi a tartalom a fejlesztői portálr
   
 -   [lapozófájl-vezérlő](api-management-page-controls.md#paging-control)  
   
--   [keresési-vezérlő](api-management-page-controls.md#search-control)  
+-   [Keresés-vezérlő](api-management-page-controls.md#search-control)  
   
 ### <a name="data-model"></a>Adatmodell  
   
 |Tulajdonság|Típus|Leírás|  
 |--------------|----------|-----------------|  
-|API-k|A gyűjtemény [API-összefoglalót](api-management-template-data-model-reference.md#APISummary) entitásokat.|Az API-kat az aktuális felhasználó számára látható.|  
+|API-k|A gyűjtemény [API összefoglaló](api-management-template-data-model-reference.md#APISummary) entitásokat.|Az API-k az aktuális felhasználó számára látható.|  
   
-### <a name="sample-template-data"></a>Mintaadatokat sablon  
+### <a name="sample-template-data"></a>Mintaadatok sablon  
   
 ```json  
 {  
@@ -109,10 +109,10 @@ Ebben a szakaszban a sablonok lehetővé teszi a tartalom a fejlesztői portálr
 }  
 ```  
   
-##  <a name="Product"></a> művelet  
- A **művelet** sablon lehetővé teszi a fejlesztői portálra a művelet lap törzsében testreszabását.  
+##  <a name="Product"></a> A művelet  
+ A **művelet** a sablon lehetővé teszi, hogy a szervezet a műveletet a fejlesztői portál oldalának testreszabásához.  
   
- ![Fejlesztői portálon művelet lap](./media/api-management-api-templates/APIM-Developer-Portal-templates-Operation-page.png "APIM fejlesztői portálján sablonok művelet lap")  
+ ![Fejlesztői portál művelet lap](./media/api-management-api-templates/APIM-Developer-Portal-templates-Operation-page.png "APIM fejlesztői portál sablonok művelet lap")  
   
 ### <a name="default-template"></a>Alapértelmezett sablon  
   
@@ -336,23 +336,23 @@ Ebben a szakaszban a sablonok lehetővé teszi a tartalom a fejlesztői portálr
 ```  
   
 ### <a name="controls"></a>Vezérlők  
- A `Operation` sablon nem teszi lehetővé a használata [vezérlők lapon](api-management-page-controls.md).  
+ A `Operation` sablon nem engedi meg a használatát bármely [vezérlők lapon](api-management-page-controls.md).  
   
 ### <a name="data-model"></a>Adatmodell  
   
 |Tulajdonság|Típus|Leírás|  
 |--------------|----------|-----------------|  
-|apiId|karakterlánc|A jelenlegi API azonosítója.|  
-|APINÉV|karakterlánc|Az API neve.|  
-|apiDescription|karakterlánc|Az API leírása.|  
-|api-t|[API-összefoglalót](api-management-template-data-model-reference.md#APISummary) entitás.|Az aktuális API-t.|  
+|apiId|sztring|A jelenlegi API azonosítója.|  
+|ApiName|sztring|Az API neve.|  
+|apiDescription|sztring|Az API leírása.|  
+|api-t|[API összefoglaló](api-management-template-data-model-reference.md#APISummary) entitás.|A jelenlegi API-t.|  
 |művelet|[Művelet](api-management-template-data-model-reference.md#Operation)|A megjelenített műveletet.|  
-|sampleUrl|karakterlánc|Az aktuális művelet URL-CÍMÉT.|  
-|operationMenu|[Művelet menü](api-management-template-data-model-reference.md#Menu)|Ez az API műveletek menü.|  
-|consoleUrl|URI|Az URI-Azonosítóját a **kipróbálás** gombra.|  
-|minták|A gyűjtemény [kódminta](api-management-template-data-model-reference.md#Sample) entitásokat.|Az aktuális művelet mintakódjainak megtekintése...|  
+|sampleUrl|sztring|Az aktuális művelet URL-CÍMÉT.|  
+|operationMenu|[A művelet menü](api-management-template-data-model-reference.md#Menu)|Ez az API műveleteinek menü.|  
+|consoleUrl|URI|URI-JÁNAK a **kipróbálás** gombra.|  
+|minták|A gyűjtemény [kódminta](api-management-template-data-model-reference.md#Sample) entitásokat.|Az aktuális művelet Kódminták...|  
   
-### <a name="sample-template-data"></a>Mintaadatokat sablon  
+### <a name="sample-template-data"></a>Mintaadatok sablon  
   
 ```json  
 {  
@@ -640,11 +640,11 @@ Ebben a szakaszban a sablonok lehetővé teszi a tartalom a fejlesztői portálr
 ```  
   
 ##  <a name="CodeSamples"></a> Kódminták  
- Az alábbi sablonok testreszabása a szervezet a művelet lapon egyedi mintakódok teszik lehetővé.  
+ Az alábbi sablonok lehetővé teszik a szervezet az egyes kódmintát a művelet lapon szabhatja testre.  
   
- ![Fejlesztői portálon sablonok mintakódok](./media/api-management-api-templates/APIM-Developer-Portal-Templates-Code-samples.png "APIM Developer portálon sablonok mintakódok")  
+ ![Fejlesztői portál sablonok Kódminták](./media/api-management-api-templates/APIM-Developer-Portal-Templates-Code-samples.png "APIM fejlesztői portál sablonok Kódminták")  
   
--   [Curl](#Curl)  
+-   [A curl](#Curl)  
   
 -   [C#](#CSharp)  
   
@@ -652,7 +652,7 @@ Ebben a szakaszban a sablonok lehetővé teszi a tartalom a fejlesztői portálr
   
 -   [JavaScript](#JavaScript)  
   
--   [Az Objective C](#ObjectiveC)  
+-   [Objective C](#ObjectiveC)  
   
 -   [PHP](#PHP)  
   
@@ -660,8 +660,8 @@ Ebben a szakaszban a sablonok lehetővé teszi a tartalom a fejlesztői portálr
   
 -   [Ruby](#Ruby)  
   
-###  <a name="Curl"></a> Curl  
- A **DocumentationSamplesCurl** sablon lehetővé teszi, hogy a művelet lapon kód minták szakaszában kódminta testreszabását.  
+###  <a name="Curl"></a> A curl  
+ A **DocumentationSamplesCurl** a sablon lehetővé teszi, hogy testre szabhatja a kódminta található, a művelet lapon kód minták szakaszában.  
   
 #### <a name="default-template"></a>Alapértelmezett sablon  
   
@@ -679,12 +679,12 @@ curl -v -X {{method}} "{{scheme}}://{{host}}{{path}}{{query | escape }}"
 ```  
   
 #### <a name="controls"></a>Vezérlők  
- A kód a minta-sablonok nem teszik lehetővé az használni [vezérlők lapon](api-management-page-controls.md).  
+ A kód mintasablonokat használhatók bármely [vezérlők lapon](api-management-page-controls.md).  
   
 #### <a name="data-model"></a>Adatmodell  
  [Kódminta](api-management-template-data-model-reference.md#Sample) entitás.  
   
-#### <a name="sample-template-data"></a>Mintaadatokat sablon  
+#### <a name="sample-template-data"></a>Mintaadatok sablon  
   
 ```json  
 {  
@@ -714,7 +714,7 @@ curl -v -X {{method}} "{{scheme}}://{{host}}{{path}}{{query | escape }}"
 ```  
   
 ###  <a name="CSharp"></a> C#  
- A **DocumentationSamplesCsharp** sablon lehetővé teszi, hogy a művelet lapon kód minták szakaszában kódminta testreszabását.  
+ A **DocumentationSamplesCsharp** a sablon lehetővé teszi, hogy testre szabhatja a kódminta található, a művelet lapon kód minták szakaszában.  
   
 #### <a name="default-template"></a>Alapértelmezett sablon  
   
@@ -858,12 +858,12 @@ namespace CSHttpClientSample
 ```  
   
 #### <a name="controls"></a>Vezérlők  
- A kód a minta-sablonok nem teszik lehetővé az használni [vezérlők lapon](api-management-page-controls.md).  
+ A kód mintasablonokat használhatók bármely [vezérlők lapon](api-management-page-controls.md).  
   
 #### <a name="data-model"></a>Adatmodell  
  [Kódminta](api-management-template-data-model-reference.md#Sample) entitás.  
   
-#### <a name="sample-template-data"></a>Mintaadatokat sablon  
+#### <a name="sample-template-data"></a>Mintaadatok sablon  
   
 ```json  
 {  
@@ -893,7 +893,7 @@ namespace CSHttpClientSample
 ```  
   
 ###  <a name="Stub"></a> Java  
- A **DocumentationSamplesJava** sablon lehetővé teszi, hogy a művelet lapon kód minták szakaszában kódminta testreszabását.  
+ A **DocumentationSamplesJava** a sablon lehetővé teszi, hogy testre szabhatja a kódminta található, a művelet lapon kód minták szakaszában.  
   
 #### <a name="default-template"></a>Alapértelmezett sablon  
   
@@ -954,12 +954,12 @@ public class JavaSample
 ```  
   
 #### <a name="controls"></a>Vezérlők  
- A kód a minta-sablonok nem teszik lehetővé az használni [vezérlők lapon](api-management-page-controls.md).  
+ A kód mintasablonokat használhatók bármely [vezérlők lapon](api-management-page-controls.md).  
   
 #### <a name="data-model"></a>Adatmodell  
  [Kódminta](api-management-template-data-model-reference.md#Sample) entitás.  
   
-#### <a name="sample-template-data"></a>Mintaadatokat sablon  
+#### <a name="sample-template-data"></a>Mintaadatok sablon  
   
 ```json  
 {  
@@ -988,8 +988,8 @@ public class JavaSample
 }  
 ```  
   
-###  <a name="JavaScript"></a> JavaScript  
- A **DocumentationSamplesJs** sablon lehetővé teszi, hogy a művelet lapon kód minták szakaszában kódminta testreszabását.  
+###  <a name="JavaScript"></a> A JavaScript  
+ A **DocumentationSamplesJs** a sablon lehetővé teszi, hogy testre szabhatja a kódminta található, a művelet lapon kód minták szakaszában.  
   
 #### <a name="default-template"></a>Alapértelmezett sablon  
   
@@ -1043,12 +1043,12 @@ public class JavaSample
 ```  
   
 #### <a name="controls"></a>Vezérlők  
- A kód a minta-sablonok nem teszik lehetővé az használni [vezérlők lapon](api-management-page-controls.md).  
+ A kód mintasablonokat használhatók bármely [vezérlők lapon](api-management-page-controls.md).  
   
 #### <a name="data-model"></a>Adatmodell  
  [Kódminta](api-management-template-data-model-reference.md#Sample) entitás.  
   
-#### <a name="sample-template-data"></a>Mintaadatokat sablon  
+#### <a name="sample-template-data"></a>Mintaadatok sablon  
   
 ```json  
 {  
@@ -1077,8 +1077,8 @@ public class JavaSample
 }  
 ```  
   
-###  <a name="ObjectiveC"></a> Az Objective C  
- A **DocumentationSamplesObjc** sablon lehetővé teszi, hogy a művelet lapon kód minták szakaszában kódminta testreszabását.  
+###  <a name="ObjectiveC"></a> Objective C  
+ A **DocumentationSamplesObjc** a sablon lehetővé teszi, hogy testre szabhatja a kódminta található, a művelet lapon kód minták szakaszában.  
   
 #### <a name="default-template"></a>Alapértelmezett sablon  
   
@@ -1155,12 +1155,12 @@ int main(int argc, const char * argv[])
 ```  
   
 #### <a name="controls"></a>Vezérlők  
- A kód a minta-sablonok nem teszik lehetővé az használni [vezérlők lapon](api-management-page-controls.md).  
+ A kód mintasablonokat használhatók bármely [vezérlők lapon](api-management-page-controls.md).  
   
 #### <a name="data-model"></a>Adatmodell  
  [Kódminta](api-management-template-data-model-reference.md#Sample) entitás.  
   
-#### <a name="sample-template-data"></a>Mintaadatokat sablon  
+#### <a name="sample-template-data"></a>Mintaadatok sablon  
   
 ```json  
 {  
@@ -1190,13 +1190,13 @@ int main(int argc, const char * argv[])
 ```  
   
 ###  <a name="PHP"></a> A PHP  
- A **DocumentationSamplesPhp** sablon lehetővé teszi, hogy a művelet lapon kód minták szakaszában kódminta testreszabását.  
+ A **DocumentationSamplesPhp** a sablon lehetővé teszi, hogy testre szabhatja a kódminta található, a művelet lapon kód minták szakaszában.  
   
 #### <a name="default-template"></a>Alapértelmezett sablon  
   
 ```xml  
 <?php  
-// This sample uses the Apache HTTP client from HTTP Components (http://hc.apache.org/httpcomponents-client-ga/)  
+// This sample uses the HTTP_Request2 PHP library (https://github.com/pear/HTTP_Request2)  
 require_once 'HTTP/Request2.php';  
   
 $request = new Http_Request2('{{scheme}}://{{host}}{{path}}');  
@@ -1245,12 +1245,12 @@ catch (HttpException $ex)
 ```  
   
 #### <a name="controls"></a>Vezérlők  
- A kód a minta-sablonok nem teszik lehetővé az használni [vezérlők lapon](api-management-page-controls.md).  
+ A kód mintasablonokat használhatók bármely [vezérlők lapon](api-management-page-controls.md).  
   
 #### <a name="data-model"></a>Adatmodell  
  [Kódminta](api-management-template-data-model-reference.md#Sample) entitás.  
   
-#### <a name="sample-template-data"></a>Mintaadatokat sablon  
+#### <a name="sample-template-data"></a>Mintaadatok sablon  
   
 ```json  
 {  
@@ -1280,7 +1280,7 @@ catch (HttpException $ex)
 ```  
   
 ###  <a name="Python"></a> Python  
- A **DocumentationSamplesPython** sablon lehetővé teszi, hogy a művelet lapon kód minták szakaszában kódminta testreszabását.  
+ A **DocumentationSamplesPython** a sablon lehetővé teszi, hogy testre szabhatja a kódminta található, a művelet lapon kód minták szakaszában.  
   
 #### <a name="default-template"></a>Alapértelmezett sablon  
   
@@ -1363,12 +1363,12 @@ except Exception as e:
 ```  
   
 #### <a name="controls"></a>Vezérlők  
- A kód a minta-sablonok nem teszik lehetővé az használni [vezérlők lapon](api-management-page-controls.md).  
+ A kód mintasablonokat használhatók bármely [vezérlők lapon](api-management-page-controls.md).  
   
 #### <a name="data-model"></a>Adatmodell  
  [Kódminta](api-management-template-data-model-reference.md#Sample) entitás.  
   
-#### <a name="sample-template-data"></a>Mintaadatokat sablon  
+#### <a name="sample-template-data"></a>Mintaadatok sablon  
   
 ```json  
 {  
@@ -1398,7 +1398,7 @@ except Exception as e:
 ```  
   
 ###  <a name="Ruby"></a> Ruby  
- A **DocumentationSamplesRuby** sablon lehetővé teszi, hogy a művelet lapon kód minták szakaszában kódminta testreszabását.  
+ A **DocumentationSamplesRuby** a sablon lehetővé teszi, hogy testre szabhatja a kódminta található, a művelet lapon kód minták szakaszában.  
   
 #### <a name="default-template"></a>Alapértelmezett sablon  
   
@@ -1434,12 +1434,12 @@ puts response.body
 ```  
   
 #### <a name="controls"></a>Vezérlők  
- A kód a minta-sablonok nem teszik lehetővé az használni [vezérlők lapon](api-management-page-controls.md).  
+ A kód mintasablonokat használhatók bármely [vezérlők lapon](api-management-page-controls.md).  
   
 #### <a name="data-model"></a>Adatmodell  
  [Kódminta](api-management-template-data-model-reference.md#Sample) entitás.  
   
-#### <a name="sample-template-data"></a>Mintaadatokat sablon  
+#### <a name="sample-template-data"></a>Mintaadatok sablon  
   
 ```json  
 {  
@@ -1469,4 +1469,4 @@ puts response.body
 ```
 
 ## <a name="next-steps"></a>További lépések
-A sablonok használatának kapcsolatos további információkért lásd: [hogyan szabhatja testre a sablonok segítségével az API Management fejlesztői portálján](api-management-developer-portal-templates.md).
+Sablonok használatának ismertetését lásd: [testreszabása sablonok használatával, az API Management fejlesztői portálon](api-management-developer-portal-templates.md).

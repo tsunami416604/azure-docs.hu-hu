@@ -1,26 +1,25 @@
 ---
-title: Azure AD-bérlőcímtárak használata – áttekintés | Microsoft Docs
-description: Ismerteti az Azure AD-bérlő fogalmát, valamint az Azure kezelését az Azure Active Directory használatával
+title: Az Azure Active Directory-bérlő kezelése |} A Microsoft Docs
+description: További tudnivalók az Azure AD-bérlő fogalmát, és kezelése az Azure-ban az Azure Active Directory használatával.
 services: active-directory
-documentationcenter: ''
 author: eross-msft
 manager: mtillman
 ms.service: active-directory
-ms.workload: identity
 ms.component: fundamentals
-ms.topic: overview
-ms.date: 08/23/2017
+ms.workload: identity
+ms.topic: conceptual
+ms.date: 08/23/2018
 ms.author: lizross
 ms.reviewer: jeffsta
-ms.custom: it-pro;oldportal
-ms.openlocfilehash: b18ff1f59a46e98544159b488294e2d3f7bd9cd7
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
-ms.translationtype: HT
+custom: it-pro
+ms.openlocfilehash: 2a548a16a6b896ae1c1297badcef6154b64977f1
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37767424"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45737175"
 ---
-# <a name="manage-your-azure-ad-directory"></a>Azure AD-címtár kezelése
+# <a name="manage-your-azure-active-directory-tenant"></a>Az Azure Active Directory-bérlő kezelése
 
 ## <a name="what-is-an-azure-ad-tenant"></a>Mi az az Azure AD-bérlő?
 Az Azure Active Directoryban (Azure AD) a bérlő az Azure AD olyan dedikált példányának tekinthető, amelyet a szervezet megkap és a tulajdonában áll, amikor regisztrál egy Microsoft felhőszolgáltatásra, például az Azure-ra vagy az Office 365-re. Mindegyik Azure AD-címtár önálló, és el van választva a többi Azure AD-címtártól. Ahogy a vállalat irodaépülete is egy vállalatspecifikus biztonsági vagyontárgynak tekinthető, az Azure AD-címtár is egy, kizárólag az adott szervezet általi használatra kialakított biztonságos eszköz. Az Azure AD architektúra elkülöníti az egyes ügyfelek adatait és identitásadatait, így az adott Azure AD-címtár felhasználói és rendszergazdái véletlenül vagy kártételi szándékkal nem férhetnek hozzá más címtárak adataihoz.

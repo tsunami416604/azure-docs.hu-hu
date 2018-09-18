@@ -14,12 +14,12 @@ ms.component: report-monitor
 ms.date: 12/06/2017
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 752e71f3c6b22a6d9f1e2392b58c01deef9de89c
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: 2cfdd5b903b8ffd9702745df150fe578d42e5a11
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43782164"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45735832"
 ---
 # <a name="how-to-use-the-azure-active-directory-power-bi-content-pack"></a>Az Azure Active Directory Power BI-tartalomcsomag használata
 
@@ -28,50 +28,11 @@ ms.locfileid: "43782164"
 |Jelenleg az Azure AD Power BI-tartalomcsomag adatokat lekérni az Azure AD-bérlővel használja az Azure AD Graph API-kat. Ennek eredményeképpen látni a tartalomcsomagot a rendelkezésre álló adatok és a hitelesítő adatokat használja adatok néhány eltérése a [jelentéséért a Microsoft Graph API-k](concept-reporting-api.md). |
 |  |
 
-Rendszergazdaként elengedhetetlen, hogy tudja, hogyan használják felhasználói az Azure Active Directory funkcióit. Ez lehetővé teszi, hogy úgy tervezze meg az informatikai infrastruktúráját és kommunikációját, hogy növelni tudja annak használatát, és a lehető legtöbbet hozza ki az AAD funkcióiból. Az Azure Active Directory lehetővé teszi adatai részletesebb elemzését, így átláthatja, hogyan használhatja ezeket az adatokat részletesebb betekintések szerzéséhez abba, mi történik az Azure Active Directoryjukban az Ön számára legfontosabb képességek tekintetében.  Az Azure Active Directory API-jainak a Power BI-ba integrálásával könnyedén letöltheti az előre összeállított tartalomcsomagokat, valamint betekintést nyerhet az Azure Active Directoryn belüli tevékenységekbe a Power BI által biztosított részletes megjelenítések használatával. Létrehozhatja saját irányítópultját, és könnyedén megoszthatja szervezete bármelyik tagjával. 
+INFORMATIKAI rendszergazdaként kell megértéséhez a felhasználók elfogadják és az Azure Active Directory-szolgáltatások használata. Ez lehetővé teszi, hogy az informatikai infrastruktúráját és kommunikációját, használatára és a legtöbbet az Azure AD-funkciók tervezése. A Power BI-tartalomcsomag az Azure Active Directory teszi lehetővé a részletesebb betekintések, mi történik a címtár adatainak további elemzéséhez. Az Azure Active Directory API-k a Power BI-ba történő integrációnak köszönhetően könnyedén letöltheti az előre elkészített tartalomcsomag és betekintést a biztosított részletes megjelenítések használatával, amely a Power bi-ban az Azure Active Directoryn belüli tevékenységekbe. Létrehozhatja saját irányítópultját, és könnyedén megoszthatja szervezete bármelyik tagjával. 
 
-Ez a témakör lépésről lépésre bemutatja, hogyan telepítheti és használhatja környezetében a tartalomcsomagot.
+## <a name="install-the-content-pack"></a>A tartalomcsomag telepítésére
 
-## <a name="installation"></a>Telepítés  
-
-**A Power BI-tartalomcsomag telepítése:**
-
-1. Jelentkezzen be a [Power BI-ba](https://app.powerbi.com/groups/me/getdata/services) Power BI-fiókjával (ez megegyezik az O365- vagy Azure AD-fiókjával).
-
-2. A bal oldali navigációs panel alján kattintson az **Adatok lekérése** elemre.
-
-    ![Azure Active Directory Power BI-tartalomcsomag](./media/howto-power-bi-content-pack/01.png)
- 
-3. A **Szolgáltatások** panelen kattintson a **Lekérés** gombra.
-   
-    ![Azure Active Directory Power BI-tartalomcsomag](./media/howto-power-bi-content-pack/02.png)
-
-4.  Keresse meg az **Azure Active Directoryt**.
-
-    ![Azure Active Directory Power BI-tartalomcsomag](./media/howto-power-bi-content-pack/03.png)
- 
-5.  Amikor a rendszer arra kéri, írja be Azure AD-bérlőazonosítóját, majd kattintson a **Tovább** gombra.
-
-    > [!TIP] 
-    > Gyorsan beszerezheti az Office 365-/Azure AD-bérlőazonosítóját, ha bejelentkezik az Azure AD portálra, megkeresi a könyvtárat, és kimásolja a **könyvtár-azonosítót** a [**Tulajdonságok** oldalról](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties).
-
-    ![Azure Active Directory Power BI-tartalomcsomag](./media/howto-power-bi-content-pack/04.png) 
-
-6.  Kattintson a **Bejelentkezés** gombra. 
- 
-    ![Azure Active Directory Power BI-tartalomcsomag](./media/howto-power-bi-content-pack/05.png) 
-
-
-
-7.  Írja be felhasználónevét és jelszavát, majd kattintson a **Bejelentkezés** gombra.
- 
-    ![Azure Active Directory Power BI-tartalomcsomag](./media/howto-power-bi-content-pack/06.png) 
-
-8.  Az alkalmazással kapcsolatos beleegyezési párbeszédpanelen kattintson az **Elfogadás** elemre.
- 
-9.  Miután létrejött az Azure Active Directory-tevékenységnaplók irányítópultja, kattintson rá.
- 
-    ![Azure Active Directory Power BI-tartalomcsomag](./media/howto-power-bi-content-pack/08.png) 
+Tekintse meg a [rövid](quickstart-install-power-bi-content-pack.md) az Azure AD Power BI-tartalomcsomag telepítése.
 
 ## <a name="what-can-i-do-with-this-content-pack"></a>Mire használhatom ezt a tartalomcsomagot?
 
@@ -155,4 +116,6 @@ Tekintse meg a [hibaelhárítási útmutatót](troubleshoot-content-pack.md). A 
 
 ## <a name="next-steps"></a>További lépések
 
-A jelentéskészítés áttekintéséért lásd: [Jelentéskészítés az Azure Active Directoryban](overview-reports.md).
+* [A Power BI-tartalomcsomag telepítése](quickstart-install-power-bi-content-pack.md).
+* [Tartalomcsomag-hibák elhárítása](troubleshoot-content-pack.md).
+* [Mik az Azure AD-jelentések? ](overview-reports.md).

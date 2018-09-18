@@ -7,14 +7,14 @@ services: sql-database
 ms.service: sql-database
 ms.custom: monitor and tune
 ms.topic: conceptual
-ms.date: 04/01/2018
+ms.date: 09/14/2018
 ms.author: aamalvea
-ms.openlocfilehash: aec4ce2e4fb22872673c977816ffbe8616567885
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 43702de9f0da3b5b82c304cf9289768f7a8264fc
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44718232"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45732634"
 ---
 # <a name="use-azure-portal-to-create-alerts-for-azure-sql-database-and-data-warehouse"></a>Riasztások létrehozása az Azure SQL Database és a Data warehouse-bA az Azure portal használatával
 
@@ -108,7 +108,7 @@ Miután létrehozta a riasztást, is kiválaszthatja, és:
 | SQL data warehouse | connection_successful | Sikeres kapcsolatok | Összes | 10 perc |
 | SQL data warehouse | connection_failed | Sikertelen kapcsolatok | Összes | 10 perc |
 | SQL data warehouse | blocked_by_firewall | Tűzfal által blokkolva | Összes | 10 perc |
-| SQL data warehouse | service_level_objective | Szolgáltatási szint célkitűzésének az adatbázis | Összes | 10 perc |
+| SQL data warehouse | service_level_objective | Az adatbázis szolgáltatási szintjét | Összes | 10 perc |
 | SQL data warehouse | dwu_limit | dwu-korlát | Maximum | 10 perc |
 | SQL data warehouse | dwu_consumption_percent | Százalékos DWU | Átlag | 10 perc |
 | SQL data warehouse | dwu_used | Alkalmazott DWU | Átlag | 10 perc |

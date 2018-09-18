@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 55ce85702804d99d806220d7f0a4ea0820975f4f
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: 8a5d880d0238e38fbbaa9de22fc1baf604f0fc07
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39206037"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45733464"
 ---
 # <a name="connect-a-generic-client-application-to-your-azure-iot-central-application-nodejs"></a>Az Azure IoT Central-alkalmazást (Node.js) egy általános ügyfél-alkalmazás csatlakoztatása
 
@@ -34,10 +34,10 @@ Az Azure IoT Central-alkalmazás lesz szüksége a következő mérések és esz
 
 Adja hozzá a következő telemetriát a **mérések** oldalon:
 
-| Megjelenített név | Mező neve  | Mértékegységek | Min | Maximum | Tizedeshelyek |
+| Megjelenítendő név | Mezőnév  | Egység | Min | Max | Tizedeshelyek |
 | ------------ | ----------- | ----- | --- | --- | -------------- |
-| Hőmérséklet  | hőmérséklet | P     | 60  | 110 | 0              |
-| Nedvességtartalom     | páratartalom    | %     | 0   | 100 | 0              |
+| Hőmérséklet  | hőmérséklet | F     | 60  | 110 | 0              |
+| Páratartalom     | páratartalom    | %     | 0   | 100 | 0              |
 | Pressure     | pressure    | kPa   | 80  | 110 | 0              |
 
 > [!NOTE]
@@ -49,9 +49,9 @@ Adja meg a mezők neve pontosan, ahogy az a tábla az eszköz sablonba be. Ha a 
 
 Adja hozzá a következő állapotot a a **mérések** oldalon:
 
-| Megjelenített név | Mező neve  | 1. érték | Megjelenített név | 2. érték | Megjelenített név |
+| Megjelenítendő név | Mezőnév  | 1. érték | Megjelenítendő név | 2. érték | Megjelenítendő név |
 | ------------ | ----------- | --------| ------------ | ------- | ------------ | 
-| Ventilátor mód     | fanmode     | 1.       | Futtatás      | 0       | Leállítva      |
+| Ventilátor mód     | fanmode     | 1       | Fut      | 0       | Leállítva      |
 
 > [!NOTE]
   Az állapot mérték adattípusának egy karakterlánc.
@@ -62,7 +62,7 @@ Adja meg a mezők neve pontosan, ahogy az a tábla az eszköz sablonba be. Ha a 
 
 Adja hozzá a következő esemény a **mérések** oldalon:
 
-| Megjelenített név | Mező neve  | Súlyosság |
+| Megjelenítendő név | Mezőnév  | Severity |
 | ------------ | ----------- | -------- |
 | Életbe  | melegedjen túl    | Hiba    |
 
@@ -73,7 +73,7 @@ Adja hozzá a következő esemény a **mérések** oldalon:
 
 Adja hozzá a következő eszköztulajdonságokat a a **tulajdonságai lap**:
 
-| Megjelenített név        | Mező neve        | Adattípus |
+| Megjelenítendő név        | Mezőnév        | Adattípus |
 | ------------------- | ----------------- | --------- |
 | Sorozatszám       | serialNumber      | szöveg      |
 | Eszköz gyártója | gyártó      | szöveg      |
@@ -84,10 +84,10 @@ A mezők nevét adja meg a pontosan az eszköz sablonba be a táblázatban láth
 
 Adja hozzá a következő **szám** beállításait a **beállítások lapon**:
 
-| Megjelenített név    | Mező neve     | Mértékegységek | Tizedesjegyek | Minimum | Maximum  | Kezdeti |
+| Megjelenítendő név    | Mezőnév     | Egység | Tizedesjegyek | Min | Max  | Kezdeti |
 | --------------- | -------------- | ----- | -------- | --- | ---- | ------- |
 | Sebesség ventilátor       | fanSpeed       | rpm   | 0        | 0   | 3000 | 0       |
-| Megadott hőmérséklet | setTemperature | P     | 0        | 20  | 200  | 80      |
+| Megadott hőmérséklet | setTemperature | F     | 0        | 20  | 200  | 80      |
 
 Adja meg a mező neve pontosan a eszköz sablonba a táblázatban látható módon. Ha a mező nevei nem egyeznek, akkor az eszköz a beállítás értéke nem tud fogadni.
 
@@ -129,7 +129,11 @@ A következő lépések bemutatják, hogyan hozhat létre, amely megvalósítja 
     var client = clientFromConnectionString(connectionString);
     ```
 
-    Frissítse a helyőrző `{your device connection string}` az eszköz kapcsolati karakterlánccal. Ez az érték a kapcsolat részleteit megjelenítő oldalon másolja, a valós eszköz hozzáadásakor. Ebben a példában azt inicializálása `targetTemperature` nulla, igény szerint elvégezhető az eszköz aktuális olvasásakor vagy értéket az ikereszközről. 
+  > [!NOTE]
+   > Az Azure IoT Central átváltott használatával az Azure IoT Hub Device Provisioning service (DPS) az összes eszköz kapcsolat, kövesse az alábbi instrustions [az eszköz kapcsolati karakterláncának lekérése](concepts-connectivity.md#getting-device-connection-string) és az oktatóanyag további részeinek folytatásához.
+
+
+    Frissítse a helyőrző `{your device connection string}` az eszköz kapcsolati karakterlánccal. Ebben a példában azt inicializálása `targetTemperature` nulla, igény szerint elvégezhető az eszköz aktuális olvasásakor vagy értéket az ikereszközről. 
 
 1. A telemetriai adatokat, állapota és esemény mérések küldése az Azure IoT Central alkalmazáshoz, adja hozzá a fájlhoz a következő függvényt:
 

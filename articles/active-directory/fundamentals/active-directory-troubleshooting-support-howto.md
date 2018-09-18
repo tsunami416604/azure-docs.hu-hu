@@ -1,6 +1,6 @@
 ---
-title: Kérhet támogatást az Azure ad-ben |} A Microsoft Docs
-description: Hogyan kérhet támogatást az Azure Active Directory
+title: Hogyan kérhet támogatást az Azure Active Directoryhoz |} A Microsoft Docs
+description: Megtudhatja, hogyan kérhet támogatást az Azure Active Directoryban.
 services: active-directory
 documentationcenter: na
 author: eross-msft
@@ -14,16 +14,14 @@ ms.date: 08/28/2017
 ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro
-ms.openlocfilehash: 72212d2d47ff0290ee541c1ffeab6d73dbf3185d
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: d7d499ed43ee2eab03e46e408104eca4af6a2945
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35927690"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45729389"
 ---
-# <a name="how-to-get-support-for-azure-active-directory"></a>Hogyan kérhet támogatást az Azure Active Directory
-
-
+# <a name="how-to-get-support-for-azure-active-directory"></a>Hogyan: kérhet támogatást az Azure Active Directory
 A Microsoft globális műszaki, értékesítés előtti, számlázási és előfizetés-támogatás az Azure Active Directory (Azure AD) biztosít. Támogatás online és telefonon a fizetős Microsoft Azure és a próba-előfizetések is érhető el. Telefonos és online számlázási támogatás más nyelveken érhetők el. 
 
 ## <a name="find-help-without-opening-a-support-ticket"></a>Segítség keresése támogatási jegy megnyitása nélkül

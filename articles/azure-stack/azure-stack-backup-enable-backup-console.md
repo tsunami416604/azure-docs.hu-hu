@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: jeffgilb
-ms.openlocfilehash: 1373e98b8edac81ebdb15aaf36d8bbfc910029fe
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: fdcc4f51f49e8eb133deeeecd070c55511cda464
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44026185"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45985796"
 ---
 # <a name="enable-backup-for-azure-stack-from-the-administration-portal"></a>Biztonsági mentés engedélyezése az Azure Stack a felügyeleti portálról
 Engedélyezze az infrastruktúra Backup szolgáltatás a felügyeleti portálon keresztül, úgy, hogy az Azure Stack biztonsági mentéseket hozhat létre. Ezeket a biztonsági másolatokat segítségével helyreállíthatja az-környezet a felhőbeli helyreállítási [végzetes hiba](.\azure-stack-backup-recover-data.md). A felhőbeli helyreállítási célja, hogy győződjön meg arról, hogy az operátorok és a felhasználók is jelentkezzen be újra a portál recovery befejeződése után. Felhasználók lesz visszaállítva, beleértve a szerepköralapú hozzáférési engedélyek és szerepkörök, eredeti csomagok, ajánlatok, és korábban meghatározott számítási, tárolási és hálózati kvóták megszűnni.
@@ -62,7 +62,7 @@ A rendszergazdák és felhasználók felelőssége biztonsági mentése és viss
 ## <a name="start-backup"></a>Biztonsági mentés indítása
 A biztonsági mentés indításához kattintson a **biztonsági mentés** egy igény szerinti biztonsági mentés elindításához. Egy igény szerinti biztonsági mentés nem módosítják a következő ütemezett biztonsági mentés időpontját. A feladat befejezése után ellenőrizheti a beállítások **Essentials**:
 
-![Az Azure Stack - igény szerinti biztonsági mentés](media\azure-stack-backup\scheduled-backup.png).
+![Az Azure Stack - igény szerinti biztonsági mentés](media\azure-stack-backup\scheduled-backup.png)
 
 A PowerShell-parancsmagot is futtathatja **Start-AzsBackup** az Azure Stack felügyeleti számítógépen. További információkért lásd: [biztonsági mentése az Azure Stack](azure-stack-backup-back-up-azure-stack.md).
 

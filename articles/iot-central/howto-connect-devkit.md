@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: ea9ff8f93ede3b9ec5e7eed83c6049b0c23de7e8
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: 94de5566db2395a3daf24c99a43cca6853e12cce
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39205459"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45736971"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>Az MXChip IoT DevKit eszköz csatlakoztatása az Azure IoT Central alkalmazáshoz
 
@@ -43,26 +43,34 @@ A konfiguráció teljes részletekért tekintse meg [MXChip eszköz sablon rész
 
 ## <a name="add-a-real-device"></a>Valós eszköz hozzáadása
 
-Az Azure IoT Central-alkalmazás hozzáadása a valós eszközöknek a **MXChip** eszköz sablont, és jegyezze fel az eszköz kapcsolati karakterláncát. További információkért lásd: [valós eszköz hozzáadása az Azure IoT Central alkalmazásnak](tutorial-add-device.md).
+Az Azure IoT Central-alkalmazás hozzáadása a valós eszközöknek a **MXChip** eszköz sablont, és jegyezze fel az eszköz kapcsolat részleteinek (**hatókör azonosítója, az eszköz Azonosítóját és az elsődleges kulcs**).
+
+1. Adjon hozzá egy **valós eszköz** Device Explorer, kattintson a **+ új > valós** valós eszköz hozzáadásához.
+    * Adja meg az eszköz azonosítója **<span style="color:Red">(kell lennie a kisbetűs)</span>** vagy a javasolt eszközazonosítót használ.
+    * Adja meg az eszköz nevét, vagy használja a javasolt név
+    
+    ![Eszköz hozzáadása](media\concepts-connectivity\add-device.png)
+
+
+1. Például beolvasni a kapcsolat adatait **hatókör azonosítója, az eszköz Azonosítóját és az elsődleges kulcs** kattintva az új eszköz **Connect** az eszköz oldalon.
+ 
+    ![Kapcsolat részletei](media\concepts-connectivity\device-connect.PNG)
+
+3. Ügyeljen arra, hogy ezek az adatok mentése során fog temporaritly lekérése kapcsolódik az internethez az DevKit eszköz előkészítése. 
+
 
 ### <a name="prepare-the-devkit-device"></a>A fejlesztői készlet eszköz előkészítése
 
 > [!NOTE]
 > Ha az eszköz korábban használt, és rendelkezik a Wi-Fi hitelesítő adatokat tárolja, és konfigurálja újra az eszközt egy másik Wi-Fi hálózatot, a kapcsolati karakterlánc vagy a telemetriai mérési szeretne, nyomja le az mind a **A** és **B** egyidejűleg gombokat a táblán. Ha nem működik, nyomja le az **alaphelyzetbe** gombra, és próbálkozzon újra.
 
-#### <a name="before-you-start-configuring-the-device"></a>Mielőtt elkezdené az eszköz konfigurálása:
-1. Az IoT-központ a **minta Devkits** lépjen a `Device Explorer` ->  `select MXChip Template`  ->  `Click on +New and choose **Real** Device`  ->  `Connect this device` (a jobb felső sarokban) 
-2. Az elsődleges kapcsolati karakterlánc másolása
-3. Ügyeljen arra, hogy mentse a kapcsolati karakterláncot, temporaritly lekapcsolja az internetről a DevKit eszköz előkészítése. 
 
 
 #### <a name="to-prepare-the-devkit-device"></a>Az DevKit eszköz előkészítése:
 
 
-1. Az MXChip a a legújabb előregyártott Azure IoT Central belső vezérlőprogram letöltése a [kiadások](https://github.com/Azure/iot-central-firmware/releases) lapját a githubon. A letöltési fájlnév a kiadások oldaláról a következőhöz hasonló `AZ3166-IoT-Central-X.X.X.bin`.
-
+1. Az MXChip a a legújabb előregyártott Azure IoT Central belső vezérlőprogram letöltése a [kiadások](http://aka.ms/iotcentral-docs-MXChip-releases) lapját a githubon.
 1. A fejlesztői készlet eszköz csatlakoztatása a fejlesztői gépén, USB-kábel segítségével. Windows, a fájl explorer megnyílik egy ablak a tárolót a fejlesztői készlet eszközön leképezve meghajtón. Ha például a meghajtó neve lehet **AZ3166 (D:)**.
-
 1. Húzza a **iotCentral.bin** fájlt arra a meghajtóra ablakot. A másolás befejeződése után az eszköz újraindul, új belső vezérlőprogramját.
 
 1. A fejlesztői készlet eszköz újraindításakor a következő képernyő jelenik meg:
@@ -75,7 +83,7 @@ Az Azure IoT Central-alkalmazás hozzáadása a valós eszközöknek a **MXChip*
     ```
 
     > [!NOTE]
-    > Ha a képernyőn megjelenik az bármi más, nyomja le az **A** és **B** gombok használatát az eszközön, az eszköz újraindítását egy időben. 
+    > A képernyőn megjelenik az bármi más, ha alaphelyzetbe az eszközt, majd kattintson a **A** és **B** gombok használatát az eszközön, az eszköz újraindítását egy időben. 
 
 1. Az eszköz most már hozzáférési pont (AP) módban van. A Wi-Fi hozzáférési pont a számítógép vagy mobileszköz csatlakozhat.
 
@@ -89,7 +97,7 @@ Az Azure IoT Central-alkalmazás hozzáadása a valós eszközöknek a **MXChip*
     - Adja hozzá a Wi-Fi hálózat nevét 
     - a Wi-Fi-hálózat jelszavát
     - PIN-kódot az eszközön LCD látható 
-    - a kapcsolati karakterláncot, az eszköz (kell már mentette-e a következő lépéseket követve) lévő kapcsolati karakterláncot találja `https://apps.iotcentral.com` -> `Device Explorer` -> `Device` -> `Select or Create a new Real Device` -> `Connect this device` (a jobb felső sarokban)
+    - a kapcsolat adatai **hatókör azonosítója, az eszköz azonosítóját és az elsődleges kulcs** eszköze (kell már mentette-e a következő lépéseket követve)      
     - Válassza ki az összes elérhető telemetriai adat-mérést. 
 
 1. Miután kiválasztotta **konfigurálása eszköz**, ezt oldal jelenik meg:
@@ -99,7 +107,6 @@ Az Azure IoT Central-alkalmazás hozzáadása a valós eszközöknek a **MXChip*
 1. Nyomja le az **alaphelyzetbe** gomb az eszközön.
 
 
-
 ## <a name="view-the-telemetry"></a>A telemetriai adatok megtekintése
 
 A fejlesztői készlet eszköz újraindításakor az eszközön a képernyőn látható:
@@ -107,6 +114,9 @@ A fejlesztői készlet eszköz újraindításakor az eszközön a képernyőn l�
 * A telemetriai adatokat küldött üzenetek száma.
 * Hibák száma.
 * A kapott kívánt tulajdonságok száma és a jelentett tulajdonságok számát.
+
+> [!NOTE]
+> Ha az eszköz megjelenik a connect-ellenőrzés során hurkolás lehet, ha az eszköz *letiltott* az IoT-központ és *feloldása* az eszköz így képes csatlakozni az alkalmazáshoz.
 
 Rázza meg az eszköz a jelentett tulajdonságok száma növekmény. Az eszköz küld egy véletlenszerű számot, a **Die szám** eszköztulajdonság.
 
@@ -176,7 +186,7 @@ A minta Devkits alkalmazást sablon alapján létrehozott alkalmazás tartalmaz 
 
 #### <a name="telemetry"></a>Telemetria 
 
-| Mezőnév     | Mértékegységek  | Minimum | Maximum | Tizedeshelyek |
+| Mező neve     | Egység  | Minimális | Maximum | Tizedeshelyek |
 | -------------- | ------ | ------- | ------- | -------------- |
 | páratartalom       | %      | 0       | 100     | 0              |
 | TEMP           | ° C     | tartsuk ott -40     | 120     | 0              |
@@ -193,12 +203,12 @@ A minta Devkits alkalmazást sablon alapján létrehozott alkalmazás tartalmaz 
 
 
 #### <a name="states"></a>Állapotok 
-| Név          | Megjelenített név   | NORMÁL | FIGYELMEZTETÉS | VESZÉLY | 
+| Name (Név)          | Megjelenített név   | NORMÁL | FIGYELMEZTETÉS | VESZÉLY | 
 | ------------- | -------------- | ------ | ------- | ------ | 
-| DeviceState   | Eszköz állapota   | Zöld  | Narancssárga  | Vörös    | 
+| DeviceState   | Eszköz állapota   | Zöld  | Narancssárga  | Piros    | 
 
 #### <a name="events"></a>Események 
-| Név             | Megjelenített név      | 
+| Name (Név)             | Megjelenített név      | 
 | ---------------- | ----------------- | 
 | ButtonBPressed   | B gomb megnyomásakor  | 
 
@@ -206,7 +216,7 @@ A minta Devkits alkalmazást sablon alapján létrehozott alkalmazás tartalmaz 
 
 Numerikus beállításai
 
-| Megjelenített név | Mezőnév | Mértékegységek | Tizedeshelyek | Minimum | Maximum | Kezdeti |
+| Megjelenített név | Mező neve | Egység | Tizedeshelyek | Minimális | Maximum | Kezdeti |
 | ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
 | Feszültségérzékelő      | setVoltage | V | 0              | 0       | 240     | 0       |
 | Aktuális      | setCurrent | Teljesítménytényező  | 0              | 0       | 100     | 0       |
@@ -214,17 +224,17 @@ Numerikus beállításai
 
 A beállítások ki-/ bekapcsolása
 
-| Megjelenített név | Mezőnév | A szöveg | Ki a szöveg | Kezdeti |
+| Megjelenített név | Mező neve | A szöveg | Ki a szöveg | Kezdeti |
 | ------------ | ---------- | ------- | -------- | ------- |
-| INTEGRÁCIÓS MODUL           | activateIR | BE      | KI      | Ki     |
+| INTEGRÁCIÓS MODUL           | activateIR | ON      | KI      | Ki     |
 
 ### <a name="properties"></a>Tulajdonságok
 
-| Típus            | Megjelenített név | Mezőnév | Adattípus |
+| Típus            | Megjelenített név | Mező neve | Adattípus |
 | --------------- | ------------ | ---------- | --------- |
 | Eszköztulajdonság | Die száma   | dieNumber  | szám    |
-| Eszköztulajdonság | Eszköz helye   | hely  | hely    |
-| SMS            | Az előállított     | manufacturedIn   | -       |
+| Eszköztulajdonság | Eszköz helye   | location  | location    |
+| Szöveg            | Az előállított     | manufacturedIn   | –       |
 
 
 

@@ -10,15 +10,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2018
+ms.date: 09/17/2018
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: db60aaacfb2ba60dbe73663cb415e2a3baea5400
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 270587f484216d130848ee3c7bdc8ae1c1df0afc
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42745799"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45982153"
 ---
 # <a name="manage-api-version-profiles-in-azure-stack"></a>Az Azure Stackben API-verzióprofilok kezelése
 
@@ -46,7 +46,7 @@ Ez a témakör segítségével:
     Kiadás dátuma: egy róla kiadása ütemben történik, ebben a kiadásban összpontosít és stabilabbá teheti több felhő között. Ez a profil optimális Azure Stack-kompatibilitási célozza.
     - **éééé-hh-nn-profil** optimális stabilitás és a legújabb funkciók között helyezkedik el.
 
-### <a name="azure-api-profiles-and-azure-stack-compatibility"></a>Az Azure API-profilok és az Azure Stack-kompatibilitás
+## <a name="azure-api-profiles-and-azure-stack-compatibility"></a>Az Azure API-profilok és az Azure Stack-kompatibilitás
 
 A legújabb Azure API-profilok nem kompatibilisek az Azure Stack használatával. A következő tanúsítványelnevezési módszerek segítségével azonosíthatja a profilok használata az Azure Stack-megoldások számára.
 

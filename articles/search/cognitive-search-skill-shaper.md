@@ -1,6 +1,6 @@
 ---
-title: Formázóban kognitív keresési szakértelem (Azure Search) |} Microsoft Docs
-description: Metaadatok és a strukturált információk kinyerése strukturálatlan adatok, és alakul azt egy Azure Search dúsító folyamat összetett típusként.
+title: Shaper cognitive search szakértelem (Azure Search) |} A Microsoft Docs
+description: Metaadatok és strukturált információt kinyerése strukturálatlan adatok, és vegyen részt Ön az Azure Search-felderítési bővítést folyamatban összetett típus.
 services: search
 manager: pablocas
 author: luiscabrer
@@ -10,32 +10,34 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 311f4bd67081de567763783a9d86540eda36d9f8
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 286e1f9d6f6ae09d98aa87b447df7a7524642a1f
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33791006"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45728999"
 ---
-#   <a name="shaper-cognitive-skill"></a>Formázóban kognitív szakértelem
+#   <a name="shaper-cognitive-skill"></a>Shaper cognitive szakértelem
 
-A **formázóban** szakértelem létrehoz egy összetett típus összetett mezők (más néven többrészes mezők) támogatásához. Egy összetett típus mező több részből áll, de a rendszer csak egy elemet az Azure Search-index. Konszolidált mezők keresési esetekben hasznos, például a első és utolsó nevét kombinálása egy egyetlen mezőben, város és az állapotot a egyetlen mezőben, vagy a név és egyedi identitásának meghatározásához egyetlen mezőbe születési dátumot.
+A **Shaper** szakértelem hoz létre összetett összetett mezők (más néven többrészes mezők) támogatásához. A komplex típus mező több részből áll, de úgy viselkedik, mint az Azure Search-index egyetlen elemet. Összevont mezők keresési forgatókönyvekben bizonyulhat hasznosnak, például a vezetéknevet és az utónevet összefűzhet egy mezőjéhez, város és állam egyetlen mezőt, vagy nevét és a születési dátumát egyedi identitása létrehozásához egyetlen mezőbe.
 
-A formázóban szakértelem lehetővé teszi lényegében hozzon létre egy struktúra, struktúra tag nevét adja meg, és értéket hozzárendelni minden tag.
+A Shaper szakértelem lehetővé teszi, hogy lényegében-struktúra létrehozása, határozza meg, hogy a struktúra tagjai nevét, és rendelje hozzá az értékeket minden egyes tagjára.
 
-Alapértelmezés szerint ez a módszer támogatja az objektumok, amelyek egy szintnél mélyebb. Az összetett objektumok több formázóban lépéseket láncában találhatók.
+Alapértelmezés szerint ez a módszer támogatja az objektumok, amely egy szintnél mélyebb. Az összetett objektumokat láncolhatja össze több Shaper lépést.
 
-A válaszban a kimeneti neve mindig "kimeneti". Belső a feldolgozási sor leképezhet egy másik nevet, például a "kimeneti", de a formázóban a következő példa "analyzedText" szakértelem saját magát adja vissza "kimeneti" a válaszban. Ez lehet fontos Ha bővített dokumentumok hibakeresést, és figyelje meg az elnevezési eltérés, vagy ha egy egyéni szakértelem build és struktúrájának kialakításakor a válasz saját maga.
+A válaszban a kimeneti név mindig "kimeneti". Belsőleg a folyamat leképezhet egy másik nevet, például a "kimeneti", de a Shaper a következő példa "analyzedText" magát szakértelem adja vissza "kimeneti" a válaszban. Ez lehet fontos Ha képi elemekben gazdag dokumentumok hibakeresést, és figyelje meg, hogy az elnevezési eltérés, vagy ha egyéni műveleteket hozhat létre, és vannak strukturálja a válasz saját magának.
 
+> [!NOTE]
+> A kognitív keresés nyilvános előzetes verzióban érhető el. Képességcsoport végrehajtási, és a lemezkép kinyerése és a normalizálási jelenleg rendelkezésre állnak az ingyenes. Később az ezen funkciók díjszabásáról jelentjük be. 
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Util.ShaperSkill
 
 ## <a name="sample-1-complex-types"></a>1. példa: összetett típusok
 
-Egy olyan esetet, ahol szeretne létrehozni egy struktúra nevű *analyzedText* , amely két tagokkal rendelkezik: *szöveg* és *véleményeket*, illetve. Az Azure Search többrészes kereshető mező neve egy *összetett típus*, és még nem támogatott a kezdő verzióról. Ebben az előzetesben formázóban szakértelem használható összetett típusú mezők létrehozni az indexet. 
+Példaként vegyünk egy forgatókönyvet, ahol szeretné létrehozni a szerkezetet *analyzedText* , amely két tagja van: *szöveg* és *vélemények*, illetve. Az Azure Search szolgáltatásban a többrészes kereshető mező neve egy *komplex típus*, és a beépített a rendszer még nem támogatott. Ebben az előzetes verzióban Shaper szakértelem egy összetett típusú mezők az index létrehozására használható. 
 
-Az alábbi példa nevek biztosít a tag a bemeneti adatként. A kimeneti szerkezete (az Azure Search összetett mező) van megadva a *targetName*. 
+Az alábbi példa neveket tartalmaz a tag bemeneteként. A kimeneti struktúra (az Azure Search szolgáltatásban az összetett mező) van megadva a *targetName*. 
 
 
 ```json
@@ -61,8 +63,8 @@ Az alábbi példa nevek biztosít a tag a bemeneti adatként. A kimeneti szerkez
 }
 ```
 
-### <a name="sample-input"></a>A minta bemenet
-Egy JSON-dokumentum használható bemeneti biztosítva formázóban szakértelem lehet:
+### <a name="sample-input"></a>Minta beviteli
+JSON-dokumentumok biztosítása használható bemeneti Shaper szakértelem lehet:
 
 ```json
 {
@@ -80,7 +82,7 @@ Egy JSON-dokumentum használható bemeneti biztosítva formázóban szakértelem
 
 
 ### <a name="sample-output"></a>Példa kimenet
-A formázóban szakértelem állít elő, nevű új elem *analyzedText* kombinált elemei a *szöveg* és *véleményeket*. 
+Shaper szakértelem hoz létre egy új elem nevű *analyzedText* a kombinált elemeinek *szöveg* és *vélemények*. 
 
 ```json
 {
@@ -102,9 +104,9 @@ A formázóban szakértelem állít elő, nevű új elem *analyzedText* kombiná
 
 ## <a name="sample-2-input-consolidation"></a>2. példa: a bemeneti összevonása
 
-Egy másik Példa képzelhető el, hogy pipeline-feldolgozási különböző szakaszaiban, kicsomagolta könyv címe, és a könyv különböző oldalain fejezet címek. Mostantól létrehozhat egy egyszeres szerkezet származó különböző összetevői.
+Egy másik példa, hogy a feldolgozási folyamat különböző szakaszaiban kicsomagolta a könyv különböző oldalain fejezet címek és egy könyv címe imagine. Most már létrehozhat egy egyszeres szerkezet mikroszolgáltatásokból álló, ezeket a különféle bemeneteket.
 
-Ebben a forgatókönyvben formázóban szakértelem definícióját a következő példa látható:
+Ebben a forgatókönyvben Shaper szakértelem definíciója az alábbi példához hasonlóan nézhet ki:
 
 ```json
 {
@@ -130,7 +132,7 @@ Ebben a forgatókönyvben formázóban szakértelem definícióját a következ�
 ```
 
 ### <a name="sample-output"></a>Példa kimenet
-Ebben az esetben a formázóban simítja egyetlen tömb létrehozásához minden fejezet nevet. 
+Ebben az esetben a Shaper lapossá teszi az összes fejezet címek hozzon létre egy egyetlen olyan tömböt. 
 
 ```json
 {
@@ -154,6 +156,6 @@ Ebben az esetben a formázóban simítja egyetlen tömb létrehozásához minden
 
 ## <a name="see-also"></a>Lásd még
 
-+ [Előre definiált képességek](cognitive-search-predefined-skills.md)
-+ [Egy skillset definiálása](cognitive-search-defining-skillset.md)
++ [Előre megadott képesség](cognitive-search-predefined-skills.md)
++ [Hogyan képességcsoport megadása](cognitive-search-defining-skillset.md)
 

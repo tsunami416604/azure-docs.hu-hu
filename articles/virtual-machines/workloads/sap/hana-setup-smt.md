@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5e729c2e3a802df15973fc6a43ee42265d1de654
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: f387c1afe88f2bba476309b2e2e01942d2b7ae5b
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44164748"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45982625"
 ---
 # <a name="setting-up-smt-server-for-suse-linux"></a>SUSE Linux SMT kiszolgáló beállítása
 SAP HANA nagyméretű példányok nem rendelkezik közvetlen kapcsolódás az internethez. Ezért nem egy egyszerű folyamatot egy ilyen egység regisztrálása operációsrendszer-szolgáltatóval, és töltse le és -javítások alkalmazása a. Ha a SUSE Linux, egy megoldás lehet egy Azure-beli virtuális gépen SMT kiszolgáló beállítása. Mivel az Azure virtuális gép a felhőben egy Azure virtuális hálózat, amely kapcsolódik a nagyméretű HANA-példányt szeretne. Az ilyen az SMT kiszolgálóval a nagyméretű HANA-példány egység sikerült regisztrálni és létesít a javítókészletek letöltéséhez. 
@@ -33,11 +33,11 @@ A feladatot választják a nagyméretű HANA-példány egy SMT kiszolgáló tele
 
 ## <a name="installation-of-smt-server-on-azure-vm"></a>Az Azure virtuális gépen SMT server telepítése
 
-Ebben a lépésben egy Azure-beli virtuális gépen a SMT kiszolgálót telepíti. Az első mérték a bejelentkezni a [SUSE ügyfél Center](https://scc.suse.com/)
+Ebben a lépésben egy Azure-beli virtuális gépen a SMT kiszolgálót telepíti. Az első mérték a bejelentkezni a [SUSE ügyfél Center](https://scc.suse.com/).
 
 Bejelentkezett, lépjen a szervezet a szervezeti hitelesítő adataival-->. Az adott szakaszban keresse meg a szükséges hitelesítő adatokat az SMT kiszolgáló beállításához.
 
-A harmadik lépésben pedig a SUSE Linux virtuális gép telepítése az Azure virtuális hálózat. A virtuális gép üzembe helyezéséhez hajtsa végre a SLES 12 SP2 image z galerie Azure. A telepítési folyamat során nem ad meg egy DNS-nevet, és nem használ statikus IP-címek ezen a képernyőfelvételen látható módon
+A harmadik lépésben pedig a SUSE Linux virtuális gép telepítése az Azure virtuális hálózat. A virtuális gép üzembe helyezéséhez hajtsa végre a SLES 12 SP2 image z galerie Azure (válassza ki saját SUSE kép). A telepítési folyamat során nem ad meg egy DNS-nevet, és nem használ statikus IP-címek ezen a képernyőfelvételen látható módon
 
 ![virtuális gép üzembe helyezésének SMT kiszolgáló](./media/hana-installation/image3_vm_deployment.png)
 
@@ -56,7 +56,28 @@ echo "export NCURSES_NO_UTF8_ACS=1" >> .bashrc
 
 Ezek a parancsok végrehajtása után indítsa újra aktiválni a beállításokat a bash. Indítsa el YAST.
 
-A YAST lépjen a szoftverfrissítési karbantartás, és keresse meg a smt. Válassza ki az smt, amely automatikusan vált, amennyiben az yast2-smt alább látható módon
+Csatlakozzon a virtuális gép (smtserver) a SUSE-helyhez.
+
+```
+smtserver:~ # SUSEConnect -r <registration code> -e s<email address> --url https://scc.suse.com
+Registered SLES_SAP 12.2 x86_64
+To server: https://scc.suse.com
+Using E-Mail: email address
+Successfully registered system.
+```
+
+Miután a virtuális gép csatlakoztatva van a SUSE-helyhez, a smt csomagok telepítéséhez. A következő paranccsal putty az smt csomagok telepítéséhez.
+
+```
+smtserver:~ # zypper in smt
+Refreshing service 'SUSE_Linux_Enterprise_Server_for_SAP_Applications_12_SP2_x86_64'.
+Loading repository data...
+Reading installed packages...
+Resolving package dependencies...
+```
+
+
+YAST eszköz használatával telepítse a smt csomagokat. A YAST lépjen a szoftverfrissítési karbantartás, és keresse meg a smt. Válassza ki az smt, amely automatikusan vált, amennyiben az yast2-smt alább látható módon
 
 ![A yast SMT](./media/hana-installation/image5_smt_in_yast.PNG)
 

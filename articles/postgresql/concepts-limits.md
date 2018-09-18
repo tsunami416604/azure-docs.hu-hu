@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 06/30/2018
-ms.openlocfilehash: e096a67d953860ec2e9601f25dbd9ca92a8fb4a3
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 0bd894e99fd575fca734a101a1cde0f0a2979682
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45633778"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45983758"
 ---
 # <a name="limitations-in-azure-database-for-postgresql"></a>Azure Database for postgresql-hez korlátozásai
 A következő szakaszok ismertetik a kapacitás és a működési korlátai az adatbázis-szolgáltatás.
@@ -48,9 +48,6 @@ Az Azure rendszer öt kapcsolatok figyelése az Azure Database for PostgreSQL-ki
 
 ### <a name="server-version-upgrades"></a>Kiszolgáló verziófrissítések
 - Fő database engine verziói között az automatikus migrálási jelenleg nem támogatott. Ha szeretné, a következő fő verzióra való frissítéshez, egy [memóriakép és visszaállítás](./howto-migrate-using-dump-and-restore.md) , hogy egy kiszolgálót, amely az új motor verziójával lett létrehozva.
-
-### <a name="subscription-management"></a>Előfizetés-kezelés
-- Dinamikusan mozgatása kiszolgálók között, előfizetések és -erőforráscsoportok jelenleg nem támogatott.
 
 ### <a name="vnet-service-endpoints"></a>Virtuális hálózati Szolgáltatásvégpontok
 - Virtuális hálózati Szolgáltatásvégpontok támogatása csak az általános célú és memóriahasználatra optimalizált kiszolgálók esetében érhető el.

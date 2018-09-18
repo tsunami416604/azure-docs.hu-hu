@@ -10,12 +10,12 @@ ms.custom: scale out apps
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: genemi
-ms.openlocfilehash: cc3e870d67f3c38fe4173275b6fd210d0c4ee05a
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 87560f3fb34c281b6802ef5079fd1445caba6db8
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39423559"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45983631"
 ---
 # <a name="deploy-and-explore-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-sql-database"></a>Üzembe helyezése és megismerése a több-bérlős SaaS-alkalmazás a bérlőnkénti adatbázis mintát használ, az SQL Database szolgáltatással
 
@@ -83,7 +83,7 @@ Amíg az alkalmazás üzembe helyezése, töltse le a forrás kódot és a felü
 > Végrehajtható tartalom (parancsfájlok és DLL-ek) Windows előfordulhat, hogy blokkolja, amikor a .zip kiterjesztésű fájlok külső forrásból letölteni, és ki kell olvasni. Kövesse a lépéseket feloldása a .zip-fájlt, mielőtt kibontja a parancsfájlok. A blokkolás feloldásának biztosítja, hogy a parancsfájlok futtatását engedélyezi.
 
 1. Keresse meg a [WingtipTicketsSaaS-DbPerTenant GitHub-adattárat][github-wingtip-dpt].
-1. Válassza ki **Klónozás vagy letöltés**.
+1. Válassza a **Clone or download** (Klónozás vagy letöltés) lehetőséget.
 1. Válassza ki **ZIP letöltése**, majd mentse a fájlt.
 1. Kattintson a jobb gombbal a **WingtipTicketsSaaS-DbPerTenant-master.zip** fájlt, és válassza ki **tulajdonságok**.
 1. Az a **általános** lapon jelölje be **feloldása** > **alkalmaz**.

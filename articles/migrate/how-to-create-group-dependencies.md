@@ -4,28 +4,43 @@ description: Ismerteti, amellyel pontosíthatja az értékelést a csoport függ
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 06/19/2018
+ms.date: 09/17/2018
 ms.author: raynew
-ms.openlocfilehash: 37c4ce8638c8f0481151449317d6cd387b61b256
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 4f5ab4565191b38c07b2071609a57db2525860e3
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39622898"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45733414"
 ---
 # <a name="refine-a-group-using-group-dependency-mapping"></a>Eszközcsoport-leképezés függőségi csoport pontosítása
 
-Ez a cikk ismerteti, amellyel pontosíthatja a csoportot a csoportban lévő összes gép függőségek vizualizációjával. Általában ezt a módszert, ha szeretne egy meglévő csoportot a tagsági pontosítás csoportfüggőségek kereszt-ellenőrzés az értékelés futtatása előtt. Finomítás a függőségek képi megjelenítésének használatával csoport is hatékonyan megtervezi a migrálást, Azure.You súgó képes felderíteni az összes saját rendszerek esetében, amelyek együtt áttelepítése. Ez segít győződjön meg arról, hogy semmi sem marad, és meglepetés valamilyen okból kimaradás lép fordul elő, ha az Azure-bA áttelepítésekor. 
+Ez a cikk ismerteti, amellyel pontosíthatja a csoportot a csoportban lévő összes gép függőségek vizualizációjával. Általában ezt a módszert, ha szeretne egy meglévő csoportot a tagsági pontosítás csoportfüggőségek kereszt-ellenőrzés az értékelés futtatása előtt. Finomítás a függőségek képi megjelenítésének használatával csoport segítségével hatékonyan tervezheti a migrálást az Azure-bA. Felfedezheti, hogy az összes saját rendszerek esetében, amelyek együtt áttelepíteni. Ez segít győződjön meg arról, hogy semmi sem marad, és meglepetés valamilyen okból kimaradás lép fordul elő, ha az Azure-bA áttelepítésekor.
 
 
 > [!NOTE]
 > Csoportok, amelynek meg szeretné függőségek vizualizálása 10-nél több gép nem tartalmazhat. Ha a csoport több mint 10 gépekkel rendelkezik, azt javasoljuk, hogy azt ossza fel kisebb csoportok kihasználhatja a függőségek képi megjelenítésének funkcióival.
 
 
-# <a name="prepare-the-group-for-dependency-visualization"></a>A csoport előkészítéséhez a függőségek képi megjelenítése
-Egy csoport függőségek megjelenítéséhez szüksége, töltse le és telepítse az ügynököt minden olyan a csoport tagja a helyi gépen. Ezenkívül, ha internetkapcsolat nélküli gépek, kell letölteni és telepíteni [OMS-átjáró](../log-analytics/log-analytics-oms-gateway.md) rajtuk.
+## <a name="prepare-for-dependency-visualization"></a>Előkészítéséhez a függőségek képi megjelenítése
+Az Azure Migrate a Log Analytics engedélyezése a függőségek vizualizációjához a Service Map megoldást használja.
+
+### <a name="associate-a-log-analytics-workspace"></a>Log Analytics-munkaterület társítása
+Kihasználhatja a függőségek képi megjelenítésével, hozzá kell rendelni egy Log Analytics-munkaterületet, vagy új vagy meglévő, az Azure Migrate-projektet. Csak létrehozása vagy csatolása ugyanahhoz az előfizetéshez egy munkaterületet, ahol a migrálási projekt létrejön.
+
+- Egy projektet a Log Analytics-munkaterület csatlakoztatni kívánt **áttekintése**, lépjen a **Essentials** projekt kattintson **konfigurálást igényel**
+
+    ![Log Analytics-munkaterület társítása](./media/concepts-dependency-visualization/associate-workspace.png)
+
+- Amikor létrehoz egy új munkaterületet, adja meg a munkaterület nevét kell. A migrálási projekt ugyanabban az előfizetésben, és ugyanabban a régióban a munkaterület létrehozását majd [Azure földrajzi](https://azure.microsoft.com/global-infrastructure/geographies/) a migrálási projektet.
+- A **meglévő** a beállítás csak a régióban, ahol a Service Map elérhető létrehozott munkaterületek listája. Ha egy munkaterületet egy régióban, ahol a Service Map nem érhető el, az nem lehet jelenik meg a listában.
+
+> [!NOTE]
+> A migrálási projekthez tartozó munkaterület nem módosítható.
 
 ### <a name="download-and-install-the-vm-agents"></a>A virtuálisgép-ügynökök letöltése és telepítése
+Egy csoport függőségek megjelenítéséhez szüksége, töltse le és telepítse az ügynököt minden olyan a csoport tagja a helyi gépen. Ezenkívül, ha internetkapcsolat nélküli gépek, kell letölteni és telepíteni [OMS-átjáró](../log-analytics/log-analytics-oms-gateway.md) rajtuk.
+
 1. A **áttekintése**, kattintson a **kezelés** > **csoportok**, nyissa meg a szükséges csoport.
 2. Gépek, a listában az a **függőségi ügynök** oszlopot, kattintson a **telepítés szükséges** megjelenő arról, hogyan töltse le és telepítse az ügynököket.
 3. Az a **függőségek** lapon, töltse le és telepítse a Microsoft Monitoring Agent (MMA) és a függőségi ügynök minden virtuális gépen, amely a csoport része.
@@ -37,8 +52,8 @@ Az ügynök telepítése a Windows-gépen:
 
 1. Kattintson duplán a letöltött ügynökre.
 2. Az **Üdvözöljük** lapon kattintson a **Tovább** gombra. A **Licencfeltételek** oldalon kattintson az **Elfogadom** gombra a feltételek elfogadásához.
-3. A **célmappa**, megtartani, vagy módosítsa az alapértelmezett telepítési mappa > **tovább**. 
-4. A **ügynök telepítésének beállításai**válassza **Azure Log Analytics** > **tovább**. 
+3. A **célmappa**, megtartani, vagy módosítsa az alapértelmezett telepítési mappa > **tovább**.
+4. A **ügynök telepítésének beállításai**válassza **Azure Log Analytics** > **tovább**.
 5. Kattintson a **Hozzáadás** hozzáadása egy új Log Analytics-munkaterületet. Illessze be a munkaterület Azonosítóját és kulcsát, a portálról kimásolt. Kattintson a **Tovább** gombra.
 
 
@@ -66,7 +81,7 @@ Miután a csoport összes gépen telepített ügynökök, a függőségeket, a c
 3. A függőségi térkép a csoport a következő részleteket tartalmazza:
     - (Ügyfelek) a bejövő és kimenő (kiszolgálók) TCP-kapcsolatok és- tárolókról a csoport részét képező összes gép
         - A függő gépek, amelyeken nincs telepítve az MMA és a függőségi ügynök portszámok szerint vannak csoportosítva
-        - Az MMA és a függőségi ügynök telepítve van a dependenct gépek külön mezőkben jelennek meg 
+        - Az MMA és a függőségi ügynök telepítve van a függő gépek külön mezőkben jelennek meg
     - A gépen futó folyamatokat, bővítheti, minden gép, ha azt szeretné, hogy a folyamatok megtekintése
     - Például a teljes tartománynév, az operációs rendszer, az egyes gépek MAC-cím stb tulajdonságait, kattintson a minden gép, ha azt szeretné, hogy ezek a részletek megtekintéséhez
 

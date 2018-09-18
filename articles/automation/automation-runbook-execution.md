@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 05/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: eb6516400d362fe60adc05590353ec003c70e059
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: 6e449c1216fabf64da2b2abb59a7066fa30e332d
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "42056856"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45982980"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Runbook végrehajtása az Azure Automationben
 
@@ -59,7 +59,7 @@ Megtekintheti az összes runbook-feladatok összesített állapotát, vagy egy a
 
 A kijelölt Automation-fiók a jobb oldalon látható összes a runbook-feladatok számára kijelölt Automation-fiók alatt **feladatstatisztika** csempére.
 
-![Feladatstatisztika csempe](./media/automation-runbook-execution/automation-account-job-status-summary.png).
+![Feladatstatisztika csempe](./media/automation-runbook-execution/automation-account-job-status-summary.png)
 
 Ez a csempe és az összes feladat végrehajtása a feladat állapotának grafikus ábrázolását jeleníti meg.
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/17/2018
 ms.author: renash
 ms.component: files
-ms.openlocfilehash: b261ec5fb0ad437202df1a8fd8683a095cb1bb96
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: 03280f87b4b49b3e42091c6b1572a7f050afb336
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "42054282"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45983157"
 ---
 # <a name="overview-of-share-snapshots-for-azure-files"></a>Az Azure Files megosztási pillanatképeinek áttekintése 
 Az Azure Files lehetővé teszi, hogy a megosztási pillanatképek a fájlmegosztások. Pillanatképek rögzítése a fájlmegosztási állapot ezen a ponton idő megosztani. Ez a cikk ismertetünk, adja meg a megosztási pillanatképek funkciókról, és hogyan igénybe veheti, az az egyedi használati esetekhez.
@@ -32,7 +32,7 @@ Miután létrehozott egy fájlmegosztást, az adatok biztonsági mentés haszná
 ## <a name="capabilities"></a>Funkciók
 Megosztási pillanatkép az adatok időponthoz, a csak olvasható példányát. Létrehozása, törlése és a pillanatképek kezelése a REST API-val. Ugyanazokat a képességeket is érhetők el az ügyféloldali kódtár, az Azure CLI-vel és az Azure Portalon. 
 
-A REST API-t és az SMB használatával megtekintheti a megosztás pillanatképeit. Kérheti le a fájl vagy könyvtár verziók listáját, és a egy adott verziót meghajtóként közvetlenül lehet csatlakoztatni. 
+A REST API-t és az SMB használatával megtekintheti a megosztás pillanatképeit. Kérheti le a fájl vagy könyvtár verziók listáját, és a egy adott verziót közvetlenül meghajtóként csatlakoztathatja (csak Windows - érhető el lásd [korlátok](#limits)). 
 
 Megosztási pillanatkép létrehozása után azt is olvassa el, másolja, vagy törölni, de nem módosulnak. Teljes megosztási pillanatképek nem másolható egy másik tárfiókba. Meg kell tennie, hogy a fájl, AzCopy vagy más másolása mechanizmusok használatával.
 
@@ -62,6 +62,8 @@ A pillanatképek nem beleszámítanak a megosztás 5 TB-os korlátot. Mekkora te
 Az Azure Files lehetővé teszi, hogy még ma megosztási pillanatképek maximális száma 200. Után 200 megosztási pillanatképek hogy régebbi megosztási pillanatképek törlése érdekében hozzon létre újakat. 
 
 A párhuzamos hívások a megosztási pillanatképek létrehozása nincs korlátozva van. Terület mennyisége nincs korlátozva van nem használt megosztást egy adott fájlmegosztás pillanatképeinek használhatnak fel. 
+
+Jelenleg nincs lehetőség a megosztási pillanatképek Linux rendszeren való csatlakoztatásához. Ennek az oka az Linuxos SMB-ügyfél nem támogatja a Windows does például csatlakoztatási pillanatképek.
 
 ## <a name="copying-data-back-to-a-share-from-share-snapshot"></a>Adatok másolása vissza a megosztás megosztási pillanatképből
 Másolási műveletek, amely magában foglalja a fájlokat, és a fájlmegosztások pillanatképeinek kövesse ezeket a szabályokat:

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 08/14/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 6a9897e94bf8f58ca4000f68ff30bfc6eece6249
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: a2b6b3334176cb6fdd86c17b4d11cb03a42dd4bf
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44057130"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45731802"
 ---
 # <a name="store-batch-ai-job-input-and-output-with-azure-storage"></a>Batch AI-feladat bemenete és kimenete az Azure Storage Store
 
@@ -30,7 +30,7 @@ Az Azure Storage a Microsoft felhőalapú tárolási megoldása. A Batch AI tám
 
 Ha a Batch AI-környezet az Azure Storage úgy dönt, azt javasoljuk, hogy (például adatkészletek) a bemeneti fájlok tárolása a Blob-tárolóba, melynek nagyobb átviteli sebességet, a képzési kimeneti tárolása egy fájlmegosztást, amely támogatja a folyamatos átviteli (engedélyezése olvasási kimeneti naplók egyidejűleg a feladat futása közben). 
 
-Mielőtt az Azure Storage használatához [hozzon létre egy Azure Storage-fiók](../storage/common/storage-create-storage-account.md#create-a-storage-account). A Batch AI támogatja a csatlakoztatáshoz szükséges kötetek mindkét általános célú v1 (GPv1) és az általános célú v2 (GPv2) Azure Storage-fiókokat. Az Azure Storage-fiók több blobtárolók tárolására is, vagy a fájlkezelő példányokat. Tárfiók kiválasztásakor vegye figyelembe a költségekre és teljesítményre igényeinek [beállítás](../storage/common/storage-account-options.md). 
+Mielőtt az Azure Storage használatához [hozzon létre egy Azure Storage-fiók](../storage/common/storage-quickstart-create-account.md). A Batch AI támogatja a csatlakoztatáshoz szükséges kötetek mindkét általános célú v1 (GPv1) és az általános célú v2 (GPv2) Azure Storage-fiókokat. Az Azure Storage-fiók több blobtárolók tárolására is, vagy a fájlkezelő példányokat. Vegye figyelembe a költségekre és teljesítményre vonatkozó követelmények, amikor kiválasztja a létrehozni kívánt tárfiók típusát. További információkért lásd: [az Azure storage-fiók áttekintése](../storage/common/storage-account-overview.md). 
 
 Hozzon létre egy blobtárolót és az adatkészlet egy Azure Blob-tárolóba való feltöltéséhez, válassza ki a következő módszerek egyikét:
 - [Az Azure portal](../storage/blobs/storage-quickstart-blobs-portal.md) webes grafikus felhasználói felülettel fel. A feltöltendő fájlokat kis számú, az Azure portal a legegyszerűbb műveletet biztosít.

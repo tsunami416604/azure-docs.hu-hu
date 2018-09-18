@@ -1,89 +1,91 @@
 ---
-title: Gyakori kérdések az a számítógép Látástechnológiai API |} Microsoft Docs
-description: A számítógép Látástechnológiai API-val kapcsolatban gyakran feltett kérdésekre válaszok kognitív Microsoft-szolgáltatásokban.
+title: A Computer Vision API vonatkozó gyakori kérdések
+titlesuffix: Azure Cognitive Services
+description: A Computer Vision API – gyakori kérdések válaszok az Azure Cognitive Servicesben.
 services: cognitive-services
 author: KellyDF
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/26/2017
 ms.author: kefre
-ms.openlocfilehash: 5c862dd2fb26a005f4e785673a4e9358ecf9286f
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 5c0a4e981a290b9a758c8401a75e546c61618b45
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35346979"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45983901"
 ---
-# <a name="computer-vision-api-frequently-asked-questions"></a>Gyakori kérdések a számítógép Látástechnológiai API
-### <a name="if-you-cant-find-answers-to-your-questions-in-this-faq-try-asking-the-computer-vision-api-community-on-stackoverflowhttpsstackoverflowcomquestionstaggedproject-oxfordormicrosoft-cognitive-or-contact-help-and-support-on-uservoicehttpscognitiveuservoicecom"></a>Ha ez a GYIK a kérdésekre adott válaszok nem található, próbálja meg a számítógép Látástechnológiai API-Közösség kérése a [StackOverflow](https://stackoverflow.com/questions/tagged/project-oxford+or+microsoft-cognitive) , vagy forduljon [Súgó és támogatás a UserVoice](https://cognitive.uservoice.com/)
+# <a name="computer-vision-api-frequently-asked-questions"></a>Computer Vision API – gyakori kérdések
+
+### <a name="if-you-cant-find-answers-to-your-questions-in-this-faq-try-asking-the-computer-vision-api-community-on-stackoverflowhttpsstackoverflowcomquestionstaggedproject-oxfordormicrosoft-cognitive-or-contact-help-and-support-on-uservoicehttpscognitiveuservoicecom"></a>Ha nem találja a kérdésekre adott válaszok a gyakori kérdések, próbálja meg, forduljon a Computer Vision API közösségéhez a [StackOverflow](https://stackoverflow.com/questions/tagged/project-oxford+or+microsoft-cognitive) , vagy forduljon [Súgó és támogatás a uservoice-ról](https://cognitive.uservoice.com/)
 
 -----
 
-**Kérdés**: *is szeretnék betanítása számítógép Látástechnológiai API egyéni címkék használata?  Például szeretnék hírcsatorna a képek cat fajtájú "vonat" a AI, majd a fajta érték egy AI kérelemre.*
+**Kérdés**: *betaníthatja I Computer Vision API egyéni címkék használata?  Például szeretném hírcsatorna a képek cat fajtájú "be" a mesterséges Intelligencia, majd a fajta értéke egy AI-kérést kap.*
 
-**Válasz**: Ez a funkció jelenleg nem érhető el. Azonban a mérnökök arra törekednek, hogy ez a funkció számítógép stratégiai.
-
------
-
-**Kérdés**: *is számítógép stratégiai helyileg használható internetkapcsolat nélkül?*
-
-**Válasz**: azonban jelenleg nem készül egy helyszíni vagy a helyi megoldás.
+**Válasz**: Ez a funkció jelenleg nem érhető el. Azonban a mérnökeinknek a Computer Vision megoldás a létrehozási funkció működik.
 
 -----
 
-**Kérdés**: *rendelkező számítógép stratégiai támogatott nyelvek?*
+**Kérdés**: *is számítógépes Látástechnológiai helyileg használható internetkapcsolat nélkül?*
+
+**Válasz**: jelenleg nem biztosítunk egy helyszíni vagy a helyi megoldás.
+
+-----
+
+**Kérdés**: *támogatott nyelvek a Computer Vision?*
 
 **Válasz**: támogatott nyelvek:
 
 | | | Támogatott nyelvek | | |
 |---------------- |------------------ |------------------ |--------------------------- |--------------------
-| Dán (da-DK)  | Holland (nl-NL)     | Angol           | Finn (fi-FI)            |Francia (fr-FR)
+| Dán (da-DK)  | Holland (Hollandia, NL)     | Angol           | Finn (fi-FI)            |Francia (fr-FR)
 | Német (de-DE)  | Görög (el-GR)     | Magyar (hu-HU) | Olasz (it-IT)            | Japán (ja-JP)
 | Koreai (ko-KR)  | Norvég (nb-NO) | Lengyel (pl-PL)    | Portugál (pt-BR) (pt-PT) | Orosz (ru-RU)
-| Spanyol (es-ES)   | Svéd (sv-SV)     | Török (tr-SO)   |                            |
+| Spanyol (es-ES)   | Svéd (sv-SV)     | Török (tr-átviteli egység)   |                            |
 
 -----
 
-**Kérdés**: *számítógép stratégiai is használható beolvasásához licenc lemezeket?*
+**Kérdés**: *is számítógépes Látástechnológiai licenc lemezeket kiolvasásához használandó?*
 
-**Válasz**: A stratégiai API lehetővé teszi a helyes szöveg-észlelési OCR rendelkező, de jelenleg nem optimalizált licenc lemezeket. Folyamatosan keressük szolgáltatásaink javítására és hozzá vannak adva OCR automatikus licenc lemez felismeréséhez funkciókra vonatkozó kérések listáját.
-
------
-
-**Kérdés:** *a kézírás-felismerés támogatott nyelvek?*
-
-**Válasz**: jelenleg csak angol nyelvű használata támogatott.
+**Válasz**: A Látástechnológiai API lehetővé teszi a helyes szöveg-észlelési OCR-rel, de jelenleg nem optimalizált licenc lemezeket. Folyamatosan keressük szolgáltatásaink javításához és a hozzáadott OCR automatikus licenc blonból elismerési funkciókra vonatkozó kérések listáját.
 
 -----
 
-**Kérdés**: *milyen típusú felületek írása a kézírás-felismerés támogatottak?*
+**Kérdés:** *támogatott nyelvek a kézírás-felismerés?*
 
-**Válasz**: A technológia működik együtt a különböző típusú felületek, beleértve a tábla, dokumentáció és sárga jegyzeteket.
-
------
-
-**Kérdés**: *mennyi időt a kézírás-felismerési művelet igénybe?*
-
-**Válasz**: A szükséges idő mértékét a szöveg hosszát. A hosszabb szövegeket azt is eltarthat néhány másodpercig. Ezért a kézzel szöveg felismerése művelet befejezése után szükség lehet eltelte után az eredményeket az beszerzése kézzel szöveg műveleti eredmény művelet használatával kérheti le.
+**Válasz**: jelenleg csak angol nyelven támogatott.
 
 -----
 
-**Kérdés**: *hogyan működik a kézírás-felismerés felismerés technológia leíró szöveg egy sor közepén kalap beszúrt?*
+**Kérdés**: *milyen típusú Surface-eszközök írása a kézírás-felismerés támogatottak?*
 
-**Válasz**: ilyen szöveget adja vissza, külön sorban a kézírás-felismerési műveletet.
-
------
-
-**Kérdés**: *hogyan nem a kézírás-felismerési technológia kezeli a áthúzott szavak vagy sorok?*
-
-**Válasz**: a szavakat felismerhetetlen leképezése több sort tartalmazó túllépése, ha a kézírás-felismerési művelet nem importálja őket. Azonban a szavakat rendszer átlépte, egy sorba használatával, ha adott metsző zaj a rendszer, és a szavakat továbbra is beolvasása észlelnie a kézírás-felismerési műveletet.
+**Válasz**: A technológia működését, különböző típusú Surface-eszközök, például táblaképek, tanulmány és sárga jegyzetlapok.
 
 -----
 
-**Kérdés**: *milyen szöveg tájolása a kézírás-felismerési technológia támogatottak?*
+**Kérdés**: *mennyi a kézírás-felismerés művelet tart?*
 
-**Válasz**: szögben körülbelül 30 fok legfeljebb 40 fokra célú szöveg előfordulhat, hogy első észlelnie a kézírás-felismerési műveletet.
+**Válasz**: az, hogy mennyi ideig tart a szöveg hosszúsága függ. A hosszabb szövegeket, akár is igénybe vehet néhány másodpercig. Ezért a kézzel írott szöveget ismeri fel a művelet befejezése után szükség lehet kell várni, mielőtt az eredményeket az első kézzel írott szöveget művelet eredményének művelettel lehet lekérdezni.
+
+-----
+
+**Kérdés**: *hogyan történik a kézírás-felismerés felismerés technológia leíró szöveg, amelyben egy sor közepén kalap beillesztett?*
+
+**Válasz**: ilyen szöveget adja vissza, külön sorban a kézírás-felismerés műveletet.
+
+-----
+
+**Kérdés**: *hogyan a kézírás-felismerés technológia kezeli áthúzott szavakat vagy sorok?*
+
+**Válasz**: a szavakat átlépésekor több sorokkal felismerhetetlen megjelenítése, ha a kézírás-felismerés művelet nem importálja azokat. Azonban a szavakat felszabadíthatják egyetlen sor használatával, ha a metsző zaj számít, és szavak továbbra is első dolgozza fel a kézírás-felismerés műveletet.
+
+-----
+
+**Kérdés**: *milyen szöveg tájolása a kézírás-felismerés technológia támogatottak?*
+
+**Válasz**: szöveg szögben körülbelül 30 fok legfeljebb 40 értéket orientált előfordulhat, hogy első dolgozza fel a kézírás-felismerés műveletet.
 
 -----

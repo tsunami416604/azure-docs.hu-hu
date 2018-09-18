@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: reference
 ms.topic: conceptual
-ms.date: 08/29/2018
+ms.date: 09/14/2018
 ms.author: carlrab
-ms.openlocfilehash: 218bd9031193d4987fdc1e0ae2bf302bdb028673
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 479f7df740e75ae44a5198414036ff0b0c216471
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45604501"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45730647"
 ---
 # <a name="sql-database-faq"></a>SQL Database GYIK
 
@@ -41,7 +41,7 @@ Sok esetben alkalmazások is kihasználhatják az erőforrások előre konfigur�
 A DTU- és a virtuálismag-alpú modell továbbra is egymás mellett lesz elérhető. Mi a Virtuálismag-alapú modell az adatbázis-erőforrások és függetlenül méretezhető a számítási és tárolási erőforrások jobb áttekinthetőségét kéréseinek indította el. A Virtuálismag-alapú modell is további megtakarításokat tesz lehetővé az Azure Hybrid Benefit révén frissítési garanciával rendelkező ügyfelek számára az SQL Serverhez.
 
 ## <a name="how-should-i-choose-between-the-dtu-based-purchasing-model-vs-the-vcore-based-purchasing-model"></a>Hogyan válasszak a DTU-alapú vásárlási modell vs között a Virtuálismag-alapú vásárlási modell? 
-A Database Transaction Unit (adatbázis-tranzakciós egység – DTU) a CPU- és memóriahasználaton, valamint az olvasási és írási műveletek számán alapuló vegyes mérték. A DTU-alapú teljesítményszintek különböző alkalmazásteljesítmény-szinteknek eleget tevő előre konfigurált erőforráscsomagoknak felelnek meg. Ügyfelek, akik nem kell foglalkoznia a mögöttes erőforrások, és míg rögzített havi fizetésével előre konfigurált csomaggal szeretne előfordulhat, hogy keresse meg a DTU-alapú modell jobban megfelel az igényeiknek. Ügyfelek esetében, akik jobban átlátni a mögöttes erőforrások, illetve kell méreteznie azokat egymástól függetlenül, hogy optimális teljesítményt, azonban a Virtuálismag-alapú modell lesz a legjobb választás.  Emellett, ha egy ügyfél az SQL Server egy aktív frissítési garanciával (SA) rendelkezik, kihasználhatja a meglévő befektetések és is akár 30 %-a Mentés [SQL Serverhez készült Azure Hybrid Use Benefit](../virtual-machines/windows/hybrid-use-benefit-licensing.md).  Beszerzési modell belül lehetőségek előnyei a egy teljes körűen felügyelt szolgáltatás, például az automatikus biztonsági másolatokat, szoftverfrissítések és javításait. 
+A Database Transaction Unit (adatbázis-tranzakciós egység – DTU) a CPU- és memóriahasználaton, valamint az olvasási és írási műveletek számán alapuló vegyes mérték. A DTU-alapú számítási méretű előre konfigurált erőforráscsomagoknak felelnek az erőforrások teljesítményszintek különböző alkalmazásteljesítmény. Ügyfelek, akik nem kell foglalkoznia a mögöttes erőforrások, és míg rögzített havi fizetésével előre konfigurált csomaggal szeretne előfordulhat, hogy keresse meg a DTU-alapú modell jobban megfelel az igényeiknek. Ügyfelek esetében, akik jobban átlátni a mögöttes erőforrások, illetve kell méreteznie azokat egymástól függetlenül, hogy optimális teljesítményt, azonban a Virtuálismag-alapú modell lesz a legjobb választás.  Emellett, ha egy ügyfél az SQL Server egy aktív frissítési garanciával (SA) rendelkezik, kihasználhatja a meglévő befektetések és is akár 30 %-a Mentés [SQL Serverhez készült Azure Hybrid Use Benefit](../virtual-machines/windows/hybrid-use-benefit-licensing.md).  Beszerzési modell belül lehetőségek előnyei a egy teljes körűen felügyelt szolgáltatás, például az automatikus biztonsági másolatokat, szoftverfrissítések és javításait. 
 
 ## <a name="what-is-the-azure-hybrid-benefit-for-sql-server"></a>Mit jelent az SQL Serverhez használható Azure Hybrid Benefit? 
 A [SQL Serverhez készült Azure Hybrid Use Benefit](../virtual-machines/windows/hybrid-use-benefit-licensing.md) segítségével maximalizálhatja a licencelési beruházásai értékét, és felgyorsíthatja a migrálás a felhőbe. Az Azure Hybrid Benefit az SQL Server rendszer egy Azure-alapú kedvezmény, amely lehetővé teszi, hogy az SQL Server-licenceit frissítési garanciával rendelkező kell fizetnie ("alapdíjjal") kedvezményes díjra jogosít az SQL Database. Az Azure Hybrid Benefit SQL Serverhez a Virtuálismag-alapú vásárlási modell SQL Database önálló adatbázisok és rugalmas készletek a nyilvános előzetes verzióban érhető el. Előfordulhat, hogy ezzel az értékelemmel alkalmazza, akkor is, ha a Termékváltozat aktív, de vegye figyelembe az alapdíj mellett a alkalmazni, válassza ki azt az Azure Portalon. Visszamenőleges jóváírásra nincs mód.
@@ -78,8 +78,8 @@ Biztonságimásolat-tároláshoz egyetlen adatbázis a számlázás a tárolóho
 ## <a name="how-do-i-select-the-right-sku-when-converting-an-existing-database-to-the-new-service-tiers"></a>Hogyan válassza meg a megfelelő Termékváltozatot, ha egy meglévő adatbázis konvertálása folyamatban van az új szolgáltatási csomagokra? 
 Meglévő SQL-adatbázis alkalmazások a DTU-alapú modellel az általános célú szolgáltatásszint összehasonlítható a Standard szint. Az üzletileg kritikus szolgáltatási rétegben az a prémium szintű hasonlítható. Mindkét esetben érdemes lefoglalni az egyes 100 dtu-k az alkalmazás által használt a DTU-alapú modell legalább 1 virtuális mag.
 
-## <a name="do-the-new-vcore-based-service-tiers-offer-the-performance-levels-compatible-with-all-existing-service-level-objectives-slos"></a>Hajtsa végre az új, Virtuálismag-alapú szolgáltatásszintek kínálnak a teljesítményszintek kompatibilis az összes meglévő szolgáltatásiszint-célkitűzések (Slo)?
-Az új, Virtuálismag-alapú szolgáltatásszintek összehasonlítható teljesítményszintek az összes rugalmas készletek és adatbázisok használatával 100 dtu-k vagy több kínálnak.  Adjon hozzá további Slo sub 100 DTU-terheléseket a idővel folytatjuk.
+## <a name="do-the-new-vcore-based-service-tiers-offer-the-compute-sizes-compatible-with-all-existing-compute-sizes"></a>Hajtsa végre az új, Virtuálismag-alapú szolgáltatásszintek kínálnak, a számítási méret kompatibilis az összes meglévő számítási méret?
+Az új, Virtuálismag-alapú szolgáltatásszintek összehasonlítható teljesítményszintek az összes rugalmas készletek és adatbázisok használatával 100 dtu-k vagy több kínálnak.  Folytatjuk hozzáadásához a nagyobb számítási teljesítményt befogadásához idővel méretek sub 100 DTU számítási feladatokhoz.
 
 ## <a name="are-there-any-database-feature-differences-between-the-existing-dtu-based-and-new-vcore-based-service-tiers"></a>Vannak-e bármilyen adatbázis szolgáltatás funkciói a meglévő DTU-alapú és az új vCore-alapú szolgáltatásszintek közti különbségekről? 
 Az új szolgáltatási szintekről felülbírálja a az aktuális DTU-alapú termékek szolgáltatásait támogatja. A további szolgáltatásai többek között további dinamikus felügyeleti nézetekkel (DMV-kkel) és további konfigurációs beállításai. 
@@ -110,7 +110,7 @@ A Virtuálismag-modell lehetővé teszi, hogy a kiépített számításért és 
 ## <a name="how-often-can-i-adjust-the-resources-per-pool"></a>Milyen gyakran módosíthatja az erőforrások száma készletenként
 Olyan gyakran a kívánt. Lásd: [rugalmas készletek kezelése](sql-database-elastic-pool.md).
 
-## <a name="how-long-does-it-take-to-change-the-service-tier-or-performance-level-of-a-single-database-or-move-a-database-in-and-out-of-an-elastic-pool"></a>Mennyi ideig tart egy önálló adatbázis szolgáltatási szint vagy teljesítményi szintjének módosítása, vagy egy adatbázis elhelyezhetők a rugalmas készlet?
+## <a name="how-long-does-it-take-to-change-the-service-tier-or-compute-size-of-a-single-database-or-move-a-database-in-and-out-of-an-elastic-pool"></a>Mennyi ideig tart módosíthatja a szolgáltatásszintet, vagy egy önálló adatbázis mérete számítási vagy adatbázis elhelyezhetők a rugalmas készlet?
 Módosítása az adatbázis és a egy készlet áramló szükséges háttér műveletként platformon kell másolni az adatbázist. A szolgáltatási szint is igénybe vehet pár percet vagy az adatbázis méretétől függően több órát. Mindkét esetben az adatbázisokat továbbra is online és elérhető az áthelyezés során. Önálló adatbázisok módosításával kapcsolatos részletekért lásd: [adatbázis szolgáltatási szintjének módosítása](sql-database-service-tiers-dtu.md). 
 
 ## <a name="when-should-i-use-a-single-database-vs-elastic-databases"></a>Mikor célszerű használni egy önálló adatbázis és rugalmas adatbázisok?
@@ -120,7 +120,7 @@ Módosítása az adatbázis és a egy készlet áramló szükséges háttér mű
 Az SQL Database számlázása alapján egy kiszámítható óradíj alapján a [beszerzési modell](sql-database-service-tiers-dtu.md). Tényleges használat számított és számoljuk el Óránként, ezért a számlán tört egy óra. Például ha egy adatbázis egy hónapban 12 órán át létezik, a számlán 0,5 nap használat látható. 
 
 ## <a name="what-if-a-single-database-is-active-for-less-than-an-hour-or-uses-a-higher-service-tier-for-less-than-an-hour"></a>Mi történik, ha egy önálló adatbázis egy óránál rövidebb ideig még aktív, vagy egy magasabb szolgáltatási szintre használ egy óránál kevesebb ideig?
-Minden adatbázis létezik, a legmagasabb szolgáltatási szintet óra + teljesítményszint, amely létezése alatt, hogy egy óránál kevesebb ideig volt az adatbázis aktív függetlenül lesznek számlázva. Például ha egy önálló adatbázis létrehozása, és öt perc múlva törli azt a számla egy adatbázisóráért díját tükrözi. 
+Számlázása óránként, a legmagasabb szolgáltatási szintet létezik adatbázis + compute-méretet, létezése alatt, hogy egy óránál kevesebb ideig volt az adatbázis aktív függetlenül. Például ha egy önálló adatbázis létrehozása, és öt perc múlva törli azt a számla egy adatbázisóráért díját tükrözi. 
 
 Példák:
 
@@ -141,8 +141,8 @@ DTU-alapú vásárlási modell példák:
 Rugalmas készletek számlázása a következő jellemzőkkel:
 
 * Rugalmas készlet a létrehozása után történik, akkor is, ha nincsenek a készletben található adatbázisok.
-* Rugalmas készlet óradíjat kell fizetni. Ez az önálló adatbázisok teljesítményszintek meghajtóbetűjeleket azonos mérési gyakoriságát.
-* Rugalmas készlet átméretezték, majd a készlet nem számoljuk fel az új erőforrások mennyisége alapján az átméretezési művelet befejeződéséig. Ez a következő ugyanazt a mintát, mint az önálló adatbázisok teljesítményszintjének módosítása.
+* Rugalmas készlet óradíjat kell fizetni. Ez az önálló adatbázisok számítási méretű meghajtóbetűjeleket azonos mérési gyakoriságát.
+* Rugalmas készlet átméretezték, majd a készlet nem számoljuk fel az új erőforrások mennyisége alapján az átméretezési művelet befejeződéséig. Ez a következő ugyanazt a mintát, mint az önálló adatbázisok számítási méretének módosítása.
 * A rugalmas készlet árát az erőforrásokat a készlet alapul. Rugalmas készletek ára független, és a benne található rugalmas adatbázisok kihasználtsága.
 
 További információkért lásd: [SQL Database – díjszabás](https://azure.microsoft.com/pricing/details/sql-database/), [DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md), és [Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md).

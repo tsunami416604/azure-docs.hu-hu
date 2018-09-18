@@ -1,6 +1,6 @@
 ---
-title: Entitás felismerés kognitív keresési szakértelem (Azure Search) nevű |} Microsoft Docs
-description: Bontsa ki a személy, a hely és a szervezet elnevezett entitások a szöveg egy Azure Search kognitív keresési folyamat.
+title: Megnevezett entitások felismerése cognitive search szakértelem (Azure Search) |} A Microsoft Docs
+description: Nevesített entitások személy, helyen és szervezeten kigyűjtése a szöveg Azure Search-kognitív keresés folyamatban.
 services: search
 manager: pablocas
 author: luiscabrer
@@ -10,47 +10,50 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 73ffcf5e2ced63fddaf0f5ef2ca7e72a7d94b966
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 653a4675d546432eea8478ba6203be1df71ec4f4
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33791041"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45731393"
 ---
-#    <a name="named-entity-recognition-cognitive-skill"></a>Nevesített entitás felismerés kognitív szakértelem
+#    <a name="named-entity-recognition-cognitive-skill"></a>Nevesített entitások felismerése cognitive szakértelem
 
-A **nevű entitás felismerés** szakértelem elnevezett entitások kiolvassa a szöveget. Elérhető entitások közé tartoznak a típusok `person`, `location`, és `organization`.
+A **megnevezett entitások felismerése** szakértelem nevesített entitásokhoz kigyűjti a szöveget. Elérhető entitások közé tartozik a típusok `person`, `location`, és `organization`.
+
+> [!NOTE]
+> A kognitív keresés nyilvános előzetes verzióban érhető el. Képességcsoport végrehajtási, és a lemezkép kinyerése és a normalizálási jelenleg rendelkezésre állnak az ingyenes. Később az ezen funkciók díjszabásáról jelentjük be. 
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.NamedEntityRecognitionSkill
 
-## <a name="skill-parameters"></a>Szakértelem paraméterek
+## <a name="skill-parameters"></a>Ismeretek paraméterek
 
 A paraméterei a kis-és nagybetűket.
 
 | Paraméter neve     | Leírás |
 |--------------------|-------------|
-| kategóriák    | A tömb kategóriák, hogy ki kell nyerni.  Lehetséges kategória típusok: `"Person"`, `"Location"`, `"Organization"`. Ha nincs kategória áll rendelkezésre, visszaadja a minden típus.|
-|defaultLanguageCode |  A bemeneti szöveg nyelvkódot. A következő nyelveket támogatja: `ar, cs, da, de, en, es, fi, fr, he, hu, it, ko, pt-br, pt`|
-| minimumPrecision  | 0 és 1 közötti szám. A pontosság nem éri el ezt az értéket, ha az entitás nem jelennek meg. Az alapértelmezett érték 0.|
+| kategóriák    | Ki kell nyerni kategóriákat tömbje.  Lehetséges kategória típusok: `"Person"`, `"Location"`, `"Organization"`. Ha nincs kategória áll rendelkezésre, a rendszer minden adja vissza.|
+|defaultLanguageCode |  A bemeneti szöveg nyelvkódja. A következő nyelvek támogatottak: `ar, cs, da, de, en, es, fi, fr, he, hu, it, ko, pt-br, pt`|
+| minimumPrecision  | Egy 0 és 1 közötti szám. Ha a pontosság kisebb, mint ezt az értéket, az entitás nem jelennek meg. Az alapértelmezett érték a 0.|
 
-## <a name="skill-inputs"></a>Szakértelem bemenetek
+## <a name="skill-inputs"></a>Ismeretek bemenetek
 
 | Bemeneti név      | Leírás                   |
 |---------------|-------------------------------|
 | languageCode  | Választható. Az alapértelmezett szint a `"en"`.  |
-| Szöveg          | A szöveg elemzésére.          |
+| szöveg          | Az elemzendő szöveg.          |
 
-## <a name="skill-outputs"></a>Szakértelem kimenetek
+## <a name="skill-outputs"></a>Ismeretek kimenetek
 
-| Kimeneti neve     | Leírás                   |
+| Kimeneti név     | Leírás                   |
 |---------------|-------------------------------|
-| személyek      | Ha minden karakterlánc egy személy nevét jelöli karakterláncokból álló tömb. |
-| Helyek  | Ha minden karakterlánc egy helynek felel karakterláncokból álló tömb. |
-| A szervezetek  | Ahol az egyes karakterlánc jelenti egy szervezet karakterláncokból álló tömb. |
-| entitás | Összetett típusok egy tömbjét. Minden egyes összetett típus a következő mezőket tartalmazza: <ul><li>kategória (`"person"`, `"organization"`, vagy `"location"`)</li> <li>érték (a tényleges entitás neve)</li><li>Az offset (a hely hol található az a szöveg)</li><li>abban, hogy (0 és 1, amely közötti értéket jelöli, hogy abban, hogy, hogy az érték egy tényleges entitás)</li></ul> |
+| személyek      | Egy karakterlánctömb, ahol minden egyes karakterlánc egy személy nevét jelöli. |
+| helyek  | Egy karakterlánctömb, ahol az egyes sztringek jelenti egy helyre. |
+| organizations  | Ahol az egyes sztringek jelenti egy szervezet karakterláncok tömbje. |
+| entitás | Összetett típusok egy tömbjét. Minden egyes komplex típus a következő mezőket tartalmazza: <ul><li>kategória (`"person"`, `"organization"`, vagy `"location"`)</li> <li>érték (a tényleges entitás neve)</li><li>eltolás (a hely hol található a szövegben)</li><li>(0, 1, amely közötti értéket jelöli, hogy, hogy az érték egy tényleges entitás megbízhatósági) magabiztosan</li></ul> |
 
-##  <a name="sample-definition"></a>A minta meghatározása
+##  <a name="sample-definition"></a>Minta-definíció
 
 ```json
   {
@@ -71,7 +74,7 @@ A paraméterei a kis-és nagybetűket.
     ]
   }
 ```
-##  <a name="sample-input"></a>A minta bemenet
+##  <a name="sample-input"></a>Minta beviteli
 
 ```json
 {
@@ -135,9 +138,9 @@ A paraméterei a kis-és nagybetűket.
 
 
 ## <a name="error-cases"></a>Hibák esetén
-Ha megad egy nem támogatott nyelvi kódot, vagy ha a tartalom nem egyezik a megadott nyelven, visszatérési hiba, és nem entitások ki kell olvasni.
+Ha megad egy nem támogatott nyelvi kódot, vagy ha a tartalom nem egyezik a megadott nyelv, visszatérési hibát, és nincsenek entitások ki kell olvasni.
 
 ## <a name="see-also"></a>Lásd még
 
-+ [Előre definiált képességek](cognitive-search-predefined-skills.md)
-+ [Egy skillset definiálása](cognitive-search-defining-skillset.md)
++ [Előre megadott képesség](cognitive-search-predefined-skills.md)
++ [Hogyan képességcsoport megadása](cognitive-search-defining-skillset.md)

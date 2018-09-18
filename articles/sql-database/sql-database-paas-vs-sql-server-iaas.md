@@ -8,14 +8,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 08/01/2018
+ms.date: 09/14/2018
 ms.author: carlrab
-ms.openlocfilehash: 3ba1f7a5759f037ce4bcfafcef40d0b247692f58
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 57e83376747b9a3e2d30dec37d4a378a167580e5
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45577037"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45733110"
 ---
 # <a name="choose-a-cloud-sql-server-option-azure-sql-paas-database-or-sql-server-on-azure-vms-iaas"></a>Felhőalapú SQL Server-verzió választása: Azure SQL Database (PaaS) adatbázis vagy az Azure virtuális gépeken futó SQL Server (IaaS)
 
@@ -89,7 +89,7 @@ Az adatbázisok üzemeltetési módjának kiválasztását általában a rendelk
 
 #### <a name="billing-and-licensing-basics"></a>A számlázás és a licencelés alapjai
 
-Jelenleg **SQL Database** szolgáltatásként vásárolható meg, és a különböző árakat, erőforrások, amelyek mindegyike számlázzuk óránként egy rögzített választja szolgáltatási csomagot és teljesítményszintet szint alapján többféle szolgáltatáscsomagban érhető el. Az SQL Database felügyelt példánya a saját licencét is használhatja. A saját licenc használatával kapcsolatos további információkért lásd: [License Mobility through Software Assurance on Azure](https://azure.microsoft.com/pricing/license-mobility/) (Licenchordozás az Azure Frissítési garancia programja keretében). Emellett a kimenő internetes forgalom számlázása a normál [adatátviteli díjszabások](https://azure.microsoft.com/pricing/details/data-transfers/) szerint történik. Szolgáltatásszintek és teljesítményszintek az alkalmazás szerint változó átviteli szükségleteinek dinamikusan állítsa be. A legfrissebb információkért támogatott az aktuális szolgáltatásszintek, lásd: [DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md) és [Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md). Ezenkívül létrehozhat [rugalmas készletek](sql-database-elastic-pool.md) megosztott erőforrások adatbázispéldányok csökkentheti a költségeket és befogadásához használat hirtelen megugró kihasználtság.
+Jelenleg **SQL Database** szolgáltatásként vásárolható meg, és a különböző árakat, erőforrások, amelyek mindegyike számlázzuk óránként egy rögzített a szolgáltatási szint és a választott számítási mérete alapján többféle szolgáltatáscsomagban érhető el. Az SQL Database felügyelt példánya a saját licencét is használhatja. A saját licenc használatával kapcsolatos további információkért lásd: [License Mobility through Software Assurance on Azure](https://azure.microsoft.com/pricing/license-mobility/) (Licenchordozás az Azure Frissítési garancia programja keretében). Emellett a kimenő internetes forgalom számlázása a normál [adatátviteli díjszabások](https://azure.microsoft.com/pricing/details/data-transfers/) szerint történik. Módosíthatja a szolgáltatási szintek és méretek szerint változó átviteli igényekhez az alkalmazás számítási dinamikusan. A legfrissebb információkért támogatott az aktuális szolgáltatásszintek, lásd: [DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md) és [Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md). Ezenkívül létrehozhat [rugalmas készletek](sql-database-elastic-pool.md) megosztott erőforrások adatbázispéldányok csökkentheti a költségeket és befogadásához használat hirtelen megugró kihasználtság.
 
 Az **SQL Database** használata esetén az adatbázis automatikus konfigurálásáért, javításáért és frissítéséért a Microsoft felel, így Önnek kevesebbet kell adminisztrációra költenie. Ezenfelül a [beépített biztonsági mentési](sql-database-automated-backups.md) funkciókkal is jelentős költségmegtakarítást érhet el, különösen, ha nagyszámú adatbázist használ. 
 

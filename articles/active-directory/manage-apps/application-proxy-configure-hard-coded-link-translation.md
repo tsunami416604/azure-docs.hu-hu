@@ -15,12 +15,12 @@ ms.date: 05/04/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 618df9b4bcc4a1b6f44d9cabc29c797a2cabcc80
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 0d139437a069406db2ae0f189480072f8063a327
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39366792"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45982272"
 ---
 # <a name="redirect-hardcoded-links-for-apps-published-with-azure-ad-application-proxy"></a>Átirányítási szoftveresen kötött mutató hivatkozásokat az Azure AD-alkalmazásproxyval közzétett alkalmazások
 
@@ -109,7 +109,7 @@ Hivatkozás fordítási használatbavétele kell tennie, csak egy gombra:
 2. Lépjen a **Azure Active Directory** > **vállalati alkalmazások** > **minden alkalmazás** > Válassza ki a kezelni kívánt alkalmazást >  **Az alkalmazásproxy**.
 3. Kapcsolja be **URL-címek fordítása a kérelem törzsében** való **Igen**.
 
-   ![Válassza az Igen lehetőséget a kérelem törzsében szereplő URL-címek lefordítása](./media/application-proxy-configure-hard-coded-link-translation/select_yes.png).
+   ![Válassza az Igen lehetőséget a kérelem törzsében szereplő URL-címek lefordítása](./media/application-proxy-configure-hard-coded-link-translation/select_yes.png)
 4. Válassza ki **mentése** alkalmazza a módosításokat.
 
 Most a felhasználók számára az alkalmazás eléréséhez, ha a proxy automatikusan ellenőrizze a belső URL-címeket, a bérlő alkalmazásproxyn keresztül közzétett.

@@ -1,6 +1,6 @@
 ---
-title: Több-bérlős Szolgáltatottszoftver-minták - Azure SQL Database |} Microsoft Docs
-description: Ismerje meg és a közös adatok architektúra minták több-bérlős szoftver, egy szolgáltatott szoftverként (SaaS) adatbázis-alkalmazások, amelyek az Azure felhőalapú környezetben futnak.
+title: Több-bérlős SaaS-minták – Azure SQL Database |} A Microsoft Docs
+description: Ismerje meg a követelményeket és a common data több-bérlős szoftver adatarchitektúra-mintázataival mint a szoftverszolgáltatások (SaaS) adatbázis-alkalmazások, amelyek az Azure felhőalapú környezetben futnak.
 keywords: sql database-oktatóanyag
 services: sql-database
 author: billgib
@@ -8,196 +8,196 @@ manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: conceptual
-ms.date: 04/01/2018
+ms.date: 09/14/2018
 ms.reviewer: genemi
 ms.author: billgib
-ms.openlocfilehash: 39be48019979ceb1337cbd3008c8cf071d403310
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: 5b50ba11f2af19d81d9dea2f28295e34a6a5ecb9
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34737680"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45985024"
 ---
-# <a name="multi-tenant-saas-database-tenancy-patterns"></a>Több-bérlős SaaS adatbázis bérleti minták
+# <a name="multi-tenant-saas-database-tenancy-patterns"></a>Több-bérlős SaaS-adatbázis bérlős minták
 
-Egy több-bérlős SaaS-alkalmazáshoz tervezésekor ki kell választania a bérlőhöz modellt, amely az alkalmazás igényeinek legjobban megfelelő gondosan.  Egy bérlős modell határozza meg, hogyan mindegyik bérlő adatok tárolására van leképezve.  A választott bérlős modell hatással van az alkalmazás tervezési és kezelése.  Egyes esetekben költséges később átvált egy másik modellhez.
+Egy több-bérlős SaaS-alkalmazás tervezésekor alaposan ki kell választania a bérlős modell, amely legjobban megfelel az alkalmazás igényeinek megfelelően.  Bérlős modell meghatározza, hogy hogyan minden egyes bérlő adatai tárolási van leképezve.  A választott bérlős modell hatással van az alkalmazás-tervezés és felügyeleti.  Néha költségesnek számít később átválthat egy másik modellhez.
 
-Ez a cikk ismerteti az alternatív bérleti modellek.
+Ez a cikk ismerteti az alternatív bérlős modell.
 
-## <a name="a-saas-concepts-and-terminology"></a>A. SaaS fogalmakat és terminológia
+## <a name="a-saas-concepts-and-terminology"></a>A. SaaS-alapelvek és fogalmak
 
-A szolgáltatott szoftverként (SaaS) modellként szoftver, a vállalat nem értékesít *licencek* a szoftverhez. Ehelyett mindegyik ügyfél lehetővé teszi, hogy kifizetések kölcsönbe vállalatnál, így mindegyik ügyfél egy *bérlői* a vállalat.
+A szoftver, mint a szoftverszolgáltatások (SaaS) modell, a vállalat nem eladni *licencek* a szoftvereket. Ehelyett minden egyes ügyfél lehetővé teszi, hogy a vállalatnál, így minden ügyfél kifizetések bérelhet egy *bérlői* a cég.
 
-Cserébe bérleti fizet, mindegyik bérlő SaaS alkalmazás-összetevői hozzáférést kap, és a Szolgáltatottszoftver-rendszerben az adatok találhatók.
+Regisztrálásáért bérleti kell fizetnie, minden bérlő az SaaS alkalmazás-összetevők hozzáférést kap, és rendelkezik az adatok tárolva az SaaS-rendszer.
 
-A kifejezés *bérlős modell* bérlők tárolt adatok hivatkozik:
+Az előfizetési időszak *bérlős modell* bérlők tárolt adatok hivatkozik:
 
-- *Single-bérlőhöz:* &nbsp; az egyes adatbázisok csak egy bérlő adatait tárolja.
-- *Több vállalat kiszolgálása:* &nbsp; az egyes adatbázisok eltárolja több különálló bérlő (az adatok védelme mechanizmusok).
-- A hibrid bérleti modellek is elérhetők.
+- *Single-bérlős:* &nbsp; minden egyes adatbázis tárolja az adatokat csak egyetlen bérlő.
+- *Több-bérlős:* &nbsp; minden adatbázisnak külön több bérlő adatokat tárolja (az adatok védelmét szolgáló mechanizmusok).
+- A hibrid bérlős modellek is elérhetők.
 
 ## <a name="b-how-to-choose-the-appropriate-tenancy-model"></a>B. A megfelelő bérlős modell kiválasztása
 
-Általában a vállalat kiszolgálása modell nem befolyásolja a függvény egy alkalmazás, de ez valószínűleg hatással van a teljes megoldás más aspektusait.  Az alábbi feltételek segítségével mérheti fel minden egyes modellek:
+Általánosságban véve a bérlős modellben nem befolyásolja a függvény egy alkalmazás, de ez valószínűleg hatással van a teljes megoldás más aspektusait.  A következő feltételek segítségével felmérheti az egyes modellek:
 
 - **Méretezhetőség:**
     - Bérlők száma.
-    - Tárolási /-bérlő.
-    - Tárolási összesítés.
-    - Munkaterhelés.
+    - Tárolási bérlőnkénti.
+    - Tárolás az összesítést.
+    - Számítási feladatok.
 
-- **Bérlők elkülönítésének:** &nbsp; adatok elkülönítési és a teljesítmény (hogy egy bérlő munkaterhelés hatással van mások).
+- **Bérlők elkülönítésének:** &nbsp; az adatok elkülönítését és a teljesítmény (akár egy bérlői számítási feladatot befolyásolja mások).
 
-- **Egy bérlő költség:** &nbsp; -adatbázis költségeit.
+- **Bérlőnkénti költség:** &nbsp; adatbázis-költségeket.
 
-- **Fejlesztési összetettsége:**
-    - Séma módosítása.
-    - A módosítások lekérdezések (szükséges minta).
+- **Fejlesztési bonyolultsága:**
+    - Séma módosításait.
+    - Lekérdezések (a minta által igényelt) megváltozik.
 
-- **Működési összetettsége:**
-    - Figyelés és a teljesítmény kezelése.
+- **Üzemeltetés bonyolult:**
+    - Teljesítmény figyelése és kezelése.
     - Séma kezelése.
-    - A bérlő visszaállítását.
+    - Helyreállítás egy bérlőt.
     - Vészhelyreállítás.
 
-- **Testreszabhatóság miatt:** &nbsp; könnyű séma egyéni beállításokat, amelyek vagy támogató vonatkozó bérlői vagy bérlői osztály-specifikus.
+- **A testreszabhatóság:** &nbsp; egyszerű, amelyek vagy séma testreszabásokat alátámasztó bérlőspecifikus vagy osztály-specifikus bérlői.
 
-A bérleti vitafórum arra irányul, hogy a *adatok* réteg.  Érdemes lehet egy kis ideig, de a *alkalmazás* réteg.  Az alkalmazási rétegre rendszer egységes egységként kezeli.  Ha a sok kisméretű összetevők alkalmazást, a választott bérlős modell változhatnak.  Néhány összetevőt működnek, mint a többi sikerült kezelni is bérlős és a tárolótechnológián vagy a használt platformra.
+A bérleti vitafórum összpontosít a *adatok* réteg.  Fontolja meg egy kis ideig, de a *alkalmazás* réteg.  Az alkalmazási rétegre egy monolitikus entitás számít.  Ha az alkalmazás sok kis összetevőből, Ön által választott bérlős modell módosulhat.  Néhány összetevőt, mint a többi eltérően sikerült kezelnie egyaránt bérlős és a tárolási technológiát vagy a használt platform.
 
-## <a name="c-standalone-single-tenant-app-with-single-tenant-database"></a>C. Önálló single-bérlő alkalmazás egyetlen-bérlő adatbázis
+## <a name="c-standalone-single-tenant-app-with-single-tenant-database"></a>C. Egybérlős adatbázis önálló egybérlős alkalmazás
 
-#### <a name="application-level-isolation"></a>Alkalmazáselszigetelés szint
+#### <a name="application-level-isolation"></a>Alkalmazás-szintű elkülönítés
 
-Ebben a modellben a teljes alkalmazás egyszer lesz telepítve ismételten, az egyes bérlők számára.  Az alkalmazás egyes példányainak egy önálló példányát, ezért soha ne hatással van az egyéb önálló példányát.  Az alkalmazás egyes példányainak csak egy bérlői, és ezért csak egy adatbázis.  A bérlő van az adatbázis összes önmagához.
+Ebben a modellben a teljes alkalmazást egyszer lesz telepítve ismételten, az egyes bérlők számára.  Az alkalmazás minden példánya egy különálló példány, így a soha nem együttműködik más önálló-példánnyal.  Az alkalmazás minden példánya kizárólag egy bérlővel rendelkezik, és ezért a csak egy adatbázis szükséges.  A bérlő rendelkezik az adatbázis összes magát.
 
-![Pontosan egy egyetlen-bérlő adatbázis önálló alkalmazás tervét.][image-standalone-app-st-db-111a]
+![Önálló alkalmazás, és pontosan egy egybérlős adatbázis kialakítása.][image-standalone-app-st-db-111a]
 
-Minden egyes alkalmazás-példány telepítve van egy külön Azure erőforráscsoport.  Az erőforráscsoport olyan előfizetést, amelyet a szoftver gyártójához vagy a bérlő által birtokolt is tartozhatnak.  Mindkét esetben a szállító kezelheti a szoftver a bérlő számára.  Minden alkalmazás példány úgy van beállítva, a megfelelő adatbázishoz való kapcsolódáshoz.
+Minden egyes alkalmazás-példány telepítve van egy külön Azure-erőforráscsoportban.  Az erőforráscsoport tartozhatnak olyan előfizetést, amelyet a a szoftvergyártók vagy a bérlő tulajdonában van.  Mindkét esetben a szállító kezelheti a szoftver a bérlő számára.  Egyes alkalmazáspéldányokban történik meg a megfelelő adatbázishoz való csatlakozáshoz.
 
-Az egyes bérlői adatbázisok önálló adatbázisként van telepítve.  Ez a modell a legnagyobb adatbázis elkülönítést is biztosít.  Azonban az elkülönítési szükséges, hogy elegendő erőforrással lefoglalni az egyes adatbázis, a maximális terhelés kezelésére.  Itt számít, hogy a rugalmas készletek adatbázisok telepítve, a különböző erőforráscsoportokra, illetve különböző előfizetésekhez nem használható.  Ez a korlátozás az önálló single-bérlő alkalmazás egy általános adatbázis költség szempontjából legköltségesebb megoldás modell lehetővé teszi.
+Minden bérlői adatbázis önálló adatbázisként van telepítve.  Ez a modell el vannak különítve a lehető legnagyobb adatbázis.  Azonban az elkülönítés, hogy elegendő erőforrással kiosztását az egyes adatbázisok a csúcsterhelés kezelésére.  Itt számít a dolog, hogy a rugalmas készletek esetében eltérő erőforráscsoportokban vagy eltérő előfizetésben üzembe helyezett adatbázis nem használható.  Ez a korlátozás az önálló egybérlős alkalmazás model adatbázis teljes költsége szempontból a leginkább költséges megoldás lehetővé teszi.
 
-#### <a name="vendor-management"></a>Gyártói felügyeleti
+#### <a name="vendor-management"></a>Szállító felügyeleti
 
-A szállító hozzáférhet az önálló app példányainak, az adatbázisok, még akkor is, ha az app-példányok különböző bérlői előfizetések vannak telepítve.  A hozzáférés az SQL-kapcsolatokon keresztül érhető el.  A kereszt-példány hozzáférés engedélyezéséhez a szállító séma felügyelet és jelentéskészítés és elemzés céljából közötti adatbázis-lekérdezés.  Ha ilyen típusú központi kezelésére van szükség, a katalógus kell telepíteni, amely leképezhető bérlői azonosítók adatbázis URI-azonosítók.  Az Azure SQL Database biztosít egy horizontális skálázási könyvtár, amellyel egy SQL-adatbázis együtt katalógusát.  A horizontális könyvtár hivatalosan nevű a [Elastic Database ügyféloldali kódtár][docu-elastic-db-client-library-536r].
+A szállító hozzáférhet minden az önálló app-példányokhoz hasonlóan az összes adatbázist, akkor is, ha az alkalmazáspéldány előfizetést másik bérlőhöz vannak telepítve.  A hozzáférés az SQL-kapcsolatok keresztül érhető el.  A cross-példányok eléréséhez a szállító séma felügyeleti és jelentéskészítési és elemzési célokra adatbázisközi lekérdezés is engedélyezheti.  Ha az ilyen típusú központi kezelésére van szükség, a katalógus kell telepíteni, amely azonosítók bérlői adatbázis URI-k.  Az Azure SQL Database, amellyel és a egy SQL-adatbázist adjon meg egy katalógust a horizontális skálázás kódtár biztosít.  A horizontális skálázás könyvtár hivatalosan neve a [Elastic Database-Ügyfélkódtár][docu-elastic-db-client-library-536r].
 
-## <a name="d-multi-tenant-app-with-database-per-tenant"></a>D. Adatbázis-/-bérlő több-bérlős-alkalmazás
+## <a name="d-multi-tenant-app-with-database-per-tenant"></a>D. Több-bérlős alkalmazás bérlőnkénti adatbázis
 
-A következő mintát használja egy több-bérlős alkalmazás számos más adatbázis, az összes folyamatban egy bérlői adatbázisok.  Új adatbázis minden új bérlő lett kiépítve.  Az alkalmazás számítógépréteg *mentése* függőleges csomópontonként több erőforrást hozzáadásával.  Vagy az alkalmazás méretezett *kimenő* vízszintesen további csomópontok hozzáadásával.  A méretezés munkaterhelés alapul, és független az a számát és méretét, és az egyes adatbázisokat.
+Ezt a következő mintát használja egy több-bérlős alkalmazás számos adatbázis, az összes folyamatban egybérlős adatbázis.  Új adatbázis minden új bérlő van kiépítve.  Az alkalmazásrétegek erőforrások méretezése pedig ettől *mentése* csomópontonként több erőforrást vertikálisan hozzáadásával.  Az alkalmazás méretezése vagy *ki* további fürtcsomópontok hozzáadásával horizontálisan.  A méretezés a számítási feladatok alapul, és független a számát, vagy az egyes adatbázisok méretezési.
 
-![Tervezési és adatbázis-/-bérlő több-bérlős alkalmazás.][image-mt-app-db-per-tenant-132d]
+![Tervezés több-bérlős alkalmazás bérlőnkénti adatbázis.][image-mt-app-db-per-tenant-132d]
 
-#### <a name="customize-for-a-tenant"></a>A bérlő testreszabása
+#### <a name="customize-for-a-tenant"></a>Egy bérlő testreszabása
 
-Az önálló app mintát, például egy bérlői adatbázisok használatát ad erős bérlők elkülönítését.  Bármely olyan alkalmazásban, amelynek a modell csak egyetlen-bérlő adatbázisok határozza meg a séma összes egy adott adatbázis testreszabhatók, és a bérlői optimalizálva.  A Testreszabás ne érintsen más bérlőket az alkalmazásban. Lehet, hogy a bérlő módosítania kell a adatmező egyetlen bérlő számára szükséges adatok.  A további adatok mező további, módosítania kell az index.
+Például az önálló app-minta egybérlős adatbázis használatát biztosít erős bérlők elkülönítését.  Használatát bármely olyan alkalmazásban, amelynek a modell meghatározza csak egybérlős adatbázis a séma bármilyen egy adott adatbázishoz testre szabható és a bérlői optimalizálva.  Ez a Testreszabás ne érintsen más bérlőket, az alkalmazásban. Egy bérlő esetleg szükség lehet meghaladóan alapszintű adatmezőket, az összes bérlőre van szükség.  További az extra adatmező szükség lehet egy indexet.
 
-Adatbázis-/-bérlővel a séma testreszabása egy vagy több egyes bérlők számára az egyszerű eléréséhez.  Az alkalmazás gyártójának segítségét kell tervezze meg gondosan kezelheti a séma testreszabások léptékű eljárások.
+Az adatbázis-bérlőnkénti testreszabása a séma egy vagy több, az egyes bérlők számára az egyszerű eléréséhez.  Az alkalmazás gyártójától kell tervezési eljárásokat gondosan kezelheti a séma testreszabások ipari méretekben.
 
 #### <a name="elastic-pools"></a>Rugalmas készletek
 
-Ha adatbázisok ugyanabban az erőforráscsoportban vannak telepítve, akkor a rugalmas adatbáziskészletek csoportosíthatók.  A készletek költséghatékony teszik lehetővé az erőforrások számos adatbázis közti megosztását.  A Készlet beállítás esetén az egyes adatbázis elég nagy a használatának csúcsait, amely során lép fel, hogy olcsóbbak.  Annak ellenére, hogy a készletezett adatbázisok megosztani az erőforrásokhoz való hozzáférés azok továbbra is érhető el magas szintű teljesítmény-elszigetelés érdekében.
+Adatbázisok ugyanabban az erőforráscsoportban vannak üzembe helyezve, amikor azok sorolhatók a rugalmas adatbáziskészletek.  A készletek adjon meg egy költséghatékony megoldás az erőforrások számos adatbázis közti megosztását.  A Készlet beállítás akkor lehet elég nagy a használati csúcsok, amely során lép fel, az egyes adatbázisok igénylő olcsóbb.  Annak ellenére, hogy a készletezett adatbázisok osztoznak az erőforrásokhoz való hozzáférés, továbbra is érheti el a magas szintű teljesítmény-elszigetelés érdekében.
 
-![Adatbázis-/-bérlőt, a rugalmas készlet több-bérlős alkalmazás tervét.][image-mt-app-db-per-tenant-pool-153p]
+![Tervezés több-bérlős alkalmazás-adatbázis – bérlőnként felügyelt, rugalmas készlet használata.][image-mt-app-db-per-tenant-pool-153p]
 
-Azure SQL Database biztosít az eszközök konfigurálásához, megfigyeléséhez és kezeléséhez a megosztás szükséges.  Mindkét készlet- és adatbázis metrikák az Azure-portálon, és Naplóelemzési keresztül érhetők el.  A mérőszámok összesített és bérlői-specifikus teljesítmény nagy betekintést biztosíthat.  Az egyes adatbázisok helyezheti át egy adott bérlő számára fenntartott erőforrások biztosításához készletek között.  Ezek az eszközök lehetővé teszik a megfelelő teljesítmény biztosítása költséghatékony módon.
+Az Azure SQL Database konfigurálása, monitoringja és a megosztás kezelése szükséges eszközöket biztosít.  Két készlet-szintű és az adatbázisszintű teljesítmény-mérőszámok az Azure Portalon, és a Log Analytics segítségével érhetők el.  A metrikák biztosíthat nagyszerű betekintést összesítő és a bérlő-specifikus teljesítményét.  Az egyes adatbázisok áthelyezhetők egy adott bérlő lefoglalt erőforrások biztosítása a készletek között.  Ezek az eszközök lehetővé teszik a megfelelő teljesítmény biztosítása költséghatékony módon.
 
-#### <a name="operations-scale-for-database-per-tenant"></a>Adatbázis-/-bérlő méretezése műveletek
+#### <a name="operations-scale-for-database-per-tenant"></a>Műveleteket a bérlőnkénti adatbázis méretezése
 
-Az Azure SQL Database platform számos felügyeleti szolgáltatást arra tervezték, hogy nagyszámú léptékű, például a is több mint 100 000 adatbázisok adatbázisok rendelkezik.  Ezek a funkciók ellenőrizze az adatbázis-/-bérlő mintát egyértelmű.
+Az Azure SQL Database platform rendelkezik számos felügyeleti funkciója, amely a számos adatbázist ipari méretekben, például adatbázisok és több mint 100 000 kezelésére szolgál.  Ezek a funkciók egyértelmű ellenőrizze a bérlőnkénti adatbázis minta.
 
-Tegyük fel, hogy a rendszer rendelkezik a csak egy adatbázisaként 1000-bérlő adatbázis.  Az adatbázis 20 indexek rendelkezhet.  Ha a rendszer, hogy 1000 single-bérlő adatbázisok alakítja át, indexek mennyisége 20 000 nő.  Az SQL-adatbázis részeként [automatikus hangolása][docu-sql-db-automatic-tuning-771a], az automatikus indexelési funkciók alapértelmezés szerint engedélyezettek.  Automatikus indexeléshez meg minden 20 000 indexek és kezeli a folyamatban lévő létrehozása és az vetett optimalizálás.  Ezek a automatizált műveletek történnek belül egyedi adatbázis, és nem koordinált vagy más adatbázisokban hasonló műveletek korlátozza.  Automatikus indexeléshez kezeli indexek eltérő adatbázisban foglalt mint kevésbé foglalt-adatbázisban.  Az ilyen típusú index felügyeleti testreszabási az adatbázis-/-bérlő léptékű nem célszerű lenne, ha hatalmas felügyeleti feladat kellett manuálisan kell elvégezni.
+Tegyük fel, hogy a rendszerben található egy 1000-bérlői adatbázis, a csak egy adatbázisaként.  Előfordulhat, hogy az adatbázis 20 indexeket.  1000 egybérlős adatbázis kellene alakítja a rendszer, ha az indexek mennyisége nő, 20 000.  Az SQL Database részeként [az automatikus hangolás][docu-sql-db-automatic-tuning-771a], az Automatikus indexelés funkciók alapértelmezés szerint engedélyezve vannak.  Automatikus indexelés kezeli az Ön számára minden 20 000 indexek és folyamatos létrehozása és a drop optimalizálást.  Automatizált műveleteknek az egyes adatbázisok fordul elő, és nem koordinált vagy az azokban lévő hasonló műveletek korlátozza.  Automatikus indexelés kezeli az indexek eltérően, mint a kevésbé foglalt adatbázis foglalt adatbázis.  Az ilyen típusú index felügyeleti testreszabási a bérlőnkénti adatbázis méretekben ez lenne, ha ez hatalmas feladat kellett manuálisan hajtható végre.
 
-Egyéb szolgáltatásokat, amelyek jól méretezhető a következők:
+Más felügyeleti funkciók, amelyek jól méretezhető a következők:
 
 - Beépített biztonsági mentése.
 - Magas rendelkezésre állás.
 - A lemez titkosítása.
-- Teljesítmény telemetriai adatokat.
+- Teljesítmény-telemetria.
 
 #### <a name="automation"></a>Automation
 
-A felügyeleti műveletek parancsprogrammal létrehozva, és -létesítésen keresztül felajánlott egy [devops] [ http-visual-studio-devops-485m] modell.  A műveletek még automatikus, és az alkalmazás elérhetővé.
+A felügyeleti műveletek parancsprogrammal létrehozva, és keresztül érhető el egy [fejlesztési és üzemeltetési] [ http-visual-studio-devops-485m] modell.  A műveletek még automatizált és érhető el az alkalmazást a.
 
-Például a visszaállítás egyetlen bérlő egy korábbi sikertelen automatizálni időben.  A helyreállítás csak kell, amely tárolja a bérlő egy egyetlen-bérlő-adatbázis helyreállítására.  Ez a helyreállítás ne legyen hatással a többi bérlő, amely megerősíti, hogy vannak-e felügyeleti műveletek minden egyes bérlő finom részletes szintjén van.
+Például a időben, sikerült automatizálhatja a egyetlen új bérlő helyreállítása egy korábbi időpontra.  A helyreállítás csak a egy egybérlős adatbázis, amely tárolja a bérlő visszaállítása van szüksége.  A visszaállítás nem befolyásolja a többi bérlő, amely megerősíti, hogy felügyeleti műveleteket minden egyes bérlő finom részletes szintjén vannak-e.
 
-## <a name="e-multi-tenant-app-with-multi-tenant-databases"></a>E. Több-bérlős alkalmazás több-bérlős adatbázisok
+## <a name="e-multi-tenant-app-with-multi-tenant-databases"></a>E. Több-bérlős adatbázisok több-bérlős alkalmazást
 
-Egy másik érhető el a mintája, több bérlő több-bérlős adatbázis tárolásához.  Az alkalmazáspéldány állhat tetszőleges számú több-bérlős adatbázishoz.  A séma egy több-bérlős adatbázis egy vagy több bérlői azonosító oszlop rendelkeznie kell, hogy az adatok a panelhez adott szelektív módon lehet beolvasni.  A séma további, szükség lehet néhány táblák vagy a bérlők csak egy részhalmazát által használt oszlop.  Statikus kódot és hivatkozási adatok azonban csak egyszer tárolja, és legyen elosztva a egyetlen bérlő számára.
+Egy másik elérhető egyik számos bérlők egy több-bérlős adatbázisban tárolja.  Az alkalmazás tetszőleges számú több-bérlős adatbázishoz is tartozhat.  A séma egy több-bérlős adatbázis egy vagy több bérlői azonosító oszlop rendelkeznie kell, hogy bármely adott bérlő adatait külön-külön is lekérdezhetők.  A séma, szükség lehet néhány táblákat és oszlopokat, a bérlők csak egy részhalmazát használják.  Statikus kód és a referencia-adatok azonban csak egyszer tárolja, és az összes bérlő osztozik.
 
-#### <a name="tenant-isolation-is-sacrificed"></a>Bérlők elszigetelésére elpusztítják van
+#### <a name="tenant-isolation-is-sacrificed"></a>Bérlők elkülönítését elpusztítják van
 
-*Adatok:* &nbsp; egy több-bérlős adatbázis feltétlenül elpusztítást bérlők elkülönítését.  Az adatok több bérlő együtt egy adatbázisban tárolódik.  Fejlesztési győződjön meg arról, hogy a lekérdezések soha nem fedi fel az egynél több bérlő adatait.  Támogatja az SQL-adatbázis [sorszintű biztonsági][docu-sql-svr-db-row-level-security-947w], amely kényszerítheti egy lekérdezés által visszaadott adatok tartozni egyetlen bérlő számára.
+*Adatok:* &nbsp; egy több-bérlős adatbázis feltétlenül elpusztítást bérlők elkülönítését.  Az adatok több bérlő több adatbázis együtt tárolódik.  Fejlesztési győződjön meg arról, hogy a lekérdezések soha nem teszi közzé az egynél több bérlő adatait.  Az SQL Database támogatja [sorszintű biztonság][docu-sql-svr-db-row-level-security-947w], amely kényszerítheti, hogy egy lekérdezés által visszaadott adatok egyetlen új bérlő tartozni.
 
-*Feldolgozási:* &nbsp; egy több-bérlős adatbázis számítási és tárolási erőforrásokat megosztja a bérlők között.  Az adatbázist egy teljes az alábbiak biztosíthatók győződjön meg arról, hogy akadálytalanul hajt végre.  Azonban az Azure rendszeren csak semmilyen beépített módon nem lehet figyelni, vagy az ezek által használt erőforrások egy adott bérlő kezelése.  Ezért a több-bérlős adatbázis hordoz magában, ha az állásidő megnövekedett kockázata, észlelése zajos szomszédok, ahol egy overactive bérlő munkaterhelését befolyásolja a teljesítményt nyújtanak a többi bérlő ugyanabban az adatbázisban.  További alkalmazásszintű figyelési elérhető bérlő szintű teljesítmény figyelni.
+*Feldolgozás:* &nbsp; egy több-bérlős adatbázis az összes bérlőre kiterjedő megosztja a számítási és tárolási erőforrásokat.  Az adatbázis teljes intézkedéseket végrehajtása biztosításához figyelhető.  Az Azure rendszerben viszont nem beépített lehet figyelni, vagy az ezek által használt erőforrások egy adott bérlő kezelése rendelkezik.  Ezért a több-bérlős adatbázis végzi a fertőzésnek fokozott mértékben kitett, hajt végre, amikor zajos szomszédok, ahol a számítási feladatok egy overactive bérlő hatással van a teljesítmény biztosítása érdekében a többi bérlő ugyanabban az adatbázisban.  További figyelési alkalmazásszintű sikerült a bérlői szintű teljesítmény figyelése.
 
 #### <a name="lower-cost"></a>Alacsonyabb költségek
 
-Általában több-bérlős adatbázisok bérlővel rendelkezik, a legalacsonyabb /-költségeket.  Önálló adatbázist erőforrás költségek alacsonyabbak év méretű rugalmas készletek.  Emellett olyan helyzetekben, ahol a bérlők csak korlátozott tárolási kell, potenciálisan bérlők több millió tárolható egyetlen adatbázisban.  Nincs a rugalmas készlet adatbázisok több millió tartalmazhat.  Tartalmazó 1000 adatbázisok készletenként 1000-készletek, a megoldás azonban a skála kockázatára kezeléséhez kezelése nehézkessé válik több millió sikerült elérni.
+Általánosságban véve a több-bérlős adatbázisok a legalacsonyabb bérlőnkénti költség rendelkezik.  Egy önálló adatbázis erőforrás-költségek alacsonyabbak, mint év méretű rugalmas készletek.  Emellett forgatókönyvek, ahol a bérlők csak korlátozott tárolási kell, potenciálisan több millió, a bérlők tárolható egyetlen adatbázisban.  Nem található rugalmas készlet adatbázisok millió is tartalmazhat.  Azonban egy készletenként, 1000-készletekkel rendelkező 1000 adatbázisokat tartalmazó megoldás tudta elérni a méretezési csoport több kockázatára kezelése nehézkessé válik.
 
-Egy adatbázis több-bérlős modell két változata az alább, a leginkább rugalmas és méretezhető szilánkos több-bérlős modell ismertetése.
+Mi a következő, a horizontálisan skálázott több-bérlős modell folyamatban van a leginkább rugalmas és skálázható két változata létezik egy több-bérlős adatbázismodell tárgyalja.
 
-## <a name="f-multi-tenant-app-with-a-single-multi-tenant-database"></a>F. Több-bérlős alkalmazást egy több-bérlős-adatbázis
+## <a name="f-multi-tenant-app-with-a-single-multi-tenant-database"></a>F. Több-bérlős alkalmazás és a egy több-bérlős adatbázis
 
-A legegyszerűbb több-bérlős adatbázis minta az összes bérlőre vonatkozó adatok egyetlen önálló adatbázist használ.  További bérlők hozzáadása, az adatbázis van kiterjesztett további tárolási és számítási erőforrásokat.  A skálától beállítható lehet szükséges, az összes, bár mindig egy végső méretezési korlátot.  Azonban ezt a határértéket az adatbázis elérése előtt hosszú kezeléséhez kezelése nehézkessé válik.
+A több-bérlős adatbázis legegyszerűbb minta összes bérlőre vonatkozó adatok egyetlen egyetlen adatbázist használ.  További bérlők hozzáadásakor, az adatbázis vertikális felskálázása további tárolási és számítási erőforrások.  A vertikális felskálázási lehet szükséges, az összes, bár minden esetben van egy ultimate korlát.  Azonban ahhoz, hogy korlátot az adatbázis hosszú kezelése nehézkessé válik.
 
-Az egyes bérlők összpontosítanak felügyeleti műveleteket összetettebbek, több-bérlős adatbázisban megvalósításához.  És léptékű elfogadhatatlanul válhatnak ezeket a műveleteket.  Egy példa egy időpontban visszaállítás, az adatok egyetlen bérlő számára.
+Felügyeleti műveletek, amelyek az egyes bérlők összpontosítanak összetettebbek, egy több-bérlős adatbázisban megvalósításához.  És ipari méretekben ezeket a műveleteket elfogadhatatlanul válhat.  Ez egy egyetlen bérlő számára az adatok időponthoz visszaállítást.
 
-## <a name="g-multi-tenant-app-with-sharded-multi-tenant-databases"></a>G. Több-bérlős app szilánkos több-bérlős adatbázisok
+## <a name="g-multi-tenant-app-with-sharded-multi-tenant-databases"></a>G. Több-bérlős alkalmazást több-bérlős szilánkokra osztott adatbázisok
 
-A legtöbb SaaS-alkalmazásokhoz érik el az adatokat csak egy bérlő egyszerre.  A hozzáférési mintára lehetővé teszi, hogy a bérlő adatok több adatbázis közötti elosztását, vagy egy shard szilánkok, ahol a bérlői vonatkozó összes adat szerepel.  Egy több-bérlős adatbázis mintát kombinálja, a szilánkos modell lehetővé teszi, hogy szinte korlátlan méretezési.
+A legtöbb SaaS-alkalmazások egyszerre csak egy bérlő adatainak eléréséhez.  Ez hozzáférést a minta lehetővé teszi, hogy a bérlői adatok több adatbázis között elosztani, vagy szegmensek, ahol minden adatát egy bérlőt az egyik adatszilánkba író szerepel.  Egy több-bérlős adatbázis mintával kombinálva, szilánkokra osztott modell lehetővé teszi, hogy szinte korlátlanul skálázható.
 
-![Több-bérlős alkalmazás szilánkos több-bérlős adatbázisok Tervező.][image-mt-app-sharded-mt-db-174s]
+![Tervezés több-bérlős szilánkokra osztott adatbázisok több-bérlős alkalmazás.][image-mt-app-sharded-mt-db-174s]
 
-#### <a name="manage-shards"></a>Szilánkok kezelése
+#### <a name="manage-shards"></a>A szegmensek kezelése
 
-Horizontális összetettségét, mind a tervezési és működési felügyeleti hozzáadja.  A katalógus, amelyben a bérlők és az adatbázisok közötti leképezéseket fenntartásához szükséges.  Kezelheti a szilánkok és a bérlői feltöltését emellett felügyeleti eljárásokra van szükség.  Például eljárásokat kell megtervezni, hozzáadása és eltávolítása a szilánkok, és a bérlői adatok áthelyezése szilánkok között.  Egy méretezési módja egy új shard hozzáadásával, és azt az új bérlők feltöltéséhez.  A többi időszakban a sűrűn ki van töltve a shard előfordulhat, hogy felosztása két kevésbé sűrűn ki van töltve szilánkok.  Több bérlő áthelyezték vagy szakad meg, miután ritkán ki van töltve szilánkok együtt előfordulhat, hogy egyesíteni.  Az egyesítés további költséghatékony erőforrás-használatot eredményezhet.  Bérlők is előfordulhat, hogy át elosztásában szilánkok között.
+A horizontális skálázás bonyolultabbá teszi mind a tervezési és üzemeltetési felügyeletet.  A katalógus szükséges, amelyben a bérlők és adatbázisok közötti leképezést fenntartani.  Emellett felügyeleti eljárások szükségesek a szegmensek és a bérlői népesség kezelése.  Ha például eljárások úgy kell megtervezni hozzáadása és eltávolítása a szegmenseket, és a bérlői adatok szegmensek közötti áthelyezése.  Egy méretezhető módja új szegmensek hozzáadásával és a feltöltődni azt az új bérlők számára.  A többi időszakban, előfordulhat, hogy osztani sűrűn lakott két sűrűn kevésbé lakott szegmensekre.  Után több bérlő áthelyezték vagy megszűnt, ritkásan feltöltött szegmensek együtt lehet egyesíteni.  Az egyesítés további költséghatékony erőforrás-használatot eredményez.  Bérlők közötti egyensúly számítási feladatok is előfordulhat, hogy áthelyezni.
 
-SQL-adatbázis, amely együttműködik a horizontális és a katalógus-adatbázis vegyes/egyesítés eszközt biztosít.  A megadott alkalmazás fel, és egyesítési szilánkok, és bérlői adatok áthelyezheti szilánkok között.  Az alkalmazás is fenntartja, ezeket a műveleteket, való megjelölése közben a katalógus hatással bérlők, kapcsolat nélküli előtt helyezni őket.  Az áthelyezés után az alkalmazás frissíti a katalógus újra az új leképezés, és ismét online, a bérlő jelölésére.
+SQL Database biztosít a felosztó/egyesítő eszköz, amely a működik együtt a horizontális skálázás erőforrástár és a katalógus-adatbázisban.  Is feloszthatja az alkalmazás a megadott, és az egyesítési szegmensek és bérlői adatok áthelyezheti a szegmensek között.  Az alkalmazás is fenntartják, ezeket a műveleteket, való megjelölése közben a katalógus érintett bérlők esetén offline előtt helyezni őket.  Az áthelyezés után az alkalmazás frissíti a katalógus újra az új hozzárendelést és a bérlő, online állapotba való megjelölése.
 
-#### <a name="smaller-databases-more-easily-managed"></a>Kisebb adatbázis további könnyen kezelésére
+#### <a name="smaller-databases-more-easily-managed"></a>Kisebb adatbázis több könnyen kezelhető
 
-Bérlők több adatbázis közötti elosztásával a szilánkos több-bérlős megoldást kisebb adatbázisok könnyebben felügyelt eredményez.  Például egy adott bérlő visszaállítása egy korábbi pontra időben most magában foglalja a biztonsági másolat ahelyett, hogy egy nagyobb adatbázist, amely tartalmazza az összes bérlők egyetlen kisebb adatbázis visszaállítása. Az adatbázis mérete, és a bérlők adatbázisonként, száma választható ki a munkaterhelés és a felügyeleti feladatok elosztása érdekében.
+Bérlők több adatbázis közötti elosztásával a horizontálisan skálázott több-bérlős megoldást eredményez, kisebb adatbázisok, könnyebben felügyelt.  Például egy adott bérlő mostantól idő egy korábbi időpontra való visszaállítása magában foglalja egy kisebb adatbázis visszaállítása a biztonsági másolat ahelyett, hogy egy nagyobb adatbázist, amely tartalmazza az összes bérlőre vonatkozóan. Az adatbázis mérete és száma adatbázisonként, bérlők választható ki a számítási feladatok és a felügyeleti erőfeszítéseket elosztása érdekében.
 
-#### <a name="tenant-identifier-in-the-schema"></a>A séma bérlő azonosítója
+#### <a name="tenant-identifier-in-the-schema"></a>A séma bérlőazonosító
 
-Attól függően, hogy a horizontális megközelítésben további korlátozásokat az adatbázisséma kell kivetett.  Az SQL-adatbázis vegyes/egyesítés alkalmazáshoz az szükséges, hogy a séma tartalmazza-e a horizontális kulcs, amely általában a bérlő azonosítója.  A bérlői azonosító a kezdő elem az összes szilánkos tábla elsődleges kulcsában.  A bérlő azonosítója lehetővé teszi, hogy a vegyes/egyesítés alkalmazás gyorsan keresse meg és áthelyezni az adatokat egy adott bérlő társított.
+A horizontális skálázás használt módszert, attól függően további korlátozások vethető a az adatbázissémát.  Az SQL Database felosztó/egyesítő alkalmazás megköveteli, hogy a séma tartalmazza a horizontális skálázási kulcs, amely általában a bérlőazonosító.  A bérlőazonosító a kezdő elem a horizontálisan particionált táblák elsődleges kulcsot.  A bérlőazonosító lehetővé teszi, hogy gyorsan keresse meg és a egy adott tenanthoz társított adatok áthelyezése a felosztó/egyesítő alkalmazást.
 
-#### <a name="elastic-pool-for-shards"></a>A szilánkok rugalmas készlet
+#### <a name="elastic-pool-for-shards"></a>A szegmensek rugalmas készlet
 
-Horizontálisan skálázott több-bérlős adatbázisok rugalmas készletek helyezhető.  Általában sok bérlői egyetlen adatbázis a készletben, akkor az néhány több-bérlős adatbázisokban több bérlő rendelkezőként hatékony költség.  Több-bérlős adatbázisok előnyösek, ha nagy számú viszonylag inaktív bérlők.
+Rugalmas készletek több-bérlős szilánkokra osztott adatbázisok is kell elhelyezni.  Általában számos egybérlős adatbázis kellene a készlet méretezhető, költséghatékony megoldás, hogy több bérlő több több-bérlős adatbázisok.  Több-bérlős adatbázisok előnyösek, ha nagy számú viszonylag inaktív bérlők számára.
 
-## <a name="h-hybrid-sharded-multi-tenant-database-model"></a>H. Hibrid szilánkos több-bérlős adatbázismodell
+## <a name="h-hybrid-sharded-multi-tenant-database-model"></a>H. Hibrid horizontálisan skálázott több-bérlős adatbázismodell
 
-A hibrid modell összes adatbázis kell a sémában a bérlő azonosítója.  Az adatbázisok összes képesek több bérlői tárolása, és lehet, hogy az adatbázisok szilánkos.  Ezért a séma értelemben összes több-bérlős adatbázis.  Még a gyakorlatban egy adatbázist tartalmazza csak egy bérlő.  Függetlenül attól egy adott adatbázisban tárolt bérlők mennyisége nem befolyásolja az adatbázisséma.
+A hibrid modell minden adatbázis rendelkezik a sémában a bérlőazonosító.  Az adatbázis összes képes több bérlő tárolja, és lehet, hogy az adatbázisok horizontálisan skálázott.  Így a séma az értelemben, azok minden több-bérlős adatbázis.  Még a gyakorlatban egy ezeknek az adatbázisoknak tartalmazza kizárólag egy bérlővel.  Függetlenül attól a bérlők egy adott adatbázisban tárolt mennyisége nem befolyásolja az adatbázissémát.
 
-#### <a name="move-tenants-around"></a>Bérlők Navigálás
+#### <a name="move-tenants-around"></a>Bérlők bejárása
 
-Bármikor helyezze át egy adott bérlő több-bérlős adatbázis.  És bármikor, meggondolja magát, helyezze vissza a bérlő több bérlő tartalmazó adatbázis.  Is hozzárendelheti a bérlő új single-bérlő adatbázis amikor az új adatbázis.
+Bármikor helyezze át egy adott bérlő több-bérlős adatbázis.  És bármikor, meggondolja magát, lépjen vissza a bérlői adatbázis több bérlő tartalmazza.  Is hozzárendelheti a bérlő új egybérlős adatbázis az új adatbázis üzembe helyezésekor.
 
-A hibrid modell helyezi, amikor a bérlő azonosítható csoportok erőforrásigényeivel nagy különbséget.  Tegyük fel például, hogy részt vesz egy ingyenes próbaverzióra bérlők nem garantált teljesítményéről, amely előfizető bérlőkre azonos magas szintű.  A házirend, amelyet az összes szabad próbabérlőket használ egy több-bérlős adatbázisban tárolja a ingyenes próba fázis lehet a bérlők számára.  Amikor egy ingyenes próba bérlő előfizet az alapvető szolgáltatási szint, a bérlő helyezheti át egy másik olyan több-bérlős adatbázis ajánlott, amelyek kevesebb bérlők lehet.  A saját új single-bérlő adatbázis olyan előfizetője, amelyik a prémium szolgáltatásszintet fizet sikerült áthelyezni.
+A hibrid modell, amikor a bérlők azonosítható csoportok erőforrásigényeivel közötti nagy különbségek vannak az ragyogó.  Tegyük fel például, hogy, hogy részt vesz egy ingyenes próbaverzióra bérlők esetén nem garantált az azonos magas teljesítményszintet biztosít, amelyek előfizető bérlők.  A szabályzatot, amely az összes ingyenes próba bérlők között megosztott több-bérlős adatbázisban tárolni az ingyenes próbaverziós fázis lehet a bérlők számára.  Az alapszintű szolgáltatásszinten feliratkozik egy ingyenes próbaverziós bérlőben, amikor a bérlő egy másik, előfordulhat, hogy kevesebb bérlővel rendelkezik, több-bérlős adatbázis helyezheti át.  Olyan előfizetőre, amely a prémium szintű szolgáltatási szinthez tartozó fizet a saját új egybérlős adatbázis sikerült áthelyezni.
 
 #### <a name="pools"></a>Készletek
 
-A hibrid modellben az előfizető bérlők single-bérlő adatbázisok helyezhető erőforráskészletek bérlőnként adatbázis költségek csökkentése érdekében.  Az adatbázis-/-bérlős modell is használtuk.
+Ez a hibrid modell, az előfizető bérlők számára az egybérlős adatbázisok helyezhető erőforráskészletek bérlőnkénti adatbázis költségek csökkentése érdekében.  Ezt a bérlőnkénti adatbázis modellt is teheti.
 
 ## <a name="i-tenancy-models-compared"></a>I. Bérleti modellek összehasonlítása
 
-A következő táblázat összefoglalja a fő bérleti modellek közötti különbséget.
+A következő táblázat összefoglalja a fő bérlős modell közti különbségekkel.
 
-| Mérés | Önálló alkalmazás | Adatbázis-/-bérlő | Horizontálisan skálázott több-bérlős |
+| Mérés | Önálló alkalmazás | Bérlőnkénti adatbázis | Szilánkokra osztott több-bérlős |
 | :---------- | :------------- | :------------------ | :------------------- |
-| Méretezés | Közepes<br />1-100-as egység | Nagyon magas<br />1-100,000s | Korlátlan<br />1-1,000,000s |
-| Bérlők elszigetelésére | Nagyon magas | Magas | Alacsony; kivéve bármely egypéldányos bérlői (Ez kizárólag egy MT db-ben). |
-| Adatbázis költségének bérlőnként | Magas; a csúcsait mérete. | Alacsony; a készletek használt. | Legalacsonyabb, kis bérlők MT adatbázisok esetén. |
-| Teljesítmény figyelése és kezelése | /-Bérlőt csak | Összesítés + bérlői | Összesítés; Bár egyes-bérlőt csak singletons van. |
-| Fejlesztési összetettsége | Alacsony | Alacsony | Közepes; miatt horizontális. |
-| Működési összetettsége | Alacsony magas. Külön-külön egyszerű, összetett méretekben. | Alacsony – közepes. Minták cím összetettsége méretekben. | Alacsony magas. Az egyes bérlői felügyeleti összetett. |
+| Méretezés | Közepes<br />1-100 db | Nagyon magas<br />1 – 100 000 egység | Korlátlan<br />1 – 1 000 000 db |
+| Bérlők elkülönítését | Nagyon magas | Magas | Alacsony; kivéve bármely egybérlős (ez önmagában egy MT db-ben). |
+| Bérlőnkénti adatbázis költség | Magas; a maximális szám méretezik. | Alacsony; a készletek használt. | Legalacsonyabb, a fő Célkiszolgáló adatbázisok kisebb bérlőknek. |
+| Alkalmazásteljesítmény-figyelés és kezelés | Bérlőnkénti csak | Összesítés + bérlőnkénti | Összesítés; Bár csak kiszűri a bérlőnkénti van. |
+| Fejlesztési bonyolultsága | Alacsony | Alacsony | Közepes; miatt a horizontális skálázás. |
+| Üzemeltetés bonyolult | Alacsony magas. Külön-külön egyszerű és összetett ipari méretekben. | Alacsony-közepes. Minták cím összetettségét, ipari méretekben. | Alacsony magas. Az egyes bérlői összetett. |
 | &nbsp; ||||
 
 ## <a name="next-steps"></a>További lépések
 
-- [Központi telepítése, és vizsgálja meg az adatbázis-/-bérlő Szolgáltatottszoftver modell - Azure SQL Database egy több-bérlős Wingtip alkalmazás][docu-sql-db-saas-tutorial-deploy-wingtip-db-per-tenant-496y]
+- [Üzembe helyezése és megismerése a bérlőnkénti adatbázis SaaS-modell – Azure SQL Database használó több-bérlős Wingtip alkalmazás][docu-sql-db-saas-tutorial-deploy-wingtip-db-per-tenant-496y]
 
-- [Üdvözli a Wingtip jegyek SaaS Azure SQL Database bérleti mintaalkalmazás][docu-saas-tenancy-welcome-wingtip-tickets-app-384w]
+- [Üdvözli a Wingtip Tickets SaaS Azure SQL Database bérlős mintaalkalmazás][docu-saas-tenancy-welcome-wingtip-tickets-app-384w]
 
 
 <!--  Article link references.  -->
@@ -214,11 +214,11 @@ A következő táblázat összefoglalja a fő bérleti modellek közötti külö
 
 <!--  Image references.  -->
 
-[image-standalone-app-st-db-111a]: media/saas-tenancy-app-design-patterns/saas-standalone-app-single-tenant-database-11.png "Pontosan egy egyetlen-bérlő adatbázis önálló alkalmazás tervét."
+[image-standalone-app-st-db-111a]: media/saas-tenancy-app-design-patterns/saas-standalone-app-single-tenant-database-11.png "Önálló alkalmazás, és pontosan egy egybérlős adatbázis kialakítása."
 
-[image-mt-app-db-per-tenant-132d]: media/saas-tenancy-app-design-patterns/saas-multi-tenant-app-database-per-tenant-13.png "Tervezési és adatbázis-/-bérlő több-bérlős alkalmazás."
+[image-mt-app-db-per-tenant-132d]: media/saas-tenancy-app-design-patterns/saas-multi-tenant-app-database-per-tenant-13.png "Tervezés több-bérlős alkalmazás bérlőnkénti adatbázis."
 
-[image-mt-app-db-per-tenant-pool-153p]: media/saas-tenancy-app-design-patterns/saas-multi-tenant-app-database-per-tenant-pool-15.png "Adatbázis-/-bérlőt, a rugalmas készlet több-bérlős alkalmazás tervét."
+[image-mt-app-db-per-tenant-pool-153p]: media/saas-tenancy-app-design-patterns/saas-multi-tenant-app-database-per-tenant-pool-15.png "Tervezés több-bérlős alkalmazás-adatbázis – bérlőnként felügyelt, rugalmas készlet használata."
 
-[image-mt-app-sharded-mt-db-174s]: media/saas-tenancy-app-design-patterns/saas-multi-tenant-app-sharded-multi-tenant-databases-17.png "Több-bérlős alkalmazás szilánkos több-bérlős adatbázisok Tervező."
+[image-mt-app-sharded-mt-db-174s]: media/saas-tenancy-app-design-patterns/saas-multi-tenant-app-sharded-multi-tenant-databases-17.png "Tervezés több-bérlős szilánkokra osztott adatbázisok több-bérlős alkalmazás."
 

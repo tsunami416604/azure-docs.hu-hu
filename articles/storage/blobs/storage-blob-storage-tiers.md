@@ -5,15 +5,15 @@ services: storage
 author: kuhussai
 ms.service: storage
 ms.topic: article
-ms.date: 12/11/2017
+ms.date: 09/11/2018
 ms.author: kuhussai
 ms.component: blobs
-ms.openlocfilehash: d7d7a6d67efd5ed230750be87450760498f9b877
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 66c47a97eee6759eb963db43d5c573fb6612bde6
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45576239"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45735918"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-storage-tiers"></a>Azure Blob Storage: A gyakori és ritka elérésű, valamint az archív tárolási szintek
 
@@ -27,7 +27,7 @@ Az egyes adathozzáférési forgatókönyvek esetében számos előnyt biztosít
 
 ## <a name="storage-accounts-that-support-tiering"></a>Rétegezést támogató Storage-fiókok
 
-Az objektum tárolási adataihoz csak a Blob Storage- vagy a General Purpose v2 (GPv2) (általános célú) fiókokban használhatja a gyakori, ritka elérésű, vagy archív tárolási szinteket. General Purpose v1 (GPv1) fiókok nem támogatják a rétegezést. Az ügyfelek azonban könnyedén, egyetlen kattintással átalakíthatják meglévő GPv1- vagy Blob Storage-fiókjukat GPv2-fiókká az Azure Portalon. A GPv2 új díjszabási struktúrát nyújt a blobokhoz, fájlokhoz és üzenetsorokhoz, továbbá hozzáférést biztosít különféle egyéb, új tárolási szolgáltatásokhoz is. Továbbá, a későbbiek során egyes új szolgáltatások és árengedmények csak a GPv2-fiókok esetében lesznek elérhetők. Az ügyfeleknek tehát érdemes megfontolni a GPv2 fiókok használatát. A használatot azonban csak akkor kezdjék meg, ha áttekintették az összes szolgáltatás díjszabását. Egyes számítási feladatok ugyanis drágábbak lehetnek GPv2-fiókokon, mint a GPv1-fiókok esetében. További információk: [Az Azure Storage-fiók beállításai](../common/storage-account-options.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+Az objektum tárolási adataihoz csak a Blob Storage- vagy a General Purpose v2 (GPv2) (általános célú) fiókokban használhatja a gyakori, ritka elérésű, vagy archív tárolási szinteket. General Purpose v1 (GPv1) fiókok nem támogatják a rétegezést. Az ügyfelek azonban könnyedén, egyetlen kattintással átalakíthatják meglévő GPv1- vagy Blob Storage-fiókjukat GPv2-fiókká az Azure Portalon. A GPv2 új díjszabási struktúrát nyújt a blobokhoz, fájlokhoz és üzenetsorokhoz, továbbá hozzáférést biztosít különféle egyéb, új tárolási szolgáltatásokhoz is. Továbbá, a későbbiek során egyes új szolgáltatások és árengedmények csak a GPv2-fiókok esetében lesznek elérhetők. Az ügyfeleknek tehát érdemes megfontolni a GPv2 fiókok használatát. A használatot azonban csak akkor kezdjék meg, ha áttekintették az összes szolgáltatás díjszabását. Egyes számítási feladatok ugyanis drágábbak lehetnek GPv2-fiókokon, mint a GPv1-fiókok esetében. További információkért lásd: [az Azure storage-fiók áttekintése](../common/storage-account-overview.md).
 
 A Blob Storage- és GPv2-fiókokban fiókszinten elérhető a **Hozzáférési szint** attribútum, amellyel megadható, hogy a tárfiók alapértelmezett szintje gyakori vagy ritka elérésű legyen minden olyan, a tárfiókban található blob esetében, amelyhez nincs az objektumok szintjén beállított szint. Azon objektumok esetében, amelyek szintje az objektumok szintjén van megadva, a fiókszint nem lesz érvényes. Az archív szint csak az objektumok szintjén alkalmazható. Bármikor válthat a tárolási szintek között.
 
@@ -59,13 +59,15 @@ Példa használati forgatókönyvek az archív tárolási szinthez:
 * Megfelelőségi és archiválási adatok, amelyeket hosszú ideig kell tárolni, azonban nagyon ritkán kell hozzáférni. (*Például* biztonsági kamerák felvételei, egészségügyi intézmények régi röntgen-/MRI-felvételei, pénzügyi szolgáltatók ügyfélszolgálati hívásainak hangfelvételei és átiratai)
 
 ### <a name="blob-rehydration"></a>Blob rehidratálása
-Az archív tárolóban lévő adatok olvasásához előbb módosítania kell a blob szintjét a gyakran vagy ritkán használt adatok tárolási szintjére. Ezt a folyamatot rehidratálásnak nevezik, és akár 15 órát is igénybe vehet. Erősen ajánlott a nagy méretű blobok használata az optimális teljesítmény érdekében. Több kis méretű blob egyidejűleg történő rehidratálása további időt vehet igénybe.
+Az archív tárolóban lévő adatok olvasásához előbb módosítania kell a blob szintjét a gyakran vagy ritkán használt adatok tárolási szintjére. Ezt a folyamatot rehidratálásnak nevezik, és akár 15 órát is igénybe vehet. Nagy méretű blobok használata akkor javasolt, az optimális teljesítmény érdekében. Több kis méretű blob egyidejűleg történő rehidratálása további időt vehet igénybe.
 
 A rehidratálás során a blob **Archív állapot** tulajdonságának ellenőrzésével bizonyosodhat meg arról, hogy a szint módosítása befejeződött-e. Az állapot a célszinttől függően „rehydrate-pending-to-hot” (rehidratálás-folyamatban-a-gyakoriba) vagy „rehydrate-pending-to-cool” (rehidratálás-folyamatban-a-ritkába) lehet. A folyamat befejeztével a „archív állapot” tulajdonság törlődik, és a „hozzáférési szint” tulajdonság mutatja, hogy az új szint a gyakran vagy a ritkán használt szint-e.  
 
 ## <a name="blob-level-tiering"></a>Blobszintű rétegezés
 
-A blobszintű rétegezés segítségével az adatok szintje egyetlen művelet, a [Blobszint beállítása](/rest/api/storageservices/set-blob-tier) használatával módosítható az egyes objektumok szintjén. A blobok hozzáférési szintje a használati forgatókönyvek változásával könnyen állítható a gyakran és ritkán használt, valamint az archív szintek között anélkül, hogy az adatokat át kellene helyezni egyik fiókból a másikba. Az archív blobok rehidratálásától eltekintve, ami több órát is igénybe vehet, a szintváltások azonnal megtörténnek. Az utolsó blobszint-módosítás időpontja a **Hozzáférési szint utolsó módosítása** blobtulajdonságon keresztül érhető el. Ha egy blob az archív szinten van, előfordulhat, hogy nem felülírható, ezért ugyanennek a blobnak a feltöltése nem engedélyezett ebben a forgatókönyvben. A gyakran használt és a ritkán használt adatokat tároló szint felülírható egy blobhoz, és ebben az esetben az új blob örökli a felülírt régi blob szintjét.
+A blobszintű rétegezés segítségével az adatok szintje egyetlen művelet, a [Blobszint beállítása](/rest/api/storageservices/set-blob-tier) használatával módosítható az egyes objektumok szintjén. A blobok hozzáférési szintje a használati forgatókönyvek változásával könnyen állítható a gyakran és ritkán használt, valamint az archív szintek között anélkül, hogy az adatokat át kellene helyezni egyik fiókból a másikba. Minden szint módosításának azonnali fordulhat elő. Azonban a blob archív szintről rehidratálása több óráig is tarthat. 
+
+Az utolsó blobszint-módosítás időpontja a **Hozzáférési szint utolsó módosítása** blobtulajdonságon keresztül érhető el. Ha egy blob az archív szinten van, akkor nem lehet felülírni, ezért ugyanennek a blobnak a feltöltése nem engedélyezett ebben a forgatókönyvben. A blobok, amelyben eset az új blob örökli a felül lett írva a blob szintjét gyors vagy lassú elérésű szint is írja felül.
 
 Egy adott fiók tartalmazhat blobokat egyszerre akár mindhárom szinten is. Azok a blobok, amelyekhez nincs kifejezetten hozzárendelve szint, a fiók hozzáférési szintjének beállítását veszik át. Ha a hozzáférési szint a fióktól vette a beállításait a fiók, akkor tekintse meg a **hozzáférési szint következtetett** blobtulajdonság beállítása "true", és a blob **hozzáférési szint** blobtulajdonság megfelel a fiókszintjének. Az Azure Portalon a hozzáférési szint hozott tulajdonsága a blob hozzáférési szintjével együtt jelenik meg (például Gyakori (következtetett) vagy Ritka (következtetett)).
 
@@ -73,13 +75,13 @@ Egy adott fiók tartalmazhat blobokat egyszerre akár mindhárom szinten is. Azo
 > Az archív tárolás és a blobszintű rétegezés csak a blokkblobokat támogatja. A pillanatképeket tartalmazó blokkblob szintje sem módosítható.
 
 ### <a name="blob-lifecycle-management"></a>BLOB életciklus-felügyelete
-A BLOB Storage életciklus-felügyelet (előzetes verzió) egy olyan interaktív és szabályalapú szabályzatot, amely való áttérés a legjobb hozzáférési szintet az adatok és a életciklus végén található adatok lejárnak kínál. Lásd: [kezelése az Azure Blob storage életciklus](https://docs.microsoft.com/azure/storage/common/storage-lifecycle-managment-concepts) további.  
+A BLOB Storage életciklus-felügyelet (előzetes verzió) kínál egy gazdag, szabályalapú házirend, amelyet használhat való áttérés a adatait, hogy a legjobb hozzáférési szint és az adatok életciklusa végén lejár. Lásd: [kezelése az Azure Blob storage életciklus](https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts) további.  
 
 ### <a name="blob-level-tiering-billing"></a>Blobszintű rétegezési számlázás
 
-Ha egy blob egy ritkább elérésű szintre kerül (Gyakori elérésű->Ritka elérésű, Gyakori elérésű->Archív vagy Ritka elérésű->Archív), a műveletet a rendszer a célszintű írásként számlázza, amely esetében a célszintű írási műveleteire (10 000 műveletenként) és adatírásaira (GB-onként) vonatkozó díjak érvényesek. Ha egy blob egy gyakrabban használt szintre kerül (Archív->Ritka elérésű, Archív->Gyakori elérésű vagy Ritka elérésű->Gyakori elérésű), a műveletet a rendszer a forrásszintről olvasásként számlázza, amely esetében a forrásszint olvasási műveleteire (10 000 műveletenként) és adatlekéréseire (GB-onként) vonatkozó díjak érvényesek.
+Amikor egy blob egy írásként kerül (gyakori elérésű -> ritka elérésű, gyakori elérésű -> archív vagy ritka elérésű -> archív), a művelet lesz számlázva, a cél szintre, ahol a célszintű írási műveleteire (10.000 műveletenként) és adatírásaira (gigabájtonként) vonatkozó díjak a cél szintjének alkalmazása írási művelet. Ha egy blob egy gyakrabban használt szintre kerül (Archív->Ritka elérésű, Archív->Gyakori elérésű vagy Ritka elérésű->Gyakori elérésű), a műveletet a rendszer a forrásszintről olvasásként számlázza, amely esetében a forrásszint olvasási műveleteire (10 000 műveletenként) és adatlekéréseire (GB-onként) vonatkozó díjak érvényesek.
 
-Ha átváltja a fiókszintet gyakori elérésűről ritka elérésűre, csak a GPv2-fiókok esetében lesznek díjkötelesek a beállított szinttel nem rendelkező blobok esetében végrehajtott írási műveletek (10.000 műveletenként). Ez a Blob Storage-fiókok esetében díjmentes. Ha Blob Storage- vagy GPv2-fiókját ritka elérésűről gyakori elérésűre módosítja, az olvasási műveletek (10 000 műveletenként) és adatlekérések (GB-onként) után díjat számolunk fel. A ritka elérésű vagy archív szintről áthelyezett blobok esetében korai törlésre vonatkozó díjak lehetnek érvényesek.
+Ha átváltja a fiókszintet gyakori elérésűről ritka elérésűre, csak a GPv2-fiókok esetében lesznek díjkötelesek a beállított szinttel nem rendelkező blobok esetében végrehajtott írási műveletek (10.000 műveletenként). Nem jár költséggel a módosítás a Blob storage-fiókok. Ha Blob Storage- vagy GPv2-fiókját ritka elérésűről gyakori elérésűre módosítja, az olvasási műveletek (10 000 műveletenként) és adatlekérések (GB-onként) után díjat számolunk fel. A ritka elérésű vagy archív szintről áthelyezett blobok esetében korai törlésre vonatkozó díjak lehetnek érvényesek.
 
 ### <a name="cool-and-archive-early-deletion"></a>Korai törlés a ritka elérésű és az archív szinten
 
@@ -131,13 +133,27 @@ Ebben a szakaszban a következő forgatókönyveket mutatjuk be az Azure Portal 
 
 5. Kattintson a panel tetején lévő Mentés elemre.
 
+## <a name="pricing-and-billing"></a>Árak és számlázás
+
+Az összes storage-fiókok árképzési modellt alkalmaznak a Blob minden egyes blob szintjének alapján. Tartsa szem előtt az alábbi számlázási szempontok:
+
+* **Tárolási költségek**: Az adattárolás díja a tárolt adatok mennyisége mellett a tárolási szinttől függ. A gigabájtonkénti költség csökken, ha a szint ritkábban használt adatokat tárol.
+* **Adathozzáférési költségek**: az adathozzáférési költségek emelkednek, ha a szint ritkábban használt adatokat tárol. A ritka elérésű és az archív tárolási szint esetében gigabájtonkénti adathozzáférési díjat kell fizetni az adatolvasásokért.
+* **Tranzakciós költségek**: Minden szint esetében tranzakciónkénti díjat kell fizetni, ez emelkedik, ha a szint ritkábban használt adatokat tárol.
+* **Georeplikációs adatátviteli költségek**: Ez csak a georeplikációval konfigurált fiókok esetében érvényes, beleértve a GRS-t és az RA-GRS-t. A georeplikációs adatátvitel gigabájtonkénti díj ellenében érhető el.
+* **Kimenő adatátviteli költségek**: A kimenő adatátvitel (azaz az adott Azure-régióból kivitt adatok) esetében gigabájtalapú sávszélesség-használati díjak lépnek fel, csakúgy, mint az általános célú tárfiókok esetében.
+* **A tárolási szint módosítása**: a fiók tárolási szintjének a ritka elérésű szintről gyakori elérésűre váltása esetében felmerülő díj megegyezik a tárfiókban lévő összes adat beolvasásának költségével. A fiók tárolási szintjének gyakori elérésűről ritka elérésűre való váltása esetében felmerülő díj viszont az összes adat ritka elérésű szintre írásának költségével egyezik meg (csak a GPv2-fiókok esetében).
+
+> [!NOTE]
+> A Blob storage-fiókok díjszabása kapcsolatos további információkért lásd: [Azure Storage szolgáltatás díjszabása](https://azure.microsoft.com/pricing/details/storage/) lapot. A kimenő adatátviteli díjakkal kapcsolatos további információért lásd az [adatátviteli díjszabást](https://azure.microsoft.com/pricing/details/data-transfers/) ismertető lapot.
+
 ## <a name="faq"></a>GYIK
 
 **Blob Storage vagy GPv2-fiókokat kell használnom, ha rétegezni szeretném az adataimat?**
 
 Javasoljuk, hogy Blob Storage-fiókok helyett használjon GPv2-fiókokat a rétegzéshez kialakításához. A GPv2 a Blob Storage-fiókok által támogatott szolgáltatások mellett sok mást is támogat. A Blob Storage és GPv2-fiókok díjszabása majdnem teljesen megegyezik, azonban egyes új szolgáltatások és árengedmények csak GPv2-fiókokhoz lesznek elérhetők. A GPv1-fiókok nem támogatják a rétegezést.
 
-A GPv1- és GPv2-fiókok díjszabási struktúrája eltér egymástól, ezért az ügyfeleknek érdemes mindkettőt alaposan áttekinteni, mielőtt a GPv2-fiókok használata mellett döntenek. Meglévő Blob Storage- vagy GPv1-fiókját könnyedén, egyetlen kattintással átalakíthatja GPv2-fiókká. További információk: [Az Azure Storage-fiók beállításai](../common/storage-account-options.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+A GPv1- és GPv2-fiókok díjszabási struktúrája eltér egymástól, ezért az ügyfeleknek érdemes mindkettőt alaposan áttekinteni, mielőtt a GPv2-fiókok használata mellett döntenek. Meglévő Blob Storage- vagy GPv1-fiókját könnyedén, egyetlen kattintással átalakíthatja GPv2-fiókká. További információkért lásd: [az Azure storage-fiók áttekintése](../common/storage-account-overview.md).
 
 **Tárolhatok objektumokat mindhárom (gyakori és ritka elérésű, valamint archív) tárolási szinten egyazon fiók esetében?**
 
@@ -159,7 +175,7 @@ A gyakori és ritka elérésű tárolási szint, illetve a blobszintű rétegez�
 
 A gyakori elérésű tárolási szinten a blobok ugyanolyan késéssel rendelkeznek, mint a GPv1-, GPv2- és Blob Storage-fiókok esetében. A ritka elérésű tárolási szinten a blobok hasonló késéssel rendelkeznek (ezredmásodpercben), mint a GPv1-, GPv2- és Blob Storage-fiókokban lévő blobok. Az archív tárolási szinten lévő blobok esetében több óra késés tapasztalható GPv1-, GPv2- és Blob Storage-fiókok esetében.
 
-A ritka elérésű tárolási szinten a blobok rendelkezésre állási szolgáltatási szintje (SLA) kissé alacsonyabb, mint a gyakori elérésű tárolási szinten. További információkért lásd: [SLA a következőhöz: Storage](https://azure.microsoft.com/support/legal/sla/storage/v1_2/).
+A ritka elérésű tárolási szinten a blobok rendelkezésre állási szolgáltatási szintje (SLA) kissé alacsonyabb, mint a gyakori elérésű tárolási szinten. További információt a [tárolók rendelkezésreállási szolgáltatási szintjeit](https://azure.microsoft.com/support/legal/sla/storage/v1_2/) ismertető szakaszban talál.
 
 **A műveletek megegyeznek a gyakori és a ritka elérésű, valamint az archív tárolási szint esetében?**
 
@@ -171,11 +187,11 @@ A rehidratálás során a blobtulajdonságok lekérése művelettel kérdezheti 
 
 **Egy blob szintjének beállítása után mikor kezdődik a megfelelő díjak alapján történő számlázás?**
 
-Minden blob számlázása a **Hozzáférési szint** blobtulajdonságban megjelölt szint alapján történik. Ha új szintet határoz meg egy blob számára, a **Hozzáférési szint** tulajdonság automatikusan az új szintet tükrözi majd minden váltás esetében. Ez alól kivétel, ha az archív tárolási szintről rehidratál egy blobot a gyakori vagy ritka elérésű szintre, mivel az több órát is igénybe vehet. Ebben az esetben az archív díjak lesznek érvényben egészen addig, amíg a rehidratálás be nem fejeződik. Onnantól kezdve a **Hozzáférési szint** az új szintet tükrözi majd. Csak ezután lépnek életbe az új, gyakori vagy ritka elérésű tárolási szintre vonatkozó díjak.
+Minden egyes blob van a blob blobtulajdonságban megjelölt szint alapján történik **hozzáférési szint** tulajdonság. Amikor egy BLOB egy új szint a **hozzáférési szint** tulajdonság azonnal minden váltás esetében az új szintet tükrözi. Azonban a blob az archív tárolási szintről a gyakori elérésű vagy ritka elérésű szintre való rehidratálása több óráig is tarthat. Ebben az esetben akkor is archív díjak amíg rehidratálás be nem fejeződik, ekkor a **hozzáférési szint** tulajdonságot az új szintet tükrözi. Ezen a ponton számlázzuk ki, hogy a blob, a gyors vagy lassú elérésű díj.
 
 **Hogyan állapíthatom meg, hogy egy blob ritka elérésű vagy archív tárolási szintről való törlése vagy áthelyezése során van-e korai törlési díj?**
 
-Minden blob, amelyet a ritka elérésű (csak GPv2-fiókok esetében) vagy archív tárolási szintről töröl vagy helyez át a vonatkozó 30, illetve 180 nap letelte előtt, a korai törléseknek megfelelő, időarányos költségeket von maga után. Azt, hogy egy blob mennyi ideje van a ritka elérésű vagy archív tárolási szinten, a **Hozzáférési szint módosításának ideje** blobtulajdonság ellenőrzésével állapíthatja meg, amely megadja az utolsó szintmódosítás időbélyegét. További részletekért lásd: [Korai törlés ritka elérésű vagy archív szint esetében](#cool-and-archive-early-deletion).
+Minden blob, amelyet a ritka elérésű (csak GPv2-fiókok esetében) vagy archív tárolási szintről töröl vagy helyez át a vonatkozó 30, illetve 180 nap letelte előtt, a korai törléseknek megfelelő, időarányos költségeket von maga után. Megadhatja, hogy mennyi ideig blob lett a ritka elérésű vagy archív tárolási szinten ellenőrzésével a **hozzáférési szint módosításának ideje** blob-tulajdonság, amely biztosítja az utolsó szintmódosítás időbélyegét. További részletekért lásd: [Korai törlés ritka elérésű vagy archív szint esetében](#cool-and-archive-early-deletion).
 
 **Melyik Azure-eszközök és SDK-k támogatják a blobszintű rétegezést és az archív tárolási szintet?**
 
@@ -183,7 +199,7 @@ Az Azure Portal, a PowerShell, valamint a parancssori felület eszközei, illetv
 
 **Mennyi adatot tárolhatok a gyakori és ritka elérésű, valamint az archív tárolási szinten?**
 
-Az adattárolási és egyéb korlátok a fiókok szintjén vannak meghatározva, nem a tárolók szintjén. Eldöntheti tehát, hogy az összes korlátot egy szinten vagy az összes szinten szeretné alkalmazni. További információkért lásd: [Azure Storage Scalability and Performance Targets](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) (Az Azure Storage méretezhetőségi és teljesítménycéljai).
+Az adattárolási és egyéb korlátok a fiókok szintjén vannak meghatározva, nem a tárolók szintjén. Ezért kiválaszthatja használata összes korlátot egy szinten vagy összes szinten. További információkért lásd: [Azure Storage méretezhetőségi és Teljesítménycéljai](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
 ## <a name="next-steps"></a>További lépések
 
@@ -193,7 +209,7 @@ Az adattárolási és egyéb korlátok a fiókok szintjén vannak meghatározva,
 
 [Az Azure Blob storage életciklus kezelése](https://docs.microsoft.com/azure/storage/common/storage-lifecycle-managment-concepts)
 
-[Aktuális tárfiókjai használatának értékelése az Azure Storage mérőszámainak engedélyezésével](../common/storage-enable-and-view-metrics.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+[Aktuális tárfiókjai használatának értékelése az Azure Storage mérőszámainak engedélyezésével](../common/storage-enable-and-view-metrics.md)
 
 [A gyakori és ritka elérésű, valamint az archív tárolási szint díjszabásának régiók szerinti ellenőrzése Blob Storage- és GPv2-fiókok esetében](https://azure.microsoft.com/pricing/details/storage/)
 

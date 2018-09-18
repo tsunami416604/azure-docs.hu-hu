@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 8f86bcf5ecf38f0f1054fce82b66e63f0509f1c8
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 63ae8699af5213634eeac7dfc5045a3fc888b6c0
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42059625"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45734252"
 ---
 # <a name="tutorial-build-your-first-pipeline-to-transform-data-using-hadoop-cluster"></a>Oktatóanyag: Adatok Hadoop-fürt segítségével történő átalakítására szolgáló első folyamat létrehozását.
 > [!div class="op_single_selector"]
@@ -85,7 +85,7 @@ A fent látható mintában sorok, elsőt (2016-01-01) van a 000000_0 fájlba ír
 Ez az oktatóanyag elkezdéséhez az alábbi előfeltételekkel kell rendelkeznie:
 
 1. **Azure-előfizetés** – Ha nem rendelkezik Azure-előfizetéssel, létrehozhat mindössze néhány perc alatt egy ingyenes próbafiókot. Tekintse meg a [ingyenes próba](https://azure.microsoft.com/pricing/free-trial/) szóló, hogyan szerezheti be egy ingyenes próbafiókot.
-2. **Az Azure Storage** – ebben az oktatóanyagban az adatok tárolása Azure storage-fiókot használni. Ha nem rendelkezik Azure storage-fiókkal, tekintse meg a [hozzon létre egy tárfiókot](../../storage/common/storage-quickstart-create-account.md) cikk. Miután létrehozta a tárfiókot, jegyezze fel a **fióknév** és **hívóbetű**. Lásd: [tárelérési kulcsok megtekintése, másolása és újragenerálása](../../storage/common/storage-create-storage-account.md#view-and-copy-storage-access-keys).
+2. **Az Azure Storage** – ebben az oktatóanyagban az adatok tárolása Azure storage-fiókot használni. Ha nem rendelkezik Azure storage-fiókkal, tekintse meg a [hozzon létre egy tárfiókot](../../storage/common/storage-quickstart-create-account.md) cikk. Miután létrehozta a tárfiókot, jegyezze fel a **fióknév** és **hívóbetű**. Lásd: [tárelérési kulcsok megtekintése, másolása és újragenerálása](../../storage/common/storage-account-manage.md#access-keys).
 3. Töltse le és tekintse meg a Hive-lekérdezés fájlt (**HQL**) helyen található: [ https://adftutorialfiles.blob.core.windows.net/hivetutorial/partitionweblogs.hql ](https://adftutorialfiles.blob.core.windows.net/hivetutorial/partitionweblogs.hql). Ez a lekérdezés átalakítja a bemeneti adatokat kimeneti adatok előállításához. 
 4. Töltse le és tekintse meg a minta bemeneti fájlt (**input.log**) helyen található: [https://adftutorialfiles.blob.core.windows.net/hivetutorial/input.log](https://adftutorialfiles.blob.core.windows.net/hivetutorial/input.log)
 5. Hozzon létre egy blobtárolót **adfgetstarted** az Azure Blob Storage. 

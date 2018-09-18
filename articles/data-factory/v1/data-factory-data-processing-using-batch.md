@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 6ad3b4c1f59f5c46fd31aa24d6d2ceb4d7411abd
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 511a0122b37f5f34097da38a645790d99212ad18
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42055552"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45737413"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Nagyméretű adatkészletek folyamatot a Data Factory és a Batch használatával
 > [!NOTE]
@@ -556,7 +556,7 @@ Társított szolgáltatások adattárakat vagy számítási szolgáltatások ada
 
    ![Új adattároló](./media/data-factory-data-processing-using-batch/image7.png)
 
-1. Cserélje le az **account name** kifejezést a tárfiókja nevére. Az **account key** kifejezést cserélje le a tárfiók hozzáférési kulcsára. A tárelérési kulcs lekérésével kezelésével kapcsolatos információkért lásd: [megtekintése, másolása és újragenerálása storage hozzáférési kulcsok](../../storage/common/storage-create-storage-account.md#manage-your-storage-account).
+1. Cserélje le az **account name** kifejezést a tárfiókja nevére. Az **account key** kifejezést cserélje le a tárfiók hozzáférési kulcsára. A tárelérési kulcs lekérésével kezelésével kapcsolatos információkért lásd: [megtekintése, másolása és újragenerálása storage hozzáférési kulcsok](../../storage/common/storage-account-manage.md#access-keys).
 
 1. A társított szolgáltatás üzembe helyezéséhez kattintson a parancssáv **Üzembe helyezés** elemére.
 

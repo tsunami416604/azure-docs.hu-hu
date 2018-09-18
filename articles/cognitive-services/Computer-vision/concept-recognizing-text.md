@@ -1,23 +1,23 @@
 ---
-title: A nyomtatott és kézzel írt szöveg felismerése
-titleSuffix: Computer Vision - Cognitive Services - Azure
-description: Computer Vision segítségével az Azure Cognitive Servicesben képeken nyomtatott és kézzel írt szöveg felismerése kapcsolatos fogalmakat.
+title: FELISMERVE nyomtatott és kézzel írt szöveg – a Computer Vision
+titleSuffix: Azure Cognitive Services
+description: A Computer Vision API használatával képeken nyomtatott és kézzel írt szöveg felismerése kapcsolatos fogalmakat.
 services: cognitive-services
 author: deken
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: v-deken
-ms.openlocfilehash: bdfef668eddc712d2637dcf53a01f193a3204880
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 49cba0e9b6958beb07b6f074e6dc748679514525
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44725404"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45985311"
 ---
-# <a name="recognizing-printed-and-handwritten-text"></a>A nyomtatott és kézzel írt szöveg felismerése
+# <a name="recognizing-printed-and-handwritten-text"></a>Nyomtatott és kézzel írt szöveg felismerése
 
 Számítógépes Látástechnológia képesek észlelni és nyomtatott vagy kézzel írt szöveg kinyerése a különféle objektumokat a különféle felületekkel és hátterek, például a visszaigazolások, poszterek, névjegyek, betűket és hátterekkel képét.
 

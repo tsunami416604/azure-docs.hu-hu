@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/07/2018
 ms.author: harijay
-ms.openlocfilehash: 785b0137624cc6d940f4944e0357d0a5774561df
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 1597e850219ddbab1a0714072c47e12016aa2069
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45634710"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45736888"
 ---
 # <a name="virtual-machine-serial-console"></a>Virtuális gépek soros konzolja
 
@@ -64,9 +64,8 @@ A virtuális gépek soros konzolon keresztül csak érhető el [az Azure portal]
 * `bcdedit /emssettings EMSPORT:1 EMSBAUDRATE:115200`
 3. Indítsa újra a rendszert a SAC konzol engedélyezni kell
 
-![](../media/virtual-machines-serial-console/virtual-machine-windows-serial-console-connect.gif)
 
-Ha a szükséges SAC engedélyezhető offline is, 
+Szükség esetén a SAC is engedélyezése kapcsolat nélküli módban is:
 
 1. SAC adatlemezként meglévő virtuális géphez konfigurált kívánt windows-lemez csatolása. 
 2. Egy rendszergazdai parancssorból a következő parancsok futtatásával. 

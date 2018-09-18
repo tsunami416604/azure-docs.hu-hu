@@ -8,13 +8,13 @@ ms.author: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/14/2018
-ms.openlocfilehash: a2c992a47e40a4f8764f5950c65bb90f1cd9e066
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.date: 09/14/2018
+ms.openlocfilehash: 7c58162048de341468b69a29c55edf346b376e9b
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43045143"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45733814"
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>Az Azure HDInsight külső metaadat-tárolók használata
 
@@ -29,11 +29,11 @@ Beállíthat egy metaadattár a HDInsight-fürtök számára két módja van:
 
 ## <a name="default-metastore"></a>Alapértelmezett metaadattárat
 
-Alapértelmezés szerint a HDInsight egy metaadattár minden fürt típusú látja. Helyette megadhat egy egyéni metaadattár. Az alapértelmezett metaadattárat az alábbiakat tartalmazza:
-- További költségek nélkül. HDInsight látja el egy metaadattár minden fürt típussal, minden további költség nélkül.
-- Egyes alapértelmezett metaadattárat a fürt életciklusa részét képezi. Ha töröl egy fürtöt, hogy metaadattár és metaadatok is törlődik.
+Alapértelmezés szerint a HDInsight-metaadattár létrehoz minden fürt típusú. Helyette megadhat egy egyéni metaadattár. Az alapértelmezett metaadattárat az alábbiakat tartalmazza:
+- További költségek nélkül. HDInsight-metaadattár hoz létre minden egyes fürttípus Önnek semmilyen további költségek nélkül.
+- Egyes alapértelmezett metaadattárat a fürt életciklusa részét képezi. Ha töröl egy fürtöt, a megfelelő metaadattár és azok metaadatait is törlődik.
 - Az alapértelmezett metaadattárat nem osztható meg más fürtökkel.
-- Az alapértelmezett metaadattárat használja az alapszintű Azure SQL DB, amely esetében a 5 DTU (adatbázis-tranzakciós egységek).
+- Az alapértelmezett metaadattárat használja az alapszintű Azure SQL DB, amely esetében a öt DTU (adatbázis-tranzakciós egységek).
 Az alapértelmezett metaadattárat jellemzően viszonylag egyszerű olyan számítási feladatok, amelyek több fürt nem igényelnek, és nem kell megőrzi a fürt életciklusa túli metaadatok szolgál.
 
 
@@ -46,11 +46,7 @@ HDInsight emellett támogatja az egyéni metaadattárakat, javasolt az éles fü
 - A metaadattár (Azure SQL Database) alapján úgy dönt, a teljesítményszint járó költségeket kell fizetnie.
 - Igény szerint skálázhatja fel a metaadattár.
 
-
 ![HDInsight Hive-metaadatok Store használati eset](./media/hdinsight-use-external-metadata-stores/metadata-store-use-case.png)
-
-<!-- Image – Typical shared custom Metastore scenario in HDInsight (?) -->
-
 
 
 ### <a name="select-a-custom-metastore-during-cluster-creation"></a>Egy egyéni metaadattár válassza ki a fürt létrehozása során
@@ -67,12 +63,14 @@ Is hozzáadhat további fürtök egy egyéni metaadattár az Azure portálon vag
 
 Az alábbiakban néhány általános HDInsight Hive metaadattár ajánlott eljárásokat:
 
-- Ez segít a külön számítási erőforrások (a futó fürt) és a metaadatok (a metaadattár tárolva) használja, amikor csak lehetséges, egy egyéni metaadattár.
+- Egy egyéni metaadattár, amikor csak lehetséges, különálló számítási erőforrások (a futó fürt) és a metaadatok (a metaadattár tárolva) használja.
 - Indítsa el az S2 szint, amely 50 DTU és 250 GB-os tárhelyet biztosít. Ha a szűk keresztmetszet, az adatbázis is méretezhető.
-- Győződjön meg arról, hogy a létrehozott egy HDInsight-fürt verziója nem megosztott HDInsight-fürt különböző verzióin átívelő metaadattár. Különböző Hive-verziók különböző sémákkal használja. Például egy metaadattár nem oszthatja meg a Hive-1.2-es és a Hive 2.1-fürtökkel.
-- Rendszeresen készítsen biztonsági másolatot az egyéni metaadattár.
-- A metaadattár és a HDInsight-fürt tartsa ugyanabban a régióban.
+- Ha azt tervezi, hogy több HDInsight-fürtök külön adatok eléréséhez, egy különálló adatbázis használata az egyes fürtökön metaadattár. Ha megoszt egy metaadattár több HDInsight-fürtök között, az azt jelenti, hogy a fürtök használata a azonos metaadatokat és mögöttes felhasználói adatok fájlok.
+- Rendszeresen készítsen biztonsági másolatot az egyéni metaadattár. Az Azure SQL Database automatikusan létrehozza a biztonsági mentések, de a biztonsági másolatok megőrzési időtartamon változik. További információkért lásd: [további információ az automatikus SQL Database biztonsági mentéseinek](../sql-database/sql-database-automated-backups.md).
+- Keresse meg a metaadattár és a HDInsight-fürt ugyanabban a régióban, a legmagasabb szintű teljesítmény és a legalacsonyabb hálózati kimenő forgalom költségeit.
 - A metaadattár a teljesítmény és rendelkezésre állás az Azure SQL-adatbázis figyelési eszközök, például az Azure portal vagy az Azure Log Analytics használatával figyelheti.
+- Létrehozásakor egy új, magasabb szintű verzióját az Azure HDInsight egy meglévő egyéni metaadattár adatbázison, a rendszer a séma frissítése a metaadattár, amely nem vonható vissza anélkül, hogy az adatbázis biztonsági másolatból történő visszaállítását.
+- Ha megoszt egy metaadattár több fürt között, győződjön meg arról az összes fürt ugyanazt a HDInsight-verziót. Különböző Hive-verziók különböző metaadattár adatbázissémák használja. Például egy metaadattár nem oszthat meg Hive 1.2 és a Hive 2.1-es verziójú fürtök között. 
 
 ## <a name="oozie-metastore"></a>Oozie-Metaadattár
 

@@ -3,7 +3,7 @@ title: Az Azure Stack méretezési csomópontok hozzáadása |} A Microsoft Docs
 description: Az Azure Stackben egységig csomópontok hozzáadása.
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: jeffgilb
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2018
-ms.author: brenduns
+ms.date: 09/17/2018
+ms.author: jeffgilb
 ms.reviewer: thoroet
-ms.openlocfilehash: 0899b1784c796e5f6265dda842ca8955615a1584
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 3ce74cdb610f2902133459b913f53bb7809cb4b7
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44718098"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45982997"
 ---
 # <a name="add-additional-scale-unit-nodes-in-azure-stack"></a>Kiegészítő skálázási egység csomópontok hozzáadása az Azure Stackben
 
@@ -142,4 +142,4 @@ Az alábbiakban a leggyakoribb problémáinak csomópont hozzáadásakor.
 
 
 ## <a name="next-steps"></a>További lépések 
-Felülvizsgálat [csomópont műveletek](azure-stack-node-actions.md) 
+[Nyilvános IP-címek hozzáadása](azure-stack-add-ips.md) 

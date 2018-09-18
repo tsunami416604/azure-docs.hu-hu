@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: how-to
 ms.topic: conceptual
-ms.date: 08/15/2018
+ms.date: 09/14/2018
 ms.author: moslake
-ms.openlocfilehash: 498e83e7c312480af6d2eff7d44bd13aee9c55fd
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: 09b7df861f65a5fb4b3c9727f61f73a0ff4e0d65
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42055727"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45730235"
 ---
 # <a name="manage-file-space-in-azure-sql-database"></a>Lapozófájl-terület az Azure SQL Database kezelése
 Ez a cikk ismerteti a különböző típusú tárterület az Azure SQL Database és a lépések, amelyeket elvégezhet a fájlhely lefoglalt adatbázisok és rugalmas adatbáziskészletekhez explicit módon kell kezelnie.
@@ -27,7 +27,7 @@ Azure SQL Database-ben tároló terület legtöbb metrika megjelenik az Azure po
 - T-SQL: [sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)
 - T-SQL: [sys.elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)
 
-Nincsenek munkaterhelési mintákat, ahol a mögöttes adatok fájlok adatbázisok lefoglalt nagyobb, mint a használt adatok oldalak mennyisége válhat.  Ez akkor fordulhat elő, amikor növekszik lefoglalt terület és adatok törlődnek.  Ez azért, mert lefoglalt terület fájl van nem igényli automatikusan vissza adatok törlésekor.  Ilyen esetekben egy adatbázis vagy készlet számára lefoglalt terület előfordulhat, hogy meghaladja a támogatott határértékeket megakadályozzák az adatmennyiség növekedése vagy a teljesítmény szint módosításának megakadályozása, és szükséges a megoldásához adatok fájlok zsugorítása folyamatban.
+Nincsenek munkaterhelési mintákat, ahol a mögöttes adatok fájlok adatbázisok lefoglalt nagyobb, mint a használt adatok oldalak mennyisége válhat.  Ez akkor fordulhat elő, amikor növekszik lefoglalt terület és adatok törlődnek.  Ez azért, mert lefoglalt terület fájl van nem igényli automatikusan vissza adatok törlésekor.  Ilyen esetekben egy adatbázis vagy készlet számára lefoglalt terület előfordulhat, hogy meghaladja a támogatott határértékeket megakadályozzák az adatmennyiség növekedése vagy megakadályozzák a szolgáltatási rétegben és számítási változásokat, és szükséges a megoldásához adatok fájlok zsugorítása folyamatban.
 
 Az SQL Database szolgáltatás automatikusan nem csökkentheti az adatfájlokat az adatbázis teljesítményét a lehetséges hatás miatt nem használt lefoglalt terület felszabadítását.  Azonban ügyfelek előfordulhat, hogy adatokat fájlok zsugorítása keresztül önkiszolgáló ismertetett lépéseket követve hozhatna egyszerre [visszaigénylési fel nem használt lefoglalt terület](#reclaim-unused-allocated-space). 
 

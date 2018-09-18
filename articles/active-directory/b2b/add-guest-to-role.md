@@ -4,18 +4,18 @@ description: Vendégfelhasználó hozzáadása szerepkörhöz az Azure Active Di
 services: active-directory
 ms.service: active-directory
 ms.component: B2B
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/08/2018
 ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 47615309d71ac6bf4352e30284f23fbbfdd6d4be
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: a7198683a643d643a76aefee22a3ad08e27c7fc9
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35644667"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45984043"
 ---
 # <a name="grant-permissions-to-users-from-partner-organizations-in-your-azure-active-directory-tenant"></a>Felhasználói engedélyek kiosztása az erőforráspartner-szervezeteknél az Azure Active Directory-bérlőben
 
@@ -23,7 +23,7 @@ Az Azure Active Directory (Azure AD) B2B együttműködési felhasználókat ad�
 
 ## <a name="default-role"></a>Alapértelmezett szerepkör
 
-![alapértelmezett szerepkör](./media/add-guest-to-role/default-role.png)
+![Alapértelmezett szerepkör](./media/add-guest-to-role/default-role.png)
 
 ## <a name="global-administrator-role"></a>Globális rendszergazdai szerepkör
 

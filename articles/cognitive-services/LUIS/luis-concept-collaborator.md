@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: ac1c3b4ac49cd8934316eb5653af8f5af2cf801a
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 5573bd36761fb56f0731f886bd705327625f06fe
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45630154"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45734505"
 ---
 # <a name="collaborating"></a>Együttműködés
 
@@ -34,7 +34,7 @@ A fiók, amely létrehoz egy alkalmazást a tulajdonosa. Minden alkalmazás rend
 ## <a name="authorization-roles"></a>Engedély szerepkörök
 A LUIS tulajdonosok és a egy kivétellel közreműködők nem támogatja a különböző szerepköröket. Az egyetlen fiók, amely törölheti az alkalmazás tulajdonosa.
 
-Ha érdekli a modellhez való hozzáférés szabályozása, fontolja meg, a modell szeletelés LUIS kisebb-alkalmazásokba, ahol minden egyes kisebb alkalmazás közreműködők korlátozott készletével rendelkezik. Használat [Dispatch](https://github.com/Microsoft/botbuilder-tools/tree/master/Dispatch) , hogy egy szülő LUIS-alkalmazás kezelése a szülő és gyermek alkalmazások működésének összehangolását.
+Ha érdekli a modellhez való hozzáférés szabályozása, fontolja meg, a modell szeletelés LUIS kisebb-alkalmazásokba, ahol minden egyes kisebb alkalmazás közreműködők korlátozott készletével rendelkezik. Használat [Dispatch](https://aka.ms/dispatch-tool) , hogy egy szülő LUIS-alkalmazás kezelése a szülő és gyermek alkalmazások működésének összehangolását.
 
 ## <a name="transfer-ownership"></a>Tulajdonjogok átadása
 A LUIS tulajdon-átruházás, nem biztosít, azonban bármely közreműködő alkalmazást, és ezután importálja azt az alkalmazás létrehozása. Vegye figyelembe, hogy az új alkalmazás rendelkezik egy másik alkalmazás. Az alkalmazás új betanított, közzé kell, és a használt új végpont.

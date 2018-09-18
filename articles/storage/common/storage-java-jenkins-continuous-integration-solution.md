@@ -8,12 +8,12 @@ services: devops
 custom: jenkins
 ms.date: 07/31/2018
 ms.component: common
-ms.openlocfilehash: 549150abc630cd247927b4ba7042d0bdf0e8b88a
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: b7ac5c277b45ae5c005a284d5c38e55099c11e33
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39524389"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45735562"
 ---
 # <a name="using-azure-storage-with-a-jenkins-continuous-integration-solution"></a>Az Azure Storage használata Jenkins folyamatos integrációs megoldással
 
@@ -48,7 +48,7 @@ A Blob service használata az Agilis fejlesztési build-összetevők futtatásá
      
       Bár egy tipikus a Jenkins CI-megoldások volna úgy, hogy a szolgáltatás, a Jenkins war futtatása a parancssorból futtassa a jelen oktatóanyag elegendő lesz.
 * Egy Azure-fiók. Iratkozzon fel a következő Azure-fiókot <http://www.azure.com>.
-* Egy Azure-tárfiók. Ha a tárfiók már nem rendelkezik, létrehozhat egyet a következő lépések használatával [hozzon létre egy Tárfiókot](../common/storage-create-storage-account.md#create-a-storage-account).
+* Egy Azure-tárfiók. Ha a tárfiók már nem rendelkezik, létrehozhat egyet a következő lépések használatával [hozzon létre egy Tárfiókot](../common/storage-quickstart-create-account.md).
 * A Jenkins CI megoldás ismeretét ajánlott, de nem szükséges, az alábbi tartalommal fogja használni egy alapszintű példa mutatni, ha a Blob szolgáltatás használ a Jenkins CI vagy a szükséges lépéseket build-összetevőket.
 
 ## <a name="how-to-use-the-blob-service-with-jenkins-ci"></a>A Blob service használata a Jenkins CI

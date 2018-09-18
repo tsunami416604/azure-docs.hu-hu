@@ -2,24 +2,21 @@
 title: Az európai ügyfelekhez tartozó identitásadatok Azure AD általi tárolásának helye | Microsoft Docs
 description: Megtudhatja, hogy hol tárolja a Microsoft Azure Active Directory az európai ügyfeleihez tartozó, identitással kapcsolatos adatokat.
 services: active-directory
-documentationcenter: ''
 author: eross-msft
 manager: mtillman
 ms.author: lizross
 ms.service: active-directory
 ms.component: fundamentals
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 05/17/2018
 ms.custom: it-pro
-ms.openlocfilehash: 0baa499f56fa6c074ac1c0f604e74f9e7adb5502
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
-ms.translationtype: HT
+ms.openlocfilehash: d0015f40714b639d15245827ae0da3ca0f132df4
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42023240"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45733397"
 ---
 # <a name="where-does-microsoft-azure-active-directory-azure-ad-store-identity-data-for-european-customers"></a>Az európai ügyfelekhez tartozó identitásadatok Microsoft Azure Active Directory (Azure AD) általi tárolásának helye
 Az Azure AD segítséget nyújt a felhasználói identitások kezelésében és a szervezete erőforrásait biztonságossá tevő intelligenciaalapú hozzáférési szabályzatok létrehozásában. Az identitásadatok tárolásának helye a szervezete által a szolgáltatásra történő előfizetéskor megadott cím alapján lesz meghatározva. Azaz amikor például az Office 365-re vagy az Azure-ra előfizetett. Ha pontosan szeretné meghatározni az identitásadatok helyét, tekintse meg a Microsoft biztonsági és adatkezelési központ [az adatok tárolási helyével](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) foglalkozó szakaszát.
@@ -76,7 +73,6 @@ Az európai székhellyel rendelkező szervezetekhez tartozó legtöbb, Azure AD-
 
 ## <a name="next-steps"></a>További lépések
 A fent ismertetett szolgáltatásokkal és funkciókkal kapcsolatban az alábbi cikkekben találhat további információt.
-- [Ismerkedés az Azure Active Directoryval](get-started-azure-ad.md)
 - [Mi az a többtényezős hitelesítés?](https://docs.microsoft.com/azure/active-directory/authentication/multi-factor-authentication)
 - [Azure AD önkiszolgáló jelszómódosítás](https://docs.microsoft.com/azure/active-directory/authentication/active-directory-passwords-overview)
 - [Mi az az Azure Active Directory B2C?](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview)

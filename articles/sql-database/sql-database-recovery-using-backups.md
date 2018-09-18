@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
 ms.topic: conceptual
-ms.date: 06/20/2018
+ms.date: 09/14/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 75805cad43f015f1741193ec5a1ead1fa7603f41
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: bcb533fbaa788498734776147c9bd053d35bef60
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42056407"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45733579"
 ---
 # <a name="recover-an-azure-sql-database-using-automated-database-backups"></a>Automatikus biztonsági adatbázismentés használatával Azure SQL-adatbázis helyreállítása
 Az SQL Database adatbázis helyreállítási használja ezeket a lehetőségeket biztosít [adatbázisok biztonsági mentése automatikus](sql-database-automated-backups.md) és [biztonsági másolatok hosszú távú megőrzés alatt](sql-database-long-term-retention.md). Visszaállíthatja az adatbázis biztonsági másolatát:
@@ -32,7 +32,7 @@ A visszaállított adatbázis egy extra tárterület költséget, az alábbi fel
 - Állítsa vissza a P11 – p15 szintű, S4-S12, P1 – P6, vagy ha az adatbázis maximális mérete 500 GB-nál nagyobb.
 - Állítsa vissza az S4-S12, P1 – P6 szintű, ha az adatbázis maximális mérete 250 GB-nál nagyobb.
 
-A felesleges költségek azért, mert a visszaállított adatbázis maximális mérete nagyobb, mint a tárhely, a teljesítményszint számára, és extra tárterületek árából, a bennefoglalt összegen felül külön kell fizetnie.  Extra tárterület díjszabásáról, tekintse meg a [SQL Database díjszabási oldalát](https://azure.microsoft.com/pricing/details/sql-database/).  Ha a felhasznált lemezterület tényleges mennyisége kisebb, mint a foglalt tárhely, majd ezzel többletköltség elkerülhető azzal, hogy csökkenti az adatbázis maximális méretét a csomagban foglalt adatmennyiségen.  
+A felesleges költségek azért, mert a visszaállított adatbázis maximális mérete nagyobb, mint a számítási méret foglalt tárhely, és extra tárterületek árából, a bennefoglalt összegen felül külön kell fizetnie.  Extra tárterület díjszabásáról, tekintse meg a [SQL Database díjszabási oldalát](https://azure.microsoft.com/pricing/details/sql-database/).  Ha a felhasznált lemezterület tényleges mennyisége kisebb, mint a foglalt tárhely, majd ezzel többletköltség elkerülhető azzal, hogy csökkenti az adatbázis maximális méretét a csomagban foglalt adatmennyiségen.  
 
 > [!NOTE]
 > [Adatbázisok biztonsági mentése automatikus](sql-database-automated-backups.md) használatosak, amikor létrehoz egy [adatbázis másolása](sql-database-copy.md). 
@@ -43,7 +43,7 @@ A felesleges költségek azért, mert a visszaállított adatbázis maximális m
 Az automatikus biztonsági adatbázismentés használatával adatbázis visszaállítása a helyreállítási idő több tényezőtől hatással van: 
 
 * Az adatbázis mérete
-* Az adatbázis teljesítményi szintje
+* Az adatbázis számítási mérete
 * Érintett tranzakciós naplók száma
 * A tevékenység, amelyet a helyreállítást a visszaállítási pont megismétlését mennyisége
 * A hálózati sávszélességet, ha a visszaállítást egy másik régióba 
@@ -72,11 +72,11 @@ Visszaállíthatja egy meglévő adatbázist egy korábbi időpontra az Azure Po
 > Egy PowerShell-példaszkript egy adatbázis-időponthoz visszaállításhoz bemutató, lásd: [PowerShell-lel SQL-adatbázis visszaállítása](scripts/sql-database-restore-database-powershell.md).
 >
 
-Az adatbázis bármilyen szolgáltatás vagy teljesítményszintjének szintre, és önálló adatbázisként vagy rugalmas készletbe állíthatók vissza. Győződjön meg arról, hogy a szükséges erőforrások ténylegesen az a logikai kiszolgálón vagy a rugalmas készlet, amely az adatbázis visszaállítást végzi. Ha elkészült, a visszaállított adatbázis egy normál, teljes mértékben elérhető, online adatbázis. A visszaállított adatbázis díját a normál díját a szolgáltatási csomagot és teljesítményszintet szint alapján számoljuk el. Nem terheli az adatbázis-visszaállítás befejezéséig.
+Az adatbázis minden szolgáltatási szint vagy a számítási méret, és önálló adatbázisként vagy rugalmas készletbe állíthatók vissza. Győződjön meg arról, hogy a szükséges erőforrások ténylegesen az a logikai kiszolgálón vagy a rugalmas készlet, amely az adatbázis visszaállítást végzi. Ha elkészült, a visszaállított adatbázis egy normál, teljes mértékben elérhető, online adatbázis. A visszaállított adatbázis díját a normál díját a szolgáltatási szint és a számítási méret alapján számoljuk el. Nem terheli az adatbázis-visszaállítás befejezéséig.
 
 Általában állítsa vissza egy adatbázis egy korábbi időpontra, helyreállítási célból. Ebben, való kezelése a visszaállított adatbázis az eredeti adatbázis helyett, vagy adatokat beolvasni, és frissítse az eredeti adatbázist. 
 
-* ***Adatbázis-csere:*** célja, hogy a visszaállított adatbázis az eredeti adatbázis helyett, ha ellenőriznie kell, a teljesítményszint és/vagy a szolgáltatási rétegben megfelelőek, és szükség esetén az adatbázis méretezhető. Nevezze át az eredeti adatbázist, és adjon a visszaállított adatbázis az eredeti nevét használja a [ALTER DATABASE](/sql/t-sql/statements/alter-database-azure-sql-database) a T-SQL paranccsal. 
+* ***Adatbázis-csere:*** célja, hogy a visszaállított adatbázis az eredeti adatbázis helyett, ha ellenőriznie kell, a számítási méret és/vagy a szolgáltatási rétegben megfelelőek, és szükség esetén az adatbázis méretezhető. Nevezze át az eredeti adatbázist, és adjon a visszaállított adatbázis az eredeti nevét használja a [ALTER DATABASE](/sql/t-sql/statements/alter-database-azure-sql-database) a T-SQL paranccsal. 
 * ***Adat-helyreállítás:*** szeretne adatokat lekérni a visszaállított adatbázis helyreállítása egy felhasználónak vagy alkalmazásnak hiba, ha szeretné-e írási és végrehajtási adatok kinyeréséhez a visszaállított adatbázisból az eredeti adatbázist a szükséges adatok helyreállítási szkripteket. Bár a visszaállítási művelet elvégzéséhez hosszú időt is igénybe vehet, az adatbázis visszaállítása közben a visszaállítási folyamat során az adatbázisok listája látható. Ha törli az adatbázist a visszaállítás során, a visszaállítási művelet meg lett szakítva, és nem terheli az adatbázis, amely a visszaállítás nem fejeződött be. 
 
 ### <a name="azure-portal"></a>Azure Portal
@@ -146,7 +146,7 @@ Korábban már említettük, az Azure Portalon kívül, mint az adatbázis helyr
 |  | |
 
 ## <a name="summary"></a>Összegzés
-Automatikus biztonsági mentést a felhasználói és az alkalmazáshibák, véletlen törlése és a hosszabb kimaradások az adatbázisok védelmét. A beépített kapacitásprofilokban minden szolgáltatásszintek és teljesítményszintek érhető el. 
+Automatikus biztonsági mentést a felhasználói és az alkalmazáshibák, véletlen törlése és a hosszabb kimaradások az adatbázisok védelmét. A beépített kapacitásprofilokban szolgáltatási szintek és a számítási méret érhető el. 
 
 ## <a name="next-steps"></a>További lépések
 * Egy üzleti folytonosság – áttekintés és forgatókönyvek: [üzleti folytonosság – áttekintés](sql-database-business-continuity.md).

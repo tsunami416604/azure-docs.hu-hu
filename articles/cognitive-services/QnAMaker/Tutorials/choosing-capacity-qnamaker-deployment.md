@@ -1,28 +1,28 @@
 ---
-title: A QnA Maker üzembe helyezés – a Microsoft Cognitive Services kapacitásának kiválasztása |} A Microsoft Docs
-titleSuffix: Azure
+title: Üzembe helyezés – QnA Maker erőforrás-kapacitást
+titleSuffix: Azure Cognitive Services
 description: egy útmutató, amellyel a QnA Maker telepítés kapacitás kiválasztása
 services: cognitive-services
 author: nstulasi
-manager: sangitap
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: QnAMaker
+ms.component: qna-maker
 ms.topic: article
-ms.date: 05/07/2018
-ms.author: saneppal
-ms.openlocfilehash: 71af374fbd08fe1f7568bc1ece2a65af2de3ad19
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.date: 09/12/2018
+ms.author: nstulasi
+ms.openlocfilehash: e2c9239ccd42e2464c85172be0e91492bd8f6718
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45573366"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45736784"
 ---
 # <a name="choosing-capacity-for-your-qna-maker-deployment"></a>A QnA Maker telepítés kapacitás kiválasztása
 
 A QnA Maker szolgáltatást függőséget vesz fel három Azure-erőforrások:
 1.  App Service (a a modul)
 2.  Az Azure Search (a QnA-tudásbázisok tárolása)
-3.  Az App Insights (nem kötelező, chatlogs és a telemetriai adatok tárolása)
+3.  Az App Insights (nem kötelező, csevegési naplók és a telemetriai adatok tárolása)
 
 A QnA Maker szolgáltatást hoz létre, mielőtt, meg kell határoznia, melyik szint a fenti szolgáltatások az Ön számára megfelelő. 
 
@@ -38,7 +38,7 @@ Az alábbi táblázat néhány általános útmutatást biztosít.
 |                        | A QnA Maker kezelése | App Service | Azure Search | Korlátozások                      |
 | ---------------------- | -------------------- | ----------- | ------------ | -------------------------------- |
 | Kísérletezés        | Ingyenes Termékváltozat             | Ingyenes szint   | Ingyenes szint    | Legfeljebb 2 Tudásbázis, 50 MB-os méret közzététele  |
-| Fejlesztési-tesztelési környezet   | Standard termékváltozat         | Közös      | Alapszintű        | Tudásbázis akár 4, 2GB méretű közzététele    |
+| Fejlesztési-tesztelési környezet   | Standard termékváltozat         | Közös      | Alapszintű        | Tudásbázis akár 4, 2 GB méretű közzététele    |
 | Éles környezetben | Standard termékváltozat         | Alapszintű       | Standard     | Akár 49 Tudásbázis, 25 GB méretű közzététele |
 
 A QnA Maker stack frissítése, lásd: [frissítse a QnA Maker szolgáltatást](../How-To/upgrade-qnamaker-service.md).

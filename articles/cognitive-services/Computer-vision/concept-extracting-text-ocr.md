@@ -1,23 +1,23 @@
 ---
-title: Szöveg OCR-rel kibontása
-titleSuffix: Computer Vision - Cognitive Services - Azure
-description: Szöveg kibontása a Computer Vision segítségével az Azure Cognitive Servicesben optikai karakterfelismerés kapcsolatos fogalmakat.
+title: SMS-t OCR - Computer Vision kibontása
+titleSuffix: Azure Cognitive Services
+description: SMS-t használ a Computer Vision API optikai karakterfelismerés (OCR) kibontása kapcsolatos fogalmakat.
 services: cognitive-services
 author: deken
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: v-deken
-ms.openlocfilehash: 07efe49c53b13094f3f67db3b3becb57a7c473d8
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: af88063a68cef4953da8357596ce64e4510e8d36
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44725425"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45985455"
 ---
-# <a name="extracting-text-with-ocr"></a>Szöveg OCR-rel kibontása
+# <a name="extracting-text-with-ocr"></a>Szöveg kinyerése OCR-rel
 
 Optikai karakterfelismerés (OCR) technológia a Computer Vision szöveges tartalom észleli a képet, és az azonosított szöveg kibontása karaktersorozattá. Az eredmény a Keresés és számos más orvosi, biztonságot és banki is használhatja. A szöveg nyelvét automatikusan felismeri. Az optikai Karakterfelismeréssel időt takaríthat meg, és kényelmes: a felhasználók által, ezáltal a szöveg átírás helyett fényképet készítsenek.
 

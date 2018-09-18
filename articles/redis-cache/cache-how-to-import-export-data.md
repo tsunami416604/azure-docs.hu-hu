@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/31/2017
 ms.author: wesmc
-ms.openlocfilehash: 6733891213f15e9ceaf08ef7fb50380db47a695f
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: b48235b1c1912ac767070d5890d4768138a9db8b
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39259194"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45732091"
 ---
 # <a name="import-and-export-data-in-azure-redis-cache"></a>Adatok importálása és exportálása az Azure Redis Cache-ben
 Importálás/exportálás szolgáltatás egy Azure Redis Cache-adatok felügyeleti művelet, amely lehetővé teszi, hogy az adatok importálása az Azure Redis Cache-be vagy exportál adatokat az Azure Redis Cache képes importálni, és a egy prémium szintű gyorsítótár egy Redis Cache-adatbázis (RDB) pillanatkép exportálása egy blobot az Azure-ban Storage-fiók. 
@@ -78,7 +78,7 @@ Exportálás lehetővé teszi, hogy exportálja az Azure Redis Cache redis-kompa
 2. Kattintson a **válassza ki a tároló** , és válassza ki a kívánt tárfiókot. A tárfiók a gyorsítótár azonos előfizetésben és régióban kell lennie.
 
    > [!IMPORTANT]
-   > Exportálja a lapblobokat, melyek a klasszikus és Resource Manager-tárfiókokra is támogatottak, de nem támogatja a együttműködik [Blob storage-fiókok](../storage/common/storage-account-options.md#blob-storage-accounts) jelenleg.
+   > Exportálja a lapblobokat, melyek a klasszikus és Resource Manager-tárfiókokra is támogatottak, de a Blob storage-fiókok által jelenleg nem támogatott együttműködik. További információkért lásd: [az Azure storage-fiók áttekintése](../storage/common/storage-account-overview.md).
    >
    >
 
@@ -156,7 +156,7 @@ Ha, ha továbbra is a **adatimportálás** vagy **adatok exportálása** panelj�
 A probléma megoldásához, kezdeményezni az importálási vagy exportálási művelet előtt 15 perccel eltelt.
 
 ### <a name="i-got-an-error-when-exporting-my-data-to-azure-blob-storage-what-happened"></a>Az Azure Blob Storage-adatok exportálásakor hibaüzenetet kapok. Mi történt?
-Exportálás csak lapblobként tárolt RDB-fájlok működik. Más blobtípusok jelenleg nem támogatottak, beleértve a blob storage-fiókok a gyakori és ritka elérésű szint használata mellett. További információkért lásd: [Blob storage-fiókok](../storage/common/storage-account-options.md#blob-storage-accounts).
+Exportálás csak lapblobként tárolt RDB-fájlok működik. Más blobtípusok jelenleg nem támogatottak, beleértve a Blob storage-fiókok a gyakori és ritka elérésű szint használata mellett. További információkért lásd: [az Azure storage-fiók áttekintése](../storage/common/storage-account-overview.md).
 
 ## <a name="next-steps"></a>További lépések
 Ismerje meg, hogyan használja a további prémiumszintű gyorsítótár funkcióival.

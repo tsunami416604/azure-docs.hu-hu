@@ -11,12 +11,12 @@ ms.custom: managed instance
 ms.topic: conceptual
 ms.date: 07/24/2018
 ms.author: bonova
-ms.openlocfilehash: 276d36562aece7101465752528f59008e1ee7607
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: cf3f7e131b177634318a6114b4f1efefcb9a9cec
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44050323"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45985660"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>Az SQL Server-példány migrálása az Azure SQL Database felügyelt példánya
 
@@ -39,7 +39,7 @@ Magas szintű az adatbázis-áttelepítési folyamat hasonlóan néz ki:
 
 Először határozza meg, hogy-e az adatbázis-követelmények az alkalmazás kompatibilis felügyelt példány. Adja meg az egyszerű átemeléses migrálásra, a legtöbb a helyszíni SQL Servert használó meglévő alkalmazások vagy a virtuális gépek felügyelt példány szolgál. Azonban néha funkciók vagy képességeket, amelyek még nem támogatottak és a egy megkerülő megoldás megvalósítása túl magas. 
 
-Használat [Data Migration Assistant (DMA)](https://docs.microsoft.com/sql/dma/dma-overview) észleli a potenciális kompatibilitási problémák az Azure SQL Database érintő funkció. DMA még nem támogatja a felügyelt példány áttelepítési céljaként, de javasoljuk, hogy az értékelés futtatása az Azure SQL-adatbázison, és gondosan tekintse át a listában, jelentett funkció és kompatibilitási hibáit, szemben a termék dokumentációját. Tekintse meg a [Azure SQL Database egyedülálló és a felügyelt példány közötti különbségek](sql-database-features.md) ellenőrzéséhez bizonyos jelentett blokkoló problémák, amelyeket nem a felügyelt példány blockers, mert a blokkolás a legtöbb problémák való áttelepítés megakadályozza Az Azure SQL Database felügyelt példány használatával el lettek távolítva. Példány, szolgáltatások, mint az adatbázisközi lekérdezések, adatbázisközi tranzakciók belül ugyanazon, más SQL forrásokból, CLR, globális ideiglenes táblák, csatolt kiszolgáló példány szintű nézetek, a Service Broker és a hasonló érhetők el a felügyelt példányok. 
+Használat [Data Migration Assistant (DMA)](https://docs.microsoft.com/sql/dma/dma-overview) észleli a potenciális kompatibilitási problémák az Azure SQL Database érintő funkció. DMA még nem támogatja a felügyelt példány áttelepítési céljaként, de javasoljuk, hogy az értékelés futtatása az Azure SQL-adatbázison, és gondosan tekintse át a listában, jelentett funkció és kompatibilitási hibáit, szemben a termék dokumentációját. Lásd: [Azure SQL Database szolgáltatások](sql-database-features.md) ellenőrzéséhez bizonyos jelentett blokkoló problémák, hogy nem blockers a felügyelt példány, mert a blokkolás a legtöbb problémák az Azure SQL Database-áttelepítés megakadályozza, hogy el lettek távolítva a felügyelt A példány. Példány, szolgáltatások, mint az adatbázisközi lekérdezések, adatbázisközi tranzakciók belül ugyanazon, más SQL forrásokból, CLR, globális ideiglenes táblák, csatolt kiszolgáló példány szintű nézetek, a Service Broker és a hasonló érhetők el a felügyelt példányok. 
 
 Ha egy jelentett problémák elhárítását, amelyek a rendszer nem távolítja el az Azure SQL felügyelt példánya, szüksége lehet fontolja meg egy másik lehetőség, mint például [az Azure-beli virtuális gépeken futó SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/). Néhány példa:
 

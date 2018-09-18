@@ -1,11 +1,31 @@
-Az Azure Storage használatáért a tárfiók alapján kell fizetni. A tárolási költségeket az alábbi tényezők határozzák meg: a régió/hely, a fiók típusa, a tárolási kapacitás, a replikálási séma, a tárolási tranzakciók és a kimenő adatforgalom.
+---
+title: fájl belefoglalása
+description: fájl belefoglalása
+services: storage
+author: tamram
+ms.service: storage
+ms.topic: include
+ms.date: 09/11/2018
+ms.author: tamram
+ms.custom: include file
+ms.openlocfilehash: f47146cef5a81476e76ee5bde3990fac1323148c
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45740802"
+---
+Azure Storage, a storage-fiók használat alapján számlázzuk ki. A tárfiókban lévő összes objektum számlázása együtt, csoportosan történik. 
 
-* A régió alatt az a földrajzi régió értendő, amelyben a fiókja található.
-* A fiók típusa arra utal, hogy általános célú tárfiókot vagy Blob Storage-fiókot használ-e. Blob Storage-fiók esetén a hozzáférési szint határozza meg a fiók számlázási modelljét is.
-* A tárolási kapacitás azt jelzi, hogy tárfiókja mekkora részét használja adatok tárolására.
-* A replikálás határozza meg, hogy adatait egyszerre hány példányban és hol tárolja.
-* A tranzakciók az összes olvasási és írási műveletet jelentik az Azure Storage szolgáltatásban.
-* A kimenő adatforgalom az adott Azure-régiókból kifelé irányuló adatátvitelt jelenti. Amikor a tárfiókban lévő adatokat egy olyan alkalmazás használja, amely nem ugyanabban a régióban fut, a kimenő adatforgalom díjköteles. (Az Azure szolgáltatások esetében adatait és szolgáltatásait azonos adatközpontba csoportosítva csökkentheti vagy elkerülheti a kimenő adatforgalom díját.)
+Tárolási költségek kiszámítása a következő tényezőktől: régió/hely, fióktípust, hozzáférési szint, tárolókapacitás, replikálási séma, tárolási tranzakciók és kimenő adatforgalom.
+
+* **Régió** a földrajzi régióban, amelyben a fiók alapján hivatkozik.
+* **Fiók típusa** használja a tárfiók típusára utal. 
+* **Hozzáférési szint** hivatkozik az általános célú v2 és Blob storage-fiók a megadott adatok használati módja.
+* Tárolási **kapacitás** vonatkozik, hogy tárfiókja mekkora mennyi áll használata az adatok tárolására.
+* **Replikációs** határozza meg, hány példányban az adatok egy időben, és hol tárolja.
+* **Tranzakciók** tekintse meg az összes olvasási és írási műveletek az Azure Storage.
+* **Kimenő adatforgalom** bármilyen egy Azure-régión kívül átvitt adatok értendők. Amikor a tárfiókban lévő adatokat egy olyan alkalmazás használja, amely nem ugyanabban a régióban fut, a kimenő adatforgalom díjköteles. További információ az erőforráscsoportok segítségével adatait és szolgáltatások korlátozhatja a kimenő forgalom költségeit ugyanabban a régióban: [Mi az Azure-erőforráscsoport?](https://docs.microsoft.com/azure/architecture/cloud-adoption/getting-started/azure-resource-access#what-is-an-azure-resource-group). 
 
 Az [Azure Storage szolgáltatás díjszabása](https://azure.microsoft.com/pricing/details/storage/) lap részletes információkat biztosít a fióktípussal, a tárolási kapacitással, a replikálással és a tranzakciókkal kapcsolatban. Az [Adatforgalmi díjszabás](https://azure.microsoft.com/pricing/details/data-transfers/) tartalmazza a kimenő adatforgalommal kapcsolatos részletes díjszabási információkat. Az [Azure Storage-díjkalkulátor](https://azure.microsoft.com/pricing/calculator/?scenario=data-management) használatával megbecsülheti költségeit.
 

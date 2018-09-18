@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: reference
 ms.topic: conceptual
-ms.date: 04/01/2018
+ms.date: 09/14/2018
 ms.author: carlrab
-ms.openlocfilehash: ee06039242afe5b5e92cf2fecc4c3fa9bff0b78b
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 10720f42f7a9b10b42ccaaaad81acca369592f6a
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39214369"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45731210"
 ---
 # <a name="daxkocsi-used-azure-to-accelerate-its-development-cycle-and-to-enhance-its-customer-services-and-performance"></a>Daxko/CSI használt Azure lerövidítsék a szoftverfejlesztési ciklusokat, és az ügyfélszolgálat és a teljesítmény javítása érdekében
 ![Daxko/CSI-embléma](./media/sql-database-implementation-daxko/csidaxkologo25.png)
@@ -59,7 +59,7 @@ Még ma mintegy 99 % CSI-szoftvert használó ügyfelek üzemel az Azure-ban (US
 ## <a name="azure-elastic-pools-free-up-it-resources"></a>Az Azure rugalmas készletek informatikai erőforrásokat szabadíthat fel
 Az Azure számos funkciót segítették CSI-szoftver shift infrastruktúrájának és műveleteinek a fókuszban lévő funkció és a fókuszban lévő fejlesztés alatt áll. A legnagyobb előny talán az a rugalmas készletek lett.
 
-CSI-szoftver készül 550 adatbázisok jelenleg ügyfeleknek kínál. Rugalmas készletek, mielőtt belül egy szint struktúra, amely számos adatbázis kezelése bonyolult volt. Az OPS-kezelők kellett hozzárendelése teljesítményszintek az ügyfelek, amely jelentős IT-erőforrás többletterhelést szükséges adatlöketek igényeinek megfelelően. A rugalmas készletekkel kezelők is rendelje hozzá a bérlők egy prémium vagy standard készlet megfelelő, majd mozgassa mérete alapján ügyfelek és kell. Ügyfelek korábban úgy tűnt a rugalmas készletek hatásait szinte azonnal; rugalmas készletek, mielőtt ügyfelek időtúllépések és más jellegű problémákat adatlöketek kihasználtságú időszakokban rendelkezett, de rugalmas készletek ügyfelek tapasztalhatnak kapacitásnál igény szerint, és továbbra is problémamentesen SpectrumNG használandó.
+CSI-szoftver készül 550 adatbázisok jelenleg ügyfeleknek kínál. Rugalmas készletek, mielőtt belül egy szint struktúra, amely számos adatbázis kezelése bonyolult volt. Az OPS-kezelők kellett rendelje hozzá a szolgáltatási szintek és a számítási méret az ügyfelek, amely jelentős IT-erőforrás többletterhelést szükséges adatlöketek igényeinek megfelelően. A rugalmas készletekkel kezelők is rendelje hozzá a bérlők egy prémium vagy standard készlet megfelelő, majd mozgassa mérete alapján ügyfelek és kell. Ügyfelek korábban úgy tűnt a rugalmas készletek hatásait szinte azonnal; rugalmas készletek, mielőtt ügyfelek időtúllépések és más jellegű problémákat adatlöketek kihasználtságú időszakokban rendelkezett, de rugalmas készletek ügyfelek tapasztalhatnak kapacitásnál igény szerint, és továbbra is problémamentesen SpectrumNG használandó.
 
 ## <a name="azure-active-geo-replication-accelerates-reporting"></a>Az Azure aktív georeplikáció gyorsítja reporting
 Ügyfél CSI-szoftverek vannak is kihasználhatja az Azure aktív georeplikációt. Az aktív georeplikáció legfeljebb négy olvasható másodlagos adatbázis konfigurálható az azonos vagy eltérő adatközpont-régiókban. CSI-szoftvert használnak az aktív georeplikáció kétféleképpen: először a másodlagos adatbázisok érhetők el egy adatközpont-meghibásodás után vagy a nem lehet kapcsolódni a az elsődleges adatbázis; és a második, a másodlagos adatbázisok olvashatók legyenek, és csak olvasható munkaterhelésekkel, például jelentéskészítéssel feladatok kiszervezése használható. Néhány CSI-szoftvert használó ügyfelek ezen juttatás használatával gyorsítsa fel a jelentési munkafolyamatok.

@@ -1,74 +1,74 @@
 ---
-title: Az Azure Resource Manager kérelmekre vonatkozó korlátokat |} Microsoft Docs
-description: Ismerteti, hogyan használható az Azure Resource Manager által szabályozás, amikor a rendszer elérte az előfizetési korlátozásait.
+title: Az Azure Resource Manager-kérelmekre vonatkozó korlátok |} A Microsoft Docs
+description: Ismerteti, hogyan használható az Azure Resource Manager által szabályozás előfizetési korlátok elérésekor.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
-manager: timlt
-editor: tysonn
 ms.assetid: e1047233-b8e4-4232-8919-3268d93a3824
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/10/2018
+ms.date: 09/17/2018
 ms.author: tomfitz
-ms.openlocfilehash: f3dcb0c5036b2cfc38ef2a6a16269a8697bbd9e6
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: fdc98c6d88b18f770d1869acbea5998ad4571287
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34358863"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45981813"
 ---
-# <a name="throttling-resource-manager-requests"></a>Erőforrás-kezelő szabályozás
-Minden egyes előfizetésekhez és bérlői erőforrás-kezelő korlátok óránként 15 000 kérelmek és olvasási kérések 1200 óránként. Ezek a korlátozások vonatkoznak az Azure Resource Manager feltünteti. Több példánya van minden Azure-régiót, és az Azure Resource Manager a rendszer minden Azure-régió.  Így a, a gyakorlatban korlátok hatékonyan sokkal nagyobb, mint a működés felső korlátjának, felhasználóként kérelmek általában által kiszolgált számos különböző példányai.
+# <a name="throttling-resource-manager-requests"></a>Resource Manager-kérelmek szabályozása
+Minden Azure-előfizetés és bérlő erőforrás-kezelő lehetővé teszi, hogy legfeljebb 12 000 olvasási kérelmek száma óránként és 1200 írási kérelmek száma óránként. Ezek a korlátok a kérelmet benyújtó résztvevő-Azonosítót és az előfizetés-azonosító hatóköre, vagy a bérlői azonosító. Ha a kérések érkeznek, az egynél több résztvevő-azonosító, a korlátot, az előfizetés vagy a bérlő között nagyobb, mint 12 000 és 1200 óránként.
 
-Ha az alkalmazás vagy a parancsfájl eléri a működés felső korlátjának, amelyekkel korlátozhatja a kérelmeket szüksége. Ez a cikk bemutatja, hogyan határozza meg a fennmaradó kérelmek korlát elérése előtt, és hogyan válaszol, amikor elérte a maximális.
+Az előfizetés vagy a bérlő kérelmek lépnek. Feliratkozási kérelmeket azok az előfizetés átadása a involve ID, például az erőforráscsoportok az előfizetésében beolvasása. Bérlő kérelmek nem tartalmaznak, például lekér érvényes Azure-helyen az előfizetés-Azonosítóját.
 
-Amikor eléri a határértéket, kapja-e a HTTP-állapotkód: **429-es jelű túl sok kérelem**.
+Ezek a korlátok vonatkoznak minden Azure Resource Manager-példány. Több példány minden Azure-régióban, és Azure Resource Manager az összes Azure-régióban üzemel.  Így a gyakorlatban korlátai hatékonyan sokkal nagyobb ezeket a korlátokat, felhasználói kérések általában által kiszolgált számos különböző példányait.
 
-A kérelmek száma az előfizetés vagy a bérlő hatókörét. Ha több, egyidejű alkalmazások kérelmet benyújtó az előfizetésében szereplő azon alkalmazások kérelmeinek felvétele fennmaradó kérések száma meghatározása érdekében.
+Ha az alkalmazást vagy parancsfájlt eléri az ezeket a korlátokat, akkor a kérelmek szabályozása. Ez a cikk bemutatja, miként állapítható meg, a fennmaradó kérelmek korlátjának elérése előtt, és hogyan reagáljon, amikor elérte a határértéket.
 
-Hatókörű előfizetési kérelmek azok a involve átadja az előfizetés azonosítója, például az erőforráscsoportok az előfizetésében beolvasása. Bérlői hatókörű kérések nem tartalmazzák az előfizetés-Azonosítóval, mint érvényes Azure helyek lekérése.
+Ha eléri a korlátot, kap-e a HTTP-állapotkódot **429 túl sok kérelem**.
 
 ## <a name="remaining-requests"></a>Fennmaradó kérelmek
-Válaszfejlécek megvizsgálásával azt is meghatározhatja a fennmaradó kérelmek száma. Minden egyes kérelem fennmaradó olvasási és írási kérések száma értékeket tartalmaz. A következő táblázat ismerteti a válaszfejlécek ezeket az értékeket a ellenőrizheti:
+Megadhatja, hogy a fennmaradó kérések száma válaszfejlécek megvizsgálásával. Minden kérelmet fennmaradó olvasási és írási kérések száma értékeket tartalmaz. A következő táblázat ismerteti a válaszfejlécek ezekhez az értékekhez ellenőrizheti:
 
 | Válaszfejléc | Leírás |
 | --- | --- |
-| x-ms-ratelimit-remaining-subscription-reads |Előfizetés hatókörű beolvassa a fennmaradó. Ez az érték akkor adja vissza az olvasási műveletek. |
-| x-ms-ratelimit-remaining-subscription-writes |Előfizetés hatókörű írja a fennmaradó. Ez az érték akkor adja vissza az írási műveletek. |
-| x-ms-ratelimit-remaining-tenant-reads |Bérlői hatókörű beolvassa a fennmaradó |
-| x-ms-ratelimit-remaining-tenant-writes |Bérlői hatókörű ír fennmaradó |
-| x-ms-ratelimit-remaining-subscription-resource-requests |Előfizetés fennmaradó erőforrás típusú kérések hatókörét.<br /><br />Ezt a fejlécértéket csak akkor ad vissza, ha a szolgáltatás felülírta az alapértelmezett határérték. Erőforrás-kezelő hozzáadása az előfizetés olvasások és írások helyett ezt az értéket. |
-| x-ms-ratelimit-remaining-subscription-resource-entities-read |Előfizetés az erőforrás típusa adatgyűjtési kérelmek fennmaradó hatókörét.<br /><br />Ezt a fejlécértéket csak akkor ad vissza, ha a szolgáltatás felülírta az alapértelmezett határérték. Ez az érték a fennmaradó adatgyűjtési kérelmek (lista erőforrások) számát jeleníti meg. |
-| x-ms-ratelimit-remaining-tenant-resource-requests |Bérlői erőforrás típusú kérések fennmaradó hatókörét.<br /><br />A bérlői szintű kérelmek csak hozzáadja az ezt a fejlécet, és csak akkor, ha a szolgáltatás felülírta az alapértelmezett határérték. Erőforrás-kezelő felveszi ezt az értéket a bérlő olvasások és írások helyett. |
-| x-ms-ratelimit-remaining-tenant-resource-entities-read |Bérlői erőforrás típusa adatgyűjtési kérelmek fennmaradó hatókörét.<br /><br />A bérlői szintű kérelmek csak hozzáadja az ezt a fejlécet, és csak akkor, ha a szolgáltatás felülírta az alapértelmezett határérték. |
+| x-ms-ratelimit-remaining-subscription-reads |Hatókörrel rendelkező előfizetés beolvasása van hátra. Ezt az értéket adja vissza az olvasási műveletekre. |
+| x-ms-ratelimit-remaining-subscription-writes |Hatókörrel rendelkező előfizetés ír van hátra. Ez az érték az írási művelet adja vissza. |
+| x-ms-ratelimit-remaining-tenant-reads |Hatókörrel rendelkező bérlő beolvasása van hátra |
+| x-ms-ratelimit-remaining-tenant-writes |Hatókörrel rendelkező bérlő ír van hátra |
+| x-ms-ratelimit-remaining-subscription-resource-requests |Előfizetés a fennmaradó erőforrást típusú kérések hatókörét.<br /><br />A fejléc értéke csak akkor ad vissza, ha egy szolgáltatás rendelkezik felül az alapértelmezett korlát. Erőforrás-kezelő hozzáadja ezt az értéket az előfizetés olvasási vagy írási műveletek helyett. |
+| x-ms-ratelimit-remaining-subscription-resource-entities-read |Előfizetés erőforrás típusa adatgyűjtési kérelmek fennmaradó hatókörét.<br /><br />A fejléc értéke csak akkor ad vissza, ha egy szolgáltatás rendelkezik felül az alapértelmezett korlát. Ezt az értéket megadja a fennmaradó adatgyűjtési kérelmek (lista erőforrások). |
+| x-ms-ratelimit-remaining-tenant-resource-requests |Bérlői erőforrás-típusú kérések fennmaradó hatókörét.<br /><br />Ez a fejléc csak bérlői szintű kérelmek ad hozzá, és csak akkor, ha egy szolgáltatás rendelkezik felül az alapértelmezett korlát. Erőforrás-kezelő hozzáadja ezt az értéket a bérlő olvasások és írások helyett. |
+| x-ms-ratelimit-remaining-tenant-resource-entities-read |Bérlői erőforrás típusa adatgyűjtési kérelmek fennmaradó hatókörét.<br /><br />Ez a fejléc csak bérlői szintű kérelmek ad hozzá, és csak akkor, ha egy szolgáltatás rendelkezik felül az alapértelmezett korlát. |
 
-## <a name="retrieving-the-header-values"></a>A fejléc értékei beolvasása
-A fejléc értékei a kód vagy parancsfájl beolvasása ugyanolyan helyzetet teremt, mint bármely fejléc értékének beolvasása. 
+## <a name="retrieving-the-header-values"></a>A fejléc értékek beolvasása
+Ezek a kódot vagy szkriptet fejléc az értékek beolvasása semmiben nem különbözik minden fejléc értékének beolvasása. 
 
-Például a **C#**, visszaállíthatja a Fejlécérték egy **HttpWebResponse** nevű objektum **válasz** az alábbi kódra:
+Például a **C#**, kérheti le a Fejlécérték egy **HttpWebResponse** nevű objektum **válasz** a következő kóddal:
 
 ```cs
 response.Headers.GetValues("x-ms-ratelimit-remaining-subscription-reads").GetValue(0)
 ```
 
-A **PowerShell**, a fejléc értékének lekérése az Invoke-WebRequest műveletet.
+A **PowerShell**, Invoke-WebRequest művelet lekérése a fejléc értéke.
 
 ```powershell
 $r = Invoke-WebRequest -Uri https://management.azure.com/subscriptions/{guid}/resourcegroups?api-version=2016-09-01 -Method GET -Headers $authHeaders
 $r.Headers["x-ms-ratelimit-remaining-subscription-reads"]
 ```
 
-Vagy, ha szeretne látni a fennmaradó kérelmek hibakeresési, megadhatja a **-Debug** paraméter a **PowerShell** parancsmag.
+Teljes PowerShell-példa: [Resource Manager korlátok ellenőrzése egy előfizetés](https://github.com/Microsoft/csa-misc-utils/tree/master/psh-GetArmLimitsViaAPI).
+
+Ha meg szeretné tekinteni a hibakereséshez a fennmaradó kérelmeket, megadhatja a **-Debug** paraméterrel a **PowerShell** parancsmagot.
 
 ```powershell
 Get-AzureRmResourceGroup -Debug
 ```
 
-Több értékhez, többek között a következő válasz értéket visszaadó:
+Több értékhez, többek között a következő választ értéket ad vissza:
 
 ```powershell
 DEBUG: ============================ HTTP RESPONSE ============================
@@ -81,13 +81,13 @@ Pragma                        : no-cache
 x-ms-ratelimit-remaining-subscription-reads: 14999
 ```
 
-Írási korlátok, amelyet egy írási művelet: 
+Írási korlátok lekéréséhez használja az írási művelet: 
 
 ```powershell
 New-AzureRmResourceGroup -Name myresourcegroup -Location westus -Debug
 ```
 
-Visszaadó sok értéket, beleértve a következő értékeket:
+Több értékhez, többek között a következő értékeket ad vissza:
 
 ```powershell
 DEBUG: ============================ HTTP RESPONSE ============================
@@ -100,13 +100,13 @@ Pragma                        : no-cache
 x-ms-ratelimit-remaining-subscription-writes: 1199
 ```
 
-A **Azure CLI**, a részletesebb beállítás használatával beolvashatja a fejléc értéke.
+A **Azure CLI-vel**, a részletesebb lehetőség használatával beolvashatja a fejléc értéke.
 
 ```azurecli
 az group list --verbose --debug
 ```
 
-Visszaadó sok értéket, beleértve a következő értékeket:
+Több értékhez, többek között a következő értékeket ad vissza:
 
 ```azurecli
 msrest.http_logger : Response status: 200
@@ -120,13 +120,13 @@ msrest.http_logger :     'Vary': 'Accept-Encoding'
 msrest.http_logger :     'x-ms-ratelimit-remaining-subscription-reads': '14998'
 ```
 
-Írási korlátok, amelyet egy írási művelet: 
+Írási korlátok lekéréséhez használja az írási művelet: 
 
 ```azurecli
 az group create -n myresourcegroup --location westus --verbose --debug
 ```
 
-Visszaadó sok értéket, beleértve a következő értékeket:
+Több értékhez, többek között a következő értékeket ad vissza:
 
 ```azurecli
 msrest.http_logger : Response status: 201
@@ -139,10 +139,11 @@ msrest.http_logger :     'Expires': '-1'
 msrest.http_logger :     'x-ms-ratelimit-remaining-subscription-writes': '1199'
 ```
 
-## <a name="waiting-before-sending-next-request"></a>Várakozás a következő kérelem elküldése előtt
-Ha eléri a kérelmi korlátjának, erőforrás-kezelő adja vissza a **429** HTTP-állapotkód és egy **újrapróbálkozási után** a fejléc értéke. A **újrapróbálkozási után** érték másodperc megvárja-e az alkalmazás (vagy alvó) számát adja meg a következő kérelem elküldése előtt. Az újrapróbálási értéket letelte előtt kérelmet küld, ha a kérelem feldolgozása nem, és próbálkozzon újra új értéket ad vissza.
+## <a name="waiting-before-sending-next-request"></a>Várakozás a következő kérés elküldése előtt
+Ha egyenlege eléri a kérelmi korlátjának, erőforrás-kezelő adja vissza a **429-es** HTTP-állapotkódot és a egy **Retry-After** a fejléc értéke. A **Retry-After** érték másodperc az alkalmazásnak várnia kell (vagy alvó) számát adja meg a kérések elküldése előtt. Az újrapróbálkozások letelte előtt egy kérelmet küld, ha a kérelem feldolgozása nem, és a egy új újrapróbálkozási értéket adja vissza.
 
 ## <a name="next-steps"></a>További lépések
 
-* Korlátozásai és a kvóták kapcsolatos további információkért lásd: [Azure-előfizetés és szolgáltatási korlátok, kvóták és megkötések](../azure-subscription-service-limits.md).
-* Aszinkron REST-kérések kezelésével kapcsolatos információkért lásd: [nyomon követheti a aszinkron Azure műveleteket](resource-manager-async-operations.md).
+* Teljes PowerShell-példa: [Resource Manager korlátok ellenőrzése egy előfizetés](https://github.com/Microsoft/csa-misc-utils/tree/master/psh-GetArmLimitsViaAPI).
+* Korlátok és kvóták kapcsolatos további információkért lásd: [Azure-előfizetés és a szolgáltatások korlátozásai, kvótái és megkötései](../azure-subscription-service-limits.md).
+* Aszinkron REST-kérések kezelésével kapcsolatos további információkért lásd: [Azure aszinkron műveletek követése](resource-manager-async-operations.md).

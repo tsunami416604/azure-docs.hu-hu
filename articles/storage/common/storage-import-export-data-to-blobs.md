@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/17/2018
 ms.author: alkohli
 ms.component: common
-ms.openlocfilehash: 2484d01c268757ef612ba7b397b80b8ea4c4e76a
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 39287e4d90e4f6f42dd1f79d5457853e253bd736
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39528139"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45737056"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>Az Azure Blob Storage-adatok importálása az Azure Import/Export szolgáltatás használata
 
@@ -25,7 +25,7 @@ Adatok átviteléhez az Azure Blob Storage-bA importálási feladat létrehozás
 
 - Egy aktív Azure-előfizetéssel rendelkezik az Import/Export szolgáltatás használható.
 - Legalább egy tárolót az Azure Storage-fiók rendelkezik. Listájának megtekintéséhez [az Import/Export szolgáltatás által támogatott storage-fiókok és a tárolási típusok](storage-import-export-requirements.md). 
-    - Új tárfiók létrehozásával kapcsolatos információkért lásd: [Storage-fiók létrehozása](storage-create-storage-account.md#create-a-storage-account). 
+    - Új tárfiók létrehozásával kapcsolatos információkért lásd: [Storage-fiók létrehozása](storage-quickstart-create-account.md). 
     - Információk a storage-tárolóba, [hozzon létre egy storage-tárolóba](../blobs/storage-quickstart-blobs-portal.md#create-a-container).
 - A lemezek elegendő számú [támogatott típusok](storage-import-export-requirements.md#supported-disks). 
 - A Windows rendszert futtató egy [támogatott operációsrendszer-verzió](storage-import-export-requirements.md#supported-operating-systems). 

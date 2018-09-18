@@ -9,12 +9,12 @@ ms.custom: DBs & servers
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: carlrab
-ms.openlocfilehash: af9d34b0c3b59cbf012d16de27bb4c60a809f619
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 19693e394b0bd3a589ead25e2ddfa2fa88e92bad
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45630961"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45730379"
 ---
 # <a name="azure-sql-database-vcore-based-purchasing-model-limits-for-elastic-pools"></a>Az Azure SQL Database Virtuálismag-alapú vásárlási modell a rugalmas készletek korlátai
 
@@ -25,17 +25,17 @@ DTU-alapú vásárlási modell korlátozásairól lásd: [SQL Database DTU-alap�
 > [!IMPORTANT]
 > Bizonyos körülmények között szükség lehet az adatbázis nem használt terület felszabadítását zsugorítani. További információkért lásd: [kezelése az Azure SQL Database területe](sql-database-file-space-management.md).
 
-## <a name="elastic-pool-storage-sizes-and-performance-levels"></a>Rugalmas készlet: tárterületet és teljesítményszintek
+## <a name="elastic-pool-storage-sizes-and-compute-sizes"></a>Rugalmas készlet: tárterületet és számítási méretek
 
-Az SQL Database rugalmas készletek esetén az alábbi táblázatok bemutatják az egyes szolgáltatási csomagot és teljesítményszintet szinten elérhető erőforrásokat. A szolgáltatási rétegben, a teljesítményszint és a tárolási összeg használatával beállíthatja a [az Azure portal](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases), [PowerShell](sql-database-elastic-pool-manage.md#powershell-manage-elastic-pools-and-pooled-databases), a [Azure CLI-vel](sql-database-elastic-pool-manage.md#azure-cli-manage-elastic-pools-and-pooled-databases), vagy a [REST API](sql-database-elastic-pool-manage.md#rest-api-manage-elastic-pools-and-pooled-databases).
+Az SQL Database rugalmas készletek esetén az alábbi táblázatok megjelenítése az egyes szolgáltatásszinteken elérhető erőforrások és számítási mérete. A szolgáltatási rétegben, a számítási méretét és a tárolási mennyiséget használatával beállíthatja a [az Azure portal](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases), [PowerShell](sql-database-elastic-pool-manage.md#powershell-manage-elastic-pools-and-pooled-databases), a [Azure CLI-vel](sql-database-elastic-pool-manage.md#azure-cli-manage-elastic-pools-and-pooled-databases), vagy a [REST API](sql-database-elastic-pool-manage.md#rest-api-manage-elastic-pools-and-pooled-databases).
 
 > [!NOTE]
-> A rugalmas készletek az egyes adatbázisok erőforráskorlátok megegyeznek a általában a teljesítményszint rendelkező készletek kívül önálló adatbázisok. Például a maximális egyidejű feldolgozók GP_Gen4_1 adatbázishoz 200 feldolgozók. Tehát egy adatbázis GP_Gen4_1 készletben a maximális egyidejű feldolgozók egyben 200 feldolgozók. Vegye figyelembe, GP_Gen4_1 készlet egyidejű feldolgozók száma 210.
+> A rugalmas készletek az egyes adatbázisok erőforráskorlátok kívül címkészleteket, amelyek azonos az önálló adatbázisokat azonos számítási mérete általában. Például a maximális egyidejű feldolgozók GP_Gen4_1 adatbázishoz 200 feldolgozók. Tehát egy adatbázis GP_Gen4_1 készletben a maximális egyidejű feldolgozók egyben 200 feldolgozók. Vegye figyelembe, GP_Gen4_1 készlet egyidejű feldolgozók száma 210.
 
 ### <a name="general-purpose-service-tier"></a>Általános célú szolgáltatásszint
 
 #### <a name="generation-4-compute-platform"></a>4. generációs számítási platform
-|Teljesítményszint|GP_Gen4_1|GP_Gen4_2|GP_Gen4_4|GP_Gen4_8|GP_Gen4_16|GP_Gen4_24|
+|Számítási mérete|GP_Gen4_1|GP_Gen4_2|GP_Gen4_4|GP_Gen4_8|GP_Gen4_16|GP_Gen4_24|
 |:--- | --: |--: |--: |--: |--: |--: |
 |H/W generálása|4|4|4|4|4|4|
 |Virtuális magok|1|2|4|8|16|24|
@@ -59,7 +59,7 @@ Az SQL Database rugalmas készletek esetén az alábbi táblázatok bemutatják 
 |||
 
 #### <a name="generation-5-compute-platform"></a>5. generáció számítási platform
-|Teljesítményszint|GP_Gen5_2|GP_Gen5_4|GP_Gen5_8|GP_Gen5_16|GP_Gen5_24|GP_Gen5_32|GP_Gen5_40|GP_Gen5_80|
+|Számítási mérete|GP_Gen5_2|GP_Gen5_4|GP_Gen5_8|GP_Gen5_16|GP_Gen5_24|GP_Gen5_32|GP_Gen5_40|GP_Gen5_80|
 |:--- | --: |--: |--: |--: |--: |--: |--: |--: |
 |H/W generálása|5|5|5|5|5|5|5|5|
 |Virtuális magok|2|4|8|16|24|32|40|80|
@@ -85,7 +85,7 @@ Az SQL Database rugalmas készletek esetén az alábbi táblázatok bemutatják 
 ### <a name="business-critical-service-tier"></a>Üzleti kritikus fontosságú szolgáltatási szint
 
 #### <a name="generation-4-compute-platform"></a>4. generációs számítási platform
-|Teljesítményszint|BC_Gen4_1|BC_Gen4_2|BC_Gen4_4|BC_Gen4_8|BC_Gen4_16|BC_Gen4_24|
+|Számítási mérete|BC_Gen4_1|BC_Gen4_2|BC_Gen4_4|BC_Gen4_8|BC_Gen4_16|BC_Gen4_24|
 |:--- | --: |--: |--: |--: |--: |--: |
 |H/W generálása|4|4|4|4|4|4|
 |Virtuális magok|1|2|4|8|16|24|
@@ -100,7 +100,7 @@ Az SQL Database rugalmas készletek esetén az alábbi táblázatok bemutatják 
 |IO-késés (becsült)|1 – 2 ms (írás)<br>1 – 2 ms (olvasás)|1 – 2 ms (írás)<br>1 – 2 ms (olvasás)|1 – 2 ms (írás)<br>1 – 2 ms (olvasás)|1 – 2 ms (írás)<br>1 – 2 ms (olvasás)|1 – 2 ms (írás)<br>1 – 2 ms (olvasás)|1 – 2 ms (írás)<br>1 – 2 ms (olvasás)|
 |Egyidejű feldolgozók (kérelmek) maximális|210|420|840|1680|3360|5040|
 |Maximális engedélyezett munkamenetek|30000|30000|30000|30000|30000|30000|
-|Adatbázisok maximális száma készletenként|Nem támogatott|50|100|100|100|100|
+|Adatbázisok maximális száma készletenként|Csak egyetlen adatbázisok támogatottak a számítási méret|50|100|100|100|100|
 |Az adatbázisonkénti minimális/maximális rugalmas készlet virtuális mag választási lehetőségek|–|0, 0,25, 0.5-ös, 1, 2|0, 0,25, 0.5-ös, 1, 2, 4|0, 0,25, 0.5-ös, 1, 2, 4, 8|0, 0,25, 0.5-ös, 1, 2, 4, 8, 16|0, 0,25, 0.5-ös, 1, 2, 4, 8, 16, 24|
 |Replikák száma|3|3|3|3|3|3|
 |Több-AZ|–|N/A|N/A|N/A|N/A|–|
@@ -109,7 +109,7 @@ Az SQL Database rugalmas készletek esetén az alábbi táblázatok bemutatják 
 |||
 
 #### <a name="generation-5-compute-platform"></a>5. generáció számítási platform
-|Teljesítményszint|BC_Gen5_2|BC_Gen5_4|BC_Gen5_8|BC_Gen5_16|BC_Gen5_24|BC_Gen5_32|BC_Gen5_40|BC_Gen5_80|
+|Számítási mérete|BC_Gen5_2|BC_Gen5_4|BC_Gen5_8|BC_Gen5_16|BC_Gen5_24|BC_Gen5_32|BC_Gen5_40|BC_Gen5_80|
 |:--- | --: |--: |--: |--: |--: |--: |--: |--: |
 |H/W generálása|5|5|5|5|5|5|5|5|
 |Virtuális magok|2|4|8|16|24|32|40|80|

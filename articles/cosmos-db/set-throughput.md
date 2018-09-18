@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/03/2018
 ms.author: andrl
-ms.openlocfilehash: 2c3e4806aef506ef9016699b46eadd5f8a187224
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 2da00f700f5cc234455cc686377e5863f1c35bdd
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42059129"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45734471"
 ---
 # <a name="set-and-get-throughput-for-azure-cosmos-db-containers-and-database"></a>Állítsa be, és az Azure Cosmos DB-tárolók és az adatbázis átviteli sebesség lekérdezése
 
@@ -61,7 +61,7 @@ A következő szakaszokban megismerheti a Azure Cosmos DB-fiókot a különböz�
 2. A bal oldali navigációs panelen válassza ki a **összes erőforrás** , és keresse meg az Azure Cosmos DB-fiókot.  
 3. Átviteli sebesség konfigurálhatja egy adatbázist vagy a frissítés átviteli sebesség a meglévő adatbázis létrehozása során.  
 4. Egy adatbázis létrehozása közben az átviteli sebesség hozzárendeléséhez nyissa meg a **adatkezelő** panelhez, és válassza **új adatbázis**  
-5. Töltse ki a **adatbázis-azonosító** értéke, ellenőrizze **kiépítése átviteli** lehetőséget, és az átviteli sebesség érték beállításához. Egy adatbázis üzembe lehet helyezni minimális átviteli sebesség értékét 50 000 RU/s.  
+5. Töltse ki a **adatbázis-azonosító** értéke, ellenőrizze **kiépítése átviteli** lehetőséget, és az átviteli sebesség érték beállításához.  
 
    ![Teljesítmény beállítása az új adatbázis-beállítás](./media/set-throughput/set-throughput-with-new-database-option.png)
 
@@ -74,7 +74,7 @@ A következő szakaszokban megismerheti a Azure Cosmos DB-fiókot a különböz�
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).  
 2. A bal oldali navigációs panelen válassza ki a **összes erőforrás** , és keresse meg az Azure Cosmos DB-fiókot.  
 3. Hozzon létre egy adatbázist, és rendelje hozzá átviteli sebességet. Nyissa meg a **adatkezelő** panelhez, és válassza **új adatbázis**  
-4. Töltse ki a **adatbázis-azonosító** értéke, ellenőrizze **kiépítése átviteli** lehetőséget, és az átviteli sebesség érték beállításához. Egy adatbázis üzembe lehet helyezni minimális átviteli sebesség értékét 50 000 RU/s.  
+4. Töltse ki a **adatbázis-azonosító** értéke, ellenőrizze **kiépítése átviteli** lehetőséget, és az átviteli sebesség érték beállításához.  
 
    ![Teljesítmény beállítása az új adatbázis-beállítás](./media/set-throughput/set-throughput-with-new-database-option.png)
 
@@ -107,33 +107,6 @@ Vegye figyelembe, hogy átviteli sebességét az alábbi esetekben tároló kié
 * Ha rendelkezik Azure Cosmos DB-tárolók kevesebb.  
 
 * Ha azt szeretné, garantált átviteli lekérni egy adott tárolón szavatolja.
-
-## <a name="throughput-ranges"></a>Átviteli sebesség tartományok
-
-A következő táblázat a tárolók számára elérhető adatátviteli mennyiség.
-
-<table border="0" cellspacing="0" cellpadding="0">
-    <tbody>
-        <tr>
-            <td valign="top"><p></p></td>
-            <td valign="top"><p><strong>Egypartíciós tárolók</strong></p></td>
-            <td valign="top"><p><strong>A particionált tároló</strong></p></td>
-            <td valign="top"><p><strong>A tárolók beállítása</strong></p></td>
-        </tr>
-        <tr>
-            <td valign="top"><p>Minimális átviteli sebesség</p></td>
-            <td valign="top"><p>400 kérelemegység / s</p></td>
-            <td valign="top"><p>1000 kérelemegység / s</p></td>
-            <td valign="top"><p>50 000 kérelemegység / s</p></td>
-        </tr>
-        <tr>
-            <td valign="top"><p>Maximális átviteli sebesség</p></td>
-            <td valign="top"><p>10 000 kérelemegység / s</p></td>
-            <td valign="top"><p>Korlátlan</p></td>
-            <td valign="top"><p>Korlátlan</p></td>
-        </tr>
-    </tbody>
-</table>
 
 <a id="set-throughput-sdk"></a>
 

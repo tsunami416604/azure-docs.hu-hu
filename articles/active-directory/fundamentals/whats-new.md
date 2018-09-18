@@ -14,16 +14,16 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: lizross
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 0fa220822c65065538db70df8a74de2fcca51938
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.openlocfilehash: e62dd48af69dd54abd26c21d7510ec872500e274
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43143679"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45737430"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Újdonságok az Azure Active Directoryban?
 
->Értesítést kaphat arról, hogy nyissa meg újra a frissítések ezen a lapon hozzáadhatja ezt mikor [URL-cím](https://docs.microsoft.com/api/search/rss?search=%22whats%20new%20in%20azure%20active%20directory%22&locale=en-us) , a ![RSS ikon](./media/whats-new/feed-icon-16x16.png) hírcsatorna-olvasó.
+>Értesítést kaphat arról, hogy nyissa meg újra a frissítések ezen a lapon hozzáadhatja ezt mikor [URL-cím](https://docs.microsoft.com/api/search/rss?search=%22whats%20new%20in%20azure%20active%20directory%22&locale=docs.microsoft.com/) , a ![RSS ikon](./media/whats-new/feed-icon-16x16.png) hírcsatorna-olvasó.
 
 Az Azure AD folyamatosan fejlesztései kap. Naprakész a legújabb fejlemények, ez a cikk azt ismerteti kapcsolatban:
 

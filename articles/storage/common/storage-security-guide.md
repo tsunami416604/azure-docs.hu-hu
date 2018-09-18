@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/31/2018
 ms.author: cshoe
 ms.component: common
-ms.openlocfilehash: 912ae17fb7bb5d5cecad0af5b53d817b2faeef02
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 268459fde7a622079656e637d2c51562cea358a4
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39522201"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45730949"
 ---
 # <a name="azure-storage-security-guide"></a>Az Azure Storage biztonsági útmutatóját
 
@@ -142,20 +142,13 @@ Az Azure Key Vaulttal hozzáadja a tárelérési kulcsok biztonsági egy másik 
 
 Az Azure Key Vault használatának másik előnye is szabályozhatja a hozzáférést a kulcsokhoz, Azure Active Directory használatával. Ez azt jelenti, hogy is hozzáférést biztosít az alkalmazások, amelyeket az Azure Key Vaulttal a kulcsok lekéréséhez, és tudja, hogy más alkalmazások nem tudják a hívóbetűk adva nekik kifejezetten engedély nélkül kell néhány.
 
-Megjegyzés: javasoljuk egyszerre az összes alkalmazás használata csak az egyik a kulcsokat. Az egyes helyek kulcs 1 és mások a kulcs 2 használja, ha nem lesz képes a kulcsok rotálására néhány alkalmazás-hozzáférés elvesztése nélkül.
+> [!NOTE]
+> A Microsoft javasolja, hogy egyszerre az összes alkalmazás használata csak az egyik a kulcsokat. Az egyes helyek kulcs 1 és mások a kulcs 2 használja, ha nem lesz képes a kulcsok rotálására néhány alkalmazás-hozzáférés elvesztése nélkül.
 
 #### <a name="resources"></a>További források
-* [Tudnivalók az Azure Storage-fiókok](storage-create-storage-account.md#regenerate-storage-access-keys)
 
-  Ez a cikk áttekintést nyújt a tárfiókok, és ismerteti a megtekintése, másolása és tárelérési kulcsok újragenerálása.
+* [Az Azure Portal tárfiók-beállítások kezelése](storage-account-manage.md)
 * [Az Azure Storage Resource Provider REST API-referencia](https://msdn.microsoft.com/library/mt163683.aspx)
-
-  Ez a cikk a storage-fiók kulcsainak lekérése és a tárfiók hozzáférési kulcsainak az Azure-fiók, a REST API használatával az adott cikkekre mutató hivatkozásokat tartalmaz. Megjegyzés: Ez a Resource Manager-tárfiókok esetében.
-* [A storage-fiókok műveletek](https://msdn.microsoft.com/library/ee460790.aspx)
-
-  Ez a cikk a Storage Service Manager REST API-referencia a beolvasása és a tárfiók hozzáférési kulcsainak a REST API használatával meghatározott cikkekre mutató hivatkozásokat tartalmaz. Megjegyzés: Ez csak a klasszikus tárfiókok esetében.
-
-  Ez a cikk bemutatja, hogyan férhet hozzá az Azure Storage kulcsok Azure Key vaultban az Active Directory használatával. Azt is bemutatja, hogyan használja az Azure Automation-feladat a kulcsok óránként.
 
 ## <a name="data-plane-security"></a>Adatsík Adatbiztonság
 Adatsík adatbiztonság hivatkozik az adatobjektumok tárolva az Azure Storage – a blobok, üzenetsorok, táblák és fájlok védelmére szolgáló módszerek. Úgy tapasztaltuk módszerek az adatok átvitel során az adatokat és biztonsági titkosításához, de hogyan továbblép hozzáféréssel az objektumokhoz szabályozásával kapcsolatban?

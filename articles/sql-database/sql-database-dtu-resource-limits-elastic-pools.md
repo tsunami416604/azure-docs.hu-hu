@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 08/01/2018
+ms.date: 09/14/2018
 ms.author: carlrab
-ms.openlocfilehash: 0920489daf99445a9d715d0858cf68ae45e6a178
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: a0e0b8e2de3c944698cdbc6b1b11351f70e77276
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42058404"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45729892"
 ---
 # <a name="resources-limits-for-elastic-pools-using-the-dtu-based-purchasing-model"></a>A DTU-alapú vásárlási modellt használó rugalmas készletek korlátai erőforrások 
 
@@ -25,9 +25,9 @@ DTU-alapú vásárlási modell erőforráskorlátok az önálló adatbázisok sz
 > [!IMPORTANT]
 > Bizonyos körülmények között szükség lehet az adatbázis nem használt terület felszabadítását zsugorítani. További információkért lásd: [kezelése az Azure SQL Database területe](sql-database-file-space-management.md).
 
-## <a name="elastic-pool-storage-sizes-and-performance-levels"></a>Rugalmas készlet: tárterületet és teljesítményszintek
+## <a name="elastic-pool-storage-sizes-and-compute-sizes"></a>Rugalmas készlet: tárterületet és számítási méretek
 
-Az SQL Database rugalmas készletek esetén az alábbi táblázatok bemutatják az egyes szolgáltatási csomagot és teljesítményszintet szinten elérhető erőforrásokat. A szolgáltatási rétegben, a teljesítményszint és a tárolási összeg használatával beállíthatja a [az Azure portal](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases), [PowerShell](sql-database-elastic-pool-manage.md#powershell-manage-elastic-pools-and-pooled-databases), a [Azure CLI-vel](sql-database-elastic-pool-manage.md#azure-cli-manage-elastic-pools-and-pooled-databases), vagy a [REST API](sql-database-elastic-pool-manage.md#rest-api-manage-elastic-pools-and-pooled-databases).
+Az SQL Database rugalmas készletek esetén az alábbi táblázatok megjelenítése az egyes szolgáltatásszinteken elérhető erőforrások és számítási mérete. A szolgáltatási rétegben, a számítási méretét és a tárolási mennyiséget használatával beállíthatja a [az Azure portal](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases), [PowerShell](sql-database-elastic-pool-manage.md#powershell-manage-elastic-pools-and-pooled-databases), a [Azure CLI-vel](sql-database-elastic-pool-manage.md#azure-cli-manage-elastic-pools-and-pooled-databases), vagy a [REST API](sql-database-elastic-pool-manage.md#rest-api-manage-elastic-pools-and-pooled-databases).
 
 > [!NOTE]
 > A rugalmas készletek az egyes adatbázisok erőforráskorlátok megegyeznek a általában önálló adatbázis dtu-k és a szolgáltatásszint alapján készletek kívül. Például az S2 adatbázis maximális egyidejű feldolgozók 120 feldolgozók. Tehát egy adatbázis egy Standard adatbáziskészletben max. egyidejű feldolgozók egyben 120 feldolgozók 50 dtu-k (Ez egyenértékű s2 esetén) a készlet adatbázisonkénti maximális DTU-e.

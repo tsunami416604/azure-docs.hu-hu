@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: dafa58c5356c89351ab0eb711e4095b767aee1ae
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 1cff44e8430af0a544da948b33a15439fae56d8e
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44298166"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45735650"
 ---
-# <a name="set-up-a-device-template"></a>Eszköz sablon beállítása
+# <a name="set-up-a-device-template"></a>Eszközsablon beállítása
 
 Egy eszköz, amely meghatározza a jellemzőit és a egy eszköz, amely a Microsoft Azure IoT Central alkalmazáshoz típusú viselkedéseit tervrajz áll.
 
@@ -74,8 +74,6 @@ Például egy új hőmérsékleti telemetria mérték is hozzáadhat:
 
 Miután kiválasztotta **kész**, a **hőmérséklet** mérték megjelenik a listában a mértékek. Az operátor az eszköz gyűjti hőmérsékleti adatok a Vizualizáció látható.
 
-![Mérési graph](./media/howto-set-up-template/measurementsgraph.png)
-
 ### <a name="create-an-event-measurement"></a>Egy esemény-mérték létrehozása
 Egy új esemény mérési hozzáadásához válassza **sablon szerkesztése**, majd kattintson a **+ új mérték** gombra. Válassza ki **esemény** a mérték, írja be, és adja meg, hogy a **esemény létrehozása** űrlap.
 
@@ -89,7 +87,7 @@ Kiválasztása után **kész**, a **ventilátor Motor hiba** mérési mérések 
 
 ![Esemény mérési diagram](./media/howto-set-up-template/eventmeasurementschart.png)
 
-Az esemény részleteinek megtekintéséhez jelölje ki a diagramon az esemény ikonra:
+Az esemény részleteinek megtekintéséhez jelölje ki a diagramon az esemény ikonra.
 
 ![A "Ventilátor Motor Error" esemény részletei](./media/howto-set-up-template/eventmeasurementsdetail.png)
 
@@ -108,9 +106,6 @@ Kiválasztása után **kész**, a **ventilátor mód** állapot mérési mérés
 ![Állapot mérési diagram](./media/howto-set-up-template/statemeasurementschart.png)
 
 Az eszköz a kis időtartam túl sok adatpont küld, ha az állapot mérték jelenik meg egy másik vizualizációt, az alábbi képernyőképen látható módon. Ha rákattint a diagram, az adott időtartamon belül minden adatpontok időrendi sorrendben jelennek meg. Az időtartomány, tekintse meg a diagramon ábrázolt mérését is szűkíthető.
-
-![A "Statikus ventilátor üzemmód" állapot mérték részletei](./media/howto-set-up-template/statemeasurementsdetail.png)
-
 
 ## <a name="settings"></a>Beállítások
 
@@ -182,11 +177,7 @@ Egy alkalmazás tulajdonságként a location tulajdonsághoz hozhat létre az Io
    - **Hely-címként**
    - **A helyen, ahol koordinátái** 
 
-4. Válassza ki **mentése** és **kész**. 
-
-   ![Telepítési címmel hozzáadott Location tulajdonság](./media/howto-set-up-template/locationcloudproperty3.png)
-
-Az operátornak most már frissítheti az a hely értéket a hely mező képernyőn. 
+4. Válassza ki **mentése** és **kész**. Az operátornak most már frissítheti az a hely értéket a hely mező képernyőn. 
 
 #### <a name="add-location-as-a-device-property"></a>Eszköz-tulajdonságként helyének hozzáadása 
 
@@ -261,11 +252,7 @@ Ha konfigurálta a location tulajdonsághoz korábban a [hozzon létre egy hely 
 
    ![A kiválasztott helyen a szolgáltatástérkép csempe](./media/howto-set-up-template/locationcloudproperty6map.png) 
 
-A térkép méretezheti át a kívánt méretre.
-
-Most már az operátornak megtekinti az irányítópultot, amikor megjelenik az összes az irányítópult-csempék, amelyek konfigurálta, többek között a helyek térképe.
-
-![Az irányítópult csempéi](./media/howto-set-up-template/locationcloudproperty7map.png) 
+A térkép méretezheti át a kívánt méretre. Most már az operátornak megtekinti az irányítópultot, amikor megjelenik az összes az irányítópult-csempék, amelyek konfigurálta, többek között a helyek térképe.
 
 ## <a name="next-steps"></a>További lépések
 

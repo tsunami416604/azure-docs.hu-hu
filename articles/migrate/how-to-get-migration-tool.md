@@ -1,46 +1,46 @@
 ---
-title: Telepítse át a gépeket értékelése után az Azure áttelepítése |} Microsoft Docs
-description: Ismerteti, hogyan történő áttelepítésére vonatkozó javaslatokat kérhet felmérés elvégzéséhez az Azure áttelepítése szolgáltatással futtatása után gépek.
+title: Gépek migrálása értékelés után az Azure Migrate |} A Microsoft Docs
+description: Ismerteti, hogyan lehet áttelepíteni javaslatokat beolvasni az Azure Migrate szolgáltatással értékelés futtatása után gépek.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 06/19/2018
+ms.date: 09/17/2018
 ms.author: raynew
-ms.openlocfilehash: 571bd2424d1d38e6c0048a95b263dda000477e44
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 0b02ae4b75426b379ad7c124f5ddeb053c142ce6
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36221879"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45730294"
 ---
 # <a name="migrate-machines-after-assessment"></a>Gépek migrálása értékelés után
 
 
-[Az Azure áttelepítése](migrate-overview.md) értékelésére ellenőrizze, hogy azok alkalmas áttelepítése az Azure-ba, és biztosít az Azure-beli a gép méretezési és költségű becsléseket a helyszíni gépeket. Jelenleg Azure áttelepítése csak értékelésére gépek áttelepítésre. Az áttelepítés maga jelenleg más Azure-szolgáltatások használatával történik.
+[Az Azure Migrate](migrate-overview.md) felméri a helyszíni gépeket, ellenőrizze, hogy azok még az Azure-ba való migrálásra alkalmas, és a gép futtatása az Azure-ban a méretezési és becsléseket biztosít. Jelenleg az Azure Migrate csak felméri a gépek migrálásra. Maga a migrálás jelenleg más Azure-szolgáltatások használatával történik.
 
-A cikkből megtudhatja, hogyan kérhet egy áttelepítési eszköz javaslatokat a áttelepítési értékelése futtatását követően.
+Ez a cikk azt ismerteti, hogyan telepheti egy áttelepítési eszköz egy migrálási felmérést futtatását követően.
 
 ## <a name="migration-tool-suggestion"></a>Áttelepítési eszköz javaslat
 
-Az áttelepítési eszközök vonatkozó javaslatokat kérhet, kell tennie a részletes felderítés a helyszíni környezet. A részletes felderítési ügynökök telepítése a helyszíni gépeken végezhető el.  
+Az áttelepítési eszközök vonatkozó javaslatokat kérhet, kell tennie a helyszíni környezet mélyebb felderítés. A részletes felderítés telepítse az ügynököket a helyszíni gépek végezhető el.  
 
-1. Hozzon létre egy Azure áttelepítése projektet, a helyszíni gépeket felderítését és hozzon létre egy áttelepítési assessment. [További információk](tutorial-assessment-vmware.md).
-2. Töltse le és telepítse az Azure áttelepítése ügynökök minden a helyi számítógépen, amelynek meg szeretné tekinteni a javasolt áttelepítési módszer. [A következő eljárással](how-to-create-group-machine-dependencies.md#prepare-machines-for-dependency-mapping) az ügynökök telepítéséhez.
-2. Azonosítsa a növekedési és shift áttelepítési alkalmas a helyszíni gépeket. Ezek azok a rajtuk futó alkalmazások módosításait nem feltétlenül szükséges, amely áttelepíthető, mert a virtuális gépeket.
-3. A növekedési és shift áttelepítési javasoljuk, hogy Azure Site Recovery segítségével. [További információk](../site-recovery/tutorial-migrate-on-premises-to-azure.md). Alternatív megoldásként eszközeivel külső, amely támogatja az áttelepítést, az Azure-bA.
-4. Ha a helyszíni gépeket, amelyek nem megfelelő a növekedési és shift áttelepítésre, ez azt jelenti, ha szeretne áttelepíteni az adott alkalmazást, hanem az egész virtuális gép használhatja más áttelepítési eszközök. Például, javasoljuk, hogy a [Azure adatbázis áttelepítési szolgáltatás](https://azure.microsoft.com/campaigns/database-migration/) Ha szeretne áttelepíteni a helyszíni adatbázisok ilyen egy SQL Server, MySQL vagy Oracle az Azure-bA.
+1. Az Azure Migrate-projekt létrehozása a helyszíni gépek felderítéséhez és hozzon létre egy migrálási felmérést. [További információk](tutorial-assessment-vmware.md).
+2. Töltse le és telepítse az Azure Migrate-ügynökök minden helyszíni gépre, amelynek meg szeretné tekinteni a javasolt áttelepítési módszer. [A következő eljárással](how-to-create-group-machine-dependencies.md#prepare-for-dependency-visualization) az ügynökök telepítéséhez.
+2. Azonosítsa a helyszíni gépek lift-and-shift-migrálás megfelelő. Ezek azok a virtuális gépek, nem szükséges módosítania kellene a rajtuk futó alkalmazások, és mivel telepíthetők át.
+3. Lift-and-shift-áttelepítés javasoljuk, hogy az Azure Site Recovery használatával. [További információk](../site-recovery/tutorial-migrate-on-premises-to-azure.md). Azt is megteheti külső eszközöket, amelyek támogatják az áttelepítés az Azure-ban is használhatja.
+4. Ha rendelkezik a helyszíni gépek nem megfelelők lift-and-shift-áttelepítés, azt jelenti, ha adott alkalmazás helyett egy teljes virtuális Gépet áttelepíteni kívánt használhatja más áttelepítési eszközök. Például, javasoljuk, hogy a [Azure Database Migration service](https://azure.microsoft.com/campaigns/database-migration/) Ha szeretne áttelepíteni a helyszíni adatbázisok ilyen egy SQL Server, MySQL, vagy az Oracle az Azure-bA.
 
 
-## <a name="review-suggested-migration-methods"></a>Javasolt áttelepítési módszereinek áttekintése
+## <a name="review-suggested-migration-methods"></a>Tekintse át a javasolt áttelepítési módszereinek
 
-1. Előtt javasolt áttelepítési metódus beszerzéséhez Azure áttelepítése projekt létrehozása, a helyszíni gépeket, és futtassa a áttelepítési értékelése szüksége. [További információk](tutorial-assessment-vmware.md).
-2. Az értékelés létrehozása után tekintse meg a Projekt > **áttekintése** > **irányítópult**. Kattintson a **Assessment Readiness**
+1. Ehhez előbb a javasolt áttelepítési módszer, kell az Azure Migrate-projekt létrehozása a helyszíni gépek felderítéséhez és migrálási felmérést végezhet. [További információk](tutorial-assessment-vmware.md).
+2. Az értékelés létrehozása után megtekintheti azokat a Projekt > **áttekintése** > **irányítópult**. Kattintson a **készenléti állapot értékelése**
 
     ![Készenléti állapot értékelése](./media/tutorial-assessment-vmware/assessment-report.png)  
 
-3. A **javasolt eszköz**, tekintse át a javaslatokat áttelepítésre használható eszközöket.
+3. A **ajánlott eszköz**, tekintse át a javaslatok a migráláshoz használható eszközöket.
 
-    ![Ajánlott eszköz](./media/tutorial-assessment-vmware/assessment-suitability.png) 
+    ![Ajánlott eszköz](./media/tutorial-assessment-vmware/assessment-suitability.png)
 
 
 

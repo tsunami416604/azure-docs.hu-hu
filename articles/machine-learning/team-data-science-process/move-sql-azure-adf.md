@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: deguhath
-ms.openlocfilehash: 5e5e8c3a81d911cb47edfcb5432bc423872a29ec
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: c0a488d34ffe2e5a8e8a3883276c1038039bc785
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42059636"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45731297"
 ---
 # <a name="move-data-from-an-on-premises-sql-server-to-sql-azure-with-azure-data-factory"></a>Adatok áthelyezése a helyszíni SQL Serverről az SQL Azure, az Azure Data Factoryvel
 Ez a témakör bemutatja az adatok áthelyezése egy helyszíni SQL Server-adatbázisból származó SQL Azure-adatbázishoz az Azure Blob Storage-n keresztül az Azure Data Factory (ADF) használatával.
@@ -54,7 +54,7 @@ Beállítjuk az ADF-folyamatot, amely composes két az áttelepítési tevékeny
 Ez az oktatóanyag feltételezi, hogy:
 
 * Egy **Azure-előfizetés**. Ha nem rendelkezik előfizetéssel, regisztrálhat egy [ingyenes próbaverzióra](https://azure.microsoft.com/pricing/free-trial/).
-* Egy **Azure storage-fiók**. Ez az oktatóanyag az adatok tárolása Azure storage-fiók használhat. Ha nem rendelkezik Azure storage-fiókkal, tekintse meg a [hozzon létre egy tárfiókot](../../storage/common/storage-quickstart-create-account.md) cikk. Miután létrehozta a tárfiókot, szerezze be a tárterület elérésére használt fiók kulcsot kell. Lásd: [a tárelérési kulcsok kezelése](../../storage/common/storage-create-storage-account.md#manage-your-storage-access-keys).
+* Egy **Azure storage-fiók**. Ez az oktatóanyag az adatok tárolása Azure storage-fiók használhat. Ha nem rendelkezik Azure storage-fiókkal, tekintse meg a [hozzon létre egy tárfiókot](../../storage/common/storage-quickstart-create-account.md) cikk. Miután létrehozta a tárfiókot, szerezze be a tárterület elérésére használt fiók kulcsot kell. Lásd: [a tárelérési kulcsok kezelése](../../storage/common/storage-account-manage.md#access-keys).
 * A hozzáférést egy **az Azure SQL Database**. Ha be kell állítania az Azure SQL Database, a témakör [Ismerkedés a Microsoft Azure SQL Database ](../../sql-database/sql-database-get-started.md) információt nyújt az kiépítése az Azure SQL Database egy új példányát.
 * Telepített és konfigurált **Azure PowerShell-lel** helyileg. Útmutatásért lásd: [telepítése és konfigurálása az Azure PowerShell-lel](/powershell/azure/overview).
 
@@ -86,7 +86,7 @@ A társított szolgáltatás határozza meg az információkat, amelyeket az Azu
 
 1. On-premises SQL Server
 2. Azure Blob Storage
-3. Azure SQL Database
+3. Azure SQL-adatbázis
 
 Lépésről lépésre társított szolgáltatásokat hoz létre a megadott [társított szolgáltatásokat hoz létre](../../data-factory/tutorial-hybrid-copy-portal.md#create-a-pipeline).
 

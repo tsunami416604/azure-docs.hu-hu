@@ -8,14 +8,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: develop apps
 ms.topic: conceptual
-ms.date: 07/16/2018
+ms.date: 09/14/2018
 ms.author: sstein
-ms.openlocfilehash: d97ec2cc67da7c4bc1479c55a9a7c35c0c754532
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 643add4e0e4732734e9ef763a587755bf8700605
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39092528"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45731002"
 ---
 # <a name="sql-error-codes-for-sql-database-client-applications-database-connection-errors-and-other-issues"></a>Az SQL Database-ügyfélalkalmazások SQL-hibakódok: adatbázis-csatlakozási hibák és egyéb problémák
 
@@ -111,7 +111,7 @@ Létrehozásáról és használatáról a rugalmas készletek kapcsolatos hibák
 | 40857 |EX_USER |A kiszolgáló nem található rugalmas készlet: "%ls", a rugalmas készlet neve: "%ls". |kiszolgáló neve rugalmas készlet neve |Megadott rugalmas készlet nem létezik a megadott kiszolgálón. |Adja meg egy érvényes a rugalmas készlet nevét. |
 | 40858 |EX_USER |A(z) "%ls" rugalmas készlet már létezik a kiszolgálón: "%ls" |rugalmas készlet neve, a kiszolgáló neve |Megadott rugalmas készlet már létezik a megadott logikai kiszolgálón. |Új rugalmas készlet nevét adja meg. |
 | 40859 |EX_USER |Rugalmas készlet nem támogatja a szolgáltatási szint "%ls". |rugalmas készlet szolgáltatási szintjétől |Adott szolgáltatási szinten a rugalmas készlet kiépítése nem támogatott. |Adja meg a megfelelő kiadása, vagy hagyja üresen, használja az alapértelmezett szolgáltatási szinten a szolgáltatási rétegben. |
-| 40860 |EX_USER |Rugalmas készlet (%ls) és a szolgáltatás célja "%ls" kombinációja érvénytelen. |rugalmas készlet neve; szolgáltatási szint célkitűzésének neve |Rugalmas készlet és a szolgáltatási cél is adhatók meg együtt csak akkor, ha a szolgáltatási cél "ElasticPool" van megadva. |Adja meg a rugalmas készlet és a szolgáltatási cél megfelelő kombinációja. |
+| 40860 |EX_USER |Rugalmas készlet (%ls) és a szolgáltatás célja "%ls" kombinációja érvénytelen. |rugalmas készlet neve; Szolgáltatásszint |Rugalmas készlet és a szolgáltatási szinten is adhatók meg együtt csak akkor, ha a megadott erőforrástípus "ElasticPool". |Adja meg a rugalmas készlet és a szolgáltatási rétegben megfelelő kombinációja. |
 | 40861 |EX_USER |Az adatbázis-kiadás: %. *ls' nem lehet a rugalmas készlet szolgáltatási szintjétől, ami eltér a(z) %.* ls'. |adatbázis-kiadás, rugalmas készlet szolgáltatási szintjétől |Az adatbázis-kiadás nem egyezik a rugalmas készlet szolgáltatási rétegben. |Ne adjon meg egy adatbázis-kiadás, amely eltér attól a rugalmas készlet szolgáltatási szintjétől.  Vegye figyelembe, hogy az adatbázis-kiadás nem kell megadni. |
 | 40862 |EX_USER |Rugalmas készlet nevének kell lennie. Ha a rugalmas készlet szolgáltatási célja meg van adva. |None |Rugalmas készlet szolgáltatási célja nem azonosítója egyértelműen rugalmas készletben. |Adja meg a rugalmas készlet nevét, a rugalmas készlet szolgáltatási célja használatakor. |
 | 40864 |EX_USER |A rugalmas készlet dtu-i verziójúnak kell lennie (%d) dtu-k szolgáltatási szinthez a(z) %. * ls'. |Rugalmas készlet; esetében a dtu-k rugalmas készlet szolgáltatási szintjétől. |Állítsa be a minimális korlát alatti a rugalmas készlet dtu-i tett kísérlet. |Ismételje meg a rugalmas készletnek a legalább a minimális korlát beállítása a dtu-k. |
@@ -139,7 +139,7 @@ A következő hibák minden előző kategóriákba nem tartoznak.
 | Hibakód | Severity | Leírás |
 | ---:| ---:|:--- |
 | 15006 |16 |(AdministratorLogin) azért nem egy érvényes nevet mert érvénytelen karaktereket tartalmaz. |
-| 18452 |14 |A bejelentkezés sikertelen volt. A bejelentkezés nem megbízható tartományból van, ezért nem használható a Windows authentication.%.&#x2a;ls (a Windows-bejelentkezések nem támogatottak az SQL Server jelen verziójában.) |
+| 18452 |14 |A bejelentkezés nem sikerült. A bejelentkezés nem megbízható tartományból van, ezért nem használható a Windows authentication.%.&#x2a;ls (a Windows-bejelentkezések nem támogatottak az SQL Server jelen verziójában.) |
 | 18456 |14 |Felhasználó bejelentkezése sikertelen volt a(z) '%.&#x2a;ls'.%.&#x2a;ls%.&#x2a;ls(a felhasználó bejelentkezése sikertelen volt: "%.&#x2a;ls". A jelszó módosítása sikertelen volt. Bejelentkezés során a jelszó módosítása nem támogatott az SQL Server jelen verziójában.) |
 | 18470 |14 |A felhasználó bejelentkezése sikertelen volt: '%.&#x2a;ls'. OK: A fiók nem disabled.%.&#x2a;ls |
 | 40014 |16 |Több adatbázis ugyanabban a tranzakcióban nem használható. |

@@ -1,26 +1,22 @@
 ---
-title: Az Azure AD – gyakori kérdések |} A Microsoft Docs
-description: Az Azure Active Directoryval kapcsolatos gyakori kérdések az Azure-ral és az Azure Active Directoryval, a jelszókezeléssel és az alkalmazások elérésével kapcsolatos kérdésekre ad választ.
+title: Az Azure Active Directory – gyakori kérdések |} A Microsoft Docs
+description: Ismerje meg a gyakori kérdések és válaszok az Azure és az Azure Active Directory, jelszókezelés és alkalmazás-hozzáférés.
 services: active-directory
-documentationcenter: ''
 author: eross-msft
 manager: mtillman
-editor: ''
 ms.assetid: b8207760-9714-4871-93d5-f9893de31c8f
 ms.service: active-directory
 ms.component: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.date: 12/14/2017
 ms.author: lizross
-ms.openlocfilehash: cc9b5810085d3300861735a95a94e577bf61d70e
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 53c38eee1befe7c83f739deeb0e85711e7313e60
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44346049"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45730109"
 ---
 # <a name="azure-active-directory-faq"></a>Azure Active Directory – gyakori kérdések
 Az Azure Active Directory (Azure AD) egy átfogó szolgáltatott identitási (IDaaS) megoldás, amely az identitások, a hozzáférés-kezelés és a biztonság minden szempontját lefedi.

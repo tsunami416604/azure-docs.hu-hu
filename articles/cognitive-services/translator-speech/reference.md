@@ -1,107 +1,107 @@
 ---
-title: A Microsoft Translator Diktálásfelismerési API-referencia |} Microsoft Docs
-titleSuffix: Cognitive Services
-description: A Microsoft Translator Diktálásfelismerési API referenciadokumentációt tartalmaz.
+title: Translator Speech API-referencia
+titleSuffix: Azure Cognitive Services
+description: A Translator Speech API dokumentációja.
 services: cognitive-services
 author: Jann-Skotdal
-manager: chriswendt1
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: microsoft translator
-ms.topic: article
+ms.component: translator-speech
+ms.topic: reference
 ms.date: 05/18/2018
 ms.author: v-jansko
-ms.openlocfilehash: be8faddf56158de3399713c41638c0b913b4627e
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: e4b95822141193739fccea999e9ce3d730c112a4
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35349711"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45983280"
 ---
-# <a name="microsoft-translator-speech-api"></a>Microsoft Translator Speech API
+# <a name="translator-speech-api"></a>Translator Speech API
 
-Ez a szolgáltatás egy streamelési API átírni conversational beszédfelismerés egyik nyelvről egy másik nyelv szöveggé kínál. Az API-t is integrálható a lefordított szöveg felolvasása szöveget beszéddé átalakító képességeket. A Microsoft Translator Diktálásfelismerési API lehetővé teszi, hogy helyzetekben, például a valós idejű fordítása beszélgetések Skype fordító látható módon.
+Ezt a szolgáltatást kínál egy olyan streamelési API a alapuló átírás természetes nyelvi beszédfelismerési egyik nyelvről egy másik nyelv szöveggé. Az API-t a lefordított szöveg felolvasása szöveg-hang transzformációs képességeket is integrálható. A Translator Speech API lehetővé teszi például a valós idejű fordítását beszélgetések, a Skype fordítóban látható módon.
 
-A Microsoft Translator Diktálásfelismerési API-val ügyfélalkalmazások adatfolyam beszéd hang a szolgáltatáshoz, és adatfolyamon vissza szöveges eredmények, amelyek a felismert szöveg szerepel az adatforrás nyelvi és a fordítás a célként megadott nyelven. Szöveges eredményt automatikus beszéd felismerési (ASR) a bejövő hangadatfolyam mély Neurális hálózatokat technológiával alkalmazása hozzák létre. Egy új technika, hogy jobban azok tükrözzék, szándékos felhasználói adat Igaz szöveg nevű van további javítja a nyers automatikus rendszer-Helyreállítás kimenete. Például Igaz szöveg eltávolítja disfluencies (a hmms és coughs) és a visszaállítási megfelelő absztrakt és a nagybetűk. Maszkolnia, vagy zárja ki profanities is megtalálható. A megjelenítés és fordítási motorok kifejezetten képzett conversational beszéd kezelésére. A beszédfelismerés fordítási szolgáltatás csend észlelési egy utterance végén meghatározására használja. Hang tevékenységet megelőző szünet a szolgáltatás fogja adatfolyam vissza a befejezett utterance a végső eredményt. A szolgáltatás is küldhet vissza részleges eredmények, amelyek köztes elfpgads és egy utterance fordításainak folyamatban van. A végső eredmény elérése érdekében a szolgáltatás teszi lehetővé a célként megadott nyelveken szóbeli szövegből (szöveg-beszéd) beszéd szintetizálásához. Szöveg-beszéd átalakítás hang létrejön az ügyfél által megadott formátumban. WAV és MP3 formátuma nem érhető el.
+A Translator Speech API-val ügyfélalkalmazások adatfolyam speech hangot a szolgáltatáshoz, és vissza adatfolyamban kaphatja kézhez az eredmények szöveges többek között a felismert szöveget a forrás nyelvét, és a fordítás a célként megadott nyelven. Szöveg eredményeket hozzák automatikus Speech Recognition (ASR) szolgáltatásra működteti, a bejövő hang adatfolyamba Neurális hálózatok alkalmazása. Nyers ASR kimeneti további továbbfejlesztett egy új technikát TrueText nevű annak érdekében, hogy jobban tükrözzék a felhasználói szándékot. Ha például TrueText eltávolítja disfluencies (hmms és coughs) és a visszaállítás megfelelő írásjelek és a nagybetűk. Maszkolandó vagy kizárása profanities is megtalálható. A felismerés és fordítási motorok különösen képzett természetes nyelvi beszédfelismerési kezelésére. A beszédalapú fordítási szolgáltatás csend észlelési használja az utterance (kifejezés) végén meghatározásához. A voice-tevékenységi szüneteltetése, után a szolgáltatás fog adatfolyam vissza a befejezett utterance (kifejezés) végső eredményt. A szolgáltatás is küldhet vissza részleges eredményeket, amelyek az köztes felismerés és az utterance (kifejezés) a fordítások folyamatban van. A végső eredmények érdekében a szolgáltatás lehetőséget kínál a szintetizálásához speech (szöveg-hang transzformációs) a célként megadott nyelveken a kimondott szöveg. Szöveg-hang transzformációs hang jön létre az ügyfél által megadott formátumban. WAV-és a MP3 érhetők el.
 
-A Microsoft Translator Diktálásfelismerési API kihasználja az ügyfél és a kiszolgáló közötti kétirányú kommunikációs csatornát biztosítanak a WebSocket protokoll. Egy alkalmazás ezeket a lépéseket, a szolgáltatás használatára lesz szükség:
+Translator Speech API, az ügyfél és a kiszolgáló közötti kétirányú kommunikációs csatornát biztosítanak a WebSocket protokoll használ. Egy alkalmazás ezeket a lépéseket, a szolgáltatás használatára lesz szükség:
 
 ## <a name="1-getting-started"></a>1. Első lépések
-Szüksége lesz a Microsoft Translator szöveg API eléréséhez [Regisztráljon a Microsoft Azure](translator-speech-how-to-signup.md).
+A Translator Text API kell eléréséhez [Regisztráljon a Microsoft Azure](translator-speech-how-to-signup.md).
 
 ## <a name="2-authentication"></a>2. Hitelesítés
 
-Az Előfizetés kulcs segítségével hitelesíteni. A Microsoft Translator Diktálásfelismerési API hitelesítési két módot támogat:
+Az előfizetési kulcs használatával hitelesíteni. A Translator Speech API-hitelesítés két módot támogat:
 
-* **Access token használatával:** az alkalmazás beszerzése egy jogkivonatot a token szolgáltatástól. A Microsoft Translator Diktálásfelismerési API-előfizetés kulcs segítségével olyan hozzáférési jogkivonatot szerezni az kognitív hitelesítési szolgáltatások. A hozzáférési jogkivonat érvénytelen 10 percig. Új hozzáférési jogkivonat beszerzése 10 percenként, és tovább használni a ugyanazokkal a hozzáférési jogkivonat ismételt kérelmek ezen 10 percen belül.
+* **Hozzáférési token használatával:** az alkalmazás szerzi be egy hozzáférési jogkivonatot a jogkivonat-szolgáltatás. A Translator Speech API-előfizetési kulcs használatával hozzáférési jogkivonat beszerzése az Azure Cognitive Services hitelesítési szolgáltatástól. A hozzáférési jogkivonatot a 10 percig érvényes. Új hozzáférési jogkivonat beszerzése 10 percenként, és így továbbra is használhatja ugyanazt a hozzáférést token ismétlődő kérelmek ezen 10 percen belül.
 
-* **Közvetlenül egy előfizetés kulccsal:** az alkalmazás át az Előfizetés kulcs értékként `Ocp-Apim-Subscription-Key` fejléc.
+* **Közvetlenül egy előfizetési kulcsot használva:** az alkalmazásban adja át az előfizetési kulcs értékként `Ocp-Apim-Subscription-Key` fejléc.
 
-Az Előfizetés kulcs és a hozzáférési jogkivonat tekinti titkokat nézetből el kell rejteni.
+Kezelje az előfizetési kulcs és a hozzáférési jogkivonat titkos kódok, amelyek nézetből el kell rejteni.
 
-## <a name="3-query-languages"></a>3. Lekérdezés nyelvek
-**A lekérdezés a nyelvek erőforrás aktuális készletében lévő támogatott nyelveket.** A [nyelvek erőforrás](languages-reference.md) mutatja meg a meghatározott nyelv és hangok beszédfelismerési, szöveges fordítási és szöveg-beszéd átalakítás. Minden nyelven vagy a hang kap egy azonosító, amely a Microsoft Translator Diktálásfelismerési API nyelv vagy a hang azonosítására használ.
+## <a name="3-query-languages"></a>3. Lekérdezési nyelvet
+**A lekérdezés a nyelvek erőforrás által támogatott nyelvekről az aktuális készletét.** A [nyelvek erőforrás](languages-reference.md) tesz elérhetővé a nyelvek készletét, és beszédhangot, beszédfelismerés, szövegfordítás és szöveg-hang transzformációs elérhető. Minden egyes nyelvi vagy szóbeli kap egy azonosító, amely a Translator Speech API nyelv vagy a hangalapú azonosítására használ.
 
-## <a name="4-stream-audio"></a>4. Az adatfolyam hang
-**Nyissa meg a kapcsolatot, és a szolgáltatás hang adatfolyam megkezdése.** A szolgáltatás URL-cím `wss://dev.microsofttranslator.com/speech/translate`. Paraméterek és a szolgáltatás által várt hang formátumok folyamata az alábbiakban olvasható, a rendszer a `/speech/translate` műveletet. A paraméterek egyike segítségével a hozzáférési jogkivonat továbbítja a 2. lépésben fent.
+## <a name="4-stream-audio"></a>4. Stream hang
+**Nyisson meg egy kapcsolatot, és elkezdeni a streamelést a hangot a szolgáltatáshoz.** A szolgáltatás URL-cím `wss://dev.microsofttranslator.com/speech/translate`. Paraméterek és a szolgáltatás által várt hangformátumok alább találhatók, az a `/speech/translate` műveletet. A paraméterek egyike segítségével adja át a hozzáférési jogkivonatot a fenti 2. lépés.
 
-## <a name="5-process-the-results"></a>5. Az eredmény feldolgozása
-**Az eredmény vissza a szolgáltatás a folyamatos átviteli feldolgozása.** A dokumentációban ismertetett részleges eredmények, a végső eredmények és a szöveg-beszéd átalakítás, illetve hang-szegmensek formátuma a `/speech/translate` az alábbi műveletet.
+## <a name="5-process-the-results"></a>5. Az eredmények feldolgozásához
+**Az eredmények vissza a szolgáltatásból streamelt adatok feldolgozásához.** A dokumentációban ismertetett részleges eredményeket, a végső eredmények és a szöveg-hang transzformációs hang szegmensek formátuma a `/speech/translate` az alábbi műveletet.
 
-Kódminták, amely tartalmazza a Microsoft Translator Diktálásfelismerési API használata érhetők el a [Microsoft Translator Github hely](https://github.com/MicrosoftTranslator).
+A Translator Speech API használatát bemutató kódminta érhetők el a [a Microsoft Translator Github-webhelyről](https://github.com/MicrosoftTranslator).
 
 ## <a name="implementation-notes"></a>Megvalósításhoz fűzött megjegyzések
 
-Egy munkamenet beszéd fordításhoz Establishes /speech/translate beolvasása
+Egy munkamenet a beszédalapú fordítási Establishes /speech/translate beolvasása
 
 ### <a name="connecting"></a>Csatlakozás
-A szolgáltatáshoz való csatlakozáskor előtt tekintse át a később az itt megadott paraméterek listáját. Egy példa egy kérelem a következő:
+A szolgáltatáshoz való csatlakozás előtt tekintse át a jelen szakaszban később megadott paraméterek listáját. A rendszer egy kérelem (példa):
 
 `GET wss://dev.microsofttranslator.com/speech/translate?from=en-US&to=it-IT&features=texttospeech&voice=it-IT-Elsa&api-version=1.0`
 `Ocp-Apim-Subscription-Key: {subscription key}`
 `X-ClientTraceId: {GUID}`
 
-A kérelem határozza meg, hogy szóbeli angol részére a szolgáltatás és olasz lefordítva. Egyes végső felismerési eredmények hoz létre egy szöveget beszéddé átalakító hang válasz az Elsa nevű nőivarú használatának. Figyelje meg, hogy a kérelem tartalmazza a hitelesítő adatokat a `Ocp-Apim-Subscription-Key header`. A kérelem is a következő ajánlott úgy, hogy egy globálisan egyedi azonosítót a fejlécben `X-ClientTraceId`. Egy ügyfélalkalmazás naplózza a nyomkövetési azonosító, hogy a probléma megoldásához, azok bekövetkezésekor használható.
+A kérelem Megadja, hogy használja a beszélt angol adatfolyamként történő a szolgáltatás és olasz fordítja. Minden egyes végső felismerés eredményét a Elsa nevű női hang-szöveg-hang transzformációs hang választ hoz létre. Figyelje meg, hogy a kérelem tartalmazza-e a hitelesítő adatokat a `Ocp-Apim-Subscription-Key header`. A kérelem is követi a legjobb globálisan egyedi azonosító a fejléc beállításával `X-ClientTraceId`. Egy ügyfélalkalmazás naplózni kell a nyomkövetési Azonosítót az, hogy a felmerülő hibák elhárításához használható.
 
 ### <a name="sending-audio"></a>Hang küldése
-Miután létrejött a kapcsolat, az ügyfél kezdődik, a szolgáltatás hang adatfolyam. Az ügyfél elküldi az adattömbök hang. Egyes adattömbök bináris típusú Websocket üzenetet küldeni.
+Ha a kapcsolat létrejött, az ügyfél kezdődik, hang, a szolgáltatás folyamatos. Az ügyfél elküldi az adattömbök hang. Minden egyes adattömbbel bináris típusú Websocket üzenetet küldeni.
 
-A hanghullám hang formátumban van hangbemenetet (HULLÁM, vagy több gyakran nevezik WAV miatt a fájlnév kiterjesztése). Az ügyfélalkalmazás egy csatorna, aláírt 16 bites PCM hang 16 kHz lekérdező kell adatfolyam. Az ügyfél részére első készletét tartalmazza a WAV-fejléc. A 44 bájtos fejléc számára egy csatornán aláírt 16 bites PCM adatfolyam 16 kHz lekérdező van:
+Hangbemenet hullám hang formátumban van (HULLÁM, vagy több gyakran nevezik WAV miatt a fájlnév kiterjesztése). Az ügyfélalkalmazás egy csatorna, aláírt 16 bites PCM hang: 16 kHz mintát kell adatfolyam. Az ügyfél részére első készlete a WAV-fejléc tartalmazza. A 44 bájtos fejléc esetében egy csatornán aláírt 16 bites PCM stream, 16 kHz mintát a következő:
 
 |Eltolás|Érték|
 |:---|:---|
 |0 – 3|"RIFF"|
 |4 – 7|0|
-|8 – 11|"WAVE"|
+|8 – 11|"SZAKASZ"|
 |12 – 15|"fmt"|
 |16 - 19|16|
-|20 - 21.|1|
-|22 – 23|1|
+|20 - 21|1|
+|22 - 23|1|
 |24 - 27|16000|
-|28 - 31|32000|
+|28 – 31.|32000|
 |32 - 33|2|
-|34 - 35|16|
-|36 - 39|az "adatok"|
+|34 – 35|16|
+|36 - 39|"adatok"|
 |40 - 43|0|
 
-Figyelje meg, hogy a fájlok összesített mérete (bájt 4 – 7) és a "data" (bájt 40-43) mérete nulla értékre van beállítva. Ez az OK gombra a folyamatos átviteli forgatókönyvhöz, ahol a teljes mérete nem feltétlenül ismert előzetes megfizetése esetén.
+Figyelje meg, hogy a teljes fájlméret (bájt 4-7) és a "data" (40-43 bájt) mérete értéke nulla. Ez az OK gombra a streamelési forgatókönyv, ahol a teljes mérete nem feltétlenül ismert előre.
 
-A WAV (RIFF) fejléc elküldése, után az ügyfél elküldi a hang adattömböket írnak. Az ügyfél általában fog adatfolyam-jelző (pl. adatfolyama 100 MS egyszerre hang) rögzített időtartamú rögzített méretű adattömböket.
+A WAV (RIFF) fejléc elküldése, után az ügyfél elküldi az audio adatok adattömböket. Az ügyfél általában fog adatfolyam egy meghatározott időtartamra (például stream 100 MS egyszerre hanganyagra) jelölő rögzített méretű adattömbökre.
 
-### <a name="final-result"></a>Végső eredményére
-Végső Beszéd felismerés eredményeként jön létre egy utterance végén. A szolgáltatás egy eredményt a Text típusú WebSocket üzenet ügyfélre kerül továbbításra. Az üzenet tartalma a JSON-szerializálás egy objektum a következő tulajdonságokkal:
+### <a name="final-result"></a>Végső eredményt
+Végső speech recognition eredményeképpen jön létre az utterance (kifejezés) végén. Egy eredményt a szolgáltatásból átkerülnek a szöveg típusú WebSocket üzenetben az ügyfelet. Az üzenet tartalma a következő tulajdonságokkal rendelkező objektum JSON-szerializálás:
 
-* `type`: A karakterlánc-konstansra azonosításához eredményének típusa. A végső eredmények végső értéke.
-* `id`: A felismerési eredmények rendelt azonosító karakterlánc.
-* `recognition`: Az adatforrás nyelvi felismert szöveget. A szöveg egy hamis felismerés esetén üres karakterlánc lehet.
-* `translation`: A megadott nyelv felismert szöveg lefordítva.
-* `audioTimeOffset`: A ticks felismerés elindítása idő eltolása (1 osztásjelek = 100 nanoszekundumban). Az eltolás értéke kezdete streaming viszonyítva.
-* `audioTimeSize`: A felismerési száma (100 nanoszekundumban) időtartama.
-* `audioStreamPosition`: A felismerési elindítása bájt eltolását. Az eltolás van, az adatfolyam kezdete viszonyítva.
-* `audioSizeBytes`: Mérete a felismerési bájtban.
+* `type`: Az eredmény típusának azonosításához karakterlánc-konstans. A végső eredmények végső értéke.
+* `id`: A felismerés eredményét hozzárendelt azonosító karakterlánc.
+* `recognition`: A Forrásnyelv felismert szöveg. A szöveg hamis felismerés esetén üres karakterlánc lehet.
+* `translation`: A felismert szöveget a lefordított cél nyelven.
+* `audioTimeOffset`: Az az órajelben-felismerés kezdete idő eltolása (1 osztásjelek = 100 nanoszekundumban). Az eltolás van folyamatos átvitel kezdete viszonyítva.
+* `audioTimeSize`: Az órajelben (100 nanoszekundumban), a felismerés időtartama.
+* `audioStreamPosition`: A beszédfelismerést kezdete bájt eltolását. Az eltolás van, a stream elején viszonyítva.
+* `audioSizeBytes`: Mérete (bájt) a felismerése.
 
-Vegye figyelembe, hogy a felismerés a hangadatfolyam elhelyezéséhez nem szerepel az eredményeket alapértelmezés szerint. A `TimingInfo` szolgáltatás meg kell adni az ügyfél (lásd: `features` paraméter).
+Vegye figyelembe, hogy a hang Stream elismerését elhelyezéséhez nem szerepel az eredményeket alapértelmezés szerint. A `TimingInfo` szolgáltatást ki kell választani az ügyfél (lásd: `features` paraméter).
 
-Egy minta végeredményt a következőképpen történik:
+A minta végeredmény a következőképpen történik:
 
 ```
 {
@@ -116,23 +116,23 @@ Egy minta végeredményt a következőképpen történik:
 }
 ```
 
-### <a name="partial-result"></a>Részleges eredménye
-Részleges vagy köztes beszéd felismerési eredmények nem átvitt az ügyfél alapértelmezés szerint. Az ügyfél a szolgáltatások lekérdezési paraméter segítségével igényelhetnek őket.
+### <a name="partial-result"></a>Részleges eredményt
+Részleges vagy köztes speech recognition eredmények adatfolyamként történő küldése az ügyfélnek alapértelmezés szerint. Az ügyfél a szolgáltatások lekérdezési paraméter használatával tanúsítványkérelmeket.
 
-Részleges eredményt ügyfélre szöveg típusú WebSocket üzenetben kerül továbbításra a szolgáltatás. Az üzenet tartalma a JSON-szerializálás egy objektum a következő tulajdonságokkal:
+Részleges eredményt átkerülnek a szolgáltatásból a szöveg típusú WebSocket üzenetben az ügyfelet. Az üzenet tartalma a következő tulajdonságokkal rendelkező objektum JSON-szerializálás:
 
-* `type`: A karakterlánc-konstansra azonosításához eredményének típusa. A részleges eredmények részleges értéke.
-* `id`: A felismerési eredmények rendelt azonosító karakterlánc.
-* `recognition`: Az adatforrás nyelvi felismert szöveget.
-* `translation`: A megadott nyelv felismert szöveg lefordítva.
-* `audioTimeOffset`: A ticks felismerés elindítása idő eltolása (1 osztásjelek = 100 nanoszekundumban). Az eltolás értéke kezdete streaming viszonyítva.
-* `audioTimeSize`: A felismerési száma (100 nanoszekundumban) időtartama.
-* `audioStreamPosition`: A felismerési elindítása bájt eltolását. Az eltolás van, az adatfolyam kezdete viszonyítva.
-* `audioSizeBytes`: Mérete a felismerési bájtban.
+* `type`: Az eredmény típusának azonosításához karakterlánc-konstans. A részleges eredményeket részleges érték.
+* `id`: A felismerés eredményét hozzárendelt azonosító karakterlánc.
+* `recognition`: A Forrásnyelv felismert szöveg.
+* `translation`: A felismert szöveget a lefordított cél nyelven.
+* `audioTimeOffset`: Az az órajelben-felismerés kezdete idő eltolása (1 osztásjelek = 100 nanoszekundumban). Az eltolás van folyamatos átvitel kezdete viszonyítva.
+* `audioTimeSize`: Az órajelben (100 nanoszekundumban), a felismerés időtartama.
+* `audioStreamPosition`: A beszédfelismerést kezdete bájt eltolását. Az eltolás van, a stream elején viszonyítva.
+* `audioSizeBytes`: Mérete (bájt) a felismerése.
 
-Vegye figyelembe, hogy a felismerés a hangadatfolyam elhelyezéséhez nem szerepel az eredményeket alapértelmezés szerint. A TimingInfo szolgáltatást meg kell adni az ügyfél (lásd a szolgáltatások paraméter).
+Vegye figyelembe, hogy a hang Stream elismerését elhelyezéséhez nem szerepel az eredményeket alapértelmezés szerint. A TimingInfo szolgáltatást ki kell választani az ügyfél (lásd a szolgáltatások paraméter).
 
-Egy minta végeredményt a következőképpen történik:
+A minta végeredmény a következőképpen történik:
 
 ```
 {
@@ -147,47 +147,47 @@ Egy minta végeredményt a következőképpen történik:
 }
 ```
 
-### <a name="text-to-speech"></a>Szöveg-beszéd átalakítás
-Ha a szöveg-beszéd átalakítás funkció engedélyezve van (lásd: `features` paraméterhez), a végeredményt a hang szóbeli lefordított szöveg követ. Hang adatok pedig és az ügyfélnek küldött a szolgáltatás bináris típusú Websocket-üzenetek sorozatot. Egy ügyfél az egyes üzenetek FIN bit ellenőrzésével észleli az adatfolyam végét. Az utolsó üzenet bináris fog rendelkezni a FIN bit beállítása egy, az adatfolyam végét jelzi. Az adatfolyam formátuma értékének függ a `format` paraméter.
+### <a name="text-to-speech"></a>Szöveg-hang transzformációs
+Ha a szöveg-hang transzformációs funkció engedélyezve van (lásd: `features` paraméterhez), a végső eredményt a hanganyag a kimondott lefordított szöveg követ. Hang adatok adattömbökre osztotta és az ügyfélnek küldött a szolgáltatás bináris típusú Websocket üzenetek sorozataként. Egy ügyfél az egyes üzenetek PÉNZÜGY bit ellenőrzésével képes észlelni a konce datového proudu. Az utolsó üzenet bináris fog rendelkezni a PÉNZÜGY bit beállítása egy, az adatfolyam végén jelzi. Az adatfolyam formátuma értékét függ a `format` paraméter.
 
 ### <a name="closing-the-connection"></a>A kapcsolat bezárása
-Egy ügyfélalkalmazás hang adatfolyam befejeződött, és az utolsó végeredményt kapott, a kapcsolat által a WebSocket záró kézfogás kezdeményezése kell azonnal. Nincsenek feltételeket, amelyek hatására a kiszolgáló képes megszakítani a kapcsolatot. A következő WebSocket lezárt kódok előfordulhat, hogy fogadja az ügyfél:
+Amikor egy ügyfélalkalmazás hang streamelés befejeződött, és az utolsó végső eredményt kapott, a WebSocket záró kézfogás kezdeményezése azt kell bezárásához a kapcsolatot. Ebben az esetben feltételt, amely újraindítja a kiszolgálót, hogy állítsa le a kapcsolatot. Az ügyfél által a következő WebSocket lezárt kódok előfordulhat, hogy kapott:
 
-* `1003 - Invalid Message Type`: A kiszolgáló megszakítja a kapcsolatot a kapott adattípus nem fogad el, mert. Ez általában akkor fordul elő, amikor bejövő hang nem indul el egy megfelelő fejlécet.
-* `1000 - Normal closure`: A kapcsolat bezárta a kérés teljesítése után. A kiszolgáló a kapcsolat bezárul: fogadásakor nincsenek hang az ügyfélről egy hosszú ideig; Ha hosszabb ideig; csend továbbítja adatfolyamként Amikor a munkamenet eléri az engedélyezett maximális időtartamot (körülbelül 90 percig).
-* `1001 - Endpoint Unavailable`: Azt jelzi, hogy a kiszolgáló nem lesz elérhető. Ügyfél alkalmazás megkísérli az újbóli próbálkozások számát korlátozást kapcsolódjon újra.
-* `1011 - Internal Server Error`: A kapcsolat a kiszolgáló hibája miatt a kiszolgáló bezárul.
+* `1003 - Invalid Message Type`: A kapott adatok típusa nem fogad el, mert a kiszolgáló megszakítja a kapcsolatot. Ez gyakran történik, ha a bejövő hang kezdete nem a megfelelő fejlécet.
+* `1000 - Normal closure`: A kapcsolat be van zárva, a kérés teljesítése után. A kiszolgáló bontja a kapcsolatot: amikor nincs hang érkezik az ügyfél hosszabb idő; Ha hosszabb ideig; csend adatfolyamként Ha a munkamenet elérte a megengedett maximális időtartamot (körülbelül 90 percet).
+* `1001 - Endpoint Unavailable`: Azt jelzi, hogy a kiszolgáló nem lesz elérhető. Ügyfélalkalmazás előfordulhat, hogy megkísérel ismét kapcsolódni a próbálkozások számának korlátját.
+* `1011 - Internal Server Error`: A kiszolgálón egy hiba miatt a kapcsolat lezárul a kiszolgáló által.
 
 ### <a name="parameters"></a>Paraméterek
 
-|Paraméter|Érték|Leírás|A paraméter típusa|Adattípus|
+|Paraméter|Érték|Leírás|Paraméter típusa|Adattípus|
 |:---|:---|:---|:---|:---|
-|API-verzió|1.0|Az API-t, az ügyfél által kért verzióját. Két érték engedélyezett: `1.0`.|lekérdezés   |sztring|
-|forrás:|(üres)   |Meghatározza a bejövő beszéd nyelvét. Az érték egy, a nyelvi azonosítót a `speech` hatókörben található a nyelvek API válaszát.|lekérdezés|sztring|
-|erre:|(üres)|Meghatározza a transcribed szöveg lefordítani nyelvét. Az érték egy, a nyelvi azonosítót a `text` hatókörben található a nyelvek API válaszát.|lekérdezés|sztring|
-|funkciókkal|(üres)   |Az ügyfél által kijelölt szolgáltatások vesszővel tagolt készlete. Rendelkezésre álló funkciók a következők:<ul><li>`TextToSpeech`: Megadja, hogy a szolgáltatás kell a végső lefordított mondat lefordított hang.</li><li>`Partial`: Adja meg, hogy a szolgáltatás köztes felismerési eredmények kell visszaadnia, amíg a hang adatfolyam-e a szolgáltatás.</li><li>`TimingInfo`: Adja meg, hogy a szolgáltatás minden egyes felismerés társított információk kell visszaadnia.</li></ul>Például egy ügyfél kellene megadnia `features=partial,texttospeech` hiányos eredményeket és a szöveg-beszéd átalakítás, de a időzítési adatokat fogadhat. Vegye figyelembe, hogy az ügyfél mindig átvitt végleges eredmények.|lekérdezés|sztring|
-|hangalámondás|(üres)|Milyen hang használandó szöveget beszéddé átalakító megjelenítési a lefordított szöveg azonosítja. Az érték a nyelvek API a válaszban szereplő szöveg-beszéd átalakítás hatókörből hang azonosítók egyike. Egy hang nincs megadva a rendszer automatikusan az válasszon egy Ha a szöveg-beszéd átalakítás szolgáltatás engedélyezve van.|lekérdezés|sztring|
-|Formátumban|(üres)|Megadja a szolgáltatás által visszaadott szöveg-beszéd átalakítás hangadatfolyam formátumát. Rendelkezésre álló lehetőségek közül választhat:<ul><li>`audio/wav`: Hullám hangadatfolyam. Ügyfél által használandó a WAV-fejléc a hangformátum megfelelően értelmezni. Szöveg-beszéd átalakítás WAV hang 16 bites, egyetlen csatorna PCM 24kHz vagy 16kHz mintavételi sebességet.</li><li>`audio/mp3`: MP3 hangadatfolyam.</li></ul>Az alapértelmezett szint a `audio/wav`.|lekérdezés|sztring|
-|ProfanityAction    |(üres)    |Itt adhatja meg, hogyan kezelje a szolgáltatás a profanities a beszédfelismerés ismert. Érvényes műveletek a következők:<ul><li>`NoAction`: Profanities megmaradnak, mert a.</li><li>`Marked`: A mutatóhoz profanities helyére kerülnek. Lásd: `ProfanityMarker` paraméter.</li><li>`Deleted`: Profanities törlődnek. Például ha a word `"jackass"` Profanitás, a kódot a rendszer `"He is a jackass."` lesz `"He is a .".`</li></ul>Alapértelmezés szerint be van jelölve.|lekérdezés|sztring|
-|ProfanityMarker|(üres)    |Megadja, hogyan észlelt profanities kezeli, mikor `ProfanityAction` értéke `Marked`. Érvényes lehetőségek közül választhat:<ul><li>`Asterisk`: A karakterláncot profanities váltják `***`. Például ha a word `"jackass"` Profanitás, a kódot a rendszer `"He is a jackass."` lesz `"He is a ***.".`</li><li>`Tag`: Egy XML-címke Profanitás Profanitás tette. Például ha a word `"jackass"` Profanitás, a kódot a rendszer `"He is a jackass."` lesz `"He is a <profanity>jackass</profanity>."`.</li></ul>Az alapértelmezett érték `Asterisk`.|lekérdezés|sztring|
-|Engedélyezés|(üres)  |Meghatározza azt az értéket, az ügyfél tulajdonosi jogkivonat. Az előtag használata `Bearer` értékét követi a `access_token` a hitelesítési jogkivonat-szolgáltatás által visszaadott érték.|header   |sztring|
-|Az OCP-Apim-előfizetés-kulcs|(üres)|Kötelező, ha a `Authorization` fejléc nem lett megadva.|header|sztring|
-|access_token|(üres)   |Más módja felelt meg egy érvényes OAuth jogkivonatot. A tulajdonosi jogkivonattal által általában biztosított fejléc `Authorization`. Egyes websocket dokumentumtárak nem teszik lehetővé az Ügyfélkód fejlécek beállítása. Ilyen esetben az ügyfél által használt a `access_token` lekérdezésparaméter felelt meg egy érvényes tokent. Ha a hozzáférési token használatával hitelesítést végezni, ha `Authorization` fejléc nincs beállítva, majd `access_token` be kell állítani. Ha mind a fejlécet, és a lekérdezési paraméter van beállítva, a következő lekérdezésparaméter figyelmen kívül hagyja. Ügyfelek továbbítja a jogkivonatot egy metódus csak használja.|lekérdezés|sztring|
-|Előfizetés-kulcs|(üres)   |Hozzáférési kulcs előfizetés másik módja. Egyes websocket dokumentumtárak nem teszik lehetővé az Ügyfélkód fejlécek beállítása. Ilyen esetben az ügyfél által használt a `subscription-key` lekérdezésparaméter felelt meg egy érvényes előfizetéssel kulcsot. Ha az Előfizetés kulcs használata a hitelesítéshez, ha `Ocp-Apim-Subscription-Key` fejléc nincs beállítva, akkor az Előfizetés-kulcs be kell állítani. Ha mind a fejlécet, és a lekérdezési paraméter van beállítva, a következő lekérdezésparaméter figyelmen kívül hagyja. Az ügyfelek csak használja egy metódus adja át a `subscription key`.|lekérdezés|sztring|
-|X-ClientTraceId    |(üres)    |Ügyfél által létrehozott GUID használni egy kérelmet nyomon követésére. Problémák megfelelő hibaelhárítási, az ügyfelek kell minden egyes kérelemmel adjon meg új értéket, és jelentkezzen azt.<br/>Fejléc helyett függvénynek adható át ezt az értéket a következő lekérdezésparaméter `X-ClientTraceId`. Ha mind a fejlécet, és a lekérdezési paraméter van beállítva, a következő lekérdezésparaméter figyelmen kívül hagyja.|header|sztring|
-|X-CorrelationId|(üres)    |Egy ügyfél által generált azonosítójának több csatornát a beszélgetés összefüggést. Több beszéd fordítási munkamenet engedélyezése a felhasználók között beszélgetések is létrehozható. Ilyen esetben az összes beszéd fordítási munkamenetek segítségével ugyanazt a korrelációs Azonosítót a csatornák alkalmazássá. Ez elősegíti a nyomkövetés és diagnosztika. A-azonosítót meg kell felelnie: `^[a-zA-Z0-9-_.]{1,64}$`<br/>Fejléc helyett függvénynek adható át ezt az értéket a következő lekérdezésparaméter `X-CorrelationId`. Ha mind a fejlécet, és a lekérdezési paraméter van beállítva, a következő lekérdezésparaméter figyelmen kívül hagyja.|header|sztring|
-|X-ClientVersion|(üres)    |Azonosítja az ügyfél alkalmazás verziója. Példa: "2.1.0.123".<br/>Fejléc helyett függvénynek adható át ezt az értéket a következő lekérdezésparaméter `X-ClientVersion`. Ha mind a fejlécet, és a lekérdezési paraméter van beállítva, a következő lekérdezésparaméter figyelmen kívül hagyja.|header|sztring|
-|X-OsPlatform|(üres)   |Azonosítja a nevét és az ügyfélalkalmazás futó operációs rendszer verziója. Példák: "Android 5.0-s", "iOs 8.1.3", "Windows 8.1".<br/>Fejléc helyett függvénynek adható át ezt az értéket a következő lekérdezésparaméter `X-OsPlatform`. Ha mind a fejlécet, és a lekérdezési paraméter van beállítva, a következő lekérdezésparaméter figyelmen kívül hagyja.|header|sztring|
+|API-verzió|1.0|Az ügyfél által kért API-verzió. Engedélyezett értékek a következők: `1.0`.|lekérdezés   |sztring|
+|forrás:|(üres)   |Meghatározza a bejövő beszéd nyelvét. Az érték a nyelv azonosítók egyike a `speech` hatókörhöz. a válasz a nyelvek API.|lekérdezés|sztring|
+|erre:|(üres)|Meghatározza az átírt szöveget a lefordítandó nyelvét. Az érték a nyelv azonosítók egyike a `text` hatókörhöz. a válasz a nyelvek API.|lekérdezés|sztring|
+|funkciókkal|(üres)   |Az ügyfél által kiválasztott funkciók vesszővel elválasztott készletét. Elérhető funkciók:<ul><li>`TextToSpeech`: Megadja, hogy a szolgáltatás kell a lefordított hang, a végső lefordított mondatra.</li><li>`Partial`: Itt adhatja meg, hogy a szolgáltatás köztes felismerési eredményeket kell visszaadnia, míg a hanganyag adatfolyam-e a szolgáltatáshoz.</li><li>`TimingInfo`: Itt adhatja meg, hogy a szolgáltatás a társított minden egyes felismerés időzítési információkkal kell visszaadnia.</li></ul>Például egy ügyfél kellene megadnia `features=partial,texttospeech` részleges eredményeket, és a szöveg-hang transzformációs, de nincs időadatokat fogadásához. Vegye figyelembe, hogy a végső eredmények mindig továbbított az ügyfélnek.|lekérdezés|sztring|
+|Hang|(üres)|Milyen hangalapú használatához a fordítást, szöveg-hang transzformációs rendereléshez azonosítja. Értéke a válaszban a nyelvek API szövegfelolvasás hatókörből hangalapú azonosítók közül. Ha egy hang nincs megadva a rendszer automatikusan az válasszon egy Ha a szöveg-hang transzformációs szolgáltatás engedélyezve van.|lekérdezés|sztring|
+|Formátum|(üres)|Itt adhatja meg a szolgáltatás által visszaadott szöveg-hang transzformációs audio-adatfolyam formátuma. Az elérhető lehetőségek:<ul><li>`audio/wav`: Hang hullám az adatfolyam. Ügyfél használja a WAV-fejléc hangformátum megfelelően értelmezni. WAV hang-szöveg-hang transzformációs a 16 bites, egyetlen csatorna PCM 24kHz vagy 16kHz mintavételi arány.</li><li>`audio/mp3`: Hang MP3-adatfolyam.</li></ul>Az alapértelmezett szint a `audio/wav`.|lekérdezés|sztring|
+|ProfanityAction    |(üres)    |Itt adhatja meg, hogyan kezelje a szolgáltatás a profanities ismeri el a speech. Érvényes műveletek a következők:<ul><li>`NoAction`: Mivel profanities marad.</li><li>`Marked`: A jelölő profanities helyén. Lásd: `ProfanityMarker` paramétert.</li><li>`Deleted`: Profanities törlődnek. Például ha a szó `"jackass"` úgy viselkedik, mint a vulgáris, a kifejezés `"He is a jackass."` lesz `"He is a .".`</li></ul>Alapértelmezés szerint meg van jelölve.|lekérdezés|sztring|
+|ProfanityMarker|(üres)    |Megadja, hogy észlelt profanities mikor kezeli `ProfanityAction` értékre van állítva `Marked`. Az érvényes beállítások a következők:<ul><li>`Asterisk`: A karakterlánc profanities helyén `***`. Például ha a szó `"jackass"` úgy viselkedik, mint a vulgáris, a kifejezés `"He is a jackass."` lesz `"He is a ***.".`</li><li>`Tag`: Egy XML-címke cenzúrázása cenzúrázása zárják közre. Például ha a szó `"jackass"` úgy viselkedik, mint a vulgáris, a kifejezés `"He is a jackass."` lesz `"He is a <profanity>jackass</profanity>."`.</li></ul>Az alapértelmezett érték `Asterisk`.|lekérdezés|sztring|
+|Engedélyezés|(üres)  |Az ügyfél tulajdonosi jogkivonat értékét adja meg. Használja az előtag `Bearer` értékét követi a `access_token` a hitelesítési jogkivonat-szolgáltatás által visszaadott értéket.|header   |sztring|
+|OCP-Apim-Subscription-Key|(üres)|Kötelező, ha a `Authorization` fejléc nincs megadva.|header|sztring|
+|access_token|(üres)   |Alternatív módja átadni egy érvényes OAuth-jogkivonatot. A tulajdonosi jogkivonatot általában biztosított fejléccel `Authorization`. Websocket könyvtárak Ügyfélkód fejlécek beállítása nem teszik lehetővé. Ebben az esetben az ügyfél használhatja a `access_token` lekérdezési paraméter érvényes token át. Ha a hozzáférési token használatával hitelesíteni, ha `Authorization` fejléc nincs beállítva, majd `access_token` be kell állítani. Ha vannak beállítva, fejléc és a lekérdezési paraméter, a lekérdezési paraméter figyelmen kívül hagyja. Az ügyfelek csak egy módszert használja a jogkivonat.|lekérdezés|sztring|
+|Előfizetés-kulcs|(üres)   |Az előfizetői át másik módszere. Websocket könyvtárak Ügyfélkód fejlécek beállítása nem teszik lehetővé. Ebben az esetben az ügyfél használhatja a `subscription-key` lekérdezési paraméter, át kell adnia egy érvényes előfizetési kulcsot. Ha egy előfizetési kulcsot használja a hitelesítéshez, ha `Ocp-Apim-Subscription-Key` fejléc nincs beállítva, akkor az előfizetői be kell állítani. Ha vannak beállítva, fejléc és a lekérdezési paraméter, a lekérdezési paraméter figyelmen kívül hagyja. Az ügyfelek csak használja a több módszert adja át a `subscription key`.|lekérdezés|sztring|
+|X-ClientTraceId    |(üres)    |Egy ügyfél által létrehozott GUID egy kérelmet nyomon követéséhez használható. Megfelelő hibaelhárítási problémák, ügyfelek kell minden egyes kérelemmel adjon meg új értéket, és azt.<br/>Fejléc helyett ez az érték lekérdezési paraméterrel átadott `X-ClientTraceId`. Ha vannak beállítva, fejléc és a lekérdezési paraméter, a lekérdezési paraméter figyelmen kívül hagyja.|header|sztring|
+|X-korrelációs azonosító|(üres)    |Egy ügyfél által generált azonosítójának korrelációját, ha több csatornán beszélgetés során használt. Beszéd fordítási több munkamenet engedélyezése a felhasználók közötti beszélgetések hozható létre. Ilyen esetben az összes speech fordítási munkamenetek segítségével az azonos korrelációs Azonosítót a csatornák összekapcsolása. Ez elősegíti a nyomkövetés és diagnosztika. Az azonosítót meg kell felelnie: `^[a-zA-Z0-9-_.]{1,64}$`<br/>Fejléc helyett ez az érték lekérdezési paraméterrel átadott `X-CorrelationId`. Ha vannak beállítva, fejléc és a lekérdezési paraméter, a lekérdezési paraméter figyelmen kívül hagyja.|header|sztring|
+|X-ClientVersion|(üres)    |Az ügyfélalkalmazás verzióját azonosítja. Példa: "2.1.0.123".<br/>Fejléc helyett ez az érték lekérdezési paraméterrel átadott `X-ClientVersion`. Ha vannak beállítva, fejléc és a lekérdezési paraméter, a lekérdezési paraméter figyelmen kívül hagyja.|header|sztring|
+|X-OsPlatform|(üres)   |A nevét és az ügyfélalkalmazás fut, az operációs rendszer verzióját azonosítja. Példák: "Android 5.0-s", "iOs 8.1.3", "a Windows 8.1".<br/>Fejléc helyett ez az érték lekérdezési paraméterrel átadott `X-OsPlatform`. Ha vannak beállítva, fejléc és a lekérdezési paraméter, a lekérdezési paraméter figyelmen kívül hagyja.|header|sztring|
 
-### <a name="response-messages"></a>A válaszüzenetek
+### <a name="response-messages"></a>Parancsválasz-üzeneteket
 
-|HTTP-állapotkód|Ok|Válasz modell|Fejlécek|
+|HTTP-állapotkód|Ok|Válaszmodellje|Fejlécek|
 |:--|:--|:--|:--|
-|101    |WebSocket frissítését.|Modell Példaérték <br/> objektum {}|X-kérelemazonosító<br/>A kérelem hibaelhárítási célból azonosító érték.<br/>sztring|
-|400    |Hibás kérés. Ellenőrizze, érvényes azok bemeneti paramétereket. A válasz objektum tartalmazza a hiba részletes leírását.|||
-|401    |Nem engedélyezett. Győződjön meg arról, hogy hitelesítő adatok vannak beállítva, akkor érvényesek, és, hogy az Azure Data piaci előfizetés van, és egy elérhető egyenlegét jó állandó.|||
-|500    |Hiba történt. Ha a probléma továbbra is fennáll, jelentse az ügyfél nyomkövetési azonosító (X-ClientTraceId), vagy a kérelem azonosítója (X-kérelemazonosító).|||
-|503    |A kiszolgáló ideiglenesen nem érhető el. Próbálja megismételni a kérelmet. Ha a probléma továbbra is fennáll, jelentse az ügyfél nyomkövetési azonosító (X-ClientTraceId), vagy a kérelem azonosítója (X-kérelemazonosító).|||
+|101    |WebSocket-frissítés.|Modell Példaérték <br/> Objektum {}|X-RequestId:<br/>Hibaelhárítás céljából a kérelem azonosító érték.<br/>sztring|
+|400    |Hibás kérés. Ellenőrizze, hogy biztosítsa azok érvényes bemeneti paramétereket. A válasz objektum tartalmazza a hiba részletes leírását.|||
+|401    |Nem engedélyezett. Győződjön meg arról, hogy hitelesítő adatok vannak beállítva, akkor érvényesek, és, hogy van-e az Azure Data piaci előfizetés egy elérhető egyenlegű jó minősítésének.|||
+|500    |Hiba történt. Ha a hiba továbbra is fennáll, jelentse az ügyfél nyomkövetési azonosító (X-ClientTraceId), vagy kérelemazonosító (X-kérelemazonosító).|||
+|503    |A kiszolgáló átmenetileg nem érhető el. Ismételje meg a kérelmet. Ha a hiba továbbra is fennáll, jelentse az ügyfél nyomkövetési azonosító (X-ClientTraceId), vagy kérelemazonosító (X-kérelemazonosító).|||
 
     
 

@@ -1,6 +1,6 @@
 ---
-title: OCR kognitív keresési szakértelem (Azure Search) |} Microsoft Docs
-description: Szöveg kinyerése képfájlok egy Azure Search dúsító folyamat.
+title: Optikai Karakterfelismerés cognitive search szakértelem (Azure Search) |} A Microsoft Docs
+description: Szöveg kinyerése képfájlok Azure Search-felderítési bővítést folyamatban.
 services: search
 manager: pablocas
 author: luiscabrer
@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 478afe81ed739b98487973eb092ee9cad0aa17fd
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 234651ad3672982e4de9617561a926712697945a
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37059080"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45734033"
 ---
-# <a name="ocr-cognitive-skill"></a>OCR kognitív szakértelem
+# <a name="ocr-cognitive-skill"></a>Optikai Karakterfelismerés cognitive szakértelem
 
-A **OCR** szakértelem szöveg kiolvassa a képfájlok. Támogatott formátumok a következők:
+A **OCR** szakértelem szöveges állomány kinyerésére képfájlok. Támogatott formátumok a következők:
 
 + . JPEG
 + . JPG
@@ -28,32 +28,34 @@ A **OCR** szakértelem szöveg kiolvassa a képfájlok. Támogatott formátumok 
 + . BMP
 + . GIF
 
+> [!NOTE]
+> A kognitív keresés nyilvános előzetes verzióban érhető el. Képességcsoport végrehajtási, és a lemezkép kinyerése és a normalizálási jelenleg rendelkezésre állnak az ingyenes. Később az ezen funkciók díjszabásáról jelentjük be. 
 
-## <a name="skill-parameters"></a>Szakértelem paraméterek
+## <a name="skill-parameters"></a>Ismeretek paraméterek
 
 A paraméterei a kis-és nagybetűket.
 
 | Paraméter neve     | Leírás |
 |--------------------|-------------|
-| detectOrientation | Lehetővé teszi, hogy a kép tájolása autodetection. <br/> Érvényes értékek: true / false.|
-|defaultLanguageCode | <p>  A bemeneti szöveg nyelvkódot. A támogatott nyelvek közé tartoznak a következők: <br/> zh-Hans (ChineseSimplified) <br/> zh-Hant (ChineseTraditional) <br/>cs (Cseh) <br/>da (dán) <br/>NL (holland) <br/>en (angol nyelven) <br/>Fi (finn)  <br/>FR (magyar) <br/>  Németország (német) <br/>el (görög) <br/> hu (magyar) <br/> az (olasz) <br/>  japán (japán) <br/> ko (koreai) <br/> NB (norvég) <br/>   pl (lengyel) <br/> PT (portugál) <br/>  RU (orosz) <br/>  es (spanyol) <br/>  SV (svéd) <br/>  tr (török) <br/> ar (arab) <br/> ro (román) <br/> az SR-Cyrl (SerbianCyrillic) <br/> az SR-Latn (SerbianLatin) <br/>  SK (szlovák). <br/>  (ismeretlen) UNK <br/><br/> Ha a nyelvi kód meghatározatlan vagy null, a nyelv a hálózati kártya automatikus észlelése. </p> |
-| textExtractionAlgorithm | "nyomtatott" vagy "kézzel". A "kézzel" szöveget felismerés OCR algoritmus jelenleg előzetes verzióban érhetők, és csak akkor támogatott a angol. |
+| detectOrientation | Lehetővé teszi, hogy a kép tájolásának autodetection. <br/> Érvényes értékek: true / false (hamis).|
+|defaultLanguageCode | <p>  A bemeneti szöveg nyelvkódja. A támogatott nyelvek közé tartoznak a következők: <br/> zh-Hans (ChineseSimplified) <br/> zh-Hant (ChineseTraditional) <br/>cs (Cseh) <br/>da (dán) <br/>NL (holland) <br/>en (angol nyelven) <br/>Fi (finn)  <br/>FR (francia) <br/>  Németország (németországi) <br/>el (görög) <br/> hu (magyar) <br/> azt (olasz) <br/>  japán (japán) <br/> ko (koreai) <br/> NB (norvég) <br/>   pl (lengyel) <br/> csendes-óceáni idő (portugál) <br/>  a kérelemegység (orosz) <br/>  a gen (spanyol) <br/>  SV (svéd) <br/>  tr (török) <br/> ar (arab) <br/> ro (Románia) <br/> az SR-Cyrl (SerbianCyrillic) <br/> az SR-Latn (SerbianLatin) <br/>  SK (szlovák). <br/>  UNK (ismeretlen) <br/><br/> Ha a nyelvi kód nincs megadva vagy null értékű, a nyelv az hálózati kártya automatikus észlelése. </p> |
+| textExtractionAlgorithm | "nyomtatott" vagy "kézírásos". A "kézírásos" szöveg felismerése OCR algoritmus jelenleg előzetes verzióban érhető el, és csak angol nyelven. |
 
-## <a name="skill-inputs"></a>Szakértelem bemenetek
+## <a name="skill-inputs"></a>Ismeretek bemenetek
 
 | Bemeneti név      | Leírás                                          |
 |---------------|------------------------------------------------------|
-| image         | Összetett típus. Az Azure Blob indexelő által előállított jelenleg csak akkor működik a "/ dokumentum/normalized_images" mező, amikor ```imageAction``` értéke ```generateNormalizedImages```. Tekintse meg a [minta](#sample-output) további információt.|
+| image         | Komplex típus. Az Azure Blob indexelőjével által előállított jelenleg csak akkor működik a "/ dokumentum/normalized_images" mezőt, amikor ```imageAction``` értékre van állítva ```generateNormalizedImages```. Tekintse meg a [minta](#sample-output) további információt.|
 
 
-## <a name="skill-outputs"></a>Szakértelem kimenetek
-| Kimeneti neve     | Leírás                   |
+## <a name="skill-outputs"></a>Ismeretek kimenetek
+| Kimeneti név     | Leírás                   |
 |---------------|-------------------------------|
-| szöveg          | A kép kinyert egyszerű szöveg.   |
-| layoutText    | Összetett típus, amely leírja a kibontott szöveg, valamint a helyet, ahol a szöveg található.|
+| szöveg          | A kép kinyert egyszerű szöveget.   |
+| layoutText    | Komplex típus, amely leírja a kinyert szöveg, valamint a helyet, ahol a szöveg található.|
 
 
-## <a name="sample-definition"></a>A minta meghatározása
+## <a name="sample-definition"></a>Minta-definíció
 
 ```json
 {
@@ -86,7 +88,7 @@ A paraméterei a kis-és nagybetűket.
 ```
 <a name="sample-output"></a>
 
-## <a name="sample-text-and-layouttext-output"></a>Szöveg- és layoutText kimenetpélda
+## <a name="sample-text-and-layouttext-output"></a>Szöveg- és layoutText kimeneti példa
 
 ```json
 {
@@ -124,11 +126,11 @@ A paraméterei a kis-és nagybetűket.
 }
 ```
 
-## <a name="sample-merging-text-extracted-from-embedded-images-with-the-content-of-the-document"></a>Példa: A dokumentum tartalma beágyazott képekhez kinyert szöveg egyesítése.
+## <a name="sample-merging-text-extracted-from-embedded-images-with-the-content-of-the-document"></a>Példa: A dokumentum tartalma a beágyazott képek kinyert szöveget egyesítése.
 
-A szöveg egyesülés gyakori használati eset azt a képességet a képek (egy OCR szakértelem, vagy a kép felirat szöveg) képviselő szöveges alakot egyesítése a tartalom mezőbe egy dokumentum. 
+Egy közös Szövegegyesítő funkcióban lehetővé teszi a képek (-OCR szakértelem, vagy a kép felirata szöveg) értéket képviselő szöveges alak egyesítése egy dokumentumot content mezőjének be. 
 
-A következő példa skillset létrehoz egy *merged_text* mező a szöveges tartalom a dokumentum, valamint a lemezképek mindegyikének OCRed szöveget tartalmazó beágyazott dokumentum. 
+A következő példa indexmezők létrehoz egy *merged_text* a dokumentum a beágyazott szöveges tartalmát a dokumentumot, valamint a lemezképek mindegyike OCRed szöveget tartalmazó mezőbe. 
 
 #### <a name="request-body-syntax"></a>Kéréstörzs szintaxisa
 ```json
@@ -181,7 +183,7 @@ A következő példa skillset létrehoz egy *merged_text* mező a szöveges tart
   ]
 }
 ```
-A fenti skillset példa feltételezi, hogy van-e a normalizált képek mező. Ez a mező létrehozásához állítsa be a *imageAction* konfigurációját az indexelő-definíciót a *generateNormalizedImages* alább látható módon:
+A fenti indexmezők példa feltételezi, hogy, hogy létezik-e a normalized-lemezképek mező. Ebben a mezőben létrehozásához állítsa be a *imageAction* az indexelő meghatározását, hogy a konfigurációs *generateNormalizedImages* alább látható módon:
 
 ```json
 {  
@@ -196,7 +198,7 @@ A fenti skillset példa feltételezi, hogy van-e a normalizált képek mező. Ez
 ```
 
 ## <a name="see-also"></a>Lásd még
-+ [Előre definiált képességek](cognitive-search-predefined-skills.md)
++ [Előre megadott képesség](cognitive-search-predefined-skills.md)
 + [TextMerger szakértelem](cognitive-search-skill-textmerger.md)
-+ [Egy skillset definiálása](cognitive-search-defining-skillset.md)
++ [Hogyan képességcsoport megadása](cognitive-search-defining-skillset.md)
 + [Az indexelő (REST) létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-indexer)

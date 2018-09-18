@@ -7,12 +7,12 @@ ms.date: 06/24/2018
 ms.topic: conceptual
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: 571aa5a080ae4622a23fdb20d712327d4ec6fbf9
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: 5eb0ba659961d809d0ae471034b03263f87e3894
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42058116"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45985498"
 ---
 # <a name="best-practices-for-device-configuration-within-an-iot-solution"></a>Ajánlott eljárások az IoT-megoldás belüli eszközök konfigurálása
 
@@ -55,7 +55,7 @@ Ajánlott eljárások a hardvergyártók és a beágyazott szoftverfejlesztői f
 
 Ajánlott eljárások az IoT megoldás a fejlesztőknek, akik készítenek az Azure-alapú rendszerek a következők:
 
-* **Alkalmazzon [ikereszközök](iot-hub-devguide-device-twins.md):** ikereszközök engedélyezése szinkronizálása a felhőből, és az aktuális konfigurációja és az eszköz tulajdonságok jelentéshez szükséges konfiguráció. A legjobb módja, ikereszközök belül a felhőalkalmazások megoldások megvalósításának keresztül, a [Azure IoT SDK-k](https://github.com/Azure/azure-iot-sdks.) ikereszközök configuration leginkább kihasználni, mert ezek:
+* **Alkalmazzon [ikereszközök](iot-hub-devguide-device-twins.md):** ikereszközök engedélyezése szinkronizálása a felhőből, és az aktuális konfigurációja és az eszköz tulajdonságok jelentéshez szükséges konfiguráció. A legjobb módja, ikereszközök belül a felhőalkalmazások megoldások megvalósításának keresztül, a [Azure IoT SDK-k](https://github.com/Azure/azure-iot-sdks). Ikereszközök configuration leginkább kihasználni, mert ezek:
 
     * Támogatja a kétirányú kommunikációt.
     * Lehetővé teszi mindkét csatlakoztatott és a leválasztott Eszközállapotok. 

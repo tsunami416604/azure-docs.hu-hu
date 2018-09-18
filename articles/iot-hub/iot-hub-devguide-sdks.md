@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: dobett
-ms.openlocfilehash: f5d493628df68e0afbe05137b0d7386d6c40f7d4
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: ba06617762650afc8cd3eecb2fcddda6d24f4228
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45605742"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45734990"
 ---
 # <a name="understand-and-use-azure-iot-hub-sdks"></a>Elsajátítása és használata az Azure IoT Hub SDK-k
 
@@ -37,33 +37,35 @@ A Microsoft Azure IoT eszközoldali SDK-k, amely elősegíti a épület eszköz�
 * Telepítse a [Nuget][lnk-nuget-csharp-device]
 * [Forráskód][lnk-dotnet-sdk]
 * [API-referencia][lnk-dotnet-ref]
-* [Modul-hivatkozás] [https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet]
+* [Modul-hivatkozás](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet)
 
 Az Azure IoT Hub eszközoldali SDK-t a hordozhatóság és a széles körű platform kompatibilitását (C99) ANSI C nyelven írt: az
 * Telepítse a [apt-get paranccsal végzi, az MBED, az Arduino IDE vagy a Nuget][lnk-c-package]
 * [Forráskód][lnk-c-sdk]
 * [API-referencia][lnk-c-ref]
-* [Modul-hivatkozás] [https://github.com/Azure/azure-iot-sdk-c/blob/master/iothub_client/inc/iothub_module_client.h]
+* [Modul-hivatkozás](https://github.com/Azure/azure-iot-sdk-c/blob/master/iothub_client/inc/iothub_module_client.h)
 
 A Javához készült Azure IoT Hub eszközoldali SDK: 
 * Adja hozzá a [Maven] [ lnk-maven-device] projekt
 * [Forráskód][lnk-java-sdk]
 * [API-referencia][lnk-java-ref]
-* [Modul-hivatkozás] [https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device._module_client?view=azure-java-stable]
+* [Modul-hivatkozás](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device._module_client?view=azure-java-stable)
 
 NODE.js-hez készült Azure IoT Hub eszközoldali SDK: 
 * Telepítse a [npm][lnk-npm-device]
 * [Forráskód][lnk-node-sdk]
 * [API-referencia][lnk-node-ref]
-* [Modul-hivatkozás] [https://docs.microsoft.com/javascript/api/azure-iot-device/moduleclient?view=azure-node-latest]
+* [Modul-hivatkozás](https://docs.microsoft.com/javascript/api/azure-iot-device/moduleclient?view=azure-node-latest)
 
 Pythonhoz készült Azure IoT Hub eszközoldali SDK: 
 * Telepítse a [pip][lnk-pip-device]
 * [Forráskód][lnk-python-sdk]
+* API-referencia: lásd: [C API-referencia][lnk-c-ref]
 
 IOS-hez készült Azure IoT Hub eszközoldali SDK: 
 * Telepítse a [CocoaPod][lnk-cocoa-device]
 * [A minták][lnk-ios-sample]
+* API-referencia: lásd: [C API-referencia][lnk-c-ref]
 
 > [!NOTE]
 > Tekintse meg a GitHub-adattárában információk nyelv és platform-specifikus csomagkezelők bináris fájljait és függőségeinek telepítéséhez a fejlesztői gépen információs fájljaiban.

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/07/2018
 ms.author: tomfitz
-ms.openlocfilehash: 807026d2de40de1b14d2eb1d9eeb9da0aade4ad7
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 0b0ddedde49208a85628cdfc226f870a32ff7170
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44297757"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45985864"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe
 
@@ -218,7 +218,7 @@ Az alábbi lista egy új erőforráscsoportot és egy előfizetést is áthelyez
 * Service Fabric
 * Service Fabric háló
 * SignalR Service
-* Storage
+* Storage - tárfiókok különböző régiókban lévő műveletben nem lehet áthelyezni. Ehelyett használjon minden régióhoz külön műveletnek.
 * Tekintse meg a tároló (klasszikus) – [klasszikus üzembe helyezési korlátozásoknak](#classic-deployment-limitations)
 * Stream Analytics - feladatok nem lehet áthelyezni, ha a futó Stream Analytics állapot.
 * Az SQL Database server - adatbázis és a kiszolgáló ugyanabban az erőforráscsoportban kell lennie. Ha áthelyezi SQL-kiszolgáló, az összes hozzá tartozó adatbázisok is kerülnek. Ez a viselkedés az Azure SQL Database és az Azure SQL Data Warehouse-adatbázisok vonatkozik.

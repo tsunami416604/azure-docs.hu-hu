@@ -6,19 +6,19 @@ author: CarlRabeler
 manager: craigg
 ms.service: sql-database
 ms.custom: load & move data
-ms.date: 09/04/2018
+ms.date: 09/14/2018
 ms.author: carlrab
 ms.topic: conceptual
-ms.openlocfilehash: 6df71f50129ec6901d0b8688b0a6d3619260cf22
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: eefffdc425a300a8a4caa358494fbdc4fd84e356
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45634234"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45983984"
 ---
 # <a name="import-a-bacpac-file-to-a-new-azure-sql-database"></a>Az új Azure SQL-adatbázis BACPAC-fájl importálása
 
-Mikor kell az adatbázis importálására az archívumot, vagy egy másik platformon áttelepítésekor az adatbázis-séma és adatok importálhatja egy [BACPAC](https://msdn.microsoft.com/library/ee210546.aspx#Anchor_4) fájlt. BACPAC-fájl egy ZIP-fájlt tartalmazó a metaadatokat és az adatokat az SQL Server-adatbázis BACPAC kiterjesztési. BACPAC-fájl importálhatók az Azure blob storage (csak standard szintű storage) vagy a helyszíni helyen a helyi tárolóból. Az importálás sebesség maximalizálása azt javasoljuk, hogy szintet adjon meg magasabb szintű szolgáltatás szolgáltatásszintet és teljesítményszintet, például egy P6, és majd a sikeres importálása után szükség szerint lefelé skálázhatja. Az adatbázis kompatibilitási szintjét az importálás után is, a forrás-adatbázis kompatibilitási szintje alapján. 
+Mikor kell az adatbázis importálására az archívumot, vagy egy másik platformon áttelepítésekor az adatbázis-séma és adatok importálhatja egy [BACPAC](https://msdn.microsoft.com/library/ee210546.aspx#Anchor_4) fájlt. BACPAC-fájl egy ZIP-fájlt tartalmazó a metaadatokat és az adatokat az SQL Server-adatbázis BACPAC kiterjesztési. BACPAC-fájl importálhatók az Azure blob storage (csak standard szintű storage) vagy a helyszíni helyen a helyi tárolóból. Az importálás sebesség maximalizálása azt javasoljuk, hogy adjon meg egy magasabb szolgáltatási szintre és méretét, például egy P6 szintű számítási és majd a sikeres importálása után szükség szerint lefelé skálázhatja. Az adatbázis kompatibilitási szintjét az importálás után is, a forrás-adatbázis kompatibilitási szintje alapján. 
 
 > [!IMPORTANT] 
 > Miután migrálta az adatbázist az Azure SQL Database-adatbázishoz, választhat, működtetheti az adatbázist, a jelenlegi kompatibilitási szinten (100. szint az AdventureWorks2008R2 adatbázis), vagy egy magasabb szinten. Az adatbázis meghatározott kompatibilitási szinten való működtetésének következményeivel és lehetőségeivel kapcsolatos további információkért lásd: [ADATBÁZIS kompatibilitási szintjének MÓDOSÍTÁSA](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-compatibility-level). A kompatibilitási szintekkel kapcsolatos további adatbázisszintű beállításokról itt talál információt: [ADATBÁZISHOZ KÖTŐDŐ KONFIGURÁCIÓ MÓDOSÍTÁSA](https://docs.microsoft.com/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql).   >
@@ -104,7 +104,7 @@ $importStatus
 Egy másik példa parancsfájl: [adatbázis importálása BACPAC-fájlból](scripts/sql-database-import-from-bacpac-powershell.md).
 
 ## <a name="limitations"></a>Korlátozások
-- Egy adatbázist a rugalmas készletben való importálása nem támogatott. Adatok importálása egy singleton-adatbázisba, és folytassa az adatbázis egy készletbe.
+- Egy adatbázist a rugalmas készletben való importálása nem támogatott. Adatok importálása egy önálló adatbázis, és folytassa az adatbázis egy készletbe.
 
 ## <a name="import-using-other-methods"></a>Importálás az egyéb módszerek használatával
 

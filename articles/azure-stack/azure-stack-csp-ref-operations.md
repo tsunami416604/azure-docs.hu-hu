@@ -3,7 +3,7 @@ title: Regisztrálja a bérlők a használat nyomon követése az Azure Stackben
 description: Bérlői regisztráció, és hogyan Azure Stack bérlő használat nyomon követése kezelésére szolgáló műveletek részleteit.
 services: azure-stack
 documentationcenter: ''
-author: sethmanheim
+author: mattbriggs
 manager: femila
 editor: ''
 ms.service: azure-stack
@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/08/2018
-ms.author: sethm
+ms.date: 07/12/2018
+ms.author: mabrigg
 ms.reviewer: alfredo
-ms.openlocfilehash: 93830933115b19c6dc6b2981dca142f72a133fc0
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 9396d49f455f8f4af1abf7f0020e95e8fd0a14cc
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45629661"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45729586"
 ---
 # <a name="manage-tenant-registration-in-azure-stack"></a>Az Azure Stack bérlő regisztrációs kezelése
 

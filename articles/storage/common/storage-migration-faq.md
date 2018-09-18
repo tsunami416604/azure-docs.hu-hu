@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/11/2018
 ms.author: genli
 ms.component: common
-ms.openlocfilehash: ecc5948c84f7659e950c360c3b19d1985b0ab81c
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 3c671fe6dcb1af25bfb0aa09fecf8ad5e5ceb97b
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39521489"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45732260"
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>Az Azure-tárterület-áttelepítés – gyakran ismételt kérdések
 
@@ -256,7 +256,7 @@ A más hozzáférést biztosít a tárolási erőforrások:
 
 -   Egy közös hozzáférésű jogosultságkód (SAS) használatával adja meg az erőforrásokhoz való hozzáférést. 
 
--   Adjon egy felhasználónak a tárfiókhoz az elsődleges vagy másodlagos kulcsot. További információkért lásd: [a tárfiók kezelése](storage-create-storage-account.md#manage-your-storage-account).
+-   Adjon egy felhasználónak a tárfiókhoz az elsődleges vagy másodlagos kulcsot. További információkért lásd: [a tárfiók kezelése](storage-account-manage.md#access-keys).
 
 -   Névtelen hozzáférés engedélyezése a hozzáférési szabályzatot módosíthatja. További információkért lásd: [tárolókhoz és blobokhoz való névtelen felhasználók engedélyek](../blobs/storage-manage-access-to-resources.md#grant-anonymous-users-permissions-to-containers-and-blobs).
 

@@ -8,14 +8,14 @@ ms.reviewer: carlrab
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: conceptual
-ms.date: 04/04/2018
+ms.date: 09/14/2018
 ms.author: v-daljep
-ms.openlocfilehash: 100cb939c0d7297b92af3255382745355aa8d271
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 9c2bb85d9c0bb02b7eb698dbee07f488c2ad0b62
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44722112"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45733183"
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>Intelligent Insights az Azure SQL Database teljesítménnyel kapcsolatos problémáinak elhárítása
 
@@ -283,7 +283,7 @@ Minden egyes adatbázis adatbázis-specifikus konfigurációs módosításokat i
 
 ### <a name="troubleshooting"></a>Hibaelhárítás
 
-A diagnosztikai kimenetek adatbázishoz kötődő konfigurációs változások naplózása nemrég elvégzett képest az előző hét nap-munkaterhelések viselkedésére teljesítményromlást okozó. Visszaállíthatja az előző értékek a konfigurációs módosítások. Emellett hangolhassa értékkel a kívánt teljesítményszintet eléréséig. Adatbázis-hatókör-konfigurációs értékeket az elfogadható teljesítmény hasonló adatbázisból másolhatja. Ha Ön nem lehet a teljesítményi hibák elhárítása, visszatérhet az alapértelmezett SQL-adatbázis alapértelmezett értékeket, és próbálja meg finomhangolására, ez a alapvető kezdve.
+A diagnosztikai kimenetek adatbázishoz kötődő konfigurációs változások naplózása nemrég elvégzett képest az előző hét nap-munkaterhelések viselkedésére teljesítményromlást okozó. Visszaállíthatja az előző értékek a konfigurációs módosítások. Mindaddig, amíg a kívánt számítási méretet is képes finomhangolása értékkel. Adatbázis-hatókör-konfigurációs értékeket az elfogadható teljesítmény hasonló adatbázisból másolhatja. Ha Ön nem lehet a teljesítményi hibák elhárítása, visszatérhet az alapértelmezett SQL-adatbázis alapértelmezett értékeket, és próbálja meg finomhangolására, ez a alapvető kezdve.
 
 Adatbázishoz kötődő konfiguráció, és módosítja a konfigurációt a T-SQL-szintaxis optimalizálására vonatkozó további információkért lásd: [Alter database scoped configuration (Transact-SQL)](https://msdn.microsoft.com/library/mt629158.aspx).
 

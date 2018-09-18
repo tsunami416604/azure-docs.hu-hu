@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/06/2018
 ms.author: aljo
-ms.openlocfilehash: e56c60f67dcfe5c11191942a812d2c670055dfd8
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: fbca9c746863b852a9ddd46d00a65d4133961718
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44092648"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45984373"
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>Service Fabric-fürt létrehozása az Azure-ban az Azure portal használatával
 > [!div class="op_single_selector"]
@@ -123,7 +123,7 @@ Konfigurálja a fürt csomópontjait. Csomóponttípusok határozzák meg, a Vir
 7. **Fordított proxy engedélyezése**.  A [Service Fabric fordított proxyja](service-fabric-reverseproxy.md) segít mikroszolgáltatások Service Fabric-fürtön futó felderítése és kommunikálni más szolgáltatásokkal, amelyek http-végpontokat.
 8. A **+ választható beállítások megjelenítése**, fürt konfigurálása **diagnosztikai**. Alapértelmezés szerint vannak engedélyezve a diagnosztika a fürtre, amelyek segítik a problémák elhárítása. Ha le szeretné tiltani a diagnosztikai módosítása a **állapot** kapcsolót **ki**. A diagnosztika kikapcsolása **nem** ajánlott. Ha már létrehozott Application Insights-projekttel rendelkezik, majd adjon annak a kulcsát, hogy az alkalmazások nyomkövetéseit legyenek irányítva.
 9. **DNS szolgáltatással**.  A [DNS-szolgáltatás](service-fabric-dnsservice.md) egy opcionális szolgáltatás, amely lehetővé teszi, hogy más szolgáltatásokat, a DNS protokoll használatával.
-10. Válassza ki a **Fabric frissítési módot** azt szeretné, hogy a fürt beállítása. Válassza ki **automatikus**, ha azt szeretné, hogy a rendszer automatikusan folytattuk a munkát az elérhető legújabb verzióra, és próbálja meg frissíteni a fürt hozzá. Állítsa a módot **manuális**, ha szeretne egy támogatott verzióját. A Fabric frissítési mód a további részletekért lásd: [service fabric-fürt-frissítési dokumentum.] [service fabric-fürt-frissítési]
+10. Válassza ki a **Fabric frissítési módot** azt szeretné, hogy a fürt beállítása. Válassza ki **automatikus**, ha azt szeretné, hogy a rendszer automatikusan folytattuk a munkát az elérhető legújabb verzióra, és próbálja meg frissíteni a fürt hozzá. Állítsa a módot **manuális**, ha szeretne egy támogatott verzióját. A további részleteket a Fabric frissítési mód lásd: a [service fabric-fürt-frissítési dokumentumot.][service-fabric-cluster-upgrade]
 
 > [!NOTE]
 > Csak a Service Fabric támogatott verzióit futtató fürtöket is nyújtunk támogatást. Válassza a **manuális** módban készítésének felelősségére frissítse a fürtöt egy támogatott verziójára.
@@ -225,7 +225,8 @@ Ezen a ponton rendelkezik egy biztonságos fürthöz, a felügyeleti hitelesít�
 [service-fabric-connect-and-communicate-with-services]: service-fabric-connect-and-communicate-with-services.md
 [service-fabric-health-introduction]: service-fabric-health-introduction.md
 [service-fabric-reliable-services-backup-restore]: service-fabric-reliable-services-backup-restore.md
-<!--[remote-connect-to-a-vm-scale-set]: service-fabric-cluster-nodetypes.md#remote-connect-to-a-virtual-machine-scale-set-instance-or-a-cluster-node --> [remote-connect-to-a-vm-scale-set]: service-fabric-fürt-nodetypes.md [service fabric-fürt-frissítési]: service-fabric-fürt-upgrade.mdd
+[remote-connect-to-a-vm-scale-set]: service-fabric-cluster-nodetypes.md
+[service-fabric-cluster-upgrade]: service-fabric-cluster-upgrade.md
 
 <!--Image references-->
 [SearchforServiceFabricClusterTemplate]: ./media/service-fabric-cluster-creation-via-portal/SearchforServiceFabricClusterTemplate.png

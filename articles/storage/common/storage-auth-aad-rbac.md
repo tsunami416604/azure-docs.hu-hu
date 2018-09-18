@@ -1,6 +1,6 @@
 ---
-title: RBAC használata kezelheti a hozzáférési jogosultsággal az Azure Storage-tárolók és a várólisták (előzetes verzió) |} A Microsoft Docs
-description: Szerepköralapú hozzáférés-vezérlés (RBA) való hozzáférés szerepkörök hozzárendelése segítségével a felhasználók, csoportok, alkalmazások szolgáltatásnevének vagy felügyelt szolgáltatásidentitások Azure Storage-adatokkal. Az Azure Storage támogatja a beépített és egyéni szerepkörök hozzáférési jogosultságokat a tárolókhoz és üzenetsorok.
+title: Az RBAC használatával a tárolókhoz és az Azure Storage (előzetes verzió) – üzenetsorok hozzáférési jogosultságok kezelése |} A Microsoft Docs
+description: Szerepköralapú hozzáférés-vezérlés (RBAC) hozzáférés szerepkörök hozzárendelése használatával a felhasználók, csoportok, alkalmazások szolgáltatásnevének vagy felügyelt szolgáltatásidentitások blob és üzenetsor adatokat. Az Azure Storage támogatja a beépített és egyéni szerepkörök hozzáférési jogosultságokat a tárolókhoz és üzenetsorok.
 services: storage
 author: tamram
 ms.service: storage
@@ -8,20 +8,20 @@ ms.topic: article
 ms.date: 09/07/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 2a85277c72b63f248fa6d2b06cc1daa1ccbf5ce5
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: c26eee05a59a10036138f81086b3f6a9e0de6d5d
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44298675"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45737294"
 ---
 # <a name="manage-access-rights-to-azure-storage-data-with-rbac-preview"></a>Az RBAC (előzetes verzió) az Azure Storage-adatokkal való hozzáférési jogosultságok kezelése
 
 Az Azure Active Directory (Azure AD) keresztül biztonságos erőforrásokhoz való hozzáférési jogosultságok engedélyezi [szerepköralapú hozzáférés-vezérlés (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview). Az Azure Storage határozza meg, amely magában foglalja a tárolók és -várólisták eléréséhez használt gyakori jogosultságkészletek beépített RBAC-szerepkör. Amikor egy RBAC szerepkör van rendelve egy Azure AD identity, hogy identitás hozzáférést kap az érintett erőforrásokra, a megadott hatókör alapján. Hozzáférés az előfizetéshez, az erőforráscsoport, a storage-fiókban vagy egy tároló vagy üzenetsor szintjét hatóköre. Az Azure portal, az Azure parancssori eszközeivel és az Azure felügyeleti API-k használatával az Azure Storage-erőforrások hozzáférési jogosultságokat rendelhet. 
 
-Az Azure AD identity egy felhasználó, csoport vagy alkalmazás egyszerű szolgáltatást, vagy lehet egy *felügyeltszolgáltatás-identitás*. A rendszerbiztonsági tag lehet egy felhasználó, csoport vagy alkalmazás egyszerű szolgáltatást. A [felügyeltszolgáltatás-identitás](../../active-directory/managed-identities-azure-resources/overview.md) hitelesítéséhez az Azure virtual machines, a függvényalkalmazások, a virtual machine scale sets és mások a futó alkalmazásokból egy olyan automatikus felügyelt identitás. Az Azure AD identity áttekintését lásd: [ismertetése Azure identitáskezelési megoldásairól](https://docs.microsoft.com/azure/active-directory/understand-azure-identity-solutions).
+Az Azure AD identity előfordulhat, hogy egy felhasználó, csoport vagy alkalmazás egyszerű szolgáltatást, vagy egy felügyelt identitás, az Azure-erőforrásokhoz lehet. A rendszerbiztonsági tag lehet egy felhasználó, csoport vagy alkalmazás egyszerű szolgáltatást. A [-identitás az Azure-erőforrások](../../active-directory/managed-identities-azure-resources/overview.md) hitelesítéséhez az Azure virtual machines, a függvényalkalmazások, a virtual machine scale sets és mások a futó alkalmazásokból egy olyan automatikus felügyelt identitás. Az Azure AD identity áttekintését lásd: [ismertetése Azure identitáskezelési megoldásairól](https://docs.microsoft.com/azure/active-directory/understand-azure-identity-solutions).
 
-## <a name="rbac-roles-for-azure-storage"></a>Az Azure Storage RBAC-szerepkörök
+## <a name="rbac-roles-for-blobs-and-queues"></a>A blobok és üzenetsorok RBAC-szerepkörök
 
 Az Azure Storage támogatja a beépített és az egyéni RBAC-szerepkörökhöz. Az Azure Storage ezeket az Azure ad-vel használható beépített RBAC-szerepkör kínál:
 

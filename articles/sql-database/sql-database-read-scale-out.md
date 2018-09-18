@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: conceptual
-ms.date: 8/27/2018
+ms.date: 09/14/2018
 ms.author: sashan
-ms.openlocfilehash: c0fa4a9868aa19032888aa50a0d300dd2e88fcca
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: d7c3a672224bd7a167956d7699541880de11bef9
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43124817"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45737039"
 ---
 # <a name="use-read-only-replicas-to-load-balance-read-only-query-workloads-preview"></a>Csak olvasható replikákat használ a betöltése terheléselosztása csak olvasható lekérdezési számítási feladatok (előzetes verzió)
 
@@ -26,7 +26,7 @@ Prémium szinten lévő minden egyes adatbázishoz ([DTU-alapú vásárlási mod
 
 ![Csak olvasható replikák](media/sql-database-managed-instance/business-critical-service-tier.png)
 
-Ezeket a replikákat a az írható-olvasható replika rendszeres adatbázis-kapcsolatok által használt teljesítményszint vannak kiosztva. A **olvasási kibővített** funkció lehetővé teszi az egyenleg SQL-adatbázis csak olvasható-alapú számítási feladatokat a kapacitását, csak olvasási replikára osztozik az írható-olvasható replika betölteni. Ezzel a módszerrel a csak olvasható munkaterhelés elkülönül a fő olvasási és írási számítási feladatok, és nem lesz hatással a teljesítményét. A funkció célja az alkalmazások, amelyek tartalmazzák a logikailag elválasztott csak olvasható feladatokhoz, például elemzési, és ezért juthat által nyújtott további kapacitás használatának nélkül többletköltség.
+Ezek a replikák számítási mérete megegyezik a normál adatbázis-kapcsolatok által használt írható-olvasható replika vannak kiosztva. A **olvasási kibővített** funkció lehetővé teszi az egyenleg SQL-adatbázis csak olvasható-alapú számítási feladatokat a kapacitását, csak olvasási replikára osztozik az írható-olvasható replika betölteni. Ezzel a módszerrel a csak olvasható munkaterhelés elkülönül a fő olvasási és írási számítási feladatok, és nem lesz hatással a teljesítményét. A funkció célja az alkalmazások, amelyek tartalmazzák a logikailag elválasztott csak olvasható feladatokhoz, például elemzési, és ezért juthat által nyújtott további kapacitás használatának nélkül többletköltség.
 
 Az olvasási horizontális Felskálázás funkció használatához, hogy adott adatbázissal, explicit módon engedélyeznie kell azt az adatbázis létrehozásakor vagy később a PowerShell használatával meghívásával konfiguráció módosítása a [Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase) vagy a [ Új-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase) parancsmagok vagy az Azure Resource Manager REST API használatával a [- adatbázisok létrehozása vagy frissítése](/rest/api/sql/databases/createorupdate) metódust. 
 

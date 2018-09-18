@@ -8,14 +8,16 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 40c7b2865795f8c6a5cfbabe4d59aea1715d4a57
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 889f3928ee72c035035abb635eb71ec0b06a3b45
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42061405"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45730158"
 ---
-# <a name="create-an-eevent-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>EEvent szabály létrehozása és az Azure IoT központi alkalmazás-értesítések beállítása
+# <a name="create-an-event-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Hozzon létre egy esemény szabályt és az Azure IoT központi alkalmazás-értesítések beállítása
+
+*Ez a cikk az operátorok, a kapcsolat építői és a rendszergazdák vonatkozik.*
 
 Azure IoT Central használatával távolról figyeli a csatlakoztatott eszközök. Az Azure IoT Central szabályok lehetővé teszik az eszközök, közel valós időben figyelheti és automatikusan hajthatók végre műveletek, például e-mail küldése vagy Microsoft Flow-trigger. Mindössze pár kattintással megadhatja a feltételt, amelynek az adatok figyelésére, és konfigurálja a megfelelő műveletet. Ez a cikk bemutatja, hogyan hozhat létre szabályokat az eszköz által küldött események figyelésére.
 
@@ -37,10 +39,10 @@ Esemény szabály létrehozása esetén az eszköz sablon legalább egy esemény
     ![Még nincsenek szabályai](media\howto-create-event-rules\Rules_Landing_Page.png)
 
 
-1. Az a **szabályok** lapra, majd **+ új szabály** , milyen típusú szabályokat hozhat létre.
+1. Az a **szabályok** lapra, majd **sablon szerkesztése** , majd **+ új szabály** , milyen típusú szabályokat hozhat létre.
 
 
-1. Kattintson a **esemény** csempére kattintva hozzon létre egy szabályt.
+1. Kattintson a **esemény** csempére kattintva hozzon létre egy esemény figyelési szabály.
 
     ![Szabály típusa](media\howto-create-event-rules\Rule_Types.png)
 
@@ -92,6 +94,8 @@ Ez a szakasz bemutatja, hogyan állíthatja be a műveleteket, ha a szabály les
    ![Művelet konfigurálása](media\howto-create-event-rules\Configure_Action.png)
 
 1. A szabály mentéséhez válasszon **mentése**. A szabály élesíti néhány percen belül, és elindítja az alkalmazásnak küldött események figyelését. Megegyezik a feltételt a szabályban megadott, a szabály eseményindítók a beállított e-mail-művelet.
+
+1. Válasszon **kész** való kilépéshez a **sablon szerkesztése** mód.
 
 A szabály például a Microsoft Flow és a webhookok más műveleteket is hozzáadhat. Szabályonként legfeljebb 5 műveleteket is hozzáadhat.
 

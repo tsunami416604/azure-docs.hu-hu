@@ -1,6 +1,6 @@
 ---
-title: A rugalmas adatbázis eszközök szószedet |} Microsoft Docs
-description: A rugalmas adatbáziseszközöket használt kifejezések magyarázatát
+title: Rugalmas adatbáziseszközökkel |} A Microsoft Docs
+description: Elastic database-eszközök esetében használt kifejezések magyarázatát
 services: sql-database
 documentationcenter: ''
 manager: craigg
@@ -8,78 +8,78 @@ author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: conceptual
-ms.date: 04/01/2018
+ms.date: 09/14/2018
 ms.author: sstein
-ms.openlocfilehash: 4ab938bc556d5e3dea8b7ec093f590ff1746ea29
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 387f40204c8ab07ba0205fd74b5c6a549efff0ef
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34647544"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45728846"
 ---
-# <a name="elastic-database-tools-glossary"></a>A rugalmas adatbázis eszközök szószedet
-A következő feltételek meghatározása a [skálázáshoz rugalmas adatbáziseszközöket](sql-database-elastic-scale-introduction.md), Azure SQL-adatbázis szolgáltatása. Az eszközök kezeléséhez használt [shard leképezhető](sql-database-elastic-scale-shard-map-management.md), és adja meg a [ügyféloldali kódtár](sql-database-elastic-database-client-library.md), a [vegyes egyesítéses eszköz](sql-database-elastic-scale-overview-split-and-merge.md), [rugalmas készletek](sql-database-elastic-pool.md), és [lekérdezések](sql-database-elastic-query-overview.md). 
+# <a name="elastic-database-tools-glossary"></a>Rugalmas adatbáziseszközökkel kapcsolatos
+Az alábbi feltételek vannak definiálva a [rugalmas adatbáziseszközöket](sql-database-elastic-scale-introduction.md), az Azure SQL Database szolgáltatás. Az eszközök kezelésére használhatók [szilánkleképezések](sql-database-elastic-scale-shard-map-management.md), és tartalmazzák a [ügyféloldali kódtár](sql-database-elastic-database-client-library.md), a [felosztási-egyesítési eszközének](sql-database-elastic-scale-overview-split-and-merge.md), [rugalmas készletek](sql-database-elastic-pool.md), és [lekérdezések](sql-database-elastic-query-overview.md). 
 
-Ezeket a kifejezéseket használjuk [hozzáadása egy rugalmas eszközökkel shard](sql-database-elastic-scale-add-a-shard.md) és [a RecoveryManager osztály használatával shard térkép problémák elhárításának](sql-database-elastic-database-recovery-manager.md).
+Ezek a fogalmak szerepelnek [hozzáadása a rugalmas Adatbáziseszközök használatáról szegmensek](sql-database-elastic-scale-add-a-shard.md) és [szilánkleképezési problémák javítása a RecoveryManager osztállyal](sql-database-elastic-database-recovery-manager.md).
 
-![Rugalmas méretezési feltételek][1]
+![Rugalmas méretezés feltételek][1]
 
-**Adatbázis**: az Azure SQL-adatbázist. 
+**Adatbázis**: egy Azure SQL-adatbázist. 
 
-**Adatok függő útválasztási**: A funkció, amely lehetővé teszi egy alkalmazás egy adott horizontális kulcs megadott shard kapcsolódjon. Lásd: [adatok függő útválasztási](sql-database-elastic-scale-data-dependent-routing.md). Hasonlítsa össze  **[több Shard lekérdezés](sql-database-elastic-scale-multishard-querying.md)**.
+**Adatfüggő útválasztás**: A funkciót, amely lehetővé teszi az alkalmazás egy adott horizontális skálázási kulcs megadott szilánk csatlakozni. Lásd: [Adatfüggő útválasztás](sql-database-elastic-scale-data-dependent-routing.md). Második összehasonlítandó  **[Többszegmenses lekérdezés](sql-database-elastic-scale-multishard-querying.md)**.
 
-**Globális shard térkép**: A térkép horizontális kulcsok és a megfelelő szilánkok belül között egy **shard set**. A globális shard térkép tárolja a **shard térkép manager**. Hasonlítsa össze **helyi shard térkép**.
+**Globális szegmenstérkép**: A térképen a horizontális skálázás kulcsok és a megfelelő szegmens belül között egy **szegmens set**. A globális szegmenstérkép tárolja a **szilánkleképezés-kezelővel**. Második összehasonlítandó **helyi szegmenstérkép**.
 
-**Lista shard térkép**: shard térképre mely horizontális a kulcsok külön-külön vannak leképezve. Hasonlítsa össze **Shard térkép tartomány**.   
+**Listás szegmenstérkép**: horizontálispartíció-térkép, mely a horizontális skálázás a kulcsok külön-külön vannak leképezve. Második összehasonlítandó **tartomány-Szegmenstérkép**.   
 
-**Helyi shard térkép**: egy shard tárolják, a helyi shard leképezés a shardlets található a szilánkcímtárban leképezéseit tartalmazza.
+**Helyi szegmenstérkép**: egy szegmens tárolja, a helyi szegmenstérkép a szegmensben lévő shardlet adatain leképezéseit tartalmazza.
 
-**Több shard lekérdezés**: egy lekérdezést hajtanak több szilánkok; képes eredmények beállítása UNION ALL szemantikájú (más néven "szétterítési lekérdezés") adott vissza. Hasonlítsa össze **adatok függő útválasztási**.
+**Többszegmenses lekérdezés**: lehetővé teszi ki egy lekérdezést több szegmens; eredmények csoportok UNION ALL szemantika (más néven "lekérdezés logikájával") adott vissza. Második összehasonlítandó **Adatfüggő útválasztás**.
 
-**Több-bérlős** és **Single-bérlő**: Ez egy egyetlen-bérlő adatbázis és a több-bérlős adatbázis jeleníti meg:
+**Több-bérlős** és **egybérlős**: Ez egy egybérlős adatbázis és a egy több-bérlős adatbázis jeleníti meg:
 
-![Egyetlen és több-bérlős adatbázisok](./media/sql-database-elastic-scale-glossary/multi-single-simple.png)
+![Egy vagy több-bérlős adatbázisok](./media/sql-database-elastic-scale-glossary/multi-single-simple.png)
 
-Íme egy ábrázolása **szilánkos** egyetlen és több-bérlős adatbázisok. 
+Íme egy reprezentációja **horizontálisan skálázott** egyetlen és több-bérlős adatbázisok. 
 
-![Egyetlen és több-bérlős adatbázisok](./media/sql-database-elastic-scale-glossary/shards-single-multi.png)
+![Egy vagy több-bérlős adatbázisok](./media/sql-database-elastic-scale-glossary/shards-single-multi.png)
 
-**Tartomány shard térkép**: shard térképre, amelyben a shard terjesztési stratégia több tartomány folytonos értékek alapján. 
+**Tartomány-szegmenstérkép**: horizontálispartíció-térkép, amelyben a szegmensek terjesztési stratégia több tartomány folytonos értékek alapján. 
 
-**Táblák hivatkozhat**: táblákat, amelyek nem szilánkos, de a szilánkok replikálódnak. Zip-kódok például egy összefoglaló táblázatot is tárolható. 
+**Táblák hivatkozhat**: táblákat, amelyek nem horizontálisan skálázott, de replikálódnak a szegmensek között. Például az irányítószámok hivatkozási táblában is tárolhatók. 
 
-**A shard**: az Azure SQL-adatbázis, amely a szilánkos adatkészletet adatait tárolja. 
+**Szilánkleképezés**: egy Azure SQL database tárolja az adatokat egy horizontálisan skálázott adatok készletből. 
 
-**A shard rugalmasság**: hajthatnak végre mindkét **horizontális skálázás** és **függőleges skálázás**.
+**A horizontális partíciók rugalmassága**: hajthatnak végre mindkét **horizontális skálázást** és **vertikális skálázás**.
 
-**Horizontálisan skálázott táblák**: táblákat, amelyek szilánkos, azaz, amelynek adatait a horizontális értékek alapján szilánkok között van elosztva. 
+**Horizontálisan particionált táblák**: táblákat, amelyek horizontálisan skálázott, azaz, amelynek az adatait a horizontális skálázási kulcs értéke alapján szegmensek között elosztott. 
 
-**Horizontális kulcs**: határozza meg, hogy milyen adatok szilánkok pontjain oszlop értéke. Az érték típusa a következők egyike lehet: **int**, **bigint**, **varbinary**, vagy **uniqueidentifier**. 
+**Horizontális skálázási kulcs**: egy oszlop értékét, amely meghatározza, hogyan szegmensek között elosztott adatokat. Az érték típusa a következők egyike lehet: **int**, **bigint**, **varbinary**, vagy **uniqueidentifier**. 
 
-**A shard set**: a shard térkép kezelő ugyanazt a shard térképet attribútummal szilánkok gyűjteménye.  
+**Szilánkleképezés-készlet**: A gyűjtemény, amely ugyanahhoz a szegmenstérképhez a szilánkleképezés-kezelővel a rendelnek a szegmens.  
 
-**Shardlet**: az összes adat egyetlen értéket egy horizontális skálázási kulcsának egy shard társított. Egy shardlet adatátvitelt jelölik a lehető legkisebb egység esetén szilánkos táblák terjesztése. 
+**Shardlet**: az összes olyan szegmenskulcsot a szegmensek egyetlen érték társított adatokat. Egy shardlet adatáthelyezés lehető legkisebb egység esetén verziójának terjesztése a horizontálisan particionált táblák. 
 
-**A shard térkép**: horizontális kulcsok és a megfelelő szilánkok közötti leképezések halmaza.
+**Horizontális skálázási térképet**: horizontális skálázási kulcsok és a megfelelő szegmensek közötti leképezések halmaza.
 
-**A shard térkép manager**: A felügyeleti-objektum és az adattárhoz, amely tartalmazza a shard azt, a shard helyek és egy vagy több shard készletet leképezéseit.
+**Szilánkleképezés-kezelővel**: egy felügyeleti-objektum és az adattárhoz, amely tartalmazza a szegmens map(s), a szegmens helyek és a egy vagy több szegmensben készletek leképezését.
 
 ![Leképezések][2]
 
 ## <a name="verbs"></a>Műveletek
-**Horizontális skálázás**: scaling out (vagy a) történő hozzáadásával vagy eltávolításával a shard térképre szilánkok alább látható módon szilánkok gyűjteménye.
+**Horizontális skálázás**: a méretezés ki (vagy a) a törvény szegmensek hozzáadásával vagy eltávolításával horizontálispartíció-térkép szilánkok, ahogy az alábbi gyűjteményét.
 
 ![Vízszintes és függőleges skálázás][3]
 
-**Egyesítési**: két szilánkok shardlets áthelyezése egy shard, és ennek megfelelően frissítése a shard leképezés.
+**Egyesítse**: shardlet áthelyezése két szegmensből egyik adatszilánkba író, és ennek megfelelően frissíti a horizontális skálázási térképet.
 
-**Shardlet áthelyezés**: az a folyamat egyetlen shardlet áthelyezése egy másik szilánkcímtárban. 
+**Shardlet áthelyezési**: A művelet, egy egyetlen shardlet áthelyezése a másik adatszilánkba író. 
 
-**A shard**: vízszintesen particionálás azonos módon történő strukturált adatok egy horizontális skálázási kulcs alapján több adatbázis között.
+**Szilánkleképezés**: a strukturált adatok horizontális particionálása azonos módon történő horizontális skálázási kulcs alapján több adatbázis között.
 
-**Vegyes**: az a folyamat egy shard több shardlets áthelyezése egy másik (általában új) szilánkcímtárban. Egy horizontális skálázási kulcsot a szétválási pont, a felhasználó által megadott.
+**Split**: A művelet, egy szegmens több shardlet áthelyezését egy másik (általában új) szegmensben. Olyan szegmenskulcsot split pontot a felhasználó által megadott.
 
-**Függőleges méretezés**: az a folyamat felfelé skálázással (vagy le) egy egyedi shard teljesítményszintjét. Például módosítása a shard szabványos Premium (amely elegendő számítási erőforrás eredményez). 
+**Függőleges méretezés**: A művelet méretezéssel (), a számítási méret az egyes szegmensek. Például módosítása szegmensek standardról prémium szintre (amely több számítási erőforrást eredményezi). 
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 

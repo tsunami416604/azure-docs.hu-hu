@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: aa2d8f50d8fb4ba356af20a290976b8b32601ebf
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: b5632db57e902eef76860f85de6e76f85861090a
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43188791"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45728963"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-python"></a>Raspberry Pi csatlakoztatása az Azure IoT Central alkalmazáshoz (Python)
 
@@ -27,13 +27,13 @@ A cikkben leírt lépések elvégzéséhez a következőkre lesz szüksége:
 
 * A létrehozott Azure IoT Central alkalmazáshoz a **minta Devkits** alkalmazássablon. További információkért lásd: [az Azure IoT központi alkalmazás létrehozása](howto-create-application.md).
 * Raspberry Pi eszköz a Raspbian operációs rendszert. Egy figyelő, billentyűzetből és egérből a Raspberry Pi csatlakozik a grafikus felhasználói környezet elérésére van szüksége. A Raspberry Pi képesnek kell lennie [csatlakozni az internethez](https://www.raspberrypi.org/learning/software-guide/wifi/).
-* Szükség esetén egy [értelemben Hat](https://www.raspberrypi.org/products/sense-hat/) a Raspberry pi bővítmény tábla. Ez a tábla gyűjt telemetrikus adatokat küldeni az Azure IoT Central alkalmazáshoz különböző érzékelők. Ha nem rendelkezik egy **értelemben Hat** táblához, használhatja helyette egy-emulátoron.
+* Szükség esetén egy [értelemben Hat](https://www.raspberrypi.org/products/sense-hat/) a Raspberry pi bővítmény tábla. Ez a tábla gyűjt telemetrikus adatokat küldeni az Azure IoT Central alkalmazáshoz különböző érzékelők. Ha nem rendelkezik egy **értelemben Hat** táblához, használhatja helyette az emulátor (elérhető Raspberry Pi-kép részeként).
 
 ## <a name="sample-devkits-application"></a>**Minta Devkits** alkalmazás
 
 A létrehozott alkalmazáshoz a **minta Devkits** alkalmazást sablon tartalmaz egy **Raspberry Pi** eszköz sablon a következő jellemzőkkel: 
 
-- Telemetriai adatokat, amely tartalmazza az eszköz a mérések **páratartalom**, **hőmérséklet**, **nyomás**, **Magnometer** (mért mentén X Y, tengely Z), **Accelorometer** (X, Y, mentén mért Z tengely) és **Giroszkóp** (X, Y, mentén mért Z tengely).
+- Telemetriai adatokat, amely tartalmazza az eszköz a mérések **páratartalom**, **hőmérséklet**, **nyomás**, **Magnometer** (mért mentén X Y, tengely Z), **Accelorometer** (X, Y, mentén mért Z tengely), és **Giroszkóp** (X, Y, mentén mért Z tengely).
 - Beállítások megjelenítése **feszültség**, **aktuális**,**ventilátor sebesség** és a egy **integrációs modul** be-vagy kikapcsolása.
 - Eszköztulajdonság tartalmazó tulajdonságainak **die szám** és **hely** felhőbeli tulajdonság.
 
@@ -43,7 +43,8 @@ Tekintse meg a konfigurációs eszköz sablon kapcsolatos részletes [Raspberry 
 
 ## <a name="add-a-real-device"></a>Valós eszköz hozzáadása
 
-Az Azure IoT Central-alkalmazás hozzáadása a valós eszközöknek a **Raspberry Pi** eszköz sablont, és jegyezze fel az eszköz kapcsolati karakterláncát. További információkért lásd: [valós eszköz hozzáadása az Azure IoT Central alkalmazásnak](tutorial-add-device.md).
+Az Azure IoT Central-alkalmazás hozzáadása a valós eszközöknek a **Raspberry Pi** eszköz sablont, és jegyezze fel az eszköz kapcsolat részleteinek (**hatókör azonosítója, az eszköz azonosítója, az elsődleges kulcs**). További információkért lásd: [valós eszköz hozzáadása az Azure IoT Central alkalmazásnak](tutorial-add-device.md).
+
 
 ### <a name="configure-the-raspberry-pi"></a>A Raspberry Pi konfigurálása
 
@@ -52,30 +53,14 @@ Az alábbi lépéseket ismertetik letöltése és konfigurálása a Python-minta
 * Azure IoT Central telemetriai és tulajdonságértékeket küld.
 * Beállítás Azure IoT Central-ben végrehajtott változtatások válaszol.
 
+Az eszköz konfigurálása [részletes utasítások a Githubon.](http://aka.ms/iotcentral-docs-Raspi-releases)
+
+
 > [!NOTE]
-> A Raspberry Pi Python-mintához kapcsolatos további információkért lásd: a [információs](https://github.com/Azure/iot-central-firmware/blob/master/RaspberryPi/README.md) fájlt a Githubon.
+> A Raspberry Pi Python-mintához kapcsolatos további információkért lásd: a [információs](http://aka.ms/iotcentral-docs-Raspi-releases) fájlt a Githubon.
 
-1. A webböngésző segítségével a Raspberry Pi desktopban lépjen a [Azure IoT Central belső vezérlőprogram-kiadások](https://github.com/Azure/iot-central-firmware/releases) lapot.
 
-1. Töltse le a zip-fájlt, amely tartalmazza a legújabb belső vezérlőprogramot, a kezdőmappa a Raspberry Pi-on. A fájlnév a következőhöz hasonló `RaspberryPi-IoTCentral-X.X.X.zip`.
-
-1. Bontsa ki a belső vezérlőprogram-fájlt, használja a **Fájlkezelőben** a Raspberry Pi desktopban. Kattintson a jobb gombbal a zip-fájlt, és válassza a **itt kinyerése**. Ez a művelet létrehoz egy nevű mappába `RaspberryPi-IoTCentral-X.X.X` az otthoni mappában.
-
-1. Ha nem rendelkezik egy **értelemben Hat** táblához csatlakozik a Raspberry Pi-októl az emulátorban engedélyeznie kell:
-    1. A **Fájlkezelőben**, a a `RaspberryPi-IoTCentral-X.X.X` mappát, kattintson a jobb gombbal a **config.iot** fájlt, és válassza a **szövegszerkesztőben**.
-    1. Módosítsa a sort `"simulateSenseHat": false,` való `"simulateSenseHat": true,`.
-    1. A módosítások mentéséhez és bezárásához **szövegszerkesztőben**.
-
-1. Indítsa el a **terminálon** munkamenetet, és használja a `cd` parancs használatával keresse meg azt a mappát az előző lépésben létrehozott.
-
-1. A mintaalkalmazás futtatása indításához írja be a `./start.sh` a a **terminálon** ablak. Ha használja a **értelemben HAT emulátor**, a grafikus felhasználói felületen jeleníti meg. A grafikus felhasználói Felülettel használhatja az Azure IoT Central alkalmazásnak küldött telemetriai adatok értékek módosításához.
-
-1. A **terminálon** ablak, amely a következőhöz hasonló üzenetet jelenít meg `Device information being served at http://192.168.0.60:8080`. Az URL-címet a környezetében eltérő lehet. Másolja az URL-címet, és a konfigurációs lapon keresse meg a webböngésző használatával:
-
-    ![Eszközök konfigurálása](media/howto-connect-raspberry-pi-python/configure.png)
-
-1. Adja meg az eszköz kapcsolati karakterláncának rögzített egy hozzáadásakor valós eszközöknek az Azure IoT Central alkalmazáshoz. Válassza a **konfigurálása eszköz**. Megjelenik egy üzenet **eszköz van konfigurálva, az eszköz el kell indulnia, adatokat küldeni az Azure IoT Central rövid ideig**.
-
+1. Miután konfigurálta az eszközt, az eszköz el kell adatokat küldeni az Azure IoT Central rövid ideig.
 1. Az Azure IoT Central-alkalmazás láthatja, hogy a kód a Raspberry Pi-on futó hogyan működjön együtt az alkalmazás:
 
     * Az a **mérések** lap a valós eszközhöz, tekintse meg a Raspberry Pi által küldött telemetriát. Ha használja a **értelemben HAT emulátor**, módosíthatja a telemetriai értékeket a grafikus felhasználói felületen, a Raspberry Pi-on.

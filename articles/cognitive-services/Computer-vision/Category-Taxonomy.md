@@ -1,22 +1,24 @@
 ---
-title: A számítógép Látástechnológiai API-besorolás 86 kategóriák |} Microsoft Docs
-description: A számítógép Látástechnológiai API kognitív Microsoft-szolgáltatásokban a besorolás 86 kategóriák beolvasása.
+title: A Computer Vision API a besorolás 86 kategóriái
+titlesuffix: Azure Cognitive Services
+description: Szerezze be a besorolás 86 kategóriák a Computer Vision API az Azure Cognitive Servicesben.
 services: cognitive-services
 author: KellyDF
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
-ms.topic: article
+ms.topic: reference
 ms.date: 12/19/2016
 ms.author: kefre
-ms.openlocfilehash: c44345ac1829f09cc855483278198883ca021159
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: b5da9a19d51bef6ae31b89c5b8fc8ae4b7c5177e
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347027"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45984907"
 ---
-##<a name="86-categories-taxonomy"></a>86-kategóriák besorolás
+# <a name="86-categories-taxonomy"></a>Besorolás 86-kategóriák
+
 abstract_
 
 abstract_net

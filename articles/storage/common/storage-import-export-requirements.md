@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: alkohli
 ms.component: common
-ms.openlocfilehash: 10e8fb6ac5bcce278de3924ebd3a0d9f90392217
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 18c27e4059ea06fcc52863b2d7671c14167dae75
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39528054"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45732753"
 ---
 # <a name="azure-importexport-system-requirements"></a>Az Azure Import/Export rendszerre vonatkozó követelmények
 
@@ -32,12 +32,15 @@ A merevlemez-meghajtókat a WAImportExport eszközzel, a következő előkészí
 
 ## <a name="supported-storage-accounts"></a>Támogatott tárfiókok
 
-Az Azure Import/Export szolgáltatás támogatja a következő [az Azure storage-fiókok](storage-account-options.md).
+Az Azure Import/Export szolgáltatás támogatja a következő típusú storage-fiókok:
+
+- Általános célú v2-tárfiókok
 - Általános célú v1-tárfiókok (klasszikus és a Azure Resource Manager üzembe helyezések)
 - Blob Storage-fiókok
-- Általános célú v2-tárfiókok
 
-Minden egyes feladat előfordulhat, hogy használható-adatok áthelyezésénél csak egy storage-fiókból. Más szóval egy egyetlen importálási/exportálási feladat terjedhetnek ki több tárfiókon keresztül. Új tárfiók létrehozásával kapcsolatos információkért lásd: [Storage-fiók létrehozása](storage-create-storage-account.md#create-a-storage-account).
+Storage-fiókokkal kapcsolatos további információkért lásd: [az Azure storage-fiókok áttekintése](storage-account-overview.md).
+
+Minden egyes feladat előfordulhat, hogy használható-adatok áthelyezésénél csak egy storage-fiókból. Más szóval egy egyetlen importálási/exportálási feladat terjedhetnek ki több tárfiókon keresztül. Új tárfiók létrehozásával kapcsolatos információkért lásd: [Storage-fiók létrehozása](storage-quickstart-create-account.md).
 
 > [!IMPORTANT] 
 > Az Azure importálási exportálása szolgáltatás nem támogatja a storage-fiókok, a [virtuális hálózati Szolgáltatásvégpontok](../../virtual-network/virtual-network-service-endpoints-overview.md) funkció engedélyezve van. 

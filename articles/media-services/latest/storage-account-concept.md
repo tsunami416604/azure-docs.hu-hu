@@ -1,6 +1,6 @@
 ---
-title: Storage-fiókok Azure Media Services |} Microsoft Docs
-description: A cikk ismerteti, hogyan használja a Media Services a storage-fiókok.
+title: Tárfiókok az Azure Media Services |} A Microsoft Docs
+description: Ez a cikk ismerteti, hogyan használja a Media Services a storage-fiókok.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -11,31 +11,31 @@ ms.workload: ''
 ms.topic: article
 ms.date: 03/19/2018
 ms.author: juliako
-ms.openlocfilehash: 6d4c21867b0b46508f348300ae2b9553a75d23b2
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 883aecaa82f1a83af22bf345d364c2b43776e559
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788066"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45732209"
 ---
 # <a name="storage-accounts"></a>Tárfiókok
 
-Egy Media Services-fiók létrehozásakor kell megadnia egy Azure Storage-fiók erőforrás nevét. A megadott tárfiók a Media Services-fiókhoz csatolva van. 
+A Media Services-fiók létrehozásakor meg kell adnia egy Azure Storage-fiókhoz tartozó erőforrás nevét. A rendszer a Media Services-fiókhoz csatolja a megadott Storage-fiókot. 
 
-Kell egy **elsődleges** tárfiók, és bármely számú lehet **másodlagos** a Media Services-fiókhoz társított tárfiókokat. Media Services szolgáltatásban **általános célú v2** (GPv2) vagy **általános célú v1** (GPv1) fiókok. 
+Rendelkeznie kell egy **elsődleges** storage-fiókot, és tetszőleges számú rendelkezhet **másodlagos** a Media Services-fiókjához társított storage-fiókok. A Media Services támogatja az **Általános célú v2-** (GPv2-) és az **Általános célú v1-** (GPv1-) fiókokat is. 
 
 >[!NOTE]
-> Csak a BLOB-fiókok használata nem engedélyezett **elsődleges**. 
+> A blobfiókok nem megengedettek **elsődleges** tárfiókként. 
 
-Azt javasoljuk, hogy így választás az érdekes előnyeinek kihasználása és a tárolási rétegek cool GPv2, használjon. Storage-fiókok kapcsolatos további információkért lásd: [Azure Storage-fiók beállításai](../../storage/common/storage-account-options.md). 
+Javasoljuk a GPv2, használja, így kihasználhatja, gyakori elérésű közötti választáshoz, és lassú elérésű szinteket annak. Storage-fiókokkal kapcsolatos további tudnivalókért lásd: [Azure Storage-fiók áttekintése](../../storage/common/storage-account-overview.md). 
 
-## <a name="assets-in-a-storage-account"></a>A tárfiókban lévő eszközök
+## <a name="assets-in-a-storage-account"></a>Storage-fiókban lévő eszközök
 
-A Storage API-k Media Services v3 használ a fájlok feltöltéséhez. Storage API-k használata a Media Services a bemeneti fájlok feltöltéséhez megtekintéséhez tekintse meg [létrehozni a feladat bemeneti helyi fájlból](job-input-from-local-file-how-to.md). 
+A Media Services v3-as a Storage API-k segítségével fájlok feltöltése. Tekintse meg a bemeneti fájlok feltöltése Media Services Storage API-k használata, tekintse át [hozzon létre egy feladat bemenete egy helyi fájlból](job-input-from-local-file-how-to.md). 
 
 > [!Note]
-> Ne próbáljon a Media Services API-k használata nélkül a Media Services SDK által előállított blob-tároló tartalmának módosításához.
+> Meg nem próbálja meg módosítani a blob-tárolók, a Media Services SDK által előállított, a Media Services API-k használata nélkül tartalmát.
 
 ## <a name="next-steps"></a>További lépések
 
-A Media Services-fiókhoz csatolni egy tárfiókot, lásd: [-fiók létrehozása](create-account-cli-quickstart.md).
+Tárfiók csatolása a Media Services-fiókhoz való kezelésével kapcsolatos információkért lásd: [hozzon létre egy fiókot](create-account-cli-quickstart.md).

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/26/2018
 ms.author: adigan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4839b1aaa56be1ad93fa1dd685ca3176d1cc8a27
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: c59653bf3709f7798fd92a44fa420b99f2cbc6b6
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42060857"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45733567"
 ---
 # <a name="configure-azure-backup-reports"></a>Azure Backup-jelentések konfigurálása
 Ez a cikk ismerteti lépések jelentések konfigurálása az Azure Backup helyreállítási tár használatával, és ezeket a jelentéseket a Power BI segítségével történő eléréséhez. Után hajt végre ezeket a lépéseket, a Power BI összes jelentés megtekintését, testre szabhatja, és jelentéseket hozhat létre közvetlenül léphet. 
@@ -83,7 +83,7 @@ Miután a tárfiók konfigurálása a jelentéseket a helyreállítási tár has
 4. Adja meg a tárfiók nevét a fenti 5. lépésben konfigurált, és kattintson a **tovább** gombra.
 
     ![A tárfiók nevének megadása](./media/backup-azure-configure-reports/content-pack-storage-account-name.png)    
-5. Adja meg a tárfiókhoz a tárfiók-kulcsot. Is [megtekintése és másolása a tárelérési kulcsok](../storage/common/storage-create-storage-account.md#manage-your-storage-account) lépjen a tárfiókhoz az Azure Portalon. 
+5. Adja meg a tárfiókhoz a tárfiók-kulcsot. Is [megtekintése és másolása a tárelérési kulcsok](../storage/common/storage-account-manage.md#access-keys) lépjen a tárfiókhoz az Azure Portalon. 
 
      ![Adja meg a storage-fiók](./media/backup-azure-configure-reports/content-pack-storage-account-key.png) <br/>
      

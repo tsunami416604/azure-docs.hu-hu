@@ -1,5 +1,5 @@
 ---
-title: T-SQL különbségek-áttelepítés – Azure SQL Database feloldása |} Microsoft Docs
+title: T-SQL különbségek-áttelepítés – Azure SQL Database feloldása |} A Microsoft Docs
 description: Nem teljes mértékben támogatott Transact-SQL-utasítások az Azure SQL Database-ben
 services: sql-database
 author: CarlRabeler
@@ -7,65 +7,65 @@ manager: craigg
 ms.service: sql-database
 ms.custom: migrate
 ms.topic: conceptual
-ms.date: 04/01/2018
+ms.date: 09/14/2018
 ms.author: carlrab
-ms.openlocfilehash: e89c863ac50a8b906b388c505f444cd60fdbaad3
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 440605806915d515d2a60556a9c298b29e0fca8c
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34649074"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45735428"
 ---
-# <a name="resolving-transact-sql-differences-during-migration-to-sql-database"></a>SQL-adatbázishoz való áttelepítés során a feloldó Transact-SQL különbségek   
-Ha [az adatbázis áttelepítése](sql-database-cloud-migrate.md) az SQL Serverről az Azure SQL-kiszolgálón, azt tapasztalhatja, hogy az adatbázis futtatásához szükséges néhány átalakításának az SQL Server áttelepítés előtt. Ez a cikk segítséget nyújt a mind a átalakításának végrehajtása, és miért szükséges a átalakításának az alapul szolgáló okok megértéséhez útmutatást nyújt a. Kompatibilitási problémák észlelése, használja a [adatok áttelepítési Segéd (DMA-)](https://www.microsoft.com/download/details.aspx?id=53595).
+# <a name="resolving-transact-sql-differences-during-migration-to-sql-database"></a>Transact-SQL különbségek feloldása az SQL Database-migráció során   
+Amikor [az adatbázis migrálása](sql-database-cloud-migrate.md) SQL Serverről Azure SQL-kiszolgálón, azt tapasztalhatja, hogy az adatbázis futtatásához szükséges néhány újratervezéséhez előtt az SQL Server telepíthetők át. Ez a cikk segítséget nyújt a végrehajtása a újratervezéséhez és miért szükséges a újratervezéséhez az alapul szolgáló okok megértéséhez is útmutatást nyújt. Kompatibilitási problémák észleléséhez használja a [Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595).
 
 ## <a name="overview"></a>Áttekintés
-Microsoft SQL Server és az Azure SQL Database is teljes mértékben támogatja a legtöbb Transact-SQL funkciókat használják. Például adattípusok, a kezelők, a karakterlánc, a számtani, logikai, és a kurzor funkciók, például SQL alapösszetevőket munka azonos SQL Server és SQL-adatbázis. Azonban néhány T-SQL különbségek vannak DDL (adatok-definition language) és a T-SQL-utasítások és lekérdezések csak részben támogatott DML (adatok adatkezelési language) elemek (Ez a cikk későbbi részében tárgyaljuk).
+A legtöbb Transact-SQL funkcióival, mellyel az alkalmazások teljes mértékben támogatja a Microsoft SQL Server és az Azure SQL Database. Például az SQL-alapösszetevők például adattípusok, a operátorok, a karakterlánc, a aritmetikai, logikai, és a kurzor funkciók, munka azonos SQL Server és SQL Database. Azonban néhány T-SQL különbségek vannak a DDL (data-definíciós nyelv) és a T-SQL-utasításokkal, és csak részlegesen támogatott lekérdezések DML (adatok adatkezelési language) elemek (Ez a cikk későbbi részében bemutatjuk).
 
-Emellett vannak bizonyos funkciók és szintaxis nem támogatott, mivel az Azure SQL Database célja, hogy különítse el a függőségeket a master adatbázis és az operációs rendszer szolgáltatásait. A legtöbb kiszolgálószintű tevékenységek, SQL-adatbázis nem megfelelőek. T-SQL-utasítások és a beállítások nem érhetők el, ha konfigurálja kiszolgálói szintű beállításokat, operációs rendszer összetevőit, vagy adja meg a rendszer-konfigurációs fájlt. Ilyen tulajdonságokkal szükség, ha megfelelő alternatív gyakran érhető el más módon SQL-adatbázis vagy egy másik Azure szolgáltatás vagy szolgáltatás. 
+Emellett vannak bizonyos funkciók és a szintaxis, amely nem támogatott egyáltalán, mivel a Azure SQL Database az elkülöníteni a funkciókat a főadatbázis és az operációs rendszer. Emiatt a legtöbb kiszolgálói szintű tevékenység nem illik az SQL Database. T-SQL-utasítások és beállítások nem érhető el, ha kiszolgálói szintű beállításokat vagy operációsrendszer-összetevők, konfigurálása, vagy adja meg a fájlrendszer-konfigurációt. Ilyen képességek szükségesek, ha megfelelő alternatív gyakran érhető el bármilyen egyéb módon az SQL Database-ből vagy más Azure funkciót vagy szolgáltatást. 
 
-Például magas rendelkezésre állású be van építve a Azure-ra, így mindig a konfigurálás nem szükséges (bár előfordulhat, hogy konfigurálni szeretné a gyorsabb helyreállítás aktív georeplikáció legyen katasztrófahelyzet esetén). Igen rendelkezésre állási csoportokkal kapcsolatos T-SQL-utasítások nem támogatottak az SQL-adatbázis, és a dinamikus felügyeleti nézetekkel kapcsolatos mindig a még nem támogatott.
+Például magas rendelkezésre állás beépített Azure-ban, így Always On konfigurálása nem szükséges (bár a gyorsabb helyreállítás az aktív georeplikáció konfigurálása egy esetleges vészhelyzet esetén érdemes). Tehát rendelkezésre állási csoportokkal kapcsolatos T-SQL-utasítások nem támogatottak az SQL Database, és a kapcsolódó mindig a dinamikus felügyeleti nézeteket is nem támogatott.
 
-Támogatott, és SQL-adatbázis által nem támogatott funkciók listáját lásd: [Azure SQL Database szolgáltatás összehasonlító](sql-database-features.md). Ezen a lapon a listán, irányelvek és a szolgáltatások cikkben kiegészíti, és Transact-SQL-utasítások összpontosít.
+A támogatott és nem az SQL Database által támogatott funkciók listáját lásd: [Azure SQL Database funkcióinak összehasonlítása](sql-database-features.md). A lista ezen az oldalon, irányelvek és funkciók cikk kiegészíti, és Transact-SQL-utasítások összpontosít.
 
-## <a name="transact-sql-syntax-statements-with-partial-differences"></a>Részleges eltérésekkel Transact-SQL-szintaxis utasítások
-A mag (dll) DDL-utasításokban érhetők el, de néhány DDL-utasításokban kell bővítmények lemez elhelyezési kapcsolódik, és nem támogatott funkciókat. 
+## <a name="transact-sql-syntax-statements-with-partial-differences"></a>Részleges eltéréssel Transact-SQL-szintaxis utasítások
+A core (adatdefiníciós nyelv) DDL-utasítások, de néhány DDL-utasítások rendelkeznie bővítmények lemez elhelyezési kapcsolatos, és nem támogatott funkciókat. 
 
-- Hozzon létre és az ALTER DATABASE utasítás több mint három tucat lehetősége van. Fájl elhelyezését, FILESTREAM és csak érvényes SQL Server service broker beállítások közé tartoznak az utasítások Ez lehet, hogy nem számít, hogy adatbázisok létrehozására, mielőtt telepíti át, de ha az áttelepítés által létrehozott adatbázisok T-SQL-kódot kell összehasonlítani [CREATE DATABASE (Azure SQL Database)](https://msdn.microsoft.com/library/dn268335.aspx) a következő SQL Server használatával [(SQL Server Transact-SQL) adatbázis létrehozása](https://msdn.microsoft.com/library/ms176061.aspx) győződjön meg arról, használja az összes beállítások támogatottak. Az Azure SQL Database-adatbázis létrehozása a szolgáltatási cél és csak az SQL Database rugalmas bővítést beállításokat is rendelkezik.
-- A létrehozás és az ALTER TABLE utasítás közül FileTable, amely az SQL-adatbázis nem használható, mert a FILESTREAM nem támogatott.
-- A CREATE vagy ALTER login utasítás használata támogatott, de az SQL-adatbázis nem biztosít a beállításokat. Ahhoz, hogy az adatbázis több hordozható, SQL-adatbázis bátorítja a tartalmazott adatbázis-felhasználók helyett bejelentkezéseket, amikor csak lehetséges. További információkért lásd: [CREATE/ALTER LOGIN](https://msdn.microsoft.com/library/ms189828.aspx) és [szabályozása és az adatbázis elérését](https://docs.microsoft.com/azure/sql-database/sql-database-manage-logins).
+- LÉTREHOZÁS és az ALTER DATABASE utasítás több mint három tucat lehetősége van. Az utasítások közé tartozik a fájl elhelyezési FILESTREAM és csak érvényes SQL Server service broker beállítások. Ez előfordulhat, hogy nem számít, hogy adatbázisok létrehozására, mielőtt telepíti át, de ha az áttelepítés által létrehozott adatbázisok a T-SQL-kódot hasonlítsa [CREATE DATABASE (Azure SQL Database)](https://msdn.microsoft.com/library/dn268335.aspx) , SQL Server szintaxissal [létrehozása ADATBÁZIS (SQL Server Transact-SQL)](https://msdn.microsoft.com/library/ms176061.aspx) , hogy az összes beállítás használata támogatott. Az Azure SQL Database-adatbázis létrehozása a szolgáltatási cél és a csak az SQL Database rugalmas méretezési beállítások is rendelkezik.
+- A létrehozás és az ALTER TABLE utasítást, amely nem használható az SQL Database, mert nem támogatott a FILESTREAM FileTable lehetőség áll rendelkezésére.
+- A CREATE vagy ALTER login utasítás támogatott, de az SQL Database nem kínál lehetőségekről. Az adatbázis hordozhatóságának, az SQL Database arra ösztönzi a tartalmazottadatbázis-felhasználók használata helyett a bejelentkezéseket, amikor csak lehetséges. További információkért lásd: [CREATE/ALTER LOGIN](https://msdn.microsoft.com/library/ms189828.aspx) és [szabályozása és adatbázis-hozzáférés](https://docs.microsoft.com/azure/sql-database/sql-database-manage-logins).
 
 ## <a name="transact-sql-syntax-not-supported-in-azure-sql-database"></a>Nem támogatott az Azure SQL Database Transact-SQL-szintaxis   
-Transact-SQL utasítások a leírt nem támogatott szolgáltatásokkal kapcsolatos mellett [Azure SQL Database szolgáltatás összehasonlító](sql-database-features.md), az alábbi utasítások és kimutatások csoportok nem támogatottak. Ha az adatbázis kell áttelepíteni az alábbi szolgáltatások bármelyike használ, újra tervezését a T-SQL elkerülése érdekében a T-SQL funkciókat és az utasításokat.
+A leírt nem támogatott funkciók kapcsolatos Transact-SQL utasításokkal mellett [Azure SQL Database funkcióinak összehasonlítása](sql-database-features.md), az alábbi utasítások és utasításcsoportok, nem támogatottak. Mint ilyen az adatbázis kell áttelepíteni az alábbi funkciók bármelyike használ, ha újból mérnök a T-SQL-ezeket a T-SQL-funkciók és az utasításokat.
 
 - Rendszerobjektumok rendezése
-- A kapcsolat kapcsolódó: Endpoint utasítás. Az SQL Database nem támogatja a Windows-hitelesítést, de támogatja a hasonló Azure Active Directory-hitelesítést. Bizonyos hitelesítési típusokhoz az SSMS legújabb verziója szükséges. További tudnivalókat a [Csatlakozás az SQL Database vagy az SQL Data Warehouse szolgáltatáshoz Azure Active Directory-hitelesítéssel](sql-database-aad-authentication.md) című cikkben találhat.
+- Kapcsolatra vonatkozó: végponti utasítások. Az SQL Database nem támogatja a Windows-hitelesítést, de támogatja a hasonló Azure Active Directory-hitelesítést. Bizonyos hitelesítési típusokhoz az SSMS legújabb verziója szükséges. További tudnivalókat a [Csatlakozás az SQL Database vagy az SQL Data Warehouse szolgáltatáshoz Azure Active Directory-hitelesítéssel](sql-database-aad-authentication.md) című cikkben találhat.
 - Adatbázisközi lekérdezések három vagy négy résznévvel. (A csak olvasható adatbázisközi lekérdezéseket a [rugalmas adatbázis lekérdezése](sql-database-elastic-query-overview.md) funkció támogatja.)
 - Tulajdonjog adatbázisközi láncolása, `TRUSTWORTHY` beállítása
 - Az `EXECUTE AS LOGIN` helyett használja az 'EXECUTE AS USER' utasítást.
 - A bővíthető kulcskezelés kivételével a titkosítás funkció támogatott
-- Eseménykezelő: Események, rendszeresemény-értesítéseket, a lekérdezési értesítések
-- Helye: szintaxis kapcsolódó adatbázis helye, méretének és automatikusan kezeli a Microsoft Azure adatbázisfájlok.
-- Magas rendelkezésre állású: szintaxissal kapcsolatos magas rendelkezésre állású, amelyen keresztül a Microsoft Azure-fiókjához. Ide tartozik a biztonsági mentéshez, visszaállításhoz, Always On funkcióhoz, adatbázis-tükrözéshez, naplóküldéshez, helyreállítási módokhoz kapcsolódó szintaxis.
-- Naplófájl olvasó: szintaxis, hogy a napló olvasó, amely nem található SQL-adatbázis alapul: leküldéses replikáció, az adatváltozások rögzítése. Az SQL Database a leküldéses replikációs tétel előfizetője lehet.
+- Eseménykezelési: Események, eseményértesítések, lekérdezésértesítések
+- Fájl elhelyezési: adatbázisfájlok elhelyezéséhez, mérete és automatikusan a Microsoft Azure által felügyelt adatbázis-fájlok kapcsolódó szintaxis.
+- Magas rendelkezésre állás: magas rendelkezésre állást, amely a Microsoft Azure-fiókján keresztül felügyelt kapcsolódó szintaxis. Ide tartozik a biztonsági mentéshez, visszaállításhoz, Always On funkcióhoz, adatbázis-tükrözéshez, naplóküldéshez, helyreállítási módokhoz kapcsolódó szintaxis.
+- Jelentkezzen az olvasó: a napló olvasó, amely nem érhető el az SQL Database támaszkodó Szintaxis: leküldéses replikáció, adatváltozások rögzítése. Az SQL Database a leküldéses replikációs tétel előfizetője lehet.
 - Funkciók: `fn_get_sql`, `fn_virtualfilestats`, `fn_virtualservernodes`
-- Hardver: Hardverrel kapcsolatos kiszolgálóbeállítások kapcsolódó Szintaxis: például memória, a munkavégző szál, a Processzor-affinitás, nyomkövetési jelzők. Használjon helyette szolgáltatási szinteket.
+- Hardver: Hardver kiszolgálóbeállításokhoz kapcsolódó Szintaxis: memória, munkaszálak, processzoraffinitás, például a nyomkövetési jelzők. És méretek inkább számítási szolgáltatásszintek használhat.
 - `KILL STATS JOB`
-- `OPENQUERY`, `OPENROWSET`, `OPENDATASOURCE`, és négyrészes neve
+- `OPENQUERY`, `OPENROWSET`, `OPENDATASOURCE`, és négyrészes nevek
 - .NET-keretrendszer: Az SQL Server CLR-integrációt
 - Szemantikai keresés
-- A kiszolgáló hitelesítő adatai: használata [adatbázishoz kötődő hitelesítő adatok](https://msdn.microsoft.com/library/mt270260.aspx) helyette.
-- Kiszolgálószintű elemek: kiszolgálói szerepkörök, `sys.login_token`. A `GRANT`, `REVOKE`, és `DENY` kiszolgálószintű engedélyek nem érhetők el, bár van köztük olyan, amelyet adatbázisszintű engedélyek helyettesítenek. Néhány hasznos kiszolgálószintű dinamikus felügyeleti nézet rendelkezik egyenértékű adatbázisszintű dinamikus felügyeleti nézettel.
+- Kiszolgáló hitelesítő adatai: használata [adatbázishoz kötődő hitelesítő adatok](https://msdn.microsoft.com/library/mt270260.aspx) helyette.
+- Kiszolgálószintű elemek: kiszolgálói szerepkörök területen `sys.login_token`. A `GRANT`, `REVOKE`, és `DENY` kiszolgálószintű engedélyek nem érhetők el, bár van köztük olyan, amelyet adatbázisszintű engedélyek helyettesítenek. Néhány hasznos kiszolgálószintű dinamikus felügyeleti nézet rendelkezik egyenértékű adatbázisszintű dinamikus felügyeleti nézettel.
 - `SET REMOTE_PROC_TRANSACTIONS`
 - `SHUTDOWN`
 - `sp_addmessage`
 - `sp_configure` lehetőségek és `RECONFIGURE`. Egyes lehetőségek elérhetők az [ALTER DATABASE SCOPED CONFIGURATION](https://msdn.microsoft.com/library/mt629158.aspx) (adatbázis-hatókörű konfiguráció változtatása) utasítással.
 - `sp_helpuser`
 - `sp_migrate_user_to_contained`
-- SQL Server Agent: Szintaxist az SQL Server Agent vagy az MSDB adatbázis alapul: riasztások, a kezelők, a központi felügyeleti kiszolgálókat. Használjon helyette parancsfájlkezelőt, mint például az Azure PowerShell.
+- SQL Server Agent: Az SQL Server Agent vagy MSDB-adatbázisra támaszkodó Szintaxis: riasztások, kezelők, központi felügyeleti kiszolgálók. Használjon helyette parancsfájlkezelőt, mint például az Azure PowerShell.
 - SQL Server-naplózás: az SQL Database naplózási helyette.
 - SQL Server-nyomkövetés
-- Nyomkövetési jelzők: minden nyomkövetési jelző elem helyezte kompatibilitási mód.
+- Nyomkövetési jelzők: egyes nyomkövetési jelző elemek lettek áthelyezve kompatibilitási módban.
 - Transact-SQL-hibakeresés
 - Eseményindítók: kiszolgálói hatókörű vagy bejelentkezési eseményindítók
 - `USE` utasítás: Ha másik adatbázissal szeretné felváltani az adatbázis-környezetet, új kapcsolódást kell létesítenie az új adatbázissal.
@@ -74,11 +74,11 @@ Transact-SQL utasítások a leírt nem támogatott szolgáltatásokkal kapcsolat
 A Transact-SQL-szintaxisról és használatáról további információk és példák találhatók az SQL Server Online könyvek [A Transact-SQL leírása (adatbázismotor)](https://msdn.microsoft.com/library/bb510741.aspx) című részében. 
 
 ### <a name="about-the-applies-to-tags"></a>Az „Érvényes” címkék
-A Transact-SQL 2008 SQL Server-verziók a jelen van a kapcsolódó cikkekben is vonatkozik. Hiba a cikk címe alatt ikon sáv, listázása a négy SQL Server-platformokat, és alkalmazhatósági jelző. A rendelkezésre állási csoportok például az SQL Server 2012-ben jelentek meg. A [AVAILABILTY csoport létrehozása](https://msdn.microsoft.com/library/ff878399.aspx) a cikk azt jelzi, hogy az utasítás érvényes **(2012-től induló) SQL Server**. Az utasítás nem érvényes az SQL Server 2008, az SQL Server 2008 R2, az Azure SQL Database, az Azure SQL Data Warehouse és a Parallel Data Warehouse esetében.
+A Transact-SQL referencia kapcsolódó SQL Server-verziók 2008, a jelen cikk tartalmaz. A cikk címe alatt van egy ikon sáv, listázás, a négy SQL Server-platformot, és hogy Alkalmazhatóság. A rendelkezésre állási csoportok például az SQL Server 2012-ben jelentek meg. A [CREATE AVAILABILTY GROUP](https://msdn.microsoft.com/library/ff878399.aspx) a cikk azt jelzi, hogy az utasítás érvényes **(2012-től induló) SQL Server**. Az utasítás nem érvényes az SQL Server 2008, az SQL Server 2008 R2, az Azure SQL Database, az Azure SQL Data Warehouse és a Parallel Data Warehouse esetében.
 
-Bizonyos esetekben a cikk általános tárgya termék használható, de termékek közötti különbségek. A különbségek szerepelnek, szükség szerint cikkben középpont felett. Bizonyos esetekben a cikk általános tárgya termék használható, de termékek közötti különbségek. A különbségek szerepelnek, szükség szerint cikkben középpont felett. Ha például a CREATE TRIGGER cikk érhető el az SQL-adatbázis. De a **összes kiszolgáló** kiszolgálói szintű eseményindítók beállításnál azt jelzi, hogy a kiszolgálói szintű eseményindítók az SQL-adatbázis nem használható. Ehelyett használja az adatbázis-szintű eseményindítók.
+Bizonyos esetekben egy cikk általános tárgya használható egy termékben, de a termékek között kisebb különbségek vannak. A különbségek a cikkben a megfelelő középpontoknál szükséges. Bizonyos esetekben egy cikk általános tárgya használható egy termékben, de a termékek között kisebb különbségek vannak. A különbségek a cikkben a megfelelő középpontoknál szükséges. A CREATE TRIGGER cikk például az SQL Database érhető el. De a **összes kiszolgáló** kiszolgálói szintű eseményindítók beállítást, azt jelzi, hogy a kiszolgálói szintű eseményindítók SQL Database-ben nem használható. Használja helyette az adatbázisszintű eseményindítók.
 
 ## <a name="next-steps"></a>További lépések
 
-Támogatott, és SQL-adatbázis által nem támogatott funkciók listáját lásd: [Azure SQL Database szolgáltatás összehasonlító](sql-database-features.md). Ezen a lapon a listán, irányelvek és a szolgáltatások cikkben kiegészíti, és Transact-SQL-utasítások összpontosít.
+A támogatott és nem az SQL Database által támogatott funkciók listáját lásd: [Azure SQL Database funkcióinak összehasonlítása](sql-database-features.md). A lista ezen az oldalon, irányelvek és funkciók cikk kiegészíti, és Transact-SQL-utasítások összpontosít.
 

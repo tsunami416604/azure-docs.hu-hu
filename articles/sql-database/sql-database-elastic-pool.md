@@ -8,15 +8,15 @@ manager: craigg
 ms.service: sql-database
 ms.subservice: elastic-pool
 ms.custom: DBs & servers
-ms.date: 07/27/2018
+ms.date: 09/14/2018
 ms.author: ninarn
 ms.topic: conceptual
-ms.openlocfilehash: ffc74eafed81c3dad836cfe70050244cb66a820b
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 39c127569ea3ea5339c90554e1e899212f1b3f6a
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40003739"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45735512"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>Rugalmas készletek kezelése és a több Azure SQL-adatbázisok horizontális Súgó
 
@@ -55,7 +55,7 @@ Az alábbi ábra egy olyan adatbázist mutat be, amely sok időt tölt tétlenü
 
    ![egy készletbe illő önálló adatbázis](./media/sql-database-elastic-pool/one-database.png)
 
-Az ábrázolt ötperces periódus során a DB1 adatbázis maximális DTU-használata 90, de az összesített átlagos használati érték öt DTU alatt van. Ilyen számítási feladatok futtatásához önálló adatbázis esetén S3-as teljesítményszintre van szükség, amellyel azonban az alacsony tevékenységű időszakok során az erőforrások legnagyobb része kihasználatlan marad.
+Az ábrázolt ötperces periódus során a DB1 adatbázis maximális DTU-használata 90, de az összesített átlagos használati érték öt DTU alatt van. Az S3 szintű számítási méret ilyen számítási feladatok futtatásához önálló adatbázis szükséges, de a kihasználatlan marad az erőforrások legnagyobb része kihasználatlan alacsony tevékenységű időszakok során.
 
 Egy készletben ezek a használaton kívüli DTU-k több adatbázis között lehetnek megosztva, így a szükséges DTU-k száma és az összköltség is csökken.
 
@@ -65,7 +65,7 @@ Az előző példa mentén továbbhaladva tegyük fel, hogy további adatbázisok
 
    ![húsz adatbázis egy készletbe illő kihasználtsági mintával](./media/sql-database-elastic-pool/twenty-databases.png)
 
-A DTU-k mind a 20 adatbázisra vonatkozó összesített kihasználtságát a fekete vonal jelzi az előző ábrán. Ez alapján a teljes DTU-használat soha nem lépi túl a 100 DTU értéket, és az időtartam során a 20 adatbázis 100 eDTU-t használhat közösen. Ennek eredményeképpen a DTU-k száma huszadára, a költség pedig tizenharmadára csökken ahhoz képest, mintha minden egyes adatbázis S3 teljesítményszintű önálló adatbázisként működne.
+A DTU-k mind a 20 adatbázisra vonatkozó összesített kihasználtságát a fekete vonal jelzi az előző ábrán. Ez alapján a teljes DTU-használat soha nem lépi túl a 100 DTU értéket, és az időtartam során a 20 adatbázis 100 eDTU-t használhat közösen. Ennek eredményeképpen a dtu-k a 20 x csökkenését, és a egy 13 x képest, mintha minden egyes adatbázis S3 díjcsökkentésnek számítási méretek az önálló adatbázisok számára.
 
 Ez a példa az alábbi okokból ideális:
 
@@ -75,21 +75,21 @@ Ez a példa az alábbi okokból ideális:
 
 A készletre vonatkozó költség az eDTU-készlet függvénye. A készlethez tartozó eDTU-k egységára egy önálló adatbázis DTU-egységárának másfélszerese, azonban **a készlethez tartozó eDTU-kat sok adatbázis használhatja, így kevesebb eDTU-ra van szükség**. Ezek a díjszabásban és eDTU-megosztásban jelentkező különbségek adják a készletekkel elérhető megtakarítás alapját.
 
-Az adatbázisok számára és kihasználtságára vonatkozó alábbi általános szabályokkal biztosíthatja, hogy a készlet költségcsökkenést eredményezzen az önálló adatbázisok és teljesítményszintek használatához képest.
+A következő szabályok költségcsökkenést eredményezzen az adatbázisok és az adatbázis-kihasználtsági kapcsolódó segítségével biztosíthatja, hogy a készlet számítási méretek használatával az önálló adatbázisok képest.
 
 ### <a name="minimum-number-of-databases"></a>Adatbázisok minimális száma
 
 Ha az önálló adatbázisok számára az erőforrások összesített mennyisége nem több, mint a készlet számára szükséges erőforrások x 1.5 költséghatékonyabb a rugalmas készlet használata.
 
 ***DTU-alapú vásárlási modell példa***<br>
-Legalább két S3-adatbázis vagy legalább 15 S0-adatbázis szükséges ahhoz, hogy egy 100 eDTU-s készlet költséghatékonyabban működjön, mint ha teljesítményszinteket és önálló adatbázisokat használna.
+Legalább két S3-adatbázis vagy legalább 15 S0-adatbázis 100 edtu-s készlet költséghatékonyabban, mint az önálló adatbázisok számítási méretek használata szükséges.
 
 ### <a name="maximum-number-of-concurrently-peaking-databases"></a>Egyidejűleg kiugró kihasználtságú adatbázisok maximális száma
 
 Az erőforrások megosztása a készlet nem minden adatbázis egyszerre használhatja a korlátig rendelkezésre álló erőforrások az önálló adatbázisok számára. Minél kevesebb adatbázis működik egyszerre kiugró kihasználtsággal, annál alacsonyabbra az adatbáziskészlet erőforrásainak akkor állítható be, és annál költséghatékonyabbá válik a készlet. Általánosságban a készletben található adatbázisok legfeljebb 2/3 (vagy 67 %-át) működhet egyszerre a maximális erőforrások maximális számát.
 
 ***DTU-alapú vásárlási modell példa***<br>
-Ha csökkenteni szeretnénk három S3-adatbázis költségét egy 200 eDTU-s készletben, akkor a háromból egyszerre legfeljebb kettő működhet kiugró kihasználtsággal. Ha ebből a három S3-adatbázisból több mint kettő működik egyszerre kiugró kihasználtsággal, akkor a készletnek több mint 200 eDTU-t kellene tartalmaznia. Ha a készletet 200 eDTU-nál nagyobbra növeljük, akkor több S3-adatbázist kellene hozzáadnunk a készlethez, hogy a költség alacsonyabb legyen, mint ha teljesítményszinteket és önálló adatbázisokat használnánk.
+Ha csökkenteni szeretnénk három S3-adatbázis költségét egy 200 eDTU-s készletben, akkor a háromból egyszerre legfeljebb kettő működhet kiugró kihasználtsággal. Ha ebből a három S3-adatbázisból több mint kettő működik egyszerre kiugró kihasználtsággal, akkor a készletnek több mint 200 eDTU-t kellene tartalmaznia. Ha a készletet 200 Edtu-nál nagyobbra, több S3-adatbázist kellene adni a készlethez, hogy a költség alacsonyabb, mint az önálló adatbázisok méretű számítási.
 
 Ne feledje, hogy ebben a példában nem vesszük számításba a készlet egyéb adatbázisainak kihasználását. Ha egy adott időpontban minden adatbázis használatban van valamilyen szinten, akkor az adatbázisok kevesebb mint kétharmad része (vagy 67%-a) működhet egyszerre kiugró kihasználtsággal.
 
@@ -123,7 +123,7 @@ Ha nincs lehetősége eszközök használatára, az alábbi részletes útmutat�
 2. A készlethez szükséges tárterület méretének becsléséhez adja össze a készlet egyes adatbázisaihoz szükséges bájtok számát. Ezután határozza meg a szükséges tárhelyet biztosító eDTU-készlet méretét.
 3. A DTU-alapú vásárlási modell igénybe meghatározott eDTU-becslések közül a nagyobb 1. lépést és a 2. lépés. A Virtuálismag-alapú vásárlási modell figyelembe venni a virtuális mag becslés az 1. lépésben.
 4. Tekintse meg a [SQL Database díjszabási oldalát](https://azure.microsoft.com/pricing/details/sql-database/) , és keresse meg a legkisebb készletméretet, amely nagyobb, mint 3. lépésben megbecsült.
-5. Hasonlítsa össze az 5. lépésben szereplő készlet árát az önálló adatbázisok megfelelő teljesítményszintjeinek árával.
+5. Hasonlítsa össze a készlet árát az 5. lépés árát az önálló adatbázisok számára a megfelelő számítási méretek használatával.
 
 ## <a name="using-other-sql-database-features-with-elastic-pools"></a>Rugalmas készletek egyéb SQL adatbázis-szolgáltatások használata
 
@@ -151,7 +151,7 @@ Az Azure Portalon is létrehozhat a rugalmas készlet két módja van.
 > [!NOTE]
 > Egy kiszolgálón több készletet is létrehozhat, de egy készlethez különböző kiszolgálókról származó adatbázisok nem adhat.
 
-A készlet szolgáltatásszintje meghatározza, hogy a készlet, valamint az egyes adatbázisok számára elérhető erőforrások maximális mennyisége a elastics elérhető funkciók. További információkért lásd: a rugalmas készletek erőforráskorlátok a [DTU modell](sql-database-dtu-resource-limits-elastic-pools.md#elastic-pool-storage-sizes-and-performance-levels). Virtuálismag-alapú erőforráskorlátok a rugalmas készletek, lásd: [Virtuálismag-alapú erőforráskorlátok – rugalmas készletek](sql-database-vcore-resource-limits-elastic-pools.md).
+A készlet szolgáltatásszintje meghatározza, hogy a készlet, valamint az egyes adatbázisok számára elérhető erőforrások maximális mennyisége a elastics elérhető funkciók. További információkért lásd: a rugalmas készletek erőforráskorlátok a [DTU modell](sql-database-dtu-resource-limits-elastic-pools.md#elastic-pool-storage-sizes-and-compute-sizes). Virtuálismag-alapú erőforráskorlátok a rugalmas készletek, lásd: [Virtuálismag-alapú erőforráskorlátok – rugalmas készletek](sql-database-vcore-resource-limits-elastic-pools.md).
 
 Konfigurálja az erőforrásokat, és kattintson a készlet díjszabás **készlet beállítása**. Válassza ki valamelyik szolgáltatási rétegben, a készlethez adatbázisok hozzáadása és konfigurálása a erőforráskorlátok a készlet és az adatbázisokhoz.
 

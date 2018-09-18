@@ -1,23 +1,23 @@
 ---
-title: Arcok észlelése
-titleSuffix: Computer Vision - Cognitive Services - Azure
-description: Computer Vision segítségével az Azure Cognitive Servicesben arcok észlelése kapcsolatos fogalmakat.
+title: Arcok – Computer Vision észlelése
+titleSuffix: Azure Cognitive Services
+description: A Computer Vision API használatával arcok észlelése kapcsolatos fogalmakat.
 services: cognitive-services
 author: deken
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: v-deken
-ms.openlocfilehash: abf0dc0ea80685130f6566ae962d2bed124e0924
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: df1cd989d82fa5541c2d81fe6629671d6e063bc4
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44725407"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45984554"
 ---
-# <a name="detecting-faces"></a>Arcok észlelése
+# <a name="detecting-faces"></a>Arcfelismerés
 
 Számítógépes Látástechnológia a képen látható emberi arcok észlelése, és az életkor, nemek és minden egyes észlelt face négyszöge generál. A Computer Vision a [Face](/azure/cognitive-services/face/) funkcióinak csak egy részét tartalmazza. A Face szolgáltatást részletesebb elemzések elvégzésére is használhatja, például az arc vagy a testtartás azonosítására.  
 

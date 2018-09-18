@@ -1,27 +1,25 @@
 ---
-title: Az Azure-identitás ismertetése | Microsoft Docs
-description: A cikk alapszintű áttekintést nyújt a Microsoft Azure identitáskezelési megoldásának kifejezéseiről, fogalmairól és javaslatairól, amelyek segítségével meghozhatja a vállalata számára legjobb identitáskezelési döntéseket.
-keywords: ''
+title: Mi a Microsoft Azure Identity? | Microsoft Docs
+description: Ismerje meg a Microsoft Azure identitáskezelési megoldás használati feltételei, fogalmak és javaslatok is, hogy a legjobb identitás cégirányítási döntés a szervezete számára.
+services: active-directory
 author: eross-msft
 manager: mtillman
-ms.reviewer: jsnow
-ms.author: lizross
-ms.date: 7/17/2017
-ms.topic: overview
-ms.prod: ''
-ms.service: azure-directory
+ms.service: active-directory
 ms.component: fundamentals
-ms.technology: ''
-ms.assetid: ''
-ms.custom: it-pro
-ms.openlocfilehash: ec84cdb4e226eea4d16d28d63acd7be59241b973
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
-ms.translationtype: HT
+ms.workload: identity
+ms.topic: conceptual
+ms.date: 7/17/2017
+ms.author: lizross
+ms.reviewer: jsnow
+custom: it-pro
+ms.openlocfilehash: db14dbf298596a9fdc189c27ea8608d472c58a35
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44346916"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45737243"
 ---
-# <a name="understand-azure-identity-solutions"></a>Az Azure identitáskezelési megoldásainak ismertetése
+# <a name="what-is-microsoft-azure-identity"></a>Mi a Microsoft Azure-identitással?
 A Microsoft Azure Active Directory (Azure AD) egy felhőalapú identitás- és hozzáférés-kezelési megoldás, amely címtárszolgáltatásokat, identitáskezelést és alkalmazáshozzáférés-felügyeletet kínál. Az Azure AD lehetővé teszi az [egyszeri bejelentkezést](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-sso) több ezer előre integrált kereskedelmi és egyéni alkalmazásba, amelyek szerepelnek [az Azure AD alkalmazáskatalógusában](https://azure.microsoft.com/marketplace/active-directory/all/). Ezen alkalmazások között számos olyan van, például az Office 365, a Salesforce.com, a Box, a ServiceNow vagy a Workday, amelyeket Ön valószínűleg már használ.
 
 Az újonnan létrehozott Azure-előfizetésekhez a rendszer automatikusan hozzárendel egy Azure AD-címtárat. Az Azure identitáskezelési szolgáltatásaként ekkor az Azure AD minden identitáskezelési és hozzáférés-vezérlési funkciót biztosít a felhőalapú erőforrásokhoz. Az erőforrások közé tartozhatnak egy bérlő (vállalat) felhasználói, alkalmazásai és csoportjai, ahogyan az a következő ábrán látható:

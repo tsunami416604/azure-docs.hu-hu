@@ -6,14 +6,14 @@ manager: timlt
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: conceptual
-ms.date: 03/14/2018
+ms.date: 08/31/2018
 ms.author: dobett
-ms.openlocfilehash: 5d7d6522dc663f13ce40cc638ba90ac4043d435c
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: fcc11347d06cde43c79ef4272f5c2ad87555c040
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38611412"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45734488"
 ---
 # <a name="connect-your-device-to-the-remote-monitoring-solution-accelerator-linux"></a>Az eszköz csatlakoztatása a távoli figyelési megoldásgyorsító (Linux)
 
@@ -21,142 +21,33 @@ ms.locfileid: "38611412"
 
 Ez az oktatóanyag bemutatja, hogyan kell egy fizikai eszköz csatlakoztatása a távoli figyelési megoldásgyorsító.
 
-## <a name="create-a-c-client-project-on-linux"></a>Linux rendszeren C ügyfél projekt létrehozása
-
 Csakúgy, mint legnagyobb beágyazott korlátozott eszközökön futó alkalmazásokhoz, az Ügyfélkód az eszköz alkalmazás írt c-hez Ebben az oktatóanyagban hozza létre az alkalmazást egy Ubuntu (Linux) rendszert futtató gépen.
 
-A lépések elvégzéséhez szüksége 15.04 vagy újabb verzió Ubuntu-es eszközök. A folytatás előtt telepítse az előfeltételként szolgáló csomagok a következő parancsot az Ubuntu eszközön:
+## <a name="prerequisites"></a>Előfeltételek
 
-```sh
-sudo apt-get install cmake gcc g++
-```
+Ez az útmutató a lépések végrehajtásához szüksége 15.04 vagy újabb verzió Ubuntu-es eszközök. A folytatás előtt [a Linux fejlesztési környezet beállítása](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md#linux).
 
-### <a name="install-the-client-libraries-on-your-device"></a>Az eszközön az ügyfél-kódtárak telepítése
+## <a name="view-the-code"></a>A kód megtekintéséhez
 
-Az Azure IoT Hub-ügyfélkönyvtárak-csomagként telepítheti az Ubuntu eszköz használatával érhetők el a **apt-get paranccsal** parancsot. A következő lépéseket követve telepítse a csomagot, amely tartalmazza az IoT Hub ügyfél erőforrástár és a fejléc fájlokat a számítógépre Ubuntu:
+A [mintakód](https://github.com/Azure/azure-iot-sdk-c/tree/master/samples/solutions/remote_monitoring) használja a jelen útmutató az Azure IoT C SDK-k GitHub-tárházban érhető el.
 
-1. Vegyen fel egy rendszerhéjból, a számítógépre a AzureIoT tárház:
+### <a name="download-the-source-code-and-prepare-the-project"></a>Letöltheti a forráskódot, és készítse elő a projekt
 
-    ```sh
-    sudo add-apt-repository ppa:aziotsdklinux/ppa-azureiot
-    sudo apt-get update
-    ```
+A projekt elkészítéséhez Klónozás vagy letöltés a [Azure IoT C SDK-k tárház](https://github.com/Azure/azure-iot-sdk-c) a Githubról.
 
-1. Az azure-iot-sdk-c-fejlesztői csomag telepítése
+A mintában található a **samples/megoldások/remote_monitoring** mappát.
 
-    ```sh
-    sudo apt-get install -y azure-iot-sdk-c-dev
-    ```
+Nyissa meg a **remote_monitoring.c** fájlt a **samples/megoldások/remote_monitoring** mappát egy szövegszerkesztőben.
 
-### <a name="install-the-parson-json-parser"></a>Telepítse a Parson JSON-elemző
-
-Az IoT Hub-ügyfélkönyvtárak a Parson JSON-elemző használatával elemezni üzenetet is észleltünk adattartalmakat. A megfelelő mappát a számítógépen klónozza a Parson GitHub-tárházban, a következő paranccsal:
-
-```sh
-git clone https://github.com/kgabis/parson.git
-```
-
-### <a name="prepare-your-project"></a>-Projektek előkészítése
-
-Az Ubuntu-gép, hozzon létre egy mappát nevű `remote_monitoring`. Az a `remote_monitoring` mappa:
-
-- Hozza létre a négy fájlokat `main.c`, `remote_monitoring.c`, `remote_monitoring.h`, és `CMakeLists.txt`.
-- Hozzon létre nevű mappát `parson`.
-
-Másolja a fájlokat `parson.c` és `parson.h` származó be a Parson tárház helyi példányának a `remote_monitoring/parson` mappát.
-
-Egy szövegszerkesztőben nyissa meg a `remote_monitoring.c` fájlt. Adja hozzá a következő `#include`-utasításokat:
-
-```c
-#include "iothubtransportmqtt.h"
-#include "schemalib.h"
-#include "iothub_client.h"
-#include "serializer_devicetwin.h"
-#include "schemaserializer.h"
-#include "azure_c_shared_utility/threadapi.h"
-#include "azure_c_shared_utility/platform.h"
-#include <string.h>
-```
-
-[!INCLUDE [iot-suite-connecting-code](../../includes/iot-suite-connecting-code.md)]
-
-## <a name="add-code-to-run-the-app"></a>Adja hozzá az alkalmazás futtatásához szükséges kódot
-
-Egy szövegszerkesztőben nyissa meg a `remote_monitoring.h` fájlt. Adja hozzá a következő kódot:
-
-```c
-void remote_monitoring_run(void);
-```
-
-Egy szövegszerkesztőben nyissa meg a `main.c` fájlt. Adja hozzá a következő kódot:
-
-```c
-#include "remote_monitoring.h"
-
-int main(void)
-{
-  remote_monitoring_run();
-
-  return 0;
-}
-```
+[!INCLUDE [iot-accelerators-connecting-code](../../includes/iot-accelerators-connecting-code.md)]
 
 ## <a name="build-and-run-the-application"></a>Az alkalmazás fordítása és futtatása
 
-Az alábbi lépések bemutatják, hogyan használható *CMake* ügyfélalkalmazás hozhat létre.
+Az alábbi lépések bemutatják, hogyan használható *CMake* ügyfélalkalmazás hozhat létre. A távoli figyelési ügyfélalkalmazás az SDK-val készült a buildelési folyamat részeként.
 
-1. Egy szövegszerkesztőben nyissa meg a **CMakeLists.txt** fájlt a `remote_monitoring` mappát.
+1. Szerkessze a **remote_monitoring.c** fájlban cserélje le `<connectionstring>` az eszköz kapcsolati karakterlánccal feljegyzett elején. Ez az útmutató egy eszközt a megoldásgyorsító való felvételekor.
 
-1. Adja hozzá az alábbi utasítások segítségével meghatározhatja, hogyan hozhat létre az ügyfélalkalmazás:
-
-    ```cmake
-    macro(compileAsC99)
-      if (CMAKE_VERSION VERSION_LESS "3.1")
-        if (CMAKE_C_COMPILER_ID STREQUAL "GNU")
-          set (CMAKE_C_FLAGS "--std=c99 ${CMAKE_C_FLAGS}")
-          set (CMAKE_CXX_FLAGS "--std=c++11 ${CMAKE_CXX_FLAGS}")
-        endif()
-      else()
-        set (CMAKE_C_STANDARD 99)
-        set (CMAKE_CXX_STANDARD 11)
-      endif()
-    endmacro(compileAsC99)
-
-    cmake_minimum_required(VERSION 2.8.11)
-    compileAsC99()
-
-    set(AZUREIOT_INC_FOLDER "${CMAKE_SOURCE_DIR}" "${CMAKE_SOURCE_DIR}/parson" "/usr/include/azureiot" "/usr/include/azureiot/inc")
-
-    include_directories(${AZUREIOT_INC_FOLDER})
-
-    set(sample_application_c_files
-        ./parson/parson.c
-        ./remote_monitoring.c
-        ./main.c
-    )
-
-    set(sample_application_h_files
-        ./parson/parson.h
-        ./remote_monitoring.h
-    )
-
-    add_executable(sample_app ${sample_application_c_files} ${sample_application_h_files})
-
-    target_link_libraries(sample_app
-        serializer
-        iothub_client
-        iothub_client_mqtt_transport
-        aziotsharedutil
-        umqtt
-        pthread
-        curl
-        ssl
-        crypto
-        m
-    )
-    ```
-
-1. Az a `remote_monitoring` mappában hozzon létre egy mappát tárolásához a *győződjön meg arról,* CMake által létrehozott fájlokat. Ezután futtassa a **cmake** és **győződjön meg arról,** parancsok az alábbiak szerint:
+1. Klónozott másolatának gyökérkönyvtárában nyissa meg a [Azure IoT C SDK-k tárház](https://github.com/Azure/azure-iot-sdk-c) tárházat, és futtassa a következő parancsokat az ügyfél-alkalmazás létrehozásához:
 
     ```sh
     mkdir cmake
@@ -168,7 +59,12 @@ Az alábbi lépések bemutatják, hogyan használható *CMake* ügyfélalkalmaz�
 1. Futtassa az ügyfélalkalmazást és telemetriát küldjön az IoT hubnak:
 
     ```sh
-    ./sample_app
+    ./samples/solutions/remote_monitoring/remote_monitoring_client
     ```
+
+    A konzolon, üzeneteket jelenít meg:
+
+    - Az alkalmazás minta telemetriai adatokat küld a megoldásgyorsító.
+    - A megoldás irányítópultjáról indított metódusokra válaszol.
 
 [!INCLUDE [iot-suite-visualize-connecting](../../includes/iot-suite-visualize-connecting.md)]
