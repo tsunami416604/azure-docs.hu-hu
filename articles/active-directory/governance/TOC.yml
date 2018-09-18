@@ -1,0 +1,33 @@
+items:
+- name: Az Azure AD hozzáférési felülvizsgálatok dokumentációja
+- name: Áttekintés
+  items:
+  - name: Mi az a hozzáférési felülvizsgálat?
+    href: access-reviews-overview.md
+- name: Útmutatók
+  items:
+  - name: Hozzáférési felülvizsgálat létrehozása
+    href: create-access-review.md
+  - name: Hozzáférési felülvizsgálat befejezése
+    href: complete-access-review.md
+  - name: Hozzáférési felülvizsgálat végrehajtása
+    href: perform-access-review.md
+  - name: Hozzáférés felülvizsgálata
+    href: review-your-access.md
+  - name: Vendéghozzáférés hozzáférési felülvizsgálatokkal
+    href: manage-guest-access-with-access-reviews.md
+  - name: Felhasználói hozzáférések kezelése felülvizsgálatokkal
+    href: manage-user-access-with-access-reviews.md
+  - name: Programok és vezérlőik kezelése
+    href: manage-programs-controls.md
+  - name: Hozzáférési felülvizsgálatok eredményeinek lekérése
+    href: retrieve-access-review.md
+  - name: Használati feltételek
+    href: active-directory-tou.md
+  expanded: true
+ms.openlocfilehash: 302273bc1fe1ed73fff4cb4f5a8bc90f08636340
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45606745"

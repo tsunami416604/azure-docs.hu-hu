@@ -1,0 +1,63 @@
+items:
+- name: Az Identity Protection dokumentációja
+  href: index.yml
+- name: Áttekintés
+  items:
+  - name: Mi az az Azure AD Identity Protection?
+    href: overview.md
+- name: Gyors útmutatók
+  items:
+  - name: Hozzáférés letiltása munkameneti kockázat észlelésekor
+    href: quickstart-sign-in-risk-policy.md
+- name: Alapelvek
+  items:
+  - name: Mik azok a biztonsági rések?
+    href: vulnerabilities.md
+  - name: Mik azok az értesítések?
+    href: notifications.md
+  - name: Mi az a bejelentkezési élmény?
+    href: flows.md
+  expanded: false
+- name: Útmutatók
+  items:
+  - name: Az Azure AD Identity Protection engedélyezése
+    href: enable.md
+  - name: Az MFA regisztrációs szabályzat konfigurálása
+    href: howto-mfa-policy.md
+  - name: A bejelentkezési kockázati szabályzat konfigurálása
+    href: howto-sign-in-risk-policy.md
+  - name: A felhasználói kockázati szabályzat konfigurálása
+    href: howto-user-risk-policy.md
+  - name: Felhasználók tiltásának feloldása
+    href: howto-unblock-user.md
+  - name: Kockázati események szimulálása
+    href: playbook.md
+  - name: A Microsoft Graph API használata
+    href: graph-get-started.md
+  - name: Gyakori kérdések
+    href: faqs.md
+  expanded: true
+- name: Referencia
+  items:
+  - name: Szószedet
+    href: glossary.md
+- name: További források
+  items:
+  - name: Azure visszajelzési fórum
+    href: https://feedback.azure.com/forums/169401-azure-active-directory
+  - name: MSDN-fórum
+    href: https://social.msdn.microsoft.com/Forums/azure/home?forum=WindowsAzureAD
+  - name: Díjszabás
+    href: https://azure.microsoft.com/pricing/details/active-directory/
+  - name: Szolgáltatási hírek
+    href: ../fundamentals/whats-new.md
+  - name: Stack Overflow
+    href: http://stackoverflow.com/questions/tagged/azure-active-directory
+  - name: Videók
+    href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory
+ms.openlocfilehash: 651ac43690180fadad6eef7f83d2a58b531752ed
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45606711"

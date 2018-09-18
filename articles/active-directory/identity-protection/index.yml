@@ -1,0 +1,46 @@
+### YamlMime:YamlDocument
+ms.openlocfilehash: 04de34624a7902849d42ad62ed4e6a813157ddd9
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45606677"
+documentType: LandingData
+title: Azure AD Identity Protection
+metadata:
+  document_id: 
+  title: Az Azure Active Directory Identity Protection dokumentációja – rövid útmutatók, alapfogalmak és referenciák | Microsoft Docs
+  description: Ebből a cikkből megtudhatja, hogyan konfigurálhatja és tesztelheti az Azure Active Directory Identity Protectiont.
+  services: active-directory
+  ms.component: identity-protection
+  author: MarkusVi
+  manager: mtillman
+  ms.service: active-directory
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 09/14/2018
+  ms.author: markvi
+abstract:
+  description: Megtudhatja, hogyan működik a potenciálisan sérült identitások felderítése, valamint hogyan állíthat be automatikus válaszokat a kijavításukra. Az Azure Active Directory Identity Protection az Azure AD Premium P2 kiadás egyik szolgáltatása, amely lehetővé teszi a következőket:<ul><li>A szervezet identitásait érintő lehetséges biztonsági rések észlelése</li><li>Feltételes hozzáférési szabályzatok konfigurálása, amelyekkel a rendszer automatikusan válaszol a szervezet identitásaihoz kapcsolódó gyanús tevékenységekre</li><li>Gyanús incidensek kivizsgálása, és a szükséges intézkedések megtétele azok megoldásához</li></ul><br> Az alábbi forrásanyagokkal gyorsan felkészülhet.
+  aside:
+    image:
+      alt: 
+      height: 110
+      src: ./media/index/video.png
+      width: 246
+    title: Bevezetés az Azure AD Identity Protection használatába
+    href: https://www.youtube.com/watch?v=zI3jn_G0_Ns
+    width: 246
+sections:
+- title: 5 perces gyors útmutatók
+  items:
+  - type: paragraph
+    text: Megtudhatja, hogyan konfigurálhat a bejelentkezési kockázatra irányuló feltételes hozzáférési szabályzatokat gyakori hozzáférési forgatókönyvekhez.
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: ./media/index/i_security-management.png
+      text: Hozzáférés letiltása munkameneti kockázat észlelésekor
+      href: quickstart-sign-in-risk-policy.md
