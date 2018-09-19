@@ -313,40 +313,40 @@ items:
     items:
     - name: Figyelés és hangolás
       href: sql-database-troubleshoot-performance.md
-    - name: Teljesítménymonitorozás
-      href: sql-database-single-database-monitor.md
-    - name: Teljesítménnyel kapcsolatos javaslatok
-      href: sql-database-advisor.md
-    - name: Intelligens lekérdezés-feldolgozás
+    - name: Intelligens teljesítmény
       items:
+      - name: Teljesítménymonitorozás
+        href: sql-database-single-database-monitor.md
       - name: Intelligens lekérdezés-feldolgozás
         href: https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=/azure/sql-database/toc.json
       - name: Adaptív lekérdezés-feldolgozás
         href: https://docs.microsoft.com/sql/relational-databases/performance/adaptive-query-processing?toc=/azure/sql-database/toc.json
-    - name: Automatikus hangolás
-      items:
       - name: Automatikus hangolás
-        href: sql-database-automatic-tuning.md
-      - name: Automatikus hangolás engedélyezése
-        href: sql-database-automatic-tuning-enable.md
-      - name: E-mail-értesítések engedélyezése
-        href: sql-database-automatic-tuning-email-notifications.md
-    - name: Intelligent Insights
-      items:
+        items:
+        - name: Automatikus hangolás
+          href: sql-database-automatic-tuning.md
+        - name: Automatikus hangolás engedélyezése
+          href: sql-database-automatic-tuning-enable.md
+        - name: Teljesítménnyel kapcsolatos javaslatok
+          href: sql-database-advisor.md
+        - name: Teljesítménnyel kapcsolatos javaslatok
+          href: sql-database-performance.md
+        - name: Teljesítménnyel kapcsolatos javaslatok alkalmazása
+          href: sql-database-advisor-portal.md
+        - name: E-mail-értesítések engedélyezése
+          href: sql-database-automatic-tuning-email-notifications.md
       - name: Intelligent Insights
-        href: sql-database-intelligent-insights.md
-      - name: Diagnosztikai naplózás
-        href: sql-database-metrics-diag-logging.md
-      - name: A diagnosztikai napló használata
-        href: sql-database-intelligent-insights-use-diagnostics-log.md
-      - name: Teljesítménnyel kapcsolatos hibaelhárítás
-        href: sql-database-intelligent-insights-troubleshoot-performance.md
-    - name: Teljesítménnyel kapcsolatos javaslatok
-      href: sql-database-performance.md
-    - name: A Lekérdezési terheléselemző használata
-      href: sql-database-query-performance.md
-    - name: Teljesítménnyel kapcsolatos javaslatok alkalmazása
-      href: sql-database-advisor-portal.md
+        items:
+        - name: Intelligent Insights
+          href: sql-database-intelligent-insights.md
+        - name: Diagnosztikai naplózás
+          href: sql-database-metrics-diag-logging.md
+        - name: A diagnosztikai napló használata
+          href: sql-database-intelligent-insights-use-diagnostics-log.md
+        - name: Teljesítménnyel kapcsolatos hibaelhárítás
+          href: sql-database-intelligent-insights-troubleshoot-performance.md
+      - name: A Lekérdezési terheléselemző használata
+        href: sql-database-query-performance.md
     - name: Manuális hangolás
       items:
       - name: Manuális hangolás
@@ -616,9 +616,9 @@ items:
     href: /azure/architecture/
   - name: Ügyfelek történetei
     href: http://customers.microsoft.com/en-us/search?sq=%22Azure%20SQL%20Database%22&ff=&p=0&so=story_publish_date%20desc
-ms.openlocfilehash: 97b7f99440510e8a4a72cb0e3b18c54839f0c0c6
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: fe88a6f7559e6c5c44c2bf39e3167dd379f4b006
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45634472"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45730092"

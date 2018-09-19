@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
-ms.openlocfilehash: 4c8f2966df9c33ec227b14c00996f84f39043cdb
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: c8517114f51b5aed8f8e31a19b672721b109775e
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44349228"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46298302"
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Az Azure Active Directory megvalósíthatósági fogalom forgatókönyv: építőelemek
 
@@ -46,7 +46,7 @@ Az alábbiakban néhány bármely POC-t az Azure AD Premium szükséges előfelt
 | Az Azure AD Premium vagy EMS-próba engedélyezve | [Az Azure Active Directory Premium egy hónapig ingyenesen használható](https://azure.microsoft.com/trial/get-started-active-directory/) |
 | Azure AD Premium vagy EMS-licenceket rendelt PoC-felhasználók | [Saját magának, mind pedig a felhasználók az Azure Active Directoryban](active-directory-licensing-get-started-azure-portal.md) |
 | Az Azure AD globális rendszergazdai hitelesítő adatait | [Rendszergazdai szerepkörök hozzárendelése az Azure Active Directoryban](users-groups-roles/directory-assign-admin-roles.md) |
-| Nem kötelező, de erősen ajánlott: tartalékként párhuzamos laborkörnyezetben | [Az Azure AD Connect előfeltételei](./connect/active-directory-aadconnect-prerequisites.md) |
+| Nem kötelező, de erősen ajánlott: tartalékként párhuzamos laborkörnyezetben | [Az Azure AD Connect előfeltételei](hybrid/how-to-connect-install-prerequisites.md) |
 
 ## <a name="directory-synchronization---password-hash-sync-phs---new-installation"></a>Címtár szinkronizálási - Jelszókivonat-szinkronizálás (nál) – új telepítés
 
@@ -56,23 +56,23 @@ Hozzávetőleges időt Complete: kevesebb mint 1000 PoC-felhasználók számára
 
 | Előfeltétel | További források |
 | --- | --- |
-| Server futtatása az Azure AD Connect | [Az Azure AD Connect előfeltételei](./connect/active-directory-aadconnect-prerequisites.md) |
-| POC-felhasználóknak a ugyanabban a tartományban, és a egy biztonsági csoportot, és a szervezeti egység részét | [Az Azure AD Connect testreszabott telepítése](./connect/active-directory-aadconnect-get-started-custom.md#domain-and-ou-filtering) |
-| Az Azure AD Connect-funkciók a POC szükséges azonosítva. | [Active Directory csatlakoztatása az Azure Active Directory - szinkronizálás beállítása funkciók](./connect/active-directory-aadconnect.md#configure-sync-features) |
-| Ön rendelkezik szükséges hitelesítő adatokat a helyszíni és felhőalapú környezetekről  | [Azure AD Connect: fiókok és engedélyek](./connect/active-directory-aadconnect-accounts-permissions.md) |
+| Server futtatása az Azure AD Connect | [Az Azure AD Connect előfeltételei](hybrid/how-to-connect-install-prerequisites.md) |
+| POC-felhasználóknak a ugyanabban a tartományban, és a egy biztonsági csoportot, és a szervezeti egység részét | [Az Azure AD Connect testreszabott telepítése](hybrid/how-to-connect-install-custom.md#domain-and-ou-filtering) |
+| Az Azure AD Connect-funkciók a POC szükséges azonosítva. | [Active Directory csatlakoztatása az Azure Active Directory - szinkronizálás beállítása funkciók](hybrid/how-to-connect-install-roadmap.md#configure-sync-features) |
+| Ön rendelkezik szükséges hitelesítő adatokat a helyszíni és felhőalapú környezetekről  | [Azure AD Connect: fiókok és engedélyek](hybrid/reference-connect-accounts-permissions.md) |
 
 ### <a name="steps"></a>Lépések
 
 | Lépés | További források |
 | --- | --- |
 | Az Azure AD Connect legújabb verziójának letöltése | [A Microsoft Azure Active Directory Connect letöltése](https://www.microsoft.com/download/details.aspx?id=47594) |
-| Az Azure AD Connect telepítése a legegyszerűbb elérési úttal rendelkező: Express <br/>1. A cél a szinkronizálási ciklus idő minimalizálása érdekében a szervezeti egység szűrése<br/>2. Válassza ki a cél beállítása a felhasználók a helyi csoport.<br/>3. A másik POC témák számára szükséges szolgáltatások telepítése | [Az Azure AD Connect: Testreszabott telepítés: tartomány és szervezeti egységek szűrése](./connect/active-directory-aadconnect-get-started-custom.md#domain-and-ou-filtering) <br/>[Az Azure AD Connect: Testreszabott telepítés: csoport alapú szűrés](./connect/active-directory-aadconnect-get-started-custom.md#sync-filtering-based-on-groups)<br/>[Az Azure AD Connect: Helyszíni identitások integrálása az Azure Active Directory: a szinkronizálási funkciók konfigurálása](./connect/active-directory-aadconnect.md#configure-sync-features) |
-| Nyissa meg az Azure AD Connect felhasználói felületén, és a futó profilok befejezett (importálás, szinkronizálási és exportálás) | [Az Azure AD Connect szinkronizálása: ütemező](./connect/active-directory-aadconnectsync-feature-scheduler.md) |
+| Az Azure AD Connect telepítése a legegyszerűbb elérési úttal rendelkező: Express <br/>1. A cél a szinkronizálási ciklus idő minimalizálása érdekében a szervezeti egység szűrése<br/>2. Válassza ki a cél beállítása a felhasználók a helyi csoport.<br/>3. A másik POC témák számára szükséges szolgáltatások telepítése | [Az Azure AD Connect: Testreszabott telepítés: tartomány és szervezeti egységek szűrése](hybrid/how-to-connect-install-custom.md#domain-and-ou-filtering) <br/>[Az Azure AD Connect: Testreszabott telepítés: csoport alapú szűrés](hybrid/how-to-connect-install-custom.md#sync-filtering-based-on-groups)<br/>[Az Azure AD Connect: Helyszíni identitások integrálása az Azure Active Directory: a szinkronizálási funkciók konfigurálása](hybrid/how-to-connect-install-roadmap.md#configure-sync-features) |
+| Nyissa meg az Azure AD Connect felhasználói felületén, és a futó profilok befejezett (importálás, szinkronizálási és exportálás) | [Az Azure AD Connect szinkronizálása: ütemező](hybrid/how-to-connect-sync-feature-scheduler.md) |
 | Nyissa meg a [Azure AD felügyeleti portálra](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/UserManagementMenuBlade/), nyissa meg a "Minden felhasználó" panelen, a "Forrás-hitelesítésszolgáltató" oszlopra, és láthatja, hogy a felhasználók jelennek meg, a "Windows Server AD" hamarosan megfelelően megjelölve hozzáadása | [Az Azure AD felügyeleti portálra](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) |
 
 ### <a name="considerations"></a>Megfontolandó szempontok
 
-1. Tekintse meg a biztonsági szempontok a Jelszókivonat-szinkronizálás [Itt](./connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md).  Ha Jelszókivonat-szinkronizálás próbaüzem üzem felhasználók véglegesen nem egy beállítást, vegye figyelembe a következő lehetőségeket:
+1. Tekintse meg a biztonsági szempontok a Jelszókivonat-szinkronizálás [Itt](hybrid/how-to-connect-password-hash-synchronization.md).  Ha Jelszókivonat-szinkronizálás próbaüzem üzem felhasználók véglegesen nem egy beállítást, vegye figyelembe a következő lehetőségeket:
    * Tesztfelhasználók létrehozása az éles tartományhoz. Ellenőrizze, hogy ne legyen szinkronizálás a bármelyik más fiókhoz
    * Foglalja annak környezet áthelyezése
 2.  Ha vissza szeretné szerezni a összevonási, érdemes a költségek a helyszíni identitásszolgáltató túl a POC egy összevont megoldás társított és mérhetők, amely az Ön által keresett előnyöket:
@@ -277,7 +277,7 @@ Hozzávetőleges időt Complete: 60 perc
 | --- | --- |
 | Az Azure AD Connect telepítése és konfigurálása | Építőelem: [címtár-szinkronizálás – a Jelszókivonat-szinkronizálás](#directory-synchronization--password-hash-sync-phs--new-installation) |
 | ADLDS példány értekezlet-követelmények | [Általános LDAP-összekötő – műszaki útmutató: az általános LDAP-összekötő áttekintése](https://docs.microsoft.com/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-genericldap#overview-of-the-generic-ldap-connector) |
-| Számítási feladatok, felhasználók által használt és az ilyen munkaterhelések hozzá kapcsolódó attribútumok közül listája | [Az Azure AD Connect szinkronizálása: az Azure Active Directoryval szinkronizált attribútumok](./connect/active-directory-aadconnectsync-attributes-synchronized.md) |
+| Számítási feladatok, felhasználók által használt és az ilyen munkaterhelések hozzá kapcsolódó attribútumok közül listája | [Az Azure AD Connect szinkronizálása: az Azure Active Directoryval szinkronizált attribútumok](hybrid/reference-connect-sync-attributes-synchronized.md) |
 
 
 ### <a name="steps"></a>Lépések
@@ -285,11 +285,11 @@ Hozzávetőleges időt Complete: 60 perc
 | Lépés | További források |
 | --- | --- |
 | Általános LDAP-összekötő hozzáadása | [Általános LDAP-összekötő – műszaki útmutató: új összekötő létrehozása](https://docs.microsoft.com/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-genericldap#create-a-new-connector) |
-| (Teljes importálást, különbözeti importálás, teljes szinkronizálást, a különbözeti szinkronizálás, exportálás) létrehozott összekötőhöz futtatási profilok létrehozása | [Felügyeleti ügynök futtatási profil létrehozása](https://technet.microsoft.com/library/jj590219(v=ws.10).aspx)<br/> [Összekötők használata az Azure AD Connect szinkronizálása a Service Manager rendszerrel](./connect/active-directory-aadconnectsync-service-manager-ui-connectors.md)|
-| Futtassa a teljes importálást profil, és ellenőrizze, hogy nincsenek-e objektumot az összekötőtérben | [Keresse meg a Összekötőtér objektuma](https://technet.microsoft.com/library/jj590287(v=ws.10).aspx)<br/>[Összekötők használata az Azure AD Connect szinkronizálása a Service Manager rendszerrel: keresési Összekötőterét](./connect/active-directory-aadconnectsync-service-manager-ui-connectors.md#search-connector-space) |
-| Szinkronizálási szabályok, létrehozhat, hogy Metaverzumban található objektumok számítási feladatokhoz szükséges attribútumok | [Az Azure AD Connect szinkronizálása: ajánlott eljárások az alapértelmezett konfiguráció módosításának: a szinkronizálási szabályokon változik](./connect/active-directory-aadconnectsync-best-practices-changing-default-configuration.md#changes-to-synchronization-rules)<br/>[Az Azure AD Connect szinkronizálása: a deklaratív kiépítés ismertetése](./connect/active-directory-aadconnectsync-understanding-declarative-provisioning.md)<br/>[Az Azure AD Connect szinkronizálása: deklaratív kiépítés kifejezéseinek ismertetése](./connect/active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md) |
-| Indítsa el a teljes szinkronizálási ciklust | [Az Azure AD Connect szinkronizálása: ütemező: az Ütemező indítása](./connect/active-directory-aadconnectsync-feature-scheduler.md#start-the-scheduler) |
-| Problémák esetén tegye a hibaelhárítás | [Az Azure AD-val nem szinkronizálódó objektumok hibaelhárítása](./connect/active-directory-aadconnectsync-troubleshoot-object-not-syncing.md) |
+| (Teljes importálást, különbözeti importálás, teljes szinkronizálást, a különbözeti szinkronizálás, exportálás) létrehozott összekötőhöz futtatási profilok létrehozása | [Felügyeleti ügynök futtatási profil létrehozása](https://technet.microsoft.com/library/jj590219(v=ws.10).aspx)<br/> [Összekötők használata az Azure AD Connect szinkronizálása a Service Manager rendszerrel](hybrid/how-to-connect-sync-service-manager-ui-connectors.md)|
+| Futtassa a teljes importálást profil, és ellenőrizze, hogy nincsenek-e objektumot az összekötőtérben | [Keresse meg a Összekötőtér objektuma](https://technet.microsoft.com/library/jj590287(v=ws.10).aspx)<br/>[Összekötők használata az Azure AD Connect szinkronizálása a Service Manager rendszerrel: keresési Összekötőterét](hybrid/how-to-connect-sync-service-manager-ui-connectors.md#search-connector-space) |
+| Szinkronizálási szabályok, létrehozhat, hogy Metaverzumban található objektumok számítási feladatokhoz szükséges attribútumok | [Az Azure AD Connect szinkronizálása: ajánlott eljárások az alapértelmezett konfiguráció módosításának: a szinkronizálási szabályokon változik](hybrid/how-to-connect-sync-best-practices-changing-default-configuration.md#changes-to-synchronization-rules)<br/>[Az Azure AD Connect szinkronizálása: a deklaratív kiépítés ismertetése](hybrid/concept-azure-ad-connect-sync-declarative-provisioning.md)<br/>[Az Azure AD Connect szinkronizálása: deklaratív kiépítés kifejezéseinek ismertetése](hybrid/concept-azure-ad-connect-sync-declarative-provisioning-expressions.md) |
+| Indítsa el a teljes szinkronizálási ciklust | [Az Azure AD Connect szinkronizálása: ütemező: az Ütemező indítása](hybrid/how-to-connect-sync-feature-scheduler.md#start-the-scheduler) |
+| Problémák esetén tegye a hibaelhárítás | [Az Azure AD-val nem szinkronizálódó objektumok hibaelhárítása](hybrid/tshoot-connect-object-not-syncing.md) |
 | Ellenőrizze, hogy az LDAP-felhasználó is be- és az alkalmazás eléréséhez | https://myapps.microsoft.com |
 
 ### <a name="considerations"></a>Megfontolandó szempontok
@@ -552,7 +552,7 @@ Hozzávetőleges időt: 20 perc alatt
 | Előfeltétel | További források |
 | --- | --- |
 | A felhasználói tanúsítványt kiépített (Windows, iOS vagy Android) a vállalati nyilvános kulcsú infrastruktúra eszköz | [Felhasználói tanúsítványok telepítése](https://msdn.microsoft.com/library/cc770857.aspx) |
-| Az AD FS-összevont Azure AD-tartomány | [Azure AD Connect és összevonás](./connect/active-directory-aadconnectfed-whatis.md)<br/>[Az Active Directory tanúsítványszolgáltatások áttekintése](https://technet.microsoft.com/library/hh831740.aspx)|
+| Az AD FS-összevont Azure AD-tartomány | [Azure AD Connect és összevonás](hybrid/how-to-connect-fed-whatis.md)<br/>[Az Active Directory tanúsítványszolgáltatások áttekintése](https://technet.microsoft.com/library/hh831740.aspx)|
 | Az iOS-eszközök rendelkeznek a Microsoft Authenticator alkalmazás telepítve van | [Bevezetés a Microsoft Authenticator alkalmazás használatába](user-help/microsoft-authenticator-app-how-to.md) |
 
 ### <a name="steps"></a>Lépések

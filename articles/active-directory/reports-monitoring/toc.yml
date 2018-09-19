@@ -1,0 +1,110 @@
+items:
+- name: A jelentések és a monitorozás dokumentációja
+  href: index.yml
+- name: Áttekintés
+  items:
+  - name: Mik az Azure AD-jelentések?
+    href: overview-reports.md
+- name: Gyors útmutatók
+  items:
+  - name: Jelentések
+    items:
+    - name: Bejelentkezési jelentés letöltése
+      href: quickstart-download-sign-in-report.md
+    - name: Naplózási jelentés letöltése
+      href: quickstart-download-audit-report.md
+    - name: Nevesített helyek konfigurálása
+      href: quickstart-configure-named-locations.md
+    - name: Power BI-tartalomcsomag telepítése
+      href: quickstart-install-power-bi-content-pack.md
+  - name: Figyelés
+    items:
+    - name: Naplók átirányítása egy tárfiókba
+      href: quickstart-azure-monitor-route-logs-to-storage-account.md
+  expanded: true
+- name: Oktatóanyagok
+  items:
+  - name: Jelentések
+    items:
+    - name: Hozzáférés a Reporting API-hoz tanúsítványok használatával
+      href: tutorial-access-api-with-certificates.md
+  - name: Figyelés
+    items:
+    - name: Naplók streamelése egy eseményközpontba
+      href: tutorial-azure-monitor-stream-logs-to-event-hub.md
+    - name: Tevékenységnaplók integrálása a Splunkkal
+      href: tutorial-integrate-activity-logs-with-splunk.md
+- name: Alapelvek
+  items:
+  - name: Jelentések
+    items:
+    - name: Naplók
+      href: concept-audit-logs.md
+    - name: Bejelentkezési naplók
+      href: concept-sign-ins.md
+    - name: Kockázatos bejelentkezések
+      href: concept-risky-sign-ins.md
+    - name: Kockázati események
+      href: concept-risk-events.md
+    - name: Veszélyeztetett felhasználók
+      href: concept-user-at-risk.md
+    - name: Reporting API-k
+      href: concept-reporting-api.md
+  - name: Figyelés
+    items:
+    - name: Azure AD-naplók az Azure Monitorban
+      href: concept-activity-logs-in-azure-monitor.md
+- name: Útmutatók
+  items:
+  - name: Jelentések
+    items:
+    - name: Tevékenységjelentések keresése
+      href: howto-find-activity-reports.md
+    - name: Kockázatosként megjelölt felhasználók szervizelése
+      href: howto-remediate-users-flagged-for-risk.md
+    - name: Power BI-tartalomcsomag használata Azure AD-jelentésekhez
+      href: howto-power-bi-content-pack.md
+    - name: A Reporting API előfeltételeinek konfigurálása
+      href: howto-configure-prerequisites-for-reporting-api.md
+  - name: Figyelés
+    items:
+    - name: Tevékenységnaplók integrálása a SumoLogickal
+      href: howto-integrate-activity-logs-with-sumologic.md
+  - name: Hibaelhárítás
+    items:
+    - name: Hiányzó naplózási adatok
+      href: troubleshoot-missing-audit-data.md
+    - name: Hiányzó adatok a letöltésben
+      href: troubleshoot-missing-data-download.md
+    - name: Nem lehet hozzáférni a jelentéskészítési Graph API-khoz
+      href: troubleshoot-graph-api.md
+    - name: Hibák a Power BI-tartalomcsomagban
+      href: troubleshoot-content-pack.md
+  expanded: true
+- name: Referencia
+  items:
+  - name: Jelentések
+    items:
+    - name: Naplózási tevékenységek
+      href: reference-audit-activities.md
+    - name: Adatmegőrzési szabályzatok
+      href: reference-reports-data-retention.md
+    - name: Jelentéskészítési késések
+      href: reference-reports-latencies.md
+    - name: Bejelentkezési hibakódok
+      href: reference-sign-ins-error-codes.md
+    - name: Gyakori kérdések
+      href: reports-faq.md
+  - name: Figyelés
+    items:
+    - name: Auditnapló sémája
+      href: reference-azure-monitor-audit-log-schema.md
+    - name: Bejelentkezési napló sémája
+      href: reference-azure-monitor-sign-ins-log-schema.md
+  expanded: true
+ms.openlocfilehash: 20321358f74157bda02740d536dd30e7a21f5588
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45740286"

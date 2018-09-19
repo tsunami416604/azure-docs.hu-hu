@@ -12,7 +12,6 @@
 
 
 # Bevezetés
-## [Bevezetés az Azure AD használatába](fundamentals/get-started-azure-ad.md)
 ## [Azure AD Premium-fiók regisztrálása](fundamentals/active-directory-get-started-premium.md)
 ## [Egyéni tartománynév hozzáadása](fundamentals/add-custom-domain.md)
 ## [Vállalati arculat konfigurálása](fundamentals/customize-branding.md)
@@ -20,28 +19,29 @@
 ## [Licencek hozzárendelése felhasználókhoz](fundamentals/license-users-groups.md)
 ## [Új jelszó önkiszolgáló kérésének konfigurálása](authentication/quickstart-sspr.md)
 ## [Vállalat adatvédelmi információinak hozzáadása az Azure AD-ben](active-directory-properties-area.md)
+## [Az Azure Active Directory elérése új bérlő létrehozásához](fundamentals/active-directory-access-create-new-tenant.md)
 
 
 # Útmutató
 ## Tervezés és kialakítás
 ### [Az Azure AD architektúrájának ismertetése](fundamentals/active-directory-architecture.md)
 ### [Jogcímtársítások az Azure Active Directoryban](active-directory-claims-mapping.md)
-### [Hibrid identitáskezelési megoldás üzembe helyezése](active-directory-hybrid-identity-design-considerations-overview.md)
+### [Hibrid identitáskezelési megoldás üzembe helyezése](hybrid/plan-hybrid-identity-design-considerations-overview.md)
 #### Követelmények meghatározása
-##### [Identitáskezelés](active-directory-hybrid-identity-design-considerations-business-needs.md)
-##### [Címtár-szinkronizálás](active-directory-hybrid-identity-design-considerations-directory-sync-requirements.md)
-##### [Többtényezős hitelesítés](active-directory-hybrid-identity-design-considerations-multifactor-auth-requirements.md)
-##### [Az identitás-életciklus stratégiája](active-directory-hybrid-identity-design-considerations-lifecycle-adoption-strategy.md)
-#### [Az adatbiztonság tervezése](active-directory-hybrid-identity-design-considerations-data-protection-strategy.md)
-##### [Adatvédelem](active-directory-hybrid-identity-design-considerations-dataprotection-requirements.md)
-##### [Tartalomkezelés](active-directory-hybrid-identity-design-considerations-contentmgt-requirements.md)
-##### [Hozzáférés-vezérlés](active-directory-hybrid-identity-design-considerations-accesscontrol-requirements.md)
-##### [Incidensmegoldás](active-directory-hybrid-identity-design-considerations-incident-response-requirements.md)
+##### [Identitáskezelés](hybrid/plan-hybrid-identity-design-considerations-business-needs.md)
+##### [Címtár-szinkronizálás](hybrid/plan-hybrid-identity-design-considerations-directory-sync-requirements.md)
+##### [Többtényezős hitelesítés](hybrid/plan-hybrid-identity-design-considerations-multifactor-auth-requirements.md)
+##### [Az identitás-életciklus stratégiája](hybrid/plan-hybrid-identity-design-considerations-lifecycle-adoption-strategy.md)
+#### [Az adatbiztonság tervezése](hybrid/plan-hybrid-identity-design-considerations-data-protection-strategy.md)
+##### [Adatvédelem](hybrid/plan-hybrid-identity-design-considerations-dataprotection-requirements.md)
+##### [Tartalomkezelés](hybrid/plan-hybrid-identity-design-considerations-contentmgt-requirements.md)
+##### [Hozzáférés-vezérlés](hybrid/plan-hybrid-identity-design-considerations-accesscontrol-requirements.md)
+##### [Incidensmegoldás](hybrid/plan-hybrid-identity-design-considerations-incident-response-requirements.md)
 #### Az identitás-életciklus megtervezése
-##### [Feladatok](active-directory-hybrid-identity-design-considerations-hybrid-id-management-tasks.md)
-##### [Bevezetési stratégia](active-directory-hybrid-identity-design-considerations-identity-adoption-strategy.md)
-#### [Következő lépések](active-directory-hybrid-identity-design-considerations-nextsteps.md)
-#### [Eszközök összehasonlítása](active-directory-hybrid-identity-design-considerations-tools-comparison.md)
+##### [Feladatok](hybrid/plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md)
+##### [Bevezetési stratégia](hybrid/plan-hybrid-identity-design-considerations-identity-adoption-strategy.md)
+#### [Következő lépések](hybrid/plan-hybrid-identity-design-considerations-nextsteps.md)
+#### [Eszközök összehasonlítása](hybrid/plan-hybrid-identity-design-considerations-tools-comparison.md)
 
 ## Felhasználók kezelése
 ### [Új felhasználók hozzáadása az Azure AD-hez](fundamentals/add-users-azure-active-directory.md)
@@ -91,11 +91,13 @@
 ### [Veszélyeztetett felhasználók](reports-monitoring/concept-user-at-risk.md)
 ### [Kockázatos bejelentkezések](reports-monitoring/concept-risky-sign-ins.md)
 ### [Kockázati események](reports-monitoring/concept-risk-events.md)
-### [Naplók monitorozása az Azure Monitorral](reports-monitoring/overview-activity-logs-in-azure-monitor.md)
+### [Naplók monitorozása az Azure Monitorral](reports-monitoring/concept-activity-logs-in-azure-monitor.md)
 ### [GYIK](reports-monitoring/reports-faq.md)
 
 ### Feladatok
-#### [Nevesített helyek konfigurálása](active-directory-named-locations.md)
+#### [Bejelentkezési jelentés letöltése](reports-monitoring/quickstart-download-sign-in-report.md)
+#### [Naplózási jelentés letöltése](reports-monitoring/quickstart-download-audit-report.md)
+#### [Nevesített helyek konfigurálása](reports-monitoring/quickstart-configure-named-locations.md)
 #### [Tevékenységjelentések keresése](reports-monitoring/howto-find-activity-reports.md)
 #### [Az Azure AD Power BI-tartalomcsomag használata](reports-monitoring/howto-power-bi-content-pack.md)
 #### [Kockázatosként megjelölt felhasználók szervizelése](reports-monitoring/howto-remediate-users-flagged-for-risk.md)
@@ -307,7 +309,7 @@
 
 
 ## Címtár kezelése
-### [Azure AD Connect](./connect/active-directory-aadconnect.md)
+### [Azure AD Connect](hybrid/whatis-hybrid-identity.md)
 ### Egyéni tartománynevek
 #### [Gyors útmutató](fundamentals/add-custom-domain.md)
 ### [A címtár felügyelete](fundamentals/active-directory-administer.md)
@@ -319,7 +321,7 @@
 #### [Hibaelhárítás](active-directory-windows-enterprise-state-roaming-troubleshooting.md)
 
 
-### [Helyszíni identitások integrálása az Azure AD Connecttel](./connect/active-directory-aadconnect.md)
+### [Helyszíni identitások integrálása az Azure AD Connecttel](hybrid/whatis-hybrid-identity.md)
 
 ### [A jogkivonatok élettartamának beállítása](active-directory-configurable-token-lifetimes.md)
 
@@ -327,7 +329,7 @@
 
 ### [Privileged Identity Management](privileged-identity-management/pim-configure.md?toc=%2fazure%2factive-directory%2ftoc.json)
 
-## [Az AD FS üzembe helyezése az Azure-ban](active-directory-aadconnect-azure-adfs.md)
+## [Az AD FS üzembe helyezése az Azure-ban](hybrid/how-to-connect-fed-azure-adfs.md)
 ### [Magas rendelkezésre állás](active-directory-adfs-in-azure-with-azure-traffic-manager.md)
 ### [Az aláírás-kivonatoló algoritmus módosítása](active-directory-federation-sha256-guidance.md)
 
@@ -347,8 +349,8 @@
 
 # Kapcsolódó témakörök
 ## [Többtényezős hitelesítés](/azure/multi-factor-authentication/)
-## [Azure AD Connect](./connect/active-directory-aadconnect.md)
-## [Azure AD Connect Health](./connect-health/active-directory-aadconnect-health.md)
+## [Azure AD Connect](hybrid/whatis-hybrid-identity.md)
+## [Azure AD Connect Health](hybrid/whatis-hybrid-identity-health.md)
 ## [Azure AD fejlesztőknek](./develop/active-directory-how-to-integrate.md)
 ## [Azure AD Privileged Identity Management](./privileged-identity-management/pim-configure.md)
 
