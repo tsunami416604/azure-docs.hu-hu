@@ -1,6 +1,6 @@
 ---
-title: 'Végfelhasználói hitelesítés: az Azure Active Directory használatával a Data Lake Store Java |} Microsoft Docs'
-description: Megtudhatja, hogyan végfelhasználói hitelesítési elérése a Data Lake Store Java az Azure Active Directory használatával
+title: 'Végfelhasználói hitelesítés: Azure Active Directory használatával az Azure Data Lake Storage Gen1 Java |} A Microsoft Docs'
+description: Ismerje meg, hogyan érhet el a végfelhasználói hitelesítés az Azure Data Lake Storage Gen1 a Java használatával Azure Active Directory használatával
 services: data-lake-store
 documentationcenter: ''
 author: nitinme
@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 633bf87d1e02a1132cfc5cd151b1e58418de8152
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 47b975b3ea0cfa9d2fb2536236b0a8dfaef14503
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34625018"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46126938"
 ---
-# <a name="end-user-authentication-with-data-lake-store-using-java"></a>A Data Lake Store Java használatával végfelhasználói hitelesítés
+# <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-java"></a>Végfelhasználói hitelesítés az Azure Data Lake Storage Gen1 a Java használatával
 > [!div class="op_single_selector"]
 > * [A Java használata](data-lake-store-end-user-authenticate-java-sdk.md)
 > * [A .NET SDK használata](data-lake-store-end-user-authenticate-net-sdk.md)
@@ -27,12 +27,12 @@ ms.locfileid: "34625018"
 > 
 >   
 
-Ebből a cikkből megismerheti a végfelhasználói hitelesítést az Azure Data Lake Store Java SDK használatával kapcsolatos. A szolgáltatások közötti hitelesítéshez a Data Lake Store Java SDK használatával, lásd: [szolgáltatások közötti hitelesítés a Data Lake Store Java használatával](data-lake-store-service-to-service-authenticate-java.md).
+Ebben a cikkben megismerkedhet a Java SDK használata az Azure Data Lake Storage Gen1 végfelhasználói hitelesítés végrehajtásához. Szolgáltatások közötti hitelesítés a Data Lake Storage Gen1 Java SDK-t, lásd: [szolgáltatások közötti hitelesítés a Data Lake Storage Gen1 Java használatával](data-lake-store-service-to-service-authenticate-java.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 * **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 
-* **Hozzon létre egy "Natív" Azure Active Directory-alkalmazás**. Végrehajtotta a lépéseket [végfelhasználói hitelesítés az Azure Active Directory használatával a Data Lake Store](data-lake-store-end-user-authenticate-using-active-directory.md).
+* **Hozzon létre a "Natív" Azure Active Directory-alkalmazás**. El kell végeznie a lépések [végfelhasználói hitelesítés a Data Lake Storage Gen1 az Azure Active Directoryval](data-lake-store-end-user-authenticate-using-active-directory.md).
 
 * [Maven](https://maven.apache.org/install.html). Ez az oktatóanyag a Mavent használja a build- és projektfüggőségek kezeléséhez. Bár lehetséges olyan rendszerek nélkül fejleszteni, mint például a Maven vagy a Gradle, ezekkel a fejlesztőrendszerekkel sokkal egyszerűbb a függőségek kezelése.
 
@@ -56,7 +56,7 @@ Ebből a cikkből megismerheti a végfelhasználói hitelesítést az Azure Data
           </dependency>
         </dependencies>
    
-    Az első függőség a Data Lake Store SDK (`azure-data-lake-store-sdk`) használata a Maven tárházból. A második függőség az alkalmazással használandó naplózási keretrendszer (`slf4j-nop`) meghatározása. A Data Lake Store SDK az [slf4j](http://www.slf4j.org/) naplózási megoldást használja, amellyel számos elterjedt naplózási keretrendszer közül választhat (például log4j, Java-naplózás, Logback vagy nincs naplózás). Ebben a példában kikapcsoljuk a naplózást, mivel az **slf4j-nop** kötést eszközt használjuk. Az alkalmazásban való egyéb naplózási lehetőségek használatáról [itt talál információt](http://www.slf4j.org/manual.html#projectDep).
+    Az első függőség az, hogy a Data Lake Storage Gen1 SDK (`azure-data-lake-store-sdk`) a maven tárházból. A második függőség az alkalmazással használandó naplózási keretrendszer (`slf4j-nop`) meghatározása. Használja a Data Lake Storage Gen1 SDK [slf4j](http://www.slf4j.org/) naplózási előtérrendszer, amellyel számos elterjedt naplózási keretrendszer például log4j, Java-naplózás, logback, stb., választhat, vagy nincs naplózás. Ebben a példában kikapcsoljuk a naplózást, mivel az **slf4j-nop** kötést eszközt használjuk. Az alkalmazásban való egyéb naplózási lehetőségek használatáról [itt talál információt](http://www.slf4j.org/manual.html#projectDep).
 
 3. Adja hozzá az alábbi importálási utasításokat az alkalmazáshoz.
 
@@ -67,17 +67,17 @@ Ebből a cikkből megismerheti a végfelhasználói hitelesítést az Azure Data
         import com.microsoft.azure.datalake.store.oauth2.AccessTokenProvider;
         import com.microsoft.azure.datalake.store.oauth2.DeviceCodeTokenProvider;
 
-4. A következő kódrészletet használja a Java-alkalmazást a korábban létrehozott Active Directory natív alkalmazás jogkivonat beszerzése az `DeviceCodeTokenProvider`. Cserélje le **FILL Itt** az Azure Active Directory natív alkalmazás tényleges értékeket.
+4. A Java-alkalmazás az alábbi kódrészlet használatával szerezheti be a korábban létrehozott Active Directory natív alkalmazás jogkivonatát az `DeviceCodeTokenProvider`. Cserélje le **FILL-in-HERE** az Azure Active Directory natív alkalmazás tényleges értéke alapján.
 
         private static String nativeAppId = "FILL-IN-HERE";
             
         AccessTokenProvider provider = new DeviceCodeTokenProvider(nativeAppId);   
 
-A Data Lake Store SDK kényelmes megoldásaival kezelheti a Data Lake Store-fiókkal való kommunikációhoz szükséges biztonsági jogkivonatokat. Azonban az SDK nem írja elő, hogy kizárólag ezek a módszerek használhatók. A jogkivonat beszerzésére más eszközöket is használhat, például az [Active Directory SDK-t](https://github.com/AzureAD/azure-activedirectory-library-for-java) , vagy saját egyéni kódot.
+A Data Lake Storage Gen1 SDK kényelmes módszert is, amelyekkel kezelheti a Data Lake Storage Gen1 fiók kommunikáljon szükséges biztonsági jogkivonatokat biztosít. Azonban az SDK nem írja elő, hogy kizárólag ezek a módszerek használhatók. A jogkivonat beszerzésére más eszközöket is használhat, például az [Active Directory SDK-t](https://github.com/AzureAD/azure-activedirectory-library-for-java) , vagy saját egyéni kódot.
 
 ## <a name="next-steps"></a>További lépések
-Ebben a cikkben megtanulta végfelhasználói hitelesítés használata a hitelesítéshez az Azure Data Lake Store Java SDK használatával. Most már megtekintheti a következő cikkekben talál arról, hogyan működik az Azure Data Lake Store Java SDK használatával kommunikálhatnak.
+Ebben a cikkben megtanulta, hogyan végfelhasználói hitelesítés használata az Azure Data Lake Storage Gen1 hitelesítést, a Java SDK használatával. Most már megtekintheti a következő cikkeket, hogy hogyan használhatja a Java SDK használata Azure Data Lake Storage Gen1 beszélni.
 
-* [Adatok műveletek a Data Lake Store Java SDK használatával](data-lake-store-get-started-java-sdk.md)
+* [A Data Lake Storage Gen1 Adatműveletek Java SDK használatával](data-lake-store-get-started-java-sdk.md)
 
 

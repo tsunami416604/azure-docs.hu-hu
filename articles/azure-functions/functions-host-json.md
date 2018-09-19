@@ -8,24 +8,98 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 02/12/2018
+ms.date: 09/08/2018
 ms.author: glenga
-ms.openlocfilehash: 11bf136897b5d5b8140fc7ff1bb259c657a71921
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 085df618eb6d3eb78e42261d1b324c3a2374877b
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44092190"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46123385"
 ---
 # <a name="hostjson-reference-for-azure-functions"></a>az Azure Functions – Host.JSON referencia
 
 A *host.json* metaadatait tartalmazó fájl tartalmaz, amelyek befolyásolják a függvényalkalmazás a függvények globális konfigurációs beállításokat. Ez a cikk felsorolja az elérhető beállítások. A JSON-sémájában jelenleg http://json.schemastore.org/host.
 
-Egyéb globális konfigurációs lehetőségek [Alkalmazásbeállítások](functions-app-settings.md) és a [local.settings.json](functions-run-local.md#local-settings-file) fájlt.
+> [!NOTE]
+> Lényeges különbségek vannak a *host.json* verzió a v1 és v2 az Azure Functions Runtime között. A `"version": "2.0"` a v2 futtatókörnyezetre függvényalkalmazás megadása kötelező.
+
+A felügyelt egyéb függvény alkalmazás konfigurációs lehetőségek a [Alkalmazásbeállítások](functions-app-settings.md).
+
+Egyes host.json beállításai csak a helyi futtatásakor használt a [local.settings.json](functions-run-local.md#local-settings-file) fájlt.
 
 ## <a name="sample-hostjson-file"></a>Mintafájl host.json
 
-Az alábbi minta *host.json* fájl van megadva minden lehetséges beállítást.
+Az alábbi minta *host.json* fájlok a megadott összes lehetséges lehetősége van.
+
+### <a name="version-2x"></a>Verzió 2.x
+
+```json
+{
+    "version": "2.0",
+    "aggregator": {
+        "batchSize": 1000,
+        "flushTimeout": "00:00:30"
+    },
+    "extensions": {
+        "eventHubs": {
+          "maxBatchSize": 64,
+          "prefetchCount": 256,
+          "batchCheckpointFrequency": 1
+        },
+        "http": {
+            "routePrefix": "api",
+            "maxConcurrentRequests": 5,
+            "maxOutstandingRequests": 30
+        },
+        "queues": {
+            "visibilityTimeout": "00:00:10",
+            "maxDequeueCount": 3
+        },
+        "sendGrid": {
+            "from": "Azure Functions <samples@functions.com>"
+        },
+        "serviceBus": {
+          "maxConcurrentCalls": 16,
+          "prefetchCount": 100,
+          "autoRenewTimeout": "00:05:00"
+        }
+    },
+    "functions": [ "QueueProcessor", "GitHubWebHook" ],
+    "functionTimeout": "00:05:00",
+    "healthMonitor": {
+        "enabled": true,
+        "healthCheckInterval": "00:00:10",
+        "healthCheckWindow": "00:02:00",
+        "healthCheckThreshold": 6,
+        "counterThreshold": 0.80
+    },
+    "id": "9f4ea53c5136457d883d685e57164f08",
+    "logging": {
+        "fileLoggingMode": "debugOnly",
+        "logLevel": {
+          "Function.MyFunction": "Information",
+          "default": "None"
+        },
+        "applicationInsights": {
+            "sampling": {
+              "isEnabled": true,
+              "maxTelemetryItemsPerSecond" : 5
+            }
+        }
+    },
+    "singleton": {
+      "lockPeriod": "00:00:15",
+      "listenerLockPeriod": "00:01:00",
+      "listenerLockRecoveryPollingInterval": "00:01:00",
+      "lockAcquisitionTimeout": "00:01:00",
+      "lockAcquisitionPollingInterval": "00:00:03"
+    },
+    "watchDirectories": [ "Shared", "Test" ]
+}
+```
+
+### <a name="version-1x"></a>Verzió 1.x
 
 ```json
 {
@@ -121,7 +195,7 @@ Megadja, hogy hány függvény meghívásához összesített mikor [kiszámítá
 
 ## <a name="applicationinsights"></a>applicationInsights
 
-Szabályozza a [mintavételezés funkció az Application Insights](functions-monitoring.md#configure-sampling).
+Szabályozza a [mintavételezés funkció az Application Insights](functions-monitoring.md#configure-sampling). A verzió 2.x, ez a beállítás nem gyermeke [naplózás](#log).
 
 ```json
 {
@@ -168,7 +242,7 @@ A feladat értesítésiközpont-nevek kell betűvel kezdődhet, és csak betűkb
 
 |Tulajdonság  |Alapértelmezett | Leírás |
 |---------|---------|---------|
-|HubName|DurableFunctionsHub|Alternatív [feladat hub](durable-functions-task-hubs.md) használható neveket, még akkor is, ha az azonos tárolási háttéralkalmazások elkülöníteni egymástól, több Durable Functions-alkalmazás.|
+|HubName|DurableFunctionsHub|Alternatív [feladat hub](durable-functions-task-hubs.md) nevek segítségével elkülönítheti egymástól, több Durable Functions-alkalmazás akkor is, ha az azonos tárolási háttéralkalmazások használatával theyre.|
 |ControlQueueBatchSize|32|A vezérlő várólista lekéréshez egyszerre üzenetek száma.|
 |PartitionCount |4|A partíciók száma az ellenőrzési várólista. Egy 1 és 16 közötti pozitív egész lehet.|
 |ControlQueueVisibilityTimeout |5 perc|A várólistából kivéve vezérlés üzenetsorbeli üzenetek láthatósági időkorlátot.|
@@ -181,19 +255,25 @@ A feladat értesítésiközpont-nevek kell betűvel kezdődhet, és csak betűkb
 |EventGridTopicEndpoint ||A végpont URL-címét egy Azure Event Griddel egyéni témakört. Ha ez a tulajdonság értéke, orchestration életciklusának értesítési esemény közzé lesz téve, ennek a végpontnak. Ez a tulajdonság támogatja az alkalmazásbeállítások megoldás.|
 |EventGridKeySettingName ||Az Azure Event Griddel egyéni témakörre, amely a hitelesítéshez használt kulcs tartalmazó alkalmazásbeállítás neve `EventGridTopicEndpoint`.|
 |EventGridPublishRetryCount|0|Sikertelen lesz, ha az Event Grid-témakör közzétételét újrapróbálkozások száma.|
-|EventGridPublishRetryInterval|5 perc|Az Event Grid közzététele az újrapróbálkozási időköznek a *óó* formátumban.|
+|EventGridPublishRetryInterval|5 perc|Az Event Grid közzéteszi az újrapróbálkozási időköznek a *óó* formátumban.|
 
 Ezek közül sok teljesítmény optimalizálásához. További információkért lásd: [teljesítmény és méretezhetőség](durable-functions-perf-and-scale.md).
 
 ## <a name="eventhub"></a>eventHub
 
-A konfigurációs beállítások [Event Hub-eseményindítók és kötések](functions-bindings-event-hubs.md).
+A konfigurációs beállítások [Event Hub-eseményindítók és kötések](functions-bindings-event-hubs.md). A verzió 2.x, ez az egyik gyermekéhez [bővítmények](#extensions).
 
 [!INCLUDE [functions-host-json-event-hubs](../../includes/functions-host-json-event-hubs.md)]
 
+## <a name="extensions"></a>Bővítmények
+
+*Verzió csak 2.x.*
+
+Tulajdonság által visszaadott olyan objektum, amely tartalmazza az összes a kötés-specifikus beállítások, például [http](#http) és [eventHub](#eventhub).
+
 ## <a name="functions"></a>functions
 
-A feladat gazdagépen futtatandó függvények listája. Üres tömb azt jelenti, hogy a függvények futtatása. Használatra szánt csak akkor, ha [helyileg futó](functions-run-local.md). A függvényalkalmazások, használja a *function.json* `disabled` tulajdonság helyett ezt a tulajdonságot a *host.json*.
+A feladat gazdagépen futó függvények listája. Üres tömb azt jelenti, hogy a függvények futtatása. Használatra szánt csak akkor, ha [helyileg futó](functions-run-local.md). Függvény-alkalmazásokban az Azure-ban, ehelyett kövesse a lépéseket a [letiltása az Azure Functions függvények](disable-function.md) ezen beállítás használata helyett adott funkciók letiltása.
 
 ```json
 {
@@ -203,7 +283,7 @@ A feladat gazdagépen futtatandó függvények listája. Üres tömb azt jelenti
 
 ## <a name="functiontimeout"></a>functionTimeout
 
-Azt jelzi, hogy a függvények az időtúllépési időtartama. A Használatalapú csomagok az érvényes értéktartomány: 1 másodperctől 10 percre, és az alapértelmezett érték 5 perc. Az App Service-csomagokban nem korlátozott, és az alapértelmezett értéke null, ami azt jelenti, hogy nincs időkorlát.
+Azt jelzi, hogy a függvények az időtúllépési időtartama. A kiszolgáló nélküli Használatalapú csomagok esetében az érvényes értéktartomány: 1 másodperctől 10 percre, és az alapértelmezett érték 5 perc. Az App Service-csomag nem általános korlátozott, és az alapértelmezett futtatókörnyezet verziójának függ. A verzió 2.x, az alapértelmezett érték egy App Service-csomag érték 30 perc. A verzió van 1.x, *null*, ami azt jelenti, hogy nincs időkorlát.
 
 ```json
 {
@@ -229,7 +309,7 @@ A konfigurációs beállítások [gazdagép állapotfigyelőjét](https://github
 
 |Tulajdonság  |Alapértelmezett | Leírás |
 |---------|---------|---------| 
-|engedélyezve|true|A funkció engedélyezve van-e. | 
+|engedélyezve|true|Itt adhatja meg, hogy engedélyezve van-e a szolgáltatás. | 
 |healthCheckInterval|10 másodperc|A háttérben történő rendszeres egészségügyi közötti időintervallum ellenőrzi. | 
 |healthCheckWindow|2 perc|Egy változó időablakban együtt használható a `healthCheckThreshold` beállítás.| 
 |healthCheckThreshold|6|Az állapot-ellenőrzés maximálisan megengedett számú meghiúsulhat a rendszer kezdeményezi a gazdagép újraindítása előtt.| 
@@ -237,16 +317,17 @@ A konfigurációs beállítások [gazdagép állapotfigyelőjét](https://github
 
 ## <a name="http"></a>http
 
-A konfigurációs beállítások [http-eseményindítók és kötések](functions-bindings-http-webhook.md).
+A konfigurációs beállítások [http-eseményindítók és kötések](functions-bindings-http-webhook.md). A verzió 2.x, ez az egyik gyermekéhez [bővítmények](#extensions).
 
 [!INCLUDE [functions-host-json-http](../../includes/functions-host-json-http.md)]
 
 ## <a name="id"></a>id
 
-Egy feladat gazdagép egyedi azonosítója. Szaggatott vonal a kisbetűs GUID távolíthatja el. Ha helyileg futtatja a szükséges. Az Azure Functions futtatásakor azonosító automatikusan generált Ha `id` van hagyva.
+*Verzió csak 1.x.*
+
+Egy feladat gazdagép egyedi azonosítója. Szaggatott vonal a kisbetűs GUID távolíthatja el. Ha helyileg futtatja a szükséges. Ha Azure-ban futó ajánlott-azonosító értéke nincs beállítva. Az azonosító az Azure-ban automatikusan generált amikor `id` van hagyva. Egy egyéni függvény Alkalmazásazonosító nem állítható be, a verzió 2.x verziójú futtatókörnyezet használatakor.
 
 Ha több függvényalkalmazás között megosztott tárfiókot, győződjön meg róla, hogy rendelkezik-e egy másik minden függvényalkalmazáshoz `id`. Kihagyhatja a `id` tulajdonságot vagy állítsa be kézzel a minden függvényalkalmazáshoz `id` más értékre. Az időzítő eseményindító egy tárolási zár segítségével győződjön meg arról, hogy lesz időzítő csak egy példánnyal, amikor a függvényalkalmazás elvégzi a horizontális felskálázást több példányra. Ha két függvényalkalmazások azonos `id` és minden egyes egy időzítő indítófeltételt használ, csak egy időzítő fog futni.
-
 
 ```json
 {
@@ -255,6 +336,8 @@ Ha több függvényalkalmazás között megosztott tárfiókot, győződjön meg
 ```
 
 ## <a name="logger"></a>naplózó
+
+*Verzió 1.x csak; verzió 2.x használatra [naplózás](#logging).*
 
 Vezérlők által írt naplók szűrése egy [ILogger objektum](functions-monitoring.md#write-logs-in-c-functions) vagy [context.log](functions-monitoring.md#write-logs-in-javascript-functions).
 
@@ -279,15 +362,40 @@ Vezérlők által írt naplók szűrése egy [ILogger objektum](functions-monito
 |defaultLevel|Információ|A nincs megadva a kategóriákat a `categoryLevels` tömböt, ezen a szinten és újabb verziókhoz naplók küldése az Application Insightsba.| 
 |categoryLevels|n/a|Kategóriák tömbje, amely meghatározza a küldendő kategóriákhoz tartozó Application Insights a minimális naplózási szint. Az itt megadott kategória szabályozza minden kategória ugyanazzal az értékkel kezdődő, és hosszabb értékek elsőbbséget. A fenti mintában *host.json* fájlt, az összes kategória napló "Host.Aggregator" karakterrel kezdődő `Information` szintjét. Minden más kategóriák kezdődő "Host", "Host.Executor", például log `Error` szintjét.| 
 
+## <a name="logging"></a>Naplózás
+
+*Verzió 2.x csak; verzió 1.x használatra [naplózó](#logger).*
+
+A függvényalkalmazás, beleértve az Application Insights naplózási viselkedéseit szabályozza.
+
+```json
+"logging": {
+    "fileLoggingMode": "debugOnly",
+    "logLevel": {
+      "Function.MyFunction": "Information",
+      "default": "None"
+    },
+    "applicationInsights": {
+        ...
+    }
+}
+```
+
+|Tulajdonság  |Alapértelmezett | Leírás |
+|---------|---------|---------|
+|fileLoggingMode|Információ|Ezen a szinten és újabb verziókhoz naplókat küld az Application Insights. |
+|LogLevel|n/a|A szűrés az alkalmazás a Functions naplókategória definiáló objektum. Verzió 2.x követi az ASP.NET Core-elrendezés log kategóriához szűrésre. Ez lehetővé teszi az egyes funkciók naplózási szűrő. További információkért lásd: [napló szűrése](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) az ASP.NET Core dokumentációjában. |
+|applicationInsights|n/a| A [applicationInsights](#applicationinsights) beállítás. |
+
 ## <a name="queues"></a>üzenetsorok
 
-A konfigurációs beállítások [tárolási üzenetsor eseményindítók és kötések](functions-bindings-storage-queue.md).
+A konfigurációs beállítások [tárolási üzenetsor eseményindítók és kötések](functions-bindings-storage-queue.md). A verzió 2.x, ez az egyik gyermekéhez [bővítmények](#extensions).
 
 [!INCLUDE [functions-host-json-queues](../../includes/functions-host-json-queues.md)]
 
 ## <a name="servicebus"></a>serviceBus
 
-A konfigurációs beállítás [Service Bus-eseményindítók és kötések](functions-bindings-service-bus.md).
+A konfigurációs beállítás [Service Bus-eseményindítók és kötések](functions-bindings-service-bus.md). A verzió 2.x, ez az egyik gyermekéhez [bővítmények](#extensions).
 
 [!INCLUDE [functions-host-json-service-bus](../../includes/functions-host-json-service-bus.md)]
 
@@ -317,7 +425,9 @@ Egyszeres zárolási viselkedés konfigurációs beállításait. További infor
 
 ## <a name="tracing"></a>nyomkövetés
 
-Konfigurációs beállítások használatával létrehozott naplók egy `TraceWriter` objektum. Lásd: [C# naplózási](functions-reference-csharp.md#logging) és [Node.js naplózási](functions-reference-node.md#writing-trace-output-to-the-console). 
+*Verzió 1.x*
+
+Konfigurációs beállítások használatával létrehozott naplók egy `TraceWriter` objektum. Lásd: [C# naplózási](functions-reference-csharp.md#logging) és [Node.js naplózási](functions-reference-node.md#writing-trace-output-to-the-console). A verzió 2.x, az összes napló viselkedését vezérli [naplózás](#logging).
 
 ```json
 {

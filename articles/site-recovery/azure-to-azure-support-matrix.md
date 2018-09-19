@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: sujayt
-ms.openlocfilehash: 105c1d97a812841e82a0c364ec7dda097c0dd399
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 1fa5451b852a564ef3f0858fdfe0ab0091117508
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44717369"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46296024"
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Egy Azure-régióból a másikba történő replikálásához támogatási mátrix
 
@@ -171,7 +171,8 @@ A standard szintű felügyelt lemezek | Támogatott az Azure-régióban, amelybe
 Prémium szintű felügyelt lemezek | Támogatott az Azure-régióban, amelyben az Azure Site Recovery támogatott. |
 A tárolóhelyek | Támogatott |         
 Titkosítás inaktív állapotban (SSE) | Támogatott | Az SSE az alapértelmezett beállítás, a storage-fiókok.   
-Az Azure Disk Encryption (ADE) | Nem támogatott |
+Az Azure Disk Encryption (ADE) a Windows operációs rendszer | Engedélyezve van a virtuális gépek [az Azure AD-alkalmazást encryption](https://aka.ms/ade-aad-app) támogatottak |
+Az Azure Disk Encryption (ADE) a Linux operációs rendszer | Nem támogatott |
 Gyakori elérésű hozzáadása/eltávolítása lemez | Nem támogatott | Ha ad hozzá, vagy távolítsa el az adatlemezt a virtuális gépen, tiltsa le a replikációt, és engedélyezze újra a virtuális gép replikációját szüksége.
 Lemez kizárása | Nem támogatott|   Ideiglenes lemez alapértelmezés szerint ki van zárva.
 Közvetlen tárolóhelyek  | Nem támogatott|

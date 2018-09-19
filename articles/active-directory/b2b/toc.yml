@@ -1,0 +1,124 @@
+items:
+- name: Az Azure Active Directory B2B dokumentációja
+  href: index.yml
+  items:
+  - name: Áttekintés
+    items:
+    - name: Mi a B2B vendégfelhasználói hozzáférés?
+      href: what-is-b2b.md
+    - name: A B2B és a B2C összehasonlítása
+      href: compare-with-b2c.md
+  - name: Gyors útmutatók
+    items:
+    - name: Vendégfelhasználók hozzáadása a portálon
+      href: b2b-quickstart-add-guest-users-portal.md
+    - name: Vendégfelhasználók hozzáadása PowerShell-lel
+      href: b2b-quickstart-invite-powershell.md
+  - name: Oktatóanyagok
+    items:
+    - name: B2B-vendégfelhasználók tömeges meghívása
+      href: b2b-tutorial-bulk-invite.md
+    - name: Többtényezős hitelesítés kényszerítése
+      href: b2b-tutorial-require-mfa.md
+  - name: Példák
+    items:
+    - name: Minta önkiszolgáló bejelentkezési portálhoz
+      href: self-service-portal.md
+    - name: Kód- és Azure PowerShell-minták
+      href: code-samples.md
+  - name: Alapelvek
+    items:
+    - name: B2B-licencelés
+      href: licensing-guidance.md
+    - name: Külső B2B- és Office 365-megosztás
+      href: o365-external-user.md
+    - name: Meghívás érvényesítése
+      href: redemption-experience.md
+    - name: Meghívó e-mail
+      href: invitation-email-elements.md
+    - name: A B2B felhasználók ismertetése
+      href: user-properties.md
+    - name: B2B felhasználói jogcímek leképezése
+      href: claims-mapping.md
+    - name: B2B felhasználói jogkivonat
+      href: user-token.md
+    - name: Feltételes hozzáférés B2B-hez
+      href: conditional-access.md
+    - name: B2B hibrid szervezetek számára
+      href: hybrid-organizations.md
+    - name: Aktuális korlátozások
+      href: current-limitations.md
+    expanded: false
+  - name: Útmutatók
+    items:
+    - name: Meghívók kezelése
+      items:
+      - name: B2B felhasználók rendszergazdák általi hozzáadása
+        href: add-users-administrator.md
+      - name: B2B felhasználók információkkal dolgozó szakemberek általi hozzáadása
+        href: add-users-information-worker.md
+      - name: Google-összevonás
+        href: google-federation.md
+      - name: B2B megosztási szabályzatok
+        href: delegate-invitations.md
+      - name: Meghívások engedélyezése vagy letiltása
+        href: allow-deny-list.md
+      - name: B2B felhasználók hozzáadása meghívás nélkül
+        href: add-user-without-invite.md
+      - name: API és testreszabás
+        href: customize-invitation-api.md
+    - name: Vendégfelhasználói fiókok kezelése
+      items:
+      - name: B2B felhasználó hozzáadása szerepkörhöz
+        href: add-guest-to-role.md
+      - name: Dinamikus csoportok és B2B felhasználók
+        href: use-dynamic-groups.md
+      - name: A B2B felhasználók ismertetése
+        href: user-properties.md
+      - name: Azure AD B2B integrált alkalmazások
+        href: configure-saas-apps.md
+    - name: Hozzáférés-kezelés hibrid szervezetek esetében
+      items:
+      - name: Helyi felhasználók hozzáférésének engedélyezése a felhőalkalmazásokhoz
+        href: hybrid-on-premises-to-cloud.md
+      - name: B2B felhasználók hozzáférésének engedélyezése a helyi alkalmazásokhoz
+        href: hybrid-cloud-to-on-premises.md
+    - name: Szervezet elhagyása
+      href: leave-the-organization.md
+    - name: Naplózás és jelentéskészítés
+      href: auditing-and-reporting.md
+    - name: B2B hibaelhárítás
+      href: troubleshoot.md
+    expanded: true
+  - name: Referencia
+    items:
+    - name: Invitation Manager API
+      href: customize-invitation-api.md
+  - name: További források
+    items:
+    - name: GYIK
+      href: faq.md
+    - name: Támogatás igénybevétele B2B-hez
+      href: get-support.md
+    - name: Azure visszajelzési fórum
+      href: https://feedback.azure.com/forums/169401-azure-active-directory
+    - name: Azure-ütemterv
+      href: https://azure.microsoft.com/roadmap/?category=security-identity
+    - name: MSDN-fórum
+      href: https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD
+    - name: Díjszabás
+      href: https://azure.microsoft.com/pricing/details/active-directory/
+    - name: Díjkalkulátor
+      href: https://azure.microsoft.com/pricing/calculator/
+    - name: Szolgáltatási hírek
+      href: https://azure.microsoft.com/updates/?product=active-directory
+    - name: Stack Overflow
+      href: http://stackoverflow.com/questions/tagged/azure-active-directory
+    - name: Videók
+      href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory
+ms.openlocfilehash: e3517af7c8cf84834a7487089f426c5c5ff4a80f
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45986698"

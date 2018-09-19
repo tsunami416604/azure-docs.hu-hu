@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 05/22/2018
 ms.author: barclayn
-ms.openlocfilehash: 359648a843375477ea56ab791533208c11af9c81
-ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
+ms.openlocfilehash: 807b8a17570dfdcefa07a42719b7b0b24e4f31d7
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42055511"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46297162"
 ---
 # <a name="azure-key-vault-customer-data-features"></a>Az Azure Key Vault vásárlói funkciók
 
@@ -37,7 +37,7 @@ A következő információkat azonosítja a vásárlói adatok Azure Key Vault b
 - Tanúsítványpartnerek felhasználói e-mail-címeket, nevek vagy számokat tartalmazhat.
 - Tanúsítványkiállítók tartalmazhatja az e-mail-címeket, neveket, telefonszámokat, fiók hitelesítő adatait és szervezeti részletei
 - Tetszőleges címkék alkalmazhatók az Azure Key Vault-objektumokhoz. Ezek az objektumok belefoglalása, tárolók, kulcsok, titkos kódok, tanúsítványok és storage-fiókok. A címkéket személyes adatokat is tartalmazhat.
-- Az Azure Key Vault hozzáférési naplók tartalmaznak objektumazonosítók, [UPN-EK](../active-directory/connect/active-directory-aadconnect-userprincipalname.md), és a egy REST API-hívás IP-címek
+- Az Azure Key Vault hozzáférési naplók tartalmaznak objektumazonosítók, [UPN-EK](../active-directory/hybrid/plan-connect-userprincipalname.md), és a egy REST API-hívás IP-címek
 - Az Azure Key Vault-diagnosztikai naplók objektum-azonosítók és a REST API-hívások IP-címet tartalmazhat.
 
 ## <a name="deleting-customer-data"></a>Vásárlói adatok törlése

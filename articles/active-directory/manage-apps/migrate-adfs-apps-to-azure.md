@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 03/02/2018
 ms.author: barbkess
-ms.openlocfilehash: cdce0ae223a637ac30ed472d2bf711aa36958414
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 8d5f31f09d51794f9ad3c126edf2fd935f379221
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44346763"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46296472"
 ---
 # <a name="migrate-ad-fs-on-premises-apps-to-azure"></a>AD FS helyszíni alkalmazások migrálása az Azure-ba 
 
@@ -238,4 +238,4 @@ Ha szeretné megtudni, hogyan kezelje közvetlenül az Azure AD a felhasználók
 
 - [Alkalmazások kezelése az Azure Active Directoryval](what-is-application-management.md)
 - [Alkalmazások hozzáférésének kezelése](what-is-access-management.md)
-- [Azure AD Connect-összevonás](../active-directory-aadconnectfed-whatis.md)
+- [Azure AD Connect-összevonás](../hybrid/how-to-connect-fed-whatis.md)

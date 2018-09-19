@@ -1,23 +1,23 @@
 ---
-title: A Bing Web Search API-válaszok |} A Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: Ismerje meg a válasz típusú és a Bing Web Search API által megadott válaszok.
+title: Keresési találatok – a Bing Web Search API
+titleSuffix: Azure Cognitive Services
+description: Ismerje meg a válasz típusát és a Bing Web Search API által érkező válaszokat.
 services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-web-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 8/13/2018
 ms.author: erhopf
-ms.openlocfilehash: 13e9792f3d5765047dabb4cdef59e85a47a69aba
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: f3a4c8bb024aa5e92365b72b8cc2180cc6f4d6d4
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42889434"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46123776"
 ---
-# <a name="bing-web-search-responses"></a>A Bing Web Search válaszai  
+# <a name="bing-web-search-api-response-structure-and-answer-types"></a>A Bing Web Search API válasz struktúra és válasz típusa  
 
 Ha egy keresési kérelmet küld a Bing Web Search, akkor adja vissza egy [ `SearchResponse` ](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#searchresponse) objektum a válasz törzsében. Az objektum, a Bing volt a lekérdezés minden válasz mező tartalmazza. Ebben a példában egy Válaszobjektum mutatja be, ha a Bing minden választ ad vissza:
 

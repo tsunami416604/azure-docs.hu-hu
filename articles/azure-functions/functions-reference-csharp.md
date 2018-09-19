@@ -11,12 +11,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 12/12/2017
 ms.author: glenga
-ms.openlocfilehash: 3bdb5bc2aa47a51cc95a4274fbf20ba5d0515130
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 9a75e7ed8ce25384d39afb22ef50b5453ef543ba
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44094281"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46129675"
 ---
 # <a name="azure-functions-c-script-csx-developer-reference"></a>Azure Functions C#-szkript (.csx) fejlesztői referencia
 
@@ -35,6 +35,29 @@ Az Azure Functions szolgáltatáshoz C# szkriptet tapasztalatok alapján a [Azur
 A *.csx* formátum lehetővé teszi, hogy kevesebb "bolierplate" írása, és csak egy C#-függvény írására összpontosíthat. Helyett egy névterét és osztályának az alkalmazásburkoló mindent, csak adja meg egy `Run` metódust. Többek között a szokásos módon bármely összeállítási referenciát és a névterek, a fájl elején.
 
 Egy függvényalkalmazás *.csx* fájlok összeállítása során egy példány van inicializálva. A fordítási lépés azt jelenti, például az hidegindítási hosszabb időt vehet igénybe a C# szkriptet Functions C#-osztálykódtárakat képest. Miért C#-szkript függvények szerkeszthető az Azure Portalon, míg C#-osztálykódtárakat nem a fordítási lépés is.
+
+## <a name="folder-structure"></a>gyökérmappa-szerkezetében
+
+A mappastruktúra a C#-szkript projekt a következőhöz hasonlóan néz ki:
+
+```
+FunctionsProject
+ | - MyFirstFunction
+ | | - run.csx
+ | | - function.json
+ | | - function.proj
+ | - MySecondFunction
+ | | - run.csx
+ | | - function.json
+ | | - function.proj
+ | - host.json
+ | - extensions.csproj
+ | - bin
+```
+
+Van egy megosztott [host.json] (functions-gazdagép-json.md) fájl, amely a függvényalkalmazás konfigurálása használható. Minden függvény saját kódfájl (.csx) és a kötési konfigurációs fájl (function.json) rendelkezik.
+
+A kötési bővítményeket szükséges [verzió 2.x](functions-versions.md) a Functions runtime vannak meghatározva a `extensions.csproj` fájlt, a tényleges függvénytárfájlok a `bin` mappát. Ha helyileg fejlesztésével, akkor meg kell [regisztrálja a kötési bővítményeket](functions-triggers-bindings.md#local-development-azure-functions-core-tools). Amikor fejlesztéséről az Azure Portalon, a regisztrációt, készen áll.
 
 ## <a name="binding-to-arguments"></a>Argumentumok kötést
 
@@ -336,8 +359,10 @@ Az alábbi szerelvények egyszerű-név szerint lehet hivatkozni (például `#r 
 ## <a name="referencing-custom-assemblies"></a>Egyéni szerelvényeknek hivatkozik
 
 Az egyéni szerelvény hivatkozik, vagy használhatja egy *megosztott* szerelvény vagy egy *privát* sestavení:
-- Megosztott szerelvényeket belül függvényalkalmazás a függvények vannak megosztva. Egy egyéni szerelvény hivatkozik, töltse fel a szerelvény nevű `bin` a a [függvény alkalmazás gyökérmappájában](functions-reference.md#folder-structure) (wwwroot). 
-- Privát szerelvényeket egy adott függvény helyi részét képezik, és közvetlen különböző verzióit támogatja. Privát szerelvények fel kell tölteni a egy `bin` mappa függvény a címtárban. A szerelvények a fájlnevet, például a használatával hivatkozik `#r "MyAssembly.dll"`. 
+
+* Megosztott szerelvényeket belül függvényalkalmazás a függvények vannak megosztva. Egy egyéni szerelvény hivatkozik, töltse fel a szerelvény nevű `bin` a a [függvény alkalmazás gyökérmappájában](functions-reference.md#folder-structure) (wwwroot).
+
+* Privát szerelvényeket egy adott függvény helyi részét képezik, és közvetlen különböző verzióit támogatja. Privát szerelvények fel kell tölteni a egy `bin` mappa függvény a címtárban. A szerelvények a fájlnevet, például a használatával hivatkozik `#r "MyAssembly.dll"`.
 
 A fájlok feltöltéséről a függvény mappáját információkért lásd: a szakasz a [felügyeleti csomag](#using-nuget-packages).
 

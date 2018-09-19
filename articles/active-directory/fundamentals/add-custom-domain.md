@@ -12,12 +12,12 @@ ms.date: 09/10/2018
 ms.author: lizross
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: b33f2e809ae5758e41f7a76680347b9487f3f461
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: e49e362528f5fcd00a13a9fc1b233e62a569fe5a
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45735334"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46297946"
 ---
 # <a name="how-to-add-your-custom-domain-name-using-the-azure-active-directory-portal"></a>Útmutató: az Azure Active Directory portál használatával egyéni tartománynév hozzáadása
 Minden új Azure AD-bérlőt egy kezdeti tartománynevet tartalmaz *domainname*. onmicrosoft.com. Nem módosítható, és a kezdeti tartománynév törlése, de a szervezet neveket adhat hozzá a listában. Egyéni tartománynevek hozzáadása segítségével hozhat létre, amely számára is felismerhetők a felhasználók számára, például felhasználóneveket _alain@contoso.com_.
@@ -31,9 +31,14 @@ Először hozzá kell adnia az egyéni tartománynév Azure AD-bérlőhöz.
 ### <a name="to-add-a-custom-domain-name"></a>Egyéni tartománynév hozzáadása
 1. Jelentkezzen be a [Azure AD portálon](https://portal.azure.com/) a címtár egy globális rendszergazdai fiók használatával.
 
+<<<<<<< HEAD
+> [!TIP]
+> Ha helyszíni Windows Server AD-jét szeretné összevonni az Azure AD-vel, az Azure AD Connect eszköz futtatásakor jelölje be a **Szeretném konfigurálni ezt a tartományt egyszeri bejelentkezéshez a helyi Active Directoryhoz** jelölőnégyzetet a címtárak szinkronizálásához. Emellett a helyszíni címtárral való összevonáshoz kiválasztott tartománynevet is regisztrálnia kell az **Azure AD-tartomány** lépésnél a varázslóban. Megtekintheti, hogyan néz ki ez a lépés a varázslóban [ezekben az útmutatásokban](../hybrid/how-to-connect-install-custom.md#verify-the-azure-ad-domain-selected-for-federation). Ha még nem rendelkezik Azure AD Connect eszközzel, [innen letöltheti](http://go.microsoft.com/fwlink/?LinkId=615771).
+=======
 2. Válassza ki **Azure Active Directory**válassza **egyéni tartománynevek**, majd válassza ki **egyéni tartomány hozzáadása**.
+>>>>>>> 73f447b1499ba1f189efb6832ad759f1230e55a2
 
-    ![A Fabrikam – egyéni tartomány nevét panelről, hozzáadása az egyéni tartomány opció kiemelésével](media/add-custom-domain/add-custom-domain.png)
+    ![Fabrikam - Custom domain names blade, with Add custom domain option highlighted](media/add-custom-domain/add-custom-domain.png)
 
 3. Írja be az új vállalati tartománynevet a **egyéni tartománynév** mezőbe (például _contoso.com_), majd válassza ki **tartomány hozzáadása**.
 

@@ -1,9 +1,9 @@
 ---
-title: Biztonságfigyelés az Azure Security Centerben | Microsoft Docs
-description: Ez a cikk az Azure Security Center figyelési funkcióinak használatába nyújt bevezetést.
+title: Erőforrás biztonsági higiéniai az Azure Security Centerben |} A Microsoft Docs
+description: Ez a cikk segít az Azure Security Centerben, az erőforrás biztonsági higiéniai figyelés megkezdésében.
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: mbaldwin
 editor: ''
 ms.assetid: 3bd5b122-1695-495f-ad9a-7c2a4cd1c808
@@ -12,111 +12,40 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/26/2018
-ms.author: terrylan
-ms.openlocfilehash: 8fe2195559d807ef72b54603c8b4118ada705880
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.date: 9/21/2018
+ms.author: rkarlin
+ms.openlocfilehash: 361fc2c6931dcfaed062bd39b75be7bef059b467
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44162869"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46122066"
 ---
-# <a name="security-health-monitoring-in-azure-security-center"></a>Biztonsági állapotfigyelés az Azure Security Centerben
-Ez a cikk az Azure Security Center figyelési funkcióknak használatához nyújt segítséget a szabályzatoknak való megfelelés ellenőrzése érdekében.
+# <a name="monitoring-resource-security-hygiene-in-azure-security-center"></a>Az Azure Security Center figyelési erőforrás biztonsági higiéniai
+Ez a cikk segít az Azure Security Center figyelési funkcióknak használatához ellenőrizze, hogy az erőforrások biztonságának, szoros, lehetséges, és a figyelő szabályzatoknak való megfelelőségét.
 
-## <a name="what-is-security-health-monitoring"></a>Mi az a biztonsági állapotfigyelés?
-Ha a „figyelés” szót halljuk, általában arra gondolunk, hogy elővigyázatosan várjuk, hogy egy adott esemény bekövetkezzen, hogy aztán reagálhassunk a szituációra. A biztonságfigyelés ezzel szemben proaktív stratégiát jelent, amely az erőforrásokat ellenőrizve azonosítja a vállalati szabványoknak vagy ajánlott eljárásoknak meg nem felelő rendszereket.
+## <a name="what-is-resource-security-hygiene"></a>Mi az erőforrás biztonsági higiéniai?
+Ha a „figyelés” szót halljuk, általában arra gondolunk, hogy elővigyázatosan várjuk, hogy egy adott esemény bekövetkezzen, hogy aztán reagálhassunk a szituációra. Erőforrás biztonsági higiéniai kellene proaktív stratégiát, amely naplózza az erőforrásokat az, hogy nem felel meg a vállalati szabványoknak vagy ajánlott eljárások melyik utal.
 
-## <a name="monitoring-security-health"></a>A biztonsági állapot figyelése
-Ha bekapcsolja az előfizetéshez tartozó erőforrásokra vonatkozó [biztonsági szabályzatokat](security-center-policies.md), a Security Center elvégzi az erőforrások biztonsági elemzését, és azonosítja a potenciális sebezhető pontokat. A hálózati konfigurációval kapcsolatos információk azonnal elérhetők. Azon virtuális gépek és számítógépek számától függően, amelyeken az ügynök telepítve van, a virtuális gépek és a számítógép konfigurációjára (például a biztonsági frissítések állapotára és az operációs rendszer beállításaira) vonatkozó információk összegyűjtésére körülbelül egy órát kell várni. A **Megelőzés** szakasz területén megtekintheti az erőforrások biztonsági állapotát és az esetleges problémákat. A problémák listáját a **Javaslatok** csempén is megtekintheti.
+## <a name="resource-security-hygiene"></a>Erőforrás biztonsági épsége
+Ha bekapcsolja az előfizetéshez tartozó erőforrásokra vonatkozó [biztonsági szabályzatokat](security-center-policies.md), a Security Center elvégzi az erőforrások biztonsági elemzését, és azonosítja a potenciális sebezhető pontokat. A hálózati konfigurációval kapcsolatos információk azonnal elérhetők. Azon virtuális gépek és számítógépek számától függően, amelyeken az ügynök telepítve van, a virtuális gépek és a számítógép konfigurációjára (például a biztonsági frissítések állapotára és az operációs rendszer beállításaira) vonatkozó információk összegyűjtésére körülbelül egy órát kell várni. Problémák és erősíti a hálózaton, és javíthatja a kockázat, hogy hogyan teljes listáját megtekintheti a **javaslatok** csempére.
+
+Az erőforrások és az esetleges problémákat, erőforrás-típusonként biztonsági állapotát tekintheti meg:
+
+- A számítógép-erőforrások és az alkalmazások állapotának figyelésére, és azok biztonsági javítására vonatkozó javaslatokat kapni: [védelmére a gépek és az alkalmazások az Azure Security Centerben](security-center-virtual-machine-protection.md)
+- A hálózati erőforrások, például a virtual machines, a hálózati biztonsági csoportok és a végpontok monitorozása és azok biztonsági javítására vonatkozó javaslatokat kapni: [hálózat védelme az Azure Security Center](security-center-network-recommendations.md) további információk. 
+- Figyelheti az adatok és a tárolási erőforrások, például az SQL Server-kiszolgálók és a storage-fiókok esetében, és azok biztonsági javaslatai megjelenik, lásd: [védelme az Azure SQL-szolgáltatás és az Azure Security Center adatokat](security-center-sql-service-recommendations.md) további információ . 
+- Figyelheti az identitás- és hozzáférés-erőforrások, beleértve a többtényezős hitelesítés és a fiók engedélyeit, és azok biztonsági javítására vonatkozó javaslatokat kapni: [identitás és hozzáférés az Azure Security Center figyelése](security-center-identity-access.md) további információt. 
+- Igény szerinti hozzáférés az erőforrásokhoz való figyeléséről lásd: [szerinti virtuálisgép-hozzáférés kezelése](security-center-just-in-time.md) további információt. 
+
 
 A javaslatok alkalmazásával kapcsolatban további információkat talál a következő cikkben: [A biztonsági javaslatok alkalmazása az Azure Security Centerben](security-center-recommendations.md).
 
-Az **Erőforrás állapotának monitorozása** területen is nyomon követheti erőforrásainak biztonsági állapotát. Az alábbi példában azt láthatja, hogy minden egyes erőforrás csempéjén (Számítási tevékenység és alkalmazások, Hálózat, Adatbiztonság, valamint Identitás és hozzáférés) megtalálható az azonosított hibák összes száma.
+
 
 ![A Resources security health (Erőforrások biztonsági állapota) csempe](./media/security-center-monitoring/security-center-monitoring-fig1-newUI-2017.png)
 
 
-### <a name="monitor-compute--apps"></a>Számítási tevékenység és alkalmazások monitorozása
-További információkat a [gépek és alkalmazások az Azure Security Centerben való védelméről](security-center-virtual-machine-recommendations.md) szóló témakörben olvashat.
-
-### <a name="monitor-virtual-networks"></a>Virtuális hálózatok figyelése
-A **Hálózat** csempére kattintva megnyílik az alábbi képernyőképen látható **Hálózat** panel, amelyen további információk érhetők el:
-
-![Hálózat panel](./media/security-center-monitoring/security-center-monitoring-fig9-new3.png)
-
-#### <a name="networking-recommendations"></a>Hálózatokra vonatkozó javaslatok
-A virtuális gépek erőforrás-állapotára vonatkozó információkhoz hasonlóan a képernyő felső részén a problémák összefoglaló listája látható, alább pedig a megfigyelt hálózatok listája.
-
-A hálózati állapotot részletező listában megtekintheti a potenciális biztonsági problémákat, valamint az ezekre vonatkozó [javaslatokat](security-center-network-recommendations.md). Problémát jelenthetnek például a következők:
-
-* Nincs telepítve újgenerációs tűzfal (NGFW)
-* Az alhálózatokon nincsenek bekapcsolva a hálózati biztonsági csoportok
-* Az virtuális gépeken nincsenek bekapcsolva a hálózati biztonsági csoportok
-* Külső hozzáférés korlátozása nyilvános külső végponton keresztül
-* Megfelelő állapotú internet felé néző végpontok
-
-Ha egy javaslatra kattint, az alábbi példában látható módon további részleteket tekinthet meg a javaslatról:
-
-![Az adott javaslat részletei a Hálózat panelen](./media/security-center-monitoring/security-center-monitoring-fig9-ga.png)
-
-Ebben a példában a **Configure Missing Network Security Groups for Subnets** (Hiányzó hálózati biztonsági csoportok konfigurálása az alhálózatok számára) panelen láthatja azoknak az alhálózatoknak és virtuális gépeknek a listáját, amelyekhez nem tartoznak hálózati biztonsági csoportok védelme alá. Ha arra az alhálózatra kattint, amelyre a hálózati biztonsági csoportot szeretné alkalmazni, megnyílik a **Hálózati biztonsági csoport választása** panel. Itt kiválaszthatja az alhálózathoz legmegfelelőbb hálózati biztonsági csoportot, illetve akár új hálózati biztonsági csoportot is létrehozhat.
-
-#### <a name="internet-facing-endpoints-section"></a>Internet facing endpoints (Internet felé néző végpontok) szakasz
-Az **Internet facing endpoints** (Internet felé néző végpontok) részben azokat a virtuális gépeket láthatja, amelyeken jelenleg internet felé néző végpont működik, illetve megtekinthető a végpont aktuális állapota is.
-
-![Internet felé néző végpontokkal konfigurált virtuális gépek és a végpontok állapota](./media/security-center-monitoring/security-center-monitoring-fig10-ga.png)
-
-Ez a táblázat tartalmazza a virtuális gépet tartalmazó végpont nevét, az internet felé néző IP-címet, valamint a hálózati biztonsági csoport és az NGFW aktuális súlyossági állapotát. A táblázat elemei súlyosság szerint rendezve jelennek meg:
-
-* Piros (legfelül): a legmagasabb prioritás, azonnali beavatkozást igényel
-* Narancssárga: közepes szintű prioritás, a lehető legrövidebb időn belül beavatkozást igényel
-* Zöld (utolsó): megfelelő állapot
-
-#### <a name="networking-topology-section"></a>Networking topology (Hálózati topológia) szakasz
-A **Networking topology** (Hálózati topológia) rész az erőforrások hierarchikus nézetét mutatja, ahogy az alábbi képernyőfelvételen is látható:
-
-![Az erőforrások hierarchikus nézete a Hálózati topológia szakaszban](./media/security-center-monitoring/security-center-monitoring-fig121-new4.png)
-
-A táblázat elemei (a virtuális gépek és az alhálózatok) súlyosság szerint rendezve jelennek meg:
-
-* Piros (legfelül): a legmagasabb prioritás, azonnali beavatkozást igényel
-* Narancssárga: közepes szintű prioritás, a lehető legrövidebb időn belül beavatkozást igényel
-* Zöld (utolsó): megfelelő állapot
-
-A topológia e nézetében az első szinten vannak a [virtuális hálózatok](../virtual-network/virtual-networks-overview.md), a [virtuális hálózati átjárók](../vpn-gateway/vpn-gateway-howto-site-to-site-classic-portal.md) és a [ (klasszikus) virtuális hálózatok](../virtual-network/virtual-networks-create-vnet-classic-pportal.md). A második szinthez tartoznak az alhálózatok, míg a harmadik szinten az ezekhez az alhálózatokhoz tartozó virtuális gépek. A jobb oldali oszlopban az adott erőforrásokhoz tartozó hálózati biztonsági csoport aktuális állapota található, ahogyan az alábbi példában is látható:
-
-![A hálózati biztonsági csoport állapota a Networking topology (Hálózati topológia) szakaszban](./media/security-center-monitoring/security-center-monitoring-fig12-ga.png)
-
-A panel alsó részén a virtuális gépre vonatkozó javaslatok láthatók, a fentiekben leírtakhoz hasonlóan. A javaslatra kattintva további információkat tekinthet meg, illetve alkalmazhatók a szükséges biztonsági rendszabályok/konfigurációk.
-
-### <a name="monitor-data-security"></a>Adatbiztonság monitorozása
-
-A **Megelőzés** szakasz **Adatbiztonság** elemére kattintva megnyithatja az **Adatforrások** panelt, amelyen az SQL és a Storage használatával kapcsolatos javaslatokat olvashat. Ezenfelül általános [javaslatokat](security-center-sql-service-recommendations.md) is talál itt az adatbázis állapotára vonatkozóan. A tárolás titkosításáról további információkat az [Azure-tárfiókok titkosításának engedélyezése az Azure Security Centerben](security-center-enable-encryption-for-storage-account.md) című cikkben találhat.
-
-![Adatforrások](./media/security-center-monitoring/security-center-monitoring-fig13-newUI-2017.png)
-
-Az **SQL Recommendations** (Javaslatok az SQL használatával kapcsolatban) területen bármely javaslatra kattintva részletesebb információt kap a probléma megoldásához szükséges további intézkedésről. A következő példában a **Database Auditing & Threat detection on SQL databases** (Naplózás és fenyegetésészlelés az SQL-adatbázisokban) javaslat kibontott nézete látható.
-
-![SQL-javaslat részletei](./media/security-center-monitoring/security-center-monitoring-fig14-ga-new.png)
-
-Az **Naplózás és fenyegetésészlelés engedélyezése az SQL-adatbázisokban** panelen a következő információk láthatók:
-
-* Az SQL-adatbázisok listája
-* A kiszolgáló, amely tárolja ezeket
-* Az, hogy a beállítás a kiszolgálóról öröklődött, vagy konkrétan az adott adatbázisra vonatkozik
-* Az aktuális állapot
-* A probléma súlyossága
-
-Ha a javaslat megoldása érdekében rákattint az adatbázisra, az alábbi képernyőn látható módon megnyílik az **Naplózás és fenyegetésészlelés** panel.
-
-![Naplózás és fenyegetésészlelés](./media/security-center-monitoring/security-center-monitoring-fig15-ga.png)
-
-A naplózás engedélyezéséhez módosítsa az **Auditing** (Naplózás) beállítását **ON** (BE) értékre.
-
-### <a name="monitor-identity--access"></a>Identitás és hozzáférés monitorozása
-
-További információkat az [identitás és hozzáférés az Azure Security Centerben való monitorozásáról](security-center-identity-access.md) szóló témakörben olvashat.
 
 ## <a name="see-also"></a>Lásd még
 Ebben a cikkben megismerkedhetett az Azure Security Center figyelési funkcióinak használatával. Az Azure Security Centerrel kapcsolatos további információkért olvassa el a következőket:

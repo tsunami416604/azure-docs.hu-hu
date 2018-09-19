@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/05/2018
+ms.date: 09/21/2018
 ms.author: rkarlin
-ms.openlocfilehash: 2a079456813a67eb40d5cf42bcdd2c91fbc631d3
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: cb13da7ad9387b7170882752b1620c2756bc3675
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44297039"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46124150"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>Igény szerint virtuálisgép-hozzáférés kezelése
 
@@ -108,6 +108,9 @@ A **virtuális gépek igény szerinti hozzáférés konfigurációs**, is hozzá
 
 3. Kattintson az **OK** gombra.
 
+> [!NOTE]
+>Ha igény szerinti Virtuálisgép-hozzáférés engedélyezve van, az létrehoz egy virtuális Gépet, az Azure Security Center az összes bejövő forgalomra vonatkozó szabályokat a hálózati biztonsági csoportok társítva a kiválasztott portok tiltása. A szabályok lesznek a legmagasabb prioritást, a hálózati biztonsági csoportok, vagy már meglévő szabályoknál alacsonyabb prioritású. Ez attól függ, amely meghatározza, hogy a szabály biztonságos-e az Azure Security Center által végzett elemzés.
+>
 ## <a name="requesting-access-to-a-vm"></a>Egy virtuális Géphez való hozzáférés kérése
 
 Egy virtuális Géphez való hozzáférés kérése:
@@ -162,8 +165,6 @@ Virtuális gép a tevékenységeket a naplóbeli keresés segítségével beteki
 
   **Tevékenységnapló** együtt idő, dátum és az előfizetés virtuális gép korábbi műveletek szűrt nézetét jeleníti meg.
 
-  ![Tevékenységnapló megtekintése][5]
-
 Letöltheti a naplózási adatok kiválasztásával **Ide kattintva letöltheti az összes elem CSV-fájlként**.
 
 Módosítsa a szűrőket, és válasszon **alkalmaz** hozzon létre egy keresési és a napló.
@@ -172,15 +173,62 @@ Módosítsa a szűrőket, és válasszon **alkalmaz** hozzon létre egy keresés
 
 Az igény szerinti Virtuálisgép-hozzáférési szolgáltatás használható az Azure Security Center API-n keresztül. Konfigurált virtuális gépek adatainak lekérése, újakat vehet fel, kérhet hozzáférést egy virtuális géphez, és több, az API-val. Lásd: [Jit hálózati hozzáférési házirendeket](https://docs.microsoft.com/rest/api/securitycenter/jitnetworkaccesspolicies), további információ az igény szerinti REST API-t.
 
-### <a name="configuring-a-just-in-time-policy-for-a-vm"></a>Konfigurálás igény szerinti szabályzat egy virtuális géphez
+## <a name="using-just-in-time-vm-access-via-powershell"></a>Igény szerint Virtuálisgép-hozzáférési PowerShell használatával 
 
-Konfigurálhat igény szerinti szabályzat egy adott virtuális gépen, futtassa ezt a parancsot a PowerShell-munkamenetben kell: Set-ASCJITAccessPolicy.
-A parancsmagok dokumentációira további információért kövesse.
+Használatához az igény szerinti VM access megoldást Powershellen keresztül, hivatalos Azure Security Center PowerShell-parancsmag használatával, és kifejezetten `Set-AzureRmJitNetworkAccessPolicy`.
+
+A következő példa állítja igény szerinti Virtuálisgép-hozzáférési házirend egy adott virtuális gépen, és beállítja a következőket:
+1.  Zárja be a 22-es és a 3389-es portot.
+2.  Az egyes 3 óra maximális idő időszak megadása az így is megnyithatók jóváhagyott kérelmenként.
+3.  Lehetővé teszi, hogy a felhasználó, aki kér a forrás IP-címek, a felhasználó sikeres munkamenetet létrehozni egy jóváhagyott alapján szabályozhatja a hozzáférést csak a hozzáférési kérelem ideje.
+
+Futtassa a következő PowerShell-lel ehhez:
+
+1.  Rendelje hozzá egy változó, amely tartalmazza az igény szerinti virtuális gép hozzáférési házirend egy virtuális géphez:
+
+        $JitPolicy = (@{
+         id="/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Compute/virtualMachines/VMNAME"
+        ports=(@{
+             number=22;
+             protocol="*";
+             allowedSourceAddressPrefix=@("*");
+             maxRequestAccessDuration="PT3H"},
+             @{
+             number=3389;
+             protocol="*";
+             allowedSourceAddressPrefix=@("*");
+             maxRequestAccessDuration="PT3H"})})
+
+2.  Illessze be a virtuális gép csak az idő VM hozzáférési szabályzatot az tömböt:
+    
+        $JitPolicyArr=@($JitPolicy)
+
+3.  Konfigurálja az igény szerinti Virtuálisgép-hozzáférési házirend a kiválasztott virtuális gépen:
+    
+        Set-AzureRmJitNetworkAccessPolicy -Kind "Basic" -Location "LOCATION" -Name "default" -ResourceGroupName "RESOURCEGROUP" -VirtualMachine $JitPolicyArr 
 
 ### <a name="requesting-access-to-a-vm"></a>Egy virtuális Géphez való hozzáférés kérése
 
-Egy adott virtuális Gépre, amely a egyszerűen elemezhetnek eléréséhez ideje a megoldásban, futtassa ezt a parancsot a PowerShell-munkamenetben kell: meghívása ASCJITAccess.
-A parancsmagok dokumentációira további információért kövesse.
+A következő példában láthatja a csak az idő VM hozzáférési kérelmet egy adott virtuális Gépre, a portot kell megnyitni a megadott IP-címet és a egy adott időn 22-es van szükség:
+
+A PowerShellben futtassa a következőt:
+1.  A virtuális gép kérelem hozzáférési tulajdonságainak konfigurálása
+
+        $JitPolicyVm1 = (@{
+          id="/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Compute/virtualMachines/VMNAME"
+        ports=(@{
+           number=22;
+           endTimeUtc="2018-09-17T17:00:00.3658798Z";
+           allowedSourceAddressPrefix=@("IPV4ADDRESS")})})
+2.  Helyezze be a virtuális gép hozzáférési kérelem paramétereit a tömböt:
+
+        $JitPolicyArr=@($JitPolicyVm1)
+3.  (Használja az erőforrás-azonosító az 1. lépésben kapott) hozzáférési kérelmek küldése
+
+        Start-AzureRmJitNetworkAccessPolicy -ResourceId "/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Security/locations/LOCATION/jitNetworkAccessPolicies/default" -VirtualMachine $JitPolicyArr
+
+További információ a PowerShell-parancsmag dokumentációjában talál.
+
 
 ## <a name="next-steps"></a>További lépések
 Ebben a cikkben megtanulta, hogyan igény szerint a Security Center segít a Virtuálisgép-hozzáférés az Azure virtuális gépekhez való hozzáférés.

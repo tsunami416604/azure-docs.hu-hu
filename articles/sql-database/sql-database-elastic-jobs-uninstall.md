@@ -1,40 +1,45 @@
 ---
-title: A rugalmas adatbázis-feladatok eszköz eltávolítása
-description: Tudnivalók a rugalmas adatbázis-feladatok az Azure PowerShell-portál használatával összetevők eltávolítására.
+title: A rugalmas feladatok eszköz eltávolítása
+description: Megtudhatja, hogyan távolíthatja el a rugalmas feladatok összetevők PowerShell az Azure portal használatával.
 services: sql-database
 manager: craigg
 author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: conceptual
-ms.date: 04/01/2018
+ms.date: 06/14/2018
 ms.author: sstein
-ms.openlocfilehash: e1089db848b30945e5e61765c762262f5478450e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: HT
+ms.openlocfilehash: 395bbf50373d3a6e3848fba9fd3db0d6989023f4
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34645888"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "35645831"
 ---
-# <a name="uninstall-elastic-database-jobs-components"></a>A rugalmas adatbázis-feladatok összetevőinek eltávolítása
-**Rugalmas adatbázis-feladatok** összetevők el is távolítható az Azure-portálon vagy a PowerShell használatával.
+# <a name="uninstall-elastic-database-jobs-components"></a>A rugalmas feladatok összetevőinek eltávolítása
 
-## <a name="uninstall-elastic-database-jobs-components-using-the-azure-portal"></a>Az Azure portál használatával rugalmas adatbázis-feladatok összetevőinek eltávolítása
-1. Nyissa meg az [Azure portált](https://portal.azure.com/).
-2. Keresse meg az előfizetés tartalmazó **rugalmas adatbázis-feladatok** összetevők, nevezetesen az előfizetés, mely rugalmas adatbázis feladatok összetevők megtörtént-e.
+
+[!INCLUDE [elastic-database-jobs-deprecation](../../includes/sql-database-elastic-jobs-deprecate.md)]
+
+
+**Elastic Database-feladatok** összetevőket is eltávolíthatók az Azure Portalon vagy a PowerShell használatával.
+
+## <a name="uninstall-elastic-database-jobs-components-using-the-azure-portal"></a>Távolítsa el a rugalmas adatbázis-feladatok összetevőket az Azure portal használatával
+1. Nyissa meg az [Azure Portalt](https://portal.azure.com/).
+2. Keresse meg, amely tartalmazza az előfizetés **rugalmas adatbázis-feladatok** összetevők, nevezetesen az előfizetés, mely Elastic Database feladatok összetevőket is telepíteni.
 3. Kattintson a **Tallózás** kattintson **erőforráscsoportok**.
-4. Válassza ki a "__ElasticDatabaseJob" nevű erőforráscsoport.
-5. Törölje a csoportot.
+4. Válassza ki a "__ElasticDatabaseJob" nevű erőforráscsoportot.
+5. Törölje az erőforráscsoportot.
 
-## <a name="uninstall--elastic-database-jobs-components-using-powershell"></a>Távolítsa el a PowerShell használatával rugalmas adatbázis-feladatok összetevői
-1. Indítsa el a Microsoft Azure PowerShell-parancsablakot, és keresse meg az eszközök alkönyvtárát Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x mappában lévő: típus **cd eszközök**.
+## <a name="uninstall--elastic-database-jobs-components-using-powershell"></a>Távolítsa el a rugalmas feladatok összetevők PowerShell-lel
+1. Indítsa el a Microsoft Azure PowerShell-parancsablakot, és keresse meg az eszközök pillanatképmappa alatt a Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x mappa: típus **cd eszközökkel**.
    
-     PS C:\*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x* > cd-eszközök
-2. A PowerShell-parancsfájl.\UninstallElasticDatabaseJobs.ps1 hajtható végre.
+     PS C:\*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x* > cd-eszközökkel
+2. Hajtsa végre a.\UninstallElasticDatabaseJobs.ps1 PowerShell-parancsfájlt.
    
      PS C:\*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*\tools > feloldása fájl.\UninstallElasticDatabaseJobs.ps1 PS C:\*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*\tools >. \ UninstallElasticDatabaseJobs.ps1
 
-Vagy egyszerűen, hajtsa végre a következő parancsfájlt, ha az alapértelmezett értékeket, ha az összetevők telepítéséhez használja:
+Vagy egyszerűen, hajtsa végre a következő parancsfájlt, ha az alapértelmezett értékeket, ha az összetevők telepítésére használt:
 
         $ResourceGroupName = "__ElasticDatabaseJob"
         Switch-AzureMode AzureResourceManager
@@ -51,9 +56,9 @@ Vagy egyszerűen, hajtsa végre a következő parancsfájlt, ha az alapértelmez
         Write-Host "Completed removing the Azure Resource Group: $ResourceGroupName.  Elastic database job compoennts are now uninstalled."
 
 ## <a name="next-steps"></a>További lépések
-Telepítse újra a rugalmas feladatok, lásd: [a rugalmas adatbázis feladat szolgáltatás telepítése](sql-database-elastic-jobs-service-installation.md)
+Telepítse újra a rugalmas adatbázis-feladatok, lásd: [a rugalmas feladatokat végző szolgáltatás telepítése](sql-database-elastic-jobs-service-installation.md)
 
-A rugalmas feladatok áttekintéséhez lásd: [rugalmas adatbázis-feladatok áttekintése](sql-database-elastic-jobs-overview.md).
+Rugalmas adatbázis-feladatok áttekintéséhez lásd: [Elastic Database-feladatok áttekintése](sql-database-elastic-jobs-overview.md).
 
 <!--Image references-->
 

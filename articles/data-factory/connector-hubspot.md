@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: jingwang
-ms.openlocfilehash: 15ebace0be90813f568bdf04b14b48d68a239c8c
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 69994d0e2f945f54ccc10bcf067fa46bb3befd23
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45634557"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46121872"
 ---
-# <a name="copy-data-from-hubspot-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával HubSpot
+# <a name="copy-data-from-hubspot-using-azure-data-factory-preview"></a>Adatok másolása az Azure Data Factory (előzetes verzió) használatával HubSpot
 
 Ez a cikk ismerteti, hogyan használja a másolási tevékenység az Azure Data Factoryban történő HubSpot adatmásolás céljából. Épül a [másolási tevékenység áttekintése](copy-activity-overview.md) cikket, amely megadja a másolási tevékenység általános áttekintést.
 

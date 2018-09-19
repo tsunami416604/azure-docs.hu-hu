@@ -12,12 +12,12 @@ ms.date: 09/04/2018
 ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro
-ms.openlocfilehash: 533c02f842918c5c27aaaf421a4f828022de6b8f
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 782363144a6b1dd87aff515c38588b6ce70b61bd
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45604966"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46295104"
 ---
 # <a name="how-to-add-or-delete-users-using-azure-active-directory"></a>Hogyan: hozzáadása vagy törlése az Azure Active Directory használatával felhasználókat
 Új felhasználók hozzáadása, és a meglévő felhasználók törlése az Azure Active Directory (Azure AD) bérlő, az Azure AD.
@@ -55,7 +55,7 @@ Létrehozhat egy új felhasználót az Azure Active Directory használatával.
     A felhasználó létrehozása és az Azure AD-bérlőhöz hozzáadni.
 
 ## <a name="add-a-new-user-within-a-hybrid-environment"></a>A hibrid környezetben új felhasználó hozzáadása
-Ha rendelkezik Azure Active Directory (felhő) és a Windows Server Active Directory (helyszíni) tartalmazó környezet, hozzáadhat új felhasználókat való szinkronizálásával a meglévő felhasználói fiók adatait. Hibrid környezetek és a felhasználók kapcsolatos további információkért lásd: [a helyszíni címtárak integrálása az Azure Active Directory](../connect/active-directory-aadconnect.md).
+Ha rendelkezik Azure Active Directory (felhő) és a Windows Server Active Directory (helyszíni) tartalmazó környezet, hozzáadhat új felhasználókat való szinkronizálásával a meglévő felhasználói fiók adatait. Hibrid környezetek és a felhasználók kapcsolatos további információkért lásd: [a helyszíni címtárak integrálása az Azure Active Directory](../hybrid/whatis-hybrid-identity.md).
 
 ## <a name="delete-a-user"></a>Felhasználó törlése
 Egy meglévő felhasználó Azure Active Directory használatával törölheti.

@@ -12,12 +12,12 @@ ms.devlang: fsharp
 ms.topic: reference
 ms.date: 09/09/2016
 ms.author: syclebsc
-ms.openlocfilehash: ec4260363aa0af3062a6d61db44a75d9ebd599db
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 5593f76511f43106d6743a158b051e118ef2a4a6
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44090744"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46125255"
 ---
 # <a name="azure-functions-f-developer-reference"></a>Az Azure Functions F # – fejlesztői referencia
 
@@ -29,6 +29,29 @@ Ez a cikk feltételezi, hogy Ön már elolvasta a [Azure Functions fejlesztői s
 Egy `.fsx` fájl az F #-szkript. Azt is értelmezhetők, egy F # projekt, amely az egyetlen fájl szerepel. A fájl tartalmazza a kódban a program (az ebben az esetben az Azure-függvény) és a függőségek kezelése irányelveknek.
 
 Ha egy `.fsx` az Azure-függvény, gyakran szükséges a szerelvények olyan automatikusan tartalmazza, így a "bolierplate" helyett a függvény kódját összpontosíthat.
+
+## <a name="folder-structure"></a>gyökérmappa-szerkezetében
+
+F # parancsfájl projekthez a mappastruktúra a következőhöz hasonló néz ki:
+
+```
+FunctionsProject
+ | - MyFirstFunction
+ | | - run.fsx
+ | | - function.json
+ | | - function.proj
+ | - MySecondFunction
+ | | - run.fsx
+ | | - function.json
+ | | - function.proj
+ | - host.json
+ | - extensions.csproj
+ | - bin
+```
+
+Van egy megosztott [host.json] (functions-gazdagép-json.md) fájl, amely a függvényalkalmazás konfigurálása használható. Minden függvény saját kódfájl (.fsx) és a kötési konfigurációs fájl (function.json) rendelkezik.
+
+A kötési bővítményeket szükséges [verzió 2.x](functions-versions.md) a Functions runtime vannak meghatározva a `extensions.csproj` fájlt, a tényleges függvénytárfájlok a `bin` mappát. Ha helyileg fejlesztésével, akkor meg kell [regisztrálja a kötési bővítményeket](functions-triggers-bindings.md#local-development-azure-functions-core-tools). Amikor fejlesztéséről az Azure Portalon, a regisztrációt, készen áll.
 
 ## <a name="binding-to-arguments"></a>Argumentumok kötést
 Minden egyes kötés támogatja bizonyos argumentumok leírt módon a [eseményindítók és kötések az Azure Functions fejlesztői segédanyagok](functions-triggers-bindings.md). Például egy blob eseményindító támogatja az argumentum kötéseit egyik egy POCO, amely F # bejegyzést fejezhető. Példa:

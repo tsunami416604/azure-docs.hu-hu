@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/17/2018
+ms.date: 09/18/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: b46e365ea3903a8f2c805717df13d361c823148d
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 53f01ad6e8a801c69ea93c54e805807cb8eed34d
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/18/2018
-ms.locfileid: "45985596"
+ms.locfileid: "46127822"
 ---
 # <a name="azure-stack-1807-update"></a>Azure Stack 1807 frissítése
 
@@ -158,14 +158,10 @@ További információ a biztonsági rések, kattintson a fenti hivatkozásokat a
 - <!-- 2830461 - IS --> Bizonyos körülmények között, ha egy frissítéshez a figyelmet, a megfelelő riasztás lehetséges, hogy nem hozható létre. A pontos állapota továbbra is megjelennek a portálon, és nem változik.
 
 ### <a name="post-update-steps"></a>Frissítés utáni lépések
+Ez a frissítés telepítése után bármely alkalmazandó gyorsjavítások telepítéséről. További információt a következő cikkeket, megtekintése, valamint a [karbantartási szabályzat](azure-stack-servicing-policy.md). 
+- [KB 4464231 – az Azure Stack gyorsjavítás az Azure Stack gyorsjavítás 1.1807.1.78]( https://support.microsoft.com/help/4464231)
 
-- <!-- 2933866 – IS --> **Továbbfejlesztett állapota sikertelen frissítések telepítése.** Ez a verzió operátorok sikertelen frissítések telepítése további részleteket nyújtanak két új állapot kategóriák tartalmaz. A két kategória *PreparationFailed*, és *InstallationFailed*. Ez a verzió telepítése után jelenhet meg ezen új kategóriák is elérhetők átdolgozott előző frissítés telepítési hibák adatait. 
-
-<!-- *There are no post-update steps for update 1807.* -->
-
-<!-- After the installation of this update, install any applicable Hotfixes. For more information view the following knowledge base articles, as well as our [Servicing Policy](azure-stack-servicing-policy.md).  
- - Link to KB  
- -->
+ <!-- 2933866 – IS --> A frissítés telepítése után megtekintheti a **javult a sikertelen frissítés telepítések állapotát.** Ez tartalmazhat, amelyek módosítják, hogy a két új állapot kategória előző frissítés telepítési hibák adatait. Az új állapot kategória *PreparationFailed*, és *InstallationFailed*.  
 
 ## <a name="known-issues-post-installation"></a>Ismert problémák (telepítés utáni)
 

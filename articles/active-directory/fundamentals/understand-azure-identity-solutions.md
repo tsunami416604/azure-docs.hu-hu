@@ -12,12 +12,12 @@ ms.date: 7/17/2017
 ms.author: lizross
 ms.reviewer: jsnow
 custom: it-pro
-ms.openlocfilehash: db14dbf298596a9fdc189c27ea8608d472c58a35
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: e22f5ced30e30d6f53a1d29c8be2f318161d4fc0
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45737243"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46294849"
 ---
 # <a name="what-is-microsoft-azure-identity"></a>Mi a Microsoft Azure-identitással?
 A Microsoft Azure Active Directory (Azure AD) egy felhőalapú identitás- és hozzáférés-kezelési megoldás, amely címtárszolgáltatásokat, identitáskezelést és alkalmazáshozzáférés-felügyeletet kínál. Az Azure AD lehetővé teszi az [egyszeri bejelentkezést](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-sso) több ezer előre integrált kereskedelmi és egyéni alkalmazásba, amelyek szerepelnek [az Azure AD alkalmazáskatalógusában](https://azure.microsoft.com/marketplace/active-directory/all/). Ezen alkalmazások között számos olyan van, például az Office 365, a Salesforce.com, a Box, a ServiceNow vagy a Workday, amelyeket Ön valószínűleg már használ.
@@ -106,7 +106,7 @@ Az **Azure AD Domain Services** felhőalapú megoldást nyújt az egyszerű Azur
 ## <a name="where-can-i-learn-more"></a>Hol találhatok további információkat?
 Rengeteg hasznos forrásanyagunk található online, amelyekből mindent megtudhat az Azure AD-ről. Íme néhány cikk kiindulásként:
 
-* [Címtár hibrid kezelésének engedélyezése az Azure AD Connect segítségével](../connect/active-directory-aadconnect.md)
+* [Címtár hibrid kezelésének engedélyezése az Azure AD Connect segítségével](../hybrid/whatis-hybrid-identity.md)
 * [Még nagyobb biztonság a mai hálózati kapcsolatokkal átszőtt világban](../authentication/multi-factor-authentication.md)
 * [Felhasználók átadásának és megszüntetésének automatizálása a SaaS-alkalmazásokban az Azure Active Directoryval](../manage-apps/user-provisioning.md)
 * [Jelszavak kezelése tetszőleges helyről](../user-help/active-directory-passwords-update-your-own-password.md)

@@ -1,5 +1,5 @@
 ---
-title: Az information protection-szabályzat az Azure Security Centerben testreszabása |} A Microsoft Docs
+title: Az SQL information protection-szabályzat az Azure Security Centerben testreszabása |} A Microsoft Docs
 description: Ismerje meg, hogyan szabhatja testre az adatvédelmi szabályzatok az Azure Security Centerben.
 services: security-center
 documentationcenter: na
@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/12/2018
+ms.date: 09/20/2018
 ms.author: rkarlin
-ms.openlocfilehash: 4b454f712b8cb65c69b183979a2fe2e97495d12e
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: ac4aa3c8aafae24736cc7b48a9ca4e8ba9fd0742
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44724085"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46125187"
 ---
-# <a name="customize-the-information-protection-policy-in-azure-security-center-preview"></a>Testre szabhatja az information protection-szabályzat az Azure Security Centerben (előzetes verzió)
+# <a name="customize-the-sql-information-protection-policy-in-azure-security-center-preview"></a>Testre szabhatja az SQL information protection-szabályzat az Azure Security Centerben (előzetes verzió)
  
-Az information protection-szabályzat definiálhatók és testre szabott, teljes Azure-bérlője számára, az Azure Security Centerben.
+Egy SQL information protection-szabályzat definiálhatók és testre szabott, teljes Azure-bérlője számára, az Azure Security Centerben.
 
 Information protection egy speciális biztonsági funkció felderítése, a besorolása, a címkézés és a bizalmas adatok az Azure-beli adat-erőforrások védelmét. Felderítése és besorolása a leginkább bizalmas adatok (üzleti, pénzügyi, egészségügyi, személyazonosításra alkalmas adatok, stb.) is kulcsszerepet játszik a szervezeti adatok védelme helyzetében. Az infrastruktúra szolgálhasson:
 - Útmutatás nyújtása a felel meg az adatok adatvédelmi szabványok és az előírt megfelelőségi követelmények

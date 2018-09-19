@@ -1,31 +1,34 @@
 ---
-title: A Microsoft Translator Text API fordítás testreszabása |} A Microsoft Docs
+title: Translator Text API fordítás testreszabása
+titlesuffix: Azure Cognitive Services
 description: A Microsoft Translator Hub használatával hozhat létre a saját gépi fordítási rendszer használatával az előnyben részesített terminológia és a stílust.
 services: cognitive-services
 author: Jann-Skotdal
-manager: chriswendt1
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: v-jansko
-ms.openlocfilehash: 9c7083ed0147b221d3d400afe83bb3bd6b6db86e
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: d71158bc74ffe15f133cc637371ddc840ef9df9e
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45574023"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46124335"
 ---
 # <a name="customize-your-text-translations"></a>A szöveg fordítások testreszabása
 
-A Microsoft egyéni Translator előzetes az a Microsoft Translator szolgáltatás, amely lehetővé teszi a felhasználóknak a Microsoft Translator Text API (csak a 3. verzió) használatával szöveg fordítása speciális Neurális gépi fordítás a Microsoft Translator testre szolgáltatása. 
+A Microsoft egyéni Translator előzetes funkciója, a Microsoft Translator szolgáltatás, amely lehetővé teszi a felhasználók testre speciális Neurális gépi fordítás a Microsoft Translator fordítása a szöveg a Translator Text API (csak a 3. verzió) használatával. 
 
 A funkció is használható együtt használva beszédalapú fordítási testreszabásához [Cognitive Services beszéd előzetes](https://docs.microsoft.com/azure/cognitive-services/speech-service/).
 
 ## <a name="custom-translator"></a>Egyéni a fordítót
+
 Egyéni a fordítót hozhat létre olyan Neurális fordítással rendszerek, amelyek a saját üzleti és az iparágban használt terminológia ismertetése. A testre szabott fordítási rendszer majd fog integrálhatja meglévő alkalmazások, munkafolyamatok és a websites. 
 
 ### <a name="how-does-it-work"></a>Hogyan működik?
+
 A korábban lefordított dokumentumok (termék, weblapjait, dokumentáció, stb.) hozhat létre, amely tükrözi a tartomány-specifikus terminológia és stílusát, jobban, mint egy általános fordítási rendszerét egy fordítási rendszerét használja. Felhasználók TMX, illetve XLIFF, TXT, DOCX, és mentse XLSX dokumentumokat feltölthet.  
 
 A rendszer az adatok párhuzamos a szintjén, de még nem igazodik a mondat szintjén is fogad. Ha a felhasználók férhetnek hozzá ugyanahhoz a tartalomhoz verziói több nyelven is, de külön dokumentumok egyéni a fordítót tudják automatikusan felel meg a mondatokban dokumentumok között.  A rendszer egyik vagy mindkét nyelven használni monolingual adatokat is, a párhuzamos betanítási adatok a fordítások javítására kiegészíteni. 
@@ -60,5 +63,6 @@ A Microsoft Translator örökölt Hub statisztikai gépi fordítási lefordítan
 >Hasonló funkciókat a Translator Hub API-ban érhető el. Lásd: [ https://hub.microsofttranslator.com/swagger ](https://hub.microsofttranslator.com/swagger). 
 
 ## <a name="next-steps"></a>További lépések
+
 > [!div class="nextstepaction"]
 > [Egy egyéni translatorral testreszabott nyelvi rendszer beállítása](http://aka.ms/CustomTranslatorDocs)

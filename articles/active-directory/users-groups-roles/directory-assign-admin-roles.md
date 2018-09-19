@@ -14,12 +14,12 @@ ms.date: 09/07/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 2768ba4726ccaf5e2249e356e425aeafaaaf91f6
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 985fd559c0af0306dc5b0868a8d7ccc66ca790f8
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44349245"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46296702"
 ---
 # <a name="assigning-administrator-roles-in-azure-active-directory"></a>Rendszergazdai jogosultságok kiosztása az Azure Active Directoryban
 
@@ -119,12 +119,20 @@ A következő rendszergazdai szerepkörök érhetők el:
 
 * **[A SharePoint szolgáltatás-rendszergazda](#sharepoint-service-administrator)**: az ehhez a szerepkörhöz tartozó felhasználók globális engedélyekkel rendelkeznek a Microsoft SharePoint online-ban, a szolgáltatás megléte esetén, ezenkívül kezelhetik a támogatási jegyeket, és a szolgáltatások állapotának figyelése. További információ: [Office 365 rendszergazdai szerepköreinek](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
 
-* **[Skype vállalati verzió / Lync-szolgáltatások rendszergazdája](#lync-service-administrator)**: Ezzel a szerepkörrel rendelkező felhasználók a Microsoft Skype vállalati verzió, globális engedélyekkel rendelkeznek a szolgáltatás megléte esetén, valamint kezelheti a Skype-specifikus felhasználói attribútumok az Azure Active A könyvtár. Ezenkívül a szerepkörök a kezelhetik a támogatási jegyeket, és a szolgáltatások állapotának figyelése, valamint a Teams és a Skype for Business felügyeleti központ eléréséhez. A fiók is licenccel kell rendelkezniük a csapatok vagy csoportokkal PowerShell-parancsmagok nem lesz futtatható. További információ: [kapcsolatos a Skype for Business rendszergazdai szerepkör](https://support.office.com/en-us/article/about-the-skype-for-business-admin-role-aeb35bda-93fc-49b1-ac2c-c74fbeb737b5) és a licencelési adatokat csapat [Skype for Business és a Microsoft Teams kiegészítő licencelési](https://docs.microsoft.com/en-us/skypeforbusiness/skype-for-business-and-microsoft-teams-add-on-licensing/skype-for-business-and-microsoft-teams-add-on-licensing)
+* **[Skype vállalati verzió / Lync-szolgáltatások rendszergazdája](#lync-service-administrator)**: Ezzel a szerepkörrel rendelkező felhasználók a Microsoft Skype vállalati verzió, globális engedélyekkel rendelkeznek a szolgáltatás megléte esetén, valamint kezelheti a Skype-specifikus felhasználói attribútumok az Azure Active A könyvtár. Ezenkívül a szerepkörök a kezelhetik a támogatási jegyeket, és a szolgáltatások állapotának figyelése, valamint a Teams és a Skype for Business felügyeleti központ eléréséhez. A fiók is licenccel kell rendelkezniük a csapatok vagy csoportokkal PowerShell-parancsmagok nem lesz futtatható. További információ: [kapcsolatos a Skype for Business rendszergazdai szerepkör](https://support.office.com/article/about-the-skype-for-business-admin-role-aeb35bda-93fc-49b1-ac2c-c74fbeb737b5) és a licencelési adatokat csapat [Skype for Business és a Microsoft Teams kiegészítő licencelési](https://docs.microsoft.com/skypeforbusiness/skype-for-business-and-microsoft-teams-add-on-licensing/skype-for-business-and-microsoft-teams-add-on-licensing)
 
   > [!NOTE]
   > A Microsoft Graph API, Azure AD Graph API és az Azure AD PowerShell a szerepkör azonosítja "Lync-Szolgáltatásadminisztrátor". Az "Skype for Business szolgáltatás-rendszergazda" a [az Azure portal](https://portal.azure.com/).
   >
   >
+
+* **[Rendszergazda kommunikációs csapatok](#teams-communications-administrator)**: az ehhez a szerepkörhöz felhasználók kezelhetik a hang- és a telefonos kapcsolatos Microsoft Teams számítási aspektusait. Ez magában foglalja a telefon száma hozzárendelés, hang- és értekezlet házirendek és a hívás analytics eszközkészlet teljes hozzáférést a felügyeleti eszközöket.
+
+* **[Támogatási szakértő kommunikációs csapatok](#teams-communications-support-engineer)**: a szerepkör felhasználói belül a Microsoft Teams és a Skype kommunikációs problémák elhárítását, a használatával a felhasználó üzleti hívja a Microsoft Teams és a Skype vállalati verzió hibaelhárítási eszközök Üzleti felügyeleti központban. A szerepkör felhasználói tekintheti meg az összes érintett résztvevők a teljes hívás rekord adatait.
+
+* **[Támogatási szakértő kommunikációs csapatok](#teams-communications-support-specialist)**: a szerepkör felhasználói belül a Microsoft Teams és a Skype kommunikációs problémák elhárítását, a használatával a felhasználó üzleti hívja a Microsoft Teams és a Skype vállalati verzió hibaelhárítási eszközök Üzleti felügyeleti központban. A szerepkör felhasználói csak tekintheti meg a felhasználói adatok hívásában az adott felhasználó rendelkezik kulcskeresési.
+
+* **[Szolgáltatás-rendszergazda csapatok](#teams-service-administrator)**: az ehhez a szerepkörhöz felhasználók kezelhetik a Microsoft Teams munkaterhelés, a Microsoft Teams és a Skype vállalati felügyeleti központot és a megfelelő PowerShell-modulok minden aspektusát. Ez magában foglalja, többek között a más területeken, telefonos, üzenetkezelés, értekezletek és a csapatok maguk kapcsolatos összes felügyeleti eszközök. Ez a szerepkör is képes kezelni az Office 365-csoportokat biztosít.
 
 * **[Felhasználóifiók-adminisztrátor](#user-account-administrator)**: Ezzel a szerepkörrel rendelkező felhasználók létrehozása és kezelése a felhasználók és csoportok minden aspektusát. Ez a szerepkör ezenkívül kezelhetik a támogatási jegyeket, és a szolgáltatások állapotának figyelése is. Bizonyos korlátozások vonatkoznak. Például ez a szerepkör nem teszi lehetővé egy globális rendszergazda törlése. Felhasználói fiókok adminisztrátorai módosíthatja a jelszavak és a felhasználóknak, az ügyfélszolgálat adminisztrátorai és egyéb felhasználói fiók a rendszergazdák csak a frissítési biztonsági jogkivonat érvénytelenítéséhez. A frissítési jogkivonatok érvénytelenítése kényszeríti a felhasználót, hogy jelentkezzen be újra.
 
@@ -1081,6 +1089,93 @@ A SharePoint-szolgáltatásokkal kapcsolatos összes felügyeleti jogosultságga
 | Microsoft.office365.serviceHealth/allEntities/allTasks | Office 365-szolgáltatás-állapot olvasása és konfigurálása. |
 | Microsoft.office365.SharePoint/allEntities/allTasks | Hozzon létre és az összes erőforrás törlése, és olvassa el és microsoft.office365.sharepoint az alapvető tulajdonságainak frissítése. |
 | Microsoft.office365.supportTickets/allEntities/allTasks | Office 365-támogatási jegyek létrehozása és kezelése. |
+
+### <a name="teams-communications-administrator"></a>Csapatok kommunikáció rendszergazda
+Kezelheti a hívási és értekezletek funkciók a Microsoft Teams szolgáltatásban.
+
+  > [!NOTE]
+  > Ez a szerepkör további engedélyek örökli a címtár olvasói szerepköréhez.
+  >
+  >
+
+  > [!NOTE]
+  > Ez a szerepkör jogosult addditonal Azure Active Directory-en kívül. Szerepkör leírása fent további információt talál.
+  >
+  >
+
+| **Műveletek** | **Leírás** |
+| --- | --- |
+| Microsoft.aad.Directory/Policies/Basic/Read | A szabályzatok az Azure Active Directory alapvető tulajdonságainak olvasása. |
+| microsoft.azure.accessService/allEntities/allTasks | Az Azure szolgáltatás minden szempontjának kezeléséhez. |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Olvassa el, és konfigurálja az Azure Service Health. |
+| microsoft.azure.supportTickets/allEntities/allTasks | Létrehozhat és kezelhet az Azure támogatási jegyeket. |
+| Microsoft.office365.serviceHealth/allEntities/allTasks | Office 365-szolgáltatás-állapot olvasása és konfigurálása. |
+| Microsoft.office365.supportTickets/allEntities/allTasks | Office 365-támogatási jegyek létrehozása és kezelése. |
+| Microsoft.office365.usageReports/allEntities/Read | Az Office 365-beli használati jelentések olvasása. |
+
+### <a name="teams-communications-support-engineer"></a>Csapatok kommunikáció támogatási szakértő
+Kommunikációs csapatok fejlett eszközökkel kapcsolatos problémák elhárításához.
+
+  > [!NOTE]
+  > Ez a szerepkör további engedélyek örökli a címtár olvasói szerepköréhez.
+  >
+  >
+
+  > [!NOTE]
+  > Ez a szerepkör jogosult addditonal Azure Active Directory-en kívül. Szerepkör leírása fent további információt talál.
+  >
+  >
+
+| **Műveletek** | **Leírás** |
+| --- | --- |
+| Microsoft.aad.Directory/Policies/Basic/Read | A szabályzatok az Azure Active Directory alapvető tulajdonságainak olvasása. |
+| microsoft.azure.accessService/allEntities/allTasks | Az Azure szolgáltatás minden szempontjának kezeléséhez. |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Olvassa el, és konfigurálja az Azure Service Health. |
+| Microsoft.office365.serviceHealth/allEntities/allTasks | Office 365-szolgáltatás-állapot olvasása és konfigurálása. |
+
+### <a name="teams-communications-support-specialist"></a>Csapatok kommunikáció támogatási szakértő
+Kommunikációs csapatok alapvető eszközökkel kapcsolatos problémák elhárításához.
+
+  > [!NOTE]
+  > Ez a szerepkör további engedélyek örökli a címtár olvasói szerepköréhez.
+  >
+  >
+
+  > [!NOTE]
+  > Ez a szerepkör jogosult addditonal Azure Active Directory-en kívül. Szerepkör leírása fent további információt talál.
+  >
+  >
+
+| **Műveletek** | **Leírás** |
+| --- | --- |
+| Microsoft.aad.Directory/Policies/Basic/Read | A szabályzatok az Azure Active Directory alapvető tulajdonságainak olvasása. |
+| microsoft.azure.accessService/allEntities/allTasks | Az Azure szolgáltatás minden szempontjának kezeléséhez. |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Olvassa el, és konfigurálja az Azure Service Health. |
+| Microsoft.office365.serviceHealth/allEntities/allTasks | Office 365-szolgáltatás-állapot olvasása és konfigurálása. |
+
+### <a name="teams-service-administrator"></a>Csapatok szolgáltatás-rendszergazda
+Kezelheti a Microsoft Teams szolgáltatás.
+
+  > [!NOTE]
+  > Ez a szerepkör további engedélyek örökli a címtár olvasói szerepköréhez.
+  >
+  >
+
+  > [!NOTE]
+  > Ez a szerepkör jogosult addditonal Azure Active Directory-en kívül. Szerepkör leírása fent további információt talál.
+  >
+  >
+
+| **Műveletek** | **Leírás** |
+| --- | --- |
+| microsoft.aad.directory/groups/hiddenMembers/read | Groups.hiddenMembers tulajdonság olvasása az Azure Active Directoryban. |
+| Microsoft.aad.Directory/Policies/Basic/Read | A szabályzatok az Azure Active Directory alapvető tulajdonságainak olvasása. |
+| microsoft.azure.accessService/allEntities/allTasks | Az Azure szolgáltatás minden szempontjának kezeléséhez. |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Olvassa el, és konfigurálja az Azure Service Health. |
+| microsoft.azure.supportTickets/allEntities/allTasks | Létrehozhat és kezelhet az Azure támogatási jegyeket. |
+| Microsoft.office365.serviceHealth/allEntities/allTasks | Office 365-szolgáltatás-állapot olvasása és konfigurálása. |
+| Microsoft.office365.supportTickets/allEntities/allTasks | Office 365-támogatási jegyek létrehozása és kezelése. |
+| Microsoft.office365.usageReports/allEntities/Read | Az Office 365-beli használati jelentések olvasása. |
 
 ### <a name="user-account-administrator"></a>Felhasználóifiók-adminisztrátor
 Felhasználók és csoportok minden aspektusát felügyelheti

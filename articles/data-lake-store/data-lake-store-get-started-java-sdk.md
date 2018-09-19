@@ -1,6 +1,6 @@
 ---
-title: 'Java SDK: Fájlrendszerműveletek az Azure Data Lake Store-ban | Microsoft Docs'
-description: Az Azure Data Lake Store Java SDK használata fájlrendszerműveletek (például mappák létrehozása) végrehajtására a Data Lake Store-ban
+title: 'A Java SDK: fájlrendszerműveletek az Azure Data Lake Storage Gen1 |} A Microsoft Docs'
+description: Használja az Azure Data Lake Storage Gen1 Java SDK fájlrendszer műveletek végrehajtása a Data Lake Storage Gen1 például mappák létrehozása.
 services: data-lake-store
 documentationcenter: ''
 author: nitinme
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 8f2dd4d001ae7322a351844146925c23b90f0916
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: a91593c1bae3002be8b7e423b627f1baf19e86e2
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35646080"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46129191"
 ---
-# <a name="filesystem-operations-on-data-lake-store-using-java-sdk"></a>Fájlrendszerműveletek a Data Lake Store-on a Java SDK használatával
+# <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-java-sdk"></a>Fájlrendszerműveletek az Azure Data Lake Storage Gen1 Java SDK használatával
 > [!div class="op_single_selector"]
 > * [.NET SDK](data-lake-store-data-operations-net-sdk.md)
 > * [Java SDK](data-lake-store-get-started-java-sdk.md)
@@ -28,13 +28,13 @@ ms.locfileid: "35646080"
 >
 > 
 
-A cikkből megtudhatja, hogyan végezhet el olyan alapvető műveleteket az Azure Data Lake Store Java SDK segítségével, mint például mappák létrehozása vagy adatfájlok le- és feltöltése. További információk a Data Lake-ről: [Azure Data Lake Store](data-lake-store-overview.md).
+Ismerje meg, hogyan például mappák létrehozása, feltöltés le- és adatfájlok alapszintű műveletek végrehajtása az Azure Data Lake Storage Gen1 Java SDK használatával. További információ a Data Lake Storage Gen1: [Azure Data Lake Storage Gen1](data-lake-store-overview.md).
 
-Az Azure Data Lake Store Java SDK API-dokumentációja [Az Azure Data Lake Store Java API-dokumentációja](https://azure.github.io/azure-data-lake-store-java/javadoc/) című témakörben található.
+A Java SDK API-dokumentációja a Data Lake Storage Gen1 címen érheti el [Azure Data Lake Storage Gen1 Java API-dokumentumok](https://azure.github.io/azure-data-lake-store-java/javadoc/).
 
 ## <a name="prerequisites"></a>Előfeltételek
 * Java-fejlesztőkészlet (JDK 7 vagy újabb, Java 1.7 vagy újabb verzió használatával)
-* Azure Data Lake Store-fiók. Kövesse [Az Azure Data Lake Store használatának első lépései az Azure Portal használatával](data-lake-store-get-started-portal.md) című témakör utasításait.
+* Data Lake Storage Gen1 fiók. Kövesse az utasításokat, [Azure Data Lake Storage Gen1 használatának első lépései az Azure portal használatával](data-lake-store-get-started-portal.md).
 * [Maven](https://maven.apache.org/install.html). Ez az oktatóanyag a Mavent használja a build- és projektfüggőségek kezeléséhez. Bár lehetséges olyan rendszerek nélkül fejleszteni, mint például a Maven vagy a Gradle, ezekkel a fejlesztőrendszerekkel sokkal egyszerűbb a függőségek kezelése.
 * (Nem kötelező) [IntelliJ IDEA](https://www.jetbrains.com/idea/download/), [Eclipse](https://www.eclipse.org/downloads/) vagy hasonló integrált fejlesztőkörnyezet.
 
@@ -58,7 +58,7 @@ A [GitHubon](https://azure.microsoft.com/documentation/samples/data-lake-store-j
           </dependency>
         </dependencies>
    
-    Az első függőség a Data Lake Store SDK (`azure-data-lake-store-sdk`) használata a Maven tárházból. A második függőség az alkalmazással használandó naplózási keretrendszer (`slf4j-nop`) meghatározása. A Data Lake Store SDK az [slf4j](http://www.slf4j.org/) naplózási megoldást használja, amellyel számos elterjedt naplózási keretrendszer közül választhat (például log4j, Java-naplózás, Logback vagy nincs naplózás). Ebben a példában kikapcsoljuk a naplózást, mivel az **slf4j-nop** kötést eszközt használjuk. Az alkalmazásban való egyéb naplózási lehetőségek használatáról [itt talál információt](http://www.slf4j.org/manual.html#projectDep).
+    Az első függőség az, hogy a Data Lake Storage Gen1 SDK (`azure-data-lake-store-sdk`) a maven tárházból. A második függőség az alkalmazással használandó naplózási keretrendszer (`slf4j-nop`) meghatározása. Használja a Data Lake Storage Gen1 SDK [slf4j](http://www.slf4j.org/) naplózási előtérrendszer, amellyel számos elterjedt naplózási keretrendszer például log4j, Java-naplózás, logback, stb., választhat, vagy nincs naplózás. Ebben a példában kikapcsoljuk a naplózást, mivel az **slf4j-nop** kötést eszközt használjuk. Az alkalmazásban való egyéb naplózási lehetőségek használatáról [itt talál információt](http://www.slf4j.org/manual.html#projectDep).
 
 3. Adja hozzá az alábbi importálási utasításokat az alkalmazáshoz.
 
@@ -75,20 +75,20 @@ A [GitHubon](https://azure.microsoft.com/documentation/samples/data-lake-store-j
 
 ## <a name="authentication"></a>Hitelesítés
 
-* Az alkalmazás végfelhasználói hitelesítésével kapcsolatban lásd: [Végfelhasználói hitelesítés a Data Lake Store-ban a Java használatával](data-lake-store-end-user-authenticate-java-sdk.md).
-* Az alkalmazás szolgáltatások közötti hitelesítésével kapcsolatban lásd: [Szolgáltatások közötti hitelesítés a Data Lake Store-ban a Java használatával](data-lake-store-service-to-service-authenticate-java.md).
+* Az alkalmazás végfelhasználói hitelesítésével kapcsolatban lásd: [végfelhasználói hitelesítés a Data Lake Storage Gen1 Java használatával](data-lake-store-end-user-authenticate-java-sdk.md).
+* Az alkalmazás szolgáltatások közötti hitelesítésével kapcsolatban lásd: [szolgáltatások közötti hitelesítés a Data Lake Storage Gen1 Java használatával](data-lake-store-service-to-service-authenticate-java.md).
 
-## <a name="create-an-azure-data-lake-store-client"></a>Azure Data Lake Store-ügyfél létrehozása
-Az [ADLStoreClient](https://azure.github.io/azure-data-lake-store-java/javadoc/) objektum létrehozásakor meg kell adnia a Data Lake Store-fiók nevét és az előző lépésben létrehozott jogkivonat-szolgáltatót, ha megtörtént a Data Lake Store-hitelesítés (lásd a [Hitelesítés](#authentication) szakaszt). A Data Lake Store-fióknév csak teljes tartománynév lehet. A **FILL-IN-HERE** értéket például a következő tartománynévre cserélheti ki: **mydatalakestore.azuredatalakestore.net**.
+## <a name="create-a-data-lake-storage-gen1-client"></a>Hozzon létre egy Data Lake Storage Gen1 ügyfél
+Létrehozás egy [ADLStoreClient](https://azure.github.io/azure-data-lake-store-java/javadoc/) objektum megköveteli, hogy adja meg a Data Lake Storage Gen1 fiók nevét, és ha megtörtént a Data Lake Storage Gen1 létrehozott jogkivonat-szolgáltatót (lásd: [hitelesítési](#authentication) szakaszt). A Data Lake Storage Gen1 fióknevet kell lennie egy teljesen minősített tartománynevét. Helyettesítse be például **FILL-in-HERE** a következőhöz hasonló kódot **mydatalakestoragegen1.azuredatalakestore.net**.
 
     private static String accountFQDN = "FILL-IN-HERE";  // full account FQDN, not just the account name
     ADLStoreClient client = ADLStoreClient.createClient(accountFQDN, provider);
 
-Az alábbi szakaszokban szereplő kódrészletek néhány gyakori fájlrendszerműveletre mutatnak példát. Az egyéb műveleteket az **ADLStoreClient** objektumhoz tartozó [Data Lake Store Java SDK teljes API-dokumentációjában](https://azure.github.io/azure-data-lake-store-java/javadoc/) tekintheti meg.
+Az alábbi szakaszokban szereplő kódrészletek néhány gyakori fájlrendszerműveletre mutatnak példát. Tekintse meg a teljes [Data Lake Storage Gen1 Java SDK API-dokumentumok](https://azure.github.io/azure-data-lake-store-java/javadoc/) , a **ADLStoreClient** kapcsolatos más műveletek objektum.
 
 ## <a name="create-a-directory"></a>Könyvtár létrehozása
 
-Az alábbi kódrészlet könyvtárstruktúrát hoz létre a megadott Data Lake Store-fiók gyökérmappájában.
+Az alábbi kódrészlet könyvtárstruktúrát hoz létre a megadott Data Lake Storage Gen1 fiók gyökérmappájában.
 
     // create directory
     client.createDirectory("/a/b/w");
@@ -134,7 +134,7 @@ Az előző kódrészletben használt `getSampleContent` függvény meghatározá
 
 ## <a name="read-a-file"></a>Fájl beolvasása
 
-Az alábbi kódrészlet adatokat olvas be egy Data Lake Store-fiókban lévő fájlból.
+Az alábbi kódrészlet adatokat olvas a Data Lake Storage Gen1 fiókban egy fájlt.
 
     // Read File
     InputStream in = client.getReadStream(filename);
@@ -149,7 +149,7 @@ Az alábbi kódrészlet adatokat olvas be egy Data Lake Store-fiókban lévő f�
 
 ## <a name="concatenate-files"></a>Fájlok összefűzése
 
-Az alábbi kódrészlet két fájlt fűz össze a Data Lake Store-fiókban. Ha a művelet sikeres, a rendszer az összefűzött fájllal cseréli le a két meglévő fájlt.
+Az alábbi kódrészlet egy Data Lake Storage Gen1 fiók két fájlt fűz össze. Ha a művelet sikeres, a rendszer az összefűzött fájllal cseréli le a két meglévő fájlt.
 
     // concatenate the two files into one
     List<String> fileList = Arrays.asList("/a/b/c.txt", "/a/b/d.txt");
@@ -158,7 +158,7 @@ Az alábbi kódrészlet két fájlt fűz össze a Data Lake Store-fiókban. Ha a
 
 ## <a name="rename-a-file"></a>Fájl átnevezése
 
-Az alábbi kódrészlet egy fájlt nevez át a Data Lake Store-fiókban.
+Az alábbi kódrészlet egy Data Lake Storage Gen1 fiókot egy fájlt nevez át.
 
     //rename the file
     client.rename("/a/b/f.txt", "/a/b/g.txt");
@@ -166,7 +166,7 @@ Az alábbi kódrészlet egy fájlt nevez át a Data Lake Store-fiókban.
 
 ## <a name="get-metadata-for-a-file"></a>Fájl metaadatainak lekérése
 
-Az alábbi kódrészlet egy Data Lake Store-fiókban tárolt fájlt metaadatait kérdezi le.
+Az alábbi kódrészlet egy Data Lake Storage Gen1 fiókot egy fájlt metaadatait kérdezi le.
 
     // get file metadata
     DirectoryEntry ent = client.getDirectoryEntry(filename);
@@ -197,7 +197,7 @@ Az előző kódrészletben használt `printDirectoryInfo` függvény meghatároz
 
 ## <a name="delete-files-and-folders"></a>Fájlok és mappák törlése
 
-Az alábbi kódrészlet rekurzív módon törli a megadott fájlokat és mappákat egy Data Lake Store-fiókból.
+A következő kódrészlet törli a megadott fájlokat és mappákat egy Data Lake Storage Gen1-fiók rekurzív módon.
 
     // delete directory along with all the subdirectories and files in it
     client.deleteRecursive("/a");
@@ -210,6 +210,6 @@ Az alábbi kódrészlet rekurzív módon törli a megadott fájlokat és mappák
 
 ## <a name="next-steps"></a>További lépések
 * [A Java SDK JavaDoc-dokumentációjának áttekintése](https://azure.github.io/azure-data-lake-store-java/javadoc/)
-* [Biztonságos adattárolás a Data Lake Store-ban](data-lake-store-secure-data.md)
+* [Az adatok védelme az 1. generációs Data Lake Storage-ban](data-lake-store-secure-data.md)
 
 

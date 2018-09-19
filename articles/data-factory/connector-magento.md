@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: jingwang
-ms.openlocfilehash: 4b526e9723d39a8cf66221fe9ff9d570e539f3e0
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 36afc89ef583baa5484aa4e69c6969e7448c93c1
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45630588"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46127584"
 ---
-# <a name="copy-data-from-magento-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával Magento
+# <a name="copy-data-from-magento-using-azure-data-factory-preview"></a>Adatok másolása az Azure Data Factory (előzetes verzió) használatával Magento
 
 Ez a cikk az Azure Data Factory a másolási tevékenység használatával adatokat másol a Magento módját ismerteti. Épül a [másolási tevékenység áttekintése](copy-activity-overview.md) cikket, amely megadja a másolási tevékenység általános áttekintést.
 

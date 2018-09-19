@@ -12,12 +12,12 @@ ms.workload: On Demand
 ms.date: 07/25/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: c653f1f5366e7dac43f51d5daf1f0b13d93674ce
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 5e45bff827a8c376d4b35ee88f1f000c2b122443
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44721987"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46298234"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Az Azure SQL Database üzletmenet-folytonossági funkcióinak áttekintése
 
@@ -59,11 +59,11 @@ A következő táblázat összehasonlítja a ERT és RPO esetében a három legg
 
 ## <a name="recover-a-database-to-the-existing-server"></a>A meglévő kiszolgáló adatbázis helyreállítása
 
-Az SQL Database automatikusan végrehajtja az adatbázis teljes biztonsági mentését hetente, különbözeti adatbázis biztonsági mentését óránként, és a tranzakciós jelentkezzen biztonsági mentések minden 5 – 10 percet üzleti adatai védelméről adatvesztéssel szemben. A biztonsági mentések 35 napig az összes szolgáltatási szint DTU alapszintű szolgáltatási szintek a biztonsági mentések tárolására 7 napig kivételével az RA-GRS tároló vannak tárolva. További információkért lásd: [adatbázis automatikus biztonsági mentések](sql-database-automated-backups.md). Visszaállíthatja egy létező adatbázis űrlapot az automatikus biztonsági másolatokat egy korábbi időpontra az Azure portal, PowerShell vagy a REST API használatával az egyazon logikai kiszolgálón található új adatbázisként időben. További információkért lásd: [-időponthoz visszaállítási](sql-database-recovery-using-backups.md#point-in-time-restore).
+Az SQL Database automatikusan végrehajtja az adatbázis teljes biztonsági mentését hetente, különbözeti adatbázis mentésekre általában 12 óránként, és a tranzakciós jelentkezzen biztonsági mentések 5-10 percenként üzleti adatai védelméről adatvesztéssel szemben. A biztonsági mentések 35 napig az összes szolgáltatási szint DTU alapszintű szolgáltatási szintek a biztonsági mentések tárolására 7 napig kivételével az RA-GRS tároló vannak tárolva. További információkért lásd: [adatbázis automatikus biztonsági mentések](sql-database-automated-backups.md). Visszaállíthatja egy létező adatbázis űrlapot az automatikus biztonsági másolatokat egy korábbi időpontra az Azure portal, PowerShell vagy a REST API használatával az egyazon logikai kiszolgálón található új adatbázisként időben. További információkért lásd: [-időponthoz visszaállítási](sql-database-recovery-using-backups.md#point-in-time-restore).
 
 Ha a maximális támogatott-időponthoz állítja vissza (PITR) megőrzési időszak nem elegendő az alkalmazáshoz, ezt végrehajthatja a az adatbázis(ok) hosszú távú adatmegőrzési (LTR) házirendjének konfigurálásával. További információkért lásd: [hosszú távú adatmegőrzés](sql-database-long-term-retention.md).
 
-Az adatbázis automatikus biztonsági másolataiból helyreállíthatja az adatbázist a különféle zavaró eseményeket követően, akár az adatközponton belül, akár egy másik adatközpontba. Az adatbázis automatikus biztonsági másolatai használatakor a becsült helyreállítási idő több tényezőtől függ, többek között attól, hogy hány adatbázis helyreállítása zajlik egyidejűleg a régióban, az adatbázis méretétől, a tranzakciós napló méretétől, és a hálózati sávszélességtől. A helyreállítási idő általában a kevesebb mint 12 óra. Ez hosszabb időt vehet igénybe nagyon nagy méretű vagy aktív adatbázis helyreállítása. Helyreállítási idő kapcsolatos további információkért lásd: [adatbázis-helyreállítás ideje](sql-database-recovery-using-backups.md#recovery-time). Ha egy másik adatrégióba végzi a helyreállítást, az esetleges adatvesztés legfeljebb 1 óra lehet az adatbázis óránkénti különbségi biztonsági másolatai georedundáns tárolásának köszönhetően.
+Az adatbázis automatikus biztonsági másolataiból helyreállíthatja az adatbázist a különféle zavaró eseményeket követően, akár az adatközponton belül, akár egy másik adatközpontba. Az adatbázis automatikus biztonsági másolatai használatakor a becsült helyreállítási idő több tényezőtől függ, többek között attól, hogy hány adatbázis helyreállítása zajlik egyidejűleg a régióban, az adatbázis méretétől, a tranzakciós napló méretétől, és a hálózati sávszélességtől. A helyreállítási idő általában a kevesebb mint 12 óra. Ez hosszabb időt vehet igénybe nagyon nagy méretű vagy aktív adatbázis helyreállítása. Helyreállítási idő kapcsolatos további információkért lásd: [adatbázis-helyreállítás ideje](sql-database-recovery-using-backups.md#recovery-time). Állít helyre egy másik adatrégióba, az esetleges adatvesztés esetén legfeljebb 1 óra georedundáns biztonsági mentések használnak.
 
 Használja az automatikus biztonsági másolatokat és [időponthoz visszaállítási](sql-database-recovery-using-backups.md#point-in-time-restore) az üzleti folytonossági és helyreállítási mechanizmusként Ha alkalmazását:
 
@@ -122,7 +122,7 @@ Ha tárreplikációval helyreállítási mechanizmusként aktív georeplikáció
 > 
 
 ### <a name="perform-a-geo-restore"></a>Georedundáns visszaállítás végrehajtása
-Ha, automatikus biztonsági másolatokat használ georedundáns tárolás replikációval tárreplikációval helyreállítási mechanizmusként [kezdeményezheti egy adatbázis helyreállítását, georedundáns visszaállítással](sql-database-disaster-recovery.md#recover-using-geo-restore). A helyreállítás általában legfeljebb 12 óra alatt végrehajtható – legfeljebb egy órányi adatvesztéssel attól függően, hogy mikor történt a legutóbbi óránkénti különbségi biztonsági mentés és replikáció. A helyreállítás befejezéséig az adatbázis nem tudja rögzíteni a tranzakciókat, illetve nem tud válaszolni a lekérdezésekre. Bár ez visszaállít egy adatbázist a legutóbbi elérhető időponthoz kötött, a geo-secondary bármely időpontra való visszaállítást idő jelenleg nem támogatott.
+Ha, automatikus biztonsági másolatokat használ georedundáns tárolás replikációval tárreplikációval helyreállítási mechanizmusként [kezdeményezheti egy adatbázis helyreállítását, georedundáns visszaállítással](sql-database-disaster-recovery.md#recover-using-geo-restore). Helyreállítási általában 12 óra alatt – akár egy óráig beállított alapján, ha az utolsó napló biztonsági mentés készült, és más régióba georeplikált adatvesztéssel akkor kerül sor. A helyreállítás befejezéséig az adatbázis nem tudja rögzíteni a tranzakciókat, illetve nem tud válaszolni a lekérdezésekre. Bár ez visszaállít egy adatbázist a legutóbbi elérhető időponthoz kötött, a geo-secondary bármely időpontra való visszaállítást idő jelenleg nem támogatott.
 
 > [!NOTE]
 > Az Adatközpont ismét online elérhető, mielőtt az alkalmazás a helyreállított adatbázisra, megszakíthatja a helyreállítást.  

@@ -1,55 +1,58 @@
 ---
-title: A Tudásbázis feltárása Service API módszer kiértékelésének |} Microsoft Docs
-description: Megtudhatja, hogyan használja a kiértékelés metódust a a Tudásbázis feltárása szolgáltatás (KES) API kognitív szolgáltatásban.
+title: Knowledge Exploration Service API-módszer – kiértékelése
+titlesuffix: Azure Cognitive Services
+description: Ismerje meg, hogyan használható az értékelés módszer a a Knowledge Exploration Service (KES) API.
 services: cognitive-services
 author: bojunehsu
-manager: stesp
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: knowledge-exploration
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: fc3d73b326b565cfe40d1b82cc419357b28a801a
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 45b25ec5cfc6e198b9b125675f4942463cef247a
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347059"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46128264"
 ---
-# <a name="evaluate-method"></a>Módszer kiértékelésének
-A *kiértékelése* metódus kiértékeli, és az index alapján strukturált lekérdezési kifejezés-kimenet visszaadása.
+# <a name="evaluate-method"></a>Módszer kiértékelése
 
-Általában a kifejezés szerzi be a válasz a interpret metódus.  De is létrehozhat lekérdezési kifejezések saját kezűleg (lásd: [strukturált lekérdezési kifejezésben](Expressions.md)).  
+A *kiértékelése* metódus kiértékeli, és a kimenet strukturált lekérdezési kifejezés index adatok alapján ad vissza.
+
+Általában egy kifejezés fogja meghatározni a értelmezése módszert választ.  De is létrehozhat lekérdezési kifejezések magát (lásd: [strukturált lekérdezési kifejezés](Expressions.md)).  
 
 ## <a name="request"></a>Kérés 
+
 `http://<host>/evaluate?expr=<expr>&attributes=<attrs>[&<options>]`   
 
 Name (Név)|Érték|Leírás
 ----|----|----
-kifejezés       | Szöveges karakterlánc | Strukturált lekérdezési kifejezésben, ami egy index entitások részét.
-Attribútumok | Szöveges karakterlánc | Ahhoz, hogy szerepeljen a válasz attribútumok vesszővel tagolt listája.
-count      | Szám (alapértelmezett = 10) | Térjen vissza az eredmények maximális száma.
-offset     | Szám (alapértelmezett = 0) | Az első eredmény indexe való visszatéréshez.
-OrderBy |   Szöveges karakterlánc | Az eredmények választható rendezési sorrend követ rendezéséhez használt attribútum neve (alapértelmezett = asc): "*attrname*[: (asc&#124;desc)]".  Ha nincs megadva, a rendszer visszairányítja az eredményeket, természetes napló valószínűség csökkentésével.
-timeout  | Szám (alapértelmezett = 1000) | Időtúllépése milliszekundumban. Csak a számított időkorlát letelte előtt eredmény akkor minősül.
+kifejezés       | Szöveges karakterlánc | Strukturált lekérdezési kifejezés, amely egy index entitások részhalmazát.
+Attribútumok | Szöveges karakterlánc | Válasz foglalandó attribútumok vesszővel tagolt listája.
+count      | Szám (alapértelmezés = 10) | Visszaadott eredmények maximális száma.
+offset     | Szám (alapértelmezés = 0) | Az első eredmény index való visszatéréshez.
+OrderBy |   Szöveges karakterlánc | Nem kötelező rendezési sorrend követ, az eredmények rendezéséhez használt attribútum neve (alapértelmezés = asc): "*attrname*[: (asc&#124;desc)]".  Ha nincs megadva, a rendszer visszairányítja az eredményeket, természetes logaritmusát valószínűség csökkentésével.
+timeout  | Szám (alapértelmezés = 1000) | Időkorlát ezredmásodpercben. Csak az időtúllépési letelte előtt számított eredményeket a rendszer adja vissza.
 
-Használja a *száma* és *eltolás* paraméterek, nagy számú eredmény szerezhető Növekményesen több kérés során.
+Használatával a *száma* és *eltolás* paraméterek, nagy számú eredményt szerezhetők be Növekményesen több kérelmeihez képest.
   
 ## <a name="response-json"></a>Válasz (JSON)
 JSONPath|Leírás
 ----|----
-$.expr | *kifejezés* paramétert a kérésből.
-$.entities | 0 vagy több objektum entitások a structured query kifejezésnek megfelelő tömbje. 
-$.aborted | Értéke TRUE, ha a kérelem túllépte az időkorlátot.
+$.expr | *kifejezés* paraméter a kérelemből.
+$.entities | 0 vagy több objektum entitásokat a strukturált lekérdezési kifejezés egyeztetése tömbje. 
+$.aborted | IGAZ, ha a kérelem túllépte az időkorlátot.
 
-Minden entitás tartalmaz egy *logprob* érték és a kért attribútum értéke.
+Minden entitás tartalmaz egy *logprob* érték és a kért attribútumokhoz értékeit.
 
 ## <a name="example"></a>Példa
-Academic kiadványok példában a következő kérelmet továbbítja a strukturált lekérdezési kifejezésben (vélhetően kimenetéből egy *értelmezhetők* kérelem), és lekéri a felső 2 entitások megfelelő néhány attribútumok:
+Oktatási kiadványok példában a következő kérés átadja egy strukturált lekérdezési kifejezés (vélhetően kimenetéből származó egy *értelmezése* kérés), és lekéri az entitások megfelelő felső 2 néhány attribútumai:
 
 `http://<host>/evaluate?expr=Composite(Author.Name=='jaime teevan')&attributes=Title,Y,Author.Name,Author.Id&count=2`
 
-A válasz tartalmazza a top 2 ("count = 2") entitásokat valószínűleg megfelelő.  Minden entitás a cím, az év, a szerző nevét és a szerző ID attribútumokkal adott vissza.  Vegye figyelembe a módját struktúráját Összetett attribútumértékek megegyezik a módszer az adatfájl vannak megadva. 
+A válasz tartalmazza az első 2 ("count = 2") entitásokat leginkább megfelelő.  Minden entitás a cím, az év, a szerző neve és a szerző ID attribútum adott vissza.  Vegye figyelembe, hogyan összetett struktúráját az attribútumértékek megegyezik a fájlt a megadott módon. 
 
 ```json
 {

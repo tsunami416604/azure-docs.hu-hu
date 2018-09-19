@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: jingwang
-ms.openlocfilehash: 55709e1c38c5a020f6e6e09dcf7bde4769b86faf
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: f0bd0a57aff9767c78be63fc918b8689f7b06514
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45634455"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46122705"
 ---
-# <a name="copy-data-from-jira-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával Jira
+# <a name="copy-data-from-jira-using-azure-data-factory-preview"></a>Adatok másolása az Azure Data Factory (előzetes verzió) használatával Jira
 
 Ez a cikk az Azure Data Factory a másolási tevékenység használatával adatokat másol a Jira módját ismerteti. Épül a [másolási tevékenység áttekintése](copy-activity-overview.md) cikket, amely megadja a másolási tevékenység általános áttekintést.
 

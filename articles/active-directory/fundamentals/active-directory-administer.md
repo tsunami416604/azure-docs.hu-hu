@@ -12,12 +12,12 @@ ms.date: 08/23/2018
 ms.author: lizross
 ms.reviewer: jeffsta
 custom: it-pro
-ms.openlocfilehash: 2a548a16a6b896ae1c1297badcef6154b64977f1
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: eb9cf7c21613ab91cc0b8e41a4454835d18f2c34
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45737175"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46297928"
 ---
 # <a name="manage-your-azure-active-directory-tenant"></a>Az Azure Active Directory-bérlő kezelése
 
@@ -42,7 +42,7 @@ Javasoljuk, hogy a további Microsoft-szolgáltatásokra való regisztrációkor
 
 Ha például egy Microsoft Intune-előfizetésre iratkozik fel, és szinkronizálja a helyszíni Active Directoryt a saját Azure AD-címtárával, további Microsoft-szolgáltatásokra, például az Office 365-re iratkozhat fel, amely szintén a Microsoft Intune esetében már alkalmazott címtár-integrációs lehetőségeket használja ki.
 
-További információk a helyszíni címtár Azure AD-integrációjáról: [Directory integration with Azure AD Connect](../connect/active-directory-aadconnect.md) (Címtár-integráció az Azure AD Connecttel).
+További információk a helyszíni címtár Azure AD-integrációjáról: [Directory integration with Azure AD Connect](../hybrid/whatis-hybrid-identity.md) (Címtár-integráció az Azure AD Connecttel).
 
 ### <a name="associate-an-existing-azure-ad-directory-with-a-new-azure-subscription"></a>Új Azure-előfizetés társítása meglévő Azure AD-címtárhoz
 Új Azure-előfizetést társíthat ugyanahhoz a címtárhoz, amely egy meglévő Office 365- vagy Microsoft Intune-előfizetés bejelentkezésének hitelesítését végzi. Az ezzel a forgatókönyvvel kapcsolatos további információkért lásd: [Transfer ownership of an Azure subscription to another account](../../billing/billing-subscription-transfer.md) (Azure-előfizetés tulajdonjogának átruházása másik fiókra).

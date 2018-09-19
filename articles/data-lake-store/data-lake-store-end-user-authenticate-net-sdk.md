@@ -1,6 +1,6 @@
 ---
-title: 'Végfelhasználói hitelesítési: .NET SDK-val Data Lake Store az Azure Active Directoryval |} Microsoft Docs'
-description: Megtudhatja, hogyan végfelhasználói hitelesítési elérése a Data Lake Store .NET SDK-val az Azure Active Directoryval
+title: 'Végfelhasználói hitelesítés: .NET SDK-val rendelkező Azure Data Lake Storage Gen1 az Azure Active Directory |} A Microsoft Docs'
+description: Ismerje meg, hogyan érhet el a végfelhasználói hitelesítés az Azure Data Lake Storage Gen1 a .NET SDK-val az Azure Active Directory használatával
 services: data-lake-store
 documentationcenter: ''
 author: nitinme
@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: cbb0f703f61b6c15b3a827dc75821286b7914c21
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 65672d5dc42ae1e584a36bcc72c16911f6c1f6e2
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34623961"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46122825"
 ---
-# <a name="end-user-authentication-with-data-lake-store-using-net-sdk"></a>Végfelhasználói hitelesítési a Data Lake Store .NET SDK használatával
+# <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-net-sdk"></a>Végfelhasználói hitelesítés az Azure Data Lake Storage Gen1 a .NET SDK használatával
 > [!div class="op_single_selector"]
 > * [A Java használata](data-lake-store-end-user-authenticate-java-sdk.md)
 > * [A .NET SDK használata](data-lake-store-end-user-authenticate-net-sdk.md)
@@ -27,14 +27,14 @@ ms.locfileid: "34623961"
 > 
 >  
 
-Ebből a cikkből megismerheti az Azure Data Lake Store végfelhasználói hitelesítés elvégzéséhez a .NET SDK használatával kapcsolatos. A szolgáltatások közötti hitelesítéshez a Data Lake Store .NET SDK használatával, lásd: [szolgáltatások közötti hitelesítés a Data Lake Store .NET SDK használatával](data-lake-store-service-to-service-authenticate-net-sdk.md).
+Ebben a cikkben megismerkedhet a .NET SDK használata ehhez a végfelhasználói hitelesítés az Azure Data Lake Storage Gen1. Szolgáltatások közötti hitelesítés a Data Lake Storage Gen1 .NET SDK használatával, lásd: [szolgáltatások közötti hitelesítés a Data Lake Storage Gen1 .NET SDK használatával](data-lake-store-service-to-service-authenticate-net-sdk.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 * **Visual Studio 2013, 2015 vagy 2017** Az alábbi utasítások a Visual Studio 2017-et használják.
 
 * **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 
-* **Hozzon létre egy "Natív" Azure Active Directory-alkalmazás**. Végrehajtotta a lépéseket [végfelhasználói hitelesítés az Azure Active Directory használatával a Data Lake Store](data-lake-store-end-user-authenticate-using-active-directory.md).
+* **Hozzon létre a "Natív" Azure Active Directory-alkalmazás**. El kell végeznie a lépések [végfelhasználói hitelesítés a Data Lake Storage Gen1 az Azure Active Directoryval](data-lake-store-end-user-authenticate-using-active-directory.md).
 
 ## <a name="create-a-net-application"></a>.NET-alkalmazás létrehozása
 1. Nyissa meg a Visual Studiót, és hozzon létre egy konzolalkalmazást.
@@ -62,7 +62,7 @@ Ebből a cikkből megismerheti az Azure Data Lake Store végfelhasználói hitel
    4. Zárja be a **NuGet-csomagkezelőt**.
 
 6. Nyissa meg **Program.cs**
-7. Cserélje le a használatával utasítások a következő sort:
+7. Cserélje le a használatával utasítások a következő sorokat:
 
     ```csharp
     using System;
@@ -80,9 +80,9 @@ Ebből a cikkből megismerheti az Azure Data Lake Store végfelhasználói hitel
     ```     
 
 ## <a name="end-user-authentication"></a>Végfelhasználói hitelesítés
-Adja hozzá ezt a kódrészletet a .NET-ügyfélalkalmazást. Cserélje le a helyőrző értékeket egy natív Azure AD-alkalmazást, (előfeltétel szerepel) lekért értékekkel. Ezt a kódrészletet lehetővé teszi, hogy az alkalmazás hitelesítéséhez **interaktív** a Data Lake Store, ami azt jelenti, hogy a Azure hitelesítő adatainak megadását kéri.
+Ez a kódrészlet adja hozzá a .NET-ügyfélalkalmazás. A helyőrző értékeket cserélje le az értékeket beolvasni az Azure AD natív alkalmazással (előfeltétel szerepel). Ez a kódrészlet lehetővé teszi az alkalmazás hitelesítéséhez **interaktív módon** a Data Lake Storage Gen1, ami azt jelenti, hogy adja meg Azure hitelesítő adatait kéri.
 
-Könnyű használatra az alábbi kódrészletben ügyfél-Azonosítóját és átirányítási URI-t, amelyek érvényesek a bármely Azure-előfizetéshez tartozó alapértelmezett értékeket használja. Az alábbi kódrészletben szereplő meg kell adnia az értéket a bérlő azonosítóját. Az utasításokat követve a bérlői azonosító le [a bérlőazonosító beszerzése](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-tenant-id).
+Egyszerűen használható az alábbi kódrészletben alapértelmezett értékeket használja az ügyfél-Azonosítóját és átirányítási URI-t, amely bármely Azure-előfizetés esetén érvényes. Az alábbi kódrészletben meg kell adnia az értéket a bérlő azonosítóját. A bérlő Azonosítóját adja meg az utasításokat követve kérheti [a Bérlőazonosító beszerzése](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-tenant-id).
     
 - Cserélje le a Main() függvény a következő kódot:
 
@@ -102,16 +102,16 @@ Könnyű használatra az alábbi kódrészletben ügyfél-Azonosítóját és á
     }
     ```
 
-Néhány tudnivaló az előző részlet kapcsolatban:
+Néhány tudnivaló a fenti kódrészlettel kapcsolatban:
 
-* A portáladatbázis előző részlet használ egy súgófunkciókat `GetTokenCache` és `GetCreds_User_Popup`. Ezek súgófunkciókat kódjának érhető [ide a Githubon](https://github.com/Azure-Samples/data-lake-analytics-dotnet-auth-options#gettokencache).
-* Segítségre van szüksége az oktatóanyag gyorsabban befejeződjenek, a részlet használ egy natív alkalmazás ügyfél-Azonosítót, amely alapértelmezés szerint az összes Azure-előfizetések érhető el. Így **a kódrészletet változtatás nélkül használhatja az alkalmazásában**.
-* Ha azonban a saját Azure AD-tartományát és alkalmazásügyfél-azonosítóját szeretné használni, létre kell hoznia egy natív Azure AD-alkalmazást, majd a létrehozott alkalmazáshoz használnia kell az Azure AD-bérlőazonosítót, az ügyfél-azonosítót és az átirányítási URI-t. Útmutatásért tekintse meg az [Active Directory-alkalmazás a Data Lake Store-ral, végfelhasználói hitelesítéshez való létrehozásával](data-lake-store-end-user-authenticate-using-active-directory.md) kapcsolatos témakört.
+* Az előző kódrészlet egy segédfüggvények `GetTokenCache` és `GetCreds_User_Popup`. Érhető el a kódot az alábbi segédfüggvények [Itt a Githubon](https://github.com/Azure-Samples/data-lake-analytics-dotnet-auth-options#gettokencache).
+* A kódrészlet a, az oktatóanyag gyorsabb teljesítése érdekében, hogy az összes Azure-előfizetés számára alapértelmezés szerint elérhető natív alkalmazás ügyfél-Azonosítót. Így **a kódrészletet változtatás nélkül használhatja az alkalmazásában**.
+* Ha azonban a saját Azure AD-tartományát és alkalmazásügyfél-azonosítóját szeretné használni, létre kell hoznia egy natív Azure AD-alkalmazást, majd a létrehozott alkalmazáshoz használnia kell az Azure AD-bérlőazonosítót, az ügyfél-azonosítót és az átirányítási URI-t. Lásd: [Active Directory-alkalmazás végfelhasználói hitelesítésével létrehozása a Data Lake Storage Gen1](data-lake-store-end-user-authenticate-using-active-directory.md) útmutatást.
 
   
 ## <a name="next-steps"></a>További lépések
-Ebben a cikkben megtanulta végfelhasználói hitelesítés használata a hitelesítéshez az Azure Data Lake Store .NET SDK használatával. Most már megtekintheti a következő cikkekben talál, amely az Azure Data Lake Store működéséhez a .NET SDK használatával kapcsolatban.
+Ebben a cikkben megtanulta, hogyan végfelhasználói hitelesítés használata az Azure Data Lake Storage Gen1 hitelesítést, a .NET SDK használatával. Most már megtekintheti a következő cikkeket, hogy hogyan használhatja a .NET SDK használata Azure Data Lake Storage Gen1 beszélni.
 
-* [Fiókkezelési műveletek a Data Lake Store-ban a .NET SDK használatával](data-lake-store-get-started-net-sdk.md)
-* [Adatok műveletek a Data Lake Store .NET SDK használatával](data-lake-store-data-operations-net-sdk.md)
+* [Fiókkezelési műveletek a Data Lake Storage Gen1 .NET SDK használatával](data-lake-store-get-started-net-sdk.md)
+* [A Data Lake Storage Gen1 Adatműveletek .NET SDK használatával](data-lake-store-data-operations-net-sdk.md)
 

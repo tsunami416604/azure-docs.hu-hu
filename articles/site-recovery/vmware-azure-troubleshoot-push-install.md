@@ -8,93 +8,94 @@ ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
 ms.author: ramamill
-ms.date: 07/06/2018
-ms.openlocfilehash: 8d5db03eeebb659414ea1f554e5b34c938fd2795
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.date: 09/17/2018
+ms.openlocfilehash: d77b252351c15bea13b0fa1fb42fa062d508fbdc
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37952909"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46126989"
 ---
 # <a name="troubleshoot-mobility-service-push-installation-issues"></a>A mobilitási szolgáltatás leküldéses telepítési problémák elhárítása
 
-Ez a cikk ismerteti az Azure Site Recovery mobilitási szolgáltatás telepítésekor kívánja engedélyezni a védelmet a forráskiszolgálón, előfordulhat, hogy tapasztalt gyakori hibák elhárítása.
+Mobilitási szolgáltatás telepítésének legfontosabb lépése replikálás engedélyezése során. Ez a lépés sikeres kizárólag Előfeltételek teljesítése és a támogatott konfigurációk használata attól függ. A mobilitási szolgáltatás telepítése során között leggyakoribb hibák miatt
 
-## <a name="error-78007---the-requested-operation-could-not-be-completed"></a>Hiba 78007 – a kért művelet nem fejezhető be.
-Ez a hiba a szolgáltatás több okból is hibajelzést. Válassza ki a megfelelő szolgáltatói hibát további hibaelhárítást.
+* Kapcsolat/hitelesítő adatokkal kapcsolatos hibák
+* Nem támogatott operációs rendszerek
 
-* [95103-as](#error-95103---protection-could-not-be-enabled-ep0854) 
-* [95105-ös](#error-95105---protection-could-not-be-enabled-ep0856) 
-* [95107-es](#error-95107---protection-could-not-be-enabled-ep0858) 
-* [95108-as](#error-95108---protection-could-not-be-enabled-ep0859) 
-* [95117-es](#error-95117---protection-could-not-be-enabled-ep0865) 
-* [95213-as](#error-95213---protection-could-not-be-enabled-ep0874) 
-* [95224-es](#error-95224---protection-could-not-be-enabled-ep0883) 
-* [95265-ös](#error-95265---protection-could-not-be-enabled-ep0902) 
+A replikáció engedélyezése az Azure Site Recovery megpróbálja küldje le a virtuális gép mobilitásiszolgáltatás-ügynök telepíthető. Ennek részeként konfigurációs kiszolgáló megkísérli a virtuális géppel csatlakozhat, és másolja az ügynököt. A sikeres telepítés engedélyezéséhez kövesse az alábbi részletes hibaelhárítási útmutatás
 
+## <a name="credentials-check-errorid-95107--95108"></a>Hitelesítő adatok ellenőrzése (ErrorID: 95107 & 95108)
 
-## <a name="error-95105---protection-could-not-be-enabled-ep0856"></a>95105-ös - védelem nem sikerült engedélyezni a (ep0856 hiba)
+* Győződjön meg arról, ha a felhasználói fiók, a replikáció engedélyezése közben kiválasztott, **érvényes, a pontos**.
+* Az Azure Site Recovery igényel **rendszergazdai jogosultsággal** ügyfélleküldéses telepítés végrehajtásához.
+  * Windows, ellenőrizze, ha a felhasználói fiók rendelkezik-e rendszergazdai hozzáféréssel, helyi vagy a tartományban, a forrásgépen.
+  * Ha nem használ tartományi fiókot, tiltsa le a távoli felhasználói hozzáférés-vezérlés a helyi számítógépen szeretné.
+    * Tiltsa le a távoli felhasználói hozzáférés-vezérlést, a localaccounttokenfilterpolicy beállításjegyzékbeli kulcs hozzáadása egy új DWORD: LocalAccountTokenFilterPolicy. Állítsa az értékét 1-re. Ez a lépés végrehajtásához futtassa a következő parancsot a parancssorba:
 
-**Hibakód:** | **Lehetséges okok** | **Hiba vonatkozó javaslatok**
---- | --- | ---
-95105 </br>**Üzenet:** forrásgépen a mobilitási szolgáltatás leküldéses telepítéséhez hibakóddal sikertelenül **EP0856**. <br> Mindkét **fájl- és nyomtatómegosztás** nem engedélyezett a forrásoldali gép, vagy hogy van hálózati kapcsolati problémák a folyamatkiszolgáló és a forrásgép között.| **Fájl- és nyomtatómegosztás** nincs engedélyezve. | Lehetővé teszi **fájl- és nyomtatómegosztás** a Windows tűzfal a forrásgépen. A forrásgépen alatt **Windows tűzfal** > **lehetővé teszik az alkalmazás vagy szolgáltatás tűzfalán keresztül**válassza **fájl- és nyomtatómegosztás az összes profil számára**. </br> Emellett ellenőrizze az alábbiakat a leküldéses telepítés sikeres befejezéséhez.<br> Tudjon meg többet [WMI hibaelhárítási problémák](#troubleshoot-wmi-issues).
+         `REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1`
+  * Linux esetén ki kell választania a mobilitási ügynök sikeres telepítéséhez rendszergazdai fiók.
 
+Ha szeretné módosítani a kiválasztott felhasználói fiók hitelesítő adatait, hajtsa végre az adott utasítások [Itt](vmware-azure-manage-configuration-server.md#modify-credentials-for-mobility-service-installation).
 
-## <a name="error-95107---protection-could-not-be-enabled-ep0858"></a>95107-es - védelem nem sikerült engedélyezni a (ep0858 hiba)
+## <a name="connectivity-check-errorid-95117--97118"></a>**Kapcsolat-ellenőrzés (ErrorID: 95117 & 97118)**
 
-**Hibakód:** | **Lehetséges okok** | **Hiba vonatkozó javaslatok**
---- | --- | ---
-95107 </br>**Üzenet:** forrásgépen a mobilitási szolgáltatás leküldéses telepítéséhez hibakóddal sikertelenül **EP0858**. <br> Mobilitási szolgáltatás telepítése a megadott hitelesítő adatok helytelenek, vagy a felhasználói fiók nem rendelkezik megfelelő jogosultsággal. | A forrásgépen a mobilitási szolgáltatás telepítése a megadott felhasználói hitelesítő adatok helytelenek. | Győződjön meg arról, hogy a forrásgép a konfigurációs kiszolgálón megadott felhasználói hitelesítő adatok helyesek-e. <br> Hozzáadásához, vagy felhasználói hitelesítő adatok szerkesztése, nyissa meg a konfigurációs kiszolgálót, és válassza ki **Cspsconfigtool** > **fiók kezelése**. </br> Emellett ellenőrizze a következőket [Előfeltételek](vmware-azure-install-mobility-service.md#install-mobility-service-by-push-installation-from-azure-site-recovery) az ügyfélleküldéses telepítés sikeres befejezéséhez.
+* Ellenőrizze, hogy pingelni a forrásgép a konfigurációs kiszolgálóról. Ha úgy döntött, hogy kibővíthető folyamatkiszolgáló a replikáció engedélyezése során, ellenőrizze, hogy a forrásgép folyamatkiszolgálóról pingelni.
+  * A forráskiszolgáló gép parancssorból, a Telnet használatával a konfigurációs kiszolgáló pingelése / horizontális felskálázási folyamatkiszolgáló https-port (alapértelmezés: 9443-as), ha vannak-e hálózati kapcsolat hibái vagy tűzfal port hátráltató megtekintéséhez az alább látható módon.
 
+     `telnet <CS/ scale-out PS IP address> <port>`
 
-## <a name="error-95117---protection-could-not-be-enabled-ep0865"></a>95117-es - védelem nem sikerült engedélyezni a (ep0865 hiba)
+  * Ha nem lehet csatlakozni, engedélyezi a bejövő 9443-as porton a konfigurációs kiszolgáló / horizontális felskálázási folyamatkiszolgáló.
+  * Szolgáltatás állapotának ellenőrzése **InMage Scout VX Agent – Sentinel/Outpost**. Ha nem fut, indítsa el a szolgáltatást.
 
-**Hibakód:** | **Lehetséges okok** | **Hiba vonatkozó javaslatok**
---- | --- | ---
-95117 </br>**Üzenet:** forrásgépen a mobilitási szolgáltatás leküldéses telepítéséhez hibakóddal sikertelenül **EP0865**. <br> Nincs bekapcsolva a forrásgép, vagy hálózati kapcsolati problémák a folyamatkiszolgáló és a forrásgép között. | A hálózati kapcsolati problémák a folyamatkiszolgáló és a forráskiszolgáló között. | Ellenőrizze a kapcsolatot a folyamatkiszolgáló és a forráskiszolgáló között. </br> Emellett ellenőrizze a következőket [Előfeltételek](vmware-azure-install-mobility-service.md#install-mobility-service-by-push-installation-from-azure-site-recovery) az ügyfélleküldéses telepítés sikeres befejezéséhez.|
+* Ezenkívül a **Linux rendszerű virtuális gép**,
+  * Ellenőrizze, ha telepítve vannak-e a legfrissebb openssh, openssh-server és openssl csomagokat.
+  * Ellenőrizze, és győződjön meg arról, hogy a Secure Shell (SSH) engedélyezve van és fut a 22-es portot.
+  * Az SFTP-szolgáltatások kell futtatnia. Az SFTP alrendszer és a jelszó hitelesítését az sshd_config fájlban engedélyezése
+    * Jelentkezzen be gyökérszintű felhasználóként.
+    * /Etc/ssh/sshd_config keresse meg, keresse meg a sort, amely PasswordAuthentication kezdődik.
+    * Állítsa vissza a sort, és módosítsa az Igen értéket
+    * Keresse meg azt a sort, alrendszer kezdődik, és állítsa vissza a sort
+    * Indítsa újra az sshd szolgáltatást.
+* Kapcsolódási kísérlet van nem sikerült, ha nem érkezik válasz megfelelő, egy idő után, vagy a kialakított kapcsolat meghibásodott, mert a csatlakoztatott állomás nem válaszolt.
+* Kapcsolat/hálózati/tartomány lehet okozza. Azt is okozhatja, hogy a probléma vagy a TCP-port Erőforrásfogyás probléma megoldásának DNS-név. Tekintse meg van-e olyan ismert problémákat a tartományban.
 
-## <a name="error-95103---protection-could-not-be-enabled-ep0854"></a>95103-as - védelem nem sikerült engedélyezni a (ep0854 hiba)
+## <a name="file-and-printer-sharing-services-check-errorid-95105--95106"></a>A fájl- és nyomtatómegosztási szolgáltatások ellenőrzése (ErrorID: 95105 & 95106)
 
-**Hibakód:** | **Lehetséges okok** | **Hiba vonatkozó javaslatok**
---- | --- | ---
-95103 </br>**Üzenet:** forrásgépen a mobilitási szolgáltatás leküldéses telepítéséhez hibakóddal sikertelenül **EP0854**. <br> Windows Management Instrumentation (WMI) nincs engedélyezve a forrásgépen, vagy hálózati kapcsolati problémák a folyamatkiszolgáló és a forrásgép között.| A WMI le van tiltva, a Windows tűzfal. | A WMI Windows tűzfal engedélyezése. A **Windows tűzfal** > **lehetővé teszik az alkalmazás vagy szolgáltatás tűzfalán keresztül**válassza **WMI az összes profil számára**. </br> Emellett ellenőrizze a következőket [Előfeltételek](vmware-azure-install-mobility-service.md#install-mobility-service-by-push-installation-from-azure-site-recovery) az ügyfélleküldéses telepítés sikeres befejezéséhez.|
+Kapcsolat-ellenőrzés után ellenőrizze a fájl- és nyomtatómegosztás szolgáltatás engedélyezésének a virtuális gépen.
 
-## <a name="error-95213---protection-could-not-be-enabled-ep0874"></a>95213-as - védelem nem sikerült engedélyezni a (ep0874 hiba)
+A **windows 2008 R2 és korábbi verziók**,
 
-**Hibakód:** | **Lehetséges okok** | **Hiba vonatkozó javaslatok**
---- | --- | ---
-95213 </br>**Üzenet:** a mobilitási szolgáltatást a(z) % SourceIP; telepítése nem sikerült hibakód **EP0874**. <br> | Az operációs rendszer verzióját a forrásgépen nem támogatott. <br>| Győződjön meg arról, hogy a forrásgép operációsrendszer-verzió támogatott. Olvassa el a [támogatási mátrix](https://aka.ms/asr-os-support). </br> Emellett ellenőrizze a következőket [Előfeltételek](https://aka.ms/pushinstallerror) az ügyfélleküldéses telepítés sikeres befejezéséhez.| 
+* Fájl- és nyomtatómegosztás Windows tűzfalon, engedélyezése
+  * Nyissa meg a Vezérlőpult -> rendszer és Biztonság -> Windows tűzfal -> bal oldali ablaktáblán, kattintson a Speciális beállítások -> konzolfán kattintson a bejövő szabályok.
+  * Keresse meg a fájlt, és nyomtatómegosztás (NetBIOS-munkamenet-) és a fájl- és nyomtatómegosztás (SMB, bejövő) szabályok. Az egyes szabályokhoz, kattintson a jobb gombbal a szabályt, és kattintson **szabály engedélyezése**.
+* A csoportházirenddel, fájlmegosztási engedélyezése
+  * Ugrás a kezdő, írja be a gpmc.msc, és keressen.
+  * A navigációs ablaktáblán nyissa meg a következő mappák: helyi számítógép-házirend, a felhasználói konfiguráció, a felügyeleti sablonok, a Windows-összetevők és a hálózati megosztás.
+  * A részleteket tartalmazó ablaktáblán kattintson duplán a **megakadályozhatja a felhasználókat a profilon belül a fájlok megosztása**. Tiltsa le a csoportházirend-beállítást, és engedélyezze a felhasználó engedélyének fájlokat, kattintson a le van tiltva. Kattintson az OK gombra a módosítások mentéséhez. További tudnivalókért kattintson [Itt](https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754359(v=ws.10)).
 
+A **újabb verzió**, kövesse a megjelenő utasításokat [Itt](vmware-azure-install-mobility-service.md#install-mobility-service-by-push-installation-from-azure-site-recovery) fájl- és nyomtatómegosztás engedélyezése
 
-## <a name="error-95108---protection-could-not-be-enabled-ep0859"></a>95108-as - védelem nem sikerült engedélyezni a (ep0859 hiba)
+## <a name="windows-management-instrumentation-wmi-configuration-check"></a>Windows Management Instrumentation (WMI) konfigurációjának ellenőrzése
 
-**Hibakód:** | **Lehetséges okok** | **Hiba vonatkozó javaslatok**
---- | --- | ---
-95108 </br>**Üzenet:** forrásgépen a mobilitási szolgáltatás leküldéses telepítéséhez hibakóddal sikertelenül **EP0859**. <br>| Mobilitási szolgáltatás telepítése a megadott hitelesítő adatok helytelenek, vagy a felhasználói fiók nem rendelkezik megfelelő jogosultsággal. <br>| Ellenőrizze, hogy vannak-e a megadott hitelesítő adatok a **legfelső szintű** fiók hitelesítő adataival. Adja hozzá, vagy felhasználói hitelesítő adatok szerkesztése, nyissa meg a konfigurációs kiszolgálót, és válassza a **Cspsconfigtool** parancsikonját az asztalon. Válassza ki **fiók kezelése** hozzáadását vagy szerkesztését a hitelesítő adatokat.|
+Ellenőrizze a fájl- és nyomtatómegosztás szolgáltatás, engedélyezze a WMI-szolgáltatás tűzfalán keresztül.
 
-## <a name="error-95265---protection-could-not-be-enabled-ep0902"></a>95265-ös - védelem nem sikerült engedélyezni a (ep0902 hiba)
+* A Vezérlőpulton kattintson a biztonsági, és kattintson a Windows tűzfal.
+* Kattintson a beállítások módosítása gombra, és kattintson a Kivételek lapon.
+* A kivételek ablakban válassza ki a jelölőnégyzetet a Windows Management Instrumentation (WMI) a WMI-forgalom tűzfalon való engedélyezéséhez. 
 
-**Hibakód:** | **Lehetséges okok** | **Hiba vonatkozó javaslatok**
---- | --- | ---
-95265 </br>**Üzenet:** sikeres volt a forrásgépen, de a forrásgépen a mobilitási szolgáltatás leküldéses telepítéséhez a rendszer néhány módosításának érvénybe léptetéséhez újraindítás szükséges. <br>| A mobilitási szolgáltatás régebbi verziója már telepítve lett a kiszolgálón.| A virtuális gép replikációja zökkenőmentesen folytatódik.<br> A mobilitási szolgáltatás új funkcióinak kihasználása érdekében a következő karbantartási időszakban indítsa újra a kiszolgálót.|
+WMI-forgalmat a parancssorban a tűzfalon keresztül is engedélyezheti. A következő paranccsal `netsh advfirewall firewall set rule group="windows management instrumentation (wmi)" new enable=yes`
+Az alábbi cikkekben talál további WMI hibaelhárítási cikkek található.
 
-
-## <a name="error-95224---protection-could-not-be-enabled-ep0883"></a>95224-es - védelem nem sikerült engedélyezni a (ep0883 hiba)
-
-**Hibakód:** | **Lehetséges okok** | **Hiba vonatkozó javaslatok**
---- | --- | ---
-95224 </br>**Üzenet:** leküldéses telepítése a mobilitási szolgáltatást a(z) % SourceIP; hibakóddal sikertelenül **EP0883**. Egy előző telepítés vagy frissítés a rendszer újraindítása függőben.| A rendszer nem lett újraindítása, ha egy régebbi vagy nem kompatibilis a mobilitási szolgáltatás verziójának eltávolítása.| Győződjön meg arról, hogy a mobilitási szolgáltatás változata nem létezik a kiszolgálón. <br> Indítsa újra a kiszolgálót, majd futtassa újra a védelemengedélyezési feladatot.|
-
-## <a name="resource-to-troubleshoot-push-installation-problems"></a>Erőforrás leküldéses telepítési problémák elhárítása
-
-#### <a name="troubleshoot-file-and-print-sharing-issues"></a>Hibaelhárítás – fájl és megosztási problémák nyomtatása
-* [Engedélyezheti vagy tilthatja le a csoportházirend-fájlmegosztás](https://technet.microsoft.com/library/cc754359(v=ws.10).aspx)
-* [Fájl- és nyomtatómegosztás keresztül a Windows tűzfal engedélyezése](https://technet.microsoft.com/library/ff633412(v=ws.10).aspx)
-
-#### <a name="troubleshoot-wmi-issues"></a>A WMI-problémák hibaelhárítása
 * [Alapszintű WMI tesztelése](https://blogs.technet.microsoft.com/askperf/2007/06/22/basic-wmi-testing/)
 * [A WMI-hibaelhárítás](https://msdn.microsoft.com/library/aa394603(v=vs.85).aspx)
 * [WMI-parancsfájlok és a WMI-szolgáltatásokkal kapcsolatos problémák](https://technet.microsoft.com/library/ff406382.aspx#H22)
+
+## <a name="unsupported-operating-systems"></a>Nem támogatott operációs rendszerek
+
+Nem támogatott operációs rendszer egy másik Ennek leggyakoribb oka a hiba oka lehet. Győződjön meg arról, a sikeres telepítés a mobilitási szolgáltatást a támogatott operációs rendszer/Kernel verziója.
+
+Ha szeretné megtudni, melyik operációs rendszerek támogatottak az Azure Site Recovery, tekintse meg a [támogatási mátrix dokumentum](vmware-physical-azure-support-matrix.md#replicated-machines).
 
 ## <a name="next-steps"></a>További lépések
 

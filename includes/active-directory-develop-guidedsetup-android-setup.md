@@ -12,32 +12,32 @@ ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/19/2018
+ms.date: 09/13/2018
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: 45e8668ce0a7eb2edd79271096f58b56ca1af5f0
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 2e23a15a6bff81f0b48b703e516de8a1a1820972
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "36205569"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46293757"
 ---
 ## <a name="set-up-your-project"></a>A projekt beállítása
 
-Szeretné ezt a mintát Android Studio-projekt letöltése helyette? [Töltse le a projekt](https://github.com/Azure-Samples/active-directory-android-native-v2/archive/master.zip), és ugorjon a [konfigurációs lépés](#register-your-application) konfigurálása a példakód azt végrehajtása előtt.
+Biztosan ehelyett töltse le ezt a mintát Android Studio project? [Töltse le a projekt](https://github.com/Azure-Samples/active-directory-android-native-v2/archive/master.zip), és ugorjon a [konfigurációs lépés](#register-your-application) konfigurálása a kódminta azt végrehajtása előtt.
 
 ### <a name="create-a-new-project"></a>Új projekt létrehozása 
-1.  Nyissa meg az Android Studiót, és válassza **fájl** > **új** > **új projekt**.
-2.  Az alkalmazás neve, majd válassza ki **következő**.
-3.  Válassza ki **API 21 vagy újabb (Android 5.0)**, majd válassza ki **következő**.
-4.  Hagyja **üres tevékenység** , válassza ki a **következő**, majd válassza ki **Befejezés**.
+1.  Nyissa meg az Android Studiót, és válassza ki **fájl** > **új** > **új projekt**.
+2.  Adjon nevet az alkalmazásnak, és válassza ki **tovább**.
+3.  Válassza ki **API 21 vagy újabb (Android 5.0-s)**, majd válassza ki **tovább**.
+4.  Hagyja **üres tevékenység** , válassza ki a **tovább**, majd válassza ki **Befejezés**.
 
 
-### <a name="add-msal-to-your-project"></a>MSAL hozzáadása a projekthez
-1.  Válassza ki az Android Studióban **Gradle parancsfájlok** > **build.gradle (modul: alkalmazás)**.
-2.  A **függőségek**, az alábbi kódot:
+### <a name="add-msal-to-your-project"></a>Az MSAL hozzáadása a projekthez
+1.  Az Android Studióban válassza a **Gradle-szkriptek** > **build.gradle (modul: alkalmazás)**.
+2.  A **függőségek**, illessze be a következő kódot:
 
-    ```ruby  
+    ```gradle  
     compile ('com.microsoft.identity.client:msal:0.1.+') {
         exclude group: 'com.android.support', module: 'appcompat-v7'
     }
@@ -45,17 +45,17 @@ Szeretné ezt a mintát Android Studio-projekt letöltése helyette? [Töltse le
     ```
 
 <!--start-collapse-->
-### <a name="about-this-package"></a>A csomaggal kapcsolatban
+### <a name="about-this-package"></a>A csomaggal kapcsolatos
 
-Az előzőekben látható kód a csomag telepíti a Microsoft hitelesítési könyvtár. MSAL kezeli az beszerzése, gyorsítótárazás, és az Azure Active Directory v2 végpont által védett API-k elérésére használt felhasználói jogkivonatokhoz frissítésekor.
+A fenti kód a csomag telepíti a Microsoft-hitelesítési tár. Az MSAL kezeli az összes jogkivonat műveleteket, köztük a beszerzéséhez, gyorsítótárazás, frissítése és törlése.  A jogkivonatok az API-k a Microsoft identity platform által védett eléréséhez szükséges.
 <!--end-collapse-->
 
-## <a name="create-the-application-ui"></a>Az alkalmazás felhasználói felület létrehozása
+## <a name="create-the-apps-ui"></a>Az alkalmazás felhasználói felület létrehozása
 
-1. Ugrás a **res** > **elrendezés**, majd nyissa meg **activity_main.xml**. 
-2. A tevékenység elrendezésének `android.support.constraint.ConstraintLayout` vagy más, a `LinearLayout`.
+1. Lépjen a **res** > **elrendezés**, majd nyissa meg **activity_main.xml**. 
+2. A tevékenység elrendezésének módosítása `android.support.constraint.ConstraintLayout` vagy az egyéb `LinearLayout`.
 3. Adja hozzá a `android:orientation="vertical"` tulajdonságot a `LinearLayout` csomópont.
-4. Illessze be az alábbi kódot a `LinearLayout` csomópont, az aktuális tartalom cseréje:
+4. Illessze be az alábbi kódot a `LinearLayout` csomópontot, és cserélje le a jelenlegi tartalomról:
 
     ```xml
     <TextView

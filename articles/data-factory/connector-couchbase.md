@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: jingwang
-ms.openlocfilehash: adc0dfad0233cf0a7d61be053e3758880425d9cb
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: fee9deb43b4619f26cb9e4c0044b25bd34af93d2
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45633554"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46126833"
 ---
-# <a name="copy-data-from-couchbase-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával Couchbase
+# <a name="copy-data-from-couchbase-using-azure-data-factory-preview"></a>Adatok másolása az Azure Data Factory (előzetes verzió) használatával Couchbase
 
 Ez a cikk az Azure Data Factory a másolási tevékenység használatával adatokat másol a Couchbase módját ismerteti. Épül a [másolási tevékenység áttekintése](copy-activity-overview.md) cikket, amely megadja a másolási tevékenység általános áttekintést.
 

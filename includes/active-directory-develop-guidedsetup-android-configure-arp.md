@@ -1,6 +1,30 @@
-## <a name="add-the-applications-registration-information-to-your-app"></a>Az alkalmazás regisztrációs adatok hozzáadása az alkalmazáshoz
+---
+title: fájl belefoglalása
+description: fájl belefoglalása
+services: active-directory
+documentationcenter: dev-center-name
+author: andretms
+manager: mtillman
+editor: ''
+ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
+ms.service: active-directory
+ms.devlang: na
+ms.topic: include
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 09/13/2018
+ms.author: andret
+ms.custom: include file
+ms.openlocfilehash: a2ca767edf1ee3e4ba2d3185d66a871ceff21a6c
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46293509"
+---
+## <a name="add-the-applications-registration-to-your-code"></a>A kód hozzáadása az alkalmazás regisztrálása
 
-Ebben a lépésben meg kell az ügyfél-azonosító hozzáadása a projekthez.
+Ebben a lépésben kell hozzáadnia az alkalmazás / ügyfél-azonosítója a projekthez.
 
 1.  Nyissa meg `MainActivity` (alatt `app`  >  `java`  >  *`{host}.{namespace}`*)
 2.  Cserélje le a sort, kezdve `final static String CLIENT_ID` együtt:
@@ -8,7 +32,7 @@ Ebben a lépésben meg kell az ügyfél-azonosító hozzáadása a projekthez.
 final static String CLIENT_ID = "[Enter the application Id here]";
 ```
 3. Nyissa meg: `app` > `manifests` > `AndroidManifest.xml`
-4. Adja hozzá a következő tevékenységek `manifest\application` csomópont. A regisztráció egy `BrowserTabActivity` , hogy az operációs rendszer, a hitelesítés elvégzése után az alkalmazás folytatásához:
+4. Adja hozzá a következő tevékenységek `manifest\application`. A`BrowserTabActivity` lehetővé teszi, hogy a Microsoft a hitelesítés elvégzése után az alkalmazás visszahívja:
 
 ```xml
 <!--Intent filter to capture System Browser calling back to our app after Sign In-->

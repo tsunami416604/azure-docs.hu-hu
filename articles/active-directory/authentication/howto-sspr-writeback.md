@@ -10,28 +10,28 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: e613ff742096077fe1765d4b855b6c7d409cc228
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 1ae74f7c43e763962224683954b28e5941136c08
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39158947"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46295818"
 ---
 # <a name="how-to-configure-password-writeback"></a>Útmutató: A jelszóvisszaírás konfigurálása
 
-Azt javasoljuk, hogy az automatikus frissítési funkcióját használja [az Azure AD Connect](./../connect/active-directory-aadconnect-get-started-express.md) jelszóvisszaíró használata esetén.
+Azt javasoljuk, hogy az automatikus frissítési funkcióját használja [az Azure AD Connect](../hybrid/how-to-connect-install-express.md) jelszóvisszaíró használata esetén.
 
-A következő lépések azt feltételezik, hogy már konfigurálta az Azure AD Connect a környezetében az a [Express](./../connect/active-directory-aadconnect-get-started-express.md) vagy [egyéni](./../connect/active-directory-aadconnect-get-started-custom.md) beállításait.
+A következő lépések azt feltételezik, hogy már konfigurálta az Azure AD Connect a környezetében az a [Express](../hybrid/how-to-connect-install-express.md) vagy [egyéni](../hybrid/how-to-connect-install-custom.md) beállításait.
 
-1. Konfigurálni, és a jelszóvisszaírás engedélyezéséhez jelentkezzen be az Azure AD Connect-kiszolgáló, és indítsa el a **az Azure AD Connect** konfigurációs varázsló.
-2. Az a **üdvözlő** lapon jelölje be **konfigurálása**.
-3. Az a **további feladatok** lapon jelölje be **szinkronizálási beállítások testreszabása**, majd válassza ki **tovább**.
-4. Az a **az Azure AD Connect** lapon, majd válassza ki és adja meg egy globális rendszergazdai hitelesítő adatok **tovább**.
-5. Az a **címtárak csatlakoztatása** és **Domain/OU** lapok szűrése, válassza ki **tovább**.
-6. Az a **választható funkciók** lapon, jelölje be a a **jelszóvisszaíró** válassza **tovább**.
+1. A jelszóvisszaíró konfigurálásához és engedélyezéséhez jelentkezzen be az Azure AD Connect-kiszolgálóra, és indítsa el az **Azure AD Connect** konfigurációs varázslóját.
+2. Az **üdvözlőlapon** kattintson a **Konfigurálás** gombra.
+3. A **További feladatok** lapon válassza a **Szinkronizálási beállítások testreszabása** elemet, majd kattintson a **Tovább** gombra.
+4. A **Csatlakozás az Azure AD szolgáltatáshoz** lapon adja meg egy globális rendszergazda hitelesítő adatait, majd kattintson a **Tovább** gombra.
+5. A **Címtárak csatlakoztatása** és a **Tartomány/szervezeti egység** szűrőoldalakon kattintson a **Tovább** gombra.
+6. A **Választható funkciók** lapon jelölje be a **Jelszóvisszaíró** melletti jelölőnégyzetet, és kattintson a **Tovább** gombra.
    ![Az Azure AD Connect a jelszóvisszaírás engedélyezése][Writeback]
-7. Az a **konfigurálásra kész** lapon jelölje be **konfigurálása** és várjon, amíg a folyamat befejezéséhez.
-8. Amikor megjelenik a konfiguráció befejezéséhez, válassza ki a **kilépési**.
+7. A **Konfigurálásra kész** lapon kattintson a **Konfigurálás** gombra, és várja meg, amíg a folyamat véget ér.
+8. Ha látja, hogy a konfigurálás befejeződött, kattintson a **Kilépés** gombra.
 
 A jelszóvisszaírás, kapcsolódó általános hibaelhárítási feladatokat című [a jelszóvisszaíró hibaelhárítása](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback) hibaelhárítási című cikkben.
 

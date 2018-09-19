@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/25/2018
+ms.date: 09/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 0d98aef3e75130bbab7871733f709bf5e2ffdbcb
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: 62c171381201f3cedee869aba301859a7047f5ce
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45541249"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46294908"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Egy Windows hibrid Runbook-feldolgozó üzembe helyezése
 
@@ -30,7 +30,7 @@ Telepítése és konfigurálása a Windows hibrid Runbook-feldolgozók, két mó
 A Windows hibrid Runbook-feldolgozók minimális követelményei a következők:
 
 * A Windows Server 2012 vagy újabb.
-* Windows PowerShell 4.0-s vagy újabb ([töltse le a WMF 4.0](https://www.microsoft.com/download/details.aspx?id=40855)). Azt javasoljuk, hogy a Windows PowerShell 5.1-es ([töltse le a WMF 5.1](https://www.microsoft.com/download/details.aspx?id=54616)) megbízhatóság növelése érdekében.
+* Windows PowerShell 5.1-es vagy újabb ([töltse le a WMF 5.1](https://www.microsoft.com/download/details.aspx?id=54616)).
 * .NET-keretrendszer 4.6.2-es vagy újabb.
 * Két magot.
 * 4 GB RAM.
@@ -63,8 +63,8 @@ A következő lépésekkel automatizálhatja a telepítés és konfigurálás Wi
      > [!NOTE]
      > A Log Analytics-integráció támogatott csak Automation régiók jelenleg **Délkelet-Ausztrália**, **USA keleti RÉGIÓJA 2**, **Délkelet-Ázsia**, és  **Nyugat-Európa**. Ha az Automation-fiók nem ezen régiók egyikében, a parancsfájl egy Log Analytics-munkaterületet hoz létre, de figyelmeztetést jelenít meg, hogy azt nem kapcsolja őket össze.
 
-1. Nyissa meg a számítógépen, **Windows PowerShell** származó a **Start** képernyő rendszergazdai módban.
-1. A PowerShell parancssori rendszerhéjból keresse meg a letöltött szkript tartalmazó mappát. Módosítsa az értékeket a paraméterekhez *– AutomationAccountName*, *- AAResourceGroupName*, *- OMSResourceGroupName*, *- HybridGroupName*, *- SubscriptionId*, és *- WorkspaceName*. Ezután futtassa a szkriptet.
+2. Nyissa meg a számítógépen, **Windows PowerShell** származó a **Start** képernyő rendszergazdai módban.
+3. A PowerShell parancssori rendszerhéjból keresse meg a letöltött szkript tartalmazó mappát. Módosítsa az értékeket a paraméterekhez *– AutomationAccountName*, *- AAResourceGroupName*, *- OMSResourceGroupName*, *- HybridGroupName*, *- SubscriptionId*, és *- WorkspaceName*. Ezután futtassa a szkriptet.
 
      > [!NOTE]
      > A szkript futtatása után az Azure-hitelesítésre kéri. Ön *kell* jelentkezzen be egy olyan fiókkal, amely tagja az előfizetés-Adminisztrátorok szerepkörhöz, és az előfizetés társadminisztrátorának.
@@ -75,9 +75,9 @@ A következő lépésekkel automatizálhatja a telepítés és konfigurálás Wi
    -SubscriptionId <AzureSubscriptionId> -WorkspaceName <NameOfLogAnalyticsWorkspace>
    ```
 
-1. Kéri, hogy fogadja el a NuGet telepítése, és kéri, hogy a saját Azure hitelesítő adatait.
+4. Kéri, hogy fogadja el a NuGet telepítése, és kéri, hogy a saját Azure hitelesítő adatait.
 
-1. A szkript befejezése után a **hibrid Feldolgozócsoportok** lap az új csoport és a tagok száma látható. Ha egy meglévő csoportot, a tagok száma értéke akkor növekszik. A csoportot a listából kiválaszthatja a a **hibrid Feldolgozócsoportok** lapon, és válassza a **hibrid feldolgozók** csempére. Az a **hibrid feldolgozók** lapon láthatja a felsorolt csoport minden tagja.
+5. A szkript befejezése után a **hibrid Feldolgozócsoportok** lap az új csoport és a tagok száma látható. Ha egy meglévő csoportot, a tagok száma értéke akkor növekszik. A csoportot a listából kiválaszthatja a a **hibrid Feldolgozócsoportok** lapon, és válassza a **hibrid feldolgozók** csempére. Az a **hibrid feldolgozók** lapon láthatja a felsorolt csoport minden tagja.
 
 ### <a name="manual-deployment"></a>Manuális telepítés
 

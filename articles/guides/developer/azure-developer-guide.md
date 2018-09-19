@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: glenga
-ms.openlocfilehash: 468c6486274b8bf1dc202716f525c39face91862
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: f8aa37dbc2d3fb5f560d899626a84a2ab86ff223
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44297298"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46294577"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Első lépésekhez készült útmutató Azure-fejlesztőknek
 
@@ -261,7 +261,7 @@ Fejlesztők számára nyújtanak hogy például megvásárolná be a kódot, maj
 
 ### <a name="what-is-an-azure-account"></a>Mi az Azure-fiókkal?
 
-Tudják létrehozása és használata Azure-előfizetéssel, Azure-fiókkal kell rendelkeznie. Az Azure-fiók az identitás egyszerűen az Azure ad-ben vagy egy címtárban, például egy munkahelyi vagy iskolai szervezet, amely megbízható Azure AD által. Ha nincs ilyen egy szervezethez tartozik, a Microsoft Account, amely az Azure AD által megbízhatónak tartott bármikor létrehozhat egy előfizetést. A helyszíni Windows Server Active Directory integrálása az Azure ad-vel kapcsolatos további információkért lásd: [a helyszíni identitások integrálása az Azure Active Directory](../../active-directory/active-directory-aadconnect.md).
+Tudják létrehozása és használata Azure-előfizetéssel, Azure-fiókkal kell rendelkeznie. Az Azure-fiók az identitás egyszerűen az Azure ad-ben vagy egy címtárban, például egy munkahelyi vagy iskolai szervezet, amely megbízható Azure AD által. Ha nincs ilyen egy szervezethez tartozik, a Microsoft Account, amely az Azure AD által megbízhatónak tartott bármikor létrehozhat egy előfizetést. A helyszíni Windows Server Active Directory integrálása az Azure ad-vel kapcsolatos további információkért lásd: [a helyszíni identitások integrálása az Azure Active Directory](../../active-directory/hybrid/whatis-hybrid-identity.md).
 
 Minden Azure-előfizetés bizalmi kapcsolattal rendelkezik egy Azure AD-példányhoz. Ez azt jelenti, hogy megbízik ebben a címtárban a felhasználók, szolgáltatások és eszközök hitelesítéséhez. Több előfizetés is megbízhat ugyanabban a címtárban, de egy előfizetés csak egy címtárban bízhat meg. További tudnivalókért lásd: [kapcsolódnak az Azure-előfizetések az Azure Active Directory](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
 

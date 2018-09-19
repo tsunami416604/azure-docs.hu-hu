@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/30/2018
 ms.author: juliako
-ms.openlocfilehash: 81fab8903c0101d0e4aae8a392f05129651cd762
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: a17c08cc66b13a5ec15d32be7e9ec738da73e219
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39369141"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46129054"
 ---
 # <a name="scaling-media-processing-overview"></a>Skálázás Media feldolgozása – áttekintés
 Ezen a lapon nyújt áttekintést, és miért médiafeldolgozás méretezését. 
@@ -35,7 +35,7 @@ Az alábbi táblázat segít a különböző kódolási sebességű közötti ki
 | Forgatókönyvek | **S1** | **S2** | **S3** |
 | --- | --- | --- | --- |
 | A felhasználási esetet |Egyszeres átviteli sebességű kódolás. <br/>SD vagy az alatti megoldások, a fájlok nem idő-és nagybetűket, alacsony költségű. |Egyféle sávszélességű, és több átviteli sebességű kódolás.<br/>Normál használati SD és a HD Encoding. |Egyféle sávszélességű, és több átviteli sebességű kódolás.<br/>Teljes HD és 4K felbontása videókat. Idő-és nagybetűket, a gyorsabb ügyintézés kódolást. |
-| Teljesítményteszt |Körülbelül 11 perc meghatározott kódolásból egy egyféle sávszélességű MP4-fájlt, az azonos felbontású vesz igénybe. |Idő szükséges kódolásának a "H264 egyféle sávszélességű 720p" előbeállítást körülbelül 5 perc.<br/><br/>Kódolás az "H264 Multiple Bitrate 720p" beállításkészletet körülbelül 11,5 percig tart. |Idő szükséges kódolásának a "H264 egyetlen Bitrate 1080p" előbeállítást körülbelül 2.7-es perc.<br/><br/>Kódolás a "H264 Multiple Bitrate 1080p" beállításkészletet körülbelül 5.7 percig tart. |
+| 5 perces videó a teljesítményteszt |Körülbelül 11 perc meghatározott kódolásból egy egyféle sávszélességű MP4-fájlt, az azonos felbontású vesz igénybe. |Idő szükséges kódolásának a "H264 egyféle sávszélességű 720p" előbeállítást körülbelül 5 perc.<br/><br/>Kódolás az "H264 Multiple Bitrate 720p" beállításkészletet körülbelül 11,5 percig tart. |Idő szükséges kódolásának a "H264 egyetlen Bitrate 1080p" előbeállítást körülbelül 2.7-es perc.<br/><br/>Kódolás a "H264 Multiple Bitrate 1080p" beállításkészletet körülbelül 5.7 percig tart. |
 
 
 ## <a name="considerations"></a>Megfontolandó szempontok

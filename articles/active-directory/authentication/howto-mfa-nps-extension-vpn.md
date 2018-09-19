@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: c1247dfca6dea638da2113fef940b97ad3348b9a
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 0754b13704810816b1650010a00185031ca41f5d
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39160280"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46297571"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>A VPN-infrastruktúra integrálása az Azure MFA által a hálózati házirend-kiszolgáló-bővítmény használata az Azure-hoz
 
@@ -122,7 +122,7 @@ A Microsoft Azure Active Directory PowerShell-modul még nem létezik, ha telep�
 
 Az NPS-bővítményének használatához a helyszíni felhasználók legyen szinkronizálva az Azure Active Directoryval, és engedélyezve van az MFA-hoz. Ez az útmutató feltételezi, hogy a helyszíni felhasználók Azure AD connectben Azure Active Directoryval szinkronizált. Útmutatás a felhasználók a multi-factor Authentication lehetővé teszi az alábbiakban találhatók.
 
-Az Azure AD Connect kapcsolatos információkért lásd: [a helyszíni címtárak integrálása az Azure Active Directory](../connect/active-directory-aadconnect.md). 
+Az Azure AD Connect kapcsolatos információkért lásd: [a helyszíni címtárak integrálása az Azure Active Directory](../hybrid/whatis-hybrid-identity.md). 
 
 ### <a name="azure-active-directory-guid-id"></a>Azure Active Directory GUID ID 
 
@@ -393,7 +393,7 @@ A szkript használatához adja meg a bővítmény az Azure Active Directory rend
 
 6. Indítsa újra a kiszolgálót.
 
-### <a name="verify-the-configuration"></a>Ellenőrizze
+### <a name="verify-the-configuration"></a>A konfiguráció ellenőrzése
 A konfiguráció ellenőrzéséhez meg kell létesítenie a VPN-kiszolgáló egy új VPN-kapcsolat. Miután sikeresen megadta a hitelesítő adatait az elsődleges hitelesítéshez, a VPN-kapcsolat megvárja, amíg a másodlagos hitelesítés sikeres, a kapcsolat létrejötte előtt alább látható módon. 
 
 ![A Windows-beállítások VPN ablak](./media/howto-mfa-nps-extension-vpn/image42.png)
@@ -453,5 +453,5 @@ További információkért lásd: [a meglévő hálózati házirend-kiszolgáló
 
 [Távoli asztali átjáró és RADIUS-t használó Azure Multi-Factor Authentication-kiszolgáló](howto-mfaserver-nps-rdg.md)
 
-[A helyszíni címtárak integrálása az Azure Active Directoryval](../connect/active-directory-aadconnect.md)
+[A helyszíni címtárak integrálása az Azure Active Directoryval](../hybrid/whatis-hybrid-identity.md)
 

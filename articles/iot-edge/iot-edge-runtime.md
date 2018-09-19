@@ -8,12 +8,12 @@ ms.date: 08/13/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: f832b05969c028880f6e375ff4a2ee8dc7a7eaf4
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: 3f3a8c8a8bce59d1757e9ad53c8ebdbd06a7f33f
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42054081"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46294169"
 ---
 # <a name="understand-the-azure-iot-edge-runtime-and-its-architecture"></a>Az Azure IoT Edge-futtatókörnyezet és architektúrájának ismertetése
 
@@ -23,7 +23,7 @@ Az IoT Edge-futtatókörnyezet az IoT Edge-eszközökön a következő funkciók
 
 * Telepíti és frissíti az eszközökön a számítási feladatokat.
 * Fenntartja Azure IoT Edge biztonsági szabványait az eszközön.
-* Biztosítja, hogy [IoT Edge-modulok] [ lnk-modules] folyamatos futását.
+* Biztosítja, hogy [az IoT Edge-modulok]-[lnk-modulok] folyamatos futását.
 * Jelenti a modulok állapotát a felhőnek a távoli monitorozáshoz.
 * Kommunikációt létesít alárendelt levéleszközök és az IoT Edge-eszközök között.
 * Kommunikációt létesít a modulok és az IoT Edge-eszköz között.
@@ -117,7 +117,7 @@ További információ az Azure IoT Edge biztonsági keretrendszert, olvassa el a
 
 ## <a name="next-steps"></a>További lépések
 
-[Az Azure IoT Edge-modulok megismerése][lnk-modules]
+[Megismerheti az Azure IoT Edge-tanúsítványok][lnk-certs]
 
 <!-- Images -->
 [1]: ./media/iot-edge-runtime/Pipeline.png
@@ -126,4 +126,4 @@ További információ az Azure IoT Edge biztonsági keretrendszert, olvassa el a
 [4]: ./media/iot-edge-runtime/ModuleEndpointsWithRoutes.png
 
 <!-- Links -->
-[lnk-modules]: iot-edge-modules.md
+[lnk-certs]: iot-edge-certs.md

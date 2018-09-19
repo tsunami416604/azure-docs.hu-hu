@@ -12,12 +12,12 @@ ms.author: josack
 ms.suite: sql
 ms.prod_service: sql-database
 ms.component: data-movement
-ms.openlocfilehash: 4b48f360c95170a36d1e79b075403d541c8b66ed
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 9ca8c42d99f3bd7548c685f03328084865a09906
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45983933"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46295784"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-database-in-azure-sql-database"></a>Új adatbázis a felhőben – Azure SQL Database adatbázis
 
@@ -73,12 +73,12 @@ Nincsenek [két hitelesítési módszerek](sql-database-control-access.md#authen
 - [Az Azure Active Directory-hitelesítés](sql-database-aad-authentication.md)
 - SQL-hitelesítés. 
 
-A hagyományos windows-hitelesítés nem támogatott. Az Azure Active Directory (AD) egy olyan központi identitás- és hozzáférés a felügyeleti szolgáltatás. Ez nagyon kényelmesen megadhat egy egyszeri bejelentkezéses hozzáférést (SSO), a személyzet összes a szervezetben. Ez azt jelenti, hogy a hitelesítő adatok meg vannak osztva az összes Azure-szolgáltatások egyszerűbb hitelesítéshez. Támogatja az AAD [többtényezős hitelesítés (többtényezős hitelesítést)](sql-database-ssms-mfa-authentication.md) és a egy-egy [néhány kattintással](../active-directory/connect/active-directory-aadconnect-get-started-express.md) AAD integrálható a Windows Server Active Directoryval. SQL-hitelesítés már használja egy, az elmúlt ugyanúgy működik. Felhasználónevet/jelszót ad meg, és hitelesítheti a felhasználókat egy adott logikai kiszolgáló bármely olyan adatbázisába. Ez lehetővé teszi az SQL Database és az SQL Data Warehouse kínálta a multi-factor authentication és a Vendég felhasználói fiókok Azure AD-tartomány belül. Ha már rendelkezik egy Active Directory a helyszíni, meg is összevonható a címtár az Azure Active Directoryval, a címtár kiterjesztése az Azure-bA.
+A hagyományos windows-hitelesítés nem támogatott. Az Azure Active Directory (AD) egy olyan központi identitás- és hozzáférés a felügyeleti szolgáltatás. Ez nagyon kényelmesen megadhat egy egyszeri bejelentkezéses hozzáférést (SSO), a személyzet összes a szervezetben. Ez azt jelenti, hogy a hitelesítő adatok meg vannak osztva az összes Azure-szolgáltatások egyszerűbb hitelesítéshez. Támogatja az AAD [többtényezős hitelesítés (többtényezős hitelesítést)](sql-database-ssms-mfa-authentication.md) és a egy-egy [néhány kattintással](../active-directory/hybrid/how-to-connect-install-express.md) AAD integrálható a Windows Server Active Directoryval. SQL-hitelesítés már használja egy, az elmúlt ugyanúgy működik. Felhasználónevet/jelszót ad meg, és hitelesítheti a felhasználókat egy adott logikai kiszolgáló bármely olyan adatbázisába. Ez lehetővé teszi az SQL Database és az SQL Data Warehouse kínálta a multi-factor authentication és a Vendég felhasználói fiókok Azure AD-tartomány belül. Ha már rendelkezik egy Active Directory a helyszíni, meg is összevonható a címtár az Azure Active Directoryval, a címtár kiterjesztése az Azure-bA.
 
 |**Ha Ön...**|**Az SQL Database / SQL Data Warehouse**|
 |---|---|
 |Nem szeretné használni az Azure Active Directory (AD) az Azure-ban|Használat [SQL-hitelesítés](sql-database-security-overview.md)|
-|Helyszíni SQL Server-kiszolgálón használt AD|[Az Azure ad-vel AD összevonása](../active-directory/connect/active-directory-aadconnect.md), és az Azure AD-hitelesítés használatára. Ehhez használhatja, egyszeri bejelentkezést.|
+|Helyszíni SQL Server-kiszolgálón használt AD|[Az Azure ad-vel AD összevonása](../active-directory/hybrid/whatis-hybrid-identity.md), és az Azure AD-hitelesítés használatára. Ehhez használhatja, egyszeri bejelentkezést.|
 |Többtényezős hitelesítés (MFA) kell|Többtényezős hitelesítés – házirend- [feltételes hozzáférés a Microsoft](sql-database-conditional-access.md), és használja [MFA-támogatással az Azure AD univerzális hitelesítéssel](sql-database-ssms-mfa-authentication.md).|
 |A Microsoft-fiókok (live.com, Outlook.com-os) vagy más tartományok (gmail.com) vendégfiókok rendelkezik|Használat [Azure AD univerzális hitelesítéssel](sql-database-ssms-mfa-authentication.md) az SQL Database/Data Warehouse, amely kihasználja [Azure AD B2B együttműködés](../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md).|
 |Az Azure AD hitelesítő adatok használatával összevont tartományok Windows jelentkezett be|Használat [integrált Azure AD-hitelesítés](sql-database-aad-authentication-configure.md).|

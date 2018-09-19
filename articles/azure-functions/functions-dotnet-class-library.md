@@ -9,14 +9,14 @@ keywords: azure-függvények, függvények, eseményfeldolgozás, webhookok, din
 ms.service: azure-functions
 ms.devlang: dotnet
 ms.topic: reference
-ms.date: 12/12/2017
+ms.date: 09/12/2018
 ms.author: glenga
-ms.openlocfilehash: 9f538b48918bdde923c6dbf3999302e45b955035
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 54ac616f97ba034893721ff62fc6157dd045b5f8
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44092410"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46126825"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Az Azure Functions C# – fejlesztői referencia
 
@@ -36,10 +36,24 @@ Ez a cikk azt feltételezi, hogy már elolvasta a következő cikkeket:
 A Visual Studióban a **Azure Functions** projektsablonnal hoz létre egy C# hordozhatóosztálytár-projektjének, amely a következő fájlokat tartalmazza:
 
 * [Host.JSON](functions-host-json.md) -tárolja a konfigurációs beállításokat, amelyek hatással vannak a projekt összes függvényt helyileg vagy az Azure-beli futtatásához.
-* [Local.Settings.JSON](functions-run-local.md#local-settings-file) -Alkalmazásbeállítások és a helyi futtatás során használt kapcsolati karakterláncokat tárolja.
+* [Local.Settings.JSON](functions-run-local.md#local-settings-file) -Alkalmazásbeállítások és a helyi futtatás során használt kapcsolati karakterláncokat tárolja. A fájl tartalmazza a titkos kulcsok és a függvényalkalmazáshoz az Azure-ban nyilvánosságra kerülését. Ehelyett kell [Alkalmazásbeállítások hozzáadása a függvényalkalmazáshoz](functions-develop-vs.md#function-app-settings).
+
+A projekt buildjének elkészítéséhez, ha úgy tűnik, a következő jön létre a buildek mappa struktúrát kimeneti könyvtár:
+
+```
+<framework.version>
+ | - bin
+ | - MyFirstFunction
+ | | - function.json
+ | - MySecondFunction
+ | | - function.json
+ | - host.json
+```
+
+Ebben a könyvtárban, mire megtörténik a függvényalkalmazáshoz az Azure-ban. A kötési bővítményeket szükséges [verzió 2.x](functions-versions.md) , a Functions runtime a [hozzáadott a projekt NuGet-csomagok](functions-triggers-bindings.md#c-class-library-with-visual-studio-2017).
 
 > [!IMPORTANT]
-> A létrehozási folyamat létrehoz egy *function.json* fájlban találhatók. Ez *function.json* fájl nem célja, hogy közvetlenül szerkeszthetők. Nem kötelező konfigurációjának módosítása, vagy tiltsa le a függvény a fájl szerkesztésével. A funkció letiltásához használja a [letiltása](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/DisableAttribute.cs) attribútum. Például MY_TIMER_DISABLED beállítás logikai alkalmazás hozzáadása, és a alkalmazni `[Disable("MY_TIMER_DISABLED")]` a függvényt. Ezután engedélyezése és letiltása az alkalmazás beállításainak megváltoztatása.
+> A létrehozási folyamat létrehoz egy *function.json* fájlban találhatók. Ez *function.json* fájl nem célja, hogy közvetlenül szerkeszthetők. Nem kötelező konfigurációjának módosítása, vagy tiltsa le a függvény a fájl szerkesztésével. Ismerje meg, hogyan tilthatja le a függvény, lásd: [funkciók letiltása](disable-function.md#functions-2x---c-class-libraries).
 
 ## <a name="methods-recognized-as-functions"></a>Függvények végfelhasználóként módszerek
 

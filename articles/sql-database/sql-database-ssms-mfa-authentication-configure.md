@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/13/2018
 ms.author: mireks
 ms.reviewer: vanto
-ms.openlocfilehash: 504b20dfddb5984c17bba9842fbc1a08671c4175
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 2008fdc5b3b6a5263821f6b0a603ae45dad19f9e
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44719035"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46297315"
 ---
 # <a name="configure-multi-factor-authentication-for-sql-server-management-studio-and-azure-ad"></a>Az SQL Server Management Studio és az Azure AD multi-factor authentication konfigurálása
 
@@ -27,7 +27,7 @@ Ez a témakör bemutatja, hogyan használható az Azure Active Directory többt�
 
 ## <a name="configuration-steps"></a>Konfigurációs lépések
 
-1. **Egy Azure Active Directory konfigurálása** – további információkért lásd: [az Azure AD-címtár felügyelete](https://msdn.microsoft.com/library/azure/hh967611.aspx), [a helyszíni identitások integrálása az Azure Active Directory](../active-directory/active-directory-aadconnect.md), [ A saját tartománynév hozzáadása az Azure ad-ben](https://azure.microsoft.com/blog/2012/11/28/windows-azure-now-supports-federation-with-windows-server-active-directory/), [Microsoft Azure mostantól támogatja a Windows Server Active Directoryval való összevonás](https://azure.microsoft.com/blog/2012/11/28/windows-azure-now-supports-federation-with-windows-server-active-directory/), és [kezelése Windows PowerShell-lel az Azure AD](https://msdn.microsoft.com/library/azure/jj151815.aspx).
+1. **Egy Azure Active Directory konfigurálása** – további információkért lásd: [az Azure AD-címtár felügyelete](https://msdn.microsoft.com/library/azure/hh967611.aspx), [a helyszíni identitások integrálása az Azure Active Directory](../active-directory/hybrid/whatis-hybrid-identity.md), [ A saját tartománynév hozzáadása az Azure ad-ben](https://azure.microsoft.com/blog/2012/11/28/windows-azure-now-supports-federation-with-windows-server-active-directory/), [Microsoft Azure mostantól támogatja a Windows Server Active Directoryval való összevonás](https://azure.microsoft.com/blog/2012/11/28/windows-azure-now-supports-federation-with-windows-server-active-directory/), és [kezelése Windows PowerShell-lel az Azure AD](https://msdn.microsoft.com/library/azure/jj151815.aspx).
 2. **Multi-factor Authentication** – részletes útmutatásért lásd: [Mi az Azure multi-factor Authentication?](../active-directory/authentication/multi-factor-authentication.md), [feltételes hozzáférés (többtényezős hitelesítés) az Azure SQL Database és az adatraktár](sql-database-conditional-access.md). (Teljes feltételes hozzáférés szükséges egy prémium szintű Azure Active Directory (Azure AD). Korlátozott MFA érhető el egy standard szintű Azure AD-vel.)
 3. **Az SQL Database vagy az SQL Data Warehouse az Azure AD-hitelesítés konfigurálása** – részletes útmutatásért lásd: [SQL Database vagy az SQL Data Warehouse által használatával az Azure Active Directory-hitelesítéssel csatlakozik](sql-database-aad-authentication.md).
 4. **Töltse le az SSMS** – az ügyfélszámítógépen, az ssms legújabb verziójának letöltése [töltse le az SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx). Az összes funkciót ebben a témakörben használja legalább 17.2 verziója 2017. július.  

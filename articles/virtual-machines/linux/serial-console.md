@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/07/2018
 ms.author: harijay
-ms.openlocfilehash: 69dea0aa3eaa9de3ed94b934e5fa3c6e6a3ec24d
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 6fb60955f1d436e13234243c0e83f1487cb7f7d0
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45632840"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46127720"
 ---
 # <a name="virtual-machine-serial-console"></a>Virtuális gépek soros konzolja
 
@@ -29,7 +29,7 @@ A virtuális gépek soros konzolja az Azure-ban Linux rendszerű virtuális gép
 A soros konzol dokumentációja a Windows virtuális gépek esetében [ide](../windows/serial-console.md).
 
 > [!Note] 
-> Globális Azure-régiókban található virtuális gépek soros konzol szolgáltatás általánosan elérhető. Ezen a ponton soros konzol még nem áll rendelkezésre az Azure Government vagy Azure China cloud.
+> Globális Azure-régiókban található virtuális gépek soros konzol szolgáltatás általánosan elérhető. Ezen a ponton soros konzol még nem érhető el az Azure Government vagy Azure China-felhőkben.
 
 
 ## <a name="prerequisites"></a>Előfeltételek 

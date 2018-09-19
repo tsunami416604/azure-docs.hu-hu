@@ -1,27 +1,27 @@
 ---
-title: A Translator Text API-előfizetési |} A Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
+title: A Translator Text API-előfizetés
+titleSuffix: Azure Cognitive Services
 description: Hogyan regisztrálhat a Translator Text API.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: nolachar
-ms.openlocfilehash: 2aa293acfa1a9e3fd95a64f6981bd8dc9747b6b6
-ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
+ms.openlocfilehash: 18d2926be9d358b90e5b34754e689604aef85522
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "36265557"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46128317"
 ---
 # <a name="how-to-sign-up-for-the-translator-text-api"></a>Hogyan regisztrálhat a Translator Text API
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-- Még nincs fiókja? Létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) való kísérletezéshez díjmentesen.
+- Még nincs fiókja? A költségvonzat nélküli kísérletezéshez létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/).
 - Van már fiókja? [bejelentkezés](https://ms.portal.azure.com/)
 
 ## <a name="create-a-subscription-to-the-translator-text-api"></a>A Translator Text API-előfizetés létrehozása

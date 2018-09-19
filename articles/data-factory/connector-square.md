@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: jingwang
-ms.openlocfilehash: d75ee2403fee8cabc696f95918c283c648888754
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: f63dcc73532426b07f792f631f934587fca08605
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45630657"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46128996"
 ---
-# <a name="copy-data-from-square-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával szögletes
+# <a name="copy-data-from-square-using-azure-data-factory-preview"></a>Adatok másolása az Azure Data Factory (előzetes verzió) használatával szögletes
 
 Ez a cikk az Azure Data Factory a másolási tevékenység használatával adatokat másol a szögletes módját ismerteti. Épül a [másolási tevékenység áttekintése](copy-activity-overview.md) cikket, amely megadja a másolási tevékenység általános áttekintést.
 

@@ -10,22 +10,22 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 4f4c2ada08c69b6602ff5a300a15c4ca57090a8e
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: 8440d8a492105365417190ad286798e0bdf47a0c
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42816053"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46295835"
 ---
 # <a name="what-is-password-writeback"></a>Mi a jelszóvisszaíró?
 
-Felhőalapú jelszó-visszaállításra segédprogram kellene kiválóan alkalmazható, de a legtöbb vállalat továbbra is rendelkezik egy helyszíni címtár, ahol a felhasználók létezik. Hogyan történik a Microsoft támogatási megtartja a hagyományos helyszíni Active Directory (AD) szinkronban a jelszó módosítására a felhőben? A jelszóvisszaíró funkciója engedélyezve van a [az Azure AD Connect](./../connect/active-directory-aadconnect.md) , amely lehetővé teszi, hogy a jelszó módosítására a meglévő helyszíni címtárhoz valós idejű visszaírása a felhőben.
+Felhőalapú jelszó-visszaállításra segédprogram kellene kiválóan alkalmazható, de a legtöbb vállalat továbbra is rendelkezik egy helyszíni címtár, ahol a felhasználók létezik. Hogyan történik a Microsoft támogatási megtartja a hagyományos helyszíni Active Directory (AD) szinkronban a jelszó módosítására a felhőben? A jelszóvisszaíró funkciója engedélyezve van a [az Azure AD Connect](../hybrid/whatis-hybrid-identity.md) , amely lehetővé teszi, hogy a jelszó módosítására a meglévő helyszíni címtárhoz valós idejű visszaírása a felhőben.
 
 A jelszóvisszaíró támogatják az olyan környezetekben, amelyek:
 
-* [Active Directory összevonási szolgáltatások](../connect/active-directory-aadconnect-federation-management.md)
-* [Jelszókivonat szinkronizálása](../connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md)
-* [Az átmenő hitelesítés](../connect/active-directory-aadconnect-pass-through-authentication.md)
+* [Active Directory összevonási szolgáltatások](../hybrid/how-to-connect-fed-management.md)
+* [Jelszókivonat szinkronizálása](../hybrid/how-to-connect-password-hash-synchronization.md)
+* [Az átmenő hitelesítés](../hybrid/how-to-connect-pta.md)
 
 A jelszóvisszaíró biztosítja:
 

@@ -1,6 +1,6 @@
 ---
-title: '.NET SDK: Fiókkezelési műveletek az Azure Data Lake Store-ban | Microsoft Docs'
-description: Fiókkezelési műveletek végrehajtása a Data Lake Store-ban az Azure Data Lake Store .NET SDK használatával
+title: '.NET SDK: Fiókkezelési műveletek az Azure Data Lake Storage Gen1 |} A Microsoft Docs'
+description: Fiókkezelési műveletek végrehajtása a Data Lake Storage Gen1 az Azure Data Lake Storage Gen1 .NET SDK használatával
 services: data-lake-store
 documentationcenter: ''
 author: nitinme
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: ee3c528345232090227c413aebaebe7cc265bc76
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: 2ed9f534c0eb27601243428f8e4b9d95db5d16b0
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35645367"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46123912"
 ---
-# <a name="account-management-operations-on-azure-data-lake-store-using-net-sdk"></a>Fiókkezelési műveletek az Azure Data Lake Store-ban a .NET SDK használatával
+# <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-net-sdk"></a>Fiókkezelési műveletek az Azure Data Lake Storage Gen1 .NET SDK használatával
 > [!div class="op_single_selector"]
 > * [.NET SDK](data-lake-store-get-started-net-sdk.md)
 > * [REST API](data-lake-store-get-started-rest-api.md)
@@ -27,9 +27,9 @@ ms.locfileid: "35645367"
 >
 >
 
-Ebből a cikkből megtudhatja, hogyan történik a fiókkezelési műveletek végrehajtása a Data Lake Store-ban a .NET SDK használatával. Fiókkezelési művelet lehet többek közt a Data Lake Store-fiókok létrehozása, az Azure-előfizetésekbe tartozó fiókok listázása, a fiókok törlése stb.
+Ebben a cikkben megismerheti, hogyan hajthat végre a fiókkezelési műveletek az Azure Data Lake Storage Gen1 .NET SDK használatával. Fiókkezelési műveletek közé tartozik, egy Data Lake Storage Gen1 listázása a fiókokat az Azure-előfizetéssel, törlés, a fiókok, stb-fiók létrehozása.
 
-A Data Lake Store adatkezelési műveleteinek a .NET SDK használatával való végrehajtásával kapcsolatban lásd: [Fájlrendszerműveletek a Data Lake Store-on a .NET SDK használatával](data-lake-store-data-operations-net-sdk.md).
+Adatok felügyeleti műveletek végrehajtása a Data Lake Storage Gen1 .NET SDK-val kapcsolatos utasításokért lásd: [fájlrendszerműveletek a Data Lake Storage Gen1 .NET SDK használatával](data-lake-store-data-operations-net-sdk.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 * **Visual Studio 2013, 2015 vagy 2017** Az alábbi utasítások a Visual Studio 2017-et használják.
@@ -89,7 +89,7 @@ A Data Lake Store adatkezelési műveleteinek a .NET SDK használatával való v
 
                 private static void Main(string[] args)
                 {
-                    _adlsAccountName = "<DATA-LAKE-STORE-NAME>.azuredatalakestore.net"; 
+                    _adlsAccountName = "<DATA-LAKE-STORAGE-GEN1-NAME>.azuredatalakestore.net"; 
                     _resourceGroupName = "<RESOURCE-GROUP-NAME>"; 
                     _location = "East US 2";
                     _subId = "<SUBSCRIPTION-ID>";                    
@@ -101,26 +101,26 @@ A cikk fennmaradó részéből megtudhatja, hogyan használhatja az elérhető .
 
 ## <a name="authentication"></a>Hitelesítés
 
-* Az alkalmazás végfelhasználói hitelesítésével kapcsolatban lásd: [Végfelhasználói hitelesítés a Data Lake Store-ban a .NET SDK használatával](data-lake-store-end-user-authenticate-net-sdk.md).
-* Az alkalmazás szolgáltatások közötti hitelesítésével kapcsolatban lásd: [Szolgáltatások közötti hitelesítés a Data Lake Store-ban a .NET SDK használatával](data-lake-store-service-to-service-authenticate-net-sdk.md).
+* Az alkalmazás végfelhasználói hitelesítésével kapcsolatban lásd: [végfelhasználói hitelesítés a Data Lake Storage Gen1 .NET SDK használatával](data-lake-store-end-user-authenticate-net-sdk.md).
+* Az alkalmazás szolgáltatások közötti hitelesítésével kapcsolatban lásd: [szolgáltatások közötti hitelesítés a Data Lake Storage Gen1 .NET SDK használatával](data-lake-store-service-to-service-authenticate-net-sdk.md).
 
 ## <a name="create-client-object"></a>Ügyfélobjektum létrehozása
-A következő kódrészlet létrehozza a Data Lake Store-fiók ügyfélobjektumát, amely a szolgáltatásnak küldött fiókkezelési kérések (például fiók létrehozása, fiók törlése stb.) kiadására használatos.
+A következő kódrészlet létrehozza a Data Lake Storage Gen1 fiók ügyfélobjektumát, amely a szolgáltatásnak küldött fiókkezelési kérések kiadására, mint például a fiók létrehozása, fiók törlése stb.
 
     // Create client objects and set the subscription ID
     _adlsClient = new DataLakeStoreAccountManagementClient(armCreds) { SubscriptionId = _subId };
     
-## <a name="create-a-data-lake-store-account"></a>Data Lake Store-fiók létrehozása
-A következő kódrészlet létrehoz egy Data Lake Store-fiókot a Data Lake Store-fiók ügyfélobjektumának létrehozásakor megadott Azure-előfizetésben.
+## <a name="create-a-data-lake-storage-gen1-account"></a>Hozzon létre egy Data Lake Storage Gen1 fiókot
+Az alábbi kódrészlet létrehoz egy Data Lake Storage Gen1 fiókot a Data Lake Storage Gen1 fiók ügyfélobjektumának létrehozásakor megadott Azure-előfizetésben.
 
-    // Create Data Lake Store account
+    // Create Data Lake Storage Gen1 account
     var adlsParameters = new DataLakeStoreAccount(location: _location);
     _adlsClient.Account.Create(_resourceGroupName, _adlsAccountName, adlsParameters);
 
-## <a name="list-all-data-lake-store-accounts-within-a-subscription"></a>Az összes Data Lake Store-fiók listázása egy előfizetésen belül
-Adja hozzá a következő metódust az osztálydefinícióhoz. A következő kódrészlet listázza az összes Data Lake Store-fiókot egy Azure-előfizetésen belül.
+## <a name="list-all-data-lake-storage-gen1-accounts-within-a-subscription"></a>Egy előfizetésen belüli összes Data Lake Storage Gen1 fiókok listázása
+Adja hozzá a következő metódust az osztálydefinícióhoz. A következő kódrészlet listázza az összes Data Lake Storage Gen1 fiókot egy Azure-előfizetésen belül.
 
-    // List all Data Lake Store accounts within the subscription
+    // List all Data Lake Storage Gen1 accounts within the subscription
     public static List<DataLakeStoreAccountBasic> ListAdlStoreAccounts()
     {
         var response = _adlsClient.Account.List(_adlsAccountName);
@@ -135,15 +135,15 @@ Adja hozzá a következő metódust az osztálydefinícióhoz. A következő kó
         return accounts;
     }
 
-## <a name="delete-a-data-lake-store-account"></a>Data Lake Store-fiók törlése
-A következő kódrészlet törli a korábban létrehozott Data Lake Store-fiókot.
+## <a name="delete-a-data-lake-storage-gen1-account"></a>Törölheti a Data Lake Storage Gen1
+A következő kódrészlet törli a korábban létrehozott Data Lake Storage Gen1 fiókot.
 
-    // Delete Data Lake Store account
+    // Delete Data Lake Storage Gen1 account
     _adlsClient.Account.Delete(_resourceGroupName, _adlsAccountName);
 
 ## <a name="see-also"></a>Lásd még
-* [Fájlrendszerműveletek a Data Lake Store-on a .NET SDK használatával](data-lake-store-data-operations-net-sdk.md)
-* [A Data Lake Store .NET SDK dokumentációja](https://docs.microsoft.com/dotnet/api/overview/azure/data-lake-store?view=azure-dotnet)
+* [Fájlrendszerműveletek a Data Lake Storage Gen1 .NET SDK használatával](data-lake-store-data-operations-net-sdk.md)
+* [Data Lake Storage Gen1 .NET SDK-referencia](https://docs.microsoft.com/dotnet/api/overview/azure/data-lake-store?view=azure-dotnet)
 
 ## <a name="next-steps"></a>További lépések
-* [Biztonságos adattárolás a Data Lake Store-ban](data-lake-store-secure-data.md)
+* [Az adatok védelme az 1. generációs Data Lake Storage-ban](data-lake-store-secure-data.md)

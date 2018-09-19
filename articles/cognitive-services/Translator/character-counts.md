@@ -1,24 +1,25 @@
 ---
-title: A Microsoft Translator Text API karakter Counts |} A Microsoft Docs
-description: A Microsoft Translator Text API hogyan számolja a karaktereket.
+title: Translator Text API karakterszám
+titlesuffix: Azure Cognitive Services
+description: A Translator Text API hogyan számolja a karaktereket.
 services: cognitive-services
 author: Jann-Skotdal
-manager: chriswendt1
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/20/2017
 ms.author: v-jansko
-ms.openlocfilehash: 1b4987509c17e4064d7c54608395e272efa8de3b
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: c6234a46ae55d73739dcc23110c5e0f6375c3f96
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41987466"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46128740"
 ---
-# <a name="how-the-microsoft-translator-text-api-counts-characters"></a>Hogyan számolja a Microsoft Translator Text API a karakterek
+# <a name="how-the-translator-text-api-counts-characters"></a>Hogyan számolja a Translator Text API a karakterek
 
-A Microsoft Translator megszámolja a bemenet minden egyes karakter. Karakterek Unicode az értelemben, nem pedig bájtban. Unicode pótló száma, a kettőt. Szóköz és jelölőnyelvi kódok is karakternek számítanak. A válasz hossza nem számít.
+A Translator Text API minden egyes karakter a bemeneti számít. Karakterek Unicode az értelemben, nem pedig bájtban. Unicode pótló száma, a kettőt. Szóköz és jelölőnyelvi kódok is karakternek számítanak. A válasz hossza nem számít.
 
 A Hibakeresés és BreakSentence metódusok nem számítanak bele a karakter használatalapú. Azonban várhatóan, hogy a hívások a Hibakeresés és BreakSentence módszerek más függvények, amely számításba vesszük a használatával egy megfelelő arányban vannak-e. A Microsoft fenntartja a jogot, észlelése és BreakSentence leltár indítása. 
 

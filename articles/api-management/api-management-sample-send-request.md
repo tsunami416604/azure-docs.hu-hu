@@ -1,6 +1,6 @@
 ---
-title: HTTP-kérelmek létrehozásához az API Management szolgáltatással
-description: Ismerkedjen meg az API Management kérelem-válasz házirendek segítségével külső szolgáltatások hívja az API-t
+title: API Management szolgáltatással létrehozni a HTTP-kérelmekre
+description: Kérés- és szabályzatok használata az API Management a külső szolgáltatások hívni az API-ból
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -14,23 +14,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: d7c32e5ae02e294ee88c19f058e04249c7c9969e
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.openlocfilehash: fdcc230171006c6388e75b947e10a73fb953001a
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
-ms.locfileid: "29714671"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46294679"
 ---
-# <a name="using-external-services-from-the-azure-api-management-service"></a>Az Azure API Management szolgáltatás a külső services használatával
-Az Azure API Management szolgáltatásban elérhető házirendek alapján csak a bejövő kérelem, a kimenő válasz és alapvető konfigurációs adatai hasznos munkahelyi számos teheti meg. Azonban tudnak kommunikálni az API Management külső szolgáltatások számos további lehetőségek megnyílik házirendek.
+# <a name="using-external-services-from-the-azure-api-management-service"></a>Az Azure API Management szolgáltatás a külső szolgáltatások használata
+Az Azure API Management szolgáltatásban elérhető házirendek számos hasznos munkát alapján csak a bejövő kérelem, a kimenő válaszok és alapvető konfigurációs adatai hajthatja végre. Azonban képes arra, hogy az API Management külső szolgáltatásokkal interakcióba sok további lehetőség nyílik házirendeket.
 
-Korábban láthatta hogyan kezelje a [Azure Event Hubs szolgáltatás naplózási, megfigyelésének és elemzés](api-management-log-to-eventhub-sample.md). Ez a cikk bemutatja a házirendekben, amelyek lehetővé teszik a külső HTTP-alapú szolgáltatás együttműködhet. Ezekkel a szabályzatokkal használható távoli eseményeket kiváltó vagy az eredeti kérelem és válasz valamilyen módon használt adatok beolvasása.
+Hogyan kezelheti az korábban már látott a [Azure Event Hubs szolgáltatás a naplózás, figyelés és elemzés](api-management-log-to-eventhub-sample.md). Ez a cikk bemutatja a házirendekben, amelyek lehetővé teszik bármely külső HTTP-alapú szolgáltatással. Ezekkel a szabályzatokkal használható indítására, távoli események vagy az eredeti kérés-válasz valamilyen módon kezeléséhez használt információk beolvasásakor.
 
 ## <a name="send-one-way-request"></a>Send-One-Way-Request
-Valószínűleg a legegyszerűbb külső beavatkozásra, amely lehetővé teszi egy külső szolgáltatás értesítést fontos esemény valamilyen kérelem tűz-és-elfelejti stílusát. A vezérlő adatfolyam házirend `choose` feltétellel, hogy érdekli bármilyen észleléséhez használható.  Ha a feltétel teljesül-e, hogy egy külső HTTP kérelem használatával a [küldési-egy-módon-kérelmek](https://msdn.microsoft.com/library/azure/dn894085.aspx#SendOneWayRequest) házirend. Ennek oka lehet egy kérelem egy üzenetküldési rendszerre, például Hipchat vagy a Slackhez, illetve egy levelezési API SendGrid vagy MailChimp, vagy a kritikus fontosságú támogatási incidensek az alábbihoz hasonló PagerDuty. E üzenetkezelési rendszerek rendelkezik egyszerű HTTP API-k is elindítható.
+Valószínűleg a legegyszerűbb külső interakciónak számít, amely lehetővé teszi, hogy értesítést kapjon, néhány fontos esemény típusú külső szolgáltatásból kérés aktiválásának és elfelejt stílusát. A control flow házirend `choose` feltételt, amely az Önt érdeklő bármilyen típusú észleléséhez használható.  Ha a feltétel teljesül, akkor is használhatja egy külső HTTP kérés használatával az [küldési – egy-módon-kérelmek](https://msdn.microsoft.com/library/azure/dn894085.aspx#SendOneWayRequest) házirend. Ez lehet egy üzenetkezelési rendszer például Hipchat vagy a Slack, illetve mint a SendGrid vagy a MailChimp API levél kérést, vagy a kritikus támogatási incidensek a PagerDuty alábbihoz hasonló. E üzenetkezelési rendszerek rendelkezik meghívható műveletkészletet jelölnek, egyszerű HTTP API-k.
 
-### <a name="alerting-with-slack"></a>A Slackhez riasztás
-A következő példa bemutatja, hogyan üzenetet küldeni a Slack Csevegés helyiségben, ha a HTTP-válasz állapotkódja nagyobb vagy egyenlő 500. Egy 500 tartomány hiba az ügyfél az API nem maguktól megoldódhatnak háttér-API problémájára utal. Általában valamilyen API Management részéről beavatkozást igényel.  
+### <a name="alerting-with-slack"></a>Slack-riasztások
+Az alábbi példa bemutatja, hogyan üzenet küldése egy Slack csevegőszoba, ha a HTTP-válaszként kapott állapotkód nem nagyobb, mint 500. Egy 500 tartomány hiba történt a háttérrendszeri API az API-ügyfél nem oldható fel magukat problémájára utal. Általában valamilyen az API Management részéről beavatkozást igényel.  
 
 ```xml
 <choose>
@@ -57,31 +57,31 @@ A következő példa bemutatja, hogyan üzenetet küldeni a Slack Csevegés hely
 </choose>
 ```
 
-Slackhez rendelkezik a bejövő webes hurkok fogalmát. Egy bejövő webes hook konfigurálásakor a Slackhez hoz létre egy különleges URL-címet, amely lehetővé teszi egy egyszerű POST kérelem végrehajtásához, és a Slack csatorna üzenetet továbbítani. Az Ön által létrehozott JSON-törzsére Slackhez által meghatározott formátumban alapul.
+Slack bejövő webhook fogalma rendelkezik. Egy bejövő webhook konfigurálásakor a Slack egy speciális URL-címet, amely lehetővé teszi, hogy hajtsa végre egy egyszerű POST-kérelmet, és adja át az üzenetet a Slack-csatornának állít elő. Az Ön által létrehozott JSON-törzse Slack által definiált formátumban alapul.
 
-![Slack webes Hook](./media/api-management-sample-send-request/api-management-slack-webhook.png)
+![Slack-Webhook](./media/api-management-sample-send-request/api-management-slack-webhook.png)
 
-### <a name="is-fire-and-forget-good-enough"></a>Tűz és elég jól elfelejti?
-Nincsenek bizonyos mellékhatásokkal kérelem tűz-és-elfelejti stílus használatával. Ha valamilyen okból, a kérelem sikertelen lesz, akkor a hiba nem fog szerepelni. Adott esetben nem igazolható összetettségét, hogy a másodlagos hibájának jelentéskészítő rendszer és a további teljesítményarányos költsége a válaszra való várakozás közben. A forgatókönyvekben, ahol a válasz ellenőrzése alapvető fontosságú a [küldési-kérelmek](https://msdn.microsoft.com/library/azure/dn894085.aspx#SendRequest) házirend jobb megoldás.
+### <a name="is-fire-and-forget-good-enough"></a>Fire, és elég jól elfelejtette?
+Bizonyos hátrányai is vannak, a kérés aktiválásának és elfelejt stílusát használatakor. Ha valamilyen okból, a kérelem meghiúsul, akkor nem kell jelenteni a hibát. Ez az adott esetben az összetettséget, hogy a jelentéskészítő rendszer és a további teljesítmény költsége a választ vár a többi másodlagos hiba nem igazolható. Forgatókönyvek, ahol ez elengedhetetlen, ellenőrizze a választ akkor a [küldési-kérelmek](https://msdn.microsoft.com/library/azure/dn894085.aspx#SendRequest) házirend nem jobb megoldás.
 
 ## <a name="send-request"></a>Küldési-kérelmek
-A `send-request` házirend lehetővé teszi, hogy egy külső szolgáltatás segítségével összetett feldolgozási feladatokat, és térjen vissza az adatokat az API management szolgáltatást, amely nem használható további házirend-feldolgozás.
+A `send-request` házirend lehetővé teszi, hogy egy külső szolgáltatás használatával összetett feldolgozás feladatokat és adatokat az API management szolgáltatás, amely további házirend feldolgozásának beállítása is használható.
 
 ### <a name="authorizing-reference-tokens"></a>Referencia-tokenek engedélyezése
-Az API Management főbb funkcióját háttér erőforrások védi. Ha a hitelesítési kiszolgáló, az API által használt hoz létre [JWT-jogkivonatokat](http://jwt.io/) az OAuth2 folyamat részeként, [Azure Active Directory](../active-directory/active-directory-aadconnect.md) Igen, akkor a `validate-jwt` házirend a token érvényességének ellenőrzése. Néhány engedélyezési kiszolgálók létrehozása, mi nevezzük [jogkivonatok hivatkozhat](http://leastprivilege.com/2015/11/25/reference-tokens-and-introspection/) anélkül, hogy egy visszahívási az engedélyezési kiszolgálóra, amely nem ellenőrizhető.
+Az API Management a fő függvény háttérerőforrásokhoz védelmére használja. Az engedélyezési kiszolgáló, az API által használt hozott létre [JWT-jogkivonatokkal](http://jwt.io/) az OAuth2 folyamat részeként, [Azure Active Directory](../active-directory/hybrid/whatis-hybrid-identity.md) használható, akkor a `validate-jwt` házirend a token érvényességének ellenőrzése. Egyes engedélyezési kiszolgálók létrehozása ún [jogkivonatok hivatkozhat](http://leastprivilege.com/2015/11/25/reference-tokens-and-introspection/) anélkül, hogy egy visszahívást, az engedélyezési kiszolgálón, amely nem ellenőrizhető.
 
-### <a name="standardized-introspection"></a>Szabványos introspection
-A múltban nincs szabványosított lehetőség van egy engedélyezési kiszolgáló és a hivatkozás-jogkivonat ellenőrzése le lett. Azonban a közelmúltban javasolt szabvány [RFC 7662](https://tools.ietf.org/html/rfc7662) az IETF, amely meghatározza, hogyan erőforrás-kiszolgáló a token érvényességének ellenőrzésére tett közzé.
+### <a name="standardized-introspection"></a>Szabványos önelemzési
+A múltban történt nem szabványos lehet az engedélyezési kiszolgálón egy referencia-token ellenőrzése. Azonban nemrégiben javasolt szabványos [RFC 7662](https://tools.ietf.org/html/rfc7662) , amely meghatározza, hogyan erőforrás-kiszolgáló egy token érvényességének ellenőrzéséhez az IETF által lett közzétéve.
 
 ### <a name="extracting-the-token"></a>A jogkivonat beolvasása
-Az első lépés a token kibontani a Authorization fejlécet. A fejléc értékének fájlrendszerrel kell formázni a `Bearer` engedélyezési sémát, egy szóköz, majd az engedélyezési jogkivonat megfelelően [RFC 6750](http://tools.ietf.org/html/rfc6750#section-2.1). Sajnos előfordulhatnak olyan esetek, ahol a hitelesítési séma meg van adva. Ez így áthidalhatók elemzésekor, az API Management felosztja a fejléc értékének a tárhelyen, és kiválasztja azokat az utolsó karakterlánc karakterláncokat. a visszaadott tömb. Így lehetővé teszi a probléma megoldásához rosszul formázott engedélyezési fejléceket.
+Az első lépés, hogy a jogkivonat kinyerni az engedélyeztetési fejléc. A fejléc értéke legyen formázva a `Bearer` engedélyezési séma, egy szóközt, majd az engedélyezési jogkivonatot megfelelően [RFC 6750](http://tools.ietf.org/html/rfc6750#section-2.1). Sajnos előfordulhatnak olyan esetek, ahol az engedélyezési séma van hagyva. Ez a fiók elemzésekor, az API Management a fejléc értéke adhatja meg bontja, és az utolsó karakterlánc kiválasztja a visszaadott karakterláncok tömbje. A program rosszul formázott engedélyezési fejléceket biztosít egy megkerülő megoldás.
 
 ```xml
 <set-variable name="token" value="@(context.Request.Headers.GetValueOrDefault("Authorization","scheme param").Split(' ').Last())" />
 ```
 
 ### <a name="making-the-validation-request"></a>Az ellenőrzési kérés
-Miután az API Management az engedélyezési jogkivonat, az API Management teheti a kérelem ellenőrzése a jogkivonat. RFC 7662 meghívja a folyamat introspection, és megköveteli, hogy Ön `POST` egy HTML-űrlaphoz introspection-erőforráshoz. A HTML-űrlaphoz, legalább tartalmaznia kell egy kulcs/érték pár kulccsal `token`. Ez a hitelesítési kiszolgáló kérést is hitelesíteni kell, annak érdekében, hogy a rosszindulatú ügyfelek nem Ugrás ezeken érvényes jogkivonatokat.
+Miután az API Management rendelkezik az engedélyezési jogkivonatra, az API Management teheti a jogkivonat érvényesítésére vonatkozó kérelem. RFC 7662 meghívja a folyamatot az önelemzési, és ehhez meg kell adni, `POST` HTML-űrlapból az önelemzési erőforráshoz. A HTML-űrlaphoz, legalább tartalmaznia kell egy kulcs/érték pár kulccsal `token`. A kérést, az engedélyezési kiszolgáló is hitelesíteni kell, annak érdekében, hogy a rosszindulatú ügyfelek nem go ezeken érvényes jogkivonatokat.
 
 ```xml
 <send-request mode="new" response-variable-name="tokenstate" timeout="20" ignore-error="true">
@@ -98,12 +98,12 @@ Miután az API Management az engedélyezési jogkivonat, az API Management tehet
 ```
 
 ### <a name="checking-the-response"></a>A válasz ellenőrzése
-A `response-variable-name` attribútum segítségével hozzáférést biztosíthat a visszaadott válaszban. Az ebben a tulajdonságban megadott név lesz a kulcs az használható a `context.Variables` szótár eléréséhez a `IResponse` objektum.
+A `response-variable-name` attribútum segítségével hozzáférést biztosíthat a visszaadott válasz. Ez a tulajdonság megadott neve használható egy kulcsot a `context.Variables` szótár eléréséhez a `IResponse` objektum.
 
-A válasz objektumból a szervezet kérheti le és, hogy a válasz egy JSON-objektumnak kell lennie, és tartalmaznia kell legalább egy nevű tulajdonság RFC 7622 közli az API Management `active` , amely egy logikai érték. Ha `active` értéke igaz, akkor a jogkivonat érvényes.
+A válasz objektumból kérheti le a szervezet és RFC 7622, hogy a válasz egy JSON-objektumot kell lennie, és tartalmaznia kell legalább egy nevű tulajdonság arra utasítja az API Management `active` , amely egy logikai érték. Amikor `active` értéke igaz, akkor számít, hogy a jogkivonat érvényes.
 
-### <a name="reporting-failure"></a>Jelentéskészítési hiba
-Használhatja a `<choose>` házirend észleli, ha a token érvénytelen, és ha igen, térjen vissza a 401-es válasz.
+### <a name="reporting-failure"></a>Jelentési hiba
+Használhat egy `<choose>` észleli, ha a jogkivonat érvénytelen, és ha igen, a házirend 401-es választ ad vissza.
 
 ```xml
 <choose>
@@ -118,10 +118,10 @@ Használhatja a `<choose>` házirend észleli, ha a token érvénytelen, és ha 
 </choose>
 ```
 
-Megfelelően [RFC 6750](https://tools.ietf.org/html/rfc6750#section-3) amely ismerteti, hogyan `bearer` jogkivonatok kell használni, az API Management is adja vissza egy `WWW-Authenticate` a 401-es válasz fejléce. A WWW-Authenticate célja, hogy kérje meg egy ügyfél egy megfelelően jogosult kérelem létrehozására. Az OAuth2-keretrendszerben készült lehetséges módszer számos, mert is nehézkes való kommunikációhoz szükséges összes információ. Szerencsére nincsenek azon törekvéseit, hogy folyamatban érdekében [ügyfelek miképpen megfelelően engedélyezik az erőforrás-kiszolgálóhoz intézett kérésekben](http://tools.ietf.org/html/draft-jones-oauth-discovery-00).
+Megfelelően [RFC 6750](https://tools.ietf.org/html/rfc6750#section-3) melyik leírás fedi le hogyan `bearer` jogkivonatok kell használni, az API Management is adja vissza egy `WWW-Authenticate` a 401-es válasz fejléce. A WWW-Authenticate célja, hogy egy ügyfél a megfelelő engedéllyel rendelkező kérelem létrehozására utasítja. Miatt számos megközelítés lehetséges az OAuth2-keretrendszerrel meglehetősen nehéz kommunikációhoz szükséges összes információ. Szerencsére nincsenek folyamatban segítségével erőfeszítések [ügyfelek felderítése hogyan kell megfelelően egy erőforrás-kiszolgálóhoz intézett kérésekben](http://tools.ietf.org/html/draft-jones-oauth-discovery-00).
 
 ### <a name="final-solution"></a>Végső megoldás
-A végén beolvasása a következő házirendet:
+A végén kérje le a következő szabályzatot:
 
 ```xml
 <inbound>
@@ -157,32 +157,32 @@ A végén beolvasása a következő házirendet:
 </inbound>
 ```
 
-Ez az csak az egyik számos példát bemutatja a `send-request` házirend használható hasznos külső szolgáltatás integrálása kérelmeit és válaszait az API Management szolgáltatáson keresztül áramló folyamatán.
+Ez az, hogy csak az egyik bemutatja a példákat `send-request` házirend segítségével hasznos külső szolgáltatások integrálása a kérelmek és válaszok az API Management szolgáltatáson keresztül áramló folyamatán.
 
-## <a name="response-composition"></a>Válasz összeállítás
-A `send-request` házirend használható a háttérrendszer elsődleges kérelem növelésére, az előző példában szereplő látott, vagy azt a háttér-hívás a teljes csere használható. Ez a módszer használatával könnyen létrehozhat összesítése összetett erőforrásokat több különböző rendszerek.
+## <a name="response-composition"></a>Válasz-összeállítás
+A `send-request` egy háttérrendszer elsődleges kérést növelésére, az előző példában látott, vagy azt a háttér-hívás egy teljes csere használható házirend használható. Az ezzel a technikával könnyedén létrehozhat összetett erőforrások, amelyek összesítve vannak a több különböző rendszerek.
 
 ### <a name="building-a-dashboard"></a>Irányítópult létrehozása
-Néha szükség lehet több háttérrendszerek, például található információt teszi közzé, egy irányítópultot alapjául. A KPI-k minden különböző biztonsági-végpontok, származhat, de nem szeretne közvetlen hozzáférést biztosít, és célszerű, ha minden információi olvashatók az egy kérelemhez. Lehet, hogy a háttér-adatok egy részét kell néhány szeletelhető és feldarabolható, és először egy kis tisztítására! Igényt, hogy összetett erőforrás gyorsítótárazásához egy hasznos lehet a háttér-terhelés csökkentésére, mint tudja a felhasználók rendelkeznek-e egy, az F5 billentyűt beütés láthatók, ha azok underperforming metrikák változhat válhat.    
+Néha érdemes lehet elérhetővé tenni az adatokat, hogy több háttérrendszerekhez, például megtalálható, egy irányítópult alapjául. KPI-k összes különböző háttérrendszereket, származnak, de nem szeretne hozzájuk a közvetlen hozzáférést biztosít a, és lenne nem lenne nagyszerű, ha az összes információt sikerült beolvasni az egyetlen kérés. Például a háttérbeli adatok egy részét kell néhány tovább szeletelve és darabolva és egy kis megtisztítása során először! Képes arra, hogy a gyorsítótár adott összetett erőforrást akkor lehet hasznos a háttér-terhelés csökkentésére, mint már tudja, a felhasználók rendelkeznek egy habitus az F5 billentyűt újrapróbálkozni láthatók, ha azok az alulteljesítő metrikák változhatnak.    
 
 ### <a name="faking-the-resource"></a>Az erőforrás faking
-Az irányítópult erőforrás létrehozásának első lépése az új művelet konfigurálása az Azure portálon. Ez egy helyőrző művelet segítségével hozhat létre a dinamikus erőforrás összeállítás házirend konfigurálása.
+Az irányítópult-erőforrás létrehozásához az első lépés, hogy egy új művelet konfigurálása az Azure Portalon. Ez az egy helyőrző művelet segítségével hozhat létre a dinamikus erőforrás összeállítás szabályzat konfigurálása.
 
 ![Irányítópult-művelet](./media/api-management-sample-send-request/api-management-dashboard-operation.png)
 
-### <a name="making-the-requests"></a>A kérést
-Miután létrejött a műveletet, beállíthat egy házirendet, kifejezetten az adott műveletre vonatkozó. 
+### <a name="making-the-requests"></a>A kérelem indítására
+A művelet létrehozása után konfigurálhat egy szabályzatot, kifejezetten az adott műveletnél. 
 
 ![Irányítópult-művelet](./media/api-management-sample-send-request/api-management-dashboard-policy.png)
 
-Az első lépés a lekérdezési paramétereket kibontani a bejövő kérelem háttérkiszolgálóra továbbíthatja őket. Ebben a példában az irányítópulton látható információk alapján egy adott időn belül, és így a `fromDate` és `toDate` paraméter. Használhatja a `set-variable` házirend kinyerheti az információt a kérelem URL-címről.
+Az első lépés, hogy a lekérdezési paramétereket kinyerése a bejövő kérelem, így továbbíthatja őket a háttérrendszerhez. Ebben a példában az irányítópulton látható időn alapulnak, és így egy `fromDate` és `toDate` paraméter. Használhatja a `set-variable` házirend az információk nyerhetők a kérelem URL-CÍMÉT.
 
 ```xml
 <set-variable name="fromDate" value="@(context.Request.Url.Query["fromDate"].Last())">
 <set-variable name="toDate" value="@(context.Request.Url.Query["toDate"].Last())">
 ```
 
-Ha elvégezte ezt az információt, hogy kérelmek a háttér-rendszereken. Minden kérelmet hoz létre egy új URL-címet a paraméter adatokkal, és meghívja a megfelelő kiszolgálóhoz, és a válasz egy környezeti változó tárolja.
+Miután ezt az információt, hogy kéréseket a háttér-rendszerek. Minden kérelmet hoz létre egy új URL-címet a paraméter információkkal, és meghívja a megfelelő kiszolgálóhoz, és tárolja a válasz egy környezeti változó.
 
 ```xml
 <send-request mode="new" response-variable-name="revenuedata" timeout="20" ignore-error="true">
@@ -206,10 +206,10 @@ Ha elvégezte ezt az információt, hogy kérelmek a háttér-rendszereken. Mind
 </send-request>
 ```
 
-Ezek a kérelmek sorozatot, amely nem ideális hajtható végre. 
+Ezek a kérelmek hajtsa végre a feladatütemezés, ami nem ideális. 
 
 ### <a name="responding"></a>Válaszol
-Az összetett válasz összeállításához, használhatja a [visszatérési-válasz](https://msdn.microsoft.com/library/azure/dn894085.aspx#ReturnResponse) házirend. A `set-body` elem kifejezés használatával hozható létre egy új `JObject` a beágyazott tulajdonságként összetevő felelősséget.
+Hozza létre a összetett választ, használhatja a [visszatérési-válasz](https://msdn.microsoft.com/library/azure/dn894085.aspx#ReturnResponse) házirend. A `set-body` elem kifejezés használatával hozhat létre egy új `JObject` a beágyazott tulajdonságokként összetevő reprezentációinak.
 
 ```xml
 <return-response response-variable-name="existing response variable">
@@ -279,8 +279,8 @@ A teljes házirend a következőképpen néz ki:
 </policies>
 ```
 
-A helyőrző művelet konfigurációjában konfigurálhatja az irányítópult erőforrás legalább egy óráig gyorsítótárazható. 
+A konfigurációban a helyőrző művelet konfigurálhatja úgy az irányítópult erőforrás legalább egy órát a gyorsítótárba. 
 
 ## <a name="summary"></a>Összegzés
-Az Azure API Management szolgáltatás biztosítja, hogy a HTTP-forgalom szelektív módon alkalmazható rugalmas házirendek, és lehetővé teszi, hogy a háttér szolgáltatások összeállításban. Hogy meg szeretné javítása érdekében a Funkciók, ellenőrzési, érvényesítési képességek riasztási API átjárót, vagy hozzon létre új összetett erőforrások több háttér-szolgáltatásoknak a `send-request` és a lehetőségek tárházát nyissa meg a kapcsolódó házirendek.
+Az Azure API Management-szolgáltatás, amely a HTTP-forgalom szelektív módon alkalmazható rugalmas házirendek biztosít, és lehetővé teszi a háttérszolgáltatások összetételét. Hogy növelje a riasztási funkciók, ellenőrzés, ellenőrzési funkciókat az API-átjáró, vagy hozzon létre új összetett erőforrások több háttérszolgáltatással alapján szeretné a `send-request` és a kapcsolódó házirendek megnyissa a lehetőségek.
 

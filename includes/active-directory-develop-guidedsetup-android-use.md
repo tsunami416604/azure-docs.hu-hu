@@ -1,7 +1,30 @@
+---
+title: fájl belefoglalása
+description: fájl belefoglalása
+services: active-directory
+documentationcenter: dev-center-name
+author: andretms
+manager: mtillman
+editor: ''
+ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
+ms.service: active-directory
+ms.devlang: na
+ms.topic: include
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 09/13/2018
+ms.author: andret
+ms.custom: include file
+ms.openlocfilehash: cf6ded1252528a0bbfac9c7378f03384cc484c50
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46293781"
+---
+## <a name="use-msal-to-get-a-token"></a>Egy token beszerzéséhez az MSAL használatával 
 
-## <a name="use-msal-to-get-a-token-for-the-microsoft-graph-api"></a>A Microsoft Graph API a szolgáltatáshitelesítést egy token MSAL segítségével
-
-1.  A **app** > **java** > **{tartomány}. { AppName}**, nyissa meg `MainActivity`. 
+1.  A **alkalmazás** > **java** > **{domain}. { AppName}**, nyissa meg `MainActivity`. 
 2.  Adja hozzá az alábbi importálásokat:
 
     ```java
@@ -22,7 +45,7 @@
     import com.microsoft.identity.client.*;
     ```
 
-3. Cserélje le a `MainActivity` osztály a következő kóddal:
+3. Cserélje le a `MainActivity` osztályt a következő kóddal:
 
     ```java
     public class MainActivity extends AppCompatActivity {
@@ -220,22 +243,20 @@
 <!--start-collapse-->
 ### <a name="more-information"></a>További információ
 #### <a name="get-a-user-token-interactively"></a>A felhasználó interaktív token beszerzése
-Hívja a `AcquireTokenAsync` módszer eredményezi egy ablak, amely felszólítja a felhasználók jelentkezhetnek be. Alkalmazások általában a felhasználóknak az első alkalommal védett erőforrás eléréséhez szükséges interaktív bejelentkezéshez. Előfordulhat, hogy is szükségük jelentkezzen be, amikor egy csendes jogkivonat megszerzése sikertelen (például, ha a jelszó lejárt).
+Hívása a `AcquireTokenAsync` metódus elindít egy ablak, amely felkéri a felhasználót a bejelentkezéshez, vagy válassza ki azt a fiókot. Alkalmazások általában kell kérnie a felhasználót a kezdeti interakciónak, de működhet csendesen ettől a. 
 
 #### <a name="get-a-user-token-silently"></a>A felhasználói beavatkozás nélkül token beszerzése
-A `AcquireTokenSilentAsync` metódus kezeli a token kérése és megújításokat felhasználói beavatkozás nélkül. Miután `AcquireTokenAsync` végrehajtása az első alkalommal `AcquireTokenSilentAsync` lekérdezni a jogkivonatokat, amelyek további hívások, a védett erőforrások eléréséhez, vagy megújítása jogkivonatok hívások csendes válnak, mert a szokásos módszer.
+A `AcquireTokenSilentAsync` metódus, kér le egy tokent, felhasználói beavatkozás nélkül.  `AcquireTokenSilentAsync` a legjobb kéréseket, és a egy tartalék is kell kezelni `AcquireTokenAsync` amikor a felhasználónak van szüksége, jelentkezzen be újra, vagy néhány további engedélyt, például a többtényezős hitelesítési lehetőségek 
 
-Végül a `AcquireTokenSilentAsync` metódus sikertelen lesz. A hiba oka lehet, hogy a felhasználó rendelkezik-e vagy kijelentkezteti, vagy módosítani a jelszavát egy másik eszközön. Amikor MSAL azt észleli, hogy a probléma megoldásához érdemes egy interaktív műveletet igénylő, akkor következik be egy `MsalUiRequiredException` kivétel. Az alkalmazás kezeli ezt a kivételt, két módon:
+Amikor `AcquireTokenSilentAsync` sikertelen, hozza létre a `MsalUiRequiredException`. Az alkalmazás ehhez a kivételhez, két módon tudják kezelni:
 
-* Az elleni hívás kezdeményezése `AcquireTokenAsync` azonnal. A hívás eredménye jelentkezzen be a felhasználótól. Ebben a mintában általában az online alkalmazások használják, amennyiben a felhasználó nem érhető el kapcsolat nélküli tartalmat. A minta az interaktív telepítő által létrehozott követi, ebben a mintában a művelet az első alkalommal a minta végrehajtása meg. 
-    * Mivel a felhasználó nem használta az alkalmazás `PublicClientApp.Users.FirstOrDefault()` null értéket tartalmaz, és egy `MsalUiRequiredException` kivétel történt. 
-    * A kód a minta majd kezeli a kivételt meghívásával `AcquireTokenAsync`, ennek eredményeképpen a felhasználótól a bejelentkezéshez. 
-
-* Azt is inkább jelenthet vizuális jelzést felhasználók számára, amelyek egy interaktív bejelentkezés szükség, hogy a megfelelő időben való bejelentkezéshez választhatja. Vagy az alkalmazás újra `AcquireTokenSilentAsync` később. Ezt a mintát gyakran használt, amikor a felhasználók használhatják más alkalmazás működésének szüneteltetése--nélkül például, ha helyben tárolt tartalom érhető el az alkalmazást. Ebben az esetben felhasználók dönthet arról szeretne bejelentkezni a védett erőforrások eléréséhez, vagy az elavult adatok frissítése. Másik lehetőségként az alkalmazás dönt, hogy újra `AcquireTokenSilentAsync` amikor állítják vissza. a hálózati elvégzése után átmenetileg nem érhető el. 
+* Hívás `AcquireTokenAsync` azonnal. Ez a hívás eredménye kéri a felhasználót, hogy jelentkezzen be. Ez a minta az online alkalmazások használják, ha a felhasználó nem érhető el kapcsolat nélküli tartalom. Az oktatóanyag során létrehozott minta követi, ebben a mintában a művelet az első alkalommal végre, a minta az is látható.
+* Vizuális jelzés jelent-e a felhasználók számára, hogy egy interaktív bejelentkezési megadása kötelező. Hívás `AcquireTokenAsync` amikor a felhasználó készen áll-e.
+* Ismételje meg `AcquireTokenSilentAsync` később. Ezt a mintát gyakran használják, amikor a felhasználók használhatják más színvonalának – az alkalmazás funkciói például, ha offline tartalom érhető el az alkalmazást. Az alkalmazás dönt, hogy újra `AcquireTokenSilentAsync` Ha visszaállítja a hálózat elvégzése után átmenetileg nem érhető el. 
 <!--end-collapse-->
 
-## <a name="call-the-microsoft-graph-api-by-using-the-token-you-just-obtained"></a>A Microsoft Graph API hívása csak megszerzett jogkivonattal használatával
-Az alábbi módszerek hozzáadása a `MainActivity` osztály:
+## <a name="call-the-microsoft-graph-api"></a>A Microsoft Graph API meghívása 
+Adja hozzá a következő metódusokat be a `MainActivity` osztály:
 
 ```java
 /* Use Volley to make an HTTP request to the /me endpoint from MS Graph using an access token */
@@ -292,14 +313,14 @@ private void updateGraphUI(JSONObject graphResponse) {
 }
 ```
 <!--start-collapse-->
-### <a name="more-information-about-making-a-rest-call-against-a-protected-api"></a>További információt a REST-hívást ellen védett API
+### <a name="more-information-about-making-a-rest-call-against-a-protected-api"></a>A védett API REST-hívást végrehajtásával kapcsolatos további információkat
 
-A mintaalkalmazás az `callGraphAPI` hívások `getAccessToken` és majd lehetővé teszi a HTTP `GET` jogkivonat szükséges, és a tartalom visszaadó erőforrás kérelmet. Ez a módszer a megszerzett token hozzáadja a HTTP-hitelesítési fejlécéhez. Ez a minta az erőforrás a Microsoft Graph API *me* végpont, amely a felhasználói profil adatait jeleníti meg.
+Ez a mintaalkalmazás a `callGraphAPI()` használ `getAccessToken()` beszerezni a friss hozzáférési jogkivonatot.  Az alkalmazás használja a jogkivonatot a HTTP `GET` kérelmet a Microsoft Graph API-val. 
 <!--end-collapse-->
 
-## <a name="set-up-sign-out"></a>Kijelentkezési beállítása
+## <a name="set-up-sign-out"></a>Kijelentkezés beállítása
 
-Az alábbi módszerek hozzáadása a `MainActivity` osztály:
+Adja hozzá a következő metódusokat be a `MainActivity` osztály:
 
 ```java
 /* Clears a user's tokens from the cache.
@@ -351,9 +372,10 @@ private void updateSignedOutUI() {
 }
 ```
 <!--start-collapse-->
-### <a name="more-information-about-user-sign-out"></a>További információ a felhasználó kijelentkezési
+### <a name="more-information-about-user-sign-out"></a>További információ a felhasználó a Kijelentkezés
 
-A `onSignOutClicked` metódus az előzőekben látható kód a eltávolítja azokat a felhasználókat, a felhasználó az aktuális felhasználó törlésére, így a későbbi kérelmek egy jogkivonat akkor sikeres, csak akkor, ha történik, hogy interaktív MSAL gyakorlatilag megmondja MSAL gyorsítótárból.
+A `onSignOutClicked()` módszer eltávolítja a felhasználók a MSAL gyorsítótárból. Az MSAL már nem kell minden olyan állapotban, a bejelentkezett felhasználó, és azokat a rendszer az alkalmazás ki. 
 
-Bár ez a példa az alkalmazás egyetlen felhasználót támogat, MSAL támogatja a forgatókönyvekben, ahol több fiók is bejelentkezhet a egyszerre. Példa: Ha a felhasználó rendelkezik-e a több fiók e-mail alkalmazást.
+### <a name="more-information-on-multi-account-scenarios"></a>További információ a több fiók forgatókönyvek
+Az MSAL támogatja forgatókönyvek is, ha egyszerre több fiókkal jelentkezett be. Például sok e-mail alkalmazások lehetővé teszik aláírt egyszerre több fiókot. 
 <!--end-collapse-->

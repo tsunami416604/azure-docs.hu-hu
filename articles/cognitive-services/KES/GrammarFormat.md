@@ -1,27 +1,30 @@
 ---
-title: A Knowledge Exploration Service API a szintaxisformátum |} A Microsoft Docs
-description: További információ a szintaxisformátum a a Knowledge Exploration Service (KES) API a Cognitive Services.
+title: Szintaxisformátum – Knowledge Exploration Service API
+titlesuffix: Azure Cognitive Services
+description: További információ a szintaxisformátum a a Knowledge Exploration Service (KES) API.
 services: cognitive-services
 author: bojunehsu
-manager: stesp
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: knowledge-exploration
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: b64025be2f5a9708162da475c1f037d7f253d2c6
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 4b4010152622cd9a1d8111ac92dd1960e78d4601
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37865753"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46125153"
 ---
 # <a name="grammar-format"></a>Szintaxisformátum
+
 A szintaxis egy XML-fájlt, amely meghatározza a természetes nyelvű lekérdezések, amelyek a szolgáltatás el tudja értelmezni, valamint hogyan fordítja az ezeket a természetes nyelvű lekérdezéseket a szemantikai lekérdezési kifejezések súlyozott készletét.  A nyelvi szintaxist alapján [SRGS](http://www.w3.org/TR/speech-grammar/), egy W3C szabvány a speech recognition grammars kiterjesztésű index Adatintegráció és Szemantikus funkciók támogatásához.
 
 A következő ismerteti a használható egy gramatice szintaktikai elemek.  Lásd: [ebben a példában](#example) , amely bemutatja, hogy ezeket az elemeket a környezet teljes körű nyelvtan esetében.
 
-### <a name="grammar-element"></a>Elem szintaxis 
+### <a name="grammar-element"></a>Elem szintaxis
+
 A `grammar` elem a legfelső szintű elem a nyelvi specifikáció XML.  A szükséges `root` attribútum meghatározza a legfelső szintű szabály, amely meghatározza a nyelvtani kiindulópontjaként nevét.
 
 ```xml
@@ -29,6 +32,7 @@ A `grammar` elem a legfelső szintű elem a nyelvi specifikáció XML.  A szüks
 ```
 
 ### <a name="import-element"></a>Elem importálása
+
 A `import` elem sémadefiníciót importál a külső fájl engedélyezéséhez attribútum hivatkozik. Az elemnek kell lennie, a legfelső szintű gyermek `grammar` elem és jelennek meg minden `attrref` elemeket. A szükséges `schema` attribútum nevét adja meg egy séma fájlt a nyelvtani XML-fájl ugyanabban a könyvtárban található. A szükséges `name` elem azt határozza meg a séma alias, amely későbbi `attrref` elemek használja, ha ebben a sémában meghatározott attribútumok hivatkozik.
 
 ```xml
@@ -36,6 +40,7 @@ A `import` elem sémadefiníciót importál a külső fájl engedélyezéséhez 
 ```
 
 ### <a name="rule-element"></a>a szabály elem
+
 A `rule` elem egy gramatické pravidlo egy szerkezeti egység, amely meghatározza, hogy a rendszer tudja értelmezni lekérdezési kifejezések készletét definiálja.  Az elemnek kell lennie, a legfelső szintű gyermek `grammar` elemet.  A szükséges `id` attribútum nevét adja meg a szabályt, amely a hivatkozott `grammar` vagy `ruleref` elemeket.
 
 A `rule` elem határozza meg azon jogi bővülésből.  Szöveg jogkivonatok közvetlenül a bemeneti lekérdezés egyeztetéshez.  `item` elemek ismétlődések adja meg, és értelmezése valószínűségek alter.  `one-of` adatok azt jelzik, hogy alternatív lehetőségeket.  `ruleref` elemek engedélyezése építése összetettebb bővülésből egyszerűbb állók közül.  `attrref` elemek lehetővé teszik az indexből attribútumértékek egyezések.  `tag` elemek adja meg a értelmezése szemantikáját, és értelmezése mekkora valószínűséggel módosíthatja.
@@ -45,6 +50,7 @@ A `rule` elem határozza meg azon jogi bővülésből.  Szöveg jogkivonatok kö
 ```
 
 ### <a name="example-element"></a>Példa elem
+
 A választható `example` elem azt határozza meg, előfordulhat, hogy fogadja el a tartalmazó példa kifejezések `rule` definíciója.  Ez használható dokumentáció és/vagy automatizált tesztelés.
 
 ```xml
@@ -52,6 +58,7 @@ A választható `example` elem azt határozza meg, előfordulhat, hogy fogadja e
 ```
 
 ### <a name="item-element"></a>konfigurációelem-elem
+
 A `item` elem csoportok nyelvi szerkezeteket sorozata.  Jelzi a helybővítés során ismétléseihez való használata, vagy adja meg az alternatív megoldások együtt is használhatók a `one-of` elemet.
 
 Ha egy `item` elem nem gyermeke egy `one-of` elemben hozzárendelésével adhatja ismétlését a karakterláncon belül lévő feladatütemezési a `repeat` attribútum count értékre.  Egy számláló értékét "*n*" (ahol *n* egy egész szám) azt jelzi, hogy a feladatütemezés pontosan meg kell történnie *n* alkalommal.  Egy számláló értékét "*m*-*n*" lehetővé teszi, hogy a feladatütemezés közötti *m* és *n* alkalommal szélsőértékeket is beleértve.  Egy számláló értékét "*m*–" Megadja, hogy a feladatütemezés szerepelnie kell legalább *m* alkalommal.  A választható `repeat-logprob` attribútum segítségével módosítható a minimális túl minden további ismétlési értelmezése valószínűségét.
@@ -71,6 +78,7 @@ Amikor `item` elemek jelennek meg gyermekeiként egy `one-of` elem, meghatározz
 ```
 
 ### <a name="one-of-element"></a>egy-elem
+
 A `one-of` elem azt határozza meg alternatív bővülésből között gyermekszerepkörei `item` elemeket.  Csak `item` elemek belül jelennek meg a `one-of` elemet.  A különböző lehetőségek közül relatív valószínűségek keresztül lehet megadni a `logprob` minden gyermek attribútum `item`.
 
 ```xml
@@ -82,6 +90,7 @@ A `one-of` elem azt határozza meg alternatív bővülésből között gyermeksz
 ```
 
 ### <a name="ruleref-element"></a>ruleref elem
+
 A `ruleref` elem azt határozza meg az érvényes kiterjesztések keresztül egy másik mutató hivatkozások `rule` elemet.  Használatával `ruleref` elemeket, az összetett kifejezések felépíthető egyszerűbb szolgáló szabályok hatálya alól.  A szükséges `uri` attribútum azt jelöli, a hivatkozott neve `rule` a szintaxis használatával "#*rulename*".  A hivatkozott szabály szemantikai kimenetét rögzíti, használja az opcionális `name` attribútumot, amely a szemantikai kimeneti hozzá van rendelve a változó nevét adja meg.
  
 ```xml
@@ -89,6 +98,7 @@ A `ruleref` elem azt határozza meg az érvényes kiterjesztések keresztül egy
 ```
 
 ### <a name="attrref-element"></a>attrref elem
+
 A `attrref` elemre hivatkozik egy index attribútum, lehetővé téve az index megfigyelhető a megfelelő attribútum értékei alapján.  A szükséges `uri` attribútum meghatározza, hogy az index sémát és attribútum nevét, a szintaxis használatával "*%{schemaname/*#*attrName*".  Lennie kell egy előző `import` elem, amely importálja a sémát nevű *%{schemaname/*.  Az attribútum neve a megfelelő sémában meghatározott elemnévvel attribútum neve.
 
 Egyező felhasználói bevitelt, mellett a `attrref` elem is objektumot ad vissza egy strukturált lekérdezési kimeneteként, amely az objektumok részhalmazát kiválasztja az index a bemeneti érték megfelelő.  A választható `name` attribútum használatával adja meg, ahol a lekérdezési objektum kimenetet kell tárolni a változó nevét.  A lekérdezési objektummal összeállítható kialakításához több más lekérdezési objektummal összetett kifejezések.  Lásd: [szemantikai értelmezés](SemanticInterpretation.md) részleteiről.  
@@ -97,7 +107,8 @@ Egyező felhasználói bevitelt, mellett a `attrref` elem is objektumot ad vissz
 <attrref uri="academic#Keyword" name="keyword"/>
 ```
 
-#### <a name="query-completion"></a>Lekérdezés befejezése 
+#### <a name="query-completion"></a>Lekérdezés befejezése
+
 Lekérdezés befejezésekből támogatja a részleges felhasználói lekérdezések értelmezése során, a minden egyes hivatkozott attribútumot tartalmaznia kell "starts_with" sémadefiníciója műveletként.  Egy felhasználó lekérdezés előtagot adott `attrref` fog, amelyek befejezik a előtagot az index összes értéket, és az eddig is számtalan előnyét minden teljes érték egy külön értelmezése a szintaxis mint.  
 
 Példák:
@@ -105,6 +116,7 @@ Példák:
 * Egyező `<attrref uri="academic#Year" name="year"/>` ellen a lekérdezés "200" előtag állít elő, a "2000", tanulmányok egy értelmezése egy értelmezése tanulmányok "2001" stb.
 
 #### <a name="matching-operations"></a>Egyező műveletek
+
 Pontos egyezés mellett válassza attribútumot típusok is támogatási előtagot, és egyenlótlenség megegyezik a választható keresztül `op` attribútum.  Az index nem objektum nem megfelelő értéket, ha a szintaxis elérési le van tiltva, és a szolgáltatás nem hoz létre bármilyen értelmezéseket a nyelvtani elérési áthaladó.   A `op` "eq" attribútum alapértelmezett értéke.
 
 ```xml
@@ -129,6 +141,7 @@ Példák:
 * `<attrref uri="academic#Year" op="starts_with" name="year"/>` a bemeneti karakterlánc "20" és a egy egyetlen értelmezése ismertetők az értéket ad vissza 200-299, a 2000-2999, stb-ben közzétett megegyezik.  Ez a ritka használati eset.
 
 ### <a name="tag-element"></a>Címke elem
+
 A `tag` elem azt határozza meg, hogyan kell értelmezni van a nyelvtani keresztül elérési útja.  Sorozata, pontosvesszővel válassza el végződő utasításokat tartalmazza.  Lehet, hogy egy utasítás szövegkonstans vagy egy változót, egy másik változó-hozzárendelés.  Változóhoz is rendelhet hozzá a kimenet egy függvény 0 vagy több paramétert.  Minden függvény paramétere egy vagy egy változó adható meg.  Ha a függvény nem ad vissza kimenetet, a hozzárendelés van hagyva.  Változó hatóköre helyi tartalmazó szabályhoz.
 
 ```xml
@@ -144,12 +157,13 @@ Egyes utasítások megváltoztathatják értelmezése elérési útnak valószí
 Szemantikai támogatott funkciók listáját lásd: [szemantikai funkciók](SemanticInterpretation.md#semantic-functions).
 
 ## <a name="interpretation-probability"></a>Értelmezés valószínűsége
+
 A valószínűsége annak, értelmezését elérési útnak a nyelvtani keresztül minden összegző napló valószínűségét a `<item>` elemeket és a vizualizáción észlelt szemantikai funkciók.  Azt ismerteti, hogy a bemeneti megadottal egyező relatív valószínűségét.
 
 Adott valószínűség *p* 0 és 1 közötti megfelelő napló valószínűségét, log számított (*p*), ahol a log() a természetes logaritmusát függvény.  Napló valószínűségek lehetővé teszi a rendszert, hogy egy egyszerű értelmezését útvonala összesített valószínűségét összeadódhatnak.  Azt is ilyen közös valószínűségi számításoknál közös lebegőpontos alulcsordulás elkerülhető.  Vegye figyelembe, hogy a kialakításból fakadóan log mekkora valószínűséggel mindig negatív lebegőpontos számnak vagy 0, ahol nagyobb értékek azt jelzik, nagyobb valószínűséggel.
 
-<a name="example"></a>
 ## <a name="example"></a>Példa
+
 Az alábbiakban látható a tanulmányi kiadványok tartományból, amely bemutatja a különböző elemek nyelvtan, például XML:
 
 ```xml

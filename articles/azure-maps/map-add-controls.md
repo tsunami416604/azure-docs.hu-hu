@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 0bd7e5bd3fc4c4ce3508ca7d3f877fbdf00d5375
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: ddbb621561d8fcef3637e036be004d17aea76f40
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44717641"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46129301"
 ---
 # <a name="add-map-controls-to-azure-maps"></a>Térkép vezérlők hozzáadása az Azure Maps
 
@@ -37,7 +37,7 @@ A nagyítási vezérlő leehetővé a térkép adataikkal nagyítás. A harmadik
 
 A fenti kód első kódblokkot egy térkép-objektumot hoz létre a stílus be van állítva, szürkeárnyalatos. Lásd: [térkép létrehozásához](./map-create.md) térkép létrehozásához útmutatást.
 
-A második kódblokk objektumot hoz létre felébresztve vezérlőelem használatával a atlas [PitchControl](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.control.pitchcontrol?view=azure-iot-typescript-latest).
+A második kódblokk objektumot hoz létre Felébresztve vezérlőelem használatával a atlas [PitchControl](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.control.pitchcontrol?view=azure-iot-typescript-latest).
 
 Lényegét vezérlő leehetővé a térkép a térköz módosítása. A harmadik blokk felébresztve vezérlőelemet vesz fel a térkép segítségével térkép [addControl](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addcontrol) metódust.
 
@@ -48,7 +48,7 @@ Lényegét vezérlő leehetővé a térkép a térköz módosítása. A harmadik
 
 Az első kódblokkot a fenti kód egy térkép-objektumot hoz létre. Lásd: [térkép létrehozásához](./map-create.md) térkép létrehozásához útmutatást.
 
-A második kódblokkot objektumot hoz létre iránytűn vezérlőelem használatával a atlas [Compass vezérlő](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.control.compasscontrol?view=azure-iot-typescript-latest#compasscontrol). Hozzáadja a iránytűn vezérlő a térkép segítségével térképhez [addControl](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addcontrol) metódust.
+A második kódblokkot objektumot hoz létre Compass vezérlőelem használatával a atlas [Compass vezérlő](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.control.compasscontrol?view=azure-iot-typescript-latest#compasscontrol). Hozzáadja a iránytűn vezérlő a térkép segítségével térképhez [addControl](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addcontrol) metódust.
 
 ## <a name="a-map-with-all-controls"></a>A térkép összes vezérlőkkel
 
@@ -57,26 +57,28 @@ A második kódblokkot objektumot hoz létre iránytűn vezérlőelem használat
 
 Az első kódblokkot a fenti kód egy térkép-objektumot hoz létre. Lásd: [térkép létrehozásához](./map-create.md) térkép létrehozásához útmutatást.
 
-A második kódblokk objektumot hoz létre iránytűn vezérlőelem használatával a atlas [CompassControl](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.control.compasscontrol?view=azure-iot-typescript-latest#compasscontrol) , és hozzáadja a térkép segítségével térkép [addControl](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addcontrol) metódust.
+A második kódblokk objektumot hoz létre Compass vezérlőelem használatával a atlas [CompassControl](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.control.compasscontrol?view=azure-iot-typescript-latest#compasscontrol) , és hozzáadja a térkép segítségével térkép [addControl](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addcontrol) metódust.
 
-A harmadik kódblokkot az atlas használatával nagyítási vezérlő objektumot hoz létre [ZoomControl](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.control.zoomcontrol?view=azure-iot-typescript-latest) , és hozzáadja a térkép segítségével térkép [addControl](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addcontrol) metódust.
+A harmadik kódblokkot az atlas használatával nagyítás objektumot hoz létre [ZoomControl](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.control.zoomcontrol?view=azure-iot-typescript-latest) , és hozzáadja a térkép segítségével térkép [addControl](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addcontrol) metódust.
 
-A negyedik kódblokk objektumot hoz létre felébresztve vezérlőelem használatával a atlas [PitchControl](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.control.pitchcontrol?view=azure-iot-typescript-latest) , és hozzáadja a térkép segítségével térkép [addControl](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addcontrol) metódust.
+A negyedik kódblokk objektumot hoz létre Felébresztve vezérlőelem használatával a atlas [PitchControl](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.control.pitchcontrol?view=azure-iot-typescript-latest) , és hozzáadja a térkép segítségével térkép [addControl](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addcontrol) metódust.
 
-A legutóbbi kódblokkot stílus-választó objektum hozzáadja a térkép a atlas használatával [StyleControl](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.control.stylecontrol?view=azure-iot-typescript-latest#stylecontrol) , és hozzáadja a térkép segítségével térkép [addControl](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addcontrol) metódust.
+A legutóbbi kódblokkot egy stílust választó objektum hozzáadja a térkép a atlas használatával [StyleControl](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.control.stylecontrol?view=azure-iot-typescript-latest#stylecontrol) , és hozzáadja a térkép segítségével térkép [addControl](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addcontrol) metódust.
 
 ## <a name="next-steps"></a>További lépések
 
-További információ az osztályok és módszerek a cikk ezt használja: 
-* [Térkép](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
-    * [addControl](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addcontrol)
+További információ az osztályok és módszerek a cikk ezt használja:
 
-* [Atlas](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas?view=azure-iot-typescript-latest)
-    * [CompassControl](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.control.compasscontrol?view=azure-iot-typescript-latest#compasscontrol)
-    * [ZoomControl](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.control.zoomcontrol?view=azure-iot-typescript-latest)
-    * [PitchControl](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.control.pitchcontrol?view=azure-iot-typescript-latest)
-    * [StyleControl](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.control.stylecontrol?view=azure-iot-typescript-latest#stylecontrol)
-    
-A maps hozzá további kódot példák a következő cikkekben talál: 
-* [A PIN-kód hozzáadása](./map-add-pin.md)
-* [Egy előugró ablak hozzáadása](./map-add-popup.md)
+> [!div class="nextstepaction"]
+> [Térkép](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
+
+> [!div class="nextstepaction"]
+> [Atlas](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas?view=azure-iot-typescript-latest)
+
+A teljes kódja a következő cikkekben talál:
+
+> [!div class="nextstepaction"]
+> [A PIN-kód hozzáadása](./map-add-pin.md)
+
+> [!div class="nextstepaction"]
+> [Egy előugró ablak hozzáadása](./map-add-popup.md)

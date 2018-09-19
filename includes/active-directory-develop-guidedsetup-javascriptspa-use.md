@@ -1,6 +1,30 @@
-## <a name="use-the-microsoft-authentication-library-msal-to-sign-in-the-user"></a>A Microsoft hitelesítési könyvtár (MSAL) segítségével a felhasználói bejelentkezés
+---
+title: fájl belefoglalása
+description: fájl belefoglalása
+services: active-directory
+documentationcenter: dev-center-name
+author: navyasric
+manager: mtillman
+editor: ''
+ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
+ms.service: active-directory
+ms.devlang: na
+ms.topic: include
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 09/17/2018
+ms.author: nacanuma
+ms.custom: include file
+ms.openlocfilehash: 94d57abc95dabf1da579f6d2105ca6c74140a86f
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46293755"
+---
+## <a name="use-the-microsoft-authentication-library-msal-to-sign-in-the-user"></a>A Microsoft-hitelesítési tár (MSAL) segítségével a felhasználók bejelentkeztetése
 
-1.  Hozzon létre egy fájlt `app.js`. Ha a Visual Studio használ, válassza ki a project (projekt gyökérmappájában), kattintson a jobb gombbal, és válassza: `Add`  >  `New Item`  >  `JavaScript File`:
+1.  Hozzon létre egy `app.js` nevű fájlt. Ha a Visual Studiót használja, válassza ki a projektet (projekt gyökérmappájában), kattintson a jobb gombbal, és válassza: `Add`  >  `New Item`  >  `JavaScript File`:
 2.  Adja hozzá a következő kódot a `app.js` fájlt:
 
 ```javascript
@@ -113,30 +137,30 @@ function showError(endpoint, error, errorDesc) {
 <!--start-collapse-->
 ### <a name="more-information"></a>További információ
 
-Miután a felhasználó kattint a *"A Microsoft Graph API hívása"* gomb, először `callGraphApi` metódushívások `loginRedirect` jelentkezhet be a felhasználó. Ez a módszer eredményezi irányít át a felhasználót, hogy a *Microsoft Azure Active Directory v2 végpont* kérni, és a felhasználó hitelesítő adatainak ellenőrzése. Hatására a sikeres bejelentkezés, a felhasználót a rendszer átirányítja az eredetire *index.html* lap, és egy jogkivonat érkezett, által feldolgozott `msal.js` és a rendszer gyorsítótárazza a jogkivonat található információkat. Ez a token is ismert, a *azonosító token* és a felhasználó, például a felhasználó megjelenített neve alapvető információkat tartalmazza. Ha használja a célokat a token által megadott adatokat, győződjön meg arról, hogy ez a token érvényesíti a háttérkiszolgálón garantálja, hogy a jogkivonat részére adták ki egy érvényes felhasználói alkalmazás szeretné.
+Miután egy felhasználó rákattint a *"A Microsoft Graph API meghívása"* gomb az első alkalommal `callGraphApi` metódust hívja `loginRedirect` bejelentkezni a felhasználó. Ez a módszer eredményezi átirányítása a felhasználó számára a *Microsoft Azure Active Directory v2 végpontot* kérni, és a felhasználó hitelesítő adatainak ellenőrzésére. Eredményeként a bejelentkezés sikeres, a felhasználó visszatérhet az eredeti átirányítási *index.html* oldalon, és a egy jogkivonat érkezett, által feldolgozott `msal.js` és a jogkivonatban található az adatbázisban tárolja. Ez a token más néven a *azonosító jogkivonat* és alapvető információkat szeretne a felhasználó, például a felhasználó megjelenítendő nevét tartalmazza. Ha azt tervezi, bármilyen célból a token által biztosított adatokat használja, ellenőrizze, hogy ez a token érvényesíti a háttérkiszolgáló garantálja, hogy a jogkivonat érvényes felhasználónak az alkalmazáshoz kiállított szeretne.
 
-Ez az útmutató által generált SPA hajtsa végre közvetlenül a Azonosítót jogkivonatban használatát – ehelyett meghívja `acquireTokenSilent` és/vagy `acquireTokenRedirect` megszerzése egy *hozzáférési jogkivonat* kérdezhetők le a Microsoft Graph API-val. Ha egy mintát, amely érvényesíti a azonosító jogkivonatot kell, vessen egy pillantást [ez](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2 "Github active-directory-javascript-singlepageapp-dotnet-webapi-v2 minta") mintaalkalmazást a Githubon – a minta használja az ASP .NET webes API-t a jogkivonatok érvényesség-ellenőrzése.
+Ez az útmutató által létrehozott SPA nem derül közvetlenül az azonosító jogkivonat használata – ehelyett meghívja `acquireTokenSilent` és/vagy `acquireTokenRedirect` beszerezni egy *hozzáférési jogkivonat* a Microsoft Graph API lekérdezéséhez használt. Ha egy mintát, amely ellenőrzi az azonosító jogkivonat, vessen egy pillantást [ez](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2 "active-directory-javascript-singlepageapp-dotnet-webapi-v2 Github-minta") mintaalkalmazás github – a mintát használja egy ASP .NET webes API a jogkivonat érvényesítésére.
 
-#### <a name="getting-a-user-token-interactively"></a>A felhasználói token első interaktív módon
+#### <a name="getting-a-user-token-interactively"></a>A felhasználó interaktív jogkivonat beolvasása
 
-Miután a kezdeti bejelentkezés, nem szeretné, hogy kérje meg a felhasználóknak minden alkalommal, amikor kérjen így elért egy erőforrást – tokent kell újból hitelesítésre *acquireTokenSilent* kell használni a legtöbbször ennek tokenek beszerzése. Vannak azonban olyan helyzetekben, hogy szeretné-e kommunikálni az Azure Active Directory v2 végpont – a felhasználókat néhány példa:
-- Felhasználók esetleg adja meg újra a hitelesítő adataikat, mert lejárt a jelszava
-- Az alkalmazás, amelyet a felhasználó járul hozzá az erőforráshoz való hozzáférés
-- Kéttényezős hitelesítés szükség
+Az első bejelentkezés után, nem szeretné, hogy kérje meg a felhasználók számára, hogy hitelesítse magát újra, minden alkalommal, amikor szükségük van egy erőforrás – így eléréséhez egy jogkivonat kérelmezéséhez *acquireTokenSilent* használandó a legtöbbször szerzi be a jogkivonatokat. Vannak helyzetek, de ilyen például, hogy szeretne-e kommunikálni az Azure Active Directory v2 végpontot – a felhasználókat:
+- Felhasználók előfordulhat, hogy meg kell adnia a hitelesítő adataikat, mert lejárt a jelszava
+- Az alkalmazás, amely a felhasználónak van szüksége, hogy engedélyt adjanak az erőforrásokhoz való hozzáférést
+- Kéttényezős hitelesítés megadása kötelező
 
-Hívja a *acquireTokenRedirect(scope)* irányít át felhasználók az Azure Active Directory v2 végpont eredményez (vagy *acquireTokenPopup(scope)* eredménye egy előugró ablak) Ha a felhasználók számára kell Erősítse meg a hitelesítő adataikat, adjon engedélye szükséges erőforrás, vagy befejezése a két kéttényezős hitelesítéssel.
+Hívása a *acquireTokenRedirect(scope)* felhasználók átirányítása az Azure Active Directory v2 végpontot eredményez (vagy *acquireTokenPopup(scope)* egy előugró ablak az eredmény) Ha a felhasználók interaktív kell megerősíti a hitelesítő adataikat, engedélyezi a hogy a szükséges erőforrást, vagy befejezése a két kéttényezős hitelesítéssel.
 
 #### <a name="getting-a-user-token-silently"></a>A felhasználói token első beavatkozás nélkül
-A ` acquireTokenSilent` metódus kezeli a token kérése és -megújítás felhasználói beavatkozás nélkül. Miután `loginRedirect` (vagy `loginPopup`) végrehajtása az első alkalommal `acquireTokenSilent` az beszerzése a jogkivonatokat, mivel kérelmezése vagy megújítása jogkivonatok hívásainak beavatkozás nélkül történik a további hívások - védett erőforrások eléréséhez használt általánosan használt módszer.
-`acquireTokenSilent` sikertelen lehet, hogy bizonyos esetekben – például a jelszó lejárt. Az alkalmazás kezeli ezt a kivételt, két módon:
+A ` acquireTokenSilent` metódus kezeli a token beszerzését és -megújítás, felhasználói beavatkozás nélkül. Miután `loginRedirect` (vagy `loginPopup`) hajtja végre az első alkalommal `acquireTokenSilent` hívások kérelem vagy token megújítása csendes módban végzett hívások – a védett erőforrások eléréséhez használt tokenek beszerzése érdekében a gyakran használt módszer.
+`acquireTokenSilent` sikertelen lehet, hogy bizonyos esetekben – például a felhasználó jelszava lejárt. Az alkalmazás ehhez a kivételhez, két módon tudják kezelni:
 
-1.  Hívás `acquireTokenRedirect` azonnal, ennek eredményeképpen a felhasználótól a bejelentkezéshez. Ezt a mintát gyakran használják az online alkalmazások esetén nincs hitelesítve tartalma az alkalmazásban a felhasználó számára elérhető. Ez az interaktív telepítő által létrehozott mintánkban Ez a minta.
+1.  Hívás `acquireTokenRedirect` azonnal, aminek eredményeképpen kéri a felhasználót, hogy jelentkezzen be. Az online alkalmazások gyakran használják ezt a mintát, ha ott nem nem hitelesített tartalmat, az alkalmazás a felhasználó számára elérhető. Az interaktív telepítés által létrehozott példa ezt a mintát.
 
-2. Alkalmazások is végezhet egy visual arra utal, hogy a felhasználót, hogy egy interaktív bejelentkezés szükség, hogy a felhasználó kiválaszthatja a megfelelő időben való bejelentkezéshez, vagy az alkalmazás újra `acquireTokenSilent` egy későbbi időpontban. Ez általában akkor használatos, amikor a felhasználó éppen megszakad nélkül tudja használni az alkalmazás egyéb funkciók – például nincs hitelesítve tartalom elérhető az alkalmazásban. Ebben az esetben a felhasználó megadhatja, hogy jelentkezzen be a védett erőforrások eléréséhez, vagy frissítse az elavult adatokat szeretne.
+2. Alkalmazások tudja végrehajtani a vizuális jelzés a felhasználót, hogy egy interaktív bejelentkezési szükség, hogy a felhasználó kiválaszthatja a megfelelő időben való bejelentkezéshez, vagy az alkalmazás megpróbálhatja `acquireTokenSilent` egy későbbi időpontban. Ez általában akkor használatos, amikor a felhasználó használhatja az alkalmazás egyéb funkciók anélkül, hogy szakadhat meg – például nincs nem hitelesített tartalom érhető el az alkalmazást. Ebben az esetben a felhasználó eldöntheti, ha szeretnének bejelentkezni a védett erőforrás elérésére, vagy a frissítés az elavult adatokat.
 
 <!--end-collapse-->
 
-## <a name="call-the-microsoft-graph-api-using-the-token-you-just-obtained"></a>A Microsoft Graph API használatával csak megszerzett jogkivonattal hívható
+## <a name="call-the-microsoft-graph-api-using-the-token-you-just-obtained"></a>A Microsoft Graph API segítségével közvetlenül megszerzett jogkivonattal hívása
 
 Adja hozzá a következő kódot a `app.js` fájlt:
 
@@ -192,13 +216,13 @@ function callWebApiWithToken(endpoint, token, responseElement, showTokenElement)
 ```
 <!--start-collapse-->
 
-### <a name="more-information-on-making-a-rest-call-against-a-protected-api"></a>További információ a ellen védett API REST hívás
+### <a name="more-information-on-making-a-rest-call-against-a-protected-api"></a>További információ a védett API REST-hívást gondoskodik
 
-Ez az útmutató által létrehozott minta alkalmazásban a `callWebApiWithToken()` módszer használható HTTP `GET` kérelem ellen védett erőforrás jogkivonat szükséges, és térjen vissza a tartalom a hívó. Ez a módszer hozzáadja a megszerzett lexikális elem szerepel a *HTTP Authorization fejlécet*. A mintaalkalmazás, ez az útmutató által létrehozott, az erőforrás a Microsoft Graph API *me* végpont – amely a felhasználói profil adatait jeleníti meg.
+A jelen útmutató által létrehozott mintaalkalmazásban a `callWebApiWithToken()` , hogy a HTTP módszert `GET` kérelmek ellen védett erőforrás, amely a jogkivonat szükséges, és majd a tartalom térjen vissza a hívónak. Ez a metódus hozzáadja a beszerzett lexikális elem szerepel a *HTTP engedélyeztetési fejléc*. A mintaalkalmazás, ez az útmutató által létrehozott, az erőforrás a Microsoft Graph API *me* végpont – amely a felhasználói profil adatait jeleníti meg.
 
 <!--end-collapse-->
 
-## <a name="add-a-method-to-sign-out-the-user"></a>A felhasználó kijelentkezik egy olyan metódus hozzáadása
+## <a name="add-a-method-to-sign-out-the-user"></a>Adjon meg egy metódust a felhasználó kijelentkeztetése
 
 Adja hozzá a következő kódot a `app.js` fájlt:
 

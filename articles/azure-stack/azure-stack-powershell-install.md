@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: article
-ms.date: 09/17/2018
+ms.date: 09/18/2018
 ms.author: sethm
 ms.reviewer: thoroet
-ms.openlocfilehash: 688e9f7d23fd79c42e04be59419f6fa93c949aea
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: c87b7f18ff5bf94bf842fa7a7e31cad4c7f47dfe
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/18/2018
-ms.locfileid: "45984458"
+ms.locfileid: "46128037"
 ---
 # <a name="install-powershell-for-azure-stack"></a>Az Azure Stack PowerShell telepítése
 
@@ -125,7 +125,8 @@ Futtassa a következő PowerShell-parancsfájl ezeket a modulokat a fejlesztői 
 Erősítse meg a telepítést a következő parancs futtatásával:
 
 ```PowerShell  
-Get-Module -ListAvailable | where-Object {$_.Name -like "Azs*"}
+Get-Module "Azure*" -ListAvailable
+Get-Module "Azs*" -ListAvailable
 ```
 
 Ha a telepítés sikeres, a kimenetben az AzureRM- és AzureStack modulok jelennek meg.
@@ -156,9 +157,9 @@ Jelentkezzen be a számítógépre az internetkapcsolattal rendelkező, és az A
     Import-Module -Name PowerShellGet -ErrorAction Stop
     Import-Module -Name PackageManagement -ErrorAction Stop
 
-      $Path = "<Path that is used to save the packages>"
-      Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureRM -Path $Path -Force -RequiredVersion 1.2.11
-      Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureStack -Path $Path -Force -RequiredVersion 1.4.0
+    $Path = "<Path that is used to save the packages>"
+    Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureRM -Path $Path -Force -RequiredVersion 1.2.11
+    Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureStack -Path $Path -Force -RequiredVersion 1.4.0
     ````
 
   - Az Azure Stack 1804 vagy valamely korábbi rendszerrel.
@@ -167,9 +168,9 @@ Jelentkezzen be a számítógépre az internetkapcsolattal rendelkező, és az A
     Import-Module -Name PowerShellGet -ErrorAction Stop
     Import-Module -Name PackageManagement -ErrorAction Stop
 
-      $Path = "<Path that is used to save the packages>"
-      Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureRM -Path $Path -Force -RequiredVersion 1.2.11
-      Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureStack -Path $Path -Force -RequiredVersion 1.3.0
+    $Path = "<Path that is used to save the packages>"
+    Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureRM -Path $Path -Force -RequiredVersion 1.2.11
+    Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureStack -Path $Path -Force -RequiredVersion 1.3.0
     ````
 
 2. Másolja a letöltött csomagokat egy USB-eszközt.

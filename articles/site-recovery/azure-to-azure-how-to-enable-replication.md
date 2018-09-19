@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: asgang
-ms.openlocfilehash: e7cd3032053b3628b94f93f3c7e00b6890afd4ca
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 7002e8a63ca0223a38ba099b17955a86034fa057
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37916282"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46295461"
 ---
 # <a name="replicate-azure-virtual-machines-to-another-azure-region"></a>Az Azure virtuális gépek replikálása másik Azure-régióba
 
@@ -36,6 +36,7 @@ Engedélyezze a replikációt. Ez az eljárás feltételezi, hogy az elsődleges
     - **Forrás**: A forrás virtuális gépet, amely ebben az esetben pontját **Azure**.
     - **Forrás helye**: az Azure-régió, ahonnan csak szeretné a virtuális gép védelméhez. Ezen az ábrán a forráshely Kelet-Ázsia
     - **Üzemi modell**: Azure üzembehelyezési modell forrásgépek közül.
+    - **Forrás-előfizetés**: az előfizetés, a forrás virtuális gépeket, amelyekhez tartoznak. Ez bármelyik előfizetés lehet azon Azure Active Directory-bérlőn belül, ahol a már meglévő Recovery Services-tárolója van.
     - **Erőforráscsoport**: az erőforráscsoport, a forrás virtuális gépeket, amelyekhez tartoznak. A kiválasztott erőforráscsoportba tartozó összes virtuális gép jelennek meg a következő lépésben védelemre.
 
     ![A replikáció engedélyezése](./media/site-recovery-replicate-azure-to-azure/enabledrwizard1.png)
@@ -46,6 +47,7 @@ Engedélyezze a replikációt. Ez az eljárás feltételezi, hogy az elsődleges
 4. A **beállítások**, igény szerint konfigurálható cél webhely beállításai:
 
     - **Célhely**: A hely, ahol a forrás virtuális gép fognak replikálódni. Függően a kijelölt gépekhez helyét, a Site Recovery biztosít Önnek a megfelelő régiók listáját. Azt javasoljuk, hogy őrizze meg a célhelyen ugyanaz, mint a Recovery Services-tár helye.
+    - **Célelőfizetés**: A vészhelyreállításhoz használt célelőfizetés. Alapértelmezés szerint a célelőfizetés megegyezik a forrás-előfizetéssel.
     - **Céloldali erőforráscsoport**: az erőforráscsoport, ahol az összes a replikált virtuális gépek tartoznak. Alapértelmezés szerint az Azure Site Recovery hoz létre egy új erőforráscsoportot a célrégióban az "asr" utótaggal rendelkező neve. Erőforráscsoport létrehozása az Azure Site Recovery már létezik, a rendszer újra. Azt is beállíthatja az alábbi szakaszban látható módon szabhatja testre. A céloldali erőforráscsoport helye lehet bármelyik Azure-régióban, amelyben a forrás virtuális gépeket üzemeltetett régiót kivéve.
     - **Cél virtuális hálózat**: alapértelmezés szerint a Site Recovery nevű hoz létre egy új virtuális hálózat a célrégióban az "asr" utótaggal rendelkező. Ez a Forráshálózat leképezve, és minden jövőbeli védelemhez használt. [További](site-recovery-network-mapping-azure-to-azure.md) információk a hálózatleképezésről.
     - **Cél tárfiókok (Ha a forrás virtuális gép nem használ felügyelt lemezeket)**: alapértelmezés szerint a Site Recovery létrehoz egy új céltárfiók, a forrás virtuális gép tárkonfigurációt mimicking. Storage-fiók már létezik, a rendszer újra.
@@ -60,7 +62,9 @@ Engedélyezze a replikációt. Ez az eljárás feltételezi, hogy az elsődleges
 
 A Site Recovery által használt alapértelmezett célbeállítások módosíthatja.
 
-1. Kattintson a **testreszabása:** alapértelmezett beállításainak módosítása:
+1. Kattintson a **testreszabása:** melletti "Célként megadott előfizetés" az alapértelmezett célként megadott előfizetés módosításához. Válassza ki az előfizetést az Azure Active Directory (AAD) ugyanabban a bérlőben elérhető előfizetések listájából.
+
+2. Kattintson a **testreszabása:** alapértelmezett beállításainak módosítása:
     - A **céloldali erőforráscsoport**, válassza ki az erőforráscsoportot a listából a célként megadott helyen az előfizetés összes erőforráscsoportot.
     - A **cél virtuális hálózattal**, válassza ki a hálózatot a virtuális hálózat a célhelyen egy listából.
     - A **rendelkezésre állási csoport**, adhat hozzá rendelkezésre állási csoport beállításait a virtuális géphez, ha egy rendelkezésre állási csoportot a forrásrégióban részei.

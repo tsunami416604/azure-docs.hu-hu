@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/24/2017
 ms.author: rogarana
 ms.component: common
-ms.openlocfilehash: 248ec73b09c25c162c5bdc77ceb18e610d604b77
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 0c7e453be131c46c7df3919d5311e018a57c6148
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44052173"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46295801"
 ---
 # <a name="azure-storage-scalability-and-performance-targets"></a>Az Azure Storage méretezhetőségi és teljesítménycéljai
 ## <a name="overview"></a>Áttekintés
@@ -34,6 +34,10 @@ Ha az alkalmazása igényeit meghaladja a skálázhatósági célokat, az egy t�
 
 ## <a name="scalability-targets-for-a-storage-account"></a>A tárfiók skálázási célértékei
 [!INCLUDE [azure-storage-limits](../../../includes/azure-storage-limits.md)]
+
+[!INCLUDE [storage-limits-increase-include](../../../includes/storage-limits-increase-include.md)]
+
+### <a name="storage-resource-provider-limits"></a>Tárolási szolgáltató erőforráskorlátok 
 
 [!INCLUDE [azure-storage-limits-azure-resource-manager](../../../includes/azure-storage-limits-azure-resource-manager.md)]
 

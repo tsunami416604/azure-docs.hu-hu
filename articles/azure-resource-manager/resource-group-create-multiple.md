@@ -12,16 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/10/2018
 ms.author: tomfitz
-ms.openlocfilehash: 25488295ec046eb0ca7473af76e4618eacb1155d
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 8828ba3c91df7b0a2fde3c42ecd81bd4ee4d17a3
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38600770"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46295937"
 ---
 # <a name="deploy-multiple-instances-of-a-resource-or-property-in-azure-resource-manager-templates"></a>Egy erőforrás vagy tulajdonság frissítése az Azure Resource Manager-sablonokkal több példányának telepítése
 
 Ez a cikk bemutatja, hogyan pedig ismétlést állítunk be az Azure Resource Manager-sablon egy erőforrás több példány létrehozásához. Ha meg kell adnia e egy erőforrás üzembe van helyezve egyáltalán, lásd: [feltétel elem](resource-manager-templates-resources.md#condition).
+
+Foglalkozó oktatóanyagért lásd: [oktatóanyag: létrehozása a Resource Manager-sablonokkal több erőforráspéldány létrehozásával](./resource-manager-tutorial-create-multiple-instances.md).
 
 ## <a name="resource-iteration"></a>Erőforrás iteráció
 
@@ -442,6 +444,9 @@ Az alábbi példák bemutatják az általános forgatókönyvek a több erőforr
 |[Több biztonsági szabályok](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json) |Üzembe helyezi a hálózati biztonsági csoport több biztonsági szabályokat. Akkor hoz létre a biztonsági szabályok a paraméterből származó. Tekintse meg a paraméter [több NSG-paraméterfájl](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.parameters.json). |
 
 ## <a name="next-steps"></a>További lépések
+
+* Go-oktatóanyagot, tekintse meg [oktatóanyag: létrehozása a Resource Manager-sablonokkal több erőforráspéldány létrehozásával](./resource-manager-tutorial-create-multiple-instances.md).
+
 * Ha szeretne további információ a szakaszokat, [Azure Resource Manager-sablonok készítése](resource-group-authoring-templates.md).
 * Ismerje meg, hogyan helyezze üzembe a sablont, tekintse meg [alkalmazás üzembe helyezése az Azure Resource Manager-sablon](resource-group-template-deploy.md).
 

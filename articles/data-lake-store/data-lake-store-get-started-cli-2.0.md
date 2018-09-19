@@ -1,6 +1,6 @@
 ---
-title: Használja az Azure parancssori 2.0 felületet Azure Data Lake tárolási Gen1 használatába |} Microsoft Docs
-description: Data Lake Store-fiók létrehozása és alapszintű műveletek végrehajtása az Azure 2.0-s verziójú, platformfüggetlen parancssorával
+title: Az Azure parancssori 2.0 felhasználói felülettel való ismerkedés az Azure Data Lake Storage Gen1 |} A Microsoft Docs
+description: Hozzon létre egy Data Lake Storage Gen1 fiókot, és alapszintű műveletek végrehajtása az Azure platformfüggetlen parancssori 2.0 használatával
 services: data-lake-store
 documentationcenter: ''
 author: nitinme
@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: nitinme
-ms.openlocfilehash: acd1182fdc66374e9abbc4964207417a7de3aadb
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: b75fc3a96ce4e46fbd9efb03aa2ea9c2c4aaa15c
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37036133"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46124779"
 ---
-# <a name="get-started-with-azure-data-lake-storage-gen1-using-azure-cli-20"></a>Ismerkedés az Azure Data Lake tárolási Gen1 Azure CLI 2.0 használatával
+# <a name="get-started-with-azure-data-lake-storage-gen1-using-azure-cli-20"></a>Ismerkedés az Azure Data Lake Storage Gen1 Azure CLI 2.0 használatával
 > [!div class="op_single_selector"]
 > * [Portál](data-lake-store-get-started-portal.md)
 > * [PowerShell](data-lake-store-get-started-powershell.md)
@@ -27,9 +27,9 @@ ms.locfileid: "37036133"
 
 [!INCLUDE [data-lake-storage-gen1-rename-note.md](../../includes/data-lake-storage-gen1-rename-note.md)]
 
-Ismerje meg, hogyan hozhat létre Azure Data Lake Store-fiókot az Azure CLI 2.0 használatával, illetve hogyan végezhet el olyan alapvető műveleteket, mint például mappák létrehozása, adatfájlok le- és feltöltése, fiók törlése stb. További információ a Data Lake Store: [a Data Lake tárolási Gen1 áttekintése](data-lake-store-overview.md).
+Útmutató az Azure CLI 2.0 használata Azure Data Lake Storage Gen1 fiók létrehozása és alapszintű műveleteket, mint például mappák létrehozása, és feltöltése adatfájlok le, a fiók törlése stb. További információ a Data Lake Storage Gen1: [a Data Lake Storage Gen1 áttekintése](data-lake-store-overview.md).
 
-Az Azure CLI 2.0 az Azure új parancssori felülete, amely Azure-erőforrások felügyeletére szolgál. A szolgáltatás macOS, Linux és Windows rendszereken használható. További információért lásd: [Az Azure CLI 2.0 áttekintése](https://docs.microsoft.com/cli/azure). A parancsok és a szintaxis teljes listája az [Azure Data Lake Store CLI 2.0 dokumentációjában](https://docs.microsoft.com/cli/azure/dls) található.
+Az Azure CLI 2.0 az Azure új parancssori felülete, amely Azure-erőforrások felügyeletére szolgál. A szolgáltatás macOS, Linux és Windows rendszereken használható. További információért lásd: [Az Azure CLI 2.0 áttekintése](https://docs.microsoft.com/cli/azure). Ezenkívül megnézheti a [Azure Data Lake Storage Gen1 CLI 2.0-referencia](https://docs.microsoft.com/cli/azure/dls) teljes listáját a parancsokat és szintaxist.
 
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -41,7 +41,7 @@ A cikk elkezdéséhez az alábbiakkal kell rendelkeznie:
 
 ## <a name="authentication"></a>Hitelesítés
 
-Ez a cikk egy egyszerűbb hitelesítési módszert használ a Data Lake Store-ral, ahol Ön végfelhasználóként jelentkezik be. Ezután a Data Lake Store-fiókhoz és a fájlrendszerhez való hozzáférés szintje a bejelentkezett felhasználó hozzáférési szintjétől függ. Azonban a Data Lake Store-ral más módokon is lehet hitelesíteni. Ezek a következők: **végfelhasználói hitelesítés** vagy **szolgáltatások közötti hitelesítés**. A hitelesítéssel kapcsolatban a [Végfelhasználói hitelesítés](data-lake-store-end-user-authenticate-using-active-directory.md) vagy a [Szolgáltatások közötti hitelesítés](data-lake-store-authenticate-using-active-directory.md) című témakörben talál útmutatást és további tudnivalókat.
+Ez a cikk egy egyszerűbb hitelesítési módszert használ a Data Lake Storage Gen1 hol jelentkezik be végfelhasználóként. A hozzáférési szintet a Data Lake Storage Gen1 fiók és egy fájlrendszert, majd szolgáltatás a bejelentkezett felhasználó hozzáférési szintjét. Előfordulhatnak azonban olyan egyéb megközelítések is lehet hitelesíteni a Data Lake Storage Gen1, amelyek **végfelhasználói hitelesítés** vagy **szolgáltatások közötti hitelesítés**. A hitelesítéssel kapcsolatban a [Végfelhasználói hitelesítés](data-lake-store-end-user-authenticate-using-active-directory.md) vagy a [Szolgáltatások közötti hitelesítés](data-lake-store-authenticate-using-active-directory.md) című témakörben talál útmutatást és további tudnivalókat.
 
 
 ## <a name="log-in-to-your-azure-subscription"></a>Bejelentkezés az Azure-előfizetésbe
@@ -52,7 +52,7 @@ Ez a cikk egy egyszerűbb hitelesítési módszert használ a Data Lake Store-ra
     az login
     ```
 
-    Kap egy kódot a következő lépésben való használatra. Nyissa meg a lap egy webböngésző segítségével https://aka.ms/devicelogin , és írja be a kódot a hitelesítéshez. A rendszer kéri a hitelesítési adatokkal való bejelentkezést.
+    Kap egy kódot a következő lépésben való használatra. Nyissa meg a webböngésző használata https://aka.ms/devicelogin , és írja be a kódot a hitelesítéshez. A rendszer kéri a hitelesítési adatokkal való bejelentkezést.
 
 2. Bejelentkezés után az ablakban megjelenő listában találhatók a fiókhoz társított Azure-előfizetések. Az alábbi paranccsal használhat egy adott előfizetést.
    
@@ -60,7 +60,7 @@ Ez a cikk egy egyszerűbb hitelesítési módszert használ a Data Lake Store-ra
     az account set --subscription <subscription id> 
     ```
 
-## <a name="create-an-azure-data-lake-store-account"></a>Azure Data Lake Store-fiók létrehozása
+## <a name="create-an-azure-data-lake-storage-gen1-account"></a>Az Azure Data Lake Storage Gen1 fiók létrehozása
 
 1. Hozzon létre egy új erőforráscsoportot. Az alábbi parancsban adja meg a használni kívánt paraméterértékeket. Ha a hely neve tartalmaz szóközöket, használjon idézőjeleket. Például: „USA 2. keleti régiója”. 
    
@@ -68,33 +68,33 @@ Ez a cikk egy egyszerűbb hitelesítési módszert használ a Data Lake Store-ra
     az group create --location "East US 2" --name myresourcegroup
     ```
 
-2. Hozza létre a Data Lake Store-fiókot.
+2. A Data Lake Storage Gen1 fiók létrehozásához.
    
     ```azurecli
-    az dls account create --account mydatalakestore --resource-group myresourcegroup
+    az dls account create --account mydatalakestoragegen1 --resource-group myresourcegroup
     ```
 
-## <a name="create-folders-in-a-data-lake-store-account"></a>Mappák létrehozása Data Lake Store-fiókban
+## <a name="create-folders-in-a-data-lake-storage-gen1-account"></a>Mappák létrehozása a Data Lake Storage Gen1-fiókban
 
-Mappákat hozhat létre az Azure Data Lake Store-fiókjában az adatok kezelése és tárolása céljából. Az alábbi parancs segítségével hozzon létre egy **mynewfolder** nevű mappát a Data Lake Store gyökérmappájában.
+Az adatok kezelésére és tárolására az Azure Data Lake Storage Gen1-fiókjában mappákat hozhat létre. A következő paranccsal hozzon létre egy nevű **mynewfolder** a Data Lake Storage Gen1 fiók gyökérmappájában.
 
 ```azurecli
-az dls fs create --account mydatalakestore --path /mynewfolder --folder
+az dls fs create --account mydatalakestoragegen1 --path /mynewfolder --folder
 ```
 
 > [!NOTE]
-> A `--folder` paraméter gondoskodik arról, hogy a parancs egy mappát hozzon létre. Ha a paraméter hiányzik, a parancs egy mynewfolder nevű üres fájlt hoz létre a Data Lake Store-fiók gyökérmappájában.
+> A `--folder` paraméter gondoskodik arról, hogy a parancs egy mappát hozzon létre. Ha ez a paraméter nem található, a parancs létrehozza a Data Lake Storage Gen1 fiók gyökérmappájában mynewfolder nevű üres fájlt.
 > 
 >
 
-## <a name="upload-data-to-a-data-lake-store-account"></a>Adatok feltöltése a Data Lake Store-fiókba
+## <a name="upload-data-to-a-data-lake-storage-gen1-account"></a>Adatok feltöltése a Data Lake Storage Gen1-fiókhoz
 
-Az adatokat közvetlenül a Data Lake Store gyökérmappájába vagy a fiókban létrehozott egyik mappába töltheti fel. Az alábbi kódtöredékek bemutatják, hogyan tölthet fel néhány adatot az előző szakaszban létrehozott mappába (**mynewfolder**).
+Feltöltheti az adatokat a Data Lake Storage Gen1 közvetlenül, gyökérszinten, vagy a fiókon belül létrehozott mappába. Az alábbi kódtöredékek bemutatják, hogyan tölthet fel néhány adatot az előző szakaszban létrehozott mappába (**mynewfolder**).
 
 Ha feltölthető mintaadatokra van szüksége, használhatja az [Azure Data Lake Git-tárában](https://github.com/MicrosoftBigData/usql/tree/master/Examples/Samples/Data/AmbulanceData) található **Ambulance Data** mappát. Töltse le a fájlt, és tárolja a számítógépén egy helyi könyvtárban (pl. C:\sampledata).
 
 ```azurecli
-az dls fs upload --account mydatalakestore --source-path "C:\SampleData\AmbulanceData\vehicle1_09142014.csv" --destination-path "/mynewfolder/vehicle1_09142014.csv"
+az dls fs upload --account mydatalakestoragegen1 --source-path "C:\SampleData\AmbulanceData\vehicle1_09142014.csv" --destination-path "/mynewfolder/vehicle1_09142014.csv"
 ```
 
 > [!NOTE]
@@ -103,12 +103,12 @@ az dls fs upload --account mydatalakestore --source-path "C:\SampleData\Ambulanc
 >
 
 
-## <a name="list-files-in-a-data-lake-store-account"></a>A Data Lake Store-fiók fájljainak listázása
+## <a name="list-files-in-a-data-lake-storage-gen1-account"></a>Fájlok listázása a Data Lake Storage Gen1-fiókban
 
-Az alábbi parancs segítségével kilistázhatja a Data Lake Store-fiók fájljait.
+A következő paranccsal listázhatja a fájlok egy Data Lake Storage Gen1-fiókban.
 
 ```azurecli
-az dls fs list --account mydatalakestore --path /mynewfolder
+az dls fs list --account mydatalakestoragegen1 --path /mynewfolder
 ```
 
 A kimenet az alábbihoz hasonló lesz:
@@ -131,18 +131,18 @@ A kimenet az alábbihoz hasonló lesz:
         }
     ]
 
-## <a name="rename-download-and-delete-data-from-a-data-lake-store-account"></a>A Data Lake Store-fiókban lévő adatok átnevezése, letöltése és törlése 
+## <a name="rename-download-and-delete-data-from-a-data-lake-storage-gen1-account"></a>Átnevezése, letöltése és adatot törölni egy Data Lake Storage Gen1 fiók 
 
 * **Fájlok átnevezéséhez** használja az alábbi parancsot:
   
     ```azurecli
-    az dls fs move --account mydatalakestore --source-path /mynewfolder/vehicle1_09142014.csv --destination-path /mynewfolder/vehicle1_09142014_copy.csv
+    az dls fs move --account mydatalakestoragegen1 --source-path /mynewfolder/vehicle1_09142014.csv --destination-path /mynewfolder/vehicle1_09142014_copy.csv
     ```
 
 * **Fájlok letöltéséhez** használja az alábbi parancsot: Ügyeljen arra, hogy a megadott cél elérési útja egy létező hely legyen.
   
     ```azurecli     
-    az dls fs download --account mydatalakestore --source-path /mynewfolder/vehicle1_09142014_copy.csv --destination-path "C:\mysampledata\vehicle1_09142014_copy.csv"
+    az dls fs download --account mydatalakestoragegen1 --source-path /mynewfolder/vehicle1_09142014_copy.csv --destination-path "C:\mysampledata\vehicle1_09142014_copy.csv"
     ```
 
     > [!NOTE]
@@ -153,35 +153,35 @@ A kimenet az alábbihoz hasonló lesz:
 * **Fájlok törléséhez** használja az alábbi parancsot:
   
     ```azurecli
-    az dls fs delete --account mydatalakestore --path /mynewfolder/vehicle1_09142014_copy.csv
+    az dls fs delete --account mydatalakestoragegen1 --path /mynewfolder/vehicle1_09142014_copy.csv
     ```
 
     Ha egyetlen paranccsal szeretné törölni a **mynewfolder** nevű mappát és a **vehicle1_09142014_copy.csv** nevű fájlt, használja a --recurse paramétert
 
     ```azurecli
-    az dls fs delete --account mydatalakestore --path /mynewfolder --recurse
+    az dls fs delete --account mydatalakestoragegen1 --path /mynewfolder --recurse
     ```
 
-## <a name="work-with-permissions-and-acls-for-a-data-lake-store-account"></a>A Data Lake Store-fiókhoz tartozó engedélyek és a hozzáférés-vezérlési listák használata
+## <a name="work-with-permissions-and-acls-for-a-data-lake-storage-gen1-account"></a>Egy Data Lake Storage Gen1 fiókhoz tartozó engedélyek és hozzáférés-vezérlési listák használata
 
-Ebben a szakaszban a hozzáférés-vezérlési listák és az engedélyek Azure CLI 2.0-beli felügyeletét ismerheti meg. A hozzáférés-vezérlési listák Azure Data Lake Store-beli használatának részletes leírásáért lásd: [Az Azure Data Lake Store szolgáltatásban található hozzáférés-vezérlés](data-lake-store-access-control.md).
+Ebben a szakaszban a hozzáférés-vezérlési listák és az engedélyek Azure CLI 2.0-beli felügyeletét ismerheti meg. A hozzáférés-vezérlési listák hogyan találhatók meg az Azure Data Lake Storage Gen1 részletes tárgyalását lásd: [hozzáférés-vezérlés az Azure Data Lake Storage Gen1](data-lake-store-access-control.md).
 
 * **Egy fájl/mappa tulajdonosának frissítését** az alábbi paranccsal végezheti el:
 
     ```azurecli
-    az dls fs access set-owner --account mydatalakestore --path /mynewfolder/vehicle1_09142014.csv --group 80a3ed5f-959e-4696-ba3c-d3c8b2db6766 --owner 6361e05d-c381-4275-a932-5535806bb323
+    az dls fs access set-owner --account mydatalakestoragegen1 --path /mynewfolder/vehicle1_09142014.csv --group 80a3ed5f-959e-4696-ba3c-d3c8b2db6766 --owner 6361e05d-c381-4275-a932-5535806bb323
     ```
 
 * **Egy fájl/mappa engedélyeinek frissítését** az alábbi paranccsal végezheti el:
 
     ```azurecli
-    az dls fs access set-permission --account mydatalakestore --path /mynewfolder/vehicle1_09142014.csv --permission 777
+    az dls fs access set-permission --account mydatalakestoragegen1 --path /mynewfolder/vehicle1_09142014.csv --permission 777
     ```
     
 * **Adott elérési úthoz tartozó hozzáférés-vezérlési listák beolvasását** az alábbi paranccsal végezheti el:
 
     ```azurecli
-    az dls fs access show --account mydatalakestore --path /mynewfolder/vehicle1_09142014.csv
+    az dls fs access show --account mydatalakestoragegen1 --path /mynewfolder/vehicle1_09142014.csv
     ```
 
     A kimenet az alábbihoz hasonló lesz:
@@ -201,38 +201,38 @@ Ebben a szakaszban a hozzáférés-vezérlési listák és az engedélyek Azure 
 * **Egy hozzáférés-vezérlési listához tartozó bejegyzés beállítását** az alábbi paranccsal végezheti el:
 
     ```azurecli
-    az dls fs access set-entry --account mydatalakestore --path /mynewfolder --acl-spec user:6360e05d-c381-4275-a932-5535806bb323:-w-
+    az dls fs access set-entry --account mydatalakestoragegen1 --path /mynewfolder --acl-spec user:6360e05d-c381-4275-a932-5535806bb323:-w-
     ```
 
 * **Egy hozzáférés-vezérlési listához tartozó bejegyzés eltávolítását** az alábbi paranccsal végezheti el:
 
     ```azurecli
-    az dls fs access remove-entry --account mydatalakestore --path /mynewfolder --acl-spec user:6360e05d-c381-4275-a932-5535806bb323
+    az dls fs access remove-entry --account mydatalakestoragegen1 --path /mynewfolder --acl-spec user:6360e05d-c381-4275-a932-5535806bb323
     ```
 
 * **Egy alapértelmezett teljes hozzáférés-vezérlési lista eltávolítását** az alábbi paranccsal végezheti el:
 
     ```azurecli
-    az dls fs access remove-all --account mydatalakestore --path /mynewfolder --default-acl
+    az dls fs access remove-all --account mydatalakestoragegen1 --path /mynewfolder --default-acl
     ```
 
 * **Egy nem alapértelmezett teljes hozzáférés-vezérlési lista eltávolítását** az alábbi paranccsal végezheti el:
 
     ```azurecli
-    az dls fs access remove-all --account mydatalakestore --path /mynewfolder
+    az dls fs access remove-all --account mydatalakestoragegen1 --path /mynewfolder
     ```
     
-## <a name="delete-a-data-lake-store-account"></a>Data Lake Store-fiók törlése
-Az alábbi parancs segítségével törölheti a Data Lake Store-fiókját.
+## <a name="delete-a-data-lake-storage-gen1-account"></a>Törölheti a Data Lake Storage Gen1
+A következő paranccsal törölheti a Data Lake Storage Gen1.
 
 ```azurecli
-az dls account delete --account mydatalakestore
+az dls account delete --account mydatalakestoragegen1
 ```
 
 Ha a rendszer rákérdez, írja be az **Y** karaktert a fiók törléséhez.
 
 ## <a name="next-steps"></a>További lépések
-* [Az Azure Data Lake Store használata big data-követelményekhez](data-lake-store-data-scenarios.md) 
-* [Biztonságos adattárolás a Data Lake Store-ban](data-lake-store-secure-data.md)
-* [Az Azure Data Lake Analytics használata a Data Lake Store-ral](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
-* [Az Azure HDInsight használata a Data Lake Store-ral](data-lake-store-hdinsight-hadoop-use-portal.md)
+* [Az Azure Data Lake Storage Gen1 használata big data-követelményekhez](data-lake-store-data-scenarios.md) 
+* [Az adatok védelme az 1. generációs Data Lake Storage-ban](data-lake-store-secure-data.md)
+* [Az Azure Data Lake Analytics használata a Data Lake Storage Gen1](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
+* [Az Azure HDInsight használata a Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md)

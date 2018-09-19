@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 09/17/2018
 ms.reviewer: olegan
 ms.author: mbullwin
-ms.openlocfilehash: fa7115e651cf1b5c4533675cc2b2194b36d773f8
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 76567820a3d0fcd7dbd27cc7bc1afd09da94715c
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45730177"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46129845"
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>Az Application Insights SDK konfigurálása az ApplicationInsights.config vagy .xml használatával
 Az Application Insights SDK-k áll egy NuGet-csomagok száma. A [core csomag](http://www.nuget.org/packages/Microsoft.ApplicationInsights) az API-t biztosít a telemetria küldését az Application Insights. [További csomagok](http://www.nuget.org/packages?q=Microsoft.ApplicationInsights) adja meg a telemetriai adatok *modulok* és *inicializálók* automatikusan nyomon követési telemetria az alkalmazás és a környezetben. A konfigurációs fájl módosításával engedélyezze vagy tiltsa le a telemetriai adatok modulok és az inicializálók, és némelyike paramétereinek megadása.
@@ -228,21 +228,6 @@ Meghatározza a maximális mérete (MB), amely a helyi lemezen az állandó tár
       </Channel>
       ...
    </ApplicationInsights>
-```
-
-#### <a name="local-forwarder"></a>Helyi továbbító
-
-[Helyi továbbító](https://docs.microsoft.com/azure/application-insights/local-forwarder) olyan ügynök, amely gyűjti az Application Insights vagy [OpenCensus](https://opencensus.io/) használati adatok gyűjtése a különböző SDK-k és keretrendszereket és továbbítja azt az Application Insights. Windows és Linux alatt alkalmas állapotban. 
-
-```Java
-<Channel type="com.microsoft.applicationinsights.channel.concrete.localforwarder.LocalForwarderTelemetryChannel">
-   <DeveloperMode>false</DeveloperMode>
-   <EndpointAddress><!-- put the hostname:port of your LocalForwarder instance here --></EndpointAddress>
-
-   <!-- The properties below are optional. The values shown are the defaults for each property -->
-   <FlushIntervalInSeconds>5</FlushIntervalInSeconds><!-- must be between [1, 500]. values outside the bound will be rounded to nearest bound -->
-   <MaxTelemetryBufferCapacity>500</MaxTelemetryBufferCapacity><!-- units=number of telemetry items; must be between [1, 1000] -->
-</Channel>
 ```
 
 ## <a name="instrumentationkey"></a>InstrumentationKey

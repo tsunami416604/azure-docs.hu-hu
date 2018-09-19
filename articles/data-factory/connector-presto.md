@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2017
 ms.author: jingwang
-ms.openlocfilehash: 62ca860a69d72e940a56483d3c0dcb2ab5c5dcc1
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 29ac668ddb9d5df88d5f743630eaf2d9288b8727
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45633690"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46123436"
 ---
-# <a name="copy-data-from-presto-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával Presto
+# <a name="copy-data-from-presto-using-azure-data-factory-preview"></a>Adatok másolása az Azure Data Factory (előzetes verzió) használatával Presto
 
 Ez a cikk az Azure Data Factory a másolási tevékenység használatával adatokat másol a Presto módját ismerteti. Épül a [másolási tevékenység áttekintése](copy-activity-overview.md) cikket, amely megadja a másolási tevékenység általános áttekintést.
 

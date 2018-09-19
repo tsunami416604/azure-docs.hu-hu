@@ -8,33 +8,218 @@ ms.technology: speech
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 64dce26303c0e700da54d371af5cb275b1613d70
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 7d5656d6599e1d8d2a3e85b9d41bcce6490e1511
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43122103"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46124167"
 ---
 # <a name="speech-service-rest-apis"></a>Beszédszolgáltatás REST API-k
 
-A REST API-k, az egyesített beszédszolgáltatás hasonlóak az API-k által biztosított a [Speech API](https://docs.microsoft.com/azure/cognitive-services/Speech) (korábbi nevén a Bing Speech Service). A végpontok különböznek az előző beszédfelismerési szolgáltatás által használt a végpontok.
+A REST API-k, az egyesített beszédszolgáltatás hasonlóak az API-k által biztosított a [Bing Speech API](https://docs.microsoft.com/azure/cognitive-services/Speech). A végpontok a végpontokat, a Bing Speech-szolgáltatás által használt eltérnek. Regionális végpontok érhetők el, és a egy előfizetési kulcsot használ a végponthoz tartozó kell használnia.
 
 ## <a name="speech-to-text"></a>Diktálás
 
-A Speech to Text API, a használt végpontokat különböznek az előző beszédszolgáltatás Speech Recognition API. Az új végpontok az alábbi táblázatban láthatók. Használja az egyik, amely megfelel az előfizetés régiót.
+A végpontok a Speech to Text REST API az alábbi táblázatban láthatók. Használja az egyik, amely megfelel az előfizetés régiót.
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-speech-to-text.md)]
-
-A Speech to Text API hasonlít ellenkező esetben a [REST API-val](https://docs.microsoft.com/azure/cognitive-services/speech/getstarted/getstartedrest) az előző Speech API-hoz.
-
-A Speech to Text REST API csak rövid beszédet támogat. Kérelmek legfeljebb 10 másodpercet, hang és tartalmazhat az elmúlt 14 másodperc teljes legfeljebb. A REST API-t csak a végső eredmények, nem átmeneti vagy részleges eredményt adja vissza.
 
 > [!NOTE]
 > Ha testre szabta az akusztikai modell vagy a nyelvi modell, vagy a írásmódja, használja az egyéni végpontra.
 
+Az API-t csak rövid beszédet támogat. Kérelmek legfeljebb 10 másodpercet, hang és tartalmazhat az elmúlt 14 másodperc teljes legfeljebb. A REST API-t csak a végső eredmények, nem átmeneti vagy részleges eredményt adja vissza. A beszédfelismerési szolgáltatás is rendelkezik egy [beszédátírási batch](batch-transcription.md) API, amely hosszabb hang is lefényképezze.
+
+### <a name="query-parameters"></a>Lekérdezési paraméterek
+
+Az alábbi paramétereket a lekérdezési karakterláncban a REST-kérés szerepelhet.
+
+|Paraméter neve|Kötelező/választható|Jelentés|
+|-|-|-|
+|`language`|Szükséges|A nyelvet, hogy a azonosítóját. Lásd: [támogatott nyelvek](supported-languages.md#speech-to-text).|
+|`format`|Optional<br>alapértelmezett érték: `simple`|Eredményformátum, `simple` vagy `detailed`. Egyszerű eredmények tartalmazzák a `RecognitionStatus`, `DisplayText`, `Offset`, és időtartama. Részletes eredmények tartalmazzák a több jelöltek megbízhatósági értékeket és a négy különböző értük felelősséget.|
+|`profanity`|Optional<br>alapértelmezett érték: `masked`|A felismerési eredményeket cenzúrázása kezelésének módját. Előfordulhat, hogy `masked` (cenzúrázása cseréli csillagok), `removed` (eltávolítja az összes cenzúrázása), vagy `raw` (tartalmazza a vulgáris).
+
+### <a name="request-headers"></a>Kérelemfejlécek
+
+A következő mezőket a HTTP-kérés fejlécében érkeznek.
+
+|Fejléc|Jelentés|
+|------|-------|
+|`Ocp-Apim-Subscription-Key`|A beszédfelismerési szolgáltatás előfizetési kulcs. Vagy a fejléc vagy `Authorization` meg kell adni.|
+|`Authorization`|Egy engedélyezési jogkivonatot előzi meg a word `Bearer`. Vagy a fejléc vagy `Ocp-Apim-Subscription-Key` meg kell adni. Lásd: [hitelesítési](#authentication).|
+|`Content-type`|A formátum és hang adatok kodek ismerteti. Jelenleg ez az érték lehet `audio/wav; codec=audio/pcm; samplerate=16000`.|
+|`Transfer-Encoding`|Választható. Adja meg, ha meg kell `chunked` hang adatok több kisebb tömbökre egyetlen fájl helyett a küldésének engedélyezéséhez.|
+|`Expect`|Ha használja a darabolásos átvitel, küldjön `Expect: 100-continue`. A beszédfelismerési szolgáltatás nyugtázza a kiindulási kérelemhez, és további adatokat várja.|
+|`Accept`|Választható. Ha meg van adva, tartalmaznia kell `application/json`, ahogy a beszédfelismerési szolgáltatás JSON formátumban eredményeket biztosít. (Bizonyos webes kérés keretrendszereket, adjon meg egy nem kompatibilis alapértelmezett értéket, ha nincs megadva, így az mindig célszerű tartalmazzák `Accept`)|
+
+### <a name="audio-format"></a>Formát zvuku
+
+A törzs a HTTP küldése a hanganyag `PUT` kérése és 16 bites WAV PCM egyetlen csatornát (mono) 16 KHz formátumúnak kell lennie.
+
+### <a name="chunked-transfer"></a>Darabolásos átvitel
+
+Darabolásos átvitel (`Transfer-Encoding: chunked`) segít minimálisra csökkenteni a felismerés késés, mivel így a beszédfelismerési szolgáltatás indításával megkezdheti a feldolgozási küldött, miközben azt a hangfájlt. A REST API-t nem biztosít teljes vagy részleges köztes eredményeket; Ez a beállítás kizárólag növelni a válaszkészséget a funkcionalitást.
+
+A következő kód azt ábrázolja, hogyan küldhet hang tömbökben. `request` egy HTTPWebRequest objektumot a megfelelő REST-végponthoz csatlakozik. `audioFile` a hangfájl lemezen út.
+
+```csharp
+using (fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
+{
+
+    /*
+    * Open a request stream and write 1024 byte chunks in the stream one at a time.
+    */
+    byte[] buffer = null;
+    int bytesRead = 0;
+    using (Stream requestStream = request.GetRequestStream())
+    {
+        /*
+        * Read 1024 raw bytes from the input audio file.
+        */
+        buffer = new Byte[checked((uint)Math.Min(1024, (int)fs.Length))];
+        while ((bytesRead = fs.Read(buffer, 0, buffer.Length)) != 0)
+        {
+            requestStream.Write(buffer, 0, bytesRead);
+        }
+
+        // Flush
+        requestStream.Flush();
+    }
+}
+```
+
+### <a name="example-request"></a>Kérelem (példa)
+
+Egy tipikus kérelem a következő:
+
+```HTTP
+POST speech/recognition/conversation/cognitiveservices/v1?language=en-US&format=detailed HTTP/1.1
+Accept: application/json;text/xml
+Content-Type: audio/wav; codec=audio/pcm; samplerate=16000
+Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY
+Host: westus.stt.speech.microsoft.com
+Transfer-Encoding: chunked
+Expect: 100-continue
+```
+
+### <a name="http-status"></a>HTTP-állapot
+
+A HTTP-állapot, a válasz azt jelzi, hogy a sikeres vagy gyakori hibaállapotok.
+
+HTTP-kód|Jelentés|Lehetséges ok
+-|-|-|
+100|Folytatás|A kezdeti kérés elfogadva. Folytassa a többi adatot küld. (Használja a darabolásos átviteli.)
+200|OK|A kérelem sikeres volt. a választörzs mérete a JSON-objektum.
+400|Hibás kérés|Nyelvkód nem biztosított, vagy nem támogatott nyelvet; hangfájl érvénytelen.
+401|Nem engedélyezett|Az előfizetői vagy engedélyezési jogkivonat érvénytelen a megadott régióban, vagy érvénytelen végpont.
+403|Tiltott|Hiányzik az előfizetési kulcs vagy engedélyezési jogkivonat.
+
+### <a name="json-response"></a>JSON-válasz
+
+Eredmények a rendszer JSON formátumban adja vissza. A `simple` formátum csak a következő legfelső szintű mezőket tartalmazza.
+
+|Mező neve|Tartalom|
+|-|-|
+|`RecognitionStatus`|Állapot, mint például `Success` sikeres felismeréséhez. Lásd a következő táblázatot.|
+|`DisplayText`|A felismert szöveget után nagybetűk, írásjelek, más néven Inverz szöveg normalizálási (átalakítása a kimondott szöveg rövidebb űrlapok, például a 200-as "kétszáz" vagy "Dr. János""orvos Smith"), és a vulgáris maszkolási. Jelenleg csak a sikeres.|
+|`Offset`|Az idő (100 nanoszekundumos egységek), amelyen a felismert speech az audio-adatfolyam kezdődik.|
+|`Duration`|Az időtartam (100 nanoszekundumos egység) a felismert beszéd, a hang adatfolyamban.|
+
+A `RecognitionStatus` mező a következő értékeket tartalmazhat.
+
+|Állapotérték|Leírás
+|-|-|
+| `Success` | A beszédfelismerést sikeres volt, és a megjelenő mezőben szerepel. |
+| `NoMatch` | Beszéd az audio-adatfolyam észlelt, de nincs szó azoktól a Célnyelv sem felel meg is. Általában azt jelenti, a beszédfelismerési nyelv, a felhasználó van, és beszéljen egy másik nyelven. |
+| `InitialSilenceTimeout` | A hang stream elején szereplő csak csend, és a szolgáltatás, beszédfelismerés várakozás túllépte az időkorlátot. |
+| `BabbleTimeout` | A hang stream elején szereplő csak zaj, és a szolgáltatás, beszédfelismerés várakozás túllépte az időkorlátot. |
+| `Error` | A beszédfelismerést szolgáltatás belső hibába ütközött, és nem lehetett folytatni. Próbálja meg újra, ha lehetséges. |
+
+> [!NOTE]
+> Ha a felhasználó csak a vulgáris beszél, és a `profanity` lekérdezési paraméter értéke `remove`, a szolgáltatás nem ad vissza egy beszéd eredményt, ha a mód nem `interactive`. Ebben az esetben a szolgáltatás a speech eredményt ad vissza egy `RecognitionStatus` , `NoMatch`. 
+
+A `detailed` formátum tartalmazza, ugyanazokat a mezőket a `simple` formájában, valamint az egy `NBest` mező. A `NBest` mező az alternatív értelmezéseket a azonos beszéd, ahol az a legvalószínűbb valószínűleg legalább listája. Az első bejegyzés ugyanaz, mint a fő felismerés eredményét. Mindegyik bejegyzés a következő mezőket tartalmazzák:
+
+|Mező neve|Tartalom|
+|-|-|
+|`Confidence`|A megbízhatósági pontszám a bejegyzés a 0,0 (nincs megbízhatóság) 1.0-s (teljes megbízhatósági)
+|`Lexical`|A felismert szöveget lexikai formájában: a tényleges szavak ismerhető fel.
+|`ITN`|Inverz szöveg normalizált ("kanonikus") formájában a felismert szöveget, phone számok, rövidítések ("orvos smith", "dr smith") és egyéb átalakítások alkalmazza.
+|`MaskedITN`| A vulgáris maszkolási alkalmazza, ha a rendszer kéri fel űrlapján.
+|`Display`| A megjelenítési formája a felismert szöveget, írásjelek és a nagybetűk hozzáadva. Ugyanaz, mint a `DisplayText` a legfelső szintű eredményei.
+
+### <a name="sample-responses"></a>Minta válaszok
+
+Az alábbiakban található a tipikus választ `simple` felismerése.
+
+```json
+{
+  "RecognitionStatus": "Success",
+  "DisplayText": "Remind me to buy 5 pencils.",
+  "Offset": "1236645672289",
+  "Duration": "1236645672289"
+}
+```
+
+Az alábbi, jellemző választ `detailed` felismerése.
+
+```json
+{
+  "RecognitionStatus": "Success",
+  "Offset": "1236645672289",
+  "Duration": "1236645672289",
+  "NBest": [
+      {
+        "Confidence" : "0.87",
+        "Lexical" : "remind me to buy five pencils",
+        "ITN" : "remind me to buy 5 pencils",
+        "MaskedITN" : "remind me to buy 5 pencils",
+        "Display" : "Remind me to buy 5 pencils.",
+      },
+      {
+        "Confidence" : "0.54",
+        "Lexical" : "rewind me to buy five pencils",
+        "ITN" : "rewind me to buy 5 pencils",
+        "MaskedITN" : "rewind me to buy 5 pencils",
+        "Display" : "Rewind me to buy 5 pencils.",
+      }
+  ]
+}
+```
+
 ## <a name="text-to-speech"></a>Szövegfelolvasás
 
-Az új Text to Speech API 24-KHz hangkimeneti támogatja. A `X-Microsoft-OutputFormat` fejléc most már előfordulhat, hogy a következő értékeket tartalmaznak.
+Az alábbiakban a Speech service Text to Speech API a REST-végpontokat. A végpont, amely megfelel az előfizetés régiót használni.
+
+[!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-text-to-speech.md)]
+
+> [!NOTE]
+> Ha egyéni hangtípust hozta létre, használja a hozzárendelt egyéni végpont.
+
+A beszédfelismerési szolgáltatás mellett a Bing Speech által támogatott 16-Khz kimenet 24-KHz hangkimeneti támogatja. Négy 24-KHz kimeneti formátumok érhetők el használatra a `X-Microsoft-OutputFormat` HTTP-fejléc, mivel két 24-KHz beszédhangot, `Jessa24kRUS` és `Guy24kRUS`.
+
+Területi beállítás | Nyelv   | Nem | A felhasználónév-leképezés
+-------|------------|--------|------------
+hu-HU  | Amerikai angol | Nő | "A Microsoft Server beszéd szöveg Speech Voice (en-US, Jessa24kRUS)" 
+hu-HU  | Amerikai angol | Férfi   | "A Microsoft Server beszéd szöveg Speech Voice (en-US, Guy24kRUS)"
+
+Rendelkezésre álló beszédhangot teljes listája megtalálható [támogatott nyelvek](supported-languages.md#text-to-speech).
+
+### <a name="request-headers"></a>Kérelemfejlécek
+
+A következő mezőket a HTTP-kérés fejlécében érkeznek.
+
+|Fejléc|Jelentés|
+|------|-------|
+|`Authorization`|Egy engedélyezési jogkivonatot előzi meg a word `Bearer`. Kötelező. Lásd: [hitelesítési](#authentication).|
+|`Content-Type`|A bemeneti tartalomtípus: `application/ssml+xml`.|
+|`X-Microsoft-OutputFormat`|A kimeneti audio formátum. Lásd a következő táblázatot.|
+|`X-Search-AppId`|Csak hexadecimális GUID (kötőjelek nélkül), amely egyedileg azonosítja az ügyfélalkalmazás. Ez lehet a tároló azonosítója. FF már nem egy áruházbeli alkalmazás, használhat bármilyen GUID.|
+|`X-Search-ClientId`|Csak hexadecimális GUID (kötőjelek nélkül), amely egyedileg azonosítja az alkalmazáspéldány minden telepítésnél.|
+|`User-Agent`|Alkalmazás neve. Szükséges; 255-nél kevesebb karaktert kell tartalmaznia.|
+
+A rendelkezésre álló hangkimeneti formátumok (`X-Microsoft-OutputFormat`) egy átviteli sebesség és a egy kódolást.
 
 |||
 |-|-|
@@ -45,22 +230,48 @@ Az új Text to Speech API 24-KHz hangkimeneti támogatja. A `X-Microsoft-OutputF
 `riff-24khz-16bit-mono-pcm`        | `audio-24khz-160kbitrate-mono-mp3`
 `audio-24khz-96kbitrate-mono-mp3`  | `audio-24khz-48kbitrate-mono-mp3`
 
-A beszédfelismerési szolgáltatás most már két 24-KHz beszédhangot biztosítja:
+### <a name="request-body"></a>Kérelem törzse
 
-Területi beállítás | Nyelv   | Nem | A felhasználónév-leképezés
--------|------------|--------|------------
-hu-HU  | Amerikai angol | Nő | "A Microsoft Server beszéd szöveg Speech Voice (en-US, Jessa24kRUS)" 
-hu-HU  | Amerikai angol | Férfi   | "A Microsoft Server beszéd szöveg Speech Voice (en-US, Guy24kRUS)"
+A szöveg beszéddé alakítandó legyen elküldve, a szervezet egy HTTP `POST` vagy egyszerű szöveges kérelem vagy [Speech összefoglaló Markup Language](speech-synthesis-markup.md) (SSML) formátum az UTF-8 kódování textu. SSML kell használnia, ha a szolgáltatás alapértelmezett hangalapú eltérő használjon.
 
-Az alábbiakban az egyesített Speech service Text to Speech API a REST-végpontokat. A végpont, amely megfelel az előfizetés régiót használni.
+### <a name="sample-request"></a>Mintakérelem
 
-[!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-text-to-speech.md)]
+A következő HTTP-kérelem válassza ki a hang-SSML szervezet használ. A szervezetnek kell nem lehet hosszabb, mint 1000 karakter.
 
-Tartsa szem előtt a különbségeket, mivel, tekintse meg a [REST API-dokumentáció](https://docs.microsoft.com/azure/cognitive-services/speech/api-reference-rest/bingvoiceoutput) az előző Speech API-hoz.
+```xml
+POST /cognitiveservices/v1 HTTP/1.1
+
+X-Microsoft-OutputFormat: raw-16khz-16bit-mono-pcm
+Content-Type: application/ssml+xml
+Host: westus.tts.speech.microsoft.com
+Content-Length: 225
+Authorization: Bearer [Base64 access_token]
+
+<speak version='1.0' xml:lang='en-US'><voice xml:lang='en-US' xml:gender='Female' 
+    name='Microsoft Server Speech Text to Speech Voice (en-US, ZiraRUS)'>
+        Microsoft Speech Service Text-to-Speech API
+</voice></speak>
+```
+
+### <a name="http-response"></a>HTTP-válasz
+
+A HTTP-állapot, a válasz azt jelzi, hogy a sikeres vagy gyakori hibaállapotok.
+
+HTTP-kód|Jelentés|Lehetséges ok
+-|-|-|
+200|OK|A kérelem sikeres volt. a választörzs hangfájl mérete.
+400|Hibás kérés|Hiányzó, érték túl hosszú, vagy érvénytelen SSML dokumentum kötelező fejléc mező.
+401|Nem engedélyezett|Az előfizetői vagy engedélyezési jogkivonat érvénytelen a megadott régióban, vagy érvénytelen végpont.
+403|Tiltott|Hiányzik az előfizetési kulcs vagy engedélyezési jogkivonat.
+413|Kérelem az entitás túl nagy|A bemeneti szöveg hosszabb, mint 1000 karakter.
+
+Ha a HTTP-állapot `200 OK`, a válasz törzse tartalmazza a kért formátumban hangfájl. Ez a fájl lehet, hogy játszható le, amíg azt át, vagy puffer vagy újabb lejátszás vagy egyéb felhasználás fájlba menti.
 
 ## <a name="authentication"></a>Hitelesítés
 
-Hozzáférési jogkivonat egy kérést küld a beszédfelismerési szolgáltatás REST API-t igényel. Azáltal, hogy az előfizetési kulcs egy regionális Speech Service jogkivonat beszerzése, `issueToken` végponton, az alábbi táblázatban látható. A végpont, amely megfelel az előfizetés régiót használni.
+Egy kérést küld a beszédfelismerési szolgáltatás REST API-t igényel, vagy egy előfizetési kulcsot, vagy egy hozzáférési jogkivonatot. Általánosságban véve a legegyszerűbb az előfizetési kulcs küldése közvetlenül; a beszédfelismerési szolgáltatás, majd szerzi be a hozzáférési jogkivonatot. Azonban válaszidő minimalizálása érdekében érdemes inkább egy hozzáférési jogkivonatot.
+
+Ön jogkivonat beszerzése az előfizetési kulcs egy regionális Speech Service segítségével `issueToken` végponton, az alábbi táblázatban látható. A végpont, amely megfelel az előfizetés régiót használni.
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-token-service.md)]
 
@@ -121,40 +332,40 @@ curl -v -X POST
 A C# osztály az alábbi mutatja be a hozzáférési jogkivonat beszerzése. Adja át a Speech service előfizetési kulcs, az osztály hárítható el. Ha az előfizetés nem szerepel az USA nyugati régiója, módosítsa a állomásnevét `FetchTokenUri` megfelelően.
 
 ```cs
-    /*
-     * This class demonstrates how to get a valid access token.
-     */
-    public class Authentication
+/*
+    * This class demonstrates how to get a valid access token.
+    */
+public class Authentication
+{
+    public static readonly string FetchTokenUri =
+        "https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken";
+    private string subscriptionKey;
+    private string token;
+
+    public Authentication(string subscriptionKey)
     {
-        public static readonly string FetchTokenUri =
-            "https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken";
-        private string subscriptionKey;
-        private string token;
+        this.subscriptionKey = subscriptionKey;
+        this.token = FetchTokenAsync(FetchTokenUri, subscriptionKey).Result;
+    }
 
-        public Authentication(string subscriptionKey)
+    public string GetAccessToken()
+    {
+        return this.token;
+    }
+
+    private async Task<string> FetchTokenAsync(string fetchUri, string subscriptionKey)
+    {
+        using (var client = new HttpClient())
         {
-            this.subscriptionKey = subscriptionKey;
-            this.token = FetchTokenAsync(FetchTokenUri, subscriptionKey).Result;
-        }
+            client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", subscriptionKey);
+            UriBuilder uriBuilder = new UriBuilder(fetchUri);
 
-        public string GetAccessToken()
-        {
-            return this.token;
-        }
-
-        private async Task<string> FetchTokenAsync(string fetchUri, string subscriptionKey)
-        {
-            using (var client = new HttpClient())
-            {
-                client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", subscriptionKey);
-                UriBuilder uriBuilder = new UriBuilder(fetchUri);
-
-                var result = await client.PostAsync(uriBuilder.Uri.AbsoluteUri, null);
-                Console.WriteLine("Token Uri: {0}", uriBuilder.Uri.AbsoluteUri);
-                return await result.Content.ReadAsStringAsync();
-            }
+            var result = await client.PostAsync(uriBuilder.Uri.AbsoluteUri, null);
+            Console.WriteLine("Token Uri: {0}", uriBuilder.Uri.AbsoluteUri);
+            return await result.Content.ReadAsStringAsync();
         }
     }
+}
 ```
 
 ### <a name="using-a-token"></a>Egy jogkivonat használatával
@@ -182,84 +393,84 @@ Az engedélyezési jogkivonatot 10 perc múlva lejár. Az engedély megújítás
 Az alábbi C#-kódot az osztály korábban bemutatott protokollkompatibilitását. A `Authentication` osztály automatikusan kap egy új hozzáférési jogkivonat egy időzítő segítségével kilenc percenként. Ez a megközelítés biztosítja, hogy érvényes token mindig elérhető legyen a program futása közben.
 
 > [!NOTE]
-> Időzítő helyett tárolhatja egy időbélyeg, ha a jelenlegi token lett lekérve, majd egy új kérelem csak akkor, ha a jelenlegi token hamarosan lejár. Ezt a módszert elkerülhető, hogy új jogkivonatok feleslegesen kér, és a programok, amelyek ritkán beszédalapú kéréseket a megfelelőbb lehet.
+> Időzítő helyett, ha a legutóbbi jogkivonat lett lekérve, majd egy új kérelem csak akkor, ha hamarosan lejáró időbélyeg tárolhatja. Ezt a módszert elkerülhető, hogy új jogkivonatok feleslegesen kér, és a programok, amelyek ritkán beszédalapú kéréseket a megfelelőbb lehet.
 
 Ahogy korábban is, győződjön meg arról, hogy a `FetchTokenUri` értéke megegyezik az előfizetés régiót. Az osztály hárítható el, adja át az előfizetési kulcs.
 
 ```cs
-    /*
-     * This class demonstrates how to maintain a valid access token.
-     */
-    public class Authentication
+/*
+    * This class demonstrates how to maintain a valid access token.
+    */
+public class Authentication
+{
+    public static readonly string FetchTokenUri = 
+        "https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken";
+    private string subscriptionKey;
+    private string token;
+    private Timer accessTokenRenewer;
+
+    //Access token expires every 10 minutes. Renew it every 9 minutes.
+    private const int RefreshTokenDuration = 9;
+
+    public Authentication(string subscriptionKey)
     {
-        public static readonly string FetchTokenUri = 
-            "https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken";
-        private string subscriptionKey;
-        private string token;
-        private Timer accessTokenRenewer;
+        this.subscriptionKey = subscriptionKey;
+        this.token = FetchToken(FetchTokenUri, subscriptionKey).Result;
 
-        //Access token expires every 10 minutes. Renew it every 9 minutes.
-        private const int RefreshTokenDuration = 9;
+        // renew the token on set duration.
+        accessTokenRenewer = new Timer(new TimerCallback(OnTokenExpiredCallback),
+                                        this,
+                                        TimeSpan.FromMinutes(RefreshTokenDuration),
+                                        TimeSpan.FromMilliseconds(-1));
+    }
 
-        public Authentication(string subscriptionKey)
+    public string GetAccessToken()
+    {
+        return this.token;
+    }
+
+    private void RenewAccessToken()
+    {
+        this.token = FetchToken(FetchTokenUri, this.subscriptionKey).Result;
+        Console.WriteLine("Renewed token.");
+    }
+
+    private void OnTokenExpiredCallback(object stateInfo)
+    {
+        try
         {
-            this.subscriptionKey = subscriptionKey;
-            this.token = FetchToken(FetchTokenUri, subscriptionKey).Result;
-
-            // renew the token on set duration.
-            accessTokenRenewer = new Timer(new TimerCallback(OnTokenExpiredCallback),
-                                           this,
-                                           TimeSpan.FromMinutes(RefreshTokenDuration),
-                                           TimeSpan.FromMilliseconds(-1));
+            RenewAccessToken();
         }
-
-        public string GetAccessToken()
+        catch (Exception ex)
         {
-            return this.token;
+            Console.WriteLine(string.Format("Failed renewing access token. Details: {0}", ex.Message));
         }
-
-        private void RenewAccessToken()
-        {
-            this.token = FetchToken(FetchTokenUri, this.subscriptionKey).Result;
-            Console.WriteLine("Renewed token.");
-        }
-
-        private void OnTokenExpiredCallback(object stateInfo)
+        finally
         {
             try
             {
-                RenewAccessToken();
+                accessTokenRenewer.Change(TimeSpan.FromMinutes(RefreshTokenDuration), TimeSpan.FromMilliseconds(-1));
             }
             catch (Exception ex)
             {
-                Console.WriteLine(string.Format("Failed renewing access token. Details: {0}", ex.Message));
-            }
-            finally
-            {
-                try
-                {
-                    accessTokenRenewer.Change(TimeSpan.FromMinutes(RefreshTokenDuration), TimeSpan.FromMilliseconds(-1));
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(string.Format("Failed to reschedule the timer to renew access token. Details: {0}", ex.Message));
-                }
-            }
-        }
-
-        private async Task<string> FetchToken(string fetchUri, string subscriptionKey)
-        {
-            using (var client = new HttpClient())
-            {
-                client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", subscriptionKey);
-                UriBuilder uriBuilder = new UriBuilder(fetchUri);
-
-                var result = await client.PostAsync(uriBuilder.Uri.AbsoluteUri, null);
-                Console.WriteLine("Token Uri: {0}", uriBuilder.Uri.AbsoluteUri);
-                return await result.Content.ReadAsStringAsync();
+                Console.WriteLine(string.Format("Failed to reschedule the timer to renew access token. Details: {0}", ex.Message));
             }
         }
     }
+
+    private async Task<string> FetchToken(string fetchUri, string subscriptionKey)
+    {
+        using (var client = new HttpClient())
+        {
+            client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", subscriptionKey);
+            UriBuilder uriBuilder = new UriBuilder(fetchUri);
+
+            var result = await client.PostAsync(uriBuilder.Uri.AbsoluteUri, null);
+            Console.WriteLine("Token Uri: {0}", uriBuilder.Uri.AbsoluteUri);
+            return await result.Content.ReadAsStringAsync();
+        }
+    }
+}
 ```
 
 ## <a name="next-steps"></a>További lépések

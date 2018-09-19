@@ -1,6 +1,7 @@
 ---
-title: Lekérdezéseket küld a Bing Image Search API |} A Microsoft Docs
-description: Ismerje meg a Küldés és a testreszabás, a Bing Image Search API küldött keresési lekérdezések.
+title: Kép lekérdezéseket - küldenek a Bing Image Search API
+titleSuffix: Azure Cognitive Services
+description: Ismerje meg a keresési lekérdezéseket küld a Bing Image Search API testreszabása.
 services: cognitive-services
 author: aahill
 manager: cgronlun
@@ -10,12 +11,12 @@ ms.component: bing-image-search
 ms.topic: conceptual
 ms.date: 8/8/2018
 ms.author: aahi
-ms.openlocfilehash: bf0db0b6d2aa54a853ba86b570ca05fba902dbc1
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 5d2dcc60a8707394ec07a76e3286929db365c651
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44049558"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46296515"
 ---
 # <a name="send-queries-to-the-bing-image-search-api"></a>Lekérdezéseket küld a Bing Image Search API
 
@@ -102,7 +103,7 @@ The following shows an example of the pivot queries.
 
 ## <a name="expand-the-query"></a>Bontsa ki a lekérdezés
 
-Ha a Bing ki tudja bővíteni a lekérdezést az eredeti keresés szűkítéséhez, az [Images](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#images) objektumban szerepelni fog a `queryExpansions` mező. Például, ha a lekérdezés a(z) *Microsoft Surface*, lehet, hogy a kibontott lekérdezéseket: 
+Ha a Bing ki tudja bővíteni a lekérdezést az eredeti keresés szűkítéséhez, az [Images](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#images) objektumban szerepelni fog a `queryExpansions` mező. Például, ha a lekérdezés a(z) *Microsoft Surface*, lehet, hogy a kibontott lekérdezéseket:
 - Microsoft Surface **Pro 3**.
 - Microsoft Surface **RT**.
 - Microsoft Surface **Phone**.
@@ -148,7 +149,7 @@ Az alábbi példában a *Microsoft Surface* bővített lekérdezései láthatók
 }
 ```
 
-A `queryExpansions` mező a [Query](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#query_obj) objektumok listáját tartalmazza. A `text` mező tartalmazza a kibontott lekérdezést. A `displayText` mező tartalmazza a nyelvi kifejezés. Ha a bővített lekérdezési karakterláncot a felhasználói felülete, használja a `text` és `thumbnail` a bővített lekérdezési karakterláncok megjelenítendő mezőket. Győződjön meg a miniatűr és a szöveg kattintható használatával a `webSearchUrl` URL-cím vagy a `searchLink` URL-CÍMÉT. Használat `webSearchUrl` a felhasználó küldhet a Bing keresési eredmények között. a saját eredmények lapon ad meg, ha `searchLink`.
+A `queryExpansions` mező a [Query](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#query_obj) objektumok listáját tartalmazza. A `text` mező tartalmazza a kibontott lekérdezést. A `displayText` mező tartalmazza a nyelvi kifejezés. Ha a bővített lekérdezési karakterláncot a felhasználói felülete, használja a `text` és `thumbnail` a bővített lekérdezési karakterláncok megjelenítendő mezőket. Győződjön meg a miniatűr és a szöveg kattintható használatával a `webSearchUrl` URL-cím vagy a `searchLink` URL-CÍMÉT. Használat `webSearchUrl` a felhasználó küldhet a Bing keresési eredmények között. A saját eredmények lapon ad meg, ha `searchLink`.
 
 <!-- Removing until we can replace with a sanitized image.
 The following shows an example Bing implementation that uses expanded queries. If the user clicks the Microsoft Surface Pro 3 link, they're taken to the Bing search results page, which shows them images of the Pro 3.

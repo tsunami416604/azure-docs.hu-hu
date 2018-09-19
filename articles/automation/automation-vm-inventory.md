@@ -10,11 +10,12 @@ ms.author: jehunte
 ms.date: 03/30/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d5f9bae34dabba71861adc9b2aeb0d33b8a1e226
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 30569c3a89de320769d433b5b3a4af9cf4e08e66
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "35645273"
 ---
 # <a name="manage-an-azure-virtual-machine-with-inventory-collection"></a>Azure-beli virtuális gépek kezelése leltár használatával
 
@@ -24,7 +25,7 @@ A leltár nyomon követése az egyes Azure-beli virtuális gépeken a gép erőf
 
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/).
 
-Ez a cikk feltételezi, hogy rendelkezik-e a megoldás konfigurálásához a virtuális gép. Ha nem rendelkezik Azure-virtuális géppel, [hozzon létre egy virtuális gépet](../virtual-machines/windows/quick-create-portal.md).
+Ez a cikk feltételezi, hogy a megoldás konfigurálása a virtuális gép. Ha nem rendelkezik Azure-virtuális géppel, [hozzon létre egy virtuális gépet](../virtual-machines/windows/quick-create-portal.md).
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
@@ -34,14 +35,14 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 1. Az Azure Portal bal oldali panelén válassza a **Virtuális gépek** elemet.
 2. Válasszon ki egy virtuális gépet a listáról.
-3. Az a **erőforrás** menüben, a **műveletek**, jelölje be **készlet**.
+3. Az a **erőforrás** menü alatt **műveletek**, jelölje be **készlet**.
 4. Válasszon ki egy Log Analytics-munkaterületet az adatnaplók tárolásához.
     Ha az adott régióban nincsenek az Ön számára elérhető munkaterületek, a rendszer megkéri, hogy hozzon létre egy alapértelmezett munkaterületet és egy Automation-fiókot.
 5. A számítógép előkészítéséhez válassza az **Engedélyezés** lehetőséget.
 
    ![Előkészítési lehetőségek megtekintése](./media/automation-vm-inventory/inventory-onboarding-options.png)
 
-    Az értesítősáv tájékoztatja, hogy a megoldás engedélyezése folyamatban van. Az engedélyezés akár 15 percet is igénybe vehet. Ebben az időszakban bezárhatja az ablakot, vagy megtarthatja az nyissa meg, és értesíti a felhasználót a megoldás engedélyezésekor a rendszer. Az üzembe helyezés állapota az értesítési panelről figyelemmel kísérhető.
+    Az értesítősáv tájékoztatja, hogy a megoldás engedélyezése folyamatban van. Az engedélyezés akár 15 percet is igénybe vehet. Ez idő alatt bezárhatja az ablakot, vagy Ön nyitva hagyja, és értesíti a felhasználót, amikor a megoldás engedélyezve lett. Az üzembe helyezés állapota az értesítési panelről figyelemmel kísérhető.
 
    ![A leltármegoldás megjelenítése közvetlenül az előkészítés után](./media/automation-vm-inventory/inventory-onboarded.png)
 
@@ -51,13 +52,13 @@ Miután az üzembe helyezés befejeződött, az állapotsáv eltűnik. A rendsze
 
 Alapértelmezés szerint a szoftverek, a Windows-szolgáltatások és a Linux-démonok szerepelnek a leltározás hatókörében. A Windows beállításjegyzék- és a fájlleltárának összeállításához konfigurálnia kell a leltározási beállításokat.
 
-1. Az a **készlet** nézetben jelölje ki a **beállításainak szerkesztése** gombra az ablak tetején.
+1. Az a **készlet** nézetben válassza a **beállításainak szerkesztése** gombra az ablak tetején.
 2. Új leltározási beállítás hozzáadásához lépjen a hozzáadni kívánt kategóriára a **Windows beállításjegyzék**, a **Windows-fájlok** és a **Linux-fájlok** lapok használatával.
 3. Válassza ki a megfelelő kategóriát, és kattintson a **Hozzáadás** az ablak tetején.
 
-Az alábbi táblázatok egyes tulajdonságokhoz, amelyek képesek a különböző kategóriákban ismertetik.
+Az alábbi táblázatok ismertetik minden állítható be a különböző kategóriák tulajdonság.
 
-### <a name="windows-registry"></a>Windows beállításjegyzék
+### <a name="windows-registry"></a>Windows-beállításjegyzék
 
 |Tulajdonság  |Leírás  |
 |---------|---------|
@@ -88,6 +89,24 @@ Az alábbi táblázatok egyes tulajdonságokhoz, amelyek képesek a különböz�
 |Sudo használata     | Ez a beállítás határozza meg, hogy a rendszer sudót használjon-e az elem keresésekor.         |
 |Hivatkozások     | Ez a beállítás határozza meg a szimbolikus hivatkozások kezelésének módját, amikor áthaladnak a címtárakon.<br> **Mellőzés** – Mellőzi a szimbolikus hivatkozásokat, és nem szerepelteti a hivatkozott fájlokat/címtárakat<br>**Követés** – Követi a szimbolikus hivatkozásokat a rekurzió során, és szerepelteti a hivatkozott fájlokat/címtárakat<br>**Kezelés** – Követi a szimbolikus hivatkozásokat, és lehetővé teszi a visszaadott tartalom kezelésének módosítását      |
 
+## <a name="manage-machine-groups"></a>Gép csoportok kezelése
+
+Készlet létrehozása és gép csoportok megtekintése a Log Analytics lehetővé teszi. Gépcsoportok egy lekérdezést a Log Analytics által meghatározott gépek gyűjteményei.
+
+A gép select groups nézetre a **csoportok Machine** fülre a készlet oldalon.
+
+![A készlet oldalon gép csoportok megtekintése](./media/automation-vm-inventory/inventory-machine-groups.png)
+
+Egy gép csoportot a listából nyitja meg a gép csoportok lapon. Ezen a lapon látható a gép csoport adatait. Ilyen információ például a log analytics-lekérdezés, amely a csoport meghatározására szolgál. A lap alján az a csoport részét képező gépeket lapozható listája.
+
+![Gép csoport lap megtekintése](./media/automation-vm-inventory/machine-group-page.png)
+
+Kattintson a **+ Klónozás** klónozásához a gép csoport gombra. Itt meg kell adnia a csoport egy új nevet és egy alias a csoporthoz. A definíció jelenleg is módosítható. A lekérdezés nyomja meg módosítása után **lekérdezések érvényesítés** az előzetes verzióra, hogy ki kellene választani a gépek. Ha elégedett a csoport kattintson **létrehozás** a gép csoport létrehozása
+
+Ha azt szeretné, hozzon létre egy új mchine csoportot, válassza ki a **+ hozzon létre egy gép csoportot**. Ezzel a gombbal megnyithatja a **hozzon létre egy gép csoportlapot** ahol megadhatja az új csoporthoz. Kattintson a **létrehozás** a csoport létrehozásához.
+
+![Új számítógépcsoport létrehozása](./media/automation-vm-inventory/create-new-group.png)
+
 ## <a name="disconnect-your-virtual-machine-from-management"></a>A virtuális gép kezelésének megszüntetése
 
 A virtuális gép eltávolítása a leltárkezelésből:
@@ -102,4 +121,4 @@ A virtuális gép eltávolítása a leltárkezelésből:
 ## <a name="next-steps"></a>További lépések
 
 * A virtuális gépek fájl- és beállításjegyzék-beállításainak módosításával kapcsolatos információkért lásd: [A szoftvermódosítások nyomon követése saját környezetében a Change Tracking megoldás használatával](../log-analytics/log-analytics-change-tracking.md).
-* A Windows és a csomag frissítéseit, a virtuális gépek kezelésével kapcsolatos információkért lásd: [a frissítés felügyeleti megoldás az Azure-ban](../operations-management-suite/oms-solution-update-management.md).
+* Windows- és a virtuális gépek csomagfrissítéseinek kezelésével kapcsolatos tudnivalókért lásd: [a frissítéskezelési megoldás az Azure-ban](../operations-management-suite/oms-solution-update-management.md).

@@ -1,9 +1,9 @@
 ---
-title: Hálózat védelme az Azure Security Centerben |} A Microsoft Docs
-description: Ez a dokumentum címek javaslatok az Azure Security Centerben, amelyekkel védelme az Azure-hálózatok, és megfelel a biztonsági házirendek maradjon.
+title: Az Azure Security Center a hálózati erőforrások védelme |} A Microsoft Docs
+description: Ez a dokumentum címek javaslatok az Azure Security Centerben, amelyekkel megvédheti az Azure network-erőforrásait, és megfelel a biztonsági házirendek maradjon.
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: 96c55a02-afd6-478b-9c1f-039528f3dea0
@@ -12,27 +12,119 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/16/2016
-ms.author: terrylan
-ms.openlocfilehash: 12c00d6dfac6c9c2a377a8c142118ff6fd0af751
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.date: 9/12/2018
+ms.author: rkarlin
+ms.openlocfilehash: b1f7120b3758e35d818aedbcc3b85feca44f8c33
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44302272"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46129658"
 ---
-# <a name="protecting-your-network-in-azure-security-center"></a>Hálózat védelme az Azure Security Centerben
-Az Azure Security Center elemzi az Azure-erőforrások biztonsági állapotát. Ha a Security Center azonosítja a potenciális biztonsági réseket, javaslatok, amelyek végigvezetik a szükséges vezérlők konfigurálásának folyamatán hoz létre.  Javaslatok alkalmazása az Azure-erőforrástípus: virtuális gépek (VM), hálózati, SQL és az alkalmazások.
+# <a name="protect-your-network-resources-in-azure-security-center"></a>Az Azure Security Center hálózati erőforrások védelme
+Az Azure Security Center folyamatosan elemzi a hálózati biztonsági eljárások az Azure-erőforrások biztonsági állapotát. Ha a Security Center azonosítja a potenciális biztonsági réseket, javaslatok, amelyek végigvezetik a erősíti, és az erőforrások védelme a szükséges vezérlők konfigurálásának folyamatán hoz létre.
 
-Ez a cikk foglalkozik, amely a hálózattal kapcsolatos ajánlások.  Hálózati javaslatok központ következő generációs tűzfalak, hálózati biztonsági csoportok, konfigurálását, bejövő forgalomra vonatkozó szabályokat és további körül.  Referenciaként az alábbi táblázat segítségével segítségével megismerheti a rendelkezésre álló hálózati javaslatok, és mindegyik funkciója alkalmazásuk esetén.
+Ez a cikk foglalkozik, javaslatok, amelyek a alkalmazni a hálózati biztonsági szempontból az Azure-erőforrások. Hálózati javaslatok center next generation-tűzfalak, a hálózati biztonsági csoportok, virtuális gépek igény szerinti hozzáférés túlzottan megengedő bejövő forgalomra vonatkozó szabályokat és további körül. Hálózati javaslatok és javítási műveletek listáját lásd: [biztonsági javaslatok kezelése az Azure Security Center](security-center-recommendations.md).
 
-## <a name="available-network-recommendations"></a>Rendelkezésre álló hálózati javaslatok
-| Ajánlás | Leírás |
-| --- | --- |
-| [Újgenerációs tűzfal hozzáadása](security-center-add-next-generation-firewall.md) |Javasolja, hogy egy Microsoft-partner a biztonsági megoldásokat növelése érdekében adjon hozzá egy Next Generation Firewall (NGFW). |
-| [Csak az újgenerációs tűzfalon keresztül haladjon a forgalom](security-center-add-next-generation-firewall.md#route-traffic-through-ngfw-only) |Javasolja, hogy konfigurálja a hálózati biztonsági csoport (NSG) szabályai kényszerítheti a bejövő forgalmat a virtuális géphez az Újgenerációs tűzfalon keresztül. |
-| [Hálózati biztonsági csoportok engedélyezése az alhálózatokra vagy virtuális gépekre](security-center-enable-network-security-groups.md) |Az NSG-ket alhálózatokhoz vagy virtuális gépeken engedélyezését javasolja. |
-| [Internetről elérhető végponton keresztüli hozzáférés korlátozása](security-center-restrict-access-through-internet-facing-endpoints.md) |Javasolja, hogy a bejövő forgalomra vonatkozó szabályokat az NSG-k konfigurálása. |
+> [!NOTE]
+> A **hálózatkezelés** lap lehetővé teszi az Azure resource health hálózati szempontból részletes ismertetése. A hálózati térkép létrehozásához és adaptív hálózati vezérlők az Azure Security Center standard szintű csomag esetében érhetők el. [Ha az ingyenes szintet használja, a gombra kattinthat **örökölt hálózatműködés megtekintése** és fogadni a hálózati erőforrás javaslatok](#legacy-networking).
+>
+
+A **hálózatkezelés** lap a szakaszok is részletes áttekintést nyújt a hálózati erőforrások állapotával kapcsolatos további információért mélyedjen:
+
+- Hálózati térkép létrehozásához (csak az Azure Security Center Standard csomagja esetén)
+- NSG-t korlátozások a (hamarosan elérhető lesz. Regisztráljon az előzetes verzió)
+- Hálózati biztonsági javaslatokat.
+- Örökölt **hálózatkezelés** panelen (a korábbi hálózati panel) 
+ 
+![Hálózat panel](./media/security-center-network-recommendations/networking-pane.png)
+
+## <a name="network-map"></a>Hálózati térkép létrehozásához
+A hálózati interaktív térkép segítségével grafikus leképezést kaphat a biztonsági lefedi a javaslatok és elemzések az biztosít a hálózati erőforrások korlátozására. A térkép segítségével megtekintheti a hálózati topológia az Azure számítási feladatok, a virtuális gépek és alhálózatok és a funkció részletesen elemezheti a térképen az adott erőforrásokat, és ezeket az erőforrásokat a javaslatok között kapcsolatok.
+
+A hálózati térkép megnyitásához:
+
+1. A Security Center erőforrás biztonsági higiéniai, alatt válassza ki **hálózatkezelés**.
+2. A **hálózati térkép létrehozásához** kattintson **topológiájának megtekintéséhez**.
+ 
+A topológia térkép alapértelmezett nézetét jeleníti meg:
+- Az Azure-ban kiválasztott előfizetések. A térkép több előfizetést is támogatja.
+- Virtuális gépek, alhálózatok és virtuális hálózatokat a Resource Manager-erőforrástípus (klasszikus Azure-erőforrások nem támogatottak)
+- Csak olyan erőforrásokat, [hálózati javaslatok](security-center-recommendations.md) az olyan magas és közepes súlyosság  
+- Az Internet felé néző erőforrások
+- A térképen kiválasztott az Azure-ban az előfizetéseket van optimalizálva. Módosítsa a kijelölést, ha a térkép újraszámítja, és újra optimalizált új beállításai alapján.  
+
+![Hálózati topológia térkép](./media/security-center-network-recommendations/network-map-info.png)
+
+## <a name="understanding-the-network-map"></a>A hálózati térkép ismertetése
+
+A hálózati térképen jeleníti meg, az Azure-erőforrások egy **topológia** nézet és a egy **forgalom** megtekintése.
+
+### <a name="the-topology-view"></a>A topológia e nézetében
+
+Az a **topológia** nézet a hálózati térkép, megtekintheti a következő információkat a hálózati erőforrásokról:
+- A belső lát láthatja a virtuális hálózatok a kiválasztott előfizetések belül, a következő kör összes alhálózatot, a külső összes virtuális gépet.
+- A sorok a térképen az erőforrások összekapcsolása lehetővé teszik, hogy mely erőforrások tartoznak egymással, és hogyan épül fel az Azure-hálózatok. 
+- A súlyosság mutatók segítségével gyorsan áttekintheti, amelyek erőforrások javaslatai nyissa meg a Security Centerből.
+- Kattintson a őket feltárásához és az erőforrás részleteit megtekintheti az erőforrások, és megjeleníti a javaslatokat közvetlenül, és a hálózati környezetében képezze le.  
+- Ha túl sok folyamatban van a térképen megjelenített erőforrásokat, az Azure Security Center a szellemi tulajdont képező algoritmusát, intelligens használja a fürt az erőforrásokat, kiemelve az erőforrásokat, amelyek a legtöbb kritikus állapotban van, és a legtöbb magas súlyosságú javaslatok. 
+
+Mivel a térkép interaktív és dinamikus, minden csomópontnak számít kattintható, és a nézetben módosíthatja a szűrők alapján:
+
+1. Módosíthatja, amit lát a hálózati térképen tetején a szűrőkkel használatával. Ön arra összpontosíthat a térkép alapján:
+   -  **Biztonsági állapot**: a térkép (magas, közepes, alacsony), az Azure-erőforrások súlyosság alapján szűrheti.
+   - **Javaslatok**: kiválaszthatja, hogy mely erőforrások jelennek meg alapján mely ajánlások aktívak ezeket az erőforrásokat a. Ha például tekintheti meg, amelyhez a Security Center javasolja hálózati biztonsági csoportok engedélyezése csak az erőforrásokat.
+   - **Zónák hálózati**: alapértelmezés szerint a térképen jeleníti meg, csak internetkapcsolattal erőforrásokat, a belső virtuális gépeket is kiválaszthatja.
+ 
+2. Kattinthat **alaphelyzetbe** bal felső sarokban, és a térkép térjen vissza az alapértelmezett állapotba.
+
+Részletes elemzések erőforrás:
+1. Amikor kiválaszt egy adott erőforrást a térképen, a jobb oldali panelen megnyílik, és az erőforrást, ha vannak ilyenek, csatlakoztatott biztonsági megoldások kapcsolatos általános információkat biztosít, és a javaslatok az erőforráshoz. Olyan erőforrástípusok választja működése azonos típusú. 
+2. Ha az egérmutatót egy csomópontot a térképen, megtekintheti az erőforrás, beleértve az előfizetést, erőforrástípust és erőforráscsoport kapcsolatos általános információkat.
+3. A hivatkozás segítségével az elemleírás nagyíthatja és a térkép refocus adott csomóponton. 
+4. A forrásadatok egy adott csomópont a térkép refocus, kicsinyítés.
+
+### <a name="the-traffic-view"></a>A Traffic view
+
+A **forgalom** a nézet tartalmazza az összes lehetséges forgalom az erőforrások közötti leképezést. Ez lehetővé teszi, hogy az összes szabály, amely konfigurált visual leképezést határoz meg, akikkel erőforrások kommunikálhassanak. Ez lehetővé teszi, hogy tekintse meg a meglévő konfigurációt a hálózati biztonsági csoportok, valamint a gyorsan azonosíthatja a lehetséges kockázatos konfigurációk belül a számítási feladatokat.
+
+### <a name="uncover-unwanted-connections"></a>Fedje fel a nem kívánt kapcsolatok
+
+Ez a nézet erőssége képessége bemutatják, ezeket a engedélyezett kapcsolatokat és a biztonsági réseket, hogy létezik, így használhatja a keresztmetszete hajtsa végre a szükséges vezethet be az erőforrások, az adatokat. 
+
+Például előfordulhat, hogy észlelni, hogy Ön nem tudtunk két gép képes kommunikálni, lehetővé teszi, hogy hatékonyabb elkülönítése a számítási feladatok és az alhálózatokat.
+
+### <a name="investigate-resources"></a>Erőforrások vizsgálata
+
+Részletes elemzések erőforrás:
+1. Amikor kiválaszt egy adott erőforrást a térképen, a jobb oldali panelen megnyílik, és az erőforrást, ha vannak ilyenek, csatlakoztatott biztonsági megoldások kapcsolatos általános információkat biztosít, és a javaslatok az erőforráshoz. Olyan erőforrástípusok választja működése azonos típusú. 
+2. Kattintson a **forgalom** Ez az átfogó listáját aki képes kommunikálni az erőforrást, és ki azt a, és mely protokollok és portok keresztül léphet kapcsolatba az erőforrás - lehetséges kimenő és bejövő forgalom listáját lásd:.
+
+**Ezek az adatok elemzése a hálózati biztonsági csoportok, valamint a fejlett gépi tanulási algoritmusok elemzéséhez, megtudhatja, hogy azok vágánykapcsolatokat és és kapcsolati több szabály alapul.** 
+
+![Hálózati forgalom térkép](./media/security-center-network-recommendations/network-map-traffic.png)
+
+## Az örökölt hálózati <a name ="legacy-networking"></a>
+
+Ha a Security Center Standard csomagja nem rendelkezik, ez a szakasz azt ismerteti, hogyan ingyenes hálózatokra vonatkozó javaslatok megtekintése.
+
+Ezt az információt, a hálózat panelen eléréséhez kattintson **örökölt hálózatműködés megtekintése**. 
+
+![Az örökölt hálózati](./media/security-center-network-recommendations/legacy-networking.png)
+
+### <a name="internet-facing-endpoints-section"></a>Internet facing endpoints (Internet felé néző végpontok) szakasz
+Az a **internetről elérhető végpontok** szakaszban láthatja a virtuális gépek, amelyeken jelenleg az internetkapcsolattal rendelkező végpontot, és annak állapotát.
+
+Ez a táblázat tartalmazza a végpont neve, az Internet felé néző IP-címet és a hálózati biztonsági csoport és az NGFW javaslatok aktuális súlyossági állapotát. A tábla súlyosság szerint rendezve.
+
+### <a name="networking-topology-section"></a>Networking topology (Hálózati topológia) szakasz
+A **hálózati topológia** szakasz rendelkezik az erőforrások hierarchikus nézetét.
+
+Ez a táblázat (virtuális gépek és alhálózatok) súlyosság szerint rendezve.
+
+A topológia e nézetében az első szintű jeleníti meg a virtuális hálózatok. A második megjelenik rendelkezik alhálózatokkal, és a harmadik szinten az ezekhez az alhálózatokhoz tartozó virtuális gépek jeleníti meg. A jobb oldali oszlopban az adott erőforrásokhoz tartozó hálózati biztonsági csoport javaslatok aktuális állapotát jeleníti meg.
+
+A harmadik szinten megjeleníti a virtuális gépek, a korábban leírtakhoz hasonlóan. Kattintson bármely erőforrás további vagy a alkalmazni a szükséges biztonsági rendszabályok / konfigurációk.
 
 ## <a name="see-also"></a>Lásd még
 Javaslatok, amelyek vonatkoznak a többi Azure-erőforrásokkal kapcsolatos további információkért tekintse meg a következőket:

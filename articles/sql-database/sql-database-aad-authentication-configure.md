@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/07/2018
 ms.author: mireks
 ms.reviewer: vanto
-ms.openlocfilehash: d123cb2d272f1c360d12e9d71eec6dc5ca508ebd
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: f04846275fbad1673a00d820e8b44adc402b0242
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44718746"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46294203"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql-database-managed-instance-or-sql-data-warehouse"></a>Konfigurálhatja és kezelheti az Azure Active Directory-hitelesítés az SQL Database felügyelt példányába vagy az SQL Data warehouse-bA
 
@@ -31,7 +31,7 @@ Ez a cikk bemutatja, hogyan hozhat létre és töltse fel az Azure ad-ben, és m
 ## <a name="create-and-populate-an-azure-ad"></a>Létrehozása és feltöltése az Azure ad-ben
 Hozzon létre egy Azure ad-ben, és a felhasználók és csoportok való feltöltéséhez. Az Azure AD lehetnek a kezdeti Azure ad-ben felügyelt tartományhoz. Az Azure AD lehetnek egy helyszíni Active Directory tartományi szolgáltatások, amelyek össze van vonva az Azure AD-vel is.
 
-További információk a következő témakörökben találhatók: [Helyszíni identitások integrálása az Azure Active Directoryval](../active-directory/active-directory-aadconnect.md), [Saját tartománynév hozzáadása az Azure AD-hez](../active-directory/active-directory-domains-add-azure-portal.md), [A Microsoft Azure mostantól támogatja a Windows Server Active Directoryval való összevonást](https://azure.microsoft.com/blog/2012/11/28/windows-azure-now-supports-federation-with-windows-server-active-directory/), [Az Azure AD-címtár felügyelete](../active-directory/fundamentals/active-directory-administer.md), [Az Azure AD kezelése Windows PowerShell használatával](/powershell/azure/overview?view=azureadps-2.0) és [Hibrid identitás – szükséges portok és protokollok](..//active-directory/connect/active-directory-aadconnect-ports.md).
+További információk a következő témakörökben találhatók: [Helyszíni identitások integrálása az Azure Active Directoryval](../active-directory/hybrid/whatis-hybrid-identity.md), [Saját tartománynév hozzáadása az Azure AD-hez](../active-directory/active-directory-domains-add-azure-portal.md), [A Microsoft Azure mostantól támogatja a Windows Server Active Directoryval való összevonást](https://azure.microsoft.com/blog/2012/11/28/windows-azure-now-supports-federation-with-windows-server-active-directory/), [Az Azure AD-címtár felügyelete](../active-directory/fundamentals/active-directory-administer.md), [Az Azure AD kezelése Windows PowerShell használatával](/powershell/azure/overview?view=azureadps-2.0) és [Hibrid identitás – szükséges portok és protokollok](../active-directory/hybrid/reference-connect-ports.md).
 
 ## <a name="associate-or-add-an-azure-subscription-to-azure-active-directory"></a>Hozzárendelése vagy Azure-előfizetés hozzáadása az Azure Active Directoryhoz
 

@@ -1,6 +1,6 @@
 ---
-title: 'Végfelhasználói hitelesítési: Azure Active Directory használatával a Data Lake Store Python |} Microsoft Docs'
-description: Megtudhatja, hogyan végfelhasználói hitelesítés az Azure Active Directory használatával Python Data Lake Store elérése
+title: 'Végfelhasználói hitelesítés: Azure Active Directory használatával az Azure Data Lake Storage Gen1 Python |} A Microsoft Docs'
+description: Ismerje meg, hogyan érhet el a végfelhasználói hitelesítés az Azure Data Lake Storage Gen1 a Python használatával Azure Active Directory használatával
 services: data-lake-store
 documentationcenter: ''
 author: nitinme
@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 60cdcc2c12272b48d61de0afcdd3c361f1795f37
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 1ba7dbd9436a15989564a806a7c8f586c01e5243
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34624114"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46128069"
 ---
-# <a name="end-user-authentication-with-data-lake-store-using-python"></a>Végfelhasználói hitelesítési a Data Lake Store pythonos környezetekben
+# <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-python"></a>Végfelhasználói hitelesítés az Azure Data Lake Storage Gen1 a Python használatával
 > [!div class="op_single_selector"]
 > * [A Java használata](data-lake-store-end-user-authenticate-java-sdk.md)
 > * [A .NET SDK használata](data-lake-store-end-user-authenticate-net-sdk.md)
@@ -27,12 +27,12 @@ ms.locfileid: "34624114"
 > 
 > 
 
-Ebből a cikkből megismerheti az Azure Data Lake Store végfelhasználói hitelesítés elvégzéséhez a Python SDK használatáról. Végfelhasználói hitelesítés további két kategóriába oszthatók:
+Ebben a cikkben megismerkedhet a Python SDK használatával hajtsa végre a végfelhasználói hitelesítés az Azure Data Lake Storage Gen1. Végfelhasználói hitelesítés további két kategóriába oszthatók:
 
-* Végfelhasználói hitelesítést a multi-factor authentication nélkül
-* Végfelhasználói hitelesítési többtényezős hitelesítéssel
+* Végfelhasználói hitelesítés a multi-factor authentication használata nélkül
+* Végfelhasználói hitelesítés a multi-factor authentication szolgáltatás
 
-Ez a cikk mindkét ezeket a beállításokat ismerteti. A szolgáltatások közötti hitelesítéshez a Data Lake Store pythonos környezetekben, lásd: [szolgáltatások közötti hitelesítést a Data Lake Store használatának Python](data-lake-store-service-to-service-authenticate-python.md).
+Ebben a cikkben mindkét ezek a beállítások ismertetése. Szolgáltatások közötti hitelesítés a Data Lake Storage Gen1 Python használatával, lásd: [szolgáltatások közötti hitelesítés a Data Lake Storage Gen1 pythonnal](data-lake-store-service-to-service-authenticate-python.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -40,15 +40,15 @@ Ez a cikk mindkét ezeket a beállításokat ismerteti. A szolgáltatások köz�
 
 * **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 
-* **Hozzon létre egy "Natív" Azure Active Directory-alkalmazás**. Végrehajtotta a lépéseket [végfelhasználói hitelesítés az Azure Active Directory használatával a Data Lake Store](data-lake-store-end-user-authenticate-using-active-directory.md).
+* **Hozzon létre a "Natív" Azure Active Directory-alkalmazás**. El kell végeznie a lépések [végfelhasználói hitelesítés a Data Lake Storage Gen1 az Azure Active Directoryval](data-lake-store-end-user-authenticate-using-active-directory.md).
 
 ## <a name="install-the-modules"></a>A modulok telepítése
 
-A Data Lake Store a Pythonnal való használatához három modult kell telepítenie.
+A Data Lake Storage Gen1 használata pythonnal, három modult telepítenie kell.
 
 * Az `azure-mgmt-resource` modult, amely további Azure-modulokat tartalmaz az Active Directoryhoz és más eszközökhöz.
-* Az `azure-mgmt-datalake-store` modult, amely az Azure Data Lake Store fiókkezelési műveleteit tartalmazza. További információkat erről a modulról [az Azure Data Lake Store kezelési moduljához készült referenciaanyagban](https://docs.microsoft.com/python/api/azure.mgmt.datalake.store?view=azure-python) talál.
-* Az `azure-datalake-store` modult, amely az Azure Data Lake Store fájlrendszerműveleteit tartalmazza. További információkat erről a modulról [az Azure Data Lake Store fájlrendszermoduljához készült referenciaanyagban](http://azure-datalake-store.readthedocs.io/en/latest/) talál.
+* A `azure-mgmt-datalake-store` modult, amely az Azure Data Lake Storage Gen1 fiókkezelési műveleteit tartalmazza. Ez a modul további információkért lásd: [Azure Data Lake Storage Gen1 felügyeleti modul-hivatkozás](https://docs.microsoft.com/python/api/azure.mgmt.datalake.store?view=azure-python).
+* A `azure-datalake-store` modult, amely az Azure Data Lake Storage Gen1 fájlrendszer-műveleteit tartalmazza. Ez a modul további információkért lásd: [azure-datalake-store Fájlrendszermoduljához készült referenciaanyagban](http://azure-datalake-store.readthedocs.io/en/latest/).
 
 A modulok telepítéséhez használja a következő parancsokat.
 
@@ -60,7 +60,7 @@ pip install azure-datalake-store
 
 ## <a name="create-a-new-python-application"></a>Új Python-alkalmazás létrehozása
 
-1. A ide az Ön által választott, hozzon létre egy új Python alkalmazást, például **mysample.py**.
+1. A választott IDE-ben hozzon létre egy új Python-alkalmazás, például **mysample.py**.
 
 2. Adja hozzá a következő kódrészletet a szükséges modulok importálásához
 
@@ -68,11 +68,11 @@ pip install azure-datalake-store
     ## Use this for Azure AD authentication
     from msrestazure.azure_active_directory import AADTokenCredentials
 
-    ## Required for Azure Data Lake Store account management
+    ## Required for Azure Data Lake Storage Gen1 account management
     from azure.mgmt.datalake.store import DataLakeStoreAccountManagementClient
     from azure.mgmt.datalake.store.models import DataLakeStoreAccount
 
-    ## Required for Azure Data Lake Store filesystem management
+    ## Required for Azure Data Lake Storage Gen1 filesystem management
     from azure.datalake.store import core, lib, multithread
 
     # Common Azure imports
@@ -86,11 +86,11 @@ pip install azure-datalake-store
 
 3. Mentse a mysample.py módosításait.
 
-## <a name="end-user-authentication-with-multi-factor-authentication"></a>Végfelhasználói hitelesítési többtényezős hitelesítéssel
+## <a name="end-user-authentication-with-multi-factor-authentication"></a>Végfelhasználói hitelesítés a multi-factor authentication szolgáltatás
 
 ### <a name="for-account-management"></a>A fiókok kezelése
 
-A következő kódrészletet használja a Data Lake Store-fiók a fiókkezelési műveletekhez az Azure AD szolgáltatással való hitelesítésre. A következő kódrészlet használható az alkalmazás többtényezős hitelesítés használatával történő hitelesítéséhez. Adja meg az alábbiakban egy meglévő Azure AD **natív** alkalmazás.
+A következő kódrészletet használja az Azure AD-fiókkezelési műveletek a Data Lake Storage Gen1 fiók hitelesítéséhez. A következő kódrészlet használható az alkalmazás többtényezős hitelesítés használatával történő hitelesítéséhez. Adja meg az alábbi értékeket egy meglévő Azure AD-hez **natív** alkalmazás.
 
     authority_host_url = "https://login.microsoftonline.com"
     tenant = "FILL-IN-HERE"
@@ -105,19 +105,19 @@ A következő kódrészletet használja a Data Lake Store-fiók a fiókkezelési
     mgmt_token = context.acquire_token_with_device_code(RESOURCE, code, client_id)
     armCreds = AADTokenCredentials(mgmt_token, client_id, resource = RESOURCE)
 
-### <a name="for-filesystem-operations"></a>A fájlrendszer műveletek
+### <a name="for-filesystem-operations"></a>A fájlrendszer-műveletekhez
 
-Ezzel a fájlrendszer-műveleteket a Data Lake Store-fiók Azure ad-val való hitelesítéshez szükséges. A következő kódrészlet használható az alkalmazás többtényezős hitelesítés használatával történő hitelesítéséhez. Adja meg az alábbiakban egy meglévő Azure AD **natív** alkalmazás.
+Ezzel az Azure AD-fájlrendszerműveletek a Data Lake Storage Gen1 fiók hitelesítéséhez. A következő kódrészlet használható az alkalmazás többtényezős hitelesítés használatával történő hitelesítéséhez. Adja meg az alábbi értékeket egy meglévő Azure AD-hez **natív** alkalmazás.
 
     adlCreds = lib.auth(tenant_id='FILL-IN-HERE', resource = 'https://datalake.azure.net/')
 
-## <a name="end-user-authentication-without-multi-factor-authentication"></a>Végfelhasználói hitelesítést a multi-factor authentication nélkül
+## <a name="end-user-authentication-without-multi-factor-authentication"></a>Végfelhasználói hitelesítés a multi-factor authentication használata nélkül
 
-Ez elavult. További információkért lásd: [hitelesítés Azure Python SDK](https://docs.microsoft.com/python/azure/python-sdk-azure-authenticate?view=azure-python#mgmt-auth-token).
+Elavult. További információkért lásd: [Python SDK-val az Azure hitelesítési](https://docs.microsoft.com/python/azure/python-sdk-azure-authenticate?view=azure-python#mgmt-auth-token).
    
 ## <a name="next-steps"></a>További lépések
-Ebben a cikkben megtanulta végfelhasználói hitelesítés használata az Azure Data Lake Store való hitelesítéshez szükséges Python használatával. Most már megtekintheti a következő cikkekben használatáról Python működéséhez az Azure Data Lake Store kommunikálhatnak.
+Ebben a cikkben megtanulta, hogyan végfelhasználói hitelesítés használata az Azure Data Lake Storage Gen1 hitelesítést, a Python használatával. Most már megtekintheti a következő cikkeket, hogy hogyan használható a Python használata Azure Data Lake Storage Gen1 beszélni.
 
-* [Fiókkezelési műveletekhez a Data Lake Store pythonos környezetekben](data-lake-store-get-started-python.md)
-* [Adatok műveletek a Data Lake Store pythonos környezetekben](data-lake-store-data-operations-python.md)
+* [Fiókkezelési műveletek a Data Lake Storage Gen1 Python használatával](data-lake-store-get-started-python.md)
+* [A Data Lake Storage Gen1 Adatműveletek Python használatával](data-lake-store-data-operations-python.md)
 

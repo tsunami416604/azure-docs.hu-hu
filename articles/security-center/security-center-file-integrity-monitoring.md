@@ -3,7 +3,7 @@ title: Fájlintegritási monitorozás az Azure Security Centerben |} A Microsoft
 description: " Ismerje meg, hogyan engedélyezheti a fájlintegritási Monitorozás az Azure Security Centerben. "
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: 411d7bae-c9d4-4e83-be63-9f2f2312b075
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/06/2018
-ms.author: terrylan
-ms.openlocfilehash: e8455dddf62c16cb5ebcf20622580fad82d783a7
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.date: 09/21/2018
+ms.author: rkarlin
+ms.openlocfilehash: 56aa756230dc908157a5a3d244d379215935cd2f
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44296232"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46124116"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Fájlintegritási monitorozás az Azure Security Centerben
 Ismerje meg a fájl fájlintegritási Monitorozás (FIM) konfigurálása az Azure Security Centerben, használja ezt a forgatókönyvet.
@@ -182,6 +182,14 @@ A **szerkesztése a Change Tracking megoldásba** is:
   ![Hamis értékre beállított engedélyezve][19]
 
 6. Kattintson a **Mentés** gombra.
+
+## <a name="folder-and-path-monitoring-using-wildcards"></a>Mappa- és elérési út figyelési helyettesítő karakterek használatával
+
+A helyettesítő karakterek használatával egyszerűsíthető a nyomon követési címtárak között. Az alábbi szabályok vonatkoznak a mappa figyelése helyettesítő konfigurálásakor:
+-   A helyettesítő karakterek is szükséges a több fájlok nyomon követése.
+-   Helyettesítő karaktereket csak a elérési útját, például C:\folder\file vagy /etc/*.conf utolsó szegmense használható
+-   Ha egy környezeti változó tartalmaz egy elérési utat, amely nem érvényes, érvényesítés sikeres lesz, de az elérési út sikertelen lesz, ha szoftverleltár fut le.
+-   Az elérési út megadásakor elkerülése érdekében az általános elérési utak, például: c:\*. * áthaladhat túl sok mappák eredményez.
 
 ## <a name="disable-fim"></a>FIM letiltása
 FIM letilthatja. FIM az Azure Change Tracking megoldásával követi és azonosítja a környezet változásainak használ. FIM letiltásával eltávolítja a Change Tracking megoldás kijelölt munkaterületen.

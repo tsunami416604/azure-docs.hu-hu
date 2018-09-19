@@ -9,14 +9,14 @@ ms.service: sql-database
 ms.subservice: managed-instance
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 09/11/2018
+ms.date: 09/14/2018
 ms.author: bonova
-ms.openlocfilehash: 7a2b98f0a78c82b65d7d29181a048ab59f237107
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: 113f171f5ad4bcc8ee9abc2935a9741f7c23c3b0
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391929"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45734218"
 ---
 # <a name="what-is-a-managed-instance-preview"></a>Mi a felügyelt példány (előzetes verzió)?
 
@@ -61,7 +61,7 @@ Az alábbi táblázat segítségével megismerheti, hogyan lehet kiválasztani a
 ||Gen 4|Gen 5|
 |----|------|-----|
 |Hardver|Intel E5-2673 v3 (Haswell) 2,4 GHz-es processzorokkal, SSD virtuális mag csatolt = 1 PP (fizikai mag)|Intel E5-2673 v4 (Broadwell) 2,3 GHz-es processzorokkal, SSD, virtuális mag eNVM gyors = 1. LP (a hyper-szál)|
-|Teljesítményszintek|8, 16, 24 virtuális mag|8, 16, 24, 32, 40, 64, 80 virtuális magok|
+|COMPUTE-méretek|8, 16, 24 virtuális mag|8, 16, 24, 32, 40, 64, 80 virtuális magok|
 |Memory (Memória)|7 GB / virtuális mag|5.5-ös GB / virtuális mag|
 ||||
 

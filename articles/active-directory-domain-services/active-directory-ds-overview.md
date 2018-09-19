@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/26/2017
 ms.author: maheshu
-ms.openlocfilehash: 4467c193b5ff70a304b4ec5f632276ca14551b08
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: d30d164a3e2896b1a300bf665ca09f57ce97fdf3
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39501998"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46295869"
 ---
 # <a name="azure-active-directory-ad-domain-services"></a>Az Azure Active Directory (AD) Domain Servicesben
 ## <a name="overview"></a>Áttekintés
@@ -65,7 +65,7 @@ A felügyelt tartományhoz az Azure AD tartományi szolgáltatások által üzem
 ### <a name="azure-ad-domain-services-for-hybrid-organizations"></a>Az Azure AD tartományi szolgáltatások hibrid cégekhez és vállalkozásokhoz
 A hibrid informatikai infrastruktúrával rendelkező szervezeteknek felhőbeli erőforrásokat és a helyszíni erőforrások felhasználását. Az ilyen szervezeteknek szinkronizálja a azonosító adatok a helyszíni címtárból az Azure AD-bérlővel. Hibrid szervezetek hely több áttelepíteni, a felhőbe, különösen a régi címtáralapú alkalmazások, a helyszíni alkalmazásaikat az Azure AD tartományi szolgáltatások őket hasznos lehet.
 
-Telepítve van az litware Corporation [az Azure AD Connect](../active-directory/active-directory-aadconnect.md), hogy szinkronizálja a azonosító adatok a helyszíni címtárból az Azure AD-bérlővel. Az azonosító adatokat szinkronizált felhasználói fiókok, a hitelesítési adatok kivonatait hitelesítés (jelszó-szinkronizálás) és a csoporttagságok tartalmazza.
+Telepítve van az litware Corporation [az Azure AD Connect](../active-directory/hybrid/whatis-hybrid-identity.md), hogy szinkronizálja a azonosító adatok a helyszíni címtárból az Azure AD-bérlővel. Az azonosító adatokat szinkronizált felhasználói fiókok, a hitelesítési adatok kivonatait hitelesítés (jelszó-szinkronizálás) és a csoporttagságok tartalmazza.
 
 > [!NOTE]
 > **A jelszó-szinkronizálás használata kötelező a hibrid Azure AD tartományi szolgáltatásokat használó szervezetek**. Ez a követelmény oka, hogy a felhasználói hitelesítő adatok szükségesek a felügyelt tartomány Azure AD tartományi szolgáltatások által biztosított NTLM vagy Kerberos-hitelesítési módszerek a felhasználók hitelesítéséhez.

@@ -4,26 +4,24 @@ description: Ez segít megérteni a különböző forgalom-útválasztási móds
 services: traffic-manager
 documentationcenter: ''
 author: KumudD
-manager: timlt
-editor: ''
-ms.assetid: db1efbf6-6762-4c7a-ac99-675d4eeb54d0
+manager: jpconnock
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/13/2017
+ms.date: 09/17/2018
 ms.author: kumud
-ms.openlocfilehash: 03f1cc3a34fa8a472dcab9654b65cc97b8473993
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 797f97b9c1548484d72f518ae1d2c56633b7b5b3
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39398617"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46126768"
 ---
 # <a name="traffic-manager-routing-methods"></a>Traffic Manager útválasztási módszerek
 
-Az Azure Traffic Manager négy forgalom-útválasztási módszert az határozza meg, hogyan irányíthatja a hálózati forgalmat a különböző Szolgáltatásvégpontok támogatja. A TRAFFIC Manager minden DNS-lekérdezést kap a forgalom-útválasztási módszer vonatkozik. A forgalom-útválasztási módszer határozza meg, a DNS-válaszban visszaadott melyik végponthoz.
+Az Azure Traffic Manager támogatja, határozza meg, hogyan irányíthatja a hálózati forgalmat a különböző Szolgáltatásvégpontok hat forgalom-útválasztási módszer. A Traffic Manager bármilyen profilhoz társítva van hozzá minden DNS-lekérdezést kap, a forgalom-útválasztási módszer vonatkozik. A forgalom-útválasztási módszer meghatározza, hogy melyik végponthoz a DNS-választ adott vissza.
 
 Négy forgalom-útválasztási módszer érhető el a Traffic Managerben:
 
@@ -31,6 +29,9 @@ Négy forgalom-útválasztási módszer érhető el a Traffic Managerben:
 * **[Súlyozott](#weighted):** kiválasztása **súlyozott** szeretné elosztani a forgalmat végpontok között, vagy egyenlő arányban vagy súlyok, amely alapján határozzák meg.
 * **[Teljesítmény](#performance):** kiválasztása **teljesítmény** Ha végpontok különböző földrajzi helyeken rendelkezik, és a végfelhasználók számára, hogy a legalacsonyabb hálózati késéssel szempontjából a "legközelebbi" végpont használni szeretne.
 * **[Földrajzi](#geographic):** kiválasztása **földrajzi** úgy, hogy a felhasználók mely földrajzi helye alapján meghatározott végpontokhoz (Azure, külső vagy beágyazott) a rendszer átirányítja a DNS-lekérdezés származik. Ez lehetővé teszi a Traffic Manager-ügyfelek olyan forgatókönyvekben, ahol, hogy a felhasználó földrajzi régióban, és azokat, amelyek alapján útválasztás fontos engedélyezéséhez. Ilyenek például az adatok szuverenitását megbízás tartalom és a felhasználói felület honosítása megfelel, és a különféle régiókból származó forgalom mérése.
+* **[Típushoz](#multivalue):** kiválasztása **típushoz** a Traffic Manager-profilok, amelyek csak IPv4/IPv6-címek végpontként rendelkezhet. Ehhez a profilhoz fogadásakor egy lekérdezést, a rendszer az összes kifogástalan állapotú végpontok adja vissza.
+* **[Alhálózat](#subnet):** kiválasztása **alhálózati** forgalom-útválasztási módszer beállítása a végfelhasználói IP-címtartományok beállítását leképezése egy adott végpontot egy Traffic Manager-profilon belül. Amikor kérelem érkezik, a végpont az egyik rendelendő a kérés IP-forráscím adott vissza. 
+
 
 Traffic Manager-profilok közé tartozik a végpontonkénti állapotot és a végpont az Automatikus feladatátvétel figyelését. További információkért lásd: [Traffic Manager végpont figyelése](traffic-manager-monitoring.md). Egyetlen Traffic Manager-profil csak egyetlen forgalom-útválasztási módszert használhatja. A profil bármikor választhat a különböző forgalom-útválasztási módszert. Egy percen belül lépnek életbe a módosítások, és üzemkimaradást sem okoz merül fel. Forgalom-útválasztási módszer kombinálható is beágyazott Traffic Manager-profilok használatával. A beágyazási lehetővé teszi, hogy kifinomult és rugalmas forgalom-útválasztási beállítani, a nagyobb méretű, összetett alkalmazások igényeihez. További információkért lásd: [beágyazott Traffic Manager-profilok](traffic-manager-nested-profiles.md).
 
@@ -38,7 +39,7 @@ Traffic Manager-profilok közé tartozik a végpontonkénti állapotot és a vé
 
 Gyakran egy szervezet szeretné a szolgáltatások megbízhatóságot biztosítanak egy vagy több biztonsági mentési szolgáltatás telepítésével, abban az esetben, ha az elsődleges szolgáltatás leáll. A "Priority" forgalom-útválasztási módszer lehetővé teszi, hogy az Azure-ügyfelek egyszerűen implementálni a feladatátvételi minta.
 
-![Az Azure Traffic Manager-on "Priority" forgalom-útválasztási módszer][1]
+! [Az azure Traffic Manager-on "Priority" forgalom-útválasztási módszer] [1]
 
 A Traffic Manager-profil Szolgáltatásvégpontok rangsorolt listáját tartalmazza. Alapértelmezés szerint a Traffic Manager minden forgalmat küld az elsődleges (legnagyobb prioritás) végponthoz. Ha az elsődleges végpont nem érhető el, a Traffic Manager a második végpontra irányítja a forgalmat. Ha az elsődleges és másodlagos végpontok nem érhetők el, áramlik a forgalom, a harmadik, és így tovább. A végpont rendelkezésre állását a konfigurált állapota (engedélyezve vagy letiltva), és a folyamatban lévő végpont-monitorozás alapul.
 
@@ -49,7 +50,7 @@ Az Azure Resource Manager, a végpontok a "prioritás" tulajdonság használatá
 ##<a name = "weighted"></a>Súlyozott forgalom-útválasztási módszer
 "Súlyozott" forgalom-útválasztási módszer lehetővé teszi, hogy egyenletesen osztja el a forgalmat, vagy egy előre meghatározott súlyozási használandó.
 
-![Az Azure Traffic Manager az "Súlyozott" forgalom-útválasztási módszer][2]
+! [Az azure Traffic Manager "Súlyozott" forgalom-útválasztási módszer] a(z) [2]
 
 Súlyozott forgalom-útválasztási módszer esetében a súlyt rendel a Traffic Manager-profil konfigurációjának a végpontot. A súly egy egész számot 1 és 1000. Ez a paraméter nem kötelező. Ha nincs megadva, a Traffic Manager-példányok "1" alapértelmezett súlyozást használ. A nagyobb súlyt, annál magasabb a prioritás.
 
@@ -61,7 +62,7 @@ A súlyozott mód néhány hasznos forgatókönyveket teszi lehetővé:
 * Alkalmazás migrálását az Azure-bA:-profil létrehozása az Azure és a külső végpontokat. A végpontok előnye a végpont súlyának módosíthatja.
 * Felhőbeli tartalékkapacitás további kapacitás: gyorsan bontsa ki a-felhőbe egy helyi központi mögött egy Traffic Manager-profil helyezésével. A felhőben extra kapacitásra van szüksége, amikor hozzáadása vagy engedélyezze a több végpontot, és adja meg, milyen forgalom részét az egyes végpontok irányul.
 
-Az Azure Resource Manager portál súlyozott forgalom-útválasztás konfigurálását támogatja.  A Resource Manager-verziók az Azure PowerShell, CLI és a REST API-k használatával súlyok konfigurálhatja.
+Az Azure portal használata mellett súlyok Azure Powershellt, CLI és a REST API-k használatával is beállíthatja.
 
 Fontos megérteni, hogy a DNS-válaszok a rekurzív DNS-kiszolgálók, az ügyfelek által használt DNS-nevek feloldására és az ügyfelek által lettek gyorsítótárazva. A gyorsítótárazás súlyozott forgalom disztribúciók hatással lehetnek. Ha az ügyfelek és a rekurzív DNS-kiszolgálók száma túl nagy, az adatforgalom eloszlása a várt módon működik. Azonban ha az ügyfelek vagy a rekurzív DNS-kiszolgálók száma alacsony, gyorsítótárazást is jelentősen tevékenységdiagramon forgalom elosztása.
 
@@ -77,11 +78,11 @@ Az összes, DNS-alapú forgalom útválasztási rendszeren, nem csak az Azure Tr
 
 Az egész világon üzembe helyezése a végpontok két vagy több helyen irányítaná a forgalmat a helyre, '' Önhöz legközelebbi számos alkalmazás válaszkészségét növelheti. A "Teljesítmény" forgalom-útválasztási módszer biztosítja ezt a lehetőséget.
 
-![Az Azure Traffic Manager "Teljesítmény" forgalom-útválasztási módszer][3]
+! [Az azure Traffic Manager "Teljesítmény" forgalom-útválasztási módszer] [3]
 
 A "legközelebbi" végpont nem feltétlenül legközelebbi mért földrajzi távolság. Ehelyett a "Teljesítmény" forgalom-útválasztási módszer alapján lehetet nyilvántartani hálózati késés a legközelebbi végpontot határozza meg. A TRAFFIC Manager egy internetes késés tábla nyomon követéséhez az üzenetváltási idő közötti IP-címtartományok és minden egyes Azure-adatközpont tárolja.
 
-A TRAFFIC Manager megkeresi a beérkező DNS-kérelem az internetes késés táblázatban forrás IP-címét. A TRAFFIC Manager elérhető végpontot úgy dönt, az Azure-adatközpontban, amely adott IP-címtartomány a legkisebb késéssel, akkor az, hogy a végpont a DNS-választ adja vissza.
+A TRAFFIC Manager megkeresi a beérkező DNS-kérelem az internetes késés táblázatban forrás IP-címét. A TRAFFIC Manager majd úgy dönt, elérhető végpontot, amely adott IP-címtartomány a legkisebb késéssel rendelkezik, és adja vissza, hogy a végpont a DNS-válaszban lévő Azure-adatközpontban.
 
 A [Traffic Manager működése](traffic-manager-how-it-works.md), a Traffic Manager nem DNS-lekérdezéseket közvetlenül az ügyfelektől fogadott adatok. Inkább DNS-lekérdezések származnak a rekurzív DNS-szolgáltatás, hogy az ügyfelek használatára vannak konfigurálva. Ezért az IP-cím segítségével meghatározhatja a legközelebbi"végpontja nem az ügyfél IP-címet, de a rekurzív DNS szolgáltatás IP-címe. A gyakorlatban az IP-címet az ügyfél egy jó proxy.
 
@@ -118,23 +119,24 @@ A TRAFFIC Manager beolvassa a DNS-lekérdezés forrás IP-címét, és úgy dön
 
     >[!IMPORTANT]
     >Erősen ajánlott, hogy a földrajzi útválasztási mód használó ügyfelek társítsa a beágyazott típusú végpontok, amely rendelkezik alárendelt profilokat tartalmazó belül legalább két végpontot.
-- Ha egy végpont egyezést talál, és, hogy a végpont a **leállítva** állapotában a Traffic Manager NODATA választ adja vissza. Ebben az esetben nincs további keresések alakult a történik a földrajzi régió-hierarchia. Ez a viselkedés akkor is beágyazott végpont esetében alkalmazható, ha a gyermek-profil van a **leállítva** vagy **letiltott** állapota.
+- Ha egy végpont egyezést talál, és, hogy a végpont a **leállítva** állapotában a Traffic Manager NODATA választ adja vissza. Ebben az esetben nincs további keresések végzett alakult a földrajzi hierarchia. Ez a viselkedés akkor is beágyazott végpont esetében alkalmazható, ha a gyermek-profil van a **leállítva** vagy **letiltott** állapota.
 - Ha a végpont jeleníti meg egy **letiltott** állapotát, nem fog szerepelni a folyamat megfelelő régióban. Ez a viselkedés akkor is beágyazott végpont esetében alkalmazható, ha a végpont van a **letiltott** állapota.
 - Ha egy lekérdezést, amely nincs megfeleltetés rendelkezik az adott profilhoz földrajzi régió származik, a Traffic Manager NODATA választ adja vissza. Ezért erősen ajánlott, hogy ügyfeleink használja egy végpontot, ideális típusú, beágyazott legalább két végpontot, és a régió a gyermek-profilon belül a földrajzi útválasztásának **világ** rendelve. Ez is biztosítja, hogy bármilyen IP-címek, amelyek nem felelnek meg a régiót kezeli.
 
 A [Traffic Manager működése](traffic-manager-how-it-works.md), a Traffic Manager nem DNS-lekérdezéseket közvetlenül az ügyfelektől fogadott adatok. Inkább DNS-lekérdezések származnak a rekurzív DNS-szolgáltatás, hogy az ügyfelek használatára vannak konfigurálva. Ezért az IP-cím segítségével meghatározhatja a régió nem az ügyfél IP-cím, de a rekurzív DNS szolgáltatás IP-címét. A gyakorlatban az IP-címet az ügyfél egy jó proxy.
 
+## <a name = "multivalue"></a>Többértékű forgalom-útválasztási módszer
+A **típushoz** forgalom-útválasztási módszer lehetővé teszi, hogy több kifogástalan állapotú végpontok kérjen a DNS-lekérdezés egyetlen válasz. Ez lehetővé teszi a hívónak ehhez ügyféloldali újrapróbálkozások más végpontokkal rendelkező esetén a visszaadott végpont éppen nem válaszol. Ez a minta egy szolgáltatás rendelkezésre állásának növelése és a társított egy megfelelően működő végpont beszerzése egy új DNS-lekérdezést a késés csökkentése érdekében. Többértékű esetén használt útválasztási módszer csak akkor, ha a "Külső" típusú végpontok és a rendszer által megadott IPv4 vagy IPv6-címek működik. Ehhez a profilhoz fogadásakor egy lekérdezést, kifogástalan állapotú végpontok összes adja vissza, és vonatkoznak konfigurálható visszatérési maximális számát.
+
+## <a name = "subnet"></a>Alhálózat forgalom-útválasztási módszer
+A **alhálózati** forgalom-útválasztási módszer lehetővé teszi a felhasználói IP-címtartományok készletét leképezheti-profilban meghatározott végpontokhoz. Ezt követően a Traffic Manager kap egy DNS-lekérdezést a profilhoz, ha azt vizsgálata a forrás (a legtöbb esetben ez lesz a DNS-feloldási a hívó által használt kimenő IP-címe) a kérés IP-címét határozza meg, melyik végponthoz van leképezve, és a t adja vissza hat végpont a lekérdezésekre adott válaszok. Az IP-cím rendelhető hozzá egy végpontot a CIDR-tartományt (például 1.2.3.0/24) vagy egy címtartományt (pl. 1.2.3.4-5.6.7.8) formájában adható meg. Végponthoz társított IP-címtartományokkal kell, hogy a profilon belül egyedinek kell lennie, és a egy átfedésben van egy másik végpont IP-címkészlet nem rendelkezhet ugyanazzal a profillal.
+Ha vannak olyan végpontok, amelyhez az IP-cím is le lehet képezni, a Traffic Manager NODATA választ küld. Ezért erősen ajánlott minden lehetséges IP-címtartományok vannak megadva, a végpontok közötti biztosítása.
+Útválasztási alhálózat segítségével a felhasználók számára egy adott IP-címtér csatlakozik egy másik felhasználói élményt nyújthat. Például alhálózat útválasztási révén ügyfél teheti átirányíthatók egy másik végpontot a vállalati office érkező kérelmek ahol, előfordulhat, hogy tesztelni egy alkalmazás csak belső verzióját. Egy másik helyzet lehet, hogy szeretné-e egy másik felhasználói élményt nyújtson az adott szolgáltatótól (például felhasználók általi letiltása adott Internetszolgáltató) csatlakozó felhasználók.
 
 ## <a name="next-steps"></a>További lépések
 
 Ismerje meg, hogyan hozhat létre magas rendelkezésre állású alkalmazásokat segítségével [Traffic Manager végpont figyelése](traffic-manager-monitoring.md)
 
-Ismerje meg, hogyan [Traffic Manager-profil létrehozása](traffic-manager-create-profile.md)
-
-<!--Image references-->
-[1]: ./media/traffic-manager-routing-methods/priority.png
-[2]: ./media/traffic-manager-routing-methods/weighted.png
-[3]: ./media/traffic-manager-routing-methods/performance.png
 
 
 

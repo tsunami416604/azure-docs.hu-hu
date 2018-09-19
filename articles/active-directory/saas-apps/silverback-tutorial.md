@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/06/2018
+ms.date: 09/17/2018
 ms.author: jeedes
-ms.openlocfilehash: e100859a184db2b6298dd02a1bb7bb238de27d51
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: e7cb3049f680f81026e09388066001413922600a
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44096284"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46123852"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-silverback"></a>Oktatóanyag: Azure Active Directory-integráció az Silverback
 
@@ -38,7 +38,7 @@ Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsol
 Silverback az Azure AD-integráció konfigurálásához a következőkre van szükség:
 
 - Azure AD-előfizetés
-- Egy Silverback egyszeri bejelentkezés engedélyezve van az előfizetés
+- Aktív Silverback előfizetés
 
 > [!NOTE]
 > Ebben az oktatóanyagban a lépéseket teszteléséhez nem ajánlott éles környezetben használja.
@@ -107,11 +107,11 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     ![Silverback tartomány és URL-címeket egyetlen bejelentkezési adatait](./media/silverback-tutorial/tutorial_silverback_url.png)
 
-    a. Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<YOURSILVERBACKURL>/ssp`
+    a. Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<YOURSILVERBACKURL>.com/ssp`
 
-    b. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<YOURSILVERBACKURL>`
+    b. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-címe: `<YOURSILVERBACKURL>.com`
 
-    c. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<YOURSILVERBACKURL>/sts/authorize/login`
+    c. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<YOURSILVERBACKURL>.com/sts/authorize/login`
 
     > [!NOTE] 
     > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges bejelentkezési URL-, azonosítóját és válasz URL-cím. Kapcsolattartó [Silverback ügyfél-támogatási csapatának](mailto:helpdesk@matrix42.com) beolvasni ezeket az értékeket. 
@@ -124,7 +124,31 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     ![Egyszeri bejelentkezés Mentés gomb konfigurálása](./media/silverback-tutorial/tutorial_general_400.png)
 
-6. Az egyszeri bejelentkezés konfigurálása **Silverback** oldalon kell küldenie a **alkalmazás összevonási metaadatainak URL-címe** való [Silverback támogatási csapatának](mailto:helpdesk@matrix42.com). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
+6.  Jelentkezzen be a Silverback kiszolgálói rendszergazdaként, és hajtsa végre az alábbi lépéseket:
+
+    a.  Navigáljon a **rendszergazdai** > **hitelesítési szolgáltató**.
+
+    b. Az a **hitelesítési szolgáltató beállításai** lapon, a következő lépésekkel:
+
+    ![A rendszergazda ](./media/silverback-tutorial/tutorial_silverback_admin.png)
+
+    c.  Kattintson a **importálása URL-címről**.
+    
+    d.  Illessze be a másolt metaadatok URL-CÍMÉT, és kattintson a **OK**.
+    
+    e.  A megerősítésként **OK** értékek automatikusan kitöltődnek, majd.
+    
+    f.  Engedélyezése **megjelenítése a bejelentkezési oldal**.
+    
+    g.  Engedélyezése **dinamikus felhasználó létrehozása** Ha szeretné engedélyezni az Azure AD-felhasználók automatikus hozzáadása (nem kötelező).
+    
+    h.  Hozzon létre egy **cím** az önkiszolgáló portált a gomb.
+
+    i.  Töltse fel egy **ikon** kattintva **fájl kiválasztása**.
+    
+    j.  Válassza ki a háttérben **szín** gomb.
+    
+    k.  Kattintson a **Save** (Mentés) gombra.
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
@@ -160,7 +184,34 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
  
 ### <a name="create-a-silverback-test-user"></a>Silverback tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy felhasználói Britta Simon nevű Silverback hoz létre. Együttműködve [Silverback támogatási csapatának](mailto:helpdesk@matrix42.com) a felhasználók hozzáadása az Silverback platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
+Ahhoz, hogy az Azure AD-felhasználók Silverback jelentkezzen be, akkor ki kell építeni Silverback be. Silverback a kiépítés manuális feladat.
+
+**Üzembe helyez egy felhasználói fiókot, hajtsa végre az alábbi lépéseket:**
+
+1. Jelentkezzen be rendszergazdaként a Silverback kiszolgáló.
+
+2. Navigáljon a **felhasználók** és **adjon hozzá egy új eszköz felhasználója**.
+
+3. Az a **alapszintű** lapon, a következő lépésekkel:
+
+    ![A felhasználó ](./media/silverback-tutorial/tutorial_silverback_user.png)
+
+    a. A **felhasználónév** szöveget adja meg például a felhasználó nevét **Britta**.
+
+    b. A **Utónév** szöveget adja meg például a felhasználó utónevét **Britta**.
+
+    c. A **Vezetéknév** szöveget adja meg például a felhasználó vezetékneve **Simon**.
+
+    d. A **E-mail cím** szöveget adja meg az e-mailt, például a felhasználó **Brittasimon@contoso.com**.
+
+    e. Az a **jelszó** szöveget adja meg a jelszót.
+    
+    f. Az a **jelszó megerősítése** szövegbeviteli mezőben írja be újra a jelszót, és győződjön meg róla.
+
+    g. Kattintson a **Save** (Mentés) gombra.
+
+>[!NOTE]
+>Ha nem szeretné manuálisan létrehozni a minden felhasználó engedélyezése a **dinamikus felhasználó létrehozása** alatt jelölőnégyzet **rendszergazdai** > **hitelesítési szolgáltató**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 

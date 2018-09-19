@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: lizross
-ms.openlocfilehash: 53c38eee1befe7c83f739deeb0e85711e7313e60
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: eb9eebb4f5fff4a0c3dc7729387cfbc4b13a12f1
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45730109"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46294907"
 ---
 # <a name="azure-active-directory-faq"></a>Azure Active Directory – gyakori kérdések
 Az Azure Active Directory (Azure AD) egy átfogó szolgáltatott identitási (IDaaS) megoldás, amely az identitások, a hozzáférés-kezelés és a biztonság minden szempontját lefedi.
@@ -72,7 +72,7 @@ Ezenkívül a fizetős Azure AD szolgáltatások, például az Enterprise Mobili
 
 **V:** A helyszíni címtárát az Azure AD Connect használatával csatlakoztathatja az Azure AD-hez.
 
-További információkért lásd: [Helyszíni identitások integrálása az Azure Active Directoryval](../connect/active-directory-aadconnect.md).
+További információkért lásd: [Helyszíni identitások integrálása az Azure Active Directoryval](../hybrid/whatis-hybrid-identity.md).
 
 - - -
 **K: Hogyan állíthatok be egyszeri bejelentkezést a helyszíni címtár és a felhőalkalmazásaim között?**
@@ -81,7 +81,7 @@ További információkért lásd: [Helyszíni identitások integrálása az Azur
 
 Az egyszeri bejelentkezés helyszínről végzett implementálása könnyen elérhető olyan összevonási megoldásokkal, mint az Active Directory összevonási szolgáltatások (AD FS), illetve a jelszókivonat-szinkronizálás konfigurálásával. Könnyedén telepítheti mindkét lehetőséget az Azure AD Connect konfigurációs varázslójával.
 
-További információkért lásd: [Helyszíni identitások integrálása az Azure Active Directoryval](../connect/active-directory-aadconnect.md).
+További információkért lásd: [Helyszíni identitások integrálása az Azure Active Directoryval](../hybrid/whatis-hybrid-identity.md).
 
 - - -
 **K: Az Azure AD-ben elérhető önkiszolgáló portál a szervezetemben lévő felhasználók számára?**
@@ -95,7 +95,7 @@ További információkért lásd: [Bevezetés a Hozzáférési panel használat�
 
 **V:** Igen. Az Azure AD Premium Edition tartalmazza az Azure AD Connect Health eszközt. Az Azure AD Connect Health segít megfigyelni a helyszíni identitás-infrastruktúrát és a szinkronizálási szolgáltatásokat, és további betekintést nyújt a működésükbe.  
 
-További információkért lásd: [A helyszíni identitás-infrastruktúra és a szinkronizálási szolgáltatások megfigyelése a felhőben](../connect-health/active-directory-aadconnect-health.md).  
+További információkért lásd: [A helyszíni identitás-infrastruktúra és a szinkronizálási szolgáltatások megfigyelése a felhőben](../hybrid/whatis-hybrid-identity-health.md).  
 
 - - -
 ## <a name="password-management"></a>Jelszókezelés

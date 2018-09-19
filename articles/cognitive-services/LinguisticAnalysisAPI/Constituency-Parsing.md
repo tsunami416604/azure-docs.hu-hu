@@ -1,95 +1,96 @@
 ---
-title: A nyelvi elemzés API elemzése választókerülete |} Microsoft Docs
-description: További információk a hogyan elemzése, más néven "kifejezés struktúra elemzése," választókerülete azonosítja szöveg kifejezéseket.
+title: Vevőkör-elemzés – nyelvi elemzési API
+titlesuffix: Azure Cognitive Services
+description: Ismerje meg hogyan vevőkör-elemzés, más néven "kifejezést struktúra elemzése," azonosítja a mondatok szövegben.
 services: cognitive-services
 author: RichardSunMS
-manager: wkwok
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: linguistic-analysis
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/21/2016
 ms.author: lesun
-ms.openlocfilehash: bff5e587621e1278c260d555aec280a0f4c7c8a1
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: 83ea72e7c5c880ecab7d165e029f948144506271
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37082172"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46127696"
 ---
-# <a name="constituency-parsing"></a>Választókerülete elemzése
+# <a name="constituency-parsing"></a>Vevőkör-elemzés
 
-(Más néven "kifejezés struktúra elemzése") elemzése választókerülete célja az a szöveg kifejezések azonosításához.
-Ez akkor lehet hasznos, ha az információk beolvasása szövegből.
-Az ügyfelek érdemes neve vagy egy nagy szervezet szöveg legfontosabb kifejezések keresésére, és a módosítók és minden ilyen kifejezés körülvevő műveletek megjelenítéséhez.
+Vevőkör-elemzés (más néven "kifejezés helyett szerepel struktúra elemzése") az a célja, hogy az kifejezések a szövegben azonosíthatja.
+Ez akkor hasznos, ha az adatok kivonása szövegből.
+Az ügyfeleknek érdemes a szolgáltatás nevét vagy a kulcsfontosságú kifejezéseket, így a big Data típusú szövegtörzs, és meg szeretné megtekinteni a dostupnosti és műveletek körüli minden ilyen kifejezés helyett szerepel.
 
 ## <a name="phrases"></a>Kifejezések
 
-Egy linguist, hogy egy *kifejezés* csupán szavak sorozata.
-Ahhoz, hogy egy kifejezés, szavak csoportja számára, hogy egy adott szerepkör a mondatban együtt lesz rendelkezik.
-Szó csoport is át együtt vagy egészét helyett, és a mondatok gördülékeny és nyelvtani maradjon.
+Az egy linguist egy *kifejezés* szavak több, mint egy sorozata.
+Ahhoz, hogy egy kifejezés, a szavakat csoport rendelkezik, az adott szerepet játszanak a mondat jár együtt.
+Adott szósorozat csoport együtt áthelyezni, vagy teljes cseréje, és a mondat kell maradnia, gördülékeny és nyelvtani.
 
-Vegye figyelembe a mondatok
+Vegye figyelembe a mondat
 
-> Bluetooth-egy új hibrid automobile szeretnék.
+> Szeretnék egy új hibrid automobile Bluetooth találja.
 
-Ezt a mondatot főnév kifejezést tartalmazza: "egy új hibrid autó Bluetooth-".
-Hogyan azt, hogy, hogy ez a kifejezés?
-Azt írni a mondatok (némileg poetically) az első teljes mondatot áthelyezésével:
+Ezt a mondatot főnév kifejezést tartalmazza: "egy új hibrid autó Bluetooth".
+Hogyan értesíti, hogy ez a kifejezés?
+Azt is újraírási a mondat (némileg poetically) helyezi át az előtérben egész a mondatot:
 
-> Egy új hibrid autó Bluetooth-szeretnék.
+> Egy új hibrid automobile szeretnék kevesebbet Bluetooth.
 
-Vagy a Microsoft sikerült cserélje le a mondatot hasonló függvény és annak jelentése "egy divatos új autó" kifejezést:
+Vagy hasonló funkciót, és ez azt jelenti, például a "egy divatos új autó" kifejezés azt sikerült lecserélheti erre a kifejezésre:
 
-> Egy divatos új autó szeretnék.
+> Szeretnék egy divatos új autó talál.
 
-Ehelyett azt kivételezett szavak különböző részhalmazát, ha a csere feladatok ismeretlen vagy nem olvasható a mondatok vezetne.
-Vegye figyelembe, hogy mi történik, ha azt "található egy új" elejéhez:
+Ha ehelyett azt kivételezett szó különböző részhalmazát, csere feladatok ismeretlen vagy nem olvasható mondatokat vezetne.
+Vegye figyelembe, hogy mi történik, ha a "található új" az előtérben mozgatjuk:
 
-> Új hibrid autó Bluetooth-kívánt megkeresése
+> Keresse meg egy új hibrid automobile Bluetooth szeretnék.
 
-Az eredmények nagyon nehéz Elolvastam és megértettem.
+Az eredmények nagyon nehezen olvashatók és érthetők.
 
-Egy elemző célja az összes ilyen kifejezések keresését.
-Interestingly természetes nyelven, a mondatok általában ágyazható be egy másik.
-Ezek a kifejezések természetes ábrázolását egy fa, például az alábbiakat:
+Egy elemző célja az összes ilyen kifejezések keresésére.
+Interestingly természetes nyelven a mondatok általában egy másik ágyazhatók egymásba.
+A következő kifejezésekkel ellátva természetes ábrázolása egy fa, például a következő:
 
 ![Fa](./Images/tree.png)
 
-A fán a fiókirodák telephelyeire "NP" jelölésű főnév kifejezések.
-Nincsenek az számos ilyen kifejezések: *I*, *egy új hibrid automobile*, *Bluetooth*, és *egy új hibrid autó Bluetooth-*.
+Ehhez a fához megjelölt "NP" az ágak főnév kifejezések.
+Nincsenek az számos ilyen kifejezések: *I*, *egy új hibrid automobile*, *Bluetooth*, és *egy új hibrid automobile Bluetooth*.
 
-## <a name="phrase-types"></a>Kifejezés típusa
+## <a name="phrase-types"></a>A kifejezés típusa
 
 | Címke | Leírás | Példa |
 |-------|-------------|---------|
-|ADJP   | Adjective kifejezés | "így goromba" |
+|ADJP   | Adjective kifejezés | "ezért goromba" |
 |ADVP   | Módosítószót kifejezés | "Törlés keresztül" |
 |CONJP  | Együtt kifejezés | ", valamint" |
-|ILLETHETI   | Töredék, hiányos vagy fragmentary bemenetek használt | "Erősen ajánlott..." |
-|INTJ   | interjection | "Hooray" |
+|ILLETHETI   | Fragment, hiányos vagy fragmentary bemenet használt | "Erősen ajánlott..." |
+|INTJ   | interjection | "Hurrá" |
 |LST    | Lista jelölő, beleértve az absztrakt | "#4)" |
-|NAC    | Nem A bennük foglalt, azt jelzi, hogy nem alkotó kifejezés hatókörére |  "és a helyes üzlet" a ", a folyamat, és jó kezelése" |
-|NP | Főnév kifejezés | "tasty burgonya pancake" |
-|NX | A head megjelölni bizonyos összetett hálózati házirend-kiszolgáló belül használt| |
-|PP | Prepositional kifejezés| "a"a készletben |
+|NAC    | Nem A megvalósítani a bennük foglalt, azt jelzi, hogy nem alkotóelem kifejezés hatókörkezelése |  "és a egy jó üzlet" a "olvashatók be dolgokat és a egy jó kezelése" |
+|NP | Főnév kifejezés | "tasty potato pancake" |
+|NX | A fő meg bizonyos összetett hálózati házirend-kiszolgáló belül használt| |
+|PORTJÁNAK PROFILTULAJDONSÁGAI | Prepositional kifejezés| "az a készlet" |
 |PRN    | Zárójeles| "(úgynevezett)" |
-|PRT    | alkotóelem| "out" a "bemásolt kimenő" |
-|QP | Mennyiség kifejezésre (pl., összetett mérték vagy összeg) főnév kifejezés| "körül $75" |
-|REGISZTRÁCIÓS KÓDJA    | Csökkentett relatív záradék.| "továbbra is feloldva" a "sok problémák még feloldatlan." |
-|S  | Mondat vagy záradék. | "Ez az néhány mondatot."
-|SBAR   | Alárendelt záradék, gyakran bevezetett subordinating együtt | "szerint balra" a "I kikeresi, I balra."|
-|SBARQ  | Mit jelent-szó vagy - kifejezés által bevezetett közvetlen kérdés | "Mi történt a pont?" |
-|SZOFTVERLELTÁR   | Fordított deklaratív mondat | "Soha nem azok tudomása volt." (vegye figyelembe, hogyan a normál tulajdonos "azok" helyezte át után a művelet "is") |
-|SQ | Igen/nem fordított kérdést, vagy mi-kérdés fő záradékában | "Nem azok beszerezni a kocsit?" |
-|UCP    | Eltérően koordinált kifejezés| "rövid és a hibák" (vegye figyelembe, hogyan vannak a egy melléknév és egy preposition kódot conjoined a "és")|
-|VP | Művelet kifejezés | "hibába ütközött a woods" |
+|PRT    | particle| "lejárt" a "bemásolt ki" |
+|QP | Quantity kifejezés (azaz a összetett mérték vagy összeg) belül főnév kifejezés| "körül 75 $" |
+|REGISZTRÁCIÓS KÓDJA    | Csökkentett relatív záradék.| "még feloldatlan" a "számos probléma még feloldatlan." |
+|S  | Mondat vagy záradékban. | "Ez a mondatok."
+|SBAR   | Alárendelt záradék, gyakran bevezetett egy subordinating együttes használata | "az I balra" az "I kikeresi, e left."|
+|SBARQ  | Mit jelent-szó vagy - kifejezés által bevezetett közvetlen kérdés | "Mi volt a pont?" |
+|SZOFTVERLELTÁR   | Fordított deklaratív mondat | "Nem akcióról azokat." (vegye figyelembe, hogyan normál tárgyát "," került után a művelet "is") |
+|SQ | Igen/nem fordított kérdést, vagy a main záradékában kérdőszavak-kérdés | "Fejeződött kapnak az autó?" |
+|UCP    | Ellentétben koordinált kifejezés| "rövid és a hibák" (vegye figyelembe, hogyan vannak a egy melléknév és a egy preposition kifejezés conjoined együtt "és")|
+|ALELNÖK | Művelet kifejezés | "hibába ütközött az erdők" |
 |WHADJP | Mit jelent-melléknév kifejezés | "hogyan kényelmetlen" |
-|WHADVP | Mit jelent-módosítószót kifejezés| "Ha" |
-|WHNP   | Mit jelent-főnév kifejezés| "mely burgonya", "mennyi leves"|
-|WHPP   | Mit jelent prepositional kifejezés| "a"melyik ország|
+|WHADVP | Mit jelent-módosítószót kifejezés| "when" |
+|WHNP   | Mit jelent-főnév kifejezés| "melyik burgonya", "mennyi leves"|
+|WHPP   | Mit jelent prepositional kifejezés| "a melyik ország"|
 |X  | Ismeretlen, bizonytalan vagy unbracketable.| első "a" a "a... a leves" |
 
 
-## <a name="specification"></a>Meghatározása
+## <a name="specification"></a>Specifikáció
 
-Itt fák használja az S-kifejezéseknek a [Penn Treebank](https://catalog.ldc.upenn.edu/ldc99t42).
+Itt fák az S-kifejezések használata a [Penn Treebank](https://catalog.ldc.upenn.edu/ldc99t42).

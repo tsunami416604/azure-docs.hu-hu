@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 04/09/2018
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: 057e47c19f6405bec9e1fa80dd7097476876baa9
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: 696843363bc6617bb11c01cdccb9dbbb7b719a82
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35645500"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46298200"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Az Application Insights telemetriai korreláció
 
@@ -74,6 +74,34 @@ RFC javaslatot is dolgozunk a [korrelációs HTTP-protokoll](https://github.com/
 A standard is határozza meg a két sémái `Request-Id` generování - és a hierarchikus. A egybesimított séma, amely egy jól ismert `Id` definiált kulcs a `Correlation-Context` gyűjtemény.
 
 Az Application Insights határozza meg a [bővítmény](https://github.com/lmolkova/correlation/blob/master/http_protocol_proposal_v2.md) a korrelációs HTTP-protokoll esetében. Használ `Request-Context` érték párok propagálása a közvetlen hívó megjelölése vagy a hívott fél által használt tulajdonságok a gyűjtemény neve. Application Insights SDK-t használ a fejléc beállítása `dependency.target` és `request.source` mezőket.
+
+### <a name="w3c-distributed-tracing"></a>W3C elosztott nyomkövetést
+
+Azt is való (W3C elosztott nyomkövetést formátumú) [https://w3c.github.io/distributed-tracing/report-trace-context.html]. Azt határozza meg:
+- `traceparent` – globálisan egyedi művelet azonosítója és a hívás egyedi azonosítója
+- `tracestate` -nyomkövetési rendszer adott környezetben végzi.
+
+#### <a name="enable-w3c-distributed-tracing-support-for-aspnet-classic-apps"></a>ASP.NET klasszikus alkalmazások elosztott W3C-nyomkövetés támogatásának engedélyezése
+
+Ez a funkció verzió 2.8.0-beta1 kezdve Microsoft.ApplicationInsights.Web és Microsoft.ApplicationInsights.DependencyCollector csomagokban érhető el.
+Ez **ki** alapértelmezés szerint az engedélyezéshez, módosítsa `ApplicationInsights.config`:
+
+* a `RequestTrackingTelemetryModule` hozzáadása `EnableW3CHeadersExtraction` értékre állított elem `true`
+* a `DependencyTrackingTelemetryModule` hozzáadása `EnableW3CHeadersInjection` értékre állított elem `true`
+
+#### <a name="enable-w3c-distributed-tracing-support-for-aspnet-core-apps"></a>ASP.NET Core-alkalmazások elosztott W3C-nyomkövetés támogatásának engedélyezése
+
+Ez a funkció a verzió 2.5.0-beta1 és Microsoft.ApplicationInsights.DependencyCollector verzió 2.8.0-beta1 Microsoft.ApplicationInsights.AspNetCore van.
+Ez **ki** alapértelmezés szerint az engedélyezéshez beállítva `ApplicationInsightsServiceOptions.RequestCollectionOptions.EnableW3CDistributedTracing` való `true`:
+
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddApplicationInsightsTelemetry(o => 
+        o.RequestCollectionOptions.EnableW3CDistributedTracing = true );
+    // ....
+}
+```
 
 ## <a name="open-tracing-and-application-insights"></a>Nyissa meg a nyomkövetés és az Application Insights
 
@@ -137,3 +165,5 @@ telemetry.getContext().getDevice().setRoleName("My Component Name");
 - Előkészítheti az Application Insights a micro szolgáltatás összes összetevőjét. Tekintse meg [által támogatott platformok](app-insights-platforms.md).
 - Lásd: [adatmodell](application-insights-data-model.md) Application Insights és modellhez.
 - Ismerje meg, hogyan [bővítése és szűrőtelemetria](app-insights-api-filtering-sampling.md).
+- [Application Insights confg – dokumentáció](app-insights-configuration-with-applicationinsights-config.md)
+

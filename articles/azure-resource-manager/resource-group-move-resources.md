@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/07/2018
 ms.author: tomfitz
-ms.openlocfilehash: 0b0ddedde49208a85628cdfc226f870a32ff7170
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 2448b1f799c5253b36a18f108af1ff2de8b6ced3
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/18/2018
-ms.locfileid: "45985864"
+ms.locfileid: "46127448"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe
 
@@ -173,6 +173,8 @@ Az alábbi lista egy új erőforráscsoportot és egy előfizetést is áthelyez
 * Automation
 * Azure Active Directory B2C
 * Azure Cosmos DB
+* Azure Database for MySQL
+* Azure Database for PostgreSQL
 * Az Azure DevOps - szervezetek számára az Azure DevOps nem Microsoft-bővítmény vásárlása kell [megszakítja a vásárlások](https://go.microsoft.com/fwlink/?linkid=871160) előtt azok is a fiók áthelyezése előfizetések között.
 * Azure Maps
 * Azure Relay
@@ -237,8 +239,6 @@ Az alábbi lista nem lehet áthelyezni egy új erőforráscsoportot és egy elő
 * AD Domain Services
 * Hibrid AD Állapotfigyelő szolgáltatás
 * Application Gateway
-* Azure Database for MySQL
-* Azure Database for PostgreSQL
 * Az Azure adatbázis-Migrálás
 * Azure Databricks
 * Azure Migrate

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: lizross
 ms.custom: it-pro
-ms.openlocfilehash: 5ca2115e8f5f2e18c31477135aa94bc04d6d9256
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: f546ea5b5f9288849334d27cd1721f0c22fb8806
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45577395"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46297775"
 ---
 # <a name="how-to-add-or-remove-group-owners-in-azure-active-directory"></a>Hogyan: hozzáadása vagy eltávolítása a csoportok tulajdonosainak az Azure Active Directoryban
 Az Azure Active Directory (Azure AD-) csoportok tulajdonosai és kezeli a csoport tulajdonosai. Csoporttulajdonosok rendeli hozzá egy csoportot és annak tagjait kezelheti az erőforrás tulajdonosa (rendszergazda). Csoporttulajdonosok lehetnek a csoport tagjai, nem szükséges. Miután a csoport tulajdonosa hozzá lett rendelve, csak egy erőforrás tulajdonosa hozzáadhat vagy eltávolíthat tulajdonosai.
@@ -66,6 +66,6 @@ Tulajdonos eltávolítása az Azure AD-csoport.
 
 - [Csoportok használata hozzáférések hozzárendelése az integrált SaaS-alkalmazások](../users-groups-roles/groups-saasapps.md)
 
-- [Helyszíni identitások integrálása az Azure Active Directoryval](../connect/active-directory-aadconnect.md)
+- [Helyszíni identitások integrálása az Azure Active Directoryval](../hybrid/whatis-hybrid-identity.md)
 
 - [Azure Active Directory-parancsmagok csoportbeállítások konfigurálásához](../users-groups-roles/groups-settings-v2-cmdlets.md)

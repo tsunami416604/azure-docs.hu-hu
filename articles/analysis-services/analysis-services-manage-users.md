@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/03/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 846b76bddbc771a924a1d710cd333dfa4623f5ec
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: a629c598c94e44713f8990871c46272dc48b1359
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37449894"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46296277"
 ---
 # <a name="authentication-and-user-permissions"></a>Hitelesítés és felhasználói engedélyek
 Az Azure Analysis Services az Azure Active Directory (Azure AD) identity management és a felhasználói hitelesítés. Bármely felhasználó létrehozása, kezelése vagy csatlakozhat egy Azure Analysis Services kiszolgálói rendelkeznie kell egy érvényes felhasználói identitás egy [Azure AD-bérlő](../active-directory/fundamentals/active-directory-administer.md) ugyanabban az előfizetésben.
@@ -33,7 +33,7 @@ Attól függően, az ügyfélalkalmazás vagy az eszköz, amellyel hitelesítés
 
 A Power BI Desktop, az SSDT és SSMS támogatja az Active Directory univerzális-hitelesítést, az interaktív metódus, amely az Azure multi-factor Authentication (MFA) is támogatja. Az Azure MFA segít biztonságosabb a hozzáférés az adatokhoz és alkalmazásokhoz biztosít egy egyszerű bejelentkezési folyamat során. Erős hitelesítés (telefonhívás, szöveges üzenet, intelligens kártyák PIN-kód vagy mobilalkalmazásbeli értesítés) többféle hitelesítési lehetőséget kínál. Interaktív, az Azure AD MFA egy felugró párbeszédpanel érvényesítéshez eredményezhet. **Univerzális hitelesítés ajánlott**.
 
-Ha nincs kiválasztva egy Windows-fiókot és univerzális hitelesítéssel vagy érhető el (Excel), az Azure-bA bejelentkezik [Active Directory összevonási szolgáltatások (AD FS)](../active-directory/connect/active-directory-aadconnect-azure-adfs.md) megadása kötelező. Az összevonási, az Azure AD és Office 365-felhasználók a helyszíni hitelesítő adatok használatával hitelesített, és az Azure-erőforrások eléréséhez.
+Ha nincs kiválasztva egy Windows-fiókot és univerzális hitelesítéssel vagy érhető el (Excel), az Azure-bA bejelentkezik [Active Directory összevonási szolgáltatások (AD FS)](../active-directory/hybrid/how-to-connect-fed-azure-adfs.md) megadása kötelező. Az összevonási, az Azure AD és Office 365-felhasználók a helyszíni hitelesítő adatok használatával hitelesített, és az Azure-erőforrások eléréséhez.
 
 ### <a name="sql-server-management-studio-ssms"></a>SQL Server Management Studio (SSMS)
 Azure Analysis Services szolgáltatásai támogatják a érkező kapcsolatokat [SSMS V17.1](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) és újabb Windows-hitelesítés, Active Directory jelszavas hitelesítést és az Active Directory univerzális hitelesítéssel. Általában javasoljuk, használja az Active Directory univerzális hitelesítéssel, mivel:

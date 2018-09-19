@@ -1,6 +1,6 @@
 ---
-title: Azure Data Lake Store-erőforrások kezelése az Azure Storage Explorerben
-description: Megismerheti az Azure Data Lake Store-adatok és -erőforrások elérésének és kezelésének módját az Azure Storage Explorerben
+title: Az Azure Data Lake Storage Gen1-erőforrásait kezelheti az Azure Storage Explorerrel
+description: Ismerje meg, hogyan eléréséhez és kezeléséhez az Azure Data Lake Storage Gen1 adatokat és erőforrásokat az Azure Storage Explorerben
 Keywords: Azure Data Lake Store, Azure Storage Explorer
 services: Data Lake Store
 documentationcenter: ''
@@ -14,24 +14,24 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/05/2018
 ms.author: jejiang
-ms.openlocfilehash: f44518bd6167bc1da207e3c301eabefc014a5749
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: 537c94976dbb4f7753b7fafb3b6c94e97cc2cc17
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35646152"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46126326"
 ---
-# <a name="manage-azure-data-lake-store-resources-by-using-storage-explorer"></a>Azure Data Lake Store-erőforrások kezelése a Storage Explorerrel
+# <a name="manage-azure-data-lake-storage-gen1-resources-by-using-storage-explorer"></a>Az Azure Data Lake Storage Gen1-erőforrások kezelése a Storage Explorer használatával
 
-Az [Azure Data Lake Store](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-overview) szolgáltatás nagy mennyiségű strukturálatlan adat, például szövegek vagy bináris adatok tárolására használható. HTTP-n vagy HTTPS-en keresztül bárhonnan hozzáférhet az adataihoz. A Data Lake Store az Azure Storage Explorerben lehetővé teszi Data Lake Store-adatok és -erőforrások elérését és kezelését, az egyéb Azure-entitásokkal (pl. blobokkal és üzenetsorokkal) együtt. Mostantól ugyanazon eszközzel, egy helyen kezelheti a különböző Azure-entitásokat.
+[Az Azure Data Lake Storage Gen1](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-overview) szolgáltatás nagy mennyiségű strukturálatlan adat, például szövegek vagy bináris adatok tárolására használható. HTTP-n vagy HTTPS-en keresztül bárhonnan hozzáférhet az adataihoz. Data Lake Storage Gen1 az Azure Storage Explorerben lehetővé teszi, hogy a Data Lake Storage Gen1 adatokat és erőforrásokat, mint a blobok és üzenetsorok más Azure-entitásokkal együtt elérését és kezelését. Mostantól ugyanazon eszközzel, egy helyen kezelheti a különböző Azure-entitásokat.
 
-A megoldás másik előnye, hogy nincs szükség előfizetési engedélyre a Data Lake Store-adatok kezeléséhez. A Storage Explorerben a Data Lake Store-útvonal csatolható a **Helyi és csatolt** csomóponthoz, ha a valaki ezt engedélyezi.
+Egy másik előnye, hogy, nincs szükség előfizetési engedélyre a Data Lake Storage Gen1 adatok kezelésére. A Storage Explorerben a Data Lake Storage Gen1 elérési útját is csatlakoztatható a **helyi és csatolt** csomóponthoz, valaki ezt engedélyezi.
 
 ## <a name="prerequisites"></a>Előfeltételek
 A cikkben leírt lépések elvégzéséhez a következő előfeltételekre lesz szüksége:
 
 *   Azure-előfizetés. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial).
-*   Azure Data Lake Store-fiók. A fióklétrehozás módjával kapcsolatban tekintse meg [az Azure Data Lake Store használatának első lépéseit ismertető](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal) témakört.
+*   Egy Data Lake Storage Gen1 fiók. Létrehozásával kapcsolatos utasításokért lásd: [Ismerkedés az Azure Data Lake Storage Gen1](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal).
 
 ## <a name="install-storage-explorer"></a>A Storage Explorer telepítése
 
@@ -59,10 +59,10 @@ Az Azure Storage Explorer legújabb összetevői a [termék weblapjáról](https
 
     ![Fióklista](./media/data-lake-store-in-storage-explorer/account-list.png)
 
-Sikeresen csatlakoztatta az Azure Data Lake Store-t az Azure-előfizetéséhez.
+Data Lake Storage Gen1 sikeresen csatlakozott az Azure-előfizetéshez.
 
-## <a name="connect-to-data-lake-store"></a>Csatlakozás a Data Lake Store-hoz
-Az előfizetésében nem szereplő erőforrásokhoz is hozzáférhet, ha valaki megadja az erőforrások URI-ját. Ezután csatlakozhat a Data Lake Store-hoz az URI segítségével, a bejelentkezés után.
+## <a name="connect-to-data-lake-storage-gen1"></a>Csatlakozhat a Data Lake Storage Gen1
+Az előfizetésében nem szereplő erőforrásokhoz is hozzáférhet, ha valaki megadja az erőforrások URI-ját. Majd csatlakozhat Data Lake Storage Gen1 bejelentkezés után az URI használatával.
 1. Nyissa meg a Storage Explorert.
 2. A bal oldali panelen bontsa ki a **Helyi és csatolt** elemet.
 3. Kattintson a jobb gombbal a **Data Lake Store** elemre, és válassza a **Csatlakozás a Data Lake Store-hoz** lehetőséget.
@@ -73,42 +73,42 @@ Az előfizetésében nem szereplő erőforrásokhoz is hozzáférhet, ha valaki 
 
       ![„Csatlakozás a Data Lake Store-hoz” párbeszédpanel, az URI beírására szolgáló szövegmezővel](./media/data-lake-store-in-storage-explorer/storageexplorer-adls-uri-attach-dialog.png)
 
-      ![A Data Lake Store-hoz történő csatlakozás eredménye](./media/data-lake-store-in-storage-explorer/storageexplorer-adls-attach-finish.png)
+      ![Data Lake Storage Gen1 eredménye](./media/data-lake-store-in-storage-explorer/storageexplorer-adls-attach-finish.png)
 
-## <a name="view-an-azure-data-lake-store-accounts-contents"></a>Azure Data Lake Store-fiók tartalmának megtekintése
-Az Azure Data Lake Store-fiókok erőforrásai között mappák és fájlok találhatóak.
+## <a name="view-a-data-lake-storage-gen1-accounts-contents"></a>A Data Lake Storage Gen1 fiók tartalmának megtekintése
+A Data Lake Storage Gen1-fiókok erőforrásai között mappák és fájlok.
 
-A következő lépések bemutatják, hogyan tekinthető meg egy Data Lake Store-fiók tartalma a Storage Explorerben:
+A következő lépések bemutatják, hogyan tekinthető tartalma a Storage Explorerben a Data Lake Storage Gen1 fiók:
 
 1. Nyissa meg a Storage Explorert.
-2. A bal oldali panelen bontsa ki a megtekinteni kívánt Azure Data Lake Store-fiókot tartalmazó előfizetést.
+2. A bal oldali ablaktáblán bontsa ki az előfizetést, amely tartalmazza a Data Lake Storage Gen1 fiókot, hogy meg szeretné jeleníteni.
 3. Bontsa ki a **Data Lake Store** elemet.
-4. Kattintson a jobb gombbal a megtekinteni kívánt Azure Data Lake Store-fiók csomópontjára, majd válassza a **Megnyitás** lehetőséget. Vagy kattintson duplán a Data Lake Store-fiókra a megnyitásához. 
+4. Kattintson a jobb gombbal a Data Lake Storage Gen1-fiók csomópontjára, megtekintheti, és válassza ki a kívánt **nyílt**. Vagy kattintson duplán a Data Lake Storage Gen1 fiókra a megnyitásához. 
    
-   A fő panel megjeleníti a Data Lake Store-fiók tartalmát.
+   A fő panel megjeleníti a Data Lake Storage Gen1-fiók tartalmát.
 
    ![Fő panel a mappák listájával](./media/data-lake-store-in-storage-explorer/storageexplorer-adls-toolbar-mainpane.png) 
 
-## <a name="manage-resources-in-azure-data-lake-store"></a>Az Azure Data Lake Store-ban található erőforrások kezelése
+## <a name="manage-resources-in-data-lake-storage-gen1"></a>A Data Lake Storage Gen1-erőforrások kezelése
 
-Az Azure Data Lake Store-erőforrásokat a következő műveletekkel kezelheti:
-*   Data Lake Store-erőforrások tallózása, több Azure Data Lake-fiókon keresztül.  
-*   Kapcsolati sztring használata a Data Lake Store-hoz való csatlakozáshoz és annak közvetlen kezeléséhez. 
-*   A mások által az ACL-lel megosztott Data Lake Store-erőforrások megtekintése a **Helyi és csatolt** területen.
+Data Lake Storage Gen1 erőforrások is kezelhetők a következő műveletekkel:
+*   Data Lake Storage Gen1 erőforrások tallózása, több Data Lake Storage Gen1 fiókban.  
+*   Kapcsolati karakterlánc használatával csatlakozhat, és közvetlenül kezelheti a Data Lake Storage Gen1. 
+*   Tekintse meg a Data Lake Storage Gen1 erőforrásokat alatt az ACL-lel a mások által megosztott **helyi és csatolt**.
 *   CRUD-műveletek végrehajtása fájlokon vagy mappákon: rekurzív mappák és több kijelölt fájl támogatása. 
 *   Mappák húzása és hozzáadása a legutóbbi helyek gyors eléréséhez. Ez a művelet ugyanúgy működik, mint az asztali gépek fájlkezelőjében. 
-*   Azure Data Lake-hiperhivatkozás másolása és megnyitása egyetlen kattintással a Storage Explorerben. 
+*   Másolja ki és a egy Data Lake Storage Gen1 hivatkozás megnyitása egyetlen kattintással a Storage Explorerben. 
 *   A tevékenységnapló megjelenítése a jobb alsó panelen a tevékenységek állapotának megtekintéséhez.
 *   Mappastatisztikák és fájltulajdonságok megjelenítése.
 
 ## <a name="manage-resources-in-azure-storage-explorer"></a>Erőforrások kezelése az Azure Storage Explorerben
-Egy Azure Data Lake Store-fiók létrehozása után a következőket teheti:
+Miután létrehozott egy Data Lake Storage Gen1 fiókot, akkor a következőket teheti:
 
 * Feltölthet mappákat és fájlokat, valamint letölthet és megnyithat erőforrásokat a helyi számítógépen.
 * Elemeket rögzíthet a **gyorselérési eszköztáron**, új mappát hozhat létre, kimásolhatja az URL-címet, vagy kijelölhet mindent.
 * Másolhat és beilleszthet, átnevezhet, törölhet, mappastatisztikákat tekinthet meg és frissíthet.
 
-Az alábbi pontokban áttekintheti, hogyan kezelheti az erőforrásokat az Azure Data Lake Store-fiókokban. Kövesse a végrehajtani kívánt művelet lépéseit.
+A következő cikkek bemutatják, hogyan kezelheti az erőforrásokat egy Data Lake Storage Gen1 fiókot. Kövesse a végrehajtani kívánt művelet lépéseit.
 
 ### <a name="upload-files"></a>Fájlok feltöltése
 
@@ -159,13 +159,13 @@ A rendszer letölti a fájlt, majd megnyitja a fájltípushoz társított alkalm
 
 1. Válassza ki a másolni kívánt mappákat vagy fájlokat.
 2. A fő ablaktábla eszköztárán válassza a **Másolás** lehetőséget. Vagy kattintson a jobb gombbal a kijelölt mappákra vagy fájlokra, és a helyi menüben kattintson a **Másolás** elemre.
-3. A bal oldali panelen lépjen egy másik Data Lake Store-fiókra, és kattintson rá duplán a fő panelen való megtekintéséhez.
+3. A bal oldali panelen keresse meg a Data Lake Storage Gen1 egy másik fiókot, és kattintson duplán a fő ablaktáblán való megtekintéshez.
 4. A fő panel eszköztárán válassza a **Beillesztés** lehetőséget egy másolat létrehozásához. Vagy kattintson a cél helyi menüjének **Beillesztés** elemére.
 
 ![Mappa másolására szolgáló kiválasztások](./media/data-lake-store-in-storage-explorer/storageexplorer-adls-copy-paste.png)
 
 > [!NOTE] 
-> A tárolási típusok közötti másolási és beillesztési művelet nem támogatott. Másolhatja a Data Lake Store-mappákat és -fájlokat, és beillesztheti őket egy másik Data Lake Store-fiókba. *Nem* másolhat azonban át Data Lake Store-mappákat vagy -fájlokat egy Azure Blob Storage-ba, vagy fordítva.
+> A tárolási típusok közötti másolási és beillesztési művelet nem támogatott. Data Lake Storage Gen1 mappák és fájlok másolása, és illessze be őket egy másik Data Lake Storage Gen1 fiókot. De *nem* Data Lake Storage Gen1 mappák és fájlok másolása, majd illessze be őket az Azure Blob storage- vagy fordítva.
 > 
 > A másolási és beillesztési művelet során letölti a mappákat vagy fájlokat a helyi számítógépre, majd feltölti őket a célhelyre. Az eszköz *nem* a háttérben hajtja végre a műveletet. A nagyméretű fájlok másolása és beillesztése lassú folyamat. A nagy teljesítményű fájlmásolási és -áthelyezési funkció optimalizálása folyamatban van.
 
@@ -198,5 +198,5 @@ Az URL-címeket egyszerűen beírhatja a Fájlkezelő vagy a böngésző címsor
 * A [Storage Explorer legújabb kibocsátási megjegyzéseinek és videóinak megtekintése](http://www.storageexplorer.com).
 * Megismerheti, hogyan [kezelhető az Azure Cosmos DB az Azure Storage Explorerben](https://docs.microsoft.com/azure/cosmos-db/storage-explorer).
 * [A Storage Explorer használatának első lépései](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer).
-* [Az Azure Data Lake Store használatának első lépései](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-overview).
+* [Ismerkedés az Azure Data Lake Storage Gen1](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-overview).
 * Tekintse meg ezt a [YouTube-videót az Azure Cosmos DB az Azure Storage Explorerben történő használatáról](https://www.youtube.com/watch?v=iNIbg1DLgWo&feature=youtu.be).

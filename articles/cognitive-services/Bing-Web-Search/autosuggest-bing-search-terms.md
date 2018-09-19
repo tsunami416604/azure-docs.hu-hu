@@ -1,23 +1,23 @@
 ---
-title: Automatikus kiegészítési Bing keresési kifejezések
-titleSuffix: Microsoft Cognitive Services
+title: Automatikus kiegészítés keresőkifejezéseket – a Bing Web Search API
+titleSuffix: Azure Cognitive Services
 description: Párosítsa a Bing Web Search API a Bing Autosuggest API olyan továbbfejlesztett keresési élményt biztosít.
 services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-web-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 8/13/2018
 ms.author: erhopf
-ms.openlocfilehash: df8a57b3136abfacce971f4d01ccb2296dfa784c
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: 475ddfc2bcd9acd1312348a6c85e3d4627e48a3d
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42889453"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46128944"
 ---
-# <a name="autosuggest-bing-search-terms"></a>Automatikus kiegészítési Bing keresési kifejezések
+# <a name="autosuggest-bing-search-terms-in-your-application"></a>Automatikus kiegészítési Bing keresési kifejezéseket az alkalmazásban
 
 Ha biztosít egy olyan keresőmezőt, ahol a felhasználók megadhatják a keresőkifejezést, a [Bing Autosuggest API](../bing-autosuggest/get-suggested-search-terms.md) használatával kényelmesebbé teheti a felhasználói élményt. Az API javasolt lekérdezési sztringeket ad vissza a részleges keresőkifejezések alapján, miközben a felhasználó gépel.
 

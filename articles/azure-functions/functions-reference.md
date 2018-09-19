@@ -12,12 +12,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 10/12/2017
 ms.author: glenga
-ms.openlocfilehash: d2b05c83f77a58e224760d90d111b270d71a6514
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: d97766b0a8c0df3b414d78f563406530f67c313b
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44092427"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46125372"
 ---
 # <a name="azure-functions-developers-guide"></a>Az Azure Functions fejlesztői útmutatója
 Az Azure Functions, a speciális szoftverfrissítési funkciókat ossza meg néhány alapvető technikai kapcsolatos fogalmakról és összetevőkről, függetlenül a nyelvet, vagy a kötés használja. Mielőtt megkezdi a munkát egy adott nyelven vagy a kötési adatait tanuló, mindenképpen olvassa végig az áttekintés, amely mindegyik vonatkozik.
@@ -62,15 +62,13 @@ A runtime vagy a parancsfájlfuttató, nem a mögöttes WebJobs SDK-állomás, a
 
 HTTP-eseményindítók megkönnyítése érdekében, nincs célja, hogy a parancsfájlfuttató éles forgatókönyvekben elé Dőljön webes gazdagépet. Segít elkülöníteni a parancsfájlfuttató elejéről végén kellene két gazdagép-gazdagép kezelheti a webes forgalom.
 
-## <a name="folder-structure"></a>Gyökérmappa-szerkezetében
+## <a name="folder-structure"></a>gyökérmappa-szerkezetében
 [!INCLUDE [functions-folder-structure](../../includes/functions-folder-structure.md)]
 
-Amikor létrehozása egy függvényalkalmazáshoz az Azure App Service-ben történő üzembe helyezéshez a funkciók egy projektet, a helykódot, a gyökérmappa-szerkezetében is kezelheti. Használhatja a meglévő eszközökkel, mint például a folyamatos integrációt és üzembe helyezést, vagy egyéni üzembehelyezési szkriptek minderre transpilation kód vagy idő csomagtelepítés üzembe helyezése.
+Amikor létrehozása egy helyezhet üzembe egy függvényalkalmazáshoz az Azure functions-projektet, a helykódot, a gyökérmappa-szerkezetében is kezelheti. Azt javasoljuk, [központi telepítési csomag](deployment-zip-push.md) projekt telepítése az Azure-ban a függvényalkalmazáshoz. Használhatja például a meglévő eszközökkel is [folyamatos integrációs és üzembe helyezési](functions-continuous-deployment.md) és az Azure DevOps.
 
 > [!NOTE]
-> Ügyeljen arra, hogy üzembe helyezése a `host.json` fájlt, és mappák közvetlenül a függvény a `wwwroot` mappát. Nem tartalmazzák a `wwwroot` mappát a központi telepítések. Ellenkező esetben Ön végül `wwwroot\wwwroot` mappákat. 
-> 
-> 
+> Ügyeljen arra, hogy üzembe helyezése a `host.json` fájlt, és mappák közvetlenül a függvény a `wwwroot` mappát. Nem tartalmazzák a `wwwroot` mappát a központi telepítések. Ellenkező esetben Ön végül `wwwroot\wwwroot` mappákat.
 
 ## <a id="fileupdate"></a> Függvények alkalmazás fájl frissítése
 A függvény-szerkesztő, az Azure portal beépített lehetővé teszi, hogy frissítheti a *function.json* fájl- és a kódfájl egy függvényhez. Fel-vagy egyéb fájlok például frissítése *package.json* vagy *project.json* vagy a függőségek kell használjon más telepítési módszert.

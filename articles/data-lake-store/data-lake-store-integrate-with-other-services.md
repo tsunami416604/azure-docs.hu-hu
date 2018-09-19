@@ -1,6 +1,6 @@
 ---
-title: Data Lake Store más Azure-szolgáltatásokkal integrálja |} Microsoft Docs
-description: Megérteni, hogyan integrálható a Data Lake Store más Azure-szolgáltatásokkal
+title: Az Azure Data Lake Storage Gen1 integrálása más Azure-szolgáltatások |} A Microsoft Docs
+description: Megismerheti, hogyan integrálható az Azure Data Lake Storage Gen1 más Azure-szolgáltatások
 documentationcenter: ''
 services: data-lake-store
 author: nitinme
@@ -12,61 +12,61 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 3fd1b03d2ce0b814f453ae4d87a136f28479662d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: e377a29167ace21e021568f3c65cefd1098d1dab
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34624097"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46127139"
 ---
-# <a name="integrating-data-lake-store-with-other-azure-services"></a>A Data Lake Store integrálása más Azure-szolgáltatásokkal
-Azure Data Lake Store más Azure-szolgáltatásokkal együtt használható a lehetséges forgatókönyvek bővítése engedélyezéséhez. Az alábbi cikket a Data Lake Store integrálható a szolgáltatásokat sorolja fel.
+# <a name="integrating-azure-data-lake-storage-gen1-with-other-azure-services"></a>Az Azure Data Lake Storage Gen1 integrálása más Azure-szolgáltatások
+Az Azure Data Lake Storage Gen1 széles körének forgatókönyvek engedélyezése más Azure-szolgáltatásokkal együtt is használható. A következő cikket a Data Lake Storage Gen1 integrálható legyen az szolgáltatásokat sorolja fel.
 
-## <a name="use-data-lake-store-with-azure-hdinsight"></a>Használjon Data Lake Store az Azure hdinsightban
-Megadhat egy [Azure HDInsight](https://azure.microsoft.com/documentation/learning-paths/hdinsight-self-guided-hadoop-training/) Data Lake Store a HDFS-kompatibilis tárolót használó fürtben. Ebben a kiadásban a Windows és Linux, a Hadoop és a Storm fürtök használhatja Data Lake Store további tárterületként csak. A fürtök továbbra is használja az alapértelmezett tároló Azure Storage (WASB). Azonban a Windows és Linux HBase fürtök esetén is használhatja Data Lake Store alapértelmezett tárolására, vagy további tárhely, vagy mindkettőt.
+## <a name="use-data-lake-storage-gen1-with-azure-hdinsight"></a>Az Azure HDInsight használata a Data Lake Storage Gen1
+Telepíthet egy [Azure HDInsight](https://azure.microsoft.com/documentation/learning-paths/hdinsight-self-guided-hadoop-training/) fürtöt, amely a Data Lake Storage Gen1 használja a HDFS-kompatibilis tárolóként. Ebben a kiadásban a Windows és Linux rendszeren, a Hadoop és a Storm fürtökhöz használható Data Lake Storage Gen1 csak egy kiegészítő tárolóként. Ezek a fürtök az Azure Storage (WASB) továbbra is használhatja az alapértelmezett tárolóként. HBase-fürtök Windows és Linux rendszereken, viszont használhatja Data Lake Storage Gen1 az alapértelmezett tároló és/vagy további tárhelyet.
 
-A Data Lake Store HDInsight-fürtök kiépítése utasításokért lásd:
+Létesítsen egy HDInsight-fürtöt a Data Lake Storage Gen1 kapcsolatos utasításokért lásd:
 
-* [HDInsight-fürtök kiépítése a Data Lake Store Azure portál használatával](data-lake-store-hdinsight-hadoop-use-portal.md)
-* [A Data Lake Store HDInsight-fürtök kiépítése alapértelmezett tárolóként Azure PowerShell használatával](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
-* [További tárhely az Azure PowerShell, a Data Lake Store HDInsight-fürtök kiépítése](data-lake-store-hdinsight-hadoop-use-powershell.md)
+* [Létesítsen egy HDInsight-fürtöt a Data Lake Storage Gen1 az Azure Portal használatával](data-lake-store-hdinsight-hadoop-use-portal.md)
+* [Az Azure PowerShell-lel alapértelmezett tároló üzembe helyezése a Data Lake Storage Gen1 egy HDInsight-fürtöt](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
+* [Egy HDInsight-fürtöt a Data Lake Storage Gen1 kiépítése az Azure PowerShell-lel kiegészítő tárolóként](data-lake-store-hdinsight-hadoop-use-powershell.md)
 
-## <a name="use-data-lake-store-with-azure-data-lake-analytics"></a>Használjon Data Lake Store az Azure Data Lake Analytics
-[Az Azure Data Lake Analytics](../data-lake-analytics/data-lake-analytics-overview.md) lehetővé teszi, hogy a felhőbeli skálázással Big Data típusú adatok alkalmazásában. Dinamikusan kiosztja az erőforrásokat, és lehetővé teszi terabájtjain vagy akár exabájtjain való elemzést által támogatott adatforrások, az egyik legyen a Data Lake Store alatt száma tárolhatja. A Data Lake Analytics kifejezetten arra optimalizálták, hogy működik az Azure Data Lake Store - biztosítása a legmagasabb szintű teljesítményt, adatátvitelt és párhuzamos folyamatkezelést biztosítja azt a big data számítási feladatokat.
+## <a name="use-data-lake-storage-gen1-with-azure-data-lake-analytics"></a>Az Azure Data Lake Analytics használata a Data Lake Storage Gen1
+[Az Azure Data Lake Analytics](../data-lake-analytics/data-lake-analytics-overview.md) lehetővé teszi, hogy a big Data típusú adatok felhőbeli méretezéssel. Dinamikusan kiosztja az erőforrásokat, és lehetővé teszi több terabájtnyi vagy akár exabájtjain való elemzést, a támogatott adatforrások, az egyiket folyamatban van a Data Lake Storage Gen1 számos tárolható adatok elemzését. A Data Lake Analytics kifejezetten dolgozhat a Data Lake Storage Gen1 – így a legmagasabb szintű teljesítményt, átviteli sebesség és folyamatkezelést biztosítja a big data-számítási feladatokhoz van optimalizálva.
 
-A Data Lake Analytics használatával a Data Lake Store útmutatásért lásd: [az Data Lake Analytics Data Lake Store használatának első lépései](../data-lake-analytics/data-lake-analytics-get-started-portal.md).
+A Data Lake Analytics használata a Data Lake Storage Gen1 útmutatásért lásd: [Ismerkedés a Data Lake Analytics használatával a Data Lake Storage Gen1](../data-lake-analytics/data-lake-analytics-get-started-portal.md).
 
-## <a name="use-data-lake-store-with-azure-data-factory"></a>Használjon Data Lake Store az Azure Data Factoryvel
-Használhat [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) Azure-táblákban, az Azure SQL Database, Azure SQL-adattárház, Azure Storage Blobs és a helyszíni adatbázisok származó adatok. Az Azure-ökoszisztéma az első osztályú állampolgára alatt, Azure Data Factory-bA az Azure Data Lake Store ezek forrásból származó adatok adatfeldolgozást történő használható.
+## <a name="use-data-lake-storage-gen1-with-azure-data-factory"></a>Az Azure Data Factory használata a Data Lake Storage Gen1
+Használhat [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) betölteni az adatokat az Azure-táblák, Azure SQL Database, Azure SQL-adattárház, Azure Storage-Blobok és a helyszíni adatbázisok. Folyamatban van egy polgár az Azure ökoszisztéma, Azure Data Factory segítségével vezényelnie Data Lake Storage Gen1 ezek forrásból származó adatokat.
 
-Azure Data Factory használatával a Data Lake Store útmutatásért lásd: [adatok áthelyezése a Data Factory használatával a Data Lake Store érkező vagy oda irányuló](../data-factory/connector-azure-data-lake-store.md).
+Az Azure Data Factory használata a Data Lake Storage Gen1 útmutatásért lásd: [adatok importálására és a Data Lake Storage Gen1 Data Factory használatával](../data-factory/connector-azure-data-lake-store.md).
 
-## <a name="copy-data-from-azure-storage-blobs-into-data-lake-store"></a>Adatok másolása az Azure Storage blobs szolgáltatásban a Data Lake Store
-Azure Data Lake Store biztosítja a parancssori eszközzel, AdlCopy, amely lehetővé teszi az adatok másolása az Azure Blob Storage a Data Lake Store-fiók. További információkért lásd: [adatok másolása az Azure Storage Blobs Data Lake store](data-lake-store-copy-data-azure-storage-blob.md).
+## <a name="copy-data-from-azure-storage-blobs-into-data-lake-storage-gen1"></a>Adatok másolása az Azure Storage-Blobokból a Data Lake Storage Gen1 be
+Az Azure Data Lake Storage Gen1 parancssori eszköz, amely lehetővé teszi, hogy az adatok másolása az Azure Blob Storage-ból egy Data Lake Storage Gen1 fiókba, AdlCopy biztosít. További információkért lásd: [adatok másolása az Azure Storage-Blobokból a Data Lake Storage Gen1](data-lake-store-copy-data-azure-storage-blob.md).
 
-## <a name="copy-data-between-azure-sql-database-and-data-lake-store"></a>Adatok másolása az Azure SQL Database és a Data Lake Store között
-Apache Sqoop használatával importálhat és exportálhat adatokat az Azure SQL Database és a Data Lake Store között. További információkért lásd: [Data Lake Store és a Sqoop használatával Azure SQL-adatbázis közötti adatok másolása](data-lake-store-data-transfer-sql-sqoop.md).
+## <a name="copy-data-between-azure-sql-database-and-data-lake-storage-gen1"></a>Adatok másolása az Azure SQL Database és a Data Lake Storage Gen1 között
+Az Apache Sqoop használatával Azure SQL Database és a Data Lake Storage Gen1 közötti adatok importálása és exportálása. További információkért lásd: [adatmásolás a Data Lake Storage Gen1 és a Sqoop használata Azure SQL database közötti](data-lake-store-data-transfer-sql-sqoop.md).
 
-## <a name="use-data-lake-store-with-stream-analytics"></a>Használjon Data Lake Store az Stream Analytics használ
-Data Lake Store a kimenetek egyik segítségével Azure Stream Analytics segítségével adatátvitel adatainak tárolásához. További információkért lásd: [adatfolyam-adatokat az Azure Storage-Blobból az Azure Stream Analytics használata a Data Lake Store](data-lake-store-stream-analytics.md).
+## <a name="use-data-lake-storage-gen1-with-stream-analytics"></a>A Stream Analytics használata a Data Lake Storage Gen1
+Data Lake Storage Gen1 a kimenetek egyik segítségével adatokat streamelt az Azure Stream Analytics használatával tárolni. További információkért lásd: [adatok a Storage-blobból az Azure Data Lake Storage Gen1 be az Azure Stream Analytics Stream](data-lake-store-stream-analytics.md).
 
-## <a name="use-data-lake-store-with-power-bi"></a>Használjon Data Lake Store a Power BI
-A Power BI segítségével adatokat importálhat egy Data Lake Store-fiók elemzéséhez és az adatok megjelenítése. További információkért lásd: [elemezhetik a Power BI használatával a Data Lake Store](data-lake-store-power-bi.md).
+## <a name="use-data-lake-storage-gen1-with-power-bi"></a>Data Lake Storage Gen1 használata a Power bi-ban
+A Power BI segítségével adatokat importálhat egy Data Lake Storage Gen1-fiókot az adatok elemzése és megjelenítése. További információkért lásd: [Power BI használatával a Data Lake Storage Gen1 adatok elemzése](data-lake-store-power-bi.md).
 
-## <a name="use-data-lake-store-with-data-catalog"></a>Használjon Data Lake Store a Data Catalog
-Data Lake Store adatait az Azure Data Catalog, hogy az adatok felderíthető a szervezet egésze számára történő regisztrálására. További információ: [Data Lake Store-ból adatokat regisztrálni kell az Azure Data Catalog](data-lake-store-with-data-catalog.md).
+## <a name="use-data-lake-storage-gen1-with-data-catalog"></a>A Data Catalog használja a Data Lake Storage Gen1
+Data Lake Storage Gen1 adatait az Azure Data catalogba, hogy az adatok a szervezetben felderíthető regisztrálhat. További információ: [regisztrálja a Data Lake Storage Gen1 adatait az Azure Data Catalog](data-lake-store-with-data-catalog.md).
 
-## <a name="use-data-lake-store-with-sql-server-integration-services-ssis"></a>Használjon Data Lake Store az SQL Server Integration Services (SSIS)
-SSIS az Azure Data Lake Store kezelője segítségével csatlakozzon az Azure Data Lake Store egy SSIS-csomag. További információkért lásd: [használata Data Lake Store az SSIS](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-data-lake-store-connection-manager).
+## <a name="use-data-lake-storage-gen1-with-sql-server-integration-services-ssis"></a>Az SQL Server Integration Services (SSIS) használja a Data Lake Storage Gen1
+SSIS a Data Lake Storage Gen1-kezelő használatával egy SSIS-csomag összekapcsolása a Data Lake Storage Gen1. További információkért lásd: [használata Data Lake Storage Gen1 az SSIS használatával](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-data-lake-store-connection-manager).
 
-## <a name="use-data-lake-store-with-sql-data-warehouse"></a>Használjon Data Lake Store az SQL Data Warehouse szolgáltatással
-A PolyBase segítségével az adatok betöltése az Azure Data Lake Store az SQL Data Warehouse. További információ: [használata Data Lake Store az SQL Data Warehouse szolgáltatással](../sql-data-warehouse/sql-data-warehouse-load-from-azure-data-lake-store.md).
+## <a name="use-data-lake-storage-gen1-with-sql-data-warehouse"></a>Az SQL Data Warehouse használata a Data Lake Storage Gen1
+A PolyBase használatával a Data Lake Storage Gen1 adatok betöltése az SQL Data Warehouse-bA. További információ: [használata Data Lake Storage Gen1 az SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-load-from-azure-data-lake-store.md).
 
-## <a name="use-data-lake-store-with-azure-event-hubs"></a>Használjon Data Lake Store az Azure Event Hubs
-Azure Event Hubs által fogadott rögzítése és archiválási adatok Azure Data Lake Store segítségével. További információ: [használata Data Lake Store az Azure Event Hubs](data-lake-store-archive-eventhub-capture.md).
+## <a name="use-data-lake-storage-gen1-with-azure-event-hubs"></a>Az Azure Event Hubs használata a Data Lake Storage Gen1
+Az Azure Data Lake Storage Gen1 használhatja az Azure Event Hubs által fogadott adatok archiválása és rögzítése. További információ: [használata Data Lake Storage Gen1 az Azure Event Hubs](data-lake-store-archive-eventhub-capture.md).
 
 ## <a name="see-also"></a>Lásd még
-* [Az Azure Data Lake Store áttekintése](data-lake-store-overview.md)
-* [Ismerkedés a Data Lake Store-portál használatával](data-lake-store-get-started-portal.md)
-* [Ismerkedés a Data Lake Store PowerShell használatával](data-lake-store-get-started-powershell.md)  
+* [Az Azure Data Lake Storage Gen1 áttekintése](data-lake-store-overview.md)
+* [Get Started with Data Lake Storage Gen1 portál használatával](data-lake-store-get-started-portal.md)
+* [Ismerkedés a Data Lake Storage Gen1 PowerShell-lel](data-lake-store-get-started-powershell.md)  
 

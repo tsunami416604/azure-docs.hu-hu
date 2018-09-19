@@ -1,71 +1,72 @@
 ---
-title: A mondatok és a tokeneket a nyelvi elemzés API |} Microsoft Docs
-description: Ismerje meg a mondatok elkülönítés és a nyelvi elemzés API kognitív szolgáltatásokban lexikális elemekké alakításának.
+title: Mondatok és lexikális – nyelvi elemzési API
+titlesuffix: Azure Cognitive Services
+description: Ismerje meg a mondatok szétválasztása és lexikális elemzése, a nyelvi elemzési API-ban.
 services: cognitive-services
 author: DavidLiCIG
-manager: wkwok
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: linguistic-analysis
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/21/2016
 ms.author: davl
-ms.openlocfilehash: 78e539f365728ad540308e9cfb07af44bf6d8fe7
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: b31ca8f88d1e8d5710c3a6a6cfccbb167fdd762a
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37084042"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46126275"
 ---
-# <a name="sentence-separation-and-tokenization"></a>Mondat elkülönítését és létrehozása
+# <a name="sentence-separation-and-tokenization"></a>Mondatok szétválasztása és lexikális elemzése
 
-## <a name="background-and-motivation"></a>Háttér és kifejlesztésének
+## <a name="background-and-motivation"></a>Háttér-információkért és motiváció
 
-Szövegtörzs megadott, az első lépés a nyelvi elemzési felosztása mondatokat és jogkivonatokat.
+Adott szövegtörzs, nyelvi elemzés első lépése az felosztása mondatok és lexikális jelek.
 
-### <a name="sentence-separation"></a>Mondat elkülönítése
+### <a name="sentence-separation"></a>Mondatok szétválasztása
 
-Az első áttekintő, úgy tűnik, hogy a szöveg ossza mondat felettébb egyszerű: csak a végfelhasználók a mondatok jelölőket található, és nincs mondat törés.
-Azonban ezek közé a következők gyakran bonyolult és nem egyértelmű.
+Az első pillantásra, úgy tűnik, hogy a szöveg ossza mondatokat használata egyszerű: mindössze keresse meg a végfelhasználók a mondat, jelölők és az ott mondatokat.
+Azonban ezek a jelek olyan gyakran bonyolult, és nem egyértelmű.
 
 Vegye figyelembe a következő példa szöveget:
 
-> mit mondtál?!? I nem érkezett válasz az igazgató "új javaslat." Fontos, és a John Smith Patricia.
+> mit mondtál?!? Nem hallható információ a igazgatója "új javaslat." Mr. és Patricia Smith fontos.
 
-Ez a szöveg három tartalmazza:
+Ez a szöveg három mondatokat tartalmazza:
 
 - mit mondtál?!?
-- I nem érkezett válasz az igazgató "új javaslat."
-- Fontos, és a John Smith Patricia.
+- Nem hallható információ a igazgatója "új javaslat."
+- Mr. és Patricia Smith fontos.
 
-Vegye figyelembe, hogyan mondat vége nagyon különböző módon megjelölve.
-Az első fejeződik be egy kérdőjel és felkiáltójel (más néven egy interrobang) kombinációja.
-A második végein ponttal vagy teljes stop, de a következő idézőjel kell kell húzni azokat a korábbi mondat helyett szerepel.
-A harmadik mondat láthatja, hogyan, hogy adott idő alatt karakter való megjelöléséhez rövidítések is használható.
-Csak az absztrakt megnézi biztosít, érdemes kijelölni, de további munkára igaz mondat határokon azonosításához szükséges.
+Vegye figyelembe, hogy hogyan mondatokat ends különböző módokon vannak megjelölve.
+Az első végződő egy kérdőjelek és felkiáltójel (más néven egy interrobang) kombinációja.
+Az előzetes mondat, le kell kérnie a második véget ér, ponttal vagy teljes leállítása, de a következő idézőjelet.
+A harmadik mondat láthatja, hogyan, hogy adott időszak karakter való megjelöléséhez rövidítések is használható.
+Csak az absztrakt Hibaoldal kínál a jó jelöltnek számít, de további munka szükséges igaz mondat határainak azonosítása.
 
-### <a name="tokenization"></a>Jogkivonat-létrehozási
+### <a name="tokenization"></a>A jogkivonatok
 
 A következő feladata a mondatok felosztása jogkivonatokat.
-Az esetek többségében angol nyelvű jogkivonatok szóköz határolja.
-(Jogkivonatok vagy szavak keresése egy sokkal egyszerűbb, mint a kínai, angol nyelven Ha szóköz legtöbbször nem használnak szavakat közötti.
+Angol nyelvű jogkivonatok többségében, térközt vannak elválasztva.
+(Jogkivonatok vagy szavak keresése az sokkal egyszerűbb, mint a kínai, angol nyelvű Ha tárolóhelyek többnyire nem használnak szavak között.
 Az első mondat írható előfordulhat, hogy a "Whatdidyousay?")
 
-Nincsenek néhány bonyolult eseteket.
-Első lépésként írásjelek gyakran (de nem mindig) kell osztható el azt körülvevő környezetben.
-Második, angol nyelven van *összevonásokat*, például a "nem" vagy "", ahol szavak tömörített és kisebb darabokra rövidítése. A jogkivonatokat létrehozó célja a karaktersorozat felosztása szavakat.
+Nincsenek néhány bonyolult esetek.
+Első lépésként írásjelek gyakran (de nem mindig) kell környezet körülvevő dobozból osztható.
+A második, angol nyelven van *összevonásokat*, mint például a "nem" vagy "", ahol szavak tömörített és kisebb darabokra rövidítése. A jogkivonatokat létrehozó az a célja, hogy a karaktersorozat felosztása szavakat.
 
-Most, térjen vissza a a fenti példa mondatokat.
-Most azt helyeztük "center pont" (&middot;) a különböző tokenek között.
+Nézzük térjen vissza a ismét a fenti példa mondatokat.
+Most hogy elhelyezte a "center pont" (&middot;) minden egyes elkülönült jogkivonat között.
 
-- Mi &middot; volt &middot; meg &middot; tegyük fel például &middot; ?!?
-- I &middot; volt &middot; n't &middot; hall &middot; kapcsolatos &middot; a &middot; igazgató &middot; tartozó &middot; " &middot; új &middot; javaslat &middot; . &middot; "
-- Az &middot; tartozó &middot; fontos &middot; való &middot; John &middot; és &middot; asszony. &middot; Smith &middot; .
+- Mi &middot; fejeződött &middot; , &middot; tegyük fel, hogy &middot; ?!?
+- E &middot; fejeződött &middot; n't &middot; hallani &middot; kapcsolatos &middot; a &middot; igazgató &middot; a &middot; " &middot; új &middot; javaslat &middot; . &middot; "
+- Ez &middot; a &middot; fontos &middot; való &middot; Mr. &middot; és &middot; asszony. &middot; Smith &middot; .
 
-Vegye figyelembe, hogyan legtöbb jogkivonatok szavak a szótárban találjuk (pl. *fontos*, *igazgató*).
+Vegye figyelembe, hogyan legtöbb jogkivonatok olyan szavakat a szótár találjuk (pl. *fontos*, *igazgató*).
 Mások kizárólag írásjelek állnak.
-Végezetül nincsenek képviselő összevonásokat például több szokatlan jogkivonatok *n't* a *nem*, possessives, például *tartozó*stb. A lexikális elemekké alakításának lehetővé teszi a word kezelni *nem* és a kódot *nem* egységesebb módon példányhoz.
+Végezetül vannak további szokatlan jogkivonatok, amelyek például összevonásokat *n't* a *nem*, possessives, például *a*stb. Ez a jogkivonatok lehetővé teszi számunkra az kezelni a word *nem* és a kifejezést *nem* több konzisztens módon, például.
 
-## <a name="specification"></a>Meghatározása
+## <a name="specification"></a>Specifikáció
 
-Fontos konzisztens döntenie néhány mondatot, és egy jogkivonat foglalja magában.
-Azt a meghatározás támaszkodjon a [Penn Treebank](https://catalog.ldc.upenn.edu/ldc99t42) (néhány további részletek találhatók ftp://ftp.cis.upenn.edu/pub/treebank/public_html/tokenization.html).
+Fontos konzisztens döntéseket mondatok és a egy token foglalja magában.
+Hogy támaszkodnak az specifikációt a a [Penn Treebank](https://catalog.ldc.upenn.edu/ldc99t42) (További részletekért ftp://ftp.cis.upenn.edu/pub/treebank/public_html/tokenization.html érhető el).

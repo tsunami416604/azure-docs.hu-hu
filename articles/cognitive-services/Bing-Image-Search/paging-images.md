@@ -1,28 +1,29 @@
 ---
-title: Hogyan oldalon keresztül elérhető rendszerkép |} Microsoft Docs
-description: Bemutatja, hogyan összes Bing lépjen vissza a lemezkép lapon.
+title: Hogyan lapozza végig az elérhető rendszerképek – a Bing Image Search API
+titleSuffix: Azure Cognitive Services
+description: Ismerje meg, hogyan végig az összes Bing adhatnak vissza a lemezképeket lapon.
 services: cognitive-services
 author: swhite-msft
-manager: ehansen
+manager: cgonlun
 ms.assetid: 3C8423F8-41E0-4F89-86B6-697E840610A7
 ms.service: cognitive-services
 ms.component: bing-image-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: a74ee817e84be5bb563c5fdaf25afc1dc14732e5
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 019d91f6a86bab5c4f446085e0244f9b5323f1fb
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35346875"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46294407"
 ---
 # <a name="paging-results"></a>Lapozás eredményei
 
-Hívja a lemezkép keresési API-t, a Bing eredmények listáját adja vissza. A lista része a száma, amelyek kapcsolódnak a lekérdezés eredményeit. Ahhoz, hogy a rendelkezésre álló eredmények becsült száma, a válasz-objektum eléréséhez [totalEstimatedMatches](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#totalestimatedmatches) mező.  
-  
-Az alábbi példa azt mutatja meg a `totalEstimatedMatches` képek választ tartalmazó mezőt.  
-  
+A képkeresési API hívásakor a Bing eredmények listáját adja vissza. A lista a lekérdezéshez kapcsolódó összes találat egy részét tartalmazza. Az első rendelkezésre álló válaszokat becsült teljes száma, a válasz-objektum eléréséhez [totalEstimatedMatches](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#totalestimatedmatches) mező.  
+
+A következő példa bemutatja a `totalEstimatedMatches` lemezképek választ tartalmazó mezőt.  
+
 ```json
 {
     "_type" : "Images",
@@ -31,32 +32,32 @@ Az alábbi példa azt mutatja meg a `totalEstimatedMatches` képek választ tart
     "value" : [...]  
 }  
 ```  
-  
-Lapon keresztül elérhető rendszerkép, használja a [száma](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#count) és [eltolás](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#offset) lekérdezési paramétert.  
-  
-A `count` paraméter határozza meg a válaszban szereplő vissza eredmények száma. Az eredmények, amelyek a válaszban szereplő vonatkozó kérések maximális száma: 150. Az alapértelmezett 35 érték. A tényleges szám kézbesíteni lehet kisebb, mint a kért.
 
-A `offset` paraméter határozza meg a kihagyandó eredmények számát. A `offset` Column, és kisebb, mint (`totalEstimatedMatches` - `count`).  
-  
-Ha 20 képek laponként megjelenítendő állíthat `count` 20 és `offset` 0 érték megadásával az első oldal az eredmények. A következő 20, 40 eltolástól kezdve képek kérő példáját mutatja be.  
-  
+A lapon az elérhető rendszerképek keresztül, használja a [száma](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#count) és [eltolás](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#offset) lekérdezési paramétereket.  
+
+A `count` paraméter adja meg a válaszban visszaadott eredmények száma. Az eredmények, amelyek a válaszban vonatkozó kérések maximális számát 150. Az alapértelmezett érték 35. A tényleges szám i lehet kisebb, mint a kért.
+
+A `offset` paraméter adja meg a kihagyandó eredmények száma. A `offset` nulláról induló, és lehet kisebb, mint (`totalEstimatedMatches` - `count`).  
+
+Ha meg szeretné jeleníteni a 20 rendszerképek egy-egy lapon, akkor állítania `count` 20-ra és `offset` 0 beolvasni az eredmények első oldala. Az alábbiakban látható egy példa, amely 20, 40 eltolástól kezdve lemezképet kér.  
+
 ```  
 GET https://api.cognitive.microsoft.com/bing/v7.0/images/search?q=sailing+dinghies&count=20&offset=40&mkt=en-us HTTP/1.1  
 Ocp-Apim-Subscription-Key: 123456789ABCDE  
 Host: api.cognitive.microsoft.com  
 ```  
 
-Ha az alapértelmezett `count` érték működik, a megvalósítás, csak meg kell adnia a `offset` lekérdezési paraméter.  
-  
+Ha az alapértelmezett `count` érték a megvalósítás esetében működik, csak meg kell adnia a `offset` lekérdezési paraméter.  
+
 ```  
 GET https://api.cognitive.microsoft.com/bing/v7.0/images/search?q=sailing+dinghies&offset=40&mkt=en-us HTTP/1.1  
 Ocp-Apim-Subscription-Key: 123456789ABCDE  
 Host: api.cognitive.microsoft.com  
 ```  
-  
-Várt, hogy ha 35 képek egyszerre történő lap állíthat a `offset` lekérdezésparaméter 0-ra, az első kérésre, és ezután növelése `offset` minden későbbi kérés 35 által. Előfordulhat azonban, az eredményekről pedig a következő válasz némelyike az előző válaszban azonosak. Például az első két lemezképeket a válaszban szereplő lehet ugyanaz, mint az előző válaszban az utolsó két lemezképet.
 
-Ismétlődő eredmények elkerülése érdekében, használja a [nextOffset](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#nextoffset) mezőjét a `Images` objektum. A `nextOffset` mező jelzi, hogy a `offset` a következő kérés esetén használandó. Például, ha azt szeretné, 30 lemezképek lapra egyszerre, akkor állítania `count` 30 és `offset` 0-ra, az első kérelem. A következő kérés állíthat `count` 30 és `offset` az előző válaszban értékének `nextOffset`. Visszafelé lapra, javasoljuk, hogy az előző eltolások Jegyzettömb karbantartásáért, valamint a legutóbbi popping.
+Így várhatóan egyszerre 35 lemezképek lapon, ha szeretné beállítani a `offset` lekérdezési paraméter az első kérés a 0-ra, és ezután növelje `offset` minden későbbi kérés a 35 szerint. Azonban néhány, az eredmények a következő válasz többször is előfordulhatnak az előző válasz. Például az első két lemezképek, a válasz lehet ugyanaz, mint az előző válaszban kapott utolsó két képeit.
+
+Az ismétlődések számára, használja a [nextOffset](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#nextoffset) mezőjében a `Images` objektum. A `nextOffset` mező jelzi, hogy a `offset` , a következő kérésnél használja. Például, ha azt szeretné, 30 lemezképek lapra egyszerre, így állíthatja be `count` 30 és `offset` az első kérés a 0. A következő kérés, így állíthatja `count` 30 és `offset` az előző válaszban kapott értékéhez `nextOffset`. A visszafelé lapon, javasoljuk, hogy az előző eltolások Jegyzettömb karbantartásáért, valamint a legutóbbi popping.
 
 > [!NOTE]
-> Lapozófájl csak lemezkép search (Keresés/képek /), és nem kép insights vagy trendekkel képek (/ képek/trendek) vonatkozik.
+> Lapozófájl a csak lemezkép search (Keresés/képek /), és nem hasznos képadatok vagy a felkapott képek (/ képek/népszerű) vonatkozik.

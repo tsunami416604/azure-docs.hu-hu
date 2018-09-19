@@ -10,12 +10,12 @@ ms.service: billing
 ms.topic: article
 ms.date: 09/11/2018
 ms.author: byvinyal
-ms.openlocfilehash: d179acae2053b2365c010c33cc061d29559be0cf
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: a24fc56bf455fbc487cb6f93e06678d52e5b1c0b
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45577683"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46295765"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Az Azure-előfizetésekre és -szolgáltatásokra vonatkozó korlátozások, kvóták és megkötések
 Ez a dokumentum felsorolja az egyes a leggyakrabban használt Microsoft Azure korlátok, kvóták néven is ismert. Ez a dokumentum jelenleg nem vonatkozik Azure-szolgáltatásokhoz. Az idő múlásával a lista fog kibontható vagy frissítve, hogy biztosítsák a platform további.
@@ -158,10 +158,14 @@ Az alábbi táblázat ismerteti a funkciókat és korlátokat az alapszintű, St
 [!INCLUDE [azure-firewall-limits](../includes/firewall-limits.md)]
 
 ### <a name="storage-limits"></a>Tárolási korlátok
-A tárfiókok korlátai további részletekért lásd: [Azure Storage méretezhetőségi és Teljesítménycéljai](storage/common/storage-scalability-targets.md).
-
 <!--like # storage accts -->
 [!INCLUDE [azure-storage-limits](../includes/azure-storage-limits.md)]
+
+[!INCLUDE [storage-limits-increase-include](../includes/storage-limits-increase-include.md)]
+
+A tárfiókok korlátai további részletekért lásd: [Azure Storage méretezhetőségi és Teljesítménycéljai](storage/common/storage-scalability-targets.md).
+
+#### <a name="storage-resource-provider-limits"></a>Tárolási szolgáltató erőforráskorlátok 
 
 [!INCLUDE [azure-storage-limits-azure-resource-manager](../includes/azure-storage-limits-azure-resource-manager.md)]
 

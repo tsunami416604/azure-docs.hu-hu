@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 0cbcb6095c59089008bd9a95b9bb0a3ddaa70a58
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 722ab51d0f591b8f16924d1d5661385267b7f0e6
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45984052"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46295155"
 ---
 # <a name="grant-locally-managed-partner-accounts-access-to-cloud-resources-using-azure-ad-b2b-collaboration"></a>Helyileg kezelt partner fiókok hozzáférést biztosít felhőbeli erőforrásokat az Azure AD B2B együttműködés segítségével
 
@@ -32,17 +32,17 @@ Ez a két gyakori módszer a következők:
 - Kijelöli a nem használt helyszíni Active Directory attribútumtár (például extensionAttribute1) az adatforrás-attribútum adatokként. 
 - Azt is megteheti származtatni a UserType attribútuma értéket más tulajdonságok alapján. Például szinkronizálandó minden felhasználó vendégként, ha azok a helyszíni Active Directory-UserPrincipalName attribútum végződik-e a tartomány *@partners.contoso.com*.
  
-Részletes attribútum követelmények, lásd: [UserType-szinkronizálás engedélyezése](../connect/active-directory-aadconnectsync-change-the-configuration.md#enable-synchronization-of-usertype). 
+Részletes attribútum követelmények, lásd: [UserType-szinkronizálás engedélyezése](../hybrid/how-to-connect-sync-change-the-configuration.md#enable-synchronization-of-usertype). 
 
 ## <a name="configure-azure-ad-connect-to-sync-users-to-the-cloud"></a>Az Azure AD Connect szinkronizálási felhasználóknak, hogy a felhő konfigurálása
 
 Keresse meg az egyedi attribútum, ezek a felhasználók a felhőbe, az Azure AD B2B-felhasználók szinkronizálása az Azure AD Connect konfigurálhat (vagyis a UserType rendelkező felhasználók = vendég). Egy engedélyezési szempontjából ezek a felhasználók olyan megkülönböztetni B2B-felhasználók az Azure AD B2B együttműködés meghívási folyamatot lettek létrehozva.
 
-Megvalósítás útmutatásért lásd: [UserType-szinkronizálás engedélyezése](../connect/active-directory-aadconnectsync-change-the-configuration.md#enable-synchronization-of-usertype).
+Megvalósítás útmutatásért lásd: [UserType-szinkronizálás engedélyezése](../hybrid/how-to-connect-sync-change-the-configuration.md#enable-synchronization-of-usertype).
 
 ## <a name="next-steps"></a>További lépések
 
 - [Az Azure Active Directory B2B együttműködés hibrid cégekhez és vállalkozásokhoz](hybrid-organizations.md)
 - [Támogatás B2B-felhasználók Azure AD-ben a hozzáférést a helyszíni alkalmazások](hybrid-cloud-to-on-premises.md)
-- Az Azure AD Connect áttekintése, lásd: [a helyszíni címtárak integrálása az Azure Active Directory](../connect/active-directory-aadconnect.md).
+- Az Azure AD Connect áttekintése, lásd: [a helyszíni címtárak integrálása az Azure Active Directory](../hybrid/whatis-hybrid-identity.md).
 

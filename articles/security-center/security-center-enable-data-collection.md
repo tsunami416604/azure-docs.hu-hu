@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/23/2018
+ms.date: 09/20/2018
 ms.author: rkarlin
-ms.openlocfilehash: 9043c6583a15d3be9d0d468e83a4bf79b3121794
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 313697d73d1e269691f1af4f021545049a907d66
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44304118"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46127091"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Az adatgyűjtést az Azure Security Centerben
 A Security Center adatokat gyűjt az Azure-beli virtuális gépek (VM) és a nem Azure-beli számítógépekről a biztonsági rések és fenyegetések monitorozásához. Az adatgyűjtés a Microsoft Monitoring Agent segítségével történik, amely a biztonsághoz kapcsolódó különböző konfigurációkat és eseménynaplókat olvas be a gépről, és elemzés céljából átmásolja az adatokat az Ön munkaterületére. Az ilyen adatok többek között: operációs rendszer típusa és verziója, az operációs rendszer naplói (Windows-eseménynaplók), a futó folyamatok, a gép nevét, az IP-címeket, és bejelentkezett felhasználó. A Microsoft Monitoring Agent az összeomlási memóriaképeket is átmásolja a munkaterülethez.
@@ -34,7 +34,8 @@ Ez a cikk a Microsoft Monitoring Agent telepítése, és állítsa be, amely tá
 > - Adatgyűjtés virtuálisgép-méretezési csoport esetében jelenleg nem támogatott.
 
 
-## <a name="enable-automatic-provisioning-of-microsoft-monitoring-agent"></a>A Microsoft Monitoring Agent automatikus kiépítésének engedélyezése     
+## A Microsoft Monitoring Agent automatikus kiépítésének engedélyezése <a name="auto-provision-mma"></a>
+
 Az adatok gyűjtését a gépek rendelkeznie kell a Microsoft Monitoring Agent telepítve van.  Az ügynök telepítése automatikusan lehet (ajánlott), vagy dönthet úgy, hogy telepítse kézzel az ügynököt.  
 
 >[!NOTE]
@@ -296,9 +297,9 @@ A Microsoft Monitoring Agent, manuálisan is telepítheti, így a Security Cente
 -   Az Automatikus kiépítés telepítésével kapcsolatos problémák azonosítására, lásd: [Monitoring agent állapotproblémái](security-center-troubleshooting-guide.md#mon-agent).
 
 -  Figyelési ügynök hálózati követelmények azonosításához tekintse meg a [hibaelhárítási monitoring agent hálózati követelményeit](security-center-troubleshooting-guide.md#mon-network-req).
--   A manuális előkészítési problémáinak azonosítása, lásd: [Operations Management Suite előkészítési problémáinak hibaelhárítása](https://support.microsoft.com/help/3126513/how-to-troubleshoot-operations-management-suite-onboarding-issues)
+-   A manuális előkészítési problémáinak azonosítása, lásd: [Operations Management Suite előkészítési problémáinak hibaelhárítása](https://support.microsoft.com/help/3126513/how-to-troubleshoot-operations-management-suite-onboarding-issues).
 
-- Nem Monitorozott virtuális gépek és számítógépek problémák azonosításához tekintse meg a [nem Monitorozott virtuális gépek és számítógépek](security-center-virtual-machine-protection.md#unmonitored-vms-and-computers)
+- Nem Monitorozott virtuális gépek és számítógépek problémák azonosításához tekintse meg a [nem Monitorozott virtuális gépek és számítógépek](security-center-virtual-machine-protection.md#unmonitored-vms-and-computers).
 
 ## <a name="next-steps"></a>További lépések
 Ez a cikk bemutatta, hogyan gyűjti az adatokat, és a Security Center működik az automatikus kiépítést. A Security Centerrel kapcsolatos további információkért olvassa el a következőket:

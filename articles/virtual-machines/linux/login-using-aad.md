@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 1ce03c55a346adf846619c50f09eb063e6b6f639
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 2201455477af2bd871f8e8e401536d45af4a02f7
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45734624"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46294652"
 ---
 # <a name="log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Jelentkezzen be egy Linux rendszerű virtuális gép az Azure-ban az Azure Active Directory-hitelesítés (előzetes verzió)
 
@@ -35,7 +35,7 @@ Nincsenek számos előnnyel jár, jelentkezzen be az Azure-beli, Linux rendszer�
   - A helyi rendszergazdai fiókok támaszkodás csökkentésével, nem kell aggódnia a hitelesítő adatok elvesztése/lopás, felhasználók gyenge azonosító adatokat stb.
   - A jelszó összetettségét és az Azure AD címtárhoz konfigurált élettartama jelszóházirendek segítségével biztonságos Linux virtuális gépek is.
   - További biztonságos jelentkezzen be az Azure virtual machines a multi-factor authentication is konfigurálhat.
-  - Jelentkezzen be a Linux rendszerű virtuális gépek az Azure Active Directory lehetővé teszi az ügyfelek által használt is működik [összevonási szolgáltatások](../../active-directory/connect/active-directory-aadconnectfed-whatis.md).
+  - Jelentkezzen be a Linux rendszerű virtuális gépek az Azure Active Directory lehetővé teszi az ügyfelek által használt is működik [összevonási szolgáltatások](../../active-directory/hybrid/how-to-connect-fed-whatis.md).
 
 - **Zökkenőmentes együttműködés:** With Role-Based hozzáférés-vezérlés (RBAC), is megadhat, aki bejelentkezhet egy adott virtuális gépre normál felhasználóként vagy rendszergazdai jogosultságokkal. Amikor a felhasználó csatlakozzon, vagy hagyja meg a csapat, frissítheti a virtuális gép megfelelő hozzáférést biztosít az RBAC házirend. Ez a tapasztalat jóval egyszerűbb, mint el kell távolítani a virtuális gépek eltávolítja a felesleges nyilvános SSH-kulcsokat, ha. Amikor az alkalmazottak elhagyják a szervezet és a felhasználói fiók le van tiltva vagy Azure AD-ből eltávolított, már nem rendelkeznek az erőforrásokhoz való hozzáférés.
 

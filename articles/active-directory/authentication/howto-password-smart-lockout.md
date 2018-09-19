@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: rogoya
-ms.openlocfilehash: b0fded9f5543d151091955c0b0d645bf9db16b7d
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 9ea91f70a72b812803a20244bb4445b76b133b0c
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39158583"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46296159"
 ---
 # <a name="azure-active-directory-smart-lockout"></a>Az Azure Active Directory intelligens zárolás
 
@@ -27,7 +27,7 @@ Intelligens zárolás mindig be van kapcsolva az Azure AD összes élvező ezeke
 
 Intelligens zárolás integrálható legyen az a hibrid telepítések esetén a helyszíni Active Directory-fiókok védelméhez a támadók kizárásuk Jelszókivonat-szinkronizálás és átmenő hitelesítés használatával. Az intelligens zárolási házirendek beállításával az Azure ad-ben megfelelően támadások is kiszűrte a helyszíni Active Directory elérése előtti.
 
-Használata esetén [átmenő hitelesítés](../connect/active-directory-aadconnect-pass-through-authentication.md), győződjön meg arról, hogy szüksége:
+Használata esetén [átmenő hitelesítés](../hybrid/how-to-connect-pta.md), győződjön meg arról, hogy szüksége:
 
    * Az Azure ad-ben fiókzárolás küszöbértéke **kevesebb** , mint az Active Directory számítógépfiókok zárolási küszöbértéke. Állítsa be az értékét, úgy, hogy az Active Directory számítógépfiókok zárolási küszöbértéke hosszabb, mint az Azure ad-ben Fiókzárolás küszöbe legalább két-három alkalommal. 
    * Az Azure ad-ben a fiókzárolás időtartama **másodpercek alatt** van **hosszabb** , mint az Active Directory Fiókzárolás időtartama után **perc**.

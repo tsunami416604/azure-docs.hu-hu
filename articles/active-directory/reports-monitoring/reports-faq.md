@@ -15,12 +15,12 @@ ms.component: report-monitor
 ms.date: 05/10/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: f1683321e23eff82e73dc9bb44941fc390633b8c
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: c2e131776fb9f2c5e87c363d0d57e655bc34448f
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42059175"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46294220"
 ---
 # <a name="azure-active-directory-reporting-faq"></a>Azure Active Directory jelentéskészítés – gyakori kérdések
 
@@ -169,3 +169,7 @@ Ez a cikk – gyakori kérdések az Azure Active Directory (Azure AD) jelentésk
 **Kérdés: a házirend nevére a jelentésben az összes be nem egyezik meg a szabályzat nevét, a hitelesítésszolgáltató. Hogy miért?**
 
 **V:** a házirend nevére a jelentésben az összes bejelentkezési alapul a hitelesítésszolgáltató házirend neve a bejelentkezés során. Ez a házirend neve a hitelesítésszolgáltató inkonzisztens lehet, ha frissítette a házirend nevére később, a bejelentkezés után.
+
+**K: a bejelentkezési le lett tiltva a feltételes hozzáférési szabályzat miatt, de a bejelentkezési Tevékenységjelentés jeleníti meg, hogy a bejelentkezés sikeres volt. Hogy miért?**
+
+**V:** jelenleg a bejelentkezési jelentésben előfordulhat, hogy nem pontos eredmények megjelenítése az Exchange ActiveSync-forgatókönyvek a feltételes hozzáférés alkalmazása esetén. Lehet esetek, amikor a bejelentkezési eredménye a jelentés megjeleníti a bejelentkezés sikeres, de a bejelentkezés ténylegesen nem sikerült, mert a feltételes hozzáférési szabályzat. 

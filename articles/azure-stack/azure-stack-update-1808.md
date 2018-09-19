@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/17/2018
+ms.date: 09/18/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 877ea4c143d74414c3d733c446da57060322b11d
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 1e2a3221b6db5becbea49aa6ec5fee7b145e8e03
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45982123"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46295394"
 ---
 # <a name="azure-stack-1808-update"></a>Azure Stack 1808 frissítése
 
@@ -112,16 +112,18 @@ Emellett tartalmazza a kockázatcsökkentési spekulatív végrehajtás kockáza
 
 - Az Azure Stack telepítése [1807 frissítése](azure-stack-update-1807.md) az Azure Stack 1808 frissítés alkalmazása előtt. 
 
-- Telepítse a legújabb elérhető [frissítést vagy gyorsjavítást verzió 1805](azure-stack-update-1805.md#post-update-steps).  
+- Telepítse a legújabb elérhető [frissítést vagy gyorsjavítást verzió 1807](azure-stack-update-1807.md#post-update-steps).  
   > [!TIP]  
   > Fizessen elő a következő *RRS* vagy *Atom* tartani az Azure Stack gyorsjavítások-hírcsatornák:
   > - RRS: https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/rss ... 
   > - Az Atom: https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/atom ...
 
 
-- A frissítés telepítésének megkezdése előtt futtassa [Test-AzureStack](azure-stack-diagnostic-test.md) ellenőrzése az Azure Stack állapotát, és hárítson el minden működési problémát talál, többek között az összes figyelmeztetések és hibák esetén. Emellett tekintse át az aktív riasztások, és oldja meg az esetleges beavatkozást igénylő.
+- A frissítés telepítésének megkezdése előtt futtassa [Test-AzureStack](azure-stack-diagnostic-test.md) ellenőrzése az Azure Stack állapotát, és hárítson el minden működési problémát talál, többek között az összes figyelmeztetések és hibák esetén. Emellett tekintse át az aktív riasztások, és oldja meg az esetleges beavatkozást igénylő.  
 
 ### <a name="known-issues-with-the-update-process"></a>A frissítési folyamat ismert problémái
+
+- Futtatásakor [Test-AzureStack](azure-stack-diagnostic-test.md) a 1808 frissítés után az alaplapi felügyeleti vezérlő (BMC) figyelmeztető üzenet jelenik meg. Biztonságosan figyelmen kívül hagyhatja ezt a figyelmeztetést.
 
 - <!-- 2468613 - IS --> Ez a frissítés telepítése során láthatja a címmel riasztások *hiba – a sablon typu FaultType UserAccounts.New hiányzik.*  Ezek a riasztások nyugodtan figyelmen kívül hagyhatja. A frissítés telepítésének befejezése után ezek a riasztások automatikusan bezáródik.
 
@@ -130,12 +132,9 @@ Emellett tartalmazza a kockázatcsökkentési spekulatív végrehajtás kockáza
 - <!-- 2830461 - IS --> Bizonyos körülmények között, ha egy frissítéshez a figyelmet, a megfelelő riasztás lehetséges, hogy nem hozható létre. A pontos állapota továbbra is megjelennek a portálon, és nem változik.
 
 ### <a name="post-update-steps"></a>Frissítés utáni lépések
+Ez a frissítés telepítése után bármely alkalmazandó gyorsjavítások telepítéséről. További információt a következő cikkeket, megtekintése, valamint a [karbantartási szabályzat](azure-stack-servicing-policy.md). 
+- [KB 4464226 – az Azure Stack gyorsjavítás az Azure Stack gyorsjavítás 1.1808.1.99]( https://support.microsoft.com/help/4464226)
 
-*Nincsenek nem frissítés 1808 frissítés utáni lépéseket.*
-
-<!-- After the installation of this update, install any applicable Hotfixes. For more information view the following knowledge base articles, as well as our [Servicing Policy](azure-stack-servicing-policy.md).  
- - [Link to KB]()  
- -->
 
 ## <a name="known-issues-post-installation"></a>Ismert problémák (telepítés utáni)
 

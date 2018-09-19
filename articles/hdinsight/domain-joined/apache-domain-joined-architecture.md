@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/30/2018
-ms.openlocfilehash: d5132cf2414045ca1343354215b2a4564f696190
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: efdc9cfbbe9a78571e0a56437e512d0cbbc18b3e
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43044770"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46297272"
 ---
 # <a name="plan-azure-domain-joined-hadoop-clusters-in-hdinsight"></a>Azure-tartományhoz csatlakoztatott Hadoop-fürtök tervezése a HDInsightban
 
@@ -61,7 +61,7 @@ További információkért lásd: [konfigurálása tartományhoz csatlakoztatott
 
 Ha egy helyszíni Active Directory-példányból vagy összetettebb Active Directory-beállításokat a tartomány, ezeket az Azure AD-identitások szinkronizálhatók az Azure AD Connect használatával. Engedélyezheti, hogy az Active Directory-bérlőre az Azure Active Directory tartományi Szolgáltatásokban. 
 
-Mivel Kerberos jelszókivonatokat alapul, kell [Jelszókivonat-szinkronizálás az Azure Active Directory tartományi szolgáltatások engedélyezése](../../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md). Ha összevonási az Active Directory összevonási szolgáltatások (AD FS) használ, igény szerint állíthat be Jelszókivonat-szinkronizálás biztonsági abban az esetben az AD FS-infrastruktúra sikertelen lesz. További információkért lásd: [Jelszókivonat-szinkronizálás és az Azure AD Connect-szinkronizálás engedélyezése](../../active-directory/connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md). 
+Mivel Kerberos jelszókivonatokat alapul, kell [Jelszókivonat-szinkronizálás az Azure Active Directory tartományi szolgáltatások engedélyezése](../../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md). Ha összevonási az Active Directory összevonási szolgáltatások (AD FS) használ, igény szerint állíthat be Jelszókivonat-szinkronizálás biztonsági abban az esetben az AD FS-infrastruktúra sikertelen lesz. További információkért lásd: [Jelszókivonat-szinkronizálás és az Azure AD Connect-szinkronizálás engedélyezése](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md). 
 
 Használatával a helyszíni Active Directory vagy az IaaS virtuális gépek önmagában, az Active Directory nélkül az Azure AD és az Azure AD DS-ben, a beállítás nem támogatott a tartományhoz csatlakoztatott HDInsight-fürtök.
 

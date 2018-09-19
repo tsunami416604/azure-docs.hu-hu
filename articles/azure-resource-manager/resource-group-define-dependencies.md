@@ -14,17 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/05/2018
 ms.author: tomfitz
-ms.openlocfilehash: 5b4d8317d565528f896bf6823ddaefd010d0a845
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 308ab9d35e07c8376fb183c794fcad77a74a1df9
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39528629"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46295563"
 ---
 # <a name="define-the-order-for-deploying-resources-in-azure-resource-manager-templates"></a>A rendelés üzembe erőforrásokat az Azure Resource Manager-sablonok meghatározása
 Egy adott erőforráshoz lehet más erőforrások, amelyek már léteznie kell az erőforrás üzembe van helyezve. Például egy SQL server léteznie kell az SQL-adatbázis üzembe helyezése előtt. Ezt a kapcsolatot definiálhat egy erőforrást, mint a többi erőforrástól függ-e megjelölésével. A függőséget határoz meg a **dependsOn** elem, vagy a **referencia** függvény. 
 
 A Resource Manager kiértékeli az erőforrások közötti függőségeket, majd azokat függőségi sorrendben üzembe helyezi. Ha az erőforrások között nincs függőségi viszony, akkor a Resource Manager párhuzamosan helyezi üzembe azokat. Csak kell határozhat meg telepített erőforrások függőségeinek ugyanazt a sablont. 
+
+Foglalkozó oktatóanyagért lásd: [oktatóanyag: Azure Resource Manager-sablonok létrehozása a tőle függő erőforrások](./resource-manager-tutorial-create-templates-with-dependent-resources.md).
 
 ## <a name="dependson"></a>dependsOn
 A sablonon belül a dependsOn elem lehetővé teszi egy erőforrás egy függő egy vagy több erőforrást kell definiálni. Az érték lehet egy kívánt erőforrás nevét tartalmazó vesszővel tagolt lista. 
@@ -164,6 +166,8 @@ Erőforrás-kezelő körkörös függőségi azonosítja a sablon érvényesít�
 További információ a értékelése a telepítési sorrendet, és a függőségi hibák megoldása: [hibáinak elhárítása a közös Azure-beli hibák az Azure Resource Manager](resource-manager-common-deployment-errors.md).
 
 ## <a name="next-steps"></a>További lépések
+
+* Go-oktatóanyagot, tekintse meg [oktatóanyag: Azure Resource Manager-sablonok létrehozása a tőle függő erőforrások](./resource-manager-tutorial-create-templates-with-dependent-resources.md).
 * Üzembe helyezés során függőségek hibaelhárítással kapcsolatos tudnivalókért lásd: [hibáinak elhárítása a közös Azure-beli hibák az Azure Resource Manager](resource-manager-common-deployment-errors.md).
 * Az Azure Resource Manager-sablonok létrehozásával kapcsolatos további információkért lásd: [sablonok készítése](resource-group-authoring-templates.md). 
 * A sablonban rendelkezésre álló függvények listája: [sablonfüggvények](resource-group-template-functions.md).

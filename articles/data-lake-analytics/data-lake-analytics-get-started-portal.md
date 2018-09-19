@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: b1584d16-e0d2-4019-ad1f-f04be8c5b430
 ms.topic: conceptual
 ms.date: 03/21/2017
-ms.openlocfilehash: 0830f4a6cffb8c1b2dacc8452e52477bb3a3ec91
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 1e6c71a68c4357d82d086f3e2ca098e4039def5a
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43039368"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46295757"
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-the-azure-portal"></a>Az Azure Data Lake Analytics használatának első lépései az Azure Portalon
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
@@ -27,7 +27,7 @@ Az oktatóanyag elindításához **Azure-előfizetéssel** kell rendelkeznie. L�
 
 ## <a name="create-a-data-lake-analytics-account"></a>Data Lake Analytics-fiók létrehozása
 
-A következő lépésben egyidejűleg hozhat létre fiókot a Data Lake Analytics és a Data Lake Store szolgáltatáshoz.  Ez az egyszerű lépés csupán 60 másodpercet vesz igénybe.
+Most létrehozhat egy Data Lake Analytics és a egy Azure Data Lake Storage Gen1 fiókkal egy időben.  Ez az egyszerű lépés csupán 60 másodpercet vesz igénybe.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Kattintson az **Erőforrás létrehozása** >  **Adatok + analitika** > **Data Lake Analytics** elemre.
@@ -36,14 +36,14 @@ A következő lépésben egyidejűleg hozhat létre fiókot a Data Lake Analytic
    * **Előfizetés:** Válassza ki az Analytics-fiókhoz használt Azure-előfizetést.
    * **Erőforráscsoport**. Válasszon ki egy meglévő Azure-erőforráscsoportot, vagy hozzon létre egy újat.
    * **Hely**. Válasszon egy Azure-adatközpontot az Azure Data Lake Analytics-fiókhoz.
-   * **Data Lake Store**: Az útmutatót követve hozzon létre egy új Data Lake Store-fiókot, vagy válasszon ki egy már meglévőt. 
+   * **Data Lake Storage Gen1**: az útmutatót követve hozzon létre egy új Data Lake Storage Gen1 fiókot, vagy válasszon ki egy meglévőt. 
 4. Igény szerint tarifacsomagot is választhat a Data Lake Analytics-fiókhoz.
 5. Kattintson a **Create** (Létrehozás) gombra. 
 
 
 ## <a name="your-first-u-sql-script"></a>Az első U-SQL-szkript
 
-A következő szöveg egy igen egyszerű U-SQL-szkript. Az egyetlen funkciója, hogy meghatároz egy kisebb adatkészletet a szkriptben, amelyet aztán egy `/data.csv` nevű fájlként kiír a Data Lake Store-ba.
+A következő szöveg egy igen egyszerű U-SQL-szkript. Azt a meghatároz egy kisebb adatkészletet a szkriptben, és ezután írja az adatkészletet az alapértelmezett Data Lake Storage Gen1 fiók nevű fájl `/data.csv`.
 
 ```
 @a  = 

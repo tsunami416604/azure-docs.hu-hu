@@ -12,12 +12,12 @@ ms.date: 09/14/2018
 ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro
-ms.openlocfilehash: 77b49a050724cbf4666ca5253cc1fa518c441e62
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: ac9783d970af96242266a787071ec831ef5c0df8
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45732532"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46296906"
 ---
 # <a name="how-to-sign-up-for-azure-active-directory-as-an-organization"></a>Útmutató: Azure Active Directory szervezetként regisztrál
 Regisztráljon az Azure Active Directory (Azure AD) egy új Microsoft Azure-előfizetés használatával:
@@ -36,5 +36,11 @@ Regisztráljon az Azure Active Directory (Azure AD) egy új Microsoft Azure-elő
 
 - [A helyszíni identitás-infrastruktúrát használhat a felhőben](../connect/active-directory-aadconnect.md)
 
+<<<<<<< HEAD
+* [A Microsoft Azure blog](https://azure.microsoft.com/blog/)
+* [Mi az Azure AD?](active-directory-whatis.md)
+* [A helyszíni identitás-infrastruktúrát használhat a felhőben](../hybrid/whatis-hybrid-identity.md)
+=======
 - [A Microsoft Azure blog](https://azure.microsoft.com/blog/)
+>>>>>>> 73f447b1499ba1f189efb6832ad759f1230e55a2
 

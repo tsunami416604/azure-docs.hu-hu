@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/17/2018
 ms.topic: conceptual
-ms.openlocfilehash: 01ef5fd70b1c919c5aa2a7afbb6e46558a80b1f3
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 7971a5aeadd2b2edaa43da8bacae9743937ce30e
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44717336"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46127346"
 ---
 # <a name="customize-the-remote-monitoring-solution-accelerator"></a>A távoli figyelési megoldásgyorsító testreszabása
 
@@ -35,7 +35,7 @@ A helyi felhasználói felület fejlesztési környezet beállítása a folyamat
     az network nsg rule update --name SSH --nsg-name {your solution name}-nsg --resource-group {your solution name} --access Allow
     ```
 
-    SSH-hozzáférés csak engedélyezze a fejlesztés és tesztelés során. Ha engedélyezi az SSH- [újra minél hamarabb tiltsa le,](../security/azure-security-network-security-best-practices.md#disable-rdpssh-access-to-azure-virtual-machines).
+    SSH-hozzáférés csak engedélyezze a fejlesztés és tesztelés során. Ha engedélyezi az SSH- [újra minél hamarabb tiltsa le,](../security/azure-security-network-security-best-practices.md#disable-rdpssh-access-to-virtual-machines).
 
 1. Az Azure Portal vagy a [az CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) nevét és a virtuális gép nyilvános IP-cím megkereséséhez. Példa:
 

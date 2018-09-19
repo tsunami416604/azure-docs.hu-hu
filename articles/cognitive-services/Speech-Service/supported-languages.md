@@ -1,5 +1,5 @@
 ---
-title: Beszédszolgáltatás támogatott nyelvek – a Microsoft Cognitive Services
+title: Beszédszolgáltatás támogatott nyelvek – Azure Cognitive Services
 description: A beszédfelismerési szolgáltatás által támogatott nyelvek listáját.
 titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
@@ -9,16 +9,16 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 04/28/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 704534ed50e12e7f9290cb321ad3b9e1b99117d5
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: a4307ee0ff210dafee5afe51bd9cb90db9be22e5
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44377888"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46295428"
 ---
 # <a name="supported-languages-for-speech-service"></a>Beszédszolgáltatás támogatott nyelvei
 
-Speech services különböző funkciók különböző nyelvekhez támogatottak. Az alábbi táblázat összegzi a nyelvi támogatás.
+Beszédfelismerési szolgáltatás különböző funkciók különböző nyelvekhez támogatottak. A következő táblázat összefoglalja a nyelvi támogatás.
 
 ## <a name="speech-to-text"></a>Diktálás
 
@@ -105,24 +105,24 @@ ja-JP | japán |Nő | "A Microsoft Server beszéd szöveg-beszéd átalakítás 
 | | |Férfi | "A Microsoft Server beszéd szöveg-beszéd átalakítás Voice (ja-JP, Ichiro, Apollo)"
 | | |Nő | "A Microsoft Server beszéd szöveg-beszéd átalakítás Voice (ja-JP, HarukaRUS)"
 ko-KR | koreai |Nő | "A Microsoft Server beszéd szöveg Speech Voice (ko-KR, HeamiRUS)"
-MS-saját | maláj|Férfi | "A Microsoft Server beszéd szöveg-beszéd átalakítás Voice (ms-saját, Rizwan)"
-nb-NO | norvég|Nő | "A Microsoft Server beszéd szöveg-beszéd átalakítás Voice (nb-NO, HuldaRUS)"
-NL-NL | holland|Nő | "A Microsoft Server beszéd szöveg-beszéd átalakítás Voice (nl-NL, HannaRUS)"
-pl-PL | lengyel|Nő | "A Microsoft Server beszéd szöveg-beszéd átalakítás Voice (pl-PL, PaulinaRUS)"
-pt-BR | portugál (brazíliai)|Nő | "A Microsoft Server beszéd szöveg-beszéd átalakítás Voice (pt-BR, HeloisaRUS)"
+MS-saját | maláj | Férfi | "A Microsoft Server beszéd szöveg-beszéd átalakítás Voice (ms-saját, Rizwan)"
+nb-NO | norvég | Nő | "A Microsoft Server beszéd szöveg-beszéd átalakítás Voice (nb-NO, HuldaRUS)"
+NL-NL | holland | Nő | "A Microsoft Server beszéd szöveg-beszéd átalakítás Voice (nl-NL, HannaRUS)"
+pl-PL | lengyel | Nő | "A Microsoft Server beszéd szöveg-beszéd átalakítás Voice (pl-PL, PaulinaRUS)"
+pt-BR | portugál (brazíliai) | Nő | "A Microsoft Server beszéd szöveg-beszéd átalakítás Voice (pt-BR, HeloisaRUS)"
 | | |Férfi | "A Microsoft Server beszéd szöveg-beszéd átalakítás Voice (pt-BR, Daniel, Apollo)"
-PT-PT | portugál (általános)|Nő | "A Microsoft Server beszéd szöveg-beszéd átalakítás Voice (pt-PT, HeliaRUS)"
-ro-RO | román|Férfi | "A Microsoft Server beszéd szöveg Speech Voice (ro-RO, Andrei)"
+PT-PT | portugál (általános) | Nő | "A Microsoft Server beszéd szöveg-beszéd átalakítás Voice (pt-PT, HeliaRUS)"
+ro-RO | román | Férfi | "A Microsoft Server beszéd szöveg Speech Voice (ro-RO, Andrei)"
 ru-RU |orosz| Nő | "A Microsoft Server beszéd szöveg-beszéd átalakítás Voice (ru-RU, Irina, Apollo)"
 | | |Férfi | "A Microsoft Server beszéd szöveg-beszéd átalakítás Voice (ru-RU, Pavel, Apollo)"
 | | |Nő | "A Microsoft Server beszéd szöveg-beszéd átalakítás Voice (ru-RU, EkaterinaRUS)"
-SK-SK | szlovák|Férfi | "A Microsoft Server beszéd szöveg-beszéd átalakítás Voice (sk-SK, Filip)"
-sl SI | szlovén|Férfi | "A Microsoft Server beszéd szöveg-beszéd átalakítás Voice (sl SI, Lado)"
-SV-SE | svéd|Nő | "A Microsoft Server beszéd szöveg Speech Voice (sv-SE, HedvigRUS)"
-TA-India | tamil (India) |Férfi | "A Microsoft Server beszéd szöveg Speech Voice (ta-IN, Valluvar)"
-cs-EDIK | thai|Férfi | "A Microsoft Server beszéd szöveg-beszéd átalakítás Voice (cs-EDIK, Pattara)"
-tr-TR |török| Nő | "A Microsoft Server beszéd szöveg-beszéd átalakítás Voice (tr-TR, SedaRUS)"
-vi-VN | vietnami|Férfi | "A Microsoft Server beszéd szöveg-beszéd átalakítás Voice (vi-VN, egy)"
+SK-SK | szlovák | Férfi | "A Microsoft Server beszéd szöveg-beszéd átalakítás Voice (sk-SK, Filip)"
+sl SI | szlovén | Férfi | "A Microsoft Server beszéd szöveg-beszéd átalakítás Voice (sl SI, Lado)"
+SV-SE | svéd | Nő | "A Microsoft Server beszéd szöveg Speech Voice (sv-SE, HedvigRUS)"
+TA-India | tamil (India) | Férfi | "A Microsoft Server beszéd szöveg Speech Voice (ta-IN, Valluvar)"
+cs-EDIK | thai | Férfi | "A Microsoft Server beszéd szöveg-beszéd átalakítás Voice (cs-EDIK, Pattara)"
+tr-TR |török | Nő | "A Microsoft Server beszéd szöveg-beszéd átalakítás Voice (tr-TR, SedaRUS)"
+vi-VN | vietnami | Férfi | "A Microsoft Server beszéd szöveg-beszéd átalakítás Voice (vi-VN, egy)"
 zh-CN | Kínai (Spanyolország)|Nő | "A Microsoft Server beszéd szöveg Speech Voice (zh-CN, HuihuiRUS)"
 | | |Nő | "A Microsoft Server beszéd szöveg Speech Voice (zh-CN, Yaoyao, Apollo)"
 | | |Férfi | "A Microsoft Server beszéd szöveg Speech Voice (zh-CN, Kangkang, Apollo)"
@@ -137,16 +137,16 @@ zh-TW | kínai (tajvani)|Nő | "A Microsoft Server beszéd szöveg Speech Voice 
 
 ### <a name="customization"></a>Testreszabás
 
-Hangalapú testreszabási amerikai angol (en-US), a kontinens kínai (zh-CN) és az olasz (it-IT) érhető el.
+Hangalapú testreszabási amerikai angol (en-US), kontinens kínai (zh-CN) és olasz (it-IT) érhető el.
 
 > [!NOTE]
-> Olasz hangalapú képzés, mint 2000 utterances adatkészlet kezdődik. Angol nyelvű kínai kétnyelvű modelleket is, mint 2000 utterances egy kezdeti adatkészlet használata támogatott.
+> Olasz hangalapú képzési egy be, mint 2000 utterances kezdődik. Angol nyelvű kínai kétnyelvű modellek is támogatottak egy kezdeti be, mint 2000 kimondott szöveg.
 
 ## <a name="speech-translation"></a>Beszédfordítás
 
-A **beszédalapú fordítási** API különböző nyelveket támogat a speech beszéd és hang-szöveg transzformációs fordítás. A Forrásnyelv mindig a beszédfelismerő nyelvi táblából kell lennie. A cél elérhető nyelvek attól függ,-e a fordítási cél a speech vagy szöveget.
+A **beszédalapú fordítási** API különböző nyelveket támogat a speech beszéd és hang-szöveg transzformációs fordítás. A Forrásnyelv mindig az alábbi táblázat a beszédfelismerő nyelvi kell lennie. A cél elérhető nyelvek attól függ,-e a fordítási cél a speech vagy szöveget.
 
-A REST API-k nyelvek végpont programozott módon segítségével nyelvek listáját szerezheti be. A lista tartalmazza az egyes nyelvi kódját, valamint a nyelv nevének angol nyelven – vagy bármilyen más támogatott nyelv. Ebben a listában, amikor új nyelv elérhetővé válik a Microsoft Translator szolgáltatás frissül.
+Nyelvek végpont a REST API-k használatával programozott módon szerezheti nyelvek listáját. A lista tartalmazza az egyes nyelvi kódját, valamint a nyelv nevének az angol, vagy bármilyen egyéb támogatott nyelven. Ebben a listában, amikor új nyelv elérhetővé válik a Microsoft Translator szolgáltatás frissül.
 
 ### <a name="speech-languages"></a>Beszédnyelvek lekérdezése
 

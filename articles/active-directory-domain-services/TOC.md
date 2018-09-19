@@ -43,6 +43,7 @@
 ### [Szervezeti egység létrehozása egy felügyelt tartományon](active-directory-ds-admin-guide-create-ou.md)
 ### [Csoportosan felügyelt szolgáltatásfiók létrehozása felügyelt tartományon](active-directory-ds-create-gmsa.md)
 ### [Csoportházirend-kezelése felügyelt tartományon](active-directory-ds-admin-guide-administer-group-policy.md)
+### [Jelszószabályzatok konfigurálása felügyelt tartományon](active-directory-ds-password-policy.md)
 ## [Virtuális hálózat kiválasztása](active-directory-ds-networking.md)
 ## Alkalmazások üzembe helyezése
 ### [Profilszinkronizálás támogatásának beállítása SharePoint-kiszolgálóhoz](active-directory-ds-enable-sharepoint-profile-sync.md)

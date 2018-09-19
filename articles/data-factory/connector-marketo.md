@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: jingwang
-ms.openlocfilehash: 0b5f801e9bd3ca18c2eaa166ae9a1a32e69fd9e3
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: efbc020f482a46621eb5c3e3cd6137d1114da6de
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45630852"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46129607"
 ---
-# <a name="copy-data-from-marketo-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával Marketo
+# <a name="copy-data-from-marketo-using-azure-data-factory-preview"></a>Adatok másolása az Azure Data Factory (előzetes verzió) használatával Marketo
 
 Ez a cikk ismerteti az Azure Data Factory a másolási tevékenység használatával adatokat másol a Marketo. Épül a [másolási tevékenység áttekintése](copy-activity-overview.md) cikket, amely megadja a másolási tevékenység általános áttekintést.
 

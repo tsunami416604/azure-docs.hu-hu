@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: 21d6ed8a21e4c9273446eff6b0057214c715873f
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: 9d07f6cd5fa6a2df82dc2cbf9c1ebe08e5941acf
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391725"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46125017"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql"></a>Biztonsági mentés és visszaállítás az Azure Database for MySQL-hez
 
@@ -66,6 +66,8 @@ Szükség lehet a következő tranzakciónapló biztonsági mentését kell venn
 ### <a name="geo-restore"></a>Georedundáns helyreállítás
 
 Visszaállíthatja egy kiszolgáló egy másik Azure-régió a szolgáltatás elérhető, ha már konfigurálta a kiszolgáló georedundáns biztonsági mentésekhez. A GEO-visszaállítás az alapértelmezett helyreállítási beállítást esetén a kiszolgáló nem érhető el a régióban, ahol a kiszolgáló üzemel incidens miatt. Ha egy nagy méretű incidens egy elérhetetlensége régió eredményez az adatbázis-alkalmazását, egy kiszolgálóhoz az összes kiszolgáló helyreállíthatja a georedundáns biztonsági másolatokból. Ha egy biztonsági mentés készül, és ha replikálása másik régióba késleltetés van. Ez a késleltetés is lehet akár egy órát, tehát ha katasztrófa történik, is lehet másolatot az adatvesztést egy óra.
+
+Geo-visszaállítás során a server-beállítások módosíthatók számítási generáció, a virtuális mag, a biztonsági másolat megőrzési idejének és a biztonsági mentési adatredundanciával kapcsolatos lehetőségek közé tartozik. Változó tarifacsomag (alapszintű, általános célú, vagy az optimalizált memóriájú) vagy a geo-visszaállítás során a tároló mérete nem támogatott.
 
 ### <a name="perform-post-restore-tasks"></a>Hajtsa végre visszaállítás utáni feladatok
 

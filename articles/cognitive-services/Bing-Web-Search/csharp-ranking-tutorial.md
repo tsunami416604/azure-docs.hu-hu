@@ -1,21 +1,22 @@
 ---
-title: Rang használatával a keresési eredmények |} A Microsoft Docs
+title: Rang használatával a keresési eredmények megjelenítése
+titleSuffix: Azure Cognitive Services
 description: Bemutatja, hogyan használhatja a Bing RankingResponse választ sorrend a keresési eredmények megjelenítéséhez.
 services: cognitive-services
 author: bradumbaugh
-manager: bking
+manager: cgronlun
 ms.assetid: 2575A80C-FC74-4631-AE5D-8101CF2591D3
 ms.service: cognitive-services
 ms.component: bing-web-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/08/2017
 ms.author: brumbaug
-ms.openlocfilehash: 0dd3a2057e73adda3224e7cebe7c492572f94105
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: 3e55830fcfdbea91581a75fcfc343fd522485c5a
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "41988472"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46123402"
 ---
 # <a name="build-a-console-app-search-client-in-c"></a>Hozhat létre egy konzol alkalmazás keresési ügyfélalkalmazást a C#-ban
 
@@ -45,8 +46,8 @@ Adjon nevet az alkalmazásnak **MyConsoleSearchApp**, és kattintson a **OK**.
 
 JSON.net lehetővé teszi, hogy az API által visszaadott JSON-válaszok. Adja hozzá a NuGet-csomagot a projekthez:
 
-- A **Megoldáskezelőben** kattintson a jobb gombbal a projektre, és válassza ki a **NuGet-csomagok kezelése...** . 
-- Az a **Tallózás** fülre, keressen rá a `Newtonsoft.Json`. Válassza ki a legújabb verziót, és kattintson **telepítése**. 
+- A **Megoldáskezelőben** kattintson a jobb gombbal a projektre, és válassza ki a **NuGet-csomagok kezelése...** .
+- Az a **Tallózás** fülre, keressen rá a `Newtonsoft.Json`. Válassza ki a legújabb verziót, és kattintson **telepítése**.
 - Kattintson a **OK** gombot a **változások áttekintése** ablak.
 - Zárja be a Visual Studio lap címe **NuGet: MyConsoleSearchApp**.
 
@@ -60,7 +61,7 @@ Ebben az oktatóanyagban támaszkodik a `System.Web` sestavení. Vegyen fel egy 
 
 ## <a name="add-some-necessary-using-statements"></a>Néhány szükséges utasításokkal hozzáadása
 
-A jelen oktatóanyagban szereplő kód szükséges három további utasításokkal. Adja hozzá a következő utasításokat a meglévő alábbi `using` utasítást a elejéhez **Program.cs**: 
+A jelen oktatóanyagban szereplő kód szükséges három további utasításokkal. Adja hozzá a következő utasításokat a meglévő alábbi `using` utasítást a elejéhez **Program.cs**:
 
 ```csharp
 using System.Web;
@@ -145,7 +146,7 @@ Ez a módszer:
 
 ## <a name="display-ranked-results"></a>Az első megjelenített eredmények
 
-Mielőtt bemutató rangsorolt sorrendben jelenjenek meg az eredmények, mintául szolgáló webes keresés válasz tekintse meg: 
+Mielőtt bemutató rangsorolt sorrendben jelenjenek meg az eredmények, mintául szolgáló webes keresés válasz tekintse meg:
 
 ```json
 {
@@ -171,7 +172,7 @@ Mielőtt bemutató rangsorolt sorrendben jelenjenek meg az eredmények, mintául
         },
 
         ...
-        
+
         ],
         "someResultsRemoved" : true
     },
@@ -184,7 +185,7 @@ Mielőtt bemutató rangsorolt sorrendben jelenjenek meg az eredmények, mintául
         }
 
         ...
-        
+
         ]
     },
     "rankingResponse" : {
@@ -220,7 +221,7 @@ Mielőtt bemutató rangsorolt sorrendben jelenjenek meg az eredmények, mintául
 }
 ```
 
-A `rankingResponse` JSON-objektum ([dokumentáció](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#rankingresponse)) ismerteti a keresési eredmények kívánt megjelenítési sorrendjét. Legalább egy, a következő, a rangsorolt csoportokat tartalmazza: 
+A `rankingResponse` JSON-objektum ([dokumentáció](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#rankingresponse)) ismerteti a keresési eredmények kívánt megjelenítési sorrendjét. Legalább egy, a következő, a rangsorolt csoportokat tartalmazza:
 
 - `pole`: A keresési eredményeket a legfeltűnőbb kezelés lekérése (például a fent a által látható és az oldalsávot).
 - `mainline`: A keresési eredmények megjelennek a által.
@@ -273,7 +274,7 @@ static void DisplayAllRankedResults(Newtonsoft.Json.Linq.JObject responseObjects
 Ez a módszer:
 
 - Keresztül hurkokat a `rankingResponse` csoportokat, amelyek a válasz tartalmazza
-- Az elemek megjelenítése az egyes csoportokban meghívásával `DisplaySpecificResults(...)` 
+- Az elemek megjelenítése az egyes csoportokban meghívásával `DisplaySpecificResults(...)`
 
 A **Program.cs**, adja hozzá az alábbi két módszer:
 

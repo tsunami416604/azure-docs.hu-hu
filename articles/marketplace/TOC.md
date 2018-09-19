@@ -20,7 +20,7 @@
 #### [Containers](./marketplace-containers.md)
 #### [Tanácsadói szolgáltatás](./consulting-services.md)  
 #### [Office 365, Dynamics 365 és Power BI közzétételi útmutató](./appsource-offer-publishing-guide.md)
-#### [A Marketplace kipróbálása az Azure Active Directory használatával](./enable-trial-using-azure-ad.md)
+#### [Microsoft AppSource- és Azure Marketplace-termékoldal engedélyezése az Azure Active Directory használatával](./enable-appsource-marketplace-using-azure-ad.md)
 
 ### [Vállalatfejlesztés a piactéren](./grow-your-business-with-azure-marketplace.md)  
 #### [Előnyben részesített megoldások](./preferred-solutions.md) 

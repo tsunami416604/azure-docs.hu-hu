@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: a24988bb9866dde72769107f1c45fc461c039f9a
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 9873347683fdfabd93083b44d034a8d9d5bcaeef
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39161057"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46297537"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>A meglévő hálózati házirend-kiszolgáló infrastruktúra integrálása az Azure multi-factor Authentication
 
@@ -105,7 +105,7 @@ Ez a lépés már valószínűleg a bérlő teljes, de, fontos ellenőrizni, hog
 2. Válassza ki **az Azure Active Directory** > **az Azure AD Connect**
 3. Győződjön meg arról, hogy a szinkronizálási állapota **engedélyezve** , és hogy a legutóbbi szinkronizálás kevesebb, mint egy órával ezelőtt történt.
 
-Ha elindít egy új ciklikus szinkronizálási, us utasításokat kell az [Azure AD Connect szinkronizálása: ütemező](../connect/active-directory-aadconnectsync-feature-scheduler.md#start-the-scheduler).
+Ha elindít egy új ciklikus szinkronizálási, us utasításokat kell az [Azure AD Connect szinkronizálása: ütemező](../hybrid/how-to-connect-sync-feature-scheduler.md#start-the-scheduler).
 
 ### <a name="determine-which-authentication-methods-your-users-can-use"></a>Határozza meg, mely a felhasználók használhatják a hitelesítési módszerek
 

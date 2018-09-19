@@ -1,7 +1,7 @@
 ---
-title: Office 365 függő entitás megbízhatóságához módosítás aláírás-kivonatoló algoritmus |} Microsoft Docs
-description: Ezen a lapon útmutatást nyújt a SHA-képzési algoritmus összevonási megbízhatósági kapcsolat, és az Office 365 módosítása
-keywords: SHA1, SHA256, O365, összevonási, aadconnect, az AD FS, az ad fs, a módosítás sha összevonási megbízhatósági kapcsolat, a megbízható függő entitás
+title: Aláírás-kivonatoló algoritmus módosítása a függő entitás megbízhatóságához az Office 365 |} A Microsoft Docs
+description: Ezen a lapon útmutatást nyújt a összevonási megbízhatósági kapcsolatot, és az Office 365 SHA algoritmus módosítása
+keywords: SHA1, SHA256, O365, összevonási, aadconnect, AD FS, az ad fs, a módosítás sha, összevonási megbízhatósági kapcsolat, a függő entitás megbízhatóságának
 services: active-directory
 documentationcenter: ''
 author: anandyadavmsft
@@ -15,38 +15,38 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2016
 ms.author: anandy
-ms.openlocfilehash: ec7eee36888d825d65335db590731103aabbf5c2
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 5352c76d2f41adef8fae29d3f60204fb05546ddc
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
-ms.locfileid: "26598962"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46298047"
 ---
-# <a name="change-signature-hash-algorithm-for-office-365-relying-party-trust"></a>Aláírás-kivonatoló algoritmus az Office 365 megbízható függő entitás módosítása
+# <a name="change-signature-hash-algorithm-for-office-365-relying-party-trust"></a>Az Office 365, a függő entitás megbízhatóságának aláírás-kivonatoló algoritmus módosítása
 ## <a name="overview"></a>Áttekintés
-Active Directory összevonási szolgáltatások (AD FS) a Microsoft Azure Active Directoryban annak érdekében, hogy azok ne lehessen illetéktelenül jogkivonatai jelentkezik. Az aláírás SHA1 vagy SHA-256-alapú lehet. Az Azure Active Directory mostantól támogatja az SHA-256 algoritmussal aláírt jogkivonatokat, és javasolt SHA256 a legmagasabb szintű biztonság a jogkivonat-aláíró algoritmus beállítást. Ez a cikk ismerteti a jogkivonat-aláíró algoritmus szint a biztonságosabb SHA-256 beállításához szükséges lépéseket.
+Az Active Directory összevonási szolgáltatások (AD FS) a Microsoft Azure Active Directory, győződjön meg arról, hogy azok ne lehessen illetéktelenül jogkivonatai jelentkezik. Az aláírás SHA1, SHA256 vagy alapulhat. Az Azure Active Directory mostantól támogatja az SHA256 algoritmussal aláírt jogkivonatokat, és azt javasoljuk, hogy a jogkivonat-aláíró algoritmus a legmagasabb szintű biztonság SHA256 beállítást. Ez a cikk azt ismerteti, hogy a jogkivonat-aláíró algoritmus szintű biztonságosabb SHA256 beállításához szükséges lépéseket.
 
 >[!NOTE]
->A Microsoft azt javasolja, hogy SHA-256 használatát a algoritmusként biztonságosabb, mint az SHA1, de SHA1 még mindig egy támogatott beállítás a jogkivonatok aláírásához.
+>A Microsoft, az algoritmus a jogkivonatok aláírásához biztonságosabb, mint a SHA1, de SHA1 továbbra is egy támogatott beállítás SHA256 használatát javasolja.
 
 ## <a name="change-the-token-signing-algorithm"></a>A jogkivonat-aláíró algoritmus módosítása
-Miután beállította az aláírási algoritmus az alábbi két folyamatok egyike, az AD FS aláírja a jogkivonatok az Office 365 megbízható függő entitás SHA-256. Nem kell további konfigurációs módosításokat, és ez a változás nincs hatással van a elérését Office 365- vagy más Azure AD-alkalmazások.
+Miután beállította az aláírási algoritmus az egyik az alábbi két folyamatot, az AD FS jogkivonatok az Office 365, a függő entitás megbízhatóságának, SHA256-jelentkezik. Nem kell további konfigurációs módosításokat, és ez a változás nem befolyásolja a lehetőség az Office 365 vagy más Azure AD-alkalmazások eléréséhez.
 
 ### <a name="ad-fs-management-console"></a>AD FS felügyeleti konzol
-1. Nyissa meg az elsődleges AD FS-kiszolgáló az AD FS felügyeleti konzolon.
-2. Bontsa ki az AD FS csomópontot, és kattintson a **függő entitás Megbízhatóságai**.
-3. Kattintson a jobb gombbal az Office 365 vagy az Azure függő entitás megbízhatóságához, és válassza ki **tulajdonságok**.
-4. Válassza ki a **speciális** fülre, és válassza ki a biztonságos kivonatoló algoritmus SHA-256.
+1. Nyissa meg az AD FS felügyeleti konzol az elsődleges AD FS-kiszolgálón.
+2. Bontsa ki az AD FS-csomópontot, és kattintson a **függő entitás Megbízhatóságai**.
+3. Kattintson a jobb gombbal az Office 365/Azure-beli függő entitás megbízhatóságához, és válassza ki **tulajdonságok**.
+4. Válassza ki a **speciális** lapra, és válassza ki a biztonságos kivonatoló algoritmus SHA256.
 5. Kattintson az **OK** gombra.
 
-![SHA-256 aláírási algoritmus--MMC](./media/active-directory-aadconnectfed-sha256guidance/mmc.png)
+![SHA256 aláíró algoritmus – MMC](./media/active-directory-aadconnectfed-sha256guidance/mmc.png)
 
-### <a name="ad-fs-powershell-cmdlets"></a>AD FS PowerShell-parancsmagok
-1. Egyetlen AD FS-kiszolgálón nyissa meg a Powershellt a rendszergazdai jogosultságokkal.
-2. Állítsa be a biztonságos kivonatoló algoritmus használatával a **Set-AdfsRelyingPartyTrust** parancsmag.
+### <a name="ad-fs-powershell-cmdlets"></a>Az AD FS PowerShell-parancsmagok
+1. Bármely AD FS-kiszolgálón nyissa meg a Powershellt a rendszergazdai jogosultságokkal.
+2. Állítsa be a biztonságos kivonatoló algoritmus használatával a **Set-AdfsRelyingPartyTrust** parancsmagot.
    
    <code>Set-AdfsRelyingPartyTrust -TargetName 'Microsoft Office 365 Identity Platform' -SignatureAlgorithm 'http://www.w3.org/2001/04/xmldsig-more#rsa-sha256'</code>
 
-## <a name="also-read"></a>Is
-* [Az Azure AD Connect Office 365-megbízhatóság javítása](connect/active-directory-aadconnect-federation-management.md#repairthetrust)
+## <a name="also-read"></a>Emellett olvassa el
+* [Az Azure AD Connect a Office 365 bizalmi kapcsolat javítása](hybrid/how-to-connect-fed-management.md#repairthetrust)
 

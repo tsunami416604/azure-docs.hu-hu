@@ -8,14 +8,14 @@ manager: craigg
 ms.service: sql-database
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/14/2018
+ms.date: 09/18/2018
 ms.author: carlrab
-ms.openlocfilehash: 84fb916a5620bc7d91f01b9aebfd3eae8346f6bf
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: e14f65c16706f8285b6ce390e75f95ea1a8bede6
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45729435"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46295505"
 ---
 # <a name="prepay-for-sql-database-compute-resources-with-azure-sql-database-reserved-capacity"></a>Fizessen elő az SQL-adatbázis számítási erőforrásokat, hogy az Azure SQL Database szolgáltatás számára fenntartott kapacitás
 
@@ -65,6 +65,10 @@ Például tegyük fel, hogy futtatja egy általános célú, Gen5 – 16 virtuá
 Ha megszakítja az SQL Database szolgáltatás számára fenntartott kapacitás foglalás, előfordulhat, hogy a 12 %-os korai lemondási díj levonása után. A befizetett a legalacsonyabb ár a vételár vagy a jelenlegi árát a Foglalás alapulnak. A befizetett $ 50 000 / év korlátozódnak. A visszatérítés kap a fennmaradó időarányos egyenleget a 12 %-os korai lemondási díj. Visszavonást, nyissa meg az Azure Portalon, és válassza a Foglalás **visszatérítés** támogatási kérelmet szeretne létrehozni.
 
 Az SQL Database szolgáltatás számára fenntartott kapacitás foglalás váltson egy másik régióba, erőforrás típusa, szolgáltatási rétegben vagy kifejezés kell, ha egy másik, amely egyenlő vagy nagyobb értékű foglalás tudjon cserélni. Az új foglalás az időszak kezdő dátum nem jelenik meg a kicserélt foglalási. Az 1 vagy 3 éves távon elindítja az új Foglalás létrehozásakor. Egy exchange kérést, nyissa meg a foglalást az Azure Portalon, és válassza **Exchange** támogatási kérelmet szeretne létrehozni.
+
+## <a name="vcore-size-flexibility"></a>virtuális mag mérete rugalmasság
+
+virtuális mag mérete rugalmasan segít kisebbre vagy nagyobbra méretezhetők a teljesítményszint és a régiót, a lefoglalt kapacitás juttatás elvesztése nélkül. Az SQL Database szolgáltatás számára fenntartott kapacitás emellett lehetőséget biztosít átmenetileg áthelyezheti a gyakori elérésű adatbázisok készletek és az önálló adatbázisok közötti (belül az azonos régióban és a teljesítmény szint) a normál működés részeként a lefoglalt kapacitás elvesztése nélkül előnyeit. Egy nem alkalmazott puffer tartja a foglalás, hatékonyan kezelheti a teljesítmény-használatnak a költségvetés túllépése nélkül.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -17,12 +17,12 @@ ms.date: 09/11/2018
 ms.author: celested
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: ba4d8d46a6423a932eceea7fbe20ae985445c6a3
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 08e817b24d4190b6d7f774dd8c812d04e89c1e5a
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44718882"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46296753"
 ---
 # <a name="customizing-claims-issued-in-the-saml-token-for-enterprise-applications-in-azure-active-directory"></a>Az Azure Active Directory vállalati alkalmazásokhoz SAML-jogkivonatban kiadott jogcímek testreszabása
 Még ma az Azure Active Directory a legtöbb vállalati alkalmazásokat, beleértve az Azure AD-alkalmazásgyűjtemény, valamint a egyéni alkalmazásokat előre integrált alkalmazások támogatja a egyszeri bejelentkezéshez. Amikor egy felhasználó hitelesíti magát egy alkalmazást az SAML 2.0 protokoll használatával az Azure AD-n keresztül, az Azure AD egy tokent az alkalmazást (egy HTTP POST) küld. És ezt követően az alkalmazás ellenőrzi és használja a jogkivonatot a felhasználó nem kér a felhasználónévvel és jelszóval bejelentkezni. Ezek a SAML-jogkivonatok adatokra a "jogcímek" néven felhasználó tartalmaznak.
@@ -73,7 +73,7 @@ Ha például kíván küldeni a számára, amely a felhasználó tartozik a szer
 > Ha egy adott felhasználó nincs érték, egy kijelölt attribútumban tárolja, majd, hogy nincs folyamatban jogcímet a jogkivonat.
 
 > [!TIP]
-> A **user.onpremisesecurityidentifier** és **user.onpremisesamaccountname** csak akkor támogatott, ha a felhasználói adatok szinkronizálása a helyszíni Active Directory használatával a [Azure ad-ben Eszköz csatlakoztatása](../active-directory-aadconnect.md).
+> A **user.onpremisesecurityidentifier** és **user.onpremisesamaccountname** csak akkor támogatott, ha a felhasználói adatok szinkronizálása a helyszíni Active Directory használatával a [Azure ad-ben Eszköz csatlakoztatása](../hybrid/whatis-hybrid-identity.md).
 
 ## <a name="restricted-claims"></a>Korlátozott jogcímek
 

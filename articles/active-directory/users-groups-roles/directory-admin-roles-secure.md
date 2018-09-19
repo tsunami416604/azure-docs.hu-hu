@@ -13,12 +13,12 @@ ms.workload: identity
 ms.component: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer, MarkMorow
-ms.openlocfilehash: ead6202b0365df770382077618795cd6b6e57cd2
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 55ce6398d89e56f92874d0ec135377d2a08cf075
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44346729"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46297809"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Az Azure AD felhőalapú és hibrid telepítések emelt szintű hozzáférés biztonságossá tétele
 
@@ -159,7 +159,7 @@ Győződjön meg arról, hogy minden felhasználó jelentkezett be a rendszergaz
 
 #### <a name="turn-on-password-hash-synchronization"></a>Kapcsolja be a Jelszókivonat-szinkronizálás
 
-A Jelszókivonat-szinkronizálás funkciója felhasználói jelszókivonatok egy helyszíni Active Directory-példányból egy felhőbeli Azure-bA a kivonatok szinkronizálását használt AD-példányt. Még akkor is, ha úgy dönt, hogy összevonási használata az Active Directory összevonási szolgáltatások (AD FS) vagy az egyéb identitás-szolgáltatóktól, akkor igény szerint állítsa be a Jelszókivonat-szinkronizálás biztonsági esetben a helyszíni infrastruktúrát, például az AD, vagy az ADFS-kiszolgálók sikertelen, vagy válik átmenetileg nem érhető el. Ez lehetővé teszi a felhasználók számára, hogy jelentkezzen be a szolgáltatás ugyanazt a jelszót, amely azok használatával jelentkezzen be a helyszíni AD-példányt. Ezenkívül lehetővé teszi Identity Protection hitelesítő adatokkal való visszaélés észlelése ezen jelszókivonatokat összehasonlításával ismert, hogy sérült, ha egy felhasználó múlttal rendelkezik a saját e-mail címet és az egyéb szolgáltatásaira nincs csatlakoztatva az Azure AD-jelszó jelszavakat.  További információkért lásd: [Jelszókivonat-szinkronizálás és az Azure AD Connect-szinkronizálás megvalósítása](./../connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md).
+A Jelszókivonat-szinkronizálás funkciója felhasználói jelszókivonatok egy helyszíni Active Directory-példányból egy felhőbeli Azure-bA a kivonatok szinkronizálását használt AD-példányt. Még akkor is, ha úgy dönt, hogy összevonási használata az Active Directory összevonási szolgáltatások (AD FS) vagy az egyéb identitás-szolgáltatóktól, akkor igény szerint állítsa be a Jelszókivonat-szinkronizálás biztonsági esetben a helyszíni infrastruktúrát, például az AD, vagy az ADFS-kiszolgálók sikertelen, vagy válik átmenetileg nem érhető el. Ez lehetővé teszi a felhasználók számára, hogy jelentkezzen be a szolgáltatás ugyanazt a jelszót, amely azok használatával jelentkezzen be a helyszíni AD-példányt. Ezenkívül lehetővé teszi Identity Protection hitelesítő adatokkal való visszaélés észlelése ezen jelszókivonatokat összehasonlításával ismert, hogy sérült, ha egy felhasználó múlttal rendelkezik a saját e-mail címet és az egyéb szolgáltatásaira nincs csatlakoztatva az Azure AD-jelszó jelszavakat.  További információkért lásd: [Jelszókivonat-szinkronizálás és az Azure AD Connect-szinkronizálás megvalósítása](../hybrid/how-to-connect-password-hash-synchronization.md).
 
 #### <a name="require-multi-factor-authentication-mfa-for-users-in-all-privileged-roles-as-well-as-exposed-users"></a>Többtényezős hitelesítés (MFA) szükséges az összes kiemelt szerepkörű felhasználók, valamint a kitett felhasználók
 

@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: jingwang
-ms.openlocfilehash: dc467d35f1eb05169eee89899f17e7cee4702017
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 6d752eb5d638171aa510bbbf17a197eddd2b6f60
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45630496"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46127207"
 ---
-# <a name="copy-data-from-paypal-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával PayPal
+# <a name="copy-data-from-paypal-using-azure-data-factory-preview"></a>Adatok másolása az Azure Data Factory (előzetes verzió) használatával PayPal
 
 Ez a cikk az Azure Data Factory a másolási tevékenység használatával adatokat másol a PayPal módját ismerteti. Épül a [másolási tevékenység áttekintése](copy-activity-overview.md) cikket, amely megadja a másolási tevékenység általános áttekintést.
 

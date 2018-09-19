@@ -1,53 +1,58 @@
 ---
-title: A Tudásbázis feltárása Service API metódus értelmezhetők |} Microsoft Docs
-description: Megtudhatja, hogyan használja a Interpret metódust a a Tudásbázis feltárása szolgáltatás (KES) API kognitív szolgáltatásban.
+title: Knowledge Exploration Service API-módszer – értelmezése
+titlesuffix: Azure Cognitive Services
+description: Ismerje meg, hogyan használható a értelmezése metódus az a Knowledge Exploration Service (KES) API.
 services: cognitive-services
 author: bojunehsu
-manager: stesp
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: knowledge-exploration
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: ef68d98dacf393abf8d030b9312217ea380947d2
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 45badbdbe1a7e1f2028a00d54458db35a4f7d440
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347094"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46128007"
 ---
 # <a name="interpret-method"></a>Módszer értelmezése
-A *értelmezhetők* módszer veszi természetes nyelvű lekérdezési karakterláncot, és formázott felhasználói leképezés nyelvtan és az index alapján értelmezéseket ad vissza.  Arra, hogy az interaktív keresési élményt, az ezt a módszert is hívható meg, mert minden karaktert is meg kell adni a felhasználó által a *teljes* paraméter értéke 1 javaslatok automatikus kitöltés engedélyezése.
+
+A *értelmezése* metódushoz a természetes nyelvű lekérdezési karakterláncot, és a formázott, nyelvtani és index adatokon alapuló felhasználói szándékot értelmezéseket ad vissza.  Ahhoz, hogy egy interaktív keresési funkciót, ez a módszer eltérő elnevezése lehet egyes karakterek megadásakor a felhasználó által beírt a *teljes* paraméter értéke 1, automatikus kiegészítés javaslatok engedélyezéséhez.
 
 ## <a name="request"></a>Kérés
+
 `http://<host>/interpret?query=<query>[&<options>]`
 
 Name (Név)|Érték| Leírás
 ----|----|----
-lekérdezés    | Szöveges karakterlánc | Felhasználó által megadott lekérdezés.  Ha teljes értéke 1, lekérdezés egy előtagot előállítása automatikus-végrehajtási konstrukciókat hibaként értelmezi.        
-végezze el | 0 (alapértelmezés) vagy 1 | 1 azt jelenti, hogy automatikus-végrehajtási javaslatok a nyelvtan és index adatok alapján jönnek létre.         
-count    | Szám (alapértelmezett = 10) | Értelmezéseket a visszatérési maximális száma.         
-offset   | Szám (alapértelmezett = 0) | Index első értelmezése való visszatéréshez.  Például *count = 2 & eltolás = 0* értelmezéseket 0 és 1 adja vissza. *Count = 2 & eltolás = 2* értelmezéseket a 2. és 3 adja vissza.       
-timeout  | Szám (alapértelmezett = 1000) | Időtúllépése milliszekundumban. Csak a időtúllépés letelte előtt található értelmezéseket adja vissza.
+lekérdezés    | Szöveges karakterlánc | Felhasználó által megadott lekérdezés.  Ha teljes értéke 1, lekérdezés létrehozni lekérdezési automatikus kiegészítését javaslatok előtagjaként is értelmezhető.        
+Hajtsa végre | 0 (alapértelmezés) vagy 1 | 1 azt jelenti, hogy automatikus kiegészítését javaslatok jönnek létre, nyelvtani és index adatok alapján.         
+count    | Szám (alapértelmezés = 10) | Maximális száma értelmezéseket ad vissza.         
+offset   | Szám (alapértelmezés = 0) | Az első értelmezése index való visszatéréshez.  Ha például *száma = 2 & eltolás = 0* 0 és 1 értelmezéseket ad vissza. *Count = 2 & eltolás = 2* 2. és 3 értelmezéseket ad vissza.       
+timeout  | Szám (alapértelmezés = 1000) | Időkorlát ezredmásodpercben. Csak a az időtúllépési letelte előtt található értelmezés adja vissza.
 
-Használja a *száma* és *eltolás* paraméterek, nagy számú eredmény szerezhető Növekményesen több kérés során.
+Használatával a *száma* és *eltolás* paraméterek, nagy számú eredményt szerezhetők be Növekményesen több kérelmeihez képest.
 
 ## <a name="response-json"></a>Válasz (JSON)
+
 JSONPath     | Leírás
 ---------|---------
-$.query |*lekérdezés* paramétert a kérésből.
-$.interpretations   |0 vagy további részleteket a felel meg a bemeneti lekérdezés szemben a nyelvtan tömbje.
-$.interpretations [\*] .logprob   |Relatív napló valószínűség értelmezése (< = 0).  Valószínűbb a magasabb értékkel.
-$.interpretations [\*] .parse |XML-karakterlánc, amely a lekérdezés részét képező összes értelmezését.
-$.interpretations [\*] .rules |A nyelvtan meghívott értelmezése során megadott legalább 1 szabályok tömbje.
-$.interpretations [\*] .rules [\*] .név    |A szabály nevét.
-$.interpretations [\*] .rules [\*] .output  |A szabályok szemantikai kimenete.
+$.query |*lekérdezés* paraméter a kérelemből.
+$.interpretations   |0 vagy további részleteket a egyezik a bemeneti lekérdezést a nyelvtani tömbje.
+$.interpretations [\*] .logprob   |Relatív log valószínűség értelmezése (< = 0).  A magasabb értékek valószínűbb.
+$.interpretations [\*] .parse |XML-karakterlánc, amely megjeleníti a lekérdezés minden egyes részét értelmezését.
+$.interpretations [\*] .rules |1 vagy több szabályok értelmezése során hív nyelvtani meghatározott tömbje.
+$.interpretations [\*] .rules [\*] .név    |a szabály nevét.
+$.interpretations [\*] .rules [\*] .output  |A szabály szemantikai kimenetét.
 $.interpretations [\*] .rules [\*]. output.type |A szemantikai kimeneti adattípus.
-$.interpretations [\*] .rules [\*]. output.value|A szemantikai kimeneti értéke.  
-$.aborted | Értéke TRUE, ha a kérelem túllépte az időkorlátot.
+$.interpretations [\*] .rules [\*]. output.value|A szemantikai kimeneti értékét.  
+$.aborted | IGAZ, ha a kérelem túllépte az időkorlátot.
 
-### <a name="parse-xml"></a>XML elemzése
-A parse XML jelzi a információkat, hogyan felelnek a nyelvtan a szabályokat, és az index attribútumok ellen (kész) lekérdezés.  Az alábbiakban a következő egy példa a academic kiadványok tartományból:
+### <a name="parse-xml"></a>XML feldolgozása
+
+A parse XML jelzi a (kész) lekérdezés információkat, hogyan illeszkedik a szintaxis szabályainak és az index attribútumainak szemben.  Az alábbi, az oktatási kiadványok tartományból. példa:
 
 ```xml
 <rule name="#GetPapers">
@@ -60,16 +65,17 @@ A parse XML jelzi a információkat, hogyan felelnek a nyelvtan a szabályokat, 
 </rule>
 ```
 
-A `<rule>` elem határoló a lekérdezés által megadott szabály megfelelő tartományon a `name` attribútum.  Ha a parse magában foglalja a nyelvtani szabály hivatkozások előfordulhat, hogy ágyazható.
+A `<rule>` elemének a tartományt a lekérdezésben, a szabály által megadott megfelelő határoló annak `name` attribútum.  Előfordulhat, hogy beágyazott, amikor a parse magában foglalja a gramatice szabályra mutató.
 
-A `<attr>` elem határoló a lekérdezés által megadott index attribútum megfelelő tartományon a `name` attribútum.  A bemeneti lekérdezés szinonimát jelentkezik az egyezés a `canonical` attribútum az indextől a szinonima megfelelő kanonikus értékét fogja tartalmazni.
+A `<attr>` elemének a tartományt a lekérdezésben az index attribútum által megadott megfelelő határoló annak `name` attribútum.  Amikor az egyezés a bemeneti lekérdezés, szinonima magában foglalja a `canonical` attribútum tartalmazza a canonical értéket a szinonima az indexből.
 
 ## <a name="example"></a>Példa
-Academic kiadványok példában a következő kérelem legfeljebb 2 automatikus-végrehajtási javaslatok "által írt cikkeket által jaime" előtag lekérdezés adja vissza:
+
+Az academic kiadványok példában a következő kérelmet értéket ad vissza, legfeljebb 2 automatikus kiegészítését javaslatok "tanulmányok szerint jaime" előtag lekérdezés:
 
 `http://<host>/interpret?query=papers by jaime&complete=1&count=2`
 
-A válasz tartalmazza a felső két ("count = 2"), amelyek befejezik a részleges lekérdezés "által írt cikkeket által jaime" valószínűleg értelmezéseket: "papers jaime teevan által" és "jaime zöld papers".  A generált szolgáltatás lekérdezés befejezésekhez helyett annak eldöntéséhez, hogy csak pontos megegyezik a Szerző "jaime", mert a kérés megadott "teljes = 1". Vegye figyelembe, hogy megfelelő-e a kanonikus érték "zöld j l" a "jamie zöld," szinonimát keresztül a parse jelöltük.
+A válasz tartalmazza az első két ("count = 2") legvalószínűbb értelmezések, amelyek befejezik a részleges lekérdezés "tanulmányok szerint jaime": "papers jaime teevan által" és "jaime zöld papers".  A szolgáltatás létrehozott lekérdezés befejezésekből helyett csak a mérlegeli pontos egyezés a Szerző "jaime", mert a kérelemben megadott "teljes = 1". Vegye figyelembe, hogy a canonical érték "zöld j l" a "jamie zöld" szinonimát keresztül egyezik-e a parse leírtak szerint.
 
 
 ```json
@@ -106,7 +112,7 @@ A válasz tartalmazza a felső két ("count = 2"), amelyek befejezik a részlege
 }
 ```  
 
-Ha szemantikai kimenet típusa "lekérdezés", mint ebben a példában a megfelelő objektumok lekérhető úgy, hogy *output.value* való a [ *kiértékelése* ](evaluateMethod.md) keresztül a API*kifejezés* paraméter.
+Típus esetén a szemantikus kimeneti "lekérdezés", mint ebben a példában a megfelelő objektumokat is lekérdezhetők átadásával *output.value* , a [ *kiértékelése* ](evaluateMethod.md) API-n keresztül a *expr* paraméter.
 
 `http://<host>/evaluate?expr=Composite(AA.AuN=='jaime teevan')`
   

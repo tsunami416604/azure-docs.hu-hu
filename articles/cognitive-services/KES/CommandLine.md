@@ -1,23 +1,26 @@
 ---
-title: Knowledge Exploration Service parancssori felület |} A Microsoft Docs
-description: A KES parancssori felület használatával hozhat létre a strukturált adatok index és a nyelvi fájlokat, és telepítheti őket a Microsoft Cognitive Services webszolgáltatásként.
+title: Parancssori felület – Knowledge Exploration Service API
+titlesuffix: Azure Cognitive Services
+description: A parancssori felület használatával hozhat létre a strukturált adatok index és a nyelvi fájlokat, és telepítheti őket a webszolgáltatásként.
 services: cognitive-services
 author: bojunehsu
-manager: stesp
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: knowledge-exploration
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/24/2016
 ms.author: paulhsu
-ms.openlocfilehash: 71a6f5ac93e5605182a55de1bae9a99c5c3eddf4
-ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
+ms.openlocfilehash: 7ec2282317019275b15a8e506753408c75a68561
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39136355"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46127149"
 ---
 # <a name="command-line-interface"></a>Parancssori felület
-A KES parancssori felület lehetővé teszi a strukturált adatok index és a nyelvi fájlokat készíthet és helyezhet üzembe a őket webszolgáltatásként.  Az általános szintaxist használ: `kes.exe <command> <required_args> [<optional_args>]`.  Futtathat `kes.exe` listázza a parancsok, argumentumok nélkül, vagy `kes.exe <command>` a megadott parancs elérhető argumentumok listájának megjelenítéséhez.  Az alábbiakban az elérhető parancsok listája:
+
+A Knowledge Exploration Service (KES) parancssori felület lehetővé teszi a strukturált adatok index és a nyelvi fájlokat készíthet és helyezhet üzembe a őket webszolgáltatásként.  Az általános szintaxist használ: `kes.exe <command> <required_args> [<optional_args>]`.  Futtathat `kes.exe` listázza a parancsok, argumentumok nélkül, vagy `kes.exe <command>` a megadott parancs elérhető argumentumok listájának megjelenítéséhez.  Az alábbiakban az elérhető parancsok listája:
+
 * build_index
 * build_grammar
 * host_service

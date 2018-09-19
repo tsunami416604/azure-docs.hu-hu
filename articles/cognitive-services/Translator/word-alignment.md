@@ -1,44 +1,45 @@
 ---
-title: Word-igazítás információkat a Microsoft Translator szöveg API-val |} Microsoft Docs
-description: A Microsoft Translator szöveg API word igazítási adatok fogadására.
+title: A Word igazítás információ – Translator Text API
+titlesuffix: Azure Cognitive Services
+description: A Translator Text API word igazítás adatok fogadására.
 services: cognitive-services
 author: Jann-Skotdal
-manager: chriswendt1
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: v-jansko
-ms.openlocfilehash: 9d8284db61235284ec0d5a1594c34687c89560e9
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 16334dbcb4631bd927069620e73c1c4474ff99fa
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347690"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46126258"
 ---
-# <a name="how-to-receive-word-alignment-information"></a>Szeretne kapni a word igazítás információk
+# <a name="how-to-receive-word-alignment-information"></a>Word igazítás információk fogadása
 
-## <a name="receiving-word-alignment-information"></a>Word igazítás információk fogadása
-Igazítás információk fogadását, a fordítás módszert használja, és adja meg a választható includeAlignment értékét.
+## <a name="receiving-word-alignment-information"></a>Rendszer adatokat küldjön a word igazítása
+Igazítás információk fogadását, a fordítás módszert használja, és a választható includeAlignment paramétert.
 
-## <a name="alignment-information-format"></a>Igazítás információ formátuma
-Igazítás adja vissza a rendszer a következő formátumban, az összes szó a forrás-karakterlánc. Minden szó információi van szóközzel elválasztva, beleértve a nem szóközökkel elválasztott nyelvek (parancsfájlok) például a kínai:
+## <a name="alignment-information-format"></a>Zarovnání információ formátuma
+Igazítás, egy karakterlánc értékét a forrás minden szót a következő formátumban adja vissza. Az információk minden egyes szó egy szóközt, beleértve a nem szóközzel elválasztott nyelvet (szkriptek) kínai választják el:
 
 [[SourceTextStartIndex]: [SourceTextEndIndex] – [TgtTextStartIndex]: [TgtTextEndIndex]] *
 
-Példa igazítás karakterlánc: "0:0-7:10 1:2 – 11:20 3:4 – 0:3, 3:4 – 4:6 5:5 – 21:21".
+Példa igazítás karakterlánc: "0:0-7:10 1:2-11:20 3:4 – 0:3 3:4-4:6 5:5 – 21:21".
 
-Ez azt jelenti a kettőspont elválasztja start end index, a kötőjel elválasztja a nyelveket, és szóköz a szavakat. Egy word előfordulhat, hogy megfelel-e nulla, egy vagy több szavak más nyelven, és lehet, hogy a igazított szavak nem összefüggő. Nincs igazítás információ nem érhető el, a igazítás elem üres lesz. A metódus visszaadja ebben az esetben nem történt hiba.
+Más szóval a kettőspont elválasztja a kezdő és záró index, a dash elkülöníti a nyelveket, és terület a szavakat osztja szét. Több szóból előfordulhat, hogy összhangba nulla, egy vagy több szóból más nyelven, és lehet, hogy a igazított szavak nem összefüggő. Zarovnání információ nem érhető el, ha az igazítási elem üres lesz. A metódus nincs hiba ebben az esetben adja vissza.
 
 ## <a name="restrictions"></a>Korlátozások
-Igazítás csak akkor kapunk a nyelvi párok egy része számára ezen a ponton:
-* az olyan egyéb nyelvek; angol
-* angol, egyszerűsített kínai, hagyományos kínai, és lett angol kivételével bármely más nyelven történő
-* Japán, koreai történő, illetve a japán, koreai nem kap igazítás információkat a mondatok előre összeállított fordítás esetén. Példa egy előre összeállított fordítás: "Ez egy tesztművelet", "Gyönyörű,", és egyéb nagy sűrűségű mondatokat.
+Zarovnání csak ezen a ponton visszaadott a nyelvi párok részéhez:
+* a más nyelvre; angol nyelven
+* az angol, egyszerűsített kínai, hagyományos kínai és lett az angol nyelvű bármilyen más nyelven
+* Japán, koreai, illetve japán, koreai nem kap igazítás információk jelzésének fordítás a mondat helyett szerepel-e. Jelzésének fordítását. például a "Ez a tesztüzenet", "Szeretek,", és más nagy gyakoriságú mondatokat.
 
 ## <a name="example"></a>Példa
 
-Példa JSON
+Példa JSON-ban
 
 ```json
 [

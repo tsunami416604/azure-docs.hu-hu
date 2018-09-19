@@ -1,6 +1,6 @@
 ---
-title: A Data Lake Store adatok elemzése a Power BI használatával |} Microsoft Docs
-description: Azure Data Lake Store-ban tárolt adatok elemzésére a Power BI használatával
+title: Adatok elemzése az Azure Data Lake Storage Gen1 Power BI használatával |} A Microsoft Docs
+description: Az Azure Data Lake Storage Gen1 tárolt adatok elemzése a Power BI használatával
 services: data-lake-store
 documentationcenter: ''
 author: nitinme
@@ -12,90 +12,90 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 37cde17703a15ba5659814e1b65a54d24b67edad
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 5db9d18a31af4d6b407fcd9172ac80fc6f93f085
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34624787"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46297179"
 ---
-# <a name="analyze-data-in-data-lake-store-by-using-power-bi"></a>A Data Lake Store adatok elemzése a Power BI használatával
-Ebben a cikkben megtudhatja a Power BI Desktop segítségével elemezheti és az Azure Data Lake Store-ban tárolt adatok megjelenítése.
+# <a name="analyze-data-in-azure-data-lake-storage-gen1-by-using-power-bi"></a>Adatok elemzése az Azure Data Lake Storage Gen1 Power BI használatával
+Ebben a cikkben megtudhatja hogyan az Azure Data Lake Storage Gen1 tárolt adatok elemzése és megjelenítése a Power BI Desktop használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
 
 * **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
-* **Azure Data Lake Store-fiók**. Kövesse [Az Azure Data Lake Store használatának első lépései az Azure Portal használatával](data-lake-store-get-started-portal.md) című témakör utasításait. Ez a cikk feltételezi, hogy már létrejött egy Data Lake Store-fiókot, úgynevezett **mybidatalakestore**, és fel kell tölteni egy minta adatfájl (**Drivers.txt**) azt. Ezt a mintafájlt letölthető [Azure Data Lake Git-tárház](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/Drivers.txt).
-* **A Power BI Desktopban**. Letöltheti ezt a [Microsoft Download Center](https://www.microsoft.com/en-us/download/details.aspx?id=45331). 
+* **A Data Lake Storage Gen1 fiók**. Kövesse az utasításokat, [Azure Data Lake Storage Gen1 használatának első lépései az Azure portal használatával](data-lake-store-get-started-portal.md). Ez a cikk feltételezi, hogy már létrehozott egy Data Lake Storage Gen1 nevű fiókot **myadlsg1**, és a egy minta adatfájl feltöltése (**Drivers.txt**) azt. Ezt a mintafájlt a letölthető [Azure Data Lake Git-tárház](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/Drivers.txt).
+* **Power BI Desktop**. Letöltheti ezt a [Microsoft Download Center](https://www.microsoft.com/en-us/download/details.aspx?id=45331). 
 
 ## <a name="create-a-report-in-power-bi-desktop"></a>Jelentés létrehozása a Power BI Desktopban
-1. Indítsa el a Power BI Desktop a számítógépen.
-2. Az a **Home** menüszalag, kattintson a **adatok beolvasása**, és kattintson a több. Az a **adatok beolvasása** párbeszédpanel, kattintson a **Azure**, kattintson a **Azure Data Lake Store**, és kattintson a **Connect**.
+1. Indítsa el a Power BI Desktopban a számítógépen.
+2. Az a **kezdőlap** menüszalagra, majd **adatok lekérése**, és kattintson a további. Az a **adatok lekérése** párbeszédpanelen kattintson a **Azure**, kattintson a **Azure Data Lake Store**, és kattintson a **Connect**.
    
-    ![Data Lake Store-csatlakozás](./media/data-lake-store-power-bi/get-data-lake-store-account.png "Data Lake Store-csatlakozás")
-3. Ha megjelenik egy párbeszédpanel, az összekötő fázisban vannak fejlesztés alatt álló kapcsolatos, dönthet, hogy továbbra is.
-4. Az a **Microsoft Azure Data Lake Store** párbeszédpanelen adja meg a Data Lake Store-fiók URL-CÍMÉT, és kattintson **OK**.
+    ![Csatlakozhat a Data Lake Storage Gen1](./media/data-lake-store-power-bi/get-data-lake-store-account.png "csatlakozhat a Data Lake Storage Gen1")
+3. Ha megjelenik egy párbeszédpanel, az összekötő folyamatban van egy fejlesztési fázisban kapcsolatos, részvétel továbbra is.
+4. Az a **Azure Data Lake Store** párbeszédpanelen adja meg a Data Lake Storage Gen1 fiók URL-CÍMÉT, és kattintson **OK**.
    
-    ![A Data Lake Store URL-cím](./media/data-lake-store-power-bi/get-data-lake-store-account-url.png "a Data Lake Store URL-címe")
-5. A következő párbeszédpanelen, kattintson a **bejelentkezés** való bejelentkezés Data Lake Store-fiókba. A szervezete bejelentkezési oldalára irányítja. Kövesse az utasításokat bejelentkezni a fiókjába.
+    ![A Data Lake Storage Gen1 URL-cím](./media/data-lake-store-power-bi/get-data-lake-store-account-url.png "Data Lake Storage Gen1 URL-címe")
+5. A következő párbeszédpanelen, kattintson a **jelentkezzen be a** bejelentkezni a Data Lake Storage Gen1 fiókjába. Átirányítjuk szervezete bejelentkezési oldal. Kövesse az utasításokat követve jelentkezzen be a fiókjába.
    
-    ![Jelentkezzen be a Data Lake Store](./media/data-lake-store-power-bi/get-data-lake-store-account-signin.png "jelentkezzen be a Data Lake Store")
-6. Miután sikeresen bejelentkezett, kattintson **Connect**.
+    ![Jelentkezzen be a Data Lake Storage Gen1](./media/data-lake-store-power-bi/get-data-lake-store-account-signin.png "jelentkezzen be a Data Lake Storage Gen1")
+6. Miután sikeresen bejelentkezett, kattintson a **Connect**.
    
-    ![Data Lake Store-csatlakozás](./media/data-lake-store-power-bi/get-data-lake-store-account-connect.png "Data Lake Store-csatlakozás")
-7. A következő párbeszédpanel a fájlt a Data Lake Store-fiók feltöltött jeleníti meg. Ellenőrizze az adatokat, majd kattintson **terhelés**.
+    ![Csatlakozhat a Data Lake Storage Gen1](./media/data-lake-store-power-bi/get-data-lake-store-account-connect.png "csatlakozhat a Data Lake Storage Gen1")
+7. A következő párbeszédpanel megjeleníti a Data Lake Storage Gen1 fiókjába feltöltött fájlt. Ellenőrizze az adatokat, majd kattintson **terhelés**.
    
-    ![Adatok betöltése az Data Lake Store](./media/data-lake-store-power-bi/get-data-lake-store-account-load.png "adatok betöltése a Data Lake Store-ból")
-8. Miután az adatok sikeresen betöltve a Power bi-ba, a következő mezők megjelenik-e a **mezők** fülre.
+    ![Adatok betöltése a Data Lake Storage Gen1](./media/data-lake-store-power-bi/get-data-lake-store-account-load.png "adatok betöltése a Data Lake Storage Gen1")
+8. Miután az adatok sikeresen betöltve a Power BI-ba, megjelenik a következő mezőket a **mezők** fülre.
    
-    ![Importált mezők](./media/data-lake-store-power-bi/imported-fields.png "importált mezők")
+    ![Mezők importált](./media/data-lake-store-power-bi/imported-fields.png "importált mezők")
    
-    Azonban megjelenítheti és elemezheti az adatokat, hogy azt inkább az adatok a következő mezők kiszolgálónként
+    Azonban jelenítheti meg és elemezheti az adatokat, hogy inkább az adatok érhetők el a következő mezők száma
    
-    ![Szükségeskonfiguráció-mezők](./media/data-lake-store-power-bi/desired-fields.png "szükséges mezők")
+    ![Szükséges mezők](./media/data-lake-store-power-bi/desired-fields.png "szükséges mezők")
    
-    A következő lépésekben frissítjük a lekérdezés konvertálni az importált adatokat a kívánt formátumban.
-9. Az a **Home** menüszalag, kattintson a **szerkesztése lekérdezések**.
+    A következő lépésben frissítjük a lekérdezés az importált adatok a kívánt formátumban.
+9. Az a **kezdőlap** menüszalagra, majd **lekérdezések szerkesztése**.
    
-    ![Szerkessze a lekérdezések](./media/data-lake-store-power-bi/edit-queries.png "lekérdezések szerkesztése")
-10. A lekérdezés-szerkesztő alatt a **tartalom** oszlopban kattintson **bináris**.
+    ![Lekérdezések szerkesztése](./media/data-lake-store-power-bi/edit-queries.png "lekérdezések szerkesztése")
+10. A Lekérdezésszerkesztőben, alatt a **tartalom** oszlopot, kattintson a **bináris**.
     
-    ![Szerkessze a lekérdezések](./media/data-lake-store-power-bi/convert-query1.png "lekérdezések szerkesztése")
-11. A fájl ikonjára, látni fogja a **Drivers.txt** feltöltött fájl. Kattintson jobb gombbal a fájlra, és kattintson a **CSV**.    
+    ![Lekérdezések szerkesztése](./media/data-lake-store-power-bi/convert-query1.png "lekérdezések szerkesztése")
+11. Láthatja, hogy egy fájl ikon jelenik meg, amely jelöli az **Drivers.txt** feltöltött fájlt. Kattintson jobb gombbal a fájlra, majd kattintson **CSV**.    
     
-    ![Szerkessze a lekérdezések](./media/data-lake-store-power-bi/convert-query2.png "lekérdezések szerkesztése")
-12. Alább látható módon kimenetnek kell megjelennie. Az adatok segítségével képi megjelenítéseket készíthet formátumú most érhető el.
+    ![Lekérdezések szerkesztése](./media/data-lake-store-power-bi/convert-query2.png "lekérdezések szerkesztése")
+12. Ahogy az alábbi kimenetnek kell megjelennie. Az adatok már elérhető használatával vizualizációkat hozhat létre olyan formátumban.
     
-    ![Szerkessze a lekérdezések](./media/data-lake-store-power-bi/convert-query3.png "lekérdezések szerkesztése")
-13. Az a **Home** menüszalag, kattintson a **zárja be, és alkalmazni**, és kattintson a **zárja be, és alkalmazni**.
+    ![Lekérdezések szerkesztése](./media/data-lake-store-power-bi/convert-query3.png "lekérdezések szerkesztése")
+13. Az a **kezdőlap** menüszalagra, majd **bezárásához és a alkalmazni**, és kattintson a **bezárásához és a alkalmazni**.
     
-    ![Szerkessze a lekérdezések](./media/data-lake-store-power-bi/load-edited-query.png "lekérdezések szerkesztése")
-14. Ha a lekérdezés frissül, a **mezők** lap megjeleníti a képi megjelenítéshez tartozó elérhető új mezők.
+    ![Lekérdezések szerkesztése](./media/data-lake-store-power-bi/load-edited-query.png "lekérdezések szerkesztése")
+14. A lekérdezés frissítése után a **mezők** lapon jelennek meg az új mezők vizuális megjelenítésre.
     
     ![Mezők frissítése](./media/data-lake-store-power-bi/updated-query-fields.png "mezők frissítése")
-15. Ossza meg velünk az illesztőprogramokat egy adott országban az egyes városban képviselő kördiagram létrehozása. Ehhez az szükséges, adja meg a következő beállításokat.
+15. Hozzunk létre, amelyek az illesztőprogramokat egy adott ország esetében minden egyes városban tortadiagram. Ehhez adja meg a következő beállításokat.
     
-    1. A képi megjelenítések lapján kattintson a tortadiagram a szimbólum.
+    1. A Vizualizációk lapon kattintson a kördiagramon.
        
-        ![A tortadiagram létrehozása](./media/data-lake-store-power-bi/create-pie-chart.png "kördiagram létrehozása")
-    2. Az oszlop használni fogjuk **oszlop 4** (a város neve) és **oszlop 7** (ország neve). Ezekben az oszlopokban a húzza **mezők** beállítást **képi megjelenítések** lapon a lent látható módon.
+        ![Tortadiagram létrehozása](./media/data-lake-store-power-bi/create-pie-chart.png "diagram létrehozása")
+    2. Az oszlop, amely használni fogjuk **oszlop 4** (az városa neve) és **oszlop 7** (ország neve). Húzza az ezeket az oszlopokat **mezők** lapról **Vizualizációk** lapon az alább látható módon.
        
-        ![Képi megjelenítéseket készíthet](./media/data-lake-store-power-bi/create-visualizations.png "képi megjelenítéseket készíthet")
-    3. A tortadiagram például az alábbihoz kell hasonlítania.
+        ![Vizualizációk létrehozása](./media/data-lake-store-power-bi/create-visualizations.png "Vizualizációk létrehozása")
+    3. A tortadiagram kell hasonlítania, mint például az alábbi képen látható.
        
-        ![A tortadiagram](./media/data-lake-store-power-bi/pie-chart.png "képi megjelenítéseket készíthet")
-16. Egy adott országban szintű Lapszűrők való kiválasztással most már megtekintheti a kijelölt ország minden városban illesztőprogramok száma. Például az a **képi megjelenítések** lap **szintű szűrők lapon**, jelölje be **brazíliai**.
+        ![Tortadiagram](./media/data-lake-store-power-bi/pie-chart.png "Vizualizációk létrehozása")
+16. Válassza ki az oldalszintű szűrőkkel egy adott országra, most már megtekintheti az egyes városokat a kiválasztott ország illesztőprogramok számát. Például alatt a **Vizualizációk** lap **lapszintű szűrők**válassza **Brazília**.
     
-    ![Válassza ki a ország](./media/data-lake-store-power-bi/select-country.png "ország kiválasztása")
-17. A tortadiagram automatikusan frissül az illesztőprogramok megjelenő Brazília a város tartozik.
+    ![Válasszon egy országot](./media/data-lake-store-power-bi/select-country.png "válasszon egy országot")
+17. A tortadiagram automatikusan frissül az illesztőprogramokat a várost, Brazília megjelenítéséhez.
     
-    ![Illesztőprogramok országban](./media/data-lake-store-power-bi/driver-per-country.png "országonkénti illesztőprogramok")
-18. Az a **fájl** menüben kattintson a **mentése** a képi megjelenítés egy Power BI Desktop-fájlba menti.
+    ![Illesztőprogramok országban](./media/data-lake-store-power-bi/driver-per-country.png "illesztőprogramok országonként")
+18. Az a **fájl** menüben kattintson a **mentése** Power BI Desktop-fájlként a vizualizációt menteni szeretné.
 
-## <a name="publish-report-to-power-bi-service"></a>Jelentés közzététele a Power BI-ban
-Miután létrehozta a képi megjelenítések a Power BI Desktopban, megoszthatja azt másokkal a Power BI szolgáltatásba történő közzétételével. Ehhez útmutatást lásd: [a Power BI Desktop közzététele](https://powerbi.microsoft.com/documentation/powerbi-desktop-upload-desktop-files/).
+## <a name="publish-report-to-power-bi-service"></a>Jelentés közzététele a Power BI szolgáltatásban
+Miután létrehozta a Vizualizációk a Power BI Desktopban, megoszthatja azt más közzétesszük azt a Power BI szolgáltatásban. Hogyan valósítható meg, lásd: [közzététel a Power BI Desktopból](https://powerbi.microsoft.com/documentation/powerbi-desktop-upload-desktop-files/).
 
 ## <a name="see-also"></a>Lásd még
-* [Adatok elemzése a Data Lake Analytics használatával a Data Lake Store az](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
+* [Data Lake Analytics használatával a Data Lake Storage Gen1 adatok elemzése](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 

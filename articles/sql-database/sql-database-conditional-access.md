@@ -1,51 +1,58 @@
 ---
-title: Feltételes hozzáférés – az Azure SQL adatbázishoz és Adatraktárhoz |} Microsoft Doc
-description: Megtudhatja, hogyan konfigurálja a feltételes hozzáférést az Azure SQL adatbázishoz és Adatraktárhoz.
+title: Feltételes hozzáférés – Azure SQL Database és az adatraktár |} A Microsoft Doc
+description: Megtudhatja, hogyan konfigurálható a feltételes hozzáférés az Azure SQL Database és a Data warehouse-bA.
 services: sql-database
 author: GithubMirek
 manager: johammer
 ms.custom: security
 ms.service: sql-database
+ms.prod_service: sql-database, sql-data-warehouse
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: mireks
-ms.openlocfilehash: 83762136659756204aab5da367b905f66e770087
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.reviewer: vanto
+ms.openlocfilehash: 702121c18ade244bce5ab3a9c5a57a0245ad80c6
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34647459"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "35923767"
 ---
-# <a name="conditional-access-mfa-with-azure-sql-database-and-data-warehouse"></a>Feltételes hozzáférés (MFA) az Azure SQL adatbázishoz és Adatraktárhoz  
+# <a name="conditional-access-mfa-with-azure-sql-database-and-data-warehouse"></a>Feltételes hozzáférés (MFA) az Azure SQL Database és a Data warehouse-bA  
 
-SQL Database és az SQL Data Warehouse támogatja a Microsoft feltételes hozzáférést. A következő lépések bemutatják, hogyan SQL-adatbázis a feltételes hozzáférési házirend konfigurálása.  
+Mindkét Azure [SQL Database](sql-database-technical-overview.md) és [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) támogatják a feltételes hozzáférést a Microsoft. 
+
+> [!NOTE]
+> Ez a témakör az Azure SQL Server-kiszolgálókra, valamint az Azure SQL Serveren létrehozott SQL Database- és SQL Data Warehouse-adatbázisokra vonatkozik. Az egyszerűség kedvéért a jelen témakörben az SQL Database és az SQL Data Warehouse megnevezése egyaránt SQL Database.
+
+A következő lépések bemutatják, hogyan konfigurálja az SQL Database egy feltételes hozzáférési szabályzat kényszerítése.  
 
 ## <a name="prerequisites"></a>Előfeltételek  
-- A SQL Database vagy az SQL Data Warehouse az Azure Active Directory-hitelesítés támogatásához kell konfigurálnia. Adott lépéseiért lásd: [konfigurálása és kezelése az Azure Active Directory-hitelesítés az SQL Database vagy az SQL Data Warehouse](sql-database-aad-authentication-configure.md).  
-- Ha engedélyezve van a többtényezős hitelesítést, csatlakoznia kell a támogatott eszköz, például a legújabb SSMS. További információkért lásd: [konfigurálása az Azure SQL Database multi-factor authentication szolgáltatást az SQL Server Management Studio](sql-database-ssms-mfa-authentication-configure.md).  
+- Az SQL Database vagy az SQL Data Warehouse, Azure Active Directory-hitelesítés támogatásához kell konfigurálnia. Adott lépéseiért lásd: [konfigurálása és kezelése az Azure Active Directory-hitelesítés az SQL Database vagy az SQL Data Warehouse](sql-database-aad-authentication-configure.md).  
+- Ha a multi-factor authentication szolgáltatás engedélyezve van, csatlakoztatnia kell a jelenleg támogatott eszközt, például az ssms legújabb verziójának. További információkért lásd: [konfigurálása az Azure SQL Database többtényezős hitelesítés az SQL Server Management Studio](sql-database-ssms-mfa-authentication-configure.md).  
 
 ## <a name="configure-ca-for-azure-sql-dbdw"></a>Az Azure SQL DB/DW hitelesítésszolgáltató konfigurálása  
-1.  Jelentkezzen be a portálra, válassza ki **Azure Active Directory**, majd válassza ki **feltételes hozzáférés**. További információkért lásd: [Azure Active Directory feltételes hozzáférési technikai útmutató](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference).  
-  ![feltételes hozzáférési panel](./media/sql-database-conditional-access/conditional-access-blade.png) 
+1.  Jelentkezzen be a portálra, válassza ki **Azure Active Directory**, majd válassza ki **feltételes hozzáférési**. További információkért lásd: [technikai útmutató az Azure Active Directory feltételes hozzáférés](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference).  
+  ![feltételes hozzáférés paneljén](./media/sql-database-conditional-access/conditional-access-blade.png) 
      
-2.  Az a **feltételes hozzáférés-házirendek** panelen kattintson a **új házirend**, adjon meg egy nevet, és kattintson a **szabályok konfigurálása**.  
-3.  A **hozzárendelések**, jelölje be **felhasználók és csoportok**, ellenőrizze **felhasználók és csoportok kiválasztása**, majd válassza ki a felhasználó vagy csoport a feltételes hozzáférés. Kattintson **kiválasztása**, és kattintson a **végzett** a kiválasztott fogadásához.  
+2.  Az a **feltételes szabályzataihoz** panelen kattintson a **új szabályzat**, adjon meg egy nevet, és kattintson **szabályok konfigurálása**.  
+3.  Alatt **hozzárendelések**, jelölje be **felhasználók és csoportok**, ellenőrizze **válassza ki a felhasználók és csoportok**, majd válassza ki a felhasználó vagy csoport feltételes hozzáférés. Kattintson a **kiválasztása**, és kattintson a **kész** , fogadja el a kívánt beállítást.  
   ![Felhasználók és csoportok kiválasztása](./media/sql-database-conditional-access/select-users-and-groups.png)  
 
-4.  Válassza ki **felhőalapú alkalmazásokba**, kattintson a **alkalmazásokról**. Megjelenik az elérhető, a feltételes hozzáférés az összes alkalmazást. Válassza ki **Azure SQL Database**, a lap alján kattintson **kiválasztása**, és kattintson a **végzett**.  
+4.  Válassza ki **Felhőalkalmazások**, kattintson a **alkalmazások kiválasztása**. Láthatja, hogy minden alkalmazás elérhető feltételes hozzáférés. Válassza ki **Azure SQL Database**, kattintson az alul **válassza**, és kattintson a **kész**.  
   ![select SQL Database](./media/sql-database-conditional-access/select-sql-database.png)  
-  Ha nem talál **Azure SQL Database** szerepel a következő harmadik képernyőfelvétel, kövesse az alábbi lépéseket:   
-  - Jelentkezzen be az Azure SQL adatbázis vagy Adatraktár-példányhoz SSMS használatával egy AAD-rendszergazdai fiókkal.  
-  - Végrehajtás `CREATE USER [user@yourtenant.com] FROM EXTERNAL PROVIDER`.  
-  - Jelentkezzen be az aad-be, és ellenőrizze, hogy az Azure SQL Database és az adatraktár szerepel-e az alkalmazásokban az az aad-ben.  
+  Ha nem találja a **Azure SQL Database** a harmadik képernyőképen látható, a következő lépéseket:   
+  - Jelentkezzen be az Azure SQL DB/DW-példány AAD-rendszergazdai fiók az SSMS használatával.  
+  - Hajtsa végre `CREATE USER [user@yourtenant.com] FROM EXTERNAL PROVIDER`.  
+  - Jelentkezzen be az aad-be, és győződjön meg arról, hogy az Azure SQL Database és az adatraktár szerepel az alkalmazásokban az AAD-ben.  
 
-5.  Válassza ki **hozzáférés-szabályozási**, jelölje be **Grant**, és ellenőrizze az alkalmazni kívánt házirendet. Ez a példa azt válassza **többtényezős hitelesítést**.  
-  ![Válassza ki a hozzáférés biztosítása](./media/sql-database-conditional-access/grant-access.png)  
+5.  Válassza ki **hozzáférés-vezérlés**válassza **Grant**, majd ellenőrizze a alkalmazni kívánt házirendet. Ebben a példában kiválasztjuk **többtényezős hitelesítés megkövetelése**.  
+  ![Válassza ki a hozzáférés engedélyezése](./media/sql-database-conditional-access/grant-access.png)  
 
 ## <a name="summary"></a>Összegzés  
-A kijelölt alkalmazás (az Azure SQL Database), csatlakozás az Azure SQL DB/DW Azure AD prémium, így most érvénybe lépteti a feltételes hozzáférési szabályzatot, **szükséges többtényezős hitelesítést.**  
-Tudnivalók Azure SQL adatbázishoz és Adatraktárhoz többtényezős hitelesítéssel kapcsolatban, forduljon a MFAforSQLDB@microsoft.com.  
+A kijelölt alkalmazás (az Azure SQL Database) való csatlakozáshoz az Azure SQL DB/DW használata az Azure AD Premium, így most már érvénybe lépteti a kiválasztott feltételes hozzáférési szabályzat **szükséges a multi-factor authentication.**  
+Azure SQL Database és a Data warehouse-bA a multi-factor authentication kapcsolatos kérdése van, lépjen kapcsolatba MFAforSQLDB@microsoft.com.  
 
 ## <a name="next-steps"></a>További lépések  
 
-Az oktatóanyagok esetén lásd: [az Azure SQL Database biztonságos](sql-database-security-tutorial.md).
+Foglalkozó oktatóanyagért lásd: [biztonságossá tétele az Azure SQL Database](sql-database-security-tutorial.md).

@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/16/2018
+ms.date: 09/14/2018
 ms.author: jeedes
-ms.openlocfilehash: b742f3eb9124093bcf0c3c912bbae0367cdcce56
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 5b1099e46cf1aa2fd4b948fee8407cfd859390ce
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44053839"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46129115"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-slack"></a>Oktatóanyag: Slack-Azure Active Directory-integráció
 
@@ -217,6 +217,9 @@ Ez a szakasz célja, a Slack Britta Simon nevű felhasználó létrehozásához.
 
 > [!NOTE]
 > Hozzon létre egy felhasználót manuálisan kell, ha kapcsolatba kell [Slack támogatási csapatának](https://slack.com/help/contact).
+
+> [!NOTE]
+> Az Azure AD Connect a szinkronizálási eszközt, amely szinkronizálhatja a helyszíni Active Directory-identitásokkal az Azure AD, és ezután ezek a szinkronizált felhasználók is használhatja az alkalmazásokat, például más felhőbeli felhasználók.
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 

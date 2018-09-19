@@ -10,18 +10,18 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 5d8fe6282d956d7f399aff9f7aa250c5061dc887
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: eb3c1177f86f4c595280521f4dbcbe8081f68895
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39159566"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46296244"
 ---
 # <a name="deploy-password-reset-without-requiring-end-user-registration"></a>Jelszó-visszaállítás anélkül, hogy a végfelhasználói regisztrációs üzembe helyezése
 
 Az Azure Active Directory (Azure AD) önkiszolgáló jelszó-visszaállítás (SSPR) üzembe helyezéséhez hitelesítési adatok megtalálhatónak kell lennie. Egyes szervezeteknél lehetőséget adja meg a hitelesítési adataikat, maguk a felhasználók számára. Azonban számos szervezet inkább szinkronizálása az Active Directoryban már meglévő adataival. A szinkronizált adatok szeretné elérhetővé tenni az Azure AD és felhasználói beavatkozás nélkül, ha az SSPR meg:
    * Megfelelően formázza az adatokat a helyszíni címtárban.
-   * Konfigurálása [a gyorsbeállítások használatával az Azure AD Connect](./../connect/active-directory-aadconnect-get-started-express.md).
+   * Konfigurálása [a gyorsbeállítások használatával az Azure AD Connect](../hybrid/how-to-connect-install-express.md).
 
 Megfelelően működjön, telefonszámokat a következő formátumban kell lennie *és CountryCode PhoneNumber*, például + 1 4255551234.
 

@@ -1,27 +1,28 @@
 ---
-title: A nyelvi elemzés API metódus elemzése |} Microsoft Docs
-description: Hogyan nyelvi elemzés API elemzés metódus segítségével bizonyos természetes nyelvű bemeneti adatok elemzéséhez.
+title: Elemzési módszer – nyelvi elemzési API
+titlesuffix: Azure Cognitive Services
+description: Hogyan használható az elemzés módszer nyelvi elemzési API bizonyos természetes nyelvű bemeneti adatok elemzéséhez.
 services: cognitive-services
 author: RichardSunMS
-manager: wkwok
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: linguistic-analysis
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/13/2016
 ms.author: lesun
-ms.openlocfilehash: b17a00f31845bfa05572dff7ca94e9a1ffd69586
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: c8d380a23c1bbfca8258ef533453050c72a3abd0
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347107"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46129624"
 ---
-# <a name="analyze-method"></a>Metódus elemzése
+# <a name="analyze-method"></a>Elemzési módszer
 
-A **elemzése** REST API-t egy adott természetes nyelvű bemeneti elemzésére használatos.
-Amely vonatkozhat csak keresése a [mondatokat és a jogkivonatok](Sentences-and-Tokens.md) belül, amely bemeneti, keresése a [része a beszéd címkék](POS-tagging.md), vagy kereséséhez a [constitutency fa](Constituency-Parsing.md).
-Megadhatja, hogy mely ki a megfelelő elemzőkkel kívánt eredményt.
-Az összes rendelkezésre álló elemzőkkel listázásához, tekintse meg a  **[elemzőkkel](AnalyzersMethod.md)**.
+A **elemzése** REST API egy adott természetes nyelvű bemeneti elemzésére szolgál.
+Amely is járhat, csak keresése a [mondatokra és lexikális](Sentences-and-Tokens.md) belül, amelyek bemeneti, keresés, a [része a beszéd, a címkék](POS-tagging.md), vagy kereséséhez a [constitutency fa](Constituency-Parsing.md).
+Megadhatja, hogy melyik a megfelelő elemzők kiválasztásával a kívánt eredményt.
+Az összes rendelkezésre álló elemzők listázásához, tekintse meg a  **[elemzők](AnalyzersMethod.md)**.
 
 Vegye figyelembe, hogy meg kell adnia a bemeneti karakterlánc nyelvét.
 
@@ -35,38 +36,38 @@ https://westus.api.cognitive.microsoft.com/linguistics/v1.0/analyze
 
 Name (Név) | Típus | Szükséges | Leírás
 -----|-------|----------|------------
-**nyelv**    | sztring | Igen | A két betű elemzési célokra ISO nyelvi kódot. Angol, például "hu".
-**analyzerIds** | karakterlánc-listával | Igen | Alkalmazandó elemzőkkel azonosítóját listája. További információ a lekérdezések dokumentációjában talál.
-**szöveg**        | sztring | Igen | A vizsgálandó nyers bemenet. Ez lehet például egy szót vagy kifejezést, teljes néhány mondatot, vagy egy teljes bekezdés vagy discourse rövid karakterlánc.
+**Nyelv**    | sztring | Igen | A kétbetűs ISO nyelv kódja elemzéshez használható. Például angol nyelven az "en".
+**analyzerIds** | karakterláncok | Igen | Az elemzők a alkalmazni GUID azonosítók listája. További információ az elemzők dokumentációjában talál.
+**Szöveg**        | sztring | Igen | Nyers bemeneti elemezni. Ez lehet például egy szót vagy kifejezést, egy teljes mondatot, vagy egy teljes bekezdés vagy discourse rövid karakterlánc.
 
-<br>
 ## <a name="response-json"></a>Válasz (JSON)
-Elemzés tömbjét adja kimenetként, egy minden attribútum a kérelemben megadott.
 
-Az eredmények a hasonlítania:
+Elemzés tömbjét adja vissza, egy minden attribútum a kérelemben megadott.
+
+Az eredményeket a hasonlítania:
 
 Name (Név) | Típus | Leírás
 -----|------|--------------
-analyzerId | sztring | A megadott elemző GUID azonosítója
-eredménye | objektum | Analyzer eredménye
+analyzerId | sztring | A megadott elemző GUID-ja
+Eredmény | objektum | elemző eredménye
 
-Vegye figyelembe, hogy a eredményének típusa a bemeneti analyzer típusától függ.
+Vegye figyelembe, hogy az eredmény típusát a bemeneti analyzer típusától függ.
 
 ### <a name="tokens-response-json"></a>Jogkivonatok válasz (JSON)
 
 Name (Név) | Típus | Leírás
 -----|------|-------------
-eredménye | mondat objektumok listája | szövegében azonosított mondat határok |
-[x] eredménye. Eltolása | int | minden mondat kezdési karaktereltolás |
-[x] eredménye. Hossz | int | hosszának karakterszáma minden mondat |
-[x] eredménye. Jogkivonatok | token objektumok listája | token határain belül a mondatok azonosított |
-[x] eredménye. [-Y] jogkivonatokat. Eltolása | int | a jogkivonat kezdési karaktereltolás |
-[x] eredménye. [-Y] jogkivonatokat. Hossz | int | a jogkivonat karakter hosszúságú |
-[x] eredménye. [-Y] jogkivonatokat. RawToken | sztring | a karakterek belül, hogy a jogkivonat normalizálási előtt |
-[x] eredménye. [-Y] jogkivonatokat. NormalizedToken | sztring | a karakter, biztonságosnak normalizált formája egy [elemzési fa](Constituency-Parsing.md); például egy nyitó zárójel karakter "(" - LRB - válik |
+Eredmény | mondat objektumok listája | a szövegben azonosított mondat határok |
+[x] eredményt. Eltolás | int | minden mondat ofszetet karakter |
+[x] eredményt. Len | int | minden mondat karakterszámát |
+[x] eredményt. Jogkivonatok | jogkivonat-objektumok listája | az adott mondaton belül azonosított token határok |
+[x] eredményt. Token [y]. Eltolás | int | a jogkivonat ofszetet karakter |
+[x] eredményt. Token [y]. Len | int | a jogkivonat karakterszámát |
+[x] eredményt. Token [y]. RawToken | sztring | Ezt a jogkivonatot, mielőtt normalizálási belül a karakterek |
+[x] eredményt. Token [y]. NormalizedToken | sztring | a karakter, biztonságosan használható legyen a normalizált űrlap egy [elemzési fa](Constituency-Parsing.md); például egy nyitó zárójel karakter "(" - LRB - válik |
 
-Példa bemenet: "Ez egy tesztművelet. Hello. "
-Példa egy válasz JSON:
+Példabemenet: "Ez egy tesztművelet. A vállalati hello. "
+Példa JSON-választ:
 ```json
 [
   {
@@ -127,24 +128,22 @@ Példa egy válasz JSON:
 ```
 
 
-### <a name="pos-tags-response-json"></a>POS címkék válasz (JSON)
+### <a name="pos-tags-response-json"></a>POS-címkék válasz (JSON)
 
-Eredménye listák karakterláncok listáját.
-Minden mondat nincs POS címkék listáját, a tokenek egy POS címkét.
-Az egyes POS címkék token megfelelő megkereséséhez érdemes kérje meg, valamint a lexikális elemekké alakításának objektum.
+Ez listák karakterláncok listáját.
+Minden mondat POS-címkék listája egy POS címke minden tokenhez nincs.
+Minden egyes POS-címkék a token megfelelő megkereséséhez érdemes kérje meg, valamint a jogkivonatok objektum.
 
-### <a name="constituency-tree-response-json"></a>Választókerülete fa válasz (JSON)
+### <a name="constituency-tree-response-json"></a>Vevőkör fa válasz (JSON)
 
-A karakterlánc-listával, a minden mondat helyett szerepel a bemenetben található egy elemzési fa eredménye.
-A parse fák zárójelezett formában jelennek meg.
-
-<br>
+Az eredmény az lesz, a karakterláncok listájának, egy elemzési fa minden a bemenetben található mondat helyett szerepel.
+Az elemzési fa zárójelek között szereplő formában jelennek meg.
 
 ## <a name="example"></a>Példa
 
 `POST /analyze`
 
-Kérelemtörzset: JSON-adattartalmat
+Kérelem törzse: JSON-adattartalmat
 ```json
 {
   "language": "en",
@@ -155,7 +154,7 @@ Kérelemtörzset: JSON-adattartalmat
 }
 ```
 
-Válasz: JSON-ban
+Válasz: JSON
 ```json
 [
   {

@@ -1,24 +1,25 @@
 ---
-title: Támogatott nyelvek a Microsoft Translator API |} A Microsoft Docs
-description: Tekintse meg a Microsoft Translator Text API által támogatott nyelveket.
+title: Translator Text API támogatott nyelvek
+titlesuffix: Azure Cognitive Services
+description: Tekintse meg a Translator Text API által támogatott nyelveket.
 services: cognitive-services
 author: Jann-Skotdal
-manager: chriswendt1
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: v-jansko
-ms.openlocfilehash: 15e01dd55a0fe297eab69417074dc58a15b469c4
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: 9318a562fad00f61d50fdce19b8b84b62c294cba
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43783212"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46124848"
 ---
-# <a name="supported-languages-in-the-microsoft-translator-text-api"></a>A Microsoft Translator Text API a támogatott nyelvek
+# <a name="supported-languages-in-the-translator-text-api"></a>Támogatott nyelvek a Translator Text API
 
-A Microsoft Translator Text API a következő nyelveket támogatja a szöveg a fordítás. Neurális gépi fordítás (NMT) magas színvonalú mesterséges Intelligenciával rendelkező gép fordítások új szabványa, és használja, a Translator Text API v3-as, akkor egy Neurális rendszeren érhető el az alapértelmezett érhető el. Neurális gépi fordítás érhető el a v2-ben a "generalnn" kategóriája használatával.
+A Translator Text API a következő nyelveket támogatja a szöveg a fordítás. Neurális gépi fordítás (NMT) magas színvonalú mesterséges Intelligenciával rendelkező gép fordítások új szabványa, és használja, a Translator Text API v3-as, akkor egy Neurális rendszeren érhető el az alapértelmezett érhető el. Neurális gépi fordítás érhető el a v2-ben a "generalnn" kategóriája használatával.
 
 [További információ arról, hogyan működik a gépi fordítás](https://www.microsoft.com/translator/mt.aspx)
 

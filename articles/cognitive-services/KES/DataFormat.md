@@ -1,28 +1,30 @@
 ---
-title: A Tudásbázis feltárása Service API adatformátum |} Microsoft Docs
-description: További tudnivalók az adatformátum a a Tudásbázis feltárása szolgáltatás (KES) API kognitív szolgáltatásban.
+title: Adatformátum – Knowledge Exploration Service API
+titlesuffix: Azure Cognitive Services
+description: Ismerje meg az adatok formátumát az a Knowledge Exploration Service (KES) API.
 services: cognitive-services
 author: bojunehsu
-manager: stesp
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: knowledge-exploration
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: a763505ac6458d68df74ae73e71029b81202ec8b
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 2c67ff1f7a3713b9418458bb7904a35808532293
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35346935"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46129284"
 ---
-# <a name="data-format"></a>Adatok formátuma
-Az adatfájl indexelésre objektum-lista ismerteti.
-A fájlban minden sor határozza meg az objektumok attribútumértékek [JSON formátumban](http://json.org/) UTF-8 kódolással.
-Az attribútumok meghatározott mellett a [séma](SchemaFormat.md), az egyes objektumok egy választható "logprob" attribútummal rendelkezik, amely meghatározza az objektumok között a relatív napló valószínűségét.
-A szolgáltatás objektumok valószínűség csökkenő sorrendben adja vissza, ha a "logprob" visszatérési sorrendjét a megfelelő objektumokat is használjuk.
-A valószínűségi megadott *p* 0 és 1 között, a napló számítható ki a megfelelő naplót valószínűség (*p*), ahol a log() a természetes log függvény.
-Ha nincs érték megadva az logprob, az alapértelmezett érték 0 szolgál.
+# <a name="data-format"></a>Adatformátum
+
+Az adatfájlban az objektumok listájában, index ismerteti.
+A fájl minden sorához meghatározza az objektum az attribútumértékek [JSON formátumban](http://json.org/) az UTF-8 kódolást.
+A meghatározott attribútumok mellett a [séma](SchemaFormat.md), minden objektum rendelkezik egy "logprob" attribútumot, amely meghatározza az objektumok közötti relatív log valószínűségét.
+A szolgáltatás objektumok valószínűség csökkenő sorrendben adja vissza, ha a "logprob" visszatérési sorrendjét, egyező objektumok is használjuk.
+Adott valószínűség *p* 0 és 1 közötti megfelelő napló valószínűségét, log számított (*p*), ahol a log() a természetes logaritmusát függvény.
+Ha nem ad meg értéket a logprob, az alapértelmezett érték 0 használatos.
 
 ```json
 {"logprob":-5.3, "Title":"latent dirichlet allocation", "Year":2003, "Author":{"Name":"david m blei", "Affiliation":"uc berkeley"}, "Author":{"Name":"andrew y ng", "Affiliation":"stanford"}, "Author":{"Name":"michael i jordan", "Affiliation":"uc berkeley"}}
@@ -30,9 +32,9 @@ Ha nincs érték megadva az logprob, az alapértelmezett érték 0 szolgál.
 ...
 ```
 
-Karakterlánc, a GUID Azonosítót és a Blob attribútumokat a rendszer helyőrzővel jelzett Eredménymező értéke JSON idézőjelek közé zárt karakterlánc.  A numerikus attribútumokhoz (Int32, Int64, dupla) a rendszer helyőrzővel jelzett Eredménymező értéke egy JSON-számot.  Összetett attribútumok értéke egy JSON-objektum, amely meghatározza az alárendelt attribútumértékek.  A gyorsabb index buildek presort napló valószínűség csökkentik az objektumok.
+Karakterlánc, a GUID Azonosítót és a Blob attribútumok az érték jelenik meg a határolójeles JSON-karakterláncot.  A numerikus attribútumokhoz (Int32, Int64, dupla) az érték jelenik meg egy JSON-szám.  Összetett attribútum értéke a JSON-objektum, amely meghatározza az alárendelt attribútumértékek.  A gyorsabb index buildek esetében presort log valószínűség csökkentésével az objektumok.
 
-Általában a attribútum 0 vagy több érték lehet.  Az attribútum nem rendelkezik értékkel, ha azt egyszerűen eltávolíthatja azt az a JSON-NÁ.  Ha egy attribútum 2 vagy több értékkel rendelkezik, azt megismétlésével a attribútum-érték pár a JSON-objektumból.  Azt is megteheti azt az attribútumot a több értéket tartalmazó JSON-tömb lehet társítani.
+Általában egy attribútum 0 vagy több érték rendelkeznek.  Az attribútum nem tartalmaz értéket, ha a Microsoft egyszerűen cserélje a JSON-ból.  Ha attribútum 2 vagy több értéket tartalmaz, hogy ismételje meg a az attribútum-érték pár a JSON-objektumban.  Azt is megteheti hogy rendelhet hozzá a az attribútum több értéket tartalmazó JSON-tömböt.
 
 ```json
 {"logprob":0, "Title":"0 keyword"}

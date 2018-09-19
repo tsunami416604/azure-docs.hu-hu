@@ -14,12 +14,12 @@ ms.date: 06/13/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 9e065b04083cce958bc42f2efade0038bf137f8a
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: f453afee6bc26c5ddcdb5018405ec69455f8f7e8
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39145111"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46295138"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>Azure Active Directory-parancsmagok csoportbeállítások konfigurálásához
 Ez a cikk útmutatást az Azure Active Directory (Azure AD) PowerShell-parancsmagok használatával hozhat létre, és a csoportokat. Ez a tartalom csak az Office 365-csoportok (más néven egyesített csoportok) vonatkozik. 
@@ -222,4 +222,4 @@ További Azure Active Directory PowerShell-dokumentáció, annak [Azure Active D
 ## <a name="additional-reading"></a>További olvasnivaló
 
 * [Erőforráshozzáférés-kezelés Azure Active Directory-csoportokkal](../fundamentals/active-directory-manage-groups.md)
-* [Helyszíni identitások integrálása az Azure Active Directoryval](../connect/active-directory-aadconnect.md)
+* [Helyszíni identitások integrálása az Azure Active Directoryval](../hybrid/whatis-hybrid-identity.md)

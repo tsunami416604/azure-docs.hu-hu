@@ -1,5 +1,6 @@
 ---
-title: Képek bekérése a weben a Bing Image Search API az |} A Microsoft Docs
+title: Rendszerképek lekérése a webes – a Bing Image Search API
+titleSuffix: Azure Cognitive Services
 description: A Bing Image Search API használatával keresse meg és képeket lekérése az internetről.
 services: cognitive-services
 author: aahill
@@ -10,12 +11,12 @@ ms.component: bing-image-search
 ms.topic: conceptual
 ms.date: 8/8/2018
 ms.author: aahi
-ms.openlocfilehash: 720318ab2be53c59c47e3399b1be5a55487840b7
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: c21741ebb8f68797b31a2ba1de4bb6f0f8d32cb7
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44053958"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46297127"
 ---
 # <a name="get-images-from-the-web-with-the-bing-image-search-api"></a>Képek bekérése a weben a Bing Image Search API az
 

@@ -17,12 +17,12 @@ ms.date: 07/23/2018
 ms.author: markvi
 ms.reviewer: jairoc
 ms.custom: seohack1
-ms.openlocfilehash: 38d024de0fd2490d33f7c06498d3ff8d0d06e503
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 3b4c9de16c7248cbd3087689544d70fe22c858fd
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42060625"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46296413"
 ---
 # <a name="setting-up-on-premises-conditional-access-by-using-azure-active-directory-device-registration"></a>A helyszíni feltételes hozzáférés beállítása az Azure Active Directory eszközregisztrációjával
 Ha munkahelyi-csatlakozás a felhasználók saját eszközét, az Azure Active Directory (Azure AD) eszközregisztrációs szolgáltatás, eszközeiket is lehet megjelölve ismert, hogy a szervezet. Következő egy lépésenkénti útmutató a helyszíni alkalmazások feltételes hozzáférése engedélyezve van a Windows Server 2012 R2 Active Directory összevonási szolgáltatások (AD FS) használatával.
@@ -88,7 +88,7 @@ Kövesse az ellenőrzőlista engedélyezése és konfigurálása az Azure Active
 ## <a name="part-3-enable-device-writeback-in-azure-ad"></a>3. rész: Enable eszközvisszaírás az Azure ad-ben
 | Tevékenység | Leírások |
 | --- | --- |
-| Végezze el a második részében "Eszközvisszaírás engedélyezése az Azure AD Connectben." Miután végzett, térjen vissza az útmutatóban. |[Eszközvisszaírás engedélyezése az Azure AD Connectben](./connect/active-directory-aadconnect-feature-device-writeback.md) |
+| Végezze el a második részében "Eszközvisszaírás engedélyezése az Azure AD Connectben." Miután végzett, térjen vissza az útmutatóban. |[Eszközvisszaírás engedélyezése az Azure AD Connectben](hybrid/how-to-connect-device-writeback.md) |
 
 ## <a name="optional-part-4-enable-multi-factor-authentication"></a>[Opcionális] 4. lépés: Többtényezős hitelesítés engedélyezése
 Erősen ajánlott úgy beállítani, hogy a multi-factor Authentication a különböző lehetőségek közül. Ha azt szeretné, a többtényezős hitelesítés megkövetelése, [válassza ki a multi-factor Authentication szolgáltatás biztonsági megoldást,](authentication/concept-mfa-whichversion.md). Az egyes megoldások és a hivatkozások segítségével konfigurálja a megoldást a választott leírását tartalmazza.
@@ -107,9 +107,9 @@ Az üzembe helyezés befejeződött, és néhány esetben kipróbálhatja. Az al
 
 **Lásd:**
 
-- [A helyszíni címtárak integrálása az Azure Active Directory](./connect/active-directory-aadconnect.md) – elméleti információk áttekintéséhez.
+- [A helyszíni címtárak integrálása az Azure Active Directory](hybrid/whatis-hybrid-identity.md) – elméleti információk áttekintéséhez.
 
-- [Az Azure AD Connect egyéni telepítési](./connect/active-directory-aadconnect-get-started-custom.md) – a telepítési utasításokat.
+- [Az Azure AD Connect egyéni telepítési](hybrid/how-to-connect-install-custom.md) – a telepítési utasításokat.
 
 
 ## <a name="upgrade-your-active-directory-domain-services-schema"></a>Az Active Directory tartományi szolgáltatások sémájának frissítése

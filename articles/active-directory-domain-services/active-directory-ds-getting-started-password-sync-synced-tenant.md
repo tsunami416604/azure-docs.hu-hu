@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/15/2017
 ms.author: maheshu
-ms.openlocfilehash: 261cb45bd3b7b7f284eff3397aca141917a82502
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 33cbc65ec5971f8bfe0133e5dca181194cd0bbdd
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39504855"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46293999"
 ---
 # <a name="enable-password-synchronization-to-azure-active-directory-domain-services"></a>Jelszavak szinkronizálásának engedélyezése az Azure Active Directory Domain Services tartományi szolgáltatásokra
 Az előző feladatokban engedélyezte az Active Directory Domain Servicest az Azure Active Directory (Azure AD) bérlő számára. A következő feladat az NT LAN Manager (NTLM) és Kerberos hitelesítésiadat-kivonatok Azure AD tartományi szolgáltatásokkal való szinkronizálásának engedélyezése. A bejelentkezési adatok szinkronizálásának beállítását követően a felhasználók a vállalati hitelesítői adataikkal jelentkezhetnek be a felügyelt tartományba.
@@ -59,7 +59,7 @@ Ajánlott verzió: **1.1.614.0** – közzététel dátuma: 2017. szeptember 5.
 >
 >
 
-Az Azure AD Connect telepítési utasításai a következő cikkben érhetők el: [Ismerkedés az Azure AD Connecttel](../active-directory/active-directory-aadconnect.md)
+Az Azure AD Connect telepítési utasításai a következő cikkben érhetők el: [Ismerkedés az Azure AD Connecttel](../active-directory/hybrid/whatis-hybrid-identity.md)
 
 ### <a name="enable-synchronization-of-ntlm-and-kerberos-credential-hashes-to-azure-ad"></a>NTLM és Kerberos hitelesítőadat-kivonatok Azure AD-val történő szinkronizálásának engedélyezése
 Hajtsa végre a következő PowerShell-szkriptet az összes AD-erdőben. A szkript engedélyezi a helyszíni felhasználók NTLM- és Kerberos-jelszókivonatainak szinkronizálását az Azure AD-bérlővel. A szkript az Azure AD Connectben történő teljes szinkronizálást is kezdeményezi.

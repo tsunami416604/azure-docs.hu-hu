@@ -3,7 +3,7 @@ title: fájl belefoglalása
 description: fájl belefoglalása
 services: active-directory
 documentationcenter: dev-center-name
-author: andretms
+author: navyasric
 manager: mtillman
 editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
@@ -12,50 +12,50 @@ ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/19/2018
-ms.author: andret
+ms.date: 09/17/2018
+ms.author: nacanuma
 ms.custom: include file
-ms.openlocfilehash: 24a5baade2168df603f5505baeaaf8e1c3ea2411
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 724166d402f81fa3a2c977d107111f5a0c32571d
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "36205227"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46293632"
 ---
-## <a name="setting-up-your-web-server-or-project"></a>A webkiszolgáló vagy a projekt létrehozása
+## <a name="setting-up-your-web-server-or-project"></a>A webalkalmazás-kiszolgáló vagy a projekt beállítása
 
-> Ez a minta-projekt letöltése helyette inkább? 
+> Töltse le a mintaprojektet ehelyett inkább?
 > - [A Visual Studio-projekt letöltése](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/VisualStudio.zip)
 >
 > vagy
-> - [Töltse le a projektfájlok](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/core.zip) helyi webkiszolgáló, például a Python
+> - [Töltse le a projektfájlok](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/core.zip) helyi webkiszolgáló, például a csomópont
 >
-> Majd folytassa a és a [konfigurációs lépés](#register-your-application) a kódminta konfigurálása előtt futtatnia kell.
+> És folytassa a [konfigurációs lépés](#register-your-application) a kódminta konfigurálása előtt futtassa a jelentést.
 
 ## <a name="prerequisites"></a>Előfeltételek
-Például egy helyi webkiszolgálót [Python http.server](https://www.python.org/downloads/), [http-kiszolgáló](https://www.npmjs.com/package/http-server/), [.NET Core](https://www.microsoft.com/net/core), vagy az IIS Express integrációja [Visual Studio 2017](https://www.visualstudio.com/downloads/) Ez az interaktív telepítés futtatásához szükséges. 
+Például egy helyi webkiszolgálót [Node.js](https://nodejs.org/en/download/), [.NET Core](https://www.microsoft.com/net/core), vagy az IIS Express integrációs [Visual Studio 2017](https://www.visualstudio.com/downloads/) ebben az oktatóanyagban futtatásához szükséges.
 
-Ez az útmutató utasításait a Python és a Visual Studio 2017 alapulnak, de szabadon használhatja a fejlesztési környezet vagy webkiszolgálón.
+Az útmutató utasításainak Node.js és a Visual Studio 2017 alapulnak, de nyugodtan használhatja a fejlesztői környezetben vagy webalkalmazás-kiszolgáló.
 
-## <a name="create-your-project"></a>A projekt létrehozása 
+## <a name="create-your-project"></a>A projekt létrehozása
 
-> ### <a name="option-1-visual-studio"></a>1. lehetőség: A Visual Studio 
-> Ha a Visual Studio használ, és a rendszer létrehoz egy új projektet, kövesse az alábbi lépéseket egy új Visual Studio megoldás létrehozásához:
-> 1.    A Visual Studio:  `File` > `New` > `Project`
+> ### <a name="option-1-visual-studio"></a>1. lehetőség: A Visual Studio
+> Ha Visual Studiót használja, és a egy új projektet hoz létre, kövesse az alábbi lépéseket egy új Visual Studio-megoldás létrehozása:
+> 1.    A Visual Studióban:  `File` > `New` > `Project`
 > 2.    A `Visual C#\Web`, jelölje be `ASP.NET Web Application (.NET Framework)`
-> 3.    Az alkalmazás neve, és kattintson a *OK*
+> 3.    Adjon nevet az alkalmazásnak, és kattintson a *OK*
 > 4.    A `New ASP.NET Web Application`, jelölje be `Empty`
 
 <p/><!-- -->
 
-> ### <a name="option-2-python-other-web-servers"></a>2. lehetőség: Python vagy egyéb webkiszolgálókon
-> Győződjön meg arról, hogy a telepített [Python](https://www.python.org/downloads/), majd hajtsa végre az alábbi:
-> - Hozzon létre egy mappát, az alkalmazás futtatásához.
+> ### <a name="option-2-node-other-web-servers"></a>2. lehetőség: Csomópont / egyéb webkiszolgáló
+> Győződjön meg arról, hogy telepítve van-e [Node.js](https://nodejs.org/en/download/), hajtsa végre az alábbi lépést:
+> - Hozzon létre egy mappát az alkalmazások üzemeltetéséhez.
 
 
-## <a name="create-your-single-page-applications-ui"></a>Az egyetlen oldal alkalmazás felhasználói Felületüket létrehozni
-1.  Hozzon létre egy *index.html* a JavaScript SPA fájlt. Ha a Visual Studio használ, válassza ki a project (projekt gyökérmappájában), kattintson a jobb gombbal, és válassza: `Add`  >  `New Item`  >  `HTML page` és adjon neki nevet index.html
-2.  Adja hozzá a következő kódot a lap:
+## <a name="create-your-single-page-applications-ui"></a>Az egyoldalas alkalmazás felhasználói felület létrehozása
+1.  Hozzon létre egy *index.html* fájlt a JavaScript SPA-ALKALMAZÁSOKBA. Ha a Visual Studiót használja, válassza ki a projektet (projekt gyökérmappájában), kattintson a jobb gombbal, és válassza: `Add`  >  `New Item`  >  `HTML page` , és nevezze el index.html
+2.  Adja hozzá a következő kódot a oldalon:
 ```html
 <!DOCTYPE html>
 <html>

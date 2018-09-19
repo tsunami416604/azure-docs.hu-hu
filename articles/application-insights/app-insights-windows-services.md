@@ -1,6 +1,6 @@
 ---
-title: "Azure Application Insights Windows Serverhez és feldolgozói szerepkörökhöz | Microsoft Docs"
-description: "Adja hozzá manuálisan az Application Insights SDK-t az ASP.NET-alkalmazáshoz a használat, a rendelkezésre állás és a teljesítmény elemzése érdekében."
+title: Azure Application Insights Windows Serverhez és feldolgozói szerepkörökhöz | Microsoft Docs
+description: Adja hozzá manuálisan az Application Insights SDK-t az ASP.NET-alkalmazáshoz a használat, a rendelkezésre állás és a teljesítmény elemzése érdekében.
 services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
@@ -10,14 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: mbullwin
-ms.openlocfilehash: bf7921926c69fff214e94a2d0edc22b28fb8eac0
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
-ms.translationtype: HT
+ms.openlocfilehash: 3f2f0925cf6ec612b84765e42217723d8c8729c6
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "35644727"
 ---
 # <a name="manually-configure-application-insights-for-net-applications"></a>Az Application Insights manuális beállítása a .NET-alkalmazásokhoz
 
@@ -146,6 +147,6 @@ Tekintse meg [ezt a Hibaelhárítási cikket](app-insights-asp-net-troubleshoot-
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [További telemetriák hozzáadásával](app-insights-asp-net-more.md) az alkalmazást teljes körűen megfigyelheti.
 

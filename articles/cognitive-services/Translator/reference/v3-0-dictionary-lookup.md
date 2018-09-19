@@ -1,22 +1,23 @@
 ---
-title: A Microsoft Translator Text API szótár keresési metódus |} A Microsoft Docs
-description: A Microsoft Translator Text API szótár keresési módszert használja.
+title: Translator Text API szótár keresési metódus
+titlesuffix: Azure Cognitive Services
+description: A Translator Text API szótár keresési módszert használja.
 services: cognitive-services
 author: Jann-Skotdal
-manager: chriswendt1
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: microsoft translator
-ms.topic: article
+ms.component: translator-text
+ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 5a186f60dc099b095c00056d965aa92618c2c708
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 41b610f3504a8eb6619613e3ad0aa7c1c4cf9f66
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37868085"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46127841"
 ---
-# <a name="text-api-30-dictionary-lookup"></a>Szöveg API 3.0: Szótár keresése
+# <a name="translator-text-api-30-dictionary-lookup"></a>Translator Text API 3.0: Szótár keresése
 
 Egy szót, és bármilyen kifejezések kis számú felkínálásával biztosít. Minden egyes fordítási rendelkezik egy rész-az-beszéd- és back-fordítások listáját. A biztonsági fordításokat engedélyezi a felhasználókat a környezetben a fordítás megértéséhez. A [szótár példa](.\v3-0-dictionary-examples.md) művelet lehetővé teszi, hogy további részletes elemzési, lásd: Ebben a példában minden egyes fordítási pár képességet.
 
@@ -55,7 +56,7 @@ Kérelemfejlécek a következők:
   <th width="20%">Fejlécek</th>
   <th>Leírás</th>
   <tr>
-    <td>_Egy engedélyezési_<br/>_fejléc_</td>
+    <td>_Egy engedélyezési_<br/>_Fejléc_</td>
     <td>*Szükséges kérelem fejléce*.<br/>Lásd: [elérhető lehetőségek a hitelesítéshez](./v3-0-reference.md#authentication).</td>
   </tr>
   <tr>
@@ -139,7 +140,7 @@ A sikeres válasz egy JSON-tömböt az egyes sztringek a bemeneti számtömbből
 
 Ez a példa bemutatja, hogyan felkínálásával spanyol nyelven az angol nyelvű kifejezést talált `fly` .
 
-# <a name="curltabcurl"></a>[a curl](#tab/curl)
+# <a name="curltabcurl"></a>[A curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0&from=en&to=es" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'fly'}]"
@@ -190,7 +191,7 @@ A válasz törzsében (rövidítése az átláthatóság érdekében) a követke
 
 Ez a példa bemutatja, mi történik, ha az előfizetési időszak alatt kulcskeresési a érvényes szótár pár nem létezik.
 
-# <a name="curltabcurl"></a>[a curl](#tab/curl)
+# <a name="curltabcurl"></a>[A curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0&from=en&to=es" -H "X-ClientTraceId: 875030C7-5380-40B8-8A03-63DACCF69C11" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'fly123456'}]"

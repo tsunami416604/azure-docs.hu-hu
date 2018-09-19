@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/18/2018
 ms.author: asmalser
-ms.openlocfilehash: 930ca49a63e34214ec197d8dd37f38361b34fe90
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 917baa4b0d983df858c64cd0fa5b697b0fbb316c
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44347035"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46298268"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning-preview"></a>Oktatóanyag: Felhasználók automatikus kiépítési (előzetes verzió) a Workday konfigurálása
 
@@ -75,7 +75,7 @@ Az ebben az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy Ön m�
 * A Workday megvalósítási bérlői tesztelése és integrációs célokra
 * Rendszergazdai engedélyekkel, hozzon létre egy rendszer-integrációs felhasználót, és módosítja a WORKDAY alkalmazotti adatokat tesztelési célú tesztelése
 * A felhasználó kiépítése az Active Directoryhoz, 2012 vagy újabb Windows-szolgáltatást futtató, tartományhoz csatlakoztatott kiszolgálóra szükség, gazdagépre a [a helyszíni szinkronizálási ügynök](https://go.microsoft.com/fwlink/?linkid=847801)
-* [Az Azure AD Connect](../connect/active-directory-aadconnect.md) szinkronizálásához Active Directory és az Azure AD között
+* [Az Azure AD Connect](../hybrid/whatis-hybrid-identity.md) szinkronizálásához Active Directory és az Azure AD között
 
 ### <a name="solution-architecture"></a>Megoldás architektúrája
 
@@ -504,11 +504,11 @@ Hogy hogyan konfigurálhat Azure Active Directorynak az üzembe helyezési köve
 
 | Forgatókönyv | Megoldás |
 | -------- | -------- |
-| **A felhasználóknak kell kell létrehozni, hogy az Active Directory és az Azure ad-ben** | Használat  **[az AAD Connect](../connect/active-directory-aadconnect.md)** |
-| **Felhasználók szükség lesz az Active Directory csak** | Használat  **[az AAD Connect](../connect/active-directory-aadconnect.md)** |
+| **A felhasználóknak kell kell létrehozni, hogy az Active Directory és az Azure ad-ben** | Használat  **[az AAD Connect](../hybrid/whatis-hybrid-identity.md)** |
+| **Felhasználók szükség lesz az Active Directory csak** | Használat  **[az AAD Connect](../hybrid/whatis-hybrid-identity.md)** |
 | **Felhasználók szükség lesz az Azure AD csak (csak a felhőben)** | Használja a **Workday Azure Active Directory-kiépítés** alkalmazást az alkalmazáskatalógusban |
 
-Az Azure AD Connect beállításával kapcsolatos utasításokért lásd: a [Azure AD Connect dokumentációját](../connect/active-directory-aadconnect.md).
+Az Azure AD Connect beállításával kapcsolatos utasításokért lásd: a [Azure AD Connect dokumentációját](../hybrid/whatis-hybrid-identity.md).
 
 A következő szakaszok ismertetik a Workday és az Azure AD kizárólag felhőbeli felhasználók közötti kapcsolat beállítása.
 

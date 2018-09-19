@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 54e6b4f5804e7390b7574aa60b4d3a76df15da11
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: 5416c8ada8fcc7f630d68f223b88c50209d14438
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "42060136"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46296396"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>Hogyan működik: az Azure AD önkiszolgáló jelszó-visszaállítás
 
@@ -161,8 +161,8 @@ Ha telepítése, konfigurálása és az Azure AD Connect engedélyezéséhez, ak
 Ez az oldal tartalmaz egy gyors a helyszíni visszaírási ügyfél állapotát, az alábbi üzenetek egyike jelenik meg a jelenlegi konfiguráció alapján:
 
 * A helyszíni visszaírási ügyfél működik-e.
-* Az Azure AD online állapotban, és a helyszíni visszaírási ügyfélhez csatlakozik. Azonban úgy tűnik, az Azure AD Connect telepített verziója elavult. Érdemes lehet [frissítése az Azure AD Connect](./../connect/active-directory-aadconnect-upgrade-previous-version.md) , gondoskodjon arról, hogy a legújabb kapcsolati funkciók és a fontos hibajavításokat tartalmaz.
-* Sajnos jelenleg nem lehet ellenőrizni a helyszíni visszaírási ügyfél állapotát, mert az Azure AD Connect telepített verziója elavult. [Azure AD Connect frissítése](./../connect/active-directory-aadconnect-upgrade-previous-version.md) tudni ellenőrizni a kapcsolat állapotát.
+* Az Azure AD online állapotban, és a helyszíni visszaírási ügyfélhez csatlakozik. Azonban úgy tűnik, az Azure AD Connect telepített verziója elavult. Érdemes lehet [frissítése az Azure AD Connect](../hybrid/how-to-upgrade-previous-version.md) , gondoskodjon arról, hogy a legújabb kapcsolati funkciók és a fontos hibajavításokat tartalmaz.
+* Sajnos jelenleg nem lehet ellenőrizni a helyszíni visszaírási ügyfél állapotát, mert az Azure AD Connect telepített verziója elavult. [Azure AD Connect frissítése](../hybrid/how-to-upgrade-previous-version.md) tudni ellenőrizni a kapcsolat állapotát.
 * Sajnos úgy tűnik, nem lehet csatlakozni a helyszíni visszaírási ügyfélhez most. [Az Azure AD Connect – hibaelhárítás](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback-connectivity) a kapcsolat visszaállításához.
 * Sajnos nem nem lehet csatlakozni a helyszíni visszaírási ügyfélhez, mert a jelszóvisszaírás nincs megfelelően konfigurálva. [Jelszóvisszaíró konfigurálása](howto-sspr-writeback.md) a kapcsolat visszaállításához.
 * Sajnos úgy tűnik, nem lehet csatlakozni a helyszíni visszaírási ügyfélhez most. Ez található a rendszerünkben ideiglenes problémák okozhatják. Ha a probléma tartósan fennáll, [hibaelhárítása Azure AD Connect](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback-connectivity) a kapcsolat visszaállításához.

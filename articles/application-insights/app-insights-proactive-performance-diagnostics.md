@@ -1,6 +1,6 @@
 ---
-title: Észlelési - teljesítményanomáliákat intelligens |} Microsoft Docs
-description: Az Application Insights hajtja végre az alkalmazás telemetriai intelligens elemzése és figyelmezteti, potenciális problémákat. Ez a funkció a telepítés nem kell.
+title: Intelligens detektálás – teljesítménnyel kapcsolatos anomáliák |} A Microsoft Docs
+description: Application Insights hajt végre az alkalmazás telemetriai adatainak az intelligens elemzésének, és figyelmezteti a potenciális problémákról. Ez a funkció a telepítés nem kell.
 services: application-insights
 documentationcenter: windows
 author: mrbullwinkle
@@ -10,183 +10,185 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/04/2017
-ms.author: mbullwin; antonfr
-ms.openlocfilehash: 59b88a940e83ed89e8638b62680a57ca1514f8b0
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.reviewer: antonfr
+ms.author: mbullwin
+ms.openlocfilehash: eef597bf0c9f28cdec5af56c6dfe8bcaaa2415bd
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "35645983"
 ---
-# <a name="smart-detection---performance-anomalies"></a>Intelligens észlelési - Teljesítményanomáliákat
+# <a name="smart-detection---performance-anomalies"></a>Intelligens detektálás – teljesítménnyel kapcsolatos anomáliák
 
-[Az Application Insights](app-insights-overview.md) automatikusan elemzi a webes alkalmazás teljesítményének és figyelmeztetést küld, azokról a potenciális problémákról. Akkor lehet, hogy lehet olvassa, mert az intelligens észlelési értesítést kapott.
+[Az Application Insights](app-insights-overview.md) automatikusan elemzi a webalkalmazás teljesítményét, és figyelmezteti azokról a potenciális problémákról. Akkor lehet, hogy lehet olvassa, mert az intelligens detektálási értesítést kapott.
 
-Ehhez a szolgáltatáshoz nem speciális beállítási kivételével az alkalmazás konfigurálását az Application Insights (a [ASP.NET](app-insights-asp-net.md), [Java](app-insights-java-get-started.md), vagy [Node.js](app-insights-nodejs.md), majd a [weblap kód](app-insights-javascript.md)). Azt akkor aktív, ha az alkalmazás elég telemetriai adatokat állít elő.
+Ez a funkció nem speciális beállítás, az alkalmazás konfigurálása az Application Insights nem szükséges (a [ASP.NET](app-insights-asp-net.md), [Java](app-insights-java-get-started.md), vagy [Node.js](app-insights-nodejs.md), majd a [weblap kód](app-insights-javascript.md)). Ez akkor aktív, ha az alkalmazása elég telemetriát hoz létre.
 
-## <a name="when-would-i-get-a-smart-detection-notification"></a>Ha visszajelzést kap egy intelligens észlelési értesítést?
+## <a name="when-would-i-get-a-smart-detection-notification"></a>Ha szeretne egy intelligens detektálási értesítést kaphat?
 
-Az Application Insights azt észlelte, hogy az alkalmazás teljesítményének segít az alábbi módszerek valamelyikével:
+Az Application Insights azt észlelte, hogy az alkalmazás teljesítményének segít a következő módszerek egyikével:
 
-* **Válasz idő teljesítménycsökkenést** – az alkalmazás elindult, a használt lassabban válaszol a kérelmekre. A módosítás gyors, például megváltoztak, mert hiba történt egy regressziós a legújabb környezetben. Vagy volna fokozatos, talán memóriavesztés okozza. 
-* **Függőség időtartama teljesítménycsökkenést** – az alkalmazás lehetővé teszi a REST API-n, adatbázis vagy más függőségi hívásokat. A függőség a használt lassabban válaszol.
-* **Lassú teljesítmény mintát** – az alkalmazás úgy tűnik, hogy rendelkezik a teljesítménycsökkenés oka, hogy csak bizonyos kérelmek érinti. Például lapok betöltött lassabban egy típus a böngésző, mint a többire; vagy a kérelmek lassabban által kiszolgált egy adott kiszolgálóhoz. Jelenleg az algoritmusok tekintse meg lapbetöltési idők kérelem válaszidejét és függőségi válaszidejét.  
+* **Válaszidő romlása** – az alkalmazás elindult, mint amennyi lassabban válaszol a kérelmekre. A módosítás lehet, hogy törölték, például gyors, mert hiba történt a legutóbbi telepítés regresszió. Vagy megváltoztak, fokozatos, talán memóriavesztés által okozott. 
+* **A függőségi időtartam teljesítménycsökkenése** – az alkalmazás egy REST API-t, adatbázis vagy más függőségi hívást hajt végre. A függőség lassabban, mint amennyi válaszol.
+* **Lassú teljesítmény mintája** – az alkalmazás úgy tűnik, hogy rendelkezik egy teljesítményprobléma, amely csak bizonyos kérelmek van hatással. Például lapok töltődnek lassabban egyfajta, mint a többi; böngészővel vagy a kérések kiszolgált lassabban egy adott kiszolgálóról. Jelenleg az algoritmusok lapbetöltési idők, a kérelem válaszidők és a válaszidők függőségi meg.  
 
-Intelligens észlelési legalább 8 nap, alkalmazható kötet telemetriai adatot igényel a normál teljesítmény meghatározásához. Igen után az alkalmazás adott ideig futott, bármely jelentős probléma okozza értesítést.
-
-
-## <a name="does-my-app-definitely-have-a-problem"></a>Saját alkalmazás mindenképpen rendelkezik probléma?
-
-Nem, egy értesítés nem jelenti azt, hogy az alkalmazás véglegesen rendelkezik-e probléma. Egyszerűen javaslatot kapcsolatos valami érdemes szorosan meg több.
-
-## <a name="how-do-i-fix-it"></a>Hogyan tegye megjavítani?
-
-Az értesítések tárgya lehet a diagnosztikai adatokat. Például:
+Intelligens detektálás legalább 8 nap, egy közös üzemeltetése kötet telemetriai igényel a normál teljesítmény az alapértékeket. Tehát után az alkalmazás adott ideig futott, bármely jelentős probléma eredményez értesítést.
 
 
-![Íme egy példa a kiszolgáló válasza idő teljesítménycsökkenést észlelés](./media/app-insights-proactive-diagnostics/server_response_time_degradation.png)
+## <a name="does-my-app-definitely-have-a-problem"></a>Saját alkalmazás mindenképp rendelkezik a probléma?
 
-1. **Osztályozás**. Az értesítés elsajátíthatja, hogy hány felhasználó vagy az érintett hány művelet. Ez segíthet a probléma megoldásának prioritást.
-2. **Hatókör**. A hiba érinti az összes forgalom, vagy csak bizonyos lapok? Az korlátozott adott böngészők vagy helyek? Ez az információ az értesítés lehet lekérni.
-3. **Diagnosztizálja**. A diagnosztikai adatokat az értesítés gyakran, a probléma természetétől javaslatot tesz. Például ha válaszidő lelassul, ha nagy a kérések aránya, javasolja a kiszolgáló vagy a függőségek túlterhelt. 
+Nem, egy értesítés nem jelenti azt, hogy az alkalmazás mindenképp van probléma. Egyszerűen egy javaslatot vonatkozó további szorosan nézze érdemes.
 
-    Ellenkező esetben nyissa meg az Application Insightsban a teljesítmény-panelre. Itt megtalálja [Profilkészítő](app-insights-profiler.md) adatokat. Ha a kivételek, is megpróbálhatja a [pillanatkép hibakereső](app-insights-snapshot-debugger.md).
+## <a name="how-do-i-fix-it"></a>Hogyan javíthatom?
+
+Az értesítések közé tartoznak a diagnosztikai adatokat. Például:
+
+
+![Íme egy példa kiszolgálói válaszidő romlása észlelés](./media/app-insights-proactive-diagnostics/server_response_time_degradation.png)
+
+1. **Osztályozási**. Az értesítés megtudhatja, hány felhasználóra vagy hány műveletek érintettek. Ez segíthet a probléma prioritást rendelhet.
+2. **Hatókör**. A probléma érintő minden forgalmat, vagy csak egyes oldalak? Ez korlátozódik bizonyos böngészők vagy helyek? Ez az információ szerezhető az értesítést.
+3. **Diagnosztika**. Gyakran előfordul a diagnosztikai adatokat értesítési javaslatot tesz a probléma jellegétől. Például ha válaszidő lelassul, ha a kérések aránya túl magas, amely ajánl fel a kiszolgáló vagy a függőségek túlterhelt. 
+
+    Ellenkező esetben a teljesítmény panel megnyitása az Application Insightsban. Itt megtalálja [Profiler](app-insights-profiler.md) adatokat. Ha a kivételek, Ön is kipróbálhatja a [pillanatkép-hibakereső](app-insights-snapshot-debugger.md).
 
 
 
-## <a name="configure-email-notifications"></a>E-mail értesítések beállítása
+## <a name="configure-email-notifications"></a>E-mail értesítések konfigurálása
 
-Intelligens észlelési értesítések alapértelmezés szerint engedélyezve van, és azok, akik rendelkeznek küldött [tulajdonosai, közreműködő szerepkörrel rendelkező személyek és olvasókat a hozzáférést az Application Insights-erőforrás](app-insights-resources-roles-access-control.md). Ennek módosításához kattintson a **konfigurálása** a e-mailben értesítést, vagy az Application Insightsban intelligens észlelési beállítások megnyitása. 
+Az intelligens észlelés értesítések alapértelmezés szerint engedélyezve van, és azok, akik küldött [tulajdonosoknak, közreműködőknek és olvasóknak a hozzáférést az Application Insights-erőforrást](app-insights-resources-roles-access-control.md). Ez módosításához kattintson a **konfigurálása** az e-mail-értesítés vagy az Application Insights intelligens detektálási beállítások megnyitása. 
   
-  ![Intelligens észlelési beállítások](./media/app-insights-proactive-diagnostics/smart_detection_configuration.png)
+  ![Intelligens detektálási beállítások](./media/app-insights-proactive-diagnostics/smart_detection_configuration.png)
   
-  * Használhatja a **leiratkozhat** kapni az e-mail értesítések intelligens észlelési e-mailben szereplő hivatkozásra.
+  * Használhatja a **leiratkozás** hivatkozás az intelligens detektálási e-mailben az e-mail-értesítéseket kapni.
 
-E-mailek kapcsolatos intelligens észlelések teljesítményanomáliákat / nap / Application Insights-erőforrást egy e-mail korlátozódnak. Az e-mailt kapnak, csak akkor, ha legalább egy új, az adott napon észlelt probléma van. Ismétlődik minden üzenet nem jelenik meg. 
+Az intelligens észlelés teljesítményanomáliákat kapcsolatos e-mailek korlátozva, egy e-mailben naponta egy Application Insights-erőforrást. Az e-mailt küld, csak akkor, ha van legalább egy új problémát észlelt az adott napon. Nem jelenik meg semmilyen üzenet ismétlődik. 
 
 ## <a name="faq"></a>GYIK
 
-* *Igen a Microsoft személyzete nézze meg az adatok?*
-  * Nem. A szolgáltatás nem teljesen automatikus. Csak az értesítéseket kap. Az adatok [titkos](app-insights-data-retention-privacy.md).
-* *Az Application Insights által gyűjtött összes adat elemzése?*
-  * Jelenleg nem. Jelenleg a Microsoft elemzése kérelmek válaszideje, a függőségi válaszidő és a lap betöltési ideje. További metrikák elemzését a várakozó fájlok – Reméljük be van kapcsolva.
+* *Tehát Microsoft személyzete tekintse meg az adataimat?*
+  * Nem. A szolgáltatás nem teljesen automatikus. Csak az értesítéseket kap. Az adatok [privát](app-insights-data-retention-privacy.md).
+* *Application Insights által gyűjtött összes adat elemzése?*
+  * Nem, jelenleg. Jelenleg a válaszidő, függőségi válaszidő és oldalbetöltési idő kérelem elemezzük. További metrikák elemzése még megvalósítás Reméljük be van kapcsolva.
 
 * Milyen típusú alkalmazás ez működik?
-  * Ezek degradations bármely alkalmazás hozza létre a megfelelő telemetriai adatokat észlelt. Ha telepítette, akkor az Application Insights a webes alkalmazást, majd kérelmek és függőségei automatikusan követi. De a háttér-szolgáltatások vagy alkalmazások, ha Ön hívások szúrja be [TrackRequest()](app-insights-api-custom-events-metrics.md#trackrequest) vagy [TrackDependency](app-insights-api-custom-events-metrics.md#trackdependency), majd intelligens észlelési a megszokott módon fognak működni.
+  * Ezen romlását bármely olyan alkalmazásban, amely létrehozza a megfelelő telemetriai adatokat észlelt. Ha telepítette az Application Insights a webalkalmazásban, majd és -függőségek automatikusan nyomon követi. Azonban a Háttérszolgáltatásokhoz vagy más alkalmazásokat, ha hívásainak beszúrt [TrackRequest()](app-insights-api-custom-events-metrics.md#trackrequest) vagy [TrackDependency](app-insights-api-custom-events-metrics.md#trackdependency), majd az intelligens detektálás ugyanúgy fog működni.
 
-* *Saját anomáliadetektálási észlelési szabályok létrehozása vagy meglévő szabályok testreszabása?*
+* *Hozzon létre saját anomáliadetektálási észlelési szabályok vagy testre szabhatja a meglévő szabályokat?*
 
-  * Még nem, de a következőket teheti:
-    * [Riasztások beállítása](app-insights-alerts.md) , amely közli, ha egy metrika keverve használ a küszöbértéket.
-    * [Telemetriai adatok exportálása](app-insights-export-telemetry.md) való egy [adatbázis](app-insights-code-sample-export-sql-stream-analytics.md) vagy [a Power bi szolgáltatásba](app-insights-export-power-bi.md), ahol elemezhetjük magát.
+  * Még nincs de:
+    * [Riasztásokat állíthat be](app-insights-alerts.md) , mondja el, ha egy metrika átlépi a küszöbértéket.
+    * [Telemetria exportálása](app-insights-export-telemetry.md) , egy [adatbázis](app-insights-code-sample-export-sql-stream-analytics.md) vagy [Power bi-bA](app-insights-export-power-bi.md), ahol elemezheti, saját magának.
 * *Milyen gyakran történik az elemzés?*
 
-  * Futtatás az elemzés nap lefuttatjuk az előző napi (UTC időzónában teljes nap) telemetriai adatok.
-* *Ezáltal ez a név felülírandó [metrika riasztások](app-insights-alerts.md)?*
-  * Nem.  Azt nem véglegesíthető a minden, érdemes lehet rendellenes viselkedés észlelése.
+  * Mi az elemzés futtatása naponta az előző nap (teljes napja UTC időzónában) telemetriai adatok.
+* *A csere együtt növekszik [metrikákhoz kapcsolódó riasztások](app-insights-alerts.md)?*
+  * Nem.  Nem tudjuk véglegesítse minden, érdemes lehet rendellenes viselkedésének észlelésekor.
 
 
-* *Ha nem tesz semmit, egy értesítés válaszként, I kap egy emlékeztető?*
-  * Nem, egy üzenetet kap minden problémával kapcsolatos csak egyszer. Ha a probléma továbbra is fennáll, a hírcsatorna panel Intelligens észlelését frissíti.
-* *Az e-mailt elvész. Hol található az értesítéseket a portálon?*
-  * Az Application Insights az alkalmazás áttekintésében, kattintson a **intelligens észlelési** csempére. Nem lesz az értesítések találja mentése 90 nap biztonsági.
+* *Ha nem tesz semmit, válaszként egy értesítés, fog kapok emlékeztető?*
+  * Nem, akkor szóló üzenetet kap egyes problémák csak egyszer. Ha a probléma nem szűnik meg, a hírcsatorna-panelen az intelligens detektálási frissülnek.
+* *Megszakadt az e-mailt. Hol található az értesítéseket a portálon?*
+  * Az Application Insights áttekintése az alkalmazást, kattintson a **intelligens detektálás** csempére. Akkor fog futni, minden értesítés talált mentése biztonsági 90 nap.
 
 ## <a name="how-can-i-improve-performance"></a>Hogyan javíthatja a teljesítményt?
-Lassú és sikertelen válaszok amelyeket közül a legnagyobb frustrations webhely számára a saját tapasztalatunkat is tudja. Ezért fontos, a problémák.
+Sikertelen és a lassú válaszai közé tartoznak a legnagyobb frustrations webhely számára, mint már tudja, a saját környezetből. Ezért fontos problémák megoldása érdekében.
 
-### <a name="triage"></a>Osztályozás
-Első lépésként számít? Ha egy lap mindig lassú betöltése, de csak 1 %-át a hely felhasználóinak kell meg, lehet, hogy, hogy gondolniuk fontosabb részek a háttérbe. Másrészről Ha csak a felhasználók 1 % Nyissa meg, de minden egyes jelez kivételek, amely érdekében érdemes lehet vizsgál.
+### <a name="triage"></a>Osztályozási
+Első lépésként jelentősége? Ha egy lap mindig betöltődni, de a webhely felhasználóinak csak 1 %-át minden eddiginél kell nézni, talán rendelkezik állításoknak több fontos dolgot. Másrészről Ha csak 1 %-a felhasználó megnyithatja, de minden alkalommal jelez kivételt, amely lehet érdemes megvizsgálni.
 
-A hatás utasítás (érintett felhasználók vagy forgalom %) használható általános útmutatóként, de vegye figyelembe, hogy nincs-e a lényeg. Győződjön meg arról, hogy igazolják összegyűjtése.
+Általános útmutató a hatás utasítás (érintett felhasználók vagy %-a forgalmat) használata, de vegye figyelembe, hogy nincs-e a teljes képet. Gyűjtse össze az egyéb igazolást megerősítéséhez.
 
-Fontolja meg a hiba paramétereit. Ha a földrajzi-függő, állítsa be [rendelkezésreállás figyelésére szolgáló tesztek](app-insights-monitor-web-app-availability.md) többek között az adott régióban: egyszerűen hálózati problémák adódhatnak az adott területre.
+Fontolja meg a probléma a paramétereket. Ha földrajzi böngészőfüggő, állítsa be [rendelkezésre állási tesztek](app-insights-monitor-web-app-availability.md) többek között az adott régióban: egyszerűen van hálózati probléma az adott területre.
 
-### <a name="diagnose-slow-page-loads"></a>Lassúlap terhelések diagnosztizálása
-Hol jelentkezett a probléma? Lassan válaszol-e a kiszolgáló, a lap nagyon hosszú, vagy nem a böngészőt kell elvégezni megjelenítéséhez munka nagy?
+### <a name="diagnose-slow-page-loads"></a>Lassú lapbetöltés diagnosztizálása
+Hol található a probléma? Lassan válaszol-e a kiszolgáló, az oldal nagyon hosszú, vagy nem a böngészőben kell elvégezni, a megjelenítéséhez számos tennivalónk?
 
-A böngészők metrika panel megnyitásához. A böngésző lap betöltési ideje mutat be ahol állapotra vált, az idő szegmentált megjelenítését. 
+A böngészők metrika panel megnyitásához. A böngésző oldal betöltési idő mutatja az idő hol fog szegmentált megjelenítését. 
 
-* Ha **küldési kérelem ideje** értéke magas, a kiszolgáló válaszol lassan, vagy a kérelem a nagy mennyiségű adat post. Tekintse meg a [teljesítménymutatók](app-insights-web-monitor-performance.md#metrics) válaszidők vizsgálatára.
-* Állítson be [követési függőségi](app-insights-asp-net-dependencies.md) , hogy a lassúsága külső szolgáltatások vagy az adatbázis miatt.
-* Ha **válasz fogadása** elsődleges, a lap és a függő részek - JavaScript, CSS, és így tovább (de nem aszinkron módon betöltött adatokról) lemezképek hosszúak. Állítson be egy [elérhetőségi teszt](app-insights-monitor-web-app-availability.md), és ügyeljen arra, hogy állítsa be, hogy a függő részek betölteni. Amikor bizonyos adatokat, nyissa meg az eredményt részleteit, és bontsa ki a betöltési idők különböző fájlok megtekintéséhez.
-* Magas **ügyfél feldolgozási idejének** lassan futnak a parancsfájlok javasol. Ha az OK nem egyértelmű, fontolja meg néhány időzítési kódot, és időpontok trackMetric hívások küldése.
+* Ha **küldése kérelem időtartama** van magas, vagy a kiszolgáló válaszol lassan, vagy a kérelem egy bejegyzést a nagy mennyiségű adatot. Tekintse meg a [teljesítmény-mérőszámok](app-insights-web-monitor-performance.md#metrics) válaszidők vizsgálatára.
+* Állítsa be a [függőségi nyomkövetés](app-insights-asp-net-dependencies.md) , hogy a lassúsága miatt külső szolgáltatásokkal vagy az adatbázis.
+* Ha **válasz fogadása** domináns, az oldal és a függő részek – JavaScript, CSS, és így tovább (de aszinkron módon betöltött adatok) lemezképek hosszúak. Állítsa be egy [rendelkezésre állási teszt](app-insights-monitor-web-app-availability.md), és ügyeljen arra, hogy a függő részek betölteni a beállítást. Amikor eredmények beszerzése, nyissa meg az eredményt a részletek, és bontsa ki a betöltési időt, a különböző fájlok megtekintéséhez.
+* Magas **ügyfél feldolgozási ideje** lassan futnak a parancsfájlok javasol. Ha az OK nem egyértelmű, érdemes lehet hozzáadni egy időzítési kódrészletet, és trackMetric hívások küldése az időpontokat.
 
 ### <a name="improve-slow-pages"></a>Lassú lapok javítása
-A webes tanácsadás javítása a kiszolgáló válaszainak és lapbetöltési idők, ezért többször nem fognak összes itt megismételni a teljes van. Az alábbiakban néhány tippeket, amelyet már valószínűleg tudni kapcsolatban, csak az első végezni:
+Nincs tanácsadás javítása a kiszolgáló válasza és lapbetöltési idők, így azt nem próbál ismételje meg az összes itt a teljes webes. Íme néhány tipp, amely valószínűleg már ismert tudnivalókat, csak az első felhőmegoldásokat:
 
-* Lassú betöltése nagy fájlok miatt: a parancsfájlok és egyéb részeinek aszinkron módon betöltése. Ezen parancsfájl kötegelése. A fő lapján felosztása widgeteket, amely az adatok külön-külön betöltése. Ne küldjön egyszerű régi HTML hosszú táblázatok: egy parancsfájl segítségével az adatok JSON vagy más kompakt formátumú kérelem, majd töltse ki a tábla helyen. Nincsenek kiváló keretrendszerek, ez segít. (Ezek maguk után nagy parancsfájlok természetesen.)
-* Lassú server függőségek: fontolja meg az összetevők földrajzi elhelyezkedését. Például Azure használata, győződjön meg arról, hogy a webkiszolgáló és az adatbázis ugyanabban a régióban. Hajtsa végre a lekérdezések több információt kell olvassák be? Gyorsítótárazás vagy súgó kötegelés volna?
-* A kapacitás problémák: nézze meg a kiszolgálói metrikák válaszidejének és a kérelmek számát. Ha válaszidők aránytalanul csúcsait ügyfélkérelmek számát az a maximális, valószínű, hogy a kiszolgálók úgy módosítja a program.
+* Lassú betöltése big Data típusú fájlok miatt: a parancsfájlok és más aszinkron módon tölthető be. Használja a parancsfájl a kötegelés. A főoldalon felosztása widgetet, külön-külön betölteni az adatokat. Ne küldjön egyszerű régi HTML-táblázatok hosszú: parancsfájl használata az adatok kérés JSON vagy más kompakt formátumban, majd töltse ki a tábla helyen. Számos nagyszerű keretrendszerek mindez segítséget. (Is járnak, big Data típusú parancsfájlok természetesen.)
+* Kiszolgálóoldali függőségek lassú: fontolja meg a földrajzi helyeket az összetevők. Például az Azure használata esetén ellenőrizze, hogy a webalkalmazás-kiszolgáló és az adatbázis-e ugyanabban a régióban. Tegye lekérdezések lekéréséhez szükséges több információt? Gyorsítótárazás vagy súgó kötegelés lenne?
+* A kapacitás problémák: tekintse meg a kiszolgáló metrikáinak, válaszidők és a kérelmek számát. A kérések számát csúcsok aránytalanul kiugró válaszidők, valószínű, hogy a kiszolgálók úgy módosítja a program.
 
 
-## <a name="server-response-time-degradation"></a>Kiszolgáló válasza idő teljesítménycsökkenése
+## <a name="server-response-time-degradation"></a>Kiszolgálói válaszidő romlása
 
-A válasz idő teljesítménycsökkenést értesítés, miszerint:
+A válasz ideje teljesítménycsökkenés értesítés jelzi, hogy:
 
-* A szokásos válaszidő ehhez a művelethez képest válaszidőt.
-* Érintett felhasználók számát.
-* Átlagos válaszidő és 90 PERCENTILIS válaszideje ezt a műveletet a nap az észlelési és előtt 7 nap. 
-* Ez az észlelési napját és 7 nappal az előtt művelet kérelmek száma.
-* Ebben a műveletben teljesítménycsökkenést és a kapcsolódó függőségek degradations közötti korreláció. 
-* Hivatkozásokat tartalmaz, akkor a probléma diagnosztizálása érdekében.
-  * Szolgáltatásprofil-elemzői adat megjelenítéséhez, ahol művelet töltött idő, van (a hivatkozás akkor használható, ha ehhez a művelethez az észlelési időszak során összegyűjtött Profilkészítő nyomkövetési példák). 
-  * Teljesítmény-jelentések a metrika Intézőben, ahol Ön is részletekbe menően idő tartományszűrő ehhez a művelethez.
-  * Keresse meg a hívás adott hívás tulajdonságainak megtekintése.
-  * Hiba – Ha jelent ez azt jelenti, hogy hiba történt a művelet, amely előfordulhat, hogy hozzájárultak teljesítménycsökkenés > 1 száma.
+* A válaszidő, ehhez a művelethez a szokásos válaszidő képest.
+* Hány felhasználó érintett.
+* Átlagos válaszidő, és ezt a műveletet a nap az észlelési és előtt 7 nappal 90 PERCENTILIS válaszideje. 
+* Ez az az észlelési és 7 nap előtt művelet kérelmek száma.
+* Ez a művelet csökkenése és a kapcsolódó függőségek romlását korrelációját. 
+* Hivatkozások segítenek diagnosztizálni a problémát.
+  * Profiler-nyomkövetések megjelenítéséhez, ahol a művelet időt vesz igénybe (a hivatkozás áll rendelkezésre, ha ehhez a művelethez az észlelési időszak során összegyűjtött Profiler nyomkövetést példák). 
+  * Metrikaböngésző, ahol Ön is részletekbe menően vizsgálhatja az tartomány/Időszűrők ehhez a művelethez a jelentések teljesítményét.
+  * Keresse meg a hívás meghatározott hívás tulajdonságainak megtekintése.
+  * A jelentések hiba – Ha a count > 1 Ez azt jelenti, hogy hiba történt a művelet, amely a teljesítménycsökkenés lehet, hogy hozzájárult a.
 
-## <a name="dependency-duration-degradation"></a>A függőségi időtartama teljesítménycsökkenése
+## <a name="dependency-duration-degradation"></a>A függőségi időtartam teljesítménycsökkenése
 
-A modern alkalmazásnak nagyobb micro szolgáltatások tervezett módszert alkalmaz, ami sok esetben nagy megbízhatóságot külső szolgáltatások fogad el. Például ha az alkalmazás egyes adatplatform vagy is készít a saját botot lesz valószínűleg továbbítják a néhány kognitív szolgáltató ahhoz, hogy a botok több emberi módon interaktív és bizonyos adatokat tároló szolgáltatás botot való lekérésére a válaszokat a.  
+A modern alkalmazásnak a mikroszolgáltatásokhoz tervezési megközelítés, ami számos esetben nehéz megbízhatóság a külső szolgáltatások egyre több fogad el. Például ha az alkalmazás támaszkodik bizonyos adatplatform vagy még akkor is, ha létre saját bot lesz valószínűleg továbbítási néhány a cognitive services-szolgáltató engedélyezése interaktív módon a robotok és néhány data store szolgáltatás felhasználóról lekérni a válaszok robot m.  
 
-Példa függőségi teljesítménycsökkenést értesítés:
+A példában a függőségi teljesítménycsökkenés értesítés:
 
-![Függőség időtartama teljesítménycsökkenést észlelés példa](./media/app-insights-proactive-diagnostics/dependency_duration_degradation.png)
+![Íme egy példa a függőségi időtartam teljesítménycsökkenése észlelés](./media/app-insights-proactive-diagnostics/dependency_duration_degradation.png)
 
-Figyelje meg, amely jelzi, hogy:
+Figyelje meg, amely megadja, hogy:
 
 * A szokásos válaszidő ehhez a művelethez képest időtartama
 * Hány felhasználó érintett
-* Átlagos és 90 PERCENTILIS időtartama a függőség észlelését napját és előtt 7 nap
-* Függőség száma meghívja a az észlelés és előtt 7 nap
-* Hivatkozások segítséget nyújtanak a probléma diagnosztizálása
-  * Teljesítmény jelentéseinek a függőség metrika Explorerben
+* Átlagos és az észlelési és előtt 7 nappal a Pro tuto závislost 90 PERCENTILIS időtartama
+* Az észlelési és előtt 7 nappal a hívások függőségi száma
+* Hivatkozások segítenek a probléma diagnosztizálása
+  * Teljesítményjelentések készítésére a Metrikaböngésző Pro tuto závislost
   * Keresse meg a függőségi hívás hívások tulajdonságainak megtekintése
-  * Hiba jelentések – Ha az észlelési időszakban, előfordulhat, hogy hozzájárultak időtartama teljesítménycsökkenést hívások száma > 1 Ez azt jelenti, hogy a függőségi sikertelen volt. 
-  * Nyissa meg a függőségi időtartamát és a count számító lekérdezéseket elemzés  
+  * Hiba jelentések – Ha a count > 1 Ez azt jelenti, amely volt sikertelen függőségi időtartam teljesítménycsökkenése előfordulhat, hogy hozzájárult az észlelési időszakban. 
+  * Nyissa meg a elemzési lekérdezéseket, amelyek alapján számítja ki a függőségi időtartam és a száma  
 
-## <a name="smart-detection-of-slow-performing-patterns"></a>A lassú teljesítő minták intelligens észlelése 
+## <a name="smart-detection-of-slow-performing-patterns"></a>Intelligens detektálás lassú végrehajtása minták 
 
-Az Application Insights megkeresése, amelyek csak hatással vannak a felhasználók egy részét, vagy csak az egyes esetekben felhasználókat érintő teljesítményproblémákat. Például a lapok betöltési értesítést más típusú böngészők, mint a böngésző egyik típusú lassabb, vagy ha a kérések lassabban rendelkezésre az adott kiszolgálóhoz. Feltérképezésére is alkalmas kombinációk, kapcsolódó problémák, mint például adott operációs rendszert használó ügyfelek számára egy földrajzi terület lassúlap tölti be.  
+Az Application Insights megkeresése, amelyek csak érintik bizonyos része a felhasználók számára, vagy csak az egyes esetekben felhasználókat érintő teljesítménybeli problémák. Például oldalak terhelési értesítési egyfajta böngésző, mint a böngészők, más típusú lassabb lesz-e, vagy ha kérelmek egy adott kiszolgálóról lassabban fájlnévkiterjesztései. Azt is felfedezhetik tulajdonságok kombinációja kapcsolódó problémák, például a lassú oldal megfelelően töltődik be egy földrajzi területen adott operációs rendszert használó ügyfelek számára.  
 
-Hasonló rendellenességeket nagyon nehéz észlelése csak az adatok vizsgálatával, de több mint érdemes. Gyakran azok csak felület, amikor a felhasználók panaszkodnak mert. Addigra túl későn: az érintett felhasználók már vált a versenytársak!
+Az alábbiakhoz hasonló rendellenességek észlelése az adatok vizsgálatával csak nagyon nehéz, de gyakoribbak, mint gondolná. Gyakran azok csak surface, amikor az ügyfelek panaszok. Adott időpontig késő: az érintett felhasználók már vált át a versenytársak!
 
-Jelenleg az algoritmusok tekintse meg lapbetöltési idők, a kérelem a válaszhoz szükséges idő a kiszolgáló és a függőségi válaszidejét.  
+Jelenleg az algoritmusok lapbetöltési idők, a kérelem válaszidejének a kiszolgálón és a válaszidők függőségi meg.  
 
-Nincs a küszöbértékek és szabályok konfigurálása. Gépi tanulás és adatbányászati algoritmusokat használunk rendellenes minták észlelésére.
+Nem kell semmilyen küszöbérték beállítása, vagy a szabályok konfigurálása. Machine learning és az adatbányászati algoritmusokat rendellenes minták észlelésére szolgálnak.
 
-![Az e-mail riasztást kattintson a hivatkozásra kattintva nyissa meg a diagnosztikai jelentés az Azure-ban](./media/app-insights-proactive-performance-diagnostics/03.png)
+![Az e-mail riasztást kattintson a hivatkozásra kattintva nyissa meg a diagnosztikai jelentést az Azure-ban](./media/app-insights-proactive-performance-diagnostics/03.png)
 
-* **Amikor** megjeleníti az időt a rendszer észlelte a problémát.
-* **Mi** ismerteti:
+* **Amikor** mutat be a rendszer észlelte a problémát idő.
+* **Milyen** ismerteti:
 
   * A problémát észlelt;
-  * Az eseményeket, amelyek észleltünk készletét jellemzői jelenik meg a probléma viselkedését.
-* A táblázat összehasonlítja a gyengén teljesítő készlet az összes esemény átlagos viselkedését.
+  * Találtunk eseménycsoportot jellemzőit jelenik meg a probléma viselkedését.
+* A táblázat összehasonlítja a gyengén teljesítő beállítása minden más esemény átlagos működése.
 
-Kattintson az egyes hivatkozásokra kattintva nyissa meg a metrika Explorer, és keresse a megfelelő jelentésekben, az idő-és a lassú teljesítő csoport tulajdonságainak szűrve.
+Kattintson a hivatkozásokra kattintva nyissa meg a Metrikaböngésző, és keresse a megfelelő jelentésekben, idő-és a lassú végrehajtása-készlet tulajdonságainak szűrve.
 
-Időtartomány és telemetriai adatok felfedezése szűrők módosíthatók.
+Időtartomány és szűrőket, Fedezze fel a telemetriai adatok módosításához.
 
 ## <a name="next-steps"></a>További lépések
-A diagnosztikai eszközök segítségével vizsgálja meg az alkalmazás a telemetriai adatok:
+Ezek a diagnosztikai eszközök segítséget nyújt az alkalmazásából származó telemetriai adatok vizsgálata:
 
 * [Profilkészítő](app-insights-profiler.md) 
-* [Pillanatkép hibakereső](app-insights-snapshot-debugger.md)
+* [Pillanatkép-hibakereső](app-insights-snapshot-debugger.md)
 * [Elemzés](app-insights-analytics-tour.md)
-* [Elemzés intelligens diagnosztika](app-insights-analytics-diagnostics.md)
+* [Intelligens diagnosztika Analytics](app-insights-analytics-diagnostics.md)
 
-Intelligens észlelések rendszer teljesen automatikus. De lehet, hogy milyen néhány további riasztások beállítása?
+Az intelligens észlelés teljesen automatikus. De esetleg szeretné néhány további riasztásokat állíthat be?
 
-* [Manuálisan konfigurált metrika riasztások](app-insights-alerts.md)
-* [A webteszt rendelkezésre állása](app-insights-monitor-web-app-availability.md)
+* [Manuálisan konfigurált metrikákhoz kapcsolódó riasztások](app-insights-alerts.md)
+* [Rendelkezésre állási webes tesztek](app-insights-monitor-web-app-availability.md)

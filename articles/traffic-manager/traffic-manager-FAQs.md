@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/09/2018
+ms.date: 09/18/2018
 ms.author: kumud
-ms.openlocfilehash: 6c196d16258e4bf000f998899086c7a6d0197fba
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 8c3d632063c8ed9347aa870d0971cc09dc1a658e
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42054278"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46129539"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>A TRAFFIC Manager – gyakori kérdések (GYIK)
 
@@ -72,7 +72,7 @@ A probléma megkerüléséhez azt javasoljuk egy HTTP-átirányítás forgalom a
 A Traffic Manager csupasz tartományok esetében teljes körűen támogatja még a szolgáltatás-megvalósítás van követi. A szolgáltatás kérelem által a támogatási regisztrálhatja [lehetőségre szavazott azt, hogy a közösségi visszajelzések webhelyünkön](https://feedback.azure.com/forums/217313-networking/suggestions/5485350-support-apex-naked-domains-more-seamlessly).
 
 ### <a name="does-traffic-manager-consider-the-client-subnet-address-when-handling-dns-queries"></a>Nem a Traffic Manager fontolja meg az ügyfél alhálózati cím DNS-lekérdezések kezelése esetén? 
-Igen, a DNS-lekérdezés forrás IP-címe mellett kap (Ez általában a DNS-feloldó IP-címét), Geographic és a teljesítmény-útválasztási módszerek keresések végrehajtása, ha a traffic manager is figyelembe veszi az ügyfél alhálózati cím esetén tartalmazza a lekérdezés által a feloldó a kérés a végfelhasználó nevében.  
+Igen, a DNS-lekérdezés forrás IP-címe mellett kap (Ez általában a DNS-feloldó IP-címét), ha keresések végrehajtása Geographic, teljesítmény- és alhálózat útválasztási módszer, a traffic manager is figyelembe veszi az ügyfél alhálózati cím Ha a lekérdezés által a feloldó a kérés a végfelhasználó nevében szerepel.  
 Pontosabban a [RFC 7871 – ügyfél-alhálózathoz, a DNS-lekérdezések](https://tools.ietf.org/html/rfc7871) biztosít, amely egy [Bővítménymechanizmussal DNS (EDNS0)](https://tools.ietf.org/html/rfc2671) feloldók, amelyek támogatják ezt az ügyfél-alhálózat címen át is.
 
 ### <a name="what-is-dns-ttl-and-how-does-it-impact-my-users"></a>Mi a DNS-Élettartamot, és hogyan ez befolyásolja a felhasználók?
@@ -133,6 +133,39 @@ Egy régióban egy profilon belül csak egy végpont rendelhetők, ha a földraj
 ### <a name="are-there-any-restrictions-on-the-api-version-that-supports-this-routing-type"></a>Vannak-e az API-verzióban, amely támogatja az útválasztási típus korlátozások?
 
 Igen, csak az API 2017-03-01-es verzió és az újabb támogatja a földrajzi útválasztásának írja. Bármely régebbi API-verziók nem használható földrajzi útválasztási típusú létrehozott profilok vagy földrajzi régiók hozzárendelése végpontok. Profilok lekérése egy Azure-előfizetéshez egy régebbi API-verzió használata esetén minden olyan földrajzi útválasztási típusú profil nem jelennek meg. Ezenkívül régebbi API-verziók használata esetén minden olyan profilt, amely rendelkezik egy földrajzi hozzárendelés végpontokat, nem rendelkezik a földrajzi régió hozzárendelése látható adott vissza.
+
+## <a name="traffic-manager-subnet-traffic-routing-method"></a>A TRAFFIC Manager alhálózati forgalom-útválasztási módszer
+
+### <a name="what-are-some-use-cases-where-subnet-routing-is-useful"></a>Mik az egyes használati esetek, ahol alhálózat útválasztási hasznos?
+Alhálózat útválasztási teszi lehetővé teszi elérhetővé a forrás IP-címét a DNS-kérelmek IP-cím által azonosított felhasználók adott részhalmazához tapasztalatok megkülönböztetéséhez. Példaként bemutató különböző tartalommal lenne, ha felhasználók csatlakoznak egy webhelyre kínál a vállalati központ. Egy másik lenne bizonyos internetszolgáltatók csak eléréséhez a végpontok, amelyek támogatják a csak IPv4-kapcsolat, ha ezeket az internetszolgáltatók az optimálisnál par teljesítmény IPv6 használatakor a felhasználók korlátozása.
+A másik ok az alhálózat útválasztási módszer együtt más egymásba ágyazott profilelérési profilok beállítása. Például ha a felhasználók használni földrajzi útválasztási mód a geokerítés-kívánt, de egy adott internetszolgáltató szeretne egy másik útválasztási módszert, profil withy alhálózat útválasztási módszer a szülő profilként és a is felülbírálása egy adott gyermek pro használatára, hogy az Internetszolgáltató fájl- és Mindenki másnak a standard földrajzi profil rendelkezik.
+
+### <a name="how-does-traffic-manager-know-the-ip-address-of-the-end-user"></a>Hogyan, hogy a Traffic Manager a felhasználó IP-címét?
+Végfelhasználói eszközöket általában egy DNS-feloldási használnak ehhez a DNS-ben, a felhasználók nevében. A kimenő IP-címét az ilyen feloldók, mi a Traffic Manager a forrás IP-címként látja. Emellett alhálózat esetén használt útválasztási módszer is megvizsgálja, hogy van-e a kérelemmel együtt átadott EDNS0 kiterjesztett ügyfél alhálózat (ECS) információt. Ha ECS információra jelen van, és határozza meg, az Útválasztás-címét. A forrás IP-címét a lekérdezés ECS információ hiányában útválasztási célokat szolgál.
+
+### <a name="how-can-i-specify-ip-addresses-when-using-subnet-routing"></a>Hogyan lehet megadni IP-címek alhálózat útválasztási használatakor?
+Az IP-címek társítása a végpont kétféle módon adható meg. Első lépésként segítségével négyportos pontozott decimális oktett jelölés kezdő és záró címekkel adja meg a tartományt (például 1.2.3.4-5.6.7.8 vagy 3.4.5.6-3.4.5.6). A második a CIDR-jelölés használatával adja meg a tartományt (például 1.2.3.0/24). Több tartományt is adja meg, és a egy tartomány készlet mindkét jelöléssel típusok használhatók. Néhány korlátozás a alkalmazni.
+-   Meg nem lehet átfedés-címtartományok, mert csak egy végponttal képezhető le kell minden egyes IP
+-   A kezdőcím nem lehet több, mint a záró cím
+-   A CIDR-jelölés esetén az IP-cím, mielőtt a (/) kell lennie a kezdő cím-tartományt (például 1.2.3.0/24 érvényes, de 1.2.3.4.4/24 nincs érvényes)
+
+### <a name="how-can-i-specify-a-fallback-endpoint-when-using-subnet-routing"></a>Hogyan lehet megadni egy tartalék végpont alhálózat útválasztási használatakor?
+Egy alhálózathoz útválasztási profilban Ha nincs alhálózattal rendelve, egy végponttal rendelkezik minden olyan kérelmet, amely nem egyezik a többi végpont azzal fejezhesse be itt. Azt javasoljuk, hogy az ilyen egy tartalék végpontot a profiljában óta a Traffic Manager eredménye NXDOMAIN választ vissza, ha a kérelem érkezik, és nincs hozzárendelve az olyan végpontok, vagy ha van leképezve a végpont azonban, hogy a végpont állapota nem kifogástalan.
+
+### <a name="what-happens-if-an-endpoint-is-disabled-in-a-subnet-routing-type-profile"></a>Mi történik, ha a végpont le van tiltva, az egy alhálózathoz útválasztási típus profilt?
+Egy profil útválasztási alhálózat Ha rendelkezik az adott végpont le van tiltva, a Traffic Manager fog viselkedni, mintha az, hogy a végpont és a rendelkezik alhálózat-hozzárendelések nem létezik. Ha egy lekérdezést, amely lenne az IP-cím-hozzárendelés már párosítva érkezik, és a végpont le van tiltva, a Traffic Manager egy tartalék végpontot (az egyik nem leképezések) adja vissza, vagy ha ilyen végpont nem található, választ küld eredménye NXDOMAIN
+
+## <a name="traffic-manager-multivalue-traffic-routing-method"></a>A TRAFFIC Manager típushoz forgalom-útválasztási módszer
+
+### <a name="what-are-some-use-cases-where-multivalue-routing-is-useful"></a>Mik az egyes használati esetek, ahol többértékű útválasztás akkor hasznos?
+Egyetlen lekérdezés választ több kifogástalan állapotú végpontok többértékű útválasztás adja vissza. A fő ez előnye, hogy a végpont állapota nem megfelelő, az ügyfél a további beállítások érhetők el anélkül, hogy egy másik DNS-hívás (ami előfordulhat, hogy ugyanaz az érték visszaadása egy felsőbb szintű gyorsítótár) újra. Ez a rendelkezésre állás az állásidő minimalizálása érdekében szeretné érzékeny alkalmazások esetén alkalmazható.
+Egy másik többértékű útválasztási módszer használata egy végpontot az "kettős többcímes", mind az IPv4 és IPv6-címeket, és kíván adni a hívó mindkét lehetőség, ha a végpont-kapcsolatot kezdeményez közül választhat.
+
+### <a name="how-many-endpoints-are-returned-when-multivalue-routing-is-used"></a>Hány végpontok adja vissza a többértékű útválasztás használatakor?
+A visszaadandó endopints maximális számát is megadhat, és típushoz reagál nem több, mint számos kifogástalan állapotú végpontok lekérdezés fogadásakor. Ez a konfiguráció maximális lehetséges értéke 10.
+
+### <a name="will-i-get-the-same-set-of-endpoints-when-multivalue-routing-is-used"></a>Többértékű útválasztás használatakor fog jelenik ugyanazokat a végpontok?
+Nem tudjuk garantálni, hogy ugyanazokat a végpontok visszaad minden lekérdezésben. Ez az a tény, hogy néhány, a végpontok előfordulhat, hogy sérült állapotba, nem szerepelnek a válasz ekkor is érintett
 
 ## <a name="real-user-measurements"></a>Valós felhasználói mérések
 
@@ -257,7 +290,7 @@ Igen. Felhőszolgáltatás staging (átmeneti) tárhelyek beállítható a Traff
 
 A TRAFFIC Manager jelenleg nem biztosít IPv6-addressible névkiszolgálókat. A Traffic Manager továbbra is használható az IPv6-alapú ügyfelek IPv6-végpontokhoz való csatlakozáshoz. Egy ügyfél nem kérést DNS közvetlenül a Traffic Manager. Ehelyett az ügyfél használja egy rekurzív DNS-szolgáltatás. Egy csak IPv6-alapú ügyfél kérelmeket küld a rekurzív DNS szolgáltatás IPv6-n keresztül. Majd a rekurzív szolgáltatás használatával az IPv4 Traffic Manager névkiszolgálóit csatlakoznia kell.
 
-A TRAFFIC Manager válaszol a végpont DNS-névvel. IPv6 végpont támogatása érdekében a végpont DNS-név IPv6-címre mutató DNS AAAA típusú rekord léteznie kell. A TRAFFIC Manager állapot-ellenőrzések csak IPv4-címeket támogatja. A szolgáltatás elérhetővé tenni egy IPv4-végpontot, a DNS-nevét kell.
+A TRAFFIC Manager válaszol a DNS-nevét vagy a végpont IP-címét. IPv6 végpont támogatásához, két lehetőség van. A végpont, amely rendelkezik egy kapcsolódó AAAA típusú rekord és az állapot-ellenőrzés lesz, a végpont és vissza azt egy CNAME rekordot a lekérdezésekre adott válaszok írja be a Traffic Manager DNS-sel neveként is hozzáadhat. Azt is megteheti, hogy a végpont, közvetlenül az IPv6-cím és a Traffic Manager használatával adja vissza egy AAAA típusú rekordot a lekérdezésekre adott válaszok. 
 
 ### <a name="can-i-use-traffic-manager-with-more-than-one-web-app-in-the-same-region"></a>Használhatom-e a Traffic Manager ugyanabban a régióban egynél több webalkalmazást?
 
@@ -300,6 +333,46 @@ A TRAFFIC manager nem tud biztosítani az összes tanúsítvány érvényesíté
 * SNI kiszolgáló oldali tanúsítványok nem támogatottak.
 * Ügyfél-tanúsítványok nem támogatottak.
 
+### <a name="do-i-use-an-ip-address-or-a-dns-name-when-adding-an-endpoint"></a>Használható IP-cím vagy egy DNS-nevet a végpont hozzáadása során?
+Háromféle lehetőség az azonnali irányíthatják őket – DNS-névként, egy IPv4-címet és egy IPv6-cím használatával végpontok hozzáadása a TRAFFIC Manager támogatja. Ha a rendszer hozzáadja a végpontot egy IPv4- vagy IPv6-címet a lekérdezésekre adott válaszok lesz rekordtípus A vagy AAAA, illetve. Ha a végpont DNS-névként lett hozzáadva, majd a lekérdezésekre adott válaszok lesz CNAME típusú rekord. Vegye figyelembe, hogy csak az IPv4 vagy IPv6-címet az engedélyezett végpontok hozzáadása az a végpont meg "Külső" típusa nem.
+A három címzési végponttípusok által támogatott összes útválasztási módszerek és a figyelési beállításokat.
+
+### <a name="what-types-of-ip-addresses-can-i-use-when-adding-an-endpoint"></a>Milyen típusú IP-cím használható a végpont hozzáadása során?
+Traffic Manager lehetővé teszi, hogy IPv4- vagy IPv6-végpontokat határoz meg. Az alább felsorolt néhány korlátozások vonatkoznak:
+- Fenntartott magánhálózati IP-címterek megfelelő címek nem engedélyezettek. Ezek a címek közé tartoznak az feltüntettük az RFC 1918, RFC 6890, RFC 5737, RFC 3068, RFC 2544 és RFC 5771
+- A cím nem tartalmazhat egyetlen portszámot (megadhatja a használandó portokat a konfigurációs profil beállításaiban) 
+- Két különböző végpontnak nem található ugyanazzal a profillal rendelkezhet az azonos céloldali IP-cím
+
+### <a name="can-i-use-different-endpoint-addressing-types-within-a-single-profile"></a>Használható a különböző végpont címzést egyetlen profilon belül típusok?
+Nem, a Traffic Manager teszi lehetővé az értékek nagyságrendjeit címzési végponttípusok belül egy profilt, kivéve a kis-és a egy profilt a többértékű útválasztási típus, ahol kombinálhatja az IPv4 és IPv6-címzési típusok
+
+### <a name="what-happens-when-an-incoming-querys-record-type-is-different-from-the-record-type-associated-with-the-addressing-type-of-the-endpoints"></a>Mi történik, ha egy beérkező lekérdezés rekordtípus eltér a végpontok címzési típusú társított rekordtípus?
+A profil elleni fogadásakor egy lekérdezést, a Traffic Manager először megkeresi a végpontot, amely a megadott útválasztási módszer alapján vissza kell és a végpontok állapotát. Ezután úgy tűnik, a bejövő lekérdezésre kért rekordtípus és a rekordtípus, az alábbi táblázat alapján válasz visszaküldése előtt a végponthoz társított.
+
+A profilok az eltérő típushoz bármilyen másik útválasztási módszert:
+|A bejövő lekérdezési kérés|    Végpont típusa|  A megadott válasz|
+|--|--|--|
+|BÁRMELY |  A / AAAA / CNAME |  Céloldali végpont| 
+|A |    A / CNAME | Céloldali végpont|
+|A |    AAAA |  NODATA |
+|AAAA | AAAA / CNAME |  Céloldali végpont|
+|AAAA | A | NODATA |
+|CNAME |    CNAME | Céloldali végpont|
+|CNAME  |A / AAAA | NODATA |
+|
+Profilok esetén használt útválasztási módszer beállítása típushoz:
+
+|A bejövő lekérdezési kérés|    Végpont típusa | A megadott válasz|
+|--|--|--|
+|BÁRMELY |  A többféle a és AAAA | Cél végpontok|
+|A |    A többféle a és AAAA | Adjon meg egy, csak cél végpontok|
+|AAAA   |A többféle a és AAAA|     Csak az AAAA típusú cél végpontok|
+|CNAME |    A többféle a és AAAA | NODATA |
+
+### <a name="can-i-use-a-profile-with-ipv4--ipv6-addressed-endpoints-in-a-nested-profile"></a>Használhatok egy profil IPv4 / IPv6 címzett egymásba ágyazott profilelérési végpontok?
+Igen, azzal a kivétellel, hogy a profil típusa típushoz nem lehet egymásba ágyazott profilelérési a szülő profil állíthatja be.
+
+
 ### <a name="i-stopped-an-azure-cloud-service--web-application-endpoint-in-my-traffic-manager-profile-but-i-am-not-receiving-any-traffic-even-after-i-restarted-it-how-can-i-fix-this"></a>Egy Azure-felhőszolgáltatásban leállítottam vagy webes alkalmazás végpontot a Traffic Manager-profil, de nem érkezik forgalom tudok újraindítani azt után is. Hogyan javíthatom ezt?
 
 Ha a Azure-beli felhőalapú szolgáltatás, vagy webes alkalmazás végpontjának leállt a Traffic Manager befejezi az állapotát, és újraindítja az állapot-ellenőrzések csak akkor, ha azt észleli, hogy a végpont újraindítása. Ez a késleltetés elkerülése érdekében tiltsa le, és ezután újraengedélyezni, hogy a végpont a Traffic Manager-profilt, a végpont újraindítását követően.   
@@ -326,9 +399,13 @@ A Traffic Manager ezek a beállítások használatával biztosíthat feladatátv
 
 A TRAFFIC Manager figyelési beállítások vannak egy profil szint szerint. Ha csak egy végpont használandó figyelési beállítás van szüksége, azt hajtható végre, hogy a végpont, hogy egy [profil beágyazott](traffic-manager-nested-profiles.md) amelynek figyelési beállítások nem azonosak a szülő-profilt.
 
-### <a name="what-host-header-do-endpoint-health-checks-use"></a>Milyen gazdagép fejléc nincs végpont állapot-ellenőrzések használatát?
+### <a name="how-can-i-assign-http-headers-to-the-traffic-manager-health-checks-to-my-endpoints"></a>Hogyan is hozzárendelhetők HTTP-fejléceket, a Traffic Manager állapot-ellenőrzések a végpontokhoz?
+Traffic Manager lehetővé teszi, hogy adja meg az egyéni fejlécek az a HTTP (S) állapot-ellenőrzések kezdeményezi a végpontokra. Adjon meg egy egyéni fejlécet szeretne, ha ezt a profilt (az összes végpontokra vonatkozik) szintjén, vagy adja meg a végpont szintjén. Ha egy fejléc mindkét szinten van definiálva, a végpont szintjén megadott egy profil szintje felülírja.
+Ez egy gyakori használati eset állomásfejléc meg úgy, hogy a Traffic Manager-kérelmek előfordulhat, hogy van irányítva megfelelően egy végpontnak egy több-bérlős környezetben futtatott. Ezt egy másik használati eset, hogy azonosítsa a Traffic Manager kérelmeit a végpontok HTTP (S) kérelmekről készült naplók
 
-A TRAFFIC Manager HTTP a protokolu HTTPS állapot-ellenőrzések állomásfejléc használ. A Traffic Manager által használt fejlécét kötelező a végpont target a profilban konfigurált nevét. Az állomásfejlécnek a használt érték nem adható meg külön a cél tulajdonságból.
+## <a name="what-host-header-do-endpoint-health-checks-use"></a>Milyen gazdagép fejléc nincs végpont állapot-ellenőrzések használatát?
+Nincs egyéni gazdagép fejléc beállítás áll rendelkezésre, ha az a Traffic Manager által használt állomásfejléc akkor, ha elérhető a végpont target a profilban konfigurált DNS-nevét. 
+
 
 ### <a name="what-are-the-ip-addresses-from-which-the-health-checks-originate"></a>Mik azok az IP-címek, amelyről az állapot-ellenőrzések származnak?
 

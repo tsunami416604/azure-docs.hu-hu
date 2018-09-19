@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: shared-capabilities
 author: georgewallace
 ms.author: gwallace
-ms.date: 05/08/2018
+ms.date: 09/18/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 211d79f387697ce850ac645ef65338c216e2bd76
-ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
+ms.openlocfilehash: 3d8492d2a8982c9c85bfc91867f7eb6c2da04e58
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2018
-ms.locfileid: "43382195"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46294764"
 ---
 # <a name="scheduling-a-runbook-in-azure-automation"></a>Runbook ütemezése az Azure Automationben
 
@@ -50,7 +50,10 @@ Létrehozhat egy új ütemezést a runbookok az Azure Portalon vagy a Windows Po
 1. Válassza ki az Azure Portalon, az automation-fiók **ütemezések** a szakaszában **megosztott erőforrások** a bal oldalon.
 1. Kattintson a **ütemezés hozzáadása** az oldal tetején.
 1. Az a **új ütemezés** panelen adjon meg egy **neve** és opcionálisan egy **leírás** az új ütemezés számára.
-1. Válassza ki, hogy az ütemezés egy alkalommal fut le, vagy ismétlődő ütemezés szerint kiválasztásával **egyszer** vagy **ismétlődési**. Ha **egyszer** adjon meg egy **kezdési idő**, és kattintson a **létrehozás**. Ha **ismétlődési**, adjon meg egy **kezdési idő** és a gyakoriságát, hogy milyen gyakran szeretné a runbook ismételje meg – a **óra**, **nap**, **hét**, vagy **hónap**. Ha **hét** vagy **hónap** a legördülő listából a **ismétlődési beállítást** megjelenik a panelen, valamint kiválasztáskor, a **ismétlődési beállítást** ablaktáblán jelenik meg, és kiválaszthatja a hét napja, ha a kiválasztott **hét**. Ha a kiválasztott **hónap**, szerint is választhat **weekdays** vagy a naptár a hónap adott napjain és végül szeretné futtatni a hónap utolsó napján, vagy sem, és kattintson a **OK**.
+1. Válassza ki, hogy az ütemezés egy alkalommal fut le, vagy ismétlődő ütemezés szerint kiválasztásával **egyszer** vagy **ismétlődő**. Ha **egyszer** adjon meg egy **kezdési idő**, és kattintson a **létrehozás**. Ha **ismétlődő**, adjon meg egy **kezdési idő** és a **Ismétlődés minden**, válassza ki a gyakoriságot, hogy milyen gyakran szeretné a runbook ismételje meg – a **óra**, **nap**, **hét**, vagy **hónap**.
+    1. Ha **hét**, választhat a hét azon napjai, listájának rendelkezésre állnak. Válassza ki a kívánt számú nappal. Az első futtatásakor az ütemezés a kiválasztott a kezdő időpont utáni első napján fog történni.
+    2. Ha **hónap**, akkor különböző lehetőségeket vannak megadva. Az a **havi occurrances** lehetőséget, válassza ki vagy **hónap napjai** vagy **napok**. Ha úgy dönt, **hónap napjai** naptárban látható, amely lehetővé teszi, hogy válassza ki a kívánt számú nappal. Ha például nem következik be, az aktuális hónap 31 dátumot, az ütemezés nem fog futni. Ha azt szeretné, hogy az utolsó nappal futtatni az ütemezést, válassza a **Igen** alatt **Futtatás a hónap utolsó napján**. Ha úgy dönt, **napok**, a **Ismétlődés minden** lehetőség jelenik meg. Válasszon **első**, **második**, **harmadik**, **negyedik**, vagy **utolsó**. Végül válassza ki a naponta, vagy ismételje meg a.
+1. Ezzel a módszerrel kattintson **létrehozás**.
 
 ### <a name="to-create-a-new-schedule-with-windows-powershell"></a>Új ütemezés létrehozása a Windows PowerShell-lel
 
@@ -73,9 +76,9 @@ Egy runbook több ütemezéssel kapcsolható, és egy ütemezés rendelkezhet t�
 ### <a name="to-link-a-schedule-to-a-runbook-with-the-azure-portal"></a>Összekapcsolhat egy ütemezést egy runbookhoz, az Azure portal használatával
 
 1. Válassza ki az Azure Portalon, az automation-fiók **Runbookok** a szakaszában **Folyamatautomatizálás** a bal oldalon.
-1. Kattintson az ütemezni kívánt runbook nevére.
-1. Ha a runbook jelenleg nem kapcsolódik egy ütemezést, akkor létrehozhat egy új ütemezést vagy összekapcsolás meglévő ütemezéssel érhetők el.
-1. Ha a runbook paraméterekkel rendelkezik, válassza a beállítást **futtatási beállítások (alapértelmezett: Azure) módosítása** és a **paraméterek** ablaktábla be az adatokat annak megfelelően jelenik meg.
+2. Kattintson az ütemezni kívánt runbook nevére.
+3. Ha a runbook jelenleg nem kapcsolódik egy ütemezést, akkor létrehozhat egy új ütemezést vagy összekapcsolás meglévő ütemezéssel érhetők el.
+4. Ha a runbook paraméterekkel rendelkezik, válassza a beállítást **futtatási beállítások (alapértelmezett: Azure) módosítása** és a **paraméterek** ablaktábla be az adatokat annak megfelelően jelenik meg.
 
 ### <a name="to-link-a-schedule-to-a-runbook-with-windows-powershell"></a>Összekapcsolhat egy ütemezést egy runbookkal a Windows PowerShell-lel
 

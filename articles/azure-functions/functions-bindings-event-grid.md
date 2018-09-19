@@ -9,14 +9,14 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: reference
-ms.date: 08/23/2018
+ms.date: 09/04/2018
 ms.author: glenga
-ms.openlocfilehash: 6d15405ef22f47dc8a94c07d9d09d343a743408e
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: a52ba16d7c8548d378d1b13a85fc1fd1070144e8
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44094552"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46128383"
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Event Grid-trigger az Azure Functions szolgáltatáshoz
 
@@ -308,23 +308,40 @@ Előfizetések létrehozása az Azure portal használatával kapcsolatos tovább
 
 Előfizetés létrehozása használatával [az Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest), használja a [az eventgrid esemény-előfizetés létrehozása](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-create) parancsot.
 
-A parancs használatához a végponti URL-cím, amely meghívja a függvényt. Az alábbi példa bemutatja az URL-minta:
+A parancs használatához a végponti URL-cím, amely meghívja a függvényt. Az alábbi példa bemutatja a verzió-specifikus URL-minta:
 
-```
-https://{functionappname}.azurewebsites.net/admin/extensions/EventGridExtensionConfig?functionName={functionname}&code={systemkey}
-```
+#### <a name="version-2x-runtime"></a>2.x verziójú futtatókörnyezet verziója
+
+    https://{functionappname}.azurewebsites.net/runtime/webhooks/eventgrid?functionName={functionname}&code={systemkey}
+
+#### <a name="version-1x-runtime"></a>1.x futtatókörnyezet verziója
+
+    https://{functionappname}.azurewebsites.net/admin/extensions/EventGridExtensionConfig?functionName={functionname}&code={systemkey}
 
 A rendszer kulcs egy engedélyezési kulcsot, amely egy Event Grid-triggert a végponti URL-Címének szerepelnie kell. A következő szakasz azt ismerteti, hogyan a rendszer kulcs beszerzése.
 
 Íme egy példa, amely feliratkozik egy blob storage-fiók (az a rendszer kulcs helyőrzője):
 
+#### <a name="version-2x-runtime"></a>2.x verziójú futtatókörnyezet verziója
+
 ```azurecli
 az eventgrid resource event-subscription create -g myResourceGroup \
 --provider-namespace Microsoft.Storage --resource-type storageAccounts \
---resource-name glengablobstorage --name myFuncSub  \
+--resource-name myblobstorage12345 --name myFuncSub  \
 --included-event-types Microsoft.Storage.BlobCreated \
 --subject-begins-with /blobServices/default/containers/images/blobs/ \
---endpoint https://glengastorageevents.azurewebsites.net/admin/extensions/EventGridExtensionConfig?functionName=imageresizefunc&code=LUwlnhIsNtSiUjv/sNtSiUjvsNtSiUjvsNtSiUjvYb7XDonDUr/RUg==
+--endpoint https://mystoragetriggeredfunction.azurewebsites.net/runtime/webhooks/eventgrid?functionName=imageresizefunc&code=<key>
+```
+
+#### <a name="version-1x-runtime"></a>1.x futtatókörnyezet verziója
+
+```azurecli
+az eventgrid resource event-subscription create -g myResourceGroup \
+--provider-namespace Microsoft.Storage --resource-type storageAccounts \
+--resource-name myblobstorage12345 --name myFuncSub  \
+--included-event-types Microsoft.Storage.BlobCreated \
+--subject-begins-with /blobServices/default/containers/images/blobs/ \
+--endpoint https://mystoragetriggeredfunction.azurewebsites.net/admin/extensions/EventGridExtensionConfig?functionName=imageresizefunc&code=<key>
 ```
 
 Előfizetés létrehozásával kapcsolatos további információkért lásd: [a blob storage rövid útmutatójával](../storage/blobs/storage-blob-event-quickstart.md#subscribe-to-your-storage-account) vagy az Event Grid rövid útmutatók.
@@ -334,10 +351,10 @@ Előfizetés létrehozásával kapcsolatos további információkért lásd: [a 
 A rendszer kulcs kaphat (HTTP GET) a következő API-val:
 
 ```
-http://{functionappname}.azurewebsites.net/admin/host/systemkeys/eventgridextensionconfig_extension?code={adminkey}
+http://{functionappname}.azurewebsites.net/admin/host/systemkeys/eventgridextensionconfig_extension?code={masterkey}
 ```
 
-Erre azért egy felügyeleti API-t, hogy a függvényalkalmazás igényel [főkulcs](functions-bindings-http-webhook.md#authorization-keys). Ne tévessze össze a fájlrendszer kulcsa (az Event Grid eseményindító függvényének meghívása) főkulccsal (a felügyeleti feladatok végrehajtása a függvényalkalmazás). Amikor előfizet egy Event Grid-témakört, ügyeljen arra, használja a fájlrendszer kulcsa. 
+Erre azért egy felügyeleti API-t, hogy a függvényalkalmazás igényel [főkulcs](functions-bindings-http-webhook.md#authorization-keys). Ne tévessze össze a fájlrendszer kulcsa (az Event Grid eseményindító függvényének meghívása) főkulccsal (a felügyeleti feladatok végrehajtása a függvényalkalmazás). Amikor előfizet egy Event Grid-témakört, ügyeljen arra, használja a fájlrendszer kulcsa.
 
 Íme egy példa a válasz a rendszer kulcsot biztosító:
 
@@ -354,7 +371,12 @@ Erre azért egy felügyeleti API-t, hogy a függvényalkalmazás igényel [főku
 }
 ```
 
-További információkért lásd: [engedélyezési kulcsok](functions-bindings-http-webhook.md#authorization-keys) a HTTP-eseményindító áttekintésével foglalkozó cikkben található. 
+Megtekintheti a főkulcs a függvényalkalmazás a a **Alkalmazásbeállítások függvény** lapot a portálon.
+
+> [!IMPORTANT]
+> A főkulcs a függvényalkalmazás rendszergazdai hozzáférést biztosít. Ne ossza meg ezt a kulcsot harmadik felekkel, vagy osztja el a natív ügyfélalkalmazások.
+
+További információkért lásd: [engedélyezési kulcsok](functions-bindings-http-webhook.md#authorization-keys) a HTTP-eseményindító áttekintésével foglalkozó cikkben található.
 
 Azt is megteheti küldhet egy HTTP PUT, a kulcs értékét saját magát adja meg.
 
@@ -475,7 +497,7 @@ https://{subdomain}.ngrok.io/admin/extensions/EventGridExtensionConfig?functionN
 ``` 
 Ez a végpont-minta használata funkciók 2.x:
 ```
-https://{subdomain}.ngrok.io/runtime/webhooks/EventGridExtensionConfig?functionName={functionName}
+https://{subdomain}.ngrok.io/runtime/webhooks/eventgrid?functionName={functionName}
 ``` 
 A `functionName` paraméternek kell lennie a megadott név a `FunctionName` attribútum.
 

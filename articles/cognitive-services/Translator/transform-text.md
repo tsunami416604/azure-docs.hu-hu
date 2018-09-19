@@ -1,42 +1,43 @@
 ---
-title: A Microsoft Translator szöveg API szöveg átalakítása |} Microsoft Docs
-description: Alakítsa át a Microsoft Translator szöveg API használatával.
+title: Szöveg – Translator Text API átalakítása
+titlesuffix: Azure Cognitive Services
+description: Alakítsa át a Translator Text API segítségével szöveget.
 services: cognitive-services
 author: Jann-Skotdal
-manager: chriswendt1
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: v-jansko
-ms.openlocfilehash: 5aa88f471a33a668b8385e46c2105a3139c142cb
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: e5061e322b4f0edb416f321cefef73776b9165ff
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347671"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46123946"
 ---
-# <a name="how-to-use-the-transformtext-method"></a>A TransformText metódus használata
+# <a name="how-to-use-the-transformtext-method"></a>A TransformText módszer használata
 
 > [!NOTE]
-> Ez a metódus elavult. Nem érhető el a fordító szöveg API 3.0-s verzió.
+> Tato metoda se zamítá. Nem érhető a 3.0-s verzió, a Translator Text API.
 
-A TransformText metódus közösségi oldalakon, ami visszaadja egy normalizált formája, amelyet a bemeneti szöveg normalizálási függvény. A módszer a gépi fordítás vagy más alkalmazásokat, amelyek tiszta bemeneti szöveg, amely nem található a közösségi média vagy a felhasználó által létrehozott tartalom lehet a előfeldolgozási lépésként használható. A funkció jelenleg csak angol nyelvű bemeneti működik. 
+Közösségi média-, amely a bemeneti normalizált űrlap adja vissza egy szöveges normalizálási függvény a TransformText metódus. A módszer is használható a gépi fordítás vagy más alkalmazásokat, amelyek várhatóan tiszta bemeneti szöveg, amely általában nem található a közösségi médiában vagy felhasználó által létrehozott tartalom előfeldolgozási lépésben. A funkció jelenleg csak angol nyelvű bemeneti működik. 
 
-A metódus egy RESTful szolgáltatás GET használatával HTTP Protokollon keresztül. Egyszerű XML- és a JSON-szerializálás támogatja.
+A metódus RESTful szolgáltatásként GET használatával HTTP protokollon keresztül. Egyszerű XML és JSON-szerializálás támogatja.
 
 ## <a name="parameters"></a>Paraméterek
 
 | Paraméter | Leírás |
 |:---|:---|
-| Engedélyeztetési fejléc | **Szükséges** alapján határozza meg a kérelem HTTP-fejléc. Kulcs használata: "Engedélyezés" és az érték: "Tulajdonos" + "" + a hozzáférési jogkivonat. További információkért lépjen ide.|
-| nyelv | **Szükséges** egy karakterlánc, amely a nyelvi kódot. Ez a paraméter csak az angol nyelvű támogatja **en** a nyelv neveként.|
-| category | **Nem kötelező** a kategóriát vagy a tartomány a fordítás tartalmazó karakterláncot. Ez a paraméter csak az alapértelmezett beállítás támogatja **általános**.|
+| Engedélyeztetési fejléc | **Szükséges** az alkalmazás azonosításához használt HTTP-fejléc. Kulcs használata: "Engedélyezés" és az érték: "Tulajdonos" + "" + a hozzáférési jogkivonatot. További információkért lépjen ide.|
+| Nyelv | **Szükséges** egy karakterlánc, amely a nyelvi kódot. Ez a paraméter támogatja a csak az angol nyelvű **en** , a nyelv neve.|
+| category | **Nem kötelező** a kategóriát vagy a tartomány a fordítás tartalmazó karakterlánc. Ez a paraméter támogatja a csak az alapértelmezett beállítás **általános**.|
 | mondat | **Szükséges** A mondatot, és kijavítja. |
 
-## <a name="return-value"></a>Visszatérési érték
+## <a name="return-value"></a>Vrácená hodnota
 
-Az eredményül kapott értéket biztosít az átalakított mondat helyett szerepel.
+A visszaadott érték az átalakított mondat biztosít.
 
 > [!div class="tabbedCodeSnippets"]
 ```json

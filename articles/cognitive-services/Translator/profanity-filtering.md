@@ -1,37 +1,38 @@
 ---
-title: Profanitás szűrése a Microsoft Translator szöveg API-val |} Microsoft Docs
-description: A Microsoft Translator szöveg API szűrés Profanitás használja.
+title: Káromkodás szűrése – Translator Text API
+titlesuffix: Azure Cognitive Services
+description: A Translator Text API szűrés cenzúrázása használja.
 services: cognitive-services
 author: Jann-Skotdal
-manager: chriswendt1
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: v-jansko
-ms.openlocfilehash: a7172e1e8aa336c011fb06e93fc5c4b54d26a3cd
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 87814571e6f1c20b219020651eb798fa49a28deb
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347678"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46127933"
 ---
-# <a name="how-to-add-profanity-filtering-with-the-microsoft-translator-text-api"></a>Szűrése a Microsoft Translator szöveg API-val Profanitás hozzáadása
+# <a name="add-profanity-filtering-with-the-translator-text-api"></a>Adja hozzá a Translator Text API szűrés cenzúrázása
 
-Általában a fordító megtartja Profanitás, amely a fordítás a forráshelyen található. A fokú Profanitás és a környezetben, amelynek eredményeképpen a szavakat profán eltérő kulturális környezetek. Ennek eredményeképpen fokának Profanitás a célként megadott nyelven kiegészíthetők előfordulhat, hogy, illetve csökkenteni.
+A Translator szolgáltatás általában megtalálható a forrás a fordítás cenzúrázása őrzi meg. A fokú cenzúrázása és a környezet, amellyel szavakat profán kulturális környezetek eltérő. Ennek eredményeképpen a párhuzamossági cenzúrázása a célként megadott nyelven kiegészíthetők előfordulhat, hogy, illetve csökkenteni.
 
-Ha azt szeretné, a fordítás (függetlenül a forrás szöveg Profanitás jelenléte) Profanitás megjelenésének elkerüléséhez, használhatja a Profanitás szűrési beállítás Translate() metódus. A beállítás lehetővé teszi annak meghatározását, hogy meg szeretné tekinteni a Profanitás törölték, vagy a megfelelő címkéket jelölésű, vagy a hajt végre semmilyen műveletet.
+Ha azt szeretné, a fordítás cenzúrázása (akkor is, ha cenzúrázása a forrás-szövegben található) megjelenésének elkerüléséhez, használja a vulgáris szűrés lehetőséget a Translate() metódusban. Ez a beállítás lehetővé teszi, hogy adja meg, hogy meg szeretné tekinteni a vulgáris törölték, vagy a megfelelő címkék megjelölve vagy hajt végre semmilyen műveletet.
 
-A Translate() metódust egy "beállítások" paraméter, amely tartalmazza az új elem "ProfanityAction" vesz igénybe. A ProfanityAction elfogadott értékei a következők: "NoAction", "Marked" és "Törölt".
+A Translate() metódushoz egy "beállítások" paramétert, amely az új "ProfanityAction" elemet tartalmaz. ProfanityAction elfogadott értékek "NoAction," "Megjelölt" és "Törölt".
 
-## <a name="accepted-values-of-profanityaction-and-examples"></a>Elfogadható értékek ProfanityAction és példák
-|ProfanityAction érték | Műveletek | Példa: Forrás - japán | Példa: Cél - angol nyelven|
+## <a name="accepted-values-of-profanityaction-and-examples"></a>Elfogadott értékek ProfanityAction és példák
+|ProfanityAction érték | Műveletek | Például: Forrás - japán | Például: Cél - angol nyelven|
 | :---|:---|:---|:---|
-| NoAction | Default (Alapértelmezett): Ugyanaz, mint a beállítás nem található. Profanitás forrásból cél továbbítja. | 彼は変態です。 | Egy jerk. |
-| Megjelölve | XML-címkék tette profán szavak \<Profanitás >... \</profanity >. | 彼は変態です。 | Van egy \<Profanitás > jerk\</profanity >. |
-| Törölve | Profán szavak el lesznek távolítva a kimeneti helyettesítő nélkül. | 彼は。 | Van egy. |
+| NoAction | Default (Alapértelmezett): Ugyanaz, mint a beállítás nem található. Káromkodás forrásból cél továbbítja. | 彼は変態です。 | Egy jerk áll. |
+| Megjelölve | XML-címkék veszi körül profán szavakat \<cenzúrázása >... \</profanity >. | 彼は変態です。 | Ő egy \<cenzúrázása > jerk\</profanity >. |
+| Törölve | A kimenet nélküli helyettesítő profán szavak törlődnek. | 彼は。 | Ő egy. |
 
 ## <a name="next-steps"></a>További lépések
 > [!div class="nextstepaction"]
-> [Szűrés a fordító API-hívással Profanitás alkalmazása](reference/v3-0-translate.md)
+> [A alkalmazni a Translator API-hívással szűrés cenzúrázása](reference/v3-0-translate.md)
 

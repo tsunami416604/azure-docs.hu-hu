@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 6348a6d003aa3efcd1b9c45e61438e0ac4b4c8d5
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 14607e01c0bd51ca9ae98f969c9cd6e1c8c62bb9
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42059730"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46294271"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>A távoli asztali átjáró-infrastruktúra használata a hálózati házirend-kiszolgáló (NPS) bővítmény és az Azure AD integrálása
 
@@ -82,7 +82,7 @@ A hálózati házirend-kiszolgáló szerepkör-szolgáltatást biztosít a RADIU
 Az NPS szerepkör telepítéséről további információt a Windows Server 2012 vagy régebbi szolgáltatás, lásd: [egy NAP állapotházirend-kiszolgálókon telepítse](https://technet.microsoft.com/library/dd296890.aspx). Ajánlott eljárások a hálózati házirend-kiszolgáló, beleértve azt javasoljuk, hogy a hálózati házirend-kiszolgáló telepítése egy tartományvezérlőn leírását lásd: [ajánlott eljárások a hálózati házirend-kiszolgáló](https://technet.microsoft.com/library/cc771746).
 
 ### <a name="azure-active-directory-synched-with-on-premises-active-directory"></a>Az Azure Active Directory a helyszíni Active Directoryval szinkronizált
-Az NPS-bővítményének használatához a helyszíni felhasználók lehet az Azure ad-vel szinkronizált, és engedélyezve van az MFA-hoz. Ez a szakasz azt feltételezi, hogy a helyszíni felhasználók vannak szinkronizálva az Azure ad-vel AD Connect használatával. Az Azure AD connect, információt: [a helyszíni címtárak integrálása az Azure Active Directory](../connect/active-directory-aadconnect.md). 
+Az NPS-bővítményének használatához a helyszíni felhasználók lehet az Azure ad-vel szinkronizált, és engedélyezve van az MFA-hoz. Ez a szakasz azt feltételezi, hogy a helyszíni felhasználók vannak szinkronizálva az Azure ad-vel AD Connect használatával. Az Azure AD connect, információt: [a helyszíni címtárak integrálása az Azure Active Directory](../hybrid/whatis-hybrid-identity.md). 
 
 ### <a name="azure-active-directory-guid-id"></a>Azure Active Directory GUID ID
 Az NPS-bővítményének telepítése, ismernie kell a GUID azonosítóját az Azure ad-ben. Keresés, a GUID azonosítóját az Azure AD útmutatást az alábbiakban találhatók.
@@ -374,4 +374,4 @@ Microsoft Message Analyzert az alábbi ábrán látható hálózati forgalmat, a
 
 [Távoli asztali átjáró és RADIUS-t használó Azure Multi-Factor Authentication-kiszolgáló](howto-mfaserver-nps-rdg.md)
 
-[A helyszíni címtárak integrálása az Azure Active Directoryval](../connect/active-directory-aadconnect.md)
+[A helyszíni címtárak integrálása az Azure Active Directoryval](../hybrid/whatis-hybrid-identity.md)

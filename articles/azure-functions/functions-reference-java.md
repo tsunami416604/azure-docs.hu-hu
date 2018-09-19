@@ -9,14 +9,14 @@ keywords: az Azure functions, függvények, eseményfeldolgozás, webhookok, din
 ms.service: azure-functions
 ms.devlang: java
 ms.topic: conceptual
-ms.date: 08/10/2018
+ms.date: 09/14/2018
 ms.author: routlaw
-ms.openlocfilehash: f0dc471e8875ad0d738fce10421c3586752148b9
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: f6c5eb4a3ace1fcca1bbbef321371d55a0ce8da9
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44092309"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46123487"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Az Azure Functions Java fejlesztői útmutatója
 
@@ -26,7 +26,35 @@ ms.locfileid: "44092309"
 
 Az Azure-függvény egy állapot nélküli osztály módszer, amelynek dolgozza fel a bemenetet és kimenetet kell lennie. Bár a metódusok írhat, a függvény nem függhet az osztály minden szolgáltatáspéldány-mezők. Az összes funkció módszer rendelkeznie kell egy `public` elérhetősége.
 
-Egynél több függvényt helyezheti a projektben. Kerülje a functions üzembe a különálló JAR-fájlok kivételével.
+## <a name="folder-structure"></a>gyökérmappa-szerkezetében
+
+A mappastruktúra a Java-projektek a következőhöz hasonlóan néz ki:
+
+```
+FunctionsProject
+ | - src
+ | | - main
+ | | | - java
+ | | | | - FunctionApp
+ | | | | | - MyFirstFunction.java
+ | | | | | - MySecondFunction.java
+ | - target
+ | | - azure-functions
+ | | | - FunctionApp
+ | | | | - FunctionApp.jar
+ | | | | - host.json
+ | | | | - MyFirstFunction
+ | | | | | - function.json
+ | | | | - MySecondFunction
+ | | | | | - function.json
+ | | | | - bin
+ | | | | - lib
+ | - pom.xml
+```
+
+Van egy megosztott [host.json] (functions-gazdagép-json.md) fájl, amely a függvényalkalmazás konfigurálása használható. Minden függvény saját kódfájl (.java) és a kötési konfigurációs fájl (function.json) rendelkezik.
+
+Egynél több függvényt helyezheti a projektben. Kerülje a functions üzembe a különálló JAR-fájlok kivételével. A FunctionApp a célként megadott könyvtárban, mire megtörténik a függvényalkalmazáshoz az Azure-ban.
 
 ## <a name="triggers-and-annotations"></a>Eseményindítók és jegyzetek
 

@@ -3,18 +3,18 @@ title: Az Azure Maps előugró ablak hozzáadása |} A Microsoft Docs
 description: Egy előugró ablak hozzáadása a Javascript-térkép
 author: jingjing-z
 ms.author: jinzh
-ms.date: 05/07/2018
+ms.date: 09/17/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 0f86578e33e5c6a2d6528e2deb1c8068a0c94d01
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 76a7e230491d5e524a1d73437a56d12594cfebe2
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42747105"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46127437"
 ---
 # <a name="add-a-popup-to-the-map"></a>A térkép egy előugró ablak hozzáadása
 
@@ -31,25 +31,26 @@ A fenti kód az első kódblokkot egy térkép-objektumot hoz létre. Látható 
 
 A második kódblokkot egy PIN-kódot hoz létre, és adja hozzá a térképen. Látható [PIN-kód hozzáadása a térkép](./map-add-pin.md) útmutatást.
 
-A harmadik kódblokkot egy előugró ablak jelenik meg a tartalom hoz létre. Helyi menü tartalma HTML-elemmel. 
+A harmadik kódblokkot egy előugró ablak jelenik meg a tartalom hoz létre. Helyi menü tartalma HTML-elemmel.
 
 A negyedik kódblokkot létrehoz egy [előugró objektum](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest) keresztül `new atlas.Popup()`. Előugró ablak tulajdonságok, mint például a tartalmát és pozícióját részét képező [PopupOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/models.popupoptions?view=azure-iot-typescript-latest). Előugró ablak a konstruktorban, vagy keresztül határozhatók PopupOptions [setPopupOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#setpopupoptions) függvény az előugró osztály.
 
 A legutóbbi kódblokkot használ [addEventListener](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addeventlistener) funkcióval figyelni egy rámutatásra esemény a PIN-kódokat, és használja a térkép osztály [nyissa meg a](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#open) funkciót a helyi menü megnyitásához, az esemény akkor fordul elő, ha az előugró osztály.
 
-
 ## <a name="next-steps"></a>További lépések
 
-További információ az osztályok és módszerek a cikk ezt használja: 
+További információ az osztályok és módszerek a cikk ezt használja:
 
-* [Térkép](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
-    * [addPins](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addpins)
-    * [addEventListener](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addeventlistener)
-* [Helyi menü](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest)
-    * [setPopupOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#setpopupoptions)
-    * [Nyissa meg a](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#open)
-    * [Zárja be](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#close)
-    
-A maps hozzá további kódot példák a következő cikkekben talál: 
-* [Alakzat hozzáadása](./map-add-shape.md)
-* [Egyéni HTML hozzáadása](./map-add-custom-html.md)
+> [!div class="nextstepaction"]
+> [Térkép](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
+
+> [!div class="nextstepaction"]
+> [Helyi menü](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest)
+
+Tekintse meg az alábbi nagyszerű teljes körű Kódminták cikkeket:
+
+> [!div class="nextstepaction"]
+> [Alakzat hozzáadása](./map-add-shape.md)
+
+> [!div class="nextstepaction"]
+> [Egyéni HTML hozzáadása](./map-add-custom-html.md)

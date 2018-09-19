@@ -6,53 +6,77 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: 1d2f194eb6a2186fc1e8451a7022d26cd1013bb2
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 8877234502ff662954dc6fe0c19d8252db42d7d6
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44022396"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46123556"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vms"></a>A konfigurációs kiszolgáló VMware virtuális gépek kezelése
 
 Beállította egy helyszíni konfigurációs kiszolgálót használatakor [Azure Site Recovery](site-recovery-overview.md) vész-helyreállítási VMware virtuális gépek és fizikai kiszolgálók Azure-bA. A konfigurációs kiszolgáló közötti kommunikáció koordinálja a helyszíni VMware és az Azure és felügyeli az adatreplikációt. Ez a cikk összefoglalja a gyakori feladatok kezeléséhez a konfigurációs kiszolgáló telepítése után.
 
-
-
-## <a name="modify-vmware-settings"></a>VMware-beállításainak módosítása
+## <a name="access-configuration-server"></a>Konfigurációs kiszolgáló
 
 A konfigurációs kiszolgáló módon érheti el:
-    - Jelentkezzen be a virtuális gép, amelyre telepítve van, és indítsa el az Azure Site Recovery Konfigurációkezelő, az asztali parancsikonjára.
-    - Azt is megteheti, érheti el a konfigurációs kiszolgáló **https://*ConfigurationServerName*/:44315 /**. Jelentkezzen be rendszergazdai hitelesítő adataival.
 
-### <a name="modify-vmware-server-settings"></a>VMware-kiszolgáló beállításainak módosítása
+* Jelentkezzen be a virtuális gép, amelyre telepítve van, és úgy indítsa **Azure Site Recovery Konfigurációkezelő** , az asztali parancsikonjára.
+* Másik lehetőségként a keresztül elérhető a konfigurációs kiszolgáló távoli https://*ConfigurationServerName*/:44315 /. Jelentkezzen be rendszergazdai hitelesítő adataival.
 
-1. Szeretne társítani a konfigurációs kiszolgáló, egy másik VMware-kiszolgáló után jelentkezzen be, válassza ki a **Hozzáadás vCenter-kiszolgáló vagy vSphere ESXi kiszolgáló**.
+## <a name="modify-vmware-server-settings"></a>VMware-kiszolgáló beállításainak módosítása
+
+1. Különböző VMware-kiszolgáló a konfigurációs kiszolgáló társítása után [bejelentkezési](#access-configuration-server)válassza **vCenter-kiszolgáló vagy vSphere ESXi kiszolgáló hozzáadása**.
 2. Adja meg a részleteket, és válassza ki **OK**.
 
+## <a name="modify-credentials-for-automatic-discovery"></a>Automatikus felderítés hitelesítő adatok módosítása
 
-### <a name="modify-credentials-for-automatic-discovery"></a>Automatikus felderítés hitelesítő adatok módosítása
-
-1. A bejelentkezést követően, a VMware virtuális gépek automatikus felderítését a VMware-kiszolgálóhoz való kapcsolódáshoz használt hitelesítő adatok frissítéséhez válassza **szerkesztése**.
+1. Frissítése után a VMware-kiszolgáló, a VMware virtuális gépek automatikus felderítéshez való kapcsolódáshoz használt hitelesítő adatok [bejelentkezési](#access-configuration-server), válassza ki a fiókot, és kattintson a **szerkesztése**.
 2. Adja meg az új hitelesítő adatait, és válassza ki **OK**.
 
     ![VMware módosítása](./media/vmware-azure-manage-configuration-server/modify-vmware-server.png)
 
+Módosíthatja a hitelesítő adatok CSPSConfigtool.exe keresztül is.
+
+1. Jelentkezzen be a konfigurációs kiszolgálón indítsa el a CSPSConfigtool.exe
+2. Válassza ki a fiókot, módosíthatja, és kattintson a kívánt **szerkesztése**.
+3. Adja meg a módosított hitelesítő adatait, és kattintson a **Ok**
 
 ## <a name="modify-credentials-for-mobility-service-installation"></a>A mobilitási szolgáltatás telepítési hitelesítő adatok módosítása
 
 Automatikusan engedélyezi a replikációt a VMware virtuális gépeken a mobilitási szolgáltatás telepítéséhez használt hitelesítő adatok módosítása
 
-1. Válassza ki a bejelentkezést követően, **virtuális gép hitelesítő adatainak kezelése**
-2. Adja meg az új hitelesítő adatait, és válassza ki **OK**.
+1. Miután [bejelentkezési](#access-configuration-server), jelölje be **virtuális gép hitelesítő adatainak kezelése**
+2. Válassza ki a fiókot, módosíthatja, és kattintson a kívánt **szerkesztése**
+3. Adja meg az új hitelesítő adatait, és válassza ki **OK**.
 
     ![A mobilitási szolgáltatás hitelesítő adatainak módosítása](./media/vmware-azure-manage-configuration-server/modify-mobility-credentials.png)
+
+Módosíthatja a hitelesítő adatok CSPSConfigtool.exe keresztül is.
+
+1. Jelentkezzen be a konfigurációs kiszolgálón indítsa el a CSPSConfigtool.exe
+2. Válassza ki a fiókot, módosíthatja, és kattintson a kívánt **szerkesztése**
+3. Adja meg az új hitelesítő adatait, és kattintson a **Ok**.
+
+## <a name="add-credentials-for-mobility-service-installation"></a>Adja hozzá a hitelesítő adatok a mobilitási szolgáltatás telepítése
+
+Ha lemaradt a hitelesítő adatok hozzáadása a konfigurációs kiszolgáló OVF telepítése során
+
+1. Miután [bejelentkezési](#access-configuration-server), jelölje be **virtuális gép hitelesítő adatainak kezelése**.
+2. Kattintson a **adja hozzá a virtuális gép hitelesítő adatainak**.
+    ![Adja hozzá a mobilitási – hitelesítő adatok](media/vmware-azure-manage-configuration-server/add-mobility-credentials.png)
+3. Adja meg az új hitelesítő adatait, majd kattintson a **Hozzáadás**.
+
+Hitelesítő adatok CSPSConfigtool.exe keresztül is hozzáadhat.
+
+1. Jelentkezzen be a konfigurációs kiszolgálón indítsa el a CSPSConfigtool.exe
+2. Kattintson a **Hozzáadás**, adja meg az új hitelesítő adatait, és kattintson a **Ok**.
 
 ## <a name="modify-proxy-settings"></a>Proxybeállítások módosítása
 
 Módosítsa az internet-hozzáférés az Azure-bA a konfigurációs kiszolgáló gép által használt proxy beállításait. Ha egy folyamat kiszolgáló gép mellett a alapértelmezett folyamatkiszolgáló a konfigurációs kiszolgáló gépen futó, módosítsa a beállításokat mindkét gépen.
 
-1. Bejelentkezés után a konfigurációs kiszolgálóhoz, válassza ki a **kapcsolat kezelése**.
+1. Miután [bejelentkezési](#access-configuration-server) jelölje be a konfigurációs kiszolgáló **kapcsolat kezelése**.
 2. Frissítse a proxy. Válassza ki **mentése** a beállítások frissítéséhez.
 
 ## <a name="add-a-network-adapter"></a>Hálózati adapter hozzáadása
@@ -60,7 +84,7 @@ Módosítsa az internet-hozzáférés az Azure-bA a konfigurációs kiszolgáló
 A nyílt virtualizációs formátum (OVF) sablont a konfigurációs kiszolgáló virtuális gép egyetlen hálózati adapterrel telepíti.
 
 - Is [további adapter hozzáadása a virtuális géphez](vmware-azure-deploy-configuration-server.md#add-an-additional-adapter), de Ön hozzá kell adnia a konfigurációs kiszolgálót regisztrálja a tárolóban.
-- Adjon hozzá egy adaptert, miután a konfigurációs kiszolgálót regisztrálja a tárolóban, a virtuális gép tulajdonságainak az adapter hozzáadásához. Ezután meg kell regisztrálja újra a kiszolgálót a tárolóban.
+- Adjon hozzá egy adaptert, miután a konfigurációs kiszolgálót regisztrálja a tárolóban, a virtuális gép tulajdonságainak az adapter hozzáadásához. Akkor kell [újraregisztrálni](#reregister-a-configuration-server-in-the-same-vault) a kiszolgáló a tárolóban.
 
 
 ## <a name="reregister-a-configuration-server-in-the-same-vault"></a>Ugyanahhoz a tárolóhoz a konfigurációs kiszolgáló újraregisztrálása
@@ -87,7 +111,8 @@ Ha szeretne újraregisztrálásához a konfigurációs kiszolgáló az ugyanahho
   ```
           net stop obengine
           net start obengine
-  ```
+   ```
+
 
 ## <a name="register-a-configuration-server-with-a-different-vault"></a>Konfigurációs kiszolgáló regisztrálása másik tárolóval
 
