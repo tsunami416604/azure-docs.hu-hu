@@ -16,8 +16,6 @@ items:
     href: abstract-container-security-microsoft-azure.md
   - name: Működési biztonság engedélyezése
     href: abstract-azure-operational-security.md
-  - name: Irányítás az Azure-ban
-    href: governance-in-azure.md
   - name: Elkülönítés az Azure-felhőben
     href: azure-isolation.md
   - name: Biztonságos hibrid hálózati architektúra
@@ -38,6 +36,7 @@ items:
   - name: Disk encryption (Lemeztitkosítás)
     items:
     - name: Ajánlott eljárások
+      displayName: transit
       href: azure-security-data-encryption-best-practices.md
     - name: Inaktív adatok titkosítása
       href: azure-security-encryption-atrest.md
@@ -64,12 +63,16 @@ items:
       - name: Hibaelhárítás
         href: azure-security-disk-encryption-tsg.md
       - name: Azure Disk Encryption Azure AD-alkalmazással (korábbi kiadás)
+        displayName: active directory
         items:
         - name: Azure AD-alkalmazással végzett lemeztitkosítás előfeltételei
+          displayName: active directory
           href: azure-security-disk-encryption-prerequisites-aad.md
         - name: Lemeztitkosítás Azure AD-alkalmazással Windows rendszerű virtuális gépekhez
+          displayName: active directory
           href: azure-security-disk-encryption-windows-aad.md
         - name: Lemeztitkosítás Azure AD-alkalmazással Linux rendszerű virtuális gépekhez
+          displayName: active directory
           href: azure-security-disk-encryption-linux-aad.md
   - name: Az Azure Storage biztonsága
     href: security-storage-overview.md
@@ -113,12 +116,16 @@ items:
     href: security-identity-management-overview.md
     items:
     - name: Azure AD-hitelesítés kiválasztása
+      displayName: identity, active directory
       href: azure-ad-choose-authn.md
     - name: Biztonsági ellenőrzőlista
+      displayName: identity, active directory, password
       href: azure-ad-secure-steps.md
     - name: Ajánlott eljárások
+      displayName: password, identity, active directory
       href: azure-security-identity-management-best-practices.md
     - name: MFA kényszerítése az előfizetések rendszergazdái számára
+      displayName: identity
       href: azure-security-global-admin.md
   - name: Hálózati biztonság
     href: security-network-overview.md
@@ -172,10 +179,12 @@ items:
       - name: Bevezetés
         href: security-azure-log-integration-get-started.md
       - name: Az Azure AD auditnaplóinak integrálása
+        displayName: active directory
         href: security-azure-log-integration-ad.md
       - name: A Security Center riasztásainak integrálása
         href: security-azure-log-integration-security-center.md
       - name: A Key Vault naplóinak integrálása
+        displayName: keyvault
         href: security-azure-log-integration-keyvault-eventhub.md
       - name: GYIK
         href: security-azure-log-integration-faq.md
@@ -187,14 +196,17 @@ items:
     - name: Biztonsági ellenőrzőlista
       href: azure-operational-security-checklist.md
 - name: Cégirányítás és megfelelőség
+  displayName: blueprint
   items:
   - name: AU ÁLTAL VÉDETT
+    displayName: blueprint
     items:
     - name: IaaS-webalkalmazás
       href: ./blueprints/au-protected-iaaswa-overview.md
     - name: PaaS webalkalmazás
       href: ./blueprints/au-protected-paaswa-overview.md
   - name: FedRAMP
+    displayName: blueprint
     items:
     - name: Adatelemzés
       href: ./blueprints/fedramp-analytics-overview.md
@@ -205,6 +217,7 @@ items:
     - name: PaaS webalkalmazás
       href: ./blueprints/fedramp-paaswa-overview.md
   - name: FFIEC
+    displayName: blueprint
     items:
     - name: Adatelemzés
       href: ./blueprints/ffiec-analytics-overview.md
@@ -215,6 +228,7 @@ items:
     - name: PaaS webalkalmazás
       href: ./blueprints/ffiec-paaswa-overview.md
   - name: GDPR
+    displayName: blueprint
     items:
     - name: Adatelemzés
       href: ./blueprints/gdpr-analytics-overview.md
@@ -225,10 +239,12 @@ items:
     - name: PaaS webalkalmazás
       href: ./blueprints/gdpr-paaswa-overview.md
   - name: HIPAA/HITRUST
+    displayName: blueprint
     items:
     - name: Állapotadatok és mesterséges intelligencia
       href: ./blueprints/azure-health.md
   - name: NIST SP 800-171
+    displayName: blueprint
     items:
     - name: Adatelemzés
       href: ./blueprints/nist171-analytics-overview.md
@@ -239,6 +255,7 @@ items:
     - name: PaaS webalkalmazás
       href: ./blueprints/nist171-paaswa-overview.md
   - name: PCI DSS
+    displayName: blueprint
     items:
     - name: Adatelemzés
       href: ./blueprints/pcidss-analytics-overview.md
@@ -249,10 +266,12 @@ items:
     - name: PaaS webalkalmazás
       href: ./blueprints/pcidss-paaswa-overview.md
   - name: TIC
+    displayName: blueprint
     items:
     - name: Trusted Internet Connection az Azure-ral
       href: ./compliance/compliance-tic.md
   - name: Az Egyesült Királyság Nemzeti Egészségügyi Szolgálata
+    displayName: blueprint
     items:
     - name: Adatelemzés
       href: ./blueprints/uknhs-analytics-overview.md
@@ -263,6 +282,7 @@ items:
     - name: PaaS webalkalmazás
       href: ./blueprints/uknhs-paaswa-overview.md
   - name: UK OFFICIAL
+    displayName: blueprint
     items:
     - name: IaaS-webalkalmazás
       href: ./blueprints/ukofficial-iaaswa-overview.md
@@ -318,9 +338,9 @@ items:
         href: azure-security-threat-modeling-tool-sensitive-data.md
       - name: Munkamenet-kezelés
         href: azure-security-threat-modeling-tool-session-management.md
-ms.openlocfilehash: 2e0bdab31a721c5b55488ac21579f0cb9ac45151
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: 99ff7a6ba5a2289855739ce8b269c4b3aae10e61
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43841564"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46364856"
