@@ -11,12 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 08/18/2018
 ms.author: apimpm
-ms.openlocfilehash: 99848cf4ba1e6e65a8c41c682916ca391128eb21
-ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
+ms.openlocfilehash: 3f92eac79e9524aa6ded9f898d582ce46c99bf97
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42056912"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46363292"
 ---
 # <a name="upgrade-and-scale-an-azure-api-management-instance"></a>Frissítés és skálázás az Azure API Management-példány  
 
@@ -67,5 +67,5 @@ Is, majd, és bármely szintről. Vegye figyelembe, hogy a frissítés vagy alac
 
 ## <a name="next-steps"></a>További lépések
 
-*[Az Azure API Management-szolgáltatáspéldány üzembe helyezése több Azure-régióban](api-management-howto-deploy-multi-region.md)
-*[automatikus méretezése egy Azure API Management-szolgáltatáspéldány](api-management-howto-autoscale.md)
+- [Az Azure API Management-szolgáltatáspéldány üzembe helyezése több Azure-régióban](api-management-howto-deploy-multi-region.md)
+- [Automatikus méretezése egy Azure API Management-szolgáltatáspéldány](api-management-howto-autoscale.md)

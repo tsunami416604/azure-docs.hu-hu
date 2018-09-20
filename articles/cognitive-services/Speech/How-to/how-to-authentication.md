@@ -1,41 +1,42 @@
 ---
-title: Microsoft beszéd szolgáltatásához |} Microsoft Docs
-description: A Microsoft-hang transzformációs API használandó hitelesítési kérelem
+title: Bing Speech hitelesítésre |} A Microsoft Docs
+titlesuffix: Azure Cognitive Services
+description: Hitelesítési kérelem a Bing Speech API használata
 services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
 ms.component: bing-speech
 ms.topic: article
-ms.date: 09/15/2017
+ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: e36168cf3ff938af44f1028c2d26fd475d60b148
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 93171dba435172565215560e437dc56c9436baac
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347423"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46366454"
 ---
-# <a name="authenticate-to-the-speech-api"></a>Hitelesítés a hang transzformációs API
+# <a name="authenticate-to-the-speech-api"></a>A beszédfelismerő API-t hitelesítésre
 
-Beszéd szolgáltatás támogatja a hitelesítés:
+Bing Speech támogatja a hitelesítés használatával:
 
-- Egy előfizetés kulcs.
+- Egy előfizetési kulcsot.
 - Egy engedélyezési jogkivonatot.
 
-## <a name="use-a-subscription-key"></a>Előfizetés van szükség
+## <a name="use-a-subscription-key"></a>Előfizetési kulcs használata
 
-Beszéd szolgáltatás használatához a hang transzformációs API kognitív szolgáltatások (korábban projekt Oxford) részét képező először előfizetett kell. Ingyenes próba-előfizetés kulcsokat beszerezheti a [kognitív szolgáltatások előfizetés](https://azure.microsoft.com/try/cognitive-services/) lap. Miután kiválasztotta a hang transzformációs API-t, jelölje ki a **API-kulcs beolvasása** a kulcs beszerzése. Egy elsődleges és másodlagos kulcsot adja vissza. Mindkét kulcsot, vagy kulccsal a azonos kvóta vannak társítva.
+Beszédszolgáltatás használatához, elő kell fizetniük a Speech API, amely része a Cognitive Services-(korábban Project Oxford). Ingyenes próba-előfizetését helyenk beszerezheti a [Cognitive Services-előfizetés](https://azure.microsoft.com/try/cognitive-services/) lapot. Miután kiválasztotta a beszédfelismerő API, válassza ki a **API-kulcs lekérése** a kulcs beszerzése. Egy elsődleges és másodlagos kulcsát adja vissza. Mindkét kulcsot kvóta, így használhatja az egyiket sem vannak társítva.
 
-Hosszú távú használatra vagy egy nagyobb kvótát, regisztráljon egy [Azure-fiók](https://azure.microsoft.com/free/).
+Hosszú távú használathoz vagy megemelt kvótához regisztráljon egy [Azure-fiók](https://azure.microsoft.com/free/).
 
-A beszédfelismerés REST API használatával kell az Előfizetés kulcs a következő átadni a `Ocp-Apim-Subscription-Key` mezőt a kérelem fejlécében.
+A beszédfelismerés REST API használata, teljesítenie kell a az előfizetési kulcsot, az a `Ocp-Apim-Subscription-Key` mezőt a kérelem fejlécében.
 
 Name (Név)| Formátum| Leírás
 ----|-------|------------
-Az OCP-Apim-előfizetés-kulcs | ASCII | YOUR_SUBSCRIPTION_KEY
+OCP-Apim-Subscription-Key | ASCII | YOUR_SUBSCRIPTION_KEY
 
-A következő egy példa egy kérelem fejléce:
+Az alábbiakban látható egy példa fejléc:
 
 ```HTTP
 POST https://speech.platform.bing.com/speech/recognition/interactive/cognitiveservices/v1?language=en-US&format=detailed HTTP/1.1
@@ -48,26 +49,26 @@ Expect: 100-continue
 ```
 
 > [!IMPORTANT]
-> Ha [klienskódtárak](../GetStarted/GetStartedClientLibraries.md) az alkalmazásban, győződjön meg arról, hogy az engedélyezési jogkivonat beszerezheti az előfizetés-kulcsban, a következő szakaszban leírt módon. A klienskódtárak segítségével egy engedélyezési jogkivonatot, és ezután használja a jogkivonat hitelesítési előfizetés kulcs használata.
+> Ha [klienskódtárak](../GetStarted/GetStartedClientLibraries.md) az alkalmazásban, győződjön meg arról, hogy az engedélyezési jogkivonatot az előfizetési kulccsal végzett megtekintheti a következő szakaszban leírtak szerint. A klienskódtárak segítségével az előfizetési kulcs engedélyezési jogkivonatot kapjon, majd a jogkivonatot a hitelesítéshez.
 
-## <a name="use-an-authorization-token"></a>Egy engedélyezési jogkivonatot használja
+## <a name="use-an-authorization-token"></a>Egy engedélyezési jogkivonatot használata
 
-Másik lehetőségként használhatja egy engedélyezési jogkivonatot hitelesítéshez azonosítóként, hitelesítési/engedélyezési. Ahhoz, hogy a jogkivonat, be kell szereznie egy előfizetés kulcs a hang transzformációs API leírtak szerint a [szakasz megelőző](#use-a-subscription-key).
+Azt is megteheti használhatja egy engedélyezési jogkivonatot hitelesítéshez hitelesítés/engedélyezés bizonyítékaként. Beszerezni a jogkivonatot, be kell szereznie egy előfizetési kulcsot a beszédfelismerő API leírtak szerint a [előző fejezet](#use-a-subscription-key).
 
-### <a name="get-an-authorization-token"></a>Az engedélyezési jogkivonat beolvasása
+### <a name="get-an-authorization-token"></a>Egy engedélyezési jogkivonat beolvasása
 
-Miután egy érvényes előfizetés kulcs, küldése egy POST kérést kognitív szolgáltatások jogkivonat-szolgáltatás. A válaszban kapni az engedélyezési jogkivonat, egy JSON webes jogkivonat (JWT).
+Miután egy érvényes előfizetési kulcsot, küldjön egy POST kérelmet a jogkivonat a Cognitive Services-szolgáltatás. A válaszban kap az engedélyezési jogkivonatra, a JSON webes jogkivonat (JWT).
 
 > [!NOTE]
-> A token rendelkezik egy lejárati 10 perc. A token megújításához, a következő részben.
+> A jogkivonat-lejárati 10 perc rendelkezik. A token megújításának, tekintse meg a következő szakaszt.
 
-A jogkivonat-szolgáltatás URI a következő helyen található:
+A jogkivonat-szolgáltatás URI-t Itt megtalálható:
 
 ```
 https://api.cognitive.microsoft.com/sts/v1.0/issueToken
 ```
 
-A következő példakód bemutatja, hogyan szereznie egy hozzáférési jogkivonatot. Cserélje le `YOUR_SUBSCRIPTION_KEY` saját előfizetés kulccsal:
+Az alábbi példakód bemutatja a hozzáférési jogkivonatot kapjon. Cserélje le `YOUR_SUBSCRIPTION_KEY` a saját előfizetés-kulccsal:
 
 # <a name="powershelltabpowershell"></a>[PowerShell](#tab/Powershell)
 
@@ -85,9 +86,9 @@ $OAuthToken
 
 ```
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
+# <a name="curltabcurl"></a>[A curl](#tab/curl)
 
-A példa curl Linux bash együtt. Ha nem érhető el a platformon, szükség lehet a curl telepítéséhez. A példa is működik a Cygwin Windows, a Git bash eszközt, a zsh és az egyéb ismertetése.
+A példában a curl Linux bash-környezet. Ha nem érhető el a platformon, szüksége lehet a curl telepítéséhez. A példában is működik a Cygwin a Windows, a Git Bash, a zsh és más ismertetése.
 
 ```
 curl -v -X POST "https://api.cognitive.microsoft.com/sts/v1.0/issueToken" -H "Content-type: application/x-www-form-urlencoded" -H "Content-Length: 0" -H "Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY"
@@ -134,7 +135,7 @@ curl -v -X POST "https://api.cognitive.microsoft.com/sts/v1.0/issueToken" -H "Co
 
 ---
 
-A következő egy minta POST kérelem:
+A következő egy minta POST-kérelem:
 
 ```HTTP
 POST https://api.cognitive.microsoft.com/sts/v1.0/issueToken HTTP/1.1
@@ -145,16 +146,16 @@ Content-Length: 0
 Connection: Keep-Alive
 ```
 
-Ha nem kap egy engedélyezési jogkivonat a jogkivonat-szolgáltatás, ellenőrizze, hogy a az Előfizetés kulcs még mindig érvényes. Ha egy ingyenes próba kulcsot használ, lépjen a [kognitív szolgáltatások előfizetés](https://azure.microsoft.com/try/cognitive-services/) lapján kattintson a "Bejelentkezés" bejelentkezni a fiókkal, amely az ingyenes próbaverzió kulcs alkalmazása használja, és ellenőrizze, hogy az Előfizetés kulcs lejárt, illetve meghaladja a kvóta.
+Ha nem kap egy engedélyezési jogkivonatot a jogkivonat-szolgáltatás, ellenőrizze, hogy a az előfizetési kulcs továbbra is érvényes. Ha egy ingyenes próba-kulcsot használ, lépjen a [Cognitive Services-előfizetés](https://azure.microsoft.com/try/cognitive-services/) lap, kattintson a "Bejelentkezés" bejelentkezést a fiókkal, amely az ingyenes próbaverziós kulcs alkalmazása használ, és ellenőrizze, hogy az előfizetési kulcs lejárt, vagy meghaladja a kvóta.
 
-### <a name="use-an-authorization-token-in-a-request"></a>A kérelemben egy engedélyezési jogkivonatot használja
+### <a name="use-an-authorization-token-in-a-request"></a>A kérelem egy engedélyezési jogkivonatot használata
 
-Minden alkalommal, amikor a hang transzformációs API hívása, kell átadni a engedélyezési lexikális elem szerepel a `Authorization` fejléc. A `Authorization` fejléc tartalmaznia kell egy JWT jogkivonat.
+Minden alkalommal, amikor a beszédfelismerő API hívása, teljesítenie kell az engedélyezési jogkivonatot a a `Authorization` fejléc. A `Authorization` fejlécet kell tartalmaznia a JWT-jogkivonatokkal.
 
-A következő példa bemutatja, hogyan egy engedélyezési jogkivonatot használja, ha a beszédfelismerés REST API hívása.
+Az alábbi példa bemutatja, hogyan használhatja egy engedélyezési jogkivonatot a Speech REST API hívásakor.
 
 > [!NOTE]
-> Cserélje le `YOUR_AUDIO_FILE` az elérési útját a korábban rögzített hangfájl. Cserélje le `YOUR_ACCESS_TOKEN` az az engedélyezési jogkivonatot kapott az előző lépésben [egy engedélyezési jogkivonat beolvasása](#get-an-authorization-token).
+> Cserélje le `YOUR_AUDIO_FILE` a korábban rögzített hangfájl az elérési útját. Cserélje le `YOUR_ACCESS_TOKEN` az előző lépésben kapott engedélyezési jogkivonat [engedélyezési jogkivonatot kapjon](#get-an-authorization-token).
 
 # <a name="powershelltabpowershell"></a>[PowerShell](#tab/Powershell)
 
@@ -180,7 +181,7 @@ $RecoResponse
 
 ```
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
+# <a name="curltabcurl"></a>[A curl](#tab/curl)
 
 ```
 curl -v -X POST "https://speech.platform.bing.com/speech/recognition/interactive/cognitiveservices/v1?language=en-us&format=detailed" -H "Transfer-Encoding: chunked" -H "Authorization: Bearer YOUR_ACCESS_TOKEN" -H "Content-type: audio/wav; codec=audio/pcm; samplerate=16000" --data-binary @YOUR_AUDIO_FILE
@@ -227,11 +228,11 @@ using (fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 
 ---
 
-### <a name="renew-an-authorization-token"></a>Egy engedélyezési jogkivonatot megújítása
+### <a name="renew-an-authorization-token"></a>Egy engedélyezési jogkivonat megújításához.
 
-Az engedélyezési jogkivonatot egy meghatározott időszak (jelenleg 10 perc) után lejár. Szeretné megújítani a engedélyezési jogkivonat lejárata előtt.
+Az engedélyezési jogkivonatot egy adott időszakra (jelenleg 10 perc) után lejár. Újítsa meg az engedélyezési jogkivonat lejárata előtt kell.
 
-A következő kód egy megvalósítási példát szemléltet, az engedélyezési jogkivonat megújítása a C# nyelven:
+Az alábbi kód egy megvalósítási példát szemléltet, a C#, a hitelesítési token megújítása:
 
 ```cs
     /*

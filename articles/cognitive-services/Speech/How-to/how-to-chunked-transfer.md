@@ -1,31 +1,32 @@
 ---
-title: Darabolásos átviteli hangadatfolyam hogyan |} Microsoft Docs
-description: Darabolásos trasfer hangadatfolyam küldeni a beszédfelismerés szolgáltatás használata
+title: Hogyan darabolásos átviteli hang Stream |} A Microsoft Docs
+titlesuffix: Azure Cognitive Services
+description: Darabolásos trasfer audio-adatfolyamot küldeni a Bing Speech service használatával
 services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
 ms.component: bing-speech
 ms.topic: article
-ms.date: 09/15/2017
+ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 7d02340932dfc547893c4c40cbe08978b7b93756
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 1796a82b85182e6d231cb0bf1536cda2406e2c53
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347398"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46364907"
 ---
 # <a name="chunked-transfer-encoding"></a>Darabolásos átviteli kódolás
 
-Beszédfelismerés szöveg átírni, Microsoft beszédfelismerés API segítségével egy teljes adatrészlet elküldeni a hang, vagy a hang részeket kis adattömbökbe. A hatékony hang streaming, és csökkenti a késéseket írjanak elő, javasoljuk, hogy használjon [darabolásos átviteli kódolás](https://en.wikipedia.org/wiki/Chunked_transfer_encoding) a szolgáltatás hang adatfolyamként történő küldéséhez. Más felhasználói által érzékelt késés nagyobb eredményezhet. További információkért lásd: a [hang adatfolyamok](../concepts.md#audio-streams) lap.
+A Microsoft beszédfelismerési API lefényképezze beszédfelismerés, lehetővé teszi a hanganyag elküldeni egy teljes adattömbök, vagy a hanganyag részeket felosztása kisebb tömbökre. A hatékony hang streaming, és csökkenti a késéseket beszédátírási, ajánlott használt [darabolásos átviteli kódolás](https://en.wikipedia.org/wiki/Chunked_transfer_encoding) a szolgáltatásnak a hanganyag streamelésére. Más felhasználói által tapasztalt késés magasabb eredményezhet. További információkért lásd: a [Audio-adatfolyamokat](../concepts.md#audio-streams) lapot.
 
 > [!NOTE]
-> Nem lehetséges, hogy feltölti a több mint 10 másodpercnyi egy kérésének, és az összes kérelem időtartama nem lehet hosszabb 14 másodperc.
+> Nem tölthet fel hang bármely egy kérelem több mint 10 másodpercet, és a kérelmek teljes időtartama nem haladhatja meg a 14 másodperc.
 > [!NOTE]
-> Meg kell adnia a darabolásos átviteli kódolás a csak akkor, ha használja a [REST API-k](../GetStarted/GetStartedREST.md) a beszédfelismerés szolgáltatás hívásához. Használó alkalmazások [klienskódtárak](../GetStarted/GetStartedClientLibraries.md) nem kell konfigurálni a darabolásos átviteli kódolás.
+> Meg kell adnia a darabolásos átvitel kódolási csak akkor, ha használja a [REST API-k](../GetStarted/GetStartedREST.md) a beszédfelismerési szolgáltatás hívásához. Használó alkalmazások [klienskódtárak](../GetStarted/GetStartedClientLibraries.md) nem szükséges konfigurálni a darabolásos átvitel kódolási.
 
-A következő kód bemutatja, hogyan a darabolásos átviteli kódolás és 1024 bájt méretű adattömbökbe alatt darabolásos hangfájl küldeni.
+A következő kód bemutatja, hogyan állítsa be a darabolásos átvitel kódolási és 1024 bájt méretű adattömbökbe folyamatban darabolásos hangfájl küldéséhez.
 
 ```cs
 

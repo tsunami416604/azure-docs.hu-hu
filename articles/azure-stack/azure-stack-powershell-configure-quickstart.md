@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/17/2018
 ms.author: mabrigg
-ms.openlocfilehash: 75b7f9c78418883344ce3c066135fe0847f649ac
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: db253c921354ea132dc6b043dcb6f0b96cdbfd88
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45981969"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46368171"
 ---
 # <a name="get-up-and-running-with-powershell-in-azure-stack"></a>Első lépésekhez a PowerShell-lel az Azure Stackben
 
@@ -57,21 +57,21 @@ Az API-profil és a rendszergazda az Azure Stack verziójának moduljának betö
 
   ```PowerShell  
     Use-AzureRmProfile -Profile 2018-03-01-hybrid -Force
-    Install-Module -Name AzureStack -RequiredVersion 1.5.0 -Force
+    Install-Module -Name AzureStack -RequiredVersion 1.5.0
   ```
 
   - Az Azure Stack 1807 vagy valamely korábbi rendszerrel.
 
   ```PowerShell  
     Use-AzureRmProfile -Profile 2017-03-09-profile -Force
-    Install-Module -Name AzureStack -RequiredVersion 1.4.0 -Force
+    Install-Module -Name AzureStack -RequiredVersion 1.4.0
   ```
 
   - Az Azure Stack 1804 vagy valamely korábbi rendszerrel.
 
   ```PowerShell  
     Use-AzureRmProfile -Profile 2017-03-09-profile -Force
-    Install-Module -Name AzureStack -RequiredVersion 1.2.11 -Force
+    Install-Module -Name AzureStack -RequiredVersion 1.2.11
   ```
 
 Töltse le az Azure Stack-eszközöket, és csatlakozzon.

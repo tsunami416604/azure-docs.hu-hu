@@ -1,20 +1,21 @@
 ---
-title: Tartalombesoroló létrehozása a Custom Vision Service - Azure Cognitive Services |} A Microsoft Docs
+title: Egy osztályozó – Custom Vision Service létrehozásához
+titlesuffix: Azure Cognitive Services
 description: Megtudhatja, hogyan hozhat létre, amely képes tesz különbséget az adatok a fényképek objektumok besorolás a a Custom Vision Service használatával.
 services: cognitive-services
 author: anrothMSFT
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-vision
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/02/2018
 ms.author: anroth
-ms.openlocfilehash: c5183078d2f9d5eb16abef4f5df240f77eea6b8b
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 998900e72511a95336e4a94289c794e2a8e59feb
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39223369"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46364246"
 ---
 # <a name="how-to-build-a-classifier-with-custom-vision"></a>A Custom Vision besorolás létrehozása
 
@@ -55,7 +56,7 @@ Tartalombesoroló létrehozása, előbb rendelkeznie:
 
 3. Adjon meg egy nevet és leírást a projekthez. Ezután válassza ki, az elérhető tartományok közül. Minden egyes tartományhoz optimalizálja az osztályozó által igénybe vett képek, bizonyos típusú, az alábbi táblázatban leírtak szerint:
 
-    |Tartomány|Cél|
+    |Domain|Cél|
     |---|---|
     |__Általános__| Optimalizált széles kép fájlosztályozási feladatokhoz. Ha más tartományok sem megfelelő, vagy Ön nem tudja biztosan, melyik tartománya, válassza ki, válassza ki a általános tartományt. |
     |__Élelmiszer__|Optimalizált csészék fényképeket, látnák őket egy étterem menüben. Ha szeretné besorolni különálló vagy zöldségek fényképek, használja az élelmiszer-tartomány.|

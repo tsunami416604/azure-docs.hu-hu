@@ -7,14 +7,16 @@ author: viv-liu
 ms.author: viviali
 ms.date: 07/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 5cb55e73b379b909811bde728d2ab39e29635bf5
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 6f8bed8aba43d77cdfad49f4fe62a4c7aa2c5ce3
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43190699"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46368069"
 ---
 # <a name="visualize-and-analyze-your-azure-iot-central-data-in-a-power-bi-dashboard"></a>A Power BI-Irányítópulton az Azure IoT Central adatok megjelenítése és elemzése
+
+*Ez a témakör a rendszergazdák vonatkozik.*
 
 ![A Power BI-megoldás sablon folyamat](media/howto-connect-powerbi/iot-continuous-data-export.png)
 
@@ -25,9 +27,9 @@ Az Azure IoT Central elemzések Power BI megoldássablon hatékony Power BI-irá
 - Tekintse át az eszköz mérések korábbi trendek
 - Problémás számos a kritikus eseményeket küldő eszközök azonosítása
 
-Ez a megoldássablon állítja be a folyamatot, amely beolvassa az adatokat az Azure Blob storage-fiókjában [folyamatos adatexportálás](howto-export-data.md). Ezeket az adatokat az Azure Functions, az Azure Data Factory és Azure SQL Database feldolgozni, és átalakítja az adatokat, vizualizálja és elemezheti a Power BI-jelentések PBIX-fájlként letölthető halad keresztül. Ezen erőforrások mindegyike jönnek létre az Azure-előfizetésében, így minden egyes összetevő, hogy illeszkedjen az igényeihez szabhatja. Ez a megoldássablon az teljes mértékben nyílt forráskódú, így további információ az architektúra és a megoldás kibővítése meglátogatják a [Github-adattárat](https://aka.ms/iotcentralgithubpowerbisolutiontemplate).
+Ez a megoldássablon állítja be a folyamatot, amely beolvassa az adatokat az Azure Blob storage-fiókjában [folyamatos adatexportálás](howto-export-data.md). Ezeket az adatokat az Azure Functions, az Azure Data Factory és Azure SQL Database dolgozza fel, és az adatok átalakítása halad keresztül. A kimenet lehetnek formájában jelenik meg és elemezheti a Power BI-jelentések PBIX-fájlként letölthető. Ezen erőforrások mindegyike jönnek létre az Azure-előfizetésében, így minden egyes összetevő, hogy illeszkedjen az igényeihez szabhatja. Ez a megoldássablon az teljes mértékben nyílt forráskódú, így további információ az architektúra és a megoldás kibővítése meglátogatják a [GitHub-adattárat](https://aka.ms/iotcentralgithubpowerbisolutiontemplate).
 
-**[Az Azure IoT Central analitikai megoldássablonját beszerezheti a Microsoft AppSource-ból.](https://aka.ms/iotcentralpowerbisolutiontemplate)**
+## <a name="get-the-azure-iot-central-analytics-solution-templatehttpsakamsiotcentralpowerbisolutiontemplate-from-microsoft-appsource"></a>Első a [Azure IoT Central analitikai megoldássablonját](https://aka.ms/iotcentralpowerbisolutiontemplate) Microsoft AppSource-ból
 
 ## <a name="prerequisites"></a>Előfeltételek
 A sablon beállítása az alábbiak szükségesek:
@@ -52,7 +54,7 @@ A második a jelentés az események mélyebb ismertetőinken és hibák és fig
 
 Látogasson el az appsource-ban lekérése a [Azure IoT Central analitikai megoldássablonját](https://aka.ms/iotcentralpowerbisolutiontemplate).
 
-Látogasson el a [Github-adattárat](https://aka.ms/iotcentralgithubpowerbisolutiontemplate) további információ az architektúra és kiterjesztheti a megoldást.
+Látogasson el a [GitHub-adattárat](https://aka.ms/iotcentralgithubpowerbisolutiontemplate) további információ az architektúra és kiterjesztheti a megoldást.
 
 ## <a name="next-steps"></a>További lépések
 

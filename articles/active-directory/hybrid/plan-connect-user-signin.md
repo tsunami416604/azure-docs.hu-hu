@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/31/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 33072732053325f29dc44e4a46b809c1afaa93f4
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 38086d0e975956aefe4fcde4eda67d939d58f617
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/19/2018
-ms.locfileid: "46312647"
+ms.locfileid: "46365842"
 ---
 # <a name="azure-ad-connect-user-sign-in-options"></a>Az Azure AD Connect felhasználói bejelentkezési lehetőségek
 Az Azure Active Directory (Azure AD) Connect lehetővé teszi, hogy a felhasználókat, hogy jelentkezzen be a felhő- és a helyszíni erőforrásokhoz ugyanazt a jelszót. Ez a cikk azokat a fogalmakat minden identitás-modell segítségével válassza ki az Azure ad-ben való bejelentkezéshez használni kívánt identitást.
@@ -114,7 +114,7 @@ A felhasználó egyszerű Felhasználónevét formátuma a username@domain. Pél
 ### <a name="user-principal-name-in-azure-ad"></a>Az Azure ad-ben a felhasználó egyszerű neve
 Az Azure AD Connect varázsló a userPrincipalName attribútum használ, vagy megadhatja a attribútumot (egyéni telepítés) használható a helyszíni, egyszerű felhasználónév az Azure ad-ben. Ez az Azure ad-ben való bejelentkezéshez használt értéket. Ha a userPrincipalName attribútum értéke nem felel meg egy ellenőrzött tartomány Azure AD-ben, majd az Azure AD felülírja az alapértelmezett. onmicrosoft.com értéket.
 
-Minden címtárat az Azure Active Directoryban tartalmaz egy beépített tartomány nevét, a következő formátumban: contoso.onmicrosoft.com, amely lehetővé teszi Azure-ban vagy más Microsoft-szolgáltatások használatának megkezdésében. Javítása, és a bejelentkezési élmény egyszerűsítése érdekében egyéni tartományok használatával. Információ az egyéni tartománynevek az Azure ad-ben és a egy tartomány ellenőrzéséhez: [az egyéni tartománynév hozzáadása az Azure Active Directory](../fundamentals/add-custom-domain.md#add-a-custom-domain-name).
+Minden címtárat az Azure Active Directoryban tartalmaz egy beépített tartomány nevét, a következő formátumban: contoso.onmicrosoft.com, amely lehetővé teszi Azure-ban vagy más Microsoft-szolgáltatások használatának megkezdésében. Javítása, és a bejelentkezési élmény egyszerűsítése érdekében egyéni tartományok használatával. Információ az egyéni tartománynevek az Azure ad-ben és a egy tartomány ellenőrzéséhez: [az egyéni tartománynév hozzáadása az Azure Active Directory](../fundamentals/add-custom-domain.md).
 
 ## <a name="azure-ad-sign-in-configuration"></a>Azure AD-bejelentkezés konfigurálása
 ### <a name="azure-ad-sign-in-configuration-with-azure-ad-connect"></a>Az Azure AD bejelentkezés konfigurálása az Azure AD Connecttel

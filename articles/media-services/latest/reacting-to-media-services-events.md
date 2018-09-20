@@ -1,52 +1,61 @@
 ---
-title: Azure Media Services események reagálnak |} Microsoft Docs
-description: Esemény rács Azure Media Services események használni.
+title: Reagálás eseményekre az Azure Media Services |} A Microsoft Docs
+description: Azure Event Grid használatával előfizetni a Media Services-események.
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/19/2018
+ms.date: 09/19/2018
 ms.author: juliako
-ms.openlocfilehash: 969957d53824bd70440e5529b83bc830bb5d9cc4
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 143fec2ddb168b0fff0e419fa5767e9718637241
+ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788150"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46465537"
 ---
-# <a name="reacting-to-media-services-events"></a>Reagál a Media Services-események
+# <a name="reacting-to-media-services-events"></a>Reagálás a Media Services-eseményekre
 
-A Media Services események lehetővé teszik az alkalmazások különböző események (például a feladat állapotmódosítási esemény) használatával a modern kiszolgáló nélküli architektúrák reagálni. Igen, nincs szükség bonyolult kód vagy drága, és nem elég hatékony lekérdezési szolgáltatások. Ehelyett az események leküldött vannak [Azure esemény rács](https://azure.microsoft.com/services/event-grid/) eseménykezelők többek között a [Azure Functions](https://azure.microsoft.com/services/functions/), [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/), vagy akár saját Webhook, és Ön csak fizetési mi használhat. További információk a díjszabásról: [esemény rács árképzési](https://azure.microsoft.com/pricing/details/event-grid/).
+Media Services-események lehetővé teszik a különböző események (például a feladat állapotváltozási esemény), a modern, kiszolgáló nélküli architektúra használatával reagálni alkalmazások. Így összetettebb kódja vagy költséges és hatékony lekérdezési szolgáltatások nélkül hajtja végre. Ehelyett eseményt leküld [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) eseménykezelőket, mint például a [Azure Functions](https://azure.microsoft.com/services/functions/), [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/), vagy akár a saját Webhook, és Ön csak fizetniük a Mi használhat. Díjszabással kapcsolatos információkért lásd: [Event Grid díjszabási](https://azure.microsoft.com/pricing/details/event-grid/).
 
-Rendelkezésre állás a Media Services események kötődik esemény rács [rendelkezésre állási](../../event-grid/overview.md) és más régiókban is elérhető lesz a esemény rács hasonlóan.  
+A Media Services-eseményekhez rendelkezésre állási vannak kötve, Event Grid [rendelkezésre állási](../../event-grid/overview.md) és Event Grid választókkal válnak más régiókban érhető el.  
 
 ## <a name="available-media-services-events"></a>Elérhető Media Services-események
 
-Esemény rács által használt [esemény-előfizetések](../../event-grid/concepts.md#event-subscriptions) esemény üzenetek előfizetőknek.  Jelenleg a Media Services esemény-előfizetések is tartalmaz a következő esemény típusa:  
+Event grid használ [esemény-előfizetések](../../event-grid/concepts.md#event-subscriptions) eseményt üzenetek továbbítását-előfizetők számára.  Media Services esemény-előfizetések jelenleg a következő események is tartalmazzák:  
 
-|Esemény neve|Leírás|
+|Eseménynév|Leírás|
 |----------|-----------|
-| Microsoft.Media.JobStateChange| Jelenik meg, ha a feladat módosításokat állam. |
+| Microsoft.Media.JobStateChange| Jelenik meg, ha a feladat módosítások állapotának bekéréséhez. |
+| Microsoft.Media.LiveEventConnectionRejected | Kódoló kapcsolatfelvételt. |
+| Microsoft.Media.LiveEventEncoderConnected | Kódoló az élő esemény kapcsolatot létesít. |
+| Microsoft.Media.LiveEventEncoderDisconnected | Kódoló leválasztása. |
+| Microsoft.Media.LiveEventIncomingDataChunkDropped | Kiszolgáló adathalmaz csökken, mert késő vagy egy átfedő timestamp (időbélyeg az új adatok adattömbök érték kisebb, mint az előző adathalmaz befejezési időpontja). |
+| Microsoft.Media.LiveEventIncomingStreamReceived | Media kiszolgáló egyes nyomon követése az első adathalmaz kap a streamben vagy a kapcsolat. |
+| Microsoft.Media.LiveEventIncomingStreamsOutOfSync | Media-kiszolgáló észleli a hang és video-adatfolyamokat nincsenek szinkronban. Figyelmeztetés használjuk, mert előfordulhat, hogy nem változik a felhasználói élmény. |
+| Microsoft.Media.LiveEventIncomingVideoStreamsOutOfSync | Media-kiszolgáló észleli a külső kódoló érkező két video-adatfolyamokat bármelyikét nincsenek szinkronban. Figyelmeztetés használjuk, mert előfordulhat, hogy nem változik a felhasználói élmény. |
+| Microsoft.Media.LiveEventIngestHeartbeat | Közzétett 20 másodpercenként minden egyes nyomon követése, az élő esemény futtatásakor. Itt állapotösszegzése betöltését. |
+| Microsoft.Media.LiveEventTrackDiscontinuityDetected | Kiszolgáló kihagyást észleli a bejövő nyomon követése. |
 
-## <a name="event-schema"></a>Esemény séma
+## <a name="event-schema"></a>Eseményséma
 
-Media Services eseményeknek tartalmazniuk kell az adatok változásait összes információt.  Egy Media Services esemény azonosíthatja, mert a eventType tulajdonság kezdődik "Microsoft.Media.".
+Media Services-események összes kell reagálni az igények változásaira az adatokban adatokat tartalmazzák.  A Media Services esemény is azonosítani, mert az esemény típusa tulajdonság "Microsoft.Media." karakterlánccal kezdődik.
 
-További információkért lásd: [Media Services esemény sémák](media-services-event-schemas.md).
+További információkért lásd: [Media Services Eseménysémák](media-services-event-schemas.md).
 
-## <a name="practices-for-consuming-events"></a>Események felhasználásához tartozó eljárásokat
+## <a name="practices-for-consuming-events"></a>Eljárások az események felhasználásához
 
-Alkalmazások, amelyek kezelik a Media Services események néhány javasolt eljárást kell követnie:
+Az alkalmazásokat, amelyek a Media Services-események kezeléséhez kövesse kell néhány ajánlott eljárást:
 
-* Mivel több előfizetéssel beállítható úgy, hogy az azonos eseménykezelő útvonal események, fontos, nem egy adott forrásból származó események feltételezik, de az üzenet annak érdekében, hogy a tárfiók már vár származik a témakör kereséséhez.
-* Ehhez hasonlóan ellenőrizze, hogy az esemény típusa egy felkészültek folyamat, és nem feltételezi, hogy kap az összes esemény lesz-e a várt típusú.
-* Mezők nem világos, figyelmen kívül.  Ez az eljárás segítségével rugalmas nyomon lehet, hogy a jövőben hozzáadott új funkciók.
-* Ezen a "tárgy" előtag és utótag megfelel egy adott esemény események.
+* Több előfizetés is beállíthatók úgy, hogy az azonos eseménykezelő események átirányítása, fontos, nem egy adott forrásból származó események feltételezik, de ellenőrzéséhez győződjön meg arról, hogy a tárfiók várt származnak üzenet a témakörben.
+* Ehhez hasonlóan ellenőrizze, hogy az esemény típusa egy folyamat kész, és nem feltételezi, hogy kap az összes esemény lesz-e a várt típusú.
+* Hagyja figyelmen kívül nem ismeri a mezőket.  Ez az eljárás fog megakadályozhatja, hogy rugalmas, előfordulhat, hogy a jövőben hozzáadott új funkciókhoz.
+* A "tulajdonos" előtagot és utótagot egyezések segítségével korlátozhatja az egy adott eseményt eseményeket.
 
 ## <a name="next-steps"></a>További lépések
 
-[Feladat állapota események](job-state-events-cli-how-to.md)
+[Feladat állapota események beolvasása](job-state-events-cli-how-to.md)

@@ -1,31 +1,29 @@
 ---
-title: Azure létrehozni a felhasználói felület jelentésdefiníciós elem |} Microsoft Docs
-description: Az Azure portál felhasználói felületének definícióit konstrukciója során használandó elemeket ismerteti.
+title: Az Azure felhasználói felület jelentésdefiníciós elem létrehozása |} A Microsoft Docs
+description: Felhasználóifelület-definíciók az Azure portal kapcsolatot létesítő használandó-elemeket ismerteti.
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
-manager: timlt
-editor: tysonn
 ms.service: managed-applications
 ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/30/2018
+ms.date: 09/19/2018
 ms.author: tomfitz
-ms.openlocfilehash: 0a69f46294fc370b1eb403440af5bb3c25ef995d
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 895b5cfb121347f9400d1aa315fef05d9088c55c
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34305242"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46366471"
 ---
 # <a name="createuidefinition-elements"></a>CreateUiDefinition elemek
-Ez a cikk ismerteti a séma- és egy CreateUiDefinition minden támogatott elemei tulajdonságait. 
+Ez a cikk ismerteti a séma és a egy CreateUiDefinition minden támogatott elemei tulajdonságait. 
 
 ## <a name="schema"></a>Séma
 
-A sémát a legtöbb elemek a következőképpen történik:
+A legtöbb elemét sémája a következő:
 
 ```json
 {
@@ -42,18 +40,18 @@ A sémát a legtöbb elemek a következőképpen történik:
 
 | Tulajdonság | Szükséges | Leírás |
 | -------- | -------- | ----------- |
-| név | Igen | Belső azonosító való hivatkozáshoz egy elem előfordulását. A leggyakoribb használatát az elem neve van `outputs`, ahol a kimeneti megadott elemek képezi le, a sablon paramétereit. A kimeneti értéket egy elem kötése is használhatja a `defaultValue` másik elem. |
-| type | Igen | A felhasználói felületének vezérlői elem megjelenítéséhez. A támogatott típusainak listáját lásd: [elemek](#elements). |
-| Címke | Igen | Az elem szövegének. Néhány elemtípus több címke tartalmaz, ezért az érték lehet egy több karakterláncokat tartalmazó objektum. |
-| DefaultValue érték | Nem | Az elem alapértelmezett értéke. Néhány elemtípus támogatja összetett alapértelmezett értékének megadását, az érték lehet egy objektumot. |
-| Elemleírás | Nem | A elem az elemleírásban megjelenítendő szöveget. Hasonló `label`, bizonyos elemek támogatja a több eszköz tipp karakterláncokat. Beágyazott hivatkozásokat tartalmaz a Markdown-szintaxis használatával lehet beágyazott.
-| Megkötések | Nem | Egy vagy több tulajdonságát, amely segítségével testre szabhatja az elem ellenőrzési viselkedését. Korlátozások a támogatott tulajdonságok elemtípus változhat. Néhány elemtípus nem támogatják az ellenőrzési viselkedését testreszabása, és így vannak megkötések tulajdonságot. |
-| beállítások | Nem | Az elem működtető további tulajdonságok. Hasonló `constraints`, a támogatott tulajdonságok elemtípus változhat. |
-| Látható | Nem | Azt jelzi, hogy megjelenik-e az elem. Ha `true`, az elem és a megfelelő gyermekelemek jelennek meg. Az alapértelmezett érték `true`. Használjon [logikai funkciók](create-uidefinition-functions.md#logical-functions) dinamikusan vezérléséhez Ez a tulajdonság értékét.
+| név | Igen | Egy elem előfordulását hivatkozni belső azonosítója. Az elem nevét, a leggyakoribb használata `outputs`, ahol a kimeneti értékeket a megadott elemek vannak leképezve a sablon paramétereit. Kívánt elem értékét kimeneti kötést is használhatja a `defaultValue` másik elem. |
+| type | Igen | Az elem megjelenítése a felhasználói felületi vezérlőnek. Támogatott típusainak listáját lásd: [elemek](#elements). |
+| label | Igen | Az elem megjelenítendő szöveg. Néhány elemtípus tartalmazza a több címke, ezért az érték lehet több karakterláncokat tartalmazó objektumot. |
+| DefaultValue érték | Nem | Az alapértelmezett érték az elem. Néhány elem típusát támogatja a összetett alapértelmezett értékeket, ezért az érték lehet egy objektumot. |
+| Elemleírás | Nem | Az elem az elemleírás megjeleníteni kívánt szöveg. Hasonló `label`, bizonyos elemek támogatja a több eszközre tipp karakterlánc. Beágyazott hivatkozások Markdown szintaxissal lehet beágyazni.
+| Korlátozások | Nem | Egy vagy több tulajdonságot, amely segítségével testre szabhatja az elem ellenőrzési viselkedését. Typ prvku megkötések támogatott tulajdonságai eltérők. Néhány elem típusát támogatja az ellenőrzési viselkedése testre szabhatja, és így vannak nincsenek megkötések tulajdonság. |
+| beállítások | Nem | Testre szabható a az elem viselkedése további tulajdonságokat. Hasonló `constraints`, a támogatott tulajdonságok elem típusa szerint változó. |
+| Látható | Nem | Azt jelzi, hogy az elem megjelenik-e. Ha `true`, az elem és a megfelelő gyermekelemek jelennek meg. Az alapértelmezett érték `true`. Használat [logikai függvények](create-uidefinition-functions.md#logical-functions) dinamikusan szabályozhatja e tulajdonság értéke.
 
 ## <a name="elements"></a>Elemek
 
-A dokumentáció egyes elemei a felhasználói felület mintát tartalmaz, séma, megjegyzések a (általában vonatkozó érvényesítése és a támogatott Testreszabás) elemet, és a minta kimenet működését.
+A dokumentáció minden eleme egy felhasználói felületi mintát tartalmaz, sémát és a Megjegyzések a (általában vonatkozó érvényesítési és támogatott testreszabása) elemet, és a kimeneti viselkedését.
 
 - [Microsoft.Common.DropDown](microsoft-common-dropdown.md)
 - [Microsoft.Common.FileUpload](microsoft-common-fileupload.md)
@@ -66,11 +64,10 @@ A dokumentáció egyes elemei a felhasználói felület mintát tartalmaz, séma
 - [Microsoft.Compute.CredentialsCombo](microsoft-compute-credentialscombo.md)
 - [Microsoft.Compute.SizeSelector](microsoft-compute-sizeselector.md)
 - [Microsoft.Compute.UserNameTextBox](microsoft-compute-usernametextbox.md)
-- [Microsoft.Network.AvailabilityZoneDropDown](microsoft-network-availabilityzonedropdown.md)
 - [Microsoft.Network.PublicIpAddressCombo](microsoft-network-publicipaddresscombo.md)
 - [Microsoft.Network.VirtualNetworkCombo](microsoft-network-virtualnetworkcombo.md)
 - [Microsoft.Storage.MultiStorageAccountCombo](microsoft-storage-multistorageaccountcombo.md)
 - [Microsoft.Storage.StorageAccountSelector](microsoft-storage-storageaccountselector.md)
 
 ## <a name="next-steps"></a>További lépések
-A bevezetést UI-definíciók létrehozásáról lásd: [Ismerkedés a CreateUiDefinition](create-uidefinition-overview.md).
+Felhasználóifelület-definíciók létrehozása bevezetésért lásd: [CreateUiDefinition használatának első lépései](create-uidefinition-overview.md).

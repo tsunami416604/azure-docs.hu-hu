@@ -8,32 +8,33 @@ ms.technology: speech
 ms.topic: article
 ms.date: 06/28/2018
 ms.author: mahilleb
-ms.openlocfilehash: d651a0a9e006e996db44b82eeaf0a1242a4114e0
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: d2c40935504f6c2d477eae1830e58bf782d28b11
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/19/2018
-ms.locfileid: "46296090"
+ms.locfileid: "46366200"
 ---
 # <a name="regions-of-the-speech-service"></a>A beszédfelismerési szolgáltatás régiók
 
 A beszédfelismerési szolgáltatás különböző régiókban érhető el.
-Előfizetés létrehozásakor választhat a rendelkezésre álló régiók, igényeitől függően.
+Ha egy előfizetést hoz létre, az igényei szerint rendelkezésre álló régiók hajthatók végre.
 
-Amikor az előfizetésével számolnia a kiválasztott régióban.
+Az előfizetés használatakor számolnia a kiválasztott régióban.
 
 ## <a name="rest-api"></a>REST API
 
-A REST API-val, válassza ki a megfelelő régióspecifikus végpontok.
+A REST API segítségével válassza ki a megfelelő régióspecifikus végpontok.
 Lásd: [REST API-k](rest-apis.md) részleteiről.
 
 ## <a name="speech-sdk"></a>Beszéd SDK
 
-Az a [beszéd SDK](speech-sdk.md), régiók karakterláncként vannak megadva (például, hogy paraméterként [SpeechFactory.FromSubscription](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechfactory.fromsubscription) beszéd használata a C# SDK-ban).
+Az a [beszéd SDK](speech-sdk.md), régiók karakterláncként vannak megadva.
+Például, hogy paraméterként [SpeechFactory.FromSubscription](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechfactory.fromsubscription) beszéd használata a C# SDK-ban.
 
 ### <a name="regions-for-speech-recognition-and-translation"></a>A beszédfelismerés és -fordítási régiók
 
-Az alábbi táblázat felsorolja az elérhető régiók **beszédfelismerés** és **fordítási**:
+A következő táblázat felsorolja az elérhető régiók **beszédfelismerés** és **fordítási**.
 
   Régió | Beszéd SDK paraméter | Portál
  ------|-------|--------
@@ -49,6 +50,6 @@ Az alábbi táblázat felsorolja az elérhető régiók **beszédfelismerés** �
 
 ### <a name="regions-for-intent-recognition"></a>Régióban a szándékának felismerése
 
-Az elérhető régiók **szándékának felismerése** a Speech SDK-n keresztül szerepelnek a [Language Understanding régió szolgáltatásoldal](/azure/cognitive-services/luis/luis-reference-regions).
+Választható régiók **szándékának felismerése** a Speech SDK-n keresztül jelennek meg a [Language Understanding szolgáltatásoldal régió](/azure/cognitive-services/luis/luis-reference-regions).
 Minden felsorolt közzétételi régió a végpont a tartománynév első része a megfelelő beszédfelismerési SDK régió paraméter határozza meg.
 Például `westus` , adja meg az USA nyugati közzétételi régiója.

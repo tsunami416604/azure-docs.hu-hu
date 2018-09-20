@@ -8,15 +8,15 @@ author: DhruvMsft
 manager: craigg
 ms.custom: VNet Service endpoints
 ms.topic: conceptual
-ms.date: 08/28/2018
+ms.date: 09/18/2018
 ms.reviewer: vanto
 ms.author: dmalik
-ms.openlocfilehash: e1c05b56a1a7cc57b4d85d696df324438d916f11
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 51a9c1e2528833f0931e0bff30a9ec8a78eb99e0
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44720724"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46367338"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql-database-and-sql-data-warehouse"></a>Virtuális hálózati Szolgáltatásvégpontok és szabályok használata Azure SQL Database és SQL Data warehouse-bA
 
@@ -125,7 +125,7 @@ Lehetősége van a [szerepköralapú hozzáférés-vezérlés (RBAC)] [ rbac-wha
 
 Az Azure SQL Database a virtuális hálózati szabályok funkció a következő korlátozások vonatkoznak:
 
-- Személyes IP-címet a virtuális hálózat/alhálózat a webes alkalmazás is le lehet képezni. Akkor is, ha a Szolgáltatásvégpontok a megadott virtuális hálózat/alhálózat vannak bekapcsolva, a kiszolgáló és a webes alkalmazás közötti kapcsolatait lesz egy Azure nyilvános IP-forráshoz, nem egy virtuális hálózat/alhálózat forrás. Ahhoz, hogy a kapcsolat webalkalmazás és a egy kiszolgálóra, amelyen a VNet tűzfalszabályai, kell **minden Azure-szolgáltatások engedélyezése** a kiszolgálón.
+- Személyes IP-címet a virtuális hálózat/alhálózat a webes alkalmazás is le lehet képezni. Akkor is, ha a Szolgáltatásvégpontok a megadott virtuális hálózat/alhálózat vannak bekapcsolva, a kiszolgáló és a webes alkalmazás közötti kapcsolatait lesz egy Azure nyilvános IP-forráshoz, nem egy virtuális hálózat/alhálózat forrás. Ahhoz, hogy a kapcsolat webalkalmazás és a egy kiszolgálóra, amelyen a VNet tűzfalszabályai, kell **engedélyezése Azure-szolgáltatások kiszolgálói hozzáférésének** a kiszolgálón.
 
 - Az SQL Database-tűzfal, az egyes virtuális hálózati szabályt hivatkozik egy alhálózatra. Ezen hivatkozott alhálózatok ugyanabban a földrajzi régióban az SQL-adatbázist futtató kiszolgálón kell futnia.
 
@@ -157,23 +157,23 @@ FYI: Re ARM, 'Azure Service Management (ASM)' was the old name of 'classic deplo
 When searching for blogs about ASM, you probably need to use this old and now-forbidden name.
 -->
 
-## <a name="impact-of-removing-allow-all-azure-services"></a>"Minden Azure-szolgáltatások engedélyezése" eltávolításának következményei
+## <a name="impact-of-removing-allow-azure-services-to-access-server"></a>"Engedélyezi az Azure-szolgáltatások kiszolgálói hozzáférésének" eltávolításának következményei
 
-Hány felhasználó el kívánja távolítani **minden Azure-szolgáltatások engedélyezése** a saját Azure SQL-kiszolgálók és cserélje le a VNet tűzfalszabály.
+Hány felhasználó el kívánja távolítani **engedélyezése Azure-szolgáltatások kiszolgálói hozzáférésének** az Azure SQL-kiszolgálók, és cserélje le a VNet tűzfalszabály.
 Az alábbi Azure-SQLDB-szolgáltatások eltávolítása azonban ez hatással van:
 
 #### <a name="import-export-service"></a>Az importálási-exportálási szolgáltatás
-Az Azure SQLDB importálás exportálása szolgáltatás fut a virtuális gépek az Azure-ban. Ezek a virtuális gépek nem szerepelnek a virtuális hálózathoz, és ezért lekérése az Azure IP-címet, az adatbázishoz való csatlakozáskor. Az Eltávolítás **minden Azure-szolgáltatások engedélyezése** ezek a virtuális gépek nem tudják az adatbázisok eléréséhez.
+Az Azure SQLDB importálás exportálása szolgáltatás fut a virtuális gépek az Azure-ban. Ezek a virtuális gépek nem szerepelnek a virtuális hálózathoz, és ezért lekérése az Azure IP-címet, az adatbázishoz való csatlakozáskor. Az Eltávolítás **engedélyezése Azure-szolgáltatások kiszolgálói hozzáférésének** ezek a virtuális gépek nem tudják az adatbázisok eléréséhez.
 Megkerülheti a problémát. Futtassa a BACPAC importálási, vagy a DACFx API segítségével közvetlenül a kódba exportálása. Győződjön meg arról, hogy ez telepítve van egy virtuális Gépet, amely a virtuális hálózat – alhálózat, amelyhez rendelkezik a tűzfalszabály beállításához.
 
 #### <a name="sql-database-query-editor"></a>Az SQL Database Query-szerkesztő
-Az Azure SQL Database Query-szerkesztő helyezünk üzembe az Azure-beli virtuális gépeken. Ezek a virtuális gépek nem szerepelnek a virtuális hálózathoz. Ezért a virtuális gépek lekérése egy Azure IP-cím, az adatbázishoz való csatlakozáskor. Az Eltávolítás **minden Azure-szolgáltatások engedélyezése**, ezek virtuális gépek nem tudják az adatbázisok eléréséhez.
+Az Azure SQL Database Query-szerkesztő helyezünk üzembe az Azure-beli virtuális gépeken. Ezek a virtuális gépek nem szerepelnek a virtuális hálózathoz. Ezért a virtuális gépek lekérése egy Azure IP-cím, az adatbázishoz való csatlakozáskor. Az Eltávolítás **engedélyezése Azure-szolgáltatások kiszolgálói hozzáférésének**, a virtuális gépek nem tudják elérni az adatbázisok.
 
 #### <a name="table-auditing"></a>Táblanaplózás
 Jelenleg két módja van az SQL Database naplózás engedélyezéséhez. Táblanaplózás sikertelen lesz, miután engedélyezte a Szolgáltatásvégpontok az Azure SQL-kiszolgálón. Kockázatcsökkentési itt, hogy a blobnaplózást.
 
 #### <a name="impact-on-data-sync"></a>Adatszinkronizálás gyakorolt hatás
-Azure SQLDB rendelkezik a Data Sync szolgáltatást, amely csatlakozik az adatbázisok az Azure IP-címek használatával. A Szolgáltatásvégpontok használatakor az valószínű, hogy Ön ki fog kapcsolni **minden Azure-szolgáltatások engedélyezése** a logikai kiszolgálóhoz való hozzáférést. Ez megszakítja a Data Sync szolgáltatást.
+Azure SQLDB rendelkezik a Data Sync szolgáltatást, amely csatlakozik az adatbázisok az Azure IP-címek használatával. A Szolgáltatásvégpontok használatakor az valószínű, hogy Ön ki fog kapcsolni **engedélyezése Azure-szolgáltatások kiszolgálói hozzáférésének** a logikai kiszolgálóhoz való hozzáférést. Ez megszakítja a Data Sync szolgáltatást.
 
 ## <a name="impact-of-using-vnet-service-endpoints-with-azure-storage"></a>Virtuális hálózati Szolgáltatásvégpontok használatával és az Azure storage hatása
 

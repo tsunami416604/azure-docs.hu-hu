@@ -11,12 +11,12 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 11/27/2017
-ms.openlocfilehash: a404eb1393f9e99c2e2932c2d23724051f1b72a0
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: e301afaa2fed2b00599fbdde8178203965280c0d
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39628487"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46364992"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>Figyelheti, és az Azure Time Series Insightsban késés csökkentése érdekében a szabályozás csökkentése
 A bejövő adatok mennyisége meghaladja a környezet konfigurációját, amikor a késleltetés vagy az Azure Time Series Insights-szabályozás tapasztalhat.
@@ -30,6 +30,11 @@ Legnagyobb valószínűséggel késés és a szabályozás, amikor Ön:
 - Korábbi események nagy mennyiségű leküldése egy eseményforrás (a Time Series Insights olvasásra kell) késéssel eredményez.
 - Csatlakozzon a referenciaadatok telemetriával, nagyobb esemény-méretet eredményez.  A sávszélesség-szabályozási szempontjából egy ingressed adatok csomagot a csomag mérete 32 KB-os 32 események számít, minden egyes 1 KB méretű. Engedélyezett események maximális mérete 32 KB; 32 KB-nál nagyobb adatcsomagok csonkolva lesznek.
 
+## <a name="video"></a>Videó: 
+
+### <a name="in-this-video-we-cover-time-series-insights-data-ingress-behavior-and-how-to-plan-for-itbr"></a>Ez a videó ismerteti a Time Series Insights bejövő működéshez, és tervezze meg, hogyan.</br>
+
+> [!VIDEO https://www.youtube.com/embed/npeZLAd9lxo]
 
 ## <a name="monitor-latency-and-throttling-with-alerts"></a>Késés és a szabályozás és a riasztások figyelése
 

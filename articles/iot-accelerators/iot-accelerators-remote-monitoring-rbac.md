@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 08/06/2018
 ms.topic: conceptual
-ms.openlocfilehash: fccdc4ac40878060b94d495b8895e2a128c9477c
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: a56cb92dc8870bf3fff6de0b1d5d907a0898c216
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44716111"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46364295"
 ---
 # <a name="configure-role-based-access-controls-in-the-remote-monitoring-solution-accelerator"></a>A távoli figyelési megoldásgyorsító a szerepköralapú hozzáférés-vezérlés konfigurálása
 
@@ -240,6 +240,8 @@ public async Task DeleteAsync(string id)
 ## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben megtanulta, hogyan szerepköralapú hozzáférés-vezérlők a távoli figyelési megoldásgyorsító találhatók meg.
+
+Lásd: [hozzáférés-vezérlés konfigurálása a Time Series Insights Explorer](iot-accelerators-remote-monitoring-rbac-tsi.md) a Time Series Insights explorer, a távoli figyelési megoldásgyorsító való hozzáférés kezeléséről további információt.
 
 További elméleti kapcsolatos további információkért a távoli figyelési megoldásgyorsító: [távoli figyelési architektúrával](iot-accelerators-remote-monitoring-sample-walkthrough.md)
 

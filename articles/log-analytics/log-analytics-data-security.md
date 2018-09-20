@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 09/19/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: af8c0b6a4aa0c3b6e25f92dc450faa22a01ee374
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 42b157a63b76474f6c9482da75072878fe9291e0
+ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45579172"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46465996"
 ---
 # <a name="log-analytics-data-security"></a>Log Analytics és adatbiztonság
 Az információ kiegészítésére az Azure Log Analytics információkat biztosít a dokumentum célközönsége [Azure adatvédelmi központ](../security/security-microsoft-trust-center.md).  
@@ -44,9 +44,9 @@ A Log Analytics az átvitt adatok biztonságának biztosítása érdekében, er�
 
 A [PCI biztonsági szabványok Tanácsa](https://www.pcisecuritystandards.org/) be van állítva egy [2018. június 30. a határidő](https://www.pcisecuritystandards.org/pdfs/PCI_SSC_Migrating_from_SSL_and_Early_TLS_Resource_Guide.pdf) régebbi verziói a TLS/SSL és a frissítés biztonságosabb protokoll letiltásához. Miután Azure támogatása, csökken, ha az ügynökök nem keresztül kommunikálnak, legalább a TLS 1.2-es nem tudná Log Analytics szolgáltatásnak. 
 
-Nem javasoljuk, hogy az ügynök csak a TLS 1.2 használatára, ha feltétlenül szükség szerint ez biztonságosabb tönkretehetik platform szintű biztonsági funkciókat, amelyek lehetővé teszik, hogy automatikusan felismeri és használja ki újabb protokollok elérhetővé váló programkedvezményekről például explicit módon beállítása mint TLS 1.3. 
+Nem javasoljuk, hogy explicit módon beállítás csak a TLS 1.2 használatára, kivéve, ha az ügynök feltétlenül szükséges, ahogy azt biztonság platformfunkciók, amelyek lehetővé teszik, hogy automatikusan észleli és az újabb biztonságosabb protokollok érhető el, például váló előnyeit, azzal mint TLS 1.3. 
 
-### <a name="platform-specific-guidance"></a>Platform konkrét útmutatást
+### <a name="platform-specific-guidance"></a>Egyes platformokra vonatkozó útmutatás
 
 |Platformon és nyelven | Támogatás | További információ |
 | --- | --- | --- |
@@ -117,11 +117,11 @@ A Log Analytics szoftverek fejlesztési és a szolgáltatás csapata informáci�
 
 Minden fejlesztési csapat egyik tagja megkapja a hivatalos alkalmazás biztonsági képzés. A verziókezelő rendszer belsőleg, a szoftverfejlesztés használjuk. Minden szoftver projekt a verziókövetési rendszerét védi.
 
-A Microsoft rendelkezik egy biztonsági és megfelelőségi csapat felügyeli, és minden szolgáltatás a Microsoft értékeli. A csapat alkotó Information security officer, és azokat, amelyek nem tartoznak a mérnöki részlegek számára, akik a Log Analytics. A biztonsági tisztviselők saját felügyeleti lánc és a termékek és szolgáltatások biztonsági és megfelelőségi független értékelések végez.
+A Microsoft rendelkezik egy biztonsági és megfelelőségi csapat felügyeli, és minden szolgáltatás a Microsoft értékeli. A csapat alkotó Information security officer, és azok, amelyek nem tartoznak a mérnöki csapataival, akik a Log Analytics. A biztonsági tisztviselők saját felügyeleti lánc és a termékek és szolgáltatások biztonsági és megfelelőségi független értékelések végez.
 
 A Microsoft igazgatótanácsi egy éves jelentéssel kapcsolatos összes információ biztonsági programok a Microsoft értesítést kap.
 
-A Log Analytics szoftverek fejlesztési és a szolgáltatás csapata aktívan dolgozik a Microsoft Legal és megfelelőségi csapatok és más iparági partnerekkel, különböző tanúsítványok beszerzéséhez.
+A Log Analytics-szoftverek fejlesztési és a service csapata aktívan dolgozik a Microsoft Legal és megfelelőségi csapatok és más iparági partnerek különböző tanúsítványok beszerzéséhez.
 
 ## <a name="certifications-and-attestations"></a>Minősítéseket és tanúsítványokat
 Az Azure Log Analytics megfelel a következő követelményeknek:
@@ -176,7 +176,7 @@ A fentiekben ismertetettek szerint a felügyeleti kiszolgálóról vagy közvetl
 ## <a name="3-the-log-analytics-service-receives-and-processes-data"></a>3. A Log Analytics szolgáltatás fogadja és dolgozza fel az adatokat
 A Log Analytics szolgáltatás biztosítja, hogy a bejövő adatok megbízható forrásból érvényesítésével megjeleníthető tanúsítványok és az adatok integritásának megőrzése Azure-hitelesítéssel. A feldolgozatlan nyers adatok majd tárolódik a régióban, az adatok inaktív végül lesznek tárolva az Azure-Eseményközpontba. A tárolt adatok típusát a megoldásokat, amelyek lettek importálva, és adatokat gyűjthet típusú függ. Ezután a Log Analytics szolgáltatás folyamatok a nyers adatokat, és feltölti azt az adatbázisba.
 
-Az összegyűjtött adatokat az adatbázisban tárolt a megőrzési időszak a kiválasztott díjszabással függ. Az a *ingyenes* szint, a 7 napig érhető összegyűjtött adatokat. Az a *fizetős* szinten gyűjtött adatok alapértelmezés szerint 31 napig érhető el, de és 730 nap között is kiterjeszthető. Adatok tárolása az Azure-tárolót, annak biztosítása érdekében az adatok titkosítását inaktív. Az adatok az elmúlt két hétben is SSD-alapú gyorsítótárában vannak tárolva, és a gyorsítótár jelenleg nincs titkosítva.  Titkosítás támogatása 2018 újabb felében tervezzük.  
+Az összegyűjtött adatokat az adatbázisban tárolt a megőrzési időszak a kiválasztott díjszabással függ. Az a *ingyenes* szint, a hét napja érhető összegyűjtött adatokat. Az a *fizetős* szinten gyűjtött adatok alapértelmezés szerint 31 napig érhető el, de és 730 nap között is kiterjeszthető. Adatok titkosítása inaktív állapotban, adatkezelés, hogy az Azure storage tárolja, és az adatokat a helyileg redundáns tárolás (LRS) használó helyi régión belül replikálódnak. Az adatok az elmúlt két hétben is SSD-alapú gyorsítótárában vannak tárolva, és a gyorsítótár jelenleg nincs titkosítva.  Jelenleg folyamatban van támogatja az SSD-alapú gyorsítótár titkosításához.      
 
 ## <a name="4-use-log-analytics-to-access-the-data"></a>4. Az adatok eléréséhez a Log Analytics használatával
 A Log Analytics-munkaterület elérését, jelentkezzen be az Azure Portalon a szervezeti fiók vagy a korábban használt Microsoft-fiók használatával. A portál és a Log Analytics szolgáltatás közötti összes forgalom egy biztonságos csatornán keresztül zajlik. A portál használata esetén a munkamenet-azonosító akkor jön létre, a felhasználó ügyfélen (webböngésző), és a helyi gyorsítótárban tárolt adatokat, mindaddig, amíg a munkamenet meg lett szakítva. Ha leállt, a gyorsítótár törlődik. Ügyféloldali cookie-kat, amelyek nem tartalmaznak személyes azonosításra alkalmas adatokat, nem lesznek automatikusan eltávolítva. Munkamenet-cookie HTTPOnly vannak megjelölve, és biztosított. Egy előre meghatározott tétlen időszak után az Azure portal munkamenet meg lett szakítva.

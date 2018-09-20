@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/04/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 7805b238d42201b791e038964985f784fcf8d4ce
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 4bb1542df9001463b245405c40293b6867d4b401
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42055325"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46365077"
 ---
 # <a name="azure-active-directory-b2c-user-migration"></a>Az Azure Active Directory B2C: Felhasználók áttelepítéséhez
 Az Azure Active Directory B2C az identitásszolgáltató áttelepítéskor (Azure AD B2C-vel), szükség lehet a felhasználói fiók áttelepítéséhez. Ez a cikk bemutatja, hogyan telepítheti át meglévő felhasználói fiókok bármely identitásszolgáltatótól az Azure AD B2C-vel. A cikk nem szinkronban kell lennie az előírásoknak megfelelő, de néhány forgatókönyv bemutatja. A fejlesztő feladata mindkét megközelítés megfelelőségét.
@@ -23,11 +23,11 @@ Az Azure Active Directory B2C az identitásszolgáltató áttelepítéskor (Azur
 ## <a name="user-migration-flows"></a>Áttelepítési felhasználókövetési adatai
 Az Azure AD B2C keresztül a felhasználó telepíthet át [Azure AD Graph API][B2C-GraphQuickStart]. A felhasználó áttelepítési folyamat két folyamatok jogszerűnek:
 
-* **Az áttelepítés előtti**: Ez a folyamat vonatkozik, vagy törölje hozzáférés egy felhasználó hitelesítő adatait (felhasználónév és jelszó) vagy a hitelesítő adatok titkosítottak, de képes visszafejteni azokat. Az áttelepítést megelőző folyamatba beletartozik az olvasó a felhasználók a régi identitásszolgáltatótól, és új fiókok létrehozása az Azure AD B2C-címtárát a.
+- **Az áttelepítés előtti**: Ez a folyamat vonatkozik, vagy törölje hozzáférés egy felhasználó hitelesítő adatait (felhasználónév és jelszó) vagy a hitelesítő adatok titkosítottak, de képes visszafejteni azokat. Az áttelepítést megelőző folyamatba beletartozik az olvasó a felhasználók a régi identitásszolgáltatótól, és új fiókok létrehozása az Azure AD B2C-címtárát a.
 
-* **Az áttelepítés előtti és a jelszó-visszaállítás**: Ez a folyamat akkor érvényes, ha a jelszó nem érhető el. Példa:
-    * A jelszót a JELSZÓKIVONAT-formátumban tárolódik.
-    * A jelszó, amelyek nem érhetők el egy identitásszolgáltatótól tárolja. A régi identitásszolgáltató webszolgáltatások hívásával a felhasználói hitelesítő adatok ellenőrzése.
+- **Az áttelepítés előtti és a jelszó-visszaállítás**: Ez a folyamat akkor érvényes, ha a jelszó nem érhető el. Példa:
+   - A jelszót a JELSZÓKIVONAT-formátumban tárolódik.
+   - A jelszó, amelyek nem érhetők el egy identitásszolgáltatótól tárolja. A régi identitásszolgáltató webszolgáltatások hívásával a felhasználói hitelesítő adatok ellenőrzése.
 
 Mindkét folyamatokban először futtatja az áttelepítést megelőző folyamatba, olvassa el a felhasználók a régi identitásszolgáltatótól származó, és új fiók létrehozása az Azure AD B2C-címtárát a. Ha nem rendelkezik a jelszót, a rendszer véletlenszerűen generált jelszó használatával létrehozni a fiókot. Majd kérje meg a felhasználó módosíthatja a jelszavát, vagy amikor a felhasználó első alkalommal bejelentkezik, az Azure AD B2C-vel kéri a felhasználót, hogy állítsa alaphelyzetbe.
 
@@ -49,45 +49,45 @@ A Graph API-val folytatott kommunikációhoz, először kell rendelkeznie a szol
 Először regisztrálja az áttelepítés alkalmazás Azure AD-ben. Ezután hozzon létre egy alkalmazáskulcsot (Alkalmazáskulcs), és állítsa be az alkalmazás az írási jogosultsággal rendelkező.
 
 1. Jelentkezzen be az [Azure Portalra][Portal].
-
-2. Válassza ki az Azure AD- **B2C** bérlő, a fiókra az oldal tetején, az ablak jobb.
-
-3. A bal oldali panelen válassza ki a **Azure Active Directory** (nem Azure AD B2C-vel). Találja, akkor előfordulhat, hogy kell választania **további szolgáltatások**.
-
-4. Válassza az **Alkalmazásregisztrációk** elemet.
-
-5. Válassza az **Új alkalmazás regisztrálása** elemet.
-
-    ![Új alkalmazásregisztráció](media/active-directory-b2c-user-migration/pre-migration-app-registration.png)
-
-6. Új alkalmazás létrehozásához az alábbiak szerint:
-    * A **neve**, használjon **B2CUserMigration** vagy bármilyen más nevet.
-    * A **alkalmazástípus**, használjon **Web app és az API**.
-    * A **bejelentkezési URL-**, használjon **https://localhost** (mert nem megfelelő ehhez az alkalmazáshoz).
-    * Kattintson a **Létrehozás** gombra.
-
-7. Az alkalmazás létrehozása után a a **alkalmazások** listájához, válassza ki az újonnan létrehozott **B2CUserMigration** alkalmazás.
-
-8. Válassza ki **tulajdonságok**, másolása a **Alkalmazásazonosító**, és mentse későbbi használatra.
+   
+1. Válassza ki az Azure AD- **B2C** bérlő, a fiókra az oldal tetején, az ablak jobb.
+   
+1. A bal oldali panelen válassza ki a **Azure Active Directory** (nem Azure AD B2C-vel). Találja, akkor előfordulhat, hogy kell választania **további szolgáltatások**.
+   
+1. Válassza az **Alkalmazásregisztrációk** elemet.
+   
+1. Válassza az **Új alkalmazás regisztrálása** elemet.
+   
+   ![Új alkalmazásregisztráció](media/active-directory-b2c-user-migration/pre-migration-app-registration.png)
+   
+1. Új alkalmazás létrehozásához az alábbiak szerint:
+   - A **neve**, használjon **B2CUserMigration** vagy bármilyen más nevet.
+   - A **alkalmazástípus**, használjon **Web app és az API**.
+   - A **bejelentkezési URL-**, használjon **https://localhost** (mert nem megfelelő ehhez az alkalmazáshoz).
+   - Kattintson a **Létrehozás** gombra.
+   
+1. Az alkalmazás létrehozása után a a **alkalmazások** listájához, válassza ki az újonnan létrehozott **B2CUserMigration** alkalmazás.
+   
+1. Válassza ki **tulajdonságok**, másolása a **Alkalmazásazonosító**, és mentse későbbi használatra.
 
 ### <a name="step-12-create-the-application-secret"></a>1.2. lépés: Az alkalmazás titkos kód létrehozása
 1. Az Azure Portalon **regisztrált alkalmazás** ablakban válassza **kulcsok**.
-
-2. Adjon hozzá egy új kulcsot (más néven ügyfélkódot), és másolja a kulcsot a későbbi használatra.
-
-    ![Alkalmazás-azonosító és -kulcsok](media/active-directory-b2c-user-migration/pre-migration-app-id-and-key.png)
-
+   
+1. Adjon hozzá egy új kulcsot (más néven ügyfélkódot), és másolja a kulcsot a későbbi használatra.
+   
+   ![Alkalmazás-azonosító és -kulcsok](media/active-directory-b2c-user-migration/pre-migration-app-id-and-key.png)
+   
 ### <a name="step-13-grant-administrative-permission-to-your-application"></a>1.3. lépés: Az alkalmazás rendszergazdai engedély megadása
 1. Az Azure Portalon **regisztrált alkalmazás** ablakban válassza **szükséges engedélyek**.
 
-2. Válassza ki **Windows Azure Active Directory**.
-
-3. Az a **hozzáférés engedélyezése** panel alatt **Alkalmazásengedélyek**, jelölje be **címtáradatok olvasása és írása**, majd válassza ki **mentése**.
-
-4. Az a **szükséges engedélyek** ablaktáblán válassza előbb **engedélyek megadása**.
-
-    ![Alkalmazásengedélyek](media/active-directory-b2c-user-migration/pre-migration-app-registration-permissions.png)
-
+1. Válassza ki **Windows Azure Active Directory**.
+   
+1. Az a **hozzáférés engedélyezése** panel alatt **Alkalmazásengedélyek**, jelölje be **címtáradatok olvasása és írása**, majd válassza ki **mentése**.
+   
+1. Az a **szükséges engedélyek** ablaktáblán válassza előbb **engedélyek megadása**.
+   
+   ![Alkalmazásengedélyek](media/active-directory-b2c-user-migration/pre-migration-app-registration-permissions.png)
+   
 Most már van egy alkalmazása, az engedélyek létrehozása, olvasása és frissítése az Azure AD B2C-bérlő felhasználóit.
 
 ### <a name="step-14-optional-environment-cleanup"></a>1.4. lépés: (Nem kötelező) környezetet karbantartása
@@ -101,9 +101,9 @@ Olvasási és írási könyvtárengedélyek data do *nem* a jogot arra, hogy tö
 
 A PowerShell-parancsprogram tegye a következőket:
 1. Az online szolgáltatáshoz csatlakozhat. Ehhez futtassa a `Connect-AzureAD` parancsmag a Windows PowerShell parancssort, és adja meg a hitelesítő adatokat.
-
-2. Használja a **Alkalmazásazonosító** az alkalmazás a felhasználói fiók rendszergazdai szerepkör hozzárendelése. Ezek a szerepkörök rendelkeznek a jól ismert azonosítók, így ehhez szüksége, adja meg a **Alkalmazásazonosító** a szkriptben.
-
+   
+1. Használja a **Alkalmazásazonosító** az alkalmazás a felhasználói fiók rendszergazdai szerepkör hozzárendelése. Ezek a szerepkörök rendelkeznek a jól ismert azonosítók, így ehhez szüksége, adja meg a **Alkalmazásazonosító** a szkriptben.
+   
 ```PowerShell
 Connect-AzureAD
 
@@ -145,11 +145,11 @@ A JSON-fájl szerkesztéséhez nyissa meg a `AADB2C.UserMigration.sln` Visual St
 ![Felhasználói adatok fájl](media/active-directory-b2c-user-migration/pre-migration-data-file.png)
 
 Amint láthatja, a fájl felhasználói entitások listáját tartalmazza. Minden egyes felhasználó típusú entitás a következő tulajdonságokkal rendelkezik:
-* e-mailben
-* displayName
-* Keresztnév
-* Vezetéknév
-* jelszó (üres is lehet)
+- e-mailben
+- displayName
+- Keresztnév
+- Vezetéknév
+- jelszó (üres is lehet)
 
 > [!NOTE]
 > A fordítás során, a Visual Studio másolja át a fájlt a `bin` könyvtár.
@@ -168,43 +168,42 @@ Alatt a `AADB2C.UserMigration` projektben nyissa meg a *App.config* fájlt. Cser
 ```
 
 > [!NOTE]
-> * Egy Azure-tábla kapcsolati karakterlánc használata a következő szakaszban ismertetjük.
-> * A B2C bérlő neve a tartományhoz, amely során a bérlő létrehozásakor megadott, és megjelenik az Azure Portalon. A bérlő neve általában utótaggal végződik *. onmicrosoft.com* (például *contosob2c.onmicrosoft.com*).
->
+> - Egy Azure-tábla kapcsolati karakterlánc használata a következő szakaszban ismertetjük.
+> - A B2C bérlő neve a tartományhoz, amely során a bérlő létrehozásakor megadott, és megjelenik az Azure Portalon. A bérlő neve általában utótaggal végződik *. onmicrosoft.com* (például *contosob2c.onmicrosoft.com*).
 
 ### <a name="step-23-run-the-pre-migration-process"></a>2.3. lépés: Az áttelepítés előtti folyamat futtatása
 Kattintson a jobb gombbal a `AADB2C.UserMigration` megoldást, és ezután készítse el a mintát. Ha sikeres, most már egy `UserMigration.exe` található végrehajtható fájl `AADB2C.UserMigration\bin\Debug\net461`. Az áttelepítési folyamat futtatásához használja a következő parancssori paraméterek egyikét:
 
-* A **jelszóval rendelkező felhasználók migrálása**, használja a `UserMigration.exe 1` parancsot.
+- A **jelszóval rendelkező felhasználók migrálása**, használja a `UserMigration.exe 1` parancsot.
 
-* A **véletlenszerű jelszóval rendelkező felhasználók migrálása**, használja a `UserMigration.exe 2` parancsot. Ez a művelet létrehoz egy Azure-tábla entitás is. Később a REST API-szolgáltatás meghívására a házirend konfigurálása. A szolgáltatás egy Azure-tábla nyomon követheti és kezelheti az áttelepítési folyamat használja.
+- A **véletlenszerű jelszóval rendelkező felhasználók migrálása**, használja a `UserMigration.exe 2` parancsot. Ez a művelet létrehoz egy Azure-tábla entitás is. Később a REST API-szolgáltatás meghívására a házirend konfigurálása. A szolgáltatás egy Azure-tábla nyomon követheti és kezelheti az áttelepítési folyamat használja.
 
 ![Áttelepítési folyamat bemutató](media/active-directory-b2c-user-migration/pre-migration-demo.png)
 
 ### <a name="step-24-check-the-pre-migration-process"></a>2.4. lépés: Az áttelepítés előtti folyamat ellenőrzése
 Az áttelepítés ellenőrzése, használja az alábbi két módszer egyikét:
 
-* Keresse meg a felhasználó megjelenített név alapján, használja az Azure Portalon:
-
-    a. Nyissa meg **Azure AD B2C-vel**, majd válassza ki **felhasználók és csoportok**.
-
-    b. A Keresés mezőbe írja be a felhasználó megjelenített neve, és tekintse meg a felhasználó profilját.
-
-* Egy felhasználó lekérdezheti a bejelentkezési e-mail-címe, ez a mintaalkalmazás használja:
-
-    a. Futtassa az alábbi parancsot:
-
-    ```Console
-        UserMigration.exe 3 {email address}
-    ```
-
-    > [!TIP]
-    > Is lekérhet egy felhasználó által megjelenített neve a következő paranccsal: `UserMigration.exe 4 "<Display name>"`.
-
-    b. Nyissa meg a UserProfile.json fájlt egy JSON-szerkesztő felhasználó adatainak megtekintéséhez.
-
-    ![A UserProfile.json fájl](media/active-directory-b2c-user-migration/pre-migration-get-by-email2.png)
-
+- Keresse meg a felhasználó megjelenített név alapján, használja az Azure Portalon:
+   
+   1. Nyissa meg **Azure AD B2C-vel**, majd válassza ki **felhasználók és csoportok**.
+   
+   1. A Keresés mezőbe írja be a felhasználó megjelenített neve, és tekintse meg a felhasználó profilját.
+   
+- Egy felhasználó lekérdezheti a bejelentkezési e-mail-címe, ez a mintaalkalmazás használja:
+   
+   1. Futtassa az alábbi parancsot:
+   
+      ```Console
+          UserMigration.exe 3 {email address}
+      ```
+      
+      > [!TIP]
+      > Is lekérhet egy felhasználó által megjelenített neve a következő paranccsal: `UserMigration.exe 4 "<Display name>"`.
+      
+   1. Nyissa meg a UserProfile.json fájlt egy JSON-szerkesztő felhasználó adatainak megtekintéséhez.
+   
+      ![A UserProfile.json fájl](media/active-directory-b2c-user-migration/pre-migration-get-by-email2.png)
+      
 ### <a name="step-25-optional-environment-cleanup"></a>2.5. lépés: (Nem kötelező) környezetet karbantartása
 Ha törölni szeretne beállítása az Azure AD-bérlőhöz, és távolítsa el a felhasználókat az Azure AD-címtárban, futtassa a `UserMigration.exe 5` parancsot.
 
@@ -222,14 +221,14 @@ A jelszó-visszaállítási házirend hivatkozásának beszerzése, tegye a köv
 
 1. Válassza ki **Azure AD B2C-beállítások**, majd válassza ki **jelszó alaphelyzetbe állítása** házirend tulajdonságai.
 
-2. Válassza ki az alkalmazását.
+1. Válassza ki az alkalmazását.
 
     > [!NOTE]
     > Futtatás most kell előzetesen regisztrálva, a bérlő legalább egy alkalmazás szükséges. Megtudhatja, hogyan regisztrálja az alkalmazást, tekintse meg az Azure AD B2C [Ismerkedés] [ B2C-GetStarted] cikk vagy a [alkalmazásregisztráció] [ B2C-AppRegister] cikk.
 
-3. Válassza ki **Futtatás most**, majd ellenőrizze a szabályzatot.
+1. Válassza ki **Futtatás most**, majd ellenőrizze a szabályzatot.
 
-4. Az a **Futtatás most végponton** mezőbe, majd küldje el a felhasználók számára és másolja az URL-címet.
+1. Az a **Futtatás most végponton** mezőbe, majd küldje el a felhasználók számára és másolja az URL-címet.
 
     ![Set-diagnosztikai naplók](media/active-directory-b2c-user-migration/pre-migration-policy-uri.png)
 
@@ -248,9 +247,9 @@ Ebben a szakaszban Ön módosítja a házirendet, a bejelentkezési felhasznál�
 
 A jelszó módosítása nyomon követéséhez használhatja az Azure-táblát. Ha az áttelepítés előtti folyamat futtatja a parancssori paraméterrel `2`, az Azure-táblát hoz létre egy felhasználó típusú entitás. A szolgáltatás a következőket teszi:
 
-* A bejelentkezéshez az Azure AD B2C-szabályzathoz a migrálás RESTful szolgáltatás egy e-mailt küld egy bemeneti jogcímet, hívja meg. A szolgáltatás megkeresi a megadott e-mail-címre az Azure-tábla. Ha a cím létezik, a szolgáltatás jelez egy hibaüzenetet: *meg kell változtatni a jelszót*.
+- A bejelentkezéshez az Azure AD B2C-szabályzathoz a migrálás RESTful szolgáltatás egy e-mailt küld egy bemeneti jogcímet, hívja meg. A szolgáltatás megkeresi a megadott e-mail-címre az Azure-tábla. Ha a cím létezik, a szolgáltatás jelez egy hibaüzenetet: *meg kell változtatni a jelszót*.
 
-* Miután a felhasználó sikeresen megváltoztatja a jelszót, távolítsa el az entitás az Azure table.
+- Miután a felhasználó sikeresen megváltoztatja a jelszót, távolítsa el az entitás az Azure table.
 
 >[!NOTE]
 >Az Azure-táblát a mintát egyszerűbb használjuk. A migrálás állapota minden adatbázisban vagy egy egyéni tulajdonság az Azure AD B2C-fiókban tárolhat.
@@ -258,7 +257,7 @@ A jelszó módosítása nyomon követéséhez használhatja az Azure-táblát. H
 ### <a name="41-update-your-application-setting"></a>4.1: az alkalmazás-beállítás frissítése
 1. A RESTful API – demó verzió ellenőrzéséhez nyissa meg a `AADB2C.UserMigration.sln` a Visual Studióban.
 
-2. Az a `AADB2C.UserMigration.API` projektben nyissa meg a *appsettings.json* fájlt. Cserélje le a beállítás-ben konfigurálttal [2.2. lépés](#step-22-configure-the-application-settings):
+1. Az a `AADB2C.UserMigration.API` projektben nyissa meg a *appsettings.json* fájlt. Cserélje le a beállítás-ben konfigurálttal [2.2. lépés](#step-22-configure-the-application-settings):
 
     ```json
     {
@@ -272,9 +271,9 @@ A Megoldáskezelőben kattintson a jobb gombbal a a `AADB2C.UserMigration.API`, 
 
 ### <a name="step-43-add-a-technical-profile-and-technical-profile-validation-to-your-policy"></a>4.3. lépés: A technikai profil és a technikai profil érvényesítési hozzáadása a szabályzat
 1. A Megoldáskezelőben bontsa ki a "Megoldás elem", és nyissa meg a *TrustFrameworkExtensions.xml* szabályzatot tartalmazó fájlt.
-2. Változás `TenantId`, `PublicPolicyUri` és `<TenantId>` mezőit a `yourtenant.onmicrosoft.com` a bérlő nevével.
-3. Alatt a `<TechnicalProfile Id="login-NonInteractive">` elemben cserélje le az összes példányát `ProxyIdentityExperienceFrameworkAppId` és `IdentityExperienceFrameworkAppId` a konfigurált alkalmazás azonosítóval rendelkező [Ismerkedés az egyéni szabályzatok][B2C-GetStartedCustom].
-4. Alatt a `<ClaimsProviders>` csomópontot, keresse meg a következő XML-részletet. Módosítsa az értéket a `ServiceUrl` átirányítása az Azure App Service URL-CÍMÉT.
+1. Változás `TenantId`, `PublicPolicyUri` és `<TenantId>` mezőit a `yourtenant.onmicrosoft.com` a bérlő nevével.
+1. Alatt a `<TechnicalProfile Id="login-NonInteractive">` elemben cserélje le az összes példányát `ProxyIdentityExperienceFrameworkAppId` és `IdentityExperienceFrameworkAppId` a konfigurált alkalmazás azonosítóval rendelkező [Ismerkedés az egyéni szabályzatok][B2C-GetStartedCustom].
+1. Alatt a `<ClaimsProviders>` csomópontot, keresse meg a következő XML-részletet. Módosítsa az értéket a `ServiceUrl` átirányítása az Azure App Service URL-CÍMÉT.
 
     ```XML
     <ClaimsProvider>
@@ -319,22 +318,22 @@ A technikai profil meghatározása a RESTful API-hoz, után ossza meg az Azure A
 ### <a name="step-44-upload-the-policy-to-your-tenant"></a>4.4. lépés: A szabályzat feltöltése a bérlőhöz
 1. Az a [az Azure portal][Portal], váltson át a [az Azure AD B2C-bérlője kontextusában][B2C-NavContext], majd válassza ki **Azure AD B2C-vel**.
 
-2. Válassza ki **identitás-kezelőfelületi keretrendszer**.
+1. Válassza ki **identitás-kezelőfelületi keretrendszer**.
 
-3. Válassza ki **összes szabályzat**.
+1. Válassza ki **összes szabályzat**.
 
-4. Válassza ki **szabályzat feltöltése**.
+1. Válassza ki **szabályzat feltöltése**.
 
-5. Válassza ki a **szabályzat felülírása, ha létezik** jelölőnégyzetet.
+1. Válassza ki a **szabályzat felülírása, ha létezik** jelölőnégyzetet.
 
-6. Töltse fel a *TrustFrameworkExtensions.xml* fájlt, és győződjön meg arról, hogy érvényesítési továbbítja.
+1. Töltse fel a *TrustFrameworkExtensions.xml* fájlt, és győződjön meg arról, hogy érvényesítési továbbítja.
 
 ### <a name="step-45-test-the-custom-policy-by-using-run-now"></a>4.5. lépés: Az egyéni házirend tesztelése a Futtatás most
 1. Válassza ki **Azure AD B2C-beállítások**, majd lépjen **identitás-kezelőfelületi keretrendszer**.
 
-2. Nyissa meg **B2C_1A_signup_signin**, a függő entitásonkénti (RP) egyéni-szabályzattal, feltöltött, és válassza ki **Futtatás most**.
+1. Nyissa meg **B2C_1A_signup_signin**, a függő entitásonkénti (RP) egyéni-szabályzattal, feltöltött, és válassza ki **Futtatás most**.
 
-3. Jelentkezzen be az egyik az áttelepített felhasználók hitelesítő adatait, és válassza ki, próbálja meg **bejelentkezés**. A REST API-t kell throw a következő hibaüzenetet kapja:
+1. Jelentkezzen be az egyik az áttelepített felhasználók hitelesítő adatait, és válassza ki, próbálja meg **bejelentkezés**. A REST API-t kell throw a következő hibaüzenetet kapja:
 
     ![Set-diagnosztikai naplók](media/active-directory-b2c-user-migration/pre-migration-error-message.png)
 
@@ -343,17 +342,17 @@ Megtekintheti és naplóinformációi csaknem valós időben figyelheti.
 
 1. A REST-alapú alkalmazás Beállítások menü alatt **figyelés**válassza **diagnosztikai naplók**.
 
-2. Állítsa be **alkalmazásnaplózás (fájlrendszer)** való **a**.
+1. Állítsa be **alkalmazásnaplózás (fájlrendszer)** való **a**.
 
-3. Állítsa be a **szint** való **részletes**.
+1. Állítsa be a **szint** való **részletes**.
 
-4. Válassza ki **mentése**
+1. Válassza ki **mentése**
 
     ![Set-diagnosztikai naplók](media/active-directory-b2c-user-migration/pre-migration-diagnostic-logs.png)
 
-5. Az a **beállítások** menüjében válassza **naplófolyam**.
+1. Az a **beállítások** menüjében válassza **naplófolyam**.
 
-6. A RESTful API-kimenet ellenőrzése.
+1. A RESTful API-kimenet ellenőrzése.
 
 > [!IMPORTANT]
 > A diagnosztikai naplók használata során csak a fejlesztési és tesztelési célra. A RESTful API-kimenet tartalmazhatnak bizalmas adatokat, amelyek előtt nem szerencsés felfedni éles környezetben.

@@ -1,7 +1,7 @@
 ---
-title: Egyéni gyorsindítási keresési SDK C# |} Microsoft Docs
+title: A rövid útmutatóban egyéni keresési SDK C# |} A Microsoft Docs
 titleSuffix: Cognitive Services
-description: A telepítő egyéni keresési SDK C#-konzolalkalmazást.
+description: A telepítő egyéni keresési SDK C# konzolalkalmazást.
 services: cognitive-services
 author: mikedodaro
 manager: rosh
@@ -10,47 +10,48 @@ ms.component: bing-custom-search
 ms.topic: article
 ms.date: 01/31/2018
 ms.author: rosh
-ms.openlocfilehash: 59b208b53bec974433c50c0e2304dc96bd9bd09e
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 6b41dfbde0c2af776ee2c35220f731e40de334a0
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35346899"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46367848"
 ---
-# <a name="custom-search-sdk-c-quickstart"></a>Egyéni keresési SDK C# első lépések
+# <a name="custom-search-sdk-c-quickstart"></a>Custom Search SDK C# – rövid útmutató
 
-A Bing egyéni keresési SDK tartalmazza a REST API-t a entitás keresési és az eredmények értelmezése funkcióit.
+A Bing Custom Search SDK tartalmazza a REST API entitáskeresés és elemzési eredmények funkcióit.
 
+Az ehhez a mintához forráskódja elérhető a [Github](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingCustomWebSearch).
 ## <a name="application-dependencies"></a>Alkalmazásfüggőségek
 
-Állítsa be a Konzolalkalmazás, a Bing egyéni keresési SDK használatával, keresse meg a `Manage NuGet Packages` lehetőséget a Visual Studio megoldáskezelőjében. Adja hozzá a `Microsoft.Azure.CognitiveServices.Search.CustomSearch` csomag.
+Szeretne beállítani egy konzolalkalmazást, a Bing Custom Search SDK használatával, keresse meg a `Manage NuGet Packages` lehetőség a Visual Studio Megoldáskezelőjében. Vegye fel a `Microsoft.Azure.CognitiveServices.Search.CustomSearch` csomagot.
 
-Telepíti a [NuGet egyéni keresés](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.CustomSearch/1.2.0) csomag is telepíti a függőségek, beleértve a következő szerelvények:
+Telepíti a [NuGet egyéni keresés](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.CustomSearch/1.2.0) csomag is telepíti a függőségeket, többek között az alábbi szerelvények:
 * Microsoft.Rest.ClientRuntime
 * Microsoft.Rest.ClientRuntime.Azure
 * Newtonsoft.Json
 
-## <a name="entity-search-client"></a>Entitás keresési ügyfél
+## <a name="entity-search-client"></a>Entity Search ügyfél
 
-A CustomSearchAPI ügyfél példány létrehozására, irányelvek segítségével hozzáadása:
+Hozzon létre egy példányt a CustomSearchAPI ügyfél, a Hozzáadás irányelvekkel:
 ```
 using Microsoft.Azure.CognitiveServices.Search.CustomSearch;
 
 ```
 
-Az egyéni keresési ügyfél példányosítható: cserélje le `YOUR-CUSTOM-SEARCH-KEY` és `YOUR-CUSTOM-CONFIG-ID` végpont-konfiguráció API Azonosítót hozzárendelni, és a hozzáférési kulcsot [saját példányok](https://www.customsearch.ai/).
+Hozza létre az egyéni keresési ügyfél: csere `YOUR-CUSTOM-SEARCH-KEY` és `YOUR-CUSTOM-CONFIG-ID` a hozzáférési kulccsal és a jelenleg hozzárendelt azonosító API végpont-konfiguráció [saját példányok](https://www.customsearch.ai/).
 ```
 var client = new CustomSearchAPI(new ApiKeyServiceClientCredentials("YOUR-CUSTOM-SEARCH-KEY"));
 
 ```
-Az ügyfél segítségével keresést a lekérdezés szövegének:
+Az ügyfél használja a keresést a lekérdezés szövege:
 ```
 var webData = client.CustomInstance.SearchAsync(query: "Xbox", customConfig: Int32.Parse("YOUR-CUSTOM-CONFIG-ID")).Result;
 
 ```
-## <a name="parse-the-results"></a>Az eredményeket elemezni
+## <a name="parse-the-results"></a>Az eredmények elemzése
 
-A `SearchAsync` metódus értéket ad vissza egy `WebData` tartalmazó objektum `WebPages` Ha a lekérdezés ilyet. Ez a kód első eredménye talál, és lekérdezi a `Name` és `URL`.
+A `SearchAsync` metódus adja vissza egy `WebData` tartalmazó objektum `WebPages` találat a lekérdezéshez. Ez a kód megkeresi az első eredményt, és megszerzi az `Name` és `URL`.
 ```
 var webData = client.CustomInstance.SearchAsync(query: "Xbox", customConfig: Int32.Parse("YOUR-CUSTOM-CONFIG-ID")).Result;
  
@@ -79,9 +80,9 @@ else
 }
 
 ```
-## <a name="complete-console-application"></a>Teljes Konzolalkalmazás
+## <a name="complete-console-application"></a>A teljes konzolalkalmazás
 
-A következő kódot a lekérdezés "Xbox" keres, és kinyomtatja `Name` és `URL` az első webalkalmazás eredménye.
+Az alábbi kód "Xbox" lekérdezés átvizsgálja, és kiírja `Name` és `URL` első webes eredmény.
 ```
 using System;
 using System.Linq;
@@ -141,4 +142,4 @@ namespace CustomSrchSDK
 
 ## <a name="next-steps"></a>További lépések
 
-[Kognitív services .NET SDK-minták](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)
+[Cognitive services .NET SDK-minták](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)

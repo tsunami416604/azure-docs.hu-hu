@@ -12,12 +12,12 @@ ms.date: 09/14/2018
 ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro
-ms.openlocfilehash: ac9783d970af96242266a787071ec831ef5c0df8
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: ccff64b88787291832b9d2ed84eb81919152d887
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/19/2018
-ms.locfileid: "46296906"
+ms.locfileid: "46364771"
 ---
 # <a name="how-to-sign-up-for-azure-active-directory-as-an-organization"></a>Útmutató: Azure Active Directory szervezetként regisztrál
 Regisztráljon az Azure Active Directory (Azure AD) egy új Microsoft Azure-előfizetés használatával:
@@ -26,9 +26,12 @@ Regisztráljon az Azure Active Directory (Azure AD) egy új Microsoft Azure-elő
 
 - **Munkahelyi vagy iskolai fiókjával.** Használja a munkahelyi vagy iskolai fiókkal hozzáférhet a kis, közepes és nagyvállalati a cloud services a Microsoft, például Azure, Microsoft Intune vagy Office 365-höz. A regisztrációt követően az egyik szolgáltatásba szervezetként, az Azure AD automatikusan látja el egy felhőalapú címtár, amely a szervezet jelöli. További információkért lásd: [kezelése az Azure AD-címtár](active-directory-administer.md).
 
+    >[!Note]
+    Azt javasoljuk, hogy használja a munkahelyi vagy iskolai fiókjával, ha már rendelkezik hozzáféréssel az Azure ad-hez. Azonban használjon bármely típusú fiókkal társítva az Azure-előfizetésében.
+
 ## <a name="next-steps"></a>További lépések
 
-- [Szervezetként regisztráció](https://azure.microsoft.com/pricing/purchase-options/)
+- [Az Azure megvásárlása](https://azure.microsoft.com/pricing/purchase-options/)
 
 - [Regisztráljon az Azure Active Directory Premium-kiadások](active-directory-get-started-premium.md)
 
@@ -36,11 +39,5 @@ Regisztráljon az Azure Active Directory (Azure AD) egy új Microsoft Azure-elő
 
 - [A helyszíni identitás-infrastruktúrát használhat a felhőben](../connect/active-directory-aadconnect.md)
 
-<<<<<<< HEAD
-* [A Microsoft Azure blog](https://azure.microsoft.com/blog/)
-* [Mi az Azure AD?](active-directory-whatis.md)
-* [A helyszíni identitás-infrastruktúrát használhat a felhőben](../hybrid/whatis-hybrid-identity.md)
-=======
 - [A Microsoft Azure blog](https://azure.microsoft.com/blog/)
->>>>>>> 73f447b1499ba1f189efb6832ad759f1230e55a2
 

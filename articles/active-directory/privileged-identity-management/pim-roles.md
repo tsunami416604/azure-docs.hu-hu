@@ -13,12 +13,12 @@ ms.component: pim
 ms.date: 07/23/2018
 ms.author: rolyon
 ms.custom: pim ; H1Hack27Feb2017;oldportal;it-pro;
-ms.openlocfilehash: cf0c9b76a7edace9f2a9147823b292e218e20bf7
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 63f4c4c48dd0fed3130dc99929a0e84c3cba2026
+ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44300273"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46466047"
 ---
 # <a name="azure-ad-directory-roles-you-can-manage-in-pim"></a>A PIM segítségével kezelheti az Azure AD címtárszerepkörök
 <!-- **PLACEHOLDER: Need description of how this works. Azure PIM uses roles from MSODS objects.**-->
@@ -37,17 +37,17 @@ Privileged Identity Management lehetővé teszi az általános rendszergazdai sz
 * **Globális rendszergazda** (más néven a vállalati rendszergazda) összes rendszergazdai funkciójához hozzáfér. A szervezetben egynél több globális rendszergazda rendelkezhet. Az Office 365 automatikusan beszerzési feliratkozó személy lesz globális rendszergazda.
 * **Kiemelt szerepkörű rendszergazda** kezeli az Azure AD PIM-ben, és frissíti a szerepkör-hozzárendelések más felhasználók számára.  
 * **Számlázási adminisztrátor** lebonyolítja a vásárlásokat, kezeli az előfizetéseket, támogatási jegyeket, és figyeli a szolgáltatás állapotát.
-* **Jelszókezelő** átállítja a jelszavakat, kezeli a szolgáltatáskéréseket, és figyeli a szolgáltatás állapotát. Jelszó rendszergazdák korlátozva, a felhasználók jelszavainak visszaállítását.
+* **Jelszókezelő** átállítja a jelszavakat, kezeli a szolgáltatáskéréseket, és figyeli a szolgáltatás állapotát. Jelszókezelők korlátozva, a felhasználók jelszavainak visszaállítását.
 * **Szolgáltatás-rendszergazda** kezeli a szolgáltatáskéréseket, és figyeli a szolgáltatás állapotát.
   
   > [!NOTE]
-  > Ha Office 365-höz használ, majd előtt a szolgáltatás-rendszergazdai szerepkör hozzárendelése egy felhasználóhoz, először a felhasználó hozzárendelése rendszergazdai engedélyekkel egy szolgáltatáshoz, például az Exchange online-hoz.
+  > Office 365-höz használ, ha egy felhasználónak, a szolgáltatás-rendszergazdai szerepkör hozzárendelése előtt először hozzárendelheti a felhasználó rendszergazdai engedélyek egy szolgáltatáshoz, például az Exchange online-hoz.
   > 
   > 
-* **Felhasználókezelő rendszergazda** átállítja a jelszavakat, figyeli a szolgáltatás állapotát, és kezeli a felhasználói fiókok, a felhasználói csoportok és a szolgáltatáskéréseket. A Felhasználókezelő rendszergazda nem törölheti a globális rendszergazdákat, hozhat létre más rendszergazdai szerepköröket, vagy állítsa vissza a globális, a számlázási és szolgáltatás-rendszergazdák jelszavát.
+* **Felhasználói rendszergazda** átállítja a jelszavakat, figyeli a szolgáltatás állapotát, és kezeli a felhasználói fiókok, a felhasználói csoportok és a szolgáltatáskéréseket. A felhasználó rendszergazda nem törölhet globális rendszergazdát, hozhat létre más rendszergazdai szerepköröket, vagy állítsa vissza a globális, a számlázási és szolgáltatás-rendszergazdák jelszavát.
 * **Exchange-rendszergazda** Exchange Online rendszergazdai hozzáféréssel rendelkezik az Exchange felügyeleti központot (EAC segítségével) keresztül, és szinte bármilyen feladatot végrehajthat az Exchange online-ban.
-* **SharePoint-rendszergazda (előzetes verzió)** a SharePoint online rendszergazdai hozzáféréssel rendelkezik a SharePoint Online felügyeleti központban, és szinte bármilyen feladatot végrehajthat a SharePoint online-ban. Ez a szerepkör jelenleg előzetes verzióban érhető el. Jogosult felhasználók tapasztalhat az késleltetések a PIM aktiválása után a sharepointból szerepkör használatával.
-* **Skype vállalati rendszergazda** rendszergazdai hozzáférést a Skype for Business keretében Skype for Business felügyeleti központban, és szinte bármilyen feladatot végrehajthat a a Skype vállalati online verziójához.
+* **A SharePoint szolgáltatás-rendszergazda** a SharePoint online rendszergazdai hozzáféréssel rendelkezik a SharePoint Online felügyeleti központban, és szinte bármilyen feladatot végrehajthat a SharePoint online-ban. Jogosult felhasználók tapasztalhat az késleltetések a PIM aktiválása után a sharepointból szerepkör használatával.
+* **Skype for Business rendszergazda** rendszergazdai hozzáférést a Skype for Business keretében Skype for Business felügyeleti központban, és szinte bármilyen feladatot végrehajthat a a Skype vállalati online verziójához.
 
 Ezek a cikkek további részletekért olvassa el [rendszergazdai szerepkörök hozzárendelése az Azure ad-ben](../users-groups-roles/directory-assign-admin-roles.md) és [rendszergazdai szerepkörök hozzárendelése az Office 365](https://support.office.com/article/Assigning-admin-roles-in-Office-365-eac4d046-1afd-4f1a-85fc-8219c79e1504).
 

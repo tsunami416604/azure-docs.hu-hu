@@ -1,106 +1,107 @@
 ---
-title: A C# asztali könyvtár használatával a Microsoft beszéd felismerés API használatába |} Microsoft Docs
-description: A Microsoft beszéd felismerés API használatával szóbeli hang szöveggé alakítani alapvető Windows-alkalmazások fejlesztéséhez.
+title: Ismerkedés a Bing Speech Recognition API-val a C# asztali kódtár használatával |} A Microsoft Docs
+titlesuffix: Azure Cognitive Services
+description: A Bing Speech Recognition API használatával a beszélt hangot képes szöveggé alakítani alapszintű Windows alkalmazásokat fejleszthet.
 services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
 ms.component: bing-speech
 ms.topic: article
-ms.date: 09/27/2017
+ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: e59b0e25401fb5182edd52f82985ffed9052286d
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 1c7755e3949cc3b7cfafddf3a822528c1bae0225
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347447"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46367151"
 ---
-# <a name="get-started-with-the-speech-recognition-api-in-c35-for-net-on-windows"></a>Első lépések a beszéd-felismerési API C&#35; a .NET-hez Windows rendszeren
+# <a name="quickstart-use-the-bing-speech-recognition-api-in-c35-for-net-on-windows"></a>Gyors útmutató: A Bing beszédfelismerés API c. használata&#35; .NET Windows-es
 
-Ezen a lapon látható, hogyan fejleszthet egy alapvető Windows-alkalmazás, amely a beszédfelismerés felismerés API használatával szóbeli hang szöveggé alakítani. Az ügyféloldali kódtár használata lehetővé teszi a valós idejű streamelési, ami azt jelenti, ha az ügyfélalkalmazást küld a szolgáltatás hang, hogy egyidejűleg és aszinkron módon kap részleges felismerési eredmények vissza.
+Ezen a lapon látható, hogyan hozhat létre egy egyszerű Windows-alkalmazás, amely a Speech Recognition API-t használja a beszélt hangot képes szöveggé alakítani. Az ügyféloldali kódtár használatával lehetővé teszi, hogy a valós idejű streamelési, ami azt jelenti, hogy ha az ügyfélalkalmazás elküldi a szolgáltatás az audio, párhuzamosan és aszinkron módon kap vissza a részleges felismerési eredményeket.
 
-A fejlesztők számára beszéd szolgáltatás használatát bármely olyan eszközről, a futó alkalmazásokból használhatja a C# asztali könyvtárban. A könyvtár használatához telepítenie a [NuGet-csomag Microsoft.ProjectOxford.SpeechRecognition-x86](https://www.nuget.org/packages/Microsoft.ProjectOxford.SpeechRecognition-x86/) egy 32 bites platform és a [NuGet-csomag Microsoft.ProjectOxford.SpeechRecognition-x64](https://www.nuget.org/packages/Microsoft.ProjectOxford.SpeechRecognition-x64/) a egy 64 bites platformon. Az ügyféloldali kódtár API-referencia, lásd: [Microsoft beszéd C# asztali tár](https://cdn.rawgit.com/Microsoft/Cognitive-Speech-STT-Windows/master/docs/SpeechSDK/index.html).
+A fejlesztők számára Speech Service használata az alkalmazások futtatása bármely eszközön használhatja a C# asztali tár. A könyvtár használatához telepítse a [NuGet-csomag Microsoft.ProjectOxford.SpeechRecognition-x86](https://www.nuget.org/packages/Microsoft.ProjectOxford.SpeechRecognition-x86/) egy 32 bites platform és a [NuGet-csomag Microsoft.ProjectOxford.SpeechRecognition-x64](https://www.nuget.org/packages/Microsoft.ProjectOxford.SpeechRecognition-x64/) a egy 64 bites platform. Az ügyféloldali kódtár API-referencia, lásd: [Microsoft Speech C# asztali tár](https://cdn.rawgit.com/Microsoft/Cognitive-Speech-STT-Windows/master/docs/SpeechSDK/index.html).
 
-Az alábbi szakaszok azt ismertetik, hogyan telepítse, felépítéséhez, és futtassa a C# mintaalkalmazást a C# asztali könyvtár használatával.
+A következő szakaszok ismertetik, hogyan kell telepíteni, hozhat létre és futtassa a C# mintaalkalmazást a C# asztali könyvtár használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 ### <a name="platform-requirements"></a>Platform-követelmények
 
-A következő minta Windows 8 + és kifejlesztett .NET-keretrendszer 4.5-ös + használatával [Visual Studio 2015, Community Edition](https://www.visualstudio.com/products/visual-studio-community-vs).
+A következő minta használatával a Windows 8 +, és a .NET-keretrendszer 4.5-ös + célja [Visual Studio 2015, Community Edition](https://www.visualstudio.com/products/visual-studio-community-vs).
 
 ### <a name="get-the-sample-application"></a>A mintaalkalmazás beolvasása
 
-A mintát klónozza a [beszéd C# asztali tár minta](https://github.com/microsoft/cognitive-speech-stt-windows) tárház.
+Klónozza a minta a [Speech C# minta asztali tár](https://github.com/microsoft/cognitive-speech-stt-windows) tárház.
 
-### <a name="subscribe-to-the-speech-recognition-api-and-get-a-free-trial-subscription-key"></a>A beszédfelismerés felismerés API előfizetni, és egy ingyenes próba-előfizetés kulcs beszerzése
+### <a name="subscribe-to-the-speech-recognition-api-and-get-a-free-trial-subscription-key"></a>Fizessen elő a Speech Recognition API és a egy ingyenes próba-előfizetését kulcs lekérése
 
-A Diktálásfelismerési API (korábban projekt Oxford) kognitív szolgáltatások részét képezi. Ingyenes próba-előfizetés kulcsokat beszerezheti a [kognitív szolgáltatások előfizetés](https://azure.microsoft.com/try/cognitive-services/) lap. Miután kiválasztotta a hang transzformációs API-t, jelölje ki a **API-kulcs beolvasása** a kulcs beszerzése. Egy elsődleges és másodlagos kulcsot adja vissza. Mindkét kulcsot, vagy kulccsal a azonos kvóta vannak társítva.
+A beszédfelismerő API a Cognitive Services-(korábban Project Oxford) részét képezi. Ingyenes próba-előfizetését helyenk beszerezheti a [Cognitive Services-előfizetés](https://azure.microsoft.com/try/cognitive-services/) lapot. Miután kiválasztotta a beszédfelismerő API, válassza ki a **API-kulcs lekérése** a kulcs beszerzése. Egy elsődleges és másodlagos kulcsát adja vissza. Mindkét kulcsot kvóta, így használhatja az egyiket sem vannak társítva.
 
 > [!IMPORTANT]
-> * Egy előfizetés kulcs beszerzése. A beszédfelismerés klienskódtárak segítségével használatához rendelkeznie kell egy [előfizetés kulcs](https://azure.microsoft.com/try/cognitive-services/).
+> * Előfizetési kulcs lekérése. A beszédfelismerés klienskódtárak használatához rendelkeznie kell egy [előfizetési kulcs](https://azure.microsoft.com/try/cognitive-services/).
 >
-> * Az előfizetés-kulcsot használ. A megadott C# asztali mintaalkalmazást illessze be az Előfizetés kulcs szöveges minta futtatásakor. További információkért lásd: [futtassa a mintaalkalmazást](#step-3-run-the-sample-application).
+> * Az előfizetési kulcs használja. A megadott C# asztali mintaalkalmazással illessze be az előfizetési kulcs a szövegmezőbe írja be a minta futtatásakor. További információkért lásd: [futtassa a mintaalkalmazást](#step-3-run-the-sample-application).
 
 ## <a name="step-1-install-the-sample-application"></a>1. lépés: A mintaalkalmazás telepítése
 
-1. Indítsa el a Visual Studio 2015-öt, és válassza **fájl** > **nyitott** > **projekt/megoldás**.
+1. Indítsa el a Visual Studio 2015-öt, és válassza ki **fájl** > **nyílt** > **projekt/megoldás**.
 
-2. Keresse meg a mappát, ahová menteni szeretné a beszédfelismerés felismerés API letöltött fájlokat. Válassza ki **beszéd** > **Windows**, majd válassza ki a minta-WP mappát.
+2. Keresse meg a mappát, ahová mentette a Speech Recognition API letöltött fájlokat. Válassza ki **Speech** > **Windows**, majd válassza ki a minta-WP mappát.
 
-3. Kattintson duplán a Visual Studio 2015 megoldás (.sln) fájl SpeechToText-WPF-Samples.sln nevű megnyitásához. A megoldás a Visual Studio nyílik meg.
+3. Kattintson duplán a SpeechToText-WPF-Samples.sln nevű Visual Studio 2015-megoldás (.sln) fájl megnyitásához. A megoldás megnyílik a Visual Studióban.
 
 ## <a name="step-2-build-the-sample-application"></a>2. lépés: A minta-alkalmazás létrehozása
 
-1. Ha a használni kívánt *biztonsági mentés felismerés*, először be kell jelentkeznie a a [nyelvi ismertetése intelligens szolgáltatás (LUIS)](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/). A végponti URL-cím az LUIS alkalmazás segítségével a kulcs értékét állítsa `LuisEndpointUrl` az app.config fájlban a minták/SpeechRecognitionServiceExample mappában. A LUIS alkalmazás a végpont URL-címének további információkért lásd: [az alkalmazás közzététele](../../luis/luis-get-started-create-app.md#publish-your-app).
+1. Ha a használni kívánt *szándékával felismerése*, először létre kell regisztrálni a [Language Understanding Intelligent Service (LUIS)](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/). A végpont URL-címét a LUIS-alkalmazás használatával a kulcs értékét állítsa `LuisEndpointUrl` az app.config fájlban a samples/SpeechRecognitionServiceExample mappában. A LUIS alkalmazás a végpont URL-címének további információkért lásd: [tegye közzé alkalmazását](../../luis/luis-get-started-create-app.md#publish-your-app).
 
    > [!TIP]
-   > Cserélje le a `&` karaktert a LUIS végpont URL-cím elé `&amp;` annak érdekében, hogy az URL-címet az XML-elemző megfelelően értelmezi.
+   > Cserélje le a `&` karaktert a LUIS végponti URL-címet `&amp;` annak érdekében, hogy az URL-cím helyesen értelmezi az XML-elemzőben.
 
-2. Nyomja le a Ctrl + Shift + B, vagy válasszon **Build** a menüszalag menü. Válassza ki **megoldás fordítása**.
+2. Nyomja le a Ctrl + Shift + B, vagy válassza ki **összeállítása** a menüszalag menü. Válassza ki **megoldás fordítása**.
 
 ## <a name="step-3-run-the-sample-application"></a>3. lépés: A mintaalkalmazás futtatása
 
 1. A létrehozás befejezése után nyomja le az F5 billentyűt, vagy válasszon **Start** a menüszalag menü a minta futtatásához.
 
-2. Lépjen a **projekt Oxford beszédfelismerés szöveges mintavételi** ablak. Illessze be az Előfizetés kulcs azokat a **illessze be ide az Előfizetés kulcs elindításához** szövegmezőben látható módon. Az Előfizetés kulcs a számítógépen vagy hordozható megőrizni, válassza ki **kulcs mentése**. A rendszer az Előfizetés-kulcs törléséhez válassza ki **kulcs törlése** eltávolítása a PC- vagy hordozható.
+2. Nyissa meg a **Project Oxford Speech to Text minta** ablak. Illessze be az előfizetési kulcs a **illessze be ide az előfizetési kulcs elindításához** szövegmezőben látható módon. Az előfizetési kulcs a számítógépen vagy laptopon megőrizni, válassza ki **kulcs mentése**. A rendszer az előfizetési kulcs törléséhez válassza ki **kulcs törlése** eltávolítása a számítógépen vagy laptopon.
 
-   ![Beszéd felismerés illessze be a kulcs](../Images/SpeechRecog_paste_key.PNG)
+   ![Speech recognition illessze be a kulcs](../Images/SpeechRecog_paste_key.PNG)
 
-3. A **Beszéd felismerés forrás**, válassza ki a hat beszéd forrásokból, amely két fő bemeneti kategóriába sorolhatók:
+3. A **Speech Recognition forrás**, válassza ki a hat speech forrásokból, amelyek két fő bemeneti kategóriába sorolhatók:
 
-   * A számítógép mikrofon vagy egy csatlakoztatott mikrofon segítségével rögzítheti a beszédfelismerés.
-   * Hangfájl lejátszása.
+   * A számítógép hangsávról vagy egy csatolt mikrofon használatával beszédfelismerési rögzítése.
+   * Hang lejátszása.
 
-   Minden egyes kategória három felismerés módot:
+   Az egyes kategóriákhoz felismerés három mód:
 
-    * **ShortPhrase mód**: egy utterance legfeljebb 15 másodperc hosszú. Mivel adatokat küld a kiszolgáló, az ügyfél megkapja a több részleges eredményt és egy végeredményt több n-legjobb választást.
-    * **LongDictation mód**: egy utterance akár két perc hosszú. Mivel adatokat küld a kiszolgáló, az ügyfél megkapja a több részleges eredményt, és több végső eredmény azt jelzi, ha a kiszolgáló mondat szünet alapján.
-    * **Leképezési észlelési**: A kiszolgáló a beszédfelismerés bemeneti további strukturált információt ad vissza. Leképezési észlelési használatához először használatával a modell betanításához szüksége [LUIS](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/).
+    * **ShortPhrase mód**: az utterance (kifejezés), legfeljebb 15 másodperc, mennyi ideig. Adatokat küld a kiszolgálón, mert a az ügyfél több részleges és több végső eredményt, több legjobb n választási lehetőség a kap.
+    * **LongDictation mód**: az utterance (kifejezés), akár két perc hosszú. Adatokat küld a kiszolgálón, mert a az ügyfél több részleges és több végső eredményt is, ahol azt jelzi, a kiszolgáló mondaton belüli szünetet alapján kap.
+    * **Leképezési észlelési**: A kiszolgáló a beszéd, adjon meg további strukturált információt ad vissza. Leképezési észlelési használatához először betanítja a modellt használatával kell [LUIS](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/).
 
-Minta hangfájlok használata a mintaalkalmazáshoz. A tárházban letöltött ebben a példában a minták/SpeechRecognitionServiceExample mappában találja a fájlokat. A minta hangfájlok automatikus futtatása, ha nincs más fájlok közül választ, amikor kiválaszt **Shortphrase mód használata wav-fájl** vagy **Longdictation mód használata wav-fájl** , a beszéd adjon meg. Jelenleg csak WAV audioformátum használata támogatott.
+Ez a mintaalkalmazás minta hangfájlok használata. Ebben a példában a samples/SpeechRecognitionServiceExample mappában letöltött adattár találja a fájlokat. Ezen minta hangfájlok automatikus futtatásra, ha nincsenek más fájlok közül választ kiválasztásakor **Shortphrase mód használata wav-fájl** vagy **wav-fájl használata Longdictation mód** , a beszéd, adjon meg. Jelenleg csak WAV hangformátum használata támogatott.
 
-![Beszédfelismerés szöveg felület](../Images/HelloJones.PNG)
+![Beszéd szöveges felülethez](../Images/HelloJones.PNG)
 
-## <a name="samples-explained"></a>Minták alapján
+## <a name="samples-explained"></a>A minták ismertetése
 
-### <a name="recognition-events"></a>Felismerés események
+### <a name="recognition-events"></a>Elismerés események
 
-* **Részleges eredmények események**: Ez az esemény minden alkalommal, amikor a beszédfelismerés szolgáltatás előrejelzi mi, előfordulhat, hogy kell arról, még mielőtt beszéd menüelemnek (használatakor `MicrophoneRecognitionClient`) vagy a Befejezés adatküldés (használatakor `DataRecognitionClient`).
-* **Hibaesemények**: hívható meg, ha a szolgáltatás hibát észlel.
-* **Leképezési események**: nevű ügyfeleken "WithIntent" (csak a ShortPhrase üzemmódban) után utolsó felismerési eredmények strukturált JSON-leképezés van értelmezni.
-* **Események eredménye**:
-  * A `ShortPhrase` módot, ez az esemény neve és az n-legjobb eredményt ad vissza, és beszéljen befejezése után.
-  * A `LongDictation` üzemmód, az eseménykezelő neve többször, ahol a szolgáltatás azonosítja a mondatok szünet alapján.
-  * **Az egyes az n-legjobb lehetőségeket**, abban, hogy az érték, és néhány más űrlapok a felismert szöveg adott vissza. További információkért lásd: [kimeneti formátum](../Concepts.md#output-format).
+* **Részleges eredményeket események**: Ez az esemény meghívása megtörténik, minden alkalommal, amikor beszédszolgáltatás előrejelzi, előfordulhat, hogy el véleményét, beszéd befejezése előtt is (Ha `MicrophoneRecognitionClient`), vagy fejezze be az adatok küldésének (használatakor `DataRecognitionClient`).
+* **Hibaesemények**: meghívva, ha a szolgáltatás hibát észlel.
+* **Leképezési események**: nevű ügyfeleken "WithIntent" (csak a ShortPhrase üzemmódban) után a végső felismerés eredménye egy strukturált JSON-leképezés szűrőtulajdonság.
+* **Események eredményeként**:
+  * A `ShortPhrase` mód, ez az esemény nevezik, és a legjobb n eredményeket ad vissza, és beszéljen befejezése után.
+  * A `LongDictation` üzemmód, az eseménykezelő neve többször, ahol a szolgáltatás azonosítja a mondaton belüli szünetet alapján.
+  * **A legjobb n lehetőségek mindegyike**, egy megbízhatósági érték és néhány másik formája a felismert szöveget adja vissza. További információkért lásd: [kimeneti formátum](../Concepts.md#output-format).
 
-Az eseménykezelők ki már emelni a kód megjegyzések formájában a kódban.
+Eseménykezelők ki már emelni a kód megjegyzések formájában a kódban.
 
 ## <a name="related-topics"></a>Kapcsolódó témakörök
 
-* [Microsoft Speech asztali kódtár – dokumentáció](https://cdn.rawgit.com/Microsoft/Cognitive-Speech-STT-Windows/master/docs/SpeechSDK/index.html)
-* [Ismerkedés a Microsoft beszéd felismerés API-nak Java Android rendszeren](GetStartedJavaAndroid.md)
-* [IOS rendszerű eszközökön a Microsoft beszéd-felismerési API Objective-C az első lépései](Get-Started-ObjectiveC-iOS.md)
-* [A Microsoft beszéd felismerés API a JavaScript beolvasása használatába](GetStartedJSWebsockets.md)
-* [Ismerkedés a Microsoft beszéd felismerés API REST-en keresztül](GetStartedREST.md)
+* [Microsoft Speech asztali kódtár – referencia](https://cdn.rawgit.com/Microsoft/Cognitive-Speech-STT-Windows/master/docs/SpeechSDK/index.html)
+* [Java Android rendszeren a Microsoft Speech Recognition API használatának első lépései](GetStartedJavaAndroid.md)
+* [IOS-eszközökön a Microsoft Speech Recognition API Objective-C nyelven használatának első lépései](Get-Started-ObjectiveC-iOS.md)
+* [A Microsoft Speech Recognition API a JavaScript használatának első lépései](GetStartedJSWebsockets.md)
+* [Ismerkedés a Microsoft Speech Recognition API REST-en keresztül](GetStartedREST.md)

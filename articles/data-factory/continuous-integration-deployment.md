@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/16/2018
+ms.date: 09/18/2018
 ms.author: douglasl
-ms.openlocfilehash: 57c691271c2b2673ade40d600162934341e18a81
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 94c4a3fbd1c854401c42af5787c22db0e5dd6083
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44300240"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46364982"
 ---
 # <a name="continuous-integration-and-deployment-in-azure-data-factory"></a>Folyamatos integráció és üzembe helyezés az Azure Data Factoryban
 
@@ -69,7 +69,7 @@ Itt van a folyamatos integráció és üzembe helyezés, amelyekkel a teljes él
 
 ## <a name="automate-continuous-integration-with-azure-devops-services-releases"></a>Folyamatos integráció Azure fejlesztési és üzemeltetési szolgáltatások kiadásokban a automatizálása
 
-Az alábbiakban a lépéseket egy Azure-fejlesztési és üzemeltetési szolgáltatások kiadás beállításához, adat-előállító több környezethez való telepítésének automatizálásához.
+Az alábbiakban a lépéseket egy Azure-fejlesztési és üzemeltetési szolgáltatások verzió beállításához, adat-előállító több környezethez való telepítésének automatizálásához.
 
 ![Folyamatos integráció Azure DevOps-szolgáltatásokkal ábrája](media/continuous-integration-deployment/continuous-integration-image12.png)
 
@@ -81,7 +81,7 @@ Az alábbiakban a lépéseket egy Azure-fejlesztési és üzemeltetési szolgál
 
 -   Egy [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) tartalmazó a titkos kulcsok.
 
-### <a name="set-up-a-azure-devops-services-release"></a>Állítsa be az Azure fejlesztési és üzemeltetési szolgáltatások kiadás
+### <a name="set-up-an-azure-devops-services-release"></a>Egy Azure-fejlesztési és üzemeltetési szolgáltatások verzió beállítása
 
 1.  Nyissa meg az Azure DevOps-szolgáltatásokkal oldalát, a Data factoryval konfigurált ugyanabban a projektben.
 
@@ -799,9 +799,9 @@ else {
 
 ## <a name="use-custom-parameters-with-the-resource-manager-template"></a>Egyéni paraméterek használata a Resource Manager-sablon
 
-A Resource Manager-sablon egyéni paraméterek határozhatja meg. Rendelkezik egy fájlt a `arm-template-parameters-definition.json` a tárház gyökérmappájában. (A fájl nevének egyeznie kell a név pontosan az itt látható.) A Data Factory megpróbálja beolvasni a fájlt, bármelyik ágból az éppen dolgozik, ne csak az együttműködés ágból. Ha nincs fájl található, a Data Factory használ alapértelmezett definíciókat.
+A Resource Manager-sablon egyéni paraméterek határozhatja meg. Rendelkezik egy fájlt a `arm-template-parameters-definition.json` a tárház gyökérmappájában. (A fájl nevének egyeznie kell a név pontosan az itt látható.) A Data Factory megpróbálja beolvasni a fájlt, bármelyik ágból az éppen dolgozik, ne csak az együttműködés ágból. Ha nincs fájl található, adat-előállító használ, az alapértelmezett paramétereket és értékeket.
 
-Az alábbi példa bemutatja egy minta paramétereket tartalmazó fájlt. Referenciaként a minta használatával hozza létre a saját egyéni paramétereket tartalmazó fájlt. Ha Ön a fájl nem a megfelelő JSON formátumban, a Data Factory kimenete egy a böngészőbeli konzolon megjelenő hibaüzenet, és visszaáll az alapértelmezett definíciókat a Data Factory felhasználói felületén látható.
+Az alábbi példa bemutatja egy minta paramétereket tartalmazó fájlt. Referenciaként a minta használatával hozza létre a saját egyéni paramétereket tartalmazó fájlt. Ha Ön a fájl nem a megfelelő JSON formátumban, a Data Factory kimenete egy a böngészőbeli konzolon megjelenő hibaüzenet, és visszaáll az alapértelmezett paraméterek és a Data Factory felhasználói felülete látható értékeket.
 
 ```json
 {

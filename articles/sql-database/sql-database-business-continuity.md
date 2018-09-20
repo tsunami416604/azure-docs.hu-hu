@@ -9,15 +9,15 @@ ms.service: sql-database
 ms.custom: business continuity
 ms.topic: conceptual
 ms.workload: On Demand
-ms.date: 07/25/2018
+ms.date: 09/19/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 5e45bff827a8c376d4b35ee88f1f000c2b122443
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 803dddd13ab3b18b6f161be9c0004d18c8d69f1e
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/19/2018
-ms.locfileid: "46298234"
+ms.locfileid: "46364195"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Az Azure SQL Database üzletmenet-folytonossági funkcióinak áttekintése
 
@@ -122,12 +122,10 @@ Ha tárreplikációval helyreállítási mechanizmusként aktív georeplikáció
 > 
 
 ### <a name="perform-a-geo-restore"></a>Georedundáns visszaállítás végrehajtása
-Ha, automatikus biztonsági másolatokat használ georedundáns tárolás replikációval tárreplikációval helyreállítási mechanizmusként [kezdeményezheti egy adatbázis helyreállítását, georedundáns visszaállítással](sql-database-disaster-recovery.md#recover-using-geo-restore). Helyreállítási általában 12 óra alatt – akár egy óráig beállított alapján, ha az utolsó napló biztonsági mentés készült, és más régióba georeplikált adatvesztéssel akkor kerül sor. A helyreállítás befejezéséig az adatbázis nem tudja rögzíteni a tranzakciókat, illetve nem tud válaszolni a lekérdezésekre. Bár ez visszaállít egy adatbázist a legutóbbi elérhető időponthoz kötött, a geo-secondary bármely időpontra való visszaállítást idő jelenleg nem támogatott.
+Ha az automatikus biztonsági másolatokat használ georedundáns tárolás (alapértelmezés szerint engedélyezve van), akkor helyreállíthatja az adatbázist a használatával [geo-visszaállítás](sql-database-disaster-recovery.md#recover-using-geo-restore). Helyreállítási általában 12 óra alatt – akár egy óráig határozza meg, ha a legutóbbi óránkénti különbségi biztonsági mentés pedig sor kerül a replikált adatok elvesztése akkor kerül sor. A helyreállítás befejezéséig az adatbázis nem tudja rögzíteni a tranzakciókat, illetve nem tud válaszolni a lekérdezésekre. Vegye figyelembe, hogy a geo-visszaállítás csak visszaállítja az adatbázist a legutóbbi elérhető pont időben.
 
 > [!NOTE]
 > Az Adatközpont ismét online elérhető, mielőtt az alkalmazás a helyreállított adatbázisra, megszakíthatja a helyreállítást.  
->
->
 
 ### <a name="perform-post-failover--recovery-tasks"></a>Feladatátvétel/helyreállítás utáni feladatok végrehajtása
 A helyreállítási mechanizmusok végrehajtása után a következő további feladatokat kell végrehajtania a felhasználók és az alkalmazások újbóli üzembe helyezéséhez:

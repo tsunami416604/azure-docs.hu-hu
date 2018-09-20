@@ -1,53 +1,54 @@
 ---
-title: Támogatott nyelvek Microsoft beszéd szolgáltatás |} Microsoft Docs
-description: Szóbeli Microsoft beszéd szolgáltatás által támogatott nyelvek listáját.
+title: Bing Speech támogatott nyelvek |} A Microsoft Docs
+titlesuffix: Azure Cognitive Services
+description: Bing Speech által támogatott beszélt nyelvek listáját.
 services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
 ms.component: bing-speech
 ms.topic: article
-ms.date: 09/15/2017
+ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: c7007ba39df3c608fa0d1fe4cb79a3966d8c05a8
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 42b59aa9af99fd4647ccd63ed5dbd1e7d3db2864
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347414"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46366790"
 ---
 # <a name="supported-languages"></a>Támogatott nyelvek
 
-## <a name="interactive-and-dictation-mode"></a>Interaktív és Diktálás mód
+## <a name="interactive-and-dictation-mode"></a>Diktálás és az interaktív mód
 
-A Microsoft a beszédfelismerés API a következő nyelveket támogatja `interactive` és `dictation` módot. 
+A Microsoft beszédfelismerési API-t a következő nyelveket támogatja `interactive` és `dictation` módokat. 
 
 |Kód | Nyelv | Kód | Nyelv |
 |-----|-----|-----|-----|
-| ar EG | Arab (egyiptomi), modern standard | üdv-IN | hindi (India) |
+| ar – példa | Arab (Egyiptom), a modern standard | Üdvözöljük – India | hindi (India) |
 | CA-ES | Katalán | it-IT | olasz (Olaszország)  |
 | da-DK | dán (Dánia) | ja-JP | japán (Japán) |
 | de-DE | német (Németország) |ko-KR | koreai (Korea) |
-| en-AU | angol (Ausztrália) |nb-NO | Norvég (Bokmål) (Norvégia)  |
-| en-Kanada | angol (Kanada) | NL-NL | holland (Hollandia)   |
+| en-Ausztrália | angol (Ausztrália) |nb-NO | Norvég (bokmal) (Norvégia)  |
+| en-hitelesítésszolgáltató | angol (Kanada) | NL-NL | holland (Hollandia)   |
 | en-GB | angol (Egyesült Királyság) |pl-PL | lengyel (Lengyelország) |
 | en-IN | Angol (India) | pt-BR | portugál (brazíliai)  |
 | en-NZ | angol (Új-Zéland) |PT-PT | portugál (általános)  |
 | hu-HU | angol (Egyesült Államok) | ru-RU | orosz (Oroszország) |
-| es-ES | spanyol (spanyolországi) | SV-SE | svéd (Svédország) |
+| es-ES | Spanyol (Spanyolország) | SV-SE | svéd (Svédország) |
 | es-MX | spanyol (Mexikó) |zh-CN | Kínai (Mandarin, egyszerűsített)  |
-| fi-FI | finn (Finnország) |zh-HK | Kínai (Hongkong (KKT) |
-| FR-Kanada | francia (Kanada) | zh-TW | Kínai (Mandarin, tajvani)|
+| fi-FI | finn (Finnország) |zh-HK | Kínai (Hongkong (KKT)) |
+| FR-hitelesítésszolgáltató | francia (Kanada) | zh-TW | Kínai (Mandarin, tajvani)|
 | FR-FR | francia (Franciaország) | ||
 
 ## <a name="conversation-mode"></a>Beszélgetés mód
 
-A Microsoft a beszédfelismerés API a következő nyelveket támogatja `conversation` módot. 
+A Microsoft beszédfelismerési API-t a következő nyelveket támogatja `conversation` módokat. 
 
 | Kód | Nyelv | Kód | Nyelv |
 |-----|-----|-----|-----|
-| ar EG | Arab (egyiptomi), modern standard | it-IT | olasz (Olaszország) |
+| ar – példa | Arab (Egyiptom), a modern standard | It-IT | olasz (Olaszország) |
 | de-DE | német (Németország) | ja-JP | japán (Japán) |
 | hu-HU | angol (Egyesült Államok) | pt-BR | portugál (brazíliai) |
-| es-ES | spanyol (spanyolországi) | ru-RU | orosz (Oroszország) |
+| es-ES | Spanyol (Spanyolország) | ru-RU | orosz (Oroszország) |
 | FR-FR | francia (Franciaország) | zh-CN | Kínai (Mandarin, egyszerűsített) |

@@ -1,6 +1,6 @@
 ---
-title: Az Azure SQL Database biztonsági vész-helyreállítási konfigurálása |} Microsoft Docs
-description: Ismerje meg a biztonsági szempontok konfigurálásához és kezeléséhez biztonsági egy adatbázis visszaállítása vagy egy másodlagos kiszolgáló a feladatátvétel után.
+title: Vészhelyreállítás az Azure SQL Database biztonságának konfigurálása |} A Microsoft Docs
+description: Ismerje meg, hogy a biztonsági szempontok konfigurálásához és kezeléséhez biztonsági után egy adatbázis visszaállítása vagy feladatátvétel a másodlagos kiszolgálóra.
 services: sql-database
 author: anosov1960
 manager: craigg
@@ -9,91 +9,91 @@ ms.custom: business continuity
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: sashan
-ms.openlocfilehash: 0796e5900bc67d93e51a0ce377ef5d1144346e2c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 03bb4e2e8d202e13edf41c925b9341436515d8a8
+ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34646864"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46465622"
 ---
-# <a name="configure-and-manage-azure-sql-database-security-for-geo-restore-or-failover"></a>Konfigurálhatja és kezelheti az Azure SQL Database biztonsági georedundáns helyreállítás vagy feladatátvételi 
+# <a name="configure-and-manage-azure-sql-database-security-for-geo-restore-or-failover"></a>Konfigurálhatja és kezelheti az Azure SQL Database geo-visszaállítás vagy a feladatátvételi biztonsága 
 
-Ez a témakör ismerteti a hitelesítési követelmények konfigurálása és [aktív georeplikáció](sql-database-geo-replication-overview.md) és a felhasználó hozzáférését a másodlagos adatbázis beállításához szükséges lépéseket. Is bemutatja, hogyan lehet, hogy hozzáférhessenek a helyreállított adatbázis használata után [georedundáns helyreállítás](sql-database-recovery-using-backups.md#geo-restore). Helyreállítási lehetőségekről további információkért lásd: [üzleti folytonosság – áttekintés](sql-database-business-continuity.md).
+Ez a témakör ismerteti a hitelesítési követelmények konfigurálása és [aktív georeplikáció](sql-database-geo-replication-overview.md) és a felhasználói hozzáférés a másodlagos adatbázis beállításához szükséges lépéseket. Azt is ismerteti, hogyan lehet a helyreállított adatbázis elérésének lehetővé tétele a forgatókönyv használata útán [geo-visszaállítás](sql-database-recovery-using-backups.md#geo-restore). A helyreállítási lehetőségek további információkért lásd: [üzleti folytonosság – áttekintés](sql-database-business-continuity.md).
 
 > [!NOTE]
-> [Aktív georeplikáció](sql-database-geo-replication-overview.md) érhető el az összes olyan adatbázis összes szolgáltatásrétegeiben használt funkciókkal.
+> [Aktív georeplikáció](sql-database-geo-replication-overview.md) már elérhető az összes adatbázisokhoz minden szolgáltatásszinten.
 >  
 
-## <a name="disaster-recovery-with-contained-users"></a>A tartalmazott felhasználók katasztrófa utáni helyreállítás
-Ellentétben a hagyományos felhasználóknak, amelyet le kell képezni a master adatbázisban bejelentkezéseket, egy felhasználó teljesen által felügyelt maga az adatbázis. Azt két előnnyel jár. A vészhelyreállítás esetén a felhasználók továbbra is az új elsődleges adatbázishoz való kapcsolódáshoz vagy az adatbázist helyre az georedundáns helyreállítás, további konfiguráció nélkül használja, mert az adatbázis kezeli a felhasználók. Nincsenek is lehetséges méretezhetőségét és teljesítményét számos előnyt biztosít az ebben a konfigurációban egy bejelentkezési szempontjából. További információt a [tartalmazottadatbázis-felhasználókkal kapcsolatos, az adatbázis hordozhatóvá tételével foglalkozó](https://msdn.microsoft.com/library/ff929188.aspx) cikkben talál. 
+## <a name="disaster-recovery-with-contained-users"></a>Vész-helyreállítási a tartalmazott felhasználók
+Ellentétben a hagyományos felhasználóknak, amelyet le kell képezni a bejelentkezéseket a master adatbázisban, egy felhasználó teljesen által felügyelt maga az adatbázis. Ez a két előnye van. A vészhelyreállítás esetén a felhasználók továbbra is az új elsődleges adatbázishoz való csatlakozáshoz, vagy az adatbázist helyre az geo-visszaállítás, további konfiguráció nélkül használatával, mert az adatbázis a felhasználókat kezeli. Is találhatók esetleges méretezhetőséget és jobb teljesítményt nyújt az ebben a konfigurációban a bejelentkezési szempontjából. További információt a [tartalmazottadatbázis-felhasználókkal kapcsolatos, az adatbázis hordozhatóvá tételével foglalkozó](https://msdn.microsoft.com/library/ff929188.aspx) cikkben talál. 
 
-A fő kompromisszum, annál nagyobb kihívás a vész-helyreállítási folyamat léptékű kezelésére. Ha egyszerre több adatbázis ugyanazon bejelentkezési használó, a hitelesítő adatokat tartalmazott felhasználók több adatbázisok karbantartása előfordulhat, hogy semlegesítsék a tartalmazott felhasználók előnyeit. Például a jelszóházirend elforgatási van szükség, hogy lehet változtatás következetesen több adatbázis ahelyett, hogy megváltoztatta a jelszavát, a bejelentkezési azonosítóhoz egyszer a master adatbázisban. Ezért ha több, ugyanazt a felhasználónevet és jelszót, használó adatbázisok tartalmazott felhasználók használata nem ajánlott. 
+A fő kompromisszum, hogy a vész-helyreállítást, ipari méretekben kezelése nehéz lehet. Ha több adatbázist használó, ugyanazokat a bejelentkezési adatokat, a hitelesítő adatok használatával tartalmazott felhasználók több adatbázis karbantartása előfordulhat, hogy negálandó tartalmazott felhasználók előnyeit. Például a jelszóházirend Elforgatás van szükség, hogy módosításokat konzisztens módon több adatbázisban ahelyett, hogy a bejelentkezés után a master adatbázisban a jelszavának módosítása. Ebből kifolyólag több adatbázist használó ugyanazt a felhasználónevet és jelszót, ha tartalmazott felhasználók használata nem ajánlott. 
 
-## <a name="how-to-configure-logins-and-users"></a>Bejelentkezések és a felhasználók konfigurálása
-Bejelentkezések és felhasználók használata (helyett a benne lévő felhasználók), annak érdekében, hogy létezik-e az azonos bejelentkezések a master adatbázisban további lépéseket kell végrehajtania. Az alábbi szakaszok felsorolják a lépéseket érintett és további szempontokat.
+## <a name="how-to-configure-logins-and-users"></a>Bejelentkezések és felhasználók konfigurálása
+Bejelentkezések és felhasználók használata (ahelyett, hogy tartalmazott felhasználók), akkor győződjön meg arról, hogy létezik-e az azonos bejelentkezéseket a master adatbázisban, további lépéseket kell végrehajtani. Az alábbi szakaszok a lépések részt vevő és a további szempontok tagolni.
 
-### <a name="set-up-user-access-to-a-secondary-or-recovered-database"></a>Állítsa be a másodlagos, és a helyreállított adatbázis felhasználói hozzáférése
-Ahhoz, hogy a másodlagos adatbázis csak olvasható másodlagos adatbázis használható, és megfelelő hozzáféréssel az új elsődleges adatbázis vagy az adatbázis visszaállítással földrajzi helyre a célkiszolgáló a master adatbázis konfigurációval kell rendelkeznie a megfelelő biztonsági a helyreállítás előtt a helyükön.
+### <a name="set-up-user-access-to-a-secondary-or-recovered-database"></a>Állítsa be a felhasználói hozzáférés a másodlagos és a helyreállított adatbázis
+Ahhoz, hogy a másodlagos adatbázis csak olvasható másodlagos adatbázis használhatóvá válik, és az új elsődleges adatbázis vagy az adatbázis helyreállítása geo-visszaállítás használatával való megfelelő hozzáférés biztosításához a master adatbázisban a célkiszolgáló rendelkeznie kell a megfelelő biztonsági a helyreállítás előtt a helyükön konfiguráció.
 
-A témakör későbbi részében egyes lépéseihez szükséges engedélyeket ismerteti.
+Egyes lépéseihez szükséges engedélyeket a témakör későbbi része ismerteti.
 
-Felkészülés a felhasználói hozzáférés a georeplikáció másodlagos georeplikáció konfigurálása során kell elvégezni. Felkészülés a földrajzi vissza adatbázisok felhasználói hozzáférést kell hajtható végre, tetszőleges időpontban, amikor az eredeti kiszolgáló online állapotban-e (pl. a vész-Helyreállítási részletezési részeként).
+Felhasználói hozzáférés a georeplikáció másodlagos előkészítése georeplikáció konfigurálása részeként kell végrehajtani. Geo-visszaállított adatbázishoz a felhasználói hozzáférés előkészítése kell hajtható végre, tetszőleges időpontban, amikor az eredeti kiszolgáló online állapotban (például: a Dr működési részeként).
 
 > [!NOTE]
-> Ha a rendszer átadja, vagy olyan kiszolgálóra, amely nem rendelkezik hozzáféréssel a megfelelően konfigurált bejelentkezések georedundáns helyreállítás korlátozódik a kiszolgáló-rendszergazdai fiókot.
+> Ha átadja a feladatokat, vagy a geo-visszaállítás, vagyis a megfelelően konfigurált bejelentkezéseket, hozzáféréssel nem rendelkező kiszolgálóra kell korlátozni a kiszolgálói rendszergazdai fiókkal.
 > 
 > 
 
-Az alábbiakban leírt három lépést beállítása a célkiszolgálón bejelentkezések foglal magában:
+Bejelentkezések a célkiszolgálón beállítása magában foglalja az alábbi három lépést:
 
-#### <a name="1-determine-logins-with-access-to-the-primary-database"></a>1. Határozza meg az elsődleges adatbázis eléréséhez felmérhetők:
-A folyamat az első lépés annak meghatározásához, hogy mely bejelentkezések kell készíteni a cél kiszolgálón. Ez KIVÁLASZTÓ utasítást, az a logikai master adatbázis a forráskiszolgálón és a maga az elsődleges adatbázis két érhető el.
+#### <a name="1-determine-logins-with-access-to-the-primary-database"></a>1. Határozza meg az elsődleges adatbázishoz hozzáféréssel rendelkező bejelentkezések:
+A folyamat első lépéseként határozza meg, mely bejelentkezéseknek kell készíteni a célkiszolgálón. Mindez egy pár SELECT utasításokkal, egy, a logikai master adatbázis a forráskiszolgálón és a egy, az elsődleges adatbázis magát.
 
-Csak a kiszolgáló rendszergazdája vagy egy másik a **LoginManager** kiszolgálói szerepkör megállapíthatja, hogy a bejelentkezési adatok, a forráskiszolgálón a következő SELECT utasítással. 
+Csak a kiszolgáló rendszergazdája vagy tagja a **LoginManager** kiszolgálói szerepkör a forráskiszolgálón az alábbi utasítást a bejelentkezések meghatározásához. 
 
     SELECT [name], [sid] 
     FROM [sys].[sql_logins] 
     WHERE [type_desc] = 'SQL_Login'
 
-Csak a db_owner adatbázis-szerepkör, a dbo felhasználói vagy kiszolgálói rendszergazda, tag lehet meghatározni az összes, az adatbázis-felhasználó rendszerbiztonsági tagot az elsődleges adatbázis.
+Csak a db_owner database szerepkör, a dbo-felhasználó vagy a kiszolgáló-rendszergazdai tagja megadhatja, hogy mind az elsődleges adatbázis az adatbázis felhasználói a rendszerbiztonsági tagok közül.
 
     SELECT [name], [sid]
     FROM [sys].[database_principals]
     WHERE [type_desc] = 'SQL_USER'
 
-#### <a name="2-find-the-sid-for-the-logins-identified-in-step-1"></a>2. 1. lépésben azonosított bejelentkezések tartozó SID kereséséhez:
-A fenti szakaszban leírt lekérdezések kimenetének összehasonlítása, és a biztonsági azonosítók megfelelő, a kiszolgálói bejelentkezési adatbázis-felhasználó is leképezheti. Egy adatbázis-felhasználó a megfelelő SID-AZONOSÍTÓVAL rendelkező felhasználók hozzáférhetnek felhasználó ahhoz az adatbázishoz adott adatbázis elsődleges felhasználóként. 
+#### <a name="2-find-the-sid-for-the-logins-identified-in-step-1"></a>2. A bejelentkezések, az 1. lépésben azonosított tartozó SID kereséséhez:
+Az előző szakaszban a lekérdezések kimenetének összehasonlításával, és a biztonsági azonosítók egyeztetése, leképezheti a kiszolgálói bejelentkezésen adatbázis-felhasználót. Bejelentkezések, amelyek rendelkeznek a megfelelő SID-AZONOSÍTÓVAL rendelkező adatbázis-felhasználója, a fő adatbázis-felhasználót, hogy az adatbázis felhasználói jogosultságra van. 
 
-A következő lekérdezés segítségével láthatja az összes, a felhasználó rendszerbiztonsági tagok és az SID-adatbázisban. Csak a db_owner adatbázis-szerepkör- vagy felügyeleti tagjai futtathatják a lekérdezés.
+Az alábbi lekérdezés használható az összes olyan egyszerű felhasználói névnek és a egy adatbázisban a SID-k megtekintéséhez. Csak a db_owner database szerepkör- vagy admin tagjaként futtathatja ezt a lekérdezést.
 
     SELECT [name], [sid]
     FROM [sys].[database_principals]
     WHERE [type_desc] = 'SQL_USER'
 
 > [!NOTE]
-> A **entitástulajdonos** és **sys** felhasználóknál *NULL* SID-k, és a **vendég** SID **0x00**. A **dbo** SID kezdődik *0x01060000000001648000000000048454*, ha az adatbázis-készítő tagja helyett a kiszolgáló rendszergazdája **DbManager**.
+> A **INFORMATION_SCHEMA** és **sys** felhasználók *NULL* SID-k, és a **vendég** SID **0x00**. A **dbo** SID kezdődhet *0x01060000000001648000000000048454*, ha az adatbázis-készítő a kiszolgálói rendszergazda helyett tagja volt **DbManager**.
 > 
 > 
 
-#### <a name="3-create-the-logins-on-the-target-server"></a>3. A bejelentkezési adatok létrehozása a célkiszolgálón:
-Az utolsó lépése, hogy nyissa meg a célként megadott kiszolgáló vagy kiszolgálók, és a megfelelő SID-k a felmérhetők készítése. Az alapvető szintaxisa a következő.
+#### <a name="3-create-the-logins-on-the-target-server"></a>3. A bejelentkezések létrehozása a célkiszolgálón:
+Az utolsó lépés, hogy nyissa meg a célkiszolgáló vagy kiszolgálókon, és a megfelelő biztonsági azonosítókkal való létrehozásához a bejelentkezések létrehozása. Az alapvető szintaxisa a következő.
 
     CREATE LOGIN [<login name>]
     WITH PASSWORD = <login password>,
     SID = <desired login SID>
 
 > [!NOTE]
-> Ha meg szeretné adni a felhasználói hozzáférést a másodlagos, de nem az elsődleges, akkor a következő szintaxis használatával az elsődleges kiszolgálón a felhasználói bejelentkezési módosításával teheti meg.
+> Ha azt szeretné, a másodlagos, de nem az elsődleges felhasználói hozzáférést, akkor ehhez módosítását a felhasználói bejelentkezési az elsődleges kiszolgálón a következő szintaxis használatával.
 > 
 > ALTER LOGIN <login name> LETILTÁSA
 > 
-> Tiltsa le a jelszó nem változik, ezért mindig engedélyezheti azt szükség esetén.
+> Tiltsa le a jelszót, és nem változik, így mindig engedélyezheti, ha szükséges.
 > 
 > 
 
 ## <a name="next-steps"></a>További lépések
-* Az adatbázis-hozzáférési és bejelentkezések kezelése további információkért lásd: [SQL-adatbázis biztonsági: adatbázis-hozzáférési és bejelentkezési biztonság kezeléséhez](sql-database-manage-logins.md).
-* A tartalmazott adatbázis-felhasználók további információkért lásd: [tartalmazott adatbázis-felhasználók – így az adatbázis hordozható](https://msdn.microsoft.com/library/ff929188.aspx).
-* Aktív georeplikáció konfigurálásával kapcsolatos további információkért lásd: [aktív georeplikáció](sql-database-geo-replication-overview.md)
-* Georedundáns helyreállítás használatával kapcsolatos információkért lásd: [georedundáns helyreállítás](sql-database-recovery-using-backups.md#geo-restore)
+* Az adatbázis-hozzáférés és bejelentkezések kezelése további információkért lásd: [SQL Database biztonsága: adatbázis-hozzáférés és a bejelentkezési biztonság felügyelete](sql-database-manage-logins.md).
+* A tartalmazott adatbázis felhasználóit további információkért lásd: [tartalmazott adatbázis-felhasználók – az adatbázis hordozhatóvá](https://msdn.microsoft.com/library/ff929188.aspx).
+* További információ a használatáról és konfigurálásáról az aktív georeplikáció: [aktív georeplikáció](sql-database-geo-replication-overview.md)
+* A geo-visszaállítás használatával kapcsolatos információkért lásd: [geo-visszaállítás](sql-database-recovery-using-backups.md#geo-restore)
 

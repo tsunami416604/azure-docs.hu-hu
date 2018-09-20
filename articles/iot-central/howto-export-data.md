@@ -4,18 +4,20 @@ description: Adatok exportálása az Azure IoT Central alkalmazásból
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 07/3/2018
+ms.date: 09/18/2018
 ms.topic: article
-ms.prod: azure-iot-central
+ms.service: azure-iot-central
 manager: peterpr
-ms.openlocfilehash: 5defbf7021936e3cc77250ccc453cb3887c77617
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: a1a7e6a62a88057cc8bc512a0c46de79a55ccd53
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45576442"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46368137"
 ---
 # <a name="export-your-data-in-azure-iot-central"></a>Exportálhatja az adatokat az Azure IoT Central
+
+*Ez a témakör a rendszergazdák vonatkozik.*
 
 Ez a cikk ismerteti a folyamatos exportálási szolgáltatás segítségével az Azure IoT Central rendszeres időközönként exportál adatokat az Azure Blob storage-fiókot. Exportálhatja **mérések**, **eszközök**, és **eszközsablonok** a fájlok a [Apache AVRO](https://avro.apache.org/docs/current/index.html) formátumban. Az exportált adatok például az Azure Machine Learning betanítási modellek vagy hosszú távú tendenciája, a Microsoft Power bi-ban a ritka elérésű útvonal elemzéshez használható.
 
@@ -36,7 +38,7 @@ Ez a cikk ismerteti a folyamatos exportálási szolgáltatás segítségével az
 A mértékeket, az eszközök elküldik percenként egyszer a tárfiókba exportálja. Az adatok az új üzenetek IoT-központ által fogadott összes eszközről idő alatt van. Az exportált AVRO-fájlok ugyanazt a formátumot használja az exportált fájlokat [IoT Hub üzenet-útválasztása](https://docs.microsoft.com/azure/iot-hub/iot-hub-csharp-csharp-process-d2c) a Blob storage.
 
 > [!NOTE]
-> Az eszközöket, amelyek a mérések küldése (lásd a következő szakaszok) eszköz azonosítóját képviseli. Az eszközök nevei lekéréséhez exportálja az eszköz pillanatképeket. Vesse össze az egyes üzenetrekordok használatával a **connectionDeviceId** , amely megfelel az eszköz azonosítójával.
+> Az eszközöket, amelyek a mérések küldése (lásd a következő szakaszok) eszköz azonosítóját képviseli. Az eszközök nevei lekéréséhez exportálja az eszköz pillanatképeket. Vesse össze az egyes üzenetrekordok használatával a **connectionDeviceId** , amely megfelel a **deviceId** eszköz rekord.
 
 Az alábbi példa bemutatja egy rekordot egy dekódolt AVRO fájlban:
 
@@ -45,9 +47,9 @@ Az alábbi példa bemutatja egy rekordot egy dekódolt AVRO fájlban:
     "EnqueuedTimeUtc": "2018-06-11T00:00:08.2250000Z",
     "Properties": {},
     "SystemProperties": {
-        "connectionDeviceId": "2383d8ba-c98c-403a-b4d5-8963859643bb",
+        "connectionDeviceId": "<connectionDeviceId>",
         "connectionAuthMethod": "{\"scope\":\"hub\",\"type\":\"sas\",\"issuer\":\"iothub\",\"acceptingIpFilterRule\":null}",
-        "connectionDeviceGenerationId": "636614021491644195",
+        "connectionDeviceGenerationId": "<generationId>",
         "enqueuedTime": "2018-06-11T00:00:08.2250000Z"
     },
     "Body": "{\"humidity\":80.59100954598546,\"magnetometerX\":0.29451796907056726,\"magnetometerY\":0.5550332126050068,\"magnetometerZ\":-0.04116681874733441,\"connectivity\":\"connected\",\"opened\":\"triggered\"}"
@@ -56,12 +58,13 @@ Az alábbi példa bemutatja egy rekordot egy dekódolt AVRO fájlban:
 
 ### <a name="devices"></a>Eszközök
 
-Amikor először folyamatos adatexportálás van kapcsolva, az összes eszköz egyetlen pillanatkép exportálása. A pillanatkép tartalmazza:
-- Az eszközazonosítókat.
-- Eszköz neve.
-- Eszköz sablon azonosítóját.
-- Tulajdonságértékeket.
-- Állítsa az értékeket.
+Amikor először folyamatos adatexportálás van kapcsolva, az összes eszköz egyetlen pillanatkép exportálása. Egyes eszközök a következőket tartalmazza:
+- `id` az eszköz az IoT-központ
+- `name` az eszköz
+- `deviceId` a [Device Provisioning Service](https://aka.ms/iotcentraldocsdps)
+- Eszköz sablon adatai
+- Tulajdonságok értékei
+- Beállításértékek
 
 Új pillanatkép percenkénti van megírva. A pillanatkép tartalmazza:
 
@@ -73,15 +76,16 @@ Amikor először folyamatos adatexportálás van kapcsolva, az összes eszköz e
 >
 > Az eszköz a sablon, amely minden eszközhöz tartozik egy eszközazonosítót sablon. által jelölt A kiszolgáló nevének az eszköz sablon exportálása az eszköz sablon pillanatképeket.
 
-A dekódolt AVRO fájlban lévő minden egyes rekord hasonlóan néz ki:
+Egy rekordot a dekódolt AVRO-fájl is látható:
 
 ```json
 {
-    "id": "2383d8ba-c98c-403a-b4d5-8963859643bb",
+    "id": "<id>",
     "name": "Refrigerator 2",
     "simulated": true,
+    "deviceId": "<deviceId>",
     "deviceTemplate": {
-        "id": "c318d580-39fc-4aca-b995-843719821049",
+        "id": "<template id>",
         "version": "1.0.0"
     },
     "properties": {
@@ -104,8 +108,10 @@ A dekódolt AVRO fájlban lévő minden egyes rekord hasonlóan néz ki:
 
 ### <a name="device-templates"></a>Eszköz-sablonok
 
-Amikor először folyamatos adatexportálás van kapcsolva, az összes eszköz-sablonokkal egyetlen pillanatkép exportálása. A pillanatkép tartalmazza: 
-- Eszköz sablon azonosítóját.
+Amikor először folyamatos adatexportálás van kapcsolva, az összes eszköz-sablonokkal egyetlen pillanatkép exportálása. Minden eszköz sablon tartalmazza:
+- `id` az eszköz sablon
+- `name` az eszköz sablon
+- `version` az eszköz sablon
 - Mérési az adattípusok és a minimális/maximális értékei.
 - Vlastnost adattípusokat és az alapértelmezett értékeket.
 - A beállítás az adattípusok és az alapértelmezett értékeket.
@@ -118,11 +124,11 @@ Amikor először folyamatos adatexportálás van kapcsolva, az összes eszköz-s
 > [!NOTE]
 > A legutolsó pillanatfelvétel óta törölve eszközsablonok nem exportálható. A pillanatképek jelenleg nem rendelkezik a törölt sablonok mutatók.
 
-A dekódolt AVRO fájlban lévő minden egyes rekord hasonlóan néz ki:
+A dekódolt AVRO-fájlt egy rekordot fog kinézni:
 
 ```json
 {
-    "id": "c318d580-39fc-4aca-b995-843719821049",
+    "id": "<id>",
     "name": "Refrigerated Vending Machine",
     "version": "1.0.0",
     "measurements": {
@@ -209,16 +215,16 @@ A dekódolt AVRO fájlban lévő minden egyes rekord hasonlóan néz ki:
 
 4. A **felügyeleti**válassza **adatexportálás**.
 
-   ![Folyamatos adatexportálás konfigurálása](media/howto-export-data/continuousdataexport.PNG)
-
 5. Az a **tárfiók** legördülő listában jelölje ki a tárfiók. Az a **tároló** legördülő listában jelölje ki a tárolót. A **exportálható adatot**, adja meg az egyes adattípusok úgy, hogy a típus exportálása **a**.
 
 6. Folyamatos adatexportálás bekapcsolásához állítsa **adatexportálás** való **a**. Kattintson a **Mentés** gombra.
 
+  ![Folyamatos adatexportálás konfigurálása](media/howto-export-data/continuousdataexport.PNG)
+
 7. Néhány perc elteltével az adatok a tárfiókban található meg. Keresse meg a tárfiók. Válassza ki **blobok tallózása** > a tárolót. Láthatja, hogy az adatok exportálása a három mappát. Az AVRO-fájlok, az adatok exportálása az alapértelmezett elérési útjait a következők:
-    - Üzenet: {container}/measurements/{hubname}/{YYYY}/{MM}/{dd}/{hh}/{mm}/00.avro
-    - Eszközök: {container}/devices/{hubname}/{YYYY}/{MM}/{dd}/{hh}/{mm}/00.avro
-    - Eszközsablonok: {container}/deviceTemplates/{hubname}/{YYYY}/{MM}/{dd}/{hh}/{mm}/00.avro
+    - Üzenet: {container}/measurements/{hubname}/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}.avro
+    - Eszközök: {container}/devices/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}.avro
+    - Eszközsablonok: {container}/deviceTemplates/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}.avro
 
 ## <a name="read-exported-avro-files"></a>Olvassa el a AVRO-fájlok exportálása
 
@@ -280,7 +286,7 @@ def parse(filePath):
     transformed = pd.DataFrame()
 
     # The device ID is available in the id column.
-    transformed["device_id"] = devices["id"]
+    transformed["device_id"] = devices["deviceId"]
 
     # The template ID and version are present in a dictionary under
     # the deviceTemplate column.
@@ -395,7 +401,7 @@ public static async Task Run(string filePath)
                 {
                     // Get the field value directly. You can also yield return
                     // records and make the function IEnumerable<AvroRecord>.
-                    var deviceId = record.GetField<string>("id");
+                    var deviceId = record.GetField<string>("deviceId");
 
                     // The device template information is stored in a sub-record
                     // under the deviceTemplate field.
@@ -411,7 +417,7 @@ public static async Task Run(string filePath)
                     var fanSpeed = deviceSettingsRecord["fanSpeed"];
                     
                     Console.WriteLine(
-                        "ID: {0}, Template ID: {1}, Template Version: {2}, Fan Speed: {3}",
+                        "Device ID: {0}, Template ID: {1}, Template Version: {2}, Fan Speed: {3}",
                         deviceId,
                         templateId,
                         templateVersion,
@@ -524,8 +530,8 @@ const avro = require('avsc');
 async function parse(filePath) {
     const records = await load(filePath);
     for (const record of records) {
-        // Fetch the device ID from the id property.
-        const deviceId = record.id;
+        // Fetch the device ID from the deviceId property.
+        const deviceId = record.deviceId;
 
         // Fetch the template ID and version from the deviceTemplate property.
         const deviceTemplateId = record.deviceTemplate.id;
@@ -535,7 +541,7 @@ async function parse(filePath) {
         const fanSpeed = record.settings.device.fanSpeed;
 
         // Log the retrieved device ID and humidity.
-        console.log(`ID: ${deviceId}, Template ID: ${deviceTemplateId}, Template Version: ${deviceTemplateVersion}, Fan Speed: ${fanSpeed}`);
+        console.log(`deviceID: ${deviceId}, Template ID: ${deviceTemplateId}, Template Version: ${deviceTemplateVersion}, Fan Speed: ${fanSpeed}`);
     }
 }
 

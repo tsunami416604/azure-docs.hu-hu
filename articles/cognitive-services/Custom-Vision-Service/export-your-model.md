@@ -1,20 +1,21 @@
 ---
-title: Mobilalkalmazás – Custom Vision Service - Azure Cognitive Services Custom Vision Service modell exportálása |} A Microsoft Docs
+title: Modell exportálása mobile – Custom Vision Service
+titlesuffix: Azure Cognitive Services
 description: Ismerje meg a mobilalkalmazások létrehozásához használt modell exportálása.
 services: cognitive-services
 author: anrothMSFT
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-vision
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/03/2018
 ms.author: anroth
-ms.openlocfilehash: 63ebe17ff9a179ed7e9bd399fa94f20740c26f3a
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 50417e9e1722e69c24185c05ea5e286e6b13e8c7
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45574470"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46364941"
 ---
 # <a name="export-your-model-for-use-with-mobile-devices"></a>A mobileszközök használatra modell exportálása
 

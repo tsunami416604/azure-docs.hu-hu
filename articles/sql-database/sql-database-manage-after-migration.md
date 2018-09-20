@@ -12,12 +12,12 @@ ms.author: josack
 ms.suite: sql
 ms.prod_service: sql-database
 ms.component: data-movement
-ms.openlocfilehash: 9ca8c42d99f3bd7548c685f03328084865a09906
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 7cad09a3fc02d0c25f164f7e45974019ff9bbb71
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/19/2018
-ms.locfileid: "46295784"
+ms.locfileid: "46367916"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-database-in-azure-sql-database"></a>Új adatbázis a felhőben – Azure SQL Database adatbázis
 
@@ -98,7 +98,7 @@ A tűzfal megakadályozza, hogy hozzáférést a kiszolgálóhoz egy külső ent
 A kiszolgálószintű vagy adatbázisszintű tűzfalszabályok létrehozhat. Kiszolgálói szintű tűzfalszabályokat is jött létre az ssms-t vagy a portálon keresztül. Tanulás bővebben tájékozódhat a kiszolgáló és adatbázis-szintű tűzfalszabályt beállítani, lásd: [tűzfalszabályok létrehozása az SQL Database](sql-database-security-tutorial.md#create-a-server-level-firewall-rule-in-the-azure-portal).
 
 #### <a name="service-endpoints"></a>Szolgáltatásvégpontok
-Alapértelmezés szerint az SQL-adatbázis a "engedélyezi az Azure-szolgáltatásokhoz" – ami azt jelenti, hogy bármelyik virtuális gépet az Azure-ban előfordulhat, hogy próbál kapcsolódni az adatbázishoz. Ezek a próbálkozások továbbra is kell hitelesítik. Azonban ha nem szeretne minden olyan Azure IP-címek által lesznek elérhetők az adatbázist, letilthatja a "Az összes Azure-szolgáltatások engedélyezése". Ezenkívül konfigurálhatja [virtuális hálózati Szolgáltatásvégpontok](sql-database-vnet-service-endpoint-rule-overview.md).
+Alapértelmezés szerint az SQL database van konfigurálva, az "Azure-szolgáltatások kiszolgálói hozzáférésének engedélyezése" – ami azt jelenti, hogy bármelyik virtuális gépet az Azure-ban előfordulhat, hogy próbál kapcsolódni az adatbázishoz. Ezek a próbálkozások továbbra is kell hitelesítik. Azonban ha nem szeretne minden olyan Azure IP-címek által lesznek elérhetők az adatbázist, letilthatja a "Az Azure-szolgáltatások kiszolgálói hozzáférésének engedélyezése". Ezenkívül konfigurálhatja [virtuális hálózati Szolgáltatásvégpontok](sql-database-vnet-service-endpoint-rule-overview.md).
 
 Szolgáltatásvégpontok (SE) lehetővé teszik, hogy a kritikus fontosságú Azure-erőforrások csak a saját privát virtuális hálózatot az Azure-ban. Ezzel a módszerrel lényegében letiltjuk a nyilvános hozzáférést az erőforrásokhoz. Az Azure virtuális hálózatok között a forgalmat az Azure gerinchálózatán marad. Anélkül, hogy ki kap az adatcsomag útválasztását kényszerített bújtatást végez. A virtuális hálózat kényszeríti a szervezet internetes forgalmat és az Azure szolgáltatás forgalmát haladnak át ugyanazon útvonal. A Szolgáltatásvégpontok használatakor optimalizálhatja ez óta a csomagok folyamat rögtön a virtuális hálózatról az Azure gerinchálózatán szolgáltatáshoz.
 

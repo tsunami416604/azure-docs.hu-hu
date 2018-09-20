@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 08/16/2018
 ms.author: wolfma
-ms.openlocfilehash: bbf3c5930de2ec6c709b6b527ae3eac107382420
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 5862b119ceee4ace0d51691851dc53a9729ac68e
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43047799"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46363394"
 ---
 # <a name="release-notes"></a>Kibocsátási megjegyzések
 
@@ -23,15 +23,15 @@ ms.locfileid: "43047799"
 
 **Új funkciók**
 
-* A beszédfelismerés SDK-val készített UWP-alkalmazás most már adhat át a Windows App Certification Kit (WACK).
+* UWP-alkalmazás most már a Speech SDK-val készített továbbíthatja a Windows App Certification Kit (WACK).
   Tekintse meg a [UWP rövid](quickstart-csharp-uwp.md).
 * A .NET Standard 2.0 Linux (Ubuntu 16.04 x 64) támogatása.
 * Kísérleti funkció: Támogatja a Java 8 (64 bites) Windows és Linux (Ubuntu 16.04 x 64).
-  Tekintse meg a [Java futtatási környezet a rövid útmutató](quickstart-java-jre.md)
+  Tekintse meg a [Java Runtime Environment rövid](quickstart-java-jre.md).
 
-**Funkcionális változások**
+**Funkcionális módosítása**
 
-* További részletes információ a hibáról a csatlakozási hibák is közzéteheti.
+* Tegyen elérhetővé további részletes információ a hibáról a csatlakozási hibák.
 
 **Használhatatlanná tévő változásai**
 
@@ -40,50 +40,47 @@ ms.locfileid: "43047799"
 
 **Hibajavítások**
 
-* A Java a fordítási felismerő hang összefoglaló eredménye most valósítja meg.
+* A Java a fordítási felismerő hang összefoglaló eredménye van megvalósítva, mostantól.
 * Kijavítva a hiba, inaktív a szálak és a egy nyílt és a fel nem használt sockets megnövelt számú okozhatja.
-* Rögzített probléma, ahol egy hosszú ideig futó felismerése sikerült leállítani a középső továbbítására.
+* Rögzített probléma, ahol egy hosszú ideig futó felismerése sikerült leállítani a közepén továbbítására.
 * Rögzített versenyhelyzet felismerő leállítása.
 
 ## <a name="cognitive-services-speech-sdk-050-2018-july-release"></a>Cognitive Services beszédfelismerő SDK 0.5.0-s: 2018 július kiadás
 
 **Új funkciók**
 
-* Támogatás Android platform (API 23: Android 6.0-s Marshmallow vagy újabb).
-  Tekintse meg a [Android rövid](quickstart-java-android.md).
-* A .NET Standard 2.0 támogatja a Windows.
-  Tekintse meg a [.NET Core rövid](quickstart-csharp-dotnetcore-windows.md).
-* Kísérleti: Támogatás Windows (1709-es vagy újabb verzió) az UWP
+* Támogatás Android platform (API 23: Android 6.0-s Marshmallow vagy újabb). Tekintse meg a [Android rövid](quickstart-java-android.md).
+* A .NET Standard 2.0 támogatja a Windows. Tekintse meg a [.NET Core rövid](quickstart-csharp-dotnetcore-windows.md).
+* Kísérleti: Támogatás Windows (1709-es vagy újabb verzió) az UWP.
   * Tekintse meg a [UWP rövid](quickstart-csharp-uwp.md).
   * Megjegyzés: A Speech SDK-val készített UWP-alkalmazás nem még meg a Windows App Certification Kit (WACK).
 * Támogatja az automatikus újracsatlakozás hosszú ideig futó felismerése.
 
 **Funkcionális változások**
 
-* `StartContinuousRecognitionAsync()` támogatja a hosszú ideig futó felismerése
-* A felismerés eredményét további mezőket tartalmazza: audio elején és a felismert szöveget (az órajelben) időtartama további értéket jelölő felismerése állapotát, például tolva `InitialSilenceTimeout`, `InitialBabbleTimeout`.
+* `StartContinuousRecognitionAsync()` támogatja a hosszú ideig futó felismerése.
+* A felismerés eredményét további mezőket tartalmaz. Hang elején és időtartama (a órajel során végbemenő is) a felismert szöveget és további értékek, amelyek a felismerés állapotát, például tolva vagyunk `InitialSilenceTimeout` és `InitialBabbleTimeout`.
 * Támogatási AuthorizationToken előállító példányok létrehozásához.
 
 **Használhatatlanná tévő változásai**
 
-* Elismerés események: NoMatch eseménytípus hibaesemény van egyesítve.
-* C# nyelven SpeechOutputFormat OutputFormat, hogy a c++ igazított új neve.
+* Elismerés események: NoMatch eseménytípus hibaesemény lett egyesítve.
+* C# nyelven SpeechOutputFormat átnevezte OutputFormat igazított c++ marad.
 * A visszatérési típus az egyes módszerek a `AudioInputStream` felület kis mértékben módosítani:
    * A Java a `read` metódus most visszatért `long` helyett `int`.
    * A C# a `Read` metódus most visszatért `uint` helyett `int`.
    * A C++ a `Read` és `GetFormat` most visszatérési módszerek `size_t` helyett `int`.
-* C++: audio bemeneti streamekhez példányai most már csak argumentumként átadhatók egy `shared_ptr`.
+* C++: Mostantól a hang bemeneti streamekhez példányait csak argumentumként átadhatók egy `shared_ptr`.
 
 **Hibajavítások**
 
-* Rögzített helytelen visszatérési értékek eredményben amikor `RecognizeAsync()` túllépi az időkorlátot.
-* A Windows media foundation kódtárak függőség eltávolítása. Az SDK alapvető hang API-kat használ.
-* Dokumentációs javítás: hozzáadott egy [régiók](regions.md) oldal írja le, melyek a támogatott régiók.
+* Az eredmény nem megfelelő visszatérési értékek rögzített amikor `RecognizeAsync()` túllépi az időkorlátot.
+* A Windows media foundation kódtárak függőség el lett távolítva. Az SDK mostantól az alapvető hang API-k.
+* Dokumentációs javítás: hozzáadott egy [régiók](regions.md) a támogatott régiók leíró oldalon.
 
-**Ismert problémák**
+**Ismert hiba**
 
-* A beszédfelismerés SDK for Android nem készít jelentést speech összefoglaló eredmények a fordítás.
-  Ez a következő kiadás javítja.
+* A beszédfelismerés SDK for Android nem jelentést speech összefoglaló eredmények a fordítás. A probléma a következő kiadás javítja.
 
 ## <a name="cognitive-services-speech-sdk-040-2018-june-release"></a>Cognitive Services beszédfelismerő SDK 0.4.0: 2018 június kiadás
 
@@ -91,36 +88,36 @@ ms.locfileid: "43047799"
 
 - AudioInputStream
 
-  Egy felismerő most már felhasználhatja a stream hang forrásaként. Részletes információkért tekintse meg a kapcsolódó [gyakorlati útmutató](how-to-use-audio-input-streams.md).
+  Egy felismerő most már felhasználhatja a stream hang forrásaként. További információkért tekintse meg a kapcsolódó [gyakorlati útmutató](how-to-use-audio-input-streams.md).
 
 - Részletes kimeneti formátum
 
-  Létrehozása közben egy `SpeechRecognizer`, kérheti a `Detailed` vagy `Simple` kimeneti formátum. A `DetailedSpeechRecognitionResult` maszkolt cenzúrázása egy megbízhatósági pontszám, felismert szöveget, lexikai nyers formában, normalizált űrlap és normalizált űrlap tartalmazza.
+  Amikor létrehoz egy `SpeechRecognizer`, kérheti a `Detailed` vagy `Simple` kimeneti formátum. A `DetailedSpeechRecognitionResult` maszkolt cenzúrázása egy megbízhatósági pontszám, felismert szöveget, lexikai nyers formában, normalizált űrlap és normalizált űrlap tartalmazza.
 
 **Kompatibilitástörő változás**
 
-- Váltson `SpeechRecognitionResult.Text` a `SpeechRecognitionResult.RecognizedText` C#-ban.
+- A módosított `SpeechRecognitionResult.Text` a `SpeechRecognitionResult.RecognizedText` C#-ban.
 
 **Hibajavítások**
 
-- Kijavítottuk a lehetséges visszahívási USP rétegben leállítás során.
+- Kijavítottuk a lehetséges visszahívási a USP rétegben leállítás során.
 
 - Egy felismerő felhasznált bemeneti hangfájl, ha azt volt üzemben szükséges hosszabb fájlleírót.
 
-- Üzenet szivattyú és felismerő között számos holtpontok eltávolítva.
+- Az üzenet szivattyú és a felismerő között számos holtpontok eltávolítva.
 
 - Fire egy `NoMatch` vezethet, ha a szolgáltatás válasza túllépte az időkorlátot.
 
-- Az adathordozó foundation kódtárak a Windows rendszer töltöttek be. Ebben a könyvtárban van, csak a mikrofon-bemenet szükséges.
+- A Windows media foundation könyvtáraiban betöltött késleltetés. Ez a kódtár mikrofon bemeneti csak szükség.
 
 - A feltöltési sebességét hívásaiból sebessége kétszer az eredeti hang korlátozva.
 
-- Windows, a C# nyelvet használó .NET-szerelvények erős-neve.
+- Windows, a C# nyelvet használó .NET-szerelvények most strong neve.
 
 - Dokumentációs javítás: `Region` az információt kötelező megadni egy felismerő létrehozásához.
 
-További példák lettek hozzáadva, és folyamatosan változik. A legújabb minták, lásd: a [beszéd SDK minta GitHub-adattár](https://aka.ms/csspeech/samples).
+További példák lettek hozzáadva, és folyamatosan változik. A legújabb minták, lásd: a [beszéd SDK-minták GitHub-adattár](https://aka.ms/csspeech/samples).
 
 ## <a name="cognitive-services-speech-sdk-0212733-2018-may-release"></a>Cognitive Services beszédfelismerő SDK 0.2.12733: 2018 – május kiadás
 
-A Cognitive Services beszédfelismerő SDK első nyilvános előzetes verziója.
+Ebben a kiadásban a Cognitive Services beszédfelismerő SDK első nyilvános előzetes verziója.

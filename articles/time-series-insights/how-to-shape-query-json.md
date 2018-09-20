@@ -8,16 +8,22 @@ ms.service: time-series-insights
 ms.topic: article
 ms.date: 05/24/2018
 ms.author: anshan
-ms.openlocfilehash: 11bea78315ff7ebb4b0c167dbb687ce940907527
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: b9d5e922a9a0a5f50e2ced896f5957fbc90d7eb4
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39628912"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46364366"
 ---
 # <a name="how-to-shape-json-to-maximize-query-performance"></a>Hogyan formázhatja a JSON-lekérdezési teljesítmény maximalizálása 
 
 Ez a cikk nyújt útmutatást, amelyeket formázhat JSON-t, a hatékonyság az Azure Time Series Insights (TSI) lekérdezéseket.
+
+## <a name="video"></a>Videó: 
+
+### <a name="in-this-video-we-cover-best-practices-around-shaping-json-to-meet-your-storage-needsbr"></a>Ez a videó tárolási igényei JSON alakításra körül ajánlott eljárásokat ismerteti.</br>
+
+> [!VIDEO https://www.youtube.com/embed/b2BD5hwbg5I]
 
 ## <a name="best-practices"></a>Ajánlott eljárások
 
@@ -181,7 +187,7 @@ Vegye figyelembe a következő az előző példában, és az első példához ha
 
 - a felesleges tulajdonságok lettek kerülni, az okból az első példában szereplő.
 
-- Referenciaadatok segítségével csökkentse a bevezetésével a hálózaton keresztül továbbított bájtok számát **deviceId**, az egyedi párjai **üzenetazonosító** és **deviceLocation**. Összetett kulcsot használ, **series.tagId**, az egyedi párjainak **típus** és **időegységet**. Az összetett kulcs lehetővé teszi, hogy a **deviceId** és **series.tagId** pár használandó, tekintse meg négy értéket: **üzenetazonosító, deviceLocation, írja be,** és **egység **. Ezeket az adatokat a telemetriai adatokat a bejövő egyidejűleg csatlakoztatott, és ezt követően a TSI-ben tárolt lekérdezéséhez.
+- Referenciaadatok segítségével csökkentse a bevezetésével a hálózaton keresztül továbbított bájtok számát **deviceId**, az egyedi párjai **üzenetazonosító** és **deviceLocation**. Összetett kulcsot használ, **series.tagId**, az egyedi párjainak **típus** és **időegységet**. Az összetett kulcs lehetővé teszi, hogy a **deviceId** és **series.tagId** pár használandó, tekintse meg négy értéket: **üzenetazonosító, deviceLocation, írja be,** és **egység** . Ezeket az adatokat a telemetriai adatokat a bejövő egyidejűleg csatlakoztatott, és ezt követően a TSI-ben tárolt lekérdezéséhez.
 
 - két réteg beágyazási használata esetén az első példában szereplő okból.
 

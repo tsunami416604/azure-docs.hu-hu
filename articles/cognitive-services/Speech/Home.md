@@ -1,5 +1,6 @@
 ---
 title: A Microsoft Bing – beszédszolgáltatás |} A Microsoft Docs
+titlesuffix: Azure Cognitive Services
 description: Microsoft Speech API használatával beszédvezérlési hozzáadása az alkalmazáshoz, beleértve a felhasználók valós idejű interakciót.
 services: cognitive-services
 author: zhouwangzw
@@ -7,16 +8,16 @@ manager: wolfma
 ms.service: cognitive-services
 ms.component: bing-speech
 ms.topic: article
-ms.date: 09/15/2017
+ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: d58642b95a60d4f1c83dfd969d0c76511dca4653
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 637259b2fac46cf2c903c1986e6dfb303fe89408
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43097395"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46366258"
 ---
-# <a name="microsoft-bing-speech-api-overview"></a>A Microsoft Bing Speech API – áttekintés
+# <a name="what-is-bing-speech"></a>Mit jelent a Bing Speech?
 
 A felhőalapú és a Microsoft Bing Speech API biztosít a fejlesztők könnyedén hozhat létre hatékony beszédfeldolgozó szolgáltatásokat biztosítani az alkalmazásokban, például a voice parancsvezérlő, természetes beszéd beszélgetés, és a lejegyzés és a Diktálás felhasználói párbeszédpanel. Microsoft Speech API-t is támogatja *Speech to Text* és *szöveg-beszéd átalakítás* átalakítás.
 

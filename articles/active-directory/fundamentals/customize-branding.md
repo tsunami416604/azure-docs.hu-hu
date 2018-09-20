@@ -8,18 +8,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: fundamentals
 ms.topic: conceptual
-ms.date: 09/11/2018
+ms.date: 09/18/2018
 ms.author: lizross
 ms.reviewer: kexia
 custom: it-pro
-ms.openlocfilehash: 6a817d4e52d602c921cb04f8c40dbad632d41932
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: cdf1c8bfb8e623956d50975f36faafe10b534d06
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45731325"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46367560"
 ---
-# <a name="how-to-add-branding-to-your-azure-ad-sign-in-page"></a>Útmutató: az Azure AD bejelentkezési oldalát arculat hozzáadása
+# <a name="how-to-add-branding-to-your-azure-active-directory-sign-in-page"></a>Útmutató: az Azure Active Directory bejelentkezési oldalát arculat hozzáadása
 A vállalat emblémája és egyéni színsémák használatával adjon meg egy egységes megjelenést és a hangulat használatát az Azure Active Directory (Azure AD) bejelentkezési oldalakon. A bejelentkezési oldal jelenik meg, ha a felhasználói bejelentkeznek a munkahelyi webes alkalmazásokhoz, például az Office 365, amely használja az Azure ad-ben az identitás-szolgáltatóként.
 
 >[!Note]
@@ -34,23 +34,30 @@ Az egyéni márkajelzési nem jelenik meg azonnal, amikor a helyeket, például 
 > Az összes márkajelzési elemek egyike sem kötelező. Ha nincs háttérkép-megad szalagcímemblémát, például a bejelentkezési oldal jeleníti meg az embléma a célhelyről (például Office 365) alapértelmezett háttérben történő rendszerképpel.<br><br>Ezenkívül arculat megjelenítése a bejelentkezési oldal nem jelenik meg személyes Microsoft-fiókok. Ha a felhasználók vagy a vendégek személyes Microsoft-fiókkal, a bejelentkezési oldal nem jelenik meg a céges arculatot a szervezet.
 
 ### <a name="to-customize-your-branding"></a>A márkajelzési beállításokat testreszabása
-1. Jelentkezzen be a [Azure AD portálon](https://portal.azure.com/) a címtár egy globális rendszergazdai fiók használatával.
+1. Jelentkezzen be a [az Azure portal](https://portal.azure.com/) a címtár egy globális rendszergazdai fiók használatával.
 
 2. Válassza ki **Azure Active Directory**, majd válassza ki **vállalati védjegyezés**, majd válassza ki **konfigurálása**.
 
-    ![Contoso – vállalati arculati panelen, a konfigurálás opció kiemelésével](media/customize-branding/company-branding-configure-button.png)
+    ![Contoso – vállalati arculati oldalon, a konfigurálás opció kiemelésével](media/customize-branding/company-branding-configure-button.png)
 
-3. Az a **konfigurálása a vállalati arculatot** panelen adja meg a következő információkat egy részének vagy egészének:
+3. Az a **konfigurálása a vállalati arculatot** lap, adja meg a következő információkat egy részének vagy egészének.
+
+    >[!Important]
+    >Ezen az oldalon hozzáadhat egyéni rendszerképek a kép mérete (képpont) rendelkezik, és esetleg a fájl mérete (KB), korlátozások. Ezek a korlátozások miatt legvalószínűbb kell egy fénykép-szerkesztő segítségével a jobb méretű képek létrehozása.
 
     - **Általános beállítások**
 
-        ![Vállalati arculat panelen befejeződött általános beállítások konfigurálása](media/customize-branding/configure-company-branding-general-settings.png)
+        ![Vállalati arculat megjelenítése a lapon befejeződött általános beállítások konfigurálása](media/customize-branding/configure-company-branding-general-settings.png)
 
         - **Nyelv.** A nyelv alapértelmezett értéke automatikusan, és nem módosítható.
         
-        - **Bejelentkezési lap háttérképe** Válasszon ki egy .png vagy .jpg képet fájlt jelennek meg a bejelentkezési oldalakat a háttérben. A lemezkép nem lehet nagyobb, mint 1920 x 1080 képpont, mérete, és rendelkeznie kell egy fájl mérete kisebb, mint 300 KB-os.
+        - **Bejelentkezési lap háttérképe** Válasszon ki egy .png vagy .jpg képet fájlt jelennek meg a bejelentkezési oldalakat a háttérben. 
+        
+            A lemezkép nem lehet nagyobb, mint 1920 x 1080 képpont, mérete, és rendelkeznie kell egy fájl mérete kisebb, mint 300 KB-os.
 
-        - **Fejléc embléma.** Válassza ki az embléma jelenik meg a bejelentkezési oldalon, a felhasználó beírja a felhasználónevet és a egy .png vagy .jpg verzióját a **saját alkalmazások** portáloldalán. A lemezkép nem lehet magasabb, mint 36 képpont vagy nagyobb, mint 245 képpont. Azt javasoljuk, hogy transzparens rendszerkép használatával, mivel a háttér nem egyeznek az embléma háttér. Emellett javasoljuk, hogy ne adja hozzá a kép körül kitöltési, vagy lehet létrehozni, akkor keresse meg a kis méretű embléma.
+        - **Fejléc embléma.** Válassza ki az embléma jelenik meg a bejelentkezési oldalon, a felhasználó beírja a felhasználónevet és a egy .png vagy .jpg verzióját a **saját alkalmazások** portáloldalán.
+            
+            A lemezkép nem lehet magasabb, mint 36 képpont vagy nagyobb, mint 245 képpont. Azt javasoljuk, hogy transzparens rendszerkép használatával, mivel a háttér nem egyeznek az embléma háttér. Emellett javasoljuk, hogy ne adja hozzá a kép körül kitöltési, vagy lehet létrehozni, akkor keresse meg a kis méretű embléma.
 
         - **Felhasználónév-emlékeztető.** Írja be a segítő szöveg, amely a felhasználók számára akkor jelenik meg, ha elfelejtették a felhasználóneve. Ezt a szöveget kell lennie a Unicode használatát, hivatkozásokat vagy kód nélkül, és nem lehet hosszabb 64 karakternél. Ha vendégek jelentkezzen be az alkalmazásba, javasoljuk, hogy ne adja hozzá a mutatót.
 
@@ -58,11 +65,13 @@ Az egyéni márkajelzési nem jelenik meg azonnal, amikor a helyeket, például 
 
     - **Speciális beállítások**
             
-        ![Vállalati arculat panelen befejeződött a Speciális beállítások konfigurálása](media/customize-branding/configure-company-branding-advanced-settings.png)   
+        ![Vállalati arculat megjelenítése a lapon befejeződött a Speciális beállítások konfigurálása](media/customize-branding/configure-company-branding-advanced-settings.png)   
 
         - **Bejelentkezési oldal háttérszíne.** Adja meg hexadecimális szín (Ha például fehér a #FFFFFF), amely a háttérkép alacsony sávszélességű kapcsolat helyzetekben helyett megjelenítendő. A szalagcímembléma vagy a szervezet színes elsődleges színét használatát javasoljuk.
 
-        - **Négyzetes emblémakép.** Válassza ki a (javasolt) .png vagy .jpg képet a szervezet embléma új Windows 10 Enterprise-eszközök esetén a telepítés során a felhasználók számára megjelenik. Ez a rendszerkép rendszer csak a Windows-hitelesítést használ, és akkor jelenik meg, csak a bérlők által használt [Windows Autopilot]( https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot) telepítéshez vagy a jelszó megadásához egyéb Windows 10-es oldalainak észlel. A lemezkép nem lehet nagyobb, mint 240 x 240 képpont méretű, és rendelkeznie kell egy fájl mérete kisebb, mint 10 KB-os. Azt javasoljuk, hogy transzparens rendszerkép használatával, mivel a háttér nem egyeznek az embléma háttér. Emellett javasoljuk, hogy ne adja hozzá a kép körül kitöltési, vagy lehet létrehozni, akkor keresse meg a kis méretű embléma.
+        - **Négyzetes emblémakép.** Válassza ki a (javasolt) .png vagy .jpg képet a szervezet embléma új Windows 10 Enterprise-eszközök esetén a telepítés során a felhasználók számára megjelenik. Ez a rendszerkép rendszer csak a Windows-hitelesítést használ, és akkor jelenik meg, csak a bérlők által használt [Windows Autopilot]( https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot) telepítéshez vagy a jelszó megadásához egyéb Windows 10-es oldalainak észlel.
+        
+            A lemezkép nem lehet nagyobb, mint 240 x 240 képpont méretű, és rendelkeznie kell egy fájl mérete kisebb, mint 10 KB-os. Azt javasoljuk, hogy transzparens rendszerkép használatával, mivel a háttér nem egyeznek az embléma háttér. Emellett javasoljuk, hogy ne adja hozzá a kép körül kitöltési, vagy lehet létrehozni, akkor keresse meg a kis méretű embléma.
     
         - **Négyzetes emblémakép, sötét téma.** Ugyanaz, mint a fenti négyzetes emblémakép. Ez emblémakép történik a négyzetes emblémakép való együttes sötét háttérrel, például a Windows 10 Azure AD a csatlakoztatott képernyők out-of-box (OOBE) indítása során.  Ha az embléma fehér, sötét kék és a fekete háttérrel megfelelőnek tűnik, nem kell a lemezkép hozzáadása. 
         
@@ -74,22 +83,22 @@ Az egyéni márkajelzési nem jelenik meg azonnal, amikor a helyeket, például 
 
 3. Ha végzett a vállalat emblémájának hozzáadásával, válassza ki a **mentése**.
 
-  Mivel ez az első márkajelzést tartalmazó, az alapértelmezett válik a bérlő számára. További konfigurációk hozzáadása, ha az alapértelmezett választási lehetőséget fog kapni.
-
-  >[!Important]
-  >Továbbiak hozzáadásához Vállalati védjegyezés a bérlőn kívül konfigurációk ki kell választania **új nyelv** a a **Contoso - vállalati arculat** panelen. Ekkor megnyílik a **konfigurálása a vállalati arculatot** panel, ahol a fenti ugyanazokat a lépéseket követheti.
+    Ha ezt a folyamatot hoz létre az első egyéni márkajelzést tartalmazó, az alapértelmezett válik a bérlő számára. Ha további konfigurációs van, beállíthatja az alapértelmezett konfiguráció fogja.
+    
+    >[!Important]
+    >Továbbiak hozzáadásához Vállalati védjegyezés a bérlőn kívül konfigurációk ki kell választania **új nyelv** a a **Contoso - vállalati arculat** lapot. Ekkor megnyílik a **konfigurálása a vállalati arculatot** oldal, ahol a fenti ugyanazokat a lépéseket követheti.
 
 ## <a name="update-your-custom-branding"></a>Az egyéni védjegyezés frissítése
 Miután létrehozta a egyéni márkajelzési beállításokat, lépjen vissza, és bármit módosítani.
 
 ### <a name="to-edit-your-custom-branding"></a>Az egyéni védjegyezés szerkesztése
-1. Jelentkezzen be a [Azure AD portálon](https://portal.azure.com/) a címtár egy globális rendszergazdai fiók használatával.
+1. Jelentkezzen be a [az Azure portal](https://portal.azure.com/) a címtár egy globális rendszergazdai fiók használatával.
 
 2. Válassza ki **Azure Active Directory**, majd válassza ki **vállalati védjegyezés**, majd válassza ki **konfigurálása**.
 
-    ![Contoso – vállalati arculati panelen jelenik meg alapértelmezett konfigurációval](media/customize-branding/company-branding-default-config.png)
+    ![Contoso – vállalati arculati oldala, amelyen látható alapértelmezett konfigurációja](media/customize-branding/company-branding-default-config.png)
 
-3. Az a **konfigurálása a vállalati arculatot** panelen hozzá, távolíthatja el vagy módosítsa az információkat, található leírások alapján a [az Azure AD bejelentkezési oldal testreszabása](#customize-your-azure-ad-sign-in-page) című szakaszát.
+3. Az a **konfigurálása a vállalati arculatot** lap, adja hozzá, távolítsa el vagy módosítsa az információkat, található leírások alapján a [az Azure AD bejelentkezési oldal testreszabása](#customize-your-azure-ad-sign-in-page) című szakaszát.
 
 4. Kattintson a **Mentés** gombra.
 
@@ -100,16 +109,29 @@ Az alapértelmezett nyelv, az eredeti konfiguráció nyelv nem módosítható. H
 
 ### <a name="to-add-a-language-specific-branding-configuration"></a>A nyelvspecifikus márkajelzési konfiguráció hozzáadása
 
-1. Jelentkezzen be a [Azure AD portálon](https://portal.azure.com/) a címtár egy globális rendszergazdai fiók használatával.
+1. Jelentkezzen be a [az Azure portal](https://portal.azure.com/) a címtár egy globális rendszergazdai fiók használatával.
 
 2. Válassza ki **Azure Active Directory**, majd válassza ki **vállalati védjegyezés**, majd válassza ki **új nyelv**.
 
-    ![Contoso – vállalati arculati panelen az új nyelv lehetőség kiemelésével](media/customize-branding/company-branding-new-language.png)
+    ![Contoso – vállalati arculati oldala, amelyen új nyelv lehetőség kiemelésével](media/customize-branding/company-branding-new-language.png)
 
-3. Az a **konfigurálása a vállalati arculatot** panelen válassza ki a nyelvet (például francia), és vegye fel a lefordított információ található leírások alapján a [az Azure AD bejelentkezési oldal testreszabása](#customize-your-azure-ad-sign-in-page) Ez a cikk szakaszában.
+3. Az a **konfigurálása a vállalati arculatot** lapon, válassza ki a nyelvet (például francia), majd adja hozzá a lefordított információ található leírások alapján a [az Azure AD bejelentkezési oldal testreszabása](#customize-your-azure-ad-sign-in-page) Ez a cikk szakaszában.
 
 4. Kattintson a **Mentés** gombra.
 
-    A **Contoso – a vállalati arculatot** megjelenítése az új francia konfigurációs panelen frissítéseit.
+    A **Contoso – a vállalati arculatot** frissítések megjelenítése az új francia konfiguráció lapon.
 
-    ![Contoso – vállalati arculati panelen jelenik meg alapértelmezett konfigurációval](media/customize-branding/company-branding-french-config.png)
+    ![Contoso – vállalati arculati oldala, amelyen látható alapértelmezett konfigurációja](media/customize-branding/company-branding-french-config.png)
+
+## <a name="add-your-custom-branding-to-pages"></a>Az egyéni arculatot szeretne lapok hozzáadása
+Adja hozzá az egyéni márkajelzési oldalakra módosításával az URL-CÍMÉT a szöveg végén `?whr=yourdomainname`. Ez a módosítás több oldalt, beleértve a multi-factor Authentication (MFA) beállítása lapon, az önkiszolgáló jelszó alaphelyzetbe állítása (SSPR) beállítása lapon és a bejelentkezési oldalon működik.
+
+**Példák:**
+
+**Eredeti URL-címe:** https://aka.ms/MFASetup<br>
+**Egyéni URL-címe:** https://account.activedirectory.windowsazure.com/proofup.aspx?whr=contoso.com
+
+**Eredeti URL-címe:** https://aka.ms/SSPR<br>
+**Egyéni URL-címe:** https://passwordreset.microsoftonline.com/?whr=contoso.com
+
+ 

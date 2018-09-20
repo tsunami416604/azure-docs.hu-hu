@@ -8,13 +8,13 @@ manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 07/19/2018
-ms.openlocfilehash: 94d196ceecc0b63b9f0b0fe94f71363dc2086c30
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.date: 09/22/2018
+ms.openlocfilehash: b8d5208992e8f12fae3c010748b2c494e0d50ee8
+ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39213650"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46465657"
 ---
 # <a name="migrate-your-postgresql-database-using-dump-and-restore"></a>Memóriakép és visszaállítás használatával a PostgreSQL-adatbázis migrálása
 Használhatja [pg_dump](https://www.postgresql.org/docs/9.3/static/app-pgdump.html) be memóriakép-fájl egy PostgreSQL-adatbázis kibontásához és [pg_restore](https://www.postgresql.org/docs/9.3/static/app-pgrestore.html) pg_dump által létrehozott archív fájl visszaállítása a PostgreSQL-adatbázishoz.
@@ -41,7 +41,7 @@ pg_dump -Fc -v --host=localhost --username=masterlogin --dbname=testdb > testdb.
 > 
 
 ## <a name="restore-the-data-into-the-target-azure-database-for-postrgesql-using-pgrestore"></a>Állítsa vissza az adatokat a cél Azure Database-be a PostrgeSQL pg_restore használatával
-Miután létrehozta a céladatbázis, használhatja a pg_restore parancsot és a -d-,--dbname paramétert állítsa vissza az adatokat a memóriakép-fájl a cél-adatbázisba.
+Miután létrehozta a céladatbázis, a pg_restore parancsot és a -d,--dbname paraméter használatával állítsa vissza az adatokat a memóriakép-fájl a cél-adatbázisba.
 ```bash
 pg_restore -v --no-owner –-host=<server name> --port=<port> --username=<user@servername> --dbname=<target database name> <database>.dump
 ```
@@ -57,6 +57,34 @@ Ebben a példában visszaállíthatja az adatokat a memóriakép-fájl **testdb.
 ```bash
 pg_restore -v --no-owner --host=mydemoserver.postgres.database.azure.com --port=5432 --username=mylogin@mydemoserver --dbname=mypgsqldb testdb.dump
 ```
+
+## <a name="optimizing-the-migration-process"></a>Az áttelepítési folyamat optimalizálása
+
+A meglévő PostgreSQL-adatbázis migrálása az Azure Database for PostgreSQL szolgáltatás egyik módja, hogy az adatbázis biztonsági mentése a forráson, és állítsa vissza az Azure-ban. Az áttelepítés végrehajtásához szükséges idő minimalizálása érdekében fontolja meg az alábbi paramétereket a biztonsági mentést, és állítsa vissza a parancsokat.
+
+> [!NOTE]
+> Szintaxis részletes információkért tekintse meg a cikkeket [pg_dump](https://www.postgresql.org/docs/9.6/static/app-pgdump.html) és [pg_restore](https://www.postgresql.org/docs/9.6/static/app-pgrestore.html).
+>
+
+### <a name="for-the-backup"></a>A biztonsági mentés
+- A biztonsági mentés a szálcsatorna - kapcsoló igénybe, így a visszaállítást hajthat végre párhuzamosan, felgyorsítása érdekében. Példa:
+
+    ```
+    pg_dump -h MySourceServerName -U MySourceUserName -Fc -d MySourceDatabaseName > Z:\Data\Backups\MyDatabaseBackup.dump
+    ```
+
+### <a name="for-the-restore"></a>A visszaállításhoz
+- Másolja a biztonságimásolat-fájlt az Azure blob/tárolóban, és hajtsa végre a visszaállítást onnan. Gyorsabb, mint a visszaállítás végrehajtása az interneten keresztül kell lennie. 
+- Alapértelmezés szerint már végezhető, de a memóriakép-fájl, és ellenőrizze, hogy a create index utasításokat az adatok a Beszúrás után nyissa meg. Ha nem, akkor a helyzet, a create index utasításokat áthelyezése után az adatok.
+- Állítsa vissza a kapcsolók a -Fc és -j *#* való párhuzamosíthatja a visszaállítást. *#* van a célkiszolgálón magok számát. Az is megpróbálhatja *#* kétszer a célkiszolgáló magok számát értékre van állítva,-azonosítókra gyakorolt hatást. Példa:
+
+    ```
+    pg_restore -h MyTargetServer.postgres.database.azure.com -U MyAzurePostgreSQLUserName -Fc -j 4 -d MyTargetDatabase Z:\Data\Backups\MyDatabaseBackup.dump
+    ```
+
+- A parancs hozzáadásával a memóriakép-fájl is szerkesztheti *: synchronous_commit állítsa le; =* elején és a parancs *beállítása: synchronous_commit = on;* végén. Nem bekapcsolását, a végén az alkalmazásokat módosítani az adatokat, mielőtt az adatok későbbi adatvesztést eredményezhet.
+
+Ne felejtse el tesztelés és ellenőrzés ezeket a parancsokat egy tesztkörnyezetben, mielőtt éles környezetben használni.
 
 ## <a name="next-steps"></a>További lépések
 - Az exportálás és importálás segítségével a PostgreSQL-adatbázis áttelepítéséhez lásd: [exportálási PostgreSQL adatbázis Migrálása és importálása](howto-migrate-using-export-and-import.md).

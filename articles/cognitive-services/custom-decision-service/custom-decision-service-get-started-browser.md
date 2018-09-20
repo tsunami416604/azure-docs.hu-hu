@@ -1,27 +1,29 @@
 ---
-title: A böngésző - Azure kognitív szolgáltatások API hívása |} Microsoft Docs
-description: Ismerkedés az Azure egyéni döntési szolgáltatáshoz egy weblap optimalizálni API-hívások közvetlenül a böngészőből módjáról.
+title: API hívása egy böngészőből – Custom Decision Service
+titlesuffix: Azure Cognitive Services
+description: Hogyan azáltal, hogy az API-hívások közvetlenül a böngészőből a Custom Decision Service a weblapon optimalizálása.
 services: cognitive-services
 author: slivkins
-manager: slivkins
+manager: cgronlun
 ms.service: cognitive-services
-ms.topic: article
+ms.component: custom-decision-service
+ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: slivkins,marcozo,alekh
-ms.openlocfilehash: 10236c9d8f70d9b90a896464b4f86a847ee904c2
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 554b90efe1c646396597a722a74390e9048570ea
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35349115"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46363180"
 ---
 # <a name="call-api-from-a-browser"></a>API hívása egy böngészőből
 
-Ez a cikk segít az Azure egyéni döntési Service API-k meghíváshoz közvetlenül a böngészőből.
+Ez a cikk segít az Azure egyéni döntési szolgáltatás API-hívások közvetlenül böngészőből.
 
-Ügyeljen arra, hogy [az alkalmazás regisztrálása](custom-decision-service-get-started-register.md), első.
+Ügyeljen arra, hogy [regisztrálhatja alkalmazását](custom-decision-service-get-started-register.md), először.
 
-Lássunk neki. Az alkalmazás első lap, és hivatkozik, és több lapokra rendelkezőként van modellezve. Az első lap egyéni döntési szolgáltatás segítségével adja meg a cikk lapok sorrendje. Az alábbi kód beszúrása az első oldal HTML vezetője:
+Első lépések. Az alkalmazás egy első oldal, amely több cikk oldalak hivatkozásokat tartalmaz tartalmazóként van modellezve. Az első lapon adja meg az eredménykészlet sorrendjét a cikkek oldalai a Custom Decision Service használja. Az alábbi kód beszúrása az első oldal HTML vezetője:
 
 ```html
 // Define the "callback function" to render UI
@@ -31,9 +33,9 @@ Lássunk neki. Az alkalmazás első lap, és hivatkozik, és több lapokra rende
 <script src="https://ds.microsoft.com/api/v2/<appId>/rank/<actionSetId>" async></script>
 ```
 
-A `data` argumentum tartalmazza a megjeleníteni kívánt URL-címeket prioritását. További információkért lásd: a hivatkozási [API](custom-decision-service-api-reference.md).
+A `data` argumentum URL-címek a megjelenítésre rangsorolását tartalmazza. További információkért tekintse meg a hivatkozás [API](custom-decision-service-api-reference.md).
 
-Kezeli a felhasználó elemre kattint, a legfelső cikk, hívja meg a következő kódot az első oldalon:
+Kezeli a legfelső cikk felhasználói elemre kattint, az első oldalon hívja meg a következő kódot:
 
 ```javascript
 // call Reward API to report a click
@@ -43,9 +45,9 @@ $.ajax({
     contentType: "application/json" })
 ```
 
-Itt `data` a argumentuma a `callback()` függvény. Megvalósítási példa található ezen [oktatóanyag](custom-decision-service-tutorial-news.md#use-the-apis).
+Itt `data` az argumentum, a `callback()` függvény. Megvalósítási példa található ezen [oktatóanyag](custom-decision-service-tutorial-news.md#use-the-apis).
 
-Végül meg kell adnia a művelet beállítása API, amely akkor, ha egyéni döntési szolgáltatás (műveletek) cikkek listáját adja vissza. Az API RSS-hírcsatorna, mint ahogy az itt látható:
+Végül meg kell adnia a művelet beállítása API, amely szerint a Custom Decision Service a cikkeket (műveletek) listáját adja vissza. Az API egy RSS-hírcsatornát, mint ahogy az itt látható:
 
 ```xml
 <rss version="2.0">
@@ -62,9 +64,9 @@ Végül meg kell adnia a művelet beállítása API, amely akkor, ha egyéni dö
 </rss>
 ```
 
-Itt, minden egyes legfelső szintű `<item>` elem egy cikk ismerteti. A `<link>` kötelező, és egy művelet ID egyéni döntési szolgáltatás által használt. Adja meg `<date>` (a szabványos RSS formátumban) Ha több mint 15 cikkeket. A 15 legutóbbi cikkek használják. A `<title>` nem kötelező, és a szöveg funkcióiról a cikk létrehozására szolgál.
+Itt minden felső szintű `<item>` elem egy cikk írja le. A `<link>` megadása kötelező, és a Custom Decision Service egy művelet ID használják. Adja meg `<date>` (a szabványos RSS formátumban) Ha több mint 15 cikkeket. A 15 legutóbbi cikkek szolgálnak. A `<title>` nem kötelező, és a cikkhez tartozó szöveg kapcsolatos funkciók létrehozására szolgál.
 
 ## <a name="next-steps"></a>További lépések
 
-* Munka – egy [oktatóanyag](custom-decision-service-tutorial-news.md) részletesebb például.
-* Tekintse át a hivatkozás [API](custom-decision-service-api-reference.md) további információt a megadott funkciót.
+* Haladjon végig a [oktatóanyag](custom-decision-service-tutorial-news.md) részletesebb példát.
+* Tekintse meg a hivatkozás [API](custom-decision-service-api-reference.md) további információ a megadott funkciót.

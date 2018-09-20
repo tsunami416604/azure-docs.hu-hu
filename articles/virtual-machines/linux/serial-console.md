@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/07/2018
 ms.author: harijay
-ms.openlocfilehash: 6fb60955f1d436e13234243c0e83f1487cb7f7d0
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 1ede114f670dc7b1f610dff7cf076329e50f9240
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46127720"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46367780"
 ---
 # <a name="virtual-machine-serial-console"></a>Virtuális gépek soros konzolja
 
@@ -44,7 +44,7 @@ A soros konzol dokumentációja a Windows virtuális gépek esetében [ide](../w
 
     ![](../media/virtual-machines-serial-console/virtual-machine-serial-console-reset-password.png)
 
-* Linux-disztribúciók jellemző beállításait, lásd: [a soros konzol eléréséhez linuxhoz](#access-serial-console-for-linux)
+* Linux-disztribúciók jellemző beállításait, lásd: [a soros konzol eléréséhez linuxhoz](#Serial-Console-Linux-distro-availability)
 
 
 
@@ -52,15 +52,18 @@ A soros konzol dokumentációja a Windows virtuális gépek esetében [ide](../w
 A virtuális gépek soros konzolon keresztül csak érhető el [az Azure portal](https://portal.azure.com). A portálon keresztül a virtuális gépek soros konzol eléréséhez a lépéseket az alábbiakban 
 
   1. Nyissa meg az Azure Portalon
-  2. A bal oldali menüben válassza ki a virtuális gépeket.
-  3. Kattintson a listában a virtuális gépen. A virtuális gép áttekintő oldala nyílik meg.
-  4. Görgessen le a támogatás és hibaelhárítás szakaszhoz, és kattintson a "Soros konzol" lehetőséget. A soros konzol segítségével egy új panel megnyitja és indítsa el a kapcsolatot.
+  1. (Hagyja ki ezt, ha a virtuális gép rendelkezik a jelszó-hitelesítést használó felhasználó) Kattintson a "Jelszó visszaállítása" panelen felhasználóneves és jelszavas hitelesítéssel rendelkező felhasználó hozzáadása
+  1. A bal oldali menüben válassza ki a virtuális gépeket.
+  1. Kattintson a listában a virtuális gépen. A virtuális gép áttekintő oldala nyílik meg.
+  1. Görgessen le a támogatás és hibaelhárítás szakaszhoz, és kattintson a "Soros konzol" lehetőséget. A soros konzol segítségével egy új panel megnyitja és indítsa el a kapcsolatot.
 
 ![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-connect.gif)
 
+### 
 
 > [!NOTE] 
-> Soros konzol beállított jelszóval rendelkező helyi felhasználó szükséges. Jelenleg csak a nyilvános SSH-kulcsot a konfigurált virtuális gépek nem fog a soros konzoljához való hozzáférés. Hozzon létre egy helyi felhasználót felhasználónévvel és jelszóval, használja a [Virtuálisgép-hozzáférési bővítmény](https://docs.microsoft.com/azure/virtual-machines/linux/using-vmaccess-extension) (a portálon a "Jelszó visszaállítása" gombra kattintva is elérhető), és hozzon létre egy helyi felhasználói jelszót.
+> Soros konzol beállított jelszóval rendelkező helyi felhasználó szükséges. Jelenleg csak a nyilvános SSH-kulcsot a konfigurált virtuális gépek nem fogja tudni bejelentkezni a soros konzol. Hozzon létre egy helyi felhasználót felhasználónévvel és jelszóval, használja a [Virtuálisgép-hozzáférési bővítmény](https://docs.microsoft.com/azure/virtual-machines/linux/using-vmaccess-extension), a portálon kattintson a "Jelszó visszaállítása" a portálon, és hozzon létre egy helyi felhasználót egy jelszó.
+> Előfordulhat, hogy is visszaállítani a rendszergazdai jelszót a fiók által [egyfelhasználós módban is a grub-HIBÁT segítségével](./serial-console-grub-single-user-mode.md).
 
 ## <a name="serial-console-linux-distro-availability"></a>Soros konzol Linux-disztribúció rendelkezésre állása
 Ahhoz, hogy megfelelően működnek a soros konzol a vendég operációs rendszer olvasása és írása az üzenetek konzol a soros port kell állítani. A legtöbb [támogatott az Azure Linux-Disztribúció](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) a soros konzol alapértelmezés szerint konfigurálva van. A soros konzol szakaszban az Azure Portalon egyszerűen kattintson a konzol hozzáférést biztosít. 
@@ -208,6 +211,8 @@ A. A rendszerkép valószínűleg hibásan konfigurált, soros hozzáféréshez.
 **Q. Soros konzolon érhető el a Virtual Machine Scale Sets?**
 
 A. A virtuális gép méretezési csoport példányaihoz a soros konzoljához való hozzáférés jelenleg nem támogatott.
+
+**Q. Beállítása a virtuális gépem csak SSH kulcsos hitelesítést használ, akkor is használhatom soros konzoljához való csatlakozáshoz a virtuális gépem?** A. Igen. Soros konzol nem szükséges SSH-kulcsokat, így az összes kell tennie egy felhasználónév/jelszó kombináció. Ez a "Jelszó visszaállítása" panel használatával a portálon, és ezeket a hitelesítő adatok segítségével jelentkezzen be a soros konzol teheti meg.
 
 ## <a name="next-steps"></a>További lépések
 * Használja a soros konzol [indítsa el a grub-HIBÁT, és adja meg az egyfelhasználós mód](serial-console-grub-single-user-mode.md)

@@ -1,61 +1,62 @@
 ---
-title: Tesztelje, és a modell - egyéni stratégiai szolgáltatás - kognitív Azure-szolgáltatások újratanítása |} Microsoft Docs
-description: Lemezkép tesztelése és, amellyel a modell újratanítása útmutató.
+title: Tesztelése, és a egy modell – Custom Vision Service újratanítása
+titlesuffix: Azure Cognitive Services
+description: Ismerje meg a lemezkép tesztelése, és aztán a segítségükkel a modell újratanítása.
 services: cognitive-services
 author: anrothMSFT
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-vision
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/03/2018
 ms.author: anroth
-ms.openlocfilehash: 1933b1a45844ac99308baebe59b49687a957abfa
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 5830257cf246e059cbccb654462f709df981e06b
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348138"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46367950"
 ---
-# <a name="test-and-retrain-a-model-with-custom-vision-service"></a>Tesztelje, és egy modell egyéni stratégiai szolgáltatásban működik
+# <a name="test-and-retrain-a-model-with-custom-vision-service"></a>Tesztelése, és a egy modellt a Custom Vision Service újratanítása
 
-Után modellje betanításához gyorsan tesztelheti a helyben tárolt lemezkép vagy online lemezkép használatával. A vizsgálat a közelmúltban képzett iterációs használja.
+Miután a modell betanításához gyorsan tesztelheti egy helyileg tárolt képet vagy online lemezkép használatával. A teszt a közelmúltban betanított iteráció használ.
 
 ## <a name="test-your-model"></a>Modell tesztelése
 
-1. Az a [egyéni stratégiai weblap](https://customvision.ai), válassza ki a projektet. Válassza ki **Gyorsellenőrzés** jobb oldalán a felső menüsoron. Ez a művelet megnyit egy ablakot feliratú **Gyorsellenőrzés**.
+1. Az a [Custom Vision weblap](https://customvision.ai), jelölje ki a projektet. Válassza ki **gyors teszteléséhez** jobb oldalán a felső menüsávon. Ez a művelet feliratú ablakot nyit a **gyors teszteléséhez**.
 
     ![A gyors vizsgálat gombra az ablak jobb felső sarokban látható.](./media/test-your-model/quick-test-button.png)
 
-2. Az a **gyors teszteléséhez** ablakban kattintson a a **képet nyújt** mezőben, és írja be a teszteléshez használni kívánt kép URL-CÍMÉT. Ha helyileg tárolt lemezképet használ helyette, kattintson a **keresse meg a helyi fájlok** gombra, és jelöljön ki egy helyi lemezképfájlt.
+2. Az a **Quick Test** ablakban kattintson a a **képet nyújt** mezőben, majd adja meg a teszthez használni kívánt kép URL-CÍMÉT. Ha inkább egy helyileg tárolt képet szeretne, kattintson a **helyi fájlok tallózása** gombra, és válassza ki a helyi rendszerképet fájlt.
 
-    ![A Küldés kép lapjának képe](./media/test-your-model/submit-image.png)
+    ![A Küldés lemezkép lapjának képe](./media/test-your-model/submit-image.png)
 
-A kiválasztott kép közepén az oldal jelenik meg. A kép feliratú két oszlopokat tartalmazó tábla formájában alatt jelennek meg, majd **címkék** és **abban, hogy**. Az eredmények megtekintése után bezárhatja a **Gyorsellenőrzés** ablak.
+A kiválasztott kép jelenik meg az oldal közepén. Ezután az eredmények megjelennek a címkével ellátott, két oszlopot tartalmazó tábla formájában az ábra alatti **címkék** és **megbízhatósági**. Miután az eredmények megtekintése, bezárhatja a **gyors teszteléséhez** ablak.
 
-Most a lemezképet fel a modellbe, és a modell majd működik.
+A tesztképre adhat hozzá a modellt, és ezután újratanítása a modell.
 
-## <a name="use-the-predicted-image-for-training"></a>Használja az előre jelzett lemezképet képzési.
+## <a name="use-the-predicted-image-for-training"></a>Az előre jelzett rendszerkép használata a betanításhoz.
 
-A lemezképet, a képzési korábban átadott használatára, tegye a következőket:
+A korábban elküldött képzéshez rendszerkép használatához használja az alábbi lépéseket:
 
-1. Az osztályozó számára küldött kép megtekintéséhez nyissa meg a [egyéni stratégiai weblap](https://customvision.ai) válassza ki a __előrejelzéseket__ fülre.
+1. Az osztályozó által igénybe vett elküldött rendszerképek megtekintéséhez nyissa meg a [Custom Vision weblap](https://customvision.ai) , és válassza ki a __előrejelzéseket__ fülre.
 
-    ![Az előrejelzés lap képe](./media/test-your-model/predictions-tab.png)
-
-    > [!TIP]
-    > Az alapértelmezett nézet lemezképet rögzíthet a jelenlegi iterációs jeleníti meg. Használhatja a __iterációs__ legördülő mező az előző lépés során küldött kép megtekintéséhez.
-
-2. Egy képre az osztályozó által előrejelzett volt címkéket mutasson.
+    ![Az előrejelzések lap képe](./media/test-your-model/predictions-tab.png)
 
     > [!TIP]
-    > Lemezképek rangsora, hogy a képek, amely a legtöbb előnyökre is kerüljön a osztályozó tetején. Válassza ki, eltérő rendezést, használja a __rendezési__ szakasz.
+    > Az alapértelmezett nézet a jelenlegi verzió továbbfejlesztésében képeit jeleníti meg. Használhatja a __iteráció__ legördülő mező előző lépés során küldött kép megtekintéséhez.
 
-    Kép felvétele a betanítási adatok, válassza ki a lemezképet, jelölje ki a címke, és válassza ki __mentse és zárja be__. Eltávolítja a lemezképet __előrejelzéseket__ és a képzési lemezképekhez hozzá. Kiválasztásával megtekintheti a __képzési képek__ fülre.
+2. Kép az osztályozó által előrejelzett is címkéinek megtekintéséhez mutasson.
+
+    > [!TIP]
+    > Képek rangsora, hogy a képek, amelyek a legtöbb nyereségek is előtérbe az osztályozó által igénybe vett tetején. Válassza ki, eltérő rendezést, használja a __rendezési__ szakaszban.
+
+    Kép felvétele a betanítási adatok, válassza ki a lemezképet, jelölje ki a címkét, és válassza __mentse és zárja be__. A lemezkép el lesz távolítva __előrejelzéseket__ és hozzáadja a betanító kép. Kiválasztásával megtekintheti a __betanító kép__ fülre.
 
     ![A címkézési lapjának képe](./media/test-your-model/tag-image.png)
 
-3. Használja a __vonat__ gombra kattintva a osztályozó működik.
+3. Használja a __Train__ újratanítás PowerShell osztályozó gombra.
 
 ## <a name="next-steps"></a>További lépések
 
-[A besorolás javítása](getting-started-improving-your-classifier.md)
+[Tartalombesoroló teljesítményének](getting-started-improving-your-classifier.md)

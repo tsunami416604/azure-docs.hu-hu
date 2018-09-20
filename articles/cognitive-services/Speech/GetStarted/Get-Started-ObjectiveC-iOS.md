@@ -1,26 +1,27 @@
 ---
-title: Ismerkedés a Microsoft beszéd-felismerési API Objective-C IOS |} Microsoft Docs
-description: A Microsoft beszéd felismerés API használatával, amelyek a szóbeli hang szöveg iOS-alkalmazások fejlesztéséhez.
+title: Ismerkedés a Bing Speech Recognition API Objective-C nyelven az iOS rendszeren |} A Microsoft Docs
+titlesuffix: Azure Cognitive Services
+description: A Bing Speech Recognition API használatával hozhat létre iOS-alkalmazásokat, amelyek a beszélt hangot képes szöveggé alakítani.
 services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
 ms.component: bing-speech
 ms.topic: article
-ms.date: 09/29/2017
+ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: bbb8d3975cdab537135b97ca9bbf6e845aa3fa0e
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: af678ab1f63115d202214a754ad7afcb33b2f08a
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347443"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46366624"
 ---
-# <a name="get-started-with-the-speech-recognition-api-in-objective-c-on-ios"></a>A beszéd-felismerési API Objective-C IOS első lépések
+# <a name="quickstart-use-the-bing-speech-recognition-api-in-objective-c-on-ios"></a>Gyors útmutató: Használja a Bing Speech Recognition API, az Objective-C iOS rendszeren
 
-A beszédfelismerés felismerés API-val fejleszthet szóbeli hang átalakítása szöveges felhőalapú beszéd szolgáltatást használó iOS-alkalmazások. Az API támogatja valós idejű streamelési, így az alkalmazás egyszerre is és részleges felismerési eredmények aszinkron módon fogadásához azt a szolgáltatás hang küld egy időben.
+A Speech Recognition API beszédfelismerő felhő alapú szolgáltatás használja a beszélt hangot képes szöveggé alakítani iOS-alkalmazások fejleszthet. Az API-t támogatja, hogy valós idejű streamelési, így az alkalmazás egy időben, és aszinkron módon képes is részleges felismerési eredményeket hang, a szolgáltatás által küldött egy időben.
 
-Ebben a cikkben mintaalkalmazás az első lépések egy iOS-alkalmazások fejlesztéséhez Beszéd felismerés API-val alapjait bemutatásához. Tekintse meg a teljes API-referencia a [beszéd SDK ügyféloldali kódtár – referencia](https://cdn.rawgit.com/Microsoft/Cognitive-Speech-STT-iOS/master/com.Microsoft.SpeechSDK-1_0-for-iOS.docset/Contents/Resources/Documents/index.html).
+Ebben a cikkben egy mintaalkalmazás bemutatják, hogyan kezdheti el az iOS alkalmazások fejlesztése a Speech Recognition API-val alapjait. Egy teljes körű API-referencia, lásd: a [beszéd SDK ügyféloldali kódtár – referencia](https://cdn.rawgit.com/Microsoft/Cognitive-Speech-STT-iOS/master/com.Microsoft.SpeechSDK-1_0-for-iOS.docset/Contents/Resources/Documents/index.html).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -28,36 +29,36 @@ Ebben a cikkben mintaalkalmazás az első lépések egy iOS-alkalmazások fejles
 
 Győződjön meg arról, hogy telepítve van-e a Mac XCode IDE.
 
-### <a name="get-the-client-library-and-examples"></a>Az ügyfél első könyvtár és példák
+### <a name="get-the-client-library-and-examples"></a>Az ügyfél első erőforrástár és a példákat
 
-A beszédfelismerés ügyféloldali kódtár és példák az IOS-es érhetők el a [iOS SDK-ügyfél beszéd](https://github.com/microsoft/cognitive-speech-stt-ios).
+A beszédfelismerő ügyfélkódtárának és az iOS-es példák érhetők el a [Speech ügyfél-SDK IOS rendszerhez készült](https://github.com/microsoft/cognitive-speech-stt-ios).
 
-### <a name="subscribe-to-the-speech-recognition-api-and-get-a-free-trial-subscription-key"></a>A beszédfelismerés felismerés API előfizetni, és egy ingyenes próba-előfizetés kulcs beszerzése
+### <a name="subscribe-to-the-speech-recognition-api-and-get-a-free-trial-subscription-key"></a>Fizessen elő a Speech Recognition API és a egy ingyenes próba-előfizetését kulcs lekérése
 
-A Diktálásfelismerési API (korábban projekt Oxford) kognitív szolgáltatások részét képezi. Ingyenes próba-előfizetés kulcsokat beszerezheti a [kognitív szolgáltatások előfizetés](https://azure.microsoft.com/try/cognitive-services/) lap. Miután kiválasztotta a hang transzformációs API-t, jelölje ki a **API-kulcs beolvasása** a kulcs beszerzése. Egy elsődleges és másodlagos kulcsot adja vissza. Mindkét kulcsot, vagy kulccsal a azonos kvóta vannak társítva.
+A beszédfelismerő API a Cognitive Services-(korábban Project Oxford) részét képezi. Ingyenes próba-előfizetését helyenk beszerezheti a [Cognitive Services-előfizetés](https://azure.microsoft.com/try/cognitive-services/) lapot. Miután kiválasztotta a beszédfelismerő API, válassza ki a **API-kulcs lekérése** a kulcs beszerzése. Egy elsődleges és másodlagos kulcsát adja vissza. Mindkét kulcsot kvóta, így használhatja az egyiket sem vannak társítva.
 
-Ha a használni kívánt *biztonsági mentés felismerés*, is be kell jelentkeznie a a [nyelvi ismertetése intelligens szolgáltatás (LUIS)](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/).
+Ha a használni kívánt *leképezés a felismerés*, is regisztrálni kell a [Language Understanding Intelligent Service (LUIS)](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/).
 
 > [!IMPORTANT]
-> * Egy előfizetés kulcs beszerzése. Beszéd klienskódtárak használata előtt rendelkeznie kell egy [előfizetés kulcs](https://azure.microsoft.com/try/cognitive-services/).
+> * Előfizetési kulcs lekérése. Ügyfélkódtárak beszéd használata előtt rendelkeznie kell egy [előfizetési kulcs](https://azure.microsoft.com/try/cognitive-services/).
 >
-> * Az előfizetés-kulcsot használ. A megadott iOS mintaalkalmazás módosítania a fájl Samples/SpeechRecognitionServerExample/settings.plist az előfizetés kulccsal. További információkért lásd: [létrehozása és futtatása a minták](#build-and-run-samples).
+> * Az előfizetési kulcs használja. A megadott iOS-mintaalkalmazást a fájl Samples/SpeechRecognitionServerExample/settings.plist frissíteni az előfizetési kulccsal végzett kell. További információkért lásd: [hozza létre és futtassa a mintát](#build-and-run-samples).
 
-## <a name="use-the-speech-client-library"></a>A beszédfelismerés ügyféloldali kódtár használata
+## <a name="use-the-speech-client-library"></a>A beszédfelismerő ügyfélkódtárának használata
 
-Az ügyféloldali kódtár az XCode projekt való hozzáadásához kövesse az alábbi [utasításokat](https://github.com/Azure-Samples/Cognitive-Speech-STT-iOS#the-client-library).
+Az XCode-projektben adja hozzá az ügyféloldali kódtár, kövesse az alábbi [utasításokat](https://github.com/Azure-Samples/Cognitive-Speech-STT-iOS#the-client-library).
 
-Az ügyfél kódtár – dokumentáció iOS-hez, lásd: a [weblap](https://cdn.rawgit.com/Microsoft/Cognitive-Speech-STT-iOS/master/com.Microsoft.SpeechSDK-1_0-for-iOS.docset/Contents/Resources/Documents/index.html).
+Az ügyfél kódtár – referencia iOS-hez, lásd: Ez [weblap](https://cdn.rawgit.com/Microsoft/Cognitive-Speech-STT-iOS/master/com.Microsoft.SpeechSDK-1_0-for-iOS.docset/Contents/Resources/Documents/index.html).
 
-## <a name="build-and-run-samples"></a>Hozza létre és minták futtatása
+## <a name="build-and-run-samples"></a>Hozhat létre és -minták futtatása
 
-Build és futtatási minták kapcsolatos információkért lásd: a [tájékoztató oldalon](https://github.com/Azure-Samples/Cognitive-Speech-STT-iOS#the-sample).
+Információk a build és a futtatási minták: Ez [tájékoztató oldalon](https://github.com/Azure-Samples/Cognitive-Speech-STT-iOS#the-sample).
 
-## <a name="samples-explained"></a>Minták alapján
+## <a name="samples-explained"></a>A minták ismertetése
 
-### <a name="create-recognition-clients"></a>Hozzon létre felismerés ügyfelek
+### <a name="create-recognition-clients"></a>Elismerés ügyfelek létrehozása
 
-A minta a következő kód bemutatja, hogyan felhasználói forgatókönyvek alapján felismerés ügyfél osztályokat hozhatnak létre:
+A következő kód a minta bemutatja, hogyan hozhat létre a felismerés ügyfélosztályok felhasználói esetek alapján:
 
 ```
 {
@@ -108,38 +109,38 @@ A minta a következő kód bemutatja, hogyan felhasználói forgatókönyvek ala
 
 ```
 
-Az ügyféloldali kódtár biztosít előre megvalósított felismerés ügyfél osztályok Beszédfelismerés a jellemző forgatókönyvek:
+Az ügyféloldali kódtár biztosít előre megvalósított felismerés ügyfélosztályok Beszédfelismerés a tipikus forgatókönyvek:
 
-* `DataRecognitionClient`: A beszédfelismerés PCM adatait (például egy fájl vagy a hallható forrás). Az adatok van felosztva pufferek, majd minden puffer beszéd szolgáltatásnak továbbítja. Módosítás nélkül azért van szükség, a buffers, így alkalmazhatnak saját csend észlelése, ha szükséges. Ha az adatokat a WAV-fájlokból áll rendelkezésre, a kiszolgáló fájl jobbról küldhet adatokat. Ha nyers adatok, például hang Bluetooth, keresztül érkező, először formátum fejléc küldése az adatokat pedig a kiszolgálóra.
-* `MicrophoneRecognitionClient`: A Beszédfelismerés a hang a mikrofon származik. Győződjön meg arról, hogy a mikrofon be van kapcsolva, és hogy az adatok a mikrofon a beszédfelismerés felismerés szolgáltatáshoz érkezik. A beépített "csend, beállítás" alkalmazzák a mikrofon adatokat a felismerési szolgáltatás továbbítás előtt.
-* `DataRecognitionClientWithIntent` és `MicrophoneRecognitionClientWithIntent`: mellett felismerés szöveg, ezek az ügyfelek információval strukturált a célt a hangalapú, amely annak további műveletek az alkalmazások használhatják a. "Cél" használatához először használatával a modell betanításához szüksége [LUIS](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/).
+* `DataRecognitionClient`: A beszédfelismerés PCM adatokkal (például a fájl- vagy audióanyagot forrás). Az adatok pufferek van osztva, és minden egyes puffer Speech szolgáltatásnak továbbítja. Bármilyen módosítás nélkül történik a pufferek, így alkalmazhatnak a saját csend észlelése, ha szükséges. Az adatok WAV-fájlokból áll rendelkezésre, ha a fájlt közvetlenül a kiszolgálóhoz küldhet adatokat. Ha olyan nyers adat, például hang, a Bluetooth keresztül érkező, először egy formátum fejléc elküldése a kiszolgálóra, majd az adatokat.
+* `MicrophoneRecognitionClient`: A beszédfelismerés együtt származik a mikrofon hang. Ellenőrizze, hogy a mikrofon be van kapcsolva, és hogy az adatok a mikrofon a speech recognition szolgáltatásnak továbbítja. A beépített "csend detector használatával" mikrofon adatokra alkalmazza, a felismerés szolgáltatás továbbítás előtt.
+* `DataRecognitionClientWithIntent` és `MicrophoneRecognitionClientWithIntent`: felismerés szöveg mellett az ilyen ügyfelek a beszélő, amely az alkalmazások használható további műveletek alapjául a leképezés strukturált információt ad vissza. "Leképezés" használatához először betanítja a modellt használatával kell [LUIS](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/).
 
-### <a name="recognition-language"></a>Beszédfelismerési nyelv
+### <a name="recognition-language"></a>Nyelv felismerése
 
-Amikor `SpeechRecognitionServiceFactory` az ügyfél létrehozása, ki kell választania egy nyelvet. A beszédfelismerés szolgáltatás által támogatott nyelvek teljes listájáért lásd: [támogatott nyelv](../API-Reference-REST/supportedlanguages.md).
+Ha használ `SpeechRecognitionServiceFactory` szeretne létrehozni az ügyfelet, ki kell választania egy nyelvet. Beszédfelismerési szolgáltatás által támogatott nyelvek teljes listáját lásd: [támogatott nyelvek](../API-Reference-REST/supportedlanguages.md).
 
 ### <a name="speechrecognitionmode"></a>SpeechRecognitionMode
 
-Is meg kell adnia `SpeechRecognitionMode` létrehozásakor az ügyfél és `SpeechRecognitionServiceFactory`:
+Emellett meg kell adnia `SpeechRecognitionMode` létrehozásakor, az ügyfél és `SpeechRecognitionServiceFactory`:
 
-* `SpeechRecognitionMode_ShortPhrase`: Legfeljebb 15 egy utterance hosszú másodperc. A szolgáltatás adatokat küld, mivel az ügyfél megkapja a több részleges eredményt és egy végeredményt több n-legjobb választást.
-* `SpeechRecognitionMode_LongDictation`: Egy utterance akár két perc hosszú. A szolgáltatás adatokat küld, mivel az ügyfél megkapja a több részleges eredményt, és több végső eredmény, ha a kiszolgáló azonosítja mondat szünetel.
+* `SpeechRecognitionMode_ShortPhrase`: Mennyi ideig az utterance (kifejezés), legfeljebb 15 másodperc alatt. Mivel a szolgáltatás adatokat küld, az ügyfél megkapta a több részleges és több végső eredményt, több legjobb n választási lehetőség a.
+* `SpeechRecognitionMode_LongDictation`: Az utterance (kifejezés), akár két perc hosszú. Mivel a szolgáltatás adatokat küld, a az ügyfél több részleges és több végső eredményt, ha a kiszolgáló azonosítja a mondaton belüli szünetet alapján kap.
 
-### <a name="attach-event-handlers"></a>Az eseménykezelők csatolása
+### <a name="attach-event-handlers"></a>Eseménykezelők csatolása
 
 Az ügyfél különböző eseménykezelők csatolhat létrehozott:
 
-* **Részleges eredmények események**: Ez az esemény minden alkalommal, amikor a beszédfelismerés Service előrejelzi mi, előfordulhat, hogy kell arról, még mielőtt beszéd menüelemnek (használatakor `MicrophoneRecognitionClient`) vagy a Befejezés adatküldés (használatakor `DataRecognitionClient`).
-* **Hibaesemények**: hívható meg, ha a szolgáltatás hibát észlel.
-* **Leképezési események**: nevű ügyfeleken "WithIntent" (csak a ShortPhrase üzemmódban) után utolsó felismerési eredmények strukturált JSON-leképezés van értelmezni.
-* **Események eredménye**:
-  * A `SpeechRecognitionMode_ShortPhrase` mód, ez az esemény neve, és n-legjobb eredményt ad vissza, és beszéljen befejezése után.
-  * A `SpeechRecognitionMode_LongDictation` üzemmód, az eseménykezelő neve többször, ahol a szolgáltatás azonosítja a mondatok szünet alapján.
-  * **Az egyes az n-legjobb lehetőségeket**, abban, hogy az érték, és néhány más űrlapok a felismert szöveg adott vissza. További információkért lásd: [kimeneti formátum](../Concepts.md#output-format).
+* **Részleges eredményeket események**: Ez az esemény meghívása megtörténik, minden alkalommal, amikor a Speech Service előrejelzi, előfordulhat, hogy el véleményét, beszéd befejezése előtt is (Ha `MicrophoneRecognitionClient`), vagy fejezze be az adatok küldésének (használatakor `DataRecognitionClient`).
+* **Hibaesemények**: meghívva, ha a szolgáltatás hibát észlel.
+* **Leképezési események**: nevű ügyfeleken "WithIntent" (csak a ShortPhrase üzemmódban) után a végső felismerés eredménye egy strukturált JSON-leképezés szűrőtulajdonság.
+* **Események eredményeként**:
+  * A `SpeechRecognitionMode_ShortPhrase` mód, ez az esemény nevezik, és n legjobb eredményeket ad vissza, és beszéljen befejezése után.
+  * A `SpeechRecognitionMode_LongDictation` üzemmód, az eseménykezelő neve többször, ahol a szolgáltatás azonosítja a mondaton belüli szünetet alapján.
+  * **A legjobb n lehetőségek mindegyike**, egy megbízhatósági érték és néhány másik formája a felismert szöveget adja vissza. További információkért lásd: [kimeneti formátum](../Concepts.md#output-format).
 
 ## <a name="related-topics"></a>Kapcsolódó témakörök
 
-* [Az IOS rendszerhez készült ügyféloldali kódtár – referencia](https://cdn.rawgit.com/Microsoft/Cognitive-Speech-STT-iOS/master/com.Microsoft.SpeechSDK-1_0-for-iOS.docset/Contents/Resources/Documents/index.html)
-* [Ismerkedés a Microsoft a beszédfelismerés és/vagy Java az Android a cél](GetStartedJavaAndroid.md)
-* [A Microsoft-hang transzformációs API a JavaScript az első lépései](GetStartedJSWebsockets.md)
-* [Ismerkedés a Microsoft-hang transzformációs API REST-en keresztül](GetStartedREST.md)
+* [IOS-hez készült ügyféloldali kódtár – referencia](https://cdn.rawgit.com/Microsoft/Cognitive-Speech-STT-iOS/master/com.Microsoft.SpeechSDK-1_0-for-iOS.docset/Contents/Resources/Documents/index.html)
+* [Ismerkedés a Microsoft beszédfelismerési és/vagy a leképezést a Java Android rendszeren](GetStartedJavaAndroid.md)
+* [A Microsoft Speech API a JavaScript használatának első lépései](GetStartedJSWebsockets.md)
+* [Ismerkedés a Microsoft Speech API REST-en keresztül](GetStartedREST.md)
