@@ -1,0 +1,291 @@
+items:
+- name: Hibrid identitáskezelési dokumentáció
+  href: index.yml
+- name: Áttekintés
+  items:
+  - name: Mi az a hibrid identitás?
+    href: whatis-hybrid-identity.md
+    maintainContext: true
+- name: Oktatóanyagok
+  items:
+  - name: Egyetlen AD-erdővel rendelkező AD-környezet integrálása a felhőbe PHS használatával
+    href: tutorial-password-hash-sync.md
+  - name: Egyetlen AD-erdővel rendelkező AD-környezet integrálása a felhőbe PTA használatával
+    href: tutorial-passthrough-authentication.md
+  - name: Egyetlen AD-erdővel rendelkező környezet összevonása a felhővel
+    href: tutorial-federation.md
+  expanded: true
+- name: Alapelvek
+  items:
+  - name: Az Azure AD Connect szinkronizálása
+    items:
+    - name: Az Azure AD Connect-szinkronizálás technikai kulcsfogalmai
+      href: how-to-connect-sync-technical-concepts.md
+    - name: Az Azure AD Connect-szinkronizálás architektúrájának ismertetése
+      href: concept-azure-ad-connect-sync-architecture.md
+    - name: A deklaratív üzembe helyezés ismertetése
+      href: concept-azure-ad-connect-sync-declarative-provisioning.md
+    - name: A deklaratív üzembe helyezési kifejezések ismertetése
+      href: concept-azure-ad-connect-sync-declarative-provisioning-expressions.md
+    - name: Az alapértelmezett konfiguráció ismertetése
+      href: concept-azure-ad-connect-sync-default-configuration.md
+    - name: A felhasználók és a kapcsolattartók ismertetése
+      href: concept-azure-ad-connect-sync-user-and-contacts.md
+    - name: Az árnyékattribútumok ismertetése
+      href: how-to-connect-syncservice-shadow-attributes.md
+  - name: Identitásszinkronizálás és ismétlődő attribútumok rugalmassága
+    href: how-to-connect-syncservice-duplicate-attribute-resiliency.md
+- name: Útmutatók
+  items:
+  - name: Telepítés és frissítés
+    items:
+    - name: Telepítési ütemterv
+      href: how-to-connect-install-roadmap.md
+    - name: Telepítési előfeltételek
+      href: how-to-connect-install-prerequisites.md
+    - name: Telepítési típus kiválasztása
+      href: how-to-connect-install-select-installation.md
+    - name: Az Azure AD Connect telepítése gyorsbeállítások használatával (PHS)
+      href: how-to-connect-install-express.md
+    - name: Az Azure AD Connect telepítése összevonás vagy más egyéni beállítások használatával
+      href: how-to-connect-install-custom.md
+    - name: Az Azure AD Connect telepítése átmenő hitelesítéssel (PTA)
+      href: how-to-connect-pta-quick-start.md
+    - name: Az Azure AD Connect Health telepítése
+      href: how-to-connect-health-agent-install.md
+    - name: Automatikus frissítés
+      href: how-to-connect-install-automatic-upgrade.md
+    - name: A telepítési varázsló másodszori futtatása
+      href: how-to-connect-installation-wizard.md
+    - name: Frissítés az Azure AD Connect egy új verziójára
+      href: how-to-upgrade-previous-version.md
+    - name: Frissítés DirSyncről vagy Azure AD Syncről
+      href: how-to-dirsync-upgrade-get-started.md
+    - name: Telepítés meglévő ADSync-adatbázis használatával
+      href: how-to-connect-install-existing-database.md
+    - name: Telepítés SQL-lel delegált rendszergazdai engedélyekkel
+      href: how-to-connect-install-sql-delegation.md
+    - name: Előzetes verziójú PTA-ügynökök frissítése
+      href: how-to-connect-pta-upgrade-preview-authentication-agents.md
+    - name: Azure AD Connect-adatbázis áthelyezése SQL Expressről SQL Serverre
+      href: how-to-connect-install-move-db.md
+    - name: Ha már rendelkezik az Azure AD-vel
+      href: how-to-connect-install-existing-tenant.md
+    - name: Telepítés utáni feladatok
+      href: how-to-connect-post-installation.md
+  - name: Tervezés és kialakítás
+    items:
+    - name: Tervezési alapelvek
+      href: plan-connect-design-concepts.md
+    - name: Azure AD Connect-topológiák
+      href: plan-connect-topologies.md
+    - name: Hogyan jelentkeznek be a felhasználók?
+      href: plan-connect-user-signin.md
+    - name: Példányokra vonatkozó különleges szempontok
+      href: reference-connect-instances.md
+    - name: Hibrid identitáskezelés – kialakítási szempontok
+      items:
+      - name: Hibrid identitáskezelés – a kialakítási szempontok áttekintése
+        href: plan-hybrid-identity-design-considerations-overview.md
+      - name: Identitáshoz kapcsolódó követelmények meghatározása
+        href: plan-hybrid-identity-design-considerations-business-needs.md
+      - name: Szinkronizálási követelmények meghatározása
+        href: plan-hybrid-identity-design-considerations-directory-sync-requirements.md
+      - name: A többtényezős hitelesítés követelményeinek meghatározása
+        href: plan-hybrid-identity-design-considerations-multifactor-auth-requirements.md
+      - name: Az identitás-életciklus bevezetési stratégiájának meghatározása
+        href: plan-hybrid-identity-design-considerations-lifecycle-adoption-strategy.md
+      - name: Adatvédelmi stratégia meghatározása
+        href: plan-hybrid-identity-design-considerations-data-protection-strategy.md
+      - name: Adatvédelmi követelmények megtervezése
+        href: plan-hybrid-identity-design-considerations-dataprotection-requirements.md
+      - name: A tartalomkezeléshez kapcsolódó követelmények meghatározása
+        href: plan-hybrid-identity-design-considerations-contentmgt-requirements.md
+      - name: A hozzáférés-vezérlésre vonatkozó követelmények meghatározása
+        href: plan-hybrid-identity-design-considerations-accesscontrol-requirements.md
+      - name: Az incidensmegoldáshoz kapcsolódó követelmények meghatározása
+        href: plan-hybrid-identity-design-considerations-incident-response-requirements.md
+      - name: A hibrid identitáskezelés életciklusának megtervezése
+        href: plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md
+      - name: Bevezetési stratégia meghatározása
+        href: plan-hybrid-identity-design-considerations-identity-adoption-strategy.md
+      - name: Hibrid identitáskezelés – kialakítási szempontok – további lépések
+        href: plan-hybrid-identity-design-considerations-nextsteps.md
+      - name: A hibrid identitáskezelési eszközök összehasonlítása
+        href: plan-hybrid-identity-design-considerations-tools-comparison.md
+  - name: Az Azure AD Connect kezelése
+    items:
+    - name: Mi az a jelszókivonat-szinkronizálás?
+      href: how-to-connect-password-hash-synchronization.md
+    - name: Eszközvisszaírás engedélyezése
+      href: how-to-connect-device-writeback.md
+    - name: Eszközbeállítások
+      href: how-to-connect-device-options.md
+    - name: Az Azure AD Connect további funkciói
+      href: how-to-connect-preview.md
+    - name: Véletlen törlések megakadályozása
+      href: how-to-connect-sync-feature-prevent-accidental-deletes.md
+    - name: Az AD lomtárának engedélyezése
+      href: how-to-connect-sync-recycle-bin.md
+    - name: Az Azure AD Sync-szolgáltatásfiók jelszavának módosítása
+      href: how-to-connect-sync-change-serviceacct-pass.md
+    - name: Az Azure AD Connector-fiók módosítása
+      href: how-to-connect-azureadaccount.md
+    - name: Az AD DS-fiók jelszavának módosítása
+      href: how-to-connect-sync-change-addsacct-pass.md
+  - name: Összevonási szolgáltatások kezelése
+    items:
+    - name: Mi az az Azure AD Connect-összevonás?
+      href: how-to-connect-fed-whatis.md
+    - name: Összevonás kezelése az Azure AD Connect segítségével
+      href: how-to-connect-fed-management.md
+    - name: Többtartományos támogatás összevonási szolgáltatásokhoz
+      href: how-to-connect-install-multiple-domains.md
+    - name: Több Azure AD-példány összevonása egyetlen AD FS-példánnyal
+      href: how-to-connect-fed-single-adfs-multitenant-federation.md
+    - name: O365- és Azure AD-összevonási tanúsítványok megújítása
+      href: how-to-connect-fed-o365-certs.md
+    - name: Az AD FS SSL-tanúsítványainak frissítése
+      href: how-to-connect-fed-ssl-update.md
+    - name: AD FS-megbízhatóság kezelése az Azure AD segítségével
+      href: how-to-connect-azure-ad-trust.md
+    - name: Az Azure AD összevonás kompatibilitási listája
+      href: how-to-connect-fed-compatibility.md
+    - name: SAML 2.0-kiszolgáló használata identitásszolgáltatóként
+      href: how-to-connect-fed-saml-idp.md
+    - name: Hibrid Azure AD-csatlakozás konfigurálása utáni feladatok
+      href: how-to-connect-fed-hybrid-azure-ad-join-post-config-tasks.md
+  - name: Átmenő hitelesítés kezelése
+    items:
+    - name: Mi az az átmenő hitelesítés?
+      href: how-to-connect-pta.md
+    - name: Bevezetés az átmenő hitelesítés használatába
+      href: how-to-connect-pta-quick-start.md
+    - name: Az átmenő hitelesítés működése
+      href: how-to-connect-pta-how-it-works.md
+    - name: Az átmenő hitelesítés részletes biztonsági bemutatása
+      href: how-to-connect-pta-security-deep-dive.md
+    - name: Átmenő hitelesítés és felhasználói adatvédelem
+      href: how-to-connect-pta-user-privacy.md
+    - name: Az átmenő hitelesítés jelenlegi korlátai
+      href: how-to-connect-pta-security-deep-dive.md
+    - name: Gyakori kérdések az átmenő hitelesítésről
+      href: how-to-connect-pta-faq.md
+  - name: Egyszeri bejelentkezés kezelése
+    items:
+    - name: Mi az az egyszeri bejelentkezés?
+      href: how-to-connect-sso.md
+    - name: Bevezetés az egyszeri bejelentkezés használatába
+      href: how-to-connect-sso-quick-start.md
+    - name: Az egyszeri bejelentkezés működése
+      href: how-to-connect-sso-how-it-works.md
+    - name: Egyszeri bejelentkezés és felhasználói adatvédelem
+      href: how-to-connect-sso-user-privacy.md
+    - name: Gyakori kérdések az egyszeri bejelentkezésről
+      href: how-to-connect-sso-faq.md
+  - name: Az Azure AD Connect Health kezelése
+    items:
+    - name: Azure AD Connect Health Operations (Az Azure AD Connect Health műveletei)
+      href: how-to-connect-health-operations.md
+    - name: Az Azure AD Connect Health használata az AD FS szolgáltatással
+      href: how-to-connect-health-adfs.md
+    - name: Az Azure AD Connect Health használata szinkronizáláshoz
+      href: how-to-connect-health-sync.md
+    - name: Az Azure AD Connect Health használata az AD DS szolgáltatással
+      href: how-to-connect-health-adds.md
+    - name: Az állapotfigyelő szolgáltatás adatai elavultak
+      href: how-to-connect-health-data-freshness.md
+    - name: Duplikált attribútumok szinkronizálási hibáinak diagnosztizálása
+      href: how-to-connect-health-diagnose-sync-errors.md
+    - name: Azure AD Connect Health-riasztások katalógusa
+      href: how-to-connect-health-alert-catalog.md
+  - name: Azure AD Connect-szinkronizálás kezelése
+    items:
+    - name: Mi az Azure AD Connect-szinkronizálás?
+      href: how-to-connect-sync-whatis.md
+    - name: Az Azure AD Connect-szinkronizálás funkciói
+      href: how-to-connect-syncservice-features.md
+    - name: Üzemeltetési feladatok kezelése
+      href: how-to-connect-sync-operations.md
+    - name: Az alapértelmezett konfiguráció módosításának ajánlott eljárásai
+      href: how-to-connect-sync-best-practices-changing-default-configuration.md
+    - name: Az alapértelmezett konfiguráció módosítása
+      href: how-to-connect-sync-change-the-configuration.md
+    - name: Címtárbővítmények konfigurálása
+      href: how-to-connect-sync-feature-directory-extensions.md
+    - name: Előnyben részesített adathelyek konfigurálása
+      href: how-to-connect-sync-feature-preferreddatalocation.md
+    - name: A szűrés konfigurálása
+      href: how-to-connect-sync-configure-filtering.md
+    - name: A Scheduler kezelése
+      href: how-to-connect-sync-feature-scheduler.md
+    - name: Az Azure AD Connect szinkronizálási szolgáltatáskezelő
+      items:
+      - name: Mi az az Azure AD Connect szinkronizálási szolgáltatáskezelő?
+        href: how-to-connect-sync-service-manager-ui.md
+      - name: A szolgáltatáskezelő műveletek lapjának kezelése
+        href: how-to-connect-sync-service-manager-ui-operations.md
+      - name: Összekötők használata a szolgáltatáskezelővel
+        href: how-to-connect-sync-service-manager-ui-connectors.md
+      - name: Metaverzumtervező
+        href: how-to-connect-sync-service-manager-ui-mvdesigner.md
+      - name: Keresés a metaverzumban
+        href: how-to-connect-sync-service-manager-ui-mvsearch.md
+  - name: Hibaelhárítás
+    items:
+    - name: Kapcsolatok
+      href: tshoot-connect-connectivity.md
+    - name: Hibák a szinkronizálás során
+      href: tshoot-connect-sync-errors.md
+    - name: Az objektum nincs szinkronizálva
+      href: tshoot-connect-object-not-syncing.md
+    - name: Objektum szinkronizálása a hibaelhárítási feladat használatával
+      href: tshoot-connect-objectsync.md
+    - name: Jelszókivonat szinkronizálása
+      href: tshoot-connect-password-hash-synchronization.md
+    - name: Átmenő hitelesítés
+      href: tshoot-connect-pass-through-authentication.md
+    - name: Egyszeri bejelentkezés
+      href: tshoot-connect-sso.md
+    - name: userCertificate által okozott LargeObject-hiba
+      href: tshoot-connect-largeobjecterror-usercertificate.md
+    - name: Helyreállítás 10 GB-ra korlátozott LocalDB-adatbázisból
+      href: tshoot-connect-recover-from-localdb-10gb-limit.md
+    - name: SQL-kapcsolat
+      href: tshoot-connect-tshoot-sql-connectivity.md
+- name: Referencia
+  items:
+  - name: Hibrid identitás – szükséges portok és protokollok
+    href: reference-connect-ports.md
+  - name: Az Azure AD Connect verzióelőzményei
+    href: reference-connect-version-history.md
+  - name: Az Azure AD Connect Health verzióelőzményei
+    href: reference-connect-health-version-history.md
+  - name: Összekötő verzióelőzményei
+    href: reference-connect-sync-connector-version-history.md
+  - name: Fiókok és engedélyek
+    href: reference-connect-accounts-permissions.md
+  - name: Azure AD Connect – gyakori kérdések
+    href: reference-connect-faq.md
+  - name: Azure AD Connect Health FAQ (Azure AD Connect Health – gyakori kérdések)
+    href: reference-connect-health-faq.md
+  - name: Az Azure AD Connect felhasználói adatvédelme
+    href: reference-connect-user-privacy.md
+  - name: Az Azure AD Connect Health felhasználói adatvédelme
+    href: reference-connect-health-user-privacy.md
+  - name: Az Azure AD Connect Németországban
+    href: reference-connect-germany.md
+  - name: DirSync elavulása
+    href: reference-connect-dirsync-deprecated.md
+  - name: Szinkronizált attribútumok
+    href: reference-connect-sync-attributes-synchronized.md
+  - name: Functions – referencia
+    href: reference-connect-sync-functions-reference.md
+  - name: Az Azure AD összevonás kompatibilitási listája
+    href: how-to-connect-fed-compatibility.md
+ms.openlocfilehash: e0485c86f365c93362fed792a41ec835680a1ee7
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46300476"

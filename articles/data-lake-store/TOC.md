@@ -22,7 +22,7 @@
 ### [A DistCp használata](data-lake-store-copy-data-wasb-distcp.md)
 ### [A Sqoop használata](data-lake-store-data-transfer-sql-sqoop.md)
 ### [Adatok feltöltése offline forrásokból](data-lake-store-offline-bulk-data-upload.md)
-### [Data Lake Store migrálása régiók között](data-lake-store-migration-cross-region.md)
+### [1. generációs Data Lake Storage migrálása régiók között](data-lake-store-migration-cross-region.md)
 
 ## Adatok védelme
 ### [Biztonsági áttekintés](data-lake-store-security-overview.md)

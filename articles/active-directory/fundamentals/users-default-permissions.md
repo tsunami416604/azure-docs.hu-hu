@@ -1,26 +1,25 @@
 ---
-title: Alapértelmezett felhasználói engedélyek összehasonlítása az Azure AD-ben | Microsoft Docs
-description: Tagok, vendégek, alkalmazástulajdonosok és csoporttulajdonosok engedélyeinek összehasonlítása
+title: Mik azok az alapértelmezett felhasználói engedélyek az Azure Active Directoryban? | Microsoft Docs
+description: További információ a különböző felhasználói engedélyek elérhető az Azure Active Directoryban.
 services: active-directory
-documentationcenter: ''
 author: eross-msft
 manager: mtillman
-editor: ''
 ms.service: active-directory
-ms.workload: identity
 ms.component: fundamentals
-ms.topic: overview
+ms.workload: identity
+ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: lizross
 ms.reviewer: vincesm
-ms.openlocfilehash: e2571a6854d2c3de2425547b69c5435286182ef7
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
-ms.translationtype: HT
+custom: it-pro
+ms.openlocfilehash: 9a9bd33dce4b2be9e15df2745dd25338cdb42702
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37448152"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45730479"
 ---
-# <a name="default-user-permissions-in-azure-active-directory"></a>Alapértelmezett felhasználói engedélyek az Azure Active Directoryban
+# <a name="what-are-the-default-user-permissions-in-azure-active-directory"></a>Mik azok az alapértelmezett felhasználói engedélyek az Azure Active Directoryban?
 
 Az Azure Active Directoryban (Azure AD-ban) minden felhasználóhoz alapértelmezett engedélyek készlete tartozik. A felhasználói hozzáférés magában foglalja a felhasználó típusát, [szerepkörtagságait](https://docs.microsoft.com/azure/active-directory/active-directory-users-assign-role-azure-portal) és az egyes objektumok tulajdonjogát. Ez a cikk az alapértelmezett engedélyeket ismerteti, valamint összehasonlítja a tag- és vendégfelhasználók alapértelmezett beállításait.
 
@@ -52,7 +51,7 @@ Engedély | Magyarázat beállítása
 ---------- | ------------
 Biztonsági csoportok létrehozásának képessége | Ha e beállítás értéke Nem, akkor a felhasználók nem hozhatnak létre biztonsági csoportokat. A globális rendszergazdák és a felhasználói fiókok rendszergazdái továbbra is létrehozhatnak biztonsági csoportokat. További tudnivalók: [Azure Active Directory-parancsmagok csoportbeállítások konfigurálásához](../users-groups-roles/groups-settings-cmdlets.md).
 Office 365-csoportok létrehozásának képessége | Ha e beállítás értéke Nem, akkor a felhasználók nem hozhatnak létre Office 365-csoportokat. Ha e beállítás értéke Néhány, akkor egyes kiválasztott felhasználók létrehozhatnak Office 365-csoportokat. A globális rendszergazdák és a felhasználói fiókok rendszergazdái továbbra is létrehozhatnak majd Office 365-csoportokat. További tudnivalók: [Azure Active Directory-parancsmagok csoportbeállítások konfigurálásához](../users-groups-roles/groups-settings-cmdlets.md).
-Az Azure AD felügyeleti portálhoz való hozzáférés korlátozása | Ha e beállítás értéke Nem, akkor a felhasználók nem férhetnek hozzá az Azure Active Directory portálhoz.
+Az Azure AD felügyeleti portálhoz való hozzáférés korlátozása | Ezt a beállítást nem megakadályozza, hogy a felhasználók hozzáférését az Azure Active Directoryban.
 Egyéb felhasználók olvasásának képessége | Ez a beállítás csak a PowerShellben érhető el. Ha e beállítás értéke $false, akkor a nem rendszergazda felhasználók nem olvashatják a címtárban található felhasználói adatokat. Ez nem jelenti azt, hogy ne olvashatnák egyéb Microsoft-szolgáltatások (például az Exchange Online) felhasználói adatait. Ez a beállítás speciális esetekben alkalmazandó, ajánlott értéke: $false.
 
 ## <a name="object-ownership"></a>Objektumok tulajdonjoga
@@ -70,7 +69,7 @@ A csoportot létrehozó felhasználó automatikusan az adott csoport tulajdonos�
 
 ## <a name="next-steps"></a>További lépések
 
-* Az Azure-előfizetések rendszergazdáinak módosításáról további információ: [Azure-rendszergazdai szerepkörök felvétele vagy módosítása](../../billing/billing-add-change-azure-subscription-administrator.md)
+* Az Azure AD-rendszergazdai szerepkörök hozzárendelése kapcsolatos további információkért lásd: [felhasználó az Azure Active Directory rendszergazdai szerepkörök hozzárendelése](active-directory-users-assign-role-azure-portal.md)
 * Az erőforrások hozzáférésének Microsoft Azure-ban történő kezeléséről további információért lásd: [Az erőforrások hozzáférésének megismerése az Azure-ban](../../role-based-access-control/rbac-and-directory-admin-roles.md)
 * További információk az Azure Active Directory és az Azure-előfizetés kapcsolatáról: [Hogyan kapcsolódnak az Azure-előfizetések az Azure Active Directoryhoz?](active-directory-how-subscriptions-associated-directory.md)
 * [Felhasználók kezelése](add-users-azure-active-directory.md)

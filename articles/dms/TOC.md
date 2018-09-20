@@ -9,6 +9,7 @@
 ## [Az SQL Server migrálása az Azure SQL DB-be online módban](tutorial-sql-server-azure-sql-online.md)
 ## [SQL Server offline migrálása az Azure SQL DB felügyelt példányába](tutorial-sql-server-to-managed-instance.md)
 ## [MySQL online migrálása a MySQL-hez készült Azure DB-be](tutorial-mysql-azure-mysql-online.md)
+## [PostgreSQL online migrálása a PostgreSQL-hez készült Azure DB-be](tutorial-postgresql-azure-postgresql-online.md)
 
 # Útmutatók
 ## [A PowerShell használata SQL Server migrálásához az Azure SQL DB-be](howto-sql-server-to-azure-sql-powershell.md)
@@ -18,6 +19,7 @@
 # További források
 ## [Ismert problémák – Online migrálás az Azure SQL DB-be](known-issues-azure-sql-online.md)
 ## [Ismert problémák – Online migrálás a MySQL-hez készült Azure DB-be](known-issues-azure-mysql-online.md)
+## [Ismert problémák – Online migrálás a PosgreSQL-hez készült Azure DB-be](known-issues-azure-postgresql-online.md)
 ## [Felhasználói visszajelzések](https://feedback.azure.com/forums/906100-azure-database-migration-service)
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
 ## [Adatbázis-migrálási útmutató](https://aka.ms/datamigration)

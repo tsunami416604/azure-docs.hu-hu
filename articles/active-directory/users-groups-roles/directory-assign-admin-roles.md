@@ -1,6 +1,6 @@
 ---
-title: Rendszergazdai szerepkörök hozzárendelése az Azure Active Directory |} A Microsoft Docs
-description: Rendszergazda szerepkörrel is adja hozzá a felhasználók, rendszergazdai szerepkörök hozzárendelése, felhasználók új jelszavainak létrehozására, a felhasználói licencek kezelése vagy tartományok kezelése. Egy rendszergazda szerepkörrel felruházott felhasználó összes felhőszolgáltatás, amely a szervezet előfizetett ugyanazokkal az engedélyekkel rendelkezik.
+title: Rendszergazdai szerepkörök hivatkozik az Azure Active Directoryban |} A Microsoft Docs
+description: Rendszergazda szerepkörrel is adja hozzá a felhasználók, rendszergazdai szerepkörök hozzárendelése, felhasználók új jelszavainak létrehozására, a felhasználói licencek kezelése vagy tartományok kezelése.
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 09/07/2018
+ms.date: 09/19/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 985fd559c0af0306dc5b0868a8d7ccc66ca790f8
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 04deb1168c8c5c0977d0f20c9307ce10d2d12d35
+ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/19/2018
-ms.locfileid: "46296702"
+ms.locfileid: "46466115"
 ---
 # <a name="assigning-administrator-roles-in-azure-active-directory"></a>Rendszergazdai jogosultságok kiosztása az Azure Active Directoryban
 
@@ -327,7 +327,8 @@ Teljes körű jogosultság az eszközök Azure AD-beli kezelésére.
 | **Műveletek** | **Leírás** |
 | --- | --- |
 | Microsoft.aad.Directory/Devices/DELETE | Eszközök törlése az Azure Active Directoryban. |
-| Microsoft.aad.Directory/Devices/Update | A accountEnabled tulajdonság frissítése az eszközökön az Azure Active Directoryban |
+| Microsoft.aad.Directory/Devices/disable | Letilthatja az eszközöket az Azure Active Directoryban. |
+| Microsoft.aad.Directory/Devices/enable | Engedélyezze az eszközök az Azure Active Directoryban. |
 | microsoft.aad.reports/allEntities/read | Azure AD-jelentések olvasása. |
 | microsoft.azure.serviceHealth/allEntities/allTasks | Olvassa el, és konfigurálja az Azure Service Health. |
 | Microsoft.office365.serviceHealth/allEntities/allTasks | Office 365-szolgáltatás-állapot olvasása és konfigurálása. |
