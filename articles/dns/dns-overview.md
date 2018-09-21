@@ -7,18 +7,18 @@ ms.service: dns
 ms.topic: overview
 ms.date: 6/7/2018
 ms.author: victorh
-ms.openlocfilehash: e95617664ee30f1b9253f1892176fd39649ee2c2
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 0812f5e3e23fbf49afec91524b4de2ff0eb7cd9a
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39174632"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45574181"
 ---
 # <a name="what-is-azure-dns"></a>Mi az Azure DNS?
 
 Az Azure DNS egy üzemeltetési szolgáltatás, amely a Microsoft Azure infrastruktúráját használja a DNS-tartományok névfeloldásához. Ha tartományait az Azure-ban üzemelteti, DNS-rekordjait a többi Azure-szolgáltatáshoz is használt hitelesítő adatokkal, API-kkal, eszközökkel és számlázási információkkal kezelheti.
 
-Az Azure DNS-t nem használhatja tartománynév vásárlására. Az [Azure Web Apps](https://docs.microsoft.com/en-us/azure/app-service/custom-dns-web-site-buydomains-web-app#buy-the-domain) vagy egy külső tartományregisztráló használatával vásárolhat tartománynevet éves díj ellenében. A tartományokat ezután üzemeltetheti az Azure DNS-ben rekordok kezeléséhez. További információkért tekintse meg a [tartományok az Azure DNS-be való delegálását](dns-domain-delegation.md) ismertető cikket.
+Az Azure DNS-t nem használhatja tartománynév vásárlására. Az [Azure Web Apps](https://docs.microsoft.com/azure/app-service/custom-dns-web-site-buydomains-web-app#buy-the-domain) vagy egy külső tartományregisztráló használatával vásárolhat tartománynevet éves díj ellenében. A tartományokat ezután üzemeltetheti az Azure DNS-ben rekordok kezeléséhez. További információkért tekintse meg a [tartományok az Azure DNS-be való delegálását](dns-domain-delegation.md) ismertető cikket.
 
 Az Azure DNS a következő funkciókat tartalmazza:
 
@@ -30,11 +30,11 @@ Az Azure DNS-beli DNS-tartományok az Azure globális DNS-névkiszolgálói hál
 
 Az Azure DNS szolgáltatás az Azure Resource Managerre épül. Ennek köszönhetően többek között a következő Resource Manager-funkciókat veheti igénybe:
 
-* [szerepköralapú hozzáférés-vezérlés](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview#access-control) – szabályozhatja, hogy ki rendelkezzen hozzáféréssel egy adott művelethez a vállalatban.
+* [szerepköralapú hozzáférés-vezérlés](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#access-control) – szabályozhatja, hogy ki rendelkezzen hozzáféréssel egy adott művelethez a vállalatban.
 
-* [tevékenységnaplók](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview#activity-logs) – nyomon követheti, hogy a vállalat felhasználói hogyan módosították az erőforrásokat, vagy megkeresheti a hibákat a hibaelhárításkor.
+* [tevékenységnaplók](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#activity-logs) – nyomon követheti, hogy a vállalat felhasználói hogyan módosították az erőforrásokat, vagy megkeresheti a hibákat a hibaelhárításkor.
 
-* [erőforrás-zárolás](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-lock-resources) – zárolhat egy előfizetést, erőforráscsoportot vagy erőforrást, hogy a szervezet többi felhasználója ne tudja véletlenül törölni vagy módosítani a kritikus fontosságú erőforrásokat.
+* [erőforrás-zárolás](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources) – zárolhat egy előfizetést, erőforráscsoportot vagy erőforrást, hogy a szervezet többi felhasználója ne tudja véletlenül törölni vagy módosítani a kritikus fontosságú erőforrásokat.
 
 További információkat a [DNS-zónák és -rekordok védelmével](dns-protect-zones-recordsets.md) kapcsolatos témakörben olvashat. 
 

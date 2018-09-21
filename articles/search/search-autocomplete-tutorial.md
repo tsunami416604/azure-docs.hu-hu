@@ -9,16 +9,16 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.date: 07/11/2018
 ms.author: mcarter
-ms.openlocfilehash: 7120080bfdc188c150c7065e1c0639ab8c04f173
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: 63f4d9f72b9bf81ea772123d65db0659fd3ffa5c
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38989683"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45578174"
 ---
 # <a name="tutorial-add-auto-complete-to-your-search-box-using-azure-search"></a>Oktatóanyag: Automatikus kitöltés hozzáadása a keresőmezőhöz az Azure Search használatával
 
-Ez az oktatóanyag ismerteti, hogyan használhatja a [javaslatokat](https://docs.microsoft.com/rest/api/searchservice/suggestions), az [automatikus kitöltést](https://docs.microsoft.com/en-us/rest/api/searchservice/autocomplete) és az [aspektusokat](search-faceted-navigation.md) az [Azure Search REST API-ban](https://docs.microsoft.com/rest/api/searchservice/) és a [.NET SDK-ban](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions?view=azure-dotnet) egy hatékony keresőmező felépítéséhez. A *javaslatok* a tényleges találatokat ajánlanak annak alapján, amit a felhasználó eddig begépelt. Az *automatikus kitöltés*, amely az Azure Search [új előzetes verziójú funkciója](search-api-preview.md), kifejezéseket nyújt az indexből, amelyekkel kiegészíthető a felhasználó által jelenleg beírt kifejezés. Több módszert hasonlítunk össze a felhasználói termelékenység növelése és a keresett elemek gyors és könnyű megtalálása érdekében. Ehhez közvetlenül biztosítjuk a felhasználónak a beíráskor a keresés gazdag funkcióit.
+Ez az oktatóanyag ismerteti, hogyan használhatja a [javaslatokat](https://docs.microsoft.com/rest/api/searchservice/suggestions), az [automatikus kitöltést](https://docs.microsoft.com/rest/api/searchservice/autocomplete) és az [aspektusokat](search-faceted-navigation.md) az [Azure Search REST API-ban](https://docs.microsoft.com/rest/api/searchservice/) és a [.NET SDK-ban](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions?view=azure-dotnet) egy hatékony keresőmező felépítéséhez. A *javaslatok* a tényleges találatokat ajánlanak annak alapján, amit a felhasználó eddig begépelt. Az *automatikus kitöltés*, amely az Azure Search [új előzetes verziójú funkciója](search-api-preview.md), kifejezéseket nyújt az indexből, amelyekkel kiegészíthető a felhasználó által jelenleg beírt kifejezés. Több módszert hasonlítunk össze a felhasználói termelékenység növelése és a keresett elemek gyors és könnyű megtalálása érdekében. Ehhez közvetlenül biztosítjuk a felhasználónak a beíráskor a keresés gazdag funkcióit.
 
 Ez az oktatóanyag végigvezeti egy ASP.NET MVC-alapú alkalmazáson, amely C# nyelven hívja meg az [Azure Search .NET-ügyfélkódtárakat](https://aka.ms/search-sdk), és JavaScript nyelven hívja meg közvetlenül az Azure Search REST API-t. Az alkalmazás ebben az oktatóanyagban [NYCJobs](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs) mintaadatokkal feltöltött indexet céloz. Használhatja az NYC Jobs bemutatóban már konfigurált indexet, vagy feltöltheti a saját indexét a NYCJobs mintamegoldásban található adatbetöltővel. A minta a [jQuery felhasználói felületet](https://jqueryui.com/autocomplete/) és az [XDSoft](https://xdsoft.net/jqplugins/autocomplete/) JavaScript-kódtárakat használja az automatikus kitöltést támogató keresőmező felépítéséhez. Ezekkel az összetevőkkel és az Azure Search használatával több példát lát arra, hogyan támogathatja az automatikus kitöltést gépelés közbeni javaslatokkal a keresőmezőben.
 
@@ -214,7 +214,7 @@ Ez az oktatóanyag az automatikus kitöltést és a javaslatokat támogató kere
 A javaslatok és az automatikus kitöltés integrálása a keresési felületre.  Annak megfontolása, hogy a .Net SDK vagy a REST API közvetlen használata hogyan segíthet abban, hogy gépelés közben biztosítsa az Azure Search funkcióit a felhasználóknak a hatékonyabb munka érdekében.
 
 > [!div class="nextstepaction"]
-> [Automatikus kitöltés REST API](https://docs.microsoft.com/en-us/rest/api/searchservice/autocomplete)
-> [Javaslatok REST API](https://docs.microsoft.com/en-us/rest/api/searchservice/suggestions)
-> [Aspektusok indexattribútum Index létrehozása REST API-n](https://docs.microsoft.com/en-us/rest/api/searchservice/create-index)
+> [Automatikus kitöltés REST API](https://docs.microsoft.com/rest/api/searchservice/autocomplete)
+> [Javaslatok REST API](https://docs.microsoft.com/rest/api/searchservice/suggestions)
+> [Aspektusok indexattribútum Index létrehozása REST API-n](https://docs.microsoft.com/rest/api/searchservice/create-index)
 
