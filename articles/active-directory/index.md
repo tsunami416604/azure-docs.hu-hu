@@ -1,226 +1,232 @@
 ---
-layout: LandingPage
+layout: HubPage
+hide_bc: true
 title: Az Azure Active Directory dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs
 description: Az Azure Active Directory (Azure AD) a Microsoft több-bérlős felhőalapú könyvtára és identitáskezelési szolgáltatása, amely egyetlen megoldásban egyesíti az alapvető címtárszolgáltatásokat, az alkalmazáshozzáférés-kezelést és identitásvédelmet.
 services: active-directory
-author: rolyon
+author: barbkess
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
-ms.date: 08/16/2018
+ms.date: 09/14/2018
 ms.author: mtillman
-ms.openlocfilehash: cc79601e2ec283cca2f0ef97cd220c656fc3d311
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 43da4d780a93418a12cb0cbadc6a801da300188b
+ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43339849"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46465826"
 ---
-# <a name="azure-active-directory-documentation"></a>Azure Active Directory-dokumentáció
-
-Az Azure Active Directory (Azure AD) egy több-bérlős felhőalapú címtár- és identitáskezelési szolgáltatás.
-
-<ul class="panelContent cardsF">
-    <li>
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>Alapok</h3>
-                        <p>
-                        <a href="/azure/active-directory/fundamentals/active-directory-whatis">Mi az Azure AD?</a><br/>
-                        <a href="/azure/active-directory/fundamentals/understand-azure-identity-solutions">Identitáskezelési megoldások</a><br/>
-                        <a href="/azure/active-directory/fundamentals/get-started-azure-ad">Első lépések</a><br/>
-                        <a href="/azure/active-directory/fundamentals/whats-new">Újdonságok</a><br/>
-                        <a href="/azure/active-directory/fundamentals/active-directory-deployment-plans">Azure AD-üzembehelyezési tervek</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </li>
-    <li>
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3><a href="/azure/active-directory/users-groups-roles/index">Vállalati felhasználók</a></h3>
-                        <p>
-                        <a href="/azure/active-directory/add-users-azure-active-directory">Felhasználók</a><br/>
-                        <a href="/azure/active-directory/active-directory-manage-groups">Csoportok</a><br/>
-                        <a href="/azure/active-directory/license-users-groups">Licencek</a><br/>
-                        <a href="/azure/active-directory/active-directory-administer">Címtárkezelés</a><br/>
-                        <a href="/azure/active-directory/active-directory-assign-admin-roles-azure-portal">Rendszergazdai szerepkörök</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </li>
-    <li>
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>Külső felhasználók</h3>
-                        <p>
-                        <a href="/azure/active-directory/b2b/what-is-b2b">Vállalatközi (B2B)</a><br/>
-                        <a href="/azure/active-directory-b2c/">Vállalat és ügyfél közötti (B2C)</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </li>
-    <li>
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>Hitelesítés</h3>
-                        <p>
-                        <a href="/azure/active-directory/authentication/concept-sspr-howitworks">Jelszavak</a><br/>
-                        <a href="/azure/active-directory/authentication/concept-mfa-howitworks">Többtényezős hitelesítés</a><br/>
-                        <a href="/azure/active-directory/active-directory-azureadjoin-passport">Windows Hello</a><br/>
-                        <a href="/azure/active-directory/authentication/active-directory-certificate-based-authentication-get-started">Tanúsítványalapú hitelesítés</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </li>
-    <li>
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>Védelem</h3>
-                        <p>
-                        <a href="/azure/active-directory/active-directory-identityprotection">Identitásvédelem</a><br/>
-                        <a href="/azure/active-directory/conditional-access/index">Feltételes hozzáférés</a><br/>
-                        <a href="/azure/active-directory/privileged-identity-management/pim-configure">Privileged Identity Management</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </li>
-    <li>
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>Eszközök</h3>
-                        <p>
-                        <a href="/azure/active-directory/devices/index">Eszközkezelés</a><br/>
-                        <a href="/azure/active-directory/user-help/device-management-azuread-registered-devices-windows10-setup">Windows 10-eszközök</a><br/>
-                        <a href="/azure/active-directory/user-help/device-management-azuread-joined-devices-setup">Csatlakoztatott eszközök</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </li>
-    <li>
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>Alkalmazások</h3>
-                        <p>
-                        <a href="/azure/active-directory/active-directory-enable-sso-scenario">Alkalmazáskezelés</a><br/>
-                        <a href="/azure/active-directory/manage-apps/migrate-adfs-apps-to-azure">Alkalmazások migrálása</a><br/>
-                        <a href="/azure/active-directory/active-directory-coreapps-assign-user-azure-portal">Vállalati alkalmazások</a><br/>
-                        <a href="/azure/active-directory/active-directory-managing-access-to-apps">Hozzáférés az alkalmazásokhoz</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </li>
-    <li>
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>Hitelesítés fejlesztőknek</h3>
-                        <p>
-                        <a href="/azure/active-directory/develop/active-directory-authentication-scenarios">Hitelesítési alapok</a><br/>
-                        <a href="/azure/active-directory/develop/active-directory-integrating-applications">Alkalmazásintegráció</a><br/>
-                        <a href="/azure/active-directory/managed-service-identity/overview">Kezelt identitás</a><br/>
-                        <a href="/azure/active-directory/develop/active-directory-code-samples">Kódminták</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </li>
-    <li>
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>Referencia</h3>
-                        <p>
-                        <a href="/powershell/module/azurerm.resources#active_directory">Azure RM PowerShell</a><br/>
-                        <a href="/powershell/azure/active-directory/overview">Azure AD PowerShell</a><br/>
-                        <a href="/cli/azure/ad">Azure CLI</a><br/>
-                        <a href="https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/azure_ad_overview">Microsoft Graph</a><br/>
-                        <a href="/dotnet/api/overview/azure/activedirectory">.NET</a><br/>
-                        <a href="/java/api/overview/azure/activedirectory">Java</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </li>
-    <li>
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>Hibrid cégek vagy intézmények</h3>
-                        <p>
-                        <a href="/azure/active-directory/active-directory-hybrid-identity-design-considerations-overview">Hibrid identitáskezelési megoldás</a><br/>
-                        <a href="/azure/active-directory/connect/active-directory-aadconnect">Helyszíni címtár-integráció</a><br/>
-                        <a href="/azure/active-directory/connect/active-directory-aadconnect-azure-adfs">Összevonási szolgáltatások</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </li>
-    <li>
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>Megfelelőség és jelentések</h3>
-                        <p>
-                        <a href="/azure/active-directory/active-directory-azure-ad-controls-access-reviews-overview">Hozzáférési felülvizsgálatok</a><br/>
-                        <a href="/azure/active-directory/active-directory-tou">Használati feltételek</a><br/>
-                        <a href="/azure/active-directory/active-directory-reporting-azure-portal">Jelentések</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </li>
-    <li>
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>Tartományok</h3>
-                        <p>
-                        <a href="/azure/active-directory-domain-services/">Tartományi szolgáltatások</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </li>
-</ul>
+<div id="main" class="v2">
+    <div class="container">
+        <h1>Azure Active Directory-dokumentáció</h1>
+        <p>Az Azure Active Directory (Azure AD) egy több-bérlős felhőalapú címtár- és identitáskezelési szolgáltatás.</p>
+        <hr style="margin: 30px 0;" />
+        <ul class="pivots">
+            <li>
+                <a href="#products"></a>
+                <ul id="products">
+                    <li>
+                        <a class="singlePanelNavItem selected" style="display: none" href="#indexA" data-linktype="self-bookmark"></a>
+                        <ul class="panelContent singlePanelContent" id="indexA" style="border: medium; border-image: none; margin-top: 0px; display: flex; float: left;">
+                            <li class="fullSpan">
+                                <a href="#index1" data-linktype="self-bookmark"></a>
+                                <ul class="cardsF cols cols4" id="index1" style="float: left; display: flex; width: 100%; border-bottom: 1px var(--grey-lighter) solid;">  
+                                    <li>
+                                        <ul class="cardsB panelContent" id="cardtypes-B" style="float: left; display: flex; width: 100%;">
+                                            <li>
+                                                <a href="">
+                                                    <div class="cardSize">
+                                                        <div class="cardPadding">
+                                                            <div class="card">
+                                                                <div class="cardImageOuter">
+                                                                    <div class="cardImage">
+                                                                        <img alt="" src="https://docs.microsoft.com/media/common/i_learn-about.svg" data-linktype="external">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="cardText" style="padding-left: 0px">
+                                                                    <h3><a href="fundamentals/index.yml">Alapvető ismeretek</a></h3> 
+                                                                    <p>
+                                                                        <a href="fundamentals/active-directory-whatis.md">Mi az Azure AD?</a><br>
+                                                                        <a href="fundamentals/active-directory-get-started-premium.md">Azure AD Premium-fiók regisztrálása</a><br>
+                                                                        <a href="fundamentals/active-directory-access-create-new-tenant.md">Az Azure AD hozzáférése és bérlő létrehozása</a><br>
+                                                                        <a href="fundamentals/add-users-azure-active-directory.md">Csoport létrehozása és tagok hozzáadása</a><br>
+                                                                        <a href="fundamentals/active-directory-users-assign-role-azure-portal.md">Szerepkörök hozzárendelése felhasználókhoz</a><br>
+                                                                        <a href="fundamentals/license-users-groups.md">Licencek hozzárendelése felhasználókhoz</a>
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </li>
+<!--This is the learning section 
+                                            <li>
+                                                <a href="">
+                                                    <div class="cardSize">
+                                                        <div class="cardPadding">
+                                                            <div class="card">
+                                                                <div class="cardImageOuter">
+                                                                    <div class="cardImage">
+                                                                        <img alt="" src="https://docs.microsoft.com/media/common/i_learn-about.svg" data-linktype="external">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="cardText" style="padding-left: 0px">
+                                                                    <h3><a href="">Build your skills with Microsoft Learn</a></h3> 
+                                                                    <p>
+                                                                        <a href="https://docs.microsoft.com/learn/modules/secure-azure-resources-with-conditional-access">Secure your Azure resources with conditional access</a><br>
+                                                                        <a href="">More interactive learning ...</a><br>
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </li>
+ End of the learning section -->
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <div class="cardSize">
+                                            <div class="cardPadding">
+                                                <div class="card">
+                                                    <div class="cardText">
+                                                        <h3><a href="manage-apps/index.yml">Alkalmazáskezelés</a></h3>
+                                                        <p>
+                                                            <a href="manage-apps/add-application-portal.md">Alkalmazás hozzáadása</a><br>
+                                                            <a href="manage-apps/configure-single-sign-on-portal.md">Egyszeri bejelentkezés (SSO) konfigurálása</a><br>
+                                                            <a href="manage-apps/application-proxy.md">Alkalmazásproxy helyszíni alkalmazásokhoz</a><br>
+                                                        </p>
+                                                        <br><br>
+                                                        <h3><a href="authentication/index.yml">Hitelesítési módszerek</a></h3>
+                                                        <p>
+                                                            <a href="authentication/tutorial-mfa-applications.md">Az MFA engedélyezése az Azure Portalhoz</a><br>
+                                                            <a href="authentication/quickstart-sspr.md">Önkiszolgáló jelszóátállítás engedélyezése</a><br>
+                                                            <a href="authentication/concept-registration-mfa-sspr-converged.md">Konvergens regisztráció az MFA-hoz és az SSPR-hez</a>
+                                                        </p>
+                                                        <br><br>
+                                                        <h3><a href="b2b/index.yml">Vállalatközi (B2B)</a></h3>
+                                                        <p>
+                                                            <a href="b2b/b2b-quickstart-add-guest-users-portal.md">Vendégfelhasználók hozzáadása a portálon</a><br>
+                                                            <a href="b2b/b2b-tutorial-bulk-invite.md">Vendégfelhasználók tömeges meghívása</a><br>
+                                                            <a href="b2b/b2b-tutorial-require-mfa.md">MFA megkövetelése a vendégfelhasználóktól</a>
+                                                        </p>
+                                                        <br><br>
+                                                        <h3><a href="/azure/active-directory-b2c/index">Végfelhasználói kereskedelem (B2C)</a></h3>
+                                                        <p>
+                                                            <a href="/azure/active-directory-b2c/tutorial-create-tenant">Azure AD B2C-bérlő létrehozása</a><br>
+                                                            <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-web-app">Webalkalmazás általi hitelesítés engedélyezése</a><br>
+                                                            <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-web-api">Hozzáférés biztosítása ASP.NET webes API-hoz</a>
+                                                        </p>
+                                                        <br><br>
+                                                        <h3><a href="governance/access-reviews-overview.md">Hozzáférési felülvizsgálatok</a></h3>
+                                                        <p>
+                                                            <a href="governance/create-access-review.md">Hozzáférési felülvizsgálat létrehozása</a><br>
+                                                            <a href="governance/perform-access-review.md">Hozzáférési felülvizsgálat végrehajtása</a><br>
+                                                            <a href="governance/active-directory-tou.md">Használati feltételek</a>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="cardSize">
+                                            <div class="cardPadding">
+                                                <div class="card">
+                                                    <div class="cardText">
+                                                        <h3><a href="conditional-access/index.yml">Feltételes hozzáférés</a></h3>
+                                                        <p>
+                                                            <a href="conditional-access/app-based-mfa.md">MFA megkövetelése adott alkalmazásokhoz</a><br>
+                                                            <a href="conditional-access/require-tou.md">A használati feltételek elfogadásának kötelezővé tétele</a><br>
+                                                            <a href="conditional-access/app-sign-in-risk.md">Hozzáférés letiltása munkameneti kockázat észlelésekor</a>
+                                                        </p>
+                                                        <br><br>
+                                                        <h3><a href="develop/azure-ad-developers-guide.md">Fejlesztők</a></h3>
+                                                        <p>
+                                                            <a href="develop/authentication-scenarios.md">Alkalmazáshasználati helyzetek</a><br>
+                                                            <a href="develop/active-directory-authentication-libraries.md">Azure AD v1.0 hitelesítési tárak</a><br>
+                                                            <a href="develop/reference-v2-libraries.md">Azure AD v2.0 hitelesítési tárak</a>
+                                                        </p>
+                                                        <br><br>
+                                                        <h3><a href="devices/index.yml">Eszközkezelés</a></h3>
+                                                        <p>
+                                                            <a href="devices/hybrid-azuread-join-managed-domains.md">Hibrid csatlakozás konfigurálása felügyelt tartományokhoz</a><br>
+                                                            <a href="devices/hybrid-azuread-join-federated-domains.md">Hibrid csatlakozás konfigurálása összevont tartományokhoz</a><br>
+                                                            <a href="devices/azuread-joined-devices-frx.md">A Windows 10 első tapasztalatának konfigurálása</a>
+                                                        </p>
+                                                        <br><br>
+                                                        <h3><a href="/azure/active-directory-domain-services/index">Tartományi szolgáltatások</a></h3>
+                                                        <p>
+                                                            <a href="/azure/active-directory-domain-services/active-directory-ds-getting-started.md">Az Azure AD Domain Services engedélyezése</a><br>
+                                                            <a href="/azure/active-directory-domain-services/active-directory-ds-admin-guide-join-windows-vm-portal.md">Windows Server rendszerű virtuális gép csatlakoztatása felügyelt tartományhoz</a><br>
+                                                            <a href="/active-directory-domain-services/active-directory-ds-admin-guide-configure-secure-ldap.md">Biztonságos LDAP konfigurálása</a>
+                                                        </p>
+                                                        <br><br>
+                                                        <h3><a href="users-groups-roles/index.yml">Vállalati felhasználók</a></h3>
+                                                        <p>
+                                                            <a href="users-groups-roles/directory-assign-admin-roles.md">Rendszergazdai szerepkörök hozzárendelése</a><br>
+                                                            <a href="users-groups-roles/licensing-groups-assign.md">Licencek hozzárendelése csoportokhoz</a><br>
+                                                            <a href="users-groups-roles/groups-create-rule.md">Dinamikus csoport létrehozása</a>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="cardSize">
+                                            <div class="cardPadding">
+                                                <div class="card">
+                                                    <div class="cardText">
+                                                        <h3><a href="hybrid/index.yml">Hibrid identitás</a></h3>
+                                                        <p>
+                                                            <a href="hybrid/tutorial-password-hash-sync.md">Azure AD Connect</a><br>
+                                                            <a href="hybrid/tutorial-passthrough-authentication.md">AD-erdő integrálása a felhőbe</a><br>
+                                                            <a href="hybrid/tutorial-federation.md">AD-erdő összevonása a felhővel</a>
+                                                        </p>
+                                                        <br><br>
+                                                        <h3><a href="identity-protection/index.yml">Identitásvédelem</a></h3>
+                                                        <p>
+                                                            <a href="identity-protection/enable.md">Bekapcsolás</a><br>
+                                                            <a href="identity-protection/playbook.md">Kockázati események szimulálása</a><br>
+                                                            <a href="identity-protection/howto-unblock-user.md">Felhasználók tiltásának feloldása</a>
+                                                        </p>
+                                                        <br><br>
+                                                        <h3><a href="managed-identities-azure-resources/index.yml">Azure-erőforrások felügyelt identitásai</a></h3>
+                                                        <p>
+                                                            <a href="managed-identities-azure-resources/tutorial-windows-vm-access-sql.md">Windows rendszerű virtuális gép használata az Azure SQL eléréséhez</a><br>
+                                                            <a href="managed-identities-azure-resources/how-to-use-vm-token.md">Azure-beli virtuális gép használata jogkivonat beszerzéséhez</a><br>
+                                                            <a href="managed-identities-azure-resources/services-support-msi.md">A felügyelt identitást támogató szolgáltatások</a>
+                                                        </p>
+                                                        <br><br>
+                                                        <h3><a href="privileged-identity-management/index.yml">PIM</a></h3>
+                                                        <p>
+                                                            <a href="privileged-identity-management/pim-getting-started.md">Ismerkedés a PIM-mel</a><br>
+                                                            <a href="privileged-identity-management/pim-how-to-activate-role.md">Címtárbeli szerepkörök aktiválása</a><br>
+                                                            <a href="privileged-identity-management/pim-how-to-add-role-to-user.md">Címtárbeli szerepkörök hozzárendelése</a>
+                                                        </p>
+                                                        <br><br>
+                                                        <h3><a href="reports-monitoring/index.yml">Jelentés és monitorozás</a></h3>
+                                                        <p>
+                                                            <a href="reports-monitoring/howto-find-activity-reports.md">Tevékenységjelentések keresése</a><br>
+                                                            <a href="reports-monitoring/concept-activity-logs-in-azure-monitor.md">Azure AD-naplók használata az Azure Monitorban</a><br>
+                                                            <a href="reports-monitoring/concept-reporting-api.md">Szoftveres hozzáférés</a>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>

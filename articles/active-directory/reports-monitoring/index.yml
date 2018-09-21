@@ -1,12 +1,12 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 2217adbbb9e5222e6c33bfcdce41c30396c7f231
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 95341f318a9902a82ecb0366400ec34d159f0225
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45740320"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46363683"
 documentType: LandingData
-title: Azure AD-jelentések és -monitorozás
+title: Azure Active Directory-jelentések és -monitorozás
 metadata:
   document_id: 
   title: Az Azure Active Directory-jelentések és -monitorozás dokumentációja – Oktatóanyagok, rövid útmutatók, alapfogalmak | Microsoft Docs
@@ -22,7 +22,7 @@ metadata:
   ms.date: 08/14/2018
   ms.author: priyamo
 abstract:
-  description: Ismerje meg, hogyan tekintheti meg az adott környezet biztonsági és naplózási jelentéseit, illetve hogyan monitorozhatja őket a használati minták elemzéséhez. Az Azure AD-jelentések alapján betekintést nyerhet a környezet biztonsági és használati mintáiba. Választ adhat például a következő kérdésekre:<ul><li>Hogyan használják a felhasználók az alkalmazásokat vagy a szolgáltatásokat?</li><li>Melyek a környezet állapotát érintő lehetséges kockázatok?</li><li>Hogyan tudom elhárítani azokat a hibákat, amelyek megakadályozzák a felhasználók munkavégzését?</li>
+  description: Ismerje meg, hogyan tekintheti meg az adott környezet biztonsági és naplózási jelentéseit, illetve hogyan monitorozhatja őket a használati minták elemzéséhez. Az Azure Active Directory (Azure AD) jelentései alapján betekintést nyerhet a környezet biztonsági és használati mintáiba. Választ adhat például a következő kérdésekre:<ul><li>Hogyan használják a felhasználók az alkalmazásokat vagy a szolgáltatásokat?</li><li>Melyek a környezet állapotát érintő lehetséges kockázatok?</li><li>Hogyan tudom elhárítani azokat a hibákat, amelyek megakadályozzák a felhasználók munkavégzését?</li>
 sections:
 - title: 5 perces gyors útmutatók
   items:
