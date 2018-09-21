@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: ba12f22a7f0ac26ac2b9f29bb3a33a54d2705df3
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 5b6c0938fce928f2141eac1a03d43005a2247e74
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43089789"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45730811"
 ---
 # <a name="tutorial-create-a-data-factory-by-using-visual-studio"></a>Oktatóanyag: adat-előállító létrehozása a Visual Studióval
 > [!div class="op_single_selector" title="Tools/SDKs"]
@@ -93,7 +93,7 @@ Az igény szerinti HDInsight társított szolgáltatással a HDInsight-fürt aut
 1. A Solution Explorerben (Megoldáskezelőben) kattintson a jobb gombbal a **Linked Services** (Társított szolgáltatások) elemre, mutasson az **Add** (Hozzáadás) parancsra, és kattintson a **New Item** (Új elem) elemre.      
 2. Az **Add New Item** (Új elem hozzáadása) párbeszédpanelen válassza ki a listából az **Azure Storage Linked Service** (Azure Storage társított szolgáltatás) elemet, és kattintson az **Add** (Hozzáadás) parancsra.
     ![Azure Storage társított szolgáltatás](./media/data-factory-build-your-first-pipeline-using-vs/new-azure-storage-linked-service.png)
-3. Cserélje le az `<accountname>` és az `<accountkey>` kifejezést az Azure Storage-tárfiókja nevére, illetve kulcsára. A tárelérési kulcs lekéréséről többet is megtudhat, ha elolvassa a tárelérési kulcsok megtekintésével, másolásával és újragenerálásával kapcsolatos információkat [A tárfiók kezelése](../../storage/common/storage-create-storage-account.md#manage-your-storage-account) című részben.
+3. Cserélje le az `<accountname>` és az `<accountkey>` kifejezést az Azure Storage-tárfiókja nevére, illetve kulcsára. A tárelérési kulcs lekéréséről többet is megtudhat, ha elolvassa a tárelérési kulcsok megtekintésével, másolásával és újragenerálásával kapcsolatos információkat [A tárfiók kezelése](../../storage/common/storage-account-manage.md#access-keys) című részben.
     ![Azure Storage társított szolgáltatás](./media/data-factory-build-your-first-pipeline-using-vs/azure-storage-linked-service.png)
 4. Mentse az **AzureStorageLinkedService1.json** fájlt.
 

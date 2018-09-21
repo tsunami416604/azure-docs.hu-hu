@@ -1,6 +1,7 @@
 ---
 title: 'Rövid útmutató: A Pythonhoz készült Bing Web Search SDK használata'
-description: Elsajátíthatja a Pythonhoz készült Bing Web Search SDK használatát.
+titleSuffix: Azure Cognitive Services
+description: A Bing Web Search SDK megkönnyíti a Bing Web Search integrálását a Python-alkalmazásába. Ebben a rövid útmutatóban elsajátíthatja a kérésküldésnek, a JSON-válaszok fogadásának, valamint az eredmények szűrésének és elemzésének módját.
 services: cognitive-services
 author: erhopf
 manager: cgronlun
@@ -9,12 +10,12 @@ ms.component: bing-web-search
 ms.topic: quickstart
 ms.date: 08/16/2018
 ms.author: erhopf
-ms.openlocfilehash: ff8dc93693a5aec7b6efa3aefd05de8c90f517ed
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: c83848bc3c8f14aa49c1f87f1cd44224bb3e8081
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43186813"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46127636"
 ---
 # <a name="quickstart-use-the-bing-web-search-sdk-for-python"></a>Rövid útmutató: A Pythonhoz készült Bing Web Search SDK használata
 

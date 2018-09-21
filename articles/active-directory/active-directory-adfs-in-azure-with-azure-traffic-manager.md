@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/01/2016
 ms.author: anandy;billmath
-ms.openlocfilehash: e984d3d590021e3dd9e46d0f12493889b2acc229
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 2ed0b551faba68c0956be89277348eeee60d759c
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
-ms.locfileid: "26604779"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46298217"
 ---
 # <a name="high-availability-cross-geographic-ad-fs-deployment-in-azure-with-azure-traffic-manager"></a>Magas rendelkezésre állású AD FS telepítése az Azure-ban Azure Traffic Managerrel
-Az [AD FS telepítése az Azure-ban](active-directory-aadconnect-azure-adfs.md) című cikk részletesen ismerteti egy egyszerű AD FS-infrastruktúra telepítésének lépéseit az Azure-ban a szervezete számára. A cikk bemutatja az AD FS az Azure-ba történő, földrajzi határokon átívelő telepítésének további lépéseit az [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) használatával. Az Azure Traffic Managerrel egy földrajzilag kiterjedt, magas rendelkezésre állású és nagy teljesítményű AD FS-infrastruktúrát hozhat létre szervezete számára, amelyhez számos útválasztási módszer áll rendelkezésre a különböző igények infrastruktúrából történő kielégítésére.
+Az [AD FS telepítése az Azure-ban](hybrid/how-to-connect-fed-azure-adfs.md) című cikk részletesen ismerteti egy egyszerű AD FS-infrastruktúra telepítésének lépéseit az Azure-ban a szervezete számára. A cikk bemutatja az AD FS az Azure-ba történő, földrajzi határokon átívelő telepítésének további lépéseit az [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) használatával. Az Azure Traffic Managerrel egy földrajzilag kiterjedt, magas rendelkezésre állású és nagy teljesítményű AD FS-infrastruktúrát hozhat létre szervezete számára, amelyhez számos útválasztási módszer áll rendelkezésre a különböző igények infrastruktúrából történő kielégítésére.
 
 A magas rendelkezésre állású, földrajzi határokon átívelő AD FS-infrastruktúra a következőket teszi lehetővé:
 
@@ -45,7 +45,7 @@ Az alapvető tervezési alapelvek megegyeznek az AD FS telepítése az Azure-ban
 
 ## <a name="steps-to-integrate-azure-traffic-manager"></a>Az Azure Traffic Manager integrálásának lépései
 ### <a name="deploy-ad-fs-in-the-new-geographical-region"></a>Az AD FS telepítése az új földrajzi régióban
-Kövesse az [AD FS telepítése az Azure-ban](active-directory-aadconnect-azure-adfs.md) című cikk lépéseit és irányelveit az azonos topológia az új földrajzi régióban történő telepítéséhez.
+Kövesse az [AD FS telepítése az Azure-ban](hybrid/how-to-connect-fed-azure-adfs.md) című cikk lépéseit és irányelveit az azonos topológia az új földrajzi régióban történő telepítéséhez.
 
 ### <a name="dns-labels-for-public-ip-addresses-of-the-internet-facing-public-load-balancers"></a>Az internetkapcsolattal rendelkező (nyilvános) terheléselosztók nyilvános IP-címeinek DNS-címkéi
 A korábban említetteknek megfelelően az Azure Traffic Manager csak végpontokként tud hivatkozni a DNS-címkékre, ezért fontos, hogy DNS-címkéket hozzon létre a külső terheléselosztók nyilvános IP-címeihez. Az alábbi képernyőfelvétel bemutatja, hogyan konfigurálhat DNS-címkét a nyilvános IP-címhez. 
@@ -116,11 +116,11 @@ Az AD FS a legegyszerűbb módon az IdpInitiatedSignon.aspx oldal használatáva
     ![ADFS-teszt – sikeres hitelesítés](./media/active-directory-adfs-in-azure-with-azure-traffic-manager/adfstest2.png)
 
 ## <a name="related-links"></a>Kapcsolódó hivatkozások
-* [Alapszintű AD FS-telepítés az Azure-ban](active-directory-aadconnect-azure-adfs.md)
+* [Alapszintű AD FS-telepítés az Azure-ban](hybrid/how-to-connect-fed-azure-adfs.md)
 * [Microsoft Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md)
 * [A Traffic Manager forgalomirányítási módszerei](../traffic-manager/traffic-manager-routing-methods.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Az Azure Traffic Manager-profilok kezelése](../traffic-manager/traffic-manager-manage-profiles.md)
 * [Végpontok felvétele, letiltása, engedélyezése és törlése](../traffic-manager/traffic-manager-endpoints.md) 
 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 7/11/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 84696b4135570168f8093b15f9a2deb4790eeebe
-ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
+ms.openlocfilehash: 05959143431a2cc11d79a4012f45eb565c1c91f2
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39480883"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45575997"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Oktatóanyag: Az Azure Firewall üzembe helyezése és konfigurálása az Azure Portalon
 
@@ -58,7 +58,7 @@ Ebben az oktatóanyagban egyetlen virtuális hálózatot hozunk létre három al
 
 ![Az oktatóanyag hálózati infrastruktúrája](media/tutorial-firewall-rules-portal/Tutorial_network.png)
 
-Ez az oktatóanyag egy leegyszerűsített hálózati konfigurációt használ a könnyű üzembe helyezés érdekében. Éles környezetekben javasolt egy [küllős modell](https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) használata, ahol a tűzfal a saját virtuális hálózatán található, a számítási feladatok kiszolgálói pedig társított virtuális hálózatokon vannak ugyanabban a régióban, egy vagy több alhálózaton.
+Ez az oktatóanyag egy leegyszerűsített hálózati konfigurációt használ a könnyű üzembe helyezés érdekében. Éles környezetekben javasolt egy [küllős modell](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) használata, ahol a tűzfal a saját virtuális hálózatán található, a számítási feladatok kiszolgálói pedig társított virtuális hálózatokon vannak ugyanabban a régióban, egy vagy több alhálózaton.
 
 
 

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 332ba810aa9da611f998e5865344655c3c87c5d1
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: f3dc27b35f35f3aaa649b03777ff13d385561673
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43109421"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45732226"
 ---
 # <a name="tutorial-build-your-first-data-factory-by-using-the-azure-portal"></a>Oktatóanyag: Az első adat-előállító létrehozása az Azure Portal használatával
 > [!div class="op_single_selector"]
@@ -112,7 +112,7 @@ Ebben a lépésben társítja a tárfiókot az adat-előállítójához. A jelen
 
    ![Storage társított szolgáltatás](./media/data-factory-build-your-first-pipeline-using-editor/azure-storage-linked-service.png)
 
-1. Cserélje le az **account name** kifejezést a tárfiókja nevére. Az **account key** kifejezést cserélje le a tárfiók hozzáférési kulcsára. A tárelérési kulcs lekéréséről [a tárfiók kezelését](../../storage/common/storage-create-storage-account.md#manage-your-storage-account) ismertető szakasz tárelérési kulcsok megtekintéséről, másolásáról és ismételt létrehozásáról szóló részében olvashat.
+1. Cserélje le az **account name** kifejezést a tárfiókja nevére. Az **account key** kifejezést cserélje le a tárfiók hozzáférési kulcsára. A tárelérési kulcs lekéréséről [a tárfiók kezelését](../../storage/common/storage-account-manage.md#access-keys) ismertető szakasz tárelérési kulcsok megtekintéséről, másolásáról és ismételt létrehozásáról szóló részében olvashat.
 
 1. A társított szolgáltatás üzembe helyezéséhez kattintson a parancssáv **Üzembe helyezés** elemére.
 
