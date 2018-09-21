@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
 ms.date: 08/31/2018
-ms.openlocfilehash: 83d970cf41dde4141fcba84c39b9b750783e54e0
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: da39d4132190a7dea661779c507fa817758c3e17
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43667157"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46497926"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>Azure Database MySQL-adatok a replikáció konfigurálása
 
@@ -158,6 +158,9 @@ Az alábbi lépéseket előkészítése, és a MySQL futó kiszolgálót a helys
    - master_log_pos: futását bináris naplójának pozíciója `show master status`
    - master_ssl_ca: Hitelesítésszolgáltatói tanúsítvány környezetben. Ha nem használ SSL, üres karakterláncot adja át.
        - Javasoljuk, hogy ezt a paramétert a átadhatja egy változóként. Az alábbiakban talál további információt.
+
+> [!NOTE]
+> Ha a fölérendelt kiszolgáló az Azure virtuális gép üzemel, állítsa a "Azure-szolgáltatásokhoz való hozzáférés engedélyezése", "Be" a master és a replika kiszolgálók kommunikálnak egymással. Ez a beállítás módosítható az a **kapcsolatbiztonság** beállítások. Tekintse meg [portállal tűzfalszabályok kezelése a](howto-manage-firewall-using-portal.md) további információt.
 
    **Példák**
 

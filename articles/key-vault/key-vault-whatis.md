@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: barclayn
-ms.openlocfilehash: 58bc3a582db23a48eedaaf67df7d20da9c42ded4
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: fa8605f4822ff0ee5ba25ee0baca4fb2fec83b17
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45603277"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46497603"
 ---
 # <a name="what-is-azure-key-vault"></a>Mi az Azure Key Vault?
 
@@ -27,17 +27,25 @@ Az Azure Key Vault segít megoldani az alábbi problémákat
 - **Titkok kezelése** – Azure Key Vault segítségével biztonságosan tárolhatja, és szorosan jogkivonatok, jelszavak, tanúsítványok, API-kulcsok és egyéb titkok való hozzáférésének
 - **Kulcskezelés** – Azure Key Vault Key Management megoldás is használható. Az Azure Key Vaulttal egyszerűen létrehozhatja és vezérelheti az adatok titkosításához használt titkosítási kulcsokat. 
 - **Tanúsítványkezelés az** – Azure Key Vault szolgáltatás is, amellyel könnyen üzembe helyezése, kezelése és üzembe helyezése az Azure és a belső csatlakozó használt nyilvános és privát Secure Sockets Layer/Transport Layer Security (SSL/TLS) tanúsítványok az erőforrásokat. 
-- **Hardveres biztonsági modulok** -kulcsok és titkok védelme biztosítható szoftver vagy a FIPS 140-2 2. szintje érvényesíti a HSM-EK
+- **A titkos kulcsokat hardveres biztonsági modulok által támogatott Store** -kulcsok és titkok védelme biztosítható szoftver vagy a FIPS 140-2 2. szintje érvényesíti a HSM-EK
 
 ## <a name="basic-concepts"></a>Alapfogalmak
 
-Az Azure Key Vault egy titkos kulcsok biztonságos tárolására és hozzáférésére használható eszköz. Titkos kulcsnak számít minden olyan adat, amelynek a hozzáféréstét szigorúan korlátozni kívánja, például: API-kulcsok, jelszavak vagy tanúsítványok. A **tároló** logikai csoport a titkos kulcsok az alábbiakban néhány kulcsfontosságú kifejezések:
+Az Azure Key Vault egy titkos kulcsok biztonságos tárolására és hozzáférésére használható eszköz. Titkos kulcsnak számít minden olyan adat, amelynek a hozzáféréstét szigorúan korlátozni kívánja, például: API-kulcsok, jelszavak vagy tanúsítványok. A **tároló** titkok logikai csoportja. Most már bármilyen Key Vault-műveletek végrehajtásához először azt hitelesítésre. 
+
+Alapvetően módon 3 hitelesítéséhez a Key Vaulthoz
+
+1. **Használatával [Felügyeltszolgáltatás-identitás](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview)**  (**javasolt és ajánlott vagy**): Ha telepít egy alkalmazást az Azure-beli virtuális gépen, hozzárendelheti a virtuális gép, amely hozzáféréssel rendelkezik az identitás a Key vaulttal. Más felsorolt azure-erőforrásokhoz is hozzárendelhetők identitások [Itt](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview). Ezzel a módszerrel előnye az alkalmazás / szolgáltatás nem kezel elforgatási szögét az első titkos kulcsot. Az Azure automatikusan elforgatja az identitást. 
+2. **Egyszerű szolgáltatás és a tanúsítvány használatával:** a 2. lehetőség egy egyszerű szolgáltatást, és a egy társított tanúsítvány, amely hozzáfér a Key Vault használatára. Az alkalmazás tulajdonosa vagy a fejlesztői ellátásának elforgatása a tanúsítványt, és ezért ez nem ajánlott
+3. **Egyszerű szolgáltatás és a titkos kulcs használata:** a 3. lehetőség (a nem előnyben részesített beállítás), hogy egy egyszerű szolgáltatást, és a egy titkos kulcsot használják a hitelesítéshez a Key Vaulthoz
+
+Néhány kulcsfontosságú fogalom:
 - **Bérlő**: A bérlő az a cég vagy intézmény, amely egy Microsoft-felhőszolgáltatás egy adott példányát birtokolja és kezeli. A kifejezéssel általában egy cég vagy intézmény Azure- és Office 365-szolgáltatásainak pontos listájára hivatkozunk.
 - **Kulcstartó-tulajdonos**: Létrehozhat egy Key Vaultot, amely felett teljes körű hozzáféréssel és irányítással rendelkezik. Emellett naplózást is beállíthat, amellyel naplózhatja a titkos kulcsok és a kulcsok elérését. A kulcsok életciklusát a rendszergazdák kezelhetik. Kiadhatnak új kulcsverziókat, biztonsági másolatokat készíthetnek, és elvégezhetik a kapcsolódó feladatokat.
 - **Kulcstartóhasználó**: A kulcstartóhasználó műveleteket hajthat végre a Key Vaultban található objektumokon, ha a kulcstartó-tulajdonos felruházta hozzáféréssel. Az elérhető műveletek a kiosztott jogosultságoktól függnek.
 - **Erőforrás**: Az erőforrás egy olyan kezelhető elem, amely az Azure-on keresztül érhető el. Általános erőforrás például a következő: virtuális gép, tárfiók, webalkalmazás, adatbázis, virtuális hálózat, de számos további fajtája is létezik.
 - **Erőforráscsoport**: Az erőforráscsoport egy tároló, amely Azure-megoldásokhoz kapcsolódó erőforrásokat tárol. Az erőforráscsoport tartalmazhatja a megoldás összes erőforrását, vagy csak azokat az erőforrásokat, amelyeket Ön egy csoportként szeretne kezelni. A cég számára legideálisabb elosztás alapján eldöntheti, hogyan szeretné elosztani az erőforrásokat az erőforráscsoportok között.
-- **Egyszerű szolgáltatás** – egy egyszerű szolgáltatás sikerült tekintett meg, az alkalmazás hitelesítő adatot.
+- **Egyszerű szolgáltatás** – ahhoz, hogy hozzáférhessen az Azure AD-bérlő által védett erőforrások, az entitást, amely megköveteli a hozzáférést egy rendszerbiztonsági tag jelen kell lennie. Ez igaz mind a felhasználók (a felhasználó rendszerbiztonsági tag), és az alkalmazások (egyszerű szolgáltatásnevének). A rendszerbiztonsági tagot az adott bérlőn belüli határozza meg a hozzáférési szabályzat és a felhasználó vagy alkalmazás engedélyeit. Ez a alapvető funkcióit, például a felhasználó vagy alkalmazás hitelesítése során be- és erőforrás-hozzáférés során engedélyezési lehetővé teszi.
 - **[Azure Active Directory (Azure AD)](../active-directory/active-directory-whatis.md)**: Az Azure AD egy bérlő Active Directory-szolgáltatása. Minden címtárhoz tartozik egy vagy több tartomány. Egy címtárhoz számos előfizetés tartozhat, de csak egyetlen bérlő. 
 - **Azure-bérlő azonosítója**: A bérlőazonosító egy egyedi módszer az Azure AD-példány azonosítására az Azure-előfizetésen belül.
 - **Felügyelt identitások az Azure-erőforrások**: Azure Key Vault lehetővé teszi a biztonságos tárolása a hitelesítő adatokat, más kulcsok és titkos, de kérheti le azokat a Key Vault hitelesítenie kell a kódot. Egyszerűbb a probléma megoldására azzal, hogy az Azure-szolgáltatások automatikusan felügyelt identitás az Azure ad-ben egy felügyelt identitás használata révén. Ezzel az identitással anélkül végezhet hitelesítést a Key Vaultban vagy bármely, Azure AD-hitelesítést támogató szolgáltatásban, hogy a hitelesítő adatokat a kódban kellene tárolnia. További információkért lásd az alábbi képen a [felügyelt identitások Azure-erőforrások áttekintő](../active-directory/managed-identities-azure-resources/overview.md).

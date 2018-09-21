@@ -9,12 +9,12 @@ ms.custom: scale out apps
 ms.topic: conceptual
 ms.date: 06/14/2018
 ms.author: sstein
-ms.openlocfilehash: 6f72e0cbb4476e9ff22bd1a1ead8dbee24a7edf0
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: 3efee2f9a4b205b87a65eb473271b0ab5e58046d
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35646123"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46498419"
 ---
 # <a name="create-and-manage-sql-database-elastic-jobs-using-powershell-preview"></a>PowerShell (előzetes verzió) használatával az SQL Database rugalmas feladatok létrehozása és kezelése
 
@@ -213,7 +213,7 @@ Ajánlott biztonsági eljárások a rugalmas adatbázis-feladatok a következők
 * Hitelesítő adatokkal kell rendelkeznie a minimálisan szükséges a tevékenység végrehajtásához.  További információk láthatók belül ez [engedélyezési és engedélyek](https://msdn.microsoft.com/library/bb669084.aspx) SQL Server MSDN-cikkben.
 
 ### <a name="to-create-an-encrypted-credential-for-job-execution-across-databases"></a>Több adatbázisban egy titkosított hitelesítő adatokat, a feladat végrehajtása létrehozása
-Egy új titkosított hitelesítő adat létrehozása a [ **Get-Credential parancsmag** ](https://technet.microsoft.com/library/hh849815.aspx) kérni fogja a felhasználónevet és jelszót, amely átadható a [ **New-AzureSqlJobCredential parancsmag** ](/powershell/module/elasticdatabasejobs/new-azuresqljobcredential).
+Egy új titkosított hitelesítő adat létrehozása a [ **Get-Credential parancsmag** ](/powershell/module/microsoft.powershell.security/get-credential) kérni fogja a felhasználónevet és jelszót, amely átadható a [ **New-AzureSqlJobCredential parancsmag** ](/powershell/module/elasticdatabasejobs/new-azuresqljobcredential).
 
     $credentialName = "{Credential Name}"
     $databaseCredential = Get-Credential

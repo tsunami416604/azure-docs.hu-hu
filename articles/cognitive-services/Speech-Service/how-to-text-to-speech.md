@@ -9,16 +9,16 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-jerkin
-ms.openlocfilehash: d19b71542f032111bbd3d9c7f3fe246110377b5d
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 2bcba37d5bf0e508c1f9aa1ad30ab1c039cff83f
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43127586"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46497756"
 ---
 # <a name="use-text-to-speech-in-speech-service"></a>Használja a "Szöveg-beszéd átalakítás" Speech service-ben
 
-A beszédfelismerési szolgáltatás szöveg-beszéd átalakítás funkciókat egy egyszerű HTTP-kérés biztosít. A szöveget, a megfelelő végpontra könyvelés és a szolgáltatás egy hangfájlt adja vissza (`.wav`) tartalmazó beszédszintetizátorral. Az alkalmazás használhatja ezt a hang, akkor kedveli.
+A beszédfelismerési szolgáltatás szöveg-beszéd átalakítás funkciókat egy egyszerű HTTP-kérés biztosít. Ön `POST` a szöveget, a megfelelő végpontra és a szolgáltatás egy hangfájlt adja vissza (`.wav`) tartalmazó beszédszintetizátorral. Az alkalmazás használhatja ezt a hang, akkor kedveli.
 
 Szöveg-beszéd átalakítás lehet egyszerű szöveges (ASCII vagy UTF8), vagy egy kérelmet, a bejegyzés törzse [SSML](speech-synthesis-markup.md) dokumentumot. Egyszerű szöveges kérelmek egy alapértelmezett hangjával vannak szóbeli. A legtöbb esetben érdemes egy SSML szerv használja. A HTTP-kérelem tartalmaznia kell egy [engedélyezési](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#authentication) token. 
 
@@ -40,7 +40,7 @@ A hang megadásához használja a `<voice>` [SSML](speech-synthesis-markup.md) c
 
 Lásd: [szöveg-beszéd átalakítás beszédhangot](supported-languages.md#text-to-speech) listáját az elérhető hangok és nevét.
 
-## <a name="make-a-request"></a>Kérés
+## <a name="make-a-request"></a>Kérés indítása
 
 Egy szöveg-beszéd átalakítás HTTP kérés érkezik POST módban a szöveget kell beszélt a kérelem törzsében. A HTTP-kérés törzse hossza legfeljebb 1024 karakter. A kérés a következő fejléceket kell lennie: 
 

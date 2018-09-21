@@ -1,6 +1,6 @@
 ---
 title: Analytics-lekérdezések futtatásához bérlői adatbázisok az Azure SQL Data Warehouse |} A Microsoft Docs
-description: Több-bérlős elemzési lekérdezések több Azure SQL Database-adatbázis kinyert adatok segítségével.
+description: Azure SQL Database, az SQL Data Warehouse, Azure Data Factory vagy a Power BI kinyert adatok segítségével a több-bérlős elemzési lekérdezések.
 keywords: sql database-oktatóanyag
 services: sql-database
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.workload: Inactive
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/14/2018
+ms.date: 09/19/2018
 ms.author: anjangsh
-ms.openlocfilehash: 9dad675188782f3feb769e47230aa7b0cb42b10e
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 6f483b19b79435e1d7090ff42ab7fc9d3f79d747
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45737209"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46498402"
 ---
 # <a name="explore-saas-analytics-with-azure-sql-database-sql-data-warehouse-data-factory-and-power-bi"></a>Az Azure SQL Database, az SQL Data Warehouse, a Data Factory és a Power BI SaaS-analytics megismerése
 

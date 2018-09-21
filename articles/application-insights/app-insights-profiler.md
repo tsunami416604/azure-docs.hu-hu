@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.reviewer: cawa
 ms.date: 08/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 790d192823867ee858a7fa6bf030721002a6bd94
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: b11883ae592999a49db363486fd47a566bdfd360
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44296873"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46498708"
 ---
 # <a name="profile-live-azure-web-apps-with-application-insights"></a>Profil élő Azure-webalkalmazások az Application insights segítségével
 
-Ez a funkció az Azure Application Insights szolgáltatás általánosan elérhető az Azure App Service Web Apps funkcióját, és az Azure-beli számítási erőforrások előzetes verzióban érhető el. Információ kapcsolatos [helyi használatának profiler](https://docs.microsoft.com/azure/application-insights/enable-profiler-compute#enable-profiler-on-on-premises-servers).
+Ez a funkció az Azure Application Insights szolgáltatás általánosan elérhető az Azure App Service és az Azure számítási erőforrásokat a Web Apps szolgáltatásával. Információ kapcsolatos [helyi használatának profiler](https://docs.microsoft.com/azure/application-insights/enable-profiler-compute#enable-profiler-on-on-premises-servers).
 
 Ez a cikk ismerteti az egyes módszerek az élő webalkalmazásának használatakor töltött idő mennyiségét [Application Insights](app-insights-overview.md). Az Application Insights Profiler eszközt, amely az alkalmazás által kiszolgált is élő kérelmek részletes profilok jeleníti meg. Profiler kiemeli a *gyakori elérésű útvonal* , amely a legtöbb időt használja. Különböző válaszidők a kérelmek mintavételi alapon profilkészítés során létrehozott. Különböző technikák használatával, minimálisra csökkentheti a társított az alkalmazás terhelését.
 

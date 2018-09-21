@@ -8,12 +8,12 @@ ms.technology: speech
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 7d5656d6599e1d8d2a3e85b9d41bcce6490e1511
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 8f01130d46bce1e3b3e0b37f26e25d552c6002e5
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46124167"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46498113"
 ---
 # <a name="speech-service-rest-apis"></a>Beszédszolgáltatás REST API-k
 
@@ -59,7 +59,7 @@ A törzs a HTTP küldése a hanganyag `PUT` kérése és 16 bites WAV PCM egyetl
 
 ### <a name="chunked-transfer"></a>Darabolásos átvitel
 
-Darabolásos átvitel (`Transfer-Encoding: chunked`) segít minimálisra csökkenteni a felismerés késés, mivel így a beszédfelismerési szolgáltatás indításával megkezdheti a feldolgozási küldött, miközben azt a hangfájlt. A REST API-t nem biztosít teljes vagy részleges köztes eredményeket; Ez a beállítás kizárólag növelni a válaszkészséget a funkcionalitást.
+Darabolásos átvitel (`Transfer-Encoding: chunked`) segít minimálisra csökkenteni a felismerés késés, mert lehetővé teszi a beszédfelismerési szolgáltatás feldolgozza a hangfájl folyamatban átvitel közben. A REST API-t nem biztosít teljes vagy részleges köztes eredményeket; Ez a beállítás kizárólag növelni a válaszkészséget a funkcionalitást.
 
 A következő kód azt ábrázolja, hogyan küldhet hang tömbökben. `request` egy HTTPWebRequest objektumot a megfelelő REST-végponthoz csatlakozik. `audioFile` a hangfájl lemezen út.
 
@@ -137,7 +137,7 @@ A `RecognitionStatus` mező a következő értékeket tartalmazhat.
 | `Error` | A beszédfelismerést szolgáltatás belső hibába ütközött, és nem lehetett folytatni. Próbálja meg újra, ha lehetséges. |
 
 > [!NOTE]
-> Ha a felhasználó csak a vulgáris beszél, és a `profanity` lekérdezési paraméter értéke `remove`, a szolgáltatás nem ad vissza egy beszéd eredményt, ha a mód nem `interactive`. Ebben az esetben a szolgáltatás a speech eredményt ad vissza egy `RecognitionStatus` , `NoMatch`. 
+> Ha a hanganyag csak káromkodás tartalmaz, és a `profanity` lekérdezési paraméter értéke `remove`, a szolgáltatás nem ad vissza egy beszéd eredményt. 
 
 A `detailed` formátum tartalmazza, ugyanazokat a mezőket a `simple` formájában, valamint az egy `NBest` mező. A `NBest` mező az alternatív értelmezéseket a azonos beszéd, ahol az a legvalószínűbb valószínűleg legalább listája. Az első bejegyzés ugyanaz, mint a fő felismerés eredményét. Mindegyik bejegyzés a következő mezőket tartalmazzák:
 
@@ -215,8 +215,6 @@ A következő mezőket a HTTP-kérés fejlécében érkeznek.
 |`Authorization`|Egy engedélyezési jogkivonatot előzi meg a word `Bearer`. Kötelező. Lásd: [hitelesítési](#authentication).|
 |`Content-Type`|A bemeneti tartalomtípus: `application/ssml+xml`.|
 |`X-Microsoft-OutputFormat`|A kimeneti audio formátum. Lásd a következő táblázatot.|
-|`X-Search-AppId`|Csak hexadecimális GUID (kötőjelek nélkül), amely egyedileg azonosítja az ügyfélalkalmazás. Ez lehet a tároló azonosítója. FF már nem egy áruházbeli alkalmazás, használhat bármilyen GUID.|
-|`X-Search-ClientId`|Csak hexadecimális GUID (kötőjelek nélkül), amely egyedileg azonosítja az alkalmazáspéldány minden telepítésnél.|
 |`User-Agent`|Alkalmazás neve. Szükséges; 255-nél kevesebb karaktert kell tartalmaznia.|
 
 A rendelkezésre álló hangkimeneti formátumok (`X-Microsoft-OutputFormat`) egy átviteli sebesség és a egy kódolást.
@@ -230,9 +228,12 @@ A rendelkezésre álló hangkimeneti formátumok (`X-Microsoft-OutputFormat`) eg
 `riff-24khz-16bit-mono-pcm`        | `audio-24khz-160kbitrate-mono-mp3`
 `audio-24khz-96kbitrate-mono-mp3`  | `audio-24khz-48kbitrate-mono-mp3`
 
+> [!NOTE]
+> Ha a kiválasztott hang- és kimeneti formátum különböző átviteli sebességet, a hanganyag szükség szerint módosítva a felbontása. Azonban nem támogatja a 24khz beszédhangot `audio-16khz-16kbps-mono-siren` és `riff-16khz-16kbps-mono-siren` kimeneti formátumot. 
+
 ### <a name="request-body"></a>Kérelem törzse
 
-A szöveg beszéddé alakítandó legyen elküldve, a szervezet egy HTTP `POST` vagy egyszerű szöveges kérelem vagy [Speech összefoglaló Markup Language](speech-synthesis-markup.md) (SSML) formátum az UTF-8 kódování textu. SSML kell használnia, ha a szolgáltatás alapértelmezett hangalapú eltérő használjon.
+A szöveg beszéddé alakítandó legyen elküldve, a szervezet egy HTTP `POST` kérheti a vagy egyszerű szöveg (ASCII vagy UTF-8) vagy [Speech összefoglaló Markup Language](speech-synthesis-markup.md) (SSML) formátum (UTF-8). Egyszerű szöveges kérelmeket a szolgáltatás alapértelmezett beszédfelismerési és nyelvi használja. SSML, használjon egy másik küldése.
 
 ### <a name="sample-request"></a>Mintakérelem
 
@@ -260,10 +261,10 @@ A HTTP-állapot, a válasz azt jelzi, hogy a sikeres vagy gyakori hibaállapotok
 HTTP-kód|Jelentés|Lehetséges ok
 -|-|-|
 200|OK|A kérelem sikeres volt. a választörzs hangfájl mérete.
-400|Hibás kérés|Hiányzó, érték túl hosszú, vagy érvénytelen SSML dokumentum kötelező fejléc mező.
-401|Nem engedélyezett|Az előfizetői vagy engedélyezési jogkivonat érvénytelen a megadott régióban, vagy érvénytelen végpont.
-403|Tiltott|Hiányzik az előfizetési kulcs vagy engedélyezési jogkivonat.
-413|Kérelem az entitás túl nagy|A bemeneti szöveg hosszabb, mint 1000 karakter.
+400 |Hibás kérelem |Egy kötelező paraméter hiányzik, üres vagy null értékű. Másik lehetőségként átadott vagy egy kötelező vagy választható paraméter értéke érvénytelen. Egy gyakori probléma egy fejlécet, amely túl hosszú.
+401|Nem engedélyezett |A kérelem nem engedélyezett. Ellenőrizze, hogy az előfizetési kulcs, vagy a jogkivonat érvényes, és a megfelelő régióban.
+413|Kérelem az entitás túl nagy|A SSML bemeneti adat 1024 karakternél hosszabb.
+|502|Hibás átjáró    | Hálózati vagy kiszolgálóoldali probléma. Érvénytelen fejlécek is jelezhet.
 
 Ha a HTTP-állapot `200 OK`, a válasz törzse tartalmazza a kért formátumban hangfájl. Ez a fájl lehet, hogy játszható le, amíg azt át, vagy puffer vagy újabb lejátszás vagy egyéb felhasználás fájlba menti.
 

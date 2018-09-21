@@ -9,12 +9,12 @@ ms.date: 06/06/2018
 ms.topic: article
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: c326232e0fc8f5f878241186eac8ae5ed23f0958
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 83a768b82172b8736ea06bfed012309ac92734b7
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46366760"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46497960"
 ---
 # <a name="enable-update-management-change-tracking-and-inventory-solutions-on-multiple-vms"></a>Az Update Management, Change Tracking és Inventory megoldások a több virtuális gépen
 
@@ -51,9 +51,13 @@ A szűrővezérlők segítségével válassza ki a virtuális gépek különböz
 
 ![Az Update management megoldás előkészítése](media/automation-onboard-solutions-from-browse/onboardsolutions.png)
 
-Tekintse át az egyik lehetőséget a Log analytics-munkaterületet és Automation-fiók. Egy új munkaterületet és Automation-fiók ki van jelölve, alapértelmezés szerint. Ha rendelkezik egy meglévő Log Analytics-munkaterületet és Automation-fiókot szeretné-e használni, kattintson a **módosítása** válassza ki azokat a **konfigurációs** lapot. Ha befejezte, kattintson a **Mentés** gombra.
+Tekintse át az egyik lehetőséget a Log analytics-munkaterületet és Automation-fiók. Egy meglévő munkaterületet és Automation-fiók ki van jelölve, alapértelmezés szerint. Ha egy másik Log Analytics-munkaterületet és Automation-fiókot használni szeretne, kattintson a **egyéni** válassza ki azokat a **egyéni konfiguráció** lapot. Ha úgy dönt, hogy a Log Analytics-munkaterülettel, egy ellenőrzési kérés érkezett határozza meg, ha egy olyan Automation-fiókkal társított. Ha egy összekapcsolt Automation-fiókot talál, látni fogja az alábbi képernyőn. Ha elkészült, kattintson a **OK**.
 
 ![Válassza ki a munkaterületet és fiókot](media/automation-onboard-solutions-from-browse/selectworkspaceandaccount.png)
+
+Ha a kiválasztott munkaterület nincs Automation-fiók van csatolva, látni fogja az alábbi képernyőn. Válasszon egy Automation-fiókot, és kattintson a **OK** teljes.
+
+![Nincs munkaterület](media/automation-onboard-solutions-from-browse/no-workspace.png)
 
 Kapcsolja ki bármelyik virtuális gépet, amely nem szeretné engedélyezni, jelölőnégyzetét. Virtuális gépek, amelyek nem lehet engedélyezni a rendszer már sincs kijelölve.
 

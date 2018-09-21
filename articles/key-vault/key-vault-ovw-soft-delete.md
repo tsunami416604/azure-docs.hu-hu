@@ -7,12 +7,12 @@ author: bryanla
 ms.author: bryanla
 manager: mbaldwin
 ms.date: 09/25/2017
-ms.openlocfilehash: c8bde99e0247871212766a9915b9d07b7f392201
-ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
+ms.openlocfilehash: 776d5957ee2c11354c350523cbc8fde12fbcafaf
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46465588"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46498181"
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Az Azure Key Vault helyreállítható törlés áttekintése
 
@@ -37,9 +37,16 @@ Az Azure Key vault-Kulcstartók követett erőforrások Azure Resource Manager �
 
 ### <a name="soft-delete-behavior"></a>Helyreállítható törlés viselkedés
 
-Ezzel a funkcióval a törlési műveletet a key vault vagy a key vault-objektum a helyreállítható törlés, hatékonyan az egy adott megőrzési időtartamot, miközben a megjelenését, hogy törölték az objektumot a az erőforrásokat tartalmazó. A szolgáltatás további lehetővé teszi a helyreállítás, a törölt objektum, lényegében a törlésének visszavonása. 
+Ezzel a funkcióval a törlési műveletet a key vault-objektum vagy a key vault helyreállítható törlés, hatékonyan az egy adott megőrzési időszak (90 nap), a az erőforrásokat tartalmazó miközben a megjelenését, hogy az objektum van-e törölve. A szolgáltatás további lehetővé teszi a helyreállítás, a törölt objektum, lényegében a törlésének visszavonása. 
 
 Helyreállítható törlés egy nem kötelező a Key Vault-viselkedés, és **alapértelmezés szerint nincs engedélyezve** ebben a kiadásban. 
+
+### <a name="do-not-purge-flag"></a>Nem végleges törlés jelző
+A tároló vagy a tár objektum törlésének kényszerítése kívánó felhasználó megteheti. Ha egy tároló vagy a tároló objektumok törlése jogosultsággal rendelkező felhasználó kényszerítheti végleges törlése, még akkor is, ha a vault helyreállítható törlés be van kapcsolva ez. De ha a felhasználó szeretné megakadályozni a kényszerített törlése a tárolóban, vagy a tár objektum állíthatják--a védelem végleges törlés engedélyezése jelzője igaz értékű lesz. A tároló létrehozásakor engedélyezheti a jelzőt, ezzel a módszerrel. A végleges törlés elleni védelem bekapcsolása előfeltétele, rendelkeznie kell-e kapcsolva a helyreállítható törlés. A parancs az ehhez az Azure CLI 2
+
+```
+az keyvault create --name "VaultName" --resource-group "ResourceGroupName" --location westus --enable-soft-delete true --enable-purge-protection true
+```
 
 ### <a name="key-vault-recovery"></a>A Key vault helyreállítási
 

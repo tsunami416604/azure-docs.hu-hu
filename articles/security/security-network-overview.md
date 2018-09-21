@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/17/2018
+ms.date: 09/19/2018
 ms.author: terrylan
-ms.openlocfilehash: ec8e4b1edfe815670664de83edf98a9e478101d2
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 309dddcea1022d9f14c1d4492f5564f2a4ad3b6f
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42056686"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46498504"
 ---
 # <a name="azure-network-security-overview"></a>Azure-hálózat biztonsági áttekintése
 
-Az Azure támogatja az alkalmazás és szolgáltatás hálózati kapcsolati követelményeinek robusztus hálózati infrastruktúrát tartalmaz. Hálózati kapcsolat a helyszíni között az Azure-ban található erőforrások között lehetőség, és az Azure-ban üzemeltetett erőforrásokhoz, és hogy, és az internetről és az Azure.
+Hálózati biztonság sikerült adható meg a folyamat-erőforrások védelme az illetéktelen hozzáféréstől és a támadás szabályozza a hálózati forgalom alkalmazásával. A célja annak biztosítása érdekében, hogy csak megbízható forgalom engedélyezve van-e. Az Azure támogatja az alkalmazás és szolgáltatás hálózati kapcsolati követelményeinek robusztus hálózati infrastruktúrát tartalmaz. Hálózati kapcsolat a helyszíni között az Azure-ban található erőforrások között lehetőség, és az Azure-ban üzemeltetett erőforrásokhoz, és hogy, és az internetről és az Azure.
 
 Ez a cikk ismerteti az Azure által kínált hálózati biztonság területén opciók egy része. További információ:
 
@@ -77,7 +77,11 @@ További információ:
 
 #### <a name="asc-just-in-time-vm-access"></a>Az ASC csak a time VM access
 
-[Az Azure security center](../security-center/security-center-just-in-time.md) kezelheti az NSG-ket a virtuális gépek és a virtuális Géphez való hozzáférés zárolása amíg egy felhasználó a megfelelő szerepköralapú hozzáférés-vezérléssel [RBAC](../role-based-access-control/overview.md) engedélyek hozzáférést kér. Amikor a felhasználó sikeresen hitelesített ASC teszi az NSG-ket kijelölt portok való hozzáférés engedélyezése a kérdéses módosításait. Ha az idő lejár az NSG-t állítja vissza az előző állapot védett.
+[Az Azure security center](../security-center/security-center-intro.md) kezelheti az NSG-ket a virtuális gépek és a virtuális Géphez való hozzáférés zárolása amíg egy felhasználó a megfelelő szerepköralapú hozzáférés-vezérléssel [RBAC](../role-based-access-control/overview.md) engedélyek hozzáférést kér. Amikor a felhasználó sikeresen hitelesített ASC teszi az NSG-ket kijelölt portok való hozzáférés engedélyezése a kérdéses módosításait. Ha az idő lejár az NSG-t állítja vissza az előző állapot védett.
+
+További információ:
+
+* [Az Azure Security Center csak a T](../security-center/security-center-just-in-time.md)
 
 #### <a name="service-endpoints"></a>Szolgáltatásvégpontok
 

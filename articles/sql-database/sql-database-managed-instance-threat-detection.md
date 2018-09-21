@@ -1,21 +1,21 @@
 ---
 title: Fenyegetések észlelése – az Azure SQL Database felügyelt példány |} A Microsoft Docs
-description: Fenyegetésészlelés észleli a rendellenes adatbázis-tevékenységek utaló esetleges biztonsági fenyegetések az adatbázishoz.
+description: Fenyegetésészlelés észleli a rendellenes adatbázis-tevékenységek utaló esetleges biztonsági fenyegetések a felügyelt példány az adatbázishoz.
 services: sql-database
 author: rmatchoro
 manager: craigg
 ms.service: sql-database
 ms.custom: security, managed instance
 ms.topic: conceptual
-ms.date: 03/07/2018
+ms.date: 09/19/2018
 ms.author: ronmat
 ms.reviewer: vanto
-ms.openlocfilehash: 76033438ad785412aa97358d80b5e4fdbf4c2bfb
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: af93a1c0f1e132b04d3bf5c5511f5db1f29ba30c
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44716995"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46498640"
 ---
 # <a name="azure-sql-database-managed-instance-threat-detection"></a>Az Azure SQL Database felügyelt példány Fenyegetésészlelési
 

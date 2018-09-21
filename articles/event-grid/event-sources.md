@@ -5,14 +5,14 @@ services: event-grid
 author: tfitzmac
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 08/21/2018
+ms.date: 09/19/2018
 ms.author: tomfitz
-ms.openlocfilehash: 15fe97e39fbc1c669762ddb7523cfd043638d3de
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.openlocfilehash: adef9d2f2d859c62d3b3b3a542536698fa668f9a
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43144229"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46498300"
 ---
 # <a name="event-sources-in-azure-event-grid"></a>Az Azure Event Grid zdroje událostí
 
@@ -58,7 +58,7 @@ Fizessen elő az alkalmazás válaszadására egyéni témaköröket.
 | [PowerShell: feliratkozás egy egyéni témakör eseményeire](./scripts/event-grid-powershell-subscribe-custom-topic.md)|Minta parancsfájl, amely egy egyéni témakör-előfizetést hoz létre. Eseményeket küld egy Webhookot.|
 | [Resource Manager-sablon: egyéni témakör és WebHook-végpontot](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid) | Resource Manager-sablonnal, amely létrehoz egy egyéni témakör és egyéni témakör-előfizetés. Eseményeket küld egy Webhookot. |
 |
-| [Resource Manager-sablon: egyéni témakör és az Event Hubs-végpont](https://github.com/Azure/azure-docs-json-samples/blob/master/event-grid/subscribeCustomTopicToEventHub.json)| Resource Manager-sablonnal, amely egy egyéni témakör-előfizetést hoz létre. Az Azure Event Hubs küld eseményeket. |
+| [Resource Manager-sablon: egyéni témakör és az Event Hubs-végpont](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-event-hubs-handler)| Resource Manager-sablonnal, amely egy egyéni témakör-előfizetést hoz létre. Az Azure Event Hubs küld eseményeket. |
 | [Eseményséma](event-schema.md) | Egyéni események mezőket jeleníti meg. |
 
 ## <a name="event-hubs"></a>Event Hubs
@@ -104,7 +104,7 @@ Erőforrás-csoport események reagálni az igények változásaira az erőforr�
 | [Az Azure CLI: feliratkozás egy erőforráscsoport és a egy szűrő eseményeire](./scripts/event-grid-cli-resource-group-filter.md) | A példaszkript feliratkozik egy erőforráscsoport eseményeire, és szűri az eseményeket egy erőforráshoz. |
 | [PowerShell: feliratkozás egy erőforráscsoport eseményeire](./scripts/event-grid-powershell-resource-group.md) | Feliratkozik egy erőforráscsoport eseményeire hivatkozó szkriptre példát. Eseményeket küld egy Webhookot. |
 | [PowerShell: feliratkozás egy erőforráscsoport és a egy szűrő eseményeire](./scripts/event-grid-powershell-resource-group-filter.md) | A példaszkript feliratkozik egy erőforráscsoport eseményeire, és szűri az eseményeket egy erőforráshoz. |
-| [Resource Manager-sablon: erőforráscsoport-feliratkozás](https://github.com/Azure/azure-docs-json-samples/blob/master/event-grid/subscribeResourceGroupToWebHook.json) | Feliratkozik egy erőforráscsoport eseményeire. Eseményeket küld egy Webhookot. |
+| [Resource Manager-sablon: erőforrás-előfizetés](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-resource-events-to-webhook) | Feliratkozik az eseményekre az Azure-előfizetés vagy az erőforrás csoportok. Eseményeket küld egy Webhookot. |
 | [Eseményséma](event-schema-resource-groups.md) | Megjeleníti a mezők erőforrásban csoport eseményeket. |
 
 ## <a name="service-bus"></a>Service Bus
@@ -128,7 +128,7 @@ Fizessen elő a Blob Storage-események válaszolni a blob-események létrehoz�
 | [Rövid útmutató: hozzon létre, és az Azure Portallal Blob storage-események irányítása](blob-event-quickstart-portal.md) | A portál használata a blob storage-események küldéséhez egy WebHook mutatja. |
 | [Az Azure CLI: feliratkozás egy Blob storage-fiók eseményeire](./scripts/event-grid-cli-blob.md) | Feliratkozik egy Blob storage-fiókhoz tartozó esemény hivatkozó szkriptre példát. WebHook elküldi az eseményt. |
 | [PowerShell: feliratkozás egy Blob storage-fiók eseményeire](./scripts/event-grid-powershell-blob.md) | Feliratkozik egy Blob storage-fiókhoz tartozó esemény hivatkozó szkriptre példát. WebHook elküldi az eseményt. |
-| [Resource Manager-sablon: Blob storage- és előfizetés létrehozása](https://github.com/Azure/azure-docs-json-samples/blob/master/event-grid/createBlobAndSubscribe.json) | Üzembe helyez egy Azure Blob Storage-fiókot, és feliratkozik a vele kapcsolatos eseményekre. Eseményeket küld egy Webhookot. |
+| [Resource Manager-sablon: Blob storage- és előfizetés létrehozása](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-subscription-and-storage) | Üzembe helyez egy Azure Blob Storage-fiókot, és feliratkozik a vele kapcsolatos eseményekre. Eseményeket küld egy Webhookot. |
 | [Áttekintés: reagálás Blob storage-események](../storage/blobs/storage-blob-event-overview.md) | A Blob storage integrálása az Event Grid áttekintése. |
 | [Eseményséma](event-schema-blob-storage.md) | A Blob Storage-események mezőket jeleníti meg. |
 

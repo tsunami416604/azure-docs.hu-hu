@@ -1,6 +1,6 @@
 ---
 title: Analytics-lekérdezések futtatásához az Azure SQL Database-adatbázisok |} A Microsoft Docs
-description: Több-bérlős elemzési lekérdezések több Azure SQL Database-adatbázis kinyert adatok segítségével.
+description: Több-bérlős elemzési lekérdezések több Azure SQL Database-adatbázist egy több-bérlős alkalmazásban kinyert adatok segítségével.
 keywords: SQL – oktatóanyag
 services: sql-database
 author: stevestein
@@ -8,19 +8,19 @@ manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: conceptual
-ms.date: 09/14/2018
+ms.date: 09/19/2018
 ms.author: anjangsh
-ms.reviewer: billgib, genemi
-ms.openlocfilehash: d5ffc9ade54ea02f34d25e4b6b7a4c0027b7d7b7
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.reviewer: anjangsh; billgib, genemi
+ms.openlocfilehash: 546cf4fc9a1aec23071b4d1cc69ece34e014da49
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45733933"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46498385"
 ---
-# <a name="cross-tenant-analytics-using-extracted-data"></a>Több-bérlős analytics kinyert adatok segítségével
-
-Ebben az oktatóanyagban vezeti végig egy teljes körű elemzési forgatókönyvet is. A forgatókönyv azt mutatja be, hogyan engedélyezheti a analytics a cégek számára az intelligens döntések. Szilánkokra osztott adatbázis kinyert adatok segítségével, használhatja analytics betekintést bérlő viselkedése, beleértve azok a Wingtip Tickets SaaS-mintaalkalmazás használatát. Ebben a forgatókönyvben három lépésből áll: 
+# <a name="cross-tenant-analytics-using-extracted-data---multi-tenant-app"></a>Több-bérlős analytics kinyert adatok – több-bérlős app használatával
+ 
+Ebben az oktatóanyagban vezeti végig egy teljes elemzések forgatókönyve egy több-bérlős végrehajtásához. A forgatókönyv azt mutatja be, hogyan engedélyezheti a analytics a cégek számára az intelligens döntések. Szilánkokra osztott adatbázis kinyert adatok segítségével, használhatja analytics betekintést bérlő viselkedése, beleértve azok a Wingtip Tickets SaaS-mintaalkalmazás használatát. Ebben a forgatókönyvben három lépésből áll: 
 
 1.  **Adatok kinyerése** az egyes bérlői adatbázisok egy analytics-tárolójába.
 2.  **A kibontott adatok optimalizálása** analytics feldolgozás céljából.
@@ -240,5 +240,6 @@ Gratulálunk!
 
 ## <a name="additional-resources"></a>További források
 
-<!-- - Additional [tutorials that build upon the Wingtip SaaS application](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials). -->
+További [oktatóanyagok, amely a Wingtip SaaS-alkalmazás útmutatóra](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials). 
 - [Rugalmas feladatok](sql-database-elastic-jobs-overview.md).
+- [A kinyert adatoknak - egybérlős alkalmazást több-bérlős analytics használatával](saas-tenancy-tenant-analytics.md) 

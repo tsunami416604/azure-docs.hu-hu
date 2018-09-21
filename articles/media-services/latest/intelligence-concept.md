@@ -1,6 +1,6 @@
 ---
-title: Az Azure media eszközintelligencia |} Microsoft Docs
-description: Azure Media Services használata esetén a hang- és contnet AudioAnalyzerPreset és VideoAnalyzerPreset használatával elemezheti.
+title: Az Azure media intelligence |} A Microsoft Docs
+description: Az Azure Media Services használata esetén az audio- és contnet AudioAnalyzerPreset és VideoAnalyzerPreset használatával elemezhetők.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -11,48 +11,48 @@ ms.workload: ''
 ms.topic: article
 ms.date: 04/24/2018
 ms.author: juliako
-ms.openlocfilehash: c488060b9db0ba482d12eee2394e5149b918950e
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: a428f76f1239e7e67b99d05b96d26abd601e89c6
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36331520"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46498691"
 ---
 # <a name="media-intelligence"></a>Médiaintelligencia
 
-Az Azure Media Services REST v3 API lehetővé teszi hang-és elemzéséhez. A tartalom elemzéséhez, hozzon létre egy **átalakítási** , és küldje el a **feladat** ezek készletek egyikét használja, amely: **AudioAnalyzerPreset** vagy **VideoAnalyzerPreset** . 
+Az Azure Media Services REST v3 API lehetővé teszi hang- és tartalmakat elemezhet. A tartalom elemzéséhez, hozzon létre egy **átalakítása** , és küldje el egy **feladat** , hogy ezen készletek egyikét használja: **AudioAnalyzerPreset** vagy **VideoAnalyzerPreset** . 
 
 ## <a name="audioanalyzerpreset"></a>AudioAnalyzerPreset
 
-**AudioAnalyzerPreset** lehetővé teszi hang-vagy több hang insights kibontani. A parancs kimenete egy JSON-fájl (az összes feltárása) és a hang szövegének VTT fájlt. Ezt a beállítást olyan tulajdonságon, amely meghatározza a bemeneti fájl nyelvét formájában fogad el egy [BCP47](https://tools.ietf.org/html/bcp47) karakterlánc. A hang insights a következők:
+**AudioAnalyzerPreset** lehetővé teszi, hogy egy hang- vagy fájlból származó több hang információk kinyerése. A kimenet egy JSON-fájlt (az összes az insights) és a hang átiratok VTT fájlt tartalmazza. Ezt a beállítást olyan tulajdonságot, amely meghatározza a bemeneti fájl nyelvét formájában fogad el egy [BCP47](https://tools.ietf.org/html/bcp47) karakterlánc. A hang insights tartalmazza:
 
-* Hang írjanak elő – a Beszélgetés szövegének Timestamp szóbeli szó. Több nyelv használata támogatott.
-* Beszélőfelismerési indexelő – leképezéseket a hangszórók és a megfelelő kiejtett szavakat
-* Beszéd véleményeket elemzés – a kimeneti véleményeket elemzési végre hang írjanak elő
-* Kulcsszavak – kulcsszavakat, amelyekre a hang írjanak elő kinyert.
+* Hanganyag átírása – egy szöveges időbélyegzőnél kimondott szó. Több nyelvet támogat
+* Hangszóró indexelő – előadó és a megfelelő szövegrészeket és szavakat leképezése
+* Beszéd hangulatelemzés – hangulatelemzést végzett a hanganyag átírása kimenete
+* Kulcsszavak – a hanganyag átírása kinyert kulcsszavakat.
 
 ## <a name="videoanalyzerpreset"></a>VideoAnalyzerPreset
 
-**VideoAnalyzerPreset** lehetővé teszi több hang- és elemzések kinyerése videofájl. A parancs kimenete egy JSON fájlt (az összes feltárása), VTT videó szövegének és miniatűrök gyűjteménye. Ezt a beállítást is fogad el egy [BCP47](https://tools.ietf.org/html/bcp47) tulajdonságként (a videó nyelvének megfelelő) karakterláncot. A videó insights fent említett hang insights és a következő további elemeket tartalmazza:
+**VideoAnalyzerPreset** lehetővé teszi elemzési adatokat nyerhet több audio- és video-fájlból. A kimenet egy JSON-fájlt (az összes az insights), a videóátiratot, és a egy gyűjtemény miniatűrök VTT fájlt tartalmazza. Ezt a beállítást is fogad egy [BCP47](https://tools.ietf.org/html/bcp47) tulajdonságként (a videó nyelvének képviselő) karakterláncot. A videó insights az összes fent említett hang insights és az alábbi elemeket tartalmazza:
 
-* Arcfelismerési követési – az idő során, ami lapok szerepelnek a videó. Minden lapot tartalmaz a tapasztalt azonosítót és a miniatűrök megfelelő gyűjteménye
-* Visual szöveg – a szöveg, keresztül optikai észlel. A szöveg megjelölve, és bontsa ki a kulcsszavak (mellett hang szövegének) segítségével is idő
-* Kulcsképek –, amelyek a videó kinyert kulcsképek gyűjteménye
-* Visual tartalom moderálás – a videókhoz, amelyeket a felnőtt vagy ellopható jellegű megjelölt része
-* Megjegyzés – alapján egy előre definiált hálózatiobjektum-modellt a videók ellátása megjegyzésekkel eredménye
+* Face követési – az idő, mely során arcok jelen a videóban. Minden rendelkezik, a face id és a egy megfelelő gyűjtemény miniatűrök
+* Vizuális szöveg – a szöveg, optikai karakterfelismerés keresztül észlelt. A szöveg megjelölve, és segítségével kulcsszavakkal (mellett az audio átiratot) is
+* Kulcsképek – a videó kinyert kulcsképek gyűjteménye
+* Vizuális tartalom-jóváhagyás – a felnőtt vagy pikáns jellegű megjelölt videókat része
+* Jegyzet – alapján egy előre meghatározott hálózatiobjektum-modellt a videók jegyzetkészítés eredménye
 
 ##  <a name="insightsjson-elements"></a>insights.JSON elemek
 
-A kimeneti JSON-fájl (insights.json) tartalmaz, amelynek a videót, illetve a hangfelvételen hallható található összes feltárása. A json az alábbi elemeket tartalmazza:
+A parancs kimenete egy JSON-fájlt (insights.json) észlelt a rendszer a videó vagy hang összes betekintést. A json a következő elemeket tartalmazza:
 
-### <a name="transcript"></a>Beszélgetés szövegének
+### <a name="transcript"></a>a szövegben
 
 |Name (Név)|Leírás|
 |---|---|
 |id|A sor azonosítója.|
-|szöveg|A Beszélgetés szövegének magát.|
-|nyelv|A Beszélgetés szövegének nyelv. Szánt Beszélgetés szövegének támogatásához, amely minden sor egy másik nyelvet is rendelkezhet.|
-|példányok|Amikor a sor jelent meg időtartományhoz listáját. Ha a példány egy Beszélgetés szövegének, csak az 1-példány lesz.|
+|szöveg|Az átirat magát.|
+|Nyelv|A szöveges nyelvet. Szánt támogatásához, átirat, ahol az egyes sorok rendelkezhet egy másik nyelvet.|
+|példányok|Amikor ezt a sort jelent meg időt a tartományok listája. Ha a példány a szövegben, 1 példánnyal fog rendelkezni.|
 
 Példa:
 
@@ -83,15 +83,15 @@ Példa:
 ] 
 ```
 
-### <a name="ocr"></a>OCR
+### <a name="ocr"></a>optikai karakterfelismerés
 
 |Name (Név)|Leírás|
 |---|---|
-|id|A OCR sor azonosítója.|
-|szöveg|A Felismert szöveg.|
-|Megbízhatóság|A felismerési vetett bizalmat.|
-|nyelv|A OCR nyelv.|
-|példányok|Amikor ez OCR jelent meg időtartományhoz listája (az azonos OCR többször jelenhet meg).|
+|id|Az optikai Karakterfelismerés sor azonosítója.|
+|szöveg|Az optikai Karakterfelismerés szöveg.|
+|magabiztosan|Elismerés magabiztosan.|
+|Nyelv|Az optikai Karakterfelismerés nyelv.|
+|példányok|Amikor jelent meg az optikai Karakterfelismeréssel időt tartományok listája (az azonos OCR többször is megjelenhetnek).|
 
 ```json
 "ocr": [
@@ -126,69 +126,21 @@ Példa:
   ],
 ```
 
-### <a name="keywords"></a>kulcsszavak
+### <a name="faces"></a>arcok
 
 |Name (Név)|Leírás|
 |---|---|
-|id|A kulcsszó azonosítóját.|
-|szöveg|A kulcsszó szöveget.|
-|Megbízhatóság|A kulcsszó felismerés vetett bizalmat.|
-|nyelv|A kulcsszó nyelv (bájttartományára lefordítva).|
-|példányok|Amikor ezt a kulcsszót jelent meg időtartományhoz listáját (kulcsszó többször is szerepelhet).|
-
-```json
-"keywords": [
-{
-    "id": 0,
-    "text": "office",
-    "confidence": 1.6666666666666667,
-    "language": "en-US",
-    "instances": [
-    {
-        "start": "00:00:00.5100000",
-        "end": "00:00:02.7200000"
-    },
-    {
-        "start": "00:00:03.9600000",
-        "end": "00:00:12.2700000"
-    }
-    ]
-},
-{
-    "id": 1,
-    "text": "icons",
-    "confidence": 1.4,
-    "language": "en-US",
-    "instances": [
-    {
-        "start": "00:00:03.9600000",
-        "end": "00:00:12.2700000"
-    },
-    {
-        "start": "00:00:13.9900000",
-        "end": "00:00:15.6100000"
-    }
-    ]
-}
-] 
-
-```
-
-### <a name="faces"></a>Felületei
-
-|Name (Név)|Leírás|
-|---|---|
-|id|A tapasztalt azonosítóját.|
-|név|A betűtípusának neve. Lehet, hogy a "Ismeretlen #0", az azonosított celebrity vagy egy felhasználói képzett személy.|
-|Megbízhatóság|A tapasztalt azonosító vetett bizalmat.|
-|leírás|Ha egy celebrity, annak leírását. |
-|thumbnalId|Az azonosítója, amely a miniatűr.|
-|knownPersonId|Ha egy ismert személy, a belső azonosítója.|
-|hivatkozás azonosítója|Esetén a Bing celebrity, a Bing-azonosító.|
+|id|A face azonosítója.|
+|név|A face neve. "Ismeretlen #0", az azonosított hírességek vagy ügyfél betanított személy is lehet.|
+|magabiztosan|Arcok azonosítása magabiztosan.|
+|leírás|A hírességek leírása. |
+|thumbnalId|A miniatűr képét, arc azonosítója.|
+|knownPersonId|Ha ez egy ismert személy, a belső azonosítója.|
+|a referenceid megadása|Ha a Bing hírességek, a Bing-azonosító.|
 |referenceType|Jelenleg csak a Bing.|
-|cím|Ha egy celebrity címét (például "CEO Microsoft").|
-|imageUrl|Ha egy celebrity, a kép URL-címe.|
-|példányok|Ezek a példányok, ahol maga az adott időtartományt jelent meg. Minden példány is rendelkezik egy thumbnailsId. |
+|cím|Ha egy hírességek, akkor annak címe (például: "a Microsoft Vezérigazgatójával").|
+|imageUrl|Ha a hírességek, a kép URL-címe.|
+|példányok|Ezek a példányok, ahol az arcfelismerés jelent meg a megadott időtartományban. Minden példány egy thumbnailsId is tartalmaz. |
 
 ```json
 "faces": [{
@@ -219,14 +171,119 @@ Példa:
 }]
 ```
 
+### <a name="shots"></a>helyességének
+
+|Name (Név)|Leírás|
+|---|---|
+|id|A képernyőkép-azonosítót.|
+|Kulcsképek|Kulcs keretek belül a képernyőkép-készítés (megvannak-azonosító és példányok idő tartományok listája) listája. Kulcs keretek példányok rendelkeznek egy thumbnailId mezőt, a Kulcsképkocka miniatűr-azonosítóját.|
+|példányok|A képernyőkép-készítés ideje tartományainak listáját (a helyességének 1 példánnyal rendelkezik).|
+
+```json
+"Shots": [
+    {
+      "id": 0,
+      "keyFrames": [
+        {
+          "id": 0,
+          "instances": [
+            {
+                "thumbnailId": "00000000-0000-0000-0000-000000000000",
+              "start": "00: 00: 00.1670000",
+              "end": "00: 00: 00.2000000"
+            }
+          ]
+        }
+      ],
+      "instances": [
+        {
+            "thumbnailId": "00000000-0000-0000-0000-000000000000",  
+          "start": "00: 00: 00.2000000",
+          "end": "00: 00: 05.0330000"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "keyFrames": [
+        {
+          "id": 1,
+          "instances": [
+            {
+                "thumbnailId": "00000000-0000-0000-0000-000000000000",      
+              "start": "00: 00: 05.2670000",
+              "end": "00: 00: 05.3000000"
+            }
+          ]
+        }
+      ],
+      "instances": [
+        {
+      "thumbnailId": "00000000-0000-0000-0000-000000000000",
+          "start": "00: 00: 05.2670000",
+          "end": "00: 00: 10.3000000"
+        }
+      ]
+    }
+  ]
+```
+
+### <a name="statistics"></a>statisztika
+
+|Name (Név)|Leírás|
+|---|---|
+|CorrespondenceCount|A videóban megfelelések száma.|
+|WordCount|A speaker kiszolgálónként szavak számát.|
+|SpeakerNumberOfFragments|A videó szerepel a beszélő töredék mennyisége.|
+|SpeakerLongestMonolog|A beszélő leghosszabb monolog. Ha a beszélő belül a monolog silences része. Csend elején és végén a monolog törlődik.| 
+|SpeakerTalkToListenRatio|A számítás időt a speaker monolog (nélkül a csend köztes) elosztva a videó teljes időtartama alapján. Az idő a harmadik tizedesvesszőtől lesz kerekítve.|
+
+
+### <a name="sentiments"></a>hangulati
+
+Összesítjük hangulati azok sentimentType mező (pozitív/Neutral/negatív) szerint. Például, 0 – 0.1, 0.2-0.1-es.
+
+|Name (Név)|Leírás|
+|---|---|
+|id|A róluk szóló véleményeket azonosítója.|
+|Átlag |Az összes pontszámok szoftverpéldányok száma a róluk szóló véleményeket típusa – pozitív/Neutral/negatív átlaga|
+|példányok|Amikor a véleményt jelent meg időt a tartományok listája.|
+|sentimentType |A típus "Pozitív", "Semleges" vagy "Negatív" lehet.|
+
+```json
+"sentiments": [
+{
+    "id": 0,
+    "averageScore": 0.87,
+    "sentimentType": "Positive",
+    "instances": [
+    {
+        "start": "00:00:23",
+        "end": "00:00:41"
+    }
+    ]
+}, {
+    "id": 1,
+    "averageScore": 0.11,
+    "sentimentType": "Positive",
+    "instances": [
+    {
+        "start": "00:00:13",
+        "end": "00:00:21"
+    }
+    ]
+}
+]
+```
+
 ### <a name="labels"></a>címkék
 
 |Name (Név)|Leírás|
 |---|---|
-|id|A címkeazonosító.|
+|id|A címke azonosítója.|
 |név|A címke nevét (például "Számítógép", "TV").|
-|nyelv|A címke neve nyelve, (bájttartományára lefordítva). BCP-47|
-|példányok|Amikor ezt a címkét jelent meg időtartományhoz listáját (a címke többször jelenhet meg). Minden példány abban, hogy mezőt tartalmaz. |
+|Nyelv|A címke neve nyelv, (Ha a fordítás melyik változatot). BCP-47|
+|példányok|Amikor ezt a címkét jelent meg időt a tartományok listája (címkék többször is megjelenhetnek). Minden példány egy megbízhatósági mező tartozik. |
 
 
 ```json
@@ -278,94 +335,92 @@ Példa:
   ] 
 ```
 
-### <a name="shots"></a>pillanatfelvételek
+### <a name="keywords"></a>a kulcsszavak
 
 |Name (Név)|Leírás|
 |---|---|
-|id|A hibaüzenetet azonosítóját.|
-|Kulcsképek|A hibaüzenetet (mindegyik rendelkezik-e egy Azonosítót és egy címtartománylista példányok idő) belül hozzon listáját.|
-|példányok|Ezt a hibaüzenetet idő tartományok listáját (a pillanatfelvételek csak 1 példánya van).|
+|id|A kulcsszó-azonosítót.|
+|szöveg|A kulcsszó szöveg.|
+|magabiztosan|A kulcsszó felismerés magabiztosan.|
+|Nyelv|A kulcsszó nyelv (Ha a fordítás melyik változatot).|
+|példányok|Amikor ezt a kulcsszót jelent meg időt a tartományok listája (kulcsszó többször is megjelenhetnek).|
 
 ```json
-"Shots": [
-    {
-      "id": 0,
-      "keyFrames": [
-        {
-          "id": 0,
-          "instances": [
-            {
-              "start": "00: 00: 00.1670000",
-              "end": "00: 00: 00.2000000"
-            }
-          ]
-        }
-      ],
-      "instances": [
-        {
-          "start": "00: 00: 00.2000000",
-          "end": "00: 00: 05.0330000"
-        }
-      ]
-    },
-    {
-      "id": 1,
-      "keyFrames": [
-        {
-          "id": 1,
-          "instances": [
-            {
-              "start": "00: 00: 05.2670000",
-              "end": "00: 00: 05.3000000"
-            }
-          ]
-        }
-      ],
-      "instances": [
-        {
-          "start": "00: 00: 05.2670000",
-          "end": "00: 00: 10.3000000"
-        }
-      ]
-    }
-  ]
-```
-
-
-### <a name="sentiments"></a>Hangulati elemek
-
-Hangulati elemek összesítése a sentimentType mező (pozitív/Neutral/negatív) szerint. Ha például 0-0,1, 0,1-0,2.
-
-|Name (Név)|Leírás|
-|---|---|
-|id|A céggel kapcsolatos véleményeket azonosítóját.|
-|Átlag |A céggel kapcsolatos véleményeket típusú - pozitív/Neutral/negatív szoftverpéldányok összes pontszámok átlaga|
-|példányok|Amikor jelent meg a céggel kapcsolatos véleményeket idő tartományok listáját.|
-
-```json
-"sentiments": [
+"keywords": [
 {
     "id": 0,
-    "averageScore": 0.87,
+    "text": "office",
+    "confidence": 1.6666666666666667,
+    "language": "en-US",
     "instances": [
     {
-        "start": "00:00:23",
-        "end": "00:00:41"
+        "start": "00:00:00.5100000",
+        "end": "00:00:02.7200000"
+    },
+    {
+        "start": "00:00:03.9600000",
+        "end": "00:00:12.2700000"
     }
     ]
-}, {
+},
+{
     "id": 1,
-    "averageScore": 0.11,
+    "text": "icons",
+    "confidence": 1.4,
+    "language": "en-US",
     "instances": [
     {
-        "start": "00:00:13",
-        "end": "00:00:21"
+        "start": "00:00:03.9600000",
+        "end": "00:00:12.2700000"
+    },
+    {
+        "start": "00:00:13.9900000",
+        "end": "00:00:15.6100000"
     }
     ]
 }
-]
+] 
 ```
 
+#### <a name="visualcontentmoderation"></a>visualContentModeration
+
+A visualContentModeration blokk tartalmaz idő-címtartományokat, amelyek a Video Indexer, potenciálisan rendelkezik a felnőtt tartalom található. Ha visualContentModeration üres, nincs nincs felnőtt tartalom azonosított.
+
+Lehet, hogy videókat, amelyek tartalmazzák a felnőtt vagy pikáns tartalmak csak a privát nézetben érhető el. Felhasználók van arra, hogy a tartalom, amelyben a IsAdult attribútum eset tartalmazni fogja az emberi ellenőrző eredménye egy emberi vizsgálóeszközt igényelnie.
+
+|Name (Név)|Leírás|
+|---|---|
+|id|A vizuális tartalom-jóváhagyás azonosítója.|
+|adultScore|A felnőtt pontszám (a content moderator).|
+|racyScore|A pikáns pontszám (a tartalom-jóváhagyás).|
+|példányok|Amikor jelent meg a vizuális tartalom-jóváhagyás időtartományok listája.|
+
+```json
+"VisualContentModeration": [
+{
+    "id": 0,
+    "adultScore": 0.00069,
+    "racyScore": 0.91129,
+    "instances": [
+    {
+        "start": "00:00:25.4840000",
+        "end": "00:00:25.5260000"
+    }
+    ]
+},
+{
+    "id": 1,
+    "adultScore": 0.99231,
+    "racyScore": 0.99912,
+    "instances": [
+    {
+        "start": "00:00:35.5360000",
+        "end": "00:00:35.5780000"
+    }
+    ]
+}
+] 
+```
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]

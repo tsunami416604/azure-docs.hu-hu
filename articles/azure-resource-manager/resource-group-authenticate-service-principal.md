@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/10/2018
 ms.author: tomfitz
-ms.openlocfilehash: 57cfa44a0eb114503b89733b2c3e309b65d5b7e5
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 84b32cadbd7d574e01053b61ace1203d495983b4
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44023324"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46498606"
 ---
 # <a name="use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>Tanúsítvánnyal rendelkező szolgáltatásnév létrehozása az Azure PowerShell használatával
 
@@ -29,7 +29,7 @@ Ha olyan alkalmazása van, amelynek erőforrásokhoz kell hozzáférnie, létreh
 * Tanúsítvány használata hitelesítéshez szkriptek felügyelet nélküli futtatásakor.
 
 > [!IMPORTANT]
-> Szolgáltatásnév létrehozása helyett fontolja meg, hogy Azure AD Managed Service Identity-t használ az alkalmazásidentitásához. Az Azure AD MSI az Azure Active Directory egy nyilvános előzetes verziójú funkciója, mely leegyszerűsíti az identitások kód számára való létrehozását. Ha a kódja egy Azure AD MSI-t támogató szolgáltatásban fut, és Azure Active Directory-hitelesítést támogató erőforrásokhoz fér hozz, akkor az Azure AD MSI jobb megoldás Önnek. Ha szeretne többet megtudni az Azure AD MSI-ről, például hogy mely szolgáltatások támogatják jelenleg, olvassa el a [Managed Service Identity az Azure-erőforrásokhoz](../active-directory/managed-identities-azure-resources/overview.md) című cikket.
+> Egyszerű szolgáltatás létrehozása helyett fontolja meg a felügyelt identitások használatával az Azure-erőforrások esetében az alkalmazás azonosítóját. A kód egy szolgáltatás, amely támogatja a felügyelt identitások és hozzáférések erőforrások, amelyek támogatják az Azure Active Directory-hitelesítés fut, ha felügyelt identitások, jobb megoldás. További információ az Azure-erőforrásokhoz, mely szolgáltatások jelenleg támogatja, beleértve a felügyelt identitásokból [Mi az Azure-erőforrások felügyelt identitások?](../active-directory/managed-identities-azure-resources/overview.md).
 
 Ez a cikk bemutatja, hogy hogyan hozhat létre egy szolgáltatásnevet tanúsítvánnyal történő hitelesítéshez. A jelszót használó szolgáltatásnevek beállításáról a következő témakörben tájékozódhat: [Azure-beli szolgáltatásnév létrehozása az Azure PowerShell használatával](/powershell/azure/create-azure-service-principal-azureps).
 
@@ -207,9 +207,9 @@ Get-AzureRmADApplication -DisplayName exampleapp | New-AzureRmADAppCredential `
 
 A szolgáltatásnév létrehozásakor az alábbi hibákba ütközhet:
 
-* **„Authentication_Unauthorized”** vagy **„No subscription found in the context.”** (Nem található előfizetés a környezetben.) – Ez a hiba akkor jelenik meg, ha a fiókja nem rendelkezik a [szükséges engedélyekkel](#required-permissions) az Azure Active Directoryban alkalmazások regisztrálásához. Jellemzően akkor fordul elő, ha az Azure Active Directory-példányában csak rendszergazdák regisztrálhatnak alkalmazásokat, és az Ön fiókja nem rendszergazdai fiók. Kérje meg a rendszergazdáját, hogy rendeljen rendszergazdai szerepkört Önhöz, vagy hogy engedélyezze az alkalmazások regisztrálását a felhasználóknak.
+* **„Authentication_Unauthorized”** vagy **„No subscription found in the context.”** (Nem található előfizetés a környezetben.) – Ezt a hibaüzenetet, ha a fiókja nem rendelkezik a [szükséges engedélyek](#required-permissions) alkalmazás regisztrálása az Azure Active Directoryban. Általában ezt a hibaüzenetet, ha az Azure Active Directoryban csak rendszergazda felhasználók regisztrálhatnak alkalmazásokat, és a fiók nem rendszergazda. Kérje meg a rendszergazdáját, hogy rendeljen rendszergazdai szerepkört Önhöz, vagy hogy engedélyezze az alkalmazások regisztrálását a felhasználóknak.
 
-* A fiókja **„nem jogosult elvégezni a(z) Microsoft.Authorization/roleAssignments/write műveletet a(z) /subscriptions/{guid} hatókörben”** – Ez a hiba akkor jelenik meg, ha a fiókja nem rendelkezik megfelelő engedélyekkel a szerepkörök identitásokhoz való hozzárendeléséhez. Kérje meg az előfizetés-rendszergazdáját, hogy adja hozzá Önt a Felhasználói hozzáférés rendszergazdája szerepkörhöz.
+* A fiók **"Nincs engedélyezés műveletre 'Microsoft.Authorization/roleAssignments/write' over scope"/ subscriptions / {guid}"."**  – Ezt a hibát látja, ha a fiókja nem rendelkezik megfelelő engedélyekkel szerepkörök hozzárendeléséhez, az identitás. Kérje meg az előfizetés-rendszergazdáját, hogy adja hozzá Önt a Felhasználói hozzáférés rendszergazdája szerepkörhöz.
 
 ## <a name="next-steps"></a>További lépések
 * A jelszót használó szolgáltatásnevek beállításáról a következő témakörben tájékozódhat: [Azure-beli szolgáltatásnév létrehozása az Azure PowerShell használatával](/powershell/azure/create-azure-service-principal-azureps).

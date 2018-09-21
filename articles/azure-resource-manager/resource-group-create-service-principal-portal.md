@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/21/2018
 ms.author: tomfitz
-ms.openlocfilehash: fc0ccd84f493fd69c84515331386592ec11a887e
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 2f053f6dd98b9f4e97d69e51bce933a003633277
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44025293"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46497943"
 ---
 # <a name="use-portal-to-create-an-azure-active-directory-application-and-service-principal-that-can-access-resources"></a>Az Azure Active Directory-alkalmazás és -erőforrások elérésére képes egyszerű szolgáltatás létrehozása a portál használatával
 
@@ -27,7 +27,7 @@ Ha rendelkezik, amelyet eléréséhez, vagy módosítsa erőforrások, be kell �
 Ez a cikk bemutatja, hogyan lehet ezeket a lépéseket a portálon keresztül. Egy egybérlős alkalmazást, ahol az alkalmazás futtatásához csak egy szervezeten belül célja összpontosít. Általában használnak a egybérlős alkalmazások az üzleti alkalmazások futtatására a szervezeten belül.
 
 > [!IMPORTANT]
-> Szolgáltatásnév létrehozása helyett fontolja meg, hogy Azure AD Managed Service Identity-t használ az alkalmazásidentitásához. Az Azure AD MSI az Azure Active Directory egy nyilvános előzetes verziójú funkciója, mely leegyszerűsíti az identitások kód számára való létrehozását. Ha a kódja egy Azure AD MSI-t támogató szolgáltatásban fut, és Azure Active Directory-hitelesítést támogató erőforrásokhoz fér hozz, akkor az Azure AD MSI jobb megoldás Önnek. Ha szeretne többet megtudni az Azure AD MSI-ről, például hogy mely szolgáltatások támogatják jelenleg, olvassa el a [Managed Service Identity az Azure-erőforrásokhoz](../active-directory/managed-identities-azure-resources/overview.md) című cikket.
+> Egyszerű szolgáltatás létrehozása helyett fontolja meg a felügyelt identitások használatával az Azure-erőforrások esetében az alkalmazás azonosítóját. A kód egy szolgáltatás, amely támogatja a felügyelt identitások és hozzáférések erőforrások, amelyek támogatják az Azure Active Directory-hitelesítés fut, ha felügyelt identitások, jobb megoldás. További információ az Azure-erőforrásokhoz, mely szolgáltatások jelenleg támogatja, beleértve a felügyelt identitásokból [Mi az Azure-erőforrások felügyelt identitások?](../active-directory/managed-identities-azure-resources/overview.md).
 
 ## <a name="required-permissions"></a>Szükséges engedélyek
 
@@ -84,11 +84,11 @@ Ellenőrizze előfizetése engedélyei között:
 
    ![alkalmazás hozzáadása](./media/resource-group-create-service-principal-portal/select-add-app.png)
 
-1. Adja meg az alkalmazás nevét és URL-címét. Válassza a **Webalkalmazás/API** lehetőséget a létrehozni kívánt alkalmazás típusaként. Hitelesítő adatok nem hozható létre egy [natív alkalmazás](../active-directory/manage-apps/application-proxy-configure-native-client-application.md); így, hogy a típus nem működik egy automatizált alkalmazás. Miután beállította az értékeket, válassza ki a **létrehozás**.
+1. Adja meg az alkalmazás nevét és URL-címét. Válassza a **Webalkalmazás/API** lehetőséget a létrehozni kívánt alkalmazás típusaként. Hitelesítő adatok nem hozható létre egy [natív alkalmazás](../active-directory/manage-apps/application-proxy-configure-native-client-application.md); így, hogy egy automatikus alkalmazásnak típusa nem megfelelő. Miután beállította az értékeket, válassza ki a **létrehozás**.
 
    ![alkalmazás elnevezése](./media/resource-group-create-service-principal-portal/create-app.png)
 
-Az alkalmazás hozott létre.
+Létrehozta az alkalmazást.
 
 ## <a name="get-application-id-and-authentication-key"></a>Alkalmazásazonosító és hitelesítési kulcs beszerzése
 
@@ -114,7 +114,7 @@ Ha programozott módon jelentkezik be, szüksége lesz az alkalmazásazonosító
 
    ![kulcs mentése](./media/resource-group-create-service-principal-portal/save-key.png)
 
-   A kulcs mentése után megjelenik a kulcs értéke. Másolja ezt az értéket, mivel később nem lesz lehetősége lekérni a kulcsot. A kulcsértéket és az alkalmazásazonosítót az alkalmazásként való bejelentkezéshez kell megadnia. A kulcsértéket olyan helyen tárolja, ahonnan az alkalmazás le tudja kérni.
+   A kulcs mentése után megjelenik a kulcs értéke. Másolja ezt az értéket, mert nem sikerült beolvasni a kulcsot később. A kulcs értékét az alkalmazás azonosítójával jelentkezzen be az alkalmazást, hogy adja meg. A kulcsértéket olyan helyen tárolja, ahonnan az alkalmazás le tudja kérni.
 
    ![mentett kulcs](./media/resource-group-create-service-principal-portal/copy-key.png)
 

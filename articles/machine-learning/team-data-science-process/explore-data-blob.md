@@ -1,6 +1,6 @@
 ---
-title: Az adatok Azure blob storage-Pandas megismerése |} A Microsoft Docs
-description: Annak megismerése a Pandas használatával az Azure blob-tárolóban tárolt adatokat.
+title: Az adatok Azure blob storage-pandas megismerése |} A Microsoft Docs
+description: Annak megismerése a pandas használatával az Azure blob-tárolóban tárolt adatokat.
 services: machine-learning,storage
 documentationcenter: ''
 author: deguhath
@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: deguhath
-ms.openlocfilehash: 61943da154483d8e815fa135fba30b136724b011
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: b80fcecf28eaaf05e7fc199a9c318fd4148b9212
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42057274"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46497858"
 ---
-# <a name="explore-data-in-azure-blob-storage-with-pandas"></a>Az Azure Blob Storage-ban található adatok megismerése a Pandas használatával
-Ez a dokumentum bemutatja, hogyan fedezheti fel az Azure blob-tároló használatával tárolt adatok [Pandas](http://pandas.pydata.org/) Python-csomag.
+# <a name="explore-data-in-azure-blob-storage-with-pandas"></a>Az adatok Azure blob storage-pandas megismerése
+Ez a dokumentum bemutatja, hogyan fedezheti fel az Azure blob-tároló használatával tárolt adatok [pandas](http://pandas.pydata.org/) Python-csomag.
 
 A következő **menü** mutató hivatkozásokat talál, amelyek bemutatják, hogyan eszközök segítségével feltárhatja az adatait a különböző tárolási környezetekbe. Ez a feladat Ez a lépés a [adatelemzési folyamat](overview.md).
 
@@ -35,8 +35,8 @@ Ez a cikk feltételezi, hogy rendelkezik:
 * Létrehozott egy Azure storage-fiókot. Ha utasításokat van szüksége, tekintse meg [Azure Storage-fiók létrehozása](../../storage/common/storage-quickstart-create-account.md)
 * Tárolja az adatokat egy Azure blob storage-fiókot. Ha utasításokat van szüksége, tekintse meg [adatok áthelyezése az Azure Storage szolgáltatásba vagy onnan](../../storage/common/storage-moving-data.md)
 
-## <a name="load-the-data-into-a-pandas-dataframe"></a>Az adatok betöltése az Pandas DataFrame
-Vizsgálata, és a egy adatkészlet módosítására, azt kell először le kell a blob-forrás egy helyi fájlt, amely majd tölthető Pandas DataFrame-be. Ez az eljárás követéséhez lépései a következők:
+## <a name="load-the-data-into-a-pandas-dataframe"></a>Az adatok betöltése a pandas DataFrame-be
+Vizsgálata, és a egy adatkészlet módosítására, akkor kell először le kell a blob-forrás egy helyi fájlt, amely majd tölthető be a pandas DataFrame. Ez az eljárás követéséhez lépései a következők:
 
 1. Letöltés az adatok Azure blob-a blob szolgáltatással következő Python-kódmintát. Cserélje le a konkrét értékek a változót a következő kódot: 
    
@@ -55,15 +55,15 @@ Vizsgálata, és a egy adatkészlet módosítására, azt kell először le kell
         blob_service.get_blob_to_path(CONTAINERNAME,BLOBNAME,LOCALFILENAME)
         t2=time.time()
         print(("It takes %s seconds to download "+blobname) % (t2 - t1))
-2. Az adatokat olvas be egy Pandas-adatkeretbe a letöltött fájl.
+2. Az adatok olvashatók be egy pandas DataFrame a letöltött fájl.
    
         #LOCALFILE is the file path    
         dataframe_blobdata = pd.read_csv(LOCALFILE)
 
 Most már készen áll az adatok, és hozzon létre ehhez az adatkészlethez funkcióinak.
 
-## <a name="blob-dataexploration"></a>Példák a Pandas használatával az adatok feltárása
-Íme néhány példa többféle módon lehet adatokat Pandas használatával:
+## <a name="blob-dataexploration"></a>Példák a pandas használatával az adatok feltárása
+Íme néhány példa többféle módon lehet adatokat pandas használatával:
 
 1. Vizsgálja meg a **sorok és oszlopok száma** 
    

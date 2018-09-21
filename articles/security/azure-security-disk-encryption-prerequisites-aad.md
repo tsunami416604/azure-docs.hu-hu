@@ -7,12 +7,12 @@ ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
 ms.date: 09/10/2018
-ms.openlocfilehash: 510ca032f77da25238ec060d4122a25345c9fb90
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 6d08dbe1976363be414597401d7a4efbae82c9b4
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44346648"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46498436"
 ---
 # <a name="azure-disk-encryption-prerequisites-previous-release"></a>Az Azure Disk Encryption előfeltétel (előző kiadás)
 
@@ -70,7 +70,7 @@ Parancsok, amelyek segítségével csatlakoztathatja az adatlemezeket és a szü
     - [Telepítse és konfigurálja a Windows Azure PowerShell](/powershell/azure/install-azurerm-ps). 
         - A PowerShellGet, Azure PowerShell telepítése és az AzureRM-modul betöltéséhez. 
     - [Telepítse és konfigurálja az Azure Powershell macOS és Linux rendszeren](/powershell/azure/install-azurermps-maclinux).
-        -  A PowerShell Core, .NET Core, az Azure PowerShell telepítése és az AzureRM.Netcore modul betöltése.
+        -  A PowerShell Core, .NET Core, az Azure PowerShell telepítése és a Az modul betöltésére.
 2. Telepítse a [Azure Active Directory PowerShell-modul](/powershell/azure/active-directory/install-adv2#installing-the-azure-ad-module). 
 
      ```powershell

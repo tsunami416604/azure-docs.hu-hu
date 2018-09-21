@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 08/29/2018
+ms.date: 09/18/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ddc27d9f5124000601a57b4ecd72c3d6021c109f
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: 3e21cb90dbe76a648cbb23729cc5068e75e8e5f7
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45542633"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46498538"
 ---
 # <a name="update-management-solution-in-azure"></a>Frissítéskezelési megoldás az Azure-ban
 
@@ -35,7 +35,7 @@ Az alábbi ábrán látható egy koncepcióvázlaton jelenítik működését é
 
 ![Frissítéskezelési folyamatdiagramja](media/automation-update-management/update-mgmt-updateworkflow.png)
 
-Az Update Management segítségével natív módon előkészítheti a gépeket ugyanabban a bérlőben több előfizetésben található. Egy másik bérlőben, be kell vezetnie a gépek kezeléséhez, azokat [nem Azure-gépek](automation-onboard-solutions-from-automation-account.md#onboard-a-non-azure-machine).
+Az Update Management segítségével natív módon előkészítheti a gépeket ugyanabban a bérlőben több előfizetésben található. Egy másik bérlőben, be kell vezetnie a gépek kezeléséhez, azokat [nem Azure-gépek](automation-onboard-solutions-from-automation-account.md#onboard-a-non-azure-machine). 
 
 Miután a számítógép frissítési megfelelőség szempontjából vizsgálatot végez, az ügynök továbbítja az adatokat tömeges az Azure Log Analyticshez való. A Windows-számítógépen a megfelelőségi vizsgálat 12 óránként történik alapértelmezés szerint.
 
@@ -55,6 +55,8 @@ Az ütemezett telepítés határozza meg, mely célszámítógépek kapni az alk
 A telepítést az Azure Automation runbookjai végzik. A runbookok nem tekinthetők, és a runbookok nem igényelnek semmilyen konfigurálást. Frissítéstelepítés létrehozásakor a központi telepítési ütemezés, amely a megadott időben az érintett számítógépekre irányuló frissítési mester runbookot elindítja hoz létre. A mester runbook egy gyermek runbookot indít az egyes ügynököket, hajtsa végre a szükséges frissítések telepítését.
 
 A dátum és a frissítés központi telepítésben megadott időpontban a célszámítógépek a központi telepítést végre párhuzamosan. A telepítés előtt történik vizsgálat és ellenőrizze, hogy a frissítések továbbra is szükséges. A WSUS-ügyfélszámítógépek Ha a frissítések WSUS, a nem jóváhagyott a frissítés telepítése sikertelen lesz.
+
+Egy gép regisztrálva a Frissítéskezelésről a több Log Analytics-munkaterületek (többkiszolgálós) kellene nem támogatott.
 
 ## <a name="clients"></a>Ügyfelek
 
@@ -190,7 +192,7 @@ Egy Naplókeresés futtatásához, amely a gép, frissítés vagy telepítés ka
 
 Frissítések értékelni az összes Linux és Windows számítógéphez a munkaterületen, után szükséges frissítések létrehozásával telepíthet egy *frissítéstelepítés*. A frissítéstelepítések egy vagy több számítógép szükséges frissítéseinek ütemezett telepítése. Megadhatja, hogy az érintett foglalandó dátuma és időpontja az üzembe helyezés és a egy számítógép vagy számítógépek csoportja. A számítógépcsoportokkal kapcsolatos további információkért tekintse meg a [Log Analytics számítógépcsoportjaival](../log-analytics/log-analytics-computer-groups.md) kapcsolatos részt.
 
- Ha számítógépcsoportok szerepelnek a, csoporttagság ütemezés létrehozása idején már csak egyszer lesz kiértékelve. A csoportot érintő későbbi változások nem tükrözi. Ennek megoldásához törölje az ütemezett frissítéstelepítést, és hozza létre újból.
+ Ha számítógépcsoportok szerepelnek a, csoporttagság ütemezés létrehozása idején már csak egyszer lesz kiértékelve. A csoportot érintő későbbi változások nem tükrözi. Ez a használati eléréséhez [dinamikus csoportok](#using-dynamic-groups), ezek a csoportok üzembe helyezéskor feloldása és a egy lekérdezés által meghatározott.
 
 > [!NOTE]
 > Windows virtuális gépek alapértelmezés szerint az Azure Marketplace-ről üzembe helyezett beállítása automatikusan frissítéseket kapjanak a Windows Update szolgáltatás. Ez a viselkedés nem változik, ez a megoldás hozzáadásakor, vagy Windows virtuális gépek felvétele a munkaterülethez. Ha ez a megoldás segítségével aktívan frissítések nem kezeli, az alapértelmezett viselkedést (automatikusan alkalmazza a frissítéseket) vonatkozik.
@@ -198,6 +200,23 @@ Frissítések értékelni az összes Linux és Windows számítógéphez a munka
 Frissítések alkalmazása folyamatban, az ubuntu rendszeren karbantartási időszakon kívül elkerüléséhez konfigurálja újra az Unattended-Upgrade csomagot az automatikus frissítések letiltásához. A csomag konfigurálásával kapcsolatos további információkért lásd: [az Ubuntu Server útmutatójának automatikus frissítések témakörében](https://help.ubuntu.com/lts/serverguide/automatic-updates.html).
 
 Érhetők el az Azure piactéren elérhető igény szerinti Red Hat Enterprise Linux (RHEL) rendszerképekből létrehozott virtuális gépek regisztrálva vannak a hozzáférést a [Red Hat frissítési infrastruktúrához (RHUI)](../virtual-machines/virtual-machines-linux-update-infrastructure-redhat.md) , amely az Azure-ban üzemel. Más Linux-disztribúció a következő támogatott módszerek a terjesztési kell frissíteni a terjesztési online fájl adattárból.
+
+Hozzon létre egy új frissítéstelepítést, jelölje be **frissítések központi telepítésének ütemezése**. A **új frissítéstelepítés** panel nyílik meg. Adja meg az értékeket az alábbi táblázatban leírt tulajdonságokkal, és kattintson a **létrehozás**:
+
+| Tulajdonság | Leírás |
+| --- | --- |
+| Name (Név) |A frissítéstelepítést beazonosító egyedi név. |
+|Operációs rendszer| Linux vagy Windows|
+| A csoportok frissítése (előzetes verzió)|Egy előfizetés, erőforráscsoport, helyek és címkék felvenni az üzembe helyezés az Azure-beli virtuális dinamikus csoportot hozhat létre kombinációja alapján lekérdezést határoz meg. További tudnivalókért tekintse meg, [dinamikus csoportok](automation-update-management.md#using-dynamic-groups)|
+| Frissítendő gépek |Válassza ki, mentett keresést, importált csoporthoz, vagy a legördülő listából válassza ki a gépet, és válassza ki az egyes gépek. Ha a **Gépek** lehetőséget választotta, a gép állapota az **ÜGYNÖK KÉSZÜLTSÉGÉNEK FRISSÍTÉSE** oszlopban látható.</br> A számítógépcsoportok Log Analyticsben lévő létrehozásának különböző módszereivel kapcsolatos további információkért tekintse meg a [Log Analytics számítógépcsoportjait](../log-analytics/log-analytics-computer-groups.md) ismertető részt |
+|Frissítési besorolások|Válassza ki az összes szükséges|
+|Frissítések belefoglalása vagy kizárása|Ekkor megnyílik a **beszámítása vagy kihagyása** lapot. A felügyelt vagy kizárt frissítések olyan külön lapon. A belefoglalási kezelésének további információkért lásd: [belefoglalási viselkedés](automation-update-management.md#inclusion-behavior) |
+|Ütemezési beállítások|Válassza ki az időpontot, elindításához, és válassza ki bármelyik egyszer, vagy az ismétlődés ismétlődés|
+| Előkészítő parancsfájljainak + utáni szkriptek|Válassza ki a parancsfájlok futtatása előtt és után a központi telepítés|
+| Karbantartási időszak |Frissítések beállított percek száma. Az érték lehet nem lehet kisebb, mint 30 perc és legfeljebb 6 óra |
+| Vezérlő újraindítása| Azt határozza meg, hogyan újraindítások kell kezelni. Az elérhető lehetőségek:</br>Újraindítás szükség esetén (alapértelmezett beállítás)</br>Mindig induljon újra</br>Soha ne induljon újra</br>Csak újraindítás – frissítések nem lesznek telepítve|
+
+Frissítéstelepítések programozott módon is létrehozhatók. Frissítéstelepítés létrehozása a REST API-val kapcsolatban lásd: [Update - konfigurációkat létrehozni](/rest/api/automation/softwareupdateconfigurations/create). Emellett van egy heti központi telepítés létrehozásához használható példa runbook. Ez a forgatókönyv kapcsolatos további információkért lásd: [egy heti központi telepítés létrehozása egy erőforráscsoportba tartozó egy vagy több virtuális](https://gallery.technet.microsoft.com/scriptcenter/Create-a-weekly-update-2ad359a1).
 
 ## <a name="view-missing-updates"></a>Hiányzó frissítések megtekintése
 
@@ -209,20 +228,7 @@ Válassza ki a **Frissítéstelepítések** fülre kattintva megtekintheti a fri
 
 ![Frissítéstelepítési eredmények áttekintése](./media/automation-update-management/update-deployment-run.png)
 
-## <a name="create-or-edit-an-update-deployment"></a>Hozzon létre vagy frissítéstelepítés szerkesztése
-
-Hozzon létre egy új frissítéstelepítést, jelölje be **frissítések központi telepítésének ütemezése**. A **új frissítéstelepítés** panel nyílik meg. Adja meg az értékeket az alábbi táblázatban leírt tulajdonságokkal, és kattintson a **létrehozás**:
-
-| Tulajdonság | Leírás |
-| --- | --- |
-| Name (Név) |A frissítéstelepítést beazonosító egyedi név. |
-|Operációs rendszer| Linux vagy Windows|
-| Frissítendő gépek |Válassza ki, mentett keresést, importált csoporthoz, vagy a legördülő listából válassza ki a gépet, és válassza ki az egyes gépek. Ha a **Gépek** lehetőséget választotta, a gép állapota az **ÜGYNÖK KÉSZÜLTSÉGÉNEK FRISSÍTÉSE** oszlopban látható.</br> A számítógépcsoportok Log Analyticsben lévő létrehozásának különböző módszereivel kapcsolatos további információkért tekintse meg a [Log Analytics számítógépcsoportjait](../log-analytics/log-analytics-computer-groups.md) ismertető részt |
-|Frissítési besorolások|Válassza ki az összes szükséges|
-|Kihagyandó frissítések|Adja meg a kihagyandó frissítések. Windows adja meg a KB, a "KB" előtag nélkül. A Linux rendszerre adja meg a csomag nevét, vagy használjon helyettesítő.  |
-|Ütemezési beállítások|Válassza ki az időpontot, elindításához, és válassza ki bármelyik egyszer, vagy az ismétlődés ismétlődés|
-| Karbantartási időszak |Frissítések beállított percek száma. Az érték lehet nem lehet kisebb, mint 30 perc és legfeljebb 6 óra |
-| Vezérlő újraindítása| Azt határozza meg, hogyan újraindítások kell kezelni. Az elérhető lehetőségek:</br>Újraindítás szükség esetén (alapértelmezett beállítás)</br>Mindig induljon újra</br>Soha ne induljon újra</br>Csak újraindítás – frissítések nem lesznek telepítve|
+A REST API-ból a frissítéstelepítések megtekintése: [Software Update konfigurációs futtatások](/rest/api/automation/softwareupdateconfigurationruns).
 
 ## <a name="update-classifications"></a>Frissítési besorolások
 
@@ -484,11 +490,32 @@ Update
 | project-away ClassificationWeight, InformationId, InformationUrl
 ```
 
+## <a name="using-dynamic-groups"></a>Dinamikus csoportok (előzetes verzió)
+
+Az Update Management lehetővé teszi egy Azure virtuális gépek dinamikus eszközcsoportot frissítési telepítés céljából. Ezek a csoportok lekérdezéshez, amikor megkezdődik egy központi telepítést, a csoport tagjai értékeli ki. Amikor a lekérdezés meghatározása a következő elemek használható együtt a dinamikus csoport feltöltése
+
+* Előfizetés
+* Erőforráscsoportok
+* Helyek
+* Címkék
+
+![Csoportok kiválasztása](./media/automation-update-management/select-groups.png)
+
+Egy dinamikus csoport az eredmények előnézetének megtekintéséhez kattintson a **előzetes** gombra. Ebben az előzetes verzióban jeleníti meg a csoport tagságát ekkor az ebben a példában a címkével ellátott gépek keresésével **szerepkör** egyenlő **BackendServer**. Ha több gépet hozzáadja ezt a címkét, azok hozzáadódik a jövőbeli telepítések a csoporton.
+
+![csoportok előzetes verzió](./media/automation-update-management/preview-groups.png)
+
 ## <a name="integrate-with-system-center-configuration-manager"></a>Integrálás a System Center Configuration Managerrel
 
 Ügyfelek, akik befektettek a System Center Configuration Managerben számítógépek, kiszolgálók és mobileszközök kezeléséhez is a teljesítményét és fejlettségét a Configuration Manager szoftverfrissítések kezelését megkönnyítő támaszkodnak. A Configuration Manager a szoftverfrissítés-kezelési (SUM) ciklus részét képezi.
 
 Megtudhatja, hogyan integrálható a felügyeleti megoldás a System Center Configuration Managerrel, tekintse meg a [integrálása System Center Configuration Managerben az Update Management](oms-solution-updatemgmt-sccmintegration.md).
+
+## <a name="inclusion-behavior"></a>Belefoglalási viselkedés
+
+Frissítés belefoglalási lehetővé teszi, hogy adja meg a alkalmazni a frissítéseket. Függetlenül attól, hogy a besorolásokat a telepítésre kijelölt telepítve javítások vagy a csomagokat, amelyek felhasználhatók.
+
+A Linux rendszerű gépek Ha egy csomag részét képezi, de egy függő csomagot, amely ki van zárva, specifcally volt a csomag nincs telepítve.
 
 ## <a name="patch-linux-machines"></a>Javítás Linux rendszerű gépeken
 
@@ -527,3 +554,5 @@ Folytassa a következő oktatóanyagban megtudhatja, hogyan kezelheti a frissít
 
 * Naplókeresés funkciójával [Log Analytics](../log-analytics/log-analytics-log-searches.md) frissítés részletes adatainak megtekintéséhez.
 * [Riasztások létrehozása](../log-analytics/log-analytics-alerts.md) , a számítógépekről hiányzó kritikus frissítések észlelésekor, vagy ha egy számítógép automatikus frissítése letiltott állapotba kerül.
+
+* Hogyan kezelheti az Update Management REST API-val kapcsolatban lásd: [szoftverkonfigurációjáról Update](/rest/api/automation/softwareupdateconfigurations)

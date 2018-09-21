@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 08/29/2018
+ms.date: 09/18/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9cb2b0bdb036b26fbd355ff4bd84885b7e15507d
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: 23f86581b5ecc5257ccb246c7199eef4246efb08
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45541973"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46498232"
 ---
 # <a name="manage-updates-for-multiple-machines"></a>Frissítések kezelése több gép esetén
 
@@ -127,6 +127,7 @@ Az a **új frissítéstelepítés** panelen adja meg a következő információk
 
 - **Név**: Adjon meg egy egyedi nevet a frissítéstelepítés azonosításához.
 - **Operációs rendszer**: válasszon **Windows** vagy **Linux**.
+- **A csoportok frissítése (előzetes verzió)**: előfizetés, erőforráscsoport, helyek és címkék felvenni az üzembe helyezés az Azure-beli virtuális dinamikus csoportot hozhat létre kombinációja alapján egy lekérdezést határoz meg. További tudnivalókért tekintse meg, [dinamikus csoportok](automation-update-management.md#using-dynamic-groups)
 - **Frissítendő gépek**: válassza ki, mentett keresést, importált csoporthoz, vagy válassza ki a gépeket, válassza ki a frissíteni kívánt gépeket. Ha a **Gépek** lehetőséget választotta, a gép állapota az **ÜGYNÖK KÉSZÜLTSÉGÉNEK FRISSÍTÉSE** oszlopban látható. A frissítéstelepítés ütemezése előtt látható a gép állapotát. A számítógépcsoportok Log Analyticsben lévő létrehozásának különböző módszereivel kapcsolatos további információkért tekintse meg a [Log Analytics számítógépcsoportjait](../log-analytics/log-analytics-computer-groups.md) ismertető részt
 
   ![Új frissítés üzembe helyezési panel](./media/manage-update-multi/update-select-computers.png)
@@ -141,13 +142,15 @@ Az a **új frissítéstelepítés** panelen adja meg a következő információk
   - Eszközök
   - Frissítések
 
-- **Kihagyandó frissítések**: Ezzel a beállítással megnyílik a **kizárása** lapot. Adja meg, a tudásbáziscikkeket vagy kizárni kívánt alkalmazáscsomagok nevének.
+- **Belefoglalási és kizárási frissítései** -ekkor megnyílik a **beszámítása vagy kihagyása** lap. A felügyelt vagy kizárt frissítések olyan külön lapon. A belefoglalási kezelésének további információkért lásd: [belefoglalási viselkedés](automation-update-management.md#inclusion-behavior)
 
 - **Ütemezési beállítások**: Elfogadhatja az alapértelmezett időpontot, amely a 30 perccel az aktuális idő utáni időpont, Megadhat egy másik időpontot is.
 
    Azt is megadhatja, hogy a telepítés egyszer történjen meg, vagy ismétlődjön. Egy ismétlődő ütemezés beállításához a **ismétlődési**válassza **ismétlődő**.
 
    ![Ütemezési beállítások párbeszédpanel](./media/manage-update-multi/update-set-schedule.png)
+
+- **Előre parancsfájlok + utáni parancsfájlok**: válassza ki a parancsfájlok futtatása előtt és után a központi telepítés. További tudnivalókért lásd: [kezelése előtti és utáni parancsfájlokat](pre-post-scripts.md).
 - **Karbantartási időszak (perc)**: Adja meg azt az időszakot, hogy azt szeretné, hogy a frissítés telepítése megtörténjen. Ez a beállítás biztosítja, hogy a módosítások a megadott szolgáltatási időkereten belül menjenek végbe.
 
 - **Indítsa újra a vezérlő** – Ez a beállítás azt határozza meg, hogyan kezelje a központi telepítési újraindítások.
