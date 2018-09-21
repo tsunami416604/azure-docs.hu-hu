@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 9512c800a35ad4a819c657b07227d781c63c6399
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: e91ca2ff438e3ae9e9b3f46e5a8db89f17fb1c8e
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39163340"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46295121"
 ---
 # <a name="tutorial-enabling-password-writeback"></a>Oktatóanyag: Jelszóvisszaíró engedélyezése
 
@@ -29,7 +29,7 @@ Az oktatóanyagban engedélyezzük a jelszóvisszaírót hibrid környezetben. A
 
 * Hozzáférés egy működő Azure AD-bérlőhöz, amely legalább egy próbaverziós licenccel rendelkezik.
 * Egy globális rendszergazdai jogosultsággal rendelkező fiók az Azure AD-bérlőn.
-* Egy meglévő kiszolgáló, amely az [Azure AD Connect](../connect/active-directory-aadconnect-get-started-express.md) aktuális verziójához van konfigurálva.
+* Egy meglévő kiszolgáló, amely az [Azure AD Connect](../hybrid/how-to-connect-install-express.md) aktuális verziójához van konfigurálva.
 * Az új jelszó önkiszolgáló kérésével (SSPR) kapcsolatos korábbi oktatóanyagok elvégzése.
 
 ## <a name="enable-password-writeback-option-in-azure-ad-connect"></a>A jelszóvisszaírás engedélyezése az Azure AD Connectben

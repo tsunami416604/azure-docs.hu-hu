@@ -15,16 +15,16 @@ ms.topic: quickstart
 ms.date: 06/22/2018
 ms.author: msangapu
 ms.custom: mvc
-ms.openlocfilehash: 6fa0bab5d2b402c85ea3ee70e7356f8c8c989ab9
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 1d54d914edb306b89dc6f2604aa5af3d17cb535d
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39446782"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45576782"
 ---
 # <a name="create-a-multi-container-preview-app-using-web-app-for-containers"></a>Többtárolós (előzetes verzió) alkalmazás létrehozása a Web App for Containers szolgáltatással
 
-A [Web App for Containers](app-service-linux-intro.md) segítségével rugalmasan használhatók a Docker-rendszerképek. Ez a rövid útmutató a többtárolós alkalmazásoknak a Web App for Containersben történő üzembe helyezésén vezeti végig a [Cloud Shellben](https://docs.microsoft.com/en-us/azure/cloud-shell/overview) egy Docker Compose-konfiguráció használatával. A Kuberneteshez és a MySQL-hez készült Azure DB teljes körű megoldásához kövesse a [többtárolós alkalmazásokról szóló oktatóanyag lépéseit](tutorial-multi-container-app.md).
+A [Web App for Containers](app-service-linux-intro.md) segítségével rugalmasan használhatók a Docker-rendszerképek. Ez a rövid útmutató a többtárolós alkalmazásoknak a Web App for Containersben történő üzembe helyezésén vezeti végig a [Cloud Shellben](https://docs.microsoft.com/azure/cloud-shell/overview) egy Docker Compose-konfiguráció használatával. A Kuberneteshez és a MySQL-hez készült Azure DB teljes körű megoldásához kövesse a [többtárolós alkalmazásokról szóló oktatóanyag lépéseit](tutorial-multi-container-app.md).
 
 Ezt a rövid útmutatót a Cloud Shellben követjük végig, a parancsok azonban helyileg is futtathatók az [Azure CLI](/cli/azure/install-azure-cli) (2.0.32-es vagy újabb verzió) használatával. 
 

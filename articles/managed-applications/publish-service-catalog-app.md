@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.date: 06/08/2018
 ms.author: tomfitz
-ms.openlocfilehash: 39d2979aad3aee80ba010d5fc3cf83ad486baf2d
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: 3b1da6e9068be3c96cce5973f29344fe7e4b4872
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35247880"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35763370"
 ---
 # <a name="publish-a-managed-application-for-internal-consumption"></a>Felügyelt alkalmazás közzététele belső használatra
 
@@ -171,7 +171,7 @@ Set-AzureStorageBlobContent -File "D:\myapplications\app.zip" `
 
 ### <a name="create-an-azure-active-directory-user-group-or-application"></a>Azure Active Directory felhasználói csoport vagy -alkalmazás létrehozása
 
-A következő lépés egy felhasználói csoport vagy alkalmazás kiválasztása, amely az ügyfél nevében felügyeli az erőforrásokat. Ez a felhasználói csoport vagy alkalmazás engedélyeket kap a felügyelt erőforráscsoporthoz a kijelölt szerepkörnek megfelelően. A szerepkör bármely beépített szerepköralapú hozzáférés-vezérlési (RBAC) szerepkör lehet, például Tulajdonos vagy Közreműködő. Az erőforrások felügyeletére egyéni felhasználói engedélyt is lehet adni, de ezt az engedélyt általában egy felhasználói csoporthoz rendelik hozzá. Új Azure Active Directory felhasználói csoport létrehozásához tekintse meg [az Azure Active Directoryban csoportok létrehozását és tagok hozzáadását ismertető](../active-directory/active-directory-groups-create-azure-portal.md) cikket.
+A következő lépés egy felhasználói csoport vagy alkalmazás kiválasztása, amely az ügyfél nevében felügyeli az erőforrásokat. Ez a felhasználói csoport vagy alkalmazás engedélyeket kap a felügyelt erőforráscsoporthoz a kijelölt szerepkörnek megfelelően. A szerepkör bármely beépített szerepköralapú hozzáférés-vezérlési (RBAC) szerepkör lehet, például Tulajdonos vagy Közreműködő. Az erőforrások felügyeletére egyéni felhasználói engedélyt is lehet adni, de ezt az engedélyt általában egy felhasználói csoporthoz rendelik hozzá. Új Azure Active Directory felhasználói csoport létrehozásához tekintse meg [az Azure Active Directoryban csoportok létrehozását és tagok hozzáadását ismertető](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md) cikket.
 
 Az erőforrások felügyeletéhez szüksége lesz a felhasználói csoport objektumazonosítójára. 
 

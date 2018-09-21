@@ -15,12 +15,12 @@ ms.topic: overview
 ms.date: 01/19/2018
 ms.author: mscurrell
 ms.custom: mvc
-ms.openlocfilehash: b784e64962569f22cba3bc52b6a4e9443a4587d5
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 36d37c2d18823273b5c0f82ecae0f9420e35768c
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30311991"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35621279"
 ---
 # <a name="what-is-azure-batch"></a>Mi az Azure Batch?
 
@@ -61,7 +61,7 @@ Magasabb szintű, számításifeladat-specifikus képességek is elérhetők az 
 * A Batch támogatja a nagy méretű [renderelési számítási feladatokat](batch-rendering-service.md) az Autodesk Maya, a 3ds Max, az Arnold, a V-Ray és az egyéb renderelő eszközök használatával. 
 * Az R-felhasználók a [doAzureParallel R-csomag](https://github.com/Azure/doAzureParallel) telepítésével könnyen felskálázhatják horizontálisan az R-algoritmusok végrehajtását a Batch-készleteken.
 
-A Batch feladatokat nagyobb, adatok átalakítását végző Azure-munkafolyamatok részeként is futtathatja az [Azure Data Factory](../data-factory/v1/data-factory-data-processing-using-batch.md) vagy hasonló eszközök felügyelete alatt.
+A Batch feladatokat nagyobb, adatok átalakítását végző Azure-munkafolyamatok részeként is futtathatja az [Azure Data Factory](../data-factory/transform-data-using-dotnet-custom-activity.md) vagy hasonló eszközök felügyelete alatt.
 
 
 ## <a name="how-it-works"></a>Működés

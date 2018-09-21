@@ -11,12 +11,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 06/20/2018
 ms.author: masoucou
-ms.openlocfilehash: 255f23906bc93ce78b28f4f0806d7076a97b0ef2
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: e002f99cc16721b78d85284105ce22ee7d1eb9a3
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43698689"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45574827"
 ---
 # <a name="quickstart-build-a-mongodb-api-xamarinforms-app-with-net-and-the-azure-portal"></a>Rövid útmutató: MongoDB API Xamarin.Forms-alkalmazás létrehozása a .NET-tel az Azure Portalon
 
@@ -173,7 +173,7 @@ Az alkalmazás frissítve lett minden olyan információval, amely az Azure Cosm
 2. Kattintson **az összes NuGet-csomagot visszaállító** lehetőségre.
 3. Kattintson a jobb gombbal a **TaskList.Android** elemre, és válassza a **Beállítás kezdőprojektként** lehetőséget.
 4. Az alkalmazás hibakereséséhez nyomja le az F5 billentyűt.
-5. Ha iOS-rendszeren szeretné futtatni, a készüléket először csatlakoztatnia kell egy Machez (ehhez itt talál [útmutatást](https://docs.microsoft.com/en-us/xamarin/ios/get-started/installation/windows/introduction-to-xamarin-ios-for-visual-studio)).
+5. Ha iOS-rendszeren szeretné futtatni, a készüléket először csatlakoztatnia kell egy Machez (ehhez itt talál [útmutatást](https://docs.microsoft.com/xamarin/ios/get-started/installation/windows/introduction-to-xamarin-ios-for-visual-studio)).
 6. Kattintson a jobb gombbal a **TaskList.iOS** elemre, és válassza a **Beállítás kezdőprojektként** lehetőséget.
 7. Az alkalmazás hibakereséséhez nyomja le az F5 billentyűt.
 
