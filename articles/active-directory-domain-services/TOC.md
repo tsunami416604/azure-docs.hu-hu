@@ -44,6 +44,7 @@
 ### [Csoportosan felügyelt szolgáltatásfiók létrehozása felügyelt tartományon](active-directory-ds-create-gmsa.md)
 ### [Csoportházirend-kezelése felügyelt tartományon](active-directory-ds-admin-guide-administer-group-policy.md)
 ### [Jelszószabályzatok konfigurálása felügyelt tartományon](active-directory-ds-password-policy.md)
+### [Hatókörön belüli szinkronizálás konfigurálása az Azure AD-ből egy felügyelt tartományra](active-directory-ds-scoped-synchronization.md)
 ## [Virtuális hálózat kiválasztása](active-directory-ds-networking.md)
 ## Alkalmazások üzembe helyezése
 ### [Profilszinkronizálás támogatásának beállítása SharePoint-kiszolgálóhoz](active-directory-ds-enable-sharepoint-profile-sync.md)
