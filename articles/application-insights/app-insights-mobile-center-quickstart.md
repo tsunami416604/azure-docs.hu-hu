@@ -11,12 +11,12 @@ ms.reviewer: daviste
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: e69cf8753fb0cc9326e047ec97cbe08ee6f26610
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 040e54b02161386dcc16b943956f39b86b264303
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43668461"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46950522"
 ---
 # <a name="start-analyzing-your-mobile-app-with-app-center-and-application-insights"></a>A mobilalkalmazás elemzésének első lépései az App Center és az Application Insights használatával
 
@@ -126,7 +126,7 @@ Az App Center által biztosított elemzőeszközök mellett az Application Insig
    1. Jelölje ki a lekérdezést úgy, hogy a lekérdezés egy tetszőleges pontjára kattint a szövegszerkesztőben.
    2. Ezután kattintson az **Indítás** lehetőségre a lekérdezés futtatásához. 
 
-   További információk az [Application Insights Analyticsről](app-insights-analytics.md) és a [Log Analytics lekérdezési nyelvről](https://docs.loganalytics.io/docs/Language-Reference).
+   További információk az [Application Insights Analyticsről](app-insights-analytics.md) és a [Log Analytics lekérdezési nyelvről](https://aka.ms/LogAnalyticsLanguageReference).
 
 
 2. **Szegmentálja és szűrje az egyéniesemény-telemetriát.** Az Application Insights **Áttekintés** oldalán a tartalomjegyzékből válassza ki a **Felhasználók** lehetőséget.

@@ -1,6 +1,6 @@
 ---
-title: Hibrid felhőalapú identitás konfigurálása az Azure és az Azure-verem alkalmazásokkal |} Microsoft Docs
-description: Tudnivalók a hibrid felhőalapú identitás konfigurálása az Azure és az Azure-verem alkalmazásokkal.
+title: A hibrid felhőbeli identitás konfigurálása az Azure és az Azure Stack-alkalmazások |} A Microsoft Docs
+description: Ismerje meg, hogy hibrid felhőbeli identitás konfigurálása az Azure és az Azure Stack-alkalmazásokkal.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -11,65 +11,72 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 05/22/2018
+ms.date: 09/24/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: a57afb4a90da5877879afddc35545e0bfef622a7
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: bed67c0213ed5715b8b3d8fd393d8d856e0ea15b
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34808162"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46964990"
 ---
-# <a name="tutorial-configure-hybrid-cloud-identity-for-azure-and-azure-stack-applications"></a>Oktatóanyag: hibrid felhő identitás Azure és az Azure-verem alkalmazások konfigurálása
+# <a name="tutorial-configure-hybrid-cloud-identity-for-azure-and-azure-stack-applications"></a>Oktatóanyag: Hibrid felhő identitás az Azure és az Azure Stack-alkalmazások konfigurálása
 
-*A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
+*A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
 
-Útmutató az Azure és az Azure-verem alkalmazások hibrid felhő identitásának beállítása.
+Ismerje meg, hogy alkalmazásait az Azure és az Azure Stack egy hibrid felhőbeli identitás konfigurálása.
 
-Hozzáférés az Azure-ban is globális és Azure verem alkalmazások két választási lehetősége van.
+Az alkalmazások globális Azure-beli és az Azure Stack való hozzáférést két lehetősége van.
 
- * Ha az Azure-verem folyamatos csatlakozik az internethez, Azure Active Directory (Azure AD) is használhatja.
- * Ha Azure verem nem kapcsolódik az internethez, használhatja az Azure Directory összevont szolgáltatások (AD FS).
+ * Amikor az Azure Stack egy folyamatos internetkapcsolattal rendelkezik, az Azure Active Directory (Azure AD) is használhatja.
+ * Ha az Azure Stack nem kapcsolódik az internethez, használhatja az Azure Directory összevont szolgáltatások (AD FS).
 
-Szolgáltatásnevekről segítségével hozzáférést az Azure-verem alkalmazások történő üzembe helyezése vagy CA konfigurációját az Azure Resource Manager segítségével Azure-készletben.
+A szolgáltatásnevek használatával hozzáférést biztosít az Azure Stack alkalmazások központi telepítése vagy konfigurálása az Azure Resource Manager használatával az Azure Stackben céljából.
 
-Ebben az oktatóanyagban egy minta környezet fog létrehozni:
+Ebben az oktatóanyagban egy mintául szolgáló környezet fog létrehozni:
 
 > [!div class="checklist"]
-> * A hibrid azonosságának Azure-ban globális és Azure verem
-> * Az Azure-verem API eléréséhez jogkivonat beolvasása.
+> - A globális Azure és az Azure Stack egy hibrid identitás létrehozása
+> - Az Azure Stack API eléréséhez jogkivonat beszerzésére.
 
-Ebben az oktatóanyagban Azure verem operátor engedélyekkel a lépéseket kell rendelkeznie.
+Ez az oktatóanyag lépéseit az Azure Stack operátori kell rendelkeznie.
 
-## <a name="create-a-service-principal-for-azure-ad-in-the-portal"></a>Egy egyszerű szolgáltatás létrehozása az Azure AD a portálon
+> [!Tip]  
+> ![hibrid-pillars.png](./media/azure-stack-solution-cloud-burst/hybrid-pillars.png)  
+> A Microsoft Azure Stack az Azure bővítménye. Az Azure Stack hatékonyságával és innovációjával a felhőalapú számítástechnika a helyszíni környezetben, és a egyetlen olyan hibrid felhő, amely lehetővé teszi, hogy létrehozása és üzembe helyezése bárhol a hibrid alkalmazások engedélyezésével biztosítható.  
+> 
+> A tanulmány [hibrid alkalmazások kapcsolatos kialakítási szempontok](https://aka.ms/hybrid-cloud-applications-pillars) tervezése, telepítése és a hibrid működő a szoftverminőség alappillérei (elhelyezését, a méretezhetőség, rugalmasság, kezelhetőségi és biztonsági) felülvizsgálatai az alkalmazások. A kialakítási szempontokat segítséget nyújt a hibrid alkalmazások kialakítását, minimálisra csökkentik az éles környezetben kihívások optimalizálása.
 
-Ha az Azure AD használva identity Azure verem telepítése után, szolgáltatásnevekről ugyanúgy, mint az Azure hozhat létre. A [szolgáltatásnevekről létrehozása](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-create-service-principals#create-service-principal-for-azure-ad) a cikk bemutatja, hogyan hajtsa végre a lépéseket a portálon keresztül. Ellenőrizze, hogy a [szükséges engedélyek az Azure AD](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#required-permissions) megkezdése előtt.
 
-## <a name="create-a-service-principal-for-ad-fs-using-powershell"></a>A PowerShell használatával AD FS egyszerű szolgáltatás létrehozása
+## <a name="create-a-service-principal-for-azure-ad-in-the-portal"></a>A portálon az Azure ad egyszerű szolgáltatás létrehozása
 
-Ha telepítette az AD FS Azure verem, PowerShell segítségével hozzon létre egy egyszerű szolgáltatást, rendeljen hozzá egy szerepkört a hozzáféréshez és jelentkezzen be a Powershellből ezzel az identitással. [Egyszerű szolgáltatásnév létrehozása az AD FS](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-create-service-principals#create-service-principal-for-ad-fs) bemutatja, hogyan hajtsa végre a szükséges lépéseket a PowerShell használatával.
+Ha már telepítette az Azure AD az ügyfélidentitás-tárolóval, mint az Azure Stack, létrehozhat egyszerű szolgáltatásokat, mint az Azure-ban végezhet el. A [szolgáltatásnevek létrehozása](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-create-service-principals#create-service-principal-for-azure-ad) a cikk bemutatja, hogyan végezheti el a lépéseket a portálon keresztül. Ellenőrizze, hogy rendelkezik a [szükséges Azure AD-engedélyekről](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#required-permissions) megkezdése előtt.
 
-## <a name="using-the-azure-stack-api"></a>Az Azure verem API használatával
+## <a name="create-a-service-principal-for-ad-fs-using-powershell"></a>Hozzon létre egy egyszerű szolgáltatást az AD FS Szolgáltatásokhoz a PowerShell használatával
 
-A [Azure verem API](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-rest-api-use) oktatóanyag végigvezeti az Azure-verem API eléréséhez jogkivonat lekérésének folyamatát.
+Ha telepítette az AD FS az Azure Stack, PowerShell segítségével hozzon létre egy egyszerű szolgáltatást, hozzáférés szerepkör hozzárendelése és jelentkezzen be a PowerShell használatával az identitásukat. [Az AD FS egyszerű szolgáltatás létrehozása](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-create-service-principals#create-service-principal-for-ad-fs) bemutatja, hogyan végezheti el a PowerShell-lel szükséges lépéseket.
 
-## <a name="connect-to-azure-stack-using-powershell"></a>Csatlakozás Azure verem Powershell használatával
+## <a name="using-the-azure-stack-api"></a>Az API-t az Azure Stack használatával
 
-A gyors üzembe helyezés [, amelyekből megismerheti a verem Azure PowerShell használatával történő](https://docs.microsoft.com/azure/azure-stack/azure-stack-powershell-configure-quickstart) végigvezeti az Azure PowerShell telepítése és csatlakozás az Azure-verem telepítése szükséges.
+A [Azure Stack API](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-rest-api-use) az oktatóanyag végigvezeti egy tokent az Azure Stack API eléréséhez lekérését jelenti.
+
+## <a name="connect-to-azure-stack-using-powershell"></a>Csatlakozhat az Azure Stack Powershell-lel
+
+Ez a rövid útmutató [az első lépésekhez a PowerShell-lel az Azure Stackben](https://docs.microsoft.com/azure/azure-stack/azure-stack-powershell-configure-quickstart) végigvezeti Önt az Azure PowerShell telepítése és csatlakozás az Azure Stack-telepítés szükséges lépéseket.
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-Egy Azure verem telepítése kapcsolódik Azure Active Directory előfizetés érheti el. Ha még nem rendelkezik Azure-verem telepítés, ezeket az utasításokat beállításához használhatja egy [Azure verem szoftverfejlesztői készlet](https://docs.microsoft.com/azure/azure-stack/asdk/asdk-deploy).
+Egy Azure Stack-telepítés csatlakozik az Azure Active Directory-előfizetéssel is elérheti. Ha egy Azure Stack-telepítés nem rendelkezik, ezek az utasítások beállításához használhatja egy [Azure Stack Development Kit](https://docs.microsoft.com/azure/azure-stack/asdk/asdk-deploy).
 
-#### <a name="connect-to-azure-stack-using-code"></a>Csatlakozás Azure verem kód használatával
+#### <a name="connect-to-azure-stack-using-code"></a>Azure Stack-kód használatával csatlakozhat.
 
-Azure verem kód használatával csatlakozhat, használja a hitelesítés és a graph végpontok Azure verem telepített alkalmazáshoz, és hitelesítse a többi kérelmek használatával az Azure Resource Manager API-végpontok száma. A minta ügyfélalkalmazás található [GitHub](https://github.com/shriramnat/HybridARMApplication).
+Azure Stack-kód használatával csatlakozhat, használja az Azure Resource Manager-végpontok API, a hitelesítés és a graph-végpont lekérése az Azure Stack telepítése, és hitelesítse a REST-kérelmek használatával. Egy mintaalkalmazás ügyfél találhat [GitHub](https://github.com/shriramnat/HybridARMApplication).
 
 >[!Note]
->Kivéve, ha az Azure SDK for a választott nyelv támogatja az Azure API-profilok, az SDK-t Azure verem nem működik. Azure API-profilokkal kapcsolatos további tudnivalókért tekintse meg a [API-verzió profilok kezeléséhez](https://docs.microsoft.com/da-dk/azure/azure-stack/user/azure-stack-version-profiles) cikk.
+>Tetszőleges nyelven készült Azure SDK támogatja az Azure API-profilok, hacsak az SDK nem működnek az Azure Stack használatával. Az Azure API-profilokkal kapcsolatos további tudnivalókért tekintse meg a [API-verzióprofilok kezelése](https://docs.microsoft.com/da-dk/azure/azure-stack/user/azure-stack-version-profiles) cikk.
 
 ## <a name="next-steps"></a>További lépések
 
- - Identitás rendszer hogyan kezelje a Azure verem kapcsolatos további információkért lásd: [identitás architektúra Azure verem](https://docs.microsoft.com/azure/azure-stack/azure-stack-identity-architecture).
- - Azure Cloud mintájával kapcsolatos további tudnivalókért lásd: [felhőalapú kialakítási mintájával](https://docs.microsoft.com/azure/architecture/patterns).
+ - Hogyan kezeli az Azure Stackben identitás kapcsolatos további információkért lásd: [identitásarchitektúra az Azure Stackhez készült](https://docs.microsoft.com/azure/azure-stack/azure-stack-identity-architecture).
+ - Az Azure-minták Felhőkhöz kapcsolatos további információkért lásd: [tervezési minták Felhőkhöz](https://docs.microsoft.com/azure/architecture/patterns).

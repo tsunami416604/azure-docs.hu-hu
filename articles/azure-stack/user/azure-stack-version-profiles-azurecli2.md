@@ -13,20 +13,20 @@ ms.topic: article
 ms.date: 09/08/2018
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: ec3b1f43c7b89a545ee5bb26c4cc0d068a993021
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 59b637e6887a645430d902cd846cacda13b14cfe
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44295853"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46972810"
 ---
-# <a name="use-api-version-profiles-with-azure-cli-20-in-azure-stack"></a>API-verzióprofilok használata az Azure CLI 2.0 az Azure Stackben
+# <a name="use-api-version-profiles-with-azure-cli-in-azure-stack"></a>API-verzióprofilok használata az Azure CLI-vel az Azure Stackben
 
 A lépésekkel állíthatja be az Azure parancssori felület (CLI) Azure Stack Development Kit-erőforrások kezelése a Linux, Mac és Windows-ügyfélplatformokon ebben a cikkben.
 
 ## <a name="install-cli"></a>A CLI telepítése
 
-Jelentkezzen be a fejlesztő munkaállomás, és telepítse a parancssori felület. Az Azure Stack az Azure CLI 2.0-s verziója szükséges. Az ismertetett lépéseket követve telepítheti, amely a [Azure CLI 2.0 telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli) cikk. Győződjön meg arról, ha a telepítés sikeres volt-e, nyisson meg egy terminált vagy egy parancssori ablakot, és futtassa a következő parancsot:
+Jelentkezzen be a fejlesztő munkaállomás, és telepítse a parancssori felület. Az Azure Stack 2.0 vagy az Azure CLI-vel újabb verziója szükséges. Az ismertetett lépéseket követve telepítheti, amely a [az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli) cikk. Győződjön meg arról, ha a telepítés sikeres volt-e, nyisson meg egy terminált vagy egy parancssori ablakot, és futtassa a következő parancsot:
 
 ```azurecli
 az --version

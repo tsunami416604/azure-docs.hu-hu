@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/14/2017
 ms.author: rogarana
 ms.component: common
-ms.openlocfilehash: f5b678f9936a6d405c06ff085a802fcd76328ebe
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: bb3df82e66024b49e399ab2f7795a27932f7559e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39525654"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46953973"
 ---
 #  <a name="migrate-on-premises-data-to-cloud-storage-by-using-azcopy"></a>Helyszíni adatok migrálása felhőtárhelybe az AzCopyval
 
@@ -37,7 +37,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 Az oktatóanyag elvégzéséhez töltse le az AzCopy legújabb verzióját [Linux](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-linux#download-and-install-azcopy) vagy [Windows](http://aka.ms/downloadazcopy) rendszerhez. 
 
-[!INCLUDE [storage-quickstart-tutorial-create-account-portal](../../../includes/storage-quickstart-tutorial-create-account-portal.md)]
+[!INCLUDE [storage-create-account-portal-include](../../../includes/storage-create-account-portal-include.md)]
 
 >[!NOTE]
 >Ha szeretne blobokat letölteni egy másodlagos régióból a helyi tárolóba vagy fordítva, a **Replikáció** értéke legyen **Georedundáns írásvédett tárolás**. Ha ez a lehetőség ki van választva, egy [georedundáns tárfiók](https://docs.microsoft.com/azure/storage/common/storage-redundancy#geo-redundant-storage) jön létre. 

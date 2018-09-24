@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 09/17/2018
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: 270587f484216d130848ee3c7bdc8ae1c1df0afc
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
-ms.translationtype: MT
+ms.openlocfilehash: 68514f1bc569d876f4cf851f97a690ae84cf43a6
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45982153"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46970294"
 ---
 # <a name="manage-api-version-profiles-in-azure-stack"></a>Az Azure Stackben API-verzióprofilok kezelése
 
@@ -79,8 +79,8 @@ Megtalálhatja a segítséget nyújtanak a választott nyelven az Azure Stack-pr
 
 - **PowerShell**  
 Használhatja a **AzureRM.Bootstrapper** modul elérhető a PowerShell-galériából, a PowerShell-parancsmagok használata API-verzióprofilok kell lekérni. További információ: [használata API-verzióprofilok PowerShell](azure-stack-version-profiles-powershell.md).
-- **Azure CLI 2.0**  
-Frissítheti az Ön környezetének konfigurációját az Azure Stack meghatározott API verzió profil használatára. További információ: [használata API-verzióprofilok Azure CLI 2.0](azure-stack-version-profiles-azurecli2.md).
+- **Azure CLI**  
+Frissítheti az Ön környezetének konfigurációját az Azure Stack meghatározott API verzió profil használatára. További információ: [használata API-verzióprofilok Azure CLI-hez](azure-stack-version-profiles-azurecli2.md).
 - **GO**  
 A GO SDK egy profil a különböző szolgáltatásokhoz különböző verziójú különböző erőforrástípusok kombinációját. a profilok alatt érhetők el profilok / elérési út, a verziójuk a **éééé-hh-nn** formátumban. További információ: [használata API-verzióprofilok GÓHOZ készült](azure-stack-version-profiles-go.md).
 - **Ruby**  

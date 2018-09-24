@@ -8,12 +8,12 @@ ms.service: dns
 ms.topic: quickstart
 ms.date: 6/13/2018
 ms.author: victorh
-ms.openlocfilehash: 421c4e0464eac22a7feba01e2e84660b02a32455
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 3ec2c44c168b47fd66d1ffa9a0c8d0069600ecb0
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39174649"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46958101"
 ---
 # <a name="quickstart-configure-azure-dns-for-name-resolution-using-the-azure-portal"></a>Rövid útmutató: Az Azure DNS konfigurálása névfeloldásra az Azure Portalon
 
@@ -24,7 +24,7 @@ Ebben a rövid útmutatóban létrehoz egy teszttartományt, majd egy „www” 
 Fontos, hogy a rövid útmutatóban használt nevek és IP-címek csak példaként szolgálnak, és nem valós forgatókönyvet jelölnek. Adott esetben a valós forgatókönyvek is be lesznek mutatva.
 
 <!---
-You can also perform these steps using [Azure PowerShell](dns-getstarted-powershell.md) or the cross-platform [Azure CLI 2.0](dns-getstarted-cli.md).
+You can also perform these steps using [Azure PowerShell](dns-getstarted-powershell.md) or the cross-platform [Azure CLI](dns-getstarted-cli.md).
 --->
 
 Az egyes tartományokhoz tartozó DNS-bejegyzések tárolása DNS-zónákban történik. A tartománya Azure DNS-ben való üzemeltetésének megkezdéséhez létre kell hoznia egy DNS-zónát az adott tartománynévhez. Ezután a tartomány összes DNS-bejegyzése (vagy rekordja) ebben a DNS-zónában jön létre. A következő lépések bemutatják, hogyan teheti ezt meg.

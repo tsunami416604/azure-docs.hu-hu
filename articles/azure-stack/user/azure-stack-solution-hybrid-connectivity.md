@@ -1,6 +1,6 @@
 ---
-title: Hibrid felhő kapcsolat konfigurálása az Azure és az Azure-verem |} Microsoft Docs
-description: Tudnivalók a hibrid felhő kapcsolat konfigurálása az Azure és az Azure-verem.
+title: Hibrid felhő-kapcsolat konfigurálása az Azure és az Azure Stack |} A Microsoft Docs
+description: 'Útmutató: hibrid felhő-kapcsolat konfigurálása az Azure és az Azure Stack.'
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -14,207 +14,214 @@ ms.topic: tutorial
 ms.date: 05/25/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 72c5c4b0f0ab752bb02e6bee7cd038afca44ee1b
-ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
+ms.openlocfilehash: 652d39b4d15569b9365543e02f170664a88715fa
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34605195"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46953259"
 ---
-# <a name="tutorial-configure-hybrid-cloud-connectivity-with-azure-and-azure-stack"></a>Oktatóanyag: hibrid felhő kapcsolat konfigurálása az Azure és az Azure-verem
+# <a name="tutorial-configure-hybrid-cloud-connectivity-with-azure-and-azure-stack"></a>Oktatóanyag: hibrid felhő-kapcsolat konfigurálása az Azure és az Azure Stackben
 
-*A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
+*A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
 
-A globális Azure és a hibrid kapcsolat minta használatával Azure verem biztonságot erőforrásait is elérik.
+A globális Azure-ban és a hibrid kapcsolat minta használatával az Azure Stack biztonsági hozzáférhetnek az erőforrásokhoz.
 
-Ebben az oktatóanyagban egy minta környezet fog létrehozni:
+Ebben az oktatóanyagban egy mintául szolgáló környezet fog létrehozni:
 
 > [!div class="checklist"]
-> - Tartsa meg a helyi adatvédelmi és szabályozási követelmények felel meg, de van a globális Azure-erőforrások eléréséhez.
-> - Egy korábbi rendszer karbantartása globális Azure cloud méretezhető alkalmazások telepítését és erőforrások használatakor.
+> - Tartsa meg a helyi adatvédelmi és a szabályozási követelményeknek megfelelő, de a globális Azure-erőforrásokhoz való hozzáférése.
+> - Egy korábbi rendszer karbantartása globális Azure-beli felhőalapú méretezett az alkalmazás üzembe helyezése és az erőforrások használata során.
+
+> [!Tip]  
+> ![hibrid-pillars.png](./media/azure-stack-solution-cloud-burst/hybrid-pillars.png)  
+> A Microsoft Azure Stack az Azure bővítménye. Az Azure Stack hatékonyságával és innovációjával a felhőalapú számítástechnika a helyszíni környezetben, és a egyetlen olyan hibrid felhő, amely lehetővé teszi, hogy létrehozása és üzembe helyezése bárhol a hibrid alkalmazások engedélyezésével biztosítható.  
+> 
+> A tanulmány [hibrid alkalmazások kapcsolatos kialakítási szempontok](https://aka.ms/hybrid-cloud-applications-pillars) tervezése, telepítése és a hibrid működő a szoftverminőség alappillérei (elhelyezését, a méretezhetőség, rugalmasság, kezelhetőségi és biztonsági) felülvizsgálatai az alkalmazások. A kialakítási szempontokat segítséget nyújt a hibrid alkalmazások kialakítását, minimálisra csökkentik az éles környezetben kihívások optimalizálása.
+
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Néhány összetevők szükségesek a hibrid kapcsolat központi telepítés létrehozásához. Felkészülési, néhány ezeket az összetevőket lépnek, ennek megfelelően tervezheti kell.
+Néhány összetevő egy hibrid kapcsolat központi telepítés létrehozásához szükséges. Ezek az összetevők némelyike időt vesz igénybe előkészítése, így kell tervezni.
 
 **Azure Stack**
 
-Egy Azure OEM-hardver Partner telepítheti egy éles Azure-vermet, és az összes felhasználó telepítheti egy Azure verem Development Kit (ASDK).
+Az OEM-hardver partnere üzembe helyezhet egy éles környezetben az Azure Stack, és az összes felhasználó telepítheti az Azure Stack Development Kit (ASDK).
 
-**Az Azure verem összetevők**
+**Az Azure Stack-összetevők**
 
-Azure verem operátort kell telepíteni az App Service, tervek és ajánlatok létrehozása, bérlő előfizetés létrehozása és a Windows Server 2016-lemezkép hozzáadása. Ha már rendelkezik néhány összetevőt, győződjön meg arról, hogy azok megfelelnek az oktatóanyag elindítása előtt.
+Az Azure Stack-operátorokról kell az App Service üzembe helyezése, csomag és ajánlat létrehozása, hozzon létre egy bérlői előfizetést és a Windows Server 2016-lemezképének hozzáadása. Ha már rendelkezik néhány összetevőt, győződjön meg arról, hogy azok megfelelnek a követelményeinek, ez az oktatóanyag megkezdése előtt.
 
-Ez az oktatóanyag feltételezi, hogy rendelkezik-e bizonyos Azure és az Azure-verem alapszintű ismeretét. Az oktatóanyag elindítása előtt további tudnivalókért olvassa el a következő cikkeket:
+Ez az oktatóanyag feltételezi, hogy néhány alapvető ismeretek az Azure és az Azure Stack. Az oktatóanyag megkezdése előtt további tudnivalókért olvassa el a következő cikkeket:
 
  - [Bevezetés az Azure-bA](https://azure.microsoft.com/overview/what-is-azure/)
- - [Az Azure verem kulcsfogalmak](https://docs.microsoft.com/azure/azure-stack/azure-stack-key-features)
+ - [Az Azure Stack főbb fogalmak](https://docs.microsoft.com/azure/azure-stack/azure-stack-key-features)
 
 ### <a name="azure"></a>Azure
 
  - Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
- - Hozzon létre egy [webalkalmazás](https://docs.microsoft.com/vsts/build-release/apps/cd/azure/aspnet-core-to-azure-webapp?view=vsts&tabs=vsts#create-an-azure-web-app-using-the-portal) az Azure-ban. Jegyezze meg a webes alkalmazás URL-CÍMÉT, az oktatóanyag szüksége.
+ - Hozzon létre egy [Web App](https://docs.microsoft.com/vsts/build-release/apps/cd/azure/aspnet-core-to-azure-webapp?view=vsts&tabs=vsts#create-an-azure-web-app-using-the-portal) az Azure-ban. Jegyezze meg a webes alkalmazás URL-címe, mivel az oktatóanyagban szüksége lesz rá.
 
 ### <a name="azure-stack"></a>Azure Stack
 
- - Az éles Azure verem használható, vagy telepítse az Azure-verem szoftverfejlesztői készlet https://github.com/mattmcspirit/azurestack/blob/master/deployment/ConfigASDK.ps1.
+ - Használja az éles üzemben futó Azure Stack, vagy üzembe helyezése az Azure Stack Development Kit a https://github.com/mattmcspirit/azurestack/blob/master/deployment/ConfigASDK.ps1.
    >[!Note]
-   >A ASDK telepítése 7 órát igénybe vehet, ezért ennek megfelelően tervezheti.
+   >A ASDK telepítése is 7 órán belül, így ennek megfelelően tervezze.
 
- - Telepítése [App Service](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-deploy) Azure verem PaaS-szolgáltatások.
- - [Tervek és ajánlatok létrehozása](https://docs.microsoft.com/azure/azure-stack/azure-stack-plan-offer-quota-overview) a verem Azure környezetben.
- - [Hozzon létre a bérlői előfizetéshez](https://docs.microsoft.com/azure/azure-stack/azure-stack-subscribe-plan-provision-vm) az Azure-verem környezeten belül.
+ - Üzembe helyezése [App Service-ben](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-deploy) PaaS-szolgáltatások az Azure Stackhez.
+ - [Csomag és ajánlat létrehozása](https://docs.microsoft.com/azure/azure-stack/azure-stack-plan-offer-quota-overview) az Azure Stack-környezetben.
+ - [Hozzon létre a bérlő előfizetés](https://docs.microsoft.com/azure/azure-stack/azure-stack-subscribe-plan-provision-vm) belül az Azure Stack-környezet.
 
 ### <a name="before-you-begin"></a>Előkészületek
 
-Ellenőrizze, hogy a következő feltételeknek megfelelő hibrid felhő kapcsolat konfigurálásának megkezdése előtt:
+Győződjön meg arról, hogy a hibrid felhőalapú kapcsolat beállítása előtt megfelelnek a következő feltételeknek:
 
- - Külsőleg irányuló nyilvános IPv4-cím a VPN-eszköz szükség van. Az IP-cím nem található a NAT mögött
- - Az azonos régió/hely összes erőforrások telepítése.
+ - Egy kifelé irányuló, nyilvános IPv4-cím a VPN-eszközhöz van szükség. Az IP-cím nem található a NAT mögötti.
+ - Az azonos régió/hely összes erőforrás helyezik üzembe.
 
-#### <a name="tutorial-example-values"></a>Útmutató példaértékek
+#### <a name="tutorial-example-values"></a>Az oktatóanyag példaértékek
 
-Ebben az oktatóanyagban szereplő példák a következő értékeket használja. Ezek az értékek segítségével hozzon létre egy tesztkörnyezetben, vagy tekintse meg azokat a példák kra. További információkat a VPN Gateway beállításairól általánosságban [a VPN Gateway beállításaival kapcsolatos](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-gateway-settings) cikkben találhat.
+Ebben az oktatóanyagban szereplő példák a következő értékeket használja. Ezek az értékek használatával létrehozhat egy tesztkörnyezetet, vagy tekintse meg ezeket a példákat tartalmazó szeretné jobban megismerni. További információkat a VPN Gateway beállításairól általánosságban [a VPN Gateway beállításaival kapcsolatos](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-gateway-settings) cikkben találhat.
 
-Kapcsolat specifikációk:
+Kapcsolat-leírások:
 
- - **VPN-típus**: útválasztó-alapú
- - **Kapcsolat típusa**: pont-pont (IPsec)
+ - **VPN-típust**: útvonalalapú
+ - **Kapcsolat típusa**: Site-to-site (IPsec)
  - **Átjáró típusa**: VPN
- - **Az Azure-kapcsolat neve**: Azure-átjáró-AzureStack-S2SGateway (a portál fog automatikus kitöltés Ez az érték)
- - **Az Azure verem kapcsolatnév**: AzureStack-átjáró-Azure-S2SGateway (a portál fog automatikus kitöltés Ez az érték)
- - **Megosztott kulcs**: minden kompatibilis VPN hardver, amelyben kapcsolat mindkét oldalán
- - **Előfizetés**: bármely elsődleges előfizetés
- - **Erőforráscsoport**: teszt-infrastruktúra
+ - **Azure-kapcsolat neve**: Azure-átjáró-AzureStack-S2SGateway (a portál automatikusan ki lesz ez az érték)
+ - **Az Azure Stack kapcsolat neve**: AzureStack-átjáró – Azure-S2SGateway (a portál automatikusan ki lesz ez az érték)
+ - **Megosztott kulcs**: minden kompatibilis a VPN-hardverre a megfelelő értékeket a kapcsolat mindkét oldalán
+ - **Előfizetés**: bármelyik elsődleges előfizetés
+ - **Erőforráscsoport**: Test-infrastruktúra
 
-Hálózati és alhálózati IP-címek:
+Hálózat és alhálózat IP-címek:
 
-| Azure vagy az Azure-verem kapcsolat | Name (Név) | Alhálózat | IP-cím |
+| Azure vagy az Azure Stack kapcsolat | Name (Név) | Alhálózat | IP-cím |
 |-------------------------------------|---------------------------------------------|---------------------------------------|-----------------------------|
 | Az Azure virtuális hálózat | ApplicationvNet<br>10.100.102.9/23 | ApplicationSubnet<br>10.100.102.0/24 |  |
-|  |  | A GatewaySubnet<br>10.100.103.0/24 |  |
-| Az Azure verem virtuális hálózat | ApplicationvNet<br>10.100.100.0/23 | ApplicationSubnet <br>10.100.100.0/24 |  |
-|  |  | A GatewaySubnet <br>10.100101.0/24 |  |
-| Az Azure virtuális hálózati átjáró | Azure-átjáró |  |  |
-| Az Azure verem virtuális hálózati átjáró | AzureStack-átjáró |  |  |
-| Az Azure nyilvános IP-cím | Azure-GatewayPublicIP |  | Határozza meg a létrehozásakor |
-| Az Azure verem nyilvános IP-cím | AzureStack-GatewayPublicIP |  | Határozza meg a létrehozásakor |
-| Az Azure helyi hálózati átjáró | AzureStack-S2SGateway<br>   10.100.100.0/23 |  | Az Azure verem nyilvános IP-cím értéke |
-| A verem Azure helyi hálózati átjáró | Azure-S2SGateway<br>10.100.102.0/23 |  | Az Azure nyilvános IP-cím értéke |
+|  |  | Átjáró-alhálózat<br>10.100.103.0/24 |  |
+| Az Azure Stack-vNet | ApplicationvNet<br>10.100.100.0/23 | ApplicationSubnet <br>10.100.100.0/24 |  |
+|  |  | Átjáró-alhálózat <br>10.100101.0/24 |  |
+| Az Azure virtuális hálózati átjáró | Az Azure-átjáró |  |  |
+| Az Azure Stack virtuális hálózati átjáró | 1.2.9-es-átjáró |  |  |
+| Az Azure nyilvános IP-cím | Az Azure-GatewayPublicIP |  | Határozza meg a létrehozásakor |
+| Az Azure Stack nyilvános IP-cím | 1.2.9-es-GatewayPublicIP |  | Határozza meg a létrehozásakor |
+| Az Azure helyi hálózati átjáró | 1.2.9-es-S2SGateway<br>   10.100.100.0/23 |  | Az Azure Stack nyilvános IP-cím érték |
+| Az Azure Stack helyi hálózati átjáró | Az Azure-S2SGateway<br>10.100.102.0/23 |  | Az Azure nyilvános IP-cím érték |
 
-## <a name="create-a-virtual-network-in-global-azure-and-azure-stack"></a>Virtuális hálózat létrehozása a globális Azure és az Azure-verem
+## <a name="create-a-virtual-network-in-global-azure-and-azure-stack"></a>Virtuális hálózat létrehozása a globális Azure és az Azure Stackben
 
-Az alábbi lépések segítségével virtuális hálózat létrehozása a portál használatával. E [példaértékeket](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal#values) használata ebben a cikkben mint egy oktatóanyag. De konfigurálásához éles környezetben való használata ebben a cikkben, cserélje le a példában beállításokat a saját értékeit.
+A következő lépések segítségével hozzon létre egy virtuális hálózatot a portálon. E [példaértékeket](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal#values) használata ebben a cikkben oktatóanyag keretében. De ha ez a cikk konfigurálásához éles környezetben használja, cserélje le a például szolgáló beállításokban a saját értékeire.
 
 > [!IMPORTANT]
-> Győződjön meg arról, hogy az Azure vagy az Azure-verem vNet címterületek IP-címek átfedésben nem létezik.
+> Biztosítania kell, hogy nincs-e IP-címek az Azure-ban virtuális hálózat címterei átfedés.
 
 VNet létrehozása az Azure-ban:
 
-1. A böngésző használatával csatlakozhat a [Azure-portálon](http://portal.azure.com/) és jelentkezzen be az Azure-fiókjával.
-2. Válassza ki **hozzon létre egy erőforrást**. Az a **keresése a piactéren** mezőbe írja be `virtual network`nyelvhez. Található **virtuális hálózati** az eredmények listájában, és válassza a **virtuális hálózati**.
-3. Az a **telepítési modell kiválasztása** listára, válassza ki **erőforrás-kezelő**, majd válassza ki **létrehozása**.
-4. A **virtuális hálózat létrehozása**, konfigurálja a VNet beállításait. A kötelező mezőket a piros csillaggal előtagot.  Ha egy érvényes értéket ad meg, a csillag egy zöld pipa változik.
+1. A böngésző használatával kapcsolódhat a [az Azure portal](http://portal.azure.com/) , és jelentkezzen be az Azure-fiókjával.
+2. Válassza ki **erőforrás létrehozása**. Az a **keresés a piactéren** írja be a következőt `virtual network`meghatározással. Keresés **virtuális hálózati** a találatok listájában, és válassza ki a **virtuális hálózat**.
+3. Az a **telepítési modell kiválasztása** listájáról válassza ki a **Resource Manager**, majd válassza ki **létrehozás**.
+4. A **virtuális hálózat létrehozása**, konfigurálja a VNet beállításait. A kötelező mezők nevei piros csillag előtaggal van.  Egy érvényes értéket ad meg, ha a csillag módosítja egy zöld pipa.
 
-VNet létrehozása az Azure-készletben:
+VNet létrehozása az Azure Stack:
 
-* Ismételje az előző lépést (1-4) használata az Azure-verem **bérlői portál**.
+* Ismételje az előző lépést (1-4) az Azure Stack használatával **bérlői portál**.
 
 ## <a name="add-a-gateway-subnet"></a>Átjáróalhálózat hozzáadása
 
-Csatlakozás a virtuális hálózati átjáró, mielőtt létrehozásához szükséges, amelyet szeretne csatlakozni a virtuális hálózati átjáró alhálózatát. Az átjáró szolgáltatás használ az IP-cím az átjáró-alhálózat alapján.
+Mielőtt csatlakoztatja virtuális hálózatát egy átjáróhoz, kell hoznia az átjáróalhálózatot a virtuális hálózat, amelyhez csatlakozni kíván. Az Átjárószolgáltatások az átjáróalhálózatban megadott IP-címeket használják.
 
-Az a [Azure-portálon](http://portal.azure.com/), keresse meg az erőforrás-kezelő virtuális hálózaton a virtuális hálózati átjáró létrehozásához.
+Az a [az Azure portal](http://portal.azure.com/), keresse meg a Resource Manager virtuális hálózatot, ahol szeretné a virtuális hálózati átjáró létrehozása.
 
-1. Válassza ki a virtuális hálózat lehetőségre a **virtuális hálózati** lap.
-2. A **beállítások**, jelölje be **alhálózatok**.
-3. Az a **alhálózatok** lapon jelölje be **+ átjáróalhálózatot** megnyitásához a **alhálózat hozzáadása** lap.
+1. Válassza ki a virtuális hálózat számára, hogy nyissa meg a **virtuális hálózati** lapot.
+2. A **beállítások**válassza **alhálózatok**.
+3. Az a **alhálózatok** lapon jelölje be **+ átjáró-alhálózat** megnyitásához a **alhálózat hozzáadása** lapot.
 
-    ![Átjáró alhálózatának hozzáadása](media/azure-stack-solution-hybrid-connectivity/image4.png)
+    ![Átjáróalhálózat hozzáadása](media/azure-stack-solution-hybrid-connectivity/image4.png)
 
-4. A **neve** az az alhálózat automatikusan bekerül a "GatewaySubnet". Ez az érték ismeri fel az alhálózati, az átjáró alhálózatának Azure szükség.
-5. Módosítsa a **-címtartományt** értékek, amelyek megfelelnek a konfigurációs követelményeinek, majd válassza ki az ismertetett **OK**.
+4. A **neve** a rendszer automatikusan kitölti az alhálózat "GatewaySubnet" érték. Ez az érték megadása kötelező az Azure felismerje az alhálózat egy átjáró alhálózata.
+5. Módosítsa a **címtartomány** értékeket, amelyet megfeleljenek a konfigurációs követelményeinek, és válassza ki **OK**.
 
-## <a name="create-a-virtual-network-gateway-in-azure-and-azure-stack"></a>A virtuális hálózati átjáró létrehozása az Azure és az Azure verem
+## <a name="create-a-virtual-network-gateway-in-azure-and-azure-stack"></a>A virtuális hálózati átjáró létrehozása az Azure és az Azure Stackben
 
-Az alábbi lépések segítségével a virtuális hálózati átjáró létrehozása az Azure-ban.
+Az alábbi lépések segítségével egy virtuális hálózati átjáró létrehozása az Azure-ban.
 
-1. A portál lap bal oldalán válassza ki a **+** és a keresési mezőbe írja be a "virtuális hálózati átjáró".
-2. A **eredmények**, jelölje be **virtuális hálózati átjáró**.
-3. A **virtuális hálózati átjáró**, jelölje be **létrehozása** megnyitásához a **virtuális hálózati átjáró létrehozása** lap.
-4. A **virtuális hálózati átjáró létrehozása**, adja meg a hálózati átjáró értékeit, ahogy az **oktatóanyag példaértékeket**, és az alábbi értékeket:
+1. A portáloldal bal oldalán válassza ki a **+** és a keresőmezőbe írja be a "virtuális hálózati átjáró".
+2. A **eredmények**válassza **virtuális hálózati átjáró**.
+3. A **virtuális hálózati átjáró**válassza **létrehozás** megnyitásához a **virtuális hálózati átjáró létrehozása** lap.
+4. A **virtuális hálózati átjáró létrehozása**, adja meg a hálózati átjáró értékeit, ahogyan az **oktatóanyag példaértékeket**, és az alábbi értékeket:
 
-    - **SKU**: alapvető
-    - **Virtuális hálózati**: válassza ki a korábban létrehozott virtuális hálózatot. Az átjáró alhálózatának létrehozott automatikusan ki van jelölve.
-    - **Első IP-konfiguráció**: Ez az, hogy az átjáró nyilvános IP-cím.
-        - Válassza ki **létrehozás átjáró IP-konfiguráció**, amely veszi, hogy a **nyilvános IP-cím kiválasztása** lap.
-        - Válassza ki **+ új létrehozása** megnyitásához a **nyilvános IP-cím létrehozása** lap.
-        - Adjon meg egy **neve** a nyilvános IP-cím. A Termékváltozat, hagyja **alapvető**, majd válassza ki **OK** menti a módosításokat.
+    - **Termékváltozat**: alapszintű
+    - **Virtuális hálózat**: válassza ki a korábban létrehozott virtuális hálózatot. A létrehozott átjáróalhálózat automatikusan ki van jelölve.
+    - **Első IP-konfiguráció**: Ez a nyilvános IP-címe az átjárót.
+        - Válassza ki **átjáró IP-konfigurációjának létrehozása**, amely veszi, hogy a **nyilvános IP-cím választása** lapot.
+        - Válassza ki **+ új létrehozása** megnyitásához a **nyilvános IP-cím létrehozása** lapot.
+        - Adjon meg egy **neve** a nyilvános IP-cím. A Termékváltozatot hagyja **alapszintű**, majd válassza ki **OK** a módosítások mentéséhez.
 
        > [!Note]
-       > VPN-átjáró jelenleg csak dinamikus nyilvános IP-címek hozzárendelését támogatja. Ez azonban nem jelenti azt, hogy az IP-cím módosítása után a VPN-átjáró van hozzárendelve. A nyilvános IP-cím kizárólag abban az esetben változik, ha az átjárót törli, majd újra létrehozza. Átméretezése, alaphelyzetbe állítása vagy más belső karbantartás vagy frissítés VPN-átjárót, hogy ne módosítsa az IP-címet.
+       > VPN Gateway jelenleg csak dinamikus nyilvános IP-cím lefoglalását támogatja. Ez azonban nem jelenti azt, hogy az IP-cím megváltozik, miután hozzá van rendelve a VPN-átjáró. A nyilvános IP-cím kizárólag abban az esetben változik, ha az átjárót törli, majd újra létrehozza. Átméretezés, alaphelyzetbe vagy más belső karbantartása/frissítése, a VPN-átjáró az IP-cím nem módosítható.
 
-4. Ellenőrizze az átjáró beállításait.
-5. Válassza ki **létrehozása** a VPN-átjáró létrehozásához. Az átjáró beállításainak ellenőrzését, és a "Deploying virtuális hálózati átjáró" csempe az irányítópulton látható.
+4. Az átjáró beállításainak ellenőrzése.
+5. Válassza ki **létrehozás** a VPN-átjáró létrehozásához. A rendszer érvényesíti az átjáró-beállításokat, és a "Üzembe helyezés virtuális hálózati átjáró" csempére az irányítópulton jelenik meg.
 
    >[!Note]
    >Az átjáró létrehozása akár 45 percet is igénybe vehet. Előfordulhat, hogy a kész állapot megjelenítéséhez frissítenie kell a portáloldalt.
 
-    Az átjáró létrehozása után megtekintheti a virtuális hálózatot a portálon bármikor rendelt IP-címét. Az átjáró csatlakoztatott eszközként fog megjelenni. Az átjáró kapcsolatos további információk megtekintéséhez válassza ki az eszközt.
+    Az átjáró létrehozása után megjelenik a portálon a virtuális hálózat megtekintésével rendelt IP-címet. Az átjáró csatlakoztatott eszközként fog megjelenni. További információ az átjáró megtekintéséhez válassza ki az eszközt.
 
-6. Ismételje az előző lépést (1-5) a Azure verem üzemelő példányon.
+6. Ismételje az előző lépést (1-5) az Azure Stack üzemelő példányon.
 
-## <a name="create-the-local-network-gateway-in-azure-and-azure-stack"></a>A helyi hálózati átjáró létrehozása az Azure és az Azure-verem
+## <a name="create-the-local-network-gateway-in-azure-and-azure-stack"></a>A helyi hálózati átjáró létrehozása az Azure és az Azure Stackben
 
-A helyi hálózati átjáró általában a helyszínt jelenti. A hely adjon olyan nevet, az Azure vagy az Azure-verem is vonatkozik, és adja meg:
+A helyi hálózati átjáró általában a helyszínt jelenti. El kell neveznie a helyet, amely Azure-ban is hivatkozik, és adja meg:
 
-- A létrehozni kívánt kapcsolat a helyszíni VPN-eszköz IP-címe.
-- Az IP-cím előtagokat, amely a VPN-átjáró számára a VPN-eszközön keresztül történik. Az Ön által meghatározott címelőtagok a helyszíni hálózatán található előtagok.
+- Egy kapcsolatot hoz létre a helyszíni VPN-eszköz IP-címét.
+- Az IP-címelőtagokat, amelyek keresztül a VPN-átjáró a VPN-eszközre lesznek irányítva. Az Ön által meghatározott címelőtagok a helyszíni hálózatán található előtagok.
 
   >[!Note]
-  >A helyszíni hálózati módosításokat, vagy a nyilvános IP-címet a VPN-eszközön módosítani kell, ha később könnyen frissítheti ezeket az értékeket.
+  >Ha a helyszíni hálózat megváltozik, vagy módosítania kell a VPN-eszköz nyilvános IP-címét, könnyen frissítheti ezeket az értékeket később.
 
-1. Válassza a portál **+ hozzon létre egy erőforrást**.
-2. A keresési mezőbe, írja be a **helyi hálózati átjáró**, majd jelölje be **Enter** kereséséhez. Ez visszaad egy listát az eredményekkel.
-3. Válassza ki **helyi hálózati átjáró**, majd jelölje be **létrehozása** megnyitásához a **helyi hálózati átjáró létrehozása** lap.
-4. A **helyi hálózati átjáró létrehozása**, adja meg a helyi hálózati átjáró értékeit használja a **oktatóanyag példaértékeket**. Az alábbi értékeket tartalmazza.
+1. Válassza a portál **+ erőforrás létrehozása**.
+2. A Keresés mezőbe írja be a **helyi hálózati átjáró**, majd **Enter** kereséséhez. Ez visszaad egy listát az eredményekkel.
+3. Válassza ki **helyi hálózati átjáró**, majd **létrehozás** megnyitásához a **helyi hálózati átjáró létrehozása** lap.
+4. A **helyi hálózati átjáró létrehozása**, adja meg a helyi hálózati átjáró értékeit használja a **oktatóanyag példaértékeket**. Az alábbi értékeket tartalmaznak.
 
-    - **IP-cím**: Ez az Azure vagy az Azure-verem való csatlakozáshoz használni kívánt VPN-eszköz nyilvános IP-címét. Adjon meg egy érvényes nyilvános IP-címet, amely nem NAT mögött, így Azure el lehet-e érni a címet. Ha az IP-cím jelenleg nem rendelkezik, helyőrzőként is használhatja a példa egy értéket, de kell lépjen vissza, és cserélje le a helyőrző a VPN-eszköz nyilvános IP-címét. Azure nem tud csatlakozni az eszköz csak érvényes cím.
-    - **Címtér**: Ez az, hogy a címtartomány a hálózat, amely a helyi hálózati jelöli. Több címtartományt is felvehet. Győződjön meg arról, hogy a megadott tartományok nem fednek át más hálózatokkal, amelyhez csatlakozni kíván a tartományait. Az Azure a helyszíni VPN-eszköz IP-címéhez irányítja át a megadott címtartományt. A saját értékeit használja, ha a helyszíni hely nem ilyen kiválasztható érték például való kapcsolódáshoz.
-    - **BGP-beállítások konfigurálása**: csak a BGP konfigurálásakor használja. Más esetben ne jelölje be ezt a jelölőnégyzetet.
-    - **Előfizetés**: Győződjön meg arról, hogy a megfelelő előfizetés jelenik-e.
-    - **Erőforráscsoport**: válassza ki a használni kívánt erőforráscsoportot. Hozzon létre egy új erőforráscsoportot, vagy kiválaszthat egy korábban létrehozott.
-    - **Hely**: válassza ki azt a helyet, amely az objektum létrejön. Előfordulhat, hogy szeretné kiválasztani a virtuális hálózat található ugyanarra a helyre, de még nem szükséges ehhez.
-5. Ha befejezte a szükséges értékeket, válassza ki a **létrehozása** a helyi hálózati átjáró létrehozásához.
-6. Ismételje ezeket a lépéseket (1-5) a Azure verem üzemelő példányon.
+    - **IP-cím**: Ez az Azure-ban való csatlakozáshoz használni kívánt VPN-eszköz nyilvános IP-címét. Adjon meg egy érvényes nyilvános IP-címet, amely nem NAT mögött, így Azure érni a címet. Ha az IP-cím jelenleg nem rendelkezik, használhatja a példa egy értéket egy helyőrző, de visszaléphet, és a helyőrzőket cserélje le a VPN-eszköz nyilvános IP-címét kell. Az Azure nem tud kapcsolódni az eszköz, amíg nem egy érvényes címet biztosít.
+    - **Címtér**: Ez az, hogy a címtartomány a hálózat, amely a helyi hálózat képvisel. Több címtartományt is felvehet. Győződjön meg arról, hogy a megadott címtartományok nem fednek át tartományok csatlakozni más hálózatokhoz. Az Azure a helyszíni VPN-eszköz IP-címéhez irányítja át a megadott címtartományt. Ha szeretne csatlakozni a helyszíni hely, a nem érték például a saját értékeit használja.
+    - **BGP-beállítások konfigurálása**: csak BGP konfigurálásakor használja. Más esetben ne jelölje be ezt a jelölőnégyzetet.
+    - **Előfizetés**: Győződjön meg arról, hogy a megfelelő előfizetés jelenik-e meg.
+    - **Erőforráscsoport**: válassza ki a használni kívánt erőforráscsoportot. Hozzon létre egy új erőforráscsoportot, vagy kiválaszthat egy korábban már létrehozott.
+    - **Hely**: válassza ki a helyet, amely az objektum létrejön. Előfordulhat, hogy szeretné kiválasztani a ugyanarra a helyre, amely a virtuális hálózat található, de már nem szükséges ehhez.
+5. Ha befejezte a szükséges értékek megadásával, válassza ki a **létrehozás** a helyi hálózati átjáró létrehozásához.
+6. Ismételje meg ezeket a lépéseket (1-5) az Azure Stack üzemelő példányához.
 
-## <a name="configure-your-connection"></a>A kapcsolat beállítása
+## <a name="configure-your-connection"></a>A kapcsolat konfigurálása
 
-A helyszíni hálózaton a helyek közötti kapcsolatok létesítéséhez VPN-eszközre van szükség. Konfigurálja VPN-eszköz kapcsolat nevezzük. A kapcsolat konfigurálásához lesz szüksége:
+A helyszíni hálózaton a helyek közötti kapcsolatok létesítéséhez VPN-eszközre van szükség. Konfigurálja a VPN-eszköz kapcsolat nevezzük. A kapcsolat konfigurálásához lesz szüksége:
 
 - Megosztott kulcs. Ez ugyanaz a megosztott kulcs, amelyet a helyek közötti VPN-kapcsolat létrehozásakor ad meg. A példákban alapvető megosztott kulcsot használunk. Javasoljuk egy ennél összetettebb kulcs létrehozását.
-- A virtuális hálózati átjáró nyilvános IP-címe. A nyilvános IP-címet az Azure Portalon, valamint a PowerShell vagy a CLI használatával is megtekintheti. A nyilvános IP-címének a VPN-átjáró, az Azure portál használatával, navigáljon a virtuális hálózati átjárók, majd válassza ki az átjáró nevét.
+- A virtuális hálózati átjáró nyilvános IP-címe. A nyilvános IP-címet az Azure Portalon, valamint a PowerShell vagy a CLI használatával is megtekintheti. Keresse meg az Azure portal használatával a VPN-átjáró nyilvános IP-címét, navigáljon a virtuális hálózati átjárók, majd válassza ki az átjáró nevét.
 
-Az alábbi lépések segítségével a virtuális hálózati átjáró és a helyszíni VPN-eszköz közötti pont-pont VPN-kapcsolatot.
+A következő lépések segítségével hozzon létre egy helyek közötti VPN-kapcsolatot a virtuális hálózati átjáró és a helyszíni VPN-eszköz között.
 
-1. Válassza ki az Azure-portálon **+ hozzon létre egy erőforrást**.
+1. Az Azure Portalon válassza ki a **+ erőforrás létrehozása**.
 2. Keresse meg **kapcsolatok**.
-3. A **eredmények**, jelölje be **kapcsolatok**.
-4. A **kapcsolat**, jelölje be **létrehozása**.
-5. A **kapcsolat létrehozása**, a következő beállításokat:
+3. A **eredmények**válassza **kapcsolatok**.
+4. A **kapcsolat**válassza **létrehozás**.
+5. A **kapcsolat létrehozása**, adja meg a következő beállításokat:
 
-    - **Kapcsolat típusa**: válassza ki a pont-pont (IPSec).
-    - **Erőforráscsoport**: a vizsgálati erőforráscsoport kiválasztása.
-    - **Virtuális hálózati átjáró**: válassza ki a létrehozott virtuális hálózati átjáró.
-    - **Helyi hálózati átjáró**: válassza ki a helyi hálózati átjáró létrehozott.
-    - **Kapcsolat neve**: A rendszer automatikusan kitölti a értékeinek két átjáró használatával.
-    - **Megosztott kulcs**: ezt az értéket meg kell egyeznie az értéket, amelyet a helyi helyszíni VPN-eszköz alkalmaz. Az oktatóanyag példában "abc123", de lehet (és kell) használható összetettebb. Fontos, hogy ezt az értéket ugyanazt az értéket, amely a VPN-eszköz konfigurálása során meghatározott kell lennie.
-    - Az értékek **előfizetés**, **erőforráscsoport**, és **hely** rögzítettek.
+    - **Kapcsolat típusa**: válassza ki a Site-to-site (IPSec).
+    - **Erőforráscsoport**: válassza ki a tesztcsoportot erőforrás.
+    - **Virtuális hálózati átjáró**: válassza ki a létrehozott virtuális hálózati átjárót.
+    - **Helyi hálózati átjáró**: válassza ki a helyi hálózati átjáró hozott létre.
+    - **Kapcsolat neve**: Ez a rendszer automatikusan kitölti a két átjáró a értékeinek használatával.
+    - **Megosztott kulcs**: ezt az értéket meg kell egyeznie az érték, amely a helyi helyszíni VPN-eszközhöz használ. Az oktatóanyag példájában használja az "abc123", de lehetséges (és javasolt) használhatja összetettebb. A lényeg az, hogy ennek az értéknek kell lennie, amely a VPN-eszköz konfigurálásakor ad meg ugyanazt az értéket.
+    - A tartozó értékeket **előfizetés**, **erőforráscsoport**, és **hely** rögzítettek.
 
-6. Válassza ki **OK** a VPN-kapcsolat létrehozásához.
+6. Válassza ki **OK** a kapcsolat létrehozásához.
 
-Láthatja, hogy a kapcsolat a **kapcsolatok** a virtuális hálózati átjáró oldalán. Az állapot kerül a *ismeretlen* való *csatlakozás*, majd a *sikeres*.
+Láthatja, hogy a kapcsolatot a **kapcsolatok** a virtuális hálózati átjáró oldalán. Az állapot *ismeretlen* való *csatlakozás*, majd a *sikeres*.
 
 ## <a name="next-steps"></a>További lépések
 
-- Azure Cloud mintájával kapcsolatos további tudnivalókért lásd: [felhőalapú kialakítási mintájával](https://docs.microsoft.com/azure/architecture/patterns).
+- Az Azure-minták Felhőkhöz kapcsolatos további információkért lásd: [tervezési minták Felhőkhöz](https://docs.microsoft.com/azure/architecture/patterns).
