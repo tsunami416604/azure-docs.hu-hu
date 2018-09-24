@@ -1,6 +1,6 @@
 ---
-title: Adjon hozzá egy Kubernetes-fürtöt az Azure Stack piactéren |} A Microsoft Docs
-description: Ismerje meg, hogyan adhat hozzá egy Kubernetes-fürtöt az Azure Stack piactéren.
+title: Adja hozzá a Kubernetes az Azure Stack piactéren |} A Microsoft Docs
+description: Ismerje meg, hogyan adhat hozzá a Kubernetes az Azure Stack piactéren.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -11,30 +11,30 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 09/25/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: ded2aa17fe9b8de2d8c8f662f5d99b1ce33a2b25
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
-ms.translationtype: MT
+ms.openlocfilehash: 69bf788ef30a18bbe70e251fdd6a814d0f528f55
+ms.sourcegitcommit: b34df37d1ac36161b377ba56c2f7128ba7327f3f
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45634202"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46889117"
 ---
-# <a name="add-a-kubernetes-cluster-to-the-azure-stack-marketplace"></a>Adjon hozzá egy Kubernetes-fürtöt az Azure Stack piactéren
+# <a name="add-kubernetes-to-the-azure-stack-marketplace"></a>Adja hozzá a Kubernetes az Azure Stack piactéren
 
 *A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
 
 > [!note]  
-> Az AKS (az Azure Kubernetes Service) motor, az Azure Stacken private preview verzióban van. A Kubernetes Piactéri elem ebben a cikkben szereplő utasítások végrehajtásához szükséges hozzáférési kérelmek [hozzáférés beolvasására irányuló kérelem elküldése](https://aka.ms/azsk8).
+> Az Azure Stacken Kubernetes szolgáltatás előzetes verzióban. A Kubernetes-fürt Piactéri elem ebben a cikkben szereplő utasítások végrehajtásához szükséges hozzáférési kérelmek [hozzáférés beolvasására irányuló kérelem elküldése](https://aka.ms/azsk8).
 
-Elérhetővé teheti egy Kubernetes-fürtöt, a Piactéri elem a felhasználók számára. A felhasználók egyetlen, koordinált műveletben telepítheti a Kubernetes.
+Elérhetővé teheti Kubernetes Piactéri elem, a felhasználók számára. A felhasználók egyetlen, koordinált műveletben telepítheti a Kubernetes.
 
-A következő cikkben tekintse meg telepítése és jogosultságok kiosztása az erőforrások különálló Kubernetes-fürthöz tartozó Azure Resource Manager-sablon használatával. A Kezdés előtt ellenőrizze az Azure Stack és az Azure-bérlő globális beállításokat. Az Azure Stack a szükséges információkat gyűjt. Adja hozzá a szükséges erőforrásokat a bérlőn, és az Azure Stack piactéren. A fürt egy Ubuntu-kiszolgálót, egyéni szkript és a Kubernetes-fürt elemeket kell lennie a Marketplace-en függ.
+A következő cikkben tekintse meg telepítése és jogosultságok kiosztása az erőforrások különálló Kubernetes-fürthöz tartozó Azure Resource Manager-sablon használatával. A Kezdés előtt ellenőrizze az Azure Stack és az Azure-bérlő globális beállításokat. Az Azure Stack a szükséges információkat gyűjt. Adja hozzá a szükséges erőforrásokat a bérlőn, és az Azure Stack piactéren. A fürt egy Ubuntu-kiszolgálót, egyéni szkript és a Kubernetes elemeket kell lennie a Marketplace-en függ.
 
 ## <a name="create-a-plan-an-offer-and-a-subscription"></a>Csomag, ajánlat és előfizetés létrehozása
 
-Hozzon létre egy csomag, ajánlat és a Kubernetes-fürt Piactéri elem előfizetést. Megadhatja egy meglévő csomagot használja, és elérhetővé teheti.
+Hozzon létre egy csomag, ajánlat és a Kubernetes Piactéri elem előfizetést. Megadhatja egy meglévő csomagot használja, és elérhetővé teheti.
 
 1. Jelentkezzen be a [felügyeleti portálján.](https://adminportal.local.azurestack.external)
 
@@ -72,20 +72,16 @@ Adja hozzá a következő Ubuntu Server-lemezképet a Marketplace-en:
 
 1. Írja be a `UbuntuServer` (igen) kifejezést.
 
-1. Válassza ki a kiszolgálót, az ehhez a profilhoz:
+1. Válassza ki a kiszolgáló a következő profillal legújabb verziója:
     - **Közzétevő**: Canonical
     - **Ajánlat**: UbuntuServer
     - **TERMÉKVÁLTOZAT**: 16.04-LTS
-    - **Verzió**: 16.04.201802220
-
-    > [!Note]  
-    > Ubuntu Server 16.04 LTS egynél több verzióját megjelenhet. Adja hozzá a megfelelő verziót kell. A Kubernetes-fürt az elem pontos verziója szükséges.
 
 1. Válassza ki **letöltése.**
 
 ## <a name="add-a-custom-script-for-linux"></a>Adjon hozzá egy egyéni parancsfájl linuxhoz
 
-A Kubernetes-fürt hozzáadása a Marketplace-ről:
+Adja hozzá a Kubernetes a Marketplace-ről:
 
 1. Nyissa meg a [felügyeleti portálján](https://adminportal.local.azurestack.external).
 
@@ -97,24 +93,24 @@ A Kubernetes-fürt hozzáadása a Marketplace-ről:
 
 1. Válassza ki a parancsprogramot, a következő profilhoz:
     - **Ajánlat**: 2.0 Linuxhoz készült egyéni parancsfájl
-    - **Verzió**: 2.0.3
+    - **Verzió**: 2.0.6-os
     - **Közzétevő**: a Microsoft vállalati
 
     > [!Note]  
-    > Egyéni parancsfájl Linux több verziója is szerepelhet. Adja hozzá a megfelelő verziót kell. A Kubernetes-fürt az elem pontos verziója szükséges.
+    > Egyéni parancsfájl Linux több verziója is szerepelhet. Adja hozzá a megfelelő verziót kell. A Kubernetes az elem pontos verziója szükséges.
 
 1. Válassza ki **letöltése.**
 
 
-## <a name="add-the-kubernetes-cluster-to-the-marketplace"></a>A Kubernetes-fürt hozzáadása a Marketplace-en
+## <a name="add-kubernetes-to-the-marketplace"></a>Kubernetes felvétele a Marketplace-en
 
 1. Nyissa meg a [felügyeleti portálján](https://adminportal.local.azurestack.external).
 
-1. Válassza ki **szolgáltatások hozzáadása** , majd a a **felügyeleti** kategória, jelölje be **Marketplace felügyeleti**.
+1. Válassza ki **minden szolgáltatás** , majd a a **felügyeleti** kategória, jelölje be **Marketplace felügyeleti**.
 
 1. Válassza ki **+ hozzáadása az Azure-ból**.
 
-1. Írja be a `Kubernetes Cluster` (igen) kifejezést.
+1. Írja be a `Kubernetes` (igen) kifejezést.
 
 1. Válassza a(z) `Kubernetes Cluster` lehetőséget.
 
@@ -123,29 +119,29 @@ A Kubernetes-fürt hozzáadása a Marketplace-ről:
     > [!note]  
     > A Piactéri elem jelenik meg a Marketplace-en öt percig is eltarthat.
 
-    ![Kubernetes-fürt](user\media\azure-stack-solution-template-kubernetes-deploy\marketplaceitem.png)
+    ![Kubernetes](user\media\azure-stack-solution-template-kubernetes-deploy\marketplaceitem.png)
 
-## <a name="update-or-remove-the-kubernetes-cluster"></a>Frissítheti vagy eltávolíthatja a Kubernetes-fürt 
+## <a name="update-or-remove-the-kubernetes"></a>Frissítheti vagy eltávolíthatja a Kubernetes 
 
-A Kubernetes-fürt elem frissítésekor távolítsa el a cikket, amely a Marketplace-en kell. Ezután a utasítást ebben a cikkben a Kubernetes-fürt hozzáadása a Marketplace-en is követheti.
+A Kubernetes elem frissítésekor távolítsa el a cikket, amely a Marketplace-en kell. Ezután a utasítást ebben a cikkben a Kubernetes hozzáadása a Marketplace-en is követheti.
 
-A Kubernetes-fürt elem eltávolítása:
+A Kubernetes-elem eltávolítása:
 
-1. Vegye figyelembe például az aktuális elem neve `Microsoft.AzureStackKubernetesCluster.0.1.0`
+1. Vegye figyelembe például az aktuális elem neve `Microsoft.AzureStackKubernetesCluster.0.2.0`
 
 1. Csatlakozás az Azure Stack PowerShell használatával.
 
 1. A következő PowerShell-parancsmag segítségével eltávolítja az elemet:
 
     ```PowerShell  
-    $Itemname="Microsoft.AzureStackKubernetesCluster.0.1.0"
+    $Itemname="Microsoft.AzureStackKubernetesCluster.0.2.0"
 
     Remove-AzsGalleryItem -Name $Itemname
     ```
 
 ## <a name="next-steps"></a>További lépések
 
-[Kubernetes-fürt üzembe helyezése az Azure Stackhez](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-template-kubernetes-deploy)
+[A Kubernetes az Azure Stack üzembe helyezése](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-template-kubernetes-deploy)
 
 
 

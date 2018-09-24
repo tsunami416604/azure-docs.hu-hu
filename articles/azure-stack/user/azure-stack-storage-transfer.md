@@ -13,12 +13,12 @@ ms.topic: get-started-article
 ms.date: 07/03/2018
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.openlocfilehash: 91ba9b388566cc72f3024943005af499b7c3f3ec
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
-ms.translationtype: MT
+ms.openlocfilehash: 46bc043681bbba37a2dfb6476e1dd0784e1abf10
+ms.sourcegitcommit: b34df37d1ac36161b377ba56c2f7128ba7327f3f
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42139685"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46874027"
 ---
 # <a name="use-data-transfer-tools-for-azure-stack-storage"></a>Adatok átvitele tools for Azure Stack-tároló használata
 
@@ -246,7 +246,7 @@ Az Azure CLI az Azure parancssori felülete Azure-erőforrások kezeléséhez. V
 
 Az Azure CLI van optimalizálva, kezeléséhez és az Azure-erőforrások felügyelete a parancssorból, és az Azure Resource manageren automatizálási szkriptek létrehozására készült. Itt található az Azure Stack portálon, beleértve a részletes adatok elérésére ugyanazok a funkciók számos.
 
-Az Azure Stack az Azure CLI 2.0-s verziója szükséges. Telepítése és konfigurálása az Azure CLI az Azure Stack használatával kapcsolatos további információkért lásd: [telepítése és konfigurálása az Azure Stack parancssori felület](azure-stack-version-profiles-azurecli2.md). Több feladatait az Azure Stack tárfiókok található erőforrásokkal dolgozik az Azure CLI 2.0 használatával kapcsolatos további információkért lásd: [és az Azure storage az Azure CLI 2.0 használatával](../../storage/storage-azure-cli.md)
+Az Azure Stack az Azure CLI 2.0-s vagy újabb verziójára van szükség. Telepítése és konfigurálása az Azure CLI az Azure Stack használatával kapcsolatos további információkért lásd: [telepítése és konfigurálása az Azure Stack parancssori felület](azure-stack-version-profiles-azurecli2.md). Több feladatait az Azure Stack tárfiókok található erőforrásokkal dolgozik az Azure CLI használatával kapcsolatos további információkért lásd: [és az Azure storage az Azure CLI használatával](../../storage/storage-azure-cli.md)
 
 ### <a name="azure-cli-sample-script-for-azure-stack"></a>Azure CLI-példa szkript az Azure Stackhez
 
