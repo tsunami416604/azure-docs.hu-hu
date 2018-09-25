@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 4/17/2018
 ms.author: markgal
 ms.custom: mvc
-ms.openlocfilehash: 4a122aebd149131e97be5c593a51871b1a943577
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 6a6211302fd6810339ea9967dbcae75e1e413964
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39427414"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46987254"
 ---
 # <a name="restore-a-disk-and-create-a-recovered-vm-in-azure"></a>Lemez visszaállítása és helyreállított virtuális gép létrehozása az Azure-ban
 Az Azure Backup georedundáns helyreállítási tárolókban tárolt helyreállítási pontokat hoz létre. Helyreállítási pontról történő visszaállításkor visszaállíthatja a teljes virtuális gépet, vagy csak egyes fájlokat. Ez a cikk a teljes virtuális gép parancssori felülettel való visszaállításának módját ismerteti. Ezen oktatóanyag segítségével megtanulhatja a következőket:
@@ -29,7 +29,7 @@ További információért a PowerShell a lemez visszaállításhoz és egy helyr
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.18-as vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli). 
+Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.18-as vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését]( /cli/azure/install-azure-cli) ismertető cikket. 
 
 
 ## <a name="prerequisites"></a>Előfeltételek

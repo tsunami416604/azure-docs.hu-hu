@@ -8,12 +8,12 @@ ms.devlang: php
 ms.topic: quickstart
 ms.date: 04/09/2018
 ms.author: rogarana
-ms.openlocfilehash: f0d5cba238b9fc026a3bc67dd33dba8427b9b506
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: b0a562bd37c1877651863525241d70990d38ded2
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39397141"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46969615"
 ---
 #  <a name="transfer-objects-tofrom-azure-blob-storage-using-php"></a>Objektumok továbbítása Azure Blob-tárolókra és -tárolókról a PHP használatával
 A rövid útmutató azt ismerteti, hogyan használható a PHP blokkblobok feltöltésére, letöltésére és listázására egy, az Azure Blob Storage-ban található tárolóban. 
@@ -27,7 +27,7 @@ A gyorsútmutató elvégzéséhez:
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
-[!INCLUDE [storage-quickstart-tutorial-create-account-portal](../../../includes/storage-quickstart-tutorial-create-account-portal.md)]
+[!INCLUDE [storage-create-account-portal-include](../../../includes/storage-create-account-portal-include.md)]
 
 ## <a name="download-the-sample-application"></a>A mintaalkalmazás letöltése
 A rövid útmutatóban használt [mintaalkalmazás](https://github.com/Azure-Samples/storage-blobs-php-quickstart.git) egy egyszerű PHP-alkalmazás.  

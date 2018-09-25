@@ -14,12 +14,12 @@ ms.tgt_pltfrm: cosmosdb
 ms.workload: database
 ms.date: 06/06/2017
 ms.author: sngun
-ms.openlocfilehash: fb4bd66d209d15c983d11c53648e3dfd9c7dcb4b
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 9fc3989a7c84e029fb51591e4a8ed44a55b2d86c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39443905"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46968951"
 ---
 # <a name="azure-cosmos-db-create-an-sql-api-account-using-cli"></a>Azure Cosmos DB: SQL API-fiók létrehozása a parancssori felület használatával
 
@@ -27,7 +27,7 @@ Ez a CLI-példaszkript létrehoz egy Azure Cosmos DB SQL API-fiókot, adatbázis
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Ha a parancssori felület helyi telepítése és használata mellett dönt, a témakörben leírt lépésekhez az Azure parancssori felületének 2.0-s vagy annál újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli). 
+Ha a parancssori felület helyi telepítése és használata mellett dönt, a témakörben leírt lépésekhez az Azure parancssori felületének 2.0-s vagy annál újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli). 
 
 ## <a name="sample-script"></a>Példaszkript
 

@@ -11,8 +11,7 @@
 # Bevezetés
 ## [Az Azure Portal használata](data-lake-store-get-started-portal.md)
 ## [Az Azure PowerShell használata](data-lake-store-get-started-powershell.md)
-## [Az Azure CLI 2.0 használata](data-lake-store-get-started-cli-2.0.md)
-
+## [Az Azure parancssori felület használata](data-lake-store-get-started-cli-2.0.md)
 
 # Útmutató
 ## Adatok betöltése és áthelyezése

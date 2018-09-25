@@ -15,12 +15,12 @@ ms.workload: signalr
 ms.date: 04/20/2018
 ms.author: zhshang
 ms.custom: mvc
-ms.openlocfilehash: 70b81eada9c71594b3c5223b825f0a6db8ed7ef1
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 971c618300c1aedcdfb26bfaa79660a92eada475
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43664194"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46978726"
 ---
 # <a name="create-a-signalr-service-with-an-app-service"></a>SignalR szolgáltatási erőforrás létrehozása App Service-szel
 
@@ -30,7 +30,7 @@ Ez a példaszkript létrehoz egy új Azure SignalR szolgáltatási erőforrást,
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Ha a parancssori felület helyi telepítése és használata mellett dönt, a témakörben leírt lépésekhez az Azure CLI 2.0-s vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli). 
+Ha a parancssori felület helyi telepítése és használata mellett dönt, a témakörben leírt lépésekhez az Azure CLI 2.0-s vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését]( /cli/azure/install-azure-cli) ismertető cikket. 
 
 ## <a name="sample-script"></a>Példaszkript
 

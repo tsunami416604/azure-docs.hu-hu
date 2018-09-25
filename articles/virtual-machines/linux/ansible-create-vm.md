@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: quickstart
 ms.date: 08/22/2018
-ms.openlocfilehash: ff9929d8f2da66b8aa24160c321c9158c832dbc0
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: bf2116d7fc143e66309e3bbbdefc50bfa33f1521
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42815185"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46974561"
 ---
 # <a name="use-ansible-to-create-a-linux-virtual-machine-in-azure"></a>Linux rendszerű virtuális gép létrehozása az Azure-ban az Ansible használatával
 Az Ansible deklaratív nyelv használatával lehetővé válik az Azure-beli erőforrások létrehozásának, konfigurálásának és üzembe helyezésének automatizálása az Ansible *forgatókönyveivel*. A cikk egyes szakaszai bemutatják, hogyan nézhetnek ki az Ansible-forgatókönyvek szakaszai, amelyek a Linux virtuális gépek különböző részeinek létrehozására és konfigurálására szolgálnak. A [teljes Ansible-forgatókönyv](#complete-sample-ansible-playbook) a cikk végén található.

@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 8/3/2018
 ms.author: markgal
 ms.custom: mvc
-ms.openlocfilehash: 9693c619b9723ed6dfd9da02bfdf41e93518f6f4
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: e378c385d3ea98fd43937558d00d3d13accb636b
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39504634"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46984959"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-the-cli"></a>Virtuális gép biztonsági mentése az Azure-ban a parancssori felület (CLI) használatával
 Az Azure CLI az Azure-erőforrások parancssorból vagy szkriptekkel történő létrehozására és kezelésére használható. Adatai védelme érdekében érdemes rendszeres időközönként biztonság mentést végeznie. Az Azure Backup georedundáns helyreállítási tárolókban tárolható helyreállítási pontokat hoz létre. Ez a cikk az Azure virtuális gépek (VM-ek) az Azure CLI használatával való biztonsági mentését mutatja be részletesen. Az [Azure PowerShell](quick-backup-vm-powershell.md) vagy az [Azure Portal](quick-backup-vm-portal.md) használatával is elvégezheti ezeket a lépéseket.
@@ -25,7 +25,7 @@ Ez a rövid útmutató a meglévő Azure-beli virtuális gépek biztonsági ment
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-A parancssori felület helyi telepítéséhez és használatához az Azure CLI 2.0.18-as vagy újabb verzióját kell futtatnia. A parancssori felület verziójának megkereséséhez futtassa az `az --version` parancsot. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése](/cli/azure/install-azure-cli). 
+A parancssori felület helyi telepítéséhez és használatához az Azure CLI 2.0.18-as vagy újabb verzióját kell futtatnia. A parancssori felület verziójának megkereséséhez futtassa az `az --version` parancsot. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket. 
 
 
 ## <a name="create-a-recovery-services-vault"></a>Recovery Services-tároló létrehozása

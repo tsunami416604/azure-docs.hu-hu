@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 06/27/2018
 ms.author: jamesbak
 ms.custom: H1Hack27Feb2017,hdinsightactive,mvc
-ms.openlocfilehash: 376ac623c37183cdfbd6e27c54b0c726928237e2
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 23478a1f72a4b74bcacf27d3b18116250eb6bfff
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39526004"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46984653"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-apache-hive-on-azure-hdinsight"></a>Oktatóanyag: Adatok kinyerése, átalakítása és betöltése az Azure HDInsight-alapú Apache Hive használatával
 
@@ -43,7 +43,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 * **Azure SQL Database** Egy Azure SQL Database-t használ céladattárként. Ha még nem rendelkezik SQL-adatbázissal, olvassa el az [Azure SQL Database az Azure Portalon történő létrehozását](../../sql-database/sql-database-get-started.md) ismertető cikket.
 
-* **Azure CLI 2.0**. Ha még nem telepítette az Azure CLI-t, a lépéseket [az Azure CLI telepítését](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) ismertető cikkben találja.
+* **Azure parancssori felület (CLI)**. Ha még nem telepítette az Azure CLI-t, a lépéseket [az Azure CLI telepítését](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) ismertető cikkben találja.
 
 * **Egy SSH-ügyfél**. További információért lásd: [Csatlakozás a HDInsighthoz (Hadoop) SSH-val](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md).
 

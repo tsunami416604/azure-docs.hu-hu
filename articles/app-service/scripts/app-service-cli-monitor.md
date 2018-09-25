@@ -16,12 +16,12 @@ ms.workload: web
 ms.date: 12/11/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: dc9bc90eb5be6fd700f5a7ca4cbac28170633722
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: af7d6315b53a4bbb49a97fd8904536bb59d8465a
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2018
-ms.locfileid: "30281967"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46952392"
 ---
 # <a name="monitor-a-web-app-with-web-server-logs"></a>Webalkalmazás monitorozása webkiszolgáló-naplókkal
 
@@ -31,7 +31,7 @@ Ez a példaszkript egy erőforráscsoportot, egy App Service-csomagot és egy we
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Ha a parancssori felület helyi telepítését és használatát választja, az Azure CLI 2.0-s vagy újabb verziójára lesz szükség. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli).
+Ha a parancssori felület helyi telepítését és használatát választja, az Azure CLI 2.0-s vagy újabb verziójára lesz szükség. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését]( /cli/azure/install-azure-cli) ismertető cikket.
 
 ## <a name="sample-script"></a>Példaszkript
 

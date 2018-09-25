@@ -14,12 +14,12 @@ ms.tgt_pltfrm: sql-database
 ms.workload: database
 ms.author: carlrab
 ms.date: 09/07/2018
-ms.openlocfilehash: 8529791355e93a3a5001a5e41037ee6daeb31381
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: a7537b59a73c00a5364bfa4a758a6584a9ef6003
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44049711"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46964275"
 ---
 # <a name="use-cli-to-create-a-single-azure-sql-database-and-configure-a-firewall-rule"></a>Egy Azure SQL-adatbázis létrehozása és egy tűzfalszabály konfigurálása a parancssori felület használatával
 
@@ -29,7 +29,7 @@ Ez az Azure CLI-példaszkript létrehoz egy Azure SQL-adatbázist, és konfigur�
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Ha a parancssori felület helyi telepítése és használata mellett dönt, a témakörben leírt lépésekhez az Azure parancssori felületének 2.0-s vagy annál újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli). 
+Ha a parancssori felület helyi telepítése és használata mellett dönt, a témakörben leírt lépésekhez az Azure parancssori felületének 2.0-s vagy annál újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését]( /cli/azure/install-azure-cli) ismertető cikket. 
 
 ## <a name="sample-script"></a>Példaszkript
 

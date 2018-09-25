@@ -14,12 +14,12 @@ ms.topic: sample
 ms.date: 12/07/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 91bf4c7fce40a8e8c94299919e0bdc25c3d3487c
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 816cc1cbe13a43aaaf527fe74ab8a3eb5faab3a3
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2018
-ms.locfileid: "30281450"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46946187"
 ---
 # <a name="back-up-a-web-app"></a>Webalkalmazás biztonsági mentése
 
@@ -29,7 +29,7 @@ Ez a példaszkript egy webalkalmazást hoz létre az App Service-ben a kapcsoló
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Ha a parancssori felület helyi telepítését és használatát választja, az Azure CLI 2.0-s vagy újabb verziójára lesz szükség. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli).
+Ha a parancssori felület helyi telepítését és használatát választja, az Azure CLI 2.0-s vagy újabb verziójára lesz szükség. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését]( /cli/azure/install-azure-cli) ismertető cikket.
 
 ## <a name="sample-script"></a>Példaszkript
 

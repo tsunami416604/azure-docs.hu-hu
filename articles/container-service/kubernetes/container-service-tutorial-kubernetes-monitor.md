@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 04/05/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 17398a9f74e40a7d513912d654fa609d9837d805
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 6d178fe3caa121c51ef081708ca440113871938e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32165408"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46996910"
 ---
 # <a name="monitor-a-kubernetes-cluster-with-log-analytics"></a>Kubernetes-fürt monitorozása a Log Analytics használatával
 
@@ -153,7 +153,7 @@ A Log Analytics-portálon keresse meg a **Tárolók** összefoglaló csempét az
 
 Hasonlóképpen az Azure Portalon lépjen a **Log Analytics** területre, és válassza ki a munkaterület nevét. A **Tárolók** összefoglaló-csempe megtekintéséhez kattintson a **Megoldások** > **Tárolók** elemre. A részletek megtekintéséhez kattintson a csempére.
 
-A monitorozási adatok lekérdezésére és elemzésére vonatkozó részletes útmutatásért tekintse meg az [Azure Log Analytics dokumentációját](../../log-analytics/index.yml).
+A monitorozási adatok lekérdezésére és elemzésére vonatkozó részletes útmutatásért tekintse meg az [Azure Log Analytics dokumentációját](../../log-analytics/log-analytics-queries.md).
 
 ## <a name="next-steps"></a>További lépések
 

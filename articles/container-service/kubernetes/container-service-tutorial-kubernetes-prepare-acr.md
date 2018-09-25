@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 8f14a7aabbdf815992e0777eaf5335a69570ce2e
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: d22661c0d07ce446ea0ad345a1e9629f6e2f0d6c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39429250"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46995890"
 ---
 # <a name="deploy-and-use-azure-container-registry"></a>Az Azure Container Registry üzembe helyezése és használata
 
@@ -33,7 +33,7 @@ Az ezt követő oktatóanyagokban ezt az ACR-példányt integráljuk egy Azure C
 
 Az [előző lépésben](./container-service-tutorial-kubernetes-prepare-app.md) létrehoztunk egy tárolórendszerképet egy egyszerű Azure-szavazóalkalmazáshoz. Ha még nem hozta létre az Azure-szavazóalkalmazás rendszerképét, lépjen vissza az [1. oktatóanyag – Tárolórendszerképek létrehozása](./container-service-tutorial-kubernetes-prepare-app.md) részhez.
 
-Az oktatóanyag elvégzéséhez az Azure CLI 2.0.4-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli). 
+Az oktatóanyag elvégzéséhez az Azure CLI 2.0.4-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését]( /cli/azure/install-azure-cli) ismertető cikket. 
 
 ## <a name="deploy-azure-container-registry"></a>Azure Container Registry üzembe helyezése
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: d04625fe78c423c995460afa29a81d96c6ce9cfb
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 24add63639f5fffe18e4b4468bfd78600a38c5f3
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43337973"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46969291"
 ---
 # <a name="azure-resource-manager-overview"></a>Az Azure Resource Manager áttekintése
 Az alkalmazás infrastruktúrája általában számos összetevőből áll – például egy virtuális gépből, tárfiókból és virtuális hálózatból, vagy egy webalkalmazásból, adatbázisból, adatbázis-kiszolgálóból és harmadik féltől származó szolgáltatásokból. Ezeket az összetevőket nem külön entitásokként látja, hanem egyetlen entitás kapcsolódó és egymással összefüggő részeiként. Csoportként érdemes telepíteni, kezelni és megfigyelni őket. Az Azure Resource Manager lehetővé teszi, hogy a megoldásában az erőforrásokkal egy csoportként dolgozzon. A megoldás összes erőforrását egyetlen, koordinált műveletben telepítheti, frissítheti vagy törölheti. A telepítéshez egy sablon használatos, amely különböző, például tesztelési, átmeneti és üzemi környezetben is képes működni. A Resource Manager biztonsági, naplózási és címkézési szolgáltatásokat biztosít, hogy segítsen az erőforrások kezelésében a telepítést követően. 
@@ -183,7 +183,7 @@ A következő PowerShell-parancsmaggal lekérdezheti az összes olyan erőforrá
 Find-AzureRmResource -TagName costCenter -TagValue Finance
 ```
 
-A következő Azure CLI 2.0-parancsot is használhatja:
+A következő Azure CLI-parancsot is használhatja:
 
 ```azurecli
 az resource list --tag costCenter=Finance
