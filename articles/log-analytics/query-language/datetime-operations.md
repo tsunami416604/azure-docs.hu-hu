@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 3a0e2b78de8cea3929ac457bab3d5e07a2b85401
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 9b0c58fdbfb0d55b3b8998f4edfc1222b9a3d4aa
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45603379"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46988598"
 ---
 # <a name="working-with-date-time-values-in-log-analytics-queries"></a>Dátum-idő értékek a Log Analytics-lekérdezések használata
 
@@ -49,33 +49,33 @@ Mérföldkövei időegységet követ tizedes fejezik ki:
 
 Időpontok leadó egy karakterlánc használatával hozható létre a `todatetime` operátor. Például, tekintse át a virtuális gép szívveréseket küld egy adott időkereten, akkor is győződjön meg arról, használja a [közötti operátor](https://docs.loganalytics.io/docs/Language-Reference/Scalar-operators/between-operator) vagyis a adjon meg egy időtartományt...
 
-```KQL
+```Kusto
 Heartbeat
 | where TimeGenerated between(datetime("2018-06-30 22:46:42") .. datetime("2018-07-01 00:57:27"))
 ```
 
 Egy másik gyakori forgatókönyv hasonlít össze, az aktuális dátumból/időből. Ha például az elmúlt két perc minden szívverések megtekintéséhez használhatja a `now` operátor két perc képviselő timespan együtt:
 
-```KQL
+```Kusto
 Heartbeat
 | where TimeGenerated > now() - 2m
 ```
 
 Ez a függvény egy helyi is érhető el:
-```KQL
+```Kusto
 Heartbeat
 | where TimeGenerated > now(-2m)
 ```
 
 A legrövidebb, és a legtöbb olvasható módszer használata, ha a `ago` operátor:
-```KQL
+```Kusto
 Heartbeat
 | where TimeGenerated > ago(2m)
 ```
 
 Tegyük fel, hogy ahelyett, hogy a kezdő és záró idő, tudja, a kezdési idő és az időtartamot. Akkor is írja újra a lekérdezést a következő:
 
-```KQL
+```Kusto
 let startDatetime = todatetime("2018-06-30 20:12:42.9");
 let duration = totimespan(25m);
 Heartbeat
@@ -86,7 +86,7 @@ Heartbeat
 ## <a name="converting-time-units"></a>Időegységek alakítása
 Egy dátum és idő vagy az alapértelmezett értéktől eltérő idő egységben timespan Express hasznos lehet. Például tegyük fel, hogy az elmúlt 30 percben hibaesemények lehetőséggel megtekintheti, és a egy számított oszlopot, amely bemutatja, hogyan olyan régen az esemény történt kell:
 
-```KQL
+```Kusto
 Event
 | where TimeGenerated > ago(30m)
 | where EventLevelName == "Error"
@@ -95,7 +95,7 @@ Event
 
 Megtekintheti a _timeAgo_ oszlop értékei például: "00:09:31.5118992", ami azt jelenti, azok hh:mm:ss.fffffff formázott. Ha ezekre az értékekre, formázhatja a _numver_ perc alatt a kezdési időpont óta, egyszerűen el kell osztani ezt az értéket "1 perces":
 
-```KQL
+```Kusto
 Event
 | where TimeGenerated > ago(30m)
 | where EventLevelName == "Error"
@@ -109,7 +109,7 @@ Egy másik nagyon gyakori forgatókönyv esetén a kell lekérni a statisztikát
 
 A számot 5 percenként az elmúlt fél óra során bekövetkezett események beolvasásához használja a következő lekérdezést:
 
-```KQL
+```Kusto
 Event
 | where TimeGenerated > ago(30m)
 | summarize events_count=count() by bin(TimeGenerated, 5m) 
@@ -127,7 +127,7 @@ Ez létrehozza a következő táblázat:
 
 Egy másik gyűjtők eredmények létrehozása módja a Funkciók, például a használandó `startofday`:
 
-```KQL
+```Kusto
 Event
 | where TimeGenerated > ago(4d)
 | summarize events_count=count() by startofday(TimeGenerated) 
@@ -147,7 +147,7 @@ Ez a következő eredményt adja:
 ## <a name="time-zones"></a>Időzónák
 Mivel minden dátum/idő érték (UTC) van kifejezve, legtöbbször hasznos, ha szeretné átalakítani ezek a helyi időzónában. Például a számítás használatával konvertálja PST idő (UTC):
 
-```KQL
+```Kusto
 Event
 | extend localTimestamp = TimeGenerated - 8h
 ```

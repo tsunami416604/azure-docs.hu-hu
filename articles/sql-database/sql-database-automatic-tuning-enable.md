@@ -2,20 +2,21 @@
 title: Az Azure SQL Database automatikus finomhangolása engedélyezése |} A Microsoft Docs
 description: Az automatikus hangolás az Azure SQL Database könnyen engedélyezheti.
 services: sql-database
-author: danimir
-manager: craigg
 ms.service: sql-database
-ms.custom: monitor & tune
+ms.subservice: performance
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
 ms.author: v-daljep
 ms.reviewer: carlrab
-ms.openlocfilehash: d825ddd75bfc829aa82bab4cede0381dda2d36da
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: 4f043cfc9c85513abe16bde38c5cac6e16e34af9
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45575298"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47063319"
 ---
 # <a name="enable-automatic-tuning"></a>Automatikus hangolás engedélyezése
 
@@ -86,7 +87,7 @@ Konfigurálja a T-SQL használatával az egyes automatikus hangolási lehetősé
    
 A beállítási lehetőségek állítja be, örökölt adatbázis-beállítások felülbírálása, valamint engedélyezi a hangolási beállítást. OFF értékre, is hatálytalanítja örökölt adatbázis-beállítások és a hangolási beállítás letiltása. Automatikus hangolási beállítás, amelynek alapértelmezett van megadva, a konfiguráció örökli az automatikus hangolási beállítás adatbázisszintű.  
 
-Keresés szélesebb eredményez a T-SQL-beállítások konfigurálása az automatikus hangolás, lásd: [az ALTER DATABASE beállítások megadása (Transact-SQL) az SQL Database logikai kiszolgáló](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=sql-server-2017&tabs=sqldbls#arguments-1).
+Keresés szélesebb eredményez a T-SQL-beállítások konfigurálása az automatikus hangolás, lásd: [az ALTER DATABASE beállítások megadása (Transact-SQL) az SQL Database logikai kiszolgáló](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current).
 
 ## <a name="disabled-by-the-system"></a>A rendszer által letiltva
 Az automatikus hangolás által figyelt vesz igénybe az adatbázis összes műveletet, és bizonyos esetekben képes meghatározni, hogy az automatikus hangolás nem megfelelően működik az adatbázison. Ebben a helyzetben hangolási beállítás letiltja a rendszer. A legtöbb esetben ennek oka az, a Query Store nincs engedélyezve, vagy egy adott adatbázis csak olvasható állapotban van.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/5/2018
 ms.author: terrylan
-ms.openlocfilehash: bc6226d462bac7e9c50ce3f348007023bf861ec3
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 3c198ea44953c0b2e72a544cd0e83b6592d9a81f
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44162291"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47032076"
 ---
 # <a name="setting-security-policies-in-security-center-or-in-azure-policy"></a>Biztonsági szabályzatok beállítása a Security Center vagy az Azure Policy
 
@@ -111,7 +111,7 @@ Az alapértelmezett biztonsági szabályzatban elérhető szabályzatdefiníció
 Ha a vállalatnak sok előfizetése van, jól jöhet egy módszer, hogy hatékonyan kezelje az előfizetésekhez való hozzáférést, a szabályzatokat és a megfelelőséget. Az Azure Management Groups előfizetések fölötti hatókörszintet biztosít. Az előfizetéseket „felügyeleti csoportok” nevű tárolókba rendezheti, és az irányítási szabályzatokat alkalmazhatja a felügyeleti csoportokra. A felügyeleti csoporton belüli összes előfizetés automatikusan örökli a felügyeleti csoportra alkalmazott szabályzatokat. Minden címtárhoz tartozik egy legfelső szintű, „gyökér” felügyeleti csoportnak nevezett felügyeleti csoport. Ez a gyökérszintű felügyeleti csoport úgy épül be a hierarchiába, hogy minden felügyeleti csoport és előfizetés fölött legyen. Ez a gyökérszintű felügyeleti csoport lehetővé teszi globális szabályzatok és RBAC-hozzárendelések címtárszintű alkalmazását. Ha a felügyeleti csoportokat be szeretné állítani az Azure Security Centerrel való használatra, kövesse az [Azure Security Centerbeli bérlőszintű láthatóságot](security-center-management-groups.md) ismertető cikket. 
 
 > [!NOTE]
-> Fontos, hogy átlássa a felügyeleti csoportok és előfizetések hierarchiáját. További információt a felügyeleti csoportokról, a gyökérszintű felügyeletről és a felügyeleti csoportok hozzáféréséről [az erőforrások az Azure Felügyeleti csoportok segítségével való rendszerezését](../azure-resource-manager/management-groups-overview.md#root-management-group-for-each-directory) ismertető részben talál.
+> Fontos, hogy átlássa a felügyeleti csoportok és előfizetések hierarchiáját. További információt a felügyeleti csoportokról, a gyökérszintű felügyeletről és a felügyeleti csoportok hozzáféréséről [az erőforrások az Azure Felügyeleti csoportok segítségével való rendszerezését](../governance/management-groups/index.md#root-management-group-for-each-directory) ismertető részben talál.
 >
 >
 

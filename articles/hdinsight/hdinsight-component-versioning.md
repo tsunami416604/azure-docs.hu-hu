@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: kakampf
-ms.openlocfilehash: 95d6c392bb0fcb5dfef21fabde9b0bd44e2284a3
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 2f6ced6603c6736200f4474fbb1dc9b0ef1535d9
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44379485"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47056804"
 ---
 # <a name="what-are-the-hadoop-components-and-versions-available-with-hdinsight"></a>Mik azok a Hadoop-összetevők és a HDInsight-verziók?
 
@@ -29,32 +29,32 @@ Az Azure HDInsight Hadoop fürt több verzió telepítését követően bármiko
 A HDInsight-fürt verziók-összetevő verzió az alábbi táblázatban láthatók: 
 
 > [!NOTE]
-> A HDInsight szolgáltatás az alapértelmezett verziójának előzetes értesítés nélkül változhatnak. Ha egy függőségi, adja meg a HDInsight-verzió a .NET SDK használatával az Azure PowerShell és az Azure CLI-fürtök létrehozásakor.
+> A HDInsight szolgáltatás az alapértelmezett verziójának előzetes értesítés nélkül változhatnak. Ha egy függőségi, adja meg a HDInsight-verzió a .NET SDK használatával az Azure PowerShell és a klasszikus Azure CLI-fürtök létrehozásakor.
 
-| Összetevő | HDInsight 3.6-os (alapértelmezett) | HDInsight 3.5-ös verzióját. | HDInsight 3.4 | HDInsight 3.3. | HDInsight 3.2-es verzióját | HDInsight 3.1. | HDInsight 3.0-s |
-| --- | --- | --- | --- | --- | --- | --- |--- |
-| Hortonworks Data Platform |2.6 |2.5 |2.4 |2.3 |2.2 |2.1.7 |2.0 |
-| Az Apache Hadoop és YARN |2.7.3 |2.7.3 |2.7.1 |2.7.1 |2.6.0 |2.4.0 |2.2.0 |
-| Az Apache Tez |0.7.0 |0.7.0 |0.7.0 |0.7.0 |0.5.2 |0.4.0 |-|
-| Az Apache Pig |0.16.0 |0.16.0 |0.15.0 |0.15.0 |0.14.0 |0.12.1 |0.12.0 |
-| Az Apache Hive és HCatalog |1.2.1 |1.2.1 |1.2.1 |1.2.1 |0.14.0 |0.13.1 |0.12.0 |
-| Az Apache Hive2 | 2.1.0 |-|-|-|-|-|-|
-| Az Apache Tez Hive2 | 0.8.4 |-|-|-|-|-|-|
-| Apache Ranger | 0.7.0 |0.6.0 |-|-|-|-|-|
-| Apache HBase |1.1.2 |1.1.2 |1.1.2 |1.1.1 |0.98.4 |0.98.0 |-|
-| Az Apache sqoop használatával |1.4.6 |1.4.6 |1.4.6 |1.4.6 |1.4.5 |1.4.4 |1.4.4 |
-| Az Apache Oozie |4.2.0 |4.2.0 |4.2.0 |4.2.0 |4.1.0 |4.0.0 |4.0.0 |
-| Az Apache Zookeeper |3.4.6 |3.4.6 |3.4.6 |3.4.6 |3.4.6 |3.4.5 |3.4.5 |
-| Apache Storm |1.1.0 |1.0.1 |0.10.0 |0.10.0 |0.9.3 |0.9.1 |-|
-| Az Apache mahout használatával |0.9.0+ |0.9.0+ |0.9.0+ |0.9.0+ |0.9.0 |0.9.0 |-|
-| Az Apache Phoenixhez |4.7.0 |4.7.0 |4.4.0 |4.4.0 |4.2.0 |4.0.0.2.1.7.0-2162 |-|
-| Apache Spark |2.3.0-át, 2.2.0, 2.1.0 |1.6.2-es verzióján, 2.0-s |1.6.0-s |1.5.2 |1.3.1 (csak Windows) |-|-|
-| Az Apache Livy |0.4 |0,3 |0,3 |0.2 |-|-|-|
-| Apache Kafka | 1.1-es, 1.0-s, 0.10.1 | 0.10.0 | 0.9.0 |-|-|-|-|
-| Az Apache Ambari | 2.6.0 | 2.4.0 | 2.2.1 | 2.1.0 |-|-|-|
-| Az Apache Zeppelin | 0.7.0 |-|-|-|-|-|-|
-| Mono |4.2.1 |4.2.1 |3.2.8 |-|-|-|
-| Az Apache csúszka | 0.92.0 |-|-|-|-|-|-|
+| Összetevő | HDInsight 4.0 | HDInsight 3.6-os (alapértelmezett) | HDInsight 3.5-ös verzióját. | HDInsight 3.4 | HDInsight 3.3. | HDInsight 3.2-es verzióját | HDInsight 3.1. | HDInsight 3.0-s |
+| --- | --- | --- | --- | --- | --- | --- | --- |--- |
+| Hortonworks Data Platform |3.0 |2.6 |2.5 |2.4 |2.3 |2.2 |2.1.7 |2.0 |
+| Az Apache Hadoop és YARN |2.9.1-es |2.7.3 |2.7.3 |2.7.1 |2.7.1 |2.6.0 |2.4.0 |2.2.0 |
+| Az Apache Tez |0.9.1 |0.7.0 |0.7.0 |0.7.0 |0.7.0 |0.5.2 |0.4.0 |-|
+| Az Apache Pig |0.16.0 |0.16.0 |0.16.0 |0.15.0 |0.15.0 |0.14.0 |0.12.1 |0.12.0 |
+| Az Apache Hive és HCatalog |-|1.2.1 |1.2.1 |1.2.1 |1.2.1 |0.14.0 |0.13.1 |0.12.0 |
+| Az Apache Hive |3.1.0 | 2.1.0 |-|-|-|-|-|-|
+| Az Apache Tez Hive2 |-| 0.8.4 |-|-|-|-|-|-|
+| Apache Ranger |1.1.0 |0.7.0 |0.6.0 |-|-|-|-|-|
+| Apache HBase |2.0.1 |1.1.2 |1.1.2 |1.1.2 |1.1.1 |0.98.4 |0.98.0 |-|
+| Az Apache sqoop használatával |1.4.7 |1.4.6 |1.4.6 |1.4.6 |1.4.6 |1.4.5 |1.4.4 |1.4.4 |
+| Az Apache Oozie |4.3.1. |4.2.0 |4.2.0 |4.2.0 |4.2.0 |4.1.0 |4.0.0 |4.0.0 |
+| Az Apache Zookeeper |3.4.6 |3.4.6 |3.4.6 |3.4.6 |3.4.6 |3.4.6 |3.4.5 |3.4.5 |
+| Apache Storm |1.2.1 |1.1.0 |1.0.1 |0.10.0 |0.10.0 |0.9.3 |0.9.1 |-|
+| Az Apache mahout használatával |-|0.9.0+ |0.9.0+ |0.9.0+ |0.9.0+ |0.9.0 |0.9.0 |-|
+| Az Apache Phoenixhez |5 |4.7.0 |4.7.0 |4.4.0 |4.4.0 |4.2.0 |4.0.0.2.1.7.0-2162 |-|
+| Apache Spark |2.3.1 |2.3.0-át, 2.2.0, 2.1.0 |1.6.2-es verzióján, 2.0-s |1.6.0-s |1.5.2 |1.3.1 (csak Windows) |-|-|
+| Az Apache Livy |0.5 |0.4 |0,3 |0,3 |0.2 |-|-|-|
+| Apache Kafka | 1.0.1 |1.1-es, 1.0-s, 0.10.1 | 0.10.0 | 0.9.0 |-|-|-|-|
+| Az Apache Ambari | 2.7.0 |2.6.0 | 2.4.0 | 2.2.1 | 2.1.0 |-|-|-|
+| Az Apache Zeppelin | 0.8.0 |0.7.0 |-|-|-|-|-|-|
+| Mono |4.2.1 |4.2.1 |4.2.1 |3.2.8 |-|-|-|
+| Az Apache csúszka |-| 0.92.0 |-|-|-|-|-|-|
 
 ## <a name="check-for-current-hadoop-component-version-information"></a>Hadoop-összetevő verzióinformációkat aktuális keresése
 
@@ -78,6 +78,7 @@ Az alábbi táblázat az Azure Portalon, valamint egyéb telepítési módszerek
 
 | HDInsight-verzió | HDP verzió | VM OS | Kiadási dátum | Támogatás lejárati dátuma | Visszavonás dátuma | Magas rendelkezésre állás |  Rendelkezésre állás az Azure Portalon | 
 | --- | --- | --- | --- | --- | --- | --- | --- |
+| HDInsight 4.0 |HDP 3.0 |Ubuntu 16.0.4 LTS |2018. szeptember 24. | | |Igen |Igen |
 | HDInsight 3.6-os |2.6 HDP |Ubuntu 16.0.4 LTS |2017. április 4. | | |Igen |Igen |
 
 > [!NOTE]
@@ -200,6 +201,7 @@ A _kivezetési dátum_ az a dátum, amely után a fürt verziója nem hozható l
 ## <a name="hortonworks-release-notes-associated-with-hdinsight-versions"></a>Hortonworks kibocsátási megjegyzéseket, társított a HDInsight-verziók
 
 A szakasz a kibocsátási megjegyzések a Hortonworks Data Platform disztribúcióiról, valamint a használt HDInsight Apache-összetevők a mutató hivatkozásokat tartalmaz.
+* HDInsight fürt 4.0-s verzióját használja egy Hadoop-változat alapján [Hortonworks Data Platform 3.0](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.0/release-notes/content/relnotes.html)
 * HDInsight fürt 3.6-os verzióját használja egy Hadoop-változat alapján [Hortonworks Data Platform 2.6](http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.0/bk_release-notes/content/ch_relnotes.html).
 * Fürtverzió HDInsight 3.5-ös verzióját használja egy Hadoop-változat alapján [Hortonworks Data Platform 2.5](http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.5.0/bk_release-notes/content/ch_relnotes_v250.html). A HDInsight fürt 3.5-ös verziója a _alapértelmezett_ az Azure Portalon létrehozott Hadoop-fürtöt.
 * HDInsight fürt 3.4-es verziójú használ egy Hadoop-változat alapján [Hortonworks Data Platform 2.4](http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.4.0/bk_HDP_RelNotes/content/ch_relnotes_v240.html).

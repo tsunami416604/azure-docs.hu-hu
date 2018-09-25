@@ -5,15 +5,15 @@ services: virtual-machines-windows
 author: dlepow
 ms.service: virtual-machines-windows
 ms.topic: include
-ms.date: 05/29/2018
+ms.date: 09/24/2018
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: a07f1622f2d41d105c79fa5354d97aa079567e62
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 2fefe23a57668ce20ed1a6afaf3514750e3c72da
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37935769"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47043880"
 ---
 ## <a name="supported-operating-systems-and-drivers"></a>Támogatott operációs rendszerek és illesztőprogramok
 
@@ -27,13 +27,13 @@ A hálózati vezérlő, NCv2, az NCv3 és ND sorozatú virtuális gépek (NV-sor
 
 | Operációs rendszer | Illesztőprogram |
 | -------- |------------- |
-| Windows Server 2016 | [397.44](http://us.download.nvidia.com/Windows/Quadro_Certified/397.44/397.44-tesla-desktop-winserver2016-international.exe) (.exe) |
-| Windows Server 2012 R2 | [397.44](http://us.download.nvidia.com/Windows/Quadro_Certified/397.44/397.44-tesla-desktop-winserver2008-2012r2-64bit-international.exe) (.exe) |
+| Windows Server 2016 | [398.75](http://us.download.nvidia.com/Windows/Quadro_Certified/398.75/398.75-tesla-desktop-winserver2016-international.exe) (.exe) |
+| Windows Server 2012 R2 | [398.75](http://us.download.nvidia.com/Windows/Quadro_Certified/398.75/398.75-tesla-desktop-winserver2008-2012r2-64bit-international.exe) (.exe) |
 
 
 ### <a name="nvidia-grid-drivers"></a>Az NVIDIA GRID illesztőprogramok
 
-A Microsoft újraterjeszti az NVIDIA GRID illesztőprogramok telepítők használt virtuális munkaállomásait NV-sorozat virtuális gépei vagy a virtuális alkalmazásokhoz. Csak GRID illesztőprogramok telepítése Azure virtuális gépeken NV, csak az alábbi táblázatban felsorolt operációs rendszerek a. Ezeket az illesztőprogramokat tartalmazza a licencelési rács virtuális GPU szoftverek az Azure-ban.
+A Microsoft újraterjeszti NVIDIA GRID illesztőprogramok telepítők NV amd NVv2 sorozatú virtuális gépek virtuális munkaállomásait használt vagy a virtuális alkalmazásokhoz. Csak GRID illesztőprogramok telepítése Azure virtuális gépeken NV, csak az alábbi táblázatban felsorolt operációs rendszerek a. Ezeket az illesztőprogramokat tartalmazza a licencelési rács virtuális GPU szoftverek az Azure-ban.
 
 | Operációs rendszer | Illesztőprogram |
 | -------- |------------- |

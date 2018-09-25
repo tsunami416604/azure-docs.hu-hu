@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Ez az oktatóanyag bemutatja, hogyan használja a batch tesztelése az alkalmazásban az előrejelzési problémák utterance (kifejezés) megkeresheti és kijavíthatja azokat.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 1f1055b84a83d71931ebd0ca11b5bcd1bd16ad02
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 9e5eb4b8d1b6408779f09a148d1e91f9111a9561
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45630984"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47041744"
 ---
 # <a name="tutorial--2-batch-test-data-sets"></a>Oktatóanyag: 2. Batch-teszt adatkészletek
 

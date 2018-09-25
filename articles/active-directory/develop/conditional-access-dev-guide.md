@@ -5,22 +5,21 @@ services: active-directory
 keywords: ''
 author: CelesteDG
 manager: mtillman
-editor: PatAltimore
 ms.author: celested
 ms.reviewer: dadobali
-ms.date: 07/19/2017
+ms.date: 09/24/2018
 ms.service: active-directory
 ms.component: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.openlocfilehash: ab6936d62aac5502d70239bacfbfd15bd6b793ab
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 229f74367262e07128fa9ea6c895d448b854ae0a
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42060181"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46958254"
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Feltételes hozzáférés az Azure Active Directory fejlesztői útmutatója
 
@@ -40,14 +39,14 @@ Ismerete [egyetlen](quickstart-v1-integrate-apps-with-azure-ad.md) és [több-b�
 
 ### <a name="app-types-impacted"></a>Érintett alkalmazástípusok
 
-Leggyakoribb esetekben feltételes hozzáférés nem változtatja meg az alkalmazás viselkedését, vagy a fejlesztőtől származó módosításokat igényel. Csak bizonyos esetekben a alkalmazás közvetett módon vagy beavatkozás nélkül tokent kér egy szolgáltatáshoz, amikor egy alkalmazásban szükséges kódmódosításokat "kihívások" feltételes hozzáférés kezelésére. Elképzelhető, hogy egyszerűen egy interaktív bejelentkezési kérelem végrehajtása. 
+Leggyakoribb esetekben feltételes hozzáférés nem változtatja meg az alkalmazás viselkedését, vagy a fejlesztőtől származó módosításokat igényel. Csak bizonyos esetekben a alkalmazás közvetett módon vagy beavatkozás nélkül tokent kér egy szolgáltatáshoz, amikor egy alkalmazásban szükséges kódmódosításokat "kihívások" feltételes hozzáférés kezelésére. Elképzelhető, hogy egyszerűen egy interaktív bejelentkezési kérelem végrehajtása.
 
-Pontosabban a következő esetekben szükséges "kihívások" feltételes hozzáférés kezeléséhez szükséges kódot: 
+Pontosabban a következő esetekben szükséges "kihívások" feltételes hozzáférés kezeléséhez szükséges kódot:
 
 * Alkalmazások a Microsoft Graph elérése
 * Alkalmazások a alapú meghatalmazásos folyamat végrehajtása
 * Az alkalmazások több szolgáltatásokhoz és erőforrásokhoz való hozzáférés
-* Egylapos appok ADAL.js használatával
+* Egyoldalas alkalmazások ADAL.js használatával
 * A Web Apps erőforrás hívása
 
 Feltételes hozzáférési szabályzatok alkalmazhatók az alkalmazást, de is alkalmazható egy webes API-t az alkalmazás hozzáfér. Feltételes hozzáférési szabályzat konfigurálásával kapcsolatos további tudnivalókért lásd: [a rövid útmutató: többtényezős hitelesítés megkövetelése az Azure Active Directory feltételes hozzáférés az adott alkalmazások](../conditional-access/app-based-mfa.md).
@@ -87,7 +86,7 @@ Feltételes hozzáférés forgatókönyvekben csak vonatkozik a következő info
 * Alkalmazások a Microsoft Graph elérése
 * Alkalmazások a alapú meghatalmazásos folyamat végrehajtása
 * Az alkalmazások több szolgáltatásokhoz és erőforrásokhoz való hozzáférés
-* Egylapos appok ADAL.js használatával
+* Egyoldalas alkalmazások ADAL.js használatával
 
 A következő részekben bemutatjuk a gyakori forgatókönyvek összetettebb. A működési elv középpontjában feltételes hozzáférési szabályzatok értékeli ki a szolgáltatás, amely rendelkezik a alkalmazni, ha a Microsoft Graphon keresztül van használatban a feltételes hozzáférési szabályzat a jogkivonatot kért idő.
 
@@ -147,7 +146,7 @@ Bemutatják, hogyan lehet kezelni a jogcímek kihívás kódmintákért tekintse
 
 ## <a name="scenario-app-performing-the-on-behalf-of-flow"></a>Forgatókönyv: Alkalmazás végrehajtása a--meghatalmazásos folyamat
 
-Ebben a forgatókönyvben azt végig a helyzet, amelyben egy natív alkalmazást meghív egy webes szolgáltatás és az API is. Ezután a szolgáltatásnak nincs-e ["az a-meghatalmazásos" folyamat](authentication-scenarios.md#application-types-and-scenarios) egy alsóbb rétegbeli szolgáltatás hívásához. Ebben az esetben azt alkalmazott a feltételes hozzáférési szabályzatot az alárendelt szolgáltatás (Web API 2) és egy kiszolgáló/démon alkalmazások helyett inkább egy natív alkalmazást használ. 
+Ebben a forgatókönyvben azt végig a helyzet, amelyben egy natív alkalmazást meghív egy webes szolgáltatás és az API is. Ezután a szolgáltatásnak nincs-e ["he a-meghatalmazásos" folyamat egy alsóbb rétegbeli szolgáltatás hívásához. Ebben az esetben azt alkalmazott a feltételes hozzáférési szabályzatot az alárendelt szolgáltatás (Web API 2) és egy kiszolgáló/démon alkalmazások helyett inkább egy natív alkalmazást használ. 
 
 ![Az alkalmazás végrehajtása a alapú meghatalmazásos folyamat diagramja](./media/conditional-access-dev-guide/app-performing-on-behalf-of-scenario.png)
 
@@ -190,7 +189,7 @@ claims={"access_token":{"polids":{"essential":true,"Values":["<GUID>"]}}}
 
 Ha az alkalmazás nem használja az ADAL könyvtár, a jogkivonat beszerzése nem sikerült mindig újra megpróbálja interaktív módon. A interaktív kérelem esetén a végfelhasználónak van a lehetőséget, hogy megfeleljen a feltételes hozzáférés. Ez igaz, ha a kérés nem egy `AcquireTokenSilentAsync` vagy `PromptBehavior.Never` ebben az esetben az alkalmazás kell végrehajtania egy interaktív ```AcquireToken``` a végfelhasználás adni a lehetőséget a szabályzat ahhoz, hogy a kérelmet. 
 
-## <a name="scenario-single-page-app-spa-using-adaljs"></a>Forgatókönyv: Egyetlen lapon App (SPA) ADAL.js használatával
+## <a name="scenario-single-page-app-spa-using-adaljs"></a>Forgatókönyv: Egyoldalas alkalmazás (SPA) ADAL.js használatával
 
 Ebben a forgatókönyvben azt végig az esetben, ha van egy egyoldalas alkalmazás (SPA), a feltételes hozzáférés által védett webes API-hívás ADAL.js használatával. Ez egy egyszerű architektúra, de van néhány apró sajátosságaival szeretne feltételes hozzáférési körül fejlesztése során figyelembe kell venni.
 

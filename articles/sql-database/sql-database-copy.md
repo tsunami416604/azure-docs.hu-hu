@@ -2,19 +2,22 @@
 title: Az Azure SQL database másolása |} A Microsoft Docs
 description: Hozzon létre egy meglévő Azure SQL database tranzakciós szempontból konzisztens másolatot ugyanarra a kiszolgálóra vagy egy másik kiszolgálóra.
 services: sql-database
-author: CarlRabeler
-manager: craigg
 ms.service: sql-database
-ms.custom: load & move data
-ms.date: 09/14/2018
-ms.author: carlrab
+ms.subservice: data-movement
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.openlocfilehash: 99aa7f708505393fb38b9d035c240eb84055e80b
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+author: CarlRabeler
+ms.author: carlrab
+ms.reviewer: ''
+manager: craigg
+ms.date: 09/14/2018
+ms.openlocfilehash: 8edf13953e77714b0b4386378bdccca47ab30d57
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45734607"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47063676"
 ---
 # <a name="copy-an-azure-sql-database"></a>Az Azure SQL database másolása
 

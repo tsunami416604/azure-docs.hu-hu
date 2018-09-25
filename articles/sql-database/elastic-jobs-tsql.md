@@ -2,18 +2,22 @@
 title: Feladatok létrehozása és kezelése az Azure SQL rugalmas adatbázis Transact-SQL (T-SQL) használatával |} A Microsoft Docs
 description: Több adatbázis közötti parancsfájlok futtatása az adatbázis feladatügynök Transact-SQL (T-SQL) használatával.
 services: sql-database
-author: jaredmoo
-manager: craigg
 ms.service: sql-database
-ms.topic: article
-ms.date: 06/14/2018
+ms.subservice: operations
+ms.custom: ''
+ms.devlang: ''
+ms.topic: conceptual
 ms.author: jaredmoo
-ms.openlocfilehash: d524f7756c8dd394d8651839a1f6426c512d6a73
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+author: jaredmoo
+ms.reviewer: ''
+manager: craigg
+ms.date: 06/14/2018
+ms.openlocfilehash: 49fe1fc79ac94b798cb257b961c36a6258fb00d9
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44023528"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47056787"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>Rugalmas adatbázis-feladatok létrehozása és kezelése Transact-SQL (T-SQL) használatával
 

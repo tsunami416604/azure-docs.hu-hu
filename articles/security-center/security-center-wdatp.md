@@ -1,5 +1,5 @@
 ---
-title: A Windows Defender komplex veszélyforrások elleni védelem (ATP) az Azure Security Center (nyilvános előzetes verzió) |} A Microsoft Docs
+title: A Windows Defender komplex veszélyforrások elleni védelem (ATP) az Azure Security Centerrel |} A Microsoft Docs
 description: Ez a dokumentum bemutatja az integráció az Azure Security Center és a Windows Defender ATP között.
 services: security-center
 documentationcenter: na
@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/06/2018
+ms.date: 09/20/2018
 ms.author: barclayn
-ms.openlocfilehash: f2cb4edd469d76f79e4134ca261bac5263bf3ce4
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 5f604583aeb9a633d34bad633008e0c2ddeb3ef2
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44296057"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47032036"
 ---
-# <a name="windows-defender-advanced-threat-protection-atp-with-azure-security-center-public-preview"></a>A Windows Defender komplex veszélyforrások elleni védelem (ATP) az Azure Security Center (nyilvános előzetes verzió)
+# <a name="windows-defender-advanced-threat-protection-atp-with-azure-security-center"></a>A Windows Defender komplex veszélyforrások elleni védelem (ATP) az Azure Security Centerrel
 
 Az Azure Security Center integrálásával kiterjeszti a Felhőbeli számítási feladatok védelmét platformok (CWPP) nyújthassa [Windows Defender ATP](https://www.microsoft.com/WindowsForBusiness/windows-atp).
 Ez a változás végpont észlelés és válasz (EDR) funkciókészletet biztosít. Ez lehetővé teszi a helyszíni rendellenességeket, észlelését és elhárítását az ASC által figyelt kiszolgálói végpontot a speciális támadások.
@@ -43,7 +43,7 @@ Ezek a képességek, mostantól elérhetők az Azure Security Center:
 
 ![*. Ábra – 1 jelennek meg a teljes kép során, beleértve az ASC * által generált riasztások vizsgálata](media/security-center-wdatp/image1.png)
 
-Segítségével megvizsgálhatja, a riasztás az Azure Security Centerben:
+Is [vizsgálata](security-center-investigation.md) a riasztást az Azure Security Centerben:
 
 ![2. ábra vizsgálat – az Azure Security Center](media/security-center-wdatp/image2.png)
 
@@ -59,7 +59,15 @@ Csak a Standard szintű előfizetésekhez kiszolgálók
 
 ## <a name="onboarding-instructions"></a>Előkészítési utasítások
 
-- Ha Ön már előkészítve az ASC ASC standard szintre - semmilyen műveletet a kiszolgálók szükséges, automatikusan az előkészítésére WDATP-kiszolgálókat.
+Ha engedélyezve van a Windows Defender ATP-integráció megtekintéséhez válassza ki a Security center > biztonsági házirend > előfizetés > beállításainak szerkesztése
+
+  ![A szabályzat megtekintése](media/security-center-wdatp/policy-management.png)
+
+Itt láthatja a integrációja jelenleg engedélyezve van
+
+  ![Engedélyezett Integrációk](media/security-center-wdatp/enable-integrations.png)
+
+- Ha Ön már az ASC standard szintre - semmilyen műveletet a kiszolgálók szükséges, az ASC a rendszer automatikusan készítse elő a kiszolgálók WDATP előkészítve. Ez akár 24 óráig is eltarthat.
 
 - Ha Ön soha nem a kiszolgálók ASC standard díjcsomag – készítse elő az ASC-hez a szokásos módon előkészítve.
 
@@ -81,7 +89,7 @@ Ha a proxy vagy tűzfal blokkolja a névtelen forgalmat, a Windows Defender ATP-
 
 1. A Windows Server rendszerű virtuális gépek közül távoli asztali eléréséhez (2012 R2 vagy 2016) az előfizetésben, és nyissa meg egy parancssori ablakot
 
-2. Amikor a rendszer kéri másolja, és futtassa az alábbi parancsot. Vegye figyelembe, hogy a parancssori ablakban automatikusan bezáródik.
+2. Amikor a rendszer kéri másolja, és futtassa az alábbi parancsot. A parancssori ablakban automatikusan bezáródik.
 
     **PowerShell.exe - NoExit - ExecutionPolicy Mellőzés - je hodnota allowstransparency Nastavena rejtett (New-Object System.Net.WebClient). DownloadFile ("http://127.0.0.1/1.exe", "C:\\test-WDATP-test\\invoice.exe"); Folyamatának elindítása "C:\\test-WDATP-test\\invoice.exe a(z) **
 
@@ -95,6 +103,6 @@ Ha a proxy vagy tűzfal blokkolja a névtelen forgalmat, a Windows Defender ATP-
 
 ## <a name="next-steps"></a>További lépések
 
-* [Biztonsági szabályzatok beállítása az Azure Security Centerben](security-center-policies.md) – Ez a cikk bemutatja, hogyan konfigurálhat biztonsági házirendeket Azure-előfizetései és -erőforráscsoportjai számára.
-* [Biztonsági javaslatok kezelése az Azure Security Center](security-center-recommendations.md) – megtudhatja, hogyan javaslatok az Azure-erőforrások védelme.
-* [Biztonsági állapotfigyelés az Azure Security Center](security-center-monitoring.md) – útmutató az Azure-erőforrások állapotának monitorozásához.
+- [Biztonsági szabályzatok beállítása az Azure Security Centerben](security-center-policies.md) – Ez a cikk bemutatja, hogyan konfigurálhat biztonsági házirendeket Azure-előfizetései és -erőforráscsoportjai számára.
+- [Biztonsági javaslatok kezelése az Azure Security Center](security-center-recommendations.md) – megtudhatja, hogyan javaslatok az Azure-erőforrások védelme.
+- [Biztonsági állapotfigyelés az Azure Security Center](security-center-monitoring.md) – útmutató az Azure-erőforrások állapotának monitorozásához.

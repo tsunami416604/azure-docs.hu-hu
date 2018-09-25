@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 08/06/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 2ccef960378190f10e64318f91039871657a1a46
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 250eddb043ccf9fa0b1bb92a298900f8ad820140
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45603753"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46992269"
 ---
 # <a name="search-queries-in-log-analytics"></a>A Log Analytics keresési lekérdezések
 
@@ -36,7 +36,7 @@ Tábla-alapú lekérdezések első lépésként hatókörének beállítása a l
 ## <a name="search-a-term"></a>Kifejezés keresése
 A **keresési** parancs általában szolgál adott kifejezés keresése. A következő példában az összes tábla összes oszlopa tartalomvizsgálatnak kifejezés "error":
 
-```KQL
+```Kusto
 search "error"
 | take 100
 ```
@@ -46,13 +46,13 @@ Míg az egyszerűen használható, szerint a fent egy hasonló szűkített leké
 ### <a name="table-scoping"></a>Tábla hatókörének beállítása
 A megadott tábla kifejezés keresése, adjon hozzá `in (table-name)` után csak a **keresési** operátor:
 
-```KQL
+```Kusto
 search in (Event) "error"
 | take 100
 ```
 
 vagy több tábla:
-```KQL
+```Kusto
 search in (Event, SecurityEvent) "error"
 | take 100
 ```
@@ -60,7 +60,7 @@ search in (Event, SecurityEvent) "error"
 ### <a name="table-and-column-scoping"></a>Tábla és oszlop hatókörének beállítása
 Alapértelmezés szerint **keresési** kiértékelik az adatkészlet összes oszlopa. Keresés csak egy adott oszlop, használja ezt a szintaxist:
 
-```KQL
+```Kusto
 search in (Event) Source:"error"
 | take 100
 ```
@@ -71,7 +71,7 @@ search in (Event) Source:"error"
 ## <a name="case-sensitivity"></a>Kisbetű/nagybetű megkülönböztetése
 Alapértelmezés szerint kifejezés keresése a kis-és nagybetűket, így a "dns" keresése például a "DNS", "dns" vagy "Dns" eredményeket sikerült adnak. Ahhoz, hogy a keresés kis-és nagybetűket, használja a `kind` lehetőséget:
 
-```KQL
+```Kusto
 search kind=case_sensitive in (Event) "DNS"
 | take 100
 ```
@@ -80,26 +80,26 @@ search kind=case_sensitive in (Event) "DNS"
 A **keresési** parancs támogatja a helyettesítő karakterek használata az elején, teljes vagy közel egy kifejezés.
 
 A keresési feltételek "win" kezdetű:
-```KQL
+```Kusto
 search in (Event) "win*"
 | take 100
 ```
 
 A keresési feltételek, amelyek a ".com" végződik:
-```KQL
+```Kusto
 search in (Event) "*.com"
 | take 100
 ```
 
 Keresés a feltételeket, amelyek tartalmazzák a "www":
-```KQL
+```Kusto
 search in (Event) "*www*"
 | take 100
 ```
 
 A keresési kifejezéseket, amely "corp" karakterlánccal kezdődik és ér véget, a ".com", például a "corp.mydomain.com" "
 
-```KQL
+```Kusto
 search in (Event) "corp*.com"
 | take 100
 ```
@@ -112,21 +112,21 @@ Is kaphat minden egy tábla csak egy helyettesítő karakter használatával: `s
 ## <a name="add-and--or-to-search-queries"></a>Adjon hozzá *és* / *vagy* keresés lekérdezése
 Használat **és** rekord, amely több használati kereséséhez:
 
-```KQL
+```Kusto
 search in (Event) "error" and "register"
 | take 100
 ```
 
 Használat **vagy** beolvasni a rekordokat, amelyek tartalmazzák a feltételek legalább egyikének:
 
-```KQL
+```Kusto
 search in (Event) "error" or "register"
 | take 100
 ```
 
 Ha több keresési feltétel, hogy kombinálhatja azokat zárójelek használatával ugyanabból a lekérdezés:
 
-```KQL
+```Kusto
 search in (Event) "error" and ("register" or "marshal*")
 | take 100
 ```
@@ -136,7 +136,7 @@ Az ebben a példában az eredmények lenne, amely tartalmazza a kisbetűs "error
 ## <a name="pipe-search-queries"></a>Függőleges vonal keresési lekérdezések
 Hasonlóan a többi parancs **keresési** átadható olyan parancsoknak, a keresési eredmények is szűrhetők, rendezve, és összesítve. Például számú *esemény* "win" tartalmazó rekordok:
 
-```KQL
+```Kusto
 search in (Event) "win"
 | count
 ```
@@ -146,4 +146,4 @@ search in (Event) "win"
 
 ## <a name="next-steps"></a>További lépések
 
-- További oktatóanyagok tekintse meg a [Log Analytics lekérdezési nyelv hely ](https://docs.loganalytics.io)
+- További oktatóanyagok tekintse meg a [Log Analytics lekérdezési nyelv hely](https://aka.ms/LogAnalyticsLanguage).

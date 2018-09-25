@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2018
 ms.author: jdial
-ms.openlocfilehash: 67b2babcd19268a61794d123f5aa9780af16976b
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 366ff0b59835ca3a28cafd5de77c0bd645ff58c5
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39364012"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46984228"
 ---
 # <a name="diagnose-a-virtual-machine-network-traffic-filter-problem"></a>A virtuális gép hálózati forgalomszűrési problémáinak diagnosztizálása
 
@@ -111,7 +111,7 @@ Az előző kimeneti hálózati adapter neve van *myVMVMNic*.
 
 ## <a name="diagnose-using-azure-cli"></a>Diagnosztika az Azure CLI-vel
 
-Ha használja az Azure parancssori felület (CLI) parancsai cikkben leírt feladatok elvégzéséhez, vagy futtassa a parancsokat a [Azure Cloud Shell](https://shell.azure.com/bash), vagy a parancssori felület futtatásával a számítógépről. Ehhez a cikkhez az Azure CLI 2.0.32 verzió vagy újabb. A telepített verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése](/cli/azure/install-azure-cli). Ha helyileg futtatja az Azure CLI, is futtatni szeretné `az login` , és jelentkezzen be Azure-fiókkal, amely rendelkezik a [szükséges engedélyek](virtual-network-network-interface.md#permissions).
+Ha használja az Azure parancssori felület (CLI) parancsai cikkben leírt feladatok elvégzéséhez, vagy futtassa a parancsokat a [Azure Cloud Shell](https://shell.azure.com/bash), vagy a parancssori felület futtatásával a számítógépről. Ehhez a cikkhez az Azure CLI 2.0.32 verzió vagy újabb. A telepített verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli). Ha helyileg futtatja az Azure CLI, is futtatni szeretné `az login` , és jelentkezzen be Azure-fiókkal, amely rendelkezik a [szükséges engedélyek](virtual-network-network-interface.md#permissions).
 
 Hálózati illesztő – esetén az érvényes biztonsági szabályainak lekérése [az network nic list-effective-nsg](/cli/azure/network/nic#az-network-nic-list-effective-nsg). Az alábbi példa lekéri az érvényben lévő biztonsági szabályokat nevű hálózati adapter *myVMVMNic* nevű erőforráscsoportban ez *myResourceGroup*:
 

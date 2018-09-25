@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 09/07/2018
+ms.date: 09/20/2018
 ms.author: carlrab
-ms.openlocfilehash: f30d15c70b33200565f1933a4d8ebe8ed654638c
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 87015521ee67cc66f2a0f11ad6c8a32c9224af46
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44055233"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47034892"
 ---
 # <a name="azure-sql-database-logical-servers-and-their-management"></a>Az Azure SQL Database logikai kiszolgálóiról és azok kezelése
 
@@ -111,25 +111,25 @@ Létrehozása és kezelése az Azure SQL server, adatbázisok és tűzfalak és 
 
 | Parancsmag | Leírás |
 | --- | --- |
-|[az sql db create](/cli/azure/sql/db#az_sql_db_create) |Létrehoz egy adatbázist|
-|[az sql db list](/cli/azure/sql/db#az_sql_db_list)|Felsorolja az összes adatbázisok és adattárházak a kiszolgálón, vagy egy rugalmas készletben található összes adatbázis|
-|[az sql db list-editions](/cli/azure/sql/db#az_sql_db_list_editions)|Listák elérhető szolgáltatási célkitűzések és a tárolási korlátok|
-|[az sql db list-usages](/cli/azure/sql/db#az_sql_db_list_usages)|Adatbázis-használat értéket ad vissza|
-|[az sql db show](/cli/azure/sql/db#az_sql_db_show)|Egy adatbázis sem az adattárházra beolvasása|
-|[az sql db update](/cli/azure/sql/db#az_sql_db_update)|Frissíti az adatbázist|
-|[az sql db delete](/cli/azure/sql/db#az_sql_db_delete)|Egy adatbázis eltávolítása|
-|[az group create](/cli/azure/group#az_group_create)|Létrehoz egy erőforráscsoportot|
-|[az sql server create](/cli/azure/sql/server#az_sql_server_create)|Kiszolgáló létrehozása|
-|[az sql server list](/cli/azure/sql/server#az_sql_server_list)|Kiszolgálók listája|
-|[az sql server list-usages](/cli/azure/sql/server#az_sql_server_list_usages)|Kiszolgáló usages adja vissza|
-|[az sql server show](/cli/azure/sql/server#az_sql_server_show)|Lekérdezi egy kiszolgálóra|
-|[az sql server frissítése](/cli/azure/sql/server#az_sql_server_update)|A kiszolgáló frissítése|
-|[az sql server delete](/cli/azure/sql/server#az_sql_server_delete)|A kiszolgáló törlése|
-|[az sql server firewall-rule létrehozása](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_create)|Létrehoz egy kiszolgálói tűzfalszabályt|
-|[az sql server firewall-rule list](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_list)|A tűzfalszabályokat a kiszolgáló listákat|
-|[az sql server firewall-rule show](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_show)|A részletek a tűzfalszabályok megjelenítése|
-|[az sql server firewall-rule update](/cli/azure/sql/server/firewall-rule##az_sql_server_firewall_rule_update)|A tűzfalszabályok frissítése|
-|[az sql server firewall-rule delete](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_delete)|Tűzfalszabály törlése|
+|[az sql db create](/cli/azure/sql/db#az-sql-db-create) |Létrehoz egy adatbázist|
+|[az sql db list](/cli/azure/sql/db#az-sql-db-list)|Felsorolja az összes adatbázisok és adattárházak a kiszolgálón, vagy egy rugalmas készletben található összes adatbázis|
+|[az sql db list-editions](/cli/azure/sql/db#az-sql-db-list-editions)|Listák elérhető szolgáltatási célkitűzések és a tárolási korlátok|
+|[az sql db list-usages](/cli/azure/sql/db#az-sql-db-list-usages)|Adatbázis-használat értéket ad vissza|
+|[az sql db show](/cli/azure/sql/db#az-sql-db-show)|Egy adatbázis sem az adattárházra beolvasása|
+|[az sql db update](/cli/azure/sql/db#az-sql-db-update)|Frissíti az adatbázist|
+|[az sql db delete](/cli/azure/sql/db#az-sql-db-delete)|Egy adatbázis eltávolítása|
+|[az group create](/cli/azure/group#az-group-create)|Létrehoz egy erőforráscsoportot|
+|[az sql server create](/cli/azure/sql/server#az-sql-server-create)|Kiszolgáló létrehozása|
+|[az sql server list](/cli/azure/sql/server#az-sql-server-list)|Kiszolgálók listája|
+|[az sql server list-usages](/cli/azure/sql/server#az-sql-server-list-usages)|Kiszolgáló usages adja vissza|
+|[az sql server show](/cli/azure/sql/server#az-sql-server-show)|Lekérdezi egy kiszolgálóra|
+|[az sql server frissítése](/cli/azure/sql/server#az-sql-server-update)|A kiszolgáló frissítése|
+|[az sql server delete](/cli/azure/sql/server#az-sql-server-delete)|A kiszolgáló törlése|
+|[az sql server firewall-rule létrehozása](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create)|Létrehoz egy kiszolgálói tűzfalszabályt|
+|[az sql server firewall-rule list](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-list)|A tűzfalszabályokat a kiszolgáló listákat|
+|[az sql server firewall-rule show](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-show)|A részletek a tűzfalszabályok megjelenítése|
+|[az sql server firewall-rule update](/cli/azure/sql/server/firewall-rule##az-sql-server-firewall-rule-update)|A tűzfalszabályok frissítése|
+|[az sql server firewall-rule delete](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-delete)|Tűzfalszabály törlése|
 
 > [!TIP]
 > Az Azure CLI-vel a rövid útmutatóban talál [egyetlen Azure SQL-adatbázis létrehozása az Azure CLI-vel](sql-database-cli-samples.md). Azure CLI-példa szkriptek, lásd: [parancssori felület használata egy Azure SQL-adatbázis létrehozása és tűzfalszabály konfigurálása](scripts/sql-database-create-and-configure-database-cli.md) és [használható parancssori felület egy egyetlen SQL-adatbázis monitorozása és skálázása](scripts/sql-database-monitor-and-scale-database-cli.md).

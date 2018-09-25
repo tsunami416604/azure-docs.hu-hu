@@ -1,22 +1,23 @@
 ---
 title: Log Analytics használata SQL Database több-bérlős alkalmazással |} A Microsoft Docs
 description: Állítsa be, és a Log Analytics használata egy több-bérlős Azure SQL Database SaaS-alkalmazás
-keywords: sql database-oktatóanyag
 services: sql-database
-author: stevestein
-manager: craigg
 ms.service: sql-database
-ms.custom: scale out apps
+ms.subservice: scenario
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: stevestein
 ms.author: sstein
 ms.reviewer: billgib
-ms.openlocfilehash: 3ca2f811ff0ac81ea70ec0b22d7429cdc5604171
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: 60139915e8d8dca382f4ef62b5129f1a84e7e80d
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39420182"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47056709"
 ---
 # <a name="set-up-and-use-log-analytics-with-a-multitenant-sql-database-saas-app"></a>Állítsa be, és a Log Analytics használatához egy több-bérlős SQL Database SaaS-alkalmazással
 
@@ -76,7 +77,7 @@ Most megnyithatja a Log Analytics az Azure Portalon vagy az Operations Managemen
 
 Ebben a gyakorlatban nyissa meg a Log Analytics és az Operations Management Suite portálján, az adatbázisokhoz és készletekhez gyűjtött telemetriai adatok.
 
-1. Keresse meg a [az Azure portal](https://portal.azure.com). Válassza ki **minden szolgáltatás** Log Analytics megnyitásához. Keressen rá a Log Analytics.
+1. Keresse fel az [Azure Portalt](https://portal.azure.com). Válassza ki **minden szolgáltatás** Log Analytics megnyitásához. Keressen rá a Log Analytics.
 
    ![Nyissa meg a Log Analytics](media/saas-dbpertenant-log-analytics/log-analytics-open.png)
 

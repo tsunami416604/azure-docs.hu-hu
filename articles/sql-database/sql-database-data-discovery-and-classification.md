@@ -2,20 +2,22 @@
 title: Az Azure SQL-adatbázis adatainak felderítés és besorolás |} A Microsoft Docs
 description: Az Azure SQL-adatbázis adatainak felderítése és besorolása
 services: sql-database
-author: giladmit
-manager: craigg
-ms.reviewer: vanto
 ms.service: sql-database
-ms.custom: security
+ms.subservice: security
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/10/2018
+author: giladmit
 ms.author: giladm
-ms.openlocfilehash: aca01e67339d5f6d003021cb17f1787093b79eda
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.reviewer: vanto
+manager: craigg
+ms.date: 09/10/2018
+ms.openlocfilehash: d34bb54729fe0adc4b26d213bfaa4ad4fb210ab7
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45543962"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47064183"
 ---
 # <a name="azure-sql-database-data-discovery-and-classification"></a>Az Azure SQL-adatbázis adatainak felderítése és besorolása
 Adatfelderítés és besorolás (jelenleg előzetes verzióban érhető el) biztosít az Azure SQL Database-be épített fejlettebb képességek **felderítése**, **Írisz**, **címkézés**  &  **védelme** a bizalmas adatokat az adatbázisban.
@@ -106,7 +108,7 @@ Miután az összes bérlőre vonatkozó házirend lett meghatározva, továbbra 
 
 Fontos szempont az information protection paradigmát a rendszer azon képessége, bizalmas adatokhoz való hozzáférés figyelésére. [Az Azure SQL Database naplózási](https://docs.microsoft.com/azure/sql-database/sql-database-auditing) v auditovacím protokolu nevű új mező tartalmazza a továbbfejlesztett *data_sensitivity_information*, amelyek az érzékenységi besorolások (címkék), a tényleges adatok által visszaadott naplók a lekérdezés.
 
-![Napló](./media/sql-data-discovery-and-classification/11_data_classification_audit_log.png)
+![Auditnapló](./media/sql-data-discovery-and-classification/11_data_classification_audit_log.png)
 
 ## <a id="subheading-4"></a>Automatikus/Programmatic besorolás
 
@@ -115,9 +117,9 @@ T-SQL használatával oszloposztályozás hozzáadása/eltávolítása, valamint
 > [!NOTE]
 > Amikor T-SQL használatával felügyeli a címkéket, nem történik ellenőrzés a szervezeti information protection-szabályzat (a portál javaslatokat megjelenő címkék készletét) létező címkék egy oszlophoz érték hozzáadva. Esetén a ezekhez, hogy ennek ellenőrzése.
 
-* Egy vagy több oszlop osztályozása hozzáadása/frissítése: [tartalmi OSZTÁLYOZÁSHOZ hozzáadása](https://docs.microsoft.com/en-us/sql/t-sql/statements/add-sensitivity-classification-transact-sql)
-* Távolítsa el a besoroláshoz egy vagy több oszlop: [dobja el a tartalmi osztályozás](https://docs.microsoft.com/en-us/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
-* Minden besorolás megtekintése az adatbázison: [sys.sensitivity_classifications](https://docs.microsoft.com/en-us/sql/relational-databases/system-catalog-views/sys-sensitivity-classifications-transact-sql)
+* Egy vagy több oszlop osztályozása hozzáadása/frissítése: [tartalmi OSZTÁLYOZÁSHOZ hozzáadása](https://docs.microsoft.com/sql/t-sql/statements/add-sensitivity-classification-transact-sql)
+* Távolítsa el a besoroláshoz egy vagy több oszlop: [dobja el a tartalmi osztályozás](https://docs.microsoft.com/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
+* Minden besorolás megtekintése az adatbázison: [sys.sensitivity_classifications](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-sensitivity-classifications-transact-sql)
 
 REST API-k használatával programozott módon kezelheti a besorolásokat. A közzétett REST API-k támogatják a következő műveleteket:
 * [Hozzon létre vagy frissítsen](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/createorupdate) – létrehozza vagy frissíti a érzékenységi címkét egy adott oszlop

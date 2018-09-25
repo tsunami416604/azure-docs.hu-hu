@@ -14,16 +14,19 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: 4663da6d28d62230ced937cdb5e597a1236c7f99
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: 0482a882b2dea47752eb38eadbaaa72e36ae2eae
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39258946"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47031968"
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>A teljesítmény az Azure Diagnostics Virtuálisgép-bővítmény Windows
 
 Az Azure teljesítménydiagnosztikai Virtuálisgép-bővítmény segít a teljesítmény diagnosztikai adatok gyűjtését a Windows virtuális gépek. A bővítmény elemzési hajt végre, és egy jelentésre az eredményeket és meglátásokat bemutató javaslatok azonosításához, és a virtuális gépen a teljesítménnyel kapcsolatos problémák megoldásához nyújt. Ez a bővítmény telepítését nevű hibaelhárítási eszköz [PerfInsights](http://aka.ms/perfinsights).
+
+> [!NOTE]
+    > Ha meg szeretné diagnosztika futtatása a virtuális Gépen az Azure Portalról a nem klasszikus virtuális gépek, az új felhasználói felület használata ajánlott. További információkért lásd: [teljesítménybeli problémák diagnosztizálása az Azure-beli virtuális gépek](performance-diagnostics.md) 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -68,13 +71,13 @@ A következő JSON-ra a séma Azure teljesítménydiagnosztikai Virtuálisgép-b
 |--------------|-------------------|----------------------------|
 |apiVersion|2015-06-15|API-verzió.
 |publisher|Microsoft.Azure.Performance.Diagnostics|A bővítmény közzétevő névterét.
-|típus|AzurePerformanceDiagnostics|A Virtuálisgép-bővítmény típusa.
+|type|AzurePerformanceDiagnostics|A Virtuálisgép-bővítmény típusa.
 |typeHandlerVersion|1.0|A kiterjesztés kezelő verziója.
 |performanceScenario|alapszintű|A teljesítmény eset, amelyekre kapcsolatos adatok rögzítéséhez. Érvényes értékek a következők: **alapszintű**, **vmslow**, **Azure filesba –**, és **egyéni**.
 |traceDurationInSeconds|300|A nyomkövetési adatok, a nyomkövetési beállítások választásakor időtartama.
 |perfCounterTrace|p|Teljesítmény-számláló nyomkövetési lehetővé teszi. Érvényes értékek a következők **p** vagy üres értékkel. Ha nem szeretné rögzíteni a, hagyja meg az üres érték.
 |networkTrace|n|Hálózati nyomkövetés engedélyezése lehetőséget. Érvényes értékek a következők **n** vagy üres értékkel. Ha nem szeretné rögzíteni a, hagyja meg az üres érték.
-|xperfTrace|i|Lehetőség van a következő helyen nyomkövetés engedélyezése. Érvényes értékek a következők **x** vagy üres értékkel. Ha nem szeretné rögzíteni a, hagyja meg az üres érték.
+|xperfTrace|x|Lehetőség van a következő helyen nyomkövetés engedélyezése. Érvényes értékek a következők **x** vagy üres értékkel. Ha nem szeretné rögzíteni a, hagyja meg az üres érték.
 |storPortTrace|s|StorPort-nyomkövetés engedélyezése lehetőséget. Érvényes értékek a következők **s** vagy üres értékkel. Ha nem szeretné rögzíteni a, hagyja meg az üres érték.
 |srNumber|123452016365929|A támogatási jegy száma, ha elérhető. Hagyja meg az értéket, ha üres, ha nem rendelkezik.
 |requestTimeUtc|2017-09-28T22:08:53.736Z|Aktuális dátum és időpont (UTC). Ha a portálon a bővítmény telepítéséhez használ, nem kell ezt az értéket adja meg.
@@ -117,7 +120,7 @@ Távolítsa el a bővítményt a virtuális gépről, kövesse az alábbi lépé
     > [!NOTE]
     > Is válassza ki a bővítmény bejegyzést, és válassza ki a **Eltávolítás** lehetőséget.
 
-## <a name="template-deployment"></a>Sablon telepítése
+## <a name="template-deployment"></a>Sablonalapú telepítés
 Az Azure virtuálisgép-bővítmények is üzembe helyezhetők az Azure Resource Manager-sablonok. A JSON-sémájában az előző szakaszban ismertetett Azure Resource Manager-sablon használható. Ez futtatja az Azure teljesítményét diagnosztikai Virtuálisgép-bővítmény egy Azure Resource Manager-sablon telepítése során. Itt látható egy minta sablont:
 
 ````

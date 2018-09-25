@@ -1,22 +1,23 @@
 ---
 title: Kinyert adatok segítségével több-bérlős elemzések futtatására |} A Microsoft Docs
 description: Egy egybérlős alkalmazást több Azure SQL Database adatbázis kinyert adatok segítségével a több-bérlős elemzési lekérdezések.
-keywords: sql database-oktatóanyag
 services: sql-database
-author: stevestein
-manager: craigg
 ms.service: sql-database
-ms.custom: scale out apps
+ms.subservice: scenario
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/19/2018
+author: stevestein
 ms.author: sstein
-ms.reviewer: anjangsh; billgib; genemi
-ms.openlocfilehash: a838630e3423ca5ec26893597e2bb2b6e36ede2e
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.reviewer: anjangsh,billgib,genemi
+manager: craigg
+ms.date: 09/19/2018
+ms.openlocfilehash: dc912ded6f879d14689a267c7ee63245c11c0bd0
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46498059"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47054948"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---single-tenant-app"></a>A kinyert adatoknak - egybérlős alkalmazást több-bérlős analytics használatával
  

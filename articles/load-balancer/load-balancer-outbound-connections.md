@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/27/2018
 ms.author: kumud
-ms.openlocfilehash: ea8e8ae9b0f487481ac2f25d4e2b9c5733e15431
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: 24eec3b1f3c85384f80823b82962038c235b6dac
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43842255"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47036990"
 ---
 # <a name="outbound-connections-in-azure"></a>Az Azure kimenő kapcsolatainak
 
@@ -69,7 +69,7 @@ A terheléselosztó nyilvános IP-cím frontend-port a rövid élettartamú seg�
 
 SNAT portok vannak előzetesen lefoglalt leírtak szerint a [ismertetése SNAT és a PAT](#snat) szakaszban. Azok, amelyek felhasználhatók, is véges erőforrás. Fontos tudni, hogyan vannak [felhasznált](#pat). Megtudhatja, hogyan tervezhet a felhasználásra és szükség szerint, tekintse át a [kezelése SNAT Erőforrásfogyás](#snatexhaust).
 
-Amikor [több (nyilvános) IP-címek társítva a Load Balancer alapszintű](load-balancer-multivip-overview.md), bármely, a nyilvános IP-címek vannak egy [jelölt a kimenő forgalom](#multivipsnat), és a egy van kiválasztva.  
+Amikor [több nyilvános IP-címek társítva a Load Balancer alapszintű](load-balancer-multivip-overview.md), bármely, a nyilvános IP-címek vannak egy [a kimenő forgalom jelölt](#multivipsnat), és a egy véletlenszerűen kiválasztott.  
 
 Kimenő kapcsolatok a Load Balancer alapszintű állapotának monitorozásához használja [Log Analytics terheléselosztó](load-balancer-monitor-log.md) és [eseménynaplók riasztás](load-balancer-monitor-log.md#alert-event-log) SNAT port Erőforrásfogyás üzenetek figyeléséhez.
 

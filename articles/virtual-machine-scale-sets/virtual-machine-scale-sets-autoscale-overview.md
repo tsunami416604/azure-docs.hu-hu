@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/29/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4c33466af6e57264e02a7d5c298f7f1f9fbf4ed8
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 7e6a897ed0606d8844f66e318b93449d7790e2be
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44717301"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46963429"
 ---
 # <a name="overview-of-autoscale-with-azure-virtual-machine-scale-sets"></a>Beállítja az Azure virtuálisgép-méretezési csoport automatikus méretezés áttekintése
 Egy Azure-beli virtuálisgép-méretezési csoportot automatikusan növelheti vagy csökkentheti az alkalmazást futtató Virtuálisgép-példányok számát. Az automatikus és rugalmas viselkedést csökkenti a kezelési megfigyelése és optimalizálása az alkalmazás teljesítményét. Létrehozhat szabályokat, amelyek meghatározzák az elfogadható teljesítményt egy pozitív felhasználói élmény. Teljesülnek a meghatározott küszöbértékeket, az automatikus skálázási szabályok beletelhet művelet a méretezési csoport kapacitásának módosításához. Események automatikusan növelhető vagy csökkenését, a méretezési készlet kapacitásának rögzített többször is ütemezheti. Ez a cikk áttekintést, amelyek metrikák érhetők el, és milyen műveletek automatikus méretezési funkciójával hajthat végre.
@@ -42,7 +42,7 @@ A gazdagépalapú mérőszámokat használó automatikus méretezési szabályok
 
 - [Azure Portal](virtual-machine-scale-sets-autoscale-portal.md)
 - [Azure PowerShell](tutorial-autoscale-powershell.md)
-- [Azure CLI 2.0](tutorial-autoscale-cli.md)
+- [Azure CLI](tutorial-autoscale-cli.md)
 - [Az Azure-sablon](tutorial-autoscale-template.md)
 
 Részletes teljesítmény-mérőszámokat használó automatikus skálázási szabályok létrehozásához is [telepítése és konfigurálása az Azure diagnosztikai bővítmény](#in-guest-vm-metrics-with-the-azure-diagnostics-extension) Virtuálisgép-példányokon, vagy [konfigurálása az alkalmazás használata az App Insights](#application-level-metrics-with-app-insights).
@@ -139,7 +139,7 @@ Az alábbi példák forgatókönyvek, amelyek esetleg ütemezésalapú automatik
 A következő eszközök egyikét gazdagépalapú mérőszámokat használó automatikus skálázási szabályokat hozhat létre:
 
 - [Azure PowerShell](tutorial-autoscale-powershell.md)
-- [Azure CLI 2.0](tutorial-autoscale-cli.md)
+- [Azure CLI](tutorial-autoscale-cli.md)
 - [Az Azure-sablon](tutorial-autoscale-template.md)
 
 Ez az Áttekintés részletes automatikus skálázási szabályok használatával horizontális skálázásra és növelheti vagy csökkentheti a *szám* a méretezési csoportban lévő Virtuálisgép-példányok beállítása. Is skálázhatja vertikálisan növelése vagy csökkentése érdekében a Virtuálisgép-példány *mérete*. További információkért lásd: [vertikális automatikus méretezés a Virtual Machine Scale sets](virtual-machine-scale-sets-vertical-scale-reprovision.md).

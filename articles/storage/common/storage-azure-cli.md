@@ -1,6 +1,6 @@
 ---
-title: Az Azure CLI 2.0 használatával és az Azure Storage |} A Microsoft Docs
-description: Ismerje meg, hogyan használható az Azure parancssori felület (Azure CLI) 2.0 az Azure Storage létrehozása és a storage-fiókok felügyeletéhez és az Azure-blobok és fájlok. Az Azure CLI 2.0 egy pythonban írt platformfüggetlen eszköz.
+title: Az Azure CLI-vel és az Azure Storage |} A Microsoft Docs
+description: Ismerje meg, hogyan használható az Azure parancssori felület (Azure CLI) az Azure Storage létrehozása és a storage-fiókok kezelése és használata Azure-blobok és fájlok.
 services: storage
 author: roygara
 ms.service: storage
@@ -9,18 +9,18 @@ ms.topic: article
 ms.date: 06/02/2017
 ms.author: rogarana
 ms.component: common
-ms.openlocfilehash: 10b0d475113e5fcd413c7e62f88dcd434fc72a52
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: cd2399e25889cdc9c885b76e002e47415c0629e5
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45732771"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46984382"
 ---
-# <a name="using-the-azure-cli-20-with-azure-storage"></a>Az Azure Storage az Azure CLI 2.0 használatával
+# <a name="using-the-azure-cli-with-azure-storage"></a>Using the Azure CLI with Azure Storage (Az Azure CLI és az Azure Storage együttes használata)
 
-A nyílt forráskódú, platformfüggetlen Azure CLI 2.0 parancsok biztosítja az Azure platformmal való használatához szükséges. Nagy része megtalálható ugyanazokat a funkciókat biztosít a [az Azure portal](https://portal.azure.com), beleértve a részletes adatok elérésére.
+A nyílt forráskódú, platformfüggetlen Azure parancssori felület parancsokat biztosít az Azure platform használatához. Nagy része megtalálható ugyanazokat a funkciókat biztosít a [az Azure portal](https://portal.azure.com), beleértve a részletes adatok elérésére.
 
-Ez az útmutató bemutatjuk, hogyan használható a [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2) több feladatait az Azure Storage-fiókjában található erőforrásokkal dolgozik. Azt javasoljuk, hogy letöltése és telepítése vagy frissítése a legújabb verzióra a CLI 2.0 az útmutató használata előtt.
+Ez az útmutató bemutatjuk, hogyan használható a [Azure CLI-vel](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2) több feladatait az Azure Storage-fiókjában található erőforrásokkal dolgozik. Azt javasoljuk, hogy letöltése és telepítése vagy frissítése a legújabb verzióra a parancssori felület az útmutató használata előtt.
 
 Az útmutatóban szereplő példák feltételezik a bash on Ubuntu használatát, de más platformokon hasonló módon kell végrehajtania. 
 
@@ -33,9 +33,9 @@ Ez az útmutató feltételezi, hogy ismeri az Azure Storage az alapvető fogalma
 * **Azure-fiók**: Ha még nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes Azure-fiókkal](https://azure.microsoft.com/free/).
 * **Tárfiók**: Lásd a [Tudnivalók az Azure Storage-fiókokról](storage-create-storage-account.md) cikk [Tárfiók létrehozása](storage-quickstart-create-account.md) szakaszát.
 
-### <a name="install-the-azure-cli-20"></a>Az Azure CLI 2.0 telepítése
+### <a name="install-the-azure-cli"></a>Telepítse az Azure CLI-t
 
-Töltse le és telepítse az Azure CLI 2.0 leírt utasítások alapján [Azure CLI 2.0 telepítése](/cli/azure/install-az-cli2).
+Töltse le és telepítse az Azure CLI leírt utasítások alapján [az Azure CLI telepítése](/cli/azure/install-az-cli2).
 
 > [!TIP]
 > Ha problémája akad a telepítés, tekintse meg a [telepítési hibák elhárítása](/cli/azure/install-az-cli2#installation-troubleshooting) cikkének, és a [telepítése hibaelhárítási](https://github.com/Azure/azure-cli/blob/master/doc/install_troubleshooting.md) útmutatóban a Githubon.
@@ -96,9 +96,9 @@ Működik az Azure-előfizetésében lévő erőforrásokat, meg kell először 
   * Ez a Microsoft-fiókok vagy a multi-factor Authentication hitelesítést használó fiókokhoz nem működik.
 * **Jelentkezzen be egy egyszerű szolgáltatást**: `az login --service-principal -u http://azure-cli-2016-08-05-14-31-15 -p VerySecret --tenant contoso.onmicrosoft.com`
 
-## <a name="azure-cli-20-sample-script"></a>Az Azure CLI 2.0 – példaszkript
+## <a name="azure-cli-sample-script"></a>Az Azure CLI-példaszkript
 
-Ezután fogja együttműködünk egy kis héjparancsfájlt, amely néhány alapvető Azure CLI 2.0 parancsaival kezelheti az Azure Storage-erőforrások. A szkript először létrehoz egy új tárolót a storage-fiókban, majd feltölti a már meglévő fájl (blob) az adott tárolóhoz. Ezután kilistázza a tárolóban lévő összes BLOB, és végül letölti a fájlt a helyi számítógépen, amely megad egy célhelyre.
+Ezután fogja együttműködünk egy kis héjparancsfájlt, amely néhány alapvető Azure CLI-parancsokat használhatja az Azure Storage-erőforrások. A szkript először létrehoz egy új tárolót a storage-fiókban, majd feltölti a már meglévő fájl (blob) az adott tárolóhoz. Ezután kilistázza a tárolóban lévő összes BLOB, és végül letölti a fájlt a helyi számítógépen, amely megad egy célhelyre.
 
 ```bash
 #!/bin/bash
@@ -519,8 +519,8 @@ Kimeneti példa
 ```
 
 ## <a name="next-steps"></a>További lépések
-Az alábbiakban néhány további források további információra van szüksége az Azure CLI 2.0-val kapcsolatban.
+Az alábbiakban néhány további források további információra van szüksége az Azure CLI-vel kapcsolatban. 
 
-* [Azure CLI 2.0 használatának első lépései](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)
-* [Az Azure CLI 2.0 parancsdokumentációja](/cli/azure)
-* [Azure CLI 2.0 használatával a Githubon](https://github.com/Azure/azure-cli)
+* [Azure CLI használatának első lépései](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)
+* [Az Azure CLI parancsdokumentációja](/cli/azure)
+* [Az Azure CLI a Githubon](https://github.com/Azure/azure-cli)

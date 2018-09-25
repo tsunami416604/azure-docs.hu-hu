@@ -9,19 +9,19 @@ editor: ''
 ms.service: active-directory
 ms.component: develop
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/23/2018
+ms.date: 09/24/2018
 ms.author: celested
 ms.reviwer: lenalepa, sureshja
 ms.custom: aaddev
-ms.openlocfilehash: cb05139241f92eb930a99c387e2f06cabac35caf
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 21cd4990e2117cef2d36fa2607a601afd1a4c4e4
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39581469"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46990501"
 ---
 # <a name="terms-of-service-and-privacy-statement-for-registered-azure-active-directory-apps"></a>A regisztrált az Azure Active Directory-alkalmazások és az adatvédelmi nyilatkozat feltételeit
 
@@ -54,12 +54,14 @@ Példák: `https://myapp.com/terms-of-service` és `https://myapp.com/privacy-st
 ## <a name="adding-links-to-the-terms-of-service-and-privacy-statement"></a>Hivatkozások hozzáadása a feltételeket és adatvédelmi nyilatkozata
 
 Amikor készen áll a szolgáltatás és az adatvédelmi nyilatkozat feltételeit, adhat hozzá hivatkozásokat ezeket a dokumentumokat az alkalmazásban az alábbi módszerek egyikének használatával:
+
 * [Az Azure Portalon keresztül](#registered-in-azure-portal)
 * [Az alkalmazásregisztrációs portálon vagy a fejlesztői központ](#registered-in-app-reg-portal)
 * [Az alkalmazás objektum JSON használatával](#app-object-json)
 * [Az MSGraph beta REST API használatával](#msgraph-beta-rest-api)
 
 ### <a name="registered-in-azure-portal"></a>Ha regisztrálta az alkalmazást az Azure Portalon
+
 Ha regisztrálta az alkalmazást az Azure Portalon, kövesse az alábbi lépéseket.
 
 1. Jelentkezzen be a [az Azure portal](https://portal.azure.com/).
@@ -68,9 +70,10 @@ Ha regisztrálta az alkalmazást az Azure Portalon, kövesse az alábbi lépése
 4. Töltse ki a **feltételek az URL-címe** és **adatvédelmi nyilatkozatának URL-címe** mezőket.
 5. Mentse a módosításokat.
 
-![Alkalmazás Tulajdonságok szakaszában feltételeket és adatvédelmi nyilatkozat URL-címek](./media/howto-add-terms-of-service-privacy-statement/azure-portal-terms-service-privacy-statement-urls.png)
+    ![Alkalmazás Tulajdonságok szakaszában feltételeket és adatvédelmi nyilatkozat URL-címek](./media/howto-add-terms-of-service-privacy-statement/azure-portal-terms-service-privacy-statement-urls.png)
 
 ### <a name="registered-in-app-reg-portal"></a>Ha regisztrálta az alkalmazást az alkalmazás regisztrációs portálon
+
 Ha alkalmazását az alkalmazásregisztrációs portálon vagy a fejlesztői központban regisztrált, kövesse az alábbi lépéseket.
 
 1. Jelentkezzen be a [alkalmazásregisztrációs portálon](https://apps.dev.microsoft.com/).
@@ -78,9 +81,10 @@ Ha alkalmazását az alkalmazásregisztrációs portálon vagy a fejlesztői kö
 3. Töltse ki a **feltételek az URL-címe** és **adatvédelmi nyilatkozatának URL-címe** mezőket.
 4. Mentse a módosításokat.
 
-![Alkalmazás profil szakaszában feltételeket és adatvédelmi nyilatkozat URL-címek](./media/howto-add-terms-of-service-privacy-statement/app-registration-portal-profile-terms-service-privacy-statement-urls.png)
+    ![Alkalmazás profil szakaszában feltételeket és adatvédelmi nyilatkozat URL-címek](./media/howto-add-terms-of-service-privacy-statement/app-registration-portal-profile-terms-service-privacy-statement-urls.png)
 
 ### <a name="app-object-json"></a>Az alkalmazás objektum JSON használatával
+
 Ha az alkalmazás objektum JSON közvetlenül módosítani szeretné, az Azure Portalon vagy az alkalmazásregisztrációs portálon az alkalmazásjegyzék-szerkesztőben segítségével olyan hivatkozásoknak, amelyek az alkalmazás és az adatvédelmi nyilatkozat feltételeit.
 
 ```json
@@ -91,6 +95,7 @@ Ha az alkalmazás objektum JSON közvetlenül módosítani szeretné, az Azure P
 ```
 
 ### <a name="msgraph-beta-rest-api"></a>Az MSGraph beta REST API használatával
+
 Programozott módon frissíti alkalmazásait, az MSGraph beta REST API-val feltételeit és adatvédelmi nyilatkozata dokumentumok mutató hivatkozásokat tartalmazza az alkalmazások frissítéséhez használhatja.
 
 ```

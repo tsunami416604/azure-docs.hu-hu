@@ -20,7 +20,7 @@ Az alábbi táblázat az IoT Hub-erőforrásokra vonatkozó korlátokat tartalma
 | Eszközidentitások egyetlen hívásban visszaadott<br/> maximális száma |1000 |
 | Egy eszközről a felhőbe irányuló IoT Hub-üzenetek maximális megőrzési ideje |7 nap |
 | Egy eszközről a felhőbe irányuló üzenet maximális mérete |256 KB |
-| Egy eszközről a felhőbe irányuló köteg maximális mérete |256 KB |
+| Egy eszközről a felhőbe irányuló köteg maximális mérete |Amqp-t és HTTP: az egész köteget a 256 KB <br/>MQTT: az egyes üzenetekhez 256 KB |
 | Egy eszközről a felhőbe irányuló kötegben található üzenetek maximális száma |500 |
 | A felhőből egy eszközre irányuló üzenet maximális mérete |64 KB |
 | A felhőből egy eszközre irányuló üzenetek maximális élettartama |2 nap |

@@ -1,6 +1,6 @@
 ---
 title: Az Azure Key Vault parancssori felület használata kezelheti |} A Microsoft Docs
-description: Ez a cikk segítségével automatizálhatja a gyakori feladatok a Key Vault a CLI 2.0 használatával
+description: Ez a cikk segítségével automatizálhatja a gyakori feladatok a Key Vault az Azure CLI-vel
 services: key-vault
 documentationcenter: ''
 author: barclayn
@@ -14,18 +14,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/28/2018
 ms.author: barclayn
-ms.openlocfilehash: f88e98561a88380fbe40ecc9627ffabe39b0071c
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 00d79462fcaad785820e3879079414c88c958a89
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44295174"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46961484"
 ---
-# <a name="manage-key-vault-using-cli-20"></a>CLI 2.0 használatával a Key Vault felügyelete
+# <a name="manage-key-vault-using-the-azure-cli"></a>Az Azure CLI használatával a Key Vault felügyelete 
 
-Ez a cikk ismerteti, hogyan kezdheti el az Azure Key Vault az Azure CLI 2.0 használatával működik. Az információkat tekintheti meg:
+Ez a cikk bemutatja, hogyan kezdeni a munkát az Azure Key Vault használatával a az Azure parancssori felület.  Az információkat tekintheti meg:
 
-- Előfeltételek
 - Hogyan hozhat létre, amellyel megerősített tárolókat (kulcstartókat) az Azure-ban
 - Egy kulcs, a titkos kulcsot vagy a tanúsítvány hozzáadása a key vaulthoz
 - Egy alkalmazás regisztrálása az Azure Active Directoryval
@@ -50,7 +49,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 Ez a cikk az Azure CLI-parancsok használatához a következő elemeket kell rendelkeznie:
 
 * Egy Microsoft Azure-előfizetésre. Ha még nincs fiókja, regisztráljon egy [ingyenes próbaverzióra](https://azure.microsoft.com/pricing/free-trial).
-* Parancssori felület 2.0-s vagy újabb verziója. Telepítse a legújabb verzióját, lásd: [telepítése és konfigurálása az Azure többplatformos parancssori felület 2.0](/cli/azure/install-azure-cli).
+* Az Azure parancssori felület 2.0-s vagy újabb verziója. Telepítse a legújabb verzióját, lásd: [az Azure CLI telepítése](/cli/azure/install-azure-cli).
 * A kulcs vagy jelszó ebben a cikkben létrehozott használandó konfigurálni kívánt alkalmazás. Egy mintaalkalmazás elérhető a [Microsoft letöltőközpontból](http://www.microsoft.com/download/details.aspx?id=45343). Útmutatásért lásd: a csomagban foglalt fontos fájlt.
 
 ### <a name="getting-help-with-azure-cross-platform-command-line-interface"></a>Segítség kérése az Azure többplatformos parancssori felület
@@ -67,7 +66,7 @@ az account set -h
 A következő cikkekben megismerkedhet az Azure Resource Manager az Azure platformfüggetlen parancssori felülete is olvashatja:
 
 * [Az Azure parancssori felület telepítése](/cli/azure/install-azure-cli)
-* [Azure CLI 2.0 használatának első lépései](/cli/azure/get-started-with-azure-cli)
+* [Azure CLI használatának első lépései](/cli/azure/get-started-with-azure-cli)
 
 ## <a name="how-to-create-a-hardened-container-a-vault-in-azure"></a>Hogyan hozhat létre, amellyel megerősített tárolókat (kulcstartókat) az Azure-ban
 
@@ -200,7 +199,7 @@ A kulcstartót használó alkalmazásoknak az Azure Active Directoryból szárma
 
 Az alkalmazásnak mindkét értékkel rendelkeznie kell ahhoz, hogy Azure Active Directory-jogkivonatot kapjon. Hogyan van konfigurálva az alkalmazások jogkivonat beszerzéséhez az alkalmazás függ. A [Key Vault-mintaalkalmazás](https://www.microsoft.com/download/details.aspx?id=45343) esetében az alkalmazás tulajdonosa adja meg ezeket az értékeket az app.config fájlban.
 
-Az alkalmazások az Azure Active Directoryval való regisztrálásának részletes lépéseit tekintse át a című cikkekben [alkalmazások integrálása az Azure Active Directory](../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md), [a portálon hozzon létre egy Azure Active Directory-alkalmazás és egyszerű szolgáltatás erőforrások eléréséhez](../azure-resource-manager/resource-group-create-service-principal-portal.md), és [Azure-beli szolgáltatásnév létrehozása az Azure CLI 2.0](/cli/azure/create-an-azure-service-principal-azure-cli).
+Az alkalmazások az Azure Active Directoryval való regisztrálásának részletes lépéseit tekintse át a című cikkekben [alkalmazások integrálása az Azure Active Directory](../active-directory/develop/active-directory-integrating-applications.md), [a portálon hozzon létre egy Azure Active Directory-alkalmazás és egyszerű szolgáltatás erőforrások eléréséhez](../azure-resource-manager/resource-group-create-service-principal-portal.md), és [egy Azure-beli szolgáltatásnév létrehozása az Azure CLI-vel](/cli/azure/create-an-azure-service-principal-azure-cli).
 
 Alkalmazás regisztrálása az Azure Active Directoryban:
 

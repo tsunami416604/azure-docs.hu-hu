@@ -11,20 +11,20 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/17/2018
+ms.date: 09/19/2018
 ms.reviewer: olegan
 ms.author: mbullwin
-ms.openlocfilehash: 76567820a3d0fcd7dbd27cc7bc1afd09da94715c
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: f3bc64bd010bed9e177fd18cc6cb238b94669248
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46129845"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46990235"
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>Az Application Insights SDK konfigurálása az ApplicationInsights.config vagy .xml használatával
-Az Application Insights SDK-k áll egy NuGet-csomagok száma. A [core csomag](http://www.nuget.org/packages/Microsoft.ApplicationInsights) az API-t biztosít a telemetria küldését az Application Insights. [További csomagok](http://www.nuget.org/packages?q=Microsoft.ApplicationInsights) adja meg a telemetriai adatok *modulok* és *inicializálók* automatikusan nyomon követési telemetria az alkalmazás és a környezetben. A konfigurációs fájl módosításával engedélyezze vagy tiltsa le a telemetriai adatok modulok és az inicializálók, és némelyike paramétereinek megadása.
+Az Application Insights .NET SDK NuGet-csomagok számos áll. A [core csomag](http://www.nuget.org/packages/Microsoft.ApplicationInsights) az API-t biztosít a telemetria küldését az Application Insights. [További csomagok](http://www.nuget.org/packages?q=Microsoft.ApplicationInsights) adja meg a telemetriai adatok *modulok* és *inicializálók* automatikusan nyomon követési telemetria az alkalmazás és a környezetben. A konfigurációs fájl módosításával engedélyezze vagy tiltsa le a telemetriai adatok modulok és az inicializálók, és némelyike paramétereinek megadása.
 
-A konfigurációs fájl neve `ApplicationInsights.config` (.NET) vagy `ApplicationInsights.xml` (Java), az alkalmazás típusától függően. Automatikusan hozzáadódik a projekthez, amikor Ön [telepítheti az SDK legtöbb verzióját][start]. Is megjelenik a webalkalmazás [Állapotfigyelőt az IIS-kiszolgálón történő][redfield], vagy amikor kiválasztja az Application Insights [egy Azure-beli webhelyen vagy a VM-bővítmény](app-insights-azure-web-apps.md).
+A konfigurációs fájl neve `ApplicationInsights.config` vagy `ApplicationInsights.xml`az alkalmazás típusától függően. Automatikusan hozzáadódik a projekthez, amikor Ön [telepítheti az SDK legtöbb verzióját][start]. Is megjelenik a webalkalmazás [Állapotfigyelőt az IIS-kiszolgálón történő][redfield], vagy amikor kiválasztja az Application Insights [egy Azure-beli webhelyen vagy a VM-bővítmény](app-insights-azure-web-apps.md).
 
 Egy ezzel egyenértékű fájlt a vezérlő nem létezik a [SDK egy weblapon][client].
 
@@ -173,6 +173,8 @@ Emellett van egy standard [telemetriai processzor mintavételi](app-insights-api
 
 ```
 
+
+
 ## <a name="channel-parameters-java"></a>Csatornán paraméterekkel (Java)
 Ezeket a paramétereket befolyásolják, hogyan a Java SDK-t kell tárolni és a gyűjtött telemetriai adatait.
 
@@ -229,6 +231,30 @@ Meghatározza a maximális mérete (MB), amely a helyi lemezen az állandó tár
       ...
    </ApplicationInsights>
 ```
+
+#### <a name="local-forwarder"></a>Helyi továbbító
+
+[Helyi továbbító](https://docs.microsoft.com/azure/application-insights/local-forwarder) olyan ügynök, amely gyűjti az Application Insights vagy [OpenCensus](https://opencensus.io/) használati adatok gyűjtése a különböző SDK-k és keretrendszereket és továbbítja azt az Application Insights. Windows és Linux alatt alkalmas állapotban. 
+
+```xml
+<Channel type="com.microsoft.applicationinsights.channel.concrete.localforwarder.LocalForwarderTelemetryChannel">
+<DeveloperMode>false</DeveloperMode>
+<EndpointAddress><!-- put the hostname:port of your LocalForwarder instance here --></EndpointAddress>
+<!-- The properties below are optional. The values shown are the defaults for each property -->
+<FlushIntervalInSeconds>5</FlushIntervalInSeconds><!-- must be between [1, 500]. values outside the bound will be rounded to nearest bound -->
+<MaxTelemetryBufferCapacity>500</MaxTelemetryBufferCapacity><!-- units=number of telemetry items; must be between [1, 1000] -->
+</Channel>
+```
+
+SpringBoot alapszintű használja, ha a konfigurációs fájl (application.properies) adja hozzá a következő:
+
+```yml
+azure.application-insights.channel.local-forwarder.endpoint-address=<!--put the hostname:port of your LocalForwarder instance here-->
+azure.application-insights.channel.local-forwarder.flush-interval-in-seconds=<!--optional-->
+azure.application-insights.channel.local-forwarder.max-telemetry-buffer-capacity=<!--optional-->
+```
+
+Alapértelmezett értékek azonosak SpringBoot application.properties és applicationinsights.xml konfigurációját.
 
 ## <a name="instrumentationkey"></a>InstrumentationKey
 Ez határozza meg az Application Insights-erőforrást, amelyben az adatok jelennek meg. Általában létrehozhat egy külön erőforrás külön kulccsal, minden, az alkalmazások.

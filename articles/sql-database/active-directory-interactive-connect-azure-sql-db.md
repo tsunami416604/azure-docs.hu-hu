@@ -2,20 +2,22 @@
 title: ActiveDirectoryInteractive csatlakozhat az SQL |} A Microsoft Docs
 description: C#-kód például magyarázatok SqlAuthenticationMethod.ActiveDirectoryInteractive mód segítségével kezeli az Azure SQL Database csatlakoztatásához.
 services: sql-database
-author: GithubMirek
-manager: craigg
 ms.service: sql-database
+ms.subservice: security
 ms.custom: active directory
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/06/2018
+author: GithubMirek
 ms.author: MirekS
 ms.reviewer: GeneMi
-ms.openlocfilehash: 3d6eb70b3ce9072dc2c51220af89549022b5dacf
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.date: 04/06/2018
+manager: craigg
+ms.openlocfilehash: 80944e73f21d75943d4fa71c7ac9500e47bab250
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39238268"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47055526"
 ---
 # <a name="use-activedirectoryinteractive-mode-to-connect-to-azure-sql-database"></a>Csatlakozás az Azure SQL Database ActiveDirectoryInteractive mód használatával
 
@@ -122,13 +124,13 @@ A névtér támaszkodik a C#-program **Microsoft.IdentityModel.Clients.ActiveDir
 
 C#-példában támaszkodik egy névtér van **System.Data.SqlClient**. Érdeklik az enum **SqlAuthenticationMethod**. Ez az enumerálás rendelkezik a következő értékeket:
 
-- **SqlAuthenticationMethod.ActiveDirectory*interaktív x:&nbsp; használja ezt az egy Azure AD-felhasználó nevét, a multi-factor authentication, MFA eléréséhez.
+- **SqlAuthenticationMethod.ActiveDirectory * interaktív x:&nbsp; használja ezt az egy Azure AD-felhasználó nevét, a multi-factor authentication, MFA eléréséhez.
     - Ez az érték a fókusz a jelen cikk. A felhasználó jelszavát, majd a többtényezős hitelesítés érvényesítés párbeszédpanelek megjelenítésével, ha a többtényezős hitelesítés a felhasználó a várakozásnak küld egy interaktív élmény.
     - Ezt az értéket a .NET-keretrendszer verziója 4.7.2 kezdődően elérhető.
 
-- **SqlAuthenticationMethod.ActiveDirectory*integrált x:&nbsp; használata esetén ez egy *összevont* fiókot. Összevont fiókok a felhasználó nevét ismert, hogy a Windows-tartományhoz. Ez a módszer nem támogatja a többtényezős hitelesítés.
+- **SqlAuthenticationMethod.ActiveDirectory * integrált x:&nbsp; használata esetén ez egy *összevont* fiókot. Összevont fiókok a felhasználó nevét ismert, hogy a Windows-tartományhoz. Ez a módszer nem támogatja a többtényezős hitelesítés.
 
-- **SqlAuthenticationMethod.ActiveDirectory*jelszó x:&nbsp; használja a hitelesítéshez, amely egy Azure AD-felhasználót és a felhasználó jelszót igényel. Az Azure SQL Database végrehajtja a hitelesítést. Ez a módszer nem támogatja a többtényezős hitelesítés.
+- **SqlAuthenticationMethod.ActiveDirectory * jelszó x:&nbsp; használja a hitelesítéshez, amely egy Azure AD-felhasználót és a felhasználó jelszót igényel. Az Azure SQL Database végrehajtja a hitelesítést. Ez a módszer nem támogatja a többtényezős hitelesítés.
 
 
 

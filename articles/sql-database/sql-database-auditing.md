@@ -2,20 +2,22 @@
 title: Ismerkedés az Azure SQL database naplózási szolgáltatásával |} A Microsoft Docs
 description: Azure SQL database naplózási szolgáltatása segítségével követheti nyomon az adatbázissal kapcsolatos események auditálási naplóba kerülnek be.
 services: sql-database
-author: giladmit
-manager: craigg
 ms.service: sql-database
-ms.custom: security
+ms.subservice: security
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/10/2018
+author: giladmit
 ms.author: giladm
 ms.reviewer: vanto
-ms.openlocfilehash: 935baf791d9244f2fa4f5be9c02d4778244754de
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+manager: craigg
+ms.date: 09/10/2018
+ms.openlocfilehash: dd1672c0cdae243bf6ff19efa22df66239611b44
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45543749"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47064174"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Ismerkedés az SQL-adatbázis naplózási szolgáltatásával
 Az Azure SQL database naplózási nyomon követi az adatbázisok eseményeit és felvezeti ezeket egy naplófájlba, az Azure storage-fiókban. A naplózás is:
@@ -98,10 +100,25 @@ Az alábbi szakasz ismerteti a konfigurációt, a naplózás az Azure portal has
 11. A naplózási beállítások konfigurálása után kapcsolja be az új fenyegetés-észlelési szolgáltatást, és konfigurálja a biztonsági riasztást küld e-maileket. A fenyegetésészlelés használata esetén jelezheti a potenciális biztonsági fenyegetések rendellenes adatbázis-tevékenységek a proaktív értesítéseket kap. További információkért lásd: [fenyegetések észlelése – első lépések](sql-database-threat-detection-get-started.md). 
 
 ## <a id="subheading-3"></a>Elemezheti a vizsgálati naplók és jelentések
+Ha úgy döntött, hogy auditnaplók írni a Log Analytics:
+- Használja a [az Azure portal](https://portal.azure.com).  Nyissa meg a megfelelő adatbázis. Az adatbázis tetején **naplózási** kattintson **naplók megtekintése**.
+
+    ![Naplók megtekintése](./media/sql-database-auditing-get-started/7_auditing_get_started_blob_view_audit_logs.png)
+
+- Kattintson a **nyissa meg az OMS-ben** felső részén a **naplórekordok** lap nyílik meg a naplók megtekintése a Log Analytics, ahol testreszabhatja az időtartományt, és a keresési lekérdezésben.
+
+    ![Nyissa meg az OMS-ben](./media/sql-database-auditing-get-started/auditing_open_in_oms.png)
+
+- Azt is megteheti is elérheti a naplófájlok a Log Analytics panelen. Nyissa meg a Log Analytics-munkaterület és a **általános** területén kattintson **naplók**. Megkezdése egy egyszerű lekérdezéssel, például: keresési *"SQLSecurityAuditEvents"* naplózza a naplózási megtekintéséhez.
+    Itt is használhatja [Operations Management Suite (OMS) Log Analytics](../log-analytics/log-analytics-log-search.md) futtatni speciális keresést a naplózási adatokat. A log Analytics azonnal elemezze a rekordok millióit, a számítási feladatok és kiszolgálók integrált keresést és egyéni irányítópultok segítségével valós idejű az operational insights biztosítja. OMS Log Analytics keresési nyelv és a parancsokkal kapcsolatos további hasznos információk: [Log Analytics keresési referenciáját bemutató](../log-analytics/log-analytics-log-search.md).
+
+Ha úgy döntött, hogy auditnaplók írni az Event Hubs:
+- Az Event Hubs naplózási adatok felhasználásához, szüksége lesz egy stream események felhasználásához, és a cél beállítása. További információkért lásd: [Azure Event Hubs – dokumentáció](https://docs.microsoft.com/azure/event-hubs/).
+
 Ha úgy döntött, hogy auditnaplók írni az Azure storage-fiók, több módon használhatja a naplók megtekintéséhez:
 - Naplók a telepítés során választott fiókban vannak összesítve. Például egy eszköz használatával megvizsgálhatja auditnaplók [Azure Storage Explorer](http://storageexplorer.com/). Az Azure storage-ban naplói nevű tárolóban lévő blob fájlok kerülnek mentésre **sqldbauditlogs**. A tároló mappa a hierarchiával kapcsolatos további részletekért elnevezési konvenciók és a napló formátuma, tekintse meg a [Blob auditálási napló fájlformátum referenciája](https://go.microsoft.com/fwlink/?linkid=829599).
 
-- Használja a [az Azure portal](https://portal.azure.com).  Nyissa meg a megfelelő adatbázis. Az adatbázis tetején **naplózás és Fenyegetésészlelés** kattintson **naplók megtekintése**.
+- Használja a [az Azure portal](https://portal.azure.com).  Nyissa meg a megfelelő adatbázis. Az adatbázis tetején **naplózási** kattintson **naplók megtekintése**.
 
     ![Navigációs ablaktábla][7]
 
@@ -137,16 +154,6 @@ Ha úgy döntött, hogy auditnaplók írni az Azure storage-fiók, több módon 
 
      * Használja a [bővített események olvasó](https://blogs.msdn.microsoft.com/extended_events/2011/07/20/introducing-the-extended-events-reader/) C# könyvtár.
      * [Bővített események lekérdezésfájlok](https://sqlscope.wordpress.com/2014/11/15/reading-extended-event-files-using-client-side-tools-only/) PowerShell használatával.
-
-Ha úgy döntött, hogy auditnaplók írni a Log Analytics:
-- A Log Analytics naplók megtekintéséhez nyissa meg a Log Analytics-munkaterületre és a **keresési és -naplók elemzése**, kattintson a **megtekinthetők a naplófájlok**. A naplóbeli Keresés nézetben kattintva elkezdheti **összegyűjtött adatok**.  
-
-    ![OMS naplókeresési funkciójával](./media/sql-database-auditing-get-started/oms_log_search.png)
-
-   Itt használható [Operations Management Suite (OMS) Log Analytics](../log-analytics/log-analytics-log-search.md) futtatni speciális keresést a naplózási adatokat. A log Analytics rekordok millióit, könnyen elemezheti az összes munkaterhelés és kiszolgáló integrált keresést és egyéni irányítópultok segítségével valós idejű az operational insights biztosítja. OMS Log Analytics keresési nyelv és a parancsokkal kapcsolatos további hasznos információk: [Log Analytics keresési referenciáját bemutató](../log-analytics/log-analytics-log-search.md).
-
-Ha úgy döntött, hogy auditnaplók írni az Event Hubs:
-- Az Event Hubs naplózási adatok felhasználásához, szüksége lesz egy stream események felhasználásához, és a cél beállítása. További információkért lásd: [Azure Event Hubs – dokumentáció](https://docs.microsoft.com/azure/event-hubs/).
 
 ## <a id="subheading-5"></a>Éles eljárások
 <!--The description in this section refers to preceding screen captures.-->
@@ -210,16 +217,16 @@ A parancsfájl példa: [PowerShell-lel, naplózás és fenyegetésészlelés kon
 
 **REST API - blobnaplózás**:
 
-* [Hozzon létre vagy adatbázis Blob naplózási szabályzatának frissítése](https://docs.microsoft.com/en-us/rest/api/sql/database%20auditing%20settings/createorupdate)
-* [Hozzon létre vagy frissítési kiszolgáló Blob naplózási házirend](https://docs.microsoft.com/en-us/rest/api/sql/server%20auditing%20settings/createorupdate)
-* [Adatbázis Blob naplózási szabályzatának beolvasása](https://docs.microsoft.com/en-us/rest/api/sql/database%20auditing%20settings/get)
-* [Kiszolgáló Blob naplózási szabályzatának beolvasása](https://docs.microsoft.com/en-us/rest/api/sql/server%20auditing%20settings/get)
+* [Hozzon létre vagy adatbázis Blob naplózási szabályzatának frissítése](https://docs.microsoft.com/rest/api/sql/database%20auditing%20settings/createorupdate)
+* [Hozzon létre vagy frissítési kiszolgáló Blob naplózási házirend](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/createorupdate)
+* [Adatbázis Blob naplózási szabályzatának beolvasása](https://docs.microsoft.com/rest/api/sql/database%20auditing%20settings/get)
+* [Kiszolgáló Blob naplózási szabályzatának beolvasása](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/get)
 
 AHOL záradékot támogatja a további szűréshez a kiterjesztett házirend:
-* [Adatbázis frissítése *kiterjesztett* Blob naplózási házirend](https://docs.microsoft.com/en-us/rest/api/sql/database%20extended%20auditing%20settings/createorupdate)
-* [Hozzon létre vagy frissítési kiszolgáló *kiterjesztett* Blob naplózási házirend](https://docs.microsoft.com/en-us/rest/api/sql/server%20extended%20auditing%20settings/createorupdate)
-* [Adatbázis beolvasása *kiterjesztett* Blob naplózási házirend](https://docs.microsoft.com/en-us/rest/api/sql/database%20extended%20auditing%20settings/get)
-* [Első kiszolgáló *kiterjesztett* Blob naplózási házirend](https://docs.microsoft.com/en-us/rest/api/sql/server%20extended%20auditing%20settings/get)
+* [Adatbázis frissítése *kiterjesztett* Blob naplózási házirend](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/createorupdate)
+* [Hozzon létre vagy frissítési kiszolgáló *kiterjesztett* Blob naplózási házirend](https://docs.microsoft.com/rest/api/sql/server%20extended%20auditing%20settings/createorupdate)
+* [Adatbázis beolvasása *kiterjesztett* Blob naplózási házirend](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/get)
+* [Első kiszolgáló *kiterjesztett* Blob naplózási házirend](https://docs.microsoft.com/rest/api/sql/server%20extended%20auditing%20settings/get)
 
 <!--Anchors-->
 [Azure SQL Database Auditing overview]: #subheading-1

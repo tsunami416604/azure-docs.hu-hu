@@ -1,6 +1,6 @@
 ---
-title: Egyéni kiejtés használata egyéni beszéd szolgáltatás az Azure-on |} Microsoft Docs
-description: Megtudhatja, hogyan nyelvi modell létrehozása kognitív szolgáltatások egyéni beszéd szolgáltatással.
+title: Egyéni írásmódja használata az Azure-ban a Custom Speech Service |} A Microsoft Docs
+description: Ismerje meg, hogyan hozhat létre a Custom Speech Service a Cognitive Services nyelvi modell.
 services: cognitive-services
 author: PanosPeriorellis
 manager: onano
@@ -9,17 +9,18 @@ ms.component: custom-speech
 ms.topic: article
 ms.date: 11/23/2017
 ms.author: panosper
-ms.openlocfilehash: a74b69b84cc80809a25f18b580a18abb5721b8b1
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ROBOTS: NOINDEX
+ms.openlocfilehash: c51ef6b25b454d0b8bf450b791f5c0fa9c6dfdee
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347074"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46999375"
 ---
-# <a name="enable-custom-pronunciation"></a>Egyéni kiejtés engedélyezése
-Egyéni kiejtés lehetővé teszi, hogy a felhasználók fonetikus űrlap és egy szót vagy kifejezést megjelenítését. Akkor célszerű testreszabott feltételek, például a termék nevét vagy a mozaikszavak kezelése. Szüksége egy kiejtés fájlt (egy egyszerű .txt fájlt).
+# <a name="enable-custom-pronunciation"></a>Engedélyezze az egyéni kiejtése
+Egyéni írásmódja lehetővé teszi a felhasználóknak adható meg fonetikus űrlap és megjelenített egy szó vagy kifejezés. Ez hasznos testre szabott feltételek, például termékneveket vagy betűszavakat kezelése. Szüksége egy írásmódja fájlt (egy egyszerű .txt fájlt).
 
-Ez annak működéséről. Egy egyetlen .txt fájlban több egyéni kiejtés bejegyzést adhat meg. A struktúra a következőképpen történik:
+Itt látható, hogyan működik. Egy egyetlen .txt fájlban a több egyéni írásmódja bejegyzést is megadhatja. A struktúra a következőképpen történik:
 
 ```
 Display form <Tab> Spoken form <Newline>
@@ -27,40 +28,40 @@ Display form <Tab> Spoken form <Newline>
 
 *Példák*:
 
-| Űrlap megjelenítése | Szóbeli képernyő |
+| Megjelenítési űrlap | Használja a beszélt űrlap |
 |----------|-------|
-| C3PO | három pea o lásd: |
-| L8R | késői vannak. |
-| CNTK | n tea k lásd:|
+| C3PO | három csúc o lásd: |
+| L8R | késedelmes vannak |
+| CNTK | Lásd: n tea k|
 
-## <a name="requirements-for-the-spoken-form"></a>A szóbeli űrlap követelményei
-A szóbeli űrlap kisbetűnek kell lennie, amely kényszeríthető az importálás során. Emellett meg kell adnia az adatok importáló ellenőrzései. A szóbeli és az űrlap megjelenítése vagy lapján nem megengedett. Lehetséges, azonban, több lehet tiltott karakter az űrlap megjelenítése (például ~ és ^).
+## <a name="requirements-for-the-spoken-form"></a>A beszédből kinyert képernyő követelményei
+A beszédből kinyert képernyő kisbetűnek kell lennie, az importálás során kényszeríthető. Emellett meg kell adnia az adatok programu Pro import ellenőrzései. Nincs lapján vagy a kimondott képernyő, vagy a megjelenítési űrlap számára engedélyezett. Lehetséges, azonban, több lehet tiltott karakter a megjelenítési űrlap (például ~ és ^).
 
-Minden egyes .txt fájl rendelkezhet több bejegyzést. Például tekintse meg az alábbi képernyőfelvételen:
+Minden egyes .txt fájl több bejegyzés is rendelkezhet. Például tekintse meg az alábbi képernyőfelvételen látható:
 
-![Képernyőfelvétel a Jegyzettömb tartozó mozaikszó kiejtés több bejegyzések](../../../media/cognitive-services/custom-speech-service/custom-speech-pronunciation-file.png)
+![Képernyőkép a Jegyzettömb betűszó írásmódja számos bejegyzést a](../../../media/cognitive-services/custom-speech-service/custom-speech-pronunciation-file.png)
 
-A szóbeli érték az űrlap megjelenítése fonetikus sorrendjét. Betűket, szavakat vagy szótagokat határoznak áll. Jelenleg nincs további útmutatást vagy set szabványok segítséget nyújtanak a szóbeli űrlap állítson össze. 
+A beszédből kinyert képernyő az fonetikus sorrendje a megjelenített képernyő. Betűket, szavakat vagy szótagokat határoznak áll. Jelenleg nincs további útmutatást vagy szabványgyűjtemény állítson össze a kimondott űrlap segítségével. 
 
-## <a name="supported-pronunciation-characters"></a>Támogatott kiejtés karakter
-Egyéni kiejtés jelenleg (en-US) angol és német (de-de) támogatott. A karakterkészlet (fájlban az egyéni kiejtés) a kifejezés a szóbeli űrlap Express használható a következő táblázatban látható: 
+## <a name="supported-pronunciation-characters"></a>Támogatott írásmódja karakter
+Egyéni írásmódja jelenleg támogatott (en-US) angol és német (de-de). A karakterkészlet, amely egy kifejezés (az egyéni írásmódja fájlban) használja a beszélt formájában express segítségével az alábbi táblázatban látható: 
 
 | Nyelv | Karakterek |
 |---------- |----------|
-| Angol (en-US) | a, b, c, d, e, f, g, h, i, j, k, l, o, p, q, r, s, t, u, v, w, x, y, z |
-| Német (de-de) | ä, lumen, ü, ẞ, a, b, c, d, e, f, g, h, i, j, k, l, o, p, q, r, s, t, u, v, w, x, y, z |
+| Angol (en-US) | a, b, c, d, e, f, g, h i, j, ezer, l, o, p, válaszok, r, s, t, u, v, w, x, y, z |
+| Német (de-de) | ä lumen, ü, ẞ, a, b, c, d, e, f, g, h i, j, ezer, l, o, p, válaszok, r, s, t, u, v, w, x, y, z |
 
->[MEGJEGYZÉS] Egy kifejezés űrlap megjelenítése (fájlban kiejtés) kell megírni ugyanúgy nyelvi kiigazítása adatkészlet.
+>[MEGJEGYZÉS] Egy kifejezés megjelenítési űrlap (fájlban írásmódja) nyelven kell megírni ugyanúgy nyelvi betanítás adatkészlet.
 
-## <a name="requirements-for-the-display-form"></a>Az űrlap megjelenítése követelményei
-Egy űrlap megjelenítése nem adható meg, egy egyéni szó, kifejezés, mozaikszó vagy összetett szavak, amelyek a meglévő szavak kombinálják. Egyéb kiejtés gyakori szavak is megadhat. 
+## <a name="requirements-for-the-display-form"></a>A megjelenítési űrlap követelményei
+Megjelenítési űrlap csak lehet egy egyedi szót, kifejezést, betűszó vagy összetett szavak, amelyek meglévő szavak. A gyakori szavakat egyéb kiejtés is megadhat. 
 
 >[!NOTE]
-Ezzel a szolgáltatással újraszövegezése bennük gyakori szavak vagy a szóbeli űrlap módosítása nem ajánlott. Érdemes futtatni a dekóder megjelenítéséhez, ha a rendszer nem dekódolni megfelelően néhány szokatlan szavak (például rövidítések, műszaki, és külső szavak). Ha igen, vegye fel őket a egyéni kiejtés fájlba. A nyelvi modell mindig, és csak használjon a szó űrlap megjelenítése. 
+Ezzel a funkcióval újraszövegezése gyakori szavakat vagy a kimondott képernyő módosítása nem ajánlott. Célszerűbb a dekóder megtekintheti, ha egyes ritka szavakat (például rövidítéseket, műszaki szakkifejezéseket és külső szavak) vannak se megfelelően dekódovat futtassa. Ha igen, adja hozzá azokat az egyéni kiejtés fájlhoz. A nyelvi modell csak és mindig használjon a megjelenítési űrlap szó. 
 
-## <a name="requirements-for-the-file-size"></a>A fájlméret követelményei
-A .txt fájl, amely a kiejtés bejegyzéseket mérete legfeljebb 1 MB. Általában nem kell feltölteni a nagy mennyiségű adat keresztül ezt a fájlt. A legtöbb egyéni kiejtés fájlok valószínűleg csak néhány KB-nál. A .txt fájlt, minden nyelvhez kódolás az UTF-8 AJ kell lennie. Az angol nyelvű területi beállítás esetén ANSI egyben elfogadható.
+## <a name="requirements-for-the-file-size"></a>A fájl mérete követelményei
+Írásmódja bejegyzéseket tartalmazó .txt fájl mérete legfeljebb 1 MB. Általában nem kell a nagy mennyiségű adat feltöltése keresztül ezt a fájlt. Egyéni írásmódja fájlok a legtöbb esetben valószínűleg néhány Tudásbázis méretű lehet. Az összes területi beállításhoz tartozó .txt fájl kódolása az UTF-8 AJ kell lennie. Az angol területi beállítás, az ANSI is fogadható el.
 
 ## <a name="next-steps"></a>További lépések
-* Hozzon létre pontosságának javítása a [egyéni akusztikus modell](cognitive-services-custom-speech-create-acoustic-model.md).
-* [Hozzon létre egy egyéni beszéd-szöveg végpontot](cognitive-services-custom-speech-create-endpoint.md), amelynek segítségével az alkalmazásokból.
+* Hatékonyabbá pontosságát a [importálni akusztikai modell](cognitive-services-custom-speech-create-acoustic-model.md).
+* [Hozzon létre egy egyéni hang-szöveg transzformációs végpontot](cognitive-services-custom-speech-create-endpoint.md), amelyet használhat az alkalmazásokból.

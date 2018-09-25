@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/19/2018
+ms.date: 09/21/2018
 ms.author: jingwang
-ms.openlocfilehash: 3783bc6ccda7a559e749a84005f20d860ab56755
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: a077c7d154235205126d77e5523c0acd96e70ad5
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46368810"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47031611"
 ---
 # <a name="copy-data-from-office-365-into-azure-using-azure-data-factory-preview"></a>Adatok másolása az Office 365-ből az Azure-bA az Azure Data Factory (előzetes verzió) használatával 
 
@@ -46,7 +46,6 @@ Adatok másolása az Office 365-ből az Azure-ba, a következő előfeltételké
     - Bérlő azonosítója.  Útmutatásért lásd: [Bérlőazonosító beszerzése](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-tenant-id).
     - Alkalmazás azonosítója és az alkalmazás kulcsa.  Útmutatásért lásd: [Get Alkalmazásazonosító és hitelesítési kulcs](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-application-id-and-authentication-key).
 - Adja hozzá a felhasználó identitását, aki a hozzáférési kérelem végez a tulajdonosa, az Azure AD-webalkalmazás (az Azure AD-ből a webes alkalmazás > Beállítások > tulajdonosok > Hozzáadás tulajdonosa).
-- _(Ajánlott)_  [Hozzárendelése az Azure-szabályzatok](../azure-policy/assign-policy-definition.md) az adattárak, az adattitkosítás. Szabályzat megfelelőségi információk nem jelenik meg az adatokat a jóváhagyók a kérelem részeként. Szabályzat-hozzárendelés minden másolási tevékenység futtatása, történik, ha az ADF ellenőrzi, hogy a szabályzat-hozzárendelés kényszerítése. Tekintse meg [Itt](https://github.com/OfficeDev/ManagedAccessMSGraph/wiki/Capabilities#policies) támogatott szabályzatok teljes listáját.
 
 ## <a name="approving-new-data-access-requests"></a>Hozzáférési kérelmek jóváhagyásáról az új adatok
 
@@ -54,9 +53,23 @@ Ha első alkalommal a kért adatokat az ebben a környezetben (kombinációjáva
 
 Tekintse meg [Itt](https://github.com/OfficeDev/ManagedAccessMSGraph/wiki/Approving-a-data-access-request) hogyan hagyhatja jóvá, a jóváhagyó a az adatok eléréséhez a kérelmet, és tekintse meg [Itt](https://github.com/OfficeDev/ManagedAccessMSGraph/wiki/On-boarding) általában véve az integrációra, a Privileged Access Management a magyarázat, többek között az adatok beállítása hozzáférés-jóváhagyója csoport.
 
+## <a name="policy-validation"></a>Házirend érvényesítése
+
+Ha a felügyeleti csoporton belüli erőforrásokon végrehajtott Azure szabályzatok hozzárendeléseinek felügyelt alkalmazás részeként jön létre az ADF, majd minden másolási tevékenység futtatása, ADF ellenőrzi, győződjön meg arról, hogy a szabályzat-hozzárendelések érvényben vannak. Tekintse meg [Itt](https://github.com/OfficeDev/ManagedAccessMSGraph/wiki/Capabilities#policies) támogatott szabályzatok listája.
+
 ## <a name="getting-started"></a>Első lépések
 
-.NET SDK-t, Python SDK-t, az Azure PowerShell, REST API-t vagy az Azure Resource Manager-sablon használatával másolási tevékenységgel rendelkező folyamatot hozhat létre. Lásd: [másolási tevékenység oktatóanyagát](quickstart-create-data-factory-dot-net.md) egy másolási tevékenységgel ellátott adatcsatorna létrehozása a részletes útmutatóját.
+>[!TIP]
+>Az Office 365-összekötő használatával, olvassa [adatok betöltése az Office 365](load-office-365-data.md) cikk.
+
+A másolási tevékenységgel rendelkező folyamatot hozhat létre egyet a következő eszközök és az SDK-k használatával. Nyissa meg egy másolási tevékenységgel rendelkező folyamat létrehozása a részletes oktatóanyag mutató hivatkozás kiválasztása. 
+
+- [Azure Portal](quickstart-create-data-factory-portal.md)
+- [.NET SDK](quickstart-create-data-factory-dot-net.md)
+- [Python SDK](quickstart-create-data-factory-python.md)
+- [Azure PowerShell](quickstart-create-data-factory-powershell.md)
+- [REST API](quickstart-create-data-factory-rest-api.md)
+- [Az Azure Resource Manager-sablon](quickstart-create-data-factory-resource-manager-template.md). 
 
 A következő szakaszok segítségével határozhatók meg a Data Factory-entitások adott, az Office 365-összekötő-tulajdonságokkal kapcsolatos részletekért.
 

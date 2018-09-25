@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 09/11/2018
 ms.author: tamram
-ms.openlocfilehash: 5237be9fd75edc8abf5c5fa043574e8c2deb79e9
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 768fd4a715d4c0df154f823d159fd63898c9715b
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45740711"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46981331"
 ---
 # <a name="manage-storage-account-settings-in-the-azure-portal"></a>Az Azure Portal tárfiók-beállítások kezelése
 
@@ -26,6 +26,14 @@ A **hozzáférés-vezérlés** beállítások az Azure Portalon rendeljen RBAC-s
 
 > [!NOTE]
 > Felhasználók vagy az Azure AD hitelesítő adatait használó alkalmazások hitelesítése készít felső szintű biztonság és a könnyű használat más engedélyezési módot. Miközben továbbra is megosztott kulcsos engedélyezési használata az alkalmazások, Azure AD-vel megkerüli ügyféladataik tárolásának a kód a hozzáférési kulcsára. Közös hozzáférésű jogosultságkódok (SAS) használata a minden részletre kiterjedő hozzáférést biztosítani a tárfiókban lévő erőforrásokhoz folytathatja, de az Azure AD kezelése SAS-tokeneket vagy sérült biztonságú SAS visszavonása foglalkoznia kellene hasonló funkciókat kínál. 
+
+## <a name="tags"></a>Címkék
+
+Az Azure Storage támogatja az Azure Resource Manager-címkék a testre szabott besorolás az Azure-erőforrások rendszerezéséhez. A tárfiókok is címkékkel, így csoportosíthatja őket az adott előfizetéshez tartozó logikai módon. 
+
+Storage-fiókok egy címke neve legfeljebb 128 karakter, és a egy címke értéke legfeljebb 256 karakter hosszúságú lehet.
+
+További információkért lásd: [címkék használata az Azure-erőforrások rendszerezéséhez](../../azure-resource-manager/resource-group-using-tags.md).
 
 ## <a name="access-keys"></a>Elérési kulcs
 

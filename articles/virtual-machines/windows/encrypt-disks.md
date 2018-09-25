@@ -15,15 +15,15 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 03/07/2018
 ms.author: cynthn
-ms.openlocfilehash: 9d8e868eb11e45a01b3992022b729369da6b42e4
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 20d3568fa3f583c190f087de861d857fe3e793a9
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37931490"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46985433"
 ---
 # <a name="how-to-encrypt-virtual-disks-on-a-windows-vm"></a>A Windows virtuális gép virtuális lemezek titkosítása
-Bővített virtuális gép (VM) biztonsági és megfelelőségi virtuális lemezeket az Azure-ban is titkosítva. Lemezek vannak titkosítva, egy Azure Key vaultban biztosított titkosítási kulcsokat. Szabályozhatja a kriptográfiai kulcsokat és naplózhatja azok használatát. Ez a cikk részletesen bemutatja az Azure PowerShell használatával Windows virtuális gép virtuális lemezeinek titkosításához. Emellett [az Azure CLI 2.0 használatával Linux rendszerű virtuális gép titkosítása](../linux/encrypt-disks.md).
+Bővített virtuális gép (VM) biztonsági és megfelelőségi virtuális lemezeket az Azure-ban is titkosítva. Lemezek vannak titkosítva, egy Azure Key vaultban biztosított titkosítási kulcsokat. Szabályozhatja a kriptográfiai kulcsokat és naplózhatja azok használatát. Ez a cikk részletesen bemutatja az Azure PowerShell használatával Windows virtuális gép virtuális lemezeinek titkosításához. Emellett [az Azure parancssori felületével Linux virtuális gép titkosítása](../linux/encrypt-disks.md).
 
 ## <a name="overview-of-disk-encryption"></a>Lemeztitkosítás – áttekintés
 Windows virtuális gépek a virtuális lemezek vannak titkosítása a Bitlocker használatával. Nem jár költséggel az Azure-beli virtuális lemezek titkosításához. Titkosítási kulcsok Azure Key Vault szoftver védelemmel vannak tárolva, vagy Ön importálhat vagy hozhat létre a kulcsokat hardveres biztonsági modulokban (HSM) certified FIPS 140-2 szabványnak megfelelő 2. szint. Ezek a titkosítási kulcsok titkosítására és visszafejtésére a virtuális Géphez csatolt virtuális lemezek segítségével. Ezek a titkosítási kulcsok feletti ellenőrzés megtartása és naplózhatja azok használatát. Egy Azure Active Directory egyszerű szolgáltatás lehetővé teszi a biztonságos kiállító a kriptográfiai kulcsokat, a virtuális gépek vannak kapcsolva, és ki.

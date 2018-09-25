@@ -1,6 +1,6 @@
 ---
-title: Terjessze ki a riasztások a napló Analytcs Azure
-description: Ez a cikk ismerteti az eszközök és API, amellyel kiterjesztheti riasztások a Log Analyticshez Azure riasztásokat.
+title: A napló Analytcs riasztások kiterjesztése az Azure-bA
+description: Ez a cikk ismerteti az eszközök és az API, amellyel bővítheti riasztások a Log Analytics az Azure Alerts szolgáltatáshoz.
 author: msvijayn
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,57 +8,57 @@ ms.topic: conceptual
 ms.date: 06/04/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 21ba95a7b3efff177afe63d22da3f6ba9848ded2
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: d70eecb6a5d6bafbfa6507dbe8b1bcb1cad67191
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35301031"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46990246"
 ---
-# <a name="extend-alerts-from-log-analytics-into-azure-alerts"></a>A Naplóelemzési riasztások kiterjeszti Azure riasztások
-Azure Naplóelemzés riasztások funkcióját a felváltja a Azure riasztásokat. Ez a változás részeként az eredetileg szolgáltatáshoz konfigurált riasztások az Azure kell terjeszteni. Ha nem szeretné Várjon, amíg az Azure automatikusan áthelyezni, a folyamat is kezdeményezhető:
+# <a name="extend-alerts-from-log-analytics-into-azure-alerts"></a>Riasztások kiterjesztése a Log Analytics az Azure-riasztások
+A riasztások szolgáltatása az Azure Log Analyticsben váltja fel az Azure-riasztások. Az átállás részeként a riasztásokat, amelyek eredetileg konfigurálták a Log Analytics kiterjesztik az Azure-bA. Ha nem szeretné automatikusan Azure-ba való áthelyezésének várja, is kezdeményezhet a folyamat:
 
-- Az Operations Management Suite portálról manuálisan. 
-- Programozott módon a AlertsVersion API használatával.  
+- Az Operations Management Suite Portalról manuálisan. 
+- Programozott módon az API-val AlertsVersion.  
 
 > [!NOTE]
-> Microsoft automatikusan kiterjed Naplóelemzési Azure riasztás létre riasztásokat, kezdve a 2018. május 14., ismétlődő több befejeződéséig. A riasztások áttelepítése az Azure-ba, és ez a változás során Microsoft ütemezéseket, riasztások kezelheti mind az Operations Management Suite portálját, és az Azure-portálon. Ez a folyamat nincs ilyen beállítások mellett pusztító vagy interruptive.  
+> A Microsoft automatikusan kiterjeszti a nyilvános felhő példányát az Azure Alerts szolgáltatáshoz, a Log Analytics létrehozott riasztásokat egy ismétlődő sorozat, amíg befejeződik a 2018. május 14., kezdve. Ha problémába ütközik létrehozása [Műveletcsoportok](monitoring-action-groups.md), használjon [javítási lépések](monitoring-alerts-extend-tool.md#troubleshooting) beolvasni a Műveletcsoportok jönnek létre automatikusan. 2018. július 5-ig is használhatja ezeket a lépéseket. *Nem alkalmazható Azure kormány Esettanulmányának és a Log Analytics Soveriegn felhőbeli felhasználók*. 
 
-## <a name="option-1-initiate-from-the-operations-management-suite-portal"></a>1. lehetőség: Indítása az Operations Management Suite portálról
-A következő lépések írják le a munkaterület riasztásokat az Operations Management Suite portálról bővítése.  
+## <a name="option-1-initiate-from-the-operations-management-suite-portal"></a>1. lehetőség: Az Operations Management Suite portálján az kezdeményezése
+Az alábbi lépéseket a munkaterületre vonatkozó riasztások kiterjesztése az Operations Management Suite portálján a ismertetik.  
 
-1. Válassza ki az Azure-portálon **minden szolgáltatás**. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza a **Log Analytics** elemet.
-2. A Naplóelemzési előfizetések ablaktáblán válassza ki a munkaterületen, és válassza a **OMS-portálon** csempére.
-![Naplóelemzési képernyőkép előfizetés ablaktábla a kijelölt OMS-portálon csempe](./media/monitor-alerts-extend/azure-portal-01.png) 
-3. Után a rendszer átirányítja az Operations Management Suite portálját, válassza ki a **beállítások** ikonra.
-![Képernyőkép az Operations Management Suite portálját, a beállítások ikonja kiemelve](./media/monitor-alerts-extend/oms-portal-settings-option.png) 
+1. Az Azure Portalon válassza ki a **minden szolgáltatás**. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza a **Log Analytics** elemet.
+2. A Log Analytics-előfizetések ablaktábláján válasszon ki egy munkaterületet, és válassza a **OMS-portálon** csempére.
+![Képernyőkép a Log Analytics előfizetés ablaktáblán kiemelt OMS-portálon csempével](./media/monitor-alerts-extend/azure-portal-01.png) 
+3. Után a rendszer átirányítja az Operations Management Suite portálra, válassza ki a **beállítások** ikonra.
+![Képernyőkép az Operations Management Suite portálján, a beállítások ikonja kiemelve](./media/monitor-alerts-extend/oms-portal-settings-option.png) 
 4. Az a **beállítások** lapon jelölje be **riasztások**.  
-5. Válassza ki **Azure kiterjeszti**.
-![Képernyőkép az Operations Management Suite portál riasztási beállítások lapon, az a kijelölt Azure bővítése](./media/monitor-alerts-extend/ExtendInto.png)
-6. Megjelenik egy három lépéses varázsló, a **riasztások** ablaktáblán. Olvassa el a áttekintése, és válassza ki **következő**.
+5. Válassza ki **kiterjesztése az Azure-bA**.
+![Képernyőkép az Operations Management Suite portál riasztási beállítások oldala, amelyen a kiemelt Azure-ba való bővítése](./media/monitor-alerts-extend/ExtendInto.png)
+6. Megjelenik egy három lépéses varázsló, a **riasztások** ablaktáblán. Olvassa el az áttekintést, és válassza ki **tovább**.
 ![1. lépés a varázsló képernyőképe](./media/monitor-alerts-extend/ExtendStep1.png)  
-7. A második lépésben látja javasolt változások összefoglalása listázása megfelelő [művelet csoportok](monitoring-action-groups.md) a riasztásokhoz. Ha hasonló műveletek közötti egynél több riasztást, a varázsló egy egyetlen művelettel csoporthoz hozzárendelni az összes javasol.  Az elnevezési a következőképpen történik: *WorkspaceName_AG_ #Number*. A folytatáshoz válasszon **következő**.
-![Képernyőkép a 2. lépés a varázsló](./media/monitor-alerts-extend/ExtendStep2.png)  
-8. A varázsló utolsó lépése, jelölje ki **Befejezés**, és erősítse meg, amikor a rendszer kéri a megkezdéséhez. Egy e-mail címet, opcionálisan megadhatja, hogy értesítést kap a folyamat befejeződik, és az összes riasztás sikeresen helyezte Azure riasztások.
-![Képernyőkép a 3. lépés a varázsló](./media/monitor-alerts-extend/ExtendStep3.png)
+7. A második lépésben látja összegzését, javasolt változtatás ajánlati megfelelő [Műveletcsoportok](monitoring-action-groups.md) a riasztások. Hasonló műveletek közötti egynél több riasztás is látható, ha a varázsló azokat egyetlen művelettel csoport hozzárendelése javasolja.  Az elnevezési szabályt követik a következőképpen történik: *WorkspaceName_AG_ #Number*. A továbblépéshez válasszon **tovább**.
+![2. lépés a varázsló képernyőképe](./media/monitor-alerts-extend/ExtendStep2.png)  
+8. A varázsló utolsó lépése, jelölje ki **Befejezés**, és győződjön meg arról, amikor a rendszer kéri a folyamat elindításához. Igény szerint megadhat egy e-mail-címet, így értesítést kap a folyamat befejeződik, és az összes riasztás sikeresen helyezte az Azure Alerts szolgáltatáshoz.
+![3. lépés a varázsló képernyőképe](./media/monitor-alerts-extend/ExtendStep3.png)
 
-Amikor a varázsló nem végzett, a **riasztási beállítások** lap, terjessze ki a riasztások Azure is törlődik. A háttérben a riasztások Azure kerülnek, és ez eltarthat egy ideig. A művelet során nem módosíthatja a riasztásokat az Operations Management Suite-portálról. Az aktuális állapotát a portál felső fejléc tekintheti meg. Ha korábban megadott e-mail cím, kap egy e-mailt során a folyamat sikeresen befejeződött.  
+Ha a varázsló nem végzett, a **riasztási beállítások** lap, riasztások kiterjesztése az Azure-bA lehetősége el lett távolítva. A háttérben a riasztásokat az Azure-ba kerülnek, és ez eltarthat egy ideig. A művelet során nem végezhet módosításokat a riasztásokat az Operations Management Suite-portálon. A portál tetején a szalagcímen az aktuális állapota látható. Ha korábban megadott e-mail-címmel, egy e-mailt kap, amikor a folyamat sikeresen befejeződött.  
 
 
-Riasztások továbbra is jelenik meg az Operations Management Suite portálját, az Azure sikeresen áthelyezett után is.
+Riasztások továbbra is megjelennek az Operations Management Suite-portálon, az Azure-bA sikeresen áthelyezett után is.
 ![Képernyőkép az Operations Management Suite portál riasztási beállítások lap](./media/monitor-alerts-extend/PostExtendList.png)
 
 
 ## <a name="option-2-use-the-alertsversion-api"></a>2. lehetőség: A AlertsVersion API használata
-A napló Analytics AlertsVersion API segítségével terjessze ki a riasztások a Naplóelemzési be Azure riasztások minden ügyfélről, amely a REST API meghívása. Elérhető az API-t PowerShell használatával [ARMClient](https://github.com/projectkudu/ARMClient), egy nyílt forráskódú parancssori eszközt. Az eredményeket a JSON-ban.  
+A Log Analytics AlertsVersion API segítségével riasztások kiterjesztése a Log Analytics az Azure Alerts minden ügyfélről, amely segítségével meghívhatja a REST API-t. Hozzáférhet az API-t a PowerShell használatával [ARMClient](https://github.com/projectkudu/ARMClient), egy nyílt forráskódú parancssori eszközt. Az eredményeket JSON-fájlban.  
 
-Az API használatához először létrehozhat egy GET kérelmet. Ez kiértékeli, és a javasolt változtatásokat összegzését adja vissza, ténylegesen kiterjesztése az Azure használatával egy POST kérést megkísérlése előtt. Az eredmények listát a riasztásokat és a javasolt listája [művelet csoportok](monitoring-action-groups.md), JSON formátumban. Ha hasonló műveletek közötti egynél több riasztást, a szolgáltatás az összes olyan egyetlen művelettel csoporthoz társítandó javasolja. Az elnevezési a következőképpen történik: *WorkspaceName_AG_ #Number*.
+Az API használatához, először hozzon létre egy GET kéréssel. Kiértékeli, és ez a javasolt változtatások összegző eredménnyel tér vissza, mielőtt ténylegesen kiterjesztése az Azure-bA egy POST-kérés használatával. Az eredmények sorolják fel a riasztásokat és a egy javasolt listáját [Műveletcsoportok](monitoring-action-groups.md), JSON formátumban. Hasonló műveletek közötti egynél több riasztás is látható, ha a szolgáltatás javaslatot tesz egy egyetlen művelettel csoporthoz társítandó azokat. Az elnevezési szabályt követik a következőképpen történik: *WorkspaceName_AG_ #Number*.
 
 ```
 armclient GET  /subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName>/alertsversion?api-version=2017-04-26-preview
 ```
 
-Ha a GET kérés sikeres, 200-as HTTP-állapotkódot adott vissza, a riasztások listája mellett, és javasolt művelet csoportok a JSON-adatokat. A következő egy példa egy válasz:
+Ha a GET-kérés sikeres, 200-as HTTP-állapotkód ad vissza, és a riasztások listája, és javasolt műveletcsoportok a JSON-adatokat. A következő egy példa választ:
 
 ```json
 {
@@ -115,7 +115,7 @@ Ha a GET kérés sikeres, 200-as HTTP-állapotkódot adott vissza, a riasztások
 }
 
 ```
-Ha a megadott munkaterület nem rendelkezik a riasztási szabály lett meghatározva, a JSON-adatokat a következő adja vissza:
+Ha a megadott munkaterület nem rendelkezik a riasztási szabályok meghatározva, a JSON-adatokat a következő adja vissza:
 
 ```json
 {
@@ -124,7 +124,7 @@ Ha a megadott munkaterület nem rendelkezik a riasztási szabály lett meghatár
 }
 ```
 
-Ha a megadott munkaterület minden riasztási szabályok már fut az Azure-ba, a GET kérelemre adott válasz van:
+Ha a megadott munkaterület összes riasztási szabályt már ki van bővítve az Azure-ba, a GET kérelemre adott válasz a következő:
 
 ```json
 {
@@ -132,7 +132,7 @@ Ha a megadott munkaterület minden riasztási szabályok már fut az Azure-ba, a
 }
 ```
 
-Kezdeményezheti a riasztások áttelepítése az Azure-ba, indítsa el a POST válasz. A POST válasz megerősíti, hogy a leképezés, valamint elfogadási, Log Analyticshez terjeszteni Azure riasztások riasztások rendelkeznie. A tevékenység van ütemezve, és a riasztások jelöli, az eredmények alapján, ha korábban hajtotta végre a GET-válasz feldolgozása. Igény szerint is adja meg e-mail címét, amelyhez a Naplóelemzési jelentést küld, amikor ütemezett folyamata az áttelepítéshez a riasztások sikeresen befejeződik. Ez a példa kérelem használhatja:
+A riasztások az Azure-ba való migrálás elindításához egy POST-választ kezdeményezni. A bejegyzés választ megerősíti, hogy a leképezés, valamint elfogadó, szeretné, hogy a riasztások a Log Analytics az Azure Alerts kiterjesztett. A tevékenységek ütemezve van, és a riasztások feldolgozása történik jelöli, ha a GET-válasz korábban végrehajtott eredményei alapján. Szükség esetén is adja meg, amelyhez a Log Analytics jelentést küld, amikor ütemezett háttér folyamata az áttelepítéshez a riasztás sikeresen lefutott e-mail-címek listáját. Ez a példa kérelem is használhatja:
 
 ```
 $emailJSON = “{‘Recipients’: [‘a@b.com’, ‘b@a.com’]}”
@@ -140,9 +140,9 @@ armclient POST  /subscriptions/<subscriptionId>/resourceGroups/<resourceGroupNam
 ```
 
 > [!NOTE]
-> Eredményét áttelepítése értesítések az Azure-riasztások a GET-válasz által átadott függően változhatnak. Ütemezése, a Naplóelemzési riasztások az éppen átmenetileg nem érhető el az Operations Management Suite portálját módosításra. Azonban létrehozhat új riasztásokat. 
+> Eredményét áttelepítése riasztások az Azure Alerts GET válaszban által átadott alapján változhat. Ha ütemezve, riasztások a Log Analyticsben átmenetileg nem érhetők el a módosítás az Operations Management Suite portálján. Új riasztásokat is létrehozhat. 
 
-Ha a POST kérelem sikeres, a következő választ egy HTTP 200 OK állapotára adja vissza:
+Ha a POST-kérés sikeres, egy HTTP 200 OK állapota mellett a következő választ adja vissza:
 
 ```json
 {
@@ -150,7 +150,7 @@ Ha a POST kérelem sikeres, a következő választ egy HTTP 200 OK állapotára 
 }
 ```
 
-Ez a válasz azt jelzi, hogy a riasztásokat az Azure-riasztások sikeresen bővültek. A version tulajdonságát a rendszer csak ellenőrizni, hogy a riasztások kiterjesztettük, az Azure-ba, és nincsenek kapcsolatban a [napló Analytics Search API](../log-analytics/log-analytics-api-alerts.md). A riasztások bővítve lettek az Azure-bA sikeresen, ha bármelyik e-mail címek megadott a POST kérelem vannak a rendszer küld jelentést. A megadott munkaterület minden riasztás már ütemezve kell terjeszteni, a POST-kérelmet válasz esetén, hogy a kísérlet (a 403-as állapotkód) történt tiltott. Hibaüzenetek megtekintéséhez, vagy ha akadt-e a folyamat megértése, elküldheti a GET kérés. Ha hibaüzenet jelenik meg, akkor lett visszaadva, akkor az összefoglaló információk mellett.
+Ez a válasz azt jelzi, hogy a riasztásokat az Azure Alerts sikeresen bővültek. A verzió tulajdonság értéke csak a rendszer ellenőrzi, hogy a riasztások az Azure-ban fut, és nem állnak kapcsolatban a [Log Analytics Search API](../log-analytics/log-analytics-api-alerts.md). A riasztások ki vannak bővítve az Azure-bA sikeresen, ha bármely e-mail-címek biztosított a POST-kérelmet küldött jelentést. A megadott munkaterület minden riasztás már ütemezett bővíthetők, a POST-kérés adott válasz-e, hogy a kísérlet történt tiltott (a 403-as állapotkód). Hibaüzenetek megtekintéséhez, vagy ha elakadt a folyamat ismertetése, küldhet egy GET kéréssel. Ha hibaüzenet jelenik meg, ezt adja vissza, az összefoglaló információkkal együtt.
 
 ```json
 {
@@ -214,12 +214,12 @@ Ez a válasz azt jelzi, hogy a riasztásokat az Azure-riasztások sikeresen bőv
 ```
 
 
-## <a name="option-3-use-a-custom-powershell-script"></a>3. lehetőség: Egy egyéni PowerShell-parancsfájl használata
- Ha a Microsoft nem sikeresen kibővítve a riasztásokat az Operations Management Suite-portálon az Azure-ba, megteheti ezt manuálisan amíg 2018 július 5. A két lehetőség manuális bővítmény az előző két szakaszok ismertetnek.
+## <a name="option-3-use-a-custom-powershell-script"></a>3. lehetőség: Egyéni PowerShell parancsfájl használata
+ Ha a Microsoft nem sikerült kibővítve a riasztásokat az Operations Management Suite-portálról az Azure-ba, akkor manuálisan tehetik 2018. július 5-ig. A két lehetőség manuális bővítmény terjed ki az előző két szakaszokban.
 
-2018. július 5., miután minden riasztásait az Operations Management Suite portálját kiterjeszthetőek Azure. Felhasználók, akik nem igénybe vehet a [javasolt szükséges javítási lépéseket](#troubleshooting) műveletek vagy értesítések, mert nem tartozik kiváltó nélkül futtatja a figyelmeztetéseket fog tartozó [művelet csoportok](monitoring-action-groups.md). 
+2018. július 5., után minden riasztás az Operations Management Suite portálon kiterjeszthetők az Azure. Felhasználók, akik nem igénybe a [javasolt szükséges javítási lépések](#troubleshooting) a riasztások kiváltó műveletek vagy hiánya miatt az értesítéseket, anélkül fog kapcsolódó [Műveletcsoportok](monitoring-action-groups.md). 
 
-Létrehozásához [művelet csoportok](monitoring-action-groups.md) a Naplóelemzési manuálisan riasztásokhoz, használja az alábbi mintaparancsfájl:
+Hozhat létre [Műveletcsoportok](monitoring-action-groups.md) riasztások manuálisan a Log Analyticsben, használja a következő minta parancsfájlt:
 ```PowerShell
 ########## Input Parameters Begin ###########
 
@@ -438,46 +438,46 @@ $response = armclient post "/subscriptions/$subscriptionId/resourceGroups/$resou
 
 
 ### <a name="about-the-custom-powershell-script"></a>Tudnivalók az egyéni PowerShell-parancsfájl 
-A következő egy a parancsfájl használatával kapcsolatos fontos információkat:
-- Egy előfeltétel, telepítésének [ARMclient](https://github.com/projectkudu/ARMClient), egy nyílt forráskódú parancssori eszköz, amely leegyszerűsíti az Azure Resource Manager API meghívása.
-- A parancsfájl futtatásához egy közreműködő vagy a tulajdonos szerepkörrel kell rendelkeznie az Azure-előfizetésben.
-- A következő paramétereket kell megadnia:
-    - $subscriptionId: az Azure-előfizetési Azonosítót az Operations Management Suite Naplóelemzési munkaterület társított.
-    - $resourceGroup: Operations Management Suite Naplóelemzési munkaterület az Azure-erőforráscsoportot.
-    - $workspaceName: az Operations Management Suite Naplóelemzési munkaterület nevét.
+Az alábbiakban látható a szkripttel kapcsolatos fontos információkat:
+- Előfeltétel telepítése [ARMclient](https://github.com/projectkudu/ARMClient), egy nyílt forráskódú parancssori eszköz, amely leegyszerűsíti az Azure Resource Manager API meghívása.
+- A szkript futtatásához egy közreműködői vagy tulajdonosi szerepkörrel kell rendelkeznie az Azure-előfizetésében.
+- Az alábbi paramétereket kell megadnia:
+    - $subscriptionId: az Azure-előfizetési Azonosítót az Operations Management Suite Log Analytics-munkaterülethez társított.
+    - $resourceGroup: az Operations Management Suite Log Analytics-munkaterülethez tartozó Azure-erőforráscsoport.
+    - $workspaceName: az Operations Management Suite Log Analytics-munkaterület nevét.
 
-### <a name="output-of-the-custom-powershell-script"></a>Az egyéni PowerShell-parancsfájl
-A parancsfájl részletes, és kiírja a lépéseket, hogy: 
-- Megjeleníti a összegzésbe, amelyet a meglévő Operations Management Suite Naplóelemzési riasztások munkaterületén adatait tartalmazza. Az összegzés a hozzájuk társított műveletek létrehozandó Azure művelet csoportok adatait is tartalmazza. 
-- A bővítmény használatától, vagy lépjen ki az összegzés megtekintése után kéri.
-- Ha előre kiterjesztésű, új Azure művelet csoportok jönnek létre, és minden meglévő riasztás társított őket. 
-- A parancsfájl lép ki megjeleníti az üzenet "Bővítmény teljes!" Összes köztes hiba esetén a parancsfájl további hibákat jeleníti meg.
+### <a name="output-of-the-custom-powershell-script"></a>Egyéni PowerShell-parancsprogram kimenetéből
+A parancsfájl részletes, és kiírja a lépéseket, annak futtatása során: 
+- Megjeleníti az összefoglaló, amely a munkaterületen a meglévő Operations Management Suite Log Analytics-riasztások információkat tartalmaz. Az összegzés a hozzájuk rendelt műveleteket kell létrehozni az Azure Műveletcsoportok vonatkozó információkat is tartalmaz. 
+- Lépjen tovább a kiterjesztésű, vagy lépjen ki az összegzés megtekintése után kéri.
+- Lépjen tovább az bővítménnyel, ha új Azure Műveletcsoportok jönnek létre, és minden meglévő riasztás rendelt őket. 
+- A parancsfájl kilép a "Teljes bővítmény!" üzenet megjelenítésével Minden olyan köztes hibák esetén a szkript további hibákat jeleníti meg.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás 
-Riasztások kiterjesztésének során problémák így előfordulhat, hogy a rendszer az ehhez szükséges [művelet csoportok](monitoring-action-groups.md). Ebben az esetben, a fejléc a hibaüzenetet látja a **riasztási** szakasz az Operations Management Suite portálját, vagy a GET hívja az API kész.
+Riasztások kiterjesztése az a folyamat során problémák megakadályozhatja a rendszer az ehhez szükséges [Műveletcsoportok](monitoring-action-groups.md). Ezekben az esetekben a fejléc a hibaüzenetet látja a **riasztási** szakasz az Operations Management Suite portálján, vagy a GET hívja az API-nak kész.
 
 > [!IMPORTANT]
-> Ha nem a következő javítási lépéseket 2018. július 5., mielőtt riasztások az Azure-ban működik, de nem lép működésbe, semmilyen művelet vagy az értesítés. Ahhoz, hogy a riasztások értesítései, manuálisan módosítsa, majd adja hozzá [művelet csoportok](monitoring-action-groups.md), vagy használja az előző [egyéni PowerShell-parancsfájl](#option-3---using-custom-powershell-script).
+> Ha Azure nyilvános felhő alapú Log Analytics-felhasználók 2018. július 5. előtt nem kell a következő javítási lépéseket, a riasztások az Azure-ban futnak, de nem indulnak el, bármilyen művelet vagy az értesítés. Értesítés küldése riasztások, kell manuálisan szerkessze, és adja hozzá [Műveletcsoportok](monitoring-action-groups.md), vagy használja az előző [egyéni PowerShell-parancsprogram](#option-3---using-custom-powershell-script).
 
-Minden egyes hibához szervizelési lépései a következők:
-- **Hiba: Hatókör zárolási szerepel előfizetés-erőforráscsoport szintjén az írási műveletek**: ![oldalát bemutató Képernyőkép az Operations Management Suite portál riasztási beállításokat, a kijelölt hatókör zárolási hibaüzenet](./media/monitor-alerts-extend/ErrorScopeLock.png)
+Minden egyes hibához szervizelés lépései a következők:
+- **Chyba: Hatókör zár megtalálható előfizetés/erőforráscsoport szintjén az írási műveletek**: ![lapjának képernyőképe, az Operations Management Suite portál riasztási beállítások, kiemelve hatókör zárolási hibaüzenet](./media/monitor-alerts-extend/ErrorScopeLock.png)
 
-    Ha hatókör zár engedélyezve van, a szolgáltatás korlátozza az előfizetés vagy az erőforrás csoport, amely tartalmazza a (Operations Management Suite) Naplóelemzési munkaterület új változást. A rendszer nem tud riasztások kiterjeszti az Azure és a szükséges intézkedéseket csoportok létrehozása.
+    Hatókör zár engedélyezve van, amikor a szolgáltatás korlátozza (Operations Management Suite) Log Analytics-munkaterületnek tartalmazó előfizetés vagy az erőforrás-csoport minden olyan új változásáról. A rendszer nem tudja riasztások kiterjesztése az Azure-ba, és a szükséges Műveletcsoportok létrehozása.
     
-    Megoldásához törölje a *ReadOnly* zárolni az előfizetés vagy az erőforrás csoport, amely tartalmazza a munkaterületen. Ehhez az Azure-portálon, PowerShell, az Azure parancssori felület vagy a API használatával. További tudnivalókért lásd: [erőforrás zárolási kihasználtsága](../azure-resource-manager/resource-group-lock-resources.md). 
+    Megoldásához, törölje a *ReadOnly* a a munkaterületet tartalmazó előfizetés vagy az erőforrás csoport zárolása. Ehhez az Azure portal, PowerShell, Azure CLI-vel vagy az API használatával. További tudnivalókért lásd: [erőforrás zárolása használati](../azure-resource-manager/resource-group-lock-resources.md). 
     
-    A cikkben ismertetett lépések segítségével hárítsa el a hibát, ha az Operations Management Suite az Azure a riasztások bővíti a következő napra ütemezett futtatását. Nem kell további műveleteket, vagy bármi indítása.
+    A cikkben bemutatott lépések segítségével hárítsa el a hibát, ha az Operations Management Suite az Azure-bA a riasztások kiterjeszti a következő napra ütemezett futtatását. Nem kell további műveleteket, vagy kezdeményezzen semmit.
 
-- **Hiba: A előfizetés-erőforráscsoport szintjén szerepel házirend**: ![oldalát bemutató Képernyőkép az Operations Management Suite portál riasztási beállításokat, a kijelölt házirend hibaüzenet](./media/monitor-alerts-extend/ErrorPolicy.png)
+- **Hiba: A házirend jelen előfizetés/erőforráscsoport szintjén**: ![lapjának képernyőképe, az Operations Management Suite portál riasztási beállítások, kiemelve a házirend hibaüzenet](./media/monitor-alerts-extend/ErrorPolicy.png)
 
-    Ha [Azure házirend](../azure-policy/azure-policy-introduction.md) van érvényben, korlátozza a (Operations Management Suite) Naplóelemzési munkaterület tartalmazó előfizetés vagy az erőforrás csoport bármely új erőforrás. A rendszer nem tud riasztások kiterjeszti az Azure és a szükséges intézkedéseket csoportok létrehozása.
+    Amikor [Azure Policy](../azure-policy/azure-policy-introduction.md) van érvényben, korlátozza a Log Analytics (az Operations Management Suite) munkaterületet tartalmazó előfizetés vagy az erőforrás csoportban bármilyen új erőforrást. A rendszer nem tudja riasztások kiterjesztése az Azure-ba, és a szükséges Műveletcsoportok létrehozása.
     
-    Megoldásához szerkeszti a házirendet, amely miatt a *[RequestDisallowedByPolicy](../azure-resource-manager/resource-manager-policy-requestdisallowedbypolicy-error.md)* hiba, amely megakadályozza az új erőforrások az előfizetés vagy az erőforrás csoport, amely tartalmazza a munkaterület létrehozását. Ehhez az Azure-portálon, PowerShell, az Azure parancssori felület vagy a API használatával. A megfelelő házirend hibát okozó található műveletek naplózhatók. További tudnivalókért lásd: [műveletek naplózása tevékenység naplók megtekintése](../azure-resource-manager/resource-group-audit.md). 
+    Megoldásához módosítsa a házirendet, amely miatt a *[RequestDisallowedByPolicy](../azure-resource-manager/resource-manager-policy-requestdisallowedbypolicy-error.md)* hiba, amely megakadályozza az új erőforrások a vagy erőforráscsoportonként csoport, amely tartalmazza a munkaterület létrehozását. Ehhez az Azure portal, PowerShell, Azure CLI-vel vagy az API használatával. Keresse meg a megfelelő szabályzatot hibát okozó műveletek naplózhatók. További tudnivalókért lásd: [végzett műveletek naplózásához tevékenységi naplóinak megtekintése](../azure-resource-manager/resource-group-audit.md). 
     
-    A cikkben ismertetett lépések segítségével hárítsa el a hibát, ha az Operations Management Suite az Azure a riasztások bővíti a következő napra ütemezett futtatását. Nem kell további műveleteket, vagy bármi indítása.
+    A cikkben bemutatott lépések segítségével hárítsa el a hibát, ha az Operations Management Suite az Azure-bA a riasztások kiterjeszti a következő napra ütemezett futtatását. Nem kell további műveleteket, vagy kezdeményezzen semmit.
 
 
 ## <a name="next-steps"></a>További lépések
 
-* További információ az új [Azure riasztások élmény](monitoring-overview-unified-alerts.md).
-* További tudnivalók [riasztások jelentkezzen be Azure riasztások](monitor-alerts-unified-log.md).
+* További információ az új [Azure Alerts élmény](monitoring-overview-unified-alerts.md).
+* Ismerje meg [naplóriasztások az Azure Alerts](monitor-alerts-unified-log.md).

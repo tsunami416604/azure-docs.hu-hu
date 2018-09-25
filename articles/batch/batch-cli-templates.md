@@ -11,12 +11,12 @@ ms.topic: article
 ms.workload: big-compute
 ms.date: 08/02/2018
 ms.author: danlep
-ms.openlocfilehash: 50ed5a6b57c3c994f636db5cc975ad1908e50c7d
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 753a36eb6fb7a0c007c62bbab7fe7390e706b1f5
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39493433"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46964292"
 ---
 # <a name="use-azure-batch-cli-templates-and-file-transfer"></a>Azure Batch parancssori felületi sablonjainak és fájlátviteli
 
@@ -47,7 +47,7 @@ Ha például [ffmpeg](http://ffmpeg.org/) népszerű alkalmazás, amely feldolgo
 
 ## <a name="installation"></a>Telepítés
 
-Az Azure Batch CLI-bővítmény telepítéséhez először [Azure CLI 2.0 telepítése](/cli/azure/install-azure-cli), vagy futtassa az Azure CLI [Azure Cloud Shell](../cloud-shell/overview.md).
+Az Azure Batch CLI-bővítmény telepítéséhez először [az Azure CLI 2.0 telepítése](/cli/azure/install-azure-cli), vagy futtassa az Azure CLI [Azure Cloud Shell](../cloud-shell/overview.md).
 
 Telepítse a legújabb verziót a Batch-bővítmény a következő Azure CLI-paranccsal:
 

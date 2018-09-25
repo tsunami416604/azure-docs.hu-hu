@@ -1,6 +1,6 @@
 ---
-title: Telepítheti az Azure-felhőbe rendszerhéj Bash Terraform |} Microsoft Docs
-description: Az Azure-felhőbe rendszerhéj Bash Terraform üzembe helyezéséhez
+title: Terraform az Azure Cloud Shell Bash az üzembe helyezés |} A Microsoft Docs
+description: Terraform az Azure Cloud Shell Bash az üzembe helyezés
 services: Azure
 documentationcenter: ''
 author: tomarcher
@@ -13,44 +13,44 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: tarcher
-ms.openlocfilehash: 6df6a3a5242e0a5fc5c03136e1cd20967a93487a
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 8512c04cb0efc698ca688724c3806291bb02d200
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29386520"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46947647"
 ---
-# <a name="deploy-with-terraform-from-bash-in-azure-cloud-shell"></a>Az Azure-felhőbe rendszerhéj Bash Terraform üzembe helyezéséhez
-Ez a cikk bemutatja, hogyan nevű erőforráscsoport létrehozása a [Terraform AzureRM szolgáltató](https://www.terraform.io/docs/providers/azurerm/index.html). 
+# <a name="deploy-with-terraform-from-bash-in-azure-cloud-shell"></a>Terraform az Azure Cloud Shell Bash az üzembe helyezés
+Ez a cikk végigkalauzolja egy erőforráscsoportot a [Terraform AzureRM szolgáltató](https://www.terraform.io/docs/providers/azurerm/index.html). 
 
-[Hashicorp Terraform](https://www.terraform.io/) nyílt forráskódú eszköz, amely egységes API-k, amely lehet szerkeszteni, tekintse át a csoport tagjai között megosztott és rendszerverzióval ellátott deklaratív konfigurációs fájlok. A Microsoft-AzureRM szolgáltató Azure Resource Manager segítségével a AzureRM API-k által támogatott erőforrások interakcióra használatos. 
+[A Hashicorp Terraform](https://www.terraform.io/) egy nyílt forráskódú eszköz, amely egységes API-k deklaratív konfigurációs fájlokat, amelyek többek között a szerkesztett, tekintse át a csapattagok megosztott, és a rendszerverzióval ellátott be. A Microsoft-AzureRM-szolgáltató segítségével lépjen kapcsolatba az Azure Resource Manager az AzureRM-API-kon keresztül által támogatott erőforrásokkal. 
 
 ## <a name="automatic-authentication"></a>Automatikus hitelesítéshez
-Terraform alapértelmezés szerint telepítve van a felhő rendszerhéj Bash. Emellett a felhő rendszerhéj automatikusan az alapértelmezett Azure CLI 2.0 előfizetés erőforrásoknak a Terraform Azure modulok telepítése hitelesíti.
+A Terraform alapértelmezés szerint telepítve van a Cloud Shell bashben. Emellett a Cloud Shell automatikusan hitelesíti az alapértelmezett Azure CLI-vel előfizetés erőforrásai a a Terraform az Azure-modulok telepítéséhez.
 
-Terraform használja az alapértelmezett Azure CLI 2.0 előfizetés, amely be van állítva. Alapértelmezett előfizetések frissítéséhez futtassa:
+A Terraform használja az alapértelmezett Azure CLI-előfizetést, amely be van állítva. Alapértelmezett előfizetések frissítéséhez futtassa:
 
 ```azurecli-interactive
 az account set --subscription mySubscriptionName
 ```
 
 ## <a name="walkthrough"></a>Útmutatás
-### <a name="launch-bash-in-cloud-shell"></a>Indítsa el a felhő rendszerhéj Bash
-1. Indítsa el a felhő rendszerhéjat az elsődleges helyről
-2. Ellenőrizze, hogy az előnyben részesített előfizetés van beállítva
+### <a name="launch-bash-in-cloud-shell"></a>Indítsa el a Cloud Shell Bash
+1. Az elsődleges helyről a Cloud Shell indítása
+2. Az előnyben részesített előfizetés ellenőrzése
 
 ```azurecli-interactive
 az account show
 ```
 
-### <a name="create-a-terraform-template"></a>Terraform sablon létrehozása
-Az előnyben részesített szövegszerkesztővel main.tf nevű új Terraform sablont létrehozni.
+### <a name="create-a-terraform-template"></a>Terraform-sablon létrehozása
+Terraform az előnyben részesített szövegszerkesztővel main.tf nevű új sablont létrehozni.
 
 ```
 vim main.tf
 ```
 
-Másolja és illessze be az alábbi kód felhő rendszerhéjat.
+Másolja és illessze be a következő kód Cloud shellbe.
 
 ```
 resource "azurerm_resource_group" "myterraformgroup" {
@@ -59,10 +59,10 @@ resource "azurerm_resource_group" "myterraformgroup" {
 }
 ```
 
-Mentse a fájlt, és zárja be a szövegszerkesztőben.
+Mentse a fájlt, és lépjen ki a szövegszerkesztőben.
 
-### <a name="terraform-init"></a>Terraform init
-Futtassa a Begin `terraform init`.
+### <a name="terraform-init"></a>A Terraform init
+Első lépésként futó `terraform init`.
 
 ```
 justin@Azure:~$ terraform init
@@ -90,10 +90,10 @@ rerun this command to reinitialize your working directory. If you forget, other
 commands will detect it and remind you to do so if necessary.
 ```
 
-A [terraform init parancs](https://www.terraform.io/docs/commands/init.html) inicializáló egy Terraform konfigurációs fájlokat tartalmazó könyvtárat. A `terraform init` az első parancs, amely egy új Terraform konfiguráció írásakor, vagy egy meglévő verziókezelést a Klónozás után kell futtatni. Biztonságos, a parancs futtatásához többször is.
+A [terraform init paranccsal](https://www.terraform.io/docs/commands/init.html) inicializálni egy működő könyvtárba, Terraform konfigurációs fájljait tartalmazó szolgál. A `terraform init` az első parancs, amely egy új Terraform konfigurációjának írása, vagy egy meglévőt a verziókezeléshez klónozása után kell futtatni. Biztonságosan futtatható a parancs többször.
 
-### <a name="terraform-plan"></a>Terraform terv
-Tekintse meg az erőforrások kell létrehozni a Terraform sablon `terraform plan`.
+### <a name="terraform-plan"></a>Terraform plan
+A Terraform sablont kell létrehoznia az erőforrások előzetes `terraform plan`.
 
 ```
 justin@Azure:~$ terraform plan
@@ -126,9 +126,9 @@ can't guarantee that exactly these actions will be performed if
 "terraform apply" is subsequently run.
 ```
 
-A [terraform terv parancs](https://www.terraform.io/docs/commands/plan.html) egy végrehajtási terv létrehozására szolgál. Terraform hajt végre a frissítést, kifejezetten tiltja, és majd határozza meg, milyen műveletek szükségesek a kívánt állapot, a konfigurációs fájlok eléréséhez. A csomag használatával is menthető-out, és majd – terraform alkalmazni annak érdekében, hogy csak az előre tervezett végrehajtás.
+A [terraform plan parancs](https://www.terraform.io/docs/commands/plan.html) egy végrehajtási tervet hoz létre. A Terraform hajt végre egy frissítés, kivéve, ha explicit módon le van tiltva, és ezután határozza meg, milyen műveletek szükségesek a kívánt állapot konfigurációs fájlokban megadott eléréséhez. A terv használatával menthetők-ki, és a terraform, feltéve, hogy a alkalmazni annak érdekében, hogy csak az előre tervezett műveletek végrehajtása.
 
-### <a name="terraform-apply"></a>Terraform alkalmazása
+### <a name="terraform-apply"></a>Terraform apply
 Az Azure-erőforrások kiépítése `terraform apply`.
 
 ```
@@ -142,17 +142,17 @@ azurerm_resource_group.demo: Creation complete after 0s (ID: /subscriptions/mySu
 Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 ```
 
-A [terraform alkalmazása parancs](https://www.terraform.io/docs/commands/apply.html) elérni a kívánt állapot, a konfiguráció szükséges módosítások alkalmazására szolgál.
+A [terraform a alkalmazni parancs](https://www.terraform.io/docs/commands/apply.html) szolgál az elérni kívánt állapotát, a konfiguráció szükséges módosítások alkalmazásához.
 
-### <a name="verify-deployment-with-azure-cli-20"></a>Az Azure CLI 2.0 telepítés ellenőrzése
-Futtatás `az group show -n myRgName` az erőforrás-kiépítés sikerességéről meggyőződhet.
+### <a name="verify-deployment-with-azure-cli"></a>Az Azure CLI-vel a telepítés ellenőrzése
+Futtatás `az group show -n myRgName` ellenőrizze az erőforrás-kiépítés sikeres.
 
 ```azcliinteractive
 az group show -n myRgName
 ```
 
-### <a name="clean-up-with-terraform-destroy"></a>Karbantartása a terraform megszüntetése
-A létrehozott erőforráscsoport karbantartása a [Terraform semmisítse meg a parancs](https://www.terraform.io/docs/commands/destroy.html) Terraform által létrehozott infrastruktúra karbantartása.
+### <a name="clean-up-with-terraform-destroy"></a>Távolítsa el a terraform használatával megszüntetése
+Távolítsa el a létrehozott erőforráscsoportot a [Terraform semmisítse meg a parancs](https://www.terraform.io/docs/commands/destroy.html) infrastruktúra a Terraform által létrehozott karbantartása.
 
 ```
 justin@Azure:~$ terraform destroy
@@ -185,8 +185,8 @@ azurerm_resource_group.demo: Destruction complete after 45s
 Destroy complete! Resources: 1 destroyed.
 ```
 
-Sikeresen létrehozott egy Azure-erőforrás Terraform keresztül. Látogasson el a következő lépések és folytathatja az felhő rendszerhéj.
+Sikeresen létrehozott egy Azure-erőforrás a Terraform használatával. Látogasson el a következő lépések többet szeretne megtudni a Cloud Shellben.
 
 ## <a name="next-steps"></a>További lépések
 [További tudnivalók az Terraform Azure-szolgáltató](https://www.terraform.io/docs/providers/azurerm/#)<br>
-[A felhő rendszerhéj gyors üzembe helyezés bash](quickstart.md)
+[A rövid útmutatóban a Cloud Shell bash](quickstart.md)

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/20/2017
 ms.author: deguhath
-ms.openlocfilehash: 2cce0b883c18a813aed386186c825c26b0e4b674
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: e6e6b8e03102825a15035adbea80ac5e9f3fa404
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44303778"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46996451"
 ---
 # <a name="what-is-the-team-data-science-process"></a>Mi a csoportos adatelemzési folyamat?
 
@@ -89,10 +89,10 @@ A könyvtárstruktúra is lehet klónozni a [Github](https://github.com/Azure/Az
 
 Tdsp-vel megosztott analytics és a tárolási infrastruktúra kezelése ajánlásokat:
 
-- az adathalmazok, felhőalapú fájlrendszerek 
+- felhőbeli fájlrendszerek adatkészletek tárolására. 
 - adatbázisok
 - a big data (Hadoop és Spark) fürtök 
-- Machine learning-szolgáltatások. 
+- Machine learning szolgáltatás 
 
 Az elemzési és tárolási infrastruktúrájában a felhőben vagy a helyszínen is lehet. Ez a nyers és a feldolgozott adatkészletek tárolására. Ez az infrastruktúra lehetővé teszi, hogy reprodukálható elemzése. Azt is elkerülheti duplikációt tartalmaz, ami inkonzisztens állapotát és infrastruktúrával kapcsolatos felesleges költségeket. Eszközök állnak rendelkezésre a megosztott erőforrások kiépítéséhez, azok nyomon követésére és ezen erőforrások biztonságos kapcsolatot minden egyes csapattag engedélyezése. Emellett tanácsos projekt tagjai konzisztens számítási környezet létrehozásához. Másik csapattag ezután replikálja, és kísérletek ellenőrzése.
 

@@ -11,14 +11,19 @@ ms.component: core
 services: machine-learning
 ms.workload: data-services
 ms.date: 12/13/2017
-ms.openlocfilehash: eb788f56825166ccaa376d32b07371db0588edc8
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: 5ca47c8234239b56a2d829903828dda8220d53cb
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35923387"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46967608"
 ---
 # <a name="aerial-image-classification"></a>Légifelvételek besorolása
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 
 Ez a példa bemutatja, hogyan összehangolja elosztott képzés és operacionalizálás képbesorolási modellek az Azure Machine Learning Workbench használatával. Két módszer képzéshez használjuk: (i) finomítása, a Neurális hálózat használatával egy [Azure Batch AI](https://docs.microsoft.com/azure/batch-ai/) GPU-fürtön, és (ii) a [Microsoft Machine Learning, az Apache Spark (MMLSpark)](https://github.com/Azure/mmlspark) csomagot képjellemzők imagenet CNTK-modellek és származtatott funkciót osztályozó eszközökkel taníthat be. Ezután alkalmazunk a betanított modellek párhuzamos módon, nagy méretű kép csoportok a felhőben található egy [Azure HDInsight Spark](https://azure.microsoft.com/services/hdinsight/apache-spark/) fürt, lehetővé téve a képzés és operacionalizálás sebességével méretezésre hozzáadásával vagy eltávolításával a munkavégző csomópontok.
 
@@ -61,7 +66,7 @@ Az alábbi utasításokat követve végigvezetik az ebben a példában a végreh
        - Ha kevesebb elérhető maggal rendelkezik, előfordulhat, hogy módosítja a HDInsight-fürt sablon csökkentheti a kiépített feldolgozók száma. Ehhez útmutatást a "A HDInsight Spark-fürt létrehozása" szakaszban jelennek meg.
     - Ez a példa létrehoz egy Batch AI Training fürt két NC6 (1 GPU, 6 vCPU) virtuális gépek. Győződjön meg arról, hogy a fiók rendelkezik elegendő elérhető maggal az USA keleti régiójában áttekintésével, a "használat + kvóták" fülre az előfizetés az Azure Portalon.
 - [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md)
-    - Kövesse a [telepítési és létrehozási rövid útmutató](../service/quickstart-installation.md) az Azure Machine Learning Workbench telepítése, és a kísérleti és Modellkezelési fiókok létrehozásához.
+    - Kövesse a [telepítési és létrehozási rövid útmutató](../desktop-workbench/quickstart-installation.md) az Azure Machine Learning Workbench telepítése, és a kísérleti és Modellkezelési fiókok létrehozásához.
 - [Batch AI](https://github.com/Azure/BatchAI) Python SDK-t és az Azure CLI
     - Hajtsa végre a következő szakaszai a [Batch AI receptek információs](https://github.com/Azure/BatchAI/tree/master/recipes):
         - "Előfeltételek"

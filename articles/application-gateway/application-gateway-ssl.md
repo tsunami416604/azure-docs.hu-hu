@@ -1,6 +1,6 @@
 ---
-title: Konfigurálja az SSL - Azure Application Gateway - kiszervezés klasszikus PowerShell |} Microsoft Docs
-description: Ez a cikk ismerteti az Azure klasszikus telepítési modell segítségével kiszervezése SSL Alkalmazásátjáró létrehozásához nyújt útmutatást
+title: Konfigurálja az SSL-kiszervezési – az Azure Application Gateway – klasszikus PowerShell |} A Microsoft Docs
+description: Ez a cikk utasításait követve hozzon létre egy application gateway SSL-lel kiszervezheti a klasszikus Azure üzemi modell használatával
 documentationcenter: na
 services: application-gateway
 author: vhorne
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: victorh
-ms.openlocfilehash: e620730b86d648c1ac9db7a9e6faa7a2d206b46e
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 782e5c4b33cc62ab5af80e823dc63b3e79a707b3
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33205380"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46980525"
 ---
-# <a name="configure-an-application-gateway-for-ssl-offload-by-using-the-classic-deployment-model"></a>SSL kiszervezési Alkalmazásátjáró konfigurálása a klasszikus telepítési modell segítségével
+# <a name="configure-an-application-gateway-for-ssl-offload-by-using-the-classic-deployment-model"></a>Application gateway SSL-alapú kiszervezés konfigurálása a klasszikus üzemi modell használatával
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](application-gateway-ssl-portal.md)
 > * [Azure Resource Manager PowerShell](application-gateway-ssl-arm.md)
-> * [Az Azure klasszikus PowerShell](application-gateway-ssl.md)
-> * [Azure CLI 2.0](application-gateway-ssl-cli.md)
+> * [Klasszikus Azure PowerShell](application-gateway-ssl.md)
+> * [Azure CLI](application-gateway-ssl-cli.md)
 
 Az Azure Application Gateway konfigurálható úgy, hogy leállítsa a Secure Sockets Layer (SSL) munkamenetét az átjárónál, így elkerülhetők a költséges SSL visszafejtési feladatok a webfarmon. Az SSL-alapú kiszervezés emellett leegyszerűsíti az előtér-kiszolgáló számára webalkalmazás telepítését és kezelését.
 
@@ -35,28 +35,28 @@ Az Azure Application Gateway konfigurálható úgy, hogy leállítsa a Secure So
 
 1. Telepítse az Azure PowerShell-parancsmagok legújabb verzióját a Webplatform-telepítővel. A [Letöltések lap](https://azure.microsoft.com/downloads/) **Windows PowerShell** szakaszából letöltheti és telepítheti a legújabb verziót.
 2. Ellenőrizze, hogy rendelkezik-e működő virtuális hálózattal és hozzá tartozó érvényes alhálózattal. Győződjön meg arról, hogy egy virtuális gép vagy felhőalapú telepítés sem használja az alhálózatot. Az Application Gateway-nek egyedül kell lennie a virtuális hálózat alhálózatán.
-3. A kiszolgálókat, amelyeket az alkalmazás átjáró használatához konfigurálnia kell létezik, vagy a végpont létrehozott virtuális hálózatban vagy egy nyilvános IP-cím vagy a hozzárendelt virtuális IP-cím (VIP).
+3. A kiszolgálókat, az application gateway használatára konfigurál a kell létezik, vagy a virtuális hálózatban, és a egy nyilvános IP-címmel vagy a hozzárendelt virtuális IP-címet (VIP) létrehozott végpontokkal rendelkezik.
 
-Alkalmazásátjáró SSL kiszervezési konfigurálásához kövesse az alábbi lépéseket, a megadott sorrendben:
+SSL-alapú kiszervezés konfigurálása az application gateway-en, a következő lépéseket a megadott sorrendben:
 
-1. [Alkalmazásátjáró létrehozása](#create-an-application-gateway)
+1. [Application gateway létrehozása](#create-an-application-gateway)
 2. [SSL-tanúsítványok feltöltése](#upload-ssl-certificates)
 3. [Az átjáró konfigurálása](#configure-the-gateway)
-4. [Állítsa be az átjáró konfigurálása](#set-the-gateway-configuration)
-5. [Az átjáró elindítása](#start-the-gateway)
-6. [Az átjáró állapotának megerősítése](#verify-the-gateway-status)
+4. [Az átjáró konfigurációjának beállítása](#set-the-gateway-configuration)
+5. [Indítsa el az átjárót](#start-the-gateway)
+6. [Az átjáró állapotának ellenőrzése](#verify-the-gateway-status)
 
 ## <a name="create-an-application-gateway"></a>Application Gateway létrehozása
 
-Létrehozhatja az átjárót, adja meg a `New-AzureApplicationGateway` parancsmag, az értékeket a saját cserélje le. Az átjáró használati díjának felszámolása ekkor még nem kezdődik el. A használati díj felszámolása egy későbbi lépésnél kezdődik, amikor az átjáró sikeresen elindul.
+Az átjáró létrehozásához írja be a `New-AzureApplicationGateway` parancsmagot, és cserélje le az értékeket saját. Az átjáró használati díjának felszámolása ekkor még nem kezdődik el. A használati díj felszámolása egy későbbi lépésnél kezdődik, amikor az átjáró sikeresen elindul.
 
 ```powershell
 New-AzureApplicationGateway -Name AppGwTest -VnetName testvnet1 -Subnets @("Subnet-1")
 ```
 
-Ellenőrzése, hogy az átjáró hozták létre, megadhatja a `Get-AzureApplicationGateway` parancsmag.
+Ellenőrzése, hogy az átjáró létrehozásának, megadhatja a `Get-AzureApplicationGateway` parancsmagot.
 
-A minta **leírás**, **InstanceCount**, és **GatewaySize** opcionális paraméterek. Az alapértelmezett érték **InstanceCount** van **2**, a legnagyobb értékű **10**. Az alapértelmezett érték **GatewaySize** van **Közepes**. Kis és nagy más elérhető értékek. **Virtualip értékek** és **DnsName** jelennek meg az üres, mert az átjáró még nem kezdődött meg. Ezek az értékek jönnek létre, miután az átjáró a futó állapotot.
+A mintában **leírás**, **InstanceCount**, és **GatewaySize** opcionális paraméterek. Az alapértelmezett érték a **InstanceCount** van **2**, maximális értéke pedig a **10**. Az alapértelmezett érték a **GatewaySize** van **Közepes**. Kis és nagy más elérhető értékek. **VirtualIPs** és **DnsName** jelennek meg üres, mert az átjáró még nem kezdődött meg. Ezeket az értékeket jönnek létre, miután az átjáró futó állapotba kerül.
 
 ```powershell
 Get-AzureApplicationGateway AppGwTest
@@ -64,17 +64,17 @@ Get-AzureApplicationGateway AppGwTest
 
 ## <a name="upload-ssl-certificates"></a>SSL-tanúsítványok feltöltése
 
-Adja meg `Add-AzureApplicationGatewaySslCertificate` a kiszolgálói tanúsítvány PFX formátumban feltölteni az Alkalmazásátjáró. A tanúsítvány nevét a felhasználó által választott név, és az Alkalmazásátjáró belül egyedieknek kell lenniük. Ezt a tanúsítványt ezt a nevet a tanúsítvány az alkalmazás-átjárón összes felügyeleti művelet is hivatkozik.
+Adja meg `Add-AzureApplicationGatewaySslCertificate` feltölteni az application gateway a tanúsítvány PFX formátumban. A tanúsítvány nevét egy felhasználó által választott név, és az application gateway egyedinek kell lennie. Ezt a tanúsítványt az összes tanúsítvány műveletek az application gateway az ezen a néven hivatkozik.
 
-Az alábbi minta-parancsmagot szemlélteti. Cserélje le a mintában szereplő értékekkel saját.
+Az alábbi minta-parancsmagot szemlélteti. Cserélje le az értékeket a minta saját.
 
 ```powershell
 Add-AzureApplicationGatewaySslCertificate  -Name AppGwTest -CertificateName GWCert -Password <password> -CertificateFile <full path to pfx file>
 ```
 
-A következő érvényesítse a tanúsítvány feltöltése. Adja meg a `Get-AzureApplicationGatewayCertificate` parancsmag.
+Ezután ellenőrizze a tanúsítvány feltöltése. Adja meg a `Get-AzureApplicationGatewayCertificate` parancsmagot.
 
-A következő példában a parancsmag az első sorban, a kimeneti követi:
+A következő minta bemutatja a parancsmag első sorát, a kimenet követ:
 
 ```powershell
 Get-AzureApplicationGatewaySslCertificate AppGwTest
@@ -91,28 +91,28 @@ State..........: Provisioned
 ```
 
 > [!NOTE]
-> A tanúsítvány jelszavát 4 – 12 karakterből áll, számjegyekből és betűkből álló között kell lennie. Speciális karakterek használata nem engedélyezett.
+> A tanúsítvány jelszavát és betűkből álló áll 4 és 12 karakter között kell lennie. Speciális karakterek használata nem engedélyezett.
 
 ## <a name="configure-the-gateway"></a>Az átjáró konfigurálása
 
-Egy alkalmazás átjáró konfigurálása több érték áll. Az értékek is kötődik együtt a konfiguráció létrehozásához.
+Egy application gateway-konfigurációt több értéket tartalmaz. Az értékeket is időpontjától együtt a konfiguráció létrehozásához.
 
 Az értékek a következők:
 
-* **Háttér-kiszolgálófiók készlet**: a háttér-kiszolgálók IP-címek listáját. A felsorolt IP-címek a virtuális hálózati alhálózat kell tartoznia, vagy nyilvános IP-cím vagy a virtuális IP-címnek kell lennie.
-* **Háttér-kiszolgálófiók Készletbeállítások**: minden készlethez beállítások, például a portot, a protokoll és a cookie-alapú kapcsolat van. Ezek a beállítások egy adott készlethez kapcsolódnak, és a készlet minden kiszolgálójára érvényesek.
-* **Előtér-port**: Ez a port nem nyilvános port meg van nyitva, az alkalmazás-átjárón. Amikor a forgalom eléri ezt a portot, a port átirányítja az egyik háttérkiszolgálóra.
-* **Figyelő**: A figyelő rendelkezik egy előtér-portot, a protokollt (Http vagy Https; ezek az értékek-és nagybetűk), és az SSL-tanúsítvány neve (ha konfigurálása az SSL-kiszervezés).
-* **A szabály**: A szabály van kötve, a figyelő és a háttér-kiszolgálófiók készletben, és határozza meg, melyik háttér-kiszolgálófiók készlet át tudja irányítani a forgalmat, a találatok, amikor egy adott figyelő. Jelenleg csak a *basic* szabály támogatott. A *basic* szabály a ciklikus időszeleteléses terheléselosztás.
+* **Háttér-kiszolgálókészlet**: a háttér-kiszolgálók IP-címek listáját. Megadott IP-címek a virtuális hálózat alhálózatához kell tartozniuk, vagy egy nyilvános IP-cím vagy a virtuális IP-címet kell lennie.
+* **Háttér-kiszolgálókészlet beállításai**: minden készletnek vannak beállításai, például port, protokoll vagy cookie-alapú affinitás. Ezek a beállítások egy adott készlethez kapcsolódnak, és a készlet minden kiszolgálójára érvényesek.
+* **Előtérbeli port**: A port az application gateway-en megnyitott nyilvános port. Amikor a forgalom eléri ezt a portot, a port átirányítja az egyik háttérkiszolgálóra.
+* **Figyelő**: A figyelőt tartalmaz egy előtérbeli porttal, egy protokollal (Http vagy https előtaggal; megkülönböztetésével), és az SSL-tanúsítvány neve (ha az SSL-alapú kiszervezés konfigurálása).
+* **A szabály**: A szabály összeköti a figyelőt és a háttérkiszolgáló-készletet, és meghatározza, melyik háttérkiszolgáló-készletet a forgalmat, ha elér egy adott figyelőt. Jelenleg csak a *basic* szabály támogatott. A *basic* szabály a ciklikus időszeleteléses terheléselosztás.
 
 **További konfigurációs megjegyzések**
 
-Az SSL-tanúsítványok konfigurálásához **Https**-re kell módosítani a **HttpListener** protokollját (megkülönböztetve a kis- és nagybetűket). Adja hozzá a **SslCert** elem **HttpListener** neve szerepel az érték a [feltöltése SSL-tanúsítványok](#upload-ssl-certificates) szakasz. Az előtér-port frissíteni kell, hogy **443-as**.
+Az SSL-tanúsítványok konfigurálásához **Https**-re kell módosítani a **HttpListener** protokollját (megkülönböztetve a kis- és nagybetűket). Adja hozzá a **SslCert** elem **HttpListener** értékre van állítva a használt ugyanazzal a névvel, a [töltse fel az SSL-tanúsítványok](#upload-ssl-certificates) szakaszban. Az előtérbeli portot frissíteni kell, hogy **443-as**.
 
-**Ahhoz, hogy a cookie-alapú kapcsolat**: annak érdekében, hogy egy ügyfél kérelmet mindig van irányítva az azonos virtuális gép a webfarm Alkalmazásátjáró konfigurálhatja. Ennek megvalósítása érdekében beszúrása egy munkamenetcookie-t, amely lehetővé teszi, hogy az átjáró megfelelően irányítja a forgalmat. A cookie-alapú affinitás engedélyezéséhez a **CookieBasedAffinity** paraméter beállítása legyen **Enabled** a **BackendHttpSettings** elemen belül.
+**Cookie-alapú affinitás engedélyezéséhez**: konfigurálhatja az application gateway, győződjön meg arról, hogy érkező kérelmet mindig van irányítva a webfarm ugyanazon virtuális Géphez. Ennek érdekében a szúrjon be egy munkamenetcookie-t, amely lehetővé teszi az átjáró számára a forgalom megfelelő irányítását. A cookie-alapú affinitás engedélyezéséhez a **CookieBasedAffinity** paraméter beállítása legyen **Enabled** a **BackendHttpSettings** elemen belül.
 
-A konfigurációs hogyan hozhat létre, vagy hozzon létre egy konfigurációs objektumot, vagy egy konfigurációs XML-fájl használatával.
-A konfiguráció létrehozásához egy konfigurációs XML-fájl használatával, adja meg az alábbi minta:
+A konfiguráció hozhatnak létre, vagy egy konfigurációs objektumot hoz létre, vagy egy konfigurációs XML-fájl használatával.
+A konfiguráció létrehozására egy konfigurációs XML-fájl használatával, adja meg a következő mintát:
 
 
 ```xml
@@ -162,9 +162,9 @@ A konfiguráció létrehozásához egy konfigurációs XML-fájl használatával
 </ApplicationGatewayConfiguration>
 ```
 
-## <a name="set-the-gateway-configuration"></a>Állítsa be az átjáró konfigurálása
+## <a name="set-the-gateway-configuration"></a>Az átjáró konfigurációjának beállítása
 
-A következő lépésként állítsa be az Application Gateway-t. Megadhatja a `Set-AzureApplicationGatewayConfig` parancsmag és egy konfigurációs objektum vagy egy konfigurációs XML-fájlt.
+A következő lépésként állítsa be az Application Gateway-t. Megadhatja a `Set-AzureApplicationGatewayConfig` parancsmagot egy konfigurációs objektumot, vagy egy konfigurációs XML-fájl.
 
 ```powershell
 Set-AzureApplicationGatewayConfig -Name AppGwTest -ConfigFile D:\config.xml
@@ -175,7 +175,7 @@ Set-AzureApplicationGatewayConfig -Name AppGwTest -ConfigFile D:\config.xml
 Az átjáró konfigurálása után adja meg a `Start-AzureApplicationGateway` parancsmag segítségével indítsa el az átjárót. Az Application Gateway használati díjának felszámolása az átjáró sikeres indítása után kezdődik.
 
 > [!NOTE]
-> A `Start-AzureApplicationGateway` parancsmag 15-20 percig is eltarthat.
+> A `Start-AzureApplicationGateway` parancsmag a 15-20 percet is igénybe vehet.
 >
 >
 
@@ -185,9 +185,9 @@ Start-AzureApplicationGateway AppGwTest
 
 ## <a name="verify-the-gateway-status"></a>Az átjáró állapotának ellenőrzése
 
-Adja meg a `Get-AzureApplicationGateway` parancsmagot, hogy az átjáró állapotának ellenőrzéséhez. Ha `Start-AzureApplicationGateway` sikeres volt az előző lépésben a **állapot** kell **futtató**, és a **virtualip értékek** és **DnsName** kell rendelkezik érvényes bejegyzésekkel.
+Adja meg a `Get-AzureApplicationGateway` parancsmagot, hogy az átjáró állapotának ellenőrzéséhez. Ha `Start-AzureApplicationGateway` sikeres volt az előző lépésben a **állapot** kell **futó**, és a **VirtualIPs** és **DnsName** kell érvényes bejegyzéssel kell.
 
-Ez a példa bemutatja, hogy működőképes, futó, és készen áll a forgalom érvénybe Alkalmazásátjáró:
+Ez a példa egy application gateway fut, és készen áll a tartó forgalmat felfelé is látható:
 
 ```powershell
 Get-AzureApplicationGateway AppGwTest
@@ -207,7 +207,7 @@ DnsName       : appgw-4c960426-d1e6-4aae-8670-81fd7a519a43.cloudapp.net
 
 ## <a name="next-steps"></a>További lépések
 
-További információ a terheléselosztás beállítások általában, lásd:
+További információ a terheléselosztó beállítások általában lásd:
 
 * [Azure Load Balancer](https://azure.microsoft.com/documentation/services/load-balancer/)
 * [Azure Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/)

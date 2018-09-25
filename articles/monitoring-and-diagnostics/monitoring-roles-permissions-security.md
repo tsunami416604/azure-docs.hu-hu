@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/27/2017
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: a30c6a8d02b46656a0d76cf8438bdf0b3361ae91
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: c99186d73886041d92bea38b0dd4dc17f55001e4
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39248461"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46977859"
 ---
 # <a name="get-started-with-roles-permissions-and-security-with-azure-monitor"></a>Szerepkörök, engedélyek és biztonság az Azure Monitor használatának első lépései
 Számos csapat kell szigorúan szabályozzák a hozzáférést a figyelési adatok és beállítások. Például, ha kizárólag a figyelést (a támogatási szakértők, fejlesztő és üzemeltető mérnököknek) dolgozó csapat tagjai rendelkezik, vagy ha egy felügyelt szolgáltató használ, érdemes hozzáférést biztosít nekik a csak figyelési adatok korlátozásával hozhat létre, módosít, vagy erőforrások törlése. Ez a cikk bemutatja, hogyan gyors beépített figyelési RBAC szerepkör alkalmazásához a felhasználónak az Azure-ban, vagy egy felhasználóhoz, aki csak korlátozott felügyeleti engedélyekre van szüksége a saját egyéni szerepkör létrehozása. Majd az Azure Monitor-kapcsolódó erőforrások és a bennük adatokhoz való hozzáférés korlátozásáról vonatkozó biztonsági szempontokat ismerteti.
@@ -171,6 +171,24 @@ Az event hubs használatával követheti hasonló mintát, de először hozzon l
    $role.AssignableScopes.Add("/subscriptions/mySubscription/resourceGroups/myResourceGroup/providers/Microsoft.ServiceBus/namespaces/mySBNameSpace")
    New-AzureRmRoleDefinition -Role $role 
    ```
+
+## <a name="monitoring-within-a-secured-virtual-network"></a>Biztonságos virtuális hálózaton belüli figyelése
+
+Az Azure Monitor az Azure-erőforrások engedélyezi a szolgáltatások biztosítása érdekében hozzá kell férnie. Ha szeretné az Azure-erőforrások figyelése közben továbbra is biztonságossá tétele őket a hozzáférés a nyilvános internetre, engedélyezheti a következő beállításokat.
+
+### <a name="secured-storage-accounts"></a>Biztonságos Storage-fiókok 
+
+Monitorozási adatok tárfiókba gyakran íródik. Győződjön meg arról, hogy az adatokat másolni a Storage-fiók nem érhető el a jogosulatlan felhasználók érdemes. A fokozott biztonság érdekében zárolhatja engedélyezése csak az arra jogosult erőforrásokhoz való hálózati hozzáférés és a egy storage-fiókot a Microsoft services megbízható access egy storage-fiók használata a "kijelölt hálózatok" korlátozásával.
+![Az Azure Storage beállításai párbeszédpanel](./media/monitoring-roles-permissions-security/secured-storage-example.png) Azure Monitor tekinteni egy ilyen "megbízható Microsoft-szolgáltatások", ha engedélyezi a megbízható Microsoft-szolgáltatások, a biztonságos tároló eléréséhez, az Azure monitor hozzáférhet a titkosított tárfiókba; engedélyezése diagnosztikai naplók az Azure Monitor tevékenységnapló és metrikák írása a Storage-fiók ezen védett körülmények között. Ezzel is engedélyezi a Log Analyticsben, hogy biztonságos tároló naplóinak olvasására.   
+
+További információkért lásd: [hálózati, biztonsági és az Azure Storage](../storage/common/storage-network-security.md)
+ 
+### <a name="secured-virtual-networks-with-service-endpoints"></a>Védett virtuális hálózatokon a Szolgáltatásvégpontok 
+
+Virtuális hálózatok (Vnetek) lehetővé teszi, hogy korlátozzák a forgalmat, hogy kommunikáljon az Azure-erőforrások csak megadott forgalom. Megadhatja, hogy a Szolgáltatásvégpontok az Azure Monitor; tartalmazza a virtuális hálózat kiterjesztése Ez lehetővé teszi az erőforrások conitinue biztonságosan naplózási funkciót és mérőszámadatokat adatok küldése az Azure Monitor a virtuális hálózatok számára.  
+
+További információkért lásd: [virtuális hálózati végpont](../virtual-network/virtual-network-service-endpoints-overview.md). 
+
 
 ## <a name="next-steps"></a>További lépések
 * [További információ az RBAC és engedélyek a Resource Managerben](../role-based-access-control/overview.md)

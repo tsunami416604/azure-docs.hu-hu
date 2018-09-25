@@ -15,16 +15,17 @@ ms.workload: big-compute
 ms.date: 04/05/2018
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: 85bda9e1a936f19a37be2f2c1c42f948cab727d6
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 98bd088d4995bd1444b059531dc5b19d0283f551
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43122467"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46965534"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Batch-metrikák, a riasztások és a naplókat a további diagnosztikai kiértékeléséhez és figyeléséhez
 
-Ez a cikk azt ismerteti, hogyan szolgáltatását használja, amely a Batch-fiók figyelése [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview-azure-monitor.md). Az Azure Monitor gyűjt [metrikák](../monitoring-and-diagnostics/monitoring-overview-metrics.md) és [diagnosztikai naplók](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) az erőforrásokat a Batch-fiókban. Összegyűjtheti, és számos módon figyelheti a Batch-fiókhoz, és diagnosztizálhatja a problémákat a feldolgozásukhoz. Beállíthatja úgy is [metrikákhoz kapcsolódó riasztások](../monitoring-and-diagnostics/monitoring-overview-alerts.md#alerts-on-azure-monitor-data) így értesítést kapjon a metrika eléri a megadott értéket. 
+ 
+Ez a cikk azt ismerteti, hogyan szolgáltatását használja, amely a Batch-fiók figyelése [Azure Monitor](../azure-monitor/overview.md). Az Azure Monitor gyűjt [metrikák](../monitoring/monitoring-data-collection.md#metrics) és [diagnosztikai naplók](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) az erőforrásokat a Batch-fiókban. Összegyűjtheti, és számos módon figyelheti a Batch-fiókhoz, és diagnosztizálhatja a problémákat a feldolgozásukhoz. Beállíthatja úgy is [metrikákhoz kapcsolódó riasztások](../monitoring-and-diagnostics/monitoring-overview-alerts.md) így értesítést kapjon a metrika eléri a megadott értéket. 
 
 ## <a name="batch-metrics"></a>Batch-metrikák
 
@@ -64,7 +65,8 @@ Metrikariasztás konfigurálása a portálon:
 2. A **figyelés**, kattintson a **riasztási szabályok** > **metrikariasztás hozzáadása**.
 3. Válassza ki a metrika, egy riasztási feltétel (például ha egy metrika egy időszakban meghalad egy bizonyos értéket) és egy vagy több értesítés.
 
-A közel valós idejű riasztási használatával is konfigurálhatja a [REST API-val](https://docs.microsoft.com/rest/api/monitor/). További információkért lásd: [az újabb metrikákhoz kapcsolódó riasztások használata az Azure-szolgáltatásokhoz az Azure Portalon](../monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts.md)
+A közel valós idejű riasztási használatával is konfigurálhatja a [REST API-val](https://docs.microsoft.com/rest/api/monitor/). További információkért lásd: [riasztások – áttekintés](../monitoring-and-diagnostics/monitoring-overview-alerts.md)
+
 ## <a name="batch-diagnostics"></a>Batch-diagnosztika
 
 Diagnosztikai naplók az Azure-erőforrások, amelyek ismertetik az egyes erőforrások a művelet által kibocsátott információkat tartalmaznak. A Batch gyűjtse össze a következő naplók kapcsolódnak:

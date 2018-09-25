@@ -9,14 +9,14 @@ ms.service: sql-database
 ms.prod_service: sql-database, sql-data-warehouse
 ms.custom: security
 ms.topic: conceptual
-ms.date: 09/07/2018
+ms.date: 09/20/2018
 ms.author: vanto
-ms.openlocfilehash: 118911687326bfa938c7276337377e3d3cb66bf2
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 698014c24d6a3af3fb79980a07e25483554b1007
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44715397"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47042431"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-firewall-rules"></a>Az Azure SQL Database és az SQL Data Warehouse tűzfalszabályok 
 
@@ -75,7 +75,7 @@ Annak engedélyezéséhez, hogy az Azure-alkalmazások csatlakozhassanak az Azur
 > 
 
 ## <a name="creating-and-managing-firewall-rules"></a>Tűzfal-szabályok létrehozását és kezelését
-Az első kiszolgálószintű tűzfalbeállítás hozható létre a [az Azure portal](https://portal.azure.com/) vagy programozott módon [Azure PowerShell-lel](https://docs.microsoft.com/powershell/module/azurerm.sql), [Azure CLI-vel](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_create), vagy a [ REST API-val](https://docs.microsoft.com/rest/api/sql/firewallrules). A további kiszolgálószintű tűzfalszabályok ugyanezekkel a módszerekkel, vagy a Transact-SQL-lel hozhatók létre és kezelhetők. 
+Az első kiszolgálószintű tűzfalbeállítás hozható létre a [az Azure portal](https://portal.azure.com/) vagy programozott módon [Azure PowerShell-lel](https://docs.microsoft.com/powershell/module/azurerm.sql), [Azure CLI-vel](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create), vagy a [ REST API-val](https://docs.microsoft.com/rest/api/sql/firewallrules). A további kiszolgálószintű tűzfalszabályok ugyanezekkel a módszerekkel, vagy a Transact-SQL-lel hozhatók létre és kezelhetők. 
 
 > [!IMPORTANT]
 > Adatbázisszintű tűzfalszabályok csak hozhatók létre, és Transact-SQL használatával kezelhetők. 
@@ -167,11 +167,11 @@ New-AzureRmSqlServerFirewallRule -ResourceGroupName "myResourceGroup" `
 ## <a name="manage-firewall-rules-using-azure-cli"></a>Tűzfalszabályok kezelése az Azure CLI használatával
 | Parancsmag | Szint | Leírás |
 | --- | --- | --- |
-|[az sql server firewall-rule létrehozása](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_create)|Kiszolgáló|Létrehoz egy kiszolgálói tűzfalszabályt|
-|[az sql server firewall-rule list](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_list)|Kiszolgáló|A tűzfalszabályokat a kiszolgáló listákat|
-|[az sql server firewall-rule show](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_show)|Kiszolgáló|A részletek a tűzfalszabályok megjelenítése|
-|[az sql server firewall-rule update](/cli/azure/sql/server/firewall-rule##az_sql_server_firewall_rule_update)|Kiszolgáló|A tűzfalszabályok frissítése|
-|[az sql server firewall-rule delete](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_delete)|Kiszolgáló|Tűzfalszabály törlése|
+|[az sql server firewall-rule létrehozása](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create)|Kiszolgáló|Létrehoz egy kiszolgálói tűzfalszabályt|
+|[az sql server firewall-rule list](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-list)|Kiszolgáló|A tűzfalszabályokat a kiszolgáló listákat|
+|[az sql server firewall-rule show](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-show)|Kiszolgáló|A részletek a tűzfalszabályok megjelenítése|
+|[az sql server firewall-rule update](/cli/azure/sql/server/firewall-rule##az-sql-server-firewall-rule-update)|Kiszolgáló|A tűzfalszabályok frissítése|
+|[az sql server firewall-rule delete](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-delete)|Kiszolgáló|Tűzfalszabály törlése|
 
 Az alábbi példa egy kiszolgálószintű tűzfalszabályt az Azure CLI használatával állítja be: 
 

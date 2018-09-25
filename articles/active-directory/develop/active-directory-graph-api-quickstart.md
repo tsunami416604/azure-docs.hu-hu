@@ -1,9 +1,9 @@
 ---
-title: 'Gyors útmutató: az Azure AD Graph API |} A Microsoft Docs'
-description: Az Azure Active Directory Graph API programozás alapú hozzáférést biztosít az Azure AD-OData REST API-végpontokon keresztül. Alkalmazások a Azure AD Graph API segítségével hajthat végre létrehozása, olvasása, frissítése és törlése a directory-adatok és objektumok (CRUD) műveleteket.
+title: Az Azure AD Graph API használata
+description: Az Azure Active Directory (Azure AD) Graph API programozás alapú hozzáférést biztosít az Azure AD-OData REST API-végpontokon keresztül. Alkalmazások a Azure AD Graph API segítségével hajthat végre létrehozása, olvasása, frissítése és törlése a directory-adatok és objektumok (CRUD) műveleteket.
 services: active-directory
 documentationcenter: n/a
-author: mtillman
+author: CelesteDG
 manager: mtillman
 editor: ''
 tags: ''
@@ -11,28 +11,29 @@ ms.assetid: 9dc268a9-32e8-402c-a43f-02b183c295c5
 ms.service: active-directory
 ms.component: develop
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/02/2018
-ms.author: mtillman
+ms.date: 09/24/2018
+ms.author: celested
+ms.reviewer: sureshja
 ms.custom: aaddev
-ms.openlocfilehash: 3298b39fc92f6e5867900ed151149ff936e2733c
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 7b7f2133634a91b828d7e978c9041b12873fa3a1
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39492629"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46997216"
 ---
-# <a name="quickstart-for-the-azure-ad-graph-api"></a>Gyors útmutató: az Azure AD Graph API
-Az Azure Active Directory (AD) Graph API programozás alapú hozzáférést biztosít az Azure AD-OData REST API-végpontokon keresztül. Alkalmazások a Azure AD Graph API segítségével hajthat végre létrehozása, olvasása, frissítése és törlése a directory-adatok és objektumok (CRUD) műveleteket. Például használhatja az Azure AD Graph API az új felhasználó létrehozása, megtekintése vagy a felhasználó tulajdonságainak frissítése, felhasználó jelszavának módosítására, ellenőrizze a szerepkör alapú hozzáférés érdekében a csoporttagság letiltása vagy a felhasználó törlése. További információ az Azure AD Graph API-funkciók és alkalmazás-forgatókönyvek: [Azure AD Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog) és [Azure AD Graph API Előfeltételek](https://msdn.microsoft.com/library/hh974476.aspx). 
+# <a name="how-to-use-the-azure-ad-graph-api"></a>Útmutató: az Azure AD Graph API használata
+
+Az Azure Active Directory (Azure AD) Graph API programozás alapú hozzáférést biztosít az Azure AD-OData REST API-végpontokon keresztül. Alkalmazások a Azure AD Graph API segítségével hajthat végre létrehozása, olvasása, frissítése és törlése a directory-adatok és objektumok (CRUD) műveleteket. Például használhatja az Azure AD Graph API az új felhasználó létrehozása, megtekintése vagy a felhasználó tulajdonságainak frissítése, felhasználó jelszavának módosítására, ellenőrizze a szerepkör alapú hozzáférés érdekében a csoporttagság letiltása vagy a felhasználó törlése. További információ az Azure AD Graph API-funkciók és alkalmazás-forgatókönyvek: [Azure AD Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog) és [Azure AD Graph API Előfeltételek](https://msdn.microsoft.com/library/hh974476.aspx).
 
 > [!IMPORTANT]
 > Az Azure AD Graph API helyett ajánljuk a [Microsoft Graph](https://developer.microsoft.com/graph) használatát az Azure Active Directory erőforrásainak eléréséhez. A fejlesztési energiáinkat mostantól a Microsoft Graph-ra koncentráljuk, az Azure AD Graph API-hoz nem tervezünk további fejlesztéseket. Nagyon korlátozott azon forgatókönyvek száma, amelyeknél az Azure AD Graph API használata még elegendő. További információért tekintse meg a [Microsoft Graph vagy Azure AD Graph](https://dev.office.com/blogs/microsoft-graph-or-azure-ad-graph) blogbejegyzést az Office fejlesztői központjában.
-> 
-> 
 
 ## <a name="how-to-construct-a-graph-api-url"></a>Hogyan hozható létre egy Graph API URL-címe
+
 A Graph API-t directory adatok és objektumok (más szóval erőforrások vagy entitások), amelyre vonatkozóan szeretné CRUD-műveletek végrehajtása eléréséhez használható URL-címek alapján az Open Data (OData) protokollt. A Graph API-ban használt URL-címek négy fő részből állnak: a szolgáltatás legfelső szintű, a bérlőazonosító, az erőforrás elérési útja és a lekérdezési karakterlánc beállítások: `https://graph.windows.net/{tenant-identifier}/{resource-path}?[query-parameters]`. A példában az alábbi URL-cím érvénybe: `https://graph.windows.net/contoso.com/groups?api-version=1.6`.
 
 * **Fájlszolgáltatási gyökerén**: az Azure AD Graph API, a szolgáltatás legfelső szintű mindig van https://graph.windows.net.
@@ -41,12 +42,15 @@ A Graph API-t directory adatok és objektumok (más szóval erőforrások vagy e
 * **Lekérdezési paramétereket**: egy kérdőjelet (?) választja el az erőforrás elérési útja szakaszban a lekérdezési paraméterek szakaszban. Az Azure AD Graph API-ban minden kérelemhez szükséges az "api-verzió" lekérdezési paraméter. Az Azure AD Graph API-t is támogatja a következő OData-lekérdezés beállításai: **$filter**, **$orderby**, **$expand**, **$top**, és **$format**. A következő lekérdezési beállítások jelenleg nem támogatottak: **$count**, **$inlinecount**, és **$skip**. További információkért lásd: [támogatott lekérdezések, szűrők és lapozófájl-beállítások az Azure AD Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-supported-queries-filters-and-paging-options).
 
 ## <a name="graph-api-versions"></a>A Graph API-verziók
+
 Ez a verzió a Graph API-kérelem az "api-verzió" lekérdezési paraméter adható meg. A 1.5-ös és újabb verziók esetén az verzió numerikus érték; API-version = 1.6-os. Régebbi verziók esetében a következő formátumban: éééé-hh-nn; betartó dátum karakterlánc használata például api-version = 2013-11-08. Az előzetes verziójú funkciók használja a következő karakterláncot: "béta"; például api-version = beta. További információ a Graph API-verziók közötti különbségeket: [Azure AD Graph API-k verziókezelése](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-versioning).
 
 ## <a name="graph-api-metadata"></a>Graph API-metaadatok
+
 Vissza az Azure AD Graph API metaadatait tartalmazó fájl, vegye fel a "$metadata" szegmens után az URL-címet a példában a bérlőazonosító, a következő URL-címet adja vissza a metaadatokat a bemutató vállalat: `https://graph.windows.net/GraphDir1.OnMicrosoft.com/$metadata?api-version=1.6`. Megadhatja az URL-cím megtekintéséhez a metaadatok webböngésző címsorába. A visszaadott CSDL metaadat-dokumentum ismerteti az entitások és összetett típusok, azok tulajdonságait és a funkciók és a Graph API-t a kért verziója által elérhetővé tett műveletek. A legújabb verzióra a metaadatokat az api-version paraméter kihagyása adja vissza.
 
 ## <a name="common-queries"></a>Gyakori lekérdezések
+
 [Az Azure AD Graph API gyakori lekérdezések](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-supported-queries-filters-and-paging-options#CommonQueries) gyakori lekérdezések, amelyek használhatók az Azure AD Graph, többek között a címtárban lévő legfelső szintű erőforrások eléréséhez használható lekérdezések és műveletek végrehajtása a címtár-lekérdezések sorolja fel.
 
 Ha például `https://graph.windows.net/contoso.com/tenantDetails?api-version=1.6` értéket ad vissza a céges információk directory contoso.com.
@@ -75,6 +79,7 @@ Vegye figyelembe a következő szolgáltatásokat és az Azure AD Graph Explorer
 * Megjelenítés vagy egy miniatűr fényképre feltöltése nem támogatott.
 
 ## <a name="using-fiddler-to-write-to-the-directory"></a>A könyvtárba írást a Fiddler segítségével
+
 A rövid útmutató az alkalmazásában használhatja a Fiddler webes hibakereső eljárás szerint "write" az Azure AD-címtárral végzett műveletek végrehajtása. Például lekérése, és töltse fel a felhasználó profilfényképének (ez nem lehetséges az Azure AD Graph Explorer). További információk, valamint a Fiddler telepítéséhez lásd: [ http://www.telerik.com/fiddler ](http://www.telerik.com/fiddler).
 
 Az alábbi példában a Fiddler webes hibakereső használhatja "MyTestGroup" új biztonsági csoport létrehozása az Azure AD-címtárban.
@@ -89,8 +94,7 @@ Az alábbi példában a Fiddler webes hibakereső használhatja "MyTestGroup" ú
    
    > [!NOTE]
    > A tartomány nevét a saját Azure AD-címtár kell helyettesítse be {mytenantdomain}.
-   > 
-   > 
+
 4. Az alábbi Post legördülő mezőben írja be a következő HTTP-fejléc:
    
     ```
@@ -101,8 +105,7 @@ Az alábbi példában a Fiddler webes hibakereső használhatja "MyTestGroup" ú
    
    > [!NOTE]
    > Helyettesítse be a &lt;a hozzáférési jogkivonat&gt; a hozzáférési jogkivonattal az Azure AD-címtárhoz.
-   > 
-   > 
+
 5. Az a **kérelem törzse** mezőbe írja be a következő JSON-ra:
    
     ```
@@ -119,6 +122,6 @@ Az alábbi példában a Fiddler webes hibakereső használhatja "MyTestGroup" ú
 További információ az Azure AD-entitások és a gráf által feltárt típusok és Graph azokon végezhető műveleteket kapcsolatos információkat lásd: [az Azure AD Graph – REST API-referencia](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog).
 
 ## <a name="next-steps"></a>További lépések
+
 * Tudjon meg többet a [Azure AD Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog)
 * Tudjon meg többet [az Azure AD Graph API-Engedélyhatókörök](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes)
-

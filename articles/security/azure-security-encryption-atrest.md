@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/20/2018
 ms.author: barclayn
-ms.openlocfilehash: 2be65ba185ebc1ad8bde0cdf33f264351301d45a
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 71351a979e8bb443864c975b91539c527bea7f2a
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44051408"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47033430"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Az Azure Data Encryption inaktív
 
@@ -261,7 +261,7 @@ Kiszolgálói titkosítás támogatása jelenleg az SQL szolgáltatás transzpar
 | **Tárolási és adatbázis**        |                    |                    |                    |                    |                    |
 | Lemez (IaaS)                      | -                  | Igen, RSA 2048-bites  | Igen               | -                  |
 | Az SQL Server (IaaS)                | Igen                | Igen, RSA 2048-bites  | Igen                | Igen                |
-| Az Azure SQL Database (PaaS)        | Igen                | Igen, RSA 2048-bites  | -                  | Igen                |
+| Az Azure SQL-(adatbázis vagy adatraktár) | Igen                | Igen, RSA 2048-bites  | -                  | Igen                |
 | Az Azure Storage (Blobok blokk vagy lap) | Igen                | Igen, RSA 2048-bites  | -                  | Igen                |
 | Azure Storage (Files)            | Igen                | Igen, RSA 2048-bites  | -                  | -                  |
 | Az Azure Storage (táblák, üzenetsorok)   | Igen                | -                  | -                  | Igen                |

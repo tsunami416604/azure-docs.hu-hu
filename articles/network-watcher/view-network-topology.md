@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/09/2018
 ms.author: jdial
-ms.openlocfilehash: 1725a3d6a4eb82ca57078f648efa14866d2fe390
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: e5e9901d6265b48a7b57cdf2c146ebb623ad5c3d
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/04/2018
-ms.locfileid: "35927569"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46992202"
 ---
 # <a name="view-the-topology-of-an-azure-virtual-network"></a>Az Azure-beli virtuális hálózathoz a topológia megtekintése
 
@@ -52,7 +52,7 @@ Az ábrán látható erőforrások a virtuális hálózatban a hálózati össze
 
 A parancsok a következő lépések futtatható:
 - Az Azure Cloud shellben kiválasztásával **Kipróbálom** felső bármilyen parancs, jobb. Az Azure Cloud Shell olyan ingyenes interaktív kezelőfelület, amely rendelkezik közös Azure-eszközök előre telepítve és konfigurálva a fiókjával való használat.
-- A parancssori felület futtatásával a számítógépről. Ha futtatja a parancssori felület a számítógépről, a cikkben ismertetett lépések megkövetelése az Azure CLI 2.0.31-es verzió vagy újabb. A telepített verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése](/cli/azure/install-azure-cli). Ha helyileg futtatja az Azure CLI, is futtatni szeretné `az login` kapcsolat létrehozása az Azure-ral.
+- A parancssori felület futtatásával a számítógépről. Ha futtatja a parancssori felület a számítógépről, a cikkben ismertetett lépések megkövetelése az Azure CLI 2.0.31-es verzió vagy újabb. A telepített verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket. Ha helyileg futtatja az Azure CLI, is futtatni szeretné `az login` kapcsolat létrehozása az Azure-ral.
 
 A fióknak rendelkeznie kell a szükséges [engedélyek](required-rbac-permissions.md).
 

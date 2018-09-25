@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Ismerje meg, hogyan adatokat is módosítható előtt előrejelzések a Language Understanding (LUIS)
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: f3caac697bad0bdb1401e85ac032fe167c25e112
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 1aad540086764b1e2315d3b3e195c55ba5931e07
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45631259"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47036055"
 ---
 # <a name="data-alterations"></a>Adatok átalakítások
 A LUIS segítségével kezelheti az utterance (kifejezés) előtt vagy közben az előrejelzési módszert biztosít. Ezek közé tartozik a helyesírás-ellenőrzés és kijavítása prebuild datetimeV2 időzóna problémák kijavítása. 

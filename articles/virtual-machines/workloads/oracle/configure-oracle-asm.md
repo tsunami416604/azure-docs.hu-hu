@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: 4ba8a65064d907ee21b613aafe8c6ddf7ed41110
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 236809336975eec94d7decd9822fc9143ae19bfb
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39492858"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46981025"
 ---
 # <a name="set-up-oracle-asm-on-an-azure-linux-virtual-machine"></a>Oracle ASM beállítása Azure Linux virtuális gépen  
 
@@ -36,7 +36,7 @@ Az Azure-beli virtuális gépek egy teljes mértékben konfigurálható és ruga
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
-Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.4-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli). 
+Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.4-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli). 
 
 ## <a name="prepare-the-environment"></a>A környezet előkészítése
 
@@ -423,7 +423,7 @@ Oracle ASM konfigurálása szükséges a telepítés és konfiguráció befejez�
    cd .ssh
    ```
 
-5. Hozzon létre egy fájlt `authorized_keys`. Ebben a fájlban illessze be a kulcs tartalmát, és mentse a fájlt.
+5. Hozzon létre egy `authorized_keys` nevű fájlt. Ebben a fájlban illessze be a kulcs tartalmát, és mentse a fájlt.
 
    > [!NOTE]
    > A kulcsot kell tartalmaznia a karakterlánc `ssh-rsa`. Ezenkívül a kulcs a tartalmát egy egysoros szöveg kell lennie.

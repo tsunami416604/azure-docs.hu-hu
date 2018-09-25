@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/14/2017
 ms.author: dennisg
-ms.openlocfilehash: efd512395b49d3c274bb5aa409d1cbd527673659
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: 35cd773c2a30549dde10a73b2fbe6db1a0c8b34a
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43781887"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46989379"
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-linux"></a>Hálózati figyelő ügynök virtuálisgép-bővítmény linuxhoz
 
@@ -87,7 +87,7 @@ A következő JSON a Network Watcher-ügynök bővítmény sémáját jeleníti 
 
 Telepíthet egy Azure Resource Manager-sablon Azure-beli Virtuálisgép-bővítmények. A Network Watcher-ügynök bővítmény üzembe helyezéséhez használja a sablonban az előző json-sémájában.
 
-## <a name="azure-cli-10-deployment"></a>Az Azure CLI 1.0-s üzembe helyezése
+## <a name="azure-classic-cli-deployment"></a>Az Azure klasszikus parancssori felület üzembe helyezése
 
 A következő példa telepíti a Network Watcher-ügynök VM-bővítmény egy meglévő virtuális Gépet a klasszikus üzemi modellel üzembe helyezett:
 
@@ -96,7 +96,7 @@ azure config mode asm
 azure vm extension set myVM1 NetworkWatcherAgentLinux Microsoft.Azure.NetworkWatcher 1.4
 ```
 
-## <a name="azure-cli-20-deployment"></a>Az Azure CLI 2.0-s üzembe helyezése
+## <a name="azure-cli-deployment"></a>Az Azure CLI-telepítés
 
 A következő példa telepíti a Network Watcher-ügynök VM-bővítmény Resource Manager használatával telepített meglévő virtuális géphez:
 
@@ -110,7 +110,7 @@ az vm extension set --resource-group myResourceGroup1 --vm-name myVM1 --name Net
 
 Az Azure Portalon vagy Azure CLI használatával bővítmény központi telepítések állapotának adatait kérheti le.
 
-Az alábbi példa bemutatja a bővítmények központi telepítés állapotát az Azure CLI 1.0 használatával a klasszikus üzemi modellel üzembe helyezett virtuális gépek:
+Az alábbi példa bemutatja a központi telepítési állapot-bővítmények a klasszikus Azure parancssori felület használatával a klasszikus üzemi modellel üzembe helyezett virtuális gépek:
 
 ```azurecli
 azure config mode asm
@@ -122,7 +122,7 @@ Bővítmény végrehajtás kimenetének a rendszer naplózza a következő köny
 /var/log/azure/Microsoft.Azure.NetworkWatcher.NetworkWatcherAgentLinux/
 `
 
-Az alábbi példa bemutatja a NetworkWatcherAgentLinux bővítmény telepítési állapotát a virtuális gép Resource Managerrel üzembe helyezett, az Azure CLI 2.0 használatával:
+Az alábbi példa bemutatja a NetworkWatcherAgentLinux bővítmény telepítési állapotát a virtuális gép Resource Managerrel üzembe helyezett, az Azure CLI használatával:
 
 ```azurecli
 az vm extension show --name NetworkWatcherAgentLinux --resource-group myResourceGroup1 --vm-name myVM1

@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.date: 09/14/2018
 manager: craigg
 ms.author: carlrab
-ms.openlocfilehash: 93b017482006507d616d9125cd17fd2f14389d59
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 6c8790110b0ecb8ea7d38756661774b3526f7a7c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45983046"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46983395"
 ---
 # <a name="choosing-a-vcore-service-tier-compute-memory-storage-and-io-resources"></a>Virtuális mag szolgáltatásszint kiválasztása, számítási, memória, tárolási és i/o-erőforrások
 
 A Virtuálismag-alapú vásárlási modell lehetővé teszi, hogy egymástól függetlenül méretezheti a számítási és tárolási erőforrások, a helyszíni teljesítmény és optimalizálás ár. Lehetővé teszi hardvertől kiválasztása:
 - 4 – általános legfeljebb 24 logikai CPU-alapú Intel E5-2673 v3 (Haswell) 2,4 GHz-es processzor, a virtuális mag = 1 PP (fizikai mag), egy mag, 7 GB-os csatlakoztatott SSD
-- 5 – általános legfeljebb 80 logikai CPU-alapú Intel E5-2673 v4 (Broadwell) 2,3 GHz-es processzor, a virtuális mag = 1. LP (a hyper-szál), 5.1-es. GB / core, gyors eNVM SSD
+- 5 – általános legfeljebb 80 logikai CPU-alapú Intel E5-2673 v4 (Broadwell) 2,3 GHz-es processzor, a virtuális mag = 1. LP (a hyper-szál), egy 5.5-ös. GB / core, gyors eNVM SSD
 
 Virtuálismag-modell azt is lehetővé teszi, hogy [Azure Hybrid Use Benefitet az SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md) költségmegtakarítást biztosítanak.
 
@@ -30,19 +30,19 @@ A Virtuálismag-modell általános célú és a kritikus fontosságú üzleti sz
 
 Az alábbi táblázat segít a két szintek közötti különbségeket:
 
-||**Általános célú**|**Üzletileg kritikus**|
-|---|---|---|
-|A következőkre alkalmas|A legtöbb üzleti számítási feladathoz. Ajánlatok költségvetés-orientált elosztott és skálázható számítási és tárolási lehetőségek.|Magas I/O-igényű üzleti alkalmazások. Több elkülönített replika használatával ez biztosítja a legmagasabb hibatűrést.|
-|Compute|Gen4: 1-24 virtuális mag<br/>Gen5: 1 és 80 virtuális mag|Gen4: 1-24 virtuális mag<br/>Gen5: 1 és 80 virtuális mag|
-|Memory (Memória)|Gen4: 7 GB / mag<br>Gen5: 5.1 GB / mag | Gen4: 7 GB / mag<br>Gen5: 5.1 GB / mag |
-|Storage|[Prémium szintű távtároló](../virtual-machines/windows/premium-storage.md),<br/>Önálló adatbázis: 5 GB – 4 TB-ig<br/>Felügyelt példány: 32 GB – 8 TB |Helyi SSD-tárolóval<br/>Önálló adatbázis: 5 GB – 1 TB<br/>Felügyelt példány: 32 GB – 4 TB-ig |
-|IO-átviteli sebesség (becsült)|Önálló adatbázis: 500 IOPS-/ virtuális mag és 7000-es maximális IOPS</br>Felügyelt példány: Függ [fájl méretét](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes)|5000 IOPS magonként 200000 maximális iops|
-|Rendelkezésre állás|1 replika, nincs olvasási szintű|3 replika, 1 [olvasási szintű replika](sql-database-read-scale-out.md),<br/>zóna redundáns magas rendelkezésre ÁLLÁS|
-|Biztonsági másolatok|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7 – 35 nap (alapértelmezés szerint 7 nap)|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7 – 35 nap (alapértelmezés szerint 7 nap)|
-|A memóriában|–|Támogatott|
+||**Általános célú**|**Üzletileg kritikus**|**Nagy kapacitású (előzetes verzió)**|
+|---|---|---|---|
+|A következőkre alkalmas|A legtöbb üzleti számítási feladathoz. Ajánlatok költségvetés-orientált elosztott és skálázható számítási és tárolási lehetőségek.|Magas I/O-igényű üzleti alkalmazások. Több elkülönített replika használatával ez biztosítja a legmagasabb hibatűrést.|A legtöbb üzleti célú a rugalmasan skálázható a tárolás és olvasási szintű követelmények|
+|Compute|Gen4: 1-24 virtuális mag<br/>Gen5: 1 és 80 virtuális mag|Gen4: 1-24 virtuális mag<br/>Gen5: 1 és 80 virtuális mag|Gen4: 1-24 virtuális mag<br/>Gen5: 1 és 80 virtuális mag|
+|Memory (Memória)|Gen4: 7 GB / mag<br>Gen5: 5.5-ös GB / mag | Gen4: 7 GB / mag<br>Gen5: 5.5-ös GB / mag |Gen4: 7 GB / mag<br>Gen5: 5.5-ös GB / mag|
+|Storage|[Prémium szintű távtároló](../virtual-machines/windows/premium-storage.md),<br/>Önálló adatbázis: 5 GB – 4 TB-ig<br/>Felügyelt példány: 32 GB – 8 TB |Helyi SSD-tárolóval<br/>Önálló adatbázis: 5 GB – 4 TB-ig<br/>Felügyelt példány: 32 GB – 4 TB-ig |Rugalmas, automatikus növekedést tárolási igény szerint. Támogatja az akár 100 TB tárterület és más alkalmazásokhoz. Helyi SSD-tárhely a helyi puffer készlet cache és a helyi adatok tárolását. Az Azure távoli tárhely végső hosszú távú adatok tárolását. |
+|IO-átviteli sebesség (becsült)|Önálló adatbázis: 500 IOPS / virtuális mag a 7000-es maximális iops</br>Felügyelt példány: Függ [fájl méretét](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes)|A maximális iops-érték 200 000 magonként 5000 IOPS|TBD|
+|Rendelkezésre állás|1 replika, nincs olvasási szintű|3 replika, 1 [olvasási szintű replika](sql-database-read-scale-out.md),<br/>zóna redundáns magas rendelkezésre ÁLLÁS|?|
+|Biztonsági másolatok|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7 – 35 nap (alapértelmezés szerint 7 nap)|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7 – 35 nap (alapértelmezés szerint 7 nap)|pillanatkép-alapú biztonsági mentés az Azure távoli tároló és a helyreállításokat ezeket a pillanatképeket használni a gyors helyreállítás. A biztonsági mentéseket azonnali, és nincs hatással a számítási i/o-teljesítményét. Visszaállítások rendkívül gyors, és nem az üzemeltetés mérete (percben nem óra/nap).|
+|A memóriában|Nem támogatott|Támogatott|Nem támogatott|
 |||
 
-További információkért lásd: [virtuális mag erőforráskorlátok Singelton adatbázis](sql-database-vcore-resource-limits-single-databases.md) és [virtuális mag erőforráskorlátok a felügyelt példány](sql-database-managed-instance.md#vcore-based-purchasing-model). 
+További információkért lásd: [virtuális mag erőforráskorlátok egyetlen adatbázis](sql-database-vcore-resource-limits-single-databases.md) és [virtuális mag erőforráskorlátok a felügyelt példány](sql-database-managed-instance.md#vcore-based-purchasing-model). 
 
 > [!IMPORTANT]
 > Ha a számítási kapacitás kevesebb mint 1 virtuális magra van szüksége, használja a DTU-alapú vásárlási modell.
@@ -51,6 +51,7 @@ Lásd: [SQL Database: gyakori kérdések](sql-database-faq.md) kapcsolatos gyako
 
 ## <a name="storage-considerations"></a>A tárterülettel kapcsolatos szempontok
 
+### <a name="general-purpose-and-business-critical-service-tiers"></a>Általános célú és az üzletileg kritikus szolgáltatási szintek
 A következőket ajánljuk figyelmébe:
 - A lefoglalt tárolót adatfájlok (MDF) és a naplófájlok fájlok (LDF) használja.
 - Minden önálló adatbázis az adatbázis maximális méretét, egy alapértelmezett 32 GB maximális mérettel számítási mérete támogatja.
@@ -70,12 +71,22 @@ A jelenlegi teljes mérete MDF és az LDF-monitorozásához használja [sp_space
 > [!IMPORTANT]
 > Bizonyos körülmények között szükség lehet az adatbázis nem használt terület felszabadítását zsugorítani. További információkért lásd: [kezelése az Azure SQL Database területe](sql-database-file-space-management.md).
 
+### <a name="hyperscale-service-tier-preview"></a>Nagy kapacitású szolgáltatási szint (előzetes verzió)
+
+Storage szolgáltatás nagy kapacitású adatbázis automatikus által felügyelt. Tárolási igényével együtt növekszik szükséges. "Végtelen" naplótároló a gyors Azure premium storage SSD-kkel rendelkező nincs szükség gyakori rendszernapló csonkolása.
+
 ## <a name="backups-and-storage"></a>Biztonsági mentés és tárolás
+
+### <a name="general-purpose-and-business-critical-service-tiers"></a>Általános célú és az üzletileg kritikus szolgáltatási szintek
 
 Az adatbázis biztonsági másolatait lefoglalta a pont támogatja az idő-visszaállítás (PITR) és [hosszú távú adatmegőrzést (LTR)](sql-database-long-term-retention.md) SQL Database képességeit. Ez a tároló lefoglalt külön-külön az egyes adatbázisok, és két külön adatbázis-díj terheli. 
 
 - **PITR**: önálló adatbázis biztonsági másolatait másolja [RA-GRS tároló](../storage/common/storage-designing-ha-apps-with-ragrs.md) automatikusan. A tároló mérete dinamikusan növeli, amikor az új biztonsági mentéseket hoz létre.  A tárolót a heti teljes biztonsági mentésekhez, a napi differenciális biztonsági mentésekhez, illetve a tranzakciónaplók 5 percenként másolt biztonsági másolataihoz használja a rendszer. A tárhelyhasználat attól függ, hogy az adatbázis és a megőrzési időszak a változási gyakoriság. Beállíthatja, hogy minden egyes adatbázis 7 és 35 nap közötti, egy különálló megőrzési ideje. Egy minimális tárolókapacitás egyenlő 1 x-re az adatok méretének külön díjfizetés nélkül van megadva. A legtöbb adatbázisok esetében ez a mennyiség ez elegendő 7 nap a biztonsági mentések tárolásához.
 - **Az LTR**: SQL-adatbázis a teljes biztonsági mentések hosszú távú megőrzésének konfigurálása akár 10 évig lehetőséget kínál. Az LTR-szabályzat engedélyezve van, ha a következő biztonsági másolatai RA-GRS tároló automatikusan, de szabályozhatja, hogy milyen gyakran a biztonsági másolatok másolódnak. A különböző megfelelőségi követelménynek megfelel, heti, havi és/vagy éves biztonsági mentések különböző megőrzési időtartamú választhat. Ez a konfiguráció meghatározzuk, mennyi tárhelyre lesz az LTR biztonsági mentéseket. Használhatja az LTR-díjkalkulátor LTR tárolási költségek becsléséhez. További információkért lásd: [Hosszú távú megőrzés](sql-database-long-term-retention.md).
+
+### <a name="hyperscale-service-tier-preview"></a>Nagy kapacitású szolgáltatási szint (előzetes verzió)
+
+pillanatkép-alapú biztonsági mentés az Azure távoli tároló és a helyreállításokat ezeket a pillanatképeket használni a gyors helyreállítás. A biztonsági mentéseket azonnali, és nincs hatással a számítási i/o-teljesítményét. Visszaállítások rendkívül gyors, és nem az üzemeltetés mérete (percben nem óra/nap).
 
 ## <a name="azure-hybrid-use-benefit"></a>Azure Hybrid Use Benefit
 

@@ -1,6 +1,6 @@
 ---
 title: Linux rendszerű virtuális gép létrehozása az Azure-ban több hálózati adapterrel rendelkező |} A Microsoft Docs
-description: Ismerje meg, hogyan hozhat létre Linux rendszerű virtuális gép több hálózati adapter csatlakozik az Azure CLI 2.0-s vagy a Resource Manager-sablonok használatával.
+description: Ismerje meg, hogyan hozhat létre Linux rendszerű virtuális gép több hálózati adapter csatlakozik az Azure CLI vagy a Resource Manager-sablonok használatával.
 services: virtual-machines-linux
 documentationcenter: ''
 author: iainfoulds
@@ -14,21 +14,20 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/07/2018
 ms.author: iainfou
-ms.openlocfilehash: 77feb52a4ba2013bd6ec0afcd30a20f05227031e
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 4982de352af2ce33f4dbf6dba00ff9296cc9b873
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42054506"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46999751"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-in-azure-with-multiple-network-interface-cards"></a>Hogyan hozhat létre Linux rendszerű virtuális gép az Azure-ban több hálózati kártyák
-Létrehozhat egy virtuális gépet (VM) az Azure-ban, amely rendelkezik csatlakoztatott több virtuális hálózati adapter (NIC). Gyakran előfordul, hogy az előtér- és háttér-kapcsolat vagy egy figyelési vagy biztonsági mentési megoldás számára kijelölt hálózat különböző alhálózatokon. Ez a cikk részletesen csatlakozik, több hálózati adapterrel rendelkező virtuális gép létrehozása és hozzáadása, vagy távolítsa el a hálózati adapterek meglévő virtuális gépről. Különböző [Virtuálisgép-méretek](sizes.md) támogatja a hálózati adapterek különböző számú, tehát ennek megfelelően az a virtuális gép méretezéséhez.
 
-Ez a cikk részletesen bemutatja az Azure CLI 2.0 használatával több hálózati adapterrel rendelkező virtuális gép létrehozásához. Az [Azure CLI 1.0-s](multiple-nics-nodejs.md) verziójával is elvégezheti ezeket a lépéseket.
 
+Ez a cikk részletesen bemutatja az Azure CLI használatával több hálózati adapterrel rendelkező virtuális gép létrehozásához.
 
 ## <a name="create-supporting-resources"></a>Hozzon létre a támogató erőforrások
-Telepítse a legújabb [Azure CLI 2.0](/cli/azure/install-az-cli2) , és jelentkezzen be az Azure-fiók használatával [az bejelentkezési](/cli/azure/reference-index#az_login).
+Telepítse a legújabb [Azure CLI-vel](/cli/azure/install-az-cli2) , és jelentkezzen be az Azure-fiók használatával [az bejelentkezési](/cli/azure/reference-index#az_login).
 
 A következő példákban cserélje le a példa a paraméter nevét a saját értékeire. Példa paraméterneveket foglalt *myResourceGroup*, *mystorageaccount*, és *myVM*.
 
@@ -104,7 +103,7 @@ az vm create \
 Útválasztási táblázatok hozzáadása a vendég operációs rendszer által ismertetett lépéseket követve [a vendég operációs rendszer konfigurálása több hálózati adapterrel](#configure-guest-os-for- multiple-nics).
 
 ## <a name="add-a-nic-to-a-vm"></a>A hálózati adapter hozzáadása egy virtuális Géphez
-Az előző lépésekben létrehozott egy virtuális Gépet több hálózati adapterrel. Hálózati adapter is egy meglévő virtuális Gépet az Azure CLI 2.0 használatával adhat hozzá. Különböző [Virtuálisgép-méretek](sizes.md) támogatja a hálózati adapterek különböző számú, tehát ennek megfelelően az a virtuális gép méretezéséhez. Ha szükséges, [virtuális gép átméretezése](change-vm-size.md).
+Az előző lépésekben létrehozott egy virtuális Gépet több hálózati adapterrel. Hálózati adapter is hozzá egy meglévő virtuális Gépet az Azure CLI használatával. Különböző [Virtuálisgép-méretek](sizes.md) támogatja a hálózati adapterek különböző számú, tehát ennek megfelelően az a virtuális gép méretezéséhez. Ha szükséges, [virtuális gép átméretezése](change-vm-size.md).
 
 Hozzon létre egy másik hálózati Adaptert a [az network nic létrehozása](/cli/azure/network/nic#az_network_nic_create). A következő példában létrehozunk egy hálózati Adaptert *myNic3* a háttérbeli alhálózat és hálózati biztonsági csoport az előző lépésekben létrehozott csatlakozik:
 

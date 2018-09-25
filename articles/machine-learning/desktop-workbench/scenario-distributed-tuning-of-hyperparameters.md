@@ -11,14 +11,19 @@ ms.author: dmpechyo
 manager: mwinkle
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.date: 09/20/2017
-ms.openlocfilehash: 920b019640df9d2da174101e2b1b90dfd4da6f56
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ROBOTS: NOINDEX
+ms.openlocfilehash: f74889cdf727bc132723d16df295849769001ce9
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45578735"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46951967"
 ---
 # <a name="distributed-tuning-of-hyperparameters-using-azure-machine-learning-workbench"></a>Az Azure Machine Learning Workbench használatával hiperparaméterek elosztott hangolása
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 
 Ebből a forgatókönyvből megtudhatja, hogyan használhatja az Azure Machine Learning Workbench horizontális felskálázás, gépi tanulási algoritmusok scikit megvalósító hiperparaméterek beállítása – ismerje meg az API-t. Bemutatjuk, hogyan konfigurálhatja és használhatja egy távoli Docker-tárolóban és a Spark-fürtöt, egy végrehajtási háttérrendszer hiperparaméterek finomhangoláshoz.
 
@@ -38,7 +43,7 @@ Rács search használatával a kereszt-ellenőrzés időigényes lehet. Ha egy o
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Egy [Azure-fiók](https://azure.microsoft.com/free/) (az ingyenes próbaverziók érhető el).
-* Egy telepített példánya [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) következő a [telepítési és létrehozási rövid útmutató](../service/quickstart-installation.md) a Workbench telepítése és-fiókok létrehozásához.
+* Egy telepített példánya [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) következő a [telepítési és létrehozási rövid útmutató](quickstart-installation.md) a Workbench telepítése és-fiókok létrehozásához.
 * Ebben a forgatókönyvben azt feltételezi, hogy futtatja az Azure Machine Learning Workbench Windows 10-es vagy MacOS rendszeren a helyileg telepített Docker-motor. 
 * A forgatókönyv egy távoli Docker-tárolót futtathat, üzembe helyezése az Ubuntu adatelemzési virtuális gép (DSVM) a következő a [utasításokat](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-provision-vm). Legalább 8 maggal és 28 Gb memóriával rendelkező virtuális gép használatát javasoljuk. Virtuális gépek példányainak D4 rendelkezik ilyen kapacitással. 
 * Ebben a forgatókönyvben a Spark-fürt futtatásához a Spark HDInsight-fürt üzembe helyezése a következő [utasításokat](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters). Javasoljuk, hogy a fürt a következő beállításokkal rendelkező fejlécet és a feldolgozó csomópontok:

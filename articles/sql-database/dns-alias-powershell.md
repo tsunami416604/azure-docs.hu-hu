@@ -1,62 +1,63 @@
 ---
-title: DNS-alias az Azure SQL PowerShell |} Microsoft Docs
-description: Például a New-AzureRMSqlServerDNSAlias PowerShell-parancsmagok lehetővé teszik új ügyfélkapcsolatok átirányítja egy másik Azure SQL Database-kiszolgálóhoz anélkül, hogy minden ügyfél-konfigurációt érint.
+title: A DNS-alias az Azure SQL PowerShell |} A Microsoft Docs
+description: Például a New-AzureRMSqlServerDNSAlias PowerShell-parancsmagok lehetővé teszik új ügyfélgépi kapcsolatokat átirányítása egy másik Azure SQL Database-kiszolgálóhoz, érintse meg minden olyan ügyfél-konfiguráció nélkül.
 keywords: DNS-sql-adatbázis
 services: sql-database
-author: MightyPen
-manager: craigg
 ms.service: sql-database
+ms.subservice: operations
 ms.devlang: PowerShell
 ms.topic: conceptual
-ms.date: 02/05/2018
-ms.reviewer: genemi;amagarwa;maboja
+author: DhruvMsft
 ms.author: dmalik
-ms.openlocfilehash: 0353f503ea099b1355b6879efe0748a377115474
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.reviewer: genemi,amagarwa,maboja
+manager: craigg
+ms.date: 02/05/2018
+ms.openlocfilehash: 809eea7787e63a0e7a2be457b47d05c0dca0d36e
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34644314"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47054557"
 ---
-# <a name="powershell-for-dns-alias-to-azure-sql-database"></a>A DNS-Alias az Azure SQL Database PowerShell
+# <a name="powershell-for-dns-alias-to-azure-sql-database"></a>Az Azure SQL Database DNS-alias PowerShell
 
-Ez a cikk bemutatja, hogyan kezelheti a DNS-alias az Azure SQL Database PowerShell parancsfájlt tartalmaz. A parancsprogram lefut a következő parancsmagokat, amelyek a következő műveleteket hajtja végre:
-
-
-A példakódban a parancsmagok a következők:
-- [Új AzureRMSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/AzureRM.Sql/New-AzureRmSqlServerDnsAlias?view=azurermps-5.1.1): egy új DNS-alias létrehozása az Azure SQL Database szolgáltatás rendszerben. Az alias az Azure SQL Database-kiszolgálóhoz 1 hivatkozik.
-- [Get-AzureRMSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/AzureRM.Sql/Get-AzureRmSqlServerDnsAlias?view=azurermps-5.1.1): Get, és az SQL adatbázis-kiszolgálót 1 rendelt összes DNS-alias listája.
-- [Set-AzureRMSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/AzureRM.Sql/Set-AzureRmSqlServerDnsAlias?view=azurermps-5.1.1): módosítja a kiszolgáló nevét, amely az alias konfigurálva van tekintse meg, SQL DB server 2 1-kiszolgálóról.
-- [Remove-AzureRMSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/AzureRM.Sql/Remove-AzureRmSqlServerDnsAlias?view=azurermps-5.1.1): a DNS-alias eltávolítása SQL adatbázis-kiszolgálót, 2, a-alias nevét.
+Ez a cikk azt mutatja be, hogyan kezelheti DNS-alias az Azure SQL Database PowerShell-parancsfájl. A szkript futtatása a következő parancsmagokat, amelyek a következő műveleteket hajtja végre:
 
 
-Az előző PowerShell-parancsmagok lettek hozzáadva a **AzureRm.Sql** 5.1.1-es verziójától kezdve modul.
+A példakódban alkalmazott parancsmagok a következők:
+- [Új-AzureRMSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/AzureRM.Sql/New-AzureRmSqlServerDnsAlias?view=azurermps-5.1.1): egy új DNS-alias létrehozása az Azure SQL Database szolgáltatás rendszerben. Az alias az Azure SQL Database-kiszolgáló 1 hivatkozik.
+- [A GET-AzureRMSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/AzureRM.Sql/Get-AzureRmSqlServerDnsAlias?view=azurermps-5.1.1): lekérés és listázás 1 SQL-adatbázis-kiszolgálóhoz rendelt összes DNS-aliasokat.
+- [A Set-AzureRMSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/AzureRM.Sql/Set-AzureRmSqlServerDnsAlias?view=azurermps-5.1.1): módosítja a kiszolgáló nevét, amely az alias konfigurálva van kiszolgálóról 1, 2. az SQL DB kiszolgáló hivatkoznak.
+- [A Remove-AzureRMSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/AzureRM.Sql/Remove-AzureRmSqlServerDnsAlias?view=azurermps-5.1.1): a DNS-alias eltávolítása az SQL DB kiszolgáló 2, az alias nevét.
+
+
+Az előző PowerShell-parancsmagok lettek hozzáadva a **azurerm.SQL-hez** modul 5.1.1-es verziótól kezdve.
 
 
 
 
-#### <a name="dns-alias-in-connection-string"></a>A kapcsolati karakterláncban a DNS-alias
+#### <a name="dns-alias-in-connection-string"></a>DNS-aliast a kapcsolati karakterlánc
 
-Adott Azure SQL Database-kiszolgálóhoz kapcsolódni, például az SQL Server Management Studio (SSMS) ügyfél biztosíthat igaz kiszolgáló neve helyett a DNS-alias nevét. A következő példa kiszolgáló karakterláncban a alias *bármely-egyedi-aliasnév* a felváltja a négy csomópont server karakterlánc első ponttal elválasztott csomópontja:
+Egy adott Azure SQL Database-kiszolgálóhoz csatlakozhat, például az SQL Server Management Studio (SSMS) ügyfél biztosíthat helyett a tényleges kiszolgáló neve DNS-alias nevét. A következő példa kiszolgáló karakterlánc alias *bármely-egyedi-alias-name* váltja fel a négy csomópontból álló kiszolgáló karakterlánc első ponttal elválasztott csomópont:
 - Példa kiszolgáló karakterlánc: `any-unique-alias-name.database.windows.net`.
 
 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ha azt szeretné, a bemutató cikkben megadott PowerShell-parancsprogram futtatásához, a következő előfeltételek vonatkoznak:
+Ha szeretne a bemutatóra ebben a cikkben megadott PowerShell-parancsprogram futtatása, a következő előfeltételek vonatkoznak:
 
-- Azure-előfizetések és fiókot. Kattintson egy ingyenes próbaverzióra [ https://azure.microsoft.com/free/ ] [ https://azure.microsoft.com/free/].
+- Egy Azure-előfizetések és -fiók. Az ingyenes próbaverzióra, kattintson a [ https://azure.microsoft.com/free/ ] [ https://azure.microsoft.com/free/].
 
-- Az Azure PowerShell-modult, parancsmaggal **New-AzureRMSqlServerDNSAlias**.
-    - Telepítéséhez vagy frissítéséhez, lásd: [telepítése Azure PowerShell modul][install-azurerm-ps-84p].
-    - Futtatás `Get-Module -ListAvailable AzureRM;` PowerShell\_ise.exe, a verzió található.
+- Az Azure PowerShell-modult, a parancsmag **a New-AzureRMSqlServerDNSAlias**.
+    - Telepítéshez vagy frissítéshez olvassa [Azure PowerShell-modul telepítését][install-azurerm-ps-84p].
+    - Futtatás `Get-Module -ListAvailable AzureRM;` a PowerShellben\_ise.exe, a verzió megkereséséhez.
 
 - Két Azure SQL Database-kiszolgálók.
 
 ## <a name="code-example"></a>Mintakód
 
-A következő PowerShell-példakód indításhoz literálértékek hozzárendelése több változót. A kódra, először módosítsa a rendszer valós értékekre helyőrző értékeket. Vagy csak is tanulmányozni a kódot. És a konzol kimenetét a kódot is.
+A következő PowerShell-példakód először konstansértékekkel hozzárendelése értékkel a változókat. A kód futtatásához először szerkesztenie kell az összes a helyőrzők értékeit a rendszer tényleges értékekre. Vagy csak akkor is tanulmánya a kódot. És a konzol kimenete a kód is.
 
 
 ```powershell
@@ -127,9 +128,9 @@ Remove-AzureRMSqlServerDNSAlias `
 ```
 
 
-#### <a name="actual-console-output-from-the-powershell-example"></a>Tényleges konzol kimenetét a PowerShell-példa
+#### <a name="actual-console-output-from-the-powershell-example"></a>A PowerShell-példa tényleges konzolkimenete
 
-A következő konzol kimeneti volt másolja, és egy tényleges futtató beillesztett.
+A következő konzolkimenet volt másolt és a egy tényleges futtató beillesztett.
 
 
 ```
@@ -164,7 +165,7 @@ gm-rg-dns-2       gm-sqldb-dns-2     unique-alias-name-food
 
 ## <a name="next-steps"></a>További lépések
 
-A DNS-Alias funkció teljes leírását az SQL Database, lásd: [DNS-alias az Azure SQL Database][dns-alias-overview-37v].
+A DNS-Alias funkció teljes ismertetése az SQL Database, lásd: [DNS-alias az Azure SQL Database][dns-alias-overview-37v].
 
 
 

@@ -11,23 +11,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/12/2018
+ms.date: 09/14/2018
 ms.author: bwren
-ms.openlocfilehash: 97cf5c06372d416037b875078809aebb7e633456
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: f40c8ed7eb6bfae958b3b57c4b7d525963ab9741
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45542837"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46955253"
 ---
 # <a name="data-ingestion-time-in-log-analytics"></a>A Log Analytics Data betöltési idő
-Azure Log Analytics az egy nagy méretű szolgáltatás, amely több ezer ügyfelünk egyre bővülő ütemben havonta terabájtnyi adatot küldő szolgál. Gyakran előfordulnak az adatokat a begyűjtésük után válnak elérhetővé a Log Analytics szükséges idő kapcsolatos kérdésekre. Ez a cikk ismerteti a különböző tényező befolyásolja, a késés.
+Az Azure Log Analytics egy nagy méretű szolgáltatás az Azure monitorban ellátó – több ezer ügyfelünk egyre bővülő ütemben havonta terabájtnyi adatot küld a. Gyakran előfordulnak az adatokat a begyűjtésük után válnak elérhetővé a Log Analytics szükséges idő kapcsolatos kérdésekre. Ez a cikk ismerteti a különböző tényező befolyásolja, a késés.
 
 ## <a name="typical-latency"></a>Átlagos késés
 Késés a létrehozott adatok a figyelt rendszeren és az idő, elemezhetők a Log Analytics előre hivatkozik. A tipikus késés betölteni az adatokat a Log Analytics az 2 és 5 perc között van. A megadott késése az adott adatok számos tényezőtől alábbi leírásban függően változhat.
 
-## <a name="sla-for-log-analytics"></a>A Log Analytics SLA
-A [Log Analytics szolgáltatói szerződés (SLA)](https://azure.microsoft.com/support/legal/sla/log-analytics/v1_1/) egy jogi kötés megállapodás, amely meghatározza, mikor-Microsoft visszatérítések ügyfelek, ha a szolgáltatás nem felel meg a céljait. Ez nem jellemző teljesítményét a rendszer, de a legrosszabb esetben, amelyek potenciális katasztrofális helyzetekben fiókok alapján.
 
 ## <a name="factors-affecting-latency"></a>Késés befolyásoló tényezők
 A teljes feldolgozási idő egy adott adatkészlet is kell bontani a következő magas szintű területeken. 

@@ -1,26 +1,29 @@
 ---
-title: Értékek lekérése app hitelesítés – az Azure SQL Database |} Microsoft Docs
-description: Hozzon létre egy egyszerű szolgáltatást kód SQL-adatbázis eléréséhez.
+title: Alkalmazás-hitelesítés – Azure SQL Database értékek beolvasása |} A Microsoft Docs
+description: Egyszerű szolgáltatás létrehozása a code-ból SQL-adatbázis eléréséhez.
 services: sql-database
-author: stevestein
-manager: craigg
 ms.service: sql-database
-ms.custom: develop apps
+ms.subservice: development
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: stevestein
 ms.author: sstein
-ms.openlocfilehash: f6d3599425669a6717a58bb1e5ac0af4b291d4d6
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.reviewer: ''
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: f9b66a430e1ca5b24853a5ff31ce13393b12b0c5
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34646334"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47063780"
 ---
-# <a name="get-the-required-values-for-authenticating-an-application-to-access-sql-database-from-code"></a>Az alkalmazás kódjában SQL-adatbázis eléréséhez szükséges értékek beolvasása
-Létrehozásához és kezeléséhez az SQL-adatbázis kódból regisztrálnia kell az az alkalmazás hol létrejöttek-e az Azure-erőforrások Azure Active Directory (AAD) tartományban az előfizetést.
+# <a name="get-the-required-values-for-authenticating-an-application-to-access-sql-database-from-code"></a>Code-ból SQL-adatbázis eléréséhez alkalmazás hitelesítéséhez szükséges értékek beolvasása
+Létrehozásához és kezeléséhez az SQL Database-kódból regisztrálnia kell az alkalmazását az Azure Active Directory (AAD) tartományban az előfizetésben, az Azure-erőforrások létrejöttek.
 
-## <a name="create-a-service-principal-to-access-resources-from-an-application"></a>Egy egyszerű szolgáltatásnév létrehozása hozzáférését az erőforrásokhoz az adott alkalmazásból
-Telepíteni kell a legújabb [Azure PowerShell](https://msdn.microsoft.com/library/mt619274.aspx) telepíteni és futtatni. Részletes információk: [Az Azure PowerShell telepítése és konfigurálása](/powershell/azureps-cmdlets-docs).
+## <a name="create-a-service-principal-to-access-resources-from-an-application"></a>Egyszerű szolgáltatás létrehozása erőforrások eléréséhez az alkalmazásból
+Szüksége lesz a legújabb [Azure PowerShell-lel](https://msdn.microsoft.com/library/mt619274.aspx) telepíteni és futtatni. Részletes információk: [Az Azure PowerShell telepítése és konfigurálása](/powershell/azureps-cmdlets-docs).
 
 A következő PowerShell-parancsprogram létrehozza az Active Directory (AD)-alkalmazást, és a C#-alkalmazás hitelesítéséhez szükséges egyszerű szolgáltatást. A parancsfájl kimenetének értékeire szükség lesz az előbb említett C#-mintához. Részletes információk: [Egyszerű szolgáltatás létrehozása erőforrások eléréséhez az Azure PowerShell használatával](../azure-resource-manager/resource-group-authenticate-service-principal.md).
 
@@ -66,6 +69,6 @@ A következő PowerShell-parancsprogram létrehozza az Active Directory (AD)-alk
 
 
 ## <a name="see-also"></a>Lásd még
-* [SQL-adatbázis létrehozása a C#](sql-database-get-started-csharp.md)
+* [SQL-adatbázis létrehozása a C# használatával](sql-database-get-started-csharp.md)
 * [Csatlakozás az SQL Database az Azure Active Directory-hitelesítés használatával](sql-database-aad-authentication.md)
 

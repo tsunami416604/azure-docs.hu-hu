@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/08/2018
 ms.author: cynthn
-ms.openlocfilehash: 7297633b5a8954eb39e0a40bfd45b02d3838a734
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 18d9a2dade271e61fa3db423da610a7f982aa47b
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42054903"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46949672"
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>A rendelkezésre állási zónák használó virtuális gép méretezési csoport létrehozása
 
@@ -65,7 +65,7 @@ Mikor hozzon létre egy méretezési csoportot egy egyetlen zónában, Ön szab�
 Rendelkezésre állási zónák használatára, a méretezési csoportot kell létrehozni egy [az Azure-régióban támogatott](../availability-zones/az-overview.md#regions-that-support-availability-zones). Létrehozhat egy méretezési csoportot, amely a rendelkezésre állási zónák használja az alábbi módszerek egyikével:
 
 - [Azure Portal](#use-the-azure-portal)
-- [Azure CLI 2.0](#use-the-azure-cli-20)
+- [Azure CLI](#use-the-azure-cli-20)
 - [Azure PowerShell](#use-azure-powershell)
 - [Az Azure Resource Manager-sablonok](#use-azure-resource-manager-templates)
 
@@ -77,7 +77,7 @@ Hozzon létre egy méretezési csoportot, amely egy rendelkezésre állási zón
 
 A méretezési és a támogató erőforrások, például az Azure load balancer és a nyilvános IP-cím jönnek létre a megadott zónában.
 
-## <a name="use-the-azure-cli-20"></a>Az Azure CLI 2.0 használata
+## <a name="use-the-azure-cli"></a>Az Azure parancssori felületének használata
 
 Hozzon létre egy méretezési csoportot, amely egy rendelkezésre állási zónát használ, a folyamat megegyezik a részletes a [első lépések a cikk](quick-create-cli.md). A rendelkezésre állási zónák használatához létre kell hoznia a méretezési csoportban egy támogatott Azure-régióban.
 

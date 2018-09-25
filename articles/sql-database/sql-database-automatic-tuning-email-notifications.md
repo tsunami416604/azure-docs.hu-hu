@@ -2,20 +2,22 @@
 title: Automatikus hangolási e-mail-értesítések a gyakorlati útmutató – Azure SQL Database |} A Microsoft Docs
 description: Az Azure SQL Database-lekérdezések automatikus hangolási e-mail-értesítések engedélyezése.
 services: sql-database
-author: danimir
-manager: craigg
-ms.reviewer: carlrab
 ms.service: sql-database
-ms.custom: monitor & tune
+ms.subservice: performance
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/19/2018
+author: danimir
 ms.author: v-daljep
-ms.openlocfilehash: 546a21c4be13fdd0d06e29253d73c6b67cb8c91c
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.reviewer: carlrab
+manager: craigg
+ms.date: 09/19/2018
+ms.openlocfilehash: 86639be7c4d934929272e6d578485bfc8bfb9cc9
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46498470"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47064101"
 ---
 # <a name="email-notifications-for-automatic-tuning"></a>Az automatikus hangolási e-mail-értesítések
 
@@ -205,12 +207,12 @@ A következő lépés, hogy az újonnan létrehozott ismétlődő folyamat hozz�
 1. Művelet, amely végrehajtja a hangolási javaslatokat beolvasni a PowerShell-parancsprogram létrehozása
 - Jelölje be "**+ új lépés**", majd a"**művelet hozzáadása**" ismétlődési folyamat ablaktáblájában
 - A Keresés mezőbe írja be "**automation**"és válassza a"**Azure Automation-feladat létrehozása**" a keresési eredmények közül
-- A létrehozás a feladat panelt konfigurálja a feladat tulajdonságai. Ehhez a konfigurációhoz, szüksége lesz az Azure-előfizetés Azonosítóját, erőforráscsoport és az Automation-fiók részletei **korábban rögzített** , a **Automation-fiók panelen**. Ez a szakasz az elérhető beállításokkal kapcsolatos további tudnivalókért lásd: [Azure Automation - feladat létrehozása](https://docs.microsoft.com/connectors/azureautomation/#Create_job).
+- A létrehozás a feladat panelt konfigurálja a feladat tulajdonságai. Ehhez a konfigurációhoz, szüksége lesz az Azure-előfizetés Azonosítóját, erőforráscsoport és az Automation-fiók részletei **korábban rögzített** , a **Automation-fiók panelen**. Ez a szakasz az elérhető beállításokkal kapcsolatos további tudnivalókért lásd: [Azure Automation - feladat létrehozása](https://docs.microsoft.com/connectors/azureautomation/#create-job).
 - Ez a művelet létrehozásának kattintva "**folyamat mentése**"
 
 2. Művelet lekérnie a kimenetet a végrehajtott PowerShell-parancsprogram létrehozása
 - Jelölje be "**+ új lépés**", majd a"**művelet hozzáadása**" ismétlődési folyamat ablaktáblájában
-- A keresés mezőtípusokra "**automation**"és válassza a"**Azure Automation – Get-feladat kimeneti**" a keresési eredmények közül. Ez a szakasz az elérhető beállításokkal kapcsolatos további tudnivalókért lásd: [Azure Automation – Get-feladat kimeneti](https://docs.microsoft.com/connectors/azureautomation/#Get_job_output).
+- A keresés mezőtípusokra "**automation**"és válassza a"**Azure Automation – Get-feladat kimeneti**" a keresési eredmények közül. Ez a szakasz az elérhető beállításokkal kapcsolatos további tudnivalókért lásd: [Azure Automation – Get-feladat kimeneti](https://docs.microsoft.com/connectors/azureautomation/#get-job-output).
 - Töltse fel mezők szükséges (hasonló az előző feladat létrehozása) – töltse ki az Azure-előfizetés Azonosítóját, erőforráscsoport, és az Automation-fiók (mivel az Automation-fiók panel be)
 - Kattintson a mezőbe "**Feladatazonosító**" számára a "**dinamikus tartalom**" menü jelenik meg. A belül ebből a menüből válassza a "**Feladatazonosító**".
 - Ez a művelet létrehozásának kattintva "**folyamat mentése**"

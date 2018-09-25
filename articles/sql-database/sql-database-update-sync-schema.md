@@ -2,7 +2,7 @@
 title: Az Azure SQL Data Sync sémamódosítások-replikáció automatizálása |} A Microsoft Docs
 description: Ismerje meg, hogyan automatizálhatja a replikálást az Azure SQL Data Sync sémamódosítások.
 services: sql-database
-ms.date: 06/19/2018
+ms.date: 09/20/2018
 ms.topic: conceptual
 ms.service: sql-database
 author: allenwux
@@ -10,12 +10,12 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.custom: data-sync
-ms.openlocfilehash: 6859784dcb3b3905459e83cfcb7812d7f23ac630
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 6e3f1710d342d97312cfd764726904c1d70ce199
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44721857"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47035028"
 ---
 # <a name="automate-the-replication-of-schema-changes-in-azure-sql-data-sync"></a>Az Azure SQL Data Sync sémamódosítások-replikáció automatizálása
 
@@ -30,7 +30,7 @@ Ez a cikk egy megoldás összes SQL Data Sync-végpontot automatikusan replikál
 Ebben a cikkben az ALTER TABLE egy sémaváltozás példaként, de más típusú sémaváltozások is működik ez a megoldás.
 
 > [!IMPORTANT]
-> Azt javasoljuk, hogy olvassa el ezt körültekintően, különösen a szakaszok kapcsolatos cikk [hibaelhárítás](#troubleshooting) és [egyéb szempontok](#other), automatizált séma módosítása replikáció végrehajtása előtt a szinkronizálási környezet. Azt javasoljuk, hogy olvasási [szinkronizálja az adatokat több felhőalapú és helyszíni adatbázisban az SQL Data Sync szolgáltatással](sql-database-sync-data.md). Egyes adatbázis-műveletek megszakadhat a jelen cikkben ismertetett megoldás. Az SQL Server és a Transact-SQL ismerete további fiókdíjat kell végezzen hibakeresést.
+> Azt javasoljuk, hogy olvassa el ezt körültekintően, különösen a szakaszok kapcsolatos cikk [hibaelhárítás](#troubleshoot) és [egyéb szempontok](#other), automatizált séma módosítása replikáció végrehajtása előtt a szinkronizálási környezet. Azt javasoljuk, hogy olvasási [szinkronizálja az adatokat több felhőalapú és helyszíni adatbázisban az SQL Data Sync szolgáltatással](sql-database-sync-data.md). Egyes adatbázis-műveletek megszakadhat a jelen cikkben ismertetett megoldás. Az SQL Server és a Transact-SQL ismerete további fiókdíjat kell végezzen hibakeresést.
 
 ![Automatizálja a sémamódosítások](media/sql-database-update-sync-schema/automate-schema-changes.png)
 

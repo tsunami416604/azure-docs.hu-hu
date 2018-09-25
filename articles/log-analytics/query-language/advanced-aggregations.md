@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 661ff7c07ba2bb17eb5830b38bb39e1c3e80bb55
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 288af0eae50634f44d6af8c787b56112bb3119ff
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45602908"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46998593"
 ---
 # <a name="advanced-aggregations-in-log-analytics-queries"></a>A Log Analytics-lekérdezések speciális összesítések
 
@@ -34,7 +34,7 @@ Ez a cikk ismerteti az egyes Log Analytics-lekérdezések számára elérhető s
 ## <a name="generating-lists-and-sets"></a>Listák és a csoportok létrehozása
 Használhat `makelist` pivot adatok egy adott oszlopban lévő értékek sorrendje. Például előfordulhat, hogy szeretné a leggyakrabban használt sorrend események kerül sor a gépeken. Az adatok sorrendje EventIDs az összes olyan számítógépen forgáspont lényegében azt is. 
 
-```KQL
+```Kusto
 Event
 | where TimeGenerated > ago(12h)
 | order by TimeGenerated desc
@@ -50,7 +50,7 @@ Event
 
 Emellett hasznos csak egyedi értékek listájának létrehozásához. Ezt nevezzük a _beállítása_ és készíthet `makeset`:
 
-```KQL
+```Kusto
 Event
 | where TimeGenerated > ago(12h)
 | order by TimeGenerated desc
@@ -67,11 +67,12 @@ Például `makelist`, `makeset` is együttműködik rendezett adatok, és a diag
 ## <a name="expanding-lists"></a>Listák kibontása
 Más néven inverz működésének `makelist` vagy `makeset` van `mvexpand`, amely kibővíti a sorok értékek listáját. Kibővítheti, hogy a dinamikus oszlopok, mind a JSON-t, és a tömb bármennyi. Például, hogy sikerült ellenőrizni a *szívverés* tábla adatokat küldő számítógépek szívverés az elmúlt egy órában küldött megoldásokhoz:
 
-```KQL
+```Kusto
 Heartbeat
 | where TimeGenerated > ago(1h)
 | project Computer, Solutions
 ```
+
 | Computer | Megoldások | 
 |--------------|----------------------|
 | Számítógép1 | "security", "updates", "változáskövetési" |
@@ -81,23 +82,28 @@ Heartbeat
 
 Használat `mvexpand` egy külön sorban helyett egy vesszővel tagolt lista minden egyes érték megjelenítése:
 
-Szívverés |} ahol TimeGenerated > ago(1h) |} Projekt számítógép, split (megoldások, ",") |} mvexpand megoldások
+```Kusto
+Heartbeat
+| where TimeGenerated > ago(1h)
+| project Computer, split(Solutions, ",")
+| mvexpand Solutions
 ```
-| Computer | Solutions | 
+
+| Computer | Megoldások | 
 |--------------|----------------------|
-| computer1 | "security" |
-| computer1 | "updates" |
-| computer1 | "changeTracking" |
-| computer2 | "security" |
-| computer2 | "updates" |
-| computer3 | "antiMalware" |
-| computer3 | "changeTracking" |
+| Számítógép1 | "security" |
+| Számítógép1 | "updates" |
+| Számítógép1 | "Change tracking" |
+| számítógép2 | "security" |
+| számítógép2 | "updates" |
+| számítógép3 | "kártevőirtó" |
+| számítógép3 | "Change tracking" |
 | ... | ... | ... |
-```
+
 
 Ezt követően az `makelist` újra elemek csoportosítása együtt, és ezúttal megoldásonként számítógépek listájának megtekintéséhez:
 
-```KQL
+```Kusto
 Heartbeat
 | where TimeGenerated > ago(1h)
 | project Computer, split(Solutions, ",")
@@ -115,7 +121,7 @@ Heartbeat
 ## <a name="handling-missing-bins"></a>Hiányzik a bins kezelése
 Egy hasznos alkalmazásának `mvexpand` van szükség a hiányzó bins töltse ki alapértelmezett értékeket. Tegyük fel, hogy egy adott gép üzemideje szívverésével áttekintésével keres. Meg is át szeretné tekinteni a forrás, amely szívverés a _kategória_ oszlop. Normális esetben használjuk lenne egy egyszerű foglalják össze a következő utasítást:
 
-```KQL
+```Kusto
 Heartbeat
 | where TimeGenerated > ago(12h)
 | summarize count() by Category, bin(TimeGenerated, 1h)
@@ -131,7 +137,7 @@ Heartbeat
 
 Ezeket az eredményeket, ha a gyűjtő társított "2017-06-06T19:00:00Z" hiányzik, mert nincs minden Szívveréses adatokat az adott órában. Használja a `make-series` függvény üres gyűjtők egy alapértelmezett értéket rendelni. A művelet létrehoz egy extra tömb két oszlopot tartalmazó kategóriákhoz, egy az értékek és a egy megfelelő idő gyűjtők a sort:
 
-```KQL
+```Kusto
 Heartbeat
 | make-series count() default=0 on TimeGenerated in range(ago(1d), now(), 1h) by Category 
 ```
@@ -143,7 +149,7 @@ Heartbeat
 
 A harmadik eleme a *count_* tömbben 0 várt módon, és a megfelelő időbélyeg "2017-06-06T19:00:00.0000000Z" az a _TimeGenerated_ tömb. A tömb formátuma nehezen olvasható, ha. Használat `mvexpand` bontsa ki a tömbök és állítja elő a kimeneti által generált, ugyanazt a formátumot `summarize`:
 
-```KQL
+```Kusto
 Heartbeat
 | make-series count() default=0 on TimeGenerated in range(ago(1d), now(), 1h) by Category 
 | mvexpand TimeGenerated, count_
@@ -165,7 +171,7 @@ Heartbeat
 Gyakran előfordul, hogy válassza ki a különböző kritériumok alapján néhány egyedi entitások neve, és szűrjön rá, hogy entitáshalmazt le másik adatkészletet. Például előfordulhat, hogy ismert, hogy a hiányzó frissítések számítógépek keresése és azonosítása, amelyek ezeket a számítógépeket emelte ki az IP-címek:
 
 
-```KQL
+```Kusto
 let ComputersNeedingUpdate = toscalar(
     Update
     | summarize makeset(Computer)

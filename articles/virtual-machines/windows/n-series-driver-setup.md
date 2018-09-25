@@ -1,5 +1,5 @@
 ---
-title: Az Azure N-sorozat illesztőinek Windows |} A Microsoft Docs
+title: Windows Azure N-sorozatú GPU illesztőinek |} A Microsoft Docs
 description: Az N sorozatú virtuális gépek Windows Server vagy a Windows Azure-ban futó NVIDIA GPU-illesztők beállítása
 services: virtual-machines-windows
 documentationcenter: ''
@@ -13,17 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 06/19/2018
+ms.date: 09/24/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 50d9ea88afc0e7d96d71b2ab26c8a8489ae41fee
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: a4d259c7f9a139b3c31d96e75d588c7be162189c
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38719650"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47033257"
 ---
-# <a name="set-up-gpu-drivers-for-n-series-vms-running-windows"></a>Az N sorozatú virtuális gépek Windows rendszerű GPU-illesztők beállítása 
+# <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-windows"></a>Telepítse az NVIDIA GPU-illesztőprogramokat N-sorozatú virtuális gépeken futó Windows 
+
 Windows rendszerű Azure N-sorozatú virtuális gépek a GPU-funkciókkal kihasználásához NVIDIA GPU-illesztőprogramokat kell telepíteni. A [NVIDIA GPU illesztőprogramjának bővítmény](../extensions/hpccompute-gpu-windows.md) telepíti a megfelelő NVIDIA CUDA vagy GRID illesztőprogramok-N-sorozatú virtuális gépen. Telepítse, vagy a bővítmény az Azure portal vagy az eszközök, például az Azure PowerShell vagy az Azure Resource Manager-sablonok használata kezelheti. Tekintse meg a [NVIDIA GPU illesztőprogramjának bővítmény dokumentáció](../extensions/hpccompute-gpu-windows.md) támogatott operációs rendszerek és a telepítés lépéseit.
 
 Ha manuálisan telepíti a GPU-illesztőprogramokat, a cikk ismerteti a támogatott operációs rendszerek, az illesztőprogramok és a telepítés és ellenőrzés lépésein. Telepítési információk manuális illesztőprogram érhető el is [Linux rendszerű virtuális gépek](../linux/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
@@ -38,7 +39,7 @@ Alapvető adatait tartalmazza, a tárolási kapacitások és a lemez adatai: [GP
 
 2. Töltse le, csomagolja ki, és telepítse a Windows operációs rendszer támogatott illesztőprogramját.
 
-Azure virtuális gépeken NV újraindításra szükség az illesztőprogram telepítése után. A hálózati vezérlő virtuális gépek a számítógép újraindítását, nem szükséges.
+RÁCS illesztőprogramot a telepítés után a virtuális gép újraindításra szükség. CUDA illesztőprogramot a telepítés után a számítógép újraindítását, nem szükséges.
 
 ## <a name="verify-driver-installation"></a>Ellenőrizze az illesztőprogram telepítése
 
@@ -64,7 +65,7 @@ Telepítse a legújabb verziót 1.1-es HpcVMDrivers futtatására szolgáló bő
   ```
   További információkért lásd: [virtuálisgép-bővítmények és szolgáltatások Windows](extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
-Az RDMA hálózati forgalom Message Passing Interface (MPI) támogatja a futó alkalmazások [Microsoft MPI](https://msdn.microsoft.com/library/bb524831(v=vs.85).aspx) vagy az Intel MPI 5.x. 
+Az RDMA hálózati forgalom Message Passing Interface (MPI) támogatja a futó alkalmazások [Microsoft MPI](https://docs.microsoft.com/message-passing-interface/microsoft-mpi) vagy az Intel MPI 5.x. 
 
 
 ## <a name="next-steps"></a>További lépések

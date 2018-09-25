@@ -1,6 +1,6 @@
 ---
-title: Az Azure DNS az Azure CLI 2.0 használatával DNS-rekordok kezelése |} A Microsoft Docs
-description: Az Azure DNS-tartomány üzemeltetése esetén kezelése a DNS-rekordhalmazok és rekordok az Azure DNS szolgáltatásra. Műveletek rekordhalmazokat és rekordokat az összes CLI 2.0 parancsok.
+title: Az Azure CLI használatával az Azure DNS a DNS-rekordok kezelése |} A Microsoft Docs
+description: Az Azure DNS-tartomány üzemeltetése esetén kezelése a DNS-rekordhalmazok és rekordok az Azure DNS szolgáltatásra.
 services: dns
 documentationcenter: na
 author: vhorne
@@ -14,23 +14,23 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 05/15/2018
 ms.author: victorh
-ms.openlocfilehash: 41366f29ecf5dcd6ffe23148acd61100681620df
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 1f1ee4f69cc1ab656df04ed30cae6f4c3e55bfa7
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39174387"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46963815"
 ---
-# <a name="manage-dns-records-and-recordsets-in-azure-dns-using-the-azure-cli-20"></a>Kezelheti a DNS-rekordok és -rekordhalmazok az Azure DNS az Azure CLI 2.0 használatával
+# <a name="manage-dns-records-and-recordsets-in-azure-dns-using-the-azure-cli"></a>Kezelheti a DNS-rekordok és -rekordhalmazok az Azure DNS az Azure CLI használatával
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](dns-operations-recordsets-portal.md)
-> * [Azure CLI 2.0](dns-operations-recordsets-cli.md)
+> * [Azure CLI](dns-operations-recordsets-cli.md)
 > * [PowerShell](dns-operations-recordsets.md)
 
-Ez a cikk bemutatja, hogyan a DNS-zóna DNS-rekordok kezelése a platformfüggetlen Azure parancssori felület (CLI) 2.0-s, amely Windows, Mac és Linux használatával. DNS-rekordjait is kezelhetők [Azure PowerShell-lel](dns-operations-recordsets.md) vagy a [az Azure portal](dns-operations-recordsets-portal.md).
+Ez a cikk bemutatja, hogyan kezelheti a DNS-zóna DNS-rekordok használatával a platformfüggetlen Azure parancssori felület, amely Windows, Mac és Linux rendszereken érhető el. DNS-rekordjait is kezelhetők [Azure PowerShell-lel](dns-operations-recordsets.md) vagy a [az Azure portal](dns-operations-recordsets-portal.md).
 
-Ebben a cikkben szereplő példák feltételezik, hogy már [jelentkezett be, az Azure CLI 2.0 telepítve van, és létrehozott egy DNS-zónát](dns-operations-dnszones-cli.md).
+Ebben a cikkben szereplő példák feltételezik, hogy már [telepítve van az Azure CLI-jelentkezett be, és létrehozott egy DNS-zónát](dns-operations-dnszones-cli.md).
 
 ## <a name="introduction"></a>Bevezetés
 

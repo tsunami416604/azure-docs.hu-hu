@@ -16,18 +16,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/06/2016
 ms.author: rclaus
-ms.openlocfilehash: 10e39a205950d50794169e9bedaa65f480f1e9b5
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: 91e9cb6b436cc78a0c5bd4769d38622abda4c04d
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35756039"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46977570"
 ---
 # <a name="optimize-your-linux-vm-on-azure"></a>Linuxos virtuális gép optimalizálása az Azure-ban
 Linux rendszerű virtuális gépek (VM) a könnyű a parancssorból vagy a portálon. Ez az oktatóanyag bemutatja, hogyan annak beállítása, a Microsoft Azure platformon a teljesítmény optimalizálása érdekében. Ez a témakör egy Ubuntu Server rendszerű virtuális gép használja, de a Linux rendszerű virtuális gép használatával is létrehozhat [saját lemezképek sablonként](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).  
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ez a témakör azt feltételezi, hogy már rendelkezik egy működő Azure-előfizetés ([ingyenes próbaidőszakra](https://azure.microsoft.com/pricing/free-trial/)) és a már üzembe helyezett virtuális gépek az Azure-előfizetésben helyezi. Győződjön meg arról, hogy rendelkezik-e a legújabb [Azure CLI 2.0](/cli/azure/install-az-cli2) telepítve, és bejelentkezett az Azure-előfizetésbe [az bejelentkezési](/cli/azure/reference-index#az_login) előtt [hozzon létre egy virtuális Gépet](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Ez a témakör azt feltételezi, hogy már rendelkezik egy működő Azure-előfizetés ([ingyenes próbaidőszakra](https://azure.microsoft.com/pricing/free-trial/)) és a már üzembe helyezett virtuális gépek az Azure-előfizetésben helyezi. Győződjön meg arról, hogy rendelkezik-e a legújabb [Azure CLI-vel](/cli/azure/install-az-cli2) telepítve, és bejelentkezett az Azure-előfizetésbe [az bejelentkezési](/cli/azure/reference-index#az_login) előtt [hozzon létre egy virtuális Gépet](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 ## <a name="azure-os-disk"></a>Azure-OS lemez
 Miután létrehozott egy Linux rendszerű virtuális gép az Azure-ban, két lemezt társítva van. **/ dev/sda** az operációsrendszer-lemezt, **/dev/sdb** az ideiglenes lemez.  Ne használja a fő operációsrendszer-lemez (**/dev/sda**) kivételével az operációs rendszer, mert a gyors Virtuálisgép-rendszerindítás ideje van optimalizálva, és nem biztosít a számítási feladatokhoz megfelelő teljesítmény. Egy vagy több lemez csatolása a virtuális gép első állandó szeretné az adatok nem optimalizált. 
@@ -42,7 +42,7 @@ A Premium Storage-lemez, ahol a gyorsítótár-beállítások lettek állítva, 
 * Ha **XFS**, a tiltsa le a csatlakoztatási lehetőséggel `nobarrier` (engedélyezése akadályozó tényezők, használja a kapcsolót `barrier`)
 
 ## <a name="unmanaged-storage-account-considerations"></a>Nem felügyelt tárfiók fiókokkal kapcsolatos megfontolások
-Az alapértelmezett műveletet, amikor egy virtuális Gépet hoz létre az Azure CLI 2.0 használatával, hogy az Azure Managed Disks.  Ezeket a lemezeket az Azure platform kezeli, és nincs szükség előkészítésre és helyen tárolja őket.  Nem felügyelt lemezek tárfiók szükséges, és néhány további teljesítmény szempontot kell figyelembe venni.  További információ a felügyelt lemezekről: [Azure Managed Disks – áttekintés](../windows/managed-disks-overview.md).  Az alábbi szakasz ismerteti a teljesítménnyel kapcsolatos megfontolások csak a nem felügyelt lemezek használata esetén.  Újra, az alapértelmezett és ajánlott tárolási megoldás, hogy a felügyelt lemezek használata.
+Az alapértelmezett műveletet, amikor egy virtuális Gépet hoz létre az Azure CLI-vel az Azure Managed Disks használata.  Ezeket a lemezeket az Azure platform kezeli, és nincs szükség előkészítésre és helyen tárolja őket.  Nem felügyelt lemezek tárfiók szükséges, és néhány további teljesítmény szempontot kell figyelembe venni.  További információ a felügyelt lemezekről: [Azure Managed Disks – áttekintés](../windows/managed-disks-overview.md).  Az alábbi szakasz ismerteti a teljesítménnyel kapcsolatos megfontolások csak a nem felügyelt lemezek használata esetén.  Újra, az alapértelmezett és ajánlott tárolási megoldás, hogy a felügyelt lemezek használata.
 
 Ha nem felügyelt lemezekkel rendelkező virtuális Gépet hoz létre, ellenőrizze, hogy csatlakoztassa a lemezeket a storage-fiókok hálózatbővítési hálózati késés minimalizálása érdekében és a virtuális géppel azonos régióban található.  Minden standard szintű tárfiók rendelkezik egy legfeljebb 20 k IOps és mérete 500 TB kapacitást.  Ez a korlát minden megfelelően működik körülbelül 40 kitett lemezekre, beleértve az operációsrendszer-lemez és bármely adatlemez hoz létre. A Premium Storage-fiókok esetében nem maximális IOps korlátozott, de 32 TB-os mérete korlátozva van. 
 

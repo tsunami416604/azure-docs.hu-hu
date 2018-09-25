@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 4/12/2018
 ms.author: dukek
 ms.component: activitylog
-ms.openlocfilehash: 9c1f4699f067ece3108813d28ff834c68f44316d
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: d267ffd5085c27c60e9eb229e2d9026fa83ef848
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40003831"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46998231"
 ---
 # <a name="azure-activity-log-event-schema"></a>Az Azure tevékenységnapló eseménysémája
 A **Azure-tevékenységnapló** , amely bármely Azure-ban bekövetkezett előfizetés-szintű eseményeit betekintést nyújt a bejelentkezés. Ez a cikk ismerteti a eseménysémája egy adatkategóriát. Az adatok sémája eltér attól függően, ha az adatok a portal, PowerShell, CLI-t, vagy közvetlenül a REST API és a segítségével olvas [streamelési adatok a storage vagy az Event Hubs használatával egy Naplóprofil](./monitoring-overview-activity-logs.md#export-the-activity-log-with-a-log-profile). Az alábbi példák a séma szerint a portal, PowerShell, CLI és REST API-n keresztül elérhetővé tett. Ezen tulajdonságok leképezése a [Azure diagnosztikai naplók séma](./monitoring-diagnostic-logs-schema.md) van megadva a cikk végén található.
@@ -192,6 +192,95 @@ Ebben a kategóriában a service health az Azure-ban bekövetkezett események r
 }
 ```
 Tekintse meg a [szolgáltatás állapotára vonatkozó értesítések](./monitoring-service-notifications.md) dokumentációjában, a tulajdonságok értékeit ismertető cikket.
+
+## <a name="resource-health"></a>Erőforrás állapota
+Ebben a kategóriában a az Azure-erőforrások előfordult resource health események a rekord tartalmazza. Itt jelennének meg ebbe a kategóriába tartozó esemény típusa például a "Virtuális gép állapot nem érhető el értékre módosult." Közelmúltbeli állapotesemények hozhat létre négy egészségügyi állapotok egyike: érhető el, nem érhető el, csökkentett teljesítményű és ismeretlen. Emellett a resource health-események csoportosíthatók, hogy a Platform vagy a felhasználó által kezdeményezett.
+
+### <a name="sample-event"></a>Mintaesemény
+
+```json
+{
+    "channels": "Admin, Operation",
+    "correlationId": "28f1bfae-56d3-7urb-bff4-194d261248e9",
+    "description": "",
+    "eventDataId": "a80024e1-883d-37ur-8b01-7591a1befccb",
+    "eventName": {
+        "value": "",
+        "localizedValue": ""
+    },
+    "category": {
+        "value": "ResourceHealth",
+        "localizedValue": "Resource Health"
+    },
+    "eventTimestamp": "2018-09-04T15:33:43.65Z",
+    "id": "/subscriptions/<subscription Id>/resourceGroups/<resource group>/providers/Microsoft.Compute/virtualMachines/<resource name>/events/a80024e1-883d-42a5-8b01-7591a1befccb/ticks/636716720236500000",
+    "level": "Critical",
+    "operationId": "",
+    "operationName": {
+        "value": "Microsoft.Resourcehealth/healthevent/Activated/action",
+        "localizedValue": "Health Event Activated"
+    },
+    "resourceGroupName": "<resource group>",
+    "resourceProviderName": {
+        "value": "Microsoft.Resourcehealth/healthevent/action",
+        "localizedValue": "Microsoft.Resourcehealth/healthevent/action"
+    },
+    "resourceType": {
+        "value": "Microsoft.Compute/virtualMachines",
+        "localizedValue": "Microsoft.Compute/virtualMachines"
+    },
+    "resourceId": "/subscriptions/<subscription Id>/resourceGroups/<resource group>/providers/Microsoft.Compute/virtualMachines/<resource name>",
+    "status": {
+        "value": "Active",
+        "localizedValue": "Active"
+    },
+    "subStatus": {
+        "value": "",
+        "localizedValue": ""
+    },
+    "submissionTimestamp": "2018-09-04T15:36:24.2240867Z",
+    "subscriptionId": "<subscription Id>",
+    "properties": {
+        "stage": "Active",
+        "title": "Virtual Machine health status changed to unavailable",
+        "details": "Virtual machine has experienced an unexpected event",
+        "healthStatus": "Unavailable",
+        "healthEventType": "Downtime",
+        "healthEventCause": "PlatformInitiated",
+        "healthEventCategory": "Unplanned"
+    },
+    "relatedEvents": []
+}
+```
+
+### <a name="property-descriptions"></a>A tulajdonság leírása
+| Elem neve | Leírás |
+| --- | --- |
+| csatornák | Mindig "rendszergazda, a művelet" |
+| correlationId | GUID, amely a karakterlánc-formátum. |
+| leírás |A figyelmeztetési esemény statikus szöveges leírása. |
+| eventDataId |A figyelmeztetési esemény egyedi azonosítója. |
+| category | Mindig Resource "Health" |
+| eventTimestamp |Időbélyeg, ha az esemény jött létre az Azure-szolgáltatás a megfelelő esemény kérelem feldolgozása. |
+| szint |Az esemény szintjét. A következő értékek egyikét: "Kritikus", "Error", "Figyelmeztetés", "Tájékoztatási szintű" és "Részletes" |
+| operationId |Az események, amelyek megfelelnek egy műveletre alkalmaztam között megosztott GUID. |
+| operationName |A művelet neve. |
+| resourceGroupName |Az erőforrást tartalmazó erőforráscsoport neve. |
+| erőforrás-szolgáltató neve |Mindig "Microsoft.Resourcehealth/healthevent/action." |
+| resourceType | Az erőforrás típusa, a Resource Health-esemény által érintett. |
+| resourceId | Az erőforrás-azonosító az érintett erőforrás neve. |
+| status |Az állapotesemény állapotát leíró karakterlánc. Értékek: aktív, megoldva, InProgress, frissítve. |
+| a részállapot | Általában a null riasztások esetén. |
+| submissionTimestamp |Időbélyeg, amikor az eseményt vált elérhetővé a lekérdezéséhez. |
+| subscriptionId |Az Azure előfizetés-azonosítójára. |
+| properties |Állítsa be a `<Key, Value>` párok (azaz egy szótárban), az esemény részleteit leíró.|
+| Properties.Title | Az erőforrás állapotát leíró felhasználóbarát karakterlánc. |
+| Properties.details | Felhasználóbarát karakterlánc, amely a hibára vonatkozó további részleteit ismerteti. |
+| properties.currentHealthStatus | Az aktuális állapotát az erőforrás. A következő értékek egyikét: "Elérhető", "Nem érhető el", "Csökkentett teljesítményű" és "Ismeretlen". |
+| properties.previousHealthStatus | Az erőforrás előző állapot. A következő értékek egyikét: "Elérhető", "Nem érhető el", "Csökkentett teljesítményű" és "Ismeretlen". |
+| properties.type | Állapotesemény erőforrás típusának leírása. |
+| Properties.Cause | A resource health esemény okának leírása. "UserInitiated" és "PlatformInitiated". |
+
 
 ## <a name="alert"></a>Riasztás
 Ez a kategória összes aktiválás az Azure-riasztások rekordot tartalmaz. Itt jelennének meg ebbe a kategóriába tartozó esemény típusa például a "százalékos processzorhasználatról a myVM már több mint 80-as az elmúlt 5 percben." Azure rendszerek különböző rendelkezik egy riasztási elv – valamilyen szabály meghatározása, és értesítést kaphat, ha a feltétel egyezik az szabályokat. Minden alkalommal, amikor egy támogatott Azure riasztástípus "aktiválja,", vagy értesítést hozhat létre, hogy a feltételek teljesülnek, egy rekord, az aktiválás szintén leküldéssel ebbe a kategóriába, a tevékenységnapló.

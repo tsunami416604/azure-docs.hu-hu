@@ -1,26 +1,25 @@
 ---
-title: Figyelés az Azure Database for postgresql-hez
-description: Ez a cikk ismerteti a monitorozási és riasztási az Azure Database for postgresql-hez, többek között a Processzor, a storage és a kapcsolat statisztikai mérőszámait.
+title: Figyelése és hangolása az Azure Database for postgresql-hez
+description: Ez a cikk ismerteti a figyelési és finomhangolási funkciókhoz az Azure Database for postgresql-hez.
 services: postgresql
 author: rachel-msft
 ms.author: raagyema
-manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
-ms.topic: article
-ms.date: 09/17/2018
-ms.openlocfilehash: 17b12514e32ad8d1548d834d72e0f7564fe78143
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.topic: conceptual
+ms.date: 09/24/2018
+ms.openlocfilehash: e29186d07d9a060e45ed051d6f7ed0ac81a5e15b
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45985779"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46982664"
 ---
-# <a name="monitoring-in-azure-database-for-postgresql"></a>Figyelés az Azure Database for postgresql-hez
-A kiszolgálók adatainak segítségével hibaelhárítása és optimalizálhatja a számítási feladatok számára. Azure Database for postgresql-hez különböző mérőszámokat, amelyek a PostgreSQL-kiszolgáló támogató erőforrásokban viselkedését betekintést biztosít. 
+# <a name="monitor-and-tune"></a>Figyelés és hangolás
+A kiszolgálók adatainak segítségével hibaelhárítása és optimalizálhatja a számítási feladatok számára. 
 
 ## <a name="metrics"></a>Mérőszámok
-Az összes Azure-metrikagyűjtéshez rendelkezik egy egy perces gyakoriságot, és mindegyik metrikát biztosít előzmények 30 nap. A metrikákhoz riasztásokat is beállíthatja. Lépésenkénti útmutatásért lásd: [riasztások beállítása](howto-alert-on-metric.md). Egyéb feladatok közé tartozik, automatizált műveletek, speciális analitikai végrehajtása és archiváláshoz előzmények. További információkért lásd: a [Azure metrikáinak áttekintésében](../monitoring-and-diagnostics/monitoring-overview-metrics.md).
+Azure Database for postgresql-hez különböző mérőszámokat, amelyek a PostgreSQL-kiszolgáló támogató erőforrásokban viselkedését betekintést biztosít. Mindegyik metrikát bocsásson ki egy egy perces gyakorisággal, és akár 30 napig előzmények rendelkezik. A metrikákhoz riasztásokat is beállíthatja. Lépésenkénti útmutatásért lásd: [riasztások beállítása](howto-alert-on-metric.md). Egyéb feladatok közé tartozik, automatizált műveletek, speciális analitikai végrehajtása és archiváláshoz előzmények. További információkért lásd: a [Azure metrikáinak áttekintésében](../monitoring-and-diagnostics/monitoring-overview-metrics.md).
 
 ### <a name="list-of-metrics"></a>Mérőszámok listája
 Ezek a metrikák érhetők el az Azure Database for postgresql-hez:
@@ -41,6 +40,14 @@ Ezek a metrikák érhetők el az Azure Database for postgresql-hez:
 |network_bytes_egress|Hálózat kimenő adatforgalma|Bájt|Kimenő hálózati forgalom az aktív kapcsolatok között.|
 |network_bytes_ingress|Hálózat bejövő adatforgalma|Bájt|Hálózati az aktív kapcsolatok között.|
 
+## <a name="query-store"></a>Lekérdezéstár
+[Query Store](concepts-query-store.md) nyilvános előzetes verziójú funkció, amely nyomon követi a lekérdezési teljesítményt idő többek között lekérdezés futásidejének statisztikai adatait, és várjon eseményeket. A funkció továbbra is fennáll, lekérdezés futásidejű teljesítményadatait nevű rendszer-adatbázisok **azure_sys** a query_store séma alapján. Szabályozhatja, hogy a gyűjtemény és az adatok különböző konfigurációs belül keresztül.
+
+## <a name="query-performance-insight"></a>Lekérdezési terheléselemző
+[Lekérdezési Terheléselemző](concepts-query-performance-insight.md) Query Store az Azure Portalon elérhető képi megjelenítésekhez együtt működik. Ezekbe a diagramokba engedélyezése elsődlegeskulcs-lekérdezések azonosíthatja, hogy hatással lehet a teljesítményre. Lekérdezési Terheléselemző nyilvános előzetes verzióban érhető el, és elérhető a **támogatás + hibaelhárítás** az Azure Database for PostgreSQL-kiszolgáló portáloldalán szakaszában.
+
+## <a name="performance-recommendations"></a>Teljesítménnyel kapcsolatos javaslatok
+A [teljesítménnyel kapcsolatos javaslatok](concepts-performance-recommendations.md) szolgáltatás lehetőségeket biztosít a számítási feladatok teljesítményének javítása azonosítja. Teljesítménnyel kapcsolatos javaslatok a nyilvános előzetes verziója biztosít, amelyek a számítási feladatok teljesítményének javítása érdekében új indexek létrehozására vonatkozó javaslatok. Index ajánlások előállításához, a szolgáltatás figyelembe veszi különféle adatbázis jellemzőit, beleértve a séma- és a számítási feladatok Query Store által jelentett módon. Után minden teljesítmény javaslat megvalósítása, ügyfelek kell teljesítménytesztelési ezeket a módosításokat hatásának vizsgálatában. 
 
 ## <a name="next-steps"></a>További lépések
 - Lásd: [riasztások beállítása](howto-alert-on-metric.md) riasztás létrehozása a metrika az útmutatást.

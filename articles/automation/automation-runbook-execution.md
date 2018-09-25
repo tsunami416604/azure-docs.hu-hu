@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 05/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6e449c1216fabf64da2b2abb59a7066fa30e332d
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: b577f697f4467656166b83ea78efdfe6d742941f
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45982980"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47032529"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Runbook végrehajtása az Azure Automationben
 
@@ -145,7 +145,8 @@ Ez a szolgáltatás szembeni nélkül, határozatlan ideig futó runbookok, mive
 
 Ha a runbook rendelkezik nincsenek ellenőrzőpontok, vagy a feladat nem érte el a az első ellenőrzőpont folyamatban előtt, majd újraindul az elejétől.
 
-A hosszan futó feladatok esetén ajánlott [hibrid runbook-feldolgozót](automation-hrw-run-runbooks.md#job-behavior) használni. A hibrid runbook-feldolgozókat nem korlátozza az igazságos megosztás, és nincs korlátozva, hogy mennyi ideig futhat egy runbook.
+A hosszan futó feladatok esetén ajánlott [hibrid runbook-feldolgozót](automation-hrw-run-runbooks.md#job-behavior) használni. A hibrid runbook-feldolgozókat nem korlátozza az igazságos megosztás, és nincs korlátozva, hogy mennyi ideig futhat egy runbook. A többi feladat [korlátok](../azure-subscription-service-limits.md#automation-limits) Azure próbakörnyezetbe lefordítja a és a hibrid Runbook-feldolgozók egyaránt érvényesek.
+
 
 Az Azure-ban, egy PowerShell-munkafolyamati forgatókönyv használ, amikor a runbook létrehozása, ha biztosítania kell, hogy a két ellenőrzőpontok közötti tevékenységeket futási időnek nem haladja meg a három óra. Szükség lehet az ellenőrzőpontokat hozzáadni a runbookhoz, győződjön meg arról, hogy azt nem eléri ezt a korlátot három óra vagy feloszthatja a hosszú futó műveletek. Például a runbook egy reindex előfordulhat, hogy végre nagy SQL-adatbázisba. Ha a egyetlen művelet nem fejeződik az igazságos elosztás időkorláton belül, majd a feladat a memóriából és indítani az elejétől. Ebben az esetben kell részekre a reindex művelet, például újraindexeléshez egy olyan táblát, egyszerre több lépésekre, és helyezze ellenőrzőpont után minden művelet, úgy, hogy a feladat sikerült folytatni a legutóbbi művelet befejezését követően.
 

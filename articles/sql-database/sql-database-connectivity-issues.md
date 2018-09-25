@@ -3,19 +3,22 @@ title: Egy SQL-csatlakozási hiba, átmeneti hiba javítása |} A Microsoft Docs
 description: Ismerje meg, hogyan elhárítása, diagnosztizálása és elkerülése az egy SQL-csatlakozási hiba vagy egy átmeneti hiba az Azure SQL Database-ben.
 keywords: SQL-kapcsolatot, kapcsolati karakterlánc, kapcsolódási problémák, átmeneti hiba, kapcsolódási hiba
 services: sql-database
-author: dalechen
-manager: craigg
 ms.service: sql-database
-ms.custom: develop apps
+ms.subservice: development
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 08/01/2018
+author: dalechen
 ms.author: ninarn
-ms.openlocfilehash: 1da4e8d94007653a43f187322c1d0e4077e337fa
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.reviewer: carlrab
+manager: craigg
+ms.date: 08/01/2018
+ms.openlocfilehash: f381eaad61c98228ea9be2665ebed5878b666317
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39398937"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47064237"
 ---
 # <a name="troubleshoot-diagnose-and-prevent-sql-connection-errors-and-transient-errors-for-sql-database"></a>SQL-csatlakozási hibák és átmeneti hibák elhárítása, diagnosztizálása és elkerülése az SQL Database szolgáltatásban
 Ez a cikk ismerteti, hogyan megelőzése, elhárítása, diagnosztizálása és csökkentheti a csatlakozási hibák és átmeneti hibák, amely az ügyfélalkalmazásban fordul elő, amikor interaktálnak az Azure SQL Database. Ismerje meg, hogyan konfigurálhatja az újrapróbálkozási logika, a kapcsolati karakterlánc összeállítása és további kapcsolati beállításokat.

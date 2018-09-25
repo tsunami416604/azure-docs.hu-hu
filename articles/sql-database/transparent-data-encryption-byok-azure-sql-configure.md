@@ -15,15 +15,15 @@ ms.service: sql-database
 ms.tgt_pltfrm: ''
 ms.devlang: azurecli, powershell
 ms.topic: conceptual
-ms.date: 06/28/2018
+ms.date: 09/20/2018
 ms.author: aliceku
 monikerRange: = azuresqldb-current || = azure-sqldw-latest || = sqlallproducts-allversions
-ms.openlocfilehash: 11e190e1a4d0309bdbdcb7a578fccaf84fabb8e3
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: 65f9384bb0ceedd6c2bde8ef513040e198ccc4d2
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45543777"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47036371"
 ---
 # <a name="powershell-and-cli-enable-transparent-data-encryption-using-your-own-key-from-azure-key-vault"></a>PowerShell és a parancssori felület: Azure Key vaultból saját kulcs használata transzparens adattitkosítás engedélyezése
 
@@ -35,11 +35,11 @@ Ez a cikk végigvezeti a transzparens adattitkosítás (TDE) egy SQL-adatbázis 
 - [Opcionális de javasolt] Rendelkezik egy hardveres biztonsági modul (HSM) vagy a helyi kulcs létrehozásához a TDE-Védőhöz megosztottkulcs-anyag helyi másolatát tárolja.
 - Rendelkeznie kell Azure PowerShell 4.2.0-s verzió vagy újabb telepítése és futtatása. 
 - Hozzon létre egy Azure Key Vault és a kulcs TDE használatára.
-   - [Key vault PowerShell-utasítások](https://docs.microsoft.com/azure/key-vault/key-vault-get-started)
-   - [Egy hardveres biztonsági modul (HSM) és a Key Vault használatára vonatkozó utasítások](https://docs.microsoft.com/azure/key-vault/key-vault-get-started#a-idhsmaif-you-want-to-use-a-hardware-security-module-hsm)
+   - [Key vault PowerShell-utasítások](../key-vault/key-vault-get-started.md)
+   - [Egy hardveres biztonsági modul (HSM) és a Key Vault használatára vonatkozó utasítások](../key-vault/key-vault-get-started.md#HSM)
  - A key vaultban kell rendelkeznie a TDE használható a következő tulajdonság:
-   - [helyreállítható törlés](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete)
-   - [A Key Vault helyreállítható törlés funkciójának használata PowerShell-lel](https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-powershell) 
+   - [helyreállítható törlés](../key-vault/key-vault-ovw-soft-delete.md)
+   - [A Key Vault helyreállítható törlés funkciójának használata PowerShell-lel](../key-vault/key-vault-soft-delete-powershell.md) 
 - A kulcs TDE használható a következő attribútumokkal kell rendelkeznie:
    - Lejárati dátum nélküli
    - Nincs letiltva
@@ -201,11 +201,11 @@ Ellenőrizze a következőket a probléma akkor fordul elő, ha:
 - [Opcionális de javasolt] Rendelkezik egy hardveres biztonsági modul (HSM) vagy a helyi kulcs létrehozásához a TDE-Védőhöz megosztottkulcs-anyag helyi másolatát tárolja.
 - Parancssori felület 2.0-s vagy újabb verziója. Telepítse a legújabb verziót, és csatlakozzon az Azure-előfizetéshez, lásd: [telepítése és konfigurálása az Azure többplatformos parancssori felület 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). 
 - Hozzon létre egy Azure Key Vault és a kulcs TDE használatára.
-   - [CLI 2.0 használatával a Key Vault felügyelete](https://docs.microsoft.com/azure/key-vault/key-vault-manage-with-cli2)
-   - [Egy hardveres biztonsági modul (HSM) és a Key Vault használatára vonatkozó utasítások](https://docs.microsoft.com/azure/key-vault/key-vault-get-started#a-idhsmaif-you-want-to-use-a-hardware-security-module-hsm)
+   - [CLI 2.0 használatával a Key Vault felügyelete](../key-vault/key-vault-manage-with-cli2.md)
+   - [Egy hardveres biztonsági modul (HSM) és a Key Vault használatára vonatkozó utasítások](../key-vault/key-vault-get-started.md#HSM)
  - A key vaultban kell rendelkeznie a TDE használható a következő tulajdonság:
-   - [helyreállítható törlés](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete)
-   - [A Key Vault helyreállítható törlés funkciójának használata parancssori felülettel](https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-cli) 
+   - [helyreállítható törlés](../key-vault/key-vault-ovw-soft-delete.md)
+   - [A Key Vault helyreállítható törlés funkciójának használata parancssori felülettel](../key-vault/key-vault-soft-delete-cli.md) 
 - A kulcs TDE használható a következő attribútumokkal kell rendelkeznie:
    - Lejárati dátum nélküli
    - Nincs letiltva

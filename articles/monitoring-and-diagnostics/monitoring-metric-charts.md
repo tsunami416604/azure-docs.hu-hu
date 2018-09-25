@@ -1,6 +1,6 @@
 ---
-title: Az Azure figyelő metrikaböngésző
-description: A figyelő Metrikaböngészőben Azure új szolgáltatásainak megismerése
+title: Az Azure Monitor metrikaböngészőjének
+description: Az Azure Monitor Metrikaböngészőjének új szolgáltatásainak megismerése
 author: vgorbenko
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,149 +8,119 @@ ms.topic: conceptual
 ms.date: 09/17/2017
 ms.author: vitaly.gorbenko
 ms.component: metrics
-ms.openlocfilehash: a2611f89d9eef1ec6bac34389fa4db833aecc087
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 21b0029ff12915c8416ad2366fbf6c45ddfaa288
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35264088"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46978420"
 ---
-# <a name="azure-monitor-metrics-explorer"></a>Az Azure figyelő Metrikaböngésző
+# <a name="azure-monitor-metrics-explorer"></a>Az Azure Monitor Metrikaböngészőjének
 
-Ez az útmutató ismerteti a következő generációs Azure figyelő metrikák diagramkészítési élményt nyilvános előzetes verzió jelenleg. Az új felület megjelenítési diagramok többdimenziós metrikákat, és nincs dimenzió alapvető metrikák támogatja. Dolgozunk a különböző típusú, a több erőforrás-csoportok és az előfizetések metrikák átfedő diagramokat is. A többdimenziós metrikák diagramok dimenzió szűrők alkalmazása, valamint a csoportosítása szerint testre szabható. Bármelyik olyan diagram, beleértve a testreszabott diagramok irányítópultok rögzíthet.
+Ebben az útmutatóban következő generációs Azure Monitor-metrikák diagramkészítési élményt ismerteti, amely jelenleg nyilvános előzetes verzióban érhető el. Az új funkció támogatja a többdimenziós metrikák és alapszintű, sem a dimenziókkal rendelkező metrikák diagramokat. Dolgozunk, amely a különböző típusú, különböző erőforráscsoportokból és előfizetések metrikák átfedő diagramokat is. A többdimenziós metrikák diagramok dimenzió szűrők alkalmazása, valamint a csoportosítás szabható testre. Bármilyen diagram, beleértve a testre szabott diagramokat kitűzhetők az irányítópultokra.
 
-Ha a régi felülethez nincs dimenzió alapvető metrikák támogató kapcsolatos információkat keres, tekintse át "Elérése a portálon metrikák" című szakaszban található a [Microsoft Azure metrikák áttekintése útmutató](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics).
+Ha a régi felületre, amely csak az alapszintű, sem a dimenziókkal rendelkező metrikák támogatja kapcsolatos információkat keres, tekintse meg "Elérése a portálon keresztül mérőszámok" című szakaszban található a [útmutató a Microsoft Azure metrikáinak áttekintésében](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics).
 
-## <a name="what-is-azure-monitor-metrics-explorer"></a>Mi az Azure-figyelő Metrikaböngésző?
+## <a name="what-is-azure-monitor-metrics-explorer"></a>Mi az Azure Monitor Metrikaböngészőjének?
 
-Az Azure figyelő Metrikaböngésző része egy a Microsoft Azure portál, amely lehetővé teszi, hogy a diagramok ábrázolásához, vizuálisan adatok a trendek és igényeiben jelentkező vizsgálja, és a metrikák értékek esik. Metrikaböngésző egy alapvető kiindulópont azon különböző teljesítmény- és az alkalmazások és az infrastruktúra Azure szolgáltatásban üzemeltetett vagy az Azure-figyelő szolgáltatás által figyelt elérhetőségével kapcsolatos problémákat vizsgál. 
+Az Azure Monitor Metrikaböngészőjének a Microsoft Azure-portálon, amely lehetővé teszi, hogy a diagramok küldik az ábrázolást, vizuálisan naplókezelője trendeket és kivizsgálása adatforgalmi csúcsokhoz és a ' értékeihez süllyedések egyik összetevője. Metrikaböngésző egy alapvető kiindulási pontként különböző teljesítmény- és az alkalmazások és az Azure-ban üzemeltetett vagy az Azure Monitor szolgáltatás által figyelt infrastruktúra rendelkezésre állási problémák kivizsgálása. 
 
-## <a name="what-are-metrics-in-azure"></a>Mik az Azure-ban mérőszámok?
+## <a name="what-are-metrics-in-azure"></a>Mik azok a metrikák az Azure-ban?
 
-A Microsoft Azure-ban mérőszámok mért értékek és a gyűjtött és tárolt időbeli számok sorozatát. Nincsenek, standard (vagy "platform") metrikákat és egyéni metrikákra vonatkozóan egyaránt. A szabványos metrikák rendszer által biztosított az Azure platformon, saját magát. Standard metrikák tükrözze az Azure-erőforrások állapotadatok és használati statisztikáit. Mivel egyéni metrikák Azure a használó alkalmazások által küldött a [Application Insights API egyéni események](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics). Egyéni metrikákat az Application Insights-erőforrások együtt más alkalmazás adott mérőszámok vannak tárolva.
+A Microsoft Azure-ban mérőszámok olyan mért értékek sorozata, összegyűjtött és tárolt idővel számát. Nincsenek metrikák standard (vagy "platform"), és egyéni mérőszámok. A standard mérőszámok az Azure platform saját maga által biztosított Önnek. Standard mérőszámok az Azure-erőforrások állapotát és a használati statisztikáit tükrözik. Mivel az egyéni metrikák használatával az alkalmazások által az Azure-bA küldött a [Application Insights API egyéni eseményekhez](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics). Egyéni metrikák és más alkalmazás adott mérőszámok az Application Insights-erőforrások vannak tárolva.
 
-## <a name="what-are-multi-dimensional-metrics"></a>Mik azok a többdimenziós metrikák?
 
-Azure-erőforrások számos többdimenziós metrikák most teszi közzé. A metrikák egy vagy több elnevezett dimenzió több sorozatát nyomon követéséhez. Például a "rendelkezésre álló lemezterület" metrika lehet a dimenzió néven "Meghajtó" értékek "C:", "D:", amely lehetővé teszi a megtekintése vagy rendelkezésre álló szabad lemezterület az összes meghajtó vagy az egyes meghajtók külön-külön. 
 
-Az alábbi példában látható módon a "Hálózati átviteli" nevű elméleti metrika két adathalmaz. Az első adatkészlet nem dimenziója van. A második dataset két dimenzió, "IP-cím" és "Irány" az értékek láthatók:
-
-### <a name="network-throughput"></a>Hálózati teljesítmény
-(Ez a metrika rendelkezik nincs dimenzió)
-
- |Időbélyeg        | Metrika értékét | 
-   | ------------- |:-------------| 
-   | 8/9/2017 8:14 | 1,331.8 kbit/s | 
-   | 8/9/2017 8:15 | 1,141.4 kbit/s |
-   | 8/9/2017 8:16 | 1,110.2 kbit/s |
-
-Ez a metrika nem egydimenziós is csak egy alapszintű kérdésre adott válasz, például "Mi történt a hálózati átviteli sebesség egy adott időben?"
-
-### <a name="network-throughput--two-dimensions-ip-and-direction"></a>Hálózati teljesítmény + két dimenzió ("IP-címe" és "Irány")
-
-| Időbélyeg          | "IP-címe" dimenzió | "Irány" dimenzió | Metrika értékét| 
-   | ------------- |:-----------------|:------------------- |:-----------|  
-   | 8/9/2017 8:14 | IP = "192.168.5.2" | Irány "Send" =    | 646.5 kbit/s |
-   | 8/9/2017 8:14 | IP = "192.168.5.2" | Irány "Kap" = | 420.1 kbit/s |
-   | 8/9/2017 8:14 | IP = "10.24.2.15"  | Irány "Send" =    | 150.0 kbit/s | 
-   | 8/9/2017 8:14 | IP = "10.24.2.15"  | Irány "Kap" = | 115,2 KB/s |
-   | 8/9/2017 8:15 | IP = "192.168.5.2" | Irány "Send" =    | 515.2 kbit/s |
-   | 8/9/2017 8:15 | IP = "192.168.5.2" | Irány "Kap" = | 371.1 kbit/s |
-   | 8/9/2017 8:15 | IP = "10.24.2.15"  | Irány "Send" =    | 155.0 kbit/s |
-   | 8/9/2017 8:15 | IP = "10.24.2.15"  | Irány "Kap" = | 100.1 kbit/s |
-
-Ez a metrika kérdésekre lehet például a "Mi történt az IP-címek hálózati átviteli?" és "mennyi adatot küldött és fogadott?" Többdimenziós metrikák lebonyolítására további elemzési és diagnosztikai érték nem egydimenziós metrikák képest. 
-
-## <a name="how-do-i-create-a-new-chart"></a>Hogyan hozható létre új diagram?
+## <a name="how-do-i-create-a-new-chart"></a>Hogyan hozhatok létre egy új diagramot?
 
    > [!NOTE]
-   > Egyes szolgáltatásokat a régi metrikák felület még nem érhető el az új Metrikaböngésző. Közben az új felület előnézeti, továbbra is a régi (nem háromdimenziós) mérőszámok nézet használata Azure-figyelő. 
+   > A régi metrikák felületet funkcióit még nem állnak rendelkezésre az új. Amíg az új felhasználói felület előzetes verzióként, továbbra is a régi (dimenziók nélküli) metrikák nézet használatával Azure monitor. 
 
-1. Nyissa meg az Azure-portálon
-2. Keresse meg az új **figyelő** lapra, majd válassza ki **metrikák (előzetes verzió)**.
+1. Nyissa meg az Azure Portalon
+2. Lépjen az új **figyelő** lapra, és válassza ki **metrikák (előnézet)**.
 
-   ![Metrikák villámnézeti kép](./media/monitoring-metric-charts/001.png)
+   ![Metrikák előnézeti képe](./media/monitoring-metric-charts/0001.png)
 
-3. A **metrika választó** automatikusan nyitott meg lesz. A kapcsolódó metrikák megtekintéséhez listájából válasszon ki egy erőforrást. A listában megjelenő metrikák csak erőforrásokhoz.
+3. A **metrika választó** automatikusan lesz nyissa meg az Ön számára. Válassza ki egy erőforrást a listából, a kapcsolódó metrikákat tekinthet meg. Csak a metrikák az erőforrások listájában jelennek meg.
 
-   ![Metrikák villámnézeti kép](./media/monitoring-metric-charts/002.png)
-
-   > [!NOTE]
-   >Ha több Azure-előfizetéssel rendelkezik, az erőforrások közötti összes előfizetést a portál beállításait a kijelölt kimenő Metrikaböngésző ponttá előfizetések listával -> szűrő. Ha módosítani szeretné azt, kattintson a portál beállítások fogaskerék ikonra a képernyő felett, és válassza a melyik előfizetések fogják használni kívánt.
-
-4. Néhány erőforrások típust (azaz a Storage-fiókok és a virtuális gépek), egy metrika kiválasztása előtt ki kell választani egy **Sub szolgáltatás**. Minden egyes sub szolgáltatás hordoz magában, ha a saját ítélt lényeges, csak a sub szolgáltatás, és nem más előfizetett szolgáltatások készlete.
-
-   Például minden Azure Storage rendelkezik metrikáját subservices "Blobok", "Fájlok", "Várólisták" és "Tábla", amely a tárfiók összes részét képezik. Azonban a metrika "várólista-üzenetek száma" nem természetes bármely egyéb tároló-subservices a subservice "Várólista" és nem alkalmazható.
-
-   ![Metrikák villámnézeti kép](./media/monitoring-metric-charts/003.png)
-
-5. Jelöljön ki egy metrikát a listából. Ha tudja, hogy egy részleges név a mérőszám azt szeretné, megkezdheti a beírja azt az elérhető mérőszámok szűrt listájának megtekintéséhez:
-
-   ![Metrikák villámnézeti kép](./media/monitoring-metric-charts/004.png)
-
-6. Miután kiválasztott egy metrika, a diagram jelenik meg a kiválasztott metrika az alapértelmezett összesítés. Ezen a ponton csak kattintani távolabb a **metrikák választó** bezárásához. A diagram is váltani egy másik összesítő. Néhány metrikáihoz összesítési váltás lehetővé teszi annak meghatározását mely tekintse meg a diagram kívánt érték. Például megváltoztathatja az átlagos, minimális és maximális értékek között. 
-
-7. A metrika hozzáadása ikonra kattintva ![metrika ikon](./media/monitoring-metric-charts/icon001.png) és lépéseket 3-6 ismétlődő adhat hozzá további metrikák ugyanezen a diagramon.
+   ![Metrikák előnézeti képe](./media/monitoring-metric-charts/0002.png)
 
    > [!NOTE]
-   > Általában nem szeretnénk metrikák különböző mértékegységben (azaz "ezredmásodperc" és "kilobájt") vagy jelentősen eltérő méretezési rendelkezzen egy diagram. Ehelyett érdemes lehet több diagram. Kattintson a diagram hozzáadása gombra a Metrikaböngészőben több diagram létrehozásához.
+   >Ha egynél több Azure-előfizetéssel, Metrikaböngésző lekéri az erőforrásokat az összes előfizetés, amely ki van jelölve, a portál beállításaiban -> szűrő által az előfizetések listája. Módosításához kattintson a portál beállítások fogaskerék ikonra a képernyő fölött, és válassza ki a használni kívánt melyik előfizetések.
 
-## <a name="how-do-i-apply-filters-to-the-charts"></a>Hogyan szűrők alkalmazása a diagramok?
+4. Bizonyos erőforrások esetében (azaz a Storage-fiókok és a virtuális gépek), egy metrika kijelölése előtt ki kell választania egy **Namespace**. Minden névtér csak ezt a névteret, és más névterek nem releváns metrikákat a saját készletét hordozza.
 
-A metrikák többdimenziósak megjelenítő diagramok a szűrőket alkalmazhat. Például a "Tranzakció száma" metrika-dimenziója van, ha "Választípus", amely jelzi, hogy a tranzakciók válaszát sikeres vagy sikertelen volt, majd szűrése e dimenzión volna tőzsdei diagram sort csak sikeres (vagy csak sikertelen) tranzakciók. 
+   Például minden Azure Storage, a "BLOB", "Fájlok", "Üzenetsorok" és "Táblák", a storage-fiók minden részét képező subservices metrikáit. A metrika "Üzenetsorbeli üzenetek száma" azonban csak a subservice "Várólista" és a bármely más tároló-subservices természetes módon alkalmazható.
 
-### <a name="to-add-a-filter"></a>Szűrő hozzáadásához:
+   ![Metrikák előnézeti képe](./media/monitoring-metric-charts/0003.png)
+
+5. Válasszon ki egy metrikát a listából. Ha ismeri a mérőszám kívánt név, kezdje el beírni a rendelkezésre álló metrikák szűrt listájának megtekintéséhez:
+
+   ![Metrikák előnézeti képe](./media/monitoring-metric-charts/0004.png)
+
+6. Miután egy metrikát, a diagram az alapértelmezett összesítés a kiválasztott metrika az jelenik meg. Ezen a ponton, egyszerűen kattintson a a **metrikák választó** bezárásához. A diagram egy másik összesítésre is igény szerint válthat. Bizonyos metrikák összesítési váltás lehetővé teszi, hogy kiválaszthatja, melyik értéket meg szeretné tekinteni a diagramra. Például átválthat az átlagos, minimális és maximális értékek között. 
+
+7. A metrika hozzáadása ikonra kattintva ![metrika ikon](./media/monitoring-metric-charts/icon001.png) és ismételje meg a 3-6 lépést adhat hozzá további metrikák ugyanezen a diagramon.
+
+   > [!NOTE]
+   > Általában nem érdemes metrikák különböző mértékegységben (pl. "ezredmásodperc" és "kilobájt") vagy jelentősen eltérő méretezési rendelkezik egy diagram. Ehelyett érdemes lehet több diagramot. Kattintson a több diagram létrehozása a Metrikaböngészőben diagram hozzáadása gombra.
+
+## <a name="how-do-i-apply-filters-to-the-charts"></a>Hogyan szűrőket alkalmaz a diagramok?
+
+A diagramok, amelyek megmutatják a dimenziókkal rendelkező metrikák szűrőket is alkalmazhat. Például, ha a "Tranzakciók száma" metrika van egy dimenzió, "Választípus", amely jelzi, hogy a tranzakció válasza sikeres vagy sikertelen volt, majd szűrése e dimenzión lenne jeleníti meg egy diagram sort csak a sikeres (vagy csak sikertelen) tranzakciók. 
+
+### <a name="to-add-a-filter"></a>Szűrő hozzáadása:
 
 1. Kattintson a szűrő hozzáadása ikonra ![Szűrő ikon](./media/monitoring-metric-charts/icon002.png) a diagram felett
 
-2. Válassza ki, melyik dimenzió (tulajdonság) szűrése
+2. Válassza ki a szűrni kívánt dimenzió (tulajdonság)
 
-   ![metrika kép](./media/monitoring-metric-charts/006.png)
+   ![metrika kép](./media/monitoring-metric-charts/0006.png)
 
-3. Válassza ki a mellékletet, amikor a diagram (Ez a példa bemutatja, a sikeres storage-tranzakció kiszűrése) ábrázolásához dimenzió értékektől:
+3. Válassza ki, melyik dimenzióértékek fel szeretne venni a diagram (Ez a példa bemutatja a sikeres tárolási tranzakciók kiszűrése) azonosításakor:
 
-   ![metrika kép](./media/monitoring-metric-charts/007.png)
+   ![metrika kép](./media/monitoring-metric-charts/0007.png)
 
-4. A szűrőértékek kiválasztását követően kattintson a Tevékenységszűrő-választó, zárja be, hogy befejeződött. Most már a diagram azt ábrázolja, hogy hány storage-tranzakció nem sikerült:
+4. A szűrő értékeit kiválasztását követően kattintson a forrásadatok a választó bezárásához. Most a diagram bemutatja, hogy hány tranzakció sikertelen volt:
 
-   ![metrika kép](./media/monitoring-metric-charts/008.png)
+   ![metrika kép](./media/monitoring-metric-charts/0008.png)
 
-5. 1-4 több szűrők alkalmazása az azonos diagramok lépéseket megismételve.
+5. Megismételheti a lépéseket több szűrőket alkalmaz az azonos diagramok 1 – 4.
 
-## <a name="how-do-i-segment-a-chart"></a>Hogyan szegmentálja a diagramot?
+## <a name="how-do-i-segment-a-chart"></a>Hogyan oszthatja meg a diagramot?
 
-Ossza fel a metrika szembeni metrika összehasonlítása különböző részeit megjelenítéséhez dimenzió által és a külső dimenzió szegmensei azonosítja. 
+Jeleníthetik meg egymással szembeni metrika összehasonlítási különböző szegmensek dimenzió egy metrikát felosztás és a egy dimenzió lakatlan szegmensek azonosítja. 
 
-### <a name="to-segment-a-chart"></a>A diagram szegmentálja:
+### <a name="to-segment-a-chart"></a>A diagram szegmens:
 
-1. Kattintson a csoportosítás hozzáadása ikonra  ![metrika kép](./media/monitoring-metric-charts/icon003.png) a diagram felett.
+1. Kattintson az ikonra a csoportosítás hozzáadása  ![metrika kép](./media/monitoring-metric-charts/icon003.png) a diagram felett.
  
    > [!NOTE]
-   > Több szűrőt, de csak egy csoportosítási bármely egyetlen diagram lehet.
+   > Több szűrő, de csak egy csoportosítási bármilyen egy diagram is rendelkezhet.
 
-2. Adja meg, amelyre át szeretné a diagram szegmentálni dimenzió: 
+2. Válassza ki, amelyen vissza szeretné a diagram szegmentálni dimenzió: 
 
-   ![metrika kép](./media/monitoring-metric-charts/010.png)
+   ![metrika kép](./media/monitoring-metric-charts/0010.png)
 
-   Most már a diagram már helyesen jelenik meg több sort, egy a minden szegmensben, dimenzió:
+   A diagram most már több sort, az egyes szegmensekben dimenzió egyik jeleníti meg:
 
-   ![metrika kép](./media/monitoring-metric-charts/012.png)
+   ![metrika kép](./media/monitoring-metric-charts/0012.png)
 
-3. Kattintson a távolabb a **csoportosítási választó** bezárásához.
+3. Kattintson a a **csoportosítási választó** bezárásához.
 
    > [!NOTE]
-   > Szűrés és ugyanaz a dimenzió szerinti csoportosítást használható elrejtheti a szegmenseket, amelyek az adott esetben nem számít, és könnyebben diagramok olvasható.
+   > Szűrés és a csoportosítási egyazon dimenzió használatával a szegmensek nem releváns, mivel a forgatókönyvhöz, és könnyebben olvashatóvá teszi a diagramok elrejtése.
 
-## <a name="how-do-i-pin-charts-to-dashboards"></a>Hogyan rögzítheti a diagramok irányítópultok?
+## <a name="how-do-i-pin-charts-to-dashboards"></a>Hogyan rögzítheti a diagramokat az irányítópultokon?
 
-Miután a diagramok, érdemes lehet hozzáadni az irányítópultokat, hogy megtekintse újra, valószínűleg más figyelési telemetriai adatokat a környezetében, vagy megoszthatja munkatársaival. 
+Miután a diagramok, érdemes hozzáadása az irányítópultokhoz, így megtekintheti azt újra, esetleg egyéb figyelési telemetriát összefüggésben vagy megosztásra a csapatával. 
 
-PIN-kód irányítópultokhoz konfigurált diagram:
+Az irányítópult konfigurált diagram rögzítése:
 
-Miután a diagram, kattintson a a **diagram műveletek** menüben jobb felső sarkában a diagram, kattintson a **rögzítés az irányítópulton**.
+Miután a diagramot, kattintson a a **diagram műveletek** menüben kattintson a jobb felső sarokban, a diagram, és kattintson a **rögzítés az irányítópulton**.
 
-   ![metrika kép](./media/monitoring-metric-charts/013.png)
+   ![metrika kép](./media/monitoring-metric-charts/0013.png)
 
 ## <a name="next-steps"></a>További lépések
 
-  Olvasási [egyéni KPI-irányítópult létrehozása](https://docs.microsoft.com/azure/application-insights/app-insights-tutorial-dashboards) további információt az ajánlott eljárások a metrikák végrehajthatóként irányítópultok létrehozásához.
+  Olvasási [egyéni KPI irányítópultok létrehozása](https://docs.microsoft.com/azure/application-insights/app-insights-tutorial-dashboards) ajánlott eljárást a gyakorlatban hasznosítható irányítópultokat hoz létre a metrikákkal kapcsolatos.

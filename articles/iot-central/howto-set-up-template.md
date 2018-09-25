@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 1cff44e8430af0a544da948b33a15439fae56d8e
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: a076ee5275a4d053613902a1980542590263385c
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45735650"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47034276"
 ---
 # <a name="set-up-a-device-template"></a>Eszközsablon beállítása
 
@@ -74,6 +74,9 @@ Például egy új hőmérsékleti telemetria mérték is hozzáadhat:
 
 Miután kiválasztotta **kész**, a **hőmérséklet** mérték megjelenik a listában a mértékek. Az operátor az eszköz gyűjti hőmérsékleti adatok a Vizualizáció látható.
 
+> [!NOTE]
+  A telemetriai adatok mérték adattípusának dupla.
+
 ### <a name="create-an-event-measurement"></a>Egy esemény-mérték létrehozása
 Egy új esemény mérési hozzáadásához válassza **sablon szerkesztése**, majd kattintson a **+ új mérték** gombra. Válassza ki **esemény** a mérték, írja be, és adja meg, hogy a **esemény létrehozása** űrlap.
 
@@ -91,6 +94,8 @@ Az esemény részleteinek megtekintéséhez jelölje ki a diagramon az esemény 
 
 ![A "Ventilátor Motor Error" esemény részletei](./media/howto-set-up-template/eventmeasurementsdetail.png)
 
+> [!NOTE]
+  Az esemény mérték adattípusának egy karakterlánc.
 
 ### <a name="create-a-state-measurement"></a>Egy állapot-mérték létrehozása
 Új állapot a mérés hozzáadásához válassza **sablon szerkesztése**, majd kattintson a **+ új mérték** gombra. Válassza ki **állapot** a mérték, írja be, és adja meg, hogy a **létrehozása állapot** űrlap.
@@ -106,6 +111,9 @@ Kiválasztása után **kész**, a **ventilátor mód** állapot mérési mérés
 ![Állapot mérési diagram](./media/howto-set-up-template/statemeasurementschart.png)
 
 Az eszköz a kis időtartam túl sok adatpont küld, ha az állapot mérték jelenik meg egy másik vizualizációt, az alábbi képernyőképen látható módon. Ha rákattint a diagram, az adott időtartamon belül minden adatpontok időrendi sorrendben jelennek meg. Az időtartomány, tekintse meg a diagramon ábrázolt mérését is szűkíthető.
+
+> [!NOTE]
+  Az állapot mérték adattípusának egy karakterlánc.
 
 ## <a name="settings"></a>Beállítások
 

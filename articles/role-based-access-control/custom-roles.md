@@ -15,12 +15,12 @@ ms.date: 08/07/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 002eb9b70c2f3f9d0f6633b2d81425c688495d19
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 26f696c2f54d9cb8a176fe079101e26384ac0a6e
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39714053"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47034450"
 ---
 # <a name="custom-roles-in-azure"></a>Egyéni szerepkörök az Azure-ban
 
@@ -100,7 +100,7 @@ Egy egyéni biztonsági szerepkört a következő tulajdonságokkal rendelkezik.
 | `NotActions` | Nem | String] | Karakterláncok tömbje, amely meghatározza a felügyeleti műveleteket, amelyek ki vannak zárva az engedélyezett a `Actions`. További információkért lásd: [NotActions](role-definitions.md#notactions). |
 | `DataActions` | Nem | String] | Karakterláncok tömbje, amely meghatározza, mely adatműveletekre, amely a szerepkör lehetővé teszi, hogy végrehajtani ahhoz, hogy az adatok az objektumon belül. További információkért lásd: [DataActions (előzetes verzió)](role-definitions.md#dataactions-preview). |
 | `NotDataActions` | Nem | String] | Karakterláncok tömbje, amely a kizárt Adatműveletek meghatározza az engedélyezett a `DataActions`. További információkért lásd: [NotDataActions (előzetes verzió)](role-definitions.md#notdataactions-preview). |
-| `AssignableScopes` | Igen | String] | Karakterláncok tömbje, amely meghatározza, hogy az egyéni szerepkör-hozzárendelés érhető a hatókörök. Jelenleg nem állítható be a legfelső szintű hatókörhöz (`"/"`) vagy egy felügyeleti csoport hatóköre. További információkért lásd: [AssignableScopes](role-definitions.md#assignablescopes) és [az erőforrások rendszerezéséhez az Azure felügyeleti csoportok](../azure-resource-manager/management-groups-overview.md#custom-rbac-role-definition-and-assignment). |
+| `AssignableScopes` | Igen | String] | Karakterláncok tömbje, amely meghatározza, hogy az egyéni szerepkör-hozzárendelés érhető a hatókörök. Jelenleg nem állítható be a legfelső szintű hatókörhöz (`"/"`) vagy egy felügyeleti csoport hatóköre. További információkért lásd: [AssignableScopes](role-definitions.md#assignablescopes) és [az erőforrások rendszerezéséhez az Azure felügyeleti csoportok](../governance/management-groups/index.md#custom-rbac-role-definition-and-assignment). |
 
 ## <a name="who-can-create-delete-update-or-view-a-custom-role"></a>Ki is létrehozása, törlése, frissítése, vagy egy egyéni szerepkör megtekintéséhez
 

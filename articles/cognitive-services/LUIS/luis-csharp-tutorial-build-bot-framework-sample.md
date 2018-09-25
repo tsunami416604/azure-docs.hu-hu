@@ -1,24 +1,25 @@
 ---
-title: C# használatával a LUIS integrálása a robot a robot a jelentéskészítő SDK-t – az Azure Cognitive Services használatával |} A Microsoft Docs
+title: A LUIS-robot a C# - webalkalmazás robot – a Bot keretrendszer SDK 3.0-s
+titleSuffix: Azure Cognitive Services
 description: A language understanding (LUIS) szolgáltatással integrált csevegőrobotot C# használatával hozhat létre. Ez csevegőrobot az előre összeállított HomeAutomation tartomány segítségével rövid idő alatt kiépíthet egy robot megoldás.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 08/13/2018
+ms.date: 09/24/2018
 ms.author: diberry
-ms.openlocfilehash: d0010ccf51fc688fa66e1be82c735ae38455509b
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 0ad95d5683ea10803c2f3986be97617051f191cf
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41987482"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47032274"
 ---
-# <a name="web-app-bot-using-the-luis-template-for-c"></a>Webes alkalmazás robot a LUIS-sablon használatával a C#
+# <a name="luis-bot-in-c"></a>A LUIS-robot a C#-ban
 
-A language understanding (LUIS) szolgáltatással integrált csevegőrobotot C# használatával hozhat létre. Ez csevegőrobot az előre összeállított HomeAutomation tartomány segítségével rövid idő alatt kiépíthet egy robot megoldás. 
+A language understanding (LUIS) szolgáltatással integrált csevegőrobotot C# használatával hozhat létre. Ez csevegőrobot az előre összeállított HomeAutomation tartomány segítségével rövid idő alatt kiépíthet egy robot megoldás. A robot épül fel a Bot keretrendszer 3.x és az Azure Web app bot.
 
 ## <a name="prerequisite"></a>Előfeltétel
 
@@ -26,7 +27,7 @@ A language understanding (LUIS) szolgáltatással integrált csevegőrobotot C# 
 
 ## <a name="luis-homeautomation-intents"></a>A LUIS HomeAutomation leképezések
 
-| Leképezés | Példa utterance (kifejezés) | A robot funkció |
+| Szándék | Példa utterance (kifejezés) | A robot funkció |
 |:----:|:----------:|---|
 | HomeAutomation.TurnOn | Kapcsolja be a lámpák. | Ha a LUIS-leképezés `HomeAutomation.TurnOn` észlel, a bot meghívja a `OnIntent` párbeszédpanel kezelő. Ezen a párbeszédpanelen, ahol meghívta egy IoT-szolgáltatás, kapcsolja be az eszközön, és ossza meg a felhasználót, hogy az eszköz be van kapcsolva. |
 | HomeAutomation.TurnOff | Kapcsolja ki a szobája lámpa. | Ha a LUIS-leképezés `HomeAutomation.TurnOff` észlel, a bot meghívja a `OffIntent` párbeszédpanel kezelő. Ezen a párbeszédpanelen, ahol meghívta egy IoT-szolgáltatás, kapcsolja ki az eszközt, és ossza meg a felhasználót, hogy az eszköz ki van kapcsolva. |
@@ -46,11 +47,14 @@ A language understanding (LUIS) szolgáltatással integrált csevegőrobotot C# 
 4. A **Bot Service**, adja meg a szükséges információkat, majd kattintson **létrehozás**. Ez létrehozza és telepíti a bot service és a LUIS-alkalmazás az Azure-bA. Ha a használni kívánt [speech betanítási művelet](https://docs.microsoft.com/bot-framework/bot-service-manage-speech-priming), tekintse át [régió követelmények](luis-resources-faq.md#what-luis-regions-support-bot-framework-speech-priming) előtt a robot létrehozásának. 
     * Állítsa be **alkalmazásnév** a robot neve. A robot a felhőben (például mynotesbot.azurewebsites.net) történő telepítése során az altartomány neve lesz. <!-- This name is also used as the name of the LUIS app associated with your bot. Copy it to use later, to find the LUIS app associated with the bot. -->
     * Válassza ki az előfizetést [erőforráscsoport](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview), App service-csomagot, és [hely](https://azure.microsoft.com/regions/).
-    * Válassza ki a **Language understanding (C#)** sablonját a **Bot sablon** mező.
+    * A **Bot sablon**, jelölje be:
+        * **SDK-t v3**
+        * **C#**
+        * **Hangfelismerés**
     * Válassza ki a **LUIS alkalmazás hely**. Ez az a szerzői műveletekhez részben [régió](luis-reference-regions.md) jön létre az alkalmazást.
     * Jelölje be a megerősítő a jogi nyilatkozat. A jogi nyilatkozat feltételeit az alábbiakban olvashatják be a jelölőnégyzetet.
 
-    ![Robotszolgáltatás](./media/luis-tutorial-cscharp-web-bot/bot-service-setting-callout-template.png)
+    ![Bot Service](./media/luis-tutorial-cscharp-web-bot/bot-service-setting-callout-template.png)
 
 
 5. Győződjön meg arról, hogy a bot service van telepítve.

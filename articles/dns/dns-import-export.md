@@ -1,6 +1,6 @@
 ---
-title: Fájlok importálásával és exportálásával egy tartományi zóna az Azure DNS Azure CLI 2.0 használatával |} A Microsoft Docs
-description: Ismerje meg, hogyan importálása és exportálása a DNS-zónafájl az Azure DNS az Azure CLI 2.0 használatával
+title: Importálása és exportálása egy tartományi zónafájl az Azure DNS Azure parancssori felületével |} A Microsoft Docs
+description: Ismerje meg, hogyan importálása és exportálása a DNS-zónafájl az Azure DNS Azure CLI-vel
 services: dns
 documentationcenter: na
 author: vhorne
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/30/2018
 ms.author: victorh
-ms.openlocfilehash: 7578d078b147b5c4bf42f5343d3fdfdf6f0bc42e
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 5afb607f0410b428d8e67fdff043a4e376dd60a5
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39171605"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46956353"
 ---
-# <a name="import-and-export-a-dns-zone-file-using-the-azure-cli-20"></a>Importálása és exportálása a DNS-zónafájl az Azure CLI 2.0 használatával 
+# <a name="import-and-export-a-dns-zone-file-using-the-azure-cli"></a>Importálása és exportálása a DNS-zónafájl az Azure CLI használatával 
 
-Ez a cikk végigvezeti importálása és exportálása a DNS-zónafájlok az Azure DNS-hez, az Azure CLI 2.0 használatával.
+Ez a cikk végigvezeti importálása és exportálása a DNS-zónafájlok az Azure DNS-hez, az Azure CLI használatával.
 
 ## <a name="introduction-to-dns-zone-migration"></a>Bevezetés a DNS-zóna áttelepítése
 
@@ -30,7 +30,7 @@ DNS-zónafájl egy szövegfájlt, amelyek minden zónában tartománynévrendsze
 
 Az Azure DNS támogatja a importálásával és exportálásával zónafájlok az Azure parancssori felület (CLI) használatával. A zónafájl importálása van **nem** jelenleg az Azure PowerShell vagy az Azure Portalon keresztül támogatott.
 
-Az Azure CLI 2.0 az Azure-szolgáltatások kezelésére használt többplatformos parancssori eszköz. Elérhető a Windows, Mac és Linux platformokon a a [Azure letöltések lap](https://azure.microsoft.com/downloads/). Többplatformos támogatást fontos történő importálására és exportálására zónafájlok, mert a leggyakrabban használt név kiszolgálószoftver [kötési](https://www.isc.org/downloads/bind/), általában a Linux rendszeren futó.
+Az Azure CLI az Azure-szolgáltatások kezelésére használt többplatformos parancssori eszköz. Elérhető a Windows, Mac és Linux platformokon a a [Azure letöltések lap](https://azure.microsoft.com/downloads/). Többplatformos támogatást fontos történő importálására és exportálására zónafájlok, mert a leggyakrabban használt név kiszolgálószoftver [kötési](https://www.isc.org/downloads/bind/), általában a Linux rendszeren futó.
 
 
 ## <a name="obtain-your-existing-dns-zone-file"></a>Szerezze be a meglévő DNS-zónafájl

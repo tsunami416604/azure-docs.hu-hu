@@ -1,27 +1,27 @@
 ---
-title: Tárfiókok konfigurálása az Azure Cost Managementben |} A Microsoft Docs
-description: Ez a cikk bemutatja, hogyan konfigurálja az Azure storage-fiókok és az AWS-tároló gyűjtők az Azure Cost Management.
+title: Tárfiókok konfigurálása az Azure-ban cloudyn |} A Microsoft Docs
+description: Ez a cikk bemutatja, hogyan konfigurálja az Azure storage-fiókok és az AWS-tároló gyűjtők a Cloudyn.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 06/07/2018
+ms.date: 09/18/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: carmonm
 ms.custom: ''
-ms.openlocfilehash: dab7100c97fab7e086352916ec222ec70a0d0400
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: 829995d40a73dc181a28a467e4d16fef0bdeb454
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42056691"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46990654"
 ---
-# <a name="configure-storage-accounts-for-cost-management"></a>Tárfiókok konfigurálása a Cost Management
+# <a name="configure-storage-accounts-for-cloudyn"></a>Storage-fiókok konfigurálása a Cloudynben
 
-<!--- intent: As a Cost Management user, I want to configure Cost Management to use my cloud service provider storage account to store my reports. -->
+<!--- intent: As a Cloudyn user, I want to configure Cloudyn to use my cloud service provider storage account to store my reports. -->
 
-A Cost Management jelentéseinek mentheti a Cloudyn portál, az Azure storage vagy az AWS-tároló gyűjtők. A Cloudyn portálon a jelentések mentése az ingyenesen elérhető. Azonban a felhőszolgáltató tárolási mentése folyamatban van a jelentések nem kötelező, és további költséget áll. Ez a cikk segít az Azure storage-fiókok és az Amazon Web Services (AWS) storage gyűjtők a jelentések tárolására konfigurálása.
+A Cloudyn portál, az Azure storage vagy az AWS-tároló gyűjtők mentheti a Cloudyn jelentésekben. A Cloudyn portálon a jelentések mentése az ingyenesen elérhető. Azonban a felhőszolgáltató tárolási mentése folyamatban van a jelentések nem kötelező, és további költséget áll. Ez a cikk segít az Azure storage-fiókok és az Amazon Web Services (AWS) storage gyűjtők a jelentések tárolására konfigurálása.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -33,7 +33,7 @@ Ha nem rendelkezik egy AWS simple storage service (S3) gyűjtőbe, akkor meg kel
 
 ## <a name="configure-your-azure-storage-account"></a>Az Azure storage-fiók konfigurálása
 
-Konfigurálás, Azure storage a Cost Management használata rendkívül egyszerű. Gyűjtse össze a tárfiók részleteit, és másolja őket a Cloudyn portálon.
+Konfigurálása, hogy a Cloudyn által használható az Azure storage nagyon egyszerű. Gyűjtse össze a tárfiók részleteit, és másolja őket a Cloudyn portálon.
 
 1. Jelentkezzen be az Azure Portalra a http://portal.azure.com webhelyen.
 2. Kattintson a **minden szolgáltatás**válassza **tárfiókok**, görgessen lefelé a storage-fiókot, amelyet szeretne használni, és válassza ki azt a fiókot.
@@ -163,4 +163,4 @@ Jelentések az Azure-tárolóba mentheti. Az jelentésekben, kattintson a **műv
 
 ## <a name="next-steps"></a>További lépések
 
-- Felülvizsgálat [Understanding management költségjelentéseket](understanding-cost-reports.md) az alapszintű struktúrát és költségkezelési jelentések funkcióit ismerteti.
+- Felülvizsgálat [ismertetése a Cloudyn-jelentések](understanding-cost-reports.md) az alapszintű struktúrát és a Cloudyn jelentésekben funkcióit ismerteti.

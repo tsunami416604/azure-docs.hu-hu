@@ -11,14 +11,19 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 11/18/2017
-ms.openlocfilehash: 58ab1d77218595344c899dff654ba5b7a5bfb0d8
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ROBOTS: NOINDEX
+ms.openlocfilehash: 16c102641321117f4776d761aba6c2148d15f1f5
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44296636"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46995642"
 ---
 # <a name="use-a-git-repo-with-a-machine-learning-workbench-project"></a>A Machine Learning Workbench-projekt Git-adattár használata
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 Ismerje meg, hogyan Azure Machine Learning Workbench használja az Git a verziókövetéshez, és megismételhetőség az adatelemzési kísérlet az biztosítja. Ismerje meg, hogyan rendelje hozzá a projekthez egy felhőbeli Git-tárház (adattár).
 
 Machine Learning Workbench alkalmazásban a Git-integrációval lett tervezve. Amikor egy új projektet hoz létre, a projektmappa fájllistájának, automatikusan "Git-inicializálása" helyi Git-adattár. Egy második, rejtett helyi Git-tárház is létrejön egy ágat AzureMLHistory nevű /\<GUID projekt\>. Az ág nyomon követi az egyes végrehajtási projekt módosításait. 
@@ -42,7 +47,7 @@ Első lépésként távoli Git-tárház használatával végezze el a következ�
 > Az Azure Machine Learning jelenleg csak az Azure DevOps-szervezetek támogatja a Git-tárházakat.
 
 ## <a name="step-1-create-a-machine-learning-experimentation-account"></a>1. lépés Machine Learning-Kísérletezési fiók létrehozása
-Hozzon létre egy Machine Learning-kísérletezés-fiókot, és az Azure Machine Learning Workbench alkalmazás telepítéséhez. További információkért lásd: [telepítése és létrehozási rövid útmutató](../service/quickstart-installation.md).
+Hozzon létre egy Machine Learning-kísérletezés-fiókot, és az Azure Machine Learning Workbench alkalmazás telepítéséhez. További információkért lásd: [telepítése és létrehozási rövid útmutató](quickstart-installation.md).
 
 ## <a name="step-2-create-an-azure-devops-project-or-use-an-existing-project"></a>2. lépés Az Azure DevOps-projekt létrehozása, vagy használjon egy meglévő projekt
 Az a [az Azure portal](https://portal.azure.com/), hozzon létre egy új projektet:

@@ -1,6 +1,6 @@
 ---
-title: Az Azure parancssori 2.0 felhasználói felülettel való ismerkedés az Azure Data Lake Storage Gen1 |} A Microsoft Docs
-description: Hozzon létre egy Data Lake Storage Gen1 fiókot, és alapszintű műveletek végrehajtása az Azure platformfüggetlen parancssori 2.0 használatával
+title: Az Azure CLI használatával az Azure Data Lake Storage Gen1 használatának első lépései |} A Microsoft Docs
+description: Az Azure CLI használatával hozzon létre egy Data Lake Storage Gen1 fiókot, és alapszintű műveletek végrehajtása
 services: data-lake-store
 documentationcenter: ''
 author: nitinme
@@ -10,26 +10,24 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: nitinme
-ms.openlocfilehash: b75fc3a96ce4e46fbd9efb03aa2ea9c2c4aaa15c
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: d8232b1e29a3d2585e79cf56d0f180a5084fd13e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46124779"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46979066"
 ---
-# <a name="get-started-with-azure-data-lake-storage-gen1-using-azure-cli-20"></a>Ismerkedés az Azure Data Lake Storage Gen1 Azure CLI 2.0 használatával
+# <a name="get-started-with-azure-data-lake-store-using-azure-cli"></a>Azure CLI-vel az Azure Data Lake Store használatának első lépései
 > [!div class="op_single_selector"]
 > * [Portál](data-lake-store-get-started-portal.md)
 > * [PowerShell](data-lake-store-get-started-powershell.md)
-> * [Azure CLI 2.0](data-lake-store-get-started-cli-2.0.md)
+> * [Azure CLI](data-lake-store-get-started-cli-2.0.md)
 >
 > 
 
-[!INCLUDE [data-lake-storage-gen1-rename-note.md](../../includes/data-lake-storage-gen1-rename-note.md)]
+Útmutató az Azure CLI használatával az Azure Data Lake Storage Gen1 fiók létrehozása és alapszintű műveleteket, mint például mappák létrehozása, és feltöltése adatfájlok le, a fiók törlése stb. További információ a Data Lake Storage Gen1: [a Data Lake Storage Gen1 áttekintése](data-lake-store-overview.md).
 
-Útmutató az Azure CLI 2.0 használata Azure Data Lake Storage Gen1 fiók létrehozása és alapszintű műveleteket, mint például mappák létrehozása, és feltöltése adatfájlok le, a fiók törlése stb. További információ a Data Lake Storage Gen1: [a Data Lake Storage Gen1 áttekintése](data-lake-store-overview.md).
-
-Az Azure CLI 2.0 az Azure új parancssori felülete, amely Azure-erőforrások felügyeletére szolgál. A szolgáltatás macOS, Linux és Windows rendszereken használható. További információért lásd: [Az Azure CLI 2.0 áttekintése](https://docs.microsoft.com/cli/azure). Ezenkívül megnézheti a [Azure Data Lake Storage Gen1 CLI 2.0-referencia](https://docs.microsoft.com/cli/azure/dls) teljes listáját a parancsokat és szintaxist.
+Az Azure CLI az Azure parancssori felülete, amely Azure-erőforrások kezelésére szolgál. A szolgáltatás macOS, Linux és Windows rendszereken használható. További információkért lásd: [áttekintése az Azure CLI](https://docs.microsoft.com/cli/azure). Ezenkívül megnézheti a [Azure Data Lake Storage Gen1 CLI referencia](https://docs.microsoft.com/cli/azure/dls) teljes listáját a parancsokat és szintaxist.
 
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -37,7 +35,7 @@ A cikk elkezdéséhez az alábbiakkal kell rendelkeznie:
 
 * **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 
-* **Azure CLI 2.0** – az utasításokért lásd: [Az Azure CLI 2.0 telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli).
+* **Az Azure CLI** – lásd: [Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli) útmutatást.
 
 ## <a name="authentication"></a>Hitelesítés
 
@@ -164,7 +162,7 @@ A kimenet az alábbihoz hasonló lesz:
 
 ## <a name="work-with-permissions-and-acls-for-a-data-lake-storage-gen1-account"></a>Egy Data Lake Storage Gen1 fiókhoz tartozó engedélyek és hozzáférés-vezérlési listák használata
 
-Ebben a szakaszban a hozzáférés-vezérlési listák és az engedélyek Azure CLI 2.0-beli felügyeletét ismerheti meg. A hozzáférés-vezérlési listák hogyan találhatók meg az Azure Data Lake Storage Gen1 részletes tárgyalását lásd: [hozzáférés-vezérlés az Azure Data Lake Storage Gen1](data-lake-store-access-control.md).
+Ebben a szakaszban, megtudhatja, hogyan kezelheti a hozzáférés-vezérlési listák és az engedélyek az Azure CLI használatával. A hozzáférés-vezérlési listák hogyan találhatók meg az Azure Data Lake Storage Gen1 részletes tárgyalását lásd: [hozzáférés-vezérlés az Azure Data Lake Storage Gen1](data-lake-store-access-control.md).
 
 * **Egy fájl/mappa tulajdonosának frissítését** az alábbi paranccsal végezheti el:
 

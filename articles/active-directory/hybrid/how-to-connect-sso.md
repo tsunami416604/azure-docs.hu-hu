@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 09/24/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: be46933ee77b261107a6d22d26ba81538f0fd9d1
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 4e9292b5932c36d55069ff300bf7c0a99b280fc5
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46314523"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47054184"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Az Azure Active Directory zökkenőmentes egyszeri bejelentkezés
 
@@ -62,16 +62,19 @@ Közvetlen egyszeri bejelentkezés kombinálva, vagy a [Jelszókivonat-szinkroni
 
 | OS\Browser |Internet Explorer|Edge|Google Chrome|Mozilla Firefox|Safari|
 | --- | --- |--- | --- | --- | -- 
-|Windows 10|igen\*|Nem|Igen|igen\*\*|–
-|Windows 8.1|igen\*|–|Igen|igen\*\*|–
-|Windows 8|igen\*|–|Igen|igen\*\*|–
-|Windows 7|igen\*|–|Igen|igen\*\*|–
-|Mac OS X|–|–|igen\*\*|igen\*\*|igen\*
+|Windows 10|igen\*|Nem|Igen|igen\*\*\*|–
+|Windows 8.1|igen\*|–|Igen|igen\*\*\*|–
+|Windows 8|igen\*|–|Igen|igen\*\*\*|–
+|Windows 7|igen\*|–|Igen|igen\*\*\*|–
+|A Windows Server 2012 R2 vagy újabb|igen\*\*|–|Igen|igen\*\*\*|–
+|Mac OS X|–|–|igen\*\*\*|igen\*\*\*|igen\*\*\*
 
 
 \*Igényli az Internet Explorer verzióinak 10-es vagy újabb
 
-\*\*Szükséges [további konfigurációs](how-to-connect-sso-quick-start.md#browser-considerations)
+\*\*Igényli az Internet Explorer verzióinak 10-es vagy újabb. Tiltsa le, kibővített védett mód
+
+\*\*\*Szükséges [további konfigurációs](how-to-connect-sso-quick-start.md#browser-considerations)
 
 >[!NOTE]
 >A Windows 10 esetén ajánlott használni [az Azure AD Join](../active-directory-azureadjoin-overview.md) az optimális egyszeri bejelentkezést az Azure AD számára.

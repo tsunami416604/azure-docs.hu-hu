@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: mbullwin
-ms.openlocfilehash: 7ba278a244327e717c114177cd8878cd00dfd7b4
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.openlocfilehash: 1bf716d4e5a37739de2e820725449be2576054ea
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46497909"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47038770"
 ---
 # <a name="using-search-in-application-insights"></a>Az Application Insights keresés használata
 Keresés az egyik szolgáltatása [Application Insights](app-insights-overview.md) keresse meg és Fedezze fel a telemetriai elem, például a lapmegtekintések, kivételek, vagy webes kérelmek küldéséhez használt. És megtekintheti a nyomkövetési naplók és eseményeket, amelyek van kódolva.
@@ -123,8 +123,8 @@ Az alábbiakban a keresési kifejezéseket is használhatja:
 | Mintalekérdezés | Következmény |
 | --- | --- |
 | `apple` |Az időtartomány, amelynek mezői tartalmazzák az "apple" szó az összes esemény keresése |
-| `apple AND banana` <br/>`apple banana` |Mindkét szót tartalmazó események keresése. Használja a tőke "és" nem "és". |
-| `apple OR banana` |Keresse meg vagy szót tartalmazó események. Használja a "Vagy", sem "vagy".<br/>Rövid űrlapot. |
+| `apple AND banana` <br/>`apple banana` |Mindkét szót tartalmazó események keresése. Használja a tőke "és" nem "és". <br/>Rövid űrlapot. |
+| `apple OR banana` |Keresse meg vagy szót tartalmazó események. Használja a "Vagy", sem "vagy". |
 | `apple NOT banana` |Események, amelyek tartalmaznak egy szót, míg a másikon nem található. |
 
 ## <a name="sampling"></a>Mintavételezés

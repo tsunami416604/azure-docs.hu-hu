@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: sngun
-ms.openlocfilehash: b54a302c022a8af84c1964c13ffadc52b45c4ca4
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: b7908f9f9aef51857f0ffb07102e1df245b7a259
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43696819"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47064458"
 ---
 # <a name="azure-cosmos-db-serverless-database-computing-using-azure-functions"></a>Az Azure Cosmos DB: Kiszolgáló nélküli adatbázis-használat az Azure Functions használatával
 
@@ -110,15 +110,12 @@ Ezek mindegyikét a használati esetek, a függvény rendelkezik leválasztott m
 ## <a name="tooling"></a>Eszköztámogatás
 
 Az Azure Portalon, és a Visual Studio 2017 Azure Cosmos DB és az Azure Functions közötti natív integrációnak érhető el.
-* Az Azure Functions portálon létrehozhat egy Azure Cosmos DB-eseményindítóval. Gyors útmutatásért lásd: [egy Azure Cosmos DB-eseményindító létrehozása az Azure Portalon](https://aka.ms/cosmosdbtriggerportalfunc) ![egy Azure Cosmos DB-eseményindító létrehozása az Azure Functions portálon](./media/serverless-computing-database/azure-function-cosmos-db-trigger.png) 
-* Az Azure Functions portálon is hozzáadhat az Azure Cosmos DB bemeneti kötések és a kimeneti kötések más típusú eseményindítókat. Gyors útmutatásért lásd: [strukturálatlan adatokat az Azure Functions és a Cosmos DB Store](../azure-functions/functions-integrate-store-unstructured-data-cosmosdb.md).
-    ![Az Azure Functions portálon hozzon létre egy Azure Cosmos DB-eseményindító](./media/serverless-computing-database/function-portal-input-binding.png)
-*   Az Azure Cosmos DB-portálon egy Azure Cosmos DB-eseményindító adhat hozzá egy meglévő Azure-függvényalkalmazást ugyanabban az erőforráscsoportban.
-    ![Az Azure Functions portálon hozzon létre egy Azure Cosmos DB-eseményindító](./media/serverless-computing-database/cosmos-db-portal.png)
-* A Visual Studio 2017 létrehozhat egy Azure Cosmos DB-eseményindító integrált sablonnal:
+
+* Az Azure Functions portálon létrehozhat egy Azure Cosmos DB-eseményindítóval. Gyors útmutatásért lásd: [egy Azure Cosmos DB-eseményindító létrehozása az Azure Portalon](https://aka.ms/cosmosdbtriggerportalfunc).
+* Az Azure Cosmos DB-portálon egy Azure Cosmos DB-eseményindító adhat hozzá egy meglévő Azure-függvényalkalmazást ugyanabban az erőforráscsoportban.
+* A Visual Studio 2017 használatával is létrehozhat egy Azure Cosmos DB az eseményindító a [Azure Functions Tools for Visual Studio 2017](../azure-functions/functions-develop-vs.md):
 
     >[!VIDEO https://www.youtube.com/embed/iprndNsUeeg]
-
 
 ## <a name="why-choose-azure-functions-integration-for-serverless-computing"></a>Miért érdemes választani az Azure Functions-integráció a kiszolgáló nélküli számítástechnika?
 
@@ -152,7 +149,6 @@ Most csatlakoztassuk ahhoz az Azure Cosmos DB és az Azure Functions valós:
 
 * [Az Azure Portalon egy Azure Cosmos DB-eseményindító létrehozása](https://aka.ms/cosmosdbtriggerportalfunc)
 * [Az Azure Functions HTTP-trigger létrehozása Azure Cosmos DB bemeneti kötéssel](https://aka.ms/cosmosdbinputbind)
-* [Strukturálatlan adatok, az Azure Functions és a Cosmos DB Store](../azure-functions/functions-integrate-store-unstructured-data-cosmosdb.md)
 * [Az Azure Cosmos DB-kötések és triggerek](../azure-functions/functions-bindings-cosmosdb.md)
 
 

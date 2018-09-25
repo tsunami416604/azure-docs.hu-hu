@@ -12,14 +12,19 @@ ms.workload: data-services
 ms.custom: mvc, reference
 ms.topic: article
 ms.date: 09/14/2017
-ms.openlocfilehash: 5fe292b92557b4786d638ac21c7adb1f50566feb
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: 3edf49484e5bc05a297b8d8969632fb902aa1714
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35646343"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46953735"
 ---
 # <a name="split-column-by-example-transformation"></a>Oszlop felosztása példa átalakítása
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 Az átalakítási predictively felhasználói beavatkozást nem igénylő oszt fel egy jelentéssel bíró határokon belül oszlop tartalmát. A felosztási algoritmus a határok az oszlop tartalmát elemzése után választja ki. Ezek a hatókörök definiálni sikerült
 * Egy rögzített elválasztó
 * Több, tetszőleges elválasztó környezeteket, különösen megjelenő, vagy
@@ -182,4 +187,4 @@ A következő példában a súlyértékeket elkülönítése a mértékegységek
 
 ## <a name="technical-notes"></a>Technikai megjegyzések
 
-A felosztás átalakítási szolgáltatás alapul az **prediktív Program összefoglaló** technika. Ezzel a technikával az átalakítási programokat a bemeneti adatok alapján automatikusan küszöbértéket. A programok vannak synthesized tartomány-specifikus nyelven. A DSL elválasztó karakterek és a mezőket, amelyek különösen reguláris kifejezés környezetek alapul. Ez a technológia további információ található a [Ez a témakör legutóbbi közzétételét](https://www.microsoft.com/en-us/research/publication/automated-data-extraction-using-predictive-program-synthesis/). 
+A felosztás átalakítási szolgáltatás alapul az **prediktív Program összefoglaló** technika. Ezzel a technikával az átalakítási programokat a bemeneti adatok alapján automatikusan küszöbértéket. A programok vannak synthesized tartomány-specifikus nyelven. A DSL elválasztó karakterek és a mezőket, amelyek különösen reguláris kifejezés környezetek alapul. Ez a technológia további információ található a [Ez a témakör legutóbbi közzétételét](https://www.microsoft.com/research/publication/automated-data-extraction-using-predictive-program-synthesis/). 

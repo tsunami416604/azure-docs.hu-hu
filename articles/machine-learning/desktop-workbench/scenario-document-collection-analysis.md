@@ -11,14 +11,19 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/20/2017
-ms.openlocfilehash: 29f493449d48df26919a98452fa7f832d653d45e
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ROBOTS: NOINDEX
+ms.openlocfilehash: 762955103aeb48eb8a9b62f4e3ffe193bba71a38
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37861785"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46947217"
 ---
 # <a name="document-collection-analysis"></a>Dokumentumgyűjtemény elemzése
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 
 Ez a forgatókönyv bemutatja, hogyan összesítése, valamint a dokumentumok, ideértve például a kifejezés, tanulási, a témakör a modellezési és témakör modell elemzése Azure Machine Learning Workbench használatával nagyszámú elemzése. Az Azure Machine Learning Workbench könnyen méretezhető nagyon nagy méretű dokumentum egy dokumentumgyűjteményben regisztrálásához biztosít, és betanítása és finomhangolása a különböző számítási környezeteket, és a helyi számítási az adatelemző virtuális gépek Spark-fürthöz modelljeit mechanizmusokat biztosít. A Jupyter notebooks belül az Azure Machine Learning Workbench által biztosított és egyszerű fejlesztését.
 
@@ -60,7 +65,7 @@ A machine learning technikák/ebben a forgatókönyvben használt algoritmy:
 
 Ez a példa futtatásához az Előfeltételek a következők:
 
-* Győződjön meg arról, hogy megfelelően telepítette, [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) követve a [telepítése és létrehozási rövid útmutató](../service/quickstart-installation.md).
+* Győződjön meg arról, hogy megfelelően telepítette, [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) követve a [telepítése és létrehozási rövid útmutató](quickstart-installation.md).
 
 * Ebben a példában minden számítási környezetben is futhat. Azonban javasoljuk, hogy legalább futtatása a Többmagos gépen 16GB memória, és 5GB szabad lemezterület.
 

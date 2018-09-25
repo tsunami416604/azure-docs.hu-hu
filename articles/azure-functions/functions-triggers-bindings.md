@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 05/24/2018
 ms.author: glenga
-ms.openlocfilehash: e3f2cc24a3ff765a33d27bbe5a43ca9d5a229e1b
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: cc965073863375d76efb969ad66cf5750c9755bb
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44092955"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46969427"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Az Azure Functions eseményindítók és kötések fogalmak
 
@@ -160,7 +160,7 @@ Az egyes fejlesztési környezetek kell explicit módon *regisztrálása* egy k�
 |Visual Studio 2017 használatával C# osztálytár|[NuGet-eszközök](#c-class-library-with-visual-studio-2017)|[NuGet-eszközök](#c-class-library-with-visual-studio-2017)|
 |A Visual Studio Code C# osztálytár|–|[A .NET Core parancssori felület használata](#c-class-library-with-visual-studio-code)|
 
-A következő kötéstípusok kivételek, amelyek nem igényelnek explicit regisztrálása, mert automatikusan regisztrálva vannak az összes verziója és környezetek: HTTP, az időzítő és az Azure Storage (blobok, üzenetsorok és táblák). 
+A következő kötéstípusok kivételek, amelyek nem igényelnek explicit regisztrálása, mert automatikusan regisztrálva vannak az összes verziója és környezetek: HTTP és időzítőhöz.
 
 ### <a name="azure-portal-development"></a>Azure portal-fejlesztés
 

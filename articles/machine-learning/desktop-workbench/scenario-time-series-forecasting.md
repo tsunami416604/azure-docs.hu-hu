@@ -16,14 +16,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: anta
-ms.openlocfilehash: 3f32c9048c4b2002e7672b46a4f39e86ffa7b98e
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: 934d37783165c2e57dcabd0ff764747e1ab4b65e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35645214"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46946861"
 ---
 # <a name="energy-demand-time-series-forecasting"></a>Energiaszükséglet időbeli előrejelzése
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 
 
 Egy műveletsorozatot megfigyelések a jövőbeli értékek előrejelzésére feladatának idősorozat-előrejelzés. Ez gyakori probléma és alkalmazások számos iparágban. Például a kereskedelmi cégek kell jövőbeli termék értékesítés-előrejelzést, így azok hatékony rendezheti az ellátási láncok az igényeknek. Ehhez hasonlóan csomag kézbesítési vállalatok kell megbecsülni azok a szolgáltatások iránti igény, úgy tudják tervezni munkaerő-követelmények és időben kézbesítési útvonalakat. Sok esetben a pénzügyi kockázatok pontos előrejelzéseket jelentős lehet. Előrejelzés ezért gyakran kritikus fontosságú üzleti tevékenységhez.
@@ -57,7 +62,7 @@ Ebben a forgatókönyvben a machine learning-előrejelzési megoldás energiasz�
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Egy [Azure-fiók](https://azure.microsoft.com/free/) (az ingyenes próbaverziók érhető el).
-- Egy telepített példánya [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) következő a [rövid telepítési útmutatójában](../service/quickstart-installation.md) telepítse a programot, és hozzon létre egy munkaterületet.
+- Egy telepített példánya [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) következő a [rövid telepítési útmutatójában](quickstart-installation.md) telepítse a programot, és hozzon létre egy munkaterületet.
 - Ez a példa feltételezi, hogy az Azure ML Workbench futtatja a Windows 10-es [Docker-motor](https://www.docker.com/) helyileg telepítve. Ha macOS használ, a nagymértékben ugyanezek az utasítások érvényesek.
 - Az Azure Machine Learning Operacionalizálás telepítve a helyi környezet beállítása és a egy modellkezelési fiókot ez leírtak szerint létrehozott [útmutató](./model-management-configuration.md).
 - Ez a minta igényel a Pandas telepítés 0.20.3 verzióra frissíteni vagy újabb és matplotlib telepítéséhez. Kattintson a *parancssor megnyitása* származó a *fájl* menüjében a Workbench, és futtassa a következő parancsokat a függőségek telepítéséhez:

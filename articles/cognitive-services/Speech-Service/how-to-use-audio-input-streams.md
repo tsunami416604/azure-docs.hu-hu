@@ -1,142 +1,76 @@
 ---
-title: AudioInputStream fogalmak
-description: A AudioInputStream API-funkcióinak áttekintése.
+title: Beszéd SDK hangbemeneti stream fogalmak
+description: A beszédfelismerés SDK hang bemeneti stream API-funkcióinak áttekintése.
 titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
 author: fmegen
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: article
-ms.date: 06/07/2018
+ms.date: 09/24/2018
 ms.author: fmegen
-ms.openlocfilehash: b3e12fbc616c8d67b557102c6094467e119a23f1
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 6c2d7c5787305f60b73ab83ea17367b04e03ac12
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39281905"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46985180"
 ---
-# <a name="about-the-audio-input-stream-api"></a>Tudnivalók a hanganyag bemeneti stream API
+# <a name="about-the-speech-sdk-audio-input-stream-api"></a>A beszédfelismerés SDK hang kapcsolatos bemeneti stream API
 
-A **hang bemeneti Stream** API lehetővé teszi a audiostreamek lejátszásával eseménysorozatot az felismerő helyett a mikrofon vagy a bemeneti fájl API-k használatával.
+A beszédfelismerés SDK **hang bemeneti Stream** API lehetővé teszi a audiostreamek lejátszásával eseménysorozatot az felismerő helyett a mikrofon vagy a bemeneti fájl API-k használatával.
 
-## <a name="api-overview"></a>Az API áttekintése
+A következő lépések szükségesek, ha bemenetét hang használatával:
 
-Az API-t használ a két összetevőt a `AudioInputStream` (a nyers hang adatok) és a `AudioInputStreamFormat`.
+- Azonosítsa az audio-adatfolyam formátuma. A formátum támogatnia kell a Speech SDK és a Speech. Jelenleg csak a következő konfiguráció használata támogatott:
 
-A `AudioInputStreamFormat` hang adatok formátumát határozza meg. A standard összehasonlíthatók `WAVEFORMAT` wave fájlok a Windows-szerkezet.
+  A PCM formátum, egy csatornát, másodpercenként 32000 bájt / másodperc, 16000 minták hangmintát két blokk igazítása (16 bites beleértve egy minta margóinak), 16 bit / minta.
 
-  - `FormatTag`
+  A megfelelő kódot az SDK hangformátum létrehozása a következőhöz hasonló:
 
-    A hanganyag formátumát. A beszédfelismerés SDK jelenleg csak a támogatja `format 1` (PCM - növekvő bájtsorrendű).
+  ```
+  byte channels = 1;
+  byte bitsPerSample = 16;
+  int samplesPerSecond = 16000;
+  var audioFormat = AudioStreamFormat.GetWaveFormatPCM(samplesPerSecond, bitsPerSample, channels);
+  ```
 
-  - `Channels`
+- Ellenőrizze, hogy a kód megfelelően ezek a specifikációk hang nyers tud biztosítani. Hangbemeneti forrás adatait nem felel meg a támogatott formátumok, ha a hanganyag átkódolt a szükséges formátumban kell lennie.
 
-    A csatornák száma. A jelenlegi speech service támogatja a csak egy csatorna (monó) hang anyagot.
+- Hozzon létre saját hang bemeneti stream rácsvezérlőből származó osztályt `PullAudioInputStreamCallback`. Alkalmazzon a `Read()` és `Close()` tagokat. A pontos függvényfej nyelvfüggő, de a kódot a kódminta hasonlóan néz ki:
 
-  - `SamplesPerSec`
+  ```
+   public class ContosoAudioStream : PullAudioInputStreamCallback {
+      ContosoConfig config;
 
-    A mintavételi gyakoriság. Egy tipikus mikrofon rögzítése rendelkezik 16000 minták száma másodpercenként.
+      public ContosoAudioStream(const ContosoConfig& config) {
+          this.config = config;
+      }
 
-  - `AvgBytesPerSec`
+      public size_t Read(byte *buffer, size_t size) {
+          // returns audio data to the caller.
+          // e.g. return read(config.YYY, buffer, size);
+      }
 
-    Átlagos bájtok száma másodpercenként, számítással `SamplesPerSec * Channels * ceil(BitsPerSample, 8)`. Bájtok átlagos száma másodpercenként audiostreamek lejátszásával, amely a változó bitsebességre való átkódolása használata esetén eltérők lehetnek.
+      public void Close() {
+          // close and cleanup resources.
+      }
+   };
+  ```
 
-  - `BlockAlign`
+- Hozzon létre egy hang-konfigurációt a hang alapján formátum és a bemeneti stream. A felismerő létrehozásakor adja át a rendszeres beszédfelismerési és a hang bemeneti konfigurációt is. Példa:
 
-    Egy egyetlen képkockájának mérete számítással `Channels * ceil(wBitsPerSample, 8)`. Kitöltés, mert a tényleges érték nagyobb, mint ez az érték lehet.
+  ```
+  var audioConfig = AudioConfig.FromStreamInput(new ContosoAudioStream(config), audioFormat);
 
-  - `BitsPerSample`
+  var speechConfig = SpeechConfig.FromSubscription(...);
+  var recognizer = new SpeechRecognizer(speechConfig, audioConfig);
 
-    A bit / minta. Egy tipikus hang stream 16 bit / minta (CD minőségi) használja.
+  // run stream through recognizer
+  var result = await recognizer.RecognizeOnceAsync();
 
-A `AudioInputStream` alaposztály felülírja a rendszer az egyéni stream adapter. Ez az adapter van, ezek a függvények végrehajtásához:
-
-   - `GetFormat()`
-
-     Ez a függvény neve beolvasni az audio-adatfolyam formátuma. Lekéri egy mutatót a AudioInputStreamFormat pufferbe.
-
-   - `Read()`
-
-     Ez a funkció le adatokat az audio-adatfolyamot nevezzük. Egy paraméter értéke az audio adatokat másolni a puffer mutató elemnek. A második paraméter és a puffer mérete. A függvény a puffert a másolt bájtok számát adja vissza. A visszatérési érték `0` azt jelzi, hogy a konce datového proudu.
-
-   - `Close()`
-
-     Ez a függvény neve gombra kattintva zárja be az audio-adatfolyamot.
-
-## <a name="usage-examples"></a>Használati példák
-
-Általában a következő lépést is igényel, hang bemeneti streamekhez használatakor:
-
-  - Azonosítsa az audio-adatfolyam formátuma. A formátum támogatnia kell az SDK és a speech. Jelenleg a következő konfigurációt támogat:
-
-    Formát zvuku egy címkét (PCM), egy csatorna, másodpercenként 16000 minták 32000 bájt / másodperc, két blokk igazítása (16 bites beleértve egy minta margóinak), 16 bit / minta
-
-  - Ellenőrizze, hogy a kód biztosíthat a nyers hangadatokat feltárhatja, hogy a fenti adatait tartalmazza. Hangbemeneti forrás adatait nem felel meg a támogatott formátumok, ha a hanganyag átkódolt a szükséges formátumban kell lennie.
-
-  - Az egyéni hang bemeneti stream osztály származtatott `AudioInputStream`. Alkalmazzon a `GetFormat()`, `Read()`, és `Close()` műveletet. A pontos függvényfej nyelvfüggő, de a kódot a kódminta hasonlóan néz ki:
-
-    ```
-     public class ContosoAudioStream : AudioInputStream {
-        ContosoConfig config;
-
-        public ContosoAudioStream(const ContosoConfig& config) {
-            this.config = config;
-        }
-
-        public void GetFormat(AudioInputStreamFormat& format) {
-            // returns format data to the caller.
-            // e.g. format.FormatTag = config.XXX;
-            // ...
-        }
-
-        public size_t Read(byte *buffer, size_t size) {
-            // returns audio data to the caller.
-            // e.g. return read(config.YYY, buffer, size);
-        }
-
-        public void Close() {
-            // close and cleanup resources.
-        }
-     };
-    ```
-
-  - A bemeneti audio-adatfolyam használata:
-
-    ```
-    var contosoStream = new ContosoAudioStream(contosoConfig);
-
-    var factory = SpeechFactory.FromSubscription(...);
-    var recognizer = CreateSpeechRecognizerWithStream(contosoStream);
-
-    // run stream through recognizer
-    var result = await recognizer.RecognizeAsync();
-
-    var text = result.GetText();
-
-    // In some languages you need to delete the stream explicitly.
-    // delete contosoStream;
-    ```
-
-  - Néhány nyelven a `contosoStream` elismerését befejeződése után explicit módon kell törölni. Nem lehet engedélyezni a AudioStream, mielőtt a teljes bemeneti olvasható. Az egy forgatókönyv- `StopContinuousRecognitionAsync` és `StopContinuousRecognitionAsync` egy ebben a példában szemléltetett fogalom van szükség:
-
-    ```
-    var contosoStream = new ContosoAudioStream(contosoConfig);
-
-    var factory = SpeechFactory.FromSubscription(...);
-    var recognizer = CreateSpeechRecognizerWithStream(contosoStream);
-
-    // run stream through recognizer
-    await recognizer.StartContinuousRecognitionAsync();
-
-    // ERROR: do not delete the contosoStream before ending recognition!
-    // delete contosoStream;
-
-    await recognizer.StopContinuousRecognitionAsync();
-
-    // OK: Safe to delete the contosoStream.
-    // delete contosoStream;
-    ```
+  var text = result.GetText();
+  ```
 
 ## <a name="next-steps"></a>További lépések
 

@@ -1,144 +1,143 @@
 ---
-title: Ad hoc jelentéskészítési lekérdezések futtatása több Azure SQL-adatbázisok közötti |} Microsoft Docs
-description: Ad hoc jelentéskészítési lekérdezések futtatása egy több-bérlős app példa több SQL-adatbázisoknál.
-keywords: sql database-oktatóanyag
+title: Alkalmi jelentéskészítő lekérdezések futtatása több Azure SQL-adatbázis |} A Microsoft Docs
+description: Alkalmi jelentéskészítő lekérdezések futtatása több SQL-adatbázisban egy több-bérlős alkalmazás példában.
 services: sql-database
-author: stevestein
-manager: craigg
 ms.service: sql-database
-ms.custom: scale out apps
-ms.workload: Inactive
-ms.tgt_pltfrm: na
+ms.subservice: scenario
+ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: AyoOlubeko
 ms.author: AyoOlubeko
-ms.openlocfilehash: 95ea5f2a40bd629384e1bc1f7d707eb30d9eaf5f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.reviewer: sstein
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: 5b1ceeac5d3887d5c199e642a0e26aa4ffab4452
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34644273"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47055438"
 ---
-# <a name="run-ad-hoc-analytics-queries-across-multiple-azure-sql-databases"></a>Ad hoc elemzési lekérdezések futtatása több Azure SQL-adatbázis
+# <a name="run-ad-hoc-analytics-queries-across-multiple-azure-sql-databases"></a>Alkalmi elemzési lekérdezések futtatása több Azure SQL-adatbázis
 
-Ebben az oktatóanyagban elosztott lekérdezéseket futtat a bérlő teljes szétosztva adatbázisok ad hoc interaktív jelentés engedélyezése. Ezeket a lekérdezéseket insights megbúvó a Wingtip jegyek SaaS-alkalmazás napi működési adatokat nyerhet ki. Ehhez a információkinyerés, a kiszolgáló telepítése egy további elemzés adatbázist, és rugalmas lekérdezési használatával engedélyezhető az elosztott lekérdezések.
+Ebben az oktatóanyagban, elosztott lekérdezések futtatása teljes készletét bérlői adatbázisokat ad-hoc interaktív jelentések engedélyezéséhez. Ezek a lekérdezések képesek kivonni a Wingtip Tickets SaaS-alkalmazás napi működési adataiban rejtőző fontos értesüléseket. Ehhez az alábbi információkinyerés, további elemzési adatbázis üzembe helyezése a kiszolgáló és a rugalmas lekérdezés használatával engedélyezhető az elosztott lekérdezések.
 
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 
-> * Az ad hoc jelentési adatbázis központi telepítése
-> * Az összes bérlői az adatbázisok közötti elosztott lekérdezések futtatása
+> * Az alkalmi jelentéskészítő adatbázis üzembe helyezése
+> * Elosztott lekérdezések futtatása az összes bérlői adatbázison
 
 
 Az oktatóanyag teljesítéséhez meg kell felelnie az alábbi előfeltételeknek:
 
-* A Wingtip jegyek SaaS több-bérlős adatbázis alkalmazás telepítve van. Kevesebb mint öt perc alatt telepítéséhez lásd: [központi telepítése és vizsgálja meg a Wingtip jegyek SaaS több-bérlős adatbázis-alkalmazás](saas-multitenantdb-get-started-deploy.md)
+* A Wingtip Tickets SaaS több-bérlős adatbázis-alkalmazás telepítve van. Kevesebb mint öt perc alatt üzembe helyezéséhez lásd: [üzembe helyezés a Wingtip Tickets SaaS több-bérlős adatbázis-alkalmazás és megismerése](saas-multitenantdb-get-started-deploy.md)
 * Az Azure PowerShell telepítve van. A részletekért lásd: [Ismerkedés az Azure PowerShell-lel](https://docs.microsoft.com/powershell/azure/get-started-azureps)
-* SQL Server Management Studio (SSMS) telepítve van. Töltse le és telepítse az SSMS [töltse le az SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms).
+* Az SQL Server Management Studio (SSMS) telepítve van. Töltse le és az SSMS telepítése [töltse le az SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms).
 
 
-## <a name="ad-hoc-reporting-pattern"></a>Ad hoc jelentések minta
+## <a name="ad-hoc-reporting-pattern"></a>Ad hoc jelentéskészítés minta
 
-![ad hoc jelentéskészítési minta](media/saas-multitenantdb-adhoc-reporting/adhocreportingpattern_shardedmultitenantDB.png)
+![jelentéskészítési adhoc-minta](media/saas-multitenantdb-adhoc-reporting/adhocreportingpattern_shardedmultitenantDB.png)
 
-SaaS-alkalmazásokhoz elemezheti a hatalmas mennyiségű központilag a felhőben tárolt adatok bérlő. Az elemzések fedi fel a művelet és az alkalmazás használatát. Ezek insights szolgáltatás fejlesztési, használhatóság fejlesztések és egyéb befektetések az alkalmazások és szolgáltatások is ismerteti.
+SaaS-alkalmazások hatalmas mennyiségű bérlői adatok tárolása központilag a felhőben is elemezhet. Az elemzések segítséget nyújt a műveletet, és az alkalmazás használati információk feltárásában. Ezen elemzési funkcióinak fejlesztését, használhatóságuk javítását és más befektetéseket az alkalmazások és szolgáltatások is végigvezeti.
 
-Ezeknek az adatoknak egyetlen több bérlős adatbázisban történő elérése könnyű, de nem olyan egyszerű, ha méretezve akár több ezer adatbázis között vannak elosztva. Egyik módszer az, hogy használjon [rugalmas lekérdezési](sql-database-elastic-query-overview.md), amely lehetővé teszi, hogy a közös séma adatbázisok elosztott készleteit között lekérdezése. Ezeket az adatbázisokat is szétosztását másik erőforráscsoport-sablonok és előfizetések között. Még egy közös bejelentkezési bontsa ki az adatokat az adatbázisból hozzáféréssel kell rendelkeznie. Rugalmas lekérdezés használja egyetlen *head* , amelyben külső táblázatokat adatbázis, amely a táblák vagy nézetek az elosztott (bérlői) adatbázisok tükrözik. Az ebbe a központi adatbázisba küldött lekérdezések le lesznek fordítva elosztott lekérdezési terv készítéséhez, a lekérdezés részei pedig igény szerint le lesznek küldve a bérlői adatbázisokba. Rugalmas lekérdezési a katalógus-adatbázis a shard térkép összes bérlői adatbázis helyének meghatározásához használja. A telepítő és a lekérdezés is egyszerű szabványos [Transact-SQL](https://docs.microsoft.com/sql/t-sql/language-reference), és támogatja a Power BI és Excel alkalmi lekérdezése.
+Ezeknek az adatoknak egyetlen több bérlős adatbázisban történő elérése könnyű, de nem olyan egyszerű, ha méretezve akár több ezer adatbázis között vannak elosztva. Egyik módszere az, hogy használjon [rugalmas lekérdezés](sql-database-elastic-query-overview.md), ami lehetővé teszi az adatbázisok közös sémával rendelkező elosztott illenek lekérdezése. Ezeknek az adatbázisoknak eltérő erőforráscsoportokban és előfizetésekben szét lehetnek osztva. Még egy közös bejelentkezési adatok kinyerése az összes adatbázishoz hozzáféréssel kell rendelkeznie. Rugalmas lekérdezés használja egyetlen *fő* adatbázis, amelyben definiált külső táblák tükröző táblák vagy nézetek az elosztott (bérlői) adatbázisok. Az ebbe a központi adatbázisba küldött lekérdezések le lesznek fordítva elosztott lekérdezési terv készítéséhez, a lekérdezés részei pedig igény szerint le lesznek küldve a bérlői adatbázisokba. Rugalmas lekérdezés a katalógus-adatbázisban a szegmenstérkép használatával az összes bérlői adatbázisok helyének meghatározásához. Telepítés és a lekérdezés magától értetődnek szabványok használatával [Transact-SQL](https://docs.microsoft.com/sql/t-sql/language-reference), és támogatja az eszközök, mint például a Power BI és az Excel ad hoc lekérdezését.
 
-A bérlői adatbázisok közötti lekérdezések elosztásával rugalmas lekérdezési élő termelési adatok azonnali betekintést biztosít. Azonban rugalmas lekérdezési potenciálisan sok adatbázisok adatait kéri le, mert lekérdezés-késleltetés néha nál is magasabb lehet egy több-bérlős adatbázisba küldött egyenértékű lekérdezések. Győződjön meg arról, a Tervező lekérdezésekre minimalizálása érdekében a visszaadott adatokat. Rugalmas lekérdezési gyakran leginkább megfelelő, a kis adatmennyiségek valós idejű, szemben a gyakran használt épület vagy összetett elemzési lekérdezések vagy jelentések lekérdezésre. Ha a lekérdezések nem is kell végrehajtani, tekintse meg a [végrehajtási terv](https://docs.microsoft.com/sql/relational-databases/performance/display-an-actual-execution-plan) a lekérdezés részét a távoli adatbázis leküldött megjelenítéséhez. És felmérheti, mennyi adatot ad vissza. Előfordulhat, hogy bonyolult elemzésfeldolgozási jobb igénylő lekérdezések a kibontott bérlői adatok elemzési lekérdezések optimalizált adatbázisba történő mentése szolgálja ki. SQL-adatbázis és az SQL Data Warehouse a sikerült ilyen az analytics-adatbázist tárolni.
+Lekérdezések a bérlői adatbázisok közötti elosztásával, a rugalmas lekérdezés éles adatok azonnali betekintést nyújt. Azonban mivel rugalmas lekérdezés lekéri a potenciálisan sok adatbázis adatait, lekérdezések késése néha lehet magasabb, mint a megfelelő, egy egyetlen több bérlős adatbázisban küldött lekérdezések. Győződjön meg arról, a Tervező lekérdezések a visszaadott adat. Rugalmas lekérdezés gyakran leginkább megfelelő, a lekérdezés, ellentétben a gyakran használt épület vagy összetett elemzési lekérdezések vagy jelentések valós idejű adatokat kis mennyiségű. Ha a lekérdezések nem is kell végrehajtani, tekintse meg a [végrehajtási terv](https://docs.microsoft.com/sql/relational-databases/performance/display-an-actual-execution-plan) milyen a lekérdezés részeként már leküldte a rendszer a távoli adatbázis megtekintéséhez. És felmérheti a visszaadott adatok mennyiségét. Lehet, hogy jobb összetett analitikus feldolgozást igénylő lekérdezések kiszolgálása az internetszolgáltatójuk által a kinyert bérlő adatainak mentése az adatbázisba, amely elemzési lekérdezések van optimalizálva. SQL Database és az SQL Data Warehouse sikerült futtatni az analitikai adatbázis.
 
-Ebben a mintában az elemzés az ismertetése a [bérlői analytics oktatóanyag](saas-multitenantdb-tenant-analytics.md).
+Ez a minta Analytics ismertetése a [bérlői elemzések – oktatóanyag](saas-multitenantdb-tenant-analytics.md).
 
-## <a name="get-the-wingtip-tickets-saas-multi-tenant-database-application-source-code-and-scripts"></a>Az alkalmazás forráskódjához Wingtip jegyek SaaS több-bérlős adatbázis és a parancsfájlok
+## <a name="get-the-wingtip-tickets-saas-multi-tenant-database-application-source-code-and-scripts"></a>A Wingtip Tickets SaaS több-bérlős adatbázis forráskódjához és parancsfájlok
 
-A Wingtip jegyek SaaS több-bérlős adatbázis parancsfájlok és az alkalmazás forráskódjához érhetők el a [WingtipTicketsSaaS-MultitenantDB](https://github.com/microsoft/WingtipTicketsSaaS-MultiTenantDB) GitHub-tárház. Tekintse meg a [általános útmutatást](saas-tenancy-wingtip-app-guidance-tips.md) töltse le és feloldása a Wingtip jegyek Szolgáltatottszoftver-parancsfájlok lépéseit.
+A Wingtip Tickets SaaS több-bérlős adatbázis parancsfájlok és az alkalmazás forráskódjának érhető el a [WingtipTicketsSaaS-MultitenantDB](https://github.com/microsoft/WingtipTicketsSaaS-MultiTenantDB) GitHub-adattárban. Tekintse meg a [általános útmutatást](saas-tenancy-wingtip-app-guidance-tips.md) töltse le és a Wingtip Tickets SaaS-parancsfájlok feloldása.
 
-## <a name="create-ticket-sales-data"></a>A jegy értékesítési adatok létrehozása
+## <a name="create-ticket-sales-data"></a>Hozzon létre jegyet értékesítési adatok
 
-Ennél is érdekesebb megoldást adatkészlet lekérdezéseinek futtatásához, a szolgáltatásjegy-generátor futtatásával hozzon létre jegy értékesítési adatait.
+Lekérdezések futtatásához egy érdekesebb adatkészlet, a jegy-generátor futtatásával hozzon létre jegyet értékesítési adatokat.
 
-1. Az a *PowerShell ISE*, nyissa meg a... \\Tanulási modulok\\működési Analytics\\ad hoc Reporting\\*bemutató-AdhocReporting.ps1* parancsfájlt, és állítsa be a következő értékeket:
-   * **$DemoScenario** = 1, **események minden helyszínek, a jegyektől beszerzési**.
-2. Nyomja le az **F5** futtassa a parancsfájlt, és a jegyet értékesítési generálásához. A parancsfájl futása közben, a lépések az ebben az oktatóanyagban. A jegy adatokat lekérdezni a *futtassa az ad hoc elosztott lekérdezések* területen, várjon, amíg befejeződik a jegy generátor.
+1. Az a *PowerShell ISE-ben*, nyissa meg a... \\Tanulási modulok\\működési elemzések\\ad hoc ad hoc jelentéskészítés\\*Demo-AdhocReporting.ps1* szkriptet, és állítsa be a következő értékeket:
+   * **$DemoScenario** = 1, **jegyek beszerzése minden helyszínen**.
+2. Nyomja meg **F5** futtassa a szkriptet, és jegyeladásokkal létrehozásához. A parancsfájl futása közben továbbra is ebben az oktatóanyagban a lépéseket. A jegy adatainak lekérdezése abban a *az ad hoc az elosztott lekérdezések futtatása* szakaszban, ezért Várjon, amíg a jegy generátor végrehajtásához.
 
-## <a name="explore-the-tenant-tables"></a>A tenant táblákban felfedezés 
+## <a name="explore-the-tenant-tables"></a>Ismerje meg a tenant táblákban 
 
-A Wingtip jegyek SaaS több-bérlős adatbázis-alkalmazásban bérlők egy hibrid bérlői felügyeleti modell - bérlő adatok esetén vagy egy több-bérlős vagy egy bérlői adatbázist tárolja, és helyezheti át a kettő között vannak tárolva. Az összes bérlői az adatbázisok közötti lekérdezésekor fontos, hogy rugalmas lekérdezési az adatok is kezelheti, mintha a bérlő szilánkos egyetlen logikai adatbázis része. 
+A Wingtip Tickets SaaS több-bérlős adatbázis alkalmazásban bérlők egy hibrid bérlő felügyeleti modell - bérlői adatok esetén akár egy több-bérlős adatbázis vagy egy egybérlős adatbázis tárolja, és áthelyezhetők a kettő között vannak tárolva. Ha a lekérdezés az összes bérlői adatbázison, fontos, hogy rugalmas lekérdezés az adatok is kezelheti, mint ha a bérlő által horizontálisan skálázott egyetlen logikai adatbázis része. 
 
-Ebben a mintában eléréséhez összes bérlői tábla tartalmaz egy *VenueId* oszlop, amely azonosítja, amely az adatok bérlői tartozik. A *VenueId* mint bevezetni az oszlop egy egyedi értéket a helyszínére nevét, de bármely megközelítés kivonatát használható. A megoldás, hasonlóan ahhoz, ahogy a bérlői kulcs használatát a katalógus értékei. Táblázatot tartalmazó *VenueId* lekérdezések parallelize, és küldje le őket a megfelelő távoli bérlői adatbázis le rugalmas Query használják. Ez jelentősen csökkenti az adatmennyiséget ad vissza, és a teljesítmény növekedését eredményezi, különösen akkor, ha nincsenek a több bérlő, amelyek esetén az egybérlős adatbázisok tárolják.
+Ez a minta elérése érdekében minden tenant táblákban közé tartozik egy *VenueId* oszlop, amely azonosítja a bérlői adatok tartozik. A *VenueId* mint a helyszín neve, de bármely megközelítés kivonatát vezessen be egy egyedi értéket az oszlop használható. Ez a megközelítés akkor jön létre a bérlőkulcsot a katalógus használata hasonló. Tartalmazó táblák *VenueId* Elastic Query lekérdezések párhuzamosíthatja, és küldje le őket a megfelelő távoli bérlői adatbázis le használnak. Ez jelentősen csökkenti a adja vissza, és a teljesítmény növekedését eredményezi, különösen, ha több bérlő számára, amelynek az adatait egyetlen új bérlő-adatbázisokban tárolt adatok mennyisége.
 
-## <a name="deploy-the-database-used-for-ad-hoc-distributed-queries"></a>Az alkalmi elosztott lekérdezések az adatbázis központi telepítése
+## <a name="deploy-the-database-used-for-ad-hoc-distributed-queries"></a>Az ad-hoc elosztott lekérdezésekhez használt adatbázis üzembe helyezése
 
-Ebben a gyakorlatban telepíti a *adhocreporting* adatbázis. Ez az a központi adatbázis, amely tartalmazza az összes bérlői az adatbázisok közötti lekérdezéshez használt séma. Az adatbázis telepítve van a meglévő kiszolgáló, amely a mintaalkalmazást-felügyelettel kapcsolatos összes adatbázisának használt kiszolgáló.
+Ebben a gyakorlatban üzembe helyezi a *adhocreporting* adatbázis. Ez az összes bérlői adatbázison lekérdezések küldésére használatos sémát tartalmazó fő adatbázisban. A meglévő kiszolgáló, a használt mintaalkalmazás felügyelettel kapcsolatos összes adatbázis-kiszolgáló telepítve van az adatbázis.
 
-1. Nyissa meg... \\Tanulási modulok\\működési Analytics\\ad hoc Reporting\\*bemutató-AdhocReporting.ps1* a a *PowerShell ISE* és állítsa be a a következő értékeket:
-   * **$DemoScenario** = 2, **központi telepítése az Ad hoc analytics adatbázis**.
+1. Nyissa meg... \\Tanulási modulok\\működési elemzések\\ad hoc ad hoc jelentéskészítés\\*Demo-AdhocReporting.ps1* a a *PowerShell ISE-ben* és állítsa be a a következő értékeket:
+   * **$DemoScenario** = 2, **központi telepítése az Ad hoc elemzési adatbázis**.
 
-2. Nyomja le az **F5** futtassa a parancsfájlt, és hozzon létre a *adhocreporting* adatbázis.
+2. Nyomja meg **F5** futtassa a szkriptet, és hozzon létre a *adhocreporting* adatbázis.
 
 A következő szakaszban séma hozzáadása az adatbázishoz, elosztott lekérdezések futtatására használható.
 
-## <a name="configure-the-head-database-for-running-distributed-queries"></a>Az elosztott lekérdezések futtatásához a "head" adatbázis konfigurálása
+## <a name="configure-the-head-database-for-running-distributed-queries"></a>Elosztott lekérdezések futtatására a "fő" adatbázis konfigurálása
 
-Ebben a gyakorlatban hozzáadja az ad hoc jelentési adatbázis, amely lehetővé teszi, hogy minden bérlő az adatbázisok közötti lekérdezése séma (a külső adatforrás és a külső tábla-definíciók).
+Ebben a gyakorlatban séma (a külső adatforrás és a külső tábla definíciókat) ad hozzá az ad-hoc jelentési adatbázis, amely lehetővé teszi az összes bérlői adatbázison lekérdezése.
 
-1. Nyissa meg az SQL Server Management Studio eszközt, és az előző lépésben létrehozott ad hoc jelentési adatbázis kapcsolódjon. Az adatbázis neve nem *adhocreporting*.
-2. Nyissa meg a ...\Learning Modules\Operational Analytics\Adhoc Reporting\ *Initialize-AdhocReportingDB.sql* szolgáltatáshoz az ssms.
-3. Tekintse át az SQL-parancsfájlt, és vegye figyelembe a következőket:
+1. Nyissa meg az SQL Server Management Studiót, és a jelentéskészítési Adhoc-adatbázishoz, az előző lépésben létrehozott. Az adatbázis neve nem *adhocreporting*.
+2. Nyissa meg a ...\Learning Modules\Operational Analytics\Adhoc Reporting\ *Initialize-AdhocReportingDB.sql* az ssms-ben.
+3. Tekintse át az SQL-szkriptet, és vegye figyelembe a következőket:
 
-   Rugalmas lekérdezés eléréséhez a bérlő-adatbázisok mindegyike esetében egy adatbázishoz kötődő hitelesítő adatot használja. Ezeket a hitelesítő adatokat kell lennie az összes adatbázis elérhető, és kell általában rendelkeznek a minimális jogosultságok szükségesek ahhoz, e ad hoc lekérdezéseket.
+   Rugalmas lekérdezés adatbázishoz kötődő hitelesítő adatokat használja a bérlői adatbázisok mindegyike eléréséhez. Ez a hitelesítő adat elérhető lesz az összes adatbázist kell, és kell általában biztosítani a minimális jogosultságok szükségesek ahhoz, ezek eseti lekérdezéseket.
 
-    ![hitelesítő adatok létrehozása](media/saas-multitenantdb-adhoc-reporting/create-credential.png)
+    ![hitelesítő adat létrehozása](media/saas-multitenantdb-adhoc-reporting/create-credential.png)
 
-   A katalógus-adatbázis segítségével a külső adatforrásaként, lekérdezések a lekérdezés futásakor a katalógusban regisztrált összes adatbázis terjesztése. Kiszolgáló neve nem egyezik az egyes központi telepítések, mert az inicializálási parancsfájlja a katalógus-adatbázis helyét lekérdezi az aktuális kiszolgáló lekérésével (@@servername) Ha a parancsfájl végrehajtása.
+   A katalógus-adatbázis segítségével a külső adatforrás, lekérdezések oszlanak meg a lekérdezés futtatásakor a katalógusban regisztrált összes adatbázishoz. Kiszolgálónév nem egyezik az egyes központi telepítések, mert ez a szkript inicializálása a katalógus-adatbázis helye lekérdezi az aktuális kiszolgáló lekérésével (@@servername), a szkript végrehajtása.
 
     ![külső adatforrás létrehozása](media/saas-multitenantdb-adhoc-reporting/create-external-data-source.png)
 
-   A tenant táblákban hivatkozó külső táblázatokat **TERJESZTÉSI = SHARDED(VenueId)**. Ez egy lekérdezést egy adott irányítja *VenueId* a megfelelő adatbázishoz, és javítja a teljesítményt a sok forgatókönyvben, a következő szakaszban ismertetett módon.
+   A tenant táblákban hivatkozó külső táblák van definiálva **TERJESZTÉSI = SHARDED(VenueId)**. Ez a lekérdezés egy adott irányítja *VenueId* a megfelelő adatbázishoz és javítható a teljesítmény számos, a következő szakaszban látható módon.
 
     ![külső táblák létrehozása](media/saas-multitenantdb-adhoc-reporting/external-tables.png)
 
-   A helyi tábla *VenueTypes* , amely létre és töltődik fel. A táblázatban az összes bérlői adatbázis közös, így ide helyi táblaként, ki van töltve a közös adatok ábrázolhatók. Egyes lekérdezések esetén ez csökkentheti a bérlő adatbázisok közötti áthelyezése adatmennyiség és a *adhocreporting* adatbázis.
+   A helyi tábla *VenueTypes* , amelyet létrehozott és kitölti a rendszer. A referenciatábla adatok szokás az összes bérlői adatbázisban, így jelölhető ide helyi táblázatként, ki lesz töltve a common data. Bizonyos lekérdezések esetén ez csökkentheti a bérlői adatbázisok között áthelyezett adatok mennyisége és a *adhocreporting* adatbázis.
 
-    ![tábla létrehozása](media/saas-multitenantdb-adhoc-reporting/create-table.png)
+    ![Tábla létrehozása](media/saas-multitenantdb-adhoc-reporting/create-table.png)
 
-   Ha hivatkozási táblák ezen a módon kikapcsolja, feltétlenül frissítése a következő tábla sémáját és az adatokat, amikor frissíti a bérlő adatbázisok.
+   Ha referencia táblák adja meg ezen a módon kikapcsolja, mindenképpen frissítse a táblasémát és adatokat a bérlői adatbázisok frissítésekor.
 
-4. Nyomja le az **F5** futtassa a parancsfájlt, és inicializálni a *adhocreporting* adatbázis. 
+4. Nyomja meg **F5** futtassa a szkriptet, és inicializálása a *adhocreporting* adatbázis. 
 
-Most elosztott lekérdezések futtatását, valamint insights összegyűjtése minden bérlők között!
+Most már az elosztott lekérdezések futtatását, valamint az összes bérlőre kiterjedő gyűjtsön információt!
 
-## <a name="run-ad-hoc-distributed-queries"></a>Ad hoc elosztott lekérdezések futtatása
+## <a name="run-ad-hoc-distributed-queries"></a>Ad-hoc elosztott lekérdezések futtatása
 
-Most, hogy a *adhocreporting* adatbázis állított be, lépjen tovább, és néhány elosztott lekérdezések futtatása. Például a végrehajtási terv kra, ha a lekérdezés feldolgozása zajlik. 
+Most, hogy a *adhocreporting* adatbázis állított be, lépjen tovább, és egyes elosztott lekérdezések futtatása. Például, ha a lekérdezés feldolgozása történik szeretné jobban megismerni a végrehajtási terv. 
 
-További részletek a terv ikonok vizsgálatakor ellenőrizze a végrehajtási terv, mutasson. 
+A végrehajtási terv vizsgálatával, amikor a kurzort a csomag ikonokat részleteiről. 
 
-1. A *SSMS*, nyissa meg... \\Tanulási modulok\\működési Analytics\\ad hoc Reporting\\*bemutató-AdhocReportingQueries.sql*.
-2. Biztosan csatlakozni tudjanak a **adhocreporting** adatbázis.
-3. Válassza ki a **lekérdezés** menüre, majd **tényleges végrehajtási terv tartalmazza**
-4. Jelölje ki a *mely helyszínek jelenleg regisztrált?* lekérdezést, és nyomja le az **F5**.
+1. A *SSMS*, nyissa meg... \\Tanulási modulok\\működési elemzések\\ad hoc ad hoc jelentéskészítés\\*Demo-AdhocReportingQueries.sql*.
+2. Győződjön meg arról, hogy csatlakozik az **adhocreporting** adatbázis.
+3. Válassza ki a **lekérdezés** menüben, majd kattintson **tényleges végrehajtási terv belefoglalása**
+4. Jelölje ki a *mely helyszínek jelenleg regisztrált?* lekérdezést, majd nyomja meg **F5**.
 
-   A lekérdezés visszaadja a teljes helyszínére lista, hogyan ábrázoló, és könnyen már egyetlen bérlő számára átfogó lekérdezése, és térjen vissza az adatokat az egyes bérlők.
+   A lekérdezés visszaadja a teljes helyszín listában ábrázoló milyen gyorsan és könnyen az összes bérlőre kiterjedő lekérdezéséhez és az egyes bérlők adatokat adja vissza.
 
-   Vizsgálja meg a terv és a teljes költség van-e a távoli lekérdezés, mert azt még egyszerűen az egyes bérlői adatbázis is, majd válassza a helyszínére információkat.
+   A terv vizsgálata, és figyelje meg, hogy a teljes költség a távoli lekérdezés, mert folyamatban van egyszerűen fog minden bérlői adatbázis és a helyszín információkat kiválasztásával.
 
    ![Válassza ki * a dbo. Helyszínek](media/saas-multitenantdb-adhoc-reporting/query1-plan.png)
 
-5. Válassza ki a következő lekérdezést, és nyomja le az **F5**.
+5. Válassza ki a következő lekérdezést, majd nyomja meg **F5**.
 
-   Ez a lekérdezés csatlakozik a bérlő adatbázisokból és a helyi adatok *VenueTypes* tábla (helyi, mert van egy táblát a *adhocreporting* adatbázis).
+   Ez a lekérdezés csatlakozik a bérlői adatbázisok és a helyi adatait *VenueTypes* tábla (helyi, mert van egy táblát a *adhocreporting* adatbázis).
 
-   Vizsgálja meg a terv és a legtöbb költsége van-e a távoli lekérdezés mivel azt a bérlő helyszínére info (dbo. Helyszínek), majd hajtsa végre a gyors helyi csatlakozzon a helyi *VenueTypes* tábla a következő felhasználóbarát név megjelenítéséhez.
+   Nézze meg a terv, és figyelje meg, hogy a költség többsége a távoli lekérdezés mivel tudjuk lekérdezni a minden bérlő helyszín info (dbo. Helyszínek), majd hajtsa végre a gyors helyi csatlakozzon a helyi *VenueTypes* tábla rövid nevének megjelenítéséhez.
 
-   ![Csatlakozás a helyi és távoli adatokkal](media/saas-multitenantdb-adhoc-reporting/query2-plan.png)
+   ![Csatlakozás a helyi és távoli adatok](media/saas-multitenantdb-adhoc-reporting/query2-plan.png)
 
-6. Most válassza ki a *mely napján volt a legtöbb a jegyektől eladott?* lekérdezést, és nyomja le az **F5**.
+6. Most válassza ki a *mely napon lettek a legtöbb jegyek értékesített?* lekérdezést, majd nyomja meg **F5**.
 
-   Ez a lekérdezés egy kicsit bonyolultabb csatlakoztatása és összesítési beállítások végzi. Fontos megjegyezni, hogy távolról történik, az adatfeldolgozás nagy, de ebben az esetben azt érdekében ismét csak azokat a sorokat, igazolnia kell, az egyes helyszínekkel összesített jegy pénztári száma naponta csak egyetlen sort ad vissza.
+   Ez a lekérdezés hajtja végre egy kicsit összetettebb csatlakoztatása és összesítésének megadására szolgál. Fontos megjegyezni, hogy a feldolgozás a legtöbb távolról történik, de ismét, hogy térnek vissza csak azokat a sorokat kell, minden egyes helyszín összesített jegy értékesítés száma naponta csak egy egyetlen sor visszaadása.
 
    ![lekérdezés](media/saas-multitenantdb-adhoc-reporting/query3-plan.png)
 
@@ -150,9 +149,9 @@ Ennek az oktatóanyagnak a segítségével megtanulta a következőket:
 > [!div class="checklist"]
 
 > * Elosztott lekérdezések futtatása az összes bérlői adatbázison
-> * Az ad hoc jelentési adatbázis központi telepítése, és adja hozzá a séma elosztott lekérdezések futtatásához.
+> * Egy ad-hoc jelentési adatbázis üzembe helyezése, és adja hozzá a séma, elosztott lekérdezések futtatását.
 
-Most a [bérlői Analytics oktatóanyag](saas-multitenantdb-tenant-analytics.md) való kibontása adatokba összetettebb elemzés feldolgozásának külön analytics adatbázisába.
+Most a [bérlői elemzések – oktatóanyag](saas-multitenantdb-tenant-analytics.md) összetettebb analytics feldolgozási külön analitikai adatbázisba való kinyerésekor adatok feltárására.
 
 ## <a name="additional-resources"></a>További források
 

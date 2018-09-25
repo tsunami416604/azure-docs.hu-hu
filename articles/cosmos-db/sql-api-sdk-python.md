@@ -1,6 +1,6 @@
 ---
-title: 'Azure Cosmos DB: SQL Python API-t, az SDK és erőforrások |} Microsoft Docs'
-description: Tudnivalók az SQL Python API és SDK, beleértve a kiadási dátum, használatból való kivonást dátumok és az Azure Cosmos DB Python SDK verziói között végrehajtott módosításokat.
+title: 'Az Azure Cosmos DB: SQL Python API, SDK és -erőforrások |} A Microsoft Docs'
+description: Mindent megtudhat a SQL Python API-t és az SDK kiadási dátum, kivezetési dátum és az Azure Cosmos DB Python SDK minden verziója közötti végzett módosításokat.
 services: cosmos-db
 author: rnagpal
 manager: kfile
@@ -9,20 +9,20 @@ ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.devlang: python
 ms.topic: reference
-ms.date: 5/8/2018
+ms.date: 9/24/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9a79c1951fb8cfbfc208942835ee87b91b763c44
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 8bfe815b9664e499f7ae458dfc42b88199e0ecb4
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34798185"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47037932"
 ---
-# <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>Az Azure Cosmos DB Python SDK API-SQL: kibocsátási megjegyzések és erőforrások
+# <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>Az Azure Cosmos DB Python SDK SQL API-hoz: kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-sdk-dotnet.md)
-> * [.NET-módosítás adatcsatorna](sql-api-sdk-dotnet-changefeed.md)
+> * [.NET-módosítási hírcsatorna](sql-api-sdk-dotnet-changefeed.md)
 > * [.NET Core](sql-api-sdk-dotnet-core.md)
 > * [Node.js](sql-api-sdk-node.md)
 > * [Aszinkron Java](sql-api-sdk-async-java.md)
@@ -31,127 +31,133 @@ ms.locfileid: "34798185"
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST erőforrás-szolgáltató](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](https://msdn.microsoft.com/library/azure/dn782250.aspx)
-> * [BulkExecutor - .NET](sql-api-sdk-bulk-executor-dot-net.md)
-> * [BulkExecutor - Java](sql-api-sdk-bulk-executor-java.md)
+> * [BulkExecutor – .NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [BulkExecutor – Java](sql-api-sdk-bulk-executor-java.md)
 
 <table>
 
-<tr><td>**SDK letöltése**</td><td>[PyPI](https://pypi.python.org/pypi/pydocumentdb)</td></tr>
+<tr><td>**SDK letöltése**</td><td>[PyPI](https://pypi.org/project/azure-cosmos)</td></tr>
 
-<tr><td>**API-JÁNAK dokumentációja**</td><td>[Python API referenciadokumentációt tartalmaz](https://docs.microsoft.com/python/api/pydocumentdb?view=azure-python)</td></tr>
+<tr><td>**API-dokumentáció**</td><td>[Python API dokumentációja](https://docs.microsoft.com/python/api/azure-cosmos)</td></tr>
 
-<tr><td>**SDK telepítési utasításokat**</td><td>[Python SDK telepítési utasításokat](http://azure.github.io/azure-documentdb-python/)</td></tr>
+<tr><td>**SDK telepítési utasításokat**</td><td>[Python SDK telepítési utasításokat](https://github.com/Azure/azure-cosmos-python)</td></tr>
 
-<tr><td>**Hozzájárul az SDK**</td><td>[GitHubon](https://github.com/Azure/azure-documentdb-python)</td></tr>
+<tr><td>**Hozzájárul az SDK-t**</td><td>[GitHubon](https://github.com/Azure/azure-cosmos-python)</td></tr>
 
-<tr><td>**Első lépések**</td><td>[Ismerkedés a Python SDK-val](sql-api-python-application.md)</td></tr>
+<tr><td>**Első lépések**</td><td>[A Python SDK – első lépések](sql-api-python-application.md)</td></tr>
 
-<tr><td>**Aktuális támogatott platform**</td><td>[Python 2.7](https://www.python.org/downloads/) és [Python 3.5](https://www.python.org/downloads/)</td></tr>
+<tr><td>**Aktuális támogatott platform**</td><td>[Python 2.7-es](https://www.python.org/downloads/) és [Python 3.5.](https://www.python.org/downloads/)</td></tr>
 </table></br>
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
+
+### <a name="a-name300300"></a><a name="3.0.0"/>3.0.0-s
+* Többrégiós írási műveletek támogatása.
+* Namespace azure.cosmos módosult.
+* Tároló és elem, document_client cosmos_client új nevet kapott: gyűjtemény és dokumentum fogalmakat. 
+
 ### <a name="a-name232232"></a><a name="2.3.2"/>2.3.2
-* A kapcsolódási problémák alapértelmezett újrapróbálkozások támogatása.
+* Támogatás hozzáadva a alapértelmezett újrapróbálkozások kapcsolati problémák.
 
 ### <a name="a-name231231"></a><a name="2.3.1"/>2.3.1
-* Frissített hivatkozás Azure Cosmos DB helyett az Azure DocumentDB dokumentációját.
+* Frissített dokumentáció az Azure Cosmos DB helyett az Azure DocumentDB-referenciáját.
 
 ### <a name="a-name230230"></a><a name="2.3.0"/>2.3.0
-* Az SDK-verzió Azure Cosmos DB emulátorának elérhetősége a legújabb verziója szükséges a letölthető https://aka.ms/cosmosdb-emulator.
+* Az SDK-verziója letölthető Azure Cosmos DB Emulatort elérhető legújabb verziója szükséges https://aka.ms/cosmosdb-emulator.
 
 ### <a name="a-name221221"></a><a name="2.2.1"/>2.2.1
-* Hiba a javítás összesített a szótárhoz.
-* A tisztítás hibajavítás törtvonalat az erőforrás-hivatkozás.
-* A hozzáadott tesztek a Unicode kódolással.
+* Hibajavítás összesített szótár.
+* Hibajavítás a tisztítás perjeleket az erőforrás-hivatkozás.
+* Tesztek hozzáadva a Unicode kódolással.
 
 ### <a name="a-name220220"></a><a name="2.2.0"/>2.2.0
-* Egy új konzisztenciaszint támogatása ConsistentPrefix nevezik.
+* Egy új konzisztenciaszint támogatása az új ConsistentPrefix nevezik.
 
 
 ### <a name="a-name210210"></a><a name="2.1.0"/>2.1.0
-* Összesítési lekérdezéseket (COUNT, MIN, MAX, SUM és átlagos) támogatása.
-* A beállítás a letiltás SSL ellenőrzési Cosmos DB emulatorban futtatásakor hozzá.
-* Függő kérések modul kell lennie, pontosan 2.10.0 korlátozásának eltávolítva.
-* Minimális átviteli sebességet 2500 RU/mp 10,100 RU/mp a particionált gyűjtemények szintűre csökkent.
-* Támogatja a tárolt eljárás végrehajtása során parancsfájl naplózásának engedélyezéséről.
-* REST API-verziót a "2017 bumped-01-19' ebben a kiadásban.
+* Összesítés lekérdezések (száma, MIN, MAX, SUM és átlagos) támogatása.
+* SSL-ellenőrzés letiltása, szemben a Cosmos DB Emulator futtatásakor lehetőség hozzáadva.
+* A korlátozás függő kérelmek modul pontosan 2.10.0 kell eltávolítani.
+* Süllyesztett minimálisan 2500 RU/s 10,100 RU/s a particionált gyűjtemények átviteli sebességet.
+* Támogatás hozzáadva a tárolt eljárás végrehajtása során parancsfájl naplózás engedélyezése.
+* REST API-verzió bumped a 2017-01-19' ebben a kiadásban.
 
 ### <a name="a-name201201"></a><a name="2.0.1"/>2.0.1
-* A dokumentációs célú Szerkesztői módosítja.
+* A Szerkesztői módosítások végzett dokumentáció megjegyzéseket.
 
 ### <a name="a-name200200"></a><a name="2.0.0"/>2.0.0
-* Python 3.5 támogatása.
-* Támogatja a kapcsolatkészletezést kérelmek modul használatával.
-* A munkamenet-konzisztencia támogatása.
-* FELSŐ/ORDERBY lekérdezések particionált gyűjtemények támogatása.
+* Támogatás hozzáadva a Python 3.5-ös verzióját.
+* Támogatás hozzáadva a kapcsolatkészletezést kérelmek modul használatával.
+* Munkamenet-konzisztencia támogatása.
+* Támogatás hozzáadva a particionált gyűjtemények lekérdezése felső/ORDERBY.
 
 ### <a name="a-name190190"></a><a name="1.9.0"/>1.9.0
-* Szabályozottan halmozott kérelmek hozzáadott újrapróbálkozási házirend támogatása. (A szabályozottan halmozott kérelmek egy kérelem aránya túl nagy kivétel, hibakód 429 kapnak.) Alapértelmezés szerint Azure Cosmos DB újrapróbálja kilenc alkalommal az egyes kérelmek 429. Hibakód: a rendszer észlelt, amikor az retryAfter idő a válaszfejlécet érvényesítenie. A rögzített újrapróbálkozási időköz most már beállítható a RetryOptions tulajdonság részeként a ConnectionPolicy objektum Ha azt szeretné, figyelmen kívül hagyja a próbálkozások közötti kiszolgáló által visszaadott retryAfter idő. Azure Cosmos-adatbázis most megvárja, legfeljebb 30 másodpercig (függetlenül újrapróbálkozások száma) leszabályozta, és visszaadja a választ 429. Hibakód: minden egyes kérelemhez. Most is felülbírálható lesz a RetryOptions tulajdonságban ConnectionPolicy objektumon.
-* Cosmos DB most adja vissza x-ms-szabályozási--újrapróbálkozások és x-ms-throttle-retry-wait-time-ms a válaszfejlécek minden kérelemben a késleltetési jelöléséhez újra számát és a próbálkozások közötti várta a kérelem összesített idő szerint.
-* Eltávolította a RetryPolicy osztály és a megfelelő tulajdonságával (retry_policy), a document_client osztály kitett, és ehelyett bevezetett teszi ki a ConnectionPolicy osztály, amely felülbírálhatja az alapértelmezett beállítások némelyike használható RetryOptions tulajdonsága RetryOptions osztály.
+* A hozzáadott újrapróbálkozási házirend támogatása szabályozott kérelmeinek száma. (Szabályozott kérelmeinek kap egy kérelem aránya túl nagy kivétel, 429-es hibakód). Alapértelmezés szerint az Azure Cosmos DB újrapróbálkozik kilenc alkalommal az egyes kérések 429-es hibakód észlelt, amikor a válaszfejlécben retryAfter idő teljesítésére. Egy rögzített újrapróbálkozási időközt is most már beállíthat a RetryOptions tulajdonság részeként a ConnectionPolicy objektum Ha azt szeretné, figyelmen kívül hagyja a próbálkozások közötti kiszolgáló által visszaadott retryAfter idő. Az Azure Cosmos DB mostantól megvárja, legfeljebb 30 másodpercig az egyes kérelmek szabályozva lett (függetlenül az újrapróbálkozások számát), és visszaadja a választ, a 429-es hibakód. Ezúttal is felülbírálható ConnectionPolicy objektumon a RetryOptions tulajdonságban.
+* Cosmos DB mostantól adja vissza x-ms-szabályozás--újrapróbálkozások és x-ms-throttle-retry-wait-time-ms, ismételje meg a válaszfejlécek, a késleltetési jelölésére minden kérésben, száma és a kérelem összesített, az újrapróbálkozások közötti idő.
+* Ehelyett bevezetett az adatokhoz hozzáférést biztosító ConnectionPolicy osztály, amely segítségével írhatja felül a RetryOptions tulajdonságának RetryOptions osztály és eltávolította a RetryPolicy osztály és a megfelelő tulajdonság (retry_policy), a document_client osztály közzétéve a alapértelmezett újrapróbálkozási beállításokat.
 
 ### <a name="a-name180180"></a><a name="1.8.0"/>1.8.0
-* Több területi adatbázis fiókok támogatása.
+* Többrégiós adatbázisfiókhoz támogatása.
 
 ### <a name="a-name170170"></a><a name="1.7.0"/>1.7.0
-* Idő a Live(TTL) szolgáltatás dokumentumok támogatása.
+* Dokumentumok idő a Live(TTL) funkció támogatása.
 
 ### <a name="a-name161161"></a><a name="1.6.1"/>1.6.1
-* Hibajavítások kapcsolódó kiszolgálóoldali particionálás a partíciós kulcs elérési útja különleges karakterek engedélyezéséhez.
+* Hibajavítások kapcsolódó kiszolgálóoldali particionálást, hogy a speciális karakterek a partíciós kulcs elérési útja.
 
 ### <a name="a-name160160"></a><a name="1.6.0"/>1.6.0
-* Megvalósított [particionált gyűjtemények](partition-data.md) és [felhasználói teljesítményszintet](performance-levels.md). 
+* Megvalósított [particionált gyűjtemények](partition-data.md) és [felhasználó által definiált teljesítményszintek](performance-levels.md). 
 
 ### <a name="a-name150150"></a><a name="1.5.0"/>1.5.0
-* Kivonatoló & tartomány hozzáadása partícióazonosító feloldókat, elősegítve ezzel a horizontális alkalmazások között több partíciót.
+* Tartomány & ujjlenyomat hozzáadása, amelyek segítik a horizontális skálázás alkalmazásokat, hogy több partíción feloldók particionálásához.
 
 ### <a name="a-name142142"></a><a name="1.4.2"/>1.4.2
-* Upsert megvalósításához. Új UpsertXXX módszerek Upsert szolgáltatás támogatása érdekében adott hozzá.
-* Azonosító-alapú útválasztás megvalósítása. Nincs nyilvános API-módosítás, belső összes módosítását.
+* Upsert megvalósításához. Új UpsertXXX módszerek Upsert funkció támogatása érdekében adott hozzá.
+* Azonosító-alapú útválasztás megvalósítása. Nincs nyilvános API-módosítás, belső összes módosítást.
 
 ### <a name="a-name120120"></a><a name="1.2.0"/>1.2.0
-* Támogatja a földrajzi index.
-* Ellenőrzi az összes erőforrás id tulajdonság. Erőforrások azonosító nem tartalmazhat?, /, #, \, karaktereket vagy záró szóközt.
-* Új fejléc "index átalakítása folyamatban" hozzáadása ResourceResponse.
+* Támogatja a térinformatikai index.
+* Ellenőrzi az összes erőforrás id tulajdonsága. Az erőforrások azonosítóit nem tartalmazhat?, /, #, \, karaktereket vagy záró szóközzel.
+* ResourceResponse ad hozzá új fejléc "index átalakítási folyamat".
 
 ### <a name="a-name110110"></a><a name="1.1.0"/>1.1.0
-* V2 indexelési házirendet alkalmazza.
+* Indexelési házirend V2 valósítja meg.
 
 ### <a name="a-name101101"></a><a name="1.0.1"/>1.0.1
-* Proxy kapcsolatot támogat.
+* Proxy-kapcsolatot támogat.
 
 ### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
-* GA SDK.
+* ÁLTALÁNOSAN ELÉRHETŐ SDK-T.
 
-## <a name="release--retirement-dates"></a>Kiadás & használatból való kivonást dátumok
-A Microsoft biztosít értesítési legalább **12 hónapon keresztül** SDK eltávolítása érdekében vagy újabb támogatott verzióra való áttérés előtt.
+## <a name="release--retirement-dates"></a>Állapot tárolá & kivezetési dátum
+A Microsoft biztosít értesítési legalább **12 hónapig** kivonása egy SDK-t kiegyenlítse az a és újabb támogatott verzióra váltás előtt.
 
-Új szolgáltatásait és funkcióit és optimalizálás csak hozzá az aktuális SDK, így javasoljuk, hogy mindig a legújabb SDK verzióra frissít legkorábban lehető. 
+Új szolgáltatások és funkciók és optimalizálási lehetőségek csak hozzá az aktuális SDK-hoz, ezért javasoljuk, hogy mindig a legújabb SDK verzióra frissít leghamarabb lehető. 
 
-A Cosmos DB kivont SDK használatával a szolgáltatás vannak elutasította.
+Cosmos DB-hez a kivont SDK használatával bármilyen kérelmet a rendszer elutasítja a szolgáltatás által.
 
 > [!WARNING]
-> Az Azure SQL SDK for Python-es vagy korábbi összes verziója **1.0.0** volt használatból **2016. február 29-én**. 
+> Az Azure SQL SDK Pythonhoz készült korábbi összes verziók **1.0.0-s** án visszavontuk **2016. február 29-én**. 
 > 
 > 
 
 <br/>
 
-| Verzió | Kiadás dátuma | Kivezetési dátum |
+| Verzió | Kiadás dátuma | Visszavonás dátuma |
 | --- | --- | --- |
-| [2.3.2](#2.3.2) |2018. Előfordulhat, hogy 08. |--- |
+| [2.3.2](#2.3.2) |08 2018. május |--- |
 | [2.3.1](#2.3.1) |2017. december 21. |--- |
 | [2.3.0](#2.3.0) |2017. november 10. |--- |
-| [2.2.1](#2.2.1) |29. szeptember, 2017 |--- |
+| [2.2.1](#2.2.1) |2017. szeptember 29 |--- |
 | [2.2.0](#2.2.0) |2017. május 10. |--- |
-| [2.1.0](#2.1.0) |2017. Előfordulhat, hogy 01. |--- |
+| [2.1.0](#2.1.0) |01, 2017. május |--- |
 | [2.0.1](#2.0.1) |2016. október 30. |--- |
-| [2.0.0](#2.0.0) |2016. Szeptembertől 29. |--- |
+| [2.0.0](#2.0.0) |2016. szeptember 29-én |--- |
 | [1.9.0](#1.9.0) |2016. július 07. |--- |
-| [1.8.0](#1.8.0) |2016. június 14. |--- |
+| [1.8.0](#1.8.0) |2016. június 14-én |--- |
 | [1.7.0](#1.7.0) |2016. április 26. |--- |
-| [1.6.1](#1.6.1) |2016. április 08. |--- |
-| [1.6.0](#1.6.0) |2016. március 29. |--- |
+| [1.6.1](#1.6.1) |2016. április 08 |--- |
+| [1.6.0](#1.6.0) |2016. március 29-én |--- |
 | [1.5.0](#1.5.0) |2016. január 03. |--- |
 | [1.4.2](#1.4.2) |2015. október 06. |--- |
 | [1.4.1](#1.4.1) |2015. október 06. |--- |
@@ -159,15 +165,15 @@ A Cosmos DB kivont SDK használatával a szolgáltatás vannak elutasította.
 | [1.1.0](#1.1.0) |2015. július 09. |--- |
 | [1.0.1](#1.0.1) |2015. május 25. |--- |
 | [1.0.0](#1.0.0) |2015. április 07. |--- |
-| 0.9.4-prelease |2015. január 14. |2016. február 29. |
-| 0.9.3-prelease |2014. decemberi 09 |2016. február 29. |
-| 0.9.2-prelease |2014. november 25. |2016. február 29. |
-| 0.9.1-prelease |2014. szeptember 23. |2016. február 29. |
-| 0.9.0-prelease |2014. augusztus 21. |2016. február 29. |
+| 0.9.4-prelease |2015. január 14-én |2016. február 29-én |
+| 0.9.3-prelease |2014. december 09 |2016. február 29-én |
+| 0.9.2-prelease |2014. november 25. |2016. február 29-én |
+| 0.9.1-prelease |2014. szeptember 23. |2016. február 29-én |
+| 0.9.0-prelease |2014. augusztus 21-én |2016. február 29-én |
 
 ## <a name="faq"></a>GYIK
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>Lásd még
-A Cosmos DB kapcsolatos további információkért lásd: [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) szolgáltatás lapján. 
+Cosmos DB kapcsolatos további információkért lásd: [a Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) szolgáltatás lapján. 
 

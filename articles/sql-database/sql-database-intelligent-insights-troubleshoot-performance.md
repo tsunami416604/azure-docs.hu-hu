@@ -8,50 +8,50 @@ ms.reviewer: carlrab
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: conceptual
-ms.date: 09/14/2018
+ms.date: 09/20/2018
 ms.author: v-daljep
-ms.openlocfilehash: 9c2bb85d9c0bb02b7eb698dbee07f488c2ad0b62
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: b6e619f75ebf6ee58f3c259b665cd38c3546d2ff
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45733183"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47040635"
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>Intelligent Insights az Azure SQL Database teljesítménnyel kapcsolatos problémáinak elhárítása
 
-Ez az oldal nyújt információkat az Azure SQL Database teljesítménnyel kapcsolatos problémák észlelt a [Intelligent Insights](sql-database-intelligent-insights.md) adatbázis teljesítményének diagnosztikai naplója. Ez a diagnosztikai napló elküldött [Azure Log Analytics](../log-analytics/log-analytics-azure-sql.md), [Azure Event Hubs](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md), [Azure Storage](sql-database-metrics-diag-logging.md#stream-into-storage), vagy egy külső megoldás, riasztási és jelentéskészítési egyéni fejlesztők és üzemeltetők számára képességek.
+Ez az oldal információt nyújt az Azure SQL Database és a felügyelt példány teljesítménnyel kapcsolatos problémákat észlelt a [Intelligent Insights](sql-database-intelligent-insights.md) adatbázis teljesítményének diagnosztikai naplója. A diagnosztikai naplót telemetriát továbbítható legyen [Azure Log Analytics](../log-analytics/log-analytics-azure-sql.md), [Azure Event Hubs](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md), [Azure Storage](sql-database-metrics-diag-logging.md#stream-into-storage), vagy egy külső megoldás fejlesztési és üzemeltetési egyéni riasztási és jelentéskészítési képességeit.
 
 > [!NOTE]
-> Az első SQL Database teljesítményét hibaelhárítási útmutatója Intelligent Insights keresztül, tekintse meg a [ajánlott a hibaelhárítási folyamat](sql-database-intelligent-insights-troubleshoot-performance.md#recommended-troubleshooting-flow) folyamatábra ebben a dokumentumban.
+> Egy gyors SQL Database teljesítménye – hibaelhárítási útmutató Intelligent Insights használatával, lásd: a [ajánlott a hibaelhárítási folyamat](sql-database-intelligent-insights-troubleshoot-performance.md#recommended-troubleshooting-flow) folyamatábra ebben a dokumentumban.
 >
 
 ## <a name="detectable-database-performance-patterns"></a>Cserélhető eszközként észlelhetőnek adatbázis teljesítmény-minták
 
-Intelligent Insights automatikusan észleli a teljesítményproblémákat, az SQL Database, a lekérdezés végrehajtási várakozási időt, a hibák vagy a várakozási idő. Majd megjeleníti a diagnosztikai napló észlelt teljesítmény mintáit. Cserélhető eszközként észlelhetőnek teljesítmény-minták az alábbi táblázat foglalja össze:
+Intelligent Insights automatikusan észleli a teljesítményproblémákat lekérdezés végrehajtási várakozási időt, a hibák vagy a várakozási idő alapján az SQL Database és a felügyelt példány adatbázisok. Ez a diagnosztikai napló teljesítmény észlelt minták jelenít meg. Cserélhető eszközként észlelhetőnek teljesítmény-minták az alábbi táblázat foglalja össze.
 
-| Cserélhető eszközként észlelhetőnek teljesítmény minták | Használt kimeneti adattípus részletei |
-| :------------------- | ------------------- |
-| [Ért el erőforráskorlátok](sql-database-intelligent-insights-troubleshoot-performance.md#reaching-resource-limits) | Az elérhető erőforrások (dtu-k), adatbázis-feldolgozó szálak vagy a figyelt előfizetésekben érhető el az adatbázis-bejelentkezési munkamenetek felhasználását elérte a korlátok, amelyek hatására az SQL Database teljesítménnyel kapcsolatos problémák. |
-| [Számítási feladatok növekedése](sql-database-intelligent-insights-troubleshoot-performance.md#workload-increase) | Észlelt számítási feladatok növekedése vagy az adatbázis a számítási feladatok folyamatos felhalmozódásához, amely hatására az SQL Database teljesítménnyel kapcsolatos problémák. |
-| [Rendelkezésre álló memória mennyisége](sql-database-intelligent-insights-troubleshoot-performance.md#memory-pressure) | Feldolgozók által kért memória ad. kell várniuk az memórialefoglalások statisztikailag jelentős mennyiségű időt. Vagy nagyobb felhalmozódása a dolgozók által kért memória ad. létezik, amely hatással van az SQL Database teljesítményét. |
-| [Zárolás](sql-database-intelligent-insights-troubleshoot-performance.md#locking) | Túl sok adatbázis-zárolást észlelt, amely hatással van az SQL Database teljesítményét. |
-| [Nagyobb MAXDOP](sql-database-intelligent-insights-troubleshoot-performance.md#increased-maxdop) | A maximális párhuzamossági fokot (MAXDOP) megváltozott, és hatással van a lekérdezés-végrehajtási hatékonyságát. |
-| [Pagelatch versengés](sql-database-intelligent-insights-troubleshoot-performance.md#pagelatch-contention) | Pagelatch versengés észlelt, amely hatással van az SQL Database teljesítményét. Több szálon egyszerre kísérel meg hozzáférni az ugyanazon a memóriában puffer lapok. Megnövelt várakozási időt, az eredmény ami hatással van az SQL Database teljesítményét. |
-| [Hiányzó Index](sql-database-intelligent-insights-troubleshoot-performance.md#missing-index) | Egy hiányzó indexet problémát észlelt, amely hatással van az SQL Database teljesítményét. |
-| [Új lekérdezés](sql-database-intelligent-insights-troubleshoot-performance.md#new-query) | Egy új lekérdezést észlelt, ami hatással van az SQL Database általános teljesítménye. |
-| [Szokatlan várakozási statisztika](sql-database-intelligent-insights-troubleshoot-performance.md#unusual-wait-statistic) | Szokatlan adatbázis várakozási időt észlelt, amely hatással van az SQL Database teljesítményét. |
-| [A TempDB versengés](sql-database-intelligent-insights-troubleshoot-performance.md#tempdb-contention) | Több szálon próbálja meg elérni a szűk keresztmetszetet jelent, amely hatással van az SQL Database teljesítménye azonos tempDB-erőforrásokra. |
-| [Rugalmas készlet dtu-k hiánya](sql-database-intelligent-insights-troubleshoot-performance.md#elastic-pool-dtu-shortage) | Kevés a rendelkezésre álló Edtu a rugalmas készlet hatással van az SQL Database teljesítményét. |
-| [Regresszió megtervezése](sql-database-intelligent-insights-troubleshoot-performance.md#plan-regression) | Észlelt új terv vagy egy meglévő csomagot, a számítási feladat változását, amely hatással van az SQL Database teljesítményét. |
-| [Adatbázis-specifikus konfigurációs érték módosítása](sql-database-intelligent-insights-troubleshoot-performance.md#database-scoped-configuration-value-change) | A konfiguráció módosítása az adatbázis SQL Database teljesítményét befolyásolja. |
-| [Lassú ügyféloldali](sql-database-intelligent-insights-troubleshoot-performance.md#slow-client) | Egy alkalmazás lassú ügyfél, amely nem lehet felhasználni a kimeneti elég gyors az SQL Database-ből észlelt, amely hatással van az SQL Database teljesítményét. |
-| [Díjszabási szint alacsonyabb szintű](sql-database-intelligent-insights-troubleshoot-performance.md#pricing-tier-downgrade) | Egy árképzési szint alacsonyabb szintű művelet csökkent a rendelkezésre álló erőforrásokra, ami hatással van az SQL Database teljesítményét. |
+| Cserélhető eszközként észlelhetőnek teljesítmény minták | Az Azure SQL Database és rugalmas készletek leírása | Felügyelt példány található adatbázisok leírása |
+| :------------------- | ------------------- | ------------------- |
+| [Ért el erőforráskorlátok](sql-database-intelligent-insights-troubleshoot-performance.md#reaching-resource-limits) | Elküldött elérhető erőforrások (dtu-k), adatbázis-feldolgozó szálak vagy a figyelt előfizetésekben érhető el az adatbázis-bejelentkezési munkamenetek száma elérte a korlátokat. Ez befolyásolja az SQL Database teljesítményét. | Processzor-erőforrások fogyasztásának eléri-e felügyelt példány korlátok. Ez befolyásolja az adatbázis teljesítményét. |
+| [Számítási feladatok növekedése](sql-database-intelligent-insights-troubleshoot-performance.md#workload-increase) | Számítási feladatok növekedése vagy az adatbázis a számítási feladatok folyamatos felhalmozódásához volt észlelhető. Ez befolyásolja az SQL Database teljesítményét. | Számítási feladatok növekedése észlelhető. Ez befolyásolja az adatbázis teljesítményét. |
+| [Rendelkezésre álló memória mennyisége](sql-database-intelligent-insights-troubleshoot-performance.md#memory-pressure) | Feldolgozók által kért memória ad. kell várniuk az memórialefoglalások statisztikailag jelentős mennyiségű időt. Vagy nagyobb felhalmozódása a dolgozók által kért memória biztosít létezik. Ez befolyásolja az SQL Database teljesítményét. | Egy statisztikailag jelentős mennyiségű időt a feldolgozót, amelyek memóriát biztosít kért memórialefoglalások várnak. Ez befolyásolja az adatbázis teljesítményét. |
+| [Zárolás](sql-database-intelligent-insights-troubleshoot-performance.md#locking) | Túl sok adatbázis-zárolást észlelt az SQL Database teljesítményét. | Túl sok adatbázis-zárolást észlelt az adatbázis teljesítményét. |
+| [Nagyobb MAXDOP](sql-database-intelligent-insights-troubleshoot-performance.md#increased-maxdop) | A maximális párhuzamossági fokot (MAXDOP) megváltozott, ez hatással lenne a lekérdezés-végrehajtási hatékonyságát. Ez befolyásolja az SQL Database teljesítményét. | A maximális párhuzamossági fokot (MAXDOP) megváltozott, ez hatással lenne a lekérdezés-végrehajtási hatékonyságát. Ez befolyásolja az adatbázis teljesítményét. |
+| [Pagelatch versengés](sql-database-intelligent-insights-troubleshoot-performance.md#pagelatch-contention) | Több szálon egyszerre próbál hozzáférni az ugyanazon a memóriában puffer lapok megnövekedett várakozási időt eredményez, és pagelatch versengés okozza. Ez befolyásolja az SQL database teljesítményét. | Több szálon egyszerre próbál hozzáférni az ugyanazon a memóriában puffer lapok megnövekedett várakozási időt eredményez, és pagelatch versengés okozza. Ez befolyásolja az adatbázis teljesítményét. |
+| [Hiányzó Index](sql-database-intelligent-insights-troubleshoot-performance.md#missing-index) | Hiányzó index észlelt, amely hatással van az SQL database szolgáltatás teljesítményének. | Hiányzó indexet az adatbázis teljesítményét befolyásoló volt észlelhető. |
+| [Új lekérdezés](sql-database-intelligent-insights-troubleshoot-performance.md#new-query) | Új lekérdezés észlelhető, ez hatással lenne az SQL Database teljesítménye. | Új lekérdezés észlelhető, az általános adatbázis teljesítményét befolyásoló. |
+| [Szokatlan várakozási statisztika](sql-database-intelligent-insights-troubleshoot-performance.md#unusual-wait-statistic) | Szokatlan adatbázis várakozási időt észlelt, amely hatással van az SQL database szolgáltatás teljesítményének. | Szokatlan adatbázis várakozási időt észlelt az adatbázis teljesítményét. |
+| [A TempDB versengés](sql-database-intelligent-insights-troubleshoot-performance.md#tempdb-contention) | Több szálon elérni kívánt szűk keresztmetszetet okoz a TempDB erőforrást. Ez befolyásolja az SQL Database teljesítményét. | Több szálon elérni kívánt szűk keresztmetszetet okoz a TempDB erőforrást. Ez befolyásolja az adatbázis teljesítményét. |
+| [Rugalmas készlet dtu-k hiánya](sql-database-intelligent-insights-troubleshoot-performance.md#elastic-pool-dtu-shortage) | Kevés a rendelkezésre álló Edtu a rugalmas készlet SQL Database teljesítményét befolyásolja. | Nem érhető el a felügyelt példányt, mert használ Virtuálismag-modell. |
+| [Regresszió megtervezése](sql-database-intelligent-insights-troubleshoot-performance.md#plan-regression) | Új csomagot, vagy egy meglévő csomagot, a számítási feladat változását észlelte. Ez befolyásolja az SQL Database teljesítményét. | Új csomagot, vagy egy meglévő csomagot, a számítási feladat változását észlelte. Ez befolyásolja az adatbázis teljesítményét. |
+| [Adatbázis-specifikus konfigurációs érték módosítása](sql-database-intelligent-insights-troubleshoot-performance.md#database-scoped-configuration-value-change) | Az SQL Database konfigurációváltozás észlelt az adatbázis teljesítményét befolyásoló. | Konfigurációváltozás az adatbázison az adatbázis teljesítményét befolyásoló volt észlelhető. |
+| [Lassú ügyféloldali](sql-database-intelligent-insights-troubleshoot-performance.md#slow-client) | Lassú alkalmazás ügyfél nem képes elég gyorsan felhasználásához kimeneti az adatbázisból. Ez befolyásolja az SQL Database teljesítményét. | Lassú alkalmazás ügyfél nem képes elég gyorsan felhasználásához kimeneti az adatbázisból. Ez befolyásolja az adatbázis teljesítményét. |
+| [Díjszabási szint alacsonyabb szintű](sql-database-intelligent-insights-troubleshoot-performance.md#pricing-tier-downgrade) | Díjszabási szint alacsonyabb szintű művelet csökkent a rendelkezésre álló erőforrásokat. Ez befolyásolja az SQL Database teljesítményét. | Díjszabási szint alacsonyabb szintű művelet csökkent a rendelkezésre álló erőforrásokat. Ez befolyásolja az adatbázis teljesítményét. |
 
 > [!TIP]
 > Engedélyezze a folyamatos teljesítményoptimalizálás az SQL Database, [Azure SQL Database automatikus finomhangolása](https://docs.microsoft.com/azure/sql-database/sql-database-automatic-tuning). Ezt az egyedi funkciót az SQL Database beépített intelligenciával folyamatosan figyeli az SQL database, automatikusan hangolja az indexek, és lekérdezés végrehajtási terv javításokat vonatkozik.
 >
 
-Az alábbi szakasz ismerteti a fent felsorolt cserélhető eszközként észlelhetőnek teljesítmény minták részletesebben.
+Az alábbi szakasz ismerteti részletesebben cserélhető eszközként észlelhetőnek teljesítmény mintákat.
 
 ## <a name="reaching-resource-limits"></a>Ért el erőforráskorlátok
 
@@ -59,11 +59,11 @@ Az alábbi szakasz ismerteti a fent felsorolt cserélhető eszközként észlelh
 
 Ez a minta cserélhető eszközként észlelhetőnek teljesítmény egyesíti az elérhető erőforrás-korlátozások, a feldolgozó korlátozások és a munkamenet-korlátok elérése kapcsolatos teljesítményproblémák. Után ezen teljesítményprobléma észlel, egy leírást a diagnosztikai napló azt jelzi, hogy a teljesítménnyel kapcsolatos problémák kapcsolatos erőforrás, a feldolgozó vagy a munkamenet-korlátok.
 
-Az SQL Database erőforrásokat általában nevezzük [DTU-erőforrások](https://docs.microsoft.com/azure/sql-database/sql-database-what-is-a-dtu). Processzor- és i/o-(adat- és naplózási IO) erőforrások összesített mérésén állnak. Erőforráskorlátok elérése minta észlelésekor elismert lekérdezési teljesítmény romlását okozzák a mért erőforrás-korlátok bármelyikét elérése.
+Az SQL Database erőforrásokat általában hivatkozunk [DTU](https://docs.microsoft.com/azure/sql-database/sql-database-what-is-a-dtu) vagy [virtuális mag](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-service-tiers-vcore) erőforrásokat. Erőforráskorlátok elérése minta észlelésekor elismert lekérdezési teljesítmény romlását okozzák a mért erőforrás-korlátok bármelyikét elérése.
 
 A munkamenet-korlátok erőforrás azt jelzi, hogy az SQL Database elérhető egyidejű bejelentkezések száma. Ez a teljesítmény-minta rendszer ismeri fel, amikor az SQL Database-adatbázisokhoz csatlakozó alkalmazásokat elérte az adatbázis elérhető egyidejű bejelentkezések száma. Alkalmazás próbálja a használatához további előadások, mint amennyi rendelkezésre áll, adatbázis, a lekérdezés teljesítménye érintett.
 
-Feldolgozó korlátok elérése egy adott esetet erőforráskorlátok éri el, mert a rendelkezésre álló feldolgozók nem számít az a DTU-használatát. Feldolgozó korlátai, adatbázis elérése okozhat az erőforrás-specifikus várakozási időt, ami eredményez a lekérdezési teljesítmény romlását márkáik.
+Feldolgozó korlátok elérése egy adott esetet erőforráskorlátok éri el, mert a rendelkezésre álló feldolgozók nem számít az a dtu-k vagy virtuális mag használata. Feldolgozó korlátai, adatbázis elérése okozhat az erőforrás-specifikus várakozási időt, ami eredményez a lekérdezési teljesítmény romlását márkáik.
 
 ### <a name="troubleshooting"></a>Hibaelhárítás
 
@@ -283,7 +283,7 @@ Minden egyes adatbázis adatbázis-specifikus konfigurációs módosításokat i
 
 ### <a name="troubleshooting"></a>Hibaelhárítás
 
-A diagnosztikai kimenetek adatbázishoz kötődő konfigurációs változások naplózása nemrég elvégzett képest az előző hét nap-munkaterhelések viselkedésére teljesítményromlást okozó. Visszaállíthatja az előző értékek a konfigurációs módosítások. Mindaddig, amíg a kívánt számítási méretet is képes finomhangolása értékkel. Adatbázis-hatókör-konfigurációs értékeket az elfogadható teljesítmény hasonló adatbázisból másolhatja. Ha Ön nem lehet a teljesítményi hibák elhárítása, visszatérhet az alapértelmezett SQL-adatbázis alapértelmezett értékeket, és próbálja meg finomhangolására, ez a alapvető kezdve.
+A diagnosztikai kimenetek adatbázishoz kötődő konfigurációs változások naplózása nemrég elvégzett képest az előző hét nap-munkaterhelések viselkedésére teljesítményromlást okozó. Visszaállíthatja az előző értékek a konfigurációs módosítások. Emellett hangolhassa értékkel a kívánt teljesítményszintet eléréséig. Adatbázis-hatókör-konfigurációs értékeket az elfogadható teljesítmény hasonló adatbázisból másolhatja. Ha Ön nem lehet a teljesítményi hibák elhárítása, visszatérhet az alapértelmezett SQL-adatbázis alapértelmezett értékeket, és próbálja meg finomhangolására, ez a alapvető kezdve.
 
 Adatbázishoz kötődő konfiguráció, és módosítja a konfigurációt a T-SQL-szintaxis optimalizálására vonatkozó további információkért lásd: [Alter database scoped configuration (Transact-SQL)](https://msdn.microsoft.com/library/mt629158.aspx).
 

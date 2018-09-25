@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/16/2018
 ms.author: jdial
 ms.custom: include file
-ms.openlocfilehash: 4ab574f99f678683497b0f00b36abcda89991f88
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 673faff51c3d06e50941a6982a9f654c28598d86
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "43435593"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47006511"
 ---
 <a name="virtual-networking-limits-classic"></a>Az alábbi korlátozások kizárólag olyan hálózati erőforrásokra érvényesek, amelyek kezelése előfizetésenként, a klasszikus üzemi modellel történik. Ismerje meg, hogyan [megtekintheti az aktuális erőforrás-használat elleni az előfizetési korlátok](../articles/networking/check-usage-against-limits.md).
 
@@ -60,6 +60,8 @@ Az alábbi korlátozások kizárólag olyan hálózati erőforrásokra érvénye
 | Felhasználó által megadott útvonaltáblák |200 |
 | Felhasználó által megadott útvonalak száma útvonaltáblánként |400 |
 | Pont–hely kapcsolati főtanúsítványok száma VPN Gateway-példányonként |20 |
+| Virtuális hálózat koppint |100 |
+| Hálózati adapter KOPPINTSON konfigurációk száma virtuális hálózatonként KOPPINTSON |100 |
 
 #### <a name="publicip-address"></a>Nyilvános IP-cím korlátok
 

@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: menchi
-ms.openlocfilehash: 8f567ba43c1657783f9898863aef980627800481
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 0df1170079e66bda95e38bcf17dcce738269eeb0
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37436319"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47039379"
 ---
 # <a name="understand-and-use-module-twins-in-iot-hub"></a>Ismertetése és használati ikermodulokkal az IoT hubon
 
@@ -250,7 +250,7 @@ Címkék, kívánt tulajdonságok, jelentett tulajdonságok jsou JSON-objektumok
     }
     ```
 
-* Az összes karakterlánc-értékeket is lehet, legfeljebb 4 KB-os hossza.
+* Az összes karakterlánc-értékek legfeljebb 512 bájt hosszúságú lehet.
 
 ## <a name="module-twin-size"></a>Modul ikereszköz mérete
 Az IoT Hub kényszerít egy 8 KB-os korlátozás megfelelő a Összértékek az egyes `tags`, `properties/desired`, és `properties/reported`, kivéve a csak olvasható elemeket.

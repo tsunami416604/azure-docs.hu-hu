@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: cherylmc
-ms.openlocfilehash: 98cd606ce930624ec5c591ffd8f13e0feae1a6c4
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 657cad69fff66aaaeba9819569442981d229f644
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38688557"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46971127"
 ---
 # <a name="how-to-configure-bgp-on-an-azure-vpn-gateway-by-using-cli"></a>BGP konfigurálása Azure VPN Gateway-átjárók a parancssori felület használatával
 
@@ -55,7 +55,7 @@ Ebben a szakaszban szükség, mielőtt hajt végre a lépéseket bármely más k
 
 ### <a name="before-you-begin"></a>Előkészületek
 
-Telepítse a CLI-parancsok (2.0-s vagy újabb) legújabb verzióját. Információk a CLI-parancsok telepítéséről: [Az Azure CLI 2.0-s verziójának telepítése](/cli/azure/install-azure-cli) és [Bevezetés az Azure CLI 2.0-s verziójának használatába](/cli/azure/get-started-with-azure-cli).
+Telepítse a CLI-parancsok (2.0-s vagy újabb) legújabb verzióját. A CLI-parancsok telepítéséről további információkért lásd: [az Azure CLI telepítése](/cli/azure/install-azure-cli) és [Azure CLI használatának első lépései](/cli/azure/get-started-with-azure-cli).
 
 ### <a name="step-1-create-and-configure-testvnet1"></a>1. lépés: TestVNet1 létrehozása és konfigurálása
 

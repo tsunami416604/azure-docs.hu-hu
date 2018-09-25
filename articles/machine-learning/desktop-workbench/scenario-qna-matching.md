@@ -12,14 +12,19 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
-ms.openlocfilehash: 33d95e0c17e8b9b18313cb0854532337ec76cfd1
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ROBOTS: NOINDEX
+ms.openlocfilehash: e0f6148e1fb28838bf99c63fbfbfbfe8cd127c8c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42056400"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46973203"
 ---
 #  <a name="q--a-matching-using-azure-machine-learning-workbench"></a>A Q & A megfelelést kiváltó Azure Machine Learning workbench használatával
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 Nyissa meg befejeződött a kérdés megválaszolásával nehéz feladat, és gyakran az az érintett témakör szakértőit (kis-és középvállalkozások) manuális beavatkozást igényel. Belső KKV igény csökkentése érdekében vállalatok gyakran létrehozása gyakran ismételt kérdések (GYIK) listája, hogy segítséget nyújtson a felhasználóknak. Ez a példa bemutatja a különböző hatékony machine learning módszerek megfelelő, korábban létező – gyakori kérdések kérdés/válasz párt nyílt befejeződött a lekérdezéseket. Ez a példa bemutatja egy egyszerű fejlesztési folyamatot, az Azure Machine Learning Workbench használatával megoldás kiépítésének. 
 
 ## <a name="link-to-the-gallery-github-repository"></a>A katalógus GitHub-adattárra mutató hivatkozás
@@ -42,7 +47,7 @@ A szükséges, hogy ez a megoldás fontos lépések az alábbiak szerint:
 Ez a példa futtatásához az Előfeltételek a következők:
 
 1. Egy [Azure-fiók](https://azure.microsoft.com/free/) (az ingyenes próbaverziók érhető el).
-2. Egy telepített példánya [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) következő a [rövid telepítési útmutatójában](../service/quickstart-installation.md) telepítse a programot, és hozzon létre egy munkaterületet.
+2. Egy telepített példánya [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) következő a [rövid telepítési útmutatójában](quickstart-installation.md) telepítse a programot, és hozzon létre egy munkaterületet.
 3. Ebben a példában minden számítási környezetben is futhat. Azonban javasoljuk, hogy legalább futtatása a Többmagos gépen 16GB memória, és 5GB szabad lemezterület.
 
 ## <a name="create-a-new-workbench-project"></a>Egy új workbench-projekt létrehozása
